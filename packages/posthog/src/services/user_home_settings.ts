@@ -6,8 +6,6 @@ import * as S from "@distilled.cloud/core/schema";
 import { PosthogProtocol, type PosthogOpError, type PosthogOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { PosthogOpError, PosthogOpContext };
 
@@ -41,6 +39,11 @@ export class NotFound
 export interface GetUserHomeSettingsRequest {
   uuid: string;
 }
+const GetUserHomeSettingsRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<GetUserHomeSettingsRequest>;
+
 export interface PinnedSceneTab {
   /** Stable identifier for the tab. Generated client-side; safe to omit on create. */
   id?: string;
@@ -65,16 +68,28 @@ export interface PinnedSceneTab {
   /** Whether this entry is pinned. Always coerced to true on save -- pass true or omit. */
   pinned?: boolean;
 }
+const PinnedSceneTab = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<PinnedSceneTab>;
+
 /** Ordered list of pinned navigation tabs shown in the sidebar for the authenticated user within the current team. Send the full list to replace the existing pins; omit to leave them unchanged. */
 export type PinnedSceneTabsTabsList = Array<PinnedSceneTab>;
+const PinnedSceneTabsTabsList = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<PinnedSceneTabsTabsList>;
+
 export interface PinnedSceneTabs {
   /** Ordered list of pinned navigation tabs shown in the sidebar for the authenticated user within the current team. Send the full list to replace the existing pins; omit to leave them unchanged. */
   tabs?: PinnedSceneTabsTabsList;
   /** Tab descriptor for the user's chosen home page -- the destination opened when they click the PostHog logo or hit `/`. Set to a tab descriptor to pick a homepage, send `null` or `{}` to clear it and fall back to the project default. */
   homepage?: PinnedSceneTab | null;
 }
+const PinnedSceneTabs = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<PinnedSceneTabs>;
+
 /** Ordered list of pinned navigation tabs shown in the sidebar for the authenticated user within the current team. Send the full list to replace the existing pins; omit to leave them unchanged. */
 export type UpdateUserHomeSettingsPartialRequestTabsList = Array<PinnedSceneTab>;
+const UpdateUserHomeSettingsPartialRequestTabsList =
+  PinnedSceneTabsTabsList as any as S.Schema<UpdateUserHomeSettingsPartialRequestTabsList>;
+
 export interface UpdateUserHomeSettingsPartialRequest {
   uuid: string;
   /** Ordered list of pinned navigation tabs shown in the sidebar for the authenticated user within the current team. Send the full list to replace the existing pins; omit to leave them unchanged. */
@@ -82,6 +97,11 @@ export interface UpdateUserHomeSettingsPartialRequest {
   /** Tab descriptor for the user's chosen home page -- the destination opened when they click the PostHog logo or hit `/`. Set to a tab descriptor to pick a homepage, send `null` or `{}` to clear it and fall back to the project default. */
   homepage?: PinnedSceneTab | null;
 }
+const UpdateUserHomeSettingsPartialRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<UpdateUserHomeSettingsPartialRequest>;
+
 export type GetUserHomeSettingsError = Forbidden | NotFound | PosthogOpError;
 /** Get the authenticated user's pinned sidebar tabs and configured homepage for the current team. Pass `@me` as the UUID. */
 export const getUserHomeSettings: API.OperationMethod<
@@ -90,8 +110,8 @@ export const getUserHomeSettings: API.OperationMethod<
   GetUserHomeSettingsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<GetUserHomeSettingsRequest>,
-  output: __S(3) as any as S.Schema<PinnedSceneTabs>,
+  input: GetUserHomeSettingsRequest,
+  output: PinnedSceneTabs,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -105,8 +125,8 @@ export const updateUserHomeSettingsPartial: API.OperationMethod<
   UpdateUserHomeSettingsPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4) as any as S.Schema<UpdateUserHomeSettingsPartialRequest>,
-  output: __S(3) as any as S.Schema<PinnedSceneTabs>,
+  input: UpdateUserHomeSettingsPartialRequest,
+  output: PinnedSceneTabs,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -140,34 +160,23 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "PinnedSceneTab" });
     case 2:
-      return S.Array(__S(1));
+      return S.Array(PinnedSceneTab);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          tabs: S.optional(__S(2)),
-          homepage: S.optional(S.NullOr(__S(1))),
+          tabs: S.optional(PinnedSceneTabsTabsList),
+          homepage: S.optional(S.NullOr(PinnedSceneTab)),
         }),
       ).annotate({ identifier: "PinnedSceneTabs" });
     case 4:
       return S.suspend(() =>
         S.Struct({
           uuid: S.String.pipe(T.Label()),
-          tabs: S.optional(__S(2)),
-          homepage: S.optional(S.NullOr(__S(1))),
+          tabs: S.optional(UpdateUserHomeSettingsPartialRequestTabsList),
+          homepage: S.optional(S.NullOr(PinnedSceneTab)),
         }).pipe(T.Http({ method: "PATCH", uri: "/api/user_home_settings/{uuid}/", code: 200 })),
       ).annotate({
         identifier: "UpdateUserHomeSettingsPartialRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
   }
 }

@@ -7,8 +7,6 @@ import { paginatePageNumber } from "../pagination.ts";
 import { HetznerProtocol, type HetznerOpError, type HetznerOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { HetznerOpError, HetznerOpContext };
 
@@ -20,17 +18,34 @@ export interface AddNetworkRouteRequest {
   /** Gateway of the route. Packages addressed for the specified destination will be send to this IP address. Cannot be * the first IP of the networks ip_range, * an IP behind a vSwitch or * `172.31.1.1`. `172.31.1.1` is being used as a gateway for the public network interface of [Servers](#tag/servers). */
   gateway: string;
 }
+const AddNetworkRouteRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<AddNetworkRouteRequest>;
+
 /** Status of the Action. */
 export type AddNetworkRouteResponseActionStatus = "running" | "success" | "error";
+const AddNetworkRouteResponseActionStatus = S.String;
+
 export interface AddNetworkRouteResponseActionResourcesItem {
   /** ID of the Resource. */
   id: number;
   /** Type of the Resource. */
   type: string;
 }
+const AddNetworkRouteResponseActionResourcesItem = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<AddNetworkRouteResponseActionResourcesItem>;
+
 /** Resources the Action relates to. */
 export type AddNetworkRouteResponseActionResourcesList =
   Array<AddNetworkRouteResponseActionResourcesItem>;
+const AddNetworkRouteResponseActionResourcesList = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<AddNetworkRouteResponseActionResourcesList>;
+
 /** Error message for the Action if an error occurred, otherwise null. */
 export interface AddNetworkRouteResponseActionError {
   /** Fixed error code for machines. */
@@ -38,6 +53,11 @@ export interface AddNetworkRouteResponseActionError {
   /** Error message for humans. */
   message: string;
 }
+const AddNetworkRouteResponseActionError = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<AddNetworkRouteResponseActionError>;
+
 export interface AddNetworkRouteResponseAction {
   /** ID of the [Action](#description/actions). */
   id: number;
@@ -56,11 +76,23 @@ export interface AddNetworkRouteResponseAction {
   /** Error message for the Action if an error occurred, otherwise null. */
   error: AddNetworkRouteResponseActionError | null;
 }
+const AddNetworkRouteResponseAction = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<AddNetworkRouteResponseAction>;
+
 export interface AddNetworkRouteResponse {
   action: AddNetworkRouteResponseAction;
 }
+const AddNetworkRouteResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<AddNetworkRouteResponse>;
+
 /** Type of subnet. */
 export type AddNetworkSubnetRequestType = "cloud" | "server" | "vswitch";
+const AddNetworkSubnetRequestType = S.String;
+
 export interface AddNetworkSubnetRequest {
   /** ID of the Network. */
   id: number;
@@ -73,13 +105,23 @@ export interface AddNetworkSubnetRequest {
   /** ID of the robot vSwitch. Must be supplied if the subnet is of type `vswitch`. */
   vswitch_id?: number;
 }
+const AddNetworkSubnetRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<AddNetworkSubnetRequest>;
+
 /** Status of the Action. */
 export type AddNetworkSubnetResponseActionStatus = "running" | "success" | "error";
+const AddNetworkSubnetResponseActionStatus = S.String;
+
 export type AddNetworkSubnetResponseActionResourcesItem =
   AddNetworkRouteResponseActionResourcesItem;
 /** Resources the Action relates to. */
 export type AddNetworkSubnetResponseActionResourcesList =
   Array<AddNetworkRouteResponseActionResourcesItem>;
+const AddNetworkSubnetResponseActionResourcesList =
+  AddNetworkRouteResponseActionResourcesList as any as S.Schema<AddNetworkSubnetResponseActionResourcesList>;
+
 /** Error message for the Action if an error occurred, otherwise null. */
 export type AddNetworkSubnetResponseActionError = AddNetworkRouteResponseActionError;
 export interface AddNetworkSubnetResponseAction {
@@ -100,22 +142,42 @@ export interface AddNetworkSubnetResponseAction {
   /** Error message for the Action if an error occurred, otherwise null. */
   error: AddNetworkRouteResponseActionError | null;
 }
+const AddNetworkSubnetResponseAction = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<AddNetworkSubnetResponseAction>;
+
 export interface AddNetworkSubnetResponse {
   action: AddNetworkSubnetResponseAction;
 }
+const AddNetworkSubnetResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<AddNetworkSubnetResponse>;
+
 export interface ChangeNetworkIpRangeRequest {
   /** ID of the Network. */
   id: number;
   /** IP range of the [Network](#tag/networks). Uses CIDR notation. Must span all included subnets. Must be one of the private IPv4 ranges of RFC1918. Minimum network size is /24. We highly recommend that you pick a larger [Network](#tag/networks) with a /16 netmask. */
   ip_range: string;
 }
+const ChangeNetworkIpRangeRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<ChangeNetworkIpRangeRequest>;
+
 /** Status of the Action. */
 export type ChangeNetworkIpRangeResponseActionStatus = "running" | "success" | "error";
+const ChangeNetworkIpRangeResponseActionStatus = S.String;
+
 export type ChangeNetworkIpRangeResponseActionResourcesItem =
   AddNetworkRouteResponseActionResourcesItem;
 /** Resources the Action relates to. */
 export type ChangeNetworkIpRangeResponseActionResourcesList =
   Array<AddNetworkRouteResponseActionResourcesItem>;
+const ChangeNetworkIpRangeResponseActionResourcesList =
+  AddNetworkRouteResponseActionResourcesList as any as S.Schema<ChangeNetworkIpRangeResponseActionResourcesList>;
+
 /** Error message for the Action if an error occurred, otherwise null. */
 export type ChangeNetworkIpRangeResponseActionError = AddNetworkRouteResponseActionError;
 export interface ChangeNetworkIpRangeResponseAction {
@@ -136,22 +198,42 @@ export interface ChangeNetworkIpRangeResponseAction {
   /** Error message for the Action if an error occurred, otherwise null. */
   error: AddNetworkRouteResponseActionError | null;
 }
+const ChangeNetworkIpRangeResponseAction = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<ChangeNetworkIpRangeResponseAction>;
+
 export interface ChangeNetworkIpRangeResponse {
   action: ChangeNetworkIpRangeResponseAction;
 }
+const ChangeNetworkIpRangeResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<ChangeNetworkIpRangeResponse>;
+
 export interface ChangeNetworkProtectionRequest {
   /** ID of the Network. */
   id: number;
   /** Delete protection setting. If true, prevents the [Network](#tag/networks) from being deleted. */
   delete?: boolean;
 }
+const ChangeNetworkProtectionRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<ChangeNetworkProtectionRequest>;
+
 /** Status of the Action. */
 export type ChangeNetworkProtectionResponseActionStatus = "running" | "success" | "error";
+const ChangeNetworkProtectionResponseActionStatus = S.String;
+
 export type ChangeNetworkProtectionResponseActionResourcesItem =
   AddNetworkRouteResponseActionResourcesItem;
 /** Resources the Action relates to. */
 export type ChangeNetworkProtectionResponseActionResourcesList =
   Array<AddNetworkRouteResponseActionResourcesItem>;
+const ChangeNetworkProtectionResponseActionResourcesList =
+  AddNetworkRouteResponseActionResourcesList as any as S.Schema<ChangeNetworkProtectionResponseActionResourcesList>;
+
 /** Error message for the Action if an error occurred, otherwise null. */
 export type ChangeNetworkProtectionResponseActionError = AddNetworkRouteResponseActionError;
 export interface ChangeNetworkProtectionResponseAction {
@@ -172,9 +254,19 @@ export interface ChangeNetworkProtectionResponseAction {
   /** Error message for the Action if an error occurred, otherwise null. */
   error: AddNetworkRouteResponseActionError | null;
 }
+const ChangeNetworkProtectionResponseAction = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<ChangeNetworkProtectionResponseAction>;
+
 export interface ChangeNetworkProtectionResponse {
   action: ChangeNetworkProtectionResponseAction;
 }
+const ChangeNetworkProtectionResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<ChangeNetworkProtectionResponse>;
+
 export interface DeleteNetworkRouteRequest {
   /** ID of the Network. */
   id: number;
@@ -183,13 +275,23 @@ export interface DeleteNetworkRouteRequest {
   /** Gateway of the route. Packages addressed for the specified destination will be send to this IP address. Cannot be * the first IP of the networks ip_range, * an IP behind a vSwitch or * `172.31.1.1`. `172.31.1.1` is being used as a gateway for the public network interface of [Servers](#tag/servers). */
   gateway: string;
 }
+const DeleteNetworkRouteRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<DeleteNetworkRouteRequest>;
+
 /** Status of the Action. */
 export type DeleteNetworkRouteResponseActionStatus = "running" | "success" | "error";
+const DeleteNetworkRouteResponseActionStatus = S.String;
+
 export type DeleteNetworkRouteResponseActionResourcesItem =
   AddNetworkRouteResponseActionResourcesItem;
 /** Resources the Action relates to. */
 export type DeleteNetworkRouteResponseActionResourcesList =
   Array<AddNetworkRouteResponseActionResourcesItem>;
+const DeleteNetworkRouteResponseActionResourcesList =
+  AddNetworkRouteResponseActionResourcesList as any as S.Schema<DeleteNetworkRouteResponseActionResourcesList>;
+
 /** Error message for the Action if an error occurred, otherwise null. */
 export type DeleteNetworkRouteResponseActionError = AddNetworkRouteResponseActionError;
 export interface DeleteNetworkRouteResponseAction {
@@ -210,22 +312,42 @@ export interface DeleteNetworkRouteResponseAction {
   /** Error message for the Action if an error occurred, otherwise null. */
   error: AddNetworkRouteResponseActionError | null;
 }
+const DeleteNetworkRouteResponseAction = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<DeleteNetworkRouteResponseAction>;
+
 export interface DeleteNetworkRouteResponse {
   action: DeleteNetworkRouteResponseAction;
 }
+const DeleteNetworkRouteResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<DeleteNetworkRouteResponse>;
+
 export interface DeleteNetworkSubnetRequest {
   /** ID of the Network. */
   id: number;
   /** IP range in CIDR block notation of the subnet to delete. */
   ip_range: string;
 }
+const DeleteNetworkSubnetRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<DeleteNetworkSubnetRequest>;
+
 /** Status of the Action. */
 export type DeleteNetworkSubnetResponseActionStatus = "running" | "success" | "error";
+const DeleteNetworkSubnetResponseActionStatus = S.String;
+
 export type DeleteNetworkSubnetResponseActionResourcesItem =
   AddNetworkRouteResponseActionResourcesItem;
 /** Resources the Action relates to. */
 export type DeleteNetworkSubnetResponseActionResourcesList =
   Array<AddNetworkRouteResponseActionResourcesItem>;
+const DeleteNetworkSubnetResponseActionResourcesList =
+  AddNetworkRouteResponseActionResourcesList as any as S.Schema<DeleteNetworkSubnetResponseActionResourcesList>;
+
 /** Error message for the Action if an error occurred, otherwise null. */
 export type DeleteNetworkSubnetResponseActionError = AddNetworkRouteResponseActionError;
 export interface DeleteNetworkSubnetResponseAction {
@@ -246,20 +368,40 @@ export interface DeleteNetworkSubnetResponseAction {
   /** Error message for the Action if an error occurred, otherwise null. */
   error: AddNetworkRouteResponseActionError | null;
 }
+const DeleteNetworkSubnetResponseAction = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<DeleteNetworkSubnetResponseAction>;
+
 export interface DeleteNetworkSubnetResponse {
   action: DeleteNetworkSubnetResponseAction;
 }
+const DeleteNetworkSubnetResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<DeleteNetworkSubnetResponse>;
+
 export interface GetNetworksActionRequest {
   /** ID of the Action. */
   id: number;
 }
+const GetNetworksActionRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<GetNetworksActionRequest>;
+
 /** Status of the Action. */
 export type GetNetworksActionResponseActionStatus = "running" | "success" | "error";
+const GetNetworksActionResponseActionStatus = S.String;
+
 export type GetNetworksActionResponseActionResourcesItem =
   AddNetworkRouteResponseActionResourcesItem;
 /** Resources the Action relates to. */
 export type GetNetworksActionResponseActionResourcesList =
   Array<AddNetworkRouteResponseActionResourcesItem>;
+const GetNetworksActionResponseActionResourcesList =
+  AddNetworkRouteResponseActionResourcesList as any as S.Schema<GetNetworksActionResponseActionResourcesList>;
+
 /** Error message for the Action if an error occurred, otherwise null. */
 export type GetNetworksActionResponseActionError = AddNetworkRouteResponseActionError;
 export interface GetNetworksActionResponseAction {
@@ -280,9 +422,19 @@ export interface GetNetworksActionResponseAction {
   /** Error message for the Action if an error occurred, otherwise null. */
   error: AddNetworkRouteResponseActionError | null;
 }
+const GetNetworksActionResponseAction = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<GetNetworksActionResponseAction>;
+
 export interface GetNetworksActionResponse {
   action: GetNetworksActionResponseAction;
 }
+const GetNetworksActionResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<GetNetworksActionResponse>;
+
 export type ListNetworkActionsRequestSortItem =
   | "id"
   | "id:asc"
@@ -299,14 +451,24 @@ export type ListNetworkActionsRequestSortItem =
   | "finished"
   | "finished:asc"
   | "finished:desc";
+const ListNetworkActionsRequestSortItem = S.String;
+
 export type ListNetworkActionsRequestSortList = Array<
   ListNetworkActionsRequestSortItem | (string & {})
 >;
+const ListNetworkActionsRequestSortList = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<ListNetworkActionsRequestSortList>;
+
 /** Status of the Action. */
 export type ListNetworkActionsRequestStatusItem = "running" | "success" | "error";
 export type ListNetworkActionsRequestStatusList = Array<
   ListNetworkActionsRequestStatusItem | (string & {})
 >;
+const ListNetworkActionsRequestStatusList =
+  ListNetworkActionsRequestSortList as any as S.Schema<ListNetworkActionsRequestStatusList>;
+
 export interface ListNetworkActionsRequest {
   /** ID of the Network. */
   id: number;
@@ -319,13 +481,23 @@ export interface ListNetworkActionsRequest {
   /** Maximum number of entries returned per page. For more information, see "[Pagination](#description/pagination)". */
   per_page?: number;
 }
+const ListNetworkActionsRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<ListNetworkActionsRequest>;
+
 /** Status of the Action. */
 export type ListNetworkActionsResponseActionsItemStatus = "running" | "success" | "error";
+const ListNetworkActionsResponseActionsItemStatus = S.String;
+
 export type ListNetworkActionsResponseActionsItemResourcesItem =
   AddNetworkRouteResponseActionResourcesItem;
 /** Resources the Action relates to. */
 export type ListNetworkActionsResponseActionsItemResourcesList =
   Array<AddNetworkRouteResponseActionResourcesItem>;
+const ListNetworkActionsResponseActionsItemResourcesList =
+  AddNetworkRouteResponseActionResourcesList as any as S.Schema<ListNetworkActionsResponseActionsItemResourcesList>;
+
 /** Error message for the Action if an error occurred, otherwise null. */
 export type ListNetworkActionsResponseActionsItemError = AddNetworkRouteResponseActionError;
 export interface ListNetworkActionsResponseActionsItem {
@@ -346,7 +518,17 @@ export interface ListNetworkActionsResponseActionsItem {
   /** Error message for the Action if an error occurred, otherwise null. */
   error: AddNetworkRouteResponseActionError | null;
 }
+const ListNetworkActionsResponseActionsItem = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<ListNetworkActionsResponseActionsItem>;
+
 export type ListNetworkActionsResponseActionsList = Array<ListNetworkActionsResponseActionsItem>;
+const ListNetworkActionsResponseActionsList = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<ListNetworkActionsResponseActionsList>;
+
 /** See "[Pagination](#description/pagination)" for more information. */
 export interface ListNetworkActionsResponseMetaPagination {
   /** Current page number. */
@@ -362,15 +544,35 @@ export interface ListNetworkActionsResponseMetaPagination {
   /** Total number of entries that exist for this query. Can be null if unknown. */
   total_entries: number | null;
 }
+const ListNetworkActionsResponseMetaPagination = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<ListNetworkActionsResponseMetaPagination>;
+
 export interface ListNetworkActionsResponseMeta {
   /** See "[Pagination](#description/pagination)" for more information. */
   pagination: ListNetworkActionsResponseMetaPagination;
 }
+const ListNetworkActionsResponseMeta = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<ListNetworkActionsResponseMeta>;
+
 export interface ListNetworkActionsResponse {
   actions: ListNetworkActionsResponseActionsList;
   meta: ListNetworkActionsResponseMeta;
 }
+const ListNetworkActionsResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<ListNetworkActionsResponse>;
+
 export type ListNetworksActionsRequestIdList = Array<number>;
+const ListNetworksActionsRequestIdList = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<ListNetworksActionsRequestIdList>;
+
 export type ListNetworksActionsRequestSortItem =
   | "id"
   | "id:asc"
@@ -390,11 +592,17 @@ export type ListNetworksActionsRequestSortItem =
 export type ListNetworksActionsRequestSortList = Array<
   ListNetworksActionsRequestSortItem | (string & {})
 >;
+const ListNetworksActionsRequestSortList =
+  ListNetworkActionsRequestSortList as any as S.Schema<ListNetworksActionsRequestSortList>;
+
 /** Status of the Action. */
 export type ListNetworksActionsRequestStatusItem = "running" | "success" | "error";
 export type ListNetworksActionsRequestStatusList = Array<
   ListNetworksActionsRequestStatusItem | (string & {})
 >;
+const ListNetworksActionsRequestStatusList =
+  ListNetworkActionsRequestSortList as any as S.Schema<ListNetworksActionsRequestStatusList>;
+
 export interface ListNetworksActionsRequest {
   /** Filter the actions by ID. May be used multiple times. The response will only contain actions matching the specified IDs. */
   id?: ListNetworksActionsRequestIdList;
@@ -407,13 +615,23 @@ export interface ListNetworksActionsRequest {
   /** Maximum number of entries returned per page. For more information, see "[Pagination](#description/pagination)". */
   per_page?: number;
 }
+const ListNetworksActionsRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<ListNetworksActionsRequest>;
+
 /** Status of the Action. */
 export type ListNetworksActionsResponseActionsItemStatus = "running" | "success" | "error";
+const ListNetworksActionsResponseActionsItemStatus = S.String;
+
 export type ListNetworksActionsResponseActionsItemResourcesItem =
   AddNetworkRouteResponseActionResourcesItem;
 /** Resources the Action relates to. */
 export type ListNetworksActionsResponseActionsItemResourcesList =
   Array<AddNetworkRouteResponseActionResourcesItem>;
+const ListNetworksActionsResponseActionsItemResourcesList =
+  AddNetworkRouteResponseActionResourcesList as any as S.Schema<ListNetworksActionsResponseActionsItemResourcesList>;
+
 /** Error message for the Action if an error occurred, otherwise null. */
 export type ListNetworksActionsResponseActionsItemError = AddNetworkRouteResponseActionError;
 export interface ListNetworksActionsResponseActionsItem {
@@ -434,7 +652,17 @@ export interface ListNetworksActionsResponseActionsItem {
   /** Error message for the Action if an error occurred, otherwise null. */
   error: AddNetworkRouteResponseActionError | null;
 }
+const ListNetworksActionsResponseActionsItem = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<ListNetworksActionsResponseActionsItem>;
+
 export type ListNetworksActionsResponseActionsList = Array<ListNetworksActionsResponseActionsItem>;
+const ListNetworksActionsResponseActionsList = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<ListNetworksActionsResponseActionsList>;
+
 /** See "[Pagination](#description/pagination)" for more information. */
 export type ListNetworksActionsResponseMetaPagination = ListNetworkActionsResponseMetaPagination;
 export type ListNetworksActionsResponseMeta = ListNetworkActionsResponseMeta;
@@ -442,6 +670,11 @@ export interface ListNetworksActionsResponse {
   actions: ListNetworksActionsResponseActionsList;
   meta: ListNetworkActionsResponseMeta;
 }
+const ListNetworksActionsResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<ListNetworksActionsResponse>;
+
 export type AddNetworkRouteError = HetznerOpError;
 /** Add a route to a Network Adds a route entry to a [Network](#tag/networks). If a change is currently being performed on this [Network](#tag/networks), a error response with code `conflict` will be returned. */
 export const addNetworkRoute: API.OperationMethod<
@@ -450,8 +683,8 @@ export const addNetworkRoute: API.OperationMethod<
   AddNetworkRouteError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<AddNetworkRouteRequest>,
-  output: __S(5) as any as S.Schema<AddNetworkRouteResponse>,
+  input: AddNetworkRouteRequest,
+  output: AddNetworkRouteResponse,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -465,8 +698,8 @@ export const addNetworkSubnet: API.OperationMethod<
   AddNetworkSubnetError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6) as any as S.Schema<AddNetworkSubnetRequest>,
-  output: __S(8) as any as S.Schema<AddNetworkSubnetResponse>,
+  input: AddNetworkSubnetRequest,
+  output: AddNetworkSubnetResponse,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -480,8 +713,8 @@ export const changeNetworkIpRange: API.OperationMethod<
   ChangeNetworkIpRangeError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9) as any as S.Schema<ChangeNetworkIpRangeRequest>,
-  output: __S(11) as any as S.Schema<ChangeNetworkIpRangeResponse>,
+  input: ChangeNetworkIpRangeRequest,
+  output: ChangeNetworkIpRangeResponse,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -495,8 +728,8 @@ export const changeNetworkProtection: API.OperationMethod<
   ChangeNetworkProtectionError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12) as any as S.Schema<ChangeNetworkProtectionRequest>,
-  output: __S(14) as any as S.Schema<ChangeNetworkProtectionResponse>,
+  input: ChangeNetworkProtectionRequest,
+  output: ChangeNetworkProtectionResponse,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -510,8 +743,8 @@ export const deleteNetworkRoute: API.OperationMethod<
   DeleteNetworkRouteError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15) as any as S.Schema<DeleteNetworkRouteRequest>,
-  output: __S(17) as any as S.Schema<DeleteNetworkRouteResponse>,
+  input: DeleteNetworkRouteRequest,
+  output: DeleteNetworkRouteResponse,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -525,8 +758,8 @@ export const deleteNetworkSubnet: API.OperationMethod<
   DeleteNetworkSubnetError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18) as any as S.Schema<DeleteNetworkSubnetRequest>,
-  output: __S(20) as any as S.Schema<DeleteNetworkSubnetResponse>,
+  input: DeleteNetworkSubnetRequest,
+  output: DeleteNetworkSubnetResponse,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -540,8 +773,8 @@ export const getNetworksAction: API.OperationMethod<
   GetNetworksActionError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21) as any as S.Schema<GetNetworksActionRequest>,
-  output: __S(23) as any as S.Schema<GetNetworksActionResponse>,
+  input: GetNetworksActionRequest,
+  output: GetNetworksActionResponse,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -557,8 +790,8 @@ export const listNetworkActions: API.PaginatedOperationMethod<
   ListNetworkActionsResponseActionsItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(25) as any as S.Schema<ListNetworkActionsRequest>,
-    output: __S(30) as any as S.Schema<ListNetworkActionsResponse>,
+    input: ListNetworkActionsRequest,
+    output: ListNetworkActionsResponse,
     errors: [UnknownHetznerError],
     protocol: HetznerProtocol,
     retry: Retry.Retry,
@@ -583,8 +816,8 @@ export const listNetworksActions: API.PaginatedOperationMethod<
   ListNetworksActionsResponseActionsItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(32) as any as S.Schema<ListNetworksActionsRequest>,
-    output: __S(35) as any as S.Schema<ListNetworksActionsResponse>,
+    input: ListNetworksActionsRequest,
+    output: ListNetworksActionsResponse,
     errors: [UnknownHetznerError],
     protocol: HetznerProtocol,
     retry: Retry.Retry,
@@ -620,7 +853,7 @@ function __c0(j: number): any {
         identifier: "AddNetworkRouteResponseActionResourcesItem",
       });
     case 2:
-      return S.Array(__S(1));
+      return S.Array(AddNetworkRouteResponseActionResourcesItem);
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -635,12 +868,12 @@ function __c0(j: number): any {
         S.Struct({
           id: S.Number,
           command: S.String,
-          status: S.String,
+          status: AddNetworkRouteResponseActionStatus,
           started: S.String,
           finished: S.NullOr(S.String),
           progress: S.Number,
-          resources: __S(2),
-          error: S.NullOr(__S(3)),
+          resources: AddNetworkRouteResponseActionResourcesList,
+          error: S.NullOr(AddNetworkRouteResponseActionError),
         }),
       ).annotate({
         identifier: "AddNetworkRouteResponseAction",
@@ -648,14 +881,14 @@ function __c0(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          action: __S(4),
+          action: AddNetworkRouteResponseAction,
         }),
       ).annotate({ identifier: "AddNetworkRouteResponse" });
     case 6:
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
-          type: S.String,
+          type: AddNetworkSubnetRequestType,
           ip_range: S.optional(S.String),
           network_zone: S.String,
           vswitch_id: S.optional(S.Number),
@@ -666,12 +899,12 @@ function __c0(j: number): any {
         S.Struct({
           id: S.Number,
           command: S.String,
-          status: S.String,
+          status: AddNetworkSubnetResponseActionStatus,
           started: S.String,
           finished: S.NullOr(S.String),
           progress: S.Number,
-          resources: __S(2),
-          error: S.NullOr(__S(3)),
+          resources: AddNetworkSubnetResponseActionResourcesList,
+          error: S.NullOr(AddNetworkRouteResponseActionError),
         }),
       ).annotate({
         identifier: "AddNetworkSubnetResponseAction",
@@ -683,7 +916,7 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          action: __S(7),
+          action: AddNetworkSubnetResponseAction,
         }),
       ).annotate({ identifier: "AddNetworkSubnetResponse" });
     case 1:
@@ -702,12 +935,12 @@ function __c1(j: number): any {
         S.Struct({
           id: S.Number,
           command: S.String,
-          status: S.String,
+          status: ChangeNetworkIpRangeResponseActionStatus,
           started: S.String,
           finished: S.NullOr(S.String),
           progress: S.Number,
-          resources: __S(2),
-          error: S.NullOr(__S(3)),
+          resources: ChangeNetworkIpRangeResponseActionResourcesList,
+          error: S.NullOr(AddNetworkRouteResponseActionError),
         }),
       ).annotate({
         identifier: "ChangeNetworkIpRangeResponseAction",
@@ -715,7 +948,7 @@ function __c1(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          action: __S(10),
+          action: ChangeNetworkIpRangeResponseAction,
         }),
       ).annotate({
         identifier: "ChangeNetworkIpRangeResponse",
@@ -736,12 +969,12 @@ function __c1(j: number): any {
         S.Struct({
           id: S.Number,
           command: S.String,
-          status: S.String,
+          status: ChangeNetworkProtectionResponseActionStatus,
           started: S.String,
           finished: S.NullOr(S.String),
           progress: S.Number,
-          resources: __S(2),
-          error: S.NullOr(__S(3)),
+          resources: ChangeNetworkProtectionResponseActionResourcesList,
+          error: S.NullOr(AddNetworkRouteResponseActionError),
         }),
       ).annotate({
         identifier: "ChangeNetworkProtectionResponseAction",
@@ -749,7 +982,7 @@ function __c1(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          action: __S(13),
+          action: ChangeNetworkProtectionResponseAction,
         }),
       ).annotate({
         identifier: "ChangeNetworkProtectionResponse",
@@ -773,12 +1006,12 @@ function __c2(j: number): any {
         S.Struct({
           id: S.Number,
           command: S.String,
-          status: S.String,
+          status: DeleteNetworkRouteResponseActionStatus,
           started: S.String,
           finished: S.NullOr(S.String),
           progress: S.Number,
-          resources: __S(2),
-          error: S.NullOr(__S(3)),
+          resources: DeleteNetworkRouteResponseActionResourcesList,
+          error: S.NullOr(AddNetworkRouteResponseActionError),
         }),
       ).annotate({
         identifier: "DeleteNetworkRouteResponseAction",
@@ -786,7 +1019,7 @@ function __c2(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          action: __S(16),
+          action: DeleteNetworkRouteResponseAction,
         }),
       ).annotate({
         identifier: "DeleteNetworkRouteResponse",
@@ -805,12 +1038,12 @@ function __c2(j: number): any {
         S.Struct({
           id: S.Number,
           command: S.String,
-          status: S.String,
+          status: DeleteNetworkSubnetResponseActionStatus,
           started: S.String,
           finished: S.NullOr(S.String),
           progress: S.Number,
-          resources: __S(2),
-          error: S.NullOr(__S(3)),
+          resources: DeleteNetworkSubnetResponseActionResourcesList,
+          error: S.NullOr(AddNetworkRouteResponseActionError),
         }),
       ).annotate({
         identifier: "DeleteNetworkSubnetResponseAction",
@@ -818,7 +1051,7 @@ function __c2(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          action: __S(19),
+          action: DeleteNetworkSubnetResponseAction,
         }),
       ).annotate({
         identifier: "DeleteNetworkSubnetResponse",
@@ -834,12 +1067,12 @@ function __c2(j: number): any {
         S.Struct({
           id: S.Number,
           command: S.String,
-          status: S.String,
+          status: GetNetworksActionResponseActionStatus,
           started: S.String,
           finished: S.NullOr(S.String),
           progress: S.Number,
-          resources: __S(2),
-          error: S.NullOr(__S(3)),
+          resources: GetNetworksActionResponseActionResourcesList,
+          error: S.NullOr(AddNetworkRouteResponseActionError),
         }),
       ).annotate({
         identifier: "GetNetworksActionResponseAction",
@@ -847,7 +1080,7 @@ function __c2(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          action: __S(22),
+          action: GetNetworksActionResponseAction,
         }),
       ).annotate({
         identifier: "GetNetworksActionResponse",
@@ -857,13 +1090,13 @@ function __c2(j: number): any {
 function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
+      return S.Array(ListNetworkActionsRequestSortItem);
     case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
-          sort: S.optional(__S(24).pipe(T.Query())),
-          status: S.optional(__S(24).pipe(T.Query())),
+          sort: S.optional(ListNetworkActionsRequestSortList.pipe(T.Query())),
+          status: S.optional(ListNetworkActionsRequestStatusList.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
           per_page: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/networks/{id}/actions", code: 200 })),
@@ -875,18 +1108,18 @@ function __c3(j: number): any {
         S.Struct({
           id: S.Number,
           command: S.String,
-          status: S.String,
+          status: ListNetworkActionsResponseActionsItemStatus,
           started: S.String,
           finished: S.NullOr(S.String),
           progress: S.Number,
-          resources: __S(2),
-          error: S.NullOr(__S(3)),
+          resources: ListNetworkActionsResponseActionsItemResourcesList,
+          error: S.NullOr(AddNetworkRouteResponseActionError),
         }),
       ).annotate({
         identifier: "ListNetworkActionsResponseActionsItem",
       });
     case 3:
-      return S.Array(__S(26));
+      return S.Array(ListNetworkActionsResponseActionsItem);
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -903,7 +1136,7 @@ function __c3(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          pagination: __S(28),
+          pagination: ListNetworkActionsResponseMetaPagination,
         }),
       ).annotate({
         identifier: "ListNetworkActionsResponseMeta",
@@ -911,8 +1144,8 @@ function __c3(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          actions: __S(27),
-          meta: __S(29),
+          actions: ListNetworkActionsResponseActionsList,
+          meta: ListNetworkActionsResponseMeta,
         }),
       ).annotate({
         identifier: "ListNetworkActionsResponse",
@@ -926,9 +1159,9 @@ function __c4(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          id: S.optional(__S(31).pipe(T.Query())),
-          sort: S.optional(__S(24).pipe(T.Query())),
-          status: S.optional(__S(24).pipe(T.Query())),
+          id: S.optional(ListNetworksActionsRequestIdList.pipe(T.Query())),
+          sort: S.optional(ListNetworksActionsRequestSortList.pipe(T.Query())),
+          status: S.optional(ListNetworksActionsRequestStatusList.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
           per_page: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/networks/actions", code: 200 })),
@@ -940,45 +1173,26 @@ function __c4(j: number): any {
         S.Struct({
           id: S.Number,
           command: S.String,
-          status: S.String,
+          status: ListNetworksActionsResponseActionsItemStatus,
           started: S.String,
           finished: S.NullOr(S.String),
           progress: S.Number,
-          resources: __S(2),
-          error: S.NullOr(__S(3)),
+          resources: ListNetworksActionsResponseActionsItemResourcesList,
+          error: S.NullOr(AddNetworkRouteResponseActionError),
         }),
       ).annotate({
         identifier: "ListNetworksActionsResponseActionsItem",
       });
     case 2:
-      return S.Array(__S(33));
+      return S.Array(ListNetworksActionsResponseActionsItem);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          actions: __S(34),
-          meta: __S(29),
+          actions: ListNetworksActionsResponseActionsList,
+          meta: ListNetworkActionsResponseMeta,
         }),
       ).annotate({
         identifier: "ListNetworksActionsResponse",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
   }
 }

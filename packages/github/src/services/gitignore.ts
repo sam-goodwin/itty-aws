@@ -5,22 +5,39 @@ import * as S from "@distilled.cloud/core/schema";
 import { GithubProtocol, type GithubOpError, type GithubOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { GithubOpError, GithubOpContext };
 
 export interface GetAllTemplatesRequest {}
+const GetAllTemplatesRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<GetAllTemplatesRequest>;
+
 export type GetAllTemplatesResponseBodyList = Array<string>;
+const GetAllTemplatesResponseBodyList = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<GetAllTemplatesResponseBodyList>;
+
 export type GetAllTemplatesResponse = GetAllTemplatesResponseBodyList;
+const GetAllTemplatesResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<GetAllTemplatesResponse>;
+
 export interface GetTemplateRequest {
   name: string;
 }
+const GetTemplateRequest = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<GetTemplateRequest>;
+
 /** Gitignore Template */
 export interface GitignoreTemplate {
   name: string;
   source: string;
 }
+const GitignoreTemplate = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<GitignoreTemplate>;
+
 export type GetAllTemplatesError = GithubOpError;
 /** Get all gitignore templates List all templates available to pass as an option when [creating a repository](https://docs.github.com/rest/repos/repos#create-a-repository-for-the-authenticated-user). */
 export const getAllTemplates: API.OperationMethod<
@@ -29,8 +46,8 @@ export const getAllTemplates: API.OperationMethod<
   GetAllTemplatesError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<GetAllTemplatesRequest>,
-  output: __S(2) as any as S.Schema<GetAllTemplatesResponse>,
+  input: GetAllTemplatesRequest,
+  output: GetAllTemplatesResponse,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -44,8 +61,8 @@ export const getTemplate: API.OperationMethod<
   GetTemplateError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3) as any as S.Schema<GetTemplateRequest>,
-  output: __S(4) as any as S.Schema<GitignoreTemplate>,
+  input: GetTemplateRequest,
+  output: GitignoreTemplate,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -61,7 +78,7 @@ function __c0(j: number): any {
     case 1:
       return S.Array(S.String);
     case 2:
-      return S.suspend(() => __S(1).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => GetAllTemplatesResponseBodyList.pipe(T.RawResponseRoot())).annotate({
         identifier: "GetAllTemplatesResponse",
       });
     case 3:
@@ -77,16 +94,5 @@ function __c0(j: number): any {
           source: S.String,
         }),
       ).annotate({ identifier: "GitignoreTemplate" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
   }
 }

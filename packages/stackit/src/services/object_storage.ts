@@ -8,8 +8,6 @@ import { UnknownStackitError } from "../errors.ts";
 import { StackitProtocol, type StackitOpError, type StackitOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { StackitOpError, StackitOpContext };
 
@@ -67,6 +65,11 @@ export interface CreateAccessKeyRequest {
   /** Expiration date. Null means never expires. */
   expires?: string | null;
 }
+const CreateAccessKeyRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<CreateAccessKeyRequest>;
+
 export interface CreateAccessKeyResponse {
   /** Access key */
   accessKey: string;
@@ -81,6 +84,11 @@ export interface CreateAccessKeyResponse {
   /** Secret access key */
   secretAccessKey: string | Redacted.Redacted<string>;
 }
+const CreateAccessKeyResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<CreateAccessKeyResponse>;
+
 export interface CreateBucketRequest {
   /** STACKIT project ID */
   projectId: string;
@@ -91,24 +99,38 @@ export interface CreateBucketRequest {
   /** Enable S3 Object Lock on this bucket. Can only be set at creation time. Requires an active project-level compliance lock. */
   objectLockEnabled?: boolean;
 }
+const CreateBucketRequest = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<CreateBucketRequest>;
+
 export interface CreateBucketResponse {
   /** Name of the bucket */
   bucket: string;
   /** Project ID */
   project: string;
 }
+const CreateBucketResponse = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<CreateBucketResponse>;
+
 export interface CreateComplianceLockRequest {
   /** STACKIT project ID */
   projectId: string;
   /** STACKIT Region */
   region: string;
 }
+const CreateComplianceLockRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<CreateComplianceLockRequest>;
+
 export interface ComplianceLockResponse {
   /** Maximum retention period in days */
   maxRetentionDays: number;
   /** Project ID */
   project: string;
 }
+const ComplianceLockResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<ComplianceLockResponse>;
+
 export interface CreateCredentialsGroupRequest {
   /** STACKIT project ID */
   projectId: string;
@@ -117,6 +139,11 @@ export interface CreateCredentialsGroupRequest {
   /** Name of the group holding credentials */
   displayName: string;
 }
+const CreateCredentialsGroupRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<CreateCredentialsGroupRequest>;
+
 export interface CredentialsGroup {
   /** The ID of the credentials group */
   credentialsGroupId: string;
@@ -125,11 +152,18 @@ export interface CredentialsGroup {
   /** Credentials group URN */
   urn: string;
 }
+const CredentialsGroup = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<CredentialsGroup>;
+
 export interface CreateCredentialsGroupResponse {
   credentialsGroup: CredentialsGroup;
   /** Project ID */
   project: string;
 }
+const CreateCredentialsGroupResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<CreateCredentialsGroupResponse>;
+
 export interface DeleteAccessKeyRequest {
   /** STACKIT project ID */
   projectId: string;
@@ -139,12 +173,22 @@ export interface DeleteAccessKeyRequest {
   keyId: string;
   credentials_group?: string;
 }
+const DeleteAccessKeyRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<DeleteAccessKeyRequest>;
+
 export interface DeleteAccessKeyResponse {
   /** Identifies the pair of access key and secret access key for deletion */
   keyId: string;
   /** Project ID */
   project: string;
 }
+const DeleteAccessKeyResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<DeleteAccessKeyResponse>;
+
 export interface DeleteBucketRequest {
   /** STACKIT project ID */
   projectId: string;
@@ -153,18 +197,27 @@ export interface DeleteBucketRequest {
   /** The name has to be dns-conform. */
   bucketName: string;
 }
+const DeleteBucketRequest = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<DeleteBucketRequest>;
+
 export interface DeleteBucketResponse {
   /** Name of the bucket */
   bucket: string;
   /** Project ID */
   project: string;
 }
+const DeleteBucketResponse = CreateBucketResponse as any as S.Schema<DeleteBucketResponse>;
+
 export interface DeleteComplianceLockRequest {
   /** STACKIT project ID */
   projectId: string;
   /** STACKIT Region */
   region: string;
 }
+const DeleteComplianceLockRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<DeleteComplianceLockRequest>;
+
 export interface DeleteCredentialsGroupRequest {
   /** STACKIT project ID */
   projectId: string;
@@ -173,12 +226,22 @@ export interface DeleteCredentialsGroupRequest {
   /** Id of the credentials group */
   groupId: string;
 }
+const DeleteCredentialsGroupRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<DeleteCredentialsGroupRequest>;
+
 export interface DeleteCredentialsGroupResponse {
   /** The ID of the credentials group */
   credentialsGroupId: string;
   /** Project ID */
   project: string;
 }
+const DeleteCredentialsGroupResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<DeleteCredentialsGroupResponse>;
+
 export interface DeleteDefaultRetentionRequest {
   /** STACKIT project ID */
   projectId: string;
@@ -187,22 +250,44 @@ export interface DeleteDefaultRetentionRequest {
   /** The name has to be dns-conform. */
   bucketName: string;
 }
+const DeleteDefaultRetentionRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<DeleteDefaultRetentionRequest>;
+
 export interface DeleteDefaultRetentionResponse {
   /** Name of the bucket */
   bucket: string;
   /** Project ID */
   project: string;
 }
+const DeleteDefaultRetentionResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<DeleteDefaultRetentionResponse>;
+
 export interface DisableServiceRequest {
   /** STACKIT project ID */
   projectId: string;
   /** STACKIT Region */
   region: string;
 }
+const DisableServiceRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<DisableServiceRequest>;
+
 /** Project labels */
 export type ProjectStatusLabelsMap = { [key: string]: string | undefined };
+const ProjectStatusLabelsMap = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<ProjectStatusLabelsMap>;
+
 /** The scope of a STACKIT project can be public (default) or can have client specific special requirements. */
 export type ProjectScope = "PUBLIC" | "SCHWARZ";
+const ProjectScope = S.String;
+
 export interface ProjectStatus {
   /** Project labels */
   labels?: ProjectStatusLabelsMap;
@@ -211,12 +296,16 @@ export interface ProjectStatus {
   /** Project Scope */
   scope: ProjectScope;
 }
+const ProjectStatus = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<ProjectStatus>;
+
 export interface EnableServiceRequest {
   /** STACKIT project ID */
   projectId: string;
   /** STACKIT Region */
   region: string;
 }
+const EnableServiceRequest = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<EnableServiceRequest>;
+
 export interface GetBucketRequest {
   /** STACKIT project ID */
   projectId: string;
@@ -225,6 +314,8 @@ export interface GetBucketRequest {
   /** The name has to be dns-conform. */
   bucketName: string;
 }
+const GetBucketRequest = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<GetBucketRequest>;
+
 export interface Bucket {
   name: string;
   /** Whether S3 Object Lock is enabled for this bucket */
@@ -235,17 +326,26 @@ export interface Bucket {
   /** URL in virtual hosted style */
   urlVirtualHostedStyle: string;
 }
+const Bucket = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<Bucket>;
+
 export interface GetBucketResponse {
   bucket: Bucket;
   /** Project ID */
   project: string;
 }
+const GetBucketResponse = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<GetBucketResponse>;
+
 export interface GetComplianceLockRequest {
   /** STACKIT project ID */
   projectId: string;
   /** STACKIT Region */
   region: string;
 }
+const GetComplianceLockRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<GetComplianceLockRequest>;
+
 export interface GetCredentialsGroupRequest {
   /** STACKIT project ID */
   projectId: string;
@@ -254,6 +354,11 @@ export interface GetCredentialsGroupRequest {
   /** Id of the credentials group */
   groupId: string;
 }
+const GetCredentialsGroupRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<GetCredentialsGroupRequest>;
+
 export interface CredentialsGroupExtended {
   /** The ID of the credentials group */
   credentialsGroupId: string;
@@ -264,11 +369,21 @@ export interface CredentialsGroupExtended {
   /** StorageGRID user URN */
   userUrn: string;
 }
+const CredentialsGroupExtended = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<CredentialsGroupExtended>;
+
 export interface GetCredentialsGroupResponse {
   credentialsGroup: CredentialsGroupExtended;
   /** Project ID */
   project: string;
 }
+const GetCredentialsGroupResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<GetCredentialsGroupResponse>;
+
 export interface GetDefaultRetentionRequest {
   /** STACKIT project ID */
   projectId: string;
@@ -277,8 +392,15 @@ export interface GetDefaultRetentionRequest {
   /** The name has to be dns-conform. */
   bucketName: string;
 }
+const GetDefaultRetentionRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<GetDefaultRetentionRequest>;
+
 /** The retention mode for default retention on a bucket. */
 export type RetentionMode = "COMPLIANCE" | "GOVERNANCE";
+const RetentionMode = S.String;
+
 export interface DefaultRetentionResponse {
   /** Name of the bucket */
   bucket: string;
@@ -288,12 +410,22 @@ export interface DefaultRetentionResponse {
   /** Project ID */
   project: string;
 }
+const DefaultRetentionResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<DefaultRetentionResponse>;
+
 export interface GetServiceStatusRequest {
   /** STACKIT project ID */
   projectId: string;
   /** STACKIT Region */
   region: string;
 }
+const GetServiceStatusRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<GetServiceStatusRequest>;
+
 export interface ListAccessKeysRequest {
   /** STACKIT project ID */
   projectId: string;
@@ -301,42 +433,83 @@ export interface ListAccessKeysRequest {
   region: string;
   credentials_group?: string;
 }
+const ListAccessKeysRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<ListAccessKeysRequest>;
+
 export interface AccessKey {
   displayName: string;
   expires: string | null;
   /** Identifies the pair of access key and secret access key for deletion */
   keyId: string;
 }
+const AccessKey = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<AccessKey>;
+
 export type ListAccessKeysResponseAccessKeysList = Array<AccessKey>;
+const ListAccessKeysResponseAccessKeysList = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<ListAccessKeysResponseAccessKeysList>;
+
 export interface ListAccessKeysResponse {
   accessKeys: ListAccessKeysResponseAccessKeysList;
   /** Project ID */
   project: string;
 }
+const ListAccessKeysResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<ListAccessKeysResponse>;
+
 export interface ListBucketsRequest {
   /** STACKIT project ID */
   projectId: string;
   /** STACKIT Region */
   region: string;
 }
+const ListBucketsRequest = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<ListBucketsRequest>;
+
 export type ListBucketsResponseBucketsList = Array<Bucket>;
+const ListBucketsResponseBucketsList = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<ListBucketsResponseBucketsList>;
+
 export interface ListBucketsResponse {
   buckets: ListBucketsResponseBucketsList;
   /** Project ID */
   project: string;
 }
+const ListBucketsResponse = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<ListBucketsResponse>;
+
 export interface ListCredentialsGroupsRequest {
   /** STACKIT project ID */
   projectId: string;
   /** STACKIT Region */
   region: string;
 }
+const ListCredentialsGroupsRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<ListCredentialsGroupsRequest>;
+
 export type ListCredentialsGroupsResponseCredentialsGroupsList = Array<CredentialsGroup>;
+const ListCredentialsGroupsResponseCredentialsGroupsList = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<ListCredentialsGroupsResponseCredentialsGroupsList>;
+
 export interface ListCredentialsGroupsResponse {
   credentialsGroups: ListCredentialsGroupsResponseCredentialsGroupsList;
   /** Project ID */
   project: string;
 }
+const ListCredentialsGroupsResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  0,
+) as any as S.Schema<ListCredentialsGroupsResponse>;
+
 export interface SetDefaultRetentionRequest {
   /** STACKIT project ID */
   projectId: string;
@@ -348,8 +521,16 @@ export interface SetDefaultRetentionRequest {
   days: number;
   mode: RetentionMode | (string & {});
 }
+const SetDefaultRetentionRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  1,
+) as any as S.Schema<SetDefaultRetentionRequest>;
+
 /** Project labels */
 export type UpdateServiceRequestLabelsMap = { [key: string]: string | undefined };
+const UpdateServiceRequestLabelsMap =
+  ProjectStatusLabelsMap as any as S.Schema<UpdateServiceRequestLabelsMap>;
+
 export interface UpdateServiceRequest {
   /** STACKIT project ID */
   projectId: string;
@@ -358,6 +539,8 @@ export interface UpdateServiceRequest {
   /** Project labels */
   labels: UpdateServiceRequestLabelsMap;
 }
+const UpdateServiceRequest = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<UpdateServiceRequest>;
+
 export type CreateAccessKeyError = Forbidden | NotFound | UnprocessableEntity | StackitOpError;
 /** Create Access Key Create an access key for the given project. */
 export const createAccessKey: API.OperationMethod<
@@ -366,8 +549,8 @@ export const createAccessKey: API.OperationMethod<
   CreateAccessKeyError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<CreateAccessKeyRequest>,
-  output: __S(1) as any as S.Schema<CreateAccessKeyResponse>,
+  input: CreateAccessKeyRequest,
+  output: CreateAccessKeyResponse,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -381,8 +564,8 @@ export const createBucket: API.OperationMethod<
   CreateBucketError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2) as any as S.Schema<CreateBucketRequest>,
-  output: __S(3) as any as S.Schema<CreateBucketResponse>,
+  input: CreateBucketRequest,
+  output: CreateBucketResponse,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -396,8 +579,8 @@ export const createComplianceLock: API.OperationMethod<
   CreateComplianceLockError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4) as any as S.Schema<CreateComplianceLockRequest>,
-  output: __S(5) as any as S.Schema<ComplianceLockResponse>,
+  input: CreateComplianceLockRequest,
+  output: ComplianceLockResponse,
   errors: [NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -416,8 +599,8 @@ export const createCredentialsGroup: API.OperationMethod<
   CreateCredentialsGroupError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6) as any as S.Schema<CreateCredentialsGroupRequest>,
-  output: __S(8) as any as S.Schema<CreateCredentialsGroupResponse>,
+  input: CreateCredentialsGroupRequest,
+  output: CreateCredentialsGroupResponse,
   errors: [Forbidden, NotFound, Conflict, UnprocessableEntity, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -431,8 +614,8 @@ export const deleteAccessKey: API.OperationMethod<
   DeleteAccessKeyError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9) as any as S.Schema<DeleteAccessKeyRequest>,
-  output: __S(10) as any as S.Schema<DeleteAccessKeyResponse>,
+  input: DeleteAccessKeyRequest,
+  output: DeleteAccessKeyResponse,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -446,8 +629,8 @@ export const deleteBucket: API.OperationMethod<
   DeleteBucketError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11) as any as S.Schema<DeleteBucketRequest>,
-  output: __S(3) as any as S.Schema<DeleteBucketResponse>,
+  input: DeleteBucketRequest,
+  output: DeleteBucketResponse,
   errors: [NotFound, UnprocessableEntity, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -461,8 +644,8 @@ export const deleteComplianceLock: API.OperationMethod<
   DeleteComplianceLockError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12) as any as S.Schema<DeleteComplianceLockRequest>,
-  output: __S(5) as any as S.Schema<ComplianceLockResponse>,
+  input: DeleteComplianceLockRequest,
+  output: ComplianceLockResponse,
   errors: [NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -476,8 +659,8 @@ export const deleteCredentialsGroup: API.OperationMethod<
   DeleteCredentialsGroupError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13) as any as S.Schema<DeleteCredentialsGroupRequest>,
-  output: __S(14) as any as S.Schema<DeleteCredentialsGroupResponse>,
+  input: DeleteCredentialsGroupRequest,
+  output: DeleteCredentialsGroupResponse,
   errors: [NotFound, UnprocessableEntity, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -491,8 +674,8 @@ export const deleteDefaultRetention: API.OperationMethod<
   DeleteDefaultRetentionError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15) as any as S.Schema<DeleteDefaultRetentionRequest>,
-  output: __S(16) as any as S.Schema<DeleteDefaultRetentionResponse>,
+  input: DeleteDefaultRetentionRequest,
+  output: DeleteDefaultRetentionResponse,
   errors: [NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -512,8 +695,8 @@ export const disableService: API.OperationMethod<
   DisableServiceError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17) as any as S.Schema<DisableServiceRequest>,
-  output: __S(19) as any as S.Schema<ProjectStatus>,
+  input: DisableServiceRequest,
+  output: ProjectStatus,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnprocessableEntity, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -527,8 +710,8 @@ export const enableService: API.OperationMethod<
   EnableServiceError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20) as any as S.Schema<EnableServiceRequest>,
-  output: __S(19) as any as S.Schema<ProjectStatus>,
+  input: EnableServiceRequest,
+  output: ProjectStatus,
   errors: [Forbidden, Conflict, UnprocessableEntity, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -542,8 +725,8 @@ export const getBucket: API.OperationMethod<
   GetBucketError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21) as any as S.Schema<GetBucketRequest>,
-  output: __S(23) as any as S.Schema<GetBucketResponse>,
+  input: GetBucketRequest,
+  output: GetBucketResponse,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -557,8 +740,8 @@ export const getComplianceLock: API.OperationMethod<
   GetComplianceLockError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24) as any as S.Schema<GetComplianceLockRequest>,
-  output: __S(5) as any as S.Schema<ComplianceLockResponse>,
+  input: GetComplianceLockRequest,
+  output: ComplianceLockResponse,
   errors: [NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -572,8 +755,8 @@ export const getCredentialsGroup: API.OperationMethod<
   GetCredentialsGroupError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25) as any as S.Schema<GetCredentialsGroupRequest>,
-  output: __S(27) as any as S.Schema<GetCredentialsGroupResponse>,
+  input: GetCredentialsGroupRequest,
+  output: GetCredentialsGroupResponse,
   errors: [NotFound, UnprocessableEntity, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -587,8 +770,8 @@ export const getDefaultRetention: API.OperationMethod<
   GetDefaultRetentionError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28) as any as S.Schema<GetDefaultRetentionRequest>,
-  output: __S(29) as any as S.Schema<DefaultRetentionResponse>,
+  input: GetDefaultRetentionRequest,
+  output: DefaultRetentionResponse,
   errors: [NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -602,8 +785,8 @@ export const getServiceStatus: API.OperationMethod<
   GetServiceStatusError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30) as any as S.Schema<GetServiceStatusRequest>,
-  output: __S(19) as any as S.Schema<ProjectStatus>,
+  input: GetServiceStatusRequest,
+  output: ProjectStatus,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -617,8 +800,8 @@ export const listAccessKeys: API.OperationMethod<
   ListAccessKeysError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31) as any as S.Schema<ListAccessKeysRequest>,
-  output: __S(34) as any as S.Schema<ListAccessKeysResponse>,
+  input: ListAccessKeysRequest,
+  output: ListAccessKeysResponse,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -632,8 +815,8 @@ export const listBuckets: API.OperationMethod<
   ListBucketsError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35) as any as S.Schema<ListBucketsRequest>,
-  output: __S(37) as any as S.Schema<ListBucketsResponse>,
+  input: ListBucketsRequest,
+  output: ListBucketsResponse,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -647,8 +830,8 @@ export const listCredentialsGroups: API.OperationMethod<
   ListCredentialsGroupsError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38) as any as S.Schema<ListCredentialsGroupsRequest>,
-  output: __S(40) as any as S.Schema<ListCredentialsGroupsResponse>,
+  input: ListCredentialsGroupsRequest,
+  output: ListCredentialsGroupsResponse,
   errors: [NotFound, UnprocessableEntity, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -662,8 +845,8 @@ export const setDefaultRetention: API.OperationMethod<
   SetDefaultRetentionError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41) as any as S.Schema<SetDefaultRetentionRequest>,
-  output: __S(29) as any as S.Schema<DefaultRetentionResponse>,
+  input: SetDefaultRetentionRequest,
+  output: DefaultRetentionResponse,
   errors: [BadRequest, NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -677,8 +860,8 @@ export const updateService: API.OperationMethod<
   UpdateServiceError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42) as any as S.Schema<UpdateServiceRequest>,
-  output: __S(19) as any as S.Schema<ProjectStatus>,
+  input: UpdateServiceRequest,
+  output: ProjectStatus,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -792,7 +975,7 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          credentialsGroup: __S(7),
+          credentialsGroup: CredentialsGroup,
           project: S.String,
         }),
       ).annotate({
@@ -927,9 +1110,9 @@ function __c2(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          labels: S.optional(__S(18)),
+          labels: S.optional(ProjectStatusLabelsMap),
           project: S.String,
-          scope: S.String,
+          scope: ProjectScope,
         }),
       ).annotate({ identifier: "ProjectStatus" });
     case 4:
@@ -974,7 +1157,7 @@ function __c2(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          bucket: __S(22),
+          bucket: Bucket,
           project: S.String,
         }),
       ).annotate({ identifier: "GetBucketResponse" });
@@ -1025,7 +1208,7 @@ function __c3(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          credentialsGroup: __S(26),
+          credentialsGroup: CredentialsGroupExtended,
           project: S.String,
         }),
       ).annotate({
@@ -1053,7 +1236,7 @@ function __c3(j: number): any {
         S.Struct({
           bucket: S.String,
           days: S.Number,
-          mode: S.String,
+          mode: RetentionMode,
           project: S.String,
         }),
       ).annotate({ identifier: "DefaultRetentionResponse" });
@@ -1099,11 +1282,11 @@ function __c4(j: number): any {
         }),
       ).annotate({ identifier: "AccessKey" });
     case 1:
-      return S.Array(__S(32));
+      return S.Array(AccessKey);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          accessKeys: __S(33),
+          accessKeys: ListAccessKeysResponseAccessKeysList,
           project: S.String,
         }),
       ).annotate({ identifier: "ListAccessKeysResponse" });
@@ -1122,11 +1305,11 @@ function __c4(j: number): any {
         ),
       ).annotate({ identifier: "ListBucketsRequest" });
     case 4:
-      return S.Array(__S(22));
+      return S.Array(Bucket);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          buckets: __S(36),
+          buckets: ListBucketsResponseBucketsList,
           project: S.String,
         }),
       ).annotate({ identifier: "ListBucketsResponse" });
@@ -1147,7 +1330,7 @@ function __c4(j: number): any {
         identifier: "ListCredentialsGroupsRequest",
       });
     case 7:
-      return S.Array(__S(7));
+      return S.Array(CredentialsGroup);
   }
 }
 function __c5(j: number): any {
@@ -1155,7 +1338,7 @@ function __c5(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          credentialsGroups: __S(39),
+          credentialsGroups: ListCredentialsGroupsResponseCredentialsGroupsList,
           project: S.String,
         }),
       ).annotate({
@@ -1168,7 +1351,7 @@ function __c5(j: number): any {
           region: S.String.pipe(T.Label()),
           bucketName: S.String.pipe(T.Label()),
           days: S.Number,
-          mode: S.String,
+          mode: RetentionMode,
         }).pipe(
           T.Http({
             method: "PUT",
@@ -1185,7 +1368,7 @@ function __c5(j: number): any {
         S.Struct({
           projectId: S.String.pipe(T.Label()),
           region: S.String.pipe(T.Label()),
-          labels: __S(18),
+          labels: UpdateServiceRequestLabelsMap,
         }).pipe(
           T.Http({
             method: "PUT",
@@ -1195,26 +1378,5 @@ function __c5(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateServiceRequest" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
   }
 }

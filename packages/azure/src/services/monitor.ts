@@ -6,8 +6,6 @@ import { UnknownAzureError } from "../errors.ts";
 import { AzureProtocol, type AzureOpError, type AzureOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { AzureOpError, AzureOpContext };
 
@@ -19,7 +17,17 @@ export interface DeleteScheduledQueryRuleRequest {
   /** The name of the rule. */
   ruleName: string;
 }
+const DeleteScheduledQueryRuleRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<DeleteScheduledQueryRuleRequest>;
+
 export interface DeleteScheduledQueryRuleResponse {}
+const DeleteScheduledQueryRuleResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<DeleteScheduledQueryRuleResponse>;
+
 export interface FetchDataCollectionRuleConfigurationMetadataRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -32,12 +40,28 @@ export interface FetchDataCollectionRuleConfigurationMetadataRequest {
   /** When true, returns detailed stream metadata in the response. Defaults to false. */
   withStreamMetadata?: boolean;
 }
+const FetchDataCollectionRuleConfigurationMetadataRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<FetchDataCollectionRuleConfigurationMetadataRequest>;
+
 /** List of supported destination resource types. */
 export type TelemetryTypeMetadataSupportedDestinationsList = Array<string>;
+const TelemetryTypeMetadataSupportedDestinationsList = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<TelemetryTypeMetadataSupportedDestinationsList>;
+
 /** List of supported source resource types. */
 export type TelemetryTypeMetadataSupportedResourceTypesList = Array<string>;
+const TelemetryTypeMetadataSupportedResourceTypesList =
+  TelemetryTypeMetadataSupportedDestinationsList as any as S.Schema<TelemetryTypeMetadataSupportedResourceTypesList>;
+
 /** Categorization groups for the logs stream. */
 export type LogsSpecificationGroupsList = Array<string>;
+const LogsSpecificationGroupsList =
+  TelemetryTypeMetadataSupportedDestinationsList as any as S.Schema<LogsSpecificationGroupsList>;
+
 /** Specification for a logs stream. */
 export interface LogsSpecification {
   /** The name of the logs stream. */
@@ -47,8 +71,13 @@ export interface LogsSpecification {
   /** Categorization groups for the logs stream. */
   groups?: LogsSpecificationGroupsList;
 }
+const LogsSpecification = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<LogsSpecification>;
+
 /** Categorization groups for the metric. */
 export type MetricsSpecificationGroupsList = Array<string>;
+const MetricsSpecificationGroupsList =
+  TelemetryTypeMetadataSupportedDestinationsList as any as S.Schema<MetricsSpecificationGroupsList>;
+
 /** Specification for a metrics stream. Properties are driven by the service and are manifest driven. */
 export interface MetricsSpecification {
   /** The name of the metric. */
@@ -64,6 +93,8 @@ export interface MetricsSpecification {
   /** Categorization groups for the metric. */
   groups?: MetricsSpecificationGroupsList;
 }
+const MetricsSpecification = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<MetricsSpecification>;
+
 /** Detailed metadata for a stream (logs or metrics specification). */
 export interface StreamDetailMetadata {
   /** Specification for logs stream. */
@@ -71,6 +102,8 @@ export interface StreamDetailMetadata {
   /** Specification for metrics stream. */
   metricsSpecification?: MetricsSpecification;
 }
+const StreamDetailMetadata = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<StreamDetailMetadata>;
+
 /** Metadata for a specific data stream. */
 export interface StreamMetadata {
   /** The unique identifier for the stream. */
@@ -78,8 +111,15 @@ export interface StreamMetadata {
   /** Additional metadata about the stream. */
   metadata?: StreamDetailMetadata;
 }
+const StreamMetadata = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<StreamMetadata>;
+
 /** Detailed stream information. Only returned when withStreamMetadata is true in the request. */
 export type TelemetryTypeMetadataSupportedStreamsList = Array<StreamMetadata>;
+const TelemetryTypeMetadataSupportedStreamsList = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<TelemetryTypeMetadataSupportedStreamsList>;
+
 /** Metadata for a specific telemetry type (logs or metrics). */
 export interface TelemetryTypeMetadata {
   /** List of supported destination resource types. */
@@ -89,6 +129,11 @@ export interface TelemetryTypeMetadata {
   /** Detailed stream information. Only returned when withStreamMetadata is true in the request. */
   supportedStreams?: TelemetryTypeMetadataSupportedStreamsList;
 }
+const TelemetryTypeMetadata = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<TelemetryTypeMetadata>;
+
 /** Metadata for platform telemetry (logs and metrics). */
 export interface PlatformTelemetryMetadata {
   /** Configuration metadata for platform logs. */
@@ -96,16 +141,31 @@ export interface PlatformTelemetryMetadata {
   /** Configuration metadata for platform metrics. */
   platformMetrics?: TelemetryTypeMetadata;
 }
+const PlatformTelemetryMetadata = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<PlatformTelemetryMetadata>;
+
 /** Configuration metadata for data collection. */
 export interface ConfigurationMetadata {
   /** Platform telemetry configuration metadata. */
   platformTelemetry?: PlatformTelemetryMetadata;
 }
+const ConfigurationMetadata = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<ConfigurationMetadata>;
+
 /** Response containing configuration metadata for data collection rules. */
 export interface DataCollectionRuleConfigurationMetadataResponse {
   /** The configuration metadata for platform telemetry. */
   configurationMetadata?: ConfigurationMetadata;
 }
+const DataCollectionRuleConfigurationMetadataResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<DataCollectionRuleConfigurationMetadataResponse>;
+
 export interface GetScheduledQueryRuleRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -114,8 +174,15 @@ export interface GetScheduledQueryRuleRequest {
   /** The name of the rule. */
   ruleName: string;
 }
+const GetScheduledQueryRuleRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<GetScheduledQueryRuleRequest>;
+
 /** Type of managed service identity. */
 export type IdentityType = "SystemAssigned" | "UserAssigned" | "None";
+const IdentityType = S.String;
+
 /** User assigned identity properties. */
 export interface UserIdentityProperties {
   /** The principal id of user assigned identity. */
@@ -123,10 +190,20 @@ export interface UserIdentityProperties {
   /** The client id of user assigned identity. */
   clientId?: string;
 }
+const UserIdentityProperties = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<UserIdentityProperties>;
+
 /** The list of user identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'. */
 export type IdentityUserAssignedIdentitiesMap = {
   [key: string]: UserIdentityProperties | undefined;
 };
+const IdentityUserAssignedIdentitiesMap = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<IdentityUserAssignedIdentitiesMap>;
+
 /** Identity for the resource. */
 export interface Identity {
   /** The principal ID of resource identity. */
@@ -138,22 +215,35 @@ export interface Identity {
   /** The list of user identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'. */
   userAssignedIdentities?: IdentityUserAssignedIdentitiesMap;
 }
+const Identity = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<Identity>;
+
 /** Resource tags. */
 export type ScheduledQueryRuleResourceTagsMap = { [key: string]: string | undefined };
+const ScheduledQueryRuleResourceTagsMap = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<ScheduledQueryRuleResourceTagsMap>;
+
 /** Indicates the type of scheduled query rule. The default is LogAlert. */
 export type ScheduledQueryRuleResourceKind = "LogAlert" | "SimpleLogAlert" | "LogToMetric";
+const ScheduledQueryRuleResourceKind = S.String;
+
 /** The type of identity that created the resource. */
 export type ScheduledQueryRuleResourceSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
+const ScheduledQueryRuleResourceSystemDataCreatedByType = S.String;
+
 /** The type of identity that last modified the resource. */
 export type ScheduledQueryRuleResourceSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
+const ScheduledQueryRuleResourceSystemDataLastModifiedByType = S.String;
+
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface ScheduledQueryRuleResourceSystemData {
   /** The identity that created the resource. */
@@ -169,20 +259,42 @@ export interface ScheduledQueryRuleResourceSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const ScheduledQueryRuleResourceSystemData = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<ScheduledQueryRuleResourceSystemData>;
+
 /** Severity of the alert. Should be an integer between [0-4]. Value of 0 is severest. Relevant and required only for rules of the kind LogAlert. */
 export type ScheduledQueryRulePropertiesSeverity = 0 | 1 | 2 | 3 | 4;
+const ScheduledQueryRulePropertiesSeverity = S.Number;
+
 /** The list of resource id's that this scheduled query rule is scoped to. */
 export type ScheduledQueryRulePropertiesScopesList = Array<string>;
+const ScheduledQueryRulePropertiesScopesList =
+  TelemetryTypeMetadataSupportedDestinationsList as any as S.Schema<ScheduledQueryRulePropertiesScopesList>;
+
 /** List of resource type of the target resource(s) on which the alert is created/updated. For example if the scope is a resource group and targetResourceTypes is Microsoft.Compute/virtualMachines, then a different alert will be fired for each virtual machine in the resource group which meet the alert criteria. Relevant only for rules of the kind LogAlert */
 export type ScheduledQueryRulePropertiesTargetResourceTypesList = Array<string>;
+const ScheduledQueryRulePropertiesTargetResourceTypesList =
+  TelemetryTypeMetadataSupportedDestinationsList as any as S.Schema<ScheduledQueryRulePropertiesTargetResourceTypesList>;
+
 /** Specifies the type of threshold criteria */
 export type ConditionCriterionType = "StaticThresholdCriterion" | "DynamicThresholdCriterion";
+const ConditionCriterionType = S.String;
+
 /** Aggregation type. Relevant and required only for rules of the kind LogAlert. */
 export type ConditionTimeAggregation = "Count" | "Average" | "Minimum" | "Maximum" | "Total";
+const ConditionTimeAggregation = S.String;
+
 /** Operator for dimension values */
 export type DimensionOperator = "Include" | "Exclude";
+const DimensionOperator = S.String;
+
 /** List of dimension values */
 export type DimensionValuesList = Array<string>;
+const DimensionValuesList =
+  TelemetryTypeMetadataSupportedDestinationsList as any as S.Schema<DimensionValuesList>;
+
 /** Dimension splitting and filtering definition */
 export interface Dimension {
   /** Name of the dimension */
@@ -192,8 +304,15 @@ export interface Dimension {
   /** List of dimension values */
   values: DimensionValuesList;
 }
+const Dimension = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<Dimension>;
+
 /** List of Dimensions conditions. Relevant only for rules of the kind LogAlert and LogToMetric. */
 export type ConditionDimensionsList = Array<Dimension>;
+const ConditionDimensionsList = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<ConditionDimensionsList>;
+
 /** The criteria operator. Relevant and required only for rules of the kind LogAlert. */
 export type ConditionOperator =
   | "Equals"
@@ -202,6 +321,8 @@ export type ConditionOperator =
   | "LessThan"
   | "LessThanOrEqual"
   | "GreaterOrLessThan";
+const ConditionOperator = S.String;
+
 /** The minimum number of violations required within the selected lookback time window required to raise an alert. Relevant only for rules of the kind LogAlert. */
 export interface ConditionFailingPeriods {
   /** The number of aggregated lookback points. The lookback time window is calculated based on the aggregation granularity (windowSize) and the selected number of aggregated points. Default value is 1 */
@@ -209,6 +330,11 @@ export interface ConditionFailingPeriods {
   /** The number of violations to trigger an alert. Should be smaller or equal to numberOfEvaluationPeriods. Default value is 1 */
   minFailingPeriodsToAlert?: number;
 }
+const ConditionFailingPeriods = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<ConditionFailingPeriods>;
+
 /** A condition of the scheduled query rule. */
 export interface Condition {
   /** Specifies the type of threshold criteria */
@@ -238,19 +364,40 @@ export interface Condition {
   /** The minimum results count that should be found for triggering an alert. Relevant only for rules of the kind SimpleLogAlert. */
   minRecurrenceCount?: number;
 }
+const Condition = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<Condition>;
+
 /** A list of conditions to evaluate against the specified scopes */
 export type ScheduledQueryRuleCriteriaAllOfList = Array<Condition>;
+const ScheduledQueryRuleCriteriaAllOfList = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<ScheduledQueryRuleCriteriaAllOfList>;
+
 /** The rule criteria that defines the conditions of the scheduled query rule. */
 export interface ScheduledQueryRuleCriteria {
   /** A list of conditions to evaluate against the specified scopes */
   allOf?: ScheduledQueryRuleCriteriaAllOfList;
 }
+const ScheduledQueryRuleCriteria = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<ScheduledQueryRuleCriteria>;
+
 /** Action Group resource Ids to invoke when the alert fires. */
 export type ActionsActionGroupsList = Array<string>;
+const ActionsActionGroupsList =
+  TelemetryTypeMetadataSupportedDestinationsList as any as S.Schema<ActionsActionGroupsList>;
+
 /** The properties of an alert payload. */
 export type ActionsCustomPropertiesMap = { [key: string]: string | undefined };
+const ActionsCustomPropertiesMap =
+  ScheduledQueryRuleResourceTagsMap as any as S.Schema<ActionsCustomPropertiesMap>;
+
 /** The properties of an action properties. */
 export type ActionsActionPropertiesMap = { [key: string]: string | undefined };
+const ActionsActionPropertiesMap =
+  ScheduledQueryRuleResourceTagsMap as any as S.Schema<ActionsActionPropertiesMap>;
+
 /** Actions to invoke when the alert fires. */
 export interface Actions {
   /** Action Group resource Ids to invoke when the alert fires. */
@@ -260,6 +407,8 @@ export interface Actions {
   /** The properties of an action properties. */
   actionProperties?: ActionsActionPropertiesMap;
 }
+const Actions = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<Actions>;
+
 /** TBD. Relevant only for rules of the kind LogAlert. */
 export interface RuleResolveConfiguration {
   /** The flag that indicates whether or not to auto resolve a fired alert. */
@@ -267,6 +416,11 @@ export interface RuleResolveConfiguration {
   /** The duration a rule must evaluate as healthy before the fired alert is automatically resolved represented in ISO 8601 duration format. */
   timeToResolve?: string;
 }
+const RuleResolveConfiguration = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<RuleResolveConfiguration>;
+
 /** scheduled query rule Definition */
 export interface ScheduledQueryRuleProperties {
   /** The api-version used when creating this alert rule */
@@ -308,6 +462,11 @@ export interface ScheduledQueryRuleProperties {
   /** Defines the configuration for resolving fired alerts. Relevant only for rules of kinds LogAlert and SimpleLogAlert. */
   resolveConfiguration?: RuleResolveConfiguration;
 }
+const ScheduledQueryRuleProperties = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<ScheduledQueryRuleProperties>;
+
 /** The scheduled query rule resource. */
 export interface ScheduledQueryRuleResource {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -331,7 +490,17 @@ export interface ScheduledQueryRuleResource {
   /** The rule properties of the resource. */
   properties: ScheduledQueryRuleProperties;
 }
+const ScheduledQueryRuleResource = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<ScheduledQueryRuleResource>;
+
 export interface ListOperationsRequest {}
+const ListOperationsRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<ListOperationsRequest>;
+
 /** Localized display information for this particular operation. */
 export interface OperationDisplay {
   /** The localized friendly form of the resource provider name, e.g. "Microsoft Monitoring Insights" or "Microsoft Compute". */
@@ -343,10 +512,16 @@ export interface OperationDisplay {
   /** The short, localized friendly description of the operation; suitable for tool tips and detailed views. */
   description?: string;
 }
+const OperationDisplay = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<OperationDisplay>;
+
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
 export type OperationOrigin = "user" | "system" | "user,system";
+const OperationOrigin = S.String;
+
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
 export type OperationActionType = "Internal";
+const OperationActionType = S.String;
+
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
 export interface Operation {
   /** The name of the operation, as per Resource-Based Access Control (RBAC). Examples: "Microsoft.Compute/virtualMachines/write", "Microsoft.Compute/virtualMachines/capture/action" */
@@ -360,22 +535,44 @@ export interface Operation {
   /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
   actionType?: OperationActionType;
 }
+const Operation = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<Operation>;
+
 /** List of operations supported by the resource provider */
 export type ListOperationsResponseValueList = Array<Operation>;
+const ListOperationsResponseValueList = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<ListOperationsResponseValueList>;
+
 export interface ListOperationsResponse {
   /** List of operations supported by the resource provider */
   value?: ListOperationsResponseValueList;
   /** URL to get the next set of operation list results (if there are any). */
   nextLink?: string;
 }
+const ListOperationsResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<ListOperationsResponse>;
+
 export interface ListScheduledQueryRuleByResourceGroupRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
+const ListScheduledQueryRuleByResourceGroupRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<ListScheduledQueryRuleByResourceGroupRequest>;
+
 /** The values for the scheduled query rule resources. */
 export type ScheduledQueryRuleResourceCollectionValueList = Array<ScheduledQueryRuleResource>;
+const ScheduledQueryRuleResourceCollectionValueList = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<ScheduledQueryRuleResourceCollectionValueList>;
+
 /** Represents a collection of scheduled query rule resources. */
 export interface ScheduledQueryRuleResourceCollection {
   /** The values for the scheduled query rule resources. */
@@ -383,18 +580,40 @@ export interface ScheduledQueryRuleResourceCollection {
   /** Provides the link to retrieve the next set of elements. */
   nextLink?: string;
 }
+const ScheduledQueryRuleResourceCollection = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<ScheduledQueryRuleResourceCollection>;
+
 export interface ListScheduledQueryRuleBySubscriptionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
 }
+const ListScheduledQueryRuleBySubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<ListScheduledQueryRuleBySubscriptionRequest>;
+
 /** Type of managed service identity. */
 export type IdentityInputType = "SystemAssigned" | "UserAssigned" | "None";
+const IdentityInputType = S.String;
+
 /** User assigned identity properties. */
 export interface UserIdentityPropertiesInput {}
+const UserIdentityPropertiesInput = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<UserIdentityPropertiesInput>;
+
 /** The list of user identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'. */
 export type IdentityInputUserAssignedIdentitiesMap = {
   [key: string]: UserIdentityPropertiesInput | undefined;
 };
+const IdentityInputUserAssignedIdentitiesMap = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<IdentityInputUserAssignedIdentitiesMap>;
+
 /** Identity for the resource. */
 export interface IdentityInput {
   /** Type of managed service identity. */
@@ -402,19 +621,34 @@ export interface IdentityInput {
   /** The list of user identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'. */
   userAssignedIdentities?: IdentityInputUserAssignedIdentitiesMap;
 }
+const IdentityInput = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<IdentityInput>;
+
 /** Resource tags. */
 export type ScheduledQueryRulesCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
+const ScheduledQueryRulesCreateOrUpdateRequestTagsMap =
+  ScheduledQueryRuleResourceTagsMap as any as S.Schema<ScheduledQueryRulesCreateOrUpdateRequestTagsMap>;
+
 /** Indicates the type of scheduled query rule. The default is LogAlert. */
 export type ScheduledQueryRulesCreateOrUpdateRequestKind =
   | "LogAlert"
   | "SimpleLogAlert"
   | "LogToMetric";
+const ScheduledQueryRulesCreateOrUpdateRequestKind = S.String;
+
 /** Severity of the alert. Should be an integer between [0-4]. Value of 0 is severest. Relevant and required only for rules of the kind LogAlert. */
 export type ScheduledQueryRulePropertiesInputSeverity = 0 | 1 | 2 | 3 | 4;
+const ScheduledQueryRulePropertiesInputSeverity = S.Number;
+
 /** The list of resource id's that this scheduled query rule is scoped to. */
 export type ScheduledQueryRulePropertiesInputScopesList = Array<string>;
+const ScheduledQueryRulePropertiesInputScopesList =
+  TelemetryTypeMetadataSupportedDestinationsList as any as S.Schema<ScheduledQueryRulePropertiesInputScopesList>;
+
 /** List of resource type of the target resource(s) on which the alert is created/updated. For example if the scope is a resource group and targetResourceTypes is Microsoft.Compute/virtualMachines, then a different alert will be fired for each virtual machine in the resource group which meet the alert criteria. Relevant only for rules of the kind LogAlert */
 export type ScheduledQueryRulePropertiesInputTargetResourceTypesList = Array<string>;
+const ScheduledQueryRulePropertiesInputTargetResourceTypesList =
+  TelemetryTypeMetadataSupportedDestinationsList as any as S.Schema<ScheduledQueryRulePropertiesInputTargetResourceTypesList>;
+
 /** scheduled query rule Definition */
 export interface ScheduledQueryRulePropertiesInput {
   /** The description of the scheduled query rule. */
@@ -450,6 +684,11 @@ export interface ScheduledQueryRulePropertiesInput {
   /** Defines the configuration for resolving fired alerts. Relevant only for rules of kinds LogAlert and SimpleLogAlert. */
   resolveConfiguration?: RuleResolveConfiguration;
 }
+const ScheduledQueryRulePropertiesInput = /*@__PURE__*/ __L.at(
+  __c5,
+  1,
+) as any as S.Schema<ScheduledQueryRulePropertiesInput>;
+
 export interface ScheduledQueryRulesCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -468,8 +707,16 @@ export interface ScheduledQueryRulesCreateOrUpdateRequest {
   /** The rule properties of the resource. */
   properties: ScheduledQueryRulePropertiesInput;
 }
+const ScheduledQueryRulesCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  2,
+) as any as S.Schema<ScheduledQueryRulesCreateOrUpdateRequest>;
+
 /** Resource tags */
 export type UpdateScheduledQueryRuleRequestTagsMap = { [key: string]: string | undefined };
+const UpdateScheduledQueryRuleRequestTagsMap =
+  ScheduledQueryRuleResourceTagsMap as any as S.Schema<UpdateScheduledQueryRuleRequestTagsMap>;
+
 export interface UpdateScheduledQueryRuleRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -484,6 +731,11 @@ export interface UpdateScheduledQueryRuleRequest {
   /** The scheduled query rule properties of the resource. */
   properties?: ScheduledQueryRulePropertiesInput;
 }
+const UpdateScheduledQueryRuleRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<UpdateScheduledQueryRuleRequest>;
+
 export type DeleteScheduledQueryRuleError = AzureOpError;
 /** Deletes a scheduled query rule. */
 export const DeleteScheduledQueryRule: API.OperationMethod<
@@ -492,8 +744,8 @@ export const DeleteScheduledQueryRule: API.OperationMethod<
   DeleteScheduledQueryRuleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<DeleteScheduledQueryRuleRequest>,
-  output: __S(1) as any as S.Schema<DeleteScheduledQueryRuleResponse>,
+  input: DeleteScheduledQueryRuleRequest,
+  output: DeleteScheduledQueryRuleResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -507,8 +759,8 @@ export const FetchDataCollectionRuleConfigurationMetadata: API.OperationMethod<
   FetchDataCollectionRuleConfigurationMetadataError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2) as any as S.Schema<FetchDataCollectionRuleConfigurationMetadataRequest>,
-  output: __S(12) as any as S.Schema<DataCollectionRuleConfigurationMetadataResponse>,
+  input: FetchDataCollectionRuleConfigurationMetadataRequest,
+  output: DataCollectionRuleConfigurationMetadataResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -522,8 +774,8 @@ export const GetScheduledQueryRule: API.OperationMethod<
   GetScheduledQueryRuleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13) as any as S.Schema<GetScheduledQueryRuleRequest>,
-  output: __S(28) as any as S.Schema<ScheduledQueryRuleResource>,
+  input: GetScheduledQueryRuleRequest,
+  output: ScheduledQueryRuleResource,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -537,8 +789,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29) as any as S.Schema<ListOperationsRequest>,
-  output: __S(33) as any as S.Schema<ListOperationsResponse>,
+  input: ListOperationsRequest,
+  output: ListOperationsResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -552,8 +804,8 @@ export const ListScheduledQueryRuleByResourceGroup: API.OperationMethod<
   ListScheduledQueryRuleByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34) as any as S.Schema<ListScheduledQueryRuleByResourceGroupRequest>,
-  output: __S(36) as any as S.Schema<ScheduledQueryRuleResourceCollection>,
+  input: ListScheduledQueryRuleByResourceGroupRequest,
+  output: ScheduledQueryRuleResourceCollection,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -567,8 +819,8 @@ export const ListScheduledQueryRuleBySubscription: API.OperationMethod<
   ListScheduledQueryRuleBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37) as any as S.Schema<ListScheduledQueryRuleBySubscriptionRequest>,
-  output: __S(36) as any as S.Schema<ScheduledQueryRuleResourceCollection>,
+  input: ListScheduledQueryRuleBySubscriptionRequest,
+  output: ScheduledQueryRuleResourceCollection,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -582,8 +834,8 @@ export const ScheduledQueryRulesCreateOrUpdate: API.OperationMethod<
   ScheduledQueryRulesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42) as any as S.Schema<ScheduledQueryRulesCreateOrUpdateRequest>,
-  output: __S(28) as any as S.Schema<ScheduledQueryRuleResource>,
+  input: ScheduledQueryRulesCreateOrUpdateRequest,
+  output: ScheduledQueryRuleResource,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -597,8 +849,8 @@ export const UpdateScheduledQueryRule: API.OperationMethod<
   UpdateScheduledQueryRuleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43) as any as S.Schema<UpdateScheduledQueryRuleRequest>,
-  output: __S(28) as any as S.Schema<ScheduledQueryRuleResource>,
+  input: UpdateScheduledQueryRuleRequest,
+  output: ScheduledQueryRuleResource,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -654,7 +906,7 @@ function __c0(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           displayName: S.optional(S.String),
-          groups: S.optional(__S(3)),
+          groups: S.optional(LogsSpecificationGroupsList),
         }),
       ).annotate({ identifier: "LogsSpecification" });
     case 5:
@@ -665,21 +917,21 @@ function __c0(j: number): any {
           description: S.optional(S.String),
           unit: S.optional(S.String),
           aggregationType: S.optional(S.String),
-          groups: S.optional(__S(3)),
+          groups: S.optional(MetricsSpecificationGroupsList),
         }),
       ).annotate({ identifier: "MetricsSpecification" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          logsSpecification: S.optional(__S(4)),
-          metricsSpecification: S.optional(__S(5)),
+          logsSpecification: S.optional(LogsSpecification),
+          metricsSpecification: S.optional(MetricsSpecification),
         }),
       ).annotate({ identifier: "StreamDetailMetadata" });
     case 7:
       return S.suspend(() =>
         S.Struct({
           streamId: S.optional(S.String),
-          metadata: S.optional(__S(6)),
+          metadata: S.optional(StreamDetailMetadata),
         }),
       ).annotate({ identifier: "StreamMetadata" });
   }
@@ -687,20 +939,20 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(7));
+      return S.Array(StreamMetadata);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          supportedDestinations: S.optional(__S(3)),
-          supportedResourceTypes: S.optional(__S(3)),
-          supportedStreams: S.optional(__S(8)),
+          supportedDestinations: S.optional(TelemetryTypeMetadataSupportedDestinationsList),
+          supportedResourceTypes: S.optional(TelemetryTypeMetadataSupportedResourceTypesList),
+          supportedStreams: S.optional(TelemetryTypeMetadataSupportedStreamsList),
         }),
       ).annotate({ identifier: "TelemetryTypeMetadata" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          platformLogs: S.optional(__S(9)),
-          platformMetrics: S.optional(__S(9)),
+          platformLogs: S.optional(TelemetryTypeMetadata),
+          platformMetrics: S.optional(TelemetryTypeMetadata),
         }),
       ).annotate({
         identifier: "PlatformTelemetryMetadata",
@@ -708,13 +960,13 @@ function __c1(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          platformTelemetry: S.optional(__S(10)),
+          platformTelemetry: S.optional(PlatformTelemetryMetadata),
         }),
       ).annotate({ identifier: "ConfigurationMetadata" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          configurationMetadata: S.optional(__S(11)),
+          configurationMetadata: S.optional(ConfigurationMetadata),
         }),
       ).annotate({
         identifier: "DataCollectionRuleConfigurationMetadataResponse",
@@ -744,7 +996,7 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "UserIdentityProperties" });
     case 7:
-      return S.Record(S.String, __S(14));
+      return S.Record(S.String, UserIdentityProperties);
   }
 }
 function __c2(j: number): any {
@@ -754,8 +1006,8 @@ function __c2(j: number): any {
         S.Struct({
           principalId: S.optional(S.String),
           tenantId: S.optional(S.String),
-          type: S.String,
-          userAssignedIdentities: S.optional(__S(15)),
+          type: IdentityType,
+          userAssignedIdentities: S.optional(IdentityUserAssignedIdentitiesMap),
         }),
       ).annotate({ identifier: "Identity" });
     case 1:
@@ -764,10 +1016,10 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
-          createdByType: S.optional(S.String),
+          createdByType: S.optional(ScheduledQueryRuleResourceSystemDataCreatedByType),
           createdAt: S.optional(S.String),
           lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(S.String),
+          lastModifiedByType: S.optional(ScheduledQueryRuleResourceSystemDataLastModifiedByType),
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({
@@ -777,12 +1029,12 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          operator: S.String,
-          values: __S(3),
+          operator: DimensionOperator,
+          values: DimensionValuesList,
         }),
       ).annotate({ identifier: "Dimension" });
     case 4:
-      return S.Array(__S(19));
+      return S.Array(Dimension);
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -793,23 +1045,23 @@ function __c2(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          criterionType: S.optional(S.String),
+          criterionType: S.optional(ConditionCriterionType),
           query: S.optional(S.String),
-          timeAggregation: S.optional(S.String),
+          timeAggregation: S.optional(ConditionTimeAggregation),
           metricMeasureColumn: S.optional(S.String),
           resourceIdColumn: S.optional(S.String),
-          dimensions: S.optional(__S(20)),
-          operator: S.optional(S.String),
+          dimensions: S.optional(ConditionDimensionsList),
+          operator: S.optional(ConditionOperator),
           threshold: S.optional(S.Number),
           alertSensitivity: S.optional(S.String),
           ignoreDataBefore: S.optional(S.String),
-          failingPeriods: S.optional(__S(21)),
+          failingPeriods: S.optional(ConditionFailingPeriods),
           metricName: S.optional(S.String),
           minRecurrenceCount: S.optional(S.Number),
         }),
       ).annotate({ identifier: "Condition" });
     case 7:
-      return S.Array(__S(22));
+      return S.Array(Condition);
   }
 }
 function __c3(j: number): any {
@@ -817,7 +1069,7 @@ function __c3(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          allOf: S.optional(__S(23)),
+          allOf: S.optional(ScheduledQueryRuleCriteriaAllOfList),
         }),
       ).annotate({
         identifier: "ScheduledQueryRuleCriteria",
@@ -825,9 +1077,9 @@ function __c3(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          actionGroups: S.optional(__S(3)),
-          customProperties: S.optional(__S(17)),
-          actionProperties: S.optional(__S(17)),
+          actionGroups: S.optional(ActionsActionGroupsList),
+          customProperties: S.optional(ActionsCustomPropertiesMap),
+          actionProperties: S.optional(ActionsActionPropertiesMap),
         }),
       ).annotate({ identifier: "Actions" });
     case 2:
@@ -844,21 +1096,21 @@ function __c3(j: number): any {
           isLegacyLogAnalyticsRule: S.optional(S.Boolean),
           description: S.optional(S.String),
           displayName: S.optional(S.String),
-          severity: S.optional(S.Number),
+          severity: S.optional(ScheduledQueryRulePropertiesSeverity),
           enabled: S.optional(S.Boolean),
-          scopes: S.optional(__S(3)),
+          scopes: S.optional(ScheduledQueryRulePropertiesScopesList),
           evaluationFrequency: S.optional(S.String),
           windowSize: S.optional(S.String),
           overrideQueryTimeRange: S.optional(S.String),
-          targetResourceTypes: S.optional(__S(3)),
-          criteria: S.optional(__S(24)),
+          targetResourceTypes: S.optional(ScheduledQueryRulePropertiesTargetResourceTypesList),
+          criteria: S.optional(ScheduledQueryRuleCriteria),
           muteActionsDuration: S.optional(S.String),
-          actions: S.optional(__S(25)),
+          actions: S.optional(Actions),
           isWorkspaceAlertsStorageConfigured: S.optional(S.Boolean),
           checkWorkspaceAlertsStorageConfigured: S.optional(S.Boolean),
           skipQueryValidation: S.optional(S.Boolean),
           autoMitigate: S.optional(S.Boolean),
-          resolveConfiguration: S.optional(__S(26)),
+          resolveConfiguration: S.optional(RuleResolveConfiguration),
         }),
       ).annotate({
         identifier: "ScheduledQueryRuleProperties",
@@ -869,13 +1121,13 @@ function __c3(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          identity: S.optional(__S(16)),
-          tags: S.optional(__S(17)),
+          identity: S.optional(Identity),
+          tags: S.optional(ScheduledQueryRuleResourceTagsMap),
           location: S.String,
-          kind: S.optional(S.String),
+          kind: S.optional(ScheduledQueryRuleResourceKind),
           etag: S.optional(S.String),
-          systemData: S.optional(__S(18)),
-          properties: __S(27),
+          systemData: S.optional(ScheduledQueryRuleResourceSystemData),
+          properties: ScheduledQueryRuleProperties,
         }),
       ).annotate({
         identifier: "ScheduledQueryRuleResource",
@@ -905,9 +1157,9 @@ function __c3(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           isDataAction: S.optional(S.Boolean),
-          display: S.optional(__S(30)),
-          origin: S.optional(S.String),
-          actionType: S.optional(S.String),
+          display: S.optional(OperationDisplay),
+          origin: S.optional(OperationOrigin),
+          actionType: S.optional(OperationActionType),
         }),
       ).annotate({ identifier: "Operation" });
   }
@@ -915,11 +1167,11 @@ function __c3(j: number): any {
 function __c4(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(31));
+      return S.Array(Operation);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(32)),
+          value: S.optional(ListOperationsResponseValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
@@ -940,11 +1192,11 @@ function __c4(j: number): any {
         identifier: "ListScheduledQueryRuleByResourceGroupRequest",
       });
     case 3:
-      return S.Array(__S(28));
+      return S.Array(ScheduledQueryRuleResource);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(35)),
+          value: S.optional(ScheduledQueryRuleResourceCollectionValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -970,7 +1222,7 @@ function __c4(j: number): any {
         identifier: "UserIdentityPropertiesInput",
       });
     case 7:
-      return S.Record(S.String, __S(38));
+      return S.Record(S.String, UserIdentityPropertiesInput);
   }
 }
 function __c5(j: number): any {
@@ -978,8 +1230,8 @@ function __c5(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          type: S.String,
-          userAssignedIdentities: S.optional(__S(39)),
+          type: IdentityInputType,
+          userAssignedIdentities: S.optional(IdentityInputUserAssignedIdentitiesMap),
         }),
       ).annotate({ identifier: "IdentityInput" });
     case 1:
@@ -987,20 +1239,20 @@ function __c5(j: number): any {
         S.Struct({
           description: S.optional(S.String),
           displayName: S.optional(S.String),
-          severity: S.optional(S.Number),
+          severity: S.optional(ScheduledQueryRulePropertiesInputSeverity),
           enabled: S.optional(S.Boolean),
-          scopes: S.optional(__S(3)),
+          scopes: S.optional(ScheduledQueryRulePropertiesInputScopesList),
           evaluationFrequency: S.optional(S.String),
           windowSize: S.optional(S.String),
           overrideQueryTimeRange: S.optional(S.String),
-          targetResourceTypes: S.optional(__S(3)),
-          criteria: S.optional(__S(24)),
+          targetResourceTypes: S.optional(ScheduledQueryRulePropertiesInputTargetResourceTypesList),
+          criteria: S.optional(ScheduledQueryRuleCriteria),
           muteActionsDuration: S.optional(S.String),
-          actions: S.optional(__S(25)),
+          actions: S.optional(Actions),
           checkWorkspaceAlertsStorageConfigured: S.optional(S.Boolean),
           skipQueryValidation: S.optional(S.Boolean),
           autoMitigate: S.optional(S.Boolean),
-          resolveConfiguration: S.optional(__S(26)),
+          resolveConfiguration: S.optional(RuleResolveConfiguration),
         }),
       ).annotate({
         identifier: "ScheduledQueryRulePropertiesInput",
@@ -1011,11 +1263,11 @@ function __c5(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           ruleName: S.String.pipe(T.Label()),
-          identity: S.optional(__S(40)),
-          tags: S.optional(__S(17)),
+          identity: S.optional(IdentityInput),
+          tags: S.optional(ScheduledQueryRulesCreateOrUpdateRequestTagsMap),
           location: S.String,
-          kind: S.optional(S.String),
-          properties: __S(41),
+          kind: S.optional(ScheduledQueryRulesCreateOrUpdateRequestKind),
+          properties: ScheduledQueryRulePropertiesInput,
         }).pipe(
           T.Http({
             method: "PUT",
@@ -1033,9 +1285,9 @@ function __c5(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           ruleName: S.String.pipe(T.Label()),
-          identity: S.optional(__S(40)),
-          tags: S.optional(__S(17)),
-          properties: S.optional(__S(41)),
+          identity: S.optional(IdentityInput),
+          tags: S.optional(UpdateScheduledQueryRuleRequestTagsMap),
+          properties: S.optional(ScheduledQueryRulePropertiesInput),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1047,26 +1299,5 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "UpdateScheduledQueryRuleRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
   }
 }

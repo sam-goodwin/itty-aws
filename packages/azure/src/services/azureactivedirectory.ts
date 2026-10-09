@@ -6,8 +6,6 @@ import { UnknownAzureError } from "../errors.ts";
 import { AzureProtocol, type AzureOpError, type AzureOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { AzureOpError, AzureOpContext };
 
@@ -16,12 +14,16 @@ export interface PrivateEndpoint {
   /** Full identifier of the private endpoint resource. */
   id?: string;
 }
+const PrivateEndpoint = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<PrivateEndpoint>;
+
 /** The private endpoint connection status. */
 export type PrivateEndpointServiceConnectionStatus =
   | "Approved"
   | "Pending"
   | "Rejected"
   | "Disconnected";
+const PrivateEndpointServiceConnectionStatus = S.String;
+
 /** An object that represents the approval state of the private link connection. */
 export interface PrivateLinkServiceConnectionState {
   /** Indicates whether the connection has been approved, rejected or removed by the given policy owner. */
@@ -31,13 +33,22 @@ export interface PrivateLinkServiceConnectionState {
   /** A message indicating if changes on the service provider require any updates on the consumer. */
   actionsRequired?: string;
 }
+const PrivateLinkServiceConnectionState = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<PrivateLinkServiceConnectionState>;
+
 /** Resource tags */
 export type TagsResourceTagsMap = { [key: string]: string | undefined };
+const TagsResourceTagsMap = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<TagsResourceTagsMap>;
+
 /** A container holding only the Tags for a resource, allowing the user to update the tags on a PrivateLinkConnection instance. */
 export interface TagsResource {
   /** Resource tags */
   tags?: TagsResourceTagsMap;
 }
+const TagsResource = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<TagsResource>;
+
 /** Properties of the private endpoint connection resource. */
 export interface PrivateEndpointConnectionPropertiesInput {
   /** Properties of the private endpoint object. */
@@ -47,6 +58,11 @@ export interface PrivateEndpointConnectionPropertiesInput {
   /** Updated tag information to set into the PrivateLinkConnection instance. */
   privateLinkConnectionTags?: TagsResource;
 }
+const PrivateEndpointConnectionPropertiesInput = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<PrivateEndpointConnectionPropertiesInput>;
+
 export interface CreatePrivateEndpointConnectionRequest {
   /** Azure subscription ID. */
   subscriptionId: string;
@@ -59,8 +75,15 @@ export interface CreatePrivateEndpointConnectionRequest {
   /** Resource properties. */
   properties?: PrivateEndpointConnectionPropertiesInput;
 }
+const CreatePrivateEndpointConnectionRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<CreatePrivateEndpointConnectionRequest>;
+
 /** The current provisioning state. */
 export type PrivateEndpointConnectionProvisioningState = "Succeeded" | "Provisioning" | "Failed";
+const PrivateEndpointConnectionProvisioningState = S.String;
+
 /** Properties of the private endpoint connection resource. */
 export interface PrivateEndpointConnectionProperties {
   /** Properties of the private endpoint object. */
@@ -72,6 +95,11 @@ export interface PrivateEndpointConnectionProperties {
   /** Updated tag information to set into the PrivateLinkConnection instance. */
   privateLinkConnectionTags?: TagsResource;
 }
+const PrivateEndpointConnectionProperties = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<PrivateEndpointConnectionProperties>;
+
 export interface CreatePrivateEndpointConnectionResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -82,10 +110,23 @@ export interface CreatePrivateEndpointConnectionResponse {
   /** Resource properties. */
   properties?: PrivateEndpointConnectionProperties;
 }
+const CreatePrivateEndpointConnectionResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<CreatePrivateEndpointConnectionResponse>;
+
 /** The list of tenantIds. */
 export type CreatePrivateLinkForAzureAdRequestTenantsList = Array<string>;
+const CreatePrivateLinkForAzureAdRequestTenantsList = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<CreatePrivateLinkForAzureAdRequestTenantsList>;
+
 /** Resource tags. */
 export type CreatePrivateLinkForAzureAdRequestTagsMap = { [key: string]: string | undefined };
+const CreatePrivateLinkForAzureAdRequestTagsMap =
+  TagsResourceTagsMap as any as S.Schema<CreatePrivateLinkForAzureAdRequestTagsMap>;
+
 export interface CreatePrivateLinkForAzureAdRequest {
   /** Azure subscription ID. */
   subscriptionId: string;
@@ -108,10 +149,21 @@ export interface CreatePrivateLinkForAzureAdRequest {
   /** Resource tags. */
   tags?: CreatePrivateLinkForAzureAdRequestTagsMap;
 }
+const CreatePrivateLinkForAzureAdRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<CreatePrivateLinkForAzureAdRequest>;
+
 /** The list of tenantIds. */
 export type CreatePrivateLinkForAzureAdResponseTenantsList = Array<string>;
+const CreatePrivateLinkForAzureAdResponseTenantsList =
+  CreatePrivateLinkForAzureAdRequestTenantsList as any as S.Schema<CreatePrivateLinkForAzureAdResponseTenantsList>;
+
 /** Resource tags. */
 export type CreatePrivateLinkForAzureAdResponseTagsMap = { [key: string]: string | undefined };
+const CreatePrivateLinkForAzureAdResponseTagsMap =
+  TagsResourceTagsMap as any as S.Schema<CreatePrivateLinkForAzureAdResponseTagsMap>;
+
 export interface CreatePrivateLinkForAzureAdResponse {
   /** String Id used to locate any resource on Azure. */
   id?: string;
@@ -134,6 +186,11 @@ export interface CreatePrivateLinkForAzureAdResponse {
   /** Resource tags. */
   tags?: CreatePrivateLinkForAzureAdResponseTagsMap;
 }
+const CreatePrivateLinkForAzureAdResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<CreatePrivateLinkForAzureAdResponse>;
+
 export interface DeletePrivateEndpointConnectionRequest {
   /** Azure subscription ID. */
   subscriptionId: string;
@@ -144,7 +201,17 @@ export interface DeletePrivateEndpointConnectionRequest {
   /** The PrivateEndpointConnection name. */
   privateEndpointConnectionName: string;
 }
+const DeletePrivateEndpointConnectionRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<DeletePrivateEndpointConnectionRequest>;
+
 export interface DeletePrivateEndpointConnectionResponse {}
+const DeletePrivateEndpointConnectionResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<DeletePrivateEndpointConnectionResponse>;
+
 export interface DeletePrivateLinkForAzureAdRequest {
   /** Azure subscription ID. */
   subscriptionId: string;
@@ -153,7 +220,15 @@ export interface DeletePrivateLinkForAzureAdRequest {
   /** The name of the private link policy in Azure AD. */
   policyName: string;
 }
+const DeletePrivateLinkForAzureAdRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<DeletePrivateLinkForAzureAdRequest>;
+
 export interface DeletePrivateLinkForAzureAdResponse {}
+const DeletePrivateLinkForAzureAdResponse =
+  DeletePrivateEndpointConnectionResponse as any as S.Schema<DeletePrivateLinkForAzureAdResponse>;
+
 export interface GetPrivateEndpointConnectionRequest {
   /** Azure subscription ID. */
   subscriptionId: string;
@@ -164,6 +239,11 @@ export interface GetPrivateEndpointConnectionRequest {
   /** The PrivateEndpointConnection name. */
   privateEndpointConnectionName: string;
 }
+const GetPrivateEndpointConnectionRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<GetPrivateEndpointConnectionRequest>;
+
 export interface GetPrivateEndpointConnectionResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -174,6 +254,9 @@ export interface GetPrivateEndpointConnectionResponse {
   /** Resource properties. */
   properties?: PrivateEndpointConnectionProperties;
 }
+const GetPrivateEndpointConnectionResponse =
+  CreatePrivateEndpointConnectionResponse as any as S.Schema<GetPrivateEndpointConnectionResponse>;
+
 export interface GetPrivateLinkForAzureAdRequest {
   /** Azure subscription ID. */
   subscriptionId: string;
@@ -182,6 +265,11 @@ export interface GetPrivateLinkForAzureAdRequest {
   /** The name of the private link policy in Azure AD. */
   policyName: string;
 }
+const GetPrivateLinkForAzureAdRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<GetPrivateLinkForAzureAdRequest>;
+
 /** The list of tenantIds. */
 export type GetPrivateLinkForAzureAdResponseTenantsList = Array<string>;
 /** Resource tags. */
@@ -208,6 +296,9 @@ export interface GetPrivateLinkForAzureAdResponse {
   /** Resource tags. */
   tags?: GetPrivateLinkForAzureAdResponseTagsMap;
 }
+const GetPrivateLinkForAzureAdResponse =
+  CreatePrivateLinkForAzureAdResponse as any as S.Schema<GetPrivateLinkForAzureAdResponse>;
+
 export interface GetPrivateLinkResourceRequest {
   /** Azure subscription ID. */
   subscriptionId: string;
@@ -218,8 +309,16 @@ export interface GetPrivateLinkResourceRequest {
   /** The name of the private link resource. */
   groupName: string;
 }
+const GetPrivateLinkResourceRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<GetPrivateLinkResourceRequest>;
+
 /** The private link resource required member names. */
 export type PrivateLinkResourcePropertiesRequiredMembersList = Array<string>;
+const PrivateLinkResourcePropertiesRequiredMembersList =
+  CreatePrivateLinkForAzureAdRequestTenantsList as any as S.Schema<PrivateLinkResourcePropertiesRequiredMembersList>;
+
 /** Properties of a private link resource. */
 export interface PrivateLinkResourceProperties {
   /** The private link resource group id. */
@@ -227,6 +326,11 @@ export interface PrivateLinkResourceProperties {
   /** The private link resource required member names. */
   requiredMembers?: PrivateLinkResourcePropertiesRequiredMembersList;
 }
+const PrivateLinkResourceProperties = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<PrivateLinkResourceProperties>;
+
 export interface GetPrivateLinkResourceResponse {
   /** The unique resource identifier of the Azure AD PrivateLink Policy. */
   id?: string;
@@ -237,6 +341,11 @@ export interface GetPrivateLinkResourceResponse {
   /** Resource properties. */
   properties?: PrivateLinkResourceProperties;
 }
+const GetPrivateLinkResourceResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<GetPrivateLinkResourceResponse>;
+
 export interface ListPrivateEndpointConnectionByPolicyNameRequest {
   /** Azure subscription ID. */
   subscriptionId: string;
@@ -245,6 +354,11 @@ export interface ListPrivateEndpointConnectionByPolicyNameRequest {
   /** The name of the private link policy in Azure AD. */
   policyName: string;
 }
+const ListPrivateEndpointConnectionByPolicyNameRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<ListPrivateEndpointConnectionByPolicyNameRequest>;
+
 /** Private endpoint connection resource. */
 export interface PrivateEndpointConnection {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -256,8 +370,16 @@ export interface PrivateEndpointConnection {
   /** Resource properties. */
   properties?: PrivateEndpointConnectionProperties;
 }
+const PrivateEndpointConnection =
+  CreatePrivateEndpointConnectionResponse as any as S.Schema<PrivateEndpointConnection>;
+
 /** Array of private link resources */
 export type PrivateEndpointConnectionListResultValueList = Array<PrivateEndpointConnection>;
+const PrivateEndpointConnectionListResultValueList = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<PrivateEndpointConnectionListResultValueList>;
+
 /** A list of private link resources */
 export interface PrivateEndpointConnectionListResult {
   /** Array of private link resources */
@@ -265,16 +387,31 @@ export interface PrivateEndpointConnectionListResult {
   /** URL to next page of results */
   nextLink?: string;
 }
+const PrivateEndpointConnectionListResult = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<PrivateEndpointConnectionListResult>;
+
 export interface ListPrivateLinkForAzureAdRequest {
   /** Azure subscription ID. */
   subscriptionId: string;
   /** Name of an Azure resource group. */
   resourceGroupName: string;
 }
+const ListPrivateLinkForAzureAdRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<ListPrivateLinkForAzureAdRequest>;
+
 /** The list of tenantIds. */
 export type PrivateLinkPolicyTenantsList = Array<string>;
+const PrivateLinkPolicyTenantsList =
+  CreatePrivateLinkForAzureAdRequestTenantsList as any as S.Schema<PrivateLinkPolicyTenantsList>;
+
 /** Resource tags. */
 export type PrivateLinkPolicyTagsMap = { [key: string]: string | undefined };
+const PrivateLinkPolicyTagsMap = TagsResourceTagsMap as any as S.Schema<PrivateLinkPolicyTagsMap>;
+
 /** PrivateLink Policy configuration object. */
 export interface PrivateLinkPolicy {
   /** String Id used to locate any resource on Azure. */
@@ -298,8 +435,15 @@ export interface PrivateLinkPolicy {
   /** Resource tags. */
   tags?: PrivateLinkPolicyTagsMap;
 }
+const PrivateLinkPolicy = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<PrivateLinkPolicy>;
+
 /** Array of private link policies */
 export type PrivateLinkPolicyListResultValueList = Array<PrivateLinkPolicy>;
+const PrivateLinkPolicyListResultValueList = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<PrivateLinkPolicyListResultValueList>;
+
 /** A list of private link policies */
 export interface PrivateLinkPolicyListResult {
   /** Array of private link policies */
@@ -307,10 +451,20 @@ export interface PrivateLinkPolicyListResult {
   /** The link used to get the next page of operations. */
   nextLink?: string;
 }
+const PrivateLinkPolicyListResult = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<PrivateLinkPolicyListResult>;
+
 export interface ListPrivateLinkForAzureAdBySubscriptionRequest {
   /** Azure subscription ID. */
   subscriptionId: string;
 }
+const ListPrivateLinkForAzureAdBySubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<ListPrivateLinkForAzureAdBySubscriptionRequest>;
+
 export interface ListPrivateLinkResourceByPrivateLinkPolicyRequest {
   /** Azure subscription ID. */
   subscriptionId: string;
@@ -319,6 +473,11 @@ export interface ListPrivateLinkResourceByPrivateLinkPolicyRequest {
   /** The name of the private link policy in Azure AD. */
   policyName: string;
 }
+const ListPrivateLinkResourceByPrivateLinkPolicyRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<ListPrivateLinkResourceByPrivateLinkPolicyRequest>;
+
 /** A private link resource */
 export interface PrivateLinkResource {
   /** The unique resource identifier of the Azure AD PrivateLink Policy. */
@@ -330,8 +489,15 @@ export interface PrivateLinkResource {
   /** Resource properties. */
   properties?: PrivateLinkResourceProperties;
 }
+const PrivateLinkResource = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<PrivateLinkResource>;
+
 /** Array of private link resources */
 export type PrivateLinkResourceListResultValueList = Array<PrivateLinkResource>;
+const PrivateLinkResourceListResultValueList = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<PrivateLinkResourceListResultValueList>;
+
 /** A list of private link resources */
 export interface PrivateLinkResourceListResult {
   /** Array of private link resources */
@@ -339,8 +505,16 @@ export interface PrivateLinkResourceListResult {
   /** The link used to get the next page of operations. */
   nextLink?: string;
 }
+const PrivateLinkResourceListResult = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<PrivateLinkResourceListResult>;
+
 /** Resource tags to be updated. */
 export type UpdatePrivateLinkForAzureAdRequestTagsMap = { [key: string]: string | undefined };
+const UpdatePrivateLinkForAzureAdRequestTagsMap =
+  TagsResourceTagsMap as any as S.Schema<UpdatePrivateLinkForAzureAdRequestTagsMap>;
+
 export interface UpdatePrivateLinkForAzureAdRequest {
   /** Azure subscription ID. */
   subscriptionId: string;
@@ -351,6 +525,11 @@ export interface UpdatePrivateLinkForAzureAdRequest {
   /** Resource tags to be updated. */
   tags?: UpdatePrivateLinkForAzureAdRequestTagsMap;
 }
+const UpdatePrivateLinkForAzureAdRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<UpdatePrivateLinkForAzureAdRequest>;
+
 /** The list of tenantIds. */
 export type UpdatePrivateLinkForAzureAdResponseTenantsList = Array<string>;
 /** Resource tags. */
@@ -377,6 +556,9 @@ export interface UpdatePrivateLinkForAzureAdResponse {
   /** Resource tags. */
   tags?: UpdatePrivateLinkForAzureAdResponseTagsMap;
 }
+const UpdatePrivateLinkForAzureAdResponse =
+  CreatePrivateLinkForAzureAdResponse as any as S.Schema<UpdatePrivateLinkForAzureAdResponse>;
+
 export type CreatePrivateEndpointConnectionError = AzureOpError;
 /** Creates specified private endpoint connection associated with the given policy. */
 export const CreatePrivateEndpointConnection: API.OperationMethod<
@@ -385,8 +567,8 @@ export const CreatePrivateEndpointConnection: API.OperationMethod<
   CreatePrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5) as any as S.Schema<CreatePrivateEndpointConnectionRequest>,
-  output: __S(7) as any as S.Schema<CreatePrivateEndpointConnectionResponse>,
+  input: CreatePrivateEndpointConnectionRequest,
+  output: CreatePrivateEndpointConnectionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -400,8 +582,8 @@ export const CreatePrivateLinkForAzureAd: API.OperationMethod<
   CreatePrivateLinkForAzureAdError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9) as any as S.Schema<CreatePrivateLinkForAzureAdRequest>,
-  output: __S(10) as any as S.Schema<CreatePrivateLinkForAzureAdResponse>,
+  input: CreatePrivateLinkForAzureAdRequest,
+  output: CreatePrivateLinkForAzureAdResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -415,8 +597,8 @@ export const DeletePrivateEndpointConnection: API.OperationMethod<
   DeletePrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11) as any as S.Schema<DeletePrivateEndpointConnectionRequest>,
-  output: __S(12) as any as S.Schema<DeletePrivateEndpointConnectionResponse>,
+  input: DeletePrivateEndpointConnectionRequest,
+  output: DeletePrivateEndpointConnectionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -430,8 +612,8 @@ export const DeletePrivateLinkForAzureAd: API.OperationMethod<
   DeletePrivateLinkForAzureAdError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13) as any as S.Schema<DeletePrivateLinkForAzureAdRequest>,
-  output: __S(12) as any as S.Schema<DeletePrivateLinkForAzureAdResponse>,
+  input: DeletePrivateLinkForAzureAdRequest,
+  output: DeletePrivateLinkForAzureAdResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -445,8 +627,8 @@ export const GetPrivateEndpointConnection: API.OperationMethod<
   GetPrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14) as any as S.Schema<GetPrivateEndpointConnectionRequest>,
-  output: __S(7) as any as S.Schema<GetPrivateEndpointConnectionResponse>,
+  input: GetPrivateEndpointConnectionRequest,
+  output: GetPrivateEndpointConnectionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -460,8 +642,8 @@ export const GetPrivateLinkForAzureAd: API.OperationMethod<
   GetPrivateLinkForAzureAdError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15) as any as S.Schema<GetPrivateLinkForAzureAdRequest>,
-  output: __S(10) as any as S.Schema<GetPrivateLinkForAzureAdResponse>,
+  input: GetPrivateLinkForAzureAdRequest,
+  output: GetPrivateLinkForAzureAdResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -475,8 +657,8 @@ export const GetPrivateLinkResource: API.OperationMethod<
   GetPrivateLinkResourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16) as any as S.Schema<GetPrivateLinkResourceRequest>,
-  output: __S(18) as any as S.Schema<GetPrivateLinkResourceResponse>,
+  input: GetPrivateLinkResourceRequest,
+  output: GetPrivateLinkResourceResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -490,8 +672,8 @@ export const ListPrivateEndpointConnectionByPolicyName: API.OperationMethod<
   ListPrivateEndpointConnectionByPolicyNameError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19) as any as S.Schema<ListPrivateEndpointConnectionByPolicyNameRequest>,
-  output: __S(21) as any as S.Schema<PrivateEndpointConnectionListResult>,
+  input: ListPrivateEndpointConnectionByPolicyNameRequest,
+  output: PrivateEndpointConnectionListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -505,8 +687,8 @@ export const ListPrivateLinkForAzureAd: API.OperationMethod<
   ListPrivateLinkForAzureAdError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22) as any as S.Schema<ListPrivateLinkForAzureAdRequest>,
-  output: __S(25) as any as S.Schema<PrivateLinkPolicyListResult>,
+  input: ListPrivateLinkForAzureAdRequest,
+  output: PrivateLinkPolicyListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -520,8 +702,8 @@ export const ListPrivateLinkForAzureAdBySubscription: API.OperationMethod<
   ListPrivateLinkForAzureAdBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26) as any as S.Schema<ListPrivateLinkForAzureAdBySubscriptionRequest>,
-  output: __S(25) as any as S.Schema<PrivateLinkPolicyListResult>,
+  input: ListPrivateLinkForAzureAdBySubscriptionRequest,
+  output: PrivateLinkPolicyListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -535,8 +717,8 @@ export const ListPrivateLinkResourceByPrivateLinkPolicy: API.OperationMethod<
   ListPrivateLinkResourceByPrivateLinkPolicyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27) as any as S.Schema<ListPrivateLinkResourceByPrivateLinkPolicyRequest>,
-  output: __S(30) as any as S.Schema<PrivateLinkResourceListResult>,
+  input: ListPrivateLinkResourceByPrivateLinkPolicyRequest,
+  output: PrivateLinkResourceListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -550,8 +732,8 @@ export const UpdatePrivateLinkForAzureAd: API.OperationMethod<
   UpdatePrivateLinkForAzureAdError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31) as any as S.Schema<UpdatePrivateLinkForAzureAdRequest>,
-  output: __S(10) as any as S.Schema<UpdatePrivateLinkForAzureAdResponse>,
+  input: UpdatePrivateLinkForAzureAdRequest,
+  output: UpdatePrivateLinkForAzureAdResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -569,7 +751,7 @@ function __c0(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(S.String),
+          status: S.optional(PrivateEndpointServiceConnectionStatus),
           description: S.optional(S.String),
           actionsRequired: S.optional(S.String),
         }),
@@ -581,15 +763,15 @@ function __c0(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          tags: S.optional(__S(2)),
+          tags: S.optional(TagsResourceTagsMap),
         }),
       ).annotate({ identifier: "TagsResource" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          privateEndpoint: S.optional(__S(0)),
-          privateLinkServiceConnectionState: S.optional(__S(1)),
-          privateLinkConnectionTags: S.optional(__S(3)),
+          privateEndpoint: S.optional(PrivateEndpoint),
+          privateLinkServiceConnectionState: S.optional(PrivateLinkServiceConnectionState),
+          privateLinkConnectionTags: S.optional(TagsResource),
         }),
       ).annotate({
         identifier: "PrivateEndpointConnectionPropertiesInput",
@@ -601,7 +783,7 @@ function __c0(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           policyName: S.String.pipe(T.Label()),
           privateEndpointConnectionName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(4)),
+          properties: S.optional(PrivateEndpointConnectionPropertiesInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -616,10 +798,10 @@ function __c0(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          privateEndpoint: S.optional(__S(0)),
-          privateLinkServiceConnectionState: S.optional(__S(1)),
-          provisioningState: S.optional(S.String),
-          privateLinkConnectionTags: S.optional(__S(3)),
+          privateEndpoint: S.optional(PrivateEndpoint),
+          privateLinkServiceConnectionState: S.optional(PrivateLinkServiceConnectionState),
+          provisioningState: S.optional(PrivateEndpointConnectionProvisioningState),
+          privateLinkConnectionTags: S.optional(TagsResource),
         }),
       ).annotate({
         identifier: "PrivateEndpointConnectionProperties",
@@ -630,7 +812,7 @@ function __c0(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(__S(6)),
+          properties: S.optional(PrivateEndpointConnectionProperties),
         }),
       ).annotate({
         identifier: "CreatePrivateEndpointConnectionResponse",
@@ -650,10 +832,10 @@ function __c1(j: number): any {
           name: S.optional(S.String),
           ownerTenantId: S.optional(S.String),
           allTenants: S.optional(S.Boolean),
-          tenants: S.optional(__S(8)),
+          tenants: S.optional(CreatePrivateLinkForAzureAdRequestTenantsList),
           resourceName: S.optional(S.String),
           resourceGroup: S.optional(S.String),
-          tags: S.optional(__S(2)),
+          tags: S.optional(CreatePrivateLinkForAzureAdRequestTagsMap),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -673,11 +855,11 @@ function __c1(j: number): any {
           type: S.optional(S.String),
           ownerTenantId: S.optional(S.String),
           allTenants: S.optional(S.Boolean),
-          tenants: S.optional(__S(8)),
+          tenants: S.optional(CreatePrivateLinkForAzureAdResponseTenantsList),
           resourceName: S.optional(S.String),
           subscriptionId: S.optional(S.String),
           resourceGroup: S.optional(S.String),
-          tags: S.optional(__S(2)),
+          tags: S.optional(CreatePrivateLinkForAzureAdResponseTagsMap),
         }),
       ).annotate({
         identifier: "CreatePrivateLinkForAzureAdResponse",
@@ -782,7 +964,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           groupId: S.optional(S.String),
-          requiredMembers: S.optional(__S(8)),
+          requiredMembers: S.optional(PrivateLinkResourcePropertiesRequiredMembersList),
         }),
       ).annotate({
         identifier: "PrivateLinkResourceProperties",
@@ -793,7 +975,7 @@ function __c2(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(__S(17)),
+          properties: S.optional(PrivateLinkResourceProperties),
         }),
       ).annotate({
         identifier: "GetPrivateLinkResourceResponse",
@@ -816,11 +998,11 @@ function __c2(j: number): any {
         identifier: "ListPrivateEndpointConnectionByPolicyNameRequest",
       });
     case 4:
-      return S.Array(__S(7));
+      return S.Array(PrivateEndpointConnection);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(20)),
+          value: S.optional(PrivateEndpointConnectionListResultValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -850,11 +1032,11 @@ function __c2(j: number): any {
           type: S.optional(S.String),
           ownerTenantId: S.optional(S.String),
           allTenants: S.optional(S.Boolean),
-          tenants: S.optional(__S(8)),
+          tenants: S.optional(PrivateLinkPolicyTenantsList),
           resourceName: S.optional(S.String),
           subscriptionId: S.optional(S.String),
           resourceGroup: S.optional(S.String),
-          tags: S.optional(__S(2)),
+          tags: S.optional(PrivateLinkPolicyTagsMap),
         }),
       ).annotate({ identifier: "PrivateLinkPolicy" });
   }
@@ -862,11 +1044,11 @@ function __c2(j: number): any {
 function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(23));
+      return S.Array(PrivateLinkPolicy);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(24)),
+          value: S.optional(PrivateLinkPolicyListResultValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -910,15 +1092,15 @@ function __c3(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(__S(17)),
+          properties: S.optional(PrivateLinkResourceProperties),
         }),
       ).annotate({ identifier: "PrivateLinkResource" });
     case 5:
-      return S.Array(__S(28));
+      return S.Array(PrivateLinkResource);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(29)),
+          value: S.optional(PrivateLinkResourceListResultValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -930,7 +1112,7 @@ function __c3(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           policyName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(2)),
+          tags: S.optional(UpdatePrivateLinkForAzureAdRequestTagsMap),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -942,22 +1124,5 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "UpdatePrivateLinkForAzureAdRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
   }
 }

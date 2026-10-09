@@ -7,8 +7,6 @@ import { UnknownAzureError } from "../errors.ts";
 import { AzureProtocol, type AzureOpError, type AzureOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { AzureOpError, AzureOpContext };
 
@@ -34,6 +32,11 @@ export interface GenerateOfferAccessTokenRequest {
   /** The device sku version. */
   deviceVersion?: string;
 }
+const GenerateOfferAccessTokenRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<GenerateOfferAccessTokenRequest>;
+
 /** The disk access token */
 export interface DiskAccessToken {
   /** The disk id. */
@@ -43,16 +46,24 @@ export interface DiskAccessToken {
   /** The access token. */
   accessToken: string | Redacted.Redacted<string>;
 }
+const DiskAccessToken = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<DiskAccessToken>;
+
 export interface GetOfferRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
   resourceUri: string;
   /** Id of the offer */
   offerId: string;
 }
+const GetOfferRequest = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<GetOfferRequest>;
+
 /** The type of identity that created the resource. */
 export type SystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
+const SystemDataCreatedByType = S.String;
+
 /** The type of identity that last modified the resource. */
 export type SystemDataLastModifiedByType = "User" | "Application" | "ManagedIdentity" | "Key";
+const SystemDataLastModifiedByType = S.String;
+
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface SystemData {
   /** The identity that created the resource. */
@@ -68,6 +79,8 @@ export interface SystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const SystemData = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<SystemData>;
+
 /** The offer publisher */
 export interface OfferPublisher {
   /** The publisher Id */
@@ -75,10 +88,16 @@ export interface OfferPublisher {
   /** The publisher name */
   publisherDisplayName: string;
 }
+const OfferPublisher = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<OfferPublisher>;
+
 /** OfferAvailability Enum */
 export type OfferAvailability = "Private" | "Public";
+const OfferAvailability = S.String;
+
 /** Offer release type Enum */
 export type OfferReleaseType = "Preview" | "GA";
+const OfferReleaseType = S.String;
+
 /** Icon files */
 export interface IconFileUris {
   /** uri of small icon */
@@ -90,6 +109,8 @@ export interface IconFileUris {
   /** uri of large icon */
   large?: string;
 }
+const IconFileUris = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<IconFileUris>;
+
 /** Terms and conditions */
 export interface TermsAndConditions {
   /** The legal terms and conditions uri */
@@ -99,10 +120,20 @@ export interface TermsAndConditions {
   /** The privacy policy uri */
   privacyPolicyUri?: string;
 }
+const TermsAndConditions = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<TermsAndConditions>;
+
 /** The category ids */
 export type OfferContentCategoryIdsList = Array<string>;
+const OfferContentCategoryIdsList = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<OfferContentCategoryIdsList>;
+
 /** The operating systems */
 export type OfferContentOperatingSystemsList = Array<string>;
+const OfferContentOperatingSystemsList =
+  OfferContentCategoryIdsList as any as S.Schema<OfferContentOperatingSystemsList>;
+
 /** The offer content */
 export interface OfferContent {
   /** The display name of the offer */
@@ -136,8 +167,12 @@ export interface OfferContent {
   /** The operating systems */
   operatingSystems?: OfferContentOperatingSystemsList;
 }
+const OfferContent = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<OfferContent>;
+
 /** The provisioning state of a resource type. */
 export type AzureResourceManagerResourceProvisioningState = "Succeeded" | "Failed" | "Canceled";
+const AzureResourceManagerResourceProvisioningState = S.String;
+
 /** The sku operating system */
 export interface SkuOperatingSystem {
   /** The family of the operating system */
@@ -147,8 +182,12 @@ export interface SkuOperatingSystem {
   /** The name of the operating system */
   name: string;
 }
+const SkuOperatingSystem = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<SkuOperatingSystem>;
+
 /** Offer launch type Enum */
 export type OfferLaunchType = "Trusted" | "Unknown";
+const OfferLaunchType = S.String;
+
 /** The marketplace sku version */
 export interface MarketplaceSkuVersion {
   /** The name of sku version */
@@ -162,8 +201,18 @@ export interface MarketplaceSkuVersion {
   /** The launch type */
   launchType?: OfferLaunchType;
 }
+const MarketplaceSkuVersion = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<MarketplaceSkuVersion>;
+
 /** The marketplace sku version */
 export type MarketplaceSkuMarketplaceSkuVersionsList = Array<MarketplaceSkuVersion>;
+const MarketplaceSkuMarketplaceSkuVersionsList = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<MarketplaceSkuMarketplaceSkuVersionsList>;
+
 /** The marketplace sku */
 export interface MarketplaceSku {
   /** The catalog plan id */
@@ -189,8 +238,15 @@ export interface MarketplaceSku {
   /** The marketplace sku version */
   marketplaceSkuVersions?: MarketplaceSkuMarketplaceSkuVersionsList;
 }
+const MarketplaceSku = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<MarketplaceSku>;
+
 /** The marketplace skus */
 export type OfferPropertiesMarketplaceSkusList = Array<MarketplaceSku>;
+const OfferPropertiesMarketplaceSkusList = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<OfferPropertiesMarketplaceSkusList>;
+
 /** The offer properties */
 export interface OfferProperties {
   /** The content version */
@@ -204,6 +260,8 @@ export interface OfferProperties {
   /** The marketplace skus */
   marketplaceSkus?: OfferPropertiesMarketplaceSkusList;
 }
+const OfferProperties = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<OfferProperties>;
+
 export interface GetOfferResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -216,6 +274,8 @@ export interface GetOfferResponse {
   /** The resource-specific properties for this resource. */
   properties?: OfferProperties;
 }
+const GetOfferResponse = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<GetOfferResponse>;
+
 export interface GetOfferAccessTokenRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
   resourceUri: string;
@@ -224,17 +284,26 @@ export interface GetOfferAccessTokenRequest {
   /** The name of the publisher. */
   requestId: string;
 }
+const GetOfferAccessTokenRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<GetOfferAccessTokenRequest>;
+
 export interface GetPublisherRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
   resourceUri: string;
   /** Name of the publisher */
   publisherName: string;
 }
+const GetPublisherRequest = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<GetPublisherRequest>;
+
 /** Publisher properties */
 export interface PublisherProperties {
   /** The resource provisioning state */
   provisioningState?: AzureResourceManagerResourceProvisioningState;
 }
+const PublisherProperties = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<PublisherProperties>;
+
 export interface GetPublisherResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -247,10 +316,17 @@ export interface GetPublisherResponse {
   /** The resource-specific properties for this resource. */
   properties?: PublisherProperties;
 }
+const GetPublisherResponse = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<GetPublisherResponse>;
+
 export interface ListOfferBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
+const ListOfferBySubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<ListOfferBySubscriptionRequest>;
+
 /** An offer. */
 export interface Offer {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -264,8 +340,15 @@ export interface Offer {
   /** The resource-specific properties for this resource. */
   properties?: OfferProperties;
 }
+const Offer = GetOfferResponse as any as S.Schema<Offer>;
+
 /** The Offer items on this page */
 export type OfferListResultValueList = Array<Offer>;
+const OfferListResultValueList = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<OfferListResultValueList>;
+
 /** The response of a Offer list operation. */
 export interface OfferListResult {
   /** The Offer items on this page */
@@ -273,6 +356,8 @@ export interface OfferListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const OfferListResult = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<OfferListResult>;
+
 export interface ListOffersRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
   resourceUri: string;
@@ -287,7 +372,14 @@ export interface ListOffersRequest {
   /** Skip over when retrieving results. */
   _skipToken?: string;
 }
+const ListOffersRequest = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<ListOffersRequest>;
+
 export interface ListOperationsRequest {}
+const ListOperationsRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<ListOperationsRequest>;
+
 /** Localized display information for this particular operation. */
 export interface OperationDisplay {
   /** The localized friendly form of the resource provider name, e.g. "Microsoft Monitoring Insights" or "Microsoft Compute". */
@@ -299,10 +391,16 @@ export interface OperationDisplay {
   /** The short, localized friendly description of the operation; suitable for tool tips and detailed views. */
   description?: string;
 }
+const OperationDisplay = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<OperationDisplay>;
+
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
 export type OperationOrigin = "user" | "system" | "user,system";
+const OperationOrigin = S.String;
+
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
 export type OperationActionType = "Internal";
+const OperationActionType = S.String;
+
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
 export interface Operation {
   /** The name of the operation, as per Resource-Based Access Control (RBAC). Examples: "Microsoft.Compute/virtualMachines/write", "Microsoft.Compute/virtualMachines/capture/action" */
@@ -316,18 +414,35 @@ export interface Operation {
   /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
   actionType?: OperationActionType;
 }
+const Operation = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<Operation>;
+
 /** List of operations supported by the resource provider */
 export type ListOperationsResponseValueList = Array<Operation>;
+const ListOperationsResponseValueList = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<ListOperationsResponseValueList>;
+
 export interface ListOperationsResponse {
   /** List of operations supported by the resource provider */
   value?: ListOperationsResponseValueList;
   /** URL to get the next set of operation list results (if there are any). */
   nextLink?: string;
 }
+const ListOperationsResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<ListOperationsResponse>;
+
 export interface ListPublisherBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
+const ListPublisherBySubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<ListPublisherBySubscriptionRequest>;
+
 /** A publisher who provides offers. */
 export interface Publisher {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -341,8 +456,15 @@ export interface Publisher {
   /** The resource-specific properties for this resource. */
   properties?: PublisherProperties;
 }
+const Publisher = GetPublisherResponse as any as S.Schema<Publisher>;
+
 /** The Publisher items on this page */
 export type PublisherListResultValueList = Array<Publisher>;
+const PublisherListResultValueList = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<PublisherListResultValueList>;
+
 /** The response of a Publisher list operation. */
 export interface PublisherListResult {
   /** The Publisher items on this page */
@@ -350,6 +472,8 @@ export interface PublisherListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const PublisherListResult = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<PublisherListResult>;
+
 export interface ListPublishersRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
   resourceUri: string;
@@ -364,6 +488,11 @@ export interface ListPublishersRequest {
   /** Skip over when retrieving results. */
   _skipToken?: string;
 }
+const ListPublishersRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<ListPublishersRequest>;
+
 export type GenerateOfferAccessTokenError = AzureOpError;
 /** A long-running resource action. */
 export const GenerateOfferAccessToken: API.OperationMethod<
@@ -372,8 +501,8 @@ export const GenerateOfferAccessToken: API.OperationMethod<
   GenerateOfferAccessTokenError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<GenerateOfferAccessTokenRequest>,
-  output: __S(1) as any as S.Schema<DiskAccessToken>,
+  input: GenerateOfferAccessTokenRequest,
+  output: DiskAccessToken,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -387,8 +516,8 @@ export const GetOffer: API.OperationMethod<
   GetOfferError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2) as any as S.Schema<GetOfferRequest>,
-  output: __S(15) as any as S.Schema<GetOfferResponse>,
+  input: GetOfferRequest,
+  output: GetOfferResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -402,8 +531,8 @@ export const GetOfferAccessToken: API.OperationMethod<
   GetOfferAccessTokenError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16) as any as S.Schema<GetOfferAccessTokenRequest>,
-  output: __S(1) as any as S.Schema<DiskAccessToken>,
+  input: GetOfferAccessTokenRequest,
+  output: DiskAccessToken,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -417,8 +546,8 @@ export const GetPublisher: API.OperationMethod<
   GetPublisherError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17) as any as S.Schema<GetPublisherRequest>,
-  output: __S(19) as any as S.Schema<GetPublisherResponse>,
+  input: GetPublisherRequest,
+  output: GetPublisherResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -432,8 +561,8 @@ export const ListOfferBySubscription: API.OperationMethod<
   ListOfferBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20) as any as S.Schema<ListOfferBySubscriptionRequest>,
-  output: __S(22) as any as S.Schema<OfferListResult>,
+  input: ListOfferBySubscriptionRequest,
+  output: OfferListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -447,8 +576,8 @@ export const ListOffers: API.OperationMethod<
   ListOffersError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23) as any as S.Schema<ListOffersRequest>,
-  output: __S(22) as any as S.Schema<OfferListResult>,
+  input: ListOffersRequest,
+  output: OfferListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -462,8 +591,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24) as any as S.Schema<ListOperationsRequest>,
-  output: __S(28) as any as S.Schema<ListOperationsResponse>,
+  input: ListOperationsRequest,
+  output: ListOperationsResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -477,8 +606,8 @@ export const ListPublisherBySubscription: API.OperationMethod<
   ListPublisherBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29) as any as S.Schema<ListPublisherBySubscriptionRequest>,
-  output: __S(31) as any as S.Schema<PublisherListResult>,
+  input: ListPublisherBySubscriptionRequest,
+  output: PublisherListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -492,8 +621,8 @@ export const ListPublishers: API.OperationMethod<
   ListPublishersError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32) as any as S.Schema<ListPublishersRequest>,
-  output: __S(31) as any as S.Schema<PublisherListResult>,
+  input: ListPublishersRequest,
+  output: PublisherListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -552,10 +681,10 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
-          createdByType: S.optional(S.String),
+          createdByType: S.optional(SystemDataCreatedByType),
           createdAt: S.optional(S.String),
           lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(S.String),
+          lastModifiedByType: S.optional(SystemDataLastModifiedByType),
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "SystemData" });
@@ -600,13 +729,13 @@ function __c1(j: number): any {
           offerType: S.optional(S.String),
           supportUri: S.optional(S.String),
           popularity: S.optional(S.Number),
-          offerPublisher: S.optional(__S(4)),
-          availability: S.optional(S.String),
-          releaseType: S.optional(S.String),
-          iconFileUris: S.optional(__S(5)),
-          termsAndConditions: S.optional(__S(6)),
-          categoryIds: S.optional(__S(7)),
-          operatingSystems: S.optional(__S(7)),
+          offerPublisher: S.optional(OfferPublisher),
+          availability: S.optional(OfferAvailability),
+          releaseType: S.optional(OfferReleaseType),
+          iconFileUris: S.optional(IconFileUris),
+          termsAndConditions: S.optional(TermsAndConditions),
+          categoryIds: S.optional(OfferContentCategoryIdsList),
+          operatingSystems: S.optional(OfferContentOperatingSystemsList),
         }),
       ).annotate({ identifier: "OfferContent" });
     case 1:
@@ -624,11 +753,11 @@ function __c1(j: number): any {
           sizeOnDiskInMb: S.optional(S.Number),
           minimumDownloadSizeInMb: S.optional(S.Number),
           stageName: S.optional(S.String),
-          launchType: S.optional(S.String),
+          launchType: S.optional(OfferLaunchType),
         }),
       ).annotate({ identifier: "MarketplaceSkuVersion" });
     case 3:
-      return S.Array(__S(10));
+      return S.Array(MarketplaceSkuVersion);
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -641,20 +770,20 @@ function __c1(j: number): any {
           description: S.optional(S.String),
           generation: S.optional(S.String),
           displayRank: S.optional(S.Number),
-          operatingSystem: S.optional(__S(9)),
-          marketplaceSkuVersions: S.optional(__S(11)),
+          operatingSystem: S.optional(SkuOperatingSystem),
+          marketplaceSkuVersions: S.optional(MarketplaceSkuMarketplaceSkuVersionsList),
         }),
       ).annotate({ identifier: "MarketplaceSku" });
     case 5:
-      return S.Array(__S(12));
+      return S.Array(MarketplaceSku);
     case 6:
       return S.suspend(() =>
         S.Struct({
           contentVersion: S.optional(S.String),
           contentUrl: S.optional(S.String),
-          offerContent: __S(8),
-          provisioningState: S.optional(S.String),
-          marketplaceSkus: S.optional(__S(13)),
+          offerContent: OfferContent,
+          provisioningState: S.optional(AzureResourceManagerResourceProvisioningState),
+          marketplaceSkus: S.optional(OfferPropertiesMarketplaceSkusList),
         }),
       ).annotate({ identifier: "OfferProperties" });
     case 7:
@@ -663,8 +792,8 @@ function __c1(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(3)),
-          properties: S.optional(__S(14)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(OfferProperties),
         }),
       ).annotate({ identifier: "GetOfferResponse" });
   }
@@ -705,7 +834,7 @@ function __c2(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          provisioningState: S.optional(S.String),
+          provisioningState: S.optional(AzureResourceManagerResourceProvisioningState),
         }),
       ).annotate({ identifier: "PublisherProperties" });
     case 3:
@@ -714,8 +843,8 @@ function __c2(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(3)),
-          properties: S.optional(__S(18)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(PublisherProperties),
         }),
       ).annotate({ identifier: "GetPublisherResponse" });
     case 4:
@@ -734,11 +863,11 @@ function __c2(j: number): any {
         identifier: "ListOfferBySubscriptionRequest",
       });
     case 5:
-      return S.Array(__S(15));
+      return S.Array(Offer);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          value: __S(21),
+          value: OfferListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "OfferListResult" });
@@ -789,17 +918,17 @@ function __c3(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           isDataAction: S.optional(S.Boolean),
-          display: S.optional(__S(25)),
-          origin: S.optional(S.String),
-          actionType: S.optional(S.String),
+          display: S.optional(OperationDisplay),
+          origin: S.optional(OperationOrigin),
+          actionType: S.optional(OperationActionType),
         }),
       ).annotate({ identifier: "Operation" });
     case 3:
-      return S.Array(__S(26));
+      return S.Array(Operation);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(27)),
+          value: S.optional(ListOperationsResponseValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
@@ -819,11 +948,11 @@ function __c3(j: number): any {
         identifier: "ListPublisherBySubscriptionRequest",
       });
     case 6:
-      return S.Array(__S(19));
+      return S.Array(Publisher);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          value: __S(30),
+          value: PublisherListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "PublisherListResult" });
@@ -849,24 +978,5 @@ function __c4(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListPublishersRequest" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
   }
 }

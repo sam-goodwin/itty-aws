@@ -7,8 +7,6 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -66,21 +64,37 @@ export class NotFound
 
 /** Request message for AccessControl.AcceptInvitation. */
 export interface AcceptInvitationRequest {}
+const AcceptInvitationRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<AcceptInvitationRequest>;
+
 export interface AcceptAccountsInvitationsRequest {
   /** Required. The name of the invitation that is being accepted. `accounts/{account_id}/invitations/{invitation_id}` */
   name: string;
   /** Request body */
   body?: AcceptInvitationRequest;
 }
+const AcceptAccountsInvitationsRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<AcceptAccountsInvitationsRequest>;
+
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
+const Empty = AcceptInvitationRequest as any as S.Schema<Empty>;
+
 export type AccountTypeEnum =
   | "ACCOUNT_TYPE_UNSPECIFIED"
   | "PERSONAL"
   | "LOCATION_GROUP"
   | "USER_GROUP"
   | "ORGANIZATION";
+const AccountTypeEnum = S.String;
+
 export type StringList = Array<string>;
+const StringList = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<StringList>;
+
 /** Represents a postal address, such as for postal delivery or payments addresses. With a postal address, a postal service can deliver items to a premise, P.O. box, or similar. A postal address is not intended to model geographical locations like roads, towns, or mountains. In typical usage, an address would be created by user input or from importing existing data, depending on the type of process. Advice on address input or editing: - Use an internationalization-ready address widget such as https://github.com/google/libaddressinput. - Users should not be presented with UI elements for input or editing of fields outside countries where that field is used. For more guidance on how to use this schema, see: https://support.google.com/business/answer/6397478. */
 export interface PostalAddress {
   /** Optional. Highest administrative subdivision which is used for postal addresses of a country or region. For example, this can be a state, a province, an oblast, or a prefecture. For Spain, this is the province and not the autonomous community (for example, "Barcelona" and not "Catalonia"). Many countries don't use an administrative area in postal addresses. For example, in Switzerland, this should be left unpopulated. */
@@ -106,6 +120,8 @@ export interface PostalAddress {
   /** Optional. BCP-47 language code of the contents of this address (if known). This is often the UI language of the input form or is expected to match one of the languages used in the address' country/region, or their transliterated equivalents. This can affect formatting in certain countries, but is not critical to the correctness of the data and will never affect any validation or other non-formatting related operations. If this value is not known, it should be omitted (rather than specifying a possibly incorrect default). Examples: "zh-Hant", "ja", "ja-Latn", "en". */
   languageCode?: string;
 }
+const PostalAddress = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<PostalAddress>;
+
 /** Additional information stored for an organization. */
 export interface OrganizationInfo {
   /** Output only. The postal address for the account. */
@@ -115,26 +131,36 @@ export interface OrganizationInfo {
   /** Output only. The registered domain for the account. */
   registeredDomain?: string;
 }
+const OrganizationInfo = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<OrganizationInfo>;
+
 export type AccountVettedStateEnum =
   | "VETTED_STATE_UNSPECIFIED"
   | "NOT_VETTED"
   | "VETTED"
   | "INVALID";
+const AccountVettedStateEnum = S.String;
+
 export type AccountPermissionLevelEnum =
   | "PERMISSION_LEVEL_UNSPECIFIED"
   | "OWNER_LEVEL"
   | "MEMBER_LEVEL";
+const AccountPermissionLevelEnum = S.String;
+
 export type AccountRoleEnum =
   | "ACCOUNT_ROLE_UNSPECIFIED"
   | "PRIMARY_OWNER"
   | "OWNER"
   | "MANAGER"
   | "SITE_MANAGER";
+const AccountRoleEnum = S.String;
+
 export type AccountVerificationStateEnum =
   | "VERIFICATION_STATE_UNSPECIFIED"
   | "VERIFIED"
   | "UNVERIFIED"
   | "VERIFICATION_REQUESTED";
+const AccountVerificationStateEnum = S.String;
+
 /** An account is a container for your location. If you are the only user who manages locations for your business, you can use your personal Google Account. To share management of locations with multiple users, [create a business account] (https://support.google.com/business/answer/6085339?ref_topic=6085325). */
 export interface Account {
   /** Required. Contains the type of account. Accounts of type PERSONAL and ORGANIZATION cannot be created using this API. */
@@ -158,16 +184,25 @@ export interface Account {
   /** Required. The name of the account. For an account of type `PERSONAL`, this is the first and last name of the user account. */
   accountName?: string;
 }
+const Account = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<Account>;
+
 export interface CreateAccountsRequest {
   /** Request body */
   body?: Account;
 }
+const CreateAccountsRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<CreateAccountsRequest>;
+
 export type AdminRoleEnum =
   | "ADMIN_ROLE_UNSPECIFIED"
   | "PRIMARY_OWNER"
   | "OWNER"
   | "MANAGER"
   | "SITE_MANAGER";
+const AdminRoleEnum = S.String;
+
 /** An administrator of an Account or a location. */
 export interface Admin {
   /** Immutable. The name of the Account resource that this Admin refers to. Used when calling locations.admins.create to invite a LocationGroup as an admin. If both this field and `admin` are set on `CREATE` requests, this field takes precedence and the email address in `admin` will be ignored. Format: `accounts/{account}`. */
@@ -181,18 +216,30 @@ export interface Admin {
   /** Output only. Indicates whether this admin has a pending invitation for the specified resource. */
   pendingInvitation?: boolean;
 }
+const Admin = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<Admin>;
+
 export interface CreateAccountsAdminsRequest {
   /** Required. The resource name of the account this admin is created for. `accounts/{account_id}`. */
   parent: string;
   /** Request body */
   body?: Admin;
 }
+const CreateAccountsAdminsRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<CreateAccountsAdminsRequest>;
+
 export interface CreateLocationsAdminsRequest {
   /** Required. The resource name of the location this admin is created for. `locations/{location_id}/admins`. */
   parent: string;
   /** Request body */
   body?: Admin;
 }
+const CreateLocationsAdminsRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<CreateLocationsAdminsRequest>;
+
 /** Request message for AccessControl.DeclineInvitation. */
 export type DeclineInvitationRequest = AcceptInvitationRequest;
 export interface DeclineAccountsInvitationsRequest {
@@ -201,18 +248,35 @@ export interface DeclineAccountsInvitationsRequest {
   /** Request body */
   body?: AcceptInvitationRequest;
 }
+const DeclineAccountsInvitationsRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<DeclineAccountsInvitationsRequest>;
+
 export interface DeleteAccountsAdminsRequest {
   /** Required. The resource name of the admin to remove from the account. `accounts/{account_id}/admins/{admin_id}`. */
   name: string;
 }
+const DeleteAccountsAdminsRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<DeleteAccountsAdminsRequest>;
+
 export interface DeleteLocationsAdminsRequest {
   /** Required. The resource name of the admin to remove from the location. */
   name: string;
 }
+const DeleteLocationsAdminsRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<DeleteLocationsAdminsRequest>;
+
 export interface GetAccountsRequest {
   /** Required. The name of the account to fetch. */
   name: string;
 }
+const GetAccountsRequest = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<GetAccountsRequest>;
+
 export interface ListAccountsRequest {
   /** Optional. The resource name of the account for which the list of directly accessible accounts is to be retrieved. This only makes sense for Organizations and User Groups. If empty, will return `ListAccounts` for the authenticated user. `accounts/{account_id}`. */
   parentAccount?: string;
@@ -223,7 +287,11 @@ export interface ListAccountsRequest {
   /** Optional. If specified, the next page of accounts is retrieved. The `pageToken` is returned when a call to `accounts.list` returns more results than can fit into the requested page size. */
   pageToken?: string;
 }
+const ListAccountsRequest = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<ListAccountsRequest>;
+
 export type AccountList = Array<Account>;
+const AccountList = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<AccountList>;
+
 /** Response message for Accounts.ListAccounts. */
 export interface ListAccountsResponse {
   /** A collection of accounts to which the user has access. The personal account of the user doing the query will always be the first item of the result, unless it is filtered out. */
@@ -231,32 +299,55 @@ export interface ListAccountsResponse {
   /** If the number of accounts exceeds the requested page size, this field is populated with a token to fetch the next page of accounts on a subsequent call to `accounts.list`. If there are no more accounts, this field is not present in the response. */
   nextPageToken?: string;
 }
+const ListAccountsResponse = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<ListAccountsResponse>;
+
 export interface ListAccountsAdminsRequest {
   /** Required. The name of the account from which to retrieve a list of admins. `accounts/{account_id}/admins`. */
   parent: string;
 }
+const ListAccountsAdminsRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<ListAccountsAdminsRequest>;
+
 export type AdminList = Array<Admin>;
+const AdminList = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<AdminList>;
+
 /** Response message for AccessControl.ListAccountAdmins. */
 export interface ListAccountAdminsResponse {
   /** A collection of Admin instances. */
   accountAdmins?: AdminList;
 }
+const ListAccountAdminsResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<ListAccountAdminsResponse>;
+
 export interface ListAccountsInvitationsRequest {
   /** Required. The name of the account from which the list of invitations is being retrieved. `accounts/{account_id}/invitations` */
   parent: string;
   /** Optional. Filtering the response is supported via the Invitation.target_type field. */
   filter?: string;
 }
+const ListAccountsInvitationsRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<ListAccountsInvitationsRequest>;
+
 export type InvitationRoleEnum =
   | "ADMIN_ROLE_UNSPECIFIED"
   | "PRIMARY_OWNER"
   | "OWNER"
   | "MANAGER"
   | "SITE_MANAGER";
+const InvitationRoleEnum = S.String;
+
 export type InvitationTargetTypeEnum =
   | "TARGET_TYPE_UNSPECIFIED"
   | "ACCOUNTS_ONLY"
   | "LOCATIONS_ONLY";
+const InvitationTargetTypeEnum = S.String;
+
 /** Represents a target location for a pending invitation. */
 export interface TargetLocation {
   /** Output only. The Place ID of the location to which the user is invited. Not always populated. */
@@ -266,6 +357,8 @@ export interface TargetLocation {
   /** The name of the location to which the user is invited. */
   locationName?: string;
 }
+const TargetLocation = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<TargetLocation>;
+
 /** Represents a pending invitation. */
 export interface Invitation {
   /** Output only. The invited role on the account. */
@@ -279,21 +372,40 @@ export interface Invitation {
   /** Required. The resource name for the invitation. `accounts/{account_id}/invitations/{invitation_id}`. */
   name?: string;
 }
+const Invitation = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<Invitation>;
+
 export type InvitationList = Array<Invitation>;
+const InvitationList = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<InvitationList>;
+
 /** Response message for AccessControl.ListInvitations. */
 export interface ListInvitationsResponse {
   /** A collection of invitations that are pending for the account. The number of invitations listed here cannot exceed 1000. */
   invitations?: InvitationList;
 }
+const ListInvitationsResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<ListInvitationsResponse>;
+
 export interface ListLocationsAdminsRequest {
   /** Required. The name of the location to list admins of. `locations/{location_id}/admins`. */
   parent: string;
 }
+const ListLocationsAdminsRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<ListLocationsAdminsRequest>;
+
 /** Response message for AccessControl.ListLocationAdmins. */
 export interface ListLocationAdminsResponse {
   /** A collection of Admins. */
   admins?: AdminList;
 }
+const ListLocationAdminsResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<ListLocationAdminsResponse>;
+
 export interface PatchAccountsRequest {
   /** Immutable. The resource name, in the format `accounts/{account_id}`. */
   name: string;
@@ -304,6 +416,8 @@ export interface PatchAccountsRequest {
   /** Request body */
   body?: Account;
 }
+const PatchAccountsRequest = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<PatchAccountsRequest>;
+
 export interface PatchAccountsAdminsRequest {
   /** Immutable. The resource name. For account admins, this is in the form: `accounts/{account_id}/admins/{admin_id}` For location admins, this is in the form: `locations/{location_id}/admins/{admin_id}` This field will be ignored if set during admin creation. */
   name: string;
@@ -312,6 +426,11 @@ export interface PatchAccountsAdminsRequest {
   /** Request body */
   body?: Admin;
 }
+const PatchAccountsAdminsRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<PatchAccountsAdminsRequest>;
+
 export interface PatchLocationsAdminsRequest {
   /** Immutable. The resource name. For account admins, this is in the form: `accounts/{account_id}/admins/{admin_id}` For location admins, this is in the form: `locations/{location_id}/admins/{admin_id}` This field will be ignored if set during admin creation. */
   name: string;
@@ -320,17 +439,32 @@ export interface PatchLocationsAdminsRequest {
   /** Request body */
   body?: Admin;
 }
+const PatchLocationsAdminsRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<PatchLocationsAdminsRequest>;
+
 /** Request message for AccessControl.TransferLocation. */
 export interface TransferLocationRequest {
   /** Required. Name of the account resource to transfer the location to (for example, "accounts/{account}"). */
   destinationAccount?: string;
 }
+const TransferLocationRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<TransferLocationRequest>;
+
 export interface TransferLocationsRequest {
   /** Required. The name of the location to transfer. `locations/{location_id}`. */
   name: string;
   /** Request body */
   body?: TransferLocationRequest;
 }
+const TransferLocationsRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<TransferLocationsRequest>;
+
 export type AcceptAccountsInvitationsError =
   | NotFound
   | Forbidden
@@ -344,8 +478,8 @@ export const acceptAccountsInvitations: API.OperationMethod<
   AcceptAccountsInvitationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1) as any as S.Schema<AcceptAccountsInvitationsRequest>,
-  output: __S(0) as any as S.Schema<Empty>,
+  input: AcceptAccountsInvitationsRequest,
+  output: Empty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -359,8 +493,8 @@ export const createAccounts: API.OperationMethod<
   CreateAccountsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6) as any as S.Schema<CreateAccountsRequest>,
-  output: __S(5) as any as S.Schema<Account>,
+  input: CreateAccountsRequest,
+  output: Account,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -374,8 +508,8 @@ export const createAccountsAdmins: API.OperationMethod<
   CreateAccountsAdminsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8) as any as S.Schema<CreateAccountsAdminsRequest>,
-  output: __S(7) as any as S.Schema<Admin>,
+  input: CreateAccountsAdminsRequest,
+  output: Admin,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -389,8 +523,8 @@ export const createLocationsAdmins: API.OperationMethod<
   CreateLocationsAdminsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9) as any as S.Schema<CreateLocationsAdminsRequest>,
-  output: __S(7) as any as S.Schema<Admin>,
+  input: CreateLocationsAdminsRequest,
+  output: Admin,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -409,8 +543,8 @@ export const declineAccountsInvitations: API.OperationMethod<
   DeclineAccountsInvitationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10) as any as S.Schema<DeclineAccountsInvitationsRequest>,
-  output: __S(0) as any as S.Schema<Empty>,
+  input: DeclineAccountsInvitationsRequest,
+  output: Empty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -424,8 +558,8 @@ export const deleteAccountsAdmins: API.OperationMethod<
   DeleteAccountsAdminsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11) as any as S.Schema<DeleteAccountsAdminsRequest>,
-  output: __S(0) as any as S.Schema<Empty>,
+  input: DeleteAccountsAdminsRequest,
+  output: Empty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -439,8 +573,8 @@ export const deleteLocationsAdmins: API.OperationMethod<
   DeleteLocationsAdminsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12) as any as S.Schema<DeleteLocationsAdminsRequest>,
-  output: __S(0) as any as S.Schema<Empty>,
+  input: DeleteLocationsAdminsRequest,
+  output: Empty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -454,8 +588,8 @@ export const getAccounts: API.OperationMethod<
   GetAccountsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13) as any as S.Schema<GetAccountsRequest>,
-  output: __S(5) as any as S.Schema<Account>,
+  input: GetAccountsRequest,
+  output: Account,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -470,8 +604,8 @@ export const listAccounts: API.PaginatedOperationMethod<
   GcpOpContext,
   ListAccountsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(14) as any as S.Schema<ListAccountsRequest>,
-  output: __S(16) as any as S.Schema<ListAccountsResponse>,
+  input: ListAccountsRequest,
+  output: ListAccountsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -486,8 +620,8 @@ export const listAccountsAdmins: API.OperationMethod<
   ListAccountsAdminsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17) as any as S.Schema<ListAccountsAdminsRequest>,
-  output: __S(19) as any as S.Schema<ListAccountAdminsResponse>,
+  input: ListAccountsAdminsRequest,
+  output: ListAccountAdminsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -501,8 +635,8 @@ export const listAccountsInvitations: API.OperationMethod<
   ListAccountsInvitationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20) as any as S.Schema<ListAccountsInvitationsRequest>,
-  output: __S(24) as any as S.Schema<ListInvitationsResponse>,
+  input: ListAccountsInvitationsRequest,
+  output: ListInvitationsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -516,8 +650,8 @@ export const listLocationsAdmins: API.OperationMethod<
   ListLocationsAdminsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25) as any as S.Schema<ListLocationsAdminsRequest>,
-  output: __S(26) as any as S.Schema<ListLocationAdminsResponse>,
+  input: ListLocationsAdminsRequest,
+  output: ListLocationAdminsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -531,8 +665,8 @@ export const patchAccounts: API.OperationMethod<
   PatchAccountsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27) as any as S.Schema<PatchAccountsRequest>,
-  output: __S(5) as any as S.Schema<Account>,
+  input: PatchAccountsRequest,
+  output: Account,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -546,8 +680,8 @@ export const patchAccountsAdmins: API.OperationMethod<
   PatchAccountsAdminsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28) as any as S.Schema<PatchAccountsAdminsRequest>,
-  output: __S(7) as any as S.Schema<Admin>,
+  input: PatchAccountsAdminsRequest,
+  output: Admin,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -561,8 +695,8 @@ export const patchLocationsAdmins: API.OperationMethod<
   PatchLocationsAdminsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29) as any as S.Schema<PatchLocationsAdminsRequest>,
-  output: __S(7) as any as S.Schema<Admin>,
+  input: PatchLocationsAdminsRequest,
+  output: Admin,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -576,8 +710,8 @@ export const transferLocations: API.OperationMethod<
   TransferLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31) as any as S.Schema<TransferLocationsRequest>,
-  output: __S(0) as any as S.Schema<Empty>,
+  input: TransferLocationsRequest,
+  output: Empty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -594,7 +728,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(0).pipe(T.HttpBody())),
+          body: S.optional(AcceptInvitationRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -613,8 +747,8 @@ function __c0(j: number): any {
           administrativeArea: S.optional(S.String),
           postalCode: S.optional(S.String),
           locality: S.optional(S.String),
-          addressLines: S.optional(__S(2)),
-          recipients: S.optional(__S(2)),
+          addressLines: S.optional(StringList),
+          recipients: S.optional(StringList),
           sortingCode: S.optional(S.String),
           regionCode: S.optional(S.String),
           organization: S.optional(S.String),
@@ -626,7 +760,7 @@ function __c0(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          address: S.optional(__S(3)),
+          address: S.optional(PostalAddress),
           phoneNumber: S.optional(S.String),
           registeredDomain: S.optional(S.String),
         }),
@@ -634,13 +768,13 @@ function __c0(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(S.String),
-          organizationInfo: S.optional(__S(4)),
-          vettedState: S.optional(S.String),
-          permissionLevel: S.optional(S.String),
+          type: S.optional(AccountTypeEnum),
+          organizationInfo: S.optional(OrganizationInfo),
+          vettedState: S.optional(AccountVettedStateEnum),
+          permissionLevel: S.optional(AccountPermissionLevelEnum),
           primaryOwner: S.optional(S.String),
-          role: S.optional(S.String),
-          verificationState: S.optional(S.String),
+          role: S.optional(AccountRoleEnum),
+          verificationState: S.optional(AccountVerificationStateEnum),
           accountNumber: S.optional(S.String),
           name: S.optional(S.String),
           accountName: S.optional(S.String),
@@ -649,7 +783,7 @@ function __c0(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(__S(5).pipe(T.HttpBody())),
+          body: S.optional(Account.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -662,7 +796,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           account: S.optional(S.String),
-          role: S.optional(S.String),
+          role: S.optional(AdminRoleEnum),
           admin: S.optional(S.String),
           name: S.optional(S.String),
           pendingInvitation: S.optional(S.Boolean),
@@ -676,7 +810,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(7).pipe(T.HttpBody())),
+          body: S.optional(Admin.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -691,7 +825,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(7).pipe(T.HttpBody())),
+          body: S.optional(Admin.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -706,7 +840,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(0).pipe(T.HttpBody())),
+          body: S.optional(AcceptInvitationRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -773,7 +907,7 @@ function __c1(j: number): any {
         ),
       ).annotate({ identifier: "ListAccountsRequest" });
     case 7:
-      return S.Array(__S(5));
+      return S.Array(Account);
   }
 }
 function __c2(j: number): any {
@@ -781,7 +915,7 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          accounts: S.optional(__S(15)),
+          accounts: S.optional(AccountList),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListAccountsResponse" });
@@ -800,11 +934,11 @@ function __c2(j: number): any {
         identifier: "ListAccountsAdminsRequest",
       });
     case 2:
-      return S.Array(__S(7));
+      return S.Array(Admin);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          accountAdmins: S.optional(__S(18)),
+          accountAdmins: S.optional(AdminList),
         }),
       ).annotate({
         identifier: "ListAccountAdminsResponse",
@@ -835,15 +969,15 @@ function __c2(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          role: S.optional(S.String),
-          targetType: S.optional(S.String),
-          targetLocation: S.optional(__S(21)),
-          targetAccount: S.optional(__S(5)),
+          role: S.optional(InvitationRoleEnum),
+          targetType: S.optional(InvitationTargetTypeEnum),
+          targetLocation: S.optional(TargetLocation),
+          targetAccount: S.optional(Account),
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "Invitation" });
     case 7:
-      return S.Array(__S(22));
+      return S.Array(Invitation);
   }
 }
 function __c3(j: number): any {
@@ -851,7 +985,7 @@ function __c3(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          invitations: S.optional(__S(23)),
+          invitations: S.optional(InvitationList),
         }),
       ).annotate({ identifier: "ListInvitationsResponse" });
     case 1:
@@ -871,7 +1005,7 @@ function __c3(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          admins: S.optional(__S(18)),
+          admins: S.optional(AdminList),
         }),
       ).annotate({
         identifier: "ListLocationAdminsResponse",
@@ -882,7 +1016,7 @@ function __c3(j: number): any {
           name: S.String.pipe(T.Label()),
           validateOnly: S.optional(S.Boolean.pipe(T.Query())),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(5).pipe(T.HttpBody())),
+          body: S.optional(Account.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -896,7 +1030,7 @@ function __c3(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(7).pipe(T.HttpBody())),
+          body: S.optional(Admin.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -912,7 +1046,7 @@ function __c3(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(7).pipe(T.HttpBody())),
+          body: S.optional(Admin.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -933,7 +1067,7 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(30).pipe(T.HttpBody())),
+          body: S.optional(TransferLocationRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -942,22 +1076,5 @@ function __c3(j: number): any {
           }),
         ),
       ).annotate({ identifier: "TransferLocationsRequest" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
   }
 }

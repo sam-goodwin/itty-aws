@@ -11,8 +11,6 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 const svc = /*@__PURE__*/ T.AwsApiService({ sdkId: "QBusiness", serviceShapeName: "ExpertQ" });
 const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "qbusiness" });
 const ver = /*@__PURE__*/ T.ServiceVersion("2023-11-27");
@@ -134,11 +132,11 @@ export class ValidationException
     "ValidationException",
     {
       message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
-      reason: /*@__PURE__*/ S.suspend(() => S.String).annotate({
+      reason: /*@__PURE__*/ S.suspend(() => ValidationExceptionReason).annotate({
         identifier: "ValidationExceptionReason",
       }),
       fields: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => __S(335)).annotate({
+        /*@__PURE__*/ S.suspend(() => ValidationExceptionFields).annotate({
           identifier: "ValidationExceptionFields",
         }),
       ),
@@ -149,16 +147,22 @@ export type ApplicationId = string;
 export type StatementId = string;
 export type QIamAction = string;
 export type QIamActions = string[];
+const QIamActions = /*@__PURE__*/ __L.at(__c0, 0);
 export type PermissionConditionOperator = "StringEquals" | (string & {});
+const PermissionConditionOperator = S.String;
+
 export type PermissionConditionKey = string;
 export type PermissionConditionValue = string;
 export type PermissionConditionValues = string[];
+const PermissionConditionValues = QIamActions as any as S.Schema<PermissionConditionValues>;
 export interface PermissionCondition {
   conditionOperator: PermissionConditionOperator;
   conditionKey: string;
   conditionValues: string[];
 }
+const PermissionCondition = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<PermissionCondition>;
 export type PermissionConditions = PermissionCondition[];
+const PermissionConditions = /*@__PURE__*/ __L.at(__c0, 2);
 export type PrincipalRoleArn = string;
 export interface AssociatePermissionRequest {
   applicationId: string;
@@ -167,15 +171,25 @@ export interface AssociatePermissionRequest {
   conditions?: PermissionCondition[];
   principal: string;
 }
+const AssociatePermissionRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<AssociatePermissionRequest>;
 export interface AssociatePermissionResponse {
   statement?: string;
 }
+const AssociatePermissionResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<AssociatePermissionResponse>;
 export type IndexId = string;
 export type DocumentId = string;
 export interface DeleteDocument {
   documentId: string;
 }
+const DeleteDocument = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<DeleteDocument>;
 export type DeleteDocuments = DeleteDocument[];
+const DeleteDocuments = /*@__PURE__*/ __L.at(__c0, 6);
 export type ExecutionId = string;
 export interface BatchDeleteDocumentRequest {
   applicationId: string;
@@ -183,6 +197,10 @@ export interface BatchDeleteDocumentRequest {
   documents: DeleteDocument[];
   dataSourceSyncId?: string;
 }
+const BatchDeleteDocumentRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<BatchDeleteDocumentRequest>;
 export type ErrorMessage = string;
 export type ErrorCode =
   | "InternalError"
@@ -190,40 +208,56 @@ export type ErrorCode =
   | "ResourceInactive"
   | "ResourceNotFound"
   | (string & {});
+const ErrorCode = S.String;
+
 export interface ErrorDetail {
   errorMessage?: string;
   errorCode?: ErrorCode;
 }
+const ErrorDetail = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<ErrorDetail>;
 export type DataSourceId = string;
 export interface FailedDocument {
   id?: string;
   error?: ErrorDetail;
   dataSourceId?: string;
 }
+const FailedDocument = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<FailedDocument>;
 export type FailedDocuments = FailedDocument[];
+const FailedDocuments = /*@__PURE__*/ __L.at(__c1, 2);
 export interface BatchDeleteDocumentResponse {
   failedDocuments?: FailedDocument[];
 }
+const BatchDeleteDocumentResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<BatchDeleteDocumentResponse>;
 export type DocumentAttributeKey = string;
 export type DocumentAttributeStringValue = string;
 export type DocumentAttributeStringListValue = string[];
+const DocumentAttributeStringListValue =
+  QIamActions as any as S.Schema<DocumentAttributeStringListValue>;
 export type DocumentAttributeValue =
   | { stringValue: string; stringListValue?: never; longValue?: never; dateValue?: never }
   | { stringValue?: never; stringListValue: string[]; longValue?: never; dateValue?: never }
   | { stringValue?: never; stringListValue?: never; longValue: number; dateValue?: never }
   | { stringValue?: never; stringListValue?: never; longValue?: never; dateValue: Date };
+const DocumentAttributeValue = /*@__PURE__*/ __L.at(__c1, 4);
 export interface DocumentAttribute {
   name: string;
   value: DocumentAttributeValue;
 }
+const DocumentAttribute = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<DocumentAttribute>;
 export type DocumentAttributes = DocumentAttribute[];
+const DocumentAttributes = /*@__PURE__*/ __L.at(__c1, 6);
 export type S3BucketName = string;
 export type S3ObjectKey = string;
 export interface S3 {
   bucket: string;
   key: string;
 }
+const S3 = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<S3>;
 export type DocumentContent = { blob: Uint8Array; s3?: never } | { blob?: never; s3: S3 };
+const DocumentContent = /*@__PURE__*/ __L.at(__c2, 0);
 export type ContentType =
   | "PDF"
   | "HTML"
@@ -238,35 +272,50 @@ export type ContentType =
   | "JSON"
   | "MD"
   | (string & {});
+const ContentType = S.String;
+
 export type Title = string;
 export type UserId = string;
 export type ReadAccessType = "ALLOW" | "DENY" | (string & {});
+const ReadAccessType = S.String;
+
 export type MembershipType = "INDEX" | "DATASOURCE" | (string & {});
+const MembershipType = S.String;
+
 export interface PrincipalUser {
   id?: string;
   access: ReadAccessType;
   membershipType?: MembershipType;
 }
+const PrincipalUser = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<PrincipalUser>;
 export type GroupName = string;
 export interface PrincipalGroup {
   name?: string;
   access: ReadAccessType;
   membershipType?: MembershipType;
 }
+const PrincipalGroup = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<PrincipalGroup>;
 export type Principal =
   | { user: PrincipalUser; group?: never }
   | { user?: never; group: PrincipalGroup };
+const Principal = /*@__PURE__*/ __L.at(__c2, 3);
 export type Principals = Principal[];
+const Principals = /*@__PURE__*/ __L.at(__c2, 4);
 export type MemberRelation = "AND" | "OR" | (string & {});
+const MemberRelation = S.String;
+
 export interface AccessControl {
   principals: Principal[];
   memberRelation?: MemberRelation;
 }
+const AccessControl = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<AccessControl>;
 export type AccessControls = AccessControl[];
+const AccessControls = /*@__PURE__*/ __L.at(__c2, 6);
 export interface AccessConfiguration {
   accessControls: AccessControl[];
   memberRelation?: MemberRelation;
 }
+const AccessConfiguration = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<AccessConfiguration>;
 export type DocumentEnrichmentConditionOperator =
   | "GREATER_THAN"
   | "GREATER_THAN_OR_EQUALS"
@@ -280,24 +329,43 @@ export type DocumentEnrichmentConditionOperator =
   | "NOT_EXISTS"
   | "BEGINS_WITH"
   | (string & {});
+const DocumentEnrichmentConditionOperator = S.String;
+
 export interface DocumentAttributeCondition {
   key: string;
   operator: DocumentEnrichmentConditionOperator;
   value?: DocumentAttributeValue;
 }
+const DocumentAttributeCondition = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<DocumentAttributeCondition>;
 export type AttributeValueOperator = "DELETE" | (string & {});
+const AttributeValueOperator = S.String;
+
 export interface DocumentAttributeTarget {
   key: string;
   value?: DocumentAttributeValue;
   attributeValueOperator?: AttributeValueOperator;
 }
+const DocumentAttributeTarget = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<DocumentAttributeTarget>;
 export type DocumentContentOperator = "DELETE" | (string & {});
+const DocumentContentOperator = S.String;
+
 export interface InlineDocumentEnrichmentConfiguration {
   condition?: DocumentAttributeCondition;
   target?: DocumentAttributeTarget;
   documentContentOperator?: DocumentContentOperator;
 }
+const InlineDocumentEnrichmentConfiguration = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<InlineDocumentEnrichmentConfiguration>;
 export type InlineDocumentEnrichmentConfigurations = InlineDocumentEnrichmentConfiguration[];
+const InlineDocumentEnrichmentConfigurations = /*@__PURE__*/ __L.at(__c3, 3);
 export type LambdaArn = string;
 export type RoleArn = string;
 export interface HookConfiguration {
@@ -306,28 +374,55 @@ export interface HookConfiguration {
   s3BucketName?: string;
   roleArn?: string;
 }
+const HookConfiguration = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<HookConfiguration>;
 export interface DocumentEnrichmentConfiguration {
   inlineConfigurations?: InlineDocumentEnrichmentConfiguration[];
   preExtractionHookConfiguration?: HookConfiguration;
   postExtractionHookConfiguration?: HookConfiguration;
 }
+const DocumentEnrichmentConfiguration = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<DocumentEnrichmentConfiguration>;
 export type ImageExtractionStatus = "ENABLED" | "DISABLED" | (string & {});
+const ImageExtractionStatus = S.String;
+
 export interface ImageExtractionConfiguration {
   imageExtractionStatus: ImageExtractionStatus;
 }
+const ImageExtractionConfiguration = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<ImageExtractionConfiguration>;
 export type AudioExtractionStatus = "ENABLED" | "DISABLED" | (string & {});
+const AudioExtractionStatus = S.String;
+
 export interface AudioExtractionConfiguration {
   audioExtractionStatus: AudioExtractionStatus;
 }
+const AudioExtractionConfiguration = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<AudioExtractionConfiguration>;
 export type VideoExtractionStatus = "ENABLED" | "DISABLED" | (string & {});
+const VideoExtractionStatus = S.String;
+
 export interface VideoExtractionConfiguration {
   videoExtractionStatus: VideoExtractionStatus;
 }
+const VideoExtractionConfiguration = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<VideoExtractionConfiguration>;
 export interface MediaExtractionConfiguration {
   imageExtractionConfiguration?: ImageExtractionConfiguration;
   audioExtractionConfiguration?: AudioExtractionConfiguration;
   videoExtractionConfiguration?: VideoExtractionConfiguration;
 }
+const MediaExtractionConfiguration = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<MediaExtractionConfiguration>;
 export interface Document {
   id: string;
   attributes?: DocumentAttribute[];
@@ -338,7 +433,9 @@ export interface Document {
   documentEnrichmentConfiguration?: DocumentEnrichmentConfiguration;
   mediaExtractionConfiguration?: MediaExtractionConfiguration;
 }
+const Document = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<Document>;
 export type Documents = Document[];
+const Documents = /*@__PURE__*/ __L.at(__c4, 3);
 export interface BatchPutDocumentRequest {
   applicationId: string;
   indexId: string;
@@ -346,35 +443,60 @@ export interface BatchPutDocumentRequest {
   roleArn?: string;
   dataSourceSyncId?: string;
 }
+const BatchPutDocumentRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<BatchPutDocumentRequest>;
 export interface BatchPutDocumentResponse {
   failedDocuments?: FailedDocument[];
 }
+const BatchPutDocumentResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<BatchPutDocumentResponse>;
 export type SubscriptionId = string;
 export interface CancelSubscriptionRequest {
   applicationId: string;
   subscriptionId: string;
 }
+const CancelSubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<CancelSubscriptionRequest>;
 export type SubscriptionArn = string;
 export type SubscriptionType = "Q_LITE" | "Q_BUSINESS" | (string & {});
+const SubscriptionType = S.String;
+
 export interface SubscriptionDetails {
   type?: SubscriptionType;
 }
+const SubscriptionDetails = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<SubscriptionDetails>;
 export interface CancelSubscriptionResponse {
   subscriptionArn?: string;
   currentSubscription?: SubscriptionDetails;
   nextSubscription?: SubscriptionDetails;
 }
+const CancelSubscriptionResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  0,
+) as any as S.Schema<CancelSubscriptionResponse>;
 export type UserGroups = string[];
+const UserGroups = QIamActions as any as S.Schema<UserGroups>;
 export type ConversationId = string;
 export type MessageId = string;
 export type ClientToken = string;
 export type ChatMode = "RETRIEVAL_MODE" | "CREATOR_MODE" | "PLUGIN_MODE" | (string & {});
+const ChatMode = S.String;
+
 export type PluginId = string;
 export interface PluginConfiguration {
   pluginId: string;
 }
+const PluginConfiguration = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<PluginConfiguration>;
 export type ChatModeConfiguration = { pluginConfiguration: PluginConfiguration };
+const ChatModeConfiguration = /*@__PURE__*/ __L.at(__c5, 2);
 export type AttributeFilters = AttributeFilter[];
+const AttributeFilters = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<AttributeFilters>;
 export interface AttributeFilter {
   andAllFilters?: AttributeFilter[];
   orAllFilters?: AttributeFilter[];
@@ -387,49 +509,68 @@ export interface AttributeFilter {
   lessThan?: DocumentAttribute;
   lessThanOrEquals?: DocumentAttribute;
 }
+const AttributeFilter = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<AttributeFilter>;
 export interface ConfigurationEvent {
   chatMode?: ChatMode;
   chatModeConfiguration?: ChatModeConfiguration;
   attributeFilter?: AttributeFilter;
 }
+const ConfigurationEvent = /*@__PURE__*/ __L.at(__c5, 5) as any as S.Schema<ConfigurationEvent>;
 export type UserMessage = string;
 export interface TextInputEvent {
   userMessage: string;
 }
+const TextInputEvent = /*@__PURE__*/ __L.at(__c5, 6) as any as S.Schema<TextInputEvent>;
 export type AttachmentName = string;
 export type AttachmentId = string;
 export interface ConversationSource {
   conversationId: string;
   attachmentId: string;
 }
+const ConversationSource = /*@__PURE__*/ __L.at(__c5, 7) as any as S.Schema<ConversationSource>;
 export type CopyFromSource = { conversation: ConversationSource };
+const CopyFromSource = /*@__PURE__*/ __L.at(__c6, 0);
 export interface AttachmentInput {
   data?: Uint8Array;
   name?: string;
   copyFrom?: CopyFromSource;
 }
+const AttachmentInput = /*@__PURE__*/ __L.at(__c6, 1) as any as S.Schema<AttachmentInput>;
 export interface AttachmentInputEvent {
   attachment?: AttachmentInput;
 }
+const AttachmentInputEvent = /*@__PURE__*/ __L.at(__c6, 2) as any as S.Schema<AttachmentInputEvent>;
 export type ActionPayloadFieldKey = string;
 export type ActionPayloadFieldValue = unknown;
 export interface ActionExecutionPayloadField {
   value: any;
 }
+const ActionExecutionPayloadField = /*@__PURE__*/ __L.at(
+  __c6,
+  3,
+) as any as S.Schema<ActionExecutionPayloadField>;
 export type ActionExecutionPayload = { [key: string]: ActionExecutionPayloadField | undefined };
+const ActionExecutionPayload = /*@__PURE__*/ __L.at(__c6, 4);
 export type ActionPayloadFieldNameSeparator = string;
 export interface ActionExecutionEvent {
   pluginId: string;
   payload: { [key: string]: ActionExecutionPayloadField | undefined };
   payloadFieldNameSeparator: string;
 }
+const ActionExecutionEvent = /*@__PURE__*/ __L.at(__c6, 5) as any as S.Schema<ActionExecutionEvent>;
 export interface EndOfInputEvent {}
+const EndOfInputEvent = /*@__PURE__*/ __L.at(__c6, 6) as any as S.Schema<EndOfInputEvent>;
 export type AuthResponseKey = string;
 export type AuthResponseValue = string;
 export type AuthorizationResponseMap = { [key: string]: string | undefined };
+const AuthorizationResponseMap = /*@__PURE__*/ __L.at(__c6, 7);
 export interface AuthChallengeResponseEvent {
   responseMap: { [key: string]: string | undefined };
 }
+const AuthChallengeResponseEvent = /*@__PURE__*/ __L.at(
+  __c7,
+  0,
+) as any as S.Schema<AuthChallengeResponseEvent>;
 export type ChatInputStream =
   | {
       configurationEvent: ConfigurationEvent;
@@ -479,6 +620,9 @@ export type ChatInputStream =
       endOfInputEvent?: never;
       authChallengeResponseEvent: AuthChallengeResponseEvent;
     };
+const ChatInputStream = /*@__PURE__*/ __L.at(__c7, 1) as any as S.Schema<
+  stream.Stream<ChatInputStream, Error, never>
+>;
 export interface ChatInput {
   applicationId: string;
   userId?: string;
@@ -488,7 +632,10 @@ export interface ChatInput {
   clientToken?: string;
   inputStream?: stream.Stream<ChatInputStream, Error, never>;
 }
+const ChatInput = /*@__PURE__*/ __L.at(__c7, 2) as any as S.Schema<ChatInput>;
 export type SystemMessageType = "RESPONSE" | "GROUNDED_RESPONSE" | (string & {});
+const SystemMessageType = S.String;
+
 export interface TextOutputEvent {
   systemMessageType?: SystemMessageType;
   conversationId?: string;
@@ -496,17 +643,22 @@ export interface TextOutputEvent {
   systemMessageId?: string;
   systemMessage?: string;
 }
+const TextOutputEvent = /*@__PURE__*/ __L.at(__c7, 3) as any as S.Schema<TextOutputEvent>;
 export type SnippetExcerptText = string;
 export interface SnippetExcerpt {
   text?: string;
 }
+const SnippetExcerpt = /*@__PURE__*/ __L.at(__c7, 4) as any as S.Schema<SnippetExcerpt>;
 export type SourceAttributionMediaId = string;
 export type MediaId = string;
 export interface ImageSourceDetails {
   mediaId?: string;
   mediaMimeType?: string;
 }
+const ImageSourceDetails = /*@__PURE__*/ __L.at(__c7, 5) as any as S.Schema<ImageSourceDetails>;
 export type AudioExtractionType = "TRANSCRIPT" | "SUMMARY" | (string & {});
+const AudioExtractionType = S.String;
+
 export interface AudioSourceDetails {
   mediaId?: string;
   mediaMimeType?: string;
@@ -514,7 +666,10 @@ export interface AudioSourceDetails {
   endTimeMilliseconds?: number;
   audioExtractionType?: AudioExtractionType;
 }
+const AudioSourceDetails = /*@__PURE__*/ __L.at(__c7, 6) as any as S.Schema<AudioSourceDetails>;
 export type VideoExtractionType = "TRANSCRIPT" | "SUMMARY" | (string & {});
+const VideoExtractionType = S.String;
+
 export interface VideoSourceDetails {
   mediaId?: string;
   mediaMimeType?: string;
@@ -522,6 +677,7 @@ export interface VideoSourceDetails {
   endTimeMilliseconds?: number;
   videoExtractionType?: VideoExtractionType;
 }
+const VideoSourceDetails = /*@__PURE__*/ __L.at(__c7, 7) as any as S.Schema<VideoSourceDetails>;
 export type SourceDetails =
   | {
       imageSourceDetails: ImageSourceDetails;
@@ -538,6 +694,7 @@ export type SourceDetails =
       audioSourceDetails?: never;
       videoSourceDetails: VideoSourceDetails;
     };
+const SourceDetails = /*@__PURE__*/ __L.at(__c8, 0);
 export interface TextSegment {
   beginOffset?: number;
   endOffset?: number;
@@ -546,7 +703,9 @@ export interface TextSegment {
   mediaMimeType?: string;
   sourceDetails?: SourceDetails;
 }
+const TextSegment = /*@__PURE__*/ __L.at(__c8, 1) as any as S.Schema<TextSegment>;
 export type TextSegmentList = TextSegment[];
+const TextSegmentList = /*@__PURE__*/ __L.at(__c8, 2);
 export interface SourceAttribution {
   title?: string;
   snippet?: string;
@@ -558,7 +717,9 @@ export interface SourceAttribution {
   indexId?: string;
   datasourceId?: string;
 }
+const SourceAttribution = /*@__PURE__*/ __L.at(__c8, 3) as any as S.Schema<SourceAttribution>;
 export type SourceAttributions = SourceAttribution[];
+const SourceAttributions = /*@__PURE__*/ __L.at(__c8, 4);
 export interface MetadataEvent {
   conversationId?: string;
   userMessageId?: string;
@@ -566,6 +727,7 @@ export interface MetadataEvent {
   sourceAttributions?: SourceAttribution[];
   finalTextMessage?: string;
 }
+const MetadataEvent = /*@__PURE__*/ __L.at(__c8, 5) as any as S.Schema<MetadataEvent>;
 export type PluginType =
   | "SERVICE_NOW"
   | "SALESFORCE"
@@ -585,12 +747,21 @@ export type PluginType =
   | "SMARTSHEET"
   | "ASANA"
   | (string & {});
+const PluginType = S.String;
+
 export type ActionPayloadFieldType = "STRING" | "NUMBER" | "ARRAY" | "BOOLEAN" | (string & {});
+const ActionPayloadFieldType = S.String;
+
 export interface ActionReviewPayloadFieldAllowedValue {
   value?: any;
   displayValue?: any;
 }
+const ActionReviewPayloadFieldAllowedValue = /*@__PURE__*/ __L.at(
+  __c8,
+  6,
+) as any as S.Schema<ActionReviewPayloadFieldAllowedValue>;
 export type ActionReviewPayloadFieldAllowedValues = ActionReviewPayloadFieldAllowedValue[];
+const ActionReviewPayloadFieldAllowedValues = /*@__PURE__*/ __L.at(__c8, 7);
 export type ActionReviewPayloadFieldArrayItemJsonSchema = unknown;
 export interface ActionReviewPayloadField {
   displayName?: string;
@@ -603,7 +774,12 @@ export interface ActionReviewPayloadField {
   arrayItemJsonSchema?: any;
   required?: boolean;
 }
+const ActionReviewPayloadField = /*@__PURE__*/ __L.at(
+  __c9,
+  0,
+) as any as S.Schema<ActionReviewPayloadField>;
 export type ActionReviewPayload = { [key: string]: ActionReviewPayloadField | undefined };
+const ActionReviewPayload = /*@__PURE__*/ __L.at(__c9, 1);
 export interface ActionReviewEvent {
   conversationId?: string;
   userMessageId?: string;
@@ -613,7 +789,10 @@ export interface ActionReviewEvent {
   payload?: { [key: string]: ActionReviewPayloadField | undefined };
   payloadFieldNameSeparator?: string;
 }
+const ActionReviewEvent = /*@__PURE__*/ __L.at(__c9, 2) as any as S.Schema<ActionReviewEvent>;
 export type AttachmentStatus = "FAILED" | "SUCCESS" | (string & {});
+const AttachmentStatus = S.String;
+
 export interface AttachmentOutput {
   name?: string;
   status?: AttachmentStatus;
@@ -621,16 +800,25 @@ export interface AttachmentOutput {
   attachmentId?: string;
   conversationId?: string;
 }
+const AttachmentOutput = /*@__PURE__*/ __L.at(__c9, 3) as any as S.Schema<AttachmentOutput>;
 export interface FailedAttachmentEvent {
   conversationId?: string;
   userMessageId?: string;
   systemMessageId?: string;
   attachment?: AttachmentOutput;
 }
+const FailedAttachmentEvent = /*@__PURE__*/ __L.at(
+  __c9,
+  4,
+) as any as S.Schema<FailedAttachmentEvent>;
 export type Url = string;
 export interface AuthChallengeRequestEvent {
   authorizationUrl: string;
 }
+const AuthChallengeRequestEvent = /*@__PURE__*/ __L.at(
+  __c9,
+  5,
+) as any as S.Schema<AuthChallengeRequestEvent>;
 export type ChatOutputStream =
   | {
       textEvent: TextOutputEvent;
@@ -667,18 +855,28 @@ export type ChatOutputStream =
       failedAttachmentEvent?: never;
       authChallengeRequestEvent: AuthChallengeRequestEvent;
     };
+const ChatOutputStream = /*@__PURE__*/ __L.at(__c9, 6) as any as S.Schema<
+  stream.Stream<ChatOutputStream, Error, never>
+>;
 export interface ChatOutput {
   outputStream?: stream.Stream<ChatOutputStream, Error, never>;
 }
+const ChatOutput = /*@__PURE__*/ __L.at(__c9, 7) as any as S.Schema<ChatOutput>;
 export type AttachmentsInput = AttachmentInput[];
+const AttachmentsInput = /*@__PURE__*/ __L.at(__c10, 0);
 export interface ActionExecution {
   pluginId: string;
   payload: { [key: string]: ActionExecutionPayloadField | undefined };
   payloadFieldNameSeparator: string;
 }
+const ActionExecution = ActionExecutionEvent as any as S.Schema<ActionExecution>;
 export interface AuthChallengeResponse {
   responseMap: { [key: string]: string | undefined };
 }
+const AuthChallengeResponse = /*@__PURE__*/ __L.at(
+  __c10,
+  1,
+) as any as S.Schema<AuthChallengeResponse>;
 export interface ChatSyncInput {
   applicationId: string;
   userId?: string;
@@ -694,16 +892,23 @@ export interface ChatSyncInput {
   chatModeConfiguration?: ChatModeConfiguration;
   clientToken?: string;
 }
+const ChatSyncInput = /*@__PURE__*/ __L.at(__c10, 2) as any as S.Schema<ChatSyncInput>;
 export interface ActionReview {
   pluginId?: string;
   pluginType?: PluginType;
   payload?: { [key: string]: ActionReviewPayloadField | undefined };
   payloadFieldNameSeparator?: string;
 }
+const ActionReview = /*@__PURE__*/ __L.at(__c10, 3) as any as S.Schema<ActionReview>;
 export interface AuthChallengeRequest {
   authorizationUrl: string;
 }
+const AuthChallengeRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  4,
+) as any as S.Schema<AuthChallengeRequest>;
 export type AttachmentsOutput = AttachmentOutput[];
+const AttachmentsOutput = /*@__PURE__*/ __L.at(__c10, 5);
 export interface ChatSyncOutput {
   conversationId?: string;
   systemMessage?: string;
@@ -714,6 +919,7 @@ export interface ChatSyncOutput {
   sourceAttributions?: SourceAttribution[];
   failedAttachments?: AttachmentOutput[];
 }
+const ChatSyncOutput = /*@__PURE__*/ __L.at(__c10, 6) as any as S.Schema<ChatSyncOutput>;
 export interface CheckDocumentAccessRequest {
   applicationId: string;
   indexId: string;
@@ -721,46 +927,70 @@ export interface CheckDocumentAccessRequest {
   documentId: string;
   dataSourceId?: string;
 }
+const CheckDocumentAccessRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  7,
+) as any as S.Schema<CheckDocumentAccessRequest>;
 export interface AssociatedGroup {
   name?: string;
   type?: MembershipType;
 }
+const AssociatedGroup = /*@__PURE__*/ __L.at(__c11, 0) as any as S.Schema<AssociatedGroup>;
 export type AssociatedGroups = AssociatedGroup[];
+const AssociatedGroups = /*@__PURE__*/ __L.at(__c11, 1);
 export interface AssociatedUser {
   id?: string;
   type?: MembershipType;
 }
+const AssociatedUser = /*@__PURE__*/ __L.at(__c11, 2) as any as S.Schema<AssociatedUser>;
 export type AssociatedUsers = AssociatedUser[];
+const AssociatedUsers = /*@__PURE__*/ __L.at(__c11, 3);
 export interface DocumentAclUser {
   id?: string;
   type?: MembershipType;
 }
 export type DocumentAclUsers = DocumentAclUser[];
+const DocumentAclUsers = AssociatedUsers as any as S.Schema<DocumentAclUsers>;
 export interface DocumentAclGroup {
   name?: string;
   type?: MembershipType;
 }
 export type DocumentAclGroups = DocumentAclGroup[];
+const DocumentAclGroups = AssociatedGroups as any as S.Schema<DocumentAclGroups>;
 export interface DocumentAclCondition {
   memberRelation?: MemberRelation;
   users?: DocumentAclUser[];
   groups?: DocumentAclGroup[];
 }
+const DocumentAclCondition = /*@__PURE__*/ __L.at(
+  __c11,
+  4,
+) as any as S.Schema<DocumentAclCondition>;
 export type DocumentAclConditions = DocumentAclCondition[];
+const DocumentAclConditions = /*@__PURE__*/ __L.at(__c11, 5);
 export interface DocumentAclMembership {
   memberRelation?: MemberRelation;
   conditions?: DocumentAclCondition[];
 }
+const DocumentAclMembership = /*@__PURE__*/ __L.at(
+  __c11,
+  6,
+) as any as S.Schema<DocumentAclMembership>;
 export interface DocumentAcl {
   allowlist?: DocumentAclMembership;
   denyList?: DocumentAclMembership;
 }
+const DocumentAcl = /*@__PURE__*/ __L.at(__c11, 7) as any as S.Schema<DocumentAcl>;
 export interface CheckDocumentAccessResponse {
   userGroups?: AssociatedGroup[];
   userAliases?: AssociatedUser[];
   hasAccess?: boolean;
   documentAcl?: DocumentAcl;
 }
+const CheckDocumentAccessResponse = /*@__PURE__*/ __L.at(
+  __c12,
+  0,
+) as any as S.Schema<CheckDocumentAccessResponse>;
 export type WebExperienceId = string;
 export type SessionDurationInMinutes = number;
 export interface CreateAnonymousWebExperienceUrlRequest {
@@ -768,9 +998,17 @@ export interface CreateAnonymousWebExperienceUrlRequest {
   webExperienceId: string;
   sessionDurationInMinutes?: number;
 }
+const CreateAnonymousWebExperienceUrlRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  1,
+) as any as S.Schema<CreateAnonymousWebExperienceUrlRequest>;
 export interface CreateAnonymousWebExperienceUrlResponse {
   anonymousUrl?: string;
 }
+const CreateAnonymousWebExperienceUrlResponse = /*@__PURE__*/ __L.at(
+  __c12,
+  2,
+) as any as S.Schema<CreateAnonymousWebExperienceUrlResponse>;
 export type ApplicationName = string;
 export type IdentityType =
   | "AWS_IAM_IDP_SAML"
@@ -779,38 +1017,66 @@ export type IdentityType =
   | "AWS_QUICKSIGHT_IDP"
   | "ANONYMOUS"
   | (string & {});
+const IdentityType = S.String;
+
 export type IAMIdentityProviderArn = string;
 export type InstanceArn = string;
 export type ClientIdForOIDC = string;
 export type ClientIdsForOIDC = string[];
+const ClientIdsForOIDC = QIamActions as any as S.Schema<ClientIdsForOIDC>;
 export type Description = string;
 export type KmsKeyId = string | redacted.Redacted<string>;
 export interface EncryptionConfiguration {
   kmsKeyId?: string | redacted.Redacted<string>;
 }
+const EncryptionConfiguration = /*@__PURE__*/ __L.at(
+  __c12,
+  3,
+) as any as S.Schema<EncryptionConfiguration>;
 export type TagKey = string;
 export type TagValue = string;
 export interface Tag {
   key: string;
   value: string;
 }
+const Tag = /*@__PURE__*/ __L.at(__c12, 4) as any as S.Schema<Tag>;
 export type Tags = Tag[];
+const Tags = /*@__PURE__*/ __L.at(__c12, 5);
 export type AttachmentsControlMode = "ENABLED" | "DISABLED" | (string & {});
+const AttachmentsControlMode = S.String;
+
 export interface AttachmentsConfiguration {
   attachmentsControlMode: AttachmentsControlMode;
 }
+const AttachmentsConfiguration = /*@__PURE__*/ __L.at(
+  __c12,
+  6,
+) as any as S.Schema<AttachmentsConfiguration>;
 export type QAppsControlMode = "ENABLED" | "DISABLED" | (string & {});
+const QAppsControlMode = S.String;
+
 export interface QAppsConfiguration {
   qAppsControlMode: QAppsControlMode;
 }
+const QAppsConfiguration = /*@__PURE__*/ __L.at(__c12, 7) as any as S.Schema<QAppsConfiguration>;
 export type PersonalizationControlMode = "ENABLED" | "DISABLED" | (string & {});
+const PersonalizationControlMode = S.String;
+
 export interface PersonalizationConfiguration {
   personalizationControlMode: PersonalizationControlMode;
 }
+const PersonalizationConfiguration = /*@__PURE__*/ __L.at(
+  __c13,
+  0,
+) as any as S.Schema<PersonalizationConfiguration>;
 export type ClientNamespace = string;
 export interface QuickSightConfiguration {
   clientNamespace: string;
 }
+const QuickSightConfiguration = /*@__PURE__*/ __L.at(
+  __c13,
+  1,
+) as any as S.Schema<QuickSightConfiguration>;
 export interface CreateApplicationRequest {
   displayName: string;
   roleArn?: string;
@@ -827,13 +1093,23 @@ export interface CreateApplicationRequest {
   personalizationConfiguration?: PersonalizationConfiguration;
   quickSightConfiguration?: QuickSightConfiguration;
 }
+const CreateApplicationRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  2,
+) as any as S.Schema<CreateApplicationRequest>;
 export type ApplicationArn = string;
 export interface CreateApplicationResponse {
   applicationId?: string;
   applicationArn?: string;
 }
+const CreateApplicationResponse = /*@__PURE__*/ __L.at(
+  __c13,
+  3,
+) as any as S.Schema<CreateApplicationResponse>;
 export type DisplayName = string;
 export type ResponseConfigurationType = "ALL" | (string & {});
+const ResponseConfigurationType = S.String;
+
 export type Instruction = string;
 export interface InstructionCollection {
   responseLength?: string;
@@ -845,10 +1121,19 @@ export interface InstructionCollection {
   customInstructions?: string;
   examples?: string;
 }
+const InstructionCollection = /*@__PURE__*/ __L.at(
+  __c13,
+  4,
+) as any as S.Schema<InstructionCollection>;
 export interface ResponseConfiguration {
   instructionCollection?: InstructionCollection;
 }
+const ResponseConfiguration = /*@__PURE__*/ __L.at(
+  __c13,
+  5,
+) as any as S.Schema<ResponseConfiguration>;
 export type ResponseConfigurations = { [key in ResponseConfigurationType]?: ResponseConfiguration };
+const ResponseConfigurations = /*@__PURE__*/ __L.at(__c13, 6);
 export interface CreateChatResponseConfigurationRequest {
   applicationId: string;
   displayName: string;
@@ -856,39 +1141,65 @@ export interface CreateChatResponseConfigurationRequest {
   responseConfigurations: { [key: string]: ResponseConfiguration | undefined };
   tags?: Tag[];
 }
+const CreateChatResponseConfigurationRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  7,
+) as any as S.Schema<CreateChatResponseConfigurationRequest>;
 export type ChatResponseConfigurationId = string;
 export type ChatResponseConfigurationArn = string;
 export interface CreateChatResponseConfigurationResponse {
   chatResponseConfigurationId: string;
   chatResponseConfigurationArn: string;
 }
+const CreateChatResponseConfigurationResponse = /*@__PURE__*/ __L.at(
+  __c14,
+  0,
+) as any as S.Schema<CreateChatResponseConfigurationResponse>;
 export interface ActionFilterConfiguration {
   documentAttributeFilter: AttributeFilter;
 }
+const ActionFilterConfiguration = /*@__PURE__*/ __L.at(
+  __c14,
+  1,
+) as any as S.Schema<ActionFilterConfiguration>;
 export interface ActionConfiguration {
   action: string;
   filterConfiguration?: ActionFilterConfiguration;
 }
+const ActionConfiguration = /*@__PURE__*/ __L.at(__c14, 2) as any as S.Schema<ActionConfiguration>;
 export type ActionConfigurationList = ActionConfiguration[];
+const ActionConfigurationList = /*@__PURE__*/ __L.at(__c14, 3);
 export type DataAccessorName = string | redacted.Redacted<string>;
 export type DataAccessorAuthenticationType =
   | "AWS_IAM_IDC_TTI"
   | "AWS_IAM_IDC_AUTH_CODE"
   | (string & {});
+const DataAccessorAuthenticationType = S.String;
+
 export type IdcTrustedTokenIssuerArn = string;
 export interface DataAccessorIdcTrustedTokenIssuerConfiguration {
   idcTrustedTokenIssuerArn: string;
 }
+const DataAccessorIdcTrustedTokenIssuerConfiguration = /*@__PURE__*/ __L.at(
+  __c14,
+  4,
+) as any as S.Schema<DataAccessorIdcTrustedTokenIssuerConfiguration>;
 export type DataAccessorAuthenticationConfiguration = {
   idcTrustedTokenIssuerConfiguration: DataAccessorIdcTrustedTokenIssuerConfiguration;
 };
+const DataAccessorAuthenticationConfiguration = /*@__PURE__*/ __L.at(__c14, 5);
 export type DataAccessorExternalId = string;
 export type DataAccessorExternalIds = string[];
+const DataAccessorExternalIds = QIamActions as any as S.Schema<DataAccessorExternalIds>;
 export interface DataAccessorAuthenticationDetail {
   authenticationType: DataAccessorAuthenticationType;
   authenticationConfiguration?: DataAccessorAuthenticationConfiguration;
   externalIds?: string[];
 }
+const DataAccessorAuthenticationDetail = /*@__PURE__*/ __L.at(
+  __c14,
+  6,
+) as any as S.Schema<DataAccessorAuthenticationDetail>;
 export interface CreateDataAccessorRequest {
   applicationId: string;
   principal: string;
@@ -898,6 +1209,10 @@ export interface CreateDataAccessorRequest {
   authenticationDetail?: DataAccessorAuthenticationDetail;
   tags?: Tag[];
 }
+const CreateDataAccessorRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  7,
+) as any as S.Schema<CreateDataAccessorRequest>;
 export type DataAccessorId = string;
 export type IdcApplicationArn = string;
 export type DataAccessorArn = string;
@@ -906,16 +1221,26 @@ export interface CreateDataAccessorResponse {
   idcApplicationArn: string;
   dataAccessorArn: string;
 }
+const CreateDataAccessorResponse = /*@__PURE__*/ __L.at(
+  __c15,
+  0,
+) as any as S.Schema<CreateDataAccessorResponse>;
 export type DataSourceName = string;
 export type DataSourceConfiguration = unknown;
 export type SubnetId = string;
 export type SubnetIds = string[];
+const SubnetIds = QIamActions as any as S.Schema<SubnetIds>;
 export type SecurityGroupId = string;
 export type SecurityGroupIds = string[];
+const SecurityGroupIds = QIamActions as any as S.Schema<SecurityGroupIds>;
 export interface DataSourceVpcConfiguration {
   subnetIds: string[];
   securityGroupIds: string[];
 }
+const DataSourceVpcConfiguration = /*@__PURE__*/ __L.at(
+  __c15,
+  1,
+) as any as S.Schema<DataSourceVpcConfiguration>;
 export type SyncSchedule = string;
 export interface CreateDataSourceRequest {
   applicationId: string;
@@ -931,17 +1256,31 @@ export interface CreateDataSourceRequest {
   documentEnrichmentConfiguration?: DocumentEnrichmentConfiguration;
   mediaExtractionConfiguration?: MediaExtractionConfiguration;
 }
+const CreateDataSourceRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  2,
+) as any as S.Schema<CreateDataSourceRequest>;
 export type DataSourceArn = string;
 export interface CreateDataSourceResponse {
   dataSourceId?: string;
   dataSourceArn?: string;
 }
+const CreateDataSourceResponse = /*@__PURE__*/ __L.at(
+  __c15,
+  3,
+) as any as S.Schema<CreateDataSourceResponse>;
 export type IndexName = string;
 export type IndexType = "ENTERPRISE" | "STARTER" | (string & {});
+const IndexType = S.String;
+
 export type IndexCapacityInteger = number;
 export interface IndexCapacityConfiguration {
   units?: number;
 }
+const IndexCapacityConfiguration = /*@__PURE__*/ __L.at(
+  __c15,
+  4,
+) as any as S.Schema<IndexCapacityConfiguration>;
 export interface CreateIndexRequest {
   applicationId: string;
   displayName: string;
@@ -951,28 +1290,43 @@ export interface CreateIndexRequest {
   capacityConfiguration?: IndexCapacityConfiguration;
   clientToken?: string;
 }
+const CreateIndexRequest = /*@__PURE__*/ __L.at(__c15, 5) as any as S.Schema<CreateIndexRequest>;
 export type IndexArn = string;
 export interface CreateIndexResponse {
   indexId?: string;
   indexArn?: string;
 }
+const CreateIndexResponse = /*@__PURE__*/ __L.at(__c15, 6) as any as S.Schema<CreateIndexResponse>;
 export type PluginName = string;
 export type SecretArn = string;
 export interface BasicAuthConfiguration {
   secretArn: string;
   roleArn: string;
 }
+const BasicAuthConfiguration = /*@__PURE__*/ __L.at(
+  __c15,
+  7,
+) as any as S.Schema<BasicAuthConfiguration>;
 export interface OAuth2ClientCredentialConfiguration {
   secretArn: string;
   roleArn: string;
   authorizationUrl?: string;
   tokenUrl?: string;
 }
+const OAuth2ClientCredentialConfiguration = /*@__PURE__*/ __L.at(
+  __c16,
+  0,
+) as any as S.Schema<OAuth2ClientCredentialConfiguration>;
 export interface NoAuthConfiguration {}
+const NoAuthConfiguration = EndOfInputEvent as any as S.Schema<NoAuthConfiguration>;
 export interface IdcAuthConfiguration {
   idcApplicationArn: string;
   roleArn: string;
 }
+const IdcAuthConfiguration = /*@__PURE__*/ __L.at(
+  __c16,
+  1,
+) as any as S.Schema<IdcAuthConfiguration>;
 export type PluginAuthConfiguration =
   | {
       basicAuthConfiguration: BasicAuthConfiguration;
@@ -998,17 +1352,25 @@ export type PluginAuthConfiguration =
       noAuthConfiguration?: never;
       idcAuthConfiguration: IdcAuthConfiguration;
     };
+const PluginAuthConfiguration = /*@__PURE__*/ __L.at(__c16, 2);
 export type PluginDescription = string;
 export type APISchemaType = "OPEN_API_V3" | (string & {});
+const APISchemaType = S.String;
+
 export type Payload = string | redacted.Redacted<string>;
 export type APISchema =
   | { payload: string | redacted.Redacted<string>; s3?: never }
   | { payload?: never; s3: S3 };
+const APISchema = /*@__PURE__*/ __L.at(__c16, 3);
 export interface CustomPluginConfiguration {
   description: string;
   apiSchemaType: APISchemaType;
   apiSchema?: APISchema;
 }
+const CustomPluginConfiguration = /*@__PURE__*/ __L.at(
+  __c16,
+  4,
+) as any as S.Schema<CustomPluginConfiguration>;
 export interface CreatePluginRequest {
   applicationId: string;
   displayName: string;
@@ -1019,6 +1381,7 @@ export interface CreatePluginRequest {
   tags?: Tag[];
   clientToken?: string;
 }
+const CreatePluginRequest = /*@__PURE__*/ __L.at(__c16, 5) as any as S.Schema<CreatePluginRequest>;
 export type PluginArn = string;
 export type PluginBuildStatus =
   | "READY"
@@ -1029,12 +1392,20 @@ export type PluginBuildStatus =
   | "DELETE_IN_PROGRESS"
   | "DELETE_FAILED"
   | (string & {});
+const PluginBuildStatus = S.String;
+
 export interface CreatePluginResponse {
   pluginId?: string;
   pluginArn?: string;
   buildStatus?: PluginBuildStatus;
 }
+const CreatePluginResponse = /*@__PURE__*/ __L.at(
+  __c16,
+  6,
+) as any as S.Schema<CreatePluginResponse>;
 export type RetrieverType = "NATIVE_INDEX" | "KENDRA_INDEX" | (string & {});
+const RetrieverType = S.String;
+
 export type RetrieverName = string;
 export type DocumentAttributeBoostingLevel =
   | "NONE"
@@ -1045,14 +1416,22 @@ export type DocumentAttributeBoostingLevel =
   | "ONE"
   | "TWO"
   | (string & {});
+const DocumentAttributeBoostingLevel = S.String;
+
 export type NumberAttributeBoostingType =
   | "PRIORITIZE_LARGER_VALUES"
   | "PRIORITIZE_SMALLER_VALUES"
   | (string & {});
+const NumberAttributeBoostingType = S.String;
+
 export interface NumberAttributeBoostingConfiguration {
   boostingLevel: DocumentAttributeBoostingLevel;
   boostingType?: NumberAttributeBoostingType;
 }
+const NumberAttributeBoostingConfiguration = /*@__PURE__*/ __L.at(
+  __c16,
+  7,
+) as any as S.Schema<NumberAttributeBoostingConfiguration>;
 export type StringAttributeValueBoostingLevel =
   | "LOW"
   | "MEDIUM"
@@ -1064,21 +1443,36 @@ export type StringAttributeValueBoostingLevel =
   | "FOUR"
   | "FIVE"
   | (string & {});
+const StringAttributeValueBoostingLevel = S.String;
+
 export type StringAttributeValueBoosting = {
   [key: string]: StringAttributeValueBoostingLevel | undefined;
 };
+const StringAttributeValueBoosting = /*@__PURE__*/ __L.at(__c17, 0);
 export interface StringAttributeBoostingConfiguration {
   boostingLevel: DocumentAttributeBoostingLevel;
   attributeValueBoosting?: { [key: string]: StringAttributeValueBoostingLevel | undefined };
 }
+const StringAttributeBoostingConfiguration = /*@__PURE__*/ __L.at(
+  __c17,
+  1,
+) as any as S.Schema<StringAttributeBoostingConfiguration>;
 export type BoostingDurationInSeconds = number;
 export interface DateAttributeBoostingConfiguration {
   boostingLevel: DocumentAttributeBoostingLevel;
   boostingDurationInSeconds?: number;
 }
+const DateAttributeBoostingConfiguration = /*@__PURE__*/ __L.at(
+  __c17,
+  2,
+) as any as S.Schema<DateAttributeBoostingConfiguration>;
 export interface StringListAttributeBoostingConfiguration {
   boostingLevel: DocumentAttributeBoostingLevel;
 }
+const StringListAttributeBoostingConfiguration = /*@__PURE__*/ __L.at(
+  __c17,
+  3,
+) as any as S.Schema<StringListAttributeBoostingConfiguration>;
 export type DocumentAttributeBoostingConfiguration =
   | {
       numberConfiguration: NumberAttributeBoostingConfiguration;
@@ -1104,21 +1498,32 @@ export type DocumentAttributeBoostingConfiguration =
       dateConfiguration?: never;
       stringListConfiguration: StringListAttributeBoostingConfiguration;
     };
+const DocumentAttributeBoostingConfiguration = /*@__PURE__*/ __L.at(__c17, 4);
 export type DocumentAttributeBoostingOverrideMap = {
   [key: string]: DocumentAttributeBoostingConfiguration | undefined;
 };
+const DocumentAttributeBoostingOverrideMap = /*@__PURE__*/ __L.at(__c17, 5);
 export interface NativeIndexConfiguration {
   indexId: string;
   version?: number;
   boostingOverride?: { [key: string]: DocumentAttributeBoostingConfiguration | undefined };
 }
+const NativeIndexConfiguration = /*@__PURE__*/ __L.at(
+  __c17,
+  6,
+) as any as S.Schema<NativeIndexConfiguration>;
 export type KendraIndexId = string;
 export interface KendraIndexConfiguration {
   indexId: string;
 }
+const KendraIndexConfiguration = /*@__PURE__*/ __L.at(
+  __c17,
+  7,
+) as any as S.Schema<KendraIndexConfiguration>;
 export type RetrieverConfiguration =
   | { nativeIndexConfiguration: NativeIndexConfiguration; kendraIndexConfiguration?: never }
   | { nativeIndexConfiguration?: never; kendraIndexConfiguration: KendraIndexConfiguration };
+const RetrieverConfiguration = /*@__PURE__*/ __L.at(__c18, 0);
 export interface CreateRetrieverRequest {
   applicationId: string;
   type: RetrieverType;
@@ -1128,64 +1533,102 @@ export interface CreateRetrieverRequest {
   clientToken?: string;
   tags?: Tag[];
 }
+const CreateRetrieverRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  1,
+) as any as S.Schema<CreateRetrieverRequest>;
 export type RetrieverId = string;
 export type RetrieverArn = string;
 export interface CreateRetrieverResponse {
   retrieverId?: string;
   retrieverArn?: string;
 }
+const CreateRetrieverResponse = /*@__PURE__*/ __L.at(
+  __c18,
+  2,
+) as any as S.Schema<CreateRetrieverResponse>;
 export type UserIdentifier = string;
 export type GroupIdentifier = string;
 export type SubscriptionPrincipal =
   | { user: string; group?: never }
   | { user?: never; group: string };
+const SubscriptionPrincipal = /*@__PURE__*/ __L.at(__c18, 3);
 export interface CreateSubscriptionRequest {
   applicationId: string;
   principal: SubscriptionPrincipal;
   type: SubscriptionType;
   clientToken?: string;
 }
+const CreateSubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  4,
+) as any as S.Schema<CreateSubscriptionRequest>;
 export interface CreateSubscriptionResponse {
   subscriptionId?: string;
   subscriptionArn?: string;
   currentSubscription?: SubscriptionDetails;
   nextSubscription?: SubscriptionDetails;
 }
+const CreateSubscriptionResponse = /*@__PURE__*/ __L.at(
+  __c18,
+  5,
+) as any as S.Schema<CreateSubscriptionResponse>;
 export interface UserAlias {
   indexId?: string;
   dataSourceId?: string;
   userId: string;
 }
+const UserAlias = /*@__PURE__*/ __L.at(__c18, 6) as any as S.Schema<UserAlias>;
 export type UserAliases = UserAlias[];
+const UserAliases = /*@__PURE__*/ __L.at(__c18, 7);
 export interface CreateUserRequest {
   applicationId: string;
   userId: string;
   userAliases?: UserAlias[];
   clientToken?: string;
 }
+const CreateUserRequest = /*@__PURE__*/ __L.at(__c19, 0) as any as S.Schema<CreateUserRequest>;
 export interface CreateUserResponse {}
+const CreateUserResponse = EndOfInputEvent as any as S.Schema<CreateUserResponse>;
 export type WebExperienceTitle = string;
 export type WebExperienceSubtitle = string;
 export type WebExperienceWelcomeMessage = string;
 export type WebExperienceSamplePromptsControlMode = "ENABLED" | "DISABLED" | (string & {});
+const WebExperienceSamplePromptsControlMode = S.String;
+
 export type Origin = string;
 export type WebExperienceOrigins = string[];
+const WebExperienceOrigins = QIamActions as any as S.Schema<WebExperienceOrigins>;
 export type SamlAuthenticationUrl = string;
 export interface SamlProviderConfiguration {
   authenticationUrl: string;
 }
+const SamlProviderConfiguration = /*@__PURE__*/ __L.at(
+  __c19,
+  1,
+) as any as S.Schema<SamlProviderConfiguration>;
 export interface OpenIDConnectProviderConfiguration {
   secretsArn: string;
   secretsRole: string;
 }
+const OpenIDConnectProviderConfiguration = /*@__PURE__*/ __L.at(
+  __c19,
+  2,
+) as any as S.Schema<OpenIDConnectProviderConfiguration>;
 export type IdentityProviderConfiguration =
   | { samlConfiguration: SamlProviderConfiguration; openIDConnectConfiguration?: never }
   | { samlConfiguration?: never; openIDConnectConfiguration: OpenIDConnectProviderConfiguration };
+const IdentityProviderConfiguration = /*@__PURE__*/ __L.at(__c19, 3);
 export type BrowserExtension = string;
 export type BrowserExtensionList = string[];
+const BrowserExtensionList = QIamActions as any as S.Schema<BrowserExtensionList>;
 export interface BrowserExtensionConfiguration {
   enabledBrowserExtensions: string[];
 }
+const BrowserExtensionConfiguration = /*@__PURE__*/ __L.at(
+  __c19,
+  4,
+) as any as S.Schema<BrowserExtensionConfiguration>;
 export type CustomCSSUrl = string;
 export type LogoUrl = string;
 export type FontUrl = string;
@@ -1196,6 +1639,10 @@ export interface CustomizationConfiguration {
   fontUrl?: string;
   faviconUrl?: string;
 }
+const CustomizationConfiguration = /*@__PURE__*/ __L.at(
+  __c19,
+  5,
+) as any as S.Schema<CustomizationConfiguration>;
 export interface CreateWebExperienceRequest {
   applicationId: string;
   title?: string;
@@ -1210,88 +1657,163 @@ export interface CreateWebExperienceRequest {
   browserExtensionConfiguration?: BrowserExtensionConfiguration;
   customizationConfiguration?: CustomizationConfiguration;
 }
+const CreateWebExperienceRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  6,
+) as any as S.Schema<CreateWebExperienceRequest>;
 export type WebExperienceArn = string;
 export interface CreateWebExperienceResponse {
   webExperienceId?: string;
   webExperienceArn?: string;
 }
+const CreateWebExperienceResponse = /*@__PURE__*/ __L.at(
+  __c19,
+  7,
+) as any as S.Schema<CreateWebExperienceResponse>;
 export interface DeleteApplicationRequest {
   applicationId: string;
 }
+const DeleteApplicationRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  0,
+) as any as S.Schema<DeleteApplicationRequest>;
 export interface DeleteApplicationResponse {}
+const DeleteApplicationResponse = EndOfInputEvent as any as S.Schema<DeleteApplicationResponse>;
 export interface DeleteAttachmentRequest {
   applicationId: string;
   conversationId: string;
   attachmentId: string;
   userId?: string;
 }
+const DeleteAttachmentRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  1,
+) as any as S.Schema<DeleteAttachmentRequest>;
 export interface DeleteAttachmentResponse {}
+const DeleteAttachmentResponse = EndOfInputEvent as any as S.Schema<DeleteAttachmentResponse>;
 export interface DeleteChatControlsConfigurationRequest {
   applicationId: string;
 }
+const DeleteChatControlsConfigurationRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  2,
+) as any as S.Schema<DeleteChatControlsConfigurationRequest>;
 export interface DeleteChatControlsConfigurationResponse {}
+const DeleteChatControlsConfigurationResponse = /*@__PURE__*/ __L.at(
+  __c20,
+  3,
+) as any as S.Schema<DeleteChatControlsConfigurationResponse>;
 export interface DeleteChatResponseConfigurationRequest {
   applicationId: string;
   chatResponseConfigurationId: string;
 }
+const DeleteChatResponseConfigurationRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  4,
+) as any as S.Schema<DeleteChatResponseConfigurationRequest>;
 export interface DeleteChatResponseConfigurationResponse {}
+const DeleteChatResponseConfigurationResponse =
+  DeleteChatControlsConfigurationResponse as any as S.Schema<DeleteChatResponseConfigurationResponse>;
 export interface DeleteConversationRequest {
   conversationId: string;
   applicationId: string;
   userId?: string;
 }
+const DeleteConversationRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  5,
+) as any as S.Schema<DeleteConversationRequest>;
 export interface DeleteConversationResponse {}
+const DeleteConversationResponse = EndOfInputEvent as any as S.Schema<DeleteConversationResponse>;
 export interface DeleteDataAccessorRequest {
   applicationId: string;
   dataAccessorId: string;
 }
+const DeleteDataAccessorRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  6,
+) as any as S.Schema<DeleteDataAccessorRequest>;
 export interface DeleteDataAccessorResponse {}
+const DeleteDataAccessorResponse = EndOfInputEvent as any as S.Schema<DeleteDataAccessorResponse>;
 export interface DeleteDataSourceRequest {
   applicationId: string;
   indexId: string;
   dataSourceId: string;
 }
+const DeleteDataSourceRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  7,
+) as any as S.Schema<DeleteDataSourceRequest>;
 export interface DeleteDataSourceResponse {}
+const DeleteDataSourceResponse = EndOfInputEvent as any as S.Schema<DeleteDataSourceResponse>;
 export interface DeleteGroupRequest {
   applicationId: string;
   indexId: string;
   groupName: string;
   dataSourceId?: string;
 }
+const DeleteGroupRequest = /*@__PURE__*/ __L.at(__c21, 0) as any as S.Schema<DeleteGroupRequest>;
 export interface DeleteGroupResponse {}
+const DeleteGroupResponse = EndOfInputEvent as any as S.Schema<DeleteGroupResponse>;
 export interface DeleteIndexRequest {
   applicationId: string;
   indexId: string;
 }
+const DeleteIndexRequest = /*@__PURE__*/ __L.at(__c21, 1) as any as S.Schema<DeleteIndexRequest>;
 export interface DeleteIndexResponse {}
+const DeleteIndexResponse = EndOfInputEvent as any as S.Schema<DeleteIndexResponse>;
 export interface DeletePluginRequest {
   applicationId: string;
   pluginId: string;
 }
+const DeletePluginRequest = /*@__PURE__*/ __L.at(__c21, 2) as any as S.Schema<DeletePluginRequest>;
 export interface DeletePluginResponse {}
+const DeletePluginResponse = EndOfInputEvent as any as S.Schema<DeletePluginResponse>;
 export interface DeleteRetrieverRequest {
   applicationId: string;
   retrieverId: string;
 }
+const DeleteRetrieverRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  3,
+) as any as S.Schema<DeleteRetrieverRequest>;
 export interface DeleteRetrieverResponse {}
+const DeleteRetrieverResponse = EndOfInputEvent as any as S.Schema<DeleteRetrieverResponse>;
 export interface DeleteUserRequest {
   applicationId: string;
   userId: string;
 }
+const DeleteUserRequest = /*@__PURE__*/ __L.at(__c21, 4) as any as S.Schema<DeleteUserRequest>;
 export interface DeleteUserResponse {}
+const DeleteUserResponse = EndOfInputEvent as any as S.Schema<DeleteUserResponse>;
 export interface DeleteWebExperienceRequest {
   applicationId: string;
   webExperienceId: string;
 }
+const DeleteWebExperienceRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  5,
+) as any as S.Schema<DeleteWebExperienceRequest>;
 export interface DeleteWebExperienceResponse {}
+const DeleteWebExperienceResponse = EndOfInputEvent as any as S.Schema<DeleteWebExperienceResponse>;
 export interface DisassociatePermissionRequest {
   applicationId: string;
   statementId: string;
 }
+const DisassociatePermissionRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  6,
+) as any as S.Schema<DisassociatePermissionRequest>;
 export interface DisassociatePermissionResponse {}
+const DisassociatePermissionResponse =
+  EndOfInputEvent as any as S.Schema<DisassociatePermissionResponse>;
 export interface GetApplicationRequest {
   applicationId: string;
 }
+const GetApplicationRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  7,
+) as any as S.Schema<GetApplicationRequest>;
 export type ApplicationStatus =
   | "CREATING"
   | "ACTIVE"
@@ -1299,14 +1821,26 @@ export type ApplicationStatus =
   | "FAILED"
   | "UPDATING"
   | (string & {});
+const ApplicationStatus = S.String;
+
 export interface AppliedAttachmentsConfiguration {
   attachmentsControlMode?: AttachmentsControlMode;
 }
+const AppliedAttachmentsConfiguration = /*@__PURE__*/ __L.at(
+  __c22,
+  0,
+) as any as S.Schema<AppliedAttachmentsConfiguration>;
 export type AutoSubscriptionStatus = "ENABLED" | "DISABLED" | (string & {});
+const AutoSubscriptionStatus = S.String;
+
 export interface AutoSubscriptionConfiguration {
   autoSubscribe?: AutoSubscriptionStatus;
   defaultSubscriptionType?: SubscriptionType;
 }
+const AutoSubscriptionConfiguration = /*@__PURE__*/ __L.at(
+  __c22,
+  1,
+) as any as S.Schema<AutoSubscriptionConfiguration>;
 export interface GetApplicationResponse {
   displayName?: string;
   applicationId?: string;
@@ -1328,6 +1862,10 @@ export interface GetApplicationResponse {
   clientIdsForOIDC?: string[];
   quickSightConfiguration?: QuickSightConfiguration;
 }
+const GetApplicationResponse = /*@__PURE__*/ __L.at(
+  __c22,
+  2,
+) as any as S.Schema<GetApplicationResponse>;
 export type MaxResultsIntegerForGetTopicConfigurations = number;
 export type NextToken = string;
 export interface GetChatControlsConfigurationRequest {
@@ -1335,67 +1873,113 @@ export interface GetChatControlsConfigurationRequest {
   maxResults?: number;
   nextToken?: string;
 }
+const GetChatControlsConfigurationRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  3,
+) as any as S.Schema<GetChatControlsConfigurationRequest>;
 export type ResponseScope =
   | "ENTERPRISE_CONTENT_ONLY"
   | "EXTENDED_KNOWLEDGE_ENABLED"
   | (string & {});
+const ResponseScope = S.String;
+
 export type OrchestrationControl = "ENABLED" | "DISABLED" | (string & {});
+const OrchestrationControl = S.String;
+
 export interface AppliedOrchestrationConfiguration {
   control: OrchestrationControl;
 }
+const AppliedOrchestrationConfiguration = /*@__PURE__*/ __L.at(
+  __c22,
+  4,
+) as any as S.Schema<AppliedOrchestrationConfiguration>;
 export type BlockedPhrase = string;
 export type BlockedPhrases = string[];
+const BlockedPhrases = QIamActions as any as S.Schema<BlockedPhrases>;
 export type SystemMessageOverride = string;
 export interface BlockedPhrasesConfiguration {
   blockedPhrases?: string[];
   systemMessageOverride?: string;
 }
+const BlockedPhrasesConfiguration = /*@__PURE__*/ __L.at(
+  __c22,
+  5,
+) as any as S.Schema<BlockedPhrasesConfiguration>;
 export type TopicConfigurationName = string;
 export type TopicDescription = string;
 export type ExampleChatMessage = string;
 export type ExampleChatMessages = string[];
+const ExampleChatMessages = QIamActions as any as S.Schema<ExampleChatMessages>;
 export type UserIds = string[];
+const UserIds = QIamActions as any as S.Schema<UserIds>;
 export interface UsersAndGroups {
   userIds?: string[];
   userGroups?: string[];
 }
+const UsersAndGroups = /*@__PURE__*/ __L.at(__c22, 6) as any as S.Schema<UsersAndGroups>;
 export type RuleType = "CONTENT_BLOCKER_RULE" | "CONTENT_RETRIEVAL_RULE" | (string & {});
+const RuleType = S.String;
+
 export interface ContentBlockerRule {
   systemMessageOverride?: string;
 }
+const ContentBlockerRule = /*@__PURE__*/ __L.at(__c22, 7) as any as S.Schema<ContentBlockerRule>;
 export interface EligibleDataSource {
   indexId?: string;
   dataSourceId?: string;
 }
+const EligibleDataSource = /*@__PURE__*/ __L.at(__c23, 0) as any as S.Schema<EligibleDataSource>;
 export type EligibleDataSources = EligibleDataSource[];
+const EligibleDataSources = /*@__PURE__*/ __L.at(__c23, 1);
 export interface ContentRetrievalRule {
   eligibleDataSources?: EligibleDataSource[];
 }
+const ContentRetrievalRule = /*@__PURE__*/ __L.at(
+  __c23,
+  2,
+) as any as S.Schema<ContentRetrievalRule>;
 export type RuleConfiguration =
   | { contentBlockerRule: ContentBlockerRule; contentRetrievalRule?: never }
   | { contentBlockerRule?: never; contentRetrievalRule: ContentRetrievalRule };
+const RuleConfiguration = /*@__PURE__*/ __L.at(__c23, 3);
 export interface Rule {
   includedUsersAndGroups?: UsersAndGroups;
   excludedUsersAndGroups?: UsersAndGroups;
   ruleType: RuleType;
   ruleConfiguration?: RuleConfiguration;
 }
+const Rule = /*@__PURE__*/ __L.at(__c23, 4) as any as S.Schema<Rule>;
 export type Rules = Rule[];
+const Rules = /*@__PURE__*/ __L.at(__c23, 5);
 export interface TopicConfiguration {
   name: string;
   description?: string;
   exampleChatMessages?: string[];
   rules: Rule[];
 }
+const TopicConfiguration = /*@__PURE__*/ __L.at(__c23, 6) as any as S.Schema<TopicConfiguration>;
 export type TopicConfigurations = TopicConfiguration[];
+const TopicConfigurations = /*@__PURE__*/ __L.at(__c23, 7);
 export type CreatorModeControl = "ENABLED" | "DISABLED" | (string & {});
+const CreatorModeControl = S.String;
+
 export interface AppliedCreatorModeConfiguration {
   creatorModeControl: CreatorModeControl;
 }
+const AppliedCreatorModeConfiguration = /*@__PURE__*/ __L.at(
+  __c24,
+  0,
+) as any as S.Schema<AppliedCreatorModeConfiguration>;
 export type HallucinationReductionControl = "ENABLED" | "DISABLED" | (string & {});
+const HallucinationReductionControl = S.String;
+
 export interface HallucinationReductionConfiguration {
   hallucinationReductionControl?: HallucinationReductionControl;
 }
+const HallucinationReductionConfiguration = /*@__PURE__*/ __L.at(
+  __c24,
+  1,
+) as any as S.Schema<HallucinationReductionConfiguration>;
 export interface GetChatControlsConfigurationResponse {
   responseScope?: ResponseScope;
   orchestrationConfiguration?: AppliedOrchestrationConfiguration;
@@ -1405,16 +1989,26 @@ export interface GetChatControlsConfigurationResponse {
   nextToken?: string;
   hallucinationReductionConfiguration?: HallucinationReductionConfiguration;
 }
+const GetChatControlsConfigurationResponse = /*@__PURE__*/ __L.at(
+  __c24,
+  2,
+) as any as S.Schema<GetChatControlsConfigurationResponse>;
 export interface GetChatResponseConfigurationRequest {
   applicationId: string;
   chatResponseConfigurationId: string;
 }
+const GetChatResponseConfigurationRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  3,
+) as any as S.Schema<GetChatResponseConfigurationRequest>;
 export type ChatResponseConfigurationStatus =
   | "CREATING"
   | "UPDATING"
   | "FAILED"
   | "ACTIVE"
   | (string & {});
+const ChatResponseConfigurationStatus = S.String;
+
 export interface ChatResponseConfigurationDetail {
   responseConfigurations?: { [key: string]: ResponseConfiguration | undefined };
   responseConfigurationSummary?: string;
@@ -1422,6 +2016,10 @@ export interface ChatResponseConfigurationDetail {
   error?: ErrorDetail;
   updatedAt?: Date;
 }
+const ChatResponseConfigurationDetail = /*@__PURE__*/ __L.at(
+  __c24,
+  4,
+) as any as S.Schema<ChatResponseConfigurationDetail>;
 export interface GetChatResponseConfigurationResponse {
   chatResponseConfigurationId?: string;
   chatResponseConfigurationArn?: string;
@@ -1430,10 +2028,18 @@ export interface GetChatResponseConfigurationResponse {
   inUseConfiguration?: ChatResponseConfigurationDetail;
   lastUpdateConfiguration?: ChatResponseConfigurationDetail;
 }
+const GetChatResponseConfigurationResponse = /*@__PURE__*/ __L.at(
+  __c24,
+  5,
+) as any as S.Schema<GetChatResponseConfigurationResponse>;
 export interface GetDataAccessorRequest {
   applicationId: string;
   dataAccessorId: string;
 }
+const GetDataAccessorRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  6,
+) as any as S.Schema<GetDataAccessorRequest>;
 export interface GetDataAccessorResponse {
   displayName?: string | redacted.Redacted<string>;
   dataAccessorId?: string;
@@ -1446,11 +2052,19 @@ export interface GetDataAccessorResponse {
   createdAt?: Date;
   updatedAt?: Date;
 }
+const GetDataAccessorResponse = /*@__PURE__*/ __L.at(
+  __c24,
+  7,
+) as any as S.Schema<GetDataAccessorResponse>;
 export interface GetDataSourceRequest {
   applicationId: string;
   indexId: string;
   dataSourceId: string;
 }
+const GetDataSourceRequest = /*@__PURE__*/ __L.at(
+  __c25,
+  0,
+) as any as S.Schema<GetDataSourceRequest>;
 export type DataSourceStatus =
   | "PENDING_CREATION"
   | "CREATING"
@@ -1459,6 +2073,8 @@ export type DataSourceStatus =
   | "FAILED"
   | "UPDATING"
   | (string & {});
+const DataSourceStatus = S.String;
+
 export interface GetDataSourceResponse {
   applicationId?: string;
   indexId?: string;
@@ -1478,7 +2094,13 @@ export interface GetDataSourceResponse {
   documentEnrichmentConfiguration?: DocumentEnrichmentConfiguration;
   mediaExtractionConfiguration?: MediaExtractionConfiguration;
 }
+const GetDataSourceResponse = /*@__PURE__*/ __L.at(
+  __c25,
+  1,
+) as any as S.Schema<GetDataSourceResponse>;
 export type OutputFormat = "RAW" | "EXTRACTED" | (string & {});
+const OutputFormat = S.String;
+
 export interface GetDocumentContentRequest {
   applicationId: string;
   indexId: string;
@@ -1486,16 +2108,25 @@ export interface GetDocumentContentRequest {
   documentId: string;
   outputFormat?: OutputFormat;
 }
+const GetDocumentContentRequest = /*@__PURE__*/ __L.at(
+  __c25,
+  2,
+) as any as S.Schema<GetDocumentContentRequest>;
 export interface GetDocumentContentResponse {
   presignedUrl: string;
   mimeType: string;
 }
+const GetDocumentContentResponse = /*@__PURE__*/ __L.at(
+  __c25,
+  3,
+) as any as S.Schema<GetDocumentContentResponse>;
 export interface GetGroupRequest {
   applicationId: string;
   indexId: string;
   groupName: string;
   dataSourceId?: string;
 }
+const GetGroupRequest = /*@__PURE__*/ __L.at(__c25, 4) as any as S.Schema<GetGroupRequest>;
 export type GroupStatus =
   | "FAILED"
   | "SUCCEEDED"
@@ -1503,20 +2134,26 @@ export type GroupStatus =
   | "DELETING"
   | "DELETED"
   | (string & {});
+const GroupStatus = S.String;
+
 export interface GroupStatusDetail {
   status?: GroupStatus;
   lastUpdatedAt?: Date;
   errorDetail?: ErrorDetail;
 }
+const GroupStatusDetail = /*@__PURE__*/ __L.at(__c25, 5) as any as S.Schema<GroupStatusDetail>;
 export type GroupStatusDetails = GroupStatusDetail[];
+const GroupStatusDetails = /*@__PURE__*/ __L.at(__c25, 6);
 export interface GetGroupResponse {
   status?: GroupStatusDetail;
   statusHistory?: GroupStatusDetail[];
 }
+const GetGroupResponse = /*@__PURE__*/ __L.at(__c25, 7) as any as S.Schema<GetGroupResponse>;
 export interface GetIndexRequest {
   applicationId: string;
   indexId: string;
 }
+const GetIndexRequest = /*@__PURE__*/ __L.at(__c26, 0) as any as S.Schema<GetIndexRequest>;
 export type IndexStatus =
   | "CREATING"
   | "ACTIVE"
@@ -1524,24 +2161,40 @@ export type IndexStatus =
   | "FAILED"
   | "UPDATING"
   | (string & {});
+const IndexStatus = S.String;
+
 export type DocumentMetadataConfigurationName = string;
 export type AttributeType = "STRING" | "STRING_LIST" | "NUMBER" | "DATE" | (string & {});
+const AttributeType = S.String;
+
 export type Status = "ENABLED" | "DISABLED" | (string & {});
+const Status = S.String;
+
 export interface DocumentAttributeConfiguration {
   name?: string;
   type?: AttributeType;
   search?: Status;
 }
+const DocumentAttributeConfiguration = /*@__PURE__*/ __L.at(
+  __c26,
+  1,
+) as any as S.Schema<DocumentAttributeConfiguration>;
 export type DocumentAttributeConfigurations = DocumentAttributeConfiguration[];
+const DocumentAttributeConfigurations = /*@__PURE__*/ __L.at(__c26, 2);
 export type IndexedTextBytes = number;
 export type IndexedTextDocument = number;
 export interface TextDocumentStatistics {
   indexedTextBytes?: number;
   indexedTextDocumentCount?: number;
 }
+const TextDocumentStatistics = /*@__PURE__*/ __L.at(
+  __c26,
+  3,
+) as any as S.Schema<TextDocumentStatistics>;
 export interface IndexStatistics {
   textDocumentStatistics?: TextDocumentStatistics;
 }
+const IndexStatistics = /*@__PURE__*/ __L.at(__c26, 4) as any as S.Schema<IndexStatistics>;
 export interface GetIndexResponse {
   applicationId?: string;
   indexId?: string;
@@ -1557,21 +2210,27 @@ export interface GetIndexResponse {
   error?: ErrorDetail;
   indexStatistics?: IndexStatistics;
 }
+const GetIndexResponse = /*@__PURE__*/ __L.at(__c26, 5) as any as S.Schema<GetIndexResponse>;
 export interface GetMediaRequest {
   applicationId: string;
   conversationId: string;
   messageId: string;
   mediaId: string;
 }
+const GetMediaRequest = /*@__PURE__*/ __L.at(__c26, 6) as any as S.Schema<GetMediaRequest>;
 export interface GetMediaResponse {
   mediaBytes?: Uint8Array;
   mediaMimeType?: string;
 }
+const GetMediaResponse = /*@__PURE__*/ __L.at(__c26, 7) as any as S.Schema<GetMediaResponse>;
 export interface GetPluginRequest {
   applicationId: string;
   pluginId: string;
 }
+const GetPluginRequest = /*@__PURE__*/ __L.at(__c27, 0) as any as S.Schema<GetPluginRequest>;
 export type PluginState = "ENABLED" | "DISABLED" | (string & {});
+const PluginState = S.String;
+
 export interface GetPluginResponse {
   applicationId?: string;
   pluginId?: string;
@@ -1586,17 +2245,23 @@ export interface GetPluginResponse {
   createdAt?: Date;
   updatedAt?: Date;
 }
+const GetPluginResponse = /*@__PURE__*/ __L.at(__c27, 1) as any as S.Schema<GetPluginResponse>;
 export interface GetPolicyRequest {
   applicationId: string;
 }
+const GetPolicyRequest = /*@__PURE__*/ __L.at(__c27, 2) as any as S.Schema<GetPolicyRequest>;
 export interface GetPolicyResponse {
   policy?: string;
 }
+const GetPolicyResponse = /*@__PURE__*/ __L.at(__c27, 3) as any as S.Schema<GetPolicyResponse>;
 export interface GetRetrieverRequest {
   applicationId: string;
   retrieverId: string;
 }
+const GetRetrieverRequest = /*@__PURE__*/ __L.at(__c27, 4) as any as S.Schema<GetRetrieverRequest>;
 export type RetrieverStatus = "CREATING" | "ACTIVE" | "FAILED" | (string & {});
+const RetrieverStatus = S.String;
+
 export interface GetRetrieverResponse {
   applicationId?: string;
   retrieverId?: string;
@@ -1609,17 +2274,27 @@ export interface GetRetrieverResponse {
   createdAt?: Date;
   updatedAt?: Date;
 }
+const GetRetrieverResponse = /*@__PURE__*/ __L.at(
+  __c27,
+  5,
+) as any as S.Schema<GetRetrieverResponse>;
 export interface GetUserRequest {
   applicationId: string;
   userId: string;
 }
+const GetUserRequest = /*@__PURE__*/ __L.at(__c27, 6) as any as S.Schema<GetUserRequest>;
 export interface GetUserResponse {
   userAliases?: UserAlias[];
 }
+const GetUserResponse = /*@__PURE__*/ __L.at(__c27, 7) as any as S.Schema<GetUserResponse>;
 export interface GetWebExperienceRequest {
   applicationId: string;
   webExperienceId: string;
 }
+const GetWebExperienceRequest = /*@__PURE__*/ __L.at(
+  __c28,
+  0,
+) as any as S.Schema<GetWebExperienceRequest>;
 export type WebExperienceStatus =
   | "CREATING"
   | "ACTIVE"
@@ -1627,6 +2302,8 @@ export type WebExperienceStatus =
   | "FAILED"
   | "PENDING_AUTH_CONFIG"
   | (string & {});
+const WebExperienceStatus = S.String;
+
 export type SamlMetadataXML = string;
 export type SamlAttribute = string;
 export interface SamlConfiguration {
@@ -1635,7 +2312,9 @@ export interface SamlConfiguration {
   userIdAttribute: string;
   userGroupAttribute?: string;
 }
+const SamlConfiguration = /*@__PURE__*/ __L.at(__c28, 1) as any as S.Schema<SamlConfiguration>;
 export type WebExperienceAuthConfiguration = { samlConfiguration: SamlConfiguration };
+const WebExperienceAuthConfiguration = /*@__PURE__*/ __L.at(__c28, 2);
 export interface GetWebExperienceResponse {
   applicationId?: string;
   webExperienceId?: string;
@@ -1656,11 +2335,19 @@ export interface GetWebExperienceResponse {
   browserExtensionConfiguration?: BrowserExtensionConfiguration;
   customizationConfiguration?: CustomizationConfiguration;
 }
+const GetWebExperienceResponse = /*@__PURE__*/ __L.at(
+  __c28,
+  3,
+) as any as S.Schema<GetWebExperienceResponse>;
 export type MaxResultsIntegerForListApplications = number;
 export interface ListApplicationsRequest {
   nextToken?: string;
   maxResults?: number;
 }
+const ListApplicationsRequest = /*@__PURE__*/ __L.at(
+  __c28,
+  4,
+) as any as S.Schema<ListApplicationsRequest>;
 export interface Application {
   displayName?: string;
   applicationId?: string;
@@ -1670,11 +2357,17 @@ export interface Application {
   identityType?: IdentityType;
   quickSightConfiguration?: QuickSightConfiguration;
 }
+const Application = /*@__PURE__*/ __L.at(__c28, 5) as any as S.Schema<Application>;
 export type Applications = Application[];
+const Applications = /*@__PURE__*/ __L.at(__c28, 6);
 export interface ListApplicationsResponse {
   nextToken?: string;
   applications?: Application[];
 }
+const ListApplicationsResponse = /*@__PURE__*/ __L.at(
+  __c28,
+  7,
+) as any as S.Schema<ListApplicationsResponse>;
 export type MaxResultsIntegerForListAttachments = number;
 export interface ListAttachmentsRequest {
   applicationId: string;
@@ -1683,6 +2376,10 @@ export interface ListAttachmentsRequest {
   nextToken?: string;
   maxResults?: number;
 }
+const ListAttachmentsRequest = /*@__PURE__*/ __L.at(
+  __c29,
+  0,
+) as any as S.Schema<ListAttachmentsRequest>;
 export interface Attachment {
   attachmentId?: string;
   conversationId?: string;
@@ -1695,16 +2392,26 @@ export interface Attachment {
   status?: AttachmentStatus;
   error?: ErrorDetail;
 }
+const Attachment = /*@__PURE__*/ __L.at(__c29, 1) as any as S.Schema<Attachment>;
 export type AttachmentList = Attachment[];
+const AttachmentList = /*@__PURE__*/ __L.at(__c29, 2);
 export interface ListAttachmentsResponse {
   attachments?: Attachment[];
   nextToken?: string;
 }
+const ListAttachmentsResponse = /*@__PURE__*/ __L.at(
+  __c29,
+  3,
+) as any as S.Schema<ListAttachmentsResponse>;
 export interface ListChatResponseConfigurationsRequest {
   applicationId: string;
   maxResults?: number;
   nextToken?: string;
 }
+const ListChatResponseConfigurationsRequest = /*@__PURE__*/ __L.at(
+  __c29,
+  4,
+) as any as S.Schema<ListChatResponseConfigurationsRequest>;
 export type ResponseConfigurationSummary = string;
 export interface ChatResponseConfiguration {
   chatResponseConfigurationId: string;
@@ -1715,11 +2422,20 @@ export interface ChatResponseConfiguration {
   createdAt?: Date;
   updatedAt?: Date;
 }
+const ChatResponseConfiguration = /*@__PURE__*/ __L.at(
+  __c29,
+  5,
+) as any as S.Schema<ChatResponseConfiguration>;
 export type ChatResponseConfigurations = ChatResponseConfiguration[];
+const ChatResponseConfigurations = /*@__PURE__*/ __L.at(__c29, 6);
 export interface ListChatResponseConfigurationsResponse {
   chatResponseConfigurations?: ChatResponseConfiguration[];
   nextToken?: string;
 }
+const ListChatResponseConfigurationsResponse = /*@__PURE__*/ __L.at(
+  __c29,
+  7,
+) as any as S.Schema<ListChatResponseConfigurationsResponse>;
 export type MaxResultsIntegerForListConversations = number;
 export interface ListConversationsRequest {
   applicationId: string;
@@ -1727,17 +2443,27 @@ export interface ListConversationsRequest {
   nextToken?: string;
   maxResults?: number;
 }
+const ListConversationsRequest = /*@__PURE__*/ __L.at(
+  __c30,
+  0,
+) as any as S.Schema<ListConversationsRequest>;
 export type ConversationTitle = string;
 export interface Conversation {
   conversationId?: string;
   title?: string;
   startTime?: Date;
 }
+const Conversation = /*@__PURE__*/ __L.at(__c30, 1) as any as S.Schema<Conversation>;
 export type Conversations = Conversation[];
+const Conversations = /*@__PURE__*/ __L.at(__c30, 2);
 export interface ListConversationsResponse {
   nextToken?: string;
   conversations?: Conversation[];
 }
+const ListConversationsResponse = /*@__PURE__*/ __L.at(
+  __c30,
+  3,
+) as any as S.Schema<ListConversationsResponse>;
 export type NextToken1500 = string;
 export type MaxResultsIntegerForListDataAccessors = number;
 export interface ListDataAccessorsRequest {
@@ -1745,6 +2471,10 @@ export interface ListDataAccessorsRequest {
   nextToken?: string;
   maxResults?: number;
 }
+const ListDataAccessorsRequest = /*@__PURE__*/ __L.at(
+  __c30,
+  4,
+) as any as S.Schema<ListDataAccessorsRequest>;
 export interface DataAccessor {
   displayName?: string | redacted.Redacted<string>;
   dataAccessorId?: string;
@@ -1755,11 +2485,17 @@ export interface DataAccessor {
   createdAt?: Date;
   updatedAt?: Date;
 }
+const DataAccessor = /*@__PURE__*/ __L.at(__c30, 5) as any as S.Schema<DataAccessor>;
 export type DataAccessors = DataAccessor[];
+const DataAccessors = /*@__PURE__*/ __L.at(__c30, 6);
 export interface ListDataAccessorsResponse {
   dataAccessors?: DataAccessor[];
   nextToken?: string;
 }
+const ListDataAccessorsResponse = /*@__PURE__*/ __L.at(
+  __c30,
+  7,
+) as any as S.Schema<ListDataAccessorsResponse>;
 export type MaxResultsIntegerForListDataSources = number;
 export interface ListDataSourcesRequest {
   applicationId: string;
@@ -1767,6 +2503,10 @@ export interface ListDataSourcesRequest {
   nextToken?: string;
   maxResults?: number;
 }
+const ListDataSourcesRequest = /*@__PURE__*/ __L.at(
+  __c31,
+  0,
+) as any as S.Schema<ListDataSourcesRequest>;
 export interface DataSource {
   displayName?: string;
   dataSourceId?: string;
@@ -1775,11 +2515,17 @@ export interface DataSource {
   updatedAt?: Date;
   status?: DataSourceStatus;
 }
+const DataSource = /*@__PURE__*/ __L.at(__c31, 1) as any as S.Schema<DataSource>;
 export type DataSources = DataSource[];
+const DataSources = /*@__PURE__*/ __L.at(__c31, 2);
 export interface ListDataSourcesResponse {
   dataSources?: DataSource[];
   nextToken?: string;
 }
+const ListDataSourcesResponse = /*@__PURE__*/ __L.at(
+  __c31,
+  3,
+) as any as S.Schema<ListDataSourcesResponse>;
 export type MaxResultsIntegerForListDataSourcesSyncJobs = number;
 export type DataSourceSyncJobStatus =
   | "FAILED"
@@ -1790,6 +2536,8 @@ export type DataSourceSyncJobStatus =
   | "ABORTED"
   | "SYNCING_INDEXING"
   | (string & {});
+const DataSourceSyncJobStatus = S.String;
+
 export interface ListDataSourceSyncJobsRequest {
   dataSourceId: string;
   applicationId: string;
@@ -1800,6 +2548,10 @@ export interface ListDataSourceSyncJobsRequest {
   endTime?: Date;
   statusFilter?: DataSourceSyncJobStatus;
 }
+const ListDataSourceSyncJobsRequest = /*@__PURE__*/ __L.at(
+  __c31,
+  4,
+) as any as S.Schema<ListDataSourceSyncJobsRequest>;
 export type MetricValue = string;
 export interface DataSourceSyncJobMetrics {
   documentsAdded?: string;
@@ -1808,6 +2560,10 @@ export interface DataSourceSyncJobMetrics {
   documentsFailed?: string;
   documentsScanned?: string;
 }
+const DataSourceSyncJobMetrics = /*@__PURE__*/ __L.at(
+  __c31,
+  5,
+) as any as S.Schema<DataSourceSyncJobMetrics>;
 export interface DataSourceSyncJob {
   executionId?: string;
   startTime?: Date;
@@ -1817,12 +2573,19 @@ export interface DataSourceSyncJob {
   dataSourceErrorCode?: string;
   metrics?: DataSourceSyncJobMetrics;
 }
+const DataSourceSyncJob = /*@__PURE__*/ __L.at(__c31, 6) as any as S.Schema<DataSourceSyncJob>;
 export type DataSourceSyncJobs = DataSourceSyncJob[];
+const DataSourceSyncJobs = /*@__PURE__*/ __L.at(__c31, 7);
 export interface ListDataSourceSyncJobsResponse {
   history?: DataSourceSyncJob[];
   nextToken?: string;
 }
+const ListDataSourceSyncJobsResponse = /*@__PURE__*/ __L.at(
+  __c32,
+  0,
+) as any as S.Schema<ListDataSourceSyncJobsResponse>;
 export type DataSourceIds = string[];
+const DataSourceIds = QIamActions as any as S.Schema<DataSourceIds>;
 export type MaxResultsIntegerForListDocuments = number;
 export interface ListDocumentsRequest {
   applicationId: string;
@@ -1831,6 +2594,10 @@ export interface ListDocumentsRequest {
   nextToken?: string;
   maxResults?: number;
 }
+const ListDocumentsRequest = /*@__PURE__*/ __L.at(
+  __c32,
+  1,
+) as any as S.Schema<ListDocumentsRequest>;
 export type DocumentStatus =
   | "RECEIVED"
   | "PROCESSING"
@@ -1841,6 +2608,8 @@ export type DocumentStatus =
   | "DELETED"
   | "DOCUMENT_FAILED_TO_INDEX"
   | (string & {});
+const DocumentStatus = S.String;
+
 export interface DocumentDetails {
   documentId?: string;
   status?: DocumentStatus;
@@ -1848,11 +2617,17 @@ export interface DocumentDetails {
   createdAt?: Date;
   updatedAt?: Date;
 }
+const DocumentDetails = /*@__PURE__*/ __L.at(__c32, 2) as any as S.Schema<DocumentDetails>;
 export type DocumentDetailList = DocumentDetails[];
+const DocumentDetailList = /*@__PURE__*/ __L.at(__c32, 3);
 export interface ListDocumentsResponse {
   documentDetailList?: DocumentDetails[];
   nextToken?: string;
 }
+const ListDocumentsResponse = /*@__PURE__*/ __L.at(
+  __c32,
+  4,
+) as any as S.Schema<ListDocumentsResponse>;
 export type MaxResultsIntegerForListGroupsRequest = number;
 export interface ListGroupsRequest {
   applicationId: string;
@@ -1862,20 +2637,25 @@ export interface ListGroupsRequest {
   nextToken?: string;
   maxResults?: number;
 }
+const ListGroupsRequest = /*@__PURE__*/ __L.at(__c32, 5) as any as S.Schema<ListGroupsRequest>;
 export interface GroupSummary {
   groupName?: string;
 }
+const GroupSummary = /*@__PURE__*/ __L.at(__c32, 6) as any as S.Schema<GroupSummary>;
 export type GroupSummaryList = GroupSummary[];
+const GroupSummaryList = /*@__PURE__*/ __L.at(__c32, 7);
 export interface ListGroupsResponse {
   nextToken?: string;
   items?: GroupSummary[];
 }
+const ListGroupsResponse = /*@__PURE__*/ __L.at(__c33, 0) as any as S.Schema<ListGroupsResponse>;
 export type MaxResultsIntegerForListIndices = number;
 export interface ListIndicesRequest {
   applicationId: string;
   nextToken?: string;
   maxResults?: number;
 }
+const ListIndicesRequest = /*@__PURE__*/ __L.at(__c33, 1) as any as S.Schema<ListIndicesRequest>;
 export interface Index {
   displayName?: string;
   indexId?: string;
@@ -1883,11 +2663,14 @@ export interface Index {
   updatedAt?: Date;
   status?: IndexStatus;
 }
+const Index = /*@__PURE__*/ __L.at(__c33, 2) as any as S.Schema<Index>;
 export type Indices = Index[];
+const Indices = /*@__PURE__*/ __L.at(__c33, 3);
 export interface ListIndicesResponse {
   nextToken?: string;
   indices?: Index[];
 }
+const ListIndicesResponse = /*@__PURE__*/ __L.at(__c33, 4) as any as S.Schema<ListIndicesResponse>;
 export type MaxResultsIntegerForListMessages = number;
 export interface ListMessagesRequest {
   conversationId: string;
@@ -1896,8 +2679,11 @@ export interface ListMessagesRequest {
   nextToken?: string;
   maxResults?: number;
 }
+const ListMessagesRequest = /*@__PURE__*/ __L.at(__c33, 5) as any as S.Schema<ListMessagesRequest>;
 export type MessageBody = string;
 export type MessageType = "USER" | "SYSTEM" | (string & {});
+const MessageType = S.String;
+
 export interface Message {
   messageId?: string;
   body?: string;
@@ -1908,11 +2694,17 @@ export interface Message {
   actionReview?: ActionReview;
   actionExecution?: ActionExecution;
 }
+const Message = /*@__PURE__*/ __L.at(__c33, 6) as any as S.Schema<Message>;
 export type Messages = Message[];
+const Messages = /*@__PURE__*/ __L.at(__c33, 7);
 export interface ListMessagesResponse {
   messages?: Message[];
   nextToken?: string;
 }
+const ListMessagesResponse = /*@__PURE__*/ __L.at(
+  __c34,
+  0,
+) as any as S.Schema<ListMessagesResponse>;
 export type MaxResultsIntegerForListPluginActions = number;
 export interface ListPluginActionsRequest {
   applicationId: string;
@@ -1920,23 +2712,34 @@ export interface ListPluginActionsRequest {
   nextToken?: string;
   maxResults?: number;
 }
+const ListPluginActionsRequest = /*@__PURE__*/ __L.at(
+  __c34,
+  1,
+) as any as S.Schema<ListPluginActionsRequest>;
 export interface ActionSummary {
   actionIdentifier?: string;
   displayName?: string;
   instructionExample?: string;
   description?: string;
 }
+const ActionSummary = /*@__PURE__*/ __L.at(__c34, 2) as any as S.Schema<ActionSummary>;
 export type Actions = ActionSummary[];
+const Actions = /*@__PURE__*/ __L.at(__c34, 3);
 export interface ListPluginActionsResponse {
   nextToken?: string;
   items?: ActionSummary[];
 }
+const ListPluginActionsResponse = /*@__PURE__*/ __L.at(
+  __c34,
+  4,
+) as any as S.Schema<ListPluginActionsResponse>;
 export type MaxResultsIntegerForListPlugins = number;
 export interface ListPluginsRequest {
   applicationId: string;
   nextToken?: string;
   maxResults?: number;
 }
+const ListPluginsRequest = /*@__PURE__*/ __L.at(__c34, 5) as any as S.Schema<ListPluginsRequest>;
 export interface Plugin {
   pluginId?: string;
   displayName?: string;
@@ -1947,26 +2750,39 @@ export interface Plugin {
   createdAt?: Date;
   updatedAt?: Date;
 }
+const Plugin = /*@__PURE__*/ __L.at(__c34, 6) as any as S.Schema<Plugin>;
 export type Plugins = Plugin[];
+const Plugins = /*@__PURE__*/ __L.at(__c34, 7);
 export interface ListPluginsResponse {
   nextToken?: string;
   plugins?: Plugin[];
 }
+const ListPluginsResponse = /*@__PURE__*/ __L.at(__c35, 0) as any as S.Schema<ListPluginsResponse>;
 export type MaxResultsIntegerForListPluginTypeActions = number;
 export interface ListPluginTypeActionsRequest {
   pluginType: PluginType;
   nextToken?: string;
   maxResults?: number;
 }
+const ListPluginTypeActionsRequest = /*@__PURE__*/ __L.at(
+  __c35,
+  1,
+) as any as S.Schema<ListPluginTypeActionsRequest>;
 export interface ListPluginTypeActionsResponse {
   nextToken?: string;
   items?: ActionSummary[];
 }
+const ListPluginTypeActionsResponse =
+  ListPluginActionsResponse as any as S.Schema<ListPluginTypeActionsResponse>;
 export type MaxResultsIntegerForListPluginTypeMetadata = number;
 export interface ListPluginTypeMetadataRequest {
   nextToken?: string;
   maxResults?: number;
 }
+const ListPluginTypeMetadataRequest = /*@__PURE__*/ __L.at(
+  __c35,
+  2,
+) as any as S.Schema<ListPluginTypeMetadataRequest>;
 export type PluginTypeCategory =
   | "Customer relationship management (CRM)"
   | "Project management"
@@ -1974,22 +2790,37 @@ export type PluginTypeCategory =
   | "Productivity"
   | "Ticketing and incident management"
   | (string & {});
+const PluginTypeCategory = S.String;
+
 export interface PluginTypeMetadataSummary {
   type?: PluginType;
   category?: PluginTypeCategory;
   description?: string;
 }
+const PluginTypeMetadataSummary = /*@__PURE__*/ __L.at(
+  __c35,
+  3,
+) as any as S.Schema<PluginTypeMetadataSummary>;
 export type ListPluginTypeMetadataSummaries = PluginTypeMetadataSummary[];
+const ListPluginTypeMetadataSummaries = /*@__PURE__*/ __L.at(__c35, 4);
 export interface ListPluginTypeMetadataResponse {
   nextToken?: string;
   items?: PluginTypeMetadataSummary[];
 }
+const ListPluginTypeMetadataResponse = /*@__PURE__*/ __L.at(
+  __c35,
+  5,
+) as any as S.Schema<ListPluginTypeMetadataResponse>;
 export type MaxResultsIntegerForListRetrieversRequest = number;
 export interface ListRetrieversRequest {
   applicationId: string;
   nextToken?: string;
   maxResults?: number;
 }
+const ListRetrieversRequest = /*@__PURE__*/ __L.at(
+  __c35,
+  6,
+) as any as S.Schema<ListRetrieversRequest>;
 export interface Retriever {
   applicationId?: string;
   retrieverId?: string;
@@ -1997,17 +2828,27 @@ export interface Retriever {
   status?: RetrieverStatus;
   displayName?: string;
 }
+const Retriever = /*@__PURE__*/ __L.at(__c35, 7) as any as S.Schema<Retriever>;
 export type Retrievers = Retriever[];
+const Retrievers = /*@__PURE__*/ __L.at(__c36, 0);
 export interface ListRetrieversResponse {
   retrievers?: Retriever[];
   nextToken?: string;
 }
+const ListRetrieversResponse = /*@__PURE__*/ __L.at(
+  __c36,
+  1,
+) as any as S.Schema<ListRetrieversResponse>;
 export type MaxResultsIntegerForListSubscriptions = number;
 export interface ListSubscriptionsRequest {
   applicationId: string;
   nextToken?: string;
   maxResults?: number;
 }
+const ListSubscriptionsRequest = /*@__PURE__*/ __L.at(
+  __c36,
+  2,
+) as any as S.Schema<ListSubscriptionsRequest>;
 export interface Subscription {
   subscriptionId?: string;
   subscriptionArn?: string;
@@ -2015,24 +2856,42 @@ export interface Subscription {
   currentSubscription?: SubscriptionDetails;
   nextSubscription?: SubscriptionDetails;
 }
+const Subscription = /*@__PURE__*/ __L.at(__c36, 3) as any as S.Schema<Subscription>;
 export type Subscriptions = Subscription[];
+const Subscriptions = /*@__PURE__*/ __L.at(__c36, 4);
 export interface ListSubscriptionsResponse {
   nextToken?: string;
   subscriptions?: Subscription[];
 }
+const ListSubscriptionsResponse = /*@__PURE__*/ __L.at(
+  __c36,
+  5,
+) as any as S.Schema<ListSubscriptionsResponse>;
 export type AmazonResourceName = string;
 export interface ListTagsForResourceRequest {
   resourceARN: string;
 }
+const ListTagsForResourceRequest = /*@__PURE__*/ __L.at(
+  __c36,
+  6,
+) as any as S.Schema<ListTagsForResourceRequest>;
 export interface ListTagsForResourceResponse {
   tags?: Tag[];
 }
+const ListTagsForResourceResponse = /*@__PURE__*/ __L.at(
+  __c36,
+  7,
+) as any as S.Schema<ListTagsForResourceResponse>;
 export type MaxResultsIntegerForListWebExperiencesRequest = number;
 export interface ListWebExperiencesRequest {
   applicationId: string;
   nextToken?: string;
   maxResults?: number;
 }
+const ListWebExperiencesRequest = /*@__PURE__*/ __L.at(
+  __c37,
+  0,
+) as any as S.Schema<ListWebExperiencesRequest>;
 export interface WebExperience {
   webExperienceId?: string;
   createdAt?: Date;
@@ -2040,13 +2899,21 @@ export interface WebExperience {
   defaultEndpoint?: string;
   status?: WebExperienceStatus;
 }
+const WebExperience = /*@__PURE__*/ __L.at(__c37, 1) as any as S.Schema<WebExperience>;
 export type WebExperiences = WebExperience[];
+const WebExperiences = /*@__PURE__*/ __L.at(__c37, 2);
 export interface ListWebExperiencesResponse {
   webExperiences?: WebExperience[];
   nextToken?: string;
 }
+const ListWebExperiencesResponse = /*@__PURE__*/ __L.at(
+  __c37,
+  3,
+) as any as S.Schema<ListWebExperiencesResponse>;
 export type SystemMessageId = string;
 export type MessageUsefulness = "USEFUL" | "NOT_USEFUL" | (string & {});
+const MessageUsefulness = S.String;
+
 export type MessageUsefulnessReason =
   | "NOT_FACTUALLY_CORRECT"
   | "HARMFUL_OR_UNSAFE"
@@ -2061,6 +2928,8 @@ export type MessageUsefulnessReason =
   | "NOT_CONCISE"
   | "OTHER"
   | (string & {});
+const MessageUsefulnessReason = S.String;
+
 export type MessageUsefulnessComment = string;
 export interface MessageUsefulnessFeedback {
   usefulness: MessageUsefulness;
@@ -2068,6 +2937,10 @@ export interface MessageUsefulnessFeedback {
   comment?: string;
   submittedAt: Date;
 }
+const MessageUsefulnessFeedback = /*@__PURE__*/ __L.at(
+  __c37,
+  4,
+) as any as S.Schema<MessageUsefulnessFeedback>;
 export interface PutFeedbackRequest {
   applicationId: string;
   userId?: string;
@@ -2076,23 +2949,30 @@ export interface PutFeedbackRequest {
   messageCopiedAt?: Date;
   messageUsefulness?: MessageUsefulnessFeedback;
 }
+const PutFeedbackRequest = /*@__PURE__*/ __L.at(__c37, 5) as any as S.Schema<PutFeedbackRequest>;
 export interface PutFeedbackResponse {}
+const PutFeedbackResponse = EndOfInputEvent as any as S.Schema<PutFeedbackResponse>;
 export interface MemberGroup {
   groupName: string;
   type?: MembershipType;
 }
+const MemberGroup = /*@__PURE__*/ __L.at(__c37, 6) as any as S.Schema<MemberGroup>;
 export type MemberGroups = MemberGroup[];
+const MemberGroups = /*@__PURE__*/ __L.at(__c37, 7);
 export type DataSourceUserId = string;
 export interface MemberUser {
   userId: string;
   type?: MembershipType;
 }
+const MemberUser = /*@__PURE__*/ __L.at(__c38, 0) as any as S.Schema<MemberUser>;
 export type MemberUsers = MemberUser[];
+const MemberUsers = /*@__PURE__*/ __L.at(__c38, 1);
 export interface GroupMembers {
   memberGroups?: MemberGroup[];
   memberUsers?: MemberUser[];
   s3PathForGroupMembers?: S3;
 }
+const GroupMembers = /*@__PURE__*/ __L.at(__c38, 2) as any as S.Schema<GroupMembers>;
 export interface PutGroupRequest {
   applicationId: string;
   indexId: string;
@@ -2102,12 +2982,19 @@ export interface PutGroupRequest {
   groupMembers: GroupMembers;
   roleArn?: string;
 }
+const PutGroupRequest = /*@__PURE__*/ __L.at(__c38, 3) as any as S.Schema<PutGroupRequest>;
 export interface PutGroupResponse {}
+const PutGroupResponse = EndOfInputEvent as any as S.Schema<PutGroupResponse>;
 export type QueryText = string;
 export interface RetrieverContentSource {
   retrieverId: string;
 }
+const RetrieverContentSource = /*@__PURE__*/ __L.at(
+  __c38,
+  4,
+) as any as S.Schema<RetrieverContentSource>;
 export type ContentSource = { retriever: RetrieverContentSource };
+const ContentSource = /*@__PURE__*/ __L.at(__c38, 5);
 export type MaxResults = number;
 export interface SearchRelevantContentRequest {
   applicationId: string;
@@ -2117,6 +3004,10 @@ export interface SearchRelevantContentRequest {
   maxResults?: number;
   nextToken?: string;
 }
+const SearchRelevantContentRequest = /*@__PURE__*/ __L.at(
+  __c38,
+  6,
+) as any as S.Schema<SearchRelevantContentRequest>;
 export type ScoreConfidence =
   | "VERY_HIGH"
   | "HIGH"
@@ -2124,9 +3015,12 @@ export type ScoreConfidence =
   | "LOW"
   | "NOT_AVAILABLE"
   | (string & {});
+const ScoreConfidence = S.String;
+
 export interface ScoreAttributes {
   scoreConfidence?: ScoreConfidence;
 }
+const ScoreAttributes = /*@__PURE__*/ __L.at(__c38, 7) as any as S.Schema<ScoreAttributes>;
 export interface RelevantContent {
   content?: string;
   documentId?: string;
@@ -2135,36 +3029,64 @@ export interface RelevantContent {
   documentAttributes?: DocumentAttribute[];
   scoreAttributes?: ScoreAttributes;
 }
+const RelevantContent = /*@__PURE__*/ __L.at(__c39, 0) as any as S.Schema<RelevantContent>;
 export type RelevantContentList = RelevantContent[];
+const RelevantContentList = /*@__PURE__*/ __L.at(__c39, 1);
 export interface SearchRelevantContentResponse {
   relevantContent?: RelevantContent[];
   nextToken?: string;
 }
+const SearchRelevantContentResponse = /*@__PURE__*/ __L.at(
+  __c39,
+  2,
+) as any as S.Schema<SearchRelevantContentResponse>;
 export interface StartDataSourceSyncJobRequest {
   dataSourceId: string;
   applicationId: string;
   indexId: string;
 }
+const StartDataSourceSyncJobRequest = /*@__PURE__*/ __L.at(
+  __c39,
+  3,
+) as any as S.Schema<StartDataSourceSyncJobRequest>;
 export interface StartDataSourceSyncJobResponse {
   executionId?: string;
 }
+const StartDataSourceSyncJobResponse = /*@__PURE__*/ __L.at(
+  __c39,
+  4,
+) as any as S.Schema<StartDataSourceSyncJobResponse>;
 export interface StopDataSourceSyncJobRequest {
   dataSourceId: string;
   applicationId: string;
   indexId: string;
 }
+const StopDataSourceSyncJobRequest = /*@__PURE__*/ __L.at(
+  __c39,
+  5,
+) as any as S.Schema<StopDataSourceSyncJobRequest>;
 export interface StopDataSourceSyncJobResponse {}
+const StopDataSourceSyncJobResponse =
+  EndOfInputEvent as any as S.Schema<StopDataSourceSyncJobResponse>;
 export interface TagResourceRequest {
   resourceARN: string;
   tags: Tag[];
 }
+const TagResourceRequest = /*@__PURE__*/ __L.at(__c39, 6) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
+const TagResourceResponse = EndOfInputEvent as any as S.Schema<TagResourceResponse>;
 export type TagKeys = string[];
+const TagKeys = QIamActions as any as S.Schema<TagKeys>;
 export interface UntagResourceRequest {
   resourceARN: string;
   tagKeys: string[];
 }
+const UntagResourceRequest = /*@__PURE__*/ __L.at(
+  __c39,
+  7,
+) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
+const UntagResourceResponse = EndOfInputEvent as any as S.Schema<UntagResourceResponse>;
 export interface UpdateApplicationRequest {
   applicationId: string;
   identityCenterInstanceArn?: string;
@@ -2176,18 +3098,33 @@ export interface UpdateApplicationRequest {
   personalizationConfiguration?: PersonalizationConfiguration;
   autoSubscriptionConfiguration?: AutoSubscriptionConfiguration;
 }
+const UpdateApplicationRequest = /*@__PURE__*/ __L.at(
+  __c40,
+  0,
+) as any as S.Schema<UpdateApplicationRequest>;
 export interface UpdateApplicationResponse {}
+const UpdateApplicationResponse = EndOfInputEvent as any as S.Schema<UpdateApplicationResponse>;
 export interface OrchestrationConfiguration {
   control: OrchestrationControl;
 }
+const OrchestrationConfiguration =
+  AppliedOrchestrationConfiguration as any as S.Schema<OrchestrationConfiguration>;
 export interface BlockedPhrasesConfigurationUpdate {
   blockedPhrasesToCreateOrUpdate?: string[];
   blockedPhrasesToDelete?: string[];
   systemMessageOverride?: string;
 }
+const BlockedPhrasesConfigurationUpdate = /*@__PURE__*/ __L.at(
+  __c40,
+  1,
+) as any as S.Schema<BlockedPhrasesConfigurationUpdate>;
 export interface CreatorModeConfiguration {
   creatorModeControl: CreatorModeControl;
 }
+const CreatorModeConfiguration = /*@__PURE__*/ __L.at(
+  __c40,
+  2,
+) as any as S.Schema<CreatorModeConfiguration>;
 export interface UpdateChatControlsConfigurationRequest {
   applicationId: string;
   clientToken?: string;
@@ -2199,7 +3136,13 @@ export interface UpdateChatControlsConfigurationRequest {
   creatorModeConfiguration?: CreatorModeConfiguration;
   hallucinationReductionConfiguration?: HallucinationReductionConfiguration;
 }
+const UpdateChatControlsConfigurationRequest = /*@__PURE__*/ __L.at(
+  __c40,
+  3,
+) as any as S.Schema<UpdateChatControlsConfigurationRequest>;
 export interface UpdateChatControlsConfigurationResponse {}
+const UpdateChatControlsConfigurationResponse =
+  DeleteChatControlsConfigurationResponse as any as S.Schema<UpdateChatControlsConfigurationResponse>;
 export interface UpdateChatResponseConfigurationRequest {
   applicationId: string;
   chatResponseConfigurationId: string;
@@ -2207,7 +3150,13 @@ export interface UpdateChatResponseConfigurationRequest {
   responseConfigurations: { [key: string]: ResponseConfiguration | undefined };
   clientToken?: string;
 }
+const UpdateChatResponseConfigurationRequest = /*@__PURE__*/ __L.at(
+  __c40,
+  4,
+) as any as S.Schema<UpdateChatResponseConfigurationRequest>;
 export interface UpdateChatResponseConfigurationResponse {}
+const UpdateChatResponseConfigurationResponse =
+  DeleteChatControlsConfigurationResponse as any as S.Schema<UpdateChatResponseConfigurationResponse>;
 export interface UpdateDataAccessorRequest {
   applicationId: string;
   dataAccessorId: string;
@@ -2215,7 +3164,12 @@ export interface UpdateDataAccessorRequest {
   authenticationDetail?: DataAccessorAuthenticationDetail;
   displayName?: string | redacted.Redacted<string>;
 }
+const UpdateDataAccessorRequest = /*@__PURE__*/ __L.at(
+  __c40,
+  5,
+) as any as S.Schema<UpdateDataAccessorRequest>;
 export interface UpdateDataAccessorResponse {}
+const UpdateDataAccessorResponse = EndOfInputEvent as any as S.Schema<UpdateDataAccessorResponse>;
 export interface UpdateDataSourceRequest {
   applicationId: string;
   indexId: string;
@@ -2229,7 +3183,12 @@ export interface UpdateDataSourceRequest {
   documentEnrichmentConfiguration?: DocumentEnrichmentConfiguration;
   mediaExtractionConfiguration?: MediaExtractionConfiguration;
 }
+const UpdateDataSourceRequest = /*@__PURE__*/ __L.at(
+  __c40,
+  6,
+) as any as S.Schema<UpdateDataSourceRequest>;
 export interface UpdateDataSourceResponse {}
+const UpdateDataSourceResponse = EndOfInputEvent as any as S.Schema<UpdateDataSourceResponse>;
 export interface UpdateIndexRequest {
   applicationId: string;
   indexId: string;
@@ -2238,7 +3197,9 @@ export interface UpdateIndexRequest {
   capacityConfiguration?: IndexCapacityConfiguration;
   documentAttributeConfigurations?: DocumentAttributeConfiguration[];
 }
+const UpdateIndexRequest = /*@__PURE__*/ __L.at(__c40, 7) as any as S.Schema<UpdateIndexRequest>;
 export interface UpdateIndexResponse {}
+const UpdateIndexResponse = EndOfInputEvent as any as S.Schema<UpdateIndexResponse>;
 export interface UpdatePluginRequest {
   applicationId: string;
   pluginId: string;
@@ -2248,7 +3209,9 @@ export interface UpdatePluginRequest {
   customPluginConfiguration?: CustomPluginConfiguration;
   authConfiguration?: PluginAuthConfiguration;
 }
+const UpdatePluginRequest = /*@__PURE__*/ __L.at(__c41, 0) as any as S.Schema<UpdatePluginRequest>;
 export interface UpdatePluginResponse {}
+const UpdatePluginResponse = EndOfInputEvent as any as S.Schema<UpdatePluginResponse>;
 export interface UpdateRetrieverRequest {
   applicationId: string;
   retrieverId: string;
@@ -2256,28 +3219,41 @@ export interface UpdateRetrieverRequest {
   displayName?: string;
   roleArn?: string;
 }
+const UpdateRetrieverRequest = /*@__PURE__*/ __L.at(
+  __c41,
+  1,
+) as any as S.Schema<UpdateRetrieverRequest>;
 export interface UpdateRetrieverResponse {}
+const UpdateRetrieverResponse = EndOfInputEvent as any as S.Schema<UpdateRetrieverResponse>;
 export interface UpdateSubscriptionRequest {
   applicationId: string;
   subscriptionId: string;
   type: SubscriptionType;
 }
+const UpdateSubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c41,
+  2,
+) as any as S.Schema<UpdateSubscriptionRequest>;
 export interface UpdateSubscriptionResponse {
   subscriptionArn?: string;
   currentSubscription?: SubscriptionDetails;
   nextSubscription?: SubscriptionDetails;
 }
+const UpdateSubscriptionResponse =
+  CancelSubscriptionResponse as any as S.Schema<UpdateSubscriptionResponse>;
 export interface UpdateUserRequest {
   applicationId: string;
   userId: string;
   userAliasesToUpdate?: UserAlias[];
   userAliasesToDelete?: UserAlias[];
 }
+const UpdateUserRequest = /*@__PURE__*/ __L.at(__c41, 3) as any as S.Schema<UpdateUserRequest>;
 export interface UpdateUserResponse {
   userAliasesAdded?: UserAlias[];
   userAliasesUpdated?: UserAlias[];
   userAliasesDeleted?: UserAlias[];
 }
+const UpdateUserResponse = /*@__PURE__*/ __L.at(__c41, 4) as any as S.Schema<UpdateUserResponse>;
 export interface UpdateWebExperienceRequest {
   applicationId: string;
   webExperienceId: string;
@@ -2292,17 +3268,29 @@ export interface UpdateWebExperienceRequest {
   browserExtensionConfiguration?: BrowserExtensionConfiguration;
   customizationConfiguration?: CustomizationConfiguration;
 }
+const UpdateWebExperienceRequest = /*@__PURE__*/ __L.at(
+  __c41,
+  5,
+) as any as S.Schema<UpdateWebExperienceRequest>;
 export interface UpdateWebExperienceResponse {}
+const UpdateWebExperienceResponse = EndOfInputEvent as any as S.Schema<UpdateWebExperienceResponse>;
 export type ValidationExceptionReason =
   | "CANNOT_PARSE"
   | "FIELD_VALIDATION_FAILED"
   | "UNKNOWN_OPERATION"
   | (string & {});
+const ValidationExceptionReason = S.String;
+
 export interface ValidationExceptionField {
   name: string;
   message: string;
 }
+const ValidationExceptionField = /*@__PURE__*/ __L.at(
+  __c41,
+  6,
+) as any as S.Schema<ValidationExceptionField>;
 export type ValidationExceptionFields = ValidationExceptionField[];
+const ValidationExceptionFields = /*@__PURE__*/ __L.at(__c41, 7);
 export type AssociatePermissionError =
   | AccessDeniedException
   | ConflictException
@@ -2321,8 +3309,8 @@ export const associatePermission: API.OperationMethod<
   AssociatePermissionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3) as any as S.Schema<AssociatePermissionRequest>,
-  output: __S(4) as any as S.Schema<AssociatePermissionResponse>,
+  input: AssociatePermissionRequest,
+  output: AssociatePermissionResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2356,8 +3344,8 @@ export const batchDeleteDocument: API.OperationMethod<
   BatchDeleteDocumentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7) as any as S.Schema<BatchDeleteDocumentRequest>,
-  output: __S(11) as any as S.Schema<BatchDeleteDocumentResponse>,
+  input: BatchDeleteDocumentRequest,
+  output: BatchDeleteDocumentResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2399,8 +3387,8 @@ export const batchPutDocument: API.OperationMethod<
   BatchPutDocumentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36) as any as S.Schema<BatchPutDocumentRequest>,
-  output: __S(37) as any as S.Schema<BatchPutDocumentResponse>,
+  input: BatchPutDocumentRequest,
+  output: BatchPutDocumentResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2431,8 +3419,8 @@ export const cancelSubscription: API.OperationMethod<
   CancelSubscriptionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38) as any as S.Schema<CancelSubscriptionRequest>,
-  output: __S(40) as any as S.Schema<CancelSubscriptionResponse>,
+  input: CancelSubscriptionRequest,
+  output: CancelSubscriptionResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2464,8 +3452,8 @@ export const chat: API.OperationMethod<
   ChatError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(58) as any as S.Schema<ChatInput>,
-  output: __S(79) as any as S.Schema<ChatOutput>,
+  input: ChatInput,
+  output: ChatOutput,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2500,8 +3488,8 @@ export const chatSync: API.OperationMethod<
   ChatSyncError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(82) as any as S.Schema<ChatSyncInput>,
-  output: __S(86) as any as S.Schema<ChatSyncOutput>,
+  input: ChatSyncInput,
+  output: ChatSyncOutput,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2533,8 +3521,8 @@ export const checkDocumentAccess: API.OperationMethod<
   CheckDocumentAccessError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(87) as any as S.Schema<CheckDocumentAccessRequest>,
-  output: __S(96) as any as S.Schema<CheckDocumentAccessResponse>,
+  input: CheckDocumentAccessRequest,
+  output: CheckDocumentAccessResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2564,8 +3552,8 @@ export const createAnonymousWebExperienceUrl: API.OperationMethod<
   CreateAnonymousWebExperienceUrlError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(97) as any as S.Schema<CreateAnonymousWebExperienceUrlRequest>,
-  output: __S(98) as any as S.Schema<CreateAnonymousWebExperienceUrlResponse>,
+  input: CreateAnonymousWebExperienceUrlRequest,
+  output: CreateAnonymousWebExperienceUrlResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2603,8 +3591,8 @@ export const createApplication: API.OperationMethod<
   CreateApplicationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(106) as any as S.Schema<CreateApplicationRequest>,
-  output: __S(107) as any as S.Schema<CreateApplicationResponse>,
+  input: CreateApplicationRequest,
+  output: CreateApplicationResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2637,8 +3625,8 @@ export const createChatResponseConfiguration: API.OperationMethod<
   CreateChatResponseConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(111) as any as S.Schema<CreateChatResponseConfigurationRequest>,
-  output: __S(112) as any as S.Schema<CreateChatResponseConfigurationResponse>,
+  input: CreateChatResponseConfigurationRequest,
+  output: CreateChatResponseConfigurationResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2671,8 +3659,8 @@ export const createDataAccessor: API.OperationMethod<
   CreateDataAccessorError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(119) as any as S.Schema<CreateDataAccessorRequest>,
-  output: __S(120) as any as S.Schema<CreateDataAccessorResponse>,
+  input: CreateDataAccessorRequest,
+  output: CreateDataAccessorResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2707,8 +3695,8 @@ export const createDataSource: API.OperationMethod<
   CreateDataSourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(122) as any as S.Schema<CreateDataSourceRequest>,
-  output: __S(123) as any as S.Schema<CreateDataSourceResponse>,
+  input: CreateDataSourceRequest,
+  output: CreateDataSourceResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2745,8 +3733,8 @@ export const createIndex: API.OperationMethod<
   CreateIndexError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(125) as any as S.Schema<CreateIndexRequest>,
-  output: __S(126) as any as S.Schema<CreateIndexResponse>,
+  input: CreateIndexRequest,
+  output: CreateIndexResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2779,8 +3767,8 @@ export const createPlugin: API.OperationMethod<
   CreatePluginError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(133) as any as S.Schema<CreatePluginRequest>,
-  output: __S(134) as any as S.Schema<CreatePluginResponse>,
+  input: CreatePluginRequest,
+  output: CreatePluginResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2813,8 +3801,8 @@ export const createRetriever: API.OperationMethod<
   CreateRetrieverError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(145) as any as S.Schema<CreateRetrieverRequest>,
-  output: __S(146) as any as S.Schema<CreateRetrieverResponse>,
+  input: CreateRetrieverRequest,
+  output: CreateRetrieverResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2850,8 +3838,8 @@ export const createSubscription: API.OperationMethod<
   CreateSubscriptionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(148) as any as S.Schema<CreateSubscriptionRequest>,
-  output: __S(149) as any as S.Schema<CreateSubscriptionResponse>,
+  input: CreateSubscriptionRequest,
+  output: CreateSubscriptionResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2883,8 +3871,8 @@ export const createUser: API.OperationMethod<
   CreateUserError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(152) as any as S.Schema<CreateUserRequest>,
-  output: __S(54) as any as S.Schema<CreateUserResponse>,
+  input: CreateUserRequest,
+  output: CreateUserResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2917,8 +3905,8 @@ export const createWebExperience: API.OperationMethod<
   CreateWebExperienceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(158) as any as S.Schema<CreateWebExperienceRequest>,
-  output: __S(159) as any as S.Schema<CreateWebExperienceResponse>,
+  input: CreateWebExperienceRequest,
+  output: CreateWebExperienceResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2950,8 +3938,8 @@ export const deleteApplication: API.OperationMethod<
   DeleteApplicationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(160) as any as S.Schema<DeleteApplicationRequest>,
-  output: __S(54) as any as S.Schema<DeleteApplicationResponse>,
+  input: DeleteApplicationRequest,
+  output: DeleteApplicationResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2982,8 +3970,8 @@ export const deleteAttachment: API.OperationMethod<
   DeleteAttachmentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(161) as any as S.Schema<DeleteAttachmentRequest>,
-  output: __S(54) as any as S.Schema<DeleteAttachmentResponse>,
+  input: DeleteAttachmentRequest,
+  output: DeleteAttachmentResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3013,8 +4001,8 @@ export const deleteChatControlsConfiguration: API.OperationMethod<
   DeleteChatControlsConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(162) as any as S.Schema<DeleteChatControlsConfigurationRequest>,
-  output: __S(163) as any as S.Schema<DeleteChatControlsConfigurationResponse>,
+  input: DeleteChatControlsConfigurationRequest,
+  output: DeleteChatControlsConfigurationResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3044,8 +4032,8 @@ export const deleteChatResponseConfiguration: API.OperationMethod<
   DeleteChatResponseConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(164) as any as S.Schema<DeleteChatResponseConfigurationRequest>,
-  output: __S(163) as any as S.Schema<DeleteChatResponseConfigurationResponse>,
+  input: DeleteChatResponseConfigurationRequest,
+  output: DeleteChatResponseConfigurationResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3077,8 +4065,8 @@ export const deleteConversation: API.OperationMethod<
   DeleteConversationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(165) as any as S.Schema<DeleteConversationRequest>,
-  output: __S(54) as any as S.Schema<DeleteConversationResponse>,
+  input: DeleteConversationRequest,
+  output: DeleteConversationResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3110,8 +4098,8 @@ export const deleteDataAccessor: API.OperationMethod<
   DeleteDataAccessorError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(166) as any as S.Schema<DeleteDataAccessorRequest>,
-  output: __S(54) as any as S.Schema<DeleteDataAccessorResponse>,
+  input: DeleteDataAccessorRequest,
+  output: DeleteDataAccessorResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3142,8 +4130,8 @@ export const deleteDataSource: API.OperationMethod<
   DeleteDataSourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(167) as any as S.Schema<DeleteDataSourceRequest>,
-  output: __S(54) as any as S.Schema<DeleteDataSourceResponse>,
+  input: DeleteDataSourceRequest,
+  output: DeleteDataSourceResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3176,8 +4164,8 @@ export const deleteGroup: API.OperationMethod<
   DeleteGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(168) as any as S.Schema<DeleteGroupRequest>,
-  output: __S(54) as any as S.Schema<DeleteGroupResponse>,
+  input: DeleteGroupRequest,
+  output: DeleteGroupResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3208,8 +4196,8 @@ export const deleteIndex: API.OperationMethod<
   DeleteIndexError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(169) as any as S.Schema<DeleteIndexRequest>,
-  output: __S(54) as any as S.Schema<DeleteIndexResponse>,
+  input: DeleteIndexRequest,
+  output: DeleteIndexResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3240,8 +4228,8 @@ export const deletePlugin: API.OperationMethod<
   DeletePluginError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(170) as any as S.Schema<DeletePluginRequest>,
-  output: __S(54) as any as S.Schema<DeletePluginResponse>,
+  input: DeletePluginRequest,
+  output: DeletePluginResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3272,8 +4260,8 @@ export const deleteRetriever: API.OperationMethod<
   DeleteRetrieverError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(171) as any as S.Schema<DeleteRetrieverRequest>,
-  output: __S(54) as any as S.Schema<DeleteRetrieverResponse>,
+  input: DeleteRetrieverRequest,
+  output: DeleteRetrieverResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3304,8 +4292,8 @@ export const deleteUser: API.OperationMethod<
   DeleteUserError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(172) as any as S.Schema<DeleteUserRequest>,
-  output: __S(54) as any as S.Schema<DeleteUserResponse>,
+  input: DeleteUserRequest,
+  output: DeleteUserResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3336,8 +4324,8 @@ export const deleteWebExperience: API.OperationMethod<
   DeleteWebExperienceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(173) as any as S.Schema<DeleteWebExperienceRequest>,
-  output: __S(54) as any as S.Schema<DeleteWebExperienceResponse>,
+  input: DeleteWebExperienceRequest,
+  output: DeleteWebExperienceResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3368,8 +4356,8 @@ export const disassociatePermission: API.OperationMethod<
   DisassociatePermissionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(174) as any as S.Schema<DisassociatePermissionRequest>,
-  output: __S(54) as any as S.Schema<DisassociatePermissionResponse>,
+  input: DisassociatePermissionRequest,
+  output: DisassociatePermissionResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3399,8 +4387,8 @@ export const getApplication: API.OperationMethod<
   GetApplicationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(175) as any as S.Schema<GetApplicationRequest>,
-  output: __S(178) as any as S.Schema<GetApplicationResponse>,
+  input: GetApplicationRequest,
+  output: GetApplicationResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3430,8 +4418,8 @@ export const getChatControlsConfiguration: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   TopicConfiguration
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(179) as any as S.Schema<GetChatControlsConfigurationRequest>,
-  output: __S(194) as any as S.Schema<GetChatControlsConfigurationResponse>,
+  input: GetChatControlsConfigurationRequest,
+  output: GetChatControlsConfigurationResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3466,8 +4454,8 @@ export const getChatResponseConfiguration: API.OperationMethod<
   GetChatResponseConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(195) as any as S.Schema<GetChatResponseConfigurationRequest>,
-  output: __S(197) as any as S.Schema<GetChatResponseConfigurationResponse>,
+  input: GetChatResponseConfigurationRequest,
+  output: GetChatResponseConfigurationResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3496,8 +4484,8 @@ export const getDataAccessor: API.OperationMethod<
   GetDataAccessorError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(198) as any as S.Schema<GetDataAccessorRequest>,
-  output: __S(199) as any as S.Schema<GetDataAccessorResponse>,
+  input: GetDataAccessorRequest,
+  output: GetDataAccessorResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3526,8 +4514,8 @@ export const getDataSource: API.OperationMethod<
   GetDataSourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(200) as any as S.Schema<GetDataSourceRequest>,
-  output: __S(201) as any as S.Schema<GetDataSourceResponse>,
+  input: GetDataSourceRequest,
+  output: GetDataSourceResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3556,8 +4544,8 @@ export const getDocumentContent: API.OperationMethod<
   GetDocumentContentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(202) as any as S.Schema<GetDocumentContentRequest>,
-  output: __S(203) as any as S.Schema<GetDocumentContentResponse>,
+  input: GetDocumentContentRequest,
+  output: GetDocumentContentResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3587,8 +4575,8 @@ export const getGroup: API.OperationMethod<
   GetGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(204) as any as S.Schema<GetGroupRequest>,
-  output: __S(207) as any as S.Schema<GetGroupResponse>,
+  input: GetGroupRequest,
+  output: GetGroupResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3618,8 +4606,8 @@ export const getIndex: API.OperationMethod<
   GetIndexError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(208) as any as S.Schema<GetIndexRequest>,
-  output: __S(213) as any as S.Schema<GetIndexResponse>,
+  input: GetIndexRequest,
+  output: GetIndexResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3652,8 +4640,8 @@ export const getMedia: API.OperationMethod<
   GetMediaError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(214) as any as S.Schema<GetMediaRequest>,
-  output: __S(215) as any as S.Schema<GetMediaResponse>,
+  input: GetMediaRequest,
+  output: GetMediaResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3684,8 +4672,8 @@ export const getPlugin: API.OperationMethod<
   GetPluginError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(216) as any as S.Schema<GetPluginRequest>,
-  output: __S(217) as any as S.Schema<GetPluginResponse>,
+  input: GetPluginRequest,
+  output: GetPluginResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3714,8 +4702,8 @@ export const getPolicy: API.OperationMethod<
   GetPolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(218) as any as S.Schema<GetPolicyRequest>,
-  output: __S(219) as any as S.Schema<GetPolicyResponse>,
+  input: GetPolicyRequest,
+  output: GetPolicyResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3744,8 +4732,8 @@ export const getRetriever: API.OperationMethod<
   GetRetrieverError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(220) as any as S.Schema<GetRetrieverRequest>,
-  output: __S(221) as any as S.Schema<GetRetrieverResponse>,
+  input: GetRetrieverRequest,
+  output: GetRetrieverResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3775,8 +4763,8 @@ export const getUser: API.OperationMethod<
   GetUserError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(222) as any as S.Schema<GetUserRequest>,
-  output: __S(223) as any as S.Schema<GetUserResponse>,
+  input: GetUserRequest,
+  output: GetUserResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3806,8 +4794,8 @@ export const getWebExperience: API.OperationMethod<
   GetWebExperienceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(224) as any as S.Schema<GetWebExperienceRequest>,
-  output: __S(227) as any as S.Schema<GetWebExperienceResponse>,
+  input: GetWebExperienceRequest,
+  output: GetWebExperienceResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3838,8 +4826,8 @@ export const listApplications: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Application
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(228) as any as S.Schema<ListApplicationsRequest>,
-  output: __S(231) as any as S.Schema<ListApplicationsResponse>,
+  input: ListApplicationsRequest,
+  output: ListApplicationsResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3875,8 +4863,8 @@ export const listAttachments: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Attachment
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(232) as any as S.Schema<ListAttachmentsRequest>,
-  output: __S(235) as any as S.Schema<ListAttachmentsResponse>,
+  input: ListAttachmentsRequest,
+  output: ListAttachmentsResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3913,8 +4901,8 @@ export const listChatResponseConfigurations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ChatResponseConfiguration
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(236) as any as S.Schema<ListChatResponseConfigurationsRequest>,
-  output: __S(239) as any as S.Schema<ListChatResponseConfigurationsResponse>,
+  input: ListChatResponseConfigurationsRequest,
+  output: ListChatResponseConfigurationsResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3951,8 +4939,8 @@ export const listConversations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Conversation
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(240) as any as S.Schema<ListConversationsRequest>,
-  output: __S(243) as any as S.Schema<ListConversationsResponse>,
+  input: ListConversationsRequest,
+  output: ListConversationsResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3989,8 +4977,8 @@ export const listDataAccessors: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   DataAccessor
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(244) as any as S.Schema<ListDataAccessorsRequest>,
-  output: __S(247) as any as S.Schema<ListDataAccessorsResponse>,
+  input: ListDataAccessorsRequest,
+  output: ListDataAccessorsResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4026,8 +5014,8 @@ export const listDataSources: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   DataSource
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(248) as any as S.Schema<ListDataSourcesRequest>,
-  output: __S(251) as any as S.Schema<ListDataSourcesResponse>,
+  input: ListDataSourcesRequest,
+  output: ListDataSourcesResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4064,8 +5052,8 @@ export const listDataSourceSyncJobs: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   DataSourceSyncJob
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(252) as any as S.Schema<ListDataSourceSyncJobsRequest>,
-  output: __S(256) as any as S.Schema<ListDataSourceSyncJobsResponse>,
+  input: ListDataSourceSyncJobsRequest,
+  output: ListDataSourceSyncJobsResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -4102,8 +5090,8 @@ export const listDocuments: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   DocumentDetails
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(257) as any as S.Schema<ListDocumentsRequest>,
-  output: __S(260) as any as S.Schema<ListDocumentsResponse>,
+  input: ListDocumentsRequest,
+  output: ListDocumentsResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4140,8 +5128,8 @@ export const listGroups: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   GroupSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(261) as any as S.Schema<ListGroupsRequest>,
-  output: __S(264) as any as S.Schema<ListGroupsResponse>,
+  input: ListGroupsRequest,
+  output: ListGroupsResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -4178,8 +5166,8 @@ export const listIndices: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Index
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(265) as any as S.Schema<ListIndicesRequest>,
-  output: __S(268) as any as S.Schema<ListIndicesResponse>,
+  input: ListIndicesRequest,
+  output: ListIndicesResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4216,8 +5204,8 @@ export const listMessages: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Message
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(269) as any as S.Schema<ListMessagesRequest>,
-  output: __S(272) as any as S.Schema<ListMessagesResponse>,
+  input: ListMessagesRequest,
+  output: ListMessagesResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4254,8 +5242,8 @@ export const listPluginActions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ActionSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(273) as any as S.Schema<ListPluginActionsRequest>,
-  output: __S(276) as any as S.Schema<ListPluginActionsResponse>,
+  input: ListPluginActionsRequest,
+  output: ListPluginActionsResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4291,8 +5279,8 @@ export const listPlugins: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Plugin
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(277) as any as S.Schema<ListPluginsRequest>,
-  output: __S(280) as any as S.Schema<ListPluginsResponse>,
+  input: ListPluginsRequest,
+  output: ListPluginsResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4327,8 +5315,8 @@ export const listPluginTypeActions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ActionSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(281) as any as S.Schema<ListPluginTypeActionsRequest>,
-  output: __S(276) as any as S.Schema<ListPluginTypeActionsResponse>,
+  input: ListPluginTypeActionsRequest,
+  output: ListPluginTypeActionsResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4362,8 +5350,8 @@ export const listPluginTypeMetadata: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   PluginTypeMetadataSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(282) as any as S.Schema<ListPluginTypeMetadataRequest>,
-  output: __S(285) as any as S.Schema<ListPluginTypeMetadataResponse>,
+  input: ListPluginTypeMetadataRequest,
+  output: ListPluginTypeMetadataResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4398,8 +5386,8 @@ export const listRetrievers: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Retriever
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(286) as any as S.Schema<ListRetrieversRequest>,
-  output: __S(289) as any as S.Schema<ListRetrieversResponse>,
+  input: ListRetrieversRequest,
+  output: ListRetrieversResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4436,8 +5424,8 @@ export const listSubscriptions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Subscription
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(290) as any as S.Schema<ListSubscriptionsRequest>,
-  output: __S(293) as any as S.Schema<ListSubscriptionsResponse>,
+  input: ListSubscriptionsRequest,
+  output: ListSubscriptionsResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -4473,8 +5461,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(294) as any as S.Schema<ListTagsForResourceRequest>,
-  output: __S(295) as any as S.Schema<ListTagsForResourceResponse>,
+  input: ListTagsForResourceRequest,
+  output: ListTagsForResourceResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4504,8 +5492,8 @@ export const listWebExperiences: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   WebExperience
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(296) as any as S.Schema<ListWebExperiencesRequest>,
-  output: __S(299) as any as S.Schema<ListWebExperiencesResponse>,
+  input: ListWebExperiencesRequest,
+  output: ListWebExperiencesResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4540,8 +5528,8 @@ export const putFeedback: API.OperationMethod<
   PutFeedbackError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(301) as any as S.Schema<PutFeedbackRequest>,
-  output: __S(54) as any as S.Schema<PutFeedbackResponse>,
+  input: PutFeedbackRequest,
+  output: PutFeedbackResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4576,8 +5564,8 @@ export const putGroup: API.OperationMethod<
   PutGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(307) as any as S.Schema<PutGroupRequest>,
-  output: __S(54) as any as S.Schema<PutGroupResponse>,
+  input: PutGroupRequest,
+  output: PutGroupResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -4610,8 +5598,8 @@ export const searchRelevantContent: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   RelevantContent
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(310) as any as S.Schema<SearchRelevantContentRequest>,
-  output: __S(314) as any as S.Schema<SearchRelevantContentResponse>,
+  input: SearchRelevantContentRequest,
+  output: SearchRelevantContentResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4649,8 +5637,8 @@ export const startDataSourceSyncJob: API.OperationMethod<
   StartDataSourceSyncJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(315) as any as S.Schema<StartDataSourceSyncJobRequest>,
-  output: __S(316) as any as S.Schema<StartDataSourceSyncJobResponse>,
+  input: StartDataSourceSyncJobRequest,
+  output: StartDataSourceSyncJobResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -4682,8 +5670,8 @@ export const stopDataSourceSyncJob: API.OperationMethod<
   StopDataSourceSyncJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(317) as any as S.Schema<StopDataSourceSyncJobRequest>,
-  output: __S(54) as any as S.Schema<StopDataSourceSyncJobResponse>,
+  input: StopDataSourceSyncJobRequest,
+  output: StopDataSourceSyncJobResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -4714,8 +5702,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(318) as any as S.Schema<TagResourceRequest>,
-  output: __S(54) as any as S.Schema<TagResourceResponse>,
+  input: TagResourceRequest,
+  output: TagResourceResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -4745,8 +5733,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(319) as any as S.Schema<UntagResourceRequest>,
-  output: __S(54) as any as S.Schema<UntagResourceResponse>,
+  input: UntagResourceRequest,
+  output: UntagResourceResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4780,8 +5768,8 @@ export const updateApplication: API.OperationMethod<
   UpdateApplicationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(320) as any as S.Schema<UpdateApplicationRequest>,
-  output: __S(54) as any as S.Schema<UpdateApplicationResponse>,
+  input: UpdateApplicationRequest,
+  output: UpdateApplicationResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -4813,8 +5801,8 @@ export const updateChatControlsConfiguration: API.OperationMethod<
   UpdateChatControlsConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(323) as any as S.Schema<UpdateChatControlsConfigurationRequest>,
-  output: __S(163) as any as S.Schema<UpdateChatControlsConfigurationResponse>,
+  input: UpdateChatControlsConfigurationRequest,
+  output: UpdateChatControlsConfigurationResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -4846,8 +5834,8 @@ export const updateChatResponseConfiguration: API.OperationMethod<
   UpdateChatResponseConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(324) as any as S.Schema<UpdateChatResponseConfigurationRequest>,
-  output: __S(163) as any as S.Schema<UpdateChatResponseConfigurationResponse>,
+  input: UpdateChatResponseConfigurationRequest,
+  output: UpdateChatResponseConfigurationResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -4878,8 +5866,8 @@ export const updateDataAccessor: API.OperationMethod<
   UpdateDataAccessorError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(325) as any as S.Schema<UpdateDataAccessorRequest>,
-  output: __S(54) as any as S.Schema<UpdateDataAccessorResponse>,
+  input: UpdateDataAccessorRequest,
+  output: UpdateDataAccessorResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -4910,8 +5898,8 @@ export const updateDataSource: API.OperationMethod<
   UpdateDataSourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(326) as any as S.Schema<UpdateDataSourceRequest>,
-  output: __S(54) as any as S.Schema<UpdateDataSourceResponse>,
+  input: UpdateDataSourceRequest,
+  output: UpdateDataSourceResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -4943,8 +5931,8 @@ export const updateIndex: API.OperationMethod<
   UpdateIndexError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(327) as any as S.Schema<UpdateIndexRequest>,
-  output: __S(54) as any as S.Schema<UpdateIndexResponse>,
+  input: UpdateIndexRequest,
+  output: UpdateIndexResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -4977,8 +5965,8 @@ export const updatePlugin: API.OperationMethod<
   UpdatePluginError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(328) as any as S.Schema<UpdatePluginRequest>,
-  output: __S(54) as any as S.Schema<UpdatePluginResponse>,
+  input: UpdatePluginRequest,
+  output: UpdatePluginResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -5011,8 +5999,8 @@ export const updateRetriever: API.OperationMethod<
   UpdateRetrieverError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(329) as any as S.Schema<UpdateRetrieverRequest>,
-  output: __S(54) as any as S.Schema<UpdateRetrieverResponse>,
+  input: UpdateRetrieverRequest,
+  output: UpdateRetrieverResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -5044,8 +6032,8 @@ export const updateSubscription: API.OperationMethod<
   UpdateSubscriptionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(330) as any as S.Schema<UpdateSubscriptionRequest>,
-  output: __S(40) as any as S.Schema<UpdateSubscriptionResponse>,
+  input: UpdateSubscriptionRequest,
+  output: UpdateSubscriptionResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -5077,8 +6065,8 @@ export const updateUser: API.OperationMethod<
   UpdateUserError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(331) as any as S.Schema<UpdateUserRequest>,
-  output: __S(332) as any as S.Schema<UpdateUserResponse>,
+  input: UpdateUserRequest,
+  output: UpdateUserResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -5110,8 +6098,8 @@ export const updateWebExperience: API.OperationMethod<
   UpdateWebExperienceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(333) as any as S.Schema<UpdateWebExperienceRequest>,
-  output: __S(54) as any as S.Schema<UpdateWebExperienceResponse>,
+  input: UpdateWebExperienceRequest,
+  output: UpdateWebExperienceResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -5133,20 +6121,20 @@ function __c0(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          conditionOperator: S.String,
+          conditionOperator: PermissionConditionOperator,
           conditionKey: S.String,
-          conditionValues: __S(0),
+          conditionValues: PermissionConditionValues,
         }),
       ).annotate({ identifier: "PermissionCondition" });
     case 2:
-      return S.Array(__S(1));
+      return S.Array(PermissionCondition);
     case 3:
       return S.suspend(() =>
         S.Struct({
           applicationId: S.String.pipe(T.HttpLabel("applicationId")),
           statementId: S.String,
-          actions: __S(0),
-          conditions: S.optional(__S(2)),
+          actions: QIamActions,
+          conditions: S.optional(PermissionConditions),
           principal: S.String,
         }).pipe(
           T.all(
@@ -5170,13 +6158,13 @@ function __c0(j: number): any {
         identifier: "DeleteDocument",
       });
     case 6:
-      return S.Array(__S(5));
+      return S.Array(DeleteDocument);
     case 7:
       return S.suspend(() =>
         S.Struct({
           applicationId: S.String.pipe(T.HttpLabel("applicationId")),
           indexId: S.String.pipe(T.HttpLabel("indexId")),
-          documents: __S(6),
+          documents: DeleteDocuments,
           dataSourceSyncId: S.optional(S.String),
         }).pipe(
           T.all(
@@ -5200,37 +6188,37 @@ function __c1(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ errorMessage: S.optional(S.String), errorCode: S.optional(S.String) }),
+        S.Struct({ errorMessage: S.optional(S.String), errorCode: S.optional(ErrorCode) }),
       ).annotate({ identifier: "ErrorDetail" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
-          error: S.optional(__S(8)),
+          error: S.optional(ErrorDetail),
           dataSourceId: S.optional(S.String),
         }),
       ).annotate({ identifier: "FailedDocument" });
     case 2:
-      return S.Array(__S(9));
+      return S.Array(FailedDocument);
     case 3:
-      return S.suspend(() => S.Struct({ failedDocuments: S.optional(__S(10)) })).annotate({
+      return S.suspend(() => S.Struct({ failedDocuments: S.optional(FailedDocuments) })).annotate({
         identifier: "BatchDeleteDocumentResponse",
       });
     case 4:
       return S.Union([
         /*@__PURE__*/ S.Struct({ stringValue: S.String }),
-        /*@__PURE__*/ S.Struct({ stringListValue: __S(0) }),
+        /*@__PURE__*/ S.Struct({ stringListValue: DocumentAttributeStringListValue }),
         /*@__PURE__*/ S.Struct({ longValue: S.Number }),
         /*@__PURE__*/ S.Struct({
           dateValue: /*@__PURE__*/ S.Date.pipe(/*@__PURE__*/ T.TimestampFormat("epoch-seconds")),
         }),
       ]);
     case 5:
-      return S.suspend(() => S.Struct({ name: S.String, value: __S(12) })).annotate({
+      return S.suspend(() => S.Struct({ name: S.String, value: DocumentAttributeValue })).annotate({
         identifier: "DocumentAttribute",
       });
     case 6:
-      return S.Array(__S(13));
+      return S.Array(DocumentAttribute);
     case 7:
       return S.suspend(() => S.Struct({ bucket: S.String, key: S.String })).annotate({
         identifier: "S3",
@@ -5242,40 +6230,40 @@ function __c2(j: number): any {
     case 0:
       return S.Union([
         /*@__PURE__*/ S.Struct({ blob: T.Blob }),
-        /*@__PURE__*/ S.Struct({ s3: __S(15) }),
+        /*@__PURE__*/ S.Struct({ s3: S3 }),
       ]);
     case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
-          access: S.String,
-          membershipType: S.optional(S.String),
+          access: ReadAccessType,
+          membershipType: S.optional(MembershipType),
         }),
       ).annotate({ identifier: "PrincipalUser" });
     case 2:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          access: S.String,
-          membershipType: S.optional(S.String),
+          access: ReadAccessType,
+          membershipType: S.optional(MembershipType),
         }),
       ).annotate({ identifier: "PrincipalGroup" });
     case 3:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ user: __S(17) }),
-        /*@__PURE__*/ S.Struct({ group: __S(18) }),
+        /*@__PURE__*/ S.Struct({ user: PrincipalUser }),
+        /*@__PURE__*/ S.Struct({ group: PrincipalGroup }),
       ]);
     case 4:
-      return S.Array(__S(19));
+      return S.Array(Principal);
     case 5:
       return S.suspend(() =>
-        S.Struct({ principals: __S(20), memberRelation: S.optional(S.String) }),
+        S.Struct({ principals: Principals, memberRelation: S.optional(MemberRelation) }),
       ).annotate({ identifier: "AccessControl" });
     case 6:
-      return S.Array(__S(21));
+      return S.Array(AccessControl);
     case 7:
       return S.suspend(() =>
-        S.Struct({ accessControls: __S(22), memberRelation: S.optional(S.String) }),
+        S.Struct({ accessControls: AccessControls, memberRelation: S.optional(MemberRelation) }),
       ).annotate({ identifier: "AccessConfiguration" });
   }
 }
@@ -5285,8 +6273,8 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           key: S.String,
-          operator: S.String,
-          value: S.optional(__S(12)),
+          operator: DocumentEnrichmentConditionOperator,
+          value: S.optional(DocumentAttributeValue),
         }),
       ).annotate({
         identifier: "DocumentAttributeCondition",
@@ -5295,26 +6283,26 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           key: S.String,
-          value: S.optional(__S(12)),
-          attributeValueOperator: S.optional(S.String),
+          value: S.optional(DocumentAttributeValue),
+          attributeValueOperator: S.optional(AttributeValueOperator),
         }),
       ).annotate({ identifier: "DocumentAttributeTarget" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          condition: S.optional(__S(24)),
-          target: S.optional(__S(25)),
-          documentContentOperator: S.optional(S.String),
+          condition: S.optional(DocumentAttributeCondition),
+          target: S.optional(DocumentAttributeTarget),
+          documentContentOperator: S.optional(DocumentContentOperator),
         }),
       ).annotate({
         identifier: "InlineDocumentEnrichmentConfiguration",
       });
     case 3:
-      return S.Array(__S(26));
+      return S.Array(InlineDocumentEnrichmentConfiguration);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          invocationCondition: S.optional(__S(24)),
+          invocationCondition: S.optional(DocumentAttributeCondition),
           lambdaArn: S.optional(S.String),
           s3BucketName: S.optional(S.String),
           roleArn: S.optional(S.String),
@@ -5323,19 +6311,19 @@ function __c3(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          inlineConfigurations: S.optional(__S(27)),
-          preExtractionHookConfiguration: S.optional(__S(28)),
-          postExtractionHookConfiguration: S.optional(__S(28)),
+          inlineConfigurations: S.optional(InlineDocumentEnrichmentConfigurations),
+          preExtractionHookConfiguration: S.optional(HookConfiguration),
+          postExtractionHookConfiguration: S.optional(HookConfiguration),
         }),
       ).annotate({
         identifier: "DocumentEnrichmentConfiguration",
       });
     case 6:
-      return S.suspend(() => S.Struct({ imageExtractionStatus: S.String })).annotate({
+      return S.suspend(() => S.Struct({ imageExtractionStatus: ImageExtractionStatus })).annotate({
         identifier: "ImageExtractionConfiguration",
       });
     case 7:
-      return S.suspend(() => S.Struct({ audioExtractionStatus: S.String })).annotate({
+      return S.suspend(() => S.Struct({ audioExtractionStatus: AudioExtractionStatus })).annotate({
         identifier: "AudioExtractionConfiguration",
       });
   }
@@ -5343,15 +6331,15 @@ function __c3(j: number): any {
 function __c4(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ videoExtractionStatus: S.String })).annotate({
+      return S.suspend(() => S.Struct({ videoExtractionStatus: VideoExtractionStatus })).annotate({
         identifier: "VideoExtractionConfiguration",
       });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          imageExtractionConfiguration: S.optional(__S(30)),
-          audioExtractionConfiguration: S.optional(__S(31)),
-          videoExtractionConfiguration: S.optional(__S(32)),
+          imageExtractionConfiguration: S.optional(ImageExtractionConfiguration),
+          audioExtractionConfiguration: S.optional(AudioExtractionConfiguration),
+          videoExtractionConfiguration: S.optional(VideoExtractionConfiguration),
         }),
       ).annotate({
         identifier: "MediaExtractionConfiguration",
@@ -5360,23 +6348,23 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          attributes: S.optional(__S(14)),
-          content: S.optional(__S(16)),
-          contentType: S.optional(S.String),
+          attributes: S.optional(DocumentAttributes),
+          content: S.optional(DocumentContent),
+          contentType: S.optional(ContentType),
           title: S.optional(S.String),
-          accessConfiguration: S.optional(__S(23)),
-          documentEnrichmentConfiguration: S.optional(__S(29)),
-          mediaExtractionConfiguration: S.optional(__S(33)),
+          accessConfiguration: S.optional(AccessConfiguration),
+          documentEnrichmentConfiguration: S.optional(DocumentEnrichmentConfiguration),
+          mediaExtractionConfiguration: S.optional(MediaExtractionConfiguration),
         }),
       ).annotate({ identifier: "Document" });
     case 3:
-      return S.Array(__S(34));
+      return S.Array(Document);
     case 4:
       return S.suspend(() =>
         S.Struct({
           applicationId: S.String.pipe(T.HttpLabel("applicationId")),
           indexId: S.String.pipe(T.HttpLabel("indexId")),
-          documents: __S(35),
+          documents: Documents,
           roleArn: S.optional(S.String),
           dataSourceSyncId: S.optional(S.String),
         }).pipe(
@@ -5394,7 +6382,7 @@ function __c4(j: number): any {
         ),
       ).annotate({ identifier: "BatchPutDocumentRequest" });
     case 5:
-      return S.suspend(() => S.Struct({ failedDocuments: S.optional(__S(10)) })).annotate({
+      return S.suspend(() => S.Struct({ failedDocuments: S.optional(FailedDocuments) })).annotate({
         identifier: "BatchPutDocumentResponse",
       });
     case 6:
@@ -5419,7 +6407,7 @@ function __c4(j: number): any {
         identifier: "CancelSubscriptionRequest",
       });
     case 7:
-      return S.suspend(() => S.Struct({ type: S.optional(S.String) })).annotate({
+      return S.suspend(() => S.Struct({ type: S.optional(SubscriptionType) })).annotate({
         identifier: "SubscriptionDetails",
       });
   }
@@ -5430,8 +6418,8 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionArn: S.optional(S.String),
-          currentSubscription: S.optional(__S(39)),
-          nextSubscription: S.optional(__S(39)),
+          currentSubscription: S.optional(SubscriptionDetails),
+          nextSubscription: S.optional(SubscriptionDetails),
         }),
       ).annotate({
         identifier: "CancelSubscriptionResponse",
@@ -5441,10 +6429,10 @@ function __c5(j: number): any {
         identifier: "PluginConfiguration",
       });
     case 2:
-      return S.Union([/*@__PURE__*/ S.Struct({ pluginConfiguration: __S(41) })]);
+      return S.Union([/*@__PURE__*/ S.Struct({ pluginConfiguration: PluginConfiguration })]);
     case 3:
       return S.Array(
-        /*@__PURE__*/ S.suspend((): S.Schema<AttributeFilter> => __S(44)).annotate({
+        /*@__PURE__*/ S.suspend((): S.Schema<AttributeFilter> => AttributeFilter).annotate({
           identifier: "AttributeFilter",
         }),
       );
@@ -5452,31 +6440,31 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           andAllFilters: S.optional(
-            S.suspend(() => __S(43)).annotate({ identifier: "AttributeFilters" }),
+            S.suspend(() => AttributeFilters).annotate({ identifier: "AttributeFilters" }),
           ),
           orAllFilters: S.optional(
-            S.suspend(() => __S(43)).annotate({ identifier: "AttributeFilters" }),
+            S.suspend(() => AttributeFilters).annotate({ identifier: "AttributeFilters" }),
           ),
           notFilter: S.optional(
-            S.suspend((): S.Schema<AttributeFilter> => __S(44)).annotate({
+            S.suspend((): S.Schema<AttributeFilter> => AttributeFilter).annotate({
               identifier: "AttributeFilter",
             }),
           ),
-          equalsTo: S.optional(__S(13)),
-          containsAll: S.optional(__S(13)),
-          containsAny: S.optional(__S(13)),
-          greaterThan: S.optional(__S(13)),
-          greaterThanOrEquals: S.optional(__S(13)),
-          lessThan: S.optional(__S(13)),
-          lessThanOrEquals: S.optional(__S(13)),
+          equalsTo: S.optional(DocumentAttribute),
+          containsAll: S.optional(DocumentAttribute),
+          containsAny: S.optional(DocumentAttribute),
+          greaterThan: S.optional(DocumentAttribute),
+          greaterThanOrEquals: S.optional(DocumentAttribute),
+          lessThan: S.optional(DocumentAttribute),
+          lessThanOrEquals: S.optional(DocumentAttribute),
         }),
       ).annotate({ identifier: "AttributeFilter" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          chatMode: S.optional(S.String),
-          chatModeConfiguration: S.optional(__S(42)),
-          attributeFilter: S.optional(__S(44)),
+          chatMode: S.optional(ChatMode),
+          chatModeConfiguration: S.optional(ChatModeConfiguration),
+          attributeFilter: S.optional(AttributeFilter),
         }),
       ).annotate({ identifier: "ConfigurationEvent" });
     case 6:
@@ -5492,17 +6480,17 @@ function __c5(j: number): any {
 function __c6(j: number): any {
   switch (j) {
     case 0:
-      return S.Union([/*@__PURE__*/ S.Struct({ conversation: __S(47) })]);
+      return S.Union([/*@__PURE__*/ S.Struct({ conversation: ConversationSource })]);
     case 1:
       return S.suspend(() =>
         S.Struct({
           data: S.optional(T.Blob),
           name: S.optional(S.String),
-          copyFrom: S.optional(__S(48)),
+          copyFrom: S.optional(CopyFromSource),
         }),
       ).annotate({ identifier: "AttachmentInput" });
     case 2:
-      return S.suspend(() => S.Struct({ attachment: S.optional(__S(49)) })).annotate({
+      return S.suspend(() => S.Struct({ attachment: S.optional(AttachmentInput) })).annotate({
         identifier: "AttachmentInputEvent",
       });
     case 3:
@@ -5510,12 +6498,12 @@ function __c6(j: number): any {
         identifier: "ActionExecutionPayloadField",
       });
     case 4:
-      return S.Record(S.String, /*@__PURE__*/ __S(51).pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ ActionExecutionPayloadField.pipe(S.optional));
     case 5:
       return S.suspend(() =>
         S.Struct({
           pluginId: S.String,
-          payload: __S(52),
+          payload: ActionExecutionPayload,
           payloadFieldNameSeparator: S.String,
         }),
       ).annotate({ identifier: "ActionExecutionEvent" });
@@ -5530,18 +6518,18 @@ function __c6(j: number): any {
 function __c7(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ responseMap: __S(55) })).annotate({
+      return S.suspend(() => S.Struct({ responseMap: AuthorizationResponseMap })).annotate({
         identifier: "AuthChallengeResponseEvent",
       });
     case 1:
       return T.InputEventStream(
         /*@__PURE__*/ S.Union([
-          /*@__PURE__*/ S.Struct({ configurationEvent: __S(45) }),
-          /*@__PURE__*/ S.Struct({ textEvent: __S(46) }),
-          /*@__PURE__*/ S.Struct({ attachmentEvent: __S(50) }),
-          /*@__PURE__*/ S.Struct({ actionExecutionEvent: __S(53) }),
-          /*@__PURE__*/ S.Struct({ endOfInputEvent: __S(54) }),
-          /*@__PURE__*/ S.Struct({ authChallengeResponseEvent: __S(56) }),
+          /*@__PURE__*/ S.Struct({ configurationEvent: ConfigurationEvent }),
+          /*@__PURE__*/ S.Struct({ textEvent: TextInputEvent }),
+          /*@__PURE__*/ S.Struct({ attachmentEvent: AttachmentInputEvent }),
+          /*@__PURE__*/ S.Struct({ actionExecutionEvent: ActionExecutionEvent }),
+          /*@__PURE__*/ S.Struct({ endOfInputEvent: EndOfInputEvent }),
+          /*@__PURE__*/ S.Struct({ authChallengeResponseEvent: AuthChallengeResponseEvent }),
         ]),
       );
     case 2:
@@ -5549,11 +6537,11 @@ function __c7(j: number): any {
         S.Struct({
           applicationId: S.String.pipe(T.HttpLabel("applicationId")),
           userId: S.optional(S.String).pipe(T.HttpQuery("userId")),
-          userGroups: S.optional(__S(0)).pipe(T.HttpQuery("userGroups")),
+          userGroups: S.optional(UserGroups).pipe(T.HttpQuery("userGroups")),
           conversationId: S.optional(S.String).pipe(T.HttpQuery("conversationId")),
           parentMessageId: S.optional(S.String).pipe(T.HttpQuery("parentMessageId")),
           clientToken: S.optional(S.String).pipe(T.HttpQuery("clientToken"), T.IdempotencyToken()),
-          inputStream: S.optional(__S(57)).pipe(T.HttpPayload()),
+          inputStream: S.optional(ChatInputStream).pipe(T.HttpPayload()),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/applications/{applicationId}/conversations" }),
@@ -5568,7 +6556,7 @@ function __c7(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          systemMessageType: S.optional(S.String),
+          systemMessageType: S.optional(SystemMessageType),
           conversationId: S.optional(S.String),
           userMessageId: S.optional(S.String),
           systemMessageId: S.optional(S.String),
@@ -5590,7 +6578,7 @@ function __c7(j: number): any {
           mediaMimeType: S.optional(S.String),
           startTimeMilliseconds: S.optional(S.Number),
           endTimeMilliseconds: S.optional(S.Number),
-          audioExtractionType: S.optional(S.String),
+          audioExtractionType: S.optional(AudioExtractionType),
         }),
       ).annotate({ identifier: "AudioSourceDetails" });
     case 7:
@@ -5600,7 +6588,7 @@ function __c7(j: number): any {
           mediaMimeType: S.optional(S.String),
           startTimeMilliseconds: S.optional(S.Number),
           endTimeMilliseconds: S.optional(S.Number),
-          videoExtractionType: S.optional(S.String),
+          videoExtractionType: S.optional(VideoExtractionType),
         }),
       ).annotate({ identifier: "VideoSourceDetails" });
   }
@@ -5609,23 +6597,23 @@ function __c8(j: number): any {
   switch (j) {
     case 0:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ imageSourceDetails: __S(61) }),
-        /*@__PURE__*/ S.Struct({ audioSourceDetails: __S(62) }),
-        /*@__PURE__*/ S.Struct({ videoSourceDetails: __S(63) }),
+        /*@__PURE__*/ S.Struct({ imageSourceDetails: ImageSourceDetails }),
+        /*@__PURE__*/ S.Struct({ audioSourceDetails: AudioSourceDetails }),
+        /*@__PURE__*/ S.Struct({ videoSourceDetails: VideoSourceDetails }),
       ]);
     case 1:
       return S.suspend(() =>
         S.Struct({
           beginOffset: S.optional(S.Number),
           endOffset: S.optional(S.Number),
-          snippetExcerpt: S.optional(__S(60)),
+          snippetExcerpt: S.optional(SnippetExcerpt),
           mediaId: S.optional(S.String),
           mediaMimeType: S.optional(S.String),
-          sourceDetails: S.optional(__S(64)),
+          sourceDetails: S.optional(SourceDetails),
         }),
       ).annotate({ identifier: "TextSegment" });
     case 2:
-      return S.Array(__S(65));
+      return S.Array(TextSegment);
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -5634,21 +6622,21 @@ function __c8(j: number): any {
           url: S.optional(S.String),
           citationNumber: S.optional(S.Number),
           updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          textMessageSegments: S.optional(__S(66)),
+          textMessageSegments: S.optional(TextSegmentList),
           documentId: S.optional(S.String),
           indexId: S.optional(S.String),
           datasourceId: S.optional(S.String),
         }),
       ).annotate({ identifier: "SourceAttribution" });
     case 4:
-      return S.Array(__S(67)).pipe(/*@__PURE__*/ T.Sparse());
+      return S.Array(SourceAttribution).pipe(/*@__PURE__*/ T.Sparse());
     case 5:
       return S.suspend(() =>
         S.Struct({
           conversationId: S.optional(S.String),
           userMessageId: S.optional(S.String),
           systemMessageId: S.optional(S.String),
-          sourceAttributions: S.optional(__S(68)),
+          sourceAttributions: S.optional(SourceAttributions),
           finalTextMessage: S.optional(S.String),
         }),
       ).annotate({ identifier: "MetadataEvent" });
@@ -5659,7 +6647,7 @@ function __c8(j: number): any {
         identifier: "ActionReviewPayloadFieldAllowedValue",
       });
     case 7:
-      return S.Array(__S(70));
+      return S.Array(ActionReviewPayloadFieldAllowedValue);
   }
 }
 function __c9(j: number): any {
@@ -5670,16 +6658,16 @@ function __c9(j: number): any {
           displayName: S.optional(S.String),
           displayOrder: S.optional(S.Number),
           displayDescription: S.optional(S.String),
-          type: S.optional(S.String),
+          type: S.optional(ActionPayloadFieldType),
           value: S.optional(S.Any),
-          allowedValues: S.optional(__S(71)),
+          allowedValues: S.optional(ActionReviewPayloadFieldAllowedValues),
           allowedFormat: S.optional(S.String),
           arrayItemJsonSchema: S.optional(S.Any),
           required: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "ActionReviewPayloadField" });
     case 1:
-      return S.Record(S.String, /*@__PURE__*/ __S(72).pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ ActionReviewPayloadField.pipe(S.optional));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -5687,8 +6675,8 @@ function __c9(j: number): any {
           userMessageId: S.optional(S.String),
           systemMessageId: S.optional(S.String),
           pluginId: S.optional(S.String),
-          pluginType: S.optional(S.String),
-          payload: S.optional(__S(73)),
+          pluginType: S.optional(PluginType),
+          payload: S.optional(ActionReviewPayload),
           payloadFieldNameSeparator: S.optional(S.String),
         }),
       ).annotate({ identifier: "ActionReviewEvent" });
@@ -5696,8 +6684,8 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          status: S.optional(S.String),
-          error: S.optional(__S(8)),
+          status: S.optional(AttachmentStatus),
+          error: S.optional(ErrorDetail),
           attachmentId: S.optional(S.String),
           conversationId: S.optional(S.String),
         }),
@@ -5708,7 +6696,7 @@ function __c9(j: number): any {
           conversationId: S.optional(S.String),
           userMessageId: S.optional(S.String),
           systemMessageId: S.optional(S.String),
-          attachment: S.optional(__S(75)),
+          attachment: S.optional(AttachmentOutput),
         }),
       ).annotate({ identifier: "FailedAttachmentEvent" });
     case 5:
@@ -5718,25 +6706,25 @@ function __c9(j: number): any {
     case 6:
       return T.EventStream(
         /*@__PURE__*/ S.Union([
-          /*@__PURE__*/ S.Struct({ textEvent: __S(59) }),
-          /*@__PURE__*/ S.Struct({ metadataEvent: __S(69) }),
-          /*@__PURE__*/ S.Struct({ actionReviewEvent: __S(74) }),
-          /*@__PURE__*/ S.Struct({ failedAttachmentEvent: __S(76) }),
-          /*@__PURE__*/ S.Struct({ authChallengeRequestEvent: __S(77) }),
+          /*@__PURE__*/ S.Struct({ textEvent: TextOutputEvent }),
+          /*@__PURE__*/ S.Struct({ metadataEvent: MetadataEvent }),
+          /*@__PURE__*/ S.Struct({ actionReviewEvent: ActionReviewEvent }),
+          /*@__PURE__*/ S.Struct({ failedAttachmentEvent: FailedAttachmentEvent }),
+          /*@__PURE__*/ S.Struct({ authChallengeRequestEvent: AuthChallengeRequestEvent }),
         ]),
       );
     case 7:
       return S.suspend(() =>
-        S.Struct({ outputStream: S.optional(__S(78)).pipe(T.HttpPayload()) }),
+        S.Struct({ outputStream: S.optional(ChatOutputStream).pipe(T.HttpPayload()) }),
       ).annotate({ identifier: "ChatOutput" });
   }
 }
 function __c10(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(49));
+      return S.Array(AttachmentInput);
     case 1:
-      return S.suspend(() => S.Struct({ responseMap: __S(55) })).annotate({
+      return S.suspend(() => S.Struct({ responseMap: AuthorizationResponseMap })).annotate({
         identifier: "AuthChallengeResponse",
       });
     case 2:
@@ -5744,16 +6732,16 @@ function __c10(j: number): any {
         S.Struct({
           applicationId: S.String.pipe(T.HttpLabel("applicationId")),
           userId: S.optional(S.String).pipe(T.HttpQuery("userId")),
-          userGroups: S.optional(__S(0)).pipe(T.HttpQuery("userGroups")),
+          userGroups: S.optional(UserGroups).pipe(T.HttpQuery("userGroups")),
           userMessage: S.optional(S.String),
-          attachments: S.optional(__S(80)),
-          actionExecution: S.optional(__S(53)),
-          authChallengeResponse: S.optional(__S(81)),
+          attachments: S.optional(AttachmentsInput),
+          actionExecution: S.optional(ActionExecution),
+          authChallengeResponse: S.optional(AuthChallengeResponse),
           conversationId: S.optional(S.String),
           parentMessageId: S.optional(S.String),
-          attributeFilter: S.optional(__S(44)),
-          chatMode: S.optional(S.String),
-          chatModeConfiguration: S.optional(__S(42)),
+          attributeFilter: S.optional(AttributeFilter),
+          chatMode: S.optional(ChatMode),
+          chatModeConfiguration: S.optional(ChatModeConfiguration),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(
           T.all(
@@ -5770,8 +6758,8 @@ function __c10(j: number): any {
       return S.suspend(() =>
         S.Struct({
           pluginId: S.optional(S.String),
-          pluginType: S.optional(S.String),
-          payload: S.optional(__S(73)),
+          pluginType: S.optional(PluginType),
+          payload: S.optional(ActionReviewPayload),
           payloadFieldNameSeparator: S.optional(S.String),
         }),
       ).annotate({ identifier: "ActionReview" });
@@ -5780,7 +6768,7 @@ function __c10(j: number): any {
         identifier: "AuthChallengeRequest",
       });
     case 5:
-      return S.Array(__S(75));
+      return S.Array(AttachmentOutput);
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -5788,10 +6776,10 @@ function __c10(j: number): any {
           systemMessage: S.optional(S.String),
           systemMessageId: S.optional(S.String),
           userMessageId: S.optional(S.String),
-          actionReview: S.optional(__S(83)),
-          authChallengeRequest: S.optional(__S(84)),
-          sourceAttributions: S.optional(__S(68)),
-          failedAttachments: S.optional(__S(85)),
+          actionReview: S.optional(ActionReview),
+          authChallengeRequest: S.optional(AuthChallengeRequest),
+          sourceAttributions: S.optional(SourceAttributions),
+          failedAttachments: S.optional(AttachmentsOutput),
         }),
       ).annotate({ identifier: "ChatSyncOutput" });
     case 7:
@@ -5824,38 +6812,38 @@ function __c11(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ name: S.optional(S.String), type: S.optional(S.String) }),
+        S.Struct({ name: S.optional(S.String), type: S.optional(MembershipType) }),
       ).annotate({ identifier: "AssociatedGroup" });
     case 1:
-      return S.Array(__S(88));
+      return S.Array(AssociatedGroup);
     case 2:
       return S.suspend(() =>
-        S.Struct({ id: S.optional(S.String), type: S.optional(S.String) }),
+        S.Struct({ id: S.optional(S.String), type: S.optional(MembershipType) }),
       ).annotate({ identifier: "AssociatedUser" });
     case 3:
-      return S.Array(__S(90));
+      return S.Array(AssociatedUser);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          memberRelation: S.optional(S.String),
-          users: S.optional(__S(91)),
-          groups: S.optional(__S(89)),
+          memberRelation: S.optional(MemberRelation),
+          users: S.optional(DocumentAclUsers),
+          groups: S.optional(DocumentAclGroups),
         }),
       ).annotate({ identifier: "DocumentAclCondition" });
     case 5:
-      return S.Array(__S(92));
+      return S.Array(DocumentAclCondition);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          memberRelation: S.optional(S.String),
-          conditions: S.optional(__S(93)),
+          memberRelation: S.optional(MemberRelation),
+          conditions: S.optional(DocumentAclConditions),
         }),
       ).annotate({ identifier: "DocumentAclMembership" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          allowlist: S.optional(__S(94)),
-          denyList: S.optional(__S(94)),
+          allowlist: S.optional(DocumentAclMembership),
+          denyList: S.optional(DocumentAclMembership),
         }),
       ).annotate({ identifier: "DocumentAcl" });
   }
@@ -5865,10 +6853,10 @@ function __c12(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          userGroups: S.optional(__S(89)),
-          userAliases: S.optional(__S(91)),
+          userGroups: S.optional(AssociatedGroups),
+          userAliases: S.optional(AssociatedUsers),
           hasAccess: S.optional(S.Boolean),
-          documentAcl: S.optional(__S(95)),
+          documentAcl: S.optional(DocumentAcl),
         }),
       ).annotate({
         identifier: "CheckDocumentAccessResponse",
@@ -5908,13 +6896,13 @@ function __c12(j: number): any {
         identifier: "Tag",
       });
     case 5:
-      return S.Array(__S(100));
+      return S.Array(Tag);
     case 6:
-      return S.suspend(() => S.Struct({ attachmentsControlMode: S.String })).annotate({
-        identifier: "AttachmentsConfiguration",
-      });
+      return S.suspend(() => S.Struct({ attachmentsControlMode: AttachmentsControlMode })).annotate(
+        { identifier: "AttachmentsConfiguration" },
+      );
     case 7:
-      return S.suspend(() => S.Struct({ qAppsControlMode: S.String })).annotate({
+      return S.suspend(() => S.Struct({ qAppsControlMode: QAppsControlMode })).annotate({
         identifier: "QAppsConfiguration",
       });
   }
@@ -5922,7 +6910,9 @@ function __c12(j: number): any {
 function __c13(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ personalizationControlMode: S.String })).annotate({
+      return S.suspend(() =>
+        S.Struct({ personalizationControlMode: PersonalizationControlMode }),
+      ).annotate({
         identifier: "PersonalizationConfiguration",
       });
     case 1:
@@ -5934,18 +6924,18 @@ function __c13(j: number): any {
         S.Struct({
           displayName: S.String,
           roleArn: S.optional(S.String),
-          identityType: S.optional(S.String),
+          identityType: S.optional(IdentityType),
           iamIdentityProviderArn: S.optional(S.String),
           identityCenterInstanceArn: S.optional(S.String),
-          clientIdsForOIDC: S.optional(__S(0)),
+          clientIdsForOIDC: S.optional(ClientIdsForOIDC),
           description: S.optional(S.String),
-          encryptionConfiguration: S.optional(__S(99)),
-          tags: S.optional(__S(101)),
+          encryptionConfiguration: S.optional(EncryptionConfiguration),
+          tags: S.optional(Tags),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          attachmentsConfiguration: S.optional(__S(102)),
-          qAppsConfiguration: S.optional(__S(103)),
-          personalizationConfiguration: S.optional(__S(104)),
-          quickSightConfiguration: S.optional(__S(105)),
+          attachmentsConfiguration: S.optional(AttachmentsConfiguration),
+          qAppsConfiguration: S.optional(QAppsConfiguration),
+          personalizationConfiguration: S.optional(PersonalizationConfiguration),
+          quickSightConfiguration: S.optional(QuickSightConfiguration),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/applications" }), svc, auth, proto, ver, rules),
         ),
@@ -5970,19 +6960,22 @@ function __c13(j: number): any {
         }),
       ).annotate({ identifier: "InstructionCollection" });
     case 5:
-      return S.suspend(() => S.Struct({ instructionCollection: S.optional(__S(108)) })).annotate({
-        identifier: "ResponseConfiguration",
-      });
+      return S.suspend(() =>
+        S.Struct({ instructionCollection: S.optional(InstructionCollection) }),
+      ).annotate({ identifier: "ResponseConfiguration" });
     case 6:
-      return S.Record(S.String, /*@__PURE__*/ __S(109).pipe(S.optional));
+      return S.Record(
+        ResponseConfigurationType,
+        /*@__PURE__*/ ResponseConfiguration.pipe(S.optional),
+      );
     case 7:
       return S.suspend(() =>
         S.Struct({
           applicationId: S.String.pipe(T.HttpLabel("applicationId")),
           displayName: S.String,
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          responseConfigurations: __S(110),
-          tags: S.optional(__S(101)),
+          responseConfigurations: ResponseConfigurations,
+          tags: S.optional(Tags),
         }).pipe(
           T.all(
             T.Http({
@@ -6010,15 +7003,15 @@ function __c14(j: number): any {
         identifier: "CreateChatResponseConfigurationResponse",
       });
     case 1:
-      return S.suspend(() => S.Struct({ documentAttributeFilter: __S(44) })).annotate({
+      return S.suspend(() => S.Struct({ documentAttributeFilter: AttributeFilter })).annotate({
         identifier: "ActionFilterConfiguration",
       });
     case 2:
       return S.suspend(() =>
-        S.Struct({ action: S.String, filterConfiguration: S.optional(__S(113)) }),
+        S.Struct({ action: S.String, filterConfiguration: S.optional(ActionFilterConfiguration) }),
       ).annotate({ identifier: "ActionConfiguration" });
     case 3:
-      return S.Array(__S(114));
+      return S.Array(ActionConfiguration);
     case 4:
       return S.suspend(() => S.Struct({ idcTrustedTokenIssuerArn: S.String })).annotate({
         identifier: "DataAccessorIdcTrustedTokenIssuerConfiguration",
@@ -6026,15 +7019,15 @@ function __c14(j: number): any {
     case 5:
       return S.Union([
         /*@__PURE__*/ S.Struct({
-          idcTrustedTokenIssuerConfiguration: __S(116),
+          idcTrustedTokenIssuerConfiguration: DataAccessorIdcTrustedTokenIssuerConfiguration,
         }),
       ]);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          authenticationType: S.String,
-          authenticationConfiguration: S.optional(__S(117)),
-          externalIds: S.optional(__S(0)),
+          authenticationType: DataAccessorAuthenticationType,
+          authenticationConfiguration: S.optional(DataAccessorAuthenticationConfiguration),
+          externalIds: S.optional(DataAccessorExternalIds),
         }),
       ).annotate({
         identifier: "DataAccessorAuthenticationDetail",
@@ -6044,11 +7037,11 @@ function __c14(j: number): any {
         S.Struct({
           applicationId: S.String.pipe(T.HttpLabel("applicationId")),
           principal: S.String,
-          actionConfigurations: __S(115),
+          actionConfigurations: ActionConfigurationList,
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
           displayName: SensitiveString,
-          authenticationDetail: S.optional(__S(118)),
-          tags: S.optional(__S(101)),
+          authenticationDetail: S.optional(DataAccessorAuthenticationDetail),
+          tags: S.optional(Tags),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/applications/{applicationId}/dataaccessors" }),
@@ -6077,7 +7070,9 @@ function __c15(j: number): any {
         identifier: "CreateDataAccessorResponse",
       });
     case 1:
-      return S.suspend(() => S.Struct({ subnetIds: __S(0), securityGroupIds: __S(0) })).annotate({
+      return S.suspend(() =>
+        S.Struct({ subnetIds: SubnetIds, securityGroupIds: SecurityGroupIds }),
+      ).annotate({
         identifier: "DataSourceVpcConfiguration",
       });
     case 2:
@@ -6087,14 +7082,14 @@ function __c15(j: number): any {
           indexId: S.String.pipe(T.HttpLabel("indexId")),
           displayName: S.String,
           configuration: S.Any,
-          vpcConfiguration: S.optional(__S(121)),
+          vpcConfiguration: S.optional(DataSourceVpcConfiguration),
           description: S.optional(S.String),
-          tags: S.optional(__S(101)),
+          tags: S.optional(Tags),
           syncSchedule: S.optional(S.String),
           roleArn: S.optional(S.String),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          documentEnrichmentConfiguration: S.optional(__S(29)),
-          mediaExtractionConfiguration: S.optional(__S(33)),
+          documentEnrichmentConfiguration: S.optional(DocumentEnrichmentConfiguration),
+          mediaExtractionConfiguration: S.optional(MediaExtractionConfiguration),
         }).pipe(
           T.all(
             T.Http({
@@ -6123,9 +7118,9 @@ function __c15(j: number): any {
           applicationId: S.String.pipe(T.HttpLabel("applicationId")),
           displayName: S.String,
           description: S.optional(S.String),
-          type: S.optional(S.String),
-          tags: S.optional(__S(101)),
-          capacityConfiguration: S.optional(__S(124)),
+          type: S.optional(IndexType),
+          tags: S.optional(Tags),
+          capacityConfiguration: S.optional(IndexCapacityConfiguration),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(
           T.all(
@@ -6167,24 +7162,24 @@ function __c16(j: number): any {
       );
     case 2:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ basicAuthConfiguration: __S(127) }),
+        /*@__PURE__*/ S.Struct({ basicAuthConfiguration: BasicAuthConfiguration }),
         /*@__PURE__*/ S.Struct({
-          oAuth2ClientCredentialConfiguration: __S(128),
+          oAuth2ClientCredentialConfiguration: OAuth2ClientCredentialConfiguration,
         }),
-        /*@__PURE__*/ S.Struct({ noAuthConfiguration: __S(54) }),
-        /*@__PURE__*/ S.Struct({ idcAuthConfiguration: __S(129) }),
+        /*@__PURE__*/ S.Struct({ noAuthConfiguration: NoAuthConfiguration }),
+        /*@__PURE__*/ S.Struct({ idcAuthConfiguration: IdcAuthConfiguration }),
       ]);
     case 3:
       return S.Union([
         /*@__PURE__*/ S.Struct({ payload: SensitiveString }),
-        /*@__PURE__*/ S.Struct({ s3: __S(15) }),
+        /*@__PURE__*/ S.Struct({ s3: S3 }),
       ]);
     case 4:
       return S.suspend(() =>
         S.Struct({
           description: S.String,
-          apiSchemaType: S.String,
-          apiSchema: S.optional(__S(131)),
+          apiSchemaType: APISchemaType,
+          apiSchema: S.optional(APISchema),
         }),
       ).annotate({
         identifier: "CustomPluginConfiguration",
@@ -6194,11 +7189,11 @@ function __c16(j: number): any {
         S.Struct({
           applicationId: S.String.pipe(T.HttpLabel("applicationId")),
           displayName: S.String,
-          type: S.String,
-          authConfiguration: __S(130),
+          type: PluginType,
+          authConfiguration: PluginAuthConfiguration,
           serverUrl: S.optional(S.String),
-          customPluginConfiguration: S.optional(__S(132)),
-          tags: S.optional(__S(101)),
+          customPluginConfiguration: S.optional(CustomPluginConfiguration),
+          tags: S.optional(Tags),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(
           T.all(
@@ -6216,14 +7211,14 @@ function __c16(j: number): any {
         S.Struct({
           pluginId: S.optional(S.String),
           pluginArn: S.optional(S.String),
-          buildStatus: S.optional(S.String),
+          buildStatus: S.optional(PluginBuildStatus),
         }),
       ).annotate({ identifier: "CreatePluginResponse" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          boostingLevel: S.String,
-          boostingType: S.optional(S.String),
+          boostingLevel: DocumentAttributeBoostingLevel,
+          boostingType: S.optional(NumberAttributeBoostingType),
         }),
       ).annotate({
         identifier: "NumberAttributeBoostingConfiguration",
@@ -6233,12 +7228,12 @@ function __c16(j: number): any {
 function __c17(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ StringAttributeValueBoostingLevel.pipe(S.optional));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          boostingLevel: S.String,
-          attributeValueBoosting: S.optional(__S(136)),
+          boostingLevel: DocumentAttributeBoostingLevel,
+          attributeValueBoosting: S.optional(StringAttributeValueBoosting),
         }),
       ).annotate({
         identifier: "StringAttributeBoostingConfiguration",
@@ -6246,33 +7241,36 @@ function __c17(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          boostingLevel: S.String,
+          boostingLevel: DocumentAttributeBoostingLevel,
           boostingDurationInSeconds: S.optional(S.Number),
         }),
       ).annotate({
         identifier: "DateAttributeBoostingConfiguration",
       });
     case 3:
-      return S.suspend(() => S.Struct({ boostingLevel: S.String })).annotate({
+      return S.suspend(() => S.Struct({ boostingLevel: DocumentAttributeBoostingLevel })).annotate({
         identifier: "StringListAttributeBoostingConfiguration",
       });
     case 4:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ numberConfiguration: __S(135) }),
-        /*@__PURE__*/ S.Struct({ stringConfiguration: __S(137) }),
-        /*@__PURE__*/ S.Struct({ dateConfiguration: __S(138) }),
+        /*@__PURE__*/ S.Struct({ numberConfiguration: NumberAttributeBoostingConfiguration }),
+        /*@__PURE__*/ S.Struct({ stringConfiguration: StringAttributeBoostingConfiguration }),
+        /*@__PURE__*/ S.Struct({ dateConfiguration: DateAttributeBoostingConfiguration }),
         /*@__PURE__*/ S.Struct({
-          stringListConfiguration: __S(139),
+          stringListConfiguration: StringListAttributeBoostingConfiguration,
         }),
       ]);
     case 5:
-      return S.Record(S.String, /*@__PURE__*/ __S(140).pipe(S.optional));
+      return S.Record(
+        S.String,
+        /*@__PURE__*/ DocumentAttributeBoostingConfiguration.pipe(S.optional),
+      );
     case 6:
       return S.suspend(() =>
         S.Struct({
           indexId: S.String,
           version: S.optional(S.Number),
-          boostingOverride: S.optional(__S(141)),
+          boostingOverride: S.optional(DocumentAttributeBoostingOverrideMap),
         }),
       ).annotate({ identifier: "NativeIndexConfiguration" });
     case 7:
@@ -6285,19 +7283,19 @@ function __c18(j: number): any {
   switch (j) {
     case 0:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ nativeIndexConfiguration: __S(142) }),
-        /*@__PURE__*/ S.Struct({ kendraIndexConfiguration: __S(143) }),
+        /*@__PURE__*/ S.Struct({ nativeIndexConfiguration: NativeIndexConfiguration }),
+        /*@__PURE__*/ S.Struct({ kendraIndexConfiguration: KendraIndexConfiguration }),
       ]);
     case 1:
       return S.suspend(() =>
         S.Struct({
           applicationId: S.String.pipe(T.HttpLabel("applicationId")),
-          type: S.String,
+          type: RetrieverType,
           displayName: S.String,
-          configuration: __S(144),
+          configuration: RetrieverConfiguration,
           roleArn: S.optional(S.String),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          tags: S.optional(__S(101)),
+          tags: S.optional(Tags),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/applications/{applicationId}/retrievers" }),
@@ -6322,8 +7320,8 @@ function __c18(j: number): any {
       return S.suspend(() =>
         S.Struct({
           applicationId: S.String.pipe(T.HttpLabel("applicationId")),
-          principal: __S(147),
-          type: S.String,
+          principal: SubscriptionPrincipal,
+          type: SubscriptionType,
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(
           T.all(
@@ -6343,8 +7341,8 @@ function __c18(j: number): any {
         S.Struct({
           subscriptionId: S.optional(S.String),
           subscriptionArn: S.optional(S.String),
-          currentSubscription: S.optional(__S(39)),
-          nextSubscription: S.optional(__S(39)),
+          currentSubscription: S.optional(SubscriptionDetails),
+          nextSubscription: S.optional(SubscriptionDetails),
         }),
       ).annotate({
         identifier: "CreateSubscriptionResponse",
@@ -6358,7 +7356,7 @@ function __c18(j: number): any {
         }),
       ).annotate({ identifier: "UserAlias" });
     case 7:
-      return S.Array(__S(150));
+      return S.Array(UserAlias);
   }
 }
 function __c19(j: number): any {
@@ -6368,7 +7366,7 @@ function __c19(j: number): any {
         S.Struct({
           applicationId: S.String.pipe(T.HttpLabel("applicationId")),
           userId: S.String,
-          userAliases: S.optional(__S(151)),
+          userAliases: S.optional(UserAliases),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(
           T.all(
@@ -6391,13 +7389,15 @@ function __c19(j: number): any {
       });
     case 3:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ samlConfiguration: __S(153) }),
-        /*@__PURE__*/ S.Struct({ openIDConnectConfiguration: __S(154) }),
+        /*@__PURE__*/ S.Struct({ samlConfiguration: SamlProviderConfiguration }),
+        /*@__PURE__*/ S.Struct({ openIDConnectConfiguration: OpenIDConnectProviderConfiguration }),
       ]);
     case 4:
-      return S.suspend(() => S.Struct({ enabledBrowserExtensions: __S(0) })).annotate({
-        identifier: "BrowserExtensionConfiguration",
-      });
+      return S.suspend(() => S.Struct({ enabledBrowserExtensions: BrowserExtensionList })).annotate(
+        {
+          identifier: "BrowserExtensionConfiguration",
+        },
+      );
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -6416,14 +7416,14 @@ function __c19(j: number): any {
           title: S.optional(S.String),
           subtitle: S.optional(S.String),
           welcomeMessage: S.optional(S.String),
-          samplePromptsControlMode: S.optional(S.String),
-          origins: S.optional(__S(0)),
+          samplePromptsControlMode: S.optional(WebExperienceSamplePromptsControlMode),
+          origins: S.optional(WebExperienceOrigins),
           roleArn: S.optional(S.String),
-          tags: S.optional(__S(101)),
+          tags: S.optional(Tags),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          identityProviderConfiguration: S.optional(__S(155)),
-          browserExtensionConfiguration: S.optional(__S(156)),
-          customizationConfiguration: S.optional(__S(157)),
+          identityProviderConfiguration: S.optional(IdentityProviderConfiguration),
+          browserExtensionConfiguration: S.optional(BrowserExtensionConfiguration),
+          customizationConfiguration: S.optional(CustomizationConfiguration),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/applications/{applicationId}/experiences" }),
@@ -6733,14 +7733,16 @@ function __c21(j: number): any {
 function __c22(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ attachmentsControlMode: S.optional(S.String) })).annotate({
+      return S.suspend(() =>
+        S.Struct({ attachmentsControlMode: S.optional(AttachmentsControlMode) }),
+      ).annotate({
         identifier: "AppliedAttachmentsConfiguration",
       });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          autoSubscribe: S.optional(S.String),
-          defaultSubscriptionType: S.optional(S.String),
+          autoSubscribe: S.optional(AutoSubscriptionStatus),
+          defaultSubscriptionType: S.optional(SubscriptionType),
         }),
       ).annotate({
         identifier: "AutoSubscriptionConfiguration",
@@ -6751,22 +7753,22 @@ function __c22(j: number): any {
           displayName: S.optional(S.String),
           applicationId: S.optional(S.String),
           applicationArn: S.optional(S.String),
-          identityType: S.optional(S.String),
+          identityType: S.optional(IdentityType),
           iamIdentityProviderArn: S.optional(S.String),
           identityCenterApplicationArn: S.optional(S.String),
           roleArn: S.optional(S.String),
-          status: S.optional(S.String),
+          status: S.optional(ApplicationStatus),
           description: S.optional(S.String),
-          encryptionConfiguration: S.optional(__S(99)),
+          encryptionConfiguration: S.optional(EncryptionConfiguration),
           createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          error: S.optional(__S(8)),
-          attachmentsConfiguration: S.optional(__S(176)),
-          qAppsConfiguration: S.optional(__S(103)),
-          personalizationConfiguration: S.optional(__S(104)),
-          autoSubscriptionConfiguration: S.optional(__S(177)),
-          clientIdsForOIDC: S.optional(__S(0)),
-          quickSightConfiguration: S.optional(__S(105)),
+          error: S.optional(ErrorDetail),
+          attachmentsConfiguration: S.optional(AppliedAttachmentsConfiguration),
+          qAppsConfiguration: S.optional(QAppsConfiguration),
+          personalizationConfiguration: S.optional(PersonalizationConfiguration),
+          autoSubscriptionConfiguration: S.optional(AutoSubscriptionConfiguration),
+          clientIdsForOIDC: S.optional(ClientIdsForOIDC),
+          quickSightConfiguration: S.optional(QuickSightConfiguration),
         }),
       ).annotate({ identifier: "GetApplicationResponse" });
     case 3:
@@ -6789,13 +7791,13 @@ function __c22(j: number): any {
         identifier: "GetChatControlsConfigurationRequest",
       });
     case 4:
-      return S.suspend(() => S.Struct({ control: S.String })).annotate({
+      return S.suspend(() => S.Struct({ control: OrchestrationControl })).annotate({
         identifier: "AppliedOrchestrationConfiguration",
       });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          blockedPhrases: S.optional(__S(0)),
+          blockedPhrases: S.optional(BlockedPhrases),
           systemMessageOverride: S.optional(S.String),
         }),
       ).annotate({
@@ -6803,7 +7805,7 @@ function __c22(j: number): any {
       });
     case 6:
       return S.suspend(() =>
-        S.Struct({ userIds: S.optional(__S(0)), userGroups: S.optional(__S(0)) }),
+        S.Struct({ userIds: S.optional(UserIds), userGroups: S.optional(UserGroups) }),
       ).annotate({ identifier: "UsersAndGroups" });
     case 7:
       return S.suspend(() => S.Struct({ systemMessageOverride: S.optional(S.String) })).annotate({
@@ -6818,62 +7820,62 @@ function __c23(j: number): any {
         S.Struct({ indexId: S.optional(S.String), dataSourceId: S.optional(S.String) }),
       ).annotate({ identifier: "EligibleDataSource" });
     case 1:
-      return S.Array(__S(184));
+      return S.Array(EligibleDataSource);
     case 2:
-      return S.suspend(() => S.Struct({ eligibleDataSources: S.optional(__S(185)) })).annotate({
-        identifier: "ContentRetrievalRule",
-      });
+      return S.suspend(() =>
+        S.Struct({ eligibleDataSources: S.optional(EligibleDataSources) }),
+      ).annotate({ identifier: "ContentRetrievalRule" });
     case 3:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ contentBlockerRule: __S(183) }),
-        /*@__PURE__*/ S.Struct({ contentRetrievalRule: __S(186) }),
+        /*@__PURE__*/ S.Struct({ contentBlockerRule: ContentBlockerRule }),
+        /*@__PURE__*/ S.Struct({ contentRetrievalRule: ContentRetrievalRule }),
       ]);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          includedUsersAndGroups: S.optional(__S(182)),
-          excludedUsersAndGroups: S.optional(__S(182)),
-          ruleType: S.String,
-          ruleConfiguration: S.optional(__S(187)),
+          includedUsersAndGroups: S.optional(UsersAndGroups),
+          excludedUsersAndGroups: S.optional(UsersAndGroups),
+          ruleType: RuleType,
+          ruleConfiguration: S.optional(RuleConfiguration),
         }),
       ).annotate({ identifier: "Rule" });
     case 5:
-      return S.Array(__S(188));
+      return S.Array(Rule);
     case 6:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
           description: S.optional(S.String),
-          exampleChatMessages: S.optional(__S(0)),
-          rules: __S(189),
+          exampleChatMessages: S.optional(ExampleChatMessages),
+          rules: Rules,
         }),
       ).annotate({ identifier: "TopicConfiguration" });
     case 7:
-      return S.Array(__S(190));
+      return S.Array(TopicConfiguration);
   }
 }
 function __c24(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ creatorModeControl: S.String })).annotate({
+      return S.suspend(() => S.Struct({ creatorModeControl: CreatorModeControl })).annotate({
         identifier: "AppliedCreatorModeConfiguration",
       });
     case 1:
       return S.suspend(() =>
-        S.Struct({ hallucinationReductionControl: S.optional(S.String) }),
+        S.Struct({ hallucinationReductionControl: S.optional(HallucinationReductionControl) }),
       ).annotate({
         identifier: "HallucinationReductionConfiguration",
       });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          responseScope: S.optional(S.String),
-          orchestrationConfiguration: S.optional(__S(180)),
-          blockedPhrases: S.optional(__S(181)),
-          topicConfigurations: S.optional(__S(191)),
-          creatorModeConfiguration: S.optional(__S(192)),
+          responseScope: S.optional(ResponseScope),
+          orchestrationConfiguration: S.optional(AppliedOrchestrationConfiguration),
+          blockedPhrases: S.optional(BlockedPhrasesConfiguration),
+          topicConfigurations: S.optional(TopicConfigurations),
+          creatorModeConfiguration: S.optional(AppliedCreatorModeConfiguration),
           nextToken: S.optional(S.String),
-          hallucinationReductionConfiguration: S.optional(__S(193)),
+          hallucinationReductionConfiguration: S.optional(HallucinationReductionConfiguration),
         }),
       ).annotate({
         identifier: "GetChatControlsConfigurationResponse",
@@ -6902,10 +7904,10 @@ function __c24(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          responseConfigurations: S.optional(__S(110)),
+          responseConfigurations: S.optional(ResponseConfigurations),
           responseConfigurationSummary: S.optional(S.String),
-          status: S.optional(S.String),
-          error: S.optional(__S(8)),
+          status: S.optional(ChatResponseConfigurationStatus),
+          error: S.optional(ErrorDetail),
           updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({
@@ -6918,8 +7920,8 @@ function __c24(j: number): any {
           chatResponseConfigurationArn: S.optional(S.String),
           displayName: S.optional(S.String),
           createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          inUseConfiguration: S.optional(__S(196)),
-          lastUpdateConfiguration: S.optional(__S(196)),
+          inUseConfiguration: S.optional(ChatResponseConfigurationDetail),
+          lastUpdateConfiguration: S.optional(ChatResponseConfigurationDetail),
         }),
       ).annotate({
         identifier: "GetChatResponseConfigurationResponse",
@@ -6952,8 +7954,8 @@ function __c24(j: number): any {
           applicationId: S.optional(S.String),
           idcApplicationArn: S.optional(S.String),
           principal: S.optional(S.String),
-          actionConfigurations: S.optional(__S(115)),
-          authenticationDetail: S.optional(__S(118)),
+          actionConfigurations: S.optional(ActionConfigurationList),
+          authenticationDetail: S.optional(DataAccessorAuthenticationDetail),
           createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
@@ -6992,16 +7994,16 @@ function __c25(j: number): any {
           displayName: S.optional(S.String),
           type: S.optional(S.String),
           configuration: S.optional(S.Any),
-          vpcConfiguration: S.optional(__S(121)),
+          vpcConfiguration: S.optional(DataSourceVpcConfiguration),
           createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           description: S.optional(S.String),
-          status: S.optional(S.String),
+          status: S.optional(DataSourceStatus),
           syncSchedule: S.optional(S.String),
           roleArn: S.optional(S.String),
-          error: S.optional(__S(8)),
-          documentEnrichmentConfiguration: S.optional(__S(29)),
-          mediaExtractionConfiguration: S.optional(__S(33)),
+          error: S.optional(ErrorDetail),
+          documentEnrichmentConfiguration: S.optional(DocumentEnrichmentConfiguration),
+          mediaExtractionConfiguration: S.optional(MediaExtractionConfiguration),
         }),
       ).annotate({ identifier: "GetDataSourceResponse" });
     case 2:
@@ -7011,7 +8013,7 @@ function __c25(j: number): any {
           indexId: S.String.pipe(T.HttpLabel("indexId")),
           dataSourceId: S.optional(S.String).pipe(T.HttpQuery("dataSourceId")),
           documentId: S.String.pipe(T.HttpLabel("documentId")),
-          outputFormat: S.optional(S.String).pipe(T.HttpQuery("outputFormat")),
+          outputFormat: S.optional(OutputFormat).pipe(T.HttpQuery("outputFormat")),
         }).pipe(
           T.all(
             T.Http({
@@ -7056,18 +8058,18 @@ function __c25(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(S.String),
+          status: S.optional(GroupStatus),
           lastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          errorDetail: S.optional(__S(8)),
+          errorDetail: S.optional(ErrorDetail),
         }),
       ).annotate({ identifier: "GroupStatusDetail" });
     case 6:
-      return S.Array(__S(205));
+      return S.Array(GroupStatusDetail);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(__S(205)),
-          statusHistory: S.optional(__S(206)),
+          status: S.optional(GroupStatusDetail),
+          statusHistory: S.optional(GroupStatusDetails),
         }),
       ).annotate({ identifier: "GetGroupResponse" });
   }
@@ -7094,14 +8096,14 @@ function __c26(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          type: S.optional(S.String),
-          search: S.optional(S.String),
+          type: S.optional(AttributeType),
+          search: S.optional(Status),
         }),
       ).annotate({
         identifier: "DocumentAttributeConfiguration",
       });
     case 2:
-      return S.Array(__S(209));
+      return S.Array(DocumentAttributeConfiguration);
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -7110,9 +8112,9 @@ function __c26(j: number): any {
         }),
       ).annotate({ identifier: "TextDocumentStatistics" });
     case 4:
-      return S.suspend(() => S.Struct({ textDocumentStatistics: S.optional(__S(211)) })).annotate({
-        identifier: "IndexStatistics",
-      });
+      return S.suspend(() =>
+        S.Struct({ textDocumentStatistics: S.optional(TextDocumentStatistics) }),
+      ).annotate({ identifier: "IndexStatistics" });
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -7120,15 +8122,15 @@ function __c26(j: number): any {
           indexId: S.optional(S.String),
           displayName: S.optional(S.String),
           indexArn: S.optional(S.String),
-          status: S.optional(S.String),
-          type: S.optional(S.String),
+          status: S.optional(IndexStatus),
+          type: S.optional(IndexType),
           description: S.optional(S.String),
           createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          capacityConfiguration: S.optional(__S(124)),
-          documentAttributeConfigurations: S.optional(__S(210)),
-          error: S.optional(__S(8)),
-          indexStatistics: S.optional(__S(212)),
+          capacityConfiguration: S.optional(IndexCapacityConfiguration),
+          documentAttributeConfigurations: S.optional(DocumentAttributeConfigurations),
+          error: S.optional(ErrorDetail),
+          indexStatistics: S.optional(IndexStatistics),
         }),
       ).annotate({ identifier: "GetIndexResponse" });
     case 6:
@@ -7182,13 +8184,13 @@ function __c27(j: number): any {
           applicationId: S.optional(S.String),
           pluginId: S.optional(S.String),
           displayName: S.optional(S.String),
-          type: S.optional(S.String),
+          type: S.optional(PluginType),
           serverUrl: S.optional(S.String),
-          authConfiguration: S.optional(__S(130)),
-          customPluginConfiguration: S.optional(__S(132)),
-          buildStatus: S.optional(S.String),
+          authConfiguration: S.optional(PluginAuthConfiguration),
+          customPluginConfiguration: S.optional(CustomPluginConfiguration),
+          buildStatus: S.optional(PluginBuildStatus),
           pluginArn: S.optional(S.String),
-          state: S.optional(S.String),
+          state: S.optional(PluginState),
           createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
@@ -7235,10 +8237,10 @@ function __c27(j: number): any {
           applicationId: S.optional(S.String),
           retrieverId: S.optional(S.String),
           retrieverArn: S.optional(S.String),
-          type: S.optional(S.String),
-          status: S.optional(S.String),
+          type: S.optional(RetrieverType),
+          status: S.optional(RetrieverStatus),
           displayName: S.optional(S.String),
-          configuration: S.optional(__S(144)),
+          configuration: S.optional(RetrieverConfiguration),
           roleArn: S.optional(S.String),
           createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
@@ -7261,7 +8263,7 @@ function __c27(j: number): any {
         ),
       ).annotate({ identifier: "GetUserRequest" });
     case 7:
-      return S.suspend(() => S.Struct({ userAliases: S.optional(__S(151)) })).annotate({
+      return S.suspend(() => S.Struct({ userAliases: S.optional(UserAliases) })).annotate({
         identifier: "GetUserResponse",
       });
   }
@@ -7297,7 +8299,7 @@ function __c28(j: number): any {
         }),
       ).annotate({ identifier: "SamlConfiguration" });
     case 2:
-      return S.Union([/*@__PURE__*/ S.Struct({ samlConfiguration: __S(225) })]);
+      return S.Union([/*@__PURE__*/ S.Struct({ samlConfiguration: SamlConfiguration })]);
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -7305,20 +8307,20 @@ function __c28(j: number): any {
           webExperienceId: S.optional(S.String),
           webExperienceArn: S.optional(S.String),
           defaultEndpoint: S.optional(S.String),
-          status: S.optional(S.String),
+          status: S.optional(WebExperienceStatus),
           createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           title: S.optional(S.String),
           subtitle: S.optional(S.String),
           welcomeMessage: S.optional(S.String),
-          samplePromptsControlMode: S.optional(S.String),
-          origins: S.optional(__S(0)),
+          samplePromptsControlMode: S.optional(WebExperienceSamplePromptsControlMode),
+          origins: S.optional(WebExperienceOrigins),
           roleArn: S.optional(S.String),
-          identityProviderConfiguration: S.optional(__S(155)),
-          authenticationConfiguration: S.optional(__S(226)),
-          error: S.optional(__S(8)),
-          browserExtensionConfiguration: S.optional(__S(156)),
-          customizationConfiguration: S.optional(__S(157)),
+          identityProviderConfiguration: S.optional(IdentityProviderConfiguration),
+          authenticationConfiguration: S.optional(WebExperienceAuthConfiguration),
+          error: S.optional(ErrorDetail),
+          browserExtensionConfiguration: S.optional(BrowserExtensionConfiguration),
+          customizationConfiguration: S.optional(CustomizationConfiguration),
         }),
       ).annotate({ identifier: "GetWebExperienceResponse" });
     case 4:
@@ -7337,16 +8339,16 @@ function __c28(j: number): any {
           applicationId: S.optional(S.String),
           createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          status: S.optional(S.String),
-          identityType: S.optional(S.String),
-          quickSightConfiguration: S.optional(__S(105)),
+          status: S.optional(ApplicationStatus),
+          identityType: S.optional(IdentityType),
+          quickSightConfiguration: S.optional(QuickSightConfiguration),
         }),
       ).annotate({ identifier: "Application" });
     case 6:
-      return S.Array(__S(229));
+      return S.Array(Application);
     case 7:
       return S.suspend(() =>
-        S.Struct({ nextToken: S.optional(S.String), applications: S.optional(__S(230)) }),
+        S.Struct({ nextToken: S.optional(S.String), applications: S.optional(Applications) }),
       ).annotate({ identifier: "ListApplicationsResponse" });
   }
 }
@@ -7377,20 +8379,20 @@ function __c29(j: number): any {
           attachmentId: S.optional(S.String),
           conversationId: S.optional(S.String),
           name: S.optional(S.String),
-          copyFrom: S.optional(__S(48)),
+          copyFrom: S.optional(CopyFromSource),
           fileType: S.optional(S.String),
           fileSize: S.optional(S.Number),
           md5chksum: S.optional(S.String),
           createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          status: S.optional(S.String),
-          error: S.optional(__S(8)),
+          status: S.optional(AttachmentStatus),
+          error: S.optional(ErrorDetail),
         }),
       ).annotate({ identifier: "Attachment" });
     case 2:
-      return S.Array(__S(233));
+      return S.Array(Attachment);
     case 3:
       return S.suspend(() =>
-        S.Struct({ attachments: S.optional(__S(234)), nextToken: S.optional(S.String) }),
+        S.Struct({ attachments: S.optional(AttachmentList), nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListAttachmentsResponse" });
     case 4:
       return S.suspend(() =>
@@ -7421,7 +8423,7 @@ function __c29(j: number): any {
           chatResponseConfigurationArn: S.String,
           displayName: S.String,
           responseConfigurationSummary: S.optional(S.String),
-          status: S.String,
+          status: ChatResponseConfigurationStatus,
           createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
@@ -7429,11 +8431,11 @@ function __c29(j: number): any {
         identifier: "ChatResponseConfiguration",
       });
     case 6:
-      return S.Array(__S(237));
+      return S.Array(ChatResponseConfiguration);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          chatResponseConfigurations: S.optional(__S(238)),
+          chatResponseConfigurations: S.optional(ChatResponseConfigurations),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -7470,10 +8472,10 @@ function __c30(j: number): any {
         }),
       ).annotate({ identifier: "Conversation" });
     case 2:
-      return S.Array(__S(241));
+      return S.Array(Conversation);
     case 3:
       return S.suspend(() =>
-        S.Struct({ nextToken: S.optional(S.String), conversations: S.optional(__S(242)) }),
+        S.Struct({ nextToken: S.optional(S.String), conversations: S.optional(Conversations) }),
       ).annotate({
         identifier: "ListConversationsResponse",
       });
@@ -7502,16 +8504,16 @@ function __c30(j: number): any {
           dataAccessorArn: S.optional(S.String),
           idcApplicationArn: S.optional(S.String),
           principal: S.optional(S.String),
-          authenticationDetail: S.optional(__S(118)),
+          authenticationDetail: S.optional(DataAccessorAuthenticationDetail),
           createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "DataAccessor" });
     case 6:
-      return S.Array(__S(245));
+      return S.Array(DataAccessor);
     case 7:
       return S.suspend(() =>
-        S.Struct({ dataAccessors: S.optional(__S(246)), nextToken: S.optional(S.String) }),
+        S.Struct({ dataAccessors: S.optional(DataAccessors), nextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListDataAccessorsResponse",
       });
@@ -7548,14 +8550,14 @@ function __c31(j: number): any {
           type: S.optional(S.String),
           createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          status: S.optional(S.String),
+          status: S.optional(DataSourceStatus),
         }),
       ).annotate({ identifier: "DataSource" });
     case 2:
-      return S.Array(__S(249));
+      return S.Array(DataSource);
     case 3:
       return S.suspend(() =>
-        S.Struct({ dataSources: S.optional(__S(250)), nextToken: S.optional(S.String) }),
+        S.Struct({ dataSources: S.optional(DataSources), nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListDataSourcesResponse" });
     case 4:
       return S.suspend(() =>
@@ -7571,7 +8573,7 @@ function __c31(j: number): any {
           endTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))).pipe(
             T.HttpQuery("endTime"),
           ),
-          statusFilter: S.optional(S.String).pipe(T.HttpQuery("syncStatus")),
+          statusFilter: S.optional(DataSourceSyncJobStatus).pipe(T.HttpQuery("syncStatus")),
         }).pipe(
           T.all(
             T.Http({
@@ -7604,21 +8606,21 @@ function __c31(j: number): any {
           executionId: S.optional(S.String),
           startTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           endTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          status: S.optional(S.String),
-          error: S.optional(__S(8)),
+          status: S.optional(DataSourceSyncJobStatus),
+          error: S.optional(ErrorDetail),
           dataSourceErrorCode: S.optional(S.String),
-          metrics: S.optional(__S(253)),
+          metrics: S.optional(DataSourceSyncJobMetrics),
         }),
       ).annotate({ identifier: "DataSourceSyncJob" });
     case 7:
-      return S.Array(__S(254));
+      return S.Array(DataSourceSyncJob);
   }
 }
 function __c32(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ history: S.optional(__S(255)), nextToken: S.optional(S.String) }),
+        S.Struct({ history: S.optional(DataSourceSyncJobs), nextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListDataSourceSyncJobsResponse",
       });
@@ -7627,7 +8629,7 @@ function __c32(j: number): any {
         S.Struct({
           applicationId: S.String.pipe(T.HttpLabel("applicationId")),
           indexId: S.String.pipe(T.HttpLabel("indexId")),
-          dataSourceIds: S.optional(__S(0)).pipe(T.HttpQuery("dataSourceIds")),
+          dataSourceIds: S.optional(DataSourceIds).pipe(T.HttpQuery("dataSourceIds")),
           nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
           maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
         }).pipe(
@@ -7648,18 +8650,18 @@ function __c32(j: number): any {
       return S.suspend(() =>
         S.Struct({
           documentId: S.optional(S.String),
-          status: S.optional(S.String),
-          error: S.optional(__S(8)),
+          status: S.optional(DocumentStatus),
+          error: S.optional(ErrorDetail),
           createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "DocumentDetails" });
     case 3:
-      return S.Array(__S(258));
+      return S.Array(DocumentDetails);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          documentDetailList: S.optional(__S(259)),
+          documentDetailList: S.optional(DocumentDetailList),
           nextToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListDocumentsResponse" });
@@ -7693,14 +8695,14 @@ function __c32(j: number): any {
         identifier: "GroupSummary",
       });
     case 7:
-      return S.Array(__S(262));
+      return S.Array(GroupSummary);
   }
 }
 function __c33(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ nextToken: S.optional(S.String), items: S.optional(__S(263)) }),
+        S.Struct({ nextToken: S.optional(S.String), items: S.optional(GroupSummaryList) }),
       ).annotate({ identifier: "ListGroupsResponse" });
     case 1:
       return S.suspend(() =>
@@ -7726,14 +8728,14 @@ function __c33(j: number): any {
           indexId: S.optional(S.String),
           createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          status: S.optional(S.String),
+          status: S.optional(IndexStatus),
         }),
       ).annotate({ identifier: "Index" });
     case 3:
-      return S.Array(__S(266));
+      return S.Array(Index);
     case 4:
       return S.suspend(() =>
-        S.Struct({ nextToken: S.optional(S.String), indices: S.optional(__S(267)) }),
+        S.Struct({ nextToken: S.optional(S.String), indices: S.optional(Indices) }),
       ).annotate({ identifier: "ListIndicesResponse" });
     case 5:
       return S.suspend(() =>
@@ -7763,22 +8765,22 @@ function __c33(j: number): any {
           messageId: S.optional(S.String),
           body: S.optional(S.String),
           time: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          type: S.optional(S.String),
-          attachments: S.optional(__S(85)),
-          sourceAttribution: S.optional(__S(68)),
-          actionReview: S.optional(__S(83)),
-          actionExecution: S.optional(__S(53)),
+          type: S.optional(MessageType),
+          attachments: S.optional(AttachmentsOutput),
+          sourceAttribution: S.optional(SourceAttributions),
+          actionReview: S.optional(ActionReview),
+          actionExecution: S.optional(ActionExecution),
         }),
       ).annotate({ identifier: "Message" });
     case 7:
-      return S.Array(__S(270));
+      return S.Array(Message);
   }
 }
 function __c34(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ messages: S.optional(__S(271)), nextToken: S.optional(S.String) }),
+        S.Struct({ messages: S.optional(Messages), nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListMessagesResponse" });
     case 1:
       return S.suspend(() =>
@@ -7811,10 +8813,10 @@ function __c34(j: number): any {
         }),
       ).annotate({ identifier: "ActionSummary" });
     case 3:
-      return S.Array(__S(274));
+      return S.Array(ActionSummary);
     case 4:
       return S.suspend(() =>
-        S.Struct({ nextToken: S.optional(S.String), items: S.optional(__S(275)) }),
+        S.Struct({ nextToken: S.optional(S.String), items: S.optional(Actions) }),
       ).annotate({
         identifier: "ListPluginActionsResponse",
       });
@@ -7840,28 +8842,28 @@ function __c34(j: number): any {
         S.Struct({
           pluginId: S.optional(S.String),
           displayName: S.optional(S.String),
-          type: S.optional(S.String),
+          type: S.optional(PluginType),
           serverUrl: S.optional(S.String),
-          state: S.optional(S.String),
-          buildStatus: S.optional(S.String),
+          state: S.optional(PluginState),
+          buildStatus: S.optional(PluginBuildStatus),
           createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "Plugin" });
     case 7:
-      return S.Array(__S(278));
+      return S.Array(Plugin);
   }
 }
 function __c35(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ nextToken: S.optional(S.String), plugins: S.optional(__S(279)) }),
+        S.Struct({ nextToken: S.optional(S.String), plugins: S.optional(Plugins) }),
       ).annotate({ identifier: "ListPluginsResponse" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          pluginType: S.String.pipe(T.HttpLabel("pluginType")),
+          pluginType: PluginType.pipe(T.HttpLabel("pluginType")),
           nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
           maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
         }).pipe(
@@ -7898,20 +8900,20 @@ function __c35(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(S.String),
-          category: S.optional(S.String),
+          type: S.optional(PluginType),
+          category: S.optional(PluginTypeCategory),
           description: S.optional(S.String),
         }),
       ).annotate({
         identifier: "PluginTypeMetadataSummary",
       });
     case 4:
-      return S.Array(__S(283));
+      return S.Array(PluginTypeMetadataSummary);
     case 5:
       return S.suspend(() =>
         S.Struct({
           nextToken: S.optional(S.String),
-          items: S.optional(__S(284)),
+          items: S.optional(ListPluginTypeMetadataSummaries),
         }),
       ).annotate({
         identifier: "ListPluginTypeMetadataResponse",
@@ -7938,8 +8940,8 @@ function __c35(j: number): any {
         S.Struct({
           applicationId: S.optional(S.String),
           retrieverId: S.optional(S.String),
-          type: S.optional(S.String),
-          status: S.optional(S.String),
+          type: S.optional(RetrieverType),
+          status: S.optional(RetrieverStatus),
           displayName: S.optional(S.String),
         }),
       ).annotate({ identifier: "Retriever" });
@@ -7948,10 +8950,10 @@ function __c35(j: number): any {
 function __c36(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(287));
+      return S.Array(Retriever);
     case 1:
       return S.suspend(() =>
-        S.Struct({ retrievers: S.optional(__S(288)), nextToken: S.optional(S.String) }),
+        S.Struct({ retrievers: S.optional(Retrievers), nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListRetrieversResponse" });
     case 2:
       return S.suspend(() =>
@@ -7975,16 +8977,16 @@ function __c36(j: number): any {
         S.Struct({
           subscriptionId: S.optional(S.String),
           subscriptionArn: S.optional(S.String),
-          principal: S.optional(__S(147)),
-          currentSubscription: S.optional(__S(39)),
-          nextSubscription: S.optional(__S(39)),
+          principal: S.optional(SubscriptionPrincipal),
+          currentSubscription: S.optional(SubscriptionDetails),
+          nextSubscription: S.optional(SubscriptionDetails),
         }),
       ).annotate({ identifier: "Subscription" });
     case 4:
-      return S.Array(__S(291));
+      return S.Array(Subscription);
     case 5:
       return S.suspend(() =>
-        S.Struct({ nextToken: S.optional(S.String), subscriptions: S.optional(__S(292)) }),
+        S.Struct({ nextToken: S.optional(S.String), subscriptions: S.optional(Subscriptions) }),
       ).annotate({
         identifier: "ListSubscriptionsResponse",
       });
@@ -8004,7 +9006,7 @@ function __c36(j: number): any {
         identifier: "ListTagsForResourceRequest",
       });
     case 7:
-      return S.suspend(() => S.Struct({ tags: S.optional(__S(101)) })).annotate({
+      return S.suspend(() => S.Struct({ tags: S.optional(Tags) })).annotate({
         identifier: "ListTagsForResourceResponse",
       });
   }
@@ -8037,22 +9039,22 @@ function __c37(j: number): any {
           createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           defaultEndpoint: S.optional(S.String),
-          status: S.optional(S.String),
+          status: S.optional(WebExperienceStatus),
         }),
       ).annotate({ identifier: "WebExperience" });
     case 2:
-      return S.Array(__S(297));
+      return S.Array(WebExperience);
     case 3:
       return S.suspend(() =>
-        S.Struct({ webExperiences: S.optional(__S(298)), nextToken: S.optional(S.String) }),
+        S.Struct({ webExperiences: S.optional(WebExperiences), nextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListWebExperiencesResponse",
       });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          usefulness: S.String,
-          reason: S.optional(S.String),
+          usefulness: MessageUsefulness,
+          reason: S.optional(MessageUsefulnessReason),
           comment: S.optional(S.String),
           submittedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
         }),
@@ -8067,7 +9069,7 @@ function __c37(j: number): any {
           conversationId: S.String.pipe(T.HttpLabel("conversationId")),
           messageId: S.String.pipe(T.HttpLabel("messageId")),
           messageCopiedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          messageUsefulness: S.optional(__S(300)),
+          messageUsefulness: S.optional(MessageUsefulnessFeedback),
         }).pipe(
           T.all(
             T.Http({
@@ -8084,26 +9086,26 @@ function __c37(j: number): any {
       ).annotate({ identifier: "PutFeedbackRequest" });
     case 6:
       return S.suspend(() =>
-        S.Struct({ groupName: S.String, type: S.optional(S.String) }),
+        S.Struct({ groupName: S.String, type: S.optional(MembershipType) }),
       ).annotate({ identifier: "MemberGroup" });
     case 7:
-      return S.Array(__S(302));
+      return S.Array(MemberGroup);
   }
 }
 function __c38(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ userId: S.String, type: S.optional(S.String) })).annotate({
-        identifier: "MemberUser",
-      });
+      return S.suspend(() =>
+        S.Struct({ userId: S.String, type: S.optional(MembershipType) }),
+      ).annotate({ identifier: "MemberUser" });
     case 1:
-      return S.Array(__S(304));
+      return S.Array(MemberUser);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          memberGroups: S.optional(__S(303)),
-          memberUsers: S.optional(__S(305)),
-          s3PathForGroupMembers: S.optional(__S(15)),
+          memberGroups: S.optional(MemberGroups),
+          memberUsers: S.optional(MemberUsers),
+          s3PathForGroupMembers: S.optional(S3),
         }),
       ).annotate({ identifier: "GroupMembers" });
     case 3:
@@ -8113,8 +9115,8 @@ function __c38(j: number): any {
           indexId: S.String.pipe(T.HttpLabel("indexId")),
           groupName: S.String,
           dataSourceId: S.optional(S.String),
-          type: S.String,
-          groupMembers: __S(306),
+          type: MembershipType,
+          groupMembers: GroupMembers,
           roleArn: S.optional(S.String),
         }).pipe(
           T.all(
@@ -8135,14 +9137,14 @@ function __c38(j: number): any {
         identifier: "RetrieverContentSource",
       });
     case 5:
-      return S.Union([/*@__PURE__*/ S.Struct({ retriever: __S(308) })]);
+      return S.Union([/*@__PURE__*/ S.Struct({ retriever: RetrieverContentSource })]);
     case 6:
       return S.suspend(() =>
         S.Struct({
           applicationId: S.String.pipe(T.HttpLabel("applicationId")),
           queryText: S.String,
-          contentSource: __S(309),
-          attributeFilter: S.optional(__S(44)),
+          contentSource: ContentSource,
+          attributeFilter: S.optional(AttributeFilter),
           maxResults: S.optional(S.Number),
           nextToken: S.optional(S.String),
         }).pipe(
@@ -8159,7 +9161,7 @@ function __c38(j: number): any {
         identifier: "SearchRelevantContentRequest",
       });
     case 7:
-      return S.suspend(() => S.Struct({ scoreConfidence: S.optional(S.String) })).annotate({
+      return S.suspend(() => S.Struct({ scoreConfidence: S.optional(ScoreConfidence) })).annotate({
         identifier: "ScoreAttributes",
       });
   }
@@ -8173,16 +9175,16 @@ function __c39(j: number): any {
           documentId: S.optional(S.String),
           documentTitle: S.optional(S.String),
           documentUri: S.optional(S.String),
-          documentAttributes: S.optional(__S(14)),
-          scoreAttributes: S.optional(__S(311)),
+          documentAttributes: S.optional(DocumentAttributes),
+          scoreAttributes: S.optional(ScoreAttributes),
         }),
       ).annotate({ identifier: "RelevantContent" });
     case 1:
-      return S.Array(__S(312));
+      return S.Array(RelevantContent);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          relevantContent: S.optional(__S(313)),
+          relevantContent: S.optional(RelevantContentList),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -8238,7 +9240,7 @@ function __c39(j: number): any {
       });
     case 6:
       return S.suspend(() =>
-        S.Struct({ resourceARN: S.String.pipe(T.HttpLabel("resourceARN")), tags: __S(101) }).pipe(
+        S.Struct({ resourceARN: S.String.pipe(T.HttpLabel("resourceARN")), tags: Tags }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/v1/tags/{resourceARN}" }),
             svc,
@@ -8253,7 +9255,7 @@ function __c39(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resourceARN: S.String.pipe(T.HttpLabel("resourceARN")),
-          tagKeys: __S(0).pipe(T.HttpQuery("tagKeys")),
+          tagKeys: TagKeys.pipe(T.HttpQuery("tagKeys")),
         }).pipe(
           T.all(
             T.Http({ method: "DELETE", uri: "/v1/tags/{resourceARN}" }),
@@ -8277,10 +9279,10 @@ function __c40(j: number): any {
           displayName: S.optional(S.String),
           description: S.optional(S.String),
           roleArn: S.optional(S.String),
-          attachmentsConfiguration: S.optional(__S(102)),
-          qAppsConfiguration: S.optional(__S(103)),
-          personalizationConfiguration: S.optional(__S(104)),
-          autoSubscriptionConfiguration: S.optional(__S(177)),
+          attachmentsConfiguration: S.optional(AttachmentsConfiguration),
+          qAppsConfiguration: S.optional(QAppsConfiguration),
+          personalizationConfiguration: S.optional(PersonalizationConfiguration),
+          autoSubscriptionConfiguration: S.optional(AutoSubscriptionConfiguration),
         }).pipe(
           T.all(
             T.Http({ method: "PUT", uri: "/applications/{applicationId}" }),
@@ -8295,15 +9297,15 @@ function __c40(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          blockedPhrasesToCreateOrUpdate: S.optional(__S(0)),
-          blockedPhrasesToDelete: S.optional(__S(0)),
+          blockedPhrasesToCreateOrUpdate: S.optional(BlockedPhrases),
+          blockedPhrasesToDelete: S.optional(BlockedPhrases),
           systemMessageOverride: S.optional(S.String),
         }),
       ).annotate({
         identifier: "BlockedPhrasesConfigurationUpdate",
       });
     case 2:
-      return S.suspend(() => S.Struct({ creatorModeControl: S.String })).annotate({
+      return S.suspend(() => S.Struct({ creatorModeControl: CreatorModeControl })).annotate({
         identifier: "CreatorModeConfiguration",
       });
     case 3:
@@ -8311,13 +9313,13 @@ function __c40(j: number): any {
         S.Struct({
           applicationId: S.String.pipe(T.HttpLabel("applicationId")),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          responseScope: S.optional(S.String),
-          orchestrationConfiguration: S.optional(__S(180)),
-          blockedPhrasesConfigurationUpdate: S.optional(__S(321)),
-          topicConfigurationsToCreateOrUpdate: S.optional(__S(191)),
-          topicConfigurationsToDelete: S.optional(__S(191)),
-          creatorModeConfiguration: S.optional(__S(322)),
-          hallucinationReductionConfiguration: S.optional(__S(193)),
+          responseScope: S.optional(ResponseScope),
+          orchestrationConfiguration: S.optional(OrchestrationConfiguration),
+          blockedPhrasesConfigurationUpdate: S.optional(BlockedPhrasesConfigurationUpdate),
+          topicConfigurationsToCreateOrUpdate: S.optional(TopicConfigurations),
+          topicConfigurationsToDelete: S.optional(TopicConfigurations),
+          creatorModeConfiguration: S.optional(CreatorModeConfiguration),
+          hallucinationReductionConfiguration: S.optional(HallucinationReductionConfiguration),
         }).pipe(
           T.all(
             T.Http({ method: "PATCH", uri: "/applications/{applicationId}/chatcontrols" }),
@@ -8337,7 +9339,7 @@ function __c40(j: number): any {
           applicationId: S.String.pipe(T.HttpLabel("applicationId")),
           chatResponseConfigurationId: S.String.pipe(T.HttpLabel("chatResponseConfigurationId")),
           displayName: S.optional(S.String),
-          responseConfigurations: __S(110),
+          responseConfigurations: ResponseConfigurations,
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(
           T.all(
@@ -8360,8 +9362,8 @@ function __c40(j: number): any {
         S.Struct({
           applicationId: S.String.pipe(T.HttpLabel("applicationId")),
           dataAccessorId: S.String.pipe(T.HttpLabel("dataAccessorId")),
-          actionConfigurations: __S(115),
-          authenticationDetail: S.optional(__S(118)),
+          actionConfigurations: ActionConfigurationList,
+          authenticationDetail: S.optional(DataAccessorAuthenticationDetail),
           displayName: S.optional(SensitiveString),
         }).pipe(
           T.all(
@@ -8387,12 +9389,12 @@ function __c40(j: number): any {
           dataSourceId: S.String.pipe(T.HttpLabel("dataSourceId")),
           displayName: S.optional(S.String),
           configuration: S.optional(S.Any),
-          vpcConfiguration: S.optional(__S(121)),
+          vpcConfiguration: S.optional(DataSourceVpcConfiguration),
           description: S.optional(S.String),
           syncSchedule: S.optional(S.String),
           roleArn: S.optional(S.String),
-          documentEnrichmentConfiguration: S.optional(__S(29)),
-          mediaExtractionConfiguration: S.optional(__S(33)),
+          documentEnrichmentConfiguration: S.optional(DocumentEnrichmentConfiguration),
+          mediaExtractionConfiguration: S.optional(MediaExtractionConfiguration),
         }).pipe(
           T.all(
             T.Http({
@@ -8414,8 +9416,8 @@ function __c40(j: number): any {
           indexId: S.String.pipe(T.HttpLabel("indexId")),
           displayName: S.optional(S.String),
           description: S.optional(S.String),
-          capacityConfiguration: S.optional(__S(124)),
-          documentAttributeConfigurations: S.optional(__S(210)),
+          capacityConfiguration: S.optional(IndexCapacityConfiguration),
+          documentAttributeConfigurations: S.optional(DocumentAttributeConfigurations),
         }).pipe(
           T.all(
             T.Http({ method: "PUT", uri: "/applications/{applicationId}/indices/{indexId}" }),
@@ -8437,10 +9439,10 @@ function __c41(j: number): any {
           applicationId: S.String.pipe(T.HttpLabel("applicationId")),
           pluginId: S.String.pipe(T.HttpLabel("pluginId")),
           displayName: S.optional(S.String),
-          state: S.optional(S.String),
+          state: S.optional(PluginState),
           serverUrl: S.optional(S.String),
-          customPluginConfiguration: S.optional(__S(132)),
-          authConfiguration: S.optional(__S(130)),
+          customPluginConfiguration: S.optional(CustomPluginConfiguration),
+          authConfiguration: S.optional(PluginAuthConfiguration),
         }).pipe(
           T.all(
             T.Http({ method: "PUT", uri: "/applications/{applicationId}/plugins/{pluginId}" }),
@@ -8457,7 +9459,7 @@ function __c41(j: number): any {
         S.Struct({
           applicationId: S.String.pipe(T.HttpLabel("applicationId")),
           retrieverId: S.String.pipe(T.HttpLabel("retrieverId")),
-          configuration: S.optional(__S(144)),
+          configuration: S.optional(RetrieverConfiguration),
           displayName: S.optional(S.String),
           roleArn: S.optional(S.String),
         }).pipe(
@@ -8479,7 +9481,7 @@ function __c41(j: number): any {
         S.Struct({
           applicationId: S.String.pipe(T.HttpLabel("applicationId")),
           subscriptionId: S.String.pipe(T.HttpLabel("subscriptionId")),
-          type: S.String,
+          type: SubscriptionType,
         }).pipe(
           T.all(
             T.Http({
@@ -8501,8 +9503,8 @@ function __c41(j: number): any {
         S.Struct({
           applicationId: S.String.pipe(T.HttpLabel("applicationId")),
           userId: S.String.pipe(T.HttpLabel("userId")),
-          userAliasesToUpdate: S.optional(__S(151)),
-          userAliasesToDelete: S.optional(__S(151)),
+          userAliasesToUpdate: S.optional(UserAliases),
+          userAliasesToDelete: S.optional(UserAliases),
         }).pipe(
           T.all(
             T.Http({ method: "PUT", uri: "/applications/{applicationId}/users/{userId}" }),
@@ -8517,9 +9519,9 @@ function __c41(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          userAliasesAdded: S.optional(__S(151)),
-          userAliasesUpdated: S.optional(__S(151)),
-          userAliasesDeleted: S.optional(__S(151)),
+          userAliasesAdded: S.optional(UserAliases),
+          userAliasesUpdated: S.optional(UserAliases),
+          userAliasesDeleted: S.optional(UserAliases),
         }),
       ).annotate({ identifier: "UpdateUserResponse" });
     case 5:
@@ -8528,15 +9530,15 @@ function __c41(j: number): any {
           applicationId: S.String.pipe(T.HttpLabel("applicationId")),
           webExperienceId: S.String.pipe(T.HttpLabel("webExperienceId")),
           roleArn: S.optional(S.String),
-          authenticationConfiguration: S.optional(__S(226)),
+          authenticationConfiguration: S.optional(WebExperienceAuthConfiguration),
           title: S.optional(S.String),
           subtitle: S.optional(S.String),
           welcomeMessage: S.optional(S.String),
-          samplePromptsControlMode: S.optional(S.String),
-          identityProviderConfiguration: S.optional(__S(155)),
-          origins: S.optional(__S(0)),
-          browserExtensionConfiguration: S.optional(__S(156)),
-          customizationConfiguration: S.optional(__S(157)),
+          samplePromptsControlMode: S.optional(WebExperienceSamplePromptsControlMode),
+          identityProviderConfiguration: S.optional(IdentityProviderConfiguration),
+          origins: S.optional(WebExperienceOrigins),
+          browserExtensionConfiguration: S.optional(BrowserExtensionConfiguration),
+          customizationConfiguration: S.optional(CustomizationConfiguration),
         }).pipe(
           T.all(
             T.Http({
@@ -8558,99 +9560,6 @@ function __c41(j: number): any {
         identifier: "ValidationExceptionField",
       });
     case 7:
-      return S.Array(__S(334));
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
-    case 9:
-      return __c9(i & 7);
-    case 10:
-      return __c10(i & 7);
-    case 11:
-      return __c11(i & 7);
-    case 12:
-      return __c12(i & 7);
-    case 13:
-      return __c13(i & 7);
-    case 14:
-      return __c14(i & 7);
-    case 15:
-      return __c15(i & 7);
-    case 16:
-      return __c16(i & 7);
-    case 17:
-      return __c17(i & 7);
-    case 18:
-      return __c18(i & 7);
-    case 19:
-      return __c19(i & 7);
-    case 20:
-      return __c20(i & 7);
-    case 21:
-      return __c21(i & 7);
-    case 22:
-      return __c22(i & 7);
-    case 23:
-      return __c23(i & 7);
-    case 24:
-      return __c24(i & 7);
-    case 25:
-      return __c25(i & 7);
-    case 26:
-      return __c26(i & 7);
-    case 27:
-      return __c27(i & 7);
-    case 28:
-      return __c28(i & 7);
-    case 29:
-      return __c29(i & 7);
-    case 30:
-      return __c30(i & 7);
-    case 31:
-      return __c31(i & 7);
-    case 32:
-      return __c32(i & 7);
-    case 33:
-      return __c33(i & 7);
-    case 34:
-      return __c34(i & 7);
-    case 35:
-      return __c35(i & 7);
-    case 36:
-      return __c36(i & 7);
-    case 37:
-      return __c37(i & 7);
-    case 38:
-      return __c38(i & 7);
-    case 39:
-      return __c39(i & 7);
-    case 40:
-      return __c40(i & 7);
-    case 41:
-      return __c41(i & 7);
+      return S.Array(ValidationExceptionField);
   }
 }

@@ -8,8 +8,6 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 const svc = /*@__PURE__*/ T.AwsApiService({ sdkId: "schemas", serviceShapeName: "schemas" });
 const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "schemas" });
 const ver = /*@__PURE__*/ T.ServiceVersion("2019-12-02");
@@ -164,13 +162,20 @@ export class UnauthorizedException
 export type __stringMin0Max256 = string;
 export type __stringMin20Max1600 = string;
 export type Tags = { [key: string]: string | undefined };
+const Tags = /*@__PURE__*/ __L.at(__c0, 0);
 export interface CreateDiscovererRequest {
   Description?: string;
   SourceArn?: string;
   CrossAccount?: boolean;
   Tags?: { [key: string]: string | undefined };
 }
+const CreateDiscovererRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<CreateDiscovererRequest>;
 export type DiscovererState = "STARTED" | "STOPPED" | (string & {});
+const DiscovererState = S.String;
+
 export interface CreateDiscovererResponse {
   Description?: string;
   DiscovererArn?: string;
@@ -180,19 +185,33 @@ export interface CreateDiscovererResponse {
   CrossAccount?: boolean;
   Tags?: { [key: string]: string | undefined };
 }
+const CreateDiscovererResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<CreateDiscovererResponse>;
 export interface CreateRegistryRequest {
   Description?: string;
   RegistryName: string;
   Tags?: { [key: string]: string | undefined };
 }
+const CreateRegistryRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<CreateRegistryRequest>;
 export interface CreateRegistryResponse {
   Description?: string;
   RegistryArn?: string;
   RegistryName?: string;
   Tags?: { [key: string]: string | undefined };
 }
+const CreateRegistryResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<CreateRegistryResponse>;
 export type __stringMin1Max100000 = string;
 export type Type = "OpenApi3" | "JSONSchemaDraft4" | (string & {});
+const Type = S.String;
+
 export interface CreateSchemaRequest {
   Content?: string;
   Description?: string;
@@ -201,6 +220,7 @@ export interface CreateSchemaRequest {
   Tags?: { [key: string]: string | undefined };
   Type?: Type;
 }
+const CreateSchemaRequest = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<CreateSchemaRequest>;
 export type __timestampIso8601 = Date;
 export interface CreateSchemaResponse {
   Description?: string;
@@ -212,49 +232,91 @@ export interface CreateSchemaResponse {
   Type?: string;
   VersionCreatedDate?: Date;
 }
+const CreateSchemaResponse = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<CreateSchemaResponse>;
 export interface DeleteDiscovererRequest {
   DiscovererId: string;
 }
+const DeleteDiscovererRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<DeleteDiscovererRequest>;
 export interface DeleteDiscovererResponse {}
+const DeleteDiscovererResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<DeleteDiscovererResponse>;
 export interface DeleteRegistryRequest {
   RegistryName: string;
 }
+const DeleteRegistryRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<DeleteRegistryRequest>;
 export interface DeleteRegistryResponse {}
+const DeleteRegistryResponse = DeleteDiscovererResponse as any as S.Schema<DeleteRegistryResponse>;
 export interface DeleteResourcePolicyRequest {
   RegistryName?: string;
 }
+const DeleteResourcePolicyRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<DeleteResourcePolicyRequest>;
 export interface DeleteResourcePolicyResponse {}
+const DeleteResourcePolicyResponse =
+  DeleteDiscovererResponse as any as S.Schema<DeleteResourcePolicyResponse>;
 export interface DeleteSchemaRequest {
   RegistryName: string;
   SchemaName: string;
 }
+const DeleteSchemaRequest = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<DeleteSchemaRequest>;
 export interface DeleteSchemaResponse {}
+const DeleteSchemaResponse = DeleteDiscovererResponse as any as S.Schema<DeleteSchemaResponse>;
 export interface DeleteSchemaVersionRequest {
   RegistryName: string;
   SchemaName: string;
   SchemaVersion: string;
 }
+const DeleteSchemaVersionRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<DeleteSchemaVersionRequest>;
 export interface DeleteSchemaVersionResponse {}
+const DeleteSchemaVersionResponse =
+  DeleteDiscovererResponse as any as S.Schema<DeleteSchemaVersionResponse>;
 export interface DescribeCodeBindingRequest {
   Language: string;
   RegistryName: string;
   SchemaName: string;
   SchemaVersion?: string;
 }
+const DescribeCodeBindingRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<DescribeCodeBindingRequest>;
 export type CodeGenerationStatus =
   | "CREATE_IN_PROGRESS"
   | "CREATE_COMPLETE"
   | "CREATE_FAILED"
   | (string & {});
+const CodeGenerationStatus = S.String;
+
 export interface DescribeCodeBindingResponse {
   CreationDate?: Date;
   LastModified?: Date;
   SchemaVersion?: string;
   Status?: CodeGenerationStatus;
 }
+const DescribeCodeBindingResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<DescribeCodeBindingResponse>;
 export interface DescribeDiscovererRequest {
   DiscovererId: string;
 }
+const DescribeDiscovererRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<DescribeDiscovererRequest>;
 export interface DescribeDiscovererResponse {
   Description?: string;
   DiscovererArn?: string;
@@ -264,20 +326,34 @@ export interface DescribeDiscovererResponse {
   CrossAccount?: boolean;
   Tags?: { [key: string]: string | undefined };
 }
+const DescribeDiscovererResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<DescribeDiscovererResponse>;
 export interface DescribeRegistryRequest {
   RegistryName: string;
 }
+const DescribeRegistryRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<DescribeRegistryRequest>;
 export interface DescribeRegistryResponse {
   Description?: string;
   RegistryArn?: string;
   RegistryName?: string;
   Tags?: { [key: string]: string | undefined };
 }
+const DescribeRegistryResponse =
+  CreateRegistryResponse as any as S.Schema<DescribeRegistryResponse>;
 export interface DescribeSchemaRequest {
   RegistryName: string;
   SchemaName: string;
   SchemaVersion?: string;
 }
+const DescribeSchemaRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<DescribeSchemaRequest>;
 export interface DescribeSchemaResponse {
   Content?: string;
   Description?: string;
@@ -289,12 +365,17 @@ export interface DescribeSchemaResponse {
   Type?: string;
   VersionCreatedDate?: Date;
 }
+const DescribeSchemaResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<DescribeSchemaResponse>;
 export interface ExportSchemaRequest {
   RegistryName: string;
   SchemaName: string;
   SchemaVersion?: string;
   Type?: string;
 }
+const ExportSchemaRequest = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<ExportSchemaRequest>;
 export interface ExportSchemaResponse {
   Content?: string;
   SchemaArn?: string;
@@ -302,15 +383,24 @@ export interface ExportSchemaResponse {
   SchemaVersion?: string;
   Type?: string;
 }
+const ExportSchemaResponse = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<ExportSchemaResponse>;
 export interface GetCodeBindingSourceRequest {
   Language: string;
   RegistryName: string;
   SchemaName: string;
   SchemaVersion?: string;
 }
+const GetCodeBindingSourceRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<GetCodeBindingSourceRequest>;
 export interface GetCodeBindingSourceResponse {
   Body?: T.StreamingOutputBody;
 }
+const GetCodeBindingSourceResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<GetCodeBindingSourceResponse>;
 export type GetDiscoveredSchemaVersionItemInput = string;
 export type __listOfGetDiscoveredSchemaVersionItemInput = string[];
 const __listOfGetDiscoveredSchemaVersionItemInput = /*@__PURE__*/ __L.at(__c3, 0);
@@ -318,23 +408,43 @@ export interface GetDiscoveredSchemaRequest {
   Events?: string[];
   Type?: Type;
 }
+const GetDiscoveredSchemaRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<GetDiscoveredSchemaRequest>;
 export interface GetDiscoveredSchemaResponse {
   Content?: string;
 }
+const GetDiscoveredSchemaResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<GetDiscoveredSchemaResponse>;
 export interface GetResourcePolicyRequest {
   RegistryName?: string;
 }
+const GetResourcePolicyRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<GetResourcePolicyRequest>;
 export type SynthesizedJson__string = string;
 export interface GetResourcePolicyResponse {
   Policy?: string;
   RevisionId?: string;
 }
+const GetResourcePolicyResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<GetResourcePolicyResponse>;
 export interface ListDiscoverersRequest {
   DiscovererIdPrefix?: string;
   Limit?: number;
   NextToken?: string;
   SourceArnPrefix?: string;
 }
+const ListDiscoverersRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<ListDiscoverersRequest>;
 export interface DiscovererSummary {
   DiscovererArn?: string;
   DiscovererId?: string;
@@ -343,35 +453,50 @@ export interface DiscovererSummary {
   CrossAccount?: boolean;
   Tags?: { [key: string]: string | undefined };
 }
+const DiscovererSummary = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<DiscovererSummary>;
 export type __listOfDiscovererSummary = DiscovererSummary[];
 const __listOfDiscovererSummary = /*@__PURE__*/ __L.at(__c3, 7);
 export interface ListDiscoverersResponse {
   Discoverers?: DiscovererSummary[];
   NextToken?: string;
 }
+const ListDiscoverersResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<ListDiscoverersResponse>;
 export interface ListRegistriesRequest {
   Limit?: number;
   NextToken?: string;
   RegistryNamePrefix?: string;
   Scope?: string;
 }
+const ListRegistriesRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<ListRegistriesRequest>;
 export interface RegistrySummary {
   RegistryArn?: string;
   RegistryName?: string;
   Tags?: { [key: string]: string | undefined };
 }
+const RegistrySummary = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<RegistrySummary>;
 export type __listOfRegistrySummary = RegistrySummary[];
 const __listOfRegistrySummary = /*@__PURE__*/ __L.at(__c4, 3);
 export interface ListRegistriesResponse {
   NextToken?: string;
   Registries?: RegistrySummary[];
 }
+const ListRegistriesResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<ListRegistriesResponse>;
 export interface ListSchemasRequest {
   Limit?: number;
   NextToken?: string;
   RegistryName: string;
   SchemaNamePrefix?: string;
 }
+const ListSchemasRequest = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<ListSchemasRequest>;
 export interface SchemaSummary {
   LastModified?: Date;
   SchemaArn?: string;
@@ -379,68 +504,106 @@ export interface SchemaSummary {
   Tags?: { [key: string]: string | undefined };
   VersionCount?: number;
 }
+const SchemaSummary = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<SchemaSummary>;
 export type __listOfSchemaSummary = SchemaSummary[];
 const __listOfSchemaSummary = /*@__PURE__*/ __L.at(__c4, 7);
 export interface ListSchemasResponse {
   NextToken?: string;
   Schemas?: SchemaSummary[];
 }
+const ListSchemasResponse = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<ListSchemasResponse>;
 export interface ListSchemaVersionsRequest {
   Limit?: number;
   NextToken?: string;
   RegistryName: string;
   SchemaName: string;
 }
+const ListSchemaVersionsRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  1,
+) as any as S.Schema<ListSchemaVersionsRequest>;
 export interface SchemaVersionSummary {
   SchemaArn?: string;
   SchemaName?: string;
   SchemaVersion?: string;
   Type?: Type;
 }
+const SchemaVersionSummary = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<SchemaVersionSummary>;
 export type __listOfSchemaVersionSummary = SchemaVersionSummary[];
 const __listOfSchemaVersionSummary = /*@__PURE__*/ __L.at(__c5, 3);
 export interface ListSchemaVersionsResponse {
   NextToken?: string;
   SchemaVersions?: SchemaVersionSummary[];
 }
+const ListSchemaVersionsResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  4,
+) as any as S.Schema<ListSchemaVersionsResponse>;
 export interface ListTagsForResourceRequest {
   ResourceArn: string;
 }
+const ListTagsForResourceRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  5,
+) as any as S.Schema<ListTagsForResourceRequest>;
 export interface ListTagsForResourceResponse {
   Tags?: { [key: string]: string | undefined };
 }
+const ListTagsForResourceResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  6,
+) as any as S.Schema<ListTagsForResourceResponse>;
 export interface PutCodeBindingRequest {
   Language: string;
   RegistryName: string;
   SchemaName: string;
   SchemaVersion?: string;
 }
+const PutCodeBindingRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  7,
+) as any as S.Schema<PutCodeBindingRequest>;
 export interface PutCodeBindingResponse {
   CreationDate?: Date;
   LastModified?: Date;
   SchemaVersion?: string;
   Status?: CodeGenerationStatus;
 }
+const PutCodeBindingResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<PutCodeBindingResponse>;
 export interface PutResourcePolicyRequest {
   Policy?: string;
   RegistryName?: string;
   RevisionId?: string;
 }
+const PutResourcePolicyRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  1,
+) as any as S.Schema<PutResourcePolicyRequest>;
 export interface PutResourcePolicyResponse {
   Policy?: string;
   RevisionId?: string;
 }
+const PutResourcePolicyResponse =
+  GetResourcePolicyResponse as any as S.Schema<PutResourcePolicyResponse>;
 export interface SearchSchemasRequest {
   Keywords?: string;
   Limit?: number;
   NextToken?: string;
   RegistryName: string;
 }
+const SearchSchemasRequest = /*@__PURE__*/ __L.at(__c6, 2) as any as S.Schema<SearchSchemasRequest>;
 export interface SearchSchemaVersionSummary {
   CreatedDate?: Date;
   SchemaVersion?: string;
   Type?: Type;
 }
+const SearchSchemaVersionSummary = /*@__PURE__*/ __L.at(
+  __c6,
+  3,
+) as any as S.Schema<SearchSchemaVersionSummary>;
 export type __listOfSearchSchemaVersionSummary = SearchSchemaVersionSummary[];
 const __listOfSearchSchemaVersionSummary = /*@__PURE__*/ __L.at(__c6, 4);
 export interface SearchSchemaSummary {
@@ -449,31 +612,51 @@ export interface SearchSchemaSummary {
   SchemaName?: string;
   SchemaVersions?: SearchSchemaVersionSummary[];
 }
+const SearchSchemaSummary = /*@__PURE__*/ __L.at(__c6, 5) as any as S.Schema<SearchSchemaSummary>;
 export type __listOfSearchSchemaSummary = SearchSchemaSummary[];
 const __listOfSearchSchemaSummary = /*@__PURE__*/ __L.at(__c6, 6);
 export interface SearchSchemasResponse {
   NextToken?: string;
   Schemas?: SearchSchemaSummary[];
 }
+const SearchSchemasResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  7,
+) as any as S.Schema<SearchSchemasResponse>;
 export interface StartDiscovererRequest {
   DiscovererId: string;
 }
+const StartDiscovererRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  0,
+) as any as S.Schema<StartDiscovererRequest>;
 export interface StartDiscovererResponse {
   DiscovererId?: string;
   State?: DiscovererState;
 }
+const StartDiscovererResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  1,
+) as any as S.Schema<StartDiscovererResponse>;
 export interface StopDiscovererRequest {
   DiscovererId: string;
 }
+const StopDiscovererRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  2,
+) as any as S.Schema<StopDiscovererRequest>;
 export interface StopDiscovererResponse {
   DiscovererId?: string;
   State?: DiscovererState;
 }
+const StopDiscovererResponse = StartDiscovererResponse as any as S.Schema<StopDiscovererResponse>;
 export interface TagResourceRequest {
   ResourceArn: string;
   Tags?: { [key: string]: string | undefined };
 }
+const TagResourceRequest = /*@__PURE__*/ __L.at(__c7, 3) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
+const TagResourceResponse = DeleteDiscovererResponse as any as S.Schema<TagResourceResponse>;
 export type __listOf__string = string[];
 const __listOf__string =
   __listOfGetDiscoveredSchemaVersionItemInput as any as S.Schema<__listOf__string>;
@@ -481,12 +664,18 @@ export interface UntagResourceRequest {
   ResourceArn: string;
   TagKeys?: string[];
 }
+const UntagResourceRequest = /*@__PURE__*/ __L.at(__c7, 4) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
+const UntagResourceResponse = DeleteDiscovererResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateDiscovererRequest {
   Description?: string;
   DiscovererId: string;
   CrossAccount?: boolean;
 }
+const UpdateDiscovererRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  5,
+) as any as S.Schema<UpdateDiscovererRequest>;
 export interface UpdateDiscovererResponse {
   Description?: string;
   DiscovererArn?: string;
@@ -496,16 +685,23 @@ export interface UpdateDiscovererResponse {
   CrossAccount?: boolean;
   Tags?: { [key: string]: string | undefined };
 }
+const UpdateDiscovererResponse =
+  CreateDiscovererResponse as any as S.Schema<UpdateDiscovererResponse>;
 export interface UpdateRegistryRequest {
   Description?: string;
   RegistryName: string;
 }
+const UpdateRegistryRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  6,
+) as any as S.Schema<UpdateRegistryRequest>;
 export interface UpdateRegistryResponse {
   Description?: string;
   RegistryArn?: string;
   RegistryName?: string;
   Tags?: { [key: string]: string | undefined };
 }
+const UpdateRegistryResponse = CreateRegistryResponse as any as S.Schema<UpdateRegistryResponse>;
 export type __stringMin0Max36 = string;
 export interface UpdateSchemaRequest {
   ClientTokenId?: string;
@@ -515,6 +711,7 @@ export interface UpdateSchemaRequest {
   SchemaName: string;
   Type?: Type;
 }
+const UpdateSchemaRequest = /*@__PURE__*/ __L.at(__c7, 7) as any as S.Schema<UpdateSchemaRequest>;
 export interface UpdateSchemaResponse {
   Description?: string;
   LastModified?: Date;
@@ -525,6 +722,7 @@ export interface UpdateSchemaResponse {
   Type?: string;
   VersionCreatedDate?: Date;
 }
+const UpdateSchemaResponse = CreateSchemaResponse as any as S.Schema<UpdateSchemaResponse>;
 export type CreateDiscovererError =
   | BadRequestException
   | ConflictException
@@ -542,8 +740,8 @@ export const createDiscoverer: API.OperationMethod<
   CreateDiscovererError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1) as any as S.Schema<CreateDiscovererRequest>,
-  output: __S(2) as any as S.Schema<CreateDiscovererResponse>,
+  input: CreateDiscovererRequest,
+  output: CreateDiscovererResponse,
   errors: [
     BadRequestException,
     ConflictException,
@@ -574,8 +772,8 @@ export const createRegistry: API.OperationMethod<
   CreateRegistryError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3) as any as S.Schema<CreateRegistryRequest>,
-  output: __S(4) as any as S.Schema<CreateRegistryResponse>,
+  input: CreateRegistryRequest,
+  output: CreateRegistryResponse,
   errors: [
     BadRequestException,
     ConflictException,
@@ -606,8 +804,8 @@ export const createSchema: API.OperationMethod<
   CreateSchemaError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5) as any as S.Schema<CreateSchemaRequest>,
-  output: __S(6) as any as S.Schema<CreateSchemaResponse>,
+  input: CreateSchemaRequest,
+  output: CreateSchemaResponse,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -636,8 +834,8 @@ export const deleteDiscoverer: API.OperationMethod<
   DeleteDiscovererError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7) as any as S.Schema<DeleteDiscovererRequest>,
-  output: __S(8) as any as S.Schema<DeleteDiscovererResponse>,
+  input: DeleteDiscovererRequest,
+  output: DeleteDiscovererResponse,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -668,8 +866,8 @@ export const deleteRegistry: API.OperationMethod<
   DeleteRegistryError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9) as any as S.Schema<DeleteRegistryRequest>,
-  output: __S(8) as any as S.Schema<DeleteRegistryResponse>,
+  input: DeleteRegistryRequest,
+  output: DeleteRegistryResponse,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -700,8 +898,8 @@ export const deleteResourcePolicy: API.OperationMethod<
   DeleteResourcePolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10) as any as S.Schema<DeleteResourcePolicyRequest>,
-  output: __S(8) as any as S.Schema<DeleteResourcePolicyResponse>,
+  input: DeleteResourcePolicyRequest,
+  output: DeleteResourcePolicyResponse,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -732,8 +930,8 @@ export const deleteSchema: API.OperationMethod<
   DeleteSchemaError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11) as any as S.Schema<DeleteSchemaRequest>,
-  output: __S(8) as any as S.Schema<DeleteSchemaResponse>,
+  input: DeleteSchemaRequest,
+  output: DeleteSchemaResponse,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -764,8 +962,8 @@ export const deleteSchemaVersion: API.OperationMethod<
   DeleteSchemaVersionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12) as any as S.Schema<DeleteSchemaVersionRequest>,
-  output: __S(8) as any as S.Schema<DeleteSchemaVersionResponse>,
+  input: DeleteSchemaVersionRequest,
+  output: DeleteSchemaVersionResponse,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -796,8 +994,8 @@ export const describeCodeBinding: API.OperationMethod<
   DescribeCodeBindingError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13) as any as S.Schema<DescribeCodeBindingRequest>,
-  output: __S(14) as any as S.Schema<DescribeCodeBindingResponse>,
+  input: DescribeCodeBindingRequest,
+  output: DescribeCodeBindingResponse,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -828,8 +1026,8 @@ export const describeDiscoverer: API.OperationMethod<
   DescribeDiscovererError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15) as any as S.Schema<DescribeDiscovererRequest>,
-  output: __S(16) as any as S.Schema<DescribeDiscovererResponse>,
+  input: DescribeDiscovererRequest,
+  output: DescribeDiscovererResponse,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -860,8 +1058,8 @@ export const describeRegistry: API.OperationMethod<
   DescribeRegistryError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17) as any as S.Schema<DescribeRegistryRequest>,
-  output: __S(4) as any as S.Schema<DescribeRegistryResponse>,
+  input: DescribeRegistryRequest,
+  output: DescribeRegistryResponse,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -892,8 +1090,8 @@ export const describeSchema: API.OperationMethod<
   DescribeSchemaError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18) as any as S.Schema<DescribeSchemaRequest>,
-  output: __S(19) as any as S.Schema<DescribeSchemaResponse>,
+  input: DescribeSchemaRequest,
+  output: DescribeSchemaResponse,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -925,8 +1123,8 @@ export const exportSchema: API.OperationMethod<
   ExportSchemaError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20) as any as S.Schema<ExportSchemaRequest>,
-  output: __S(21) as any as S.Schema<ExportSchemaResponse>,
+  input: ExportSchemaRequest,
+  output: ExportSchemaResponse,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -958,8 +1156,8 @@ export const getCodeBindingSource: API.OperationMethod<
   GetCodeBindingSourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22) as any as S.Schema<GetCodeBindingSourceRequest>,
-  output: __S(23) as any as S.Schema<GetCodeBindingSourceResponse>,
+  input: GetCodeBindingSourceRequest,
+  output: GetCodeBindingSourceResponse,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -989,8 +1187,8 @@ export const getDiscoveredSchema: API.OperationMethod<
   GetDiscoveredSchemaError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25) as any as S.Schema<GetDiscoveredSchemaRequest>,
-  output: __S(26) as any as S.Schema<GetDiscoveredSchemaResponse>,
+  input: GetDiscoveredSchemaRequest,
+  output: GetDiscoveredSchemaResponse,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -1020,8 +1218,8 @@ export const getResourcePolicy: API.OperationMethod<
   GetResourcePolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27) as any as S.Schema<GetResourcePolicyRequest>,
-  output: __S(28) as any as S.Schema<GetResourcePolicyResponse>,
+  input: GetResourcePolicyRequest,
+  output: GetResourcePolicyResponse,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -1052,8 +1250,8 @@ export const listDiscoverers: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   DiscovererSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(29) as any as S.Schema<ListDiscoverersRequest>,
-  output: __S(32) as any as S.Schema<ListDiscoverersResponse>,
+  input: ListDiscoverersRequest,
+  output: ListDiscoverersResponse,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -1089,8 +1287,8 @@ export const listRegistries: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   RegistrySummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(33) as any as S.Schema<ListRegistriesRequest>,
-  output: __S(36) as any as S.Schema<ListRegistriesResponse>,
+  input: ListRegistriesRequest,
+  output: ListRegistriesResponse,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -1126,8 +1324,8 @@ export const listSchemas: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   SchemaSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(37) as any as S.Schema<ListSchemasRequest>,
-  output: __S(40) as any as S.Schema<ListSchemasResponse>,
+  input: ListSchemasRequest,
+  output: ListSchemasResponse,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -1164,8 +1362,8 @@ export const listSchemaVersions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   SchemaVersionSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(41) as any as S.Schema<ListSchemaVersionsRequest>,
-  output: __S(44) as any as S.Schema<ListSchemaVersionsResponse>,
+  input: ListSchemaVersionsRequest,
+  output: ListSchemaVersionsResponse,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -1200,8 +1398,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45) as any as S.Schema<ListTagsForResourceRequest>,
-  output: __S(46) as any as S.Schema<ListTagsForResourceResponse>,
+  input: ListTagsForResourceRequest,
+  output: ListTagsForResourceResponse,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -1232,8 +1430,8 @@ export const putCodeBinding: API.OperationMethod<
   PutCodeBindingError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47) as any as S.Schema<PutCodeBindingRequest>,
-  output: __S(48) as any as S.Schema<PutCodeBindingResponse>,
+  input: PutCodeBindingRequest,
+  output: PutCodeBindingResponse,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -1267,8 +1465,8 @@ export const putResourcePolicy: API.OperationMethod<
   PutResourcePolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49) as any as S.Schema<PutResourcePolicyRequest>,
-  output: __S(28) as any as S.Schema<PutResourcePolicyResponse>,
+  input: PutResourcePolicyRequest,
+  output: PutResourcePolicyResponse,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -1300,8 +1498,8 @@ export const searchSchemas: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   SearchSchemaSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(50) as any as S.Schema<SearchSchemasRequest>,
-  output: __S(55) as any as S.Schema<SearchSchemasResponse>,
+  input: SearchSchemasRequest,
+  output: SearchSchemasResponse,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -1337,8 +1535,8 @@ export const startDiscoverer: API.OperationMethod<
   StartDiscovererError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56) as any as S.Schema<StartDiscovererRequest>,
-  output: __S(57) as any as S.Schema<StartDiscovererResponse>,
+  input: StartDiscovererRequest,
+  output: StartDiscovererResponse,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -1369,8 +1567,8 @@ export const stopDiscoverer: API.OperationMethod<
   StopDiscovererError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(58) as any as S.Schema<StopDiscovererRequest>,
-  output: __S(57) as any as S.Schema<StopDiscovererResponse>,
+  input: StopDiscovererRequest,
+  output: StopDiscovererResponse,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -1399,8 +1597,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(59) as any as S.Schema<TagResourceRequest>,
-  output: __S(8) as any as S.Schema<TagResourceResponse>,
+  input: TagResourceRequest,
+  output: TagResourceResponse,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -1427,8 +1625,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60) as any as S.Schema<UntagResourceRequest>,
-  output: __S(8) as any as S.Schema<UntagResourceResponse>,
+  input: UntagResourceRequest,
+  output: UntagResourceResponse,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -1457,8 +1655,8 @@ export const updateDiscoverer: API.OperationMethod<
   UpdateDiscovererError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(61) as any as S.Schema<UpdateDiscovererRequest>,
-  output: __S(2) as any as S.Schema<UpdateDiscovererResponse>,
+  input: UpdateDiscovererRequest,
+  output: UpdateDiscovererResponse,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -1489,8 +1687,8 @@ export const updateRegistry: API.OperationMethod<
   UpdateRegistryError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(62) as any as S.Schema<UpdateRegistryRequest>,
-  output: __S(4) as any as S.Schema<UpdateRegistryResponse>,
+  input: UpdateRegistryRequest,
+  output: UpdateRegistryResponse,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -1522,8 +1720,8 @@ export const updateSchema: API.OperationMethod<
   UpdateSchemaError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(63) as any as S.Schema<UpdateSchemaRequest>,
-  output: __S(6) as any as S.Schema<UpdateSchemaResponse>,
+  input: UpdateSchemaRequest,
+  output: UpdateSchemaResponse,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -1547,7 +1745,7 @@ function __c0(j: number): any {
           Description: S.optional(S.String),
           SourceArn: S.optional(S.String),
           CrossAccount: S.optional(S.Boolean),
-          Tags: S.optional(__S(0)),
+          Tags: S.optional(Tags),
         })
           .pipe(S.encodeKeys({ Tags: "tags" }))
           .pipe(
@@ -1561,9 +1759,9 @@ function __c0(j: number): any {
           DiscovererArn: S.optional(S.String),
           DiscovererId: S.optional(S.String),
           SourceArn: S.optional(S.String),
-          State: S.optional(S.String),
+          State: S.optional(DiscovererState),
           CrossAccount: S.optional(S.Boolean),
-          Tags: S.optional(__S(0)),
+          Tags: S.optional(Tags),
         }).pipe(S.encodeKeys({ Tags: "tags" })),
       ).annotate({ identifier: "CreateDiscovererResponse" });
     case 3:
@@ -1571,7 +1769,7 @@ function __c0(j: number): any {
         S.Struct({
           Description: S.optional(S.String),
           RegistryName: S.String.pipe(T.HttpLabel("RegistryName")),
-          Tags: S.optional(__S(0)),
+          Tags: S.optional(Tags),
         })
           .pipe(S.encodeKeys({ Tags: "tags" }))
           .pipe(
@@ -1591,7 +1789,7 @@ function __c0(j: number): any {
           Description: S.optional(S.String),
           RegistryArn: S.optional(S.String),
           RegistryName: S.optional(S.String),
-          Tags: S.optional(__S(0)),
+          Tags: S.optional(Tags),
         }).pipe(S.encodeKeys({ Tags: "tags" })),
       ).annotate({ identifier: "CreateRegistryResponse" });
     case 5:
@@ -1601,8 +1799,8 @@ function __c0(j: number): any {
           Description: S.optional(S.String),
           RegistryName: S.String.pipe(T.HttpLabel("RegistryName")),
           SchemaName: S.String.pipe(T.HttpLabel("SchemaName")),
-          Tags: S.optional(__S(0)),
-          Type: S.optional(S.String),
+          Tags: S.optional(Tags),
+          Type: S.optional(Type),
         })
           .pipe(S.encodeKeys({ Tags: "tags" }))
           .pipe(
@@ -1627,7 +1825,7 @@ function __c0(j: number): any {
           SchemaArn: S.optional(S.String),
           SchemaName: S.optional(S.String),
           SchemaVersion: S.optional(S.String),
-          Tags: S.optional(__S(0)),
+          Tags: S.optional(Tags),
           Type: S.optional(S.String),
           VersionCreatedDate: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
         }).pipe(S.encodeKeys({ Tags: "tags" })),
@@ -1744,7 +1942,7 @@ function __c1(j: number): any {
           CreationDate: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           LastModified: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           SchemaVersion: S.optional(S.String),
-          Status: S.optional(S.String),
+          Status: S.optional(CodeGenerationStatus),
         }),
       ).annotate({
         identifier: "DescribeCodeBindingResponse",
@@ -1775,9 +1973,9 @@ function __c2(j: number): any {
           DiscovererArn: S.optional(S.String),
           DiscovererId: S.optional(S.String),
           SourceArn: S.optional(S.String),
-          State: S.optional(S.String),
+          State: S.optional(DiscovererState),
           CrossAccount: S.optional(S.Boolean),
-          Tags: S.optional(__S(0)),
+          Tags: S.optional(Tags),
         }).pipe(S.encodeKeys({ Tags: "tags" })),
       ).annotate({
         identifier: "DescribeDiscovererResponse",
@@ -1824,7 +2022,7 @@ function __c2(j: number): any {
           SchemaArn: S.optional(S.String),
           SchemaName: S.optional(S.String),
           SchemaVersion: S.optional(S.String),
-          Tags: S.optional(__S(0)),
+          Tags: S.optional(Tags),
           Type: S.optional(S.String),
           VersionCreatedDate: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
         }).pipe(S.encodeKeys({ Tags: "tags" })),
@@ -1899,7 +2097,7 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Events: S.optional(__listOfGetDiscoveredSchemaVersionItemInput),
-          Type: S.optional(S.String),
+          Type: S.optional(Type),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/v1/discover" }), svc, auth, proto, ver, rules),
         ),
@@ -1939,13 +2137,13 @@ function __c3(j: number): any {
           DiscovererArn: S.optional(S.String),
           DiscovererId: S.optional(S.String),
           SourceArn: S.optional(S.String),
-          State: S.optional(S.String),
+          State: S.optional(DiscovererState),
           CrossAccount: S.optional(S.Boolean),
-          Tags: S.optional(__S(0)),
+          Tags: S.optional(Tags),
         }).pipe(S.encodeKeys({ Tags: "tags" })),
       ).annotate({ identifier: "DiscovererSummary" });
     case 7:
-      return S.Array(__S(30));
+      return S.Array(DiscovererSummary);
   }
 }
 function __c4(j: number): any {
@@ -1973,11 +2171,11 @@ function __c4(j: number): any {
         S.Struct({
           RegistryArn: S.optional(S.String),
           RegistryName: S.optional(S.String),
-          Tags: S.optional(__S(0)),
+          Tags: S.optional(Tags),
         }).pipe(S.encodeKeys({ Tags: "tags" })),
       ).annotate({ identifier: "RegistrySummary" });
     case 3:
-      return S.Array(__S(34));
+      return S.Array(RegistrySummary);
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -2009,12 +2207,12 @@ function __c4(j: number): any {
           LastModified: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           SchemaArn: S.optional(S.String),
           SchemaName: S.optional(S.String),
-          Tags: S.optional(__S(0)),
+          Tags: S.optional(Tags),
           VersionCount: S.optional(S.Number),
         }).pipe(S.encodeKeys({ Tags: "tags" })),
       ).annotate({ identifier: "SchemaSummary" });
     case 7:
-      return S.Array(__S(38));
+      return S.Array(SchemaSummary);
   }
 }
 function __c5(j: number): any {
@@ -2052,11 +2250,11 @@ function __c5(j: number): any {
           SchemaArn: S.optional(S.String),
           SchemaName: S.optional(S.String),
           SchemaVersion: S.optional(S.String),
-          Type: S.optional(S.String),
+          Type: S.optional(Type),
         }),
       ).annotate({ identifier: "SchemaVersionSummary" });
     case 3:
-      return S.Array(__S(42));
+      return S.Array(SchemaVersionSummary);
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -2083,7 +2281,7 @@ function __c5(j: number): any {
       });
     case 6:
       return S.suspend(() =>
-        S.Struct({ Tags: S.optional(__S(0)) }).pipe(S.encodeKeys({ Tags: "tags" })),
+        S.Struct({ Tags: S.optional(Tags) }).pipe(S.encodeKeys({ Tags: "tags" })),
       ).annotate({
         identifier: "ListTagsForResourceResponse",
       });
@@ -2118,7 +2316,7 @@ function __c6(j: number): any {
           CreationDate: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           LastModified: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           SchemaVersion: S.optional(S.String),
-          Status: S.optional(S.String),
+          Status: S.optional(CodeGenerationStatus),
         }),
       ).annotate({ identifier: "PutCodeBindingResponse" });
     case 1:
@@ -2152,13 +2350,13 @@ function __c6(j: number): any {
         S.Struct({
           CreatedDate: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           SchemaVersion: S.optional(S.String),
-          Type: S.optional(S.String),
+          Type: S.optional(Type),
         }),
       ).annotate({
         identifier: "SearchSchemaVersionSummary",
       });
     case 4:
-      return S.Array(__S(51));
+      return S.Array(SearchSchemaVersionSummary);
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -2169,7 +2367,7 @@ function __c6(j: number): any {
         }),
       ).annotate({ identifier: "SearchSchemaSummary" });
     case 6:
-      return S.Array(__S(53));
+      return S.Array(SearchSchemaSummary);
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -2196,7 +2394,7 @@ function __c7(j: number): any {
       ).annotate({ identifier: "StartDiscovererRequest" });
     case 1:
       return S.suspend(() =>
-        S.Struct({ DiscovererId: S.optional(S.String), State: S.optional(S.String) }),
+        S.Struct({ DiscovererId: S.optional(S.String), State: S.optional(DiscovererState) }),
       ).annotate({ identifier: "StartDiscovererResponse" });
     case 2:
       return S.suspend(() =>
@@ -2213,10 +2411,7 @@ function __c7(j: number): any {
       ).annotate({ identifier: "StopDiscovererRequest" });
     case 3:
       return S.suspend(() =>
-        S.Struct({
-          ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")),
-          Tags: S.optional(__S(0)),
-        })
+        S.Struct({ ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")), Tags: S.optional(Tags) })
           .pipe(S.encodeKeys({ Tags: "tags" }))
           .pipe(
             T.all(
@@ -2286,7 +2481,7 @@ function __c7(j: number): any {
           Description: S.optional(S.String),
           RegistryName: S.String.pipe(T.HttpLabel("RegistryName")),
           SchemaName: S.String.pipe(T.HttpLabel("SchemaName")),
-          Type: S.optional(S.String),
+          Type: S.optional(Type),
         }).pipe(
           T.all(
             T.Http({
@@ -2301,30 +2496,5 @@ function __c7(j: number): any {
           ),
         ),
       ).annotate({ identifier: "UpdateSchemaRequest" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
   }
 }

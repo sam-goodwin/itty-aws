@@ -7,8 +7,6 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -69,14 +67,28 @@ export interface AddIdpCredentialRequest {
   /** PEM encoded x509 certificate containing the public key for verifying IdP signatures. */
   pemData?: string;
 }
+const AddIdpCredentialRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<AddIdpCredentialRequest>;
+
 export interface AddInboundSamlSsoProfilesIdpCredentialsRequest {
   /** Required. The InboundSamlSsoProfile that owns the IdpCredential. Format: `inboundSamlSsoProfiles/{sso_profile_id}` */
   parent: string;
   /** Request body */
   body?: AddIdpCredentialRequest;
 }
+const AddInboundSamlSsoProfilesIdpCredentialsRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<AddInboundSamlSsoProfilesIdpCredentialsRequest>;
+
 export type DocumentMap = { [key: string]: unknown | undefined };
+const DocumentMap = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<DocumentMap>;
+
 export type DocumentMapList = Array<DocumentMap>;
+const DocumentMapList = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<DocumentMapList>;
+
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
@@ -86,6 +98,8 @@ export interface Status {
   /** The status code, which should be an enum value of google.rpc.Code. */
   code?: number;
 }
+const Status = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<Status>;
+
 /** This resource represents a long-running operation that is the result of a network API call. */
 export interface Operation {
   /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
@@ -99,17 +113,29 @@ export interface Operation {
   /** If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available. */
   done?: boolean;
 }
+const Operation = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<Operation>;
+
 /** Request message for approving the device to access user data. */
 export interface ApproveDeviceUserRequest {
   /** Optional. [Resource name](https://cloud.google.com/apis/design/resource_names) of the customer. If you're using this API for your own organization, use `customers/my_customer` If you're using this API to manage another organization, use `customers/{customer_id}`, where customer_id is the customer to whom the device belongs. */
   customer?: string;
 }
+const ApproveDeviceUserRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<ApproveDeviceUserRequest>;
+
 export interface ApproveDevicesDeviceUsersRequest {
   /** Required. [Resource name](https://cloud.google.com/apis/design/resource_names) of the Device in format: `devices/{device_id}/deviceUsers/{device_user_id}`, where device_id is the unique ID assigned to the Device, and device_user_id is the unique ID assigned to the User. */
   name: string;
   /** Request body */
   body?: ApproveDeviceUserRequest;
 }
+const ApproveDevicesDeviceUsersRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<ApproveDevicesDeviceUsersRequest>;
+
 /** Request message for blocking account on device. */
 export type BlockDeviceUserRequest = ApproveDeviceUserRequest;
 export interface BlockDevicesDeviceUsersRequest {
@@ -118,14 +144,29 @@ export interface BlockDevicesDeviceUsersRequest {
   /** Request body */
   body?: ApproveDeviceUserRequest;
 }
+const BlockDevicesDeviceUsersRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<BlockDevicesDeviceUsersRequest>;
+
 /** Request to cancel sent invitation for target email in UserInvitation. */
 export interface CancelUserInvitationRequest {}
+const CancelUserInvitationRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<CancelUserInvitationRequest>;
+
 export interface CancelCustomersUserinvitationsRequest {
   /** Required. `UserInvitation` name in the format `customers/{customer}/userinvitations/{user_email_address}` */
   name: string;
   /** Request body */
   body?: CancelUserInvitationRequest;
 }
+const CancelCustomersUserinvitationsRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<CancelCustomersUserinvitationsRequest>;
+
 /** Request message for cancelling an unfinished device wipe. */
 export type CancelWipeDeviceRequest = ApproveDeviceUserRequest;
 export interface CancelWipeDevicesRequest {
@@ -134,6 +175,11 @@ export interface CancelWipeDevicesRequest {
   /** Request body */
   body?: ApproveDeviceUserRequest;
 }
+const CancelWipeDevicesRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<CancelWipeDevicesRequest>;
+
 /** Request message for cancelling an unfinished user account wipe. */
 export type CancelWipeDeviceUserRequest = ApproveDeviceUserRequest;
 export interface CancelWipeDevicesDeviceUsersRequest {
@@ -142,17 +188,32 @@ export interface CancelWipeDevicesDeviceUsersRequest {
   /** Request body */
   body?: ApproveDeviceUserRequest;
 }
+const CancelWipeDevicesDeviceUsersRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<CancelWipeDevicesDeviceUsersRequest>;
+
 export interface CheckTransitiveMembershipGroupsMembershipsRequest {
   /** Required. A CEL expression that MUST include member specification. This is a `required` field. Certain groups are uniquely identified by both a 'member_key_id' and a 'member_key_namespace', which requires an additional query input: 'member_key_namespace'. Example query: `member_key_id == 'member_key_id_value'` */
   query?: string;
   /** [Resource name](https://cloud.google.com/apis/design/resource_names) of the group to check the transitive membership in. Format: `groups/{group_id}`, where `group_id` is the unique id assigned to the Group to which the Membership belongs to. */
   parent: string;
 }
+const CheckTransitiveMembershipGroupsMembershipsRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<CheckTransitiveMembershipGroupsMembershipsRequest>;
+
 /** The response message for MembershipsService.CheckTransitiveMembership. */
 export interface CheckTransitiveMembershipResponse {
   /** Response does not include the possible roles of a member since the behavior of this rpc is not all-or-nothing unlike the other rpcs. So, it may not be possible to list all the roles definitively, due to possible lack of authorization in some of the paths. */
   hasMembership?: boolean;
 }
+const CheckTransitiveMembershipResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<CheckTransitiveMembershipResponse>;
+
 /** This resource object defines a domain that has been designated as allowlisted. */
 export interface AllowlistedDomain {
   /** Output only. Identifier. Resource name of the domain in the allowlist e.g. "allowlistedDomains/0184mhaj1smlusv" */
@@ -160,32 +221,49 @@ export interface AllowlistedDomain {
   /** Required. Immutable. Name of the domain that is in the allowlist. e.g. "google.com" */
   domain?: string;
 }
+const AllowlistedDomain = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<AllowlistedDomain>;
+
 export interface CreateAllowlistedDomainsRequest {
   /** Request body */
   body?: AllowlistedDomain;
 }
+const CreateAllowlistedDomainsRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<CreateAllowlistedDomainsRequest>;
+
 export type DeviceOsFirewallStatusEnum =
   | "OS_FIREWALL_STATUS_UNSPECIFIED"
   | "OS_FIREWALL_STATUS_UNKNOWN"
   | "OS_FIREWALL_STATUS_ENABLED"
   | "OS_FIREWALL_STATUS_DISABLED";
+const DeviceOsFirewallStatusEnum = S.String;
+
 export type BrowserInfoSafeBrowsingProtectionLevelEnum =
   | "SAFE_BROWSING_LEVEL_UNSPECIFIED"
   | "DISABLED"
   | "STANDARD"
   | "ENHANCED";
+const BrowserInfoSafeBrowsingProtectionLevelEnum = S.String;
+
 export type BrowserInfoPasswordProtectionWarningTriggerEnum =
   | "PASSWORD_PROTECTION_TRIGGER_UNSPECIFIED"
   | "PROTECTION_OFF"
   | "PASSWORD_REUSE"
   | "PHISHING_REUSE";
+const BrowserInfoPasswordProtectionWarningTriggerEnum = S.String;
+
 export type BrowserInfoBrowserManagementStateEnum =
   | "UNSPECIFIED"
   | "UNMANAGED"
   | "MANAGED_BY_OTHER_DOMAIN"
   | "PROFILE_MANAGED"
   | "BROWSER_MANAGED";
+const BrowserInfoBrowserManagementStateEnum = S.String;
+
 export type ChromePolicyScopeEnum = "SCOPE_UNKNOWN" | "USER" | "MACHINE";
+const ChromePolicyScopeEnum = S.String;
+
 export type ChromePolicySourceEnum =
   | "SOURCE_UNKNOWN"
   | "ENTERPRISE_DEFAULT"
@@ -198,6 +276,8 @@ export type ChromePolicySourceEnum =
   | "COMMAND_LINE"
   | "CLOUD_FROM_ASH"
   | "RESTRICTED_MANAGED_GUEST_SESSION_OVERRIDE";
+const ChromePolicySourceEnum = S.String;
+
 export type PolicyConflictSourceEnum =
   | "SOURCE_UNKNOWN"
   | "ENTERPRISE_DEFAULT"
@@ -210,7 +290,11 @@ export type PolicyConflictSourceEnum =
   | "COMMAND_LINE"
   | "CLOUD_FROM_ASH"
   | "RESTRICTED_MANAGED_GUEST_SESSION_OVERRIDE";
+const PolicyConflictSourceEnum = S.String;
+
 export type PolicyConflictScopeEnum = "SCOPE_UNKNOWN" | "USER" | "MACHINE";
+const PolicyConflictScopeEnum = S.String;
+
 /** Represents a policy value from a source that was not applied because a higher-priority source took precedence. */
 export interface PolicyConflict {
   /** Output only. The source from which this lower-priority policy value originated. */
@@ -220,7 +304,11 @@ export interface PolicyConflict {
   /** Output only. The scope at which this lower-priority policy is set (USER or MACHINE). */
   scope?: PolicyConflictScopeEnum | (string & {});
 }
+const PolicyConflict = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<PolicyConflict>;
+
 export type PolicyConflictList = Array<PolicyConflict>;
+const PolicyConflictList = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<PolicyConflictList>;
+
 /** Represents a Chrome policy and its current state. */
 export interface ChromePolicy {
   /** Output only. The scope at which the *applied* policy value is set (USER or MACHINE). */
@@ -234,7 +322,11 @@ export interface ChromePolicy {
   /** Output only. A list of other policy values for the same policy name that were not applied due to lower precedence. This field is empty if there were no conflicts. */
   conflicts?: PolicyConflictList;
 }
+const ChromePolicy = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<ChromePolicy>;
+
 export type ChromePolicyList = Array<ChromePolicy>;
+const ChromePolicyList = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<ChromePolicyList>;
+
 /** Browser-specific fields reported by clients on the device, such as [Endpoint Verification extension](https://chromewebstore.google.com/detail/endpoint-verification/callobklhcbilhphinckomhgkigmfocg?pli=1). */
 export interface BrowserInfo {
   /** Current state of [Safe Browsing protection level](https://chromeenterprise.google/policies/#SafeBrowsingProtectionLevel). */
@@ -270,6 +362,8 @@ export interface BrowserInfo {
   /** Version of the request initiating browser. E.g. `91.0.4442.4`. */
   browserVersion?: string;
 }
+const BrowserInfo = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<BrowserInfo>;
+
 /** Contains information about browser profiles reported by the clients on the device (e.g. [Endpoint Verification extension](https://chromewebstore.google.com/detail/endpoint-verification/callobklhcbilhphinckomhgkigmfocg?pli=1)). */
 export interface BrowserAttributes {
   /** Timestamp in milliseconds since the Unix epoch when the profile/gcm id was last synced. */
@@ -279,11 +373,20 @@ export interface BrowserAttributes {
   /** Represents the current state of the [Chrome browser attributes](https://cloud.google.com/access-context-manager/docs/browser-attributes) sent by the clients on the device, such as [Endpoint Verification extension](https://chromewebstore.google.com/detail/endpoint-verification/callobklhcbilhphinckomhgkigmfocg?pli=1). */
   chromeBrowserInfo?: BrowserInfo;
 }
+const BrowserAttributes = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<BrowserAttributes>;
+
 export type BrowserAttributesList = Array<BrowserAttributes>;
+const BrowserAttributesList = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<BrowserAttributesList>;
+
 export type CertificateAttributesValidationStateEnum =
   | "CERTIFICATE_VALIDATION_STATE_UNSPECIFIED"
   | "VALIDATION_SUCCESSFUL"
   | "VALIDATION_FAILED";
+const CertificateAttributesValidationStateEnum = S.String;
+
 /** CertificateTemplate (v3 Extension in X.509). */
 export interface CertificateTemplate {
   /** The template id of the template. Example: "1.3.6.1.4.1.311.21.8.15608621.11768144.5720724.16068415.6889630.81.2472537.7784047". */
@@ -293,6 +396,8 @@ export interface CertificateTemplate {
   /** The Major version of the template. Example: 100. */
   majorVersion?: number;
 }
+const CertificateTemplate = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<CertificateTemplate>;
+
 /** Stores information about a certificate. */
 export interface CertificateAttributes {
   /** The name of the issuer of this certificate. */
@@ -314,7 +419,17 @@ export interface CertificateAttributes {
   /** Certificate not valid at or after this timestamp. */
   validityExpirationTime?: string;
 }
+const CertificateAttributes = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<CertificateAttributes>;
+
 export type CertificateAttributesList = Array<CertificateAttributes>;
+const CertificateAttributesList = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<CertificateAttributesList>;
+
 /** Resource representing the [Endpoint Verification-specific attributes](https://cloud.google.com/endpoint-verification/docs/device-information) of a device. */
 export interface EndpointVerificationSpecificAttributes {
   /** [Additional signals](https://cloud.google.com/endpoint-verification/docs/device-information) reported by Endpoint Verification. It includes the following attributes: * Non-configurable attributes: hotfixes, av_installed, av_enabled, windows_domain_name, is_os_native_firewall_enabled, and is_secure_boot_enabled. * [Configurable attributes](https://cloud.google.com/endpoint-verification/docs/collect-config-attributes): file, folder, and binary attributes; registry entries; and properties in a plist. */
@@ -324,13 +439,24 @@ export interface EndpointVerificationSpecificAttributes {
   /** Details of certificates. */
   certificateAttributes?: CertificateAttributesList;
 }
+const EndpointVerificationSpecificAttributes = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<EndpointVerificationSpecificAttributes>;
+
 export type StringList = Array<string>;
+const StringList = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<StringList>;
+
 export type DeviceOwnerTypeEnum = "DEVICE_OWNERSHIP_UNSPECIFIED" | "COMPANY" | "BYOD";
+const DeviceOwnerTypeEnum = S.String;
+
 export type AndroidAttributesOwnershipPrivilegeEnum =
   | "OWNERSHIP_PRIVILEGE_UNSPECIFIED"
   | "DEVICE_ADMINISTRATOR"
   | "PROFILE_OWNER"
   | "DEVICE_OWNER";
+const AndroidAttributesOwnershipPrivilegeEnum = S.String;
+
 /** Resource representing the Android specific attributes of a Device. */
 export interface AndroidAttributes {
   /** Whether the device passes Android CTS compliance. */
@@ -350,12 +476,16 @@ export interface AndroidAttributes {
   /** Ownership privileges on device. */
   ownershipPrivilege?: AndroidAttributesOwnershipPrivilegeEnum | (string & {});
 }
+const AndroidAttributes = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<AndroidAttributes>;
+
 export type AntivirusInfoProductStateEnum =
   | "PRODUCT_STATE_UNSPECIFIED"
   | "PRODUCT_STATE_ON"
   | "PRODUCT_STATE_OFF"
   | "PRODUCT_STATE_SNOOZED"
   | "PRODUCT_STATE_EXPIRED";
+const AntivirusInfoProductStateEnum = S.String;
+
 /** Resource representing the anti-virus information of a Device. */
 export interface AntivirusInfo {
   /** Output only. The display name of the anti-virus software. */
@@ -365,7 +495,11 @@ export interface AntivirusInfo {
   /** Output only. The GUID of the anti-virus product. */
   productGuid?: string;
 }
+const AntivirusInfo = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<AntivirusInfo>;
+
 export type AntivirusInfoList = Array<AntivirusInfo>;
+const AntivirusInfoList = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<AntivirusInfoList>;
+
 export type DeviceManagementStateEnum =
   | "MANAGEMENT_STATE_UNSPECIFIED"
   | "APPROVED"
@@ -374,10 +508,14 @@ export type DeviceManagementStateEnum =
   | "UNPROVISIONED"
   | "WIPING"
   | "WIPED";
+const DeviceManagementStateEnum = S.String;
+
 export type DeviceCompromisedStateEnum =
   | "COMPROMISED_STATE_UNSPECIFIED"
   | "COMPROMISED"
   | "UNCOMPROMISED";
+const DeviceCompromisedStateEnum = S.String;
+
 export type DeviceDeviceTypeEnum =
   | "DEVICE_TYPE_UNSPECIFIED"
   | "ANDROID"
@@ -388,11 +526,15 @@ export type DeviceDeviceTypeEnum =
   | "LINUX"
   | "CHROME_OS"
   | "GOOGLEBOOK";
+const DeviceDeviceTypeEnum = S.String;
+
 export type WindowsSpecificDeviceAttributesSecureBootModeEnum =
   | "SECURE_BOOT_MODE_UNSPECIFIED"
   | "SECURE_BOOT_MODE_UNKNOWN"
   | "SECURE_BOOT_MODE_ENABLED"
   | "SECURE_BOOT_MODE_DISABLED";
+const WindowsSpecificDeviceAttributesSecureBootModeEnum = S.String;
+
 /** Represents the Windows specific attributes of a Device. */
 export interface WindowsSpecificDeviceAttributes {
   /** Output only. Secure boot mode of the device. */
@@ -404,6 +546,11 @@ export interface WindowsSpecificDeviceAttributes {
   /** Output only. The domain of the machine that the user is logged into. This is different from the windows_user_domain as the user could be logged into a domain different from the machine domain. */
   windowsMachineDomain?: string;
 }
+const WindowsSpecificDeviceAttributes = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<WindowsSpecificDeviceAttributes>;
+
 export type DeviceClientTypesItemEnum =
   | "CLIENT_TYPE_UNSPECIFIED"
   | "DRIVE_FS"
@@ -411,12 +558,21 @@ export type DeviceClientTypesItemEnum =
   | "ENDPOINT_VERIFICATION"
   | "WINDOWS_ADVANCED"
   | "GOOGLE_CREDENTIALS_PROVIDER_FOR_WINDOWS";
+const DeviceClientTypesItemEnum = S.String;
+
 export type DeviceClientTypesItemEnumList = Array<DeviceClientTypesItemEnum | (string & {})>;
+const DeviceClientTypesItemEnumList = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<DeviceClientTypesItemEnumList>;
+
 export type DeviceEncryptionStateEnum =
   | "ENCRYPTION_STATE_UNSPECIFIED"
   | "UNSUPPORTED_BY_DEVICE"
   | "ENCRYPTED"
   | "NOT_ENCRYPTED";
+const DeviceEncryptionStateEnum = S.String;
+
 /** A Device within the Cloud Identity Devices API. Represents a Device known to Google Cloud, independent of the device ownership, type, and whether it is assigned or in use by a user. Important: Device API scopes require that you use domain-wide delegation to access the API. For more information, see [Set up the Devices API](https://cloud.google.com/identity/docs/how-to/setup-devices). */
 export interface Device {
   /** Output only. Device bootloader version. Example: 0.6.7. */
@@ -494,6 +650,8 @@ export interface Device {
   /** Output only. Device encryption state. */
   encryptionState?: DeviceEncryptionStateEnum | (string & {});
 }
+const Device = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<Device>;
+
 /** Request message for creating a Company Owned device. */
 export interface CreateDeviceRequest {
   /** Required. The device to be created. The name field within this device is ignored in the create method. A new name is created by the method, and returned within the response. Only the fields `device_type`, `serial_number` and `asset_tag` (if present) are used to create the device. All other fields are ignored. The `device_type` and `serial_number` fields are required. */
@@ -501,14 +659,20 @@ export interface CreateDeviceRequest {
   /** Optional. [Resource name](https://cloud.google.com/apis/design/resource_names) of the customer. If you're using this API for your own organization, use `customers/my_customer` If you're using this API to manage another organization, use `customers/{customer_id}`, where customer_id is the customer to whom the device belongs. */
   customer?: string;
 }
+const CreateDeviceRequest = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<CreateDeviceRequest>;
+
 export interface CreateDevicesRequest {
   /** Request body */
   body?: CreateDeviceRequest;
 }
+const CreateDevicesRequest = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<CreateDevicesRequest>;
+
 export type CreateGroupsInitialGroupConfigEnum =
   | "INITIAL_GROUP_CONFIG_UNSPECIFIED"
   | "WITH_INITIAL_OWNER"
   | "EMPTY";
+const CreateGroupsInitialGroupConfigEnum = S.String;
+
 /** POSIX Group definition to represent a group in a POSIX compliant system. Caution: POSIX groups are deprecated. As of September 26, 2024, you can no longer create new POSIX groups. For more information, see https://cloud.google.com/identity/docs/deprecations/posix-groups */
 export interface PosixGroup {
   /** GID of the POSIX group. */
@@ -518,7 +682,11 @@ export interface PosixGroup {
   /** Name of the POSIX group. */
   name?: string;
 }
+const PosixGroup = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<PosixGroup>;
+
 export type PosixGroupList = Array<PosixGroup>;
+const PosixGroupList = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<PosixGroupList>;
+
 /** A unique identifier for an entity in the Cloud Identity Groups API. An entity can represent either a group with an optional `namespace` or a user without a `namespace`. The combination of `id` and `namespace` must be unique; however, the same `id` can be used with different `namespace`s. */
 export interface EntityKey {
   /** The namespace in which the entity exists. If not specified, the `EntityKey` represents a Google-managed entity such as a Google user or a Google Group. If specified, the `EntityKey` represents an external-identity-mapped group. The namespace must correspond to an identity source created in Admin Console and must be in the form of `identitysources/{identity_source_id}`. */
@@ -526,20 +694,35 @@ export interface EntityKey {
   /** The ID of the entity. For Google-managed entities, the `id` must be the email address of an existing group or user. For external-identity-mapped entities, the `id` must be a string conforming to the Identity Source's requirements. Must be unique within a `namespace`. */
   id?: string;
 }
+const EntityKey = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<EntityKey>;
+
 export type EntityKeyList = Array<EntityKey>;
+const EntityKeyList = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<EntityKeyList>;
+
 export type DynamicGroupQueryResourceTypeEnum = "RESOURCE_TYPE_UNSPECIFIED" | "USER";
+const DynamicGroupQueryResourceTypeEnum = S.String;
+
 /** Defines a query on a resource. */
 export interface DynamicGroupQuery {
   resourceType?: DynamicGroupQueryResourceTypeEnum | (string & {});
   /** Query that determines the memberships of the dynamic group. Examples: All users with at least one `organizations.department` of engineering. `user.organizations.exists(org, org.department=='engineering')` All users with at least one location that has `area` of `foo` and `building_id` of `bar`. `user.locations.exists(loc, loc.area=='foo' && loc.building_id=='bar')` All users with any variation of the name John Doe (case-insensitive queries add `equalsIgnoreCase()` to the value being queried). `user.name.value.equalsIgnoreCase('jOhn DoE')` */
   query?: string;
 }
+const DynamicGroupQuery = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<DynamicGroupQuery>;
+
 export type DynamicGroupQueryList = Array<DynamicGroupQuery>;
+const DynamicGroupQueryList = /*@__PURE__*/ __L.at(
+  __c5,
+  2,
+) as any as S.Schema<DynamicGroupQueryList>;
+
 export type DynamicGroupStatusStatusEnum =
   | "STATUS_UNSPECIFIED"
   | "UP_TO_DATE"
   | "UPDATING_MEMBERSHIPS"
   | "INVALID_QUERY";
+const DynamicGroupStatusStatusEnum = S.String;
+
 /** The current status of a dynamic group along with timestamp. */
 export interface DynamicGroupStatus {
   /** The latest time at which the dynamic group is guaranteed to be in the given status. If status is `UP_TO_DATE`, the latest time at which the dynamic group was confirmed to be up-to-date. If status is `UPDATING_MEMBERSHIPS`, the time at which dynamic group was created. */
@@ -547,6 +730,8 @@ export interface DynamicGroupStatus {
   /** Status of the dynamic group. */
   status?: DynamicGroupStatusStatusEnum | (string & {});
 }
+const DynamicGroupStatus = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<DynamicGroupStatus>;
+
 /** Dynamic group metadata like queries and status. */
 export interface DynamicGroupMetadata {
   /** Memberships will be the union of all queries. Only one entry with USER resource is currently supported. Customers can create up to 500 dynamic groups. */
@@ -554,7 +739,11 @@ export interface DynamicGroupMetadata {
   /** Output only. Status of the dynamic group. */
   status?: DynamicGroupStatus;
 }
+const DynamicGroupMetadata = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<DynamicGroupMetadata>;
+
 export type StringMap = { [key: string]: string | undefined };
+const StringMap = /*@__PURE__*/ __L.at(__c5, 5) as any as S.Schema<StringMap>;
+
 /** An external identifier for an entity in the Cloud Identity Groups API. Used to link a `Group` in Cloud Identity Groups API with a corresponding entity in an external identity system or directory. */
 export interface ExternalId {
   /** Required. The unique identifier assigned by the external identity provider. The API does not enforce uniqueness of IDs across entities, but clients should ensure IDs are unique within their namespace. */
@@ -562,7 +751,11 @@ export interface ExternalId {
   /** Required. The namespace in which the entity exists. Cannot be empty. Currently, the only allowable namespace is `"system/external"`. */
   namespace?: string;
 }
+const ExternalId = /*@__PURE__*/ __L.at(__c5, 6) as any as S.Schema<ExternalId>;
+
 export type ExternalIdList = Array<ExternalId>;
+const ExternalIdList = /*@__PURE__*/ __L.at(__c5, 7) as any as S.Schema<ExternalIdList>;
+
 /** A group within the Cloud Identity Groups API. A `Group` is a collection of entities, where each entity is either a user, another group, or a service account. */
 export interface Group {
   /** Required. Immutable. The resource name of the entity under which this `Group` resides in the Cloud Identity resource hierarchy. Must be of the form `identitysources/{identity_source}` for external [identity-mapped groups](https://support.google.com/a/answer/9039510) or `customers/{customer_id}` for Google Groups. The `customer_id` must begin with "C" (for example, 'C046psxkn'). [Find your customer ID.] (https://support.google.com/cloudidentity/answer/10070793) */
@@ -590,12 +783,16 @@ export interface Group {
   /** Optional. External identifiers associated with the `Group`. Enables external identity providers and directory sync tools to link their native unique identifiers with this group. Currently, the only allowable namespace is `"system/external"`. */
   externalIds?: ExternalIdList;
 }
+const Group = /*@__PURE__*/ __L.at(__c6, 0) as any as S.Schema<Group>;
+
 export interface CreateGroupsRequest {
   /** Required. The initial configuration option for the `Group`. */
   initialGroupConfig?: CreateGroupsInitialGroupConfigEnum | (string & {});
   /** Request body */
   body?: Group;
 }
+const CreateGroupsRequest = /*@__PURE__*/ __L.at(__c6, 1) as any as S.Schema<CreateGroupsRequest>;
+
 export type MembershipDeliverySettingEnum =
   | "DELIVERY_SETTING_UNSPECIFIED"
   | "ALL_MAIL"
@@ -603,6 +800,8 @@ export type MembershipDeliverySettingEnum =
   | "DAILY"
   | "NONE"
   | "DISABLED";
+const MembershipDeliverySettingEnum = S.String;
+
 export type MembershipTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "USER"
@@ -612,27 +811,43 @@ export type MembershipTypeEnum =
   | "CBCM_BROWSER"
   | "CHROME_OS_DEVICE"
   | "OTHER";
+const MembershipTypeEnum = S.String;
+
 /** The `MembershipRole` expiry details. */
 export interface ExpiryDetail {
   /** The time at which the `MembershipRole` will expire. */
   expireTime?: string;
 }
+const ExpiryDetail = /*@__PURE__*/ __L.at(__c6, 2) as any as S.Schema<ExpiryDetail>;
+
 export type MembershipRoleRestrictionEvaluationStateEnum =
   | "STATE_UNSPECIFIED"
   | "COMPLIANT"
   | "FORWARD_COMPLIANT"
   | "NON_COMPLIANT"
   | "EVALUATING";
+const MembershipRoleRestrictionEvaluationStateEnum = S.String;
+
 /** The evaluated state of this restriction. */
 export interface MembershipRoleRestrictionEvaluation {
   /** Output only. The current state of the restriction */
   state?: MembershipRoleRestrictionEvaluationStateEnum | (string & {});
 }
+const MembershipRoleRestrictionEvaluation = /*@__PURE__*/ __L.at(
+  __c6,
+  3,
+) as any as S.Schema<MembershipRoleRestrictionEvaluation>;
+
 /** Evaluations of restrictions applied to parent group on this membership. */
 export interface RestrictionEvaluations {
   /** Evaluation of the member restriction applied to this membership. Empty if the user lacks permission to view the restriction evaluation. */
   memberRestrictionEvaluation?: MembershipRoleRestrictionEvaluation;
 }
+const RestrictionEvaluations = /*@__PURE__*/ __L.at(
+  __c6,
+  4,
+) as any as S.Schema<RestrictionEvaluations>;
+
 /** A membership role within the Cloud Identity Groups API. A `MembershipRole` defines the privileges granted to a `Membership`. */
 export interface MembershipRole {
   /** The expiry details of the `MembershipRole`. Expiry details are only supported for `MEMBER` `MembershipRoles`. May be set if `name` is `MEMBER`. Must not be set if `name` is any other value. */
@@ -642,7 +857,11 @@ export interface MembershipRole {
   /** Evaluations of restrictions applied to parent group on this membership. */
   restrictionEvaluations?: RestrictionEvaluations;
 }
+const MembershipRole = /*@__PURE__*/ __L.at(__c6, 5) as any as S.Schema<MembershipRole>;
+
 export type MembershipRoleList = Array<MembershipRole>;
+const MembershipRoleList = /*@__PURE__*/ __L.at(__c6, 6) as any as S.Schema<MembershipRoleList>;
+
 /** A membership within the Cloud Identity Groups API. A `Membership` defines a relationship between a `Group` and an entity belonging to that `Group`, referred to as a "member". */
 export interface Membership {
   /** Output only. The [resource name](https://cloud.google.com/apis/design/resource_names) of the `Membership`. Shall be of the form `groups/{group_id}/memberships/{membership_id}`. */
@@ -662,12 +881,19 @@ export interface Membership {
   /** Immutable. The `EntityKey` of the member. Either `member_key` or `preferred_member_key` must be set when calling MembershipsService.CreateMembership but not both; both shall be set when returned. */
   memberKey?: EntityKey;
 }
+const Membership = /*@__PURE__*/ __L.at(__c6, 7) as any as S.Schema<Membership>;
+
 export interface CreateGroupsMembershipsRequest {
   /** Required. The parent `Group` resource under which to create the `Membership`. Must be of the form `groups/{group_id}`. */
   parent: string;
   /** Request body */
   body?: Membership;
 }
+const CreateGroupsMembershipsRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  0,
+) as any as S.Schema<CreateGroupsMembershipsRequest>;
+
 /** OIDC RP (relying party) configuration. */
 export interface OidcRpConfig {
   /** Input only. OAuth2 client secret for OIDC. */
@@ -677,6 +903,8 @@ export interface OidcRpConfig {
   /** OAuth2 client ID for OIDC. */
   clientId?: string;
 }
+const OidcRpConfig = /*@__PURE__*/ __L.at(__c7, 1) as any as S.Schema<OidcRpConfig>;
+
 /** OIDC IDP (identity provider) configuration. */
 export interface OidcIdpConfig {
   /** Required. The Issuer identifier for the IdP. Must be a URL. The discovery URL will be derived from this as described in Section 4 of [the OIDC specification](https://openid.net/specs/openid-connect-discovery-1_0.html). */
@@ -684,6 +912,8 @@ export interface OidcIdpConfig {
   /** The **Change Password URL** of the identity provider. Users will be sent to this URL when changing their passwords at `myaccount.google.com`. This takes precedence over the change password URL configured at customer-level. Must use `HTTPS`. */
   changePasswordUri?: string;
 }
+const OidcIdpConfig = /*@__PURE__*/ __L.at(__c7, 2) as any as S.Schema<OidcIdpConfig>;
+
 /** An [OIDC](https://openid.net/developers/how-connect-works/) federation between a Google enterprise customer and an OIDC identity provider. */
 export interface InboundOidcSsoProfile {
   /** OIDC relying party (RP) configuration for this OIDC SSO profile. These are the RP details provided by Google that should be configured on the corresponding identity provider. */
@@ -697,10 +927,20 @@ export interface InboundOidcSsoProfile {
   /** Output only. [Resource name](https://cloud.google.com/apis/design/resource_names) of the OIDC SSO profile. */
   name?: string;
 }
+const InboundOidcSsoProfile = /*@__PURE__*/ __L.at(
+  __c7,
+  3,
+) as any as S.Schema<InboundOidcSsoProfile>;
+
 export interface CreateInboundOidcSsoProfilesRequest {
   /** Request body */
   body?: InboundOidcSsoProfile;
 }
+const CreateInboundOidcSsoProfilesRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  4,
+) as any as S.Schema<CreateInboundOidcSsoProfilesRequest>;
+
 /** SAML IDP (identity provider) configuration. */
 export interface SamlIdpConfig {
   /** Required. The `SingleSignOnService` endpoint location (sign-in page URL) of the identity provider. This is the URL where the `AuthnRequest` will be sent. Must use `HTTPS`. Assumed to accept the `HTTP-Redirect` binding. */
@@ -712,6 +952,8 @@ export interface SamlIdpConfig {
   /** The **Change Password URL** of the identity provider. Users will be sent to this URL when changing their passwords at `myaccount.google.com`. This takes precedence over the change password URL configured at customer-level. Must use `HTTPS`. */
   changePasswordUri?: string;
 }
+const SamlIdpConfig = /*@__PURE__*/ __L.at(__c7, 5) as any as S.Schema<SamlIdpConfig>;
+
 /** SAML SP (service provider) configuration. */
 export interface SamlSpConfig {
   /** Output only. The SAML **Assertion Consumer Service (ACS) URL** to be used for the IDP-initiated login. Assumed to accept response messages via the `HTTP-POST` binding. */
@@ -719,6 +961,8 @@ export interface SamlSpConfig {
   /** Output only. The SAML **Entity ID** for this service provider. */
   entityId?: string;
 }
+const SamlSpConfig = /*@__PURE__*/ __L.at(__c7, 6) as any as S.Schema<SamlSpConfig>;
+
 /** A [SAML 2.0](https://www.oasis-open.org/standards#samlv2.0) federation between a Google enterprise customer and a SAML identity provider. */
 export interface InboundSamlSsoProfile {
   /** Immutable. The customer. For example: `customers/C0123abc`. */
@@ -732,32 +976,52 @@ export interface InboundSamlSsoProfile {
   /** Human-readable name of the SAML SSO profile. */
   displayName?: string;
 }
+const InboundSamlSsoProfile = /*@__PURE__*/ __L.at(
+  __c7,
+  7,
+) as any as S.Schema<InboundSamlSsoProfile>;
+
 export interface CreateInboundSamlSsoProfilesRequest {
   /** Request body */
   body?: InboundSamlSsoProfile;
 }
+const CreateInboundSamlSsoProfilesRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  0,
+) as any as S.Schema<CreateInboundSamlSsoProfilesRequest>;
+
 /** Details that are applicable when `sso_mode` == `SAML_SSO`. */
 export interface SamlSsoInfo {
   /** Required. Name of the `InboundSamlSsoProfile` to use. Must be of the form `inboundSamlSsoProfiles/{inbound_saml_sso_profile}`. */
   inboundSamlSsoProfile?: string;
 }
+const SamlSsoInfo = /*@__PURE__*/ __L.at(__c8, 1) as any as S.Schema<SamlSsoInfo>;
+
 export type SignInBehaviorRedirectConditionEnum = "REDIRECT_CONDITION_UNSPECIFIED" | "NEVER";
+const SignInBehaviorRedirectConditionEnum = S.String;
+
 /** Controls sign-in behavior. */
 export interface SignInBehavior {
   /** When to redirect sign-ins to the IdP. */
   redirectCondition?: SignInBehaviorRedirectConditionEnum | (string & {});
 }
+const SignInBehavior = /*@__PURE__*/ __L.at(__c8, 2) as any as S.Schema<SignInBehavior>;
+
 /** Details that are applicable when `sso_mode` is set to `OIDC_SSO`. */
 export interface OidcSsoInfo {
   /** Required. Name of the `InboundOidcSsoProfile` to use. Must be of the form `inboundOidcSsoProfiles/{inbound_oidc_sso_profile}`. */
   inboundOidcSsoProfile?: string;
 }
+const OidcSsoInfo = /*@__PURE__*/ __L.at(__c8, 3) as any as S.Schema<OidcSsoInfo>;
+
 export type InboundSsoAssignmentSsoModeEnum =
   | "SSO_MODE_UNSPECIFIED"
   | "SSO_OFF"
   | "SAML_SSO"
   | "OIDC_SSO"
   | "DOMAIN_WIDE_SAML_IF_ENABLED";
+const InboundSsoAssignmentSsoModeEnum = S.String;
+
 /** Targets with "set" SSO assignments and their respective assignments. */
 export interface InboundSsoAssignment {
   /** Immutable. The customer. For example: `customers/C0123abc`. */
@@ -779,10 +1043,17 @@ export interface InboundSsoAssignment {
   /** Immutable. Must be of the form `groups/{group}`. */
   targetGroup?: string;
 }
+const InboundSsoAssignment = /*@__PURE__*/ __L.at(__c8, 4) as any as S.Schema<InboundSsoAssignment>;
+
 export interface CreateInboundSsoAssignmentsRequest {
   /** Request body */
   body?: InboundSsoAssignment;
 }
+const CreateInboundSsoAssignmentsRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  5,
+) as any as S.Schema<CreateInboundSsoAssignmentsRequest>;
+
 /** Setting */
 export interface Setting {
   /** Required. Immutable. The type of the Setting. */
@@ -790,6 +1061,8 @@ export interface Setting {
   /** Required. The value of the Setting. */
   value?: DocumentMap;
 }
+const Setting = /*@__PURE__*/ __L.at(__c8, 6) as any as S.Schema<Setting>;
+
 /** PolicyQuery */
 export interface PolicyQuery {
   /** Immutable. The CEL query that defines which entities the Policy applies to (ex. a User entity). For details about CEL see https://opensource.google.com/projects/cel. The OrgUnits the Policy applies to are represented by a clause like so: entity.org_units.exists(org_unit, org_unit.org_unit_id == orgUnitId('{orgUnitId}')) The Group the Policy applies to are represented by a clause like so: entity.groups.exists(group, group.group_id == groupId('{groupId}')) The Licenses the Policy applies to are represented by a clause like so: entity.licenses.exists(license, license in ['/product/{productId}/sku/{skuId}']) **Note:** The licenses clause is not supported in mutate endpoints. The above clauses can be present in any combination, and used in conjunction with the &&, || and ! operators. The org_unit and group fields below are helper fields that contain the corresponding value(s) as the query to make the query easier to use. */
@@ -801,7 +1074,11 @@ export interface PolicyQuery {
   /** Required. Immutable. Non-empty default. The OrgUnit the query applies to. This field is only set if there is a single value for org_unit that satisfies all clauses of the query. */
   orgUnit?: string;
 }
+const PolicyQuery = /*@__PURE__*/ __L.at(__c8, 7) as any as S.Schema<PolicyQuery>;
+
 export type PolicyTypeEnum = "POLICY_TYPE_UNSPECIFIED" | "SYSTEM" | "ADMIN";
+const PolicyTypeEnum = S.String;
+
 /** A Policy resource binds an instance of a single Setting with the scope of a PolicyQuery. The Setting instance will be applied to all entities that satisfy the query. */
 export interface Policy {
   /** Immutable. Customer that the Policy belongs to. The value is in the format 'customers/{customerId}'. The `customerId` must begin with "C" To find your customer ID in Admin Console see https://support.google.com/a/answer/10070793. */
@@ -815,68 +1092,131 @@ export interface Policy {
   /** Output only. The type of the policy. */
   type?: PolicyTypeEnum | (string & {});
 }
+const Policy = /*@__PURE__*/ __L.at(__c9, 0) as any as S.Schema<Policy>;
+
 export interface CreatePoliciesRequest {
   /** Request body */
   body?: Policy;
 }
+const CreatePoliciesRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  1,
+) as any as S.Schema<CreatePoliciesRequest>;
+
 export interface DeleteAllowlistedDomainsRequest {
   /** Required. Specifies the [resource name](https://google.aip.dev/122) of the domain to delete. */
   name: string;
 }
+const DeleteAllowlistedDomainsRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  2,
+) as any as S.Schema<DeleteAllowlistedDomainsRequest>;
+
 export interface DeleteDevicesRequest {
   /** Optional. [Resource name](https://cloud.google.com/apis/design/resource_names) of the customer. If you're using this API for your own organization, use `customers/my_customer` If you're using this API to manage another organization, use `customers/{customer_id}`, where customer_id is the customer to whom the device belongs. */
   customer?: string;
   /** Required. [Resource name](https://cloud.google.com/apis/design/resource_names) of the Device in format: `devices/{device_id}`, where device_id is the unique ID assigned to the Device. */
   name: string;
 }
+const DeleteDevicesRequest = /*@__PURE__*/ __L.at(__c9, 3) as any as S.Schema<DeleteDevicesRequest>;
+
 export interface DeleteDevicesDeviceUsersRequest {
   /** Optional. [Resource name](https://cloud.google.com/apis/design/resource_names) of the customer. If you're using this API for your own organization, use `customers/my_customer` If you're using this API to manage another organization, use `customers/{customer_id}`, where customer_id is the customer to whom the device belongs. */
   customer?: string;
   /** Required. [Resource name](https://cloud.google.com/apis/design/resource_names) of the Device in format: `devices/{device_id}/deviceUsers/{device_user_id}`, where device_id is the unique ID assigned to the Device, and device_user_id is the unique ID assigned to the User. */
   name: string;
 }
+const DeleteDevicesDeviceUsersRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  4,
+) as any as S.Schema<DeleteDevicesDeviceUsersRequest>;
+
 export interface DeleteGroupsRequest {
   /** Required. The [resource name](https://cloud.google.com/apis/design/resource_names) of the `Group` to retrieve. Must be of the form `groups/{group_id}`. */
   name: string;
 }
+const DeleteGroupsRequest = /*@__PURE__*/ __L.at(__c9, 5) as any as S.Schema<DeleteGroupsRequest>;
+
 export interface DeleteGroupsMembershipsRequest {
   /** Required. The [resource name](https://cloud.google.com/apis/design/resource_names) of the `Membership` to delete. Must be of the form `groups/{group_id}/memberships/{membership_id}`. */
   name: string;
 }
+const DeleteGroupsMembershipsRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  6,
+) as any as S.Schema<DeleteGroupsMembershipsRequest>;
+
 export interface DeleteInboundOidcSsoProfilesRequest {
   /** Required. The [resource name](https://cloud.google.com/apis/design/resource_names) of the InboundOidcSsoProfile to delete. Format: `inboundOidcSsoProfiles/{sso_profile_id}` */
   name: string;
 }
+const DeleteInboundOidcSsoProfilesRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  7,
+) as any as S.Schema<DeleteInboundOidcSsoProfilesRequest>;
+
 export interface DeleteInboundSamlSsoProfilesRequest {
   /** Required. The [resource name](https://cloud.google.com/apis/design/resource_names) of the InboundSamlSsoProfile to delete. Format: `inboundSamlSsoProfiles/{sso_profile_id}` */
   name: string;
 }
+const DeleteInboundSamlSsoProfilesRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  0,
+) as any as S.Schema<DeleteInboundSamlSsoProfilesRequest>;
+
 export interface DeleteInboundSamlSsoProfilesIdpCredentialsRequest {
   /** Required. The [resource name](https://cloud.google.com/apis/design/resource_names) of the IdpCredential to delete. Format: `inboundSamlSsoProfiles/{sso_profile_id}/idpCredentials/{idp_credential_id}` */
   name: string;
 }
+const DeleteInboundSamlSsoProfilesIdpCredentialsRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  1,
+) as any as S.Schema<DeleteInboundSamlSsoProfilesIdpCredentialsRequest>;
+
 export interface DeleteInboundSsoAssignmentsRequest {
   /** Required. The [resource name](https://cloud.google.com/apis/design/resource_names) of the InboundSsoAssignment to delete. Format: `inboundSsoAssignments/{assignment}` */
   name: string;
 }
+const DeleteInboundSsoAssignmentsRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  2,
+) as any as S.Schema<DeleteInboundSsoAssignmentsRequest>;
+
 export interface DeletePoliciesRequest {
   /** Required. The name of the policy to delete. Format: `policies/{policy}`. */
   name: string;
 }
+const DeletePoliciesRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  3,
+) as any as S.Schema<DeletePoliciesRequest>;
+
 export interface GetAllowlistedDomainsRequest {
   /** Required. Specifies the [resource name](https://google.aip.dev/122) of the domain to retrieve. */
   name: string;
 }
+const GetAllowlistedDomainsRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  4,
+) as any as S.Schema<GetAllowlistedDomainsRequest>;
+
 export interface GetCustomersUserinvitationsRequest {
   /** Required. `UserInvitation` name in the format `customers/{customer}/userinvitations/{user_email_address}` */
   name: string;
 }
+const GetCustomersUserinvitationsRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  5,
+) as any as S.Schema<GetCustomersUserinvitationsRequest>;
+
 export type UserInvitationStateEnum =
   | "STATE_UNSPECIFIED"
   | "NOT_YET_SENT"
   | "INVITED"
   | "ACCEPTED"
   | "DECLINED";
+const UserInvitationStateEnum = S.String;
+
 /** The `UserInvitation` resource represents an email that can be sent to an unmanaged user account inviting them to join the customer's Google Workspace or Cloud Identity account. An unmanaged account shares an email address domain with the Google Workspace or Cloud Identity account but is not managed by it yet. If the user accepts the `UserInvitation`, the user account will become managed. */
 export interface UserInvitation {
   /** State of the `UserInvitation`. */
@@ -888,18 +1228,27 @@ export interface UserInvitation {
   /** Shall be of the form `customers/{customer}/userinvitations/{user_email_address}`. */
   name?: string;
 }
+const UserInvitation = /*@__PURE__*/ __L.at(__c10, 6) as any as S.Schema<UserInvitation>;
+
 export interface GetDevicesRequest {
   /** Required. [Resource name](https://cloud.google.com/apis/design/resource_names) of the Device in format: `devices/{device_id}`, where device_id is the unique ID assigned to the Device. */
   name: string;
   /** Optional. [Resource name](https://cloud.google.com/apis/design/resource_names) of the Customer in format: `customers/{customer_id}`, where customer_id is the customer to whom the device belongs. */
   customer?: string;
 }
+const GetDevicesRequest = /*@__PURE__*/ __L.at(__c10, 7) as any as S.Schema<GetDevicesRequest>;
+
 export interface GetDevicesDeviceUsersRequest {
   /** Optional. [Resource name](https://cloud.google.com/apis/design/resource_names) of the customer. If you're using this API for your own organization, use `customers/my_customer` If you're using this API to manage another organization, use `customers/{customer_id}`, where customer_id is the customer to whom the device belongs. */
   customer?: string;
   /** Required. [Resource name](https://cloud.google.com/apis/design/resource_names) of the Device in format: `devices/{device_id}/deviceUsers/{device_user_id}`, where device_id is the unique ID assigned to the Device, and device_user_id is the unique ID assigned to the User. */
   name: string;
 }
+const GetDevicesDeviceUsersRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  0,
+) as any as S.Schema<GetDevicesDeviceUsersRequest>;
+
 export type DeviceUserManagementStateEnum =
   | "MANAGEMENT_STATE_UNSPECIFIED"
   | "WIPING"
@@ -908,14 +1257,20 @@ export type DeviceUserManagementStateEnum =
   | "BLOCKED"
   | "PENDING_APPROVAL"
   | "UNENROLLED";
+const DeviceUserManagementStateEnum = S.String;
+
 export type DeviceUserPasswordStateEnum =
   | "PASSWORD_STATE_UNSPECIFIED"
   | "PASSWORD_SET"
   | "PASSWORD_NOT_SET";
+const DeviceUserPasswordStateEnum = S.String;
+
 export type DeviceUserCompromisedStateEnum =
   | "COMPROMISED_STATE_UNSPECIFIED"
   | "COMPROMISED"
   | "NOT_COMPROMISED";
+const DeviceUserCompromisedStateEnum = S.String;
+
 /** Represents a user's use of a Device in the Cloud Identity Devices API. A DeviceUser is a resource representing a user's use of a Device */
 export interface DeviceUser {
   /** Output only. Management state of the user on the device. */
@@ -939,16 +1294,25 @@ export interface DeviceUser {
   /** Output only. Last time when user synced with policies. */
   lastSyncTime?: string;
 }
+const DeviceUser = /*@__PURE__*/ __L.at(__c11, 1) as any as S.Schema<DeviceUser>;
+
 export interface GetDevicesDeviceUsersClientStatesRequest {
   /** Required. [Resource name](https://cloud.google.com/apis/design/resource_names) of the ClientState in format: `devices/{device_id}/deviceUsers/{device_user_id}/clientStates/{partner_id}`, where `device_id` is the unique ID assigned to the Device, `device_user_id` is the unique ID assigned to the User and `partner_id` identifies the partner storing the data. To get the client state for devices belonging to your own organization, the `partnerId` is in the format: `customerId-*anystring*`. Where the `customerId` is your organization's customer ID and `anystring` is any suffix. This suffix is used in setting up Custom Access Levels in Context-Aware Access. You may use `my_customer` instead of the customer ID for devices managed by your own organization. You may specify `-` in place of the `{device_id}`, so the ClientState resource name can be: `devices/-/deviceUsers/{device_user_resource_id}/clientStates/{partner_id}`. */
   name: string;
   /** Optional. [Resource name](https://cloud.google.com/apis/design/resource_names) of the customer. If you're using this API for your own organization, use `customers/my_customer` If you're using this API to manage another organization, use `customers/{customer_id}`, where customer_id is the customer to whom the device belongs. */
   customer?: string;
 }
+const GetDevicesDeviceUsersClientStatesRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  2,
+) as any as S.Schema<GetDevicesDeviceUsersClientStatesRequest>;
+
 export type ClientStateOwnerTypeEnum =
   | "OWNER_TYPE_UNSPECIFIED"
   | "OWNER_TYPE_CUSTOMER"
   | "OWNER_TYPE_PARTNER";
+const ClientStateOwnerTypeEnum = S.String;
+
 /** Additional custom attribute values may be one of these types */
 export interface CustomAttributeValue {
   /** Represents a double value. */
@@ -958,7 +1322,17 @@ export interface CustomAttributeValue {
   /** Represents a string value. */
   stringValue?: string;
 }
+const CustomAttributeValue = /*@__PURE__*/ __L.at(
+  __c11,
+  3,
+) as any as S.Schema<CustomAttributeValue>;
+
 export type CustomAttributeValueMap = { [key: string]: CustomAttributeValue | undefined };
+const CustomAttributeValueMap = /*@__PURE__*/ __L.at(
+  __c11,
+  4,
+) as any as S.Schema<CustomAttributeValueMap>;
+
 export type ClientStateHealthScoreEnum =
   | "HEALTH_SCORE_UNSPECIFIED"
   | "VERY_POOR"
@@ -966,11 +1340,17 @@ export type ClientStateHealthScoreEnum =
   | "NEUTRAL"
   | "GOOD"
   | "VERY_GOOD";
+const ClientStateHealthScoreEnum = S.String;
+
 export type ClientStateComplianceStateEnum =
   | "COMPLIANCE_STATE_UNSPECIFIED"
   | "COMPLIANT"
   | "NON_COMPLIANT";
+const ClientStateComplianceStateEnum = S.String;
+
 export type ClientStateManagedEnum = "MANAGED_STATE_UNSPECIFIED" | "MANAGED" | "UNMANAGED";
+const ClientStateManagedEnum = S.String;
+
 /** Represents the state associated with an API client calling the Devices API. Resource representing ClientState and supports updates from API users */
 export interface ClientState {
   /** Output only. The owner of the ClientState */
@@ -998,36 +1378,64 @@ export interface ClientState {
   /** The token that needs to be passed back for concurrency control in updates. Token needs to be passed back in UpdateRequest */
   etag?: string;
 }
+const ClientState = /*@__PURE__*/ __L.at(__c11, 5) as any as S.Schema<ClientState>;
+
 export interface GetGroupsRequest {
   /** Required. The [resource name](https://cloud.google.com/apis/design/resource_names) of the `Group` to retrieve. Must be of the form `groups/{group_id}`. */
   name: string;
 }
+const GetGroupsRequest = /*@__PURE__*/ __L.at(__c11, 6) as any as S.Schema<GetGroupsRequest>;
+
 export interface GetGroupsMembershipsRequest {
   /** Required. The [resource name](https://cloud.google.com/apis/design/resource_names) of the `Membership` to retrieve. Must be of the form `groups/{group_id}/memberships/{membership_id}`. */
   name: string;
 }
+const GetGroupsMembershipsRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  7,
+) as any as S.Schema<GetGroupsMembershipsRequest>;
+
 export interface GetInboundOidcSsoProfilesRequest {
   /** Required. The [resource name](https://cloud.google.com/apis/design/resource_names) of the InboundOidcSsoProfile to get. Format: `inboundOidcSsoProfiles/{sso_profile_id}` */
   name: string;
 }
+const GetInboundOidcSsoProfilesRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  0,
+) as any as S.Schema<GetInboundOidcSsoProfilesRequest>;
+
 export interface GetInboundSamlSsoProfilesRequest {
   /** Required. The [resource name](https://cloud.google.com/apis/design/resource_names) of the InboundSamlSsoProfile to get. Format: `inboundSamlSsoProfiles/{sso_profile_id}` */
   name: string;
 }
+const GetInboundSamlSsoProfilesRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  1,
+) as any as S.Schema<GetInboundSamlSsoProfilesRequest>;
+
 export interface GetInboundSamlSsoProfilesIdpCredentialsRequest {
   /** Required. The [resource name](https://cloud.google.com/apis/design/resource_names) of the IdpCredential to retrieve. Format: `inboundSamlSsoProfiles/{sso_profile_id}/idpCredentials/{idp_credential_id}` */
   name: string;
 }
+const GetInboundSamlSsoProfilesIdpCredentialsRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  2,
+) as any as S.Schema<GetInboundSamlSsoProfilesIdpCredentialsRequest>;
+
 /** Information of a RSA public key. */
 export interface RsaPublicKeyInfo {
   /** Key size in bits (size of the modulus). */
   keySize?: number;
 }
+const RsaPublicKeyInfo = /*@__PURE__*/ __L.at(__c12, 3) as any as S.Schema<RsaPublicKeyInfo>;
+
 /** Information of a DSA public key. */
 export interface DsaPublicKeyInfo {
   /** Key size in bits (size of parameter P). */
   keySize?: number;
 }
+const DsaPublicKeyInfo = RsaPublicKeyInfo as any as S.Schema<DsaPublicKeyInfo>;
+
 /** Credential for verifying signatures produced by the Identity Provider. */
 export interface IdpCredential {
   /** Output only. Information of a RSA public key. */
@@ -1039,37 +1447,63 @@ export interface IdpCredential {
   /** Output only. Time when the `IdpCredential` was last updated. */
   updateTime?: string;
 }
+const IdpCredential = /*@__PURE__*/ __L.at(__c12, 4) as any as S.Schema<IdpCredential>;
+
 export interface GetInboundSsoAssignmentsRequest {
   /** Required. The [resource name](https://cloud.google.com/apis/design/resource_names) of the InboundSsoAssignment to fetch. Format: `inboundSsoAssignments/{assignment}` */
   name: string;
 }
+const GetInboundSsoAssignmentsRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  5,
+) as any as S.Schema<GetInboundSsoAssignmentsRequest>;
+
 export interface GetMembershipGraphGroupsMembershipsRequest {
   /** Required. [Resource name](https://cloud.google.com/apis/design/resource_names) of the group to search transitive memberships in. Format: `groups/{group_id}`, where `group_id` is the unique ID assigned to the Group to which the Membership belongs to. group_id can be a wildcard collection id "-". When `group_id` is specified, the membership graph will be constrained to paths between the member (defined in the query) and the parent. If a wildcard collection is provided, all membership paths connected to the member will be returned. */
   parent: string;
   /** Required. A CEL expression that MUST include member specification AND label(s). Certain groups are uniquely identified by both a 'member_key_id' and a 'member_key_namespace', which requires an additional query input: 'member_key_namespace'. Example query: `member_key_id == 'member_key_id_value' && in labels` */
   query?: string;
 }
+const GetMembershipGraphGroupsMembershipsRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  6,
+) as any as S.Schema<GetMembershipGraphGroupsMembershipsRequest>;
+
 export interface GetPoliciesRequest {
   /** Required. The name of the policy to retrieve. Format: `policies/{policy}`. */
   name: string;
 }
+const GetPoliciesRequest = /*@__PURE__*/ __L.at(__c12, 7) as any as S.Schema<GetPoliciesRequest>;
+
 export interface GetSecuritySettingsGroupsRequest {
   /** Required. The security settings to retrieve. Format: `groups/{group_id}/securitySettings` */
   name: string;
   /** Field-level read mask of which fields to return. "*" returns all fields. If not specified, all fields will be returned. May only contain the following field: `member_restriction`. */
   readMask?: string;
 }
+const GetSecuritySettingsGroupsRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  0,
+) as any as S.Schema<GetSecuritySettingsGroupsRequest>;
+
 export type RestrictionEvaluationStateEnum =
   | "STATE_UNSPECIFIED"
   | "EVALUATING"
   | "COMPLIANT"
   | "FORWARD_COMPLIANT"
   | "NON_COMPLIANT";
+const RestrictionEvaluationStateEnum = S.String;
+
 /** The evaluated state of this restriction. */
 export interface RestrictionEvaluation {
   /** Output only. The current state of the restriction */
   state?: RestrictionEvaluationStateEnum | (string & {});
 }
+const RestrictionEvaluation = /*@__PURE__*/ __L.at(
+  __c13,
+  1,
+) as any as S.Schema<RestrictionEvaluation>;
+
 /** The definition of MemberRestriction */
 export interface MemberRestriction {
   /** Member Restriction as defined by CEL expression. Supported restrictions are: `member.customer_id` and `member.type`. Valid values for `member.type` are `1`, `2` and `3`. They correspond to USER, SERVICE_ACCOUNT, and GROUP respectively. The value for `member.customer_id` only supports `groupCustomerId()` currently which means the customer id of the group will be used for restriction. Supported operators are `&&`, `||` and `==`, corresponding to AND, OR, and EQUAL. Examples: Allow only service accounts of given customer to be members. `member.type == 2 && member.customer_id == groupCustomerId()` Allow only users or groups to be members. `member.type == 1 || member.type == 3` */
@@ -1077,6 +1511,8 @@ export interface MemberRestriction {
   /** The evaluated state of this restriction on a group. */
   evaluation?: RestrictionEvaluation;
 }
+const MemberRestriction = /*@__PURE__*/ __L.at(__c13, 2) as any as S.Schema<MemberRestriction>;
+
 /** The definiion of security settings. */
 export interface SecuritySettings {
   /** Output only. The resource name of the security settings. Shall be of the form `groups/{group_id}/securitySettings`. */
@@ -1084,15 +1520,27 @@ export interface SecuritySettings {
   /** The Member Restriction value */
   memberRestriction?: MemberRestriction;
 }
+const SecuritySettings = /*@__PURE__*/ __L.at(__c13, 3) as any as S.Schema<SecuritySettings>;
+
 export interface IsInvitableUserCustomersUserinvitationsRequest {
   /** Required. `UserInvitation` name in the format `customers/{customer}/userinvitations/{user_email_address}` */
   name: string;
 }
+const IsInvitableUserCustomersUserinvitationsRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  4,
+) as any as S.Schema<IsInvitableUserCustomersUserinvitationsRequest>;
+
 /** Response for IsInvitableUser RPC. */
 export interface IsInvitableUserResponse {
   /** Returns true if the email address is invitable. */
   isInvitableUser?: boolean;
 }
+const IsInvitableUserResponse = /*@__PURE__*/ __L.at(
+  __c13,
+  5,
+) as any as S.Schema<IsInvitableUserResponse>;
+
 export interface ListAllowlistedDomainsRequest {
   /** Optional. Identifies a token from a previous page of results, if any. */
   pageToken?: string;
@@ -1101,7 +1549,17 @@ export interface ListAllowlistedDomainsRequest {
   /** Optional. Provides an optional filter for list results. Currently, only exact matches on the domain are supported, such as "domain = 'google.com'", with no composite conditions. */
   filter?: string;
 }
+const ListAllowlistedDomainsRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  6,
+) as any as S.Schema<ListAllowlistedDomainsRequest>;
+
 export type AllowlistedDomainList = Array<AllowlistedDomain>;
+const AllowlistedDomainList = /*@__PURE__*/ __L.at(
+  __c13,
+  7,
+) as any as S.Schema<AllowlistedDomainList>;
+
 /** Response message for AllowlistedDomainsService.ListAllowlistedDomains. */
 export interface ListAllowlistedDomainsResponse {
   /** Contains the list of domains in the allowlist. There is no defined ordering of domains within a result. */
@@ -1109,6 +1567,11 @@ export interface ListAllowlistedDomainsResponse {
   /** Contains the next page token if the result is not exhaustive. If there are no more results, this token is empty. */
   nextPageToken?: string;
 }
+const ListAllowlistedDomainsResponse = /*@__PURE__*/ __L.at(
+  __c14,
+  0,
+) as any as S.Schema<ListAllowlistedDomainsResponse>;
+
 export interface ListCustomersUserinvitationsRequest {
   /** Required. The customer ID of the Google Workspace or Cloud Identity account the UserInvitation resources are associated with. */
   parent: string;
@@ -1121,7 +1584,14 @@ export interface ListCustomersUserinvitationsRequest {
   /** Optional. A query string for filtering `UserInvitation` results by their current state, in the format: `"state=='invited'"`. */
   filter?: string;
 }
+const ListCustomersUserinvitationsRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  1,
+) as any as S.Schema<ListCustomersUserinvitationsRequest>;
+
 export type UserInvitationList = Array<UserInvitation>;
+const UserInvitationList = /*@__PURE__*/ __L.at(__c14, 2) as any as S.Schema<UserInvitationList>;
+
 /** Response message for UserInvitation listing request. */
 export interface ListUserInvitationsResponse {
   /** The list of UserInvitation resources. */
@@ -1129,10 +1599,17 @@ export interface ListUserInvitationsResponse {
   /** The token for the next page. If not empty, indicates that there may be more `UserInvitation` resources that match the listing request; this value can be used in a subsequent ListUserInvitationsRequest to get continued results with the current list call. */
   nextPageToken?: string;
 }
+const ListUserInvitationsResponse = /*@__PURE__*/ __L.at(
+  __c14,
+  3,
+) as any as S.Schema<ListUserInvitationsResponse>;
+
 export type ListDevicesViewEnum =
   | "VIEW_UNSPECIFIED"
   | "COMPANY_INVENTORY"
   | "USER_ASSIGNED_DEVICES";
+const ListDevicesViewEnum = S.String;
+
 export interface ListDevicesRequest {
   /** Optional. A page token, received from a previous `ListDevices` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListDevices` must match the call that provided the page token. */
   pageToken?: string;
@@ -1147,7 +1624,11 @@ export interface ListDevicesRequest {
   /** Optional. Order specification for devices in the response. Only one of the following field names may be used to specify the order: `create_time`, `last_sync_time`, `model`, `os_version`, `device_type` and `serial_number`. `desc` may be specified optionally to specify results to be sorted in descending order. Default order is ascending. */
   orderBy?: string;
 }
+const ListDevicesRequest = /*@__PURE__*/ __L.at(__c14, 4) as any as S.Schema<ListDevicesRequest>;
+
 export type DeviceList = Array<Device>;
+const DeviceList = /*@__PURE__*/ __L.at(__c14, 5) as any as S.Schema<DeviceList>;
+
 /** Response message that is returned from the ListDevices method. */
 export interface ListDevicesResponse {
   /** Devices meeting the list restrictions. */
@@ -1155,6 +1636,8 @@ export interface ListDevicesResponse {
   /** Token to retrieve the next page of results. Empty if there are no more results. */
   nextPageToken?: string;
 }
+const ListDevicesResponse = /*@__PURE__*/ __L.at(__c14, 6) as any as S.Schema<ListDevicesResponse>;
+
 export interface ListDevicesDeviceUsersRequest {
   /** Optional. A page token, received from a previous `ListDeviceUsers` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListBooks` must match the call that provided the page token. */
   pageToken?: string;
@@ -1169,7 +1652,14 @@ export interface ListDevicesDeviceUsersRequest {
   /** Optional. Order specification for devices in the response. */
   orderBy?: string;
 }
+const ListDevicesDeviceUsersRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  7,
+) as any as S.Schema<ListDevicesDeviceUsersRequest>;
+
 export type DeviceUserList = Array<DeviceUser>;
+const DeviceUserList = /*@__PURE__*/ __L.at(__c15, 0) as any as S.Schema<DeviceUserList>;
+
 /** Response message that is returned from the ListDeviceUsers method. */
 export interface ListDeviceUsersResponse {
   /** Token to retrieve the next page of results. Empty if there are no more results. */
@@ -1177,7 +1667,14 @@ export interface ListDeviceUsersResponse {
   /** Devices meeting the list restrictions. */
   deviceUsers?: DeviceUserList;
 }
+const ListDeviceUsersResponse = /*@__PURE__*/ __L.at(
+  __c15,
+  1,
+) as any as S.Schema<ListDeviceUsersResponse>;
+
 export type ListGroupsViewEnum = "VIEW_UNSPECIFIED" | "BASIC" | "FULL";
+const ListGroupsViewEnum = S.String;
+
 export interface ListGroupsRequest {
   /** Required. The parent resource under which to list all `Group` resources. Must be of the form `identitysources/{identity_source_id}` for external- identity-mapped groups or `customers/{customer_id}` for Google Groups. The `customer_id` must begin with "C" (for example, 'C046psxkn'). [Find your customer ID.] (https://support.google.com/cloudidentity/answer/10070793) */
   parent?: string;
@@ -1188,7 +1685,11 @@ export interface ListGroupsRequest {
   /** The `next_page_token` value returned from a previous list request, if any. */
   pageToken?: string;
 }
+const ListGroupsRequest = /*@__PURE__*/ __L.at(__c15, 2) as any as S.Schema<ListGroupsRequest>;
+
 export type GroupList = Array<Group>;
+const GroupList = /*@__PURE__*/ __L.at(__c15, 3) as any as S.Schema<GroupList>;
+
 /** The response message for GroupsService.ListGroups. */
 export interface ListGroupsResponse {
   /** A continuation token to retrieve the next page of results, or empty if there are no more results available. */
@@ -1196,7 +1697,11 @@ export interface ListGroupsResponse {
   /** The `Group` resources under the specified `parent`. */
   groups?: GroupList;
 }
+const ListGroupsResponse = /*@__PURE__*/ __L.at(__c15, 4) as any as S.Schema<ListGroupsResponse>;
+
 export type ListGroupsMembershipsViewEnum = "BASIC" | "FULL";
+const ListGroupsMembershipsViewEnum = S.String;
+
 export interface ListGroupsMembershipsRequest {
   /** Required. The parent `Group` resource under which to lookup the `Membership` name. Must be of the form `groups/{group_id}`. */
   parent: string;
@@ -1207,7 +1712,14 @@ export interface ListGroupsMembershipsRequest {
   /** The maximum number of results to return. Note that the number of results returned may be less than this value even if there are more available results. To fetch all results, clients must continue calling this method repeatedly until the response no longer contains a `next_page_token`. If unspecified, defaults to 200 for `GroupView.BASIC` and to 50 for `GroupView.FULL`. Must not be greater than 1000 for `GroupView.BASIC` or 500 for `GroupView.FULL`. */
   pageSize?: number;
 }
+const ListGroupsMembershipsRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  5,
+) as any as S.Schema<ListGroupsMembershipsRequest>;
+
 export type MembershipList = Array<Membership>;
+const MembershipList = /*@__PURE__*/ __L.at(__c15, 6) as any as S.Schema<MembershipList>;
+
 /** The response message for MembershipsService.ListMemberships. */
 export interface ListMembershipsResponse {
   /** A continuation token to retrieve the next page of results, or empty if there are no more results available. */
@@ -1215,6 +1727,11 @@ export interface ListMembershipsResponse {
   /** The `Membership`s under the specified `parent`. */
   memberships?: MembershipList;
 }
+const ListMembershipsResponse = /*@__PURE__*/ __L.at(
+  __c15,
+  7,
+) as any as S.Schema<ListMembershipsResponse>;
+
 export interface ListInboundOidcSsoProfilesRequest {
   /** A [Common Expression Language](https://github.com/google/cel-spec) expression to filter the results. The only supported filter is filtering by customer. For example: `customer=="customers/C0123abc"`. Omitting the filter or specifying a filter of `customer=="customers/my_customer"` will return the profiles for the customer that the caller (authenticated user) belongs to. Specifying a filter of `customer==""` will return the global shared OIDC profiles. */
   filter?: string;
@@ -1223,7 +1740,17 @@ export interface ListInboundOidcSsoProfilesRequest {
   /** A page token, received from a previous `ListInboundOidcSsoProfiles` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListInboundOidcSsoProfiles` must match the call that provided the page token. */
   pageToken?: string;
 }
+const ListInboundOidcSsoProfilesRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  0,
+) as any as S.Schema<ListInboundOidcSsoProfilesRequest>;
+
 export type InboundOidcSsoProfileList = Array<InboundOidcSsoProfile>;
+const InboundOidcSsoProfileList = /*@__PURE__*/ __L.at(
+  __c16,
+  1,
+) as any as S.Schema<InboundOidcSsoProfileList>;
+
 /** Response of the InboundOidcSsoProfilesService.ListInboundOidcSsoProfiles method. */
 export interface ListInboundOidcSsoProfilesResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
@@ -1231,6 +1758,11 @@ export interface ListInboundOidcSsoProfilesResponse {
   /** List of InboundOidcSsoProfiles. */
   inboundOidcSsoProfiles?: InboundOidcSsoProfileList;
 }
+const ListInboundOidcSsoProfilesResponse = /*@__PURE__*/ __L.at(
+  __c16,
+  2,
+) as any as S.Schema<ListInboundOidcSsoProfilesResponse>;
+
 export interface ListInboundSamlSsoProfilesRequest {
   /** A [Common Expression Language](https://github.com/google/cel-spec) expression to filter the results. The only supported filter is filtering by customer. For example: `customer=="customers/C0123abc"`. Omitting the filter or specifying a filter of `customer=="customers/my_customer"` will return the profiles for the customer that the caller (authenticated user) belongs to. */
   filter?: string;
@@ -1239,7 +1771,17 @@ export interface ListInboundSamlSsoProfilesRequest {
   /** A page token, received from a previous `ListInboundSamlSsoProfiles` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListInboundSamlSsoProfiles` must match the call that provided the page token. */
   pageToken?: string;
 }
+const ListInboundSamlSsoProfilesRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  3,
+) as any as S.Schema<ListInboundSamlSsoProfilesRequest>;
+
 export type InboundSamlSsoProfileList = Array<InboundSamlSsoProfile>;
+const InboundSamlSsoProfileList = /*@__PURE__*/ __L.at(
+  __c16,
+  4,
+) as any as S.Schema<InboundSamlSsoProfileList>;
+
 /** Response of the InboundSamlSsoProfilesService.ListInboundSamlSsoProfiles method. */
 export interface ListInboundSamlSsoProfilesResponse {
   /** List of InboundSamlSsoProfiles. */
@@ -1247,6 +1789,11 @@ export interface ListInboundSamlSsoProfilesResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
+const ListInboundSamlSsoProfilesResponse = /*@__PURE__*/ __L.at(
+  __c16,
+  5,
+) as any as S.Schema<ListInboundSamlSsoProfilesResponse>;
+
 export interface ListInboundSamlSsoProfilesIdpCredentialsRequest {
   /** Required. The parent, which owns this collection of `IdpCredential`s. Format: `inboundSamlSsoProfiles/{sso_profile_id}` */
   parent: string;
@@ -1255,7 +1802,14 @@ export interface ListInboundSamlSsoProfilesIdpCredentialsRequest {
   /** The maximum number of `IdpCredential`s to return. The service may return fewer than this value. */
   pageSize?: number;
 }
+const ListInboundSamlSsoProfilesIdpCredentialsRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  6,
+) as any as S.Schema<ListInboundSamlSsoProfilesIdpCredentialsRequest>;
+
 export type IdpCredentialList = Array<IdpCredential>;
+const IdpCredentialList = /*@__PURE__*/ __L.at(__c16, 7) as any as S.Schema<IdpCredentialList>;
+
 /** Response of the InboundSamlSsoProfilesService.ListIdpCredentials method. */
 export interface ListIdpCredentialsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
@@ -1263,6 +1817,11 @@ export interface ListIdpCredentialsResponse {
   /** The IdpCredentials from the specified InboundSamlSsoProfile. */
   idpCredentials?: IdpCredentialList;
 }
+const ListIdpCredentialsResponse = /*@__PURE__*/ __L.at(
+  __c17,
+  0,
+) as any as S.Schema<ListIdpCredentialsResponse>;
+
 export interface ListInboundSsoAssignmentsRequest {
   /** A CEL expression to filter the results. The only supported filter is filtering by customer. For example: `customer==customers/C0123abc`. Omitting the filter or specifying a filter of `customer==customers/my_customer` will return the assignments for the customer that the caller (authenticated user) belongs to. */
   filter?: string;
@@ -1271,7 +1830,17 @@ export interface ListInboundSsoAssignmentsRequest {
   /** A page token, received from a previous `ListInboundSsoAssignments` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListInboundSsoAssignments` must match the call that provided the page token. */
   pageToken?: string;
 }
+const ListInboundSsoAssignmentsRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  1,
+) as any as S.Schema<ListInboundSsoAssignmentsRequest>;
+
 export type InboundSsoAssignmentList = Array<InboundSsoAssignment>;
+const InboundSsoAssignmentList = /*@__PURE__*/ __L.at(
+  __c17,
+  2,
+) as any as S.Schema<InboundSsoAssignmentList>;
+
 /** Response of the InboundSsoAssignmentsService.ListInboundSsoAssignments method. */
 export interface ListInboundSsoAssignmentsResponse {
   /** The assignments. */
@@ -1279,6 +1848,11 @@ export interface ListInboundSsoAssignmentsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
+const ListInboundSsoAssignmentsResponse = /*@__PURE__*/ __L.at(
+  __c17,
+  3,
+) as any as S.Schema<ListInboundSsoAssignmentsResponse>;
+
 export interface ListOrgUnitsMembershipsRequest {
   /** The maximum number of results to return. The service may return fewer than this value. If omitted (or defaulted to zero) the server will default to 50. The maximum allowed value is 100, though requests with page_size greater than that will be silently interpreted as 100. */
   pageSize?: number;
@@ -1291,7 +1865,14 @@ export interface ListOrgUnitsMembershipsRequest {
   /** Required. Immutable. Customer that this OrgMembership belongs to. All authorization will happen on the role assignments of this customer. Format: customers/{$customerId} where `$customerId` is the `id` from the [Admin SDK `Customer` resource](https://developers.google.com/admin-sdk/directory/reference/rest/v1/customers). You may also use `customers/my_customer` to specify your own organization. */
   customer?: string;
 }
+const ListOrgUnitsMembershipsRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  4,
+) as any as S.Schema<ListOrgUnitsMembershipsRequest>;
+
 export type OrgMembershipTypeEnum = "ENTITY_TYPE_UNSPECIFIED" | "SHARED_DRIVE";
+const OrgMembershipTypeEnum = S.String;
+
 /** A membership in an OrgUnit. An `OrgMembership` defines a relationship between an `OrgUnit` and an entity belonging to that `OrgUnit`, referred to as a "member". */
 export interface OrgMembership {
   /** Required. Immutable. The [resource name](https://cloud.google.com/apis/design/resource_names) of the OrgMembership. Format: orgUnits/{$orgUnitId}/memberships/{$membership} The `$orgUnitId` is the `orgUnitId` from the [Admin SDK `OrgUnit` resource](https://developers.google.com/admin-sdk/directory/reference/rest/v1/orgunits). The `$membership` shall be of the form `{$entityType};{$memberId}`, where `$entityType` is the enum value of [OrgMembership.EntityType], and `memberId` is the `id` from [Drive API (V3) `Drive` resource](https://developers.google.com/drive/api/v3/reference/drives#resource) for OrgMembership.EntityType.SHARED_DRIVE. */
@@ -1303,7 +1884,11 @@ export interface OrgMembership {
   /** Immutable. Entity type for the org member. */
   type?: OrgMembershipTypeEnum;
 }
+const OrgMembership = /*@__PURE__*/ __L.at(__c17, 5) as any as S.Schema<OrgMembership>;
+
 export type OrgMembershipList = Array<OrgMembership>;
+const OrgMembershipList = /*@__PURE__*/ __L.at(__c17, 6) as any as S.Schema<OrgMembershipList>;
+
 /** The response message for OrgMembershipsService.ListOrgMemberships. */
 export interface ListOrgMembershipsResponse {
   /** The non-vacuous membership in an orgUnit. */
@@ -1311,6 +1896,11 @@ export interface ListOrgMembershipsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is empty, there are no subsequent pages. */
   nextPageToken?: string;
 }
+const ListOrgMembershipsResponse = /*@__PURE__*/ __L.at(
+  __c17,
+  7,
+) as any as S.Schema<ListOrgMembershipsResponse>;
+
 export interface ListPoliciesRequest {
   /** Optional. The pagination token received from a prior call to PoliciesService.ListPolicies to retrieve the next page of results. When paginating, all other parameters provided to `ListPoliciesRequest` must match the call that provided the page token. */
   pageToken?: string;
@@ -1319,7 +1909,11 @@ export interface ListPoliciesRequest {
   /** Optional. The maximum number of results to return. The service can return fewer than this number. If omitted or set to `0`, the default is `50` results per page. The maximum allowed value is `100`. `page_size` values greater than `100` default to `100`. */
   pageSize?: number;
 }
+const ListPoliciesRequest = /*@__PURE__*/ __L.at(__c18, 0) as any as S.Schema<ListPoliciesRequest>;
+
 export type PolicyList = Array<Policy>;
+const PolicyList = /*@__PURE__*/ __L.at(__c18, 1) as any as S.Schema<PolicyList>;
+
 /** The response message for PoliciesService.ListPolicies. */
 export interface ListPoliciesResponse {
   /** The pagination token to retrieve the next page of results. If this field is empty, there are no subsequent pages. */
@@ -1327,6 +1921,11 @@ export interface ListPoliciesResponse {
   /** The results */
   policies?: PolicyList;
 }
+const ListPoliciesResponse = /*@__PURE__*/ __L.at(
+  __c18,
+  2,
+) as any as S.Schema<ListPoliciesResponse>;
+
 export interface LookupDevicesDeviceUsersRequest {
   /** A page token, received from a previous `LookupDeviceUsers` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `LookupDeviceUsers` must match the call that provided the page token. */
   pageToken?: string;
@@ -1345,6 +1944,11 @@ export interface LookupDevicesDeviceUsersRequest {
   /** Raw Resource Id used by Google Endpoint Verification. If the user is enrolled into Google Endpoint Verification, this id will be saved as the 'device_resource_id' field in the following platform dependent files. Mac: ~/.secureConnect/context_aware_config.json Windows: C:\Users\%USERPROFILE%\.secureConnect\context_aware_config.json Linux: ~/.secureConnect/context_aware_config.json */
   rawResourceId?: string;
 }
+const LookupDevicesDeviceUsersRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  3,
+) as any as S.Schema<LookupDevicesDeviceUsersRequest>;
+
 /** Response containing resource names of the DeviceUsers associated with the caller's credentials. */
 export interface LookupSelfDeviceUsersResponse {
   /** Token to retrieve the next page of results. Empty if there are no more results. */
@@ -1354,17 +1958,29 @@ export interface LookupSelfDeviceUsersResponse {
   /** [Resource names](https://cloud.google.com/apis/design/resource_names) of the DeviceUsers in the format: `devices/{device_id}/deviceUsers/{user_resource_id}`, where device_id is the unique ID assigned to a Device and user_resource_id is the unique user ID */
   names?: StringList;
 }
+const LookupSelfDeviceUsersResponse = /*@__PURE__*/ __L.at(
+  __c18,
+  4,
+) as any as S.Schema<LookupSelfDeviceUsersResponse>;
+
 export interface LookupGroupsRequest {
   /** The namespace in which the entity exists. If not specified, the `EntityKey` represents a Google-managed entity such as a Google user or a Google Group. If specified, the `EntityKey` represents an external-identity-mapped group. The namespace must correspond to an identity source created in Admin Console and must be in the form of `identitysources/{identity_source_id}`. */
   "groupKey.namespace"?: string;
   /** The ID of the entity. For Google-managed entities, the `id` must be the email address of an existing group or user. For external-identity-mapped entities, the `id` must be a string conforming to the Identity Source's requirements. Must be unique within a `namespace`. */
   "groupKey.id"?: string;
 }
+const LookupGroupsRequest = /*@__PURE__*/ __L.at(__c18, 5) as any as S.Schema<LookupGroupsRequest>;
+
 /** The response message for GroupsService.LookupGroupName. */
 export interface LookupGroupNameResponse {
   /** Output only. The [resource name](https://cloud.google.com/apis/design/resource_names) of the looked-up `Group`. */
   name?: string;
 }
+const LookupGroupNameResponse = /*@__PURE__*/ __L.at(
+  __c18,
+  6,
+) as any as S.Schema<LookupGroupNameResponse>;
+
 export interface LookupGroupsMembershipsRequest {
   /** Required. The parent `Group` resource under which to lookup the `Membership` name. Must be of the form `groups/{group_id}`. */
   parent: string;
@@ -1373,11 +1989,21 @@ export interface LookupGroupsMembershipsRequest {
   /** The ID of the entity. For Google-managed entities, the `id` must be the email address of an existing group or user. For external-identity-mapped entities, the `id` must be a string conforming to the Identity Source's requirements. Must be unique within a `namespace`. */
   "memberKey.id"?: string;
 }
+const LookupGroupsMembershipsRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  7,
+) as any as S.Schema<LookupGroupsMembershipsRequest>;
+
 /** The response message for MembershipsService.LookupMembershipName. */
 export interface LookupMembershipNameResponse {
   /** The [resource name](https://cloud.google.com/apis/design/resource_names) of the looked-up `Membership`. Must be of the form `groups/{group_id}/memberships/{membership_id}`. */
   name?: string;
 }
+const LookupMembershipNameResponse = /*@__PURE__*/ __L.at(
+  __c19,
+  0,
+) as any as S.Schema<LookupMembershipNameResponse>;
+
 /** The details of an update to a `MembershipRole`. */
 export interface UpdateMembershipRolesParams {
   /** The fully-qualified names of fields to update. May only contain the field `expiry_detail.expire_time`. */
@@ -1385,7 +2011,17 @@ export interface UpdateMembershipRolesParams {
   /** The `MembershipRole`s to be updated. Only `MEMBER` `MembershipRoles` can currently be updated. May only contain a `MembershipRole` with `name` `MEMBER`. */
   membershipRole?: MembershipRole;
 }
+const UpdateMembershipRolesParams = /*@__PURE__*/ __L.at(
+  __c19,
+  1,
+) as any as S.Schema<UpdateMembershipRolesParams>;
+
 export type UpdateMembershipRolesParamsList = Array<UpdateMembershipRolesParams>;
+const UpdateMembershipRolesParamsList = /*@__PURE__*/ __L.at(
+  __c19,
+  2,
+) as any as S.Schema<UpdateMembershipRolesParamsList>;
+
 /** The request message for MembershipsService.ModifyMembershipRoles. */
 export interface ModifyMembershipRolesRequest {
   /** The `name`s of the `MembershipRole`s to be removed. Adding or removing roles in the same request as updating roles is not supported. It is not possible to remove the `MEMBER` `MembershipRole`. If you wish to delete a `Membership`, call MembershipsService.DeleteMembership instead. Must not contain `MEMBER`. Must not be set if `update_roles_params` is set. */
@@ -1395,17 +2031,32 @@ export interface ModifyMembershipRolesRequest {
   /** The `MembershipRole`s to be updated. Updating roles in the same request as adding or removing roles is not supported. Must not be set if either `add_roles` or `remove_roles` is set. */
   updateRolesParams?: UpdateMembershipRolesParamsList;
 }
+const ModifyMembershipRolesRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  3,
+) as any as S.Schema<ModifyMembershipRolesRequest>;
+
 export interface ModifyMembershipRolesGroupsMembershipsRequest {
   /** Required. The [resource name](https://cloud.google.com/apis/design/resource_names) of the `Membership` whose roles are to be modified. Must be of the form `groups/{group_id}/memberships/{membership_id}`. */
   name: string;
   /** Request body */
   body?: ModifyMembershipRolesRequest;
 }
+const ModifyMembershipRolesGroupsMembershipsRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  4,
+) as any as S.Schema<ModifyMembershipRolesGroupsMembershipsRequest>;
+
 /** The response message for MembershipsService.ModifyMembershipRoles. */
 export interface ModifyMembershipRolesResponse {
   /** The `Membership` resource after modifying its `MembershipRole`s. */
   membership?: Membership;
 }
+const ModifyMembershipRolesResponse = /*@__PURE__*/ __L.at(
+  __c19,
+  5,
+) as any as S.Schema<ModifyMembershipRolesResponse>;
+
 /** The request message for OrgMembershipsService.MoveOrgMembership. */
 export interface MoveOrgMembershipRequest {
   /** Required. Immutable. OrgUnit where the membership will be moved to. Format: orgUnits/{$orgUnitId} where `$orgUnitId` is the `orgUnitId` from the [Admin SDK `OrgUnit` resource](https://developers.google.com/admin-sdk/directory/reference/rest/v1/orgunits). */
@@ -1413,12 +2064,22 @@ export interface MoveOrgMembershipRequest {
   /** Required. Immutable. Customer on whose membership change is made. All authorization will happen on the role assignments of this customer. Format: customers/{$customerId} where `$customerId` is the `id` from the [Admin SDK `Customer` resource](https://developers.google.com/admin-sdk/directory/reference/rest/v1/customers). You may also use `customers/my_customer` to specify your own organization. */
   customer?: string;
 }
+const MoveOrgMembershipRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  6,
+) as any as S.Schema<MoveOrgMembershipRequest>;
+
 export interface MoveOrgUnitsMembershipsRequest {
   /** Required. Immutable. The [resource name](https://cloud.google.com/apis/design/resource_names) of the OrgMembership. Format: orgUnits/{$orgUnitId}/memberships/{$membership} The `$orgUnitId` is the `orgUnitId` from the [Admin SDK `OrgUnit` resource](https://developers.google.com/admin-sdk/directory/reference/rest/v1/orgunits). To manage a Membership without specifying source `orgUnitId`, this API also supports the wildcard character '-' for `$orgUnitId` per https://google.aip.dev/159. The `$membership` shall be of the form `{$entityType};{$memberId}`, where `$entityType` is the enum value of OrgMembership.EntityType, and `memberId` is the `id` from [Drive API (V3) `Drive` resource](https://developers.google.com/drive/api/v3/reference/drives#resource) for OrgMembership.EntityType.SHARED_DRIVE. */
   name: string;
   /** Request body */
   body?: MoveOrgMembershipRequest;
 }
+const MoveOrgUnitsMembershipsRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  7,
+) as any as S.Schema<MoveOrgUnitsMembershipsRequest>;
+
 export interface PatchDevicesDeviceUsersClientStatesRequest {
   /** Optional. [Resource name](https://cloud.google.com/apis/design/resource_names) of the customer. If you're using this API for your own organization, use `customers/my_customer` If you're using this API to manage another organization, use `customers/{customer_id}`, where customer_id is the customer to whom the device belongs. */
   customer?: string;
@@ -1429,6 +2090,11 @@ export interface PatchDevicesDeviceUsersClientStatesRequest {
   /** Request body */
   body?: ClientState;
 }
+const PatchDevicesDeviceUsersClientStatesRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  0,
+) as any as S.Schema<PatchDevicesDeviceUsersClientStatesRequest>;
+
 export interface PatchGroupsRequest {
   /** Output only. The [resource name](https://cloud.google.com/apis/design/resource_names) of the `Group`. Shall be of the form `groups/{group_id}`. */
   name: string;
@@ -1437,6 +2103,8 @@ export interface PatchGroupsRequest {
   /** Request body */
   body?: Group;
 }
+const PatchGroupsRequest = /*@__PURE__*/ __L.at(__c20, 1) as any as S.Schema<PatchGroupsRequest>;
+
 export interface PatchInboundOidcSsoProfilesRequest {
   /** Required. The list of fields to be updated. */
   updateMask?: string;
@@ -1445,6 +2113,11 @@ export interface PatchInboundOidcSsoProfilesRequest {
   /** Request body */
   body?: InboundOidcSsoProfile;
 }
+const PatchInboundOidcSsoProfilesRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  2,
+) as any as S.Schema<PatchInboundOidcSsoProfilesRequest>;
+
 export interface PatchInboundSamlSsoProfilesRequest {
   /** Output only. [Resource name](https://cloud.google.com/apis/design/resource_names) of the SAML SSO profile. */
   name: string;
@@ -1453,6 +2126,11 @@ export interface PatchInboundSamlSsoProfilesRequest {
   /** Request body */
   body?: InboundSamlSsoProfile;
 }
+const PatchInboundSamlSsoProfilesRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  3,
+) as any as S.Schema<PatchInboundSamlSsoProfilesRequest>;
+
 export interface PatchInboundSsoAssignmentsRequest {
   /** Required. The list of fields to be updated. */
   updateMask?: string;
@@ -1461,12 +2139,22 @@ export interface PatchInboundSsoAssignmentsRequest {
   /** Request body */
   body?: InboundSsoAssignment;
 }
+const PatchInboundSsoAssignmentsRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  4,
+) as any as S.Schema<PatchInboundSsoAssignmentsRequest>;
+
 export interface PatchPoliciesRequest {
   /** Output only. Identifier. The [resource name](https://cloud.google.com/apis/design/resource_names) of the Policy. Format: policies/{policy}. */
   name: string;
   /** Request body */
   body?: Policy;
 }
+const PatchPoliciesRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  5,
+) as any as S.Schema<PatchPoliciesRequest>;
+
 export interface SearchDirectGroupsGroupsMembershipsRequest {
   /** The next_page_token value returned from a previous list request, if any. */
   pageToken?: string;
@@ -1479,6 +2167,11 @@ export interface SearchDirectGroupsGroupsMembershipsRequest {
   /** The ordering of membership relation for the display name or email in the response. The syntax for this field can be found at https://cloud.google.com/apis/design/design_patterns#sorting_order. Example: Sort by the ascending display name: order_by="group_name" or order_by="group_name asc". Sort by the descending display name: order_by="group_name desc". Sort by the ascending group key: order_by="group_key" or order_by="group_key asc". Sort by the descending group key: order_by="group_key desc". */
   orderBy?: string;
 }
+const SearchDirectGroupsGroupsMembershipsRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  6,
+) as any as S.Schema<SearchDirectGroupsGroupsMembershipsRequest>;
+
 /** Message containing membership relation. */
 export interface MembershipRelation {
   /** The [resource name](https://cloud.google.com/apis/design/resource_names) of the `Group`. Shall be of the form `groups/{group_id}`. */
@@ -1496,7 +2189,14 @@ export interface MembershipRelation {
   /** The `EntityKey` of the `Group`. */
   groupKey?: EntityKey;
 }
+const MembershipRelation = /*@__PURE__*/ __L.at(__c20, 7) as any as S.Schema<MembershipRelation>;
+
 export type MembershipRelationList = Array<MembershipRelation>;
+const MembershipRelationList = /*@__PURE__*/ __L.at(
+  __c21,
+  0,
+) as any as S.Schema<MembershipRelationList>;
+
 /** The response message for MembershipsService.SearchDirectGroups. */
 export interface SearchDirectGroupsResponse {
   /** Token to retrieve the next page of results, or empty if there are no more results available for listing. */
@@ -1504,7 +2204,14 @@ export interface SearchDirectGroupsResponse {
   /** List of direct groups satisfying the query. */
   memberships?: MembershipRelationList;
 }
+const SearchDirectGroupsResponse = /*@__PURE__*/ __L.at(
+  __c21,
+  1,
+) as any as S.Schema<SearchDirectGroupsResponse>;
+
 export type SearchGroupsViewEnum = "BASIC" | "FULL";
+const SearchGroupsViewEnum = S.String;
+
 export interface SearchGroupsRequest {
   /** The `next_page_token` value returned from a previous search request, if any. */
   pageToken?: string;
@@ -1517,6 +2224,8 @@ export interface SearchGroupsRequest {
   /** The ordering of groups for the display name or email in the search groups response. The syntax for this field can be found at https://cloud.google.com/apis/design/design_patterns#sorting_order. Example: Sort by the ascending name: order_by="display_name" Sort by the descending group key email: order_by="group_key desc" */
   orderBy?: string;
 }
+const SearchGroupsRequest = /*@__PURE__*/ __L.at(__c21, 2) as any as S.Schema<SearchGroupsRequest>;
+
 /** The response message for GroupsService.SearchGroups. */
 export interface SearchGroupsResponse {
   /** A continuation token to retrieve the next page of results, or empty if there are no more results available. */
@@ -1524,6 +2233,8 @@ export interface SearchGroupsResponse {
   /** The `Group` resources that match the search query. */
   groups?: GroupList;
 }
+const SearchGroupsResponse = ListGroupsResponse as any as S.Schema<SearchGroupsResponse>;
+
 export interface SearchTransitiveGroupsGroupsMembershipsRequest {
   /** [Resource name](https://cloud.google.com/apis/design/resource_names) of the group to search transitive memberships in. Format: `groups/{group_id}`, where `group_id` is always '-' as this API will search across all groups for a given member. */
   parent: string;
@@ -1534,17 +2245,34 @@ export interface SearchTransitiveGroupsGroupsMembershipsRequest {
   /** The default page size is 200 (max 1000). */
   pageSize?: number;
 }
+const SearchTransitiveGroupsGroupsMembershipsRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  3,
+) as any as S.Schema<SearchTransitiveGroupsGroupsMembershipsRequest>;
+
 export type GroupRelationRelationTypeEnum =
   | "RELATION_TYPE_UNSPECIFIED"
   | "DIRECT"
   | "INDIRECT"
   | "DIRECT_AND_INDIRECT";
+const GroupRelationRelationTypeEnum = S.String;
+
 /** Message representing the role of a TransitiveMembership. */
 export interface TransitiveMembershipRole {
   /** TransitiveMembershipRole in string format. Currently supported TransitiveMembershipRoles: `"MEMBER"`, `"OWNER"`, and `"MANAGER"`. */
   role?: string;
 }
+const TransitiveMembershipRole = /*@__PURE__*/ __L.at(
+  __c21,
+  4,
+) as any as S.Schema<TransitiveMembershipRole>;
+
 export type TransitiveMembershipRoleList = Array<TransitiveMembershipRole>;
+const TransitiveMembershipRoleList = /*@__PURE__*/ __L.at(
+  __c21,
+  5,
+) as any as S.Schema<TransitiveMembershipRoleList>;
+
 /** Message representing a transitive group of a user or a group. */
 export interface GroupRelation {
   /** Resource name for this group. */
@@ -1560,7 +2288,11 @@ export interface GroupRelation {
   /** Membership roles of the member for the group. */
   roles?: TransitiveMembershipRoleList;
 }
+const GroupRelation = /*@__PURE__*/ __L.at(__c21, 6) as any as S.Schema<GroupRelation>;
+
 export type GroupRelationList = Array<GroupRelation>;
+const GroupRelationList = /*@__PURE__*/ __L.at(__c21, 7) as any as S.Schema<GroupRelationList>;
+
 /** The response message for MembershipsService.SearchTransitiveGroups. */
 export interface SearchTransitiveGroupsResponse {
   /** List of transitive groups satisfying the query. */
@@ -1568,6 +2300,11 @@ export interface SearchTransitiveGroupsResponse {
   /** Token to retrieve the next page of results, or empty if there are no more results available for listing. */
   nextPageToken?: string;
 }
+const SearchTransitiveGroupsResponse = /*@__PURE__*/ __L.at(
+  __c22,
+  0,
+) as any as S.Schema<SearchTransitiveGroupsResponse>;
+
 export interface SearchTransitiveMembershipsGroupsMembershipsRequest {
   /** The default page size is 200 (max 1000). */
   pageSize?: number;
@@ -1576,11 +2313,18 @@ export interface SearchTransitiveMembershipsGroupsMembershipsRequest {
   /** The next_page_token value returned from a previous list request, if any. */
   pageToken?: string;
 }
+const SearchTransitiveMembershipsGroupsMembershipsRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  1,
+) as any as S.Schema<SearchTransitiveMembershipsGroupsMembershipsRequest>;
+
 export type MemberRelationRelationTypeEnum =
   | "RELATION_TYPE_UNSPECIFIED"
   | "DIRECT"
   | "INDIRECT"
   | "DIRECT_AND_INDIRECT";
+const MemberRelationRelationTypeEnum = S.String;
+
 /** Message representing a transitive membership of a group. */
 export interface MemberRelation {
   /** Entity key has an id and a namespace. In case of discussion forums, the id will be an email address without a namespace. */
@@ -1592,7 +2336,11 @@ export interface MemberRelation {
   /** The membership role details (i.e name of role and expiry time). */
   roles?: TransitiveMembershipRoleList;
 }
+const MemberRelation = /*@__PURE__*/ __L.at(__c22, 2) as any as S.Schema<MemberRelation>;
+
 export type MemberRelationList = Array<MemberRelation>;
+const MemberRelationList = /*@__PURE__*/ __L.at(__c22, 3) as any as S.Schema<MemberRelationList>;
+
 /** The response message for MembershipsService.SearchTransitiveMemberships. */
 export interface SearchTransitiveMembershipsResponse {
   /** List of transitive memberships satisfying the query. */
@@ -1600,6 +2348,11 @@ export interface SearchTransitiveMembershipsResponse {
   /** Token to retrieve the next page of results, or empty if there are no more results. */
   nextPageToken?: string;
 }
+const SearchTransitiveMembershipsResponse = /*@__PURE__*/ __L.at(
+  __c22,
+  4,
+) as any as S.Schema<SearchTransitiveMembershipsResponse>;
+
 /** A request to send email for inviting target user corresponding to the UserInvitation. */
 export type SendUserInvitationRequest = CancelUserInvitationRequest;
 export interface SendCustomersUserinvitationsRequest {
@@ -1608,6 +2361,11 @@ export interface SendCustomersUserinvitationsRequest {
   /** Request body */
   body?: CancelUserInvitationRequest;
 }
+const SendCustomersUserinvitationsRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  5,
+) as any as S.Schema<SendCustomersUserinvitationsRequest>;
+
 export interface UpdateSecuritySettingsGroupsRequest {
   /** Required. The fully-qualified names of fields to update. May only contain the following field: `member_restriction.query`. */
   updateMask?: string;
@@ -1616,6 +2374,11 @@ export interface UpdateSecuritySettingsGroupsRequest {
   /** Request body */
   body?: SecuritySettings;
 }
+const UpdateSecuritySettingsGroupsRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  6,
+) as any as S.Schema<UpdateSecuritySettingsGroupsRequest>;
+
 /** Request message for wiping all data on the device. */
 export interface WipeDeviceRequest {
   /** Optional. [Resource name](https://cloud.google.com/apis/design/resource_names) of the customer. If you're using this API for your own organization, use `customers/my_customer` If you're using this API to manage another organization, use `customers/{customer_id}`, where customer_id is the customer to whom the device belongs. */
@@ -1623,12 +2386,16 @@ export interface WipeDeviceRequest {
   /** Optional. Specifies if a user is able to factory reset a device after a Device Wipe. On iOS, this is called "Activation Lock", while on Android, this is known as "Factory Reset Protection". If true, this protection will be removed from the device, so that a user can successfully factory reset. If false, the setting is untouched on the device. */
   removeResetLock?: boolean;
 }
+const WipeDeviceRequest = /*@__PURE__*/ __L.at(__c22, 7) as any as S.Schema<WipeDeviceRequest>;
+
 export interface WipeDevicesRequest {
   /** Required. [Resource name](https://cloud.google.com/apis/design/resource_names) of the Device in format: `devices/{device_id}/deviceUsers/{device_user_id}`, where device_id is the unique ID assigned to the Device, and device_user_id is the unique ID assigned to the User. */
   name: string;
   /** Request body */
   body?: WipeDeviceRequest;
 }
+const WipeDevicesRequest = /*@__PURE__*/ __L.at(__c23, 0) as any as S.Schema<WipeDevicesRequest>;
+
 /** Request message for starting an account wipe on device. */
 export type WipeDeviceUserRequest = ApproveDeviceUserRequest;
 export interface WipeDevicesDeviceUsersRequest {
@@ -1637,6 +2404,11 @@ export interface WipeDevicesDeviceUsersRequest {
   /** Request body */
   body?: ApproveDeviceUserRequest;
 }
+const WipeDevicesDeviceUsersRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  1,
+) as any as S.Schema<WipeDevicesDeviceUsersRequest>;
+
 export type AddInboundSamlSsoProfilesIdpCredentialsError =
   | NotFound
   | Forbidden
@@ -1650,8 +2422,8 @@ export const addInboundSamlSsoProfilesIdpCredentials: API.OperationMethod<
   AddInboundSamlSsoProfilesIdpCredentialsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1) as any as S.Schema<AddInboundSamlSsoProfilesIdpCredentialsRequest>,
-  output: __S(5) as any as S.Schema<Operation>,
+  input: AddInboundSamlSsoProfilesIdpCredentialsRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1670,8 +2442,8 @@ export const approveDevicesDeviceUsers: API.OperationMethod<
   ApproveDevicesDeviceUsersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7) as any as S.Schema<ApproveDevicesDeviceUsersRequest>,
-  output: __S(5) as any as S.Schema<Operation>,
+  input: ApproveDevicesDeviceUsersRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1690,8 +2462,8 @@ export const blockDevicesDeviceUsers: API.OperationMethod<
   BlockDevicesDeviceUsersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8) as any as S.Schema<BlockDevicesDeviceUsersRequest>,
-  output: __S(5) as any as S.Schema<Operation>,
+  input: BlockDevicesDeviceUsersRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1710,8 +2482,8 @@ export const cancelCustomersUserinvitations: API.OperationMethod<
   CancelCustomersUserinvitationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10) as any as S.Schema<CancelCustomersUserinvitationsRequest>,
-  output: __S(5) as any as S.Schema<Operation>,
+  input: CancelCustomersUserinvitationsRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1725,8 +2497,8 @@ export const cancelWipeDevices: API.OperationMethod<
   CancelWipeDevicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11) as any as S.Schema<CancelWipeDevicesRequest>,
-  output: __S(5) as any as S.Schema<Operation>,
+  input: CancelWipeDevicesRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1745,8 +2517,8 @@ export const cancelWipeDevicesDeviceUsers: API.OperationMethod<
   CancelWipeDevicesDeviceUsersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12) as any as S.Schema<CancelWipeDevicesDeviceUsersRequest>,
-  output: __S(5) as any as S.Schema<Operation>,
+  input: CancelWipeDevicesDeviceUsersRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1760,8 +2532,8 @@ export const checkTransitiveMembershipGroupsMemberships: API.OperationMethod<
   CheckTransitiveMembershipGroupsMembershipsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13) as any as S.Schema<CheckTransitiveMembershipGroupsMembershipsRequest>,
-  output: __S(14) as any as S.Schema<CheckTransitiveMembershipResponse>,
+  input: CheckTransitiveMembershipGroupsMembershipsRequest,
+  output: CheckTransitiveMembershipResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1780,8 +2552,8 @@ export const createAllowlistedDomains: API.OperationMethod<
   CreateAllowlistedDomainsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16) as any as S.Schema<CreateAllowlistedDomainsRequest>,
-  output: __S(5) as any as S.Schema<Operation>,
+  input: CreateAllowlistedDomainsRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1795,8 +2567,8 @@ export const createDevices: API.OperationMethod<
   CreateDevicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36) as any as S.Schema<CreateDevicesRequest>,
-  output: __S(5) as any as S.Schema<Operation>,
+  input: CreateDevicesRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1810,8 +2582,8 @@ export const createGroups: API.OperationMethod<
   CreateGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49) as any as S.Schema<CreateGroupsRequest>,
-  output: __S(5) as any as S.Schema<Operation>,
+  input: CreateGroupsRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1830,8 +2602,8 @@ export const createGroupsMemberships: API.OperationMethod<
   CreateGroupsMembershipsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56) as any as S.Schema<CreateGroupsMembershipsRequest>,
-  output: __S(5) as any as S.Schema<Operation>,
+  input: CreateGroupsMembershipsRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1850,8 +2622,8 @@ export const createInboundOidcSsoProfiles: API.OperationMethod<
   CreateInboundOidcSsoProfilesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60) as any as S.Schema<CreateInboundOidcSsoProfilesRequest>,
-  output: __S(5) as any as S.Schema<Operation>,
+  input: CreateInboundOidcSsoProfilesRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1870,8 +2642,8 @@ export const createInboundSamlSsoProfiles: API.OperationMethod<
   CreateInboundSamlSsoProfilesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(64) as any as S.Schema<CreateInboundSamlSsoProfilesRequest>,
-  output: __S(5) as any as S.Schema<Operation>,
+  input: CreateInboundSamlSsoProfilesRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1890,8 +2662,8 @@ export const createInboundSsoAssignments: API.OperationMethod<
   CreateInboundSsoAssignmentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(69) as any as S.Schema<CreateInboundSsoAssignmentsRequest>,
-  output: __S(5) as any as S.Schema<Operation>,
+  input: CreateInboundSsoAssignmentsRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1905,8 +2677,8 @@ export const createPolicies: API.OperationMethod<
   CreatePoliciesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(73) as any as S.Schema<CreatePoliciesRequest>,
-  output: __S(5) as any as S.Schema<Operation>,
+  input: CreatePoliciesRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1925,8 +2697,8 @@ export const deleteAllowlistedDomains: API.OperationMethod<
   DeleteAllowlistedDomainsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(74) as any as S.Schema<DeleteAllowlistedDomainsRequest>,
-  output: __S(5) as any as S.Schema<Operation>,
+  input: DeleteAllowlistedDomainsRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1940,8 +2712,8 @@ export const deleteDevices: API.OperationMethod<
   DeleteDevicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(75) as any as S.Schema<DeleteDevicesRequest>,
-  output: __S(5) as any as S.Schema<Operation>,
+  input: DeleteDevicesRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1960,8 +2732,8 @@ export const deleteDevicesDeviceUsers: API.OperationMethod<
   DeleteDevicesDeviceUsersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(76) as any as S.Schema<DeleteDevicesDeviceUsersRequest>,
-  output: __S(5) as any as S.Schema<Operation>,
+  input: DeleteDevicesDeviceUsersRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1975,8 +2747,8 @@ export const deleteGroups: API.OperationMethod<
   DeleteGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(77) as any as S.Schema<DeleteGroupsRequest>,
-  output: __S(5) as any as S.Schema<Operation>,
+  input: DeleteGroupsRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1995,8 +2767,8 @@ export const deleteGroupsMemberships: API.OperationMethod<
   DeleteGroupsMembershipsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(78) as any as S.Schema<DeleteGroupsMembershipsRequest>,
-  output: __S(5) as any as S.Schema<Operation>,
+  input: DeleteGroupsMembershipsRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2015,8 +2787,8 @@ export const deleteInboundOidcSsoProfiles: API.OperationMethod<
   DeleteInboundOidcSsoProfilesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(79) as any as S.Schema<DeleteInboundOidcSsoProfilesRequest>,
-  output: __S(5) as any as S.Schema<Operation>,
+  input: DeleteInboundOidcSsoProfilesRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2035,8 +2807,8 @@ export const deleteInboundSamlSsoProfiles: API.OperationMethod<
   DeleteInboundSamlSsoProfilesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(80) as any as S.Schema<DeleteInboundSamlSsoProfilesRequest>,
-  output: __S(5) as any as S.Schema<Operation>,
+  input: DeleteInboundSamlSsoProfilesRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2055,8 +2827,8 @@ export const deleteInboundSamlSsoProfilesIdpCredentials: API.OperationMethod<
   DeleteInboundSamlSsoProfilesIdpCredentialsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(81) as any as S.Schema<DeleteInboundSamlSsoProfilesIdpCredentialsRequest>,
-  output: __S(5) as any as S.Schema<Operation>,
+  input: DeleteInboundSamlSsoProfilesIdpCredentialsRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2075,8 +2847,8 @@ export const deleteInboundSsoAssignments: API.OperationMethod<
   DeleteInboundSsoAssignmentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(82) as any as S.Schema<DeleteInboundSsoAssignmentsRequest>,
-  output: __S(5) as any as S.Schema<Operation>,
+  input: DeleteInboundSsoAssignmentsRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2090,8 +2862,8 @@ export const deletePolicies: API.OperationMethod<
   DeletePoliciesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(83) as any as S.Schema<DeletePoliciesRequest>,
-  output: __S(5) as any as S.Schema<Operation>,
+  input: DeletePoliciesRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2105,8 +2877,8 @@ export const getAllowlistedDomains: API.OperationMethod<
   GetAllowlistedDomainsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(84) as any as S.Schema<GetAllowlistedDomainsRequest>,
-  output: __S(15) as any as S.Schema<AllowlistedDomain>,
+  input: GetAllowlistedDomainsRequest,
+  output: AllowlistedDomain,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2120,8 +2892,8 @@ export const getCustomersUserinvitations: API.OperationMethod<
   GetCustomersUserinvitationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(85) as any as S.Schema<GetCustomersUserinvitationsRequest>,
-  output: __S(86) as any as S.Schema<UserInvitation>,
+  input: GetCustomersUserinvitationsRequest,
+  output: UserInvitation,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2135,8 +2907,8 @@ export const getDevices: API.OperationMethod<
   GetDevicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(87) as any as S.Schema<GetDevicesRequest>,
-  output: __S(34) as any as S.Schema<Device>,
+  input: GetDevicesRequest,
+  output: Device,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2150,8 +2922,8 @@ export const getDevicesDeviceUsers: API.OperationMethod<
   GetDevicesDeviceUsersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(88) as any as S.Schema<GetDevicesDeviceUsersRequest>,
-  output: __S(89) as any as S.Schema<DeviceUser>,
+  input: GetDevicesDeviceUsersRequest,
+  output: DeviceUser,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2165,8 +2937,8 @@ export const getDevicesDeviceUsersClientStates: API.OperationMethod<
   GetDevicesDeviceUsersClientStatesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(90) as any as S.Schema<GetDevicesDeviceUsersClientStatesRequest>,
-  output: __S(93) as any as S.Schema<ClientState>,
+  input: GetDevicesDeviceUsersClientStatesRequest,
+  output: ClientState,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2176,8 +2948,8 @@ export type GetGroupsError = NotFound | Forbidden | GcpOpError;
 /** Retrieves a `Group`. */
 export const getGroups: API.OperationMethod<GetGroupsRequest, Group, GetGroupsError, GcpOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(94) as any as S.Schema<GetGroupsRequest>,
-    output: __S(48) as any as S.Schema<Group>,
+    input: GetGroupsRequest,
+    output: Group,
     errors: [NotFound, Forbidden, UnknownGCPError],
     protocol: GcpProtocol,
     retry: Retry.Retry,
@@ -2191,8 +2963,8 @@ export const getGroupsMemberships: API.OperationMethod<
   GetGroupsMembershipsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(95) as any as S.Schema<GetGroupsMembershipsRequest>,
-  output: __S(55) as any as S.Schema<Membership>,
+  input: GetGroupsMembershipsRequest,
+  output: Membership,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2206,8 +2978,8 @@ export const getInboundOidcSsoProfiles: API.OperationMethod<
   GetInboundOidcSsoProfilesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(96) as any as S.Schema<GetInboundOidcSsoProfilesRequest>,
-  output: __S(59) as any as S.Schema<InboundOidcSsoProfile>,
+  input: GetInboundOidcSsoProfilesRequest,
+  output: InboundOidcSsoProfile,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2221,8 +2993,8 @@ export const getInboundSamlSsoProfiles: API.OperationMethod<
   GetInboundSamlSsoProfilesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(97) as any as S.Schema<GetInboundSamlSsoProfilesRequest>,
-  output: __S(63) as any as S.Schema<InboundSamlSsoProfile>,
+  input: GetInboundSamlSsoProfilesRequest,
+  output: InboundSamlSsoProfile,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2236,8 +3008,8 @@ export const getInboundSamlSsoProfilesIdpCredentials: API.OperationMethod<
   GetInboundSamlSsoProfilesIdpCredentialsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(98) as any as S.Schema<GetInboundSamlSsoProfilesIdpCredentialsRequest>,
-  output: __S(100) as any as S.Schema<IdpCredential>,
+  input: GetInboundSamlSsoProfilesIdpCredentialsRequest,
+  output: IdpCredential,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2251,8 +3023,8 @@ export const getInboundSsoAssignments: API.OperationMethod<
   GetInboundSsoAssignmentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(101) as any as S.Schema<GetInboundSsoAssignmentsRequest>,
-  output: __S(68) as any as S.Schema<InboundSsoAssignment>,
+  input: GetInboundSsoAssignmentsRequest,
+  output: InboundSsoAssignment,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2266,8 +3038,8 @@ export const getMembershipGraphGroupsMemberships: API.OperationMethod<
   GetMembershipGraphGroupsMembershipsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(102) as any as S.Schema<GetMembershipGraphGroupsMembershipsRequest>,
-  output: __S(5) as any as S.Schema<Operation>,
+  input: GetMembershipGraphGroupsMembershipsRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2281,8 +3053,8 @@ export const getPolicies: API.OperationMethod<
   GetPoliciesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(103) as any as S.Schema<GetPoliciesRequest>,
-  output: __S(72) as any as S.Schema<Policy>,
+  input: GetPoliciesRequest,
+  output: Policy,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2296,8 +3068,8 @@ export const getSecuritySettingsGroups: API.OperationMethod<
   GetSecuritySettingsGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(104) as any as S.Schema<GetSecuritySettingsGroupsRequest>,
-  output: __S(107) as any as S.Schema<SecuritySettings>,
+  input: GetSecuritySettingsGroupsRequest,
+  output: SecuritySettings,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2311,8 +3083,8 @@ export const isInvitableUserCustomersUserinvitations: API.OperationMethod<
   IsInvitableUserCustomersUserinvitationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(108) as any as S.Schema<IsInvitableUserCustomersUserinvitationsRequest>,
-  output: __S(109) as any as S.Schema<IsInvitableUserResponse>,
+  input: IsInvitableUserCustomersUserinvitationsRequest,
+  output: IsInvitableUserResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2327,8 +3099,8 @@ export const listAllowlistedDomains: API.PaginatedOperationMethod<
   GcpOpContext,
   ListAllowlistedDomainsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(110) as any as S.Schema<ListAllowlistedDomainsRequest>,
-  output: __S(112) as any as S.Schema<ListAllowlistedDomainsResponse>,
+  input: ListAllowlistedDomainsRequest,
+  output: ListAllowlistedDomainsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2344,8 +3116,8 @@ export const listCustomersUserinvitations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListUserInvitationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(113) as any as S.Schema<ListCustomersUserinvitationsRequest>,
-  output: __S(115) as any as S.Schema<ListUserInvitationsResponse>,
+  input: ListCustomersUserinvitationsRequest,
+  output: ListUserInvitationsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2361,8 +3133,8 @@ export const listDevices: API.PaginatedOperationMethod<
   GcpOpContext,
   ListDevicesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(116) as any as S.Schema<ListDevicesRequest>,
-  output: __S(118) as any as S.Schema<ListDevicesResponse>,
+  input: ListDevicesRequest,
+  output: ListDevicesResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2378,8 +3150,8 @@ export const listDevicesDeviceUsers: API.PaginatedOperationMethod<
   GcpOpContext,
   ListDeviceUsersResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(119) as any as S.Schema<ListDevicesDeviceUsersRequest>,
-  output: __S(121) as any as S.Schema<ListDeviceUsersResponse>,
+  input: ListDevicesDeviceUsersRequest,
+  output: ListDeviceUsersResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2395,8 +3167,8 @@ export const listGroups: API.PaginatedOperationMethod<
   GcpOpContext,
   ListGroupsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(122) as any as S.Schema<ListGroupsRequest>,
-  output: __S(124) as any as S.Schema<ListGroupsResponse>,
+  input: ListGroupsRequest,
+  output: ListGroupsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2412,8 +3184,8 @@ export const listGroupsMemberships: API.PaginatedOperationMethod<
   GcpOpContext,
   ListMembershipsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(125) as any as S.Schema<ListGroupsMembershipsRequest>,
-  output: __S(127) as any as S.Schema<ListMembershipsResponse>,
+  input: ListGroupsMembershipsRequest,
+  output: ListMembershipsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2429,8 +3201,8 @@ export const listInboundOidcSsoProfiles: API.PaginatedOperationMethod<
   GcpOpContext,
   ListInboundOidcSsoProfilesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(128) as any as S.Schema<ListInboundOidcSsoProfilesRequest>,
-  output: __S(130) as any as S.Schema<ListInboundOidcSsoProfilesResponse>,
+  input: ListInboundOidcSsoProfilesRequest,
+  output: ListInboundOidcSsoProfilesResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2446,8 +3218,8 @@ export const listInboundSamlSsoProfiles: API.PaginatedOperationMethod<
   GcpOpContext,
   ListInboundSamlSsoProfilesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(131) as any as S.Schema<ListInboundSamlSsoProfilesRequest>,
-  output: __S(133) as any as S.Schema<ListInboundSamlSsoProfilesResponse>,
+  input: ListInboundSamlSsoProfilesRequest,
+  output: ListInboundSamlSsoProfilesResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2463,8 +3235,8 @@ export const listInboundSamlSsoProfilesIdpCredentials: API.PaginatedOperationMet
   GcpOpContext,
   ListIdpCredentialsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(134) as any as S.Schema<ListInboundSamlSsoProfilesIdpCredentialsRequest>,
-  output: __S(136) as any as S.Schema<ListIdpCredentialsResponse>,
+  input: ListInboundSamlSsoProfilesIdpCredentialsRequest,
+  output: ListIdpCredentialsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2480,8 +3252,8 @@ export const listInboundSsoAssignments: API.PaginatedOperationMethod<
   GcpOpContext,
   ListInboundSsoAssignmentsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(137) as any as S.Schema<ListInboundSsoAssignmentsRequest>,
-  output: __S(139) as any as S.Schema<ListInboundSsoAssignmentsResponse>,
+  input: ListInboundSsoAssignmentsRequest,
+  output: ListInboundSsoAssignmentsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2497,8 +3269,8 @@ export const listOrgUnitsMemberships: API.PaginatedOperationMethod<
   GcpOpContext,
   ListOrgMembershipsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(140) as any as S.Schema<ListOrgUnitsMembershipsRequest>,
-  output: __S(143) as any as S.Schema<ListOrgMembershipsResponse>,
+  input: ListOrgUnitsMembershipsRequest,
+  output: ListOrgMembershipsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2514,8 +3286,8 @@ export const listPolicies: API.PaginatedOperationMethod<
   GcpOpContext,
   ListPoliciesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(144) as any as S.Schema<ListPoliciesRequest>,
-  output: __S(146) as any as S.Schema<ListPoliciesResponse>,
+  input: ListPoliciesRequest,
+  output: ListPoliciesResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2531,8 +3303,8 @@ export const lookupDevicesDeviceUsers: API.PaginatedOperationMethod<
   GcpOpContext,
   LookupSelfDeviceUsersResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(147) as any as S.Schema<LookupDevicesDeviceUsersRequest>,
-  output: __S(148) as any as S.Schema<LookupSelfDeviceUsersResponse>,
+  input: LookupDevicesDeviceUsersRequest,
+  output: LookupSelfDeviceUsersResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2547,8 +3319,8 @@ export const lookupGroups: API.OperationMethod<
   LookupGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(149) as any as S.Schema<LookupGroupsRequest>,
-  output: __S(150) as any as S.Schema<LookupGroupNameResponse>,
+  input: LookupGroupsRequest,
+  output: LookupGroupNameResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2562,8 +3334,8 @@ export const lookupGroupsMemberships: API.OperationMethod<
   LookupGroupsMembershipsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(151) as any as S.Schema<LookupGroupsMembershipsRequest>,
-  output: __S(152) as any as S.Schema<LookupMembershipNameResponse>,
+  input: LookupGroupsMembershipsRequest,
+  output: LookupMembershipNameResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2582,8 +3354,8 @@ export const modifyMembershipRolesGroupsMemberships: API.OperationMethod<
   ModifyMembershipRolesGroupsMembershipsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(156) as any as S.Schema<ModifyMembershipRolesGroupsMembershipsRequest>,
-  output: __S(157) as any as S.Schema<ModifyMembershipRolesResponse>,
+  input: ModifyMembershipRolesGroupsMembershipsRequest,
+  output: ModifyMembershipRolesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2602,8 +3374,8 @@ export const moveOrgUnitsMemberships: API.OperationMethod<
   MoveOrgUnitsMembershipsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(159) as any as S.Schema<MoveOrgUnitsMembershipsRequest>,
-  output: __S(5) as any as S.Schema<Operation>,
+  input: MoveOrgUnitsMembershipsRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2622,8 +3394,8 @@ export const patchDevicesDeviceUsersClientStates: API.OperationMethod<
   PatchDevicesDeviceUsersClientStatesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(160) as any as S.Schema<PatchDevicesDeviceUsersClientStatesRequest>,
-  output: __S(5) as any as S.Schema<Operation>,
+  input: PatchDevicesDeviceUsersClientStatesRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2637,8 +3409,8 @@ export const patchGroups: API.OperationMethod<
   PatchGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(161) as any as S.Schema<PatchGroupsRequest>,
-  output: __S(5) as any as S.Schema<Operation>,
+  input: PatchGroupsRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2657,8 +3429,8 @@ export const patchInboundOidcSsoProfiles: API.OperationMethod<
   PatchInboundOidcSsoProfilesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(162) as any as S.Schema<PatchInboundOidcSsoProfilesRequest>,
-  output: __S(5) as any as S.Schema<Operation>,
+  input: PatchInboundOidcSsoProfilesRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2677,8 +3449,8 @@ export const patchInboundSamlSsoProfiles: API.OperationMethod<
   PatchInboundSamlSsoProfilesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(163) as any as S.Schema<PatchInboundSamlSsoProfilesRequest>,
-  output: __S(5) as any as S.Schema<Operation>,
+  input: PatchInboundSamlSsoProfilesRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2697,8 +3469,8 @@ export const patchInboundSsoAssignments: API.OperationMethod<
   PatchInboundSsoAssignmentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(164) as any as S.Schema<PatchInboundSsoAssignmentsRequest>,
-  output: __S(5) as any as S.Schema<Operation>,
+  input: PatchInboundSsoAssignmentsRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2712,8 +3484,8 @@ export const patchPolicies: API.OperationMethod<
   PatchPoliciesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(165) as any as S.Schema<PatchPoliciesRequest>,
-  output: __S(5) as any as S.Schema<Operation>,
+  input: PatchPoliciesRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2728,8 +3500,8 @@ export const searchDirectGroupsGroupsMemberships: API.PaginatedOperationMethod<
   GcpOpContext,
   SearchDirectGroupsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(166) as any as S.Schema<SearchDirectGroupsGroupsMembershipsRequest>,
-  output: __S(169) as any as S.Schema<SearchDirectGroupsResponse>,
+  input: SearchDirectGroupsGroupsMembershipsRequest,
+  output: SearchDirectGroupsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2745,8 +3517,8 @@ export const searchGroups: API.PaginatedOperationMethod<
   GcpOpContext,
   SearchGroupsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(170) as any as S.Schema<SearchGroupsRequest>,
-  output: __S(124) as any as S.Schema<SearchGroupsResponse>,
+  input: SearchGroupsRequest,
+  output: SearchGroupsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2762,8 +3534,8 @@ export const searchTransitiveGroupsGroupsMemberships: API.PaginatedOperationMeth
   GcpOpContext,
   SearchTransitiveGroupsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(171) as any as S.Schema<SearchTransitiveGroupsGroupsMembershipsRequest>,
-  output: __S(176) as any as S.Schema<SearchTransitiveGroupsResponse>,
+  input: SearchTransitiveGroupsGroupsMembershipsRequest,
+  output: SearchTransitiveGroupsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2779,8 +3551,8 @@ export const searchTransitiveMembershipsGroupsMemberships: API.PaginatedOperatio
   GcpOpContext,
   SearchTransitiveMembershipsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(177) as any as S.Schema<SearchTransitiveMembershipsGroupsMembershipsRequest>,
-  output: __S(180) as any as S.Schema<SearchTransitiveMembershipsResponse>,
+  input: SearchTransitiveMembershipsGroupsMembershipsRequest,
+  output: SearchTransitiveMembershipsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2800,8 +3572,8 @@ export const sendCustomersUserinvitations: API.OperationMethod<
   SendCustomersUserinvitationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(181) as any as S.Schema<SendCustomersUserinvitationsRequest>,
-  output: __S(5) as any as S.Schema<Operation>,
+  input: SendCustomersUserinvitationsRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2820,8 +3592,8 @@ export const updateSecuritySettingsGroups: API.OperationMethod<
   UpdateSecuritySettingsGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(182) as any as S.Schema<UpdateSecuritySettingsGroupsRequest>,
-  output: __S(5) as any as S.Schema<Operation>,
+  input: UpdateSecuritySettingsGroupsRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2835,8 +3607,8 @@ export const wipeDevices: API.OperationMethod<
   WipeDevicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(184) as any as S.Schema<WipeDevicesRequest>,
-  output: __S(5) as any as S.Schema<Operation>,
+  input: WipeDevicesRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2850,8 +3622,8 @@ export const wipeDevicesDeviceUsers: API.OperationMethod<
   WipeDevicesDeviceUsersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(185) as any as S.Schema<WipeDevicesDeviceUsersRequest>,
-  output: __S(5) as any as S.Schema<Operation>,
+  input: WipeDevicesDeviceUsersRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2870,7 +3642,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(0).pipe(T.HttpBody())),
+          body: S.optional(AddIdpCredentialRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2884,12 +3656,12 @@ function __c0(j: number): any {
     case 2:
       return S.Record(S.String, S.Unknown);
     case 3:
-      return S.Array(__S(2));
+      return S.Array(DocumentMap);
     case 4:
       return S.suspend(() =>
         S.Struct({
           message: S.optional(S.String),
-          details: S.optional(__S(3)),
+          details: S.optional(DocumentMapList),
           code: S.optional(S.Number),
         }),
       ).annotate({ identifier: "Status" });
@@ -2897,9 +3669,9 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          error: S.optional(__S(4)),
-          metadata: S.optional(__S(2)),
-          response: S.optional(__S(2)),
+          error: S.optional(Status),
+          metadata: S.optional(DocumentMap),
+          response: S.optional(DocumentMap),
           done: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "Operation" });
@@ -2913,7 +3685,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(6).pipe(T.HttpBody())),
+          body: S.optional(ApproveDeviceUserRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2932,7 +3704,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(6).pipe(T.HttpBody())),
+          body: S.optional(ApproveDeviceUserRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2951,7 +3723,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(9).pipe(T.HttpBody())),
+          body: S.optional(CancelUserInvitationRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2966,7 +3738,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(6).pipe(T.HttpBody())),
+          body: S.optional(ApproveDeviceUserRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2979,7 +3751,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(6).pipe(T.HttpBody())),
+          body: S.optional(ApproveDeviceUserRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3027,7 +3799,7 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(__S(15).pipe(T.HttpBody())),
+          body: S.optional(AllowlistedDomain.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3041,42 +3813,44 @@ function __c2(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          source: S.optional(S.String),
+          source: S.optional(PolicyConflictSourceEnum),
           value: S.optional(S.String),
-          scope: S.optional(S.String),
+          scope: S.optional(PolicyConflictScopeEnum),
         }),
       ).annotate({ identifier: "PolicyConflict" });
     case 2:
-      return S.Array(__S(17));
+      return S.Array(PolicyConflict);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          scope: S.optional(S.String),
+          scope: S.optional(ChromePolicyScopeEnum),
           name: S.optional(S.String),
-          source: S.optional(S.String),
+          source: S.optional(ChromePolicySourceEnum),
           value: S.optional(S.String),
-          conflicts: S.optional(__S(18)),
+          conflicts: S.optional(PolicyConflictList),
         }),
       ).annotate({ identifier: "ChromePolicy" });
     case 4:
-      return S.Array(__S(19));
+      return S.Array(ChromePolicy);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          safeBrowsingProtectionLevel: S.optional(S.String),
+          safeBrowsingProtectionLevel: S.optional(BrowserInfoSafeBrowsingProtectionLevelEnum),
           isBuiltInDnsClientEnabled: S.optional(S.Boolean),
-          passwordProtectionWarningTrigger: S.optional(S.String),
+          passwordProtectionWarningTrigger: S.optional(
+            BrowserInfoPasswordProtectionWarningTriggerEnum,
+          ),
           isThirdPartyBlockingEnabled: S.optional(S.Boolean),
           isSiteIsolationEnabled: S.optional(S.Boolean),
           isBulkDataEntryAnalysisEnabled: S.optional(S.Boolean),
-          browserManagementState: S.optional(S.String),
+          browserManagementState: S.optional(BrowserInfoBrowserManagementStateEnum),
           isRealtimeUrlCheckEnabled: S.optional(S.Boolean),
           isFileDownloadAnalysisEnabled: S.optional(S.Boolean),
           isFileUploadAnalysisEnabled: S.optional(S.Boolean),
           isChromeRemoteDesktopAppBlocked: S.optional(S.Boolean),
           isSecurityEventAnalysisEnabled: S.optional(S.Boolean),
           isChromeCleanupEnabled: S.optional(S.Boolean),
-          policies: S.optional(__S(20)),
+          policies: S.optional(ChromePolicyList),
           browserVersion: S.optional(S.String),
         }),
       ).annotate({ identifier: "BrowserInfo" });
@@ -3085,11 +3859,11 @@ function __c2(j: number): any {
         S.Struct({
           lastProfileSyncTime: S.optional(S.String),
           chromeProfileId: S.optional(S.String),
-          chromeBrowserInfo: S.optional(__S(21)),
+          chromeBrowserInfo: S.optional(BrowserInfo),
         }),
       ).annotate({ identifier: "BrowserAttributes" });
     case 7:
-      return S.Array(__S(22));
+      return S.Array(BrowserAttributes);
   }
 }
 function __c3(j: number): any {
@@ -3106,24 +3880,24 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           issuer: S.optional(S.String),
-          validationState: S.optional(S.String),
+          validationState: S.optional(CertificateAttributesValidationStateEnum),
           fingerprint: S.optional(S.String),
           thumbprint: S.optional(S.String),
           subject: S.optional(S.String),
-          certificateTemplate: S.optional(__S(24)),
+          certificateTemplate: S.optional(CertificateTemplate),
           serialNumber: S.optional(S.String),
           validityStartTime: S.optional(S.String),
           validityExpirationTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "CertificateAttributes" });
     case 2:
-      return S.Array(__S(25));
+      return S.Array(CertificateAttributes);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          additionalSignals: S.optional(__S(2)),
-          browserAttributes: S.optional(__S(23)),
-          certificateAttributes: S.optional(__S(26)),
+          additionalSignals: S.optional(DocumentMap),
+          browserAttributes: S.optional(BrowserAttributesList),
+          certificateAttributes: S.optional(CertificateAttributesList),
         }),
       ).annotate({
         identifier: "EndpointVerificationSpecificAttributes",
@@ -3140,19 +3914,19 @@ function __c3(j: number): any {
           verifyAppsEnabled: S.optional(S.Boolean),
           ownerProfileAccount: S.optional(S.Boolean),
           enabledUnknownSources: S.optional(S.Boolean),
-          ownershipPrivilege: S.optional(S.String),
+          ownershipPrivilege: S.optional(AndroidAttributesOwnershipPrivilegeEnum),
         }),
       ).annotate({ identifier: "AndroidAttributes" });
     case 6:
       return S.suspend(() =>
         S.Struct({
           displayName: S.optional(S.String),
-          productState: S.optional(S.String),
+          productState: S.optional(AntivirusInfoProductStateEnum),
           productGuid: S.optional(S.String),
         }),
       ).annotate({ identifier: "AntivirusInfo" });
     case 7:
-      return S.Array(__S(30));
+      return S.Array(AntivirusInfo);
   }
 }
 function __c4(j: number): any {
@@ -3160,69 +3934,71 @@ function __c4(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          secureBootMode: S.optional(S.String),
+          secureBootMode: S.optional(WindowsSpecificDeviceAttributesSecureBootModeEnum),
           windowsUserDomain: S.optional(S.String),
-          hotfixes: S.optional(__S(28)),
+          hotfixes: S.optional(StringList),
           windowsMachineDomain: S.optional(S.String),
         }),
       ).annotate({
         identifier: "WindowsSpecificDeviceAttributes",
       });
     case 1:
-      return S.Array(S.String);
+      return S.Array(DeviceClientTypesItemEnum);
     case 2:
       return S.suspend(() =>
         S.Struct({
           bootloaderVersion: S.optional(S.String),
-          osFirewallStatus: S.optional(S.String),
-          endpointVerificationSpecificAttributes: S.optional(__S(27)),
+          osFirewallStatus: S.optional(DeviceOsFirewallStatusEnum),
+          endpointVerificationSpecificAttributes: S.optional(
+            EndpointVerificationSpecificAttributes,
+          ),
           releaseVersion: S.optional(S.String),
-          otherAccounts: S.optional(__S(28)),
+          otherAccounts: S.optional(StringList),
           unifiedDeviceId: S.optional(S.String),
           brand: S.optional(S.String),
-          ownerType: S.optional(S.String),
+          ownerType: S.optional(DeviceOwnerTypeEnum),
           assetTag: S.optional(S.String),
           basebandVersion: S.optional(S.String),
           lastSyncTime: S.optional(S.String),
-          androidSpecificAttributes: S.optional(__S(29)),
+          androidSpecificAttributes: S.optional(AndroidAttributes),
           imei: S.optional(S.String),
-          antivirusInfo: S.optional(__S(31)),
+          antivirusInfo: S.optional(AntivirusInfoList),
           networkOperator: S.optional(S.String),
           name: S.optional(S.String),
           meid: S.optional(S.String),
           enabledUsbDebugging: S.optional(S.Boolean),
-          managementState: S.optional(S.String),
-          compromisedState: S.optional(S.String),
+          managementState: S.optional(DeviceManagementStateEnum),
+          compromisedState: S.optional(DeviceCompromisedStateEnum),
           securityPatchTime: S.optional(S.String),
-          deviceType: S.optional(S.String),
+          deviceType: S.optional(DeviceDeviceTypeEnum),
           serialNumber: S.optional(S.String),
-          windowsSpecificDeviceAttributes: S.optional(__S(32)),
+          windowsSpecificDeviceAttributes: S.optional(WindowsSpecificDeviceAttributes),
           hostname: S.optional(S.String),
-          browserProfiles: S.optional(__S(23)),
+          browserProfiles: S.optional(BrowserAttributesList),
           model: S.optional(S.String),
           deviceId: S.optional(S.String),
           buildNumber: S.optional(S.String),
           createTime: S.optional(S.String),
-          wifiMacAddresses: S.optional(__S(28)),
+          wifiMacAddresses: S.optional(StringList),
           enabledDeveloperOptions: S.optional(S.Boolean),
-          clientTypes: S.optional(__S(33)),
+          clientTypes: S.optional(DeviceClientTypesItemEnumList),
           osVersion: S.optional(S.String),
           kernelVersion: S.optional(S.String),
           manufacturer: S.optional(S.String),
-          encryptionState: S.optional(S.String),
+          encryptionState: S.optional(DeviceEncryptionStateEnum),
         }),
       ).annotate({ identifier: "Device" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          device: S.optional(__S(34)),
+          device: S.optional(Device),
           customer: S.optional(S.String),
         }),
       ).annotate({ identifier: "CreateDeviceRequest" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(__S(35).pipe(T.HttpBody())),
+          body: S.optional(CreateDeviceRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3240,7 +4016,7 @@ function __c4(j: number): any {
         }),
       ).annotate({ identifier: "PosixGroup" });
     case 6:
-      return S.Array(__S(37));
+      return S.Array(PosixGroup);
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -3253,28 +4029,28 @@ function __c4(j: number): any {
 function __c5(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(39));
+      return S.Array(EntityKey);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          resourceType: S.optional(S.String),
+          resourceType: S.optional(DynamicGroupQueryResourceTypeEnum),
           query: S.optional(S.String),
         }),
       ).annotate({ identifier: "DynamicGroupQuery" });
     case 2:
-      return S.Array(__S(41));
+      return S.Array(DynamicGroupQuery);
     case 3:
       return S.suspend(() =>
         S.Struct({
           statusTime: S.optional(S.String),
-          status: S.optional(S.String),
+          status: S.optional(DynamicGroupStatusStatusEnum),
         }),
       ).annotate({ identifier: "DynamicGroupStatus" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          queries: S.optional(__S(42)),
-          status: S.optional(__S(43)),
+          queries: S.optional(DynamicGroupQueryList),
+          status: S.optional(DynamicGroupStatus),
         }),
       ).annotate({ identifier: "DynamicGroupMetadata" });
     case 5:
@@ -3287,7 +4063,7 @@ function __c5(j: number): any {
         }),
       ).annotate({ identifier: "ExternalId" });
     case 7:
-      return S.Array(__S(46));
+      return S.Array(ExternalId);
   }
 }
 function __c6(j: number): any {
@@ -3296,24 +4072,24 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.optional(S.String),
-          posixGroups: S.optional(__S(38)),
+          posixGroups: S.optional(PosixGroupList),
           updateTime: S.optional(S.String),
-          additionalGroupKeys: S.optional(__S(40)),
+          additionalGroupKeys: S.optional(EntityKeyList),
           displayName: S.optional(S.String),
           name: S.optional(S.String),
-          dynamicGroupMetadata: S.optional(__S(44)),
+          dynamicGroupMetadata: S.optional(DynamicGroupMetadata),
           createTime: S.optional(S.String),
           description: S.optional(S.String),
-          labels: S.optional(__S(45)),
-          groupKey: S.optional(__S(39)),
-          externalIds: S.optional(__S(47)),
+          labels: S.optional(StringMap),
+          groupKey: S.optional(EntityKey),
+          externalIds: S.optional(ExternalIdList),
         }),
       ).annotate({ identifier: "Group" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          initialGroupConfig: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(48).pipe(T.HttpBody())),
+          initialGroupConfig: S.optional(CreateGroupsInitialGroupConfigEnum.pipe(T.Query())),
+          body: S.optional(Group.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3331,7 +4107,7 @@ function __c6(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          state: S.optional(S.String),
+          state: S.optional(MembershipRoleRestrictionEvaluationStateEnum),
         }),
       ).annotate({
         identifier: "MembershipRoleRestrictionEvaluation",
@@ -3339,30 +4115,30 @@ function __c6(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          memberRestrictionEvaluation: S.optional(__S(51)),
+          memberRestrictionEvaluation: S.optional(MembershipRoleRestrictionEvaluation),
         }),
       ).annotate({ identifier: "RestrictionEvaluations" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          expiryDetail: S.optional(__S(50)),
+          expiryDetail: S.optional(ExpiryDetail),
           name: S.optional(S.String),
-          restrictionEvaluations: S.optional(__S(52)),
+          restrictionEvaluations: S.optional(RestrictionEvaluations),
         }),
       ).annotate({ identifier: "MembershipRole" });
     case 6:
-      return S.Array(__S(53));
+      return S.Array(MembershipRole);
     case 7:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           createTime: S.optional(S.String),
-          deliverySetting: S.optional(S.String),
-          type: S.optional(S.String),
+          deliverySetting: S.optional(MembershipDeliverySettingEnum),
+          type: S.optional(MembershipTypeEnum),
           updateTime: S.optional(S.String),
-          roles: S.optional(__S(54)),
-          preferredMemberKey: S.optional(__S(39)),
-          memberKey: S.optional(__S(39)),
+          roles: S.optional(MembershipRoleList),
+          preferredMemberKey: S.optional(EntityKey),
+          memberKey: S.optional(EntityKey),
         }),
       ).annotate({ identifier: "Membership" });
   }
@@ -3373,7 +4149,7 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(55).pipe(T.HttpBody())),
+          body: S.optional(Membership.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3388,7 +4164,7 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           clientSecret: S.optional(S.String),
-          redirectUris: S.optional(__S(28)),
+          redirectUris: S.optional(StringList),
           clientId: S.optional(S.String),
         }),
       ).annotate({ identifier: "OidcRpConfig" });
@@ -3402,8 +4178,8 @@ function __c7(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          rpConfig: S.optional(__S(57)),
-          idpConfig: S.optional(__S(58)),
+          rpConfig: S.optional(OidcRpConfig),
+          idpConfig: S.optional(OidcIdpConfig),
           displayName: S.optional(S.String),
           customer: S.optional(S.String),
           name: S.optional(S.String),
@@ -3412,7 +4188,7 @@ function __c7(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(__S(59).pipe(T.HttpBody())),
+          body: S.optional(InboundOidcSsoProfile.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3443,9 +4219,9 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           customer: S.optional(S.String),
-          idpConfig: S.optional(__S(61)),
+          idpConfig: S.optional(SamlIdpConfig),
           name: S.optional(S.String),
-          spConfig: S.optional(__S(62)),
+          spConfig: S.optional(SamlSpConfig),
           displayName: S.optional(S.String),
         }),
       ).annotate({ identifier: "InboundSamlSsoProfile" });
@@ -3456,7 +4232,7 @@ function __c8(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(__S(63).pipe(T.HttpBody())),
+          body: S.optional(InboundSamlSsoProfile.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3476,7 +4252,7 @@ function __c8(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          redirectCondition: S.optional(S.String),
+          redirectCondition: S.optional(SignInBehaviorRedirectConditionEnum),
         }),
       ).annotate({ identifier: "SignInBehavior" });
     case 3:
@@ -3489,20 +4265,20 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           customer: S.optional(S.String),
-          samlSsoInfo: S.optional(__S(65)),
-          signInBehavior: S.optional(__S(66)),
+          samlSsoInfo: S.optional(SamlSsoInfo),
+          signInBehavior: S.optional(SignInBehavior),
           rank: S.optional(S.Number),
           targetOrgUnit: S.optional(S.String),
           name: S.optional(S.String),
-          oidcSsoInfo: S.optional(__S(67)),
-          ssoMode: S.optional(S.String),
+          oidcSsoInfo: S.optional(OidcSsoInfo),
+          ssoMode: S.optional(InboundSsoAssignmentSsoModeEnum),
           targetGroup: S.optional(S.String),
         }),
       ).annotate({ identifier: "InboundSsoAssignment" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(__S(68).pipe(T.HttpBody())),
+          body: S.optional(InboundSsoAssignment.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3517,7 +4293,7 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String),
-          value: S.optional(__S(2)),
+          value: S.optional(DocumentMap),
         }),
       ).annotate({ identifier: "Setting" });
     case 7:
@@ -3537,16 +4313,16 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           customer: S.optional(S.String),
-          setting: S.optional(__S(70)),
+          setting: S.optional(Setting),
           name: S.optional(S.String),
-          policyQuery: S.optional(__S(71)),
-          type: S.optional(S.String),
+          policyQuery: S.optional(PolicyQuery),
+          type: S.optional(PolicyTypeEnum),
         }),
       ).annotate({ identifier: "Policy" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(__S(72).pipe(T.HttpBody())),
+          body: S.optional(Policy.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3726,7 +4502,7 @@ function __c10(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          state: S.optional(S.String),
+          state: S.optional(UserInvitationStateEnum),
           mailsSentCount: S.optional(S.String),
           updateTime: S.optional(S.String),
           name: S.optional(S.String),
@@ -3767,14 +4543,14 @@ function __c11(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          managementState: S.optional(S.String),
+          managementState: S.optional(DeviceUserManagementStateEnum),
           userEmail: S.optional(S.String),
           firstSyncTime: S.optional(S.String),
-          passwordState: S.optional(S.String),
+          passwordState: S.optional(DeviceUserPasswordStateEnum),
           createTime: S.optional(S.String),
           userAgent: S.optional(S.String),
           name: S.optional(S.String),
-          compromisedState: S.optional(S.String),
+          compromisedState: S.optional(DeviceUserCompromisedStateEnum),
           languageCode: S.optional(S.String),
           lastSyncTime: S.optional(S.String),
         }),
@@ -3803,20 +4579,20 @@ function __c11(j: number): any {
         }),
       ).annotate({ identifier: "CustomAttributeValue" });
     case 4:
-      return S.Record(S.String, __S(91));
+      return S.Record(S.String, CustomAttributeValue);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          ownerType: S.optional(S.String),
-          keyValuePairs: S.optional(__S(92)),
+          ownerType: S.optional(ClientStateOwnerTypeEnum),
+          keyValuePairs: S.optional(CustomAttributeValueMap),
           lastUpdateTime: S.optional(S.String),
-          assetTags: S.optional(__S(28)),
+          assetTags: S.optional(StringList),
           name: S.optional(S.String),
-          healthScore: S.optional(S.String),
+          healthScore: S.optional(ClientStateHealthScoreEnum),
           createTime: S.optional(S.String),
           scoreReason: S.optional(S.String),
-          complianceState: S.optional(S.String),
-          managed: S.optional(S.String),
+          complianceState: S.optional(ClientStateComplianceStateEnum),
+          managed: S.optional(ClientStateManagedEnum),
           customId: S.optional(S.String),
           etag: S.optional(S.String),
         }),
@@ -3902,8 +4678,8 @@ function __c12(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          rsaKeyInfo: S.optional(__S(99)),
-          dsaKeyInfo: S.optional(__S(99)),
+          rsaKeyInfo: S.optional(RsaPublicKeyInfo),
+          dsaKeyInfo: S.optional(DsaPublicKeyInfo),
           name: S.optional(S.String),
           updateTime: S.optional(S.String),
         }),
@@ -3971,21 +4747,21 @@ function __c13(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          state: S.optional(S.String),
+          state: S.optional(RestrictionEvaluationStateEnum),
         }),
       ).annotate({ identifier: "RestrictionEvaluation" });
     case 2:
       return S.suspend(() =>
         S.Struct({
           query: S.optional(S.String),
-          evaluation: S.optional(__S(105)),
+          evaluation: S.optional(RestrictionEvaluation),
         }),
       ).annotate({ identifier: "MemberRestriction" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          memberRestriction: S.optional(__S(106)),
+          memberRestriction: S.optional(MemberRestriction),
         }),
       ).annotate({ identifier: "SecuritySettings" });
     case 4:
@@ -4025,7 +4801,7 @@ function __c13(j: number): any {
         identifier: "ListAllowlistedDomainsRequest",
       });
     case 7:
-      return S.Array(__S(15));
+      return S.Array(AllowlistedDomain);
   }
 }
 function __c14(j: number): any {
@@ -4033,7 +4809,7 @@ function __c14(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          allowlistedDomains: S.optional(__S(111)),
+          allowlistedDomains: S.optional(AllowlistedDomainList),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -4058,11 +4834,11 @@ function __c14(j: number): any {
         identifier: "ListCustomersUserinvitationsRequest",
       });
     case 2:
-      return S.Array(__S(86));
+      return S.Array(UserInvitation);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          userInvitations: S.optional(__S(114)),
+          userInvitations: S.optional(UserInvitationList),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -4073,7 +4849,7 @@ function __c14(j: number): any {
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
           filter: S.optional(S.String.pipe(T.Query())),
-          view: S.optional(S.String.pipe(T.Query())),
+          view: S.optional(ListDevicesViewEnum.pipe(T.Query())),
           pageSize: S.optional(S.Number.pipe(T.Query())),
           customer: S.optional(S.String.pipe(T.Query())),
           orderBy: S.optional(S.String.pipe(T.Query())),
@@ -4086,11 +4862,11 @@ function __c14(j: number): any {
         ),
       ).annotate({ identifier: "ListDevicesRequest" });
     case 5:
-      return S.Array(__S(34));
+      return S.Array(Device);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          devices: S.optional(__S(117)),
+          devices: S.optional(DeviceList),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListDevicesResponse" });
@@ -4118,12 +4894,12 @@ function __c14(j: number): any {
 function __c15(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(89));
+      return S.Array(DeviceUser);
     case 1:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          deviceUsers: S.optional(__S(120)),
+          deviceUsers: S.optional(DeviceUserList),
         }),
       ).annotate({ identifier: "ListDeviceUsersResponse" });
     case 2:
@@ -4131,7 +4907,7 @@ function __c15(j: number): any {
         S.Struct({
           parent: S.optional(S.String.pipe(T.Query())),
           pageSize: S.optional(S.Number.pipe(T.Query())),
-          view: S.optional(S.String.pipe(T.Query())),
+          view: S.optional(ListGroupsViewEnum.pipe(T.Query())),
           pageToken: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
@@ -4142,19 +4918,19 @@ function __c15(j: number): any {
         ),
       ).annotate({ identifier: "ListGroupsRequest" });
     case 3:
-      return S.Array(__S(48));
+      return S.Array(Group);
     case 4:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          groups: S.optional(__S(123)),
+          groups: S.optional(GroupList),
         }),
       ).annotate({ identifier: "ListGroupsResponse" });
     case 5:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          view: S.optional(S.String.pipe(T.Query())),
+          view: S.optional(ListGroupsMembershipsViewEnum.pipe(T.Query())),
           pageToken: S.optional(S.String.pipe(T.Query())),
           pageSize: S.optional(S.Number.pipe(T.Query())),
         }).pipe(
@@ -4168,12 +4944,12 @@ function __c15(j: number): any {
         identifier: "ListGroupsMembershipsRequest",
       });
     case 6:
-      return S.Array(__S(55));
+      return S.Array(Membership);
     case 7:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          memberships: S.optional(__S(126)),
+          memberships: S.optional(MembershipList),
         }),
       ).annotate({ identifier: "ListMembershipsResponse" });
   }
@@ -4197,12 +4973,12 @@ function __c16(j: number): any {
         identifier: "ListInboundOidcSsoProfilesRequest",
       });
     case 1:
-      return S.Array(__S(59));
+      return S.Array(InboundOidcSsoProfile);
     case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          inboundOidcSsoProfiles: S.optional(__S(129)),
+          inboundOidcSsoProfiles: S.optional(InboundOidcSsoProfileList),
         }),
       ).annotate({
         identifier: "ListInboundOidcSsoProfilesResponse",
@@ -4224,11 +5000,11 @@ function __c16(j: number): any {
         identifier: "ListInboundSamlSsoProfilesRequest",
       });
     case 4:
-      return S.Array(__S(63));
+      return S.Array(InboundSamlSsoProfile);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          inboundSamlSsoProfiles: S.optional(__S(132)),
+          inboundSamlSsoProfiles: S.optional(InboundSamlSsoProfileList),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -4251,7 +5027,7 @@ function __c16(j: number): any {
         identifier: "ListInboundSamlSsoProfilesIdpCredentialsRequest",
       });
     case 7:
-      return S.Array(__S(100));
+      return S.Array(IdpCredential);
   }
 }
 function __c17(j: number): any {
@@ -4260,7 +5036,7 @@ function __c17(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          idpCredentials: S.optional(__S(135)),
+          idpCredentials: S.optional(IdpCredentialList),
         }),
       ).annotate({
         identifier: "ListIdpCredentialsResponse",
@@ -4282,11 +5058,11 @@ function __c17(j: number): any {
         identifier: "ListInboundSsoAssignmentsRequest",
       });
     case 2:
-      return S.Array(__S(68));
+      return S.Array(InboundSsoAssignment);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          inboundSsoAssignments: S.optional(__S(138)),
+          inboundSsoAssignments: S.optional(InboundSsoAssignmentList),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -4316,15 +5092,15 @@ function __c17(j: number): any {
           name: S.optional(S.String),
           member: S.optional(S.String),
           memberUri: S.optional(S.String),
-          type: S.optional(S.String),
+          type: S.optional(OrgMembershipTypeEnum),
         }),
       ).annotate({ identifier: "OrgMembership" });
     case 6:
-      return S.Array(__S(141));
+      return S.Array(OrgMembership);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          orgMemberships: S.optional(__S(142)),
+          orgMemberships: S.optional(OrgMembershipList),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -4349,12 +5125,12 @@ function __c18(j: number): any {
         ),
       ).annotate({ identifier: "ListPoliciesRequest" });
     case 1:
-      return S.Array(__S(72));
+      return S.Array(Policy);
     case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          policies: S.optional(__S(145)),
+          policies: S.optional(PolicyList),
         }),
       ).annotate({ identifier: "ListPoliciesResponse" });
     case 3:
@@ -4383,7 +5159,7 @@ function __c18(j: number): any {
         S.Struct({
           nextPageToken: S.optional(S.String),
           customer: S.optional(S.String),
-          names: S.optional(__S(28)),
+          names: S.optional(StringList),
         }),
       ).annotate({
         identifier: "LookupSelfDeviceUsersResponse",
@@ -4439,19 +5215,19 @@ function __c19(j: number): any {
       return S.suspend(() =>
         S.Struct({
           fieldMask: S.optional(S.String),
-          membershipRole: S.optional(__S(53)),
+          membershipRole: S.optional(MembershipRole),
         }),
       ).annotate({
         identifier: "UpdateMembershipRolesParams",
       });
     case 2:
-      return S.Array(__S(153));
+      return S.Array(UpdateMembershipRolesParams);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          removeRoles: S.optional(__S(28)),
-          addRoles: S.optional(__S(54)),
-          updateRolesParams: S.optional(__S(154)),
+          removeRoles: S.optional(StringList),
+          addRoles: S.optional(MembershipRoleList),
+          updateRolesParams: S.optional(UpdateMembershipRolesParamsList),
         }),
       ).annotate({
         identifier: "ModifyMembershipRolesRequest",
@@ -4460,7 +5236,7 @@ function __c19(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(155).pipe(T.HttpBody())),
+          body: S.optional(ModifyMembershipRolesRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4474,7 +5250,7 @@ function __c19(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          membership: S.optional(__S(55)),
+          membership: S.optional(Membership),
         }),
       ).annotate({
         identifier: "ModifyMembershipRolesResponse",
@@ -4490,7 +5266,7 @@ function __c19(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(158).pipe(T.HttpBody())),
+          body: S.optional(MoveOrgMembershipRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4511,7 +5287,7 @@ function __c20(j: number): any {
           customer: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(93).pipe(T.HttpBody())),
+          body: S.optional(ClientState.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -4527,7 +5303,7 @@ function __c20(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(48).pipe(T.HttpBody())),
+          body: S.optional(Group.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -4541,7 +5317,7 @@ function __c20(j: number): any {
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(59).pipe(T.HttpBody())),
+          body: S.optional(InboundOidcSsoProfile.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -4557,7 +5333,7 @@ function __c20(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(63).pipe(T.HttpBody())),
+          body: S.optional(InboundSamlSsoProfile.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -4573,7 +5349,7 @@ function __c20(j: number): any {
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(68).pipe(T.HttpBody())),
+          body: S.optional(InboundSsoAssignment.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -4588,7 +5364,7 @@ function __c20(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(72).pipe(T.HttpBody())),
+          body: S.optional(Policy.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -4620,11 +5396,11 @@ function __c20(j: number): any {
         S.Struct({
           group: S.optional(S.String),
           displayName: S.optional(S.String),
-          labels: S.optional(__S(45)),
+          labels: S.optional(StringMap),
           description: S.optional(S.String),
-          roles: S.optional(__S(54)),
+          roles: S.optional(MembershipRoleList),
           membership: S.optional(S.String),
-          groupKey: S.optional(__S(39)),
+          groupKey: S.optional(EntityKey),
         }),
       ).annotate({ identifier: "MembershipRelation" });
   }
@@ -4632,12 +5408,12 @@ function __c20(j: number): any {
 function __c21(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(167));
+      return S.Array(MembershipRelation);
     case 1:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          memberships: S.optional(__S(168)),
+          memberships: S.optional(MembershipRelationList),
         }),
       ).annotate({
         identifier: "SearchDirectGroupsResponse",
@@ -4648,7 +5424,7 @@ function __c21(j: number): any {
           pageToken: S.optional(S.String.pipe(T.Query())),
           query: S.optional(S.String.pipe(T.Query())),
           pageSize: S.optional(S.Number.pipe(T.Query())),
-          view: S.optional(S.String.pipe(T.Query())),
+          view: S.optional(SearchGroupsViewEnum.pipe(T.Query())),
           orderBy: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
@@ -4682,20 +5458,20 @@ function __c21(j: number): any {
         }),
       ).annotate({ identifier: "TransitiveMembershipRole" });
     case 5:
-      return S.Array(__S(172));
+      return S.Array(TransitiveMembershipRole);
     case 6:
       return S.suspend(() =>
         S.Struct({
           group: S.optional(S.String),
-          labels: S.optional(__S(45)),
-          groupKey: S.optional(__S(39)),
-          relationType: S.optional(S.String),
+          labels: S.optional(StringMap),
+          groupKey: S.optional(EntityKey),
+          relationType: S.optional(GroupRelationRelationTypeEnum),
           displayName: S.optional(S.String),
-          roles: S.optional(__S(173)),
+          roles: S.optional(TransitiveMembershipRoleList),
         }),
       ).annotate({ identifier: "GroupRelation" });
     case 7:
-      return S.Array(__S(174));
+      return S.Array(GroupRelation);
   }
 }
 function __c22(j: number): any {
@@ -4703,7 +5479,7 @@ function __c22(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          memberships: S.optional(__S(175)),
+          memberships: S.optional(GroupRelationList),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -4728,18 +5504,18 @@ function __c22(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          preferredMemberKey: S.optional(__S(40)),
-          relationType: S.optional(S.String),
+          preferredMemberKey: S.optional(EntityKeyList),
+          relationType: S.optional(MemberRelationRelationTypeEnum),
           member: S.optional(S.String),
-          roles: S.optional(__S(173)),
+          roles: S.optional(TransitiveMembershipRoleList),
         }),
       ).annotate({ identifier: "MemberRelation" });
     case 3:
-      return S.Array(__S(178));
+      return S.Array(MemberRelation);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          memberships: S.optional(__S(179)),
+          memberships: S.optional(MemberRelationList),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -4749,7 +5525,7 @@ function __c22(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(9).pipe(T.HttpBody())),
+          body: S.optional(CancelUserInvitationRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4765,7 +5541,7 @@ function __c22(j: number): any {
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(107).pipe(T.HttpBody())),
+          body: S.optional(SecuritySettings.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -4791,7 +5567,7 @@ function __c23(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(183).pipe(T.HttpBody())),
+          body: S.optional(WipeDeviceRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4804,7 +5580,7 @@ function __c23(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(6).pipe(T.HttpBody())),
+          body: S.optional(ApproveDeviceUserRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4815,62 +5591,5 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "WipeDevicesDeviceUsersRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
-    case 9:
-      return __c9(i & 7);
-    case 10:
-      return __c10(i & 7);
-    case 11:
-      return __c11(i & 7);
-    case 12:
-      return __c12(i & 7);
-    case 13:
-      return __c13(i & 7);
-    case 14:
-      return __c14(i & 7);
-    case 15:
-      return __c15(i & 7);
-    case 16:
-      return __c16(i & 7);
-    case 17:
-      return __c17(i & 7);
-    case 18:
-      return __c18(i & 7);
-    case 19:
-      return __c19(i & 7);
-    case 20:
-      return __c20(i & 7);
-    case 21:
-      return __c21(i & 7);
-    case 22:
-      return __c22(i & 7);
-    case 23:
-      return __c23(i & 7);
   }
 }

@@ -7,8 +7,6 @@ import { SlackError, SlackRateLimited } from "../errors.ts";
 import { SlackProtocol, type SlackOpError, type SlackOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { SlackOpError, SlackOpContext };
 
@@ -18,12 +16,22 @@ export interface BeginShortTokenRotationRequest {
   /** Issued when you created your application. */
   client_secret: string | Redacted.Redacted<string>;
 }
+const BeginShortTokenRotationRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<BeginShortTokenRotationRequest>;
+
 export interface BeginShortTokenRotationResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
   /** A new xoxp access token to replace the token with a shorter secret. Not yet active until completeShortTokenRotation is called. */
   new_token: string;
 }
+const BeginShortTokenRotationResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<BeginShortTokenRotationResponse>;
+
 export interface CompleteShortTokenRotationRequest {
   /** Issued when you created your application. Must be the app the token being rotated was issued to. */
   client_id: string;
@@ -32,12 +40,22 @@ export interface CompleteShortTokenRotationRequest {
   /** The new xoxp token returned by oauth.v2.beginShortTokenRotation. */
   new_token: string;
 }
+const CompleteShortTokenRotationRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<CompleteShortTokenRotationRequest>;
+
 export interface CompleteShortTokenRotationResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
   /** The new xoxp access token, now active. The previous token is no longer valid. */
   token: string;
 }
+const CompleteShortTokenRotationResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<CompleteShortTokenRotationResponse>;
+
 export interface OauthAccessRequest {
   /** Issued when you created your application. If possible, avoid sending `client_id` and `client_secret` as parameters in your request and instead supply the Client ID and Client Secret using the HTTP Basic authentication scheme. */
   client_id?: string;
@@ -50,17 +68,44 @@ export interface OauthAccessRequest {
   /** Request the user to add your app only to a single channel. Only valid with a [legacy workspace app](https://docs.slack.dev/changelog/2021-03-workspace-apps-to-retire-in-august-2021). */
   single_channel?: boolean;
 }
+const OauthAccessRequest = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<OauthAccessRequest>;
+
 export interface OauthAccessResponseAuthorizingUser {
   user_id?: string;
   app_home?: string | null;
 }
+const OauthAccessResponseAuthorizingUser = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<OauthAccessResponseAuthorizingUser>;
+
 export type OauthAccessResponseInstallerUser = OauthAccessResponseAuthorizingUser;
 export type OauthAccessResponseScopesAppHomeList = Array<string>;
+const OauthAccessResponseScopesAppHomeList = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<OauthAccessResponseScopesAppHomeList>;
+
 export type OauthAccessResponseScopesTeamList = Array<string>;
+const OauthAccessResponseScopesTeamList =
+  OauthAccessResponseScopesAppHomeList as any as S.Schema<OauthAccessResponseScopesTeamList>;
+
 export type OauthAccessResponseScopesChannelList = Array<string>;
+const OauthAccessResponseScopesChannelList =
+  OauthAccessResponseScopesAppHomeList as any as S.Schema<OauthAccessResponseScopesChannelList>;
+
 export type OauthAccessResponseScopesGroupList = Array<string>;
+const OauthAccessResponseScopesGroupList =
+  OauthAccessResponseScopesAppHomeList as any as S.Schema<OauthAccessResponseScopesGroupList>;
+
 export type OauthAccessResponseScopesMpimList = Array<string>;
+const OauthAccessResponseScopesMpimList =
+  OauthAccessResponseScopesAppHomeList as any as S.Schema<OauthAccessResponseScopesMpimList>;
+
 export type OauthAccessResponseScopesImList = Array<string>;
+const OauthAccessResponseScopesImList =
+  OauthAccessResponseScopesAppHomeList as any as S.Schema<OauthAccessResponseScopesImList>;
+
 export interface OauthAccessResponseScopes {
   app_home?: OauthAccessResponseScopesAppHomeList;
   team?: OauthAccessResponseScopesTeamList;
@@ -69,11 +114,21 @@ export interface OauthAccessResponseScopes {
   mpim?: OauthAccessResponseScopesMpimList;
   im?: OauthAccessResponseScopesImList;
 }
+const OauthAccessResponseScopes = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<OauthAccessResponseScopes>;
+
 export interface OauthAccessResponseBot {
   bot_user_id?: string;
   bot_access_token?: string;
   scope?: string;
 }
+const OauthAccessResponseBot = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<OauthAccessResponseBot>;
+
 export interface OauthAccessResponseUser {
   name?: string;
   id?: string;
@@ -88,6 +143,11 @@ export interface OauthAccessResponseUser {
   access_token?: string | Redacted.Redacted<string>;
   token_type?: string;
 }
+const OauthAccessResponseUser = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<OauthAccessResponseUser>;
+
 export interface OauthAccessResponseTeam {
   id?: string;
   name?: string;
@@ -102,12 +162,22 @@ export interface OauthAccessResponseTeam {
   image_default?: boolean;
   image_original?: string;
 }
+const OauthAccessResponseTeam = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<OauthAccessResponseTeam>;
+
 export interface OauthAccessResponseIncomingWebhook {
   channel?: string;
   channel_id?: string;
   configuration_url?: string;
   url?: string;
 }
+const OauthAccessResponseIncomingWebhook = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<OauthAccessResponseIncomingWebhook>;
+
 export interface OauthAccessResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
@@ -131,6 +201,8 @@ export interface OauthAccessResponse {
   incoming_webhook?: OauthAccessResponseIncomingWebhook;
   single_channel_id?: string;
 }
+const OauthAccessResponse = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<OauthAccessResponse>;
+
 export interface V2AccessRequest {
   /** Issued when you created your application. If possible, avoid sending `client_id` and `client_secret` as parameters in your request and instead supply the Client ID and Client Secret using the HTTP Basic authentication scheme. */
   client_id?: string;
@@ -149,8 +221,12 @@ export interface V2AccessRequest {
   /** Identity assertion JWT authorization grant */
   assertion?: string;
 }
+const V2AccessRequest = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<V2AccessRequest>;
+
 /** The type of access token. Only present if a bot token was requested at the start of the auth flow. */
 export type V2AccessResponseTokenType = "granular_bot";
+const V2AccessResponseTokenType = S.String;
+
 /** Details about the installing user, and the user token if one was requested at the start of the auth flow. */
 export interface V2AccessResponseTeam {
   /** ID of the team into which the app is being installed or re-installed. */
@@ -158,6 +234,8 @@ export interface V2AccessResponseTeam {
   /** Name of the team into which the app is being installed or re-installed. */
   name?: string;
 }
+const V2AccessResponseTeam = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<V2AccessResponseTeam>;
+
 /** Details about the installing team, and the user token if one was requested at the start of the auth flow. */
 export interface V2AccessResponseEnterprise {
   /** ID of the enterprise into which the app is being installed or re-installed. */
@@ -165,8 +243,15 @@ export interface V2AccessResponseEnterprise {
   /** Name of the enterprise into which the app is being installed or re-installed. */
   name?: string;
 }
+const V2AccessResponseEnterprise = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<V2AccessResponseEnterprise>;
+
 /** The type of the access token. Only present if a user token was requested at the start of the auth flow. */
 export type V2AccessResponseAuthedUserTokenType = "user";
+const V2AccessResponseAuthedUserTokenType = S.String;
+
 /** Details about the installing user, and the user token if one was requested at the start of the auth flow. */
 export interface V2AccessResponseAuthedUser {
   /** ID of the installing user. If a user token was requested, this is also the ID of the user to which the user token authenticates. */
@@ -182,6 +267,11 @@ export interface V2AccessResponseAuthedUser {
   /** Refresh token for this credential. */
   refresh_token?: string | Redacted.Redacted<string>;
 }
+const V2AccessResponseAuthedUser = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<V2AccessResponseAuthedUser>;
+
 /** Details about a newly-created incoming webhook. Only present if an incoming webhook was requested at the start of the auth flow. */
 export interface V2AccessResponseIncomingWebhook {
   /** Name of channel. */
@@ -193,6 +283,11 @@ export interface V2AccessResponseIncomingWebhook {
   /** Endpoint for triggering the wehbook. */
   url: string;
 }
+const V2AccessResponseIncomingWebhook = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<V2AccessResponseIncomingWebhook>;
+
 export interface V2AccessResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
@@ -221,14 +316,20 @@ export interface V2AccessResponse {
   /** Details about a newly-created incoming webhook. Only present if an incoming webhook was requested at the start of the auth flow. */
   incoming_webhook?: V2AccessResponseIncomingWebhook;
 }
+const V2AccessResponse = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<V2AccessResponse>;
+
 export interface V2ExchangeRequest {
   /** Issued when you created your application. */
   client_id: string;
   /** Issued when you created your application. */
   client_secret: string | Redacted.Redacted<string>;
 }
+const V2ExchangeRequest = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<V2ExchangeRequest>;
+
 /** The type of access token. */
 export type V2ExchangeResponseTokenType = "bot" | "user";
+const V2ExchangeResponseTokenType = S.String;
+
 export interface V2ExchangeResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
@@ -250,6 +351,8 @@ export interface V2ExchangeResponse {
   team?: unknown | null;
   enterprise?: unknown | null;
 }
+const V2ExchangeResponse = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<V2ExchangeResponse>;
+
 export interface V2UserAccessRequest {
   /** Issued when you created your application. If possible, avoid sending `client_id` and `client_secret` as parameters in your request and instead supply the Client ID and Client Secret using the HTTP Basic authentication scheme. */
   client_id?: string;
@@ -268,8 +371,12 @@ export interface V2UserAccessRequest {
   /** Identity assertion JWT authorization grant. */
   assertion?: string;
 }
+const V2UserAccessRequest = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<V2UserAccessRequest>;
+
 /** The type of access token. */
 export type V2UserAccessResponseTokenType = "user";
+const V2UserAccessResponseTokenType = S.String;
+
 /** Details about the team. */
 export type V2UserAccessResponseTeam = V2AccessResponseTeam;
 /** Details about the enterprise. */
@@ -296,6 +403,8 @@ export interface V2UserAccessResponse {
   team: V2AccessResponseTeam | null;
   enterprise: V2AccessResponseEnterprise | null;
 }
+const V2UserAccessResponse = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<V2UserAccessResponse>;
+
 export type BeginShortTokenRotationError = SlackOpError;
 /** Call this to rotate the secret on an old API token with a short secret. Must be paired with a call to oauth.v2.completeShortTokenRotation to confirm the change. Rate limit tier: 2 Method-specific errors (the `error` slug on the SlackError): - `bad_client_secret` -- Value passed for `client_secret` was invalid. - `invalid_client_id` -- Value passed for `client_id` was invalid, or is not the app the token being rotated was issued to. - `invalid_token` -- This token is invalid. - `internal_error` -- A server-side error occurred. - `token_too_long` -- This token is not short enough to be rotated. See https://docs.slack.dev/reference/methods/oauth.v2.beginShortTokenRotation */
 export const beginShortTokenRotation: API.OperationMethod<
@@ -304,8 +413,8 @@ export const beginShortTokenRotation: API.OperationMethod<
   BeginShortTokenRotationError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<BeginShortTokenRotationRequest>,
-  output: __S(1) as any as S.Schema<BeginShortTokenRotationResponse>,
+  input: BeginShortTokenRotationRequest,
+  output: BeginShortTokenRotationResponse,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -319,8 +428,8 @@ export const completeShortTokenRotation: API.OperationMethod<
   CompleteShortTokenRotationError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2) as any as S.Schema<CompleteShortTokenRotationRequest>,
-  output: __S(3) as any as S.Schema<CompleteShortTokenRotationResponse>,
+  input: CompleteShortTokenRotationRequest,
+  output: CompleteShortTokenRotationResponse,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -334,8 +443,8 @@ export const oauthAccess: API.OperationMethod<
   OauthAccessError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4) as any as S.Schema<OauthAccessRequest>,
-  output: __S(12) as any as S.Schema<OauthAccessResponse>,
+  input: OauthAccessRequest,
+  output: OauthAccessResponse,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -349,8 +458,8 @@ export const v2Access: API.OperationMethod<
   V2AccessError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13) as any as S.Schema<V2AccessRequest>,
-  output: __S(18) as any as S.Schema<V2AccessResponse>,
+  input: V2AccessRequest,
+  output: V2AccessResponse,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -364,8 +473,8 @@ export const v2Exchange: API.OperationMethod<
   V2ExchangeError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19) as any as S.Schema<V2ExchangeRequest>,
-  output: __S(20) as any as S.Schema<V2ExchangeResponse>,
+  input: V2ExchangeRequest,
+  output: V2ExchangeResponse,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -379,8 +488,8 @@ export const v2UserAccess: API.OperationMethod<
   V2UserAccessError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21) as any as S.Schema<V2UserAccessRequest>,
-  output: __S(22) as any as S.Schema<V2UserAccessResponse>,
+  input: V2UserAccessRequest,
+  output: V2UserAccessResponse,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -471,12 +580,12 @@ function __c0(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          app_home: S.optional(__S(6)),
-          team: S.optional(__S(6)),
-          channel: S.optional(__S(6)),
-          group: S.optional(__S(6)),
-          mpim: S.optional(__S(6)),
-          im: S.optional(__S(6)),
+          app_home: S.optional(OauthAccessResponseScopesAppHomeList),
+          team: S.optional(OauthAccessResponseScopesTeamList),
+          channel: S.optional(OauthAccessResponseScopesChannelList),
+          group: S.optional(OauthAccessResponseScopesGroupList),
+          mpim: S.optional(OauthAccessResponseScopesMpimList),
+          im: S.optional(OauthAccessResponseScopesImList),
         }),
       ).annotate({
         identifier: "OauthAccessResponseScopes",
@@ -548,18 +657,18 @@ function __c1(j: number): any {
           team_name: S.optional(S.String),
           team_id: S.String,
           access_token: S.String.pipe(T.SensitiveValue({})),
-          authorizing_user: S.optional(__S(5)),
-          installer_user: S.optional(__S(5)),
-          scopes: S.optional(__S(7)),
+          authorizing_user: S.optional(OauthAccessResponseAuthorizingUser),
+          installer_user: S.optional(OauthAccessResponseAuthorizingUser),
+          scopes: S.optional(OauthAccessResponseScopes),
           scope: S.optional(S.String),
           user_id: S.optional(S.String),
-          bot: S.optional(__S(8)),
+          bot: S.optional(OauthAccessResponseBot),
           refresh_token: S.optional(S.String.pipe(T.SensitiveValue({}))),
           expires_in: S.optional(S.Number),
-          user: S.optional(__S(9)),
-          team: S.optional(__S(10)),
+          user: S.optional(OauthAccessResponseUser),
+          team: S.optional(OauthAccessResponseTeam),
           enterprise_id: S.optional(S.NullOr(S.String)),
-          incoming_webhook: S.optional(__S(11)),
+          incoming_webhook: S.optional(OauthAccessResponseIncomingWebhook),
           single_channel_id: S.optional(S.String),
         }),
       ).annotate({ identifier: "OauthAccessResponse" });
@@ -608,7 +717,7 @@ function __c2(j: number): any {
         S.Struct({
           id: S.String,
           access_token: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          token_type: S.optional(S.String),
+          token_type: S.optional(V2AccessResponseAuthedUserTokenType),
           scope: S.optional(S.String),
           expires_in: S.optional(S.Number),
           refresh_token: S.optional(S.String.pipe(T.SensitiveValue({}))),
@@ -632,7 +741,7 @@ function __c2(j: number): any {
         S.Struct({
           ok: S.Boolean,
           access_token: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          token_type: S.optional(S.String),
+          token_type: S.optional(V2AccessResponseTokenType),
           scope: S.optional(S.String),
           bot_user_id: S.optional(S.String),
           user_id: S.optional(S.String),
@@ -640,10 +749,10 @@ function __c2(j: number): any {
           is_enterprise_install: S.optional(S.Boolean),
           expires_in: S.optional(S.Number),
           refresh_token: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          team: S.NullOr(__S(14)),
-          enterprise: S.NullOr(__S(15)),
-          authed_user: S.optional(__S(16)),
-          incoming_webhook: S.optional(__S(17)),
+          team: S.NullOr(V2AccessResponseTeam),
+          enterprise: S.NullOr(V2AccessResponseEnterprise),
+          authed_user: S.optional(V2AccessResponseAuthedUser),
+          incoming_webhook: S.optional(V2AccessResponseIncomingWebhook),
         }),
       ).annotate({ identifier: "V2AccessResponse" });
     case 3:
@@ -665,7 +774,7 @@ function __c2(j: number): any {
         S.Struct({
           ok: S.Boolean,
           app_id: S.String,
-          token_type: S.String,
+          token_type: V2ExchangeResponseTokenType,
           scope: S.String,
           bot_user_id: S.optional(S.String),
           user_id: S.optional(S.String),
@@ -701,31 +810,16 @@ function __c2(j: number): any {
         S.Struct({
           ok: S.Boolean,
           access_token: S.String.pipe(T.SensitiveValue({})),
-          token_type: S.String,
+          token_type: V2UserAccessResponseTokenType,
           scope: S.optional(S.String),
           user_id: S.String,
           app_id: S.String,
           is_enterprise_install: S.Boolean,
           expires_in: S.optional(S.Number),
           refresh_token: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          team: S.NullOr(__S(14)),
-          enterprise: S.NullOr(__S(15)),
+          team: S.NullOr(V2AccessResponseTeam),
+          enterprise: S.NullOr(V2AccessResponseEnterprise),
         }),
       ).annotate({ identifier: "V2UserAccessResponse" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
   }
 }

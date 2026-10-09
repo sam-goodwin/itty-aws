@@ -7,8 +7,6 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -73,17 +71,26 @@ export interface SearchRequest {
   /** Optional. Token of the page to retrieve. If not specified, the first page of results is returned. In order to request the next page of results, the value obtained from `next_page_token` in the previous response should be used. */
   pageToken?: string;
 }
+const SearchRequest = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<SearchRequest>;
+
 export interface SearchAccountsReportsRequest {
   /** Required. Id of the account making the call. Must be a standalone account or a subaccount of an advanced account. Format: accounts/{account} */
   parent: string;
   /** Request body */
   body?: SearchRequest;
 }
+const SearchAccountsReportsRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<SearchAccountsReportsRequest>;
+
 export type CompetitiveVisibilityCompetitorViewTrafficSourceEnum =
   | "TRAFFIC_SOURCE_ENUM_UNSPECIFIED"
   | "ORGANIC"
   | "ADS"
   | "ALL";
+const CompetitiveVisibilityCompetitorViewTrafficSourceEnum = S.String;
+
 /** Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: * A full date, with non-zero year, month, and day values. * A month and day, with a zero year (for example, an anniversary). * A year on its own, with a zero month and a zero day. * A year and month, with a zero day (for example, a credit card expiration date). Related types: * google.type.TimeOfDay * google.type.DateTime * google.protobuf.Timestamp */
 export interface Merchantapi_Date {
   /** Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant. */
@@ -93,6 +100,8 @@ export interface Merchantapi_Date {
   /** Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year. */
   year?: number;
 }
+const Merchantapi_Date = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<Merchantapi_Date>;
+
 /** Fields available for query in `competitive_visibility_competitor_view` table. [Competitive visibility](https://support.google.com/merchants/answer/11366442) report with businesses with similar visibility. Values are only set for fields requested explicitly in the request's search query. */
 export interface CompetitiveVisibilityCompetitorView {
   /** Country where impressions appeared. Required in the `SELECT` clause. A condition on `report_country_code` is required in the `WHERE` clause. */
@@ -118,11 +127,18 @@ export interface CompetitiveVisibilityCompetitorView {
   /** Date of this row. A condition on `date` is required in the `WHERE` clause. */
   date?: Merchantapi_Date;
 }
+const CompetitiveVisibilityCompetitorView = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<CompetitiveVisibilityCompetitorView>;
+
 export type CompetitiveVisibilityBenchmarkViewTrafficSourceEnum =
   | "TRAFFIC_SOURCE_ENUM_UNSPECIFIED"
   | "ORGANIC"
   | "ADS"
   | "ALL";
+const CompetitiveVisibilityBenchmarkViewTrafficSourceEnum = S.String;
+
 /** Fields available for query in `competitive_visibility_benchmark_view` table. [Competitive visibility](https://support.google.com/merchants/answer/11366442) report with the category benchmark. Values are only set for fields requested explicitly in the request's search query. */
 export interface CompetitiveVisibilityBenchmarkView {
   /** Country where impressions appeared. Required in the `SELECT` clause. A condition on `report_country_code` is required in the `WHERE` clause. */
@@ -138,11 +154,18 @@ export interface CompetitiveVisibilityBenchmarkView {
   /** Change in visibility based on impressions for your domain with respect to the start of the selected time range (or first day with non-zero impressions). Cannot be filtered on in the 'WHERE' clause. */
   yourDomainVisibilityTrend?: number;
 }
+const CompetitiveVisibilityBenchmarkView = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<CompetitiveVisibilityBenchmarkView>;
+
 export type CompetitiveVisibilityTopMerchantViewTrafficSourceEnum =
   | "TRAFFIC_SOURCE_ENUM_UNSPECIFIED"
   | "ORGANIC"
   | "ADS"
   | "ALL";
+const CompetitiveVisibilityTopMerchantViewTrafficSourceEnum = S.String;
+
 /** Fields available for query in `competitive_visibility_top_merchant_view` table. [Competitive visibility](https://support.google.com/merchants/answer/11366442) report with business with highest visibility. Values are only set for fields requested explicitly in the request's search query. */
 export interface CompetitiveVisibilityTopMerchantView {
   /** [Ads / organic ratio] (https://support.google.com/merchants/answer/11366442#zippy=%2Cads-free-ratio) shows how often the domain receives impressions from Shopping ads compared to organic traffic. The number is rounded and bucketed. Cannot be filtered on in the 'WHERE' clause. */
@@ -166,6 +189,11 @@ export interface CompetitiveVisibilityTopMerchantView {
   /** [Higher position rate] (https://support.google.com/merchants/answer/11366442#zippy=%2Chigher-position-rate) shows how often a competitor's offer got placed in a higher position on the page than your offer. Cannot be filtered on in the 'WHERE' clause. */
   higherPositionRate?: number;
 }
+const CompetitiveVisibilityTopMerchantView = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<CompetitiveVisibilityTopMerchantView>;
+
 /** The price represented as a number and currency. */
 export interface Price {
   /** The price represented as a number in micros (1 million micros is an equivalent to one's currency standard unit, for example, 1 USD = 1000000 micros). */
@@ -173,6 +201,8 @@ export interface Price {
   /** The currency of the price using three-letter acronyms according to [ISO 4217](http://en.wikipedia.org/wiki/ISO_4217). */
   currencyCode?: string;
 }
+const Price = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<Price>;
+
 /** Fields available for query in `price_competitiveness_product_view` table. [Price competitiveness](https://support.google.com/merchants/answer/9626903) report. Values are only set for fields requested explicitly in the request's search query. */
 export interface PriceCompetitivenessProductView {
   /** REST ID of the product, in the form of `channel~languageCode~feedLabel~offerId`. Can be used to join data with the `product_view` table. Required in the `SELECT` clause. */
@@ -210,14 +240,23 @@ export interface PriceCompetitivenessProductView {
   /** Product category (5th level) in [Google's product taxonomy](https://support.google.com/merchants/answer/6324436). */
   categoryL5?: string;
 }
+const PriceCompetitivenessProductView = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<PriceCompetitivenessProductView>;
+
 export type ProductPerformanceViewStoreTypeEnum =
   | "STORE_TYPE_ENUM_UNSPECIFIED"
   | "ONLINE_STORE"
   | "LOCAL_STORES";
+const ProductPerformanceViewStoreTypeEnum = S.String;
+
 export type ProductPerformanceViewMarketingMethodEnum =
   | "MARKETING_METHOD_ENUM_UNSPECIFIED"
   | "ORGANIC"
   | "ADS";
+const ProductPerformanceViewMarketingMethodEnum = S.String;
+
 /** Fields available for query in `product_performance_view` table. Product performance data for your account, including performance metrics (for example, `clicks`) and dimensions according to which performance metrics are segmented (for example, `offer_id`). Values of product dimensions, such as `offer_id`, reflect the state of a product at the time of the impression. Segment fields cannot be selected in queries without also selecting at least one metric field. Values are only set for fields requested explicitly in the request's search query. */
 export interface ProductPerformanceView {
   /** First day of the week (Monday) of the metrics date in the Merchant Center account timezone. Segment. */
@@ -279,6 +318,11 @@ export interface ProductPerformanceView {
   /** Title of the product. Segment. */
   title?: string;
 }
+const ProductPerformanceView = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<ProductPerformanceView>;
+
 /** Fields available for query in `non_product_performance_view` table. Performance data on images and online store links leading to your non-product pages. This includes performance metrics (for example, `clicks`) and dimensions according to which performance metrics are segmented (for example, `date`). Segment fields cannot be selected in queries without also selecting at least one metric field. Values are only set for fields requested explicitly in the request's search query. */
 export interface NonProductPerformanceView {
   /** Date in the Merchant Center account timezone to which metrics apply. Segment. Condition on `date` is required in the `WHERE` clause. */
@@ -292,11 +336,18 @@ export interface NonProductPerformanceView {
   /** Number of times images and online store links leading to your non-product pages were shown. Metric. */
   impressions?: string;
 }
+const NonProductPerformanceView = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<NonProductPerformanceView>;
+
 export type PriceInsightsProductViewEffectivenessEnum =
   | "EFFECTIVENESS_UNSPECIFIED"
   | "LOW"
   | "MEDIUM"
   | "HIGH";
+const PriceInsightsProductViewEffectivenessEnum = S.String;
+
 /** Fields available for query in `price_insights_product_view` table. [Price insights](https://support.google.com/merchants/answer/11916926) report. Values are only set for fields requested explicitly in the request's search query. */
 export interface PriceInsightsProductView {
   /** Product type (5th level) in merchant's own [product taxonomy](https://support.google.com/merchants/answer/6324406). */
@@ -340,6 +391,11 @@ export interface PriceInsightsProductView {
   /** Product type (2nd level) in merchant's own [product taxonomy](https://support.google.com/merchants/answer/6324406). */
   productTypeL2?: string;
 }
+const PriceInsightsProductView = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<PriceInsightsProductView>;
+
 export type BestSellersProductClusterViewPreviousRelativeDemandEnum =
   | "RELATIVE_DEMAND_ENUM_UNSPECIFIED"
   | "VERY_LOW"
@@ -347,12 +403,18 @@ export type BestSellersProductClusterViewPreviousRelativeDemandEnum =
   | "MEDIUM"
   | "HIGH"
   | "VERY_HIGH";
+const BestSellersProductClusterViewPreviousRelativeDemandEnum = S.String;
+
 export type BestSellersProductClusterViewRelativeDemandChangeEnum =
   | "RELATIVE_DEMAND_CHANGE_TYPE_ENUM_UNSPECIFIED"
   | "SINKER"
   | "FLAT"
   | "RISER";
+const BestSellersProductClusterViewRelativeDemandChangeEnum = S.String;
+
 export type StringList = Array<string>;
+const StringList = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<StringList>;
+
 export type BestSellersProductClusterViewRelativeDemandEnum =
   | "RELATIVE_DEMAND_ENUM_UNSPECIFIED"
   | "VERY_LOW"
@@ -360,20 +422,28 @@ export type BestSellersProductClusterViewRelativeDemandEnum =
   | "MEDIUM"
   | "HIGH"
   | "VERY_HIGH";
+const BestSellersProductClusterViewRelativeDemandEnum = S.String;
+
 export type BestSellersProductClusterViewBrandInventoryStatusEnum =
   | "INVENTORY_STATUS_UNSPECIFIED"
   | "IN_STOCK"
   | "OUT_OF_STOCK"
   | "NOT_IN_INVENTORY";
+const BestSellersProductClusterViewBrandInventoryStatusEnum = S.String;
+
 export type BestSellersProductClusterViewInventoryStatusEnum =
   | "INVENTORY_STATUS_UNSPECIFIED"
   | "IN_STOCK"
   | "OUT_OF_STOCK"
   | "NOT_IN_INVENTORY";
+const BestSellersProductClusterViewInventoryStatusEnum = S.String;
+
 export type BestSellersProductClusterViewReportGranularityEnum =
   | "REPORT_GRANULARITY_ENUM_UNSPECIFIED"
   | "WEEKLY"
   | "MONTHLY";
+const BestSellersProductClusterViewReportGranularityEnum = S.String;
+
 /** Fields available for query in `best_sellers_product_cluster_view` table. [Best sellers](https://support.google.com/merchants/answer/9488679) report with top product clusters. A product cluster is a grouping for different offers and variants that represent the same product, for example, Google Pixel 7. Values are only set for fields requested explicitly in the request's search query. */
 export interface BestSellersProductClusterView {
   /** Estimated demand in relation to the product cluster with the highest popularity rank in the same category and country in the previous week or month. */
@@ -415,6 +485,11 @@ export interface BestSellersProductClusterView {
   /** Popularity of the product cluster on Ads and organic surfaces, in the selected category and country, based on the estimated number of units sold. */
   rank?: string;
 }
+const BestSellersProductClusterView = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<BestSellersProductClusterView>;
+
 export type BestSellersBrandViewPreviousRelativeDemandEnum =
   | "RELATIVE_DEMAND_ENUM_UNSPECIFIED"
   | "VERY_LOW"
@@ -422,11 +497,15 @@ export type BestSellersBrandViewPreviousRelativeDemandEnum =
   | "MEDIUM"
   | "HIGH"
   | "VERY_HIGH";
+const BestSellersBrandViewPreviousRelativeDemandEnum = S.String;
+
 export type BestSellersBrandViewRelativeDemandChangeEnum =
   | "RELATIVE_DEMAND_CHANGE_TYPE_ENUM_UNSPECIFIED"
   | "SINKER"
   | "FLAT"
   | "RISER";
+const BestSellersBrandViewRelativeDemandChangeEnum = S.String;
+
 export type BestSellersBrandViewRelativeDemandEnum =
   | "RELATIVE_DEMAND_ENUM_UNSPECIFIED"
   | "VERY_LOW"
@@ -434,10 +513,14 @@ export type BestSellersBrandViewRelativeDemandEnum =
   | "MEDIUM"
   | "HIGH"
   | "VERY_HIGH";
+const BestSellersBrandViewRelativeDemandEnum = S.String;
+
 export type BestSellersBrandViewReportGranularityEnum =
   | "REPORT_GRANULARITY_ENUM_UNSPECIFIED"
   | "WEEKLY"
   | "MONTHLY";
+const BestSellersBrandViewReportGranularityEnum = S.String;
+
 /** Fields available for query in `best_sellers_brand_view` table. [Best sellers](https://support.google.com/merchants/answer/9488679) report with top brands. Values are only set for fields requested explicitly in the request's search query. */
 export interface BestSellersBrandView {
   /** Report date. The value of this field can only be one of the following: * The first day of the week (Monday) for weekly reports, * The first day of the month for monthly reports. Required in the `SELECT` clause. If a `WHERE` condition on `report_date` is not specified in the query, the latest available weekly or monthly report is returned. */
@@ -461,6 +544,8 @@ export interface BestSellersBrandView {
   /** Name of the brand. */
   brand?: string;
 }
+const BestSellersBrandView = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<BestSellersBrandView>;
+
 export type ProductViewReportingContextEnum =
   | "REPORTING_CONTEXT_ENUM_UNSPECIFIED"
   | "SHOPPING_ADS"
@@ -483,6 +568,8 @@ export type ProductViewReportingContextEnum =
   | "MERCHANT_REVIEWS"
   | "YOUTUBE_CHECKOUT"
   | "RENTAL_ADS";
+const ProductViewReportingContextEnum = S.String;
+
 export type StatusPerReportingContextReportingContextEnum =
   | "REPORTING_CONTEXT_ENUM_UNSPECIFIED"
   | "SHOPPING_ADS"
@@ -505,6 +592,8 @@ export type StatusPerReportingContextReportingContextEnum =
   | "MERCHANT_REVIEWS"
   | "YOUTUBE_CHECKOUT"
   | "RENTAL_ADS";
+const StatusPerReportingContextReportingContextEnum = S.String;
+
 /** Status of the product for a specific reporting context. Equivalent to `DestinationStatus` in Products API. */
 export interface StatusPerReportingContext {
   /** List of disapproved countries in the reporting context, represented in [ISO 3166](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) format, for example, `US`. */
@@ -516,14 +605,28 @@ export interface StatusPerReportingContext {
   /** Reporting context the status applies to. */
   reportingContext?: StatusPerReportingContextReportingContextEnum;
 }
+const StatusPerReportingContext = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<StatusPerReportingContext>;
+
 export type StatusPerReportingContextList = Array<StatusPerReportingContext>;
+const StatusPerReportingContextList = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<StatusPerReportingContextList>;
+
 export type ProductViewAggregatedReportingContextStatusEnum =
   | "AGGREGATED_REPORTING_CONTEXT_STATUS_UNSPECIFIED"
   | "NOT_ELIGIBLE_OR_DISAPPROVED"
   | "PENDING"
   | "ELIGIBLE_LIMITED"
   | "ELIGIBLE";
+const ProductViewAggregatedReportingContextStatusEnum = S.String;
+
 export type ProductViewChannelEnum = "CHANNEL_ENUM_UNSPECIFIED" | "ONLINE" | "LOCAL";
+const ProductViewChannelEnum = S.String;
+
 /** Issue type. */
 export interface ItemIssueType {
   /** Canonical attribute name for attribute-specific issues. */
@@ -531,15 +634,21 @@ export interface ItemIssueType {
   /** Error code of the issue, equivalent to the `code` of [Product issues](https://developers.google.com/shopping-content/guides/product-issues). */
   code?: string;
 }
+const ItemIssueType = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<ItemIssueType>;
+
 export type ItemIssueResolutionEnum =
   | "ITEM_ISSUE_RESOLUTION_UNSPECIFIED"
   | "MERCHANT_ACTION"
   | "PENDING_PROCESSING";
+const ItemIssueResolutionEnum = S.String;
+
 export type ItemIssueSeverityAggregatedSeverityEnum =
   | "AGGREGATED_ISSUE_SEVERITY_UNSPECIFIED"
   | "DISAPPROVED"
   | "DEMOTED"
   | "PENDING";
+const ItemIssueSeverityAggregatedSeverityEnum = S.String;
+
 export type IssueSeverityPerReportingContextReportingContextEnum =
   | "REPORTING_CONTEXT_ENUM_UNSPECIFIED"
   | "SHOPPING_ADS"
@@ -562,6 +671,8 @@ export type IssueSeverityPerReportingContextReportingContextEnum =
   | "MERCHANT_REVIEWS"
   | "YOUTUBE_CHECKOUT"
   | "RENTAL_ADS";
+const IssueSeverityPerReportingContextReportingContextEnum = S.String;
+
 /** Issue severity per reporting context. */
 export interface IssueSeverityPerReportingContext {
   /** List of demoted countries in the reporting context, represented in ISO 3166 format. */
@@ -571,7 +682,17 @@ export interface IssueSeverityPerReportingContext {
   /** Reporting context the issue applies to. */
   reportingContext?: IssueSeverityPerReportingContextReportingContextEnum;
 }
+const IssueSeverityPerReportingContext = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<IssueSeverityPerReportingContext>;
+
 export type IssueSeverityPerReportingContextList = Array<IssueSeverityPerReportingContext>;
+const IssueSeverityPerReportingContextList = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<IssueSeverityPerReportingContextList>;
+
 /** How the issue affects the serving of the product. */
 export interface ItemIssueSeverity {
   /** Aggregated severity of the issue for all reporting contexts it affects. Reporting contexts included in the computation of the aggregated severity can be restricted using a filter on the `reporting_context` field. **This field can be used for filtering the results.** */
@@ -579,6 +700,8 @@ export interface ItemIssueSeverity {
   /** Issue severity per reporting context. Reporting contexts included in this list can be restricted using a filter on the `reporting_context` field. */
   severityPerReportingContext?: IssueSeverityPerReportingContextList;
 }
+const ItemIssueSeverity = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<ItemIssueSeverity>;
+
 /** Item issue associated with the product. */
 export interface ItemIssue {
   /** Item issue type. */
@@ -588,12 +711,18 @@ export interface ItemIssue {
   /** Item issue severity. */
   severity?: ItemIssueSeverity;
 }
+const ItemIssue = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<ItemIssue>;
+
 export type ItemIssueList = Array<ItemIssue>;
+const ItemIssueList = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<ItemIssueList>;
+
 export type ProductViewClickPotentialEnum =
   | "CLICK_POTENTIAL_UNSPECIFIED"
   | "LOW"
   | "MEDIUM"
   | "HIGH";
+const ProductViewClickPotentialEnum = S.String;
+
 /** Fields available for query in `product_view` table. Products in the current inventory. Products in this table are the same as a [Product resource in Products sub-API](https://developers.google.com/merchant/api/reference/rest/products_v1/accounts.products) but not all product attributes from Products sub-API are available for query in this table. In contrast to Products sub-API, this table allows to filter the returned list of products by product attributes. To retrieve a single product by `id` or list all products, Products sub-API should be used. Values are only set for fields requested explicitly in the request's search query. */
 export interface ProductView {
   /** Merchant-provided id of the product. */
@@ -661,6 +790,8 @@ export interface ProductView {
   /** Product category (5th level) in [Google's product taxonomy](https://support.google.com/merchants/answer/6324436). */
   categoryL5?: string;
 }
+const ProductView = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<ProductView>;
+
 /** Result row returned from the search query. Only the message corresponding to the queried table is populated in the response. Within the populated message, only the fields requested explicitly in the query are populated. */
 export interface ReportRow {
   /** Fields available for query in `competitive_visibility_competitor_view` table. */
@@ -684,7 +815,11 @@ export interface ReportRow {
   /** Fields available for query in `product_view` table. */
   productView?: ProductView;
 }
+const ReportRow = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<ReportRow>;
+
 export type ReportRowList = Array<ReportRow>;
+const ReportRowList = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<ReportRowList>;
+
 /** Response message for the `ReportService.Search` method. */
 export interface SearchResponse {
   /** Rows that matched the search query. */
@@ -692,6 +827,8 @@ export interface SearchResponse {
   /** Token which can be sent as `page_token` to retrieve the next page. If omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
+const SearchResponse = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<SearchResponse>;
+
 export type SearchAccountsReportsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Retrieves a report defined by a search query. The response might contain fewer rows than specified by `page_size`. Rely on `next_page_token` to determine if there are more rows to be requested. */
 export const searchAccountsReports: API.OperationMethod<
@@ -700,8 +837,8 @@ export const searchAccountsReports: API.OperationMethod<
   SearchAccountsReportsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1) as any as S.Schema<SearchAccountsReportsRequest>,
-  output: __S(25) as any as S.Schema<SearchResponse>,
+  input: SearchAccountsReportsRequest,
+  output: SearchResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -722,7 +859,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(0).pipe(T.HttpBody())),
+          body: S.optional(SearchRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -753,8 +890,8 @@ function __c0(j: number): any {
           rank: S.optional(S.String),
           isYourDomain: S.optional(S.Boolean),
           pageOverlapRate: S.optional(S.Number),
-          trafficSource: S.optional(S.String),
-          date: S.optional(__S(2)),
+          trafficSource: S.optional(CompetitiveVisibilityCompetitorViewTrafficSourceEnum),
+          date: S.optional(Merchantapi_Date),
         }),
       ).annotate({
         identifier: "CompetitiveVisibilityCompetitorView",
@@ -763,10 +900,10 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           reportCountryCode: S.optional(S.String),
-          date: S.optional(__S(2)),
+          date: S.optional(Merchantapi_Date),
           reportCategoryId: S.optional(S.String),
           categoryBenchmarkVisibilityTrend: S.optional(S.Number),
-          trafficSource: S.optional(S.String),
+          trafficSource: S.optional(CompetitiveVisibilityBenchmarkViewTrafficSourceEnum),
           yourDomainVisibilityTrend: S.optional(S.Number),
         }),
       ).annotate({
@@ -780,10 +917,10 @@ function __c0(j: number): any {
           domain: S.optional(S.String),
           rank: S.optional(S.String),
           reportCategoryId: S.optional(S.String),
-          date: S.optional(__S(2)),
+          date: S.optional(Merchantapi_Date),
           reportCountryCode: S.optional(S.String),
           pageOverlapRate: S.optional(S.Number),
-          trafficSource: S.optional(S.String),
+          trafficSource: S.optional(CompetitiveVisibilityTopMerchantViewTrafficSourceEnum),
           higherPositionRate: S.optional(S.Number),
         }),
       ).annotate({
@@ -806,9 +943,9 @@ function __c0(j: number): any {
           categoryL3: S.optional(S.String),
           productTypeL3: S.optional(S.String),
           categoryL2: S.optional(S.String),
-          price: S.optional(__S(6)),
+          price: S.optional(Price),
           brand: S.optional(S.String),
-          benchmarkPrice: S.optional(__S(6)),
+          benchmarkPrice: S.optional(Price),
           title: S.optional(S.String),
           categoryL4: S.optional(S.String),
           offerId: S.optional(S.String),
@@ -827,7 +964,7 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          week: S.optional(__S(2)),
+          week: S.optional(Merchantapi_Date),
           productTypeL3: S.optional(S.String),
           customLabel2: S.optional(S.String),
           clickThroughRate: S.optional(S.Number),
@@ -837,7 +974,7 @@ function __c1(j: number): any {
           categoryL4: S.optional(S.String),
           conversions: S.optional(S.Number),
           customLabel0: S.optional(S.String),
-          date: S.optional(__S(2)),
+          date: S.optional(Merchantapi_Date),
           brand: S.optional(S.String),
           clicks: S.optional(S.String),
           categoryL3: S.optional(S.String),
@@ -845,13 +982,13 @@ function __c1(j: number): any {
           productTypeL4: S.optional(S.String),
           categoryL2: S.optional(S.String),
           productTypeL2: S.optional(S.String),
-          storeType: S.optional(S.String),
+          storeType: S.optional(ProductPerformanceViewStoreTypeEnum),
           impressions: S.optional(S.String),
           offerId: S.optional(S.String),
-          conversionValue: S.optional(__S(6)),
+          conversionValue: S.optional(Price),
           customLabel1: S.optional(S.String),
           productTypeL5: S.optional(S.String),
-          marketingMethod: S.optional(S.String),
+          marketingMethod: S.optional(ProductPerformanceViewMarketingMethodEnum),
           conversionRate: S.optional(S.Number),
           categoryL5: S.optional(S.String),
           categoryL1: S.optional(S.String),
@@ -861,9 +998,9 @@ function __c1(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          date: S.optional(__S(2)),
+          date: S.optional(Merchantapi_Date),
           clickThroughRate: S.optional(S.Number),
-          week: S.optional(__S(2)),
+          week: S.optional(Merchantapi_Date),
           clicks: S.optional(S.String),
           impressions: S.optional(S.String),
         }),
@@ -882,11 +1019,11 @@ function __c1(j: number): any {
           brand: S.optional(S.String),
           predictedImpressionsChangeFraction: S.optional(S.Number),
           categoryL4: S.optional(S.String),
-          price: S.optional(__S(6)),
-          suggestedPrice: S.optional(__S(6)),
+          price: S.optional(Price),
+          suggestedPrice: S.optional(Price),
           predictedConversionsChangeFraction: S.optional(S.Number),
           categoryL2: S.optional(S.String),
-          effectiveness: S.optional(S.String),
+          effectiveness: S.optional(PriceInsightsProductViewEffectivenessEnum),
           productTypeL3: S.optional(S.String),
           productTypeL4: S.optional(S.String),
           categoryL3: S.optional(S.String),
@@ -900,23 +1037,25 @@ function __c1(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          previousRelativeDemand: S.optional(S.String),
+          previousRelativeDemand: S.optional(
+            BestSellersProductClusterViewPreviousRelativeDemandEnum,
+          ),
           previousRank: S.optional(S.String),
-          relativeDemandChange: S.optional(S.String),
+          relativeDemandChange: S.optional(BestSellersProductClusterViewRelativeDemandChangeEnum),
           categoryL4: S.optional(S.String),
           categoryL5: S.optional(S.String),
           categoryL1: S.optional(S.String),
-          variantGtins: S.optional(__S(11)),
+          variantGtins: S.optional(StringList),
           title: S.optional(S.String),
           categoryL3: S.optional(S.String),
-          relativeDemand: S.optional(S.String),
-          brandInventoryStatus: S.optional(S.String),
+          relativeDemand: S.optional(BestSellersProductClusterViewRelativeDemandEnum),
+          brandInventoryStatus: S.optional(BestSellersProductClusterViewBrandInventoryStatusEnum),
           reportCountryCode: S.optional(S.String),
           brand: S.optional(S.String),
-          inventoryStatus: S.optional(S.String),
+          inventoryStatus: S.optional(BestSellersProductClusterViewInventoryStatusEnum),
           reportCategoryId: S.optional(S.String),
-          reportGranularity: S.optional(S.String),
-          reportDate: S.optional(__S(2)),
+          reportGranularity: S.optional(BestSellersProductClusterViewReportGranularityEnum),
+          reportDate: S.optional(Merchantapi_Date),
           categoryL2: S.optional(S.String),
           rank: S.optional(S.String),
         }),
@@ -926,14 +1065,14 @@ function __c1(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          reportDate: S.optional(__S(2)),
-          previousRelativeDemand: S.optional(S.String),
-          relativeDemandChange: S.optional(S.String),
-          relativeDemand: S.optional(S.String),
+          reportDate: S.optional(Merchantapi_Date),
+          previousRelativeDemand: S.optional(BestSellersBrandViewPreviousRelativeDemandEnum),
+          relativeDemandChange: S.optional(BestSellersBrandViewRelativeDemandChangeEnum),
+          relativeDemand: S.optional(BestSellersBrandViewRelativeDemandEnum),
           reportCategoryId: S.optional(S.String),
           reportCountryCode: S.optional(S.String),
           rank: S.optional(S.String),
-          reportGranularity: S.optional(S.String),
+          reportGranularity: S.optional(BestSellersBrandViewReportGranularityEnum),
           previousRank: S.optional(S.String),
           brand: S.optional(S.String),
         }),
@@ -941,16 +1080,16 @@ function __c1(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          disapprovedCountries: S.optional(__S(11)),
-          approvedCountries: S.optional(__S(11)),
-          pendingCountries: S.optional(__S(11)),
-          reportingContext: S.optional(S.String),
+          disapprovedCountries: S.optional(StringList),
+          approvedCountries: S.optional(StringList),
+          pendingCountries: S.optional(StringList),
+          reportingContext: S.optional(StatusPerReportingContextReportingContextEnum),
         }),
       ).annotate({
         identifier: "StatusPerReportingContext",
       });
     case 7:
-      return S.Array(__S(14));
+      return S.Array(StatusPerReportingContext);
   }
 }
 function __c2(j: number): any {
@@ -965,51 +1104,53 @@ function __c2(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          demotedCountries: S.optional(__S(11)),
-          disapprovedCountries: S.optional(__S(11)),
-          reportingContext: S.optional(S.String),
+          demotedCountries: S.optional(StringList),
+          disapprovedCountries: S.optional(StringList),
+          reportingContext: S.optional(IssueSeverityPerReportingContextReportingContextEnum),
         }),
       ).annotate({
         identifier: "IssueSeverityPerReportingContext",
       });
     case 2:
-      return S.Array(__S(17));
+      return S.Array(IssueSeverityPerReportingContext);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          aggregatedSeverity: S.optional(S.String),
-          severityPerReportingContext: S.optional(__S(18)),
+          aggregatedSeverity: S.optional(ItemIssueSeverityAggregatedSeverityEnum),
+          severityPerReportingContext: S.optional(IssueSeverityPerReportingContextList),
         }),
       ).annotate({ identifier: "ItemIssueSeverity" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(__S(16)),
-          resolution: S.optional(S.String),
-          severity: S.optional(__S(19)),
+          type: S.optional(ItemIssueType),
+          resolution: S.optional(ItemIssueResolutionEnum),
+          severity: S.optional(ItemIssueSeverity),
         }),
       ).annotate({ identifier: "ItemIssue" });
     case 5:
-      return S.Array(__S(20));
+      return S.Array(ItemIssue);
     case 6:
       return S.suspend(() =>
         S.Struct({
           offerId: S.optional(S.String),
-          price: S.optional(__S(6)),
+          price: S.optional(Price),
           brand: S.optional(S.String),
-          expirationDate: S.optional(__S(2)),
+          expirationDate: S.optional(Merchantapi_Date),
           productTypeL1: S.optional(S.String),
-          reportingContext: S.optional(S.String),
+          reportingContext: S.optional(ProductViewReportingContextEnum),
           shippingLabel: S.optional(S.String),
-          statusPerReportingContext: S.optional(__S(15)),
+          statusPerReportingContext: S.optional(StatusPerReportingContextList),
           productTypeL3: S.optional(S.String),
           clickPotentialRank: S.optional(S.String),
           thumbnailLink: S.optional(S.String),
           categoryL4: S.optional(S.String),
           itemGroupId: S.optional(S.String),
-          gtin: S.optional(__S(11)),
+          gtin: S.optional(StringList),
           creationTime: S.optional(S.String),
-          aggregatedReportingContextStatus: S.optional(S.String),
+          aggregatedReportingContextStatus: S.optional(
+            ProductViewAggregatedReportingContextStatusEnum,
+          ),
           productTypeL2: S.optional(S.String),
           title: S.optional(S.String),
           availability: S.optional(S.String),
@@ -1019,11 +1160,11 @@ function __c2(j: number): any {
           feedLabel: S.optional(S.String),
           id: S.optional(S.String),
           languageCode: S.optional(S.String),
-          channel: S.optional(S.String),
-          itemIssues: S.optional(__S(21)),
+          channel: S.optional(ProductViewChannelEnum),
+          itemIssues: S.optional(ItemIssueList),
           condition: S.optional(S.String),
           productTypeL5: S.optional(S.String),
-          clickPotential: S.optional(S.String),
+          clickPotential: S.optional(ProductViewClickPotentialEnum),
           categoryL1: S.optional(S.String),
           categoryL5: S.optional(S.String),
         }),
@@ -1031,16 +1172,16 @@ function __c2(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          competitiveVisibilityCompetitorView: S.optional(__S(3)),
-          competitiveVisibilityBenchmarkView: S.optional(__S(4)),
-          competitiveVisibilityTopMerchantView: S.optional(__S(5)),
-          priceCompetitivenessProductView: S.optional(__S(7)),
-          productPerformanceView: S.optional(__S(8)),
-          nonProductPerformanceView: S.optional(__S(9)),
-          priceInsightsProductView: S.optional(__S(10)),
-          bestSellersProductClusterView: S.optional(__S(12)),
-          bestSellersBrandView: S.optional(__S(13)),
-          productView: S.optional(__S(22)),
+          competitiveVisibilityCompetitorView: S.optional(CompetitiveVisibilityCompetitorView),
+          competitiveVisibilityBenchmarkView: S.optional(CompetitiveVisibilityBenchmarkView),
+          competitiveVisibilityTopMerchantView: S.optional(CompetitiveVisibilityTopMerchantView),
+          priceCompetitivenessProductView: S.optional(PriceCompetitivenessProductView),
+          productPerformanceView: S.optional(ProductPerformanceView),
+          nonProductPerformanceView: S.optional(NonProductPerformanceView),
+          priceInsightsProductView: S.optional(PriceInsightsProductView),
+          bestSellersProductClusterView: S.optional(BestSellersProductClusterView),
+          bestSellersBrandView: S.optional(BestSellersBrandView),
+          productView: S.optional(ProductView),
         }),
       ).annotate({ identifier: "ReportRow" });
   }
@@ -1048,30 +1189,13 @@ function __c2(j: number): any {
 function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(23));
+      return S.Array(ReportRow);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          results: S.optional(__S(24)),
+          results: S.optional(ReportRowList),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "SearchResponse" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
   }
 }

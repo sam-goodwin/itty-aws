@@ -10,8 +10,6 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveBlob } from "../sensitive.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "Translate",
   serviceShapeName: "AWSShineFrontendService_20170701",
@@ -183,16 +181,22 @@ export type ResourceName = string;
 export type Description = string;
 export type S3Uri = string;
 export type ParallelDataFormat = "TSV" | "CSV" | "TMX" | (string & {});
+const ParallelDataFormat = S.String;
+
 export interface ParallelDataConfig {
   S3Uri?: string;
   Format?: ParallelDataFormat;
 }
+const ParallelDataConfig = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<ParallelDataConfig>;
 export type EncryptionKeyType = "KMS" | (string & {});
+const EncryptionKeyType = S.String;
+
 export type EncryptionKeyID = string;
 export interface EncryptionKey {
   Type: EncryptionKeyType;
   Id: string;
 }
+const EncryptionKey = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<EncryptionKey>;
 export type ClientTokenString = string;
 export type TagKey = string;
 export type TagValue = string;
@@ -200,7 +204,9 @@ export interface Tag {
   Key: string;
   Value: string;
 }
+const Tag = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<Tag>;
 export type TagList = Tag[];
+const TagList = /*@__PURE__*/ __L.at(__c0, 3);
 export interface CreateParallelDataRequest {
   Name: string;
   Description?: string;
@@ -209,6 +215,10 @@ export interface CreateParallelDataRequest {
   ClientToken: string;
   Tags?: Tag[];
 }
+const CreateParallelDataRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<CreateParallelDataRequest>;
 export type ParallelDataStatus =
   | "CREATING"
   | "UPDATING"
@@ -216,25 +226,49 @@ export type ParallelDataStatus =
   | "DELETING"
   | "FAILED"
   | (string & {});
+const ParallelDataStatus = S.String;
+
 export interface CreateParallelDataResponse {
   Name?: string;
   Status?: ParallelDataStatus;
 }
+const CreateParallelDataResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<CreateParallelDataResponse>;
 export interface DeleteParallelDataRequest {
   Name: string;
 }
+const DeleteParallelDataRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<DeleteParallelDataRequest>;
 export interface DeleteParallelDataResponse {
   Name?: string;
   Status?: ParallelDataStatus;
 }
+const DeleteParallelDataResponse =
+  CreateParallelDataResponse as any as S.Schema<DeleteParallelDataResponse>;
 export interface DeleteTerminologyRequest {
   Name: string;
 }
+const DeleteTerminologyRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<DeleteTerminologyRequest>;
 export interface DeleteTerminologyResponse {}
+const DeleteTerminologyResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<DeleteTerminologyResponse>;
 export type JobId = string;
 export interface DescribeTextTranslationJobRequest {
   JobId: string;
 }
+const DescribeTextTranslationJobRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<DescribeTextTranslationJobRequest>;
 export type JobName = string;
 export type JobStatus =
   | "SUBMITTED"
@@ -245,33 +279,47 @@ export type JobStatus =
   | "STOP_REQUESTED"
   | "STOPPED"
   | (string & {});
+const JobStatus = S.String;
+
 export interface JobDetails {
   TranslatedDocumentsCount?: number;
   DocumentsWithErrorsCount?: number;
   InputDocumentsCount?: number;
 }
+const JobDetails = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<JobDetails>;
 export type LanguageCodeString = string;
 export type TargetLanguageCodeStringList = string[];
+const TargetLanguageCodeStringList = /*@__PURE__*/ __L.at(__c1, 3);
 export type ResourceNameList = string[];
+const ResourceNameList = TargetLanguageCodeStringList as any as S.Schema<ResourceNameList>;
 export type UnboundedLengthString = string;
 export type ContentType = string;
 export interface InputDataConfig {
   S3Uri: string;
   ContentType: string;
 }
+const InputDataConfig = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<InputDataConfig>;
 export interface OutputDataConfig {
   S3Uri: string;
   EncryptionKey?: EncryptionKey;
 }
+const OutputDataConfig = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<OutputDataConfig>;
 export type IamRoleArn = string;
 export type Formality = "FORMAL" | "INFORMAL" | (string & {});
+const Formality = S.String;
+
 export type Profanity = "MASK" | (string & {});
+const Profanity = S.String;
+
 export type Brevity = "ON" | (string & {});
+const Brevity = S.String;
+
 export interface TranslationSettings {
   Formality?: Formality;
   Profanity?: Profanity;
   Brevity?: Brevity;
 }
+const TranslationSettings = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<TranslationSettings>;
 export interface TextTranslationJobProperties {
   JobId?: string;
   JobName?: string;
@@ -289,14 +337,28 @@ export interface TextTranslationJobProperties {
   DataAccessRoleArn?: string;
   Settings?: TranslationSettings;
 }
+const TextTranslationJobProperties = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<TextTranslationJobProperties>;
 export interface DescribeTextTranslationJobResponse {
   TextTranslationJobProperties?: TextTranslationJobProperties;
 }
+const DescribeTextTranslationJobResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<DescribeTextTranslationJobResponse>;
 export interface GetParallelDataRequest {
   Name: string;
 }
+const GetParallelDataRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<GetParallelDataRequest>;
 export type ParallelDataArn = string;
 export type LanguageCodeStringList = string[];
+const LanguageCodeStringList =
+  TargetLanguageCodeStringList as any as S.Schema<LanguageCodeStringList>;
 export interface ParallelDataProperties {
   Name?: string;
   Arn?: string;
@@ -316,23 +378,43 @@ export interface ParallelDataProperties {
   LatestUpdateAttemptStatus?: ParallelDataStatus;
   LatestUpdateAttemptAt?: Date;
 }
+const ParallelDataProperties = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<ParallelDataProperties>;
 export interface ParallelDataDataLocation {
   RepositoryType: string;
   Location: string;
 }
+const ParallelDataDataLocation = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<ParallelDataDataLocation>;
 export interface GetParallelDataResponse {
   ParallelDataProperties?: ParallelDataProperties;
   DataLocation?: ParallelDataDataLocation;
   AuxiliaryDataLocation?: ParallelDataDataLocation;
   LatestUpdateAttemptAuxiliaryDataLocation?: ParallelDataDataLocation;
 }
+const GetParallelDataResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<GetParallelDataResponse>;
 export type TerminologyDataFormat = "CSV" | "TMX" | "TSV" | (string & {});
+const TerminologyDataFormat = S.String;
+
 export interface GetTerminologyRequest {
   Name: string;
   TerminologyDataFormat?: TerminologyDataFormat;
 }
+const GetTerminologyRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<GetTerminologyRequest>;
 export type TerminologyArn = string;
 export type Directionality = "UNI" | "MULTI" | (string & {});
+const Directionality = S.String;
+
 export interface TerminologyProperties {
   Name?: string;
   Description?: string;
@@ -349,22 +431,35 @@ export interface TerminologyProperties {
   SkippedTermCount?: number;
   Format?: TerminologyDataFormat;
 }
+const TerminologyProperties = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<TerminologyProperties>;
 export interface TerminologyDataLocation {
   RepositoryType: string;
   Location: string;
 }
+const TerminologyDataLocation =
+  ParallelDataDataLocation as any as S.Schema<TerminologyDataLocation>;
 export interface GetTerminologyResponse {
   TerminologyProperties?: TerminologyProperties;
   TerminologyDataLocation?: TerminologyDataLocation;
   AuxiliaryDataLocation?: TerminologyDataLocation;
 }
+const GetTerminologyResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<GetTerminologyResponse>;
 export type MergeStrategy = "OVERWRITE" | (string & {});
+const MergeStrategy = S.String;
+
 export type TerminologyFile = Uint8Array | redacted.Redacted<Uint8Array>;
 export interface TerminologyData {
   File: Uint8Array | redacted.Redacted<Uint8Array>;
   Format: TerminologyDataFormat;
   Directionality?: Directionality;
 }
+const TerminologyData = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<TerminologyData>;
 export interface ImportTerminologyRequest {
   Name: string;
   MergeStrategy: MergeStrategy;
@@ -373,10 +468,18 @@ export interface ImportTerminologyRequest {
   EncryptionKey?: EncryptionKey;
   Tags?: Tag[];
 }
+const ImportTerminologyRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<ImportTerminologyRequest>;
 export interface ImportTerminologyResponse {
   TerminologyProperties?: TerminologyProperties;
   AuxiliaryDataLocation?: TerminologyDataLocation;
 }
+const ImportTerminologyResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<ImportTerminologyResponse>;
 export type DisplayLanguageCode =
   | "de"
   | "en"
@@ -389,6 +492,8 @@ export type DisplayLanguageCode =
   | "zh"
   | "zh-TW"
   | (string & {});
+const DisplayLanguageCode = S.String;
+
 export type NextToken = string;
 export type MaxResultsInteger = number;
 export interface ListLanguagesRequest {
@@ -396,58 +501,104 @@ export interface ListLanguagesRequest {
   NextToken?: string;
   MaxResults?: number;
 }
+const ListLanguagesRequest = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<ListLanguagesRequest>;
 export type LocalizedNameString = string;
 export interface Language {
   LanguageName: string;
   LanguageCode: string;
 }
+const Language = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<Language>;
 export type LanguagesList = Language[];
+const LanguagesList = /*@__PURE__*/ __L.at(__c3, 5);
 export interface ListLanguagesResponse {
   Languages?: Language[];
   DisplayLanguageCode?: DisplayLanguageCode;
   NextToken?: string;
 }
+const ListLanguagesResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<ListLanguagesResponse>;
 export interface ListParallelDataRequest {
   NextToken?: string;
   MaxResults?: number;
 }
+const ListParallelDataRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<ListParallelDataRequest>;
 export type ParallelDataPropertiesList = ParallelDataProperties[];
+const ParallelDataPropertiesList = /*@__PURE__*/ __L.at(__c4, 0);
 export interface ListParallelDataResponse {
   ParallelDataPropertiesList?: ParallelDataProperties[];
   NextToken?: string;
 }
+const ListParallelDataResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<ListParallelDataResponse>;
 export type ResourceArn = string;
 export interface ListTagsForResourceRequest {
   ResourceArn: string;
 }
+const ListTagsForResourceRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<ListTagsForResourceRequest>;
 export interface ListTagsForResourceResponse {
   Tags?: Tag[];
 }
+const ListTagsForResourceResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<ListTagsForResourceResponse>;
 export interface ListTerminologiesRequest {
   NextToken?: string;
   MaxResults?: number;
 }
+const ListTerminologiesRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<ListTerminologiesRequest>;
 export type TerminologyPropertiesList = TerminologyProperties[];
+const TerminologyPropertiesList = /*@__PURE__*/ __L.at(__c4, 5);
 export interface ListTerminologiesResponse {
   TerminologyPropertiesList?: TerminologyProperties[];
   NextToken?: string;
 }
+const ListTerminologiesResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<ListTerminologiesResponse>;
 export interface TextTranslationJobFilter {
   JobName?: string;
   JobStatus?: JobStatus;
   SubmittedBeforeTime?: Date;
   SubmittedAfterTime?: Date;
 }
+const TextTranslationJobFilter = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<TextTranslationJobFilter>;
 export interface ListTextTranslationJobsRequest {
   Filter?: TextTranslationJobFilter;
   NextToken?: string;
   MaxResults?: number;
 }
+const ListTextTranslationJobsRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  0,
+) as any as S.Schema<ListTextTranslationJobsRequest>;
 export type TextTranslationJobPropertiesList = TextTranslationJobProperties[];
+const TextTranslationJobPropertiesList = /*@__PURE__*/ __L.at(__c5, 1);
 export interface ListTextTranslationJobsResponse {
   TextTranslationJobPropertiesList?: TextTranslationJobProperties[];
   NextToken?: string;
 }
+const ListTextTranslationJobsResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  2,
+) as any as S.Schema<ListTextTranslationJobsResponse>;
 export interface StartTextTranslationJobRequest {
   JobName?: string;
   InputDataConfig: InputDataConfig;
@@ -460,27 +611,44 @@ export interface StartTextTranslationJobRequest {
   ClientToken: string;
   Settings?: TranslationSettings;
 }
+const StartTextTranslationJobRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<StartTextTranslationJobRequest>;
 export interface StartTextTranslationJobResponse {
   JobId?: string;
   JobStatus?: JobStatus;
 }
+const StartTextTranslationJobResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  4,
+) as any as S.Schema<StartTextTranslationJobResponse>;
 export interface StopTextTranslationJobRequest {
   JobId: string;
 }
+const StopTextTranslationJobRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  5,
+) as any as S.Schema<StopTextTranslationJobRequest>;
 export interface StopTextTranslationJobResponse {
   JobId?: string;
   JobStatus?: JobStatus;
 }
+const StopTextTranslationJobResponse =
+  StartTextTranslationJobResponse as any as S.Schema<StopTextTranslationJobResponse>;
 export interface TagResourceRequest {
   ResourceArn: string;
   Tags: Tag[];
 }
+const TagResourceRequest = /*@__PURE__*/ __L.at(__c5, 6) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
+const TagResourceResponse = DeleteTerminologyResponse as any as S.Schema<TagResourceResponse>;
 export type DocumentContent = Uint8Array | redacted.Redacted<Uint8Array>;
 export interface Document {
   Content: Uint8Array | redacted.Redacted<Uint8Array>;
   ContentType: string;
 }
+const Document = /*@__PURE__*/ __L.at(__c5, 7) as any as S.Schema<Document>;
 export interface TranslateDocumentRequest {
   Document: Document;
   TerminologyNames?: string[];
@@ -488,20 +656,29 @@ export interface TranslateDocumentRequest {
   TargetLanguageCode: string;
   Settings?: TranslationSettings;
 }
+const TranslateDocumentRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<TranslateDocumentRequest>;
 export type TranslatedDocumentContent = Uint8Array | redacted.Redacted<Uint8Array>;
 export interface TranslatedDocument {
   Content: Uint8Array | redacted.Redacted<Uint8Array>;
 }
+const TranslatedDocument = /*@__PURE__*/ __L.at(__c6, 1) as any as S.Schema<TranslatedDocument>;
 export interface Term {
   SourceText?: string;
   TargetText?: string;
 }
+const Term = /*@__PURE__*/ __L.at(__c6, 2) as any as S.Schema<Term>;
 export type TermList = Term[];
+const TermList = /*@__PURE__*/ __L.at(__c6, 3);
 export interface AppliedTerminology {
   Name?: string;
   Terms?: Term[];
 }
+const AppliedTerminology = /*@__PURE__*/ __L.at(__c6, 4) as any as S.Schema<AppliedTerminology>;
 export type AppliedTerminologyList = AppliedTerminology[];
+const AppliedTerminologyList = /*@__PURE__*/ __L.at(__c6, 5);
 export interface TranslateDocumentResponse {
   TranslatedDocument: TranslatedDocument;
   SourceLanguageCode: string;
@@ -509,6 +686,10 @@ export interface TranslateDocumentResponse {
   AppliedTerminologies?: AppliedTerminology[];
   AppliedSettings?: TranslationSettings;
 }
+const TranslateDocumentResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  6,
+) as any as S.Schema<TranslateDocumentResponse>;
 export type BoundedLengthString = string;
 export interface TranslateTextRequest {
   Text: string;
@@ -517,6 +698,7 @@ export interface TranslateTextRequest {
   TargetLanguageCode: string;
   Settings?: TranslationSettings;
 }
+const TranslateTextRequest = /*@__PURE__*/ __L.at(__c6, 7) as any as S.Schema<TranslateTextRequest>;
 export type TranslatedTextString = string;
 export interface TranslateTextResponse {
   TranslatedText: string;
@@ -525,24 +707,39 @@ export interface TranslateTextResponse {
   AppliedTerminologies?: AppliedTerminology[];
   AppliedSettings?: TranslationSettings;
 }
+const TranslateTextResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  0,
+) as any as S.Schema<TranslateTextResponse>;
 export type TagKeyList = string[];
+const TagKeyList = TargetLanguageCodeStringList as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   ResourceArn: string;
   TagKeys: string[];
 }
+const UntagResourceRequest = /*@__PURE__*/ __L.at(__c7, 1) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
+const UntagResourceResponse = DeleteTerminologyResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateParallelDataRequest {
   Name: string;
   Description?: string;
   ParallelDataConfig: ParallelDataConfig;
   ClientToken: string;
 }
+const UpdateParallelDataRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  2,
+) as any as S.Schema<UpdateParallelDataRequest>;
 export interface UpdateParallelDataResponse {
   Name?: string;
   Status?: ParallelDataStatus;
   LatestUpdateAttemptStatus?: ParallelDataStatus;
   LatestUpdateAttemptAt?: Date;
 }
+const UpdateParallelDataResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  3,
+) as any as S.Schema<UpdateParallelDataResponse>;
 export type CreateParallelDataError =
   | ConcurrentModificationException
   | ConflictException
@@ -565,8 +762,8 @@ export const createParallelData: API.OperationMethod<
   CreateParallelDataError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4) as any as S.Schema<CreateParallelDataRequest>,
-  output: __S(5) as any as S.Schema<CreateParallelDataResponse>,
+  input: CreateParallelDataRequest,
+  output: CreateParallelDataResponse,
   errors: [
     ConcurrentModificationException,
     ConflictException,
@@ -597,8 +794,8 @@ export const deleteParallelData: API.OperationMethod<
   DeleteParallelDataError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6) as any as S.Schema<DeleteParallelDataRequest>,
-  output: __S(5) as any as S.Schema<DeleteParallelDataResponse>,
+  input: DeleteParallelDataRequest,
+  output: DeleteParallelDataResponse,
   errors: [
     ConcurrentModificationException,
     InternalServerException,
@@ -625,8 +822,8 @@ export const deleteTerminology: API.OperationMethod<
   DeleteTerminologyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7) as any as S.Schema<DeleteTerminologyRequest>,
-  output: __S(8) as any as S.Schema<DeleteTerminologyResponse>,
+  input: DeleteTerminologyRequest,
+  output: DeleteTerminologyResponse,
   errors: [
     InternalServerException,
     InvalidParameterValueException,
@@ -653,8 +850,8 @@ export const describeTextTranslationJob: API.OperationMethod<
   DescribeTextTranslationJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9) as any as S.Schema<DescribeTextTranslationJobRequest>,
-  output: __S(16) as any as S.Schema<DescribeTextTranslationJobResponse>,
+  input: DescribeTextTranslationJobRequest,
+  output: DescribeTextTranslationJobResponse,
   errors: [InternalServerException, ResourceNotFoundException, TooManyRequestsException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -676,8 +873,8 @@ export const getParallelData: API.OperationMethod<
   GetParallelDataError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17) as any as S.Schema<GetParallelDataRequest>,
-  output: __S(20) as any as S.Schema<GetParallelDataResponse>,
+  input: GetParallelDataRequest,
+  output: GetParallelDataResponse,
   errors: [
     InternalServerException,
     InvalidParameterValueException,
@@ -704,8 +901,8 @@ export const getTerminology: API.OperationMethod<
   GetTerminologyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21) as any as S.Schema<GetTerminologyRequest>,
-  output: __S(23) as any as S.Schema<GetTerminologyResponse>,
+  input: GetTerminologyRequest,
+  output: GetTerminologyResponse,
   errors: [
     InternalServerException,
     InvalidParameterValueException,
@@ -742,8 +939,8 @@ export const importTerminology: API.OperationMethod<
   ImportTerminologyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25) as any as S.Schema<ImportTerminologyRequest>,
-  output: __S(26) as any as S.Schema<ImportTerminologyResponse>,
+  input: ImportTerminologyRequest,
+  output: ImportTerminologyResponse,
   errors: [
     ConcurrentModificationException,
     InternalServerException,
@@ -773,8 +970,8 @@ export const listLanguages: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(27) as any as S.Schema<ListLanguagesRequest>,
-  output: __S(30) as any as S.Schema<ListLanguagesResponse>,
+  input: ListLanguagesRequest,
+  output: ListLanguagesResponse,
   errors: [
     InternalServerException,
     InvalidParameterValueException,
@@ -806,8 +1003,8 @@ export const listParallelData: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(31) as any as S.Schema<ListParallelDataRequest>,
-  output: __S(33) as any as S.Schema<ListParallelDataResponse>,
+  input: ListParallelDataRequest,
+  output: ListParallelDataResponse,
   errors: [InternalServerException, InvalidParameterValueException, TooManyRequestsException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -835,8 +1032,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34) as any as S.Schema<ListTagsForResourceRequest>,
-  output: __S(35) as any as S.Schema<ListTagsForResourceResponse>,
+  input: ListTagsForResourceRequest,
+  output: ListTagsForResourceResponse,
   errors: [InternalServerException, InvalidParameterValueException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -858,8 +1055,8 @@ export const listTerminologies: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(36) as any as S.Schema<ListTerminologiesRequest>,
-  output: __S(38) as any as S.Schema<ListTerminologiesResponse>,
+  input: ListTerminologiesRequest,
+  output: ListTerminologiesResponse,
   errors: [InternalServerException, InvalidParameterValueException, TooManyRequestsException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -887,8 +1084,8 @@ export const listTextTranslationJobs: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(40) as any as S.Schema<ListTextTranslationJobsRequest>,
-  output: __S(42) as any as S.Schema<ListTextTranslationJobsResponse>,
+  input: ListTextTranslationJobsRequest,
+  output: ListTextTranslationJobsResponse,
   errors: [
     InternalServerException,
     InvalidFilterException,
@@ -930,8 +1127,8 @@ export const startTextTranslationJob: API.OperationMethod<
   StartTextTranslationJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43) as any as S.Schema<StartTextTranslationJobRequest>,
-  output: __S(44) as any as S.Schema<StartTextTranslationJobResponse>,
+  input: StartTextTranslationJobRequest,
+  output: StartTextTranslationJobResponse,
   errors: [
     InternalServerException,
     InvalidParameterValueException,
@@ -967,8 +1164,8 @@ export const stopTextTranslationJob: API.OperationMethod<
   StopTextTranslationJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45) as any as S.Schema<StopTextTranslationJobRequest>,
-  output: __S(44) as any as S.Schema<StopTextTranslationJobResponse>,
+  input: StopTextTranslationJobRequest,
+  output: StopTextTranslationJobResponse,
   errors: [InternalServerException, ResourceNotFoundException, TooManyRequestsException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -994,8 +1191,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(46) as any as S.Schema<TagResourceRequest>,
-  output: __S(8) as any as S.Schema<TagResourceResponse>,
+  input: TagResourceRequest,
+  output: TagResourceResponse,
   errors: [
     ConcurrentModificationException,
     InternalServerException,
@@ -1035,8 +1232,8 @@ export const translateDocument: API.OperationMethod<
   TranslateDocumentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48) as any as S.Schema<TranslateDocumentRequest>,
-  output: __S(54) as any as S.Schema<TranslateDocumentResponse>,
+  input: TranslateDocumentRequest,
+  output: TranslateDocumentResponse,
   errors: [
     InternalServerException,
     InvalidRequestException,
@@ -1071,8 +1268,8 @@ export const translateText: API.OperationMethod<
   TranslateTextError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(55) as any as S.Schema<TranslateTextRequest>,
-  output: __S(56) as any as S.Schema<TranslateTextResponse>,
+  input: TranslateTextRequest,
+  output: TranslateTextResponse,
   errors: [
     DetectedLanguageLowConfidenceException,
     InternalServerException,
@@ -1105,8 +1302,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57) as any as S.Schema<UntagResourceRequest>,
-  output: __S(8) as any as S.Schema<UntagResourceResponse>,
+  input: UntagResourceRequest,
+  output: UntagResourceResponse,
   errors: [
     ConcurrentModificationException,
     InternalServerException,
@@ -1138,8 +1335,8 @@ export const updateParallelData: API.OperationMethod<
   UpdateParallelDataError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(58) as any as S.Schema<UpdateParallelDataRequest>,
-  output: __S(59) as any as S.Schema<UpdateParallelDataResponse>,
+  input: UpdateParallelDataRequest,
+  output: UpdateParallelDataResponse,
   errors: [
     ConcurrentModificationException,
     ConflictException,
@@ -1160,10 +1357,10 @@ function __c0(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ S3Uri: S.optional(S.String), Format: S.optional(S.String) }),
+        S.Struct({ S3Uri: S.optional(S.String), Format: S.optional(ParallelDataFormat) }),
       ).annotate({ identifier: "ParallelDataConfig" });
     case 1:
-      return S.suspend(() => S.Struct({ Type: S.String, Id: S.String })).annotate({
+      return S.suspend(() => S.Struct({ Type: EncryptionKeyType, Id: S.String })).annotate({
         identifier: "EncryptionKey",
       });
     case 2:
@@ -1171,23 +1368,23 @@ function __c0(j: number): any {
         identifier: "Tag",
       });
     case 3:
-      return S.Array(__S(2));
+      return S.Array(Tag);
     case 4:
       return S.suspend(() =>
         S.Struct({
           Name: S.String,
           Description: S.optional(S.String),
-          ParallelDataConfig: __S(0),
-          EncryptionKey: S.optional(__S(1)),
+          ParallelDataConfig: ParallelDataConfig,
+          EncryptionKey: S.optional(EncryptionKey),
           ClientToken: S.String.pipe(T.IdempotencyToken()),
-          Tags: S.optional(__S(3)),
+          Tags: S.optional(TagList),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "CreateParallelDataRequest",
       });
     case 5:
       return S.suspend(() =>
-        S.Struct({ Name: S.optional(S.String), Status: S.optional(S.String) }),
+        S.Struct({ Name: S.optional(S.String), Status: S.optional(ParallelDataStatus) }),
       ).annotate({
         identifier: "CreateParallelDataResponse",
       });
@@ -1237,14 +1434,14 @@ function __c1(j: number): any {
       });
     case 5:
       return S.suspend(() =>
-        S.Struct({ S3Uri: S.String, EncryptionKey: S.optional(__S(1)) }),
+        S.Struct({ S3Uri: S.String, EncryptionKey: S.optional(EncryptionKey) }),
       ).annotate({ identifier: "OutputDataConfig" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          Formality: S.optional(S.String),
-          Profanity: S.optional(S.String),
-          Brevity: S.optional(S.String),
+          Formality: S.optional(Formality),
+          Profanity: S.optional(Profanity),
+          Brevity: S.optional(Brevity),
         }),
       ).annotate({ identifier: "TranslationSettings" });
     case 7:
@@ -1252,19 +1449,19 @@ function __c1(j: number): any {
         S.Struct({
           JobId: S.optional(S.String),
           JobName: S.optional(S.String),
-          JobStatus: S.optional(S.String),
-          JobDetails: S.optional(__S(10)),
+          JobStatus: S.optional(JobStatus),
+          JobDetails: S.optional(JobDetails),
           SourceLanguageCode: S.optional(S.String),
-          TargetLanguageCodes: S.optional(__S(11)),
-          TerminologyNames: S.optional(__S(11)),
-          ParallelDataNames: S.optional(__S(11)),
+          TargetLanguageCodes: S.optional(TargetLanguageCodeStringList),
+          TerminologyNames: S.optional(ResourceNameList),
+          ParallelDataNames: S.optional(ResourceNameList),
           Message: S.optional(S.String),
           SubmittedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           EndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          InputDataConfig: S.optional(__S(12)),
-          OutputDataConfig: S.optional(__S(13)),
+          InputDataConfig: S.optional(InputDataConfig),
+          OutputDataConfig: S.optional(OutputDataConfig),
           DataAccessRoleArn: S.optional(S.String),
-          Settings: S.optional(__S(14)),
+          Settings: S.optional(TranslationSettings),
         }),
       ).annotate({
         identifier: "TextTranslationJobProperties",
@@ -1275,7 +1472,7 @@ function __c2(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ TextTranslationJobProperties: S.optional(__S(15)) }),
+        S.Struct({ TextTranslationJobProperties: S.optional(TextTranslationJobProperties) }),
       ).annotate({
         identifier: "DescribeTextTranslationJobResponse",
       });
@@ -1291,19 +1488,19 @@ function __c2(j: number): any {
           Name: S.optional(S.String),
           Arn: S.optional(S.String),
           Description: S.optional(S.String),
-          Status: S.optional(S.String),
+          Status: S.optional(ParallelDataStatus),
           SourceLanguageCode: S.optional(S.String),
-          TargetLanguageCodes: S.optional(__S(11)),
-          ParallelDataConfig: S.optional(__S(0)),
+          TargetLanguageCodes: S.optional(LanguageCodeStringList),
+          ParallelDataConfig: S.optional(ParallelDataConfig),
           Message: S.optional(S.String),
           ImportedDataSize: S.optional(S.Number),
           ImportedRecordCount: S.optional(S.Number),
           FailedRecordCount: S.optional(S.Number),
           SkippedRecordCount: S.optional(S.Number),
-          EncryptionKey: S.optional(__S(1)),
+          EncryptionKey: S.optional(EncryptionKey),
           CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           LastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          LatestUpdateAttemptStatus: S.optional(S.String),
+          LatestUpdateAttemptStatus: S.optional(ParallelDataStatus),
           LatestUpdateAttemptAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "ParallelDataProperties" });
@@ -1314,15 +1511,15 @@ function __c2(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          ParallelDataProperties: S.optional(__S(18)),
-          DataLocation: S.optional(__S(19)),
-          AuxiliaryDataLocation: S.optional(__S(19)),
-          LatestUpdateAttemptAuxiliaryDataLocation: S.optional(__S(19)),
+          ParallelDataProperties: S.optional(ParallelDataProperties),
+          DataLocation: S.optional(ParallelDataDataLocation),
+          AuxiliaryDataLocation: S.optional(ParallelDataDataLocation),
+          LatestUpdateAttemptAuxiliaryDataLocation: S.optional(ParallelDataDataLocation),
         }),
       ).annotate({ identifier: "GetParallelDataResponse" });
     case 5:
       return S.suspend(() =>
-        S.Struct({ Name: S.String, TerminologyDataFormat: S.optional(S.String) }).pipe(
+        S.Struct({ Name: S.String, TerminologyDataFormat: S.optional(TerminologyDataFormat) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "GetTerminologyRequest" });
@@ -1333,24 +1530,24 @@ function __c2(j: number): any {
           Description: S.optional(S.String),
           Arn: S.optional(S.String),
           SourceLanguageCode: S.optional(S.String),
-          TargetLanguageCodes: S.optional(__S(11)),
-          EncryptionKey: S.optional(__S(1)),
+          TargetLanguageCodes: S.optional(LanguageCodeStringList),
+          EncryptionKey: S.optional(EncryptionKey),
           SizeBytes: S.optional(S.Number),
           TermCount: S.optional(S.Number),
           CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           LastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          Directionality: S.optional(S.String),
+          Directionality: S.optional(Directionality),
           Message: S.optional(S.String),
           SkippedTermCount: S.optional(S.Number),
-          Format: S.optional(S.String),
+          Format: S.optional(TerminologyDataFormat),
         }),
       ).annotate({ identifier: "TerminologyProperties" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          TerminologyProperties: S.optional(__S(22)),
-          TerminologyDataLocation: S.optional(__S(19)),
-          AuxiliaryDataLocation: S.optional(__S(19)),
+          TerminologyProperties: S.optional(TerminologyProperties),
+          TerminologyDataLocation: S.optional(TerminologyDataLocation),
+          AuxiliaryDataLocation: S.optional(TerminologyDataLocation),
         }),
       ).annotate({ identifier: "GetTerminologyResponse" });
   }
@@ -1361,26 +1558,26 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           File: SensitiveBlob,
-          Format: S.String,
-          Directionality: S.optional(S.String),
+          Format: TerminologyDataFormat,
+          Directionality: S.optional(Directionality),
         }),
       ).annotate({ identifier: "TerminologyData" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           Name: S.String,
-          MergeStrategy: S.String,
+          MergeStrategy: MergeStrategy,
           Description: S.optional(S.String),
-          TerminologyData: __S(24),
-          EncryptionKey: S.optional(__S(1)),
-          Tags: S.optional(__S(3)),
+          TerminologyData: TerminologyData,
+          EncryptionKey: S.optional(EncryptionKey),
+          Tags: S.optional(TagList),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ImportTerminologyRequest" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          TerminologyProperties: S.optional(__S(22)),
-          AuxiliaryDataLocation: S.optional(__S(19)),
+          TerminologyProperties: S.optional(TerminologyProperties),
+          AuxiliaryDataLocation: S.optional(TerminologyDataLocation),
         }),
       ).annotate({
         identifier: "ImportTerminologyResponse",
@@ -1388,7 +1585,7 @@ function __c3(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          DisplayLanguageCode: S.optional(S.String),
+          DisplayLanguageCode: S.optional(DisplayLanguageCode),
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -1398,12 +1595,12 @@ function __c3(j: number): any {
         { identifier: "Language" },
       );
     case 5:
-      return S.Array(__S(28));
+      return S.Array(Language);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          Languages: S.optional(__S(29)),
-          DisplayLanguageCode: S.optional(S.String),
+          Languages: S.optional(LanguagesList),
+          DisplayLanguageCode: S.optional(DisplayLanguageCode),
           NextToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListLanguagesResponse" });
@@ -1418,11 +1615,11 @@ function __c3(j: number): any {
 function __c4(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(18));
+      return S.Array(ParallelDataProperties);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          ParallelDataPropertiesList: S.optional(__S(32)),
+          ParallelDataPropertiesList: S.optional(ParallelDataPropertiesList),
           NextToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListParallelDataResponse" });
@@ -1435,7 +1632,7 @@ function __c4(j: number): any {
         identifier: "ListTagsForResourceRequest",
       });
     case 3:
-      return S.suspend(() => S.Struct({ Tags: S.optional(__S(3)) })).annotate({
+      return S.suspend(() => S.Struct({ Tags: S.optional(TagList) })).annotate({
         identifier: "ListTagsForResourceResponse",
       });
     case 4:
@@ -1445,11 +1642,11 @@ function __c4(j: number): any {
         ),
       ).annotate({ identifier: "ListTerminologiesRequest" });
     case 5:
-      return S.Array(__S(22));
+      return S.Array(TerminologyProperties);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          TerminologyPropertiesList: S.optional(__S(37)),
+          TerminologyPropertiesList: S.optional(TerminologyPropertiesList),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -1459,7 +1656,7 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           JobName: S.optional(S.String),
-          JobStatus: S.optional(S.String),
+          JobStatus: S.optional(JobStatus),
           SubmittedBeforeTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           SubmittedAfterTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
@@ -1471,7 +1668,7 @@ function __c5(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          Filter: S.optional(__S(39)),
+          Filter: S.optional(TextTranslationJobFilter),
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -1479,11 +1676,11 @@ function __c5(j: number): any {
         identifier: "ListTextTranslationJobsRequest",
       });
     case 1:
-      return S.Array(__S(15));
+      return S.Array(TextTranslationJobProperties);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          TextTranslationJobPropertiesList: S.optional(__S(41)),
+          TextTranslationJobPropertiesList: S.optional(TextTranslationJobPropertiesList),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -1493,22 +1690,22 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           JobName: S.optional(S.String),
-          InputDataConfig: __S(12),
-          OutputDataConfig: __S(13),
+          InputDataConfig: InputDataConfig,
+          OutputDataConfig: OutputDataConfig,
           DataAccessRoleArn: S.String,
           SourceLanguageCode: S.String,
-          TargetLanguageCodes: __S(11),
-          TerminologyNames: S.optional(__S(11)),
-          ParallelDataNames: S.optional(__S(11)),
+          TargetLanguageCodes: TargetLanguageCodeStringList,
+          TerminologyNames: S.optional(ResourceNameList),
+          ParallelDataNames: S.optional(ResourceNameList),
           ClientToken: S.String.pipe(T.IdempotencyToken()),
-          Settings: S.optional(__S(14)),
+          Settings: S.optional(TranslationSettings),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "StartTextTranslationJobRequest",
       });
     case 4:
       return S.suspend(() =>
-        S.Struct({ JobId: S.optional(S.String), JobStatus: S.optional(S.String) }),
+        S.Struct({ JobId: S.optional(S.String), JobStatus: S.optional(JobStatus) }),
       ).annotate({
         identifier: "StartTextTranslationJobResponse",
       });
@@ -1522,7 +1719,7 @@ function __c5(j: number): any {
       });
     case 6:
       return S.suspend(() =>
-        S.Struct({ ResourceArn: S.String, Tags: __S(3) }).pipe(
+        S.Struct({ ResourceArn: S.String, Tags: TagList }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "TagResourceRequest" });
@@ -1537,11 +1734,11 @@ function __c6(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          Document: __S(47),
-          TerminologyNames: S.optional(__S(11)),
+          Document: Document,
+          TerminologyNames: S.optional(ResourceNameList),
           SourceLanguageCode: S.String,
           TargetLanguageCode: S.String,
-          Settings: S.optional(__S(14)),
+          Settings: S.optional(TranslationSettings),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "TranslateDocumentRequest" });
     case 1:
@@ -1553,21 +1750,21 @@ function __c6(j: number): any {
         S.Struct({ SourceText: S.optional(S.String), TargetText: S.optional(S.String) }),
       ).annotate({ identifier: "Term" });
     case 3:
-      return S.Array(__S(50));
+      return S.Array(Term);
     case 4:
       return S.suspend(() =>
-        S.Struct({ Name: S.optional(S.String), Terms: S.optional(__S(51)) }),
+        S.Struct({ Name: S.optional(S.String), Terms: S.optional(TermList) }),
       ).annotate({ identifier: "AppliedTerminology" });
     case 5:
-      return S.Array(__S(52));
+      return S.Array(AppliedTerminology);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          TranslatedDocument: __S(49),
+          TranslatedDocument: TranslatedDocument,
           SourceLanguageCode: S.String,
           TargetLanguageCode: S.String,
-          AppliedTerminologies: S.optional(__S(53)),
-          AppliedSettings: S.optional(__S(14)),
+          AppliedTerminologies: S.optional(AppliedTerminologyList),
+          AppliedSettings: S.optional(TranslationSettings),
         }),
       ).annotate({
         identifier: "TranslateDocumentResponse",
@@ -1576,10 +1773,10 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Text: S.String,
-          TerminologyNames: S.optional(__S(11)),
+          TerminologyNames: S.optional(ResourceNameList),
           SourceLanguageCode: S.String,
           TargetLanguageCode: S.String,
-          Settings: S.optional(__S(14)),
+          Settings: S.optional(TranslationSettings),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "TranslateTextRequest" });
   }
@@ -1592,13 +1789,13 @@ function __c7(j: number): any {
           TranslatedText: S.String,
           SourceLanguageCode: S.String,
           TargetLanguageCode: S.String,
-          AppliedTerminologies: S.optional(__S(53)),
-          AppliedSettings: S.optional(__S(14)),
+          AppliedTerminologies: S.optional(AppliedTerminologyList),
+          AppliedSettings: S.optional(TranslationSettings),
         }),
       ).annotate({ identifier: "TranslateTextResponse" });
     case 1:
       return S.suspend(() =>
-        S.Struct({ ResourceArn: S.String, TagKeys: __S(11) }).pipe(
+        S.Struct({ ResourceArn: S.String, TagKeys: TagKeyList }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "UntagResourceRequest" });
@@ -1607,7 +1804,7 @@ function __c7(j: number): any {
         S.Struct({
           Name: S.String,
           Description: S.optional(S.String),
-          ParallelDataConfig: __S(0),
+          ParallelDataConfig: ParallelDataConfig,
           ClientToken: S.String.pipe(T.IdempotencyToken()),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
@@ -1617,37 +1814,12 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Name: S.optional(S.String),
-          Status: S.optional(S.String),
-          LatestUpdateAttemptStatus: S.optional(S.String),
+          Status: S.optional(ParallelDataStatus),
+          LatestUpdateAttemptStatus: S.optional(ParallelDataStatus),
           LatestUpdateAttemptAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({
         identifier: "UpdateParallelDataResponse",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
   }
 }

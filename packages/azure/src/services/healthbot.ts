@@ -6,13 +6,16 @@ import { UnknownAzureError } from "../errors.ts";
 import { AzureProtocol, type AzureOpError, type AzureOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { AzureOpError, AzureOpContext };
 
 /** Resource tags. */
 export type CreateBotRequestTagsMap = { [key: string]: string | undefined };
+const CreateBotRequestTagsMap = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<CreateBotRequestTagsMap>;
+
 /** Properties of the key vault. */
 export interface KeyVaultProperties {
   /** The name of the key vault key. */
@@ -24,30 +27,53 @@ export interface KeyVaultProperties {
   /** The user assigned identity (ARM resource id) that has access to the key. */
   userIdentity?: string;
 }
+const KeyVaultProperties = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<KeyVaultProperties>;
+
 /** The properties of a Azure Health Bot. The Health Bot Service is a cloud platform that empowers developers in Healthcare organizations to build and deploy their compliant, AI-powered virtual health assistants and health bots, that help them improve processes and reduce costs. */
 export interface HealthBotPropertiesInput {
   /** KeyVault properties for the resource encryption. */
   keyVaultProperties?: KeyVaultProperties;
 }
+const HealthBotPropertiesInput = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<HealthBotPropertiesInput>;
+
 /** The name of the Azure Health Bot SKU */
 export type SkuName = "F0" | "C0" | "PES" | "C1";
+const SkuName = S.String;
+
 /** The resource model definition representing SKU */
 export interface Sku {
   /** The name of the Azure Health Bot SKU */
   name: SkuName | (string & {});
 }
+const Sku = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<Sku>;
+
 /** The identity type. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user assigned identities. The type 'None' will remove any identities from the Azure Health Bot */
 export type ResourceIdentityType =
   | "SystemAssigned"
   | "UserAssigned"
   | "SystemAssigned, UserAssigned"
   | "None";
+const ResourceIdentityType = S.String;
+
 /** The details of the user assigned managed identity used by the Video Analyzer resource. */
 export interface UserAssignedIdentityInput {}
+const UserAssignedIdentityInput = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<UserAssignedIdentityInput>;
+
 /** The list of user identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'. */
 export type IdentityInputUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentityInput | undefined;
 };
+const IdentityInputUserAssignedIdentitiesMap = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<IdentityInputUserAssignedIdentitiesMap>;
+
 /** Identity for the resource. */
 export interface IdentityInput {
   /** The identity type. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user assigned identities. The type 'None' will remove any identities from the Azure Health Bot */
@@ -55,6 +81,8 @@ export interface IdentityInput {
   /** The list of user identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'. */
   userAssignedIdentities?: IdentityInputUserAssignedIdentitiesMap;
 }
+const IdentityInput = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<IdentityInput>;
+
 export interface CreateBotRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -73,10 +101,16 @@ export interface CreateBotRequest {
   /** The identity of the Azure Health Bot. */
   identity?: IdentityInput;
 }
+const CreateBotRequest = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<CreateBotRequest>;
+
 /** The type of identity that created the resource. */
 export type SystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
+const SystemDataCreatedByType = S.String;
+
 /** The type of identity that last modified the resource. */
 export type SystemDataLastModifiedByType = "User" | "Application" | "ManagedIdentity" | "Key";
+const SystemDataLastModifiedByType = S.String;
+
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface SystemData {
   /** The identity that created the resource. */
@@ -92,8 +126,13 @@ export interface SystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const SystemData = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<SystemData>;
+
 /** Resource tags. */
 export type CreateBotResponseTagsMap = { [key: string]: string | undefined };
+const CreateBotResponseTagsMap =
+  CreateBotRequestTagsMap as any as S.Schema<CreateBotResponseTagsMap>;
+
 /** The properties of a Azure Health Bot. The Health Bot Service is a cloud platform that empowers developers in Healthcare organizations to build and deploy their compliant, AI-powered virtual health assistants and health bots, that help them improve processes and reduce costs. */
 export interface HealthBotProperties {
   /** The provisioning state of the Azure Health Bot resource. */
@@ -105,6 +144,8 @@ export interface HealthBotProperties {
   /** The access control method for the Azure Health Bot resource. */
   accessControlMethod?: string;
 }
+const HealthBotProperties = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<HealthBotProperties>;
+
 /** The details of the user assigned managed identity used by the Video Analyzer resource. */
 export interface UserAssignedIdentity {
   /** The principal ID of user assigned identity. */
@@ -112,8 +153,15 @@ export interface UserAssignedIdentity {
   /** The client ID of user assigned identity. */
   clientId?: string;
 }
+const UserAssignedIdentity = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<UserAssignedIdentity>;
+
 /** The list of user identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'. */
 export type IdentityUserAssignedIdentitiesMap = { [key: string]: UserAssignedIdentity | undefined };
+const IdentityUserAssignedIdentitiesMap = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<IdentityUserAssignedIdentitiesMap>;
+
 /** Identity for the resource. */
 export interface Identity {
   /** The principal ID of resource identity. This property will only be provided for a system assigned identity. */
@@ -125,6 +173,8 @@ export interface Identity {
   /** The list of user identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'. */
   userAssignedIdentities?: IdentityUserAssignedIdentitiesMap;
 }
+const Identity = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<Identity>;
+
 export interface CreateBotResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -145,6 +195,8 @@ export interface CreateBotResponse {
   /** The identity of the Azure Health Bot. */
   identity?: Identity;
 }
+const CreateBotResponse = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<CreateBotResponse>;
+
 export interface DeleteBotRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -153,7 +205,11 @@ export interface DeleteBotRequest {
   /** The name of the Bot resource. */
   botName: string;
 }
+const DeleteBotRequest = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<DeleteBotRequest>;
+
 export interface DeleteBotResponse {}
+const DeleteBotResponse = UserAssignedIdentityInput as any as S.Schema<DeleteBotResponse>;
+
 export interface GetBotRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -162,6 +218,8 @@ export interface GetBotRequest {
   /** The name of the Bot resource. */
   botName: string;
 }
+const GetBotRequest = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<GetBotRequest>;
+
 /** Resource tags. */
 export type GetBotResponseTagsMap = { [key: string]: string | undefined };
 export interface GetBotResponse {
@@ -184,12 +242,19 @@ export interface GetBotResponse {
   /** The identity of the Azure Health Bot. */
   identity?: Identity;
 }
+const GetBotResponse = CreateBotResponse as any as S.Schema<GetBotResponse>;
+
 export interface ListBotByResourceGroupRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
+const ListBotByResourceGroupRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<ListBotByResourceGroupRequest>;
+
 /** Resource tags. */
 export type HealthBotTagsMap = { [key: string]: string | undefined };
 /** Azure Health Bot resource definition */
@@ -213,8 +278,15 @@ export interface HealthBot {
   /** The identity of the Azure Health Bot. */
   identity?: Identity;
 }
+const HealthBot = CreateBotResponse as any as S.Schema<HealthBot>;
+
 /** The HealthBot items on this page */
 export type BotResponseListValueList = Array<HealthBot>;
+const BotResponseListValueList = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<BotResponseListValueList>;
+
 /** The list of Azure Health Bot operation response. */
 export interface BotResponseList {
   /** The HealthBot items on this page */
@@ -222,10 +294,14 @@ export interface BotResponseList {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const BotResponseList = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<BotResponseList>;
+
 export interface ListBotsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
 }
+const ListBotsRequest = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<ListBotsRequest>;
+
 export interface ListBotSecretsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -234,6 +310,11 @@ export interface ListBotSecretsRequest {
   /** The name of the Bot resource. */
   botName: string;
 }
+const ListBotSecretsRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<ListBotSecretsRequest>;
+
 /** An entry of HealthBotKeysResponse */
 export interface HealthBotKey {
   /** The name of the key. */
@@ -241,14 +322,31 @@ export interface HealthBotKey {
   /** The value of the key. */
   value?: string;
 }
+const HealthBotKey = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<HealthBotKey>;
+
 /** Array of Azure Health Bot Secrets. */
 export type HealthBotKeysResponseSecretsList = Array<HealthBotKey>;
+const HealthBotKeysResponseSecretsList = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<HealthBotKeysResponseSecretsList>;
+
 /** Health Bot Keys Response. */
 export interface HealthBotKeysResponse {
   /** Array of Azure Health Bot Secrets. */
   secrets?: HealthBotKeysResponseSecretsList;
 }
+const HealthBotKeysResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<HealthBotKeysResponse>;
+
 export interface ListOperationsRequest {}
+const ListOperationsRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<ListOperationsRequest>;
+
 /** Operation display payload */
 export interface OperationDisplay {
   /** Resource provider of the operation */
@@ -260,6 +358,8 @@ export interface OperationDisplay {
   /** Localized friendly description for the operation */
   description?: string;
 }
+const OperationDisplay = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<OperationDisplay>;
+
 /** Operation detail payload */
 export interface OperationDetail {
   /** Name of the operation */
@@ -273,8 +373,15 @@ export interface OperationDetail {
   /** Additional properties. */
   properties?: unknown;
 }
+const OperationDetail = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<OperationDetail>;
+
 /** Collection of available operation details. */
 export type AvailableOperationsValueList = Array<OperationDetail>;
+const AvailableOperationsValueList = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<AvailableOperationsValueList>;
+
 /** Available operations of the service. */
 export interface AvailableOperations {
   /** Collection of available operation details. */
@@ -282,6 +389,8 @@ export interface AvailableOperations {
   /** URL client should use to fetch the next page (per server side paging). It's null for now, added for future use. */
   nextLink?: string;
 }
+const AvailableOperations = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<AvailableOperations>;
+
 export interface RegenerateBotApiJwtSecretRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -290,8 +399,15 @@ export interface RegenerateBotApiJwtSecretRequest {
   /** The name of the Bot resource. */
   botName: string;
 }
+const RegenerateBotApiJwtSecretRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<RegenerateBotApiJwtSecretRequest>;
+
 /** Tags for a Azure Health Bot. */
 export type UpdateBotRequestTagsMap = { [key: string]: string | undefined };
+const UpdateBotRequestTagsMap = CreateBotRequestTagsMap as any as S.Schema<UpdateBotRequestTagsMap>;
+
 export interface UpdateBotRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -309,6 +425,8 @@ export interface UpdateBotRequest {
   identity?: IdentityInput;
   location?: string;
 }
+const UpdateBotRequest = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<UpdateBotRequest>;
+
 /** Resource tags. */
 export type UpdateBotResponseTagsMap = { [key: string]: string | undefined };
 export interface UpdateBotResponse {
@@ -331,6 +449,8 @@ export interface UpdateBotResponse {
   /** The identity of the Azure Health Bot. */
   identity?: Identity;
 }
+const UpdateBotResponse = CreateBotResponse as any as S.Schema<UpdateBotResponse>;
+
 export type CreateBotError = AzureOpError;
 /** Create a new Azure Health Bot. */
 export const CreateBot: API.OperationMethod<
@@ -339,8 +459,8 @@ export const CreateBot: API.OperationMethod<
   CreateBotError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7) as any as S.Schema<CreateBotRequest>,
-  output: __S(13) as any as S.Schema<CreateBotResponse>,
+  input: CreateBotRequest,
+  output: CreateBotResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -354,8 +474,8 @@ export const DeleteBot: API.OperationMethod<
   DeleteBotError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14) as any as S.Schema<DeleteBotRequest>,
-  output: __S(4) as any as S.Schema<DeleteBotResponse>,
+  input: DeleteBotRequest,
+  output: DeleteBotResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -369,8 +489,8 @@ export const GetBot: API.OperationMethod<
   GetBotError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15) as any as S.Schema<GetBotRequest>,
-  output: __S(13) as any as S.Schema<GetBotResponse>,
+  input: GetBotRequest,
+  output: GetBotResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -384,8 +504,8 @@ export const ListBotByResourceGroup: API.OperationMethod<
   ListBotByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16) as any as S.Schema<ListBotByResourceGroupRequest>,
-  output: __S(18) as any as S.Schema<BotResponseList>,
+  input: ListBotByResourceGroupRequest,
+  output: BotResponseList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -399,8 +519,8 @@ export const ListBots: API.OperationMethod<
   ListBotsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19) as any as S.Schema<ListBotsRequest>,
-  output: __S(18) as any as S.Schema<BotResponseList>,
+  input: ListBotsRequest,
+  output: BotResponseList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -414,8 +534,8 @@ export const ListBotSecrets: API.OperationMethod<
   ListBotSecretsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20) as any as S.Schema<ListBotSecretsRequest>,
-  output: __S(23) as any as S.Schema<HealthBotKeysResponse>,
+  input: ListBotSecretsRequest,
+  output: HealthBotKeysResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -429,8 +549,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24) as any as S.Schema<ListOperationsRequest>,
-  output: __S(28) as any as S.Schema<AvailableOperations>,
+  input: ListOperationsRequest,
+  output: AvailableOperations,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -444,8 +564,8 @@ export const RegenerateBotApiJwtSecret: API.OperationMethod<
   RegenerateBotApiJwtSecretError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29) as any as S.Schema<RegenerateBotApiJwtSecretRequest>,
-  output: __S(21) as any as S.Schema<HealthBotKey>,
+  input: RegenerateBotApiJwtSecretRequest,
+  output: HealthBotKey,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -459,8 +579,8 @@ export const UpdateBot: API.OperationMethod<
   UpdateBotError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30) as any as S.Schema<UpdateBotRequest>,
-  output: __S(13) as any as S.Schema<UpdateBotResponse>,
+  input: UpdateBotRequest,
+  output: UpdateBotResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -483,13 +603,13 @@ function __c0(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          keyVaultProperties: S.optional(__S(1)),
+          keyVaultProperties: S.optional(KeyVaultProperties),
         }),
       ).annotate({ identifier: "HealthBotPropertiesInput" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          name: S.String,
+          name: SkuName,
         }),
       ).annotate({ identifier: "Sku" });
     case 4:
@@ -497,12 +617,12 @@ function __c0(j: number): any {
         identifier: "UserAssignedIdentityInput",
       });
     case 5:
-      return S.Record(S.String, __S(4));
+      return S.Record(S.String, UserAssignedIdentityInput);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(S.String),
-          userAssignedIdentities: S.optional(__S(5)),
+          type: S.optional(ResourceIdentityType),
+          userAssignedIdentities: S.optional(IdentityInputUserAssignedIdentitiesMap),
         }),
       ).annotate({ identifier: "IdentityInput" });
     case 7:
@@ -511,11 +631,11 @@ function __c0(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           botName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(0)),
+          tags: S.optional(CreateBotRequestTagsMap),
           location: S.String,
-          properties: S.optional(__S(2)),
-          sku: __S(3),
-          identity: S.optional(__S(6)),
+          properties: S.optional(HealthBotPropertiesInput),
+          sku: Sku,
+          identity: S.optional(IdentityInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -533,10 +653,10 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
-          createdByType: S.optional(S.String),
+          createdByType: S.optional(SystemDataCreatedByType),
           createdAt: S.optional(S.String),
           lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(S.String),
+          lastModifiedByType: S.optional(SystemDataLastModifiedByType),
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "SystemData" });
@@ -545,7 +665,7 @@ function __c1(j: number): any {
         S.Struct({
           provisioningState: S.optional(S.String),
           botManagementPortalLink: S.optional(S.String),
-          keyVaultProperties: S.optional(__S(1)),
+          keyVaultProperties: S.optional(KeyVaultProperties),
           accessControlMethod: S.optional(S.String),
         }),
       ).annotate({ identifier: "HealthBotProperties" });
@@ -557,14 +677,14 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "UserAssignedIdentity" });
     case 3:
-      return S.Record(S.String, __S(10));
+      return S.Record(S.String, UserAssignedIdentity);
     case 4:
       return S.suspend(() =>
         S.Struct({
           principalId: S.optional(S.String),
           tenantId: S.optional(S.String),
-          type: S.optional(S.String),
-          userAssignedIdentities: S.optional(__S(11)),
+          type: S.optional(ResourceIdentityType),
+          userAssignedIdentities: S.optional(IdentityUserAssignedIdentitiesMap),
         }),
       ).annotate({ identifier: "Identity" });
     case 5:
@@ -573,12 +693,12 @@ function __c1(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(8)),
-          tags: S.optional(__S(0)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(CreateBotResponseTagsMap),
           location: S.String,
-          properties: S.optional(__S(9)),
-          sku: __S(3),
-          identity: S.optional(__S(12)),
+          properties: S.optional(HealthBotProperties),
+          sku: Sku,
+          identity: S.optional(Identity),
         }),
       ).annotate({ identifier: "CreateBotResponse" });
     case 6:
@@ -632,11 +752,11 @@ function __c2(j: number): any {
         identifier: "ListBotByResourceGroupRequest",
       });
     case 1:
-      return S.Array(__S(13));
+      return S.Array(HealthBot);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(17),
+          value: BotResponseListValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "BotResponseList" });
@@ -676,11 +796,11 @@ function __c2(j: number): any {
         }),
       ).annotate({ identifier: "HealthBotKey" });
     case 6:
-      return S.Array(__S(21));
+      return S.Array(HealthBotKey);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          secrets: S.optional(__S(22)),
+          secrets: S.optional(HealthBotKeysResponseSecretsList),
         }),
       ).annotate({ identifier: "HealthBotKeysResponse" });
   }
@@ -712,17 +832,17 @@ function __c3(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           isDataAction: S.optional(S.Boolean),
-          display: S.optional(__S(25)),
+          display: S.optional(OperationDisplay),
           origin: S.optional(S.String),
           properties: S.optional(S.Unknown),
         }),
       ).annotate({ identifier: "OperationDetail" });
     case 3:
-      return S.Array(__S(26));
+      return S.Array(OperationDetail);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: __S(27),
+          value: AvailableOperationsValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "AvailableOperations" });
@@ -749,10 +869,10 @@ function __c3(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           botName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(2)),
-          tags: S.optional(__S(0)),
-          sku: S.optional(__S(3)),
-          identity: S.optional(__S(6)),
+          properties: S.optional(HealthBotPropertiesInput),
+          tags: S.optional(UpdateBotRequestTagsMap),
+          sku: S.optional(Sku),
+          identity: S.optional(IdentityInput),
           location: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -763,22 +883,5 @@ function __c3(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateBotRequest" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
   }
 }

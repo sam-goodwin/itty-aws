@@ -7,13 +7,13 @@ import { SlackError, SlackRateLimited } from "../errors.ts";
 import { SlackProtocol, type SlackOpError, type SlackOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { SlackOpError, SlackOpContext };
 
 /** The `grant_type` param as described in the OAuth spec. */
 export type ConnectTokenRequestGrantType = "authorization_code" | "refresh_token";
+const ConnectTokenRequestGrantType = S.String;
+
 export interface ConnectTokenRequest {
   /** Issued when you created your application. */
   client_id?: string;
@@ -30,7 +30,11 @@ export interface ConnectTokenRequest {
   /** PKCE code verifier (RFC 7636). Required when the authorization request included a `code_challenge`. */
   code_verifier?: string;
 }
+const ConnectTokenRequest = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<ConnectTokenRequest>;
+
 export type ConnectTokenResponseTokenType = "Bearer";
+const ConnectTokenResponseTokenType = S.String;
+
 export interface ConnectTokenResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
@@ -43,7 +47,11 @@ export interface ConnectTokenResponse {
   /** Refresh token for this credential */
   refresh_token?: string | Redacted.Redacted<string>;
 }
+const ConnectTokenResponse = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<ConnectTokenResponse>;
+
 export interface UserInfoRequest {}
+const UserInfoRequest = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<UserInfoRequest>;
+
 export interface UserInfoResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
@@ -79,6 +87,8 @@ export interface UserInfoResponse {
   https___slack_com_team_image_230?: string;
   https___slack_com_team_image_default?: boolean;
 }
+const UserInfoResponse = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<UserInfoResponse>;
+
 export type ConnectTokenError = SlackOpError;
 /** Exchanges a temporary OAuth verifier code for an access token for Sign in with Slack. Rate limit tier: 4 Method-specific errors (the `error` slug on the SlackError): - `bad_client_secret` -- The value passed for `client_secret` was invalid. - `bad_redirect_uri` -- The value passed for `redirect_uri` did not match the `redirect_uri` in the original request. - `cannot_install_an_org_installed_app` -- An org-installed app cannot be installed on a workspace. - `invalid_client` -- Client authentication failed (unknown `client_id` or bad `client_secret`). - `invalid_client_id` -- The value passed for `client_id` was invalid. - `invalid_code` -- The value passed for `code` was invalid. - `invalid_grant` -- The authorization code is invalid, expired, revoked, or the PKCE `code_verifier` does not match. - `invalid_grant_type` -- The value passed for `grant_type` was invalid. - `invalid_refresh_token` -- The given refresh token is invalid. - `invalid_request` -- The request is missing a required parameter or includes an invalid parameter value. - `oauth_authorization_url_mismatch` -- The OAuth flow was initiated on an incorrect version of the authorization URL. The flow must be initiated via /openid/connect/authorize . - `preview_feature_not_available` -- The API method is not yet available on the team. - `unsupported_grant_type` -- The `grant_type` is not supported by this endpoint. See https://docs.slack.dev/reference/methods/openid.connect.token */
 export const connectToken: API.OperationMethod<
@@ -87,8 +97,8 @@ export const connectToken: API.OperationMethod<
   ConnectTokenError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<ConnectTokenRequest>,
-  output: __S(1) as any as S.Schema<ConnectTokenResponse>,
+  input: ConnectTokenRequest,
+  output: ConnectTokenResponse,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -102,8 +112,8 @@ export const userInfo: API.OperationMethod<
   UserInfoError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2) as any as S.Schema<UserInfoRequest>,
-  output: __S(3) as any as S.Schema<UserInfoResponse>,
+  input: UserInfoRequest,
+  output: UserInfoResponse,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -119,7 +129,7 @@ function __c0(j: number): any {
           client_secret: S.optional(S.String.pipe(T.SensitiveValue({}))),
           code: S.optional(S.String),
           redirect_uri: S.optional(S.String),
-          grant_type: S.optional(S.String),
+          grant_type: S.optional(ConnectTokenRequestGrantType),
           refresh_token: S.optional(S.String.pipe(T.SensitiveValue({}))),
           code_verifier: S.optional(S.String),
         }).pipe(
@@ -136,7 +146,7 @@ function __c0(j: number): any {
         S.Struct({
           ok: S.Boolean,
           access_token: S.String.pipe(T.SensitiveValue({})),
-          token_type: S.String,
+          token_type: ConnectTokenResponseTokenType,
           id_token: S.optional(S.String),
           state: S.optional(S.String),
           expires_in: S.optional(S.Number),
@@ -224,16 +234,5 @@ function __c0(j: number): any {
           ),
         }),
       ).annotate({ identifier: "UserInfoResponse" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 2) {
-    case 0:
-      return __c0(i & 3);
   }
 }

@@ -12,8 +12,6 @@ import {
 } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { CloudflareOpError, CloudflareOpContext };
 
@@ -201,7 +199,17 @@ export interface RecordsBatchRequestDeletesItem {
   /** Identifier. */
   id: string;
 }
+const RecordsBatchRequestDeletesItem = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<RecordsBatchRequestDeletesItem>;
+
 export type RecordsBatchRequestDeletesList = Array<RecordsBatchRequestDeletesItem>;
+const RecordsBatchRequestDeletesList = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<RecordsBatchRequestDeletesList>;
+
 export type RecordsBatchRequestPatchesItemARecord = RecordsBatchRequestDeletesItem;
 export type RecordsBatchRequestPatchesItemAAAARecord = RecordsBatchRequestDeletesItem;
 export type RecordsBatchRequestPatchesItemCNAMERecord = RecordsBatchRequestDeletesItem;
@@ -215,6 +223,11 @@ export interface RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings {
   ipv6Only?: boolean;
 }
 export type RecordsBatchRequestPatchesItemOpenpgpkeyRecordTagsList = Array<string>;
+const RecordsBatchRequestPatchesItemOpenpgpkeyRecordTagsList = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<RecordsBatchRequestPatchesItemOpenpgpkeyRecordTagsList>;
+
 export interface RecordsBatchRequestPatchesItemOpenpgpkeyRecord {
   /** Identifier. */
   id: string;
@@ -272,7 +285,14 @@ export type RecordsBatchRequestPatchesItem =
   | RecordsBatchRequestDeletesItem
   | RecordsBatchRequestDeletesItem
   | RecordsBatchRequestDeletesItem;
+const RecordsBatchRequestPatchesItem = /*@__PURE__*/ __L.at(__c0, 3);
+
 export type RecordsBatchRequestPatchesList = Array<RecordsBatchRequestPatchesItem>;
+const RecordsBatchRequestPatchesList = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<RecordsBatchRequestPatchesList>;
+
 export type RecordsBatchRequestPostsItemARecordType = "A";
 export type RecordsBatchRequestPostsItemARecordSettings =
   RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings;
@@ -923,7 +943,14 @@ export type RecordsBatchRequestPostsItem =
   | RecordsBatchRequestPostsItemSVCBRecord
   | RecordsBatchRequestPostsItemTLSARecord
   | RecordsBatchRequestPostsItemURIRecord;
+const RecordsBatchRequestPostsItem = /*@__PURE__*/ __L.at(__c0, 5);
+
 export type RecordsBatchRequestPostsList = Array<RecordsBatchRequestPostsItem>;
+const RecordsBatchRequestPostsList = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<RecordsBatchRequestPostsList>;
+
 export type RecordsBatchRequestPutsItemARecord = RecordsBatchRequestDeletesItem;
 export type RecordsBatchRequestPutsItemAAAARecord = RecordsBatchRequestDeletesItem;
 export type RecordsBatchRequestPutsItemCNAMERecord = RecordsBatchRequestDeletesItem;
@@ -990,7 +1017,14 @@ export type RecordsBatchRequestPutsItem =
   | RecordsBatchRequestDeletesItem
   | RecordsBatchRequestDeletesItem
   | RecordsBatchRequestDeletesItem;
+const RecordsBatchRequestPutsItem = /*@__PURE__*/ __L.at(__c0, 7);
+
 export type RecordsBatchRequestPutsList = Array<RecordsBatchRequestPutsItem>;
+const RecordsBatchRequestPutsList = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<RecordsBatchRequestPutsList>;
+
 export interface BatchRecordRequest {
   /** Identifier. */
   zoneId: string;
@@ -1001,6 +1035,8 @@ export interface BatchRecordRequest {
   posts?: RecordsBatchRequestPostsList;
   puts?: RecordsBatchRequestPutsList;
 }
+const BatchRecordRequest = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<BatchRecordRequest>;
+
 export type RecordsBatchResponseDeletesItemARecordMetaShadowedByList = Array<string>;
 export interface RecordsBatchResponseDeletesItemARecordMeta {
   /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
@@ -1614,7 +1650,14 @@ export type RecordsBatchResponseDeletesItem =
   | RecordsBatchResponseDeletesItemSVCBRecord
   | RecordsBatchResponseDeletesItemTLSARecord
   | RecordsBatchResponseDeletesItemURIRecord;
+const RecordsBatchResponseDeletesItem = /*@__PURE__*/ __L.at(__c1, 2);
+
 export type RecordsBatchResponseDeletesList = Array<RecordsBatchResponseDeletesItem>;
+const RecordsBatchResponseDeletesList = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<RecordsBatchResponseDeletesList>;
+
 export type RecordsBatchResponsePatchesItemARecordMetaShadowedByList = Array<string>;
 export interface RecordsBatchResponsePatchesItemARecordMeta {
   /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
@@ -2224,7 +2267,14 @@ export type RecordsBatchResponsePatchesItem =
   | RecordsBatchResponsePatchesItemSVCBRecord
   | RecordsBatchResponsePatchesItemTLSARecord
   | RecordsBatchResponsePatchesItemURIRecord;
+const RecordsBatchResponsePatchesItem = /*@__PURE__*/ __L.at(__c1, 4);
+
 export type RecordsBatchResponsePatchesList = Array<RecordsBatchResponsePatchesItem>;
+const RecordsBatchResponsePatchesList = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<RecordsBatchResponsePatchesList>;
+
 export type RecordsBatchResponsePostsItemARecordMetaShadowedByList = Array<string>;
 export interface RecordsBatchResponsePostsItemARecordMeta {
   /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
@@ -2834,7 +2884,14 @@ export type RecordsBatchResponsePostsItem =
   | RecordsBatchResponsePostsItemSVCBRecord
   | RecordsBatchResponsePostsItemTLSARecord
   | RecordsBatchResponsePostsItemURIRecord;
+const RecordsBatchResponsePostsItem = /*@__PURE__*/ __L.at(__c1, 6);
+
 export type RecordsBatchResponsePostsList = Array<RecordsBatchResponsePostsItem>;
+const RecordsBatchResponsePostsList = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<RecordsBatchResponsePostsList>;
+
 export type RecordsBatchResponsePutsItemARecordMetaShadowedByList = Array<string>;
 export interface RecordsBatchResponsePutsItemARecordMeta {
   /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
@@ -3444,7 +3501,14 @@ export type RecordsBatchResponsePutsItem =
   | RecordsBatchResponsePutsItemSVCBRecord
   | RecordsBatchResponsePutsItemTLSARecord
   | RecordsBatchResponsePutsItemURIRecord;
+const RecordsBatchResponsePutsItem = /*@__PURE__*/ __L.at(__c2, 0);
+
 export type RecordsBatchResponsePutsList = Array<RecordsBatchResponsePutsItem>;
+const RecordsBatchResponsePutsList = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<RecordsBatchResponsePutsList>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface BatchRecordResponse {
   deletes?: RecordsBatchResponseDeletesList | null;
@@ -3452,6 +3516,8 @@ export interface BatchRecordResponse {
   posts?: RecordsBatchResponsePostsList | null;
   puts?: RecordsBatchResponsePutsList | null;
 }
+const BatchRecordResponse = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<BatchRecordResponse>;
+
 export type RecordsCreateRequestType =
   | "A"
   | "AAAA"
@@ -3474,6 +3540,8 @@ export type RecordsCreateRequestType =
   | "SVCB"
   | "TLSA"
   | "URI";
+const RecordsCreateRequestType = S.String;
+
 export type RecordsCreateRequestSettingsARecord =
   RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings;
 export type RecordsCreateRequestSettingsCNAMERecord =
@@ -3481,7 +3549,12 @@ export type RecordsCreateRequestSettingsCNAMERecord =
 export type RecordsCreateRequestSettings =
   | RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings
   | RecordsBatchRequestPostsItemCNAMERecordSettings;
+const RecordsCreateRequestSettings = /*@__PURE__*/ __L.at(__c2, 3);
+
 export type RecordsCreateRequestTagsList = Array<string>;
+const RecordsCreateRequestTagsList =
+  RecordsBatchRequestPatchesItemOpenpgpkeyRecordTagsList as any as S.Schema<RecordsCreateRequestTagsList>;
+
 export type RecordsCreateRequestDataCAARecord = RecordsBatchRequestPostsItemCAARecordData;
 export type RecordsCreateRequestDataCERTRecord = RecordsBatchRequestPostsItemCERTRecordData;
 export type RecordsCreateRequestDataDNSKEYRecord = RecordsBatchRequestPostsItemDNSKEYRecordData;
@@ -3532,6 +3605,8 @@ export type RecordsCreateRequestData =
   | RecordsBatchRequestPostsItemSRVRecordData
   | RecordsBatchRequestPostsItemSSHFPRecordData
   | RecordsBatchRequestPostsItemURIRecordData;
+const RecordsCreateRequestData = /*@__PURE__*/ __L.at(__c2, 4);
+
 export interface CreateRecordRequest {
   /** Identifier. */
   zoneId: string;
@@ -3560,6 +3635,8 @@ export interface CreateRecordRequest {
   /** Components of a CAA record. */
   data?: RecordsCreateRequestData;
 }
+const CreateRecordRequest = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<CreateRecordRequest>;
+
 export type RecordsCreateResultARecordMetaShadowedByList = Array<string>;
 export interface RecordsCreateResultARecordMeta {
   /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
@@ -4390,8 +4467,15 @@ export type RecordsCreateResult =
   | RecordsCreateResultSVCBRecord
   | RecordsCreateResultTLSARecord
   | RecordsCreateResultURIRecord;
+const RecordsCreateResult = /*@__PURE__*/ __L.at(__c2, 6);
+
 export type CreateRecordResponse = RecordsCreateResult;
+const CreateRecordResponse = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<CreateRecordResponse>;
+
 export type SettingsAccountViewsCreateRequestZonesList = Array<string>;
+const SettingsAccountViewsCreateRequestZonesList =
+  RecordsBatchRequestPatchesItemOpenpgpkeyRecordTagsList as any as S.Schema<SettingsAccountViewsCreateRequestZonesList>;
+
 export interface CreateSettingAccountViewRequest {
   /** Identifier. */
   accountId: string;
@@ -4400,7 +4484,15 @@ export interface CreateSettingAccountViewRequest {
   /** The list of zones linked to this view. */
   zones: SettingsAccountViewsCreateRequestZonesList;
 }
+const CreateSettingAccountViewRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<CreateSettingAccountViewRequest>;
+
 export type SettingsAccountViewsCreateResponseZonesList = Array<string>;
+const SettingsAccountViewsCreateResponseZonesList =
+  RecordsBatchRequestPatchesItemOpenpgpkeyRecordTagsList as any as S.Schema<SettingsAccountViewsCreateResponseZonesList>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateSettingAccountViewResponse {
   /** Identifier. */
@@ -4414,14 +4506,29 @@ export interface CreateSettingAccountViewResponse {
   /** The list of zones linked to this view. */
   zones: SettingsAccountViewsCreateResponseZonesList;
 }
+const CreateSettingAccountViewResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<CreateSettingAccountViewResponse>;
+
 export interface CreateSettingsAccountNameserverSetRequestNameserversItem {
   /** A unique lowercase Punycode nameserver name within the set. */
   name: string;
   /** Number of IPv4 addresses and number of IPv6 addresses to allocate to this nameserver. All nameservers in an Advanced nameserver set must use the same value. */
   ipCount?: number;
 }
+const CreateSettingsAccountNameserverSetRequestNameserversItem = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<CreateSettingsAccountNameserverSetRequestNameserversItem>;
+
 export type CreateSettingsAccountNameserverSetRequestNameserversList =
   Array<CreateSettingsAccountNameserverSetRequestNameserversItem>;
+const CreateSettingsAccountNameserverSetRequestNameserversList = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<CreateSettingsAccountNameserverSetRequestNameserversList>;
+
 export interface CreateSettingsAccountNameserverSetRequest {
   /** Identifier. */
   accountId: string;
@@ -4432,6 +4539,11 @@ export interface CreateSettingsAccountNameserverSetRequest {
   /** Selects the account-specific IP set that supplies the nameserver addresses. The account's entitlement determines the maximum value. Nameserver sets with the same `ip_set` and `advanced` value may reuse addresses; otherwise, they use disjoint address groups. */
   ipSet?: number;
 }
+const CreateSettingsAccountNameserverSetRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<CreateSettingsAccountNameserverSetRequest>;
+
 export type CreateSettingsAccountNameserverSetResultDNSSettingsNameserverSetStandardResponseNameserversItemIpv4List =
   Array<string>;
 export type CreateSettingsAccountNameserverSetResultDNSSettingsNameserverSetStandardResponseNameserversItemIpv6List =
@@ -4501,7 +4613,14 @@ export interface CreateSettingsAccountNameserverSetResultDNSSettingsNameserverSe
 export type CreateSettingsAccountNameserverSetResult =
   | CreateSettingsAccountNameserverSetResultDNSSettingsNameserverSetStandardResponse
   | CreateSettingsAccountNameserverSetResultDNSSettingsNameserverSetAdvancedResponse;
+const CreateSettingsAccountNameserverSetResult = /*@__PURE__*/ __L.at(__c3, 5);
+
 export type CreateSettingsAccountNameserverSetResponse = CreateSettingsAccountNameserverSetResult;
+const CreateSettingsAccountNameserverSetResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<CreateSettingsAccountNameserverSetResponse>;
+
 export interface CreateZoneTransferAclRequest {
   accountId: string;
   /** Allowed IPv4/IPv6 address range of primary or secondary nameservers. This will be applied for the entire account. The IP range is used to allow additional NOTIFY IPs for secondary zones and IPs Cloudflare allows AXFR/IXFR requests from for primary zones. CIDRs are limited to a maximum of /24 for IPv4 and /64 for IPv6 respectively. */
@@ -4509,6 +4628,11 @@ export interface CreateZoneTransferAclRequest {
   /** The name of the acl. */
   name: string;
 }
+const CreateZoneTransferAclRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<CreateZoneTransferAclRequest>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateZoneTransferAclResponse {
   id: string;
@@ -4517,11 +4641,29 @@ export interface CreateZoneTransferAclResponse {
   /** The name of the acl. */
   name: string;
 }
+const CreateZoneTransferAclResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<CreateZoneTransferAclResponse>;
+
 export interface CreateZoneTransferForceAxfrRequest {
   zoneId: string;
 }
+const CreateZoneTransferForceAxfrRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<CreateZoneTransferForceAxfrRequest>;
+
 export type CreateZoneTransferForceAxfrResponse = string;
+const CreateZoneTransferForceAxfrResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<CreateZoneTransferForceAxfrResponse>;
+
 export type ZoneTransfersIncomingCreateRequestPeersList = Array<string>;
+const ZoneTransfersIncomingCreateRequestPeersList =
+  RecordsBatchRequestPatchesItemOpenpgpkeyRecordTagsList as any as S.Schema<ZoneTransfersIncomingCreateRequestPeersList>;
+
 export interface CreateZoneTransferIncomingRequest {
   zoneId: string;
   /** How often should a secondary zone auto refresh regardless of DNS NOTIFY. Not applicable for primary zones. */
@@ -4531,7 +4673,15 @@ export interface CreateZoneTransferIncomingRequest {
   /** A list of peer tags. */
   peers: ZoneTransfersIncomingCreateRequestPeersList;
 }
+const CreateZoneTransferIncomingRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<CreateZoneTransferIncomingRequest>;
+
 export type ZoneTransfersIncomingCreateResponsePeersList = Array<string>;
+const ZoneTransfersIncomingCreateResponsePeersList =
+  RecordsBatchRequestPatchesItemOpenpgpkeyRecordTagsList as any as S.Schema<ZoneTransfersIncomingCreateResponsePeersList>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateZoneTransferIncomingResponse {
   id?: string | null;
@@ -4550,7 +4700,15 @@ export interface CreateZoneTransferIncomingResponse {
   /** The serial number of the SOA for the given zone. */
   soaSerial?: number | null;
 }
+const CreateZoneTransferIncomingResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<CreateZoneTransferIncomingResponse>;
+
 export type ZoneTransfersOutgoingCreateRequestPeersList = Array<string>;
+const ZoneTransfersOutgoingCreateRequestPeersList =
+  RecordsBatchRequestPatchesItemOpenpgpkeyRecordTagsList as any as S.Schema<ZoneTransfersOutgoingCreateRequestPeersList>;
+
 export interface CreateZoneTransferOutgoingRequest {
   zoneId: string;
   /** Zone name. */
@@ -4558,7 +4716,15 @@ export interface CreateZoneTransferOutgoingRequest {
   /** A list of peer tags. */
   peers: ZoneTransfersOutgoingCreateRequestPeersList;
 }
+const CreateZoneTransferOutgoingRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<CreateZoneTransferOutgoingRequest>;
+
 export type ZoneTransfersOutgoingCreateResponsePeersList = Array<string>;
+const ZoneTransfersOutgoingCreateResponsePeersList =
+  RecordsBatchRequestPatchesItemOpenpgpkeyRecordTagsList as any as S.Schema<ZoneTransfersOutgoingCreateResponsePeersList>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateZoneTransferOutgoingResponse {
   id?: string | null;
@@ -4575,11 +4741,21 @@ export interface CreateZoneTransferOutgoingResponse {
   /** The serial number of the SOA for the given zone. */
   soaSerial?: number | null;
 }
+const CreateZoneTransferOutgoingResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<CreateZoneTransferOutgoingResponse>;
+
 export interface CreateZoneTransferPeerRequest {
   accountId: string;
   /** The name of the peer. */
   name: string;
 }
+const CreateZoneTransferPeerRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<CreateZoneTransferPeerRequest>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateZoneTransferPeerResponse {
   id: string;
@@ -4594,6 +4770,11 @@ export interface CreateZoneTransferPeerResponse {
   /** TSIG authentication will be used for zone transfer if configured. */
   tsigId?: string | null;
 }
+const CreateZoneTransferPeerResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  0,
+) as any as S.Schema<CreateZoneTransferPeerResponse>;
+
 export interface CreateZoneTransferTsigRequest {
   accountId: string;
   /** TSIG algorithm. */
@@ -4603,6 +4784,11 @@ export interface CreateZoneTransferTsigRequest {
   /** TSIG secret. */
   secret: string;
 }
+const CreateZoneTransferTsigRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  1,
+) as any as S.Schema<CreateZoneTransferTsigRequest>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateZoneTransferTsigResponse {
   id: string;
@@ -4613,99 +4799,200 @@ export interface CreateZoneTransferTsigResponse {
   /** TSIG secret. */
   secret: string;
 }
+const CreateZoneTransferTsigResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  2,
+) as any as S.Schema<CreateZoneTransferTsigResponse>;
+
 export interface DeleteDnssecRequest {
   /** Identifier. */
   zoneId: string;
 }
+const DeleteDnssecRequest = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<DeleteDnssecRequest>;
+
 export type DeleteDnssecResponse = string;
+const DeleteDnssecResponse = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<DeleteDnssecResponse>;
+
 export interface DeleteRecordRequest {
   /** Identifier. */
   zoneId: string;
   /** Identifier. */
   dnsRecordId: string;
 }
+const DeleteRecordRequest = /*@__PURE__*/ __L.at(__c5, 5) as any as S.Schema<DeleteRecordRequest>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DeleteRecordResponse {
   /** Identifier. */
   id?: string | null;
 }
+const DeleteRecordResponse = /*@__PURE__*/ __L.at(__c5, 6) as any as S.Schema<DeleteRecordResponse>;
+
 export interface DeleteSettingAccountViewRequest {
   /** Identifier. */
   accountId: string;
   /** Identifier. */
   viewId: string;
 }
+const DeleteSettingAccountViewRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  7,
+) as any as S.Schema<DeleteSettingAccountViewRequest>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DeleteSettingAccountViewResponse {
   /** Identifier. */
   id?: string | null;
 }
+const DeleteSettingAccountViewResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<DeleteSettingAccountViewResponse>;
+
 export interface DeleteSettingsAccountNameserverSetRequest {
   /** Identifier. */
   accountId: string;
   /** Identifier for a nameserver set. */
   nameserverSetId: string;
 }
+const DeleteSettingsAccountNameserverSetRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  1,
+) as any as S.Schema<DeleteSettingsAccountNameserverSetRequest>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DeleteSettingsAccountNameserverSetResponse {
   /** Identifier for a nameserver set. */
   id: string;
 }
+const DeleteSettingsAccountNameserverSetResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  2,
+) as any as S.Schema<DeleteSettingsAccountNameserverSetResponse>;
+
 export interface DeleteZoneTransferAclRequest {
   accountId: string;
   aclId: string;
 }
+const DeleteZoneTransferAclRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  3,
+) as any as S.Schema<DeleteZoneTransferAclRequest>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DeleteZoneTransferAclResponse {
   id?: string | null;
 }
+const DeleteZoneTransferAclResponse =
+  DeleteSettingAccountViewResponse as any as S.Schema<DeleteZoneTransferAclResponse>;
+
 export interface DeleteZoneTransferIncomingRequest {
   zoneId: string;
 }
+const DeleteZoneTransferIncomingRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  4,
+) as any as S.Schema<DeleteZoneTransferIncomingRequest>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DeleteZoneTransferIncomingResponse {
   id?: string | null;
 }
+const DeleteZoneTransferIncomingResponse =
+  DeleteSettingAccountViewResponse as any as S.Schema<DeleteZoneTransferIncomingResponse>;
+
 export interface DeleteZoneTransferOutgoingRequest {
   zoneId: string;
 }
+const DeleteZoneTransferOutgoingRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  5,
+) as any as S.Schema<DeleteZoneTransferOutgoingRequest>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DeleteZoneTransferOutgoingResponse {
   id?: string | null;
 }
+const DeleteZoneTransferOutgoingResponse =
+  DeleteSettingAccountViewResponse as any as S.Schema<DeleteZoneTransferOutgoingResponse>;
+
 export interface DeleteZoneTransferPeerRequest {
   accountId: string;
   peerId: string;
 }
+const DeleteZoneTransferPeerRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  6,
+) as any as S.Schema<DeleteZoneTransferPeerRequest>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DeleteZoneTransferPeerResponse {
   id?: string | null;
 }
+const DeleteZoneTransferPeerResponse =
+  DeleteSettingAccountViewResponse as any as S.Schema<DeleteZoneTransferPeerResponse>;
+
 export interface DeleteZoneTransferTsigRequest {
   accountId: string;
   tsigId: string;
 }
+const DeleteZoneTransferTsigRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  7,
+) as any as S.Schema<DeleteZoneTransferTsigRequest>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DeleteZoneTransferTsigResponse {
   id?: string | null;
 }
+const DeleteZoneTransferTsigResponse =
+  DeleteSettingAccountViewResponse as any as S.Schema<DeleteZoneTransferTsigResponse>;
+
 export interface DisableZoneTransferOutgoingRequest {
   zoneId: string;
 }
+const DisableZoneTransferOutgoingRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  0,
+) as any as S.Schema<DisableZoneTransferOutgoingRequest>;
+
 export type DisableZoneTransferOutgoingResponse = string;
+const DisableZoneTransferOutgoingResponse =
+  CreateZoneTransferForceAxfrResponse as any as S.Schema<DisableZoneTransferOutgoingResponse>;
+
 export interface EnableZoneTransferOutgoingRequest {
   zoneId: string;
 }
+const EnableZoneTransferOutgoingRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  1,
+) as any as S.Schema<EnableZoneTransferOutgoingRequest>;
+
 export type EnableZoneTransferOutgoingResponse = string;
+const EnableZoneTransferOutgoingResponse =
+  CreateZoneTransferForceAxfrResponse as any as S.Schema<EnableZoneTransferOutgoingResponse>;
+
 export interface ExportRecordRequest {
   /** Identifier. */
   zoneId: string;
 }
+const ExportRecordRequest = /*@__PURE__*/ __L.at(__c7, 2) as any as S.Schema<ExportRecordRequest>;
+
 export interface ExportRecordResponse {}
+const ExportRecordResponse = /*@__PURE__*/ __L.at(__c7, 3) as any as S.Schema<ExportRecordResponse>;
+
 export interface ForceNotifyZoneTransferOutgoingRequest {
   zoneId: string;
 }
+const ForceNotifyZoneTransferOutgoingRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  4,
+) as any as S.Schema<ForceNotifyZoneTransferOutgoingRequest>;
+
 export type ForceNotifyZoneTransferOutgoingResponse = string;
+const ForceNotifyZoneTransferOutgoingResponse =
+  CreateZoneTransferForceAxfrResponse as any as S.Schema<ForceNotifyZoneTransferOutgoingResponse>;
+
 export interface GetAnalyticReportRequest {
   /** Identifier. */
   zoneId: string;
@@ -4724,18 +5011,50 @@ export interface GetAnalyticReportRequest {
   /** End date and time of requesting data period in ISO 8601 format. */
   until?: string;
 }
+const GetAnalyticReportRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  5,
+) as any as S.Schema<GetAnalyticReportRequest>;
+
 export type AnalyticsReportsGetResponseDataItemDimensionsList = Array<string>;
+const AnalyticsReportsGetResponseDataItemDimensionsList =
+  RecordsBatchRequestPatchesItemOpenpgpkeyRecordTagsList as any as S.Schema<AnalyticsReportsGetResponseDataItemDimensionsList>;
+
 export type AnalyticsReportsGetResponseDataItemMetricsList = Array<number>;
+const AnalyticsReportsGetResponseDataItemMetricsList = /*@__PURE__*/ __L.at(
+  __c7,
+  6,
+) as any as S.Schema<AnalyticsReportsGetResponseDataItemMetricsList>;
+
 export interface AnalyticsReportsGetResponseDataItem {
   /** Array of dimension values, representing the combination of dimension values corresponding to this row. */
   dimensions: AnalyticsReportsGetResponseDataItemDimensionsList;
   /** Array with one item per requested metric. Each item is a single value. */
   metrics: AnalyticsReportsGetResponseDataItemMetricsList;
 }
+const AnalyticsReportsGetResponseDataItem = /*@__PURE__*/ __L.at(
+  __c7,
+  7,
+) as any as S.Schema<AnalyticsReportsGetResponseDataItem>;
+
 export type AnalyticsReportsGetResponseDataList = Array<AnalyticsReportsGetResponseDataItem>;
+const AnalyticsReportsGetResponseDataList = /*@__PURE__*/ __L.at(
+  __c8,
+  0,
+) as any as S.Schema<AnalyticsReportsGetResponseDataList>;
+
 export type AnalyticsReportsGetResponseQueryDimensionsList = Array<string>;
+const AnalyticsReportsGetResponseQueryDimensionsList =
+  RecordsBatchRequestPatchesItemOpenpgpkeyRecordTagsList as any as S.Schema<AnalyticsReportsGetResponseQueryDimensionsList>;
+
 export type AnalyticsReportsGetResponseQueryMetricsList = Array<string>;
+const AnalyticsReportsGetResponseQueryMetricsList =
+  RecordsBatchRequestPatchesItemOpenpgpkeyRecordTagsList as any as S.Schema<AnalyticsReportsGetResponseQueryMetricsList>;
+
 export type AnalyticsReportsGetResponseQuerySortList = Array<string>;
+const AnalyticsReportsGetResponseQuerySortList =
+  RecordsBatchRequestPatchesItemOpenpgpkeyRecordTagsList as any as S.Schema<AnalyticsReportsGetResponseQuerySortList>;
+
 export interface AnalyticsReportsGetResponseQuery {
   /** Array of dimension names. */
   dimensions: AnalyticsReportsGetResponseQueryDimensionsList;
@@ -4752,6 +5071,11 @@ export interface AnalyticsReportsGetResponseQuery {
   /** Array of dimensions to sort by, where each dimension may be prefixed by - (descending) or + (ascending). */
   sort?: AnalyticsReportsGetResponseQuerySortList | null;
 }
+const AnalyticsReportsGetResponseQuery = /*@__PURE__*/ __L.at(
+  __c8,
+  1,
+) as any as S.Schema<AnalyticsReportsGetResponseQuery>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetAnalyticReportResponse {
   /** Array with one row per combination of dimension values. */
@@ -4768,6 +5092,11 @@ export interface GetAnalyticReportResponse {
   /** Total results for metrics across all data (object mapping metric names to values). */
   totals: unknown;
 }
+const GetAnalyticReportResponse = /*@__PURE__*/ __L.at(
+  __c8,
+  2,
+) as any as S.Schema<GetAnalyticReportResponse>;
+
 export type AnalyticsReportsBytimesGetRequestTimeDelta =
   | "all"
   | "auto"
@@ -4779,6 +5108,8 @@ export type AnalyticsReportsBytimesGetRequestTimeDelta =
   | "hour"
   | "dekaminute"
   | "minute";
+const AnalyticsReportsBytimesGetRequestTimeDelta = S.String;
+
 export interface GetAnalyticReportBytimeRequest {
   /** Identifier. */
   zoneId: string;
@@ -4799,20 +5130,52 @@ export interface GetAnalyticReportBytimeRequest {
   /** End date and time of requesting data period in ISO 8601 format. */
   until?: string;
 }
+const GetAnalyticReportBytimeRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  3,
+) as any as S.Schema<GetAnalyticReportBytimeRequest>;
+
 export type AnalyticsReportsBytimesGetResponseDataItemDimensionsList = Array<string>;
+const AnalyticsReportsBytimesGetResponseDataItemDimensionsList =
+  RecordsBatchRequestPatchesItemOpenpgpkeyRecordTagsList as any as S.Schema<AnalyticsReportsBytimesGetResponseDataItemDimensionsList>;
+
 export type AnalyticsReportsBytimesGetResponseDataItemMetricsItemList = Array<number>;
+const AnalyticsReportsBytimesGetResponseDataItemMetricsItemList =
+  AnalyticsReportsGetResponseDataItemMetricsList as any as S.Schema<AnalyticsReportsBytimesGetResponseDataItemMetricsItemList>;
+
 export type AnalyticsReportsBytimesGetResponseDataItemMetricsList =
   Array<AnalyticsReportsBytimesGetResponseDataItemMetricsItemList>;
+const AnalyticsReportsBytimesGetResponseDataItemMetricsList = /*@__PURE__*/ __L.at(
+  __c8,
+  4,
+) as any as S.Schema<AnalyticsReportsBytimesGetResponseDataItemMetricsList>;
+
 export interface AnalyticsReportsBytimesGetResponseDataItem {
   /** Array of dimension values, representing the combination of dimension values corresponding to this row. */
   dimensions: AnalyticsReportsBytimesGetResponseDataItemDimensionsList;
   /** Array with one item per requested metric. Each item is an array of values, broken down by time interval. */
   metrics: AnalyticsReportsBytimesGetResponseDataItemMetricsList;
 }
+const AnalyticsReportsBytimesGetResponseDataItem = /*@__PURE__*/ __L.at(
+  __c8,
+  5,
+) as any as S.Schema<AnalyticsReportsBytimesGetResponseDataItem>;
+
 export type AnalyticsReportsBytimesGetResponseDataList =
   Array<AnalyticsReportsBytimesGetResponseDataItem>;
+const AnalyticsReportsBytimesGetResponseDataList = /*@__PURE__*/ __L.at(
+  __c8,
+  6,
+) as any as S.Schema<AnalyticsReportsBytimesGetResponseDataList>;
+
 export type AnalyticsReportsBytimesGetResponseQueryDimensionsList = Array<string>;
+const AnalyticsReportsBytimesGetResponseQueryDimensionsList =
+  RecordsBatchRequestPatchesItemOpenpgpkeyRecordTagsList as any as S.Schema<AnalyticsReportsBytimesGetResponseQueryDimensionsList>;
+
 export type AnalyticsReportsBytimesGetResponseQueryMetricsList = Array<string>;
+const AnalyticsReportsBytimesGetResponseQueryMetricsList =
+  RecordsBatchRequestPatchesItemOpenpgpkeyRecordTagsList as any as S.Schema<AnalyticsReportsBytimesGetResponseQueryMetricsList>;
+
 export type AnalyticsReportsBytimesGetResponseQueryTimeDelta =
   | "all"
   | "auto"
@@ -4824,7 +5187,12 @@ export type AnalyticsReportsBytimesGetResponseQueryTimeDelta =
   | "hour"
   | "dekaminute"
   | "minute";
+const AnalyticsReportsBytimesGetResponseQueryTimeDelta = S.String;
+
 export type AnalyticsReportsBytimesGetResponseQuerySortList = Array<string>;
+const AnalyticsReportsBytimesGetResponseQuerySortList =
+  RecordsBatchRequestPatchesItemOpenpgpkeyRecordTagsList as any as S.Schema<AnalyticsReportsBytimesGetResponseQuerySortList>;
+
 export interface AnalyticsReportsBytimesGetResponseQuery {
   /** Array of dimension names. */
   dimensions: AnalyticsReportsBytimesGetResponseQueryDimensionsList;
@@ -4843,9 +5211,22 @@ export interface AnalyticsReportsBytimesGetResponseQuery {
   /** Array of dimensions to sort by, where each dimension may be prefixed by - (descending) or + (ascending). */
   sort?: AnalyticsReportsBytimesGetResponseQuerySortList | null;
 }
+const AnalyticsReportsBytimesGetResponseQuery = /*@__PURE__*/ __L.at(
+  __c8,
+  7,
+) as any as S.Schema<AnalyticsReportsBytimesGetResponseQuery>;
+
 export type AnalyticsReportsBytimesGetResponseTimeIntervalsItemList = Array<string>;
+const AnalyticsReportsBytimesGetResponseTimeIntervalsItemList =
+  RecordsBatchRequestPatchesItemOpenpgpkeyRecordTagsList as any as S.Schema<AnalyticsReportsBytimesGetResponseTimeIntervalsItemList>;
+
 export type AnalyticsReportsBytimesGetResponseTimeIntervalsList =
   Array<AnalyticsReportsBytimesGetResponseTimeIntervalsItemList>;
+const AnalyticsReportsBytimesGetResponseTimeIntervalsList = /*@__PURE__*/ __L.at(
+  __c9,
+  0,
+) as any as S.Schema<AnalyticsReportsBytimesGetResponseTimeIntervalsList>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetAnalyticReportBytimeResponse {
   /** Array with one row per combination of dimension values. */
@@ -4864,16 +5245,25 @@ export interface GetAnalyticReportBytimeResponse {
   /** Total results for metrics across all data (object mapping metric names to values). */
   totals: unknown;
 }
+const GetAnalyticReportBytimeResponse = /*@__PURE__*/ __L.at(
+  __c9,
+  1,
+) as any as S.Schema<GetAnalyticReportBytimeResponse>;
+
 export interface GetDnssecRequest {
   /** Identifier. */
   zoneId: string;
 }
+const GetDnssecRequest = /*@__PURE__*/ __L.at(__c9, 2) as any as S.Schema<GetDnssecRequest>;
+
 export type DnssecGetResponseStatus =
   | "active"
   | "pending"
   | "disabled"
   | "pending-disabled"
   | "error";
+const DnssecGetResponseStatus = S.String;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetDnssecResponse {
   /** Algorithm key code. */
@@ -4905,6 +5295,8 @@ export interface GetDnssecResponse {
   /** Status of DNSSEC, based on user-desired state and presence of necessary records. */
   status?: DnssecGetResponseStatus | null;
 }
+const GetDnssecResponse = /*@__PURE__*/ __L.at(__c9, 3) as any as S.Schema<GetDnssecResponse>;
+
 export interface GetRecordRequest {
   /** Identifier. */
   zoneId: string;
@@ -4913,6 +5305,8 @@ export interface GetRecordRequest {
   /** Whether to include shadow metadata in the `meta` field of each record in the response. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
   includeShadowMetadata?: boolean;
 }
+const GetRecordRequest = /*@__PURE__*/ __L.at(__c9, 4) as any as S.Schema<GetRecordRequest>;
+
 export type RecordsGetResultARecordMetaShadowedByList = Array<string>;
 export interface RecordsGetResultARecordMeta {
   /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
@@ -5722,25 +6116,46 @@ export type RecordsGetResult =
   | RecordsGetResultSVCBRecord
   | RecordsGetResultTLSARecord
   | RecordsGetResultURIRecord;
+const RecordsGetResult = /*@__PURE__*/ __L.at(__c9, 5);
+
 export type GetRecordResponse = RecordsGetResult;
+const GetRecordResponse = /*@__PURE__*/ __L.at(__c9, 6) as any as S.Schema<GetRecordResponse>;
+
 export interface GetSettingAccountRequest {
   /** Identifier. */
   accountId: string;
 }
+const GetSettingAccountRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  7,
+) as any as S.Schema<GetSettingAccountRequest>;
+
 export interface SettingsAccountGetResponseZoneDefaultsInternalDns {
   /** The ID of the zone to fallback to. */
   referenceZoneId?: string | null;
 }
+const SettingsAccountGetResponseZoneDefaultsInternalDns = /*@__PURE__*/ __L.at(
+  __c10,
+  0,
+) as any as S.Schema<SettingsAccountGetResponseZoneDefaultsInternalDns>;
+
 export type SettingsAccountGetResponseZoneDefaultsNameserversType =
   | "cloudflare.standard"
   | "cloudflare.advanced"
   | "cloudflare.standard.random"
   | "custom.account"
   | "custom.tenant";
+const SettingsAccountGetResponseZoneDefaultsNameserversType = S.String;
+
 export interface SettingsAccountGetResponseZoneDefaultsNameservers {
   /** Nameserver type */
   type: SettingsAccountGetResponseZoneDefaultsNameserversType;
 }
+const SettingsAccountGetResponseZoneDefaultsNameservers = /*@__PURE__*/ __L.at(
+  __c10,
+  1,
+) as any as S.Schema<SettingsAccountGetResponseZoneDefaultsNameservers>;
+
 export interface SettingsAccountGetResponseZoneDefaultsSoa {
   /** Time in seconds of being unable to query the primary server after which secondary servers should stop serving the zone. */
   expire?: number | null;
@@ -5757,7 +6172,14 @@ export interface SettingsAccountGetResponseZoneDefaultsSoa {
   /** The time to live (TTL) of the SOA record itself. */
   ttl?: number | null;
 }
+const SettingsAccountGetResponseZoneDefaultsSoa = /*@__PURE__*/ __L.at(
+  __c10,
+  2,
+) as any as S.Schema<SettingsAccountGetResponseZoneDefaultsSoa>;
+
 export type SettingsAccountGetResponseZoneDefaultsZoneMode = "standard" | "cdn_only" | "dns_only";
+const SettingsAccountGetResponseZoneDefaultsZoneMode = S.String;
+
 export interface SettingsAccountGetResponseZoneDefaults {
   /** Whether to flatten all CNAME records in the zone. Note that, due to DNS limitations, a CNAME record at the zone apex will always be flattened. */
   flattenAllCnames: boolean;
@@ -5778,6 +6200,11 @@ export interface SettingsAccountGetResponseZoneDefaults {
   /** Whether the zone mode is a regular or CDN/DNS only zone. */
   zoneMode: SettingsAccountGetResponseZoneDefaultsZoneMode;
 }
+const SettingsAccountGetResponseZoneDefaults = /*@__PURE__*/ __L.at(
+  __c10,
+  3,
+) as any as S.Schema<SettingsAccountGetResponseZoneDefaults>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetSettingAccountResponse {
   /** Default settings for new zones created in this account. */
@@ -5785,12 +6212,22 @@ export interface GetSettingAccountResponse {
   /** When enabled, forces all proxied DNS records in the account to behave as DNS-only at the edge, regardless of each record's individual proxy setting. Note that this account-level override does not modify the records themselves; it only affects how they are served at the edge. See more on [Enforce DNS-only](https://developers.cloudflare.com/dns/proxy-status/enforce-dns-only). */
   enforceDnsOnly?: boolean | null;
 }
+const GetSettingAccountResponse = /*@__PURE__*/ __L.at(
+  __c10,
+  4,
+) as any as S.Schema<GetSettingAccountResponse>;
+
 export interface GetSettingAccountViewRequest {
   /** Identifier. */
   accountId: string;
   /** Identifier. */
   viewId: string;
 }
+const GetSettingAccountViewRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  5,
+) as any as S.Schema<GetSettingAccountViewRequest>;
+
 export type SettingsAccountViewsGetResponseZonesList = Array<string>;
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetSettingAccountViewResponse {
@@ -5805,12 +6242,20 @@ export interface GetSettingAccountViewResponse {
   /** The list of zones linked to this view. */
   zones: SettingsAccountViewsGetResponseZonesList;
 }
+const GetSettingAccountViewResponse =
+  CreateSettingAccountViewResponse as any as S.Schema<GetSettingAccountViewResponse>;
+
 export interface GetSettingsAccountNameserverSetRequest {
   /** Identifier. */
   accountId: string;
   /** Identifier for a nameserver set. */
   nameserverSetId: string;
 }
+const GetSettingsAccountNameserverSetRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  6,
+) as any as S.Schema<GetSettingsAccountNameserverSetRequest>;
+
 export type GetSettingsAccountNameserverSetResultDNSSettingsNameserverSetStandardResponseNameserversItemIpv4List =
   Array<string>;
 export type GetSettingsAccountNameserverSetResultDNSSettingsNameserverSetStandardResponseNameserversItemIpv6List =
@@ -5880,11 +6325,23 @@ export interface GetSettingsAccountNameserverSetResultDNSSettingsNameserverSetAd
 export type GetSettingsAccountNameserverSetResult =
   | GetSettingsAccountNameserverSetResultDNSSettingsNameserverSetStandardResponse
   | GetSettingsAccountNameserverSetResultDNSSettingsNameserverSetAdvancedResponse;
+const GetSettingsAccountNameserverSetResult = /*@__PURE__*/ __L.at(__c10, 7);
+
 export type GetSettingsAccountNameserverSetResponse = GetSettingsAccountNameserverSetResult;
+const GetSettingsAccountNameserverSetResponse = /*@__PURE__*/ __L.at(
+  __c11,
+  0,
+) as any as S.Schema<GetSettingsAccountNameserverSetResponse>;
+
 export interface GetSettingZoneRequest {
   /** Identifier. */
   zoneId: string;
 }
+const GetSettingZoneRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  1,
+) as any as S.Schema<GetSettingZoneRequest>;
+
 export type SettingsZoneGetResponseInternalDns = SettingsAccountGetResponseZoneDefaultsInternalDns;
 export type SettingsZoneGetResponseNameserversDNSSettingsZoneNameserversCloudflareType =
   | "cloudflare.standard"
@@ -5914,8 +6371,12 @@ export type SettingsZoneGetResponseNameservers =
   | SettingsZoneGetResponseNameserversDNSSettingsZoneNameserversCloudflare
   | SettingsZoneGetResponseNameserversDNSSettingsZoneNameserversCustomExisting
   | SettingsZoneGetResponseNameserversDNSSettingsZoneNameserversCustomSet;
+const SettingsZoneGetResponseNameservers = /*@__PURE__*/ __L.at(__c11, 2);
+
 export type SettingsZoneGetResponseSoa = SettingsAccountGetResponseZoneDefaultsSoa;
 export type SettingsZoneGetResponseZoneMode = "standard" | "cdn_only" | "dns_only";
+const SettingsZoneGetResponseZoneMode = S.String;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetSettingZoneResponse {
   /** Whether to flatten all CNAME records in the zone. Note that, due to DNS limitations, a CNAME record at the zone apex will always be flattened. */
@@ -5937,10 +6398,20 @@ export interface GetSettingZoneResponse {
   /** Whether the zone mode is a regular or CDN/DNS only zone. */
   zoneMode: SettingsZoneGetResponseZoneMode;
 }
+const GetSettingZoneResponse = /*@__PURE__*/ __L.at(
+  __c11,
+  3,
+) as any as S.Schema<GetSettingZoneResponse>;
+
 export interface GetUsageAccountRequest {
   /** Identifier. */
   accountId: string;
 }
+const GetUsageAccountRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  4,
+) as any as S.Schema<GetUsageAccountRequest>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetUsageAccountResponse {
   /** Maximum number of DNS records allowed across all public zones in the account. Null if using zone-level quota. */
@@ -5952,10 +6423,17 @@ export interface GetUsageAccountResponse {
   /** Current number of DNS records across all internal zones in the account. Only present if internal DNS is enabled. */
   internalRecordUsage?: number | null;
 }
+const GetUsageAccountResponse = /*@__PURE__*/ __L.at(
+  __c11,
+  5,
+) as any as S.Schema<GetUsageAccountResponse>;
+
 export interface GetUsageZoneRequest {
   /** Identifier. */
   zoneId: string;
 }
+const GetUsageZoneRequest = /*@__PURE__*/ __L.at(__c11, 6) as any as S.Schema<GetUsageZoneRequest>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetUsageZoneResponse {
   /** Maximum number of DNS records allowed for the zone. Null if using account-level quota. */
@@ -5963,10 +6441,20 @@ export interface GetUsageZoneResponse {
   /** Current number of DNS records in the zone. */
   recordUsage: number;
 }
+const GetUsageZoneResponse = /*@__PURE__*/ __L.at(
+  __c11,
+  7,
+) as any as S.Schema<GetUsageZoneResponse>;
+
 export interface GetZoneTransferAclRequest {
   accountId: string;
   aclId: string;
 }
+const GetZoneTransferAclRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  0,
+) as any as S.Schema<GetZoneTransferAclRequest>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetZoneTransferAclResponse {
   id: string;
@@ -5975,9 +6463,17 @@ export interface GetZoneTransferAclResponse {
   /** The name of the acl. */
   name: string;
 }
+const GetZoneTransferAclResponse =
+  CreateZoneTransferAclResponse as any as S.Schema<GetZoneTransferAclResponse>;
+
 export interface GetZoneTransferIncomingRequest {
   zoneId: string;
 }
+const GetZoneTransferIncomingRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  1,
+) as any as S.Schema<GetZoneTransferIncomingRequest>;
+
 export type ZoneTransfersIncomingGetResponsePeersList = Array<string>;
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetZoneTransferIncomingResponse {
@@ -5997,9 +6493,17 @@ export interface GetZoneTransferIncomingResponse {
   /** The serial number of the SOA for the given zone. */
   soaSerial?: number | null;
 }
+const GetZoneTransferIncomingResponse =
+  CreateZoneTransferIncomingResponse as any as S.Schema<GetZoneTransferIncomingResponse>;
+
 export interface GetZoneTransferOutgoingRequest {
   zoneId: string;
 }
+const GetZoneTransferOutgoingRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  2,
+) as any as S.Schema<GetZoneTransferOutgoingRequest>;
+
 export type ZoneTransfersOutgoingGetResponsePeersList = Array<string>;
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetZoneTransferOutgoingResponse {
@@ -6017,14 +6521,30 @@ export interface GetZoneTransferOutgoingResponse {
   /** The serial number of the SOA for the given zone. */
   soaSerial?: number | null;
 }
+const GetZoneTransferOutgoingResponse =
+  CreateZoneTransferOutgoingResponse as any as S.Schema<GetZoneTransferOutgoingResponse>;
+
 export interface GetZoneTransferOutgoingStatusRequest {
   zoneId: string;
 }
+const GetZoneTransferOutgoingStatusRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  3,
+) as any as S.Schema<GetZoneTransferOutgoingStatusRequest>;
+
 export type GetZoneTransferOutgoingStatusResponse = string;
+const GetZoneTransferOutgoingStatusResponse =
+  CreateZoneTransferForceAxfrResponse as any as S.Schema<GetZoneTransferOutgoingStatusResponse>;
+
 export interface GetZoneTransferPeerRequest {
   accountId: string;
   peerId: string;
 }
+const GetZoneTransferPeerRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  4,
+) as any as S.Schema<GetZoneTransferPeerRequest>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetZoneTransferPeerResponse {
   id: string;
@@ -6039,10 +6559,18 @@ export interface GetZoneTransferPeerResponse {
   /** TSIG authentication will be used for zone transfer if configured. */
   tsigId?: string | null;
 }
+const GetZoneTransferPeerResponse =
+  CreateZoneTransferPeerResponse as any as S.Schema<GetZoneTransferPeerResponse>;
+
 export interface GetZoneTransferTsigRequest {
   accountId: string;
   tsigId: string;
 }
+const GetZoneTransferTsigRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  5,
+) as any as S.Schema<GetZoneTransferTsigRequest>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetZoneTransferTsigResponse {
   id: string;
@@ -6053,6 +6581,9 @@ export interface GetZoneTransferTsigResponse {
   /** TSIG secret. */
   secret: string;
 }
+const GetZoneTransferTsigResponse =
+  CreateZoneTransferTsigResponse as any as S.Schema<GetZoneTransferTsigResponse>;
+
 export interface ImportRecordRequest {
   /** Identifier. */
   zoneId: string;
@@ -6061,6 +6592,8 @@ export interface ImportRecordRequest {
   /** Whether or not proxiable records should receive the performance and security benefits of Cloudflare. */
   proxied?: string;
 }
+const ImportRecordRequest = /*@__PURE__*/ __L.at(__c12, 6) as any as S.Schema<ImportRecordRequest>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface ImportRecordResponse {
   /** Number of DNS records added. */
@@ -6068,10 +6601,20 @@ export interface ImportRecordResponse {
   /** Total number of DNS records parsed. */
   totalRecordsParsed?: number | null;
 }
+const ImportRecordResponse = /*@__PURE__*/ __L.at(
+  __c12,
+  7,
+) as any as S.Schema<ImportRecordResponse>;
+
 export interface ListDnssecZskRequest {
   /** Identifier. */
   zoneId: string;
 }
+const ListDnssecZskRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  0,
+) as any as S.Schema<ListDnssecZskRequest>;
+
 export interface ListDnssecZskResultItemDNSKEYHdr {
   Class?: number | null;
   name?: string | null;
@@ -6079,6 +6622,11 @@ export interface ListDnssecZskResultItemDNSKEYHdr {
   rrtype?: number | null;
   ttl?: number | null;
 }
+const ListDnssecZskResultItemDNSKEYHdr = /*@__PURE__*/ __L.at(
+  __c13,
+  1,
+) as any as S.Schema<ListDnssecZskResultItemDNSKEYHdr>;
+
 export interface ListDnssecZskResultItemDNSKEY {
   algorithm?: number | null;
   flags?: number | null;
@@ -6086,7 +6634,14 @@ export interface ListDnssecZskResultItemDNSKEY {
   protocol?: number | null;
   publicKey?: string | null;
 }
+const ListDnssecZskResultItemDNSKEY = /*@__PURE__*/ __L.at(
+  __c13,
+  2,
+) as any as S.Schema<ListDnssecZskResultItemDNSKEY>;
+
 export type ListDnssecZskResultItemLocation = "database" | "vault";
+const ListDnssecZskResultItemLocation = S.String;
+
 export interface ListDnssecZskResultItemSigningKey {
   /** Key encryption key name used to encrypt the private key. */
   kek?: string | null;
@@ -6095,6 +6650,11 @@ export interface ListDnssecZskResultItemSigningKey {
   /** Public key content associated with the signing key. */
   pubkey?: string | null;
 }
+const ListDnssecZskResultItemSigningKey = /*@__PURE__*/ __L.at(
+  __c13,
+  3,
+) as any as S.Schema<ListDnssecZskResultItemSigningKey>;
+
 export type ListDnssecZskResultItemTag =
   | "active"
   | "publish"
@@ -6102,6 +6662,8 @@ export type ListDnssecZskResultItemTag =
   | "retired"
   | "revoked"
   | "removed";
+const ListDnssecZskResultItemTag = S.String;
+
 export interface ListDnssecZskResultItem {
   dNSKEY?: ListDnssecZskResultItemDNSKEY | null;
   /** Storage backend where the DNSSEC key material is stored. */
@@ -6112,8 +6674,23 @@ export interface ListDnssecZskResultItem {
   /** Lifecycle state tag attached to the DNSSEC key. */
   tag?: ListDnssecZskResultItemTag | null;
 }
+const ListDnssecZskResultItem = /*@__PURE__*/ __L.at(
+  __c13,
+  4,
+) as any as S.Schema<ListDnssecZskResultItem>;
+
 export type ListDnssecZskResultList = Array<ListDnssecZskResultItem>;
+const ListDnssecZskResultList = /*@__PURE__*/ __L.at(
+  __c13,
+  5,
+) as any as S.Schema<ListDnssecZskResultList>;
+
 export type ListDnssecZskResponse = ListDnssecZskResultList;
+const ListDnssecZskResponse = /*@__PURE__*/ __L.at(
+  __c13,
+  6,
+) as any as S.Schema<ListDnssecZskResponse>;
+
 export interface RecordsListRequestComment {
   /** If this parameter is present, only records *without* a comment are returned. */
   absent?: string;
@@ -6128,6 +6705,11 @@ export interface RecordsListRequestComment {
   /** Prefix of the DNS record comment. Comment filters are case-insensitive. */
   startswith?: string;
 }
+const RecordsListRequestComment = /*@__PURE__*/ __L.at(
+  __c13,
+  7,
+) as any as S.Schema<RecordsListRequestComment>;
+
 export interface RecordsListRequestContent {
   /** Substring of the DNS record content. Content filters are case-insensitive. */
   contains?: string;
@@ -6138,7 +6720,14 @@ export interface RecordsListRequestContent {
   /** Prefix of the DNS record content. Content filters are case-insensitive. */
   startswith?: string;
 }
+const RecordsListRequestContent = /*@__PURE__*/ __L.at(
+  __c14,
+  0,
+) as any as S.Schema<RecordsListRequestContent>;
+
 export type RecordsListRequestMatch = "any" | "all";
+const RecordsListRequestMatch = S.String;
+
 export interface RecordsListRequestName {
   /** Substring of the DNS record name. Name filters are case-insensitive. */
   contains?: string;
@@ -6149,7 +6738,14 @@ export interface RecordsListRequestName {
   /** Prefix of the DNS record name. Name filters are case-insensitive. */
   startswith?: string;
 }
+const RecordsListRequestName = /*@__PURE__*/ __L.at(
+  __c14,
+  1,
+) as any as S.Schema<RecordsListRequestName>;
+
 export type RecordsListRequestOrder = "type" | "name" | "content" | "ttl" | "proxied";
+const RecordsListRequestOrder = S.String;
+
 export interface RecordsListRequestTag {
   /** Name of a tag which must *not* be present on the DNS record. Tag filters are case-insensitive. */
   absent?: string;
@@ -6164,7 +6760,14 @@ export interface RecordsListRequestTag {
   /** A tag and value, of the form `&lt;tag-name&gt;:&lt;tag-value&gt;`. The API will only return DNS records that have a tag named `&lt;tag-name&gt;` whose value starts with `&lt;tag-value&gt;`. Tag filters are case-insensitive. */
   startswith?: string;
 }
+const RecordsListRequestTag = /*@__PURE__*/ __L.at(
+  __c14,
+  2,
+) as any as S.Schema<RecordsListRequestTag>;
+
 export type RecordsListRequestTagMatch = "any" | "all";
+const RecordsListRequestTagMatch = S.String;
+
 export type RecordsListRequestType =
   | "A"
   | "AAAA"
@@ -6187,6 +6790,8 @@ export type RecordsListRequestType =
   | "TLSA"
   | "TXT"
   | "URI";
+const RecordsListRequestType = S.String;
+
 export interface ListRecordsRequest {
   /** Identifier. */
   zoneId: string;
@@ -6219,6 +6824,8 @@ export interface ListRecordsRequest {
   /** Record type. */
   type?: RecordsListRequestType | (string & {});
 }
+const ListRecordsRequest = /*@__PURE__*/ __L.at(__c14, 3) as any as S.Schema<ListRecordsRequest>;
+
 export type RecordsListResultItemARecordMetaShadowedByList = Array<string>;
 export interface RecordsListResultItemARecordMeta {
   /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
@@ -7088,15 +7695,28 @@ export type RecordsListResultItem =
   | RecordsListResultItemSVCBRecord
   | RecordsListResultItemTLSARecord
   | RecordsListResultItemURIRecord;
+const RecordsListResultItem = /*@__PURE__*/ __L.at(__c14, 4);
+
 export type RecordsListResultList = Array<RecordsListResultItem>;
+const RecordsListResultList = /*@__PURE__*/ __L.at(
+  __c14,
+  5,
+) as any as S.Schema<RecordsListResultList>;
+
 export interface ListRecordsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result: RecordsListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
+const ListRecordsResponse = /*@__PURE__*/ __L.at(__c14, 6) as any as S.Schema<ListRecordsResponse>;
+
 export type SettingsAccountViewsListRequestDirection = "asc" | "desc";
+const SettingsAccountViewsListRequestDirection = S.String;
+
 export type SettingsAccountViewsListRequestMatch = "any" | "all";
+const SettingsAccountViewsListRequestMatch = S.String;
+
 export interface SettingsAccountViewsListRequestName {
   /** Substring of the DNS view name. */
   contains?: string;
@@ -7107,7 +7727,12 @@ export interface SettingsAccountViewsListRequestName {
   /** Prefix of the DNS view name. */
   startswith?: string;
 }
+const SettingsAccountViewsListRequestName =
+  RecordsListRequestContent as any as S.Schema<SettingsAccountViewsListRequestName>;
+
 export type SettingsAccountViewsListRequestOrder = "name" | "created_on" | "modified_on";
+const SettingsAccountViewsListRequestOrder = S.String;
+
 export interface ListSettingAccountViewsRequest {
   /** Identifier. */
   accountId: string;
@@ -7127,7 +7752,15 @@ export interface ListSettingAccountViewsRequest {
   /** A zone name that exists in the zones list for the view. */
   zoneName?: string;
 }
+const ListSettingAccountViewsRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  7,
+) as any as S.Schema<ListSettingAccountViewsRequest>;
+
 export type SettingsAccountViewsListResultItemZonesList = Array<string>;
+const SettingsAccountViewsListResultItemZonesList =
+  RecordsBatchRequestPatchesItemOpenpgpkeyRecordTagsList as any as S.Schema<SettingsAccountViewsListResultItemZonesList>;
+
 export interface SettingsAccountViewsListResultItem {
   /** Identifier. */
   id: string;
@@ -7140,13 +7773,28 @@ export interface SettingsAccountViewsListResultItem {
   /** The list of zones linked to this view. */
   zones: SettingsAccountViewsListResultItemZonesList;
 }
+const SettingsAccountViewsListResultItem = /*@__PURE__*/ __L.at(
+  __c15,
+  0,
+) as any as S.Schema<SettingsAccountViewsListResultItem>;
+
 export type SettingsAccountViewsListResultList = Array<SettingsAccountViewsListResultItem>;
+const SettingsAccountViewsListResultList = /*@__PURE__*/ __L.at(
+  __c15,
+  1,
+) as any as S.Schema<SettingsAccountViewsListResultList>;
+
 export interface ListSettingAccountViewsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result: SettingsAccountViewsListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
+const ListSettingAccountViewsResponse = /*@__PURE__*/ __L.at(
+  __c15,
+  2,
+) as any as S.Schema<ListSettingAccountViewsResponse>;
+
 export interface ListSettingsAccountNameserverSetsRequest {
   /** Identifier. */
   accountId: string;
@@ -7155,6 +7803,11 @@ export interface ListSettingsAccountNameserverSetsRequest {
   /** Number of results per page. */
   perPage?: number;
 }
+const ListSettingsAccountNameserverSetsRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  3,
+) as any as S.Schema<ListSettingsAccountNameserverSetsRequest>;
+
 export type ListSettingsAccountNameserverSetsResultItemDNSSettingsNameserverSetStandardResponseNameserversItemIpv4List =
   Array<string>;
 export type ListSettingsAccountNameserverSetsResultItemDNSSettingsNameserverSetStandardResponseNameserversItemIpv6List =
@@ -7224,12 +7877,29 @@ export interface ListSettingsAccountNameserverSetsResultItemDNSSettingsNameserve
 export type ListSettingsAccountNameserverSetsResultItem =
   | ListSettingsAccountNameserverSetsResultItemDNSSettingsNameserverSetStandardResponse
   | ListSettingsAccountNameserverSetsResultItemDNSSettingsNameserverSetAdvancedResponse;
+const ListSettingsAccountNameserverSetsResultItem = /*@__PURE__*/ __L.at(__c15, 4);
+
 export type ListSettingsAccountNameserverSetsResultList =
   Array<ListSettingsAccountNameserverSetsResultItem>;
+const ListSettingsAccountNameserverSetsResultList = /*@__PURE__*/ __L.at(
+  __c15,
+  5,
+) as any as S.Schema<ListSettingsAccountNameserverSetsResultList>;
+
 export type ListSettingsAccountNameserverSetsResponse = ListSettingsAccountNameserverSetsResultList;
+const ListSettingsAccountNameserverSetsResponse = /*@__PURE__*/ __L.at(
+  __c15,
+  6,
+) as any as S.Schema<ListSettingsAccountNameserverSetsResponse>;
+
 export interface ListZoneTransferAclsRequest {
   accountId: string;
 }
+const ListZoneTransferAclsRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  7,
+) as any as S.Schema<ListZoneTransferAclsRequest>;
+
 export interface ZoneTransfersAclsListResultItem {
   id: string;
   /** Allowed IPv4/IPv6 address range of primary or secondary nameservers. This will be applied for the entire account. The IP range is used to allow additional NOTIFY IPs for secondary zones and IPs Cloudflare allows AXFR/IXFR requests from for primary zones. CIDRs are limited to a maximum of /24 for IPv4 and /64 for IPv6 respectively. */
@@ -7237,16 +7907,36 @@ export interface ZoneTransfersAclsListResultItem {
   /** The name of the acl. */
   name: string;
 }
+const ZoneTransfersAclsListResultItem = /*@__PURE__*/ __L.at(
+  __c16,
+  0,
+) as any as S.Schema<ZoneTransfersAclsListResultItem>;
+
 export type ZoneTransfersAclsListResultList = Array<ZoneTransfersAclsListResultItem>;
+const ZoneTransfersAclsListResultList = /*@__PURE__*/ __L.at(
+  __c16,
+  1,
+) as any as S.Schema<ZoneTransfersAclsListResultList>;
+
 export interface ListZoneTransferAclsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result: ZoneTransfersAclsListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
+const ListZoneTransferAclsResponse = /*@__PURE__*/ __L.at(
+  __c16,
+  2,
+) as any as S.Schema<ListZoneTransferAclsResponse>;
+
 export interface ListZoneTransferPeersRequest {
   accountId: string;
 }
+const ListZoneTransferPeersRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  3,
+) as any as S.Schema<ListZoneTransferPeersRequest>;
+
 export interface ZoneTransfersPeersListResultItem {
   id: string;
   /** The name of the peer. */
@@ -7260,16 +7950,36 @@ export interface ZoneTransfersPeersListResultItem {
   /** TSIG authentication will be used for zone transfer if configured. */
   tsigId?: string | null;
 }
+const ZoneTransfersPeersListResultItem = /*@__PURE__*/ __L.at(
+  __c16,
+  4,
+) as any as S.Schema<ZoneTransfersPeersListResultItem>;
+
 export type ZoneTransfersPeersListResultList = Array<ZoneTransfersPeersListResultItem>;
+const ZoneTransfersPeersListResultList = /*@__PURE__*/ __L.at(
+  __c16,
+  5,
+) as any as S.Schema<ZoneTransfersPeersListResultList>;
+
 export interface ListZoneTransferPeersResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result: ZoneTransfersPeersListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
+const ListZoneTransferPeersResponse = /*@__PURE__*/ __L.at(
+  __c16,
+  6,
+) as any as S.Schema<ListZoneTransferPeersResponse>;
+
 export interface ListZoneTransferTsigsRequest {
   accountId: string;
 }
+const ListZoneTransferTsigsRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  7,
+) as any as S.Schema<ListZoneTransferTsigsRequest>;
+
 export interface ZoneTransfersTsigsListResultItem {
   id: string;
   /** TSIG algorithm. */
@@ -7279,14 +7989,31 @@ export interface ZoneTransfersTsigsListResultItem {
   /** TSIG secret. */
   secret: string;
 }
+const ZoneTransfersTsigsListResultItem = /*@__PURE__*/ __L.at(
+  __c17,
+  0,
+) as any as S.Schema<ZoneTransfersTsigsListResultItem>;
+
 export type ZoneTransfersTsigsListResultList = Array<ZoneTransfersTsigsListResultItem>;
+const ZoneTransfersTsigsListResultList = /*@__PURE__*/ __L.at(
+  __c17,
+  1,
+) as any as S.Schema<ZoneTransfersTsigsListResultList>;
+
 export interface ListZoneTransferTsigsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result: ZoneTransfersTsigsListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
+const ListZoneTransferTsigsResponse = /*@__PURE__*/ __L.at(
+  __c17,
+  2,
+) as any as S.Schema<ListZoneTransferTsigsResponse>;
+
 export type DnssecEditRequestStatus = "active" | "disabled";
+const DnssecEditRequestStatus = S.String;
+
 export interface PatchDnssecRequest {
   /** Identifier. */
   zoneId: string;
@@ -7299,6 +8026,8 @@ export interface PatchDnssecRequest {
   /** Status of DNSSEC, based on user-desired state and presence of necessary records. */
   status?: DnssecEditRequestStatus | (string & {});
 }
+const PatchDnssecRequest = /*@__PURE__*/ __L.at(__c17, 3) as any as S.Schema<PatchDnssecRequest>;
+
 export type DnssecEditResponseStatus =
   | "active"
   | "pending"
@@ -7336,6 +8065,8 @@ export interface PatchDnssecResponse {
   /** Status of DNSSEC, based on user-desired state and presence of necessary records. */
   status?: DnssecEditResponseStatus | null;
 }
+const PatchDnssecResponse = GetDnssecResponse as any as S.Schema<PatchDnssecResponse>;
+
 export type RecordsEditRequestType =
   | "A"
   | "AAAA"
@@ -7358,13 +8089,20 @@ export type RecordsEditRequestType =
   | "SVCB"
   | "TLSA"
   | "URI";
+const RecordsEditRequestType = S.String;
+
 export type RecordsEditRequestSettingsARecord =
   RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings;
 export type RecordsEditRequestSettingsCNAMERecord = RecordsBatchRequestPostsItemCNAMERecordSettings;
 export type RecordsEditRequestSettings =
   | RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings
   | RecordsBatchRequestPostsItemCNAMERecordSettings;
+const RecordsEditRequestSettings = /*@__PURE__*/ __L.at(__c17, 4);
+
 export type RecordsEditRequestTagsList = Array<string>;
+const RecordsEditRequestTagsList =
+  RecordsBatchRequestPatchesItemOpenpgpkeyRecordTagsList as any as S.Schema<RecordsEditRequestTagsList>;
+
 export type RecordsEditRequestDataCAARecord = RecordsBatchRequestPostsItemCAARecordData;
 export type RecordsEditRequestDataCERTRecord = RecordsBatchRequestPostsItemCERTRecordData;
 export type RecordsEditRequestDataDNSKEYRecord = RecordsBatchRequestPostsItemDNSKEYRecordData;
@@ -7415,6 +8153,8 @@ export type RecordsEditRequestData =
   | RecordsBatchRequestPostsItemSRVRecordData
   | RecordsBatchRequestPostsItemSSHFPRecordData
   | RecordsBatchRequestPostsItemURIRecordData;
+const RecordsEditRequestData = /*@__PURE__*/ __L.at(__c17, 5);
+
 export interface PatchRecordRequest {
   /** Identifier. */
   zoneId: string;
@@ -7445,6 +8185,8 @@ export interface PatchRecordRequest {
   /** Components of a CAA record. */
   data?: RecordsEditRequestData;
 }
+const PatchRecordRequest = /*@__PURE__*/ __L.at(__c17, 6) as any as S.Schema<PatchRecordRequest>;
+
 export type RecordsEditResultARecordMetaShadowedByList = Array<string>;
 export interface RecordsEditResultARecordMeta {
   /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
@@ -8254,21 +8996,37 @@ export type RecordsEditResult =
   | RecordsEditResultSVCBRecord
   | RecordsEditResultTLSARecord
   | RecordsEditResultURIRecord;
+const RecordsEditResult = /*@__PURE__*/ __L.at(__c17, 7);
+
 export type PatchRecordResponse = RecordsEditResult;
+const PatchRecordResponse = /*@__PURE__*/ __L.at(__c18, 0) as any as S.Schema<PatchRecordResponse>;
+
 export interface SettingsAccountEditRequestZoneDefaultsInternalDns {
   /** The ID of the zone to fallback to. */
   referenceZoneId?: string;
 }
+const SettingsAccountEditRequestZoneDefaultsInternalDns = /*@__PURE__*/ __L.at(
+  __c18,
+  1,
+) as any as S.Schema<SettingsAccountEditRequestZoneDefaultsInternalDns>;
+
 export type SettingsAccountEditRequestZoneDefaultsNameserversType =
   | "cloudflare.standard"
   | "cloudflare.advanced"
   | "cloudflare.standard.random"
   | "custom.account"
   | "custom.tenant";
+const SettingsAccountEditRequestZoneDefaultsNameserversType = S.String;
+
 export interface SettingsAccountEditRequestZoneDefaultsNameservers {
   /** Nameserver type */
   type?: SettingsAccountEditRequestZoneDefaultsNameserversType | (string & {});
 }
+const SettingsAccountEditRequestZoneDefaultsNameservers = /*@__PURE__*/ __L.at(
+  __c18,
+  2,
+) as any as S.Schema<SettingsAccountEditRequestZoneDefaultsNameservers>;
+
 export interface SettingsAccountEditRequestZoneDefaultsSoa {
   /** Time in seconds of being unable to query the primary server after which secondary servers should stop serving the zone. */
   expire?: number;
@@ -8285,7 +9043,14 @@ export interface SettingsAccountEditRequestZoneDefaultsSoa {
   /** The time to live (TTL) of the SOA record itself. */
   ttl?: number;
 }
+const SettingsAccountEditRequestZoneDefaultsSoa = /*@__PURE__*/ __L.at(
+  __c18,
+  3,
+) as any as S.Schema<SettingsAccountEditRequestZoneDefaultsSoa>;
+
 export type SettingsAccountEditRequestZoneDefaultsZoneMode = "standard" | "cdn_only" | "dns_only";
+const SettingsAccountEditRequestZoneDefaultsZoneMode = S.String;
+
 export interface SettingsAccountEditRequestZoneDefaults {
   /** Whether to flatten all CNAME records in the zone. Note that, due to DNS limitations, a CNAME record at the zone apex will always be flattened. */
   flattenAllCnames?: boolean;
@@ -8306,6 +9071,11 @@ export interface SettingsAccountEditRequestZoneDefaults {
   /** Whether the zone mode is a regular or CDN/DNS only zone. */
   zoneMode?: SettingsAccountEditRequestZoneDefaultsZoneMode | (string & {});
 }
+const SettingsAccountEditRequestZoneDefaults = /*@__PURE__*/ __L.at(
+  __c18,
+  4,
+) as any as S.Schema<SettingsAccountEditRequestZoneDefaults>;
+
 export interface PatchSettingAccountRequest {
   /** Identifier. */
   accountId: string;
@@ -8314,6 +9084,11 @@ export interface PatchSettingAccountRequest {
   /** Default settings for new zones created in this account. */
   zoneDefaults?: SettingsAccountEditRequestZoneDefaults;
 }
+const PatchSettingAccountRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  5,
+) as any as S.Schema<PatchSettingAccountRequest>;
+
 export type SettingsAccountEditResponseZoneDefaultsInternalDns =
   SettingsAccountGetResponseZoneDefaultsInternalDns;
 export type SettingsAccountEditResponseZoneDefaultsNameserversType =
@@ -8355,7 +9130,13 @@ export interface PatchSettingAccountResponse {
   /** When enabled, forces all proxied DNS records in the account to behave as DNS-only at the edge, regardless of each record's individual proxy setting. Note that this account-level override does not modify the records themselves; it only affects how they are served at the edge. See more on [Enforce DNS-only](https://developers.cloudflare.com/dns/proxy-status/enforce-dns-only). */
   enforceDnsOnly?: boolean | null;
 }
+const PatchSettingAccountResponse =
+  GetSettingAccountResponse as any as S.Schema<PatchSettingAccountResponse>;
+
 export type SettingsAccountViewsEditRequestZonesList = Array<string>;
+const SettingsAccountViewsEditRequestZonesList =
+  RecordsBatchRequestPatchesItemOpenpgpkeyRecordTagsList as any as S.Schema<SettingsAccountViewsEditRequestZonesList>;
+
 export interface PatchSettingAccountViewRequest {
   /** Identifier. */
   accountId: string;
@@ -8366,6 +9147,11 @@ export interface PatchSettingAccountViewRequest {
   /** The list of zones linked to this view. */
   zones?: SettingsAccountViewsEditRequestZonesList;
 }
+const PatchSettingAccountViewRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  6,
+) as any as S.Schema<PatchSettingAccountViewRequest>;
+
 export type SettingsAccountViewsEditResponseZonesList = Array<string>;
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PatchSettingAccountViewResponse {
@@ -8380,6 +9166,9 @@ export interface PatchSettingAccountViewResponse {
   /** The list of zones linked to this view. */
   zones: SettingsAccountViewsEditResponseZonesList;
 }
+const PatchSettingAccountViewResponse =
+  CreateSettingAccountViewResponse as any as S.Schema<PatchSettingAccountViewResponse>;
+
 export type SettingsZoneEditRequestInternalDns = SettingsAccountEditRequestZoneDefaultsInternalDns;
 export type SettingsZoneEditRequestNameserversDNSSettingsZoneNameserversCloudflareType =
   | "cloudflare.standard"
@@ -8411,8 +9200,12 @@ export type SettingsZoneEditRequestNameservers =
   | SettingsZoneEditRequestNameserversDNSSettingsZoneNameserversCloudflare
   | SettingsZoneEditRequestNameserversDNSSettingsZoneNameserversCustomExisting
   | SettingsZoneEditRequestNameserversDNSSettingsZoneNameserversCustomSet;
+const SettingsZoneEditRequestNameservers = /*@__PURE__*/ __L.at(__c18, 7);
+
 export type SettingsZoneEditRequestSoa = SettingsAccountEditRequestZoneDefaultsSoa;
 export type SettingsZoneEditRequestZoneMode = "standard" | "cdn_only" | "dns_only";
+const SettingsZoneEditRequestZoneMode = S.String;
+
 export interface PatchSettingZoneRequest {
   /** Identifier. */
   zoneId: string;
@@ -8435,6 +9228,11 @@ export interface PatchSettingZoneRequest {
   /** Whether the zone mode is a regular or CDN/DNS only zone. */
   zoneMode?: SettingsZoneEditRequestZoneMode | (string & {});
 }
+const PatchSettingZoneRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  0,
+) as any as S.Schema<PatchSettingZoneRequest>;
+
 export type SettingsZoneEditResponseInternalDns = SettingsAccountGetResponseZoneDefaultsInternalDns;
 export type SettingsZoneEditResponseNameserversDNSSettingsZoneNameserversCloudflareType =
   | "cloudflare.standard"
@@ -8464,8 +9262,12 @@ export type SettingsZoneEditResponseNameservers =
   | SettingsZoneEditResponseNameserversDNSSettingsZoneNameserversCloudflare
   | SettingsZoneEditResponseNameserversDNSSettingsZoneNameserversCustomExisting
   | SettingsZoneEditResponseNameserversDNSSettingsZoneNameserversCustomSet;
+const SettingsZoneEditResponseNameservers = /*@__PURE__*/ __L.at(__c19, 1);
+
 export type SettingsZoneEditResponseSoa = SettingsAccountGetResponseZoneDefaultsSoa;
 export type SettingsZoneEditResponseZoneMode = "standard" | "cdn_only" | "dns_only";
+const SettingsZoneEditResponseZoneMode = S.String;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PatchSettingZoneResponse {
   /** Whether to flatten all CNAME records in the zone. Note that, due to DNS limitations, a CNAME record at the zone apex will always be flattened. */
@@ -8487,10 +9289,20 @@ export interface PatchSettingZoneResponse {
   /** Whether the zone mode is a regular or CDN/DNS only zone. */
   zoneMode: SettingsZoneEditResponseZoneMode;
 }
+const PatchSettingZoneResponse = /*@__PURE__*/ __L.at(
+  __c19,
+  2,
+) as any as S.Schema<PatchSettingZoneResponse>;
+
 export interface ScanListRecordRequest {
   /** Identifier. */
   zoneId: string;
 }
+const ScanListRecordRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  3,
+) as any as S.Schema<ScanListRecordRequest>;
+
 export type RecordsScanListResultItemARecordMetaShadowedByList = Array<string>;
 export interface RecordsScanListResultItemARecordMeta {
   /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
@@ -9300,17 +10112,31 @@ export type RecordsScanListResultItem =
   | RecordsScanListResultItemSVCBRecord
   | RecordsScanListResultItemTLSARecord
   | RecordsScanListResultItemURIRecord;
+const RecordsScanListResultItem = /*@__PURE__*/ __L.at(__c19, 4);
+
 export type RecordsScanListResultList = Array<RecordsScanListResultItem>;
+const RecordsScanListResultList = /*@__PURE__*/ __L.at(
+  __c19,
+  5,
+) as any as S.Schema<RecordsScanListResultList>;
+
 export interface ScanListRecordResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result: RecordsScanListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
+const ScanListRecordResponse = /*@__PURE__*/ __L.at(
+  __c19,
+  6,
+) as any as S.Schema<ScanListRecordResponse>;
+
 export interface ScanRecordRequest {
   /** Identifier. */
   zoneId: string;
 }
+const ScanRecordRequest = /*@__PURE__*/ __L.at(__c19, 7) as any as S.Schema<ScanRecordRequest>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface ScanRecordResponse {
   /** Number of DNS records added. */
@@ -9318,6 +10144,8 @@ export interface ScanRecordResponse {
   /** Total number of DNS records parsed. */
   totalRecordsParsed?: number | null;
 }
+const ScanRecordResponse = ImportRecordResponse as any as S.Schema<ScanRecordResponse>;
+
 export type RecordsScanReviewRequestAcceptsItemARecordType = "A";
 export type RecordsScanReviewRequestAcceptsItemARecordSettings =
   RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings;
@@ -9888,15 +10716,30 @@ export type RecordsScanReviewRequestAcceptsItem =
   | RecordsScanReviewRequestAcceptsItemSVCBRecord
   | RecordsScanReviewRequestAcceptsItemTLSARecord
   | RecordsScanReviewRequestAcceptsItemURIRecord;
+const RecordsScanReviewRequestAcceptsItem = /*@__PURE__*/ __L.at(__c20, 0);
+
 export type RecordsScanReviewRequestAcceptsList = Array<RecordsScanReviewRequestAcceptsItem>;
+const RecordsScanReviewRequestAcceptsList = /*@__PURE__*/ __L.at(
+  __c20,
+  1,
+) as any as S.Schema<RecordsScanReviewRequestAcceptsList>;
+
 export type RecordsScanReviewRequestRejectsItem = RecordsBatchRequestDeletesItem;
 export type RecordsScanReviewRequestRejectsList = Array<RecordsBatchRequestDeletesItem>;
+const RecordsScanReviewRequestRejectsList =
+  RecordsBatchRequestDeletesList as any as S.Schema<RecordsScanReviewRequestRejectsList>;
+
 export interface ScanReviewRecordRequest {
   /** Identifier. */
   zoneId: string;
   accepts?: RecordsScanReviewRequestAcceptsList;
   rejects?: RecordsScanReviewRequestRejectsList;
 }
+const ScanReviewRecordRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  2,
+) as any as S.Schema<ScanReviewRecordRequest>;
+
 export type RecordsScanReviewResponseAcceptsItemARecordMetaShadowedByList = Array<string>;
 export interface RecordsScanReviewResponseAcceptsItemARecordMeta {
   /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
@@ -10506,18 +11349,43 @@ export type RecordsScanReviewResponseAcceptsItem =
   | RecordsScanReviewResponseAcceptsItemSVCBRecord
   | RecordsScanReviewResponseAcceptsItemTLSARecord
   | RecordsScanReviewResponseAcceptsItemURIRecord;
+const RecordsScanReviewResponseAcceptsItem = /*@__PURE__*/ __L.at(__c20, 3);
+
 export type RecordsScanReviewResponseAcceptsList = Array<RecordsScanReviewResponseAcceptsItem>;
+const RecordsScanReviewResponseAcceptsList = /*@__PURE__*/ __L.at(
+  __c20,
+  4,
+) as any as S.Schema<RecordsScanReviewResponseAcceptsList>;
+
 export type RecordsScanReviewResponseRejectsList = Array<string>;
+const RecordsScanReviewResponseRejectsList =
+  RecordsBatchRequestPatchesItemOpenpgpkeyRecordTagsList as any as S.Schema<RecordsScanReviewResponseRejectsList>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface ScanReviewRecordResponse {
   accepts?: RecordsScanReviewResponseAcceptsList | null;
   rejects?: RecordsScanReviewResponseRejectsList | null;
 }
+const ScanReviewRecordResponse = /*@__PURE__*/ __L.at(
+  __c20,
+  5,
+) as any as S.Schema<ScanReviewRecordResponse>;
+
 export interface ScanTriggerRecordRequest {
   /** Identifier. */
   zoneId: string;
 }
+const ScanTriggerRecordRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  6,
+) as any as S.Schema<ScanTriggerRecordRequest>;
+
 export interface ScanTriggerRecordResponse {}
+const ScanTriggerRecordResponse = /*@__PURE__*/ __L.at(
+  __c20,
+  7,
+) as any as S.Schema<ScanTriggerRecordResponse>;
+
 export type RecordsUpdateRequestType =
   | "A"
   | "AAAA"
@@ -10540,6 +11408,8 @@ export type RecordsUpdateRequestType =
   | "SVCB"
   | "TLSA"
   | "URI";
+const RecordsUpdateRequestType = S.String;
+
 export type RecordsUpdateRequestSettingsARecord =
   RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings;
 export type RecordsUpdateRequestSettingsCNAMERecord =
@@ -10547,7 +11417,12 @@ export type RecordsUpdateRequestSettingsCNAMERecord =
 export type RecordsUpdateRequestSettings =
   | RecordsBatchRequestPatchesItemOpenpgpkeyRecordSettings
   | RecordsBatchRequestPostsItemCNAMERecordSettings;
+const RecordsUpdateRequestSettings = /*@__PURE__*/ __L.at(__c21, 0);
+
 export type RecordsUpdateRequestTagsList = Array<string>;
+const RecordsUpdateRequestTagsList =
+  RecordsBatchRequestPatchesItemOpenpgpkeyRecordTagsList as any as S.Schema<RecordsUpdateRequestTagsList>;
+
 export type RecordsUpdateRequestDataCAARecord = RecordsBatchRequestPostsItemCAARecordData;
 export type RecordsUpdateRequestDataCERTRecord = RecordsBatchRequestPostsItemCERTRecordData;
 export type RecordsUpdateRequestDataDNSKEYRecord = RecordsBatchRequestPostsItemDNSKEYRecordData;
@@ -10598,6 +11473,8 @@ export type RecordsUpdateRequestData =
   | RecordsBatchRequestPostsItemSRVRecordData
   | RecordsBatchRequestPostsItemSSHFPRecordData
   | RecordsBatchRequestPostsItemURIRecordData;
+const RecordsUpdateRequestData = /*@__PURE__*/ __L.at(__c21, 1);
+
 export interface UpdateRecordRequest {
   /** Identifier. */
   zoneId: string;
@@ -10628,6 +11505,8 @@ export interface UpdateRecordRequest {
   /** Components of a CAA record. */
   data?: RecordsUpdateRequestData;
 }
+const UpdateRecordRequest = /*@__PURE__*/ __L.at(__c21, 2) as any as S.Schema<UpdateRecordRequest>;
+
 export type RecordsUpdateResultARecordMetaShadowedByList = Array<string>;
 export interface RecordsUpdateResultARecordMeta {
   /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
@@ -11437,7 +12316,14 @@ export type RecordsUpdateResult =
   | RecordsUpdateResultSVCBRecord
   | RecordsUpdateResultTLSARecord
   | RecordsUpdateResultURIRecord;
+const RecordsUpdateResult = /*@__PURE__*/ __L.at(__c21, 3);
+
 export type UpdateRecordResponse = RecordsUpdateResult;
+const UpdateRecordResponse = /*@__PURE__*/ __L.at(
+  __c21,
+  4,
+) as any as S.Schema<UpdateRecordResponse>;
+
 export interface UpdateZoneTransferAclRequest {
   accountId: string;
   aclId: string;
@@ -11446,6 +12332,11 @@ export interface UpdateZoneTransferAclRequest {
   /** The name of the acl. */
   name: string;
 }
+const UpdateZoneTransferAclRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  5,
+) as any as S.Schema<UpdateZoneTransferAclRequest>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UpdateZoneTransferAclResponse {
   id: string;
@@ -11454,7 +12345,13 @@ export interface UpdateZoneTransferAclResponse {
   /** The name of the acl. */
   name: string;
 }
+const UpdateZoneTransferAclResponse =
+  CreateZoneTransferAclResponse as any as S.Schema<UpdateZoneTransferAclResponse>;
+
 export type ZoneTransfersIncomingUpdateRequestPeersList = Array<string>;
+const ZoneTransfersIncomingUpdateRequestPeersList =
+  RecordsBatchRequestPatchesItemOpenpgpkeyRecordTagsList as any as S.Schema<ZoneTransfersIncomingUpdateRequestPeersList>;
+
 export interface UpdateZoneTransferIncomingRequest {
   zoneId: string;
   /** How often should a secondary zone auto refresh regardless of DNS NOTIFY. Not applicable for primary zones. */
@@ -11464,6 +12361,11 @@ export interface UpdateZoneTransferIncomingRequest {
   /** A list of peer tags. */
   peers: ZoneTransfersIncomingUpdateRequestPeersList;
 }
+const UpdateZoneTransferIncomingRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  6,
+) as any as S.Schema<UpdateZoneTransferIncomingRequest>;
+
 export type ZoneTransfersIncomingUpdateResponsePeersList = Array<string>;
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UpdateZoneTransferIncomingResponse {
@@ -11483,7 +12385,13 @@ export interface UpdateZoneTransferIncomingResponse {
   /** The serial number of the SOA for the given zone. */
   soaSerial?: number | null;
 }
+const UpdateZoneTransferIncomingResponse =
+  CreateZoneTransferIncomingResponse as any as S.Schema<UpdateZoneTransferIncomingResponse>;
+
 export type ZoneTransfersOutgoingUpdateRequestPeersList = Array<string>;
+const ZoneTransfersOutgoingUpdateRequestPeersList =
+  RecordsBatchRequestPatchesItemOpenpgpkeyRecordTagsList as any as S.Schema<ZoneTransfersOutgoingUpdateRequestPeersList>;
+
 export interface UpdateZoneTransferOutgoingRequest {
   zoneId: string;
   /** Zone name. */
@@ -11491,6 +12399,11 @@ export interface UpdateZoneTransferOutgoingRequest {
   /** A list of peer tags. */
   peers: ZoneTransfersOutgoingUpdateRequestPeersList;
 }
+const UpdateZoneTransferOutgoingRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  7,
+) as any as S.Schema<UpdateZoneTransferOutgoingRequest>;
+
 export type ZoneTransfersOutgoingUpdateResponsePeersList = Array<string>;
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UpdateZoneTransferOutgoingResponse {
@@ -11508,6 +12421,9 @@ export interface UpdateZoneTransferOutgoingResponse {
   /** The serial number of the SOA for the given zone. */
   soaSerial?: number | null;
 }
+const UpdateZoneTransferOutgoingResponse =
+  CreateZoneTransferOutgoingResponse as any as S.Schema<UpdateZoneTransferOutgoingResponse>;
+
 export interface UpdateZoneTransferPeerRequest {
   accountId: string;
   peerId: string;
@@ -11522,6 +12438,11 @@ export interface UpdateZoneTransferPeerRequest {
   /** TSIG authentication will be used for zone transfer if configured. */
   tsigId?: string;
 }
+const UpdateZoneTransferPeerRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  0,
+) as any as S.Schema<UpdateZoneTransferPeerRequest>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UpdateZoneTransferPeerResponse {
   id: string;
@@ -11536,6 +12457,9 @@ export interface UpdateZoneTransferPeerResponse {
   /** TSIG authentication will be used for zone transfer if configured. */
   tsigId?: string | null;
 }
+const UpdateZoneTransferPeerResponse =
+  CreateZoneTransferPeerResponse as any as S.Schema<UpdateZoneTransferPeerResponse>;
+
 export interface UpdateZoneTransferTsigRequest {
   accountId: string;
   tsigId: string;
@@ -11546,6 +12470,11 @@ export interface UpdateZoneTransferTsigRequest {
   /** TSIG secret. */
   secret: string;
 }
+const UpdateZoneTransferTsigRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  1,
+) as any as S.Schema<UpdateZoneTransferTsigRequest>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UpdateZoneTransferTsigResponse {
   id: string;
@@ -11556,6 +12485,9 @@ export interface UpdateZoneTransferTsigResponse {
   /** TSIG secret. */
   secret: string;
 }
+const UpdateZoneTransferTsigResponse =
+  CreateZoneTransferTsigResponse as any as S.Schema<UpdateZoneTransferTsigResponse>;
+
 export type BatchRecordError = CloudflareOpError;
 /** Send a Batch of DNS Record API calls to be executed together. Notes: - Although Cloudflare will execute the batched operations in a single database transaction, Cloudflare's distributed KV store must treat each record change as a single key-value pair. This means that the propagation of changes is not atomic. See [the documentation](https://developers.cloudflare.com/dns/manage-dns-records/how-to/batch-record-changes/ "Batch DNS records") for more information. - The operations you specify within the /batch request body are always executed in the following order: - Deletes - Patches - Puts - Posts */
 export const batchRecord: API.OperationMethod<
@@ -11564,8 +12496,8 @@ export const batchRecord: API.OperationMethod<
   BatchRecordError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9) as any as S.Schema<BatchRecordRequest>,
-  output: __S(18) as any as S.Schema<BatchRecordResponse>,
+  input: BatchRecordRequest,
+  output: BatchRecordResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -11579,8 +12511,8 @@ export const createRecord: API.OperationMethod<
   CreateRecordError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21) as any as S.Schema<CreateRecordRequest>,
-  output: __S(23) as any as S.Schema<CreateRecordResponse>,
+  input: CreateRecordRequest,
+  output: CreateRecordResponse,
   errors: [DnsRecordAlreadyExists, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -11594,8 +12526,8 @@ export const createSettingAccountView: API.OperationMethod<
   CreateSettingAccountViewError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24) as any as S.Schema<CreateSettingAccountViewRequest>,
-  output: __S(25) as any as S.Schema<CreateSettingAccountViewResponse>,
+  input: CreateSettingAccountViewRequest,
+  output: CreateSettingAccountViewResponse,
   errors: [InternalDnsNotAvailable, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -11609,8 +12541,8 @@ export const createSettingsAccountNameserverSet: API.OperationMethod<
   CreateSettingsAccountNameserverSetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28) as any as S.Schema<CreateSettingsAccountNameserverSetRequest>,
-  output: __S(30) as any as S.Schema<CreateSettingsAccountNameserverSetResponse>,
+  input: CreateSettingsAccountNameserverSetRequest,
+  output: CreateSettingsAccountNameserverSetResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -11624,8 +12556,8 @@ export const createZoneTransferAcl: API.OperationMethod<
   CreateZoneTransferAclError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31) as any as S.Schema<CreateZoneTransferAclRequest>,
-  output: __S(32) as any as S.Schema<CreateZoneTransferAclResponse>,
+  input: CreateZoneTransferAclRequest,
+  output: CreateZoneTransferAclResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -11639,8 +12571,8 @@ export const createZoneTransferForceAxfr: API.OperationMethod<
   CreateZoneTransferForceAxfrError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33) as any as S.Schema<CreateZoneTransferForceAxfrRequest>,
-  output: __S(34) as any as S.Schema<CreateZoneTransferForceAxfrResponse>,
+  input: CreateZoneTransferForceAxfrRequest,
+  output: CreateZoneTransferForceAxfrResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -11654,8 +12586,8 @@ export const createZoneTransferIncoming: API.OperationMethod<
   CreateZoneTransferIncomingError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35) as any as S.Schema<CreateZoneTransferIncomingRequest>,
-  output: __S(36) as any as S.Schema<CreateZoneTransferIncomingResponse>,
+  input: CreateZoneTransferIncomingRequest,
+  output: CreateZoneTransferIncomingResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -11669,8 +12601,8 @@ export const createZoneTransferOutgoing: API.OperationMethod<
   CreateZoneTransferOutgoingError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37) as any as S.Schema<CreateZoneTransferOutgoingRequest>,
-  output: __S(38) as any as S.Schema<CreateZoneTransferOutgoingResponse>,
+  input: CreateZoneTransferOutgoingRequest,
+  output: CreateZoneTransferOutgoingResponse,
   errors: [OutgoingZoneTransfersNotAllowed, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -11684,8 +12616,8 @@ export const createZoneTransferPeer: API.OperationMethod<
   CreateZoneTransferPeerError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39) as any as S.Schema<CreateZoneTransferPeerRequest>,
-  output: __S(40) as any as S.Schema<CreateZoneTransferPeerResponse>,
+  input: CreateZoneTransferPeerRequest,
+  output: CreateZoneTransferPeerResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -11699,8 +12631,8 @@ export const createZoneTransferTsig: API.OperationMethod<
   CreateZoneTransferTsigError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41) as any as S.Schema<CreateZoneTransferTsigRequest>,
-  output: __S(42) as any as S.Schema<CreateZoneTransferTsigResponse>,
+  input: CreateZoneTransferTsigRequest,
+  output: CreateZoneTransferTsigResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -11714,8 +12646,8 @@ export const deleteDnssec: API.OperationMethod<
   DeleteDnssecError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43) as any as S.Schema<DeleteDnssecRequest>,
-  output: __S(44) as any as S.Schema<DeleteDnssecResponse>,
+  input: DeleteDnssecRequest,
+  output: DeleteDnssecResponse,
   errors: [Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -11729,8 +12661,8 @@ export const deleteRecord: API.OperationMethod<
   DeleteRecordError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45) as any as S.Schema<DeleteRecordRequest>,
-  output: __S(46) as any as S.Schema<DeleteRecordResponse>,
+  input: DeleteRecordRequest,
+  output: DeleteRecordResponse,
   errors: [RecordNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -11744,8 +12676,8 @@ export const deleteSettingAccountView: API.OperationMethod<
   DeleteSettingAccountViewError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47) as any as S.Schema<DeleteSettingAccountViewRequest>,
-  output: __S(48) as any as S.Schema<DeleteSettingAccountViewResponse>,
+  input: DeleteSettingAccountViewRequest,
+  output: DeleteSettingAccountViewResponse,
   errors: [ViewNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -11759,8 +12691,8 @@ export const deleteSettingsAccountNameserverSet: API.OperationMethod<
   DeleteSettingsAccountNameserverSetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49) as any as S.Schema<DeleteSettingsAccountNameserverSetRequest>,
-  output: __S(50) as any as S.Schema<DeleteSettingsAccountNameserverSetResponse>,
+  input: DeleteSettingsAccountNameserverSetRequest,
+  output: DeleteSettingsAccountNameserverSetResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -11774,8 +12706,8 @@ export const deleteZoneTransferAcl: API.OperationMethod<
   DeleteZoneTransferAclError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(51) as any as S.Schema<DeleteZoneTransferAclRequest>,
-  output: __S(48) as any as S.Schema<DeleteZoneTransferAclResponse>,
+  input: DeleteZoneTransferAclRequest,
+  output: DeleteZoneTransferAclResponse,
   errors: [AclNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -11789,8 +12721,8 @@ export const deleteZoneTransferIncoming: API.OperationMethod<
   DeleteZoneTransferIncomingError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(52) as any as S.Schema<DeleteZoneTransferIncomingRequest>,
-  output: __S(48) as any as S.Schema<DeleteZoneTransferIncomingResponse>,
+  input: DeleteZoneTransferIncomingRequest,
+  output: DeleteZoneTransferIncomingResponse,
   errors: [IncomingZoneTransferNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -11807,8 +12739,8 @@ export const deleteZoneTransferOutgoing: API.OperationMethod<
   DeleteZoneTransferOutgoingError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(53) as any as S.Schema<DeleteZoneTransferOutgoingRequest>,
-  output: __S(48) as any as S.Schema<DeleteZoneTransferOutgoingResponse>,
+  input: DeleteZoneTransferOutgoingRequest,
+  output: DeleteZoneTransferOutgoingResponse,
   errors: [
     OutgoingZoneTransferNotFound,
     OutgoingZoneTransfersNotAllowed,
@@ -11827,8 +12759,8 @@ export const deleteZoneTransferPeer: API.OperationMethod<
   DeleteZoneTransferPeerError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(54) as any as S.Schema<DeleteZoneTransferPeerRequest>,
-  output: __S(48) as any as S.Schema<DeleteZoneTransferPeerResponse>,
+  input: DeleteZoneTransferPeerRequest,
+  output: DeleteZoneTransferPeerResponse,
   errors: [PeerNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -11842,8 +12774,8 @@ export const deleteZoneTransferTsig: API.OperationMethod<
   DeleteZoneTransferTsigError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(55) as any as S.Schema<DeleteZoneTransferTsigRequest>,
-  output: __S(48) as any as S.Schema<DeleteZoneTransferTsigResponse>,
+  input: DeleteZoneTransferTsigRequest,
+  output: DeleteZoneTransferTsigResponse,
   errors: [TsigNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -11857,8 +12789,8 @@ export const disableZoneTransferOutgoing: API.OperationMethod<
   DisableZoneTransferOutgoingError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56) as any as S.Schema<DisableZoneTransferOutgoingRequest>,
-  output: __S(34) as any as S.Schema<DisableZoneTransferOutgoingResponse>,
+  input: DisableZoneTransferOutgoingRequest,
+  output: DisableZoneTransferOutgoingResponse,
   errors: [OutgoingZoneTransfersNotAllowed, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -11872,8 +12804,8 @@ export const enableZoneTransferOutgoing: API.OperationMethod<
   EnableZoneTransferOutgoingError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57) as any as S.Schema<EnableZoneTransferOutgoingRequest>,
-  output: __S(34) as any as S.Schema<EnableZoneTransferOutgoingResponse>,
+  input: EnableZoneTransferOutgoingRequest,
+  output: EnableZoneTransferOutgoingResponse,
   errors: [OutgoingZoneTransfersNotAllowed, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -11887,8 +12819,8 @@ export const exportRecord: API.OperationMethod<
   ExportRecordError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(58) as any as S.Schema<ExportRecordRequest>,
-  output: __S(59) as any as S.Schema<ExportRecordResponse>,
+  input: ExportRecordRequest,
+  output: ExportRecordResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -11902,8 +12834,8 @@ export const forceNotifyZoneTransferOutgoing: API.OperationMethod<
   ForceNotifyZoneTransferOutgoingError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60) as any as S.Schema<ForceNotifyZoneTransferOutgoingRequest>,
-  output: __S(34) as any as S.Schema<ForceNotifyZoneTransferOutgoingResponse>,
+  input: ForceNotifyZoneTransferOutgoingRequest,
+  output: ForceNotifyZoneTransferOutgoingResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -11917,8 +12849,8 @@ export const getAnalyticReport: API.OperationMethod<
   GetAnalyticReportError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(61) as any as S.Schema<GetAnalyticReportRequest>,
-  output: __S(66) as any as S.Schema<GetAnalyticReportResponse>,
+  input: GetAnalyticReportRequest,
+  output: GetAnalyticReportResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -11932,8 +12864,8 @@ export const getAnalyticReportBytime: API.OperationMethod<
   GetAnalyticReportBytimeError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(67) as any as S.Schema<GetAnalyticReportBytimeRequest>,
-  output: __S(73) as any as S.Schema<GetAnalyticReportBytimeResponse>,
+  input: GetAnalyticReportBytimeRequest,
+  output: GetAnalyticReportBytimeResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -11947,8 +12879,8 @@ export const getDnssec: API.OperationMethod<
   GetDnssecError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(74) as any as S.Schema<GetDnssecRequest>,
-  output: __S(75) as any as S.Schema<GetDnssecResponse>,
+  input: GetDnssecRequest,
+  output: GetDnssecResponse,
   errors: [Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -11962,8 +12894,8 @@ export const getRecord: API.OperationMethod<
   GetRecordError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(76) as any as S.Schema<GetRecordRequest>,
-  output: __S(78) as any as S.Schema<GetRecordResponse>,
+  input: GetRecordRequest,
+  output: GetRecordResponse,
   errors: [Forbidden, RecordNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -11977,8 +12909,8 @@ export const getSettingAccount: API.OperationMethod<
   GetSettingAccountError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(79) as any as S.Schema<GetSettingAccountRequest>,
-  output: __S(84) as any as S.Schema<GetSettingAccountResponse>,
+  input: GetSettingAccountRequest,
+  output: GetSettingAccountResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -11992,8 +12924,8 @@ export const getSettingAccountView: API.OperationMethod<
   GetSettingAccountViewError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(85) as any as S.Schema<GetSettingAccountViewRequest>,
-  output: __S(25) as any as S.Schema<GetSettingAccountViewResponse>,
+  input: GetSettingAccountViewRequest,
+  output: GetSettingAccountViewResponse,
   errors: [ViewNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -12007,8 +12939,8 @@ export const getSettingsAccountNameserverSet: API.OperationMethod<
   GetSettingsAccountNameserverSetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(86) as any as S.Schema<GetSettingsAccountNameserverSetRequest>,
-  output: __S(88) as any as S.Schema<GetSettingsAccountNameserverSetResponse>,
+  input: GetSettingsAccountNameserverSetRequest,
+  output: GetSettingsAccountNameserverSetResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -12022,8 +12954,8 @@ export const getSettingZone: API.OperationMethod<
   GetSettingZoneError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(89) as any as S.Schema<GetSettingZoneRequest>,
-  output: __S(91) as any as S.Schema<GetSettingZoneResponse>,
+  input: GetSettingZoneRequest,
+  output: GetSettingZoneResponse,
   errors: [Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -12037,8 +12969,8 @@ export const getUsageAccount: API.OperationMethod<
   GetUsageAccountError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(92) as any as S.Schema<GetUsageAccountRequest>,
-  output: __S(93) as any as S.Schema<GetUsageAccountResponse>,
+  input: GetUsageAccountRequest,
+  output: GetUsageAccountResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -12052,8 +12984,8 @@ export const getUsageZone: API.OperationMethod<
   GetUsageZoneError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(94) as any as S.Schema<GetUsageZoneRequest>,
-  output: __S(95) as any as S.Schema<GetUsageZoneResponse>,
+  input: GetUsageZoneRequest,
+  output: GetUsageZoneResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -12067,8 +12999,8 @@ export const getZoneTransferAcl: API.OperationMethod<
   GetZoneTransferAclError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(96) as any as S.Schema<GetZoneTransferAclRequest>,
-  output: __S(32) as any as S.Schema<GetZoneTransferAclResponse>,
+  input: GetZoneTransferAclRequest,
+  output: GetZoneTransferAclResponse,
   errors: [AclNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -12082,8 +13014,8 @@ export const getZoneTransferIncoming: API.OperationMethod<
   GetZoneTransferIncomingError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(97) as any as S.Schema<GetZoneTransferIncomingRequest>,
-  output: __S(36) as any as S.Schema<GetZoneTransferIncomingResponse>,
+  input: GetZoneTransferIncomingRequest,
+  output: GetZoneTransferIncomingResponse,
   errors: [IncomingZoneTransferNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -12100,8 +13032,8 @@ export const getZoneTransferOutgoing: API.OperationMethod<
   GetZoneTransferOutgoingError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(98) as any as S.Schema<GetZoneTransferOutgoingRequest>,
-  output: __S(38) as any as S.Schema<GetZoneTransferOutgoingResponse>,
+  input: GetZoneTransferOutgoingRequest,
+  output: GetZoneTransferOutgoingResponse,
   errors: [
     OutgoingZoneTransferNotFound,
     OutgoingZoneTransfersNotAllowed,
@@ -12120,8 +13052,8 @@ export const getZoneTransferOutgoingStatus: API.OperationMethod<
   GetZoneTransferOutgoingStatusError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(99) as any as S.Schema<GetZoneTransferOutgoingStatusRequest>,
-  output: __S(34) as any as S.Schema<GetZoneTransferOutgoingStatusResponse>,
+  input: GetZoneTransferOutgoingStatusRequest,
+  output: GetZoneTransferOutgoingStatusResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -12135,8 +13067,8 @@ export const getZoneTransferPeer: API.OperationMethod<
   GetZoneTransferPeerError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(100) as any as S.Schema<GetZoneTransferPeerRequest>,
-  output: __S(40) as any as S.Schema<GetZoneTransferPeerResponse>,
+  input: GetZoneTransferPeerRequest,
+  output: GetZoneTransferPeerResponse,
   errors: [PeerNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -12150,8 +13082,8 @@ export const getZoneTransferTsig: API.OperationMethod<
   GetZoneTransferTsigError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(101) as any as S.Schema<GetZoneTransferTsigRequest>,
-  output: __S(42) as any as S.Schema<GetZoneTransferTsigResponse>,
+  input: GetZoneTransferTsigRequest,
+  output: GetZoneTransferTsigResponse,
   errors: [TsigNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -12165,8 +13097,8 @@ export const importRecord: API.OperationMethod<
   ImportRecordError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(102) as any as S.Schema<ImportRecordRequest>,
-  output: __S(103) as any as S.Schema<ImportRecordResponse>,
+  input: ImportRecordRequest,
+  output: ImportRecordResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -12180,8 +13112,8 @@ export const listDnssecZsk: API.OperationMethod<
   ListDnssecZskError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(104) as any as S.Schema<ListDnssecZskRequest>,
-  output: __S(110) as any as S.Schema<ListDnssecZskResponse>,
+  input: ListDnssecZskRequest,
+  output: ListDnssecZskResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -12197,8 +13129,8 @@ export const listRecords: API.PaginatedOperationMethod<
   RecordsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(115) as any as S.Schema<ListRecordsRequest>,
-    output: __S(118) as any as S.Schema<ListRecordsResponse>,
+    input: ListRecordsRequest,
+    output: ListRecordsResponse,
     errors: [Forbidden, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -12223,8 +13155,8 @@ export const listSettingAccountViews: API.PaginatedOperationMethod<
   SettingsAccountViewsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(119) as any as S.Schema<ListSettingAccountViewsRequest>,
-    output: __S(122) as any as S.Schema<ListSettingAccountViewsResponse>,
+    input: ListSettingAccountViewsRequest,
+    output: ListSettingAccountViewsResponse,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -12247,8 +13179,8 @@ export const listSettingsAccountNameserverSets: API.OperationMethod<
   ListSettingsAccountNameserverSetsError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(123) as any as S.Schema<ListSettingsAccountNameserverSetsRequest>,
-  output: __S(126) as any as S.Schema<ListSettingsAccountNameserverSetsResponse>,
+  input: ListSettingsAccountNameserverSetsRequest,
+  output: ListSettingsAccountNameserverSetsResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -12264,8 +13196,8 @@ export const listZoneTransferAcls: API.PaginatedOperationMethod<
   ZoneTransfersAclsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(127) as any as S.Schema<ListZoneTransferAclsRequest>,
-    output: __S(130) as any as S.Schema<ListZoneTransferAclsResponse>,
+    input: ListZoneTransferAclsRequest,
+    output: ListZoneTransferAclsResponse,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -12284,8 +13216,8 @@ export const listZoneTransferPeers: API.PaginatedOperationMethod<
   ZoneTransfersPeersListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(131) as any as S.Schema<ListZoneTransferPeersRequest>,
-    output: __S(134) as any as S.Schema<ListZoneTransferPeersResponse>,
+    input: ListZoneTransferPeersRequest,
+    output: ListZoneTransferPeersResponse,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -12304,8 +13236,8 @@ export const listZoneTransferTsigs: API.PaginatedOperationMethod<
   ZoneTransfersTsigsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(135) as any as S.Schema<ListZoneTransferTsigsRequest>,
-    output: __S(138) as any as S.Schema<ListZoneTransferTsigsResponse>,
+    input: ListZoneTransferTsigsRequest,
+    output: ListZoneTransferTsigsResponse,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -12322,8 +13254,8 @@ export const patchDnssec: API.OperationMethod<
   PatchDnssecError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(139) as any as S.Schema<PatchDnssecRequest>,
-  output: __S(75) as any as S.Schema<PatchDnssecResponse>,
+  input: PatchDnssecRequest,
+  output: PatchDnssecResponse,
   errors: [Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -12337,8 +13269,8 @@ export const patchRecord: API.OperationMethod<
   PatchRecordError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(142) as any as S.Schema<PatchRecordRequest>,
-  output: __S(144) as any as S.Schema<PatchRecordResponse>,
+  input: PatchRecordRequest,
+  output: PatchRecordResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -12352,8 +13284,8 @@ export const patchSettingAccount: API.OperationMethod<
   PatchSettingAccountError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(149) as any as S.Schema<PatchSettingAccountRequest>,
-  output: __S(84) as any as S.Schema<PatchSettingAccountResponse>,
+  input: PatchSettingAccountRequest,
+  output: PatchSettingAccountResponse,
   errors: [DnsSettingNotAvailable, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -12367,8 +13299,8 @@ export const patchSettingAccountView: API.OperationMethod<
   PatchSettingAccountViewError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(150) as any as S.Schema<PatchSettingAccountViewRequest>,
-  output: __S(25) as any as S.Schema<PatchSettingAccountViewResponse>,
+  input: PatchSettingAccountViewRequest,
+  output: PatchSettingAccountViewResponse,
   errors: [ViewNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -12382,8 +13314,8 @@ export const patchSettingZone: API.OperationMethod<
   PatchSettingZoneError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(152) as any as S.Schema<PatchSettingZoneRequest>,
-  output: __S(154) as any as S.Schema<PatchSettingZoneResponse>,
+  input: PatchSettingZoneRequest,
+  output: PatchSettingZoneResponse,
   errors: [Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -12399,8 +13331,8 @@ export const scanListRecord: API.PaginatedOperationMethod<
   RecordsScanListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(155) as any as S.Schema<ScanListRecordRequest>,
-    output: __S(158) as any as S.Schema<ScanListRecordResponse>,
+    input: ScanListRecordRequest,
+    output: ScanListRecordResponse,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -12417,8 +13349,8 @@ export const scanRecord: API.OperationMethod<
   ScanRecordError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(159) as any as S.Schema<ScanRecordRequest>,
-  output: __S(103) as any as S.Schema<ScanRecordResponse>,
+  input: ScanRecordRequest,
+  output: ScanRecordResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -12432,8 +13364,8 @@ export const scanReviewRecord: API.OperationMethod<
   ScanReviewRecordError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(162) as any as S.Schema<ScanReviewRecordRequest>,
-  output: __S(165) as any as S.Schema<ScanReviewRecordResponse>,
+  input: ScanReviewRecordRequest,
+  output: ScanReviewRecordResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -12447,8 +13379,8 @@ export const scanTriggerRecord: API.OperationMethod<
   ScanTriggerRecordError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(166) as any as S.Schema<ScanTriggerRecordRequest>,
-  output: __S(167) as any as S.Schema<ScanTriggerRecordResponse>,
+  input: ScanTriggerRecordRequest,
+  output: ScanTriggerRecordResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -12462,8 +13394,8 @@ export const updateRecord: API.OperationMethod<
   UpdateRecordError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(170) as any as S.Schema<UpdateRecordRequest>,
-  output: __S(172) as any as S.Schema<UpdateRecordResponse>,
+  input: UpdateRecordRequest,
+  output: UpdateRecordResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -12477,8 +13409,8 @@ export const updateZoneTransferAcl: API.OperationMethod<
   UpdateZoneTransferAclError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(173) as any as S.Schema<UpdateZoneTransferAclRequest>,
-  output: __S(32) as any as S.Schema<UpdateZoneTransferAclResponse>,
+  input: UpdateZoneTransferAclRequest,
+  output: UpdateZoneTransferAclResponse,
   errors: [AclNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -12492,8 +13424,8 @@ export const updateZoneTransferIncoming: API.OperationMethod<
   UpdateZoneTransferIncomingError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(174) as any as S.Schema<UpdateZoneTransferIncomingRequest>,
-  output: __S(36) as any as S.Schema<UpdateZoneTransferIncomingResponse>,
+  input: UpdateZoneTransferIncomingRequest,
+  output: UpdateZoneTransferIncomingResponse,
   errors: [IncomingZoneTransferNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -12510,8 +13442,8 @@ export const updateZoneTransferOutgoing: API.OperationMethod<
   UpdateZoneTransferOutgoingError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(175) as any as S.Schema<UpdateZoneTransferOutgoingRequest>,
-  output: __S(38) as any as S.Schema<UpdateZoneTransferOutgoingResponse>,
+  input: UpdateZoneTransferOutgoingRequest,
+  output: UpdateZoneTransferOutgoingResponse,
   errors: [
     OutgoingZoneTransferNotFound,
     OutgoingZoneTransfersNotAllowed,
@@ -12530,8 +13462,8 @@ export const updateZoneTransferPeer: API.OperationMethod<
   UpdateZoneTransferPeerError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(176) as any as S.Schema<UpdateZoneTransferPeerRequest>,
-  output: __S(40) as any as S.Schema<UpdateZoneTransferPeerResponse>,
+  input: UpdateZoneTransferPeerRequest,
+  output: UpdateZoneTransferPeerResponse,
   errors: [PeerNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -12545,8 +13477,8 @@ export const updateZoneTransferTsig: API.OperationMethod<
   UpdateZoneTransferTsigError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(177) as any as S.Schema<UpdateZoneTransferTsigRequest>,
-  output: __S(42) as any as S.Schema<UpdateZoneTransferTsigResponse>,
+  input: UpdateZoneTransferTsigRequest,
+  output: UpdateZoneTransferTsigResponse,
   errors: [TsigNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -12564,7 +13496,7 @@ function __c0(j: number): any {
         identifier: "RecordsBatchRequestDeletesItem",
       });
     case 1:
-      return S.Array(__S(0));
+      return S.Array(RecordsBatchRequestDeletesItem);
     case 2:
       return S.Array(S.String);
     case 3:
@@ -12594,7 +13526,7 @@ function __c0(j: number): any {
         ]),
       );
     case 4:
-      return S.Array(__S(3));
+      return S.Array(RecordsBatchRequestPatchesItem);
     case 5:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases(
@@ -12691,7 +13623,7 @@ function __c0(j: number): any {
         ),
       );
     case 6:
-      return S.Array(__S(5));
+      return S.Array(RecordsBatchRequestPostsItem);
     case 7:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases([
@@ -12723,16 +13655,16 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(7));
+      return S.Array(RecordsBatchRequestPutsItem);
     case 1:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
           includeShadowMetadata: S.optional(S.Boolean.pipe(T.Query("include_shadow_metadata"))),
-          deletes: S.optional(__S(1)),
-          patches: S.optional(__S(4)),
-          posts: S.optional(__S(6)),
-          puts: S.optional(__S(8)),
+          deletes: S.optional(RecordsBatchRequestDeletesList),
+          patches: S.optional(RecordsBatchRequestPatchesList),
+          posts: S.optional(RecordsBatchRequestPostsList),
+          puts: S.optional(RecordsBatchRequestPutsList),
         })
           .pipe(T.Http({ method: "POST", uri: "/zones/{zone_id}/dns_records/batch", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -12940,7 +13872,7 @@ function __c1(j: number): any {
         ]),
       );
     case 3:
-      return S.Array(__S(10));
+      return S.Array(RecordsBatchResponseDeletesItem);
     case 4:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases([
@@ -13144,7 +14076,7 @@ function __c1(j: number): any {
         ]),
       );
     case 5:
-      return S.Array(__S(12));
+      return S.Array(RecordsBatchResponsePatchesItem);
     case 6:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases([
@@ -13348,7 +14280,7 @@ function __c1(j: number): any {
         ]),
       );
     case 7:
-      return S.Array(__S(14));
+      return S.Array(RecordsBatchResponsePostsItem);
   }
 }
 function __c2(j: number): any {
@@ -13556,14 +14488,14 @@ function __c2(j: number): any {
         ]),
       );
     case 1:
-      return S.Array(__S(16));
+      return S.Array(RecordsBatchResponsePutsItem);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          deletes: S.optional(S.NullOr(__S(11))),
-          patches: S.optional(S.NullOr(__S(13))),
-          posts: S.optional(S.NullOr(__S(15))),
-          puts: S.optional(S.NullOr(__S(17))),
+          deletes: S.optional(S.NullOr(RecordsBatchResponseDeletesList)),
+          patches: S.optional(S.NullOr(RecordsBatchResponsePatchesList)),
+          posts: S.optional(S.NullOr(RecordsBatchResponsePostsList)),
+          puts: S.optional(S.NullOr(RecordsBatchResponsePutsList)),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "BatchRecordResponse" });
     case 3:
@@ -13609,15 +14541,15 @@ function __c2(j: number): any {
           includeShadowMetadata: S.optional(S.Boolean.pipe(T.Query("include_shadow_metadata"))),
           name: S.String,
           ttl: S.Number,
-          type: S.String,
+          type: RecordsCreateRequestType,
           comment: S.optional(S.String),
           content: S.optional(S.String),
           privateRouting: S.optional(S.Boolean.pipe(T.Body("private_routing"))),
           proxied: S.optional(S.Boolean),
-          settings: S.optional(__S(19)),
-          tags: S.optional(__S(2)),
+          settings: S.optional(RecordsCreateRequestSettings),
+          tags: S.optional(RecordsCreateRequestTagsList),
           priority: S.optional(S.Number),
-          data: S.optional(__S(20)),
+          data: S.optional(RecordsCreateRequestData),
         })
           .pipe(T.Http({ method: "POST", uri: "/zones/{zone_id}/dns_records", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -14054,7 +14986,7 @@ function __c2(j: number): any {
       );
     case 7:
       return S.suspend(() =>
-        __S(22).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
+        RecordsCreateResult.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "CreateRecordResponse" });
   }
 }
@@ -14065,7 +14997,7 @@ function __c3(j: number): any {
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           name: S.String,
-          zones: __S(2),
+          zones: SettingsAccountViewsCreateRequestZonesList,
         })
           .pipe(
             T.Http({ method: "POST", uri: "/accounts/{account_id}/dns_settings/views", code: 200 }),
@@ -14081,7 +15013,7 @@ function __c3(j: number): any {
           createdTime: S.String.pipe(T.Body("created_time")),
           modifiedTime: S.String.pipe(T.Body("modified_time")),
           name: S.String,
-          zones: __S(2),
+          zones: SettingsAccountViewsCreateResponseZonesList,
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "CreateSettingAccountViewResponse",
@@ -14096,12 +15028,12 @@ function __c3(j: number): any {
         identifier: "CreateSettingsAccountNameserverSetRequestNameserversItem",
       });
     case 3:
-      return S.Array(__S(26));
+      return S.Array(CreateSettingsAccountNameserverSetRequestNameserversItem);
     case 4:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
-          nameservers: __S(27),
+          nameservers: CreateSettingsAccountNameserverSetRequestNameserversList,
           advanced: S.optional(S.Boolean),
           ipSet: S.optional(S.Number.pipe(T.Body("ip_set"))),
         })
@@ -14125,7 +15057,10 @@ function __c3(j: number): any {
       );
     case 6:
       return S.suspend(() =>
-        __S(29).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
+        CreateSettingsAccountNameserverSetResult.pipe(
+          T.EnvelopePayloadRoot(),
+          T.KeyDictionary(KEY_DICTIONARY),
+        ),
       ).annotate({
         identifier: "CreateSettingsAccountNameserverSetResponse",
       });
@@ -14181,7 +15116,7 @@ function __c4(j: number): any {
           zoneId: S.String.pipe(T.Label("zone_id")),
           autoRefreshSeconds: S.Number.pipe(T.Body("auto_refresh_seconds")),
           name: S.String,
-          peers: __S(2),
+          peers: ZoneTransfersIncomingCreateRequestPeersList,
         })
           .pipe(
             T.Http({ method: "POST", uri: "/zones/{zone_id}/secondary_dns/incoming", code: 200 }),
@@ -14199,7 +15134,7 @@ function __c4(j: number): any {
           createdTime: S.optional(S.NullOr(S.String).pipe(T.Body("created_time"))),
           modifiedTime: S.optional(S.NullOr(S.String).pipe(T.Body("modified_time"))),
           name: S.optional(S.NullOr(S.String)),
-          peers: S.optional(S.NullOr(__S(2))),
+          peers: S.optional(S.NullOr(ZoneTransfersIncomingCreateResponsePeersList)),
           soaSerial: S.optional(S.NullOr(S.Number).pipe(T.Body("soa_serial"))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
@@ -14210,7 +15145,7 @@ function __c4(j: number): any {
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
           name: S.String,
-          peers: __S(2),
+          peers: ZoneTransfersOutgoingCreateRequestPeersList,
         })
           .pipe(
             T.Http({ method: "POST", uri: "/zones/{zone_id}/secondary_dns/outgoing", code: 200 }),
@@ -14227,7 +15162,7 @@ function __c4(j: number): any {
           createdTime: S.optional(S.NullOr(S.String).pipe(T.Body("created_time"))),
           lastTransferredTime: S.optional(S.NullOr(S.String).pipe(T.Body("last_transferred_time"))),
           name: S.optional(S.NullOr(S.String)),
-          peers: S.optional(S.NullOr(__S(2))),
+          peers: S.optional(S.NullOr(ZoneTransfersOutgoingCreateResponsePeersList)),
           soaSerial: S.optional(S.NullOr(S.Number).pipe(T.Body("soa_serial"))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
@@ -14543,8 +15478,8 @@ function __c7(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          dimensions: __S(2),
-          metrics: __S(62),
+          dimensions: AnalyticsReportsGetResponseDataItemDimensionsList,
+          metrics: AnalyticsReportsGetResponseDataItemMetricsList,
         }),
       ).annotate({
         identifier: "AnalyticsReportsGetResponseDataItem",
@@ -14554,17 +15489,17 @@ function __c7(j: number): any {
 function __c8(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(63));
+      return S.Array(AnalyticsReportsGetResponseDataItem);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          dimensions: __S(2),
+          dimensions: AnalyticsReportsGetResponseQueryDimensionsList,
           limit: S.Number,
-          metrics: __S(2),
+          metrics: AnalyticsReportsGetResponseQueryMetricsList,
           since: S.String,
           until: S.String,
           filters: S.optional(S.NullOr(S.String)),
-          sort: S.optional(S.NullOr(__S(2))),
+          sort: S.optional(S.NullOr(AnalyticsReportsGetResponseQuerySortList)),
         }),
       ).annotate({
         identifier: "AnalyticsReportsGetResponseQuery",
@@ -14572,11 +15507,11 @@ function __c8(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          data: __S(64),
+          data: AnalyticsReportsGetResponseDataList,
           dataLag: S.Number.pipe(T.Body("data_lag")),
           max: S.Unknown,
           min: S.Unknown,
-          query: __S(65),
+          query: AnalyticsReportsGetResponseQuery,
           rows: S.Number,
           totals: S.Unknown,
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -14593,7 +15528,9 @@ function __c8(j: number): any {
           metrics: S.optional(S.String.pipe(T.Query())),
           since: S.optional(S.String.pipe(T.Query())),
           sort: S.optional(S.String.pipe(T.Query())),
-          timeDelta: S.optional(S.String.pipe(T.Query("time_delta"))),
+          timeDelta: S.optional(
+            AnalyticsReportsBytimesGetRequestTimeDelta.pipe(T.Query("time_delta")),
+          ),
           until: S.optional(S.String.pipe(T.Query())),
         })
           .pipe(
@@ -14608,29 +15545,29 @@ function __c8(j: number): any {
         identifier: "GetAnalyticReportBytimeRequest",
       });
     case 4:
-      return S.Array(__S(62));
+      return S.Array(AnalyticsReportsBytimesGetResponseDataItemMetricsItemList);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          dimensions: __S(2),
-          metrics: __S(68),
+          dimensions: AnalyticsReportsBytimesGetResponseDataItemDimensionsList,
+          metrics: AnalyticsReportsBytimesGetResponseDataItemMetricsList,
         }),
       ).annotate({
         identifier: "AnalyticsReportsBytimesGetResponseDataItem",
       });
     case 6:
-      return S.Array(__S(69));
+      return S.Array(AnalyticsReportsBytimesGetResponseDataItem);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          dimensions: __S(2),
+          dimensions: AnalyticsReportsBytimesGetResponseQueryDimensionsList,
           limit: S.Number,
-          metrics: __S(2),
+          metrics: AnalyticsReportsBytimesGetResponseQueryMetricsList,
           since: S.String,
-          timeDelta: S.String.pipe(T.Body("time_delta")),
+          timeDelta: AnalyticsReportsBytimesGetResponseQueryTimeDelta.pipe(T.Body("time_delta")),
           until: S.String,
           filters: S.optional(S.NullOr(S.String)),
-          sort: S.optional(S.NullOr(__S(2))),
+          sort: S.optional(S.NullOr(AnalyticsReportsBytimesGetResponseQuerySortList)),
         }),
       ).annotate({
         identifier: "AnalyticsReportsBytimesGetResponseQuery",
@@ -14640,17 +15577,19 @@ function __c8(j: number): any {
 function __c9(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(2));
+      return S.Array(AnalyticsReportsBytimesGetResponseTimeIntervalsItemList);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          data: __S(70),
+          data: AnalyticsReportsBytimesGetResponseDataList,
           dataLag: S.Number.pipe(T.Body("data_lag")),
           max: S.Unknown,
           min: S.Unknown,
-          query: __S(71),
+          query: AnalyticsReportsBytimesGetResponseQuery,
           rows: S.Number,
-          timeIntervals: __S(72).pipe(T.Body("time_intervals")),
+          timeIntervals: AnalyticsReportsBytimesGetResponseTimeIntervalsList.pipe(
+            T.Body("time_intervals"),
+          ),
           totals: S.Unknown,
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
@@ -14680,7 +15619,7 @@ function __c9(j: number): any {
           keyType: S.optional(S.NullOr(S.String).pipe(T.Body("key_type"))),
           modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
           publicKey: S.optional(S.NullOr(S.String).pipe(T.Body("public_key"))),
-          status: S.optional(S.NullOr(S.String)),
+          status: S.optional(S.NullOr(DnssecGetResponseStatus)),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetDnssecResponse" });
     case 4:
@@ -15131,7 +16070,7 @@ function __c9(j: number): any {
       );
     case 6:
       return S.suspend(() =>
-        __S(77).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
+        RecordsGetResult.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetRecordResponse" });
     case 7:
       return S.suspend(() =>
@@ -15156,7 +16095,7 @@ function __c10(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          type: S.String,
+          type: SettingsAccountGetResponseZoneDefaultsNameserversType,
         }),
       ).annotate({
         identifier: "SettingsAccountGetResponseZoneDefaultsNameservers",
@@ -15180,13 +16119,15 @@ function __c10(j: number): any {
         S.Struct({
           flattenAllCnames: S.Boolean.pipe(T.Body("flatten_all_cnames")),
           foundationDns: S.Boolean.pipe(T.Body("foundation_dns")),
-          internalDns: __S(80).pipe(T.Body("internal_dns")),
+          internalDns: SettingsAccountGetResponseZoneDefaultsInternalDns.pipe(
+            T.Body("internal_dns"),
+          ),
           multiProvider: S.Boolean.pipe(T.Body("multi_provider")),
-          nameservers: __S(81),
+          nameservers: SettingsAccountGetResponseZoneDefaultsNameservers,
           nsTtl: S.Number.pipe(T.Body("ns_ttl")),
           secondaryOverrides: S.Boolean.pipe(T.Body("secondary_overrides")),
-          soa: __S(82),
-          zoneMode: S.String.pipe(T.Body("zone_mode")),
+          soa: SettingsAccountGetResponseZoneDefaultsSoa,
+          zoneMode: SettingsAccountGetResponseZoneDefaultsZoneMode.pipe(T.Body("zone_mode")),
         }),
       ).annotate({
         identifier: "SettingsAccountGetResponseZoneDefaults",
@@ -15194,7 +16135,7 @@ function __c10(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          zoneDefaults: __S(83).pipe(T.Body("zone_defaults")),
+          zoneDefaults: SettingsAccountGetResponseZoneDefaults.pipe(T.Body("zone_defaults")),
           enforceDnsOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("enforce_dns_only"))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
@@ -15247,7 +16188,10 @@ function __c11(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        __S(87).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
+        GetSettingsAccountNameserverSetResult.pipe(
+          T.EnvelopePayloadRoot(),
+          T.KeyDictionary(KEY_DICTIONARY),
+        ),
       ).annotate({
         identifier: "GetSettingsAccountNameserverSetResponse",
       });
@@ -15268,13 +16212,15 @@ function __c11(j: number): any {
         S.Struct({
           flattenAllCnames: S.Boolean.pipe(T.Body("flatten_all_cnames")),
           foundationDns: S.Boolean.pipe(T.Body("foundation_dns")),
-          internalDns: __S(80).pipe(T.Body("internal_dns")),
+          internalDns: SettingsAccountGetResponseZoneDefaultsInternalDns.pipe(
+            T.Body("internal_dns"),
+          ),
           multiProvider: S.Boolean.pipe(T.Body("multi_provider")),
-          nameservers: __S(90),
+          nameservers: SettingsZoneGetResponseNameservers,
           nsTtl: S.Number.pipe(T.Body("ns_ttl")),
           secondaryOverrides: S.Boolean.pipe(T.Body("secondary_overrides")),
-          soa: __S(82),
-          zoneMode: S.String.pipe(T.Body("zone_mode")),
+          soa: SettingsAccountGetResponseZoneDefaultsSoa,
+          zoneMode: SettingsZoneGetResponseZoneMode.pipe(T.Body("zone_mode")),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetSettingZoneResponse" });
     case 4:
@@ -15452,7 +16398,7 @@ function __c13(j: number): any {
         S.Struct({
           algorithm: S.optional(S.NullOr(S.Number).pipe(T.Body("Algorithm"))),
           flags: S.optional(S.NullOr(S.Number).pipe(T.Body("Flags"))),
-          hdr: S.optional(S.NullOr(__S(105)).pipe(T.Body("Hdr"))),
+          hdr: S.optional(S.NullOr(ListDnssecZskResultItemDNSKEYHdr).pipe(T.Body("Hdr"))),
           protocol: S.optional(S.NullOr(S.Number).pipe(T.Body("Protocol"))),
           publicKey: S.optional(S.NullOr(S.String).pipe(T.Body("PublicKey"))),
         }),
@@ -15472,18 +16418,20 @@ function __c13(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          dNSKEY: S.optional(S.NullOr(__S(106)).pipe(T.Body("DNSKEY"))),
-          location: S.optional(S.NullOr(S.String).pipe(T.Body("Location"))),
+          dNSKEY: S.optional(S.NullOr(ListDnssecZskResultItemDNSKEY).pipe(T.Body("DNSKEY"))),
+          location: S.optional(S.NullOr(ListDnssecZskResultItemLocation).pipe(T.Body("Location"))),
           name: S.optional(S.NullOr(S.String).pipe(T.Body("Name"))),
-          signingKey: S.optional(S.NullOr(__S(107)).pipe(T.Body("SigningKey"))),
-          tag: S.optional(S.NullOr(S.String).pipe(T.Body("Tag"))),
+          signingKey: S.optional(
+            S.NullOr(ListDnssecZskResultItemSigningKey).pipe(T.Body("SigningKey")),
+          ),
+          tag: S.optional(S.NullOr(ListDnssecZskResultItemTag).pipe(T.Body("Tag"))),
         }),
       ).annotate({ identifier: "ListDnssecZskResultItem" });
     case 5:
-      return S.Array(__S(108));
+      return S.Array(ListDnssecZskResultItem);
     case 6:
       return S.suspend(() =>
-        __S(109).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
+        ListDnssecZskResultList.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListDnssecZskResponse" });
     case 7:
       return S.suspend(() =>
@@ -15537,22 +16485,22 @@ function __c14(j: number): any {
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
-          comment: S.optional(__S(111).pipe(T.DeepQuery("comment"))),
-          content: S.optional(__S(112).pipe(T.DeepQuery("content"))),
+          comment: S.optional(RecordsListRequestComment.pipe(T.DeepQuery("comment"))),
+          content: S.optional(RecordsListRequestContent.pipe(T.DeepQuery("content"))),
           direction: S.optional(S.String.pipe(T.Query())),
           includeShadowMetadata: S.optional(S.Boolean.pipe(T.Query("include_shadow_metadata"))),
-          match: S.optional(S.String.pipe(T.Query())),
-          name: S.optional(__S(113).pipe(T.DeepQuery("name"))),
-          order: S.optional(S.String.pipe(T.Query())),
+          match: S.optional(RecordsListRequestMatch.pipe(T.Query())),
+          name: S.optional(RecordsListRequestName.pipe(T.DeepQuery("name"))),
+          order: S.optional(RecordsListRequestOrder.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
           perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
           proxied: S.optional(S.Boolean.pipe(T.Query())),
           search: S.optional(S.String.pipe(T.Query())),
           shadowedByName: S.optional(S.String.pipe(T.Query("shadowed_by_name"))),
           shadowingName: S.optional(S.String.pipe(T.Query("shadowing_name"))),
-          tag: S.optional(__S(114).pipe(T.DeepQuery("tag"))),
-          tagMatch: S.optional(S.String.pipe(T.Query("tag_match"))),
-          type: S.optional(S.String.pipe(T.Query())),
+          tag: S.optional(RecordsListRequestTag.pipe(T.DeepQuery("tag"))),
+          tagMatch: S.optional(RecordsListRequestTagMatch.pipe(T.Query("tag_match"))),
+          type: S.optional(RecordsListRequestType.pipe(T.Query())),
         })
           .pipe(T.Http({ method: "GET", uri: "/zones/{zone_id}/dns_records", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -15988,11 +16936,11 @@ function __c14(j: number): any {
         ),
       );
     case 5:
-      return S.Array(__S(116));
+      return S.Array(RecordsListResultItem);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          result: __S(117).pipe(T.EnvelopePayload()),
+          result: RecordsListResultList.pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListRecordsResponse" });
@@ -16000,10 +16948,10 @@ function __c14(j: number): any {
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
-          direction: S.optional(S.String.pipe(T.Query())),
-          match: S.optional(S.String.pipe(T.Query())),
-          name: S.optional(__S(112).pipe(T.DeepQuery("name"))),
-          order: S.optional(S.String.pipe(T.Query())),
+          direction: S.optional(SettingsAccountViewsListRequestDirection.pipe(T.Query())),
+          match: S.optional(SettingsAccountViewsListRequestMatch.pipe(T.Query())),
+          name: S.optional(SettingsAccountViewsListRequestName.pipe(T.DeepQuery("name"))),
+          order: S.optional(SettingsAccountViewsListRequestOrder.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
           perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
           zoneId: S.optional(S.String.pipe(T.Query("zone_id"))),
@@ -16027,17 +16975,17 @@ function __c15(j: number): any {
           createdTime: S.String.pipe(T.Body("created_time")),
           modifiedTime: S.String.pipe(T.Body("modified_time")),
           name: S.String,
-          zones: __S(2),
+          zones: SettingsAccountViewsListResultItemZonesList,
         }),
       ).annotate({
         identifier: "SettingsAccountViewsListResultItem",
       });
     case 1:
-      return S.Array(__S(120));
+      return S.Array(SettingsAccountViewsListResultItem);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          result: __S(121).pipe(T.EnvelopePayload()),
+          result: SettingsAccountViewsListResultList.pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
@@ -16069,10 +17017,13 @@ function __c15(j: number): any {
         ]),
       );
     case 5:
-      return S.Array(__S(124));
+      return S.Array(ListSettingsAccountNameserverSetsResultItem);
     case 6:
       return S.suspend(() =>
-        __S(125).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
+        ListSettingsAccountNameserverSetsResultList.pipe(
+          T.EnvelopePayloadRoot(),
+          T.KeyDictionary(KEY_DICTIONARY),
+        ),
       ).annotate({
         identifier: "ListSettingsAccountNameserverSetsResponse",
       });
@@ -16103,11 +17054,11 @@ function __c16(j: number): any {
         identifier: "ZoneTransfersAclsListResultItem",
       });
     case 1:
-      return S.Array(__S(128));
+      return S.Array(ZoneTransfersAclsListResultItem);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          result: __S(129).pipe(T.EnvelopePayload()),
+          result: ZoneTransfersAclsListResultList.pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
@@ -16139,11 +17090,11 @@ function __c16(j: number): any {
         identifier: "ZoneTransfersPeersListResultItem",
       });
     case 5:
-      return S.Array(__S(132));
+      return S.Array(ZoneTransfersPeersListResultItem);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          result: __S(133).pipe(T.EnvelopePayload()),
+          result: ZoneTransfersPeersListResultList.pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
@@ -16177,11 +17128,11 @@ function __c17(j: number): any {
         identifier: "ZoneTransfersTsigsListResultItem",
       });
     case 1:
-      return S.Array(__S(136));
+      return S.Array(ZoneTransfersTsigsListResultItem);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          result: __S(137).pipe(T.EnvelopePayload()),
+          result: ZoneTransfersTsigsListResultList.pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
@@ -16194,7 +17145,7 @@ function __c17(j: number): any {
           dnssecMultiSigner: S.optional(S.Boolean.pipe(T.Body("dnssec_multi_signer"))),
           dnssecPresigned: S.optional(S.Boolean.pipe(T.Body("dnssec_presigned"))),
           dnssecUseNsec3: S.optional(S.Boolean.pipe(T.Body("dnssec_use_nsec3"))),
-          status: S.optional(S.String),
+          status: S.optional(DnssecEditRequestStatus),
         })
           .pipe(T.Http({ method: "PATCH", uri: "/zones/{zone_id}/dnssec", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -16243,15 +17194,15 @@ function __c17(j: number): any {
           includeShadowMetadata: S.optional(S.Boolean.pipe(T.Query("include_shadow_metadata"))),
           name: S.String,
           ttl: S.Number,
-          type: S.String,
+          type: RecordsEditRequestType,
           comment: S.optional(S.String),
           content: S.optional(S.String),
           privateRouting: S.optional(S.Boolean.pipe(T.Body("private_routing"))),
           proxied: S.optional(S.Boolean),
-          settings: S.optional(__S(140)),
-          tags: S.optional(__S(2)),
+          settings: S.optional(RecordsEditRequestSettings),
+          tags: S.optional(RecordsEditRequestTagsList),
           priority: S.optional(S.Number),
-          data: S.optional(__S(141)),
+          data: S.optional(RecordsEditRequestData),
         })
           .pipe(
             T.Http({
@@ -16698,7 +17649,7 @@ function __c18(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        __S(143).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
+        RecordsEditResult.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "PatchRecordResponse" });
     case 1:
       return S.suspend(() =>
@@ -16711,7 +17662,7 @@ function __c18(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(S.String),
+          type: S.optional(SettingsAccountEditRequestZoneDefaultsNameserversType),
         }),
       ).annotate({
         identifier: "SettingsAccountEditRequestZoneDefaultsNameservers",
@@ -16735,13 +17686,17 @@ function __c18(j: number): any {
         S.Struct({
           flattenAllCnames: S.optional(S.Boolean.pipe(T.Body("flatten_all_cnames"))),
           foundationDns: S.optional(S.Boolean.pipe(T.Body("foundation_dns"))),
-          internalDns: S.optional(__S(145).pipe(T.Body("internal_dns"))),
+          internalDns: S.optional(
+            SettingsAccountEditRequestZoneDefaultsInternalDns.pipe(T.Body("internal_dns")),
+          ),
           multiProvider: S.optional(S.Boolean.pipe(T.Body("multi_provider"))),
-          nameservers: S.optional(__S(146)),
+          nameservers: S.optional(SettingsAccountEditRequestZoneDefaultsNameservers),
           nsTtl: S.optional(S.Number.pipe(T.Body("ns_ttl"))),
           secondaryOverrides: S.optional(S.Boolean.pipe(T.Body("secondary_overrides"))),
-          soa: S.optional(__S(147)),
-          zoneMode: S.optional(S.String.pipe(T.Body("zone_mode"))),
+          soa: S.optional(SettingsAccountEditRequestZoneDefaultsSoa),
+          zoneMode: S.optional(
+            SettingsAccountEditRequestZoneDefaultsZoneMode.pipe(T.Body("zone_mode")),
+          ),
         }),
       ).annotate({
         identifier: "SettingsAccountEditRequestZoneDefaults",
@@ -16751,7 +17706,9 @@ function __c18(j: number): any {
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           enforceDnsOnly: S.optional(S.Boolean.pipe(T.Body("enforce_dns_only"))),
-          zoneDefaults: S.optional(__S(148).pipe(T.Body("zone_defaults"))),
+          zoneDefaults: S.optional(
+            SettingsAccountEditRequestZoneDefaults.pipe(T.Body("zone_defaults")),
+          ),
         })
           .pipe(T.Http({ method: "PATCH", uri: "/accounts/{account_id}/dns_settings", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -16764,7 +17721,7 @@ function __c18(j: number): any {
           accountId: S.String.pipe(T.Label("account_id")),
           viewId: S.String.pipe(T.Label("view_id")),
           name: S.optional(S.String),
-          zones: S.optional(__S(2)),
+          zones: S.optional(SettingsAccountViewsEditRequestZonesList),
         })
           .pipe(
             T.Http({
@@ -16791,13 +17748,15 @@ function __c19(j: number): any {
           zoneId: S.String.pipe(T.Label("zone_id")),
           flattenAllCnames: S.optional(S.Boolean.pipe(T.Body("flatten_all_cnames"))),
           foundationDns: S.optional(S.Boolean.pipe(T.Body("foundation_dns"))),
-          internalDns: S.optional(__S(145).pipe(T.Body("internal_dns"))),
+          internalDns: S.optional(
+            SettingsAccountEditRequestZoneDefaultsInternalDns.pipe(T.Body("internal_dns")),
+          ),
           multiProvider: S.optional(S.Boolean.pipe(T.Body("multi_provider"))),
-          nameservers: S.optional(__S(151)),
+          nameservers: S.optional(SettingsZoneEditRequestNameservers),
           nsTtl: S.optional(S.Number.pipe(T.Body("ns_ttl"))),
           secondaryOverrides: S.optional(S.Boolean.pipe(T.Body("secondary_overrides"))),
-          soa: S.optional(__S(147)),
-          zoneMode: S.optional(S.String.pipe(T.Body("zone_mode"))),
+          soa: S.optional(SettingsAccountEditRequestZoneDefaultsSoa),
+          zoneMode: S.optional(SettingsZoneEditRequestZoneMode.pipe(T.Body("zone_mode"))),
         })
           .pipe(T.Http({ method: "PATCH", uri: "/zones/{zone_id}/dns_settings", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -16811,13 +17770,15 @@ function __c19(j: number): any {
         S.Struct({
           flattenAllCnames: S.Boolean.pipe(T.Body("flatten_all_cnames")),
           foundationDns: S.Boolean.pipe(T.Body("foundation_dns")),
-          internalDns: __S(80).pipe(T.Body("internal_dns")),
+          internalDns: SettingsAccountGetResponseZoneDefaultsInternalDns.pipe(
+            T.Body("internal_dns"),
+          ),
           multiProvider: S.Boolean.pipe(T.Body("multi_provider")),
-          nameservers: __S(153),
+          nameservers: SettingsZoneEditResponseNameservers,
           nsTtl: S.Number.pipe(T.Body("ns_ttl")),
           secondaryOverrides: S.Boolean.pipe(T.Body("secondary_overrides")),
-          soa: __S(82),
-          zoneMode: S.String.pipe(T.Body("zone_mode")),
+          soa: SettingsAccountGetResponseZoneDefaultsSoa,
+          zoneMode: SettingsZoneEditResponseZoneMode.pipe(T.Body("zone_mode")),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "PatchSettingZoneResponse" });
     case 3:
@@ -17261,11 +18222,11 @@ function __c19(j: number): any {
         ),
       );
     case 5:
-      return S.Array(__S(156));
+      return S.Array(RecordsScanListResultItem);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          result: __S(157).pipe(T.EnvelopePayload()),
+          result: RecordsScanListResultList.pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ScanListRecordResponse" });
@@ -17377,13 +18338,13 @@ function __c20(j: number): any {
         ),
       );
     case 1:
-      return S.Array(__S(160));
+      return S.Array(RecordsScanReviewRequestAcceptsItem);
     case 2:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
-          accepts: S.optional(__S(161)),
-          rejects: S.optional(__S(1)),
+          accepts: S.optional(RecordsScanReviewRequestAcceptsList),
+          rejects: S.optional(RecordsScanReviewRequestRejectsList),
         })
           .pipe(
             T.Http({ method: "POST", uri: "/zones/{zone_id}/dns_records/scan/review", code: 200 }),
@@ -17593,12 +18554,12 @@ function __c20(j: number): any {
         ]),
       );
     case 4:
-      return S.Array(__S(163));
+      return S.Array(RecordsScanReviewResponseAcceptsItem);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          accepts: S.optional(S.NullOr(__S(164))),
-          rejects: S.optional(S.NullOr(__S(2))),
+          accepts: S.optional(S.NullOr(RecordsScanReviewResponseAcceptsList)),
+          rejects: S.optional(S.NullOr(RecordsScanReviewResponseRejectsList)),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ScanReviewRecordResponse" });
     case 6:
@@ -17663,15 +18624,15 @@ function __c21(j: number): any {
           includeShadowMetadata: S.optional(S.Boolean.pipe(T.Query("include_shadow_metadata"))),
           name: S.String,
           ttl: S.Number,
-          type: S.String,
+          type: RecordsUpdateRequestType,
           comment: S.optional(S.String),
           content: S.optional(S.String),
           privateRouting: S.optional(S.Boolean.pipe(T.Body("private_routing"))),
           proxied: S.optional(S.Boolean),
-          settings: S.optional(__S(168)),
-          tags: S.optional(__S(2)),
+          settings: S.optional(RecordsUpdateRequestSettings),
+          tags: S.optional(RecordsUpdateRequestTagsList),
           priority: S.optional(S.Number),
-          data: S.optional(__S(169)),
+          data: S.optional(RecordsUpdateRequestData),
         })
           .pipe(
             T.Http({
@@ -18114,7 +19075,7 @@ function __c21(j: number): any {
       );
     case 4:
       return S.suspend(() =>
-        __S(171).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
+        RecordsUpdateResult.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "UpdateRecordResponse" });
     case 5:
       return S.suspend(() =>
@@ -18141,7 +19102,7 @@ function __c21(j: number): any {
           zoneId: S.String.pipe(T.Label("zone_id")),
           autoRefreshSeconds: S.Number.pipe(T.Body("auto_refresh_seconds")),
           name: S.String,
-          peers: __S(2),
+          peers: ZoneTransfersIncomingUpdateRequestPeersList,
         })
           .pipe(
             T.Http({ method: "PUT", uri: "/zones/{zone_id}/secondary_dns/incoming", code: 200 }),
@@ -18155,7 +19116,7 @@ function __c21(j: number): any {
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
           name: S.String,
-          peers: __S(2),
+          peers: ZoneTransfersOutgoingUpdateRequestPeersList,
         })
           .pipe(
             T.Http({ method: "PUT", uri: "/zones/{zone_id}/secondary_dns/outgoing", code: 200 }),
@@ -18210,60 +19171,5 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "UpdateZoneTransferTsigRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
-    case 9:
-      return __c9(i & 7);
-    case 10:
-      return __c10(i & 7);
-    case 11:
-      return __c11(i & 7);
-    case 12:
-      return __c12(i & 7);
-    case 13:
-      return __c13(i & 7);
-    case 14:
-      return __c14(i & 7);
-    case 15:
-      return __c15(i & 7);
-    case 16:
-      return __c16(i & 7);
-    case 17:
-      return __c17(i & 7);
-    case 18:
-      return __c18(i & 7);
-    case 19:
-      return __c19(i & 7);
-    case 20:
-      return __c20(i & 7);
-    case 21:
-      return __c21(i & 7);
-    case 22:
-      return __c22(i & 7);
   }
 }

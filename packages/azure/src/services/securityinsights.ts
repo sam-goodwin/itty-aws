@@ -6,8 +6,6 @@ import { UnknownAzureError } from "../errors.ts";
 import { AzureProtocol, type AzureOpError, type AzureOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { AzureOpError, AzureOpContext };
 
@@ -18,6 +16,11 @@ export interface ActionRequestProperties {
   /** Logic App Callback URL for this specific workflow. */
   triggerUri: string;
 }
+const ActionRequestProperties = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<ActionRequestProperties>;
+
 export interface ActionsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -34,10 +37,19 @@ export interface ActionsCreateOrUpdateRequest {
   /** Action properties for put request */
   properties?: ActionRequestProperties;
 }
+const ActionsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<ActionsCreateOrUpdateRequest>;
+
 /** The type of identity that created the resource. */
 export type SystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
+const SystemDataCreatedByType = S.String;
+
 /** The type of identity that last modified the resource. */
 export type SystemDataLastModifiedByType = "User" | "Application" | "ManagedIdentity" | "Key";
+const SystemDataLastModifiedByType = S.String;
+
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface SystemData {
   /** The identity that created the resource. */
@@ -53,6 +65,8 @@ export interface SystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const SystemData = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<SystemData>;
+
 /** Action property bag. */
 export interface ActionResponseProperties {
   /** Logic App Resource Id, /subscriptions/{my-subscription}/resourceGroups/{my-resource-group}/providers/Microsoft.Logic/workflows/{my-workflow-id}. */
@@ -60,6 +74,11 @@ export interface ActionResponseProperties {
   /** The name of the logic app's workflow. */
   workflowId?: string;
 }
+const ActionResponseProperties = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<ActionResponseProperties>;
+
 export interface ActionsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -74,8 +93,15 @@ export interface ActionsCreateOrUpdateResponse {
   /** Etag of the action. */
   etag?: string;
 }
+const ActionsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<ActionsCreateOrUpdateResponse>;
+
 /** The kind of the alert rule */
 export type AlertRuleKind = "Scheduled" | "MicrosoftSecurityIncidentCreation" | "Fusion";
+const AlertRuleKind = S.String;
+
 export interface AlertRulesCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -92,6 +118,11 @@ export interface AlertRulesCreateOrUpdateRequest {
   /** Alert rule properties (polymorphic on `kind`: Scheduled, Fusion, MicrosoftSecurityIncidentCreation, NRT, ...). */
   properties?: unknown;
 }
+const AlertRulesCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<AlertRulesCreateOrUpdateRequest>;
+
 export interface AlertRulesCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -108,22 +139,43 @@ export interface AlertRulesCreateOrUpdateResponse {
   /** Alert rule properties (polymorphic on `kind`: Scheduled, Fusion, MicrosoftSecurityIncidentCreation, NRT, ...). */
   properties?: unknown;
 }
+const AlertRulesCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<AlertRulesCreateOrUpdateResponse>;
+
 export type TriggersOn = "Incidents" | "Alerts";
+const TriggersOn = S.String;
+
 export type TriggersWhen = "Created" | "Updated";
+const TriggersWhen = S.String;
+
 export type ConditionType =
   | "Property"
   | "PropertyArray"
   | "PropertyChanged"
   | "PropertyArrayChanged"
   | "Boolean";
+const ConditionType = S.String;
+
 /** Describes an automation rule condition. */
 export interface AutomationRuleCondition {
   conditionType: ConditionType | (string & {});
   /** Condition properties (shape depends on `conditionType`). */
   conditionProperties?: unknown;
 }
+const AutomationRuleCondition = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<AutomationRuleCondition>;
+
 /** The conditions to evaluate to determine if the automation rule should be triggered on a given object. */
 export type AutomationRuleTriggeringLogicConditionsList = Array<AutomationRuleCondition>;
+const AutomationRuleTriggeringLogicConditionsList = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<AutomationRuleTriggeringLogicConditionsList>;
+
 /** Describes automation rule triggering logic. */
 export interface AutomationRuleTriggeringLogic {
   /** Determines whether the automation rule is enabled or disabled. */
@@ -135,8 +187,15 @@ export interface AutomationRuleTriggeringLogic {
   /** The conditions to evaluate to determine if the automation rule should be triggered on a given object. */
   conditions?: AutomationRuleTriggeringLogicConditionsList;
 }
+const AutomationRuleTriggeringLogic = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<AutomationRuleTriggeringLogic>;
+
 /** The type of the automation rule action. */
 export type ActionType = "ModifyProperties" | "RunPlaybook" | "AddIncidentTask";
+const ActionType = S.String;
+
 /** Describes an automation rule action. */
 export interface AutomationRuleAction {
   order: number;
@@ -145,8 +204,15 @@ export interface AutomationRuleAction {
   /** Action configuration (shape depends on `actionType`). */
   actionConfiguration?: unknown;
 }
+const AutomationRuleAction = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<AutomationRuleAction>;
+
 /** The actions to execute when the automation rule is triggered. */
 export type AutomationRulePropertiesInputActionsList = Array<AutomationRuleAction>;
+const AutomationRulePropertiesInputActionsList = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<AutomationRulePropertiesInputActionsList>;
+
 /** Automation rule properties */
 export interface AutomationRulePropertiesInput {
   /** The display name of the automation rule. */
@@ -158,6 +224,11 @@ export interface AutomationRulePropertiesInput {
   /** The actions to execute when the automation rule is triggered. */
   actions: AutomationRulePropertiesInputActionsList;
 }
+const AutomationRulePropertiesInput = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<AutomationRulePropertiesInput>;
+
 export interface AutomationRulesCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -172,8 +243,16 @@ export interface AutomationRulesCreateOrUpdateRequest {
   /** Etag of the azure resource */
   etag?: string;
 }
+const AutomationRulesCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<AutomationRulesCreateOrUpdateRequest>;
+
 /** The actions to execute when the automation rule is triggered. */
 export type AutomationRulePropertiesActionsList = Array<AutomationRuleAction>;
+const AutomationRulePropertiesActionsList =
+  AutomationRulePropertiesInputActionsList as any as S.Schema<AutomationRulePropertiesActionsList>;
+
 /** Information on the client (user or application) that made some action */
 export interface ClientInfo {
   /** The email of the client. */
@@ -185,6 +264,8 @@ export interface ClientInfo {
   /** The user principal name of the client. */
   userPrincipalName?: string;
 }
+const ClientInfo = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<ClientInfo>;
+
 /** Automation rule properties */
 export interface AutomationRuleProperties {
   /** The display name of the automation rule. */
@@ -204,6 +285,11 @@ export interface AutomationRuleProperties {
   /** Information on the client (user or application) that made some action */
   createdBy?: ClientInfo;
 }
+const AutomationRuleProperties = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<AutomationRuleProperties>;
+
 export interface AutomationRulesCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -218,15 +304,29 @@ export interface AutomationRulesCreateOrUpdateResponse {
   /** Etag of the azure resource */
   etag?: string;
 }
+const AutomationRulesCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<AutomationRulesCreateOrUpdateResponse>;
+
 /** User information that made some action */
 export interface UserInfoInput {
   /** The object id of the user. */
   objectId?: string | null;
 }
+const UserInfoInput = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<UserInfoInput>;
+
 /** List of labels relevant to this bookmark */
 export type BookmarkPropertiesInputLabelsList = Array<string>;
+const BookmarkPropertiesInputLabelsList = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<BookmarkPropertiesInputLabelsList>;
+
 /** The severity of the incident */
 export type IncidentSeverity = "High" | "Medium" | "Low" | "Informational";
+const IncidentSeverity = S.String;
+
 /** Describes related incident information for the bookmark */
 export interface IncidentInfo {
   /** Incident Id */
@@ -238,6 +338,8 @@ export interface IncidentInfo {
   /** Relation Name */
   relationName?: string;
 }
+const IncidentInfo = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<IncidentInfo>;
+
 /** Describes bookmark properties */
 export interface BookmarkPropertiesInput {
   /** The time the bookmark was created */
@@ -267,6 +369,11 @@ export interface BookmarkPropertiesInput {
   /** Describes an incident that relates to bookmark */
   incidentInfo?: IncidentInfo;
 }
+const BookmarkPropertiesInput = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<BookmarkPropertiesInput>;
+
 export interface BookmarksCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -281,6 +388,11 @@ export interface BookmarksCreateOrUpdateRequest {
   /** Etag of the azure resource */
   etag?: string;
 }
+const BookmarksCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<BookmarksCreateOrUpdateRequest>;
+
 /** User information that made some action */
 export interface UserInfo {
   /** The email of the user. */
@@ -290,8 +402,13 @@ export interface UserInfo {
   /** The object id of the user. */
   objectId?: string | null;
 }
+const UserInfo = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<UserInfo>;
+
 /** List of labels relevant to this bookmark */
 export type BookmarkPropertiesLabelsList = Array<string>;
+const BookmarkPropertiesLabelsList =
+  BookmarkPropertiesInputLabelsList as any as S.Schema<BookmarkPropertiesLabelsList>;
+
 /** Describes bookmark properties */
 export interface BookmarkProperties {
   /** The time the bookmark was created */
@@ -321,6 +438,8 @@ export interface BookmarkProperties {
   /** Describes an incident that relates to bookmark */
   incidentInfo?: IncidentInfo;
 }
+const BookmarkProperties = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<BookmarkProperties>;
+
 export interface BookmarksCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -335,8 +454,15 @@ export interface BookmarksCreateOrUpdateResponse {
   /** Etag of the azure resource */
   etag?: string;
 }
+const BookmarksCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<BookmarksCreateOrUpdateResponse>;
+
 /** Source type of the content */
 export type SourceKind = "LocalWorkspace" | "Community" | "Solution" | "SourceRepository";
+const SourceKind = S.String;
+
 /** The original source of the content item, where it comes from. */
 export interface MetadataSource {
   /** Source type of the content */
@@ -346,6 +472,8 @@ export interface MetadataSource {
   /** ID of the content source. The solution ID, workspace ID, etc */
   sourceId?: string;
 }
+const MetadataSource = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<MetadataSource>;
+
 /** Publisher or creator of the content item. */
 export interface MetadataAuthor {
   /** Name of the author. Company or person. */
@@ -355,8 +483,12 @@ export interface MetadataAuthor {
   /** Link for author/vendor page */
   link?: string;
 }
+const MetadataAuthor = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<MetadataAuthor>;
+
 /** Type of support for content item */
 export type SupportTier = "Microsoft" | "Partner" | "Community";
+const SupportTier = S.String;
+
 /** Support information for the content item. */
 export interface MetadataSupport {
   /** Type of support for content item */
@@ -368,6 +500,8 @@ export interface MetadataSupport {
   /** Link for support help, like to support page to open a ticket etc. */
   link?: string;
 }
+const MetadataSupport = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<MetadataSupport>;
+
 /** The kind of content the metadata is for. */
 export type Kind =
   | "DataConnector"
@@ -391,10 +525,19 @@ export type Kind =
   | "Notebook"
   | "Standalone"
   | "SummaryRule";
+const Kind = S.String;
+
 /** Operator used for list of dependencies in criteria array. */
 export type MetadataDependencyOperator = "AND" | "OR";
+const MetadataDependencyOperator = S.String;
+
 /** This is the list of dependencies we must fulfill, according to the AND/OR operator */
 export type MetadataDependenciesCriteriaList = Array<MetadataDependencies>;
+const MetadataDependenciesCriteriaList = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<MetadataDependenciesCriteriaList>;
+
 /** Dependencies for the content item, what other content items it requires to work. Can describe more complex dependencies using a recursive/nested structure. For a single dependency an id/kind/version can be supplied or operator/criteria for complex dependencies. */
 export interface MetadataDependencies {
   /** Id of the content item we depend on */
@@ -410,10 +553,18 @@ export interface MetadataDependencies {
   /** This is the list of dependencies we must fulfill, according to the AND/OR operator */
   criteria?: MetadataDependenciesCriteriaList;
 }
+const MetadataDependencies = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<MetadataDependencies>;
+
 /** domain for the solution content item */
 export type MetadataCategoriesDomainsList = Array<string>;
+const MetadataCategoriesDomainsList =
+  BookmarkPropertiesInputLabelsList as any as S.Schema<MetadataCategoriesDomainsList>;
+
 /** Industry verticals for the solution content item */
 export type MetadataCategoriesVerticalsList = Array<string>;
+const MetadataCategoriesVerticalsList =
+  BookmarkPropertiesInputLabelsList as any as S.Schema<MetadataCategoriesVerticalsList>;
+
 /** ies for the solution content item */
 export interface MetadataCategories {
   /** domain for the solution content item */
@@ -421,16 +572,33 @@ export interface MetadataCategories {
   /** Industry verticals for the solution content item */
   verticals?: MetadataCategoriesVerticalsList;
 }
+const MetadataCategories = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<MetadataCategories>;
+
 /** Providers for the solution content item */
 export type MetadataPropertiesProvidersList = Array<string>;
+const MetadataPropertiesProvidersList =
+  BookmarkPropertiesInputLabelsList as any as S.Schema<MetadataPropertiesProvidersList>;
+
 /** the tactics the resource covers */
 export type MetadataPropertiesThreatAnalysisTacticsList = Array<string>;
+const MetadataPropertiesThreatAnalysisTacticsList =
+  BookmarkPropertiesInputLabelsList as any as S.Schema<MetadataPropertiesThreatAnalysisTacticsList>;
+
 /** the techniques the resource covers, these have to be aligned with the tactics being used */
 export type MetadataPropertiesThreatAnalysisTechniquesList = Array<string>;
+const MetadataPropertiesThreatAnalysisTechniquesList =
+  BookmarkPropertiesInputLabelsList as any as S.Schema<MetadataPropertiesThreatAnalysisTechniquesList>;
+
 /** preview image file names. These will be taken from the solution artifacts */
 export type MetadataPropertiesPreviewImagesList = Array<string>;
+const MetadataPropertiesPreviewImagesList =
+  BookmarkPropertiesInputLabelsList as any as S.Schema<MetadataPropertiesPreviewImagesList>;
+
 /** preview image file names. These will be taken from the solution artifacts. used for dark theme support */
 export type MetadataPropertiesPreviewImagesDarkList = Array<string>;
+const MetadataPropertiesPreviewImagesDarkList =
+  BookmarkPropertiesInputLabelsList as any as S.Schema<MetadataPropertiesPreviewImagesDarkList>;
+
 /** Metadata property bag. */
 export interface MetadataProperties {
   /** Static ID for the content. Used to identify dependencies and content from solutions or community. Hard-coded/static for out of the box content and solutions. Can be optionally set for user created content to define dependencies. If an active content item is made from a template, both will have the same contentId. */
@@ -472,6 +640,8 @@ export interface MetadataProperties {
   /** preview image file names. These will be taken from the solution artifacts. used for dark theme support */
   previewImagesDark?: MetadataPropertiesPreviewImagesDarkList;
 }
+const MetadataProperties = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<MetadataProperties>;
+
 export interface CreateMetadataRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -486,6 +656,11 @@ export interface CreateMetadataRequest {
   /** Etag of the azure resource */
   etag?: string;
 }
+const CreateMetadataRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<CreateMetadataRequest>;
+
 export interface CreateMetadataResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -500,11 +675,21 @@ export interface CreateMetadataResponse {
   /** Etag of the azure resource */
   etag?: string;
 }
+const CreateMetadataResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<CreateMetadataResponse>;
+
 /** The Sentinel onboarding state properties */
 export interface SentinelOnboardingStateProperties {
   /** Flag that indicates the status of the CMK setting */
   customerManagedKey?: boolean;
 }
+const SentinelOnboardingStateProperties = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<SentinelOnboardingStateProperties>;
+
 export interface CreateSentinelOnboardingStateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -519,6 +704,11 @@ export interface CreateSentinelOnboardingStateRequest {
   /** Etag of the azure resource */
   etag?: string;
 }
+const CreateSentinelOnboardingStateRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<CreateSentinelOnboardingStateRequest>;
+
 export interface CreateSentinelOnboardingStateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -533,8 +723,15 @@ export interface CreateSentinelOnboardingStateResponse {
   /** Etag of the azure resource */
   etag?: string;
 }
+const CreateSentinelOnboardingStateResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<CreateSentinelOnboardingStateResponse>;
+
 /** The type of repository. */
 export type RepoType = "Github" | "AzureDevOps";
+const RepoType = S.String;
+
 /** The content type of a source control path. */
 export type ContentType =
   | "AnalyticsRule"
@@ -543,8 +740,15 @@ export type ContentType =
   | "Parser"
   | "Playbook"
   | "Workbook";
+const ContentType = S.String;
+
 /** Array of source control content types. */
 export type SourceControlPropertiesInputContentTypesList = Array<ContentType | (string & {})>;
+const SourceControlPropertiesInputContentTypesList = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<SourceControlPropertiesInputContentTypesList>;
+
 /** metadata of a repository. */
 export interface RepositoryInput {
   /** Url of repository. */
@@ -554,13 +758,22 @@ export interface RepositoryInput {
   /** Display url of repository. */
   displayUrl?: string;
 }
+const RepositoryInput = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<RepositoryInput>;
+
 /** Service principal metadata. */
 export interface ServicePrincipalInput {
   /** Expiration time of service principal credentials. */
   credentialsExpireOn?: string;
 }
+const ServicePrincipalInput = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<ServicePrincipalInput>;
+
 /** The kind of repository access credentials */
 export type RepositoryAccessKind = "OAuth" | "PAT" | "App";
+const RepositoryAccessKind = S.String;
+
 /** Credentials to access repository. */
 export interface RepositoryAccess {
   /** The kind of repository access credentials */
@@ -576,16 +789,25 @@ export interface RepositoryAccess {
   /** Application installation ID. Required when `kind` is `App`. Supported by `GitHub` only. */
   installationId?: string;
 }
+const RepositoryAccess = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<RepositoryAccess>;
+
 /** Detail about the webhook object. */
 export interface WebhookInput {
   /** A flag to instruct the backend service to rotate webhook secret. */
   rotateWebhookSecret?: boolean;
 }
+const WebhookInput = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<WebhookInput>;
+
 /** Resources created in user's repository for the source-control. */
 export interface RepositoryResourceInfoInput {
   /** The webhook object created for the source-control. */
   webhook?: WebhookInput;
 }
+const RepositoryResourceInfoInput = /*@__PURE__*/ __L.at(
+  __c5,
+  2,
+) as any as S.Schema<RepositoryResourceInfoInput>;
+
 /** Describes source control properties */
 export interface SourceControlPropertiesInput {
   /** The display name of the source control */
@@ -605,6 +827,11 @@ export interface SourceControlPropertiesInput {
   /** Information regarding the resources created in user's repository. */
   repositoryResourceInfo?: RepositoryResourceInfoInput;
 }
+const SourceControlPropertiesInput = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<SourceControlPropertiesInput>;
+
 export interface CreateSourceControlRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -619,10 +846,20 @@ export interface CreateSourceControlRequest {
   /** Etag of the azure resource */
   etag?: string;
 }
+const CreateSourceControlRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  4,
+) as any as S.Schema<CreateSourceControlRequest>;
+
 /** The version of the source control. */
 export type Version = "V1" | "V2";
+const Version = S.String;
+
 /** Array of source control content types. */
 export type SourceControlPropertiesContentTypesList = Array<ContentType>;
+const SourceControlPropertiesContentTypesList =
+  SourceControlPropertiesInputContentTypesList as any as S.Schema<SourceControlPropertiesContentTypesList>;
+
 /** metadata of a repository. */
 export interface Repository {
   /** Url of repository. */
@@ -634,6 +871,8 @@ export interface Repository {
   /** Url to access repository action logs. */
   deploymentLogsUrl?: string;
 }
+const Repository = /*@__PURE__*/ __L.at(__c5, 5) as any as S.Schema<Repository>;
+
 /** Service principal metadata. */
 export interface ServicePrincipal {
   /** Id of service principal. */
@@ -645,6 +884,8 @@ export interface ServicePrincipal {
   /** Expiration time of service principal credentials. */
   credentialsExpireOn?: string;
 }
+const ServicePrincipal = /*@__PURE__*/ __L.at(__c5, 6) as any as S.Schema<ServicePrincipal>;
+
 /** Workload Identity Federation metadata. */
 export interface WorkloadIdentityFederation {
   /** Id of Workload Identity Federation. */
@@ -658,6 +899,11 @@ export interface WorkloadIdentityFederation {
   /** Issuer of Workload Identity Federation. */
   issuer?: string;
 }
+const WorkloadIdentityFederation = /*@__PURE__*/ __L.at(
+  __c5,
+  7,
+) as any as S.Schema<WorkloadIdentityFederation>;
+
 /** Detail about the webhook object. */
 export interface Webhook {
   /** Unique identifier for the webhook. */
@@ -669,11 +915,15 @@ export interface Webhook {
   /** A flag to instruct the backend service to rotate webhook secret. */
   rotateWebhookSecret?: boolean;
 }
+const Webhook = /*@__PURE__*/ __L.at(__c6, 0) as any as S.Schema<Webhook>;
+
 /** Resources created in GitHub repository. */
 export interface GitHubResourceInfo {
   /** GitHub application installation id. */
   appInstallationId?: string;
 }
+const GitHubResourceInfo = /*@__PURE__*/ __L.at(__c6, 1) as any as S.Schema<GitHubResourceInfo>;
+
 /** Resources created in Azure DevOps repository. */
 export interface AzureDevOpsResourceInfo {
   /** Id of the pipeline created for the source-control. */
@@ -681,6 +931,11 @@ export interface AzureDevOpsResourceInfo {
   /** Id of the service-connection created for the source-control. */
   serviceConnectionId?: string;
 }
+const AzureDevOpsResourceInfo = /*@__PURE__*/ __L.at(
+  __c6,
+  2,
+) as any as S.Schema<AzureDevOpsResourceInfo>;
+
 /** Resources created in user's repository for the source-control. */
 export interface RepositoryResourceInfo {
   /** The webhook object created for the source-control. */
@@ -690,12 +945,23 @@ export interface RepositoryResourceInfo {
   /** Resources created in Azure DevOps for this source-control. */
   azureDevOpsResourceInfo?: AzureDevOpsResourceInfo;
 }
+const RepositoryResourceInfo = /*@__PURE__*/ __L.at(
+  __c6,
+  3,
+) as any as S.Schema<RepositoryResourceInfo>;
+
 /** Status while trying to fetch the deployment information. */
 export type DeploymentFetchStatus = "Success" | "Unauthorized" | "NotFound";
+const DeploymentFetchStatus = S.String;
+
 /** The current state of the deployment. */
 export type DeploymentState = "In_Progress" | "Completed" | "Queued" | "Canceling";
+const DeploymentState = S.String;
+
 /** Status while trying to fetch the deployment information. */
 export type DeploymentResult = "Success" | "Canceled" | "Failed";
+const DeploymentResult = S.String;
+
 /** Description about a deployment. */
 export interface Deployment {
   /** Deployment identifier. */
@@ -709,6 +975,8 @@ export interface Deployment {
   /** Url to access repository action logs. */
   deploymentLogsUrl?: string;
 }
+const Deployment = /*@__PURE__*/ __L.at(__c6, 4) as any as S.Schema<Deployment>;
+
 /** Information regarding a deployment. */
 export interface DeploymentInfo {
   /** Status while fetching the last deployment. */
@@ -718,8 +986,12 @@ export interface DeploymentInfo {
   /** Additional details about the deployment that can be shown to the user. */
   message?: string;
 }
+const DeploymentInfo = /*@__PURE__*/ __L.at(__c6, 5) as any as S.Schema<DeploymentInfo>;
+
 /** Status of the pull request. */
 export type PullRequestState = "Open" | "Closed";
+const PullRequestState = S.String;
+
 /** Information regarding pull request for protected branches. */
 export interface PullRequest {
   /** URL of pull request */
@@ -727,6 +999,8 @@ export interface PullRequest {
   /** State of the pull request */
   state?: PullRequestState;
 }
+const PullRequest = /*@__PURE__*/ __L.at(__c6, 6) as any as S.Schema<PullRequest>;
+
 /** Describes source control properties */
 export interface SourceControlProperties {
   /** The id (a Guid) of the source control */
@@ -756,6 +1030,11 @@ export interface SourceControlProperties {
   /** Information regarding the pull request of the source control. */
   pullRequest?: PullRequest;
 }
+const SourceControlProperties = /*@__PURE__*/ __L.at(
+  __c6,
+  7,
+) as any as S.Schema<SourceControlProperties>;
+
 export interface CreateSourceControlResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -770,12 +1049,27 @@ export interface CreateSourceControlResponse {
   /** Etag of the azure resource */
   etag?: string;
 }
+const CreateSourceControlResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  0,
+) as any as S.Schema<CreateSourceControlResponse>;
+
 /** The kind of the threat intelligence entity */
 export type ThreatIntelligenceResourceInnerKind = "indicator";
+const ThreatIntelligenceResourceInnerKind = S.String;
+
 /** List of tags */
 export type ThreatIntelligenceIndicatorPropertiesInputThreatIntelligenceTagsList = Array<string>;
+const ThreatIntelligenceIndicatorPropertiesInputThreatIntelligenceTagsList = /*@__PURE__*/ __L.at(
+  __c7,
+  1,
+) as any as S.Schema<ThreatIntelligenceIndicatorPropertiesInputThreatIntelligenceTagsList>;
+
 /** Indicator types of threat intelligence entities */
 export type ThreatIntelligenceIndicatorPropertiesInputIndicatorTypesList = Array<string>;
+const ThreatIntelligenceIndicatorPropertiesInputIndicatorTypesList =
+  BookmarkPropertiesInputLabelsList as any as S.Schema<ThreatIntelligenceIndicatorPropertiesInputIndicatorTypesList>;
+
 /** Describes threat kill chain phase entity */
 export interface ThreatIntelligenceKillChainPhase {
   /** Kill chainName name */
@@ -783,9 +1077,19 @@ export interface ThreatIntelligenceKillChainPhase {
   /** Phase name */
   phaseName?: string;
 }
+const ThreatIntelligenceKillChainPhase = /*@__PURE__*/ __L.at(
+  __c7,
+  2,
+) as any as S.Schema<ThreatIntelligenceKillChainPhase>;
+
 /** Kill chain phases */
 export type ThreatIntelligenceIndicatorPropertiesInputKillChainPhasesList =
   Array<ThreatIntelligenceKillChainPhase>;
+const ThreatIntelligenceIndicatorPropertiesInputKillChainPhasesList = /*@__PURE__*/ __L.at(
+  __c7,
+  3,
+) as any as S.Schema<ThreatIntelligenceIndicatorPropertiesInputKillChainPhasesList>;
+
 /** Describes threat kill chain phase entity */
 export interface ThreatIntelligenceParsedPatternTypeValue {
   /** Type of the value */
@@ -793,9 +1097,19 @@ export interface ThreatIntelligenceParsedPatternTypeValue {
   /** Value of parsed pattern */
   value?: string;
 }
+const ThreatIntelligenceParsedPatternTypeValue = /*@__PURE__*/ __L.at(
+  __c7,
+  4,
+) as any as S.Schema<ThreatIntelligenceParsedPatternTypeValue>;
+
 /** Pattern type keys */
 export type ThreatIntelligenceParsedPatternPatternTypeValuesList =
   Array<ThreatIntelligenceParsedPatternTypeValue>;
+const ThreatIntelligenceParsedPatternPatternTypeValuesList = /*@__PURE__*/ __L.at(
+  __c7,
+  5,
+) as any as S.Schema<ThreatIntelligenceParsedPatternPatternTypeValuesList>;
+
 /** Describes parsed pattern entity */
 export interface ThreatIntelligenceParsedPattern {
   /** Pattern type key */
@@ -803,11 +1117,26 @@ export interface ThreatIntelligenceParsedPattern {
   /** Pattern type keys */
   patternTypeValues?: ThreatIntelligenceParsedPatternPatternTypeValuesList;
 }
+const ThreatIntelligenceParsedPattern = /*@__PURE__*/ __L.at(
+  __c7,
+  6,
+) as any as S.Schema<ThreatIntelligenceParsedPattern>;
+
 /** Parsed patterns */
 export type ThreatIntelligenceIndicatorPropertiesInputParsedPatternList =
   Array<ThreatIntelligenceParsedPattern>;
+const ThreatIntelligenceIndicatorPropertiesInputParsedPatternList = /*@__PURE__*/ __L.at(
+  __c7,
+  7,
+) as any as S.Schema<ThreatIntelligenceIndicatorPropertiesInputParsedPatternList>;
+
 /** External reference hashes */
 export type ThreatIntelligenceExternalReferenceHashesMap = { [key: string]: string | undefined };
+const ThreatIntelligenceExternalReferenceHashesMap = /*@__PURE__*/ __L.at(
+  __c8,
+  0,
+) as any as S.Schema<ThreatIntelligenceExternalReferenceHashesMap>;
+
 /** Describes external reference */
 export interface ThreatIntelligenceExternalReference {
   /** External reference description */
@@ -821,11 +1150,24 @@ export interface ThreatIntelligenceExternalReference {
   /** External reference hashes */
   hashes?: ThreatIntelligenceExternalReferenceHashesMap;
 }
+const ThreatIntelligenceExternalReference = /*@__PURE__*/ __L.at(
+  __c8,
+  1,
+) as any as S.Schema<ThreatIntelligenceExternalReference>;
+
 /** External References */
 export type ThreatIntelligenceIndicatorPropertiesInputExternalReferencesList =
   Array<ThreatIntelligenceExternalReference>;
+const ThreatIntelligenceIndicatorPropertiesInputExternalReferencesList = /*@__PURE__*/ __L.at(
+  __c8,
+  2,
+) as any as S.Schema<ThreatIntelligenceIndicatorPropertiesInputExternalReferencesList>;
+
 /** granular marking model selectors */
 export type ThreatIntelligenceGranularMarkingModelSelectorsList = Array<string>;
+const ThreatIntelligenceGranularMarkingModelSelectorsList =
+  BookmarkPropertiesInputLabelsList as any as S.Schema<ThreatIntelligenceGranularMarkingModelSelectorsList>;
+
 /** Describes threat granular marking model entity */
 export interface ThreatIntelligenceGranularMarkingModel {
   /** Language granular marking model */
@@ -835,19 +1177,43 @@ export interface ThreatIntelligenceGranularMarkingModel {
   /** granular marking model selectors */
   selectors?: ThreatIntelligenceGranularMarkingModelSelectorsList;
 }
+const ThreatIntelligenceGranularMarkingModel = /*@__PURE__*/ __L.at(
+  __c8,
+  3,
+) as any as S.Schema<ThreatIntelligenceGranularMarkingModel>;
+
 /** Granular Markings */
 export type ThreatIntelligenceIndicatorPropertiesInputGranularMarkingsList =
   Array<ThreatIntelligenceGranularMarkingModel>;
+const ThreatIntelligenceIndicatorPropertiesInputGranularMarkingsList = /*@__PURE__*/ __L.at(
+  __c8,
+  4,
+) as any as S.Schema<ThreatIntelligenceIndicatorPropertiesInputGranularMarkingsList>;
+
 /** Labels of threat intelligence entity */
 export type ThreatIntelligenceIndicatorPropertiesInputLabelsList = Array<string>;
+const ThreatIntelligenceIndicatorPropertiesInputLabelsList =
+  BookmarkPropertiesInputLabelsList as any as S.Schema<ThreatIntelligenceIndicatorPropertiesInputLabelsList>;
+
 /** Threat intelligence entity object marking references */
 export type ThreatIntelligenceIndicatorPropertiesInputObjectMarkingRefsList = Array<string>;
+const ThreatIntelligenceIndicatorPropertiesInputObjectMarkingRefsList =
+  ThreatIntelligenceIndicatorPropertiesInputThreatIntelligenceTagsList as any as S.Schema<ThreatIntelligenceIndicatorPropertiesInputObjectMarkingRefsList>;
+
 /** Threat types */
 export type ThreatIntelligenceIndicatorPropertiesInputThreatTypesList = Array<string>;
+const ThreatIntelligenceIndicatorPropertiesInputThreatTypesList =
+  BookmarkPropertiesInputLabelsList as any as S.Schema<ThreatIntelligenceIndicatorPropertiesInputThreatTypesList>;
+
 /** Extensions map */
 export type ThreatIntelligenceIndicatorPropertiesInputExtensionsMap = {
   [key: string]: unknown | undefined;
 };
+const ThreatIntelligenceIndicatorPropertiesInputExtensionsMap = /*@__PURE__*/ __L.at(
+  __c8,
+  5,
+) as any as S.Schema<ThreatIntelligenceIndicatorPropertiesInputExtensionsMap>;
+
 /** Describes threat intelligence entity properties */
 export interface ThreatIntelligenceIndicatorPropertiesInput {
   /** List of tags */
@@ -907,6 +1273,11 @@ export interface ThreatIntelligenceIndicatorPropertiesInput {
   /** Extensions map */
   extensions?: ThreatIntelligenceIndicatorPropertiesInputExtensionsMap;
 }
+const ThreatIntelligenceIndicatorPropertiesInput = /*@__PURE__*/ __L.at(
+  __c8,
+  6,
+) as any as S.Schema<ThreatIntelligenceIndicatorPropertiesInput>;
+
 export interface CreateThreatIntelligenceIndicatorRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -923,6 +1294,11 @@ export interface CreateThreatIntelligenceIndicatorRequest {
   /** Threat Intelligence Entity properties */
   properties?: ThreatIntelligenceIndicatorPropertiesInput;
 }
+const CreateThreatIntelligenceIndicatorRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  7,
+) as any as S.Schema<CreateThreatIntelligenceIndicatorRequest>;
+
 export interface CreateThreatIntelligenceIndicatorResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -937,6 +1313,11 @@ export interface CreateThreatIntelligenceIndicatorResponse {
   /** Etag of the azure resource */
   etag?: string;
 }
+const CreateThreatIntelligenceIndicatorResponse = /*@__PURE__*/ __L.at(
+  __c9,
+  0,
+) as any as S.Schema<CreateThreatIntelligenceIndicatorResponse>;
+
 export interface CreateThreatIntelligenceIndicatorIndicatorRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -951,6 +1332,11 @@ export interface CreateThreatIntelligenceIndicatorIndicatorRequest {
   /** Threat Intelligence Entity properties */
   properties?: ThreatIntelligenceIndicatorPropertiesInput;
 }
+const CreateThreatIntelligenceIndicatorIndicatorRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  1,
+) as any as S.Schema<CreateThreatIntelligenceIndicatorIndicatorRequest>;
+
 export interface CreateThreatIntelligenceIndicatorIndicatorResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -965,8 +1351,13 @@ export interface CreateThreatIntelligenceIndicatorIndicatorResponse {
   /** Etag of the azure resource */
   etag?: string;
 }
+const CreateThreatIntelligenceIndicatorIndicatorResponse =
+  CreateThreatIntelligenceIndicatorResponse as any as S.Schema<CreateThreatIntelligenceIndicatorIndicatorResponse>;
+
 /** The kind of the data connector definitions */
 export type DataConnectorDefinitionKind = "Customizable";
+const DataConnectorDefinitionKind = S.String;
+
 export interface DataConnectorDefinitionsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -983,6 +1374,11 @@ export interface DataConnectorDefinitionsCreateOrUpdateRequest {
   /** Data connector definition properties (polymorphic on `kind`, e.g. Customizable). */
   properties?: unknown;
 }
+const DataConnectorDefinitionsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  2,
+) as any as S.Schema<DataConnectorDefinitionsCreateOrUpdateRequest>;
+
 export interface DataConnectorDefinitionsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -999,6 +1395,9 @@ export interface DataConnectorDefinitionsCreateOrUpdateResponse {
   /** Data connector definition properties (polymorphic on `kind`, e.g. Customizable). */
   properties?: unknown;
 }
+const DataConnectorDefinitionsCreateOrUpdateResponse =
+  AlertRulesCreateOrUpdateResponse as any as S.Schema<DataConnectorDefinitionsCreateOrUpdateResponse>;
+
 /** The kind of the data connector */
 export type DataConnectorKind =
   | "AzureActiveDirectory"
@@ -1012,6 +1411,8 @@ export type DataConnectorKind =
   | "MicrosoftThreatIntelligence"
   | "PremiumMicrosoftDefenderForThreatIntelligence"
   | "RestApiPoller";
+const DataConnectorKind = S.String;
+
 export interface DataConnectorsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1028,6 +1429,11 @@ export interface DataConnectorsCreateOrUpdateRequest {
   /** Data connector properties (polymorphic on `kind`). */
   properties?: unknown;
 }
+const DataConnectorsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  3,
+) as any as S.Schema<DataConnectorsCreateOrUpdateRequest>;
+
 export interface DataConnectorsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1044,6 +1450,9 @@ export interface DataConnectorsCreateOrUpdateResponse {
   /** Data connector properties (polymorphic on `kind`). */
   properties?: unknown;
 }
+const DataConnectorsCreateOrUpdateResponse =
+  AlertRulesCreateOrUpdateResponse as any as S.Schema<DataConnectorsCreateOrUpdateResponse>;
+
 export interface DeleteActionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1056,7 +1465,11 @@ export interface DeleteActionRequest {
   /** Action ID */
   actionId: string;
 }
+const DeleteActionRequest = /*@__PURE__*/ __L.at(__c9, 4) as any as S.Schema<DeleteActionRequest>;
+
 export interface DeleteActionResponse {}
+const DeleteActionResponse = /*@__PURE__*/ __L.at(__c9, 5) as any as S.Schema<DeleteActionResponse>;
+
 export interface DeleteAlertRuleRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1067,7 +1480,14 @@ export interface DeleteAlertRuleRequest {
   /** Alert rule ID */
   ruleId: string;
 }
+const DeleteAlertRuleRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  6,
+) as any as S.Schema<DeleteAlertRuleRequest>;
+
 export interface DeleteAlertRuleResponse {}
+const DeleteAlertRuleResponse = DeleteActionResponse as any as S.Schema<DeleteAlertRuleResponse>;
+
 export interface DeleteAutomationRuleRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1078,7 +1498,17 @@ export interface DeleteAutomationRuleRequest {
   /** Automation rule ID */
   automationRuleId: string;
 }
+const DeleteAutomationRuleRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  7,
+) as any as S.Schema<DeleteAutomationRuleRequest>;
+
 export type DeleteAutomationRuleResponse = unknown;
+const DeleteAutomationRuleResponse = /*@__PURE__*/ __L.at(
+  __c10,
+  0,
+) as any as S.Schema<DeleteAutomationRuleResponse>;
+
 export interface DeleteBookmarkRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1089,7 +1519,14 @@ export interface DeleteBookmarkRequest {
   /** Bookmark ID */
   bookmarkId: string;
 }
+const DeleteBookmarkRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  1,
+) as any as S.Schema<DeleteBookmarkRequest>;
+
 export interface DeleteBookmarkResponse {}
+const DeleteBookmarkResponse = DeleteActionResponse as any as S.Schema<DeleteBookmarkResponse>;
+
 export interface DeleteContentTemplateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1100,7 +1537,15 @@ export interface DeleteContentTemplateRequest {
   /** template Id */
   templateId: string;
 }
+const DeleteContentTemplateRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  2,
+) as any as S.Schema<DeleteContentTemplateRequest>;
+
 export interface DeleteContentTemplateResponse {}
+const DeleteContentTemplateResponse =
+  DeleteActionResponse as any as S.Schema<DeleteContentTemplateResponse>;
+
 export interface DeleteDataConnectorRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1111,7 +1556,15 @@ export interface DeleteDataConnectorRequest {
   /** Connector ID */
   dataConnectorId: string;
 }
+const DeleteDataConnectorRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  3,
+) as any as S.Schema<DeleteDataConnectorRequest>;
+
 export interface DeleteDataConnectorResponse {}
+const DeleteDataConnectorResponse =
+  DeleteActionResponse as any as S.Schema<DeleteDataConnectorResponse>;
+
 export interface DeleteDataConnectorDefinitionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1122,7 +1575,17 @@ export interface DeleteDataConnectorDefinitionRequest {
   /** The data connector definition name. */
   dataConnectorDefinitionName: string;
 }
+const DeleteDataConnectorDefinitionRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  4,
+) as any as S.Schema<DeleteDataConnectorDefinitionRequest>;
+
 export interface DeleteDataConnectorDefinitionResponse {}
+const DeleteDataConnectorDefinitionResponse = /*@__PURE__*/ __L.at(
+  __c10,
+  5,
+) as any as S.Schema<DeleteDataConnectorDefinitionResponse>;
+
 export interface DeleteIncidentRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1133,7 +1596,14 @@ export interface DeleteIncidentRequest {
   /** Incident ID */
   incidentId: string;
 }
+const DeleteIncidentRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  6,
+) as any as S.Schema<DeleteIncidentRequest>;
+
 export interface DeleteIncidentResponse {}
+const DeleteIncidentResponse = DeleteActionResponse as any as S.Schema<DeleteIncidentResponse>;
+
 export interface DeleteIncidentCommentRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1146,7 +1616,15 @@ export interface DeleteIncidentCommentRequest {
   /** Incident comment ID */
   incidentCommentId: string;
 }
+const DeleteIncidentCommentRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  7,
+) as any as S.Schema<DeleteIncidentCommentRequest>;
+
 export interface DeleteIncidentCommentResponse {}
+const DeleteIncidentCommentResponse =
+  DeleteActionResponse as any as S.Schema<DeleteIncidentCommentResponse>;
+
 export interface DeleteIncidentRelationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1159,7 +1637,15 @@ export interface DeleteIncidentRelationRequest {
   /** Relation Name */
   relationName: string;
 }
+const DeleteIncidentRelationRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  0,
+) as any as S.Schema<DeleteIncidentRelationRequest>;
+
 export interface DeleteIncidentRelationResponse {}
+const DeleteIncidentRelationResponse =
+  DeleteActionResponse as any as S.Schema<DeleteIncidentRelationResponse>;
+
 export interface DeleteIncidentTaskRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1172,7 +1658,15 @@ export interface DeleteIncidentTaskRequest {
   /** Incident task ID */
   incidentTaskId: string;
 }
+const DeleteIncidentTaskRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  1,
+) as any as S.Schema<DeleteIncidentTaskRequest>;
+
 export interface DeleteIncidentTaskResponse {}
+const DeleteIncidentTaskResponse =
+  DeleteActionResponse as any as S.Schema<DeleteIncidentTaskResponse>;
+
 export interface DeleteMetadataRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1183,7 +1677,14 @@ export interface DeleteMetadataRequest {
   /** The Metadata name. */
   metadataName: string;
 }
+const DeleteMetadataRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  2,
+) as any as S.Schema<DeleteMetadataRequest>;
+
 export interface DeleteMetadataResponse {}
+const DeleteMetadataResponse = DeleteActionResponse as any as S.Schema<DeleteMetadataResponse>;
+
 export interface DeleteSecurityMLAnalyticsSettingsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1194,7 +1695,15 @@ export interface DeleteSecurityMLAnalyticsSettingsRequest {
   /** Security ML Analytics Settings resource name */
   settingsResourceName: string;
 }
+const DeleteSecurityMLAnalyticsSettingsRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  3,
+) as any as S.Schema<DeleteSecurityMLAnalyticsSettingsRequest>;
+
 export interface DeleteSecurityMLAnalyticsSettingsResponse {}
+const DeleteSecurityMLAnalyticsSettingsResponse =
+  DeleteDataConnectorDefinitionResponse as any as S.Schema<DeleteSecurityMLAnalyticsSettingsResponse>;
+
 export interface DeleteSentinelOnboardingStateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1205,12 +1714,25 @@ export interface DeleteSentinelOnboardingStateRequest {
   /** The Sentinel onboarding state name. Supports - default */
   sentinelOnboardingStateName: string;
 }
+const DeleteSentinelOnboardingStateRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  4,
+) as any as S.Schema<DeleteSentinelOnboardingStateRequest>;
+
 export interface DeleteSentinelOnboardingStateResponse {}
+const DeleteSentinelOnboardingStateResponse =
+  DeleteDataConnectorDefinitionResponse as any as S.Schema<DeleteSentinelOnboardingStateResponse>;
+
 /** Credentials to access repository. */
 export interface RepositoryAccessObject {
   /** RepositoryAccess properties */
   repositoryAccess: RepositoryAccess;
 }
+const RepositoryAccessObject = /*@__PURE__*/ __L.at(
+  __c11,
+  5,
+) as any as S.Schema<RepositoryAccessObject>;
+
 export interface DeleteSourceControlRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1223,6 +1745,11 @@ export interface DeleteSourceControlRequest {
   /** RepositoryAccess properties */
   properties: RepositoryAccessObject;
 }
+const DeleteSourceControlRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  6,
+) as any as S.Schema<DeleteSourceControlRequest>;
+
 /** The type of repository. */
 export type WarningCode =
   | "SourceControlWarning_DeleteServicePrincipal"
@@ -1230,7 +1757,14 @@ export type WarningCode =
   | "SourceControlWarning_DeleteWorkflowAndSecretFromGitHub"
   | "SourceControlWarning_DeleteRoleAssignment"
   | "SourceControl_DeletedWithWarnings";
+const WarningCode = S.String;
+
 export type WarningBodyDetailsList = Array<WarningBody>;
+const WarningBodyDetailsList = /*@__PURE__*/ __L.at(
+  __c11,
+  7,
+) as any as S.Schema<WarningBodyDetailsList>;
+
 /** Warning details. */
 export interface WarningBody {
   /** An identifier for the warning. Codes are invariant and are intended to be consumed programmatically. */
@@ -1239,11 +1773,15 @@ export interface WarningBody {
   message?: string;
   details?: WarningBodyDetailsList;
 }
+const WarningBody = /*@__PURE__*/ __L.at(__c12, 0) as any as S.Schema<WarningBody>;
+
 /** Warning response structure. */
 export interface Warning {
   /** Warning data. */
   warning?: WarningBody;
 }
+const Warning = /*@__PURE__*/ __L.at(__c12, 1) as any as S.Schema<Warning>;
+
 export interface DeleteThreatIntelligenceIndicatorRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1254,7 +1792,15 @@ export interface DeleteThreatIntelligenceIndicatorRequest {
   /** Threat intelligence indicator name field. */
   name: string;
 }
+const DeleteThreatIntelligenceIndicatorRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  2,
+) as any as S.Schema<DeleteThreatIntelligenceIndicatorRequest>;
+
 export interface DeleteThreatIntelligenceIndicatorResponse {}
+const DeleteThreatIntelligenceIndicatorResponse =
+  DeleteDataConnectorDefinitionResponse as any as S.Schema<DeleteThreatIntelligenceIndicatorResponse>;
+
 export interface DeleteWatchlistRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1265,7 +1811,14 @@ export interface DeleteWatchlistRequest {
   /** The watchlist alias */
   watchlistAlias: string;
 }
+const DeleteWatchlistRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  3,
+) as any as S.Schema<DeleteWatchlistRequest>;
+
 export interface DeleteWatchlistResponse {}
+const DeleteWatchlistResponse = DeleteActionResponse as any as S.Schema<DeleteWatchlistResponse>;
+
 export interface DeleteWatchlistItemRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1278,7 +1831,15 @@ export interface DeleteWatchlistItemRequest {
   /** The watchlist item id (GUID) */
   watchlistItemId: string;
 }
+const DeleteWatchlistItemRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  4,
+) as any as S.Schema<DeleteWatchlistItemRequest>;
+
 export interface DeleteWatchlistItemResponse {}
+const DeleteWatchlistItemResponse =
+  DeleteActionResponse as any as S.Schema<DeleteWatchlistItemResponse>;
+
 export interface GetActionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1291,6 +1852,8 @@ export interface GetActionRequest {
   /** Action ID */
   actionId: string;
 }
+const GetActionRequest = /*@__PURE__*/ __L.at(__c12, 5) as any as S.Schema<GetActionRequest>;
+
 export interface GetActionResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1305,6 +1868,8 @@ export interface GetActionResponse {
   /** Etag of the action. */
   etag?: string;
 }
+const GetActionResponse = /*@__PURE__*/ __L.at(__c12, 6) as any as S.Schema<GetActionResponse>;
+
 export interface GetAlertRuleRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1315,6 +1880,8 @@ export interface GetAlertRuleRequest {
   /** Alert rule ID */
   ruleId: string;
 }
+const GetAlertRuleRequest = /*@__PURE__*/ __L.at(__c12, 7) as any as S.Schema<GetAlertRuleRequest>;
+
 export interface GetAlertRuleResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1331,6 +1898,11 @@ export interface GetAlertRuleResponse {
   /** Alert rule properties (polymorphic on `kind`: Scheduled, Fusion, MicrosoftSecurityIncidentCreation, NRT, ...). */
   properties?: unknown;
 }
+const GetAlertRuleResponse = /*@__PURE__*/ __L.at(
+  __c13,
+  0,
+) as any as S.Schema<GetAlertRuleResponse>;
+
 export interface GetAlertRuleTemplateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1341,6 +1913,11 @@ export interface GetAlertRuleTemplateRequest {
   /** Alert rule template ID */
   alertRuleTemplateId: string;
 }
+const GetAlertRuleTemplateRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  1,
+) as any as S.Schema<GetAlertRuleTemplateRequest>;
+
 export interface GetAlertRuleTemplateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1353,6 +1930,11 @@ export interface GetAlertRuleTemplateResponse {
   /** Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type. If supported, the resource provider must validate and persist this value. */
   kind: AlertRuleKind;
 }
+const GetAlertRuleTemplateResponse = /*@__PURE__*/ __L.at(
+  __c13,
+  2,
+) as any as S.Schema<GetAlertRuleTemplateResponse>;
+
 export interface GetAutomationRuleRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1363,6 +1945,11 @@ export interface GetAutomationRuleRequest {
   /** Automation rule ID */
   automationRuleId: string;
 }
+const GetAutomationRuleRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  3,
+) as any as S.Schema<GetAutomationRuleRequest>;
+
 export interface GetAutomationRuleResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1377,6 +1964,9 @@ export interface GetAutomationRuleResponse {
   /** Etag of the azure resource */
   etag?: string;
 }
+const GetAutomationRuleResponse =
+  AutomationRulesCreateOrUpdateResponse as any as S.Schema<GetAutomationRuleResponse>;
+
 export interface GetBookmarkRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1387,6 +1977,8 @@ export interface GetBookmarkRequest {
   /** Bookmark ID */
   bookmarkId: string;
 }
+const GetBookmarkRequest = /*@__PURE__*/ __L.at(__c13, 4) as any as S.Schema<GetBookmarkRequest>;
+
 export interface GetBookmarkResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1401,6 +1993,8 @@ export interface GetBookmarkResponse {
   /** Etag of the azure resource */
   etag?: string;
 }
+const GetBookmarkResponse = /*@__PURE__*/ __L.at(__c13, 5) as any as S.Schema<GetBookmarkResponse>;
+
 export interface GetContentPackageRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1411,16 +2005,34 @@ export interface GetContentPackageRequest {
   /** package Id */
   packageId: string;
 }
+const GetContentPackageRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  6,
+) as any as S.Schema<GetContentPackageRequest>;
+
 /** The package kind */
 export type PackageKind = "Solution" | "Standalone";
+const PackageKind = S.String;
+
 /** The boolean value the metadata is for. */
 export type Flag = "true" | "false";
+const Flag = S.String;
+
 /** Providers for the package item */
 export type PackageBasePropertiesProvidersList = Array<string>;
+const PackageBasePropertiesProvidersList =
+  BookmarkPropertiesInputLabelsList as any as S.Schema<PackageBasePropertiesProvidersList>;
+
 /** the tactics the resource covers */
 export type PackageBasePropertiesThreatAnalysisTacticsList = Array<string>;
+const PackageBasePropertiesThreatAnalysisTacticsList =
+  BookmarkPropertiesInputLabelsList as any as S.Schema<PackageBasePropertiesThreatAnalysisTacticsList>;
+
 /** the techniques the resource covers, these have to be aligned with the tactics being used */
 export type PackageBasePropertiesThreatAnalysisTechniquesList = Array<string>;
+const PackageBasePropertiesThreatAnalysisTechniquesList =
+  BookmarkPropertiesInputLabelsList as any as S.Schema<PackageBasePropertiesThreatAnalysisTechniquesList>;
+
 /** Describes package properties */
 export interface PackageBaseProperties {
   /** The content id of the package */
@@ -1470,6 +2082,11 @@ export interface PackageBaseProperties {
   /** the icon identifier. this id can later be fetched from the content metadata */
   icon?: string;
 }
+const PackageBaseProperties = /*@__PURE__*/ __L.at(
+  __c13,
+  7,
+) as any as S.Schema<PackageBaseProperties>;
+
 export interface GetContentPackageResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1484,6 +2101,11 @@ export interface GetContentPackageResponse {
   /** Etag of the azure resource */
   etag?: string;
 }
+const GetContentPackageResponse = /*@__PURE__*/ __L.at(
+  __c14,
+  0,
+) as any as S.Schema<GetContentPackageResponse>;
+
 export interface GetContentTemplateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1494,18 +2116,43 @@ export interface GetContentTemplateRequest {
   /** template Id */
   templateId: string;
 }
+const GetContentTemplateRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  1,
+) as any as S.Schema<GetContentTemplateRequest>;
+
 /** Providers for the content item */
 export type TemplatePropertiesProvidersList = Array<string>;
+const TemplatePropertiesProvidersList =
+  BookmarkPropertiesInputLabelsList as any as S.Schema<TemplatePropertiesProvidersList>;
+
 /** the tactics the resource covers */
 export type TemplatePropertiesThreatAnalysisTacticsList = Array<string>;
+const TemplatePropertiesThreatAnalysisTacticsList =
+  BookmarkPropertiesInputLabelsList as any as S.Schema<TemplatePropertiesThreatAnalysisTacticsList>;
+
 /** the techniques the resource covers, these have to be aligned with the tactics being used */
 export type TemplatePropertiesThreatAnalysisTechniquesList = Array<string>;
+const TemplatePropertiesThreatAnalysisTechniquesList =
+  BookmarkPropertiesInputLabelsList as any as S.Schema<TemplatePropertiesThreatAnalysisTechniquesList>;
+
 /** preview image file names. These will be taken from the solution artifacts */
 export type TemplatePropertiesPreviewImagesList = Array<string>;
+const TemplatePropertiesPreviewImagesList =
+  BookmarkPropertiesInputLabelsList as any as S.Schema<TemplatePropertiesPreviewImagesList>;
+
 /** preview image file names. These will be taken from the solution artifacts. used for dark theme support */
 export type TemplatePropertiesPreviewImagesDarkList = Array<string>;
+const TemplatePropertiesPreviewImagesDarkList =
+  BookmarkPropertiesInputLabelsList as any as S.Schema<TemplatePropertiesPreviewImagesDarkList>;
+
 /** Dependant templates. Expandable. */
 export type TemplatePropertiesDependantTemplatesList = Array<TemplateProperties>;
+const TemplatePropertiesDependantTemplatesList = /*@__PURE__*/ __L.at(
+  __c14,
+  2,
+) as any as S.Schema<TemplatePropertiesDependantTemplatesList>;
+
 /** Template property bag. */
 export interface TemplateProperties {
   /** Static ID for the content. Used to identify dependencies and content from solutions or community. Hard-coded/static for out of the box content and solutions. Dynamic for user-created. This is the resource name */
@@ -1563,6 +2210,8 @@ export interface TemplateProperties {
   /** Dependant templates. Expandable. */
   dependantTemplates?: TemplatePropertiesDependantTemplatesList;
 }
+const TemplateProperties = /*@__PURE__*/ __L.at(__c14, 3) as any as S.Schema<TemplateProperties>;
+
 export interface GetContentTemplateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1577,6 +2226,11 @@ export interface GetContentTemplateResponse {
   /** Etag of the azure resource */
   etag?: string;
 }
+const GetContentTemplateResponse = /*@__PURE__*/ __L.at(
+  __c14,
+  4,
+) as any as S.Schema<GetContentTemplateResponse>;
+
 export interface GetDataConnectorRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1587,6 +2241,11 @@ export interface GetDataConnectorRequest {
   /** Connector ID */
   dataConnectorId: string;
 }
+const GetDataConnectorRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  5,
+) as any as S.Schema<GetDataConnectorRequest>;
+
 export interface GetDataConnectorResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1603,6 +2262,8 @@ export interface GetDataConnectorResponse {
   /** Data connector properties (polymorphic on `kind`). */
   properties?: unknown;
 }
+const GetDataConnectorResponse = GetAlertRuleResponse as any as S.Schema<GetDataConnectorResponse>;
+
 export interface GetDataConnectorDefinitionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1613,6 +2274,11 @@ export interface GetDataConnectorDefinitionRequest {
   /** The data connector definition name. */
   dataConnectorDefinitionName: string;
 }
+const GetDataConnectorDefinitionRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  6,
+) as any as S.Schema<GetDataConnectorDefinitionRequest>;
+
 export interface GetDataConnectorDefinitionResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1629,6 +2295,9 @@ export interface GetDataConnectorDefinitionResponse {
   /** Data connector definition properties (polymorphic on `kind`, e.g. Customizable). */
   properties?: unknown;
 }
+const GetDataConnectorDefinitionResponse =
+  DataConnectorDefinitionsCreateOrUpdateResponse as any as S.Schema<GetDataConnectorDefinitionResponse>;
+
 export interface GetIncidentRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1639,22 +2308,32 @@ export interface GetIncidentRequest {
   /** Incident ID */
   incidentId: string;
 }
+const GetIncidentRequest = /*@__PURE__*/ __L.at(__c14, 7) as any as S.Schema<GetIncidentRequest>;
+
 /** The status of the incident */
 export type IncidentStatus = "New" | "Active" | "Closed";
+const IncidentStatus = S.String;
+
 /** The reason the incident was closed */
 export type IncidentClassification =
   | "Undetermined"
   | "TruePositive"
   | "BenignPositive"
   | "FalsePositive";
+const IncidentClassification = S.String;
+
 /** The classification reason the incident was closed with */
 export type IncidentClassificationReason =
   | "SuspiciousActivity"
   | "SuspiciousButExpected"
   | "IncorrectAlertLogic"
   | "InaccurateData";
+const IncidentClassificationReason = S.String;
+
 /** The type of the owner the hunt is assigned to. */
 export type OwnerType = "Unknown" | "User" | "Group";
+const OwnerType = S.String;
+
 /** Information on the user an incident is assigned to */
 export interface IncidentOwnerInfo {
   /** The email of the user the incident is assigned to. */
@@ -1668,8 +2347,12 @@ export interface IncidentOwnerInfo {
   /** The type of the owner the incident is assigned to. */
   ownerType?: OwnerType | (string & {});
 }
+const IncidentOwnerInfo = /*@__PURE__*/ __L.at(__c15, 0) as any as S.Schema<IncidentOwnerInfo>;
+
 /** The type of the label */
 export type IncidentLabelType = "User" | "AutoAssigned";
+const IncidentLabelType = S.String;
+
 /** Represents an incident label */
 export interface IncidentLabel {
   /** The name of the label */
@@ -1677,10 +2360,20 @@ export interface IncidentLabel {
   /** The type of the label */
   labelType?: IncidentLabelType | (string & {});
 }
+const IncidentLabel = /*@__PURE__*/ __L.at(__c15, 1) as any as S.Schema<IncidentLabel>;
+
 /** List of labels relevant to this incident */
 export type IncidentPropertiesLabelsList = Array<IncidentLabel>;
+const IncidentPropertiesLabelsList = /*@__PURE__*/ __L.at(
+  __c15,
+  2,
+) as any as S.Schema<IncidentPropertiesLabelsList>;
+
 /** List of product names of alerts in the incident */
 export type IncidentAdditionalDataAlertProductNamesList = Array<string>;
+const IncidentAdditionalDataAlertProductNamesList =
+  BookmarkPropertiesInputLabelsList as any as S.Schema<IncidentAdditionalDataAlertProductNamesList>;
+
 /** The severity for alerts created by this alert rule. */
 export type AttackTactic =
   | "Reconnaissance"
@@ -1702,6 +2395,9 @@ export type AttackTactic =
   | "InhibitResponseFunction";
 /** The tactics associated with incident */
 export type IncidentAdditionalDataTacticsList = Array<AttackTactic>;
+const IncidentAdditionalDataTacticsList =
+  SourceControlPropertiesInputContentTypesList as any as S.Schema<IncidentAdditionalDataTacticsList>;
+
 /** Incident additional data property bag. */
 export interface IncidentAdditionalData {
   /** The number of alerts in the incident */
@@ -1717,8 +2413,16 @@ export interface IncidentAdditionalData {
   /** The provider incident url to the incident in Microsoft 365 Defender portal */
   providerIncidentUrl?: string;
 }
+const IncidentAdditionalData = /*@__PURE__*/ __L.at(
+  __c15,
+  3,
+) as any as S.Schema<IncidentAdditionalData>;
+
 /** List of resource ids of Analytic rules related to the incident */
 export type IncidentPropertiesRelatedAnalyticRuleIdsList = Array<string>;
+const IncidentPropertiesRelatedAnalyticRuleIdsList =
+  BookmarkPropertiesInputLabelsList as any as S.Schema<IncidentPropertiesRelatedAnalyticRuleIdsList>;
+
 /** Describes incident properties */
 export interface IncidentProperties {
   /** The title of the incident */
@@ -1760,6 +2464,8 @@ export interface IncidentProperties {
   /** The incident ID assigned by the incident provider */
   providerIncidentId?: string;
 }
+const IncidentProperties = /*@__PURE__*/ __L.at(__c15, 4) as any as S.Schema<IncidentProperties>;
+
 export interface GetIncidentResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1774,6 +2480,8 @@ export interface GetIncidentResponse {
   /** Etag of the azure resource */
   etag?: string;
 }
+const GetIncidentResponse = /*@__PURE__*/ __L.at(__c15, 5) as any as S.Schema<GetIncidentResponse>;
+
 export interface GetIncidentCommentRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1786,6 +2494,11 @@ export interface GetIncidentCommentRequest {
   /** Incident comment ID */
   incidentCommentId: string;
 }
+const GetIncidentCommentRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  6,
+) as any as S.Schema<GetIncidentCommentRequest>;
+
 /** Incident comment property bag. */
 export interface IncidentCommentProperties {
   /** The comment message */
@@ -1797,6 +2510,11 @@ export interface IncidentCommentProperties {
   /** Describes the client that created the comment */
   author?: ClientInfo;
 }
+const IncidentCommentProperties = /*@__PURE__*/ __L.at(
+  __c15,
+  7,
+) as any as S.Schema<IncidentCommentProperties>;
+
 export interface GetIncidentCommentResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1811,6 +2529,11 @@ export interface GetIncidentCommentResponse {
   /** Etag of the azure resource */
   etag?: string;
 }
+const GetIncidentCommentResponse = /*@__PURE__*/ __L.at(
+  __c16,
+  0,
+) as any as S.Schema<GetIncidentCommentResponse>;
+
 export interface GetIncidentRelationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1823,6 +2546,11 @@ export interface GetIncidentRelationRequest {
   /** Relation Name */
   relationName: string;
 }
+const GetIncidentRelationRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  1,
+) as any as S.Schema<GetIncidentRelationRequest>;
+
 /** Relation property bag. */
 export interface RelationProperties {
   /** The resource ID of the related resource */
@@ -1834,6 +2562,8 @@ export interface RelationProperties {
   /** The resource kind of the related resource */
   relatedResourceKind?: string;
 }
+const RelationProperties = /*@__PURE__*/ __L.at(__c16, 2) as any as S.Schema<RelationProperties>;
+
 export interface GetIncidentRelationResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1848,6 +2578,11 @@ export interface GetIncidentRelationResponse {
   /** Etag of the azure resource */
   etag?: string;
 }
+const GetIncidentRelationResponse = /*@__PURE__*/ __L.at(
+  __c16,
+  3,
+) as any as S.Schema<GetIncidentRelationResponse>;
+
 export interface GetIncidentTaskRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1860,8 +2595,15 @@ export interface GetIncidentTaskRequest {
   /** Incident task ID */
   incidentTaskId: string;
 }
+const GetIncidentTaskRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  4,
+) as any as S.Schema<GetIncidentTaskRequest>;
+
 /** The status of the task */
 export type IncidentTaskStatus = "New" | "Completed";
+const IncidentTaskStatus = S.String;
+
 /** Describes the properties of an incident task */
 export interface IncidentTaskProperties {
   /** The title of the task */
@@ -1879,6 +2621,11 @@ export interface IncidentTaskProperties {
   /** Information on the client (user or application) that made some action */
   lastModifiedBy?: ClientInfo;
 }
+const IncidentTaskProperties = /*@__PURE__*/ __L.at(
+  __c16,
+  5,
+) as any as S.Schema<IncidentTaskProperties>;
+
 export interface GetIncidentTaskResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1893,6 +2640,11 @@ export interface GetIncidentTaskResponse {
   /** Etag of the azure resource */
   etag?: string;
 }
+const GetIncidentTaskResponse = /*@__PURE__*/ __L.at(
+  __c16,
+  6,
+) as any as S.Schema<GetIncidentTaskResponse>;
+
 export interface GetMetadataRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1903,6 +2655,8 @@ export interface GetMetadataRequest {
   /** The Metadata name. */
   metadataName: string;
 }
+const GetMetadataRequest = /*@__PURE__*/ __L.at(__c16, 7) as any as S.Schema<GetMetadataRequest>;
+
 export interface GetMetadataResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1917,6 +2671,8 @@ export interface GetMetadataResponse {
   /** Etag of the azure resource */
   etag?: string;
 }
+const GetMetadataResponse = CreateMetadataResponse as any as S.Schema<GetMetadataResponse>;
+
 export interface GetProductPackageRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1927,12 +2683,26 @@ export interface GetProductPackageRequest {
   /** package Id */
   packageId: string;
 }
+const GetProductPackageRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  0,
+) as any as S.Schema<GetProductPackageRequest>;
+
 /** Providers for the package item */
 export type ProductPackagePropertiesProvidersList = Array<string>;
+const ProductPackagePropertiesProvidersList =
+  BookmarkPropertiesInputLabelsList as any as S.Schema<ProductPackagePropertiesProvidersList>;
+
 /** the tactics the resource covers */
 export type ProductPackagePropertiesThreatAnalysisTacticsList = Array<string>;
+const ProductPackagePropertiesThreatAnalysisTacticsList =
+  BookmarkPropertiesInputLabelsList as any as S.Schema<ProductPackagePropertiesThreatAnalysisTacticsList>;
+
 /** the techniques the resource covers, these have to be aligned with the tactics being used */
 export type ProductPackagePropertiesThreatAnalysisTechniquesList = Array<string>;
+const ProductPackagePropertiesThreatAnalysisTechniquesList =
+  BookmarkPropertiesInputLabelsList as any as S.Schema<ProductPackagePropertiesThreatAnalysisTechniquesList>;
+
 /** Describes package properties */
 export interface ProductPackageProperties {
   /** The content id of the package */
@@ -1988,6 +2758,11 @@ export interface ProductPackageProperties {
   /** The json of the ARM template to deploy. Expandable. */
   packagedContent?: unknown;
 }
+const ProductPackageProperties = /*@__PURE__*/ __L.at(
+  __c17,
+  1,
+) as any as S.Schema<ProductPackageProperties>;
+
 export interface GetProductPackageResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2002,6 +2777,11 @@ export interface GetProductPackageResponse {
   /** Etag of the azure resource */
   etag?: string;
 }
+const GetProductPackageResponse = /*@__PURE__*/ __L.at(
+  __c17,
+  2,
+) as any as S.Schema<GetProductPackageResponse>;
+
 export interface GetProductTemplateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2012,16 +2792,36 @@ export interface GetProductTemplateRequest {
   /** template Id */
   templateId: string;
 }
+const GetProductTemplateRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  3,
+) as any as S.Schema<GetProductTemplateRequest>;
+
 /** Providers for the content item */
 export type ProductTemplatePropertiesProvidersList = Array<string>;
+const ProductTemplatePropertiesProvidersList =
+  BookmarkPropertiesInputLabelsList as any as S.Schema<ProductTemplatePropertiesProvidersList>;
+
 /** the tactics the resource covers */
 export type ProductTemplatePropertiesThreatAnalysisTacticsList = Array<string>;
+const ProductTemplatePropertiesThreatAnalysisTacticsList =
+  BookmarkPropertiesInputLabelsList as any as S.Schema<ProductTemplatePropertiesThreatAnalysisTacticsList>;
+
 /** the techniques the resource covers, these have to be aligned with the tactics being used */
 export type ProductTemplatePropertiesThreatAnalysisTechniquesList = Array<string>;
+const ProductTemplatePropertiesThreatAnalysisTechniquesList =
+  BookmarkPropertiesInputLabelsList as any as S.Schema<ProductTemplatePropertiesThreatAnalysisTechniquesList>;
+
 /** preview image file names. These will be taken from the solution artifacts */
 export type ProductTemplatePropertiesPreviewImagesList = Array<string>;
+const ProductTemplatePropertiesPreviewImagesList =
+  BookmarkPropertiesInputLabelsList as any as S.Schema<ProductTemplatePropertiesPreviewImagesList>;
+
 /** preview image file names. These will be taken from the solution artifacts. used for dark theme support */
 export type ProductTemplatePropertiesPreviewImagesDarkList = Array<string>;
+const ProductTemplatePropertiesPreviewImagesDarkList =
+  BookmarkPropertiesInputLabelsList as any as S.Schema<ProductTemplatePropertiesPreviewImagesDarkList>;
+
 /** Template property bag. */
 export interface ProductTemplateProperties {
   /** Static ID for the content. Used to identify dependencies and content from solutions or community. Hard-coded/static for out of the box content and solutions. Dynamic for user-created. This is the resource name */
@@ -2077,6 +2877,11 @@ export interface ProductTemplateProperties {
   /** The json of the ARM template to deploy */
   packagedContent?: unknown;
 }
+const ProductTemplateProperties = /*@__PURE__*/ __L.at(
+  __c17,
+  4,
+) as any as S.Schema<ProductTemplateProperties>;
+
 export interface GetProductTemplateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2091,6 +2896,11 @@ export interface GetProductTemplateResponse {
   /** Etag of the azure resource */
   etag?: string;
 }
+const GetProductTemplateResponse = /*@__PURE__*/ __L.at(
+  __c17,
+  5,
+) as any as S.Schema<GetProductTemplateResponse>;
+
 export interface GetSecurityMLAnalyticsSettingsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2101,8 +2911,15 @@ export interface GetSecurityMLAnalyticsSettingsRequest {
   /** Security ML Analytics Settings resource name */
   settingsResourceName: string;
 }
+const GetSecurityMLAnalyticsSettingsRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  6,
+) as any as S.Schema<GetSecurityMLAnalyticsSettingsRequest>;
+
 /** The kind of security ML analytics settings */
 export type SecurityMLAnalyticsSettingsKind = "Anomaly";
+const SecurityMLAnalyticsSettingsKind = S.String;
+
 export interface GetSecurityMLAnalyticsSettingsResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2119,6 +2936,9 @@ export interface GetSecurityMLAnalyticsSettingsResponse {
   /** Security ML analytics settings properties (polymorphic on `kind`, e.g. Anomaly). */
   properties?: unknown;
 }
+const GetSecurityMLAnalyticsSettingsResponse =
+  AlertRulesCreateOrUpdateResponse as any as S.Schema<GetSecurityMLAnalyticsSettingsResponse>;
+
 export interface GetSentinelOnboardingStateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2129,6 +2949,11 @@ export interface GetSentinelOnboardingStateRequest {
   /** The Sentinel onboarding state name. Supports - default */
   sentinelOnboardingStateName: string;
 }
+const GetSentinelOnboardingStateRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  7,
+) as any as S.Schema<GetSentinelOnboardingStateRequest>;
+
 export interface GetSentinelOnboardingStateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2143,6 +2968,9 @@ export interface GetSentinelOnboardingStateResponse {
   /** Etag of the azure resource */
   etag?: string;
 }
+const GetSentinelOnboardingStateResponse =
+  CreateSentinelOnboardingStateResponse as any as S.Schema<GetSentinelOnboardingStateResponse>;
+
 export interface GetSourceControlRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2153,6 +2981,11 @@ export interface GetSourceControlRequest {
   /** Source control Id */
   sourceControlId: string;
 }
+const GetSourceControlRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  0,
+) as any as S.Schema<GetSourceControlRequest>;
+
 export interface GetSourceControlResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2167,6 +3000,11 @@ export interface GetSourceControlResponse {
   /** Etag of the azure resource */
   etag?: string;
 }
+const GetSourceControlResponse = /*@__PURE__*/ __L.at(
+  __c18,
+  1,
+) as any as S.Schema<GetSourceControlResponse>;
+
 export interface GetThreatIntelligenceIndicatorRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2177,6 +3015,11 @@ export interface GetThreatIntelligenceIndicatorRequest {
   /** Threat intelligence indicator name field. */
   name: string;
 }
+const GetThreatIntelligenceIndicatorRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  2,
+) as any as S.Schema<GetThreatIntelligenceIndicatorRequest>;
+
 export interface GetThreatIntelligenceIndicatorResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2191,6 +3034,9 @@ export interface GetThreatIntelligenceIndicatorResponse {
   /** Etag of the azure resource */
   etag?: string;
 }
+const GetThreatIntelligenceIndicatorResponse =
+  CreateThreatIntelligenceIndicatorResponse as any as S.Schema<GetThreatIntelligenceIndicatorResponse>;
+
 export interface GetWatchlistRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2201,10 +3047,17 @@ export interface GetWatchlistRequest {
   /** The watchlist alias */
   watchlistAlias: string;
 }
+const GetWatchlistRequest = /*@__PURE__*/ __L.at(__c18, 3) as any as S.Schema<GetWatchlistRequest>;
+
 /** The sourceType of the watchlist */
 export type SourceType = "Local" | "AzureStorage";
+const SourceType = S.String;
+
 /** List of labels relevant to this watchlist */
 export type WatchlistPropertiesLabelsList = Array<string>;
+const WatchlistPropertiesLabelsList =
+  BookmarkPropertiesInputLabelsList as any as S.Schema<WatchlistPropertiesLabelsList>;
+
 /** The provisioning state of the watchlist */
 export type WatchlistProvisioningState =
   | "New"
@@ -2214,6 +3067,8 @@ export type WatchlistProvisioningState =
   | "Succeeded"
   | "Failed"
   | "Canceled";
+const WatchlistProvisioningState = S.String;
+
 /** Describes watchlist properties */
 export interface WatchlistProperties {
   /** The id (a Guid) of the watchlist */
@@ -2261,6 +3116,8 @@ export interface WatchlistProperties {
   /** Describes provisioning state */
   provisioningState?: WatchlistProvisioningState;
 }
+const WatchlistProperties = /*@__PURE__*/ __L.at(__c18, 4) as any as S.Schema<WatchlistProperties>;
+
 export interface GetWatchlistResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2275,6 +3132,11 @@ export interface GetWatchlistResponse {
   /** Etag of the azure resource */
   etag?: string;
 }
+const GetWatchlistResponse = /*@__PURE__*/ __L.at(
+  __c18,
+  5,
+) as any as S.Schema<GetWatchlistResponse>;
+
 export interface GetWatchlistItemRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2287,6 +3149,11 @@ export interface GetWatchlistItemRequest {
   /** The watchlist item id (GUID) */
   watchlistItemId: string;
 }
+const GetWatchlistItemRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  6,
+) as any as S.Schema<GetWatchlistItemRequest>;
+
 /** Describes watchlist item properties */
 export interface WatchlistItemProperties {
   /** The type of the watchlist item */
@@ -2310,6 +3177,11 @@ export interface WatchlistItemProperties {
   /** key-value pairs for a watchlist item entity mapping */
   entityMapping?: unknown;
 }
+const WatchlistItemProperties = /*@__PURE__*/ __L.at(
+  __c18,
+  7,
+) as any as S.Schema<WatchlistItemProperties>;
+
 export interface GetWatchlistItemResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2324,11 +3196,21 @@ export interface GetWatchlistItemResponse {
   /** Etag of the azure resource */
   etag?: string;
 }
+const GetWatchlistItemResponse = /*@__PURE__*/ __L.at(
+  __c19,
+  0,
+) as any as S.Schema<GetWatchlistItemResponse>;
+
 /** Incident comment property bag. */
 export interface IncidentCommentPropertiesInput {
   /** The comment message */
   message: string;
 }
+const IncidentCommentPropertiesInput = /*@__PURE__*/ __L.at(
+  __c19,
+  1,
+) as any as S.Schema<IncidentCommentPropertiesInput>;
+
 export interface IncidentCommentsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2345,6 +3227,11 @@ export interface IncidentCommentsCreateOrUpdateRequest {
   /** Etag of the azure resource */
   etag?: string;
 }
+const IncidentCommentsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  2,
+) as any as S.Schema<IncidentCommentsCreateOrUpdateRequest>;
+
 export interface IncidentCommentsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2359,11 +3246,19 @@ export interface IncidentCommentsCreateOrUpdateResponse {
   /** Etag of the azure resource */
   etag?: string;
 }
+const IncidentCommentsCreateOrUpdateResponse =
+  GetIncidentCommentResponse as any as S.Schema<IncidentCommentsCreateOrUpdateResponse>;
+
 /** Relation property bag. */
 export interface RelationPropertiesInput {
   /** The resource ID of the related resource */
   relatedResourceId: string;
 }
+const RelationPropertiesInput = /*@__PURE__*/ __L.at(
+  __c19,
+  3,
+) as any as S.Schema<RelationPropertiesInput>;
+
 export interface IncidentRelationsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2380,6 +3275,11 @@ export interface IncidentRelationsCreateOrUpdateRequest {
   /** Etag of the azure resource */
   etag?: string;
 }
+const IncidentRelationsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  4,
+) as any as S.Schema<IncidentRelationsCreateOrUpdateRequest>;
+
 export interface IncidentRelationsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2394,8 +3294,14 @@ export interface IncidentRelationsCreateOrUpdateResponse {
   /** Etag of the azure resource */
   etag?: string;
 }
+const IncidentRelationsCreateOrUpdateResponse =
+  GetIncidentRelationResponse as any as S.Schema<IncidentRelationsCreateOrUpdateResponse>;
+
 /** List of labels relevant to this incident */
 export type IncidentPropertiesInputLabelsList = Array<IncidentLabel>;
+const IncidentPropertiesInputLabelsList =
+  IncidentPropertiesLabelsList as any as S.Schema<IncidentPropertiesInputLabelsList>;
+
 /** Describes incident properties */
 export interface IncidentPropertiesInput {
   /** The title of the incident */
@@ -2421,6 +3327,11 @@ export interface IncidentPropertiesInput {
   /** The time of the last activity in the incident */
   lastActivityTimeUtc?: string;
 }
+const IncidentPropertiesInput = /*@__PURE__*/ __L.at(
+  __c19,
+  5,
+) as any as S.Schema<IncidentPropertiesInput>;
+
 export interface IncidentsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2435,6 +3346,11 @@ export interface IncidentsCreateOrUpdateRequest {
   /** Etag of the azure resource */
   etag?: string;
 }
+const IncidentsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  6,
+) as any as S.Schema<IncidentsCreateOrUpdateRequest>;
+
 export interface IncidentsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2449,6 +3365,11 @@ export interface IncidentsCreateOrUpdateResponse {
   /** Etag of the azure resource */
   etag?: string;
 }
+const IncidentsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c19,
+  7,
+) as any as S.Schema<IncidentsCreateOrUpdateResponse>;
+
 /** Describes the properties of an incident task */
 export interface IncidentTaskPropertiesInput {
   /** The title of the task */
@@ -2462,6 +3383,11 @@ export interface IncidentTaskPropertiesInput {
   /** Information on the client (user or application) that made some action */
   lastModifiedBy?: ClientInfo;
 }
+const IncidentTaskPropertiesInput = /*@__PURE__*/ __L.at(
+  __c20,
+  0,
+) as any as S.Schema<IncidentTaskPropertiesInput>;
+
 export interface IncidentTasksCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2478,6 +3404,11 @@ export interface IncidentTasksCreateOrUpdateRequest {
   /** Etag of the azure resource */
   etag?: string;
 }
+const IncidentTasksCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  1,
+) as any as S.Schema<IncidentTasksCreateOrUpdateRequest>;
+
 export interface IncidentTasksCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2492,6 +3423,11 @@ export interface IncidentTasksCreateOrUpdateResponse {
   /** Etag of the azure resource */
   etag?: string;
 }
+const IncidentTasksCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c20,
+  2,
+) as any as S.Schema<IncidentTasksCreateOrUpdateResponse>;
+
 export interface InstallContentPackageRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2506,6 +3442,11 @@ export interface InstallContentPackageRequest {
   /** Etag of the azure resource */
   etag?: string;
 }
+const InstallContentPackageRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  3,
+) as any as S.Schema<InstallContentPackageRequest>;
+
 export interface InstallContentPackageResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2520,16 +3461,34 @@ export interface InstallContentPackageResponse {
   /** Etag of the azure resource */
   etag?: string;
 }
+const InstallContentPackageResponse =
+  GetContentPackageResponse as any as S.Schema<InstallContentPackageResponse>;
+
 /** Providers for the content item */
 export type TemplatePropertiesInputProvidersList = Array<string>;
+const TemplatePropertiesInputProvidersList =
+  BookmarkPropertiesInputLabelsList as any as S.Schema<TemplatePropertiesInputProvidersList>;
+
 /** the tactics the resource covers */
 export type TemplatePropertiesInputThreatAnalysisTacticsList = Array<string>;
+const TemplatePropertiesInputThreatAnalysisTacticsList =
+  BookmarkPropertiesInputLabelsList as any as S.Schema<TemplatePropertiesInputThreatAnalysisTacticsList>;
+
 /** the techniques the resource covers, these have to be aligned with the tactics being used */
 export type TemplatePropertiesInputThreatAnalysisTechniquesList = Array<string>;
+const TemplatePropertiesInputThreatAnalysisTechniquesList =
+  BookmarkPropertiesInputLabelsList as any as S.Schema<TemplatePropertiesInputThreatAnalysisTechniquesList>;
+
 /** preview image file names. These will be taken from the solution artifacts */
 export type TemplatePropertiesInputPreviewImagesList = Array<string>;
+const TemplatePropertiesInputPreviewImagesList =
+  BookmarkPropertiesInputLabelsList as any as S.Schema<TemplatePropertiesInputPreviewImagesList>;
+
 /** preview image file names. These will be taken from the solution artifacts. used for dark theme support */
 export type TemplatePropertiesInputPreviewImagesDarkList = Array<string>;
+const TemplatePropertiesInputPreviewImagesDarkList =
+  BookmarkPropertiesInputLabelsList as any as S.Schema<TemplatePropertiesInputPreviewImagesDarkList>;
+
 /** Template property bag. */
 export interface TemplatePropertiesInput {
   /** Static ID for the content. Used to identify dependencies and content from solutions or community. Hard-coded/static for out of the box content and solutions. Dynamic for user-created. This is the resource name */
@@ -2583,6 +3542,11 @@ export interface TemplatePropertiesInput {
   /** The JSON of the ARM template to deploy active content. Expandable. */
   mainTemplate?: unknown;
 }
+const TemplatePropertiesInput = /*@__PURE__*/ __L.at(
+  __c20,
+  4,
+) as any as S.Schema<TemplatePropertiesInput>;
+
 export interface InstallContentTemplateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2597,6 +3561,11 @@ export interface InstallContentTemplateRequest {
   /** Etag of the azure resource */
   etag?: string;
 }
+const InstallContentTemplateRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  5,
+) as any as S.Schema<InstallContentTemplateRequest>;
+
 export interface InstallContentTemplateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2611,6 +3580,9 @@ export interface InstallContentTemplateResponse {
   /** Etag of the azure resource */
   etag?: string;
 }
+const InstallContentTemplateResponse =
+  GetContentTemplateResponse as any as S.Schema<InstallContentTemplateResponse>;
+
 export interface ListActionByAlertRuleRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2621,6 +3593,11 @@ export interface ListActionByAlertRuleRequest {
   /** Alert rule ID */
   ruleId: string;
 }
+const ListActionByAlertRuleRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  6,
+) as any as S.Schema<ListActionByAlertRuleRequest>;
+
 /** Action for alert rule. */
 export interface ActionResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -2636,8 +3613,15 @@ export interface ActionResponse {
   /** Etag of the action. */
   etag?: string;
 }
+const ActionResponse = GetActionResponse as any as S.Schema<ActionResponse>;
+
 /** The ActionResponse items on this page */
 export type ActionsListValueList = Array<ActionResponse>;
+const ActionsListValueList = /*@__PURE__*/ __L.at(
+  __c20,
+  7,
+) as any as S.Schema<ActionsListValueList>;
+
 /** List all the actions. */
 export interface ActionsList {
   /** The ActionResponse items on this page */
@@ -2645,6 +3629,8 @@ export interface ActionsList {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const ActionsList = /*@__PURE__*/ __L.at(__c21, 0) as any as S.Schema<ActionsList>;
+
 export interface ListAlertRulesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2653,6 +3639,11 @@ export interface ListAlertRulesRequest {
   /** The name of the monitor workspace. */
   workspaceName: string;
 }
+const ListAlertRulesRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  1,
+) as any as S.Schema<ListAlertRulesRequest>;
+
 /** Alert rule. */
 export interface AlertRule {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -2668,8 +3659,15 @@ export interface AlertRule {
   /** Etag of the azure resource */
   etag?: string;
 }
+const AlertRule = /*@__PURE__*/ __L.at(__c21, 2) as any as S.Schema<AlertRule>;
+
 /** The AlertRule items on this page */
 export type AlertRulesListValueList = Array<AlertRule>;
+const AlertRulesListValueList = /*@__PURE__*/ __L.at(
+  __c21,
+  3,
+) as any as S.Schema<AlertRulesListValueList>;
+
 /** List all the alert rules. */
 export interface AlertRulesList {
   /** The AlertRule items on this page */
@@ -2677,6 +3675,8 @@ export interface AlertRulesList {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const AlertRulesList = /*@__PURE__*/ __L.at(__c21, 4) as any as S.Schema<AlertRulesList>;
+
 export interface ListAlertRuleTemplatesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2685,6 +3685,11 @@ export interface ListAlertRuleTemplatesRequest {
   /** The name of the monitor workspace. */
   workspaceName: string;
 }
+const ListAlertRuleTemplatesRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  5,
+) as any as S.Schema<ListAlertRuleTemplatesRequest>;
+
 /** Alert rule template. */
 export interface AlertRuleTemplate {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -2698,8 +3703,15 @@ export interface AlertRuleTemplate {
   /** Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type. If supported, the resource provider must validate and persist this value. */
   kind: AlertRuleKind;
 }
+const AlertRuleTemplate = /*@__PURE__*/ __L.at(__c21, 6) as any as S.Schema<AlertRuleTemplate>;
+
 /** The AlertRuleTemplate items on this page */
 export type AlertRuleTemplatesListValueList = Array<AlertRuleTemplate>;
+const AlertRuleTemplatesListValueList = /*@__PURE__*/ __L.at(
+  __c21,
+  7,
+) as any as S.Schema<AlertRuleTemplatesListValueList>;
+
 /** List all the alert rule templates. */
 export interface AlertRuleTemplatesList {
   /** The AlertRuleTemplate items on this page */
@@ -2707,6 +3719,11 @@ export interface AlertRuleTemplatesList {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const AlertRuleTemplatesList = /*@__PURE__*/ __L.at(
+  __c22,
+  0,
+) as any as S.Schema<AlertRuleTemplatesList>;
+
 export interface ListAutomationRulesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2715,6 +3732,11 @@ export interface ListAutomationRulesRequest {
   /** The name of the monitor workspace. */
   workspaceName: string;
 }
+const ListAutomationRulesRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  1,
+) as any as S.Schema<ListAutomationRulesRequest>;
+
 /** Concrete proxy resource types can be created by aliasing this type using a specific property type. */
 export interface AutomationRule {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -2730,14 +3752,23 @@ export interface AutomationRule {
   /** Etag of the azure resource */
   etag?: string;
 }
+const AutomationRule = /*@__PURE__*/ __L.at(__c22, 2) as any as S.Schema<AutomationRule>;
+
 /** List of automation rules. */
 export type AutomationRulesListValueList = Array<AutomationRule>;
+const AutomationRulesListValueList = /*@__PURE__*/ __L.at(
+  __c22,
+  3,
+) as any as S.Schema<AutomationRulesListValueList>;
+
 export interface AutomationRulesList {
   /** List of automation rules. */
   value?: AutomationRulesListValueList;
   /** The link to the next page of items */
   nextLink?: string;
 }
+const AutomationRulesList = /*@__PURE__*/ __L.at(__c22, 4) as any as S.Schema<AutomationRulesList>;
+
 export interface ListBookmarksRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2746,6 +3777,11 @@ export interface ListBookmarksRequest {
   /** The name of the monitor workspace. */
   workspaceName: string;
 }
+const ListBookmarksRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  5,
+) as any as S.Schema<ListBookmarksRequest>;
+
 /** Represents a bookmark in Azure Security Insights. */
 export interface Bookmark {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -2761,8 +3797,15 @@ export interface Bookmark {
   /** Etag of the azure resource */
   etag?: string;
 }
+const Bookmark = GetBookmarkResponse as any as S.Schema<Bookmark>;
+
 /** The Bookmark items on this page */
 export type BookmarkListValueList = Array<Bookmark>;
+const BookmarkListValueList = /*@__PURE__*/ __L.at(
+  __c22,
+  6,
+) as any as S.Schema<BookmarkListValueList>;
+
 /** List all the bookmarks. */
 export interface BookmarkList {
   /** The Bookmark items on this page */
@@ -2770,6 +3813,8 @@ export interface BookmarkList {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const BookmarkList = /*@__PURE__*/ __L.at(__c22, 7) as any as S.Schema<BookmarkList>;
+
 export interface ListContentPackagesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2792,6 +3837,11 @@ export interface ListContentPackagesRequest {
   /** Skiptoken is only used if a previous operation returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skiptoken parameter that specifies a starting point to use for subsequent calls. Optional. */
   _skipToken?: string;
 }
+const ListContentPackagesRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  0,
+) as any as S.Schema<ListContentPackagesRequest>;
+
 /** Represents a Package in Azure Security Insights. */
 export interface PackageModel {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -2807,8 +3857,15 @@ export interface PackageModel {
   /** Etag of the azure resource */
   etag?: string;
 }
+const PackageModel = /*@__PURE__*/ __L.at(__c23, 1) as any as S.Schema<PackageModel>;
+
 /** The PackageModel items on this page */
 export type PackageListValueList = Array<PackageModel>;
+const PackageListValueList = /*@__PURE__*/ __L.at(
+  __c23,
+  2,
+) as any as S.Schema<PackageListValueList>;
+
 /** List available packages. */
 export interface PackageList {
   /** The PackageModel items on this page */
@@ -2816,6 +3873,8 @@ export interface PackageList {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const PackageList = /*@__PURE__*/ __L.at(__c23, 3) as any as S.Schema<PackageList>;
+
 export interface ListContentTemplatesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2840,6 +3899,11 @@ export interface ListContentTemplatesRequest {
   /** Skiptoken is only used if a previous operation returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skiptoken parameter that specifies a starting point to use for subsequent calls. Optional. */
   _skipToken?: string;
 }
+const ListContentTemplatesRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  4,
+) as any as S.Schema<ListContentTemplatesRequest>;
+
 /** Template resource definition. */
 export interface TemplateModel {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -2855,8 +3919,15 @@ export interface TemplateModel {
   /** Etag of the azure resource */
   etag?: string;
 }
+const TemplateModel = /*@__PURE__*/ __L.at(__c23, 5) as any as S.Schema<TemplateModel>;
+
 /** The TemplateModel items on this page */
 export type TemplateListValueList = Array<TemplateModel>;
+const TemplateListValueList = /*@__PURE__*/ __L.at(
+  __c23,
+  6,
+) as any as S.Schema<TemplateListValueList>;
+
 /** List of all the template. */
 export interface TemplateList {
   /** The TemplateModel items on this page */
@@ -2864,6 +3935,8 @@ export interface TemplateList {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const TemplateList = /*@__PURE__*/ __L.at(__c23, 7) as any as S.Schema<TemplateList>;
+
 export interface ListDataConnectorDefinitionsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2872,6 +3945,11 @@ export interface ListDataConnectorDefinitionsRequest {
   /** The name of the monitor workspace. */
   workspaceName: string;
 }
+const ListDataConnectorDefinitionsRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  0,
+) as any as S.Schema<ListDataConnectorDefinitionsRequest>;
+
 /** An Azure resource, which encapsulate the entire info requires to display a data connector page in Azure portal, and the info required to define data connections. */
 export interface DataConnectorDefinition {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -2889,6 +3967,9 @@ export interface DataConnectorDefinition {
 }
 /** List of data connector definitions. */
 export type DataConnectorDefinitionArmCollectionWrapperValueList = Array<DataConnectorDefinition>;
+const DataConnectorDefinitionArmCollectionWrapperValueList =
+  AlertRulesListValueList as any as S.Schema<DataConnectorDefinitionArmCollectionWrapperValueList>;
+
 /** Encapsulate the data connector definition object */
 export interface DataConnectorDefinitionArmCollectionWrapper {
   /** List of data connector definitions. */
@@ -2896,6 +3977,11 @@ export interface DataConnectorDefinitionArmCollectionWrapper {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const DataConnectorDefinitionArmCollectionWrapper = /*@__PURE__*/ __L.at(
+  __c24,
+  1,
+) as any as S.Schema<DataConnectorDefinitionArmCollectionWrapper>;
+
 export interface ListDataConnectorsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2904,6 +3990,11 @@ export interface ListDataConnectorsRequest {
   /** The name of the monitor workspace. */
   workspaceName: string;
 }
+const ListDataConnectorsRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  2,
+) as any as S.Schema<ListDataConnectorsRequest>;
+
 /** Data connector */
 export interface DataConnector {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -2928,6 +4019,8 @@ export interface DataConnectorList {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const DataConnectorList = AlertRulesList as any as S.Schema<DataConnectorList>;
+
 export interface ListIncidentAlertsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2938,6 +4031,11 @@ export interface ListIncidentAlertsRequest {
   /** Incident ID */
   incidentId: string;
 }
+const ListIncidentAlertsRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  3,
+) as any as S.Schema<ListIncidentAlertsRequest>;
+
 /** The kind of the entity */
 export type EntityKindEnum =
   | "Account"
@@ -2961,10 +4059,17 @@ export type EntityKindEnum =
   | "MailMessage"
   | "Mailbox"
   | "SubmissionMail";
+const EntityKindEnum = S.String;
+
 /** A bag of custom fields that should be part of the entity and will be presented to the user. */
 export type SecurityAlertPropertiesAdditionalDataMap = { [key: string]: unknown | undefined };
+const SecurityAlertPropertiesAdditionalDataMap =
+  ThreatIntelligenceIndicatorPropertiesInputExtensionsMap as any as S.Schema<SecurityAlertPropertiesAdditionalDataMap>;
+
 /** The confidence level of this alert. */
 export type ConfidenceLevel = "Unknown" | "Low" | "High";
+const ConfidenceLevel = S.String;
+
 /** confidence reason item */
 export interface SecurityAlertPropertiesConfidenceReasonsItem {
   /** The reason's description */
@@ -2972,11 +4077,23 @@ export interface SecurityAlertPropertiesConfidenceReasonsItem {
   /** The type (category) of the reason */
   reasonType?: string;
 }
+const SecurityAlertPropertiesConfidenceReasonsItem = /*@__PURE__*/ __L.at(
+  __c24,
+  4,
+) as any as S.Schema<SecurityAlertPropertiesConfidenceReasonsItem>;
+
 /** The confidence reasons */
 export type SecurityAlertPropertiesConfidenceReasonsList =
   Array<SecurityAlertPropertiesConfidenceReasonsItem>;
+const SecurityAlertPropertiesConfidenceReasonsList = /*@__PURE__*/ __L.at(
+  __c24,
+  5,
+) as any as S.Schema<SecurityAlertPropertiesConfidenceReasonsList>;
+
 /** The confidence score calculation status, i.e. indicating if score calculation is pending for this alert, not applicable or final. */
 export type ConfidenceScoreStatus = "NotApplicable" | "InProcess" | "NotFinal" | "Final";
+const ConfidenceScoreStatus = S.String;
+
 /** The intent of the alert. */
 export type KillChainIntent =
   | "Unknown"
@@ -2993,16 +4110,33 @@ export type KillChainIntent =
   | "Exfiltration"
   | "CommandAndControl"
   | "Impact";
+const KillChainIntent = S.String;
+
 /** Manual action items to take to remediate the alert. */
 export type SecurityAlertPropertiesRemediationStepsList = Array<string>;
+const SecurityAlertPropertiesRemediationStepsList =
+  BookmarkPropertiesInputLabelsList as any as S.Schema<SecurityAlertPropertiesRemediationStepsList>;
+
 /** The severity of the alert */
 export type AlertSeverity = "High" | "Medium" | "Low" | "Informational";
+const AlertSeverity = S.String;
+
 /** The lifecycle status of the alert. */
 export type AlertStatus = "Unknown" | "New" | "Resolved" | "Dismissed" | "InProgress";
+const AlertStatus = S.String;
+
 /** The tactics of the alert */
 export type SecurityAlertPropertiesTacticsList = Array<AttackTactic>;
+const SecurityAlertPropertiesTacticsList =
+  IncidentAdditionalDataTacticsList as any as S.Schema<SecurityAlertPropertiesTacticsList>;
+
 /** The list of resource identifiers of the alert. */
 export type SecurityAlertPropertiesResourceIdentifiersList = Array<unknown>;
+const SecurityAlertPropertiesResourceIdentifiersList = /*@__PURE__*/ __L.at(
+  __c24,
+  6,
+) as any as S.Schema<SecurityAlertPropertiesResourceIdentifiersList>;
+
 /** SecurityAlert entity property bag. */
 export interface SecurityAlertProperties {
   /** A bag of custom fields that should be part of the entity and will be presented to the user. */
@@ -3060,6 +4194,11 @@ export interface SecurityAlertProperties {
   /** The list of resource identifiers of the alert. */
   resourceIdentifiers?: SecurityAlertPropertiesResourceIdentifiersList;
 }
+const SecurityAlertProperties = /*@__PURE__*/ __L.at(
+  __c24,
+  7,
+) as any as S.Schema<SecurityAlertProperties>;
+
 /** Represents a security alert entity. */
 export interface SecurityAlert {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -3075,13 +4214,22 @@ export interface SecurityAlert {
   /** SecurityAlert entity properties */
   properties?: SecurityAlertProperties;
 }
+const SecurityAlert = /*@__PURE__*/ __L.at(__c25, 0) as any as S.Schema<SecurityAlert>;
+
 /** Array of incident alerts. */
 export type IncidentAlertListValueList = Array<SecurityAlert>;
+const IncidentAlertListValueList = /*@__PURE__*/ __L.at(
+  __c25,
+  1,
+) as any as S.Schema<IncidentAlertListValueList>;
+
 /** List of incident alerts. */
 export interface IncidentAlertList {
   /** Array of incident alerts. */
   value: IncidentAlertListValueList;
 }
+const IncidentAlertList = /*@__PURE__*/ __L.at(__c25, 2) as any as S.Schema<IncidentAlertList>;
+
 export interface ListIncidentBookmarksRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3092,10 +4240,21 @@ export interface ListIncidentBookmarksRequest {
   /** Incident ID */
   incidentId: string;
 }
+const ListIncidentBookmarksRequest = /*@__PURE__*/ __L.at(
+  __c25,
+  3,
+) as any as S.Schema<ListIncidentBookmarksRequest>;
+
 /** A bag of custom fields that should be part of the entity and will be presented to the user. */
 export type HuntingBookmarkPropertiesAdditionalDataMap = { [key: string]: unknown | undefined };
+const HuntingBookmarkPropertiesAdditionalDataMap =
+  ThreatIntelligenceIndicatorPropertiesInputExtensionsMap as any as S.Schema<HuntingBookmarkPropertiesAdditionalDataMap>;
+
 /** List of labels relevant to this bookmark */
 export type HuntingBookmarkPropertiesLabelsList = Array<string>;
+const HuntingBookmarkPropertiesLabelsList =
+  BookmarkPropertiesInputLabelsList as any as S.Schema<HuntingBookmarkPropertiesLabelsList>;
+
 /** Describes bookmark properties */
 export interface HuntingBookmarkProperties {
   /** A bag of custom fields that should be part of the entity and will be presented to the user. */
@@ -3125,6 +4284,11 @@ export interface HuntingBookmarkProperties {
   /** Describes an incident that relates to bookmark */
   incidentInfo?: IncidentInfo;
 }
+const HuntingBookmarkProperties = /*@__PURE__*/ __L.at(
+  __c25,
+  4,
+) as any as S.Schema<HuntingBookmarkProperties>;
+
 /** Represents a Hunting bookmark entity. */
 export interface HuntingBookmark {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -3140,13 +4304,25 @@ export interface HuntingBookmark {
   /** HuntingBookmark entity properties */
   properties?: HuntingBookmarkProperties;
 }
+const HuntingBookmark = /*@__PURE__*/ __L.at(__c25, 5) as any as S.Schema<HuntingBookmark>;
+
 /** Array of incident bookmarks. */
 export type IncidentBookmarkListValueList = Array<HuntingBookmark>;
+const IncidentBookmarkListValueList = /*@__PURE__*/ __L.at(
+  __c25,
+  6,
+) as any as S.Schema<IncidentBookmarkListValueList>;
+
 /** List of incident bookmarks. */
 export interface IncidentBookmarkList {
   /** Array of incident bookmarks. */
   value: IncidentBookmarkListValueList;
 }
+const IncidentBookmarkList = /*@__PURE__*/ __L.at(
+  __c25,
+  7,
+) as any as S.Schema<IncidentBookmarkList>;
+
 export interface ListIncidentCommentsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3165,6 +4341,11 @@ export interface ListIncidentCommentsRequest {
   /** Skiptoken is only used if a previous operation returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skiptoken parameter that specifies a starting point to use for subsequent calls. Optional. */
   _skipToken?: string;
 }
+const ListIncidentCommentsRequest = /*@__PURE__*/ __L.at(
+  __c26,
+  0,
+) as any as S.Schema<ListIncidentCommentsRequest>;
+
 /** Represents an incident comment */
 export interface IncidentComment {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -3180,8 +4361,15 @@ export interface IncidentComment {
   /** Etag of the azure resource */
   etag?: string;
 }
+const IncidentComment = /*@__PURE__*/ __L.at(__c26, 1) as any as S.Schema<IncidentComment>;
+
 /** The IncidentComment items on this page */
 export type IncidentCommentListValueList = Array<IncidentComment>;
+const IncidentCommentListValueList = /*@__PURE__*/ __L.at(
+  __c26,
+  2,
+) as any as S.Schema<IncidentCommentListValueList>;
+
 /** List of incident comments. */
 export interface IncidentCommentList {
   /** The IncidentComment items on this page */
@@ -3189,6 +4377,8 @@ export interface IncidentCommentList {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const IncidentCommentList = /*@__PURE__*/ __L.at(__c26, 3) as any as S.Schema<IncidentCommentList>;
+
 export interface ListIncidentEntitiesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3199,6 +4389,11 @@ export interface ListIncidentEntitiesRequest {
   /** Incident ID */
   incidentId: string;
 }
+const ListIncidentEntitiesRequest = /*@__PURE__*/ __L.at(
+  __c26,
+  4,
+) as any as S.Schema<ListIncidentEntitiesRequest>;
+
 /** Specific entity. */
 export interface Entity {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -3214,6 +4409,9 @@ export interface Entity {
 }
 /** Array of the incident related entities. */
 export type IncidentEntitiesResponseEntitiesList = Array<Entity>;
+const IncidentEntitiesResponseEntitiesList =
+  AlertRuleTemplatesListValueList as any as S.Schema<IncidentEntitiesResponseEntitiesList>;
+
 /** Information of a specific aggregation in the incident related entities result. */
 export interface IncidentEntitiesResultsMetadata {
   /** The kind of the aggregated entity. */
@@ -3221,8 +4419,18 @@ export interface IncidentEntitiesResultsMetadata {
   /** Total number of aggregations of the given kind in the incident related entities result. */
   count: number;
 }
+const IncidentEntitiesResultsMetadata = /*@__PURE__*/ __L.at(
+  __c26,
+  5,
+) as any as S.Schema<IncidentEntitiesResultsMetadata>;
+
 /** The metadata from the incident related entities results. */
 export type IncidentEntitiesResponseMetaDataList = Array<IncidentEntitiesResultsMetadata>;
+const IncidentEntitiesResponseMetaDataList = /*@__PURE__*/ __L.at(
+  __c26,
+  6,
+) as any as S.Schema<IncidentEntitiesResponseMetaDataList>;
+
 /** The incident related entities response. */
 export interface IncidentEntitiesResponse {
   /** Array of the incident related entities. */
@@ -3230,6 +4438,11 @@ export interface IncidentEntitiesResponse {
   /** The metadata from the incident related entities results. */
   metaData?: IncidentEntitiesResponseMetaDataList;
 }
+const IncidentEntitiesResponse = /*@__PURE__*/ __L.at(
+  __c26,
+  7,
+) as any as S.Schema<IncidentEntitiesResponse>;
+
 export interface ListIncidentRelationsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3248,6 +4461,11 @@ export interface ListIncidentRelationsRequest {
   /** Skiptoken is only used if a previous operation returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skiptoken parameter that specifies a starting point to use for subsequent calls. Optional. */
   _skipToken?: string;
 }
+const ListIncidentRelationsRequest = /*@__PURE__*/ __L.at(
+  __c27,
+  0,
+) as any as S.Schema<ListIncidentRelationsRequest>;
+
 /** Represents a relation between two resources */
 export interface Relation {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -3263,8 +4481,15 @@ export interface Relation {
   /** Etag of the azure resource */
   etag?: string;
 }
+const Relation = /*@__PURE__*/ __L.at(__c27, 1) as any as S.Schema<Relation>;
+
 /** The Relation items on this page */
 export type RelationListValueList = Array<Relation>;
+const RelationListValueList = /*@__PURE__*/ __L.at(
+  __c27,
+  2,
+) as any as S.Schema<RelationListValueList>;
+
 /** List of relations. */
 export interface RelationList {
   /** The Relation items on this page */
@@ -3272,6 +4497,8 @@ export interface RelationList {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const RelationList = /*@__PURE__*/ __L.at(__c27, 3) as any as S.Schema<RelationList>;
+
 export interface ListIncidentsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3288,6 +4515,11 @@ export interface ListIncidentsRequest {
   /** Skiptoken is only used if a previous operation returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skiptoken parameter that specifies a starting point to use for subsequent calls. Optional. */
   _skipToken?: string;
 }
+const ListIncidentsRequest = /*@__PURE__*/ __L.at(
+  __c27,
+  4,
+) as any as S.Schema<ListIncidentsRequest>;
+
 /** Represents an incident in Azure Security Insights. */
 export interface Incident {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -3303,8 +4535,15 @@ export interface Incident {
   /** Etag of the azure resource */
   etag?: string;
 }
+const Incident = GetIncidentResponse as any as S.Schema<Incident>;
+
 /** The Incident items on this page */
 export type IncidentListValueList = Array<Incident>;
+const IncidentListValueList = /*@__PURE__*/ __L.at(
+  __c27,
+  5,
+) as any as S.Schema<IncidentListValueList>;
+
 /** List all the incidents. */
 export interface IncidentList {
   /** The Incident items on this page */
@@ -3312,6 +4551,8 @@ export interface IncidentList {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const IncidentList = /*@__PURE__*/ __L.at(__c27, 6) as any as S.Schema<IncidentList>;
+
 export interface ListIncidentTasksRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3322,6 +4563,11 @@ export interface ListIncidentTasksRequest {
   /** Incident ID */
   incidentId: string;
 }
+const ListIncidentTasksRequest = /*@__PURE__*/ __L.at(
+  __c27,
+  7,
+) as any as S.Schema<ListIncidentTasksRequest>;
+
 /** Describes incident task properties */
 export interface IncidentTask {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -3337,8 +4583,15 @@ export interface IncidentTask {
   /** Etag of the azure resource */
   etag?: string;
 }
+const IncidentTask = GetIncidentTaskResponse as any as S.Schema<IncidentTask>;
+
 /** List of incident tasks. */
 export type IncidentTaskListValueList = Array<IncidentTask>;
+const IncidentTaskListValueList = /*@__PURE__*/ __L.at(
+  __c28,
+  0,
+) as any as S.Schema<IncidentTaskListValueList>;
+
 /** List of incident tasks */
 export interface IncidentTaskList {
   /** List of incident tasks. */
@@ -3346,6 +4599,8 @@ export interface IncidentTaskList {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const IncidentTaskList = /*@__PURE__*/ __L.at(__c28, 1) as any as S.Schema<IncidentTaskList>;
+
 export interface ListMetadataRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3362,6 +4617,8 @@ export interface ListMetadataRequest {
   /** Used to skip n elements in the OData query (offset). Returns a nextLink to the next page of results if there are any left. */
   _skip?: number;
 }
+const ListMetadataRequest = /*@__PURE__*/ __L.at(__c28, 2) as any as S.Schema<ListMetadataRequest>;
+
 /** Metadata resource definition. */
 export interface MetadataModel {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -3377,8 +4634,15 @@ export interface MetadataModel {
   /** Etag of the azure resource */
   etag?: string;
 }
+const MetadataModel = CreateMetadataResponse as any as S.Schema<MetadataModel>;
+
 /** The MetadataModel items on this page */
 export type MetadataListValueList = Array<MetadataModel>;
+const MetadataListValueList = /*@__PURE__*/ __L.at(
+  __c28,
+  3,
+) as any as S.Schema<MetadataListValueList>;
+
 /** List of all the metadata. */
 export interface MetadataList {
   /** The MetadataModel items on this page */
@@ -3386,7 +4650,14 @@ export interface MetadataList {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const MetadataList = /*@__PURE__*/ __L.at(__c28, 4) as any as S.Schema<MetadataList>;
+
 export interface ListOperationsRequest {}
+const ListOperationsRequest = /*@__PURE__*/ __L.at(
+  __c28,
+  5,
+) as any as S.Schema<ListOperationsRequest>;
+
 /** Properties of the operation */
 export interface OperationDisplay {
   /** Description of the operation */
@@ -3398,6 +4669,8 @@ export interface OperationDisplay {
   /** Resource name */
   resource?: string;
 }
+const OperationDisplay = /*@__PURE__*/ __L.at(__c28, 6) as any as S.Schema<OperationDisplay>;
+
 /** Operation provided by provider */
 export interface Operation {
   /** Properties of the operation */
@@ -3409,8 +4682,15 @@ export interface Operation {
   /** Indicates whether the operation is a data action */
   isDataAction?: boolean;
 }
+const Operation = /*@__PURE__*/ __L.at(__c28, 7) as any as S.Schema<Operation>;
+
 /** Array of operations */
 export type OperationsListValueList = Array<Operation>;
+const OperationsListValueList = /*@__PURE__*/ __L.at(
+  __c29,
+  0,
+) as any as S.Schema<OperationsListValueList>;
+
 /** Lists the operations available in the SecurityInsights RP. */
 export interface OperationsList {
   /** URL to fetch the next set of operations. */
@@ -3418,6 +4698,8 @@ export interface OperationsList {
   /** Array of operations */
   value: OperationsListValueList;
 }
+const OperationsList = /*@__PURE__*/ __L.at(__c29, 1) as any as S.Schema<OperationsList>;
+
 export interface ListProductPackagesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3436,6 +4718,11 @@ export interface ListProductPackagesRequest {
   /** Searches for a substring in the response. Optional. */
   _search?: string;
 }
+const ListProductPackagesRequest = /*@__PURE__*/ __L.at(
+  __c29,
+  2,
+) as any as S.Schema<ListProductPackagesRequest>;
+
 /** Represents a Package in Azure Security Insights. */
 export interface ProductPackageModel {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -3451,8 +4738,15 @@ export interface ProductPackageModel {
   /** Etag of the azure resource */
   etag?: string;
 }
+const ProductPackageModel = /*@__PURE__*/ __L.at(__c29, 3) as any as S.Schema<ProductPackageModel>;
+
 /** The ProductPackageModel items on this page */
 export type ProductPackageListValueList = Array<ProductPackageModel>;
+const ProductPackageListValueList = /*@__PURE__*/ __L.at(
+  __c29,
+  4,
+) as any as S.Schema<ProductPackageListValueList>;
+
 /** List available packages. */
 export interface ProductPackageList {
   /** The ProductPackageModel items on this page */
@@ -3460,6 +4754,8 @@ export interface ProductPackageList {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const ProductPackageList = /*@__PURE__*/ __L.at(__c29, 5) as any as S.Schema<ProductPackageList>;
+
 export interface ListProductTemplatesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3482,6 +4778,11 @@ export interface ListProductTemplatesRequest {
   /** Skiptoken is only used if a previous operation returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skiptoken parameter that specifies a starting point to use for subsequent calls. Optional. */
   _skipToken?: string;
 }
+const ListProductTemplatesRequest = /*@__PURE__*/ __L.at(
+  __c29,
+  6,
+) as any as S.Schema<ListProductTemplatesRequest>;
+
 /** Template resource definition. */
 export interface ProductTemplateModel {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -3497,8 +4798,18 @@ export interface ProductTemplateModel {
   /** Etag of the azure resource */
   etag?: string;
 }
+const ProductTemplateModel = /*@__PURE__*/ __L.at(
+  __c29,
+  7,
+) as any as S.Schema<ProductTemplateModel>;
+
 /** The ProductTemplateModel items on this page */
 export type ProductTemplateListValueList = Array<ProductTemplateModel>;
+const ProductTemplateListValueList = /*@__PURE__*/ __L.at(
+  __c30,
+  0,
+) as any as S.Schema<ProductTemplateListValueList>;
+
 /** List of all the template. */
 export interface ProductTemplateList {
   /** The ProductTemplateModel items on this page */
@@ -3506,6 +4817,8 @@ export interface ProductTemplateList {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const ProductTemplateList = /*@__PURE__*/ __L.at(__c30, 1) as any as S.Schema<ProductTemplateList>;
+
 export interface ListSecurityMLAnalyticsSettingsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3514,6 +4827,11 @@ export interface ListSecurityMLAnalyticsSettingsRequest {
   /** The name of the monitor workspace. */
   workspaceName: string;
 }
+const ListSecurityMLAnalyticsSettingsRequest = /*@__PURE__*/ __L.at(
+  __c30,
+  2,
+) as any as S.Schema<ListSecurityMLAnalyticsSettingsRequest>;
+
 /** Security ML Analytics Setting */
 export interface SecurityMLAnalyticsSetting {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -3531,8 +4849,16 @@ export interface SecurityMLAnalyticsSetting {
   /** Security ML analytics settings properties (polymorphic on `kind`, e.g. Anomaly). */
   properties?: unknown;
 }
+const SecurityMLAnalyticsSetting =
+  GetSecurityMLAnalyticsSettingsResponse as any as S.Schema<SecurityMLAnalyticsSetting>;
+
 /** The SecurityMLAnalyticsSetting items on this page */
 export type SecurityMLAnalyticsSettingsListValueList = Array<SecurityMLAnalyticsSetting>;
+const SecurityMLAnalyticsSettingsListValueList = /*@__PURE__*/ __L.at(
+  __c30,
+  3,
+) as any as S.Schema<SecurityMLAnalyticsSettingsListValueList>;
+
 /** List all the SecurityMLAnalyticsSettings */
 export interface SecurityMLAnalyticsSettingsList {
   /** The SecurityMLAnalyticsSetting items on this page */
@@ -3540,6 +4866,11 @@ export interface SecurityMLAnalyticsSettingsList {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const SecurityMLAnalyticsSettingsList = /*@__PURE__*/ __L.at(
+  __c30,
+  4,
+) as any as S.Schema<SecurityMLAnalyticsSettingsList>;
+
 export interface ListSentinelOnboardingStatesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3548,6 +4879,11 @@ export interface ListSentinelOnboardingStatesRequest {
   /** The name of the workspace. */
   workspaceName: string;
 }
+const ListSentinelOnboardingStatesRequest = /*@__PURE__*/ __L.at(
+  __c30,
+  5,
+) as any as S.Schema<ListSentinelOnboardingStatesRequest>;
+
 /** Sentinel onboarding state */
 export interface SentinelOnboardingState {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -3563,13 +4899,28 @@ export interface SentinelOnboardingState {
   /** Etag of the azure resource */
   etag?: string;
 }
+const SentinelOnboardingState = /*@__PURE__*/ __L.at(
+  __c30,
+  6,
+) as any as S.Schema<SentinelOnboardingState>;
+
 /** Array of Sentinel onboarding states */
 export type SentinelOnboardingStatesListValueList = Array<SentinelOnboardingState>;
+const SentinelOnboardingStatesListValueList = /*@__PURE__*/ __L.at(
+  __c30,
+  7,
+) as any as S.Schema<SentinelOnboardingStatesListValueList>;
+
 /** List of the Sentinel onboarding states */
 export interface SentinelOnboardingStatesList {
   /** Array of Sentinel onboarding states */
   value: SentinelOnboardingStatesListValueList;
 }
+const SentinelOnboardingStatesList = /*@__PURE__*/ __L.at(
+  __c31,
+  0,
+) as any as S.Schema<SentinelOnboardingStatesList>;
+
 export interface ListSourceControlRepositoriesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3580,8 +4931,15 @@ export interface ListSourceControlRepositoriesRequest {
   /** RepositoryAccess properties */
   properties: RepositoryAccessObject;
 }
+const ListSourceControlRepositoriesRequest = /*@__PURE__*/ __L.at(
+  __c31,
+  1,
+) as any as S.Schema<ListSourceControlRepositoriesRequest>;
+
 /** Array of branches. */
 export type RepoBranchesList = Array<string>;
+const RepoBranchesList = BookmarkPropertiesInputLabelsList as any as S.Schema<RepoBranchesList>;
+
 /** Represents a repository. */
 export interface Repo {
   /** The url to access the repository. */
@@ -3593,8 +4951,12 @@ export interface Repo {
   /** Array of branches. */
   branches?: RepoBranchesList;
 }
+const Repo = /*@__PURE__*/ __L.at(__c31, 2) as any as S.Schema<Repo>;
+
 /** The Repo items on this page */
 export type RepoListValueList = Array<Repo>;
+const RepoListValueList = /*@__PURE__*/ __L.at(__c31, 3) as any as S.Schema<RepoListValueList>;
+
 /** List all the source controls. */
 export interface RepoList {
   /** The Repo items on this page */
@@ -3602,6 +4964,8 @@ export interface RepoList {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const RepoList = /*@__PURE__*/ __L.at(__c31, 4) as any as S.Schema<RepoList>;
+
 export interface ListSourceControlsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3610,6 +4974,11 @@ export interface ListSourceControlsRequest {
   /** The name of the monitor workspace. */
   workspaceName: string;
 }
+const ListSourceControlsRequest = /*@__PURE__*/ __L.at(
+  __c31,
+  5,
+) as any as S.Schema<ListSourceControlsRequest>;
+
 /** Represents a SourceControl in Azure Security Insights. */
 export interface SourceControl {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -3625,8 +4994,15 @@ export interface SourceControl {
   /** Etag of the azure resource */
   etag?: string;
 }
+const SourceControl = GetSourceControlResponse as any as S.Schema<SourceControl>;
+
 /** The SourceControl items on this page */
 export type SourceControlListValueList = Array<SourceControl>;
+const SourceControlListValueList = /*@__PURE__*/ __L.at(
+  __c31,
+  6,
+) as any as S.Schema<SourceControlListValueList>;
+
 /** List all the source controls. */
 export interface SourceControlList {
   /** The SourceControl items on this page */
@@ -3634,6 +5010,8 @@ export interface SourceControlList {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const SourceControlList = /*@__PURE__*/ __L.at(__c31, 7) as any as S.Schema<SourceControlList>;
+
 export interface ListThreatIntelligenceIndicatorMetricsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3642,6 +5020,11 @@ export interface ListThreatIntelligenceIndicatorMetricsRequest {
   /** The name of the monitor workspace. */
   workspaceName: string;
 }
+const ListThreatIntelligenceIndicatorMetricsRequest = /*@__PURE__*/ __L.at(
+  __c32,
+  0,
+) as any as S.Schema<ListThreatIntelligenceIndicatorMetricsRequest>;
+
 /** Describes threat intelligence metric entity */
 export interface ThreatIntelligenceMetricEntity {
   /** Metric name */
@@ -3649,12 +5032,28 @@ export interface ThreatIntelligenceMetricEntity {
   /** Metric value */
   metricValue?: number;
 }
+const ThreatIntelligenceMetricEntity = /*@__PURE__*/ __L.at(
+  __c32,
+  1,
+) as any as S.Schema<ThreatIntelligenceMetricEntity>;
+
 /** Threat type metrics */
 export type ThreatIntelligenceMetricThreatTypeMetricsList = Array<ThreatIntelligenceMetricEntity>;
+const ThreatIntelligenceMetricThreatTypeMetricsList = /*@__PURE__*/ __L.at(
+  __c32,
+  2,
+) as any as S.Schema<ThreatIntelligenceMetricThreatTypeMetricsList>;
+
 /** Pattern type metrics */
 export type ThreatIntelligenceMetricPatternTypeMetricsList = Array<ThreatIntelligenceMetricEntity>;
+const ThreatIntelligenceMetricPatternTypeMetricsList =
+  ThreatIntelligenceMetricThreatTypeMetricsList as any as S.Schema<ThreatIntelligenceMetricPatternTypeMetricsList>;
+
 /** Source metrics */
 export type ThreatIntelligenceMetricSourceMetricsList = Array<ThreatIntelligenceMetricEntity>;
+const ThreatIntelligenceMetricSourceMetricsList =
+  ThreatIntelligenceMetricThreatTypeMetricsList as any as S.Schema<ThreatIntelligenceMetricSourceMetricsList>;
+
 /** Describes threat intelligence metric */
 export interface ThreatIntelligenceMetric {
   /** Last updated indicator metric */
@@ -3666,18 +5065,38 @@ export interface ThreatIntelligenceMetric {
   /** Source metrics */
   sourceMetrics?: ThreatIntelligenceMetricSourceMetricsList;
 }
+const ThreatIntelligenceMetric = /*@__PURE__*/ __L.at(
+  __c32,
+  3,
+) as any as S.Schema<ThreatIntelligenceMetric>;
+
 /** Threat intelligence metrics. */
 export interface ThreatIntelligenceMetrics {
   /** Threat intelligence metrics. */
   properties?: ThreatIntelligenceMetric;
 }
+const ThreatIntelligenceMetrics = /*@__PURE__*/ __L.at(
+  __c32,
+  4,
+) as any as S.Schema<ThreatIntelligenceMetrics>;
+
 /** Array of threat intelligence metric fields (type/threat type/source). */
 export type ThreatIntelligenceMetricsListValueList = Array<ThreatIntelligenceMetrics>;
+const ThreatIntelligenceMetricsListValueList = /*@__PURE__*/ __L.at(
+  __c32,
+  5,
+) as any as S.Schema<ThreatIntelligenceMetricsListValueList>;
+
 /** List of all the threat intelligence metric fields (type/threat type/source). */
 export interface ThreatIntelligenceMetricsList {
   /** Array of threat intelligence metric fields (type/threat type/source). */
   value: ThreatIntelligenceMetricsListValueList;
 }
+const ThreatIntelligenceMetricsList = /*@__PURE__*/ __L.at(
+  __c32,
+  6,
+) as any as S.Schema<ThreatIntelligenceMetricsList>;
+
 export interface ListThreatIntelligenceIndicatorsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3694,6 +5113,11 @@ export interface ListThreatIntelligenceIndicatorsRequest {
   /** Sorts the results. Optional. */
   _orderby?: string;
 }
+const ListThreatIntelligenceIndicatorsRequest = /*@__PURE__*/ __L.at(
+  __c32,
+  7,
+) as any as S.Schema<ListThreatIntelligenceIndicatorsRequest>;
+
 /** Threat intelligence information object. */
 export interface ThreatIntelligenceInformation {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -3709,8 +5133,16 @@ export interface ThreatIntelligenceInformation {
   /** Etag of the azure resource */
   etag?: string;
 }
+const ThreatIntelligenceInformation =
+  CreateThreatIntelligenceIndicatorResponse as any as S.Schema<ThreatIntelligenceInformation>;
+
 /** The ThreatIntelligenceInformation items on this page */
 export type ThreatIntelligenceInformationListValueList = Array<ThreatIntelligenceInformation>;
+const ThreatIntelligenceInformationListValueList = /*@__PURE__*/ __L.at(
+  __c33,
+  0,
+) as any as S.Schema<ThreatIntelligenceInformationListValueList>;
+
 /** List of all the threat intelligence information objects. */
 export interface ThreatIntelligenceInformationList {
   /** The ThreatIntelligenceInformation items on this page */
@@ -3718,6 +5150,11 @@ export interface ThreatIntelligenceInformationList {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const ThreatIntelligenceInformationList = /*@__PURE__*/ __L.at(
+  __c33,
+  1,
+) as any as S.Schema<ThreatIntelligenceInformationList>;
+
 export interface ListWatchlistItemsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3730,6 +5167,11 @@ export interface ListWatchlistItemsRequest {
   /** Skiptoken is only used if a previous operation returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skiptoken parameter that specifies a starting point to use for subsequent calls. Optional. */
   _skipToken?: string;
 }
+const ListWatchlistItemsRequest = /*@__PURE__*/ __L.at(
+  __c33,
+  2,
+) as any as S.Schema<ListWatchlistItemsRequest>;
+
 /** Represents a Watchlist Item in Azure Security Insights. */
 export interface WatchlistItem {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -3745,8 +5187,15 @@ export interface WatchlistItem {
   /** Etag of the azure resource */
   etag?: string;
 }
+const WatchlistItem = GetWatchlistItemResponse as any as S.Schema<WatchlistItem>;
+
 /** The WatchlistItem items on this page */
 export type WatchlistItemListValueList = Array<WatchlistItem>;
+const WatchlistItemListValueList = /*@__PURE__*/ __L.at(
+  __c33,
+  3,
+) as any as S.Schema<WatchlistItemListValueList>;
+
 /** List all the watchlist items. */
 export interface WatchlistItemList {
   /** The WatchlistItem items on this page */
@@ -3754,6 +5203,8 @@ export interface WatchlistItemList {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const WatchlistItemList = /*@__PURE__*/ __L.at(__c33, 4) as any as S.Schema<WatchlistItemList>;
+
 export interface ListWatchlistsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3764,6 +5215,11 @@ export interface ListWatchlistsRequest {
   /** Skiptoken is only used if a previous operation returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skiptoken parameter that specifies a starting point to use for subsequent calls. Optional. */
   _skipToken?: string;
 }
+const ListWatchlistsRequest = /*@__PURE__*/ __L.at(
+  __c33,
+  5,
+) as any as S.Schema<ListWatchlistsRequest>;
+
 /** Represents a Watchlist in Azure Security Insights. */
 export interface Watchlist {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -3779,8 +5235,15 @@ export interface Watchlist {
   /** Etag of the azure resource */
   etag?: string;
 }
+const Watchlist = GetWatchlistResponse as any as S.Schema<Watchlist>;
+
 /** The Watchlist items on this page */
 export type WatchlistListValueList = Array<Watchlist>;
+const WatchlistListValueList = /*@__PURE__*/ __L.at(
+  __c33,
+  6,
+) as any as S.Schema<WatchlistListValueList>;
+
 /** List all the watchlists. */
 export interface WatchlistList {
   /** The Watchlist items on this page */
@@ -3788,6 +5251,8 @@ export interface WatchlistList {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const WatchlistList = /*@__PURE__*/ __L.at(__c33, 7) as any as S.Schema<WatchlistList>;
+
 export interface ReplaceThreatIntelligenceIndicatorTagsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3804,6 +5269,11 @@ export interface ReplaceThreatIntelligenceIndicatorTagsRequest {
   /** Threat Intelligence Entity properties */
   properties?: ThreatIntelligenceIndicatorPropertiesInput;
 }
+const ReplaceThreatIntelligenceIndicatorTagsRequest = /*@__PURE__*/ __L.at(
+  __c34,
+  0,
+) as any as S.Schema<ReplaceThreatIntelligenceIndicatorTagsRequest>;
+
 export interface ReplaceThreatIntelligenceIndicatorTagsResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -3818,6 +5288,9 @@ export interface ReplaceThreatIntelligenceIndicatorTagsResponse {
   /** Etag of the azure resource */
   etag?: string;
 }
+const ReplaceThreatIntelligenceIndicatorTagsResponse =
+  CreateThreatIntelligenceIndicatorResponse as any as S.Schema<ReplaceThreatIntelligenceIndicatorTagsResponse>;
+
 export interface RunEntityPlaybookRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3834,7 +5307,15 @@ export interface RunEntityPlaybookRequest {
   /** The resource id of the playbook resource. */
   logicAppsResourceId: string;
 }
+const RunEntityPlaybookRequest = /*@__PURE__*/ __L.at(
+  __c34,
+  1,
+) as any as S.Schema<RunEntityPlaybookRequest>;
+
 export interface RunEntityPlaybookResponse {}
+const RunEntityPlaybookResponse =
+  DeleteActionResponse as any as S.Schema<RunEntityPlaybookResponse>;
+
 export interface RunIncidentPlaybookRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3848,7 +5329,15 @@ export interface RunIncidentPlaybookRequest {
   /** Related Analytic rule resource id */
   logicAppsResourceId: string;
 }
+const RunIncidentPlaybookRequest = /*@__PURE__*/ __L.at(
+  __c34,
+  2,
+) as any as S.Schema<RunIncidentPlaybookRequest>;
+
 export interface RunIncidentPlaybookResponse {}
+const RunIncidentPlaybookResponse =
+  DeleteActionResponse as any as S.Schema<RunIncidentPlaybookResponse>;
+
 export interface SecurityMLAnalyticsSettingsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3865,6 +5354,11 @@ export interface SecurityMLAnalyticsSettingsCreateOrUpdateRequest {
   /** Security ML analytics settings properties (polymorphic on `kind`, e.g. Anomaly). */
   properties?: unknown;
 }
+const SecurityMLAnalyticsSettingsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c34,
+  3,
+) as any as S.Schema<SecurityMLAnalyticsSettingsCreateOrUpdateRequest>;
+
 export interface SecurityMLAnalyticsSettingsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -3881,8 +5375,14 @@ export interface SecurityMLAnalyticsSettingsCreateOrUpdateResponse {
   /** Security ML analytics settings properties (polymorphic on `kind`, e.g. Anomaly). */
   properties?: unknown;
 }
+const SecurityMLAnalyticsSettingsCreateOrUpdateResponse =
+  GetSecurityMLAnalyticsSettingsResponse as any as S.Schema<SecurityMLAnalyticsSettingsCreateOrUpdateResponse>;
+
 /** List of tags to be appended. */
 export type ThreatIntelligenceIndicatorAppendTagsRequestThreatIntelligenceTagsList = Array<string>;
+const ThreatIntelligenceIndicatorAppendTagsRequestThreatIntelligenceTagsList =
+  ThreatIntelligenceIndicatorPropertiesInputThreatIntelligenceTagsList as any as S.Schema<ThreatIntelligenceIndicatorAppendTagsRequestThreatIntelligenceTagsList>;
+
 export interface ThreatIntelligenceIndicatorAppendTagsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3895,9 +5395,19 @@ export interface ThreatIntelligenceIndicatorAppendTagsRequest {
   /** List of tags to be appended. */
   threatIntelligenceTags?: ThreatIntelligenceIndicatorAppendTagsRequestThreatIntelligenceTagsList;
 }
+const ThreatIntelligenceIndicatorAppendTagsRequest = /*@__PURE__*/ __L.at(
+  __c34,
+  4,
+) as any as S.Schema<ThreatIntelligenceIndicatorAppendTagsRequest>;
+
 export interface ThreatIntelligenceIndicatorAppendTagsResponse {}
+const ThreatIntelligenceIndicatorAppendTagsResponse =
+  DeleteDataConnectorDefinitionResponse as any as S.Schema<ThreatIntelligenceIndicatorAppendTagsResponse>;
+
 /** Sorting order (ascending/descending/unsorted). */
 export type ThreatIntelligenceSortingOrder = "unsorted" | "ascending" | "descending";
+const ThreatIntelligenceSortingOrder = S.String;
+
 /** List of available columns for sorting */
 export interface ThreatIntelligenceSortingCriteria {
   /** Column name */
@@ -3905,19 +5415,44 @@ export interface ThreatIntelligenceSortingCriteria {
   /** Sorting order (ascending/descending/unsorted). */
   sortOrder?: ThreatIntelligenceSortingOrder | (string & {});
 }
+const ThreatIntelligenceSortingCriteria = /*@__PURE__*/ __L.at(
+  __c34,
+  5,
+) as any as S.Schema<ThreatIntelligenceSortingCriteria>;
+
 /** Columns to sort by and sorting order */
 export type ThreatIntelligenceIndicatorQueryIndicatorsRequestSortByList =
   Array<ThreatIntelligenceSortingCriteria>;
+const ThreatIntelligenceIndicatorQueryIndicatorsRequestSortByList = /*@__PURE__*/ __L.at(
+  __c34,
+  6,
+) as any as S.Schema<ThreatIntelligenceIndicatorQueryIndicatorsRequestSortByList>;
+
 /** Sources of threat intelligence indicators */
 export type ThreatIntelligenceIndicatorQueryIndicatorsRequestSourcesList = Array<string>;
+const ThreatIntelligenceIndicatorQueryIndicatorsRequestSourcesList =
+  BookmarkPropertiesInputLabelsList as any as S.Schema<ThreatIntelligenceIndicatorQueryIndicatorsRequestSourcesList>;
+
 /** Pattern types */
 export type ThreatIntelligenceIndicatorQueryIndicatorsRequestPatternTypesList = Array<string>;
+const ThreatIntelligenceIndicatorQueryIndicatorsRequestPatternTypesList =
+  ThreatIntelligenceIndicatorPropertiesInputThreatIntelligenceTagsList as any as S.Schema<ThreatIntelligenceIndicatorQueryIndicatorsRequestPatternTypesList>;
+
 /** Threat types of threat intelligence indicators */
 export type ThreatIntelligenceIndicatorQueryIndicatorsRequestThreatTypesList = Array<string>;
+const ThreatIntelligenceIndicatorQueryIndicatorsRequestThreatTypesList =
+  ThreatIntelligenceIndicatorPropertiesInputThreatIntelligenceTagsList as any as S.Schema<ThreatIntelligenceIndicatorQueryIndicatorsRequestThreatTypesList>;
+
 /** Ids of threat intelligence indicators */
 export type ThreatIntelligenceIndicatorQueryIndicatorsRequestIdsList = Array<string>;
+const ThreatIntelligenceIndicatorQueryIndicatorsRequestIdsList =
+  BookmarkPropertiesInputLabelsList as any as S.Schema<ThreatIntelligenceIndicatorQueryIndicatorsRequestIdsList>;
+
 /** Keywords for searching threat intelligence indicators */
 export type ThreatIntelligenceIndicatorQueryIndicatorsRequestKeywordsList = Array<string>;
+const ThreatIntelligenceIndicatorQueryIndicatorsRequestKeywordsList =
+  BookmarkPropertiesInputLabelsList as any as S.Schema<ThreatIntelligenceIndicatorQueryIndicatorsRequestKeywordsList>;
+
 export interface ThreatIntelligenceIndicatorQueryIndicatorsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3952,6 +5487,11 @@ export interface ThreatIntelligenceIndicatorQueryIndicatorsRequest {
   /** Skip token. */
   skipToken?: string;
 }
+const ThreatIntelligenceIndicatorQueryIndicatorsRequest = /*@__PURE__*/ __L.at(
+  __c34,
+  7,
+) as any as S.Schema<ThreatIntelligenceIndicatorQueryIndicatorsRequest>;
+
 export interface UninstallContentPackageRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3962,17 +5502,42 @@ export interface UninstallContentPackageRequest {
   /** package Id */
   packageId: string;
 }
+const UninstallContentPackageRequest = /*@__PURE__*/ __L.at(
+  __c35,
+  0,
+) as any as S.Schema<UninstallContentPackageRequest>;
+
 export interface UninstallContentPackageResponse {}
+const UninstallContentPackageResponse = /*@__PURE__*/ __L.at(
+  __c35,
+  1,
+) as any as S.Schema<UninstallContentPackageResponse>;
+
 /** Providers for the solution content item */
 export type MetadataPropertiesPatchProvidersList = Array<string>;
+const MetadataPropertiesPatchProvidersList =
+  BookmarkPropertiesInputLabelsList as any as S.Schema<MetadataPropertiesPatchProvidersList>;
+
 /** the tactics the resource covers */
 export type MetadataPropertiesPatchThreatAnalysisTacticsList = Array<string>;
+const MetadataPropertiesPatchThreatAnalysisTacticsList =
+  BookmarkPropertiesInputLabelsList as any as S.Schema<MetadataPropertiesPatchThreatAnalysisTacticsList>;
+
 /** the techniques the resource covers, these have to be aligned with the tactics being used */
 export type MetadataPropertiesPatchThreatAnalysisTechniquesList = Array<string>;
+const MetadataPropertiesPatchThreatAnalysisTechniquesList =
+  BookmarkPropertiesInputLabelsList as any as S.Schema<MetadataPropertiesPatchThreatAnalysisTechniquesList>;
+
 /** preview image file names. These will be taken from the solution artifacts */
 export type MetadataPropertiesPatchPreviewImagesList = Array<string>;
+const MetadataPropertiesPatchPreviewImagesList =
+  BookmarkPropertiesInputLabelsList as any as S.Schema<MetadataPropertiesPatchPreviewImagesList>;
+
 /** preview image file names. These will be taken from the solution artifacts. used for dark theme support */
 export type MetadataPropertiesPatchPreviewImagesDarkList = Array<string>;
+const MetadataPropertiesPatchPreviewImagesDarkList =
+  BookmarkPropertiesInputLabelsList as any as S.Schema<MetadataPropertiesPatchPreviewImagesDarkList>;
+
 /** Metadata property bag for patch requests. This is the same as the MetadataProperties, but with nothing required */
 export interface MetadataPropertiesPatch {
   /** Static ID for the content. Used to identify dependencies and content from solutions or community. Hard-coded/static for out of the box content and solutions. Can be optionally set for user created content to define dependencies. If an active content item is made from a template, both will have the same contentId. */
@@ -4014,6 +5579,11 @@ export interface MetadataPropertiesPatch {
   /** preview image file names. These will be taken from the solution artifacts. used for dark theme support */
   previewImagesDark?: MetadataPropertiesPatchPreviewImagesDarkList;
 }
+const MetadataPropertiesPatch = /*@__PURE__*/ __L.at(
+  __c35,
+  2,
+) as any as S.Schema<MetadataPropertiesPatch>;
+
 export interface UpdateMetadataRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4028,6 +5598,11 @@ export interface UpdateMetadataRequest {
   /** Metadata patch request body */
   properties?: MetadataPropertiesPatch;
 }
+const UpdateMetadataRequest = /*@__PURE__*/ __L.at(
+  __c35,
+  3,
+) as any as S.Schema<UpdateMetadataRequest>;
+
 export interface UpdateMetadataResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -4042,6 +5617,8 @@ export interface UpdateMetadataResponse {
   /** Etag of the azure resource */
   etag?: string;
 }
+const UpdateMetadataResponse = CreateMetadataResponse as any as S.Schema<UpdateMetadataResponse>;
+
 /** Describes watchlist item properties */
 export interface WatchlistItemPropertiesInput {
   /** The type of the watchlist item */
@@ -4065,6 +5642,11 @@ export interface WatchlistItemPropertiesInput {
   /** key-value pairs for a watchlist item entity mapping */
   entityMapping?: unknown;
 }
+const WatchlistItemPropertiesInput = /*@__PURE__*/ __L.at(
+  __c35,
+  4,
+) as any as S.Schema<WatchlistItemPropertiesInput>;
+
 export interface WatchlistItemsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4081,6 +5663,11 @@ export interface WatchlistItemsCreateOrUpdateRequest {
   /** Etag of the azure resource */
   etag?: string;
 }
+const WatchlistItemsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c35,
+  5,
+) as any as S.Schema<WatchlistItemsCreateOrUpdateRequest>;
+
 export interface WatchlistItemsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -4095,8 +5682,16 @@ export interface WatchlistItemsCreateOrUpdateResponse {
   /** Etag of the azure resource */
   etag?: string;
 }
+const WatchlistItemsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c35,
+  6,
+) as any as S.Schema<WatchlistItemsCreateOrUpdateResponse>;
+
 /** List of labels relevant to this watchlist */
 export type WatchlistPropertiesInputLabelsList = Array<string>;
+const WatchlistPropertiesInputLabelsList =
+  BookmarkPropertiesInputLabelsList as any as S.Schema<WatchlistPropertiesInputLabelsList>;
+
 /** Describes watchlist properties */
 export interface WatchlistPropertiesInput {
   /** The id (a Guid) of the watchlist */
@@ -4142,6 +5737,11 @@ export interface WatchlistPropertiesInput {
   /** The status of the Watchlist upload : New, InProgress or Complete. **Note** : When a Watchlist upload status is InProgress, the Watchlist cannot be deleted */
   uploadStatus?: string;
 }
+const WatchlistPropertiesInput = /*@__PURE__*/ __L.at(
+  __c35,
+  7,
+) as any as S.Schema<WatchlistPropertiesInput>;
+
 export interface WatchlistsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4156,6 +5756,11 @@ export interface WatchlistsCreateOrUpdateRequest {
   /** Etag of the azure resource */
   etag?: string;
 }
+const WatchlistsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c36,
+  0,
+) as any as S.Schema<WatchlistsCreateOrUpdateRequest>;
+
 export interface WatchlistsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -4170,6 +5775,11 @@ export interface WatchlistsCreateOrUpdateResponse {
   /** Etag of the azure resource */
   etag?: string;
 }
+const WatchlistsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c36,
+  1,
+) as any as S.Schema<WatchlistsCreateOrUpdateResponse>;
+
 export type ActionsCreateOrUpdateError = AzureOpError;
 /** Creates or updates the action of alert rule. */
 export const ActionsCreateOrUpdate: API.OperationMethod<
@@ -4178,8 +5788,8 @@ export const ActionsCreateOrUpdate: API.OperationMethod<
   ActionsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1) as any as S.Schema<ActionsCreateOrUpdateRequest>,
-  output: __S(4) as any as S.Schema<ActionsCreateOrUpdateResponse>,
+  input: ActionsCreateOrUpdateRequest,
+  output: ActionsCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4193,8 +5803,8 @@ export const AlertRulesCreateOrUpdate: API.OperationMethod<
   AlertRulesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5) as any as S.Schema<AlertRulesCreateOrUpdateRequest>,
-  output: __S(6) as any as S.Schema<AlertRulesCreateOrUpdateResponse>,
+  input: AlertRulesCreateOrUpdateRequest,
+  output: AlertRulesCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4208,8 +5818,8 @@ export const AutomationRulesCreateOrUpdate: API.OperationMethod<
   AutomationRulesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13) as any as S.Schema<AutomationRulesCreateOrUpdateRequest>,
-  output: __S(16) as any as S.Schema<AutomationRulesCreateOrUpdateResponse>,
+  input: AutomationRulesCreateOrUpdateRequest,
+  output: AutomationRulesCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4223,8 +5833,8 @@ export const BookmarksCreateOrUpdate: API.OperationMethod<
   BookmarksCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21) as any as S.Schema<BookmarksCreateOrUpdateRequest>,
-  output: __S(24) as any as S.Schema<BookmarksCreateOrUpdateResponse>,
+  input: BookmarksCreateOrUpdateRequest,
+  output: BookmarksCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4238,8 +5848,8 @@ export const CreateMetadata: API.OperationMethod<
   CreateMetadataError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32) as any as S.Schema<CreateMetadataRequest>,
-  output: __S(33) as any as S.Schema<CreateMetadataResponse>,
+  input: CreateMetadataRequest,
+  output: CreateMetadataResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4253,8 +5863,8 @@ export const CreateSentinelOnboardingState: API.OperationMethod<
   CreateSentinelOnboardingStateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35) as any as S.Schema<CreateSentinelOnboardingStateRequest>,
-  output: __S(36) as any as S.Schema<CreateSentinelOnboardingStateResponse>,
+  input: CreateSentinelOnboardingStateRequest,
+  output: CreateSentinelOnboardingStateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4268,8 +5878,8 @@ export const CreateSourceControl: API.OperationMethod<
   CreateSourceControlError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44) as any as S.Schema<CreateSourceControlRequest>,
-  output: __S(56) as any as S.Schema<CreateSourceControlResponse>,
+  input: CreateSourceControlRequest,
+  output: CreateSourceControlResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4283,8 +5893,8 @@ export const CreateThreatIntelligenceIndicator: API.OperationMethod<
   CreateThreatIntelligenceIndicatorError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(71) as any as S.Schema<CreateThreatIntelligenceIndicatorRequest>,
-  output: __S(72) as any as S.Schema<CreateThreatIntelligenceIndicatorResponse>,
+  input: CreateThreatIntelligenceIndicatorRequest,
+  output: CreateThreatIntelligenceIndicatorResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4298,8 +5908,8 @@ export const CreateThreatIntelligenceIndicatorIndicator: API.OperationMethod<
   CreateThreatIntelligenceIndicatorIndicatorError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(73) as any as S.Schema<CreateThreatIntelligenceIndicatorIndicatorRequest>,
-  output: __S(72) as any as S.Schema<CreateThreatIntelligenceIndicatorIndicatorResponse>,
+  input: CreateThreatIntelligenceIndicatorIndicatorRequest,
+  output: CreateThreatIntelligenceIndicatorIndicatorResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4313,8 +5923,8 @@ export const DataConnectorDefinitionsCreateOrUpdate: API.OperationMethod<
   DataConnectorDefinitionsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(74) as any as S.Schema<DataConnectorDefinitionsCreateOrUpdateRequest>,
-  output: __S(6) as any as S.Schema<DataConnectorDefinitionsCreateOrUpdateResponse>,
+  input: DataConnectorDefinitionsCreateOrUpdateRequest,
+  output: DataConnectorDefinitionsCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4328,8 +5938,8 @@ export const DataConnectorsCreateOrUpdate: API.OperationMethod<
   DataConnectorsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(75) as any as S.Schema<DataConnectorsCreateOrUpdateRequest>,
-  output: __S(6) as any as S.Schema<DataConnectorsCreateOrUpdateResponse>,
+  input: DataConnectorsCreateOrUpdateRequest,
+  output: DataConnectorsCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4343,8 +5953,8 @@ export const DeleteAction: API.OperationMethod<
   DeleteActionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(76) as any as S.Schema<DeleteActionRequest>,
-  output: __S(77) as any as S.Schema<DeleteActionResponse>,
+  input: DeleteActionRequest,
+  output: DeleteActionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4358,8 +5968,8 @@ export const DeleteAlertRule: API.OperationMethod<
   DeleteAlertRuleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(78) as any as S.Schema<DeleteAlertRuleRequest>,
-  output: __S(77) as any as S.Schema<DeleteAlertRuleResponse>,
+  input: DeleteAlertRuleRequest,
+  output: DeleteAlertRuleResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4373,8 +5983,8 @@ export const DeleteAutomationRule: API.OperationMethod<
   DeleteAutomationRuleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(79) as any as S.Schema<DeleteAutomationRuleRequest>,
-  output: __S(80) as any as S.Schema<DeleteAutomationRuleResponse>,
+  input: DeleteAutomationRuleRequest,
+  output: DeleteAutomationRuleResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4388,8 +5998,8 @@ export const DeleteBookmark: API.OperationMethod<
   DeleteBookmarkError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(81) as any as S.Schema<DeleteBookmarkRequest>,
-  output: __S(77) as any as S.Schema<DeleteBookmarkResponse>,
+  input: DeleteBookmarkRequest,
+  output: DeleteBookmarkResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4403,8 +6013,8 @@ export const DeleteContentTemplate: API.OperationMethod<
   DeleteContentTemplateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(82) as any as S.Schema<DeleteContentTemplateRequest>,
-  output: __S(77) as any as S.Schema<DeleteContentTemplateResponse>,
+  input: DeleteContentTemplateRequest,
+  output: DeleteContentTemplateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4418,8 +6028,8 @@ export const DeleteDataConnector: API.OperationMethod<
   DeleteDataConnectorError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(83) as any as S.Schema<DeleteDataConnectorRequest>,
-  output: __S(77) as any as S.Schema<DeleteDataConnectorResponse>,
+  input: DeleteDataConnectorRequest,
+  output: DeleteDataConnectorResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4433,8 +6043,8 @@ export const DeleteDataConnectorDefinition: API.OperationMethod<
   DeleteDataConnectorDefinitionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(84) as any as S.Schema<DeleteDataConnectorDefinitionRequest>,
-  output: __S(85) as any as S.Schema<DeleteDataConnectorDefinitionResponse>,
+  input: DeleteDataConnectorDefinitionRequest,
+  output: DeleteDataConnectorDefinitionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4448,8 +6058,8 @@ export const DeleteIncident: API.OperationMethod<
   DeleteIncidentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(86) as any as S.Schema<DeleteIncidentRequest>,
-  output: __S(77) as any as S.Schema<DeleteIncidentResponse>,
+  input: DeleteIncidentRequest,
+  output: DeleteIncidentResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4463,8 +6073,8 @@ export const DeleteIncidentComment: API.OperationMethod<
   DeleteIncidentCommentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(87) as any as S.Schema<DeleteIncidentCommentRequest>,
-  output: __S(77) as any as S.Schema<DeleteIncidentCommentResponse>,
+  input: DeleteIncidentCommentRequest,
+  output: DeleteIncidentCommentResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4478,8 +6088,8 @@ export const DeleteIncidentRelation: API.OperationMethod<
   DeleteIncidentRelationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(88) as any as S.Schema<DeleteIncidentRelationRequest>,
-  output: __S(77) as any as S.Schema<DeleteIncidentRelationResponse>,
+  input: DeleteIncidentRelationRequest,
+  output: DeleteIncidentRelationResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4493,8 +6103,8 @@ export const DeleteIncidentTask: API.OperationMethod<
   DeleteIncidentTaskError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(89) as any as S.Schema<DeleteIncidentTaskRequest>,
-  output: __S(77) as any as S.Schema<DeleteIncidentTaskResponse>,
+  input: DeleteIncidentTaskRequest,
+  output: DeleteIncidentTaskResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4508,8 +6118,8 @@ export const DeleteMetadata: API.OperationMethod<
   DeleteMetadataError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(90) as any as S.Schema<DeleteMetadataRequest>,
-  output: __S(77) as any as S.Schema<DeleteMetadataResponse>,
+  input: DeleteMetadataRequest,
+  output: DeleteMetadataResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4523,8 +6133,8 @@ export const DeleteSecurityMLAnalyticsSettings: API.OperationMethod<
   DeleteSecurityMLAnalyticsSettingsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(91) as any as S.Schema<DeleteSecurityMLAnalyticsSettingsRequest>,
-  output: __S(85) as any as S.Schema<DeleteSecurityMLAnalyticsSettingsResponse>,
+  input: DeleteSecurityMLAnalyticsSettingsRequest,
+  output: DeleteSecurityMLAnalyticsSettingsResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4538,8 +6148,8 @@ export const DeleteSentinelOnboardingState: API.OperationMethod<
   DeleteSentinelOnboardingStateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(92) as any as S.Schema<DeleteSentinelOnboardingStateRequest>,
-  output: __S(85) as any as S.Schema<DeleteSentinelOnboardingStateResponse>,
+  input: DeleteSentinelOnboardingStateRequest,
+  output: DeleteSentinelOnboardingStateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4553,8 +6163,8 @@ export const DeleteSourceControl: API.OperationMethod<
   DeleteSourceControlError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(94) as any as S.Schema<DeleteSourceControlRequest>,
-  output: __S(97) as any as S.Schema<Warning>,
+  input: DeleteSourceControlRequest,
+  output: Warning,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4568,8 +6178,8 @@ export const DeleteThreatIntelligenceIndicator: API.OperationMethod<
   DeleteThreatIntelligenceIndicatorError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(98) as any as S.Schema<DeleteThreatIntelligenceIndicatorRequest>,
-  output: __S(85) as any as S.Schema<DeleteThreatIntelligenceIndicatorResponse>,
+  input: DeleteThreatIntelligenceIndicatorRequest,
+  output: DeleteThreatIntelligenceIndicatorResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4583,8 +6193,8 @@ export const DeleteWatchlist: API.OperationMethod<
   DeleteWatchlistError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(99) as any as S.Schema<DeleteWatchlistRequest>,
-  output: __S(77) as any as S.Schema<DeleteWatchlistResponse>,
+  input: DeleteWatchlistRequest,
+  output: DeleteWatchlistResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4598,8 +6208,8 @@ export const DeleteWatchlistItem: API.OperationMethod<
   DeleteWatchlistItemError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(100) as any as S.Schema<DeleteWatchlistItemRequest>,
-  output: __S(77) as any as S.Schema<DeleteWatchlistItemResponse>,
+  input: DeleteWatchlistItemRequest,
+  output: DeleteWatchlistItemResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4613,8 +6223,8 @@ export const GetAction: API.OperationMethod<
   GetActionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(101) as any as S.Schema<GetActionRequest>,
-  output: __S(102) as any as S.Schema<GetActionResponse>,
+  input: GetActionRequest,
+  output: GetActionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4628,8 +6238,8 @@ export const GetAlertRule: API.OperationMethod<
   GetAlertRuleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(103) as any as S.Schema<GetAlertRuleRequest>,
-  output: __S(104) as any as S.Schema<GetAlertRuleResponse>,
+  input: GetAlertRuleRequest,
+  output: GetAlertRuleResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4643,8 +6253,8 @@ export const GetAlertRuleTemplate: API.OperationMethod<
   GetAlertRuleTemplateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(105) as any as S.Schema<GetAlertRuleTemplateRequest>,
-  output: __S(106) as any as S.Schema<GetAlertRuleTemplateResponse>,
+  input: GetAlertRuleTemplateRequest,
+  output: GetAlertRuleTemplateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4658,8 +6268,8 @@ export const GetAutomationRule: API.OperationMethod<
   GetAutomationRuleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(107) as any as S.Schema<GetAutomationRuleRequest>,
-  output: __S(16) as any as S.Schema<GetAutomationRuleResponse>,
+  input: GetAutomationRuleRequest,
+  output: GetAutomationRuleResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4673,8 +6283,8 @@ export const GetBookmark: API.OperationMethod<
   GetBookmarkError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(108) as any as S.Schema<GetBookmarkRequest>,
-  output: __S(109) as any as S.Schema<GetBookmarkResponse>,
+  input: GetBookmarkRequest,
+  output: GetBookmarkResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4688,8 +6298,8 @@ export const GetContentPackage: API.OperationMethod<
   GetContentPackageError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(110) as any as S.Schema<GetContentPackageRequest>,
-  output: __S(112) as any as S.Schema<GetContentPackageResponse>,
+  input: GetContentPackageRequest,
+  output: GetContentPackageResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4703,8 +6313,8 @@ export const GetContentTemplate: API.OperationMethod<
   GetContentTemplateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(113) as any as S.Schema<GetContentTemplateRequest>,
-  output: __S(116) as any as S.Schema<GetContentTemplateResponse>,
+  input: GetContentTemplateRequest,
+  output: GetContentTemplateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4718,8 +6328,8 @@ export const GetDataConnector: API.OperationMethod<
   GetDataConnectorError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(117) as any as S.Schema<GetDataConnectorRequest>,
-  output: __S(104) as any as S.Schema<GetDataConnectorResponse>,
+  input: GetDataConnectorRequest,
+  output: GetDataConnectorResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4733,8 +6343,8 @@ export const GetDataConnectorDefinition: API.OperationMethod<
   GetDataConnectorDefinitionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(118) as any as S.Schema<GetDataConnectorDefinitionRequest>,
-  output: __S(6) as any as S.Schema<GetDataConnectorDefinitionResponse>,
+  input: GetDataConnectorDefinitionRequest,
+  output: GetDataConnectorDefinitionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4748,8 +6358,8 @@ export const GetIncident: API.OperationMethod<
   GetIncidentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(119) as any as S.Schema<GetIncidentRequest>,
-  output: __S(125) as any as S.Schema<GetIncidentResponse>,
+  input: GetIncidentRequest,
+  output: GetIncidentResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4763,8 +6373,8 @@ export const GetIncidentComment: API.OperationMethod<
   GetIncidentCommentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(126) as any as S.Schema<GetIncidentCommentRequest>,
-  output: __S(128) as any as S.Schema<GetIncidentCommentResponse>,
+  input: GetIncidentCommentRequest,
+  output: GetIncidentCommentResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4778,8 +6388,8 @@ export const GetIncidentRelation: API.OperationMethod<
   GetIncidentRelationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(129) as any as S.Schema<GetIncidentRelationRequest>,
-  output: __S(131) as any as S.Schema<GetIncidentRelationResponse>,
+  input: GetIncidentRelationRequest,
+  output: GetIncidentRelationResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4793,8 +6403,8 @@ export const GetIncidentTask: API.OperationMethod<
   GetIncidentTaskError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(132) as any as S.Schema<GetIncidentTaskRequest>,
-  output: __S(134) as any as S.Schema<GetIncidentTaskResponse>,
+  input: GetIncidentTaskRequest,
+  output: GetIncidentTaskResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4808,8 +6418,8 @@ export const GetMetadata: API.OperationMethod<
   GetMetadataError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(135) as any as S.Schema<GetMetadataRequest>,
-  output: __S(33) as any as S.Schema<GetMetadataResponse>,
+  input: GetMetadataRequest,
+  output: GetMetadataResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4823,8 +6433,8 @@ export const GetProductPackage: API.OperationMethod<
   GetProductPackageError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(136) as any as S.Schema<GetProductPackageRequest>,
-  output: __S(138) as any as S.Schema<GetProductPackageResponse>,
+  input: GetProductPackageRequest,
+  output: GetProductPackageResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4838,8 +6448,8 @@ export const GetProductTemplate: API.OperationMethod<
   GetProductTemplateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(139) as any as S.Schema<GetProductTemplateRequest>,
-  output: __S(141) as any as S.Schema<GetProductTemplateResponse>,
+  input: GetProductTemplateRequest,
+  output: GetProductTemplateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4853,8 +6463,8 @@ export const GetSecurityMLAnalyticsSettings: API.OperationMethod<
   GetSecurityMLAnalyticsSettingsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(142) as any as S.Schema<GetSecurityMLAnalyticsSettingsRequest>,
-  output: __S(6) as any as S.Schema<GetSecurityMLAnalyticsSettingsResponse>,
+  input: GetSecurityMLAnalyticsSettingsRequest,
+  output: GetSecurityMLAnalyticsSettingsResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4868,8 +6478,8 @@ export const GetSentinelOnboardingState: API.OperationMethod<
   GetSentinelOnboardingStateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(143) as any as S.Schema<GetSentinelOnboardingStateRequest>,
-  output: __S(36) as any as S.Schema<GetSentinelOnboardingStateResponse>,
+  input: GetSentinelOnboardingStateRequest,
+  output: GetSentinelOnboardingStateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4883,8 +6493,8 @@ export const GetSourceControl: API.OperationMethod<
   GetSourceControlError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(144) as any as S.Schema<GetSourceControlRequest>,
-  output: __S(145) as any as S.Schema<GetSourceControlResponse>,
+  input: GetSourceControlRequest,
+  output: GetSourceControlResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4898,8 +6508,8 @@ export const GetThreatIntelligenceIndicator: API.OperationMethod<
   GetThreatIntelligenceIndicatorError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(146) as any as S.Schema<GetThreatIntelligenceIndicatorRequest>,
-  output: __S(72) as any as S.Schema<GetThreatIntelligenceIndicatorResponse>,
+  input: GetThreatIntelligenceIndicatorRequest,
+  output: GetThreatIntelligenceIndicatorResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4913,8 +6523,8 @@ export const GetWatchlist: API.OperationMethod<
   GetWatchlistError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(147) as any as S.Schema<GetWatchlistRequest>,
-  output: __S(149) as any as S.Schema<GetWatchlistResponse>,
+  input: GetWatchlistRequest,
+  output: GetWatchlistResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4928,8 +6538,8 @@ export const GetWatchlistItem: API.OperationMethod<
   GetWatchlistItemError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(150) as any as S.Schema<GetWatchlistItemRequest>,
-  output: __S(152) as any as S.Schema<GetWatchlistItemResponse>,
+  input: GetWatchlistItemRequest,
+  output: GetWatchlistItemResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4943,8 +6553,8 @@ export const IncidentCommentsCreateOrUpdate: API.OperationMethod<
   IncidentCommentsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(154) as any as S.Schema<IncidentCommentsCreateOrUpdateRequest>,
-  output: __S(128) as any as S.Schema<IncidentCommentsCreateOrUpdateResponse>,
+  input: IncidentCommentsCreateOrUpdateRequest,
+  output: IncidentCommentsCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4958,8 +6568,8 @@ export const IncidentRelationsCreateOrUpdate: API.OperationMethod<
   IncidentRelationsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(156) as any as S.Schema<IncidentRelationsCreateOrUpdateRequest>,
-  output: __S(131) as any as S.Schema<IncidentRelationsCreateOrUpdateResponse>,
+  input: IncidentRelationsCreateOrUpdateRequest,
+  output: IncidentRelationsCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4973,8 +6583,8 @@ export const IncidentsCreateOrUpdate: API.OperationMethod<
   IncidentsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(158) as any as S.Schema<IncidentsCreateOrUpdateRequest>,
-  output: __S(159) as any as S.Schema<IncidentsCreateOrUpdateResponse>,
+  input: IncidentsCreateOrUpdateRequest,
+  output: IncidentsCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4988,8 +6598,8 @@ export const IncidentTasksCreateOrUpdate: API.OperationMethod<
   IncidentTasksCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(161) as any as S.Schema<IncidentTasksCreateOrUpdateRequest>,
-  output: __S(162) as any as S.Schema<IncidentTasksCreateOrUpdateResponse>,
+  input: IncidentTasksCreateOrUpdateRequest,
+  output: IncidentTasksCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5003,8 +6613,8 @@ export const InstallContentPackage: API.OperationMethod<
   InstallContentPackageError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(163) as any as S.Schema<InstallContentPackageRequest>,
-  output: __S(112) as any as S.Schema<InstallContentPackageResponse>,
+  input: InstallContentPackageRequest,
+  output: InstallContentPackageResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5018,8 +6628,8 @@ export const InstallContentTemplate: API.OperationMethod<
   InstallContentTemplateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(165) as any as S.Schema<InstallContentTemplateRequest>,
-  output: __S(116) as any as S.Schema<InstallContentTemplateResponse>,
+  input: InstallContentTemplateRequest,
+  output: InstallContentTemplateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5033,8 +6643,8 @@ export const ListActionByAlertRule: API.OperationMethod<
   ListActionByAlertRuleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(166) as any as S.Schema<ListActionByAlertRuleRequest>,
-  output: __S(168) as any as S.Schema<ActionsList>,
+  input: ListActionByAlertRuleRequest,
+  output: ActionsList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5048,8 +6658,8 @@ export const ListAlertRules: API.OperationMethod<
   ListAlertRulesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(169) as any as S.Schema<ListAlertRulesRequest>,
-  output: __S(172) as any as S.Schema<AlertRulesList>,
+  input: ListAlertRulesRequest,
+  output: AlertRulesList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5063,8 +6673,8 @@ export const ListAlertRuleTemplates: API.OperationMethod<
   ListAlertRuleTemplatesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(173) as any as S.Schema<ListAlertRuleTemplatesRequest>,
-  output: __S(176) as any as S.Schema<AlertRuleTemplatesList>,
+  input: ListAlertRuleTemplatesRequest,
+  output: AlertRuleTemplatesList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5078,8 +6688,8 @@ export const ListAutomationRules: API.OperationMethod<
   ListAutomationRulesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(177) as any as S.Schema<ListAutomationRulesRequest>,
-  output: __S(180) as any as S.Schema<AutomationRulesList>,
+  input: ListAutomationRulesRequest,
+  output: AutomationRulesList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5093,8 +6703,8 @@ export const ListBookmarks: API.OperationMethod<
   ListBookmarksError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(181) as any as S.Schema<ListBookmarksRequest>,
-  output: __S(183) as any as S.Schema<BookmarkList>,
+  input: ListBookmarksRequest,
+  output: BookmarkList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5108,8 +6718,8 @@ export const ListContentPackages: API.OperationMethod<
   ListContentPackagesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(184) as any as S.Schema<ListContentPackagesRequest>,
-  output: __S(187) as any as S.Schema<PackageList>,
+  input: ListContentPackagesRequest,
+  output: PackageList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5123,8 +6733,8 @@ export const ListContentTemplates: API.OperationMethod<
   ListContentTemplatesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(188) as any as S.Schema<ListContentTemplatesRequest>,
-  output: __S(191) as any as S.Schema<TemplateList>,
+  input: ListContentTemplatesRequest,
+  output: TemplateList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5138,8 +6748,8 @@ export const ListDataConnectorDefinitions: API.OperationMethod<
   ListDataConnectorDefinitionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(192) as any as S.Schema<ListDataConnectorDefinitionsRequest>,
-  output: __S(193) as any as S.Schema<DataConnectorDefinitionArmCollectionWrapper>,
+  input: ListDataConnectorDefinitionsRequest,
+  output: DataConnectorDefinitionArmCollectionWrapper,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5153,8 +6763,8 @@ export const ListDataConnectors: API.OperationMethod<
   ListDataConnectorsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(194) as any as S.Schema<ListDataConnectorsRequest>,
-  output: __S(172) as any as S.Schema<DataConnectorList>,
+  input: ListDataConnectorsRequest,
+  output: DataConnectorList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5168,8 +6778,8 @@ export const ListIncidentAlerts: API.OperationMethod<
   ListIncidentAlertsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(195) as any as S.Schema<ListIncidentAlertsRequest>,
-  output: __S(202) as any as S.Schema<IncidentAlertList>,
+  input: ListIncidentAlertsRequest,
+  output: IncidentAlertList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5183,8 +6793,8 @@ export const ListIncidentBookmarks: API.OperationMethod<
   ListIncidentBookmarksError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(203) as any as S.Schema<ListIncidentBookmarksRequest>,
-  output: __S(207) as any as S.Schema<IncidentBookmarkList>,
+  input: ListIncidentBookmarksRequest,
+  output: IncidentBookmarkList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5198,8 +6808,8 @@ export const ListIncidentComments: API.OperationMethod<
   ListIncidentCommentsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(208) as any as S.Schema<ListIncidentCommentsRequest>,
-  output: __S(211) as any as S.Schema<IncidentCommentList>,
+  input: ListIncidentCommentsRequest,
+  output: IncidentCommentList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5213,8 +6823,8 @@ export const ListIncidentEntities: API.OperationMethod<
   ListIncidentEntitiesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(212) as any as S.Schema<ListIncidentEntitiesRequest>,
-  output: __S(215) as any as S.Schema<IncidentEntitiesResponse>,
+  input: ListIncidentEntitiesRequest,
+  output: IncidentEntitiesResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5228,8 +6838,8 @@ export const ListIncidentRelations: API.OperationMethod<
   ListIncidentRelationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(216) as any as S.Schema<ListIncidentRelationsRequest>,
-  output: __S(219) as any as S.Schema<RelationList>,
+  input: ListIncidentRelationsRequest,
+  output: RelationList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5243,8 +6853,8 @@ export const ListIncidents: API.OperationMethod<
   ListIncidentsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(220) as any as S.Schema<ListIncidentsRequest>,
-  output: __S(222) as any as S.Schema<IncidentList>,
+  input: ListIncidentsRequest,
+  output: IncidentList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5258,8 +6868,8 @@ export const ListIncidentTasks: API.OperationMethod<
   ListIncidentTasksError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(223) as any as S.Schema<ListIncidentTasksRequest>,
-  output: __S(225) as any as S.Schema<IncidentTaskList>,
+  input: ListIncidentTasksRequest,
+  output: IncidentTaskList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5273,8 +6883,8 @@ export const ListMetadata: API.OperationMethod<
   ListMetadataError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(226) as any as S.Schema<ListMetadataRequest>,
-  output: __S(228) as any as S.Schema<MetadataList>,
+  input: ListMetadataRequest,
+  output: MetadataList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5288,8 +6898,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(229) as any as S.Schema<ListOperationsRequest>,
-  output: __S(233) as any as S.Schema<OperationsList>,
+  input: ListOperationsRequest,
+  output: OperationsList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5303,8 +6913,8 @@ export const ListProductPackages: API.OperationMethod<
   ListProductPackagesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(234) as any as S.Schema<ListProductPackagesRequest>,
-  output: __S(237) as any as S.Schema<ProductPackageList>,
+  input: ListProductPackagesRequest,
+  output: ProductPackageList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5318,8 +6928,8 @@ export const ListProductTemplates: API.OperationMethod<
   ListProductTemplatesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(238) as any as S.Schema<ListProductTemplatesRequest>,
-  output: __S(241) as any as S.Schema<ProductTemplateList>,
+  input: ListProductTemplatesRequest,
+  output: ProductTemplateList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5333,8 +6943,8 @@ export const ListSecurityMLAnalyticsSettings: API.OperationMethod<
   ListSecurityMLAnalyticsSettingsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(242) as any as S.Schema<ListSecurityMLAnalyticsSettingsRequest>,
-  output: __S(244) as any as S.Schema<SecurityMLAnalyticsSettingsList>,
+  input: ListSecurityMLAnalyticsSettingsRequest,
+  output: SecurityMLAnalyticsSettingsList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5348,8 +6958,8 @@ export const ListSentinelOnboardingStates: API.OperationMethod<
   ListSentinelOnboardingStatesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(245) as any as S.Schema<ListSentinelOnboardingStatesRequest>,
-  output: __S(248) as any as S.Schema<SentinelOnboardingStatesList>,
+  input: ListSentinelOnboardingStatesRequest,
+  output: SentinelOnboardingStatesList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5363,8 +6973,8 @@ export const ListSourceControlRepositories: API.OperationMethod<
   ListSourceControlRepositoriesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(249) as any as S.Schema<ListSourceControlRepositoriesRequest>,
-  output: __S(252) as any as S.Schema<RepoList>,
+  input: ListSourceControlRepositoriesRequest,
+  output: RepoList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5378,8 +6988,8 @@ export const ListSourceControls: API.OperationMethod<
   ListSourceControlsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(253) as any as S.Schema<ListSourceControlsRequest>,
-  output: __S(255) as any as S.Schema<SourceControlList>,
+  input: ListSourceControlsRequest,
+  output: SourceControlList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5393,8 +7003,8 @@ export const ListThreatIntelligenceIndicatorMetrics: API.OperationMethod<
   ListThreatIntelligenceIndicatorMetricsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(256) as any as S.Schema<ListThreatIntelligenceIndicatorMetricsRequest>,
-  output: __S(262) as any as S.Schema<ThreatIntelligenceMetricsList>,
+  input: ListThreatIntelligenceIndicatorMetricsRequest,
+  output: ThreatIntelligenceMetricsList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5408,8 +7018,8 @@ export const ListThreatIntelligenceIndicators: API.OperationMethod<
   ListThreatIntelligenceIndicatorsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(263) as any as S.Schema<ListThreatIntelligenceIndicatorsRequest>,
-  output: __S(265) as any as S.Schema<ThreatIntelligenceInformationList>,
+  input: ListThreatIntelligenceIndicatorsRequest,
+  output: ThreatIntelligenceInformationList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5423,8 +7033,8 @@ export const ListWatchlistItems: API.OperationMethod<
   ListWatchlistItemsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(266) as any as S.Schema<ListWatchlistItemsRequest>,
-  output: __S(268) as any as S.Schema<WatchlistItemList>,
+  input: ListWatchlistItemsRequest,
+  output: WatchlistItemList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5438,8 +7048,8 @@ export const ListWatchlists: API.OperationMethod<
   ListWatchlistsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(269) as any as S.Schema<ListWatchlistsRequest>,
-  output: __S(271) as any as S.Schema<WatchlistList>,
+  input: ListWatchlistsRequest,
+  output: WatchlistList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5453,8 +7063,8 @@ export const ReplaceThreatIntelligenceIndicatorTags: API.OperationMethod<
   ReplaceThreatIntelligenceIndicatorTagsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(272) as any as S.Schema<ReplaceThreatIntelligenceIndicatorTagsRequest>,
-  output: __S(72) as any as S.Schema<ReplaceThreatIntelligenceIndicatorTagsResponse>,
+  input: ReplaceThreatIntelligenceIndicatorTagsRequest,
+  output: ReplaceThreatIntelligenceIndicatorTagsResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5468,8 +7078,8 @@ export const RunEntityPlaybook: API.OperationMethod<
   RunEntityPlaybookError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(273) as any as S.Schema<RunEntityPlaybookRequest>,
-  output: __S(77) as any as S.Schema<RunEntityPlaybookResponse>,
+  input: RunEntityPlaybookRequest,
+  output: RunEntityPlaybookResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5483,8 +7093,8 @@ export const RunIncidentPlaybook: API.OperationMethod<
   RunIncidentPlaybookError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(274) as any as S.Schema<RunIncidentPlaybookRequest>,
-  output: __S(77) as any as S.Schema<RunIncidentPlaybookResponse>,
+  input: RunIncidentPlaybookRequest,
+  output: RunIncidentPlaybookResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5498,8 +7108,8 @@ export const SecurityMLAnalyticsSettingsCreateOrUpdate: API.OperationMethod<
   SecurityMLAnalyticsSettingsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(275) as any as S.Schema<SecurityMLAnalyticsSettingsCreateOrUpdateRequest>,
-  output: __S(6) as any as S.Schema<SecurityMLAnalyticsSettingsCreateOrUpdateResponse>,
+  input: SecurityMLAnalyticsSettingsCreateOrUpdateRequest,
+  output: SecurityMLAnalyticsSettingsCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5513,8 +7123,8 @@ export const ThreatIntelligenceIndicatorAppendTags: API.OperationMethod<
   ThreatIntelligenceIndicatorAppendTagsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(276) as any as S.Schema<ThreatIntelligenceIndicatorAppendTagsRequest>,
-  output: __S(85) as any as S.Schema<ThreatIntelligenceIndicatorAppendTagsResponse>,
+  input: ThreatIntelligenceIndicatorAppendTagsRequest,
+  output: ThreatIntelligenceIndicatorAppendTagsResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5528,8 +7138,8 @@ export const ThreatIntelligenceIndicatorQueryIndicators: API.OperationMethod<
   ThreatIntelligenceIndicatorQueryIndicatorsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(279) as any as S.Schema<ThreatIntelligenceIndicatorQueryIndicatorsRequest>,
-  output: __S(265) as any as S.Schema<ThreatIntelligenceInformationList>,
+  input: ThreatIntelligenceIndicatorQueryIndicatorsRequest,
+  output: ThreatIntelligenceInformationList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5543,8 +7153,8 @@ export const UninstallContentPackage: API.OperationMethod<
   UninstallContentPackageError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(280) as any as S.Schema<UninstallContentPackageRequest>,
-  output: __S(281) as any as S.Schema<UninstallContentPackageResponse>,
+  input: UninstallContentPackageRequest,
+  output: UninstallContentPackageResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5558,8 +7168,8 @@ export const UpdateMetadata: API.OperationMethod<
   UpdateMetadataError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(283) as any as S.Schema<UpdateMetadataRequest>,
-  output: __S(33) as any as S.Schema<UpdateMetadataResponse>,
+  input: UpdateMetadataRequest,
+  output: UpdateMetadataResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5573,8 +7183,8 @@ export const WatchlistItemsCreateOrUpdate: API.OperationMethod<
   WatchlistItemsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(285) as any as S.Schema<WatchlistItemsCreateOrUpdateRequest>,
-  output: __S(286) as any as S.Schema<WatchlistItemsCreateOrUpdateResponse>,
+  input: WatchlistItemsCreateOrUpdateRequest,
+  output: WatchlistItemsCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5588,8 +7198,8 @@ export const WatchlistsCreateOrUpdate: API.OperationMethod<
   WatchlistsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(288) as any as S.Schema<WatchlistsCreateOrUpdateRequest>,
-  output: __S(289) as any as S.Schema<WatchlistsCreateOrUpdateResponse>,
+  input: WatchlistsCreateOrUpdateRequest,
+  output: WatchlistsCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5614,7 +7224,7 @@ function __c0(j: number): any {
           ruleId: S.String.pipe(T.Label()),
           actionId: S.String.pipe(T.Label()),
           etag: S.optional(S.String),
-          properties: S.optional(__S(0)),
+          properties: S.optional(ActionRequestProperties),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -5630,10 +7240,10 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
-          createdByType: S.optional(S.String),
+          createdByType: S.optional(SystemDataCreatedByType),
           createdAt: S.optional(S.String),
           lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(S.String),
+          lastModifiedByType: S.optional(SystemDataLastModifiedByType),
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "SystemData" });
@@ -5650,8 +7260,8 @@ function __c0(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(3)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(ActionResponseProperties),
           etag: S.optional(S.String),
         }),
       ).annotate({
@@ -5664,7 +7274,7 @@ function __c0(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
           ruleId: S.String.pipe(T.Label()),
-          kind: S.String,
+          kind: AlertRuleKind,
           etag: S.optional(S.String),
           properties: S.optional(S.Unknown),
         }).pipe(
@@ -5684,8 +7294,8 @@ function __c0(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          kind: S.String,
+          systemData: S.optional(SystemData),
+          kind: AlertRuleKind,
           etag: S.optional(S.String),
           properties: S.optional(S.Unknown),
         }),
@@ -5695,7 +7305,7 @@ function __c0(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          conditionType: S.String,
+          conditionType: ConditionType,
           conditionProperties: S.optional(S.Unknown),
         }),
       ).annotate({ identifier: "AutomationRuleCondition" });
@@ -5704,15 +7314,15 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(7));
+      return S.Array(AutomationRuleCondition);
     case 1:
       return S.suspend(() =>
         S.Struct({
           isEnabled: S.Boolean,
           expirationTimeUtc: S.optional(S.String),
-          triggersOn: S.String,
-          triggersWhen: S.String,
-          conditions: S.optional(__S(8)),
+          triggersOn: TriggersOn,
+          triggersWhen: TriggersWhen,
+          conditions: S.optional(AutomationRuleTriggeringLogicConditionsList),
         }),
       ).annotate({
         identifier: "AutomationRuleTriggeringLogic",
@@ -5721,19 +7331,19 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           order: S.Number,
-          actionType: S.String,
+          actionType: ActionType,
           actionConfiguration: S.optional(S.Unknown),
         }),
       ).annotate({ identifier: "AutomationRuleAction" });
     case 3:
-      return S.Array(__S(10));
+      return S.Array(AutomationRuleAction);
     case 4:
       return S.suspend(() =>
         S.Struct({
           displayName: S.String,
           order: S.Number,
-          triggeringLogic: __S(9),
-          actions: __S(11),
+          triggeringLogic: AutomationRuleTriggeringLogic,
+          actions: AutomationRulePropertiesInputActionsList,
         }),
       ).annotate({
         identifier: "AutomationRulePropertiesInput",
@@ -5745,7 +7355,7 @@ function __c1(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
           automationRuleId: S.String.pipe(T.Label()),
-          properties: __S(12),
+          properties: AutomationRulePropertiesInput,
           etag: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -5772,12 +7382,12 @@ function __c1(j: number): any {
         S.Struct({
           displayName: S.String,
           order: S.Number,
-          triggeringLogic: __S(9),
-          actions: __S(11),
+          triggeringLogic: AutomationRuleTriggeringLogic,
+          actions: AutomationRulePropertiesActionsList,
           lastModifiedTimeUtc: S.optional(S.String),
           createdTimeUtc: S.optional(S.String),
-          lastModifiedBy: S.optional(__S(14)),
-          createdBy: S.optional(__S(14)),
+          lastModifiedBy: S.optional(ClientInfo),
+          createdBy: S.optional(ClientInfo),
         }),
       ).annotate({ identifier: "AutomationRuleProperties" });
   }
@@ -5790,8 +7400,8 @@ function __c2(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: __S(15),
+          systemData: S.optional(SystemData),
+          properties: AutomationRuleProperties,
           etag: S.optional(S.String),
         }),
       ).annotate({
@@ -5809,7 +7419,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           incidentId: S.optional(S.String),
-          severity: S.optional(S.String),
+          severity: S.optional(IncidentSeverity),
           title: S.optional(S.String),
           relationName: S.optional(S.String),
         }),
@@ -5818,18 +7428,18 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           created: S.optional(S.String),
-          createdBy: S.optional(__S(17)),
+          createdBy: S.optional(UserInfoInput),
           displayName: S.String,
-          labels: S.optional(__S(18)),
+          labels: S.optional(BookmarkPropertiesInputLabelsList),
           notes: S.optional(S.String),
           query: S.String,
           queryResult: S.optional(S.String),
           updated: S.optional(S.String),
-          updatedBy: S.optional(__S(17)),
+          updatedBy: S.optional(UserInfoInput),
           eventTime: S.optional(S.String),
           queryStartTime: S.optional(S.String),
           queryEndTime: S.optional(S.String),
-          incidentInfo: S.optional(__S(19)),
+          incidentInfo: S.optional(IncidentInfo),
         }),
       ).annotate({ identifier: "BookmarkPropertiesInput" });
     case 5:
@@ -5839,7 +7449,7 @@ function __c2(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
           bookmarkId: S.String.pipe(T.Label()),
-          properties: S.optional(__S(20)),
+          properties: S.optional(BookmarkPropertiesInput),
           etag: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -5864,18 +7474,18 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           created: S.optional(S.String),
-          createdBy: S.optional(__S(22)),
+          createdBy: S.optional(UserInfo),
           displayName: S.String,
-          labels: S.optional(__S(18)),
+          labels: S.optional(BookmarkPropertiesLabelsList),
           notes: S.optional(S.String),
           query: S.String,
           queryResult: S.optional(S.String),
           updated: S.optional(S.String),
-          updatedBy: S.optional(__S(22)),
+          updatedBy: S.optional(UserInfo),
           eventTime: S.optional(S.String),
           queryStartTime: S.optional(S.String),
           queryEndTime: S.optional(S.String),
-          incidentInfo: S.optional(__S(19)),
+          incidentInfo: S.optional(IncidentInfo),
         }),
       ).annotate({ identifier: "BookmarkProperties" });
   }
@@ -5888,8 +7498,8 @@ function __c3(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(23)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(BookmarkProperties),
           etag: S.optional(S.String),
         }),
       ).annotate({
@@ -5898,7 +7508,7 @@ function __c3(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          kind: S.String,
+          kind: SourceKind,
           name: S.optional(S.String),
           sourceId: S.optional(S.String),
         }),
@@ -5914,30 +7524,30 @@ function __c3(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          tier: S.String,
+          tier: SupportTier,
           name: S.optional(S.String),
           email: S.optional(S.String),
           link: S.optional(S.String),
         }),
       ).annotate({ identifier: "MetadataSupport" });
     case 4:
-      return S.Array(/*@__PURE__*/ S.suspend(() => __S(29)));
+      return S.Array(/*@__PURE__*/ S.suspend(() => MetadataDependencies));
     case 5:
       return S.suspend(() =>
         S.Struct({
           contentId: S.optional(S.String),
-          kind: S.optional(S.String),
+          kind: S.optional(Kind),
           version: S.optional(S.String),
           name: S.optional(S.String),
-          operator: S.optional(S.String),
-          criteria: S.optional(__S(28)),
+          operator: S.optional(MetadataDependencyOperator),
+          criteria: S.optional(MetadataDependenciesCriteriaList),
         }),
       ).annotate({ identifier: "MetadataDependencies" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          domains: S.optional(__S(18)),
-          verticals: S.optional(__S(18)),
+          domains: S.optional(MetadataCategoriesDomainsList),
+          verticals: S.optional(MetadataCategoriesVerticalsList),
         }),
       ).annotate({ identifier: "MetadataCategories" });
     case 7:
@@ -5947,21 +7557,21 @@ function __c3(j: number): any {
           parentId: S.String,
           version: S.optional(S.String),
           kind: S.String,
-          source: S.optional(__S(25)),
-          author: S.optional(__S(26)),
-          support: S.optional(__S(27)),
-          dependencies: S.optional(__S(29)),
-          categories: S.optional(__S(30)),
-          providers: S.optional(__S(18)),
+          source: S.optional(MetadataSource),
+          author: S.optional(MetadataAuthor),
+          support: S.optional(MetadataSupport),
+          dependencies: S.optional(MetadataDependencies),
+          categories: S.optional(MetadataCategories),
+          providers: S.optional(MetadataPropertiesProvidersList),
           firstPublishDate: S.optional(S.String),
           lastPublishDate: S.optional(S.String),
           customVersion: S.optional(S.String),
           contentSchemaVersion: S.optional(S.String),
           icon: S.optional(S.String),
-          threatAnalysisTactics: S.optional(__S(18)),
-          threatAnalysisTechniques: S.optional(__S(18)),
-          previewImages: S.optional(__S(18)),
-          previewImagesDark: S.optional(__S(18)),
+          threatAnalysisTactics: S.optional(MetadataPropertiesThreatAnalysisTacticsList),
+          threatAnalysisTechniques: S.optional(MetadataPropertiesThreatAnalysisTechniquesList),
+          previewImages: S.optional(MetadataPropertiesPreviewImagesList),
+          previewImagesDark: S.optional(MetadataPropertiesPreviewImagesDarkList),
         }),
       ).annotate({ identifier: "MetadataProperties" });
   }
@@ -5975,7 +7585,7 @@ function __c4(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
           metadataName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(31)),
+          properties: S.optional(MetadataProperties),
           etag: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -5992,8 +7602,8 @@ function __c4(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(31)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(MetadataProperties),
           etag: S.optional(S.String),
         }),
       ).annotate({ identifier: "CreateMetadataResponse" });
@@ -6012,7 +7622,7 @@ function __c4(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
           sentinelOnboardingStateName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(34)),
+          properties: S.optional(SentinelOnboardingStateProperties),
           etag: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -6031,15 +7641,15 @@ function __c4(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(34)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(SentinelOnboardingStateProperties),
           etag: S.optional(S.String),
         }),
       ).annotate({
         identifier: "CreateSentinelOnboardingStateResponse",
       });
     case 5:
-      return S.Array(S.String);
+      return S.Array(ContentType);
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -6061,7 +7671,7 @@ function __c5(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          kind: S.String,
+          kind: RepositoryAccessKind,
           code: S.optional(S.String),
           state: S.optional(S.String),
           clientId: S.optional(S.String),
@@ -6078,7 +7688,7 @@ function __c5(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          webhook: S.optional(__S(41)),
+          webhook: S.optional(WebhookInput),
         }),
       ).annotate({
         identifier: "RepositoryResourceInfoInput",
@@ -6088,12 +7698,12 @@ function __c5(j: number): any {
         S.Struct({
           displayName: S.String,
           description: S.optional(S.String),
-          repoType: S.String,
-          contentTypes: __S(37),
-          repository: __S(38),
-          servicePrincipal: S.optional(__S(39)),
-          repositoryAccess: S.optional(__S(40)),
-          repositoryResourceInfo: S.optional(__S(42)),
+          repoType: RepoType,
+          contentTypes: SourceControlPropertiesInputContentTypesList,
+          repository: RepositoryInput,
+          servicePrincipal: S.optional(ServicePrincipalInput),
+          repositoryAccess: S.optional(RepositoryAccess),
+          repositoryResourceInfo: S.optional(RepositoryResourceInfoInput),
         }),
       ).annotate({
         identifier: "SourceControlPropertiesInput",
@@ -6105,7 +7715,7 @@ function __c5(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
           sourceControlId: S.String.pipe(T.Label()),
-          properties: __S(43),
+          properties: SourceControlPropertiesInput,
           etag: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -6177,17 +7787,17 @@ function __c6(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          webhook: S.optional(__S(48)),
-          gitHubResourceInfo: S.optional(__S(49)),
-          azureDevOpsResourceInfo: S.optional(__S(50)),
+          webhook: S.optional(Webhook),
+          gitHubResourceInfo: S.optional(GitHubResourceInfo),
+          azureDevOpsResourceInfo: S.optional(AzureDevOpsResourceInfo),
         }),
       ).annotate({ identifier: "RepositoryResourceInfo" });
     case 4:
       return S.suspend(() =>
         S.Struct({
           deploymentId: S.optional(S.String),
-          deploymentState: S.optional(S.String),
-          deploymentResult: S.optional(S.String),
+          deploymentState: S.optional(DeploymentState),
+          deploymentResult: S.optional(DeploymentResult),
           deploymentTime: S.optional(S.String),
           deploymentLogsUrl: S.optional(S.String),
         }),
@@ -6195,8 +7805,8 @@ function __c6(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          deploymentFetchStatus: S.optional(S.String),
-          deployment: S.optional(__S(52)),
+          deploymentFetchStatus: S.optional(DeploymentFetchStatus),
+          deployment: S.optional(Deployment),
           message: S.optional(S.String),
         }),
       ).annotate({ identifier: "DeploymentInfo" });
@@ -6204,25 +7814,25 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           url: S.optional(S.String),
-          state: S.optional(S.String),
+          state: S.optional(PullRequestState),
         }),
       ).annotate({ identifier: "PullRequest" });
     case 7:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
-          version: S.optional(S.String),
+          version: S.optional(Version),
           displayName: S.String,
           description: S.optional(S.String),
-          repoType: S.String,
-          contentTypes: __S(37),
-          repository: __S(45),
-          servicePrincipal: S.optional(__S(46)),
-          workloadIdentityFederation: S.optional(__S(47)),
-          repositoryAccess: S.optional(__S(40)),
-          repositoryResourceInfo: S.optional(__S(51)),
-          lastDeploymentInfo: S.optional(__S(53)),
-          pullRequest: S.optional(__S(54)),
+          repoType: RepoType,
+          contentTypes: SourceControlPropertiesContentTypesList,
+          repository: Repository,
+          servicePrincipal: S.optional(ServicePrincipal),
+          workloadIdentityFederation: S.optional(WorkloadIdentityFederation),
+          repositoryAccess: S.optional(RepositoryAccess),
+          repositoryResourceInfo: S.optional(RepositoryResourceInfo),
+          lastDeploymentInfo: S.optional(DeploymentInfo),
+          pullRequest: S.optional(PullRequest),
         }),
       ).annotate({ identifier: "SourceControlProperties" });
   }
@@ -6235,8 +7845,8 @@ function __c7(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: __S(55),
+          systemData: S.optional(SystemData),
+          properties: SourceControlProperties,
           etag: S.optional(S.String),
         }),
       ).annotate({
@@ -6254,7 +7864,7 @@ function __c7(j: number): any {
         identifier: "ThreatIntelligenceKillChainPhase",
       });
     case 3:
-      return S.Array(__S(58));
+      return S.Array(ThreatIntelligenceKillChainPhase);
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -6265,18 +7875,18 @@ function __c7(j: number): any {
         identifier: "ThreatIntelligenceParsedPatternTypeValue",
       });
     case 5:
-      return S.Array(__S(60));
+      return S.Array(ThreatIntelligenceParsedPatternTypeValue);
     case 6:
       return S.suspend(() =>
         S.Struct({
           patternTypeKey: S.optional(S.String),
-          patternTypeValues: S.optional(__S(61)),
+          patternTypeValues: S.optional(ThreatIntelligenceParsedPatternPatternTypeValuesList),
         }),
       ).annotate({
         identifier: "ThreatIntelligenceParsedPattern",
       });
     case 7:
-      return S.Array(__S(62));
+      return S.Array(ThreatIntelligenceParsedPattern);
   }
 }
 function __c8(j: number): any {
@@ -6290,58 +7900,68 @@ function __c8(j: number): any {
           externalId: S.optional(S.String),
           sourceName: S.optional(S.String),
           url: S.optional(S.String),
-          hashes: S.optional(__S(64)),
+          hashes: S.optional(ThreatIntelligenceExternalReferenceHashesMap),
         }),
       ).annotate({
         identifier: "ThreatIntelligenceExternalReference",
       });
     case 2:
-      return S.Array(__S(65));
+      return S.Array(ThreatIntelligenceExternalReference);
     case 3:
       return S.suspend(() =>
         S.Struct({
           language: S.optional(S.String),
           markingRef: S.optional(S.Number),
-          selectors: S.optional(__S(18)),
+          selectors: S.optional(ThreatIntelligenceGranularMarkingModelSelectorsList),
         }),
       ).annotate({
         identifier: "ThreatIntelligenceGranularMarkingModel",
       });
     case 4:
-      return S.Array(__S(67));
+      return S.Array(ThreatIntelligenceGranularMarkingModel);
     case 5:
       return S.Record(S.String, S.Unknown);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          threatIntelligenceTags: S.optional(__S(57)),
+          threatIntelligenceTags: S.optional(
+            ThreatIntelligenceIndicatorPropertiesInputThreatIntelligenceTagsList,
+          ),
           lastUpdatedTimeUtc: S.optional(S.String),
           source: S.optional(S.String),
           displayName: S.optional(S.String),
           description: S.optional(S.String),
-          indicatorTypes: S.optional(__S(18)),
+          indicatorTypes: S.optional(ThreatIntelligenceIndicatorPropertiesInputIndicatorTypesList),
           pattern: S.optional(S.String),
           patternType: S.optional(S.String),
           patternVersion: S.optional(S.String),
-          killChainPhases: S.optional(__S(59)),
-          parsedPattern: S.optional(__S(63)),
+          killChainPhases: S.optional(
+            ThreatIntelligenceIndicatorPropertiesInputKillChainPhasesList,
+          ),
+          parsedPattern: S.optional(ThreatIntelligenceIndicatorPropertiesInputParsedPatternList),
           externalId: S.optional(S.String),
           createdByRef: S.optional(S.String),
           defanged: S.optional(S.Boolean),
           externalLastUpdatedTimeUtc: S.optional(S.String),
-          externalReferences: S.optional(__S(66)),
-          granularMarkings: S.optional(__S(68)),
-          labels: S.optional(__S(18)),
+          externalReferences: S.optional(
+            ThreatIntelligenceIndicatorPropertiesInputExternalReferencesList,
+          ),
+          granularMarkings: S.optional(
+            ThreatIntelligenceIndicatorPropertiesInputGranularMarkingsList,
+          ),
+          labels: S.optional(ThreatIntelligenceIndicatorPropertiesInputLabelsList),
           revoked: S.optional(S.Boolean),
           confidence: S.optional(S.Number),
-          objectMarkingRefs: S.optional(__S(57)),
+          objectMarkingRefs: S.optional(
+            ThreatIntelligenceIndicatorPropertiesInputObjectMarkingRefsList,
+          ),
           language: S.optional(S.String),
-          threatTypes: S.optional(__S(18)),
+          threatTypes: S.optional(ThreatIntelligenceIndicatorPropertiesInputThreatTypesList),
           validFrom: S.optional(S.String),
           validUntil: S.optional(S.String),
           created: S.optional(S.String),
           modified: S.optional(S.String),
-          extensions: S.optional(__S(69)),
+          extensions: S.optional(ThreatIntelligenceIndicatorPropertiesInputExtensionsMap),
         }),
       ).annotate({
         identifier: "ThreatIntelligenceIndicatorPropertiesInput",
@@ -6353,9 +7973,9 @@ function __c8(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
-          kind: S.String,
+          kind: ThreatIntelligenceResourceInnerKind,
           etag: S.optional(S.String),
-          properties: S.optional(__S(70)),
+          properties: S.optional(ThreatIntelligenceIndicatorPropertiesInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -6377,8 +7997,8 @@ function __c9(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          kind: S.String,
+          systemData: S.optional(SystemData),
+          kind: ThreatIntelligenceResourceInnerKind,
           etag: S.optional(S.String),
         }),
       ).annotate({
@@ -6390,9 +8010,9 @@ function __c9(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
-          kind: S.String,
+          kind: ThreatIntelligenceResourceInnerKind,
           etag: S.optional(S.String),
-          properties: S.optional(__S(70)),
+          properties: S.optional(ThreatIntelligenceIndicatorPropertiesInput),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6411,7 +8031,7 @@ function __c9(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
           dataConnectorDefinitionName: S.String.pipe(T.Label()),
-          kind: S.String,
+          kind: DataConnectorDefinitionKind,
           etag: S.optional(S.String),
           properties: S.optional(S.Unknown),
         }).pipe(
@@ -6432,7 +8052,7 @@ function __c9(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
           dataConnectorId: S.String.pipe(T.Label()),
-          kind: S.String,
+          kind: DataConnectorKind,
           etag: S.optional(S.String),
           properties: S.optional(S.Unknown),
         }).pipe(
@@ -6715,7 +8335,7 @@ function __c11(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          repositoryAccess: __S(40),
+          repositoryAccess: RepositoryAccess,
         }),
       ).annotate({ identifier: "RepositoryAccessObject" });
     case 6:
@@ -6725,7 +8345,7 @@ function __c11(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
           sourceControlId: S.String.pipe(T.Label()),
-          properties: __S(93),
+          properties: RepositoryAccessObject,
         }).pipe(
           T.Http({
             method: "POST",
@@ -6738,7 +8358,7 @@ function __c11(j: number): any {
         identifier: "DeleteSourceControlRequest",
       });
     case 7:
-      return S.Array(/*@__PURE__*/ S.suspend(() => __S(96)));
+      return S.Array(/*@__PURE__*/ S.suspend(() => WarningBody));
   }
 }
 function __c12(j: number): any {
@@ -6746,15 +8366,15 @@ function __c12(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          code: S.optional(S.String),
+          code: S.optional(WarningCode),
           message: S.optional(S.String),
-          details: S.optional(__S(95)),
+          details: S.optional(WarningBodyDetailsList),
         }),
       ).annotate({ identifier: "WarningBody" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          warning: S.optional(__S(96)),
+          warning: S.optional(WarningBody),
         }),
       ).annotate({ identifier: "Warning" });
     case 2:
@@ -6833,8 +8453,8 @@ function __c12(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(3)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(ActionResponseProperties),
           etag: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetActionResponse" });
@@ -6864,8 +8484,8 @@ function __c13(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          kind: S.String,
+          systemData: S.optional(SystemData),
+          kind: AlertRuleKind,
           etag: S.optional(S.String),
           properties: S.optional(S.Unknown),
         }),
@@ -6894,8 +8514,8 @@ function __c13(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          kind: S.String,
+          systemData: S.optional(SystemData),
+          kind: AlertRuleKind,
         }),
       ).annotate({
         identifier: "GetAlertRuleTemplateResponse",
@@ -6938,8 +8558,8 @@ function __c13(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(23)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(BookmarkProperties),
           etag: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetBookmarkResponse" });
@@ -6964,26 +8584,26 @@ function __c13(j: number): any {
         S.Struct({
           contentId: S.optional(S.String),
           contentProductId: S.optional(S.String),
-          contentKind: S.optional(S.String),
+          contentKind: S.optional(PackageKind),
           contentSchemaVersion: S.optional(S.String),
-          isNew: S.optional(S.String),
-          isPreview: S.optional(S.String),
-          isFeatured: S.optional(S.String),
-          isDeprecated: S.optional(S.String),
+          isNew: S.optional(Flag),
+          isPreview: S.optional(Flag),
+          isFeatured: S.optional(Flag),
+          isDeprecated: S.optional(Flag),
           version: S.optional(S.String),
           displayName: S.optional(S.String),
           description: S.optional(S.String),
           publisherDisplayName: S.optional(S.String),
-          source: S.optional(__S(25)),
-          author: S.optional(__S(26)),
-          support: S.optional(__S(27)),
-          dependencies: S.optional(__S(29)),
-          providers: S.optional(__S(18)),
+          source: S.optional(MetadataSource),
+          author: S.optional(MetadataAuthor),
+          support: S.optional(MetadataSupport),
+          dependencies: S.optional(MetadataDependencies),
+          providers: S.optional(PackageBasePropertiesProvidersList),
           firstPublishDate: S.optional(S.String),
           lastPublishDate: S.optional(S.String),
-          categories: S.optional(__S(30)),
-          threatAnalysisTactics: S.optional(__S(18)),
-          threatAnalysisTechniques: S.optional(__S(18)),
+          categories: S.optional(MetadataCategories),
+          threatAnalysisTactics: S.optional(PackageBasePropertiesThreatAnalysisTacticsList),
+          threatAnalysisTechniques: S.optional(PackageBasePropertiesThreatAnalysisTechniquesList),
           icon: S.optional(S.String),
         }),
       ).annotate({ identifier: "PackageBaseProperties" });
@@ -6997,8 +8617,8 @@ function __c14(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(111)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(PackageBaseProperties),
           etag: S.optional(S.String),
         }),
       ).annotate({
@@ -7023,7 +8643,7 @@ function __c14(j: number): any {
         identifier: "GetContentTemplateRequest",
       });
     case 2:
-      return S.Array(/*@__PURE__*/ S.suspend(() => __S(115)));
+      return S.Array(/*@__PURE__*/ S.suspend(() => TemplateProperties));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -7032,28 +8652,28 @@ function __c14(j: number): any {
           packageVersion: S.optional(S.String),
           version: S.optional(S.String),
           displayName: S.optional(S.String),
-          contentKind: S.optional(S.String),
-          source: S.optional(__S(25)),
-          author: S.optional(__S(26)),
-          support: S.optional(__S(27)),
-          dependencies: S.optional(__S(29)),
-          categories: S.optional(__S(30)),
-          providers: S.optional(__S(18)),
+          contentKind: S.optional(Kind),
+          source: S.optional(MetadataSource),
+          author: S.optional(MetadataAuthor),
+          support: S.optional(MetadataSupport),
+          dependencies: S.optional(MetadataDependencies),
+          categories: S.optional(MetadataCategories),
+          providers: S.optional(TemplatePropertiesProvidersList),
           firstPublishDate: S.optional(S.String),
           lastPublishDate: S.optional(S.String),
           customVersion: S.optional(S.String),
           contentSchemaVersion: S.optional(S.String),
           icon: S.optional(S.String),
-          threatAnalysisTactics: S.optional(__S(18)),
-          threatAnalysisTechniques: S.optional(__S(18)),
-          previewImages: S.optional(__S(18)),
-          previewImagesDark: S.optional(__S(18)),
+          threatAnalysisTactics: S.optional(TemplatePropertiesThreatAnalysisTacticsList),
+          threatAnalysisTechniques: S.optional(TemplatePropertiesThreatAnalysisTechniquesList),
+          previewImages: S.optional(TemplatePropertiesPreviewImagesList),
+          previewImagesDark: S.optional(TemplatePropertiesPreviewImagesDarkList),
           packageId: S.optional(S.String),
-          packageKind: S.optional(S.String),
+          packageKind: S.optional(PackageKind),
           packageName: S.optional(S.String),
-          isDeprecated: S.optional(S.String),
+          isDeprecated: S.optional(Flag),
           mainTemplate: S.optional(S.Unknown),
-          dependantTemplates: S.optional(__S(114)),
+          dependantTemplates: S.optional(TemplatePropertiesDependantTemplatesList),
         }),
       ).annotate({ identifier: "TemplateProperties" });
     case 4:
@@ -7062,8 +8682,8 @@ function __c14(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(115)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(TemplateProperties),
           etag: S.optional(S.String),
         }),
       ).annotate({
@@ -7130,26 +8750,26 @@ function __c15(j: number): any {
           assignedTo: S.optional(S.String),
           objectId: S.optional(S.String),
           userPrincipalName: S.optional(S.String),
-          ownerType: S.optional(S.String),
+          ownerType: S.optional(OwnerType),
         }),
       ).annotate({ identifier: "IncidentOwnerInfo" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           labelName: S.String,
-          labelType: S.optional(S.String),
+          labelType: S.optional(IncidentLabelType),
         }),
       ).annotate({ identifier: "IncidentLabel" });
     case 2:
-      return S.Array(__S(121));
+      return S.Array(IncidentLabel);
     case 3:
       return S.suspend(() =>
         S.Struct({
           alertsCount: S.optional(S.Number),
           bookmarksCount: S.optional(S.Number),
           commentsCount: S.optional(S.Number),
-          alertProductNames: S.optional(__S(18)),
-          tactics: S.optional(__S(37)),
+          alertProductNames: S.optional(IncidentAdditionalDataAlertProductNamesList),
+          tactics: S.optional(IncidentAdditionalDataTacticsList),
           providerIncidentUrl: S.optional(S.String),
         }),
       ).annotate({ identifier: "IncidentAdditionalData" });
@@ -7158,20 +8778,20 @@ function __c15(j: number): any {
         S.Struct({
           title: S.String,
           description: S.optional(S.String),
-          severity: S.String,
-          status: S.String,
-          classification: S.optional(S.String),
-          classificationReason: S.optional(S.String),
+          severity: IncidentSeverity,
+          status: IncidentStatus,
+          classification: S.optional(IncidentClassification),
+          classificationReason: S.optional(IncidentClassificationReason),
           classificationComment: S.optional(S.String),
-          owner: S.optional(__S(120)),
-          labels: S.optional(__S(122)),
+          owner: S.optional(IncidentOwnerInfo),
+          labels: S.optional(IncidentPropertiesLabelsList),
           firstActivityTimeUtc: S.optional(S.String),
           lastActivityTimeUtc: S.optional(S.String),
           lastModifiedTimeUtc: S.optional(S.String),
           createdTimeUtc: S.optional(S.String),
           incidentNumber: S.optional(S.Number),
-          additionalData: S.optional(__S(123)),
-          relatedAnalyticRuleIds: S.optional(__S(18)),
+          additionalData: S.optional(IncidentAdditionalData),
+          relatedAnalyticRuleIds: S.optional(IncidentPropertiesRelatedAnalyticRuleIdsList),
           incidentUrl: S.optional(S.String),
           providerName: S.optional(S.String),
           providerIncidentId: S.optional(S.String),
@@ -7183,8 +8803,8 @@ function __c15(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(124)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(IncidentProperties),
           etag: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetIncidentResponse" });
@@ -7213,7 +8833,7 @@ function __c15(j: number): any {
           message: S.String,
           createdTimeUtc: S.optional(S.String),
           lastModifiedTimeUtc: S.optional(S.String),
-          author: S.optional(__S(14)),
+          author: S.optional(ClientInfo),
         }),
       ).annotate({
         identifier: "IncidentCommentProperties",
@@ -7228,8 +8848,8 @@ function __c16(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(127)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(IncidentCommentProperties),
           etag: S.optional(S.String),
         }),
       ).annotate({
@@ -7269,8 +8889,8 @@ function __c16(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(130)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(RelationProperties),
           etag: S.optional(S.String),
         }),
       ).annotate({
@@ -7298,11 +8918,11 @@ function __c16(j: number): any {
         S.Struct({
           title: S.String,
           description: S.optional(S.String),
-          status: S.String,
+          status: IncidentTaskStatus,
           createdTimeUtc: S.optional(S.String),
           lastModifiedTimeUtc: S.optional(S.String),
-          createdBy: S.optional(__S(14)),
-          lastModifiedBy: S.optional(__S(14)),
+          createdBy: S.optional(ClientInfo),
+          lastModifiedBy: S.optional(ClientInfo),
         }),
       ).annotate({ identifier: "IncidentTaskProperties" });
     case 6:
@@ -7311,8 +8931,8 @@ function __c16(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: __S(133),
+          systemData: S.optional(SystemData),
+          properties: IncidentTaskProperties,
           etag: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetIncidentTaskResponse" });
@@ -7357,26 +8977,28 @@ function __c17(j: number): any {
         S.Struct({
           contentId: S.optional(S.String),
           contentProductId: S.optional(S.String),
-          contentKind: S.optional(S.String),
+          contentKind: S.optional(PackageKind),
           contentSchemaVersion: S.optional(S.String),
-          isNew: S.optional(S.String),
-          isPreview: S.optional(S.String),
-          isFeatured: S.optional(S.String),
-          isDeprecated: S.optional(S.String),
+          isNew: S.optional(Flag),
+          isPreview: S.optional(Flag),
+          isFeatured: S.optional(Flag),
+          isDeprecated: S.optional(Flag),
           version: S.optional(S.String),
           displayName: S.optional(S.String),
           description: S.optional(S.String),
           publisherDisplayName: S.optional(S.String),
-          source: S.optional(__S(25)),
-          author: S.optional(__S(26)),
-          support: S.optional(__S(27)),
-          dependencies: S.optional(__S(29)),
-          providers: S.optional(__S(18)),
+          source: S.optional(MetadataSource),
+          author: S.optional(MetadataAuthor),
+          support: S.optional(MetadataSupport),
+          dependencies: S.optional(MetadataDependencies),
+          providers: S.optional(ProductPackagePropertiesProvidersList),
           firstPublishDate: S.optional(S.String),
           lastPublishDate: S.optional(S.String),
-          categories: S.optional(__S(30)),
-          threatAnalysisTactics: S.optional(__S(18)),
-          threatAnalysisTechniques: S.optional(__S(18)),
+          categories: S.optional(MetadataCategories),
+          threatAnalysisTactics: S.optional(ProductPackagePropertiesThreatAnalysisTacticsList),
+          threatAnalysisTechniques: S.optional(
+            ProductPackagePropertiesThreatAnalysisTechniquesList,
+          ),
           icon: S.optional(S.String),
           installedVersion: S.optional(S.String),
           metadataResourceId: S.optional(S.String),
@@ -7389,8 +9011,8 @@ function __c17(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(137)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(ProductPackageProperties),
           etag: S.optional(S.String),
         }),
       ).annotate({
@@ -7422,26 +9044,28 @@ function __c17(j: number): any {
           packageVersion: S.optional(S.String),
           version: S.optional(S.String),
           displayName: S.optional(S.String),
-          contentKind: S.optional(S.String),
-          source: S.optional(__S(25)),
-          author: S.optional(__S(26)),
-          support: S.optional(__S(27)),
-          dependencies: S.optional(__S(29)),
-          categories: S.optional(__S(30)),
-          providers: S.optional(__S(18)),
+          contentKind: S.optional(Kind),
+          source: S.optional(MetadataSource),
+          author: S.optional(MetadataAuthor),
+          support: S.optional(MetadataSupport),
+          dependencies: S.optional(MetadataDependencies),
+          categories: S.optional(MetadataCategories),
+          providers: S.optional(ProductTemplatePropertiesProvidersList),
           firstPublishDate: S.optional(S.String),
           lastPublishDate: S.optional(S.String),
           customVersion: S.optional(S.String),
           contentSchemaVersion: S.optional(S.String),
           icon: S.optional(S.String),
-          threatAnalysisTactics: S.optional(__S(18)),
-          threatAnalysisTechniques: S.optional(__S(18)),
-          previewImages: S.optional(__S(18)),
-          previewImagesDark: S.optional(__S(18)),
+          threatAnalysisTactics: S.optional(ProductTemplatePropertiesThreatAnalysisTacticsList),
+          threatAnalysisTechniques: S.optional(
+            ProductTemplatePropertiesThreatAnalysisTechniquesList,
+          ),
+          previewImages: S.optional(ProductTemplatePropertiesPreviewImagesList),
+          previewImagesDark: S.optional(ProductTemplatePropertiesPreviewImagesDarkList),
           packageId: S.optional(S.String),
-          packageKind: S.optional(S.String),
+          packageKind: S.optional(PackageKind),
           packageName: S.optional(S.String),
-          isDeprecated: S.optional(S.String),
+          isDeprecated: S.optional(Flag),
           packagedContent: S.optional(S.Unknown),
         }),
       ).annotate({
@@ -7453,8 +9077,8 @@ function __c17(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(140)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(ProductTemplateProperties),
           etag: S.optional(S.String),
         }),
       ).annotate({
@@ -7522,8 +9146,8 @@ function __c18(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: __S(55),
+          systemData: S.optional(SystemData),
+          properties: SourceControlProperties,
           etag: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetSourceControlResponse" });
@@ -7568,16 +9192,16 @@ function __c18(j: number): any {
           displayName: S.String,
           provider: S.String,
           source: S.optional(S.String),
-          sourceType: S.optional(S.String),
+          sourceType: S.optional(SourceType),
           created: S.optional(S.String),
           updated: S.optional(S.String),
-          createdBy: S.optional(__S(22)),
-          updatedBy: S.optional(__S(22)),
+          createdBy: S.optional(UserInfo),
+          updatedBy: S.optional(UserInfo),
           description: S.optional(S.String),
           watchlistType: S.optional(S.String),
           watchlistAlias: S.optional(S.String),
           isDeleted: S.optional(S.Boolean),
-          labels: S.optional(__S(18)),
+          labels: S.optional(WatchlistPropertiesLabelsList),
           defaultDuration: S.optional(S.String),
           tenantId: S.optional(S.String),
           numberOfLinesToSkip: S.optional(S.Number),
@@ -7585,7 +9209,7 @@ function __c18(j: number): any {
           itemsSearchKey: S.String,
           contentType: S.optional(S.String),
           uploadStatus: S.optional(S.String),
-          provisioningState: S.optional(S.String),
+          provisioningState: S.optional(WatchlistProvisioningState),
         }),
       ).annotate({ identifier: "WatchlistProperties" });
     case 5:
@@ -7594,8 +9218,8 @@ function __c18(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(148)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(WatchlistProperties),
           etag: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetWatchlistResponse" });
@@ -7625,8 +9249,8 @@ function __c18(j: number): any {
           isDeleted: S.optional(S.Boolean),
           created: S.optional(S.String),
           updated: S.optional(S.String),
-          createdBy: S.optional(__S(22)),
-          updatedBy: S.optional(__S(22)),
+          createdBy: S.optional(UserInfo),
+          updatedBy: S.optional(UserInfo),
           itemsKeyValue: S.Unknown,
           entityMapping: S.optional(S.Unknown),
         }),
@@ -7641,8 +9265,8 @@ function __c19(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(151)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(WatchlistItemProperties),
           etag: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetWatchlistItemResponse" });
@@ -7662,7 +9286,7 @@ function __c19(j: number): any {
           workspaceName: S.String.pipe(T.Label()),
           incidentId: S.String.pipe(T.Label()),
           incidentCommentId: S.String.pipe(T.Label()),
-          properties: S.optional(__S(153)),
+          properties: S.optional(IncidentCommentPropertiesInput),
           etag: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -7689,7 +9313,7 @@ function __c19(j: number): any {
           workspaceName: S.String.pipe(T.Label()),
           incidentId: S.String.pipe(T.Label()),
           relationName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(155)),
+          properties: S.optional(RelationPropertiesInput),
           etag: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -7707,13 +9331,13 @@ function __c19(j: number): any {
         S.Struct({
           title: S.String,
           description: S.optional(S.String),
-          severity: S.String,
-          status: S.String,
-          classification: S.optional(S.String),
-          classificationReason: S.optional(S.String),
+          severity: IncidentSeverity,
+          status: IncidentStatus,
+          classification: S.optional(IncidentClassification),
+          classificationReason: S.optional(IncidentClassificationReason),
           classificationComment: S.optional(S.String),
-          owner: S.optional(__S(120)),
-          labels: S.optional(__S(122)),
+          owner: S.optional(IncidentOwnerInfo),
+          labels: S.optional(IncidentPropertiesInputLabelsList),
           firstActivityTimeUtc: S.optional(S.String),
           lastActivityTimeUtc: S.optional(S.String),
         }),
@@ -7725,7 +9349,7 @@ function __c19(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
           incidentId: S.String.pipe(T.Label()),
-          properties: S.optional(__S(157)),
+          properties: S.optional(IncidentPropertiesInput),
           etag: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -7744,8 +9368,8 @@ function __c19(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(124)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(IncidentProperties),
           etag: S.optional(S.String),
         }),
       ).annotate({
@@ -7760,9 +9384,9 @@ function __c20(j: number): any {
         S.Struct({
           title: S.String,
           description: S.optional(S.String),
-          status: S.String,
-          createdBy: S.optional(__S(14)),
-          lastModifiedBy: S.optional(__S(14)),
+          status: IncidentTaskStatus,
+          createdBy: S.optional(ClientInfo),
+          lastModifiedBy: S.optional(ClientInfo),
         }),
       ).annotate({
         identifier: "IncidentTaskPropertiesInput",
@@ -7775,7 +9399,7 @@ function __c20(j: number): any {
           workspaceName: S.String.pipe(T.Label()),
           incidentId: S.String.pipe(T.Label()),
           incidentTaskId: S.String.pipe(T.Label()),
-          properties: __S(160),
+          properties: IncidentTaskPropertiesInput,
           etag: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -7794,8 +9418,8 @@ function __c20(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: __S(133),
+          systemData: S.optional(SystemData),
+          properties: IncidentTaskProperties,
           etag: S.optional(S.String),
         }),
       ).annotate({
@@ -7808,7 +9432,7 @@ function __c20(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
           packageId: S.String.pipe(T.Label()),
-          properties: S.optional(__S(111)),
+          properties: S.optional(PackageBaseProperties),
           etag: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -7829,24 +9453,24 @@ function __c20(j: number): any {
           packageVersion: S.optional(S.String),
           version: S.optional(S.String),
           displayName: S.optional(S.String),
-          contentKind: S.optional(S.String),
-          source: S.optional(__S(25)),
-          author: S.optional(__S(26)),
-          support: S.optional(__S(27)),
-          dependencies: S.optional(__S(29)),
-          categories: S.optional(__S(30)),
-          providers: S.optional(__S(18)),
+          contentKind: S.optional(Kind),
+          source: S.optional(MetadataSource),
+          author: S.optional(MetadataAuthor),
+          support: S.optional(MetadataSupport),
+          dependencies: S.optional(MetadataDependencies),
+          categories: S.optional(MetadataCategories),
+          providers: S.optional(TemplatePropertiesInputProvidersList),
           firstPublishDate: S.optional(S.String),
           lastPublishDate: S.optional(S.String),
           customVersion: S.optional(S.String),
           contentSchemaVersion: S.optional(S.String),
           icon: S.optional(S.String),
-          threatAnalysisTactics: S.optional(__S(18)),
-          threatAnalysisTechniques: S.optional(__S(18)),
-          previewImages: S.optional(__S(18)),
-          previewImagesDark: S.optional(__S(18)),
+          threatAnalysisTactics: S.optional(TemplatePropertiesInputThreatAnalysisTacticsList),
+          threatAnalysisTechniques: S.optional(TemplatePropertiesInputThreatAnalysisTechniquesList),
+          previewImages: S.optional(TemplatePropertiesInputPreviewImagesList),
+          previewImagesDark: S.optional(TemplatePropertiesInputPreviewImagesDarkList),
           packageId: S.optional(S.String),
-          packageKind: S.optional(S.String),
+          packageKind: S.optional(PackageKind),
           packageName: S.optional(S.String),
           mainTemplate: S.optional(S.Unknown),
         }),
@@ -7858,7 +9482,7 @@ function __c20(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
           templateId: S.String.pipe(T.Label()),
-          properties: S.optional(__S(164)),
+          properties: S.optional(TemplatePropertiesInput),
           etag: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -7890,7 +9514,7 @@ function __c20(j: number): any {
         identifier: "ListActionByAlertRuleRequest",
       });
     case 7:
-      return S.Array(__S(102));
+      return S.Array(ActionResponse);
   }
 }
 function __c21(j: number): any {
@@ -7898,7 +9522,7 @@ function __c21(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          value: __S(167),
+          value: ActionsListValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ActionsList" });
@@ -7923,17 +9547,17 @@ function __c21(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          kind: S.String,
+          systemData: S.optional(SystemData),
+          kind: AlertRuleKind,
           etag: S.optional(S.String),
         }),
       ).annotate({ identifier: "AlertRule" });
     case 3:
-      return S.Array(__S(170));
+      return S.Array(AlertRule);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: __S(171),
+          value: AlertRulesListValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "AlertRulesList" });
@@ -7960,12 +9584,12 @@ function __c21(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          kind: S.String,
+          systemData: S.optional(SystemData),
+          kind: AlertRuleKind,
         }),
       ).annotate({ identifier: "AlertRuleTemplate" });
     case 7:
-      return S.Array(__S(174));
+      return S.Array(AlertRuleTemplate);
   }
 }
 function __c22(j: number): any {
@@ -7973,7 +9597,7 @@ function __c22(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          value: __S(175),
+          value: AlertRuleTemplatesListValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "AlertRuleTemplatesList" });
@@ -8000,17 +9624,17 @@ function __c22(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: __S(15),
+          systemData: S.optional(SystemData),
+          properties: AutomationRuleProperties,
           etag: S.optional(S.String),
         }),
       ).annotate({ identifier: "AutomationRule" });
     case 3:
-      return S.Array(__S(178));
+      return S.Array(AutomationRule);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(179)),
+          value: S.optional(AutomationRulesListValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "AutomationRulesList" });
@@ -8030,11 +9654,11 @@ function __c22(j: number): any {
         ),
       ).annotate({ identifier: "ListBookmarksRequest" });
     case 6:
-      return S.Array(__S(109));
+      return S.Array(Bookmark);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          value: __S(182),
+          value: BookmarkListValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "BookmarkList" });
@@ -8072,17 +9696,17 @@ function __c23(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(111)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(PackageBaseProperties),
           etag: S.optional(S.String),
         }),
       ).annotate({ identifier: "PackageModel" });
     case 2:
-      return S.Array(__S(185));
+      return S.Array(PackageModel);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: __S(186),
+          value: PackageListValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "PackageList" });
@@ -8117,17 +9741,17 @@ function __c23(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(115)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(TemplateProperties),
           etag: S.optional(S.String),
         }),
       ).annotate({ identifier: "TemplateModel" });
     case 6:
-      return S.Array(__S(189));
+      return S.Array(TemplateModel);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          value: __S(190),
+          value: TemplateListValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "TemplateList" });
@@ -8155,7 +9779,7 @@ function __c24(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(171)),
+          value: S.optional(DataConnectorDefinitionArmCollectionWrapperValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -8206,39 +9830,39 @@ function __c24(j: number): any {
         identifier: "SecurityAlertPropertiesConfidenceReasonsItem",
       });
     case 5:
-      return S.Array(__S(196));
+      return S.Array(SecurityAlertPropertiesConfidenceReasonsItem);
     case 6:
       return S.Array(S.Unknown);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          additionalData: S.optional(__S(69)),
+          additionalData: S.optional(SecurityAlertPropertiesAdditionalDataMap),
           friendlyName: S.optional(S.String),
           alertDisplayName: S.optional(S.String),
           alertType: S.optional(S.String),
           compromisedEntity: S.optional(S.String),
-          confidenceLevel: S.optional(S.String),
-          confidenceReasons: S.optional(__S(197)),
+          confidenceLevel: S.optional(ConfidenceLevel),
+          confidenceReasons: S.optional(SecurityAlertPropertiesConfidenceReasonsList),
           confidenceScore: S.optional(S.Number),
-          confidenceScoreStatus: S.optional(S.String),
+          confidenceScoreStatus: S.optional(ConfidenceScoreStatus),
           description: S.optional(S.String),
           endTimeUtc: S.optional(S.String),
-          intent: S.optional(S.String),
+          intent: S.optional(KillChainIntent),
           providerAlertId: S.optional(S.String),
           processingEndTime: S.optional(S.String),
           productComponentName: S.optional(S.String),
           productName: S.optional(S.String),
           productVersion: S.optional(S.String),
-          remediationSteps: S.optional(__S(18)),
-          severity: S.optional(S.String),
+          remediationSteps: S.optional(SecurityAlertPropertiesRemediationStepsList),
+          severity: S.optional(AlertSeverity),
           startTimeUtc: S.optional(S.String),
-          status: S.optional(S.String),
+          status: S.optional(AlertStatus),
           systemAlertId: S.optional(S.String),
-          tactics: S.optional(__S(37)),
+          tactics: S.optional(SecurityAlertPropertiesTacticsList),
           timeGenerated: S.optional(S.String),
           vendorName: S.optional(S.String),
           alertLink: S.optional(S.String),
-          resourceIdentifiers: S.optional(__S(198)),
+          resourceIdentifiers: S.optional(SecurityAlertPropertiesResourceIdentifiersList),
         }),
       ).annotate({ identifier: "SecurityAlertProperties" });
   }
@@ -8251,17 +9875,17 @@ function __c25(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          kind: S.String,
-          properties: S.optional(__S(199)),
+          systemData: S.optional(SystemData),
+          kind: EntityKindEnum,
+          properties: S.optional(SecurityAlertProperties),
         }),
       ).annotate({ identifier: "SecurityAlert" });
     case 1:
-      return S.Array(__S(200));
+      return S.Array(SecurityAlert);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(201),
+          value: IncidentAlertListValueList,
         }),
       ).annotate({ identifier: "IncidentAlertList" });
     case 3:
@@ -8285,19 +9909,19 @@ function __c25(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          additionalData: S.optional(__S(69)),
+          additionalData: S.optional(HuntingBookmarkPropertiesAdditionalDataMap),
           friendlyName: S.optional(S.String),
           created: S.optional(S.String),
-          createdBy: S.optional(__S(22)),
+          createdBy: S.optional(UserInfo),
           displayName: S.String,
           eventTime: S.optional(S.String),
-          labels: S.optional(__S(18)),
+          labels: S.optional(HuntingBookmarkPropertiesLabelsList),
           notes: S.optional(S.String),
           query: S.String,
           queryResult: S.optional(S.String),
           updated: S.optional(S.String),
-          updatedBy: S.optional(__S(22)),
-          incidentInfo: S.optional(__S(19)),
+          updatedBy: S.optional(UserInfo),
+          incidentInfo: S.optional(IncidentInfo),
         }),
       ).annotate({
         identifier: "HuntingBookmarkProperties",
@@ -8308,17 +9932,17 @@ function __c25(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          kind: S.String,
-          properties: S.optional(__S(204)),
+          systemData: S.optional(SystemData),
+          kind: EntityKindEnum,
+          properties: S.optional(HuntingBookmarkProperties),
         }),
       ).annotate({ identifier: "HuntingBookmark" });
     case 6:
-      return S.Array(__S(205));
+      return S.Array(HuntingBookmark);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          value: __S(206),
+          value: IncidentBookmarkListValueList,
         }),
       ).annotate({ identifier: "IncidentBookmarkList" });
   }
@@ -8353,17 +9977,17 @@ function __c26(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(127)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(IncidentCommentProperties),
           etag: S.optional(S.String),
         }),
       ).annotate({ identifier: "IncidentComment" });
     case 2:
-      return S.Array(__S(209));
+      return S.Array(IncidentComment);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: __S(210),
+          value: IncidentCommentListValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "IncidentCommentList" });
@@ -8388,19 +10012,19 @@ function __c26(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          entityKind: S.String,
+          entityKind: EntityKindEnum,
           count: S.Number,
         }),
       ).annotate({
         identifier: "IncidentEntitiesResultsMetadata",
       });
     case 6:
-      return S.Array(__S(213));
+      return S.Array(IncidentEntitiesResultsMetadata);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          entities: S.optional(__S(175)),
-          metaData: S.optional(__S(214)),
+          entities: S.optional(IncidentEntitiesResponseEntitiesList),
+          metaData: S.optional(IncidentEntitiesResponseMetaDataList),
         }),
       ).annotate({ identifier: "IncidentEntitiesResponse" });
   }
@@ -8435,17 +10059,17 @@ function __c27(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(130)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(RelationProperties),
           etag: S.optional(S.String),
         }),
       ).annotate({ identifier: "Relation" });
     case 2:
-      return S.Array(__S(217));
+      return S.Array(Relation);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: __S(218),
+          value: RelationListValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "RelationList" });
@@ -8469,11 +10093,11 @@ function __c27(j: number): any {
         ),
       ).annotate({ identifier: "ListIncidentsRequest" });
     case 5:
-      return S.Array(__S(125));
+      return S.Array(Incident);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          value: __S(221),
+          value: IncidentListValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "IncidentList" });
@@ -8498,11 +10122,11 @@ function __c27(j: number): any {
 function __c28(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(134));
+      return S.Array(IncidentTask);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(224)),
+          value: S.optional(IncidentTaskListValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "IncidentTaskList" });
@@ -8526,11 +10150,11 @@ function __c28(j: number): any {
         ),
       ).annotate({ identifier: "ListMetadataRequest" });
     case 3:
-      return S.Array(__S(33));
+      return S.Array(MetadataModel);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: __S(227),
+          value: MetadataListValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "MetadataList" });
@@ -8557,7 +10181,7 @@ function __c28(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          display: S.optional(__S(230)),
+          display: S.optional(OperationDisplay),
           name: S.optional(S.String),
           origin: S.optional(S.String),
           isDataAction: S.optional(S.Boolean),
@@ -8568,12 +10192,12 @@ function __c28(j: number): any {
 function __c29(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(231));
+      return S.Array(Operation);
     case 1:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: __S(232),
+          value: OperationsListValueList,
         }),
       ).annotate({ identifier: "OperationsList" });
     case 2:
@@ -8604,17 +10228,17 @@ function __c29(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(137)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(ProductPackageProperties),
           etag: S.optional(S.String),
         }),
       ).annotate({ identifier: "ProductPackageModel" });
     case 4:
-      return S.Array(__S(235));
+      return S.Array(ProductPackageModel);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          value: __S(236),
+          value: ProductPackageListValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ProductPackageList" });
@@ -8648,8 +10272,8 @@ function __c29(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(140)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(ProductTemplateProperties),
           etag: S.optional(S.String),
         }),
       ).annotate({ identifier: "ProductTemplateModel" });
@@ -8658,11 +10282,11 @@ function __c29(j: number): any {
 function __c30(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(239));
+      return S.Array(ProductTemplateModel);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(240),
+          value: ProductTemplateListValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ProductTemplateList" });
@@ -8684,11 +10308,11 @@ function __c30(j: number): any {
         identifier: "ListSecurityMLAnalyticsSettingsRequest",
       });
     case 3:
-      return S.Array(__S(6));
+      return S.Array(SecurityMLAnalyticsSetting);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: __S(243),
+          value: SecurityMLAnalyticsSettingsListValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -8717,13 +10341,13 @@ function __c30(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(34)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(SentinelOnboardingStateProperties),
           etag: S.optional(S.String),
         }),
       ).annotate({ identifier: "SentinelOnboardingState" });
     case 7:
-      return S.Array(__S(246));
+      return S.Array(SentinelOnboardingState);
   }
 }
 function __c31(j: number): any {
@@ -8731,7 +10355,7 @@ function __c31(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          value: __S(247),
+          value: SentinelOnboardingStatesListValueList,
         }),
       ).annotate({
         identifier: "SentinelOnboardingStatesList",
@@ -8742,7 +10366,7 @@ function __c31(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
-          properties: __S(93),
+          properties: RepositoryAccessObject,
         }).pipe(
           T.Http({
             method: "POST",
@@ -8760,15 +10384,15 @@ function __c31(j: number): any {
           url: S.optional(S.String),
           fullName: S.optional(S.String),
           installationId: S.optional(S.Number),
-          branches: S.optional(__S(18)),
+          branches: S.optional(RepoBranchesList),
         }),
       ).annotate({ identifier: "Repo" });
     case 3:
-      return S.Array(__S(250));
+      return S.Array(Repo);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: __S(251),
+          value: RepoListValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "RepoList" });
@@ -8790,11 +10414,11 @@ function __c31(j: number): any {
         identifier: "ListSourceControlsRequest",
       });
     case 6:
-      return S.Array(__S(145));
+      return S.Array(SourceControl);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          value: __S(254),
+          value: SourceControlListValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "SourceControlList" });
@@ -8829,30 +10453,30 @@ function __c32(j: number): any {
         identifier: "ThreatIntelligenceMetricEntity",
       });
     case 2:
-      return S.Array(__S(257));
+      return S.Array(ThreatIntelligenceMetricEntity);
     case 3:
       return S.suspend(() =>
         S.Struct({
           lastUpdatedTimeUtc: S.optional(S.String),
-          threatTypeMetrics: S.optional(__S(258)),
-          patternTypeMetrics: S.optional(__S(258)),
-          sourceMetrics: S.optional(__S(258)),
+          threatTypeMetrics: S.optional(ThreatIntelligenceMetricThreatTypeMetricsList),
+          patternTypeMetrics: S.optional(ThreatIntelligenceMetricPatternTypeMetricsList),
+          sourceMetrics: S.optional(ThreatIntelligenceMetricSourceMetricsList),
         }),
       ).annotate({ identifier: "ThreatIntelligenceMetric" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          properties: S.optional(__S(259)),
+          properties: S.optional(ThreatIntelligenceMetric),
         }),
       ).annotate({
         identifier: "ThreatIntelligenceMetrics",
       });
     case 5:
-      return S.Array(__S(260));
+      return S.Array(ThreatIntelligenceMetrics);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          value: __S(261),
+          value: ThreatIntelligenceMetricsListValueList,
         }),
       ).annotate({
         identifier: "ThreatIntelligenceMetricsList",
@@ -8883,11 +10507,11 @@ function __c32(j: number): any {
 function __c33(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(72));
+      return S.Array(ThreatIntelligenceInformation);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(264),
+          value: ThreatIntelligenceInformationListValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -8913,11 +10537,11 @@ function __c33(j: number): any {
         identifier: "ListWatchlistItemsRequest",
       });
     case 3:
-      return S.Array(__S(152));
+      return S.Array(WatchlistItem);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: __S(267),
+          value: WatchlistItemListValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "WatchlistItemList" });
@@ -8938,11 +10562,11 @@ function __c33(j: number): any {
         ),
       ).annotate({ identifier: "ListWatchlistsRequest" });
     case 6:
-      return S.Array(__S(149));
+      return S.Array(Watchlist);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          value: __S(270),
+          value: WatchlistListValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "WatchlistList" });
@@ -8957,9 +10581,9 @@ function __c34(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
-          kind: S.String,
+          kind: ThreatIntelligenceResourceInnerKind,
           etag: S.optional(S.String),
-          properties: S.optional(__S(70)),
+          properties: S.optional(ThreatIntelligenceIndicatorPropertiesInput),
         }).pipe(
           T.Http({
             method: "POST",
@@ -9017,7 +10641,7 @@ function __c34(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
           settingsResourceName: S.String.pipe(T.Label()),
-          kind: S.String,
+          kind: SecurityMLAnalyticsSettingsKind,
           etag: S.optional(S.String),
           properties: S.optional(S.Unknown),
         }).pipe(
@@ -9038,7 +10662,9 @@ function __c34(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
-          threatIntelligenceTags: S.optional(__S(57)),
+          threatIntelligenceTags: S.optional(
+            ThreatIntelligenceIndicatorAppendTagsRequestThreatIntelligenceTagsList,
+          ),
         }).pipe(
           T.Http({
             method: "POST",
@@ -9054,13 +10680,13 @@ function __c34(j: number): any {
       return S.suspend(() =>
         S.Struct({
           itemKey: S.optional(S.String),
-          sortOrder: S.optional(S.String),
+          sortOrder: S.optional(ThreatIntelligenceSortingOrder),
         }),
       ).annotate({
         identifier: "ThreatIntelligenceSortingCriteria",
       });
     case 6:
-      return S.Array(__S(277));
+      return S.Array(ThreatIntelligenceSortingCriteria);
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -9073,12 +10699,14 @@ function __c34(j: number): any {
           minValidUntil: S.optional(S.String),
           maxValidUntil: S.optional(S.String),
           includeDisabled: S.optional(S.Boolean),
-          sortBy: S.optional(__S(278)),
-          sources: S.optional(__S(18)),
-          patternTypes: S.optional(__S(57)),
-          threatTypes: S.optional(__S(57)),
-          ids: S.optional(__S(18)),
-          keywords: S.optional(__S(18)),
+          sortBy: S.optional(ThreatIntelligenceIndicatorQueryIndicatorsRequestSortByList),
+          sources: S.optional(ThreatIntelligenceIndicatorQueryIndicatorsRequestSourcesList),
+          patternTypes: S.optional(
+            ThreatIntelligenceIndicatorQueryIndicatorsRequestPatternTypesList,
+          ),
+          threatTypes: S.optional(ThreatIntelligenceIndicatorQueryIndicatorsRequestThreatTypesList),
+          ids: S.optional(ThreatIntelligenceIndicatorQueryIndicatorsRequestIdsList),
+          keywords: S.optional(ThreatIntelligenceIndicatorQueryIndicatorsRequestKeywordsList),
           skipToken: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -9124,21 +10752,21 @@ function __c35(j: number): any {
           parentId: S.optional(S.String),
           version: S.optional(S.String),
           kind: S.optional(S.String),
-          source: S.optional(__S(25)),
-          author: S.optional(__S(26)),
-          support: S.optional(__S(27)),
-          dependencies: S.optional(__S(29)),
-          categories: S.optional(__S(30)),
-          providers: S.optional(__S(18)),
+          source: S.optional(MetadataSource),
+          author: S.optional(MetadataAuthor),
+          support: S.optional(MetadataSupport),
+          dependencies: S.optional(MetadataDependencies),
+          categories: S.optional(MetadataCategories),
+          providers: S.optional(MetadataPropertiesPatchProvidersList),
           firstPublishDate: S.optional(S.String),
           lastPublishDate: S.optional(S.String),
           customVersion: S.optional(S.String),
           contentSchemaVersion: S.optional(S.String),
           icon: S.optional(S.String),
-          threatAnalysisTactics: S.optional(__S(18)),
-          threatAnalysisTechniques: S.optional(__S(18)),
-          previewImages: S.optional(__S(18)),
-          previewImagesDark: S.optional(__S(18)),
+          threatAnalysisTactics: S.optional(MetadataPropertiesPatchThreatAnalysisTacticsList),
+          threatAnalysisTechniques: S.optional(MetadataPropertiesPatchThreatAnalysisTechniquesList),
+          previewImages: S.optional(MetadataPropertiesPatchPreviewImagesList),
+          previewImagesDark: S.optional(MetadataPropertiesPatchPreviewImagesDarkList),
         }),
       ).annotate({ identifier: "MetadataPropertiesPatch" });
     case 3:
@@ -9149,7 +10777,7 @@ function __c35(j: number): any {
           workspaceName: S.String.pipe(T.Label()),
           metadataName: S.String.pipe(T.Label()),
           etag: S.optional(S.String),
-          properties: S.optional(__S(282)),
+          properties: S.optional(MetadataPropertiesPatch),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -9168,8 +10796,8 @@ function __c35(j: number): any {
           isDeleted: S.optional(S.Boolean),
           created: S.optional(S.String),
           updated: S.optional(S.String),
-          createdBy: S.optional(__S(17)),
-          updatedBy: S.optional(__S(17)),
+          createdBy: S.optional(UserInfoInput),
+          updatedBy: S.optional(UserInfoInput),
           itemsKeyValue: S.Unknown,
           entityMapping: S.optional(S.Unknown),
         }),
@@ -9184,7 +10812,7 @@ function __c35(j: number): any {
           workspaceName: S.String.pipe(T.Label()),
           watchlistAlias: S.String.pipe(T.Label()),
           watchlistItemId: S.String.pipe(T.Label()),
-          properties: S.optional(__S(284)),
+          properties: S.optional(WatchlistItemPropertiesInput),
           etag: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -9203,8 +10831,8 @@ function __c35(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(151)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(WatchlistItemProperties),
           etag: S.optional(S.String),
         }),
       ).annotate({
@@ -9217,16 +10845,16 @@ function __c35(j: number): any {
           displayName: S.String,
           provider: S.String,
           source: S.optional(S.String),
-          sourceType: S.optional(S.String),
+          sourceType: S.optional(SourceType),
           created: S.optional(S.String),
           updated: S.optional(S.String),
-          createdBy: S.optional(__S(17)),
-          updatedBy: S.optional(__S(17)),
+          createdBy: S.optional(UserInfoInput),
+          updatedBy: S.optional(UserInfoInput),
           description: S.optional(S.String),
           watchlistType: S.optional(S.String),
           watchlistAlias: S.optional(S.String),
           isDeleted: S.optional(S.Boolean),
-          labels: S.optional(__S(18)),
+          labels: S.optional(WatchlistPropertiesInputLabelsList),
           defaultDuration: S.optional(S.String),
           tenantId: S.optional(S.String),
           numberOfLinesToSkip: S.optional(S.Number),
@@ -9247,7 +10875,7 @@ function __c36(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
           watchlistAlias: S.String.pipe(T.Label()),
-          properties: S.optional(__S(287)),
+          properties: S.optional(WatchlistPropertiesInput),
           etag: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -9266,95 +10894,12 @@ function __c36(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(148)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(WatchlistProperties),
           etag: S.optional(S.String),
         }),
       ).annotate({
         identifier: "WatchlistsCreateOrUpdateResponse",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
-    case 9:
-      return __c9(i & 7);
-    case 10:
-      return __c10(i & 7);
-    case 11:
-      return __c11(i & 7);
-    case 12:
-      return __c12(i & 7);
-    case 13:
-      return __c13(i & 7);
-    case 14:
-      return __c14(i & 7);
-    case 15:
-      return __c15(i & 7);
-    case 16:
-      return __c16(i & 7);
-    case 17:
-      return __c17(i & 7);
-    case 18:
-      return __c18(i & 7);
-    case 19:
-      return __c19(i & 7);
-    case 20:
-      return __c20(i & 7);
-    case 21:
-      return __c21(i & 7);
-    case 22:
-      return __c22(i & 7);
-    case 23:
-      return __c23(i & 7);
-    case 24:
-      return __c24(i & 7);
-    case 25:
-      return __c25(i & 7);
-    case 26:
-      return __c26(i & 7);
-    case 27:
-      return __c27(i & 7);
-    case 28:
-      return __c28(i & 7);
-    case 29:
-      return __c29(i & 7);
-    case 30:
-      return __c30(i & 7);
-    case 31:
-      return __c31(i & 7);
-    case 32:
-      return __c32(i & 7);
-    case 33:
-      return __c33(i & 7);
-    case 34:
-      return __c34(i & 7);
-    case 35:
-      return __c35(i & 7);
-    case 36:
-      return __c36(i & 7);
   }
 }

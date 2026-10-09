@@ -7,8 +7,6 @@ import { paginatePageNumber } from "../pagination.ts";
 import { HetznerProtocol, type HetznerOpError, type HetznerOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { HetznerOpError, HetznerOpContext };
 
@@ -16,6 +14,8 @@ export interface GetServerTypeRequest {
   /** ID of the Server Type. */
   id: number;
 }
+const GetServerTypeRequest = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<GetServerTypeRequest>;
+
 /** Hourly price in this [Location](#tag/locations). */
 export interface GetServerTypeResponseServerTypePricesItemPriceHourly {
   /** Price without VAT. */
@@ -23,6 +23,11 @@ export interface GetServerTypeResponseServerTypePricesItemPriceHourly {
   /** Price with VAT added. */
   gross: string;
 }
+const GetServerTypeResponseServerTypePricesItemPriceHourly = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<GetServerTypeResponseServerTypePricesItemPriceHourly>;
+
 /** Monthly price in this [Location](#tag/locations). */
 export type GetServerTypeResponseServerTypePricesItemPriceMonthly =
   GetServerTypeResponseServerTypePricesItemPriceHourly;
@@ -41,15 +46,31 @@ export interface GetServerTypeResponseServerTypePricesItem {
   /** Additional traffic price per TB in this [Location](#tag/locations). */
   price_per_tb_traffic: GetServerTypeResponseServerTypePricesItemPriceHourly;
 }
+const GetServerTypeResponseServerTypePricesItem = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<GetServerTypeResponseServerTypePricesItem>;
+
 /** Price per [Location](#tag/locations). */
 export type GetServerTypeResponseServerTypePricesList =
   Array<GetServerTypeResponseServerTypePricesItem>;
+const GetServerTypeResponseServerTypePricesList = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<GetServerTypeResponseServerTypePricesList>;
+
 /** Type of Server boot drive. Local has higher speed. Network has better availability. */
 export type GetServerTypeResponseServerTypeStorageType = "local" | "network";
+const GetServerTypeResponseServerTypeStorageType = S.String;
+
 /** Type of cpu. */
 export type GetServerTypeResponseServerTypeCpuType = "shared" | "dedicated";
+const GetServerTypeResponseServerTypeCpuType = S.String;
+
 /** CPU architecture of the Server Type. */
 export type GetServerTypeResponseServerTypeArchitecture = "x86" | "arm";
+const GetServerTypeResponseServerTypeArchitecture = S.String;
+
 /** This field is deprecated. Use the `deprecation` object in the `locations` field instead (`.locations[].deprecation`). */
 export interface GetServerTypeResponseServerTypeDeprecation {
   /** Date of the deprecated resource removal. Once this date is reached, the resource will not be returned by resource type "list" endpoint, and the resource can not be used to create new resources. For example, if this is an image, you can not create new servers with this image after the mentioned date. */
@@ -57,6 +78,11 @@ export interface GetServerTypeResponseServerTypeDeprecation {
   /** Date of the deprecation announcement. */
   announced: string;
 }
+const GetServerTypeResponseServerTypeDeprecation = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<GetServerTypeResponseServerTypeDeprecation>;
+
 /** Describes if, when and how the resource is deprecated. If this field is set to `null` the resource is not deprecated. If a value is set, it is considered deprecated. */
 export type GetServerTypeResponseServerTypeLocationsItemDeprecation =
   GetServerTypeResponseServerTypeDeprecation;
@@ -73,9 +99,19 @@ export interface GetServerTypeResponseServerTypeLocationsItem {
   /** Whether the [Server Type](#tag/server-types) is temporarily unavailable in this [Location](#tag/locations). */
   available: boolean;
 }
+const GetServerTypeResponseServerTypeLocationsItem = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<GetServerTypeResponseServerTypeLocationsItem>;
+
 /** Supported [Location](#tag/locations) and per [Location](#tag/locations) details for the [Server Type](#tag/server-types). A [Server Type](#tag/server-types) is: - only supported in the [Location](#tag/locations) that are listed. - deprecated in the [Location](#tag/locations) when the `deprecation` property is set. - permanently unavailable in the [Location](#tag/locations) when the `deprecation.unavailable_after` date is in the past. - temporarily unavailable in the [Location](#tag/locations) when the `deprecation.available` is false. */
 export type GetServerTypeResponseServerTypeLocationsList =
   Array<GetServerTypeResponseServerTypeLocationsItem>;
+const GetServerTypeResponseServerTypeLocationsList = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<GetServerTypeResponseServerTypeLocationsList>;
+
 export interface GetServerTypeResponseServerType {
   /** ID of the Server type. */
   id: number;
@@ -106,9 +142,19 @@ export interface GetServerTypeResponseServerType {
   /** Supported [Location](#tag/locations) and per [Location](#tag/locations) details for the [Server Type](#tag/server-types). A [Server Type](#tag/server-types) is: - only supported in the [Location](#tag/locations) that are listed. - deprecated in the [Location](#tag/locations) when the `deprecation` property is set. - permanently unavailable in the [Location](#tag/locations) when the `deprecation.unavailable_after` date is in the past. - temporarily unavailable in the [Location](#tag/locations) when the `deprecation.available` is false. */
   locations: GetServerTypeResponseServerTypeLocationsList;
 }
+const GetServerTypeResponseServerType = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<GetServerTypeResponseServerType>;
+
 export interface GetServerTypeResponse {
   server_type: GetServerTypeResponseServerType;
 }
+const GetServerTypeResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<GetServerTypeResponse>;
+
 export interface ListServerTypesRequest {
   /** Filter resources by their name. The response will only contain the resources matching exactly the specified name. */
   name?: string;
@@ -117,6 +163,11 @@ export interface ListServerTypesRequest {
   /** Maximum number of entries returned per page. For more information, see "[Pagination](#description/pagination)". */
   per_page?: number;
 }
+const ListServerTypesRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<ListServerTypesRequest>;
+
 /** Hourly price in this [Location](#tag/locations). */
 export type ListServerTypesResponseServerTypesItemPricesItemPriceHourly =
   GetServerTypeResponseServerTypePricesItemPriceHourly;
@@ -131,12 +182,21 @@ export type ListServerTypesResponseServerTypesItemPricesItem =
 /** Price per [Location](#tag/locations). */
 export type ListServerTypesResponseServerTypesItemPricesList =
   Array<GetServerTypeResponseServerTypePricesItem>;
+const ListServerTypesResponseServerTypesItemPricesList =
+  GetServerTypeResponseServerTypePricesList as any as S.Schema<ListServerTypesResponseServerTypesItemPricesList>;
+
 /** Type of Server boot drive. Local has higher speed. Network has better availability. */
 export type ListServerTypesResponseServerTypesItemStorageType = "local" | "network";
+const ListServerTypesResponseServerTypesItemStorageType = S.String;
+
 /** Type of cpu. */
 export type ListServerTypesResponseServerTypesItemCpuType = "shared" | "dedicated";
+const ListServerTypesResponseServerTypesItemCpuType = S.String;
+
 /** CPU architecture of the Server Type. */
 export type ListServerTypesResponseServerTypesItemArchitecture = "x86" | "arm";
+const ListServerTypesResponseServerTypesItemArchitecture = S.String;
+
 /** This field is deprecated. Use the `deprecation` object in the `locations` field instead (`.locations[].deprecation`). */
 export type ListServerTypesResponseServerTypesItemDeprecation =
   GetServerTypeResponseServerTypeDeprecation;
@@ -149,6 +209,9 @@ export type ListServerTypesResponseServerTypesItemLocationsItem =
 /** Supported [Location](#tag/locations) and per [Location](#tag/locations) details for the [Server Type](#tag/server-types). A [Server Type](#tag/server-types) is: - only supported in the [Location](#tag/locations) that are listed. - deprecated in the [Location](#tag/locations) when the `deprecation` property is set. - permanently unavailable in the [Location](#tag/locations) when the `deprecation.unavailable_after` date is in the past. - temporarily unavailable in the [Location](#tag/locations) when the `deprecation.available` is false. */
 export type ListServerTypesResponseServerTypesItemLocationsList =
   Array<GetServerTypeResponseServerTypeLocationsItem>;
+const ListServerTypesResponseServerTypesItemLocationsList =
+  GetServerTypeResponseServerTypeLocationsList as any as S.Schema<ListServerTypesResponseServerTypesItemLocationsList>;
+
 export interface ListServerTypesResponseServerTypesItem {
   /** ID of the Server type. */
   id: number;
@@ -179,7 +242,17 @@ export interface ListServerTypesResponseServerTypesItem {
   /** Supported [Location](#tag/locations) and per [Location](#tag/locations) details for the [Server Type](#tag/server-types). A [Server Type](#tag/server-types) is: - only supported in the [Location](#tag/locations) that are listed. - deprecated in the [Location](#tag/locations) when the `deprecation` property is set. - permanently unavailable in the [Location](#tag/locations) when the `deprecation.unavailable_after` date is in the past. - temporarily unavailable in the [Location](#tag/locations) when the `deprecation.available` is false. */
   locations: ListServerTypesResponseServerTypesItemLocationsList;
 }
+const ListServerTypesResponseServerTypesItem = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<ListServerTypesResponseServerTypesItem>;
+
 export type ListServerTypesResponseServerTypesList = Array<ListServerTypesResponseServerTypesItem>;
+const ListServerTypesResponseServerTypesList = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<ListServerTypesResponseServerTypesList>;
+
 /** See "[Pagination](#description/pagination)" for more information. */
 export interface ListServerTypesResponseMetaPagination {
   /** Current page number. */
@@ -195,14 +268,29 @@ export interface ListServerTypesResponseMetaPagination {
   /** Total number of entries that exist for this query. Can be null if unknown. */
   total_entries: number | null;
 }
+const ListServerTypesResponseMetaPagination = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<ListServerTypesResponseMetaPagination>;
+
 export interface ListServerTypesResponseMeta {
   /** See "[Pagination](#description/pagination)" for more information. */
   pagination: ListServerTypesResponseMetaPagination;
 }
+const ListServerTypesResponseMeta = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<ListServerTypesResponseMeta>;
+
 export interface ListServerTypesResponse {
   server_types: ListServerTypesResponseServerTypesList;
   meta: ListServerTypesResponseMeta;
 }
+const ListServerTypesResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<ListServerTypesResponse>;
+
 export type GetServerTypeError = HetznerOpError;
 /** Get a Server Type Gets a specific Server type object. */
 export const getServerType: API.OperationMethod<
@@ -211,8 +299,8 @@ export const getServerType: API.OperationMethod<
   GetServerTypeError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<GetServerTypeRequest>,
-  output: __S(8) as any as S.Schema<GetServerTypeResponse>,
+  input: GetServerTypeRequest,
+  output: GetServerTypeResponse,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -228,8 +316,8 @@ export const listServerTypes: API.PaginatedOperationMethod<
   ListServerTypesResponseServerTypesItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(9) as any as S.Schema<ListServerTypesRequest>,
-    output: __S(14) as any as S.Schema<ListServerTypesResponse>,
+    input: ListServerTypesRequest,
+    output: ListServerTypesResponse,
     errors: [UnknownHetznerError],
     protocol: HetznerProtocol,
     retry: Retry.Retry,
@@ -266,16 +354,16 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           location: S.String,
-          price_hourly: __S(1),
-          price_monthly: __S(1),
+          price_hourly: GetServerTypeResponseServerTypePricesItemPriceHourly,
+          price_monthly: GetServerTypeResponseServerTypePricesItemPriceHourly,
           included_traffic: S.Number,
-          price_per_tb_traffic: __S(1),
+          price_per_tb_traffic: GetServerTypeResponseServerTypePricesItemPriceHourly,
         }),
       ).annotate({
         identifier: "GetServerTypeResponseServerTypePricesItem",
       });
     case 3:
-      return S.Array(__S(2));
+      return S.Array(GetServerTypeResponseServerTypePricesItem);
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -290,7 +378,7 @@ function __c0(j: number): any {
         S.Struct({
           id: S.Number,
           name: S.String,
-          deprecation: S.NullOr(__S(4)),
+          deprecation: S.NullOr(GetServerTypeResponseServerTypeDeprecation),
           recommended: S.Boolean,
           available: S.Boolean,
         }),
@@ -298,7 +386,7 @@ function __c0(j: number): any {
         identifier: "GetServerTypeResponseServerTypeLocationsItem",
       });
     case 6:
-      return S.Array(__S(5));
+      return S.Array(GetServerTypeResponseServerTypeLocationsItem);
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -309,13 +397,13 @@ function __c0(j: number): any {
           memory: S.Number,
           disk: S.Number,
           deprecated: S.Boolean,
-          prices: __S(3),
-          storage_type: S.String,
-          cpu_type: S.String,
+          prices: GetServerTypeResponseServerTypePricesList,
+          storage_type: GetServerTypeResponseServerTypeStorageType,
+          cpu_type: GetServerTypeResponseServerTypeCpuType,
           category: S.optional(S.String),
-          architecture: S.String,
-          deprecation: S.optional(S.NullOr(__S(4))),
-          locations: __S(6),
+          architecture: GetServerTypeResponseServerTypeArchitecture,
+          deprecation: S.optional(S.NullOr(GetServerTypeResponseServerTypeDeprecation)),
+          locations: GetServerTypeResponseServerTypeLocationsList,
         }),
       ).annotate({
         identifier: "GetServerTypeResponseServerType",
@@ -327,7 +415,7 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          server_type: __S(7),
+          server_type: GetServerTypeResponseServerType,
         }),
       ).annotate({ identifier: "GetServerTypeResponse" });
     case 1:
@@ -348,19 +436,19 @@ function __c1(j: number): any {
           memory: S.Number,
           disk: S.Number,
           deprecated: S.Boolean,
-          prices: __S(3),
-          storage_type: S.String,
-          cpu_type: S.String,
+          prices: ListServerTypesResponseServerTypesItemPricesList,
+          storage_type: ListServerTypesResponseServerTypesItemStorageType,
+          cpu_type: ListServerTypesResponseServerTypesItemCpuType,
           category: S.optional(S.String),
-          architecture: S.String,
-          deprecation: S.optional(S.NullOr(__S(4))),
-          locations: __S(6),
+          architecture: ListServerTypesResponseServerTypesItemArchitecture,
+          deprecation: S.optional(S.NullOr(GetServerTypeResponseServerTypeDeprecation)),
+          locations: ListServerTypesResponseServerTypesItemLocationsList,
         }),
       ).annotate({
         identifier: "ListServerTypesResponseServerTypesItem",
       });
     case 3:
-      return S.Array(__S(10));
+      return S.Array(ListServerTypesResponseServerTypesItem);
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -377,7 +465,7 @@ function __c1(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          pagination: __S(12),
+          pagination: ListServerTypesResponseMetaPagination,
         }),
       ).annotate({
         identifier: "ListServerTypesResponseMeta",
@@ -385,22 +473,9 @@ function __c1(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          server_types: __S(11),
-          meta: __S(13),
+          server_types: ListServerTypesResponseServerTypesList,
+          meta: ListServerTypesResponseMeta,
         }),
       ).annotate({ identifier: "ListServerTypesResponse" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
   }
 }

@@ -7,8 +7,6 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -69,7 +67,11 @@ export type AggregatedProjectsJobsViewEnum =
   | "JOB_VIEW_SUMMARY"
   | "JOB_VIEW_ALL"
   | "JOB_VIEW_DESCRIPTION";
+const AggregatedProjectsJobsViewEnum = S.String;
+
 export type AggregatedProjectsJobsFilterEnum = "UNKNOWN" | "ALL" | "TERMINATED" | "ACTIVE";
+const AggregatedProjectsJobsFilterEnum = S.String;
+
 export interface AggregatedProjectsJobsRequest {
   /** The project which owns the jobs. */
   projectId: string;
@@ -88,14 +90,27 @@ export interface AggregatedProjectsJobsRequest {
   /** The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that contains this job. */
   location?: string;
 }
+const AggregatedProjectsJobsRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<AggregatedProjectsJobsRequest>;
+
 /** Indicates which [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) failed to respond to a request for data. */
 export interface FailedLocation {
   /** The name of the [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that failed to respond. */
   name?: string;
 }
+const FailedLocation = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<FailedLocation>;
+
 export type FailedLocationList = Array<FailedLocation>;
+const FailedLocationList = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<FailedLocationList>;
+
 export type DocumentMap = { [key: string]: unknown | undefined };
+const DocumentMap = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<DocumentMap>;
+
 export type StringList_ = Array<string>;
+const StringList_ = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<StringList_>;
+
 /** Defines an SDK harness container for executing Dataflow pipelines. */
 export interface SdkHarnessContainerImage {
   /** Environment ID for the Beam runner API proto Environment that corresponds to the current SDK Harness. */
@@ -107,17 +122,33 @@ export interface SdkHarnessContainerImage {
   /** The set of capabilities enumerated in the above Environment proto. See also [beam_runner_api.proto](https://github.com/apache/beam/blob/master/model/pipeline/src/main/proto/org/apache/beam/model/pipeline/v1/beam_runner_api.proto) */
   capabilities?: StringList_;
 }
+const SdkHarnessContainerImage = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<SdkHarnessContainerImage>;
+
 export type SdkHarnessContainerImageList = Array<SdkHarnessContainerImage>;
+const SdkHarnessContainerImageList = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<SdkHarnessContainerImageList>;
+
 export type WorkerPoolTeardownPolicyEnum =
   | "TEARDOWN_POLICY_UNKNOWN"
   | "TEARDOWN_ALWAYS"
   | "TEARDOWN_ON_SUCCESS"
   | "TEARDOWN_NEVER";
+const WorkerPoolTeardownPolicyEnum = S.String;
+
 export type WorkerPoolIpConfigurationEnum =
   | "WORKER_IP_UNSPECIFIED"
   | "WORKER_IP_PUBLIC"
   | "WORKER_IP_PRIVATE";
+const WorkerPoolIpConfigurationEnum = S.String;
+
 export type StringMap = { [key: string]: string | undefined };
+const StringMap = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<StringMap>;
+
 /** The packages that must be installed in order for a worker to run the steps of the Cloud Dataflow job that will be assigned to its worker pool. This is the mechanism by which the Cloud Dataflow SDK causes code to be loaded onto the workers. For example, the Cloud Dataflow Java SDK might use this to install jars containing the user's code and all of the various dependencies (libraries, data files, etc.) required in order for that code to run. */
 export interface Package {
   /** Optional. The hex-encoded SHA256 checksum of the package. If the checksum is provided, the worker will verify the checksum of the package before using it. If the checksum does not match, the worker will fail to start. */
@@ -127,12 +158,18 @@ export interface Package {
   /** The resource to read the package from. The supported resource type is: Google Cloud Storage: storage.googleapis.com/{bucket} bucket.storage.googleapis.com/ */
   location?: string;
 }
+const Package = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<Package>;
+
 export type PackageList = Array<Package>;
+const PackageList = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<PackageList>;
+
 export type WorkerPoolDefaultPackageSetEnum =
   | "DEFAULT_PACKAGE_SET_UNKNOWN"
   | "DEFAULT_PACKAGE_SET_NONE"
   | "DEFAULT_PACKAGE_SET_JAVA"
   | "DEFAULT_PACKAGE_SET_PYTHON";
+const WorkerPoolDefaultPackageSetEnum = S.String;
+
 /** Describes the data disk used by a workflow job. */
 export interface Disk {
   /** Size of disk in GB. If zero or unspecified, the service will attempt to choose a reasonable default. */
@@ -142,7 +179,11 @@ export interface Disk {
   /** Directory in a VM where disk is mounted. */
   mountPoint?: string;
 }
+const Disk = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<Disk>;
+
 export type DiskList = Array<Disk>;
+const DiskList = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<DiskList>;
+
 /** Provides data to pass through to the worker harness. */
 export interface WorkerSettings {
   /** The Cloud Dataflow service path relative to the root URL, for example, "dataflow/v1b3/projects". */
@@ -158,6 +199,8 @@ export interface WorkerSettings {
   /** The ID of the worker running this pipeline. */
   workerId?: string;
 }
+const WorkerSettings = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<WorkerSettings>;
+
 /** Taskrunner configuration settings. */
 export interface TaskRunnerSettings {
   /** The base URL for the taskrunner to use when accessing Google Cloud APIs. When workers access Google Cloud APIs, they logically do so via relative URLs. If this field is specified, it supplies the base URL to use for resolving these relative URLs. The normative algorithm used is defined by RFC 1808, "Relative Uniform Resource Locators". If not specified, the default value is "http://www.googleapis.com/" */
@@ -199,10 +242,14 @@ export interface TaskRunnerSettings {
   /** The command to launch the worker harness. */
   harnessCommand?: string;
 }
+const TaskRunnerSettings = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<TaskRunnerSettings>;
+
 export type AutoscalingSettingsAlgorithmEnum =
   | "AUTOSCALING_ALGORITHM_UNKNOWN"
   | "AUTOSCALING_ALGORITHM_NONE"
   | "AUTOSCALING_ALGORITHM_BASIC";
+const AutoscalingSettingsAlgorithmEnum = S.String;
+
 /** Settings for WorkerPool autoscaling. */
 export interface AutoscalingSettings {
   /** The algorithm to use for autoscaling. */
@@ -210,6 +257,8 @@ export interface AutoscalingSettings {
   /** The maximum number of workers to cap scaling at. */
   maxNumWorkers?: number;
 }
+const AutoscalingSettings = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<AutoscalingSettings>;
+
 /** Describes one particular pool of Cloud Dataflow workers to be instantiated by the Cloud Dataflow service in order to perform the computations required by a job. Note that a workflow job may use multiple pools, in order to match the various computational requirements of the various stages of the job. */
 export interface WorkerPool {
   /** Set of SDK harness containers needed to execute this pipeline. This will only be set in the Fn API path. For non-cross-language pipelines this should have only one entry. Cross-language pipelines will have two or more entries. */
@@ -261,20 +310,33 @@ export interface WorkerPool {
   /** Extra arguments for this worker pool. */
   poolArgs?: DocumentMap;
 }
+const WorkerPool = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<WorkerPool>;
+
 export type WorkerPoolList = Array<WorkerPool>;
+const WorkerPoolList = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<WorkerPoolList>;
+
 export type DataSamplingConfigBehaviorsItemEnum =
   | "DATA_SAMPLING_BEHAVIOR_UNSPECIFIED"
   | "DISABLED"
   | "ALWAYS_ON"
   | "EXCEPTIONS";
+const DataSamplingConfigBehaviorsItemEnum = S.String;
+
 export type DataSamplingConfigBehaviorsItemEnumList = Array<
   DataSamplingConfigBehaviorsItemEnum | (string & {})
 >;
+const DataSamplingConfigBehaviorsItemEnumList = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<DataSamplingConfigBehaviorsItemEnumList>;
+
 /** Configuration options for sampling elements. */
 export interface DataSamplingConfig {
   /** List of given sampling behaviors to enable. For example, specifying behaviors = [ALWAYS_ON] samples in-flight elements but does not sample exceptions. Can be used to specify multiple behaviors like, behaviors = [ALWAYS_ON, EXCEPTIONS] for specifying periodic sampling and exception sampling. If DISABLED is in the list, then sampling will be disabled and ignore the other given behaviors. Ordering does not matter. */
   behaviors?: DataSamplingConfigBehaviorsItemEnumList;
 }
+const DataSamplingConfig = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<DataSamplingConfig>;
+
 /** Describes any options that have an effect on the debugging of pipelines. */
 export interface DebugOptions {
   /** Configuration options for sampling elements from a running pipeline. */
@@ -282,15 +344,23 @@ export interface DebugOptions {
   /** Optional. When true, enables the logging of the literal hot key to the user's Cloud Logging. */
   enableHotKeyLogging?: boolean;
 }
+const DebugOptions = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<DebugOptions>;
+
 export type EnvironmentShuffleModeEnum = "SHUFFLE_MODE_UNSPECIFIED" | "VM_BASED" | "SERVICE_BASED";
+const EnvironmentShuffleModeEnum = S.String;
+
 export type EnvironmentFlexResourceSchedulingGoalEnum =
   | "FLEXRS_UNSPECIFIED"
   | "FLEXRS_SPEED_OPTIMIZED"
   | "FLEXRS_COST_OPTIMIZED";
+const EnvironmentFlexResourceSchedulingGoalEnum = S.String;
+
 export type EnvironmentStreamingModeEnum =
   | "STREAMING_MODE_UNSPECIFIED"
   | "STREAMING_MODE_EXACTLY_ONCE"
   | "STREAMING_MODE_AT_LEAST_ONCE";
+const EnvironmentStreamingModeEnum = S.String;
+
 /** Describes the environment in which a Dataflow Job runs. */
 export interface Environment {
   /** Optional. A description of the process that generated the request. */
@@ -334,6 +404,8 @@ export interface Environment {
   /** Optional. The list of service options to enable. This field should be used for service related experiments only. These experiments, when graduating to GA, should be replaced by dedicated fields or become default (i.e. always on). */
   serviceOptions?: StringList_;
 }
+const Environment = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<Environment>;
+
 export type JobRequestedStateEnum =
   | "JOB_STATE_UNKNOWN"
   | "JOB_STATE_STOPPED"
@@ -350,6 +422,8 @@ export type JobRequestedStateEnum =
   | "JOB_STATE_RESOURCE_CLEANING_UP"
   | "JOB_STATE_PAUSING"
   | "JOB_STATE_PAUSED";
+const JobRequestedStateEnum = S.String;
+
 /** Metadata for a BigQuery connector used by the job. */
 export interface BigQueryIODetails {
   /** Project accessed in the connection. */
@@ -361,13 +435,24 @@ export interface BigQueryIODetails {
   /** Query used to access data in the connection. */
   query?: string;
 }
+const BigQueryIODetails = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<BigQueryIODetails>;
+
 export type BigQueryIODetailsList = Array<BigQueryIODetails>;
+const BigQueryIODetailsList = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<BigQueryIODetailsList>;
+
 /** Metadata for a File connector used by the job. */
 export interface FileIODetails {
   /** File Pattern used to access files by the connector. */
   filePattern?: string;
 }
+const FileIODetails = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<FileIODetails>;
+
 export type FileIODetailsList = Array<FileIODetails>;
+const FileIODetailsList = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<FileIODetailsList>;
+
 /** Metadata for a Cloud Bigtable connector used by the job. */
 export interface BigTableIODetails {
   /** InstanceId accessed in the connection. */
@@ -377,9 +462,20 @@ export interface BigTableIODetails {
   /** ProjectId accessed in the connection. */
   projectId?: string;
 }
+const BigTableIODetails = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<BigTableIODetails>;
+
 export type BigTableIODetailsList = Array<BigTableIODetails>;
+const BigTableIODetailsList = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<BigTableIODetailsList>;
+
 export type SdkBugSeverityEnum = "SEVERITY_UNSPECIFIED" | "NOTICE" | "WARNING" | "SEVERE";
+const SdkBugSeverityEnum = S.String;
+
 export type SdkBugTypeEnum = "TYPE_UNSPECIFIED" | "GENERAL" | "PERFORMANCE" | "DATALOSS";
+const SdkBugTypeEnum = S.String;
+
 /** A bug found in the Dataflow SDK. */
 export interface SdkBug {
   /** Output only. How severe the SDK bug is. */
@@ -389,13 +485,19 @@ export interface SdkBug {
   /** Output only. Describes the impact of this SDK bug. */
   type?: SdkBugTypeEnum | (string & {});
 }
+const SdkBug = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<SdkBug>;
+
 export type SdkBugList = Array<SdkBug>;
+const SdkBugList = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<SdkBugList>;
+
 export type SdkVersionSdkSupportStatusEnum =
   | "UNKNOWN"
   | "SUPPORTED"
   | "STALE"
   | "DEPRECATED"
   | "UNSUPPORTED";
+const SdkVersionSdkSupportStatusEnum = S.String;
+
 /** The version of the SDK used to run the job. */
 export interface SdkVersion {
   /** Output only. Known bugs found in this SDK version. */
@@ -407,6 +509,8 @@ export interface SdkVersion {
   /** The support status for this SDK version. */
   sdkSupportStatus?: SdkVersionSdkSupportStatusEnum | (string & {});
 }
+const SdkVersion = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<SdkVersion>;
+
 /** Metadata for a Pub/Sub connector used by the job. */
 export interface PubSubIODetails {
   /** Subscription used in the connection. */
@@ -414,7 +518,11 @@ export interface PubSubIODetails {
   /** Topic accessed in the connection. */
   topic?: string;
 }
+const PubSubIODetails = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<PubSubIODetails>;
+
 export type PubSubIODetailsList = Array<PubSubIODetails>;
+const PubSubIODetailsList = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<PubSubIODetailsList>;
+
 /** Metadata for a Datastore connector used by the job. */
 export interface DatastoreIODetails {
   /** Namespace used in the connection. */
@@ -422,7 +530,14 @@ export interface DatastoreIODetails {
   /** ProjectId accessed in the connection. */
   projectId?: string;
 }
+const DatastoreIODetails = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<DatastoreIODetails>;
+
 export type DatastoreIODetailsList = Array<DatastoreIODetails>;
+const DatastoreIODetailsList = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<DatastoreIODetailsList>;
+
 /** Metadata for a Spanner connector used by the job. */
 export interface SpannerIODetails {
   /** ProjectId accessed in the connection. */
@@ -432,7 +547,11 @@ export interface SpannerIODetails {
   /** DatabaseId accessed in the connection. */
   databaseId?: string;
 }
+const SpannerIODetails = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<SpannerIODetails>;
+
 export type SpannerIODetailsList = Array<SpannerIODetails>;
+const SpannerIODetailsList = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<SpannerIODetailsList>;
+
 /** Metadata available primarily for filtering jobs. Will be included in the ListJob response and Job SUMMARY view. */
 export interface JobMetadata {
   /** List of display properties to help UI filter jobs. */
@@ -452,6 +571,8 @@ export interface JobMetadata {
   /** Identification of a Spanner source used in the Dataflow job. */
   spannerDetails?: SpannerIODetailsList;
 }
+const JobMetadata = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<JobMetadata>;
+
 export type JobCurrentStateEnum =
   | "JOB_STATE_UNKNOWN"
   | "JOB_STATE_STOPPED"
@@ -468,6 +589,8 @@ export type JobCurrentStateEnum =
   | "JOB_STATE_RESOURCE_CLEANING_UP"
   | "JOB_STATE_PAUSING"
   | "JOB_STATE_PAUSED";
+const JobCurrentStateEnum = S.String;
+
 /** Defines a particular step within a Cloud Dataflow job. A job consists of multiple steps, each of which performs some specific operation as part of the overall job. Data is typically passed from one step to another as part of the job. **Note:** The properties of this object are not stable and might change. Here's an example of a sequence of steps which together implement a Map-Reduce job: * Read a collection of data from some source, parsing the collection's elements. * Validate the elements. * Apply a user-defined function to map each element to some value and extract an element-specific key value. * Group elements with the same key into a single element with that key, transforming a multiply-keyed collection into a uniquely-keyed collection. * Write the elements out to some data sink. Note that the Cloud Dataflow service may be used to run many different types of jobs, not just Map-Reduce. */
 export interface Step {
   /** The name that identifies the step. This must be unique for each step with respect to all other steps in the Cloud Dataflow job. */
@@ -477,7 +600,11 @@ export interface Step {
   /** The kind of step in the Cloud Dataflow job. */
   kind?: string;
 }
+const Step = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<Step>;
+
 export type StepList = Array<Step>;
+const StepList = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<StepList>;
+
 /** Data provided with a pipeline or transform to provide descriptive info. */
 export interface DisplayData {
   /** An optional label to display in a dax UI for the element. */
@@ -505,7 +632,11 @@ export interface DisplayData {
   /** Contains value if the data is of duration type. */
   durationValue?: string;
 }
+const DisplayData = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<DisplayData>;
+
 export type DisplayDataList = Array<DisplayData>;
+const DisplayDataList = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<DisplayDataList>;
+
 export type TransformSummaryKindEnum =
   | "UNKNOWN_KIND"
   | "PAR_DO_KIND"
@@ -516,6 +647,8 @@ export type TransformSummaryKindEnum =
   | "CONSTANT_KIND"
   | "SINGLETON_KIND"
   | "SHUFFLE_KIND";
+const TransformSummaryKindEnum = S.String;
+
 /** Description of the type, names/ids, and input/outputs for a transform. */
 export interface TransformSummary {
   /** Transform-specific display data. */
@@ -531,7 +664,11 @@ export interface TransformSummary {
   /** User names for all collection outputs to this transform. */
   outputCollectionName?: StringList_;
 }
+const TransformSummary = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<TransformSummary>;
+
 export type TransformSummaryList = Array<TransformSummary>;
+const TransformSummaryList = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<TransformSummaryList>;
+
 /** Description of an input or output of an execution stage. */
 export interface StageSource {
   /** Human-readable name for this source; may be user or system generated. */
@@ -543,7 +680,11 @@ export interface StageSource {
   /** Size of the source, if measurable. */
   sizeBytes?: string;
 }
+const StageSource = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<StageSource>;
+
 export type StageSourceList = Array<StageSource>;
+const StageSourceList = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<StageSourceList>;
+
 export type ExecutionStageSummaryKindEnum =
   | "UNKNOWN_KIND"
   | "PAR_DO_KIND"
@@ -554,6 +695,8 @@ export type ExecutionStageSummaryKindEnum =
   | "CONSTANT_KIND"
   | "SINGLETON_KIND"
   | "SHUFFLE_KIND";
+const ExecutionStageSummaryKindEnum = S.String;
+
 /** Description of a transform executed as part of an execution stage. */
 export interface ComponentTransform {
   /** Human-readable name for this transform; may be user or system generated. */
@@ -563,7 +706,14 @@ export interface ComponentTransform {
   /** Dataflow service generated name for this source. */
   name?: string;
 }
+const ComponentTransform = /*@__PURE__*/ __L.at(__c5, 5) as any as S.Schema<ComponentTransform>;
+
 export type ComponentTransformList = Array<ComponentTransform>;
+const ComponentTransformList = /*@__PURE__*/ __L.at(
+  __c5,
+  6,
+) as any as S.Schema<ComponentTransformList>;
+
 /** Description of an interstitial value between transforms in an execution stage. */
 export interface ComponentSource {
   /** Dataflow service generated name for this source. */
@@ -573,7 +723,11 @@ export interface ComponentSource {
   /** Human-readable name for this transform; may be user or system generated. */
   userName?: string;
 }
+const ComponentSource = /*@__PURE__*/ __L.at(__c5, 7) as any as S.Schema<ComponentSource>;
+
 export type ComponentSourceList = Array<ComponentSource>;
+const ComponentSourceList = /*@__PURE__*/ __L.at(__c6, 0) as any as S.Schema<ComponentSourceList>;
+
 /** Description of the composing transforms, names/ids, and input/outputs of a stage of execution. Some composing transforms and sources may have been generated by the Dataflow service during execution planning. */
 export interface ExecutionStageSummary {
   /** Input sources for this stage. */
@@ -593,7 +747,17 @@ export interface ExecutionStageSummary {
   /** Dataflow service generated name for this stage. */
   name?: string;
 }
+const ExecutionStageSummary = /*@__PURE__*/ __L.at(
+  __c6,
+  1,
+) as any as S.Schema<ExecutionStageSummary>;
+
 export type ExecutionStageSummaryList = Array<ExecutionStageSummary>;
+const ExecutionStageSummaryList = /*@__PURE__*/ __L.at(
+  __c6,
+  2,
+) as any as S.Schema<ExecutionStageSummaryList>;
+
 /** A descriptive representation of submitted pipeline as well as the executed form. This data is provided by the Dataflow service for ease of visualizing the pipeline and interpreting Dataflow provided metrics. */
 export interface PipelineDescription {
   /** Description of each transform in the pipeline and collections between them. */
@@ -605,11 +769,15 @@ export interface PipelineDescription {
   /** Description of each stage of execution of the pipeline. */
   executionPipelineStage?: ExecutionStageSummaryList;
 }
+const PipelineDescription = /*@__PURE__*/ __L.at(__c6, 3) as any as S.Schema<PipelineDescription>;
+
 /** Resources used by the Dataflow Service to run the job. */
 export interface ServiceResources {
   /** Output only. List of Cloud Zones being used by the Dataflow Service for this job. Example: us-central1-c */
   zones?: StringList_;
 }
+const ServiceResources = /*@__PURE__*/ __L.at(__c6, 4) as any as S.Schema<ServiceResources>;
+
 export type ExecutionStageStateExecutionStageStateEnum =
   | "JOB_STATE_UNKNOWN"
   | "JOB_STATE_STOPPED"
@@ -626,6 +794,8 @@ export type ExecutionStageStateExecutionStageStateEnum =
   | "JOB_STATE_RESOURCE_CLEANING_UP"
   | "JOB_STATE_PAUSING"
   | "JOB_STATE_PAUSED";
+const ExecutionStageStateExecutionStageStateEnum = S.String;
+
 /** A message describing the state of a particular execution stage. */
 export interface ExecutionStageState {
   /** The name of the execution stage. */
@@ -635,7 +805,14 @@ export interface ExecutionStageState {
   /** Executions stage states allow the same set of values as JobState. */
   executionStageState?: ExecutionStageStateExecutionStageStateEnum | (string & {});
 }
+const ExecutionStageState = /*@__PURE__*/ __L.at(__c6, 5) as any as S.Schema<ExecutionStageState>;
+
 export type ExecutionStageStateList = Array<ExecutionStageState>;
+const ExecutionStageStateList = /*@__PURE__*/ __L.at(
+  __c6,
+  6,
+) as any as S.Schema<ExecutionStageStateList>;
+
 /** The parameters to use for autoscaling when this schedule is active. */
 export interface Parameters {
   /** Optional. The minimum number of workers for this schedule. */
@@ -647,6 +824,8 @@ export interface Parameters {
   /** Optional. The maximum number of workers for this schedule. */
   maxWorkerCount?: number;
 }
+const Parameters = /*@__PURE__*/ __L.at(__c6, 7) as any as S.Schema<Parameters>;
+
 /** A schedule for autoscaling. */
 export interface AutoscalingSchedule {
   /** Optional. Specifies the priority of the schedule. If two schedules overlap, the one with the higher priority will be used. The higher the value, the higher the priority of the schedule. */
@@ -664,7 +843,14 @@ export interface AutoscalingSchedule {
   /** Optional. The name of the schedule. */
   name?: string;
 }
+const AutoscalingSchedule = /*@__PURE__*/ __L.at(__c7, 0) as any as S.Schema<AutoscalingSchedule>;
+
 export type AutoscalingScheduleList = Array<AutoscalingSchedule>;
+const AutoscalingScheduleList = /*@__PURE__*/ __L.at(
+  __c7,
+  1,
+) as any as S.Schema<AutoscalingScheduleList>;
+
 /** Additional job parameters that can only be updated during runtime using the projects.jobs.update method. These fields have no effect when specified during job creation. */
 export interface RuntimeUpdatableParams {
   /** Optional. Deprecated: Use `latency_tier` instead. The backlog threshold tier for autoscaling. Value must be one of "low-latency", "medium-latency", or "high-latency". */
@@ -682,18 +868,37 @@ export interface RuntimeUpdatableParams {
   /** Optional. The backlog threshold tier for autoscaling. Value must be one of "low-latency", "medium-latency", or "high-latency". */
   latencyTier?: string;
 }
+const RuntimeUpdatableParams = /*@__PURE__*/ __L.at(
+  __c7,
+  2,
+) as any as S.Schema<RuntimeUpdatableParams>;
+
 /** Contains information about how a particular google.dataflow.v1beta3.Step will be executed. */
 export interface JobExecutionStageInfo {
   /** The steps associated with the execution stage. Note that stages may have several steps, and that a given step might be run by more than one stage. */
   stepName?: StringList_;
 }
+const JobExecutionStageInfo = /*@__PURE__*/ __L.at(
+  __c7,
+  3,
+) as any as S.Schema<JobExecutionStageInfo>;
+
 export type JobExecutionStageInfoMap = { [key: string]: JobExecutionStageInfo | undefined };
+const JobExecutionStageInfoMap = /*@__PURE__*/ __L.at(
+  __c7,
+  4,
+) as any as S.Schema<JobExecutionStageInfoMap>;
+
 /** Additional information about how a Cloud Dataflow job will be executed that isn't contained in the submitted job. */
 export interface JobExecutionInfo {
   /** A mapping from each stage to the information about that stage. */
   stages?: JobExecutionStageInfoMap;
 }
+const JobExecutionInfo = /*@__PURE__*/ __L.at(__c7, 5) as any as S.Schema<JobExecutionInfo>;
+
 export type JobTypeEnum = "JOB_TYPE_UNKNOWN" | "JOB_TYPE_BATCH" | "JOB_TYPE_STREAMING";
+const JobTypeEnum = S.String;
+
 /** Defines a job to be run by the Cloud Dataflow service. Do not enter confidential information when you supply string values using the API. */
 export interface Job {
   /** Optional. The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that contains this job. */
@@ -755,7 +960,11 @@ export interface Job {
   /** Optional. The type of Dataflow job. */
   type?: JobTypeEnum | (string & {});
 }
+const Job = /*@__PURE__*/ __L.at(__c7, 6) as any as S.Schema<Job>;
+
 export type JobList = Array<Job>;
+const JobList = /*@__PURE__*/ __L.at(__c7, 7) as any as S.Schema<JobList>;
+
 /** Response to a request to list Cloud Dataflow jobs in a project. This might be a partial response, depending on the page size in the ListJobsRequest. However, if the project does not have any jobs, an instance of ListJobsResponse is not returned and the requests's response body is empty {}. */
 export interface ListJobsResponse {
   /** Zero or more messages describing the [regional endpoints] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that failed to respond. */
@@ -765,6 +974,8 @@ export interface ListJobsResponse {
   /** Set if there may be more results than fit in this response. */
   nextPageToken?: string;
 }
+const ListJobsResponse = /*@__PURE__*/ __L.at(__c8, 0) as any as S.Schema<ListJobsResponse>;
+
 /** Represents a dynamically typed value. */
 export interface ConfigStoreSettingValue {
   /** Represents a boolean value. */
@@ -772,6 +983,11 @@ export interface ConfigStoreSettingValue {
   /** Represents a string value. */
   stringValue?: string;
 }
+const ConfigStoreSettingValue = /*@__PURE__*/ __L.at(
+  __c8,
+  1,
+) as any as S.Schema<ConfigStoreSettingValue>;
+
 /** A ConfigStoreSetting resource. */
 export interface ConfigStoreSetting {
   /** Identifier. The resource name of the setting. */
@@ -779,6 +995,8 @@ export interface ConfigStoreSetting {
   /** Required. The dynamic value of the setting. */
   value?: ConfigStoreSettingValue;
 }
+const ConfigStoreSetting = /*@__PURE__*/ __L.at(__c8, 2) as any as S.Schema<ConfigStoreSetting>;
+
 export interface CreateFoldersLocationsConfigStoreSettingsRequest {
   /** Required. The parent resource where this setting will be created. */
   parent: string;
@@ -787,6 +1005,11 @@ export interface CreateFoldersLocationsConfigStoreSettingsRequest {
   /** Request body */
   body?: ConfigStoreSetting;
 }
+const CreateFoldersLocationsConfigStoreSettingsRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  3,
+) as any as S.Schema<CreateFoldersLocationsConfigStoreSettingsRequest>;
+
 export interface CreateOrganizationsLocationsConfigStoreSettingsRequest {
   /** Required. The ID to use for the setting. */
   configStoreSettingId?: string;
@@ -795,11 +1018,18 @@ export interface CreateOrganizationsLocationsConfigStoreSettingsRequest {
   /** Request body */
   body?: ConfigStoreSetting;
 }
+const CreateOrganizationsLocationsConfigStoreSettingsRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  4,
+) as any as S.Schema<CreateOrganizationsLocationsConfigStoreSettingsRequest>;
+
 export type CreateProjectsJobsViewEnum =
   | "JOB_VIEW_UNKNOWN"
   | "JOB_VIEW_SUMMARY"
   | "JOB_VIEW_ALL"
   | "JOB_VIEW_DESCRIPTION";
+const CreateProjectsJobsViewEnum = S.String;
+
 export interface CreateProjectsJobsRequest {
   /** The level of information requested in response. */
   view?: CreateProjectsJobsViewEnum | (string & {});
@@ -812,6 +1042,11 @@ export interface CreateProjectsJobsRequest {
   /** Request body */
   body?: Job;
 }
+const CreateProjectsJobsRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  5,
+) as any as S.Schema<CreateProjectsJobsRequest>;
+
 export interface CreateProjectsLocationsConfigStoreSettingsRequest {
   /** Required. The parent resource where this setting will be created. */
   parent: string;
@@ -820,11 +1055,18 @@ export interface CreateProjectsLocationsConfigStoreSettingsRequest {
   /** Request body */
   body?: ConfigStoreSetting;
 }
+const CreateProjectsLocationsConfigStoreSettingsRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  6,
+) as any as S.Schema<CreateProjectsLocationsConfigStoreSettingsRequest>;
+
 export type CreateProjectsLocationsJobsViewEnum =
   | "JOB_VIEW_UNKNOWN"
   | "JOB_VIEW_SUMMARY"
   | "JOB_VIEW_ALL"
   | "JOB_VIEW_DESCRIPTION";
+const CreateProjectsLocationsJobsViewEnum = S.String;
+
 export interface CreateProjectsLocationsJobsRequest {
   /** The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that contains this job. */
   location: string;
@@ -837,14 +1079,23 @@ export interface CreateProjectsLocationsJobsRequest {
   /** Request body */
   body?: Job;
 }
+const CreateProjectsLocationsJobsRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  7,
+) as any as S.Schema<CreateProjectsLocationsJobsRequest>;
+
 export type RuntimeEnvironmentIpConfigurationEnum =
   | "WORKER_IP_UNSPECIFIED"
   | "WORKER_IP_PUBLIC"
   | "WORKER_IP_PRIVATE";
+const RuntimeEnvironmentIpConfigurationEnum = S.String;
+
 export type RuntimeEnvironmentStreamingModeEnum =
   | "STREAMING_MODE_UNSPECIFIED"
   | "STREAMING_MODE_EXACTLY_ONCE"
   | "STREAMING_MODE_AT_LEAST_ONCE";
+const RuntimeEnvironmentStreamingModeEnum = S.String;
+
 /** The environment values to set at runtime. */
 export interface RuntimeEnvironment {
   /** Optional. The machine type to use for the job. Defaults to the value from the template if not specified. */
@@ -886,6 +1137,8 @@ export interface RuntimeEnvironment {
   /** Optional. The Compute Engine zone (https://cloud.google.com/compute/docs/regions-zones/regions-zones) in which worker processing should occur, e.g. "us-west1-a". Mutually exclusive with worker_region. If neither worker_region nor worker_zone is specified, a zone in the control plane's region is chosen based on available capacity. If both `worker_zone` and `zone` are set, `worker_zone` takes precedence. */
   workerZone?: string;
 }
+const RuntimeEnvironment = /*@__PURE__*/ __L.at(__c9, 0) as any as S.Schema<RuntimeEnvironment>;
+
 /** A request to create a Cloud Dataflow job from a template. */
 export interface CreateJobFromTemplateRequest {
   /** Required. The job name to use for the created job. */
@@ -899,6 +1152,11 @@ export interface CreateJobFromTemplateRequest {
   /** The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) to which to direct the request. */
   location?: string;
 }
+const CreateJobFromTemplateRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  1,
+) as any as S.Schema<CreateJobFromTemplateRequest>;
+
 export interface CreateProjectsLocationsTemplatesRequest {
   /** Required. The ID of the Cloud Platform project that the job belongs to. */
   projectId: string;
@@ -907,26 +1165,53 @@ export interface CreateProjectsLocationsTemplatesRequest {
   /** Request body */
   body?: CreateJobFromTemplateRequest;
 }
+const CreateProjectsLocationsTemplatesRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  2,
+) as any as S.Schema<CreateProjectsLocationsTemplatesRequest>;
+
 export interface CreateProjectsTemplatesRequest {
   /** Required. The ID of the Cloud Platform project that the job belongs to. */
   projectId: string;
   /** Request body */
   body?: CreateJobFromTemplateRequest;
 }
+const CreateProjectsTemplatesRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  3,
+) as any as S.Schema<CreateProjectsTemplatesRequest>;
+
 export interface DeleteFoldersLocationsConfigStoreSettingsRequest {
   /** Required. The name of the ConfigStoreSetting to delete. */
   name: string;
 }
+const DeleteFoldersLocationsConfigStoreSettingsRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  4,
+) as any as S.Schema<DeleteFoldersLocationsConfigStoreSettingsRequest>;
+
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
+const Empty = /*@__PURE__*/ __L.at(__c9, 5) as any as S.Schema<Empty>;
+
 export interface DeleteOrganizationsLocationsConfigStoreSettingsRequest {
   /** Required. The name of the ConfigStoreSetting to delete. */
   name: string;
 }
+const DeleteOrganizationsLocationsConfigStoreSettingsRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  6,
+) as any as S.Schema<DeleteOrganizationsLocationsConfigStoreSettingsRequest>;
+
 export interface DeleteProjectsLocationsConfigStoreSettingsRequest {
   /** Required. The name of the ConfigStoreSetting to delete. */
   name: string;
 }
+const DeleteProjectsLocationsConfigStoreSettingsRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  7,
+) as any as S.Schema<DeleteProjectsLocationsConfigStoreSettingsRequest>;
+
 export interface DeleteProjectsLocationsSnapshotsRequest {
   /** The ID of the snapshot. */
   snapshotId: string;
@@ -935,8 +1220,15 @@ export interface DeleteProjectsLocationsSnapshotsRequest {
   /** The ID of the Cloud Platform project that the snapshot belongs to. */
   projectId: string;
 }
+const DeleteProjectsLocationsSnapshotsRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  0,
+) as any as S.Schema<DeleteProjectsLocationsSnapshotsRequest>;
+
 /** Response from deleting a snapshot. */
 export interface DeleteSnapshotResponse {}
+const DeleteSnapshotResponse = Empty as any as S.Schema<DeleteSnapshotResponse>;
+
 export interface DeleteSnapshotsProjectsRequest {
   /** The ID of the snapshot. */
   snapshotId?: string;
@@ -945,6 +1237,11 @@ export interface DeleteSnapshotsProjectsRequest {
   /** The location that contains this snapshot. */
   location?: string;
 }
+const DeleteSnapshotsProjectsRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  1,
+) as any as S.Schema<DeleteSnapshotsProjectsRequest>;
+
 /** Request to get updated debug configuration for component. */
 export interface GetDebugConfigRequest {
   /** The worker id, i.e., VM hostname. */
@@ -954,6 +1251,11 @@ export interface GetDebugConfigRequest {
   /** The internal component id for which debug configuration is requested. */
   componentId?: string;
 }
+const GetDebugConfigRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  2,
+) as any as S.Schema<GetDebugConfigRequest>;
+
 export interface GetConfigProjectsJobsDebugRequest {
   /** The job id. */
   jobId: string;
@@ -962,11 +1264,21 @@ export interface GetConfigProjectsJobsDebugRequest {
   /** Request body */
   body?: GetDebugConfigRequest;
 }
+const GetConfigProjectsJobsDebugRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  3,
+) as any as S.Schema<GetConfigProjectsJobsDebugRequest>;
+
 /** Response to a get debug configuration request. */
 export interface GetDebugConfigResponse {
   /** The encoded debug configuration for the requested component. */
   config?: string;
 }
+const GetDebugConfigResponse = /*@__PURE__*/ __L.at(
+  __c10,
+  4,
+) as any as S.Schema<GetDebugConfigResponse>;
+
 export interface GetConfigProjectsLocationsJobsDebugRequest {
   /** The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that contains the job specified by job_id. */
   location: string;
@@ -977,6 +1289,11 @@ export interface GetConfigProjectsLocationsJobsDebugRequest {
   /** Request body */
   body?: GetDebugConfigRequest;
 }
+const GetConfigProjectsLocationsJobsDebugRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  5,
+) as any as S.Schema<GetConfigProjectsLocationsJobsDebugRequest>;
+
 export interface GetExecutionDetailsProjectsLocationsJobsRequest {
   /** A project id. */
   projectId: string;
@@ -989,6 +1306,11 @@ export interface GetExecutionDetailsProjectsLocationsJobsRequest {
   /** If specified, determines the maximum number of stages to return. If unspecified, the service may choose an appropriate default, or may return an arbitrarily large number of results. */
   pageSize?: number;
 }
+const GetExecutionDetailsProjectsLocationsJobsRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  6,
+) as any as S.Schema<GetExecutionDetailsProjectsLocationsJobsRequest>;
+
 /** A point in the timeseries. */
 export interface Point {
   /** The value of the point. */
@@ -996,7 +1318,11 @@ export interface Point {
   /** The timestamp of the point. */
   time?: string;
 }
+const Point = /*@__PURE__*/ __L.at(__c10, 7) as any as S.Schema<Point>;
+
 export type PointList = Array<Point>;
+const PointList = /*@__PURE__*/ __L.at(__c11, 0) as any as S.Schema<PointList>;
+
 /** Information about the progress of some component of job execution. */
 export interface ProgressTimeseries {
   /** History of progress for the component. Points are sorted by time. */
@@ -1004,6 +1330,8 @@ export interface ProgressTimeseries {
   /** The current progress of the component, in the range [0,1]. */
   currentProgress?: number;
 }
+const ProgressTimeseries = /*@__PURE__*/ __L.at(__c11, 1) as any as S.Schema<ProgressTimeseries>;
+
 export type StageSummaryStateEnum =
   | "EXECUTION_STATE_UNKNOWN"
   | "EXECUTION_STATE_NOT_STARTED"
@@ -1011,6 +1339,8 @@ export type StageSummaryStateEnum =
   | "EXECUTION_STATE_SUCCEEDED"
   | "EXECUTION_STATE_FAILED"
   | "EXECUTION_STATE_CANCELLED";
+const StageSummaryStateEnum = S.String;
+
 /** Identifies a metric, by describing the source which generated the metric. */
 export interface MetricStructuredName {
   /** Origin (namespace) of metric name. May be blank for user-define metrics; will be "dataflow" for metrics defined by the Dataflow service or SDK. */
@@ -1020,6 +1350,11 @@ export interface MetricStructuredName {
   /** Zero or more labeled fields which identify the part of the job this metric is associated with, such as the name of a step or collection. For example, built-in counters associated with steps will have context['step'] = . Counters associated with PCollections in the SDK will have context['pcollection'] = . */
   context?: StringMap;
 }
+const MetricStructuredName = /*@__PURE__*/ __L.at(
+  __c11,
+  2,
+) as any as S.Schema<MetricStructuredName>;
+
 /** Describes the state of a metric. */
 export interface MetricUpdate {
   /** Worker-computed aggregate value for the "Mean" aggregation kind. This holds the count of the aggregated values and is used in combination with mean_sum above to obtain the actual mean aggregate value. The only possible value type is Long. */
@@ -1049,7 +1384,11 @@ export interface MetricUpdate {
   /** Metric aggregation kind. The possible metric aggregation kinds are "Sum", "Max", "Min", "Mean", "Set", "And", "Or", and "Distribution". The specified aggregation kind is case-insensitive. If omitted, this is not an aggregated value but instead a single metric sample value. */
   kind?: string;
 }
+const MetricUpdate = /*@__PURE__*/ __L.at(__c11, 3) as any as S.Schema<MetricUpdate>;
+
 export type MetricUpdateList = Array<MetricUpdate>;
+const MetricUpdateList = /*@__PURE__*/ __L.at(__c11, 4) as any as S.Schema<MetricUpdateList>;
+
 /** Information about a hot key. */
 export interface HotKeyInfo {
   /** If true, then the above key is truncated and cannot be deserialized. This occurs if the key above is populated and the key size is >5MB. */
@@ -1059,18 +1398,34 @@ export interface HotKeyInfo {
   /** A detected hot key that is causing limited parallelism. This field will be populated only if the following flag is set to true: "--enable_hot_key_logging". */
   key?: string;
 }
+const HotKeyInfo = /*@__PURE__*/ __L.at(__c11, 5) as any as S.Schema<HotKeyInfo>;
+
 export type HotKeyInfoMap = { [key: string]: HotKeyInfo | undefined };
+const HotKeyInfoMap = /*@__PURE__*/ __L.at(__c11, 6) as any as S.Schema<HotKeyInfoMap>;
+
 /** Information useful for debugging a hot key detection. */
 export interface HotKeyDebuggingInfo {
   /** Debugging information for each detected hot key. Keyed by a hash of the key. */
   detectedHotKeys?: HotKeyInfoMap;
 }
+const HotKeyDebuggingInfo = /*@__PURE__*/ __L.at(__c11, 7) as any as S.Schema<HotKeyDebuggingInfo>;
+
 /** Information useful for debugging a straggler. Each type will provide specialized debugging information relevant for a particular cause. The StragglerDebuggingInfo will be 1:1 mapping to the StragglerCause enum. */
 export interface StragglerDebuggingInfo {
   /** Hot key debugging details. */
   hotKey?: HotKeyDebuggingInfo;
 }
+const StragglerDebuggingInfo = /*@__PURE__*/ __L.at(
+  __c12,
+  0,
+) as any as S.Schema<StragglerDebuggingInfo>;
+
 export type StragglerDebuggingInfoMap = { [key: string]: StragglerDebuggingInfo | undefined };
+const StragglerDebuggingInfoMap = /*@__PURE__*/ __L.at(
+  __c12,
+  1,
+) as any as S.Schema<StragglerDebuggingInfoMap>;
+
 /** Information useful for straggler identification and debugging. */
 export interface StragglerInfo {
   /** The time when the work item attempt became a straggler. */
@@ -1078,6 +1433,8 @@ export interface StragglerInfo {
   /** The straggler causes, keyed by the string representation of the StragglerCause enum and contains specialized debugging information for each straggler cause. */
   causes?: StragglerDebuggingInfoMap;
 }
+const StragglerInfo = /*@__PURE__*/ __L.at(__c12, 2) as any as S.Schema<StragglerInfo>;
+
 /** Information useful for streaming straggler identification and debugging. */
 export interface StreamingStragglerInfo {
   /** The system watermark lag at the time of the straggler detection. */
@@ -1091,6 +1448,11 @@ export interface StreamingStragglerInfo {
   /** The event-time watermark lag at the time of the straggler detection. */
   dataWatermarkLag?: string;
 }
+const StreamingStragglerInfo = /*@__PURE__*/ __L.at(
+  __c12,
+  3,
+) as any as S.Schema<StreamingStragglerInfo>;
+
 /** Information for a straggler. */
 export interface Straggler {
   /** Batch straggler identification and debugging information. */
@@ -1098,7 +1460,11 @@ export interface Straggler {
   /** Streaming straggler identification and debugging information. */
   streamingStraggler?: StreamingStragglerInfo;
 }
+const Straggler = /*@__PURE__*/ __L.at(__c12, 4) as any as S.Schema<Straggler>;
+
 export type StragglerList = Array<Straggler>;
+const StragglerList = /*@__PURE__*/ __L.at(__c12, 5) as any as S.Schema<StragglerList>;
+
 /** Summarized straggler identification details. */
 export interface StragglerSummary {
   /** The total count of stragglers. */
@@ -1108,6 +1474,8 @@ export interface StragglerSummary {
   /** The most recent stragglers. */
   recentStragglers?: StragglerList;
 }
+const StragglerSummary = /*@__PURE__*/ __L.at(__c12, 6) as any as S.Schema<StragglerSummary>;
+
 /** Information about a particular execution stage of a job. */
 export interface StageSummary {
   /** Progress for this stage. Only applicable to Batch jobs. */
@@ -1125,7 +1493,11 @@ export interface StageSummary {
   /** End time of this stage. If the work item is completed, this is the actual end time of the stage. Otherwise, it is the predicted end time. */
   endTime?: string;
 }
+const StageSummary = /*@__PURE__*/ __L.at(__c12, 7) as any as S.Schema<StageSummary>;
+
 export type StageSummaryList = Array<StageSummary>;
+const StageSummaryList = /*@__PURE__*/ __L.at(__c13, 0) as any as S.Schema<StageSummaryList>;
+
 /** Information about the execution of a job. */
 export interface JobExecutionDetails {
   /** The stages of the job execution. */
@@ -1133,6 +1505,8 @@ export interface JobExecutionDetails {
   /** If present, this response does not contain all requested tasks. To obtain the next page of results, repeat the request with page_token set to this value. */
   nextPageToken?: string;
 }
+const JobExecutionDetails = /*@__PURE__*/ __L.at(__c13, 1) as any as S.Schema<JobExecutionDetails>;
+
 export interface GetExecutionDetailsProjectsLocationsJobsStagesRequest {
   /** A project id. */
   projectId: string;
@@ -1151,6 +1525,11 @@ export interface GetExecutionDetailsProjectsLocationsJobsStagesRequest {
   /** The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that contains the job specified by job_id. */
   location: string;
 }
+const GetExecutionDetailsProjectsLocationsJobsStagesRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  2,
+) as any as S.Schema<GetExecutionDetailsProjectsLocationsJobsStagesRequest>;
+
 export type WorkItemDetailsStateEnum =
   | "EXECUTION_STATE_UNKNOWN"
   | "EXECUTION_STATE_NOT_STARTED"
@@ -1158,6 +1537,8 @@ export type WorkItemDetailsStateEnum =
   | "EXECUTION_STATE_SUCCEEDED"
   | "EXECUTION_STATE_FAILED"
   | "EXECUTION_STATE_CANCELLED";
+const WorkItemDetailsStateEnum = S.String;
+
 /** Information about an individual work item execution. */
 export interface WorkItemDetails {
   /** End time of this work item attempt. If the work item is completed, this is the actual end time of the work item. Otherwise, it is the predicted end time. */
@@ -1177,7 +1558,11 @@ export interface WorkItemDetails {
   /** Progress of this work item. */
   progress?: ProgressTimeseries;
 }
+const WorkItemDetails = /*@__PURE__*/ __L.at(__c13, 3) as any as S.Schema<WorkItemDetails>;
+
 export type WorkItemDetailsList = Array<WorkItemDetails>;
+const WorkItemDetailsList = /*@__PURE__*/ __L.at(__c13, 4) as any as S.Schema<WorkItemDetailsList>;
+
 /** Information about a worker */
 export interface WorkerDetails {
   /** Work items processed by this worker, sorted by time. */
@@ -1185,7 +1570,11 @@ export interface WorkerDetails {
   /** Name of this worker */
   workerName?: string;
 }
+const WorkerDetails = /*@__PURE__*/ __L.at(__c13, 5) as any as S.Schema<WorkerDetails>;
+
 export type WorkerDetailsList = Array<WorkerDetails>;
+const WorkerDetailsList = /*@__PURE__*/ __L.at(__c13, 6) as any as S.Schema<WorkerDetailsList>;
+
 /** Information about the workers and work items within a stage. */
 export interface StageExecutionDetails {
   /** Workers that have done work on the stage. */
@@ -1193,10 +1582,20 @@ export interface StageExecutionDetails {
   /** If present, this response does not contain all requested tasks. To obtain the next page of results, repeat the request with page_token set to this value. */
   nextPageToken?: string;
 }
+const StageExecutionDetails = /*@__PURE__*/ __L.at(
+  __c13,
+  7,
+) as any as S.Schema<StageExecutionDetails>;
+
 export interface GetFoldersLocationsConfigStoreSettingsRequest {
   /** Required. The name of the ConfigStoreSetting to retrieve. */
   name: string;
 }
+const GetFoldersLocationsConfigStoreSettingsRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  0,
+) as any as S.Schema<GetFoldersLocationsConfigStoreSettingsRequest>;
+
 export interface GetMetricsProjectsJobsRequest {
   /** The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that contains the job specified by job_id. */
   location?: string;
@@ -1207,6 +1606,11 @@ export interface GetMetricsProjectsJobsRequest {
   /** The job to get metrics for. */
   jobId: string;
 }
+const GetMetricsProjectsJobsRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  1,
+) as any as S.Schema<GetMetricsProjectsJobsRequest>;
+
 /** JobMetrics contains a collection of metrics describing the detailed progress of a Dataflow job. Metrics correspond to user-defined and system-defined metrics in the job. For more information, see [Dataflow job metrics] (https://cloud.google.com/dataflow/docs/guides/using-monitoring-intf). This resource captures only the most recent values of each metric; time-series data can be queried for them (under the same metric names) from Cloud Monitoring. */
 export interface JobMetrics {
   /** Timestamp as of which metric values are current. */
@@ -1214,6 +1618,8 @@ export interface JobMetrics {
   /** All metrics for this job. */
   metrics?: MetricUpdateList;
 }
+const JobMetrics = /*@__PURE__*/ __L.at(__c14, 2) as any as S.Schema<JobMetrics>;
+
 export interface GetMetricsProjectsLocationsJobsRequest {
   /** The job to get metrics for. */
   jobId: string;
@@ -1224,15 +1630,27 @@ export interface GetMetricsProjectsLocationsJobsRequest {
   /** Return only metric data that has changed since this time. Default is to return all information about all metrics for the job. */
   startTime?: string;
 }
+const GetMetricsProjectsLocationsJobsRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  3,
+) as any as S.Schema<GetMetricsProjectsLocationsJobsRequest>;
+
 export interface GetOrganizationsLocationsConfigStoreSettingsRequest {
   /** Required. The name of the ConfigStoreSetting to retrieve. */
   name: string;
 }
+const GetOrganizationsLocationsConfigStoreSettingsRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  4,
+) as any as S.Schema<GetOrganizationsLocationsConfigStoreSettingsRequest>;
+
 export type GetProjectsJobsViewEnum =
   | "JOB_VIEW_UNKNOWN"
   | "JOB_VIEW_SUMMARY"
   | "JOB_VIEW_ALL"
   | "JOB_VIEW_DESCRIPTION";
+const GetProjectsJobsViewEnum = S.String;
+
 export interface GetProjectsJobsRequest {
   /** The ID of the Cloud Platform project that the job belongs to. */
   projectId: string;
@@ -1243,15 +1661,27 @@ export interface GetProjectsJobsRequest {
   /** The job ID. */
   jobId: string;
 }
+const GetProjectsJobsRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  5,
+) as any as S.Schema<GetProjectsJobsRequest>;
+
 export interface GetProjectsLocationsConfigStoreSettingsRequest {
   /** Required. The name of the ConfigStoreSetting to retrieve. */
   name: string;
 }
+const GetProjectsLocationsConfigStoreSettingsRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  6,
+) as any as S.Schema<GetProjectsLocationsConfigStoreSettingsRequest>;
+
 export type GetProjectsLocationsJobsViewEnum =
   | "JOB_VIEW_UNKNOWN"
   | "JOB_VIEW_SUMMARY"
   | "JOB_VIEW_ALL"
   | "JOB_VIEW_DESCRIPTION";
+const GetProjectsLocationsJobsViewEnum = S.String;
+
 export interface GetProjectsLocationsJobsRequest {
   /** The job ID. */
   jobId: string;
@@ -1262,6 +1692,11 @@ export interface GetProjectsLocationsJobsRequest {
   /** The level of information requested in response. */
   view?: GetProjectsLocationsJobsViewEnum | (string & {});
 }
+const GetProjectsLocationsJobsRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  7,
+) as any as S.Schema<GetProjectsLocationsJobsRequest>;
+
 export interface GetProjectsLocationsSnapshotsRequest {
   /** The ID of the snapshot. */
   snapshotId: string;
@@ -1270,6 +1705,11 @@ export interface GetProjectsLocationsSnapshotsRequest {
   /** The ID of the Cloud Platform project that the snapshot belongs to. */
   projectId: string;
 }
+const GetProjectsLocationsSnapshotsRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  0,
+) as any as S.Schema<GetProjectsLocationsSnapshotsRequest>;
+
 export type SnapshotStateEnum =
   | "UNKNOWN_SNAPSHOT_STATE"
   | "PENDING"
@@ -1277,6 +1717,8 @@ export type SnapshotStateEnum =
   | "READY"
   | "FAILED"
   | "DELETED";
+const SnapshotStateEnum = S.String;
+
 /** Represents a Pubsub snapshot. */
 export interface PubsubSnapshotMetadata {
   /** The name of the Pubsub topic. */
@@ -1286,7 +1728,17 @@ export interface PubsubSnapshotMetadata {
   /** The name of the Pubsub snapshot. */
   snapshotName?: string;
 }
+const PubsubSnapshotMetadata = /*@__PURE__*/ __L.at(
+  __c15,
+  1,
+) as any as S.Schema<PubsubSnapshotMetadata>;
+
 export type PubsubSnapshotMetadataList = Array<PubsubSnapshotMetadata>;
+const PubsubSnapshotMetadataList = /*@__PURE__*/ __L.at(
+  __c15,
+  2,
+) as any as S.Schema<PubsubSnapshotMetadataList>;
+
 /** Represents a snapshot of a job. */
 export interface Snapshot {
   /** State of the snapshot. */
@@ -1310,7 +1762,11 @@ export interface Snapshot {
   /** The time this snapshot was created. */
   creationTime?: string;
 }
+const Snapshot = /*@__PURE__*/ __L.at(__c15, 3) as any as S.Schema<Snapshot>;
+
 export type GetProjectsLocationsTemplatesViewEnum = "METADATA_ONLY";
+const GetProjectsLocationsTemplatesViewEnum = S.String;
+
 export interface GetProjectsLocationsTemplatesRequest {
   /** Required. A Cloud Storage path to the template from which to create the job. Must be valid Cloud Storage URL, beginning with 'gs://'. */
   gcsPath?: string;
@@ -1321,6 +1777,11 @@ export interface GetProjectsLocationsTemplatesRequest {
   /** The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) to which to direct the request. */
   location: string;
 }
+const GetProjectsLocationsTemplatesRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  4,
+) as any as S.Schema<GetProjectsLocationsTemplatesRequest>;
+
 /** ParameterMetadataEnumOption specifies the option shown in the enum form. */
 export interface ParameterMetadataEnumOption {
   /** Required. The value of the enum option. */
@@ -1330,7 +1791,17 @@ export interface ParameterMetadataEnumOption {
   /** Optional. The label to display for the enum option. */
   label?: string;
 }
+const ParameterMetadataEnumOption = /*@__PURE__*/ __L.at(
+  __c15,
+  5,
+) as any as S.Schema<ParameterMetadataEnumOption>;
+
 export type ParameterMetadataEnumOptionList = Array<ParameterMetadataEnumOption>;
+const ParameterMetadataEnumOptionList = /*@__PURE__*/ __L.at(
+  __c15,
+  6,
+) as any as S.Schema<ParameterMetadataEnumOptionList>;
+
 export type ParameterMetadataParamTypeEnum =
   | "DEFAULT"
   | "TEXT"
@@ -1355,6 +1826,8 @@ export type ParameterMetadataParamTypeEnum =
   | "KAFKA_TOPIC"
   | "KAFKA_READ_TOPIC"
   | "KAFKA_WRITE_TOPIC";
+const ParameterMetadataParamTypeEnum = S.String;
+
 /** Metadata for a specific parameter. */
 export interface ParameterMetadata {
   /** Optional. The value(s) of the 'parent_name' parameter which will trigger this parameter to be shown. If left empty, ANY non-empty value in parent_name will trigger this parameter to be shown. Only considered when this parameter is conditional (when 'parent_name' has been provided). */
@@ -1384,7 +1857,14 @@ export interface ParameterMetadata {
   /** Required. The name of the parameter. */
   name?: string;
 }
+const ParameterMetadata = /*@__PURE__*/ __L.at(__c15, 7) as any as S.Schema<ParameterMetadata>;
+
 export type ParameterMetadataList = Array<ParameterMetadata>;
+const ParameterMetadataList = /*@__PURE__*/ __L.at(
+  __c16,
+  0,
+) as any as S.Schema<ParameterMetadataList>;
+
 /** Metadata describing a template. */
 export interface TemplateMetadata {
   /** Optional. Indicates if the streaming template supports exactly once mode. */
@@ -1404,8 +1884,14 @@ export interface TemplateMetadata {
   /** Optional. Indicates if the streaming template supports at least once mode. */
   supportsAtLeastOnce?: boolean;
 }
+const TemplateMetadata = /*@__PURE__*/ __L.at(__c16, 1) as any as S.Schema<TemplateMetadata>;
+
 export type GetTemplateResponseTemplateTypeEnum = "UNKNOWN" | "LEGACY" | "FLEX";
+const GetTemplateResponseTemplateTypeEnum = S.String;
+
 export type SDKInfoLanguageEnum = "UNKNOWN" | "JAVA" | "PYTHON" | "GO" | "YAML";
+const SDKInfoLanguageEnum = S.String;
+
 /** SDK Information. */
 export interface SDKInfo {
   /** Required. The SDK Language. */
@@ -1413,6 +1899,8 @@ export interface SDKInfo {
   /** Optional. The SDK version. */
   version?: string;
 }
+const SDKInfo = /*@__PURE__*/ __L.at(__c16, 2) as any as S.Schema<SDKInfo>;
+
 /** RuntimeMetadata describing a runtime environment. */
 export interface RuntimeMetadata {
   /** SDK Info for the template. */
@@ -1420,7 +1908,11 @@ export interface RuntimeMetadata {
   /** The parameters for the template. */
   parameters?: ParameterMetadataList;
 }
+const RuntimeMetadata = /*@__PURE__*/ __L.at(__c16, 3) as any as S.Schema<RuntimeMetadata>;
+
 export type DocumentMapList = Array<DocumentMap>;
+const DocumentMapList = /*@__PURE__*/ __L.at(__c16, 4) as any as S.Schema<DocumentMapList>;
+
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
   /** The status code, which should be an enum value of google.rpc.Code. */
@@ -1430,6 +1922,8 @@ export interface Status {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
   message?: string;
 }
+const Status = /*@__PURE__*/ __L.at(__c16, 5) as any as S.Schema<Status>;
+
 /** The response to a GetTemplate request. */
 export interface GetTemplateResponse {
   /** The template metadata describing the template name, available parameters, etc. */
@@ -1441,6 +1935,8 @@ export interface GetTemplateResponse {
   /** The status of the get template request. Any problems with the request will be indicated in the error_details. */
   status?: Status;
 }
+const GetTemplateResponse = /*@__PURE__*/ __L.at(__c16, 6) as any as S.Schema<GetTemplateResponse>;
+
 export interface GetProjectsSnapshotsRequest {
   /** The ID of the snapshot. */
   snapshotId: string;
@@ -1449,7 +1945,14 @@ export interface GetProjectsSnapshotsRequest {
   /** The ID of the Cloud Platform project that the snapshot belongs to. */
   projectId: string;
 }
+const GetProjectsSnapshotsRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  7,
+) as any as S.Schema<GetProjectsSnapshotsRequest>;
+
 export type GetProjectsTemplatesViewEnum = "METADATA_ONLY";
+const GetProjectsTemplatesViewEnum = S.String;
+
 export interface GetProjectsTemplatesRequest {
   /** Required. The ID of the Cloud Platform project that the job belongs to. */
   projectId: string;
@@ -1460,6 +1963,11 @@ export interface GetProjectsTemplatesRequest {
   /** The view to retrieve. Defaults to METADATA_ONLY. */
   view?: GetProjectsTemplatesViewEnum | (string & {});
 }
+const GetProjectsTemplatesRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  0,
+) as any as S.Schema<GetProjectsTemplatesRequest>;
+
 /** Request to get worker stacktraces from debug capture. */
 export interface GetWorkerStacktracesRequest {
   /** The worker for which to get stacktraces. The returned stacktraces will be for the SDK harness running on this worker. */
@@ -1467,6 +1975,11 @@ export interface GetWorkerStacktracesRequest {
   /** The end time for the stacktrace query. The returned stacktraces will be a recent stack trace at or shortly before this time. */
   endTime?: string;
 }
+const GetWorkerStacktracesRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  1,
+) as any as S.Schema<GetWorkerStacktracesRequest>;
+
 export interface GetWorkerStacktracesProjectsLocationsJobsDebugRequest {
   /** The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that contains the job specified by job_id. */
   location: string;
@@ -1477,6 +1990,11 @@ export interface GetWorkerStacktracesProjectsLocationsJobsDebugRequest {
   /** Request body */
   body?: GetWorkerStacktracesRequest;
 }
+const GetWorkerStacktracesProjectsLocationsJobsDebugRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  2,
+) as any as S.Schema<GetWorkerStacktracesProjectsLocationsJobsDebugRequest>;
+
 /** A structuredstacktrace for a process running on the worker. */
 export interface Stack {
   /** Thread name. For example, "CommitThread-0,10,main" */
@@ -1490,7 +2008,11 @@ export interface Stack {
   /** The state of the thread. For example, "WAITING". */
   threadState?: string;
 }
+const Stack = /*@__PURE__*/ __L.at(__c17, 3) as any as S.Schema<Stack>;
+
 export type StackList = Array<Stack>;
+const StackList = /*@__PURE__*/ __L.at(__c17, 4) as any as S.Schema<StackList>;
+
 /** A structured representation of an SDK. */
 export interface Sdk {
   /** The stacktraces for the processes running on the SDK harness. */
@@ -1498,28 +2020,45 @@ export interface Sdk {
   /** The SDK harness id. */
   sdkId?: string;
 }
+const Sdk = /*@__PURE__*/ __L.at(__c17, 5) as any as S.Schema<Sdk>;
+
 export type SdkList = Array<Sdk>;
+const SdkList = /*@__PURE__*/ __L.at(__c17, 6) as any as S.Schema<SdkList>;
+
 /** Response to get worker stacktraces from debug capture. */
 export interface GetWorkerStacktracesResponse {
   /** Repeated as unified worker may have multiple SDK processes. */
   sdks?: SdkList;
 }
+const GetWorkerStacktracesResponse = /*@__PURE__*/ __L.at(
+  __c17,
+  7,
+) as any as S.Schema<GetWorkerStacktracesResponse>;
+
 export type FlexTemplateRuntimeEnvironmentFlexrsGoalEnum =
   | "FLEXRS_UNSPECIFIED"
   | "FLEXRS_SPEED_OPTIMIZED"
   | "FLEXRS_COST_OPTIMIZED";
+const FlexTemplateRuntimeEnvironmentFlexrsGoalEnum = S.String;
+
 export type FlexTemplateRuntimeEnvironmentStreamingModeEnum =
   | "STREAMING_MODE_UNSPECIFIED"
   | "STREAMING_MODE_EXACTLY_ONCE"
   | "STREAMING_MODE_AT_LEAST_ONCE";
+const FlexTemplateRuntimeEnvironmentStreamingModeEnum = S.String;
+
 export type FlexTemplateRuntimeEnvironmentIpConfigurationEnum =
   | "WORKER_IP_UNSPECIFIED"
   | "WORKER_IP_PUBLIC"
   | "WORKER_IP_PRIVATE";
+const FlexTemplateRuntimeEnvironmentIpConfigurationEnum = S.String;
+
 export type FlexTemplateRuntimeEnvironmentAutoscalingAlgorithmEnum =
   | "AUTOSCALING_ALGORITHM_UNKNOWN"
   | "AUTOSCALING_ALGORITHM_NONE"
   | "AUTOSCALING_ALGORITHM_BASIC";
+const FlexTemplateRuntimeEnvironmentAutoscalingAlgorithmEnum = S.String;
+
 /** The environment values to be set at runtime for flex template. */
 export interface FlexTemplateRuntimeEnvironment {
   /** Set FlexRS goal for the job. https://cloud.google.com/dataflow/docs/guides/flexrs */
@@ -1575,6 +2114,11 @@ export interface FlexTemplateRuntimeEnvironment {
   /** Subnetwork to which VMs will be assigned, if desired. You can specify a subnetwork using either a complete URL or an abbreviated path. Expected to be of the form "https://www.googleapis.com/compute/v1/projects/HOST_PROJECT_ID/regions/REGION/subnetworks/SUBNETWORK" or "regions/REGION/subnetworks/SUBNETWORK". If the subnetwork is located in a Shared VPC network, you must use the complete URL. */
   subnetwork?: string;
 }
+const FlexTemplateRuntimeEnvironment = /*@__PURE__*/ __L.at(
+  __c18,
+  0,
+) as any as S.Schema<FlexTemplateRuntimeEnvironment>;
+
 /** Container Spec. */
 export interface ContainerSpec {
   /** Default runtime environment for the job. */
@@ -1592,6 +2136,8 @@ export interface ContainerSpec {
   /** Cloud Storage path to self-signed certificate of private registry. */
   imageRepositoryCertPath?: string;
 }
+const ContainerSpec = /*@__PURE__*/ __L.at(__c18, 1) as any as S.Schema<ContainerSpec>;
+
 /** Launch FlexTemplate Parameter. */
 export interface LaunchFlexTemplateParameter {
   /** The parameters for FlexTemplate. Ex. {"num_workers":"5"} */
@@ -1611,6 +2157,11 @@ export interface LaunchFlexTemplateParameter {
   /** Cloud Storage path to a file with json serialized ContainerSpec as content. */
   containerSpecGcsPath?: string;
 }
+const LaunchFlexTemplateParameter = /*@__PURE__*/ __L.at(
+  __c18,
+  2,
+) as any as S.Schema<LaunchFlexTemplateParameter>;
+
 /** A request to launch a Cloud Dataflow job from a FlexTemplate. */
 export interface LaunchFlexTemplateRequest {
   /** Required. Parameter to launch a job form Flex Template. */
@@ -1618,6 +2169,11 @@ export interface LaunchFlexTemplateRequest {
   /** If true, the request is validated but not actually executed. Defaults to false. */
   validateOnly?: boolean;
 }
+const LaunchFlexTemplateRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  3,
+) as any as S.Schema<LaunchFlexTemplateRequest>;
+
 export interface LaunchProjectsLocationsFlexTemplatesRequest {
   /** Required. The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) to which to direct the request. E.g., us-central1, us-west1. */
   location: string;
@@ -1626,11 +2182,21 @@ export interface LaunchProjectsLocationsFlexTemplatesRequest {
   /** Request body */
   body?: LaunchFlexTemplateRequest;
 }
+const LaunchProjectsLocationsFlexTemplatesRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  4,
+) as any as S.Schema<LaunchProjectsLocationsFlexTemplatesRequest>;
+
 /** Response to the request to launch a job from Flex Template. */
 export interface LaunchFlexTemplateResponse {
   /** The job that was launched, if the request was not a dry run and the job was successfully launched. */
   job?: Job;
 }
+const LaunchFlexTemplateResponse = /*@__PURE__*/ __L.at(
+  __c18,
+  5,
+) as any as S.Schema<LaunchFlexTemplateResponse>;
+
 /** Parameters to provide to the template being launched. Note that the [metadata in the pipeline code] (https://cloud.google.com/dataflow/docs/guides/templates/creating-templates#metadata) determines which runtime parameters are valid. */
 export interface LaunchTemplateParameters {
   /** The runtime parameters to pass to the job. */
@@ -1644,6 +2210,11 @@ export interface LaunchTemplateParameters {
   /** Required. The job name to use for the created job. The name must match the regular expression `[a-z]([-a-z0-9]{0,1022}[a-z0-9])?` */
   jobName?: string;
 }
+const LaunchTemplateParameters = /*@__PURE__*/ __L.at(
+  __c18,
+  6,
+) as any as S.Schema<LaunchTemplateParameters>;
+
 export interface LaunchProjectsLocationsTemplatesRequest {
   /** If true, the request is validated but not actually executed. Defaults to false. */
   validateOnly?: boolean;
@@ -1660,11 +2231,21 @@ export interface LaunchProjectsLocationsTemplatesRequest {
   /** Request body */
   body?: LaunchTemplateParameters;
 }
+const LaunchProjectsLocationsTemplatesRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  7,
+) as any as S.Schema<LaunchProjectsLocationsTemplatesRequest>;
+
 /** Response to the request to launch a template. */
 export interface LaunchTemplateResponse {
   /** The job that was launched, if the request was not a dry run and the job was successfully launched. */
   job?: Job;
 }
+const LaunchTemplateResponse = /*@__PURE__*/ __L.at(
+  __c19,
+  0,
+) as any as S.Schema<LaunchTemplateResponse>;
+
 export interface LaunchProjectsTemplatesRequest {
   /** The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) to which to direct the request. */
   location?: string;
@@ -1681,6 +2262,11 @@ export interface LaunchProjectsTemplatesRequest {
   /** Request body */
   body?: LaunchTemplateParameters;
 }
+const LaunchProjectsTemplatesRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  1,
+) as any as S.Schema<LaunchProjectsTemplatesRequest>;
+
 /** Request to lease WorkItems. */
 export interface LeaseWorkItemRequest {
   /** The initial lease period. */
@@ -1700,6 +2286,11 @@ export interface LeaseWorkItemRequest {
   /** Identifies the worker leasing work -- typically the ID of the virtual machine running the worker. */
   workerId?: string;
 }
+const LeaseWorkItemRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  2,
+) as any as S.Schema<LeaseWorkItemRequest>;
+
 export interface LeaseProjectsJobsWorkItemsRequest {
   /** Identifies the project this worker belongs to. */
   projectId: string;
@@ -1708,6 +2299,11 @@ export interface LeaseProjectsJobsWorkItemsRequest {
   /** Request body */
   body?: LeaseWorkItemRequest;
 }
+const LeaseProjectsJobsWorkItemsRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  3,
+) as any as S.Schema<LeaseProjectsJobsWorkItemsRequest>;
+
 /** Operational limits imposed on streaming jobs by the backend. */
 export interface StreamingOperationalLimits {
   /** The maximum size for an element in global data. */
@@ -1727,6 +2323,11 @@ export interface StreamingOperationalLimits {
   /** The maximum size for an element in bag state. */
   maxBagElementBytes?: string;
 }
+const StreamingOperationalLimits = /*@__PURE__*/ __L.at(
+  __c19,
+  4,
+) as any as S.Schema<StreamingOperationalLimits>;
+
 /** An input of an instruction, as a reference to an output of a producer instruction. */
 export interface InstructionInput {
   /** The index (origin zero) of the parallel instruction that produces the output to be consumed by this input. This index is relative to the list of instructions in this input's instruction's containing MapTask. */
@@ -1734,6 +2335,8 @@ export interface InstructionInput {
   /** The output index (origin zero) within the producer. */
   outputNum?: number;
 }
+const InstructionInput = /*@__PURE__*/ __L.at(__c19, 5) as any as S.Schema<InstructionInput>;
+
 /** A sink that records can be encoded and written to. */
 export interface Sink {
   /** The sink to write to, plus its parameters. */
@@ -1741,6 +2344,8 @@ export interface Sink {
   /** The codec to use to encode data written to the sink. */
   codec?: DocumentMap;
 }
+const Sink = /*@__PURE__*/ __L.at(__c19, 6) as any as S.Schema<Sink>;
+
 /** An instruction that writes records. Takes one input, produces no outputs. */
 export interface WriteInstruction {
   /** The input. */
@@ -1748,6 +2353,8 @@ export interface WriteInstruction {
   /** The sink to write to. */
   sink?: Sink;
 }
+const WriteInstruction = /*@__PURE__*/ __L.at(__c19, 7) as any as S.Schema<WriteInstruction>;
+
 /** Metadata about a Source useful for automatically optimizing and tuning the pipeline, etc. */
 export interface SourceMetadata {
   /** Whether this source is known to produce key/value pairs with the (encoded) keys in lexicographically sorted order. */
@@ -1757,6 +2364,8 @@ export interface SourceMetadata {
   /** An estimate of the total size (in bytes) of the data that would be read from this source. This estimate is in terms of external storage size, before any decompression or other processing done by the reader. */
   estimatedSizeBytes?: string;
 }
+const SourceMetadata = /*@__PURE__*/ __L.at(__c20, 0) as any as S.Schema<SourceMetadata>;
+
 /** A source that records can be read and decoded from. */
 export interface Source {
   /** The codec to use to decode data read from the source. */
@@ -1770,12 +2379,18 @@ export interface Source {
   /** Optionally, metadata for this source can be supplied right away, avoiding a SourceGetMetadataOperation roundtrip (see SourceOperationRequest). This field is meaningful only in the Source objects populated by the user (e.g. when filling in a DerivedSource). Source objects supplied by the framework to the user don't have this field populated. */
   metadata?: SourceMetadata;
 }
+const Source = /*@__PURE__*/ __L.at(__c20, 1) as any as S.Schema<Source>;
+
 /** An instruction that reads records. Takes no inputs, produces one output. */
 export interface ReadInstruction {
   /** The source to read from. */
   source?: Source;
 }
+const ReadInstruction = /*@__PURE__*/ __L.at(__c20, 2) as any as S.Schema<ReadInstruction>;
+
 export type SourceList = Array<Source>;
+const SourceList = /*@__PURE__*/ __L.at(__c20, 3) as any as S.Schema<SourceList>;
+
 /** Information about a side input of a DoFn or an input of a SeqDoFn. */
 export interface SideInputInfo {
   /** The source(s) to read element(s) from to get the value of this side input. If more than one source, then the elements are taken from the sources, in the specified order if order matters. At least one source is required. */
@@ -1785,7 +2400,11 @@ export interface SideInputInfo {
   /** The id of the tag the user code will access this side input by; this should correspond to the tag of some MultiOutputInfo. */
   tag?: string;
 }
+const SideInputInfo = /*@__PURE__*/ __L.at(__c20, 4) as any as S.Schema<SideInputInfo>;
+
 export type SideInputInfoList = Array<SideInputInfo>;
+const SideInputInfoList = /*@__PURE__*/ __L.at(__c20, 5) as any as S.Schema<SideInputInfoList>;
+
 /** An instruction that does a partial group-by-key. One input and one output. */
 export interface PartialGroupByKeyInstruction {
   /** If this instruction includes a combining function this is the name of the intermediate store between the GBK and the CombineValues. */
@@ -1801,12 +2420,24 @@ export interface PartialGroupByKeyInstruction {
   /** The value combining function to invoke. */
   valueCombiningFn?: DocumentMap;
 }
+const PartialGroupByKeyInstruction = /*@__PURE__*/ __L.at(
+  __c20,
+  6,
+) as any as S.Schema<PartialGroupByKeyInstruction>;
+
 export type InstructionInputList = Array<InstructionInput>;
+const InstructionInputList = /*@__PURE__*/ __L.at(
+  __c20,
+  7,
+) as any as S.Schema<InstructionInputList>;
+
 /** An instruction that copies its inputs (zero or more) to its (single) output. */
 export interface FlattenInstruction {
   /** Describes the inputs to the flatten instruction. */
   inputs?: InstructionInputList;
 }
+const FlattenInstruction = /*@__PURE__*/ __L.at(__c21, 0) as any as S.Schema<FlattenInstruction>;
+
 /** An output of an instruction. */
 export interface InstructionOutput {
   /** The codec to use to encode data being written via this output. */
@@ -1822,13 +2453,24 @@ export interface InstructionOutput {
   /** System-defined name for this output in the original workflow graph. Outputs that do not contribute to an original instruction do not set this. */
   originalName?: string;
 }
+const InstructionOutput = /*@__PURE__*/ __L.at(__c21, 1) as any as S.Schema<InstructionOutput>;
+
 export type InstructionOutputList = Array<InstructionOutput>;
+const InstructionOutputList = /*@__PURE__*/ __L.at(
+  __c21,
+  2,
+) as any as S.Schema<InstructionOutputList>;
+
 /** Information about an output of a multi-output DoFn. */
 export interface MultiOutputInfo {
   /** The id of the tag the user code will emit to this output by; this should correspond to the tag of some SideInputInfo. */
   tag?: string;
 }
+const MultiOutputInfo = /*@__PURE__*/ __L.at(__c21, 3) as any as S.Schema<MultiOutputInfo>;
+
 export type MultiOutputInfoList = Array<MultiOutputInfo>;
+const MultiOutputInfoList = /*@__PURE__*/ __L.at(__c21, 4) as any as S.Schema<MultiOutputInfoList>;
+
 /** An instruction that does a ParDo operation. Takes one main input and zero or more side inputs, and produces zero or more outputs. Runs user code. */
 export interface ParDoInstruction {
   /** Information about each of the outputs, if user_fn is a MultiDoFn. */
@@ -1842,6 +2484,8 @@ export interface ParDoInstruction {
   /** The input. */
   input?: InstructionInput;
 }
+const ParDoInstruction = /*@__PURE__*/ __L.at(__c21, 5) as any as S.Schema<ParDoInstruction>;
+
 /** Describes a particular operation comprising a MapTask. */
 export interface ParallelInstruction {
   /** Additional information for Write instructions. */
@@ -1863,7 +2507,14 @@ export interface ParallelInstruction {
   /** System-defined name for the operation in the original workflow graph. */
   originalName?: string;
 }
+const ParallelInstruction = /*@__PURE__*/ __L.at(__c21, 6) as any as S.Schema<ParallelInstruction>;
+
 export type ParallelInstructionList = Array<ParallelInstruction>;
+const ParallelInstructionList = /*@__PURE__*/ __L.at(
+  __c21,
+  7,
+) as any as S.Schema<ParallelInstructionList>;
+
 /** Configuration information for a single streaming computation. */
 export interface StreamingComputationConfig {
   /** System defined name for this computation. */
@@ -1877,7 +2528,17 @@ export interface StreamingComputationConfig {
   /** Instructions that comprise the computation. */
   instructions?: ParallelInstructionList;
 }
+const StreamingComputationConfig = /*@__PURE__*/ __L.at(
+  __c22,
+  0,
+) as any as S.Schema<StreamingComputationConfig>;
+
 export type StreamingComputationConfigList = Array<StreamingComputationConfig>;
+const StreamingComputationConfigList = /*@__PURE__*/ __L.at(
+  __c22,
+  1,
+) as any as S.Schema<StreamingComputationConfigList>;
+
 /** A task that carries configuration information for streaming computations. */
 export interface StreamingConfigTask {
   /** Operational limits for the streaming job. Can be used by the worker to validate outputs sent to the backend. */
@@ -1903,6 +2564,8 @@ export interface StreamingConfigTask {
   /** If present, the worker must use this endpoint to communicate with Windmill Service dispatchers, otherwise the worker must continue to use whatever endpoint it had been using. */
   windmillServiceEndpoint?: string;
 }
+const StreamingConfigTask = /*@__PURE__*/ __L.at(__c22, 2) as any as S.Schema<StreamingConfigTask>;
+
 /** MapTask consists of an ordered set of instructions, each of which describes one particular low-level operation for the worker to perform in order to accomplish the MapTask's WorkItem. Each instruction must appear in the list before any instructions which depends on its output. */
 export interface MapTask {
   /** The instructions in the MapTask. */
@@ -1914,6 +2577,8 @@ export interface MapTask {
   /** System-defined name of this MapTask. Unique across the workflow. */
   systemName?: string;
 }
+const MapTask = /*@__PURE__*/ __L.at(__c22, 3) as any as S.Schema<MapTask>;
+
 /** Information about an output of a SeqMapTask. */
 export interface SeqMapTaskOutputInfo {
   /** The sink to write the output value to. */
@@ -1921,7 +2586,17 @@ export interface SeqMapTaskOutputInfo {
   /** The id of the TupleTag the user code will tag the output value by. */
   tag?: string;
 }
+const SeqMapTaskOutputInfo = /*@__PURE__*/ __L.at(
+  __c22,
+  4,
+) as any as S.Schema<SeqMapTaskOutputInfo>;
+
 export type SeqMapTaskOutputInfoList = Array<SeqMapTaskOutputInfo>;
+const SeqMapTaskOutputInfoList = /*@__PURE__*/ __L.at(
+  __c22,
+  5,
+) as any as S.Schema<SeqMapTaskOutputInfoList>;
+
 /** Describes a particular function to invoke. */
 export interface SeqMapTask {
   /** System-defined name of the SeqDo operation. Unique across the workflow. */
@@ -1937,6 +2612,8 @@ export interface SeqMapTask {
   /** The user-provided name of the SeqDo operation. */
   name?: string;
 }
+const SeqMapTask = /*@__PURE__*/ __L.at(__c22, 6) as any as S.Schema<SeqMapTask>;
+
 /** A task which consists of a shell command for the worker to execute. */
 export interface ShellTask {
   /** The shell command to run. */
@@ -1944,6 +2621,8 @@ export interface ShellTask {
   /** Exit code for the task. */
   exitCode?: number;
 }
+const ShellTask = /*@__PURE__*/ __L.at(__c22, 7) as any as S.Schema<ShellTask>;
+
 /** Hints for splitting a Source into bundles (parts for parallel processing) using SourceSplitRequest. */
 export interface SourceSplitOptions {
   /** DEPRECATED in favor of desired_bundle_size_bytes. */
@@ -1951,6 +2630,8 @@ export interface SourceSplitOptions {
   /** The source should be split into a set of bundles where the estimated size of each is approximately this many bytes. */
   desiredBundleSizeBytes?: string;
 }
+const SourceSplitOptions = /*@__PURE__*/ __L.at(__c23, 0) as any as S.Schema<SourceSplitOptions>;
+
 /** Represents the operation to split a high-level Source specification into bundles (parts for parallel processing). At a high level, splitting of a source into bundles happens as follows: SourceSplitRequest is applied to the source. If it returns SOURCE_SPLIT_OUTCOME_USE_CURRENT, no further splitting happens and the source is used "as is". Otherwise, splitting is applied recursively to each produced DerivedSource. As an optimization, for any Source, if its does_not_need_splitting is true, the framework assumes that splitting this source would return SOURCE_SPLIT_OUTCOME_USE_CURRENT, and doesn't initiate a SourceSplitRequest. This applies both to the initial source being split and to bundles produced from it. */
 export interface SourceSplitRequest {
   /** Specification of the source to be split. */
@@ -1958,11 +2639,15 @@ export interface SourceSplitRequest {
   /** Hints for tuning the splitting process. */
   options?: SourceSplitOptions;
 }
+const SourceSplitRequest = /*@__PURE__*/ __L.at(__c23, 1) as any as S.Schema<SourceSplitRequest>;
+
 /** A request to compute the SourceMetadata of a Source. */
 export interface SourceGetMetadataRequest {
   /** Specification of the source whose metadata should be computed. */
   source?: Source;
 }
+const SourceGetMetadataRequest = ReadInstruction as any as S.Schema<SourceGetMetadataRequest>;
+
 /** A work item that represents the different operations that can be performed on a user-defined Source specification. */
 export interface SourceOperationRequest {
   /** Information about a request to split a source. */
@@ -1978,6 +2663,11 @@ export interface SourceOperationRequest {
   /** System-defined name for the Read instruction for this source in the original workflow graph. */
   originalName?: string;
 }
+const SourceOperationRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  2,
+) as any as S.Schema<SourceOperationRequest>;
+
 /** Streaming appliance snapshot configuration. */
 export interface StreamingApplianceSnapshotConfig {
   /** If set, indicates the snapshot id for the snapshot being performed. */
@@ -1985,6 +2675,11 @@ export interface StreamingApplianceSnapshotConfig {
   /** Indicates which endpoint is used to import appliance state. */
   importStateEndpoint?: string;
 }
+const StreamingApplianceSnapshotConfig = /*@__PURE__*/ __L.at(
+  __c23,
+  3,
+) as any as S.Schema<StreamingApplianceSnapshotConfig>;
+
 /** Data disk assignment for a given VM instance. */
 export interface DataDiskAssignment {
   /** VM instance name the data disks mounted to, for example "myproject-1014-104817-4c2-harness-0". */
@@ -1992,7 +2687,14 @@ export interface DataDiskAssignment {
   /** Mounted data disks. The order is important a data disk's 0-based index in this list defines which persistent directory the disk is mounted to, for example the list of { "myproject-1014-104817-4c2-harness-0-disk-0" }, { "myproject-1014-104817-4c2-harness-0-disk-1" }. */
   dataDisks?: StringList_;
 }
+const DataDiskAssignment = /*@__PURE__*/ __L.at(__c23, 4) as any as S.Schema<DataDiskAssignment>;
+
 export type DataDiskAssignmentList = Array<DataDiskAssignment>;
+const DataDiskAssignmentList = /*@__PURE__*/ __L.at(
+  __c23,
+  5,
+) as any as S.Schema<DataDiskAssignmentList>;
+
 /** State family configuration. */
 export interface StateFamilyConfig {
   /** The state family value. */
@@ -2000,7 +2702,14 @@ export interface StateFamilyConfig {
   /** If true, this family corresponds to a read operation. */
   isRead?: boolean;
 }
+const StateFamilyConfig = /*@__PURE__*/ __L.at(__c23, 6) as any as S.Schema<StateFamilyConfig>;
+
 export type StateFamilyConfigList = Array<StateFamilyConfig>;
+const StateFamilyConfigList = /*@__PURE__*/ __L.at(
+  __c23,
+  7,
+) as any as S.Schema<StateFamilyConfigList>;
+
 /** Location information for a specific key-range of a sharded computation. Currently we only support UTF-8 character splits to simplify encoding into JSON. */
 export interface KeyRangeLocation {
   /** The name of the data disk where data for this range is stored. This name is local to the Google Cloud Platform project and uniquely identifies the disk within that project, for example "myproject-1014-104817-4c2-harness-0-disk-1". */
@@ -2014,12 +2723,24 @@ export interface KeyRangeLocation {
   /** The physical location of this range assignment to be used for streaming computation cross-worker message delivery. */
   deliveryEndpoint?: string;
 }
+const KeyRangeLocation = /*@__PURE__*/ __L.at(__c24, 0) as any as S.Schema<KeyRangeLocation>;
+
 export type KeyRangeLocationList = Array<KeyRangeLocation>;
+const KeyRangeLocationList = /*@__PURE__*/ __L.at(
+  __c24,
+  1,
+) as any as S.Schema<KeyRangeLocationList>;
+
 /** Identifies the location of a custom souce. */
 export interface CustomSourceLocation {
   /** Whether this source is stateful. */
   stateful?: boolean;
 }
+const CustomSourceLocation = /*@__PURE__*/ __L.at(
+  __c24,
+  2,
+) as any as S.Schema<CustomSourceLocation>;
+
 /** Identifies the location of a streaming side input. */
 export interface StreamingSideInputLocation {
   /** Identifies the particular side input within the streaming Dataflow job. */
@@ -2027,11 +2748,21 @@ export interface StreamingSideInputLocation {
   /** Identifies the state family where this side input is stored. */
   stateFamily?: string;
 }
+const StreamingSideInputLocation = /*@__PURE__*/ __L.at(
+  __c24,
+  3,
+) as any as S.Schema<StreamingSideInputLocation>;
+
 /** Identifies the location of a streaming computation stage, for stage-to-stage communication. */
 export interface StreamingStageLocation {
   /** Identifies the particular stream within the streaming Dataflow job. */
   streamId?: string;
 }
+const StreamingStageLocation = /*@__PURE__*/ __L.at(
+  __c24,
+  4,
+) as any as S.Schema<StreamingStageLocation>;
+
 /** Identifies a pubsub location to use for transferring data into or out of a streaming Dataflow job. */
 export interface PubsubLocation {
   /** If true, then this location represents dynamic topics. */
@@ -2051,6 +2782,8 @@ export interface PubsubLocation {
   /** A pubsub topic, in the form of "pubsub.googleapis.com/topics//" */
   topic?: string;
 }
+const PubsubLocation = /*@__PURE__*/ __L.at(__c24, 5) as any as S.Schema<PubsubLocation>;
+
 /** Describes a stream of data, either as input to be processed or as output of a streaming Dataflow job. */
 export interface StreamLocation {
   /** The stream is a custom source. */
@@ -2062,7 +2795,11 @@ export interface StreamLocation {
   /** The stream is a pubsub stream. */
   pubsubLocation?: PubsubLocation;
 }
+const StreamLocation = /*@__PURE__*/ __L.at(__c24, 6) as any as S.Schema<StreamLocation>;
+
 export type StreamLocationList = Array<StreamLocation>;
+const StreamLocationList = /*@__PURE__*/ __L.at(__c24, 7) as any as S.Schema<StreamLocationList>;
+
 /** All configuration data for a particular Computation. */
 export interface ComputationTopology {
   /** The state family values. */
@@ -2078,7 +2815,14 @@ export interface ComputationTopology {
   /** The outputs from the computation. */
   outputs?: StreamLocationList;
 }
+const ComputationTopology = /*@__PURE__*/ __L.at(__c25, 0) as any as S.Schema<ComputationTopology>;
+
 export type ComputationTopologyList = Array<ComputationTopology>;
+const ComputationTopologyList = /*@__PURE__*/ __L.at(
+  __c25,
+  1,
+) as any as S.Schema<ComputationTopologyList>;
+
 /** Global topology of the streaming Dataflow job, including all computations and their sharded locations. */
 export interface TopologyConfig {
   /** The disks assigned to a streaming Dataflow job. */
@@ -2092,6 +2836,8 @@ export interface TopologyConfig {
   /** Version number for persistent state. */
   persistentStateVersion?: number;
 }
+const TopologyConfig = /*@__PURE__*/ __L.at(__c25, 2) as any as S.Schema<TopologyConfig>;
+
 /** A task which initializes part of a streaming Dataflow job. */
 export interface StreamingSetupTask {
   /** Configures streaming appliance snapshot. */
@@ -2105,10 +2851,14 @@ export interface StreamingSetupTask {
   /** The TCP port on which the worker should listen for messages from other streaming computation workers. */
   receiveWorkPort?: number;
 }
+const StreamingSetupTask = /*@__PURE__*/ __L.at(__c25, 3) as any as S.Schema<StreamingSetupTask>;
+
 export type StreamingComputationTaskTaskTypeEnum =
   | "STREAMING_COMPUTATION_TASK_UNKNOWN"
   | "STREAMING_COMPUTATION_TASK_STOP"
   | "STREAMING_COMPUTATION_TASK_START";
+const StreamingComputationTaskTaskTypeEnum = S.String;
+
 /** Data disk assignment information for a specific key-range of a sharded computation. Currently we only support UTF-8 character splits to simplify encoding into JSON. */
 export interface KeyRangeDataDiskAssignment {
   /** The start (inclusive) of the key range. */
@@ -2118,7 +2868,17 @@ export interface KeyRangeDataDiskAssignment {
   /** The name of the data disk where data for this range is stored. This name is local to the Google Cloud Platform project and uniquely identifies the disk within that project, for example "myproject-1014-104817-4c2-harness-0-disk-1". */
   dataDisk?: string;
 }
+const KeyRangeDataDiskAssignment = /*@__PURE__*/ __L.at(
+  __c25,
+  4,
+) as any as S.Schema<KeyRangeDataDiskAssignment>;
+
 export type KeyRangeDataDiskAssignmentList = Array<KeyRangeDataDiskAssignment>;
+const KeyRangeDataDiskAssignmentList = /*@__PURE__*/ __L.at(
+  __c25,
+  5,
+) as any as S.Schema<KeyRangeDataDiskAssignmentList>;
+
 /** Describes full or partial data disk assignment information of the computation ranges. */
 export interface StreamingComputationRanges {
   /** Data disk assignments for ranges from this computation. */
@@ -2126,13 +2886,27 @@ export interface StreamingComputationRanges {
   /** The ID of the computation. */
   computationId?: string;
 }
+const StreamingComputationRanges = /*@__PURE__*/ __L.at(
+  __c25,
+  6,
+) as any as S.Schema<StreamingComputationRanges>;
+
 export type StreamingComputationRangesList = Array<StreamingComputationRanges>;
+const StreamingComputationRangesList = /*@__PURE__*/ __L.at(
+  __c25,
+  7,
+) as any as S.Schema<StreamingComputationRangesList>;
+
 /** Describes mounted data disk. */
 export interface MountedDataDisk {
   /** The name of the data disk. This name is local to the Google Cloud Platform project and uniquely identifies the disk within that project, for example "myproject-1014-104817-4c2-harness-0-disk-1". */
   dataDisk?: string;
 }
+const MountedDataDisk = /*@__PURE__*/ __L.at(__c26, 0) as any as S.Schema<MountedDataDisk>;
+
 export type MountedDataDiskList = Array<MountedDataDisk>;
+const MountedDataDiskList = /*@__PURE__*/ __L.at(__c26, 1) as any as S.Schema<MountedDataDiskList>;
+
 /** A task which describes what action should be performed for the specified streaming computation ranges. */
 export interface StreamingComputationTask {
   /** A type of streaming computation task. */
@@ -2142,6 +2916,11 @@ export interface StreamingComputationTask {
   /** Describes the set of data disks this task should apply to. */
   dataDisks?: MountedDataDiskList;
 }
+const StreamingComputationTask = /*@__PURE__*/ __L.at(
+  __c26,
+  2,
+) as any as S.Schema<StreamingComputationTask>;
+
 /** WorkItem represents basic information about a WorkItem to be executed in the cloud. */
 export interface WorkItem {
   /** Identifies this WorkItem. */
@@ -2175,7 +2954,11 @@ export interface WorkItem {
   /** Additional information for StreamingComputationTask WorkItems. */
   streamingComputationTask?: StreamingComputationTask;
 }
+const WorkItem = /*@__PURE__*/ __L.at(__c26, 3) as any as S.Schema<WorkItem>;
+
 export type WorkItemList = Array<WorkItem>;
+const WorkItemList = /*@__PURE__*/ __L.at(__c26, 4) as any as S.Schema<WorkItemList>;
+
 /** Response to a request to lease WorkItems. */
 export interface LeaseWorkItemResponse {
   /** A list of the leased WorkItems. */
@@ -2183,6 +2966,11 @@ export interface LeaseWorkItemResponse {
   /** Untranslated bag-of-bytes WorkResponse for UnifiedWorker. */
   unifiedWorkerResponse?: DocumentMap;
 }
+const LeaseWorkItemResponse = /*@__PURE__*/ __L.at(
+  __c26,
+  5,
+) as any as S.Schema<LeaseWorkItemResponse>;
+
 export interface LeaseProjectsLocationsJobsWorkItemsRequest {
   /** The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that contains the WorkItem's job. */
   location: string;
@@ -2193,6 +2981,11 @@ export interface LeaseProjectsLocationsJobsWorkItemsRequest {
   /** Request body */
   body?: LeaseWorkItemRequest;
 }
+const LeaseProjectsLocationsJobsWorkItemsRequest = /*@__PURE__*/ __L.at(
+  __c26,
+  6,
+) as any as S.Schema<LeaseProjectsLocationsJobsWorkItemsRequest>;
+
 export interface ListFoldersLocationsConfigStoreSettingsRequest {
   /** Optional. The maximum number of settings to return. */
   pageSize?: number;
@@ -2201,7 +2994,17 @@ export interface ListFoldersLocationsConfigStoreSettingsRequest {
   /** Required. The parent resource whose settings are being listed. */
   parent: string;
 }
+const ListFoldersLocationsConfigStoreSettingsRequest = /*@__PURE__*/ __L.at(
+  __c26,
+  7,
+) as any as S.Schema<ListFoldersLocationsConfigStoreSettingsRequest>;
+
 export type ConfigStoreSettingList = Array<ConfigStoreSetting>;
+const ConfigStoreSettingList = /*@__PURE__*/ __L.at(
+  __c27,
+  0,
+) as any as S.Schema<ConfigStoreSettingList>;
+
 /** Response message for ListConfigStoreSettings. */
 export interface ListConfigStoreSettingsResponse {
   /** A token that can be sent as `page_token` to retrieve the next page. */
@@ -2209,6 +3012,11 @@ export interface ListConfigStoreSettingsResponse {
   /** The list of ConfigStoreSettings. */
   configStoreSettings?: ConfigStoreSettingList;
 }
+const ListConfigStoreSettingsResponse = /*@__PURE__*/ __L.at(
+  __c27,
+  1,
+) as any as S.Schema<ListConfigStoreSettingsResponse>;
+
 export interface ListOrganizationsLocationsConfigStoreSettingsRequest {
   /** Required. The parent resource whose settings are being listed. */
   parent: string;
@@ -2217,12 +3025,21 @@ export interface ListOrganizationsLocationsConfigStoreSettingsRequest {
   /** Optional. A page token, received from a previous `ListConfigStoreSettings` call. */
   pageToken?: string;
 }
+const ListOrganizationsLocationsConfigStoreSettingsRequest = /*@__PURE__*/ __L.at(
+  __c27,
+  2,
+) as any as S.Schema<ListOrganizationsLocationsConfigStoreSettingsRequest>;
+
 export type ListProjectsJobsViewEnum =
   | "JOB_VIEW_UNKNOWN"
   | "JOB_VIEW_SUMMARY"
   | "JOB_VIEW_ALL"
   | "JOB_VIEW_DESCRIPTION";
+const ListProjectsJobsViewEnum = S.String;
+
 export type ListProjectsJobsFilterEnum = "UNKNOWN" | "ALL" | "TERMINATED" | "ACTIVE";
+const ListProjectsJobsFilterEnum = S.String;
+
 export interface ListProjectsJobsRequest {
   /** Deprecated. ListJobs always returns summaries now. Use GetJob for other JobViews. */
   view?: ListProjectsJobsViewEnum | (string & {});
@@ -2241,6 +3058,11 @@ export interface ListProjectsJobsRequest {
   /** Set this to the 'next_page_token' field of a previous response to request additional results in a long list. */
   pageToken?: string;
 }
+const ListProjectsJobsRequest = /*@__PURE__*/ __L.at(
+  __c27,
+  3,
+) as any as S.Schema<ListProjectsJobsRequest>;
+
 export type ListProjectsJobsMessagesMinimumImportanceEnum =
   | "JOB_MESSAGE_IMPORTANCE_UNKNOWN"
   | "JOB_MESSAGE_DEBUG"
@@ -2248,6 +3070,8 @@ export type ListProjectsJobsMessagesMinimumImportanceEnum =
   | "JOB_MESSAGE_BASIC"
   | "JOB_MESSAGE_WARNING"
   | "JOB_MESSAGE_ERROR";
+const ListProjectsJobsMessagesMinimumImportanceEnum = S.String;
+
 export interface ListProjectsJobsMessagesRequest {
   /** Return only messages with timestamps < end_time. The default is now (i.e. return up to the latest messages available). */
   endTime?: string;
@@ -2266,6 +3090,11 @@ export interface ListProjectsJobsMessagesRequest {
   /** If specified, return only messages with timestamps >= start_time. The default is the job creation time (i.e. beginning of messages). */
   startTime?: string;
 }
+const ListProjectsJobsMessagesRequest = /*@__PURE__*/ __L.at(
+  __c27,
+  4,
+) as any as S.Schema<ListProjectsJobsMessagesRequest>;
+
 export type JobMessageMessageImportanceEnum =
   | "JOB_MESSAGE_IMPORTANCE_UNKNOWN"
   | "JOB_MESSAGE_DEBUG"
@@ -2273,6 +3102,8 @@ export type JobMessageMessageImportanceEnum =
   | "JOB_MESSAGE_BASIC"
   | "JOB_MESSAGE_WARNING"
   | "JOB_MESSAGE_ERROR";
+const JobMessageMessageImportanceEnum = S.String;
+
 /** A particular message pertaining to a Dataflow job. */
 export interface JobMessage {
   /** Importance level of the message. */
@@ -2284,13 +3115,19 @@ export interface JobMessage {
   /** The timestamp of the message. */
   time?: string;
 }
+const JobMessage = /*@__PURE__*/ __L.at(__c27, 5) as any as S.Schema<JobMessage>;
+
 export type JobMessageList = Array<JobMessage>;
+const JobMessageList = /*@__PURE__*/ __L.at(__c27, 6) as any as S.Schema<JobMessageList>;
+
 export type AutoscalingEventEventTypeEnum =
   | "TYPE_UNKNOWN"
   | "TARGET_NUM_WORKERS_CHANGED"
   | "CURRENT_NUM_WORKERS_CHANGED"
   | "ACTUATION_FAILURE"
   | "NO_CHANGE";
+const AutoscalingEventEventTypeEnum = S.String;
+
 /** Structured data associated with this message. */
 export interface Parameter {
   /** Value for this parameter. */
@@ -2298,7 +3135,11 @@ export interface Parameter {
   /** Key or name for this parameter. */
   key?: string;
 }
+const Parameter = /*@__PURE__*/ __L.at(__c27, 7) as any as S.Schema<Parameter>;
+
 export type ParameterList = Array<Parameter>;
+const ParameterList = /*@__PURE__*/ __L.at(__c28, 0) as any as S.Schema<ParameterList>;
+
 /** A rich message format, including a human readable string, a key for identifying the message, and structured data associated with the message for programmatic consumption. */
 export interface StructuredMessage {
   /** Human-readable version of message. */
@@ -2308,6 +3149,8 @@ export interface StructuredMessage {
   /** Identifier for this message type. Used by external systems to internationalize or personalize message. */
   messageKey?: string;
 }
+const StructuredMessage = /*@__PURE__*/ __L.at(__c28, 1) as any as S.Schema<StructuredMessage>;
+
 /** A structured message reporting an autoscaling decision made by the Dataflow service. */
 export interface AutoscalingEvent {
   /** The current number of workers the job has. */
@@ -2323,7 +3166,14 @@ export interface AutoscalingEvent {
   /** The target number of workers the worker pool wants to resize to use. */
   targetNumWorkers?: string;
 }
+const AutoscalingEvent = /*@__PURE__*/ __L.at(__c28, 2) as any as S.Schema<AutoscalingEvent>;
+
 export type AutoscalingEventList = Array<AutoscalingEvent>;
+const AutoscalingEventList = /*@__PURE__*/ __L.at(
+  __c28,
+  3,
+) as any as S.Schema<AutoscalingEventList>;
+
 /** Response to a request to list job messages. */
 export interface ListJobMessagesResponse {
   /** Messages in ascending timestamp order. */
@@ -2333,6 +3183,11 @@ export interface ListJobMessagesResponse {
   /** Autoscaling events in ascending timestamp order. */
   autoscalingEvents?: AutoscalingEventList;
 }
+const ListJobMessagesResponse = /*@__PURE__*/ __L.at(
+  __c28,
+  4,
+) as any as S.Schema<ListJobMessagesResponse>;
+
 export interface ListProjectsLocationsConfigStoreSettingsRequest {
   /** Optional. A page token, received from a previous `ListConfigStoreSettings` call. */
   pageToken?: string;
@@ -2341,12 +3196,21 @@ export interface ListProjectsLocationsConfigStoreSettingsRequest {
   /** Optional. The maximum number of settings to return. */
   pageSize?: number;
 }
+const ListProjectsLocationsConfigStoreSettingsRequest = /*@__PURE__*/ __L.at(
+  __c28,
+  5,
+) as any as S.Schema<ListProjectsLocationsConfigStoreSettingsRequest>;
+
 export type ListProjectsLocationsJobsViewEnum =
   | "JOB_VIEW_UNKNOWN"
   | "JOB_VIEW_SUMMARY"
   | "JOB_VIEW_ALL"
   | "JOB_VIEW_DESCRIPTION";
+const ListProjectsLocationsJobsViewEnum = S.String;
+
 export type ListProjectsLocationsJobsFilterEnum = "UNKNOWN" | "ALL" | "TERMINATED" | "ACTIVE";
+const ListProjectsLocationsJobsFilterEnum = S.String;
+
 export interface ListProjectsLocationsJobsRequest {
   /** Deprecated. ListJobs always returns summaries now. Use GetJob for other JobViews. */
   view?: ListProjectsLocationsJobsViewEnum | (string & {});
@@ -2365,6 +3229,11 @@ export interface ListProjectsLocationsJobsRequest {
   /** Set this to the 'next_page_token' field of a previous response to request additional results in a long list. */
   pageToken?: string;
 }
+const ListProjectsLocationsJobsRequest = /*@__PURE__*/ __L.at(
+  __c28,
+  6,
+) as any as S.Schema<ListProjectsLocationsJobsRequest>;
+
 export type ListProjectsLocationsJobsMessagesMinimumImportanceEnum =
   | "JOB_MESSAGE_IMPORTANCE_UNKNOWN"
   | "JOB_MESSAGE_DEBUG"
@@ -2372,6 +3241,8 @@ export type ListProjectsLocationsJobsMessagesMinimumImportanceEnum =
   | "JOB_MESSAGE_BASIC"
   | "JOB_MESSAGE_WARNING"
   | "JOB_MESSAGE_ERROR";
+const ListProjectsLocationsJobsMessagesMinimumImportanceEnum = S.String;
+
 export interface ListProjectsLocationsJobsMessagesRequest {
   /** If supplied, this should be the value of next_page_token returned by an earlier call. This will cause the next page of results to be returned. */
   pageToken?: string;
@@ -2390,6 +3261,11 @@ export interface ListProjectsLocationsJobsMessagesRequest {
   /** The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that contains the job specified by job_id. */
   location: string;
 }
+const ListProjectsLocationsJobsMessagesRequest = /*@__PURE__*/ __L.at(
+  __c28,
+  7,
+) as any as S.Schema<ListProjectsLocationsJobsMessagesRequest>;
+
 export interface ListProjectsLocationsJobsSnapshotsRequest {
   /** The project ID to list snapshots for. */
   projectId: string;
@@ -2398,12 +3274,24 @@ export interface ListProjectsLocationsJobsSnapshotsRequest {
   /** If specified, list snapshots created from this job. */
   jobId: string;
 }
+const ListProjectsLocationsJobsSnapshotsRequest = /*@__PURE__*/ __L.at(
+  __c29,
+  0,
+) as any as S.Schema<ListProjectsLocationsJobsSnapshotsRequest>;
+
 export type SnapshotList = Array<Snapshot>;
+const SnapshotList = /*@__PURE__*/ __L.at(__c29, 1) as any as S.Schema<SnapshotList>;
+
 /** List of snapshots. */
 export interface ListSnapshotsResponse {
   /** Returned snapshots. */
   snapshots?: SnapshotList;
 }
+const ListSnapshotsResponse = /*@__PURE__*/ __L.at(
+  __c29,
+  2,
+) as any as S.Schema<ListSnapshotsResponse>;
+
 export interface ListProjectsLocationsSnapshotsRequest {
   /** If specified, list snapshots created from this job. */
   jobId?: string;
@@ -2412,6 +3300,11 @@ export interface ListProjectsLocationsSnapshotsRequest {
   /** The location to list snapshots in. */
   location: string;
 }
+const ListProjectsLocationsSnapshotsRequest = /*@__PURE__*/ __L.at(
+  __c29,
+  3,
+) as any as S.Schema<ListProjectsLocationsSnapshotsRequest>;
+
 export interface ListProjectsSnapshotsRequest {
   /** If specified, list snapshots created from this job. */
   jobId?: string;
@@ -2420,16 +3313,27 @@ export interface ListProjectsSnapshotsRequest {
   /** The project ID to list snapshots for. */
   projectId: string;
 }
+const ListProjectsSnapshotsRequest = /*@__PURE__*/ __L.at(
+  __c29,
+  4,
+) as any as S.Schema<ListProjectsSnapshotsRequest>;
+
 export type StatusList = Array<Status>;
+const StatusList = /*@__PURE__*/ __L.at(__c29, 5) as any as S.Schema<StatusList>;
+
 export type SourceSplitResponseOutcomeEnum =
   | "SOURCE_SPLIT_OUTCOME_UNKNOWN"
   | "SOURCE_SPLIT_OUTCOME_USE_CURRENT"
   | "SOURCE_SPLIT_OUTCOME_SPLITTING_HAPPENED";
+const SourceSplitResponseOutcomeEnum = S.String;
+
 export type DerivedSourceDerivationModeEnum =
   | "SOURCE_DERIVATION_MODE_UNKNOWN"
   | "SOURCE_DERIVATION_MODE_INDEPENDENT"
   | "SOURCE_DERIVATION_MODE_CHILD_OF_CURRENT"
   | "SOURCE_DERIVATION_MODE_SIBLING_OF_CURRENT";
+const DerivedSourceDerivationModeEnum = S.String;
+
 /** Specification of one of the bundles produced as a result of splitting a Source (e.g. when executing a SourceSplitRequest, or when splitting an active task using WorkItemStatus.dynamic_source_split), relative to the source being split. */
 export interface DerivedSource {
   /** Specification of the source. */
@@ -2437,12 +3341,18 @@ export interface DerivedSource {
   /** What source to base the produced source on (if any). */
   derivationMode?: DerivedSourceDerivationModeEnum | (string & {});
 }
+const DerivedSource = /*@__PURE__*/ __L.at(__c29, 6) as any as S.Schema<DerivedSource>;
+
 export type DerivedSourceList = Array<DerivedSource>;
+const DerivedSourceList = /*@__PURE__*/ __L.at(__c29, 7) as any as S.Schema<DerivedSourceList>;
+
 export type SourceSplitShardDerivationModeEnum =
   | "SOURCE_DERIVATION_MODE_UNKNOWN"
   | "SOURCE_DERIVATION_MODE_INDEPENDENT"
   | "SOURCE_DERIVATION_MODE_CHILD_OF_CURRENT"
   | "SOURCE_DERIVATION_MODE_SIBLING_OF_CURRENT";
+const SourceSplitShardDerivationModeEnum = S.String;
+
 /** DEPRECATED in favor of DerivedSource. */
 export interface SourceSplitShard {
   /** DEPRECATED */
@@ -2450,7 +3360,14 @@ export interface SourceSplitShard {
   /** DEPRECATED */
   source?: Source;
 }
+const SourceSplitShard = /*@__PURE__*/ __L.at(__c30, 0) as any as S.Schema<SourceSplitShard>;
+
 export type SourceSplitShardList = Array<SourceSplitShard>;
+const SourceSplitShardList = /*@__PURE__*/ __L.at(
+  __c30,
+  1,
+) as any as S.Schema<SourceSplitShardList>;
+
 /** The response to a SourceSplitRequest. */
 export interface SourceSplitResponse {
   /** Indicates whether splitting happened and produced a list of bundles. If this is USE_CURRENT_SOURCE_AS_IS, the current source should be processed "as is" without splitting. "bundles" is ignored in this case. If this is SPLITTING_HAPPENED, then "bundles" contains a list of bundles into which the source was split. */
@@ -2460,11 +3377,18 @@ export interface SourceSplitResponse {
   /** DEPRECATED in favor of bundles. */
   shards?: SourceSplitShardList;
 }
+const SourceSplitResponse = /*@__PURE__*/ __L.at(__c30, 2) as any as S.Schema<SourceSplitResponse>;
+
 /** The result of a SourceGetMetadataOperation. */
 export interface SourceGetMetadataResponse {
   /** The computed metadata. */
   metadata?: SourceMetadata;
 }
+const SourceGetMetadataResponse = /*@__PURE__*/ __L.at(
+  __c30,
+  3,
+) as any as S.Schema<SourceGetMetadataResponse>;
+
 /** The result of a SourceOperationRequest, specified in ReportWorkItemStatusRequest.source_operation when the work item is completed. */
 export interface SourceOperationResponse {
   /** A response to a request to split a source. */
@@ -2472,6 +3396,11 @@ export interface SourceOperationResponse {
   /** A response to a request to get metadata about a source. */
   getMetadata?: SourceGetMetadataResponse;
 }
+const SourceOperationResponse = /*@__PURE__*/ __L.at(
+  __c30,
+  4,
+) as any as S.Schema<SourceOperationResponse>;
+
 export type CounterMetadataKindEnum =
   | "INVALID"
   | "SUM"
@@ -2483,6 +3412,8 @@ export type CounterMetadataKindEnum =
   | "SET"
   | "DISTRIBUTION"
   | "LATEST_VALUE";
+const CounterMetadataKindEnum = S.String;
+
 export type CounterMetadataStandardUnitsEnum =
   | "BYTES"
   | "BYTES_PER_SEC"
@@ -2492,6 +3423,8 @@ export type CounterMetadataStandardUnitsEnum =
   | "TIMESTAMP_MSEC"
   | "TIMESTAMP_USEC"
   | "TIMESTAMP_NSEC";
+const CounterMetadataStandardUnitsEnum = S.String;
+
 /** CounterMetadata includes all static non-name non-value counter attributes. */
 export interface CounterMetadata {
   /** Counter aggregation kind. */
@@ -2503,8 +3436,14 @@ export interface CounterMetadata {
   /** Human-readable description of the counter semantics. */
   description?: string;
 }
+const CounterMetadata = /*@__PURE__*/ __L.at(__c30, 5) as any as S.Schema<CounterMetadata>;
+
 export type CounterStructuredNameOriginEnum = "SYSTEM" | "USER";
+const CounterStructuredNameOriginEnum = S.String;
+
 export type CounterStructuredNamePortionEnum = "ALL" | "KEY" | "VALUE";
+const CounterStructuredNamePortionEnum = S.String;
+
 /** Identifies a counter within a per-job namespace. Counters whose structured names are the same get merged into a single value for the job. */
 export interface CounterStructuredName {
   /** Counter name. Not necessarily globally-unique, but unique within the context of the other fields. Required. */
@@ -2528,6 +3467,11 @@ export interface CounterStructuredName {
   /** Index of an input collection that's being read from/written to as a side input. The index identifies a step's side inputs starting by 1 (e.g. the first side input has input_index 1, the third has input_index 3). Side inputs are identified by a pair of (original_step_name, input_index). This field helps uniquely identify them. */
   inputIndex?: number;
 }
+const CounterStructuredName = /*@__PURE__*/ __L.at(
+  __c30,
+  6,
+) as any as S.Schema<CounterStructuredName>;
+
 /** A single message which encapsulates structured name and metadata for a given counter. */
 export interface CounterStructuredNameAndMetadata {
   /** Metadata associated with a counter */
@@ -2535,6 +3479,11 @@ export interface CounterStructuredNameAndMetadata {
   /** Structured name of the counter. */
   name?: CounterStructuredName;
 }
+const CounterStructuredNameAndMetadata = /*@__PURE__*/ __L.at(
+  __c30,
+  7,
+) as any as S.Schema<CounterStructuredNameAndMetadata>;
+
 /** A representation of an int64, n, that is immune to precision loss when encoded in JSON. */
 export interface SplitInt64 {
   /** The low order bits: n & 0xffffffff. */
@@ -2542,6 +3491,8 @@ export interface SplitInt64 {
   /** The high order bits, including the sign: n >> 32. */
   highBits?: number;
 }
+const SplitInt64 = /*@__PURE__*/ __L.at(__c31, 0) as any as S.Schema<SplitInt64>;
+
 /** Histogram of value counts for a distribution. Buckets have an inclusive lower bound and exclusive upper bound and use "1,2,5 bucketing": The first bucket range is from [0,1) and all subsequent bucket boundaries are powers of ten multiplied by 1, 2, or 5. Thus, bucket boundaries are 0, 1, 2, 5, 10, 20, 50, 100, 200, 500, 1000, ... Negative values are not supported. */
 export interface Histogram {
   /** Counts of values in each bucket. For efficiency, prefix and trailing buckets with count = 0 are elided. Buckets can store the full range of values of an unsigned long, with ULLONG_MAX falling into the 59th bucket with range [1e19, 2e19). */
@@ -2549,6 +3500,8 @@ export interface Histogram {
   /** Starting index of first stored bucket. The non-inclusive upper-bound of the ith bucket is given by: pow(10,(i-first_bucket_offset)/3) * (1,2,5)[(i-first_bucket_offset)%3] */
   firstBucketOffset?: number;
 }
+const Histogram = /*@__PURE__*/ __L.at(__c31, 1) as any as S.Schema<Histogram>;
+
 /** A metric value representing a distribution. */
 export interface DistributionUpdate {
   /** Use an int64 since we'd prefer the added precision. If overflow is a common problem we can detect it and use an additional int64 or a double. */
@@ -2564,6 +3517,8 @@ export interface DistributionUpdate {
   /** (Optional) Histogram of value counts for the distribution. */
   histogram?: Histogram;
 }
+const DistributionUpdate = /*@__PURE__*/ __L.at(__c31, 2) as any as S.Schema<DistributionUpdate>;
+
 /** A representation of a floating point mean metric contribution. */
 export interface FloatingPointMean {
   /** The number of values being aggregated. */
@@ -2571,7 +3526,11 @@ export interface FloatingPointMean {
   /** The sum of all values being aggregated. */
   sum?: number;
 }
+const FloatingPointMean = /*@__PURE__*/ __L.at(__c31, 3) as any as S.Schema<FloatingPointMean>;
+
 export type BoundedTrieNodeMap = { [key: string]: BoundedTrieNode | undefined };
+const BoundedTrieNodeMap = /*@__PURE__*/ __L.at(__c31, 4) as any as S.Schema<BoundedTrieNodeMap>;
+
 /** A single node in a BoundedTrie. */
 export interface BoundedTrieNode {
   /** Children of this node. Must be empty if truncated is true. */
@@ -2579,6 +3538,8 @@ export interface BoundedTrieNode {
   /** Whether this node has been truncated. A truncated leaf represents possibly many children with the same prefix. */
   truncated?: boolean;
 }
+const BoundedTrieNode = /*@__PURE__*/ __L.at(__c31, 5) as any as S.Schema<BoundedTrieNode>;
+
 /** The message type used for encoding metrics of type bounded trie. */
 export interface BoundedTrie {
   /** A compact representation of all the elements in this trie. */
@@ -2588,6 +3549,8 @@ export interface BoundedTrie {
   /** A more efficient representation for metrics consisting of a single value. */
   singleton?: StringList_;
 }
+const BoundedTrie = /*@__PURE__*/ __L.at(__c31, 6) as any as S.Schema<BoundedTrie>;
+
 /** A metric value representing temporal values of a variable. */
 export interface IntegerGauge {
   /** The value of the variable represented by this gauge. */
@@ -2595,11 +3558,15 @@ export interface IntegerGauge {
   /** The time at which this value was measured. Measured as msecs from epoch. */
   timestamp?: string;
 }
+const IntegerGauge = /*@__PURE__*/ __L.at(__c31, 7) as any as S.Schema<IntegerGauge>;
+
 /** A metric value representing a list of strings. */
 export interface StringList {
   /** Elements of the list. */
   elements?: StringList_;
 }
+const StringList = /*@__PURE__*/ __L.at(__c32, 0) as any as S.Schema<StringList>;
+
 export type NameAndKindKindEnum =
   | "INVALID"
   | "SUM"
@@ -2611,6 +3578,8 @@ export type NameAndKindKindEnum =
   | "SET"
   | "DISTRIBUTION"
   | "LATEST_VALUE";
+const NameAndKindKindEnum = S.String;
+
 /** Basic metadata about a counter. */
 export interface NameAndKind {
   /** Name of the counter. */
@@ -2618,6 +3587,8 @@ export interface NameAndKind {
   /** Counter aggregation kind. */
   kind?: NameAndKindKindEnum | (string & {});
 }
+const NameAndKind = /*@__PURE__*/ __L.at(__c32, 1) as any as S.Schema<NameAndKind>;
+
 /** A representation of an integer mean metric contribution. */
 export interface IntegerMean {
   /** The sum of all values being aggregated. */
@@ -2625,18 +3596,28 @@ export interface IntegerMean {
   /** The number of values being aggregated. */
   count?: SplitInt64;
 }
+const IntegerMean = /*@__PURE__*/ __L.at(__c32, 2) as any as S.Schema<IntegerMean>;
+
 export type DoubleList = Array<number>;
+const DoubleList = /*@__PURE__*/ __L.at(__c32, 3) as any as S.Schema<DoubleList>;
+
 /** A metric value representing a list of floating point numbers. */
 export interface FloatingPointList {
   /** Elements of the list. */
   elements?: DoubleList;
 }
+const FloatingPointList = /*@__PURE__*/ __L.at(__c32, 4) as any as S.Schema<FloatingPointList>;
+
 export type SplitInt64List = Array<SplitInt64>;
+const SplitInt64List = /*@__PURE__*/ __L.at(__c32, 5) as any as S.Schema<SplitInt64List>;
+
 /** A metric value representing a list of integers. */
 export interface IntegerList {
   /** Elements of the list. */
   elements?: SplitInt64List;
 }
+const IntegerList = /*@__PURE__*/ __L.at(__c32, 6) as any as S.Schema<IntegerList>;
+
 /** An update to a Counter sent from a worker. Next ID: 17 */
 export interface CounterUpdate {
   /** Counter structured name and metadata. */
@@ -2672,7 +3653,11 @@ export interface CounterUpdate {
   /** List of integers, for Set. */
   integerList?: IntegerList;
 }
+const CounterUpdate = /*@__PURE__*/ __L.at(__c32, 7) as any as S.Schema<CounterUpdate>;
+
 export type CounterUpdateList = Array<CounterUpdate>;
+const CounterUpdateList = /*@__PURE__*/ __L.at(__c33, 0) as any as S.Schema<CounterUpdateList>;
+
 /** A position that encapsulates an inner position and an index for the inner position. A ConcatPosition can be used by a reader of a source that encapsulates a set of other sources. */
 export interface ConcatPosition {
   /** Index of the inner source. */
@@ -2680,6 +3665,8 @@ export interface ConcatPosition {
   /** Position within the inner source. */
   position?: Position;
 }
+const ConcatPosition = /*@__PURE__*/ __L.at(__c33, 1) as any as S.Schema<ConcatPosition>;
+
 /** Position defines a position within a collection of data. The value can be either the end position, a key (used with ordered collections), a byte offset, or a record index. */
 export interface Position {
   /** CloudPosition is a base64 encoded BatchShufflePosition (with FIXED sharding). */
@@ -2695,6 +3682,8 @@ export interface Position {
   /** CloudPosition is a concat position. */
   concatPosition?: ConcatPosition;
 }
+const Position = /*@__PURE__*/ __L.at(__c33, 2) as any as S.Schema<Position>;
+
 /** Represents the level of parallelism in a WorkItem's input, reported by the worker. */
 export interface ReportedParallelism {
   /** Specifies the level of parallelism in case it is finite. */
@@ -2702,6 +3691,8 @@ export interface ReportedParallelism {
   /** Specifies whether the parallelism is infinite. If true, "value" is ignored. Infinite parallelism means the service will assume that the work item can always be split into more non-empty work items by dynamic splitting. This is a work-around for lack of support for infinity by the current JSON-based Java RPC stack. */
   isInfinite?: boolean;
 }
+const ReportedParallelism = /*@__PURE__*/ __L.at(__c33, 3) as any as S.Schema<ReportedParallelism>;
+
 /** A progress measurement of a WorkItem by a worker. */
 export interface ApproximateReportedProgress {
   /** Completion as fraction of the input consumed, from 0.0 (beginning, nothing consumed), to 1.0 (end of the input, entire input consumed). */
@@ -2713,6 +3704,11 @@ export interface ApproximateReportedProgress {
   /** A Position within the work to represent a progress. */
   position?: Position;
 }
+const ApproximateReportedProgress = /*@__PURE__*/ __L.at(
+  __c33,
+  4,
+) as any as S.Schema<ApproximateReportedProgress>;
+
 /** When a task splits using WorkItemStatus.dynamic_source_split, this message describes the two parts of the split relative to the description of the current task's input. */
 export interface DynamicSourceSplit {
   /** Primary part (continued to be processed by worker). Specified relative to the previously-current source. Becomes current. */
@@ -2720,6 +3716,8 @@ export interface DynamicSourceSplit {
   /** Residual part (returned to the pool of work). Specified relative to the previously-current source. */
   residual?: DerivedSource;
 }
+const DynamicSourceSplit = /*@__PURE__*/ __L.at(__c33, 5) as any as S.Schema<DynamicSourceSplit>;
+
 /** Obsolete in favor of ApproximateReportedProgress and ApproximateSplitRequest. */
 export interface ApproximateProgress {
   /** Obsolete. */
@@ -2729,6 +3727,8 @@ export interface ApproximateProgress {
   /** Obsolete. */
   remainingTime?: string;
 }
+const ApproximateProgress = /*@__PURE__*/ __L.at(__c33, 6) as any as S.Schema<ApproximateProgress>;
+
 /** DEPRECATED in favor of DynamicSourceSplit. */
 export interface SourceFork {
   /** DEPRECATED */
@@ -2740,6 +3740,8 @@ export interface SourceFork {
   /** DEPRECATED */
   primarySource?: DerivedSource;
 }
+const SourceFork = /*@__PURE__*/ __L.at(__c33, 7) as any as S.Schema<SourceFork>;
+
 /** Conveys a worker's progress through the work described by a WorkItem. */
 export interface WorkItemStatus {
   /** Specifies errors which occurred during processing. If errors are provided, and completed = true, then the WorkItem is considered to have failed. */
@@ -2771,7 +3773,11 @@ export interface WorkItemStatus {
   /** Total time the worker spent being throttled by external systems. */
   totalThrottlerWaitTimeSeconds?: number;
 }
+const WorkItemStatus = /*@__PURE__*/ __L.at(__c34, 0) as any as S.Schema<WorkItemStatus>;
+
 export type WorkItemStatusList = Array<WorkItemStatus>;
+const WorkItemStatusList = /*@__PURE__*/ __L.at(__c34, 1) as any as S.Schema<WorkItemStatusList>;
+
 /** Request to report the status of WorkItems. */
 export interface ReportWorkItemStatusRequest {
   /** The ID of the worker reporting the WorkItem status. If this does not match the ID of the worker which the Dataflow service believes currently has the lease on the WorkItem, the report will be dropped (with an error response). */
@@ -2787,6 +3793,11 @@ export interface ReportWorkItemStatusRequest {
   /** Optional. The project number of the project which owns the WorkItem's job. */
   projectNumber?: string;
 }
+const ReportWorkItemStatusRequest = /*@__PURE__*/ __L.at(
+  __c34,
+  2,
+) as any as S.Schema<ReportWorkItemStatusRequest>;
+
 export interface ReportStatusProjectsJobsWorkItemsRequest {
   /** The project which owns the WorkItem's job. */
   projectId: string;
@@ -2795,6 +3806,11 @@ export interface ReportStatusProjectsJobsWorkItemsRequest {
   /** Request body */
   body?: ReportWorkItemStatusRequest;
 }
+const ReportStatusProjectsJobsWorkItemsRequest = /*@__PURE__*/ __L.at(
+  __c34,
+  3,
+) as any as S.Schema<ReportStatusProjectsJobsWorkItemsRequest>;
+
 /** The metric short id is returned to the user alongside an offset into ReportWorkItemStatusRequest */
 export interface MetricShortId {
   /** The service-generated short identifier for the metric. */
@@ -2802,7 +3818,11 @@ export interface MetricShortId {
   /** The index of the corresponding metric in the ReportWorkItemStatusRequest. Required. */
   metricIndex?: number;
 }
+const MetricShortId = /*@__PURE__*/ __L.at(__c34, 4) as any as S.Schema<MetricShortId>;
+
 export type MetricShortIdList = Array<MetricShortId>;
+const MetricShortIdList = /*@__PURE__*/ __L.at(__c34, 5) as any as S.Schema<MetricShortIdList>;
+
 /** A suggestion by the service to the worker to dynamically split the WorkItem. */
 export interface ApproximateSplitRequest {
   /** The fraction of the remainder of work to split the work item at, from 0.0 (split at the current position) to 1.0 (end of the input). */
@@ -2812,6 +3832,11 @@ export interface ApproximateSplitRequest {
   /** A fraction at which to split the work item, from 0.0 (beginning of the input) to 1.0 (end of the input). */
   fractionConsumed?: number;
 }
+const ApproximateSplitRequest = /*@__PURE__*/ __L.at(
+  __c34,
+  6,
+) as any as S.Schema<ApproximateSplitRequest>;
+
 /** Proto describing a hot key detected on a given WorkItem. */
 export interface HotKeyDetection {
   /** System-defined name of the step containing this hot key. Unique across the workflow. */
@@ -2821,6 +3846,8 @@ export interface HotKeyDetection {
   /** User-provided name of the step that contains this hot key. */
   userStepName?: string;
 }
+const HotKeyDetection = /*@__PURE__*/ __L.at(__c34, 7) as any as S.Schema<HotKeyDetection>;
+
 /** The Dataflow service's idea of the current state of a WorkItem being processed by a worker. */
 export interface WorkItemServiceState {
   /** Obsolete, always empty. */
@@ -2844,7 +3871,17 @@ export interface WorkItemServiceState {
   /** The index value to use for the next report sent by the worker. Note: If the report call fails for whatever reason, the worker should reuse this index for subsequent report attempts. */
   nextReportIndex?: string;
 }
+const WorkItemServiceState = /*@__PURE__*/ __L.at(
+  __c35,
+  0,
+) as any as S.Schema<WorkItemServiceState>;
+
 export type WorkItemServiceStateList = Array<WorkItemServiceState>;
+const WorkItemServiceStateList = /*@__PURE__*/ __L.at(
+  __c35,
+  1,
+) as any as S.Schema<WorkItemServiceStateList>;
+
 /** Response from a request to report the status of WorkItems. */
 export interface ReportWorkItemStatusResponse {
   /** A set of messages indicating the service-side state for each WorkItem whose status was reported, in the same order as the WorkItemStatus messages in the ReportWorkItemStatusRequest which resulting in this response. */
@@ -2852,6 +3889,11 @@ export interface ReportWorkItemStatusResponse {
   /** Untranslated bag-of-bytes WorkProgressUpdateResponse for UnifiedWorker. */
   unifiedWorkerResponse?: DocumentMap;
 }
+const ReportWorkItemStatusResponse = /*@__PURE__*/ __L.at(
+  __c35,
+  2,
+) as any as S.Schema<ReportWorkItemStatusResponse>;
+
 export interface ReportStatusProjectsLocationsJobsWorkItemsRequest {
   /** The project which owns the WorkItem's job. */
   projectId: string;
@@ -2862,14 +3904,29 @@ export interface ReportStatusProjectsLocationsJobsWorkItemsRequest {
   /** Request body */
   body?: ReportWorkItemStatusRequest;
 }
+const ReportStatusProjectsLocationsJobsWorkItemsRequest = /*@__PURE__*/ __L.at(
+  __c35,
+  3,
+) as any as S.Schema<ReportStatusProjectsLocationsJobsWorkItemsRequest>;
+
 /** Request message for ResolveConfigStoreSetting. */
 export interface ResolveConfigStoreSettingRequest {}
+const ResolveConfigStoreSettingRequest = /*@__PURE__*/ __L.at(
+  __c35,
+  4,
+) as any as S.Schema<ResolveConfigStoreSettingRequest>;
+
 export interface ResolveFoldersLocationsConfigStoreSettingsRequest {
   /** Required. The name of the setting to resolve. */
   name: string;
   /** Request body */
   body?: ResolveConfigStoreSettingRequest;
 }
+const ResolveFoldersLocationsConfigStoreSettingsRequest = /*@__PURE__*/ __L.at(
+  __c35,
+  5,
+) as any as S.Schema<ResolveFoldersLocationsConfigStoreSettingsRequest>;
+
 /** Response message for ResolveConfigStoreSetting. */
 export interface ResolveConfigStoreSettingResponse {
   /** The list of settings that were considered during resolution. */
@@ -2877,24 +3934,41 @@ export interface ResolveConfigStoreSettingResponse {
   /** The dry-run setting result. */
   setting?: ConfigStoreSetting;
 }
+const ResolveConfigStoreSettingResponse = /*@__PURE__*/ __L.at(
+  __c35,
+  6,
+) as any as S.Schema<ResolveConfigStoreSettingResponse>;
+
 export interface ResolveOrganizationsLocationsConfigStoreSettingsRequest {
   /** Required. The name of the setting to resolve. */
   name: string;
   /** Request body */
   body?: ResolveConfigStoreSettingRequest;
 }
+const ResolveOrganizationsLocationsConfigStoreSettingsRequest = /*@__PURE__*/ __L.at(
+  __c35,
+  7,
+) as any as S.Schema<ResolveOrganizationsLocationsConfigStoreSettingsRequest>;
+
 export interface ResolveProjectsLocationsConfigStoreSettingsRequest {
   /** Required. The name of the setting to resolve. */
   name: string;
   /** Request body */
   body?: ResolveConfigStoreSettingRequest;
 }
+const ResolveProjectsLocationsConfigStoreSettingsRequest = /*@__PURE__*/ __L.at(
+  __c36,
+  0,
+) as any as S.Schema<ResolveProjectsLocationsConfigStoreSettingsRequest>;
+
 export type SendDebugCaptureRequestDataFormatEnum =
   | "DATA_FORMAT_UNSPECIFIED"
   | "RAW"
   | "JSON"
   | "ZLIB"
   | "BROTLI";
+const SendDebugCaptureRequestDataFormatEnum = S.String;
+
 /** Request to send encoded debug information. Next ID: 8 */
 export interface SendDebugCaptureRequest {
   /** The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that contains the job specified by job_id. */
@@ -2908,6 +3982,11 @@ export interface SendDebugCaptureRequest {
   /** Format for the data field above (id=5). */
   dataFormat?: SendDebugCaptureRequestDataFormatEnum | (string & {});
 }
+const SendDebugCaptureRequest = /*@__PURE__*/ __L.at(
+  __c36,
+  1,
+) as any as S.Schema<SendDebugCaptureRequest>;
+
 export interface SendCaptureProjectsJobsDebugRequest {
   /** The job id. */
   jobId: string;
@@ -2916,8 +3995,15 @@ export interface SendCaptureProjectsJobsDebugRequest {
   /** Request body */
   body?: SendDebugCaptureRequest;
 }
+const SendCaptureProjectsJobsDebugRequest = /*@__PURE__*/ __L.at(
+  __c36,
+  2,
+) as any as S.Schema<SendCaptureProjectsJobsDebugRequest>;
+
 /** Response to a send capture request. nothing */
 export interface SendDebugCaptureResponse {}
+const SendDebugCaptureResponse = Empty as any as S.Schema<SendDebugCaptureResponse>;
+
 export interface SendCaptureProjectsLocationsJobsDebugRequest {
   /** The job id. */
   jobId: string;
@@ -2928,6 +4014,11 @@ export interface SendCaptureProjectsLocationsJobsDebugRequest {
   /** Request body */
   body?: SendDebugCaptureRequest;
 }
+const SendCaptureProjectsLocationsJobsDebugRequest = /*@__PURE__*/ __L.at(
+  __c36,
+  3,
+) as any as S.Schema<SendCaptureProjectsLocationsJobsDebugRequest>;
+
 /** Request to create a snapshot of a job. */
 export interface SnapshotJobRequest {
   /** The location that contains this job. */
@@ -2939,6 +4030,8 @@ export interface SnapshotJobRequest {
   /** User specified description of the snapshot. Maybe empty. */
   description?: string;
 }
+const SnapshotJobRequest = /*@__PURE__*/ __L.at(__c36, 4) as any as S.Schema<SnapshotJobRequest>;
+
 export interface SnapshotProjectsJobsRequest {
   /** The project which owns the job to be snapshotted. */
   projectId: string;
@@ -2947,6 +4040,11 @@ export interface SnapshotProjectsJobsRequest {
   /** Request body */
   body?: SnapshotJobRequest;
 }
+const SnapshotProjectsJobsRequest = /*@__PURE__*/ __L.at(
+  __c36,
+  5,
+) as any as S.Schema<SnapshotProjectsJobsRequest>;
+
 export interface SnapshotProjectsLocationsJobsRequest {
   /** The project which owns the job to be snapshotted. */
   projectId: string;
@@ -2957,6 +4055,11 @@ export interface SnapshotProjectsLocationsJobsRequest {
   /** Request body */
   body?: SnapshotJobRequest;
 }
+const SnapshotProjectsLocationsJobsRequest = /*@__PURE__*/ __L.at(
+  __c36,
+  6,
+) as any as S.Schema<SnapshotProjectsLocationsJobsRequest>;
+
 export interface UpdateProjectsJobsRequest {
   /** The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that contains this job. */
   location?: string;
@@ -2969,6 +4072,11 @@ export interface UpdateProjectsJobsRequest {
   /** Request body */
   body?: Job;
 }
+const UpdateProjectsJobsRequest = /*@__PURE__*/ __L.at(
+  __c36,
+  7,
+) as any as S.Schema<UpdateProjectsJobsRequest>;
+
 export interface UpdateProjectsLocationsJobsRequest {
   /** The ID of the Cloud Platform project that the job belongs to. */
   projectId: string;
@@ -2981,6 +4089,11 @@ export interface UpdateProjectsLocationsJobsRequest {
   /** Request body */
   body?: Job;
 }
+const UpdateProjectsLocationsJobsRequest = /*@__PURE__*/ __L.at(
+  __c37,
+  0,
+) as any as S.Schema<UpdateProjectsLocationsJobsRequest>;
+
 /** Contains per-user worker telemetry used in streaming autoscaling. */
 export interface StreamingScalingReport {
   outstandingBytesCount?: number;
@@ -2999,6 +4112,11 @@ export interface StreamingScalingReport {
   activeThreadCount?: number;
   activeBundleCount?: number;
 }
+const StreamingScalingReport = /*@__PURE__*/ __L.at(
+  __c37,
+  1,
+) as any as S.Schema<StreamingScalingReport>;
+
 /** Information about the memory usage of a worker or a container within a worker. */
 export interface MemInfo {
   /** Total memory (RSS) usage since start up in GB * ms. */
@@ -3012,13 +4130,24 @@ export interface MemInfo {
   /** Instantenous memory limit in bytes. */
   currentLimitBytes?: string;
 }
+const MemInfo = /*@__PURE__*/ __L.at(__c37, 2) as any as S.Schema<MemInfo>;
+
 export type MemInfoList = Array<MemInfo>;
+const MemInfoList = /*@__PURE__*/ __L.at(__c37, 3) as any as S.Schema<MemInfoList>;
+
 export type ResourceUtilizationReportMap = { [key: string]: ResourceUtilizationReport | undefined };
+const ResourceUtilizationReportMap = /*@__PURE__*/ __L.at(
+  __c37,
+  4,
+) as any as S.Schema<ResourceUtilizationReportMap>;
+
 /** Utilization details about the GPU. */
 export interface GPUUtilization {
   /** Required. GPU utilization rate of any kernel over the last sample period in the range of [0, 1]. */
   rate?: number;
 }
+const GPUUtilization = /*@__PURE__*/ __L.at(__c37, 5) as any as S.Schema<GPUUtilization>;
+
 /** Information about the GPU usage on the worker. */
 export interface GPUUsage {
   /** Required. Utilization info about the GPU. */
@@ -3026,7 +4155,11 @@ export interface GPUUsage {
   /** Required. Timestamp of the measurement. */
   timestamp?: string;
 }
+const GPUUsage = /*@__PURE__*/ __L.at(__c37, 6) as any as S.Schema<GPUUsage>;
+
 export type GPUUsageList = Array<GPUUsage>;
+const GPUUsageList = /*@__PURE__*/ __L.at(__c37, 7) as any as S.Schema<GPUUsageList>;
+
 /** Modeled after information exposed by /proc/stat. */
 export interface CPUTime {
   /** Total active CPU time across all cores (ie., non-idle) in milliseconds since start-up. */
@@ -3036,7 +4169,11 @@ export interface CPUTime {
   /** Average CPU utilization rate (% non-idle cpu / second) since previous sample. */
   rate?: number;
 }
+const CPUTime = /*@__PURE__*/ __L.at(__c38, 0) as any as S.Schema<CPUTime>;
+
 export type CPUTimeList = Array<CPUTime>;
+const CPUTimeList = /*@__PURE__*/ __L.at(__c38, 1) as any as S.Schema<CPUTimeList>;
+
 /** Worker metrics exported from workers. This contains resource utilization metrics accumulated from a variety of sources. For more information, see go/df-resource-signals. */
 export interface ResourceUtilizationReport {
   /** Memory utilization samples. */
@@ -3048,6 +4185,11 @@ export interface ResourceUtilizationReport {
   /** CPU utilization samples. */
   cpuTime?: CPUTimeList;
 }
+const ResourceUtilizationReport = /*@__PURE__*/ __L.at(
+  __c38,
+  2,
+) as any as S.Schema<ResourceUtilizationReport>;
+
 /** WorkerHealthReport contains information about the health of a worker. The VM should be identified by the labels attached to the WorkerMessage that this health ping belongs to. */
 export interface WorkerHealthReport {
   /** The time the VM was booted. */
@@ -3065,6 +4207,8 @@ export interface WorkerHealthReport {
   /** Whether the VM is currently healthy. */
   vmIsHealthy?: boolean;
 }
+const WorkerHealthReport = /*@__PURE__*/ __L.at(__c38, 3) as any as S.Schema<WorkerHealthReport>;
+
 /** Contains per-worker telemetry about the data sampling feature. */
 export interface DataSamplingReport {
   /** Optional. Delta of errors counts from retrieving, or translating the samples from previous report. */
@@ -3082,6 +4226,8 @@ export interface DataSamplingReport {
   /** Optional. Delta of errors counts from persisting the samples from previous report. */
   persistenceErrorsCount?: string;
 }
+const DataSamplingReport = /*@__PURE__*/ __L.at(__c38, 4) as any as S.Schema<DataSamplingReport>;
+
 /** The gauge value of a metric. */
 export interface DataflowGaugeValue {
   /** The value of the gauge. */
@@ -3089,6 +4235,8 @@ export interface DataflowGaugeValue {
   /** The timestamp when the gauge was recorded. */
   measuredTime?: string;
 }
+const DataflowGaugeValue = /*@__PURE__*/ __L.at(__c38, 5) as any as S.Schema<DataflowGaugeValue>;
+
 /** Linear buckets with the following boundaries for indices in 0 to n-1. - i in [0, n-1]: [start + (i)*width, start + (i+1)*width) */
 export interface Linear {
   /** Distance between bucket boundaries. Must be greater than 0. */
@@ -3098,6 +4246,8 @@ export interface Linear {
   /** Lower bound of the first bucket. */
   start?: number;
 }
+const Linear = /*@__PURE__*/ __L.at(__c38, 6) as any as S.Schema<Linear>;
+
 /** Exponential buckets where the growth factor between buckets is `2**(2**-scale)`. e.g. for `scale=1` growth factor is `2**(2**(-1))=sqrt(2)`. `n` buckets will have the following boundaries. - 0th: [0, gf) - i in [1, n-1]: [gf^(i), gf^(i+1)) */
 export interface Base2Exponent {
   /** Must be greater than 0. */
@@ -3105,6 +4255,8 @@ export interface Base2Exponent {
   /** Must be between -3 and 3. This forces the growth factor of the bucket boundaries to be between `2^(1/8)` and `256`. */
   scale?: number;
 }
+const Base2Exponent = /*@__PURE__*/ __L.at(__c38, 7) as any as S.Schema<Base2Exponent>;
+
 /** `BucketOptions` describes the bucket boundaries used in the histogram. */
 export interface BucketOptions {
   /** Bucket boundaries grow linearly. */
@@ -3112,6 +4264,8 @@ export interface BucketOptions {
   /** Bucket boundaries grow exponentially. */
   exponential?: Base2Exponent;
 }
+const BucketOptions = /*@__PURE__*/ __L.at(__c39, 0) as any as S.Schema<BucketOptions>;
+
 /** Statistics for the underflow and overflow bucket. */
 export interface OutlierStats {
   /** Number of values that are smaller than the lower bound of the smallest bucket. */
@@ -3123,6 +4277,8 @@ export interface OutlierStats {
   /** Number of values that are larger than the upper bound of the largest bucket. */
   overflowCount?: string;
 }
+const OutlierStats = /*@__PURE__*/ __L.at(__c39, 1) as any as S.Schema<OutlierStats>;
+
 /** Summary statistics for a population of values. HistogramValue contains a sequence of buckets and gives a count of values that fall into each bucket. Bucket boundares are defined by a formula and bucket widths are either fixed or exponentially increasing. */
 export interface DataflowHistogramValue {
   /** Optional. The number of values in each bucket of the histogram, as described in `bucket_options`. `bucket_counts` should contain N values, where N is the number of buckets specified in `bucket_options`. If `bucket_counts` has fewer than N values, the remaining values are assumed to be 0. */
@@ -3134,6 +4290,11 @@ export interface DataflowHistogramValue {
   /** Statistics on the values recorded in the histogram that fall out of the bucket boundaries. */
   outlierStats?: OutlierStats;
 }
+const DataflowHistogramValue = /*@__PURE__*/ __L.at(
+  __c39,
+  2,
+) as any as S.Schema<DataflowHistogramValue>;
+
 /** The value of a metric along with its name and labels. */
 export interface MetricValue {
   /** Integer value of this metric. */
@@ -3147,7 +4308,11 @@ export interface MetricValue {
   /** Base name for this metric. */
   metric?: string;
 }
+const MetricValue = /*@__PURE__*/ __L.at(__c39, 3) as any as S.Schema<MetricValue>;
+
 export type MetricValueList = Array<MetricValue>;
+const MetricValueList = /*@__PURE__*/ __L.at(__c39, 4) as any as S.Schema<MetricValueList>;
+
 /** Metrics for a particular unfused step and namespace. A metric is uniquely identified by the `metrics_namespace`, `original_step`, `metric name` and `metric_labels`. */
 export interface PerStepNamespaceMetrics {
   /** The original system name of the unfused step that these metrics are reported from. */
@@ -3157,17 +4322,34 @@ export interface PerStepNamespaceMetrics {
   /** The namespace of these metrics on the worker. */
   metricsNamespace?: string;
 }
+const PerStepNamespaceMetrics = /*@__PURE__*/ __L.at(
+  __c39,
+  5,
+) as any as S.Schema<PerStepNamespaceMetrics>;
+
 export type PerStepNamespaceMetricsList = Array<PerStepNamespaceMetrics>;
+const PerStepNamespaceMetricsList = /*@__PURE__*/ __L.at(
+  __c39,
+  6,
+) as any as S.Schema<PerStepNamespaceMetricsList>;
+
 /** Per worker metrics. */
 export interface PerWorkerMetrics {
   /** Optional. Metrics for a particular unfused step and namespace. */
   perStepNamespaceMetrics?: PerStepNamespaceMetricsList;
 }
+const PerWorkerMetrics = /*@__PURE__*/ __L.at(__c39, 7) as any as S.Schema<PerWorkerMetrics>;
+
 /** Shutdown notification from workers. This is to be sent by the shutdown script of the worker VM so that the backend knows that the VM is being shut down. */
 export interface WorkerShutdownNotice {
   /** The reason for the worker shutdown. Current possible values are: "UNKNOWN": shutdown reason is unknown. "PREEMPTION": shutdown reason is preemption. Other possible reasons may be added in the future. */
   reason?: string;
 }
+const WorkerShutdownNotice = /*@__PURE__*/ __L.at(
+  __c40,
+  0,
+) as any as S.Schema<WorkerShutdownNotice>;
+
 /** A message code is used to report status and error messages to the service. The message codes are intended to be machine readable. The service will take care of translating these into user understandable messages if necessary. Example use cases: 1. Worker processes reporting successful startup. 2. Worker processes reporting specific errors (e.g. package staging failure). */
 export interface WorkerMessageCode {
   /** The code is a string intended for consumption by a machine that identifies the type of message being sent. Examples: 1. "HARNESS_STARTED" might be used to indicate the worker harness has started. 2. "GCS_DOWNLOAD_ERROR" might be used to indicate an error downloading a Cloud Storage file as part of the boot process of one of the worker containers. This is a string and not an enum to make it easy to add new codes without waiting for an API change. */
@@ -3175,6 +4357,8 @@ export interface WorkerMessageCode {
   /** Parameters contains specific information about the code. This is a struct to allow parameters of different types. Examples: 1. For a "HARNESS_STARTED" message parameters might provide the name of the worker and additional data like timing information. 2. For a "GCS_DOWNLOAD_ERROR" parameters might contain fields listing the Cloud Storage objects being downloaded and fields containing errors. In general complex data structures should be avoided. If a worker needs to send a specific and complicated data structure then please consider defining a new proto and adding it to the data oneof in WorkerMessageResponse. Conventions: Parameters should only be used for information that isn't typically passed as a label. hostname and other worker identifiers should almost always be passed as labels since they will be included on most messages. */
   parameters?: DocumentMap;
 }
+const WorkerMessageCode = /*@__PURE__*/ __L.at(__c40, 1) as any as S.Schema<WorkerMessageCode>;
+
 export type WorkerLifecycleEventEventEnum =
   | "UNKNOWN_EVENT"
   | "OS_START"
@@ -3184,6 +4368,8 @@ export type WorkerLifecycleEventEventEnum =
   | "STAGING_FILES_DOWNLOAD_FINISH"
   | "SDK_INSTALL_START"
   | "SDK_INSTALL_FINISH";
+const WorkerLifecycleEventEventEnum = S.String;
+
 /** A report of an event in a worker's lifecycle. The proto contains one event, because the worker is expected to asynchronously send each message immediately after the event. Due to this asynchrony, messages may arrive out of order (or missing), and it is up to the consumer to interpret. The timestamp of the event is in the enclosing WorkerMessage proto. */
 export interface WorkerLifecycleEvent {
   /** The start time of this container. All events will report this so that events can be grouped together across container/VM restarts. */
@@ -3193,11 +4379,21 @@ export interface WorkerLifecycleEvent {
   /** Other stats that can accompany an event. E.g. { "downloaded_bytes" : "123456" } */
   metadata?: StringMap;
 }
+const WorkerLifecycleEvent = /*@__PURE__*/ __L.at(
+  __c40,
+  2,
+) as any as S.Schema<WorkerLifecycleEvent>;
+
 /** Contains information about the thread scaling information of a worker. */
 export interface WorkerThreadScalingReport {
   /** Current number of active threads in a worker. */
   currentThreadCount?: number;
 }
+const WorkerThreadScalingReport = /*@__PURE__*/ __L.at(
+  __c40,
+  3,
+) as any as S.Schema<WorkerThreadScalingReport>;
+
 /** WorkerMessage provides information to the backend about a worker. */
 export interface WorkerMessage {
   /** The timestamp of the worker_message. */
@@ -3223,7 +4419,11 @@ export interface WorkerMessage {
   /** Thread scaling information reported by workers. */
   workerThreadScalingReport?: WorkerThreadScalingReport;
 }
+const WorkerMessage = /*@__PURE__*/ __L.at(__c40, 4) as any as S.Schema<WorkerMessage>;
+
 export type WorkerMessageList = Array<WorkerMessage>;
+const WorkerMessageList = /*@__PURE__*/ __L.at(__c40, 5) as any as S.Schema<WorkerMessageList>;
+
 /** A request for sending worker messages to the service. */
 export interface SendWorkerMessagesRequest {
   /** The WorkerMessages to send. */
@@ -3231,27 +4431,52 @@ export interface SendWorkerMessagesRequest {
   /** The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that contains the job. */
   location?: string;
 }
+const SendWorkerMessagesRequest = /*@__PURE__*/ __L.at(
+  __c40,
+  6,
+) as any as S.Schema<SendWorkerMessagesRequest>;
+
 export interface WorkerMessagesProjectsRequest {
   /** The project to send the WorkerMessages to. */
   projectId: string;
   /** Request body */
   body?: SendWorkerMessagesRequest;
 }
+const WorkerMessagesProjectsRequest = /*@__PURE__*/ __L.at(
+  __c40,
+  7,
+) as any as S.Schema<WorkerMessagesProjectsRequest>;
+
 /** Contains per-user-worker streaming scaling recommendation from the backend. */
 export interface StreamingScalingReportResponse {
   /** Maximum thread count limit; */
   maximumThreadCount?: number;
 }
+const StreamingScalingReportResponse = /*@__PURE__*/ __L.at(
+  __c41,
+  0,
+) as any as S.Schema<StreamingScalingReportResponse>;
+
 /** WorkerHealthReportResponse contains information returned to the worker in response to a health ping. */
 export interface WorkerHealthReportResponse {
   /** A positive value indicates the worker should change its reporting interval to the specified value. The default value of zero means no change in report rate is requested by the server. */
   reportInterval?: string;
 }
+const WorkerHealthReportResponse = /*@__PURE__*/ __L.at(
+  __c41,
+  1,
+) as any as S.Schema<WorkerHealthReportResponse>;
+
 /** Contains the thread scaling recommendation for a worker from the backend. */
 export interface WorkerThreadScalingReportResponse {
   /** Recommended number of threads for a worker. */
   recommendedThreadCount?: number;
 }
+const WorkerThreadScalingReportResponse = /*@__PURE__*/ __L.at(
+  __c41,
+  2,
+) as any as S.Schema<WorkerThreadScalingReportResponse>;
+
 /** Service-side response to WorkerMessage reporting resource utilization. */
 export type ResourceUtilizationReportResponse = ResolveConfigStoreSettingRequest;
 /** Service-side response to WorkerMessage issuing shutdown notice. */
@@ -3269,12 +4494,27 @@ export interface WorkerMessageResponse {
   /** Service's response to shutdown notice (currently empty). */
   workerShutdownNoticeResponse?: ResolveConfigStoreSettingRequest;
 }
+const WorkerMessageResponse = /*@__PURE__*/ __L.at(
+  __c41,
+  3,
+) as any as S.Schema<WorkerMessageResponse>;
+
 export type WorkerMessageResponseList = Array<WorkerMessageResponse>;
+const WorkerMessageResponseList = /*@__PURE__*/ __L.at(
+  __c41,
+  4,
+) as any as S.Schema<WorkerMessageResponseList>;
+
 /** The response to the worker messages. */
 export interface SendWorkerMessagesResponse {
   /** The servers response to the worker messages. */
   workerMessageResponses?: WorkerMessageResponseList;
 }
+const SendWorkerMessagesResponse = /*@__PURE__*/ __L.at(
+  __c41,
+  5,
+) as any as S.Schema<SendWorkerMessagesResponse>;
+
 export interface WorkerMessagesProjectsLocationsRequest {
   /** The project to send the WorkerMessages to. */
   projectId: string;
@@ -3283,6 +4523,11 @@ export interface WorkerMessagesProjectsLocationsRequest {
   /** Request body */
   body?: SendWorkerMessagesRequest;
 }
+const WorkerMessagesProjectsLocationsRequest = /*@__PURE__*/ __L.at(
+  __c41,
+  6,
+) as any as S.Schema<WorkerMessagesProjectsLocationsRequest>;
+
 export type AggregatedProjectsJobsError = NotFound | Forbidden | GcpOpError;
 /** List the jobs of a project across all regions. **Note:** This method doesn't support filtering the list of jobs by name. # IAM Permissions Requires the `dataflow.jobs.list` permission on the project. */
 export const aggregatedProjectsJobs: API.PaginatedOperationMethod<
@@ -3292,8 +4537,8 @@ export const aggregatedProjectsJobs: API.PaginatedOperationMethod<
   GcpOpContext,
   ListJobsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(0) as any as S.Schema<AggregatedProjectsJobsRequest>,
-  output: __S(64) as any as S.Schema<ListJobsResponse>,
+  input: AggregatedProjectsJobsRequest,
+  output: ListJobsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3313,8 +4558,8 @@ export const createFoldersLocationsConfigStoreSettings: API.OperationMethod<
   CreateFoldersLocationsConfigStoreSettingsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(67) as any as S.Schema<CreateFoldersLocationsConfigStoreSettingsRequest>,
-  output: __S(66) as any as S.Schema<ConfigStoreSetting>,
+  input: CreateFoldersLocationsConfigStoreSettingsRequest,
+  output: ConfigStoreSetting,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3333,8 +4578,8 @@ export const createOrganizationsLocationsConfigStoreSettings: API.OperationMetho
   CreateOrganizationsLocationsConfigStoreSettingsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(68) as any as S.Schema<CreateOrganizationsLocationsConfigStoreSettingsRequest>,
-  output: __S(66) as any as S.Schema<ConfigStoreSetting>,
+  input: CreateOrganizationsLocationsConfigStoreSettingsRequest,
+  output: ConfigStoreSetting,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3348,8 +4593,8 @@ export const createProjectsJobs: API.OperationMethod<
   CreateProjectsJobsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(69) as any as S.Schema<CreateProjectsJobsRequest>,
-  output: __S(62) as any as S.Schema<Job>,
+  input: CreateProjectsJobsRequest,
+  output: Job,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3368,8 +4613,8 @@ export const createProjectsLocationsConfigStoreSettings: API.OperationMethod<
   CreateProjectsLocationsConfigStoreSettingsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(70) as any as S.Schema<CreateProjectsLocationsConfigStoreSettingsRequest>,
-  output: __S(66) as any as S.Schema<ConfigStoreSetting>,
+  input: CreateProjectsLocationsConfigStoreSettingsRequest,
+  output: ConfigStoreSetting,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3388,8 +4633,8 @@ export const createProjectsLocationsJobs: API.OperationMethod<
   CreateProjectsLocationsJobsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(71) as any as S.Schema<CreateProjectsLocationsJobsRequest>,
-  output: __S(62) as any as S.Schema<Job>,
+  input: CreateProjectsLocationsJobsRequest,
+  output: Job,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3408,8 +4653,8 @@ export const createProjectsLocationsTemplates: API.OperationMethod<
   CreateProjectsLocationsTemplatesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(74) as any as S.Schema<CreateProjectsLocationsTemplatesRequest>,
-  output: __S(62) as any as S.Schema<Job>,
+  input: CreateProjectsLocationsTemplatesRequest,
+  output: Job,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3428,8 +4673,8 @@ export const createProjectsTemplates: API.OperationMethod<
   CreateProjectsTemplatesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(75) as any as S.Schema<CreateProjectsTemplatesRequest>,
-  output: __S(62) as any as S.Schema<Job>,
+  input: CreateProjectsTemplatesRequest,
+  output: Job,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3448,8 +4693,8 @@ export const deleteFoldersLocationsConfigStoreSettings: API.OperationMethod<
   DeleteFoldersLocationsConfigStoreSettingsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(76) as any as S.Schema<DeleteFoldersLocationsConfigStoreSettingsRequest>,
-  output: __S(77) as any as S.Schema<Empty>,
+  input: DeleteFoldersLocationsConfigStoreSettingsRequest,
+  output: Empty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3468,8 +4713,8 @@ export const deleteOrganizationsLocationsConfigStoreSettings: API.OperationMetho
   DeleteOrganizationsLocationsConfigStoreSettingsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(78) as any as S.Schema<DeleteOrganizationsLocationsConfigStoreSettingsRequest>,
-  output: __S(77) as any as S.Schema<Empty>,
+  input: DeleteOrganizationsLocationsConfigStoreSettingsRequest,
+  output: Empty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3488,8 +4733,8 @@ export const deleteProjectsLocationsConfigStoreSettings: API.OperationMethod<
   DeleteProjectsLocationsConfigStoreSettingsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(79) as any as S.Schema<DeleteProjectsLocationsConfigStoreSettingsRequest>,
-  output: __S(77) as any as S.Schema<Empty>,
+  input: DeleteProjectsLocationsConfigStoreSettingsRequest,
+  output: Empty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3508,8 +4753,8 @@ export const deleteProjectsLocationsSnapshots: API.OperationMethod<
   DeleteProjectsLocationsSnapshotsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(80) as any as S.Schema<DeleteProjectsLocationsSnapshotsRequest>,
-  output: __S(77) as any as S.Schema<DeleteSnapshotResponse>,
+  input: DeleteProjectsLocationsSnapshotsRequest,
+  output: DeleteSnapshotResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3528,8 +4773,8 @@ export const deleteSnapshotsProjects: API.OperationMethod<
   DeleteSnapshotsProjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(81) as any as S.Schema<DeleteSnapshotsProjectsRequest>,
-  output: __S(77) as any as S.Schema<DeleteSnapshotResponse>,
+  input: DeleteSnapshotsProjectsRequest,
+  output: DeleteSnapshotResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3548,8 +4793,8 @@ export const getConfigProjectsJobsDebug: API.OperationMethod<
   GetConfigProjectsJobsDebugError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(83) as any as S.Schema<GetConfigProjectsJobsDebugRequest>,
-  output: __S(84) as any as S.Schema<GetDebugConfigResponse>,
+  input: GetConfigProjectsJobsDebugRequest,
+  output: GetDebugConfigResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3568,8 +4813,8 @@ export const getConfigProjectsLocationsJobsDebug: API.OperationMethod<
   GetConfigProjectsLocationsJobsDebugError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(85) as any as S.Schema<GetConfigProjectsLocationsJobsDebugRequest>,
-  output: __S(84) as any as S.Schema<GetDebugConfigResponse>,
+  input: GetConfigProjectsLocationsJobsDebugRequest,
+  output: GetDebugConfigResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3584,8 +4829,8 @@ export const getExecutionDetailsProjectsLocationsJobs: API.PaginatedOperationMet
   GcpOpContext,
   JobExecutionDetails
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(86) as any as S.Schema<GetExecutionDetailsProjectsLocationsJobsRequest>,
-  output: __S(105) as any as S.Schema<JobExecutionDetails>,
+  input: GetExecutionDetailsProjectsLocationsJobsRequest,
+  output: JobExecutionDetails,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3601,8 +4846,8 @@ export const getExecutionDetailsProjectsLocationsJobsStages: API.PaginatedOperat
   GcpOpContext,
   StageExecutionDetails
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(106) as any as S.Schema<GetExecutionDetailsProjectsLocationsJobsStagesRequest>,
-  output: __S(111) as any as S.Schema<StageExecutionDetails>,
+  input: GetExecutionDetailsProjectsLocationsJobsStagesRequest,
+  output: StageExecutionDetails,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3617,8 +4862,8 @@ export const getFoldersLocationsConfigStoreSettings: API.OperationMethod<
   GetFoldersLocationsConfigStoreSettingsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(112) as any as S.Schema<GetFoldersLocationsConfigStoreSettingsRequest>,
-  output: __S(66) as any as S.Schema<ConfigStoreSetting>,
+  input: GetFoldersLocationsConfigStoreSettingsRequest,
+  output: ConfigStoreSetting,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3632,8 +4877,8 @@ export const getMetricsProjectsJobs: API.OperationMethod<
   GetMetricsProjectsJobsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(113) as any as S.Schema<GetMetricsProjectsJobsRequest>,
-  output: __S(114) as any as S.Schema<JobMetrics>,
+  input: GetMetricsProjectsJobsRequest,
+  output: JobMetrics,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3647,8 +4892,8 @@ export const getMetricsProjectsLocationsJobs: API.OperationMethod<
   GetMetricsProjectsLocationsJobsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(115) as any as S.Schema<GetMetricsProjectsLocationsJobsRequest>,
-  output: __S(114) as any as S.Schema<JobMetrics>,
+  input: GetMetricsProjectsLocationsJobsRequest,
+  output: JobMetrics,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3662,8 +4907,8 @@ export const getOrganizationsLocationsConfigStoreSettings: API.OperationMethod<
   GetOrganizationsLocationsConfigStoreSettingsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(116) as any as S.Schema<GetOrganizationsLocationsConfigStoreSettingsRequest>,
-  output: __S(66) as any as S.Schema<ConfigStoreSetting>,
+  input: GetOrganizationsLocationsConfigStoreSettingsRequest,
+  output: ConfigStoreSetting,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3677,8 +4922,8 @@ export const getProjectsJobs: API.OperationMethod<
   GetProjectsJobsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(117) as any as S.Schema<GetProjectsJobsRequest>,
-  output: __S(62) as any as S.Schema<Job>,
+  input: GetProjectsJobsRequest,
+  output: Job,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3692,8 +4937,8 @@ export const getProjectsLocationsConfigStoreSettings: API.OperationMethod<
   GetProjectsLocationsConfigStoreSettingsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(118) as any as S.Schema<GetProjectsLocationsConfigStoreSettingsRequest>,
-  output: __S(66) as any as S.Schema<ConfigStoreSetting>,
+  input: GetProjectsLocationsConfigStoreSettingsRequest,
+  output: ConfigStoreSetting,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3707,8 +4952,8 @@ export const getProjectsLocationsJobs: API.OperationMethod<
   GetProjectsLocationsJobsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(119) as any as S.Schema<GetProjectsLocationsJobsRequest>,
-  output: __S(62) as any as S.Schema<Job>,
+  input: GetProjectsLocationsJobsRequest,
+  output: Job,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3722,8 +4967,8 @@ export const getProjectsLocationsSnapshots: API.OperationMethod<
   GetProjectsLocationsSnapshotsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(120) as any as S.Schema<GetProjectsLocationsSnapshotsRequest>,
-  output: __S(123) as any as S.Schema<Snapshot>,
+  input: GetProjectsLocationsSnapshotsRequest,
+  output: Snapshot,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3737,8 +4982,8 @@ export const getProjectsLocationsTemplates: API.OperationMethod<
   GetProjectsLocationsTemplatesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(124) as any as S.Schema<GetProjectsLocationsTemplatesRequest>,
-  output: __S(134) as any as S.Schema<GetTemplateResponse>,
+  input: GetProjectsLocationsTemplatesRequest,
+  output: GetTemplateResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3752,8 +4997,8 @@ export const getProjectsSnapshots: API.OperationMethod<
   GetProjectsSnapshotsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(135) as any as S.Schema<GetProjectsSnapshotsRequest>,
-  output: __S(123) as any as S.Schema<Snapshot>,
+  input: GetProjectsSnapshotsRequest,
+  output: Snapshot,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3767,8 +5012,8 @@ export const getProjectsTemplates: API.OperationMethod<
   GetProjectsTemplatesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(136) as any as S.Schema<GetProjectsTemplatesRequest>,
-  output: __S(134) as any as S.Schema<GetTemplateResponse>,
+  input: GetProjectsTemplatesRequest,
+  output: GetTemplateResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3787,8 +5032,8 @@ export const getWorkerStacktracesProjectsLocationsJobsDebug: API.OperationMethod
   GetWorkerStacktracesProjectsLocationsJobsDebugError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(138) as any as S.Schema<GetWorkerStacktracesProjectsLocationsJobsDebugRequest>,
-  output: __S(143) as any as S.Schema<GetWorkerStacktracesResponse>,
+  input: GetWorkerStacktracesProjectsLocationsJobsDebugRequest,
+  output: GetWorkerStacktracesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3807,8 +5052,8 @@ export const launchProjectsLocationsFlexTemplates: API.OperationMethod<
   LaunchProjectsLocationsFlexTemplatesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(148) as any as S.Schema<LaunchProjectsLocationsFlexTemplatesRequest>,
-  output: __S(149) as any as S.Schema<LaunchFlexTemplateResponse>,
+  input: LaunchProjectsLocationsFlexTemplatesRequest,
+  output: LaunchFlexTemplateResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3827,8 +5072,8 @@ export const launchProjectsLocationsTemplates: API.OperationMethod<
   LaunchProjectsLocationsTemplatesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(151) as any as S.Schema<LaunchProjectsLocationsTemplatesRequest>,
-  output: __S(152) as any as S.Schema<LaunchTemplateResponse>,
+  input: LaunchProjectsLocationsTemplatesRequest,
+  output: LaunchTemplateResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3847,8 +5092,8 @@ export const launchProjectsTemplates: API.OperationMethod<
   LaunchProjectsTemplatesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(153) as any as S.Schema<LaunchProjectsTemplatesRequest>,
-  output: __S(152) as any as S.Schema<LaunchTemplateResponse>,
+  input: LaunchProjectsTemplatesRequest,
+  output: LaunchTemplateResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3867,8 +5112,8 @@ export const leaseProjectsJobsWorkItems: API.OperationMethod<
   LeaseProjectsJobsWorkItemsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(155) as any as S.Schema<LeaseProjectsJobsWorkItemsRequest>,
-  output: __S(213) as any as S.Schema<LeaseWorkItemResponse>,
+  input: LeaseProjectsJobsWorkItemsRequest,
+  output: LeaseWorkItemResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3887,8 +5132,8 @@ export const leaseProjectsLocationsJobsWorkItems: API.OperationMethod<
   LeaseProjectsLocationsJobsWorkItemsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(214) as any as S.Schema<LeaseProjectsLocationsJobsWorkItemsRequest>,
-  output: __S(213) as any as S.Schema<LeaseWorkItemResponse>,
+  input: LeaseProjectsLocationsJobsWorkItemsRequest,
+  output: LeaseWorkItemResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3903,8 +5148,8 @@ export const listFoldersLocationsConfigStoreSettings: API.PaginatedOperationMeth
   GcpOpContext,
   ListConfigStoreSettingsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(215) as any as S.Schema<ListFoldersLocationsConfigStoreSettingsRequest>,
-  output: __S(217) as any as S.Schema<ListConfigStoreSettingsResponse>,
+  input: ListFoldersLocationsConfigStoreSettingsRequest,
+  output: ListConfigStoreSettingsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3920,8 +5165,8 @@ export const listOrganizationsLocationsConfigStoreSettings: API.PaginatedOperati
   GcpOpContext,
   ListConfigStoreSettingsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(218) as any as S.Schema<ListOrganizationsLocationsConfigStoreSettingsRequest>,
-  output: __S(217) as any as S.Schema<ListConfigStoreSettingsResponse>,
+  input: ListOrganizationsLocationsConfigStoreSettingsRequest,
+  output: ListConfigStoreSettingsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3937,8 +5182,8 @@ export const listProjectsJobs: API.PaginatedOperationMethod<
   GcpOpContext,
   ListJobsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(219) as any as S.Schema<ListProjectsJobsRequest>,
-  output: __S(64) as any as S.Schema<ListJobsResponse>,
+  input: ListProjectsJobsRequest,
+  output: ListJobsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3954,8 +5199,8 @@ export const listProjectsJobsMessages: API.PaginatedOperationMethod<
   GcpOpContext,
   ListJobMessagesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(220) as any as S.Schema<ListProjectsJobsMessagesRequest>,
-  output: __S(228) as any as S.Schema<ListJobMessagesResponse>,
+  input: ListProjectsJobsMessagesRequest,
+  output: ListJobMessagesResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3971,8 +5216,8 @@ export const listProjectsLocationsConfigStoreSettings: API.PaginatedOperationMet
   GcpOpContext,
   ListConfigStoreSettingsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(229) as any as S.Schema<ListProjectsLocationsConfigStoreSettingsRequest>,
-  output: __S(217) as any as S.Schema<ListConfigStoreSettingsResponse>,
+  input: ListProjectsLocationsConfigStoreSettingsRequest,
+  output: ListConfigStoreSettingsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3988,8 +5233,8 @@ export const listProjectsLocationsJobs: API.PaginatedOperationMethod<
   GcpOpContext,
   ListJobsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(230) as any as S.Schema<ListProjectsLocationsJobsRequest>,
-  output: __S(64) as any as S.Schema<ListJobsResponse>,
+  input: ListProjectsLocationsJobsRequest,
+  output: ListJobsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4005,8 +5250,8 @@ export const listProjectsLocationsJobsMessages: API.PaginatedOperationMethod<
   GcpOpContext,
   ListJobMessagesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(231) as any as S.Schema<ListProjectsLocationsJobsMessagesRequest>,
-  output: __S(228) as any as S.Schema<ListJobMessagesResponse>,
+  input: ListProjectsLocationsJobsMessagesRequest,
+  output: ListJobMessagesResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4021,8 +5266,8 @@ export const listProjectsLocationsJobsSnapshots: API.OperationMethod<
   ListProjectsLocationsJobsSnapshotsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(232) as any as S.Schema<ListProjectsLocationsJobsSnapshotsRequest>,
-  output: __S(234) as any as S.Schema<ListSnapshotsResponse>,
+  input: ListProjectsLocationsJobsSnapshotsRequest,
+  output: ListSnapshotsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4036,8 +5281,8 @@ export const listProjectsLocationsSnapshots: API.OperationMethod<
   ListProjectsLocationsSnapshotsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(235) as any as S.Schema<ListProjectsLocationsSnapshotsRequest>,
-  output: __S(234) as any as S.Schema<ListSnapshotsResponse>,
+  input: ListProjectsLocationsSnapshotsRequest,
+  output: ListSnapshotsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4051,8 +5296,8 @@ export const listProjectsSnapshots: API.OperationMethod<
   ListProjectsSnapshotsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(236) as any as S.Schema<ListProjectsSnapshotsRequest>,
-  output: __S(234) as any as S.Schema<ListSnapshotsResponse>,
+  input: ListProjectsSnapshotsRequest,
+  output: ListSnapshotsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4071,8 +5316,8 @@ export const reportStatusProjectsJobsWorkItems: API.OperationMethod<
   ReportStatusProjectsJobsWorkItemsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(275) as any as S.Schema<ReportStatusProjectsJobsWorkItemsRequest>,
-  output: __S(282) as any as S.Schema<ReportWorkItemStatusResponse>,
+  input: ReportStatusProjectsJobsWorkItemsRequest,
+  output: ReportWorkItemStatusResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4091,8 +5336,8 @@ export const reportStatusProjectsLocationsJobsWorkItems: API.OperationMethod<
   ReportStatusProjectsLocationsJobsWorkItemsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(283) as any as S.Schema<ReportStatusProjectsLocationsJobsWorkItemsRequest>,
-  output: __S(282) as any as S.Schema<ReportWorkItemStatusResponse>,
+  input: ReportStatusProjectsLocationsJobsWorkItemsRequest,
+  output: ReportWorkItemStatusResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4111,8 +5356,8 @@ export const resolveFoldersLocationsConfigStoreSettings: API.OperationMethod<
   ResolveFoldersLocationsConfigStoreSettingsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(285) as any as S.Schema<ResolveFoldersLocationsConfigStoreSettingsRequest>,
-  output: __S(286) as any as S.Schema<ResolveConfigStoreSettingResponse>,
+  input: ResolveFoldersLocationsConfigStoreSettingsRequest,
+  output: ResolveConfigStoreSettingResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4131,8 +5376,8 @@ export const resolveOrganizationsLocationsConfigStoreSettings: API.OperationMeth
   ResolveOrganizationsLocationsConfigStoreSettingsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(287) as any as S.Schema<ResolveOrganizationsLocationsConfigStoreSettingsRequest>,
-  output: __S(286) as any as S.Schema<ResolveConfigStoreSettingResponse>,
+  input: ResolveOrganizationsLocationsConfigStoreSettingsRequest,
+  output: ResolveConfigStoreSettingResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4151,8 +5396,8 @@ export const resolveProjectsLocationsConfigStoreSettings: API.OperationMethod<
   ResolveProjectsLocationsConfigStoreSettingsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(288) as any as S.Schema<ResolveProjectsLocationsConfigStoreSettingsRequest>,
-  output: __S(286) as any as S.Schema<ResolveConfigStoreSettingResponse>,
+  input: ResolveProjectsLocationsConfigStoreSettingsRequest,
+  output: ResolveConfigStoreSettingResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4171,8 +5416,8 @@ export const sendCaptureProjectsJobsDebug: API.OperationMethod<
   SendCaptureProjectsJobsDebugError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(290) as any as S.Schema<SendCaptureProjectsJobsDebugRequest>,
-  output: __S(77) as any as S.Schema<SendDebugCaptureResponse>,
+  input: SendCaptureProjectsJobsDebugRequest,
+  output: SendDebugCaptureResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4191,8 +5436,8 @@ export const sendCaptureProjectsLocationsJobsDebug: API.OperationMethod<
   SendCaptureProjectsLocationsJobsDebugError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(291) as any as S.Schema<SendCaptureProjectsLocationsJobsDebugRequest>,
-  output: __S(77) as any as S.Schema<SendDebugCaptureResponse>,
+  input: SendCaptureProjectsLocationsJobsDebugRequest,
+  output: SendDebugCaptureResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4206,8 +5451,8 @@ export const snapshotProjectsJobs: API.OperationMethod<
   SnapshotProjectsJobsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(293) as any as S.Schema<SnapshotProjectsJobsRequest>,
-  output: __S(123) as any as S.Schema<Snapshot>,
+  input: SnapshotProjectsJobsRequest,
+  output: Snapshot,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4226,8 +5471,8 @@ export const snapshotProjectsLocationsJobs: API.OperationMethod<
   SnapshotProjectsLocationsJobsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(294) as any as S.Schema<SnapshotProjectsLocationsJobsRequest>,
-  output: __S(123) as any as S.Schema<Snapshot>,
+  input: SnapshotProjectsLocationsJobsRequest,
+  output: Snapshot,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4241,8 +5486,8 @@ export const updateProjectsJobs: API.OperationMethod<
   UpdateProjectsJobsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(295) as any as S.Schema<UpdateProjectsJobsRequest>,
-  output: __S(62) as any as S.Schema<Job>,
+  input: UpdateProjectsJobsRequest,
+  output: Job,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4261,8 +5506,8 @@ export const updateProjectsLocationsJobs: API.OperationMethod<
   UpdateProjectsLocationsJobsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(296) as any as S.Schema<UpdateProjectsLocationsJobsRequest>,
-  output: __S(62) as any as S.Schema<Job>,
+  input: UpdateProjectsLocationsJobsRequest,
+  output: Job,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4276,8 +5521,8 @@ export const workerMessagesProjects: API.OperationMethod<
   WorkerMessagesProjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(327) as any as S.Schema<WorkerMessagesProjectsRequest>,
-  output: __S(333) as any as S.Schema<SendWorkerMessagesResponse>,
+  input: WorkerMessagesProjectsRequest,
+  output: SendWorkerMessagesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4296,8 +5541,8 @@ export const workerMessagesProjectsLocations: API.OperationMethod<
   WorkerMessagesProjectsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(334) as any as S.Schema<WorkerMessagesProjectsLocationsRequest>,
-  output: __S(333) as any as S.Schema<SendWorkerMessagesResponse>,
+  input: WorkerMessagesProjectsLocationsRequest,
+  output: SendWorkerMessagesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4313,9 +5558,9 @@ function __c0(j: number): any {
           name: S.optional(S.String.pipe(T.Query())),
           pageSize: S.optional(S.Number.pipe(T.Query())),
           regionalFanoutRequested: S.optional(S.Boolean.pipe(T.Query())),
-          view: S.optional(S.String.pipe(T.Query())),
+          view: S.optional(AggregatedProjectsJobsViewEnum.pipe(T.Query())),
           pageToken: S.optional(S.String.pipe(T.Query())),
-          filter: S.optional(S.String.pipe(T.Query())),
+          filter: S.optional(AggregatedProjectsJobsFilterEnum.pipe(T.Query())),
           location: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
@@ -4334,7 +5579,7 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "FailedLocation" });
     case 2:
-      return S.Array(__S(1));
+      return S.Array(FailedLocation);
     case 3:
       return S.Record(S.String, S.Unknown);
     case 4:
@@ -4345,11 +5590,11 @@ function __c0(j: number): any {
           environmentId: S.optional(S.String),
           useSingleCorePerContainer: S.optional(S.Boolean),
           containerImage: S.optional(S.String),
-          capabilities: S.optional(__S(4)),
+          capabilities: S.optional(StringList_),
         }),
       ).annotate({ identifier: "SdkHarnessContainerImage" });
     case 6:
-      return S.Array(__S(5));
+      return S.Array(SdkHarnessContainerImage);
     case 7:
       return S.Record(S.String, S.String);
   }
@@ -4365,7 +5610,7 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "Package" });
     case 1:
-      return S.Array(__S(8));
+      return S.Array(Package);
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -4375,7 +5620,7 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "Disk" });
     case 3:
-      return S.Array(__S(10));
+      return S.Array(Disk);
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -4395,7 +5640,7 @@ function __c1(j: number): any {
           alsologtostderr: S.optional(S.Boolean),
           logToSerialconsole: S.optional(S.Boolean),
           logDir: S.optional(S.String),
-          oauthScopes: S.optional(__S(4)),
+          oauthScopes: S.optional(StringList_),
           vmId: S.optional(S.String),
           tempStoragePrefix: S.optional(S.String),
           continueOnException: S.optional(S.Boolean),
@@ -4403,7 +5648,7 @@ function __c1(j: number): any {
           workflowFileName: S.optional(S.String),
           streamingWorkerMainClass: S.optional(S.String),
           baseTaskDir: S.optional(S.String),
-          parallelWorkerSettings: S.optional(__S(12)),
+          parallelWorkerSettings: S.optional(WorkerSettings),
           logUploadLocation: S.optional(S.String),
           dataflowApiVersion: S.optional(S.String),
           commandlinesFileName: S.optional(S.String),
@@ -4414,37 +5659,37 @@ function __c1(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          algorithm: S.optional(S.String),
+          algorithm: S.optional(AutoscalingSettingsAlgorithmEnum),
           maxNumWorkers: S.optional(S.Number),
         }),
       ).annotate({ identifier: "AutoscalingSettings" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          sdkHarnessContainerImages: S.optional(__S(6)),
+          sdkHarnessContainerImages: S.optional(SdkHarnessContainerImageList),
           subnetwork: S.optional(S.String),
           network: S.optional(S.String),
           kind: S.optional(S.String),
-          teardownPolicy: S.optional(S.String),
+          teardownPolicy: S.optional(WorkerPoolTeardownPolicyEnum),
           diskSourceImage: S.optional(S.String),
-          ipConfiguration: S.optional(S.String),
+          ipConfiguration: S.optional(WorkerPoolIpConfigurationEnum),
           workerHarnessContainerImage: S.optional(S.String),
           diskProvisionedIops: S.optional(S.String),
           onHostMaintenance: S.optional(S.String),
-          metadata: S.optional(__S(7)),
+          metadata: S.optional(StringMap),
           numThreadsPerWorker: S.optional(S.Number),
           diskProvisionedThroughputMibps: S.optional(S.String),
           diskSizeGb: S.optional(S.Number),
           diskType: S.optional(S.String),
-          packages: S.optional(__S(9)),
-          defaultPackageSet: S.optional(S.String),
+          packages: S.optional(PackageList),
+          defaultPackageSet: S.optional(WorkerPoolDefaultPackageSetEnum),
           numWorkers: S.optional(S.Number),
-          dataDisks: S.optional(__S(11)),
+          dataDisks: S.optional(DiskList),
           machineType: S.optional(S.String),
-          taskrunnerSettings: S.optional(__S(13)),
+          taskrunnerSettings: S.optional(TaskRunnerSettings),
           zone: S.optional(S.String),
-          autoscalingSettings: S.optional(__S(14)),
-          poolArgs: S.optional(__S(3)),
+          autoscalingSettings: S.optional(AutoscalingSettings),
+          poolArgs: S.optional(DocumentMap),
         }),
       ).annotate({ identifier: "WorkerPool" });
   }
@@ -4452,45 +5697,45 @@ function __c1(j: number): any {
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(15));
+      return S.Array(WorkerPool);
     case 1:
-      return S.Array(S.String);
+      return S.Array(DataSamplingConfigBehaviorsItemEnum);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          behaviors: S.optional(__S(17)),
+          behaviors: S.optional(DataSamplingConfigBehaviorsItemEnumList),
         }),
       ).annotate({ identifier: "DataSamplingConfig" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          dataSampling: S.optional(__S(18)),
+          dataSampling: S.optional(DataSamplingConfig),
           enableHotKeyLogging: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "DebugOptions" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          userAgent: S.optional(__S(3)),
+          userAgent: S.optional(DocumentMap),
           clusterManagerApiService: S.optional(S.String),
-          version: S.optional(__S(3)),
-          workerPools: S.optional(__S(16)),
-          experiments: S.optional(__S(4)),
+          version: S.optional(DocumentMap),
+          workerPools: S.optional(WorkerPoolList),
+          experiments: S.optional(StringList_),
           serviceAccountEmail: S.optional(S.String),
           usePublicIps: S.optional(S.Boolean),
           workerZone: S.optional(S.String),
           useStreamingEngineResourceBasedBilling: S.optional(S.Boolean),
           serviceKmsKeyName: S.optional(S.String),
           workerRegion: S.optional(S.String),
-          debugOptions: S.optional(__S(19)),
-          internalExperiments: S.optional(__S(3)),
-          shuffleMode: S.optional(S.String),
+          debugOptions: S.optional(DebugOptions),
+          internalExperiments: S.optional(DocumentMap),
+          shuffleMode: S.optional(EnvironmentShuffleModeEnum),
           tempStoragePrefix: S.optional(S.String),
-          flexResourceSchedulingGoal: S.optional(S.String),
-          streamingMode: S.optional(S.String),
+          flexResourceSchedulingGoal: S.optional(EnvironmentFlexResourceSchedulingGoalEnum),
+          streamingMode: S.optional(EnvironmentStreamingModeEnum),
           dataset: S.optional(S.String),
-          sdkPipelineOptions: S.optional(__S(3)),
-          serviceOptions: S.optional(__S(4)),
+          sdkPipelineOptions: S.optional(DocumentMap),
+          serviceOptions: S.optional(StringList_),
         }),
       ).annotate({ identifier: "Environment" });
     case 5:
@@ -4503,7 +5748,7 @@ function __c2(j: number): any {
         }),
       ).annotate({ identifier: "BigQueryIODetails" });
     case 6:
-      return S.Array(__S(21));
+      return S.Array(BigQueryIODetails);
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -4515,7 +5760,7 @@ function __c2(j: number): any {
 function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(23));
+      return S.Array(FileIODetails);
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -4525,24 +5770,24 @@ function __c3(j: number): any {
         }),
       ).annotate({ identifier: "BigTableIODetails" });
     case 2:
-      return S.Array(__S(25));
+      return S.Array(BigTableIODetails);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          severity: S.optional(S.String),
+          severity: S.optional(SdkBugSeverityEnum),
           uri: S.optional(S.String),
-          type: S.optional(S.String),
+          type: S.optional(SdkBugTypeEnum),
         }),
       ).annotate({ identifier: "SdkBug" });
     case 4:
-      return S.Array(__S(27));
+      return S.Array(SdkBug);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          bugs: S.optional(__S(28)),
+          bugs: S.optional(SdkBugList),
           versionDisplayName: S.optional(S.String),
           version: S.optional(S.String),
-          sdkSupportStatus: S.optional(S.String),
+          sdkSupportStatus: S.optional(SdkVersionSdkSupportStatusEnum),
         }),
       ).annotate({ identifier: "SdkVersion" });
     case 6:
@@ -4553,7 +5798,7 @@ function __c3(j: number): any {
         }),
       ).annotate({ identifier: "PubSubIODetails" });
     case 7:
-      return S.Array(__S(30));
+      return S.Array(PubSubIODetails);
   }
 }
 function __c4(j: number): any {
@@ -4566,7 +5811,7 @@ function __c4(j: number): any {
         }),
       ).annotate({ identifier: "DatastoreIODetails" });
     case 1:
-      return S.Array(__S(32));
+      return S.Array(DatastoreIODetails);
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -4576,30 +5821,30 @@ function __c4(j: number): any {
         }),
       ).annotate({ identifier: "SpannerIODetails" });
     case 3:
-      return S.Array(__S(34));
+      return S.Array(SpannerIODetails);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          userDisplayProperties: S.optional(__S(7)),
-          bigqueryDetails: S.optional(__S(22)),
-          fileDetails: S.optional(__S(24)),
-          bigTableDetails: S.optional(__S(26)),
-          sdkVersion: S.optional(__S(29)),
-          pubsubDetails: S.optional(__S(31)),
-          datastoreDetails: S.optional(__S(33)),
-          spannerDetails: S.optional(__S(35)),
+          userDisplayProperties: S.optional(StringMap),
+          bigqueryDetails: S.optional(BigQueryIODetailsList),
+          fileDetails: S.optional(FileIODetailsList),
+          bigTableDetails: S.optional(BigTableIODetailsList),
+          sdkVersion: S.optional(SdkVersion),
+          pubsubDetails: S.optional(PubSubIODetailsList),
+          datastoreDetails: S.optional(DatastoreIODetailsList),
+          spannerDetails: S.optional(SpannerIODetailsList),
         }),
       ).annotate({ identifier: "JobMetadata" });
     case 5:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          properties: S.optional(__S(3)),
+          properties: S.optional(DocumentMap),
           kind: S.optional(S.String),
         }),
       ).annotate({ identifier: "Step" });
     case 6:
-      return S.Array(__S(37));
+      return S.Array(Step);
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -4622,20 +5867,20 @@ function __c4(j: number): any {
 function __c5(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(39));
+      return S.Array(DisplayData);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          displayData: S.optional(__S(40)),
+          displayData: S.optional(DisplayDataList),
           name: S.optional(S.String),
-          inputCollectionName: S.optional(__S(4)),
+          inputCollectionName: S.optional(StringList_),
           id: S.optional(S.String),
-          kind: S.optional(S.String),
-          outputCollectionName: S.optional(__S(4)),
+          kind: S.optional(TransformSummaryKindEnum),
+          outputCollectionName: S.optional(StringList_),
         }),
       ).annotate({ identifier: "TransformSummary" });
     case 2:
-      return S.Array(__S(41));
+      return S.Array(TransformSummary);
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -4646,7 +5891,7 @@ function __c5(j: number): any {
         }),
       ).annotate({ identifier: "StageSource" });
     case 4:
-      return S.Array(__S(43));
+      return S.Array(StageSource);
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -4656,7 +5901,7 @@ function __c5(j: number): any {
         }),
       ).annotate({ identifier: "ComponentTransform" });
     case 6:
-      return S.Array(__S(45));
+      return S.Array(ComponentTransform);
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -4670,35 +5915,35 @@ function __c5(j: number): any {
 function __c6(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(47));
+      return S.Array(ComponentSource);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          inputSource: S.optional(__S(44)),
-          kind: S.optional(S.String),
+          inputSource: S.optional(StageSourceList),
+          kind: S.optional(ExecutionStageSummaryKindEnum),
           id: S.optional(S.String),
-          prerequisiteStage: S.optional(__S(4)),
-          componentTransform: S.optional(__S(46)),
-          componentSource: S.optional(__S(48)),
-          outputSource: S.optional(__S(44)),
+          prerequisiteStage: S.optional(StringList_),
+          componentTransform: S.optional(ComponentTransformList),
+          componentSource: S.optional(ComponentSourceList),
+          outputSource: S.optional(StageSourceList),
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "ExecutionStageSummary" });
     case 2:
-      return S.Array(__S(49));
+      return S.Array(ExecutionStageSummary);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          originalPipelineTransform: S.optional(__S(42)),
-          displayData: S.optional(__S(40)),
+          originalPipelineTransform: S.optional(TransformSummaryList),
+          displayData: S.optional(DisplayDataList),
           stepNamesHash: S.optional(S.String),
-          executionPipelineStage: S.optional(__S(50)),
+          executionPipelineStage: S.optional(ExecutionStageSummaryList),
         }),
       ).annotate({ identifier: "PipelineDescription" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          zones: S.optional(__S(4)),
+          zones: S.optional(StringList_),
         }),
       ).annotate({ identifier: "ServiceResources" });
     case 5:
@@ -4706,11 +5951,11 @@ function __c6(j: number): any {
         S.Struct({
           executionStageName: S.optional(S.String),
           currentStateTime: S.optional(S.String),
-          executionStageState: S.optional(S.String),
+          executionStageState: S.optional(ExecutionStageStateExecutionStageStateEnum),
         }),
       ).annotate({ identifier: "ExecutionStageState" });
     case 6:
-      return S.Array(__S(53));
+      return S.Array(ExecutionStageState);
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -4730,14 +5975,14 @@ function __c7(j: number): any {
           priority: S.optional(S.String),
           updateTime: S.optional(S.String),
           crontab: S.optional(S.String),
-          parameters: S.optional(__S(55)),
+          parameters: S.optional(Parameters),
           duration: S.optional(S.String),
           timeZone: S.optional(S.String),
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "AutoscalingSchedule" });
     case 1:
-      return S.Array(__S(56));
+      return S.Array(AutoscalingSchedule);
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -4745,7 +5990,7 @@ function __c7(j: number): any {
           acceptableBacklogDuration: S.optional(S.String),
           maxNumWorkers: S.optional(S.Number),
           minNumWorkers: S.optional(S.Number),
-          schedules: S.optional(__S(57)),
+          schedules: S.optional(AutoscalingScheduleList),
           workerUtilizationHint: S.optional(S.Number),
           latencyTier: S.optional(S.String),
         }),
@@ -4753,15 +5998,15 @@ function __c7(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          stepName: S.optional(__S(4)),
+          stepName: S.optional(StringList_),
         }),
       ).annotate({ identifier: "JobExecutionStageInfo" });
     case 4:
-      return S.Record(S.String, __S(59));
+      return S.Record(S.String, JobExecutionStageInfo);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          stages: S.optional(__S(60)),
+          stages: S.optional(JobExecutionStageInfoMap),
         }),
       ).annotate({ identifier: "JobExecutionInfo" });
     case 6:
@@ -4769,37 +6014,37 @@ function __c7(j: number): any {
         S.Struct({
           location: S.optional(S.String),
           replacedByJobId: S.optional(S.String),
-          environment: S.optional(__S(20)),
+          environment: S.optional(Environment),
           createTime: S.optional(S.String),
           currentStateTime: S.optional(S.String),
-          tempFiles: S.optional(__S(4)),
+          tempFiles: S.optional(StringList_),
           clientRequestId: S.optional(S.String),
           replaceJobId: S.optional(S.String),
-          requestedState: S.optional(S.String),
+          requestedState: S.optional(JobRequestedStateEnum),
           pausable: S.optional(S.Boolean),
           stepsLocation: S.optional(S.String),
-          jobMetadata: S.optional(__S(36)),
-          currentState: S.optional(S.String),
-          labels: S.optional(__S(7)),
+          jobMetadata: S.optional(JobMetadata),
+          currentState: S.optional(JobCurrentStateEnum),
+          labels: S.optional(StringMap),
           projectId: S.optional(S.String),
-          steps: S.optional(__S(38)),
+          steps: S.optional(StepList),
           createdFromSnapshotId: S.optional(S.String),
           startTime: S.optional(S.String),
-          transformNameMapping: S.optional(__S(7)),
+          transformNameMapping: S.optional(StringMap),
           satisfiesPzs: S.optional(S.Boolean),
           id: S.optional(S.String),
-          pipelineDescription: S.optional(__S(51)),
-          serviceResources: S.optional(__S(52)),
-          stageStates: S.optional(__S(54)),
+          pipelineDescription: S.optional(PipelineDescription),
+          serviceResources: S.optional(ServiceResources),
+          stageStates: S.optional(ExecutionStageStateList),
           name: S.optional(S.String),
           satisfiesPzi: S.optional(S.Boolean),
-          runtimeUpdatableParams: S.optional(__S(58)),
-          executionInfo: S.optional(__S(61)),
-          type: S.optional(S.String),
+          runtimeUpdatableParams: S.optional(RuntimeUpdatableParams),
+          executionInfo: S.optional(JobExecutionInfo),
+          type: S.optional(JobTypeEnum),
         }),
       ).annotate({ identifier: "Job" });
     case 7:
-      return S.Array(__S(62));
+      return S.Array(Job);
   }
 }
 function __c8(j: number): any {
@@ -4807,8 +6052,8 @@ function __c8(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          failedLocation: S.optional(__S(2)),
-          jobs: S.optional(__S(63)),
+          failedLocation: S.optional(FailedLocationList),
+          jobs: S.optional(JobList),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListJobsResponse" });
@@ -4823,7 +6068,7 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          value: S.optional(__S(65)),
+          value: S.optional(ConfigStoreSettingValue),
         }),
       ).annotate({ identifier: "ConfigStoreSetting" });
     case 3:
@@ -4831,7 +6076,7 @@ function __c8(j: number): any {
         S.Struct({
           parent: S.String.pipe(T.Label()),
           configStoreSettingId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(66).pipe(T.HttpBody())),
+          body: S.optional(ConfigStoreSetting.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4847,7 +6092,7 @@ function __c8(j: number): any {
         S.Struct({
           configStoreSettingId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(66).pipe(T.HttpBody())),
+          body: S.optional(ConfigStoreSetting.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4861,11 +6106,11 @@ function __c8(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          view: S.optional(S.String.pipe(T.Query())),
+          view: S.optional(CreateProjectsJobsViewEnum.pipe(T.Query())),
           location: S.optional(S.String.pipe(T.Query())),
           replaceJobId: S.optional(S.String.pipe(T.Query())),
           projectId: S.String.pipe(T.Label()),
-          body: S.optional(__S(62).pipe(T.HttpBody())),
+          body: S.optional(Job.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4881,7 +6126,7 @@ function __c8(j: number): any {
         S.Struct({
           parent: S.String.pipe(T.Label()),
           configStoreSettingId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(66).pipe(T.HttpBody())),
+          body: S.optional(ConfigStoreSetting.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4897,9 +6142,9 @@ function __c8(j: number): any {
         S.Struct({
           location: S.String.pipe(T.Label()),
           replaceJobId: S.optional(S.String.pipe(T.Query())),
-          view: S.optional(S.String.pipe(T.Query())),
+          view: S.optional(CreateProjectsLocationsJobsViewEnum.pipe(T.Query())),
           projectId: S.String.pipe(T.Label()),
-          body: S.optional(__S(62).pipe(T.HttpBody())),
+          body: S.optional(Job.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4918,20 +6163,20 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           machineType: S.optional(S.String),
-          additionalPipelineOptions: S.optional(__S(4)),
+          additionalPipelineOptions: S.optional(StringList_),
           serviceAccountEmail: S.optional(S.String),
           network: S.optional(S.String),
           enableStreamingEngine: S.optional(S.Boolean),
-          additionalExperiments: S.optional(__S(4)),
+          additionalExperiments: S.optional(StringList_),
           subnetwork: S.optional(S.String),
           kmsKeyName: S.optional(S.String),
-          additionalUserLabels: S.optional(__S(7)),
+          additionalUserLabels: S.optional(StringMap),
           tempLocation: S.optional(S.String),
-          ipConfiguration: S.optional(S.String),
+          ipConfiguration: S.optional(RuntimeEnvironmentIpConfigurationEnum),
           workerRegion: S.optional(S.String),
           maxWorkers: S.optional(S.Number),
           zone: S.optional(S.String),
-          streamingMode: S.optional(S.String),
+          streamingMode: S.optional(RuntimeEnvironmentStreamingModeEnum),
           bypassTempDirValidation: S.optional(S.Boolean),
           diskSizeGb: S.optional(S.Number),
           numWorkers: S.optional(S.Number),
@@ -4943,8 +6188,8 @@ function __c9(j: number): any {
         S.Struct({
           jobName: S.optional(S.String),
           gcsPath: S.optional(S.String),
-          parameters: S.optional(__S(7)),
-          environment: S.optional(__S(72)),
+          parameters: S.optional(StringMap),
+          environment: S.optional(RuntimeEnvironment),
           location: S.optional(S.String),
         }),
       ).annotate({
@@ -4955,7 +6200,7 @@ function __c9(j: number): any {
         S.Struct({
           projectId: S.String.pipe(T.Label()),
           location: S.String.pipe(T.Label()),
-          body: S.optional(__S(73).pipe(T.HttpBody())),
+          body: S.optional(CreateJobFromTemplateRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4970,7 +6215,7 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
-          body: S.optional(__S(73).pipe(T.HttpBody())),
+          body: S.optional(CreateJobFromTemplateRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5076,7 +6321,7 @@ function __c10(j: number): any {
         S.Struct({
           jobId: S.String.pipe(T.Label()),
           projectId: S.String.pipe(T.Label()),
-          body: S.optional(__S(82).pipe(T.HttpBody())),
+          body: S.optional(GetDebugConfigRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5099,7 +6344,7 @@ function __c10(j: number): any {
           location: S.String.pipe(T.Label()),
           jobId: S.String.pipe(T.Label()),
           projectId: S.String.pipe(T.Label()),
-          body: S.optional(__S(82).pipe(T.HttpBody())),
+          body: S.optional(GetDebugConfigRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5140,11 +6385,11 @@ function __c10(j: number): any {
 function __c11(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(87));
+      return S.Array(Point);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          dataPoints: S.optional(__S(88)),
+          dataPoints: S.optional(PointList),
           currentProgress: S.optional(S.Number),
         }),
       ).annotate({ identifier: "ProgressTimeseries" });
@@ -5153,14 +6398,14 @@ function __c11(j: number): any {
         S.Struct({
           origin: S.optional(S.String),
           name: S.optional(S.String),
-          context: S.optional(__S(7)),
+          context: S.optional(StringMap),
         }),
       ).annotate({ identifier: "MetricStructuredName" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           meanCount: S.optional(S.Unknown),
-          name: S.optional(__S(90)),
+          name: S.optional(MetricStructuredName),
           scalar: S.optional(S.Unknown),
           gauge: S.optional(S.Unknown),
           boundedTrie: S.optional(S.Unknown),
@@ -5175,7 +6420,7 @@ function __c11(j: number): any {
         }),
       ).annotate({ identifier: "MetricUpdate" });
     case 4:
-      return S.Array(__S(91));
+      return S.Array(MetricUpdate);
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -5185,11 +6430,11 @@ function __c11(j: number): any {
         }),
       ).annotate({ identifier: "HotKeyInfo" });
     case 6:
-      return S.Record(S.String, __S(93));
+      return S.Record(S.String, HotKeyInfo);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          detectedHotKeys: S.optional(__S(94)),
+          detectedHotKeys: S.optional(HotKeyInfoMap),
         }),
       ).annotate({ identifier: "HotKeyDebuggingInfo" });
   }
@@ -5199,16 +6444,16 @@ function __c12(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          hotKey: S.optional(__S(95)),
+          hotKey: S.optional(HotKeyDebuggingInfo),
         }),
       ).annotate({ identifier: "StragglerDebuggingInfo" });
     case 1:
-      return S.Record(S.String, __S(96));
+      return S.Record(S.String, StragglerDebuggingInfo);
     case 2:
       return S.suspend(() =>
         S.Struct({
           startTime: S.optional(S.String),
-          causes: S.optional(__S(97)),
+          causes: S.optional(StragglerDebuggingInfoMap),
         }),
       ).annotate({ identifier: "StragglerInfo" });
     case 3:
@@ -5224,28 +6469,28 @@ function __c12(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          batchStraggler: S.optional(__S(98)),
-          streamingStraggler: S.optional(__S(99)),
+          batchStraggler: S.optional(StragglerInfo),
+          streamingStraggler: S.optional(StreamingStragglerInfo),
         }),
       ).annotate({ identifier: "Straggler" });
     case 5:
-      return S.Array(__S(100));
+      return S.Array(Straggler);
     case 6:
       return S.suspend(() =>
         S.Struct({
           totalStragglerCount: S.optional(S.String),
-          stragglerCauseCount: S.optional(__S(7)),
-          recentStragglers: S.optional(__S(101)),
+          stragglerCauseCount: S.optional(StringMap),
+          recentStragglers: S.optional(StragglerList),
         }),
       ).annotate({ identifier: "StragglerSummary" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          progress: S.optional(__S(89)),
-          state: S.optional(S.String),
-          metrics: S.optional(__S(92)),
+          progress: S.optional(ProgressTimeseries),
+          state: S.optional(StageSummaryStateEnum),
+          metrics: S.optional(MetricUpdateList),
           stageId: S.optional(S.String),
-          stragglerSummary: S.optional(__S(102)),
+          stragglerSummary: S.optional(StragglerSummary),
           startTime: S.optional(S.String),
           endTime: S.optional(S.String),
         }),
@@ -5255,11 +6500,11 @@ function __c12(j: number): any {
 function __c13(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(103));
+      return S.Array(StageSummary);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          stages: S.optional(__S(104)),
+          stages: S.optional(StageSummaryList),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "JobExecutionDetails" });
@@ -5289,29 +6534,29 @@ function __c13(j: number): any {
         S.Struct({
           endTime: S.optional(S.String),
           taskId: S.optional(S.String),
-          metrics: S.optional(__S(92)),
+          metrics: S.optional(MetricUpdateList),
           attemptId: S.optional(S.String),
           startTime: S.optional(S.String),
-          stragglerInfo: S.optional(__S(98)),
-          state: S.optional(S.String),
-          progress: S.optional(__S(89)),
+          stragglerInfo: S.optional(StragglerInfo),
+          state: S.optional(WorkItemDetailsStateEnum),
+          progress: S.optional(ProgressTimeseries),
         }),
       ).annotate({ identifier: "WorkItemDetails" });
     case 4:
-      return S.Array(__S(107));
+      return S.Array(WorkItemDetails);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          workItems: S.optional(__S(108)),
+          workItems: S.optional(WorkItemDetailsList),
           workerName: S.optional(S.String),
         }),
       ).annotate({ identifier: "WorkerDetails" });
     case 6:
-      return S.Array(__S(109));
+      return S.Array(WorkerDetails);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          workers: S.optional(__S(110)),
+          workers: S.optional(WorkerDetailsList),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "StageExecutionDetails" });
@@ -5354,7 +6599,7 @@ function __c14(j: number): any {
       return S.suspend(() =>
         S.Struct({
           metricTime: S.optional(S.String),
-          metrics: S.optional(__S(92)),
+          metrics: S.optional(MetricUpdateList),
         }),
       ).annotate({ identifier: "JobMetrics" });
     case 3:
@@ -5393,7 +6638,7 @@ function __c14(j: number): any {
         S.Struct({
           projectId: S.String.pipe(T.Label()),
           location: S.optional(S.String.pipe(T.Query())),
-          view: S.optional(S.String.pipe(T.Query())),
+          view: S.optional(GetProjectsJobsViewEnum.pipe(T.Query())),
           jobId: S.String.pipe(T.Label()),
         }).pipe(
           T.Http({
@@ -5423,7 +6668,7 @@ function __c14(j: number): any {
           jobId: S.String.pipe(T.Label()),
           location: S.String.pipe(T.Label()),
           projectId: S.String.pipe(T.Label()),
-          view: S.optional(S.String.pipe(T.Query())),
+          view: S.optional(GetProjectsLocationsJobsViewEnum.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -5463,18 +6708,18 @@ function __c15(j: number): any {
         }),
       ).annotate({ identifier: "PubsubSnapshotMetadata" });
     case 2:
-      return S.Array(__S(121));
+      return S.Array(PubsubSnapshotMetadata);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          state: S.optional(S.String),
+          state: S.optional(SnapshotStateEnum),
           description: S.optional(S.String),
           diskSizeBytes: S.optional(S.String),
           sourceJobId: S.optional(S.String),
           projectId: S.optional(S.String),
           ttl: S.optional(S.String),
           id: S.optional(S.String),
-          pubsubMetadata: S.optional(__S(122)),
+          pubsubMetadata: S.optional(PubsubSnapshotMetadataList),
           region: S.optional(S.String),
           creationTime: S.optional(S.String),
         }),
@@ -5483,7 +6728,7 @@ function __c15(j: number): any {
       return S.suspend(() =>
         S.Struct({
           gcsPath: S.optional(S.String.pipe(T.Query())),
-          view: S.optional(S.String.pipe(T.Query())),
+          view: S.optional(GetProjectsLocationsTemplatesViewEnum.pipe(T.Query())),
           projectId: S.String.pipe(T.Label()),
           location: S.String.pipe(T.Label()),
         }).pipe(
@@ -5507,20 +6752,20 @@ function __c15(j: number): any {
         identifier: "ParameterMetadataEnumOption",
       });
     case 6:
-      return S.Array(__S(125));
+      return S.Array(ParameterMetadataEnumOption);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          parentTriggerValues: S.optional(__S(4)),
-          enumOptions: S.optional(__S(126)),
+          parentTriggerValues: S.optional(StringList_),
+          enumOptions: S.optional(ParameterMetadataEnumOptionList),
           defaultValue: S.optional(S.String),
           hiddenUi: S.optional(S.Boolean),
-          regexes: S.optional(__S(4)),
+          regexes: S.optional(StringList_),
           parentName: S.optional(S.String),
           isOptional: S.optional(S.Boolean),
-          customMetadata: S.optional(__S(7)),
+          customMetadata: S.optional(StringMap),
           helpText: S.optional(S.String),
-          paramType: S.optional(S.String),
+          paramType: S.optional(ParameterMetadataParamTypeEnum),
           groupName: S.optional(S.String),
           label: S.optional(S.String),
           name: S.optional(S.String),
@@ -5531,14 +6776,14 @@ function __c15(j: number): any {
 function __c16(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(127));
+      return S.Array(ParameterMetadata);
     case 1:
       return S.suspend(() =>
         S.Struct({
           supportsExactlyOnce: S.optional(S.Boolean),
           defaultStreamingMode: S.optional(S.String),
           name: S.optional(S.String),
-          parameters: S.optional(__S(128)),
+          parameters: S.optional(ParameterMetadataList),
           streaming: S.optional(S.Boolean),
           yamlDefinition: S.optional(S.String),
           description: S.optional(S.String),
@@ -5548,34 +6793,34 @@ function __c16(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          language: S.optional(S.String),
+          language: S.optional(SDKInfoLanguageEnum),
           version: S.optional(S.String),
         }),
       ).annotate({ identifier: "SDKInfo" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          sdkInfo: S.optional(__S(130)),
-          parameters: S.optional(__S(128)),
+          sdkInfo: S.optional(SDKInfo),
+          parameters: S.optional(ParameterMetadataList),
         }),
       ).annotate({ identifier: "RuntimeMetadata" });
     case 4:
-      return S.Array(__S(3));
+      return S.Array(DocumentMap);
     case 5:
       return S.suspend(() =>
         S.Struct({
           code: S.optional(S.Number),
-          details: S.optional(__S(132)),
+          details: S.optional(DocumentMapList),
           message: S.optional(S.String),
         }),
       ).annotate({ identifier: "Status" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          metadata: S.optional(__S(129)),
-          templateType: S.optional(S.String),
-          runtimeMetadata: S.optional(__S(131)),
-          status: S.optional(__S(133)),
+          metadata: S.optional(TemplateMetadata),
+          templateType: S.optional(GetTemplateResponseTemplateTypeEnum),
+          runtimeMetadata: S.optional(RuntimeMetadata),
+          status: S.optional(Status),
         }),
       ).annotate({ identifier: "GetTemplateResponse" });
     case 7:
@@ -5604,7 +6849,7 @@ function __c17(j: number): any {
           projectId: S.String.pipe(T.Label()),
           location: S.optional(S.String.pipe(T.Query())),
           gcsPath: S.optional(S.String.pipe(T.Query())),
-          view: S.optional(S.String.pipe(T.Query())),
+          view: S.optional(GetProjectsTemplatesViewEnum.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -5630,7 +6875,7 @@ function __c17(j: number): any {
           location: S.String.pipe(T.Label()),
           jobId: S.String.pipe(T.Label()),
           projectId: S.String.pipe(T.Label()),
-          body: S.optional(__S(137).pipe(T.HttpBody())),
+          body: S.optional(GetWorkerStacktracesRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5652,20 +6897,20 @@ function __c17(j: number): any {
         }),
       ).annotate({ identifier: "Stack" });
     case 4:
-      return S.Array(__S(139));
+      return S.Array(Stack);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          stacks: S.optional(__S(140)),
+          stacks: S.optional(StackList),
           sdkId: S.optional(S.String),
         }),
       ).annotate({ identifier: "Sdk" });
     case 6:
-      return S.Array(__S(141));
+      return S.Array(Sdk);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          sdks: S.optional(__S(142)),
+          sdks: S.optional(SdkList),
         }),
       ).annotate({
         identifier: "GetWorkerStacktracesResponse",
@@ -5677,15 +6922,15 @@ function __c18(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          flexrsGoal: S.optional(S.String),
+          flexrsGoal: S.optional(FlexTemplateRuntimeEnvironmentFlexrsGoalEnum),
           enableLauncherVmSerialPortLogging: S.optional(S.Boolean),
           maxWorkers: S.optional(S.Number),
           diskSizeGb: S.optional(S.Number),
           enableStreamingEngine: S.optional(S.Boolean),
           workerRegion: S.optional(S.String),
-          additionalExperiments: S.optional(__S(4)),
+          additionalExperiments: S.optional(StringList_),
           sdkContainerImage: S.optional(S.String),
-          streamingMode: S.optional(S.String),
+          streamingMode: S.optional(FlexTemplateRuntimeEnvironmentStreamingModeEnum),
           launcherMachineType: S.optional(S.String),
           dumpHeapOnOom: S.optional(S.Boolean),
           saveHeapDumpsToGcsPath: S.optional(S.String),
@@ -5693,11 +6938,11 @@ function __c18(j: number): any {
           numWorkers: S.optional(S.Number),
           tempLocation: S.optional(S.String),
           zone: S.optional(S.String),
-          ipConfiguration: S.optional(S.String),
-          autoscalingAlgorithm: S.optional(S.String),
-          additionalPipelineOptions: S.optional(__S(4)),
+          ipConfiguration: S.optional(FlexTemplateRuntimeEnvironmentIpConfigurationEnum),
+          autoscalingAlgorithm: S.optional(FlexTemplateRuntimeEnvironmentAutoscalingAlgorithmEnum),
+          additionalPipelineOptions: S.optional(StringList_),
           stagingLocation: S.optional(S.String),
-          additionalUserLabels: S.optional(__S(7)),
+          additionalUserLabels: S.optional(StringMap),
           serviceAccountEmail: S.optional(S.String),
           kmsKeyName: S.optional(S.String),
           machineType: S.optional(S.String),
@@ -5710,10 +6955,10 @@ function __c18(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          defaultEnvironment: S.optional(__S(144)),
-          metadata: S.optional(__S(129)),
+          defaultEnvironment: S.optional(FlexTemplateRuntimeEnvironment),
+          metadata: S.optional(TemplateMetadata),
           image: S.optional(S.String),
-          sdkInfo: S.optional(__S(130)),
+          sdkInfo: S.optional(SDKInfo),
           imageRepositoryUsernameSecretId: S.optional(S.String),
           imageRepositoryPasswordSecretId: S.optional(S.String),
           imageRepositoryCertPath: S.optional(S.String),
@@ -5722,13 +6967,13 @@ function __c18(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          parameters: S.optional(__S(7)),
+          parameters: S.optional(StringMap),
           jobName: S.optional(S.String),
-          environment: S.optional(__S(144)),
-          containerSpec: S.optional(__S(145)),
+          environment: S.optional(FlexTemplateRuntimeEnvironment),
+          containerSpec: S.optional(ContainerSpec),
           update: S.optional(S.Boolean),
-          transformNameMappings: S.optional(__S(7)),
-          launchOptions: S.optional(__S(7)),
+          transformNameMappings: S.optional(StringMap),
+          launchOptions: S.optional(StringMap),
           containerSpecGcsPath: S.optional(S.String),
         }),
       ).annotate({
@@ -5737,7 +6982,7 @@ function __c18(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          launchParameter: S.optional(__S(146)),
+          launchParameter: S.optional(LaunchFlexTemplateParameter),
           validateOnly: S.optional(S.Boolean),
         }),
       ).annotate({
@@ -5748,7 +6993,7 @@ function __c18(j: number): any {
         S.Struct({
           location: S.String.pipe(T.Label()),
           projectId: S.String.pipe(T.Label()),
-          body: S.optional(__S(147).pipe(T.HttpBody())),
+          body: S.optional(LaunchFlexTemplateRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5762,7 +7007,7 @@ function __c18(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          job: S.optional(__S(62)),
+          job: S.optional(Job),
         }),
       ).annotate({
         identifier: "LaunchFlexTemplateResponse",
@@ -5770,10 +7015,10 @@ function __c18(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          parameters: S.optional(__S(7)),
-          transformNameMapping: S.optional(__S(7)),
+          parameters: S.optional(StringMap),
+          transformNameMapping: S.optional(StringMap),
           update: S.optional(S.Boolean),
-          environment: S.optional(__S(72)),
+          environment: S.optional(RuntimeEnvironment),
           jobName: S.optional(S.String),
         }),
       ).annotate({ identifier: "LaunchTemplateParameters" });
@@ -5786,7 +7031,7 @@ function __c18(j: number): any {
           "dynamicTemplate.stagingLocation": S.optional(S.String.pipe(T.Query())),
           projectId: S.String.pipe(T.Label()),
           "dynamicTemplate.gcsPath": S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(150).pipe(T.HttpBody())),
+          body: S.optional(LaunchTemplateParameters.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5804,7 +7049,7 @@ function __c19(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          job: S.optional(__S(62)),
+          job: S.optional(Job),
         }),
       ).annotate({ identifier: "LaunchTemplateResponse" });
     case 1:
@@ -5816,7 +7061,7 @@ function __c19(j: number): any {
           "dynamicTemplate.gcsPath": S.optional(S.String.pipe(T.Query())),
           "dynamicTemplate.stagingLocation": S.optional(S.String.pipe(T.Query())),
           gcsPath: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(150).pipe(T.HttpBody())),
+          body: S.optional(LaunchTemplateParameters.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5831,10 +7076,10 @@ function __c19(j: number): any {
       return S.suspend(() =>
         S.Struct({
           requestedLeaseDuration: S.optional(S.String),
-          workerCapabilities: S.optional(__S(4)),
-          unifiedWorkerRequest: S.optional(__S(3)),
+          workerCapabilities: S.optional(StringList_),
+          unifiedWorkerRequest: S.optional(DocumentMap),
           location: S.optional(S.String),
-          workItemTypes: S.optional(__S(4)),
+          workItemTypes: S.optional(StringList_),
           projectNumber: S.optional(S.String),
           currentWorkerTime: S.optional(S.String),
           workerId: S.optional(S.String),
@@ -5845,7 +7090,7 @@ function __c19(j: number): any {
         S.Struct({
           projectId: S.String.pipe(T.Label()),
           jobId: S.String.pipe(T.Label()),
-          body: S.optional(__S(154).pipe(T.HttpBody())),
+          body: S.optional(LeaseWorkItemRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5881,15 +7126,15 @@ function __c19(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          spec: S.optional(__S(3)),
-          codec: S.optional(__S(3)),
+          spec: S.optional(DocumentMap),
+          codec: S.optional(DocumentMap),
         }),
       ).annotate({ identifier: "Sink" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          input: S.optional(__S(157)),
-          sink: S.optional(__S(158)),
+          input: S.optional(InstructionInput),
+          sink: S.optional(Sink),
         }),
       ).annotate({ identifier: "WriteInstruction" });
   }
@@ -5907,46 +7152,46 @@ function __c20(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          codec: S.optional(__S(3)),
+          codec: S.optional(DocumentMap),
           doesNotNeedSplitting: S.optional(S.Boolean),
-          spec: S.optional(__S(3)),
-          baseSpecs: S.optional(__S(132)),
-          metadata: S.optional(__S(160)),
+          spec: S.optional(DocumentMap),
+          baseSpecs: S.optional(DocumentMapList),
+          metadata: S.optional(SourceMetadata),
         }),
       ).annotate({ identifier: "Source" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          source: S.optional(__S(161)),
+          source: S.optional(Source),
         }),
       ).annotate({ identifier: "ReadInstruction" });
     case 3:
-      return S.Array(__S(161));
+      return S.Array(Source);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          sources: S.optional(__S(163)),
-          kind: S.optional(__S(3)),
+          sources: S.optional(SourceList),
+          kind: S.optional(DocumentMap),
           tag: S.optional(S.String),
         }),
       ).annotate({ identifier: "SideInputInfo" });
     case 5:
-      return S.Array(__S(164));
+      return S.Array(SideInputInfo);
     case 6:
       return S.suspend(() =>
         S.Struct({
           originalCombineValuesInputStoreName: S.optional(S.String),
           originalCombineValuesStepName: S.optional(S.String),
-          sideInputs: S.optional(__S(165)),
-          input: S.optional(__S(157)),
-          inputElementCodec: S.optional(__S(3)),
-          valueCombiningFn: S.optional(__S(3)),
+          sideInputs: S.optional(SideInputInfoList),
+          input: S.optional(InstructionInput),
+          inputElementCodec: S.optional(DocumentMap),
+          valueCombiningFn: S.optional(DocumentMap),
         }),
       ).annotate({
         identifier: "PartialGroupByKeyInstruction",
       });
     case 7:
-      return S.Array(__S(157));
+      return S.Array(InstructionInput);
   }
 }
 function __c21(j: number): any {
@@ -5954,13 +7199,13 @@ function __c21(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          inputs: S.optional(__S(167)),
+          inputs: S.optional(InstructionInputList),
         }),
       ).annotate({ identifier: "FlattenInstruction" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          codec: S.optional(__S(3)),
+          codec: S.optional(DocumentMap),
           systemName: S.optional(S.String),
           onlyCountValueBytes: S.optional(S.Boolean),
           onlyCountKeyBytes: S.optional(S.Boolean),
@@ -5969,7 +7214,7 @@ function __c21(j: number): any {
         }),
       ).annotate({ identifier: "InstructionOutput" });
     case 2:
-      return S.Array(__S(169));
+      return S.Array(InstructionOutput);
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -5977,33 +7222,33 @@ function __c21(j: number): any {
         }),
       ).annotate({ identifier: "MultiOutputInfo" });
     case 4:
-      return S.Array(__S(171));
+      return S.Array(MultiOutputInfo);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          multiOutputInfos: S.optional(__S(172)),
+          multiOutputInfos: S.optional(MultiOutputInfoList),
           numOutputs: S.optional(S.Number),
-          userFn: S.optional(__S(3)),
-          sideInputs: S.optional(__S(165)),
-          input: S.optional(__S(157)),
+          userFn: S.optional(DocumentMap),
+          sideInputs: S.optional(SideInputInfoList),
+          input: S.optional(InstructionInput),
         }),
       ).annotate({ identifier: "ParDoInstruction" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          write: S.optional(__S(159)),
+          write: S.optional(WriteInstruction),
           name: S.optional(S.String),
-          read: S.optional(__S(162)),
-          partialGroupByKey: S.optional(__S(166)),
-          flatten: S.optional(__S(168)),
-          outputs: S.optional(__S(170)),
+          read: S.optional(ReadInstruction),
+          partialGroupByKey: S.optional(PartialGroupByKeyInstruction),
+          flatten: S.optional(FlattenInstruction),
+          outputs: S.optional(InstructionOutputList),
           systemName: S.optional(S.String),
-          parDo: S.optional(__S(173)),
+          parDo: S.optional(ParDoInstruction),
           originalName: S.optional(S.String),
         }),
       ).annotate({ identifier: "ParallelInstruction" });
     case 7:
-      return S.Array(__S(174));
+      return S.Array(ParallelInstruction);
   }
 }
 function __c22(j: number): any {
@@ -6013,26 +7258,26 @@ function __c22(j: number): any {
         S.Struct({
           systemName: S.optional(S.String),
           stageName: S.optional(S.String),
-          transformUserNameToStateFamily: S.optional(__S(7)),
+          transformUserNameToStateFamily: S.optional(StringMap),
           computationId: S.optional(S.String),
-          instructions: S.optional(__S(175)),
+          instructions: S.optional(ParallelInstructionList),
         }),
       ).annotate({
         identifier: "StreamingComputationConfig",
       });
     case 1:
-      return S.Array(__S(176));
+      return S.Array(StreamingComputationConfig);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          operationalLimits: S.optional(__S(156)),
+          operationalLimits: S.optional(StreamingOperationalLimits),
           windmillServicePort: S.optional(S.String),
           userWorkerRunnerV1Settings: S.optional(S.String),
           maxWorkItemCommitBytes: S.optional(S.String),
           userWorkerRunnerV2Settings: S.optional(S.String),
           streamingEngineStateTagEncodingVersion: S.optional(S.Number),
-          streamingComputationConfigs: S.optional(__S(177)),
-          userStepToStateFamilyNameMap: S.optional(__S(7)),
+          streamingComputationConfigs: S.optional(StreamingComputationConfigList),
+          userStepToStateFamilyNameMap: S.optional(StringMap),
           commitStreamChunkSizeBytes: S.optional(S.String),
           getDataStreamChunkSizeBytes: S.optional(S.String),
           windmillServiceEndpoint: S.optional(S.String),
@@ -6041,7 +7286,7 @@ function __c22(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          instructions: S.optional(__S(175)),
+          instructions: S.optional(ParallelInstructionList),
           stageName: S.optional(S.String),
           counterPrefix: S.optional(S.String),
           systemName: S.optional(S.String),
@@ -6050,20 +7295,20 @@ function __c22(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          sink: S.optional(__S(158)),
+          sink: S.optional(Sink),
           tag: S.optional(S.String),
         }),
       ).annotate({ identifier: "SeqMapTaskOutputInfo" });
     case 5:
-      return S.Array(__S(180));
+      return S.Array(SeqMapTaskOutputInfo);
     case 6:
       return S.suspend(() =>
         S.Struct({
           systemName: S.optional(S.String),
-          outputInfos: S.optional(__S(181)),
+          outputInfos: S.optional(SeqMapTaskOutputInfoList),
           stageName: S.optional(S.String),
-          inputs: S.optional(__S(165)),
-          userFn: S.optional(__S(3)),
+          inputs: S.optional(SideInputInfoList),
+          userFn: S.optional(DocumentMap),
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "SeqMapTask" });
@@ -6088,18 +7333,18 @@ function __c23(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          source: S.optional(__S(161)),
-          options: S.optional(__S(184)),
+          source: S.optional(Source),
+          options: S.optional(SourceSplitOptions),
         }),
       ).annotate({ identifier: "SourceSplitRequest" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          split: S.optional(__S(185)),
+          split: S.optional(SourceSplitRequest),
           systemName: S.optional(S.String),
           name: S.optional(S.String),
           stageName: S.optional(S.String),
-          getMetadata: S.optional(__S(162)),
+          getMetadata: S.optional(SourceGetMetadataRequest),
           originalName: S.optional(S.String),
         }),
       ).annotate({ identifier: "SourceOperationRequest" });
@@ -6116,11 +7361,11 @@ function __c23(j: number): any {
       return S.suspend(() =>
         S.Struct({
           vmInstance: S.optional(S.String),
-          dataDisks: S.optional(__S(4)),
+          dataDisks: S.optional(StringList_),
         }),
       ).annotate({ identifier: "DataDiskAssignment" });
     case 5:
-      return S.Array(__S(188));
+      return S.Array(DataDiskAssignment);
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -6129,7 +7374,7 @@ function __c23(j: number): any {
         }),
       ).annotate({ identifier: "StateFamilyConfig" });
     case 7:
-      return S.Array(__S(190));
+      return S.Array(StateFamilyConfig);
   }
 }
 function __c24(j: number): any {
@@ -6145,7 +7390,7 @@ function __c24(j: number): any {
         }),
       ).annotate({ identifier: "KeyRangeLocation" });
     case 1:
-      return S.Array(__S(192));
+      return S.Array(KeyRangeLocation);
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -6183,14 +7428,14 @@ function __c24(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          customSourceLocation: S.optional(__S(194)),
-          sideInputLocation: S.optional(__S(195)),
-          streamingStageLocation: S.optional(__S(196)),
-          pubsubLocation: S.optional(__S(197)),
+          customSourceLocation: S.optional(CustomSourceLocation),
+          sideInputLocation: S.optional(StreamingSideInputLocation),
+          streamingStageLocation: S.optional(StreamingStageLocation),
+          pubsubLocation: S.optional(PubsubLocation),
         }),
       ).annotate({ identifier: "StreamLocation" });
     case 7:
-      return S.Array(__S(198));
+      return S.Array(StreamLocation);
   }
 }
 function __c25(j: number): any {
@@ -6198,22 +7443,22 @@ function __c25(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          stateFamilies: S.optional(__S(191)),
+          stateFamilies: S.optional(StateFamilyConfigList),
           computationId: S.optional(S.String),
           systemStageName: S.optional(S.String),
-          keyRanges: S.optional(__S(193)),
-          inputs: S.optional(__S(199)),
-          outputs: S.optional(__S(199)),
+          keyRanges: S.optional(KeyRangeLocationList),
+          inputs: S.optional(StreamLocationList),
+          outputs: S.optional(StreamLocationList),
         }),
       ).annotate({ identifier: "ComputationTopology" });
     case 1:
-      return S.Array(__S(200));
+      return S.Array(ComputationTopology);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          dataDiskAssignments: S.optional(__S(189)),
-          userStageToComputationNameMap: S.optional(__S(7)),
-          computations: S.optional(__S(201)),
+          dataDiskAssignments: S.optional(DataDiskAssignmentList),
+          userStageToComputationNameMap: S.optional(StringMap),
+          computations: S.optional(ComputationTopologyList),
           forwardingKeyBits: S.optional(S.Number),
           persistentStateVersion: S.optional(S.Number),
         }),
@@ -6221,8 +7466,8 @@ function __c25(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          snapshotConfig: S.optional(__S(187)),
-          streamingComputationTopology: S.optional(__S(202)),
+          snapshotConfig: S.optional(StreamingApplianceSnapshotConfig),
+          streamingComputationTopology: S.optional(TopologyConfig),
           workerHarnessPort: S.optional(S.Number),
           drain: S.optional(S.Boolean),
           receiveWorkPort: S.optional(S.Number),
@@ -6239,18 +7484,18 @@ function __c25(j: number): any {
         identifier: "KeyRangeDataDiskAssignment",
       });
     case 5:
-      return S.Array(__S(204));
+      return S.Array(KeyRangeDataDiskAssignment);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          rangeAssignments: S.optional(__S(205)),
+          rangeAssignments: S.optional(KeyRangeDataDiskAssignmentList),
           computationId: S.optional(S.String),
         }),
       ).annotate({
         identifier: "StreamingComputationRanges",
       });
     case 7:
-      return S.Array(__S(206));
+      return S.Array(StreamingComputationRanges);
   }
 }
 function __c26(j: number): any {
@@ -6262,13 +7507,13 @@ function __c26(j: number): any {
         }),
       ).annotate({ identifier: "MountedDataDisk" });
     case 1:
-      return S.Array(__S(208));
+      return S.Array(MountedDataDisk);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          taskType: S.optional(S.String),
-          computationRanges: S.optional(__S(207)),
-          dataDisks: S.optional(__S(209)),
+          taskType: S.optional(StreamingComputationTaskTaskTypeEnum),
+          computationRanges: S.optional(StreamingComputationRangesList),
+          dataDisks: S.optional(MountedDataDiskList),
         }),
       ).annotate({ identifier: "StreamingComputationTask" });
     case 3:
@@ -6276,28 +7521,28 @@ function __c26(j: number): any {
         S.Struct({
           id: S.optional(S.String),
           initialReportIndex: S.optional(S.String),
-          streamingConfigTask: S.optional(__S(178)),
+          streamingConfigTask: S.optional(StreamingConfigTask),
           jobId: S.optional(S.String),
-          mapTask: S.optional(__S(179)),
+          mapTask: S.optional(MapTask),
           configuration: S.optional(S.String),
-          seqMapTask: S.optional(__S(182)),
+          seqMapTask: S.optional(SeqMapTask),
           projectId: S.optional(S.String),
-          packages: S.optional(__S(9)),
+          packages: S.optional(PackageList),
           reportStatusInterval: S.optional(S.String),
-          shellTask: S.optional(__S(183)),
-          sourceOperationTask: S.optional(__S(186)),
+          shellTask: S.optional(ShellTask),
+          sourceOperationTask: S.optional(SourceOperationRequest),
           leaseExpireTime: S.optional(S.String),
-          streamingSetupTask: S.optional(__S(203)),
-          streamingComputationTask: S.optional(__S(210)),
+          streamingSetupTask: S.optional(StreamingSetupTask),
+          streamingComputationTask: S.optional(StreamingComputationTask),
         }),
       ).annotate({ identifier: "WorkItem" });
     case 4:
-      return S.Array(__S(211));
+      return S.Array(WorkItem);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          workItems: S.optional(__S(212)),
-          unifiedWorkerResponse: S.optional(__S(3)),
+          workItems: S.optional(WorkItemList),
+          unifiedWorkerResponse: S.optional(DocumentMap),
         }),
       ).annotate({ identifier: "LeaseWorkItemResponse" });
     case 6:
@@ -6306,7 +7551,7 @@ function __c26(j: number): any {
           location: S.String.pipe(T.Label()),
           projectId: S.String.pipe(T.Label()),
           jobId: S.String.pipe(T.Label()),
-          body: S.optional(__S(154).pipe(T.HttpBody())),
+          body: S.optional(LeaseWorkItemRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6338,12 +7583,12 @@ function __c26(j: number): any {
 function __c27(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(66));
+      return S.Array(ConfigStoreSetting);
     case 1:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          configStoreSettings: S.optional(__S(216)),
+          configStoreSettings: S.optional(ConfigStoreSettingList),
         }),
       ).annotate({
         identifier: "ListConfigStoreSettingsResponse",
@@ -6367,8 +7612,8 @@ function __c27(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          view: S.optional(S.String.pipe(T.Query())),
-          filter: S.optional(S.String.pipe(T.Query())),
+          view: S.optional(ListProjectsJobsViewEnum.pipe(T.Query())),
+          filter: S.optional(ListProjectsJobsFilterEnum.pipe(T.Query())),
           location: S.optional(S.String.pipe(T.Query())),
           projectId: S.String.pipe(T.Label()),
           name: S.optional(S.String.pipe(T.Query())),
@@ -6391,7 +7636,9 @@ function __c27(j: number): any {
           projectId: S.String.pipe(T.Label()),
           jobId: S.String.pipe(T.Label()),
           pageSize: S.optional(S.Number.pipe(T.Query())),
-          minimumImportance: S.optional(S.String.pipe(T.Query())),
+          minimumImportance: S.optional(
+            ListProjectsJobsMessagesMinimumImportanceEnum.pipe(T.Query()),
+          ),
           pageToken: S.optional(S.String.pipe(T.Query())),
           startTime: S.optional(S.String.pipe(T.Query())),
         }).pipe(
@@ -6407,14 +7654,14 @@ function __c27(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          messageImportance: S.optional(S.String),
+          messageImportance: S.optional(JobMessageMessageImportanceEnum),
           id: S.optional(S.String),
           messageText: S.optional(S.String),
           time: S.optional(S.String),
         }),
       ).annotate({ identifier: "JobMessage" });
     case 6:
-      return S.Array(__S(221));
+      return S.Array(JobMessage);
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -6427,12 +7674,12 @@ function __c27(j: number): any {
 function __c28(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(223));
+      return S.Array(Parameter);
     case 1:
       return S.suspend(() =>
         S.Struct({
           messageText: S.optional(S.String),
-          parameters: S.optional(__S(224)),
+          parameters: S.optional(ParameterList),
           messageKey: S.optional(S.String),
         }),
       ).annotate({ identifier: "StructuredMessage" });
@@ -6440,21 +7687,21 @@ function __c28(j: number): any {
       return S.suspend(() =>
         S.Struct({
           currentNumWorkers: S.optional(S.String),
-          eventType: S.optional(S.String),
+          eventType: S.optional(AutoscalingEventEventTypeEnum),
           workerPool: S.optional(S.String),
-          description: S.optional(__S(225)),
+          description: S.optional(StructuredMessage),
           time: S.optional(S.String),
           targetNumWorkers: S.optional(S.String),
         }),
       ).annotate({ identifier: "AutoscalingEvent" });
     case 3:
-      return S.Array(__S(226));
+      return S.Array(AutoscalingEvent);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          jobMessages: S.optional(__S(222)),
+          jobMessages: S.optional(JobMessageList),
           nextPageToken: S.optional(S.String),
-          autoscalingEvents: S.optional(__S(227)),
+          autoscalingEvents: S.optional(AutoscalingEventList),
         }),
       ).annotate({ identifier: "ListJobMessagesResponse" });
     case 5:
@@ -6476,12 +7723,12 @@ function __c28(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          view: S.optional(S.String.pipe(T.Query())),
+          view: S.optional(ListProjectsLocationsJobsViewEnum.pipe(T.Query())),
           regionalFanoutRequested: S.optional(S.Boolean.pipe(T.Query())),
           projectId: S.String.pipe(T.Label()),
           location: S.String.pipe(T.Label()),
           name: S.optional(S.String.pipe(T.Query())),
-          filter: S.optional(S.String.pipe(T.Query())),
+          filter: S.optional(ListProjectsLocationsJobsFilterEnum.pipe(T.Query())),
           pageSize: S.optional(S.Number.pipe(T.Query())),
           pageToken: S.optional(S.String.pipe(T.Query())),
         }).pipe(
@@ -6499,7 +7746,9 @@ function __c28(j: number): any {
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
           startTime: S.optional(S.String.pipe(T.Query())),
-          minimumImportance: S.optional(S.String.pipe(T.Query())),
+          minimumImportance: S.optional(
+            ListProjectsLocationsJobsMessagesMinimumImportanceEnum.pipe(T.Query()),
+          ),
           pageSize: S.optional(S.Number.pipe(T.Query())),
           endTime: S.optional(S.String.pipe(T.Query())),
           projectId: S.String.pipe(T.Label()),
@@ -6536,11 +7785,11 @@ function __c29(j: number): any {
         identifier: "ListProjectsLocationsJobsSnapshotsRequest",
       });
     case 1:
-      return S.Array(__S(123));
+      return S.Array(Snapshot);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          snapshots: S.optional(__S(233)),
+          snapshots: S.optional(SnapshotList),
         }),
       ).annotate({ identifier: "ListSnapshotsResponse" });
     case 3:
@@ -6576,16 +7825,16 @@ function __c29(j: number): any {
         identifier: "ListProjectsSnapshotsRequest",
       });
     case 5:
-      return S.Array(__S(133));
+      return S.Array(Status);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          source: S.optional(__S(161)),
-          derivationMode: S.optional(S.String),
+          source: S.optional(Source),
+          derivationMode: S.optional(DerivedSourceDerivationModeEnum),
         }),
       ).annotate({ identifier: "DerivedSource" });
     case 7:
-      return S.Array(__S(238));
+      return S.Array(DerivedSource);
   }
 }
 function __c30(j: number): any {
@@ -6593,24 +7842,24 @@ function __c30(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          derivationMode: S.optional(S.String),
-          source: S.optional(__S(161)),
+          derivationMode: S.optional(SourceSplitShardDerivationModeEnum),
+          source: S.optional(Source),
         }),
       ).annotate({ identifier: "SourceSplitShard" });
     case 1:
-      return S.Array(__S(240));
+      return S.Array(SourceSplitShard);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          outcome: S.optional(S.String),
-          bundles: S.optional(__S(239)),
-          shards: S.optional(__S(241)),
+          outcome: S.optional(SourceSplitResponseOutcomeEnum),
+          bundles: S.optional(DerivedSourceList),
+          shards: S.optional(SourceSplitShardList),
         }),
       ).annotate({ identifier: "SourceSplitResponse" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          metadata: S.optional(__S(160)),
+          metadata: S.optional(SourceMetadata),
         }),
       ).annotate({
         identifier: "SourceGetMetadataResponse",
@@ -6618,16 +7867,16 @@ function __c30(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          split: S.optional(__S(242)),
-          getMetadata: S.optional(__S(243)),
+          split: S.optional(SourceSplitResponse),
+          getMetadata: S.optional(SourceGetMetadataResponse),
         }),
       ).annotate({ identifier: "SourceOperationResponse" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          kind: S.optional(S.String),
+          kind: S.optional(CounterMetadataKindEnum),
           otherUnits: S.optional(S.String),
-          standardUnits: S.optional(S.String),
+          standardUnits: S.optional(CounterMetadataStandardUnitsEnum),
           description: S.optional(S.String),
         }),
       ).annotate({ identifier: "CounterMetadata" });
@@ -6637,8 +7886,8 @@ function __c30(j: number): any {
           name: S.optional(S.String),
           componentStepName: S.optional(S.String),
           originalRequestingStepName: S.optional(S.String),
-          origin: S.optional(S.String),
-          portion: S.optional(S.String),
+          origin: S.optional(CounterStructuredNameOriginEnum),
+          portion: S.optional(CounterStructuredNamePortionEnum),
           workerId: S.optional(S.String),
           originalStepName: S.optional(S.String),
           executionStepName: S.optional(S.String),
@@ -6649,8 +7898,8 @@ function __c30(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          metadata: S.optional(__S(245)),
-          name: S.optional(__S(246)),
+          metadata: S.optional(CounterMetadata),
+          name: S.optional(CounterStructuredName),
         }),
       ).annotate({
         identifier: "CounterStructuredNameAndMetadata",
@@ -6669,52 +7918,52 @@ function __c31(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          bucketCounts: S.optional(__S(4)),
+          bucketCounts: S.optional(StringList_),
           firstBucketOffset: S.optional(S.Number),
         }),
       ).annotate({ identifier: "Histogram" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          sum: S.optional(__S(248)),
-          count: S.optional(__S(248)),
+          sum: S.optional(SplitInt64),
+          count: S.optional(SplitInt64),
           sumOfSquares: S.optional(S.Number),
-          min: S.optional(__S(248)),
-          max: S.optional(__S(248)),
-          histogram: S.optional(__S(249)),
+          min: S.optional(SplitInt64),
+          max: S.optional(SplitInt64),
+          histogram: S.optional(Histogram),
         }),
       ).annotate({ identifier: "DistributionUpdate" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          count: S.optional(__S(248)),
+          count: S.optional(SplitInt64),
           sum: S.optional(S.Number),
         }),
       ).annotate({ identifier: "FloatingPointMean" });
     case 4:
       return S.Record(
         S.String,
-        /*@__PURE__*/ S.suspend(() => __S(253)),
+        /*@__PURE__*/ S.suspend(() => BoundedTrieNode),
       );
     case 5:
       return S.suspend(() =>
         S.Struct({
-          children: S.optional(__S(252)),
+          children: S.optional(BoundedTrieNodeMap),
           truncated: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "BoundedTrieNode" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          root: S.optional(__S(253)),
+          root: S.optional(BoundedTrieNode),
           bound: S.optional(S.Number),
-          singleton: S.optional(__S(4)),
+          singleton: S.optional(StringList_),
         }),
       ).annotate({ identifier: "BoundedTrie" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(248)),
+          value: S.optional(SplitInt64),
           timestamp: S.optional(S.String),
         }),
       ).annotate({ identifier: "IntegerGauge" });
@@ -6725,21 +7974,21 @@ function __c32(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          elements: S.optional(__S(4)),
+          elements: S.optional(StringList_),
         }),
       ).annotate({ identifier: "StringList" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          kind: S.optional(S.String),
+          kind: S.optional(NameAndKindKindEnum),
         }),
       ).annotate({ identifier: "NameAndKind" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          sum: S.optional(__S(248)),
-          count: S.optional(__S(248)),
+          sum: S.optional(SplitInt64),
+          count: S.optional(SplitInt64),
         }),
       ).annotate({ identifier: "IntegerMean" });
     case 3:
@@ -6747,36 +7996,36 @@ function __c32(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          elements: S.optional(__S(259)),
+          elements: S.optional(DoubleList),
         }),
       ).annotate({ identifier: "FloatingPointList" });
     case 5:
-      return S.Array(__S(248));
+      return S.Array(SplitInt64);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          elements: S.optional(__S(261)),
+          elements: S.optional(SplitInt64List),
         }),
       ).annotate({ identifier: "IntegerList" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          structuredNameAndMetadata: S.optional(__S(247)),
+          structuredNameAndMetadata: S.optional(CounterStructuredNameAndMetadata),
           shortId: S.optional(S.String),
-          distribution: S.optional(__S(250)),
+          distribution: S.optional(DistributionUpdate),
           internal: S.optional(S.Unknown),
           cumulative: S.optional(S.Boolean),
-          floatingPointMean: S.optional(__S(251)),
-          boundedTrie: S.optional(__S(254)),
-          integer: S.optional(__S(248)),
+          floatingPointMean: S.optional(FloatingPointMean),
+          boundedTrie: S.optional(BoundedTrie),
+          integer: S.optional(SplitInt64),
           boolean: S.optional(S.Boolean),
-          integerGauge: S.optional(__S(255)),
-          stringList: S.optional(__S(256)),
+          integerGauge: S.optional(IntegerGauge),
+          stringList: S.optional(StringList),
           floatingPoint: S.optional(S.Number),
-          nameAndKind: S.optional(__S(257)),
-          integerMean: S.optional(__S(258)),
-          floatingPointList: S.optional(__S(260)),
-          integerList: S.optional(__S(262)),
+          nameAndKind: S.optional(NameAndKind),
+          integerMean: S.optional(IntegerMean),
+          floatingPointList: S.optional(FloatingPointList),
+          integerList: S.optional(IntegerList),
         }),
       ).annotate({ identifier: "CounterUpdate" });
   }
@@ -6784,12 +8033,12 @@ function __c32(j: number): any {
 function __c33(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(263));
+      return S.Array(CounterUpdate);
     case 1:
       return S.suspend(() =>
         S.Struct({
           index: S.optional(S.Number),
-          position: S.optional(S.suspend(() => __S(266))),
+          position: S.optional(S.suspend(() => Position)),
         }),
       ).annotate({ identifier: "ConcatPosition" });
     case 2:
@@ -6800,7 +8049,7 @@ function __c33(j: number): any {
           end: S.optional(S.Boolean),
           key: S.optional(S.String),
           byteOffset: S.optional(S.String),
-          concatPosition: S.optional(__S(265)),
+          concatPosition: S.optional(ConcatPosition),
         }),
       ).annotate({ identifier: "Position" });
     case 3:
@@ -6814,9 +8063,9 @@ function __c33(j: number): any {
       return S.suspend(() =>
         S.Struct({
           fractionConsumed: S.optional(S.Number),
-          remainingParallelism: S.optional(__S(267)),
-          consumedParallelism: S.optional(__S(267)),
-          position: S.optional(__S(266)),
+          remainingParallelism: S.optional(ReportedParallelism),
+          consumedParallelism: S.optional(ReportedParallelism),
+          position: S.optional(Position),
         }),
       ).annotate({
         identifier: "ApproximateReportedProgress",
@@ -6824,25 +8073,25 @@ function __c33(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          primary: S.optional(__S(238)),
-          residual: S.optional(__S(238)),
+          primary: S.optional(DerivedSource),
+          residual: S.optional(DerivedSource),
         }),
       ).annotate({ identifier: "DynamicSourceSplit" });
     case 6:
       return S.suspend(() =>
         S.Struct({
           percentComplete: S.optional(S.Number),
-          position: S.optional(__S(266)),
+          position: S.optional(Position),
           remainingTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "ApproximateProgress" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          primary: S.optional(__S(240)),
-          residualSource: S.optional(__S(238)),
-          residual: S.optional(__S(240)),
-          primarySource: S.optional(__S(238)),
+          primary: S.optional(SourceSplitShard),
+          residualSource: S.optional(DerivedSource),
+          residual: S.optional(SourceSplitShard),
+          primarySource: S.optional(DerivedSource),
         }),
       ).annotate({ identifier: "SourceFork" });
   }
@@ -6852,30 +8101,30 @@ function __c34(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          errors: S.optional(__S(237)),
+          errors: S.optional(StatusList),
           requestedLeaseDuration: S.optional(S.String),
-          sourceOperationResponse: S.optional(__S(244)),
-          counterUpdates: S.optional(__S(264)),
+          sourceOperationResponse: S.optional(SourceOperationResponse),
+          counterUpdates: S.optional(CounterUpdateList),
           reportIndex: S.optional(S.String),
-          stopPosition: S.optional(__S(266)),
-          reportedProgress: S.optional(__S(268)),
+          stopPosition: S.optional(Position),
+          reportedProgress: S.optional(ApproximateReportedProgress),
           workItemId: S.optional(S.String),
-          dynamicSourceSplit: S.optional(__S(269)),
+          dynamicSourceSplit: S.optional(DynamicSourceSplit),
           completed: S.optional(S.Boolean),
-          progress: S.optional(__S(270)),
-          sourceFork: S.optional(__S(271)),
-          metricUpdates: S.optional(__S(92)),
+          progress: S.optional(ApproximateProgress),
+          sourceFork: S.optional(SourceFork),
+          metricUpdates: S.optional(MetricUpdateList),
           totalThrottlerWaitTimeSeconds: S.optional(S.Number),
         }),
       ).annotate({ identifier: "WorkItemStatus" });
     case 1:
-      return S.Array(__S(272));
+      return S.Array(WorkItemStatus);
     case 2:
       return S.suspend(() =>
         S.Struct({
           workerId: S.optional(S.String),
-          unifiedWorkerRequest: S.optional(__S(3)),
-          workItemStatuses: S.optional(__S(273)),
+          unifiedWorkerRequest: S.optional(DocumentMap),
+          workItemStatuses: S.optional(WorkItemStatusList),
           currentWorkerTime: S.optional(S.String),
           location: S.optional(S.String),
           projectNumber: S.optional(S.String),
@@ -6888,7 +8137,7 @@ function __c34(j: number): any {
         S.Struct({
           projectId: S.String.pipe(T.Label()),
           jobId: S.String.pipe(T.Label()),
-          body: S.optional(__S(274).pipe(T.HttpBody())),
+          body: S.optional(ReportWorkItemStatusRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6907,12 +8156,12 @@ function __c34(j: number): any {
         }),
       ).annotate({ identifier: "MetricShortId" });
     case 5:
-      return S.Array(__S(276));
+      return S.Array(MetricShortId);
     case 6:
       return S.suspend(() =>
         S.Struct({
           fractionOfRemainder: S.optional(S.Number),
-          position: S.optional(__S(266)),
+          position: S.optional(Position),
           fractionConsumed: S.optional(S.Number),
         }),
       ).annotate({ identifier: "ApproximateSplitRequest" });
@@ -6931,25 +8180,25 @@ function __c35(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          suggestedStopPosition: S.optional(__S(266)),
+          suggestedStopPosition: S.optional(Position),
           leaseExpireTime: S.optional(S.String),
           reportStatusInterval: S.optional(S.String),
-          suggestedStopPoint: S.optional(__S(270)),
-          harnessData: S.optional(__S(3)),
-          metricShortId: S.optional(__S(277)),
-          splitRequest: S.optional(__S(278)),
-          completeWorkStatus: S.optional(__S(133)),
-          hotKeyDetection: S.optional(__S(279)),
+          suggestedStopPoint: S.optional(ApproximateProgress),
+          harnessData: S.optional(DocumentMap),
+          metricShortId: S.optional(MetricShortIdList),
+          splitRequest: S.optional(ApproximateSplitRequest),
+          completeWorkStatus: S.optional(Status),
+          hotKeyDetection: S.optional(HotKeyDetection),
           nextReportIndex: S.optional(S.String),
         }),
       ).annotate({ identifier: "WorkItemServiceState" });
     case 1:
-      return S.Array(__S(280));
+      return S.Array(WorkItemServiceState);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          workItemServiceStates: S.optional(__S(281)),
-          unifiedWorkerResponse: S.optional(__S(3)),
+          workItemServiceStates: S.optional(WorkItemServiceStateList),
+          unifiedWorkerResponse: S.optional(DocumentMap),
         }),
       ).annotate({
         identifier: "ReportWorkItemStatusResponse",
@@ -6960,7 +8209,7 @@ function __c35(j: number): any {
           projectId: S.String.pipe(T.Label()),
           location: S.String.pipe(T.Label()),
           jobId: S.String.pipe(T.Label()),
-          body: S.optional(__S(274).pipe(T.HttpBody())),
+          body: S.optional(ReportWorkItemStatusRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6979,7 +8228,7 @@ function __c35(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(284).pipe(T.HttpBody())),
+          body: S.optional(ResolveConfigStoreSettingRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6993,8 +8242,8 @@ function __c35(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          choices: S.optional(__S(216)),
-          setting: S.optional(__S(66)),
+          choices: S.optional(ConfigStoreSettingList),
+          setting: S.optional(ConfigStoreSetting),
         }),
       ).annotate({
         identifier: "ResolveConfigStoreSettingResponse",
@@ -7003,7 +8252,7 @@ function __c35(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(284).pipe(T.HttpBody())),
+          body: S.optional(ResolveConfigStoreSettingRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7022,7 +8271,7 @@ function __c36(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(284).pipe(T.HttpBody())),
+          body: S.optional(ResolveConfigStoreSettingRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7040,7 +8289,7 @@ function __c36(j: number): any {
           componentId: S.optional(S.String),
           workerId: S.optional(S.String),
           data: S.optional(S.String),
-          dataFormat: S.optional(S.String),
+          dataFormat: S.optional(SendDebugCaptureRequestDataFormatEnum),
         }),
       ).annotate({ identifier: "SendDebugCaptureRequest" });
     case 2:
@@ -7048,7 +8297,7 @@ function __c36(j: number): any {
         S.Struct({
           jobId: S.String.pipe(T.Label()),
           projectId: S.String.pipe(T.Label()),
-          body: S.optional(__S(289).pipe(T.HttpBody())),
+          body: S.optional(SendDebugCaptureRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7065,7 +8314,7 @@ function __c36(j: number): any {
           jobId: S.String.pipe(T.Label()),
           location: S.String.pipe(T.Label()),
           projectId: S.String.pipe(T.Label()),
-          body: S.optional(__S(289).pipe(T.HttpBody())),
+          body: S.optional(SendDebugCaptureRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7090,7 +8339,7 @@ function __c36(j: number): any {
         S.Struct({
           projectId: S.String.pipe(T.Label()),
           jobId: S.String.pipe(T.Label()),
-          body: S.optional(__S(292).pipe(T.HttpBody())),
+          body: S.optional(SnapshotJobRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7107,7 +8356,7 @@ function __c36(j: number): any {
           projectId: S.String.pipe(T.Label()),
           location: S.String.pipe(T.Label()),
           jobId: S.String.pipe(T.Label()),
-          body: S.optional(__S(292).pipe(T.HttpBody())),
+          body: S.optional(SnapshotJobRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7125,7 +8374,7 @@ function __c36(j: number): any {
           updateMask: S.optional(S.String.pipe(T.Query())),
           jobId: S.String.pipe(T.Label()),
           projectId: S.String.pipe(T.Label()),
-          body: S.optional(__S(62).pipe(T.HttpBody())),
+          body: S.optional(Job.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -7147,7 +8396,7 @@ function __c37(j: number): any {
           jobId: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
           location: S.String.pipe(T.Label()),
-          body: S.optional(__S(62).pipe(T.HttpBody())),
+          body: S.optional(Job.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -7183,11 +8432,11 @@ function __c37(j: number): any {
         }),
       ).annotate({ identifier: "MemInfo" });
     case 3:
-      return S.Array(__S(298));
+      return S.Array(MemInfo);
     case 4:
       return S.Record(
         S.String,
-        /*@__PURE__*/ S.suspend(() => __S(306)),
+        /*@__PURE__*/ S.suspend(() => ResourceUtilizationReport),
       );
     case 5:
       return S.suspend(() =>
@@ -7198,12 +8447,12 @@ function __c37(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          utilization: S.optional(__S(301)),
+          utilization: S.optional(GPUUtilization),
           timestamp: S.optional(S.String),
         }),
       ).annotate({ identifier: "GPUUsage" });
     case 7:
-      return S.Array(__S(302));
+      return S.Array(GPUUsage);
   }
 }
 function __c38(j: number): any {
@@ -7217,14 +8466,14 @@ function __c38(j: number): any {
         }),
       ).annotate({ identifier: "CPUTime" });
     case 1:
-      return S.Array(__S(304));
+      return S.Array(CPUTime);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          memoryInfo: S.optional(__S(299)),
-          containers: S.optional(__S(300)),
-          gpuUsage: S.optional(__S(303)),
-          cpuTime: S.optional(__S(305)),
+          memoryInfo: S.optional(MemInfoList),
+          containers: S.optional(ResourceUtilizationReportMap),
+          gpuUsage: S.optional(GPUUsageList),
+          cpuTime: S.optional(CPUTimeList),
         }),
       ).annotate({
         identifier: "ResourceUtilizationReport",
@@ -7233,7 +8482,7 @@ function __c38(j: number): any {
       return S.suspend(() =>
         S.Struct({
           vmStartupTime: S.optional(S.String),
-          pods: S.optional(__S(132)),
+          pods: S.optional(DocumentMapList),
           vmBrokenCode: S.optional(S.String),
           vmIsBroken: S.optional(S.Boolean),
           msg: S.optional(S.String),
@@ -7282,8 +8531,8 @@ function __c39(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          linear: S.optional(__S(310)),
-          exponential: S.optional(__S(311)),
+          linear: S.optional(Linear),
+          exponential: S.optional(Base2Exponent),
         }),
       ).annotate({ identifier: "BucketOptions" });
     case 1:
@@ -7298,38 +8547,38 @@ function __c39(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          bucketCounts: S.optional(__S(4)),
+          bucketCounts: S.optional(StringList_),
           count: S.optional(S.String),
-          bucketOptions: S.optional(__S(312)),
-          outlierStats: S.optional(__S(313)),
+          bucketOptions: S.optional(BucketOptions),
+          outlierStats: S.optional(OutlierStats),
         }),
       ).annotate({ identifier: "DataflowHistogramValue" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           valueInt64: S.optional(S.String),
-          valueGauge64: S.optional(__S(309)),
-          valueHistogram: S.optional(__S(314)),
-          metricLabels: S.optional(__S(7)),
+          valueGauge64: S.optional(DataflowGaugeValue),
+          valueHistogram: S.optional(DataflowHistogramValue),
+          metricLabels: S.optional(StringMap),
           metric: S.optional(S.String),
         }),
       ).annotate({ identifier: "MetricValue" });
     case 4:
-      return S.Array(__S(315));
+      return S.Array(MetricValue);
     case 5:
       return S.suspend(() =>
         S.Struct({
           originalStep: S.optional(S.String),
-          metricValues: S.optional(__S(316)),
+          metricValues: S.optional(MetricValueList),
           metricsNamespace: S.optional(S.String),
         }),
       ).annotate({ identifier: "PerStepNamespaceMetrics" });
     case 6:
-      return S.Array(__S(317));
+      return S.Array(PerStepNamespaceMetrics);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          perStepNamespaceMetrics: S.optional(__S(318)),
+          perStepNamespaceMetrics: S.optional(PerStepNamespaceMetricsList),
         }),
       ).annotate({ identifier: "PerWorkerMetrics" });
   }
@@ -7346,15 +8595,15 @@ function __c40(j: number): any {
       return S.suspend(() =>
         S.Struct({
           code: S.optional(S.String),
-          parameters: S.optional(__S(3)),
+          parameters: S.optional(DocumentMap),
         }),
       ).annotate({ identifier: "WorkerMessageCode" });
     case 2:
       return S.suspend(() =>
         S.Struct({
           containerStartTime: S.optional(S.String),
-          event: S.optional(S.String),
-          metadata: S.optional(__S(7)),
+          event: S.optional(WorkerLifecycleEventEventEnum),
+          metadata: S.optional(StringMap),
         }),
       ).annotate({ identifier: "WorkerLifecycleEvent" });
     case 3:
@@ -7369,24 +8618,24 @@ function __c40(j: number): any {
       return S.suspend(() =>
         S.Struct({
           time: S.optional(S.String),
-          streamingScalingReport: S.optional(__S(297)),
-          workerMetrics: S.optional(__S(306)),
-          workerHealthReport: S.optional(__S(307)),
-          dataSamplingReport: S.optional(__S(308)),
-          perWorkerMetrics: S.optional(__S(319)),
-          workerShutdownNotice: S.optional(__S(320)),
-          workerMessageCode: S.optional(__S(321)),
-          workerLifecycleEvent: S.optional(__S(322)),
-          labels: S.optional(__S(7)),
-          workerThreadScalingReport: S.optional(__S(323)),
+          streamingScalingReport: S.optional(StreamingScalingReport),
+          workerMetrics: S.optional(ResourceUtilizationReport),
+          workerHealthReport: S.optional(WorkerHealthReport),
+          dataSamplingReport: S.optional(DataSamplingReport),
+          perWorkerMetrics: S.optional(PerWorkerMetrics),
+          workerShutdownNotice: S.optional(WorkerShutdownNotice),
+          workerMessageCode: S.optional(WorkerMessageCode),
+          workerLifecycleEvent: S.optional(WorkerLifecycleEvent),
+          labels: S.optional(StringMap),
+          workerThreadScalingReport: S.optional(WorkerThreadScalingReport),
         }),
       ).annotate({ identifier: "WorkerMessage" });
     case 5:
-      return S.Array(__S(324));
+      return S.Array(WorkerMessage);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          workerMessages: S.optional(__S(325)),
+          workerMessages: S.optional(WorkerMessageList),
           location: S.optional(S.String),
         }),
       ).annotate({
@@ -7396,7 +8645,7 @@ function __c40(j: number): any {
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
-          body: S.optional(__S(326).pipe(T.HttpBody())),
+          body: S.optional(SendWorkerMessagesRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7438,19 +8687,19 @@ function __c41(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          streamingScalingReportResponse: S.optional(__S(328)),
-          workerHealthReportResponse: S.optional(__S(329)),
-          workerThreadScalingReportResponse: S.optional(__S(330)),
-          workerMetricsResponse: S.optional(__S(284)),
-          workerShutdownNoticeResponse: S.optional(__S(284)),
+          streamingScalingReportResponse: S.optional(StreamingScalingReportResponse),
+          workerHealthReportResponse: S.optional(WorkerHealthReportResponse),
+          workerThreadScalingReportResponse: S.optional(WorkerThreadScalingReportResponse),
+          workerMetricsResponse: S.optional(ResolveConfigStoreSettingRequest),
+          workerShutdownNoticeResponse: S.optional(ResolveConfigStoreSettingRequest),
         }),
       ).annotate({ identifier: "WorkerMessageResponse" });
     case 4:
-      return S.Array(__S(331));
+      return S.Array(WorkerMessageResponse);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          workerMessageResponses: S.optional(__S(332)),
+          workerMessageResponses: S.optional(WorkerMessageResponseList),
         }),
       ).annotate({
         identifier: "SendWorkerMessagesResponse",
@@ -7460,7 +8709,7 @@ function __c41(j: number): any {
         S.Struct({
           projectId: S.String.pipe(T.Label()),
           location: S.String.pipe(T.Label()),
-          body: S.optional(__S(326).pipe(T.HttpBody())),
+          body: S.optional(SendWorkerMessagesRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7471,98 +8720,5 @@ function __c41(j: number): any {
       ).annotate({
         identifier: "WorkerMessagesProjectsLocationsRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
-    case 9:
-      return __c9(i & 7);
-    case 10:
-      return __c10(i & 7);
-    case 11:
-      return __c11(i & 7);
-    case 12:
-      return __c12(i & 7);
-    case 13:
-      return __c13(i & 7);
-    case 14:
-      return __c14(i & 7);
-    case 15:
-      return __c15(i & 7);
-    case 16:
-      return __c16(i & 7);
-    case 17:
-      return __c17(i & 7);
-    case 18:
-      return __c18(i & 7);
-    case 19:
-      return __c19(i & 7);
-    case 20:
-      return __c20(i & 7);
-    case 21:
-      return __c21(i & 7);
-    case 22:
-      return __c22(i & 7);
-    case 23:
-      return __c23(i & 7);
-    case 24:
-      return __c24(i & 7);
-    case 25:
-      return __c25(i & 7);
-    case 26:
-      return __c26(i & 7);
-    case 27:
-      return __c27(i & 7);
-    case 28:
-      return __c28(i & 7);
-    case 29:
-      return __c29(i & 7);
-    case 30:
-      return __c30(i & 7);
-    case 31:
-      return __c31(i & 7);
-    case 32:
-      return __c32(i & 7);
-    case 33:
-      return __c33(i & 7);
-    case 34:
-      return __c34(i & 7);
-    case 35:
-      return __c35(i & 7);
-    case 36:
-      return __c36(i & 7);
-    case 37:
-      return __c37(i & 7);
-    case 38:
-      return __c38(i & 7);
-    case 39:
-      return __c39(i & 7);
-    case 40:
-      return __c40(i & 7);
-    case 41:
-      return __c41(i & 7);
   }
 }

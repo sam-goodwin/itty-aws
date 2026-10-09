@@ -7,8 +7,6 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -71,10 +69,17 @@ export interface CreateProjectRequest {
   /** The Drive ID of a parent file that the created script project is bound to. This is usually the ID of a Google Doc, Google Sheet, Google Form, or Google Slides file. If not set, a standalone script project is created. */
   parentId?: string;
 }
+const CreateProjectRequest = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<CreateProjectRequest>;
+
 export interface CreateProjectsRequest {
   /** Request body */
   body?: CreateProjectRequest;
 }
+const CreateProjectsRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<CreateProjectsRequest>;
+
 /** A simple user profile resource. */
 export interface GoogleAppsScriptTypeUser {
   /** The user's domain. */
@@ -86,6 +91,11 @@ export interface GoogleAppsScriptTypeUser {
   /** The user's identifying email address. */
   email?: string;
 }
+const GoogleAppsScriptTypeUser = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<GoogleAppsScriptTypeUser>;
+
 /** The script project resource. */
 export interface Project {
   /** The script project's Drive ID. */
@@ -103,6 +113,8 @@ export interface Project {
   /** When the script was last updated. */
   updateTime?: string;
 }
+const Project = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<Project>;
+
 /** Metadata the defines how a deployment is configured. */
 export interface DeploymentConfig {
   /** The script project's Drive ID. */
@@ -114,21 +126,32 @@ export interface DeploymentConfig {
   /** The description for this deployment. */
   description?: string;
 }
+const DeploymentConfig = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<DeploymentConfig>;
+
 export interface CreateProjectsDeploymentsRequest {
   /** The script project's Drive ID. */
   scriptId: string;
   /** Request body */
   body?: DeploymentConfig;
 }
+const CreateProjectsDeploymentsRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<CreateProjectsDeploymentsRequest>;
+
 export type EntryPointEntryPointTypeEnum =
   | "ENTRY_POINT_TYPE_UNSPECIFIED"
   | "WEB_APP"
   | "EXECUTION_API"
   | "ADD_ON";
+const EntryPointEntryPointTypeEnum = S.String;
+
 export type GoogleAppsScriptTypeAddOnEntryPointAddOnTypeEnum =
   | "UNKNOWN_ADDON_TYPE"
   | "GMAIL"
   | "DATA_STUDIO";
+const GoogleAppsScriptTypeAddOnEntryPointAddOnTypeEnum = S.String;
+
 /** An add-on entry point. */
 export interface GoogleAppsScriptTypeAddOnEntryPoint {
   /** The add-on's optional description. */
@@ -144,32 +167,53 @@ export interface GoogleAppsScriptTypeAddOnEntryPoint {
   /** The add-on's required post install tip URL. */
   postInstallTipUrl?: string;
 }
+const GoogleAppsScriptTypeAddOnEntryPoint = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<GoogleAppsScriptTypeAddOnEntryPoint>;
+
 export type GoogleAppsScriptTypeExecutionApiConfigAccessEnum =
   | "UNKNOWN_ACCESS"
   | "MYSELF"
   | "DOMAIN"
   | "ANYONE"
   | "ANYONE_ANONYMOUS";
+const GoogleAppsScriptTypeExecutionApiConfigAccessEnum = S.String;
+
 /** API executable entry point configuration. */
 export interface GoogleAppsScriptTypeExecutionApiConfig {
   /** Who has permission to run the API executable. */
   access?: GoogleAppsScriptTypeExecutionApiConfigAccessEnum;
 }
+const GoogleAppsScriptTypeExecutionApiConfig = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<GoogleAppsScriptTypeExecutionApiConfig>;
+
 /** An API executable entry point. */
 export interface GoogleAppsScriptTypeExecutionApiEntryPoint {
   /** The entry point's configuration. */
   entryPointConfig?: GoogleAppsScriptTypeExecutionApiConfig;
 }
+const GoogleAppsScriptTypeExecutionApiEntryPoint = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<GoogleAppsScriptTypeExecutionApiEntryPoint>;
+
 export type GoogleAppsScriptTypeWebAppConfigAccessEnum =
   | "UNKNOWN_ACCESS"
   | "MYSELF"
   | "DOMAIN"
   | "ANYONE"
   | "ANYONE_ANONYMOUS";
+const GoogleAppsScriptTypeWebAppConfigAccessEnum = S.String;
+
 export type GoogleAppsScriptTypeWebAppConfigExecuteAsEnum =
   | "UNKNOWN_EXECUTE_AS"
   | "USER_ACCESSING"
   | "USER_DEPLOYING";
+const GoogleAppsScriptTypeWebAppConfigExecuteAsEnum = S.String;
+
 /** Web app entry point configuration. */
 export interface GoogleAppsScriptTypeWebAppConfig {
   /** Who has permission to run the web app. */
@@ -177,6 +221,11 @@ export interface GoogleAppsScriptTypeWebAppConfig {
   /** Who to execute the web app as. */
   executeAs?: GoogleAppsScriptTypeWebAppConfigExecuteAsEnum;
 }
+const GoogleAppsScriptTypeWebAppConfig = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<GoogleAppsScriptTypeWebAppConfig>;
+
 /** A web application entry point. */
 export interface GoogleAppsScriptTypeWebAppEntryPoint {
   /** The entry point's configuration. */
@@ -184,6 +233,11 @@ export interface GoogleAppsScriptTypeWebAppEntryPoint {
   /** The URL for the web application. */
   url?: string;
 }
+const GoogleAppsScriptTypeWebAppEntryPoint = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<GoogleAppsScriptTypeWebAppEntryPoint>;
+
 /** A configuration that defines how a deployment is accessed externally. */
 export interface EntryPoint {
   /** The type of the entry point. */
@@ -195,7 +249,11 @@ export interface EntryPoint {
   /** An entry point specification for web apps. */
   webApp?: GoogleAppsScriptTypeWebAppEntryPoint;
 }
+const EntryPoint = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<EntryPoint>;
+
 export type EntryPointList = Array<EntryPoint>;
+const EntryPointList = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<EntryPointList>;
+
 /** Representation of a single script deployment. */
 export interface Deployment {
   /** The deployment configuration. */
@@ -207,6 +265,8 @@ export interface Deployment {
   /** The deployment's entry points. */
   entryPoints?: EntryPointList;
 }
+const Deployment = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<Deployment>;
+
 /** A resource representing a script project version. A version is a "snapshot" of a script project and is similar to a read-only branched release. When creating deployments, the version to use must be specified. */
 export interface Version {
   /** The script project's Drive ID. */
@@ -218,27 +278,48 @@ export interface Version {
   /** The incremental ID that is created by Apps Script when a version is created. This is system assigned number and is immutable once created. */
   versionNumber?: number;
 }
+const Version = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<Version>;
+
 export interface CreateProjectsVersionsRequest {
   /** The script project's Drive ID. */
   scriptId: string;
   /** Request body */
   body?: Version;
 }
+const CreateProjectsVersionsRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<CreateProjectsVersionsRequest>;
+
 export interface DeleteProjectsDeploymentsRequest {
   /** The script project's Drive ID. */
   scriptId: string;
   /** The deployment ID to be undeployed. */
   deploymentId: string;
 }
+const DeleteProjectsDeploymentsRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<DeleteProjectsDeploymentsRequest>;
+
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
+const Empty = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<Empty>;
+
 export interface GetContentProjectsRequest {
   /** The script project's Drive ID. */
   scriptId: string;
   /** The version number of the project to retrieve. If not provided, the project's HEAD version is returned. */
   versionNumber?: number;
 }
+const GetContentProjectsRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<GetContentProjectsRequest>;
+
 export type StringList = Array<string>;
+const StringList = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<StringList>;
+
 /** Represents a function in a script project. */
 export interface GoogleAppsScriptTypeFunction {
   /** The ordered list of parameter names of the function in the script project. */
@@ -246,13 +327,30 @@ export interface GoogleAppsScriptTypeFunction {
   /** The function name in the script project. */
   name?: string;
 }
+const GoogleAppsScriptTypeFunction = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<GoogleAppsScriptTypeFunction>;
+
 export type GoogleAppsScriptTypeFunctionList = Array<GoogleAppsScriptTypeFunction>;
+const GoogleAppsScriptTypeFunctionList = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<GoogleAppsScriptTypeFunctionList>;
+
 /** A set of functions. No duplicates are permitted. */
 export interface GoogleAppsScriptTypeFunctionSet {
   /** A list of functions composing the set. */
   values?: GoogleAppsScriptTypeFunctionList;
 }
+const GoogleAppsScriptTypeFunctionSet = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<GoogleAppsScriptTypeFunctionSet>;
+
 export type FileTypeEnum = "ENUM_TYPE_UNSPECIFIED" | "SERVER_JS" | "HTML" | "JSON";
+const FileTypeEnum = S.String;
+
 /** An individual file within a script project. A file is a third-party source code created by one or more developers. It can be a server-side JS code, HTML, or a configuration file. Each script project can contain multiple files. */
 export interface File {
   /** The name of the file. The file extension is not part of the file name, which can be identified from the type field. */
@@ -270,7 +368,11 @@ export interface File {
   /** The type of the file. */
   type?: FileTypeEnum | (string & {});
 }
+const File = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<File>;
+
 export type FileList = Array<File>;
+const FileList = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<FileList>;
+
 /** The Content resource. */
 export interface Content {
   /** The list of script project files. One of the files is a script manifest; it must be named "appsscript", must have type of JSON, and include the manifest configurations for the project. */
@@ -278,10 +380,14 @@ export interface Content {
   /** The script project's Drive ID. */
   scriptId?: string;
 }
+const Content = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<Content>;
+
 export type GetMetricsProjectsMetricsGranularityEnum =
   | "UNSPECIFIED_GRANULARITY"
   | "WEEKLY"
   | "DAILY";
+const GetMetricsProjectsMetricsGranularityEnum = S.String;
+
 export interface GetMetricsProjectsRequest {
   /** Optional field indicating a specific deployment to retrieve metrics from. */
   "metricsFilter.deploymentId"?: string;
@@ -290,6 +396,11 @@ export interface GetMetricsProjectsRequest {
   /** Required field indicating the script to get metrics for. */
   scriptId: string;
 }
+const GetMetricsProjectsRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<GetMetricsProjectsRequest>;
+
 /** Metrics value that holds number of executions counted. */
 export interface MetricsValue {
   /** Required field indicating the start time of the interval. */
@@ -299,7 +410,11 @@ export interface MetricsValue {
   /** Required field indicating the end time of the interval. */
   endTime?: string;
 }
+const MetricsValue = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<MetricsValue>;
+
 export type MetricsValueList = Array<MetricsValue>;
+const MetricsValueList = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<MetricsValueList>;
+
 /** Resource containing usage stats for a given script, based on the supplied filter and mask present in the request. */
 export interface Metrics {
   /** Number of active users. */
@@ -309,31 +424,52 @@ export interface Metrics {
   /** Number of failed executions. */
   failedExecutions?: MetricsValueList;
 }
+const Metrics = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<Metrics>;
+
 export interface GetProjectsRequest {
   /** The script project's Drive ID. */
   scriptId: string;
 }
+const GetProjectsRequest = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<GetProjectsRequest>;
+
 export interface GetProjectsDeploymentsRequest {
   /** The script project's Drive ID. */
   scriptId: string;
   /** The deployment ID. */
   deploymentId: string;
 }
+const GetProjectsDeploymentsRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<GetProjectsDeploymentsRequest>;
+
 export interface GetProjectsVersionsRequest {
   /** The version number. */
   versionNumber: number;
   /** The script project's Drive ID. */
   scriptId: string;
 }
+const GetProjectsVersionsRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<GetProjectsVersionsRequest>;
+
 export type ListProcessesUserProcessFilter_userAccessLevelsEnum =
   | "USER_ACCESS_LEVEL_UNSPECIFIED"
   | "NONE"
   | "READ"
   | "WRITE"
   | "OWNER";
+const ListProcessesUserProcessFilter_userAccessLevelsEnum = S.String;
+
 export type ListProcessesUserProcessFilter_userAccessLevelsEnumList = Array<
   ListProcessesUserProcessFilter_userAccessLevelsEnum | (string & {})
 >;
+const ListProcessesUserProcessFilter_userAccessLevelsEnumList = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<ListProcessesUserProcessFilter_userAccessLevelsEnumList>;
+
 export type ListProcessesUserProcessFilter_statusesEnum =
   | "PROCESS_STATUS_UNSPECIFIED"
   | "RUNNING"
@@ -348,6 +484,9 @@ export type ListProcessesUserProcessFilter_statusesEnum =
 export type ListProcessesUserProcessFilter_statusesEnumList = Array<
   ListProcessesUserProcessFilter_statusesEnum | (string & {})
 >;
+const ListProcessesUserProcessFilter_statusesEnumList =
+  ListProcessesUserProcessFilter_userAccessLevelsEnumList as any as S.Schema<ListProcessesUserProcessFilter_statusesEnumList>;
+
 export type ListProcessesUserProcessFilter_typesEnum =
   | "PROCESS_TYPE_UNSPECIFIED"
   | "ADD_ON"
@@ -362,6 +501,9 @@ export type ListProcessesUserProcessFilter_typesEnum =
 export type ListProcessesUserProcessFilter_typesEnumList = Array<
   ListProcessesUserProcessFilter_typesEnum | (string & {})
 >;
+const ListProcessesUserProcessFilter_typesEnumList =
+  ListProcessesUserProcessFilter_userAccessLevelsEnumList as any as S.Schema<ListProcessesUserProcessFilter_typesEnumList>;
+
 export interface ListProcessesRequest {
   /** Optional field used to limit returned processes to those originating from a script function with the given function name. */
   "userProcessFilter.functionName"?: string;
@@ -386,6 +528,8 @@ export interface ListProcessesRequest {
   /** The token for continuing a previous list request on the next page. This should be set to the value of `nextPageToken` from a previous response. */
   pageToken?: string;
 }
+const ListProcessesRequest = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<ListProcessesRequest>;
+
 export type GoogleAppsScriptTypeProcessProcessTypeEnum =
   | "PROCESS_TYPE_UNSPECIFIED"
   | "ADD_ON"
@@ -397,6 +541,8 @@ export type GoogleAppsScriptTypeProcessProcessTypeEnum =
   | "SIMPLE_TRIGGER"
   | "MENU"
   | "BATCH_TASK";
+const GoogleAppsScriptTypeProcessProcessTypeEnum = S.String;
+
 export type GoogleAppsScriptTypeProcessProcessStatusEnum =
   | "PROCESS_STATUS_UNSPECIFIED"
   | "RUNNING"
@@ -408,16 +554,22 @@ export type GoogleAppsScriptTypeProcessProcessStatusEnum =
   | "UNKNOWN"
   | "DELAYED"
   | "EXECUTION_DISABLED";
+const GoogleAppsScriptTypeProcessProcessStatusEnum = S.String;
+
 export type GoogleAppsScriptTypeProcessRuntimeVersionEnum =
   | "RUNTIME_VERSION_UNSPECIFIED"
   | "DEPRECATED_ES5"
   | "V8";
+const GoogleAppsScriptTypeProcessRuntimeVersionEnum = S.String;
+
 export type GoogleAppsScriptTypeProcessUserAccessLevelEnum =
   | "USER_ACCESS_LEVEL_UNSPECIFIED"
   | "NONE"
   | "READ"
   | "WRITE"
   | "OWNER";
+const GoogleAppsScriptTypeProcessUserAccessLevelEnum = S.String;
+
 /** Representation of a single script process execution that was started from the script editor, a trigger, an application, or using the Apps Script API. This is distinct from the `Operation` resource, which only represents executions started via the Apps Script API. */
 export interface GoogleAppsScriptTypeProcess {
   /** The executions type. */
@@ -437,7 +589,17 @@ export interface GoogleAppsScriptTypeProcess {
   /** The executing users access level to the script. */
   userAccessLevel?: GoogleAppsScriptTypeProcessUserAccessLevelEnum;
 }
+const GoogleAppsScriptTypeProcess = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<GoogleAppsScriptTypeProcess>;
+
 export type GoogleAppsScriptTypeProcessList = Array<GoogleAppsScriptTypeProcess>;
+const GoogleAppsScriptTypeProcessList = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<GoogleAppsScriptTypeProcessList>;
+
 /** Response with the list of Process resources. */
 export interface ListUserProcessesResponse {
   /** Token for the next page of results. If empty, there are no more pages remaining. */
@@ -445,6 +607,11 @@ export interface ListUserProcessesResponse {
   /** List of processes matching request parameters. */
   processes?: GoogleAppsScriptTypeProcessList;
 }
+const ListUserProcessesResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<ListUserProcessesResponse>;
+
 export interface ListProjectsDeploymentsRequest {
   /** The token for continuing a previous list request on the next page. This should be set to the value of `nextPageToken` from a previous response. */
   pageToken?: string;
@@ -453,7 +620,14 @@ export interface ListProjectsDeploymentsRequest {
   /** The maximum number of deployments on each returned page. Defaults to 50. */
   pageSize?: number;
 }
+const ListProjectsDeploymentsRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<ListProjectsDeploymentsRequest>;
+
 export type DeploymentList = Array<Deployment>;
+const DeploymentList = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<DeploymentList>;
+
 /** Response with the list of deployments for the specified Apps Script project. */
 export interface ListDeploymentsResponse {
   /** The token that can be used in the next call to get the next page of results. */
@@ -461,6 +635,11 @@ export interface ListDeploymentsResponse {
   /** The list of deployments. */
   deployments?: DeploymentList;
 }
+const ListDeploymentsResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  0,
+) as any as S.Schema<ListDeploymentsResponse>;
+
 export interface ListProjectsVersionsRequest {
   /** The token for continuing a previous list request on the next page. This should be set to the value of `nextPageToken` from a previous response. */
   pageToken?: string;
@@ -469,7 +648,14 @@ export interface ListProjectsVersionsRequest {
   /** The maximum number of versions on each returned page. Defaults to 50. */
   pageSize?: number;
 }
+const ListProjectsVersionsRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  1,
+) as any as S.Schema<ListProjectsVersionsRequest>;
+
 export type VersionList = Array<Version>;
+const VersionList = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<VersionList>;
+
 /** Response with the list of the versions for the specified script project. */
 export interface ListVersionsResponse {
   /** The list of versions. */
@@ -477,15 +663,25 @@ export interface ListVersionsResponse {
   /** The token use to fetch the next page of records. if not exist in the response, that means no more versions to list. */
   nextPageToken?: string;
 }
+const ListVersionsResponse = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<ListVersionsResponse>;
+
 export type ListScriptProcessesProcessesScriptProcessFilter_userAccessLevelsEnum =
   | "USER_ACCESS_LEVEL_UNSPECIFIED"
   | "NONE"
   | "READ"
   | "WRITE"
   | "OWNER";
+const ListScriptProcessesProcessesScriptProcessFilter_userAccessLevelsEnum = S.String;
+
 export type ListScriptProcessesProcessesScriptProcessFilter_userAccessLevelsEnumList = Array<
   ListScriptProcessesProcessesScriptProcessFilter_userAccessLevelsEnum | (string & {})
 >;
+const ListScriptProcessesProcessesScriptProcessFilter_userAccessLevelsEnumList =
+  /*@__PURE__*/ __L.at(
+    __c5,
+    4,
+  ) as any as S.Schema<ListScriptProcessesProcessesScriptProcessFilter_userAccessLevelsEnumList>;
+
 export type ListScriptProcessesProcessesScriptProcessFilter_typesEnum =
   | "PROCESS_TYPE_UNSPECIFIED"
   | "ADD_ON"
@@ -500,6 +696,9 @@ export type ListScriptProcessesProcessesScriptProcessFilter_typesEnum =
 export type ListScriptProcessesProcessesScriptProcessFilter_typesEnumList = Array<
   ListScriptProcessesProcessesScriptProcessFilter_typesEnum | (string & {})
 >;
+const ListScriptProcessesProcessesScriptProcessFilter_typesEnumList =
+  ListProcessesUserProcessFilter_userAccessLevelsEnumList as any as S.Schema<ListScriptProcessesProcessesScriptProcessFilter_typesEnumList>;
+
 export type ListScriptProcessesProcessesScriptProcessFilter_statusesEnum =
   | "PROCESS_STATUS_UNSPECIFIED"
   | "RUNNING"
@@ -514,6 +713,9 @@ export type ListScriptProcessesProcessesScriptProcessFilter_statusesEnum =
 export type ListScriptProcessesProcessesScriptProcessFilter_statusesEnumList = Array<
   ListScriptProcessesProcessesScriptProcessFilter_statusesEnum | (string & {})
 >;
+const ListScriptProcessesProcessesScriptProcessFilter_statusesEnumList =
+  ListScriptProcessesProcessesScriptProcessFilter_userAccessLevelsEnumList as any as S.Schema<ListScriptProcessesProcessesScriptProcessFilter_statusesEnumList>;
+
 export interface ListScriptProcessesProcessesRequest {
   /** Optional field used to limit returned processes to those having one of the specified user access levels. */
   "scriptProcessFilter.userAccessLevels"?: ListScriptProcessesProcessesScriptProcessFilter_userAccessLevelsEnumList;
@@ -536,6 +738,11 @@ export interface ListScriptProcessesProcessesRequest {
   /** Optional field used to limit returned processes to those originating from a script function with the given function name. */
   "scriptProcessFilter.functionName"?: string;
 }
+const ListScriptProcessesProcessesRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  5,
+) as any as S.Schema<ListScriptProcessesProcessesRequest>;
+
 /** Response with the list of Process resources. */
 export interface ListScriptProcessesResponse {
   /** List of processes matching request parameters. */
@@ -543,7 +750,14 @@ export interface ListScriptProcessesResponse {
   /** Token for the next page of results. If empty, there are no more pages remaining. */
   nextPageToken?: string;
 }
+const ListScriptProcessesResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  6,
+) as any as S.Schema<ListScriptProcessesResponse>;
+
 export type DocumentList = Array<unknown>;
+const DocumentList = /*@__PURE__*/ __L.at(__c5, 7) as any as S.Schema<DocumentList>;
+
 /** A request to run the function in a script. The script is identified by the specified `script_id`. Executing a function on a script returns results based on the implementation of the script. */
 export interface ExecutionRequest {
   /** If `true` and the user is an owner of the script, the script runs at the most recently saved version rather than the version deployed for use with the Apps Script API. Optional; default is `false`. */
@@ -555,14 +769,22 @@ export interface ExecutionRequest {
   /** *Deprecated*. For use with Android add-ons only. An ID that represents the user's current session in the Android app for Google Docs or Sheets, included as extra data in the [Intent](https://developer.android.com/guide/components/intents-filters.html) that launches the add-on. When an Android add-on is run with a session state, it gains the privileges of a [bound](https://developers.google.com/apps-script/guides/bound) script--that is, it can access information like the user's current cursor position (in Docs) or selected cell (in Sheets). To retrieve the state, call `Intent.getStringExtra("com.google.android.apps.docs.addons.SessionState")`. Optional. */
   sessionState?: string;
 }
+const ExecutionRequest = /*@__PURE__*/ __L.at(__c6, 0) as any as S.Schema<ExecutionRequest>;
+
 export interface RunScriptsRequest {
   /** The script ID of the script to be executed. Find the script ID on the **Project settings** page under "IDs." As multiple executable APIs can be deployed in new IDE for same script, this field should be populated with DeploymentID generated while deploying in new IDE instead of script ID. */
   scriptId: string;
   /** Request body */
   body?: ExecutionRequest;
 }
+const RunScriptsRequest = /*@__PURE__*/ __L.at(__c6, 1) as any as S.Schema<RunScriptsRequest>;
+
 export type DocumentMap = { [key: string]: unknown | undefined };
+const DocumentMap = /*@__PURE__*/ __L.at(__c6, 2) as any as S.Schema<DocumentMap>;
+
 export type DocumentMapList = Array<DocumentMap>;
+const DocumentMapList = /*@__PURE__*/ __L.at(__c6, 3) as any as S.Schema<DocumentMapList>;
+
 /** If a `run` call succeeds but the script function (or Apps Script itself) throws an exception, the response body's error field contains this `Status` object. */
 export interface Status {
   /** A developer-facing error message, which is in English. Any user-facing error message is localized and sent in the details field, or localized by the client. */
@@ -572,6 +794,8 @@ export interface Status {
   /** The status code. For this API, this value either: - 10, indicating a `SCRIPT_TIMEOUT` error, - 3, indicating an `INVALID_ARGUMENT` error, or - 1, indicating a `CANCELLED` execution. */
   code?: number;
 }
+const Status = /*@__PURE__*/ __L.at(__c6, 4) as any as S.Schema<Status>;
+
 /** A representation of an execution of an Apps Script function started with run. The execution response does not arrive until the function finishes executing. The maximum execution runtime is listed in the [Apps Script quotas guide](/apps-script/guides/services/quotas#current_limitations). After execution has started, it can have one of four outcomes: - If the script function returns successfully, the response field contains an ExecutionResponse object with the function's return value in the object's `result` field. - If the script function (or Apps Script itself) throws an exception, the error field contains a Status object. The `Status` object's `details` field contains an array with a single ExecutionError object that provides information about the nature of the error. - If the execution has not yet completed, the done field is `false` and the neither the `response` nor `error` fields are present. - If the `run` call itself fails (for example, because of a malformed request or an authorization error), the method returns an HTTP response code in the 4XX range with a different format for the response body. Client libraries automatically convert a 4XX response into an exception class. */
 export interface Operation {
   /** If the script function returns successfully, this field contains an ExecutionResponse object with the function's return value. */
@@ -581,17 +805,29 @@ export interface Operation {
   /** This field indicates whether the script execution has completed. A completed execution has a populated `response` field containing the ExecutionResponse from function that was executed. */
   done?: boolean;
 }
+const Operation = /*@__PURE__*/ __L.at(__c6, 5) as any as S.Schema<Operation>;
+
 export interface UpdateContentProjectsRequest {
   /** The script project's Drive ID. */
   scriptId: string;
   /** Request body */
   body?: Content;
 }
+const UpdateContentProjectsRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  6,
+) as any as S.Schema<UpdateContentProjectsRequest>;
+
 /** Request with deployment information to update an existing deployment. */
 export interface UpdateDeploymentRequest {
   /** The deployment configuration. */
   deploymentConfig?: DeploymentConfig;
 }
+const UpdateDeploymentRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  7,
+) as any as S.Schema<UpdateDeploymentRequest>;
+
 export interface UpdateProjectsDeploymentsRequest {
   /** The deployment ID for this deployment. */
   deploymentId: string;
@@ -600,6 +836,11 @@ export interface UpdateProjectsDeploymentsRequest {
   /** Request body */
   body?: UpdateDeploymentRequest;
 }
+const UpdateProjectsDeploymentsRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  0,
+) as any as S.Schema<UpdateProjectsDeploymentsRequest>;
+
 export type CreateProjectsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a new, empty script project with no script files and a base manifest file. */
 export const createProjects: API.OperationMethod<
@@ -608,8 +849,8 @@ export const createProjects: API.OperationMethod<
   CreateProjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1) as any as S.Schema<CreateProjectsRequest>,
-  output: __S(3) as any as S.Schema<Project>,
+  input: CreateProjectsRequest,
+  output: Project,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -628,8 +869,8 @@ export const createProjectsDeployments: API.OperationMethod<
   CreateProjectsDeploymentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5) as any as S.Schema<CreateProjectsDeploymentsRequest>,
-  output: __S(13) as any as S.Schema<Deployment>,
+  input: CreateProjectsDeploymentsRequest,
+  output: Deployment,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -643,8 +884,8 @@ export const createProjectsVersions: API.OperationMethod<
   CreateProjectsVersionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15) as any as S.Schema<CreateProjectsVersionsRequest>,
-  output: __S(14) as any as S.Schema<Version>,
+  input: CreateProjectsVersionsRequest,
+  output: Version,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -663,8 +904,8 @@ export const deleteProjectsDeployments: API.OperationMethod<
   DeleteProjectsDeploymentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16) as any as S.Schema<DeleteProjectsDeploymentsRequest>,
-  output: __S(17) as any as S.Schema<Empty>,
+  input: DeleteProjectsDeploymentsRequest,
+  output: Empty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -678,8 +919,8 @@ export const getContentProjects: API.OperationMethod<
   GetContentProjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18) as any as S.Schema<GetContentProjectsRequest>,
-  output: __S(25) as any as S.Schema<Content>,
+  input: GetContentProjectsRequest,
+  output: Content,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -693,8 +934,8 @@ export const getMetricsProjects: API.OperationMethod<
   GetMetricsProjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26) as any as S.Schema<GetMetricsProjectsRequest>,
-  output: __S(29) as any as S.Schema<Metrics>,
+  input: GetMetricsProjectsRequest,
+  output: Metrics,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -708,8 +949,8 @@ export const getProjects: API.OperationMethod<
   GetProjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30) as any as S.Schema<GetProjectsRequest>,
-  output: __S(3) as any as S.Schema<Project>,
+  input: GetProjectsRequest,
+  output: Project,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -723,8 +964,8 @@ export const getProjectsDeployments: API.OperationMethod<
   GetProjectsDeploymentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31) as any as S.Schema<GetProjectsDeploymentsRequest>,
-  output: __S(13) as any as S.Schema<Deployment>,
+  input: GetProjectsDeploymentsRequest,
+  output: Deployment,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -738,8 +979,8 @@ export const getProjectsVersions: API.OperationMethod<
   GetProjectsVersionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32) as any as S.Schema<GetProjectsVersionsRequest>,
-  output: __S(14) as any as S.Schema<Version>,
+  input: GetProjectsVersionsRequest,
+  output: Version,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -754,8 +995,8 @@ export const listProcesses: API.PaginatedOperationMethod<
   GcpOpContext,
   ListUserProcessesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(34) as any as S.Schema<ListProcessesRequest>,
-  output: __S(37) as any as S.Schema<ListUserProcessesResponse>,
+  input: ListProcessesRequest,
+  output: ListUserProcessesResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -771,8 +1012,8 @@ export const listProjectsDeployments: API.PaginatedOperationMethod<
   GcpOpContext,
   ListDeploymentsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(38) as any as S.Schema<ListProjectsDeploymentsRequest>,
-  output: __S(40) as any as S.Schema<ListDeploymentsResponse>,
+  input: ListProjectsDeploymentsRequest,
+  output: ListDeploymentsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -788,8 +1029,8 @@ export const listProjectsVersions: API.PaginatedOperationMethod<
   GcpOpContext,
   ListVersionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(41) as any as S.Schema<ListProjectsVersionsRequest>,
-  output: __S(43) as any as S.Schema<ListVersionsResponse>,
+  input: ListProjectsVersionsRequest,
+  output: ListVersionsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -805,8 +1046,8 @@ export const listScriptProcessesProcesses: API.PaginatedOperationMethod<
   GcpOpContext,
   ListScriptProcessesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(45) as any as S.Schema<ListScriptProcessesProcessesRequest>,
-  output: __S(46) as any as S.Schema<ListScriptProcessesResponse>,
+  input: ListScriptProcessesProcessesRequest,
+  output: ListScriptProcessesResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -820,8 +1061,8 @@ export const runScripts: API.OperationMethod<
   RunScriptsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49) as any as S.Schema<RunScriptsRequest>,
-  output: __S(53) as any as S.Schema<Operation>,
+  input: RunScriptsRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -835,8 +1076,8 @@ export const updateContentProjects: API.OperationMethod<
   UpdateContentProjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(54) as any as S.Schema<UpdateContentProjectsRequest>,
-  output: __S(25) as any as S.Schema<Content>,
+  input: UpdateContentProjectsRequest,
+  output: Content,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -855,8 +1096,8 @@ export const updateProjectsDeployments: API.OperationMethod<
   UpdateProjectsDeploymentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56) as any as S.Schema<UpdateProjectsDeploymentsRequest>,
-  output: __S(13) as any as S.Schema<Deployment>,
+  input: UpdateProjectsDeploymentsRequest,
+  output: Deployment,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -875,7 +1116,7 @@ function __c0(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(__S(0).pipe(T.HttpBody())),
+          body: S.optional(CreateProjectRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({ method: "POST", uri: "v1/projects", baseUrl: "https://script.googleapis.com/" }),
         ),
@@ -895,8 +1136,8 @@ function __c0(j: number): any {
           scriptId: S.optional(S.String),
           parentId: S.optional(S.String),
           title: S.optional(S.String),
-          lastModifyUser: S.optional(__S(2)),
-          creator: S.optional(__S(2)),
+          lastModifyUser: S.optional(GoogleAppsScriptTypeUser),
+          creator: S.optional(GoogleAppsScriptTypeUser),
           createTime: S.optional(S.String),
           updateTime: S.optional(S.String),
         }),
@@ -914,7 +1155,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           scriptId: S.String.pipe(T.Label()),
-          body: S.optional(__S(4).pipe(T.HttpBody())),
+          body: S.optional(DeploymentConfig.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -929,7 +1170,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
-          addOnType: S.optional(S.String),
+          addOnType: S.optional(GoogleAppsScriptTypeAddOnEntryPointAddOnTypeEnum),
           reportIssueUrl: S.optional(S.String),
           title: S.optional(S.String),
           helpUrl: S.optional(S.String),
@@ -941,7 +1182,7 @@ function __c0(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          access: S.optional(S.String),
+          access: S.optional(GoogleAppsScriptTypeExecutionApiConfigAccessEnum),
         }),
       ).annotate({
         identifier: "GoogleAppsScriptTypeExecutionApiConfig",
@@ -953,7 +1194,7 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          entryPointConfig: S.optional(__S(7)),
+          entryPointConfig: S.optional(GoogleAppsScriptTypeExecutionApiConfig),
         }),
       ).annotate({
         identifier: "GoogleAppsScriptTypeExecutionApiEntryPoint",
@@ -961,8 +1202,8 @@ function __c1(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          access: S.optional(S.String),
-          executeAs: S.optional(S.String),
+          access: S.optional(GoogleAppsScriptTypeWebAppConfigAccessEnum),
+          executeAs: S.optional(GoogleAppsScriptTypeWebAppConfigExecuteAsEnum),
         }),
       ).annotate({
         identifier: "GoogleAppsScriptTypeWebAppConfig",
@@ -970,7 +1211,7 @@ function __c1(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          entryPointConfig: S.optional(__S(9)),
+          entryPointConfig: S.optional(GoogleAppsScriptTypeWebAppConfig),
           url: S.optional(S.String),
         }),
       ).annotate({
@@ -979,21 +1220,21 @@ function __c1(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          entryPointType: S.optional(S.String),
-          addOn: S.optional(__S(6)),
-          executionApi: S.optional(__S(8)),
-          webApp: S.optional(__S(10)),
+          entryPointType: S.optional(EntryPointEntryPointTypeEnum),
+          addOn: S.optional(GoogleAppsScriptTypeAddOnEntryPoint),
+          executionApi: S.optional(GoogleAppsScriptTypeExecutionApiEntryPoint),
+          webApp: S.optional(GoogleAppsScriptTypeWebAppEntryPoint),
         }),
       ).annotate({ identifier: "EntryPoint" });
     case 4:
-      return S.Array(__S(11));
+      return S.Array(EntryPoint);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          deploymentConfig: S.optional(__S(4)),
+          deploymentConfig: S.optional(DeploymentConfig),
           updateTime: S.optional(S.String),
           deploymentId: S.optional(S.String),
-          entryPoints: S.optional(__S(12)),
+          entryPoints: S.optional(EntryPointList),
         }),
       ).annotate({ identifier: "Deployment" });
     case 6:
@@ -1009,7 +1250,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           scriptId: S.String.pipe(T.Label()),
-          body: S.optional(__S(14).pipe(T.HttpBody())),
+          body: S.optional(Version.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1063,18 +1304,18 @@ function __c2(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          parameters: S.optional(__S(19)),
+          parameters: S.optional(StringList),
           name: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleAppsScriptTypeFunction",
       });
     case 5:
-      return S.Array(__S(20));
+      return S.Array(GoogleAppsScriptTypeFunction);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          values: S.optional(__S(21)),
+          values: S.optional(GoogleAppsScriptTypeFunctionList),
         }),
       ).annotate({
         identifier: "GoogleAppsScriptTypeFunctionSet",
@@ -1085,10 +1326,10 @@ function __c2(j: number): any {
           name: S.optional(S.String),
           updateTime: S.optional(S.String),
           createTime: S.optional(S.String),
-          functionSet: S.optional(__S(22)),
-          lastModifyUser: S.optional(__S(2)),
+          functionSet: S.optional(GoogleAppsScriptTypeFunctionSet),
+          lastModifyUser: S.optional(GoogleAppsScriptTypeUser),
           source: S.optional(S.String),
-          type: S.optional(S.String),
+          type: S.optional(FileTypeEnum),
         }),
       ).annotate({ identifier: "File" });
   }
@@ -1096,11 +1337,11 @@ function __c2(j: number): any {
 function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(23));
+      return S.Array(File);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          files: S.optional(__S(24)),
+          files: S.optional(FileList),
           scriptId: S.optional(S.String),
         }),
       ).annotate({ identifier: "Content" });
@@ -1108,7 +1349,7 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           "metricsFilter.deploymentId": S.optional(S.String.pipe(T.Query())),
-          metricsGranularity: S.optional(S.String.pipe(T.Query())),
+          metricsGranularity: S.optional(GetMetricsProjectsMetricsGranularityEnum.pipe(T.Query())),
           scriptId: S.String.pipe(T.Label()),
         }).pipe(
           T.Http({
@@ -1129,13 +1370,13 @@ function __c3(j: number): any {
         }),
       ).annotate({ identifier: "MetricsValue" });
     case 4:
-      return S.Array(__S(27));
+      return S.Array(MetricsValue);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          activeUsers: S.optional(__S(28)),
-          totalExecutions: S.optional(__S(28)),
-          failedExecutions: S.optional(__S(28)),
+          activeUsers: S.optional(MetricsValueList),
+          totalExecutions: S.optional(MetricsValueList),
+          failedExecutions: S.optional(MetricsValueList),
         }),
       ).annotate({ identifier: "Metrics" });
     case 6:
@@ -1185,20 +1426,26 @@ function __c4(j: number): any {
         identifier: "GetProjectsVersionsRequest",
       });
     case 1:
-      return S.Array(S.String);
+      return S.Array(ListProcessesUserProcessFilter_userAccessLevelsEnum);
     case 2:
       return S.suspend(() =>
         S.Struct({
           "userProcessFilter.functionName": S.optional(S.String.pipe(T.Query())),
-          "userProcessFilter.userAccessLevels": S.optional(__S(33).pipe(T.Query())),
-          "userProcessFilter.statuses": S.optional(__S(33).pipe(T.Query())),
+          "userProcessFilter.userAccessLevels": S.optional(
+            ListProcessesUserProcessFilter_userAccessLevelsEnumList.pipe(T.Query()),
+          ),
+          "userProcessFilter.statuses": S.optional(
+            ListProcessesUserProcessFilter_statusesEnumList.pipe(T.Query()),
+          ),
           pageSize: S.optional(S.Number.pipe(T.Query())),
           "userProcessFilter.deploymentId": S.optional(S.String.pipe(T.Query())),
           "userProcessFilter.startTime": S.optional(S.String.pipe(T.Query())),
           "userProcessFilter.projectName": S.optional(S.String.pipe(T.Query())),
           "userProcessFilter.scriptId": S.optional(S.String.pipe(T.Query())),
           "userProcessFilter.endTime": S.optional(S.String.pipe(T.Query())),
-          "userProcessFilter.types": S.optional(__S(33).pipe(T.Query())),
+          "userProcessFilter.types": S.optional(
+            ListProcessesUserProcessFilter_typesEnumList.pipe(T.Query()),
+          ),
           pageToken: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({ method: "GET", uri: "v1/processes", baseUrl: "https://script.googleapis.com/" }),
@@ -1207,25 +1454,25 @@ function __c4(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          processType: S.optional(S.String),
-          processStatus: S.optional(S.String),
+          processType: S.optional(GoogleAppsScriptTypeProcessProcessTypeEnum),
+          processStatus: S.optional(GoogleAppsScriptTypeProcessProcessStatusEnum),
           startTime: S.optional(S.String),
           duration: S.optional(S.String),
-          runtimeVersion: S.optional(S.String),
+          runtimeVersion: S.optional(GoogleAppsScriptTypeProcessRuntimeVersionEnum),
           functionName: S.optional(S.String),
           projectName: S.optional(S.String),
-          userAccessLevel: S.optional(S.String),
+          userAccessLevel: S.optional(GoogleAppsScriptTypeProcessUserAccessLevelEnum),
         }),
       ).annotate({
         identifier: "GoogleAppsScriptTypeProcess",
       });
     case 4:
-      return S.Array(__S(35));
+      return S.Array(GoogleAppsScriptTypeProcess);
     case 5:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          processes: S.optional(__S(36)),
+          processes: S.optional(GoogleAppsScriptTypeProcessList),
         }),
       ).annotate({
         identifier: "ListUserProcessesResponse",
@@ -1247,7 +1494,7 @@ function __c4(j: number): any {
         identifier: "ListProjectsDeploymentsRequest",
       });
     case 7:
-      return S.Array(__S(13));
+      return S.Array(Deployment);
   }
 }
 function __c5(j: number): any {
@@ -1256,7 +1503,7 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          deployments: S.optional(__S(39)),
+          deployments: S.optional(DeploymentList),
         }),
       ).annotate({ identifier: "ListDeploymentsResponse" });
     case 1:
@@ -1276,24 +1523,32 @@ function __c5(j: number): any {
         identifier: "ListProjectsVersionsRequest",
       });
     case 2:
-      return S.Array(__S(14));
+      return S.Array(Version);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          versions: S.optional(__S(42)),
+          versions: S.optional(VersionList),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListVersionsResponse" });
     case 4:
-      return S.Array(S.String);
+      return S.Array(ListScriptProcessesProcessesScriptProcessFilter_userAccessLevelsEnum);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          "scriptProcessFilter.userAccessLevels": S.optional(__S(44).pipe(T.Query())),
+          "scriptProcessFilter.userAccessLevels": S.optional(
+            ListScriptProcessesProcessesScriptProcessFilter_userAccessLevelsEnumList.pipe(
+              T.Query(),
+            ),
+          ),
           pageToken: S.optional(S.String.pipe(T.Query())),
-          "scriptProcessFilter.types": S.optional(__S(33).pipe(T.Query())),
+          "scriptProcessFilter.types": S.optional(
+            ListScriptProcessesProcessesScriptProcessFilter_typesEnumList.pipe(T.Query()),
+          ),
           "scriptProcessFilter.startTime": S.optional(S.String.pipe(T.Query())),
-          "scriptProcessFilter.statuses": S.optional(__S(44).pipe(T.Query())),
+          "scriptProcessFilter.statuses": S.optional(
+            ListScriptProcessesProcessesScriptProcessFilter_statusesEnumList.pipe(T.Query()),
+          ),
           "scriptProcessFilter.endTime": S.optional(S.String.pipe(T.Query())),
           scriptId: S.optional(S.String.pipe(T.Query())),
           "scriptProcessFilter.deploymentId": S.optional(S.String.pipe(T.Query())),
@@ -1312,7 +1567,7 @@ function __c5(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          processes: S.optional(__S(36)),
+          processes: S.optional(GoogleAppsScriptTypeProcessList),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -1328,7 +1583,7 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           devMode: S.optional(S.Boolean),
-          parameters: S.optional(__S(47)),
+          parameters: S.optional(DocumentList),
           function: S.optional(S.String),
           sessionState: S.optional(S.String),
         }),
@@ -1337,7 +1592,7 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           scriptId: S.String.pipe(T.Label()),
-          body: S.optional(__S(48).pipe(T.HttpBody())),
+          body: S.optional(ExecutionRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1349,20 +1604,20 @@ function __c6(j: number): any {
     case 2:
       return S.Record(S.String, S.Unknown);
     case 3:
-      return S.Array(__S(50));
+      return S.Array(DocumentMap);
     case 4:
       return S.suspend(() =>
         S.Struct({
           message: S.optional(S.String),
-          details: S.optional(__S(51)),
+          details: S.optional(DocumentMapList),
           code: S.optional(S.Number),
         }),
       ).annotate({ identifier: "Status" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          response: S.optional(__S(50)),
-          error: S.optional(__S(52)),
+          response: S.optional(DocumentMap),
+          error: S.optional(Status),
           done: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "Operation" });
@@ -1370,7 +1625,7 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           scriptId: S.String.pipe(T.Label()),
-          body: S.optional(__S(25).pipe(T.HttpBody())),
+          body: S.optional(Content.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -1384,7 +1639,7 @@ function __c6(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          deploymentConfig: S.optional(__S(4)),
+          deploymentConfig: S.optional(DeploymentConfig),
         }),
       ).annotate({ identifier: "UpdateDeploymentRequest" });
   }
@@ -1396,7 +1651,7 @@ function __c7(j: number): any {
         S.Struct({
           deploymentId: S.String.pipe(T.Label()),
           scriptId: S.String.pipe(T.Label()),
-          body: S.optional(__S(55).pipe(T.HttpBody())),
+          body: S.optional(UpdateDeploymentRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -1407,30 +1662,5 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "UpdateProjectsDeploymentsRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
   }
 }

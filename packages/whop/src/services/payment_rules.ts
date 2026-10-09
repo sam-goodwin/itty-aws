@@ -7,8 +7,6 @@ import { paginateRelay } from "../pagination.ts";
 import { WhopProtocol, type WhopOpError, type WhopOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { WhopOpError, WhopOpContext };
 
@@ -54,8 +52,15 @@ export interface ActivatePaymentRuleRequest {
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
+const ActivatePaymentRuleRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<ActivatePaymentRuleRequest>;
+
 /** What this account's rule requests when every condition matches. One applicable account-rule action wins, in this order: `allow`, `block`, `review`, `enforce_3ds`. An `allow` overrides this account's other rules, never Whop's own fraud controls. A `review` requests authorization without capture for an eligible on-session card payment through Whop Payments. Automatic capture is scheduled for 48 hours after authorization; capture or void the payment before then to decide sooner. Capture may complete later or fail. Review is skipped for unsupported methods, off-session payments, and payments already configured for manual capture. An `enforce_3ds` is skipped when the account rule cannot apply a challenge. Other 3DS requirements still apply. */
 export type PaymentRuleAction = "allow" | "block" | "review" | "enforce_3ds";
+const PaymentRuleAction = S.String;
+
 /** The payment attribute this condition reads. */
 export type PaymentRuleConditionField =
   | "risk_score"
@@ -64,6 +69,8 @@ export type PaymentRuleConditionField =
   | "card_bin"
   | "customer_email"
   | "ip_address";
+const PaymentRuleConditionField = S.String;
+
 /** How the payment attribute is compared to the value. */
 export type PaymentRuleConditionOperator =
   | "eq"
@@ -78,9 +85,13 @@ export type PaymentRuleConditionOperator =
   | "contains"
   | "ends_with"
   | "in_cidr";
+const PaymentRuleConditionOperator = S.String;
+
 export type PaymentRuleConditionValueCase2List = Array<string>;
 /** The value to compare against. A number for `risk_score`, a string for the other fields, and an array of strings for the `in` and `not_in` operators. */
 export type PaymentRuleConditionValue = number | string | PaymentRuleConditionValueCase2List;
+const PaymentRuleConditionValue = S.Unknown as any as S.Schema<PaymentRuleConditionValue>;
+
 export interface PaymentRuleCondition {
   /** The payment attribute this condition reads. */
   field: PaymentRuleConditionField;
@@ -89,12 +100,26 @@ export interface PaymentRuleCondition {
   /** The value to compare against. */
   value: PaymentRuleConditionValue;
 }
+const PaymentRuleCondition = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<PaymentRuleCondition>;
+
 export type PaymentRuleConditionsAllList = Array<PaymentRuleCondition>;
+const PaymentRuleConditionsAllList = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<PaymentRuleConditionsAllList>;
+
 export interface PaymentRuleConditions {
   all: PaymentRuleConditionsAllList;
 }
+const PaymentRuleConditions = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<PaymentRuleConditions>;
+
 /** Whether the rule is applied to payments. A `deleted` rule is kept so the payments it already decided still name it. */
 export type PaymentRuleStatus = "active" | "inactive" | "deleted";
+const PaymentRuleStatus = S.String;
+
 export interface PaymentRule {
   /** Account ID, prefixed `biz_`. */
   account_id: string;
@@ -117,8 +142,12 @@ export interface PaymentRule {
   /** When the rule was last changed, as an ISO 8601 timestamp. */
   updated_at: string;
 }
+const PaymentRule = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<PaymentRule>;
+
 /** What this account's rule requests when every condition matches. One applicable account-rule action wins, in this order: `allow`, `block`, `review`, `enforce_3ds`. An `allow` overrides this account's other rules, never Whop's own fraud controls. A `review` requests authorization without capture for an eligible on-session card payment through Whop Payments. Automatic capture is scheduled for 48 hours after authorization; capture or void the payment before then to decide sooner. Capture may complete later or fail. Review is skipped for unsupported methods, off-session payments, and payments already configured for manual capture. An `enforce_3ds` is skipped when the account rule cannot apply a challenge. Other 3DS requirements still apply. */
 export type CreatePaymentRuleRequestAction = "allow" | "block" | "review" | "enforce_3ds";
+const CreatePaymentRuleRequestAction = S.String;
+
 /** The payment attribute this condition reads. */
 export type CreatePaymentRuleRequestConditionsAllItemField =
   | "risk_score"
@@ -127,6 +156,8 @@ export type CreatePaymentRuleRequestConditionsAllItemField =
   | "card_bin"
   | "customer_email"
   | "ip_address";
+const CreatePaymentRuleRequestConditionsAllItemField = S.String;
+
 /** How the payment attribute is compared to the value. */
 export type CreatePaymentRuleRequestConditionsAllItemOperator =
   | "eq"
@@ -141,6 +172,8 @@ export type CreatePaymentRuleRequestConditionsAllItemOperator =
   | "contains"
   | "ends_with"
   | "in_cidr";
+const CreatePaymentRuleRequestConditionsAllItemOperator = S.String;
+
 export interface CreatePaymentRuleRequestConditionsAllItem {
   /** The payment attribute this condition reads. */
   field: CreatePaymentRuleRequestConditionsAllItemField | (string & {});
@@ -148,14 +181,34 @@ export interface CreatePaymentRuleRequestConditionsAllItem {
   operator: CreatePaymentRuleRequestConditionsAllItemOperator | (string & {});
   value: PaymentRuleConditionValue;
 }
+const CreatePaymentRuleRequestConditionsAllItem = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<CreatePaymentRuleRequestConditionsAllItem>;
+
 export type CreatePaymentRuleRequestConditionsAllList =
   Array<CreatePaymentRuleRequestConditionsAllItem>;
+const CreatePaymentRuleRequestConditionsAllList = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<CreatePaymentRuleRequestConditionsAllList>;
+
 /** The conditions a payment is matched against. Up to 10 conditions, and 8 KiB once serialized. */
 export interface CreatePaymentRuleRequestConditions {
   all: CreatePaymentRuleRequestConditionsAllList;
 }
+const CreatePaymentRuleRequestConditions = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<CreatePaymentRuleRequestConditions>;
+
 /** Custom string-to-string values for your integration. Maximum 50 keys, 40 characters per key, 500 characters per value. */
 export type CreatePaymentRuleRequestMetadataMap = { [key: string]: string | undefined };
+const CreatePaymentRuleRequestMetadataMap = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<CreatePaymentRuleRequestMetadataMap>;
+
 export interface CreatePaymentRuleRequest {
   /** The account to create the rule on. Defaults to the account the request is acting for. */
   account_id?: string;
@@ -170,22 +223,52 @@ export interface CreatePaymentRuleRequest {
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
+const CreatePaymentRuleRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<CreatePaymentRuleRequest>;
+
 export interface DeactivatePaymentRuleRequest {
   /** The payment rule ID. */
   id: string;
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
+const DeactivatePaymentRuleRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<DeactivatePaymentRuleRequest>;
+
 export interface DeletePaymentRuleRequest {
   /** The payment rule ID. */
   id: string;
 }
+const DeletePaymentRuleRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<DeletePaymentRuleRequest>;
+
 export interface DeletePaymentRuleResponse {}
+const DeletePaymentRuleResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<DeletePaymentRuleResponse>;
+
 export interface GetPaymentRuleRequest {
   /** The payment rule ID. */
   id: string;
 }
+const GetPaymentRuleRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<GetPaymentRuleRequest>;
+
 export interface ListPaymentRuleFieldsRequest {}
+const ListPaymentRuleFieldsRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<ListPaymentRuleFieldsRequest>;
+
 /** The payment attribute this condition reads. */
 export type PaymentRuleFieldField =
   | "risk_score"
@@ -194,6 +277,8 @@ export type PaymentRuleFieldField =
   | "card_bin"
   | "customer_email"
   | "ip_address";
+const PaymentRuleFieldField = S.String;
+
 /** The operators this field accepts. Any other operator is rejected. */
 export type PaymentRuleFieldOperatorsItem =
   | "eq"
@@ -208,16 +293,35 @@ export type PaymentRuleFieldOperatorsItem =
   | "contains"
   | "ends_with"
   | "in_cidr";
+const PaymentRuleFieldOperatorsItem = S.String;
+
 export type PaymentRuleFieldOperatorsList = Array<PaymentRuleFieldOperatorsItem>;
+const PaymentRuleFieldOperatorsList = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<PaymentRuleFieldOperatorsList>;
+
 export interface PaymentRuleFieldOption {
   /** The name to display for this value. */
   label: string;
   /** The value to send in a condition. */
   value: string;
 }
+const PaymentRuleFieldOption = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<PaymentRuleFieldOption>;
+
 export type PaymentRuleFieldOptionsList = Array<PaymentRuleFieldOption>;
+const PaymentRuleFieldOptionsList = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<PaymentRuleFieldOptionsList>;
+
 /** The type of value this field compares against. */
 export type PaymentRuleFieldType = "integer" | "number" | "string";
+const PaymentRuleFieldType = S.String;
+
 export interface PaymentRuleField {
   /** The payment attribute this condition reads. */
   field: PaymentRuleFieldField;
@@ -230,21 +334,46 @@ export interface PaymentRuleField {
   /** The type of value this field compares against. */
   type: PaymentRuleFieldType;
 }
+const PaymentRuleField = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<PaymentRuleField>;
+
 export type ListPaymentRuleFieldsResponseDataList = Array<PaymentRuleField>;
+const ListPaymentRuleFieldsResponseDataList = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<ListPaymentRuleFieldsResponseDataList>;
+
 export interface ListPaymentRuleFieldsResponsePageInfo {
   end_cursor: string | null;
   has_next_page: boolean;
   has_previous_page: boolean;
   start_cursor: string | null;
 }
+const ListPaymentRuleFieldsResponsePageInfo = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<ListPaymentRuleFieldsResponsePageInfo>;
+
 export interface ListPaymentRuleFieldsResponse {
   data: ListPaymentRuleFieldsResponseDataList;
   page_info: ListPaymentRuleFieldsResponsePageInfo;
 }
+const ListPaymentRuleFieldsResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<ListPaymentRuleFieldsResponse>;
+
 export type ListPaymentRulesRequestStatus = "active" | "inactive" | "deleted";
+const ListPaymentRulesRequestStatus = S.String;
+
 export type ListPaymentRulesRequestAction = "allow" | "block" | "review" | "enforce_3ds";
+const ListPaymentRulesRequestAction = S.String;
+
 export type ListPaymentRulesRequestOrder = "created_at";
+const ListPaymentRulesRequestOrder = S.String;
+
 export type ListPaymentRulesRequestDirection = "asc" | "desc";
+const ListPaymentRulesRequestDirection = S.String;
+
 export interface ListPaymentRulesRequest {
   /** Only return rules belonging to this account. Defaults to the account the request is acting for. */
   account_id?: string;
@@ -265,14 +394,31 @@ export interface ListPaymentRulesRequest {
   /** Return results before this cursor. Use `page_info.start_cursor` from the previous response to fetch the previous page. */
   before?: string;
 }
+const ListPaymentRulesRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<ListPaymentRulesRequest>;
+
 export type ListPaymentRulesResponseDataList = Array<PaymentRule>;
+const ListPaymentRulesResponseDataList = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<ListPaymentRulesResponseDataList>;
+
 export type ListPaymentRulesResponsePageInfo = ListPaymentRuleFieldsResponsePageInfo;
 export interface ListPaymentRulesResponse {
   data: ListPaymentRulesResponseDataList;
   page_info: ListPaymentRuleFieldsResponsePageInfo;
 }
+const ListPaymentRulesResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<ListPaymentRulesResponse>;
+
 /** What this account's rule requests when every condition matches. One applicable account-rule action wins, in this order: `allow`, `block`, `review`, `enforce_3ds`. An `allow` overrides this account's other rules, never Whop's own fraud controls. A `review` requests authorization without capture for an eligible on-session card payment through Whop Payments. Automatic capture is scheduled for 48 hours after authorization; capture or void the payment before then to decide sooner. Capture may complete later or fail. Review is skipped for unsupported methods, off-session payments, and payments already configured for manual capture. An `enforce_3ds` is skipped when the account rule cannot apply a challenge. Other 3DS requirements still apply. */
 export type ReplacePaymentRuleRequestAction = "allow" | "block" | "review" | "enforce_3ds";
+const ReplacePaymentRuleRequestAction = S.String;
+
 /** The payment attribute this condition reads. */
 export type ReplacePaymentRuleRequestConditionsAllItemField =
   | "risk_score"
@@ -308,6 +454,9 @@ export type ReplacePaymentRuleRequestConditionsAllList =
 export interface ReplacePaymentRuleRequestConditions {
   all: ReplacePaymentRuleRequestConditionsAllList;
 }
+const ReplacePaymentRuleRequestConditions =
+  CreatePaymentRuleRequestConditions as any as S.Schema<ReplacePaymentRuleRequestConditions>;
+
 export interface ReplacePaymentRuleRequest {
   /** The payment rule ID. */
   id: string;
@@ -318,8 +467,16 @@ export interface ReplacePaymentRuleRequest {
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
+const ReplacePaymentRuleRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<ReplacePaymentRuleRequest>;
+
 /** Custom string-to-string values for your integration. Maximum 50 keys, 40 characters per key, 500 characters per value. */
 export type UpdatePaymentRuleRequestMetadataMap = { [key: string]: string | undefined };
+const UpdatePaymentRuleRequestMetadataMap =
+  CreatePaymentRuleRequestMetadataMap as any as S.Schema<UpdatePaymentRuleRequestMetadataMap>;
+
 export interface UpdatePaymentRuleRequest {
   /** The payment rule ID. */
   id: string;
@@ -328,6 +485,11 @@ export interface UpdatePaymentRuleRequest {
   /** A name for this rule. Up to 255 characters. */
   name?: string;
 }
+const UpdatePaymentRuleRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<UpdatePaymentRuleRequest>;
+
 export type ActivatePaymentRuleError = Conflict | WhopOpError;
 /** Activate a payment rule */
 export const activatePaymentRule: API.OperationMethod<
@@ -336,8 +498,8 @@ export const activatePaymentRule: API.OperationMethod<
   ActivatePaymentRuleError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<ActivatePaymentRuleRequest>,
-  output: __S(4) as any as S.Schema<PaymentRule>,
+  input: ActivatePaymentRuleRequest,
+  output: PaymentRule,
   errors: [Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -351,8 +513,8 @@ export const createPaymentRule: API.OperationMethod<
   CreatePaymentRuleError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9) as any as S.Schema<CreatePaymentRuleRequest>,
-  output: __S(4) as any as S.Schema<PaymentRule>,
+  input: CreatePaymentRuleRequest,
+  output: PaymentRule,
   errors: [BadRequest, Forbidden, Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -366,8 +528,8 @@ export const deactivatePaymentRule: API.OperationMethod<
   DeactivatePaymentRuleError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10) as any as S.Schema<DeactivatePaymentRuleRequest>,
-  output: __S(4) as any as S.Schema<PaymentRule>,
+  input: DeactivatePaymentRuleRequest,
+  output: PaymentRule,
   errors: [Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -381,8 +543,8 @@ export const deletePaymentRule: API.OperationMethod<
   DeletePaymentRuleError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11) as any as S.Schema<DeletePaymentRuleRequest>,
-  output: __S(12) as any as S.Schema<DeletePaymentRuleResponse>,
+  input: DeletePaymentRuleRequest,
+  output: DeletePaymentRuleResponse,
   errors: [],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -396,8 +558,8 @@ export const getPaymentRule: API.OperationMethod<
   GetPaymentRuleError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13) as any as S.Schema<GetPaymentRuleRequest>,
-  output: __S(4) as any as S.Schema<PaymentRule>,
+  input: GetPaymentRuleRequest,
+  output: PaymentRule,
   errors: [NotFound],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -411,8 +573,8 @@ export const listPaymentRuleFields: API.OperationMethod<
   ListPaymentRuleFieldsError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14) as any as S.Schema<ListPaymentRuleFieldsRequest>,
-  output: __S(21) as any as S.Schema<ListPaymentRuleFieldsResponse>,
+  input: ListPaymentRuleFieldsRequest,
+  output: ListPaymentRuleFieldsResponse,
   errors: [],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -428,8 +590,8 @@ export const listPaymentRules: API.PaginatedOperationMethod<
   PaymentRule
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(22) as any as S.Schema<ListPaymentRulesRequest>,
-    output: __S(24) as any as S.Schema<ListPaymentRulesResponse>,
+    input: ListPaymentRulesRequest,
+    output: ListPaymentRulesResponse,
     errors: [BadRequest],
     protocol: WhopProtocol,
     retry: Retry.Retry,
@@ -453,8 +615,8 @@ export const replacePaymentRule: API.OperationMethod<
   ReplacePaymentRuleError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25) as any as S.Schema<ReplacePaymentRuleRequest>,
-  output: __S(4) as any as S.Schema<PaymentRule>,
+  input: ReplacePaymentRuleRequest,
+  output: PaymentRule,
   errors: [Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -468,8 +630,8 @@ export const updatePaymentRule: API.OperationMethod<
   UpdatePaymentRuleError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26) as any as S.Schema<UpdatePaymentRuleRequest>,
-  output: __S(4) as any as S.Schema<PaymentRule>,
+  input: UpdatePaymentRuleRequest,
+  output: PaymentRule,
   errors: [],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -490,50 +652,50 @@ function __c0(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          field: S.String,
-          operator: S.String,
-          value: S.Unknown,
+          field: PaymentRuleConditionField,
+          operator: PaymentRuleConditionOperator,
+          value: PaymentRuleConditionValue,
         }),
       ).annotate({ identifier: "PaymentRuleCondition" });
     case 2:
-      return S.Array(__S(1));
+      return S.Array(PaymentRuleCondition);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          all: __S(2),
+          all: PaymentRuleConditionsAllList,
         }),
       ).annotate({ identifier: "PaymentRuleConditions" });
     case 4:
       return S.suspend(() =>
         S.Struct({
           account_id: S.String,
-          action: S.String,
-          conditions: __S(3),
+          action: PaymentRuleAction,
+          conditions: PaymentRuleConditions,
           created_at: S.String,
           deleted_at: S.NullOr(S.String),
           id: S.String,
           metadata: S.Unknown,
           name: S.String,
-          status: S.String,
+          status: PaymentRuleStatus,
           updated_at: S.String,
         }),
       ).annotate({ identifier: "PaymentRule" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          field: S.String,
-          operator: S.String,
-          value: S.Unknown,
+          field: CreatePaymentRuleRequestConditionsAllItemField,
+          operator: CreatePaymentRuleRequestConditionsAllItemOperator,
+          value: PaymentRuleConditionValue,
         }),
       ).annotate({
         identifier: "CreatePaymentRuleRequestConditionsAllItem",
       });
     case 6:
-      return S.Array(__S(5));
+      return S.Array(CreatePaymentRuleRequestConditionsAllItem);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          all: __S(6),
+          all: CreatePaymentRuleRequestConditionsAllList,
         }),
       ).annotate({
         identifier: "CreatePaymentRuleRequestConditions",
@@ -548,9 +710,9 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           account_id: S.optional(S.String),
-          action: S.String,
-          conditions: __S(7),
-          metadata: S.optional(__S(8)),
+          action: CreatePaymentRuleRequestAction,
+          conditions: CreatePaymentRuleRequestConditions,
+          metadata: S.optional(CreatePaymentRuleRequestMetadataMap),
           name: S.String,
           idempotency_key: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
         }).pipe(T.Http({ method: "POST", uri: "/payment_rules", code: 200 })),
@@ -587,7 +749,7 @@ function __c1(j: number): any {
         identifier: "ListPaymentRuleFieldsRequest",
       });
     case 7:
-      return S.Array(S.String);
+      return S.Array(PaymentRuleFieldOperatorsItem);
   }
 }
 function __c2(j: number): any {
@@ -600,20 +762,20 @@ function __c2(j: number): any {
         }),
       ).annotate({ identifier: "PaymentRuleFieldOption" });
     case 1:
-      return S.Array(__S(16));
+      return S.Array(PaymentRuleFieldOption);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          field: S.String,
+          field: PaymentRuleFieldField,
           maximum: S.NullOr(S.Number),
           minimum: S.NullOr(S.Number),
-          operators: __S(15),
-          options: S.NullOr(__S(17)),
-          type: S.String,
+          operators: PaymentRuleFieldOperatorsList,
+          options: S.NullOr(PaymentRuleFieldOptionsList),
+          type: PaymentRuleFieldType,
         }),
       ).annotate({ identifier: "PaymentRuleField" });
     case 3:
-      return S.Array(__S(18));
+      return S.Array(PaymentRuleField);
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -628,8 +790,8 @@ function __c2(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          data: __S(19),
-          page_info: __S(20),
+          data: ListPaymentRuleFieldsResponseDataList,
+          page_info: ListPaymentRuleFieldsResponsePageInfo,
         }),
       ).annotate({
         identifier: "ListPaymentRuleFieldsResponse",
@@ -638,10 +800,10 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           account_id: S.optional(S.String.pipe(T.Query())),
-          status: S.optional(S.String.pipe(T.Query())),
-          action: S.optional(S.String.pipe(T.Query())),
-          order: S.optional(S.String.pipe(T.Query())),
-          direction: S.optional(S.String.pipe(T.Query())),
+          status: S.optional(ListPaymentRulesRequestStatus.pipe(T.Query())),
+          action: S.optional(ListPaymentRulesRequestAction.pipe(T.Query())),
+          order: S.optional(ListPaymentRulesRequestOrder.pipe(T.Query())),
+          direction: S.optional(ListPaymentRulesRequestDirection.pipe(T.Query())),
           first: S.optional(S.Number.pipe(T.Query())),
           after: S.optional(S.String.pipe(T.Query())),
           last: S.optional(S.Number.pipe(T.Query())),
@@ -649,7 +811,7 @@ function __c2(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/payment_rules", code: 200 })),
       ).annotate({ identifier: "ListPaymentRulesRequest" });
     case 7:
-      return S.Array(__S(4));
+      return S.Array(PaymentRule);
   }
 }
 function __c3(j: number): any {
@@ -657,16 +819,16 @@ function __c3(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          data: __S(23),
-          page_info: __S(20),
+          data: ListPaymentRulesResponseDataList,
+          page_info: ListPaymentRuleFieldsResponsePageInfo,
         }),
       ).annotate({ identifier: "ListPaymentRulesResponse" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
-          action: S.String,
-          conditions: __S(7),
+          action: ReplacePaymentRuleRequestAction,
+          conditions: ReplacePaymentRuleRequestConditions,
           idempotency_key: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
         }).pipe(T.Http({ method: "POST", uri: "/payment_rules/{id}/replace", code: 200 })),
       ).annotate({
@@ -676,26 +838,9 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
-          metadata: S.optional(__S(8)),
+          metadata: S.optional(UpdatePaymentRuleRequestMetadataMap),
           name: S.optional(S.String),
         }).pipe(T.Http({ method: "PATCH", uri: "/payment_rules/{id}", code: 200 })),
       ).annotate({ identifier: "UpdatePaymentRuleRequest" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
   }
 }

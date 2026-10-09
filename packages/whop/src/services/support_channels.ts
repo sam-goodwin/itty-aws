@@ -7,8 +7,6 @@ import { paginateRelay } from "../pagination.ts";
 import { WhopProtocol, type WhopOpError, type WhopOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { WhopOpError, WhopOpContext };
 
@@ -58,6 +56,11 @@ export interface CreateSupportChannelRequest {
   /** The user ID (e.g. 'user_xxxxx') or username of the customer to open a support channel for. */
   user_id: string;
 }
+const CreateSupportChannelRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<CreateSupportChannelRequest>;
+
 /** The customer who initiated this support conversation. Null if this is not a support chat. */
 export interface SupportChannelCustomerUser {
   /** The unique identifier for the user. */
@@ -67,6 +70,11 @@ export interface SupportChannelCustomerUser {
   /** The user's unique username shown on their public profile. */
   username: string;
 }
+const SupportChannelCustomerUser = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<SupportChannelCustomerUser>;
+
 /** A messaging channel that can be a one-on-one DM, group chat, company support conversation, or platform-level direct message. */
 export interface SupportChannel {
   /** The unique identifier of the account associated with this channel. Null if this is not a support or account-scoped conversation. */
@@ -84,16 +92,29 @@ export interface SupportChannel {
   /** The timestamp when the linked support ticket was marked as resolved. Null if unresolved or not a support chat. */
   resolved_at: string | null;
 }
+const SupportChannel = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<SupportChannel>;
+
 export interface GetSupportChannelRequest {
   /** The unique identifier of the support channel to retrieve. */
   id: string;
 }
+const GetSupportChannelRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<GetSupportChannelRequest>;
+
 /** The perspective to filter support channels by. */
 export type SupportChannelView = "all" | "admin" | "customer";
+const SupportChannelView = S.String;
+
 /** The direction of the sort. */
 export type Direction = "asc" | "desc";
+const Direction = S.String;
+
 /** Sort options for message channels */
 export type MessageChannelOrder = "created_at" | "last_post_sent_at";
+const MessageChannelOrder = S.String;
+
 export interface ListSupportChannelRequest {
   after?: string;
   before?: string;
@@ -105,6 +126,11 @@ export interface ListSupportChannelRequest {
   order?: MessageChannelOrder | (string & {});
   account_id?: string;
 }
+const ListSupportChannelRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<ListSupportChannelRequest>;
+
 /** The customer who initiated this support conversation. Null if this is not a support chat. */
 export type SupportChannelListItemCustomerUser = SupportChannelCustomerUser;
 /** A messaging channel that can be a one-on-one DM, group chat, company support conversation, or platform-level direct message. */
@@ -124,8 +150,15 @@ export interface SupportChannelListItem {
   /** The timestamp when the linked support ticket was marked as resolved. Null if unresolved or not a support chat. */
   resolved_at: string | null;
 }
+const SupportChannelListItem = SupportChannel as any as S.Schema<SupportChannelListItem>;
+
 /** A list of nodes. */
 export type ListSupportChannelResponseDataList = Array<SupportChannelListItem>;
+const ListSupportChannelResponseDataList = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<ListSupportChannelResponseDataList>;
+
 /** Information about pagination in a connection. */
 export interface PageInfo {
   /** When paginating forwards, the cursor to continue. */
@@ -137,12 +170,19 @@ export interface PageInfo {
   /** When paginating backwards, the cursor to continue. */
   start_cursor: string | null;
 }
+const PageInfo = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<PageInfo>;
+
 export interface ListSupportChannelResponse {
   /** A list of nodes. */
   data: ListSupportChannelResponseDataList;
   /** Information to aid in pagination. */
   page_info: PageInfo;
 }
+const ListSupportChannelResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<ListSupportChannelResponse>;
+
 export type CreateSupportChannelError =
   | BadRequest
   | Forbidden
@@ -156,8 +196,8 @@ export const createSupportChannel: API.OperationMethod<
   CreateSupportChannelError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<CreateSupportChannelRequest>,
-  output: __S(2) as any as S.Schema<SupportChannel>,
+  input: CreateSupportChannelRequest,
+  output: SupportChannel,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -176,8 +216,8 @@ export const getSupportChannel: API.OperationMethod<
   GetSupportChannelError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3) as any as S.Schema<GetSupportChannelRequest>,
-  output: __S(2) as any as S.Schema<SupportChannel>,
+  input: GetSupportChannelRequest,
+  output: SupportChannel,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -198,8 +238,8 @@ export const listSupportChannel: API.PaginatedOperationMethod<
   SupportChannelListItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(4) as any as S.Schema<ListSupportChannelRequest>,
-    output: __S(7) as any as S.Schema<ListSupportChannelResponse>,
+    input: ListSupportChannelRequest,
+    output: ListSupportChannelResponse,
     errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
     protocol: WhopProtocol,
     retry: Retry.Retry,
@@ -245,7 +285,7 @@ function __c0(j: number): any {
           account_id: S.NullOr(S.String),
           company_id: S.NullOr(S.String),
           custom_name: S.NullOr(S.String),
-          customer_user: S.NullOr(__S(1)),
+          customer_user: S.NullOr(SupportChannelCustomerUser),
           id: S.String,
           last_message_at: S.NullOr(S.String),
           resolved_at: S.NullOr(S.String),
@@ -264,17 +304,17 @@ function __c0(j: number): any {
           before: S.optional(S.String.pipe(T.Query())),
           first: S.optional(S.Number.pipe(T.Query())),
           last: S.optional(S.Number.pipe(T.Query())),
-          view: S.optional(S.String.pipe(T.Query())),
+          view: S.optional(SupportChannelView.pipe(T.Query())),
           open: S.optional(S.Boolean.pipe(T.Query())),
-          direction: S.optional(S.String.pipe(T.Query())),
-          order: S.optional(S.String.pipe(T.Query())),
+          direction: S.optional(Direction.pipe(T.Query())),
+          order: S.optional(MessageChannelOrder.pipe(T.Query())),
           account_id: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/support_channels", code: 200 })),
       ).annotate({
         identifier: "ListSupportChannelRequest",
       });
     case 5:
-      return S.Array(__S(2));
+      return S.Array(SupportChannelListItem);
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -287,22 +327,11 @@ function __c0(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          data: __S(5),
-          page_info: __S(6),
+          data: ListSupportChannelResponseDataList,
+          page_info: PageInfo,
         }),
       ).annotate({
         identifier: "ListSupportChannelResponse",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
   }
 }

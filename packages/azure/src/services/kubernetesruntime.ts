@@ -7,8 +7,6 @@ import { UnknownAzureError } from "../errors.ts";
 import { AzureProtocol, type AzureOpError, type AzureOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { AzureOpError, AzureOpContext };
 
@@ -21,6 +19,11 @@ export interface BgpPeerPropertiesInput {
   /** Peer Address */
   peerAddress: string;
 }
+const BgpPeerPropertiesInput = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<BgpPeerPropertiesInput>;
+
 export interface BgpPeersCreateOrUpdateRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
   resourceUri: string;
@@ -29,10 +32,19 @@ export interface BgpPeersCreateOrUpdateRequest {
   /** The resource-specific properties for this resource. */
   properties?: BgpPeerPropertiesInput;
 }
+const BgpPeersCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<BgpPeersCreateOrUpdateRequest>;
+
 /** The type of identity that created the resource. */
 export type SystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
+const SystemDataCreatedByType = S.String;
+
 /** The type of identity that last modified the resource. */
 export type SystemDataLastModifiedByType = "User" | "Application" | "ManagedIdentity" | "Key";
+const SystemDataLastModifiedByType = S.String;
+
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface SystemData {
   /** The identity that created the resource. */
@@ -48,6 +60,8 @@ export interface SystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const SystemData = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<SystemData>;
+
 /** The status of the current operation. */
 export type ProvisioningState =
   | "Succeeded"
@@ -57,6 +71,8 @@ export type ProvisioningState =
   | "Updating"
   | "Deleting"
   | "Accepted";
+const ProvisioningState = S.String;
+
 /** Details of the BgpPeer. */
 export interface BgpPeerProperties {
   /** My ASN */
@@ -68,6 +84,8 @@ export interface BgpPeerProperties {
   /** Resource provision state */
   provisioningState?: ProvisioningState;
 }
+const BgpPeerProperties = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<BgpPeerProperties>;
+
 export interface BgpPeersCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -80,40 +98,74 @@ export interface BgpPeersCreateOrUpdateResponse {
   /** The resource-specific properties for this resource. */
   properties?: BgpPeerProperties;
 }
+const BgpPeersCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<BgpPeersCreateOrUpdateResponse>;
+
 export interface DeleteBgpPeerRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
   resourceUri: string;
   /** The name of the BgpPeer */
   bgpPeerName: string;
 }
+const DeleteBgpPeerRequest = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<DeleteBgpPeerRequest>;
+
 export interface DeleteBgpPeerResponse {}
+const DeleteBgpPeerResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<DeleteBgpPeerResponse>;
+
 export interface DeleteLoadBalancerRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
   resourceUri: string;
   /** The name of the LoadBalancer */
   loadBalancerName: string;
 }
+const DeleteLoadBalancerRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<DeleteLoadBalancerRequest>;
+
 export interface DeleteLoadBalancerResponse {}
+const DeleteLoadBalancerResponse =
+  DeleteBgpPeerResponse as any as S.Schema<DeleteLoadBalancerResponse>;
+
 export interface DeleteServiceRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
   resourceUri: string;
   /** The name of the the service */
   serviceName: string;
 }
+const DeleteServiceRequest = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<DeleteServiceRequest>;
+
 export interface DeleteServiceResponse {}
+const DeleteServiceResponse = DeleteBgpPeerResponse as any as S.Schema<DeleteServiceResponse>;
+
 export interface DeleteStorageClassRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
   resourceUri: string;
   /** The name of the the storage class */
   storageClassName: string;
 }
+const DeleteStorageClassRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<DeleteStorageClassRequest>;
+
 export interface DeleteStorageClassResponse {}
+const DeleteStorageClassResponse =
+  DeleteBgpPeerResponse as any as S.Schema<DeleteStorageClassResponse>;
+
 export interface GetBgpPeerRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
   resourceUri: string;
   /** The name of the BgpPeer */
   bgpPeerName: string;
 }
+const GetBgpPeerRequest = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<GetBgpPeerRequest>;
+
 export interface GetBgpPeerResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -126,20 +178,42 @@ export interface GetBgpPeerResponse {
   /** The resource-specific properties for this resource. */
   properties?: BgpPeerProperties;
 }
+const GetBgpPeerResponse = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<GetBgpPeerResponse>;
+
 export interface GetLoadBalancerRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
   resourceUri: string;
   /** The name of the LoadBalancer */
   loadBalancerName: string;
 }
+const GetLoadBalancerRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<GetLoadBalancerRequest>;
+
 /** IP Range */
 export type LoadBalancerPropertiesAddressesList = Array<string>;
+const LoadBalancerPropertiesAddressesList = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<LoadBalancerPropertiesAddressesList>;
+
 /** A dynamic label mapping to select related services. For instance, if you want to create a load balancer only for services with label "a=b", then please specify {"a": "b"} in the field. */
 export type LoadBalancerPropertiesServiceSelectorMap = { [key: string]: string | undefined };
+const LoadBalancerPropertiesServiceSelectorMap = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<LoadBalancerPropertiesServiceSelectorMap>;
+
 /** Enum of advertise mode */
 export type AdvertiseMode = "ARP" | "BGP" | "Both";
+const AdvertiseMode = S.String;
+
 /** The list of BGP peers it should advertise to. Null or empty means to advertise to all peers. */
 export type LoadBalancerPropertiesBgpPeersList = Array<string>;
+const LoadBalancerPropertiesBgpPeersList =
+  LoadBalancerPropertiesAddressesList as any as S.Schema<LoadBalancerPropertiesBgpPeersList>;
+
 /** Details of the LoadBalancer. */
 export interface LoadBalancerProperties {
   /** IP Range */
@@ -153,6 +227,11 @@ export interface LoadBalancerProperties {
   /** Resource provision state */
   provisioningState?: ProvisioningState;
 }
+const LoadBalancerProperties = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<LoadBalancerProperties>;
+
 export interface GetLoadBalancerResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -165,12 +244,19 @@ export interface GetLoadBalancerResponse {
   /** The resource-specific properties for this resource. */
   properties?: LoadBalancerProperties;
 }
+const GetLoadBalancerResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<GetLoadBalancerResponse>;
+
 export interface GetServiceRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
   resourceUri: string;
   /** The name of the the service */
   serviceName: string;
 }
+const GetServiceRequest = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<GetServiceRequest>;
+
 /** Properties for the service resource */
 export interface ServiceProperties {
   /** The object id of the service principal of the RP provisioned in the tenant */
@@ -178,6 +264,8 @@ export interface ServiceProperties {
   /** Resource provision state */
   provisioningState?: ProvisioningState;
 }
+const ServiceProperties = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<ServiceProperties>;
+
 export interface GetServiceResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -190,34 +278,68 @@ export interface GetServiceResponse {
   /** The resource-specific properties for this resource. */
   properties?: ServiceProperties;
 }
+const GetServiceResponse = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<GetServiceResponse>;
+
 export interface GetStorageClassRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
   resourceUri: string;
   /** The name of the the storage class */
   storageClassName: string;
 }
+const GetStorageClassRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<GetStorageClassRequest>;
+
 /** Ability to expand volumes of a storage class */
 export type VolumeExpansion = "Allow" | "Disallow";
+const VolumeExpansion = S.String;
+
 /** Additional mount options */
 export type StorageClassPropertiesMountOptionsList = Array<string>;
+const StorageClassPropertiesMountOptionsList =
+  LoadBalancerPropertiesAddressesList as any as S.Schema<StorageClassPropertiesMountOptionsList>;
+
 /** Storage class volume binding mode */
 export type VolumeBindingMode = "Immediate" | "WaitForFirstConsumer";
+const VolumeBindingMode = S.String;
+
 /** Storage Class Access Mode */
 export type AccessMode = "ReadWriteOnce" | "ReadWriteMany";
+const AccessMode = S.String;
+
 /** The access mode: [ReadWriteOnce, ReadWriteMany] or [ReadWriteOnce] */
 export type StorageClassPropertiesAccessModesList = Array<AccessMode>;
+const StorageClassPropertiesAccessModesList = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<StorageClassPropertiesAccessModesList>;
+
 /** Data resilience tier of a storage class */
 export type DataResilienceTier = "NotDataResilient" | "DataResilient";
+const DataResilienceTier = S.String;
+
 /** Failover tier of a storage class */
 export type FailoverTier = "NotAvailable" | "Slow" | "Fast" | "Super";
+const FailoverTier = S.String;
+
 /** Limitations of the storage class */
 export type StorageClassPropertiesLimitationsList = Array<string>;
+const StorageClassPropertiesLimitationsList =
+  LoadBalancerPropertiesAddressesList as any as S.Schema<StorageClassPropertiesLimitationsList>;
+
 /** Performance tier of a storage class */
 export type PerformanceTier = "Undefined" | "Basic" | "Standard" | "Premium" | "Ultra";
+const PerformanceTier = S.String;
+
 /** Type of a storage class */
 export type SCType = "Native" | "RWX" | "Blob" | "NFS" | "SMB";
+const SCType = S.String;
+
 /** The action to take when a NFS volume is deleted */
 export type NfsDirectoryActionOnVolumeDeletion = "Delete" | "Retain";
+const NfsDirectoryActionOnVolumeDeletion = S.String;
+
 /** The properties of storage class of the StorageClass */
 export interface StorageClassTypeProperties {
   /** Type of the storage class. */
@@ -247,6 +369,11 @@ export interface StorageClassTypeProperties {
   /** Server domain */
   domain?: string;
 }
+const StorageClassTypeProperties = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<StorageClassTypeProperties>;
+
 /** Details of the StorageClass StorageClass. */
 export interface StorageClassProperties {
   /** Volume can be expanded or not */
@@ -274,6 +401,11 @@ export interface StorageClassProperties {
   /** Resource provision state */
   provisioningState?: ProvisioningState;
 }
+const StorageClassProperties = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<StorageClassProperties>;
+
 export interface GetStorageClassResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -286,10 +418,17 @@ export interface GetStorageClassResponse {
   /** The resource-specific properties for this resource. */
   properties?: StorageClassProperties;
 }
+const GetStorageClassResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<GetStorageClassResponse>;
+
 export interface ListBgpPeersRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
   resourceUri: string;
 }
+const ListBgpPeersRequest = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<ListBgpPeersRequest>;
+
 /** A BgpPeer resource for an Arc connected cluster (Microsoft.Kubernetes/connectedClusters) */
 export interface BgpPeer {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -303,8 +442,15 @@ export interface BgpPeer {
   /** The resource-specific properties for this resource. */
   properties?: BgpPeerProperties;
 }
+const BgpPeer = GetBgpPeerResponse as any as S.Schema<BgpPeer>;
+
 /** The BgpPeer items on this page */
 export type BgpPeerListResultValueList = Array<BgpPeer>;
+const BgpPeerListResultValueList = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<BgpPeerListResultValueList>;
+
 /** The response of a BgpPeer list operation. */
 export interface BgpPeerListResult {
   /** The BgpPeer items on this page */
@@ -312,10 +458,17 @@ export interface BgpPeerListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const BgpPeerListResult = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<BgpPeerListResult>;
+
 export interface ListLoadBalancersRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
   resourceUri: string;
 }
+const ListLoadBalancersRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<ListLoadBalancersRequest>;
+
 /** A LoadBalancer resource for an Arc connected cluster (Microsoft.Kubernetes/connectedClusters) */
 export interface LoadBalancer {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -329,8 +482,15 @@ export interface LoadBalancer {
   /** The resource-specific properties for this resource. */
   properties?: LoadBalancerProperties;
 }
+const LoadBalancer = GetLoadBalancerResponse as any as S.Schema<LoadBalancer>;
+
 /** The LoadBalancer items on this page */
 export type LoadBalancerListResultValueList = Array<LoadBalancer>;
+const LoadBalancerListResultValueList = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<LoadBalancerListResultValueList>;
+
 /** The response of a LoadBalancer list operation. */
 export interface LoadBalancerListResult {
   /** The LoadBalancer items on this page */
@@ -338,7 +498,17 @@ export interface LoadBalancerListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const LoadBalancerListResult = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<LoadBalancerListResult>;
+
 export interface ListOperationsRequest {}
+const ListOperationsRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<ListOperationsRequest>;
+
 /** Localized display information for this particular operation. */
 export interface OperationDisplay {
   /** The localized friendly form of the resource provider name, e.g. "Microsoft Monitoring Insights" or "Microsoft Compute". */
@@ -350,10 +520,16 @@ export interface OperationDisplay {
   /** The short, localized friendly description of the operation; suitable for tool tips and detailed views. */
   description?: string;
 }
+const OperationDisplay = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<OperationDisplay>;
+
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
 export type OperationOrigin = "user" | "system" | "user,system";
+const OperationOrigin = S.String;
+
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
 export type OperationActionType = "Internal";
+const OperationActionType = S.String;
+
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
 export interface Operation {
   /** The name of the operation, as per Resource-Based Access Control (RBAC). Examples: "Microsoft.Compute/virtualMachines/write", "Microsoft.Compute/virtualMachines/capture/action" */
@@ -367,18 +543,32 @@ export interface Operation {
   /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
   actionType?: OperationActionType;
 }
+const Operation = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<Operation>;
+
 /** List of operations supported by the resource provider */
 export type ListOperationsResponseValueList = Array<Operation>;
+const ListOperationsResponseValueList = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<ListOperationsResponseValueList>;
+
 export interface ListOperationsResponse {
   /** List of operations supported by the resource provider */
   value?: ListOperationsResponseValueList;
   /** URL to get the next set of operation list results (if there are any). */
   nextLink?: string;
 }
+const ListOperationsResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<ListOperationsResponse>;
+
 export interface ListServicesRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
   resourceUri: string;
 }
+const ListServicesRequest = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<ListServicesRequest>;
+
 /** A Service resource for an Arc connected cluster (Microsoft.Kubernetes/connectedClusters) */
 export interface ServiceResource {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -392,8 +582,15 @@ export interface ServiceResource {
   /** The resource-specific properties for this resource. */
   properties?: ServiceProperties;
 }
+const ServiceResource = GetServiceResponse as any as S.Schema<ServiceResource>;
+
 /** The ServiceResource items on this page */
 export type ServiceResourceListResultValueList = Array<ServiceResource>;
+const ServiceResourceListResultValueList = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<ServiceResourceListResultValueList>;
+
 /** The response of a ServiceResource list operation. */
 export interface ServiceResourceListResult {
   /** The ServiceResource items on this page */
@@ -401,10 +598,20 @@ export interface ServiceResourceListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const ServiceResourceListResult = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<ServiceResourceListResult>;
+
 export interface ListStorageClassRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
   resourceUri: string;
 }
+const ListStorageClassRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<ListStorageClassRequest>;
+
 /** A StorageClass resource for an Arc connected cluster (Microsoft.Kubernetes/connectedClusters) */
 export interface StorageClassResource {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -418,8 +625,15 @@ export interface StorageClassResource {
   /** The resource-specific properties for this resource. */
   properties?: StorageClassProperties;
 }
+const StorageClassResource = GetStorageClassResponse as any as S.Schema<StorageClassResource>;
+
 /** The StorageClassResource items on this page */
 export type StorageClassResourceListResultValueList = Array<StorageClassResource>;
+const StorageClassResourceListResultValueList = /*@__PURE__*/ __L.at(
+  __c5,
+  0,
+) as any as S.Schema<StorageClassResourceListResultValueList>;
+
 /** The response of a StorageClassResource list operation. */
 export interface StorageClassResourceListResult {
   /** The StorageClassResource items on this page */
@@ -427,12 +641,26 @@ export interface StorageClassResourceListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const StorageClassResourceListResult = /*@__PURE__*/ __L.at(
+  __c5,
+  1,
+) as any as S.Schema<StorageClassResourceListResult>;
+
 /** IP Range */
 export type LoadBalancerPropertiesInputAddressesList = Array<string>;
+const LoadBalancerPropertiesInputAddressesList =
+  LoadBalancerPropertiesAddressesList as any as S.Schema<LoadBalancerPropertiesInputAddressesList>;
+
 /** A dynamic label mapping to select related services. For instance, if you want to create a load balancer only for services with label "a=b", then please specify {"a": "b"} in the field. */
 export type LoadBalancerPropertiesInputServiceSelectorMap = { [key: string]: string | undefined };
+const LoadBalancerPropertiesInputServiceSelectorMap =
+  LoadBalancerPropertiesServiceSelectorMap as any as S.Schema<LoadBalancerPropertiesInputServiceSelectorMap>;
+
 /** The list of BGP peers it should advertise to. Null or empty means to advertise to all peers. */
 export type LoadBalancerPropertiesInputBgpPeersList = Array<string>;
+const LoadBalancerPropertiesInputBgpPeersList =
+  LoadBalancerPropertiesAddressesList as any as S.Schema<LoadBalancerPropertiesInputBgpPeersList>;
+
 /** Details of the LoadBalancer. */
 export interface LoadBalancerPropertiesInput {
   /** IP Range */
@@ -444,6 +672,11 @@ export interface LoadBalancerPropertiesInput {
   /** The list of BGP peers it should advertise to. Null or empty means to advertise to all peers. */
   bgpPeers?: LoadBalancerPropertiesInputBgpPeersList;
 }
+const LoadBalancerPropertiesInput = /*@__PURE__*/ __L.at(
+  __c5,
+  2,
+) as any as S.Schema<LoadBalancerPropertiesInput>;
+
 export interface LoadBalancersCreateOrUpdateRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
   resourceUri: string;
@@ -452,6 +685,11 @@ export interface LoadBalancersCreateOrUpdateRequest {
   /** The resource-specific properties for this resource. */
   properties?: LoadBalancerPropertiesInput;
 }
+const LoadBalancersCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<LoadBalancersCreateOrUpdateRequest>;
+
 export interface LoadBalancersCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -464,8 +702,15 @@ export interface LoadBalancersCreateOrUpdateResponse {
   /** The resource-specific properties for this resource. */
   properties?: LoadBalancerProperties;
 }
+const LoadBalancersCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  4,
+) as any as S.Schema<LoadBalancersCreateOrUpdateResponse>;
+
 /** Properties for the service resource */
 export interface ServicePropertiesInput {}
+const ServicePropertiesInput = DeleteBgpPeerResponse as any as S.Schema<ServicePropertiesInput>;
+
 export interface ServicesCreateOrUpdateRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
   resourceUri: string;
@@ -474,6 +719,11 @@ export interface ServicesCreateOrUpdateRequest {
   /** The resource-specific properties for this resource. */
   properties?: ServicePropertiesInput;
 }
+const ServicesCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  5,
+) as any as S.Schema<ServicesCreateOrUpdateRequest>;
+
 export interface ServicesCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -486,12 +736,26 @@ export interface ServicesCreateOrUpdateResponse {
   /** The resource-specific properties for this resource. */
   properties?: ServiceProperties;
 }
+const ServicesCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  6,
+) as any as S.Schema<ServicesCreateOrUpdateResponse>;
+
 /** Additional mount options */
 export type StorageClassPropertiesInputMountOptionsList = Array<string>;
+const StorageClassPropertiesInputMountOptionsList =
+  LoadBalancerPropertiesAddressesList as any as S.Schema<StorageClassPropertiesInputMountOptionsList>;
+
 /** The access mode: [ReadWriteOnce, ReadWriteMany] or [ReadWriteOnce] */
 export type StorageClassPropertiesInputAccessModesList = Array<AccessMode | (string & {})>;
+const StorageClassPropertiesInputAccessModesList =
+  StorageClassPropertiesAccessModesList as any as S.Schema<StorageClassPropertiesInputAccessModesList>;
+
 /** Limitations of the storage class */
 export type StorageClassPropertiesInputLimitationsList = Array<string>;
+const StorageClassPropertiesInputLimitationsList =
+  LoadBalancerPropertiesAddressesList as any as S.Schema<StorageClassPropertiesInputLimitationsList>;
+
 /** Details of the StorageClass StorageClass. */
 export interface StorageClassPropertiesInput {
   /** Volume can be expanded or not */
@@ -517,6 +781,11 @@ export interface StorageClassPropertiesInput {
   /** Properties of the StorageClass */
   typeProperties: StorageClassTypeProperties;
 }
+const StorageClassPropertiesInput = /*@__PURE__*/ __L.at(
+  __c5,
+  7,
+) as any as S.Schema<StorageClassPropertiesInput>;
+
 export interface StorageClassCreateOrUpdateRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
   resourceUri: string;
@@ -525,6 +794,11 @@ export interface StorageClassCreateOrUpdateRequest {
   /** The resource-specific properties for this resource. */
   properties?: StorageClassPropertiesInput;
 }
+const StorageClassCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<StorageClassCreateOrUpdateRequest>;
+
 export interface StorageClassCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -537,12 +811,26 @@ export interface StorageClassCreateOrUpdateResponse {
   /** The resource-specific properties for this resource. */
   properties?: StorageClassProperties;
 }
+const StorageClassCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  1,
+) as any as S.Schema<StorageClassCreateOrUpdateResponse>;
+
 /** Additional mount options */
 export type StorageClassPropertiesUpdateMountOptionsList = Array<string>;
+const StorageClassPropertiesUpdateMountOptionsList =
+  LoadBalancerPropertiesAddressesList as any as S.Schema<StorageClassPropertiesUpdateMountOptionsList>;
+
 /** The access mode: [ReadWriteOnce, ReadWriteMany] or [ReadWriteOnce] */
 export type StorageClassPropertiesUpdateAccessModesList = Array<AccessMode | (string & {})>;
+const StorageClassPropertiesUpdateAccessModesList =
+  StorageClassPropertiesAccessModesList as any as S.Schema<StorageClassPropertiesUpdateAccessModesList>;
+
 /** Limitations of the storage class */
 export type StorageClassPropertiesUpdateLimitationsList = Array<string>;
+const StorageClassPropertiesUpdateLimitationsList =
+  LoadBalancerPropertiesAddressesList as any as S.Schema<StorageClassPropertiesUpdateLimitationsList>;
+
 /** The model for update a storageClass */
 export interface StorageClassTypePropertiesUpdate {
   /** The backing storageclass used to create new storageclass */
@@ -570,6 +858,11 @@ export interface StorageClassTypePropertiesUpdate {
   /** Server domain */
   domain?: string;
 }
+const StorageClassTypePropertiesUpdate = /*@__PURE__*/ __L.at(
+  __c6,
+  2,
+) as any as S.Schema<StorageClassTypePropertiesUpdate>;
+
 /** The model for updating storageClass properties */
 export interface StorageClassPropertiesUpdate {
   /** Volume can be expanded or not */
@@ -591,6 +884,11 @@ export interface StorageClassPropertiesUpdate {
   /** New storage class type of storageClass */
   typeProperties?: StorageClassTypePropertiesUpdate;
 }
+const StorageClassPropertiesUpdate = /*@__PURE__*/ __L.at(
+  __c6,
+  3,
+) as any as S.Schema<StorageClassPropertiesUpdate>;
+
 export interface UpdateStorageClassRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
   resourceUri: string;
@@ -599,6 +897,11 @@ export interface UpdateStorageClassRequest {
   /** The properties of StorageClass */
   properties?: StorageClassPropertiesUpdate;
 }
+const UpdateStorageClassRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  4,
+) as any as S.Schema<UpdateStorageClassRequest>;
+
 export interface UpdateStorageClassResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -611,6 +914,9 @@ export interface UpdateStorageClassResponse {
   /** The resource-specific properties for this resource. */
   properties?: StorageClassProperties;
 }
+const UpdateStorageClassResponse =
+  StorageClassCreateOrUpdateResponse as any as S.Schema<UpdateStorageClassResponse>;
+
 export type BgpPeersCreateOrUpdateError = AzureOpError;
 /** Create a BgpPeer */
 export const BgpPeersCreateOrUpdate: API.OperationMethod<
@@ -619,8 +925,8 @@ export const BgpPeersCreateOrUpdate: API.OperationMethod<
   BgpPeersCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1) as any as S.Schema<BgpPeersCreateOrUpdateRequest>,
-  output: __S(4) as any as S.Schema<BgpPeersCreateOrUpdateResponse>,
+  input: BgpPeersCreateOrUpdateRequest,
+  output: BgpPeersCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -634,8 +940,8 @@ export const DeleteBgpPeer: API.OperationMethod<
   DeleteBgpPeerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5) as any as S.Schema<DeleteBgpPeerRequest>,
-  output: __S(6) as any as S.Schema<DeleteBgpPeerResponse>,
+  input: DeleteBgpPeerRequest,
+  output: DeleteBgpPeerResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -649,8 +955,8 @@ export const DeleteLoadBalancer: API.OperationMethod<
   DeleteLoadBalancerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7) as any as S.Schema<DeleteLoadBalancerRequest>,
-  output: __S(6) as any as S.Schema<DeleteLoadBalancerResponse>,
+  input: DeleteLoadBalancerRequest,
+  output: DeleteLoadBalancerResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -664,8 +970,8 @@ export const DeleteService: API.OperationMethod<
   DeleteServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8) as any as S.Schema<DeleteServiceRequest>,
-  output: __S(6) as any as S.Schema<DeleteServiceResponse>,
+  input: DeleteServiceRequest,
+  output: DeleteServiceResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -679,8 +985,8 @@ export const DeleteStorageClass: API.OperationMethod<
   DeleteStorageClassError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9) as any as S.Schema<DeleteStorageClassRequest>,
-  output: __S(6) as any as S.Schema<DeleteStorageClassResponse>,
+  input: DeleteStorageClassRequest,
+  output: DeleteStorageClassResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -694,8 +1000,8 @@ export const GetBgpPeer: API.OperationMethod<
   GetBgpPeerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10) as any as S.Schema<GetBgpPeerRequest>,
-  output: __S(11) as any as S.Schema<GetBgpPeerResponse>,
+  input: GetBgpPeerRequest,
+  output: GetBgpPeerResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -709,8 +1015,8 @@ export const GetLoadBalancer: API.OperationMethod<
   GetLoadBalancerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12) as any as S.Schema<GetLoadBalancerRequest>,
-  output: __S(16) as any as S.Schema<GetLoadBalancerResponse>,
+  input: GetLoadBalancerRequest,
+  output: GetLoadBalancerResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -724,8 +1030,8 @@ export const GetService: API.OperationMethod<
   GetServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17) as any as S.Schema<GetServiceRequest>,
-  output: __S(19) as any as S.Schema<GetServiceResponse>,
+  input: GetServiceRequest,
+  output: GetServiceResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -739,8 +1045,8 @@ export const GetStorageClass: API.OperationMethod<
   GetStorageClassError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20) as any as S.Schema<GetStorageClassRequest>,
-  output: __S(24) as any as S.Schema<GetStorageClassResponse>,
+  input: GetStorageClassRequest,
+  output: GetStorageClassResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -754,8 +1060,8 @@ export const ListBgpPeers: API.OperationMethod<
   ListBgpPeersError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25) as any as S.Schema<ListBgpPeersRequest>,
-  output: __S(27) as any as S.Schema<BgpPeerListResult>,
+  input: ListBgpPeersRequest,
+  output: BgpPeerListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -769,8 +1075,8 @@ export const ListLoadBalancers: API.OperationMethod<
   ListLoadBalancersError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28) as any as S.Schema<ListLoadBalancersRequest>,
-  output: __S(30) as any as S.Schema<LoadBalancerListResult>,
+  input: ListLoadBalancersRequest,
+  output: LoadBalancerListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -784,8 +1090,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31) as any as S.Schema<ListOperationsRequest>,
-  output: __S(35) as any as S.Schema<ListOperationsResponse>,
+  input: ListOperationsRequest,
+  output: ListOperationsResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -799,8 +1105,8 @@ export const ListServices: API.OperationMethod<
   ListServicesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36) as any as S.Schema<ListServicesRequest>,
-  output: __S(38) as any as S.Schema<ServiceResourceListResult>,
+  input: ListServicesRequest,
+  output: ServiceResourceListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -814,8 +1120,8 @@ export const ListStorageClass: API.OperationMethod<
   ListStorageClassError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39) as any as S.Schema<ListStorageClassRequest>,
-  output: __S(41) as any as S.Schema<StorageClassResourceListResult>,
+  input: ListStorageClassRequest,
+  output: StorageClassResourceListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -829,8 +1135,8 @@ export const LoadBalancersCreateOrUpdate: API.OperationMethod<
   LoadBalancersCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43) as any as S.Schema<LoadBalancersCreateOrUpdateRequest>,
-  output: __S(44) as any as S.Schema<LoadBalancersCreateOrUpdateResponse>,
+  input: LoadBalancersCreateOrUpdateRequest,
+  output: LoadBalancersCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -844,8 +1150,8 @@ export const ServicesCreateOrUpdate: API.OperationMethod<
   ServicesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45) as any as S.Schema<ServicesCreateOrUpdateRequest>,
-  output: __S(46) as any as S.Schema<ServicesCreateOrUpdateResponse>,
+  input: ServicesCreateOrUpdateRequest,
+  output: ServicesCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -859,8 +1165,8 @@ export const StorageClassCreateOrUpdate: API.OperationMethod<
   StorageClassCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48) as any as S.Schema<StorageClassCreateOrUpdateRequest>,
-  output: __S(49) as any as S.Schema<StorageClassCreateOrUpdateResponse>,
+  input: StorageClassCreateOrUpdateRequest,
+  output: StorageClassCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -874,8 +1180,8 @@ export const UpdateStorageClass: API.OperationMethod<
   UpdateStorageClassError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(52) as any as S.Schema<UpdateStorageClassRequest>,
-  output: __S(49) as any as S.Schema<UpdateStorageClassResponse>,
+  input: UpdateStorageClassRequest,
+  output: UpdateStorageClassResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -897,7 +1203,7 @@ function __c0(j: number): any {
         S.Struct({
           resourceUri: S.String.pipe(T.Label()),
           bgpPeerName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(0)),
+          properties: S.optional(BgpPeerPropertiesInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -913,10 +1219,10 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
-          createdByType: S.optional(S.String),
+          createdByType: S.optional(SystemDataCreatedByType),
           createdAt: S.optional(S.String),
           lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(S.String),
+          lastModifiedByType: S.optional(SystemDataLastModifiedByType),
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "SystemData" });
@@ -926,7 +1232,7 @@ function __c0(j: number): any {
           myAsn: S.Number,
           peerAsn: S.Number,
           peerAddress: S.String,
-          provisioningState: S.optional(S.String),
+          provisioningState: S.optional(ProvisioningState),
         }),
       ).annotate({ identifier: "BgpPeerProperties" });
     case 4:
@@ -935,8 +1241,8 @@ function __c0(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(3)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(BgpPeerProperties),
         }),
       ).annotate({
         identifier: "BgpPeersCreateOrUpdateResponse",
@@ -1029,8 +1335,8 @@ function __c1(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(3)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(BgpPeerProperties),
         }),
       ).annotate({ identifier: "GetBgpPeerResponse" });
     case 4:
@@ -1054,11 +1360,11 @@ function __c1(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          addresses: __S(13),
-          serviceSelector: S.optional(__S(14)),
-          advertiseMode: S.String,
-          bgpPeers: S.optional(__S(13)),
-          provisioningState: S.optional(S.String),
+          addresses: LoadBalancerPropertiesAddressesList,
+          serviceSelector: S.optional(LoadBalancerPropertiesServiceSelectorMap),
+          advertiseMode: AdvertiseMode,
+          bgpPeers: S.optional(LoadBalancerPropertiesBgpPeersList),
+          provisioningState: S.optional(ProvisioningState),
         }),
       ).annotate({ identifier: "LoadBalancerProperties" });
   }
@@ -1071,8 +1377,8 @@ function __c2(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(15)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(LoadBalancerProperties),
         }),
       ).annotate({ identifier: "GetLoadBalancerResponse" });
     case 1:
@@ -1093,7 +1399,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           rpObjectId: S.optional(S.String),
-          provisioningState: S.optional(S.String),
+          provisioningState: S.optional(ProvisioningState),
         }),
       ).annotate({ identifier: "ServiceProperties" });
     case 3:
@@ -1102,8 +1408,8 @@ function __c2(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(18)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(ServiceProperties),
         }),
       ).annotate({ identifier: "GetServiceResponse" });
     case 4:
@@ -1121,11 +1427,11 @@ function __c2(j: number): any {
         ),
       ).annotate({ identifier: "GetStorageClassRequest" });
     case 5:
-      return S.Array(S.String);
+      return S.Array(AccessMode);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          type: S.String,
+          type: SCType,
           backingStorageClassName: S.optional(S.String),
           azureStorageAccountName: S.optional(S.String),
           azureStorageAccountKey: S.optional(S.String.pipe(T.SensitiveValue({}))),
@@ -1133,7 +1439,7 @@ function __c2(j: number): any {
           share: S.optional(S.String),
           subDir: S.optional(S.String),
           mountPermissions: S.optional(S.String),
-          onDelete: S.optional(S.String),
+          onDelete: S.optional(NfsDirectoryActionOnVolumeDeletion),
           source: S.optional(S.String),
           username: S.optional(S.String),
           password: S.optional(S.String.pipe(T.SensitiveValue({}))),
@@ -1145,18 +1451,18 @@ function __c2(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          allowVolumeExpansion: S.optional(S.String),
-          mountOptions: S.optional(__S(13)),
+          allowVolumeExpansion: S.optional(VolumeExpansion),
+          mountOptions: S.optional(StorageClassPropertiesMountOptionsList),
           provisioner: S.optional(S.String),
-          volumeBindingMode: S.optional(S.String),
-          accessModes: S.optional(__S(21)),
-          dataResilience: S.optional(S.String),
-          failoverSpeed: S.optional(S.String),
-          limitations: S.optional(__S(13)),
-          performance: S.optional(S.String),
+          volumeBindingMode: S.optional(VolumeBindingMode),
+          accessModes: S.optional(StorageClassPropertiesAccessModesList),
+          dataResilience: S.optional(DataResilienceTier),
+          failoverSpeed: S.optional(FailoverTier),
+          limitations: S.optional(StorageClassPropertiesLimitationsList),
+          performance: S.optional(PerformanceTier),
           priority: S.optional(S.Number),
-          typeProperties: __S(22),
-          provisioningState: S.optional(S.String),
+          typeProperties: StorageClassTypeProperties,
+          provisioningState: S.optional(ProvisioningState),
         }),
       ).annotate({ identifier: "StorageClassProperties" });
   }
@@ -1169,8 +1475,8 @@ function __c3(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(23)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(StorageClassProperties),
         }),
       ).annotate({ identifier: "GetStorageClassResponse" });
     case 1:
@@ -1187,11 +1493,11 @@ function __c3(j: number): any {
         ),
       ).annotate({ identifier: "ListBgpPeersRequest" });
     case 2:
-      return S.Array(__S(11));
+      return S.Array(BgpPeer);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: __S(26),
+          value: BgpPeerListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "BgpPeerListResult" });
@@ -1209,11 +1515,11 @@ function __c3(j: number): any {
         ),
       ).annotate({ identifier: "ListLoadBalancersRequest" });
     case 5:
-      return S.Array(__S(16));
+      return S.Array(LoadBalancer);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          value: __S(29),
+          value: LoadBalancerListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "LoadBalancerListResult" });
@@ -1246,17 +1552,17 @@ function __c4(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           isDataAction: S.optional(S.Boolean),
-          display: S.optional(__S(32)),
-          origin: S.optional(S.String),
-          actionType: S.optional(S.String),
+          display: S.optional(OperationDisplay),
+          origin: S.optional(OperationOrigin),
+          actionType: S.optional(OperationActionType),
         }),
       ).annotate({ identifier: "Operation" });
     case 2:
-      return S.Array(__S(33));
+      return S.Array(Operation);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(34)),
+          value: S.optional(ListOperationsResponseValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
@@ -1274,11 +1580,11 @@ function __c4(j: number): any {
         ),
       ).annotate({ identifier: "ListServicesRequest" });
     case 5:
-      return S.Array(__S(19));
+      return S.Array(ServiceResource);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          value: __S(37),
+          value: ServiceResourceListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -1302,11 +1608,11 @@ function __c4(j: number): any {
 function __c5(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(24));
+      return S.Array(StorageClassResource);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(40),
+          value: StorageClassResourceListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -1315,10 +1621,10 @@ function __c5(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          addresses: __S(13),
-          serviceSelector: S.optional(__S(14)),
-          advertiseMode: S.String,
-          bgpPeers: S.optional(__S(13)),
+          addresses: LoadBalancerPropertiesInputAddressesList,
+          serviceSelector: S.optional(LoadBalancerPropertiesInputServiceSelectorMap),
+          advertiseMode: AdvertiseMode,
+          bgpPeers: S.optional(LoadBalancerPropertiesInputBgpPeersList),
         }),
       ).annotate({
         identifier: "LoadBalancerPropertiesInput",
@@ -1328,7 +1634,7 @@ function __c5(j: number): any {
         S.Struct({
           resourceUri: S.String.pipe(T.Label()),
           loadBalancerName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(42)),
+          properties: S.optional(LoadBalancerPropertiesInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -1346,8 +1652,8 @@ function __c5(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(15)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(LoadBalancerProperties),
         }),
       ).annotate({
         identifier: "LoadBalancersCreateOrUpdateResponse",
@@ -1357,7 +1663,7 @@ function __c5(j: number): any {
         S.Struct({
           resourceUri: S.String.pipe(T.Label()),
           serviceName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(6)),
+          properties: S.optional(ServicePropertiesInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -1375,8 +1681,8 @@ function __c5(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(18)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(ServiceProperties),
         }),
       ).annotate({
         identifier: "ServicesCreateOrUpdateResponse",
@@ -1384,17 +1690,17 @@ function __c5(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          allowVolumeExpansion: S.optional(S.String),
-          mountOptions: S.optional(__S(13)),
+          allowVolumeExpansion: S.optional(VolumeExpansion),
+          mountOptions: S.optional(StorageClassPropertiesInputMountOptionsList),
           provisioner: S.optional(S.String),
-          volumeBindingMode: S.optional(S.String),
-          accessModes: S.optional(__S(21)),
-          dataResilience: S.optional(S.String),
-          failoverSpeed: S.optional(S.String),
-          limitations: S.optional(__S(13)),
-          performance: S.optional(S.String),
+          volumeBindingMode: S.optional(VolumeBindingMode),
+          accessModes: S.optional(StorageClassPropertiesInputAccessModesList),
+          dataResilience: S.optional(DataResilienceTier),
+          failoverSpeed: S.optional(FailoverTier),
+          limitations: S.optional(StorageClassPropertiesInputLimitationsList),
+          performance: S.optional(PerformanceTier),
           priority: S.optional(S.Number),
-          typeProperties: __S(22),
+          typeProperties: StorageClassTypeProperties,
         }),
       ).annotate({
         identifier: "StorageClassPropertiesInput",
@@ -1408,7 +1714,7 @@ function __c6(j: number): any {
         S.Struct({
           resourceUri: S.String.pipe(T.Label()),
           storageClassName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(47)),
+          properties: S.optional(StorageClassPropertiesInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -1426,8 +1732,8 @@ function __c6(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(23)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(StorageClassProperties),
         }),
       ).annotate({
         identifier: "StorageClassCreateOrUpdateResponse",
@@ -1442,7 +1748,7 @@ function __c6(j: number): any {
           share: S.optional(S.String),
           subDir: S.optional(S.String),
           mountPermissions: S.optional(S.String),
-          onDelete: S.optional(S.String),
+          onDelete: S.optional(NfsDirectoryActionOnVolumeDeletion),
           source: S.optional(S.String),
           username: S.optional(S.String),
           password: S.optional(S.String.pipe(T.SensitiveValue({}))),
@@ -1454,15 +1760,15 @@ function __c6(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          allowVolumeExpansion: S.optional(S.String),
-          mountOptions: S.optional(__S(13)),
-          accessModes: S.optional(__S(21)),
-          dataResilience: S.optional(S.String),
-          failoverSpeed: S.optional(S.String),
-          limitations: S.optional(__S(13)),
-          performance: S.optional(S.String),
+          allowVolumeExpansion: S.optional(VolumeExpansion),
+          mountOptions: S.optional(StorageClassPropertiesUpdateMountOptionsList),
+          accessModes: S.optional(StorageClassPropertiesUpdateAccessModesList),
+          dataResilience: S.optional(DataResilienceTier),
+          failoverSpeed: S.optional(FailoverTier),
+          limitations: S.optional(StorageClassPropertiesUpdateLimitationsList),
+          performance: S.optional(PerformanceTier),
           priority: S.optional(S.Number),
-          typeProperties: S.optional(__S(50)),
+          typeProperties: S.optional(StorageClassTypePropertiesUpdate),
         }),
       ).annotate({
         identifier: "StorageClassPropertiesUpdate",
@@ -1472,7 +1778,7 @@ function __c6(j: number): any {
         S.Struct({
           resourceUri: S.String.pipe(T.Label()),
           storageClassName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(51)),
+          properties: S.optional(StorageClassPropertiesUpdate),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1484,28 +1790,5 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "UpdateStorageClassRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
   }
 }

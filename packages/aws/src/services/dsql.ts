@@ -8,8 +8,6 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 const svc = /*@__PURE__*/ T.AwsApiService({ sdkId: "DSQL", serviceShapeName: "DSQL" });
 const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "dsql" });
 const ver = /*@__PURE__*/ T.ServiceVersion("2018-05-10");
@@ -110,11 +108,11 @@ export class ValidationException
     "ValidationException",
     {
       message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
-      reason: /*@__PURE__*/ S.suspend(() => S.String).annotate({
+      reason: /*@__PURE__*/ S.suspend(() => ValidationExceptionReason).annotate({
         identifier: "ValidationExceptionReason",
       }),
       fieldList: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => __S(42)).annotate({
+        /*@__PURE__*/ S.suspend(() => ValidationExceptionFieldList).annotate({
           identifier: "ValidationExceptionFieldList",
         }),
       ),
@@ -126,14 +124,20 @@ export type KmsEncryptionKey = string;
 export type TagKey = string;
 export type TagValue = string;
 export type TagMap = { [key: string]: string | undefined };
+const TagMap = /*@__PURE__*/ __L.at(__c0, 0);
 export type ClientToken = string;
 export type Region = string;
 export type ClusterArn = string;
 export type ClusterArnList = string[];
+const ClusterArnList = /*@__PURE__*/ __L.at(__c0, 1);
 export interface MultiRegionProperties {
   witnessRegion?: string;
   clusters?: string[];
 }
+const MultiRegionProperties = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<MultiRegionProperties>;
 export type PolicyDocument = string;
 export type BypassPolicyLockoutSafetyCheck = boolean;
 export interface CreateClusterInput {
@@ -145,6 +149,7 @@ export interface CreateClusterInput {
   policy?: string;
   bypassPolicyLockoutSafetyCheck?: boolean;
 }
+const CreateClusterInput = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<CreateClusterInput>;
 export type ClusterId = string;
 export type ClusterStatus =
   | "CREATING"
@@ -158,8 +163,12 @@ export type ClusterStatus =
   | "PENDING_SETUP"
   | "PENDING_DELETE"
   | (string & {});
+const ClusterStatus = S.String;
+
 export type ClusterCreationTime = Date;
 export type EncryptionType = "AWS_OWNED_KMS_KEY" | "CUSTOMER_MANAGED_KMS_KEY" | (string & {});
+const EncryptionType = S.String;
+
 export type KmsKeyArn = string;
 export type EncryptionStatus =
   | "ENABLED"
@@ -167,11 +176,14 @@ export type EncryptionStatus =
   | "KMS_KEY_INACCESSIBLE"
   | "ENABLING"
   | (string & {});
+const EncryptionStatus = S.String;
+
 export interface EncryptionDetails {
   encryptionType: EncryptionType;
   kmsKeyArn?: string;
   encryptionStatus: EncryptionStatus;
 }
+const EncryptionDetails = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<EncryptionDetails>;
 export type Endpoint = string;
 export interface CreateClusterOutput {
   identifier: string;
@@ -183,15 +195,25 @@ export interface CreateClusterOutput {
   deletionProtectionEnabled: boolean;
   endpoint?: string;
 }
+const CreateClusterOutput = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<CreateClusterOutput>;
 export type KinesisStreamArn = string;
 export type RoleArn = string;
 export interface KinesisTargetDefinition {
   streamArn: string;
   roleArn: string;
 }
+const KinesisTargetDefinition = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<KinesisTargetDefinition>;
 export type TargetDefinition = { kinesis: KinesisTargetDefinition };
+const TargetDefinition = /*@__PURE__*/ __L.at(__c0, 7);
 export type StreamOrdering = "UNORDERED" | (string & {});
+const StreamOrdering = S.String;
+
 export type StreamFormat = "JSON" | (string & {});
+const StreamFormat = S.String;
+
 export interface CreateStreamInput {
   clusterIdentifier: string;
   targetDefinition: TargetDefinition;
@@ -200,6 +222,7 @@ export interface CreateStreamInput {
   tags?: { [key: string]: string | undefined };
   clientToken?: string;
 }
+const CreateStreamInput = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<CreateStreamInput>;
 export type StreamId = string;
 export type StreamArn = string;
 export type StreamStatus =
@@ -210,6 +233,8 @@ export type StreamStatus =
   | "FAILED"
   | "IMPAIRED"
   | (string & {});
+const StreamStatus = S.String;
+
 export type StreamCreationTime = Date;
 export interface CreateStreamOutput {
   clusterIdentifier: string;
@@ -220,30 +245,42 @@ export interface CreateStreamOutput {
   ordering: StreamOrdering;
   format: StreamFormat;
 }
+const CreateStreamOutput = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<CreateStreamOutput>;
 export interface DeleteClusterInput {
   identifier: string;
   clientToken?: string;
 }
+const DeleteClusterInput = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<DeleteClusterInput>;
 export interface DeleteClusterOutput {
   identifier: string;
   arn: string;
   status: ClusterStatus;
   creationTime: Date;
 }
+const DeleteClusterOutput = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<DeleteClusterOutput>;
 export type PolicyVersion = string;
 export interface DeleteClusterPolicyInput {
   identifier: string;
   expectedPolicyVersion?: string;
   clientToken?: string;
 }
+const DeleteClusterPolicyInput = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<DeleteClusterPolicyInput>;
 export interface DeleteClusterPolicyOutput {
   policyVersion: string;
 }
+const DeleteClusterPolicyOutput = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<DeleteClusterPolicyOutput>;
 export interface DeleteStreamInput {
   clusterIdentifier: string;
   streamIdentifier: string;
   clientToken?: string;
 }
+const DeleteStreamInput = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<DeleteStreamInput>;
 export interface DeleteStreamOutput {
   clusterIdentifier: string;
   streamIdentifier: string;
@@ -251,9 +288,11 @@ export interface DeleteStreamOutput {
   status: StreamStatus;
   creationTime: Date;
 }
+const DeleteStreamOutput = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<DeleteStreamOutput>;
 export interface GetClusterInput {
   identifier: string;
 }
+const GetClusterInput = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<GetClusterInput>;
 export interface GetClusterOutput {
   identifier: string;
   arn: string;
@@ -265,17 +304,27 @@ export interface GetClusterOutput {
   encryptionDetails?: EncryptionDetails;
   endpoint?: string;
 }
+const GetClusterOutput = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<GetClusterOutput>;
 export interface GetClusterPolicyInput {
   identifier: string;
 }
+const GetClusterPolicyInput = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<GetClusterPolicyInput>;
 export interface GetClusterPolicyOutput {
   policy: string;
   policyVersion: string;
 }
+const GetClusterPolicyOutput = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<GetClusterPolicyOutput>;
 export interface GetStreamInput {
   clusterIdentifier: string;
   streamIdentifier: string;
 }
+const GetStreamInput = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<GetStreamInput>;
 export type StreamFailureErrorCode =
   | "KINESIS_THROUGHPUT_EXCEEDED"
   | "KINESIS_STREAM_NOT_FOUND"
@@ -286,10 +335,13 @@ export type StreamFailureErrorCode =
   | "CLUSTER_CMK_INACCESSIBLE"
   | "INTERNAL_ERROR"
   | (string & {});
+const StreamFailureErrorCode = S.String;
+
 export interface StatusReason {
   error: StreamFailureErrorCode;
   updatedAt: Date;
 }
+const StatusReason = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<StatusReason>;
 export interface GetStreamOutput {
   clusterIdentifier: string;
   streamIdentifier: string;
@@ -302,35 +354,49 @@ export interface GetStreamOutput {
   statusReason?: StatusReason;
   tags?: { [key: string]: string | undefined };
 }
+const GetStreamOutput = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<GetStreamOutput>;
 export interface GetVpcEndpointServiceNameInput {
   identifier: string;
 }
+const GetVpcEndpointServiceNameInput = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<GetVpcEndpointServiceNameInput>;
 export type ServiceName = string;
 export type ClusterVpcEndpoint = string;
 export interface GetVpcEndpointServiceNameOutput {
   serviceName: string;
   clusterVpcEndpoint?: string;
 }
+const GetVpcEndpointServiceNameOutput = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<GetVpcEndpointServiceNameOutput>;
 export type MaxResults = number;
 export type NextToken = string;
 export interface ListClustersInput {
   maxResults?: number;
   nextToken?: string;
 }
+const ListClustersInput = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<ListClustersInput>;
 export interface ClusterSummary {
   identifier: string;
   arn: string;
 }
+const ClusterSummary = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<ClusterSummary>;
 export type ClusterList = ClusterSummary[];
+const ClusterList = /*@__PURE__*/ __L.at(__c3, 3);
 export interface ListClustersOutput {
   nextToken?: string;
   clusters: ClusterSummary[];
 }
+const ListClustersOutput = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<ListClustersOutput>;
 export interface ListStreamsInput {
   clusterIdentifier: string;
   maxResults?: number;
   nextToken?: string;
 }
+const ListStreamsInput = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<ListStreamsInput>;
 export interface StreamSummary {
   clusterIdentifier: string;
   streamIdentifier: string;
@@ -338,18 +404,29 @@ export interface StreamSummary {
   creationTime: Date;
   status: StreamStatus;
 }
+const StreamSummary = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<StreamSummary>;
 export type StreamList = StreamSummary[];
+const StreamList = /*@__PURE__*/ __L.at(__c3, 7);
 export interface ListStreamsOutput {
   nextToken?: string;
   streams: StreamSummary[];
 }
+const ListStreamsOutput = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<ListStreamsOutput>;
 export type Arn = string;
 export interface ListTagsForResourceInput {
   resourceArn: string;
 }
+const ListTagsForResourceInput = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<ListTagsForResourceInput>;
 export interface ListTagsForResourceOutput {
   tags?: { [key: string]: string | undefined };
 }
+const ListTagsForResourceOutput = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<ListTagsForResourceOutput>;
 export interface PutClusterPolicyInput {
   identifier: string;
   policy: string;
@@ -357,20 +434,33 @@ export interface PutClusterPolicyInput {
   expectedPolicyVersion?: string;
   clientToken?: string;
 }
+const PutClusterPolicyInput = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<PutClusterPolicyInput>;
 export interface PutClusterPolicyOutput {
   policyVersion: string;
 }
+const PutClusterPolicyOutput = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<PutClusterPolicyOutput>;
 export interface TagResourceInput {
   resourceArn: string;
   tags: { [key: string]: string | undefined };
 }
+const TagResourceInput = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<TagResourceInput>;
 export interface TagResourceResponse {}
+const TagResourceResponse = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
+const TagKeyList = ClusterArnList as any as S.Schema<TagKeyList>;
 export interface UntagResourceInput {
   resourceArn: string;
   tagKeys: string[];
 }
+const UntagResourceInput = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<UntagResourceInput>;
 export interface UntagResourceResponse {}
+const UntagResourceResponse = TagResourceResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateClusterInput {
   identifier: string;
   deletionProtectionEnabled?: boolean;
@@ -378,12 +468,14 @@ export interface UpdateClusterInput {
   clientToken?: string;
   multiRegionProperties?: MultiRegionProperties;
 }
+const UpdateClusterInput = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<UpdateClusterInput>;
 export interface UpdateClusterOutput {
   identifier: string;
   arn: string;
   status: ClusterStatus;
   creationTime: Date;
 }
+const UpdateClusterOutput = DeleteClusterOutput as any as S.Schema<UpdateClusterOutput>;
 export type ValidationExceptionReason =
   | "unknownOperation"
   | "cannotParse"
@@ -391,11 +483,18 @@ export type ValidationExceptionReason =
   | "deletionProtectionEnabled"
   | "other"
   | (string & {});
+const ValidationExceptionReason = S.String;
+
 export interface ValidationExceptionField {
   name: string;
   message: string;
 }
+const ValidationExceptionField = /*@__PURE__*/ __L.at(
+  __c5,
+  1,
+) as any as S.Schema<ValidationExceptionField>;
 export type ValidationExceptionFieldList = ValidationExceptionField[];
+const ValidationExceptionFieldList = /*@__PURE__*/ __L.at(__c5, 2);
 export type CreateClusterError =
   | ConflictException
   | ServiceQuotaExceededException
@@ -452,8 +551,8 @@ export const createCluster: API.OperationMethod<
   CreateClusterError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3) as any as S.Schema<CreateClusterInput>,
-  output: __S(5) as any as S.Schema<CreateClusterOutput>,
+  input: CreateClusterInput,
+  output: CreateClusterOutput,
   errors: [ConflictException, ServiceQuotaExceededException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -495,8 +594,8 @@ export const createStream: API.OperationMethod<
   CreateStreamError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8) as any as S.Schema<CreateStreamInput>,
-  output: __S(9) as any as S.Schema<CreateStreamOutput>,
+  input: CreateStreamInput,
+  output: CreateStreamOutput,
   errors: [
     ConflictException,
     ResourceNotFoundException,
@@ -518,8 +617,8 @@ export const deleteCluster: API.OperationMethod<
   DeleteClusterError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10) as any as S.Schema<DeleteClusterInput>,
-  output: __S(11) as any as S.Schema<DeleteClusterOutput>,
+  input: DeleteClusterInput,
+  output: DeleteClusterOutput,
   errors: [ConflictException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -540,8 +639,8 @@ export const deleteClusterPolicy: API.OperationMethod<
   DeleteClusterPolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12) as any as S.Schema<DeleteClusterPolicyInput>,
-  output: __S(13) as any as S.Schema<DeleteClusterPolicyOutput>,
+  input: DeleteClusterPolicyInput,
+  output: DeleteClusterPolicyOutput,
   errors: [ConflictException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -558,8 +657,8 @@ export const deleteStream: API.OperationMethod<
   DeleteStreamError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14) as any as S.Schema<DeleteStreamInput>,
-  output: __S(15) as any as S.Schema<DeleteStreamOutput>,
+  input: DeleteStreamInput,
+  output: DeleteStreamOutput,
   errors: [ConflictException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -576,8 +675,8 @@ export const getCluster: API.OperationMethod<
   GetClusterError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16) as any as S.Schema<GetClusterInput>,
-  output: __S(17) as any as S.Schema<GetClusterOutput>,
+  input: GetClusterInput,
+  output: GetClusterOutput,
   errors: [ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -594,8 +693,8 @@ export const getClusterPolicy: API.OperationMethod<
   GetClusterPolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18) as any as S.Schema<GetClusterPolicyInput>,
-  output: __S(19) as any as S.Schema<GetClusterPolicyOutput>,
+  input: GetClusterPolicyInput,
+  output: GetClusterPolicyOutput,
   errors: [ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -612,8 +711,8 @@ export const getStream: API.OperationMethod<
   GetStreamError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20) as any as S.Schema<GetStreamInput>,
-  output: __S(22) as any as S.Schema<GetStreamOutput>,
+  input: GetStreamInput,
+  output: GetStreamOutput,
   errors: [ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -635,8 +734,8 @@ export const getVpcEndpointServiceName: API.OperationMethod<
   GetVpcEndpointServiceNameError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23) as any as S.Schema<GetVpcEndpointServiceNameInput>,
-  output: __S(24) as any as S.Schema<GetVpcEndpointServiceNameOutput>,
+  input: GetVpcEndpointServiceNameInput,
+  output: GetVpcEndpointServiceNameOutput,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -659,8 +758,8 @@ export const listClusters: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ClusterSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(25) as any as S.Schema<ListClustersInput>,
-  output: __S(28) as any as S.Schema<ListClustersOutput>,
+  input: ListClustersInput,
+  output: ListClustersOutput,
   errors: [ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -684,8 +783,8 @@ export const listStreams: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   StreamSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(29) as any as S.Schema<ListStreamsInput>,
-  output: __S(32) as any as S.Schema<ListStreamsOutput>,
+  input: ListStreamsInput,
+  output: ListStreamsOutput,
   errors: [ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -708,8 +807,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33) as any as S.Schema<ListTagsForResourceInput>,
-  output: __S(34) as any as S.Schema<ListTagsForResourceOutput>,
+  input: ListTagsForResourceInput,
+  output: ListTagsForResourceOutput,
   errors: [ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -730,8 +829,8 @@ export const putClusterPolicy: API.OperationMethod<
   PutClusterPolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35) as any as S.Schema<PutClusterPolicyInput>,
-  output: __S(36) as any as S.Schema<PutClusterPolicyOutput>,
+  input: PutClusterPolicyInput,
+  output: PutClusterPolicyOutput,
   errors: [ConflictException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -751,8 +850,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37) as any as S.Schema<TagResourceInput>,
-  output: __S(38) as any as S.Schema<TagResourceResponse>,
+  input: TagResourceInput,
+  output: TagResourceResponse,
   errors: [ResourceNotFoundException, ServiceQuotaExceededException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -769,8 +868,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39) as any as S.Schema<UntagResourceInput>,
-  output: __S(38) as any as S.Schema<UntagResourceResponse>,
+  input: UntagResourceInput,
+  output: UntagResourceResponse,
   errors: [ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -845,8 +944,8 @@ export const updateCluster: API.OperationMethod<
   UpdateClusterError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40) as any as S.Schema<UpdateClusterInput>,
-  output: __S(11) as any as S.Schema<UpdateClusterOutput>,
+  input: UpdateClusterInput,
+  output: UpdateClusterOutput,
   errors: [ConflictException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -862,16 +961,16 @@ function __c0(j: number): any {
       return S.Array(S.String);
     case 2:
       return S.suspend(() =>
-        S.Struct({ witnessRegion: S.optional(S.String), clusters: S.optional(__S(1)) }),
+        S.Struct({ witnessRegion: S.optional(S.String), clusters: S.optional(ClusterArnList) }),
       ).annotate({ identifier: "MultiRegionProperties" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           deletionProtectionEnabled: S.optional(S.Boolean),
           kmsEncryptionKey: S.optional(S.String),
-          tags: S.optional(__S(0)),
+          tags: S.optional(TagMap),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          multiRegionProperties: S.optional(__S(2)),
+          multiRegionProperties: S.optional(MultiRegionProperties),
           policy: S.optional(S.String),
           bypassPolicyLockoutSafetyCheck: S.optional(S.Boolean),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/cluster" }), svc, auth, proto, ver, rules)),
@@ -879,9 +978,9 @@ function __c0(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          encryptionType: S.String,
+          encryptionType: EncryptionType,
           kmsKeyArn: S.optional(S.String),
-          encryptionStatus: S.String,
+          encryptionStatus: EncryptionStatus,
         }),
       ).annotate({ identifier: "EncryptionDetails" });
     case 5:
@@ -889,10 +988,10 @@ function __c0(j: number): any {
         S.Struct({
           identifier: S.String,
           arn: S.String,
-          status: S.String,
+          status: ClusterStatus,
           creationTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          multiRegionProperties: S.optional(__S(2)),
-          encryptionDetails: S.optional(__S(4)),
+          multiRegionProperties: S.optional(MultiRegionProperties),
+          encryptionDetails: S.optional(EncryptionDetails),
           deletionProtectionEnabled: S.Boolean,
           endpoint: S.optional(S.String),
         }),
@@ -902,7 +1001,7 @@ function __c0(j: number): any {
         identifier: "KinesisTargetDefinition",
       });
     case 7:
-      return S.Union([/*@__PURE__*/ S.Struct({ kinesis: __S(6) })]);
+      return S.Union([/*@__PURE__*/ S.Struct({ kinesis: KinesisTargetDefinition })]);
   }
 }
 function __c1(j: number): any {
@@ -911,10 +1010,10 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           clusterIdentifier: S.String.pipe(T.HttpLabel("clusterIdentifier")),
-          targetDefinition: __S(7),
-          ordering: S.String,
-          format: S.String,
-          tags: S.optional(__S(0)),
+          targetDefinition: TargetDefinition,
+          ordering: StreamOrdering,
+          format: StreamFormat,
+          tags: S.optional(TagMap),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(
           T.all(
@@ -933,10 +1032,10 @@ function __c1(j: number): any {
           clusterIdentifier: S.String,
           streamIdentifier: S.String,
           arn: S.String,
-          status: S.String,
+          status: StreamStatus,
           creationTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          ordering: S.String,
-          format: S.String,
+          ordering: StreamOrdering,
+          format: StreamFormat,
         }),
       ).annotate({ identifier: "CreateStreamOutput" });
     case 2:
@@ -960,7 +1059,7 @@ function __c1(j: number): any {
         S.Struct({
           identifier: S.String,
           arn: S.String,
-          status: S.String,
+          status: ClusterStatus,
           creationTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
         }),
       ).annotate({ identifier: "DeleteClusterOutput" });
@@ -1008,7 +1107,7 @@ function __c1(j: number): any {
           clusterIdentifier: S.String,
           streamIdentifier: S.String,
           arn: S.String,
-          status: S.String,
+          status: StreamStatus,
           creationTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
         }),
       ).annotate({ identifier: "DeleteStreamOutput" });
@@ -1034,12 +1133,12 @@ function __c2(j: number): any {
         S.Struct({
           identifier: S.String,
           arn: S.String,
-          status: S.String,
+          status: ClusterStatus,
           creationTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           deletionProtectionEnabled: S.Boolean,
-          multiRegionProperties: S.optional(__S(2)),
-          tags: S.optional(__S(0)),
-          encryptionDetails: S.optional(__S(4)),
+          multiRegionProperties: S.optional(MultiRegionProperties),
+          tags: S.optional(TagMap),
+          encryptionDetails: S.optional(EncryptionDetails),
           endpoint: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetClusterOutput" });
@@ -1079,7 +1178,7 @@ function __c2(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          error: S.String,
+          error: StreamFailureErrorCode,
           updatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
         }),
       ).annotate({ identifier: "StatusReason" });
@@ -1089,13 +1188,13 @@ function __c2(j: number): any {
           clusterIdentifier: S.String,
           streamIdentifier: S.String,
           arn: S.String,
-          status: S.String,
+          status: StreamStatus,
           creationTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          ordering: S.String,
-          format: S.String,
-          targetDefinition: S.optional(__S(7)),
-          statusReason: S.optional(__S(21)),
-          tags: S.optional(__S(0)),
+          ordering: StreamOrdering,
+          format: StreamFormat,
+          targetDefinition: S.optional(TargetDefinition),
+          statusReason: S.optional(StatusReason),
+          tags: S.optional(TagMap),
         }),
       ).annotate({ identifier: "GetStreamOutput" });
     case 7:
@@ -1135,10 +1234,10 @@ function __c3(j: number): any {
         identifier: "ClusterSummary",
       });
     case 3:
-      return S.Array(__S(26));
+      return S.Array(ClusterSummary);
     case 4:
       return S.suspend(() =>
-        S.Struct({ nextToken: S.optional(S.String), clusters: __S(27) }),
+        S.Struct({ nextToken: S.optional(S.String), clusters: ClusterList }),
       ).annotate({ identifier: "ListClustersOutput" });
     case 5:
       return S.suspend(() =>
@@ -1164,18 +1263,18 @@ function __c3(j: number): any {
           streamIdentifier: S.String,
           arn: S.String,
           creationTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          status: S.String,
+          status: StreamStatus,
         }),
       ).annotate({ identifier: "StreamSummary" });
     case 7:
-      return S.Array(__S(30));
+      return S.Array(StreamSummary);
   }
 }
 function __c4(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ nextToken: S.optional(S.String), streams: __S(31) }),
+        S.Struct({ nextToken: S.optional(S.String), streams: StreamList }),
       ).annotate({ identifier: "ListStreamsOutput" });
     case 1:
       return S.suspend(() =>
@@ -1191,7 +1290,7 @@ function __c4(j: number): any {
         ),
       ).annotate({ identifier: "ListTagsForResourceInput" });
     case 2:
-      return S.suspend(() => S.Struct({ tags: S.optional(__S(0)) })).annotate({
+      return S.suspend(() => S.Struct({ tags: S.optional(TagMap) })).annotate({
         identifier: "ListTagsForResourceOutput",
       });
     case 3:
@@ -1219,7 +1318,7 @@ function __c4(j: number): any {
       });
     case 5:
       return S.suspend(() =>
-        S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")), tags: __S(0) }).pipe(
+        S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")), tags: TagMap }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/tags/{resourceArn}" }),
             svc,
@@ -1238,7 +1337,7 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
-          tagKeys: __S(1).pipe(T.HttpQuery("tagKeys")),
+          tagKeys: TagKeyList.pipe(T.HttpQuery("tagKeys")),
         }).pipe(
           T.all(
             T.Http({ method: "DELETE", uri: "/tags/{resourceArn}" }),
@@ -1261,7 +1360,7 @@ function __c5(j: number): any {
           deletionProtectionEnabled: S.optional(S.Boolean),
           kmsEncryptionKey: S.optional(S.String),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          multiRegionProperties: S.optional(__S(2)),
+          multiRegionProperties: S.optional(MultiRegionProperties),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/cluster/{identifier}" }),
@@ -1278,27 +1377,6 @@ function __c5(j: number): any {
         identifier: "ValidationExceptionField",
       });
     case 2:
-      return S.Array(__S(41));
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
+      return S.Array(ValidationExceptionField);
   }
 }

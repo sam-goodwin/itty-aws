@@ -7,8 +7,6 @@ import { paginateRelay } from "../pagination.ts";
 import { WhopProtocol, type WhopOpError, type WhopOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { WhopOpError, WhopOpContext };
 
@@ -36,21 +34,47 @@ export interface GetPersonRequest {
   /** Account ID, prefixed `biz_`. Optional for account API keys; required for credentials that can access multiple accounts. */
   account_id?: string;
 }
+const GetPersonRequest = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<GetPersonRequest>;
+
 export type GetPersonResponseAudienceIdsList = Array<string>;
+const GetPersonResponseAudienceIdsList = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<GetPersonResponseAudienceIdsList>;
+
 export type GetPersonResponseCustomEventNamesList = Array<string>;
+const GetPersonResponseCustomEventNamesList =
+  GetPersonResponseAudienceIdsList as any as S.Schema<GetPersonResponseCustomEventNamesList>;
+
 export interface GetPersonResponseDevice {
   browser?: string | null;
   device?: string | null;
   os?: string | null;
 }
+const GetPersonResponseDevice = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<GetPersonResponseDevice>;
+
 /** Every linked email, primary first. */
 export type GetPersonResponseEmailsList = Array<string>;
+const GetPersonResponseEmailsList =
+  GetPersonResponseAudienceIdsList as any as S.Schema<GetPersonResponseEmailsList>;
+
 export type GetPersonResponseEventNamesList = Array<string>;
+const GetPersonResponseEventNamesList =
+  GetPersonResponseAudienceIdsList as any as S.Schema<GetPersonResponseEventNamesList>;
+
 export interface GetPersonResponseFirstSourceAd {
   id: string;
   name?: string | null;
   thumbnail_url?: string | null;
 }
+const GetPersonResponseFirstSourceAd = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<GetPersonResponseFirstSourceAd>;
+
 export type GetPersonResponseFirstSourceAdGroup = GetPersonResponseFirstSourceAd;
 export type GetPersonResponseFirstSourceCampaign = GetPersonResponseFirstSourceAd;
 export type GetPersonResponseFirstSourceType =
@@ -59,6 +83,8 @@ export type GetPersonResponseFirstSourceType =
   | "external_ad_click"
   | "referrer"
   | "utm";
+const GetPersonResponseFirstSourceType = S.String;
+
 /** Where a visit came from: a whop ad click, a lead form, an external ad, or a referring site. */
 export interface GetPersonResponseFirstSource {
   ad?: GetPersonResponseFirstSourceAd | null;
@@ -70,6 +96,11 @@ export interface GetPersonResponseFirstSource {
   type: GetPersonResponseFirstSourceType;
   utm_source?: string | null;
 }
+const GetPersonResponseFirstSource = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<GetPersonResponseFirstSource>;
+
 export type GetPersonResponseLastSourceAd = GetPersonResponseFirstSourceAd;
 export type GetPersonResponseLastSourceAdGroup = GetPersonResponseFirstSourceAd;
 export type GetPersonResponseLastSourceCampaign = GetPersonResponseFirstSourceAd;
@@ -90,11 +121,19 @@ export interface GetPersonResponseLastSource {
   type: GetPersonResponseLastSourceType;
   utm_source?: string | null;
 }
+const GetPersonResponseLastSource =
+  GetPersonResponseFirstSource as any as S.Schema<GetPersonResponseLastSource>;
+
 export interface GetPersonResponseLocation {
   city?: string | null;
   continent?: string | null;
   country?: string | null;
 }
+const GetPersonResponseLocation = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<GetPersonResponseLocation>;
+
 /** The user's member record at this account, when they are a member of it. */
 export interface GetPersonResponseMember {
   id: string;
@@ -102,17 +141,41 @@ export interface GetPersonResponseMember {
   status?: string | null;
   usd_total_spend?: number;
 }
+const GetPersonResponseMember = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<GetPersonResponseMember>;
+
 /** Every name the person's linked identities carried, primary first. */
 export type GetPersonResponseNamesList = Array<string>;
+const GetPersonResponseNamesList =
+  GetPersonResponseAudienceIdsList as any as S.Schema<GetPersonResponseNamesList>;
+
 /** Every linked phone, primary first. */
 export type GetPersonResponsePhonesList = Array<string>;
+const GetPersonResponsePhonesList =
+  GetPersonResponseAudienceIdsList as any as S.Schema<GetPersonResponsePhonesList>;
+
 export interface GetPersonResponsePurchasesItem {
   event_id: string;
   occurred_at: string;
   usd_value: number;
 }
+const GetPersonResponsePurchasesItem = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<GetPersonResponsePurchasesItem>;
+
 export type GetPersonResponsePurchasesList = Array<GetPersonResponsePurchasesItem>;
+const GetPersonResponsePurchasesList = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<GetPersonResponsePurchasesList>;
+
 export type GetPersonResponseRolesList = Array<string>;
+const GetPersonResponseRolesList =
+  GetPersonResponseAudienceIdsList as any as S.Schema<GetPersonResponseRolesList>;
+
 export type GetPersonResponseSourcesItemAd = GetPersonResponseFirstSourceAd;
 export type GetPersonResponseSourcesItemAdGroup = GetPersonResponseFirstSourceAd;
 export type GetPersonResponseSourcesItemCampaign = GetPersonResponseFirstSourceAd;
@@ -133,27 +196,66 @@ export interface GetPersonResponseSourcesItem {
   type: GetPersonResponseSourcesItemType;
   utm_source?: string | null;
 }
+const GetPersonResponseSourcesItem =
+  GetPersonResponseFirstSource as any as S.Schema<GetPersonResponseSourcesItem>;
+
 /** Every distinct acquisition signal the person ever carried, ad entities hydrated. */
 export type GetPersonResponseSourcesList = Array<GetPersonResponseSourcesItem>;
+const GetPersonResponseSourcesList = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<GetPersonResponseSourcesList>;
+
 export interface GetPersonResponseUsageBrowserItem {
   events: number;
   value: string;
 }
+const GetPersonResponseUsageBrowserItem = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<GetPersonResponseUsageBrowserItem>;
+
 export type GetPersonResponseUsageBrowserList = Array<GetPersonResponseUsageBrowserItem>;
+const GetPersonResponseUsageBrowserList = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<GetPersonResponseUsageBrowserList>;
+
 export type GetPersonResponseUsageCityItem = GetPersonResponseUsageBrowserItem;
 export type GetPersonResponseUsageCityList = Array<GetPersonResponseUsageBrowserItem>;
+const GetPersonResponseUsageCityList =
+  GetPersonResponseUsageBrowserList as any as S.Schema<GetPersonResponseUsageCityList>;
+
 export type GetPersonResponseUsageCountryItem = GetPersonResponseUsageBrowserItem;
 export type GetPersonResponseUsageCountryList = Array<GetPersonResponseUsageBrowserItem>;
+const GetPersonResponseUsageCountryList =
+  GetPersonResponseUsageBrowserList as any as S.Schema<GetPersonResponseUsageCountryList>;
+
 export type GetPersonResponseUsageDeviceItem = GetPersonResponseUsageBrowserItem;
 export type GetPersonResponseUsageDeviceList = Array<GetPersonResponseUsageBrowserItem>;
+const GetPersonResponseUsageDeviceList =
+  GetPersonResponseUsageBrowserList as any as S.Schema<GetPersonResponseUsageDeviceList>;
+
 export type GetPersonResponseUsageIpItem = GetPersonResponseUsageBrowserItem;
 export type GetPersonResponseUsageIpList = Array<GetPersonResponseUsageBrowserItem>;
+const GetPersonResponseUsageIpList =
+  GetPersonResponseUsageBrowserList as any as S.Schema<GetPersonResponseUsageIpList>;
+
 export type GetPersonResponseUsageOsItem = GetPersonResponseUsageBrowserItem;
 export type GetPersonResponseUsageOsList = Array<GetPersonResponseUsageBrowserItem>;
+const GetPersonResponseUsageOsList =
+  GetPersonResponseUsageBrowserList as any as S.Schema<GetPersonResponseUsageOsList>;
+
 export type GetPersonResponseUsageReferrerItem = GetPersonResponseUsageBrowserItem;
 export type GetPersonResponseUsageReferrerList = Array<GetPersonResponseUsageBrowserItem>;
+const GetPersonResponseUsageReferrerList =
+  GetPersonResponseUsageBrowserList as any as S.Schema<GetPersonResponseUsageReferrerList>;
+
 export type GetPersonResponseUsageTimezoneItem = GetPersonResponseUsageBrowserItem;
 export type GetPersonResponseUsageTimezoneList = Array<GetPersonResponseUsageBrowserItem>;
+const GetPersonResponseUsageTimezoneList =
+  GetPersonResponseUsageBrowserList as any as S.Schema<GetPersonResponseUsageTimezoneList>;
+
 /** Exact usage breakdowns for the person's browser traffic (distinct events per value). */
 export interface GetPersonResponseUsage {
   browser?: GetPersonResponseUsageBrowserList;
@@ -165,6 +267,11 @@ export interface GetPersonResponseUsage {
   referrer?: GetPersonResponseUsageReferrerList;
   timezone?: GetPersonResponseUsageTimezoneList;
 }
+const GetPersonResponseUsage = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<GetPersonResponseUsage>;
+
 /** The person's primary whop user, when one of their identities is a whop account. */
 export interface GetPersonResponseUser {
   id: string;
@@ -172,8 +279,16 @@ export interface GetPersonResponseUser {
   profile_pic_url?: string | null;
   username: string;
 }
+const GetPersonResponseUser = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<GetPersonResponseUser>;
+
 /** Every linked whop account, the most used one first. */
 export type GetPersonResponseUserIdsList = Array<string>;
+const GetPersonResponseUserIdsList =
+  GetPersonResponseAudienceIdsList as any as S.Schema<GetPersonResponseUserIdsList>;
+
 export interface GetPersonResponse {
   account_id: string;
   aov?: number;
@@ -221,9 +336,19 @@ export interface GetPersonResponse {
   /** Every linked whop account, the most used one first. */
   user_ids?: GetPersonResponseUserIdsList;
 }
+const GetPersonResponse = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<GetPersonResponse>;
+
 export type ListPeopleRequestSourceList = Array<string>;
+const ListPeopleRequestSourceList =
+  GetPersonResponseAudienceIdsList as any as S.Schema<ListPeopleRequestSourceList>;
+
 export type ListPeopleRequestAttributionModel = "last_touch" | "first_touch";
+const ListPeopleRequestAttributionModel = S.String;
+
 export type ListPeopleRequestEventNameList = Array<string>;
+const ListPeopleRequestEventNameList =
+  GetPersonResponseAudienceIdsList as any as S.Schema<ListPeopleRequestEventNameList>;
+
 export type ListPeopleRequestOrder =
   | "first_seen_at"
   | "last_seen_at"
@@ -235,7 +360,11 @@ export type ListPeopleRequestOrder =
   | "aov"
   | "name"
   | "email";
+const ListPeopleRequestOrder = S.String;
+
 export type ListPeopleRequestDirection = "asc" | "desc";
+const ListPeopleRequestDirection = S.String;
+
 export interface ListPeopleRequest {
   /** Account ID, prefixed `biz_`. Optional for account API keys; required for credentials that can access multiple accounts. */
   account_id?: string;
@@ -328,6 +457,8 @@ export interface ListPeopleRequest {
   /** Sort direction. Defaults to desc. */
   direction?: ListPeopleRequestDirection | (string & {});
 }
+const ListPeopleRequest = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<ListPeopleRequest>;
+
 export type ListPeopleResponseDataItemDevice = GetPersonResponseDevice;
 export type ListPeopleResponseDataItemFirstSourceAd = GetPersonResponseFirstSourceAd;
 export type ListPeopleResponseDataItemFirstSourceAdGroup = GetPersonResponseFirstSourceAd;
@@ -349,6 +480,9 @@ export interface ListPeopleResponseDataItemFirstSource {
   type: ListPeopleResponseDataItemFirstSourceType;
   utm_source?: string | null;
 }
+const ListPeopleResponseDataItemFirstSource =
+  GetPersonResponseFirstSource as any as S.Schema<ListPeopleResponseDataItemFirstSource>;
+
 export type ListPeopleResponseDataItemLastSourceAd = GetPersonResponseFirstSourceAd;
 export type ListPeopleResponseDataItemLastSourceAdGroup = GetPersonResponseFirstSourceAd;
 export type ListPeopleResponseDataItemLastSourceCampaign = GetPersonResponseFirstSourceAd;
@@ -369,6 +503,9 @@ export interface ListPeopleResponseDataItemLastSource {
   type: ListPeopleResponseDataItemLastSourceType;
   utm_source?: string | null;
 }
+const ListPeopleResponseDataItemLastSource =
+  GetPersonResponseFirstSource as any as S.Schema<ListPeopleResponseDataItemLastSource>;
+
 export type ListPeopleResponseDataItemLocation = GetPersonResponseLocation;
 /** The user's member record at this account, when they are a member of it. */
 export type ListPeopleResponseDataItemMember = GetPersonResponseMember;
@@ -404,18 +541,35 @@ export interface ListPeopleResponseDataItem {
   /** The person's primary whop user, when one of their identities is a whop account. */
   user?: GetPersonResponseUser | null;
 }
+const ListPeopleResponseDataItem = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<ListPeopleResponseDataItem>;
+
 export type ListPeopleResponseDataList = Array<ListPeopleResponseDataItem>;
+const ListPeopleResponseDataList = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<ListPeopleResponseDataList>;
+
 export interface ListPeopleResponsePageInfo {
   end_cursor?: string | null;
   has_next_page: boolean;
   has_previous_page: boolean;
   start_cursor?: string | null;
 }
+const ListPeopleResponsePageInfo = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<ListPeopleResponsePageInfo>;
+
 export interface ListPeopleResponse {
   data: ListPeopleResponseDataList;
   page_info: ListPeopleResponsePageInfo;
   total_count?: number;
 }
+const ListPeopleResponse = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<ListPeopleResponse>;
+
 export type GetPersonError = NotFound | WhopOpError;
 /** Retrieve Person Retrieves one person for an account. The identifier can be a person ID (prefixed `prsn_`), a user ID (prefixed `user_`), an email address, or a phone number -- merged people resolve to the surviving profile. */
 export const getPerson: API.OperationMethod<
@@ -424,8 +578,8 @@ export const getPerson: API.OperationMethod<
   GetPersonError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<GetPersonRequest>,
-  output: __S(14) as any as S.Schema<GetPersonResponse>,
+  input: GetPersonRequest,
+  output: GetPersonResponse,
   errors: [NotFound],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -441,8 +595,8 @@ export const listPeople: API.PaginatedOperationMethod<
   ListPeopleResponseDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(15) as any as S.Schema<ListPeopleRequest>,
-    output: __S(19) as any as S.Schema<ListPeopleResponse>,
+    input: ListPeopleRequest,
+    output: ListPeopleResponse,
     errors: [BadRequest],
     protocol: WhopProtocol,
     retry: Retry.Retry,
@@ -491,13 +645,13 @@ function __c0(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          ad: S.optional(S.NullOr(__S(3))),
-          ad_group: S.optional(S.NullOr(__S(3))),
-          campaign: S.optional(S.NullOr(__S(3))),
+          ad: S.optional(S.NullOr(GetPersonResponseFirstSourceAd)),
+          ad_group: S.optional(S.NullOr(GetPersonResponseFirstSourceAd)),
+          campaign: S.optional(S.NullOr(GetPersonResponseFirstSourceAd)),
           domain: S.optional(S.NullOr(S.String)),
           occurred_at: S.optional(S.NullOr(S.String)),
           platform: S.optional(S.NullOr(S.String)),
-          type: S.String,
+          type: GetPersonResponseFirstSourceType,
           utm_source: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
@@ -537,9 +691,9 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(7));
+      return S.Array(GetPersonResponsePurchasesItem);
     case 1:
-      return S.Array(__S(4));
+      return S.Array(GetPersonResponseSourcesItem);
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -550,18 +704,18 @@ function __c1(j: number): any {
         identifier: "GetPersonResponseUsageBrowserItem",
       });
     case 3:
-      return S.Array(__S(10));
+      return S.Array(GetPersonResponseUsageBrowserItem);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          browser: S.optional(__S(11)),
-          city: S.optional(__S(11)),
-          country: S.optional(__S(11)),
-          device: S.optional(__S(11)),
-          ip: S.optional(__S(11)),
-          os: S.optional(__S(11)),
-          referrer: S.optional(__S(11)),
-          timezone: S.optional(__S(11)),
+          browser: S.optional(GetPersonResponseUsageBrowserList),
+          city: S.optional(GetPersonResponseUsageCityList),
+          country: S.optional(GetPersonResponseUsageCountryList),
+          device: S.optional(GetPersonResponseUsageDeviceList),
+          ip: S.optional(GetPersonResponseUsageIpList),
+          os: S.optional(GetPersonResponseUsageOsList),
+          referrer: S.optional(GetPersonResponseUsageReferrerList),
+          timezone: S.optional(GetPersonResponseUsageTimezoneList),
         }),
       ).annotate({ identifier: "GetPersonResponseUsage" });
     case 5:
@@ -578,36 +732,36 @@ function __c1(j: number): any {
         S.Struct({
           account_id: S.String,
           aov: S.optional(S.Number),
-          audience_ids: S.optional(__S(1)),
-          custom_event_names: S.optional(__S(1)),
-          device: S.optional(__S(2)),
+          audience_ids: S.optional(GetPersonResponseAudienceIdsList),
+          custom_event_names: S.optional(GetPersonResponseCustomEventNamesList),
+          device: S.optional(GetPersonResponseDevice),
           email: S.optional(S.NullOr(S.String)),
-          emails: S.optional(__S(1)),
+          emails: S.optional(GetPersonResponseEmailsList),
           event_count: S.Number,
-          event_names: S.optional(__S(1)),
+          event_names: S.optional(GetPersonResponseEventNamesList),
           first_purchase_at: S.optional(S.NullOr(S.String)),
           first_seen_at: S.String,
-          first_source: S.optional(S.NullOr(__S(4))),
+          first_source: S.optional(S.NullOr(GetPersonResponseFirstSource)),
           id: S.String,
           last_ip: S.optional(S.NullOr(S.String)),
           last_purchase_at: S.optional(S.NullOr(S.String)),
           last_seen_at: S.String,
-          last_source: S.optional(S.NullOr(__S(4))),
-          location: S.optional(__S(5)),
+          last_source: S.optional(S.NullOr(GetPersonResponseLastSource)),
+          location: S.optional(GetPersonResponseLocation),
           ltv: S.optional(S.Number),
-          member: S.optional(S.NullOr(__S(6))),
+          member: S.optional(S.NullOr(GetPersonResponseMember)),
           name: S.optional(S.NullOr(S.String)),
-          names: S.optional(__S(1)),
+          names: S.optional(GetPersonResponseNamesList),
           phone: S.optional(S.NullOr(S.String)),
-          phones: S.optional(__S(1)),
+          phones: S.optional(GetPersonResponsePhonesList),
           purchase_count: S.Number,
-          purchases: S.optional(__S(8)),
-          roles: S.optional(__S(1)),
-          sources: S.optional(__S(9)),
+          purchases: S.optional(GetPersonResponsePurchasesList),
+          roles: S.optional(GetPersonResponseRolesList),
+          sources: S.optional(GetPersonResponseSourcesList),
           timezone: S.optional(S.NullOr(S.String)),
-          usage: S.optional(__S(12)),
-          user: S.optional(S.NullOr(__S(13))),
-          user_ids: S.optional(__S(1)),
+          usage: S.optional(GetPersonResponseUsage),
+          user: S.optional(S.NullOr(GetPersonResponseUser)),
+          user_ids: S.optional(GetPersonResponseUserIdsList),
         }),
       ).annotate({ identifier: "GetPersonResponse" });
     case 7:
@@ -615,9 +769,9 @@ function __c1(j: number): any {
         S.Struct({
           account_id: S.optional(S.String.pipe(T.Query())),
           query: S.optional(S.String.pipe(T.Query())),
-          source: S.optional(__S(1).pipe(T.Query())),
-          attribution_model: S.optional(S.String.pipe(T.Query())),
-          event_name: S.optional(__S(1).pipe(T.Query())),
+          source: S.optional(ListPeopleRequestSourceList.pipe(T.Query())),
+          attribution_model: S.optional(ListPeopleRequestAttributionModel.pipe(T.Query())),
+          event_name: S.optional(ListPeopleRequestEventNameList.pipe(T.Query())),
           custom_event: S.optional(S.String.pipe(T.Query())),
           event_within_days: S.optional(S.Number.pipe(T.Query())),
           from: S.optional(S.String.pipe(T.Query())),
@@ -656,8 +810,8 @@ function __c1(j: number): any {
           first: S.optional(S.Number.pipe(T.Query())),
           after: S.optional(S.String.pipe(T.Query())),
           before: S.optional(S.String.pipe(T.Query())),
-          order: S.optional(S.String.pipe(T.Query())),
-          direction: S.optional(S.String.pipe(T.Query())),
+          order: S.optional(ListPeopleRequestOrder.pipe(T.Query())),
+          direction: S.optional(ListPeopleRequestDirection.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/people", code: 200 })),
       ).annotate({ identifier: "ListPeopleRequest" });
   }
@@ -669,31 +823,31 @@ function __c2(j: number): any {
         S.Struct({
           account_id: S.String,
           aov: S.optional(S.Number),
-          device: S.optional(__S(2)),
+          device: S.optional(GetPersonResponseDevice),
           email: S.optional(S.NullOr(S.String)),
           event_count: S.Number,
           first_purchase_at: S.optional(S.NullOr(S.String)),
           first_seen_at: S.String,
-          first_source: S.optional(S.NullOr(__S(4))),
+          first_source: S.optional(S.NullOr(ListPeopleResponseDataItemFirstSource)),
           id: S.String,
           last_ip: S.optional(S.NullOr(S.String)),
           last_purchase_at: S.optional(S.NullOr(S.String)),
           last_seen_at: S.String,
-          last_source: S.optional(S.NullOr(__S(4))),
-          location: S.optional(__S(5)),
+          last_source: S.optional(S.NullOr(ListPeopleResponseDataItemLastSource)),
+          location: S.optional(GetPersonResponseLocation),
           ltv: S.optional(S.Number),
-          member: S.optional(S.NullOr(__S(6))),
+          member: S.optional(S.NullOr(GetPersonResponseMember)),
           name: S.optional(S.NullOr(S.String)),
           phone: S.optional(S.NullOr(S.String)),
           purchase_count: S.Number,
           timezone: S.optional(S.NullOr(S.String)),
-          user: S.optional(S.NullOr(__S(13))),
+          user: S.optional(S.NullOr(GetPersonResponseUser)),
         }),
       ).annotate({
         identifier: "ListPeopleResponseDataItem",
       });
     case 1:
-      return S.Array(__S(16));
+      return S.Array(ListPeopleResponseDataItem);
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -708,25 +862,10 @@ function __c2(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          data: __S(17),
-          page_info: __S(18),
+          data: ListPeopleResponseDataList,
+          page_info: ListPeopleResponsePageInfo,
           total_count: S.optional(S.Number),
         }),
       ).annotate({ identifier: "ListPeopleResponse" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
   }
 }

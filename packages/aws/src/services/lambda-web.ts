@@ -8,8 +8,6 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 const svc = /*@__PURE__*/ T.AwsApiService({ sdkId: "Lambda Web", serviceShapeName: "LambdaWeb" });
 const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "lambda" });
 const ver = /*@__PURE__*/ T.ServiceVersion("2025-03-07");
@@ -145,18 +143,23 @@ export interface S3Object {
   key: string;
   versionId?: string;
 }
+const S3Object = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<S3Object>;
 export interface CodeConfig {
   s3Object: S3Object;
 }
+const CodeConfig = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<CodeConfig>;
 export interface RuntimeConfig {
   runtime: string;
 }
+const RuntimeConfig = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<RuntimeConfig>;
 export interface BuildConfig {
   codeConfig: CodeConfig;
   runtimeConfig: RuntimeConfig;
 }
+const BuildConfig = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<BuildConfig>;
 export type RoleArn = string;
 export type EnvironmentVariables = { [key: string]: string | undefined };
+const EnvironmentVariables = /*@__PURE__*/ __L.at(__c0, 4);
 export type ApplicationLogLevel =
   | "TRACE"
   | "DEBUG"
@@ -165,15 +168,21 @@ export type ApplicationLogLevel =
   | "ERROR"
   | "FATAL"
   | (string & {});
+const ApplicationLogLevel = S.String;
+
 export type SystemLogLevel = "DEBUG" | "INFO" | "WARN" | (string & {});
+const SystemLogLevel = S.String;
+
 export interface LoggingConfig {
   logGroup?: string;
   applicationLogLevel?: ApplicationLogLevel;
   systemLogLevel?: SystemLogLevel;
 }
+const LoggingConfig = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<LoggingConfig>;
 export interface TelemetryConfig {
   loggingConfig?: LoggingConfig;
 }
+const TelemetryConfig = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<TelemetryConfig>;
 export interface ServiceConfig {
   executionRoleArn: string;
   timeoutSeconds?: number;
@@ -181,24 +190,35 @@ export interface ServiceConfig {
   environmentVariables?: { [key: string]: string | undefined };
   telemetryConfig?: TelemetryConfig;
 }
+const ServiceConfig = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<ServiceConfig>;
 export interface RevisionConfig {
   description?: string;
   kmsKeyArn?: string;
   buildConfig: BuildConfig;
   serviceConfig: ServiceConfig;
 }
+const RevisionConfig = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<RevisionConfig>;
 export type EndpointName = string;
 export type EndpointType = "HomeRegion" | "MultiRegion" | "PerRegion" | (string & {});
+const EndpointType = S.String;
+
 export type AuthType = "ApplicationManaged" | "IamAuth" | (string & {});
+const AuthType = S.String;
+
 export type AutoDeploymentMode = "LatestRevision" | "Disabled" | (string & {});
+const AutoDeploymentMode = S.String;
+
 export type Region = string;
 export type RegionList = string[];
+const RegionList = /*@__PURE__*/ __L.at(__c1, 1);
 export interface ScalingConfig {
   maxEnvironments?: number;
 }
+const ScalingConfig = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<ScalingConfig>;
 export interface ThrottleConfig {
   rateLimit?: number;
 }
+const ThrottleConfig = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<ThrottleConfig>;
 export interface EndpointConfig {
   endpointName: string;
   description?: string;
@@ -209,19 +229,29 @@ export interface EndpointConfig {
   scalingConfig?: ScalingConfig;
   throttleConfig?: ThrottleConfig;
 }
+const EndpointConfig = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<EndpointConfig>;
 export type TagKey = string;
 export type Tags = { [key: string]: string | undefined };
+const Tags = /*@__PURE__*/ __L.at(__c1, 5);
 export interface CreateWebFunctionRequest {
   functionName: string;
   revisionConfig?: RevisionConfig;
   endpointConfig?: EndpointConfig;
   tags?: { [key: string]: string | undefined };
 }
+const CreateWebFunctionRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<CreateWebFunctionRequest>;
 export type FunctionArn = string;
 export type FunctionState = "Pending" | "Active" | "Failed" | "Deleting" | (string & {});
+const FunctionState = S.String;
+
 export type RevisionArn = string;
 export type RevisionId = string;
 export type RevisionState = "Pending" | "Active" | "Failed" | (string & {});
+const RevisionState = S.String;
+
 export interface FunctionRevisionSummary {
   revisionArn: string;
   revisionId: string;
@@ -230,15 +260,25 @@ export interface FunctionRevisionSummary {
   stateReason: string;
   createdAt: Date;
 }
+const FunctionRevisionSummary = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<FunctionRevisionSummary>;
 export type EndpointArn = string;
 export type DomainName = string;
 export interface RevisionWeight {
   revisionId: string;
   weight: number;
 }
+const RevisionWeight = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<RevisionWeight>;
 export type RevisionWeightList = RevisionWeight[];
+const RevisionWeightList = /*@__PURE__*/ __L.at(__c2, 1);
 export type EndpointState = "Pending" | "Active" | "Failed" | "Deleting" | (string & {});
+const EndpointState = S.String;
+
 export type EndpointUpdateStatus = "InProgress" | "Successful" | "Failed" | (string & {});
+const EndpointUpdateStatus = S.String;
+
 export interface FunctionEndpointSummary {
   endpointArn: string;
   endpointName: string;
@@ -258,6 +298,10 @@ export interface FunctionEndpointSummary {
   createdAt: Date;
   updatedAt: Date;
 }
+const FunctionEndpointSummary = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<FunctionEndpointSummary>;
 export interface CreateWebFunctionResponse {
   functionName: string;
   functionArn: string;
@@ -269,6 +313,10 @@ export interface CreateWebFunctionResponse {
   endpoint?: FunctionEndpointSummary;
   tags?: { [key: string]: string | undefined };
 }
+const CreateWebFunctionResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<CreateWebFunctionResponse>;
 export interface CreateWebFunctionEndpointRequest {
   functionName: string;
   endpointName: string;
@@ -281,6 +329,10 @@ export interface CreateWebFunctionEndpointRequest {
   scalingConfig?: ScalingConfig;
   throttleConfig?: ThrottleConfig;
 }
+const CreateWebFunctionEndpointRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<CreateWebFunctionEndpointRequest>;
 export interface RegionalEndpoint {
   domainName?: string;
   authType: AuthType;
@@ -292,7 +344,9 @@ export interface RegionalEndpoint {
   updateStatus?: EndpointUpdateStatus;
   updateStatusReason?: string;
 }
+const RegionalEndpoint = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<RegionalEndpoint>;
 export type RegionalEndpoints = { [key: string]: RegionalEndpoint | undefined };
+const RegionalEndpoints = /*@__PURE__*/ __L.at(__c2, 6);
 export interface CreateWebFunctionEndpointResponse {
   functionArn: string;
   endpointArn: string;
@@ -314,6 +368,10 @@ export interface CreateWebFunctionEndpointResponse {
   createdAt: Date;
   updatedAt: Date;
 }
+const CreateWebFunctionEndpointResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<CreateWebFunctionEndpointResponse>;
 export interface CreateWebFunctionRevisionRequest {
   functionName: string;
   description?: string;
@@ -321,12 +379,18 @@ export interface CreateWebFunctionRevisionRequest {
   buildConfig: BuildConfig;
   serviceConfig: ServiceConfig;
 }
+const CreateWebFunctionRevisionRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<CreateWebFunctionRevisionRequest>;
 export interface RevisionError {
   attribute: string;
   errorCode: string;
   errorMessage: string;
 }
+const RevisionError = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<RevisionError>;
 export type RevisionErrors = RevisionError[];
+const RevisionErrors = /*@__PURE__*/ __L.at(__c3, 2);
 export interface CreateWebFunctionRevisionResponse {
   functionArn: string;
   revisionArn: string;
@@ -340,52 +404,106 @@ export interface CreateWebFunctionRevisionResponse {
   errors?: RevisionError[];
   createdAt: Date;
 }
+const CreateWebFunctionRevisionResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<CreateWebFunctionRevisionResponse>;
 export type ResourceArn = string;
 export type PolicyRevisionId = string;
 export interface DeleteResourcePolicyRequest {
   resourceArn: string;
   revisionId?: string;
 }
+const DeleteResourcePolicyRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<DeleteResourcePolicyRequest>;
 export interface DeleteResourcePolicyResponse {}
+const DeleteResourcePolicyResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<DeleteResourcePolicyResponse>;
 export interface DeleteWebFunctionRequest {
   functionName: string;
 }
+const DeleteWebFunctionRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<DeleteWebFunctionRequest>;
 export interface DeleteWebFunctionResponse {}
+const DeleteWebFunctionResponse =
+  DeleteResourcePolicyResponse as any as S.Schema<DeleteWebFunctionResponse>;
 export interface DeleteWebFunctionEndpointRequest {
   functionName: string;
   endpointName: string;
 }
+const DeleteWebFunctionEndpointRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<DeleteWebFunctionEndpointRequest>;
 export interface DeleteWebFunctionEndpointResponse {}
+const DeleteWebFunctionEndpointResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<DeleteWebFunctionEndpointResponse>;
 export interface DeleteWebFunctionRevisionRequest {
   functionName: string;
   revisionId: string;
 }
+const DeleteWebFunctionRevisionRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<DeleteWebFunctionRevisionRequest>;
 export interface DeleteWebFunctionRevisionResponse {}
+const DeleteWebFunctionRevisionResponse =
+  DeleteWebFunctionEndpointResponse as any as S.Schema<DeleteWebFunctionRevisionResponse>;
 export interface GetResourcePolicyRequest {
   resourceArn: string;
 }
+const GetResourcePolicyRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<GetResourcePolicyRequest>;
 export type ResourcePolicy = string;
 export interface GetResourcePolicyResponse {
   policy: string;
   revisionId: string;
 }
+const GetResourcePolicyResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<GetResourcePolicyResponse>;
 export interface GetWebAccountSettingsRequest {}
+const GetWebAccountSettingsRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<GetWebAccountSettingsRequest>;
 export interface AccountQuotas {
   maxTotalArmVCpus: number;
   maxTotalRateLimit: number;
   maxRevisionsPerFunction: number;
   maxEndpointsPerFunction: number;
 }
+const AccountQuotas = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<AccountQuotas>;
 export interface AccountUsage {
   functionCount: number;
 }
+const AccountUsage = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<AccountUsage>;
 export interface GetWebAccountSettingsResponse {
   accountQuotas: AccountQuotas;
   accountUsage: AccountUsage;
 }
+const GetWebAccountSettingsResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<GetWebAccountSettingsResponse>;
 export interface GetWebFunctionRequest {
   functionName: string;
 }
+const GetWebFunctionRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  0,
+) as any as S.Schema<GetWebFunctionRequest>;
 export interface GetWebFunctionResponse {
   functionName: string;
   functionArn: string;
@@ -394,10 +512,18 @@ export interface GetWebFunctionResponse {
   createdAt: Date;
   updatedAt: Date;
 }
+const GetWebFunctionResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  1,
+) as any as S.Schema<GetWebFunctionResponse>;
 export interface GetWebFunctionEndpointRequest {
   functionName: string;
   endpointName: string;
 }
+const GetWebFunctionEndpointRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  2,
+) as any as S.Schema<GetWebFunctionEndpointRequest>;
 export interface GetWebFunctionEndpointResponse {
   functionArn: string;
   endpointArn: string;
@@ -419,10 +545,16 @@ export interface GetWebFunctionEndpointResponse {
   createdAt: Date;
   updatedAt: Date;
 }
+const GetWebFunctionEndpointResponse =
+  CreateWebFunctionEndpointResponse as any as S.Schema<GetWebFunctionEndpointResponse>;
 export interface GetWebFunctionRevisionRequest {
   functionName: string;
   revisionId: string;
 }
+const GetWebFunctionRevisionRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<GetWebFunctionRevisionRequest>;
 export interface GetWebFunctionRevisionResponse {
   functionArn: string;
   revisionArn: string;
@@ -436,18 +568,25 @@ export interface GetWebFunctionRevisionResponse {
   errors?: RevisionError[];
   createdAt: Date;
 }
+const GetWebFunctionRevisionResponse =
+  CreateWebFunctionRevisionResponse as any as S.Schema<GetWebFunctionRevisionResponse>;
 export interface ListTagsRequest {
   resource: string;
 }
+const ListTagsRequest = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<ListTagsRequest>;
 export interface ListTagsResponse {
   tags?: { [key: string]: string | undefined };
 }
+const ListTagsResponse = /*@__PURE__*/ __L.at(__c5, 5) as any as S.Schema<ListTagsResponse>;
 export type FilterValueList = string[];
+const FilterValueList = RegionList as any as S.Schema<FilterValueList>;
 export interface Filter {
   name: string;
   values: string[];
 }
+const Filter = /*@__PURE__*/ __L.at(__c5, 6) as any as S.Schema<Filter>;
 export type FilterList = Filter[];
+const FilterList = /*@__PURE__*/ __L.at(__c5, 7);
 export type MaxResults = number;
 export type NextToken = string;
 export interface ListWebFunctionEndpointsRequest {
@@ -456,27 +595,49 @@ export interface ListWebFunctionEndpointsRequest {
   maxResults?: number;
   nextToken?: string;
 }
+const ListWebFunctionEndpointsRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<ListWebFunctionEndpointsRequest>;
 export type FunctionEndpointSummaryList = FunctionEndpointSummary[];
+const FunctionEndpointSummaryList = /*@__PURE__*/ __L.at(__c6, 1);
 export interface ListWebFunctionEndpointsResponse {
   endpoints: FunctionEndpointSummary[];
   nextToken?: string;
 }
+const ListWebFunctionEndpointsResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  2,
+) as any as S.Schema<ListWebFunctionEndpointsResponse>;
 export interface ListWebFunctionRevisionsRequest {
   functionName: string;
   filters?: Filter[];
   maxResults?: number;
   nextToken?: string;
 }
+const ListWebFunctionRevisionsRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  3,
+) as any as S.Schema<ListWebFunctionRevisionsRequest>;
 export type FunctionRevisionSummaryList = FunctionRevisionSummary[];
+const FunctionRevisionSummaryList = /*@__PURE__*/ __L.at(__c6, 4);
 export interface ListWebFunctionRevisionsResponse {
   revisions: FunctionRevisionSummary[];
   nextToken?: string;
 }
+const ListWebFunctionRevisionsResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  5,
+) as any as S.Schema<ListWebFunctionRevisionsResponse>;
 export interface ListWebFunctionsRequest {
   filters?: Filter[];
   maxResults?: number;
   nextToken?: string;
 }
+const ListWebFunctionsRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  6,
+) as any as S.Schema<ListWebFunctionsRequest>;
 export interface FunctionSummary {
   functionName: string;
   functionArn: string;
@@ -485,31 +646,49 @@ export interface FunctionSummary {
   createdAt: Date;
   updatedAt: Date;
 }
+const FunctionSummary = GetWebFunctionResponse as any as S.Schema<FunctionSummary>;
 export type FunctionSummaryList = FunctionSummary[];
+const FunctionSummaryList = /*@__PURE__*/ __L.at(__c6, 7);
 export interface ListWebFunctionsResponse {
   functions: FunctionSummary[];
   nextToken?: string;
 }
+const ListWebFunctionsResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  0,
+) as any as S.Schema<ListWebFunctionsResponse>;
 export interface PutResourcePolicyRequest {
   resourceArn: string;
   policy: string;
   revisionId?: string;
 }
+const PutResourcePolicyRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  1,
+) as any as S.Schema<PutResourcePolicyRequest>;
 export interface PutResourcePolicyResponse {
   policy: string;
   revisionId: string;
 }
+const PutResourcePolicyResponse =
+  GetResourcePolicyResponse as any as S.Schema<PutResourcePolicyResponse>;
 export interface TagResourceRequest {
   resource: string;
   tags: { [key: string]: string | undefined };
 }
+const TagResourceRequest = /*@__PURE__*/ __L.at(__c7, 2) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
+const TagResourceResponse = DeleteResourcePolicyResponse as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
+const TagKeyList = RegionList as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   resource: string;
   tagKeys: string[];
 }
+const UntagResourceRequest = /*@__PURE__*/ __L.at(__c7, 3) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
+const UntagResourceResponse =
+  DeleteResourcePolicyResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateWebFunctionEndpointRequest {
   functionName: string;
   endpointName: string;
@@ -520,6 +699,10 @@ export interface UpdateWebFunctionEndpointRequest {
   scalingConfig?: ScalingConfig;
   throttleConfig?: ThrottleConfig;
 }
+const UpdateWebFunctionEndpointRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  4,
+) as any as S.Schema<UpdateWebFunctionEndpointRequest>;
 export interface UpdateWebFunctionEndpointResponse {
   functionArn: string;
   endpointArn: string;
@@ -541,6 +724,8 @@ export interface UpdateWebFunctionEndpointResponse {
   createdAt: Date;
   updatedAt: Date;
 }
+const UpdateWebFunctionEndpointResponse =
+  CreateWebFunctionEndpointResponse as any as S.Schema<UpdateWebFunctionEndpointResponse>;
 export type CreateWebFunctionError =
   | AccessDeniedException
   | ConflictException
@@ -563,8 +748,8 @@ export const createWebFunction: API.OperationMethod<
   CreateWebFunctionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14) as any as S.Schema<CreateWebFunctionRequest>,
-  output: __S(19) as any as S.Schema<CreateWebFunctionResponse>,
+  input: CreateWebFunctionRequest,
+  output: CreateWebFunctionResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -601,8 +786,8 @@ export const createWebFunctionEndpoint: API.OperationMethod<
   CreateWebFunctionEndpointError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20) as any as S.Schema<CreateWebFunctionEndpointRequest>,
-  output: __S(23) as any as S.Schema<CreateWebFunctionEndpointResponse>,
+  input: CreateWebFunctionEndpointRequest,
+  output: CreateWebFunctionEndpointResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -639,8 +824,8 @@ export const createWebFunctionRevision: API.OperationMethod<
   CreateWebFunctionRevisionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24) as any as S.Schema<CreateWebFunctionRevisionRequest>,
-  output: __S(27) as any as S.Schema<CreateWebFunctionRevisionResponse>,
+  input: CreateWebFunctionRevisionRequest,
+  output: CreateWebFunctionRevisionResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -674,8 +859,8 @@ export const deleteResourcePolicy: API.OperationMethod<
   DeleteResourcePolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28) as any as S.Schema<DeleteResourcePolicyRequest>,
-  output: __S(29) as any as S.Schema<DeleteResourcePolicyResponse>,
+  input: DeleteResourcePolicyRequest,
+  output: DeleteResourcePolicyResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -710,8 +895,8 @@ export const deleteWebFunction: API.OperationMethod<
   DeleteWebFunctionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30) as any as S.Schema<DeleteWebFunctionRequest>,
-  output: __S(29) as any as S.Schema<DeleteWebFunctionResponse>,
+  input: DeleteWebFunctionRequest,
+  output: DeleteWebFunctionResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -744,8 +929,8 @@ export const deleteWebFunctionEndpoint: API.OperationMethod<
   DeleteWebFunctionEndpointError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31) as any as S.Schema<DeleteWebFunctionEndpointRequest>,
-  output: __S(32) as any as S.Schema<DeleteWebFunctionEndpointResponse>,
+  input: DeleteWebFunctionEndpointRequest,
+  output: DeleteWebFunctionEndpointResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -778,8 +963,8 @@ export const deleteWebFunctionRevision: API.OperationMethod<
   DeleteWebFunctionRevisionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33) as any as S.Schema<DeleteWebFunctionRevisionRequest>,
-  output: __S(32) as any as S.Schema<DeleteWebFunctionRevisionResponse>,
+  input: DeleteWebFunctionRevisionRequest,
+  output: DeleteWebFunctionRevisionResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -811,8 +996,8 @@ export const getResourcePolicy: API.OperationMethod<
   GetResourcePolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34) as any as S.Schema<GetResourcePolicyRequest>,
-  output: __S(35) as any as S.Schema<GetResourcePolicyResponse>,
+  input: GetResourcePolicyRequest,
+  output: GetResourcePolicyResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -841,8 +1026,8 @@ export const getWebAccountSettings: API.OperationMethod<
   GetWebAccountSettingsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36) as any as S.Schema<GetWebAccountSettingsRequest>,
-  output: __S(39) as any as S.Schema<GetWebAccountSettingsResponse>,
+  input: GetWebAccountSettingsRequest,
+  output: GetWebAccountSettingsResponse,
   errors: [AccessDeniedException, InternalServerException, ThrottlingException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -867,8 +1052,8 @@ export const getWebFunction: API.OperationMethod<
   GetWebFunctionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40) as any as S.Schema<GetWebFunctionRequest>,
-  output: __S(41) as any as S.Schema<GetWebFunctionResponse>,
+  input: GetWebFunctionRequest,
+  output: GetWebFunctionResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -899,8 +1084,8 @@ export const getWebFunctionEndpoint: API.OperationMethod<
   GetWebFunctionEndpointError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42) as any as S.Schema<GetWebFunctionEndpointRequest>,
-  output: __S(23) as any as S.Schema<GetWebFunctionEndpointResponse>,
+  input: GetWebFunctionEndpointRequest,
+  output: GetWebFunctionEndpointResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -931,8 +1116,8 @@ export const getWebFunctionRevision: API.OperationMethod<
   GetWebFunctionRevisionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43) as any as S.Schema<GetWebFunctionRevisionRequest>,
-  output: __S(27) as any as S.Schema<GetWebFunctionRevisionResponse>,
+  input: GetWebFunctionRevisionRequest,
+  output: GetWebFunctionRevisionResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -963,8 +1148,8 @@ export const listTags: API.OperationMethod<
   ListTagsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44) as any as S.Schema<ListTagsRequest>,
-  output: __S(45) as any as S.Schema<ListTagsResponse>,
+  input: ListTagsRequest,
+  output: ListTagsResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -996,8 +1181,8 @@ export const listWebFunctionEndpoints: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   FunctionEndpointSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(48) as any as S.Schema<ListWebFunctionEndpointsRequest>,
-  output: __S(50) as any as S.Schema<ListWebFunctionEndpointsResponse>,
+  input: ListWebFunctionEndpointsRequest,
+  output: ListWebFunctionEndpointsResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1035,8 +1220,8 @@ export const listWebFunctionRevisions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   FunctionRevisionSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(51) as any as S.Schema<ListWebFunctionRevisionsRequest>,
-  output: __S(53) as any as S.Schema<ListWebFunctionRevisionsResponse>,
+  input: ListWebFunctionRevisionsRequest,
+  output: ListWebFunctionRevisionsResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1073,8 +1258,8 @@ export const listWebFunctions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   FunctionSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(54) as any as S.Schema<ListWebFunctionsRequest>,
-  output: __S(56) as any as S.Schema<ListWebFunctionsResponse>,
+  input: ListWebFunctionsRequest,
+  output: ListWebFunctionsResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1112,8 +1297,8 @@ export const putResourcePolicy: API.OperationMethod<
   PutResourcePolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57) as any as S.Schema<PutResourcePolicyRequest>,
-  output: __S(35) as any as S.Schema<PutResourcePolicyResponse>,
+  input: PutResourcePolicyRequest,
+  output: PutResourcePolicyResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1148,8 +1333,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(58) as any as S.Schema<TagResourceRequest>,
-  output: __S(29) as any as S.Schema<TagResourceResponse>,
+  input: TagResourceRequest,
+  output: TagResourceResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1183,8 +1368,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(59) as any as S.Schema<UntagResourceRequest>,
-  output: __S(29) as any as S.Schema<UntagResourceResponse>,
+  input: UntagResourceRequest,
+  output: UntagResourceResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1218,8 +1403,8 @@ export const updateWebFunctionEndpoint: API.OperationMethod<
   UpdateWebFunctionEndpointError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60) as any as S.Schema<UpdateWebFunctionEndpointRequest>,
-  output: __S(23) as any as S.Schema<UpdateWebFunctionEndpointResponse>,
+  input: UpdateWebFunctionEndpointRequest,
+  output: UpdateWebFunctionEndpointResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1242,7 +1427,7 @@ function __c0(j: number): any {
         S.Struct({ bucket: S.String, key: S.String, versionId: S.optional(S.String) }),
       ).annotate({ identifier: "S3Object" });
     case 1:
-      return S.suspend(() => S.Struct({ s3Object: __S(0) })).annotate({
+      return S.suspend(() => S.Struct({ s3Object: S3Object })).annotate({
         identifier: "CodeConfig",
       });
     case 2:
@@ -1250,21 +1435,21 @@ function __c0(j: number): any {
         identifier: "RuntimeConfig",
       });
     case 3:
-      return S.suspend(() => S.Struct({ codeConfig: __S(1), runtimeConfig: __S(2) })).annotate({
-        identifier: "BuildConfig",
-      });
+      return S.suspend(() =>
+        S.Struct({ codeConfig: CodeConfig, runtimeConfig: RuntimeConfig }),
+      ).annotate({ identifier: "BuildConfig" });
     case 4:
       return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
     case 5:
       return S.suspend(() =>
         S.Struct({
           logGroup: S.optional(S.String),
-          applicationLogLevel: S.optional(S.String),
-          systemLogLevel: S.optional(S.String),
+          applicationLogLevel: S.optional(ApplicationLogLevel),
+          systemLogLevel: S.optional(SystemLogLevel),
         }),
       ).annotate({ identifier: "LoggingConfig" });
     case 6:
-      return S.suspend(() => S.Struct({ loggingConfig: S.optional(__S(5)) })).annotate({
+      return S.suspend(() => S.Struct({ loggingConfig: S.optional(LoggingConfig) })).annotate({
         identifier: "TelemetryConfig",
       });
     case 7:
@@ -1273,8 +1458,8 @@ function __c0(j: number): any {
           executionRoleArn: S.String,
           timeoutSeconds: S.optional(S.Number),
           maxConcurrencyPerEnvironment: S.optional(S.Number),
-          environmentVariables: S.optional(__S(4)),
-          telemetryConfig: S.optional(__S(6)),
+          environmentVariables: S.optional(EnvironmentVariables),
+          telemetryConfig: S.optional(TelemetryConfig),
         }),
       ).annotate({ identifier: "ServiceConfig" });
   }
@@ -1286,8 +1471,8 @@ function __c1(j: number): any {
         S.Struct({
           description: S.optional(S.String),
           kmsKeyArn: S.optional(S.String),
-          buildConfig: __S(3),
-          serviceConfig: __S(7),
+          buildConfig: BuildConfig,
+          serviceConfig: ServiceConfig,
         }),
       ).annotate({ identifier: "RevisionConfig" });
     case 1:
@@ -1305,12 +1490,12 @@ function __c1(j: number): any {
         S.Struct({
           endpointName: S.String,
           description: S.optional(S.String),
-          endpointType: S.String,
-          authType: S.String,
-          autoDeploymentMode: S.optional(S.String),
-          regions: S.optional(__S(9)),
-          scalingConfig: S.optional(__S(10)),
-          throttleConfig: S.optional(__S(11)),
+          endpointType: EndpointType,
+          authType: AuthType,
+          autoDeploymentMode: S.optional(AutoDeploymentMode),
+          regions: S.optional(RegionList),
+          scalingConfig: S.optional(ScalingConfig),
+          throttleConfig: S.optional(ThrottleConfig),
         }),
       ).annotate({ identifier: "EndpointConfig" });
     case 5:
@@ -1319,9 +1504,9 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           functionName: S.String,
-          revisionConfig: S.optional(__S(8)),
-          endpointConfig: S.optional(__S(12)),
-          tags: S.optional(__S(13)),
+          revisionConfig: S.optional(RevisionConfig),
+          endpointConfig: S.optional(EndpointConfig),
+          tags: S.optional(Tags),
         }).pipe(
           T.all(
             T.Http({ method: "PUT", uri: "/2025-03-07/web-functions" }),
@@ -1339,7 +1524,7 @@ function __c1(j: number): any {
           revisionArn: S.String,
           revisionId: S.String,
           description: S.optional(S.String),
-          state: S.String,
+          state: RevisionState,
           stateReason: S.String,
           createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
         }),
@@ -1353,24 +1538,24 @@ function __c2(j: number): any {
         identifier: "RevisionWeight",
       });
     case 1:
-      return S.Array(__S(16));
+      return S.Array(RevisionWeight);
     case 2:
       return S.suspend(() =>
         S.Struct({
           endpointArn: S.String,
           endpointName: S.String,
           description: S.optional(S.String),
-          endpointType: S.String,
+          endpointType: EndpointType,
           domainName: S.String,
-          authType: S.String,
-          autoDeploymentMode: S.String,
-          revisionWeights: __S(17),
-          regions: __S(9),
-          scalingConfig: S.optional(__S(10)),
-          throttleConfig: S.optional(__S(11)),
-          state: S.String,
+          authType: AuthType,
+          autoDeploymentMode: AutoDeploymentMode,
+          revisionWeights: RevisionWeightList,
+          regions: RegionList,
+          scalingConfig: S.optional(ScalingConfig),
+          throttleConfig: S.optional(ThrottleConfig),
+          state: EndpointState,
           stateReason: S.String,
-          updateStatus: S.optional(S.String),
+          updateStatus: S.optional(EndpointUpdateStatus),
           updateStatusReason: S.optional(S.String),
           createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
@@ -1381,13 +1566,13 @@ function __c2(j: number): any {
         S.Struct({
           functionName: S.String,
           functionArn: S.String,
-          state: S.String,
+          state: FunctionState,
           stateReason: S.String,
           createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-          revision: S.optional(__S(15)),
-          endpoint: S.optional(__S(18)),
-          tags: S.optional(__S(13)),
+          revision: S.optional(FunctionRevisionSummary),
+          endpoint: S.optional(FunctionEndpointSummary),
+          tags: S.optional(Tags),
         }),
       ).annotate({
         identifier: "CreateWebFunctionResponse",
@@ -1398,13 +1583,13 @@ function __c2(j: number): any {
           functionName: S.String.pipe(T.HttpLabel("functionName")),
           endpointName: S.String,
           description: S.optional(S.String),
-          endpointType: S.String,
-          authType: S.String,
-          autoDeploymentMode: S.optional(S.String),
-          revisionWeights: S.optional(__S(17)),
-          regions: S.optional(__S(9)),
-          scalingConfig: S.optional(__S(10)),
-          throttleConfig: S.optional(__S(11)),
+          endpointType: EndpointType,
+          authType: AuthType,
+          autoDeploymentMode: S.optional(AutoDeploymentMode),
+          revisionWeights: S.optional(RevisionWeightList),
+          regions: S.optional(RegionList),
+          scalingConfig: S.optional(ScalingConfig),
+          throttleConfig: S.optional(ThrottleConfig),
         }).pipe(
           T.all(
             T.Http({ method: "PUT", uri: "/2025-03-07/web-functions/{functionName}/endpoints" }),
@@ -1422,18 +1607,18 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           domainName: S.optional(S.String),
-          authType: S.String,
-          revisionWeights: __S(17),
-          scalingConfig: S.optional(__S(10)),
-          throttleConfig: S.optional(__S(11)),
-          state: S.String,
+          authType: AuthType,
+          revisionWeights: RevisionWeightList,
+          scalingConfig: S.optional(ScalingConfig),
+          throttleConfig: S.optional(ThrottleConfig),
+          state: EndpointState,
           stateReason: S.String,
-          updateStatus: S.optional(S.String),
+          updateStatus: S.optional(EndpointUpdateStatus),
           updateStatusReason: S.optional(S.String),
         }),
       ).annotate({ identifier: "RegionalEndpoint" });
     case 6:
-      return S.Record(S.String, /*@__PURE__*/ __S(21).pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ RegionalEndpoint.pipe(S.optional));
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -1441,19 +1626,19 @@ function __c2(j: number): any {
           endpointArn: S.String,
           endpointName: S.String,
           description: S.optional(S.String),
-          endpointType: S.String,
+          endpointType: EndpointType,
           domainName: S.String,
-          authType: S.String,
-          autoDeploymentMode: S.String,
-          revisionWeights: __S(17),
-          regions: __S(9),
-          scalingConfig: S.optional(__S(10)),
-          throttleConfig: S.optional(__S(11)),
-          state: S.String,
+          authType: AuthType,
+          autoDeploymentMode: AutoDeploymentMode,
+          revisionWeights: RevisionWeightList,
+          regions: RegionList,
+          scalingConfig: S.optional(ScalingConfig),
+          throttleConfig: S.optional(ThrottleConfig),
+          state: EndpointState,
           stateReason: S.String,
-          updateStatus: S.optional(S.String),
+          updateStatus: S.optional(EndpointUpdateStatus),
           updateStatusReason: S.optional(S.String),
-          regionalEndpoints: __S(22),
+          regionalEndpoints: RegionalEndpoints,
           createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
         }),
@@ -1470,8 +1655,8 @@ function __c3(j: number): any {
           functionName: S.String.pipe(T.HttpLabel("functionName")),
           description: S.optional(S.String),
           kmsKeyArn: S.optional(S.String),
-          buildConfig: __S(3),
-          serviceConfig: __S(7),
+          buildConfig: BuildConfig,
+          serviceConfig: ServiceConfig,
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/2025-03-07/web-functions/{functionName}/revisions" }),
@@ -1490,7 +1675,7 @@ function __c3(j: number): any {
         S.Struct({ attribute: S.String, errorCode: S.String, errorMessage: S.String }),
       ).annotate({ identifier: "RevisionError" });
     case 2:
-      return S.Array(__S(25));
+      return S.Array(RevisionError);
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -1499,11 +1684,11 @@ function __c3(j: number): any {
           revisionId: S.String,
           description: S.optional(S.String),
           kmsKeyArn: S.optional(S.String),
-          buildConfig: __S(3),
-          serviceConfig: __S(7),
-          state: S.String,
+          buildConfig: BuildConfig,
+          serviceConfig: ServiceConfig,
+          state: RevisionState,
           stateReason: S.String,
-          errors: S.optional(__S(26)),
+          errors: S.optional(RevisionErrors),
           createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
         }),
       ).annotate({
@@ -1644,7 +1829,9 @@ function __c4(j: number): any {
         identifier: "AccountUsage",
       });
     case 7:
-      return S.suspend(() => S.Struct({ accountQuotas: __S(37), accountUsage: __S(38) })).annotate({
+      return S.suspend(() =>
+        S.Struct({ accountQuotas: AccountQuotas, accountUsage: AccountUsage }),
+      ).annotate({
         identifier: "GetWebAccountSettingsResponse",
       });
   }
@@ -1669,7 +1856,7 @@ function __c5(j: number): any {
         S.Struct({
           functionName: S.String,
           functionArn: S.String,
-          state: S.String,
+          state: FunctionState,
           stateReason: S.String,
           createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
@@ -1732,14 +1919,14 @@ function __c5(j: number): any {
       ).annotate({ identifier: "ListTagsRequest" });
     case 5:
       return S.suspend(() =>
-        S.Struct({ tags: S.optional(__S(13)) }).pipe(S.encodeKeys({ tags: "Tags" })),
+        S.Struct({ tags: S.optional(Tags) }).pipe(S.encodeKeys({ tags: "Tags" })),
       ).annotate({ identifier: "ListTagsResponse" });
     case 6:
-      return S.suspend(() => S.Struct({ name: S.String, values: __S(9) })).annotate({
+      return S.suspend(() => S.Struct({ name: S.String, values: FilterValueList })).annotate({
         identifier: "Filter",
       });
     case 7:
-      return S.Array(__S(46));
+      return S.Array(Filter);
   }
 }
 function __c6(j: number): any {
@@ -1748,7 +1935,7 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           functionName: S.String.pipe(T.HttpLabel("functionName")),
-          filters: S.optional(__S(47)),
+          filters: S.optional(FilterList),
           maxResults: S.optional(S.Number),
           nextToken: S.optional(S.String),
         }).pipe(
@@ -1768,10 +1955,10 @@ function __c6(j: number): any {
         identifier: "ListWebFunctionEndpointsRequest",
       });
     case 1:
-      return S.Array(__S(18));
+      return S.Array(FunctionEndpointSummary);
     case 2:
       return S.suspend(() =>
-        S.Struct({ endpoints: __S(49), nextToken: S.optional(S.String) }),
+        S.Struct({ endpoints: FunctionEndpointSummaryList, nextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListWebFunctionEndpointsResponse",
       });
@@ -1779,7 +1966,7 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           functionName: S.String.pipe(T.HttpLabel("functionName")),
-          filters: S.optional(__S(47)),
+          filters: S.optional(FilterList),
           maxResults: S.optional(S.Number),
           nextToken: S.optional(S.String),
         }).pipe(
@@ -1799,17 +1986,17 @@ function __c6(j: number): any {
         identifier: "ListWebFunctionRevisionsRequest",
       });
     case 4:
-      return S.Array(__S(15));
+      return S.Array(FunctionRevisionSummary);
     case 5:
       return S.suspend(() =>
-        S.Struct({ revisions: __S(52), nextToken: S.optional(S.String) }),
+        S.Struct({ revisions: FunctionRevisionSummaryList, nextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListWebFunctionRevisionsResponse",
       });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          filters: S.optional(__S(47)),
+          filters: S.optional(FilterList),
           maxResults: S.optional(S.Number),
           nextToken: S.optional(S.String),
         }).pipe(
@@ -1824,14 +2011,14 @@ function __c6(j: number): any {
         ),
       ).annotate({ identifier: "ListWebFunctionsRequest" });
     case 7:
-      return S.Array(__S(41));
+      return S.Array(FunctionSummary);
   }
 }
 function __c7(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ functions: __S(55), nextToken: S.optional(S.String) }),
+        S.Struct({ functions: FunctionSummaryList, nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListWebFunctionsResponse" });
     case 1:
       return S.suspend(() =>
@@ -1854,7 +2041,7 @@ function __c7(j: number): any {
       ).annotate({ identifier: "PutResourcePolicyRequest" });
     case 2:
       return S.suspend(() =>
-        S.Struct({ resource: S.String.pipe(T.HttpLabel("resource")), tags: __S(13) })
+        S.Struct({ resource: S.String.pipe(T.HttpLabel("resource")), tags: Tags })
           .pipe(S.encodeKeys({ tags: "Tags" }))
           .pipe(
             T.all(
@@ -1871,7 +2058,7 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.HttpLabel("resource")),
-          tagKeys: __S(9).pipe(T.HttpQuery("tagKeys")),
+          tagKeys: TagKeyList.pipe(T.HttpQuery("tagKeys")),
         }).pipe(
           T.all(
             T.Http({ method: "DELETE", uri: "/2025-03-07/tags/{resource}" }),
@@ -1889,11 +2076,11 @@ function __c7(j: number): any {
           functionName: S.String.pipe(T.HttpLabel("functionName")),
           endpointName: S.String.pipe(T.HttpLabel("endpointName")),
           description: S.optional(S.String),
-          authType: S.optional(S.String),
-          autoDeploymentMode: S.optional(S.String),
-          revisionWeights: S.optional(__S(17)),
-          scalingConfig: S.optional(__S(10)),
-          throttleConfig: S.optional(__S(11)),
+          authType: S.optional(AuthType),
+          autoDeploymentMode: S.optional(AutoDeploymentMode),
+          revisionWeights: S.optional(RevisionWeightList),
+          scalingConfig: S.optional(ScalingConfig),
+          throttleConfig: S.optional(ThrottleConfig),
         }).pipe(
           T.all(
             T.Http({
@@ -1910,30 +2097,5 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "UpdateWebFunctionEndpointRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
   }
 }

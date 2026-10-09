@@ -6,8 +6,6 @@ import { UnknownAzureError } from "../errors.ts";
 import { AzureProtocol, type AzureOpError, type AzureOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { AzureOpError, AzureOpContext };
 
@@ -15,8 +13,18 @@ export type { AzureOpError, AzureOpContext };
 export type AlertProcessingRulesCreateOrUpdateRequestTagsMap = {
   [key: string]: string | undefined;
 };
+const AlertProcessingRulesCreateOrUpdateRequestTagsMap = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<AlertProcessingRulesCreateOrUpdateRequestTagsMap>;
+
 /** Scopes on which alert processing rule will apply. */
 export type AlertProcessingRulePropertiesScopesList = Array<string>;
+const AlertProcessingRulePropertiesScopesList = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<AlertProcessingRulePropertiesScopesList>;
+
 /** Field for a given condition. */
 export type Field =
   | "Severity"
@@ -30,10 +38,17 @@ export type Field =
   | "AlertRuleName"
   | "Description"
   | "AlertContext";
+const Field = S.String;
+
 /** Operator for a given condition. */
 export type Operator = "Equals" | "NotEquals" | "Contains" | "DoesNotContain";
+const Operator = S.String;
+
 /** List of values to match for a given condition. */
 export type ConditionValuesList = Array<string>;
+const ConditionValuesList =
+  AlertProcessingRulePropertiesScopesList as any as S.Schema<ConditionValuesList>;
+
 /** Condition to trigger an alert processing rule. */
 export interface Condition {
   /** Field for a given condition. */
@@ -43,14 +58,31 @@ export interface Condition {
   /** List of values to match for a given condition. */
   values?: ConditionValuesList;
 }
+const Condition = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<Condition>;
+
 /** Conditions on which alerts will be filtered. */
 export type AlertProcessingRulePropertiesConditionsList = Array<Condition>;
+const AlertProcessingRulePropertiesConditionsList = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<AlertProcessingRulePropertiesConditionsList>;
+
 /** Specifies when the recurrence should be applied. */
 export type RecurrenceType = "Daily" | "Weekly" | "Monthly";
+const RecurrenceType = S.String;
+
 /** Days of the week (only for `Weekly` recurrences). */
 export type RecurrenceDaysOfWeekList = Array<string>;
+const RecurrenceDaysOfWeekList =
+  AlertProcessingRulePropertiesScopesList as any as S.Schema<RecurrenceDaysOfWeekList>;
+
 /** Days of the month (only for `Monthly` recurrences). */
 export type RecurrenceDaysOfMonthList = Array<number>;
+const RecurrenceDaysOfMonthList = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<RecurrenceDaysOfMonthList>;
+
 /** Recurrence object. */
 export interface Recurrence {
   /** Specifies when the recurrence should be applied. */
@@ -64,8 +96,15 @@ export interface Recurrence {
   /** Days of the month (only for `Monthly` recurrences). */
   daysOfMonth?: RecurrenceDaysOfMonthList;
 }
+const Recurrence = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<Recurrence>;
+
 /** List of recurrences. */
 export type ScheduleRecurrencesList = Array<Recurrence>;
+const ScheduleRecurrencesList = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<ScheduleRecurrencesList>;
+
 /** Scheduling configuration for a given alert processing rule. */
 export interface Schedule {
   /** Scheduling effective from time. Date-Time in ISO-8601 format without timezone suffix. */
@@ -77,10 +116,17 @@ export interface Schedule {
   /** List of recurrences. */
   recurrences?: ScheduleRecurrencesList;
 }
+const Schedule = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<Schedule>;
+
 /** Action that should be applied. */
 export type ActionType = "AddActionGroups" | "RemoveAllActionGroups";
+const ActionType = S.String;
+
 /** Action group resource IDs to add (only for `AddActionGroups`). */
 export type ActionActionGroupIdsList = Array<string>;
+const ActionActionGroupIdsList =
+  AlertProcessingRulePropertiesScopesList as any as S.Schema<ActionActionGroupIdsList>;
+
 /** Action to be applied. */
 export interface Action {
   /** Action that should be applied. */
@@ -88,8 +134,15 @@ export interface Action {
   /** Action group resource IDs to add (only for `AddActionGroups`). */
   actionGroupIds?: ActionActionGroupIdsList;
 }
+const Action = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<Action>;
+
 /** Actions to be applied. */
 export type AlertProcessingRulePropertiesActionsList = Array<Action>;
+const AlertProcessingRulePropertiesActionsList = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<AlertProcessingRulePropertiesActionsList>;
+
 /** Alert processing rule properties defining scopes, conditions and scheduling logic for alert processing rule. */
 export interface AlertProcessingRuleProperties {
   /** Scopes on which alert processing rule will apply. */
@@ -105,6 +158,11 @@ export interface AlertProcessingRuleProperties {
   /** Indicates if the given alert processing rule is enabled or disabled. */
   enabled?: boolean;
 }
+const AlertProcessingRuleProperties = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<AlertProcessingRuleProperties>;
+
 export interface AlertProcessingRulesCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -119,10 +177,18 @@ export interface AlertProcessingRulesCreateOrUpdateRequest {
   /** Alert processing rule properties. */
   properties?: AlertProcessingRuleProperties;
 }
+const AlertProcessingRulesCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<AlertProcessingRulesCreateOrUpdateRequest>;
+
 /** Resource tags. */
 export type AlertProcessingRulesCreateOrUpdateResponseTagsMap = {
   [key: string]: string | undefined;
 };
+const AlertProcessingRulesCreateOrUpdateResponseTagsMap =
+  AlertProcessingRulesCreateOrUpdateRequestTagsMap as any as S.Schema<AlertProcessingRulesCreateOrUpdateResponseTagsMap>;
+
 export interface AlertProcessingRulesCreateOrUpdateResponse {
   /** Azure resource Id */
   id?: string;
@@ -137,7 +203,14 @@ export interface AlertProcessingRulesCreateOrUpdateResponse {
   /** Alert processing rule properties. */
   properties?: AlertProcessingRuleProperties;
 }
+const AlertProcessingRulesCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<AlertProcessingRulesCreateOrUpdateResponse>;
+
 export type AlertsChangeStateRequestNewState = "New" | "Acknowledged" | "Closed";
+const AlertsChangeStateRequestNewState = S.String;
+
 export interface AlertsChangeStateRequest {
   /** scope here is resourceId for which alert is created. */
   scope: string;
@@ -147,14 +220,27 @@ export interface AlertsChangeStateRequest {
   newState: AlertsChangeStateRequestNewState | (string & {});
   comments?: string;
 }
+const AlertsChangeStateRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<AlertsChangeStateRequest>;
+
 /** Severity of alert Sev0 being highest and Sev4 being lowest. */
 export type EssentialsSeverity = "Sev0" | "Sev1" | "Sev2" | "Sev3" | "Sev4";
+const EssentialsSeverity = S.String;
+
 /** The type of signal the alert is based on, which could be metrics, logs or activity logs. */
 export type EssentialsSignalType = "Metric" | "Log" | "Unknown";
+const EssentialsSignalType = S.String;
+
 /** Alert object state, which can be modified by the user. */
 export type EssentialsAlertState = "New" | "Acknowledged" | "Closed";
+const EssentialsAlertState = S.String;
+
 /** Can be 'Fired' or 'Resolved', which represents whether the underlying conditions have crossed the defined alert rule thresholds. */
 export type EssentialsMonitorCondition = "Fired" | "Resolved";
+const EssentialsMonitorCondition = S.String;
+
 /** Monitor service on which the rule(monitor) is set. */
 export type EssentialsMonitorService =
   | "Application Insights"
@@ -172,11 +258,15 @@ export type EssentialsMonitorService =
   | "VM Insights"
   | "Zabbix"
   | "Resource Health";
+const EssentialsMonitorService = S.String;
+
 /** Action status */
 export interface ActionStatus {
   /** Value indicating whether alert is suppressed. */
   isSuppressed?: boolean;
 }
+const ActionStatus = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<ActionStatus>;
+
 /** This object contains consistent fields across different monitor services. */
 export interface Essentials {
   /** Severity of alert Sev0 being highest and Sev4 being lowest. */
@@ -217,12 +307,16 @@ export interface Essentials {
   /** Alert description. */
   description?: string;
 }
+const Essentials = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<Essentials>;
+
 /** Alert property bag */
 export interface AlertProperties {
   essentials?: Essentials;
   context?: unknown;
   egressConfig?: unknown;
 }
+const AlertProperties = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<AlertProperties>;
+
 export interface AlertsChangeStateResponse {
   /** Azure resource Id */
   id?: string;
@@ -232,22 +326,43 @@ export interface AlertsChangeStateResponse {
   name?: string;
   properties?: AlertProperties;
 }
+const AlertsChangeStateResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<AlertsChangeStateResponse>;
+
 export type AlertsMetaDataRequestIdentifier = "MonitorServiceList";
+const AlertsMetaDataRequestIdentifier = S.String;
+
 export interface AlertsMetaDataRequest {
   /** Identification of the information to be retrieved by API call. */
   identifier: AlertsMetaDataRequestIdentifier | (string & {});
 }
+const AlertsMetaDataRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<AlertsMetaDataRequest>;
+
 /** Identification of the information to be retrieved by API call */
 export type AlertsMetaDataPropertiesMetadataIdentifier = "MonitorServiceList";
+const AlertsMetaDataPropertiesMetadataIdentifier = S.String;
+
 /** alert meta data property bag */
 export interface AlertsMetaDataProperties {
   /** Identification of the information to be retrieved by API call */
   metadataIdentifier: AlertsMetaDataPropertiesMetadataIdentifier;
 }
+const AlertsMetaDataProperties = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<AlertsMetaDataProperties>;
+
 /** alert meta data information. */
 export interface AlertsMetaData {
   properties?: AlertsMetaDataProperties;
 }
+const AlertsMetaData = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<AlertsMetaData>;
+
 export interface DeleteAlertProcessingRuleRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -256,7 +371,17 @@ export interface DeleteAlertProcessingRuleRequest {
   /** The name of the alert processing rule that needs to be fetched. */
   alertProcessingRuleName: string;
 }
+const DeleteAlertProcessingRuleRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<DeleteAlertProcessingRuleRequest>;
+
 export interface DeleteAlertProcessingRuleResponse {}
+const DeleteAlertProcessingRuleResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<DeleteAlertProcessingRuleResponse>;
+
 export interface DeletePrometheusRuleGroupRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -265,7 +390,15 @@ export interface DeletePrometheusRuleGroupRequest {
   /** The name of the rule group. */
   ruleGroupName: string;
 }
+const DeletePrometheusRuleGroupRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<DeletePrometheusRuleGroupRequest>;
+
 export interface DeletePrometheusRuleGroupResponse {}
+const DeletePrometheusRuleGroupResponse =
+  DeleteAlertProcessingRuleResponse as any as S.Schema<DeletePrometheusRuleGroupResponse>;
+
 export interface DeleteSmartDetectorAlertRuleRequest {
   /** The Azure subscription Id. */
   subscriptionId: string;
@@ -274,7 +407,15 @@ export interface DeleteSmartDetectorAlertRuleRequest {
   /** The name of the alert rule. */
   alertRuleName: string;
 }
+const DeleteSmartDetectorAlertRuleRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<DeleteSmartDetectorAlertRuleRequest>;
+
 export interface DeleteSmartDetectorAlertRuleResponse {}
+const DeleteSmartDetectorAlertRuleResponse =
+  DeleteAlertProcessingRuleResponse as any as S.Schema<DeleteSmartDetectorAlertRuleResponse>;
+
 export type GetAlertAllRequestMonitorService =
   | "Application Insights"
   | "ActivityLog Administrative"
@@ -291,9 +432,17 @@ export type GetAlertAllRequestMonitorService =
   | "VM Insights"
   | "Zabbix"
   | "Resource Health";
+const GetAlertAllRequestMonitorService = S.String;
+
 export type GetAlertAllRequestMonitorCondition = "Fired" | "Resolved";
+const GetAlertAllRequestMonitorCondition = S.String;
+
 export type GetAlertAllRequestSeverity = "Sev0" | "Sev1" | "Sev2" | "Sev3" | "Sev4";
+const GetAlertAllRequestSeverity = S.String;
+
 export type GetAlertAllRequestAlertState = "New" | "Acknowledged" | "Closed";
+const GetAlertAllRequestAlertState = S.String;
+
 export type GetAlertAllRequestSortBy =
   | "name"
   | "severity"
@@ -305,8 +454,14 @@ export type GetAlertAllRequestSortBy =
   | "targetResourceType"
   | "startDateTime"
   | "lastModifiedDateTime";
+const GetAlertAllRequestSortBy = S.String;
+
 export type GetAlertAllRequestSortOrder = "asc" | "desc";
+const GetAlertAllRequestSortOrder = S.String;
+
 export type GetAlertAllRequestTimeRange = "1h" | "1d" | "7d" | "30d";
+const GetAlertAllRequestTimeRange = S.String;
+
 export interface GetAlertAllRequest {
   /** scope here is resourceId for which alert is created. */
   scope: string;
@@ -345,6 +500,8 @@ export interface GetAlertAllRequest {
   /** Filter by custom time range in the format <start-time>/<end-time> where time is in (ISO-8601 format)'. Permissible values is within 30 days from query time. Either timeRange or customTimeRange could be used but not both. Default is none. */
   customTimeRange?: string;
 }
+const GetAlertAllRequest = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<GetAlertAllRequest>;
+
 /** An alert created in alert management service. */
 export interface Alert {
   /** Azure resource Id */
@@ -355,8 +512,12 @@ export interface Alert {
   name?: string;
   properties?: AlertProperties;
 }
+const Alert = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<Alert>;
+
 /** List of alerts */
 export type AlertsListValueList = Array<Alert>;
+const AlertsListValueList = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<AlertsListValueList>;
+
 /** List the alerts. */
 export interface AlertsList {
   /** URL to fetch the next set of alerts. */
@@ -364,12 +525,16 @@ export interface AlertsList {
   /** List of alerts */
   value?: AlertsListValueList;
 }
+const AlertsList = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<AlertsList>;
+
 export interface GetAlertByIdRequest {
   /** scope here is resourceId for which alert is created. */
   scope: string;
   /** Unique ID of an alert instance. */
   alertId: string;
 }
+const GetAlertByIdRequest = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<GetAlertByIdRequest>;
+
 export interface GetAlertByIdResponse {
   /** Azure resource Id */
   id?: string;
@@ -379,17 +544,26 @@ export interface GetAlertByIdResponse {
   name?: string;
   properties?: AlertProperties;
 }
+const GetAlertByIdResponse = Alert as any as S.Schema<GetAlertByIdResponse>;
+
 export interface GetAlertHistoryRequest {
   /** scope here is resourceId for which alert is created. */
   scope: string;
   /** Unique ID of an alert instance. */
   alertId: string;
 }
+const GetAlertHistoryRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<GetAlertHistoryRequest>;
+
 /** Reason for the modification */
 export type AlertModificationItemModificationEvent =
   | "AlertCreated"
   | "StateChange"
   | "MonitorConditionChange";
+const AlertModificationItemModificationEvent = S.String;
+
 /** Alert modification item. */
 export interface AlertModificationItem {
   /** Reason for the modification */
@@ -407,8 +581,18 @@ export interface AlertModificationItem {
   /** Description of the modification */
   description?: string;
 }
+const AlertModificationItem = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<AlertModificationItem>;
+
 /** Modification details */
 export type AlertModificationPropertiesModificationsList = Array<AlertModificationItem>;
+const AlertModificationPropertiesModificationsList = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<AlertModificationPropertiesModificationsList>;
+
 /** Properties of the alert modification item. */
 export interface AlertModificationProperties {
   /** Unique Id of the alert for which the history is being retrieved */
@@ -416,6 +600,11 @@ export interface AlertModificationProperties {
   /** Modification details */
   modifications?: AlertModificationPropertiesModificationsList;
 }
+const AlertModificationProperties = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<AlertModificationProperties>;
+
 export interface GetAlertHistoryResponse {
   /** Azure resource Id */
   id?: string;
@@ -425,6 +614,11 @@ export interface GetAlertHistoryResponse {
   name?: string;
   properties?: AlertModificationProperties;
 }
+const GetAlertHistoryResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<GetAlertHistoryResponse>;
+
 export interface GetAlertProcessingRuleByNameRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -433,6 +627,11 @@ export interface GetAlertProcessingRuleByNameRequest {
   /** The name of the alert processing rule that needs to be fetched. */
   alertProcessingRuleName: string;
 }
+const GetAlertProcessingRuleByNameRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<GetAlertProcessingRuleByNameRequest>;
+
 /** Resource tags. */
 export type GetAlertProcessingRuleByNameResponseTagsMap = { [key: string]: string | undefined };
 export interface GetAlertProcessingRuleByNameResponse {
@@ -449,6 +648,9 @@ export interface GetAlertProcessingRuleByNameResponse {
   /** Alert processing rule properties. */
   properties?: AlertProcessingRuleProperties;
 }
+const GetAlertProcessingRuleByNameResponse =
+  AlertProcessingRulesCreateOrUpdateResponse as any as S.Schema<GetAlertProcessingRuleByNameResponse>;
+
 export type GetAlertSummaryRequestGroupby =
   | "severity"
   | "alertState"
@@ -456,6 +658,8 @@ export type GetAlertSummaryRequestGroupby =
   | "monitorService"
   | "signalType"
   | "alertRule";
+const GetAlertSummaryRequestGroupby = S.String;
+
 export type GetAlertSummaryRequestMonitorService =
   | "Application Insights"
   | "ActivityLog Administrative"
@@ -472,10 +676,20 @@ export type GetAlertSummaryRequestMonitorService =
   | "VM Insights"
   | "Zabbix"
   | "Resource Health";
+const GetAlertSummaryRequestMonitorService = S.String;
+
 export type GetAlertSummaryRequestMonitorCondition = "Fired" | "Resolved";
+const GetAlertSummaryRequestMonitorCondition = S.String;
+
 export type GetAlertSummaryRequestSeverity = "Sev0" | "Sev1" | "Sev2" | "Sev3" | "Sev4";
+const GetAlertSummaryRequestSeverity = S.String;
+
 export type GetAlertSummaryRequestAlertState = "New" | "Acknowledged" | "Closed";
+const GetAlertSummaryRequestAlertState = S.String;
+
 export type GetAlertSummaryRequestTimeRange = "1h" | "1d" | "7d" | "30d";
+const GetAlertSummaryRequestTimeRange = S.String;
+
 export interface GetAlertSummaryRequest {
   /** scope here is resourceId for which alert is created. */
   scope: string;
@@ -504,8 +718,18 @@ export interface GetAlertSummaryRequest {
   /** Filter by custom time range in the format <start-time>/<end-time> where time is in (ISO-8601 format)'. Permissible values is within 30 days from query time. Either timeRange or customTimeRange could be used but not both. Default is none. */
   customTimeRange?: string;
 }
+const GetAlertSummaryRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<GetAlertSummaryRequest>;
+
 /** List of the items */
 export type AlertsSummaryGroupItemValuesList = Array<AlertsSummaryGroupItem>;
+const AlertsSummaryGroupItemValuesList = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<AlertsSummaryGroupItemValuesList>;
+
 /** Alerts summary group item */
 export interface AlertsSummaryGroupItem {
   /** Value of the aggregated field */
@@ -517,8 +741,18 @@ export interface AlertsSummaryGroupItem {
   /** List of the items */
   values?: AlertsSummaryGroupItemValuesList;
 }
+const AlertsSummaryGroupItem = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<AlertsSummaryGroupItem>;
+
 /** List of the items */
 export type AlertsSummaryGroupValuesList = Array<AlertsSummaryGroupItem>;
+const AlertsSummaryGroupValuesList = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<AlertsSummaryGroupValuesList>;
+
 /** Group the result set. */
 export interface AlertsSummaryGroup {
   /** Total count of the result set. */
@@ -530,6 +764,8 @@ export interface AlertsSummaryGroup {
   /** List of the items */
   values?: AlertsSummaryGroupValuesList;
 }
+const AlertsSummaryGroup = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<AlertsSummaryGroup>;
+
 export interface GetAlertSummaryResponse {
   /** Azure resource Id */
   id?: string;
@@ -539,6 +775,11 @@ export interface GetAlertSummaryResponse {
   name?: string;
   properties?: AlertsSummaryGroup;
 }
+const GetAlertSummaryResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  1,
+) as any as S.Schema<GetAlertSummaryResponse>;
+
 export interface GetPrometheusRuleGroupRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -547,10 +788,19 @@ export interface GetPrometheusRuleGroupRequest {
   /** The name of the rule group. */
   ruleGroupName: string;
 }
+const GetPrometheusRuleGroupRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  2,
+) as any as S.Schema<GetPrometheusRuleGroupRequest>;
+
 /** The type of identity that created the resource. */
 export type SystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
+const SystemDataCreatedByType = S.String;
+
 /** The type of identity that last modified the resource. */
 export type SystemDataLastModifiedByType = "User" | "Application" | "ManagedIdentity" | "Key";
+const SystemDataLastModifiedByType = S.String;
+
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface SystemData {
   /** The identity that created the resource. */
@@ -566,16 +816,33 @@ export interface SystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const SystemData = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<SystemData>;
+
 /** Resource tags. */
 export type GetPrometheusRuleGroupResponseTagsMap = { [key: string]: string | undefined };
+const GetPrometheusRuleGroupResponseTagsMap =
+  AlertProcessingRulesCreateOrUpdateRequestTagsMap as any as S.Schema<GetPrometheusRuleGroupResponseTagsMap>;
+
 /** Target Azure Monitor workspaces resource ids. This api-version is currently limited to creating with one scope. This may change in future. */
 export type PrometheusRuleGroupPropertiesScopesList = Array<string>;
+const PrometheusRuleGroupPropertiesScopesList =
+  AlertProcessingRulePropertiesScopesList as any as S.Schema<PrometheusRuleGroupPropertiesScopesList>;
+
 /** Labels to add or overwrite before storing the result. */
 export type PrometheusRuleLabelsMap = { [key: string]: string | undefined };
+const PrometheusRuleLabelsMap =
+  AlertProcessingRulesCreateOrUpdateRequestTagsMap as any as S.Schema<PrometheusRuleLabelsMap>;
+
 /** The annotations clause specifies a set of informational labels that can be used to store longer additional information such as alert descriptions or runbook links. The annotation values can be templated. */
 export type PrometheusRuleAnnotationsMap = { [key: string]: string | undefined };
+const PrometheusRuleAnnotationsMap =
+  AlertProcessingRulesCreateOrUpdateRequestTagsMap as any as S.Schema<PrometheusRuleAnnotationsMap>;
+
 /** The properties of an action group object. */
 export type PrometheusRuleGroupActionActionPropertiesMap = { [key: string]: string | undefined };
+const PrometheusRuleGroupActionActionPropertiesMap =
+  AlertProcessingRulesCreateOrUpdateRequestTagsMap as any as S.Schema<PrometheusRuleGroupActionActionPropertiesMap>;
+
 /** An alert action. Only relevant for alerts. */
 export interface PrometheusRuleGroupAction {
   /** The resource id of the action group to use. */
@@ -583,8 +850,18 @@ export interface PrometheusRuleGroupAction {
   /** The properties of an action group object. */
   actionProperties?: PrometheusRuleGroupActionActionPropertiesMap;
 }
+const PrometheusRuleGroupAction = /*@__PURE__*/ __L.at(
+  __c5,
+  4,
+) as any as S.Schema<PrometheusRuleGroupAction>;
+
 /** Actions that are performed when the alert rule becomes active, and when an alert condition is resolved. */
 export type PrometheusRuleActionsList = Array<PrometheusRuleGroupAction>;
+const PrometheusRuleActionsList = /*@__PURE__*/ __L.at(
+  __c5,
+  5,
+) as any as S.Schema<PrometheusRuleActionsList>;
+
 /** Specifies the Prometheus alert rule configuration. */
 export interface PrometheusRuleResolveConfiguration {
   /** Enable alert auto-resolution. */
@@ -592,6 +869,11 @@ export interface PrometheusRuleResolveConfiguration {
   /** Alert auto-resolution timeout. */
   timeToResolve?: string;
 }
+const PrometheusRuleResolveConfiguration = /*@__PURE__*/ __L.at(
+  __c5,
+  6,
+) as any as S.Schema<PrometheusRuleResolveConfiguration>;
+
 /** An Azure Prometheus alerting or recording rule. */
 export interface PrometheusRule {
   /** Recorded metrics name. */
@@ -615,8 +897,15 @@ export interface PrometheusRule {
   /** Defines the configuration for resolving fired alerts. Only relevant for alerts. */
   resolveConfiguration?: PrometheusRuleResolveConfiguration;
 }
+const PrometheusRule = /*@__PURE__*/ __L.at(__c5, 7) as any as S.Schema<PrometheusRule>;
+
 /** Defines the rules in the Prometheus rule group. */
 export type PrometheusRuleGroupPropertiesRulesList = Array<PrometheusRule>;
+const PrometheusRuleGroupPropertiesRulesList = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<PrometheusRuleGroupPropertiesRulesList>;
+
 /** An Azure Prometheus rule group. */
 export interface PrometheusRuleGroupProperties {
   /** Rule group description. */
@@ -632,6 +921,11 @@ export interface PrometheusRuleGroupProperties {
   /** Defines the rules in the Prometheus rule group. */
   rules: PrometheusRuleGroupPropertiesRulesList;
 }
+const PrometheusRuleGroupProperties = /*@__PURE__*/ __L.at(
+  __c6,
+  1,
+) as any as S.Schema<PrometheusRuleGroupProperties>;
+
 export interface GetPrometheusRuleGroupResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -648,6 +942,11 @@ export interface GetPrometheusRuleGroupResponse {
   /** The Prometheus rule group properties of the resource. */
   properties: PrometheusRuleGroupProperties;
 }
+const GetPrometheusRuleGroupResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  2,
+) as any as S.Schema<GetPrometheusRuleGroupResponse>;
+
 export interface GetSmartDetectorAlertRuleRequest {
   /** The Azure subscription Id. */
   subscriptionId: string;
@@ -658,18 +957,41 @@ export interface GetSmartDetectorAlertRuleRequest {
   /** Indicates if Smart Detector should be expanded. */
   expandDetector?: boolean;
 }
+const GetSmartDetectorAlertRuleRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  3,
+) as any as S.Schema<GetSmartDetectorAlertRuleRequest>;
+
 /** The resource tags. */
 export type GetSmartDetectorAlertRuleResponseTagsMap = { [key: string]: string | undefined };
+const GetSmartDetectorAlertRuleResponseTagsMap =
+  AlertProcessingRulesCreateOrUpdateRequestTagsMap as any as S.Schema<GetSmartDetectorAlertRuleResponseTagsMap>;
+
 /** The alert rule state. */
 export type AlertRulePropertiesState = "Enabled" | "Disabled";
+const AlertRulePropertiesState = S.String;
+
 /** The alert rule severity. */
 export type AlertRulePropertiesSeverity = "Sev0" | "Sev1" | "Sev2" | "Sev3" | "Sev4";
+const AlertRulePropertiesSeverity = S.String;
+
 /** The detector's parameters.' */
 export type DetectorParametersMap = { [key: string]: unknown | undefined };
+const DetectorParametersMap = /*@__PURE__*/ __L.at(
+  __c6,
+  4,
+) as any as S.Schema<DetectorParametersMap>;
+
 /** The Smart Detector supported resource types. */
 export type DetectorSupportedResourceTypesList = Array<string>;
+const DetectorSupportedResourceTypesList =
+  AlertProcessingRulePropertiesScopesList as any as S.Schema<DetectorSupportedResourceTypesList>;
+
 /** The Smart Detector image path. By default this is not populated, unless it's specified in expandDetector */
 export type DetectorImagePathsList = Array<string>;
+const DetectorImagePathsList =
+  AlertProcessingRulePropertiesScopesList as any as S.Schema<DetectorImagePathsList>;
+
 /** The detector parameter type. */
 export type DetectorParameterDefinitionType =
   | "String"
@@ -677,6 +999,8 @@ export type DetectorParameterDefinitionType =
   | "Double"
   | "Boolean"
   | "DateTime";
+const DetectorParameterDefinitionType = S.String;
+
 /** The detector parameter definition. */
 export interface DetectorParameterDefinition {
   /** The detector parameter name. */
@@ -690,10 +1014,23 @@ export interface DetectorParameterDefinition {
   /** A value indicating whether this detector parameter is mandatory. */
   isMandatory?: boolean;
 }
+const DetectorParameterDefinition = /*@__PURE__*/ __L.at(
+  __c6,
+  5,
+) as any as S.Schema<DetectorParameterDefinition>;
+
 /** The Smart Detector parameters definitions.' */
 export type DetectorParameterDefinitionsList = Array<DetectorParameterDefinition>;
+const DetectorParameterDefinitionsList = /*@__PURE__*/ __L.at(
+  __c6,
+  6,
+) as any as S.Schema<DetectorParameterDefinitionsList>;
+
 /** The Smart Detector supported cadences. */
 export type DetectorSupportedCadencesList = Array<number>;
+const DetectorSupportedCadencesList =
+  RecurrenceDaysOfMonthList as any as S.Schema<DetectorSupportedCadencesList>;
+
 /** The detector information. By default this is not populated, unless it's specified in expandDetector */
 export interface Detector {
   /** The detector id. */
@@ -713,10 +1050,18 @@ export interface Detector {
   /** The Smart Detector supported cadences. */
   supportedCadences?: DetectorSupportedCadencesList;
 }
+const Detector = /*@__PURE__*/ __L.at(__c6, 7) as any as S.Schema<Detector>;
+
 /** The alert rule resources scope. */
 export type AlertRulePropertiesScopeList = Array<string>;
+const AlertRulePropertiesScopeList =
+  AlertProcessingRulePropertiesScopesList as any as S.Schema<AlertRulePropertiesScopeList>;
+
 /** The Action Group resource IDs. */
 export type ActionGroupsInformationGroupIdsList = Array<string>;
+const ActionGroupsInformationGroupIdsList =
+  AlertProcessingRulePropertiesScopesList as any as S.Schema<ActionGroupsInformationGroupIdsList>;
+
 /** The Action Groups information, used by the alert rule. */
 export interface ActionGroupsInformation {
   /** An optional custom email subject to use in email notifications. */
@@ -726,11 +1071,21 @@ export interface ActionGroupsInformation {
   /** The Action Group resource IDs. */
   groupIds: ActionGroupsInformationGroupIdsList;
 }
+const ActionGroupsInformation = /*@__PURE__*/ __L.at(
+  __c7,
+  0,
+) as any as S.Schema<ActionGroupsInformation>;
+
 /** Optional throttling information for the alert rule. */
 export interface ThrottlingInformation {
   /** The required duration (in ISO8601 format) to wait before notifying on the alert rule again. The time granularity must be in minutes and minimum value is 0 minutes */
   duration?: string;
 }
+const ThrottlingInformation = /*@__PURE__*/ __L.at(
+  __c7,
+  1,
+) as any as S.Schema<ThrottlingInformation>;
+
 /** The alert rule properties. */
 export interface AlertRuleProperties {
   /** The alert rule description. */
@@ -750,6 +1105,8 @@ export interface AlertRuleProperties {
   /** The alert rule throttling information. */
   throttling?: ThrottlingInformation;
 }
+const AlertRuleProperties = /*@__PURE__*/ __L.at(__c7, 2) as any as S.Schema<AlertRuleProperties>;
+
 export interface GetSmartDetectorAlertRuleResponse {
   /** The resource ID. */
   id?: string;
@@ -764,14 +1121,27 @@ export interface GetSmartDetectorAlertRuleResponse {
   /** The properties of the alert rule. */
   properties?: AlertRuleProperties;
 }
+const GetSmartDetectorAlertRuleResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  3,
+) as any as S.Schema<GetSmartDetectorAlertRuleResponse>;
+
 export interface ListAlertProcessingRuleByResourceGroupRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
+const ListAlertProcessingRuleByResourceGroupRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  4,
+) as any as S.Schema<ListAlertProcessingRuleByResourceGroupRequest>;
+
 /** Resource tags. */
 export type AlertProcessingRuleTagsMap = { [key: string]: string | undefined };
+const AlertProcessingRuleTagsMap =
+  AlertProcessingRulesCreateOrUpdateRequestTagsMap as any as S.Schema<AlertProcessingRuleTagsMap>;
+
 /** Alert processing rule object containing target scopes, conditions and scheduling logic. */
 export interface AlertProcessingRule {
   /** Azure resource Id */
@@ -787,8 +1157,15 @@ export interface AlertProcessingRule {
   /** Alert processing rule properties. */
   properties?: AlertProcessingRuleProperties;
 }
+const AlertProcessingRule = /*@__PURE__*/ __L.at(__c7, 5) as any as S.Schema<AlertProcessingRule>;
+
 /** The AlertProcessingRule items on this page */
 export type AlertProcessingRulesListValueList = Array<AlertProcessingRule>;
+const AlertProcessingRulesListValueList = /*@__PURE__*/ __L.at(
+  __c7,
+  6,
+) as any as S.Schema<AlertProcessingRulesListValueList>;
+
 /** List of alert processing rules. */
 export interface AlertProcessingRulesList {
   /** The AlertProcessingRule items on this page */
@@ -796,11 +1173,26 @@ export interface AlertProcessingRulesList {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const AlertProcessingRulesList = /*@__PURE__*/ __L.at(
+  __c7,
+  7,
+) as any as S.Schema<AlertProcessingRulesList>;
+
 export interface ListAlertProcessingRuleBySubscriptionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
 }
+const ListAlertProcessingRuleBySubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  0,
+) as any as S.Schema<ListAlertProcessingRuleBySubscriptionRequest>;
+
 export interface ListOperationsRequest {}
+const ListOperationsRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  1,
+) as any as S.Schema<ListOperationsRequest>;
+
 /** Properties of the operation */
 export interface OperationDisplay {
   /** Provider name */
@@ -812,6 +1204,8 @@ export interface OperationDisplay {
   /** Description of the operation */
   description?: string;
 }
+const OperationDisplay = /*@__PURE__*/ __L.at(__c8, 2) as any as S.Schema<OperationDisplay>;
+
 /** Operation provided by provider */
 export interface Operation {
   /** Name of the operation */
@@ -819,8 +1213,15 @@ export interface Operation {
   /** Properties of the operation */
   display?: OperationDisplay;
 }
+const Operation = /*@__PURE__*/ __L.at(__c8, 3) as any as S.Schema<Operation>;
+
 /** Array of operations */
 export type OperationsListValueList = Array<Operation>;
+const OperationsListValueList = /*@__PURE__*/ __L.at(
+  __c8,
+  4,
+) as any as S.Schema<OperationsListValueList>;
+
 /** Lists the operations available in the AlertsManagement RP. */
 export interface OperationsList {
   /** URL to fetch the next set of alerts. */
@@ -828,12 +1229,19 @@ export interface OperationsList {
   /** Array of operations */
   value: OperationsListValueList;
 }
+const OperationsList = /*@__PURE__*/ __L.at(__c8, 5) as any as S.Schema<OperationsList>;
+
 export interface ListPrometheusRuleGroupByResourceGroupRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
+const ListPrometheusRuleGroupByResourceGroupRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  6,
+) as any as S.Schema<ListPrometheusRuleGroupByResourceGroupRequest>;
+
 /** Resource tags. */
 export type PrometheusRuleGroupResourceTagsMap = { [key: string]: string | undefined };
 /** The Prometheus rule group resource. */
@@ -853,18 +1261,36 @@ export interface PrometheusRuleGroupResource {
   /** The Prometheus rule group properties of the resource. */
   properties: PrometheusRuleGroupProperties;
 }
+const PrometheusRuleGroupResource =
+  GetPrometheusRuleGroupResponse as any as S.Schema<PrometheusRuleGroupResource>;
+
 /** the values for the alert rule resources. */
 export type PrometheusRuleGroupResourceCollectionValueList = Array<PrometheusRuleGroupResource>;
+const PrometheusRuleGroupResourceCollectionValueList = /*@__PURE__*/ __L.at(
+  __c8,
+  7,
+) as any as S.Schema<PrometheusRuleGroupResourceCollectionValueList>;
+
 /** Represents a collection of alert rule resources. */
 export interface PrometheusRuleGroupResourceCollection {
   /** the values for the alert rule resources. */
   value?: PrometheusRuleGroupResourceCollectionValueList;
   nextLink?: string;
 }
+const PrometheusRuleGroupResourceCollection = /*@__PURE__*/ __L.at(
+  __c9,
+  0,
+) as any as S.Schema<PrometheusRuleGroupResourceCollection>;
+
 export interface ListPrometheusRuleGroupBySubscriptionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
 }
+const ListPrometheusRuleGroupBySubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  1,
+) as any as S.Schema<ListPrometheusRuleGroupBySubscriptionRequest>;
+
 export interface ListSmartDetectorAlertRuleByResourceGroupRequest {
   /** The Azure subscription Id. */
   subscriptionId: string;
@@ -873,8 +1299,16 @@ export interface ListSmartDetectorAlertRuleByResourceGroupRequest {
   /** Indicates if Smart Detector should be expanded. */
   expandDetector?: boolean;
 }
+const ListSmartDetectorAlertRuleByResourceGroupRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  2,
+) as any as S.Schema<ListSmartDetectorAlertRuleByResourceGroupRequest>;
+
 /** The resource tags. */
 export type AlertRuleTagsMap = { [key: string]: string | undefined };
+const AlertRuleTagsMap =
+  AlertProcessingRulesCreateOrUpdateRequestTagsMap as any as S.Schema<AlertRuleTagsMap>;
+
 /** The alert rule information */
 export interface AlertRule {
   /** The resource ID. */
@@ -890,8 +1324,15 @@ export interface AlertRule {
   /** The properties of the alert rule. */
   properties?: AlertRuleProperties;
 }
+const AlertRule = /*@__PURE__*/ __L.at(__c9, 3) as any as S.Schema<AlertRule>;
+
 /** List of Smart Detector alert rules. */
 export type AlertRulesListValueList = Array<AlertRule>;
+const AlertRulesListValueList = /*@__PURE__*/ __L.at(
+  __c9,
+  4,
+) as any as S.Schema<AlertRulesListValueList>;
+
 /** List of Smart Detector alert rules. */
 export interface AlertRulesList {
   /** List of Smart Detector alert rules. */
@@ -899,18 +1340,32 @@ export interface AlertRulesList {
   /** The URL to get the next set of results. */
   nextLink?: string;
 }
+const AlertRulesList = /*@__PURE__*/ __L.at(__c9, 5) as any as S.Schema<AlertRulesList>;
+
 export interface ListSmartDetectorAlertRulesRequest {
   /** The Azure subscription Id. */
   subscriptionId: string;
   /** Indicates if Smart Detector should be expanded. */
   expandDetector?: boolean;
 }
+const ListSmartDetectorAlertRulesRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  6,
+) as any as S.Schema<ListSmartDetectorAlertRulesRequest>;
+
 /** The resource tags. */
 export type PatchSmartDetectorAlertRuleRequestTagsMap = { [key: string]: string | undefined };
+const PatchSmartDetectorAlertRuleRequestTagsMap =
+  AlertProcessingRulesCreateOrUpdateRequestTagsMap as any as S.Schema<PatchSmartDetectorAlertRuleRequestTagsMap>;
+
 /** The alert rule state. */
 export type AlertRulePatchPropertiesState = "Enabled" | "Disabled";
+const AlertRulePatchPropertiesState = S.String;
+
 /** The alert rule severity. */
 export type AlertRulePatchPropertiesSeverity = "Sev0" | "Sev1" | "Sev2" | "Sev3" | "Sev4";
+const AlertRulePatchPropertiesSeverity = S.String;
+
 /** The alert rule properties. */
 export interface AlertRulePatchProperties {
   /** The alert rule description. */
@@ -926,6 +1381,11 @@ export interface AlertRulePatchProperties {
   /** The alert rule throttling information. */
   throttling?: ThrottlingInformation;
 }
+const AlertRulePatchProperties = /*@__PURE__*/ __L.at(
+  __c9,
+  7,
+) as any as S.Schema<AlertRulePatchProperties>;
+
 export interface PatchSmartDetectorAlertRuleRequest {
   /** The Azure subscription Id. */
   subscriptionId: string;
@@ -938,6 +1398,11 @@ export interface PatchSmartDetectorAlertRuleRequest {
   /** The properties of the alert rule. */
   properties?: AlertRulePatchProperties;
 }
+const PatchSmartDetectorAlertRuleRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  0,
+) as any as S.Schema<PatchSmartDetectorAlertRuleRequest>;
+
 /** The resource tags. */
 export type PatchSmartDetectorAlertRuleResponseTagsMap = { [key: string]: string | undefined };
 export interface PatchSmartDetectorAlertRuleResponse {
@@ -954,10 +1419,16 @@ export interface PatchSmartDetectorAlertRuleResponse {
   /** The properties of the alert rule. */
   properties?: AlertRuleProperties;
 }
+const PatchSmartDetectorAlertRuleResponse =
+  GetSmartDetectorAlertRuleResponse as any as S.Schema<PatchSmartDetectorAlertRuleResponse>;
+
 /** Resource tags. */
 export type PrometheusRuleGroupsCreateOrUpdateRequestTagsMap = {
   [key: string]: string | undefined;
 };
+const PrometheusRuleGroupsCreateOrUpdateRequestTagsMap =
+  AlertProcessingRulesCreateOrUpdateRequestTagsMap as any as S.Schema<PrometheusRuleGroupsCreateOrUpdateRequestTagsMap>;
+
 export interface PrometheusRuleGroupsCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -972,6 +1443,11 @@ export interface PrometheusRuleGroupsCreateOrUpdateRequest {
   /** The Prometheus rule group properties of the resource. */
   properties: PrometheusRuleGroupProperties;
 }
+const PrometheusRuleGroupsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  1,
+) as any as S.Schema<PrometheusRuleGroupsCreateOrUpdateRequest>;
+
 /** Resource tags. */
 export type PrometheusRuleGroupsCreateOrUpdateResponseTagsMap = {
   [key: string]: string | undefined;
@@ -992,16 +1468,29 @@ export interface PrometheusRuleGroupsCreateOrUpdateResponse {
   /** The Prometheus rule group properties of the resource. */
   properties: PrometheusRuleGroupProperties;
 }
+const PrometheusRuleGroupsCreateOrUpdateResponse =
+  GetPrometheusRuleGroupResponse as any as S.Schema<PrometheusRuleGroupsCreateOrUpdateResponse>;
+
 /** The resource tags. */
 export type SmartDetectorAlertRulesCreateOrUpdateRequestTagsMap = {
   [key: string]: string | undefined;
 };
+const SmartDetectorAlertRulesCreateOrUpdateRequestTagsMap =
+  AlertProcessingRulesCreateOrUpdateRequestTagsMap as any as S.Schema<SmartDetectorAlertRulesCreateOrUpdateRequestTagsMap>;
+
 /** The alert rule state. */
 export type AlertRulePropertiesInputState = "Enabled" | "Disabled";
+const AlertRulePropertiesInputState = S.String;
+
 /** The alert rule severity. */
 export type AlertRulePropertiesInputSeverity = "Sev0" | "Sev1" | "Sev2" | "Sev3" | "Sev4";
+const AlertRulePropertiesInputSeverity = S.String;
+
 /** The detector's parameters.' */
 export type DetectorInputParametersMap = { [key: string]: unknown | undefined };
+const DetectorInputParametersMap =
+  DetectorParametersMap as any as S.Schema<DetectorInputParametersMap>;
+
 /** The detector information. By default this is not populated, unless it's specified in expandDetector */
 export interface DetectorInput {
   /** The detector id. */
@@ -1009,8 +1498,13 @@ export interface DetectorInput {
   /** The detector's parameters.' */
   parameters?: DetectorInputParametersMap;
 }
+const DetectorInput = /*@__PURE__*/ __L.at(__c10, 2) as any as S.Schema<DetectorInput>;
+
 /** The alert rule resources scope. */
 export type AlertRulePropertiesInputScopeList = Array<string>;
+const AlertRulePropertiesInputScopeList =
+  AlertProcessingRulePropertiesScopesList as any as S.Schema<AlertRulePropertiesInputScopeList>;
+
 /** The alert rule properties. */
 export interface AlertRulePropertiesInput {
   /** The alert rule description. */
@@ -1030,6 +1524,11 @@ export interface AlertRulePropertiesInput {
   /** The alert rule throttling information. */
   throttling?: ThrottlingInformation;
 }
+const AlertRulePropertiesInput = /*@__PURE__*/ __L.at(
+  __c10,
+  3,
+) as any as S.Schema<AlertRulePropertiesInput>;
+
 export interface SmartDetectorAlertRulesCreateOrUpdateRequest {
   /** The Azure subscription Id. */
   subscriptionId: string;
@@ -1044,6 +1543,11 @@ export interface SmartDetectorAlertRulesCreateOrUpdateRequest {
   /** The properties of the alert rule. */
   properties?: AlertRulePropertiesInput;
 }
+const SmartDetectorAlertRulesCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  4,
+) as any as S.Schema<SmartDetectorAlertRulesCreateOrUpdateRequest>;
+
 /** The resource tags. */
 export type SmartDetectorAlertRulesCreateOrUpdateResponseTagsMap = {
   [key: string]: string | undefined;
@@ -1062,13 +1566,21 @@ export interface SmartDetectorAlertRulesCreateOrUpdateResponse {
   /** The properties of the alert rule. */
   properties?: AlertRuleProperties;
 }
+const SmartDetectorAlertRulesCreateOrUpdateResponse =
+  GetSmartDetectorAlertRuleResponse as any as S.Schema<SmartDetectorAlertRulesCreateOrUpdateResponse>;
+
 /** Alert processing rule properties supported by patch. */
 export interface PatchProperties {
   /** Indicates if the given alert processing rule is enabled or disabled. */
   enabled?: boolean;
 }
+const PatchProperties = /*@__PURE__*/ __L.at(__c10, 5) as any as S.Schema<PatchProperties>;
+
 /** Tags to be updated. */
 export type UpdateAlertProcessingRuleRequestTagsMap = { [key: string]: string | undefined };
+const UpdateAlertProcessingRuleRequestTagsMap =
+  AlertProcessingRulesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateAlertProcessingRuleRequestTagsMap>;
+
 export interface UpdateAlertProcessingRuleRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1081,6 +1593,11 @@ export interface UpdateAlertProcessingRuleRequest {
   /** Tags to be updated. */
   tags?: UpdateAlertProcessingRuleRequestTagsMap;
 }
+const UpdateAlertProcessingRuleRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  6,
+) as any as S.Schema<UpdateAlertProcessingRuleRequest>;
+
 /** Resource tags. */
 export type UpdateAlertProcessingRuleResponseTagsMap = { [key: string]: string | undefined };
 export interface UpdateAlertProcessingRuleResponse {
@@ -1097,12 +1614,23 @@ export interface UpdateAlertProcessingRuleResponse {
   /** Alert processing rule properties. */
   properties?: AlertProcessingRuleProperties;
 }
+const UpdateAlertProcessingRuleResponse =
+  AlertProcessingRulesCreateOrUpdateResponse as any as S.Schema<UpdateAlertProcessingRuleResponse>;
+
 /** Resource tags */
 export type UpdatePrometheusRuleGroupRequestTagsMap = { [key: string]: string | undefined };
+const UpdatePrometheusRuleGroupRequestTagsMap =
+  AlertProcessingRulesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdatePrometheusRuleGroupRequestTagsMap>;
+
 export interface PrometheusRuleGroupResourcePatchParametersProperties {
   /** the flag that indicates whether the Prometheus rule group is enabled. */
   enabled?: boolean;
 }
+const PrometheusRuleGroupResourcePatchParametersProperties = /*@__PURE__*/ __L.at(
+  __c10,
+  7,
+) as any as S.Schema<PrometheusRuleGroupResourcePatchParametersProperties>;
+
 export interface UpdatePrometheusRuleGroupRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1114,6 +1642,11 @@ export interface UpdatePrometheusRuleGroupRequest {
   tags?: UpdatePrometheusRuleGroupRequestTagsMap;
   properties?: PrometheusRuleGroupResourcePatchParametersProperties;
 }
+const UpdatePrometheusRuleGroupRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  0,
+) as any as S.Schema<UpdatePrometheusRuleGroupRequest>;
+
 /** Resource tags. */
 export type UpdatePrometheusRuleGroupResponseTagsMap = { [key: string]: string | undefined };
 export interface UpdatePrometheusRuleGroupResponse {
@@ -1132,6 +1665,9 @@ export interface UpdatePrometheusRuleGroupResponse {
   /** The Prometheus rule group properties of the resource. */
   properties: PrometheusRuleGroupProperties;
 }
+const UpdatePrometheusRuleGroupResponse =
+  GetPrometheusRuleGroupResponse as any as S.Schema<UpdatePrometheusRuleGroupResponse>;
+
 export type AlertProcessingRulesCreateOrUpdateError = AzureOpError;
 /** Create or update an alert processing rule. */
 export const AlertProcessingRulesCreateOrUpdate: API.OperationMethod<
@@ -1140,8 +1676,8 @@ export const AlertProcessingRulesCreateOrUpdate: API.OperationMethod<
   AlertProcessingRulesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11) as any as S.Schema<AlertProcessingRulesCreateOrUpdateRequest>,
-  output: __S(12) as any as S.Schema<AlertProcessingRulesCreateOrUpdateResponse>,
+  input: AlertProcessingRulesCreateOrUpdateRequest,
+  output: AlertProcessingRulesCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1155,8 +1691,8 @@ export const AlertsChangeState: API.OperationMethod<
   AlertsChangeStateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13) as any as S.Schema<AlertsChangeStateRequest>,
-  output: __S(17) as any as S.Schema<AlertsChangeStateResponse>,
+  input: AlertsChangeStateRequest,
+  output: AlertsChangeStateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1170,8 +1706,8 @@ export const AlertsMetaData2: API.OperationMethod<
   AlertsMetaData2Error,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18) as any as S.Schema<AlertsMetaDataRequest>,
-  output: __S(20) as any as S.Schema<AlertsMetaData>,
+  input: AlertsMetaDataRequest,
+  output: AlertsMetaData,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1185,8 +1721,8 @@ export const DeleteAlertProcessingRule: API.OperationMethod<
   DeleteAlertProcessingRuleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21) as any as S.Schema<DeleteAlertProcessingRuleRequest>,
-  output: __S(22) as any as S.Schema<DeleteAlertProcessingRuleResponse>,
+  input: DeleteAlertProcessingRuleRequest,
+  output: DeleteAlertProcessingRuleResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1200,8 +1736,8 @@ export const DeletePrometheusRuleGroup: API.OperationMethod<
   DeletePrometheusRuleGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23) as any as S.Schema<DeletePrometheusRuleGroupRequest>,
-  output: __S(22) as any as S.Schema<DeletePrometheusRuleGroupResponse>,
+  input: DeletePrometheusRuleGroupRequest,
+  output: DeletePrometheusRuleGroupResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1215,8 +1751,8 @@ export const DeleteSmartDetectorAlertRule: API.OperationMethod<
   DeleteSmartDetectorAlertRuleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24) as any as S.Schema<DeleteSmartDetectorAlertRuleRequest>,
-  output: __S(22) as any as S.Schema<DeleteSmartDetectorAlertRuleResponse>,
+  input: DeleteSmartDetectorAlertRuleRequest,
+  output: DeleteSmartDetectorAlertRuleResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1230,8 +1766,8 @@ export const GetAlertAll: API.OperationMethod<
   GetAlertAllError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25) as any as S.Schema<GetAlertAllRequest>,
-  output: __S(28) as any as S.Schema<AlertsList>,
+  input: GetAlertAllRequest,
+  output: AlertsList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1245,8 +1781,8 @@ export const GetAlertById: API.OperationMethod<
   GetAlertByIdError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29) as any as S.Schema<GetAlertByIdRequest>,
-  output: __S(26) as any as S.Schema<GetAlertByIdResponse>,
+  input: GetAlertByIdRequest,
+  output: GetAlertByIdResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1260,8 +1796,8 @@ export const GetAlertHistory: API.OperationMethod<
   GetAlertHistoryError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30) as any as S.Schema<GetAlertHistoryRequest>,
-  output: __S(34) as any as S.Schema<GetAlertHistoryResponse>,
+  input: GetAlertHistoryRequest,
+  output: GetAlertHistoryResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1275,8 +1811,8 @@ export const GetAlertProcessingRuleByName: API.OperationMethod<
   GetAlertProcessingRuleByNameError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35) as any as S.Schema<GetAlertProcessingRuleByNameRequest>,
-  output: __S(12) as any as S.Schema<GetAlertProcessingRuleByNameResponse>,
+  input: GetAlertProcessingRuleByNameRequest,
+  output: GetAlertProcessingRuleByNameResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1290,8 +1826,8 @@ export const GetAlertSummary: API.OperationMethod<
   GetAlertSummaryError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36) as any as S.Schema<GetAlertSummaryRequest>,
-  output: __S(41) as any as S.Schema<GetAlertSummaryResponse>,
+  input: GetAlertSummaryRequest,
+  output: GetAlertSummaryResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1305,8 +1841,8 @@ export const GetPrometheusRuleGroup: API.OperationMethod<
   GetPrometheusRuleGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42) as any as S.Schema<GetPrometheusRuleGroupRequest>,
-  output: __S(50) as any as S.Schema<GetPrometheusRuleGroupResponse>,
+  input: GetPrometheusRuleGroupRequest,
+  output: GetPrometheusRuleGroupResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1320,8 +1856,8 @@ export const GetSmartDetectorAlertRule: API.OperationMethod<
   GetSmartDetectorAlertRuleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(51) as any as S.Schema<GetSmartDetectorAlertRuleRequest>,
-  output: __S(59) as any as S.Schema<GetSmartDetectorAlertRuleResponse>,
+  input: GetSmartDetectorAlertRuleRequest,
+  output: GetSmartDetectorAlertRuleResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1335,8 +1871,8 @@ export const ListAlertProcessingRuleByResourceGroup: API.OperationMethod<
   ListAlertProcessingRuleByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60) as any as S.Schema<ListAlertProcessingRuleByResourceGroupRequest>,
-  output: __S(63) as any as S.Schema<AlertProcessingRulesList>,
+  input: ListAlertProcessingRuleByResourceGroupRequest,
+  output: AlertProcessingRulesList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1350,8 +1886,8 @@ export const ListAlertProcessingRuleBySubscription: API.OperationMethod<
   ListAlertProcessingRuleBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(64) as any as S.Schema<ListAlertProcessingRuleBySubscriptionRequest>,
-  output: __S(63) as any as S.Schema<AlertProcessingRulesList>,
+  input: ListAlertProcessingRuleBySubscriptionRequest,
+  output: AlertProcessingRulesList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1365,8 +1901,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65) as any as S.Schema<ListOperationsRequest>,
-  output: __S(69) as any as S.Schema<OperationsList>,
+  input: ListOperationsRequest,
+  output: OperationsList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1380,8 +1916,8 @@ export const ListPrometheusRuleGroupByResourceGroup: API.OperationMethod<
   ListPrometheusRuleGroupByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(70) as any as S.Schema<ListPrometheusRuleGroupByResourceGroupRequest>,
-  output: __S(72) as any as S.Schema<PrometheusRuleGroupResourceCollection>,
+  input: ListPrometheusRuleGroupByResourceGroupRequest,
+  output: PrometheusRuleGroupResourceCollection,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1395,8 +1931,8 @@ export const ListPrometheusRuleGroupBySubscription: API.OperationMethod<
   ListPrometheusRuleGroupBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(73) as any as S.Schema<ListPrometheusRuleGroupBySubscriptionRequest>,
-  output: __S(72) as any as S.Schema<PrometheusRuleGroupResourceCollection>,
+  input: ListPrometheusRuleGroupBySubscriptionRequest,
+  output: PrometheusRuleGroupResourceCollection,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1410,8 +1946,8 @@ export const ListSmartDetectorAlertRuleByResourceGroup: API.OperationMethod<
   ListSmartDetectorAlertRuleByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(74) as any as S.Schema<ListSmartDetectorAlertRuleByResourceGroupRequest>,
-  output: __S(77) as any as S.Schema<AlertRulesList>,
+  input: ListSmartDetectorAlertRuleByResourceGroupRequest,
+  output: AlertRulesList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1425,8 +1961,8 @@ export const ListSmartDetectorAlertRules: API.OperationMethod<
   ListSmartDetectorAlertRulesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(78) as any as S.Schema<ListSmartDetectorAlertRulesRequest>,
-  output: __S(77) as any as S.Schema<AlertRulesList>,
+  input: ListSmartDetectorAlertRulesRequest,
+  output: AlertRulesList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1440,8 +1976,8 @@ export const PatchSmartDetectorAlertRule: API.OperationMethod<
   PatchSmartDetectorAlertRuleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(80) as any as S.Schema<PatchSmartDetectorAlertRuleRequest>,
-  output: __S(59) as any as S.Schema<PatchSmartDetectorAlertRuleResponse>,
+  input: PatchSmartDetectorAlertRuleRequest,
+  output: PatchSmartDetectorAlertRuleResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1455,8 +1991,8 @@ export const PrometheusRuleGroupsCreateOrUpdate: API.OperationMethod<
   PrometheusRuleGroupsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(81) as any as S.Schema<PrometheusRuleGroupsCreateOrUpdateRequest>,
-  output: __S(50) as any as S.Schema<PrometheusRuleGroupsCreateOrUpdateResponse>,
+  input: PrometheusRuleGroupsCreateOrUpdateRequest,
+  output: PrometheusRuleGroupsCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1470,8 +2006,8 @@ export const SmartDetectorAlertRulesCreateOrUpdate: API.OperationMethod<
   SmartDetectorAlertRulesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(84) as any as S.Schema<SmartDetectorAlertRulesCreateOrUpdateRequest>,
-  output: __S(59) as any as S.Schema<SmartDetectorAlertRulesCreateOrUpdateResponse>,
+  input: SmartDetectorAlertRulesCreateOrUpdateRequest,
+  output: SmartDetectorAlertRulesCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1485,8 +2021,8 @@ export const UpdateAlertProcessingRule: API.OperationMethod<
   UpdateAlertProcessingRuleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(86) as any as S.Schema<UpdateAlertProcessingRuleRequest>,
-  output: __S(12) as any as S.Schema<UpdateAlertProcessingRuleResponse>,
+  input: UpdateAlertProcessingRuleRequest,
+  output: UpdateAlertProcessingRuleResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1500,8 +2036,8 @@ export const UpdatePrometheusRuleGroup: API.OperationMethod<
   UpdatePrometheusRuleGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(88) as any as S.Schema<UpdatePrometheusRuleGroupRequest>,
-  output: __S(50) as any as S.Schema<UpdatePrometheusRuleGroupResponse>,
+  input: UpdatePrometheusRuleGroupRequest,
+  output: UpdatePrometheusRuleGroupResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1517,34 +2053,34 @@ function __c0(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          field: S.optional(S.String),
-          operator: S.optional(S.String),
-          values: S.optional(__S(1)),
+          field: S.optional(Field),
+          operator: S.optional(Operator),
+          values: S.optional(ConditionValuesList),
         }),
       ).annotate({ identifier: "Condition" });
     case 3:
-      return S.Array(__S(2));
+      return S.Array(Condition);
     case 4:
       return S.Array(S.Number);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          recurrenceType: S.String,
+          recurrenceType: RecurrenceType,
           startTime: S.optional(S.String),
           endTime: S.optional(S.String),
-          daysOfWeek: S.optional(__S(1)),
-          daysOfMonth: S.optional(__S(4)),
+          daysOfWeek: S.optional(RecurrenceDaysOfWeekList),
+          daysOfMonth: S.optional(RecurrenceDaysOfMonthList),
         }),
       ).annotate({ identifier: "Recurrence" });
     case 6:
-      return S.Array(__S(5));
+      return S.Array(Recurrence);
     case 7:
       return S.suspend(() =>
         S.Struct({
           effectiveFrom: S.optional(S.String),
           effectiveUntil: S.optional(S.String),
           timeZone: S.optional(S.String),
-          recurrences: S.optional(__S(6)),
+          recurrences: S.optional(ScheduleRecurrencesList),
         }),
       ).annotate({ identifier: "Schedule" });
   }
@@ -1554,19 +2090,19 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          actionType: S.String,
-          actionGroupIds: S.optional(__S(1)),
+          actionType: ActionType,
+          actionGroupIds: S.optional(ActionActionGroupIdsList),
         }),
       ).annotate({ identifier: "Action" });
     case 1:
-      return S.Array(__S(8));
+      return S.Array(Action);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          scopes: __S(1),
-          conditions: S.optional(__S(3)),
-          schedule: S.optional(__S(7)),
-          actions: __S(9),
+          scopes: AlertProcessingRulePropertiesScopesList,
+          conditions: S.optional(AlertProcessingRulePropertiesConditionsList),
+          schedule: S.optional(Schedule),
+          actions: AlertProcessingRulePropertiesActionsList,
           description: S.optional(S.String),
           enabled: S.optional(S.Boolean),
         }),
@@ -1579,9 +2115,9 @@ function __c1(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           alertProcessingRuleName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(0)),
+          tags: S.optional(AlertProcessingRulesCreateOrUpdateRequestTagsMap),
           location: S.String,
-          properties: S.optional(__S(10)),
+          properties: S.optional(AlertProcessingRuleProperties),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -1599,9 +2135,9 @@ function __c1(j: number): any {
           id: S.optional(S.String),
           type: S.optional(S.String),
           name: S.optional(S.String),
-          tags: S.optional(__S(0)),
+          tags: S.optional(AlertProcessingRulesCreateOrUpdateResponseTagsMap),
           location: S.String,
-          properties: S.optional(__S(10)),
+          properties: S.optional(AlertProcessingRuleProperties),
         }),
       ).annotate({
         identifier: "AlertProcessingRulesCreateOrUpdateResponse",
@@ -1611,7 +2147,7 @@ function __c1(j: number): any {
         S.Struct({
           scope: S.String.pipe(T.Label()),
           alertId: S.String.pipe(T.Label()),
-          newState: S.String.pipe(T.Query()),
+          newState: AlertsChangeStateRequestNewState.pipe(T.Query()),
           comments: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -1631,15 +2167,15 @@ function __c1(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          severity: S.optional(S.String),
-          signalType: S.optional(S.String),
-          alertState: S.optional(S.String),
-          monitorCondition: S.optional(S.String),
+          severity: S.optional(EssentialsSeverity),
+          signalType: S.optional(EssentialsSignalType),
+          alertState: S.optional(EssentialsAlertState),
+          monitorCondition: S.optional(EssentialsMonitorCondition),
           targetResource: S.optional(S.String),
           targetResourceName: S.optional(S.String),
           targetResourceGroup: S.optional(S.String),
           targetResourceType: S.optional(S.String),
-          monitorService: S.optional(S.String),
+          monitorService: S.optional(EssentialsMonitorService),
           alertRule: S.optional(S.String),
           sourceCreatedId: S.optional(S.String),
           smartGroupId: S.optional(S.String),
@@ -1648,7 +2184,7 @@ function __c1(j: number): any {
           lastModifiedDateTime: S.optional(S.String),
           monitorConditionResolvedDateTime: S.optional(S.String),
           lastModifiedUserName: S.optional(S.String),
-          actionStatus: S.optional(__S(14)),
+          actionStatus: S.optional(ActionStatus),
           description: S.optional(S.String),
         }),
       ).annotate({ identifier: "Essentials" });
@@ -1659,7 +2195,7 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          essentials: S.optional(__S(15)),
+          essentials: S.optional(Essentials),
           context: S.optional(S.Unknown),
           egressConfig: S.optional(S.Unknown),
         }),
@@ -1670,7 +2206,7 @@ function __c2(j: number): any {
           id: S.optional(S.String),
           type: S.optional(S.String),
           name: S.optional(S.String),
-          properties: S.optional(__S(16)),
+          properties: S.optional(AlertProperties),
         }),
       ).annotate({
         identifier: "AlertsChangeStateResponse",
@@ -1678,7 +2214,7 @@ function __c2(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          identifier: S.String.pipe(T.Query()),
+          identifier: AlertsMetaDataRequestIdentifier.pipe(T.Query()),
         }).pipe(
           T.Http({
             method: "GET",
@@ -1691,13 +2227,13 @@ function __c2(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          metadataIdentifier: S.String,
+          metadataIdentifier: AlertsMetaDataPropertiesMetadataIdentifier,
         }),
       ).annotate({ identifier: "AlertsMetaDataProperties" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          properties: S.optional(__S(19)),
+          properties: S.optional(AlertsMetaDataProperties),
         }),
       ).annotate({ identifier: "AlertsMetaData" });
     case 5:
@@ -1766,19 +2302,19 @@ function __c3(j: number): any {
           targetResource: S.optional(S.String.pipe(T.Query())),
           targetResourceType: S.optional(S.String.pipe(T.Query())),
           targetResourceGroup: S.optional(S.String.pipe(T.Query())),
-          monitorService: S.optional(S.String.pipe(T.Query())),
-          monitorCondition: S.optional(S.String.pipe(T.Query())),
-          severity: S.optional(S.String.pipe(T.Query())),
-          alertState: S.optional(S.String.pipe(T.Query())),
+          monitorService: S.optional(GetAlertAllRequestMonitorService.pipe(T.Query())),
+          monitorCondition: S.optional(GetAlertAllRequestMonitorCondition.pipe(T.Query())),
+          severity: S.optional(GetAlertAllRequestSeverity.pipe(T.Query())),
+          alertState: S.optional(GetAlertAllRequestAlertState.pipe(T.Query())),
           alertRule: S.optional(S.String.pipe(T.Query())),
           smartGroupId: S.optional(S.String.pipe(T.Query())),
           includeContext: S.optional(S.Boolean.pipe(T.Query())),
           includeEgressConfig: S.optional(S.Boolean.pipe(T.Query())),
           pageCount: S.optional(S.Number.pipe(T.Query())),
-          sortBy: S.optional(S.String.pipe(T.Query())),
-          sortOrder: S.optional(S.String.pipe(T.Query())),
+          sortBy: S.optional(GetAlertAllRequestSortBy.pipe(T.Query())),
+          sortOrder: S.optional(GetAlertAllRequestSortOrder.pipe(T.Query())),
           select: S.optional(S.String.pipe(T.Query())),
-          timeRange: S.optional(S.String.pipe(T.Query())),
+          timeRange: S.optional(GetAlertAllRequestTimeRange.pipe(T.Query())),
           customTimeRange: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
@@ -1795,16 +2331,16 @@ function __c3(j: number): any {
           id: S.optional(S.String),
           type: S.optional(S.String),
           name: S.optional(S.String),
-          properties: S.optional(__S(16)),
+          properties: S.optional(AlertProperties),
         }),
       ).annotate({ identifier: "Alert" });
     case 3:
-      return S.Array(__S(26));
+      return S.Array(Alert);
     case 4:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(__S(27)),
+          value: S.optional(AlertsListValueList),
         }),
       ).annotate({ identifier: "AlertsList" });
     case 5:
@@ -1838,7 +2374,7 @@ function __c3(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          modificationEvent: S.optional(S.String),
+          modificationEvent: S.optional(AlertModificationItemModificationEvent),
           oldValue: S.optional(S.String),
           newValue: S.optional(S.String),
           modifiedAt: S.optional(S.String),
@@ -1852,12 +2388,12 @@ function __c3(j: number): any {
 function __c4(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(31));
+      return S.Array(AlertModificationItem);
     case 1:
       return S.suspend(() =>
         S.Struct({
           alertId: S.optional(S.String),
-          modifications: S.optional(__S(32)),
+          modifications: S.optional(AlertModificationPropertiesModificationsList),
         }),
       ).annotate({
         identifier: "AlertModificationProperties",
@@ -1868,7 +2404,7 @@ function __c4(j: number): any {
           id: S.optional(S.String),
           type: S.optional(S.String),
           name: S.optional(S.String),
-          properties: S.optional(__S(33)),
+          properties: S.optional(AlertModificationProperties),
         }),
       ).annotate({ identifier: "GetAlertHistoryResponse" });
     case 3:
@@ -1892,17 +2428,17 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           scope: S.String.pipe(T.Label()),
-          groupby: S.String.pipe(T.Query()),
+          groupby: GetAlertSummaryRequestGroupby.pipe(T.Query()),
           includeSmartGroupsCount: S.optional(S.Boolean.pipe(T.Query())),
           targetResource: S.optional(S.String.pipe(T.Query())),
           targetResourceType: S.optional(S.String.pipe(T.Query())),
           targetResourceGroup: S.optional(S.String.pipe(T.Query())),
-          monitorService: S.optional(S.String.pipe(T.Query())),
-          monitorCondition: S.optional(S.String.pipe(T.Query())),
-          severity: S.optional(S.String.pipe(T.Query())),
-          alertState: S.optional(S.String.pipe(T.Query())),
+          monitorService: S.optional(GetAlertSummaryRequestMonitorService.pipe(T.Query())),
+          monitorCondition: S.optional(GetAlertSummaryRequestMonitorCondition.pipe(T.Query())),
+          severity: S.optional(GetAlertSummaryRequestSeverity.pipe(T.Query())),
+          alertState: S.optional(GetAlertSummaryRequestAlertState.pipe(T.Query())),
           alertRule: S.optional(S.String.pipe(T.Query())),
-          timeRange: S.optional(S.String.pipe(T.Query())),
+          timeRange: S.optional(GetAlertSummaryRequestTimeRange.pipe(T.Query())),
           customTimeRange: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
@@ -1914,18 +2450,18 @@ function __c4(j: number): any {
         ),
       ).annotate({ identifier: "GetAlertSummaryRequest" });
     case 5:
-      return S.Array(/*@__PURE__*/ S.suspend(() => __S(38)));
+      return S.Array(/*@__PURE__*/ S.suspend(() => AlertsSummaryGroupItem));
     case 6:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           count: S.optional(S.Number),
           groupedby: S.optional(S.String),
-          values: S.optional(__S(37)),
+          values: S.optional(AlertsSummaryGroupItemValuesList),
         }),
       ).annotate({ identifier: "AlertsSummaryGroupItem" });
     case 7:
-      return S.Array(__S(38));
+      return S.Array(AlertsSummaryGroupItem);
   }
 }
 function __c5(j: number): any {
@@ -1936,7 +2472,7 @@ function __c5(j: number): any {
           total: S.optional(S.Number),
           smartGroupsCount: S.optional(S.Number),
           groupedby: S.optional(S.String),
-          values: S.optional(__S(39)),
+          values: S.optional(AlertsSummaryGroupValuesList),
         }),
       ).annotate({ identifier: "AlertsSummaryGroup" });
     case 1:
@@ -1945,7 +2481,7 @@ function __c5(j: number): any {
           id: S.optional(S.String),
           type: S.optional(S.String),
           name: S.optional(S.String),
-          properties: S.optional(__S(40)),
+          properties: S.optional(AlertsSummaryGroup),
         }),
       ).annotate({ identifier: "GetAlertSummaryResponse" });
     case 2:
@@ -1969,10 +2505,10 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
-          createdByType: S.optional(S.String),
+          createdByType: S.optional(SystemDataCreatedByType),
           createdAt: S.optional(S.String),
           lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(S.String),
+          lastModifiedByType: S.optional(SystemDataLastModifiedByType),
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "SystemData" });
@@ -1980,13 +2516,13 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           actionGroupId: S.optional(S.String),
-          actionProperties: S.optional(__S(0)),
+          actionProperties: S.optional(PrometheusRuleGroupActionActionPropertiesMap),
         }),
       ).annotate({
         identifier: "PrometheusRuleGroupAction",
       });
     case 5:
-      return S.Array(__S(44));
+      return S.Array(PrometheusRuleGroupAction);
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -2003,12 +2539,12 @@ function __c5(j: number): any {
           alert: S.optional(S.String),
           enabled: S.optional(S.Boolean),
           expression: S.String,
-          labels: S.optional(__S(0)),
+          labels: S.optional(PrometheusRuleLabelsMap),
           severity: S.optional(S.Number),
           for: S.optional(S.String),
-          annotations: S.optional(__S(0)),
-          actions: S.optional(__S(45)),
-          resolveConfiguration: S.optional(__S(46)),
+          annotations: S.optional(PrometheusRuleAnnotationsMap),
+          actions: S.optional(PrometheusRuleActionsList),
+          resolveConfiguration: S.optional(PrometheusRuleResolveConfiguration),
         }),
       ).annotate({ identifier: "PrometheusRule" });
   }
@@ -2016,16 +2552,16 @@ function __c5(j: number): any {
 function __c6(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(47));
+      return S.Array(PrometheusRule);
     case 1:
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
           enabled: S.optional(S.Boolean),
           clusterName: S.optional(S.String),
-          scopes: __S(1),
+          scopes: PrometheusRuleGroupPropertiesScopesList,
           interval: S.optional(S.String),
-          rules: __S(48),
+          rules: PrometheusRuleGroupPropertiesRulesList,
         }),
       ).annotate({
         identifier: "PrometheusRuleGroupProperties",
@@ -2036,10 +2572,10 @@ function __c6(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(43)),
-          tags: S.optional(__S(0)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(GetPrometheusRuleGroupResponseTagsMap),
           location: S.String,
-          properties: __S(49),
+          properties: PrometheusRuleGroupProperties,
         }),
       ).annotate({
         identifier: "GetPrometheusRuleGroupResponse",
@@ -2070,25 +2606,25 @@ function __c6(j: number): any {
           name: S.optional(S.String),
           displayName: S.optional(S.String),
           description: S.optional(S.String),
-          type: S.optional(S.String),
+          type: S.optional(DetectorParameterDefinitionType),
           isMandatory: S.optional(S.Boolean),
         }),
       ).annotate({
         identifier: "DetectorParameterDefinition",
       });
     case 6:
-      return S.Array(__S(53));
+      return S.Array(DetectorParameterDefinition);
     case 7:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          parameters: S.optional(__S(52)),
+          parameters: S.optional(DetectorParametersMap),
           name: S.optional(S.String),
           description: S.optional(S.String),
-          supportedResourceTypes: S.optional(__S(1)),
-          imagePaths: S.optional(__S(1)),
-          parameterDefinitions: S.optional(__S(54)),
-          supportedCadences: S.optional(__S(4)),
+          supportedResourceTypes: S.optional(DetectorSupportedResourceTypesList),
+          imagePaths: S.optional(DetectorImagePathsList),
+          parameterDefinitions: S.optional(DetectorParameterDefinitionsList),
+          supportedCadences: S.optional(DetectorSupportedCadencesList),
         }),
       ).annotate({ identifier: "Detector" });
   }
@@ -2100,7 +2636,7 @@ function __c7(j: number): any {
         S.Struct({
           customEmailSubject: S.optional(S.String),
           customWebhookPayload: S.optional(S.String),
-          groupIds: __S(1),
+          groupIds: ActionGroupsInformationGroupIdsList,
         }),
       ).annotate({ identifier: "ActionGroupsInformation" });
     case 1:
@@ -2113,13 +2649,13 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
-          state: S.String,
-          severity: S.String,
+          state: AlertRulePropertiesState,
+          severity: AlertRulePropertiesSeverity,
           frequency: S.String,
-          detector: __S(55),
-          scope: __S(1),
-          actionGroups: __S(56),
-          throttling: S.optional(__S(57)),
+          detector: Detector,
+          scope: AlertRulePropertiesScopeList,
+          actionGroups: ActionGroupsInformation,
+          throttling: S.optional(ThrottlingInformation),
         }),
       ).annotate({ identifier: "AlertRuleProperties" });
     case 3:
@@ -2129,8 +2665,8 @@ function __c7(j: number): any {
           type: S.optional(S.String),
           name: S.optional(S.String),
           location: S.optional(S.String),
-          tags: S.optional(__S(0)),
-          properties: S.optional(__S(58)),
+          tags: S.optional(GetSmartDetectorAlertRuleResponseTagsMap),
+          properties: S.optional(AlertRuleProperties),
         }),
       ).annotate({
         identifier: "GetSmartDetectorAlertRuleResponse",
@@ -2157,17 +2693,17 @@ function __c7(j: number): any {
           id: S.optional(S.String),
           type: S.optional(S.String),
           name: S.optional(S.String),
-          tags: S.optional(__S(0)),
+          tags: S.optional(AlertProcessingRuleTagsMap),
           location: S.String,
-          properties: S.optional(__S(10)),
+          properties: S.optional(AlertProcessingRuleProperties),
         }),
       ).annotate({ identifier: "AlertProcessingRule" });
     case 6:
-      return S.Array(__S(61));
+      return S.Array(AlertProcessingRule);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          value: __S(62),
+          value: AlertProcessingRulesListValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "AlertProcessingRulesList" });
@@ -2214,16 +2750,16 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          display: S.optional(__S(66)),
+          display: S.optional(OperationDisplay),
         }),
       ).annotate({ identifier: "Operation" });
     case 4:
-      return S.Array(__S(67));
+      return S.Array(Operation);
     case 5:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: __S(68),
+          value: OperationsListValueList,
         }),
       ).annotate({ identifier: "OperationsList" });
     case 6:
@@ -2243,7 +2779,7 @@ function __c8(j: number): any {
         identifier: "ListPrometheusRuleGroupByResourceGroupRequest",
       });
     case 7:
-      return S.Array(__S(50));
+      return S.Array(PrometheusRuleGroupResource);
   }
 }
 function __c9(j: number): any {
@@ -2251,7 +2787,7 @@ function __c9(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(71)),
+          value: S.optional(PrometheusRuleGroupResourceCollectionValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -2296,16 +2832,16 @@ function __c9(j: number): any {
           type: S.optional(S.String),
           name: S.optional(S.String),
           location: S.optional(S.String),
-          tags: S.optional(__S(0)),
-          properties: S.optional(__S(58)),
+          tags: S.optional(AlertRuleTagsMap),
+          properties: S.optional(AlertRuleProperties),
         }),
       ).annotate({ identifier: "AlertRule" });
     case 4:
-      return S.Array(__S(75));
+      return S.Array(AlertRule);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(76)),
+          value: S.optional(AlertRulesListValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "AlertRulesList" });
@@ -2329,11 +2865,11 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
-          state: S.optional(S.String),
-          severity: S.optional(S.String),
+          state: S.optional(AlertRulePatchPropertiesState),
+          severity: S.optional(AlertRulePatchPropertiesSeverity),
           frequency: S.optional(S.String),
-          actionGroups: S.optional(__S(56)),
-          throttling: S.optional(__S(57)),
+          actionGroups: S.optional(ActionGroupsInformation),
+          throttling: S.optional(ThrottlingInformation),
         }),
       ).annotate({ identifier: "AlertRulePatchProperties" });
   }
@@ -2346,8 +2882,8 @@ function __c10(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           alertRuleName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(0)),
-          properties: S.optional(__S(79)),
+          tags: S.optional(PatchSmartDetectorAlertRuleRequestTagsMap),
+          properties: S.optional(AlertRulePatchProperties),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2365,9 +2901,9 @@ function __c10(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           ruleGroupName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(0)),
+          tags: S.optional(PrometheusRuleGroupsCreateOrUpdateRequestTagsMap),
           location: S.String,
-          properties: __S(49),
+          properties: PrometheusRuleGroupProperties,
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2383,20 +2919,20 @@ function __c10(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          parameters: S.optional(__S(52)),
+          parameters: S.optional(DetectorInputParametersMap),
         }),
       ).annotate({ identifier: "DetectorInput" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
-          state: S.String,
-          severity: S.String,
+          state: AlertRulePropertiesInputState,
+          severity: AlertRulePropertiesInputSeverity,
           frequency: S.String,
-          detector: __S(82),
-          scope: __S(1),
-          actionGroups: __S(56),
-          throttling: S.optional(__S(57)),
+          detector: DetectorInput,
+          scope: AlertRulePropertiesInputScopeList,
+          actionGroups: ActionGroupsInformation,
+          throttling: S.optional(ThrottlingInformation),
         }),
       ).annotate({ identifier: "AlertRulePropertiesInput" });
     case 4:
@@ -2406,8 +2942,8 @@ function __c10(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           alertRuleName: S.String.pipe(T.Label()),
           location: S.optional(S.String),
-          tags: S.optional(__S(0)),
-          properties: S.optional(__S(83)),
+          tags: S.optional(SmartDetectorAlertRulesCreateOrUpdateRequestTagsMap),
+          properties: S.optional(AlertRulePropertiesInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2431,8 +2967,8 @@ function __c10(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           alertProcessingRuleName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(85)),
-          tags: S.optional(__S(0)),
+          properties: S.optional(PatchProperties),
+          tags: S.optional(UpdateAlertProcessingRuleRequestTagsMap),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2462,8 +2998,8 @@ function __c11(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           ruleGroupName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(0)),
-          properties: S.optional(__S(87)),
+          tags: S.optional(UpdatePrometheusRuleGroupRequestTagsMap),
+          properties: S.optional(PrometheusRuleGroupResourcePatchParametersProperties),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2475,38 +3011,5 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "UpdatePrometheusRuleGroupRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
-    case 9:
-      return __c9(i & 7);
-    case 10:
-      return __c10(i & 7);
-    case 11:
-      return __c11(i & 7);
   }
 }

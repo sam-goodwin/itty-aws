@@ -7,8 +7,6 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -91,6 +89,8 @@ export interface Catalog {
   /** Output only. The resource name. Format: projects/{project_id_or_number}/locations/{location_id}/catalogs/{catalog_id} */
   name?: string;
 }
+const Catalog = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<Catalog>;
+
 export interface CreateProjectsLocationsCatalogsRequest {
   /** Required. The parent resource where this catalog will be created. Format: projects/{project_id_or_number}/locations/{location_id} */
   parent: string;
@@ -99,7 +99,14 @@ export interface CreateProjectsLocationsCatalogsRequest {
   /** Request body */
   body?: Catalog;
 }
+const CreateProjectsLocationsCatalogsRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<CreateProjectsLocationsCatalogsRequest>;
+
 export type StringMap = { [key: string]: string | undefined };
+const StringMap = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<StringMap>;
+
 /** Options of a Hive database. */
 export interface HiveDatabaseOptions {
   /** Cloud Storage folder URI where the database data is stored, starting with "gs://". */
@@ -107,7 +114,11 @@ export interface HiveDatabaseOptions {
   /** Stores user supplied Hive database parameters. */
   parameters?: StringMap;
 }
+const HiveDatabaseOptions = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<HiveDatabaseOptions>;
+
 export type DatabaseTypeEnum = "TYPE_UNSPECIFIED" | "HIVE";
+const DatabaseTypeEnum = S.String;
+
 /** Database is the container of tables. */
 export interface Database {
   /** Options of a Hive database. */
@@ -125,6 +136,8 @@ export interface Database {
   /** The database type. */
   type?: DatabaseTypeEnum | (string & {});
 }
+const Database = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<Database>;
+
 export interface CreateProjectsLocationsCatalogsDatabasesRequest {
   /** Required. The parent resource where this database will be created. Format: projects/{project_id_or_number}/locations/{location_id}/catalogs/{catalog_id} */
   parent: string;
@@ -133,11 +146,18 @@ export interface CreateProjectsLocationsCatalogsDatabasesRequest {
   /** Request body */
   body?: Database;
 }
+const CreateProjectsLocationsCatalogsDatabasesRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<CreateProjectsLocationsCatalogsDatabasesRequest>;
+
 /** Serializer and deserializer information. */
 export interface SerDeInfo {
   /** The fully qualified Java class name of the serialization library. */
   serializationLib?: string;
 }
+const SerDeInfo = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<SerDeInfo>;
+
 /** Stores physical storage information of the data. */
 export interface StorageDescriptor {
   /** The fully qualified Java class name of the input format. */
@@ -149,6 +169,8 @@ export interface StorageDescriptor {
   /** Cloud Storage folder URI where the table data is stored, starting with "gs://". */
   locationUri?: string;
 }
+const StorageDescriptor = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<StorageDescriptor>;
+
 /** Options of a Hive table. */
 export interface HiveTableOptions {
   /** Stores user supplied Hive table parameters. */
@@ -158,7 +180,11 @@ export interface HiveTableOptions {
   /** Stores physical storage information of the data. */
   storageDescriptor?: StorageDescriptor;
 }
+const HiveTableOptions = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<HiveTableOptions>;
+
 export type TableTypeEnum = "TYPE_UNSPECIFIED" | "HIVE";
+const TableTypeEnum = S.String;
+
 /** Represents a table. */
 export interface Table {
   /** Options of a Hive table. */
@@ -178,6 +204,8 @@ export interface Table {
   /** Output only. The last modification time of the table. */
   updateTime?: string;
 }
+const Table = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<Table>;
+
 export interface CreateProjectsLocationsCatalogsDatabasesTablesRequest {
   /** Required. The parent resource where this table will be created. Format: projects/{project_id_or_number}/locations/{location_id}/catalogs/{catalog_id}/databases/{database_id} */
   parent: string;
@@ -186,30 +214,59 @@ export interface CreateProjectsLocationsCatalogsDatabasesTablesRequest {
   /** Request body */
   body?: Table;
 }
+const CreateProjectsLocationsCatalogsDatabasesTablesRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<CreateProjectsLocationsCatalogsDatabasesTablesRequest>;
+
 export interface DeleteProjectsLocationsCatalogsRequest {
   /** Required. The name of the catalog to delete. Format: projects/{project_id_or_number}/locations/{location_id}/catalogs/{catalog_id} */
   name: string;
 }
+const DeleteProjectsLocationsCatalogsRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<DeleteProjectsLocationsCatalogsRequest>;
+
 export interface DeleteProjectsLocationsCatalogsDatabasesRequest {
   /** Required. The name of the database to delete. Format: projects/{project_id_or_number}/locations/{location_id}/catalogs/{catalog_id}/databases/{database_id} */
   name: string;
 }
+const DeleteProjectsLocationsCatalogsDatabasesRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<DeleteProjectsLocationsCatalogsDatabasesRequest>;
+
 export interface DeleteProjectsLocationsCatalogsDatabasesTablesRequest {
   /** Required. The name of the table to delete. Format: projects/{project_id_or_number}/locations/{location_id}/catalogs/{catalog_id}/databases/{database_id}/tables/{table_id} */
   name: string;
 }
+const DeleteProjectsLocationsCatalogsDatabasesTablesRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<DeleteProjectsLocationsCatalogsDatabasesTablesRequest>;
+
 export interface GetIamPolicyProjectsCatalogsRequest {
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
 }
+const GetIamPolicyProjectsCatalogsRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<GetIamPolicyProjectsCatalogsRequest>;
+
 export type AuditLogConfigLogTypeEnum =
   | "LOG_TYPE_UNSPECIFIED"
   | "ADMIN_READ"
   | "DATA_WRITE"
   | "DATA_READ";
+const AuditLogConfigLogTypeEnum = S.String;
+
 export type StringList = Array<string>;
+const StringList = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<StringList>;
+
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
 export interface AuditLogConfig {
   /** The log type that this config enables. */
@@ -217,7 +274,11 @@ export interface AuditLogConfig {
   /** Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members. */
   exemptedMembers?: StringList;
 }
+const AuditLogConfig = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<AuditLogConfig>;
+
 export type AuditLogConfigList = Array<AuditLogConfig>;
+const AuditLogConfigList = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<AuditLogConfigList>;
+
 /** Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts `jose@example.com` from DATA_READ logging, and `aliya@example.com` from DATA_WRITE logging. */
 export interface AuditConfig {
   /** The configuration for logging of each type of permission. */
@@ -225,7 +286,11 @@ export interface AuditConfig {
   /** Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services. */
   service?: string;
 }
+const AuditConfig = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<AuditConfig>;
+
 export type AuditConfigList = Array<AuditConfig>;
+const AuditConfigList = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<AuditConfigList>;
+
 /** Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information. */
 export interface Expr {
   /** Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file. */
@@ -237,6 +302,8 @@ export interface Expr {
   /** Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression. */
   title?: string;
 }
+const Expr = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<Expr>;
+
 /** Associates `members`, or principals, with a `role`. */
 export interface Binding {
   /** Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles). */
@@ -246,7 +313,11 @@ export interface Binding {
   /** Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`. */
   members?: StringList;
 }
+const Binding = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<Binding>;
+
 export type BindingList = Array<Binding>;
+const BindingList = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<BindingList>;
+
 /** An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single `role`. Principals can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** ``` { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } ``` **YAML example:** ``` bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/). */
 export interface Policy {
   /** Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
@@ -258,30 +329,57 @@ export interface Policy {
   /** Associates a list of `members`, or principals, with a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one principal. The `bindings` in a `Policy` can refer to up to 1,500 principals; up to 250 of these principals can be Google groups. Each occurrence of a principal counts towards these limits. For example, if the `bindings` grant 50 different roles to `user:alice@example.com`, and not to any other principal, then you can add another 1,450 principals to the `bindings` in the `Policy`. */
   bindings?: BindingList;
 }
+const Policy = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<Policy>;
+
 export interface GetIamPolicyProjectsCatalogsNamespacesRequest {
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
 }
+const GetIamPolicyProjectsCatalogsNamespacesRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<GetIamPolicyProjectsCatalogsNamespacesRequest>;
+
 export interface GetIamPolicyProjectsCatalogsNamespacesTablesRequest {
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
 }
+const GetIamPolicyProjectsCatalogsNamespacesTablesRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<GetIamPolicyProjectsCatalogsNamespacesTablesRequest>;
+
 export interface GetProjectsLocationsCatalogsRequest {
   /** Required. The name of the catalog to retrieve. Format: projects/{project_id_or_number}/locations/{location_id}/catalogs/{catalog_id} */
   name: string;
 }
+const GetProjectsLocationsCatalogsRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<GetProjectsLocationsCatalogsRequest>;
+
 export interface GetProjectsLocationsCatalogsDatabasesRequest {
   /** Required. The name of the database to retrieve. Format: projects/{project_id_or_number}/locations/{location_id}/catalogs/{catalog_id}/databases/{database_id} */
   name: string;
 }
+const GetProjectsLocationsCatalogsDatabasesRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<GetProjectsLocationsCatalogsDatabasesRequest>;
+
 export interface GetProjectsLocationsCatalogsDatabasesTablesRequest {
   /** Required. The name of the table to retrieve. Format: projects/{project_id_or_number}/locations/{location_id}/catalogs/{catalog_id}/databases/{database_id}/tables/{table_id} */
   name: string;
 }
+const GetProjectsLocationsCatalogsDatabasesTablesRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<GetProjectsLocationsCatalogsDatabasesTablesRequest>;
+
 export interface ListProjectsLocationsCatalogsRequest {
   /** Required. The parent, which owns this collection of catalogs. Format: projects/{project_id_or_number}/locations/{location_id} */
   parent: string;
@@ -290,7 +388,14 @@ export interface ListProjectsLocationsCatalogsRequest {
   /** The maximum number of catalogs to return. The service may return fewer than this value. If unspecified, at most 50 catalogs will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. */
   pageSize?: number;
 }
+const ListProjectsLocationsCatalogsRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<ListProjectsLocationsCatalogsRequest>;
+
 export type CatalogList = Array<Catalog>;
+const CatalogList = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<CatalogList>;
+
 /** Response message for the ListCatalogs method. */
 export interface ListCatalogsResponse {
   /** The catalogs from the specified project. */
@@ -298,6 +403,8 @@ export interface ListCatalogsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
+const ListCatalogsResponse = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<ListCatalogsResponse>;
+
 export interface ListProjectsLocationsCatalogsDatabasesRequest {
   /** Required. The parent, which owns this collection of databases. Format: projects/{project_id_or_number}/locations/{location_id}/catalogs/{catalog_id} */
   parent: string;
@@ -306,7 +413,14 @@ export interface ListProjectsLocationsCatalogsDatabasesRequest {
   /** A page token, received from a previous `ListDatabases` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListDatabases` must match the call that provided the page token. */
   pageToken?: string;
 }
+const ListProjectsLocationsCatalogsDatabasesRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<ListProjectsLocationsCatalogsDatabasesRequest>;
+
 export type DatabaseList = Array<Database>;
+const DatabaseList = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<DatabaseList>;
+
 /** Response message for the ListDatabases method. */
 export interface ListDatabasesResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
@@ -314,10 +428,17 @@ export interface ListDatabasesResponse {
   /** The databases from the specified catalog. */
   databases?: DatabaseList;
 }
+const ListDatabasesResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<ListDatabasesResponse>;
+
 export type ListProjectsLocationsCatalogsDatabasesTablesViewEnum =
   | "TABLE_VIEW_UNSPECIFIED"
   | "BASIC"
   | "FULL";
+const ListProjectsLocationsCatalogsDatabasesTablesViewEnum = S.String;
+
 export interface ListProjectsLocationsCatalogsDatabasesTablesRequest {
   /** The maximum number of tables to return. The service may return fewer than this value. If unspecified, at most 50 tables will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. */
   pageSize?: number;
@@ -328,7 +449,14 @@ export interface ListProjectsLocationsCatalogsDatabasesTablesRequest {
   /** Required. The parent, which owns this collection of tables. Format: projects/{project_id_or_number}/locations/{location_id}/catalogs/{catalog_id}/databases/{database_id} */
   parent: string;
 }
+const ListProjectsLocationsCatalogsDatabasesTablesRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<ListProjectsLocationsCatalogsDatabasesTablesRequest>;
+
 export type TableList = Array<Table>;
+const TableList = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<TableList>;
+
 /** Response message for the ListTables method. */
 export interface ListTablesResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
@@ -336,6 +464,8 @@ export interface ListTablesResponse {
   /** The tables from the specified database. */
   tables?: TableList;
 }
+const ListTablesResponse = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<ListTablesResponse>;
+
 export interface PatchProjectsLocationsCatalogsDatabasesRequest {
   /** Output only. The resource name. Format: projects/{project_id_or_number}/locations/{location_id}/catalogs/{catalog_id}/databases/{database_id} */
   name: string;
@@ -344,6 +474,11 @@ export interface PatchProjectsLocationsCatalogsDatabasesRequest {
   /** Request body */
   body?: Database;
 }
+const PatchProjectsLocationsCatalogsDatabasesRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<PatchProjectsLocationsCatalogsDatabasesRequest>;
+
 export interface PatchProjectsLocationsCatalogsDatabasesTablesRequest {
   /** Output only. The resource name. Format: projects/{project_id_or_number}/locations/{location_id}/catalogs/{catalog_id}/databases/{database_id}/tables/{table_id} */
   name: string;
@@ -352,17 +487,29 @@ export interface PatchProjectsLocationsCatalogsDatabasesTablesRequest {
   /** Request body */
   body?: Table;
 }
+const PatchProjectsLocationsCatalogsDatabasesTablesRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<PatchProjectsLocationsCatalogsDatabasesTablesRequest>;
+
 /** Request message for the RenameTable method in MetastoreService */
 export interface RenameTableRequest {
   /** Required. The new `name` for the specified table, must be in the same database. Format: projects/{project_id_or_number}/locations/{location_id}/catalogs/{catalog_id}/databases/{database_id}/tables/{table_id} */
   newName?: string;
 }
+const RenameTableRequest = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<RenameTableRequest>;
+
 export interface RenameProjectsLocationsCatalogsDatabasesTablesRequest {
   /** Required. The table's `name` field is used to identify the table to rename. Format: projects/{project_id_or_number}/locations/{location_id}/catalogs/{catalog_id}/databases/{database_id}/tables/{table_id} */
   name: string;
   /** Request body */
   body?: RenameTableRequest;
 }
+const RenameProjectsLocationsCatalogsDatabasesTablesRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  1,
+) as any as S.Schema<RenameProjectsLocationsCatalogsDatabasesTablesRequest>;
+
 /** Request message for `SetIamPolicy` method. */
 export interface SetIamPolicyRequest {
   /** REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Google Cloud services (such as Projects) might reject them. */
@@ -370,52 +517,92 @@ export interface SetIamPolicyRequest {
   /** OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask will be modified. If no mask is provided, the following default mask is used: `paths: "bindings, etag"` */
   updateMask?: string;
 }
+const SetIamPolicyRequest = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<SetIamPolicyRequest>;
+
 export interface SetIamPolicyProjectsCatalogsRequest {
   /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: SetIamPolicyRequest;
 }
+const SetIamPolicyProjectsCatalogsRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<SetIamPolicyProjectsCatalogsRequest>;
+
 export interface SetIamPolicyProjectsCatalogsNamespacesRequest {
   /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: SetIamPolicyRequest;
 }
+const SetIamPolicyProjectsCatalogsNamespacesRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  4,
+) as any as S.Schema<SetIamPolicyProjectsCatalogsNamespacesRequest>;
+
 export interface SetIamPolicyProjectsCatalogsNamespacesTablesRequest {
   /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: SetIamPolicyRequest;
 }
+const SetIamPolicyProjectsCatalogsNamespacesTablesRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  5,
+) as any as S.Schema<SetIamPolicyProjectsCatalogsNamespacesTablesRequest>;
+
 /** Request message for `TestIamPermissions` method. */
 export interface TestIamPermissionsRequest {
   /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
   permissions?: StringList;
 }
+const TestIamPermissionsRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  6,
+) as any as S.Schema<TestIamPermissionsRequest>;
+
 export interface TestIamPermissionsProjectsCatalogsRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
+const TestIamPermissionsProjectsCatalogsRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  7,
+) as any as S.Schema<TestIamPermissionsProjectsCatalogsRequest>;
+
 /** Response message for `TestIamPermissions` method. */
 export interface TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
   permissions?: StringList;
 }
+const TestIamPermissionsResponse =
+  TestIamPermissionsRequest as any as S.Schema<TestIamPermissionsResponse>;
+
 export interface TestIamPermissionsProjectsCatalogsNamespacesRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
+const TestIamPermissionsProjectsCatalogsNamespacesRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<TestIamPermissionsProjectsCatalogsNamespacesRequest>;
+
 export interface TestIamPermissionsProjectsCatalogsNamespacesTablesRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
+const TestIamPermissionsProjectsCatalogsNamespacesTablesRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  1,
+) as any as S.Schema<TestIamPermissionsProjectsCatalogsNamespacesTablesRequest>;
+
 export type CreateProjectsLocationsCatalogsError =
   | NotFound
   | Forbidden
@@ -430,8 +617,8 @@ export const createProjectsLocationsCatalogs: API.OperationMethod<
   CreateProjectsLocationsCatalogsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1) as any as S.Schema<CreateProjectsLocationsCatalogsRequest>,
-  output: __S(0) as any as S.Schema<Catalog>,
+  input: CreateProjectsLocationsCatalogsRequest,
+  output: Catalog,
   errors: [NotFound, Forbidden, BadRequest, Conflict, BigLakeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -451,8 +638,8 @@ export const createProjectsLocationsCatalogsDatabases: API.OperationMethod<
   CreateProjectsLocationsCatalogsDatabasesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5) as any as S.Schema<CreateProjectsLocationsCatalogsDatabasesRequest>,
-  output: __S(4) as any as S.Schema<Database>,
+  input: CreateProjectsLocationsCatalogsDatabasesRequest,
+  output: Database,
   errors: [NotFound, Forbidden, BadRequest, Conflict, BigLakeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -472,8 +659,8 @@ export const createProjectsLocationsCatalogsDatabasesTables: API.OperationMethod
   CreateProjectsLocationsCatalogsDatabasesTablesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10) as any as S.Schema<CreateProjectsLocationsCatalogsDatabasesTablesRequest>,
-  output: __S(9) as any as S.Schema<Table>,
+  input: CreateProjectsLocationsCatalogsDatabasesTablesRequest,
+  output: Table,
   errors: [NotFound, Forbidden, BadRequest, Conflict, BigLakeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -493,8 +680,8 @@ export const deleteProjectsLocationsCatalogs: API.OperationMethod<
   DeleteProjectsLocationsCatalogsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11) as any as S.Schema<DeleteProjectsLocationsCatalogsRequest>,
-  output: __S(0) as any as S.Schema<Catalog>,
+  input: DeleteProjectsLocationsCatalogsRequest,
+  output: Catalog,
   errors: [NotFound, Forbidden, BadRequest, Conflict, BigLakeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -514,8 +701,8 @@ export const deleteProjectsLocationsCatalogsDatabases: API.OperationMethod<
   DeleteProjectsLocationsCatalogsDatabasesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12) as any as S.Schema<DeleteProjectsLocationsCatalogsDatabasesRequest>,
-  output: __S(4) as any as S.Schema<Database>,
+  input: DeleteProjectsLocationsCatalogsDatabasesRequest,
+  output: Database,
   errors: [NotFound, Forbidden, BadRequest, Conflict, BigLakeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -535,8 +722,8 @@ export const deleteProjectsLocationsCatalogsDatabasesTables: API.OperationMethod
   DeleteProjectsLocationsCatalogsDatabasesTablesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13) as any as S.Schema<DeleteProjectsLocationsCatalogsDatabasesTablesRequest>,
-  output: __S(9) as any as S.Schema<Table>,
+  input: DeleteProjectsLocationsCatalogsDatabasesTablesRequest,
+  output: Table,
   errors: [NotFound, Forbidden, BadRequest, Conflict, BigLakeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -554,8 +741,8 @@ export const getIamPolicyProjectsCatalogs: API.OperationMethod<
   GetIamPolicyProjectsCatalogsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14) as any as S.Schema<GetIamPolicyProjectsCatalogsRequest>,
-  output: __S(23) as any as S.Schema<Policy>,
+  input: GetIamPolicyProjectsCatalogsRequest,
+  output: Policy,
   errors: [NotFound, Forbidden, BigLakeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -573,8 +760,8 @@ export const getIamPolicyProjectsCatalogsNamespaces: API.OperationMethod<
   GetIamPolicyProjectsCatalogsNamespacesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24) as any as S.Schema<GetIamPolicyProjectsCatalogsNamespacesRequest>,
-  output: __S(23) as any as S.Schema<Policy>,
+  input: GetIamPolicyProjectsCatalogsNamespacesRequest,
+  output: Policy,
   errors: [NotFound, Forbidden, BigLakeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -592,8 +779,8 @@ export const getIamPolicyProjectsCatalogsNamespacesTables: API.OperationMethod<
   GetIamPolicyProjectsCatalogsNamespacesTablesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25) as any as S.Schema<GetIamPolicyProjectsCatalogsNamespacesTablesRequest>,
-  output: __S(23) as any as S.Schema<Policy>,
+  input: GetIamPolicyProjectsCatalogsNamespacesTablesRequest,
+  output: Policy,
   errors: [NotFound, Forbidden, BigLakeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -611,8 +798,8 @@ export const getProjectsLocationsCatalogs: API.OperationMethod<
   GetProjectsLocationsCatalogsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26) as any as S.Schema<GetProjectsLocationsCatalogsRequest>,
-  output: __S(0) as any as S.Schema<Catalog>,
+  input: GetProjectsLocationsCatalogsRequest,
+  output: Catalog,
   errors: [NotFound, Forbidden, BigLakeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -630,8 +817,8 @@ export const getProjectsLocationsCatalogsDatabases: API.OperationMethod<
   GetProjectsLocationsCatalogsDatabasesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27) as any as S.Schema<GetProjectsLocationsCatalogsDatabasesRequest>,
-  output: __S(4) as any as S.Schema<Database>,
+  input: GetProjectsLocationsCatalogsDatabasesRequest,
+  output: Database,
   errors: [NotFound, Forbidden, BigLakeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -649,8 +836,8 @@ export const getProjectsLocationsCatalogsDatabasesTables: API.OperationMethod<
   GetProjectsLocationsCatalogsDatabasesTablesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28) as any as S.Schema<GetProjectsLocationsCatalogsDatabasesTablesRequest>,
-  output: __S(9) as any as S.Schema<Table>,
+  input: GetProjectsLocationsCatalogsDatabasesTablesRequest,
+  output: Table,
   errors: [NotFound, Forbidden, BigLakeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -669,8 +856,8 @@ export const listProjectsLocationsCatalogs: API.PaginatedOperationMethod<
   GcpOpContext,
   ListCatalogsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(29) as any as S.Schema<ListProjectsLocationsCatalogsRequest>,
-  output: __S(31) as any as S.Schema<ListCatalogsResponse>,
+  input: ListProjectsLocationsCatalogsRequest,
+  output: ListCatalogsResponse,
   errors: [NotFound, Forbidden, BigLakeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -690,8 +877,8 @@ export const listProjectsLocationsCatalogsDatabases: API.PaginatedOperationMetho
   GcpOpContext,
   ListDatabasesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(32) as any as S.Schema<ListProjectsLocationsCatalogsDatabasesRequest>,
-  output: __S(34) as any as S.Schema<ListDatabasesResponse>,
+  input: ListProjectsLocationsCatalogsDatabasesRequest,
+  output: ListDatabasesResponse,
   errors: [NotFound, Forbidden, BigLakeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -711,8 +898,8 @@ export const listProjectsLocationsCatalogsDatabasesTables: API.PaginatedOperatio
   GcpOpContext,
   ListTablesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(35) as any as S.Schema<ListProjectsLocationsCatalogsDatabasesTablesRequest>,
-  output: __S(37) as any as S.Schema<ListTablesResponse>,
+  input: ListProjectsLocationsCatalogsDatabasesTablesRequest,
+  output: ListTablesResponse,
   errors: [NotFound, Forbidden, BigLakeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -733,8 +920,8 @@ export const patchProjectsLocationsCatalogsDatabases: API.OperationMethod<
   PatchProjectsLocationsCatalogsDatabasesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38) as any as S.Schema<PatchProjectsLocationsCatalogsDatabasesRequest>,
-  output: __S(4) as any as S.Schema<Database>,
+  input: PatchProjectsLocationsCatalogsDatabasesRequest,
+  output: Database,
   errors: [NotFound, Forbidden, BadRequest, Conflict, BigLakeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -754,8 +941,8 @@ export const patchProjectsLocationsCatalogsDatabasesTables: API.OperationMethod<
   PatchProjectsLocationsCatalogsDatabasesTablesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39) as any as S.Schema<PatchProjectsLocationsCatalogsDatabasesTablesRequest>,
-  output: __S(9) as any as S.Schema<Table>,
+  input: PatchProjectsLocationsCatalogsDatabasesTablesRequest,
+  output: Table,
   errors: [NotFound, Forbidden, BadRequest, Conflict, BigLakeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -775,8 +962,8 @@ export const renameProjectsLocationsCatalogsDatabasesTables: API.OperationMethod
   RenameProjectsLocationsCatalogsDatabasesTablesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41) as any as S.Schema<RenameProjectsLocationsCatalogsDatabasesTablesRequest>,
-  output: __S(9) as any as S.Schema<Table>,
+  input: RenameProjectsLocationsCatalogsDatabasesTablesRequest,
+  output: Table,
   errors: [NotFound, Forbidden, BadRequest, Conflict, BigLakeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -796,8 +983,8 @@ export const setIamPolicyProjectsCatalogs: API.OperationMethod<
   SetIamPolicyProjectsCatalogsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43) as any as S.Schema<SetIamPolicyProjectsCatalogsRequest>,
-  output: __S(23) as any as S.Schema<Policy>,
+  input: SetIamPolicyProjectsCatalogsRequest,
+  output: Policy,
   errors: [NotFound, Forbidden, BadRequest, Conflict, BigLakeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -817,8 +1004,8 @@ export const setIamPolicyProjectsCatalogsNamespaces: API.OperationMethod<
   SetIamPolicyProjectsCatalogsNamespacesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44) as any as S.Schema<SetIamPolicyProjectsCatalogsNamespacesRequest>,
-  output: __S(23) as any as S.Schema<Policy>,
+  input: SetIamPolicyProjectsCatalogsNamespacesRequest,
+  output: Policy,
   errors: [NotFound, Forbidden, BadRequest, Conflict, BigLakeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -838,8 +1025,8 @@ export const setIamPolicyProjectsCatalogsNamespacesTables: API.OperationMethod<
   SetIamPolicyProjectsCatalogsNamespacesTablesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45) as any as S.Schema<SetIamPolicyProjectsCatalogsNamespacesTablesRequest>,
-  output: __S(23) as any as S.Schema<Policy>,
+  input: SetIamPolicyProjectsCatalogsNamespacesTablesRequest,
+  output: Policy,
   errors: [NotFound, Forbidden, BadRequest, Conflict, BigLakeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -859,8 +1046,8 @@ export const testIamPermissionsProjectsCatalogs: API.OperationMethod<
   TestIamPermissionsProjectsCatalogsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47) as any as S.Schema<TestIamPermissionsProjectsCatalogsRequest>,
-  output: __S(46) as any as S.Schema<TestIamPermissionsResponse>,
+  input: TestIamPermissionsProjectsCatalogsRequest,
+  output: TestIamPermissionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, BigLakeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -880,8 +1067,8 @@ export const testIamPermissionsProjectsCatalogsNamespaces: API.OperationMethod<
   TestIamPermissionsProjectsCatalogsNamespacesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48) as any as S.Schema<TestIamPermissionsProjectsCatalogsNamespacesRequest>,
-  output: __S(46) as any as S.Schema<TestIamPermissionsResponse>,
+  input: TestIamPermissionsProjectsCatalogsNamespacesRequest,
+  output: TestIamPermissionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, BigLakeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -901,8 +1088,8 @@ export const testIamPermissionsProjectsCatalogsNamespacesTables: API.OperationMe
   TestIamPermissionsProjectsCatalogsNamespacesTablesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49) as any as S.Schema<TestIamPermissionsProjectsCatalogsNamespacesTablesRequest>,
-  output: __S(46) as any as S.Schema<TestIamPermissionsResponse>,
+  input: TestIamPermissionsProjectsCatalogsNamespacesTablesRequest,
+  output: TestIamPermissionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, BigLakeResourceNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -926,7 +1113,7 @@ function __c0(j: number): any {
         S.Struct({
           parent: S.String.pipe(T.Label()),
           catalogId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(0).pipe(T.HttpBody())),
+          body: S.optional(Catalog.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -943,19 +1130,19 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           locationUri: S.optional(S.String),
-          parameters: S.optional(__S(2)),
+          parameters: S.optional(StringMap),
         }),
       ).annotate({ identifier: "HiveDatabaseOptions" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          hiveOptions: S.optional(__S(3)),
+          hiveOptions: S.optional(HiveDatabaseOptions),
           expireTime: S.optional(S.String),
           deleteTime: S.optional(S.String),
           createTime: S.optional(S.String),
           updateTime: S.optional(S.String),
           name: S.optional(S.String),
-          type: S.optional(S.String),
+          type: S.optional(DatabaseTypeEnum),
         }),
       ).annotate({ identifier: "Database" });
     case 5:
@@ -963,7 +1150,7 @@ function __c0(j: number): any {
         S.Struct({
           parent: S.String.pipe(T.Label()),
           databaseId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(4).pipe(T.HttpBody())),
+          body: S.optional(Database.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -984,7 +1171,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           inputFormat: S.optional(S.String),
-          serdeInfo: S.optional(__S(6)),
+          serdeInfo: S.optional(SerDeInfo),
           outputFormat: S.optional(S.String),
           locationUri: S.optional(S.String),
         }),
@@ -996,20 +1183,20 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          parameters: S.optional(__S(2)),
+          parameters: S.optional(StringMap),
           tableType: S.optional(S.String),
-          storageDescriptor: S.optional(__S(7)),
+          storageDescriptor: S.optional(StorageDescriptor),
         }),
       ).annotate({ identifier: "HiveTableOptions" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          hiveOptions: S.optional(__S(8)),
+          hiveOptions: S.optional(HiveTableOptions),
           expireTime: S.optional(S.String),
           deleteTime: S.optional(S.String),
           etag: S.optional(S.String),
           name: S.optional(S.String),
-          type: S.optional(S.String),
+          type: S.optional(TableTypeEnum),
           createTime: S.optional(S.String),
           updateTime: S.optional(S.String),
         }),
@@ -1019,7 +1206,7 @@ function __c1(j: number): any {
         S.Struct({
           parent: S.String.pipe(T.Label()),
           tableId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(9).pipe(T.HttpBody())),
+          body: S.optional(Table.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1096,21 +1283,21 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          logType: S.optional(S.String),
-          exemptedMembers: S.optional(__S(15)),
+          logType: S.optional(AuditLogConfigLogTypeEnum),
+          exemptedMembers: S.optional(StringList),
         }),
       ).annotate({ identifier: "AuditLogConfig" });
     case 1:
-      return S.Array(__S(16));
+      return S.Array(AuditLogConfig);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          auditLogConfigs: S.optional(__S(17)),
+          auditLogConfigs: S.optional(AuditLogConfigList),
           service: S.optional(S.String),
         }),
       ).annotate({ identifier: "AuditConfig" });
     case 3:
-      return S.Array(__S(18));
+      return S.Array(AuditConfig);
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -1124,19 +1311,19 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           role: S.optional(S.String),
-          condition: S.optional(__S(20)),
-          members: S.optional(__S(15)),
+          condition: S.optional(Expr),
+          members: S.optional(StringList),
         }),
       ).annotate({ identifier: "Binding" });
     case 6:
-      return S.Array(__S(21));
+      return S.Array(Binding);
     case 7:
       return S.suspend(() =>
         S.Struct({
           version: S.optional(S.Number),
           etag: S.optional(S.String),
-          auditConfigs: S.optional(__S(19)),
-          bindings: S.optional(__S(22)),
+          auditConfigs: S.optional(AuditConfigList),
+          bindings: S.optional(BindingList),
         }),
       ).annotate({ identifier: "Policy" });
   }
@@ -1220,11 +1407,11 @@ function __c3(j: number): any {
         identifier: "ListProjectsLocationsCatalogsRequest",
       });
     case 6:
-      return S.Array(__S(0));
+      return S.Array(Catalog);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          catalogs: S.optional(__S(30)),
+          catalogs: S.optional(CatalogList),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListCatalogsResponse" });
@@ -1249,12 +1436,12 @@ function __c4(j: number): any {
         identifier: "ListProjectsLocationsCatalogsDatabasesRequest",
       });
     case 1:
-      return S.Array(__S(4));
+      return S.Array(Database);
     case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          databases: S.optional(__S(33)),
+          databases: S.optional(DatabaseList),
         }),
       ).annotate({ identifier: "ListDatabasesResponse" });
     case 3:
@@ -1262,7 +1449,7 @@ function __c4(j: number): any {
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
           pageToken: S.optional(S.String.pipe(T.Query())),
-          view: S.optional(S.String.pipe(T.Query())),
+          view: S.optional(ListProjectsLocationsCatalogsDatabasesTablesViewEnum.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
         }).pipe(
           T.Http({
@@ -1275,12 +1462,12 @@ function __c4(j: number): any {
         identifier: "ListProjectsLocationsCatalogsDatabasesTablesRequest",
       });
     case 4:
-      return S.Array(__S(9));
+      return S.Array(Table);
     case 5:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          tables: S.optional(__S(36)),
+          tables: S.optional(TableList),
         }),
       ).annotate({ identifier: "ListTablesResponse" });
     case 6:
@@ -1288,7 +1475,7 @@ function __c4(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(4).pipe(T.HttpBody())),
+          body: S.optional(Database.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1304,7 +1491,7 @@ function __c4(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(9).pipe(T.HttpBody())),
+          body: S.optional(Table.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1329,7 +1516,7 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(40).pipe(T.HttpBody())),
+          body: S.optional(RenameTableRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1343,7 +1530,7 @@ function __c5(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          policy: S.optional(__S(23)),
+          policy: S.optional(Policy),
           updateMask: S.optional(S.String),
         }),
       ).annotate({ identifier: "SetIamPolicyRequest" });
@@ -1351,7 +1538,7 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(42).pipe(T.HttpBody())),
+          body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1366,7 +1553,7 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(42).pipe(T.HttpBody())),
+          body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1381,7 +1568,7 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(42).pipe(T.HttpBody())),
+          body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1395,7 +1582,7 @@ function __c5(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          permissions: S.optional(__S(15)),
+          permissions: S.optional(StringList),
         }),
       ).annotate({
         identifier: "TestIamPermissionsRequest",
@@ -1404,7 +1591,7 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(46).pipe(T.HttpBody())),
+          body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1423,7 +1610,7 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(46).pipe(T.HttpBody())),
+          body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1438,7 +1625,7 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(46).pipe(T.HttpBody())),
+          body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1449,28 +1636,5 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "TestIamPermissionsProjectsCatalogsNamespacesTablesRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
   }
 }

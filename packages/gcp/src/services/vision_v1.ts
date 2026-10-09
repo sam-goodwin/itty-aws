@@ -7,8 +7,6 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -83,16 +81,32 @@ export interface AddProductToProductSetRequest {
   /** Required. The resource name for the Product to be added to this ProductSet. Format is: `projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID` */
   product?: string;
 }
+const AddProductToProductSetRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<AddProductToProductSetRequest>;
+
 export interface AddProductProjectsLocationsProductSetsRequest {
   /** Required. The resource name for the ProductSet to modify. Format is: `projects/PROJECT_ID/locations/LOC_ID/productSets/PRODUCT_SET_ID` */
   name: string;
   /** Request body */
   body?: AddProductToProductSetRequest;
 }
+const AddProductProjectsLocationsProductSetsRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<AddProductProjectsLocationsProductSetsRequest>;
+
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
+const Empty = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<Empty>;
+
 export type StringMap = { [key: string]: string | undefined };
+const StringMap = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<StringMap>;
+
 export type IntegerList = Array<number>;
+const IntegerList = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<IntegerList>;
+
 export type FeatureTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "FACE_DETECTION"
@@ -107,6 +121,8 @@ export type FeatureTypeEnum =
   | "WEB_DETECTION"
   | "PRODUCT_SEARCH"
   | "OBJECT_LOCALIZATION";
+const FeatureTypeEnum = S.String;
+
 /** The type of Google Cloud Vision API detection to perform, and the maximum number of results to return for that type. Multiple `Feature` objects can be specified in the `features` list. */
 export interface Feature {
   /** The feature type. */
@@ -116,13 +132,21 @@ export interface Feature {
   /** Model to use for the feature. Supported values: "builtin/stable" (the default if unset) and "builtin/latest". `DOCUMENT_TEXT_DETECTION` and `TEXT_DETECTION` also support "builtin/rc" for the latest release candidate. */
   model?: string;
 }
+const Feature = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<Feature>;
+
 export type FeatureList = Array<Feature>;
+const FeatureList = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<FeatureList>;
+
 export type DoubleList = Array<number>;
+const DoubleList = IntegerList as any as S.Schema<DoubleList>;
+
 /** Parameters for crop hints annotation request. */
 export interface CropHintsParams {
   /** Aspect ratios in floats, representing the ratio of the width to the height of the image. For example, if the desired aspect ratio is 4/3, the corresponding float value should be 1.33333. If not specified, the best possible crop is returned. The number of provided aspect ratios is limited to a maximum of 16; any aspect ratios provided after the 16th are ignored. */
   aspectRatios?: DoubleList;
 }
+const CropHintsParams = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<CropHintsParams>;
+
 /** A vertex represents a 2D point in the image. NOTE: the normalized vertex coordinates are relative to the original image and range from 0 to 1. */
 export interface NormalizedVertex {
   /** X coordinate. */
@@ -130,10 +154,16 @@ export interface NormalizedVertex {
   /** Y coordinate. */
   y?: number;
 }
+const NormalizedVertex = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<NormalizedVertex>;
+
 export type NormalizedVertexList = Array<NormalizedVertex>;
+const NormalizedVertexList = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<NormalizedVertexList>;
+
 /** A vertex represents a 2D point in the image. NOTE: the vertex coordinates are in the same scale as the original image. */
 export type Vertex = NormalizedVertex;
 export type VertexList = Array<NormalizedVertex>;
+const VertexList = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<VertexList>;
+
 /** A bounding polygon for the detected image annotation. */
 export interface BoundingPoly {
   /** The bounding polygon normalized vertices. */
@@ -141,7 +171,11 @@ export interface BoundingPoly {
   /** The bounding polygon vertices. */
   vertices?: VertexList;
 }
+const BoundingPoly = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<BoundingPoly>;
+
 export type StringList = Array<string>;
+const StringList = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<StringList>;
+
 /** Parameters for a product search request. */
 export interface ProductSearchParams {
   /** The bounding polygon around the area of interest in the image. If it is not specified, system discretion will be applied. */
@@ -153,6 +187,8 @@ export interface ProductSearchParams {
   /** The list of product categories to search in. Currently, we only consider the first category, and either "homegoods-v2", "apparel-v2", "toys-v2", "packagedgoods-v1", or "general-v1" should be specified. The legacy categories "homegoods", "apparel", and "toys" are still supported but will be deprecated. For new products, please use "homegoods-v2", "apparel-v2", or "toys-v2" for better product search accuracy. It is recommended to migrate existing products to these categories as well. */
   productCategories?: StringList;
 }
+const ProductSearchParams = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<ProductSearchParams>;
+
 /** An object that represents a latitude/longitude pair. This is expressed as a pair of doubles to represent degrees latitude and degrees longitude. Unless specified otherwise, this object must conform to the WGS84 standard. Values must be within normalized ranges. */
 export interface LatLng {
   /** The latitude in degrees. It must be in the range [-90.0, +90.0]. */
@@ -160,6 +196,8 @@ export interface LatLng {
   /** The longitude in degrees. It must be in the range [-180.0, +180.0]. */
   longitude?: number;
 }
+const LatLng = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<LatLng>;
+
 /** Rectangle determined by min and max `LatLng` pairs. */
 export interface LatLongRect {
   /** Min lat/long pair. */
@@ -167,11 +205,15 @@ export interface LatLongRect {
   /** Max lat/long pair. */
   maxLatLng?: LatLng;
 }
+const LatLongRect = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<LatLongRect>;
+
 /** Parameters for web detection request. */
 export interface WebDetectionParams {
   /** This field has no effect on results. */
   includeGeoResults?: boolean;
 }
+const WebDetectionParams = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<WebDetectionParams>;
+
 /** Parameters for text detections. This is used to control TEXT_DETECTION and DOCUMENT_TEXT_DETECTION features. */
 export interface TextDetectionParams {
   /** A list of advanced OCR options to further fine-tune OCR behavior. Current valid values are: - `legacy_layout`: a heuristics layout detection algorithm, which serves as an alternative to the current ML-based layout detection algorithm. Customers can choose the best suitable layout algorithm based on their situation. */
@@ -179,6 +221,8 @@ export interface TextDetectionParams {
   /** By default, Cloud Vision API only includes confidence score for DOCUMENT_TEXT_DETECTION result. Set the flag to true to include confidence score for TEXT_DETECTION as well. */
   enableTextDetectionConfidenceScore?: boolean;
 }
+const TextDetectionParams = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<TextDetectionParams>;
+
 /** Image context and/or feature-specific parameters. */
 export interface ImageContext {
   /** Parameters for crop hints annotation request. */
@@ -194,11 +238,15 @@ export interface ImageContext {
   /** Parameters for text detection and document text detection. */
   textDetectionParams?: TextDetectionParams;
 }
+const ImageContext = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<ImageContext>;
+
 /** The Google Cloud Storage location where the input will be read from. */
 export interface GcsSource {
   /** Google Cloud Storage URI for the input file. This must only be a Google Cloud Storage object. Wildcards are not currently supported. */
   uri?: string;
 }
+const GcsSource = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<GcsSource>;
+
 /** The desired input location and metadata. */
 export interface InputConfig {
   /** The type of the file. Currently only "application/pdf", "image/tiff" and "image/gif" are supported. Wildcards are not supported. */
@@ -208,6 +256,8 @@ export interface InputConfig {
   /** File content, represented as a stream of bytes. Note: As with all `bytes` fields, protobuffers use a pure binary representation, whereas JSON representations use base64. Currently, this field only works for BatchAnnotateFiles requests. It does not work for AsyncBatchAnnotateFiles requests. */
   content?: string;
 }
+const InputConfig = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<InputConfig>;
+
 /** A request to annotate one single file, e.g. a PDF, TIFF or GIF file. */
 export interface AnnotateFileRequest {
   /** Pages of the file to perform image annotation. Pages starts from 1, we assume the first page of the file is page 1. At most 5 pages are supported per request. Pages can be negative. Page 1 means the first page. Page 2 means the second page. Page -1 means the last page. Page -2 means the second to the last page. If the file is GIF instead of PDF or TIFF, page refers to GIF frames. If this field is empty, by default the service performs image annotation for the first 5 pages of the file. */
@@ -219,7 +269,14 @@ export interface AnnotateFileRequest {
   /** Required. Information about the input file. */
   inputConfig?: InputConfig;
 }
+const AnnotateFileRequest = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<AnnotateFileRequest>;
+
 export type AnnotateFileRequestList = Array<AnnotateFileRequest>;
+const AnnotateFileRequestList = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<AnnotateFileRequestList>;
+
 /** A list of requests to annotate files using the BatchAnnotateFiles API. */
 export interface BatchAnnotateFilesRequest {
   /** Optional. Target project and location to make a call. Format: `projects/{project-id}/locations/{location-id}`. If no parent is specified, a region will be chosen automatically. Supported location-ids: `us`: USA country only, `asia`: East asia areas, like Japan, Taiwan, `eu`: The European Union. Example: `projects/project-A/locations/eu`. */
@@ -229,12 +286,23 @@ export interface BatchAnnotateFilesRequest {
   /** Required. The list of file annotation requests. Right now we support only one AnnotateFileRequest in BatchAnnotateFilesRequest. */
   requests?: AnnotateFileRequestList;
 }
+const BatchAnnotateFilesRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<BatchAnnotateFilesRequest>;
+
 export interface AnnotateFilesRequest {
   /** Request body */
   body?: BatchAnnotateFilesRequest;
 }
+const AnnotateFilesRequest = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<AnnotateFilesRequest>;
+
 export type DocumentMap = { [key: string]: unknown | undefined };
+const DocumentMap = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<DocumentMap>;
+
 export type DocumentMapList = Array<DocumentMap>;
+const DocumentMapList = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<DocumentMapList>;
+
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
@@ -244,6 +312,8 @@ export interface Status {
   /** The status code, which should be an enum value of google.rpc.Code. */
   code?: number;
 }
+const Status = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<Status>;
+
 /** Represents a color in the RGBA color space. This representation is designed for simplicity of conversion to and from color representations in various languages over compactness. For example, the fields of this representation can be trivially provided to the constructor of `java.awt.Color` in Java; it can also be trivially provided to UIColor's `+colorWithRed:green:blue:alpha` method in iOS; and, with just a little work, it can be easily formatted into a CSS `rgba()` string in JavaScript. This reference page doesn't have information about the absolute color space that should be used to interpret the RGB value--for example, sRGB, Adobe RGB, DCI-P3, and BT.2020. By default, applications should assume the sRGB color space. When color equality needs to be decided, implementations, unless documented otherwise, treat two colors as equal if all their red, green, blue, and alpha values each differ by at most `1e-5`. Example (Java): import com.google.type.Color; // ... public static java.awt.Color fromProto(Color protocolor) { float alpha = protocolor.hasAlpha() ? protocolor.getAlpha().getValue() : 1.0; return new java.awt.Color( protocolor.getRed(), protocolor.getGreen(), protocolor.getBlue(), alpha); } public static Color toProto(java.awt.Color color) { float red = (float) color.getRed(); float green = (float) color.getGreen(); float blue = (float) color.getBlue(); float denominator = 255.0; Color.Builder resultBuilder = Color .newBuilder() .setRed(red / denominator) .setGreen(green / denominator) .setBlue(blue / denominator); int alpha = color.getAlpha(); if (alpha != 255) { result.setAlpha( FloatValue .newBuilder() .setValue(((float) alpha) / denominator) .build()); } return resultBuilder.build(); } // ... Example (iOS / Obj-C): // ... static UIColor* fromProto(Color* protocolor) { float red = [protocolor red]; float green = [protocolor green]; float blue = [protocolor blue]; FloatValue* alpha_wrapper = [protocolor alpha]; float alpha = 1.0; if (alpha_wrapper != nil) { alpha = [alpha_wrapper value]; } return [UIColor colorWithRed:red green:green blue:blue alpha:alpha]; } static Color* toProto(UIColor* color) { CGFloat red, green, blue, alpha; if (![color getRed:&red green:&green blue:&blue alpha:&alpha]) { return nil; } Color* result = [[Color alloc] init]; [result setRed:red]; [result setGreen:green]; [result setBlue:blue]; if (alpha <= 0.9999) { [result setAlpha:floatWrapperWithValue(alpha)]; } [result autorelease]; return result; } // ... Example (JavaScript): // ... var protoToCssColor = function(rgb_color) { var redFrac = rgb_color.red || 0.0; var greenFrac = rgb_color.green || 0.0; var blueFrac = rgb_color.blue || 0.0; var red = Math.floor(redFrac * 255); var green = Math.floor(greenFrac * 255); var blue = Math.floor(blueFrac * 255); if (!('alpha' in rgb_color)) { return rgbToCssColor(red, green, blue); } var alphaFrac = rgb_color.alpha.value || 0.0; var rgbParams = [red, green, blue].join(','); return ['rgba(', rgbParams, ',', alphaFrac, ')'].join(''); }; var rgbToCssColor = function(red, green, blue) { var rgbNumber = new Number((red << 16) | (green << 8) | blue); var hexString = rgbNumber.toString(16); var missingZeros = 6 - hexString.length; var resultBuilder = ['#']; for (var i = 0; i < missingZeros; i++) { resultBuilder.push('0'); } resultBuilder.push(hexString); return resultBuilder.join(''); }; // ... */
 export interface Color {
   /** The amount of blue in the color as a value in the interval [0, 1]. */
@@ -255,6 +325,8 @@ export interface Color {
   /** The amount of red in the color as a value in the interval [0, 1]. */
   red?: number;
 }
+const Color = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<Color>;
+
 /** Color information consists of RGB channels, score, and the fraction of the image that the color occupies in the image. */
 export interface ColorInfo {
   /** The fraction of pixels the color occupies in the image. Value in range [0, 1]. */
@@ -264,17 +336,28 @@ export interface ColorInfo {
   /** RGB components of the color. */
   color?: Color;
 }
+const ColorInfo = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<ColorInfo>;
+
 export type ColorInfoList = Array<ColorInfo>;
+const ColorInfoList = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<ColorInfoList>;
+
 /** Set of dominant colors and their corresponding scores. */
 export interface DominantColorsAnnotation {
   /** RGB color values with their score and pixel fraction. */
   colors?: ColorInfoList;
 }
+const DominantColorsAnnotation = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<DominantColorsAnnotation>;
+
 /** Stores image properties, such as dominant colors. */
 export interface ImageProperties {
   /** If present, dominant colors completed successfully. */
   dominantColors?: DominantColorsAnnotation;
 }
+const ImageProperties = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<ImageProperties>;
+
 /** Single crop hint that is used to generate a new crop when serving an image. */
 export interface CropHint {
   /** Confidence of this being a salient region. Range [0, 1]. */
@@ -284,12 +367,18 @@ export interface CropHint {
   /** The bounding polygon for the crop region. The coordinates of the bounding box are in the original image's scale. */
   boundingPoly?: BoundingPoly;
 }
+const CropHint = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<CropHint>;
+
 export type CropHintList = Array<CropHint>;
+const CropHintList = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<CropHintList>;
+
 /** Set of crop hints that are used to generate new crops when serving images. */
 export interface CropHintsAnnotation {
   /** Crop hint results. */
   cropHints?: CropHintList;
 }
+const CropHintsAnnotation = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<CropHintsAnnotation>;
+
 /** If an image was produced from a file (e.g. a PDF), this message gives information about the source of that image. */
 export interface ImageAnnotationContext {
   /** The URI of the file used to produce the image. */
@@ -297,12 +386,21 @@ export interface ImageAnnotationContext {
   /** If the file was a PDF or TIFF, this field gives the page number within the file used to produce the image. */
   pageNumber?: number;
 }
+const ImageAnnotationContext = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<ImageAnnotationContext>;
+
 /** Detected entity location information. */
 export interface LocationInfo {
   /** lat/long location coordinates. */
   latLng?: LatLng;
 }
+const LocationInfo = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<LocationInfo>;
+
 export type LocationInfoList = Array<LocationInfo>;
+const LocationInfoList = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<LocationInfoList>;
+
 /** A `Property` consists of a user-supplied name/value pair. */
 export interface Property {
   /** Value of numeric properties. */
@@ -312,7 +410,11 @@ export interface Property {
   /** Name of the property. */
   name?: string;
 }
+const Property = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<Property>;
+
 export type PropertyList = Array<Property>;
+const PropertyList = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<PropertyList>;
+
 /** Set of detected entity features. */
 export interface EntityAnnotation {
   /** **Deprecated. Use `score` instead.** The accuracy of the entity detection in an image. For example, for an image in which the "Eiffel Tower" entity is detected, this field represents the confidence that there is a tower in the query image. Range [0, 1]. */
@@ -334,7 +436,11 @@ export interface EntityAnnotation {
   /** Opaque entity ID. Some IDs may be available in [Google Knowledge Graph Search API](https://developers.google.com/knowledge-graph/). */
   mid?: string;
 }
+const EntityAnnotation = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<EntityAnnotation>;
+
 export type EntityAnnotationList = Array<EntityAnnotation>;
+const EntityAnnotationList = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<EntityAnnotationList>;
+
 /** Detected language for a structural component. */
 export interface DetectedLanguage {
   /** Confidence of detected language. Range [0, 1]. */
@@ -342,7 +448,11 @@ export interface DetectedLanguage {
   /** The BCP-47 language code, such as "en-US" or "sr-Latn". For more information, see http://www.unicode.org/reports/tr35/#Unicode_locale_identifier. */
   languageCode?: string;
 }
+const DetectedLanguage = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<DetectedLanguage>;
+
 export type DetectedLanguageList = Array<DetectedLanguage>;
+const DetectedLanguageList = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<DetectedLanguageList>;
+
 export type DetectedBreakTypeEnum =
   | "UNKNOWN"
   | "SPACE"
@@ -350,6 +460,8 @@ export type DetectedBreakTypeEnum =
   | "EOL_SURE_SPACE"
   | "HYPHEN"
   | "LINE_BREAK";
+const DetectedBreakTypeEnum = S.String;
+
 /** Detected start or end of a structural component. */
 export interface DetectedBreak {
   /** True if break prepends the element. */
@@ -357,6 +469,8 @@ export interface DetectedBreak {
   /** Detected break type. */
   type?: DetectedBreakTypeEnum;
 }
+const DetectedBreak = /*@__PURE__*/ __L.at(__c5, 5) as any as S.Schema<DetectedBreak>;
+
 /** Additional information detected on the structural component. */
 export interface TextProperty {
   /** A list of detected languages together with confidence. */
@@ -364,6 +478,8 @@ export interface TextProperty {
   /** Detected start or end of a text segment. */
   detectedBreak?: DetectedBreak;
 }
+const TextProperty = /*@__PURE__*/ __L.at(__c5, 6) as any as S.Schema<TextProperty>;
+
 /** A single symbol representation. */
 export interface Vision_Symbol {
   /** The actual UTF-8 representation of the symbol. */
@@ -375,7 +491,11 @@ export interface Vision_Symbol {
   /** Confidence of the OCR results for the symbol. Range [0, 1]. */
   confidence?: number;
 }
+const Vision_Symbol = /*@__PURE__*/ __L.at(__c5, 7) as any as S.Schema<Vision_Symbol>;
+
 export type Vision_SymbolList = Array<Vision_Symbol>;
+const Vision_SymbolList = /*@__PURE__*/ __L.at(__c6, 0) as any as S.Schema<Vision_SymbolList>;
+
 /** A word representation. */
 export interface Word {
   /** The bounding box for the word. The vertices are in the order of top-left, top-right, bottom-right, bottom-left. When a rotation of the bounding box is detected the rotation is represented as around the top-left corner as defined when the text is read in the 'natural' orientation. For example: * when the text is horizontal it might look like: 0----1 | | 3----2 * when it's rotated 180 degrees around the top-left corner it becomes: 2----3 | | 1----0 and the vertex order will still be (0, 1, 2, 3). */
@@ -387,7 +507,11 @@ export interface Word {
   /** Additional information detected for the word. */
   property?: TextProperty;
 }
+const Word = /*@__PURE__*/ __L.at(__c6, 1) as any as S.Schema<Word>;
+
 export type WordList = Array<Word>;
+const WordList = /*@__PURE__*/ __L.at(__c6, 2) as any as S.Schema<WordList>;
+
 /** Structural unit of text representing a number of words in certain order. */
 export interface Paragraph {
   /** List of all words in this paragraph. */
@@ -399,8 +523,14 @@ export interface Paragraph {
   /** Additional information detected for the paragraph. */
   property?: TextProperty;
 }
+const Paragraph = /*@__PURE__*/ __L.at(__c6, 3) as any as S.Schema<Paragraph>;
+
 export type ParagraphList = Array<Paragraph>;
+const ParagraphList = /*@__PURE__*/ __L.at(__c6, 4) as any as S.Schema<ParagraphList>;
+
 export type BlockBlockTypeEnum = "UNKNOWN" | "TEXT" | "TABLE" | "PICTURE" | "RULER" | "BARCODE";
+const BlockBlockTypeEnum = S.String;
+
 /** Logical element on the page. */
 export interface Block {
   /** The bounding box for the block. The vertices are in the order of top-left, top-right, bottom-right, bottom-left. When a rotation of the bounding box is detected the rotation is represented as around the top-left corner as defined when the text is read in the 'natural' orientation. For example: * when the text is horizontal it might look like: 0----1 | | 3----2 * when it's rotated 180 degrees around the top-left corner it becomes: 2----3 | | 1----0 and the vertex order will still be (0, 1, 2, 3). */
@@ -414,7 +544,11 @@ export interface Block {
   /** Additional information detected for the block. */
   property?: TextProperty;
 }
+const Block = /*@__PURE__*/ __L.at(__c6, 5) as any as S.Schema<Block>;
+
 export type BlockList = Array<Block>;
+const BlockList = /*@__PURE__*/ __L.at(__c6, 6) as any as S.Schema<BlockList>;
+
 /** Detected page from OCR. */
 export interface Page {
   /** Confidence of the OCR results on the page. Range [0, 1]. */
@@ -428,7 +562,11 @@ export interface Page {
   /** Page height. For PDFs the unit is points. For images (including TIFFs) the unit is pixels. */
   height?: number;
 }
+const Page = /*@__PURE__*/ __L.at(__c6, 7) as any as S.Schema<Page>;
+
 export type PageList = Array<Page>;
+const PageList = /*@__PURE__*/ __L.at(__c7, 0) as any as S.Schema<PageList>;
+
 /** TextAnnotation contains a structured representation of OCR extracted text. The hierarchy of an OCR extracted text structure is like this: TextAnnotation -> Page -> Block -> Paragraph -> Word -> Symbol Each structural component, starting from Page, may further have their own properties. Properties describe detected languages, breaks etc.. Please refer to the TextAnnotation.TextProperty message definition below for more detail. */
 export interface TextAnnotation {
   /** List of pages detected by OCR. */
@@ -436,6 +574,8 @@ export interface TextAnnotation {
   /** UTF-8 text detected on the pages. */
   text?: string;
 }
+const TextAnnotation = /*@__PURE__*/ __L.at(__c7, 1) as any as S.Schema<TextAnnotation>;
+
 /** A product label represented as a key-value pair. */
 export interface KeyValue {
   /** The key of the label attached to the product. Cannot be empty and cannot exceed 128 bytes. */
@@ -443,7 +583,11 @@ export interface KeyValue {
   /** The value of the label attached to the product. Cannot be empty and cannot exceed 128 bytes. */
   value?: string;
 }
+const KeyValue = /*@__PURE__*/ __L.at(__c7, 2) as any as S.Schema<KeyValue>;
+
 export type KeyValueList = Array<KeyValue>;
+const KeyValueList = /*@__PURE__*/ __L.at(__c7, 3) as any as S.Schema<KeyValueList>;
+
 /** A Product contains ReferenceImages. */
 export interface Product {
   /** The resource name of the product. Format is: `projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID`. This field is ignored when creating a product. */
@@ -457,6 +601,8 @@ export interface Product {
   /** The user-provided name for this Product. Must not be empty. Must be at most 4096 characters long. */
   displayName?: string;
 }
+const Product = /*@__PURE__*/ __L.at(__c7, 4) as any as S.Schema<Product>;
+
 /** Information about a product. */
 export interface Result {
   /** The resource name of the image from the product that is the closest match to the query. */
@@ -466,7 +612,11 @@ export interface Result {
   /** A confidence level on the match, ranging from 0 (no confidence) to 1 (full confidence). */
   score?: number;
 }
+const Result = /*@__PURE__*/ __L.at(__c7, 5) as any as S.Schema<Result>;
+
 export type ResultList = Array<Result>;
+const ResultList = /*@__PURE__*/ __L.at(__c7, 6) as any as S.Schema<ResultList>;
+
 /** Prediction for what the object in the bounding box is. */
 export interface ObjectAnnotation {
   /** Object name, expressed in its `language_code` language. */
@@ -478,7 +628,11 @@ export interface ObjectAnnotation {
   /** The BCP-47 language code, such as "en-US" or "sr-Latn". For more information, see http://www.unicode.org/reports/tr35/#Unicode_locale_identifier. */
   languageCode?: string;
 }
+const ObjectAnnotation = /*@__PURE__*/ __L.at(__c7, 7) as any as S.Schema<ObjectAnnotation>;
+
 export type ObjectAnnotationList = Array<ObjectAnnotation>;
+const ObjectAnnotationList = /*@__PURE__*/ __L.at(__c8, 0) as any as S.Schema<ObjectAnnotationList>;
+
 /** Information about the products similar to a single product in a query image. */
 export interface GroupedResult {
   /** The bounding polygon around the product detected in the query image. */
@@ -488,7 +642,11 @@ export interface GroupedResult {
   /** List of generic predictions for the object in the bounding box. */
   objectAnnotations?: ObjectAnnotationList;
 }
+const GroupedResult = /*@__PURE__*/ __L.at(__c8, 1) as any as S.Schema<GroupedResult>;
+
 export type GroupedResultList = Array<GroupedResult>;
+const GroupedResultList = /*@__PURE__*/ __L.at(__c8, 2) as any as S.Schema<GroupedResultList>;
+
 /** Results for a product search request. */
 export interface ProductSearchResults {
   /** List of results, one for each product match. */
@@ -498,6 +656,8 @@ export interface ProductSearchResults {
   /** Timestamp of the index which provided these results. Products added to the product set and products removed from the product set after this time are not reflected in the current results. */
   indexTime?: string;
 }
+const ProductSearchResults = /*@__PURE__*/ __L.at(__c8, 3) as any as S.Schema<ProductSearchResults>;
+
 /** Set of detected objects with bounding boxes. */
 export interface LocalizedObjectAnnotation {
   /** Object name, expressed in its `language_code` language. */
@@ -511,7 +671,17 @@ export interface LocalizedObjectAnnotation {
   /** The BCP-47 language code, such as "en-US" or "sr-Latn". For more information, see http://www.unicode.org/reports/tr35/#Unicode_locale_identifier. */
   languageCode?: string;
 }
+const LocalizedObjectAnnotation = /*@__PURE__*/ __L.at(
+  __c8,
+  4,
+) as any as S.Schema<LocalizedObjectAnnotation>;
+
 export type LocalizedObjectAnnotationList = Array<LocalizedObjectAnnotation>;
+const LocalizedObjectAnnotationList = /*@__PURE__*/ __L.at(
+  __c8,
+  5,
+) as any as S.Schema<LocalizedObjectAnnotationList>;
+
 export type FaceAnnotationSorrowLikelihoodEnum =
   | "UNKNOWN"
   | "VERY_UNLIKELY"
@@ -519,6 +689,8 @@ export type FaceAnnotationSorrowLikelihoodEnum =
   | "POSSIBLE"
   | "LIKELY"
   | "VERY_LIKELY";
+const FaceAnnotationSorrowLikelihoodEnum = S.String;
+
 export type FaceAnnotationBlurredLikelihoodEnum =
   | "UNKNOWN"
   | "VERY_UNLIKELY"
@@ -526,6 +698,8 @@ export type FaceAnnotationBlurredLikelihoodEnum =
   | "POSSIBLE"
   | "LIKELY"
   | "VERY_LIKELY";
+const FaceAnnotationBlurredLikelihoodEnum = S.String;
+
 export type FaceAnnotationSurpriseLikelihoodEnum =
   | "UNKNOWN"
   | "VERY_UNLIKELY"
@@ -533,6 +707,8 @@ export type FaceAnnotationSurpriseLikelihoodEnum =
   | "POSSIBLE"
   | "LIKELY"
   | "VERY_LIKELY";
+const FaceAnnotationSurpriseLikelihoodEnum = S.String;
+
 export type FaceAnnotationUnderExposedLikelihoodEnum =
   | "UNKNOWN"
   | "VERY_UNLIKELY"
@@ -540,6 +716,8 @@ export type FaceAnnotationUnderExposedLikelihoodEnum =
   | "POSSIBLE"
   | "LIKELY"
   | "VERY_LIKELY";
+const FaceAnnotationUnderExposedLikelihoodEnum = S.String;
+
 export type FaceAnnotationAngerLikelihoodEnum =
   | "UNKNOWN"
   | "VERY_UNLIKELY"
@@ -547,6 +725,8 @@ export type FaceAnnotationAngerLikelihoodEnum =
   | "POSSIBLE"
   | "LIKELY"
   | "VERY_LIKELY";
+const FaceAnnotationAngerLikelihoodEnum = S.String;
+
 /** A 3D position in the image, used primarily for Face detection landmarks. A valid Position must have both x and y coordinates. The position coordinates are in the same scale as the original image. */
 export interface Position {
   /** X coordinate. */
@@ -556,6 +736,8 @@ export interface Position {
   /** Z coordinate (or depth). */
   z?: number;
 }
+const Position = /*@__PURE__*/ __L.at(__c8, 6) as any as S.Schema<Position>;
+
 export type LandmarkTypeEnum =
   | "UNKNOWN_LANDMARK"
   | "LEFT_EYE"
@@ -594,6 +776,8 @@ export type LandmarkTypeEnum =
   | "CHIN_RIGHT_GONION"
   | "LEFT_CHEEK_CENTER"
   | "RIGHT_CHEEK_CENTER";
+const LandmarkTypeEnum = S.String;
+
 /** A face-specific landmark (for example, a face feature). Landmark positions may fall outside the bounds of the image if the face is near one or more edges of the image. Therefore it is NOT guaranteed that `0 <= x < width` or `0 <= y < height`. */
 export interface Landmark {
   /** Face landmark position. */
@@ -601,7 +785,11 @@ export interface Landmark {
   /** Face landmark type. */
   type?: LandmarkTypeEnum;
 }
+const Landmark = /*@__PURE__*/ __L.at(__c8, 7) as any as S.Schema<Landmark>;
+
 export type LandmarkList = Array<Landmark>;
+const LandmarkList = /*@__PURE__*/ __L.at(__c9, 0) as any as S.Schema<LandmarkList>;
+
 export type FaceAnnotationHeadwearLikelihoodEnum =
   | "UNKNOWN"
   | "VERY_UNLIKELY"
@@ -609,6 +797,8 @@ export type FaceAnnotationHeadwearLikelihoodEnum =
   | "POSSIBLE"
   | "LIKELY"
   | "VERY_LIKELY";
+const FaceAnnotationHeadwearLikelihoodEnum = S.String;
+
 export type FaceAnnotationJoyLikelihoodEnum =
   | "UNKNOWN"
   | "VERY_UNLIKELY"
@@ -616,6 +806,8 @@ export type FaceAnnotationJoyLikelihoodEnum =
   | "POSSIBLE"
   | "LIKELY"
   | "VERY_LIKELY";
+const FaceAnnotationJoyLikelihoodEnum = S.String;
+
 /** A face annotation object contains the results of face detection. */
 export interface FaceAnnotation {
   /** Sorrow likelihood. */
@@ -649,7 +841,11 @@ export interface FaceAnnotation {
   /** Yaw angle, which indicates the leftward/rightward angle that the face is pointing relative to the vertical plane perpendicular to the image. Range [-180,180]. */
   panAngle?: number;
 }
+const FaceAnnotation = /*@__PURE__*/ __L.at(__c9, 1) as any as S.Schema<FaceAnnotation>;
+
 export type FaceAnnotationList = Array<FaceAnnotation>;
+const FaceAnnotationList = /*@__PURE__*/ __L.at(__c9, 2) as any as S.Schema<FaceAnnotationList>;
+
 export type SafeSearchAnnotationSpoofEnum =
   | "UNKNOWN"
   | "VERY_UNLIKELY"
@@ -657,6 +853,8 @@ export type SafeSearchAnnotationSpoofEnum =
   | "POSSIBLE"
   | "LIKELY"
   | "VERY_LIKELY";
+const SafeSearchAnnotationSpoofEnum = S.String;
+
 export type SafeSearchAnnotationViolenceEnum =
   | "UNKNOWN"
   | "VERY_UNLIKELY"
@@ -664,6 +862,8 @@ export type SafeSearchAnnotationViolenceEnum =
   | "POSSIBLE"
   | "LIKELY"
   | "VERY_LIKELY";
+const SafeSearchAnnotationViolenceEnum = S.String;
+
 export type SafeSearchAnnotationRacyEnum =
   | "UNKNOWN"
   | "VERY_UNLIKELY"
@@ -671,6 +871,8 @@ export type SafeSearchAnnotationRacyEnum =
   | "POSSIBLE"
   | "LIKELY"
   | "VERY_LIKELY";
+const SafeSearchAnnotationRacyEnum = S.String;
+
 export type SafeSearchAnnotationAdultEnum =
   | "UNKNOWN"
   | "VERY_UNLIKELY"
@@ -678,6 +880,8 @@ export type SafeSearchAnnotationAdultEnum =
   | "POSSIBLE"
   | "LIKELY"
   | "VERY_LIKELY";
+const SafeSearchAnnotationAdultEnum = S.String;
+
 export type SafeSearchAnnotationMedicalEnum =
   | "UNKNOWN"
   | "VERY_UNLIKELY"
@@ -685,6 +889,8 @@ export type SafeSearchAnnotationMedicalEnum =
   | "POSSIBLE"
   | "LIKELY"
   | "VERY_LIKELY";
+const SafeSearchAnnotationMedicalEnum = S.String;
+
 /** Set of features pertaining to the image, computed by computer vision methods over safe-search verticals (for example, adult, spoof, medical, violence). */
 export interface SafeSearchAnnotation {
   /** Spoof likelihood. The likelihood that an modification was made to the image's canonical version to make it appear funny or offensive. */
@@ -698,6 +904,8 @@ export interface SafeSearchAnnotation {
   /** Likelihood that this is a medical image. */
   medical?: SafeSearchAnnotationMedicalEnum;
 }
+const SafeSearchAnnotation = /*@__PURE__*/ __L.at(__c9, 3) as any as S.Schema<SafeSearchAnnotation>;
+
 /** Label to provide extra metadata for the web detection. */
 export interface WebLabel {
   /** Label for extra metadata. */
@@ -705,7 +913,11 @@ export interface WebLabel {
   /** The BCP-47 language code for `label`, such as "en-US" or "sr-Latn". For more information, see http://www.unicode.org/reports/tr35/#Unicode_locale_identifier. */
   languageCode?: string;
 }
+const WebLabel = /*@__PURE__*/ __L.at(__c9, 4) as any as S.Schema<WebLabel>;
+
 export type WebLabelList = Array<WebLabel>;
+const WebLabelList = /*@__PURE__*/ __L.at(__c9, 5) as any as S.Schema<WebLabelList>;
+
 /** Metadata for online images. */
 export interface WebImage {
   /** The result image URL. */
@@ -713,7 +925,11 @@ export interface WebImage {
   /** (Deprecated) Overall relevancy score for the image. */
   score?: number;
 }
+const WebImage = /*@__PURE__*/ __L.at(__c9, 6) as any as S.Schema<WebImage>;
+
 export type WebImageList = Array<WebImage>;
+const WebImageList = /*@__PURE__*/ __L.at(__c9, 7) as any as S.Schema<WebImageList>;
+
 /** Entity deduced from similar images on the Internet. */
 export interface WebEntity {
   /** Opaque entity ID. */
@@ -723,7 +939,11 @@ export interface WebEntity {
   /** Canonical description of the entity, in English. */
   description?: string;
 }
+const WebEntity = /*@__PURE__*/ __L.at(__c10, 0) as any as S.Schema<WebEntity>;
+
 export type WebEntityList = Array<WebEntity>;
+const WebEntityList = /*@__PURE__*/ __L.at(__c10, 1) as any as S.Schema<WebEntityList>;
+
 /** Metadata for web pages. */
 export interface WebPage {
   /** Partial matching images on the page. Those images are similar enough to share some key-point features. For example an original image will likely have partial matching for its crops. */
@@ -737,7 +957,11 @@ export interface WebPage {
   /** The result web page URL. */
   url?: string;
 }
+const WebPage = /*@__PURE__*/ __L.at(__c10, 2) as any as S.Schema<WebPage>;
+
 export type WebPageList = Array<WebPage>;
+const WebPageList = /*@__PURE__*/ __L.at(__c10, 3) as any as S.Schema<WebPageList>;
+
 /** Relevant information for the image from the Internet. */
 export interface WebDetection {
   /** The service's best guess as to the topic of the request image. Inferred from similar images on the open web. */
@@ -753,6 +977,8 @@ export interface WebDetection {
   /** Partial matching images from the Internet. Those images are similar enough to share some key-point features. For example an original image will likely have partial matching for its crops. */
   partialMatchingImages?: WebImageList;
 }
+const WebDetection = /*@__PURE__*/ __L.at(__c10, 4) as any as S.Schema<WebDetection>;
+
 /** Response to an image annotation request. */
 export interface AnnotateImageResponse {
   /** If present, image properties were extracted successfully. */
@@ -784,7 +1010,17 @@ export interface AnnotateImageResponse {
   /** If present, logo detection has completed successfully. */
   logoAnnotations?: EntityAnnotationList;
 }
+const AnnotateImageResponse = /*@__PURE__*/ __L.at(
+  __c10,
+  5,
+) as any as S.Schema<AnnotateImageResponse>;
+
 export type AnnotateImageResponseList = Array<AnnotateImageResponse>;
+const AnnotateImageResponseList = /*@__PURE__*/ __L.at(
+  __c10,
+  6,
+) as any as S.Schema<AnnotateImageResponseList>;
+
 /** Response to a single file annotation request. A file may contain one or more images, which individually have their own responses. */
 export interface AnnotateFileResponse {
   /** If set, represents the error message for the failed request. The `responses` field will not be set in this case. */
@@ -796,12 +1032,27 @@ export interface AnnotateFileResponse {
   /** This field gives the total number of pages in the file. */
   totalPages?: number;
 }
+const AnnotateFileResponse = /*@__PURE__*/ __L.at(
+  __c10,
+  7,
+) as any as S.Schema<AnnotateFileResponse>;
+
 export type AnnotateFileResponseList = Array<AnnotateFileResponse>;
+const AnnotateFileResponseList = /*@__PURE__*/ __L.at(
+  __c11,
+  0,
+) as any as S.Schema<AnnotateFileResponseList>;
+
 /** A list of file annotation responses. */
 export interface BatchAnnotateFilesResponse {
   /** The list of file annotation responses, each response corresponding to each AnnotateFileRequest in BatchAnnotateFilesRequest. */
   responses?: AnnotateFileResponseList;
 }
+const BatchAnnotateFilesResponse = /*@__PURE__*/ __L.at(
+  __c11,
+  1,
+) as any as S.Schema<BatchAnnotateFilesResponse>;
+
 /** External image source (Google Cloud Storage or web URL image location). */
 export interface ImageSource {
   /** The URI of the source image. Can be either: 1. A Google Cloud Storage URI of the form `gs://bucket_name/object_name`. Object versioning is not supported. See [Google Cloud Storage Request URIs](https://cloud.google.com/storage/docs/reference-uris) for more info. 2. A publicly-accessible image HTTP/HTTPS URL. When fetching images from HTTP/HTTPS URLs, Google cannot guarantee that the request will be completed. Your request may fail if the specified host denies the request (e.g. due to request throttling or DOS prevention), or if Google throttles requests to the site for abuse prevention. You should not depend on externally-hosted images for production applications. When both `gcs_image_uri` and `image_uri` are specified, `image_uri` takes precedence. */
@@ -809,6 +1060,8 @@ export interface ImageSource {
   /** **Use `image_uri` instead.** The Google Cloud Storage URI of the form `gs://bucket_name/object_name`. Object versioning is not supported. See [Google Cloud Storage Request URIs](https://cloud.google.com/storage/docs/reference-uris) for more info. */
   gcsImageUri?: string;
 }
+const ImageSource = /*@__PURE__*/ __L.at(__c11, 2) as any as S.Schema<ImageSource>;
+
 /** Client image to perform Google Cloud Vision API tasks over. */
 export interface Image {
   /** Google Cloud Storage image location, or publicly-accessible image URL. If both `content` and `source` are provided for an image, `content` takes precedence and is used to perform the image annotation request. */
@@ -816,6 +1069,8 @@ export interface Image {
   /** Image content, represented as a stream of bytes. Note: As with all `bytes` fields, protobuffers use a pure binary representation, whereas JSON representations use base64. Currently, this field only works for BatchAnnotateImages requests. It does not work for AsyncBatchAnnotateImages requests. */
   content?: string;
 }
+const Image = /*@__PURE__*/ __L.at(__c11, 3) as any as S.Schema<Image>;
+
 /** Request for performing Google Cloud Vision API tasks over a user-provided image, with user-requested features, and with context information. */
 export interface AnnotateImageRequest {
   /** Requested features. */
@@ -825,7 +1080,17 @@ export interface AnnotateImageRequest {
   /** Additional context that may accompany the image. */
   imageContext?: ImageContext;
 }
+const AnnotateImageRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  4,
+) as any as S.Schema<AnnotateImageRequest>;
+
 export type AnnotateImageRequestList = Array<AnnotateImageRequest>;
+const AnnotateImageRequestList = /*@__PURE__*/ __L.at(
+  __c11,
+  5,
+) as any as S.Schema<AnnotateImageRequestList>;
+
 /** Multiple image annotation requests are batched into a single service call. */
 export interface BatchAnnotateImagesRequest {
   /** Optional. Target project and location to make a call. Format: `projects/{project-id}/locations/{location-id}`. If no parent is specified, a region will be chosen automatically. Supported location-ids: `us`: USA country only, `asia`: East asia areas, like Japan, Taiwan, `eu`: The European Union. Example: `projects/project-A/locations/eu`. */
@@ -835,44 +1100,81 @@ export interface BatchAnnotateImagesRequest {
   /** Required. Individual image annotation requests for this batch. */
   requests?: AnnotateImageRequestList;
 }
+const BatchAnnotateImagesRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  6,
+) as any as S.Schema<BatchAnnotateImagesRequest>;
+
 export interface AnnotateImagesRequest {
   /** Request body */
   body?: BatchAnnotateImagesRequest;
 }
+const AnnotateImagesRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  7,
+) as any as S.Schema<AnnotateImagesRequest>;
+
 /** Response to a batch image annotation request. */
 export interface BatchAnnotateImagesResponse {
   /** Individual responses to image annotation requests within the batch. */
   responses?: AnnotateImageResponseList;
 }
+const BatchAnnotateImagesResponse = /*@__PURE__*/ __L.at(
+  __c12,
+  0,
+) as any as S.Schema<BatchAnnotateImagesResponse>;
+
 export interface AnnotateProjectsFilesRequest {
   /** Optional. Target project and location to make a call. Format: `projects/{project-id}/locations/{location-id}`. If no parent is specified, a region will be chosen automatically. Supported location-ids: `us`: USA country only, `asia`: East asia areas, like Japan, Taiwan, `eu`: The European Union. Example: `projects/project-A/locations/eu`. */
   parent: string;
   /** Request body */
   body?: BatchAnnotateFilesRequest;
 }
+const AnnotateProjectsFilesRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  1,
+) as any as S.Schema<AnnotateProjectsFilesRequest>;
+
 export interface AnnotateProjectsImagesRequest {
   /** Optional. Target project and location to make a call. Format: `projects/{project-id}/locations/{location-id}`. If no parent is specified, a region will be chosen automatically. Supported location-ids: `us`: USA country only, `asia`: East asia areas, like Japan, Taiwan, `eu`: The European Union. Example: `projects/project-A/locations/eu`. */
   parent: string;
   /** Request body */
   body?: BatchAnnotateImagesRequest;
 }
+const AnnotateProjectsImagesRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  2,
+) as any as S.Schema<AnnotateProjectsImagesRequest>;
+
 export interface AnnotateProjectsLocationsFilesRequest {
   /** Optional. Target project and location to make a call. Format: `projects/{project-id}/locations/{location-id}`. If no parent is specified, a region will be chosen automatically. Supported location-ids: `us`: USA country only, `asia`: East asia areas, like Japan, Taiwan, `eu`: The European Union. Example: `projects/project-A/locations/eu`. */
   parent: string;
   /** Request body */
   body?: BatchAnnotateFilesRequest;
 }
+const AnnotateProjectsLocationsFilesRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  3,
+) as any as S.Schema<AnnotateProjectsLocationsFilesRequest>;
+
 export interface AnnotateProjectsLocationsImagesRequest {
   /** Optional. Target project and location to make a call. Format: `projects/{project-id}/locations/{location-id}`. If no parent is specified, a region will be chosen automatically. Supported location-ids: `us`: USA country only, `asia`: East asia areas, like Japan, Taiwan, `eu`: The European Union. Example: `projects/project-A/locations/eu`. */
   parent: string;
   /** Request body */
   body?: BatchAnnotateImagesRequest;
 }
+const AnnotateProjectsLocationsImagesRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  4,
+) as any as S.Schema<AnnotateProjectsLocationsImagesRequest>;
+
 /** The Google Cloud Storage location where the output will be written to. */
 export interface GcsDestination {
   /** Google Cloud Storage URI prefix where the results will be stored. Results will be in JSON format and preceded by its corresponding input URI prefix. This field can either represent a gcs file prefix or gcs directory. In either case, the uri should be unique because in order to get all of the output files, you will need to do a wildcard gcs search on the uri prefix you provide. Examples: * File Prefix: gs://bucket-name/here/filenameprefix The output files will be created in gs://bucket-name/here/ and the names of the output files will begin with "filenameprefix". * Directory Prefix: gs://bucket-name/some/location/ The output files will be created in gs://bucket-name/some/location/ and the names of the output files could be anything because there was no filename prefix specified. If multiple outputs, each response is still AnnotateFileResponse, each of which contains some subset of the full list of AnnotateImageResponse. Multiple outputs can happen if, for example, the output JSON is too large and overflows into multiple sharded files. */
   uri?: string;
 }
+const GcsDestination = GcsSource as any as S.Schema<GcsDestination>;
+
 /** The desired output location and metadata. */
 export interface OutputConfig {
   /** The Google Cloud Storage location to write the output(s) to. */
@@ -880,6 +1182,8 @@ export interface OutputConfig {
   /** The max number of response protos to put into each output JSON file on Google Cloud Storage. The valid range is [1, 100]. If not specified, the default value is 20. For example, for one pdf file with 100 pages, 100 response protos will be generated. If `batch_size` = 20, then 5 json files each containing 20 response protos will be written under the prefix `gcs_destination`.`uri`. Currently, batch_size only applies to GcsDestination, with potential future support for other output configurations. */
   batchSize?: number;
 }
+const OutputConfig = /*@__PURE__*/ __L.at(__c12, 5) as any as S.Schema<OutputConfig>;
+
 /** An offline file annotation request. */
 export interface AsyncAnnotateFileRequest {
   /** Required. The desired output location and metadata (e.g. format). */
@@ -891,7 +1195,17 @@ export interface AsyncAnnotateFileRequest {
   /** Additional context that may accompany the image(s) in the file. */
   imageContext?: ImageContext;
 }
+const AsyncAnnotateFileRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  6,
+) as any as S.Schema<AsyncAnnotateFileRequest>;
+
 export type AsyncAnnotateFileRequestList = Array<AsyncAnnotateFileRequest>;
+const AsyncAnnotateFileRequestList = /*@__PURE__*/ __L.at(
+  __c12,
+  7,
+) as any as S.Schema<AsyncAnnotateFileRequestList>;
+
 /** Multiple async file annotation requests are batched into a single service call. */
 export interface AsyncBatchAnnotateFilesRequest {
   /** Optional. Target project and location to make a call. Format: `projects/{project-id}/locations/{location-id}`. If no parent is specified, a region will be chosen automatically. Supported location-ids: `us`: USA country only, `asia`: East asia areas, like Japan, Taiwan, `eu`: The European Union. Example: `projects/project-A/locations/eu`. */
@@ -901,10 +1215,20 @@ export interface AsyncBatchAnnotateFilesRequest {
   /** Required. Individual async file annotation requests for this batch. */
   requests?: AsyncAnnotateFileRequestList;
 }
+const AsyncBatchAnnotateFilesRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  0,
+) as any as S.Schema<AsyncBatchAnnotateFilesRequest>;
+
 export interface AsyncBatchAnnotateFilesRequest_ {
   /** Request body */
   body?: AsyncBatchAnnotateFilesRequest;
 }
+const AsyncBatchAnnotateFilesRequest_ = /*@__PURE__*/ __L.at(
+  __c13,
+  1,
+) as any as S.Schema<AsyncBatchAnnotateFilesRequest_>;
+
 /** This resource represents a long-running operation that is the result of a network API call. */
 export interface Operation {
   /** Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any. */
@@ -918,6 +1242,8 @@ export interface Operation {
   /** If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available. */
   done?: boolean;
 }
+const Operation = /*@__PURE__*/ __L.at(__c13, 2) as any as S.Schema<Operation>;
+
 /** Request for async image annotation for a list of images. */
 export interface AsyncBatchAnnotateImagesRequest {
   /** Required. Individual image annotation requests for this batch. */
@@ -929,42 +1255,79 @@ export interface AsyncBatchAnnotateImagesRequest {
   /** Optional. The labels with user-defined metadata for the request. Label keys and values can be no longer than 63 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. Label values are optional. Label keys must start with a letter. */
   labels?: StringMap;
 }
+const AsyncBatchAnnotateImagesRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  3,
+) as any as S.Schema<AsyncBatchAnnotateImagesRequest>;
+
 export interface AsyncBatchAnnotateImagesRequest_ {
   /** Request body */
   body?: AsyncBatchAnnotateImagesRequest;
 }
+const AsyncBatchAnnotateImagesRequest_ = /*@__PURE__*/ __L.at(
+  __c13,
+  4,
+) as any as S.Schema<AsyncBatchAnnotateImagesRequest_>;
+
 export interface AsyncBatchAnnotateProjectsFilesRequest {
   /** Optional. Target project and location to make a call. Format: `projects/{project-id}/locations/{location-id}`. If no parent is specified, a region will be chosen automatically. Supported location-ids: `us`: USA country only, `asia`: East asia areas, like Japan, Taiwan, `eu`: The European Union. Example: `projects/project-A/locations/eu`. */
   parent: string;
   /** Request body */
   body?: AsyncBatchAnnotateFilesRequest;
 }
+const AsyncBatchAnnotateProjectsFilesRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  5,
+) as any as S.Schema<AsyncBatchAnnotateProjectsFilesRequest>;
+
 export interface AsyncBatchAnnotateProjectsImagesRequest {
   /** Optional. Target project and location to make a call. Format: `projects/{project-id}/locations/{location-id}`. If no parent is specified, a region will be chosen automatically. Supported location-ids: `us`: USA country only, `asia`: East asia areas, like Japan, Taiwan, `eu`: The European Union. Example: `projects/project-A/locations/eu`. */
   parent: string;
   /** Request body */
   body?: AsyncBatchAnnotateImagesRequest;
 }
+const AsyncBatchAnnotateProjectsImagesRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  6,
+) as any as S.Schema<AsyncBatchAnnotateProjectsImagesRequest>;
+
 export interface AsyncBatchAnnotateProjectsLocationsFilesRequest {
   /** Optional. Target project and location to make a call. Format: `projects/{project-id}/locations/{location-id}`. If no parent is specified, a region will be chosen automatically. Supported location-ids: `us`: USA country only, `asia`: East asia areas, like Japan, Taiwan, `eu`: The European Union. Example: `projects/project-A/locations/eu`. */
   parent: string;
   /** Request body */
   body?: AsyncBatchAnnotateFilesRequest;
 }
+const AsyncBatchAnnotateProjectsLocationsFilesRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  7,
+) as any as S.Schema<AsyncBatchAnnotateProjectsLocationsFilesRequest>;
+
 export interface AsyncBatchAnnotateProjectsLocationsImagesRequest {
   /** Optional. Target project and location to make a call. Format: `projects/{project-id}/locations/{location-id}`. If no parent is specified, a region will be chosen automatically. Supported location-ids: `us`: USA country only, `asia`: East asia areas, like Japan, Taiwan, `eu`: The European Union. Example: `projects/project-A/locations/eu`. */
   parent: string;
   /** Request body */
   body?: AsyncBatchAnnotateImagesRequest;
 }
+const AsyncBatchAnnotateProjectsLocationsImagesRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  0,
+) as any as S.Schema<AsyncBatchAnnotateProjectsLocationsImagesRequest>;
+
 /** The request message for Operations.CancelOperation. */
 export interface CancelOperationRequest {}
+const CancelOperationRequest = Empty as any as S.Schema<CancelOperationRequest>;
+
 export interface CancelOperationsRequest {
   /** The name of the operation resource to be cancelled. */
   name: string;
   /** Request body */
   body?: CancelOperationRequest;
 }
+const CancelOperationsRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  1,
+) as any as S.Schema<CancelOperationsRequest>;
+
 export interface CreateProjectsLocationsProductsRequest {
   /** Required. The project in which the Product should be created. Format is `projects/PROJECT_ID/locations/LOC_ID`. */
   parent: string;
@@ -973,6 +1336,11 @@ export interface CreateProjectsLocationsProductsRequest {
   /** Request body */
   body?: Product;
 }
+const CreateProjectsLocationsProductsRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  2,
+) as any as S.Schema<CreateProjectsLocationsProductsRequest>;
+
 /** A ProductSet contains Products. A ProductSet can contain a maximum of 1 million reference images. If the limit is exceeded, periodic indexing will fail. */
 export interface ProductSet {
   /** The resource name of the ProductSet. Format is: `projects/PROJECT_ID/locations/LOC_ID/productSets/PRODUCT_SET_ID`. This field is ignored when creating a ProductSet. */
@@ -984,6 +1352,8 @@ export interface ProductSet {
   /** The user-provided name for this ProductSet. Must not be empty. Must be at most 4096 characters long. */
   displayName?: string;
 }
+const ProductSet = /*@__PURE__*/ __L.at(__c14, 3) as any as S.Schema<ProductSet>;
+
 export interface CreateProjectsLocationsProductSetsRequest {
   /** A user-supplied resource id for this ProductSet. If set, the server will attempt to use this value as the resource id. If it is already in use, an error is returned with code ALREADY_EXISTS. Must be at most 128 characters long. It cannot contain the character `/`. */
   productSetId?: string;
@@ -992,7 +1362,14 @@ export interface CreateProjectsLocationsProductSetsRequest {
   /** Request body */
   body?: ProductSet;
 }
+const CreateProjectsLocationsProductSetsRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  4,
+) as any as S.Schema<CreateProjectsLocationsProductSetsRequest>;
+
 export type BoundingPolyList = Array<BoundingPoly>;
+const BoundingPolyList = /*@__PURE__*/ __L.at(__c14, 5) as any as S.Schema<BoundingPolyList>;
+
 /** A `ReferenceImage` represents a product image and its associated metadata, such as bounding boxes. */
 export interface ReferenceImage {
   /** Required. The Google Cloud Storage URI of the reference image. The URI must start with `gs://`. */
@@ -1002,6 +1379,8 @@ export interface ReferenceImage {
   /** The resource name of the reference image. Format is: `projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID/referenceImages/IMAGE_ID`. This field is ignored when creating a reference image. */
   name?: string;
 }
+const ReferenceImage = /*@__PURE__*/ __L.at(__c14, 6) as any as S.Schema<ReferenceImage>;
+
 export interface CreateProjectsLocationsProductsReferenceImagesRequest {
   /** Required. Resource name of the product in which to create the reference image. Format is `projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID`. */
   parent: string;
@@ -1010,71 +1389,151 @@ export interface CreateProjectsLocationsProductsReferenceImagesRequest {
   /** Request body */
   body?: ReferenceImage;
 }
+const CreateProjectsLocationsProductsReferenceImagesRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  7,
+) as any as S.Schema<CreateProjectsLocationsProductsReferenceImagesRequest>;
+
 export interface DeleteOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
+const DeleteOperationsRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  0,
+) as any as S.Schema<DeleteOperationsRequest>;
+
 export interface DeleteProjectsLocationsProductsRequest {
   /** Required. Resource name of product to delete. Format is: `projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID` */
   name: string;
 }
+const DeleteProjectsLocationsProductsRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  1,
+) as any as S.Schema<DeleteProjectsLocationsProductsRequest>;
+
 export interface DeleteProjectsLocationsProductSetsRequest {
   /** Required. Resource name of the ProductSet to delete. Format is: `projects/PROJECT_ID/locations/LOC_ID/productSets/PRODUCT_SET_ID` */
   name: string;
 }
+const DeleteProjectsLocationsProductSetsRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  2,
+) as any as S.Schema<DeleteProjectsLocationsProductSetsRequest>;
+
 export interface DeleteProjectsLocationsProductsReferenceImagesRequest {
   /** Required. The resource name of the reference image to delete. Format is: `projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID/referenceImages/IMAGE_ID` */
   name: string;
 }
+const DeleteProjectsLocationsProductsReferenceImagesRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  3,
+) as any as S.Schema<DeleteProjectsLocationsProductsReferenceImagesRequest>;
+
 export interface GetLocationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
+const GetLocationsOperationsRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  4,
+) as any as S.Schema<GetLocationsOperationsRequest>;
+
 export interface GetOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
+const GetOperationsRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  5,
+) as any as S.Schema<GetOperationsRequest>;
+
 export interface GetProjectsLocationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
+const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  6,
+) as any as S.Schema<GetProjectsLocationsOperationsRequest>;
+
 export interface GetProjectsLocationsProductsRequest {
   /** Required. Resource name of the Product to get. Format is: `projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID` */
   name: string;
 }
+const GetProjectsLocationsProductsRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  7,
+) as any as S.Schema<GetProjectsLocationsProductsRequest>;
+
 export interface GetProjectsLocationsProductSetsRequest {
   /** Required. Resource name of the ProductSet to get. Format is: `projects/PROJECT_ID/locations/LOC_ID/productSets/PRODUCT_SET_ID` */
   name: string;
 }
+const GetProjectsLocationsProductSetsRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  0,
+) as any as S.Schema<GetProjectsLocationsProductSetsRequest>;
+
 export interface GetProjectsLocationsProductsReferenceImagesRequest {
   /** Required. The resource name of the ReferenceImage to get. Format is: `projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID/referenceImages/IMAGE_ID`. */
   name: string;
 }
+const GetProjectsLocationsProductsReferenceImagesRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  1,
+) as any as S.Schema<GetProjectsLocationsProductsReferenceImagesRequest>;
+
 export interface GetProjectsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
+const GetProjectsOperationsRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  2,
+) as any as S.Schema<GetProjectsOperationsRequest>;
+
 /** The Google Cloud Storage location for a csv file which preserves a list of ImportProductSetRequests in each line. */
 export interface ImportProductSetsGcsSource {
   /** The Google Cloud Storage URI of the input csv file. The URI must start with `gs://`. The format of the input csv file should be one image per line. In each line, there are 8 columns. 1. image-uri 2. image-id 3. product-set-id 4. product-id 5. product-category 6. product-display-name 7. labels 8. bounding-poly The `image-uri`, `product-set-id`, `product-id`, and `product-category` columns are required. All other columns are optional. If the `ProductSet` or `Product` specified by the `product-set-id` and `product-id` values does not exist, then the system will create a new `ProductSet` or `Product` for the image. In this case, the `product-display-name` column refers to display_name, the `product-category` column refers to product_category, and the `labels` column refers to product_labels. The `image-id` column is optional but must be unique if provided. If it is empty, the system will automatically assign a unique id to the image. The `product-display-name` column is optional. If it is empty, the system sets the display_name field for the product to a space (" "). You can update the `display_name` later by using the API. If a `Product` with the specified `product-id` already exists, then the system ignores the `product-display-name`, `product-category`, and `labels` columns. The `labels` column (optional) is a line containing a list of comma-separated key-value pairs, in the following format: "key_1=value_1,key_2=value_2,...,key_n=value_n" The `bounding-poly` column (optional) identifies one region of interest from the image in the same manner as `CreateReferenceImage`. If you do not specify the `bounding-poly` column, then the system will try to detect regions of interest automatically. At most one `bounding-poly` column is allowed per line. If the image contains multiple regions of interest, add a line to the CSV file that includes the same product information, and the `bounding-poly` values for each region of interest. The `bounding-poly` column must contain an even number of comma-separated numbers, in the format "p1_x,p1_y,p2_x,p2_y,...,pn_x,pn_y". Use non-negative integers for absolute bounding polygons, and float values in [0, 1] for normalized bounding polygons. The system will resize the image if the image resolution is too large to process (larger than 20MP). */
   csvFileUri?: string;
 }
+const ImportProductSetsGcsSource = /*@__PURE__*/ __L.at(
+  __c16,
+  3,
+) as any as S.Schema<ImportProductSetsGcsSource>;
+
 /** The input content for the `ImportProductSets` method. */
 export interface ImportProductSetsInputConfig {
   /** The Google Cloud Storage location for a csv file which preserves a list of ImportProductSetRequests in each line. */
   gcsSource?: ImportProductSetsGcsSource;
 }
+const ImportProductSetsInputConfig = /*@__PURE__*/ __L.at(
+  __c16,
+  4,
+) as any as S.Schema<ImportProductSetsInputConfig>;
+
 /** Request message for the `ImportProductSets` method. */
 export interface ImportProductSetsRequest {
   /** Required. The input content for the list of requests. */
   inputConfig?: ImportProductSetsInputConfig;
 }
+const ImportProductSetsRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  5,
+) as any as S.Schema<ImportProductSetsRequest>;
+
 export interface ImportProjectsLocationsProductSetsRequest {
   /** Required. The project in which the ProductSets should be imported. Format is `projects/PROJECT_ID/locations/LOC_ID`. */
   parent: string;
   /** Request body */
   body?: ImportProductSetsRequest;
 }
+const ImportProjectsLocationsProductSetsRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  6,
+) as any as S.Schema<ImportProjectsLocationsProductSetsRequest>;
+
 export interface ListOperationsRequest {
   /** When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. */
   returnPartialSuccess?: boolean;
@@ -1087,7 +1546,14 @@ export interface ListOperationsRequest {
   /** The standard list filter. */
   filter?: string;
 }
+const ListOperationsRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  7,
+) as any as S.Schema<ListOperationsRequest>;
+
 export type OperationList = Array<Operation>;
+const OperationList = /*@__PURE__*/ __L.at(__c17, 0) as any as S.Schema<OperationList>;
+
 /** The response message for Operations.ListOperations. */
 export interface ListOperationsResponse {
   /** A list of operations that matches the specified filter in the request. */
@@ -1097,6 +1563,11 @@ export interface ListOperationsResponse {
   /** The standard List next-page token. */
   nextPageToken?: string;
 }
+const ListOperationsResponse = /*@__PURE__*/ __L.at(
+  __c17,
+  1,
+) as any as S.Schema<ListOperationsResponse>;
+
 export interface ListProjectsLocationsProductsRequest {
   /** The next_page_token returned from a previous List request, if any. */
   pageToken?: string;
@@ -1105,7 +1576,14 @@ export interface ListProjectsLocationsProductsRequest {
   /** The maximum number of items to return. Default 10, maximum 100. */
   pageSize?: number;
 }
+const ListProjectsLocationsProductsRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  2,
+) as any as S.Schema<ListProjectsLocationsProductsRequest>;
+
 export type ProductList = Array<Product>;
+const ProductList = /*@__PURE__*/ __L.at(__c17, 3) as any as S.Schema<ProductList>;
+
 /** Response message for the `ListProducts` method. */
 export interface ListProductsResponse {
   /** Token to retrieve the next page of results, or empty if there are no more results in the list. */
@@ -1113,6 +1591,11 @@ export interface ListProductsResponse {
   /** List of products. */
   products?: ProductList;
 }
+const ListProductsResponse = /*@__PURE__*/ __L.at(
+  __c17,
+  4,
+) as any as S.Schema<ListProductsResponse>;
+
 export interface ListProjectsLocationsProductSetsRequest {
   /** The next_page_token returned from a previous List request, if any. */
   pageToken?: string;
@@ -1121,7 +1604,14 @@ export interface ListProjectsLocationsProductSetsRequest {
   /** Required. The project from which ProductSets should be listed. Format is `projects/PROJECT_ID/locations/LOC_ID`. */
   parent: string;
 }
+const ListProjectsLocationsProductSetsRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  5,
+) as any as S.Schema<ListProjectsLocationsProductSetsRequest>;
+
 export type ProductSetList = Array<ProductSet>;
+const ProductSetList = /*@__PURE__*/ __L.at(__c17, 6) as any as S.Schema<ProductSetList>;
+
 /** Response message for the `ListProductSets` method. */
 export interface ListProductSetsResponse {
   /** List of ProductSets. */
@@ -1129,6 +1619,11 @@ export interface ListProductSetsResponse {
   /** Token to retrieve the next page of results, or empty if there are no more results in the list. */
   nextPageToken?: string;
 }
+const ListProductSetsResponse = /*@__PURE__*/ __L.at(
+  __c17,
+  7,
+) as any as S.Schema<ListProductSetsResponse>;
+
 export interface ListProjectsLocationsProductSetsProductsRequest {
   /** Required. The ProductSet resource for which to retrieve Products. Format is: `projects/PROJECT_ID/locations/LOC_ID/productSets/PRODUCT_SET_ID` */
   name: string;
@@ -1137,6 +1632,11 @@ export interface ListProjectsLocationsProductSetsProductsRequest {
   /** The next_page_token returned from a previous List request, if any. */
   pageToken?: string;
 }
+const ListProjectsLocationsProductSetsProductsRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  0,
+) as any as S.Schema<ListProjectsLocationsProductSetsProductsRequest>;
+
 /** Response message for the `ListProductsInProductSet` method. */
 export interface ListProductsInProductSetResponse {
   /** Token to retrieve the next page of results, or empty if there are no more results in the list. */
@@ -1144,6 +1644,11 @@ export interface ListProductsInProductSetResponse {
   /** The list of Products. */
   products?: ProductList;
 }
+const ListProductsInProductSetResponse = /*@__PURE__*/ __L.at(
+  __c18,
+  1,
+) as any as S.Schema<ListProductsInProductSetResponse>;
+
 export interface ListProjectsLocationsProductsReferenceImagesRequest {
   /** Required. Resource name of the product containing the reference images. Format is `projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID`. */
   parent: string;
@@ -1152,7 +1657,14 @@ export interface ListProjectsLocationsProductsReferenceImagesRequest {
   /** A token identifying a page of results to be returned. This is the value of `nextPageToken` returned in a previous reference image list request. Defaults to the first page if not specified. */
   pageToken?: string;
 }
+const ListProjectsLocationsProductsReferenceImagesRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  2,
+) as any as S.Schema<ListProjectsLocationsProductsReferenceImagesRequest>;
+
 export type ReferenceImageList = Array<ReferenceImage>;
+const ReferenceImageList = /*@__PURE__*/ __L.at(__c18, 3) as any as S.Schema<ReferenceImageList>;
+
 /** Response message for the `ListReferenceImages` method. */
 export interface ListReferenceImagesResponse {
   /** The list of reference images. */
@@ -1162,6 +1674,11 @@ export interface ListReferenceImagesResponse {
   /** The next_page_token returned from a previous List request, if any. */
   nextPageToken?: string;
 }
+const ListReferenceImagesResponse = /*@__PURE__*/ __L.at(
+  __c18,
+  4,
+) as any as S.Schema<ListReferenceImagesResponse>;
+
 export interface PatchProjectsLocationsProductsRequest {
   /** The resource name of the product. Format is: `projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID`. This field is ignored when creating a product. */
   name: string;
@@ -1170,6 +1687,11 @@ export interface PatchProjectsLocationsProductsRequest {
   /** Request body */
   body?: Product;
 }
+const PatchProjectsLocationsProductsRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  5,
+) as any as S.Schema<PatchProjectsLocationsProductsRequest>;
+
 export interface PatchProjectsLocationsProductSetsRequest {
   /** The resource name of the ProductSet. Format is: `projects/PROJECT_ID/locations/LOC_ID/productSets/PRODUCT_SET_ID`. This field is ignored when creating a ProductSet. */
   name: string;
@@ -1178,11 +1700,21 @@ export interface PatchProjectsLocationsProductSetsRequest {
   /** Request body */
   body?: ProductSet;
 }
+const PatchProjectsLocationsProductSetsRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  6,
+) as any as S.Schema<PatchProjectsLocationsProductSetsRequest>;
+
 /** Config to control which ProductSet contains the Products to be deleted. */
 export interface ProductSetPurgeConfig {
   /** The ProductSet that contains the Products to delete. If a Product is a member of product_set_id in addition to other ProductSets, the Product will still be deleted. */
   productSetId?: string;
 }
+const ProductSetPurgeConfig = /*@__PURE__*/ __L.at(
+  __c18,
+  7,
+) as any as S.Schema<ProductSetPurgeConfig>;
+
 /** Request message for the `PurgeProducts` method. */
 export interface PurgeProductsRequest {
   /** If delete_orphan_products is true, all Products that are not in any ProductSet will be deleted. */
@@ -1192,23 +1724,41 @@ export interface PurgeProductsRequest {
   /** The default value is false. Override this value to true to actually perform the purge. */
   force?: boolean;
 }
+const PurgeProductsRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  0,
+) as any as S.Schema<PurgeProductsRequest>;
+
 export interface PurgeProjectsLocationsProductsRequest {
   /** Required. The project and location in which the Products should be deleted. Format is `projects/PROJECT_ID/locations/LOC_ID`. */
   parent: string;
   /** Request body */
   body?: PurgeProductsRequest;
 }
+const PurgeProjectsLocationsProductsRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  1,
+) as any as S.Schema<PurgeProjectsLocationsProductsRequest>;
+
 /** Request message for the `RemoveProductFromProductSet` method. */
 export interface RemoveProductFromProductSetRequest {
   /** Required. The resource name for the Product to be removed from this ProductSet. Format is: `projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID` */
   product?: string;
 }
+const RemoveProductFromProductSetRequest =
+  AddProductToProductSetRequest as any as S.Schema<RemoveProductFromProductSetRequest>;
+
 export interface RemoveProductProjectsLocationsProductSetsRequest {
   /** Required. The resource name for the ProductSet to modify. Format is: `projects/PROJECT_ID/locations/LOC_ID/productSets/PRODUCT_SET_ID` */
   name: string;
   /** Request body */
   body?: RemoveProductFromProductSetRequest;
 }
+const RemoveProductProjectsLocationsProductSetsRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  2,
+) as any as S.Schema<RemoveProductProjectsLocationsProductSetsRequest>;
+
 export type AddProductProjectsLocationsProductSetsError =
   | NotFound
   | Forbidden
@@ -1222,8 +1772,8 @@ export const addProductProjectsLocationsProductSets: API.OperationMethod<
   AddProductProjectsLocationsProductSetsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1) as any as S.Schema<AddProductProjectsLocationsProductSetsRequest>,
-  output: __S(2) as any as S.Schema<Empty>,
+  input: AddProductProjectsLocationsProductSetsRequest,
+  output: Empty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1237,8 +1787,8 @@ export const annotateFiles: API.OperationMethod<
   AnnotateFilesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24) as any as S.Schema<AnnotateFilesRequest>,
-  output: __S(89) as any as S.Schema<BatchAnnotateFilesResponse>,
+  input: AnnotateFilesRequest,
+  output: BatchAnnotateFilesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1252,8 +1802,8 @@ export const annotateImages: API.OperationMethod<
   AnnotateImagesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(95) as any as S.Schema<AnnotateImagesRequest>,
-  output: __S(96) as any as S.Schema<BatchAnnotateImagesResponse>,
+  input: AnnotateImagesRequest,
+  output: BatchAnnotateImagesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1267,8 +1817,8 @@ export const annotateProjectsFiles: API.OperationMethod<
   AnnotateProjectsFilesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(97) as any as S.Schema<AnnotateProjectsFilesRequest>,
-  output: __S(89) as any as S.Schema<BatchAnnotateFilesResponse>,
+  input: AnnotateProjectsFilesRequest,
+  output: BatchAnnotateFilesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1282,8 +1832,8 @@ export const annotateProjectsImages: API.OperationMethod<
   AnnotateProjectsImagesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(98) as any as S.Schema<AnnotateProjectsImagesRequest>,
-  output: __S(96) as any as S.Schema<BatchAnnotateImagesResponse>,
+  input: AnnotateProjectsImagesRequest,
+  output: BatchAnnotateImagesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1302,8 +1852,8 @@ export const annotateProjectsLocationsFiles: API.OperationMethod<
   AnnotateProjectsLocationsFilesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(99) as any as S.Schema<AnnotateProjectsLocationsFilesRequest>,
-  output: __S(89) as any as S.Schema<BatchAnnotateFilesResponse>,
+  input: AnnotateProjectsLocationsFilesRequest,
+  output: BatchAnnotateFilesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1322,8 +1872,8 @@ export const annotateProjectsLocationsImages: API.OperationMethod<
   AnnotateProjectsLocationsImagesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(100) as any as S.Schema<AnnotateProjectsLocationsImagesRequest>,
-  output: __S(96) as any as S.Schema<BatchAnnotateImagesResponse>,
+  input: AnnotateProjectsLocationsImagesRequest,
+  output: BatchAnnotateImagesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1342,8 +1892,8 @@ export const asyncBatchAnnotateFiles: API.OperationMethod<
   AsyncBatchAnnotateFilesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(105) as any as S.Schema<AsyncBatchAnnotateFilesRequest_>,
-  output: __S(106) as any as S.Schema<Operation>,
+  input: AsyncBatchAnnotateFilesRequest_,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1362,8 +1912,8 @@ export const asyncBatchAnnotateImages: API.OperationMethod<
   AsyncBatchAnnotateImagesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(108) as any as S.Schema<AsyncBatchAnnotateImagesRequest_>,
-  output: __S(106) as any as S.Schema<Operation>,
+  input: AsyncBatchAnnotateImagesRequest_,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1382,8 +1932,8 @@ export const asyncBatchAnnotateProjectsFiles: API.OperationMethod<
   AsyncBatchAnnotateProjectsFilesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(109) as any as S.Schema<AsyncBatchAnnotateProjectsFilesRequest>,
-  output: __S(106) as any as S.Schema<Operation>,
+  input: AsyncBatchAnnotateProjectsFilesRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1402,8 +1952,8 @@ export const asyncBatchAnnotateProjectsImages: API.OperationMethod<
   AsyncBatchAnnotateProjectsImagesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(110) as any as S.Schema<AsyncBatchAnnotateProjectsImagesRequest>,
-  output: __S(106) as any as S.Schema<Operation>,
+  input: AsyncBatchAnnotateProjectsImagesRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1422,8 +1972,8 @@ export const asyncBatchAnnotateProjectsLocationsFiles: API.OperationMethod<
   AsyncBatchAnnotateProjectsLocationsFilesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(111) as any as S.Schema<AsyncBatchAnnotateProjectsLocationsFilesRequest>,
-  output: __S(106) as any as S.Schema<Operation>,
+  input: AsyncBatchAnnotateProjectsLocationsFilesRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1442,8 +1992,8 @@ export const asyncBatchAnnotateProjectsLocationsImages: API.OperationMethod<
   AsyncBatchAnnotateProjectsLocationsImagesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(112) as any as S.Schema<AsyncBatchAnnotateProjectsLocationsImagesRequest>,
-  output: __S(106) as any as S.Schema<Operation>,
+  input: AsyncBatchAnnotateProjectsLocationsImagesRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1457,8 +2007,8 @@ export const cancelOperations: API.OperationMethod<
   CancelOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(113) as any as S.Schema<CancelOperationsRequest>,
-  output: __S(2) as any as S.Schema<Empty>,
+  input: CancelOperationsRequest,
+  output: Empty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1478,8 +2028,8 @@ export const createProjectsLocationsProducts: API.OperationMethod<
   CreateProjectsLocationsProductsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(114) as any as S.Schema<CreateProjectsLocationsProductsRequest>,
-  output: __S(60) as any as S.Schema<Product>,
+  input: CreateProjectsLocationsProductsRequest,
+  output: Product,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ProductSearchNotOnboarded, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1499,8 +2049,8 @@ export const createProjectsLocationsProductSets: API.OperationMethod<
   CreateProjectsLocationsProductSetsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(116) as any as S.Schema<CreateProjectsLocationsProductSetsRequest>,
-  output: __S(115) as any as S.Schema<ProductSet>,
+  input: CreateProjectsLocationsProductSetsRequest,
+  output: ProductSet,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ProductSearchNotOnboarded, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1520,8 +2070,8 @@ export const createProjectsLocationsProductsReferenceImages: API.OperationMethod
   CreateProjectsLocationsProductsReferenceImagesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(119) as any as S.Schema<CreateProjectsLocationsProductsReferenceImagesRequest>,
-  output: __S(118) as any as S.Schema<ReferenceImage>,
+  input: CreateProjectsLocationsProductsReferenceImagesRequest,
+  output: ReferenceImage,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ProductSearchNotOnboarded, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1535,8 +2085,8 @@ export const deleteOperations: API.OperationMethod<
   DeleteOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(120) as any as S.Schema<DeleteOperationsRequest>,
-  output: __S(2) as any as S.Schema<Empty>,
+  input: DeleteOperationsRequest,
+  output: Empty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1555,8 +2105,8 @@ export const deleteProjectsLocationsProducts: API.OperationMethod<
   DeleteProjectsLocationsProductsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(121) as any as S.Schema<DeleteProjectsLocationsProductsRequest>,
-  output: __S(2) as any as S.Schema<Empty>,
+  input: DeleteProjectsLocationsProductsRequest,
+  output: Empty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1575,8 +2125,8 @@ export const deleteProjectsLocationsProductSets: API.OperationMethod<
   DeleteProjectsLocationsProductSetsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(122) as any as S.Schema<DeleteProjectsLocationsProductSetsRequest>,
-  output: __S(2) as any as S.Schema<Empty>,
+  input: DeleteProjectsLocationsProductSetsRequest,
+  output: Empty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1595,8 +2145,8 @@ export const deleteProjectsLocationsProductsReferenceImages: API.OperationMethod
   DeleteProjectsLocationsProductsReferenceImagesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(123) as any as S.Schema<DeleteProjectsLocationsProductsReferenceImagesRequest>,
-  output: __S(2) as any as S.Schema<Empty>,
+  input: DeleteProjectsLocationsProductsReferenceImagesRequest,
+  output: Empty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1610,8 +2160,8 @@ export const getLocationsOperations: API.OperationMethod<
   GetLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(124) as any as S.Schema<GetLocationsOperationsRequest>,
-  output: __S(106) as any as S.Schema<Operation>,
+  input: GetLocationsOperationsRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1625,8 +2175,8 @@ export const getOperations: API.OperationMethod<
   GetOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(125) as any as S.Schema<GetOperationsRequest>,
-  output: __S(106) as any as S.Schema<Operation>,
+  input: GetOperationsRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1640,8 +2190,8 @@ export const getProjectsLocationsOperations: API.OperationMethod<
   GetProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(126) as any as S.Schema<GetProjectsLocationsOperationsRequest>,
-  output: __S(106) as any as S.Schema<Operation>,
+  input: GetProjectsLocationsOperationsRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1655,8 +2205,8 @@ export const getProjectsLocationsProducts: API.OperationMethod<
   GetProjectsLocationsProductsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(127) as any as S.Schema<GetProjectsLocationsProductsRequest>,
-  output: __S(60) as any as S.Schema<Product>,
+  input: GetProjectsLocationsProductsRequest,
+  output: Product,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1670,8 +2220,8 @@ export const getProjectsLocationsProductSets: API.OperationMethod<
   GetProjectsLocationsProductSetsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(128) as any as S.Schema<GetProjectsLocationsProductSetsRequest>,
-  output: __S(115) as any as S.Schema<ProductSet>,
+  input: GetProjectsLocationsProductSetsRequest,
+  output: ProductSet,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1685,8 +2235,8 @@ export const getProjectsLocationsProductsReferenceImages: API.OperationMethod<
   GetProjectsLocationsProductsReferenceImagesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(129) as any as S.Schema<GetProjectsLocationsProductsReferenceImagesRequest>,
-  output: __S(118) as any as S.Schema<ReferenceImage>,
+  input: GetProjectsLocationsProductsReferenceImagesRequest,
+  output: ReferenceImage,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1700,8 +2250,8 @@ export const getProjectsOperations: API.OperationMethod<
   GetProjectsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(130) as any as S.Schema<GetProjectsOperationsRequest>,
-  output: __S(106) as any as S.Schema<Operation>,
+  input: GetProjectsOperationsRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1720,8 +2270,8 @@ export const importProjectsLocationsProductSets: API.OperationMethod<
   ImportProjectsLocationsProductSetsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(134) as any as S.Schema<ImportProjectsLocationsProductSetsRequest>,
-  output: __S(106) as any as S.Schema<Operation>,
+  input: ImportProjectsLocationsProductSetsRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1736,8 +2286,8 @@ export const listOperations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(135) as any as S.Schema<ListOperationsRequest>,
-  output: __S(137) as any as S.Schema<ListOperationsResponse>,
+  input: ListOperationsRequest,
+  output: ListOperationsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1753,8 +2303,8 @@ export const listProjectsLocationsProducts: API.PaginatedOperationMethod<
   GcpOpContext,
   ListProductsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(138) as any as S.Schema<ListProjectsLocationsProductsRequest>,
-  output: __S(140) as any as S.Schema<ListProductsResponse>,
+  input: ListProjectsLocationsProductsRequest,
+  output: ListProductsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1770,8 +2320,8 @@ export const listProjectsLocationsProductSets: API.PaginatedOperationMethod<
   GcpOpContext,
   ListProductSetsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(141) as any as S.Schema<ListProjectsLocationsProductSetsRequest>,
-  output: __S(143) as any as S.Schema<ListProductSetsResponse>,
+  input: ListProjectsLocationsProductSetsRequest,
+  output: ListProductSetsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1787,8 +2337,8 @@ export const listProjectsLocationsProductSetsProducts: API.PaginatedOperationMet
   GcpOpContext,
   ListProductsInProductSetResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(144) as any as S.Schema<ListProjectsLocationsProductSetsProductsRequest>,
-  output: __S(145) as any as S.Schema<ListProductsInProductSetResponse>,
+  input: ListProjectsLocationsProductSetsProductsRequest,
+  output: ListProductsInProductSetResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1804,8 +2354,8 @@ export const listProjectsLocationsProductsReferenceImages: API.PaginatedOperatio
   GcpOpContext,
   ListReferenceImagesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(146) as any as S.Schema<ListProjectsLocationsProductsReferenceImagesRequest>,
-  output: __S(148) as any as S.Schema<ListReferenceImagesResponse>,
+  input: ListProjectsLocationsProductsReferenceImagesRequest,
+  output: ListReferenceImagesResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1825,8 +2375,8 @@ export const patchProjectsLocationsProducts: API.OperationMethod<
   PatchProjectsLocationsProductsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(149) as any as S.Schema<PatchProjectsLocationsProductsRequest>,
-  output: __S(60) as any as S.Schema<Product>,
+  input: PatchProjectsLocationsProductsRequest,
+  output: Product,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1845,8 +2395,8 @@ export const patchProjectsLocationsProductSets: API.OperationMethod<
   PatchProjectsLocationsProductSetsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(150) as any as S.Schema<PatchProjectsLocationsProductSetsRequest>,
-  output: __S(115) as any as S.Schema<ProductSet>,
+  input: PatchProjectsLocationsProductSetsRequest,
+  output: ProductSet,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1865,8 +2415,8 @@ export const purgeProjectsLocationsProducts: API.OperationMethod<
   PurgeProjectsLocationsProductsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(153) as any as S.Schema<PurgeProjectsLocationsProductsRequest>,
-  output: __S(106) as any as S.Schema<Operation>,
+  input: PurgeProjectsLocationsProductsRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1885,8 +2435,8 @@ export const removeProductProjectsLocationsProductSets: API.OperationMethod<
   RemoveProductProjectsLocationsProductSetsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(154) as any as S.Schema<RemoveProductProjectsLocationsProductSetsRequest>,
-  output: __S(2) as any as S.Schema<Empty>,
+  input: RemoveProductProjectsLocationsProductSetsRequest,
+  output: Empty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1907,7 +2457,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(0).pipe(T.HttpBody())),
+          body: S.optional(AddProductToProductSetRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1929,17 +2479,17 @@ function __c0(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(S.String),
+          type: S.optional(FeatureTypeEnum),
           maxResults: S.optional(S.Number),
           model: S.optional(S.String),
         }),
       ).annotate({ identifier: "Feature" });
     case 6:
-      return S.Array(__S(5));
+      return S.Array(Feature);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          aspectRatios: S.optional(__S(4)),
+          aspectRatios: S.optional(DoubleList),
         }),
       ).annotate({ identifier: "CropHintsParams" });
   }
@@ -1954,14 +2504,14 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "NormalizedVertex" });
     case 1:
-      return S.Array(__S(8));
+      return S.Array(NormalizedVertex);
     case 2:
-      return S.Array(__S(8));
+      return S.Array(NormalizedVertex);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          normalizedVertices: S.optional(__S(9)),
-          vertices: S.optional(__S(10)),
+          normalizedVertices: S.optional(NormalizedVertexList),
+          vertices: S.optional(VertexList),
         }),
       ).annotate({ identifier: "BoundingPoly" });
     case 4:
@@ -1969,10 +2519,10 @@ function __c1(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          boundingPoly: S.optional(__S(11)),
+          boundingPoly: S.optional(BoundingPoly),
           filter: S.optional(S.String),
           productSet: S.optional(S.String),
-          productCategories: S.optional(__S(12)),
+          productCategories: S.optional(StringList),
         }),
       ).annotate({ identifier: "ProductSearchParams" });
     case 6:
@@ -1985,8 +2535,8 @@ function __c1(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          minLatLng: S.optional(__S(14)),
-          maxLatLng: S.optional(__S(14)),
+          minLatLng: S.optional(LatLng),
+          maxLatLng: S.optional(LatLng),
         }),
       ).annotate({ identifier: "LatLongRect" });
   }
@@ -2002,19 +2552,19 @@ function __c2(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          advancedOcrOptions: S.optional(__S(12)),
+          advancedOcrOptions: S.optional(StringList),
           enableTextDetectionConfidenceScore: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "TextDetectionParams" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          cropHintsParams: S.optional(__S(7)),
-          productSearchParams: S.optional(__S(13)),
-          latLongRect: S.optional(__S(15)),
-          webDetectionParams: S.optional(__S(16)),
-          languageHints: S.optional(__S(12)),
-          textDetectionParams: S.optional(__S(17)),
+          cropHintsParams: S.optional(CropHintsParams),
+          productSearchParams: S.optional(ProductSearchParams),
+          latLongRect: S.optional(LatLongRect),
+          webDetectionParams: S.optional(WebDetectionParams),
+          languageHints: S.optional(StringList),
+          textDetectionParams: S.optional(TextDetectionParams),
         }),
       ).annotate({ identifier: "ImageContext" });
     case 3:
@@ -2027,27 +2577,27 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           mimeType: S.optional(S.String),
-          gcsSource: S.optional(__S(19)),
+          gcsSource: S.optional(GcsSource),
           content: S.optional(S.String),
         }),
       ).annotate({ identifier: "InputConfig" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          pages: S.optional(__S(4)),
-          features: S.optional(__S(6)),
-          imageContext: S.optional(__S(18)),
-          inputConfig: S.optional(__S(20)),
+          pages: S.optional(IntegerList),
+          features: S.optional(FeatureList),
+          imageContext: S.optional(ImageContext),
+          inputConfig: S.optional(InputConfig),
         }),
       ).annotate({ identifier: "AnnotateFileRequest" });
     case 6:
-      return S.Array(__S(21));
+      return S.Array(AnnotateFileRequest);
     case 7:
       return S.suspend(() =>
         S.Struct({
           parent: S.optional(S.String),
-          labels: S.optional(__S(3)),
-          requests: S.optional(__S(22)),
+          labels: S.optional(StringMap),
+          requests: S.optional(AnnotateFileRequestList),
         }),
       ).annotate({
         identifier: "BatchAnnotateFilesRequest",
@@ -2059,7 +2609,7 @@ function __c3(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(__S(23).pipe(T.HttpBody())),
+          body: S.optional(BatchAnnotateFilesRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2071,12 +2621,12 @@ function __c3(j: number): any {
     case 1:
       return S.Record(S.String, S.Unknown);
     case 2:
-      return S.Array(__S(25));
+      return S.Array(DocumentMap);
     case 3:
       return S.suspend(() =>
         S.Struct({
           message: S.optional(S.String),
-          details: S.optional(__S(26)),
+          details: S.optional(DocumentMapList),
           code: S.optional(S.Number),
         }),
       ).annotate({ identifier: "Status" });
@@ -2094,15 +2644,15 @@ function __c3(j: number): any {
         S.Struct({
           pixelFraction: S.optional(S.Number),
           score: S.optional(S.Number),
-          color: S.optional(__S(28)),
+          color: S.optional(Color),
         }),
       ).annotate({ identifier: "ColorInfo" });
     case 6:
-      return S.Array(__S(29));
+      return S.Array(ColorInfo);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          colors: S.optional(__S(30)),
+          colors: S.optional(ColorInfoList),
         }),
       ).annotate({ identifier: "DominantColorsAnnotation" });
   }
@@ -2112,7 +2662,7 @@ function __c4(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          dominantColors: S.optional(__S(31)),
+          dominantColors: S.optional(DominantColorsAnnotation),
         }),
       ).annotate({ identifier: "ImageProperties" });
     case 1:
@@ -2120,15 +2670,15 @@ function __c4(j: number): any {
         S.Struct({
           confidence: S.optional(S.Number),
           importanceFraction: S.optional(S.Number),
-          boundingPoly: S.optional(__S(11)),
+          boundingPoly: S.optional(BoundingPoly),
         }),
       ).annotate({ identifier: "CropHint" });
     case 2:
-      return S.Array(__S(33));
+      return S.Array(CropHint);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          cropHints: S.optional(__S(34)),
+          cropHints: S.optional(CropHintList),
         }),
       ).annotate({ identifier: "CropHintsAnnotation" });
     case 4:
@@ -2141,11 +2691,11 @@ function __c4(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          latLng: S.optional(__S(14)),
+          latLng: S.optional(LatLng),
         }),
       ).annotate({ identifier: "LocationInfo" });
     case 6:
-      return S.Array(__S(37));
+      return S.Array(LocationInfo);
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -2159,23 +2709,23 @@ function __c4(j: number): any {
 function __c5(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(39));
+      return S.Array(Property);
     case 1:
       return S.suspend(() =>
         S.Struct({
           confidence: S.optional(S.Number),
-          locations: S.optional(__S(38)),
-          boundingPoly: S.optional(__S(11)),
+          locations: S.optional(LocationInfoList),
+          boundingPoly: S.optional(BoundingPoly),
           description: S.optional(S.String),
           locale: S.optional(S.String),
           topicality: S.optional(S.Number),
-          properties: S.optional(__S(40)),
+          properties: S.optional(PropertyList),
           score: S.optional(S.Number),
           mid: S.optional(S.String),
         }),
       ).annotate({ identifier: "EntityAnnotation" });
     case 2:
-      return S.Array(__S(41));
+      return S.Array(EntityAnnotation);
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -2184,27 +2734,27 @@ function __c5(j: number): any {
         }),
       ).annotate({ identifier: "DetectedLanguage" });
     case 4:
-      return S.Array(__S(43));
+      return S.Array(DetectedLanguage);
     case 5:
       return S.suspend(() =>
         S.Struct({
           isPrefix: S.optional(S.Boolean),
-          type: S.optional(S.String),
+          type: S.optional(DetectedBreakTypeEnum),
         }),
       ).annotate({ identifier: "DetectedBreak" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          detectedLanguages: S.optional(__S(44)),
-          detectedBreak: S.optional(__S(45)),
+          detectedLanguages: S.optional(DetectedLanguageList),
+          detectedBreak: S.optional(DetectedBreak),
         }),
       ).annotate({ identifier: "TextProperty" });
     case 7:
       return S.suspend(() =>
         S.Struct({
           text: S.optional(S.String),
-          property: S.optional(__S(46)),
-          boundingBox: S.optional(__S(11)),
+          property: S.optional(TextProperty),
+          boundingBox: S.optional(BoundingPoly),
           confidence: S.optional(S.Number),
         }),
       ).annotate({ identifier: "Vision_Symbol" });
@@ -2213,48 +2763,48 @@ function __c5(j: number): any {
 function __c6(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(47));
+      return S.Array(Vision_Symbol);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          boundingBox: S.optional(__S(11)),
-          symbols: S.optional(__S(48)),
+          boundingBox: S.optional(BoundingPoly),
+          symbols: S.optional(Vision_SymbolList),
           confidence: S.optional(S.Number),
-          property: S.optional(__S(46)),
+          property: S.optional(TextProperty),
         }),
       ).annotate({ identifier: "Word" });
     case 2:
-      return S.Array(__S(49));
+      return S.Array(Word);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          words: S.optional(__S(50)),
+          words: S.optional(WordList),
           confidence: S.optional(S.Number),
-          boundingBox: S.optional(__S(11)),
-          property: S.optional(__S(46)),
+          boundingBox: S.optional(BoundingPoly),
+          property: S.optional(TextProperty),
         }),
       ).annotate({ identifier: "Paragraph" });
     case 4:
-      return S.Array(__S(51));
+      return S.Array(Paragraph);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          boundingBox: S.optional(__S(11)),
+          boundingBox: S.optional(BoundingPoly),
           confidence: S.optional(S.Number),
-          paragraphs: S.optional(__S(52)),
-          blockType: S.optional(S.String),
-          property: S.optional(__S(46)),
+          paragraphs: S.optional(ParagraphList),
+          blockType: S.optional(BlockBlockTypeEnum),
+          property: S.optional(TextProperty),
         }),
       ).annotate({ identifier: "Block" });
     case 6:
-      return S.Array(__S(53));
+      return S.Array(Block);
     case 7:
       return S.suspend(() =>
         S.Struct({
           confidence: S.optional(S.Number),
           width: S.optional(S.Number),
-          blocks: S.optional(__S(54)),
-          property: S.optional(__S(46)),
+          blocks: S.optional(BlockList),
+          property: S.optional(TextProperty),
           height: S.optional(S.Number),
         }),
       ).annotate({ identifier: "Page" });
@@ -2263,11 +2813,11 @@ function __c6(j: number): any {
 function __c7(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(55));
+      return S.Array(Page);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          pages: S.optional(__S(56)),
+          pages: S.optional(PageList),
           text: S.optional(S.String),
         }),
       ).annotate({ identifier: "TextAnnotation" });
@@ -2279,13 +2829,13 @@ function __c7(j: number): any {
         }),
       ).annotate({ identifier: "KeyValue" });
     case 3:
-      return S.Array(__S(58));
+      return S.Array(KeyValue);
     case 4:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           productCategory: S.optional(S.String),
-          productLabels: S.optional(__S(59)),
+          productLabels: S.optional(KeyValueList),
           description: S.optional(S.String),
           displayName: S.optional(S.String),
         }),
@@ -2294,12 +2844,12 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           image: S.optional(S.String),
-          product: S.optional(__S(60)),
+          product: S.optional(Product),
           score: S.optional(S.Number),
         }),
       ).annotate({ identifier: "Result" });
     case 6:
-      return S.Array(__S(61));
+      return S.Array(Result);
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -2314,22 +2864,22 @@ function __c7(j: number): any {
 function __c8(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(63));
+      return S.Array(ObjectAnnotation);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          boundingPoly: S.optional(__S(11)),
-          results: S.optional(__S(62)),
-          objectAnnotations: S.optional(__S(64)),
+          boundingPoly: S.optional(BoundingPoly),
+          results: S.optional(ResultList),
+          objectAnnotations: S.optional(ObjectAnnotationList),
         }),
       ).annotate({ identifier: "GroupedResult" });
     case 2:
-      return S.Array(__S(65));
+      return S.Array(GroupedResult);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          results: S.optional(__S(62)),
-          productGroupedResults: S.optional(__S(66)),
+          results: S.optional(ResultList),
+          productGroupedResults: S.optional(GroupedResultList),
           indexTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "ProductSearchResults" });
@@ -2338,7 +2888,7 @@ function __c8(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           mid: S.optional(S.String),
-          boundingPoly: S.optional(__S(11)),
+          boundingPoly: S.optional(BoundingPoly),
           score: S.optional(S.Number),
           languageCode: S.optional(S.String),
         }),
@@ -2346,7 +2896,7 @@ function __c8(j: number): any {
         identifier: "LocalizedObjectAnnotation",
       });
     case 5:
-      return S.Array(__S(68));
+      return S.Array(LocalizedObjectAnnotation);
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -2358,8 +2908,8 @@ function __c8(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          position: S.optional(__S(70)),
-          type: S.optional(S.String),
+          position: S.optional(Position),
+          type: S.optional(LandmarkTypeEnum),
         }),
       ).annotate({ identifier: "Landmark" });
   }
@@ -2367,37 +2917,37 @@ function __c8(j: number): any {
 function __c9(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(71));
+      return S.Array(Landmark);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          sorrowLikelihood: S.optional(S.String),
-          boundingPoly: S.optional(__S(11)),
+          sorrowLikelihood: S.optional(FaceAnnotationSorrowLikelihoodEnum),
+          boundingPoly: S.optional(BoundingPoly),
           detectionConfidence: S.optional(S.Number),
-          blurredLikelihood: S.optional(S.String),
+          blurredLikelihood: S.optional(FaceAnnotationBlurredLikelihoodEnum),
           tiltAngle: S.optional(S.Number),
-          surpriseLikelihood: S.optional(S.String),
-          underExposedLikelihood: S.optional(S.String),
-          angerLikelihood: S.optional(S.String),
-          fdBoundingPoly: S.optional(__S(11)),
+          surpriseLikelihood: S.optional(FaceAnnotationSurpriseLikelihoodEnum),
+          underExposedLikelihood: S.optional(FaceAnnotationUnderExposedLikelihoodEnum),
+          angerLikelihood: S.optional(FaceAnnotationAngerLikelihoodEnum),
+          fdBoundingPoly: S.optional(BoundingPoly),
           landmarkingConfidence: S.optional(S.Number),
-          landmarks: S.optional(__S(72)),
-          headwearLikelihood: S.optional(S.String),
+          landmarks: S.optional(LandmarkList),
+          headwearLikelihood: S.optional(FaceAnnotationHeadwearLikelihoodEnum),
           rollAngle: S.optional(S.Number),
-          joyLikelihood: S.optional(S.String),
+          joyLikelihood: S.optional(FaceAnnotationJoyLikelihoodEnum),
           panAngle: S.optional(S.Number),
         }),
       ).annotate({ identifier: "FaceAnnotation" });
     case 2:
-      return S.Array(__S(73));
+      return S.Array(FaceAnnotation);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          spoof: S.optional(S.String),
-          violence: S.optional(S.String),
-          racy: S.optional(S.String),
-          adult: S.optional(S.String),
-          medical: S.optional(S.String),
+          spoof: S.optional(SafeSearchAnnotationSpoofEnum),
+          violence: S.optional(SafeSearchAnnotationViolenceEnum),
+          racy: S.optional(SafeSearchAnnotationRacyEnum),
+          adult: S.optional(SafeSearchAnnotationAdultEnum),
+          medical: S.optional(SafeSearchAnnotationMedicalEnum),
         }),
       ).annotate({ identifier: "SafeSearchAnnotation" });
     case 4:
@@ -2408,7 +2958,7 @@ function __c9(j: number): any {
         }),
       ).annotate({ identifier: "WebLabel" });
     case 5:
-      return S.Array(__S(76));
+      return S.Array(WebLabel);
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -2417,7 +2967,7 @@ function __c9(j: number): any {
         }),
       ).annotate({ identifier: "WebImage" });
     case 7:
-      return S.Array(__S(78));
+      return S.Array(WebImage);
   }
 }
 function __c10(j: number): any {
@@ -2431,57 +2981,57 @@ function __c10(j: number): any {
         }),
       ).annotate({ identifier: "WebEntity" });
     case 1:
-      return S.Array(__S(80));
+      return S.Array(WebEntity);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          partialMatchingImages: S.optional(__S(79)),
+          partialMatchingImages: S.optional(WebImageList),
           pageTitle: S.optional(S.String),
-          fullMatchingImages: S.optional(__S(79)),
+          fullMatchingImages: S.optional(WebImageList),
           score: S.optional(S.Number),
           url: S.optional(S.String),
         }),
       ).annotate({ identifier: "WebPage" });
     case 3:
-      return S.Array(__S(82));
+      return S.Array(WebPage);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          bestGuessLabels: S.optional(__S(77)),
-          fullMatchingImages: S.optional(__S(79)),
-          webEntities: S.optional(__S(81)),
-          visuallySimilarImages: S.optional(__S(79)),
-          pagesWithMatchingImages: S.optional(__S(83)),
-          partialMatchingImages: S.optional(__S(79)),
+          bestGuessLabels: S.optional(WebLabelList),
+          fullMatchingImages: S.optional(WebImageList),
+          webEntities: S.optional(WebEntityList),
+          visuallySimilarImages: S.optional(WebImageList),
+          pagesWithMatchingImages: S.optional(WebPageList),
+          partialMatchingImages: S.optional(WebImageList),
         }),
       ).annotate({ identifier: "WebDetection" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          imagePropertiesAnnotation: S.optional(__S(32)),
-          cropHintsAnnotation: S.optional(__S(35)),
-          context: S.optional(__S(36)),
-          textAnnotations: S.optional(__S(42)),
-          fullTextAnnotation: S.optional(__S(57)),
-          productSearchResults: S.optional(__S(67)),
-          labelAnnotations: S.optional(__S(42)),
-          localizedObjectAnnotations: S.optional(__S(69)),
-          faceAnnotations: S.optional(__S(74)),
-          landmarkAnnotations: S.optional(__S(42)),
-          safeSearchAnnotation: S.optional(__S(75)),
-          error: S.optional(__S(27)),
-          webDetection: S.optional(__S(84)),
-          logoAnnotations: S.optional(__S(42)),
+          imagePropertiesAnnotation: S.optional(ImageProperties),
+          cropHintsAnnotation: S.optional(CropHintsAnnotation),
+          context: S.optional(ImageAnnotationContext),
+          textAnnotations: S.optional(EntityAnnotationList),
+          fullTextAnnotation: S.optional(TextAnnotation),
+          productSearchResults: S.optional(ProductSearchResults),
+          labelAnnotations: S.optional(EntityAnnotationList),
+          localizedObjectAnnotations: S.optional(LocalizedObjectAnnotationList),
+          faceAnnotations: S.optional(FaceAnnotationList),
+          landmarkAnnotations: S.optional(EntityAnnotationList),
+          safeSearchAnnotation: S.optional(SafeSearchAnnotation),
+          error: S.optional(Status),
+          webDetection: S.optional(WebDetection),
+          logoAnnotations: S.optional(EntityAnnotationList),
         }),
       ).annotate({ identifier: "AnnotateImageResponse" });
     case 6:
-      return S.Array(__S(85));
+      return S.Array(AnnotateImageResponse);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          error: S.optional(__S(27)),
-          responses: S.optional(__S(86)),
-          inputConfig: S.optional(__S(20)),
+          error: S.optional(Status),
+          responses: S.optional(AnnotateImageResponseList),
+          inputConfig: S.optional(InputConfig),
           totalPages: S.optional(S.Number),
         }),
       ).annotate({ identifier: "AnnotateFileResponse" });
@@ -2490,11 +3040,11 @@ function __c10(j: number): any {
 function __c11(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(87));
+      return S.Array(AnnotateFileResponse);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          responses: S.optional(__S(88)),
+          responses: S.optional(AnnotateFileResponseList),
         }),
       ).annotate({
         identifier: "BatchAnnotateFilesResponse",
@@ -2509,26 +3059,26 @@ function __c11(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          source: S.optional(__S(90)),
+          source: S.optional(ImageSource),
           content: S.optional(S.String),
         }),
       ).annotate({ identifier: "Image" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          features: S.optional(__S(6)),
-          image: S.optional(__S(91)),
-          imageContext: S.optional(__S(18)),
+          features: S.optional(FeatureList),
+          image: S.optional(Image),
+          imageContext: S.optional(ImageContext),
         }),
       ).annotate({ identifier: "AnnotateImageRequest" });
     case 5:
-      return S.Array(__S(92));
+      return S.Array(AnnotateImageRequest);
     case 6:
       return S.suspend(() =>
         S.Struct({
           parent: S.optional(S.String),
-          labels: S.optional(__S(3)),
-          requests: S.optional(__S(93)),
+          labels: S.optional(StringMap),
+          requests: S.optional(AnnotateImageRequestList),
         }),
       ).annotate({
         identifier: "BatchAnnotateImagesRequest",
@@ -2536,7 +3086,7 @@ function __c11(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(__S(94).pipe(T.HttpBody())),
+          body: S.optional(BatchAnnotateImagesRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2552,7 +3102,7 @@ function __c12(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          responses: S.optional(__S(86)),
+          responses: S.optional(AnnotateImageResponseList),
         }),
       ).annotate({
         identifier: "BatchAnnotateImagesResponse",
@@ -2561,7 +3111,7 @@ function __c12(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(23).pipe(T.HttpBody())),
+          body: S.optional(BatchAnnotateFilesRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2576,7 +3126,7 @@ function __c12(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(94).pipe(T.HttpBody())),
+          body: S.optional(BatchAnnotateImagesRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2591,7 +3141,7 @@ function __c12(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(23).pipe(T.HttpBody())),
+          body: S.optional(BatchAnnotateFilesRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2606,7 +3156,7 @@ function __c12(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(94).pipe(T.HttpBody())),
+          body: S.optional(BatchAnnotateImagesRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2620,21 +3170,21 @@ function __c12(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          gcsDestination: S.optional(__S(19)),
+          gcsDestination: S.optional(GcsDestination),
           batchSize: S.optional(S.Number),
         }),
       ).annotate({ identifier: "OutputConfig" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          outputConfig: S.optional(__S(101)),
-          features: S.optional(__S(6)),
-          inputConfig: S.optional(__S(20)),
-          imageContext: S.optional(__S(18)),
+          outputConfig: S.optional(OutputConfig),
+          features: S.optional(FeatureList),
+          inputConfig: S.optional(InputConfig),
+          imageContext: S.optional(ImageContext),
         }),
       ).annotate({ identifier: "AsyncAnnotateFileRequest" });
     case 7:
-      return S.Array(__S(102));
+      return S.Array(AsyncAnnotateFileRequest);
   }
 }
 function __c13(j: number): any {
@@ -2643,8 +3193,8 @@ function __c13(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.optional(S.String),
-          labels: S.optional(__S(3)),
-          requests: S.optional(__S(103)),
+          labels: S.optional(StringMap),
+          requests: S.optional(AsyncAnnotateFileRequestList),
         }),
       ).annotate({
         identifier: "AsyncBatchAnnotateFilesRequest",
@@ -2652,7 +3202,7 @@ function __c13(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(__S(104).pipe(T.HttpBody())),
+          body: S.optional(AsyncBatchAnnotateFilesRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2666,9 +3216,9 @@ function __c13(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          metadata: S.optional(__S(25)),
-          response: S.optional(__S(25)),
-          error: S.optional(__S(27)),
+          metadata: S.optional(DocumentMap),
+          response: S.optional(DocumentMap),
+          error: S.optional(Status),
           name: S.optional(S.String),
           done: S.optional(S.Boolean),
         }),
@@ -2676,10 +3226,10 @@ function __c13(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          requests: S.optional(__S(93)),
-          outputConfig: S.optional(__S(101)),
+          requests: S.optional(AnnotateImageRequestList),
+          outputConfig: S.optional(OutputConfig),
           parent: S.optional(S.String),
-          labels: S.optional(__S(3)),
+          labels: S.optional(StringMap),
         }),
       ).annotate({
         identifier: "AsyncBatchAnnotateImagesRequest",
@@ -2687,7 +3237,7 @@ function __c13(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(__S(107).pipe(T.HttpBody())),
+          body: S.optional(AsyncBatchAnnotateImagesRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2702,7 +3252,7 @@ function __c13(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(104).pipe(T.HttpBody())),
+          body: S.optional(AsyncBatchAnnotateFilesRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2717,7 +3267,7 @@ function __c13(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(107).pipe(T.HttpBody())),
+          body: S.optional(AsyncBatchAnnotateImagesRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2732,7 +3282,7 @@ function __c13(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(104).pipe(T.HttpBody())),
+          body: S.optional(AsyncBatchAnnotateFilesRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2751,7 +3301,7 @@ function __c14(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(107).pipe(T.HttpBody())),
+          body: S.optional(AsyncBatchAnnotateImagesRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2766,7 +3316,7 @@ function __c14(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(2).pipe(T.HttpBody())),
+          body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2780,7 +3330,7 @@ function __c14(j: number): any {
         S.Struct({
           parent: S.String.pipe(T.Label()),
           productId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(60).pipe(T.HttpBody())),
+          body: S.optional(Product.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2795,7 +3345,7 @@ function __c14(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          indexError: S.optional(__S(27)),
+          indexError: S.optional(Status),
           indexTime: S.optional(S.String),
           displayName: S.optional(S.String),
         }),
@@ -2805,7 +3355,7 @@ function __c14(j: number): any {
         S.Struct({
           productSetId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(115).pipe(T.HttpBody())),
+          body: S.optional(ProductSet.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2817,12 +3367,12 @@ function __c14(j: number): any {
         identifier: "CreateProjectsLocationsProductSetsRequest",
       });
     case 5:
-      return S.Array(__S(11));
+      return S.Array(BoundingPoly);
     case 6:
       return S.suspend(() =>
         S.Struct({
           uri: S.optional(S.String),
-          boundingPolys: S.optional(__S(117)),
+          boundingPolys: S.optional(BoundingPolyList),
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "ReferenceImage" });
@@ -2831,7 +3381,7 @@ function __c14(j: number): any {
         S.Struct({
           parent: S.String.pipe(T.Label()),
           referenceImageId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(118).pipe(T.HttpBody())),
+          body: S.optional(ReferenceImage.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2983,7 +3533,7 @@ function __c16(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          gcsSource: S.optional(__S(131)),
+          gcsSource: S.optional(ImportProductSetsGcsSource),
         }),
       ).annotate({
         identifier: "ImportProductSetsInputConfig",
@@ -2991,14 +3541,14 @@ function __c16(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          inputConfig: S.optional(__S(132)),
+          inputConfig: S.optional(ImportProductSetsInputConfig),
         }),
       ).annotate({ identifier: "ImportProductSetsRequest" });
     case 6:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(133).pipe(T.HttpBody())),
+          body: S.optional(ImportProductSetsRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3026,12 +3576,12 @@ function __c16(j: number): any {
 function __c17(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(106));
+      return S.Array(Operation);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          operations: S.optional(__S(136)),
-          unreachable: S.optional(__S(12)),
+          operations: S.optional(OperationList),
+          unreachable: S.optional(StringList),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
@@ -3052,12 +3602,12 @@ function __c17(j: number): any {
         identifier: "ListProjectsLocationsProductsRequest",
       });
     case 3:
-      return S.Array(__S(60));
+      return S.Array(Product);
     case 4:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          products: S.optional(__S(139)),
+          products: S.optional(ProductList),
         }),
       ).annotate({ identifier: "ListProductsResponse" });
     case 5:
@@ -3077,11 +3627,11 @@ function __c17(j: number): any {
         identifier: "ListProjectsLocationsProductSetsRequest",
       });
     case 6:
-      return S.Array(__S(115));
+      return S.Array(ProductSet);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          productSets: S.optional(__S(142)),
+          productSets: S.optional(ProductSetList),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListProductSetsResponse" });
@@ -3109,7 +3659,7 @@ function __c18(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          products: S.optional(__S(139)),
+          products: S.optional(ProductList),
         }),
       ).annotate({
         identifier: "ListProductsInProductSetResponse",
@@ -3131,11 +3681,11 @@ function __c18(j: number): any {
         identifier: "ListProjectsLocationsProductsReferenceImagesRequest",
       });
     case 3:
-      return S.Array(__S(118));
+      return S.Array(ReferenceImage);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          referenceImages: S.optional(__S(147)),
+          referenceImages: S.optional(ReferenceImageList),
           pageSize: S.optional(S.Number),
           nextPageToken: S.optional(S.String),
         }),
@@ -3147,7 +3697,7 @@ function __c18(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(60).pipe(T.HttpBody())),
+          body: S.optional(Product.pipe(T.HttpBody())),
         }).pipe(
           T.Http({ method: "PATCH", uri: "v1/{+name}", baseUrl: "https://vision.googleapis.com/" }),
         ),
@@ -3159,7 +3709,7 @@ function __c18(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(115).pipe(T.HttpBody())),
+          body: S.optional(ProductSet.pipe(T.HttpBody())),
         }).pipe(
           T.Http({ method: "PATCH", uri: "v1/{+name}", baseUrl: "https://vision.googleapis.com/" }),
         ),
@@ -3180,7 +3730,7 @@ function __c19(j: number): any {
       return S.suspend(() =>
         S.Struct({
           deleteOrphanProducts: S.optional(S.Boolean),
-          productSetPurgeConfig: S.optional(__S(151)),
+          productSetPurgeConfig: S.optional(ProductSetPurgeConfig),
           force: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "PurgeProductsRequest" });
@@ -3188,7 +3738,7 @@ function __c19(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(152).pipe(T.HttpBody())),
+          body: S.optional(PurgeProductsRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3203,7 +3753,7 @@ function __c19(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(0).pipe(T.HttpBody())),
+          body: S.optional(RemoveProductFromProductSetRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3214,54 +3764,5 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "RemoveProductProjectsLocationsProductSetsRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
-    case 9:
-      return __c9(i & 7);
-    case 10:
-      return __c10(i & 7);
-    case 11:
-      return __c11(i & 7);
-    case 12:
-      return __c12(i & 7);
-    case 13:
-      return __c13(i & 7);
-    case 14:
-      return __c14(i & 7);
-    case 15:
-      return __c15(i & 7);
-    case 16:
-      return __c16(i & 7);
-    case 17:
-      return __c17(i & 7);
-    case 18:
-      return __c18(i & 7);
-    case 19:
-      return __c19(i & 7);
   }
 }

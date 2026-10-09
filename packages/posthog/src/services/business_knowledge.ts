@@ -6,8 +6,6 @@ import * as S from "@distilled.cloud/core/schema";
 import { PosthogProtocol, type PosthogOpError, type PosthogOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { PosthogOpError, PosthogOpContext };
 
@@ -57,6 +55,11 @@ export interface BusinessKnowledgeDocumentsSearchListRequest {
   /** When true, rerank search results with a listwise LLM pass for better relevance. Defaults to false (RRF order only). Falls back to RRF order on rerank failure. */
   rerank?: boolean;
 }
+const BusinessKnowledgeDocumentsSearchListRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<BusinessKnowledgeDocumentsSearchListRequest>;
+
 /** One ranked chunk from a business knowledge search. Output-only -- the rows come from the ``search_knowledge_for_team`` logic helper (a ``KnowledgeSearchResult`` dataclass), not the ORM. */
 export interface KnowledgeSearchResult {
   /** Stable identifier of this chunk. */
@@ -82,9 +85,24 @@ export interface KnowledgeSearchResult {
   /** Fetched page URL. Empty for text and file sources. */
   url: string;
 }
+const KnowledgeSearchResult = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<KnowledgeSearchResult>;
+
 export type BusinessKnowledgeDocumentsSearchListResponseBodyList = Array<KnowledgeSearchResult>;
+const BusinessKnowledgeDocumentsSearchListResponseBodyList = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<BusinessKnowledgeDocumentsSearchListResponseBodyList>;
+
 export type BusinessKnowledgeDocumentsSearchListResponse =
   BusinessKnowledgeDocumentsSearchListResponseBodyList;
+const BusinessKnowledgeDocumentsSearchListResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<BusinessKnowledgeDocumentsSearchListResponse>;
+
 export interface BusinessKnowledgeGapSuggestionsAcceptCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -93,6 +111,11 @@ export interface BusinessKnowledgeGapSuggestionsAcceptCreateRequest {
   /** Optional knowledge source to link when accepting. */
   resolved_source_id?: string | null;
 }
+const BusinessKnowledgeGapSuggestionsAcceptCreateRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<BusinessKnowledgeGapSuggestionsAcceptCreateRequest>;
+
 export interface KnowledgeGapSuggestion {
   /** Unique identifier for this gap suggestion. */
   id: string;
@@ -113,6 +136,11 @@ export interface KnowledgeGapSuggestion {
   /** When this gap was first recorded. */
   created_at: string;
 }
+const KnowledgeGapSuggestion = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<KnowledgeGapSuggestion>;
+
 export interface BusinessKnowledgeGapSuggestionsAcceptTopicCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -121,27 +149,54 @@ export interface BusinessKnowledgeGapSuggestionsAcceptTopicCreateRequest {
   /** Optional knowledge source to link when accepting. */
   resolved_source_id?: string | null;
 }
+const BusinessKnowledgeGapSuggestionsAcceptTopicCreateRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<BusinessKnowledgeGapSuggestionsAcceptTopicCreateRequest>;
+
 export interface GapTopicActionResult {
   /** The normalized topic cluster that was acted on. */
   normalized_topic: string;
   /** Number of gap rows whose status changed. */
   updated: number;
 }
+const GapTopicActionResult = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<GapTopicActionResult>;
+
 export interface BusinessKnowledgePlaygroundChatsDestroyRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A UUID string identifying this playground chat. */
   id: string;
 }
+const BusinessKnowledgePlaygroundChatsDestroyRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<BusinessKnowledgePlaygroundChatsDestroyRequest>;
+
 export interface BusinessKnowledgePlaygroundChatsDestroyResponse {}
+const BusinessKnowledgePlaygroundChatsDestroyResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<BusinessKnowledgePlaygroundChatsDestroyResponse>;
+
 export interface BusinessKnowledgeRepositoriesConnectCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** Id of a GitHub integration on this environment. */
   integration_id: number;
 }
+const BusinessKnowledgeRepositoriesConnectCreateRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<BusinessKnowledgeRepositoriesConnectCreateRequest>;
+
 /** Lowercased owner/repo names business knowledge is allowed to read. */
 export type RepositoryConnectionReposList = Array<string>;
+const RepositoryConnectionReposList = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<RepositoryConnectionReposList>;
+
 export interface RepositoryConnection {
   /** True when a GitHub installation is connected for this environment. */
   connected: boolean;
@@ -152,34 +207,66 @@ export interface RepositoryConnection {
   /** Lowercased owner/repo names business knowledge is allowed to read. */
   repos: RepositoryConnectionReposList;
 }
+const RepositoryConnection = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<RepositoryConnection>;
+
 export interface BusinessKnowledgeRepositoriesDisconnectCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
+const BusinessKnowledgeRepositoriesDisconnectCreateRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<BusinessKnowledgeRepositoriesDisconnectCreateRequest>;
+
 export interface BusinessKnowledgeSourcesDestroyRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A UUID string identifying this knowledge source. */
   id: string;
 }
+const BusinessKnowledgeSourcesDestroyRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<BusinessKnowledgeSourcesDestroyRequest>;
+
 export interface BusinessKnowledgeSourcesDestroyResponse {}
+const BusinessKnowledgeSourcesDestroyResponse =
+  BusinessKnowledgePlaygroundChatsDestroyResponse as any as S.Schema<BusinessKnowledgeSourcesDestroyResponse>;
+
 export interface BusinessKnowledgeSourcesRefreshCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A UUID string identifying this knowledge source. */
   id: string;
 }
+const BusinessKnowledgeSourcesRefreshCreateRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<BusinessKnowledgeSourcesRefreshCreateRequest>;
+
 /** * `text` - Text * `url` - URL * `file` - File */
 export type SourceTypeEnum = "text" | "url" | "file";
+const SourceTypeEnum = S.String;
+
 /** * `pending` - Pending * `processing` - Processing * `ready` - Ready * `error` - Error */
 export type SourceStatusEnum = "pending" | "processing" | "ready" | "error";
+const SourceStatusEnum = S.String;
+
 /** * `success` - Success * `not_modified` - Not modified * `error` - Error */
 export type RefreshStatusEnum = "success" | "not_modified" | "error";
+const RefreshStatusEnum = S.String;
+
 /** * `manual` - Manual only * `1h` - Every hour * `6h` - Every 6 hours * `24h` - Every day * `7d` - Every week */
 export type RefreshIntervalEnum = "manual" | "1h" | "6h" | "24h" | "7d";
+const RefreshIntervalEnum = S.String;
+
 export type EmbeddingStatusEnum = "pending" | "completed" | "disabled";
+const EmbeddingStatusEnum = S.String;
+
 /** * `single` - Single page * `sitemap` - Sitemap * `same_origin` - Same origin crawl * `github_repo` - GitHub repository */
 export type CrawlModeEnum = "single" | "sitemap" | "same_origin" | "github_repo";
+const CrawlModeEnum = S.String;
+
 export interface KnowledgeSource {
   id: string;
   team_id: number;
@@ -217,12 +304,19 @@ export interface KnowledgeSource {
   file_size_bytes: number | null;
   always_include: boolean;
 }
+const KnowledgeSource = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<KnowledgeSource>;
+
 export interface CreateBusinessKnowledgeGapSuggestionsDismissRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A UUID string identifying this knowledge gap suggestion. */
   id: string;
 }
+const CreateBusinessKnowledgeGapSuggestionsDismissRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<CreateBusinessKnowledgeGapSuggestionsDismissRequest>;
+
 export interface CreateBusinessKnowledgeGapSuggestionsDismissTopicRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -231,34 +325,62 @@ export interface CreateBusinessKnowledgeGapSuggestionsDismissTopicRequest {
   /** Optional knowledge source to link when accepting. */
   resolved_source_id?: string | null;
 }
+const CreateBusinessKnowledgeGapSuggestionsDismissTopicRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<CreateBusinessKnowledgeGapSuggestionsDismissTopicRequest>;
+
 export interface CreateBusinessKnowledgePlaygroundChatRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
+const CreateBusinessKnowledgePlaygroundChatRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<CreateBusinessKnowledgePlaygroundChatRequest>;
+
 /** * `running` - Running * `completed` - Completed * `failed` - Failed * `cancelled` - Cancelled */
 export type SandboxPollStatusEnum = "running" | "completed" | "failed" | "cancelled";
+const SandboxPollStatusEnum = S.String;
+
 export interface SandboxSource {
   /** Source reference the reply relies on. */
   ref: string;
   /** Short excerpt that supports the reply. */
   excerpt: string;
 }
+const SandboxSource = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<SandboxSource>;
+
 /** Sources cited in a completed answer. Empty when the run has not completed. */
 export type SandboxRunSourcesList = Array<SandboxSource>;
+const SandboxRunSourcesList = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<SandboxRunSourcesList>;
+
 /** * `business-knowledge-documents-search` - Search * `business-knowledge-document-window-retrieve` - Window * `business-knowledge-repositories-search` - Repository search * `business-knowledge-repositories-file-retrieve` - Repository file */
 export type SandboxToolNameEnum =
   | "business-knowledge-documents-search"
   | "business-knowledge-document-window-retrieve"
   | "business-knowledge-repositories-search"
   | "business-knowledge-repositories-file-retrieve";
+const SandboxToolNameEnum = S.String;
+
 export interface SandboxSearch {
   /** Business knowledge tool the agent called. * `business-knowledge-documents-search` - Search * `business-knowledge-document-window-retrieve` - Window * `business-knowledge-repositories-search` - Repository search * `business-knowledge-repositories-file-retrieve` - Repository file */
   tool: SandboxToolNameEnum;
   /** Tool input the agent sent. */
   input: string;
 }
+const SandboxSearch = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<SandboxSearch>;
+
 /** Business knowledge search and window calls observed in the run log. */
 export type SandboxRunSearchesList = Array<SandboxSearch>;
+const SandboxRunSearchesList = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<SandboxRunSearchesList>;
+
 export interface SandboxRun {
   /** Sandbox task id. */
   task_id: string;
@@ -277,6 +399,8 @@ export interface SandboxRun {
   /** True when the run log contains an exact docs-search call. That tool is not granted to this sandbox. */
   docs_search_called: boolean;
 }
+const SandboxRun = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<SandboxRun>;
+
 export interface PlaygroundTurn {
   /** Turn id. */
   id: string;
@@ -291,8 +415,15 @@ export interface PlaygroundTurn {
   /** Why this turn could not be loaded. Null when run is present. */
   error: string | null;
 }
+const PlaygroundTurn = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<PlaygroundTurn>;
+
 /** Questions in this chat, oldest first. Each turn's answer comes from its sandbox run. */
 export type PlaygroundChatTurnsList = Array<PlaygroundTurn>;
+const PlaygroundChatTurnsList = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<PlaygroundChatTurnsList>;
+
 export interface PlaygroundChat {
   /** Playground chat id. */
   id: string;
@@ -307,6 +438,8 @@ export interface PlaygroundChat {
   /** Questions in this chat, oldest first. Each turn's answer comes from its sandbox run. */
   turns: PlaygroundChatTurnsList;
 }
+const PlaygroundChat = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<PlaygroundChat>;
+
 export interface CreateBusinessKnowledgePlaygroundChatsAskRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -315,26 +448,46 @@ export interface CreateBusinessKnowledgePlaygroundChatsAskRequest {
   /** Question to answer from this project's business knowledge. Blank questions are rejected. Maximum 4000 characters. */
   question: string;
 }
+const CreateBusinessKnowledgePlaygroundChatsAskRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<CreateBusinessKnowledgePlaygroundChatsAskRequest>;
+
 /** owner/repo names to allow. At most 100. Replaces the current list. */
 export type CreateBusinessKnowledgeRepositoriesSelectionRequestReposList = Array<string>;
+const CreateBusinessKnowledgeRepositoriesSelectionRequestReposList =
+  RepositoryConnectionReposList as any as S.Schema<CreateBusinessKnowledgeRepositoriesSelectionRequestReposList>;
+
 export interface CreateBusinessKnowledgeRepositoriesSelectionRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** owner/repo names to allow. At most 100. Replaces the current list. */
   repos: CreateBusinessKnowledgeRepositoriesSelectionRequestReposList;
 }
+const CreateBusinessKnowledgeRepositoriesSelectionRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<CreateBusinessKnowledgeRepositoriesSelectionRequest>;
+
 export interface CreateBusinessKnowledgeSandboxRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** Question to answer from this project's business knowledge. Blank questions are rejected. Maximum 4000 characters. */
   question: string;
 }
+const CreateBusinessKnowledgeSandboxRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<CreateBusinessKnowledgeSandboxRequest>;
+
 export interface SandboxRunStarted {
   /** Sandbox task id. Poll this id until the run finishes. */
   task_id: string;
   /** Run id for this question. */
   run_id: string;
 }
+const SandboxRunStarted = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<SandboxRunStarted>;
+
 export interface CreateBusinessKnowledgeSourceRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -345,12 +498,22 @@ export interface CreateBusinessKnowledgeSourceRequest {
   /** When true, this source's content is injected into every support reply prompt as general context (tone, policies, direction). */
   always_include?: boolean;
 }
+const CreateBusinessKnowledgeSourceRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<CreateBusinessKnowledgeSourceRequest>;
+
 export interface GetBusinessKnowledgePlaygroundChatRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A UUID string identifying this playground chat. */
   id: string;
 }
+const GetBusinessKnowledgePlaygroundChatRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<GetBusinessKnowledgePlaygroundChatRequest>;
+
 export interface GetBusinessKnowledgeRepositoriesFileRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -359,6 +522,11 @@ export interface GetBusinessKnowledgeRepositoriesFileRequest {
   /** owner/repo to read. It must already be selected. */
   repo: string;
 }
+const GetBusinessKnowledgeRepositoriesFileRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<GetBusinessKnowledgeRepositoriesFileRequest>;
+
 export interface RepositoryFile {
   /** Lowercased owner/repo. */
   repo: string;
@@ -371,40 +539,77 @@ export interface RepositoryFile {
   /** True when content was cut off at 32,000 characters. */
   truncated: boolean;
 }
+const RepositoryFile = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<RepositoryFile>;
+
 export interface GetBusinessKnowledgeRepositoriesStatusRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
+const GetBusinessKnowledgeRepositoriesStatusRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<GetBusinessKnowledgeRepositoriesStatusRequest>;
+
 export interface GetBusinessKnowledgeSandboxRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   id: string;
 }
+const GetBusinessKnowledgeSandboxRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<GetBusinessKnowledgeSandboxRequest>;
+
 export interface GetBusinessKnowledgeSettingsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
+const GetBusinessKnowledgeSettingsRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<GetBusinessKnowledgeSettingsRequest>;
+
 export interface BusinessKnowledgeSettings {
   /** When true, PostHog learns reusable knowledge from public human replies on resolved support tickets. Requires Support to be enabled for this environment. */
   learn_from_support_enabled: boolean;
   /** Whether Support is enabled for this environment. Learning cannot be turned on while this is false. */
   support_enabled: boolean;
 }
+const BusinessKnowledgeSettings = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<BusinessKnowledgeSettings>;
+
 export interface GetBusinessKnowledgeSourceRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A UUID string identifying this knowledge source. */
   id: string;
 }
+const GetBusinessKnowledgeSourceRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  0,
+) as any as S.Schema<GetBusinessKnowledgeSourceRequest>;
+
 export interface GetBusinessKnowledgeSourcesTextRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A UUID string identifying this knowledge source. */
   id: string;
 }
+const GetBusinessKnowledgeSourcesTextRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  1,
+) as any as S.Schema<GetBusinessKnowledgeSourcesTextRequest>;
+
 export interface GetBusinessKnowledgeSourcesTextResponse {
   text?: string;
 }
+const GetBusinessKnowledgeSourcesTextResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  2,
+) as any as S.Schema<GetBusinessKnowledgeSourcesTextResponse>;
+
 export interface ListBusinessKnowledgeDocumentsWindowRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -415,6 +620,11 @@ export interface ListBusinessKnowledgeDocumentsWindowRequest {
   /** Number of chunks before and after the center to include. Defaults to 5, clamped to [0, 15]. */
   radius?: number;
 }
+const ListBusinessKnowledgeDocumentsWindowRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<ListBusinessKnowledgeDocumentsWindowRequest>;
+
 /** One chunk in a drill-down window over a single knowledge document. Output-only -- the rows come from the `get_document_window` logic helper (a `KnowledgeSearchResult` dataclass), not the ORM, so this is a plain read serializer rather than a `ModelSerializer`. */
 export interface KnowledgeDocumentWindow {
   /** Stable identifier of this chunk. Same value used in search results. */
@@ -432,9 +642,24 @@ export interface KnowledgeDocumentWindow {
   /** Fetched page URL. Empty for text and file sources. */
   url: string;
 }
+const KnowledgeDocumentWindow = /*@__PURE__*/ __L.at(
+  __c5,
+  4,
+) as any as S.Schema<KnowledgeDocumentWindow>;
+
 export type ListBusinessKnowledgeDocumentsWindowResponseBodyList = Array<KnowledgeDocumentWindow>;
+const ListBusinessKnowledgeDocumentsWindowResponseBodyList = /*@__PURE__*/ __L.at(
+  __c5,
+  5,
+) as any as S.Schema<ListBusinessKnowledgeDocumentsWindowResponseBodyList>;
+
 export type ListBusinessKnowledgeDocumentsWindowResponse =
   ListBusinessKnowledgeDocumentsWindowResponseBodyList;
+const ListBusinessKnowledgeDocumentsWindowResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  6,
+) as any as S.Schema<ListBusinessKnowledgeDocumentsWindowResponse>;
+
 export interface ListBusinessKnowledgeGapSuggestionsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -445,17 +670,37 @@ export interface ListBusinessKnowledgeGapSuggestionsRequest {
   /** When provided, returns per-ticket gap rows instead of aggregated view. Requires `ticket:read` scope in addition to `business_knowledge:read`. */
   ticket_id?: string;
 }
+const ListBusinessKnowledgeGapSuggestionsRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  7,
+) as any as S.Schema<ListBusinessKnowledgeGapSuggestionsRequest>;
+
 export type PaginatedKnowledgeGapSuggestionListResultsList = Array<KnowledgeGapSuggestion>;
+const PaginatedKnowledgeGapSuggestionListResultsList = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<PaginatedKnowledgeGapSuggestionListResultsList>;
+
 export interface PaginatedKnowledgeGapSuggestionList {
   count: number;
   next?: string | null;
   previous?: string | null;
   results: PaginatedKnowledgeGapSuggestionListResultsList;
 }
+const PaginatedKnowledgeGapSuggestionList = /*@__PURE__*/ __L.at(
+  __c6,
+  1,
+) as any as S.Schema<PaginatedKnowledgeGapSuggestionList>;
+
 export interface ListBusinessKnowledgePlaygroundChatsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
+const ListBusinessKnowledgePlaygroundChatsRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  2,
+) as any as S.Schema<ListBusinessKnowledgePlaygroundChatsRequest>;
+
 export interface PlaygroundChatList {
   /** Playground chat id. */
   id: string;
@@ -468,11 +713,27 @@ export interface PlaygroundChatList {
   /** True while an answer in this chat is still running. Another question in this chat returns 409 until it finishes. */
   has_open_turn: boolean;
 }
+const PlaygroundChatList = /*@__PURE__*/ __L.at(__c6, 3) as any as S.Schema<PlaygroundChatList>;
+
 export type ListBusinessKnowledgePlaygroundChatsResponseBodyList = Array<PlaygroundChatList>;
+const ListBusinessKnowledgePlaygroundChatsResponseBodyList = /*@__PURE__*/ __L.at(
+  __c6,
+  4,
+) as any as S.Schema<ListBusinessKnowledgePlaygroundChatsResponseBodyList>;
+
 export type ListBusinessKnowledgePlaygroundChatsResponse =
   ListBusinessKnowledgePlaygroundChatsResponseBodyList;
+const ListBusinessKnowledgePlaygroundChatsResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  5,
+) as any as S.Schema<ListBusinessKnowledgePlaygroundChatsResponse>;
+
 export type ListBusinessKnowledgeSourcesRequestAddedBy = "human" | "learned";
+const ListBusinessKnowledgeSourcesRequestAddedBy = S.String;
+
 export type ListBusinessKnowledgeSourcesRequestSourceType = "file" | "text" | "url";
+const ListBusinessKnowledgeSourcesRequestSourceType = S.String;
+
 export interface ListBusinessKnowledgeSourcesRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -487,13 +748,28 @@ export interface ListBusinessKnowledgeSourcesRequest {
   /** Filter to a single source type (text, url, or file). */
   source_type?: ListBusinessKnowledgeSourcesRequestSourceType | (string & {});
 }
+const ListBusinessKnowledgeSourcesRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  6,
+) as any as S.Schema<ListBusinessKnowledgeSourcesRequest>;
+
 export type PaginatedKnowledgeSourceListResultsList = Array<KnowledgeSource>;
+const PaginatedKnowledgeSourceListResultsList = /*@__PURE__*/ __L.at(
+  __c6,
+  7,
+) as any as S.Schema<PaginatedKnowledgeSourceListResultsList>;
+
 export interface PaginatedKnowledgeSourceList {
   count: number;
   next?: string | null;
   previous?: string | null;
   results: PaginatedKnowledgeSourceListResultsList;
 }
+const PaginatedKnowledgeSourceList = /*@__PURE__*/ __L.at(
+  __c7,
+  0,
+) as any as S.Schema<PaginatedKnowledgeSourceList>;
+
 export interface ListBusinessKnowledgeSourcesDocumentsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -504,8 +780,15 @@ export interface ListBusinessKnowledgeSourcesDocumentsRequest {
   /** The initial index from which to return the results. */
   offset?: number;
 }
+const ListBusinessKnowledgeSourcesDocumentsRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  1,
+) as any as S.Schema<ListBusinessKnowledgeSourcesDocumentsRequest>;
+
 /** * `unknown` - Unknown * `safe` - Safe * `unsafe` - Unsafe */
 export type SafetyVerdictEnum = "unknown" | "safe" | "unsafe";
+const SafetyVerdictEnum = S.String;
+
 export interface KnowledgeSourceDocument {
   /** Document id. */
   id: string;
@@ -516,13 +799,28 @@ export interface KnowledgeSourceDocument {
   /** Content-safety verdict. Only `safe` documents are included in search. `unknown` is still waiting on classification. * `unknown` - Unknown * `safe` - Safe * `unsafe` - Unsafe */
   safety_verdict: SafetyVerdictEnum;
 }
+const KnowledgeSourceDocument = /*@__PURE__*/ __L.at(
+  __c7,
+  2,
+) as any as S.Schema<KnowledgeSourceDocument>;
+
 export type PaginatedKnowledgeSourceDocumentListResultsList = Array<KnowledgeSourceDocument>;
+const PaginatedKnowledgeSourceDocumentListResultsList = /*@__PURE__*/ __L.at(
+  __c7,
+  3,
+) as any as S.Schema<PaginatedKnowledgeSourceDocumentListResultsList>;
+
 export interface PaginatedKnowledgeSourceDocumentList {
   count: number;
   next?: string | null;
   previous?: string | null;
   results: PaginatedKnowledgeSourceDocumentListResultsList;
 }
+const PaginatedKnowledgeSourceDocumentList = /*@__PURE__*/ __L.at(
+  __c7,
+  4,
+) as any as S.Schema<PaginatedKnowledgeSourceDocumentList>;
+
 export interface SearchBusinessKnowledgeRepositoryRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -531,8 +829,15 @@ export interface SearchBusinessKnowledgeRepositoryRequest {
   /** Limit the search to this owner/repo. It must already be selected. Omit to search every selected repository. */
   repo?: string;
 }
+const SearchBusinessKnowledgeRepositoryRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  5,
+) as any as S.Schema<SearchBusinessKnowledgeRepositoryRequest>;
+
 /** * `path` - Path * `readme` - Readme */
 export type RepositoryHitKindEnum = "path" | "readme";
+const RepositoryHitKindEnum = S.String;
+
 export interface RepositorySearchHit {
   /** Lowercased owner/repo the hit came from. */
   repo: string;
@@ -545,10 +850,19 @@ export interface RepositorySearchHit {
   /** Short README excerpt. Empty for a path hit. */
   excerpt: string;
 }
+const RepositorySearchHit = /*@__PURE__*/ __L.at(__c7, 6) as any as S.Schema<RepositorySearchHit>;
+
 /** Path matches, then README excerpts. */
 export type RepositorySearchResponseResultsList = Array<RepositorySearchHit>;
+const RepositorySearchResponseResultsList = /*@__PURE__*/ __L.at(
+  __c7,
+  7,
+) as any as S.Schema<RepositorySearchResponseResultsList>;
+
 /** * `ready` - Ready * `warming` - Warming */
 export type RepositoryCacheStatusEnum = "ready" | "warming";
+const RepositoryCacheStatusEnum = S.String;
+
 export interface RepositoryCacheState {
   /** Lowercased owner/repo. */
   repo: string;
@@ -557,20 +871,37 @@ export interface RepositoryCacheState {
   /** ready means the file list was cached recently. warming means a refresh was just queued. * `ready` - Ready * `warming` - Warming */
   cache_status: RepositoryCacheStatusEnum;
 }
+const RepositoryCacheState = /*@__PURE__*/ __L.at(__c8, 0) as any as S.Schema<RepositoryCacheState>;
+
 /** Cache state for each repository that was searched. */
 export type RepositorySearchResponseRepositoriesList = Array<RepositoryCacheState>;
+const RepositorySearchResponseRepositoriesList = /*@__PURE__*/ __L.at(
+  __c8,
+  1,
+) as any as S.Schema<RepositorySearchResponseRepositoriesList>;
+
 export interface RepositorySearchResponse {
   /** Path matches, then README excerpts. */
   results: RepositorySearchResponseResultsList;
   /** Cache state for each repository that was searched. */
   repositories: RepositorySearchResponseRepositoriesList;
 }
+const RepositorySearchResponse = /*@__PURE__*/ __L.at(
+  __c8,
+  2,
+) as any as S.Schema<RepositorySearchResponse>;
+
 export interface UpdateBusinessKnowledgeSettingsPartialRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** When true, PostHog learns reusable knowledge from public human replies on resolved support tickets. Rejected when Support is off for this environment. */
   learn_from_support_enabled?: boolean;
 }
+const UpdateBusinessKnowledgeSettingsPartialRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  3,
+) as any as S.Schema<UpdateBusinessKnowledgeSettingsPartialRequest>;
+
 export interface UpdateBusinessKnowledgeSourcesPartialRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -583,6 +914,11 @@ export interface UpdateBusinessKnowledgeSourcesPartialRequest {
   /** When true, this source's content is injected into every support reply prompt as general context. */
   always_include?: boolean;
 }
+const UpdateBusinessKnowledgeSourcesPartialRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  4,
+) as any as S.Schema<UpdateBusinessKnowledgeSourcesPartialRequest>;
+
 export type BusinessKnowledgeDocumentsSearchListError = PosthogOpError;
 /** Read-only access to parsed knowledge documents. Exposes hybrid search (``search``) and a drill-down window (``window``) so an agent (PHAI or MCP) can find and explore business knowledge chunks. */
 export const businessKnowledgeDocumentsSearchList: API.OperationMethod<
@@ -591,8 +927,8 @@ export const businessKnowledgeDocumentsSearchList: API.OperationMethod<
   BusinessKnowledgeDocumentsSearchListError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<BusinessKnowledgeDocumentsSearchListRequest>,
-  output: __S(3) as any as S.Schema<BusinessKnowledgeDocumentsSearchListResponse>,
+  input: BusinessKnowledgeDocumentsSearchListRequest,
+  output: BusinessKnowledgeDocumentsSearchListResponse,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -606,8 +942,8 @@ export const businessKnowledgeGapSuggestionsAcceptCreate: API.OperationMethod<
   BusinessKnowledgeGapSuggestionsAcceptCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4) as any as S.Schema<BusinessKnowledgeGapSuggestionsAcceptCreateRequest>,
-  output: __S(5) as any as S.Schema<KnowledgeGapSuggestion>,
+  input: BusinessKnowledgeGapSuggestionsAcceptCreateRequest,
+  output: KnowledgeGapSuggestion,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -621,8 +957,8 @@ export const businessKnowledgeGapSuggestionsAcceptTopicCreate: API.OperationMeth
   BusinessKnowledgeGapSuggestionsAcceptTopicCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6) as any as S.Schema<BusinessKnowledgeGapSuggestionsAcceptTopicCreateRequest>,
-  output: __S(7) as any as S.Schema<GapTopicActionResult>,
+  input: BusinessKnowledgeGapSuggestionsAcceptTopicCreateRequest,
+  output: GapTopicActionResult,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -636,8 +972,8 @@ export const businessKnowledgePlaygroundChatsDestroy: API.OperationMethod<
   BusinessKnowledgePlaygroundChatsDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8) as any as S.Schema<BusinessKnowledgePlaygroundChatsDestroyRequest>,
-  output: __S(9) as any as S.Schema<BusinessKnowledgePlaygroundChatsDestroyResponse>,
+  input: BusinessKnowledgePlaygroundChatsDestroyRequest,
+  output: BusinessKnowledgePlaygroundChatsDestroyResponse,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -651,8 +987,8 @@ export const businessKnowledgeRepositoriesConnectCreate: API.OperationMethod<
   BusinessKnowledgeRepositoriesConnectCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10) as any as S.Schema<BusinessKnowledgeRepositoriesConnectCreateRequest>,
-  output: __S(12) as any as S.Schema<RepositoryConnection>,
+  input: BusinessKnowledgeRepositoriesConnectCreateRequest,
+  output: RepositoryConnection,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -666,8 +1002,8 @@ export const businessKnowledgeRepositoriesDisconnectCreate: API.OperationMethod<
   BusinessKnowledgeRepositoriesDisconnectCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13) as any as S.Schema<BusinessKnowledgeRepositoriesDisconnectCreateRequest>,
-  output: __S(12) as any as S.Schema<RepositoryConnection>,
+  input: BusinessKnowledgeRepositoriesDisconnectCreateRequest,
+  output: RepositoryConnection,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -680,8 +1016,8 @@ export const businessKnowledgeSourcesDestroy: API.OperationMethod<
   BusinessKnowledgeSourcesDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14) as any as S.Schema<BusinessKnowledgeSourcesDestroyRequest>,
-  output: __S(9) as any as S.Schema<BusinessKnowledgeSourcesDestroyResponse>,
+  input: BusinessKnowledgeSourcesDestroyRequest,
+  output: BusinessKnowledgeSourcesDestroyResponse,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -694,8 +1030,8 @@ export const businessKnowledgeSourcesRefreshCreate: API.OperationMethod<
   BusinessKnowledgeSourcesRefreshCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15) as any as S.Schema<BusinessKnowledgeSourcesRefreshCreateRequest>,
-  output: __S(16) as any as S.Schema<KnowledgeSource>,
+  input: BusinessKnowledgeSourcesRefreshCreateRequest,
+  output: KnowledgeSource,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -709,8 +1045,8 @@ export const createBusinessKnowledgeGapSuggestionsDismiss: API.OperationMethod<
   CreateBusinessKnowledgeGapSuggestionsDismissError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17) as any as S.Schema<CreateBusinessKnowledgeGapSuggestionsDismissRequest>,
-  output: __S(5) as any as S.Schema<KnowledgeGapSuggestion>,
+  input: CreateBusinessKnowledgeGapSuggestionsDismissRequest,
+  output: KnowledgeGapSuggestion,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -724,8 +1060,8 @@ export const createBusinessKnowledgeGapSuggestionsDismissTopic: API.OperationMet
   CreateBusinessKnowledgeGapSuggestionsDismissTopicError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18) as any as S.Schema<CreateBusinessKnowledgeGapSuggestionsDismissTopicRequest>,
-  output: __S(7) as any as S.Schema<GapTopicActionResult>,
+  input: CreateBusinessKnowledgeGapSuggestionsDismissTopicRequest,
+  output: GapTopicActionResult,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -739,8 +1075,8 @@ export const createBusinessKnowledgePlaygroundChat: API.OperationMethod<
   CreateBusinessKnowledgePlaygroundChatError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19) as any as S.Schema<CreateBusinessKnowledgePlaygroundChatRequest>,
-  output: __S(27) as any as S.Schema<PlaygroundChat>,
+  input: CreateBusinessKnowledgePlaygroundChatRequest,
+  output: PlaygroundChat,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -754,8 +1090,8 @@ export const createBusinessKnowledgePlaygroundChatsAsk: API.OperationMethod<
   CreateBusinessKnowledgePlaygroundChatsAskError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28) as any as S.Schema<CreateBusinessKnowledgePlaygroundChatsAskRequest>,
-  output: __S(27) as any as S.Schema<PlaygroundChat>,
+  input: CreateBusinessKnowledgePlaygroundChatsAskRequest,
+  output: PlaygroundChat,
   errors: [Forbidden, Conflict],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -769,8 +1105,8 @@ export const createBusinessKnowledgeRepositoriesSelection: API.OperationMethod<
   CreateBusinessKnowledgeRepositoriesSelectionError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29) as any as S.Schema<CreateBusinessKnowledgeRepositoriesSelectionRequest>,
-  output: __S(12) as any as S.Schema<RepositoryConnection>,
+  input: CreateBusinessKnowledgeRepositoriesSelectionRequest,
+  output: RepositoryConnection,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -784,8 +1120,8 @@ export const createBusinessKnowledgeSandbox: API.OperationMethod<
   CreateBusinessKnowledgeSandboxError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30) as any as S.Schema<CreateBusinessKnowledgeSandboxRequest>,
-  output: __S(31) as any as S.Schema<SandboxRunStarted>,
+  input: CreateBusinessKnowledgeSandboxRequest,
+  output: SandboxRunStarted,
   errors: [Forbidden, Conflict],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -798,8 +1134,8 @@ export const createBusinessKnowledgeSource: API.OperationMethod<
   CreateBusinessKnowledgeSourceError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32) as any as S.Schema<CreateBusinessKnowledgeSourceRequest>,
-  output: __S(16) as any as S.Schema<KnowledgeSource>,
+  input: CreateBusinessKnowledgeSourceRequest,
+  output: KnowledgeSource,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -813,8 +1149,8 @@ export const getBusinessKnowledgePlaygroundChat: API.OperationMethod<
   GetBusinessKnowledgePlaygroundChatError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33) as any as S.Schema<GetBusinessKnowledgePlaygroundChatRequest>,
-  output: __S(27) as any as S.Schema<PlaygroundChat>,
+  input: GetBusinessKnowledgePlaygroundChatRequest,
+  output: PlaygroundChat,
   errors: [NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -828,8 +1164,8 @@ export const getBusinessKnowledgeRepositoriesFile: API.OperationMethod<
   GetBusinessKnowledgeRepositoriesFileError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34) as any as S.Schema<GetBusinessKnowledgeRepositoriesFileRequest>,
-  output: __S(35) as any as S.Schema<RepositoryFile>,
+  input: GetBusinessKnowledgeRepositoriesFileRequest,
+  output: RepositoryFile,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -843,8 +1179,8 @@ export const getBusinessKnowledgeRepositoriesStatus: API.OperationMethod<
   GetBusinessKnowledgeRepositoriesStatusError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36) as any as S.Schema<GetBusinessKnowledgeRepositoriesStatusRequest>,
-  output: __S(12) as any as S.Schema<RepositoryConnection>,
+  input: GetBusinessKnowledgeRepositoriesStatusRequest,
+  output: RepositoryConnection,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -858,8 +1194,8 @@ export const getBusinessKnowledgeSandbox: API.OperationMethod<
   GetBusinessKnowledgeSandboxError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37) as any as S.Schema<GetBusinessKnowledgeSandboxRequest>,
-  output: __S(24) as any as S.Schema<SandboxRun>,
+  input: GetBusinessKnowledgeSandboxRequest,
+  output: SandboxRun,
   errors: [NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -873,8 +1209,8 @@ export const getBusinessKnowledgeSettings: API.OperationMethod<
   GetBusinessKnowledgeSettingsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38) as any as S.Schema<GetBusinessKnowledgeSettingsRequest>,
-  output: __S(39) as any as S.Schema<BusinessKnowledgeSettings>,
+  input: GetBusinessKnowledgeSettingsRequest,
+  output: BusinessKnowledgeSettings,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -887,8 +1223,8 @@ export const getBusinessKnowledgeSource: API.OperationMethod<
   GetBusinessKnowledgeSourceError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40) as any as S.Schema<GetBusinessKnowledgeSourceRequest>,
-  output: __S(16) as any as S.Schema<KnowledgeSource>,
+  input: GetBusinessKnowledgeSourceRequest,
+  output: KnowledgeSource,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -901,8 +1237,8 @@ export const getBusinessKnowledgeSourcesText: API.OperationMethod<
   GetBusinessKnowledgeSourcesTextError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41) as any as S.Schema<GetBusinessKnowledgeSourcesTextRequest>,
-  output: __S(42) as any as S.Schema<GetBusinessKnowledgeSourcesTextResponse>,
+  input: GetBusinessKnowledgeSourcesTextRequest,
+  output: GetBusinessKnowledgeSourcesTextResponse,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -916,8 +1252,8 @@ export const listBusinessKnowledgeDocumentsWindow: API.OperationMethod<
   ListBusinessKnowledgeDocumentsWindowError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43) as any as S.Schema<ListBusinessKnowledgeDocumentsWindowRequest>,
-  output: __S(46) as any as S.Schema<ListBusinessKnowledgeDocumentsWindowResponse>,
+  input: ListBusinessKnowledgeDocumentsWindowRequest,
+  output: ListBusinessKnowledgeDocumentsWindowResponse,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -931,8 +1267,8 @@ export const listBusinessKnowledgeGapSuggestions: API.OperationMethod<
   ListBusinessKnowledgeGapSuggestionsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47) as any as S.Schema<ListBusinessKnowledgeGapSuggestionsRequest>,
-  output: __S(49) as any as S.Schema<PaginatedKnowledgeGapSuggestionList>,
+  input: ListBusinessKnowledgeGapSuggestionsRequest,
+  output: PaginatedKnowledgeGapSuggestionList,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -946,8 +1282,8 @@ export const listBusinessKnowledgePlaygroundChats: API.OperationMethod<
   ListBusinessKnowledgePlaygroundChatsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(50) as any as S.Schema<ListBusinessKnowledgePlaygroundChatsRequest>,
-  output: __S(53) as any as S.Schema<ListBusinessKnowledgePlaygroundChatsResponse>,
+  input: ListBusinessKnowledgePlaygroundChatsRequest,
+  output: ListBusinessKnowledgePlaygroundChatsResponse,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -960,8 +1296,8 @@ export const listBusinessKnowledgeSources: API.OperationMethod<
   ListBusinessKnowledgeSourcesError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(54) as any as S.Schema<ListBusinessKnowledgeSourcesRequest>,
-  output: __S(56) as any as S.Schema<PaginatedKnowledgeSourceList>,
+  input: ListBusinessKnowledgeSourcesRequest,
+  output: PaginatedKnowledgeSourceList,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -974,8 +1310,8 @@ export const listBusinessKnowledgeSourcesDocuments: API.OperationMethod<
   ListBusinessKnowledgeSourcesDocumentsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57) as any as S.Schema<ListBusinessKnowledgeSourcesDocumentsRequest>,
-  output: __S(60) as any as S.Schema<PaginatedKnowledgeSourceDocumentList>,
+  input: ListBusinessKnowledgeSourcesDocumentsRequest,
+  output: PaginatedKnowledgeSourceDocumentList,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -989,8 +1325,8 @@ export const searchBusinessKnowledgeRepository: API.OperationMethod<
   SearchBusinessKnowledgeRepositoryError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(61) as any as S.Schema<SearchBusinessKnowledgeRepositoryRequest>,
-  output: __S(66) as any as S.Schema<RepositorySearchResponse>,
+  input: SearchBusinessKnowledgeRepositoryRequest,
+  output: RepositorySearchResponse,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1004,8 +1340,8 @@ export const updateBusinessKnowledgeSettingsPartial: API.OperationMethod<
   UpdateBusinessKnowledgeSettingsPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(67) as any as S.Schema<UpdateBusinessKnowledgeSettingsPartialRequest>,
-  output: __S(39) as any as S.Schema<BusinessKnowledgeSettings>,
+  input: UpdateBusinessKnowledgeSettingsPartialRequest,
+  output: BusinessKnowledgeSettings,
   errors: [BadRequest],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1018,8 +1354,8 @@ export const updateBusinessKnowledgeSourcesPartial: API.OperationMethod<
   UpdateBusinessKnowledgeSourcesPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(68) as any as S.Schema<UpdateBusinessKnowledgeSourcesPartialRequest>,
-  output: __S(16) as any as S.Schema<KnowledgeSource>,
+  input: UpdateBusinessKnowledgeSourcesPartialRequest,
+  output: KnowledgeSource,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1062,9 +1398,11 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "KnowledgeSearchResult" });
     case 2:
-      return S.Array(__S(1));
+      return S.Array(KnowledgeSearchResult);
     case 3:
-      return S.suspend(() => __S(2).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        BusinessKnowledgeDocumentsSearchListResponseBodyList.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "BusinessKnowledgeDocumentsSearchListResponse",
       });
     case 4:
@@ -1166,7 +1504,7 @@ function __c1(j: number): any {
           connected: S.Boolean,
           integration_id: S.NullOr(S.Number),
           integration_name: S.String,
-          repos: __S(11),
+          repos: RepositoryConnectionReposList,
         }),
       ).annotate({ identifier: "RepositoryConnection" });
     case 5:
@@ -1223,9 +1561,9 @@ function __c2(j: number): any {
           id: S.String,
           team_id: S.Number,
           name: S.String,
-          source_type: S.String,
+          source_type: SourceTypeEnum,
           is_generated: S.Boolean,
-          status: S.String,
+          status: SourceStatusEnum,
           error_message: S.String,
           document_count: S.Number,
           chunk_count: S.Number,
@@ -1233,15 +1571,15 @@ function __c2(j: number): any {
           updated_at: S.NullOr(S.String),
           source_url: S.String,
           last_refresh_at: S.NullOr(S.String),
-          last_refresh_status: S.String,
+          last_refresh_status: RefreshStatusEnum,
           last_refresh_error: S.String,
-          refresh_interval: S.String,
+          refresh_interval: RefreshIntervalEnum,
           next_refresh_at: S.NullOr(S.String),
           has_unsafe_documents: S.Boolean,
-          embedding_status: S.String,
+          embedding_status: EmbeddingStatusEnum,
           learned_from_ticket_number: S.NullOr(S.Number),
           learned_from_ticket_url: S.NullOr(S.String),
-          crawl_mode: S.String,
+          crawl_mode: CrawlModeEnum,
           crawl_config: S.Unknown,
           original_filename: S.String,
           file_content_type: S.String,
@@ -1302,16 +1640,16 @@ function __c2(j: number): any {
         }),
       ).annotate({ identifier: "SandboxSource" });
     case 5:
-      return S.Array(__S(20));
+      return S.Array(SandboxSource);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          tool: S.String,
+          tool: SandboxToolNameEnum,
           input: S.String,
         }),
       ).annotate({ identifier: "SandboxSearch" });
     case 7:
-      return S.Array(__S(22));
+      return S.Array(SandboxSearch);
   }
 }
 function __c3(j: number): any {
@@ -1321,10 +1659,10 @@ function __c3(j: number): any {
         S.Struct({
           task_id: S.String,
           run_id: S.String,
-          status: S.String,
+          status: SandboxPollStatusEnum,
           reply: S.NullOr(S.String),
-          sources: __S(21),
-          searches: __S(23),
+          sources: SandboxRunSourcesList,
+          searches: SandboxRunSearchesList,
           error: S.NullOr(S.String),
           docs_search_called: S.Boolean,
         }),
@@ -1336,12 +1674,12 @@ function __c3(j: number): any {
           question: S.String,
           task_id: S.String,
           position: S.Number,
-          run: S.NullOr(__S(24)),
+          run: S.NullOr(SandboxRun),
           error: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "PlaygroundTurn" });
     case 2:
-      return S.Array(__S(25));
+      return S.Array(PlaygroundTurn);
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -1350,7 +1688,7 @@ function __c3(j: number): any {
           created_at: S.String,
           updated_at: S.String,
           has_open_turn: S.Boolean,
-          turns: __S(26),
+          turns: PlaygroundChatTurnsList,
         }),
       ).annotate({ identifier: "PlaygroundChat" });
     case 4:
@@ -1373,7 +1711,7 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
-          repos: __S(11),
+          repos: CreateBusinessKnowledgeRepositoriesSelectionRequestReposList,
         }).pipe(
           T.Http({
             method: "POST",
@@ -1592,9 +1930,11 @@ function __c5(j: number): any {
         }),
       ).annotate({ identifier: "KnowledgeDocumentWindow" });
     case 5:
-      return S.Array(__S(44));
+      return S.Array(KnowledgeDocumentWindow);
     case 6:
-      return S.suspend(() => __S(45).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        ListBusinessKnowledgeDocumentsWindowResponseBodyList.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "ListBusinessKnowledgeDocumentsWindowResponse",
       });
     case 7:
@@ -1619,14 +1959,14 @@ function __c5(j: number): any {
 function __c6(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(5));
+      return S.Array(KnowledgeGapSuggestion);
     case 1:
       return S.suspend(() =>
         S.Struct({
           count: S.Number,
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: __S(48),
+          results: PaginatedKnowledgeGapSuggestionListResultsList,
         }),
       ).annotate({
         identifier: "PaginatedKnowledgeGapSuggestionList",
@@ -1656,20 +1996,22 @@ function __c6(j: number): any {
         }),
       ).annotate({ identifier: "PlaygroundChatList" });
     case 4:
-      return S.Array(__S(51));
+      return S.Array(PlaygroundChatList);
     case 5:
-      return S.suspend(() => __S(52).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        ListBusinessKnowledgePlaygroundChatsResponseBodyList.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "ListBusinessKnowledgePlaygroundChatsResponse",
       });
     case 6:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
-          added_by: S.optional(S.String.pipe(T.Query())),
+          added_by: S.optional(ListBusinessKnowledgeSourcesRequestAddedBy.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
           offset: S.optional(S.Number.pipe(T.Query())),
           search: S.optional(S.String.pipe(T.Query())),
-          source_type: S.optional(S.String.pipe(T.Query())),
+          source_type: S.optional(ListBusinessKnowledgeSourcesRequestSourceType.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -1681,7 +2023,7 @@ function __c6(j: number): any {
         identifier: "ListBusinessKnowledgeSourcesRequest",
       });
     case 7:
-      return S.Array(__S(16));
+      return S.Array(KnowledgeSource);
   }
 }
 function __c7(j: number): any {
@@ -1692,7 +2034,7 @@ function __c7(j: number): any {
           count: S.Number,
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: __S(55),
+          results: PaginatedKnowledgeSourceListResultsList,
         }),
       ).annotate({
         identifier: "PaginatedKnowledgeSourceList",
@@ -1720,18 +2062,18 @@ function __c7(j: number): any {
           id: S.String,
           url: S.String,
           title: S.String,
-          safety_verdict: S.String,
+          safety_verdict: SafetyVerdictEnum,
         }),
       ).annotate({ identifier: "KnowledgeSourceDocument" });
     case 3:
-      return S.Array(__S(58));
+      return S.Array(KnowledgeSourceDocument);
     case 4:
       return S.suspend(() =>
         S.Struct({
           count: S.Number,
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: __S(59),
+          results: PaginatedKnowledgeSourceDocumentListResultsList,
         }),
       ).annotate({
         identifier: "PaginatedKnowledgeSourceDocumentList",
@@ -1758,12 +2100,12 @@ function __c7(j: number): any {
           repo: S.String,
           path: S.String,
           url: S.String,
-          kind: S.String,
+          kind: RepositoryHitKindEnum,
           excerpt: S.String,
         }),
       ).annotate({ identifier: "RepositorySearchHit" });
     case 7:
-      return S.Array(__S(62));
+      return S.Array(RepositorySearchHit);
   }
 }
 function __c8(j: number): any {
@@ -1773,16 +2115,16 @@ function __c8(j: number): any {
         S.Struct({
           repo: S.String,
           tree_truncated: S.Boolean,
-          cache_status: S.String,
+          cache_status: RepositoryCacheStatusEnum,
         }),
       ).annotate({ identifier: "RepositoryCacheState" });
     case 1:
-      return S.Array(__S(64));
+      return S.Array(RepositoryCacheState);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          results: __S(63),
-          repositories: __S(65),
+          results: RepositorySearchResponseResultsList,
+          repositories: RepositorySearchResponseRepositoriesList,
         }),
       ).annotate({ identifier: "RepositorySearchResponse" });
     case 3:
@@ -1818,32 +2160,5 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "UpdateBusinessKnowledgeSourcesPartialRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
   }
 }

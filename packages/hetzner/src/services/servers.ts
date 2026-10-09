@@ -8,8 +8,6 @@ import { paginatePageNumber } from "../pagination.ts";
 import { HetznerProtocol, type HetznerOpError, type HetznerOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { HetznerOpError, HetznerOpContext };
 
@@ -34,20 +32,50 @@ export class ServerPlacementError
   ) {}
 
 export type CreateServerRequestSshKeysItem = number | string;
+const CreateServerRequestSshKeysItem = S.Unknown as any as S.Schema<CreateServerRequestSshKeysItem>;
+
 /** SSH key IDs (`integer`) or names (`string`) which should be injected into the Server at creation time. */
 export type CreateServerRequestSshKeysList = Array<CreateServerRequestSshKeysItem>;
+const CreateServerRequestSshKeysList = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<CreateServerRequestSshKeysList>;
+
 /** Volume IDs which should be attached to the Server at the creation time. Volumes must be in the same Location. */
 export type CreateServerRequestVolumesList = Array<number>;
+const CreateServerRequestVolumesList = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<CreateServerRequestVolumesList>;
+
 /** Network IDs which should be attached to the Server private network interface at the creation time. */
 export type CreateServerRequestNetworksList = Array<number>;
+const CreateServerRequestNetworksList =
+  CreateServerRequestVolumesList as any as S.Schema<CreateServerRequestNetworksList>;
+
 export interface CreateServerRequestFirewallsItem {
   /** ID of the Firewall. */
   firewall: number;
 }
+const CreateServerRequestFirewallsItem = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<CreateServerRequestFirewallsItem>;
+
 /** Firewalls which should be applied on the Server's public network interface at creation time. */
 export type CreateServerRequestFirewallsList = Array<CreateServerRequestFirewallsItem>;
+const CreateServerRequestFirewallsList = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<CreateServerRequestFirewallsList>;
+
 /** User-defined labels (`key/value` pairs) for the Resource. For more information, see "[Labels](#description/labels)". */
 export type CreateServerRequestLabelsMap = { [key: string]: string | undefined };
+const CreateServerRequestLabelsMap = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<CreateServerRequestLabelsMap>;
+
 /** Public Network options. */
 export interface CreateServerRequestPublicNet {
   /** Attach an IPv4 on the public NIC. If false, no IPv4 address will be attached. */
@@ -59,6 +87,11 @@ export interface CreateServerRequestPublicNet {
   /** ID of the ipv6 Primary IP to use. If omitted and enable_ipv6 is true, a new ipv6 Primary IP will automatically be created. */
   ipv6?: number | null;
 }
+const CreateServerRequestPublicNet = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<CreateServerRequestPublicNet>;
+
 export interface CreateServerRequest {
   /** Name of the Server to create (must be unique per Project and a valid hostname as per RFC 1123). */
   name: string;
@@ -89,6 +122,8 @@ export interface CreateServerRequest {
   /** Public Network options. */
   public_net?: CreateServerRequestPublicNet;
 }
+const CreateServerRequest = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<CreateServerRequest>;
+
 /** Status of the Server. */
 export type CreateServerResponseServerStatus =
   | "running"
@@ -100,6 +135,8 @@ export type CreateServerResponseServerStatus =
   | "migrating"
   | "rebuilding"
   | "unknown";
+const CreateServerResponseServerStatus = S.String;
+
 /** IP address (v4) and its reverse DNS entry of this Server. */
 export interface CreateServerResponseServerPublicNetIpv4 {
   /** ID of the [Primary IP](#tag/primary-ips). */
@@ -111,15 +148,30 @@ export interface CreateServerResponseServerPublicNetIpv4 {
   /** Reverse DNS PTR entry for the IPv4 addresses of this Server. */
   dns_ptr: string;
 }
+const CreateServerResponseServerPublicNetIpv4 = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<CreateServerResponseServerPublicNetIpv4>;
+
 export interface CreateServerResponseServerPublicNetIpv6DnsPtrItem {
   /** Single IPv6 address of this Server for which the reverse DNS entry has been set up. */
   ip: string;
   /** DNS pointer for the specific IP address. */
   dns_ptr: string;
 }
+const CreateServerResponseServerPublicNetIpv6DnsPtrItem = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<CreateServerResponseServerPublicNetIpv6DnsPtrItem>;
+
 /** Reverse DNS PTR entries for the IPv6 addresses of this Server. */
 export type CreateServerResponseServerPublicNetIpv6DnsPtrList =
   Array<CreateServerResponseServerPublicNetIpv6DnsPtrItem>;
+const CreateServerResponseServerPublicNetIpv6DnsPtrList = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<CreateServerResponseServerPublicNetIpv6DnsPtrList>;
+
 /** IPv6 network assigned to this Server and its reverse DNS entry. */
 export interface CreateServerResponseServerPublicNetIpv6 {
   /** ID of the [Primary IP](#tag/primary-ips). */
@@ -131,19 +183,39 @@ export interface CreateServerResponseServerPublicNetIpv6 {
   /** Reverse DNS PTR entries for the IPv6 addresses of this Server. */
   dns_ptr: CreateServerResponseServerPublicNetIpv6DnsPtrList | null;
 }
+const CreateServerResponseServerPublicNetIpv6 = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<CreateServerResponseServerPublicNetIpv6>;
+
 /** IDs of Floating IPs assigned to this Server. */
 export type CreateServerResponseServerPublicNetFloatingIpsList = Array<number>;
+const CreateServerResponseServerPublicNetFloatingIpsList =
+  CreateServerRequestVolumesList as any as S.Schema<CreateServerResponseServerPublicNetFloatingIpsList>;
+
 /** Status of the Firewall on the Server. */
 export type CreateServerResponseServerPublicNetFirewallsItemStatus = "applied" | "pending";
+const CreateServerResponseServerPublicNetFirewallsItemStatus = S.String;
+
 export interface CreateServerResponseServerPublicNetFirewallsItem {
   /** ID of the [Firewall](#tag/firewalls). */
   id?: number;
   /** Status of the Firewall on the Server. */
   status?: CreateServerResponseServerPublicNetFirewallsItemStatus;
 }
+const CreateServerResponseServerPublicNetFirewallsItem = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<CreateServerResponseServerPublicNetFirewallsItem>;
+
 /** Firewalls applied to the public network interface of this Server. */
 export type CreateServerResponseServerPublicNetFirewallsList =
   Array<CreateServerResponseServerPublicNetFirewallsItem>;
+const CreateServerResponseServerPublicNetFirewallsList = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<CreateServerResponseServerPublicNetFirewallsList>;
+
 /** Public network information. The Server's IPv4 address can be found in `public_net->ipv4->ip`. */
 export interface CreateServerResponseServerPublicNet {
   /** IP address (v4) and its reverse DNS entry of this Server. */
@@ -155,8 +227,18 @@ export interface CreateServerResponseServerPublicNet {
   /** Firewalls applied to the public network interface of this Server. */
   firewalls?: CreateServerResponseServerPublicNetFirewallsList;
 }
+const CreateServerResponseServerPublicNet = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<CreateServerResponseServerPublicNet>;
+
 /** Additional IP addresses of the server on the network. */
 export type CreateServerResponseServerPrivateNetItemAliasIpsList = Array<string>;
+const CreateServerResponseServerPrivateNetItemAliasIpsList = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<CreateServerResponseServerPrivateNetItemAliasIpsList>;
+
 export interface CreateServerResponseServerPrivateNetItem {
   /** The Network ID the server is attached to. */
   network?: number;
@@ -167,9 +249,19 @@ export interface CreateServerResponseServerPrivateNetItem {
   /** The server MAC address on the network. */
   mac_address?: string;
 }
+const CreateServerResponseServerPrivateNetItem = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<CreateServerResponseServerPrivateNetItem>;
+
 /** Private networks information. */
 export type CreateServerResponseServerPrivateNetList =
   Array<CreateServerResponseServerPrivateNetItem>;
+const CreateServerResponseServerPrivateNetList = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<CreateServerResponseServerPrivateNetList>;
+
 /** Hourly price in this [Location](#tag/locations). */
 export interface CreateServerResponseServerServerTypePricesItemPriceHourly {
   /** Price without VAT. */
@@ -177,6 +269,11 @@ export interface CreateServerResponseServerServerTypePricesItemPriceHourly {
   /** Price with VAT added. */
   gross: string;
 }
+const CreateServerResponseServerServerTypePricesItemPriceHourly = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<CreateServerResponseServerServerTypePricesItemPriceHourly>;
+
 /** Monthly price in this [Location](#tag/locations). */
 export type CreateServerResponseServerServerTypePricesItemPriceMonthly =
   CreateServerResponseServerServerTypePricesItemPriceHourly;
@@ -195,15 +292,31 @@ export interface CreateServerResponseServerServerTypePricesItem {
   /** Additional traffic price per TB in this [Location](#tag/locations). */
   price_per_tb_traffic: CreateServerResponseServerServerTypePricesItemPriceHourly;
 }
+const CreateServerResponseServerServerTypePricesItem = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<CreateServerResponseServerServerTypePricesItem>;
+
 /** Price per [Location](#tag/locations). */
 export type CreateServerResponseServerServerTypePricesList =
   Array<CreateServerResponseServerServerTypePricesItem>;
+const CreateServerResponseServerServerTypePricesList = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<CreateServerResponseServerServerTypePricesList>;
+
 /** Type of Server boot drive. Local has higher speed. Network has better availability. */
 export type CreateServerResponseServerServerTypeStorageType = "local" | "network";
+const CreateServerResponseServerServerTypeStorageType = S.String;
+
 /** Type of cpu. */
 export type CreateServerResponseServerServerTypeCpuType = "shared" | "dedicated";
+const CreateServerResponseServerServerTypeCpuType = S.String;
+
 /** CPU architecture of the Server Type. */
 export type CreateServerResponseServerServerTypeArchitecture = "x86" | "arm";
+const CreateServerResponseServerServerTypeArchitecture = S.String;
+
 /** This field is deprecated. Use the `deprecation` object in the `locations` field instead (`.locations[].deprecation`). */
 export interface CreateServerResponseServerServerTypeDeprecation {
   /** Date of the deprecated resource removal. Once this date is reached, the resource will not be returned by resource type "list" endpoint, and the resource can not be used to create new resources. For example, if this is an image, you can not create new servers with this image after the mentioned date. */
@@ -211,6 +324,11 @@ export interface CreateServerResponseServerServerTypeDeprecation {
   /** Date of the deprecation announcement. */
   announced: string;
 }
+const CreateServerResponseServerServerTypeDeprecation = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<CreateServerResponseServerServerTypeDeprecation>;
+
 /** Describes if, when and how the resource is deprecated. If this field is set to `null` the resource is not deprecated. If a value is set, it is considered deprecated. */
 export type CreateServerResponseServerServerTypeLocationsItemDeprecation =
   CreateServerResponseServerServerTypeDeprecation;
@@ -227,9 +345,19 @@ export interface CreateServerResponseServerServerTypeLocationsItem {
   /** Whether the [Server Type](#tag/server-types) is temporarily unavailable in this [Location](#tag/locations). */
   available: boolean;
 }
+const CreateServerResponseServerServerTypeLocationsItem = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<CreateServerResponseServerServerTypeLocationsItem>;
+
 /** Supported [Location](#tag/locations) and per [Location](#tag/locations) details for the [Server Type](#tag/server-types). A [Server Type](#tag/server-types) is: - only supported in the [Location](#tag/locations) that are listed. - deprecated in the [Location](#tag/locations) when the `deprecation` property is set. - permanently unavailable in the [Location](#tag/locations) when the `deprecation.unavailable_after` date is in the past. - temporarily unavailable in the [Location](#tag/locations) when the `deprecation.available` is false. */
 export type CreateServerResponseServerServerTypeLocationsList =
   Array<CreateServerResponseServerServerTypeLocationsItem>;
+const CreateServerResponseServerServerTypeLocationsList = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<CreateServerResponseServerServerTypeLocationsList>;
+
 export interface CreateServerResponseServerServerType {
   /** ID of the Server type. */
   id: number;
@@ -260,6 +388,11 @@ export interface CreateServerResponseServerServerType {
   /** Supported [Location](#tag/locations) and per [Location](#tag/locations) details for the [Server Type](#tag/server-types). A [Server Type](#tag/server-types) is: - only supported in the [Location](#tag/locations) that are listed. - deprecated in the [Location](#tag/locations) when the `deprecation` property is set. - permanently unavailable in the [Location](#tag/locations) when the `deprecation.unavailable_after` date is in the past. - temporarily unavailable in the [Location](#tag/locations) when the `deprecation.available` is false. */
   locations: CreateServerResponseServerServerTypeLocationsList;
 }
+const CreateServerResponseServerServerType = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<CreateServerResponseServerServerType>;
+
 /** Location this Resource is located at. */
 export interface CreateServerResponseServerLocation {
   /** ID of the [Location](#tag/locations). */
@@ -279,10 +412,19 @@ export interface CreateServerResponseServerLocation {
   /** Name of the Network Zone this [Location](#tag/locations) resides in. */
   network_zone: string;
 }
+const CreateServerResponseServerLocation = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<CreateServerResponseServerLocation>;
+
 /** Type of the Image. */
 export type CreateServerResponseServerImageType = "system" | "app" | "snapshot" | "backup";
+const CreateServerResponseServerImageType = S.String;
+
 /** Status of the Image. */
 export type CreateServerResponseServerImageStatus = "available" | "creating" | "unavailable";
+const CreateServerResponseServerImageStatus = S.String;
+
 /** Information about the Server the Image was created from. */
 export interface CreateServerResponseServerImageCreatedFrom {
   /** ID of the Server the Image was created from. */
@@ -290,6 +432,11 @@ export interface CreateServerResponseServerImageCreatedFrom {
   /** Server name at the time the Image was created. */
   name: string;
 }
+const CreateServerResponseServerImageCreatedFrom = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<CreateServerResponseServerImageCreatedFrom>;
+
 /** Flavor of operating system contained in the Image. */
 export type CreateServerResponseServerImageOsFlavor =
   | "ubuntu"
@@ -300,18 +447,30 @@ export type CreateServerResponseServerImageOsFlavor =
   | "alma"
   | "opensuse"
   | "unknown";
+const CreateServerResponseServerImageOsFlavor = S.String;
+
 /** Protection configuration for the Resource. */
 export interface CreateServerResponseServerImageProtection {
   /** Prevent the Resource from being deleted. */
   delete: boolean;
 }
+const CreateServerResponseServerImageProtection = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<CreateServerResponseServerImageProtection>;
+
 /** Describes if, when and how the resource is deprecated. If this field is set to `null` the resource is not deprecated. If a value is set, it is considered deprecated. */
 export type CreateServerResponseServerImageDeprecation =
   CreateServerResponseServerServerTypeDeprecation;
 /** User-defined labels (`key/value` pairs) for the Resource. For more information, see "[Labels](#description/labels)". */
 export type CreateServerResponseServerImageLabelsMap = { [key: string]: string | undefined };
+const CreateServerResponseServerImageLabelsMap =
+  CreateServerRequestLabelsMap as any as S.Schema<CreateServerResponseServerImageLabelsMap>;
+
 /** CPU architecture compatible with the Image. */
 export type CreateServerResponseServerImageArchitecture = "x86" | "arm";
+const CreateServerResponseServerImageArchitecture = S.String;
+
 /** Image the server is based on. */
 export interface CreateServerResponseServerImage {
   /** ID of the [Image](#tag/images). */
@@ -353,13 +512,22 @@ export interface CreateServerResponseServerImage {
   /** CPU architecture compatible with the Image. */
   architecture: CreateServerResponseServerImageArchitecture;
 }
+const CreateServerResponseServerImage = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<CreateServerResponseServerImage>;
+
 /** Type of the ISO. */
 export type CreateServerResponseServerIsoType = "public" | "private";
+const CreateServerResponseServerIsoType = S.String;
+
 /** Describes if, when and how the resource is deprecated. If this field is set to `null` the resource is not deprecated. If a value is set, it is considered deprecated. */
 export type CreateServerResponseServerIsoDeprecation =
   CreateServerResponseServerServerTypeDeprecation;
 /** CPU architecture compatible with the ISO. Null indicates no restriction on the architecture (wildcard). */
 export type CreateServerResponseServerIsoArchitecture = "x86" | "arm";
+const CreateServerResponseServerIsoArchitecture = S.String;
+
 /** ISO Image that is attached to this Server. Null if no ISO is attached. */
 export interface CreateServerResponseServerIso {
   /** ID of the [ISO](#tag/isos). */
@@ -375,6 +543,11 @@ export interface CreateServerResponseServerIso {
   /** CPU architecture compatible with the ISO. Null indicates no restriction on the architecture (wildcard). */
   architecture: CreateServerResponseServerIsoArchitecture | null;
 }
+const CreateServerResponseServerIso = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<CreateServerResponseServerIso>;
+
 /** Protection configuration for the Server. */
 export interface CreateServerResponseServerProtection {
   /** If true, prevents the Server from being deleted. */
@@ -382,20 +555,42 @@ export interface CreateServerResponseServerProtection {
   /** If true, prevents the Server from being rebuilt. */
   rebuild: boolean;
 }
+const CreateServerResponseServerProtection = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<CreateServerResponseServerProtection>;
+
 /** User-defined labels (`key/value` pairs) for the Resource. For more information, see "[Labels](#description/labels)". */
 export type CreateServerResponseServerLabelsMap = { [key: string]: string | undefined };
+const CreateServerResponseServerLabelsMap =
+  CreateServerRequestLabelsMap as any as S.Schema<CreateServerResponseServerLabelsMap>;
+
 /** IDs of Volumes assigned to this Server. */
 export type CreateServerResponseServerVolumesList = Array<number>;
+const CreateServerResponseServerVolumesList =
+  CreateServerRequestVolumesList as any as S.Schema<CreateServerResponseServerVolumesList>;
+
 /** Load Balancer IDs assigned to the server. */
 export type CreateServerResponseServerLoadBalancersList = Array<number>;
+const CreateServerResponseServerLoadBalancersList =
+  CreateServerRequestVolumesList as any as S.Schema<CreateServerResponseServerLoadBalancersList>;
+
 /** User-defined labels (`key/value` pairs) for the Resource. For more information, see "[Labels](#description/labels)". */
 export type CreateServerResponseServerPlacementGroupLabelsMap = {
   [key: string]: string | undefined;
 };
+const CreateServerResponseServerPlacementGroupLabelsMap =
+  CreateServerRequestLabelsMap as any as S.Schema<CreateServerResponseServerPlacementGroupLabelsMap>;
+
 /** Type of Placement Group. */
 export type CreateServerResponseServerPlacementGroupType = "spread";
+const CreateServerResponseServerPlacementGroupType = S.String;
+
 /** Array of IDs of Servers that are part of this Placement Group. */
 export type CreateServerResponseServerPlacementGroupServersList = Array<number>;
+const CreateServerResponseServerPlacementGroupServersList =
+  CreateServerRequestVolumesList as any as S.Schema<CreateServerResponseServerPlacementGroupServersList>;
+
 /** The placement group the server is assigned to. */
 export interface CreateServerResponseServerPlacementGroup {
   /** ID of the [Placement Group](#tag/placement-groups). */
@@ -411,6 +606,11 @@ export interface CreateServerResponseServerPlacementGroup {
   /** Array of IDs of Servers that are part of this Placement Group. */
   servers: CreateServerResponseServerPlacementGroupServersList;
 }
+const CreateServerResponseServerPlacementGroup = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<CreateServerResponseServerPlacementGroup>;
+
 export interface CreateServerResponseServer {
   /** ID of the [Server](#tag/servers). */
   id: number;
@@ -456,17 +656,34 @@ export interface CreateServerResponseServer {
   /** The placement group the server is assigned to. */
   placement_group?: CreateServerResponseServerPlacementGroup | null;
 }
+const CreateServerResponseServer = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<CreateServerResponseServer>;
+
 /** Status of the Action. */
 export type CreateServerResponseActionStatus = "running" | "success" | "error";
+const CreateServerResponseActionStatus = S.String;
+
 export interface CreateServerResponseActionResourcesItem {
   /** ID of the Resource. */
   id: number;
   /** Type of the Resource. */
   type: string;
 }
+const CreateServerResponseActionResourcesItem = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<CreateServerResponseActionResourcesItem>;
+
 /** Resources the Action relates to. */
 export type CreateServerResponseActionResourcesList =
   Array<CreateServerResponseActionResourcesItem>;
+const CreateServerResponseActionResourcesList = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<CreateServerResponseActionResourcesList>;
+
 /** Error message for the Action if an error occurred, otherwise null. */
 export interface CreateServerResponseActionError {
   /** Fixed error code for machines. */
@@ -474,6 +691,11 @@ export interface CreateServerResponseActionError {
   /** Error message for humans. */
   message: string;
 }
+const CreateServerResponseActionError = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<CreateServerResponseActionError>;
+
 export interface CreateServerResponseAction {
   /** ID of the [Action](#description/actions). */
   id: number;
@@ -492,13 +714,23 @@ export interface CreateServerResponseAction {
   /** Error message for the Action if an error occurred, otherwise null. */
   error: CreateServerResponseActionError | null;
 }
+const CreateServerResponseAction = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<CreateServerResponseAction>;
+
 /** Status of the Action. */
 export type CreateServerResponseNextActionsItemStatus = "running" | "success" | "error";
+const CreateServerResponseNextActionsItemStatus = S.String;
+
 export type CreateServerResponseNextActionsItemResourcesItem =
   CreateServerResponseActionResourcesItem;
 /** Resources the Action relates to. */
 export type CreateServerResponseNextActionsItemResourcesList =
   Array<CreateServerResponseActionResourcesItem>;
+const CreateServerResponseNextActionsItemResourcesList =
+  CreateServerResponseActionResourcesList as any as S.Schema<CreateServerResponseNextActionsItemResourcesList>;
+
 /** Error message for the Action if an error occurred, otherwise null. */
 export type CreateServerResponseNextActionsItemError = CreateServerResponseActionError;
 export interface CreateServerResponseNextActionsItem {
@@ -519,7 +751,17 @@ export interface CreateServerResponseNextActionsItem {
   /** Error message for the Action if an error occurred, otherwise null. */
   error: CreateServerResponseActionError | null;
 }
+const CreateServerResponseNextActionsItem = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<CreateServerResponseNextActionsItem>;
+
 export type CreateServerResponseNextActionsList = Array<CreateServerResponseNextActionsItem>;
+const CreateServerResponseNextActionsList = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<CreateServerResponseNextActionsList>;
+
 export interface CreateServerResponse {
   server: CreateServerResponseServer;
   action: CreateServerResponseAction;
@@ -527,16 +769,25 @@ export interface CreateServerResponse {
   /** Root password when no SSH keys have been specified. */
   root_password: string | Redacted.Redacted<string> | null;
 }
+const CreateServerResponse = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<CreateServerResponse>;
+
 export interface DeleteServerRequest {
   /** ID of the Server. */
   id: number;
 }
+const DeleteServerRequest = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<DeleteServerRequest>;
+
 /** Status of the Action. */
 export type DeleteServerResponseActionStatus = "running" | "success" | "error";
+const DeleteServerResponseActionStatus = S.String;
+
 export type DeleteServerResponseActionResourcesItem = CreateServerResponseActionResourcesItem;
 /** Resources the Action relates to. */
 export type DeleteServerResponseActionResourcesList =
   Array<CreateServerResponseActionResourcesItem>;
+const DeleteServerResponseActionResourcesList =
+  CreateServerResponseActionResourcesList as any as S.Schema<DeleteServerResponseActionResourcesList>;
+
 /** Error message for the Action if an error occurred, otherwise null. */
 export type DeleteServerResponseActionError = CreateServerResponseActionError;
 export interface DeleteServerResponseAction {
@@ -557,13 +808,22 @@ export interface DeleteServerResponseAction {
   /** Error message for the Action if an error occurred, otherwise null. */
   error: CreateServerResponseActionError | null;
 }
+const DeleteServerResponseAction = /*@__PURE__*/ __L.at(
+  __c5,
+  0,
+) as any as S.Schema<DeleteServerResponseAction>;
+
 export interface DeleteServerResponse {
   action?: DeleteServerResponseAction;
 }
+const DeleteServerResponse = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<DeleteServerResponse>;
+
 export interface GetServerRequest {
   /** ID of the Server. */
   id: number;
 }
+const GetServerRequest = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<GetServerRequest>;
+
 /** Status of the Server. */
 export type GetServerResponseServerStatus =
   | "running"
@@ -575,6 +835,8 @@ export type GetServerResponseServerStatus =
   | "migrating"
   | "rebuilding"
   | "unknown";
+const GetServerResponseServerStatus = S.String;
+
 /** IP address (v4) and its reverse DNS entry of this Server. */
 export type GetServerResponseServerPublicNetIpv4 = CreateServerResponseServerPublicNetIpv4;
 export type GetServerResponseServerPublicNetIpv6DnsPtrItem =
@@ -593,8 +855,14 @@ export interface GetServerResponseServerPublicNetIpv6 {
   /** Reverse DNS PTR entries for the IPv6 addresses of this Server. */
   dns_ptr: GetServerResponseServerPublicNetIpv6DnsPtrList | null;
 }
+const GetServerResponseServerPublicNetIpv6 =
+  CreateServerResponseServerPublicNetIpv6 as any as S.Schema<GetServerResponseServerPublicNetIpv6>;
+
 /** IDs of Floating IPs assigned to this Server. */
 export type GetServerResponseServerPublicNetFloatingIpsList = Array<number>;
+const GetServerResponseServerPublicNetFloatingIpsList =
+  CreateServerRequestVolumesList as any as S.Schema<GetServerResponseServerPublicNetFloatingIpsList>;
+
 /** Status of the Firewall on the Server. */
 export type GetServerResponseServerPublicNetFirewallsItemStatus = "applied" | "pending";
 export interface GetServerResponseServerPublicNetFirewallsItem {
@@ -606,6 +874,9 @@ export interface GetServerResponseServerPublicNetFirewallsItem {
 /** Firewalls applied to the public network interface of this Server. */
 export type GetServerResponseServerPublicNetFirewallsList =
   Array<GetServerResponseServerPublicNetFirewallsItem>;
+const GetServerResponseServerPublicNetFirewallsList =
+  CreateServerResponseServerPublicNetFirewallsList as any as S.Schema<GetServerResponseServerPublicNetFirewallsList>;
+
 /** Public network information. The Server's IPv4 address can be found in `public_net->ipv4->ip`. */
 export interface GetServerResponseServerPublicNet {
   /** IP address (v4) and its reverse DNS entry of this Server. */
@@ -617,6 +888,11 @@ export interface GetServerResponseServerPublicNet {
   /** Firewalls applied to the public network interface of this Server. */
   firewalls?: GetServerResponseServerPublicNetFirewallsList;
 }
+const GetServerResponseServerPublicNet = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<GetServerResponseServerPublicNet>;
+
 /** Additional IP addresses of the server on the network. */
 export type GetServerResponseServerPrivateNetItemAliasIpsList = Array<string>;
 export interface GetServerResponseServerPrivateNetItem {
@@ -631,6 +907,9 @@ export interface GetServerResponseServerPrivateNetItem {
 }
 /** Private networks information. */
 export type GetServerResponseServerPrivateNetList = Array<GetServerResponseServerPrivateNetItem>;
+const GetServerResponseServerPrivateNetList =
+  CreateServerResponseServerPrivateNetList as any as S.Schema<GetServerResponseServerPrivateNetList>;
+
 /** Hourly price in this [Location](#tag/locations). */
 export type GetServerResponseServerServerTypePricesItemPriceHourly =
   CreateServerResponseServerServerTypePricesItemPriceHourly;
@@ -645,12 +924,21 @@ export type GetServerResponseServerServerTypePricesItem =
 /** Price per [Location](#tag/locations). */
 export type GetServerResponseServerServerTypePricesList =
   Array<CreateServerResponseServerServerTypePricesItem>;
+const GetServerResponseServerServerTypePricesList =
+  CreateServerResponseServerServerTypePricesList as any as S.Schema<GetServerResponseServerServerTypePricesList>;
+
 /** Type of Server boot drive. Local has higher speed. Network has better availability. */
 export type GetServerResponseServerServerTypeStorageType = "local" | "network";
+const GetServerResponseServerServerTypeStorageType = S.String;
+
 /** Type of cpu. */
 export type GetServerResponseServerServerTypeCpuType = "shared" | "dedicated";
+const GetServerResponseServerServerTypeCpuType = S.String;
+
 /** CPU architecture of the Server Type. */
 export type GetServerResponseServerServerTypeArchitecture = "x86" | "arm";
+const GetServerResponseServerServerTypeArchitecture = S.String;
+
 /** This field is deprecated. Use the `deprecation` object in the `locations` field instead (`.locations[].deprecation`). */
 export type GetServerResponseServerServerTypeDeprecation =
   CreateServerResponseServerServerTypeDeprecation;
@@ -663,6 +951,9 @@ export type GetServerResponseServerServerTypeLocationsItem =
 /** Supported [Location](#tag/locations) and per [Location](#tag/locations) details for the [Server Type](#tag/server-types). A [Server Type](#tag/server-types) is: - only supported in the [Location](#tag/locations) that are listed. - deprecated in the [Location](#tag/locations) when the `deprecation` property is set. - permanently unavailable in the [Location](#tag/locations) when the `deprecation.unavailable_after` date is in the past. - temporarily unavailable in the [Location](#tag/locations) when the `deprecation.available` is false. */
 export type GetServerResponseServerServerTypeLocationsList =
   Array<CreateServerResponseServerServerTypeLocationsItem>;
+const GetServerResponseServerServerTypeLocationsList =
+  CreateServerResponseServerServerTypeLocationsList as any as S.Schema<GetServerResponseServerServerTypeLocationsList>;
+
 export interface GetServerResponseServerServerType {
   /** ID of the Server type. */
   id: number;
@@ -693,12 +984,21 @@ export interface GetServerResponseServerServerType {
   /** Supported [Location](#tag/locations) and per [Location](#tag/locations) details for the [Server Type](#tag/server-types). A [Server Type](#tag/server-types) is: - only supported in the [Location](#tag/locations) that are listed. - deprecated in the [Location](#tag/locations) when the `deprecation` property is set. - permanently unavailable in the [Location](#tag/locations) when the `deprecation.unavailable_after` date is in the past. - temporarily unavailable in the [Location](#tag/locations) when the `deprecation.available` is false. */
   locations: GetServerResponseServerServerTypeLocationsList;
 }
+const GetServerResponseServerServerType = /*@__PURE__*/ __L.at(
+  __c5,
+  4,
+) as any as S.Schema<GetServerResponseServerServerType>;
+
 /** Location this Resource is located at. */
 export type GetServerResponseServerLocation = CreateServerResponseServerLocation;
 /** Type of the Image. */
 export type GetServerResponseServerImageType = "system" | "app" | "snapshot" | "backup";
+const GetServerResponseServerImageType = S.String;
+
 /** Status of the Image. */
 export type GetServerResponseServerImageStatus = "available" | "creating" | "unavailable";
+const GetServerResponseServerImageStatus = S.String;
+
 /** Information about the Server the Image was created from. */
 export type GetServerResponseServerImageCreatedFrom = CreateServerResponseServerImageCreatedFrom;
 /** Flavor of operating system contained in the Image. */
@@ -711,6 +1011,8 @@ export type GetServerResponseServerImageOsFlavor =
   | "alma"
   | "opensuse"
   | "unknown";
+const GetServerResponseServerImageOsFlavor = S.String;
+
 /** Protection configuration for the Resource. */
 export type GetServerResponseServerImageProtection = CreateServerResponseServerImageProtection;
 /** Describes if, when and how the resource is deprecated. If this field is set to `null` the resource is not deprecated. If a value is set, it is considered deprecated. */
@@ -718,8 +1020,13 @@ export type GetServerResponseServerImageDeprecation =
   CreateServerResponseServerServerTypeDeprecation;
 /** User-defined labels (`key/value` pairs) for the Resource. For more information, see "[Labels](#description/labels)". */
 export type GetServerResponseServerImageLabelsMap = { [key: string]: string | undefined };
+const GetServerResponseServerImageLabelsMap =
+  CreateServerRequestLabelsMap as any as S.Schema<GetServerResponseServerImageLabelsMap>;
+
 /** CPU architecture compatible with the Image. */
 export type GetServerResponseServerImageArchitecture = "x86" | "arm";
+const GetServerResponseServerImageArchitecture = S.String;
+
 /** Image the server is based on. */
 export interface GetServerResponseServerImage {
   /** ID of the [Image](#tag/images). */
@@ -761,6 +1068,11 @@ export interface GetServerResponseServerImage {
   /** CPU architecture compatible with the Image. */
   architecture: GetServerResponseServerImageArchitecture;
 }
+const GetServerResponseServerImage = /*@__PURE__*/ __L.at(
+  __c5,
+  5,
+) as any as S.Schema<GetServerResponseServerImage>;
+
 /** Type of the ISO. */
 export type GetServerResponseServerIsoType = "public" | "private";
 /** Describes if, when and how the resource is deprecated. If this field is set to `null` the resource is not deprecated. If a value is set, it is considered deprecated. */
@@ -782,20 +1094,40 @@ export interface GetServerResponseServerIso {
   /** CPU architecture compatible with the ISO. Null indicates no restriction on the architecture (wildcard). */
   architecture: GetServerResponseServerIsoArchitecture | null;
 }
+const GetServerResponseServerIso =
+  CreateServerResponseServerIso as any as S.Schema<GetServerResponseServerIso>;
+
 /** Protection configuration for the Server. */
 export type GetServerResponseServerProtection = CreateServerResponseServerProtection;
 /** User-defined labels (`key/value` pairs) for the Resource. For more information, see "[Labels](#description/labels)". */
 export type GetServerResponseServerLabelsMap = { [key: string]: string | undefined };
+const GetServerResponseServerLabelsMap =
+  CreateServerRequestLabelsMap as any as S.Schema<GetServerResponseServerLabelsMap>;
+
 /** IDs of Volumes assigned to this Server. */
 export type GetServerResponseServerVolumesList = Array<number>;
+const GetServerResponseServerVolumesList =
+  CreateServerRequestVolumesList as any as S.Schema<GetServerResponseServerVolumesList>;
+
 /** Load Balancer IDs assigned to the server. */
 export type GetServerResponseServerLoadBalancersList = Array<number>;
+const GetServerResponseServerLoadBalancersList =
+  CreateServerRequestVolumesList as any as S.Schema<GetServerResponseServerLoadBalancersList>;
+
 /** User-defined labels (`key/value` pairs) for the Resource. For more information, see "[Labels](#description/labels)". */
 export type GetServerResponseServerPlacementGroupLabelsMap = { [key: string]: string | undefined };
+const GetServerResponseServerPlacementGroupLabelsMap =
+  CreateServerRequestLabelsMap as any as S.Schema<GetServerResponseServerPlacementGroupLabelsMap>;
+
 /** Type of Placement Group. */
 export type GetServerResponseServerPlacementGroupType = "spread";
+const GetServerResponseServerPlacementGroupType = S.String;
+
 /** Array of IDs of Servers that are part of this Placement Group. */
 export type GetServerResponseServerPlacementGroupServersList = Array<number>;
+const GetServerResponseServerPlacementGroupServersList =
+  CreateServerRequestVolumesList as any as S.Schema<GetServerResponseServerPlacementGroupServersList>;
+
 /** The placement group the server is assigned to. */
 export interface GetServerResponseServerPlacementGroup {
   /** ID of the [Placement Group](#tag/placement-groups). */
@@ -811,6 +1143,11 @@ export interface GetServerResponseServerPlacementGroup {
   /** Array of IDs of Servers that are part of this Placement Group. */
   servers: GetServerResponseServerPlacementGroupServersList;
 }
+const GetServerResponseServerPlacementGroup = /*@__PURE__*/ __L.at(
+  __c5,
+  6,
+) as any as S.Schema<GetServerResponseServerPlacementGroup>;
+
 export interface GetServerResponseServer {
   /** ID of the [Server](#tag/servers). */
   id: number;
@@ -856,13 +1193,27 @@ export interface GetServerResponseServer {
   /** The placement group the server is assigned to. */
   placement_group?: GetServerResponseServerPlacementGroup | null;
 }
+const GetServerResponseServer = /*@__PURE__*/ __L.at(
+  __c5,
+  7,
+) as any as S.Schema<GetServerResponseServer>;
+
 export interface GetServerResponse {
   server?: GetServerResponseServer;
 }
+const GetServerResponse = /*@__PURE__*/ __L.at(__c6, 0) as any as S.Schema<GetServerResponse>;
+
 export type GetServerMetricsRequestTypeItem = "cpu" | "disk" | "network";
+const GetServerMetricsRequestTypeItem = S.String;
+
 export type GetServerMetricsRequestTypeList = Array<
   GetServerMetricsRequestTypeItem | (string & {})
 >;
+const GetServerMetricsRequestTypeList = /*@__PURE__*/ __L.at(
+  __c6,
+  1,
+) as any as S.Schema<GetServerMetricsRequestTypeList>;
+
 export interface GetServerMetricsRequest {
   /** ID of the Server. */
   id: number;
@@ -875,18 +1226,43 @@ export interface GetServerMetricsRequest {
   /** Resolution of results in seconds. */
   step?: string;
 }
+const GetServerMetricsRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  2,
+) as any as S.Schema<GetServerMetricsRequest>;
+
 export type GetServerMetricsResponseMetricsTimeSeriesValueValuesItemList = Array<unknown>;
+const GetServerMetricsResponseMetricsTimeSeriesValueValuesItemList = /*@__PURE__*/ __L.at(
+  __c6,
+  3,
+) as any as S.Schema<GetServerMetricsResponseMetricsTimeSeriesValueValuesItemList>;
+
 /** Metrics timestamps with values. */
 export type GetServerMetricsResponseMetricsTimeSeriesValueValuesList =
   Array<GetServerMetricsResponseMetricsTimeSeriesValueValuesItemList>;
+const GetServerMetricsResponseMetricsTimeSeriesValueValuesList = /*@__PURE__*/ __L.at(
+  __c6,
+  4,
+) as any as S.Schema<GetServerMetricsResponseMetricsTimeSeriesValueValuesList>;
+
 export interface GetServerMetricsResponseMetricsTimeSeriesValue {
   /** Metrics timestamps with values. */
   values: GetServerMetricsResponseMetricsTimeSeriesValueValuesList;
 }
+const GetServerMetricsResponseMetricsTimeSeriesValue = /*@__PURE__*/ __L.at(
+  __c6,
+  5,
+) as any as S.Schema<GetServerMetricsResponseMetricsTimeSeriesValue>;
+
 /** Hash with timeseries information, containing the name of timeseries as key. */
 export type GetServerMetricsResponseMetricsTimeSeriesMap = {
   [key: string]: GetServerMetricsResponseMetricsTimeSeriesValue | undefined;
 };
+const GetServerMetricsResponseMetricsTimeSeriesMap = /*@__PURE__*/ __L.at(
+  __c6,
+  6,
+) as any as S.Schema<GetServerMetricsResponseMetricsTimeSeriesMap>;
+
 export interface GetServerMetricsResponseMetrics {
   /** Start of period of metrics reported (in [RFC3339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.6) format). */
   start: string;
@@ -897,9 +1273,19 @@ export interface GetServerMetricsResponseMetrics {
   /** Hash with timeseries information, containing the name of timeseries as key. */
   time_series: GetServerMetricsResponseMetricsTimeSeriesMap;
 }
+const GetServerMetricsResponseMetrics = /*@__PURE__*/ __L.at(
+  __c6,
+  7,
+) as any as S.Schema<GetServerMetricsResponseMetrics>;
+
 export interface GetServerMetricsResponse {
   metrics: GetServerMetricsResponseMetrics;
 }
+const GetServerMetricsResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  0,
+) as any as S.Schema<GetServerMetricsResponse>;
+
 export type ListServersRequestSortItem =
   | "id"
   | "id:asc"
@@ -911,6 +1297,9 @@ export type ListServersRequestSortItem =
   | "created:asc"
   | "created:desc";
 export type ListServersRequestSortList = Array<ListServersRequestSortItem | (string & {})>;
+const ListServersRequestSortList =
+  GetServerMetricsRequestTypeList as any as S.Schema<ListServersRequestSortList>;
+
 /** Status of the Server. */
 export type ListServersRequestStatusItem =
   | "running"
@@ -923,6 +1312,9 @@ export type ListServersRequestStatusItem =
   | "rebuilding"
   | "unknown";
 export type ListServersRequestStatusList = Array<ListServersRequestStatusItem | (string & {})>;
+const ListServersRequestStatusList =
+  GetServerMetricsRequestTypeList as any as S.Schema<ListServersRequestStatusList>;
+
 export interface ListServersRequest {
   /** Filter resources by their name. The response will only contain the resources matching exactly the specified name. */
   name?: string;
@@ -937,6 +1329,8 @@ export interface ListServersRequest {
   /** Maximum number of entries returned per page. For more information, see "[Pagination](#description/pagination)". */
   per_page?: number;
 }
+const ListServersRequest = /*@__PURE__*/ __L.at(__c7, 1) as any as S.Schema<ListServersRequest>;
+
 /** Status of the Server. */
 export type ListServersResponseServersItemStatus =
   | "running"
@@ -948,6 +1342,8 @@ export type ListServersResponseServersItemStatus =
   | "migrating"
   | "rebuilding"
   | "unknown";
+const ListServersResponseServersItemStatus = S.String;
+
 /** IP address (v4) and its reverse DNS entry of this Server. */
 export type ListServersResponseServersItemPublicNetIpv4 = CreateServerResponseServerPublicNetIpv4;
 export type ListServersResponseServersItemPublicNetIpv6DnsPtrItem =
@@ -966,8 +1362,14 @@ export interface ListServersResponseServersItemPublicNetIpv6 {
   /** Reverse DNS PTR entries for the IPv6 addresses of this Server. */
   dns_ptr: ListServersResponseServersItemPublicNetIpv6DnsPtrList | null;
 }
+const ListServersResponseServersItemPublicNetIpv6 =
+  CreateServerResponseServerPublicNetIpv6 as any as S.Schema<ListServersResponseServersItemPublicNetIpv6>;
+
 /** IDs of Floating IPs assigned to this Server. */
 export type ListServersResponseServersItemPublicNetFloatingIpsList = Array<number>;
+const ListServersResponseServersItemPublicNetFloatingIpsList =
+  CreateServerRequestVolumesList as any as S.Schema<ListServersResponseServersItemPublicNetFloatingIpsList>;
+
 /** Status of the Firewall on the Server. */
 export type ListServersResponseServersItemPublicNetFirewallsItemStatus = "applied" | "pending";
 export interface ListServersResponseServersItemPublicNetFirewallsItem {
@@ -979,6 +1381,9 @@ export interface ListServersResponseServersItemPublicNetFirewallsItem {
 /** Firewalls applied to the public network interface of this Server. */
 export type ListServersResponseServersItemPublicNetFirewallsList =
   Array<ListServersResponseServersItemPublicNetFirewallsItem>;
+const ListServersResponseServersItemPublicNetFirewallsList =
+  CreateServerResponseServerPublicNetFirewallsList as any as S.Schema<ListServersResponseServersItemPublicNetFirewallsList>;
+
 /** Public network information. The Server's IPv4 address can be found in `public_net->ipv4->ip`. */
 export interface ListServersResponseServersItemPublicNet {
   /** IP address (v4) and its reverse DNS entry of this Server. */
@@ -990,6 +1395,11 @@ export interface ListServersResponseServersItemPublicNet {
   /** Firewalls applied to the public network interface of this Server. */
   firewalls?: ListServersResponseServersItemPublicNetFirewallsList;
 }
+const ListServersResponseServersItemPublicNet = /*@__PURE__*/ __L.at(
+  __c7,
+  2,
+) as any as S.Schema<ListServersResponseServersItemPublicNet>;
+
 /** Additional IP addresses of the server on the network. */
 export type ListServersResponseServersItemPrivateNetItemAliasIpsList = Array<string>;
 export interface ListServersResponseServersItemPrivateNetItem {
@@ -1005,6 +1415,9 @@ export interface ListServersResponseServersItemPrivateNetItem {
 /** Private networks information. */
 export type ListServersResponseServersItemPrivateNetList =
   Array<ListServersResponseServersItemPrivateNetItem>;
+const ListServersResponseServersItemPrivateNetList =
+  CreateServerResponseServerPrivateNetList as any as S.Schema<ListServersResponseServersItemPrivateNetList>;
+
 /** Hourly price in this [Location](#tag/locations). */
 export type ListServersResponseServersItemServerTypePricesItemPriceHourly =
   CreateServerResponseServerServerTypePricesItemPriceHourly;
@@ -1019,12 +1432,21 @@ export type ListServersResponseServersItemServerTypePricesItem =
 /** Price per [Location](#tag/locations). */
 export type ListServersResponseServersItemServerTypePricesList =
   Array<CreateServerResponseServerServerTypePricesItem>;
+const ListServersResponseServersItemServerTypePricesList =
+  CreateServerResponseServerServerTypePricesList as any as S.Schema<ListServersResponseServersItemServerTypePricesList>;
+
 /** Type of Server boot drive. Local has higher speed. Network has better availability. */
 export type ListServersResponseServersItemServerTypeStorageType = "local" | "network";
+const ListServersResponseServersItemServerTypeStorageType = S.String;
+
 /** Type of cpu. */
 export type ListServersResponseServersItemServerTypeCpuType = "shared" | "dedicated";
+const ListServersResponseServersItemServerTypeCpuType = S.String;
+
 /** CPU architecture of the Server Type. */
 export type ListServersResponseServersItemServerTypeArchitecture = "x86" | "arm";
+const ListServersResponseServersItemServerTypeArchitecture = S.String;
+
 /** This field is deprecated. Use the `deprecation` object in the `locations` field instead (`.locations[].deprecation`). */
 export type ListServersResponseServersItemServerTypeDeprecation =
   CreateServerResponseServerServerTypeDeprecation;
@@ -1037,6 +1459,9 @@ export type ListServersResponseServersItemServerTypeLocationsItem =
 /** Supported [Location](#tag/locations) and per [Location](#tag/locations) details for the [Server Type](#tag/server-types). A [Server Type](#tag/server-types) is: - only supported in the [Location](#tag/locations) that are listed. - deprecated in the [Location](#tag/locations) when the `deprecation` property is set. - permanently unavailable in the [Location](#tag/locations) when the `deprecation.unavailable_after` date is in the past. - temporarily unavailable in the [Location](#tag/locations) when the `deprecation.available` is false. */
 export type ListServersResponseServersItemServerTypeLocationsList =
   Array<CreateServerResponseServerServerTypeLocationsItem>;
+const ListServersResponseServersItemServerTypeLocationsList =
+  CreateServerResponseServerServerTypeLocationsList as any as S.Schema<ListServersResponseServersItemServerTypeLocationsList>;
+
 export interface ListServersResponseServersItemServerType {
   /** ID of the Server type. */
   id: number;
@@ -1067,12 +1492,21 @@ export interface ListServersResponseServersItemServerType {
   /** Supported [Location](#tag/locations) and per [Location](#tag/locations) details for the [Server Type](#tag/server-types). A [Server Type](#tag/server-types) is: - only supported in the [Location](#tag/locations) that are listed. - deprecated in the [Location](#tag/locations) when the `deprecation` property is set. - permanently unavailable in the [Location](#tag/locations) when the `deprecation.unavailable_after` date is in the past. - temporarily unavailable in the [Location](#tag/locations) when the `deprecation.available` is false. */
   locations: ListServersResponseServersItemServerTypeLocationsList;
 }
+const ListServersResponseServersItemServerType = /*@__PURE__*/ __L.at(
+  __c7,
+  3,
+) as any as S.Schema<ListServersResponseServersItemServerType>;
+
 /** Location this Resource is located at. */
 export type ListServersResponseServersItemLocation = CreateServerResponseServerLocation;
 /** Type of the Image. */
 export type ListServersResponseServersItemImageType = "system" | "app" | "snapshot" | "backup";
+const ListServersResponseServersItemImageType = S.String;
+
 /** Status of the Image. */
 export type ListServersResponseServersItemImageStatus = "available" | "creating" | "unavailable";
+const ListServersResponseServersItemImageStatus = S.String;
+
 /** Information about the Server the Image was created from. */
 export type ListServersResponseServersItemImageCreatedFrom =
   CreateServerResponseServerImageCreatedFrom;
@@ -1086,6 +1520,8 @@ export type ListServersResponseServersItemImageOsFlavor =
   | "alma"
   | "opensuse"
   | "unknown";
+const ListServersResponseServersItemImageOsFlavor = S.String;
+
 /** Protection configuration for the Resource. */
 export type ListServersResponseServersItemImageProtection =
   CreateServerResponseServerImageProtection;
@@ -1094,8 +1530,13 @@ export type ListServersResponseServersItemImageDeprecation =
   CreateServerResponseServerServerTypeDeprecation;
 /** User-defined labels (`key/value` pairs) for the Resource. For more information, see "[Labels](#description/labels)". */
 export type ListServersResponseServersItemImageLabelsMap = { [key: string]: string | undefined };
+const ListServersResponseServersItemImageLabelsMap =
+  CreateServerRequestLabelsMap as any as S.Schema<ListServersResponseServersItemImageLabelsMap>;
+
 /** CPU architecture compatible with the Image. */
 export type ListServersResponseServersItemImageArchitecture = "x86" | "arm";
+const ListServersResponseServersItemImageArchitecture = S.String;
+
 /** Image the server is based on. */
 export interface ListServersResponseServersItemImage {
   /** ID of the [Image](#tag/images). */
@@ -1137,6 +1578,11 @@ export interface ListServersResponseServersItemImage {
   /** CPU architecture compatible with the Image. */
   architecture: ListServersResponseServersItemImageArchitecture;
 }
+const ListServersResponseServersItemImage = /*@__PURE__*/ __L.at(
+  __c7,
+  4,
+) as any as S.Schema<ListServersResponseServersItemImage>;
+
 /** Type of the ISO. */
 export type ListServersResponseServersItemIsoType = "public" | "private";
 /** Describes if, when and how the resource is deprecated. If this field is set to `null` the resource is not deprecated. If a value is set, it is considered deprecated. */
@@ -1159,22 +1605,42 @@ export interface ListServersResponseServersItemIso {
   /** CPU architecture compatible with the ISO. Null indicates no restriction on the architecture (wildcard). */
   architecture: ListServersResponseServersItemIsoArchitecture | null;
 }
+const ListServersResponseServersItemIso =
+  CreateServerResponseServerIso as any as S.Schema<ListServersResponseServersItemIso>;
+
 /** Protection configuration for the Server. */
 export type ListServersResponseServersItemProtection = CreateServerResponseServerProtection;
 /** User-defined labels (`key/value` pairs) for the Resource. For more information, see "[Labels](#description/labels)". */
 export type ListServersResponseServersItemLabelsMap = { [key: string]: string | undefined };
+const ListServersResponseServersItemLabelsMap =
+  CreateServerRequestLabelsMap as any as S.Schema<ListServersResponseServersItemLabelsMap>;
+
 /** IDs of Volumes assigned to this Server. */
 export type ListServersResponseServersItemVolumesList = Array<number>;
+const ListServersResponseServersItemVolumesList =
+  CreateServerRequestVolumesList as any as S.Schema<ListServersResponseServersItemVolumesList>;
+
 /** Load Balancer IDs assigned to the server. */
 export type ListServersResponseServersItemLoadBalancersList = Array<number>;
+const ListServersResponseServersItemLoadBalancersList =
+  CreateServerRequestVolumesList as any as S.Schema<ListServersResponseServersItemLoadBalancersList>;
+
 /** User-defined labels (`key/value` pairs) for the Resource. For more information, see "[Labels](#description/labels)". */
 export type ListServersResponseServersItemPlacementGroupLabelsMap = {
   [key: string]: string | undefined;
 };
+const ListServersResponseServersItemPlacementGroupLabelsMap =
+  CreateServerRequestLabelsMap as any as S.Schema<ListServersResponseServersItemPlacementGroupLabelsMap>;
+
 /** Type of Placement Group. */
 export type ListServersResponseServersItemPlacementGroupType = "spread";
+const ListServersResponseServersItemPlacementGroupType = S.String;
+
 /** Array of IDs of Servers that are part of this Placement Group. */
 export type ListServersResponseServersItemPlacementGroupServersList = Array<number>;
+const ListServersResponseServersItemPlacementGroupServersList =
+  CreateServerRequestVolumesList as any as S.Schema<ListServersResponseServersItemPlacementGroupServersList>;
+
 /** The placement group the server is assigned to. */
 export interface ListServersResponseServersItemPlacementGroup {
   /** ID of the [Placement Group](#tag/placement-groups). */
@@ -1190,6 +1656,11 @@ export interface ListServersResponseServersItemPlacementGroup {
   /** Array of IDs of Servers that are part of this Placement Group. */
   servers: ListServersResponseServersItemPlacementGroupServersList;
 }
+const ListServersResponseServersItemPlacementGroup = /*@__PURE__*/ __L.at(
+  __c7,
+  5,
+) as any as S.Schema<ListServersResponseServersItemPlacementGroup>;
+
 export interface ListServersResponseServersItem {
   /** ID of the [Server](#tag/servers). */
   id: number;
@@ -1235,7 +1706,17 @@ export interface ListServersResponseServersItem {
   /** The placement group the server is assigned to. */
   placement_group?: ListServersResponseServersItemPlacementGroup | null;
 }
+const ListServersResponseServersItem = /*@__PURE__*/ __L.at(
+  __c7,
+  6,
+) as any as S.Schema<ListServersResponseServersItem>;
+
 export type ListServersResponseServersList = Array<ListServersResponseServersItem>;
+const ListServersResponseServersList = /*@__PURE__*/ __L.at(
+  __c7,
+  7,
+) as any as S.Schema<ListServersResponseServersList>;
+
 /** See "[Pagination](#description/pagination)" for more information. */
 export interface ListServersResponseMetaPagination {
   /** Current page number. */
@@ -1251,16 +1732,31 @@ export interface ListServersResponseMetaPagination {
   /** Total number of entries that exist for this query. Can be null if unknown. */
   total_entries: number | null;
 }
+const ListServersResponseMetaPagination = /*@__PURE__*/ __L.at(
+  __c8,
+  0,
+) as any as S.Schema<ListServersResponseMetaPagination>;
+
 export interface ListServersResponseMeta {
   /** See "[Pagination](#description/pagination)" for more information. */
   pagination: ListServersResponseMetaPagination;
 }
+const ListServersResponseMeta = /*@__PURE__*/ __L.at(
+  __c8,
+  1,
+) as any as S.Schema<ListServersResponseMeta>;
+
 export interface ListServersResponse {
   servers: ListServersResponseServersList;
   meta: ListServersResponseMeta;
 }
+const ListServersResponse = /*@__PURE__*/ __L.at(__c8, 2) as any as S.Schema<ListServersResponse>;
+
 /** User-defined labels (`key/value` pairs) for the Resource. Note that the set of [Labels](#description/labels) provided in the request will overwrite the existing one. For more information, see "[Labels](#description/labels)". */
 export type UpdateServerRequestLabelsMap = { [key: string]: string | undefined };
+const UpdateServerRequestLabelsMap =
+  CreateServerRequestLabelsMap as any as S.Schema<UpdateServerRequestLabelsMap>;
+
 export interface UpdateServerRequest {
   /** ID of the Server. */
   id: number;
@@ -1269,6 +1765,8 @@ export interface UpdateServerRequest {
   /** User-defined labels (`key/value` pairs) for the Resource. Note that the set of [Labels](#description/labels) provided in the request will overwrite the existing one. For more information, see "[Labels](#description/labels)". */
   labels?: UpdateServerRequestLabelsMap;
 }
+const UpdateServerRequest = /*@__PURE__*/ __L.at(__c8, 3) as any as S.Schema<UpdateServerRequest>;
+
 /** Status of the Server. */
 export type UpdateServerResponseServerStatus =
   | "running"
@@ -1280,6 +1778,8 @@ export type UpdateServerResponseServerStatus =
   | "migrating"
   | "rebuilding"
   | "unknown";
+const UpdateServerResponseServerStatus = S.String;
+
 /** IP address (v4) and its reverse DNS entry of this Server. */
 export type UpdateServerResponseServerPublicNetIpv4 = CreateServerResponseServerPublicNetIpv4;
 export type UpdateServerResponseServerPublicNetIpv6DnsPtrItem =
@@ -1298,8 +1798,14 @@ export interface UpdateServerResponseServerPublicNetIpv6 {
   /** Reverse DNS PTR entries for the IPv6 addresses of this Server. */
   dns_ptr: UpdateServerResponseServerPublicNetIpv6DnsPtrList | null;
 }
+const UpdateServerResponseServerPublicNetIpv6 =
+  CreateServerResponseServerPublicNetIpv6 as any as S.Schema<UpdateServerResponseServerPublicNetIpv6>;
+
 /** IDs of Floating IPs assigned to this Server. */
 export type UpdateServerResponseServerPublicNetFloatingIpsList = Array<number>;
+const UpdateServerResponseServerPublicNetFloatingIpsList =
+  CreateServerRequestVolumesList as any as S.Schema<UpdateServerResponseServerPublicNetFloatingIpsList>;
+
 /** Status of the Firewall on the Server. */
 export type UpdateServerResponseServerPublicNetFirewallsItemStatus = "applied" | "pending";
 export interface UpdateServerResponseServerPublicNetFirewallsItem {
@@ -1311,6 +1817,9 @@ export interface UpdateServerResponseServerPublicNetFirewallsItem {
 /** Firewalls applied to the public network interface of this Server. */
 export type UpdateServerResponseServerPublicNetFirewallsList =
   Array<UpdateServerResponseServerPublicNetFirewallsItem>;
+const UpdateServerResponseServerPublicNetFirewallsList =
+  CreateServerResponseServerPublicNetFirewallsList as any as S.Schema<UpdateServerResponseServerPublicNetFirewallsList>;
+
 /** Public network information. The Server's IPv4 address can be found in `public_net->ipv4->ip`. */
 export interface UpdateServerResponseServerPublicNet {
   /** IP address (v4) and its reverse DNS entry of this Server. */
@@ -1322,6 +1831,11 @@ export interface UpdateServerResponseServerPublicNet {
   /** Firewalls applied to the public network interface of this Server. */
   firewalls?: UpdateServerResponseServerPublicNetFirewallsList;
 }
+const UpdateServerResponseServerPublicNet = /*@__PURE__*/ __L.at(
+  __c8,
+  4,
+) as any as S.Schema<UpdateServerResponseServerPublicNet>;
+
 /** Additional IP addresses of the server on the network. */
 export type UpdateServerResponseServerPrivateNetItemAliasIpsList = Array<string>;
 export interface UpdateServerResponseServerPrivateNetItem {
@@ -1337,6 +1851,9 @@ export interface UpdateServerResponseServerPrivateNetItem {
 /** Private networks information. */
 export type UpdateServerResponseServerPrivateNetList =
   Array<UpdateServerResponseServerPrivateNetItem>;
+const UpdateServerResponseServerPrivateNetList =
+  CreateServerResponseServerPrivateNetList as any as S.Schema<UpdateServerResponseServerPrivateNetList>;
+
 /** Hourly price in this [Location](#tag/locations). */
 export type UpdateServerResponseServerServerTypePricesItemPriceHourly =
   CreateServerResponseServerServerTypePricesItemPriceHourly;
@@ -1351,12 +1868,21 @@ export type UpdateServerResponseServerServerTypePricesItem =
 /** Price per [Location](#tag/locations). */
 export type UpdateServerResponseServerServerTypePricesList =
   Array<CreateServerResponseServerServerTypePricesItem>;
+const UpdateServerResponseServerServerTypePricesList =
+  CreateServerResponseServerServerTypePricesList as any as S.Schema<UpdateServerResponseServerServerTypePricesList>;
+
 /** Type of Server boot drive. Local has higher speed. Network has better availability. */
 export type UpdateServerResponseServerServerTypeStorageType = "local" | "network";
+const UpdateServerResponseServerServerTypeStorageType = S.String;
+
 /** Type of cpu. */
 export type UpdateServerResponseServerServerTypeCpuType = "shared" | "dedicated";
+const UpdateServerResponseServerServerTypeCpuType = S.String;
+
 /** CPU architecture of the Server Type. */
 export type UpdateServerResponseServerServerTypeArchitecture = "x86" | "arm";
+const UpdateServerResponseServerServerTypeArchitecture = S.String;
+
 /** This field is deprecated. Use the `deprecation` object in the `locations` field instead (`.locations[].deprecation`). */
 export type UpdateServerResponseServerServerTypeDeprecation =
   CreateServerResponseServerServerTypeDeprecation;
@@ -1369,6 +1895,9 @@ export type UpdateServerResponseServerServerTypeLocationsItem =
 /** Supported [Location](#tag/locations) and per [Location](#tag/locations) details for the [Server Type](#tag/server-types). A [Server Type](#tag/server-types) is: - only supported in the [Location](#tag/locations) that are listed. - deprecated in the [Location](#tag/locations) when the `deprecation` property is set. - permanently unavailable in the [Location](#tag/locations) when the `deprecation.unavailable_after` date is in the past. - temporarily unavailable in the [Location](#tag/locations) when the `deprecation.available` is false. */
 export type UpdateServerResponseServerServerTypeLocationsList =
   Array<CreateServerResponseServerServerTypeLocationsItem>;
+const UpdateServerResponseServerServerTypeLocationsList =
+  CreateServerResponseServerServerTypeLocationsList as any as S.Schema<UpdateServerResponseServerServerTypeLocationsList>;
+
 export interface UpdateServerResponseServerServerType {
   /** ID of the Server type. */
   id: number;
@@ -1399,12 +1928,21 @@ export interface UpdateServerResponseServerServerType {
   /** Supported [Location](#tag/locations) and per [Location](#tag/locations) details for the [Server Type](#tag/server-types). A [Server Type](#tag/server-types) is: - only supported in the [Location](#tag/locations) that are listed. - deprecated in the [Location](#tag/locations) when the `deprecation` property is set. - permanently unavailable in the [Location](#tag/locations) when the `deprecation.unavailable_after` date is in the past. - temporarily unavailable in the [Location](#tag/locations) when the `deprecation.available` is false. */
   locations: UpdateServerResponseServerServerTypeLocationsList;
 }
+const UpdateServerResponseServerServerType = /*@__PURE__*/ __L.at(
+  __c8,
+  5,
+) as any as S.Schema<UpdateServerResponseServerServerType>;
+
 /** Location this Resource is located at. */
 export type UpdateServerResponseServerLocation = CreateServerResponseServerLocation;
 /** Type of the Image. */
 export type UpdateServerResponseServerImageType = "system" | "app" | "snapshot" | "backup";
+const UpdateServerResponseServerImageType = S.String;
+
 /** Status of the Image. */
 export type UpdateServerResponseServerImageStatus = "available" | "creating" | "unavailable";
+const UpdateServerResponseServerImageStatus = S.String;
+
 /** Information about the Server the Image was created from. */
 export type UpdateServerResponseServerImageCreatedFrom = CreateServerResponseServerImageCreatedFrom;
 /** Flavor of operating system contained in the Image. */
@@ -1417,6 +1955,8 @@ export type UpdateServerResponseServerImageOsFlavor =
   | "alma"
   | "opensuse"
   | "unknown";
+const UpdateServerResponseServerImageOsFlavor = S.String;
+
 /** Protection configuration for the Resource. */
 export type UpdateServerResponseServerImageProtection = CreateServerResponseServerImageProtection;
 /** Describes if, when and how the resource is deprecated. If this field is set to `null` the resource is not deprecated. If a value is set, it is considered deprecated. */
@@ -1424,8 +1964,13 @@ export type UpdateServerResponseServerImageDeprecation =
   CreateServerResponseServerServerTypeDeprecation;
 /** User-defined labels (`key/value` pairs) for the Resource. For more information, see "[Labels](#description/labels)". */
 export type UpdateServerResponseServerImageLabelsMap = { [key: string]: string | undefined };
+const UpdateServerResponseServerImageLabelsMap =
+  CreateServerRequestLabelsMap as any as S.Schema<UpdateServerResponseServerImageLabelsMap>;
+
 /** CPU architecture compatible with the Image. */
 export type UpdateServerResponseServerImageArchitecture = "x86" | "arm";
+const UpdateServerResponseServerImageArchitecture = S.String;
+
 /** Image the server is based on. */
 export interface UpdateServerResponseServerImage {
   /** ID of the [Image](#tag/images). */
@@ -1467,6 +2012,11 @@ export interface UpdateServerResponseServerImage {
   /** CPU architecture compatible with the Image. */
   architecture: UpdateServerResponseServerImageArchitecture;
 }
+const UpdateServerResponseServerImage = /*@__PURE__*/ __L.at(
+  __c8,
+  6,
+) as any as S.Schema<UpdateServerResponseServerImage>;
+
 /** Type of the ISO. */
 export type UpdateServerResponseServerIsoType = "public" | "private";
 /** Describes if, when and how the resource is deprecated. If this field is set to `null` the resource is not deprecated. If a value is set, it is considered deprecated. */
@@ -1489,22 +2039,42 @@ export interface UpdateServerResponseServerIso {
   /** CPU architecture compatible with the ISO. Null indicates no restriction on the architecture (wildcard). */
   architecture: UpdateServerResponseServerIsoArchitecture | null;
 }
+const UpdateServerResponseServerIso =
+  CreateServerResponseServerIso as any as S.Schema<UpdateServerResponseServerIso>;
+
 /** Protection configuration for the Server. */
 export type UpdateServerResponseServerProtection = CreateServerResponseServerProtection;
 /** User-defined labels (`key/value` pairs) for the Resource. For more information, see "[Labels](#description/labels)". */
 export type UpdateServerResponseServerLabelsMap = { [key: string]: string | undefined };
+const UpdateServerResponseServerLabelsMap =
+  CreateServerRequestLabelsMap as any as S.Schema<UpdateServerResponseServerLabelsMap>;
+
 /** IDs of Volumes assigned to this Server. */
 export type UpdateServerResponseServerVolumesList = Array<number>;
+const UpdateServerResponseServerVolumesList =
+  CreateServerRequestVolumesList as any as S.Schema<UpdateServerResponseServerVolumesList>;
+
 /** Load Balancer IDs assigned to the server. */
 export type UpdateServerResponseServerLoadBalancersList = Array<number>;
+const UpdateServerResponseServerLoadBalancersList =
+  CreateServerRequestVolumesList as any as S.Schema<UpdateServerResponseServerLoadBalancersList>;
+
 /** User-defined labels (`key/value` pairs) for the Resource. For more information, see "[Labels](#description/labels)". */
 export type UpdateServerResponseServerPlacementGroupLabelsMap = {
   [key: string]: string | undefined;
 };
+const UpdateServerResponseServerPlacementGroupLabelsMap =
+  CreateServerRequestLabelsMap as any as S.Schema<UpdateServerResponseServerPlacementGroupLabelsMap>;
+
 /** Type of Placement Group. */
 export type UpdateServerResponseServerPlacementGroupType = "spread";
+const UpdateServerResponseServerPlacementGroupType = S.String;
+
 /** Array of IDs of Servers that are part of this Placement Group. */
 export type UpdateServerResponseServerPlacementGroupServersList = Array<number>;
+const UpdateServerResponseServerPlacementGroupServersList =
+  CreateServerRequestVolumesList as any as S.Schema<UpdateServerResponseServerPlacementGroupServersList>;
+
 /** The placement group the server is assigned to. */
 export interface UpdateServerResponseServerPlacementGroup {
   /** ID of the [Placement Group](#tag/placement-groups). */
@@ -1520,6 +2090,11 @@ export interface UpdateServerResponseServerPlacementGroup {
   /** Array of IDs of Servers that are part of this Placement Group. */
   servers: UpdateServerResponseServerPlacementGroupServersList;
 }
+const UpdateServerResponseServerPlacementGroup = /*@__PURE__*/ __L.at(
+  __c8,
+  7,
+) as any as S.Schema<UpdateServerResponseServerPlacementGroup>;
+
 export interface UpdateServerResponseServer {
   /** ID of the [Server](#tag/servers). */
   id: number;
@@ -1565,9 +2140,16 @@ export interface UpdateServerResponseServer {
   /** The placement group the server is assigned to. */
   placement_group?: UpdateServerResponseServerPlacementGroup | null;
 }
+const UpdateServerResponseServer = /*@__PURE__*/ __L.at(
+  __c9,
+  0,
+) as any as S.Schema<UpdateServerResponseServer>;
+
 export interface UpdateServerResponse {
   server?: UpdateServerResponseServer;
 }
+const UpdateServerResponse = /*@__PURE__*/ __L.at(__c9, 1) as any as S.Schema<UpdateServerResponse>;
+
 export type CreateServerError = ServerLimitExceeded | ServerPlacementError | HetznerOpError;
 /** Create a Server Creates a new Server. Returns preliminary information about the Server as well as an Action that covers progress of creation. #### Operation specific errors */
 export const createServer: API.OperationMethod<
@@ -1576,8 +2158,8 @@ export const createServer: API.OperationMethod<
   CreateServerError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6) as any as S.Schema<CreateServerRequest>,
-  output: __S(38) as any as S.Schema<CreateServerResponse>,
+  input: CreateServerRequest,
+  output: CreateServerResponse,
   errors: [ServerLimitExceeded, ServerPlacementError, UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -1591,8 +2173,8 @@ export const deleteServer: API.OperationMethod<
   DeleteServerError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39) as any as S.Schema<DeleteServerRequest>,
-  output: __S(41) as any as S.Schema<DeleteServerResponse>,
+  input: DeleteServerRequest,
+  output: DeleteServerResponse,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -1606,8 +2188,8 @@ export const getServer: API.OperationMethod<
   GetServerError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42) as any as S.Schema<GetServerRequest>,
-  output: __S(48) as any as S.Schema<GetServerResponse>,
+  input: GetServerRequest,
+  output: GetServerResponse,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -1621,8 +2203,8 @@ export const getServerMetrics: API.OperationMethod<
   GetServerMetricsError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(50) as any as S.Schema<GetServerMetricsRequest>,
-  output: __S(56) as any as S.Schema<GetServerMetricsResponse>,
+  input: GetServerMetricsRequest,
+  output: GetServerMetricsResponse,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -1638,8 +2220,8 @@ export const listServers: API.PaginatedOperationMethod<
   ListServersResponseServersItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(57) as any as S.Schema<ListServersRequest>,
-    output: __S(66) as any as S.Schema<ListServersResponse>,
+    input: ListServersRequest,
+    output: ListServersResponse,
     errors: [UnknownHetznerError],
     protocol: HetznerProtocol,
     retry: Retry.Retry,
@@ -1662,8 +2244,8 @@ export const updateServer: API.OperationMethod<
   UpdateServerError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(67) as any as S.Schema<UpdateServerRequest>,
-  output: __S(73) as any as S.Schema<UpdateServerResponse>,
+  input: UpdateServerRequest,
+  output: UpdateServerResponse,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -1673,7 +2255,7 @@ export const updateServer: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.Unknown);
+      return S.Array(CreateServerRequestSshKeysItem);
     case 1:
       return S.Array(S.Number);
     case 2:
@@ -1685,7 +2267,7 @@ function __c0(j: number): any {
         identifier: "CreateServerRequestFirewallsItem",
       });
     case 3:
-      return S.Array(__S(2));
+      return S.Array(CreateServerRequestFirewallsItem);
     case 4:
       return S.Record(S.String, S.String);
     case 5:
@@ -1708,14 +2290,14 @@ function __c0(j: number): any {
           start_after_create: S.optional(S.Boolean),
           image: S.String,
           placement_group: S.optional(S.Number),
-          ssh_keys: S.optional(__S(0)),
-          volumes: S.optional(__S(1)),
-          networks: S.optional(__S(1)),
-          firewalls: S.optional(__S(3)),
+          ssh_keys: S.optional(CreateServerRequestSshKeysList),
+          volumes: S.optional(CreateServerRequestVolumesList),
+          networks: S.optional(CreateServerRequestNetworksList),
+          firewalls: S.optional(CreateServerRequestFirewallsList),
           user_data: S.optional(S.String),
-          labels: S.optional(__S(4)),
+          labels: S.optional(CreateServerRequestLabelsMap),
           automount: S.optional(S.Boolean),
-          public_net: S.optional(__S(5)),
+          public_net: S.optional(CreateServerRequestPublicNet),
         }).pipe(T.Http({ method: "POST", uri: "/servers", code: 200 })),
       ).annotate({ identifier: "CreateServerRequest" });
     case 7:
@@ -1743,14 +2325,14 @@ function __c1(j: number): any {
         identifier: "CreateServerResponseServerPublicNetIpv6DnsPtrItem",
       });
     case 1:
-      return S.Array(__S(8));
+      return S.Array(CreateServerResponseServerPublicNetIpv6DnsPtrItem);
     case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.Number),
           ip: S.String,
           blocked: S.Boolean,
-          dns_ptr: S.NullOr(__S(9)),
+          dns_ptr: S.NullOr(CreateServerResponseServerPublicNetIpv6DnsPtrList),
         }),
       ).annotate({
         identifier: "CreateServerResponseServerPublicNetIpv6",
@@ -1759,20 +2341,20 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.Number),
-          status: S.optional(S.String),
+          status: S.optional(CreateServerResponseServerPublicNetFirewallsItemStatus),
         }),
       ).annotate({
         identifier: "CreateServerResponseServerPublicNetFirewallsItem",
       });
     case 4:
-      return S.Array(__S(11));
+      return S.Array(CreateServerResponseServerPublicNetFirewallsItem);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          ipv4: S.NullOr(__S(7)),
-          ipv6: S.NullOr(__S(10)),
-          floating_ips: __S(1),
-          firewalls: S.optional(__S(12)),
+          ipv4: S.NullOr(CreateServerResponseServerPublicNetIpv4),
+          ipv6: S.NullOr(CreateServerResponseServerPublicNetIpv6),
+          floating_ips: CreateServerResponseServerPublicNetFloatingIpsList,
+          firewalls: S.optional(CreateServerResponseServerPublicNetFirewallsList),
         }),
       ).annotate({
         identifier: "CreateServerResponseServerPublicNet",
@@ -1784,7 +2366,7 @@ function __c1(j: number): any {
         S.Struct({
           network: S.optional(S.Number),
           ip: S.optional(S.String),
-          alias_ips: S.optional(__S(14)),
+          alias_ips: S.optional(CreateServerResponseServerPrivateNetItemAliasIpsList),
           mac_address: S.optional(S.String),
         }),
       ).annotate({
@@ -1795,7 +2377,7 @@ function __c1(j: number): any {
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(15));
+      return S.Array(CreateServerResponseServerPrivateNetItem);
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1809,16 +2391,16 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           location: S.String,
-          price_hourly: __S(17),
-          price_monthly: __S(17),
+          price_hourly: CreateServerResponseServerServerTypePricesItemPriceHourly,
+          price_monthly: CreateServerResponseServerServerTypePricesItemPriceHourly,
           included_traffic: S.Number,
-          price_per_tb_traffic: __S(17),
+          price_per_tb_traffic: CreateServerResponseServerServerTypePricesItemPriceHourly,
         }),
       ).annotate({
         identifier: "CreateServerResponseServerServerTypePricesItem",
       });
     case 3:
-      return S.Array(__S(18));
+      return S.Array(CreateServerResponseServerServerTypePricesItem);
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -1833,7 +2415,7 @@ function __c2(j: number): any {
         S.Struct({
           id: S.Number,
           name: S.String,
-          deprecation: S.NullOr(__S(20)),
+          deprecation: S.NullOr(CreateServerResponseServerServerTypeDeprecation),
           recommended: S.Boolean,
           available: S.Boolean,
         }),
@@ -1841,7 +2423,7 @@ function __c2(j: number): any {
         identifier: "CreateServerResponseServerServerTypeLocationsItem",
       });
     case 6:
-      return S.Array(__S(21));
+      return S.Array(CreateServerResponseServerServerTypeLocationsItem);
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -1852,13 +2434,13 @@ function __c2(j: number): any {
           memory: S.Number,
           disk: S.Number,
           deprecated: S.Boolean,
-          prices: __S(19),
-          storage_type: S.String,
-          cpu_type: S.String,
+          prices: CreateServerResponseServerServerTypePricesList,
+          storage_type: CreateServerResponseServerServerTypeStorageType,
+          cpu_type: CreateServerResponseServerServerTypeCpuType,
           category: S.optional(S.String),
-          architecture: S.String,
-          deprecation: S.optional(S.NullOr(__S(20))),
-          locations: __S(22),
+          architecture: CreateServerResponseServerServerTypeArchitecture,
+          deprecation: S.optional(S.NullOr(CreateServerResponseServerServerTypeDeprecation)),
+          locations: CreateServerResponseServerServerTypeLocationsList,
         }),
       ).annotate({
         identifier: "CreateServerResponseServerServerType",
@@ -1903,24 +2485,24 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.Number,
-          type: S.String,
-          status: S.String,
+          type: CreateServerResponseServerImageType,
+          status: CreateServerResponseServerImageStatus,
           name: S.NullOr(S.String),
           description: S.String,
           image_size: S.NullOr(S.Number),
           disk_size: S.Number,
           created: S.String,
-          created_from: S.NullOr(__S(25)),
+          created_from: S.NullOr(CreateServerResponseServerImageCreatedFrom),
           bound_to: S.NullOr(S.Number),
-          os_flavor: S.String,
+          os_flavor: CreateServerResponseServerImageOsFlavor,
           os_version: S.NullOr(S.String),
           rapid_deploy: S.optional(S.Boolean),
-          protection: __S(26),
+          protection: CreateServerResponseServerImageProtection,
           deprecated: S.NullOr(S.String),
-          deprecation: S.NullOr(__S(20)),
+          deprecation: S.NullOr(CreateServerResponseServerServerTypeDeprecation),
           deleted: S.NullOr(S.String),
-          labels: __S(4),
-          architecture: S.String,
+          labels: CreateServerResponseServerImageLabelsMap,
+          architecture: CreateServerResponseServerImageArchitecture,
         }),
       ).annotate({
         identifier: "CreateServerResponseServerImage",
@@ -1931,9 +2513,9 @@ function __c3(j: number): any {
           id: S.Number,
           name: S.NullOr(S.String),
           description: S.String,
-          type: S.NullOr(S.String),
-          deprecation: S.NullOr(__S(20)),
-          architecture: S.NullOr(S.String),
+          type: S.NullOr(CreateServerResponseServerIsoType),
+          deprecation: S.NullOr(CreateServerResponseServerServerTypeDeprecation),
+          architecture: S.NullOr(CreateServerResponseServerIsoArchitecture),
         }),
       ).annotate({
         identifier: "CreateServerResponseServerIso",
@@ -1952,10 +2534,10 @@ function __c3(j: number): any {
         S.Struct({
           id: S.Number,
           name: S.String,
-          labels: __S(4),
-          type: S.String,
+          labels: CreateServerResponseServerPlacementGroupLabelsMap,
+          type: CreateServerResponseServerPlacementGroupType,
           created: S.String,
-          servers: __S(1),
+          servers: CreateServerResponseServerPlacementGroupServersList,
         }),
       ).annotate({
         identifier: "CreateServerResponseServerPlacementGroup",
@@ -1965,26 +2547,26 @@ function __c3(j: number): any {
         S.Struct({
           id: S.Number,
           name: S.String,
-          status: S.String,
+          status: CreateServerResponseServerStatus,
           created: S.String,
-          public_net: __S(13),
-          private_net: __S(16),
-          server_type: __S(23),
-          location: __S(24),
-          image: S.NullOr(__S(27)),
-          iso: S.NullOr(__S(28)),
+          public_net: CreateServerResponseServerPublicNet,
+          private_net: CreateServerResponseServerPrivateNetList,
+          server_type: CreateServerResponseServerServerType,
+          location: CreateServerResponseServerLocation,
+          image: S.NullOr(CreateServerResponseServerImage),
+          iso: S.NullOr(CreateServerResponseServerIso),
           rescue_enabled: S.Boolean,
           locked: S.Boolean,
           backup_window: S.NullOr(S.String),
           outgoing_traffic: S.NullOr(S.Number),
           ingoing_traffic: S.NullOr(S.Number),
           included_traffic: S.NullOr(S.Number),
-          protection: __S(29),
-          labels: __S(4),
-          volumes: S.optional(__S(1)),
-          load_balancers: S.optional(__S(1)),
+          protection: CreateServerResponseServerProtection,
+          labels: CreateServerResponseServerLabelsMap,
+          volumes: S.optional(CreateServerResponseServerVolumesList),
+          load_balancers: S.optional(CreateServerResponseServerLoadBalancersList),
           primary_disk_size: S.Number,
-          placement_group: S.optional(S.NullOr(__S(30))),
+          placement_group: S.optional(S.NullOr(CreateServerResponseServerPlacementGroup)),
         }),
       ).annotate({
         identifier: "CreateServerResponseServer",
@@ -2003,7 +2585,7 @@ function __c4(j: number): any {
         identifier: "CreateServerResponseActionResourcesItem",
       });
     case 1:
-      return S.Array(__S(32));
+      return S.Array(CreateServerResponseActionResourcesItem);
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -2018,12 +2600,12 @@ function __c4(j: number): any {
         S.Struct({
           id: S.Number,
           command: S.String,
-          status: S.String,
+          status: CreateServerResponseActionStatus,
           started: S.String,
           finished: S.NullOr(S.String),
           progress: S.Number,
-          resources: __S(33),
-          error: S.NullOr(__S(34)),
+          resources: CreateServerResponseActionResourcesList,
+          error: S.NullOr(CreateServerResponseActionError),
         }),
       ).annotate({
         identifier: "CreateServerResponseAction",
@@ -2033,24 +2615,24 @@ function __c4(j: number): any {
         S.Struct({
           id: S.Number,
           command: S.String,
-          status: S.String,
+          status: CreateServerResponseNextActionsItemStatus,
           started: S.String,
           finished: S.NullOr(S.String),
           progress: S.Number,
-          resources: __S(33),
-          error: S.NullOr(__S(34)),
+          resources: CreateServerResponseNextActionsItemResourcesList,
+          error: S.NullOr(CreateServerResponseActionError),
         }),
       ).annotate({
         identifier: "CreateServerResponseNextActionsItem",
       });
     case 5:
-      return S.Array(__S(36));
+      return S.Array(CreateServerResponseNextActionsItem);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          server: __S(31),
-          action: __S(35),
-          next_actions: __S(37),
+          server: CreateServerResponseServer,
+          action: CreateServerResponseAction,
+          next_actions: CreateServerResponseNextActionsList,
           root_password: S.NullOr(S.String).pipe(T.SensitiveValue({})),
         }),
       ).annotate({ identifier: "CreateServerResponse" });
@@ -2069,12 +2651,12 @@ function __c5(j: number): any {
         S.Struct({
           id: S.Number,
           command: S.String,
-          status: S.String,
+          status: DeleteServerResponseActionStatus,
           started: S.String,
           finished: S.NullOr(S.String),
           progress: S.Number,
-          resources: __S(33),
-          error: S.NullOr(__S(34)),
+          resources: DeleteServerResponseActionResourcesList,
+          error: S.NullOr(CreateServerResponseActionError),
         }),
       ).annotate({
         identifier: "DeleteServerResponseAction",
@@ -2082,7 +2664,7 @@ function __c5(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          action: S.optional(__S(40)),
+          action: S.optional(DeleteServerResponseAction),
         }),
       ).annotate({ identifier: "DeleteServerResponse" });
     case 2:
@@ -2094,10 +2676,10 @@ function __c5(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          ipv4: S.NullOr(__S(7)),
-          ipv6: S.NullOr(__S(10)),
-          floating_ips: __S(1),
-          firewalls: S.optional(__S(12)),
+          ipv4: S.NullOr(CreateServerResponseServerPublicNetIpv4),
+          ipv6: S.NullOr(GetServerResponseServerPublicNetIpv6),
+          floating_ips: GetServerResponseServerPublicNetFloatingIpsList,
+          firewalls: S.optional(GetServerResponseServerPublicNetFirewallsList),
         }),
       ).annotate({
         identifier: "GetServerResponseServerPublicNet",
@@ -2112,13 +2694,13 @@ function __c5(j: number): any {
           memory: S.Number,
           disk: S.Number,
           deprecated: S.Boolean,
-          prices: __S(19),
-          storage_type: S.String,
-          cpu_type: S.String,
+          prices: GetServerResponseServerServerTypePricesList,
+          storage_type: GetServerResponseServerServerTypeStorageType,
+          cpu_type: GetServerResponseServerServerTypeCpuType,
           category: S.optional(S.String),
-          architecture: S.String,
-          deprecation: S.optional(S.NullOr(__S(20))),
-          locations: __S(22),
+          architecture: GetServerResponseServerServerTypeArchitecture,
+          deprecation: S.optional(S.NullOr(CreateServerResponseServerServerTypeDeprecation)),
+          locations: GetServerResponseServerServerTypeLocationsList,
         }),
       ).annotate({
         identifier: "GetServerResponseServerServerType",
@@ -2127,24 +2709,24 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.Number,
-          type: S.String,
-          status: S.String,
+          type: GetServerResponseServerImageType,
+          status: GetServerResponseServerImageStatus,
           name: S.NullOr(S.String),
           description: S.String,
           image_size: S.NullOr(S.Number),
           disk_size: S.Number,
           created: S.String,
-          created_from: S.NullOr(__S(25)),
+          created_from: S.NullOr(CreateServerResponseServerImageCreatedFrom),
           bound_to: S.NullOr(S.Number),
-          os_flavor: S.String,
+          os_flavor: GetServerResponseServerImageOsFlavor,
           os_version: S.NullOr(S.String),
           rapid_deploy: S.optional(S.Boolean),
-          protection: __S(26),
+          protection: CreateServerResponseServerImageProtection,
           deprecated: S.NullOr(S.String),
-          deprecation: S.NullOr(__S(20)),
+          deprecation: S.NullOr(CreateServerResponseServerServerTypeDeprecation),
           deleted: S.NullOr(S.String),
-          labels: __S(4),
-          architecture: S.String,
+          labels: GetServerResponseServerImageLabelsMap,
+          architecture: GetServerResponseServerImageArchitecture,
         }),
       ).annotate({
         identifier: "GetServerResponseServerImage",
@@ -2154,10 +2736,10 @@ function __c5(j: number): any {
         S.Struct({
           id: S.Number,
           name: S.String,
-          labels: __S(4),
-          type: S.String,
+          labels: GetServerResponseServerPlacementGroupLabelsMap,
+          type: GetServerResponseServerPlacementGroupType,
           created: S.String,
-          servers: __S(1),
+          servers: GetServerResponseServerPlacementGroupServersList,
         }),
       ).annotate({
         identifier: "GetServerResponseServerPlacementGroup",
@@ -2167,26 +2749,26 @@ function __c5(j: number): any {
         S.Struct({
           id: S.Number,
           name: S.String,
-          status: S.String,
+          status: GetServerResponseServerStatus,
           created: S.String,
-          public_net: __S(43),
-          private_net: __S(16),
-          server_type: __S(44),
-          location: __S(24),
-          image: S.NullOr(__S(45)),
-          iso: S.NullOr(__S(28)),
+          public_net: GetServerResponseServerPublicNet,
+          private_net: GetServerResponseServerPrivateNetList,
+          server_type: GetServerResponseServerServerType,
+          location: CreateServerResponseServerLocation,
+          image: S.NullOr(GetServerResponseServerImage),
+          iso: S.NullOr(GetServerResponseServerIso),
           rescue_enabled: S.Boolean,
           locked: S.Boolean,
           backup_window: S.NullOr(S.String),
           outgoing_traffic: S.NullOr(S.Number),
           ingoing_traffic: S.NullOr(S.Number),
           included_traffic: S.NullOr(S.Number),
-          protection: __S(29),
-          labels: __S(4),
-          volumes: S.optional(__S(1)),
-          load_balancers: S.optional(__S(1)),
+          protection: CreateServerResponseServerProtection,
+          labels: GetServerResponseServerLabelsMap,
+          volumes: S.optional(GetServerResponseServerVolumesList),
+          load_balancers: S.optional(GetServerResponseServerLoadBalancersList),
           primary_disk_size: S.Number,
-          placement_group: S.optional(S.NullOr(__S(46))),
+          placement_group: S.optional(S.NullOr(GetServerResponseServerPlacementGroup)),
         }),
       ).annotate({ identifier: "GetServerResponseServer" });
   }
@@ -2196,16 +2778,16 @@ function __c6(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          server: S.optional(__S(47)),
+          server: S.optional(GetServerResponseServer),
         }),
       ).annotate({ identifier: "GetServerResponse" });
     case 1:
-      return S.Array(S.String);
+      return S.Array(GetServerMetricsRequestTypeItem);
     case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
-          type: __S(49).pipe(T.Query()),
+          type: GetServerMetricsRequestTypeList.pipe(T.Query()),
           start: S.String.pipe(T.Query()),
           end: S.String.pipe(T.Query()),
           step: S.optional(S.String.pipe(T.Query())),
@@ -2214,24 +2796,24 @@ function __c6(j: number): any {
     case 3:
       return S.Array(S.Unknown);
     case 4:
-      return S.Array(__S(51));
+      return S.Array(GetServerMetricsResponseMetricsTimeSeriesValueValuesItemList);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          values: __S(52),
+          values: GetServerMetricsResponseMetricsTimeSeriesValueValuesList,
         }),
       ).annotate({
         identifier: "GetServerMetricsResponseMetricsTimeSeriesValue",
       });
     case 6:
-      return S.Record(S.String, __S(53));
+      return S.Record(S.String, GetServerMetricsResponseMetricsTimeSeriesValue);
     case 7:
       return S.suspend(() =>
         S.Struct({
           start: S.String,
           end: S.String,
           step: S.Number,
-          time_series: __S(54),
+          time_series: GetServerMetricsResponseMetricsTimeSeriesMap,
         }),
       ).annotate({
         identifier: "GetServerMetricsResponseMetrics",
@@ -2243,7 +2825,7 @@ function __c7(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          metrics: __S(55),
+          metrics: GetServerMetricsResponseMetrics,
         }),
       ).annotate({ identifier: "GetServerMetricsResponse" });
     case 1:
@@ -2251,8 +2833,8 @@ function __c7(j: number): any {
         S.Struct({
           name: S.optional(S.String.pipe(T.Query())),
           label_selector: S.optional(S.String.pipe(T.Query())),
-          sort: S.optional(__S(49).pipe(T.Query())),
-          status: S.optional(__S(49).pipe(T.Query())),
+          sort: S.optional(ListServersRequestSortList.pipe(T.Query())),
+          status: S.optional(ListServersRequestStatusList.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
           per_page: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/servers", code: 200 })),
@@ -2260,10 +2842,10 @@ function __c7(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          ipv4: S.NullOr(__S(7)),
-          ipv6: S.NullOr(__S(10)),
-          floating_ips: __S(1),
-          firewalls: S.optional(__S(12)),
+          ipv4: S.NullOr(CreateServerResponseServerPublicNetIpv4),
+          ipv6: S.NullOr(ListServersResponseServersItemPublicNetIpv6),
+          floating_ips: ListServersResponseServersItemPublicNetFloatingIpsList,
+          firewalls: S.optional(ListServersResponseServersItemPublicNetFirewallsList),
         }),
       ).annotate({
         identifier: "ListServersResponseServersItemPublicNet",
@@ -2278,13 +2860,13 @@ function __c7(j: number): any {
           memory: S.Number,
           disk: S.Number,
           deprecated: S.Boolean,
-          prices: __S(19),
-          storage_type: S.String,
-          cpu_type: S.String,
+          prices: ListServersResponseServersItemServerTypePricesList,
+          storage_type: ListServersResponseServersItemServerTypeStorageType,
+          cpu_type: ListServersResponseServersItemServerTypeCpuType,
           category: S.optional(S.String),
-          architecture: S.String,
-          deprecation: S.optional(S.NullOr(__S(20))),
-          locations: __S(22),
+          architecture: ListServersResponseServersItemServerTypeArchitecture,
+          deprecation: S.optional(S.NullOr(CreateServerResponseServerServerTypeDeprecation)),
+          locations: ListServersResponseServersItemServerTypeLocationsList,
         }),
       ).annotate({
         identifier: "ListServersResponseServersItemServerType",
@@ -2293,24 +2875,24 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.Number,
-          type: S.String,
-          status: S.String,
+          type: ListServersResponseServersItemImageType,
+          status: ListServersResponseServersItemImageStatus,
           name: S.NullOr(S.String),
           description: S.String,
           image_size: S.NullOr(S.Number),
           disk_size: S.Number,
           created: S.String,
-          created_from: S.NullOr(__S(25)),
+          created_from: S.NullOr(CreateServerResponseServerImageCreatedFrom),
           bound_to: S.NullOr(S.Number),
-          os_flavor: S.String,
+          os_flavor: ListServersResponseServersItemImageOsFlavor,
           os_version: S.NullOr(S.String),
           rapid_deploy: S.optional(S.Boolean),
-          protection: __S(26),
+          protection: CreateServerResponseServerImageProtection,
           deprecated: S.NullOr(S.String),
-          deprecation: S.NullOr(__S(20)),
+          deprecation: S.NullOr(CreateServerResponseServerServerTypeDeprecation),
           deleted: S.NullOr(S.String),
-          labels: __S(4),
-          architecture: S.String,
+          labels: ListServersResponseServersItemImageLabelsMap,
+          architecture: ListServersResponseServersItemImageArchitecture,
         }),
       ).annotate({
         identifier: "ListServersResponseServersItemImage",
@@ -2320,10 +2902,10 @@ function __c7(j: number): any {
         S.Struct({
           id: S.Number,
           name: S.String,
-          labels: __S(4),
-          type: S.String,
+          labels: ListServersResponseServersItemPlacementGroupLabelsMap,
+          type: ListServersResponseServersItemPlacementGroupType,
           created: S.String,
-          servers: __S(1),
+          servers: ListServersResponseServersItemPlacementGroupServersList,
         }),
       ).annotate({
         identifier: "ListServersResponseServersItemPlacementGroup",
@@ -2333,32 +2915,32 @@ function __c7(j: number): any {
         S.Struct({
           id: S.Number,
           name: S.String,
-          status: S.String,
+          status: ListServersResponseServersItemStatus,
           created: S.String,
-          public_net: __S(58),
-          private_net: __S(16),
-          server_type: __S(59),
-          location: __S(24),
-          image: S.NullOr(__S(60)),
-          iso: S.NullOr(__S(28)),
+          public_net: ListServersResponseServersItemPublicNet,
+          private_net: ListServersResponseServersItemPrivateNetList,
+          server_type: ListServersResponseServersItemServerType,
+          location: CreateServerResponseServerLocation,
+          image: S.NullOr(ListServersResponseServersItemImage),
+          iso: S.NullOr(ListServersResponseServersItemIso),
           rescue_enabled: S.Boolean,
           locked: S.Boolean,
           backup_window: S.NullOr(S.String),
           outgoing_traffic: S.NullOr(S.Number),
           ingoing_traffic: S.NullOr(S.Number),
           included_traffic: S.NullOr(S.Number),
-          protection: __S(29),
-          labels: __S(4),
-          volumes: S.optional(__S(1)),
-          load_balancers: S.optional(__S(1)),
+          protection: CreateServerResponseServerProtection,
+          labels: ListServersResponseServersItemLabelsMap,
+          volumes: S.optional(ListServersResponseServersItemVolumesList),
+          load_balancers: S.optional(ListServersResponseServersItemLoadBalancersList),
           primary_disk_size: S.Number,
-          placement_group: S.optional(S.NullOr(__S(61))),
+          placement_group: S.optional(S.NullOr(ListServersResponseServersItemPlacementGroup)),
         }),
       ).annotate({
         identifier: "ListServersResponseServersItem",
       });
     case 7:
-      return S.Array(__S(62));
+      return S.Array(ListServersResponseServersItem);
   }
 }
 function __c8(j: number): any {
@@ -2379,14 +2961,14 @@ function __c8(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          pagination: __S(64),
+          pagination: ListServersResponseMetaPagination,
         }),
       ).annotate({ identifier: "ListServersResponseMeta" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          servers: __S(63),
-          meta: __S(65),
+          servers: ListServersResponseServersList,
+          meta: ListServersResponseMeta,
         }),
       ).annotate({ identifier: "ListServersResponse" });
     case 3:
@@ -2394,16 +2976,16 @@ function __c8(j: number): any {
         S.Struct({
           id: S.Number.pipe(T.Label()),
           name: S.optional(S.String),
-          labels: S.optional(__S(4)),
+          labels: S.optional(UpdateServerRequestLabelsMap),
         }).pipe(T.Http({ method: "PUT", uri: "/servers/{id}", code: 200 })),
       ).annotate({ identifier: "UpdateServerRequest" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          ipv4: S.NullOr(__S(7)),
-          ipv6: S.NullOr(__S(10)),
-          floating_ips: __S(1),
-          firewalls: S.optional(__S(12)),
+          ipv4: S.NullOr(CreateServerResponseServerPublicNetIpv4),
+          ipv6: S.NullOr(UpdateServerResponseServerPublicNetIpv6),
+          floating_ips: UpdateServerResponseServerPublicNetFloatingIpsList,
+          firewalls: S.optional(UpdateServerResponseServerPublicNetFirewallsList),
         }),
       ).annotate({
         identifier: "UpdateServerResponseServerPublicNet",
@@ -2418,13 +3000,13 @@ function __c8(j: number): any {
           memory: S.Number,
           disk: S.Number,
           deprecated: S.Boolean,
-          prices: __S(19),
-          storage_type: S.String,
-          cpu_type: S.String,
+          prices: UpdateServerResponseServerServerTypePricesList,
+          storage_type: UpdateServerResponseServerServerTypeStorageType,
+          cpu_type: UpdateServerResponseServerServerTypeCpuType,
           category: S.optional(S.String),
-          architecture: S.String,
-          deprecation: S.optional(S.NullOr(__S(20))),
-          locations: __S(22),
+          architecture: UpdateServerResponseServerServerTypeArchitecture,
+          deprecation: S.optional(S.NullOr(CreateServerResponseServerServerTypeDeprecation)),
+          locations: UpdateServerResponseServerServerTypeLocationsList,
         }),
       ).annotate({
         identifier: "UpdateServerResponseServerServerType",
@@ -2433,24 +3015,24 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.Number,
-          type: S.String,
-          status: S.String,
+          type: UpdateServerResponseServerImageType,
+          status: UpdateServerResponseServerImageStatus,
           name: S.NullOr(S.String),
           description: S.String,
           image_size: S.NullOr(S.Number),
           disk_size: S.Number,
           created: S.String,
-          created_from: S.NullOr(__S(25)),
+          created_from: S.NullOr(CreateServerResponseServerImageCreatedFrom),
           bound_to: S.NullOr(S.Number),
-          os_flavor: S.String,
+          os_flavor: UpdateServerResponseServerImageOsFlavor,
           os_version: S.NullOr(S.String),
           rapid_deploy: S.optional(S.Boolean),
-          protection: __S(26),
+          protection: CreateServerResponseServerImageProtection,
           deprecated: S.NullOr(S.String),
-          deprecation: S.NullOr(__S(20)),
+          deprecation: S.NullOr(CreateServerResponseServerServerTypeDeprecation),
           deleted: S.NullOr(S.String),
-          labels: __S(4),
-          architecture: S.String,
+          labels: UpdateServerResponseServerImageLabelsMap,
+          architecture: UpdateServerResponseServerImageArchitecture,
         }),
       ).annotate({
         identifier: "UpdateServerResponseServerImage",
@@ -2460,10 +3042,10 @@ function __c8(j: number): any {
         S.Struct({
           id: S.Number,
           name: S.String,
-          labels: __S(4),
-          type: S.String,
+          labels: UpdateServerResponseServerPlacementGroupLabelsMap,
+          type: UpdateServerResponseServerPlacementGroupType,
           created: S.String,
-          servers: __S(1),
+          servers: UpdateServerResponseServerPlacementGroupServersList,
         }),
       ).annotate({
         identifier: "UpdateServerResponseServerPlacementGroup",
@@ -2477,26 +3059,26 @@ function __c9(j: number): any {
         S.Struct({
           id: S.Number,
           name: S.String,
-          status: S.String,
+          status: UpdateServerResponseServerStatus,
           created: S.String,
-          public_net: __S(68),
-          private_net: __S(16),
-          server_type: __S(69),
-          location: __S(24),
-          image: S.NullOr(__S(70)),
-          iso: S.NullOr(__S(28)),
+          public_net: UpdateServerResponseServerPublicNet,
+          private_net: UpdateServerResponseServerPrivateNetList,
+          server_type: UpdateServerResponseServerServerType,
+          location: CreateServerResponseServerLocation,
+          image: S.NullOr(UpdateServerResponseServerImage),
+          iso: S.NullOr(UpdateServerResponseServerIso),
           rescue_enabled: S.Boolean,
           locked: S.Boolean,
           backup_window: S.NullOr(S.String),
           outgoing_traffic: S.NullOr(S.Number),
           ingoing_traffic: S.NullOr(S.Number),
           included_traffic: S.NullOr(S.Number),
-          protection: __S(29),
-          labels: __S(4),
-          volumes: S.optional(__S(1)),
-          load_balancers: S.optional(__S(1)),
+          protection: CreateServerResponseServerProtection,
+          labels: UpdateServerResponseServerLabelsMap,
+          volumes: S.optional(UpdateServerResponseServerVolumesList),
+          load_balancers: S.optional(UpdateServerResponseServerLoadBalancersList),
           primary_disk_size: S.Number,
-          placement_group: S.optional(S.NullOr(__S(71))),
+          placement_group: S.optional(S.NullOr(UpdateServerResponseServerPlacementGroup)),
         }),
       ).annotate({
         identifier: "UpdateServerResponseServer",
@@ -2504,37 +3086,8 @@ function __c9(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          server: S.optional(__S(72)),
+          server: S.optional(UpdateServerResponseServer),
         }),
       ).annotate({ identifier: "UpdateServerResponse" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
-    case 9:
-      return __c9(i & 7);
   }
 }

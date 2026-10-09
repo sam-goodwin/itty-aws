@@ -6,8 +6,6 @@ import * as S from "@distilled.cloud/core/schema";
 import { GithubProtocol, type GithubOpError, type GithubOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { GithubOpError, GithubOpContext };
 
@@ -42,15 +40,37 @@ export interface CheckIsStarredRequest {
   /** The unique identifier of the gist. */
   gist_id: string;
 }
+const CheckIsStarredRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<CheckIsStarredRequest>;
+
 export interface CheckIsStarredResponse {}
+const CheckIsStarredResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<CheckIsStarredResponse>;
+
 export interface CreateRequestFilesValue {
   /** Content of the file */
   content: string;
 }
+const CreateRequestFilesValue = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<CreateRequestFilesValue>;
+
 /** Names and content for the files that make up the gist */
 export type CreateRequestFilesMap = { [key: string]: CreateRequestFilesValue | undefined };
+const CreateRequestFilesMap = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<CreateRequestFilesMap>;
+
 export type CreateRequestPublicCase1 = "true" | "false";
 export type CreateRequestPublic = boolean | CreateRequestPublicCase1;
+const CreateRequestPublic = S.Unknown as any as S.Schema<CreateRequestPublic>;
+
 export interface CreateRequest {
   /** Description of the gist */
   description?: string;
@@ -58,12 +78,16 @@ export interface CreateRequest {
   files: CreateRequestFilesMap;
   public?: CreateRequestPublic;
 }
+const CreateRequest = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<CreateRequest>;
+
 export interface PublicUserPlan {
   collaborators: number;
   name: string;
   space: number;
   private_repos: number;
 }
+const PublicUserPlan = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<PublicUserPlan>;
+
 /** Public User */
 export interface PublicUser {
   login: string;
@@ -107,6 +131,8 @@ export interface PublicUser {
   disk_usage?: number;
   collaborators?: number;
 }
+const PublicUser = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<PublicUser>;
+
 export interface GistSimpleForksItem {
   id?: string;
   url?: string;
@@ -114,7 +140,11 @@ export interface GistSimpleForksItem {
   created_at?: string;
   updated_at?: string;
 }
+const GistSimpleForksItem = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<GistSimpleForksItem>;
+
 export type GistSimpleForksList = Array<GistSimpleForksItem>;
+const GistSimpleForksList = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<GistSimpleForksList>;
+
 /** A GitHub user. */
 export interface NullableSimpleUser {
   name?: string | null;
@@ -140,11 +170,18 @@ export interface NullableSimpleUser {
   starred_at?: string;
   user_view_type?: string;
 }
+const NullableSimpleUser = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<NullableSimpleUser>;
+
 export interface GistHistoryChangeStatus {
   total?: number;
   additions?: number;
   deletions?: number;
 }
+const GistHistoryChangeStatus = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<GistHistoryChangeStatus>;
+
 /** Gist History */
 export interface GistHistory {
   user?: NullableSimpleUser | null;
@@ -153,7 +190,14 @@ export interface GistHistory {
   change_status?: GistHistoryChangeStatus;
   url?: string;
 }
+const GistHistory = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<GistHistory>;
+
 export type GistSimpleHistoryList = Array<GistHistory>;
+const GistSimpleHistoryList = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<GistSimpleHistoryList>;
+
 export interface GistSimpleForkOfFilesValue {
   filename?: string;
   type?: string;
@@ -161,9 +205,27 @@ export interface GistSimpleForkOfFilesValue {
   raw_url?: string;
   size?: number;
 }
+const GistSimpleForkOfFilesValue = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<GistSimpleForkOfFilesValue>;
+
 export type GistSimpleForkOfFilesMap = { [key: string]: GistSimpleForkOfFilesValue | undefined };
+const GistSimpleForkOfFilesMap = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<GistSimpleForkOfFilesMap>;
+
 export type GistSimpleForkOfForksList = Array<unknown>;
+const GistSimpleForkOfForksList = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<GistSimpleForkOfForksList>;
+
 export type GistSimpleForkOfHistoryList = Array<unknown>;
+const GistSimpleForkOfHistoryList =
+  GistSimpleForkOfForksList as any as S.Schema<GistSimpleForkOfHistoryList>;
+
 /** Gist */
 export interface GistSimpleForkOf {
   url: string;
@@ -188,6 +250,8 @@ export interface GistSimpleForkOf {
   forks?: GistSimpleForkOfForksList;
   history?: GistSimpleForkOfHistoryList;
 }
+const GistSimpleForkOf = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<GistSimpleForkOf>;
+
 export interface GistSimpleFilesValue {
   filename?: string;
   type?: string;
@@ -199,7 +263,11 @@ export interface GistSimpleFilesValue {
   /** The encoding used for `content`. Currently, `"utf-8"` and `"base64"` are supported. */
   encoding?: string;
 }
+const GistSimpleFilesValue = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<GistSimpleFilesValue>;
+
 export type GistSimpleFilesMap = { [key: string]: GistSimpleFilesValue | null | undefined };
+const GistSimpleFilesMap = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<GistSimpleFilesMap>;
+
 /** A GitHub user. */
 export type SimpleUser = NullableSimpleUser;
 /** Gist Simple */
@@ -228,12 +296,16 @@ export interface GistSimple {
   owner?: NullableSimpleUser;
   truncated?: boolean;
 }
+const GistSimple = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<GistSimple>;
+
 export interface CreateCommentRequest {
   /** The unique identifier of the gist. */
   gist_id: string;
   /** The comment text. */
   body: string;
 }
+const CreateCommentRequest = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<CreateCommentRequest>;
+
 /** How the author is associated with the repository. */
 export type AuthorAssociation =
   | "COLLABORATOR"
@@ -244,6 +316,8 @@ export type AuthorAssociation =
   | "MEMBER"
   | "NONE"
   | "OWNER";
+const AuthorAssociation = S.String;
+
 /** A comment made to a gist. */
 export interface GistComment {
   id: number;
@@ -256,22 +330,34 @@ export interface GistComment {
   updated_at: string;
   author_association: AuthorAssociation;
 }
+const GistComment = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<GistComment>;
+
 export interface DeleteRequest {
   /** The unique identifier of the gist. */
   gist_id: string;
 }
+const DeleteRequest = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<DeleteRequest>;
+
 export interface DeleteResponse {}
+const DeleteResponse = CheckIsStarredResponse as any as S.Schema<DeleteResponse>;
+
 export interface DeleteCommentRequest {
   /** The unique identifier of the gist. */
   gist_id: string;
   /** The unique identifier of the comment. */
   comment_id: number;
 }
+const DeleteCommentRequest = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<DeleteCommentRequest>;
+
 export interface DeleteCommentResponse {}
+const DeleteCommentResponse = CheckIsStarredResponse as any as S.Schema<DeleteCommentResponse>;
+
 export interface ForkRequest {
   /** The unique identifier of the gist. */
   gist_id: string;
 }
+const ForkRequest = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<ForkRequest>;
+
 export interface BaseGistFilesValue {
   filename?: string;
   type?: string;
@@ -281,9 +367,17 @@ export interface BaseGistFilesValue {
   /** The encoding used for `content`. Currently, `"utf-8"` and `"base64"` are supported. */
   encoding?: string;
 }
+const BaseGistFilesValue = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<BaseGistFilesValue>;
+
 export type BaseGistFilesMap = { [key: string]: BaseGistFilesValue | undefined };
+const BaseGistFilesMap = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<BaseGistFilesMap>;
+
 export type BaseGistForksList = Array<unknown>;
+const BaseGistForksList = GistSimpleForkOfForksList as any as S.Schema<BaseGistForksList>;
+
 export type BaseGistHistoryList = Array<unknown>;
+const BaseGistHistoryList = GistSimpleForkOfForksList as any as S.Schema<BaseGistHistoryList>;
+
 /** Base Gist */
 export interface BaseGist {
   url: string;
@@ -308,21 +402,29 @@ export interface BaseGist {
   forks?: BaseGistForksList;
   history?: BaseGistHistoryList;
 }
+const BaseGist = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<BaseGist>;
+
 export interface GetRequest {
   /** The unique identifier of the gist. */
   gist_id: string;
 }
+const GetRequest = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<GetRequest>;
+
 export interface GetCommentRequest {
   /** The unique identifier of the gist. */
   gist_id: string;
   /** The unique identifier of the comment. */
   comment_id: number;
 }
+const GetCommentRequest = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<GetCommentRequest>;
+
 export interface GetRevisionRequest {
   /** The unique identifier of the gist. */
   gist_id: string;
   sha: string;
 }
+const GetRevisionRequest = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<GetRevisionRequest>;
+
 export interface ListRequest {
   /** Only show results that were last updated after the given time. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`. */
   since?: string;
@@ -331,8 +433,14 @@ export interface ListRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
+const ListRequest = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<ListRequest>;
+
 export type ListResponseBodyList = Array<BaseGist>;
+const ListResponseBodyList = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<ListResponseBodyList>;
+
 export type ListResponse = ListResponseBodyList;
+const ListResponse = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<ListResponse>;
+
 export interface ListCommentsRequest {
   /** The unique identifier of the gist. */
   gist_id: string;
@@ -341,8 +449,17 @@ export interface ListCommentsRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
+const ListCommentsRequest = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<ListCommentsRequest>;
+
 export type ListCommentsResponseBodyList = Array<GistComment>;
+const ListCommentsResponseBodyList = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<ListCommentsResponseBodyList>;
+
 export type ListCommentsResponse = ListCommentsResponseBodyList;
+const ListCommentsResponse = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<ListCommentsResponse>;
+
 export interface ListCommitsRequest {
   /** The unique identifier of the gist. */
   gist_id: string;
@@ -351,6 +468,8 @@ export interface ListCommitsRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
+const ListCommitsRequest = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<ListCommitsRequest>;
+
 export type GistCommitChangeStatus = GistHistoryChangeStatus;
 /** Gist Commit */
 export interface GistCommit {
@@ -360,8 +479,17 @@ export interface GistCommit {
   change_status: GistHistoryChangeStatus;
   committed_at: string;
 }
+const GistCommit = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<GistCommit>;
+
 export type ListCommitsResponseBodyList = Array<GistCommit>;
+const ListCommitsResponseBodyList = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<ListCommitsResponseBodyList>;
+
 export type ListCommitsResponse = ListCommitsResponseBodyList;
+const ListCommitsResponse = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<ListCommitsResponse>;
+
 export interface ListForksRequest {
   /** The unique identifier of the gist. */
   gist_id: string;
@@ -370,8 +498,17 @@ export interface ListForksRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
+const ListForksRequest = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<ListForksRequest>;
+
 export type ListForksResponseBodyList = Array<GistSimple>;
+const ListForksResponseBodyList = /*@__PURE__*/ __L.at(
+  __c5,
+  2,
+) as any as S.Schema<ListForksResponseBodyList>;
+
 export type ListForksResponse = ListForksResponseBodyList;
+const ListForksResponse = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<ListForksResponse>;
+
 export interface ListForUserRequest {
   /** The handle for the GitHub user account. */
   username: string;
@@ -382,8 +519,12 @@ export interface ListForUserRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
+const ListForUserRequest = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<ListForUserRequest>;
+
 export type ListForUserResponseBodyList = Array<BaseGist>;
 export type ListForUserResponse = ListForUserResponseBodyList;
+const ListForUserResponse = ListResponse as any as S.Schema<ListForUserResponse>;
+
 export interface ListPublicRequest {
   /** Only show results that were last updated after the given time. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`. */
   since?: string;
@@ -392,8 +533,12 @@ export interface ListPublicRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
+const ListPublicRequest = /*@__PURE__*/ __L.at(__c5, 5) as any as S.Schema<ListPublicRequest>;
+
 export type ListPublicResponseBodyList = Array<BaseGist>;
 export type ListPublicResponse = ListPublicResponseBodyList;
+const ListPublicResponse = ListResponse as any as S.Schema<ListPublicResponse>;
+
 export interface ListStarredRequest {
   /** Only show results that were last updated after the given time. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`. */
   since?: string;
@@ -402,26 +547,48 @@ export interface ListStarredRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
+const ListStarredRequest = /*@__PURE__*/ __L.at(__c5, 6) as any as S.Schema<ListStarredRequest>;
+
 export type ListStarredResponseBodyList = Array<BaseGist>;
 export type ListStarredResponse = ListStarredResponseBodyList;
+const ListStarredResponse = ListResponse as any as S.Schema<ListStarredResponse>;
+
 export interface StarRequest {
   /** The unique identifier of the gist. */
   gist_id: string;
 }
+const StarRequest = /*@__PURE__*/ __L.at(__c5, 7) as any as S.Schema<StarRequest>;
+
 export interface StarResponse {}
+const StarResponse = CheckIsStarredResponse as any as S.Schema<StarResponse>;
+
 export interface UnstarRequest {
   /** The unique identifier of the gist. */
   gist_id: string;
 }
+const UnstarRequest = /*@__PURE__*/ __L.at(__c6, 0) as any as S.Schema<UnstarRequest>;
+
 export interface UnstarResponse {}
+const UnstarResponse = CheckIsStarredResponse as any as S.Schema<UnstarResponse>;
+
 export interface UpdateRequestFilesValue {
   /** The new content of the file. */
   content?: string;
   /** The new filename for the file. */
   filename?: string | null;
 }
+const UpdateRequestFilesValue = /*@__PURE__*/ __L.at(
+  __c6,
+  1,
+) as any as S.Schema<UpdateRequestFilesValue>;
+
 /** The gist files to be updated, renamed, or deleted. Each `key` must match the current filename (including extension) of the targeted gist file. For example: `hello.py`. To delete a file, set the whole file to null. For example: `hello.py : null`. The file will also be deleted if the specified object does not contain at least one of `content` or `filename`. */
 export type UpdateRequestFilesMap = { [key: string]: UpdateRequestFilesValue | null | undefined };
+const UpdateRequestFilesMap = /*@__PURE__*/ __L.at(
+  __c6,
+  2,
+) as any as S.Schema<UpdateRequestFilesMap>;
+
 export interface UpdateRequest {
   /** The unique identifier of the gist. */
   gist_id: string;
@@ -430,6 +597,8 @@ export interface UpdateRequest {
   /** The gist files to be updated, renamed, or deleted. Each `key` must match the current filename (including extension) of the targeted gist file. For example: `hello.py`. To delete a file, set the whole file to null. For example: `hello.py : null`. The file will also be deleted if the specified object does not contain at least one of `content` or `filename`. */
   files?: UpdateRequestFilesMap;
 }
+const UpdateRequest = /*@__PURE__*/ __L.at(__c6, 3) as any as S.Schema<UpdateRequest>;
+
 export interface UpdateCommentRequest {
   /** The unique identifier of the gist. */
   gist_id: string;
@@ -438,6 +607,8 @@ export interface UpdateCommentRequest {
   /** The comment text. */
   body: string;
 }
+const UpdateCommentRequest = /*@__PURE__*/ __L.at(__c6, 4) as any as S.Schema<UpdateCommentRequest>;
+
 export type CheckIsStarredError = Forbidden | NotFound | GithubOpError;
 /** Check if a gist is starred */
 export const checkIsStarred: API.OperationMethod<
@@ -446,8 +617,8 @@ export const checkIsStarred: API.OperationMethod<
   CheckIsStarredError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<CheckIsStarredRequest>,
-  output: __S(1) as any as S.Schema<CheckIsStarredResponse>,
+  input: CheckIsStarredRequest,
+  output: CheckIsStarredResponse,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -457,8 +628,8 @@ export type CreateError = Forbidden | NotFound | UnprocessableEntity | GithubOpE
 /** Create a gist Allows you to add a new gist with one or more files. > [!NOTE] > Don't name your files "gistfile" with a numerical suffix. This is the format of the automatic naming scheme that Gist uses internally. */
 export const create: API.OperationMethod<CreateRequest, GistSimple, CreateError, GithubOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(4) as any as S.Schema<CreateRequest>,
-    output: __S(19) as any as S.Schema<GistSimple>,
+    input: CreateRequest,
+    output: GistSimple,
     errors: [Forbidden, NotFound, UnprocessableEntity],
     protocol: GithubProtocol,
     retry: Retry.Retry,
@@ -472,8 +643,8 @@ export const createComment: API.OperationMethod<
   CreateCommentError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20) as any as S.Schema<CreateCommentRequest>,
-  output: __S(21) as any as S.Schema<GistComment>,
+  input: CreateCommentRequest,
+  output: GistComment,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -487,8 +658,8 @@ export const Delete: API.OperationMethod<
   DeleteError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22) as any as S.Schema<DeleteRequest>,
-  output: __S(1) as any as S.Schema<DeleteResponse>,
+  input: DeleteRequest,
+  output: DeleteResponse,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -502,8 +673,8 @@ export const deleteComment: API.OperationMethod<
   DeleteCommentError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23) as any as S.Schema<DeleteCommentRequest>,
-  output: __S(1) as any as S.Schema<DeleteCommentResponse>,
+  input: DeleteCommentRequest,
+  output: DeleteCommentResponse,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -513,8 +684,8 @@ export type ForkError = Forbidden | NotFound | UnprocessableEntity | GithubOpErr
 /** Fork a gist */
 export const fork: API.OperationMethod<ForkRequest, BaseGist, ForkError, GithubOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(24) as any as S.Schema<ForkRequest>,
-    output: __S(27) as any as S.Schema<BaseGist>,
+    input: ForkRequest,
+    output: BaseGist,
     errors: [Forbidden, NotFound, UnprocessableEntity],
     protocol: GithubProtocol,
     retry: Retry.Retry,
@@ -524,8 +695,8 @@ export type GetError = Forbidden | NotFound | GithubOpError;
 /** Get a gist Gets a specified gist. This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)." - **`application/vnd.github.raw+json`**: Returns the raw markdown. This is the default if you do not pass any specific media type. */
 export const get: API.OperationMethod<GetRequest, GistSimple, GetError, GithubOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(28) as any as S.Schema<GetRequest>,
-    output: __S(19) as any as S.Schema<GistSimple>,
+    input: GetRequest,
+    output: GistSimple,
     errors: [Forbidden, NotFound],
     protocol: GithubProtocol,
     retry: Retry.Retry,
@@ -539,8 +710,8 @@ export const getComment: API.OperationMethod<
   GetCommentError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29) as any as S.Schema<GetCommentRequest>,
-  output: __S(21) as any as S.Schema<GistComment>,
+  input: GetCommentRequest,
+  output: GistComment,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -554,8 +725,8 @@ export const getRevision: API.OperationMethod<
   GetRevisionError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30) as any as S.Schema<GetRevisionRequest>,
-  output: __S(19) as any as S.Schema<GistSimple>,
+  input: GetRevisionRequest,
+  output: GistSimple,
   errors: [Forbidden, NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -565,8 +736,8 @@ export type ListError = Forbidden | GithubOpError;
 /** List gists for the authenticated user Lists the authenticated user's gists or if called anonymously, this endpoint returns all public gists: */
 export const list: API.OperationMethod<ListRequest, ListResponse, ListError, GithubOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(31) as any as S.Schema<ListRequest>,
-    output: __S(33) as any as S.Schema<ListResponse>,
+    input: ListRequest,
+    output: ListResponse,
     errors: [Forbidden],
     protocol: GithubProtocol,
     retry: Retry.Retry,
@@ -580,8 +751,8 @@ export const listComments: API.OperationMethod<
   ListCommentsError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34) as any as S.Schema<ListCommentsRequest>,
-  output: __S(36) as any as S.Schema<ListCommentsResponse>,
+  input: ListCommentsRequest,
+  output: ListCommentsResponse,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -595,8 +766,8 @@ export const listCommits: API.OperationMethod<
   ListCommitsError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37) as any as S.Schema<ListCommitsRequest>,
-  output: __S(40) as any as S.Schema<ListCommitsResponse>,
+  input: ListCommitsRequest,
+  output: ListCommitsResponse,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -610,8 +781,8 @@ export const listForks: API.OperationMethod<
   ListForksError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41) as any as S.Schema<ListForksRequest>,
-  output: __S(43) as any as S.Schema<ListForksResponse>,
+  input: ListForksRequest,
+  output: ListForksResponse,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -625,8 +796,8 @@ export const listForUser: API.OperationMethod<
   ListForUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44) as any as S.Schema<ListForUserRequest>,
-  output: __S(33) as any as S.Schema<ListForUserResponse>,
+  input: ListForUserRequest,
+  output: ListForUserResponse,
   errors: [UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -640,8 +811,8 @@ export const listPublic: API.OperationMethod<
   ListPublicError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45) as any as S.Schema<ListPublicRequest>,
-  output: __S(33) as any as S.Schema<ListPublicResponse>,
+  input: ListPublicRequest,
+  output: ListPublicResponse,
   errors: [Forbidden, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -655,8 +826,8 @@ export const listStarred: API.OperationMethod<
   ListStarredError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(46) as any as S.Schema<ListStarredRequest>,
-  output: __S(33) as any as S.Schema<ListStarredResponse>,
+  input: ListStarredRequest,
+  output: ListStarredResponse,
   errors: [Forbidden],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -666,8 +837,8 @@ export type StarError = Forbidden | NotFound | GithubOpError;
 /** Star a gist Note that you'll need to set `Content-Length` to zero when calling out to this endpoint. For more information, see "[HTTP method](https://docs.github.com/rest/guides/getting-started-with-the-rest-api#http-method)." */
 export const star: API.OperationMethod<StarRequest, StarResponse, StarError, GithubOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(47) as any as S.Schema<StarRequest>,
-    output: __S(1) as any as S.Schema<StarResponse>,
+    input: StarRequest,
+    output: StarResponse,
     errors: [Forbidden, NotFound],
     protocol: GithubProtocol,
     retry: Retry.Retry,
@@ -681,8 +852,8 @@ export const unstar: API.OperationMethod<
   UnstarError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48) as any as S.Schema<UnstarRequest>,
-  output: __S(1) as any as S.Schema<UnstarResponse>,
+  input: UnstarRequest,
+  output: UnstarResponse,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -692,8 +863,8 @@ export type UpdateError = NotFound | UnprocessableEntity | GithubOpError;
 /** Update a gist Allows you to update a gist's description and to update, delete, or rename gist files. Files from the previous version of the gist that aren't explicitly changed during an edit are unchanged. At least one of `description` or `files` is required. This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)." - **`application/vnd.github.raw+json`**: Returns the raw markdown. This is the default if you do not pass any specific media type. */
 export const update: API.OperationMethod<UpdateRequest, GistSimple, UpdateError, GithubOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(51) as any as S.Schema<UpdateRequest>,
-    output: __S(19) as any as S.Schema<GistSimple>,
+    input: UpdateRequest,
+    output: GistSimple,
     errors: [NotFound, UnprocessableEntity],
     protocol: GithubProtocol,
     retry: Retry.Retry,
@@ -707,8 +878,8 @@ export const updateComment: API.OperationMethod<
   UpdateCommentError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(52) as any as S.Schema<UpdateCommentRequest>,
-  output: __S(21) as any as S.Schema<GistComment>,
+  input: UpdateCommentRequest,
+  output: GistComment,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -734,13 +905,13 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "CreateRequestFilesValue" });
     case 3:
-      return S.Record(S.String, __S(2));
+      return S.Record(S.String, CreateRequestFilesValue);
     case 4:
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
-          files: __S(3),
-          public: S.optional(S.Unknown),
+          files: CreateRequestFilesMap,
+          public: S.optional(CreateRequestPublic),
         }).pipe(T.Http({ method: "POST", uri: "/gists", code: 200 })),
       ).annotate({ identifier: "CreateRequest" });
     case 5:
@@ -789,7 +960,7 @@ function __c0(j: number): any {
           following: S.Number,
           created_at: S.String,
           updated_at: S.String,
-          plan: S.optional(__S(5)),
+          plan: S.optional(PublicUserPlan),
           private_gists: S.optional(S.Number),
           total_private_repos: S.optional(S.Number),
           owned_private_repos: S.optional(S.Number),
@@ -802,7 +973,7 @@ function __c0(j: number): any {
         S.Struct({
           id: S.optional(S.String),
           url: S.optional(S.String),
-          user: S.optional(__S(6)),
+          user: S.optional(PublicUser),
           created_at: S.optional(S.String),
           updated_at: S.optional(S.String),
         }),
@@ -812,7 +983,7 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(7));
+      return S.Array(GistSimpleForksItem);
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -851,15 +1022,15 @@ function __c1(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          user: S.optional(S.NullOr(__S(9))),
+          user: S.optional(S.NullOr(NullableSimpleUser)),
           version: S.optional(S.String),
           committed_at: S.optional(S.String),
-          change_status: S.optional(__S(10)),
+          change_status: S.optional(GistHistoryChangeStatus),
           url: S.optional(S.String),
         }),
       ).annotate({ identifier: "GistHistory" });
     case 4:
-      return S.Array(__S(11));
+      return S.Array(GistHistory);
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -873,7 +1044,7 @@ function __c1(j: number): any {
         identifier: "GistSimpleForkOfFilesValue",
       });
     case 6:
-      return S.Record(S.String, __S(13));
+      return S.Record(S.String, GistSimpleForkOfFilesValue);
     case 7:
       return S.Array(S.Unknown);
   }
@@ -891,19 +1062,19 @@ function __c2(j: number): any {
           git_pull_url: S.String,
           git_push_url: S.String,
           html_url: S.String,
-          files: __S(14),
+          files: GistSimpleForkOfFilesMap,
           public: S.Boolean,
           created_at: S.String,
           updated_at: S.String,
           description: S.NullOr(S.String),
           comments: S.Number,
           comments_enabled: S.optional(S.Boolean),
-          user: S.NullOr(__S(9)),
+          user: S.NullOr(NullableSimpleUser),
           comments_url: S.String,
-          owner: S.optional(S.NullOr(__S(9))),
+          owner: S.optional(S.NullOr(NullableSimpleUser)),
           truncated: S.optional(S.Boolean),
-          forks: S.optional(__S(15)),
-          history: S.optional(__S(15)),
+          forks: S.optional(GistSimpleForkOfForksList),
+          history: S.optional(GistSimpleForkOfHistoryList),
         }),
       ).annotate({ identifier: "GistSimpleForkOf" });
     case 1:
@@ -920,13 +1091,13 @@ function __c2(j: number): any {
         }),
       ).annotate({ identifier: "GistSimpleFilesValue" });
     case 2:
-      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(17)));
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(GistSimpleFilesValue));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          forks: S.optional(S.NullOr(__S(8))),
-          history: S.optional(S.NullOr(__S(12))),
-          fork_of: S.optional(S.NullOr(__S(16))),
+          forks: S.optional(S.NullOr(GistSimpleForksList)),
+          history: S.optional(S.NullOr(GistSimpleHistoryList)),
+          fork_of: S.optional(S.NullOr(GistSimpleForkOf)),
           url: S.optional(S.String),
           forks_url: S.optional(S.String),
           commits_url: S.optional(S.String),
@@ -935,7 +1106,7 @@ function __c2(j: number): any {
           git_pull_url: S.optional(S.String),
           git_push_url: S.optional(S.String),
           html_url: S.optional(S.String),
-          files: S.optional(__S(18)),
+          files: S.optional(GistSimpleFilesMap),
           public: S.optional(S.Boolean),
           created_at: S.optional(S.String),
           updated_at: S.optional(S.String),
@@ -944,7 +1115,7 @@ function __c2(j: number): any {
           comments_enabled: S.optional(S.Boolean),
           user: S.optional(S.NullOr(S.String)),
           comments_url: S.optional(S.String),
-          owner: S.optional(__S(9)),
+          owner: S.optional(NullableSimpleUser),
           truncated: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "GistSimple" });
@@ -962,10 +1133,10 @@ function __c2(j: number): any {
           node_id: S.String,
           url: S.String,
           body: S.String,
-          user: S.NullOr(__S(9)),
+          user: S.NullOr(NullableSimpleUser),
           created_at: S.String,
           updated_at: S.String,
-          author_association: S.String,
+          author_association: AuthorAssociation,
         }),
       ).annotate({ identifier: "GistComment" });
     case 6:
@@ -1005,7 +1176,7 @@ function __c3(j: number): any {
         }),
       ).annotate({ identifier: "BaseGistFilesValue" });
     case 2:
-      return S.Record(S.String, __S(25));
+      return S.Record(S.String, BaseGistFilesValue);
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -1017,19 +1188,19 @@ function __c3(j: number): any {
           git_pull_url: S.String,
           git_push_url: S.String,
           html_url: S.String,
-          files: __S(26),
+          files: BaseGistFilesMap,
           public: S.Boolean,
           created_at: S.String,
           updated_at: S.String,
           description: S.NullOr(S.String),
           comments: S.Number,
           comments_enabled: S.optional(S.Boolean),
-          user: S.NullOr(__S(9)),
+          user: S.NullOr(NullableSimpleUser),
           comments_url: S.String,
-          owner: S.optional(__S(9)),
+          owner: S.optional(NullableSimpleUser),
           truncated: S.optional(S.Boolean),
-          forks: S.optional(__S(15)),
-          history: S.optional(__S(15)),
+          forks: S.optional(BaseGistForksList),
+          history: S.optional(BaseGistHistoryList),
         }),
       ).annotate({ identifier: "BaseGist" });
     case 4:
@@ -1067,9 +1238,9 @@ function __c3(j: number): any {
 function __c4(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(27));
+      return S.Array(BaseGist);
     case 1:
-      return S.suspend(() => __S(32).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => ListResponseBodyList.pipe(T.RawResponseRoot())).annotate({
         identifier: "ListResponse",
       });
     case 2:
@@ -1081,9 +1252,9 @@ function __c4(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/gists/{gist_id}/comments", code: 200 })),
       ).annotate({ identifier: "ListCommentsRequest" });
     case 3:
-      return S.Array(__S(21));
+      return S.Array(GistComment);
     case 4:
-      return S.suspend(() => __S(35).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => ListCommentsResponseBodyList.pipe(T.RawResponseRoot())).annotate({
         identifier: "ListCommentsResponse",
       });
     case 5:
@@ -1099,19 +1270,19 @@ function __c4(j: number): any {
         S.Struct({
           url: S.String,
           version: S.String,
-          user: S.NullOr(__S(9)),
-          change_status: __S(10),
+          user: S.NullOr(NullableSimpleUser),
+          change_status: GistHistoryChangeStatus,
           committed_at: S.String,
         }),
       ).annotate({ identifier: "GistCommit" });
     case 7:
-      return S.Array(__S(38));
+      return S.Array(GistCommit);
   }
 }
 function __c5(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => __S(39).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => ListCommitsResponseBodyList.pipe(T.RawResponseRoot())).annotate({
         identifier: "ListCommitsResponse",
       });
     case 1:
@@ -1123,9 +1294,9 @@ function __c5(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/gists/{gist_id}/forks", code: 200 })),
       ).annotate({ identifier: "ListForksRequest" });
     case 2:
-      return S.Array(__S(19));
+      return S.Array(GistSimple);
     case 3:
-      return S.suspend(() => __S(42).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => ListForksResponseBodyList.pipe(T.RawResponseRoot())).annotate({
         identifier: "ListForksResponse",
       });
     case 4:
@@ -1177,13 +1348,13 @@ function __c6(j: number): any {
         }),
       ).annotate({ identifier: "UpdateRequestFilesValue" });
     case 2:
-      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(49)));
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(UpdateRequestFilesValue));
     case 3:
       return S.suspend(() =>
         S.Struct({
           gist_id: S.String.pipe(T.Label()),
           description: S.optional(S.String),
-          files: S.optional(__S(50)),
+          files: S.optional(UpdateRequestFilesMap),
         }).pipe(T.Http({ method: "PATCH", uri: "/gists/{gist_id}", code: 200 })),
       ).annotate({ identifier: "UpdateRequest" });
     case 4:
@@ -1196,28 +1367,5 @@ function __c6(j: number): any {
           T.Http({ method: "PATCH", uri: "/gists/{gist_id}/comments/{comment_id}", code: 200 }),
         ),
       ).annotate({ identifier: "UpdateCommentRequest" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
   }
 }

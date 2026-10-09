@@ -6,13 +6,16 @@ import { SlackError, SlackRateLimited } from "../errors.ts";
 import { SlackProtocol, type SlackOpError, type SlackOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { SlackOpError, SlackOpContext };
 
 /** List of encoded user IDs */
 export type AddDistributionsPermissionsRequestUserIdsList = Array<string>;
+const AddDistributionsPermissionsRequestUserIdsList = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<AddDistributionsPermissionsRequestUserIdsList>;
+
 export interface AddDistributionsPermissionsRequest {
   /** The encoded ID of the function */
   function_id?: string;
@@ -23,46 +26,87 @@ export interface AddDistributionsPermissionsRequest {
   /** List of encoded user IDs */
   user_ids?: AddDistributionsPermissionsRequestUserIdsList;
 }
+const AddDistributionsPermissionsRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<AddDistributionsPermissionsRequest>;
+
 export type AddDistributionsPermissionsResponsePermissionType =
   | "everyone"
   | "app_collaborators"
   | "named_entities"
   | "system";
+const AddDistributionsPermissionsResponsePermissionType = S.String;
+
 export interface AddDistributionsPermissionsResponseUsersItem {
   user_id?: string;
   username?: string;
   email?: string;
 }
+const AddDistributionsPermissionsResponseUsersItem = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<AddDistributionsPermissionsResponseUsersItem>;
+
 export type AddDistributionsPermissionsResponseUsersList =
   Array<AddDistributionsPermissionsResponseUsersItem>;
+const AddDistributionsPermissionsResponseUsersList = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<AddDistributionsPermissionsResponseUsersList>;
+
 export interface AddDistributionsPermissionsResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
   permission_type: AddDistributionsPermissionsResponsePermissionType;
   users?: AddDistributionsPermissionsResponseUsersList;
 }
+const AddDistributionsPermissionsResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<AddDistributionsPermissionsResponse>;
+
 export interface CompleteErrorRequest {
   /** Context identifier that maps to the executed function */
   function_execution_id: string;
   /** A human-readable error message that contains information about why the function failed to complete */
   error: string;
 }
+const CompleteErrorRequest = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<CompleteErrorRequest>;
+
 export interface CompleteErrorResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
+const CompleteErrorResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<CompleteErrorResponse>;
+
 /** A JSON-based object that conforms to the [output parameters](https://docs.slack.dev/deno-slack-sdk/guides/creating-custom-functions#input-output) schema for the custom function defined in the manifest */
 export type CompleteSuccessRequestOutputsMap = { [key: string]: unknown | undefined };
+const CompleteSuccessRequestOutputsMap = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<CompleteSuccessRequestOutputsMap>;
+
 export interface CompleteSuccessRequest {
   /** Context identifier that maps to the executed function */
   function_execution_id: string;
   /** A JSON-based object that conforms to the [output parameters](https://docs.slack.dev/deno-slack-sdk/guides/creating-custom-functions#input-output) schema for the custom function defined in the manifest */
   outputs: CompleteSuccessRequestOutputsMap;
 }
+const CompleteSuccessRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<CompleteSuccessRequest>;
+
 export interface CompleteSuccessResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
+const CompleteSuccessResponse = CompleteErrorResponse as any as S.Schema<CompleteSuccessResponse>;
+
 export interface ExportWorkflowsStepsResponseRequest {
   /** The workflow ID, starts with Wf* */
   workflow_id?: string;
@@ -73,10 +117,20 @@ export interface ExportWorkflowsStepsResponseRequest {
   /** The ID of the OpenForm step to export. */
   step_id: string;
 }
+const ExportWorkflowsStepsResponseRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<ExportWorkflowsStepsResponseRequest>;
+
 export interface ExportWorkflowsStepsResponseResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
+const ExportWorkflowsStepsResponseResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<ExportWorkflowsStepsResponseResponse>;
+
 export interface ListDistributionsPermissionsRequest {
   /** The encoded ID of the function */
   function_id?: string;
@@ -85,19 +139,35 @@ export interface ListDistributionsPermissionsRequest {
   /** The encoded ID of the app */
   function_app_id?: string;
 }
+const ListDistributionsPermissionsRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<ListDistributionsPermissionsRequest>;
+
 export type ListDistributionsPermissionsResponsePermissionType =
   | "everyone"
   | "app_collaborators"
   | "named_entities"
   | "system";
+const ListDistributionsPermissionsResponsePermissionType = S.String;
+
 export type ListDistributionsPermissionsResponseUsersItem =
   AddDistributionsPermissionsResponseUsersItem;
 export type ListDistributionsPermissionsResponseUsersList =
   Array<AddDistributionsPermissionsResponseUsersItem>;
+const ListDistributionsPermissionsResponseUsersList =
+  AddDistributionsPermissionsResponseUsersList as any as S.Schema<ListDistributionsPermissionsResponseUsersList>;
+
 /** List of team IDs allowed with named_entities permission. */
 export type ListDistributionsPermissionsResponseTeamIdsList = Array<string>;
+const ListDistributionsPermissionsResponseTeamIdsList =
+  AddDistributionsPermissionsRequestUserIdsList as any as S.Schema<ListDistributionsPermissionsResponseTeamIdsList>;
+
 /** List of org IDs allowed with named_entities permission. */
 export type ListDistributionsPermissionsResponseOrgIdsList = Array<string>;
+const ListDistributionsPermissionsResponseOrgIdsList =
+  AddDistributionsPermissionsRequestUserIdsList as any as S.Schema<ListDistributionsPermissionsResponseOrgIdsList>;
+
 export interface ListDistributionsPermissionsResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
@@ -108,6 +178,11 @@ export interface ListDistributionsPermissionsResponse {
   /** List of org IDs allowed with named_entities permission. */
   org_ids?: ListDistributionsPermissionsResponseOrgIdsList;
 }
+const ListDistributionsPermissionsResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<ListDistributionsPermissionsResponse>;
+
 export interface ListWorkflowsStepsRequest {
   /** The workflow ID, starts with Wf* */
   workflow_id?: string;
@@ -118,14 +193,32 @@ export interface ListWorkflowsStepsRequest {
   /** The ID of the function to query */
   function_id: string;
 }
+const ListWorkflowsStepsRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<ListWorkflowsStepsRequest>;
+
 export type ListWorkflowsStepsResponseStepsVersionsList = Array<unknown>;
+const ListWorkflowsStepsResponseStepsVersionsList = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<ListWorkflowsStepsResponseStepsVersionsList>;
+
 export interface ListWorkflowsStepsResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
   steps_versions: ListWorkflowsStepsResponseStepsVersionsList;
 }
+const ListWorkflowsStepsResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<ListWorkflowsStepsResponse>;
+
 /** List of encoded user IDs */
 export type RemoveDistributionsPermissionsRequestUserIdsList = Array<string>;
+const RemoveDistributionsPermissionsRequestUserIdsList =
+  AddDistributionsPermissionsRequestUserIdsList as any as S.Schema<RemoveDistributionsPermissionsRequestUserIdsList>;
+
 export interface RemoveDistributionsPermissionsRequest {
   /** The encoded ID of the function */
   function_id?: string;
@@ -136,33 +229,59 @@ export interface RemoveDistributionsPermissionsRequest {
   /** List of encoded user IDs */
   user_ids?: RemoveDistributionsPermissionsRequestUserIdsList;
 }
+const RemoveDistributionsPermissionsRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<RemoveDistributionsPermissionsRequest>;
+
 export type RemoveDistributionsPermissionsResponsePermissionType =
   | "everyone"
   | "app_collaborators"
   | "named_entities"
   | "system";
+const RemoveDistributionsPermissionsResponsePermissionType = S.String;
+
 export type RemoveDistributionsPermissionsResponseUsersItem =
   AddDistributionsPermissionsResponseUsersItem;
 export type RemoveDistributionsPermissionsResponseUsersList =
   Array<AddDistributionsPermissionsResponseUsersItem>;
+const RemoveDistributionsPermissionsResponseUsersList =
+  AddDistributionsPermissionsResponseUsersList as any as S.Schema<RemoveDistributionsPermissionsResponseUsersList>;
+
 export interface RemoveDistributionsPermissionsResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
   permission_type: RemoveDistributionsPermissionsResponsePermissionType;
   users?: RemoveDistributionsPermissionsResponseUsersList;
 }
+const RemoveDistributionsPermissionsResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<RemoveDistributionsPermissionsResponse>;
+
 /** The type of permission that defines how the function can be distributed */
 export type SetDistributionsPermissionsRequestPermissionType =
   | "everyone"
   | "app_collaborators"
   | "named_entities"
   | "system";
+const SetDistributionsPermissionsRequestPermissionType = S.String;
+
 /** List of encoded user IDs */
 export type SetDistributionsPermissionsRequestUserIdsList = Array<string>;
+const SetDistributionsPermissionsRequestUserIdsList =
+  AddDistributionsPermissionsRequestUserIdsList as any as S.Schema<SetDistributionsPermissionsRequestUserIdsList>;
+
 /** List of team IDs to allow for named_entities permission */
 export type SetDistributionsPermissionsRequestTeamIdsList = Array<string>;
+const SetDistributionsPermissionsRequestTeamIdsList =
+  AddDistributionsPermissionsRequestUserIdsList as any as S.Schema<SetDistributionsPermissionsRequestTeamIdsList>;
+
 /** List of org IDs to allow for named_entities permission */
 export type SetDistributionsPermissionsRequestOrgIdsList = Array<string>;
+const SetDistributionsPermissionsRequestOrgIdsList =
+  AddDistributionsPermissionsRequestUserIdsList as any as S.Schema<SetDistributionsPermissionsRequestOrgIdsList>;
+
 export interface SetDistributionsPermissionsRequest {
   /** The encoded ID of the function */
   function_id?: string;
@@ -179,19 +298,35 @@ export interface SetDistributionsPermissionsRequest {
   /** List of org IDs to allow for named_entities permission */
   org_ids?: SetDistributionsPermissionsRequestOrgIdsList;
 }
+const SetDistributionsPermissionsRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<SetDistributionsPermissionsRequest>;
+
 export type SetDistributionsPermissionsResponsePermissionType =
   | "everyone"
   | "app_collaborators"
   | "named_entities"
   | "system";
+const SetDistributionsPermissionsResponsePermissionType = S.String;
+
 export type SetDistributionsPermissionsResponseUsersItem =
   AddDistributionsPermissionsResponseUsersItem;
 export type SetDistributionsPermissionsResponseUsersList =
   Array<AddDistributionsPermissionsResponseUsersItem>;
+const SetDistributionsPermissionsResponseUsersList =
+  AddDistributionsPermissionsResponseUsersList as any as S.Schema<SetDistributionsPermissionsResponseUsersList>;
+
 /** List of team IDs allowed with named_entities permission. */
 export type SetDistributionsPermissionsResponseTeamIdsList = Array<string>;
+const SetDistributionsPermissionsResponseTeamIdsList =
+  AddDistributionsPermissionsRequestUserIdsList as any as S.Schema<SetDistributionsPermissionsResponseTeamIdsList>;
+
 /** List of org IDs allowed with named_entities permission. */
 export type SetDistributionsPermissionsResponseOrgIdsList = Array<string>;
+const SetDistributionsPermissionsResponseOrgIdsList =
+  AddDistributionsPermissionsRequestUserIdsList as any as S.Schema<SetDistributionsPermissionsResponseOrgIdsList>;
+
 export interface SetDistributionsPermissionsResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
@@ -202,6 +337,11 @@ export interface SetDistributionsPermissionsResponse {
   /** List of org IDs allowed with named_entities permission. */
   org_ids?: SetDistributionsPermissionsResponseOrgIdsList;
 }
+const SetDistributionsPermissionsResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<SetDistributionsPermissionsResponse>;
+
 export type AddDistributionsPermissionsError = SlackOpError;
 /** Grant users access to a custom slack function if its permission_type is set to named_entities Required scopes -- configuration: `app_configurations:write` Rate limit tier: 3 Method-specific errors (the `error` slug on the SlackError): - `unknown_method` -- This method does not exist. - `access_denied` -- This actor does not have access to the permissions on this resource. - `function_not_found` -- This function does not exist. - `invalid_permission_type` -- This function requires permission_type to be set as named_entities before adding users. - `user_not_found` -- One or more of the named entities was not found. - `app_not_found` -- This app does not exist. See https://docs.slack.dev/reference/methods/functions.distributions.permissions.add */
 export const addDistributionsPermissions: API.OperationMethod<
@@ -210,8 +350,8 @@ export const addDistributionsPermissions: API.OperationMethod<
   AddDistributionsPermissionsError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1) as any as S.Schema<AddDistributionsPermissionsRequest>,
-  output: __S(4) as any as S.Schema<AddDistributionsPermissionsResponse>,
+  input: AddDistributionsPermissionsRequest,
+  output: AddDistributionsPermissionsResponse,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -225,8 +365,8 @@ export const completeError: API.OperationMethod<
   CompleteErrorError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5) as any as S.Schema<CompleteErrorRequest>,
-  output: __S(6) as any as S.Schema<CompleteErrorResponse>,
+  input: CompleteErrorRequest,
+  output: CompleteErrorResponse,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -240,8 +380,8 @@ export const completeSuccess: API.OperationMethod<
   CompleteSuccessError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8) as any as S.Schema<CompleteSuccessRequest>,
-  output: __S(6) as any as S.Schema<CompleteSuccessResponse>,
+  input: CompleteSuccessRequest,
+  output: CompleteSuccessResponse,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -255,8 +395,8 @@ export const exportWorkflowsStepsResponse: API.OperationMethod<
   ExportWorkflowsStepsResponseError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9) as any as S.Schema<ExportWorkflowsStepsResponseRequest>,
-  output: __S(10) as any as S.Schema<ExportWorkflowsStepsResponseResponse>,
+  input: ExportWorkflowsStepsResponseRequest,
+  output: ExportWorkflowsStepsResponseResponse,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -270,8 +410,8 @@ export const listDistributionsPermissions: API.OperationMethod<
   ListDistributionsPermissionsError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11) as any as S.Schema<ListDistributionsPermissionsRequest>,
-  output: __S(12) as any as S.Schema<ListDistributionsPermissionsResponse>,
+  input: ListDistributionsPermissionsRequest,
+  output: ListDistributionsPermissionsResponse,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -285,8 +425,8 @@ export const listWorkflowsSteps: API.OperationMethod<
   ListWorkflowsStepsError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13) as any as S.Schema<ListWorkflowsStepsRequest>,
-  output: __S(15) as any as S.Schema<ListWorkflowsStepsResponse>,
+  input: ListWorkflowsStepsRequest,
+  output: ListWorkflowsStepsResponse,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -300,8 +440,8 @@ export const removeDistributionsPermissions: API.OperationMethod<
   RemoveDistributionsPermissionsError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16) as any as S.Schema<RemoveDistributionsPermissionsRequest>,
-  output: __S(17) as any as S.Schema<RemoveDistributionsPermissionsResponse>,
+  input: RemoveDistributionsPermissionsRequest,
+  output: RemoveDistributionsPermissionsResponse,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -315,8 +455,8 @@ export const setDistributionsPermissions: API.OperationMethod<
   SetDistributionsPermissionsError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18) as any as S.Schema<SetDistributionsPermissionsRequest>,
-  output: __S(19) as any as S.Schema<SetDistributionsPermissionsResponse>,
+  input: SetDistributionsPermissionsRequest,
+  output: SetDistributionsPermissionsResponse,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -333,7 +473,7 @@ function __c0(j: number): any {
           function_id: S.optional(S.String),
           function_callback_id: S.optional(S.String),
           function_app_id: S.optional(S.String),
-          user_ids: S.optional(__S(0)),
+          user_ids: S.optional(AddDistributionsPermissionsRequestUserIdsList),
         }).pipe(
           T.Http({ method: "POST", uri: "/functions.distributions.permissions.add", code: 200 }),
         ),
@@ -351,13 +491,13 @@ function __c0(j: number): any {
         identifier: "AddDistributionsPermissionsResponseUsersItem",
       });
     case 3:
-      return S.Array(__S(2));
+      return S.Array(AddDistributionsPermissionsResponseUsersItem);
     case 4:
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
-          permission_type: S.String,
-          users: S.optional(__S(3)),
+          permission_type: AddDistributionsPermissionsResponsePermissionType,
+          users: S.optional(AddDistributionsPermissionsResponseUsersList),
         }),
       ).annotate({
         identifier: "AddDistributionsPermissionsResponse",
@@ -385,7 +525,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           function_execution_id: S.String,
-          outputs: __S(7),
+          outputs: CompleteSuccessRequestOutputsMap,
         }).pipe(T.Http({ method: "POST", uri: "/functions.completeSuccess", code: 200 })),
       ).annotate({ identifier: "CompleteSuccessRequest" });
     case 1:
@@ -425,10 +565,10 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
-          permission_type: S.String,
-          users: S.optional(__S(3)),
-          team_ids: S.optional(__S(0)),
-          org_ids: S.optional(__S(0)),
+          permission_type: ListDistributionsPermissionsResponsePermissionType,
+          users: S.optional(ListDistributionsPermissionsResponseUsersList),
+          team_ids: S.optional(ListDistributionsPermissionsResponseTeamIdsList),
+          org_ids: S.optional(ListDistributionsPermissionsResponseOrgIdsList),
         }),
       ).annotate({
         identifier: "ListDistributionsPermissionsResponse",
@@ -450,7 +590,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
-          steps_versions: __S(14),
+          steps_versions: ListWorkflowsStepsResponseStepsVersionsList,
         }),
       ).annotate({
         identifier: "ListWorkflowsStepsResponse",
@@ -465,7 +605,7 @@ function __c2(j: number): any {
           function_id: S.optional(S.String),
           function_callback_id: S.optional(S.String),
           function_app_id: S.optional(S.String),
-          user_ids: S.optional(__S(0)),
+          user_ids: S.optional(RemoveDistributionsPermissionsRequestUserIdsList),
         }).pipe(
           T.Http({ method: "POST", uri: "/functions.distributions.permissions.remove", code: 200 }),
         ),
@@ -476,8 +616,8 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
-          permission_type: S.String,
-          users: S.optional(__S(3)),
+          permission_type: RemoveDistributionsPermissionsResponsePermissionType,
+          users: S.optional(RemoveDistributionsPermissionsResponseUsersList),
         }),
       ).annotate({
         identifier: "RemoveDistributionsPermissionsResponse",
@@ -488,10 +628,10 @@ function __c2(j: number): any {
           function_id: S.optional(S.String),
           function_callback_id: S.optional(S.String),
           function_app_id: S.optional(S.String),
-          permission_type: S.optional(S.String),
-          user_ids: S.optional(__S(0)),
-          team_ids: S.optional(__S(0)),
-          org_ids: S.optional(__S(0)),
+          permission_type: S.optional(SetDistributionsPermissionsRequestPermissionType),
+          user_ids: S.optional(SetDistributionsPermissionsRequestUserIdsList),
+          team_ids: S.optional(SetDistributionsPermissionsRequestTeamIdsList),
+          org_ids: S.optional(SetDistributionsPermissionsRequestOrgIdsList),
         }).pipe(
           T.Http({ method: "POST", uri: "/functions.distributions.permissions.set", code: 200 }),
         ),
@@ -502,28 +642,13 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
-          permission_type: S.String,
-          users: S.optional(__S(3)),
-          team_ids: S.optional(__S(0)),
-          org_ids: S.optional(__S(0)),
+          permission_type: SetDistributionsPermissionsResponsePermissionType,
+          users: S.optional(SetDistributionsPermissionsResponseUsersList),
+          team_ids: S.optional(SetDistributionsPermissionsResponseTeamIdsList),
+          org_ids: S.optional(SetDistributionsPermissionsResponseOrgIdsList),
         }),
       ).annotate({
         identifier: "SetDistributionsPermissionsResponse",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
   }
 }

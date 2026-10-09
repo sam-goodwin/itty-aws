@@ -5,8 +5,6 @@ import * as S from "@distilled.cloud/core/schema";
 import { PosthogProtocol, type PosthogOpError, type PosthogOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { PosthogOpError, PosthogOpContext };
 
@@ -16,7 +14,17 @@ export interface CreateEvaluationDirectoryRequest {
   /** Directory name shown in the online evals list. */
   name: string;
 }
+const CreateEvaluationDirectoryRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<CreateEvaluationDirectoryRequest>;
+
 export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
+const UserBasicHedgehogConfigMap = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<UserBasicHedgehogConfigMap>;
+
 /** * `engineering` - Engineering * `data` - Data * `product` - Product Management * `founder` - Founder * `leadership` - Leadership * `marketing` - Marketing * `sales` - Sales / Success * `student` - Student * `other` - Other */
 export type RoleAtOrganizationEnum =
   | "engineering"
@@ -30,6 +38,8 @@ export type RoleAtOrganizationEnum =
   | "other";
 export type BlankEnum = "";
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
+const UserBasicRoleAtOrganization = S.Unknown as any as S.Schema<UserBasicRoleAtOrganization>;
+
 export interface UserBasic {
   id?: number;
   uuid?: string;
@@ -41,6 +51,8 @@ export interface UserBasic {
   hedgehog_config?: UserBasicHedgehogConfigMap | null;
   role_at_organization?: UserBasicRoleAtOrganization | null;
 }
+const UserBasic = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<UserBasic>;
+
 export interface EvaluationDirectory {
   id: string;
   /** Directory name shown in the online evals list. */
@@ -52,25 +64,57 @@ export interface EvaluationDirectory {
   /** Number of active evaluations in the directory. */
   evaluation_count: number;
 }
+const EvaluationDirectory = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<EvaluationDirectory>;
+
 export interface EvaluationDirectoriesDestroyRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A UUID string identifying this evaluation directory. */
   id: string;
 }
+const EvaluationDirectoriesDestroyRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<EvaluationDirectoriesDestroyRequest>;
+
 export interface EvaluationDirectoriesDestroyResponse {}
+const EvaluationDirectoriesDestroyResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<EvaluationDirectoriesDestroyResponse>;
+
 export interface GetEvaluationDirectoryRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A UUID string identifying this evaluation directory. */
   id: string;
 }
+const GetEvaluationDirectoryRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<GetEvaluationDirectoryRequest>;
+
 export interface ListEvaluationDirectoriesRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
+const ListEvaluationDirectoriesRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<ListEvaluationDirectoriesRequest>;
+
 export type ListEvaluationDirectoriesResponseBodyList = Array<EvaluationDirectory>;
+const ListEvaluationDirectoriesResponseBodyList = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<ListEvaluationDirectoriesResponseBodyList>;
+
 export type ListEvaluationDirectoriesResponse = ListEvaluationDirectoriesResponseBodyList;
+const ListEvaluationDirectoriesResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<ListEvaluationDirectoriesResponse>;
+
 export interface UpdateEvaluationDirectoriesPartialRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -79,6 +123,11 @@ export interface UpdateEvaluationDirectoriesPartialRequest {
   /** Directory name shown in the online evals list. */
   name?: string;
 }
+const UpdateEvaluationDirectoriesPartialRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<UpdateEvaluationDirectoriesPartialRequest>;
+
 export type CreateEvaluationDirectoryError = PosthogOpError;
 export const createEvaluationDirectory: API.OperationMethod<
   CreateEvaluationDirectoryRequest,
@@ -86,8 +135,8 @@ export const createEvaluationDirectory: API.OperationMethod<
   CreateEvaluationDirectoryError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<CreateEvaluationDirectoryRequest>,
-  output: __S(3) as any as S.Schema<EvaluationDirectory>,
+  input: CreateEvaluationDirectoryRequest,
+  output: EvaluationDirectory,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -100,8 +149,8 @@ export const evaluationDirectoriesDestroy: API.OperationMethod<
   EvaluationDirectoriesDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4) as any as S.Schema<EvaluationDirectoriesDestroyRequest>,
-  output: __S(5) as any as S.Schema<EvaluationDirectoriesDestroyResponse>,
+  input: EvaluationDirectoriesDestroyRequest,
+  output: EvaluationDirectoriesDestroyResponse,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -114,8 +163,8 @@ export const getEvaluationDirectory: API.OperationMethod<
   GetEvaluationDirectoryError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6) as any as S.Schema<GetEvaluationDirectoryRequest>,
-  output: __S(3) as any as S.Schema<EvaluationDirectory>,
+  input: GetEvaluationDirectoryRequest,
+  output: EvaluationDirectory,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -128,8 +177,8 @@ export const listEvaluationDirectories: API.OperationMethod<
   ListEvaluationDirectoriesError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7) as any as S.Schema<ListEvaluationDirectoriesRequest>,
-  output: __S(9) as any as S.Schema<ListEvaluationDirectoriesResponse>,
+  input: ListEvaluationDirectoriesRequest,
+  output: ListEvaluationDirectoriesResponse,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -142,8 +191,8 @@ export const updateEvaluationDirectoriesPartial: API.OperationMethod<
   UpdateEvaluationDirectoriesPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10) as any as S.Schema<UpdateEvaluationDirectoriesPartialRequest>,
-  output: __S(3) as any as S.Schema<EvaluationDirectory>,
+  input: UpdateEvaluationDirectoriesPartialRequest,
+  output: EvaluationDirectory,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -179,8 +228,8 @@ function __c0(j: number): any {
           last_name: S.optional(S.String),
           email: S.optional(S.String),
           is_email_verified: S.optional(S.NullOr(S.Boolean)),
-          hedgehog_config: S.optional(S.NullOr(__S(1))),
-          role_at_organization: S.optional(S.NullOr(S.Unknown)),
+          hedgehog_config: S.optional(S.NullOr(UserBasicHedgehogConfigMap)),
+          role_at_organization: S.optional(S.NullOr(UserBasicRoleAtOrganization)),
         }),
       ).annotate({ identifier: "UserBasic" });
     case 3:
@@ -190,7 +239,7 @@ function __c0(j: number): any {
           name: S.String,
           created_at: S.String,
           updated_at: S.NullOr(S.String),
-          created_by: S.NullOr(__S(2)),
+          created_by: S.NullOr(UserBasic),
           evaluation_count: S.Number,
         }),
       ).annotate({ identifier: "EvaluationDirectory" });
@@ -247,9 +296,11 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(3));
+      return S.Array(EvaluationDirectory);
     case 1:
-      return S.suspend(() => __S(8).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        ListEvaluationDirectoriesResponseBodyList.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "ListEvaluationDirectoriesResponse",
       });
     case 2:
@@ -268,18 +319,5 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "UpdateEvaluationDirectoriesPartialRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
   }
 }

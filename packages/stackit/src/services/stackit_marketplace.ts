@@ -7,8 +7,6 @@ import { UnknownStackitError } from "../errors.ts";
 import { StackitProtocol, type StackitOpError, type StackitOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { StackitOpError, StackitOpContext };
 
@@ -54,12 +52,32 @@ export interface ApproveSubscriptionRequest {
   /** The target URL of the user instance, used to redirect the user to the instance after the subscription is active. */
   instanceTarget?: string;
 }
+const ApproveSubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<ApproveSubscriptionRequest>;
+
 export interface ApproveSubscriptionResponse {}
+const ApproveSubscriptionResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<ApproveSubscriptionResponse>;
+
 export interface CancelConsumersSubscriptionRequest {
   projectId: string;
   subscriptionId: string;
 }
+const CancelConsumersSubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<CancelConsumersSubscriptionRequest>;
+
 export interface CancelConsumersSubscriptionResponse {}
+const CancelConsumersSubscriptionResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<CancelConsumersSubscriptionResponse>;
+
 export interface ConsumersSubscriptionsListByOrganizationRequest {
   organizationId: string;
   cursor?: string;
@@ -68,6 +86,11 @@ export interface ConsumersSubscriptionsListByOrganizationRequest {
   /** Flag to control if cancelled or rejected subscriptions should be returned. */
   includeExpired?: boolean;
 }
+const ConsumersSubscriptionsListByOrganizationRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<ConsumersSubscriptionsListByOrganizationRequest>;
+
 export type MarketplaceSubscriptionV1SubscriptionLifecycleState =
   | "STATE_UNSPECIFIED"
   | "SUBSCRIPTION_PENDING"
@@ -77,32 +100,53 @@ export type MarketplaceSubscriptionV1SubscriptionLifecycleState =
   | "SUBSCRIPTION_CANCELLED"
   | "SUBSCRIPTION_REJECTED"
   | "SUBSCRIPTION_APPROVAL_TIMED_OUT";
+const MarketplaceSubscriptionV1SubscriptionLifecycleState = S.String;
+
 export interface MarketplaceSubscriptionV1FileLocalizedVersion {
   /** The file version matching the file name (localized). */
   de?: string;
   /** The file version matching the file name (localized). */
   en?: string;
 }
+const MarketplaceSubscriptionV1FileLocalizedVersion = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<MarketplaceSubscriptionV1FileLocalizedVersion>;
+
 export interface MarketplaceSubscriptionV1File {
   version?: MarketplaceSubscriptionV1FileLocalizedVersion;
 }
+const MarketplaceSubscriptionV1File = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<MarketplaceSubscriptionV1File>;
+
 export interface MarketplaceSubscriptionV1Assets {
   endUserLicenseAgreement?: MarketplaceSubscriptionV1File;
   productDescription?: MarketplaceSubscriptionV1File;
   serviceCertificate?: MarketplaceSubscriptionV1File;
   serviceLevelAgreement?: MarketplaceSubscriptionV1File;
 }
+const MarketplaceSubscriptionV1Assets = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<MarketplaceSubscriptionV1Assets>;
+
 /** The product delivery method/type. For reference: SAAS - Software as a Service, CLOUD_IMAGE - STACKIT Cloud Image */
 export type MarketplaceSubscriptionV1SubscriptionProductDeliveryMethod =
   | "SAAS"
   | "CONTAINER_IMAGE"
   | "CLOUD_IMAGE"
   | "PROFESSIONAL_SERVICE";
+const MarketplaceSubscriptionV1SubscriptionProductDeliveryMethod = S.String;
+
 /** The lifecycle state of the product. */
 export type MarketplaceSubscriptionV1SubscriptionProductLifecycleState =
   | "PRODUCT_LIVE"
   | "PRODUCT_PENDING_APPROVAL"
   | "PRODUCT_PREVIEW";
+const MarketplaceSubscriptionV1SubscriptionProductLifecycleState = S.String;
+
 /** The product's price type. */
 export type MarketplaceSubscriptionV1SubscriptionProductPriceType =
   | "CONTRACT"
@@ -110,6 +154,8 @@ export type MarketplaceSubscriptionV1SubscriptionProductPriceType =
   | "FREE_TRIAL"
   | "BYOL"
   | "PAYG";
+const MarketplaceSubscriptionV1SubscriptionProductPriceType = S.String;
+
 export interface MarketplaceSubscriptionV1SubscriptionProduct {
   assets?: MarketplaceSubscriptionV1Assets;
   /** The product delivery method/type. For reference: SAAS - Software as a Service, CLOUD_IMAGE - STACKIT Cloud Image */
@@ -141,6 +187,11 @@ export interface MarketplaceSubscriptionV1SubscriptionProduct {
   /** The vendor's website. */
   vendorWebsiteUrl: string;
 }
+const MarketplaceSubscriptionV1SubscriptionProduct = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<MarketplaceSubscriptionV1SubscriptionProduct>;
+
 export interface MarketplaceSubscriptionV1Subscription {
   /** Period between the subscription was created until the approval needs to happen. */
   approvalTimeout?: string;
@@ -164,13 +215,28 @@ export interface MarketplaceSubscriptionV1Subscription {
   /** Timestamp when the current subscription validity will end. May be automatically renewed. */
   validUntil?: string;
 }
+const MarketplaceSubscriptionV1Subscription = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<MarketplaceSubscriptionV1Subscription>;
+
 export type MarketplaceSubscriptionV1ListSubscriptionsResponseItemsList =
   Array<MarketplaceSubscriptionV1Subscription>;
+const MarketplaceSubscriptionV1ListSubscriptionsResponseItemsList = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<MarketplaceSubscriptionV1ListSubscriptionsResponseItemsList>;
+
 export interface MarketplaceSubscriptionV1ListSubscriptionsResponse {
   cursor?: string;
   items?: MarketplaceSubscriptionV1ListSubscriptionsResponseItemsList;
   limit?: number;
 }
+const MarketplaceSubscriptionV1ListSubscriptionsResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<MarketplaceSubscriptionV1ListSubscriptionsResponse>;
+
 export interface ConsumersSubscriptionsListByProjectRequest {
   projectId: string;
   cursor?: string;
@@ -179,6 +245,11 @@ export interface ConsumersSubscriptionsListByProjectRequest {
   /** Flag to control if cancelled or rejected subscriptions should be returned. */
   includeExpired?: boolean;
 }
+const ConsumersSubscriptionsListByProjectRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<ConsumersSubscriptionsListByProjectRequest>;
+
 export interface CreateConsumersSubscriptionRequest {
   projectId: string;
   /** An E-Mail address the vendor can reach the consuer about subscription updates. */
@@ -188,42 +259,88 @@ export interface CreateConsumersSubscriptionRequest {
   /** The concrete variant of the product. */
   sku: string;
 }
+const CreateConsumersSubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<CreateConsumersSubscriptionRequest>;
+
 export interface GetConsumersSubscriptionRequest {
   projectId: string;
   subscriptionId: string;
   /** Flag to control if cancelled or rejected subscriptions should be returned. */
   includeExpired?: boolean;
 }
+const GetConsumersSubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<GetConsumersSubscriptionRequest>;
+
 export interface GetConsumersSubscriptionsRedirectRequest {
   projectId: string;
   subscriptionId: string;
   redirectTarget?: string;
 }
+const GetConsumersSubscriptionsRedirectRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<GetConsumersSubscriptionsRedirectRequest>;
+
 export interface MarketplaceSubscriptionV1SubscriptionRedirect {
   redirectTarget: string;
   redirectUrl: string;
 }
+const MarketplaceSubscriptionV1SubscriptionRedirect = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<MarketplaceSubscriptionV1SubscriptionRedirect>;
+
 export interface GetVendorsSubscriptionRequest {
   projectId: string;
   subscriptionId: string;
   /** Flag to control if cancelled or rejected subscriptions should be returned. */
   includeExpired?: boolean;
 }
+const GetVendorsSubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<GetVendorsSubscriptionRequest>;
+
 export interface RejectVendorsSubscriptionRequest {
   projectId: string;
   subscriptionId: string;
 }
+const RejectVendorsSubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<RejectVendorsSubscriptionRequest>;
+
 export interface RejectVendorsSubscriptionResponse {}
+const RejectVendorsSubscriptionResponse =
+  CancelConsumersSubscriptionResponse as any as S.Schema<RejectVendorsSubscriptionResponse>;
+
 export interface ResolveCustomerRequest {
   projectId: string;
   /** Opaque token exchangeable for subscription details. */
   token: string;
 }
+const ResolveCustomerRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<ResolveCustomerRequest>;
+
 export interface TerminateConsumersSubscriptionRequest {
   projectId: string;
   subscriptionId: string;
 }
+const TerminateConsumersSubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<TerminateConsumersSubscriptionRequest>;
+
 export interface TerminateConsumersSubscriptionResponse {}
+const TerminateConsumersSubscriptionResponse =
+  CancelConsumersSubscriptionResponse as any as S.Schema<TerminateConsumersSubscriptionResponse>;
+
 export interface VendorsSubscriptionsListByOrganizationRequest {
   organizationId: string;
   cursor?: string;
@@ -232,6 +349,11 @@ export interface VendorsSubscriptionsListByOrganizationRequest {
   /** Flag to control if cancelled or rejected subscriptions should be returned. */
   includeExpired?: boolean;
 }
+const VendorsSubscriptionsListByOrganizationRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<VendorsSubscriptionsListByOrganizationRequest>;
+
 export interface VendorsSubscriptionsListByProjectRequest {
   projectId: string;
   cursor?: string;
@@ -240,6 +362,11 @@ export interface VendorsSubscriptionsListByProjectRequest {
   /** Flag to control if cancelled or rejected subscriptions should be returned. */
   includeExpired?: boolean;
 }
+const VendorsSubscriptionsListByProjectRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<VendorsSubscriptionsListByProjectRequest>;
+
 export type ApproveSubscriptionError = BadRequest | Forbidden | NotFound | StackitOpError;
 /** Approve a pending subscription. Approve a pending subscription. */
 export const approveSubscription: API.OperationMethod<
@@ -248,8 +375,8 @@ export const approveSubscription: API.OperationMethod<
   ApproveSubscriptionError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<ApproveSubscriptionRequest>,
-  output: __S(1) as any as S.Schema<ApproveSubscriptionResponse>,
+  input: ApproveSubscriptionRequest,
+  output: ApproveSubscriptionResponse,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -268,8 +395,8 @@ export const cancelConsumersSubscription: API.OperationMethod<
   CancelConsumersSubscriptionError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2) as any as S.Schema<CancelConsumersSubscriptionRequest>,
-  output: __S(3) as any as S.Schema<CancelConsumersSubscriptionResponse>,
+  input: CancelConsumersSubscriptionRequest,
+  output: CancelConsumersSubscriptionResponse,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -283,8 +410,8 @@ export const consumersSubscriptionsListByOrganization: API.OperationMethod<
   ConsumersSubscriptionsListByOrganizationError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4) as any as S.Schema<ConsumersSubscriptionsListByOrganizationRequest>,
-  output: __S(11) as any as S.Schema<MarketplaceSubscriptionV1ListSubscriptionsResponse>,
+  input: ConsumersSubscriptionsListByOrganizationRequest,
+  output: MarketplaceSubscriptionV1ListSubscriptionsResponse,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -298,8 +425,8 @@ export const consumersSubscriptionsListByProject: API.OperationMethod<
   ConsumersSubscriptionsListByProjectError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12) as any as S.Schema<ConsumersSubscriptionsListByProjectRequest>,
-  output: __S(11) as any as S.Schema<MarketplaceSubscriptionV1ListSubscriptionsResponse>,
+  input: ConsumersSubscriptionsListByProjectRequest,
+  output: MarketplaceSubscriptionV1ListSubscriptionsResponse,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -313,8 +440,8 @@ export const createConsumersSubscription: API.OperationMethod<
   CreateConsumersSubscriptionError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13) as any as S.Schema<CreateConsumersSubscriptionRequest>,
-  output: __S(9) as any as S.Schema<MarketplaceSubscriptionV1Subscription>,
+  input: CreateConsumersSubscriptionRequest,
+  output: MarketplaceSubscriptionV1Subscription,
   errors: [BadRequest, Forbidden, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -328,8 +455,8 @@ export const getConsumersSubscription: API.OperationMethod<
   GetConsumersSubscriptionError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14) as any as S.Schema<GetConsumersSubscriptionRequest>,
-  output: __S(9) as any as S.Schema<MarketplaceSubscriptionV1Subscription>,
+  input: GetConsumersSubscriptionRequest,
+  output: MarketplaceSubscriptionV1Subscription,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -343,8 +470,8 @@ export const getConsumersSubscriptionsRedirect: API.OperationMethod<
   GetConsumersSubscriptionsRedirectError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15) as any as S.Schema<GetConsumersSubscriptionsRedirectRequest>,
-  output: __S(16) as any as S.Schema<MarketplaceSubscriptionV1SubscriptionRedirect>,
+  input: GetConsumersSubscriptionsRedirectRequest,
+  output: MarketplaceSubscriptionV1SubscriptionRedirect,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -358,8 +485,8 @@ export const getVendorsSubscription: API.OperationMethod<
   GetVendorsSubscriptionError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17) as any as S.Schema<GetVendorsSubscriptionRequest>,
-  output: __S(9) as any as S.Schema<MarketplaceSubscriptionV1Subscription>,
+  input: GetVendorsSubscriptionRequest,
+  output: MarketplaceSubscriptionV1Subscription,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -373,8 +500,8 @@ export const rejectVendorsSubscription: API.OperationMethod<
   RejectVendorsSubscriptionError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18) as any as S.Schema<RejectVendorsSubscriptionRequest>,
-  output: __S(3) as any as S.Schema<RejectVendorsSubscriptionResponse>,
+  input: RejectVendorsSubscriptionRequest,
+  output: RejectVendorsSubscriptionResponse,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -388,8 +515,8 @@ export const resolveCustomer: API.OperationMethod<
   ResolveCustomerError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19) as any as S.Schema<ResolveCustomerRequest>,
-  output: __S(9) as any as S.Schema<MarketplaceSubscriptionV1Subscription>,
+  input: ResolveCustomerRequest,
+  output: MarketplaceSubscriptionV1Subscription,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -407,8 +534,8 @@ export const terminateConsumersSubscription: API.OperationMethod<
   TerminateConsumersSubscriptionError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20) as any as S.Schema<TerminateConsumersSubscriptionRequest>,
-  output: __S(3) as any as S.Schema<TerminateConsumersSubscriptionResponse>,
+  input: TerminateConsumersSubscriptionRequest,
+  output: TerminateConsumersSubscriptionResponse,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -422,8 +549,8 @@ export const vendorsSubscriptionsListByOrganization: API.OperationMethod<
   VendorsSubscriptionsListByOrganizationError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21) as any as S.Schema<VendorsSubscriptionsListByOrganizationRequest>,
-  output: __S(11) as any as S.Schema<MarketplaceSubscriptionV1ListSubscriptionsResponse>,
+  input: VendorsSubscriptionsListByOrganizationRequest,
+  output: MarketplaceSubscriptionV1ListSubscriptionsResponse,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -437,8 +564,8 @@ export const vendorsSubscriptionsListByProject: API.OperationMethod<
   VendorsSubscriptionsListByProjectError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22) as any as S.Schema<VendorsSubscriptionsListByProjectRequest>,
-  output: __S(11) as any as S.Schema<MarketplaceSubscriptionV1ListSubscriptionsResponse>,
+  input: VendorsSubscriptionsListByProjectRequest,
+  output: MarketplaceSubscriptionV1ListSubscriptionsResponse,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -519,7 +646,7 @@ function __c0(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          version: S.optional(__S(5)),
+          version: S.optional(MarketplaceSubscriptionV1FileLocalizedVersion),
         }),
       ).annotate({
         identifier: "MarketplaceSubscriptionV1File",
@@ -527,10 +654,10 @@ function __c0(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          endUserLicenseAgreement: S.optional(__S(6)),
-          productDescription: S.optional(__S(6)),
-          serviceCertificate: S.optional(__S(6)),
-          serviceLevelAgreement: S.optional(__S(6)),
+          endUserLicenseAgreement: S.optional(MarketplaceSubscriptionV1File),
+          productDescription: S.optional(MarketplaceSubscriptionV1File),
+          serviceCertificate: S.optional(MarketplaceSubscriptionV1File),
+          serviceLevelAgreement: S.optional(MarketplaceSubscriptionV1File),
         }),
       ).annotate({
         identifier: "MarketplaceSubscriptionV1Assets",
@@ -542,12 +669,12 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          assets: S.optional(__S(7)),
-          deliveryMethod: S.String,
-          lifecycleState: S.String,
+          assets: S.optional(MarketplaceSubscriptionV1Assets),
+          deliveryMethod: MarketplaceSubscriptionV1SubscriptionProductDeliveryMethod,
+          lifecycleState: MarketplaceSubscriptionV1SubscriptionProductLifecycleState,
           noticePeriod: S.String,
           planId: S.String,
-          priceType: S.String,
+          priceType: MarketplaceSubscriptionV1SubscriptionProductPriceType,
           pricingPlan: S.String,
           productId: S.String,
           productName: S.String,
@@ -566,10 +693,10 @@ function __c1(j: number): any {
         S.Struct({
           approvalTimeout: S.optional(S.String),
           autoRenewal: S.optional(S.Boolean),
-          lifecycleState: S.String,
+          lifecycleState: MarketplaceSubscriptionV1SubscriptionLifecycleState,
           orderedAt: S.String,
           organizationId: S.String,
-          product: __S(8),
+          product: MarketplaceSubscriptionV1SubscriptionProduct,
           projectId: S.String,
           subscriptionId: S.String,
           terminatesAt: S.optional(S.String),
@@ -580,12 +707,12 @@ function __c1(j: number): any {
         identifier: "MarketplaceSubscriptionV1Subscription",
       });
     case 2:
-      return S.Array(__S(9));
+      return S.Array(MarketplaceSubscriptionV1Subscription);
     case 3:
       return S.suspend(() =>
         S.Struct({
           cursor: S.optional(S.String),
-          items: S.optional(__S(10)),
+          items: S.optional(MarketplaceSubscriptionV1ListSubscriptionsResponseItemsList),
           limit: S.optional(S.Number),
         }),
       ).annotate({
@@ -776,20 +903,5 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "VendorsSubscriptionsListByProjectRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
   }
 }

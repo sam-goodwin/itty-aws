@@ -12,8 +12,6 @@ import {
 } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { CloudflareOpError, CloudflareOpContext };
 
@@ -160,6 +158,11 @@ export interface EnvironmentsCreateRequestEnvironmentsItemPosition {
   after?: string;
   before?: string;
 }
+const EnvironmentsCreateRequestEnvironmentsItemPosition = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<EnvironmentsCreateRequestEnvironmentsItemPosition>;
+
 export interface EnvironmentsCreateRequestEnvironmentsItem {
   expression: string;
   lockedOnDeployment: boolean;
@@ -169,16 +172,36 @@ export interface EnvironmentsCreateRequestEnvironmentsItem {
   version: number;
   httpApplicationId?: string;
 }
+const EnvironmentsCreateRequestEnvironmentsItem = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<EnvironmentsCreateRequestEnvironmentsItem>;
+
 export type EnvironmentsCreateRequestEnvironmentsList =
   Array<EnvironmentsCreateRequestEnvironmentsItem>;
+const EnvironmentsCreateRequestEnvironmentsList = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<EnvironmentsCreateRequestEnvironmentsList>;
+
 export interface CreateEnvironmentRequest {
   zoneId: string;
   environments: EnvironmentsCreateRequestEnvironmentsList;
 }
+const CreateEnvironmentRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<CreateEnvironmentRequest>;
+
 export interface EnvironmentsCreateResponseEnvironmentsItemPosition {
   after?: string | null;
   before?: string | null;
 }
+const EnvironmentsCreateResponseEnvironmentsItemPosition = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<EnvironmentsCreateResponseEnvironmentsItemPosition>;
+
 export interface EnvironmentsCreateResponseEnvironmentsItem {
   expression: string;
   lockedOnDeployment: boolean;
@@ -188,25 +211,46 @@ export interface EnvironmentsCreateResponseEnvironmentsItem {
   version: number;
   httpApplicationId?: string | null;
 }
+const EnvironmentsCreateResponseEnvironmentsItem = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<EnvironmentsCreateResponseEnvironmentsItem>;
+
 export type EnvironmentsCreateResponseEnvironmentsList =
   Array<EnvironmentsCreateResponseEnvironmentsItem>;
+const EnvironmentsCreateResponseEnvironmentsList = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<EnvironmentsCreateResponseEnvironmentsList>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateEnvironmentResponse {
   environments: EnvironmentsCreateResponseEnvironmentsList;
 }
+const CreateEnvironmentResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<CreateEnvironmentResponse>;
+
 export interface CreateHoldRequest {
   /** Identifier. */
   zoneId: string;
   /** If provided, the zone hold will extend to block any subdomain of the given zone, as well as SSL4SaaS Custom Hostnames. For example, a zone hold on a zone with the hostname 'example.com' and include_subdomains=true will block 'example.com', 'staging.example.com', 'api.staging.example.com', etc. */
   includeSubdomains?: boolean;
 }
+const CreateHoldRequest = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<CreateHoldRequest>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateHoldResponse {
   hold?: boolean | null;
   holdAfter?: string | null;
   includeSubdomains?: unknown | null;
 }
+const CreateHoldResponse = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<CreateHoldResponse>;
+
 export type SubscriptionsCreateRequestFrequency = "weekly" | "monthly" | "quarterly" | "yearly";
+const SubscriptionsCreateRequestFrequency = S.String;
+
 export type SubscriptionsCreateRequestRatePlanId =
   | "free"
   | "lite"
@@ -218,7 +262,14 @@ export type SubscriptionsCreateRequestRatePlanId =
   | "partners_pro"
   | "partners_business"
   | "partners_enterprise";
+const SubscriptionsCreateRequestRatePlanId = S.String;
+
 export type SubscriptionsCreateRequestRatePlanSetsList = Array<string>;
+const SubscriptionsCreateRequestRatePlanSetsList = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<SubscriptionsCreateRequestRatePlanSetsList>;
+
 export interface SubscriptionsCreateRequestRatePlan {
   /** The ID of the rate plan. */
   id?: SubscriptionsCreateRequestRatePlanId | (string & {});
@@ -235,6 +286,11 @@ export interface SubscriptionsCreateRequestRatePlan {
   /** The list of sets this rate plan applies to. Returns array of strings. */
   sets?: SubscriptionsCreateRequestRatePlanSetsList;
 }
+const SubscriptionsCreateRequestRatePlan = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<SubscriptionsCreateRequestRatePlan>;
+
 export interface CreateSubscriptionRequest {
   /** Identifier */
   zoneId: string;
@@ -243,12 +299,19 @@ export interface CreateSubscriptionRequest {
   /** The rate plan applied to the subscription. */
   ratePlan?: SubscriptionsCreateRequestRatePlan;
 }
+const CreateSubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<CreateSubscriptionRequest>;
+
 export type SubscriptionsCreateResponseFrequency =
   | "weekly"
   | "monthly"
   | "quarterly"
   | "yearly"
   | "not-applicable";
+const SubscriptionsCreateResponseFrequency = S.String;
+
 export type SubscriptionsCreateResponseRatePlanId =
   | "free"
   | "lite"
@@ -260,7 +323,12 @@ export type SubscriptionsCreateResponseRatePlanId =
   | "partners_pro"
   | "partners_business"
   | "partners_enterprise";
+const SubscriptionsCreateResponseRatePlanId = S.String;
+
 export type SubscriptionsCreateResponseRatePlanSetsList = Array<string>;
+const SubscriptionsCreateResponseRatePlanSetsList =
+  SubscriptionsCreateRequestRatePlanSetsList as any as S.Schema<SubscriptionsCreateResponseRatePlanSetsList>;
+
 export interface SubscriptionsCreateResponseRatePlan {
   /** The ID of the rate plan. */
   id?: SubscriptionsCreateResponseRatePlanId | null;
@@ -277,6 +345,11 @@ export interface SubscriptionsCreateResponseRatePlan {
   /** The list of sets this rate plan applies to. Returns array of strings. */
   sets?: SubscriptionsCreateResponseRatePlanSetsList | null;
 }
+const SubscriptionsCreateResponseRatePlan = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<SubscriptionsCreateResponseRatePlan>;
+
 export type SubscriptionsCreateResponseState =
   | "Trial"
   | "Provisioned"
@@ -285,6 +358,8 @@ export type SubscriptionsCreateResponseState =
   | "Cancelled"
   | "Failed"
   | "Expired";
+const SubscriptionsCreateResponseState = S.String;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateSubscriptionResponse {
   /** Subscription identifier tag. */
@@ -304,11 +379,20 @@ export interface CreateSubscriptionResponse {
   /** The state that the subscription is in. */
   state?: SubscriptionsCreateResponseState | null;
 }
+const CreateSubscriptionResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<CreateSubscriptionResponse>;
+
 export interface CreateRequestAccount {
   /** Identifier */
   id?: string;
 }
+const CreateRequestAccount = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<CreateRequestAccount>;
+
 export type CreateRequestType = "full" | "partial" | "secondary" | "internal";
+const CreateRequestType = S.String;
+
 export interface CreateZoneRequest {
   account: CreateRequestAccount;
   /** The domain name. Per [RFC 1035](https://datatracker.ietf.org/doc/html/rfc1035#section-2.3.4) the overall zone name can be up to 253 characters, with each segment ("label") not exceeding 63 characters. */
@@ -316,12 +400,19 @@ export interface CreateZoneRequest {
   /** A full zone implies that DNS is hosted with Cloudflare. A partial zone is typically a partner-hosted zone or a CNAME setup. */
   type?: CreateRequestType | (string & {});
 }
+const CreateZoneRequest = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<CreateZoneRequest>;
+
 export interface CreateResponseAccount {
   /** Identifier */
   id?: string | null;
   /** The name of the account. */
   name?: string | null;
 }
+const CreateResponseAccount = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<CreateResponseAccount>;
+
 export interface CreateResponseMeta {
   /** The zone is only configured for CDN. */
   cdnOnly?: boolean | null;
@@ -337,8 +428,16 @@ export interface CreateResponseMeta {
   phishingDetected?: boolean | null;
   step?: number | null;
 }
+const CreateResponseMeta = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<CreateResponseMeta>;
+
 export type CreateResponseNameServersList = Array<string>;
+const CreateResponseNameServersList =
+  SubscriptionsCreateRequestRatePlanSetsList as any as S.Schema<CreateResponseNameServersList>;
+
 export type CreateResponseOriginalNameServersList = Array<string>;
+const CreateResponseOriginalNameServersList =
+  SubscriptionsCreateRequestRatePlanSetsList as any as S.Schema<CreateResponseOriginalNameServersList>;
+
 export interface CreateResponseOwner {
   /** Identifier */
   id?: string | null;
@@ -347,6 +446,8 @@ export interface CreateResponseOwner {
   /** The type of owner. */
   type?: string | null;
 }
+const CreateResponseOwner = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<CreateResponseOwner>;
+
 export interface CreateResponsePlan {
   /** Identifier */
   id?: string | null;
@@ -369,20 +470,39 @@ export interface CreateResponsePlan {
   /** How much the customer is paying. */
   price?: number | null;
 }
+const CreateResponsePlan = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<CreateResponsePlan>;
+
 export type CreateResponsePermissionsList = Array<string>;
+const CreateResponsePermissionsList =
+  SubscriptionsCreateRequestRatePlanSetsList as any as S.Schema<CreateResponsePermissionsList>;
+
 export type CreateResponseStatus = "initializing" | "pending" | "active" | "moved";
+const CreateResponseStatus = S.String;
+
 export interface CreateResponseTenant {
   /** Identifier */
   id?: string | null;
   /** The name of the Tenant account. */
   name?: string | null;
 }
+const CreateResponseTenant = CreateResponseAccount as any as S.Schema<CreateResponseTenant>;
+
 export interface CreateResponseTenantUnit {
   /** Identifier */
   id?: string | null;
 }
+const CreateResponseTenantUnit = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<CreateResponseTenantUnit>;
+
 export type CreateResponseType = "full" | "partial" | "secondary" | "internal";
+const CreateResponseType = S.String;
+
 export type CreateResponseVanityNameServersList = Array<string>;
+const CreateResponseVanityNameServersList =
+  SubscriptionsCreateRequestRatePlanSetsList as any as S.Schema<CreateResponseVanityNameServersList>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateZoneResponse {
   /** Identifier */
@@ -432,10 +552,17 @@ export interface CreateZoneResponse {
   /** Verification key for partial zone setup. */
   verificationKey?: string | null;
 }
+const CreateZoneResponse = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<CreateZoneResponse>;
+
 export interface DeleteEnvironmentRequest {
   zoneId: string;
   environmentId: string;
 }
+const DeleteEnvironmentRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<DeleteEnvironmentRequest>;
+
 export type EnvironmentsDeleteResponseEnvironmentsItemPosition =
   EnvironmentsCreateResponseEnvironmentsItemPosition;
 export type EnvironmentsDeleteResponseEnvironmentsItem = EnvironmentsCreateResponseEnvironmentsItem;
@@ -445,27 +572,46 @@ export type EnvironmentsDeleteResponseEnvironmentsList =
 export interface DeleteEnvironmentResponse {
   environments: EnvironmentsDeleteResponseEnvironmentsList;
 }
+const DeleteEnvironmentResponse =
+  CreateEnvironmentResponse as any as S.Schema<DeleteEnvironmentResponse>;
+
 export interface DeleteHoldRequest {
   /** Identifier. */
   zoneId: string;
   /** If `hold_after` is provided, the hold will be temporarily disabled, then automatically re-enabled by the system at the time specified in this RFC3339-formatted timestamp. Otherwise, the hold will be disabled indefinitely. `hold_after` cannot be provided for CDN-only zones. */
   holdAfter?: string;
 }
+const DeleteHoldRequest = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<DeleteHoldRequest>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DeleteHoldResponse {
   hold?: boolean | null;
   holdAfter?: string | null;
   includeSubdomains?: unknown | null;
 }
+const DeleteHoldResponse = CreateHoldResponse as any as S.Schema<DeleteHoldResponse>;
+
 export interface DeleteObservabilityTracingRuleRequest {
   /** Specify the zone ID. */
   zoneId: string;
 }
+const DeleteObservabilityTracingRuleRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<DeleteObservabilityTracingRuleRequest>;
+
 export type DeleteObservabilityTracingRuleResponseRulesItemAction = "set_trace_settings";
+const DeleteObservabilityTracingRuleResponseRulesItemAction = S.String;
+
 export interface DeleteObservabilityTracingRuleResponseRulesItemActionParameters {
   /** The ratio of requests sampled for tracing, from 0 to 1. */
   samplingRatio: number;
 }
+const DeleteObservabilityTracingRuleResponseRulesItemActionParameters = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<DeleteObservabilityTracingRuleResponseRulesItemActionParameters>;
+
 export interface DeleteObservabilityTracingRuleResponseRulesItem {
   action: DeleteObservabilityTracingRuleResponseRulesItemAction;
   actionParameters: DeleteObservabilityTracingRuleResponseRulesItemActionParameters;
@@ -474,22 +620,47 @@ export interface DeleteObservabilityTracingRuleResponseRulesItem {
   /** A Rules language expression that selects requests. */
   expression: string;
 }
+const DeleteObservabilityTracingRuleResponseRulesItem = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<DeleteObservabilityTracingRuleResponseRulesItem>;
+
 export type DeleteObservabilityTracingRuleResponseRulesList =
   Array<DeleteObservabilityTracingRuleResponseRulesItem>;
+const DeleteObservabilityTracingRuleResponseRulesList = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<DeleteObservabilityTracingRuleResponseRulesList>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DeleteObservabilityTracingRuleResponse {
   /** Trace rules in evaluation order. */
   rules: DeleteObservabilityTracingRuleResponseRulesList;
 }
+const DeleteObservabilityTracingRuleResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<DeleteObservabilityTracingRuleResponse>;
+
 export interface DeleteObservabilityTracingSettingsRequest {
   /** Specify the zone ID. */
   zoneId: string;
 }
+const DeleteObservabilityTracingSettingsRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<DeleteObservabilityTracingSettingsRequest>;
+
 export type DeleteObservabilityTracingSettingsResponseDestinationsList = Array<string>;
+const DeleteObservabilityTracingSettingsResponseDestinationsList =
+  SubscriptionsCreateRequestRatePlanSetsList as any as S.Schema<DeleteObservabilityTracingSettingsResponseDestinationsList>;
+
 export type DeleteObservabilityTracingSettingsResponsePropagationPolicy =
   | "accept"
   | "authenticated"
   | "reject";
+const DeleteObservabilityTracingSettingsResponsePropagationPolicy = S.String;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DeleteObservabilityTracingSettingsResponse {
   /** Up to 100 OpenTelemetry destination identifiers that receive traces. */
@@ -505,26 +676,41 @@ export interface DeleteObservabilityTracingSettingsResponse {
   /** The ratio of requests sampled for tracing, from 0 to 1. */
   samplingRatio: number;
 }
+const DeleteObservabilityTracingSettingsResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<DeleteObservabilityTracingSettingsResponse>;
+
 export interface DeleteZoneRequest {
   /** Identifier */
   zoneId: string;
 }
+const DeleteZoneRequest = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<DeleteZoneRequest>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DeleteZoneResponse {
   /** Identifier */
   id: string;
 }
+const DeleteZoneResponse = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<DeleteZoneResponse>;
+
 export interface EditNelRequestValue {
   /** Whether Network Error Logging is enabled for the zone. When enabled, browsers report network errors to Cloudflare's NEL endpoint. */
   enabled: boolean;
 }
+const EditNelRequestValue = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<EditNelRequestValue>;
+
 export interface EditNelRequest {
   /** Identifier of the zone. */
   zoneId: string;
   /** The NEL configuration value. */
   value: EditNelRequestValue;
 }
+const EditNelRequest = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<EditNelRequest>;
+
 export type EditNelResponseId = "nel";
+const EditNelResponseId = S.String;
+
 export type EditNelResponseValue = EditNelRequestValue;
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface EditNelResponse {
@@ -537,14 +723,25 @@ export interface EditNelResponse {
   /** The NEL configuration value. */
   value: EditNelRequestValue;
 }
+const EditNelResponse = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<EditNelResponse>;
+
 export interface EditTransformationsAllowedOriginRequest {
   /** Identifier. */
   zoneId: string;
   /** Comma-separated list of allowed origin domains for image and video transformations. Use "*" to allow all origins (default). */
   value: string;
 }
+const EditTransformationsAllowedOriginRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<EditTransformationsAllowedOriginRequest>;
+
 export type EditTransformationsAllowedOriginResponseId = "image_resizing_allowed_origins";
+const EditTransformationsAllowedOriginResponseId = S.String;
+
 export type EditTransformationsAllowedOriginResponseValue = "on" | "off";
+const EditTransformationsAllowedOriginResponseValue = S.String;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface EditTransformationsAllowedOriginResponse {
   /** ID of the zone setting. */
@@ -556,13 +753,25 @@ export interface EditTransformationsAllowedOriginResponse {
   /** Comma-separated list of allowed origin domains for image and video transformations. Use "*" to allow all origins (default). */
   value?: EditTransformationsAllowedOriginResponseValue | null;
 }
+const EditTransformationsAllowedOriginResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<EditTransformationsAllowedOriginResponse>;
+
 export type EditTransformationsC2paRequestValue = "off" | "on";
+const EditTransformationsC2paRequestValue = S.String;
+
 export interface EditTransformationsC2paRequest {
   /** Identifier. */
   zoneId: string;
   /** Whether C2PA signing is enabled for image transformations. */
   value: EditTransformationsC2paRequestValue | (string & {});
 }
+const EditTransformationsC2paRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<EditTransformationsC2paRequest>;
+
 export type EditTransformationsC2paResponseId = "image_resizing_c2pa";
 export type EditTransformationsC2paResponseValue = "on" | "off";
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -576,11 +785,19 @@ export interface EditTransformationsC2paResponse {
   /** Current value of the zone setting. */
   value?: EditTransformationsC2paResponseValue | null;
 }
+const EditTransformationsC2paResponse =
+  EditTransformationsAllowedOriginResponse as any as S.Schema<EditTransformationsC2paResponse>;
+
 export interface GetCtAlertingRequest {
   /** Identifier. */
   zoneId: string;
 }
+const GetCtAlertingRequest = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<GetCtAlertingRequest>;
+
 export type CtAlertingGetResponseEmailsList = Array<string>;
+const CtAlertingGetResponseEmailsList =
+  SubscriptionsCreateRequestRatePlanSetsList as any as S.Schema<CtAlertingGetResponseEmailsList>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetCtAlertingResponse {
   /** Whether CT alerting is enabled for the zone. */
@@ -588,10 +805,20 @@ export interface GetCtAlertingResponse {
   /** Email addresses that receive CT alert notifications for the zone. A maximum of 100 addresses may be configured. Each address must be a valid RFC 5322 email address and must not contain a comma. */
   emails?: CtAlertingGetResponseEmailsList | null;
 }
+const GetCtAlertingResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  1,
+) as any as S.Schema<GetCtAlertingResponse>;
+
 export interface GetCustomNameserverRequest {
   /** Identifier. */
   zoneId: string;
 }
+const GetCustomNameserverRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  2,
+) as any as S.Schema<GetCustomNameserverRequest>;
+
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface GetCustomNameserverResponse {
   /** Whether zone uses account-level custom nameservers. */
@@ -599,20 +826,31 @@ export interface GetCustomNameserverResponse {
   /** The number of the name server set to assign to the zone. */
   nsSet?: number | null;
 }
+const GetCustomNameserverResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<GetCustomNameserverResponse>;
+
 export interface GetHoldRequest {
   /** Identifier. */
   zoneId: string;
 }
+const GetHoldRequest = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<GetHoldRequest>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetHoldResponse {
   hold?: boolean | null;
   holdAfter?: string | null;
   includeSubdomains?: unknown | null;
 }
+const GetHoldResponse = CreateHoldResponse as any as S.Schema<GetHoldResponse>;
+
 export interface GetNelRequest {
   /** Identifier of the zone. */
   zoneId: string;
 }
+const GetNelRequest = /*@__PURE__*/ __L.at(__c5, 5) as any as S.Schema<GetNelRequest>;
+
 export type GetNelResponseId = "nel";
 export type GetNelResponseValue = EditNelRequestValue;
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -626,10 +864,17 @@ export interface GetNelResponse {
   /** The NEL configuration value. */
   value: EditNelRequestValue;
 }
+const GetNelResponse = EditNelResponse as any as S.Schema<GetNelResponse>;
+
 export interface GetObservabilityTracingRuleRequest {
   /** Specify the zone ID. */
   zoneId: string;
 }
+const GetObservabilityTracingRuleRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  6,
+) as any as S.Schema<GetObservabilityTracingRuleRequest>;
+
 export type GetObservabilityTracingRuleResponseRulesItemAction = "set_trace_settings";
 export type GetObservabilityTracingRuleResponseRulesItemActionParameters =
   DeleteObservabilityTracingRuleResponseRulesItemActionParameters;
@@ -648,15 +893,28 @@ export interface GetObservabilityTracingRuleResponse {
   /** Trace rules in evaluation order. */
   rules: GetObservabilityTracingRuleResponseRulesList;
 }
+const GetObservabilityTracingRuleResponse =
+  DeleteObservabilityTracingRuleResponse as any as S.Schema<GetObservabilityTracingRuleResponse>;
+
 export interface GetObservabilityTracingSettingsRequest {
   /** Specify the zone ID. */
   zoneId: string;
 }
+const GetObservabilityTracingSettingsRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  7,
+) as any as S.Schema<GetObservabilityTracingSettingsRequest>;
+
 export type GetObservabilityTracingSettingsResponseDestinationsList = Array<string>;
+const GetObservabilityTracingSettingsResponseDestinationsList =
+  SubscriptionsCreateRequestRatePlanSetsList as any as S.Schema<GetObservabilityTracingSettingsResponseDestinationsList>;
+
 export type GetObservabilityTracingSettingsResponsePropagationPolicy =
   | "accept"
   | "authenticated"
   | "reject";
+const GetObservabilityTracingSettingsResponsePropagationPolicy = S.String;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetObservabilityTracingSettingsResponse {
   /** Up to 100 OpenTelemetry destination identifiers that receive traces. */
@@ -672,13 +930,22 @@ export interface GetObservabilityTracingSettingsResponse {
   /** The ratio of requests sampled for tracing, from 0 to 1. */
   samplingRatio: number;
 }
+const GetObservabilityTracingSettingsResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<GetObservabilityTracingSettingsResponse>;
+
 export interface GetPlanRequest {
   /** Identifier */
   zoneId: string;
   /** Identifier */
   planIdentifier: string;
 }
+const GetPlanRequest = /*@__PURE__*/ __L.at(__c6, 1) as any as S.Schema<GetPlanRequest>;
+
 export type PlansGetResponseFrequency = "weekly" | "monthly" | "quarterly" | "yearly";
+const PlansGetResponseFrequency = S.String;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetPlanResponse {
   /** Identifier */
@@ -700,15 +967,21 @@ export interface GetPlanResponse {
   /** The amount you will be billed for this plan. */
   price?: number | null;
 }
+const GetPlanResponse = /*@__PURE__*/ __L.at(__c6, 2) as any as S.Schema<GetPlanResponse>;
+
 export interface GetRatePlanRequest {
   /** Identifier */
   zoneId: string;
 }
+const GetRatePlanRequest = /*@__PURE__*/ __L.at(__c6, 3) as any as S.Schema<GetRatePlanRequest>;
+
 export type RatePlansGetResultItemComponentsItemName =
   | "zones"
   | "page_rules"
   | "dedicated_certificates"
   | "dedicated_certificates_custom";
+const RatePlansGetResultItemComponentsItemName = S.String;
+
 export interface RatePlansGetResultItemComponentsItem {
   /** The default amount allocated. */
   default?: number | null;
@@ -717,8 +990,20 @@ export interface RatePlansGetResultItemComponentsItem {
   /** The unit price of the component. */
   unitPrice?: number | null;
 }
+const RatePlansGetResultItemComponentsItem = /*@__PURE__*/ __L.at(
+  __c6,
+  4,
+) as any as S.Schema<RatePlansGetResultItemComponentsItem>;
+
 export type RatePlansGetResultItemComponentsList = Array<RatePlansGetResultItemComponentsItem>;
+const RatePlansGetResultItemComponentsList = /*@__PURE__*/ __L.at(
+  __c6,
+  5,
+) as any as S.Schema<RatePlansGetResultItemComponentsList>;
+
 export type RatePlansGetResultItemFrequency = "weekly" | "monthly" | "quarterly" | "yearly";
+const RatePlansGetResultItemFrequency = S.String;
+
 export interface RatePlansGetResultItem {
   /** Plan identifier tag. */
   id?: string | null;
@@ -733,19 +1018,33 @@ export interface RatePlansGetResultItem {
   /** The plan name. */
   name?: string | null;
 }
+const RatePlansGetResultItem = /*@__PURE__*/ __L.at(
+  __c6,
+  6,
+) as any as S.Schema<RatePlansGetResultItem>;
+
 export type RatePlansGetResultList = Array<RatePlansGetResultItem>;
+const RatePlansGetResultList = /*@__PURE__*/ __L.at(
+  __c6,
+  7,
+) as any as S.Schema<RatePlansGetResultList>;
+
 export interface GetRatePlanResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result: RatePlansGetResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
+const GetRatePlanResponse = /*@__PURE__*/ __L.at(__c7, 0) as any as S.Schema<GetRatePlanResponse>;
+
 export interface GetSettingRequest {
   /** Identifier */
   zoneId: string;
   /** Setting name */
   settingId: string;
 }
+const GetSettingRequest = /*@__PURE__*/ __L.at(__c7, 1) as any as S.Schema<GetSettingRequest>;
+
 export type SettingsGetResultZeroRTTId = "0rtt";
 export type SettingsGetResultZeroRTTValue = "on" | "off";
 export interface SettingsGetResultZeroRTT {
@@ -1697,17 +1996,28 @@ export type SettingsGetResult =
   | SettingsGetResultZonesWebmcpPacks
   | SettingsGetResultWebP
   | SettingsGetResultWebsocket;
+const SettingsGetResult = /*@__PURE__*/ __L.at(__c7, 2);
+
 export type GetSettingResponse = SettingsGetResult;
+const GetSettingResponse = /*@__PURE__*/ __L.at(__c7, 3) as any as S.Schema<GetSettingResponse>;
+
 export interface GetSubscriptionRequest {
   /** Identifier */
   zoneId: string;
 }
+const GetSubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  4,
+) as any as S.Schema<GetSubscriptionRequest>;
+
 export type SubscriptionsGetResponseFrequency =
   | "weekly"
   | "monthly"
   | "quarterly"
   | "yearly"
   | "not-applicable";
+const SubscriptionsGetResponseFrequency = S.String;
+
 export type SubscriptionsGetResponseRatePlanId =
   | "free"
   | "lite"
@@ -1719,7 +2029,12 @@ export type SubscriptionsGetResponseRatePlanId =
   | "partners_pro"
   | "partners_business"
   | "partners_enterprise";
+const SubscriptionsGetResponseRatePlanId = S.String;
+
 export type SubscriptionsGetResponseRatePlanSetsList = Array<string>;
+const SubscriptionsGetResponseRatePlanSetsList =
+  SubscriptionsCreateRequestRatePlanSetsList as any as S.Schema<SubscriptionsGetResponseRatePlanSetsList>;
+
 export interface SubscriptionsGetResponseRatePlan {
   /** The ID of the rate plan. */
   id?: SubscriptionsGetResponseRatePlanId | null;
@@ -1736,6 +2051,11 @@ export interface SubscriptionsGetResponseRatePlan {
   /** The list of sets this rate plan applies to. Returns array of strings. */
   sets?: SubscriptionsGetResponseRatePlanSetsList | null;
 }
+const SubscriptionsGetResponseRatePlan = /*@__PURE__*/ __L.at(
+  __c7,
+  5,
+) as any as S.Schema<SubscriptionsGetResponseRatePlan>;
+
 export type SubscriptionsGetResponseState =
   | "Trial"
   | "Provisioned"
@@ -1744,6 +2064,8 @@ export type SubscriptionsGetResponseState =
   | "Cancelled"
   | "Failed"
   | "Expired";
+const SubscriptionsGetResponseState = S.String;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetSubscriptionResponse {
   /** Subscription identifier tag. */
@@ -1763,10 +2085,20 @@ export interface GetSubscriptionResponse {
   /** The state that the subscription is in. */
   state?: SubscriptionsGetResponseState | null;
 }
+const GetSubscriptionResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  6,
+) as any as S.Schema<GetSubscriptionResponse>;
+
 export interface GetTransformationsAllowedOriginRequest {
   /** Identifier. */
   zoneId: string;
 }
+const GetTransformationsAllowedOriginRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  7,
+) as any as S.Schema<GetTransformationsAllowedOriginRequest>;
+
 export type GetTransformationsAllowedOriginResponseId = "image_resizing_allowed_origins";
 export type GetTransformationsAllowedOriginResponseValue = "on" | "off";
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -1780,10 +2112,18 @@ export interface GetTransformationsAllowedOriginResponse {
   /** Comma-separated list of allowed origin domains for image and video transformations. Use "*" to allow all origins (default). */
   value?: GetTransformationsAllowedOriginResponseValue | null;
 }
+const GetTransformationsAllowedOriginResponse =
+  EditTransformationsAllowedOriginResponse as any as S.Schema<GetTransformationsAllowedOriginResponse>;
+
 export interface GetTransformationsC2paRequest {
   /** Identifier. */
   zoneId: string;
 }
+const GetTransformationsC2paRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  0,
+) as any as S.Schema<GetTransformationsC2paRequest>;
+
 export type GetTransformationsC2paResponseId = "image_resizing_c2pa";
 export type GetTransformationsC2paResponseValue = "on" | "off";
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -1797,22 +2137,43 @@ export interface GetTransformationsC2paResponse {
   /** Current value of the zone setting. */
   value?: GetTransformationsC2paResponseValue | null;
 }
+const GetTransformationsC2paResponse =
+  EditTransformationsAllowedOriginResponse as any as S.Schema<GetTransformationsC2paResponse>;
+
 export interface GetZoneRequest {
   /** Identifier */
   zoneId: string;
 }
+const GetZoneRequest = /*@__PURE__*/ __L.at(__c8, 1) as any as S.Schema<GetZoneRequest>;
+
 export type GetResponseAccount = CreateResponseAccount;
 export type GetResponseMeta = CreateResponseMeta;
 export type GetResponseNameServersList = Array<string>;
+const GetResponseNameServersList =
+  SubscriptionsCreateRequestRatePlanSetsList as any as S.Schema<GetResponseNameServersList>;
+
 export type GetResponseOriginalNameServersList = Array<string>;
+const GetResponseOriginalNameServersList =
+  SubscriptionsCreateRequestRatePlanSetsList as any as S.Schema<GetResponseOriginalNameServersList>;
+
 export type GetResponseOwner = CreateResponseOwner;
 export type GetResponsePlan = CreateResponsePlan;
 export type GetResponsePermissionsList = Array<string>;
+const GetResponsePermissionsList =
+  SubscriptionsCreateRequestRatePlanSetsList as any as S.Schema<GetResponsePermissionsList>;
+
 export type GetResponseStatus = "initializing" | "pending" | "active" | "moved";
+const GetResponseStatus = S.String;
+
 export type GetResponseTenant = CreateResponseTenant;
 export type GetResponseTenantUnit = CreateResponseTenantUnit;
 export type GetResponseType = "full" | "partial" | "secondary" | "internal";
+const GetResponseType = S.String;
+
 export type GetResponseVanityNameServersList = Array<string>;
+const GetResponseVanityNameServersList =
+  SubscriptionsCreateRequestRatePlanSetsList as any as S.Schema<GetResponseVanityNameServersList>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetZoneResponse {
   /** Identifier */
@@ -1862,16 +2223,25 @@ export interface GetZoneResponse {
   /** Verification key for partial zone setup. */
   verificationKey?: string | null;
 }
+const GetZoneResponse = /*@__PURE__*/ __L.at(__c8, 2) as any as S.Schema<GetZoneResponse>;
+
 export interface ListEntitlementsRequest {
   /** Identifier tag. */
   zoneId: string;
 }
+const ListEntitlementsRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  3,
+) as any as S.Schema<ListEntitlementsRequest>;
+
 export type ListEntitlementsResultItemAllocationType =
   | "bool"
   | "max_count"
   | "enum_number"
   | "range"
   | "string";
+const ListEntitlementsResultItemAllocationType = S.String;
+
 export type ListEntitlementsResultItemAllocationValueCase3List = Array<number>;
 export interface ListEntitlementsResultItemAllocationValueCase4 {
   max: number;
@@ -1883,12 +2253,19 @@ export type ListEntitlementsResultItemAllocationValue =
   | boolean
   | ListEntitlementsResultItemAllocationValueCase3List
   | ListEntitlementsResultItemAllocationValueCase4;
+const ListEntitlementsResultItemAllocationValue = /*@__PURE__*/ __L.at(__c8, 4);
+
 export interface ListEntitlementsResultItemAllocation {
   /** Allocation type discriminator. */
   type: ListEntitlementsResultItemAllocationType;
   /** Contains the allocation value whose concrete type the `type` field determines: bool yields a boolean, max_count yields an integer, enum_number yields an array of numbers, range yields an object with `min` and `max`, and string yields a string. */
   value: ListEntitlementsResultItemAllocationValue;
 }
+const ListEntitlementsResultItemAllocation = /*@__PURE__*/ __L.at(
+  __c8,
+  5,
+) as any as S.Schema<ListEntitlementsResultItemAllocation>;
+
 export interface ListEntitlementsResultItemFeature {
   /** Numeric identifier of the feature. */
   id: number;
@@ -1899,6 +2276,11 @@ export interface ListEntitlementsResultItemFeature {
   /** Human-readable name of the feature. */
   name: string;
 }
+const ListEntitlementsResultItemFeature = /*@__PURE__*/ __L.at(
+  __c8,
+  6,
+) as any as S.Schema<ListEntitlementsResultItemFeature>;
+
 export interface ListEntitlementsResultItem {
   /** Entitlement identifier -- equal to the feature key. */
   id: string;
@@ -1913,25 +2295,57 @@ export interface ListEntitlementsResultItem {
   /** Describes a product feature associated with an entitlement. */
   feature: ListEntitlementsResultItemFeature;
 }
+const ListEntitlementsResultItem = /*@__PURE__*/ __L.at(
+  __c8,
+  7,
+) as any as S.Schema<ListEntitlementsResultItem>;
+
 export type ListEntitlementsResultList = Array<ListEntitlementsResultItem>;
+const ListEntitlementsResultList = /*@__PURE__*/ __L.at(
+  __c9,
+  0,
+) as any as S.Schema<ListEntitlementsResultList>;
+
 export type ListEntitlementsResponse = ListEntitlementsResultList;
+const ListEntitlementsResponse = /*@__PURE__*/ __L.at(
+  __c9,
+  1,
+) as any as S.Schema<ListEntitlementsResponse>;
+
 export interface ListEnvironmentsRequest {
   zoneId: string;
 }
+const ListEnvironmentsRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  2,
+) as any as S.Schema<ListEnvironmentsRequest>;
+
 export type EnvironmentsListResponseEnvironmentsItemPosition =
   EnvironmentsCreateResponseEnvironmentsItemPosition;
 export type EnvironmentsListResponseEnvironmentsItem = EnvironmentsCreateResponseEnvironmentsItem;
 export type EnvironmentsListResponseEnvironmentsList =
   Array<EnvironmentsCreateResponseEnvironmentsItem>;
+const EnvironmentsListResponseEnvironmentsList =
+  EnvironmentsCreateResponseEnvironmentsList as any as S.Schema<EnvironmentsListResponseEnvironmentsList>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface ListEnvironmentsResponse {
   environments: EnvironmentsListResponseEnvironmentsList;
 }
+const ListEnvironmentsResponse = /*@__PURE__*/ __L.at(
+  __c9,
+  3,
+) as any as S.Schema<ListEnvironmentsResponse>;
+
 export interface ListPlansRequest {
   /** Identifier */
   zoneId: string;
 }
+const ListPlansRequest = /*@__PURE__*/ __L.at(__c9, 4) as any as S.Schema<ListPlansRequest>;
+
 export type PlansListResultItemFrequency = "weekly" | "monthly" | "quarterly" | "yearly";
+const PlansListResultItemFrequency = S.String;
+
 export interface PlansListResultItem {
   /** Identifier */
   id?: string | null;
@@ -1952,17 +2366,25 @@ export interface PlansListResultItem {
   /** The amount you will be billed for this plan. */
   price?: number | null;
 }
+const PlansListResultItem = /*@__PURE__*/ __L.at(__c9, 5) as any as S.Schema<PlansListResultItem>;
+
 export type PlansListResultList = Array<PlansListResultItem>;
+const PlansListResultList = /*@__PURE__*/ __L.at(__c9, 6) as any as S.Schema<PlansListResultList>;
+
 export interface ListPlansResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result: PlansListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
+const ListPlansResponse = /*@__PURE__*/ __L.at(__c9, 7) as any as S.Schema<ListPlansResponse>;
+
 export interface ListSettingsRequest {
   /** Identifier */
   zoneId: string;
 }
+const ListSettingsRequest = /*@__PURE__*/ __L.at(__c10, 0) as any as S.Schema<ListSettingsRequest>;
+
 export type ListSettingsResultItemZeroRTTId = "0rtt";
 export type ListSettingsResultItemZeroRTTValue = "on" | "off";
 export interface ListSettingsResultItemZeroRTT {
@@ -2882,20 +3304,46 @@ export type ListSettingsResultItem =
   | ListSettingsResultItemZonesWebmcpPacks
   | ListSettingsResultItemWebP
   | ListSettingsResultItemWebsocket;
+const ListSettingsResultItem = /*@__PURE__*/ __L.at(__c10, 1);
+
 export type ListSettingsResultList = Array<ListSettingsResultItem>;
+const ListSettingsResultList = /*@__PURE__*/ __L.at(
+  __c10,
+  2,
+) as any as S.Schema<ListSettingsResultList>;
+
 export type ListSettingsResponse = ListSettingsResultList;
+const ListSettingsResponse = /*@__PURE__*/ __L.at(
+  __c10,
+  3,
+) as any as S.Schema<ListSettingsResponse>;
+
 export interface ListRequestAccount {
   /** Filter by an account ID. */
   id?: string;
   /** An account Name. Optional filter operators can be provided to extend refine the search: */
   name?: string;
 }
+const ListRequestAccount = /*@__PURE__*/ __L.at(__c10, 4) as any as S.Schema<ListRequestAccount>;
+
 export type ListRequestDirection = "asc" | "desc";
+const ListRequestDirection = S.String;
+
 export type ListRequestMatch = "any" | "all";
+const ListRequestMatch = S.String;
+
 export type ListRequestOrder = "name" | "status" | "account.id" | "account.name" | "plan.id";
+const ListRequestOrder = S.String;
+
 export type ListRequestStatus = "initializing" | "pending" | "active" | "moved";
+const ListRequestStatus = S.String;
+
 export type ListRequestType = "full" | "partial" | "secondary" | "internal";
+const ListRequestType = S.String;
+
 export type ListRequestTypeList = Array<ListRequestType | (string & {})>;
+const ListRequestTypeList = /*@__PURE__*/ __L.at(__c10, 5) as any as S.Schema<ListRequestTypeList>;
+
 export interface ListZonesRequest {
   account?: ListRequestAccount;
   /** Direction to order zones. */
@@ -2915,18 +3363,36 @@ export interface ListZonesRequest {
   /** Zone types to filter by. Multiple types can be specified as a comma-separated list (e.g., ?type=full,partial,secondary). When this parameter is not provided, zones with type "internal" are excluded from the results. */
   type?: ListRequestTypeList;
 }
+const ListZonesRequest = /*@__PURE__*/ __L.at(__c10, 6) as any as S.Schema<ListZonesRequest>;
+
 export type ListResultItemAccount = CreateResponseAccount;
 export type ListResultItemMeta = CreateResponseMeta;
 export type ListResultItemNameServersList = Array<string>;
+const ListResultItemNameServersList =
+  SubscriptionsCreateRequestRatePlanSetsList as any as S.Schema<ListResultItemNameServersList>;
+
 export type ListResultItemOriginalNameServersList = Array<string>;
+const ListResultItemOriginalNameServersList =
+  SubscriptionsCreateRequestRatePlanSetsList as any as S.Schema<ListResultItemOriginalNameServersList>;
+
 export type ListResultItemOwner = CreateResponseOwner;
 export type ListResultItemPlan = CreateResponsePlan;
 export type ListResultItemPermissionsList = Array<string>;
+const ListResultItemPermissionsList =
+  SubscriptionsCreateRequestRatePlanSetsList as any as S.Schema<ListResultItemPermissionsList>;
+
 export type ListResultItemStatus = "initializing" | "pending" | "active" | "moved";
+const ListResultItemStatus = S.String;
+
 export type ListResultItemTenant = CreateResponseTenant;
 export type ListResultItemTenantUnit = CreateResponseTenantUnit;
 export type ListResultItemType = "full" | "partial" | "secondary" | "internal";
+const ListResultItemType = S.String;
+
 export type ListResultItemVanityNameServersList = Array<string>;
+const ListResultItemVanityNameServersList =
+  SubscriptionsCreateRequestRatePlanSetsList as any as S.Schema<ListResultItemVanityNameServersList>;
+
 export interface ListResultItem {
   /** Identifier */
   id: string;
@@ -2975,14 +3441,23 @@ export interface ListResultItem {
   /** Verification key for partial zone setup. */
   verificationKey?: string | null;
 }
+const ListResultItem = /*@__PURE__*/ __L.at(__c10, 7) as any as S.Schema<ListResultItem>;
+
 export type ListResultList = Array<ListResultItem>;
+const ListResultList = /*@__PURE__*/ __L.at(__c11, 0) as any as S.Schema<ListResultList>;
+
 export interface ListZonesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result: ListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
+const ListZonesResponse = /*@__PURE__*/ __L.at(__c11, 1) as any as S.Schema<ListZonesResponse>;
+
 export type CtAlertingEditRequestEmailsList = Array<string>;
+const CtAlertingEditRequestEmailsList =
+  SubscriptionsCreateRequestRatePlanSetsList as any as S.Schema<CtAlertingEditRequestEmailsList>;
+
 export interface PatchCtAlertingRequest {
   /** Identifier. */
   zoneId: string;
@@ -2991,6 +3466,11 @@ export interface PatchCtAlertingRequest {
   /** Email addresses that receive CT alert notifications for the zone. A maximum of 100 addresses may be configured. Each address must be a valid RFC 5322 email address and must not contain a comma. */
   emails?: CtAlertingEditRequestEmailsList;
 }
+const PatchCtAlertingRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  2,
+) as any as S.Schema<PatchCtAlertingRequest>;
+
 export type CtAlertingEditResponseEmailsList = Array<string>;
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PatchCtAlertingResponse {
@@ -2999,15 +3479,25 @@ export interface PatchCtAlertingResponse {
   /** Email addresses that receive CT alert notifications for the zone. A maximum of 100 addresses may be configured. Each address must be a valid RFC 5322 email address and must not contain a comma. */
   emails?: CtAlertingEditResponseEmailsList | null;
 }
+const PatchCtAlertingResponse = GetCtAlertingResponse as any as S.Schema<PatchCtAlertingResponse>;
+
 export type EnvironmentsEditRequestEnvironmentsItemPosition =
   EnvironmentsCreateRequestEnvironmentsItemPosition;
 export type EnvironmentsEditRequestEnvironmentsItem = EnvironmentsCreateRequestEnvironmentsItem;
 export type EnvironmentsEditRequestEnvironmentsList =
   Array<EnvironmentsCreateRequestEnvironmentsItem>;
+const EnvironmentsEditRequestEnvironmentsList =
+  EnvironmentsCreateRequestEnvironmentsList as any as S.Schema<EnvironmentsEditRequestEnvironmentsList>;
+
 export interface PatchEnvironmentRequest {
   zoneId: string;
   environments: EnvironmentsEditRequestEnvironmentsList;
 }
+const PatchEnvironmentRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  3,
+) as any as S.Schema<PatchEnvironmentRequest>;
+
 export type EnvironmentsEditResponseEnvironmentsItemPosition =
   EnvironmentsCreateResponseEnvironmentsItemPosition;
 export type EnvironmentsEditResponseEnvironmentsItem = EnvironmentsCreateResponseEnvironmentsItem;
@@ -3017,6 +3507,9 @@ export type EnvironmentsEditResponseEnvironmentsList =
 export interface PatchEnvironmentResponse {
   environments: EnvironmentsEditResponseEnvironmentsList;
 }
+const PatchEnvironmentResponse =
+  ListEnvironmentsResponse as any as S.Schema<PatchEnvironmentResponse>;
+
 export interface PatchHoldRequest {
   /** Identifier. */
   zoneId: string;
@@ -3025,12 +3518,16 @@ export interface PatchHoldRequest {
   /** If `true`, the zone hold will extend to block any subdomain of the given zone, as well as SSL4SaaS Custom Hostnames. For example, a zone hold on a zone with the hostname 'example.com' and include_subdomains=true will block 'example.com', 'staging.example.com', 'api.staging.example.com', etc. */
   includeSubdomains?: boolean;
 }
+const PatchHoldRequest = /*@__PURE__*/ __L.at(__c11, 4) as any as S.Schema<PatchHoldRequest>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PatchHoldResponse {
   hold?: boolean | null;
   holdAfter?: string | null;
   includeSubdomains?: unknown | null;
 }
+const PatchHoldResponse = CreateHoldResponse as any as S.Schema<PatchHoldResponse>;
+
 export interface PatchSettingRequest {
   /** Identifier */
   zoneId: string;
@@ -3041,6 +3538,8 @@ export interface PatchSettingRequest {
   /** Value of the zone setting. */
   value?: unknown;
 }
+const PatchSettingRequest = /*@__PURE__*/ __L.at(__c11, 5) as any as S.Schema<PatchSettingRequest>;
+
 export type SettingsEditResultZeroRTTId = "0rtt";
 export type SettingsEditResultZeroRTTValue = "on" | "off";
 export interface SettingsEditResultZeroRTT {
@@ -3973,9 +4472,21 @@ export type SettingsEditResult =
   | SettingsEditResultZonesWebmcpPacks
   | SettingsEditResultWebP
   | SettingsEditResultWebsocket;
+const SettingsEditResult = /*@__PURE__*/ __L.at(__c11, 6);
+
 export type PatchSettingResponse = SettingsEditResult;
+const PatchSettingResponse = /*@__PURE__*/ __L.at(
+  __c11,
+  7,
+) as any as S.Schema<PatchSettingResponse>;
+
 export type EditRequestType = "full" | "partial" | "secondary" | "internal";
+const EditRequestType = S.String;
+
 export type EditRequestVanityNameServersList = Array<string>;
+const EditRequestVanityNameServersList =
+  SubscriptionsCreateRequestRatePlanSetsList as any as S.Schema<EditRequestVanityNameServersList>;
+
 export interface PatchZoneRequest {
   /** Identifier */
   zoneId: string;
@@ -3986,18 +4497,36 @@ export interface PatchZoneRequest {
   /** An array of domains used for custom name servers. This is only available for Business and Enterprise plans. */
   vanityNameServers?: EditRequestVanityNameServersList;
 }
+const PatchZoneRequest = /*@__PURE__*/ __L.at(__c12, 0) as any as S.Schema<PatchZoneRequest>;
+
 export type EditResponseAccount = CreateResponseAccount;
 export type EditResponseMeta = CreateResponseMeta;
 export type EditResponseNameServersList = Array<string>;
+const EditResponseNameServersList =
+  SubscriptionsCreateRequestRatePlanSetsList as any as S.Schema<EditResponseNameServersList>;
+
 export type EditResponseOriginalNameServersList = Array<string>;
+const EditResponseOriginalNameServersList =
+  SubscriptionsCreateRequestRatePlanSetsList as any as S.Schema<EditResponseOriginalNameServersList>;
+
 export type EditResponseOwner = CreateResponseOwner;
 export type EditResponsePlan = CreateResponsePlan;
 export type EditResponsePermissionsList = Array<string>;
+const EditResponsePermissionsList =
+  SubscriptionsCreateRequestRatePlanSetsList as any as S.Schema<EditResponsePermissionsList>;
+
 export type EditResponseStatus = "initializing" | "pending" | "active" | "moved";
+const EditResponseStatus = S.String;
+
 export type EditResponseTenant = CreateResponseTenant;
 export type EditResponseTenantUnit = CreateResponseTenantUnit;
 export type EditResponseType = "full" | "partial" | "secondary" | "internal";
+const EditResponseType = S.String;
+
 export type EditResponseVanityNameServersList = Array<string>;
+const EditResponseVanityNameServersList =
+  SubscriptionsCreateRequestRatePlanSetsList as any as S.Schema<EditResponseVanityNameServersList>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PatchZoneResponse {
   /** Identifier */
@@ -4047,6 +4576,8 @@ export interface PatchZoneResponse {
   /** Verification key for partial zone setup. */
   verificationKey?: string | null;
 }
+const PatchZoneResponse = /*@__PURE__*/ __L.at(__c12, 1) as any as S.Schema<PatchZoneResponse>;
+
 export interface PutCustomNameserverRequest {
   /** Identifier. */
   zoneId: string;
@@ -4055,17 +4586,35 @@ export interface PutCustomNameserverRequest {
   /** The number of the name server set to assign to the zone. */
   nsSet?: number;
 }
+const PutCustomNameserverRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  2,
+) as any as S.Schema<PutCustomNameserverRequest>;
+
 export type CustomNameserversUpdateResultList = Array<string>;
+const CustomNameserversUpdateResultList =
+  SubscriptionsCreateRequestRatePlanSetsList as any as S.Schema<CustomNameserversUpdateResultList>;
+
 export interface PutCustomNameserverResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result: CustomNameserversUpdateResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
+const PutCustomNameserverResponse = /*@__PURE__*/ __L.at(
+  __c12,
+  3,
+) as any as S.Schema<PutCustomNameserverResponse>;
+
 export interface RollbackEnvironmentRequest {
   zoneId: string;
   environmentId: string;
 }
+const RollbackEnvironmentRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  4,
+) as any as S.Schema<RollbackEnvironmentRequest>;
+
 export type EnvironmentsRollbackResponseEnvironmentsItemPosition =
   EnvironmentsCreateResponseEnvironmentsItemPosition;
 export type EnvironmentsRollbackResponseEnvironmentsItem =
@@ -4076,6 +4625,9 @@ export type EnvironmentsRollbackResponseEnvironmentsList =
 export interface RollbackEnvironmentResponse {
   environments: EnvironmentsRollbackResponseEnvironmentsList;
 }
+const RollbackEnvironmentResponse =
+  CreateEnvironmentResponse as any as S.Schema<RollbackEnvironmentResponse>;
+
 export type SettingsBulkEditRequestBodyItemZeroRTTId = "0rtt";
 export type SettingsBulkEditRequestBodyItemZeroRTTValue = "on" | "off";
 export interface SettingsBulkEditRequestBodyItemZeroRTT {
@@ -5003,12 +5555,24 @@ export type SettingsBulkEditRequestBodyItem =
   | SettingsBulkEditRequestBodyItemZonesWebmcpPacks
   | SettingsBulkEditRequestBodyItemWebP
   | SettingsBulkEditRequestBodyItemWebsocket;
+const SettingsBulkEditRequestBodyItem = /*@__PURE__*/ __L.at(__c12, 5);
+
 export type SettingsBulkEditRequestBodyList = Array<SettingsBulkEditRequestBodyItem>;
+const SettingsBulkEditRequestBodyList = /*@__PURE__*/ __L.at(
+  __c12,
+  6,
+) as any as S.Schema<SettingsBulkEditRequestBodyList>;
+
 export interface SettingsBulkEditRequest {
   /** Identifier */
   zoneId: string;
   body: SettingsBulkEditRequestBodyList;
 }
+const SettingsBulkEditRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  7,
+) as any as S.Schema<SettingsBulkEditRequest>;
+
 export type SettingsBulkEditResultItemZeroRTTId = "0rtt";
 export type SettingsBulkEditResultItemZeroRTTValue = "on" | "off";
 export interface SettingsBulkEditResultItemZeroRTT {
@@ -5931,26 +6495,56 @@ export type SettingsBulkEditResultItem =
   | SettingsBulkEditResultItemZonesWebmcpPacks
   | SettingsBulkEditResultItemWebP
   | SettingsBulkEditResultItemWebsocket;
+const SettingsBulkEditResultItem = /*@__PURE__*/ __L.at(__c13, 0);
+
 export type SettingsBulkEditResultList = Array<SettingsBulkEditResultItem>;
+const SettingsBulkEditResultList = /*@__PURE__*/ __L.at(
+  __c13,
+  1,
+) as any as S.Schema<SettingsBulkEditResultList>;
+
 export type SettingsBulkEditResponse = SettingsBulkEditResultList;
+const SettingsBulkEditResponse = /*@__PURE__*/ __L.at(
+  __c13,
+  2,
+) as any as S.Schema<SettingsBulkEditResponse>;
+
 export interface TriggerActivationCheckRequest {
   /** Identifier. */
   zoneId: string;
 }
+const TriggerActivationCheckRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  3,
+) as any as S.Schema<TriggerActivationCheckRequest>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface TriggerActivationCheckResponse {
   /** Identifier. */
   id?: string | null;
 }
+const TriggerActivationCheckResponse = /*@__PURE__*/ __L.at(
+  __c13,
+  4,
+) as any as S.Schema<TriggerActivationCheckResponse>;
+
 export type EnvironmentsUpdateRequestEnvironmentsItemPosition =
   EnvironmentsCreateRequestEnvironmentsItemPosition;
 export type EnvironmentsUpdateRequestEnvironmentsItem = EnvironmentsCreateRequestEnvironmentsItem;
 export type EnvironmentsUpdateRequestEnvironmentsList =
   Array<EnvironmentsCreateRequestEnvironmentsItem>;
+const EnvironmentsUpdateRequestEnvironmentsList =
+  EnvironmentsCreateRequestEnvironmentsList as any as S.Schema<EnvironmentsUpdateRequestEnvironmentsList>;
+
 export interface UpdateEnvironmentRequest {
   zoneId: string;
   environments: EnvironmentsUpdateRequestEnvironmentsList;
 }
+const UpdateEnvironmentRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  5,
+) as any as S.Schema<UpdateEnvironmentRequest>;
+
 export type EnvironmentsUpdateResponseEnvironmentsItemPosition =
   EnvironmentsCreateResponseEnvironmentsItemPosition;
 export type EnvironmentsUpdateResponseEnvironmentsItem = EnvironmentsCreateResponseEnvironmentsItem;
@@ -5960,6 +6554,9 @@ export type EnvironmentsUpdateResponseEnvironmentsList =
 export interface UpdateEnvironmentResponse {
   environments: EnvironmentsUpdateResponseEnvironmentsList;
 }
+const UpdateEnvironmentResponse =
+  CreateEnvironmentResponse as any as S.Schema<UpdateEnvironmentResponse>;
+
 export type UpdateObservabilityTracingRuleRequestRulesItemAction = "set_trace_settings";
 export type UpdateObservabilityTracingRuleRequestRulesItemActionParameters =
   DeleteObservabilityTracingRuleResponseRulesItemActionParameters;
@@ -5973,12 +6570,20 @@ export interface UpdateObservabilityTracingRuleRequestRulesItem {
 }
 export type UpdateObservabilityTracingRuleRequestRulesList =
   Array<UpdateObservabilityTracingRuleRequestRulesItem>;
+const UpdateObservabilityTracingRuleRequestRulesList =
+  DeleteObservabilityTracingRuleResponseRulesList as any as S.Schema<UpdateObservabilityTracingRuleRequestRulesList>;
+
 export interface UpdateObservabilityTracingRuleRequest {
   /** Specify the zone ID. */
   zoneId: string;
   /** Trace rules in evaluation order. */
   rules: UpdateObservabilityTracingRuleRequestRulesList;
 }
+const UpdateObservabilityTracingRuleRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  6,
+) as any as S.Schema<UpdateObservabilityTracingRuleRequest>;
+
 export type UpdateObservabilityTracingRuleResponseRulesItemAction = "set_trace_settings";
 export type UpdateObservabilityTracingRuleResponseRulesItemActionParameters =
   DeleteObservabilityTracingRuleResponseRulesItemActionParameters;
@@ -5997,11 +6602,19 @@ export interface UpdateObservabilityTracingRuleResponse {
   /** Trace rules in evaluation order. */
   rules: UpdateObservabilityTracingRuleResponseRulesList;
 }
+const UpdateObservabilityTracingRuleResponse =
+  DeleteObservabilityTracingRuleResponse as any as S.Schema<UpdateObservabilityTracingRuleResponse>;
+
 export type UpdateObservabilityTracingSettingsRequestDestinationsList = Array<string>;
+const UpdateObservabilityTracingSettingsRequestDestinationsList =
+  SubscriptionsCreateRequestRatePlanSetsList as any as S.Schema<UpdateObservabilityTracingSettingsRequestDestinationsList>;
+
 export type UpdateObservabilityTracingSettingsRequestPropagationPolicy =
   | "accept"
   | "authenticated"
   | "reject";
+const UpdateObservabilityTracingSettingsRequestPropagationPolicy = S.String;
+
 export interface UpdateObservabilityTracingSettingsRequest {
   /** Specify the zone ID. */
   zoneId: string;
@@ -6018,11 +6631,21 @@ export interface UpdateObservabilityTracingSettingsRequest {
   /** The ratio of requests sampled for tracing, from 0 to 1. */
   samplingRatio?: number;
 }
+const UpdateObservabilityTracingSettingsRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  7,
+) as any as S.Schema<UpdateObservabilityTracingSettingsRequest>;
+
 export type UpdateObservabilityTracingSettingsResponseDestinationsList = Array<string>;
+const UpdateObservabilityTracingSettingsResponseDestinationsList =
+  SubscriptionsCreateRequestRatePlanSetsList as any as S.Schema<UpdateObservabilityTracingSettingsResponseDestinationsList>;
+
 export type UpdateObservabilityTracingSettingsResponsePropagationPolicy =
   | "accept"
   | "authenticated"
   | "reject";
+const UpdateObservabilityTracingSettingsResponsePropagationPolicy = S.String;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UpdateObservabilityTracingSettingsResponse {
   /** Up to 100 OpenTelemetry destination identifiers that receive traces. */
@@ -6038,7 +6661,14 @@ export interface UpdateObservabilityTracingSettingsResponse {
   /** The ratio of requests sampled for tracing, from 0 to 1. */
   samplingRatio: number;
 }
+const UpdateObservabilityTracingSettingsResponse = /*@__PURE__*/ __L.at(
+  __c14,
+  0,
+) as any as S.Schema<UpdateObservabilityTracingSettingsResponse>;
+
 export type SubscriptionsUpdateRequestFrequency = "weekly" | "monthly" | "quarterly" | "yearly";
+const SubscriptionsUpdateRequestFrequency = S.String;
+
 export type SubscriptionsUpdateRequestRatePlanId =
   | "free"
   | "lite"
@@ -6050,7 +6680,12 @@ export type SubscriptionsUpdateRequestRatePlanId =
   | "partners_pro"
   | "partners_business"
   | "partners_enterprise";
+const SubscriptionsUpdateRequestRatePlanId = S.String;
+
 export type SubscriptionsUpdateRequestRatePlanSetsList = Array<string>;
+const SubscriptionsUpdateRequestRatePlanSetsList =
+  SubscriptionsCreateRequestRatePlanSetsList as any as S.Schema<SubscriptionsUpdateRequestRatePlanSetsList>;
+
 export interface SubscriptionsUpdateRequestRatePlan {
   /** The ID of the rate plan. */
   id?: SubscriptionsUpdateRequestRatePlanId | (string & {});
@@ -6067,6 +6702,11 @@ export interface SubscriptionsUpdateRequestRatePlan {
   /** The list of sets this rate plan applies to. Returns array of strings. */
   sets?: SubscriptionsUpdateRequestRatePlanSetsList;
 }
+const SubscriptionsUpdateRequestRatePlan = /*@__PURE__*/ __L.at(
+  __c14,
+  1,
+) as any as S.Schema<SubscriptionsUpdateRequestRatePlan>;
+
 export interface UpdateSubscriptionRequest {
   /** Identifier */
   zoneId: string;
@@ -6075,12 +6715,19 @@ export interface UpdateSubscriptionRequest {
   /** The rate plan applied to the subscription. */
   ratePlan?: SubscriptionsUpdateRequestRatePlan;
 }
+const UpdateSubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  2,
+) as any as S.Schema<UpdateSubscriptionRequest>;
+
 export type SubscriptionsUpdateResponseFrequency =
   | "weekly"
   | "monthly"
   | "quarterly"
   | "yearly"
   | "not-applicable";
+const SubscriptionsUpdateResponseFrequency = S.String;
+
 export type SubscriptionsUpdateResponseRatePlanId =
   | "free"
   | "lite"
@@ -6092,7 +6739,12 @@ export type SubscriptionsUpdateResponseRatePlanId =
   | "partners_pro"
   | "partners_business"
   | "partners_enterprise";
+const SubscriptionsUpdateResponseRatePlanId = S.String;
+
 export type SubscriptionsUpdateResponseRatePlanSetsList = Array<string>;
+const SubscriptionsUpdateResponseRatePlanSetsList =
+  SubscriptionsCreateRequestRatePlanSetsList as any as S.Schema<SubscriptionsUpdateResponseRatePlanSetsList>;
+
 export interface SubscriptionsUpdateResponseRatePlan {
   /** The ID of the rate plan. */
   id?: SubscriptionsUpdateResponseRatePlanId | null;
@@ -6109,6 +6761,11 @@ export interface SubscriptionsUpdateResponseRatePlan {
   /** The list of sets this rate plan applies to. Returns array of strings. */
   sets?: SubscriptionsUpdateResponseRatePlanSetsList | null;
 }
+const SubscriptionsUpdateResponseRatePlan = /*@__PURE__*/ __L.at(
+  __c14,
+  3,
+) as any as S.Schema<SubscriptionsUpdateResponseRatePlan>;
+
 export type SubscriptionsUpdateResponseState =
   | "Trial"
   | "Provisioned"
@@ -6117,6 +6774,8 @@ export type SubscriptionsUpdateResponseState =
   | "Cancelled"
   | "Failed"
   | "Expired";
+const SubscriptionsUpdateResponseState = S.String;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UpdateSubscriptionResponse {
   /** Subscription identifier tag. */
@@ -6136,6 +6795,11 @@ export interface UpdateSubscriptionResponse {
   /** The state that the subscription is in. */
   state?: SubscriptionsUpdateResponseState | null;
 }
+const UpdateSubscriptionResponse = /*@__PURE__*/ __L.at(
+  __c14,
+  4,
+) as any as S.Schema<UpdateSubscriptionResponse>;
+
 export type CreateEnvironmentError = CloudflareOpError;
 /** Creates environments for a zone. */
 export const createEnvironment: API.OperationMethod<
@@ -6144,8 +6808,8 @@ export const createEnvironment: API.OperationMethod<
   CreateEnvironmentError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3) as any as S.Schema<CreateEnvironmentRequest>,
-  output: __S(7) as any as S.Schema<CreateEnvironmentResponse>,
+  input: CreateEnvironmentRequest,
+  output: CreateEnvironmentResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -6163,8 +6827,8 @@ export const createHold: API.OperationMethod<
   CreateHoldError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8) as any as S.Schema<CreateHoldRequest>,
-  output: __S(9) as any as S.Schema<CreateHoldResponse>,
+  input: CreateHoldRequest,
+  output: CreateHoldResponse,
   errors: [
     ZoneHoldsRequireEnterprise,
     InvalidZoneIdentifier,
@@ -6184,8 +6848,8 @@ export const createSubscription: API.OperationMethod<
   CreateSubscriptionError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12) as any as S.Schema<CreateSubscriptionRequest>,
-  output: __S(14) as any as S.Schema<CreateSubscriptionResponse>,
+  input: CreateSubscriptionRequest,
+  output: CreateSubscriptionResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -6205,8 +6869,8 @@ export const createZone: API.OperationMethod<
   CreateZoneError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16) as any as S.Schema<CreateZoneRequest>,
-  output: __S(22) as any as S.Schema<CreateZoneResponse>,
+  input: CreateZoneRequest,
+  output: CreateZoneResponse,
   errors: [
     ZoneAlreadyExists,
     ZoneCreationBlocked,
@@ -6228,8 +6892,8 @@ export const deleteEnvironment: API.OperationMethod<
   DeleteEnvironmentError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23) as any as S.Schema<DeleteEnvironmentRequest>,
-  output: __S(7) as any as S.Schema<DeleteEnvironmentResponse>,
+  input: DeleteEnvironmentRequest,
+  output: DeleteEnvironmentResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -6243,8 +6907,8 @@ export const deleteHold: API.OperationMethod<
   DeleteHoldError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24) as any as S.Schema<DeleteHoldRequest>,
-  output: __S(9) as any as S.Schema<DeleteHoldResponse>,
+  input: DeleteHoldRequest,
+  output: DeleteHoldResponse,
   errors: [InvalidZoneIdentifier, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -6258,8 +6922,8 @@ export const deleteObservabilityTracingRule: API.OperationMethod<
   DeleteObservabilityTracingRuleError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25) as any as S.Schema<DeleteObservabilityTracingRuleRequest>,
-  output: __S(29) as any as S.Schema<DeleteObservabilityTracingRuleResponse>,
+  input: DeleteObservabilityTracingRuleRequest,
+  output: DeleteObservabilityTracingRuleResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -6273,8 +6937,8 @@ export const deleteObservabilityTracingSettings: API.OperationMethod<
   DeleteObservabilityTracingSettingsError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30) as any as S.Schema<DeleteObservabilityTracingSettingsRequest>,
-  output: __S(31) as any as S.Schema<DeleteObservabilityTracingSettingsResponse>,
+  input: DeleteObservabilityTracingSettingsRequest,
+  output: DeleteObservabilityTracingSettingsResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -6288,8 +6952,8 @@ export const deleteZone: API.OperationMethod<
   DeleteZoneError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32) as any as S.Schema<DeleteZoneRequest>,
-  output: __S(33) as any as S.Schema<DeleteZoneResponse>,
+  input: DeleteZoneRequest,
+  output: DeleteZoneResponse,
   errors: [InvalidZoneIdentifier, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -6303,8 +6967,8 @@ export const editNel: API.OperationMethod<
   EditNelError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35) as any as S.Schema<EditNelRequest>,
-  output: __S(36) as any as S.Schema<EditNelResponse>,
+  input: EditNelRequest,
+  output: EditNelResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -6318,8 +6982,8 @@ export const editTransformationsAllowedOrigin: API.OperationMethod<
   EditTransformationsAllowedOriginError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37) as any as S.Schema<EditTransformationsAllowedOriginRequest>,
-  output: __S(38) as any as S.Schema<EditTransformationsAllowedOriginResponse>,
+  input: EditTransformationsAllowedOriginRequest,
+  output: EditTransformationsAllowedOriginResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -6333,8 +6997,8 @@ export const editTransformationsC2pa: API.OperationMethod<
   EditTransformationsC2paError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39) as any as S.Schema<EditTransformationsC2paRequest>,
-  output: __S(38) as any as S.Schema<EditTransformationsC2paResponse>,
+  input: EditTransformationsC2paRequest,
+  output: EditTransformationsC2paResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -6348,8 +7012,8 @@ export const getCtAlerting: API.OperationMethod<
   GetCtAlertingError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40) as any as S.Schema<GetCtAlertingRequest>,
-  output: __S(41) as any as S.Schema<GetCtAlertingResponse>,
+  input: GetCtAlertingRequest,
+  output: GetCtAlertingResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -6363,8 +7027,8 @@ export const getCustomNameserver: API.OperationMethod<
   GetCustomNameserverError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42) as any as S.Schema<GetCustomNameserverRequest>,
-  output: __S(43) as any as S.Schema<GetCustomNameserverResponse>,
+  input: GetCustomNameserverRequest,
+  output: GetCustomNameserverResponse,
   errors: [InvalidZoneIdentifier, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -6378,8 +7042,8 @@ export const getHold: API.OperationMethod<
   GetHoldError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44) as any as S.Schema<GetHoldRequest>,
-  output: __S(9) as any as S.Schema<GetHoldResponse>,
+  input: GetHoldRequest,
+  output: GetHoldResponse,
   errors: [InvalidZoneIdentifier, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -6393,8 +7057,8 @@ export const getNel: API.OperationMethod<
   GetNelError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45) as any as S.Schema<GetNelRequest>,
-  output: __S(36) as any as S.Schema<GetNelResponse>,
+  input: GetNelRequest,
+  output: GetNelResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -6408,8 +7072,8 @@ export const getObservabilityTracingRule: API.OperationMethod<
   GetObservabilityTracingRuleError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(46) as any as S.Schema<GetObservabilityTracingRuleRequest>,
-  output: __S(29) as any as S.Schema<GetObservabilityTracingRuleResponse>,
+  input: GetObservabilityTracingRuleRequest,
+  output: GetObservabilityTracingRuleResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -6423,8 +7087,8 @@ export const getObservabilityTracingSettings: API.OperationMethod<
   GetObservabilityTracingSettingsError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47) as any as S.Schema<GetObservabilityTracingSettingsRequest>,
-  output: __S(48) as any as S.Schema<GetObservabilityTracingSettingsResponse>,
+  input: GetObservabilityTracingSettingsRequest,
+  output: GetObservabilityTracingSettingsResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -6438,8 +7102,8 @@ export const getPlan: API.OperationMethod<
   GetPlanError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49) as any as S.Schema<GetPlanRequest>,
-  output: __S(50) as any as S.Schema<GetPlanResponse>,
+  input: GetPlanRequest,
+  output: GetPlanResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -6455,8 +7119,8 @@ export const getRatePlan: API.PaginatedOperationMethod<
   RatePlansGetResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(51) as any as S.Schema<GetRatePlanRequest>,
-    output: __S(56) as any as S.Schema<GetRatePlanResponse>,
+    input: GetRatePlanRequest,
+    output: GetRatePlanResponse,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -6473,8 +7137,8 @@ export const getSetting: API.OperationMethod<
   GetSettingError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57) as any as S.Schema<GetSettingRequest>,
-  output: __S(59) as any as S.Schema<GetSettingResponse>,
+  input: GetSettingRequest,
+  output: GetSettingResponse,
   errors: [InvalidZoneIdentifier, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -6488,8 +7152,8 @@ export const getSubscription: API.OperationMethod<
   GetSubscriptionError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60) as any as S.Schema<GetSubscriptionRequest>,
-  output: __S(62) as any as S.Schema<GetSubscriptionResponse>,
+  input: GetSubscriptionRequest,
+  output: GetSubscriptionResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -6503,8 +7167,8 @@ export const getTransformationsAllowedOrigin: API.OperationMethod<
   GetTransformationsAllowedOriginError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(63) as any as S.Schema<GetTransformationsAllowedOriginRequest>,
-  output: __S(38) as any as S.Schema<GetTransformationsAllowedOriginResponse>,
+  input: GetTransformationsAllowedOriginRequest,
+  output: GetTransformationsAllowedOriginResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -6518,8 +7182,8 @@ export const getTransformationsC2pa: API.OperationMethod<
   GetTransformationsC2paError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(64) as any as S.Schema<GetTransformationsC2paRequest>,
-  output: __S(38) as any as S.Schema<GetTransformationsC2paResponse>,
+  input: GetTransformationsC2paRequest,
+  output: GetTransformationsC2paResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -6533,8 +7197,8 @@ export const getZone: API.OperationMethod<
   GetZoneError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65) as any as S.Schema<GetZoneRequest>,
-  output: __S(66) as any as S.Schema<GetZoneResponse>,
+  input: GetZoneRequest,
+  output: GetZoneResponse,
   errors: [InvalidZoneIdentifier, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -6548,8 +7212,8 @@ export const listEntitlements: API.OperationMethod<
   ListEntitlementsError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(67) as any as S.Schema<ListEntitlementsRequest>,
-  output: __S(73) as any as S.Schema<ListEntitlementsResponse>,
+  input: ListEntitlementsRequest,
+  output: ListEntitlementsResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -6563,8 +7227,8 @@ export const listEnvironments: API.OperationMethod<
   ListEnvironmentsError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(74) as any as S.Schema<ListEnvironmentsRequest>,
-  output: __S(75) as any as S.Schema<ListEnvironmentsResponse>,
+  input: ListEnvironmentsRequest,
+  output: ListEnvironmentsResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -6580,8 +7244,8 @@ export const listPlans: API.PaginatedOperationMethod<
   PlansListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(76) as any as S.Schema<ListPlansRequest>,
-    output: __S(79) as any as S.Schema<ListPlansResponse>,
+    input: ListPlansRequest,
+    output: ListPlansResponse,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -6598,8 +7262,8 @@ export const listSettings: API.OperationMethod<
   ListSettingsError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(80) as any as S.Schema<ListSettingsRequest>,
-  output: __S(83) as any as S.Schema<ListSettingsResponse>,
+  input: ListSettingsRequest,
+  output: ListSettingsResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -6615,8 +7279,8 @@ export const listZones: API.PaginatedOperationMethod<
   ListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(86) as any as S.Schema<ListZonesRequest>,
-    output: __S(89) as any as S.Schema<ListZonesResponse>,
+    input: ListZonesRequest,
+    output: ListZonesResponse,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -6639,8 +7303,8 @@ export const patchCtAlerting: API.OperationMethod<
   PatchCtAlertingError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(90) as any as S.Schema<PatchCtAlertingRequest>,
-  output: __S(41) as any as S.Schema<PatchCtAlertingResponse>,
+  input: PatchCtAlertingRequest,
+  output: PatchCtAlertingResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -6654,8 +7318,8 @@ export const patchEnvironment: API.OperationMethod<
   PatchEnvironmentError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(91) as any as S.Schema<PatchEnvironmentRequest>,
-  output: __S(75) as any as S.Schema<PatchEnvironmentResponse>,
+  input: PatchEnvironmentRequest,
+  output: PatchEnvironmentResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -6674,8 +7338,8 @@ export const patchHold: API.OperationMethod<
   PatchHoldError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(92) as any as S.Schema<PatchHoldRequest>,
-  output: __S(9) as any as S.Schema<PatchHoldResponse>,
+  input: PatchHoldRequest,
+  output: PatchHoldResponse,
   errors: [
     ZoneHoldNotFound,
     ZoneHoldsRequireEnterprise,
@@ -6696,8 +7360,8 @@ export const patchSetting: API.OperationMethod<
   PatchSettingError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(93) as any as S.Schema<PatchSettingRequest>,
-  output: __S(95) as any as S.Schema<PatchSettingResponse>,
+  input: PatchSettingRequest,
+  output: PatchSettingResponse,
   errors: [InvalidZoneIdentifier, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -6711,8 +7375,8 @@ export const patchZone: API.OperationMethod<
   PatchZoneError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(96) as any as S.Schema<PatchZoneRequest>,
-  output: __S(97) as any as S.Schema<PatchZoneResponse>,
+  input: PatchZoneRequest,
+  output: PatchZoneResponse,
   errors: [InvalidZoneIdentifier, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -6732,8 +7396,8 @@ export const putCustomNameserver: API.PaginatedOperationMethod<
   string
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(98) as any as S.Schema<PutCustomNameserverRequest>,
-    output: __S(99) as any as S.Schema<PutCustomNameserverResponse>,
+    input: PutCustomNameserverRequest,
+    output: PutCustomNameserverResponse,
     errors: [
       InvalidZoneIdentifier,
       CustomNameserverSetNotFound,
@@ -6756,8 +7420,8 @@ export const rollbackEnvironment: API.OperationMethod<
   RollbackEnvironmentError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(100) as any as S.Schema<RollbackEnvironmentRequest>,
-  output: __S(7) as any as S.Schema<RollbackEnvironmentResponse>,
+  input: RollbackEnvironmentRequest,
+  output: RollbackEnvironmentResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -6771,8 +7435,8 @@ export const settingsBulkEdit: API.OperationMethod<
   SettingsBulkEditError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(103) as any as S.Schema<SettingsBulkEditRequest>,
-  output: __S(106) as any as S.Schema<SettingsBulkEditResponse>,
+  input: SettingsBulkEditRequest,
+  output: SettingsBulkEditResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -6786,8 +7450,8 @@ export const triggerActivationCheck: API.OperationMethod<
   TriggerActivationCheckError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(107) as any as S.Schema<TriggerActivationCheckRequest>,
-  output: __S(108) as any as S.Schema<TriggerActivationCheckResponse>,
+  input: TriggerActivationCheckRequest,
+  output: TriggerActivationCheckResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -6801,8 +7465,8 @@ export const updateEnvironment: API.OperationMethod<
   UpdateEnvironmentError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(109) as any as S.Schema<UpdateEnvironmentRequest>,
-  output: __S(7) as any as S.Schema<UpdateEnvironmentResponse>,
+  input: UpdateEnvironmentRequest,
+  output: UpdateEnvironmentResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -6816,8 +7480,8 @@ export const updateObservabilityTracingRule: API.OperationMethod<
   UpdateObservabilityTracingRuleError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(110) as any as S.Schema<UpdateObservabilityTracingRuleRequest>,
-  output: __S(29) as any as S.Schema<UpdateObservabilityTracingRuleResponse>,
+  input: UpdateObservabilityTracingRuleRequest,
+  output: UpdateObservabilityTracingRuleResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -6831,8 +7495,8 @@ export const updateObservabilityTracingSettings: API.OperationMethod<
   UpdateObservabilityTracingSettingsError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(111) as any as S.Schema<UpdateObservabilityTracingSettingsRequest>,
-  output: __S(112) as any as S.Schema<UpdateObservabilityTracingSettingsResponse>,
+  input: UpdateObservabilityTracingSettingsRequest,
+  output: UpdateObservabilityTracingSettingsResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -6846,8 +7510,8 @@ export const updateSubscription: API.OperationMethod<
   UpdateSubscriptionError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(114) as any as S.Schema<UpdateSubscriptionRequest>,
-  output: __S(116) as any as S.Schema<UpdateSubscriptionResponse>,
+  input: UpdateSubscriptionRequest,
+  output: UpdateSubscriptionResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -6871,7 +7535,7 @@ function __c0(j: number): any {
           expression: S.String,
           lockedOnDeployment: S.Boolean.pipe(T.Body("locked_on_deployment")),
           name: S.String,
-          position: __S(0),
+          position: EnvironmentsCreateRequestEnvironmentsItemPosition,
           ref: S.String,
           version: S.Number,
           httpApplicationId: S.optional(S.String.pipe(T.Body("http_application_id"))),
@@ -6880,12 +7544,12 @@ function __c0(j: number): any {
         identifier: "EnvironmentsCreateRequestEnvironmentsItem",
       });
     case 2:
-      return S.Array(__S(1));
+      return S.Array(EnvironmentsCreateRequestEnvironmentsItem);
     case 3:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
-          environments: __S(2),
+          environments: EnvironmentsCreateRequestEnvironmentsList,
         })
           .pipe(T.Http({ method: "POST", uri: "/zones/{zone_id}/environments", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -6905,7 +7569,7 @@ function __c0(j: number): any {
           expression: S.String,
           lockedOnDeployment: S.Boolean.pipe(T.Body("locked_on_deployment")),
           name: S.String,
-          position: __S(4),
+          position: EnvironmentsCreateResponseEnvironmentsItemPosition,
           ref: S.String,
           version: S.Number,
           httpApplicationId: S.optional(S.NullOr(S.String).pipe(T.Body("http_application_id"))),
@@ -6914,11 +7578,11 @@ function __c0(j: number): any {
         identifier: "EnvironmentsCreateResponseEnvironmentsItem",
       });
     case 6:
-      return S.Array(__S(5));
+      return S.Array(EnvironmentsCreateResponseEnvironmentsItem);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          environments: __S(6),
+          environments: EnvironmentsCreateResponseEnvironmentsList,
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "CreateEnvironmentResponse",
@@ -6949,13 +7613,13 @@ function __c1(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          id: S.optional(S.String),
+          id: S.optional(SubscriptionsCreateRequestRatePlanId),
           currency: S.optional(S.String),
           externallyManaged: S.optional(S.Boolean.pipe(T.Body("externally_managed"))),
           isContract: S.optional(S.Boolean.pipe(T.Body("is_contract"))),
           publicName: S.optional(S.String.pipe(T.Body("public_name"))),
           scope: S.optional(S.String),
-          sets: S.optional(__S(10)),
+          sets: S.optional(SubscriptionsCreateRequestRatePlanSetsList),
         }),
       ).annotate({
         identifier: "SubscriptionsCreateRequestRatePlan",
@@ -6964,8 +7628,8 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
-          frequency: S.optional(S.String),
-          ratePlan: S.optional(__S(11).pipe(T.Body("rate_plan"))),
+          frequency: S.optional(SubscriptionsCreateRequestFrequency),
+          ratePlan: S.optional(SubscriptionsCreateRequestRatePlan.pipe(T.Body("rate_plan"))),
         })
           .pipe(T.Http({ method: "POST", uri: "/zones/{zone_id}/subscription", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -6975,13 +7639,13 @@ function __c1(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          id: S.optional(S.NullOr(S.String)),
+          id: S.optional(S.NullOr(SubscriptionsCreateResponseRatePlanId)),
           currency: S.optional(S.NullOr(S.String)),
           externallyManaged: S.optional(S.NullOr(S.Boolean).pipe(T.Body("externally_managed"))),
           isContract: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_contract"))),
           publicName: S.optional(S.NullOr(S.String).pipe(T.Body("public_name"))),
           scope: S.optional(S.NullOr(S.String)),
-          sets: S.optional(S.NullOr(__S(10))),
+          sets: S.optional(S.NullOr(SubscriptionsCreateResponseRatePlanSetsList)),
         }),
       ).annotate({
         identifier: "SubscriptionsCreateResponseRatePlan",
@@ -6993,10 +7657,12 @@ function __c1(j: number): any {
           currency: S.optional(S.NullOr(S.String)),
           currentPeriodEnd: S.optional(S.NullOr(S.String).pipe(T.Body("current_period_end"))),
           currentPeriodStart: S.optional(S.NullOr(S.String).pipe(T.Body("current_period_start"))),
-          frequency: S.optional(S.NullOr(S.String)),
+          frequency: S.optional(S.NullOr(SubscriptionsCreateResponseFrequency)),
           price: S.optional(S.NullOr(S.Number)),
-          ratePlan: S.optional(S.NullOr(__S(13)).pipe(T.Body("rate_plan"))),
-          state: S.optional(S.NullOr(S.String)),
+          ratePlan: S.optional(
+            S.NullOr(SubscriptionsCreateResponseRatePlan).pipe(T.Body("rate_plan")),
+          ),
+          state: S.optional(S.NullOr(SubscriptionsCreateResponseState)),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "CreateSubscriptionResponse",
@@ -7014,9 +7680,9 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          account: __S(15),
+          account: CreateRequestAccount,
           name: S.String,
-          type: S.optional(S.String),
+          type: S.optional(CreateRequestType),
         })
           .pipe(T.Http({ method: "POST", uri: "/zones", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -7075,27 +7741,31 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          account: __S(17),
+          account: CreateResponseAccount,
           activatedOn: S.String.pipe(T.Body("activated_on")),
           createdOn: S.String.pipe(T.Body("created_on")),
           developmentMode: S.Number.pipe(T.Body("development_mode")),
-          meta: __S(18),
+          meta: CreateResponseMeta,
           modifiedOn: S.String.pipe(T.Body("modified_on")),
           name: S.String,
-          nameServers: __S(10).pipe(T.Body("name_servers")),
+          nameServers: CreateResponseNameServersList.pipe(T.Body("name_servers")),
           originalDnshost: S.String.pipe(T.Body("original_dnshost")),
-          originalNameServers: __S(10).pipe(T.Body("original_name_servers")),
+          originalNameServers: CreateResponseOriginalNameServersList.pipe(
+            T.Body("original_name_servers"),
+          ),
           originalRegistrar: S.String.pipe(T.Body("original_registrar")),
-          owner: __S(19),
-          plan: __S(20),
+          owner: CreateResponseOwner,
+          plan: CreateResponsePlan,
           cnameSuffix: S.optional(S.NullOr(S.String).pipe(T.Body("cname_suffix"))),
           paused: S.optional(S.NullOr(S.Boolean)),
-          permissions: S.optional(S.NullOr(__S(10))),
-          status: S.optional(S.NullOr(S.String)),
-          tenant: S.optional(S.NullOr(__S(17))),
-          tenantUnit: S.optional(S.NullOr(__S(21)).pipe(T.Body("tenant_unit"))),
-          type: S.optional(S.NullOr(S.String)),
-          vanityNameServers: S.optional(S.NullOr(__S(10)).pipe(T.Body("vanity_name_servers"))),
+          permissions: S.optional(S.NullOr(CreateResponsePermissionsList)),
+          status: S.optional(S.NullOr(CreateResponseStatus)),
+          tenant: S.optional(S.NullOr(CreateResponseTenant)),
+          tenantUnit: S.optional(S.NullOr(CreateResponseTenantUnit).pipe(T.Body("tenant_unit"))),
+          type: S.optional(S.NullOr(CreateResponseType)),
+          vanityNameServers: S.optional(
+            S.NullOr(CreateResponseVanityNameServersList).pipe(T.Body("vanity_name_servers")),
+          ),
           verificationKey: S.optional(S.NullOr(S.String).pipe(T.Body("verification_key"))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "CreateZoneResponse" });
@@ -7154,8 +7824,10 @@ function __c3(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          action: S.String,
-          actionParameters: __S(26).pipe(T.Body("action_parameters")),
+          action: DeleteObservabilityTracingRuleResponseRulesItemAction,
+          actionParameters: DeleteObservabilityTracingRuleResponseRulesItemActionParameters.pipe(
+            T.Body("action_parameters"),
+          ),
           description: S.String,
           enabled: S.Boolean,
           expression: S.String,
@@ -7164,11 +7836,11 @@ function __c3(j: number): any {
         identifier: "DeleteObservabilityTracingRuleResponseRulesItem",
       });
     case 4:
-      return S.Array(__S(27));
+      return S.Array(DeleteObservabilityTracingRuleResponseRulesItem);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          rules: __S(28),
+          rules: DeleteObservabilityTracingRuleResponseRulesList,
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "DeleteObservabilityTracingRuleResponse",
@@ -7192,11 +7864,13 @@ function __c3(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          destinations: __S(10),
+          destinations: DeleteObservabilityTracingSettingsResponseDestinationsList,
           enabled: S.Boolean,
           forwardContext: S.Boolean.pipe(T.Body("forward_context")),
           persist: S.Boolean,
-          propagationPolicy: S.String.pipe(T.Body("propagation_policy")),
+          propagationPolicy: DeleteObservabilityTracingSettingsResponsePropagationPolicy.pipe(
+            T.Body("propagation_policy"),
+          ),
           samplingRatio: S.Number.pipe(T.Body("sampling_ratio")),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
@@ -7230,7 +7904,7 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
-          value: __S(34),
+          value: EditNelRequestValue,
         })
           .pipe(T.Http({ method: "PATCH", uri: "/zones/{zone_id}/settings/nel", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -7238,10 +7912,10 @@ function __c4(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          id: S.String,
+          id: EditNelResponseId,
           editable: S.Boolean,
           modifiedOn: S.String.pipe(T.Body("modified_on")),
-          value: __S(34),
+          value: EditNelRequestValue,
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "EditNelResponse" });
     case 5:
@@ -7264,10 +7938,10 @@ function __c4(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          id: S.optional(S.NullOr(S.String)),
+          id: S.optional(S.NullOr(EditTransformationsAllowedOriginResponseId)),
           editable: S.optional(S.NullOr(S.Boolean)),
           modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-          value: S.optional(S.NullOr(S.String)),
+          value: S.optional(S.NullOr(EditTransformationsAllowedOriginResponseValue)),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "EditTransformationsAllowedOriginResponse",
@@ -7276,7 +7950,7 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
-          value: S.String,
+          value: EditTransformationsC2paRequestValue,
         })
           .pipe(
             T.Http({
@@ -7305,7 +7979,7 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           enabled: S.Boolean,
-          emails: S.optional(S.NullOr(__S(10))),
+          emails: S.optional(S.NullOr(CtAlertingGetResponseEmailsList)),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetCtAlertingResponse" });
     case 2:
@@ -7382,11 +8056,13 @@ function __c6(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          destinations: __S(10),
+          destinations: GetObservabilityTracingSettingsResponseDestinationsList,
           enabled: S.Boolean,
           forwardContext: S.Boolean.pipe(T.Body("forward_context")),
           persist: S.Boolean,
-          propagationPolicy: S.String.pipe(T.Body("propagation_policy")),
+          propagationPolicy: GetObservabilityTracingSettingsResponsePropagationPolicy.pipe(
+            T.Body("propagation_policy"),
+          ),
           samplingRatio: S.Number.pipe(T.Body("sampling_ratio")),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
@@ -7414,7 +8090,7 @@ function __c6(j: number): any {
           canSubscribe: S.optional(S.NullOr(S.Boolean).pipe(T.Body("can_subscribe"))),
           currency: S.optional(S.NullOr(S.String)),
           externallyManaged: S.optional(S.NullOr(S.Boolean).pipe(T.Body("externally_managed"))),
-          frequency: S.optional(S.NullOr(S.String)),
+          frequency: S.optional(S.NullOr(PlansGetResponseFrequency)),
           isSubscribed: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_subscribed"))),
           legacyId: S.optional(S.NullOr(S.String).pipe(T.Body("legacy_id"))),
           name: S.optional(S.NullOr(S.String)),
@@ -7433,27 +8109,27 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           default: S.optional(S.NullOr(S.Number)),
-          name: S.optional(S.NullOr(S.String)),
+          name: S.optional(S.NullOr(RatePlansGetResultItemComponentsItemName)),
           unitPrice: S.optional(S.NullOr(S.Number).pipe(T.Body("unit_price"))),
         }),
       ).annotate({
         identifier: "RatePlansGetResultItemComponentsItem",
       });
     case 5:
-      return S.Array(__S(52));
+      return S.Array(RatePlansGetResultItemComponentsItem);
     case 6:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
-          components: S.optional(S.NullOr(__S(53))),
+          components: S.optional(S.NullOr(RatePlansGetResultItemComponentsList)),
           currency: S.optional(S.NullOr(S.String)),
           duration: S.optional(S.NullOr(S.Number)),
-          frequency: S.optional(S.NullOr(S.String)),
+          frequency: S.optional(S.NullOr(RatePlansGetResultItemFrequency)),
           name: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "RatePlansGetResultItem" });
     case 7:
-      return S.Array(__S(54));
+      return S.Array(RatePlansGetResultItem);
   }
 }
 function __c7(j: number): any {
@@ -7461,7 +8137,7 @@ function __c7(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          result: __S(55).pipe(T.EnvelopePayload()),
+          result: RatePlansGetResultList.pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetRatePlanResponse" });
@@ -7620,7 +8296,7 @@ function __c7(j: number): any {
       );
     case 3:
       return S.suspend(() =>
-        __S(58).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
+        SettingsGetResult.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetSettingResponse" });
     case 4:
       return S.suspend(() =>
@@ -7633,13 +8309,13 @@ function __c7(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          id: S.optional(S.NullOr(S.String)),
+          id: S.optional(S.NullOr(SubscriptionsGetResponseRatePlanId)),
           currency: S.optional(S.NullOr(S.String)),
           externallyManaged: S.optional(S.NullOr(S.Boolean).pipe(T.Body("externally_managed"))),
           isContract: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_contract"))),
           publicName: S.optional(S.NullOr(S.String).pipe(T.Body("public_name"))),
           scope: S.optional(S.NullOr(S.String)),
-          sets: S.optional(S.NullOr(__S(10))),
+          sets: S.optional(S.NullOr(SubscriptionsGetResponseRatePlanSetsList)),
         }),
       ).annotate({
         identifier: "SubscriptionsGetResponseRatePlan",
@@ -7651,10 +8327,12 @@ function __c7(j: number): any {
           currency: S.optional(S.NullOr(S.String)),
           currentPeriodEnd: S.optional(S.NullOr(S.String).pipe(T.Body("current_period_end"))),
           currentPeriodStart: S.optional(S.NullOr(S.String).pipe(T.Body("current_period_start"))),
-          frequency: S.optional(S.NullOr(S.String)),
+          frequency: S.optional(S.NullOr(SubscriptionsGetResponseFrequency)),
           price: S.optional(S.NullOr(S.Number)),
-          ratePlan: S.optional(S.NullOr(__S(61)).pipe(T.Body("rate_plan"))),
-          state: S.optional(S.NullOr(S.String)),
+          ratePlan: S.optional(
+            S.NullOr(SubscriptionsGetResponseRatePlan).pipe(T.Body("rate_plan")),
+          ),
+          state: S.optional(S.NullOr(SubscriptionsGetResponseState)),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetSubscriptionResponse" });
     case 7:
@@ -7705,27 +8383,31 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          account: __S(17),
+          account: CreateResponseAccount,
           activatedOn: S.String.pipe(T.Body("activated_on")),
           createdOn: S.String.pipe(T.Body("created_on")),
           developmentMode: S.Number.pipe(T.Body("development_mode")),
-          meta: __S(18),
+          meta: CreateResponseMeta,
           modifiedOn: S.String.pipe(T.Body("modified_on")),
           name: S.String,
-          nameServers: __S(10).pipe(T.Body("name_servers")),
+          nameServers: GetResponseNameServersList.pipe(T.Body("name_servers")),
           originalDnshost: S.String.pipe(T.Body("original_dnshost")),
-          originalNameServers: __S(10).pipe(T.Body("original_name_servers")),
+          originalNameServers: GetResponseOriginalNameServersList.pipe(
+            T.Body("original_name_servers"),
+          ),
           originalRegistrar: S.String.pipe(T.Body("original_registrar")),
-          owner: __S(19),
-          plan: __S(20),
+          owner: CreateResponseOwner,
+          plan: CreateResponsePlan,
           cnameSuffix: S.optional(S.NullOr(S.String).pipe(T.Body("cname_suffix"))),
           paused: S.optional(S.NullOr(S.Boolean)),
-          permissions: S.optional(S.NullOr(__S(10))),
-          status: S.optional(S.NullOr(S.String)),
-          tenant: S.optional(S.NullOr(__S(17))),
-          tenantUnit: S.optional(S.NullOr(__S(21)).pipe(T.Body("tenant_unit"))),
-          type: S.optional(S.NullOr(S.String)),
-          vanityNameServers: S.optional(S.NullOr(__S(10)).pipe(T.Body("vanity_name_servers"))),
+          permissions: S.optional(S.NullOr(GetResponsePermissionsList)),
+          status: S.optional(S.NullOr(GetResponseStatus)),
+          tenant: S.optional(S.NullOr(CreateResponseTenant)),
+          tenantUnit: S.optional(S.NullOr(CreateResponseTenantUnit).pipe(T.Body("tenant_unit"))),
+          type: S.optional(S.NullOr(GetResponseType)),
+          vanityNameServers: S.optional(
+            S.NullOr(GetResponseVanityNameServersList).pipe(T.Body("vanity_name_servers")),
+          ),
           verificationKey: S.optional(S.NullOr(S.String).pipe(T.Body("verification_key"))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetZoneResponse" });
@@ -7742,8 +8424,8 @@ function __c8(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          type: S.String,
-          value: __S(68),
+          type: ListEntitlementsResultItemAllocationType,
+          value: ListEntitlementsResultItemAllocationValue,
         }),
       ).annotate({
         identifier: "ListEntitlementsResultItemAllocation",
@@ -7763,11 +8445,11 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          allocation: __S(69),
+          allocation: ListEntitlementsResultItemAllocation,
           createdDate: S.String.pipe(T.Body("created_date")),
           deletedDate: S.String.pipe(T.Body("deleted_date")),
           editedDate: S.String.pipe(T.Body("edited_date")),
-          feature: __S(70),
+          feature: ListEntitlementsResultItemFeature,
         }),
       ).annotate({
         identifier: "ListEntitlementsResultItem",
@@ -7777,10 +8459,10 @@ function __c8(j: number): any {
 function __c9(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(71));
+      return S.Array(ListEntitlementsResultItem);
     case 1:
       return S.suspend(() =>
-        __S(72).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
+        ListEntitlementsResultList.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListEntitlementsResponse" });
     case 2:
       return S.suspend(() =>
@@ -7793,7 +8475,7 @@ function __c9(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          environments: __S(6),
+          environments: EnvironmentsListResponseEnvironmentsList,
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListEnvironmentsResponse" });
     case 4:
@@ -7811,7 +8493,7 @@ function __c9(j: number): any {
           canSubscribe: S.optional(S.NullOr(S.Boolean).pipe(T.Body("can_subscribe"))),
           currency: S.optional(S.NullOr(S.String)),
           externallyManaged: S.optional(S.NullOr(S.Boolean).pipe(T.Body("externally_managed"))),
-          frequency: S.optional(S.NullOr(S.String)),
+          frequency: S.optional(S.NullOr(PlansListResultItemFrequency)),
           isSubscribed: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_subscribed"))),
           legacyId: S.optional(S.NullOr(S.String).pipe(T.Body("legacy_id"))),
           name: S.optional(S.NullOr(S.String)),
@@ -7819,11 +8501,11 @@ function __c9(j: number): any {
         }),
       ).annotate({ identifier: "PlansListResultItem" });
     case 6:
-      return S.Array(__S(77));
+      return S.Array(PlansListResultItem);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          result: __S(78).pipe(T.EnvelopePayload()),
+          result: PlansListResultList.pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListPlansResponse" });
@@ -7982,10 +8664,10 @@ function __c10(j: number): any {
         ),
       );
     case 2:
-      return S.Array(__S(81));
+      return S.Array(ListSettingsResultItem);
     case 3:
       return S.suspend(() =>
-        __S(82).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
+        ListSettingsResultList.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListSettingsResponse" });
     case 4:
       return S.suspend(() =>
@@ -7995,19 +8677,19 @@ function __c10(j: number): any {
         }),
       ).annotate({ identifier: "ListRequestAccount" });
     case 5:
-      return S.Array(S.String);
+      return S.Array(ListRequestType);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          account: S.optional(__S(84).pipe(T.DeepQuery("account"))),
-          direction: S.optional(S.String.pipe(T.Query())),
-          match: S.optional(S.String.pipe(T.Query())),
+          account: S.optional(ListRequestAccount.pipe(T.DeepQuery("account"))),
+          direction: S.optional(ListRequestDirection.pipe(T.Query())),
+          match: S.optional(ListRequestMatch.pipe(T.Query())),
           name: S.optional(S.String.pipe(T.Query())),
-          order: S.optional(S.String.pipe(T.Query())),
+          order: S.optional(ListRequestOrder.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
           perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
-          status: S.optional(S.String.pipe(T.Query())),
-          type: S.optional(__S(85).pipe(T.Query())),
+          status: S.optional(ListRequestStatus.pipe(T.Query())),
+          type: S.optional(ListRequestTypeList.pipe(T.Query())),
         })
           .pipe(T.Http({ method: "GET", uri: "/zones", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -8016,27 +8698,31 @@ function __c10(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          account: __S(17),
+          account: CreateResponseAccount,
           activatedOn: S.String.pipe(T.Body("activated_on")),
           createdOn: S.String.pipe(T.Body("created_on")),
           developmentMode: S.Number.pipe(T.Body("development_mode")),
-          meta: __S(18),
+          meta: CreateResponseMeta,
           modifiedOn: S.String.pipe(T.Body("modified_on")),
           name: S.String,
-          nameServers: __S(10).pipe(T.Body("name_servers")),
+          nameServers: ListResultItemNameServersList.pipe(T.Body("name_servers")),
           originalDnshost: S.String.pipe(T.Body("original_dnshost")),
-          originalNameServers: __S(10).pipe(T.Body("original_name_servers")),
+          originalNameServers: ListResultItemOriginalNameServersList.pipe(
+            T.Body("original_name_servers"),
+          ),
           originalRegistrar: S.String.pipe(T.Body("original_registrar")),
-          owner: __S(19),
-          plan: __S(20),
+          owner: CreateResponseOwner,
+          plan: CreateResponsePlan,
           cnameSuffix: S.optional(S.NullOr(S.String).pipe(T.Body("cname_suffix"))),
           paused: S.optional(S.NullOr(S.Boolean)),
-          permissions: S.optional(S.NullOr(__S(10))),
-          status: S.optional(S.NullOr(S.String)),
-          tenant: S.optional(S.NullOr(__S(17))),
-          tenantUnit: S.optional(S.NullOr(__S(21)).pipe(T.Body("tenant_unit"))),
-          type: S.optional(S.NullOr(S.String)),
-          vanityNameServers: S.optional(S.NullOr(__S(10)).pipe(T.Body("vanity_name_servers"))),
+          permissions: S.optional(S.NullOr(ListResultItemPermissionsList)),
+          status: S.optional(S.NullOr(ListResultItemStatus)),
+          tenant: S.optional(S.NullOr(CreateResponseTenant)),
+          tenantUnit: S.optional(S.NullOr(CreateResponseTenantUnit).pipe(T.Body("tenant_unit"))),
+          type: S.optional(S.NullOr(ListResultItemType)),
+          vanityNameServers: S.optional(
+            S.NullOr(ListResultItemVanityNameServersList).pipe(T.Body("vanity_name_servers")),
+          ),
           verificationKey: S.optional(S.NullOr(S.String).pipe(T.Body("verification_key"))),
         }),
       ).annotate({ identifier: "ListResultItem" });
@@ -8045,11 +8731,11 @@ function __c10(j: number): any {
 function __c11(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(87));
+      return S.Array(ListResultItem);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          result: __S(88).pipe(T.EnvelopePayload()),
+          result: ListResultList.pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListZonesResponse" });
@@ -8058,7 +8744,7 @@ function __c11(j: number): any {
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
           enabled: S.Boolean,
-          emails: S.optional(__S(10)),
+          emails: S.optional(CtAlertingEditRequestEmailsList),
         })
           .pipe(T.Http({ method: "PATCH", uri: "/zones/{zone_id}/ct/alerting", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -8067,7 +8753,7 @@ function __c11(j: number): any {
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
-          environments: __S(2),
+          environments: EnvironmentsEditRequestEnvironmentsList,
         })
           .pipe(T.Http({ method: "PATCH", uri: "/zones/{zone_id}/environments", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -8241,7 +8927,7 @@ function __c11(j: number): any {
       );
     case 7:
       return S.suspend(() =>
-        __S(94).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
+        SettingsEditResult.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "PatchSettingResponse" });
   }
 }
@@ -8252,8 +8938,10 @@ function __c12(j: number): any {
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
           paused: S.optional(S.Boolean),
-          type: S.optional(S.String),
-          vanityNameServers: S.optional(__S(10).pipe(T.Body("vanity_name_servers"))),
+          type: S.optional(EditRequestType),
+          vanityNameServers: S.optional(
+            EditRequestVanityNameServersList.pipe(T.Body("vanity_name_servers")),
+          ),
         })
           .pipe(T.Http({ method: "PATCH", uri: "/zones/{zone_id}", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -8262,27 +8950,31 @@ function __c12(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          account: __S(17),
+          account: CreateResponseAccount,
           activatedOn: S.String.pipe(T.Body("activated_on")),
           createdOn: S.String.pipe(T.Body("created_on")),
           developmentMode: S.Number.pipe(T.Body("development_mode")),
-          meta: __S(18),
+          meta: CreateResponseMeta,
           modifiedOn: S.String.pipe(T.Body("modified_on")),
           name: S.String,
-          nameServers: __S(10).pipe(T.Body("name_servers")),
+          nameServers: EditResponseNameServersList.pipe(T.Body("name_servers")),
           originalDnshost: S.String.pipe(T.Body("original_dnshost")),
-          originalNameServers: __S(10).pipe(T.Body("original_name_servers")),
+          originalNameServers: EditResponseOriginalNameServersList.pipe(
+            T.Body("original_name_servers"),
+          ),
           originalRegistrar: S.String.pipe(T.Body("original_registrar")),
-          owner: __S(19),
-          plan: __S(20),
+          owner: CreateResponseOwner,
+          plan: CreateResponsePlan,
           cnameSuffix: S.optional(S.NullOr(S.String).pipe(T.Body("cname_suffix"))),
           paused: S.optional(S.NullOr(S.Boolean)),
-          permissions: S.optional(S.NullOr(__S(10))),
-          status: S.optional(S.NullOr(S.String)),
-          tenant: S.optional(S.NullOr(__S(17))),
-          tenantUnit: S.optional(S.NullOr(__S(21)).pipe(T.Body("tenant_unit"))),
-          type: S.optional(S.NullOr(S.String)),
-          vanityNameServers: S.optional(S.NullOr(__S(10)).pipe(T.Body("vanity_name_servers"))),
+          permissions: S.optional(S.NullOr(EditResponsePermissionsList)),
+          status: S.optional(S.NullOr(EditResponseStatus)),
+          tenant: S.optional(S.NullOr(CreateResponseTenant)),
+          tenantUnit: S.optional(S.NullOr(CreateResponseTenantUnit).pipe(T.Body("tenant_unit"))),
+          type: S.optional(S.NullOr(EditResponseType)),
+          vanityNameServers: S.optional(
+            S.NullOr(EditResponseVanityNameServersList).pipe(T.Body("vanity_name_servers")),
+          ),
           verificationKey: S.optional(S.NullOr(S.String).pipe(T.Body("verification_key"))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "PatchZoneResponse" });
@@ -8301,7 +8993,7 @@ function __c12(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          result: __S(10).pipe(T.EnvelopePayload()),
+          result: CustomNameserversUpdateResultList.pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
@@ -8463,12 +9155,12 @@ function __c12(j: number): any {
         ),
       );
     case 6:
-      return S.Array(__S(101));
+      return S.Array(SettingsBulkEditRequestBodyItem);
     case 7:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
-          body: __S(102).pipe(T.HttpBody()),
+          body: SettingsBulkEditRequestBodyList.pipe(T.HttpBody()),
         })
           .pipe(T.Http({ method: "PATCH", uri: "/zones/{zone_id}/settings", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -8620,10 +9312,10 @@ function __c13(j: number): any {
         ),
       );
     case 1:
-      return S.Array(__S(104));
+      return S.Array(SettingsBulkEditResultItem);
     case 2:
       return S.suspend(() =>
-        __S(105).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
+        SettingsBulkEditResultList.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "SettingsBulkEditResponse" });
     case 3:
       return S.suspend(() =>
@@ -8647,7 +9339,7 @@ function __c13(j: number): any {
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
-          environments: __S(2),
+          environments: EnvironmentsUpdateRequestEnvironmentsList,
         })
           .pipe(T.Http({ method: "PUT", uri: "/zones/{zone_id}/environments", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -8656,7 +9348,7 @@ function __c13(j: number): any {
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
-          rules: __S(28),
+          rules: UpdateObservabilityTracingRuleRequestRulesList,
         })
           .pipe(
             T.Http({
@@ -8673,11 +9365,15 @@ function __c13(j: number): any {
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
-          destinations: S.optional(__S(10)),
+          destinations: S.optional(UpdateObservabilityTracingSettingsRequestDestinationsList),
           enabled: S.optional(S.Boolean),
           forwardContext: S.optional(S.Boolean.pipe(T.Body("forward_context"))),
           persist: S.optional(S.Boolean),
-          propagationPolicy: S.optional(S.String.pipe(T.Body("propagation_policy"))),
+          propagationPolicy: S.optional(
+            UpdateObservabilityTracingSettingsRequestPropagationPolicy.pipe(
+              T.Body("propagation_policy"),
+            ),
+          ),
           samplingRatio: S.optional(S.Number.pipe(T.Body("sampling_ratio"))),
         })
           .pipe(
@@ -8698,11 +9394,13 @@ function __c14(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          destinations: __S(10),
+          destinations: UpdateObservabilityTracingSettingsResponseDestinationsList,
           enabled: S.Boolean,
           forwardContext: S.Boolean.pipe(T.Body("forward_context")),
           persist: S.Boolean,
-          propagationPolicy: S.String.pipe(T.Body("propagation_policy")),
+          propagationPolicy: UpdateObservabilityTracingSettingsResponsePropagationPolicy.pipe(
+            T.Body("propagation_policy"),
+          ),
           samplingRatio: S.Number.pipe(T.Body("sampling_ratio")),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
@@ -8711,13 +9409,13 @@ function __c14(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          id: S.optional(S.String),
+          id: S.optional(SubscriptionsUpdateRequestRatePlanId),
           currency: S.optional(S.String),
           externallyManaged: S.optional(S.Boolean.pipe(T.Body("externally_managed"))),
           isContract: S.optional(S.Boolean.pipe(T.Body("is_contract"))),
           publicName: S.optional(S.String.pipe(T.Body("public_name"))),
           scope: S.optional(S.String),
-          sets: S.optional(__S(10)),
+          sets: S.optional(SubscriptionsUpdateRequestRatePlanSetsList),
         }),
       ).annotate({
         identifier: "SubscriptionsUpdateRequestRatePlan",
@@ -8726,8 +9424,8 @@ function __c14(j: number): any {
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
-          frequency: S.optional(S.String),
-          ratePlan: S.optional(__S(113).pipe(T.Body("rate_plan"))),
+          frequency: S.optional(SubscriptionsUpdateRequestFrequency),
+          ratePlan: S.optional(SubscriptionsUpdateRequestRatePlan.pipe(T.Body("rate_plan"))),
         })
           .pipe(T.Http({ method: "PUT", uri: "/zones/{zone_id}/subscription", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -8737,13 +9435,13 @@ function __c14(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          id: S.optional(S.NullOr(S.String)),
+          id: S.optional(S.NullOr(SubscriptionsUpdateResponseRatePlanId)),
           currency: S.optional(S.NullOr(S.String)),
           externallyManaged: S.optional(S.NullOr(S.Boolean).pipe(T.Body("externally_managed"))),
           isContract: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_contract"))),
           publicName: S.optional(S.NullOr(S.String).pipe(T.Body("public_name"))),
           scope: S.optional(S.NullOr(S.String)),
-          sets: S.optional(S.NullOr(__S(10))),
+          sets: S.optional(S.NullOr(SubscriptionsUpdateResponseRatePlanSetsList)),
         }),
       ).annotate({
         identifier: "SubscriptionsUpdateResponseRatePlan",
@@ -8755,52 +9453,15 @@ function __c14(j: number): any {
           currency: S.optional(S.NullOr(S.String)),
           currentPeriodEnd: S.optional(S.NullOr(S.String).pipe(T.Body("current_period_end"))),
           currentPeriodStart: S.optional(S.NullOr(S.String).pipe(T.Body("current_period_start"))),
-          frequency: S.optional(S.NullOr(S.String)),
+          frequency: S.optional(S.NullOr(SubscriptionsUpdateResponseFrequency)),
           price: S.optional(S.NullOr(S.Number)),
-          ratePlan: S.optional(S.NullOr(__S(115)).pipe(T.Body("rate_plan"))),
-          state: S.optional(S.NullOr(S.String)),
+          ratePlan: S.optional(
+            S.NullOr(SubscriptionsUpdateResponseRatePlan).pipe(T.Body("rate_plan")),
+          ),
+          state: S.optional(S.NullOr(SubscriptionsUpdateResponseState)),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "UpdateSubscriptionResponse",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
-    case 9:
-      return __c9(i & 7);
-    case 10:
-      return __c10(i & 7);
-    case 11:
-      return __c11(i & 7);
-    case 12:
-      return __c12(i & 7);
-    case 13:
-      return __c13(i & 7);
-    case 14:
-      return __c14(i & 7);
   }
 }

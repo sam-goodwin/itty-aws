@@ -5,8 +5,6 @@ import * as S from "@distilled.cloud/core/schema";
 import { PosthogProtocol, type PosthogOpError, type PosthogOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { PosthogOpError, PosthogOpContext };
 
@@ -20,6 +18,11 @@ export interface ListTaskActivityRequest {
   /** Maximum number of tasks to return (most recent activity first). */
   limit?: number;
 }
+const ListTaskActivityRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<ListTaskActivityRequest>;
+
 /** * `awaiting_input` - awaiting_input * `completed` - completed * `mention` - mention * `thread_reply` - thread_reply * `owned_item_comment` - owned_item_comment * `message` - message * `created` - created */
 export type ActivityKindEnum =
   | "awaiting_input"
@@ -29,7 +32,14 @@ export type ActivityKindEnum =
   | "owned_item_comment"
   | "message"
   | "created";
+const ActivityKindEnum = S.String;
+
 export type TaskUserBasicInfoHedgehogConfigMap = { [key: string]: unknown | undefined };
+const TaskUserBasicInfoHedgehogConfigMap = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<TaskUserBasicInfoHedgehogConfigMap>;
+
 /** Response shape for a task creator, mirroring core ``UserBasicSerializer`` output. */
 export interface TaskUserBasicInfo {
   id: number;
@@ -42,6 +52,8 @@ export interface TaskUserBasicInfo {
   hedgehog_config?: TaskUserBasicInfoHedgehogConfigMap | null;
   role_at_organization?: string | null;
 }
+const TaskUserBasicInfo = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<TaskUserBasicInfo>;
+
 /** Response shape for one task in the requester's activity feed (one row per task). */
 export interface TaskActivityDTO {
   id: string;
@@ -63,8 +75,15 @@ export interface TaskActivityDTO {
   /** Whether the requester has yet to see this activity. Activity they caused themselves is never unread. */
   is_unread: boolean;
 }
+const TaskActivityDTO = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<TaskActivityDTO>;
+
 /** Tasks with activity, most recent first. */
 export type TaskActivityPageDTOResultsList = Array<TaskActivityDTO>;
+const TaskActivityPageDTOResultsList = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<TaskActivityPageDTOResultsList>;
+
 /** A page of the requester's activity feed, plus the unread total across the whole feed. */
 export interface TaskActivityPageDTO {
   /** Tasks with activity, most recent first. */
@@ -76,6 +95,8 @@ export interface TaskActivityPageDTO {
   /** Activity ID to pass as before_id for the next page, or null on the final page. */
   next_before_id?: string | null;
 }
+const TaskActivityPageDTO = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<TaskActivityPageDTO>;
+
 export interface TaskActivityReadMarker {
   /** Task whose displayed activity should be marked read. Optional when activity_id is set. */
   task_id?: string | null;
@@ -84,20 +105,40 @@ export interface TaskActivityReadMarker {
   /** Mark activity at or before this timestamp read without clearing newer activity. */
   seen_before: string;
 }
+const TaskActivityReadMarker = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<TaskActivityReadMarker>;
+
 /** Displayed task activities to mark read if they have not changed. */
 export type TaskActivityMarkReadCreateRequestActivitiesList = Array<TaskActivityReadMarker>;
+const TaskActivityMarkReadCreateRequestActivitiesList = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<TaskActivityMarkReadCreateRequestActivitiesList>;
+
 export interface TaskActivityMarkReadCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** Displayed task activities to mark read if they have not changed. */
   activities: TaskActivityMarkReadCreateRequestActivitiesList;
 }
+const TaskActivityMarkReadCreateRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<TaskActivityMarkReadCreateRequest>;
+
 export interface TaskActivityMarkReadResponse {
   /** How many feed rows changed from unread to read. */
   marked_read: number;
   /** The requester's remaining unread total after the update. */
   unread_count: number;
 }
+const TaskActivityMarkReadResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<TaskActivityMarkReadResponse>;
+
 export type ListTaskActivityError = PosthogOpError;
 /** List the requester's task activity Task lifecycle rows collapse per task. Comment notifications remain separate. Results are most-recent first and restricted to tasks the requester can see. */
 export const listTaskActivity: API.OperationMethod<
@@ -106,8 +147,8 @@ export const listTaskActivity: API.OperationMethod<
   ListTaskActivityError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<ListTaskActivityRequest>,
-  output: __S(5) as any as S.Schema<TaskActivityPageDTO>,
+  input: ListTaskActivityRequest,
+  output: TaskActivityPageDTO,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -121,8 +162,8 @@ export const taskActivityMarkReadCreate: API.OperationMethod<
   TaskActivityMarkReadCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8) as any as S.Schema<TaskActivityMarkReadCreateRequest>,
-  output: __S(9) as any as S.Schema<TaskActivityMarkReadResponse>,
+  input: TaskActivityMarkReadCreateRequest,
+  output: TaskActivityMarkReadResponse,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -154,7 +195,7 @@ function __c0(j: number): any {
           last_name: S.String,
           email: S.String,
           is_email_verified: S.optional(S.NullOr(S.Boolean)),
-          hedgehog_config: S.optional(S.NullOr(__S(1))),
+          hedgehog_config: S.optional(S.NullOr(TaskUserBasicInfoHedgehogConfigMap)),
           role_at_organization: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "TaskUserBasicInfo" });
@@ -167,9 +208,9 @@ function __c0(j: number): any {
           channel_id: S.NullOr(S.String),
           channel_name: S.NullOr(S.String),
           activity_at: S.String,
-          activity_kind: S.String,
+          activity_kind: ActivityKindEnum,
           snippet: S.String,
-          latest_author: S.optional(S.NullOr(__S(2))),
+          latest_author: S.optional(S.NullOr(TaskUserBasicInfo)),
           latest_message_id: S.optional(S.NullOr(S.String)),
           latest_comment_id: S.optional(S.NullOr(S.String)),
           latest_comment_scope: S.optional(S.NullOr(S.String)),
@@ -178,11 +219,11 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "TaskActivityDTO" });
     case 4:
-      return S.Array(__S(3));
+      return S.Array(TaskActivityDTO);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          results: __S(4),
+          results: TaskActivityPageDTOResultsList,
           unread_count: S.Number,
           next_before: S.optional(S.NullOr(S.String)),
           next_before_id: S.optional(S.NullOr(S.String)),
@@ -197,7 +238,7 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "TaskActivityReadMarker" });
     case 7:
-      return S.Array(__S(6));
+      return S.Array(TaskActivityReadMarker);
   }
 }
 function __c1(j: number): any {
@@ -206,7 +247,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
-          activities: __S(7),
+          activities: TaskActivityMarkReadCreateRequestActivitiesList,
         }).pipe(
           T.Http({
             method: "POST",
@@ -226,18 +267,5 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "TaskActivityMarkReadResponse",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
   }
 }

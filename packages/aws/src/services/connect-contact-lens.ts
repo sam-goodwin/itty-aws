@@ -8,8 +8,6 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "Connect Contact Lens",
   serviceShapeName: "AmazonConnectContactLens",
@@ -116,21 +114,30 @@ export interface ListRealtimeContactAnalysisSegmentsRequest {
   MaxResults?: number;
   NextToken?: string;
 }
+const ListRealtimeContactAnalysisSegmentsRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<ListRealtimeContactAnalysisSegmentsRequest>;
 export type TranscriptId = string;
 export type ParticipantId = string;
 export type ParticipantRole = string;
 export type TranscriptContent = string;
 export type OffsetMillis = number;
 export type SentimentValue = "POSITIVE" | "NEUTRAL" | "NEGATIVE" | (string & {});
+const SentimentValue = S.String;
+
 export type CharacterOffset = number;
 export interface CharacterOffsets {
   BeginOffsetChar?: number;
   EndOffsetChar?: number;
 }
+const CharacterOffsets = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<CharacterOffsets>;
 export interface IssueDetected {
   CharacterOffsets?: CharacterOffsets;
 }
+const IssueDetected = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<IssueDetected>;
 export type IssuesDetected = IssueDetected[];
+const IssuesDetected = /*@__PURE__*/ __L.at(__c0, 3);
 export interface Transcript {
   Id?: string;
   ParticipantId?: string;
@@ -141,23 +148,32 @@ export interface Transcript {
   Sentiment?: SentimentValue;
   IssuesDetected?: IssueDetected[];
 }
+const Transcript = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<Transcript>;
 export type CategoryName = string;
 export type MatchedCategories = string[];
+const MatchedCategories = /*@__PURE__*/ __L.at(__c0, 5);
 export interface PointOfInterest {
   BeginOffsetMillis?: number;
   EndOffsetMillis?: number;
 }
+const PointOfInterest = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<PointOfInterest>;
 export type PointsOfInterest = PointOfInterest[];
+const PointsOfInterest = /*@__PURE__*/ __L.at(__c0, 7);
 export interface CategoryDetails {
   PointsOfInterest?: PointOfInterest[];
 }
+const CategoryDetails = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<CategoryDetails>;
 export type MatchedDetails = { [key: string]: CategoryDetails | undefined };
+const MatchedDetails = /*@__PURE__*/ __L.at(__c1, 1);
 export interface Categories {
   MatchedCategories?: string[];
   MatchedDetails?: { [key: string]: CategoryDetails | undefined };
 }
+const Categories = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<Categories>;
 export type PostContactSummaryContent = string;
 export type PostContactSummaryStatus = "FAILED" | "COMPLETED" | (string & {});
+const PostContactSummaryStatus = S.String;
+
 export type PostContactSummaryFailureCode =
   | "QUOTA_EXCEEDED"
   | "INSUFFICIENT_CONVERSATION_CONTENT"
@@ -165,11 +181,14 @@ export type PostContactSummaryFailureCode =
   | "INVALID_ANALYSIS_CONFIGURATION"
   | "INTERNAL_ERROR"
   | (string & {});
+const PostContactSummaryFailureCode = S.String;
+
 export interface PostContactSummary {
   Content?: string;
   Status?: PostContactSummaryStatus;
   FailureCode?: PostContactSummaryFailureCode;
 }
+const PostContactSummary = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<PostContactSummary>;
 export type ExtractionDefinitionId = string;
 export type ExtractionDefinitionName = string;
 export type ExtractionDefinitionDisplayLabel = string;
@@ -178,7 +197,12 @@ export interface ExtractedInformationValue {
   Content?: string;
   PointsOfInterest?: PointOfInterest[];
 }
+const ExtractedInformationValue = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<ExtractedInformationValue>;
 export type ExtractedInformationValues = ExtractedInformationValue[];
+const ExtractedInformationValues = /*@__PURE__*/ __L.at(__c1, 5);
 export type ExtractedInformationFailureCode =
   | "QUOTA_EXCEEDED"
   | "INSUFFICIENT_CONVERSATION_CONTENT"
@@ -186,6 +210,8 @@ export type ExtractedInformationFailureCode =
   | "INTERNAL_ERROR"
   | "MAX_PACKAGE_FEATURE_ONLY"
   | (string & {});
+const ExtractedInformationFailureCode = S.String;
+
 export interface ExtractedInformation {
   ExtractionDefinitionId?: string;
   ExtractionDefinitionName?: string;
@@ -193,13 +219,19 @@ export interface ExtractedInformation {
   ExtractedValues?: ExtractedInformationValue[];
   FailureCode?: ExtractedInformationFailureCode;
 }
+const ExtractedInformation = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<ExtractedInformation>;
 export interface RealtimeContactAnalysisSegment {
   Transcript?: Transcript;
   Categories?: Categories;
   PostContactSummary?: PostContactSummary;
   ExtractedInformation?: ExtractedInformation;
 }
+const RealtimeContactAnalysisSegment = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<RealtimeContactAnalysisSegment>;
 export type RealtimeContactAnalysisSegments = RealtimeContactAnalysisSegment[];
+const RealtimeContactAnalysisSegments = /*@__PURE__*/ __L.at(__c2, 0);
 export interface ListRealtimeContactAnalysisSegmentsResponse {
   Segments: (RealtimeContactAnalysisSegment & {
     Transcript: Transcript & {
@@ -244,6 +276,10 @@ export interface ListRealtimeContactAnalysisSegmentsResponse {
   })[];
   NextToken?: string;
 }
+const ListRealtimeContactAnalysisSegmentsResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<ListRealtimeContactAnalysisSegmentsResponse>;
 export type Message = string;
 export type ListRealtimeContactAnalysisSegmentsError =
   | AccessDeniedException
@@ -266,8 +302,8 @@ export const listRealtimeContactAnalysisSegments: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(0) as any as S.Schema<ListRealtimeContactAnalysisSegmentsRequest>,
-  output: __S(17) as any as S.Schema<ListRealtimeContactAnalysisSegmentsResponse>,
+  input: ListRealtimeContactAnalysisSegmentsRequest,
+  output: ListRealtimeContactAnalysisSegmentsResponse,
   errors: [
     AccessDeniedException,
     InternalServiceException,
@@ -313,11 +349,11 @@ function __c0(j: number): any {
         S.Struct({ BeginOffsetChar: S.optional(S.Number), EndOffsetChar: S.optional(S.Number) }),
       ).annotate({ identifier: "CharacterOffsets" });
     case 2:
-      return S.suspend(() => S.Struct({ CharacterOffsets: S.optional(__S(1)) })).annotate({
-        identifier: "IssueDetected",
-      });
+      return S.suspend(() => S.Struct({ CharacterOffsets: S.optional(CharacterOffsets) })).annotate(
+        { identifier: "IssueDetected" },
+      );
     case 3:
-      return S.Array(__S(2));
+      return S.Array(IssueDetected);
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -327,8 +363,8 @@ function __c0(j: number): any {
           Content: S.optional(S.String),
           BeginOffsetMillis: S.optional(S.Number),
           EndOffsetMillis: S.optional(S.Number),
-          Sentiment: S.optional(S.String),
-          IssuesDetected: S.optional(__S(3)),
+          Sentiment: S.optional(SentimentValue),
+          IssuesDetected: S.optional(IssuesDetected),
         }),
       ).annotate({ identifier: "Transcript" });
     case 5:
@@ -341,57 +377,57 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "PointOfInterest" });
     case 7:
-      return S.Array(__S(6));
+      return S.Array(PointOfInterest);
   }
 }
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ PointsOfInterest: S.optional(__S(7)) })).annotate({
-        identifier: "CategoryDetails",
-      });
+      return S.suspend(() => S.Struct({ PointsOfInterest: S.optional(PointsOfInterest) })).annotate(
+        { identifier: "CategoryDetails" },
+      );
     case 1:
-      return S.Record(S.String, /*@__PURE__*/ __S(8).pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ CategoryDetails.pipe(S.optional));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          MatchedCategories: S.optional(__S(5)),
-          MatchedDetails: S.optional(__S(9)),
+          MatchedCategories: S.optional(MatchedCategories),
+          MatchedDetails: S.optional(MatchedDetails),
         }),
       ).annotate({ identifier: "Categories" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           Content: S.optional(S.String),
-          Status: S.optional(S.String),
-          FailureCode: S.optional(S.String),
+          Status: S.optional(PostContactSummaryStatus),
+          FailureCode: S.optional(PostContactSummaryFailureCode),
         }),
       ).annotate({ identifier: "PostContactSummary" });
     case 4:
       return S.suspend(() =>
-        S.Struct({ Content: S.optional(S.String), PointsOfInterest: S.optional(__S(7)) }),
+        S.Struct({ Content: S.optional(S.String), PointsOfInterest: S.optional(PointsOfInterest) }),
       ).annotate({
         identifier: "ExtractedInformationValue",
       });
     case 5:
-      return S.Array(__S(12));
+      return S.Array(ExtractedInformationValue);
     case 6:
       return S.suspend(() =>
         S.Struct({
           ExtractionDefinitionId: S.optional(S.String),
           ExtractionDefinitionName: S.optional(S.String),
           ExtractionDefinitionDisplayLabel: S.optional(S.String),
-          ExtractedValues: S.optional(__S(13)),
-          FailureCode: S.optional(S.String),
+          ExtractedValues: S.optional(ExtractedInformationValues),
+          FailureCode: S.optional(ExtractedInformationFailureCode),
         }),
       ).annotate({ identifier: "ExtractedInformation" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          Transcript: S.optional(__S(4)),
-          Categories: S.optional(__S(10)),
-          PostContactSummary: S.optional(__S(11)),
-          ExtractedInformation: S.optional(__S(14)),
+          Transcript: S.optional(Transcript),
+          Categories: S.optional(Categories),
+          PostContactSummary: S.optional(PostContactSummary),
+          ExtractedInformation: S.optional(ExtractedInformation),
         }),
       ).annotate({
         identifier: "RealtimeContactAnalysisSegment",
@@ -401,30 +437,15 @@ function __c1(j: number): any {
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(15));
+      return S.Array(RealtimeContactAnalysisSegment);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          Segments: S.optional(__S(16)),
+          Segments: S.optional(RealtimeContactAnalysisSegments),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListRealtimeContactAnalysisSegmentsResponse",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
   }
 }

@@ -10,12 +10,12 @@ import {
 } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { CloudflareOpError, CloudflareOpContext };
 
 export type FilesRequestStatus = "completed" | "queued" | "running" | "error";
+const FilesRequestStatus = S.String;
+
 export interface FilesRequest {
   accountId: string;
   /** rag id */
@@ -25,19 +25,31 @@ export interface FilesRequest {
   search?: string;
   status?: FilesRequestStatus | (string & {});
 }
+const FilesRequest = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<FilesRequest>;
+
 export interface FilesResultItem {
   error: string;
   key: string;
 }
+const FilesResultItem = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<FilesResultItem>;
+
 export type FilesResultList = Array<FilesResultItem>;
+const FilesResultList = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<FilesResultList>;
+
 export type FilesResponse = FilesResultList;
+const FilesResponse = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<FilesResponse>;
+
 export interface GetJobRequest {
   accountId: string;
   /** rag id */
   id: string;
   jobId: string;
 }
+const GetJobRequest = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<GetJobRequest>;
+
 export type GetJobResponseSource = "user" | "schedule";
+const GetJobResponseSource = S.String;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetJobResponse {
   id: string;
@@ -47,6 +59,8 @@ export interface GetJobResponse {
   lastSeenAt?: string | null;
   startedAt?: string | null;
 }
+const GetJobResponse = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<GetJobResponse>;
+
 export interface JobsLogsRequest {
   accountId: string;
   /** rag id */
@@ -55,14 +69,22 @@ export interface JobsLogsRequest {
   page?: number;
   perPage?: number;
 }
+const JobsLogsRequest = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<JobsLogsRequest>;
+
 export interface JobsLogsResultItem {
   id: number;
   createdAt: number;
   message: string;
   messageType: number;
 }
+const JobsLogsResultItem = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<JobsLogsResultItem>;
+
 export type JobsLogsResultList = Array<JobsLogsResultItem>;
+const JobsLogsResultList = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<JobsLogsResultList>;
+
 export type JobsLogsResponse = JobsLogsResultList;
+const JobsLogsResponse = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<JobsLogsResponse>;
+
 export interface ListJobsRequest {
   accountId: string;
   /** rag id */
@@ -70,6 +92,8 @@ export interface ListJobsRequest {
   page?: number;
   perPage?: number;
 }
+const ListJobsRequest = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<ListJobsRequest>;
+
 export type ListJobsResultItemSource = "user" | "schedule";
 export interface ListJobsResultItem {
   id: string;
@@ -79,8 +103,14 @@ export interface ListJobsResultItem {
   lastSeenAt?: string | null;
   startedAt?: string | null;
 }
+const ListJobsResultItem = GetJobResponse as any as S.Schema<ListJobsResultItem>;
+
 export type ListJobsResultList = Array<ListJobsResultItem>;
+const ListJobsResultList = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<ListJobsResultList>;
+
 export type ListJobsResponse = ListJobsResultList;
+const ListJobsResponse = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<ListJobsResponse>;
+
 export type SearchRequestFiltersCase0Type = "eq" | "ne" | "gt" | "gte" | "lt" | "lte";
 export type SearchRequestFiltersCase0Value = string | number | boolean;
 export interface SearchRequestFiltersCase0 {
@@ -102,15 +132,29 @@ export interface SearchRequestFiltersCase1 {
   type: SearchRequestFiltersCase1Type | (string & {});
 }
 export type SearchRequestFilters = SearchRequestFiltersCase0 | SearchRequestFiltersCase1;
+const SearchRequestFilters = /*@__PURE__*/ __L.at(__c1, 5);
+
 export interface SearchRequestRankingOptions {
   ranker?: string;
   scoreThreshold?: number;
 }
+const SearchRequestRankingOptions = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<SearchRequestRankingOptions>;
+
 export type SearchRequestRerankingModel = "@cf/baai/bge-reranker-base" | "";
+const SearchRequestRerankingModel = S.String;
+
 export interface SearchRequestReranking {
   enabled?: boolean;
   model?: SearchRequestRerankingModel | (string & {});
 }
+const SearchRequestReranking = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<SearchRequestReranking>;
+
 export interface SearchRequest {
   accountId: string;
   /** rag id */
@@ -122,11 +166,23 @@ export interface SearchRequest {
   reranking?: SearchRequestReranking;
   rewriteQuery?: boolean;
 }
+const SearchRequest = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<SearchRequest>;
+
 export interface SearchResponseDataItemContentItem {
   text?: string | null;
   type?: string | null;
 }
+const SearchResponseDataItemContentItem = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<SearchResponseDataItemContentItem>;
+
 export type SearchResponseDataItemContentList = Array<SearchResponseDataItemContentItem>;
+const SearchResponseDataItemContentList = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<SearchResponseDataItemContentList>;
+
 export interface SearchResponseDataItem {
   score: number;
   attributes?: unknown | null;
@@ -134,7 +190,17 @@ export interface SearchResponseDataItem {
   fileId?: string | null;
   filename?: string | null;
 }
+const SearchResponseDataItem = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<SearchResponseDataItem>;
+
 export type SearchResponseDataList = Array<SearchResponseDataItem>;
+const SearchResponseDataList = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<SearchResponseDataList>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface SearchResponse {
   searchQuery: string;
@@ -143,6 +209,8 @@ export interface SearchResponse {
   nextPage?: string | null;
   object?: string | null;
 }
+const SearchResponse = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<SearchResponse>;
+
 export type SearchAiRequestFiltersCase0Type = "eq" | "ne" | "gt" | "gte" | "lt" | "lte";
 export type SearchAiRequestFiltersCase0Value = string | number | boolean;
 export interface SearchAiRequestFiltersCase0 {
@@ -164,6 +232,8 @@ export interface SearchAiRequestFiltersCase1 {
   type: SearchAiRequestFiltersCase1Type | (string & {});
 }
 export type SearchAiRequestFilters = SearchAiRequestFiltersCase0 | SearchAiRequestFiltersCase1;
+const SearchAiRequestFilters = /*@__PURE__*/ __L.at(__c2, 6);
+
 export type SearchAiRequestModel =
   | "@cf/meta/llama-3.3-70b-instruct-fp8-fast"
   | "@cf/meta/llama-3.1-8b-instruct-fast"
@@ -191,12 +261,17 @@ export type SearchAiRequestModel =
   | "openai/gpt-5-mini"
   | "openai/gpt-5-nano"
   | "";
+const SearchAiRequestModel = S.String;
+
 export type SearchAiRequestRankingOptions = SearchRequestRankingOptions;
 export type SearchAiRequestRerankingModel = "@cf/baai/bge-reranker-base" | "";
 export interface SearchAiRequestReranking {
   enabled?: boolean;
   model?: SearchAiRequestRerankingModel | (string & {});
 }
+const SearchAiRequestReranking =
+  SearchRequestReranking as any as S.Schema<SearchAiRequestReranking>;
+
 export interface SearchAiRequest {
   accountId: string;
   /** rag id */
@@ -211,6 +286,8 @@ export interface SearchAiRequest {
   stream?: boolean;
   systemPrompt?: string;
 }
+const SearchAiRequest = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<SearchAiRequest>;
+
 export type SearchAiResponseDataItemContentItem = SearchResponseDataItemContentItem;
 export type SearchAiResponseDataItemContentList = Array<SearchResponseDataItemContentItem>;
 export interface SearchAiResponseDataItem {
@@ -221,6 +298,9 @@ export interface SearchAiResponseDataItem {
   filename?: string | null;
 }
 export type SearchAiResponseDataList = Array<SearchAiResponseDataItem>;
+const SearchAiResponseDataList =
+  SearchResponseDataList as any as S.Schema<SearchAiResponseDataList>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface SearchAiResponse {
   response: string;
@@ -230,15 +310,21 @@ export interface SearchAiResponse {
   nextPage?: string | null;
   object?: string | null;
 }
+const SearchAiResponse = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<SearchAiResponse>;
+
 export interface SyncRequest {
   accountId: string;
   /** rag id */
   id: string;
 }
+const SyncRequest = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<SyncRequest>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface SyncResponse {
   jobId: string;
 }
+const SyncResponse = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<SyncResponse>;
+
 export type FilesError = CloudflareOpError;
 /** Lists files indexed by an AutoRAG. */
 export const files: API.OperationMethod<
@@ -247,8 +333,8 @@ export const files: API.OperationMethod<
   FilesError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<FilesRequest>,
-  output: __S(3) as any as S.Schema<FilesResponse>,
+  input: FilesRequest,
+  output: FilesResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -262,8 +348,8 @@ export const getJob: API.OperationMethod<
   GetJobError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4) as any as S.Schema<GetJobRequest>,
-  output: __S(5) as any as S.Schema<GetJobResponse>,
+  input: GetJobRequest,
+  output: GetJobResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -277,8 +363,8 @@ export const jobsLogs: API.OperationMethod<
   JobsLogsError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6) as any as S.Schema<JobsLogsRequest>,
-  output: __S(9) as any as S.Schema<JobsLogsResponse>,
+  input: JobsLogsRequest,
+  output: JobsLogsResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -292,8 +378,8 @@ export const listJobs: API.OperationMethod<
   ListJobsError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10) as any as S.Schema<ListJobsRequest>,
-  output: __S(12) as any as S.Schema<ListJobsResponse>,
+  input: ListJobsRequest,
+  output: ListJobsResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -307,8 +393,8 @@ export const search: API.OperationMethod<
   SearchError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16) as any as S.Schema<SearchRequest>,
-  output: __S(21) as any as S.Schema<SearchResponse>,
+  input: SearchRequest,
+  output: SearchResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -322,8 +408,8 @@ export const searchAi: API.OperationMethod<
   SearchAiError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23) as any as S.Schema<SearchAiRequest>,
-  output: __S(24) as any as S.Schema<SearchAiResponse>,
+  input: SearchAiRequest,
+  output: SearchAiResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -333,8 +419,8 @@ export type SyncError = CloudflareOpError;
 /** Starts synchronization for an AutoRAG. */
 export const sync: API.OperationMethod<SyncRequest, SyncResponse, SyncError, CloudflareOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(25) as any as S.Schema<SyncRequest>,
-    output: __S(26) as any as S.Schema<SyncResponse>,
+    input: SyncRequest,
+    output: SyncResponse,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflareProtocol,
     retry: Retry.Retry,
@@ -351,7 +437,7 @@ function __c0(j: number): any {
           page: S.optional(S.Number.pipe(T.Query())),
           perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
           search: S.optional(S.String.pipe(T.Query())),
-          status: S.optional(S.String.pipe(T.Query())),
+          status: S.optional(FilesRequestStatus.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -368,9 +454,9 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "FilesResultItem" });
     case 2:
-      return S.Array(__S(1));
+      return S.Array(FilesResultItem);
     case 3:
-      return S.suspend(() => __S(2).pipe(T.EnvelopePayloadRoot())).annotate({
+      return S.suspend(() => FilesResultList.pipe(T.EnvelopePayloadRoot())).annotate({
         identifier: "FilesResponse",
       });
     case 4:
@@ -391,7 +477,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          source: S.String,
+          source: GetJobResponseSource,
           endReason: S.optional(S.NullOr(S.String).pipe(T.Body("end_reason"))),
           endedAt: S.optional(S.NullOr(S.String).pipe(T.Body("ended_at"))),
           lastSeenAt: S.optional(S.NullOr(S.String).pipe(T.Body("last_seen_at"))),
@@ -428,9 +514,9 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(7));
+      return S.Array(JobsLogsResultItem);
     case 1:
-      return S.suspend(() => __S(8).pipe(T.EnvelopePayloadRoot())).annotate({
+      return S.suspend(() => JobsLogsResultList.pipe(T.EnvelopePayloadRoot())).annotate({
         identifier: "JobsLogsResponse",
       });
     case 2:
@@ -449,9 +535,9 @@ function __c1(j: number): any {
         ),
       ).annotate({ identifier: "ListJobsRequest" });
     case 3:
-      return S.Array(__S(5));
+      return S.Array(ListJobsResultItem);
     case 4:
-      return S.suspend(() => __S(11).pipe(T.EnvelopePayloadRoot())).annotate({
+      return S.suspend(() => ListJobsResultList.pipe(T.EnvelopePayloadRoot())).annotate({
         identifier: "ListJobsResponse",
       });
     case 5:
@@ -474,7 +560,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           enabled: S.optional(S.Boolean),
-          model: S.optional(S.String),
+          model: S.optional(SearchRequestRerankingModel),
         }),
       ).annotate({ identifier: "SearchRequestReranking" });
   }
@@ -487,10 +573,10 @@ function __c2(j: number): any {
           accountId: S.String.pipe(T.Label("account_id")),
           id: S.String.pipe(T.Label()),
           query: S.String,
-          filters: S.optional(__S(13)),
+          filters: S.optional(SearchRequestFilters),
           maxNumResults: S.optional(S.Number.pipe(T.Body("max_num_results"))),
-          rankingOptions: S.optional(__S(14).pipe(T.Body("ranking_options"))),
-          reranking: S.optional(__S(15)),
+          rankingOptions: S.optional(SearchRequestRankingOptions.pipe(T.Body("ranking_options"))),
+          reranking: S.optional(SearchRequestReranking),
           rewriteQuery: S.optional(S.Boolean.pipe(T.Body("rewrite_query"))),
         }).pipe(
           T.Http({
@@ -510,24 +596,24 @@ function __c2(j: number): any {
         identifier: "SearchResponseDataItemContentItem",
       });
     case 2:
-      return S.Array(__S(17));
+      return S.Array(SearchResponseDataItemContentItem);
     case 3:
       return S.suspend(() =>
         S.Struct({
           score: S.Number,
           attributes: S.optional(S.NullOr(S.Unknown)),
-          content: S.optional(S.NullOr(__S(18))),
+          content: S.optional(S.NullOr(SearchResponseDataItemContentList)),
           fileId: S.optional(S.NullOr(S.String).pipe(T.Body("file_id"))),
           filename: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "SearchResponseDataItem" });
     case 4:
-      return S.Array(__S(19));
+      return S.Array(SearchResponseDataItem);
     case 5:
       return S.suspend(() =>
         S.Struct({
           searchQuery: S.String.pipe(T.Body("search_query")),
-          data: S.optional(S.NullOr(__S(20))),
+          data: S.optional(S.NullOr(SearchResponseDataList)),
           hasMore: S.optional(S.NullOr(S.Boolean).pipe(T.Body("has_more"))),
           nextPage: S.optional(S.NullOr(S.String).pipe(T.Body("next_page"))),
           object: S.optional(S.NullOr(S.String)),
@@ -546,11 +632,11 @@ function __c2(j: number): any {
           accountId: S.String.pipe(T.Label("account_id")),
           id: S.String.pipe(T.Label()),
           query: S.String,
-          filters: S.optional(__S(22)),
+          filters: S.optional(SearchAiRequestFilters),
           maxNumResults: S.optional(S.Number.pipe(T.Body("max_num_results"))),
-          model: S.optional(S.String),
-          rankingOptions: S.optional(__S(14).pipe(T.Body("ranking_options"))),
-          reranking: S.optional(__S(15)),
+          model: S.optional(SearchAiRequestModel),
+          rankingOptions: S.optional(SearchRequestRankingOptions.pipe(T.Body("ranking_options"))),
+          reranking: S.optional(SearchAiRequestReranking),
           rewriteQuery: S.optional(S.Boolean.pipe(T.Body("rewrite_query"))),
           stream: S.optional(S.Boolean),
           systemPrompt: S.optional(S.String.pipe(T.Body("system_prompt"))),
@@ -571,7 +657,7 @@ function __c3(j: number): any {
         S.Struct({
           response: S.String,
           searchQuery: S.String.pipe(T.Body("search_query")),
-          data: S.optional(S.NullOr(__S(20))),
+          data: S.optional(S.NullOr(SearchAiResponseDataList)),
           hasMore: S.optional(S.NullOr(S.Boolean).pipe(T.Body("has_more"))),
           nextPage: S.optional(S.NullOr(S.String).pipe(T.Body("next_page"))),
           object: S.optional(S.NullOr(S.String)),
@@ -596,22 +682,5 @@ function __c3(j: number): any {
           jobId: S.String.pipe(T.Body("job_id")),
         }),
       ).annotate({ identifier: "SyncResponse" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
   }
 }

@@ -6,8 +6,6 @@ import * as S from "@distilled.cloud/core/schema";
 import { PosthogProtocol, type PosthogOpError, type PosthogOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { PosthogOpError, PosthogOpContext };
 
@@ -44,6 +42,11 @@ export interface AutoresearchArchiveCreateRequest {
   /** A UUID string identifying this autoresearch pipeline. */
   id: string;
 }
+const AutoresearchArchiveCreateRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<AutoresearchArchiveCreateRequest>;
+
 export type AutoresearchPipelineTargetDefinitionCase0Type = "event";
 /** Predict target_event. The default when target_definition is omitted. */
 export interface AutoresearchPipelineTargetDefinitionCase0 {
@@ -60,6 +63,9 @@ export interface AutoresearchPipelineTargetDefinitionCase1 {
 export type AutoresearchPipelineTargetDefinition =
   | AutoresearchPipelineTargetDefinitionCase0
   | AutoresearchPipelineTargetDefinitionCase1;
+const AutoresearchPipelineTargetDefinition =
+  S.Unknown as any as S.Schema<AutoresearchPipelineTargetDefinition>;
+
 /** * `draft` - Draft * `bootstrapping` - Bootstrapping * `running` - Running * `converged` - Converged * `paused` - Paused * `archived` - Archived */
 export type AutoresearchPipelineStatusEnum =
   | "draft"
@@ -68,7 +74,14 @@ export type AutoresearchPipelineStatusEnum =
   | "converged"
   | "paused"
   | "archived";
+const AutoresearchPipelineStatusEnum = S.String;
+
 export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
+const UserBasicHedgehogConfigMap = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<UserBasicHedgehogConfigMap>;
+
 /** * `engineering` - Engineering * `data` - Data * `product` - Product Management * `founder` - Founder * `leadership` - Leadership * `marketing` - Marketing * `sales` - Sales / Success * `student` - Student * `other` - Other */
 export type RoleAtOrganizationEnum =
   | "engineering"
@@ -82,6 +95,8 @@ export type RoleAtOrganizationEnum =
   | "other";
 export type BlankEnum = "";
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
+const UserBasicRoleAtOrganization = S.Unknown as any as S.Schema<UserBasicRoleAtOrganization>;
+
 export interface UserBasic {
   id?: number;
   uuid?: string;
@@ -93,6 +108,8 @@ export interface UserBasic {
   hedgehog_config?: UserBasicHedgehogConfigMap | null;
   role_at_organization?: UserBasicRoleAtOrganization | null;
 }
+const UserBasic = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<UserBasic>;
+
 export interface AutoresearchPipeline {
   /** Unique UUID of this pipeline. */
   id: string;
@@ -136,19 +153,36 @@ export interface AutoresearchPipeline {
   /** Realized online AUC of the current champion model, computed from mature predictions against actual outcomes. */
   champion_realized_auc: number | null;
 }
+const AutoresearchPipeline = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<AutoresearchPipeline>;
+
 export interface AutoresearchDestroyRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A UUID string identifying this autoresearch pipeline. */
   id: string;
 }
+const AutoresearchDestroyRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<AutoresearchDestroyRequest>;
+
 export interface AutoresearchDestroyResponse {}
+const AutoresearchDestroyResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<AutoresearchDestroyResponse>;
+
 export interface AutoresearchResumeCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A UUID string identifying this autoresearch pipeline. */
   id: string;
 }
+const AutoresearchResumeCreateRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<AutoresearchResumeCreateRequest>;
+
 export interface AutoresearchTrainingRunsArtifactsDeleteCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -158,6 +192,11 @@ export interface AutoresearchTrainingRunsArtifactsDeleteCreateRequest {
   /** Relative path of the file within the bundle, e.g. 'train.py'. */
   path: string;
 }
+const AutoresearchTrainingRunsArtifactsDeleteCreateRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<AutoresearchTrainingRunsArtifactsDeleteCreateRequest>;
+
 /** Whether a delete removed an existing file. */
 export interface ArtifactDeleteResult {
   /** Relative path targeted for deletion. */
@@ -165,6 +204,8 @@ export interface ArtifactDeleteResult {
   /** True if a file existed and was removed; False if nothing was there. */
   deleted: boolean;
 }
+const ArtifactDeleteResult = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<ArtifactDeleteResult>;
+
 export interface AutoresearchTrainingRunsArtifactsGetCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -174,6 +215,11 @@ export interface AutoresearchTrainingRunsArtifactsGetCreateRequest {
   /** Relative path of the file within the bundle, e.g. 'train.py'. */
   path: string;
 }
+const AutoresearchTrainingRunsArtifactsGetCreateRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<AutoresearchTrainingRunsArtifactsGetCreateRequest>;
+
 /** A single bundle file's content, base64-encoded. */
 export interface ArtifactContent {
   /** Relative path of the file within the bundle. */
@@ -185,6 +231,8 @@ export interface ArtifactContent {
   /** File contents, base64-encoded. */
   content_base64: string;
 }
+const ArtifactContent = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<ArtifactContent>;
+
 export interface AutoresearchTrainingRunsArtifactsUploadCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -196,6 +244,11 @@ export interface AutoresearchTrainingRunsArtifactsUploadCreateRequest {
   /** File contents, base64-encoded. Decoded server-side and written to object storage. Max 10 MB decoded. */
   content_base64: string;
 }
+const AutoresearchTrainingRunsArtifactsUploadCreateRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<AutoresearchTrainingRunsArtifactsUploadCreateRequest>;
+
 /** Result of an upload: where the file landed and its content hash. */
 export interface StoredArtifact {
   /** Relative path the file was stored at. */
@@ -205,6 +258,8 @@ export interface StoredArtifact {
   /** SHA-256 hex digest of the decoded file content. */
   sha256: string;
 }
+const StoredArtifact = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<StoredArtifact>;
+
 export type AutoresearchValidateCreateRequestTargetDefinitionCase0Type = "event";
 /** Predict target_event. The default when target_definition is omitted. */
 export interface AutoresearchValidateCreateRequestTargetDefinitionCase0 {
@@ -221,6 +276,9 @@ export interface AutoresearchValidateCreateRequestTargetDefinitionCase1 {
 export type AutoresearchValidateCreateRequestTargetDefinition =
   | AutoresearchValidateCreateRequestTargetDefinitionCase0
   | AutoresearchValidateCreateRequestTargetDefinitionCase1;
+const AutoresearchValidateCreateRequestTargetDefinition =
+  S.Unknown as any as S.Schema<AutoresearchValidateCreateRequestTargetDefinition>;
+
 export interface AutoresearchValidateCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -237,8 +295,15 @@ export interface AutoresearchValidateCreateRequest {
   /** Population filter for daily scoring. When omitted or empty, the training population is counted, as creation stores it. */
   inference_population?: unknown;
 }
+const AutoresearchValidateCreateRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<AutoresearchValidateCreateRequest>;
+
 /** * `info` - info * `warning` - warning * `error` - error */
 export type ValidationWarningSeverityEnum = "info" | "warning" | "error";
+const ValidationWarningSeverityEnum = S.String;
+
 export interface ValidationWarning {
   /** Machine-readable warning code. 'horizon_exceeds_lookback', and 'population_too_large' with severity 'error', mean a run would fail: fix the definition before creating. 'population_too_large' with severity 'info' means training uses a sample of the population, or each scoring run scores a rolling part of it: users never scored first, then users whose last score was oldest. 'low_volume', 'low_positives' and 'low_negatives' mean the data is too thin for a reliable model (severity 'error', advisory). 'moderate_volume', 'mostly_anonymous_population', 'extreme_imbalance' and 'near_universal' are severity 'warning'. */
   code: string;
@@ -247,8 +312,15 @@ export interface ValidationWarning {
   /** Severity level. 'error' means training would fail or the data is too thin for a reliable model; see 'code' for which. 'warning' is worth acknowledging. Creation enforces none of them. * `info` - info * `warning` - warning * `error` - error */
   severity: ValidationWarningSeverityEnum;
 }
+const ValidationWarning = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<ValidationWarning>;
+
 /** List of validation warnings. Check 'severity' and 'code'. */
 export type ValidatePipelineResponseWarningsList = Array<ValidationWarning>;
+const ValidatePipelineResponseWarningsList = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<ValidatePipelineResponseWarningsList>;
+
 export interface ValidatePipelineResponse {
   /** False when any warning has severity 'error'. Creation does not enforce it, but a definition with an 'error' 'population_too_large' or 'horizon_exceeds_lookback' cannot train. */
   can_proceed: boolean;
@@ -269,18 +341,35 @@ export interface ValidatePipelineResponse {
   /** Why validation did not run, or null when it did. A query error in the definition itself is passed through; any other failure is a generic message and the detail is logged. */
   error: string | null;
 }
+const ValidatePipelineResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<ValidatePipelineResponse>;
+
 export interface AutoresearchValidateOnlineCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A UUID string identifying this autoresearch pipeline. */
   id: string;
 }
+const AutoresearchValidateOnlineCreateRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<AutoresearchValidateOnlineCreateRequest>;
+
 /** * `inference` - Inference * `validation` - Validation */
 export type AutoresearchRunRunTypeEnum = "inference" | "validation";
+const AutoresearchRunRunTypeEnum = S.String;
+
 /** * `pending` - Pending * `running` - Running * `completed` - Completed * `failed` - Failed */
 export type ZendeskImportJobStatusEnum = "pending" | "running" | "completed" | "failed";
+const ZendeskImportJobStatusEnum = S.String;
+
 /** Run metrics: score distribution summary, validation AUC, etc. An inference run records 'rows_eligible', the users in the inference population. When it is larger than rows_scored, the run scored a rolling part of the population: users never scored first, then users whose last score was oldest. */
 export type AutoresearchRunMetricsMap = { [key: string]: unknown | undefined };
+const AutoresearchRunMetricsMap =
+  UserBasicHedgehogConfigMap as any as S.Schema<AutoresearchRunMetricsMap>;
+
 export interface AutoresearchRun {
   /** Unique UUID of this run. */
   id: string;
@@ -304,9 +393,21 @@ export interface AutoresearchRun {
   completed_at?: string | null;
   created_at: string;
 }
+const AutoresearchRun = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<AutoresearchRun>;
+
 export type AutoresearchValidateOnlineCreateResponseBodyList = Array<AutoresearchRun>;
+const AutoresearchValidateOnlineCreateResponseBodyList = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<AutoresearchValidateOnlineCreateResponseBodyList>;
+
 export type AutoresearchValidateOnlineCreateResponse =
   AutoresearchValidateOnlineCreateResponseBodyList;
+const AutoresearchValidateOnlineCreateResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<AutoresearchValidateOnlineCreateResponse>;
+
 export type CreateAutoresearchRequestTargetDefinitionCase0Type = "event";
 /** Predict target_event. The default when target_definition is omitted. */
 export interface CreateAutoresearchRequestTargetDefinitionCase0 {
@@ -323,6 +424,9 @@ export interface CreateAutoresearchRequestTargetDefinitionCase1 {
 export type CreateAutoresearchRequestTargetDefinition =
   | CreateAutoresearchRequestTargetDefinitionCase0
   | CreateAutoresearchRequestTargetDefinitionCase1;
+const CreateAutoresearchRequestTargetDefinition =
+  S.Unknown as any as S.Schema<CreateAutoresearchRequestTargetDefinition>;
+
 export interface CreateAutoresearchRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -353,12 +457,22 @@ export interface CreateAutoresearchRequest {
   /** Person property name for the prediction score, e.g. 'predicted_p_pageview'. Auto-derived from target_event if omitted. Letters, digits, and _ $ . - only, and it cannot start with $ (reserved for PostHog's own properties); must be unique among this project's non-archived pipelines. */
   output_person_property?: string;
 }
+const CreateAutoresearchRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<CreateAutoresearchRequest>;
+
 export interface CreateAutoresearchPauseRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A UUID string identifying this autoresearch pipeline. */
   id: string;
 }
+const CreateAutoresearchPauseRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<CreateAutoresearchPauseRequest>;
+
 /** * `likely_active_soon` - Likely Active Soon * `at_risk_of_inactivity` - At Risk Of Inactivity * `return_after_first_use` - Return After First Use * `feature_adoption` - Feature Adoption * `repeat_key_behavior` - Repeat Key Behavior */
 export type TemplateKeyEnum =
   | "likely_active_soon"
@@ -366,6 +480,8 @@ export type TemplateKeyEnum =
   | "return_after_first_use"
   | "feature_adoption"
   | "repeat_key_behavior";
+const TemplateKeyEnum = S.String;
+
 export interface CreateAutoresearchResolveTemplateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -376,8 +492,18 @@ export interface CreateAutoresearchResolveTemplateRequest {
   /** Override the template's default prediction horizon in days. */
   horizon_days?: number;
 }
+const CreateAutoresearchResolveTemplateRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<CreateAutoresearchResolveTemplateRequest>;
+
 /** Other viable activity events found in your schema. If the resolved event is not the right signal, re-resolve with one of these as target_event. */
 export type ResolvedTemplateActivityEventAlternativesList = Array<string>;
+const ResolvedTemplateActivityEventAlternativesList = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<ResolvedTemplateActivityEventAlternativesList>;
+
 export interface ResolvedTemplate {
   /** The template key that was resolved. Pass it back to re-resolve with a different target_event. * `likely_active_soon` - Likely Active Soon * `at_risk_of_inactivity` - At Risk Of Inactivity * `return_after_first_use` - Return After First Use * `feature_adoption` - Feature Adoption * `repeat_key_behavior` - Repeat Key Behavior */
   template_key: TemplateKeyEnum;
@@ -406,14 +532,23 @@ export interface ResolvedTemplate {
   /** Usage notes and guidance for interpreting this resolved config. */
   notes: string;
 }
+const ResolvedTemplate = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<ResolvedTemplate>;
+
 export interface CreateAutoresearchScoreRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A UUID string identifying this autoresearch pipeline. */
   id: string;
 }
+const CreateAutoresearchScoreRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<CreateAutoresearchScoreRequest>;
+
 /** * `try_next` - try_next * `consider` - consider */
 export type CreateSuggestionPriorityEnum = "try_next" | "consider";
+const CreateSuggestionPriorityEnum = S.String;
+
 export interface CreateAutoresearchSuggestionRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -423,14 +558,28 @@ export interface CreateAutoresearchSuggestionRequest {
   /** 'try_next' asks the agent to act on this before other autonomous iterations; 'consider' is advisory context. * `try_next` - try_next * `consider` - consider */
   priority?: CreateSuggestionPriorityEnum | (string & {});
 }
+const CreateAutoresearchSuggestionRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<CreateAutoresearchSuggestionRequest>;
+
 /** * `try_next` - Try next * `consider` - Consider */
 export type AutoresearchSuggestionPriorityEnum = "try_next" | "consider";
+const AutoresearchSuggestionPriorityEnum = S.String;
+
 /** * `queued` - Queued * `picked_up` - Picked up * `acted_on` - Acted on * `dismissed` - Dismissed */
 export type AutoresearchSuggestionStatusEnum = "queued" | "picked_up" | "acted_on" | "dismissed";
+const AutoresearchSuggestionStatusEnum = S.String;
+
 /** * `user` - User * `agent` - Agent */
 export type AutoresearchSuggestionSourceEnum = "user" | "agent";
+const AutoresearchSuggestionSourceEnum = S.String;
+
 /** UUIDs of iterations spawned from this suggestion. */
 export type AutoresearchSuggestionLinkedIterationIdsList = Array<string>;
+const AutoresearchSuggestionLinkedIterationIdsList =
+  ResolvedTemplateActivityEventAlternativesList as any as S.Schema<AutoresearchSuggestionLinkedIterationIdsList>;
+
 export interface AutoresearchSuggestion {
   /** Unique UUID of this suggestion. */
   id: string;
@@ -453,8 +602,15 @@ export interface AutoresearchSuggestion {
   created_at: string;
   updated_at: string;
 }
+const AutoresearchSuggestion = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<AutoresearchSuggestion>;
+
 /** * `picked_up` - picked_up * `acted_on` - acted_on * `dismissed` - dismissed */
 export type RespondToSuggestionStatusEnum = "picked_up" | "acted_on" | "dismissed";
+const RespondToSuggestionStatusEnum = S.String;
+
 export interface CreateAutoresearchSuggestionsRespondRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -466,6 +622,11 @@ export interface CreateAutoresearchSuggestionsRespondRequest {
   /** Plain-English note on how the suggestion was interpreted and acted upon. A dismissal needs a note, sent now or recorded earlier. Omit it to keep the note already recorded; send an empty string to clear it. */
   agent_response?: string;
 }
+const CreateAutoresearchSuggestionsRespondRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<CreateAutoresearchSuggestionsRespondRequest>;
+
 export interface CreateAutoresearchTrainRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -474,6 +635,11 @@ export interface CreateAutoresearchTrainRequest {
   /** Override the pipeline iteration budget for this training run. */
   iteration_budget?: number;
 }
+const CreateAutoresearchTrainRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<CreateAutoresearchTrainRequest>;
+
 /** One iteration referenced from a run summary's ladder or dead-ends list. */
 export interface TrainingRunSummaryLadderItem {
   /** Iteration index this entry refers to. */
@@ -485,10 +651,23 @@ export interface TrainingRunSummaryLadderItem {
   /** The agent's rationale for this attempt. */
   agent_description: string;
 }
+const TrainingRunSummaryLadderItem = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<TrainingRunSummaryLadderItem>;
+
 /** Kept iterations, highest holdout AUC first -- the winning approaches worth reusing. */
 export type TrainingRunSummaryKeptLadderList = Array<TrainingRunSummaryLadderItem>;
+const TrainingRunSummaryKeptLadderList = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<TrainingRunSummaryKeptLadderList>;
+
 /** Discarded or crashed iterations -- approaches already tried that did not help; avoid repeating. */
 export type TrainingRunSummaryDeadEndsList = Array<TrainingRunSummaryLadderItem>;
+const TrainingRunSummaryDeadEndsList =
+  TrainingRunSummaryKeptLadderList as any as S.Schema<TrainingRunSummaryDeadEndsList>;
+
 /** Tier-1 distilled summary of a completed run -- the orientation memory a new run reads first. */
 export interface TrainingRunSummary {
   /** Target event the run's pipeline predicts. */
@@ -512,10 +691,17 @@ export interface TrainingRunSummary {
   /** Short id of the report notebook the agent built for this run. Empty if there is none. */
   report_notebook_short_id?: string;
 }
+const TrainingRunSummary = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<TrainingRunSummary>;
+
 /** * `kept` - Kept * `discarded` - Discarded * `crashed` - Crashed */
 export type AutoresearchIterationStatusEnum = "kept" | "discarded" | "crashed";
+const AutoresearchIterationStatusEnum = S.String;
+
 /** Keyword arguments for the estimator's constructor; null or absent means the defaults. */
 export type IterationTrailModelSpecModelParamsMap = { [key: string]: unknown | undefined };
+const IterationTrailModelSpecModelParamsMap =
+  UserBasicHedgehogConfigMap as any as S.Schema<IterationTrailModelSpecModelParamsMap>;
+
 /** Model class and hyperparameters tried in this iteration. */
 export interface IterationTrailModelSpec {
   /** Dotted path of the estimator class. */
@@ -523,6 +709,11 @@ export interface IterationTrailModelSpec {
   /** Keyword arguments for the estimator's constructor; null or absent means the defaults. */
   model_params?: IterationTrailModelSpecModelParamsMap | null;
 }
+const IterationTrailModelSpec = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<IterationTrailModelSpec>;
+
 /** Compact, read-only view of one iteration for the cross-run history feed and the Training tab. */
 export interface IterationTrail {
   /** Order of this attempt within its run (0-based). */
@@ -538,8 +729,15 @@ export interface IterationTrail {
   /** Model class and hyperparameters tried in this iteration. */
   model_spec: IterationTrailModelSpec;
 }
+const IterationTrail = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<IterationTrail>;
+
 /** Per-iteration breakdown -- every recipe the agent tried this run, kept or discarded, with its model spec, holdout/train AUC, and one-line rationale. Ordered by iteration_number. */
 export type AutoresearchTrainingRunIterationsList = Array<IterationTrail>;
+const AutoresearchTrainingRunIterationsList = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<AutoresearchTrainingRunIterationsList>;
+
 export interface AutoresearchTrainingRun {
   /** Unique UUID of this training run. */
   id: string;
@@ -571,6 +769,11 @@ export interface AutoresearchTrainingRun {
   completed_at: string | null;
   created_at: string;
 }
+const AutoresearchTrainingRun = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<AutoresearchTrainingRun>;
+
 export interface CreateAutoresearchTrainingRunRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -578,6 +781,11 @@ export interface CreateAutoresearchTrainingRunRequest {
   /** Iteration budget for this run. Defaults to the pipeline's iteration_budget if omitted. */
   iteration_budget?: number;
 }
+const CreateAutoresearchTrainingRunRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<CreateAutoresearchTrainingRunRequest>;
+
 export interface CreateAutoresearchTrainingRunsCompleteRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -595,9 +803,20 @@ export interface CreateAutoresearchTrainingRunsCompleteRequest {
   /** Short id of the report notebook you built for this run. Stored in the run summary only if the notebook exists in this project; an unknown id is dropped and does not fail the completion. */
   report_notebook_short_id?: string;
 }
+const CreateAutoresearchTrainingRunsCompleteRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<CreateAutoresearchTrainingRunsCompleteRequest>;
+
 /** Transforms the bundle applies to the feature columns; null or absent means none, and the in-process path accepts none. */
 export type CreateAutoresearchTrainingRunsIterationRequestRecipeSnapshotFeatureTransformsList =
   Array<unknown>;
+const CreateAutoresearchTrainingRunsIterationRequestRecipeSnapshotFeatureTransformsList =
+  /*@__PURE__*/ __L.at(
+    __c5,
+    0,
+  ) as any as S.Schema<CreateAutoresearchTrainingRunsIterationRequestRecipeSnapshotFeatureTransformsList>;
+
 /** Compact recipe for this iteration: feature_sql (HogQL SELECT keyed on person_id) and transforms. */
 export interface CreateAutoresearchTrainingRunsIterationRequestRecipeSnapshot {
   /** A read-only HogQL SELECT from {anchors}, one row per person, keyed on person_id. */
@@ -605,10 +824,20 @@ export interface CreateAutoresearchTrainingRunsIterationRequestRecipeSnapshot {
   /** Transforms the bundle applies to the feature columns; null or absent means none, and the in-process path accepts none. */
   feature_transforms?: CreateAutoresearchTrainingRunsIterationRequestRecipeSnapshotFeatureTransformsList | null;
 }
+const CreateAutoresearchTrainingRunsIterationRequestRecipeSnapshot = /*@__PURE__*/ __L.at(
+  __c5,
+  1,
+) as any as S.Schema<CreateAutoresearchTrainingRunsIterationRequestRecipeSnapshot>;
+
 /** Keyword arguments for the estimator's constructor; null or absent means the defaults. */
 export type CreateAutoresearchTrainingRunsIterationRequestModelSpecModelParamsMap = {
   [key: string]: unknown | undefined;
 };
+const CreateAutoresearchTrainingRunsIterationRequestModelSpecModelParamsMap = /*@__PURE__*/ __L.at(
+  __c5,
+  2,
+) as any as S.Schema<CreateAutoresearchTrainingRunsIterationRequestModelSpecModelParamsMap>;
+
 /** model_class and model_params tried this iteration. Any class is accepted here; the sklearn/xgboost allowlist applies at completion, to a run that uploaded no bundle. */
 export interface CreateAutoresearchTrainingRunsIterationRequestModelSpec {
   /** Dotted path of the estimator class. */
@@ -616,8 +845,15 @@ export interface CreateAutoresearchTrainingRunsIterationRequestModelSpec {
   /** Keyword arguments for the estimator's constructor; null or absent means the defaults. */
   model_params?: CreateAutoresearchTrainingRunsIterationRequestModelSpecModelParamsMap | null;
 }
+const CreateAutoresearchTrainingRunsIterationRequestModelSpec = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<CreateAutoresearchTrainingRunsIterationRequestModelSpec>;
+
 /** * `kept` - kept * `discarded` - discarded * `crashed` - crashed */
 export type RecordIterationStatusEnum = "kept" | "discarded" | "crashed";
+const RecordIterationStatusEnum = S.String;
+
 export interface CreateAutoresearchTrainingRunsIterationRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -643,8 +879,18 @@ export interface CreateAutoresearchTrainingRunsIterationRequest {
   /** UUID of the steering suggestion this iteration was spawned from, if any. Set it whenever the iteration acts on a pending suggestion -- it links the iteration back to the suggestion for attribution and advances the suggestion to 'acted_on'. */
   parent_suggestion?: string | null;
 }
+const CreateAutoresearchTrainingRunsIterationRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  4,
+) as any as S.Schema<CreateAutoresearchTrainingRunsIterationRequest>;
+
 /** Transforms the bundle applies to the feature columns; null or absent means none, and the in-process path accepts none. */
 export type AutoresearchIterationRecipeSnapshotFeatureTransformsList = Array<unknown>;
+const AutoresearchIterationRecipeSnapshotFeatureTransformsList = /*@__PURE__*/ __L.at(
+  __c5,
+  5,
+) as any as S.Schema<AutoresearchIterationRecipeSnapshotFeatureTransformsList>;
+
 /** Compact recipe snapshot at time of iteration. Full artifact lives in the model row. */
 export interface AutoresearchIterationRecipeSnapshot {
   /** A read-only HogQL SELECT from {anchors}, one row per person, keyed on person_id. */
@@ -652,8 +898,16 @@ export interface AutoresearchIterationRecipeSnapshot {
   /** Transforms the bundle applies to the feature columns; null or absent means none, and the in-process path accepts none. */
   feature_transforms?: AutoresearchIterationRecipeSnapshotFeatureTransformsList | null;
 }
+const AutoresearchIterationRecipeSnapshot = /*@__PURE__*/ __L.at(
+  __c5,
+  6,
+) as any as S.Schema<AutoresearchIterationRecipeSnapshot>;
+
 /** Keyword arguments for the estimator's constructor; null or absent means the defaults. */
 export type AutoresearchIterationModelSpecModelParamsMap = { [key: string]: unknown | undefined };
+const AutoresearchIterationModelSpecModelParamsMap =
+  UserBasicHedgehogConfigMap as any as S.Schema<AutoresearchIterationModelSpecModelParamsMap>;
+
 /** Model class and hyperparameters tried in this iteration. */
 export interface AutoresearchIterationModelSpec {
   /** Dotted path of the estimator class. */
@@ -661,6 +915,11 @@ export interface AutoresearchIterationModelSpec {
   /** Keyword arguments for the estimator's constructor; null or absent means the defaults. */
   model_params?: AutoresearchIterationModelSpecModelParamsMap | null;
 }
+const AutoresearchIterationModelSpec = /*@__PURE__*/ __L.at(
+  __c5,
+  7,
+) as any as S.Schema<AutoresearchIterationModelSpec>;
+
 export interface AutoresearchIteration {
   id: string;
   pipeline: string;
@@ -681,6 +940,11 @@ export interface AutoresearchIteration {
   parent_suggestion?: string | null;
   created_at: string;
 }
+const AutoresearchIteration = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<AutoresearchIteration>;
+
 export interface CreateAutoresearchTrainingRunsMaterializeFeatureRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -690,10 +954,21 @@ export interface CreateAutoresearchTrainingRunsMaterializeFeatureRequest {
   /** Your HogQL feature query, using the {anchors}/{lookback_days} contract. Must be a read-only SELECT keyed on person_id (aliased to distinct_id), one row per user. The backend runs it server-side against the labeled training population -- no 500-row cap -- and writes the resulting train/holdout feature and label parquet files into your sandbox. */
   features_sql: string;
 }
+const CreateAutoresearchTrainingRunsMaterializeFeatureRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  1,
+) as any as S.Schema<CreateAutoresearchTrainingRunsMaterializeFeatureRequest>;
+
 /** The numeric feature column names (excludes distinct_id, __label, __fold). */
 export type MaterializeFeaturesResponseFeatureColsList = Array<string>;
+const MaterializeFeaturesResponseFeatureColsList =
+  ResolvedTemplateActivityEventAlternativesList as any as S.Schema<MaterializeFeaturesResponseFeatureColsList>;
+
 /** Advice on the cost of features_sql. A hint does not block the materialization or the upload, but a champion whose features.sql cannot score today's population in time is not promoted. */
 export type MaterializeFeaturesResponseHintsList = Array<string>;
+const MaterializeFeaturesResponseHintsList =
+  ResolvedTemplateActivityEventAlternativesList as any as S.Schema<MaterializeFeaturesResponseHintsList>;
+
 /** The local sandbox paths and shape of the materialized training matrix. */
 export interface MaterializeFeaturesResponse {
   /** Sandbox path to the training feature matrix parquet (distinct_id + numeric feature columns). */
@@ -719,12 +994,22 @@ export interface MaterializeFeaturesResponse {
   /** Advice on the cost of features_sql. A hint does not block the materialization or the upload, but a champion whose features.sql cannot score today's population in time is not promoted. */
   hints: MaterializeFeaturesResponseHintsList;
 }
+const MaterializeFeaturesResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  2,
+) as any as S.Schema<MaterializeFeaturesResponse>;
+
 export interface GetAutoresearchRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A UUID string identifying this autoresearch pipeline. */
   id: string;
 }
+const GetAutoresearchRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  3,
+) as any as S.Schema<GetAutoresearchRequest>;
+
 export interface GetAutoresearchModelRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -732,10 +1017,20 @@ export interface GetAutoresearchModelRequest {
   /** A UUID string identifying this autoresearch model. */
   id: string;
 }
+const GetAutoresearchModelRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  4,
+) as any as S.Schema<GetAutoresearchModelRequest>;
+
 /** * `champion` - Champion * `challenger` - Challenger * `archived` - Archived */
 export type AutoresearchModelRoleEnum = "champion" | "challenger" | "archived";
+const AutoresearchModelRoleEnum = S.String;
+
 /** Extended metrics bundle: Brier score, precision/recall at thresholds, lift@k, base rate, row counts. */
 export type AutoresearchModelMetricsMap = { [key: string]: unknown | undefined };
+const AutoresearchModelMetricsMap =
+  UserBasicHedgehogConfigMap as any as S.Schema<AutoresearchModelMetricsMap>;
+
 export interface AutoresearchModel {
   /** Unique UUID of this model version. */
   id: string;
@@ -776,6 +1071,8 @@ export interface AutoresearchModel {
   /** True if this model is in the pipeline's shadow set: the champion, the previous champion, and up to 3 recent fitted challengers with distinct recipes. */
   in_shadow_set: boolean;
 }
+const AutoresearchModel = /*@__PURE__*/ __L.at(__c6, 5) as any as S.Schema<AutoresearchModel>;
+
 export interface GetAutoresearchOnlinePerformanceRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -784,6 +1081,11 @@ export interface GetAutoresearchOnlinePerformanceRequest {
   /** Maximum number of validated prediction dates to return, newest first (default 60, at most 180). Each date returns one row per model that emitted predictions on it. */
   limit?: number;
 }
+const GetAutoresearchOnlinePerformanceRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  6,
+) as any as S.Schema<GetAutoresearchOnlinePerformanceRequest>;
+
 export interface CalibrationBin {
   /** Number of scored users in this bin. */
   n: number;
@@ -792,8 +1094,15 @@ export interface CalibrationBin {
   /** Fraction of the users in this bin who did the target event within the horizon. */
   positive_rate: number;
 }
+const CalibrationBin = /*@__PURE__*/ __L.at(__c6, 7) as any as S.Schema<CalibrationBin>;
+
 /** Calibration table with up to 10 bins cut at score quantiles, lowest scores first. Users with equal scores share a bin, so heavy ties give fewer bins. Null for dates validated before this metric existed. */
 export type OnlinePerformanceRowCalibrationBinsList = Array<CalibrationBin>;
+const OnlinePerformanceRowCalibrationBinsList = /*@__PURE__*/ __L.at(
+  __c7,
+  0,
+) as any as S.Schema<OnlinePerformanceRowCalibrationBinsList>;
+
 export interface OnlinePerformanceRow {
   /** UUID of the validation run that recorded these metrics. */
   validation_run_id: string;
@@ -838,12 +1147,21 @@ export interface OnlinePerformanceRow {
   /** When the validation run completed. */
   validated_at: string | null;
 }
+const OnlinePerformanceRow = /*@__PURE__*/ __L.at(__c7, 1) as any as S.Schema<OnlinePerformanceRow>;
+
 /** One row per model per validated prediction date, newest date first. Empty until a prediction horizon has elapsed and online validation has run. */
 export type OnlinePerformanceRowsList = Array<OnlinePerformanceRow>;
+const OnlinePerformanceRowsList = /*@__PURE__*/ __L.at(
+  __c7,
+  2,
+) as any as S.Schema<OnlinePerformanceRowsList>;
+
 export interface OnlinePerformance {
   /** One row per model per validated prediction date, newest date first. Empty until a prediction horizon has elapsed and online validation has run. */
   rows: OnlinePerformanceRowsList;
 }
+const OnlinePerformance = /*@__PURE__*/ __L.at(__c7, 3) as any as S.Schema<OnlinePerformance>;
+
 export interface GetAutoresearchRunRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -851,6 +1169,11 @@ export interface GetAutoresearchRunRequest {
   /** A UUID string identifying this autoresearch run. */
   id: string;
 }
+const GetAutoresearchRunRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  4,
+) as any as S.Schema<GetAutoresearchRunRequest>;
+
 export interface GetAutoresearchSuggestionRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -858,6 +1181,11 @@ export interface GetAutoresearchSuggestionRequest {
   /** A UUID string identifying this autoresearch suggestion. */
   id: string;
 }
+const GetAutoresearchSuggestionRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  5,
+) as any as S.Schema<GetAutoresearchSuggestionRequest>;
+
 export interface GetAutoresearchTrainingRunRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -865,6 +1193,11 @@ export interface GetAutoresearchTrainingRunRequest {
   /** A UUID string identifying this autoresearch training run. */
   id: string;
 }
+const GetAutoresearchTrainingRunRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  6,
+) as any as S.Schema<GetAutoresearchTrainingRunRequest>;
+
 export interface GetAutoresearchTrainingRunsArtifactRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -872,8 +1205,16 @@ export interface GetAutoresearchTrainingRunsArtifactRequest {
   /** A UUID string identifying this autoresearch training run. */
   id: string;
 }
+const GetAutoresearchTrainingRunsArtifactRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  7,
+) as any as S.Schema<GetAutoresearchTrainingRunsArtifactRequest>;
+
 /** Relative paths of every file stored under this training run's bundle prefix. */
 export type ArtifactListPathsList = Array<string>;
+const ArtifactListPathsList =
+  ResolvedTemplateActivityEventAlternativesList as any as S.Schema<ArtifactListPathsList>;
+
 /** The relative paths present in a training run's bundle. */
 export interface ArtifactList {
   /** Relative paths of every file stored under this training run's bundle prefix. */
@@ -881,6 +1222,8 @@ export interface ArtifactList {
   /** Number of files in the bundle. */
   count: number;
 }
+const ArtifactList = /*@__PURE__*/ __L.at(__c8, 0) as any as S.Schema<ArtifactList>;
+
 export interface GetAutoresearchTrainingRunsHistoryRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -888,6 +1231,11 @@ export interface GetAutoresearchTrainingRunsHistoryRequest {
   /** Maximum number of prior runs to return (default 5, at most 20). */
   limit?: number;
 }
+const GetAutoresearchTrainingRunsHistoryRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  1,
+) as any as S.Schema<GetAutoresearchTrainingRunsHistoryRequest>;
+
 /** Keyword arguments for the estimator's constructor; null or absent means the defaults. */
 export type IterationTrailWithRecipeModelSpecModelParamsMap = {
   [key: string]: unknown | undefined;
@@ -899,6 +1247,9 @@ export interface IterationTrailWithRecipeModelSpec {
   /** Keyword arguments for the estimator's constructor; null or absent means the defaults. */
   model_params?: IterationTrailWithRecipeModelSpecModelParamsMap | null;
 }
+const IterationTrailWithRecipeModelSpec =
+  AutoresearchIterationModelSpec as any as S.Schema<IterationTrailWithRecipeModelSpec>;
+
 /** Transforms the bundle applies to the feature columns; null or absent means none, and the in-process path accepts none. */
 export type IterationTrailWithRecipeRecipeSnapshotFeatureTransformsList = Array<unknown>;
 /** The recipe this iteration tried: its feature_sql and transforms, so a later run can reuse them. */
@@ -908,6 +1259,9 @@ export interface IterationTrailWithRecipeRecipeSnapshot {
   /** Transforms the bundle applies to the feature columns; null or absent means none, and the in-process path accepts none. */
   feature_transforms?: IterationTrailWithRecipeRecipeSnapshotFeatureTransformsList | null;
 }
+const IterationTrailWithRecipeRecipeSnapshot =
+  AutoresearchIterationRecipeSnapshot as any as S.Schema<IterationTrailWithRecipeRecipeSnapshot>;
+
 /** The trail with each iteration's recipe, for history only: a run list page would otherwise carry every recipe of every run. */
 export interface IterationTrailWithRecipe {
   /** Order of this attempt within its run (0-based). */
@@ -925,8 +1279,18 @@ export interface IterationTrailWithRecipe {
   /** The recipe this iteration tried: its feature_sql and transforms, so a later run can reuse them. */
   recipe_snapshot: IterationTrailWithRecipeRecipeSnapshot;
 }
+const IterationTrailWithRecipe = /*@__PURE__*/ __L.at(
+  __c8,
+  2,
+) as any as S.Schema<IterationTrailWithRecipe>;
+
 /** The iteration trail: every recipe tried, kept or discarded, with rationale and score. */
 export type TrainingRunHistoryEntryIterationsList = Array<IterationTrailWithRecipe>;
+const TrainingRunHistoryEntryIterationsList = /*@__PURE__*/ __L.at(
+  __c8,
+  3,
+) as any as S.Schema<TrainingRunHistoryEntryIterationsList>;
+
 /** One prior completed training run plus its full iteration trail. */
 export interface TrainingRunHistoryEntry {
   /** UUID of the completed training run. */
@@ -950,13 +1314,25 @@ export interface TrainingRunHistoryEntry {
   /** The iteration trail: every recipe tried, kept or discarded, with rationale and score. */
   iterations: TrainingRunHistoryEntryIterationsList;
 }
+const TrainingRunHistoryEntry = /*@__PURE__*/ __L.at(
+  __c8,
+  4,
+) as any as S.Schema<TrainingRunHistoryEntry>;
+
 /** Recent completed training runs -- the current pipeline first, then same-target sibling pipelines on the team -- newest first. Mine these to reuse winning features and avoid repeating discarded approaches. */
 export type TrainingRunHistoryRunsList = Array<TrainingRunHistoryEntry>;
+const TrainingRunHistoryRunsList = /*@__PURE__*/ __L.at(
+  __c8,
+  5,
+) as any as S.Schema<TrainingRunHistoryRunsList>;
+
 /** Cross-run learning memory: prior runs the agent should read before iterating. */
 export interface TrainingRunHistory {
   /** Recent completed training runs -- the current pipeline first, then same-target sibling pipelines on the team -- newest first. Mine these to reuse winning features and avoid repeating discarded approaches. */
   runs: TrainingRunHistoryRunsList;
 }
+const TrainingRunHistory = /*@__PURE__*/ __L.at(__c8, 6) as any as S.Schema<TrainingRunHistory>;
+
 export interface ListAutoresearchRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -965,13 +1341,28 @@ export interface ListAutoresearchRequest {
   /** The initial index from which to return the results. */
   offset?: number;
 }
+const ListAutoresearchRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  7,
+) as any as S.Schema<ListAutoresearchRequest>;
+
 export type PaginatedAutoresearchPipelineListResultsList = Array<AutoresearchPipeline>;
+const PaginatedAutoresearchPipelineListResultsList = /*@__PURE__*/ __L.at(
+  __c9,
+  0,
+) as any as S.Schema<PaginatedAutoresearchPipelineListResultsList>;
+
 export interface PaginatedAutoresearchPipelineList {
   count: number;
   next?: string | null;
   previous?: string | null;
   results: PaginatedAutoresearchPipelineListResultsList;
 }
+const PaginatedAutoresearchPipelineList = /*@__PURE__*/ __L.at(
+  __c9,
+  1,
+) as any as S.Schema<PaginatedAutoresearchPipelineList>;
+
 export interface ListAutoresearchModelsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -981,13 +1372,28 @@ export interface ListAutoresearchModelsRequest {
   /** The initial index from which to return the results. */
   offset?: number;
 }
+const ListAutoresearchModelsRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  2,
+) as any as S.Schema<ListAutoresearchModelsRequest>;
+
 export type PaginatedAutoresearchModelListResultsList = Array<AutoresearchModel>;
+const PaginatedAutoresearchModelListResultsList = /*@__PURE__*/ __L.at(
+  __c9,
+  3,
+) as any as S.Schema<PaginatedAutoresearchModelListResultsList>;
+
 export interface PaginatedAutoresearchModelList {
   count: number;
   next?: string | null;
   previous?: string | null;
   results: PaginatedAutoresearchModelListResultsList;
 }
+const PaginatedAutoresearchModelList = /*@__PURE__*/ __L.at(
+  __c9,
+  4,
+) as any as S.Schema<PaginatedAutoresearchModelList>;
+
 export interface ListAutoresearchRunsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -997,13 +1403,26 @@ export interface ListAutoresearchRunsRequest {
   /** The initial index from which to return the results. */
   offset?: number;
 }
+const ListAutoresearchRunsRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  5,
+) as any as S.Schema<ListAutoresearchRunsRequest>;
+
 export type PaginatedAutoresearchRunListResultsList = Array<AutoresearchRun>;
+const PaginatedAutoresearchRunListResultsList =
+  AutoresearchValidateOnlineCreateResponseBodyList as any as S.Schema<PaginatedAutoresearchRunListResultsList>;
+
 export interface PaginatedAutoresearchRunList {
   count: number;
   next?: string | null;
   previous?: string | null;
   results: PaginatedAutoresearchRunListResultsList;
 }
+const PaginatedAutoresearchRunList = /*@__PURE__*/ __L.at(
+  __c9,
+  6,
+) as any as S.Schema<PaginatedAutoresearchRunList>;
+
 export interface ListAutoresearchSuggestionsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -1013,17 +1432,37 @@ export interface ListAutoresearchSuggestionsRequest {
   /** The initial index from which to return the results. */
   offset?: number;
 }
+const ListAutoresearchSuggestionsRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  7,
+) as any as S.Schema<ListAutoresearchSuggestionsRequest>;
+
 export type PaginatedAutoresearchSuggestionListResultsList = Array<AutoresearchSuggestion>;
+const PaginatedAutoresearchSuggestionListResultsList = /*@__PURE__*/ __L.at(
+  __c10,
+  0,
+) as any as S.Schema<PaginatedAutoresearchSuggestionListResultsList>;
+
 export interface PaginatedAutoresearchSuggestionList {
   count: number;
   next?: string | null;
   previous?: string | null;
   results: PaginatedAutoresearchSuggestionListResultsList;
 }
+const PaginatedAutoresearchSuggestionList = /*@__PURE__*/ __L.at(
+  __c10,
+  1,
+) as any as S.Schema<PaginatedAutoresearchSuggestionList>;
+
 export interface ListAutoresearchTemplatesRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
+const ListAutoresearchTemplatesRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  2,
+) as any as S.Schema<ListAutoresearchTemplatesRequest>;
+
 export interface TemplateInfo {
   /** Template identifier, e.g. 'likely_active_soon'. Pass to autoresearch-resolve-template-create. * `likely_active_soon` - Likely Active Soon * `at_risk_of_inactivity` - At Risk Of Inactivity * `return_after_first_use` - Return After First Use * `feature_adoption` - Feature Adoption * `repeat_key_behavior` - Repeat Key Behavior */
   key: TemplateKeyEnum;
@@ -1040,8 +1479,20 @@ export interface TemplateInfo {
   /** Usage guidance and implementation notes. */
   notes: string;
 }
+const TemplateInfo = /*@__PURE__*/ __L.at(__c10, 3) as any as S.Schema<TemplateInfo>;
+
 export type ListAutoresearchTemplatesResponseBodyList = Array<TemplateInfo>;
+const ListAutoresearchTemplatesResponseBodyList = /*@__PURE__*/ __L.at(
+  __c10,
+  4,
+) as any as S.Schema<ListAutoresearchTemplatesResponseBodyList>;
+
 export type ListAutoresearchTemplatesResponse = ListAutoresearchTemplatesResponseBodyList;
+const ListAutoresearchTemplatesResponse = /*@__PURE__*/ __L.at(
+  __c10,
+  5,
+) as any as S.Schema<ListAutoresearchTemplatesResponse>;
+
 export interface ListAutoresearchTrainingRunsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -1051,13 +1502,28 @@ export interface ListAutoresearchTrainingRunsRequest {
   /** The initial index from which to return the results. */
   offset?: number;
 }
+const ListAutoresearchTrainingRunsRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  6,
+) as any as S.Schema<ListAutoresearchTrainingRunsRequest>;
+
 export type PaginatedAutoresearchTrainingRunListResultsList = Array<AutoresearchTrainingRun>;
+const PaginatedAutoresearchTrainingRunListResultsList = /*@__PURE__*/ __L.at(
+  __c10,
+  7,
+) as any as S.Schema<PaginatedAutoresearchTrainingRunListResultsList>;
+
 export interface PaginatedAutoresearchTrainingRunList {
   count: number;
   next?: string | null;
   previous?: string | null;
   results: PaginatedAutoresearchTrainingRunListResultsList;
 }
+const PaginatedAutoresearchTrainingRunList = /*@__PURE__*/ __L.at(
+  __c11,
+  0,
+) as any as S.Schema<PaginatedAutoresearchTrainingRunList>;
+
 export type UpdateAutoresearchRequestTargetDefinitionCase0Type = "event";
 /** Predict target_event. The default when target_definition is omitted. */
 export interface UpdateAutoresearchRequestTargetDefinitionCase0 {
@@ -1074,6 +1540,9 @@ export interface UpdateAutoresearchRequestTargetDefinitionCase1 {
 export type UpdateAutoresearchRequestTargetDefinition =
   | UpdateAutoresearchRequestTargetDefinitionCase0
   | UpdateAutoresearchRequestTargetDefinitionCase1;
+const UpdateAutoresearchRequestTargetDefinition =
+  S.Unknown as any as S.Schema<UpdateAutoresearchRequestTargetDefinition>;
+
 export interface UpdateAutoresearchRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -1106,6 +1575,11 @@ export interface UpdateAutoresearchRequest {
   /** Person property name for the prediction score, e.g. 'predicted_p_pageview'. Auto-derived from target_event if omitted. Letters, digits, and _ $ . - only, and it cannot start with $ (reserved for PostHog's own properties); must be unique among this project's non-archived pipelines. */
   output_person_property?: string;
 }
+const UpdateAutoresearchRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  1,
+) as any as S.Schema<UpdateAutoresearchRequest>;
+
 export type AutoresearchPipelineCreateTargetDefinitionCase0Type = "event";
 /** Predict target_event. The default when target_definition is omitted. */
 export interface AutoresearchPipelineCreateTargetDefinitionCase0 {
@@ -1122,6 +1596,9 @@ export interface AutoresearchPipelineCreateTargetDefinitionCase1 {
 export type AutoresearchPipelineCreateTargetDefinition =
   | AutoresearchPipelineCreateTargetDefinitionCase0
   | AutoresearchPipelineCreateTargetDefinitionCase1;
+const AutoresearchPipelineCreateTargetDefinition =
+  S.Unknown as any as S.Schema<AutoresearchPipelineCreateTargetDefinition>;
+
 export interface AutoresearchPipelineCreate {
   /** Display name for the pipeline. */
   name: string;
@@ -1150,6 +1627,11 @@ export interface AutoresearchPipelineCreate {
   /** Person property name for the prediction score, e.g. 'predicted_p_pageview'. Auto-derived from target_event if omitted. Letters, digits, and _ $ . - only, and it cannot start with $ (reserved for PostHog's own properties); must be unique among this project's non-archived pipelines. */
   output_person_property?: string;
 }
+const AutoresearchPipelineCreate = /*@__PURE__*/ __L.at(
+  __c11,
+  2,
+) as any as S.Schema<AutoresearchPipelineCreate>;
+
 export type UpdateAutoresearchPartialRequestTargetDefinitionCase0Type = "event";
 /** Predict target_event. The default when target_definition is omitted. */
 export interface UpdateAutoresearchPartialRequestTargetDefinitionCase0 {
@@ -1166,6 +1648,9 @@ export interface UpdateAutoresearchPartialRequestTargetDefinitionCase1 {
 export type UpdateAutoresearchPartialRequestTargetDefinition =
   | UpdateAutoresearchPartialRequestTargetDefinitionCase0
   | UpdateAutoresearchPartialRequestTargetDefinitionCase1;
+const UpdateAutoresearchPartialRequestTargetDefinition =
+  S.Unknown as any as S.Schema<UpdateAutoresearchPartialRequestTargetDefinition>;
+
 export interface UpdateAutoresearchPartialRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -1198,6 +1683,11 @@ export interface UpdateAutoresearchPartialRequest {
   /** Person property name for the prediction score, e.g. 'predicted_p_pageview'. Auto-derived from target_event if omitted. Letters, digits, and _ $ . - only, and it cannot start with $ (reserved for PostHog's own properties); must be unique among this project's non-archived pipelines. */
   output_person_property?: string;
 }
+const UpdateAutoresearchPartialRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  3,
+) as any as S.Schema<UpdateAutoresearchPartialRequest>;
+
 export type AutoresearchArchiveCreateError = BadRequest | NotFound | PosthogOpError;
 /** Archive a pipeline Soft-delete a pipeline. Stops daily scoring and training. Predictions and metrics are preserved. Refused while a training run is in progress. */
 export const autoresearchArchiveCreate: API.OperationMethod<
@@ -1206,8 +1696,8 @@ export const autoresearchArchiveCreate: API.OperationMethod<
   AutoresearchArchiveCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<AutoresearchArchiveCreateRequest>,
-  output: __S(3) as any as S.Schema<AutoresearchPipeline>,
+  input: AutoresearchArchiveCreateRequest,
+  output: AutoresearchPipeline,
   errors: [BadRequest, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1221,8 +1711,8 @@ export const autoresearchDestroy: API.OperationMethod<
   AutoresearchDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4) as any as S.Schema<AutoresearchDestroyRequest>,
-  output: __S(5) as any as S.Schema<AutoresearchDestroyResponse>,
+  input: AutoresearchDestroyRequest,
+  output: AutoresearchDestroyResponse,
   errors: [BadRequest, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1236,8 +1726,8 @@ export const autoresearchResumeCreate: API.OperationMethod<
   AutoresearchResumeCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6) as any as S.Schema<AutoresearchResumeCreateRequest>,
-  output: __S(3) as any as S.Schema<AutoresearchPipeline>,
+  input: AutoresearchResumeCreateRequest,
+  output: AutoresearchPipeline,
   errors: [BadRequest, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1251,8 +1741,8 @@ export const autoresearchTrainingRunsArtifactsDeleteCreate: API.OperationMethod<
   AutoresearchTrainingRunsArtifactsDeleteCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7) as any as S.Schema<AutoresearchTrainingRunsArtifactsDeleteCreateRequest>,
-  output: __S(8) as any as S.Schema<ArtifactDeleteResult>,
+  input: AutoresearchTrainingRunsArtifactsDeleteCreateRequest,
+  output: ArtifactDeleteResult,
   errors: [BadRequest],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1266,8 +1756,8 @@ export const autoresearchTrainingRunsArtifactsGetCreate: API.OperationMethod<
   AutoresearchTrainingRunsArtifactsGetCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9) as any as S.Schema<AutoresearchTrainingRunsArtifactsGetCreateRequest>,
-  output: __S(10) as any as S.Schema<ArtifactContent>,
+  input: AutoresearchTrainingRunsArtifactsGetCreateRequest,
+  output: ArtifactContent,
   errors: [NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1281,8 +1771,8 @@ export const autoresearchTrainingRunsArtifactsUploadCreate: API.OperationMethod<
   AutoresearchTrainingRunsArtifactsUploadCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11) as any as S.Schema<AutoresearchTrainingRunsArtifactsUploadCreateRequest>,
-  output: __S(12) as any as S.Schema<StoredArtifact>,
+  input: AutoresearchTrainingRunsArtifactsUploadCreateRequest,
+  output: StoredArtifact,
   errors: [BadRequest],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1296,8 +1786,8 @@ export const autoresearchValidateCreate: API.OperationMethod<
   AutoresearchValidateCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13) as any as S.Schema<AutoresearchValidateCreateRequest>,
-  output: __S(16) as any as S.Schema<ValidatePipelineResponse>,
+  input: AutoresearchValidateCreateRequest,
+  output: ValidatePipelineResponse,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1311,8 +1801,8 @@ export const autoresearchValidateOnlineCreate: API.OperationMethod<
   AutoresearchValidateOnlineCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17) as any as S.Schema<AutoresearchValidateOnlineCreateRequest>,
-  output: __S(20) as any as S.Schema<AutoresearchValidateOnlineCreateResponse>,
+  input: AutoresearchValidateOnlineCreateRequest,
+  output: AutoresearchValidateOnlineCreateResponse,
   errors: [BadRequest, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1326,8 +1816,8 @@ export const createAutoresearch: API.OperationMethod<
   CreateAutoresearchError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21) as any as S.Schema<CreateAutoresearchRequest>,
-  output: __S(3) as any as S.Schema<AutoresearchPipeline>,
+  input: CreateAutoresearchRequest,
+  output: AutoresearchPipeline,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1341,8 +1831,8 @@ export const createAutoresearchPause: API.OperationMethod<
   CreateAutoresearchPauseError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22) as any as S.Schema<CreateAutoresearchPauseRequest>,
-  output: __S(3) as any as S.Schema<AutoresearchPipeline>,
+  input: CreateAutoresearchPauseRequest,
+  output: AutoresearchPipeline,
   errors: [BadRequest, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1356,8 +1846,8 @@ export const createAutoresearchResolveTemplate: API.OperationMethod<
   CreateAutoresearchResolveTemplateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23) as any as S.Schema<CreateAutoresearchResolveTemplateRequest>,
-  output: __S(25) as any as S.Schema<ResolvedTemplate>,
+  input: CreateAutoresearchResolveTemplateRequest,
+  output: ResolvedTemplate,
   errors: [BadRequest],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1371,8 +1861,8 @@ export const createAutoresearchScore: API.OperationMethod<
   CreateAutoresearchScoreError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26) as any as S.Schema<CreateAutoresearchScoreRequest>,
-  output: __S(18) as any as S.Schema<AutoresearchRun>,
+  input: CreateAutoresearchScoreRequest,
+  output: AutoresearchRun,
   errors: [BadRequest, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1386,8 +1876,8 @@ export const createAutoresearchSuggestion: API.OperationMethod<
   CreateAutoresearchSuggestionError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27) as any as S.Schema<CreateAutoresearchSuggestionRequest>,
-  output: __S(28) as any as S.Schema<AutoresearchSuggestion>,
+  input: CreateAutoresearchSuggestionRequest,
+  output: AutoresearchSuggestion,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1401,8 +1891,8 @@ export const createAutoresearchSuggestionsRespond: API.OperationMethod<
   CreateAutoresearchSuggestionsRespondError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29) as any as S.Schema<CreateAutoresearchSuggestionsRespondRequest>,
-  output: __S(28) as any as S.Schema<AutoresearchSuggestion>,
+  input: CreateAutoresearchSuggestionsRespondRequest,
+  output: AutoresearchSuggestion,
   errors: [BadRequest],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1416,8 +1906,8 @@ export const createAutoresearchTrain: API.OperationMethod<
   CreateAutoresearchTrainError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30) as any as S.Schema<CreateAutoresearchTrainRequest>,
-  output: __S(37) as any as S.Schema<AutoresearchTrainingRun>,
+  input: CreateAutoresearchTrainRequest,
+  output: AutoresearchTrainingRun,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1431,8 +1921,8 @@ export const createAutoresearchTrainingRun: API.OperationMethod<
   CreateAutoresearchTrainingRunError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38) as any as S.Schema<CreateAutoresearchTrainingRunRequest>,
-  output: __S(37) as any as S.Schema<AutoresearchTrainingRun>,
+  input: CreateAutoresearchTrainingRunRequest,
+  output: AutoresearchTrainingRun,
   errors: [BadRequest],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1446,8 +1936,8 @@ export const createAutoresearchTrainingRunsComplete: API.OperationMethod<
   CreateAutoresearchTrainingRunsCompleteError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39) as any as S.Schema<CreateAutoresearchTrainingRunsCompleteRequest>,
-  output: __S(37) as any as S.Schema<AutoresearchTrainingRun>,
+  input: CreateAutoresearchTrainingRunsCompleteRequest,
+  output: AutoresearchTrainingRun,
   errors: [BadRequest],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1461,8 +1951,8 @@ export const createAutoresearchTrainingRunsIteration: API.OperationMethod<
   CreateAutoresearchTrainingRunsIterationError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44) as any as S.Schema<CreateAutoresearchTrainingRunsIterationRequest>,
-  output: __S(48) as any as S.Schema<AutoresearchIteration>,
+  input: CreateAutoresearchTrainingRunsIterationRequest,
+  output: AutoresearchIteration,
   errors: [BadRequest],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1476,8 +1966,8 @@ export const createAutoresearchTrainingRunsMaterializeFeature: API.OperationMeth
   CreateAutoresearchTrainingRunsMaterializeFeatureError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49) as any as S.Schema<CreateAutoresearchTrainingRunsMaterializeFeatureRequest>,
-  output: __S(50) as any as S.Schema<MaterializeFeaturesResponse>,
+  input: CreateAutoresearchTrainingRunsMaterializeFeatureRequest,
+  output: MaterializeFeaturesResponse,
   errors: [BadRequest],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1491,8 +1981,8 @@ export const getAutoresearch: API.OperationMethod<
   GetAutoresearchError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(51) as any as S.Schema<GetAutoresearchRequest>,
-  output: __S(3) as any as S.Schema<AutoresearchPipeline>,
+  input: GetAutoresearchRequest,
+  output: AutoresearchPipeline,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1506,8 +1996,8 @@ export const getAutoresearchModel: API.OperationMethod<
   GetAutoresearchModelError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(52) as any as S.Schema<GetAutoresearchModelRequest>,
-  output: __S(53) as any as S.Schema<AutoresearchModel>,
+  input: GetAutoresearchModelRequest,
+  output: AutoresearchModel,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1521,8 +2011,8 @@ export const getAutoresearchOnlinePerformance: API.OperationMethod<
   GetAutoresearchOnlinePerformanceError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(54) as any as S.Schema<GetAutoresearchOnlinePerformanceRequest>,
-  output: __S(59) as any as S.Schema<OnlinePerformance>,
+  input: GetAutoresearchOnlinePerformanceRequest,
+  output: OnlinePerformance,
   errors: [NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1536,8 +2026,8 @@ export const getAutoresearchRun: API.OperationMethod<
   GetAutoresearchRunError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60) as any as S.Schema<GetAutoresearchRunRequest>,
-  output: __S(18) as any as S.Schema<AutoresearchRun>,
+  input: GetAutoresearchRunRequest,
+  output: AutoresearchRun,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1551,8 +2041,8 @@ export const getAutoresearchSuggestion: API.OperationMethod<
   GetAutoresearchSuggestionError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(61) as any as S.Schema<GetAutoresearchSuggestionRequest>,
-  output: __S(28) as any as S.Schema<AutoresearchSuggestion>,
+  input: GetAutoresearchSuggestionRequest,
+  output: AutoresearchSuggestion,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1566,8 +2056,8 @@ export const getAutoresearchTrainingRun: API.OperationMethod<
   GetAutoresearchTrainingRunError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(62) as any as S.Schema<GetAutoresearchTrainingRunRequest>,
-  output: __S(37) as any as S.Schema<AutoresearchTrainingRun>,
+  input: GetAutoresearchTrainingRunRequest,
+  output: AutoresearchTrainingRun,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1581,8 +2071,8 @@ export const getAutoresearchTrainingRunsArtifact: API.OperationMethod<
   GetAutoresearchTrainingRunsArtifactError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(63) as any as S.Schema<GetAutoresearchTrainingRunsArtifactRequest>,
-  output: __S(64) as any as S.Schema<ArtifactList>,
+  input: GetAutoresearchTrainingRunsArtifactRequest,
+  output: ArtifactList,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1596,8 +2086,8 @@ export const getAutoresearchTrainingRunsHistory: API.OperationMethod<
   GetAutoresearchTrainingRunsHistoryError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65) as any as S.Schema<GetAutoresearchTrainingRunsHistoryRequest>,
-  output: __S(70) as any as S.Schema<TrainingRunHistory>,
+  input: GetAutoresearchTrainingRunsHistoryRequest,
+  output: TrainingRunHistory,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1611,8 +2101,8 @@ export const listAutoresearch: API.OperationMethod<
   ListAutoresearchError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(71) as any as S.Schema<ListAutoresearchRequest>,
-  output: __S(73) as any as S.Schema<PaginatedAutoresearchPipelineList>,
+  input: ListAutoresearchRequest,
+  output: PaginatedAutoresearchPipelineList,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1626,8 +2116,8 @@ export const listAutoresearchModels: API.OperationMethod<
   ListAutoresearchModelsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(74) as any as S.Schema<ListAutoresearchModelsRequest>,
-  output: __S(76) as any as S.Schema<PaginatedAutoresearchModelList>,
+  input: ListAutoresearchModelsRequest,
+  output: PaginatedAutoresearchModelList,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1641,8 +2131,8 @@ export const listAutoresearchRuns: API.OperationMethod<
   ListAutoresearchRunsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(77) as any as S.Schema<ListAutoresearchRunsRequest>,
-  output: __S(78) as any as S.Schema<PaginatedAutoresearchRunList>,
+  input: ListAutoresearchRunsRequest,
+  output: PaginatedAutoresearchRunList,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1656,8 +2146,8 @@ export const listAutoresearchSuggestions: API.OperationMethod<
   ListAutoresearchSuggestionsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(79) as any as S.Schema<ListAutoresearchSuggestionsRequest>,
-  output: __S(81) as any as S.Schema<PaginatedAutoresearchSuggestionList>,
+  input: ListAutoresearchSuggestionsRequest,
+  output: PaginatedAutoresearchSuggestionList,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1671,8 +2161,8 @@ export const listAutoresearchTemplates: API.OperationMethod<
   ListAutoresearchTemplatesError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(82) as any as S.Schema<ListAutoresearchTemplatesRequest>,
-  output: __S(85) as any as S.Schema<ListAutoresearchTemplatesResponse>,
+  input: ListAutoresearchTemplatesRequest,
+  output: ListAutoresearchTemplatesResponse,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1686,8 +2176,8 @@ export const listAutoresearchTrainingRuns: API.OperationMethod<
   ListAutoresearchTrainingRunsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(86) as any as S.Schema<ListAutoresearchTrainingRunsRequest>,
-  output: __S(88) as any as S.Schema<PaginatedAutoresearchTrainingRunList>,
+  input: ListAutoresearchTrainingRunsRequest,
+  output: PaginatedAutoresearchTrainingRunList,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1701,8 +2191,8 @@ export const updateAutoresearch: API.OperationMethod<
   UpdateAutoresearchError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(89) as any as S.Schema<UpdateAutoresearchRequest>,
-  output: __S(90) as any as S.Schema<AutoresearchPipelineCreate>,
+  input: UpdateAutoresearchRequest,
+  output: AutoresearchPipelineCreate,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1716,8 +2206,8 @@ export const updateAutoresearchPartial: API.OperationMethod<
   UpdateAutoresearchPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(91) as any as S.Schema<UpdateAutoresearchPartialRequest>,
-  output: __S(90) as any as S.Schema<AutoresearchPipelineCreate>,
+  input: UpdateAutoresearchPartialRequest,
+  output: AutoresearchPipelineCreate,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1753,8 +2243,8 @@ function __c0(j: number): any {
           last_name: S.optional(S.String),
           email: S.optional(S.String),
           is_email_verified: S.optional(S.NullOr(S.Boolean)),
-          hedgehog_config: S.optional(S.NullOr(__S(1))),
-          role_at_organization: S.optional(S.NullOr(S.Unknown)),
+          hedgehog_config: S.optional(S.NullOr(UserBasicHedgehogConfigMap)),
+          role_at_organization: S.optional(S.NullOr(UserBasicRoleAtOrganization)),
         }),
       ).annotate({ identifier: "UserBasic" });
     case 3:
@@ -1764,7 +2254,7 @@ function __c0(j: number): any {
           name: S.String,
           description: S.optional(S.String),
           target_event: S.String,
-          target_definition: S.Unknown,
+          target_definition: AutoresearchPipelineTargetDefinition,
           horizon_days: S.optional(S.Number),
           training_lookback_days: S.optional(S.Number),
           training_population: S.Unknown,
@@ -1775,8 +2265,8 @@ function __c0(j: number): any {
           success_auc: S.optional(S.NullOr(S.Number)),
           plateau_iterations: S.optional(S.Number),
           output_person_property: S.optional(S.String),
-          status: S.String,
-          created_by: __S(2),
+          status: AutoresearchPipelineStatusEnum,
+          created_by: UserBasic,
           created_at: S.String,
           updated_at: S.String,
           last_scored_at: S.NullOr(S.String),
@@ -1903,7 +2393,7 @@ function __c1(j: number): any {
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           target_event: S.optional(S.String),
-          target_definition: S.optional(S.Unknown),
+          target_definition: S.optional(AutoresearchValidateCreateRequestTargetDefinition),
           horizon_days: S.optional(S.Number),
           training_lookback_days: S.optional(S.Number),
           training_population: S.optional(S.Unknown),
@@ -1923,11 +2413,11 @@ function __c1(j: number): any {
         S.Struct({
           code: S.String,
           message: S.String,
-          severity: S.String,
+          severity: ValidationWarningSeverityEnum,
         }),
       ).annotate({ identifier: "ValidationWarning" });
     case 7:
-      return S.Array(__S(14));
+      return S.Array(ValidationWarning);
   }
 }
 function __c2(j: number): any {
@@ -1942,7 +2432,7 @@ function __c2(j: number): any {
           negative_count: S.NullOr(S.Number),
           base_rate: S.NullOr(S.Number),
           inference_population_size: S.NullOr(S.Number),
-          warnings: __S(15),
+          warnings: ValidatePipelineResponseWarningsList,
           error: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "ValidatePipelineResponse" });
@@ -1967,10 +2457,10 @@ function __c2(j: number): any {
           id: S.String,
           pipeline: S.String,
           model: S.optional(S.NullOr(S.String)),
-          run_type: S.String,
-          status: S.optional(S.String),
+          run_type: AutoresearchRunRunTypeEnum,
+          status: S.optional(ZendeskImportJobStatusEnum),
           rows_scored: S.optional(S.NullOr(S.Number)),
-          metrics: __S(1),
+          metrics: AutoresearchRunMetricsMap,
           error: S.optional(S.String),
           started_at: S.optional(S.NullOr(S.String)),
           completed_at: S.optional(S.NullOr(S.String)),
@@ -1978,9 +2468,11 @@ function __c2(j: number): any {
         }),
       ).annotate({ identifier: "AutoresearchRun" });
     case 3:
-      return S.Array(__S(18));
+      return S.Array(AutoresearchRun);
     case 4:
-      return S.suspend(() => __S(19).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        AutoresearchValidateOnlineCreateResponseBodyList.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "AutoresearchValidateOnlineCreateResponse",
       });
     case 5:
@@ -1990,7 +2482,7 @@ function __c2(j: number): any {
           name: S.String,
           description: S.optional(S.String),
           target_event: S.optional(S.String),
-          target_definition: S.optional(S.Unknown),
+          target_definition: S.optional(CreateAutoresearchRequestTargetDefinition),
           horizon_days: S.optional(S.Number),
           training_lookback_days: S.optional(S.Number),
           training_population: S.optional(S.Unknown),
@@ -2025,7 +2517,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
-          template_key: S.String,
+          template_key: TemplateKeyEnum,
           target_event: S.optional(S.String),
           horizon_days: S.optional(S.Number),
         }).pipe(
@@ -2047,13 +2539,13 @@ function __c3(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          template_key: S.String,
+          template_key: TemplateKeyEnum,
           display_name: S.String,
           description: S.String,
           suggested_name: S.String,
           target_event: S.String,
           resolved_activity_event: S.NullOr(S.String),
-          activity_event_alternatives: __S(24),
+          activity_event_alternatives: ResolvedTemplateActivityEventAlternativesList,
           horizon_days: S.Number,
           training_lookback_days: S.Number,
           training_population: S.Unknown,
@@ -2083,7 +2575,7 @@ function __c3(j: number): any {
           project_id: S.String.pipe(T.Label()),
           pipeline_id: S.String.pipe(T.Label()),
           prompt: S.String,
-          priority: S.optional(S.String),
+          priority: S.optional(CreateSuggestionPriorityEnum),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2100,12 +2592,12 @@ function __c3(j: number): any {
           id: S.String,
           pipeline: S.String,
           prompt: S.String,
-          priority: S.optional(S.String),
-          status: S.String,
-          source: S.String,
+          priority: S.optional(AutoresearchSuggestionPriorityEnum),
+          status: AutoresearchSuggestionStatusEnum,
+          source: AutoresearchSuggestionSourceEnum,
           agent_response: S.String,
-          created_by: S.NullOr(__S(2)),
-          linked_iteration_ids: __S(24),
+          created_by: S.NullOr(UserBasic),
+          linked_iteration_ids: AutoresearchSuggestionLinkedIterationIdsList,
           created_at: S.String,
           updated_at: S.String,
         }),
@@ -2116,7 +2608,7 @@ function __c3(j: number): any {
           project_id: S.String.pipe(T.Label()),
           pipeline_id: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
-          status: S.String,
+          status: RespondToSuggestionStatusEnum,
           agent_response: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -2160,7 +2652,7 @@ function __c3(j: number): any {
 function __c4(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(31));
+      return S.Array(TrainingRunSummaryLadderItem);
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2169,8 +2661,8 @@ function __c4(j: number): any {
           best_holdout_score: S.NullOr(S.Number),
           champion_promoted: S.Boolean,
           champion_model_class: S.String,
-          kept_ladder: __S(32),
-          dead_ends: __S(32),
+          kept_ladder: TrainingRunSummaryKeptLadderList,
+          dead_ends: TrainingRunSummaryDeadEndsList,
           recommended_next: S.String,
           distillation: S.String,
           report_notebook_short_id: S.optional(S.String),
@@ -2180,22 +2672,22 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           model_class: S.String,
-          model_params: S.optional(S.NullOr(__S(1))),
+          model_params: S.optional(S.NullOr(IterationTrailModelSpecModelParamsMap)),
         }),
       ).annotate({ identifier: "IterationTrailModelSpec" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           iteration_number: S.Number,
-          status: S.String,
+          status: AutoresearchIterationStatusEnum,
           holdout_score: S.optional(S.NullOr(S.Number)),
           train_score: S.optional(S.NullOr(S.Number)),
           agent_description: S.optional(S.String),
-          model_spec: __S(34),
+          model_spec: IterationTrailModelSpec,
         }),
       ).annotate({ identifier: "IterationTrail" });
     case 4:
-      return S.Array(__S(35));
+      return S.Array(IterationTrail);
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -2204,12 +2696,12 @@ function __c4(j: number): any {
           task_id: S.optional(S.NullOr(S.String)),
           task_run_id: S.optional(S.NullOr(S.String)),
           task_url: S.NullOr(S.String),
-          status: S.String,
+          status: ZendeskImportJobStatusEnum,
           iteration_budget: S.optional(S.Number),
           iteration_count: S.Number,
           best_holdout_score: S.NullOr(S.Number),
-          summary: S.NullOr(__S(33)),
-          iterations: __S(36),
+          summary: S.NullOr(TrainingRunSummary),
+          iterations: AutoresearchTrainingRunIterationsList,
           error: S.String,
           started_at: S.NullOr(S.String),
           completed_at: S.NullOr(S.String),
@@ -2263,7 +2755,11 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           feature_sql: S.String,
-          feature_transforms: S.optional(S.NullOr(__S(40))),
+          feature_transforms: S.optional(
+            S.NullOr(
+              CreateAutoresearchTrainingRunsIterationRequestRecipeSnapshotFeatureTransformsList,
+            ),
+          ),
         }),
       ).annotate({
         identifier: "CreateAutoresearchTrainingRunsIterationRequestRecipeSnapshot",
@@ -2274,7 +2770,9 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           model_class: S.String,
-          model_params: S.optional(S.NullOr(__S(42))),
+          model_params: S.optional(
+            S.NullOr(CreateAutoresearchTrainingRunsIterationRequestModelSpecModelParamsMap),
+          ),
         }),
       ).annotate({
         identifier: "CreateAutoresearchTrainingRunsIterationRequestModelSpec",
@@ -2286,9 +2784,9 @@ function __c5(j: number): any {
           pipeline_id: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
           iteration_number: S.Number,
-          recipe_snapshot: __S(41),
-          model_spec: __S(43),
-          status: S.String,
+          recipe_snapshot: CreateAutoresearchTrainingRunsIterationRequestRecipeSnapshot,
+          model_spec: CreateAutoresearchTrainingRunsIterationRequestModelSpec,
+          status: RecordIterationStatusEnum,
           train_score: S.optional(S.NullOr(S.Number)),
           holdout_score: S.optional(S.NullOr(S.Number)),
           agent_description: S.optional(S.String),
@@ -2310,7 +2808,9 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           feature_sql: S.String,
-          feature_transforms: S.optional(S.NullOr(__S(45))),
+          feature_transforms: S.optional(
+            S.NullOr(AutoresearchIterationRecipeSnapshotFeatureTransformsList),
+          ),
         }),
       ).annotate({
         identifier: "AutoresearchIterationRecipeSnapshot",
@@ -2319,7 +2819,7 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           model_class: S.String,
-          model_params: S.optional(S.NullOr(__S(1))),
+          model_params: S.optional(S.NullOr(AutoresearchIterationModelSpecModelParamsMap)),
         }),
       ).annotate({
         identifier: "AutoresearchIterationModelSpec",
@@ -2336,11 +2836,11 @@ function __c6(j: number): any {
           training_run: S.String,
           iteration_number: S.Number,
           recipe_hash: S.String,
-          recipe_snapshot: __S(46),
-          model_spec: __S(47),
+          recipe_snapshot: AutoresearchIterationRecipeSnapshot,
+          model_spec: AutoresearchIterationModelSpec,
           train_score: S.optional(S.NullOr(S.Number)),
           holdout_score: S.optional(S.NullOr(S.Number)),
-          status: S.String,
+          status: AutoresearchIterationStatusEnum,
           agent_description: S.optional(S.String),
           agent_confidence: S.optional(S.NullOr(S.Number)),
           parent_suggestion: S.optional(S.NullOr(S.String)),
@@ -2374,10 +2874,10 @@ function __c6(j: number): any {
           n_train: S.Number,
           n_holdout: S.Number,
           n_features: S.Number,
-          feature_cols: __S(24),
+          feature_cols: MaterializeFeaturesResponseFeatureColsList,
           elapsed_s: S.Number,
           rows_read: S.Number,
-          hints: __S(24),
+          hints: MaterializeFeaturesResponseHintsList,
         }),
       ).annotate({
         identifier: "MaterializeFeaturesResponse",
@@ -2416,14 +2916,14 @@ function __c6(j: number): any {
         S.Struct({
           id: S.String,
           pipeline: S.String,
-          role: S.optional(S.String),
+          role: S.optional(AutoresearchModelRoleEnum),
           recipe_hash: S.String,
           model_recipe: S.Unknown,
           model_explanation: S.Unknown,
           holdout_score: S.optional(S.NullOr(S.Number)),
           realized_score: S.optional(S.NullOr(S.Number)),
           calibration_error: S.optional(S.NullOr(S.Number)),
-          metrics: S.optional(__S(1)),
+          metrics: S.optional(AutoresearchModelMetricsMap),
           source_training_run: S.NullOr(S.String),
           agent_description: S.optional(S.String),
           trained_on_start: S.optional(S.NullOr(S.String)),
@@ -2465,7 +2965,7 @@ function __c6(j: number): any {
 function __c7(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(55));
+      return S.Array(CalibrationBin);
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2487,17 +2987,17 @@ function __c7(j: number): any {
           calibration_error: S.NullOr(S.Number),
           lift_at_10: S.NullOr(S.Number),
           lift_at_20: S.NullOr(S.Number),
-          calibration_bins: S.NullOr(__S(56)),
+          calibration_bins: S.NullOr(OnlinePerformanceRowCalibrationBinsList),
           warning: S.NullOr(S.String),
           validated_at: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "OnlinePerformanceRow" });
     case 2:
-      return S.Array(__S(57));
+      return S.Array(OnlinePerformanceRow);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          rows: __S(58),
+          rows: OnlinePerformanceRowsList,
         }),
       ).annotate({ identifier: "OnlinePerformance" });
     case 4:
@@ -2571,7 +3071,7 @@ function __c8(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          paths: __S(24),
+          paths: ArtifactListPathsList,
           count: S.Number,
         }),
       ).annotate({ identifier: "ArtifactList" });
@@ -2595,16 +3095,16 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           iteration_number: S.Number,
-          status: S.String,
+          status: AutoresearchIterationStatusEnum,
           holdout_score: S.optional(S.NullOr(S.Number)),
           train_score: S.optional(S.NullOr(S.Number)),
           agent_description: S.optional(S.String),
-          model_spec: __S(47),
-          recipe_snapshot: __S(46),
+          model_spec: IterationTrailWithRecipeModelSpec,
+          recipe_snapshot: IterationTrailWithRecipeRecipeSnapshot,
         }),
       ).annotate({ identifier: "IterationTrailWithRecipe" });
     case 3:
-      return S.Array(__S(66));
+      return S.Array(IterationTrailWithRecipe);
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -2616,16 +3116,16 @@ function __c8(j: number): any {
           best_holdout_score: S.NullOr(S.Number),
           iteration_count: S.Number,
           completed_at: S.NullOr(S.String),
-          summary: S.NullOr(__S(33)),
-          iterations: __S(67),
+          summary: S.NullOr(TrainingRunSummary),
+          iterations: TrainingRunHistoryEntryIterationsList,
         }),
       ).annotate({ identifier: "TrainingRunHistoryEntry" });
     case 5:
-      return S.Array(__S(68));
+      return S.Array(TrainingRunHistoryEntry);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          runs: __S(69),
+          runs: TrainingRunHistoryRunsList,
         }),
       ).annotate({ identifier: "TrainingRunHistory" });
     case 7:
@@ -2643,14 +3143,14 @@ function __c8(j: number): any {
 function __c9(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(3));
+      return S.Array(AutoresearchPipeline);
     case 1:
       return S.suspend(() =>
         S.Struct({
           count: S.Number,
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: __S(72),
+          results: PaginatedAutoresearchPipelineListResultsList,
         }),
       ).annotate({
         identifier: "PaginatedAutoresearchPipelineList",
@@ -2673,14 +3173,14 @@ function __c9(j: number): any {
         identifier: "ListAutoresearchModelsRequest",
       });
     case 3:
-      return S.Array(__S(53));
+      return S.Array(AutoresearchModel);
     case 4:
       return S.suspend(() =>
         S.Struct({
           count: S.Number,
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: __S(75),
+          results: PaginatedAutoresearchModelListResultsList,
         }),
       ).annotate({
         identifier: "PaginatedAutoresearchModelList",
@@ -2708,7 +3208,7 @@ function __c9(j: number): any {
           count: S.Number,
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: __S(19),
+          results: PaginatedAutoresearchRunListResultsList,
         }),
       ).annotate({
         identifier: "PaginatedAutoresearchRunList",
@@ -2735,14 +3235,14 @@ function __c9(j: number): any {
 function __c10(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(28));
+      return S.Array(AutoresearchSuggestion);
     case 1:
       return S.suspend(() =>
         S.Struct({
           count: S.Number,
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: __S(80),
+          results: PaginatedAutoresearchSuggestionListResultsList,
         }),
       ).annotate({
         identifier: "PaginatedAutoresearchSuggestionList",
@@ -2764,7 +3264,7 @@ function __c10(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          key: S.String,
+          key: TemplateKeyEnum,
           display_name: S.String,
           description: S.String,
           default_horizon_days: S.Number,
@@ -2774,9 +3274,11 @@ function __c10(j: number): any {
         }),
       ).annotate({ identifier: "TemplateInfo" });
     case 4:
-      return S.Array(__S(83));
+      return S.Array(TemplateInfo);
     case 5:
-      return S.suspend(() => __S(84).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        ListAutoresearchTemplatesResponseBodyList.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "ListAutoresearchTemplatesResponse",
       });
     case 6:
@@ -2797,7 +3299,7 @@ function __c10(j: number): any {
         identifier: "ListAutoresearchTrainingRunsRequest",
       });
     case 7:
-      return S.Array(__S(37));
+      return S.Array(AutoresearchTrainingRun);
   }
 }
 function __c11(j: number): any {
@@ -2808,7 +3310,7 @@ function __c11(j: number): any {
           count: S.Number,
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: __S(87),
+          results: PaginatedAutoresearchTrainingRunListResultsList,
         }),
       ).annotate({
         identifier: "PaginatedAutoresearchTrainingRunList",
@@ -2821,7 +3323,7 @@ function __c11(j: number): any {
           name: S.String,
           description: S.optional(S.String),
           target_event: S.optional(S.String),
-          target_definition: S.optional(S.Unknown),
+          target_definition: S.optional(UpdateAutoresearchRequestTargetDefinition),
           horizon_days: S.optional(S.Number),
           training_lookback_days: S.optional(S.Number),
           training_population: S.optional(S.Unknown),
@@ -2847,7 +3349,7 @@ function __c11(j: number): any {
           name: S.String,
           description: S.optional(S.String),
           target_event: S.optional(S.String),
-          target_definition: S.optional(S.Unknown),
+          target_definition: S.optional(AutoresearchPipelineCreateTargetDefinition),
           horizon_days: S.optional(S.Number),
           training_lookback_days: S.optional(S.Number),
           training_population: S.optional(S.Unknown),
@@ -2869,7 +3371,7 @@ function __c11(j: number): any {
           name: S.optional(S.String),
           description: S.optional(S.String),
           target_event: S.optional(S.String),
-          target_definition: S.optional(S.Unknown),
+          target_definition: S.optional(UpdateAutoresearchPartialRequestTargetDefinition),
           horizon_days: S.optional(S.Number),
           training_lookback_days: S.optional(S.Number),
           training_population: S.optional(S.Unknown),
@@ -2889,38 +3391,5 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "UpdateAutoresearchPartialRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
-    case 9:
-      return __c9(i & 7);
-    case 10:
-      return __c10(i & 7);
-    case 11:
-      return __c11(i & 7);
   }
 }

@@ -10,8 +10,6 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 const svc = /*@__PURE__*/ T.AwsApiService({ sdkId: "Ssm Sap", serviceShapeName: "SsmSap" });
 const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "ssm-sap" });
 const ver = /*@__PURE__*/ T.ServiceVersion("2018-05-10");
@@ -104,20 +102,38 @@ export class ValidationException
     /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export type PermissionActionType = "RESTORE" | (string & {});
+const PermissionActionType = S.String;
+
 export type Arn = string;
 export interface DeleteResourcePermissionInput {
   ActionType?: PermissionActionType;
   SourceResourceArn?: string;
   ResourceArn: string;
 }
+const DeleteResourcePermissionInput = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<DeleteResourcePermissionInput>;
 export interface DeleteResourcePermissionOutput {
   Policy?: string;
 }
+const DeleteResourcePermissionOutput = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<DeleteResourcePermissionOutput>;
 export type ApplicationId = string;
 export interface DeregisterApplicationInput {
   ApplicationId: string;
 }
+const DeregisterApplicationInput = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<DeregisterApplicationInput>;
 export interface DeregisterApplicationOutput {}
+const DeregisterApplicationOutput = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<DeregisterApplicationOutput>;
 export type SsmSapArn = string;
 export type AppRegistryArn = string;
 export interface GetApplicationInput {
@@ -125,7 +141,10 @@ export interface GetApplicationInput {
   ApplicationArn?: string;
   AppRegistryArn?: string;
 }
+const GetApplicationInput = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<GetApplicationInput>;
 export type ApplicationType = "HANA" | "SAP_ABAP" | (string & {});
+const ApplicationType = S.String;
+
 export type ApplicationStatus =
   | "ACTIVATED"
   | "STARTING"
@@ -136,6 +155,8 @@ export type ApplicationStatus =
   | "DELETING"
   | "UNKNOWN"
   | (string & {});
+const ApplicationStatus = S.String;
+
 export type ApplicationDiscoveryStatus =
   | "SUCCESS"
   | "REGISTRATION_FAILED"
@@ -143,9 +164,13 @@ export type ApplicationDiscoveryStatus =
   | "REGISTERING"
   | "DELETING"
   | (string & {});
+const ApplicationDiscoveryStatus = S.String;
+
 export type ComponentId = string;
 export type ComponentIdList = string[];
+const ComponentIdList = /*@__PURE__*/ __L.at(__c0, 5);
 export type ApplicationArnList = string[];
+const ApplicationArnList = ComponentIdList as any as S.Schema<ApplicationArnList>;
 export interface Application {
   Id?: string;
   Type?: ApplicationType;
@@ -158,17 +183,21 @@ export interface Application {
   StatusMessage?: string;
   AssociatedApplicationArns?: string[];
 }
+const Application = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<Application>;
 export type TagKey = string;
 export type TagValue = string;
 export type TagMap = { [key: string]: string | undefined };
+const TagMap = /*@__PURE__*/ __L.at(__c0, 7);
 export interface GetApplicationOutput {
   Application?: Application;
   Tags?: { [key: string]: string | undefined };
 }
+const GetApplicationOutput = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<GetApplicationOutput>;
 export interface GetComponentInput {
   ApplicationId: string;
   ComponentId: string;
 }
+const GetComponentInput = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<GetComponentInput>;
 export type SID = string;
 export type SAPInstanceNumber = string;
 export type ComponentType =
@@ -181,6 +210,8 @@ export type ComponentType =
   | "WD"
   | "ERS"
   | (string & {});
+const ComponentType = S.String;
+
 export type ComponentStatus =
   | "ACTIVATED"
   | "STARTING"
@@ -190,7 +221,11 @@ export type ComponentStatus =
   | "RUNNING_WITH_ERROR"
   | "UNDEFINED"
   | (string & {});
+const ComponentStatus = S.String;
+
 export type ReplicationMode = "PRIMARY" | "NONE" | "SYNC" | "SYNCMEM" | "ASYNC" | (string & {});
+const ReplicationMode = S.String;
+
 export type OperationMode =
   | "PRIMARY"
   | "LOGREPLAY"
@@ -198,6 +233,8 @@ export type OperationMode =
   | "LOGREPLAY_READACCESS"
   | "NONE"
   | (string & {});
+const OperationMode = S.String;
+
 export type ClusterStatus =
   | "ONLINE"
   | "STANDBY"
@@ -205,6 +242,8 @@ export type ClusterStatus =
   | "OFFLINE"
   | "NONE"
   | (string & {});
+const ClusterStatus = S.String;
+
 export interface Resilience {
   HsrTier?: string;
   HsrReplicationMode?: ReplicationMode;
@@ -212,22 +251,31 @@ export interface Resilience {
   ClusterStatus?: ClusterStatus;
   EnqueueReplication?: boolean;
 }
+const Resilience = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<Resilience>;
 export type AllocationType = "VPC_SUBNET" | "ELASTIC_IP" | "OVERLAY" | "UNKNOWN" | (string & {});
+const AllocationType = S.String;
+
 export interface IpAddressMember {
   IpAddress?: string;
   Primary?: boolean;
   AllocationType?: AllocationType;
 }
+const IpAddressMember = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<IpAddressMember>;
 export type IpAddressList = IpAddressMember[];
+const IpAddressList = /*@__PURE__*/ __L.at(__c1, 4);
 export interface AssociatedHost {
   Hostname?: string;
   Ec2InstanceId?: string;
   IpAddresses?: IpAddressMember[];
   OsVersion?: string;
 }
+const AssociatedHost = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<AssociatedHost>;
 export type DatabaseId = string;
 export type DatabaseIdList = string[];
+const DatabaseIdList = ComponentIdList as any as S.Schema<DatabaseIdList>;
 export type HostRole = "LEADER" | "WORKER" | "STANDBY" | "UNKNOWN" | (string & {});
+const HostRole = S.String;
+
 export interface Host {
   HostName?: string;
   HostIp?: string;
@@ -236,13 +284,18 @@ export interface Host {
   HostRole?: HostRole;
   OsVersion?: string;
 }
+const Host = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<Host>;
 export type HostList = Host[];
+const HostList = /*@__PURE__*/ __L.at(__c1, 7);
 export type DatabaseConnectionMethod = "DIRECT" | "OVERLAY" | (string & {});
+const DatabaseConnectionMethod = S.String;
+
 export interface DatabaseConnection {
   DatabaseConnectionMethod?: DatabaseConnectionMethod;
   DatabaseArn?: string;
   ConnectionIp?: string;
 }
+const DatabaseConnection = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<DatabaseConnection>;
 export interface Component {
   ComponentId?: string;
   Sid?: string;
@@ -265,20 +318,30 @@ export interface Component {
   LastUpdated?: Date;
   Arn?: string;
 }
+const Component = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<Component>;
 export interface GetComponentOutput {
   Component?: Component;
   Tags?: { [key: string]: string | undefined };
 }
+const GetComponentOutput = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<GetComponentOutput>;
 export type OperationId = string;
 export interface GetConfigurationCheckOperationInput {
   OperationId: string;
 }
+const GetConfigurationCheckOperationInput = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<GetConfigurationCheckOperationInput>;
 export type OperationStatus = "INPROGRESS" | "SUCCESS" | "ERROR" | (string & {});
+const OperationStatus = S.String;
+
 export type ConfigurationCheckType =
   | "SAP_CHECK_01"
   | "SAP_CHECK_02"
   | "SAP_CHECK_03"
   | (string & {});
+const ConfigurationCheckType = S.String;
+
 export interface RuleStatusCounts {
   Failed?: number;
   Warning?: number;
@@ -286,6 +349,7 @@ export interface RuleStatusCounts {
   Passed?: number;
   Unknown?: number;
 }
+const RuleStatusCounts = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<RuleStatusCounts>;
 export interface ConfigurationCheckOperation {
   Id?: string;
   ApplicationId?: string;
@@ -298,25 +362,43 @@ export interface ConfigurationCheckOperation {
   EndTime?: Date;
   RuleStatusCounts?: RuleStatusCounts;
 }
+const ConfigurationCheckOperation = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<ConfigurationCheckOperation>;
 export interface GetConfigurationCheckOperationOutput {
   ConfigurationCheckOperation?: ConfigurationCheckOperation;
 }
+const GetConfigurationCheckOperationOutput = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<GetConfigurationCheckOperationOutput>;
 export interface GetDatabaseInput {
   ApplicationId?: string;
   ComponentId?: string;
   DatabaseId?: string;
   DatabaseArn?: string;
 }
+const GetDatabaseInput = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<GetDatabaseInput>;
 export type DatabaseName = string;
 export type CredentialType = "ADMIN" | (string & {});
+const CredentialType = S.String;
+
 export type SecretId = string | redacted.Redacted<string>;
 export interface ApplicationCredential {
   DatabaseName: string;
   CredentialType: CredentialType;
   SecretId: string | redacted.Redacted<string>;
 }
+const ApplicationCredential = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<ApplicationCredential>;
 export type ApplicationCredentialList = ApplicationCredential[];
+const ApplicationCredentialList = /*@__PURE__*/ __L.at(__c3, 1);
 export type DatabaseType = "SYSTEM" | "TENANT" | (string & {});
+const DatabaseType = S.String;
+
 export type DatabaseStatus =
   | "RUNNING"
   | "STARTING"
@@ -326,7 +408,10 @@ export type DatabaseStatus =
   | "ERROR"
   | "STOPPING"
   | (string & {});
+const DatabaseStatus = S.String;
+
 export type ComponentArnList = string[];
+const ComponentArnList = ComponentIdList as any as S.Schema<ComponentArnList>;
 export interface Database {
   ApplicationId?: string;
   ComponentId?: string;
@@ -341,15 +426,19 @@ export interface Database {
   LastUpdated?: Date;
   ConnectedComponentArns?: string[];
 }
+const Database = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<Database>;
 export interface GetDatabaseOutput {
   Database?: Database;
   Tags?: { [key: string]: string | undefined };
 }
+const GetDatabaseOutput = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<GetDatabaseOutput>;
 export interface GetOperationInput {
   OperationId: string;
 }
+const GetOperationInput = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<GetOperationInput>;
 export type OperationType = string;
 export type OperationProperties = { [key: string]: string | undefined };
+const OperationProperties = /*@__PURE__*/ __L.at(__c3, 5);
 export type ResourceType = string;
 export type ResourceId = string;
 export interface Operation {
@@ -365,32 +454,48 @@ export interface Operation {
   EndTime?: Date;
   LastUpdatedTime?: Date;
 }
+const Operation = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<Operation>;
 export interface GetOperationOutput {
   Operation?: Operation;
 }
+const GetOperationOutput = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<GetOperationOutput>;
 export interface GetResourcePermissionInput {
   ActionType?: PermissionActionType;
   ResourceArn: string;
 }
+const GetResourcePermissionInput = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<GetResourcePermissionInput>;
 export interface GetResourcePermissionOutput {
   Policy?: string;
 }
+const GetResourcePermissionOutput =
+  DeleteResourcePermissionOutput as any as S.Schema<GetResourcePermissionOutput>;
 export type NextToken = string;
 export type MaxResults = number;
 export type FilterName = string;
 export type FilterValue = string;
 export type FilterOperator = "Equals" | "GreaterThanOrEquals" | "LessThanOrEquals" | (string & {});
+const FilterOperator = S.String;
+
 export interface Filter {
   Name: string;
   Value: string;
   Operator: FilterOperator;
 }
+const Filter = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<Filter>;
 export type FilterList = Filter[];
+const FilterList = /*@__PURE__*/ __L.at(__c4, 2);
 export interface ListApplicationsInput {
   NextToken?: string;
   MaxResults?: number;
   Filters?: Filter[];
 }
+const ListApplicationsInput = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<ListApplicationsInput>;
 export interface ApplicationSummary {
   Id?: string;
   DiscoveryStatus?: ApplicationDiscoveryStatus;
@@ -398,16 +503,23 @@ export interface ApplicationSummary {
   Arn?: string;
   Tags?: { [key: string]: string | undefined };
 }
+const ApplicationSummary = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<ApplicationSummary>;
 export type ApplicationSummaryList = ApplicationSummary[];
+const ApplicationSummaryList = /*@__PURE__*/ __L.at(__c4, 5);
 export interface ListApplicationsOutput {
   Applications?: ApplicationSummary[];
   NextToken?: string;
 }
+const ListApplicationsOutput = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<ListApplicationsOutput>;
 export interface ListComponentsInput {
   ApplicationId?: string;
   NextToken?: string;
   MaxResults?: number;
 }
+const ListComponentsInput = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<ListComponentsInput>;
 export interface ComponentSummary {
   ApplicationId?: string;
   ComponentId?: string;
@@ -415,31 +527,50 @@ export interface ComponentSummary {
   Tags?: { [key: string]: string | undefined };
   Arn?: string;
 }
+const ComponentSummary = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<ComponentSummary>;
 export type ComponentSummaryList = ComponentSummary[];
+const ComponentSummaryList = /*@__PURE__*/ __L.at(__c5, 1);
 export interface ListComponentsOutput {
   Components?: ComponentSummary[];
   NextToken?: string;
 }
+const ListComponentsOutput = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<ListComponentsOutput>;
 export interface ListConfigurationCheckDefinitionsInput {
   MaxResults?: number;
   NextToken?: string;
 }
+const ListConfigurationCheckDefinitionsInput = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<ListConfigurationCheckDefinitionsInput>;
 export type ApplicationTypeList = ApplicationType[];
+const ApplicationTypeList = /*@__PURE__*/ __L.at(__c5, 4);
 export interface ConfigurationCheckDefinition {
   Id?: ConfigurationCheckType;
   Name?: string;
   Description?: string;
   ApplicableApplicationTypes?: ApplicationType[];
 }
+const ConfigurationCheckDefinition = /*@__PURE__*/ __L.at(
+  __c5,
+  5,
+) as any as S.Schema<ConfigurationCheckDefinition>;
 export type ConfigurationCheckDefinitionList = ConfigurationCheckDefinition[];
+const ConfigurationCheckDefinitionList = /*@__PURE__*/ __L.at(__c5, 6);
 export interface ListConfigurationCheckDefinitionsOutput {
   ConfigurationChecks?: ConfigurationCheckDefinition[];
   NextToken?: string;
 }
+const ListConfigurationCheckDefinitionsOutput = /*@__PURE__*/ __L.at(
+  __c5,
+  7,
+) as any as S.Schema<ListConfigurationCheckDefinitionsOutput>;
 export type ConfigurationCheckOperationListingMode =
   | "ALL_OPERATIONS"
   | "LATEST_PER_CHECK"
   | (string & {});
+const ConfigurationCheckOperationListingMode = S.String;
+
 export interface ListConfigurationCheckOperationsInput {
   ApplicationId: string;
   ListMode?: ConfigurationCheckOperationListingMode;
@@ -447,17 +578,27 @@ export interface ListConfigurationCheckOperationsInput {
   NextToken?: string;
   Filters?: Filter[];
 }
+const ListConfigurationCheckOperationsInput = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<ListConfigurationCheckOperationsInput>;
 export type ConfigurationCheckOperationList = ConfigurationCheckOperation[];
+const ConfigurationCheckOperationList = /*@__PURE__*/ __L.at(__c6, 1);
 export interface ListConfigurationCheckOperationsOutput {
   ConfigurationCheckOperations?: ConfigurationCheckOperation[];
   NextToken?: string;
 }
+const ListConfigurationCheckOperationsOutput = /*@__PURE__*/ __L.at(
+  __c6,
+  2,
+) as any as S.Schema<ListConfigurationCheckOperationsOutput>;
 export interface ListDatabasesInput {
   ApplicationId?: string;
   ComponentId?: string;
   NextToken?: string;
   MaxResults?: number;
 }
+const ListDatabasesInput = /*@__PURE__*/ __L.at(__c6, 3) as any as S.Schema<ListDatabasesInput>;
 export interface DatabaseSummary {
   ApplicationId?: string;
   ComponentId?: string;
@@ -466,23 +607,33 @@ export interface DatabaseSummary {
   Arn?: string;
   Tags?: { [key: string]: string | undefined };
 }
+const DatabaseSummary = /*@__PURE__*/ __L.at(__c6, 4) as any as S.Schema<DatabaseSummary>;
 export type DatabaseSummaryList = DatabaseSummary[];
+const DatabaseSummaryList = /*@__PURE__*/ __L.at(__c6, 5);
 export interface ListDatabasesOutput {
   Databases?: DatabaseSummary[];
   NextToken?: string;
 }
+const ListDatabasesOutput = /*@__PURE__*/ __L.at(__c6, 6) as any as S.Schema<ListDatabasesOutput>;
 export interface ListOperationEventsInput {
   OperationId: string;
   MaxResults?: number;
   NextToken?: string;
   Filters?: Filter[];
 }
+const ListOperationEventsInput = /*@__PURE__*/ __L.at(
+  __c6,
+  7,
+) as any as S.Schema<ListOperationEventsInput>;
 export type OperationEventResourceType = string;
 export interface Resource {
   ResourceArn?: string;
   ResourceType?: string;
 }
+const Resource = /*@__PURE__*/ __L.at(__c7, 0) as any as S.Schema<Resource>;
 export type OperationEventStatus = "IN_PROGRESS" | "COMPLETED" | "FAILED" | (string & {});
+const OperationEventStatus = S.String;
+
 export interface OperationEvent {
   Description?: string;
   Resource?: Resource;
@@ -490,50 +641,77 @@ export interface OperationEvent {
   StatusMessage?: string;
   Timestamp?: Date;
 }
+const OperationEvent = /*@__PURE__*/ __L.at(__c7, 1) as any as S.Schema<OperationEvent>;
 export type OperationEventList = OperationEvent[];
+const OperationEventList = /*@__PURE__*/ __L.at(__c7, 2);
 export interface ListOperationEventsOutput {
   OperationEvents?: OperationEvent[];
   NextToken?: string;
 }
+const ListOperationEventsOutput = /*@__PURE__*/ __L.at(
+  __c7,
+  3,
+) as any as S.Schema<ListOperationEventsOutput>;
 export interface ListOperationsInput {
   ApplicationId: string;
   MaxResults?: number;
   NextToken?: string;
   Filters?: Filter[];
 }
+const ListOperationsInput = /*@__PURE__*/ __L.at(__c7, 4) as any as S.Schema<ListOperationsInput>;
 export type OperationList = Operation[];
+const OperationList = /*@__PURE__*/ __L.at(__c7, 5);
 export interface ListOperationsOutput {
   Operations?: Operation[];
   NextToken?: string;
 }
+const ListOperationsOutput = /*@__PURE__*/ __L.at(__c7, 6) as any as S.Schema<ListOperationsOutput>;
 export interface ListSubCheckResultsInput {
   OperationId: string;
   MaxResults?: number;
   NextToken?: string;
 }
+const ListSubCheckResultsInput = /*@__PURE__*/ __L.at(
+  __c7,
+  7,
+) as any as S.Schema<ListSubCheckResultsInput>;
 export type SubCheckResultId = string;
 export type SubCheckReferencesList = string[];
+const SubCheckReferencesList = ComponentIdList as any as S.Schema<SubCheckReferencesList>;
 export interface SubCheckResult {
   Id?: string;
   Name?: string;
   Description?: string;
   References?: string[];
 }
+const SubCheckResult = /*@__PURE__*/ __L.at(__c8, 0) as any as S.Schema<SubCheckResult>;
 export type SubCheckResultList = SubCheckResult[];
+const SubCheckResultList = /*@__PURE__*/ __L.at(__c8, 1);
 export interface ListSubCheckResultsOutput {
   SubCheckResults?: SubCheckResult[];
   NextToken?: string;
 }
+const ListSubCheckResultsOutput = /*@__PURE__*/ __L.at(
+  __c8,
+  2,
+) as any as S.Schema<ListSubCheckResultsOutput>;
 export interface ListSubCheckRuleResultsInput {
   SubCheckResultId: string;
   MaxResults?: number;
   NextToken?: string;
 }
+const ListSubCheckRuleResultsInput = /*@__PURE__*/ __L.at(
+  __c8,
+  3,
+) as any as S.Schema<ListSubCheckRuleResultsInput>;
 export type RuleResultId = string;
 export type RuleResultStatus = "PASSED" | "FAILED" | "WARNING" | "INFO" | "UNKNOWN" | (string & {});
+const RuleResultStatus = S.String;
+
 export type RuleResultMetadataKey = string;
 export type RuleResultMetadataValue = string;
 export type RuleResultMetadata = { [key: string]: string | undefined };
+const RuleResultMetadata = /*@__PURE__*/ __L.at(__c8, 4);
 export interface RuleResult {
   Id?: string;
   Description?: string;
@@ -541,33 +719,56 @@ export interface RuleResult {
   Message?: string;
   Metadata?: { [key: string]: string | undefined };
 }
+const RuleResult = /*@__PURE__*/ __L.at(__c8, 5) as any as S.Schema<RuleResult>;
 export type RuleResultList = RuleResult[];
+const RuleResultList = /*@__PURE__*/ __L.at(__c8, 6);
 export interface ListSubCheckRuleResultsOutput {
   RuleResults?: RuleResult[];
   NextToken?: string;
 }
+const ListSubCheckRuleResultsOutput = /*@__PURE__*/ __L.at(
+  __c8,
+  7,
+) as any as S.Schema<ListSubCheckRuleResultsOutput>;
 export interface ListTagsForResourceRequest {
   resourceArn: string;
 }
+const ListTagsForResourceRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  0,
+) as any as S.Schema<ListTagsForResourceRequest>;
 export interface ListTagsForResourceResponse {
   tags?: { [key: string]: string | undefined };
 }
+const ListTagsForResourceResponse = /*@__PURE__*/ __L.at(
+  __c9,
+  1,
+) as any as S.Schema<ListTagsForResourceResponse>;
 export interface PutResourcePermissionInput {
   ActionType: PermissionActionType;
   SourceResourceArn: string;
   ResourceArn: string;
 }
+const PutResourcePermissionInput = /*@__PURE__*/ __L.at(
+  __c9,
+  2,
+) as any as S.Schema<PutResourcePermissionInput>;
 export interface PutResourcePermissionOutput {
   Policy?: string;
 }
+const PutResourcePermissionOutput =
+  DeleteResourcePermissionOutput as any as S.Schema<PutResourcePermissionOutput>;
 export type InstanceId = string;
 export type InstanceList = string[];
+const InstanceList = ComponentIdList as any as S.Schema<InstanceList>;
 export interface ComponentInfo {
   ComponentType: ComponentType;
   Sid: string;
   Ec2InstanceId: string;
 }
+const ComponentInfo = /*@__PURE__*/ __L.at(__c9, 3) as any as S.Schema<ComponentInfo>;
 export type ComponentInfoList = ComponentInfo[];
+const ComponentInfoList = /*@__PURE__*/ __L.at(__c9, 4);
 export interface RegisterApplicationInput {
   ApplicationId: string;
   ApplicationType: ApplicationType;
@@ -579,55 +780,107 @@ export interface RegisterApplicationInput {
   DatabaseArn?: string;
   ComponentsInfo?: ComponentInfo[];
 }
+const RegisterApplicationInput = /*@__PURE__*/ __L.at(
+  __c9,
+  5,
+) as any as S.Schema<RegisterApplicationInput>;
 export interface RegisterApplicationOutput {
   Application?: Application;
   OperationId?: string;
 }
+const RegisterApplicationOutput = /*@__PURE__*/ __L.at(
+  __c9,
+  6,
+) as any as S.Schema<RegisterApplicationOutput>;
 export interface StartApplicationInput {
   ApplicationId: string;
 }
+const StartApplicationInput = /*@__PURE__*/ __L.at(
+  __c9,
+  7,
+) as any as S.Schema<StartApplicationInput>;
 export interface StartApplicationOutput {
   OperationId?: string;
 }
+const StartApplicationOutput = /*@__PURE__*/ __L.at(
+  __c10,
+  0,
+) as any as S.Schema<StartApplicationOutput>;
 export interface StartApplicationRefreshInput {
   ApplicationId: string;
 }
+const StartApplicationRefreshInput = /*@__PURE__*/ __L.at(
+  __c10,
+  1,
+) as any as S.Schema<StartApplicationRefreshInput>;
 export interface StartApplicationRefreshOutput {
   OperationId?: string;
 }
+const StartApplicationRefreshOutput = /*@__PURE__*/ __L.at(
+  __c10,
+  2,
+) as any as S.Schema<StartApplicationRefreshOutput>;
 export type ConfigurationCheckTypeList = ConfigurationCheckType[];
+const ConfigurationCheckTypeList =
+  ApplicationTypeList as any as S.Schema<ConfigurationCheckTypeList>;
 export interface StartConfigurationChecksInput {
   ApplicationId: string;
   ConfigurationCheckIds?: ConfigurationCheckType[];
 }
+const StartConfigurationChecksInput = /*@__PURE__*/ __L.at(
+  __c10,
+  3,
+) as any as S.Schema<StartConfigurationChecksInput>;
 export interface StartConfigurationChecksOutput {
   ConfigurationCheckOperations?: ConfigurationCheckOperation[];
 }
+const StartConfigurationChecksOutput = /*@__PURE__*/ __L.at(
+  __c10,
+  4,
+) as any as S.Schema<StartConfigurationChecksOutput>;
 export type ConnectedEntityType = "DBMS" | (string & {});
+const ConnectedEntityType = S.String;
+
 export interface StopApplicationInput {
   ApplicationId: string;
   StopConnectedEntity?: ConnectedEntityType;
   IncludeEc2InstanceShutdown?: boolean;
 }
+const StopApplicationInput = /*@__PURE__*/ __L.at(
+  __c10,
+  5,
+) as any as S.Schema<StopApplicationInput>;
 export interface StopApplicationOutput {
   OperationId?: string;
 }
+const StopApplicationOutput = StartApplicationOutput as any as S.Schema<StopApplicationOutput>;
 export interface TagResourceRequest {
   resourceArn: string;
   tags: { [key: string]: string | undefined };
 }
+const TagResourceRequest = /*@__PURE__*/ __L.at(__c10, 6) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
+const TagResourceResponse = DeregisterApplicationOutput as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
+const TagKeyList = ComponentIdList as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   resourceArn: string;
   tagKeys: string[];
 }
+const UntagResourceRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  7,
+) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
+const UntagResourceResponse = DeregisterApplicationOutput as any as S.Schema<UntagResourceResponse>;
 export type BackintMode = "AWSBackup" | (string & {});
+const BackintMode = S.String;
+
 export interface BackintConfig {
   BackintMode: BackintMode;
   EnsureNoBackupInProcess: boolean;
 }
+const BackintConfig = /*@__PURE__*/ __L.at(__c11, 0) as any as S.Schema<BackintConfig>;
 export interface UpdateApplicationSettingsInput {
   ApplicationId: string;
   CredentialsToAddOrUpdate?: ApplicationCredential[];
@@ -635,11 +888,20 @@ export interface UpdateApplicationSettingsInput {
   Backint?: BackintConfig;
   DatabaseArn?: string;
 }
+const UpdateApplicationSettingsInput = /*@__PURE__*/ __L.at(
+  __c11,
+  1,
+) as any as S.Schema<UpdateApplicationSettingsInput>;
 export type OperationIdList = string[];
+const OperationIdList = ComponentIdList as any as S.Schema<OperationIdList>;
 export interface UpdateApplicationSettingsOutput {
   Message?: string;
   OperationIds?: string[];
 }
+const UpdateApplicationSettingsOutput = /*@__PURE__*/ __L.at(
+  __c11,
+  2,
+) as any as S.Schema<UpdateApplicationSettingsOutput>;
 export type DeleteResourcePermissionError =
   | InternalServerException
   | ResourceNotFoundException
@@ -654,8 +916,8 @@ export const deleteResourcePermission: API.OperationMethod<
   DeleteResourcePermissionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<DeleteResourcePermissionInput>,
-  output: __S(1) as any as S.Schema<DeleteResourcePermissionOutput>,
+  input: DeleteResourcePermissionInput,
+  output: DeleteResourcePermissionOutput,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -676,8 +938,8 @@ export const deregisterApplication: API.OperationMethod<
   DeregisterApplicationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2) as any as S.Schema<DeregisterApplicationInput>,
-  output: __S(3) as any as S.Schema<DeregisterApplicationOutput>,
+  input: DeregisterApplicationInput,
+  output: DeregisterApplicationOutput,
   errors: [InternalServerException, UnauthorizedException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -694,8 +956,8 @@ export const getApplication: API.OperationMethod<
   GetApplicationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4) as any as S.Schema<GetApplicationInput>,
-  output: __S(8) as any as S.Schema<GetApplicationOutput>,
+  input: GetApplicationInput,
+  output: GetApplicationOutput,
   errors: [InternalServerException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -716,8 +978,8 @@ export const getComponent: API.OperationMethod<
   GetComponentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9) as any as S.Schema<GetComponentInput>,
-  output: __S(18) as any as S.Schema<GetComponentOutput>,
+  input: GetComponentInput,
+  output: GetComponentOutput,
   errors: [InternalServerException, UnauthorizedException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -737,8 +999,8 @@ export const getConfigurationCheckOperation: API.OperationMethod<
   GetConfigurationCheckOperationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19) as any as S.Schema<GetConfigurationCheckOperationInput>,
-  output: __S(22) as any as S.Schema<GetConfigurationCheckOperationOutput>,
+  input: GetConfigurationCheckOperationInput,
+  output: GetConfigurationCheckOperationOutput,
   errors: [InternalServerException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -755,8 +1017,8 @@ export const getDatabase: API.OperationMethod<
   GetDatabaseError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23) as any as S.Schema<GetDatabaseInput>,
-  output: __S(27) as any as S.Schema<GetDatabaseOutput>,
+  input: GetDatabaseInput,
+  output: GetDatabaseOutput,
   errors: [InternalServerException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -773,8 +1035,8 @@ export const getOperation: API.OperationMethod<
   GetOperationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28) as any as S.Schema<GetOperationInput>,
-  output: __S(31) as any as S.Schema<GetOperationOutput>,
+  input: GetOperationInput,
+  output: GetOperationOutput,
   errors: [InternalServerException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -795,8 +1057,8 @@ export const getResourcePermission: API.OperationMethod<
   GetResourcePermissionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32) as any as S.Schema<GetResourcePermissionInput>,
-  output: __S(1) as any as S.Schema<GetResourcePermissionOutput>,
+  input: GetResourcePermissionInput,
+  output: GetResourcePermissionOutput,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -818,8 +1080,8 @@ export const listApplications: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ApplicationSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(35) as any as S.Schema<ListApplicationsInput>,
-  output: __S(38) as any as S.Schema<ListApplicationsOutput>,
+  input: ListApplicationsInput,
+  output: ListApplicationsOutput,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -848,8 +1110,8 @@ export const listComponents: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ComponentSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(39) as any as S.Schema<ListComponentsInput>,
-  output: __S(42) as any as S.Schema<ListComponentsOutput>,
+  input: ListComponentsInput,
+  output: ListComponentsOutput,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -881,8 +1143,8 @@ export const listConfigurationCheckDefinitions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ConfigurationCheckDefinition
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(43) as any as S.Schema<ListConfigurationCheckDefinitionsInput>,
-  output: __S(47) as any as S.Schema<ListConfigurationCheckDefinitionsOutput>,
+  input: ListConfigurationCheckDefinitionsInput,
+  output: ListConfigurationCheckDefinitionsOutput,
   errors: [InternalServerException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -910,8 +1172,8 @@ export const listConfigurationCheckOperations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ConfigurationCheckOperation
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(48) as any as S.Schema<ListConfigurationCheckOperationsInput>,
-  output: __S(50) as any as S.Schema<ListConfigurationCheckOperationsOutput>,
+  input: ListConfigurationCheckOperationsInput,
+  output: ListConfigurationCheckOperationsOutput,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -939,8 +1201,8 @@ export const listDatabases: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   DatabaseSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(51) as any as S.Schema<ListDatabasesInput>,
-  output: __S(54) as any as S.Schema<ListDatabasesOutput>,
+  input: ListDatabasesInput,
+  output: ListDatabasesOutput,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -966,8 +1228,8 @@ export const listOperationEvents: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   OperationEvent
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(55) as any as S.Schema<ListOperationEventsInput>,
-  output: __S(59) as any as S.Schema<ListOperationEventsOutput>,
+  input: ListOperationEventsInput,
+  output: ListOperationEventsOutput,
   errors: [InternalServerException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -991,8 +1253,8 @@ export const listOperations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Operation
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(60) as any as S.Schema<ListOperationsInput>,
-  output: __S(62) as any as S.Schema<ListOperationsOutput>,
+  input: ListOperationsInput,
+  output: ListOperationsOutput,
   errors: [InternalServerException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1016,8 +1278,8 @@ export const listSubCheckResults: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   SubCheckResult
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(63) as any as S.Schema<ListSubCheckResultsInput>,
-  output: __S(66) as any as S.Schema<ListSubCheckResultsOutput>,
+  input: ListSubCheckResultsInput,
+  output: ListSubCheckResultsOutput,
   errors: [InternalServerException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1044,8 +1306,8 @@ export const listSubCheckRuleResults: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   RuleResult
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(67) as any as S.Schema<ListSubCheckRuleResultsInput>,
-  output: __S(71) as any as S.Schema<ListSubCheckRuleResultsOutput>,
+  input: ListSubCheckRuleResultsInput,
+  output: ListSubCheckRuleResultsOutput,
   errors: [InternalServerException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1072,8 +1334,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(72) as any as S.Schema<ListTagsForResourceRequest>,
-  output: __S(73) as any as S.Schema<ListTagsForResourceResponse>,
+  input: ListTagsForResourceRequest,
+  output: ListTagsForResourceResponse,
   errors: [ConflictException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1094,8 +1356,8 @@ export const putResourcePermission: API.OperationMethod<
   PutResourcePermissionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(74) as any as S.Schema<PutResourcePermissionInput>,
-  output: __S(1) as any as S.Schema<PutResourcePermissionOutput>,
+  input: PutResourcePermissionInput,
+  output: PutResourcePermissionOutput,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1123,8 +1385,8 @@ export const registerApplication: API.OperationMethod<
   RegisterApplicationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(77) as any as S.Schema<RegisterApplicationInput>,
-  output: __S(78) as any as S.Schema<RegisterApplicationOutput>,
+  input: RegisterApplicationInput,
+  output: RegisterApplicationOutput,
   errors: [
     ConflictException,
     InternalServerException,
@@ -1153,8 +1415,8 @@ export const startApplication: API.OperationMethod<
   StartApplicationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(79) as any as S.Schema<StartApplicationInput>,
-  output: __S(80) as any as S.Schema<StartApplicationOutput>,
+  input: StartApplicationInput,
+  output: StartApplicationOutput,
   errors: [
     ConflictException,
     InternalServerException,
@@ -1182,8 +1444,8 @@ export const startApplicationRefresh: API.OperationMethod<
   StartApplicationRefreshError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(81) as any as S.Schema<StartApplicationRefreshInput>,
-  output: __S(82) as any as S.Schema<StartApplicationRefreshOutput>,
+  input: StartApplicationRefreshInput,
+  output: StartApplicationRefreshOutput,
   errors: [
     ConflictException,
     InternalServerException,
@@ -1211,8 +1473,8 @@ export const startConfigurationChecks: API.OperationMethod<
   StartConfigurationChecksError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(83) as any as S.Schema<StartConfigurationChecksInput>,
-  output: __S(84) as any as S.Schema<StartConfigurationChecksOutput>,
+  input: StartConfigurationChecksInput,
+  output: StartConfigurationChecksOutput,
   errors: [
     ConflictException,
     InternalServerException,
@@ -1241,8 +1503,8 @@ export const stopApplication: API.OperationMethod<
   StopApplicationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(85) as any as S.Schema<StopApplicationInput>,
-  output: __S(80) as any as S.Schema<StopApplicationOutput>,
+  input: StopApplicationInput,
+  output: StopApplicationOutput,
   errors: [
     ConflictException,
     InternalServerException,
@@ -1268,8 +1530,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(86) as any as S.Schema<TagResourceRequest>,
-  output: __S(3) as any as S.Schema<TagResourceResponse>,
+  input: TagResourceRequest,
+  output: TagResourceResponse,
   errors: [ConflictException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1290,8 +1552,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(87) as any as S.Schema<UntagResourceRequest>,
-  output: __S(3) as any as S.Schema<UntagResourceResponse>,
+  input: UntagResourceRequest,
+  output: UntagResourceResponse,
   errors: [ConflictException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1314,8 +1576,8 @@ export const updateApplicationSettings: API.OperationMethod<
   UpdateApplicationSettingsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(89) as any as S.Schema<UpdateApplicationSettingsInput>,
-  output: __S(90) as any as S.Schema<UpdateApplicationSettingsOutput>,
+  input: UpdateApplicationSettingsInput,
+  output: UpdateApplicationSettingsOutput,
   errors: [
     ConflictException,
     InternalServerException,
@@ -1334,7 +1596,7 @@ function __c0(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          ActionType: S.optional(S.String),
+          ActionType: S.optional(PermissionActionType),
           SourceResourceArn: S.optional(S.String),
           ResourceArn: S.String,
         }).pipe(
@@ -1389,15 +1651,15 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Id: S.optional(S.String),
-          Type: S.optional(S.String),
+          Type: S.optional(ApplicationType),
           Arn: S.optional(S.String),
           AppRegistryArn: S.optional(S.String),
-          Status: S.optional(S.String),
-          DiscoveryStatus: S.optional(S.String),
-          Components: S.optional(__S(5)),
+          Status: S.optional(ApplicationStatus),
+          DiscoveryStatus: S.optional(ApplicationDiscoveryStatus),
+          Components: S.optional(ComponentIdList),
           LastUpdated: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           StatusMessage: S.optional(S.String),
-          AssociatedApplicationArns: S.optional(__S(5)),
+          AssociatedApplicationArns: S.optional(ApplicationArnList),
         }),
       ).annotate({ identifier: "Application" });
     case 7:
@@ -1408,7 +1670,7 @@ function __c1(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ Application: S.optional(__S(6)), Tags: S.optional(__S(7)) }),
+        S.Struct({ Application: S.optional(Application), Tags: S.optional(TagMap) }),
       ).annotate({ identifier: "GetApplicationOutput" });
     case 1:
       return S.suspend(() =>
@@ -1420,9 +1682,9 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           HsrTier: S.optional(S.String),
-          HsrReplicationMode: S.optional(S.String),
-          HsrOperationMode: S.optional(S.String),
-          ClusterStatus: S.optional(S.String),
+          HsrReplicationMode: S.optional(ReplicationMode),
+          HsrOperationMode: S.optional(OperationMode),
+          ClusterStatus: S.optional(ClusterStatus),
           EnqueueReplication: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "Resilience" });
@@ -1431,17 +1693,17 @@ function __c1(j: number): any {
         S.Struct({
           IpAddress: S.optional(S.String),
           Primary: S.optional(S.Boolean),
-          AllocationType: S.optional(S.String),
+          AllocationType: S.optional(AllocationType),
         }),
       ).annotate({ identifier: "IpAddressMember" });
     case 4:
-      return S.Array(__S(11));
+      return S.Array(IpAddressMember);
     case 5:
       return S.suspend(() =>
         S.Struct({
           Hostname: S.optional(S.String),
           Ec2InstanceId: S.optional(S.String),
-          IpAddresses: S.optional(__S(12)),
+          IpAddresses: S.optional(IpAddressList),
           OsVersion: S.optional(S.String),
         }),
       ).annotate({ identifier: "AssociatedHost" });
@@ -1452,12 +1714,12 @@ function __c1(j: number): any {
           HostIp: S.optional(S.String),
           EC2InstanceId: S.optional(S.String),
           InstanceId: S.optional(S.String),
-          HostRole: S.optional(S.String),
+          HostRole: S.optional(HostRole),
           OsVersion: S.optional(S.String),
         }),
       ).annotate({ identifier: "Host" });
     case 7:
-      return S.Array(__S(14));
+      return S.Array(Host);
   }
 }
 function __c2(j: number): any {
@@ -1465,7 +1727,7 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          DatabaseConnectionMethod: S.optional(S.String),
+          DatabaseConnectionMethod: S.optional(DatabaseConnectionMethod),
           DatabaseArn: S.optional(S.String),
           ConnectionIp: S.optional(S.String),
         }),
@@ -1477,27 +1739,27 @@ function __c2(j: number): any {
           Sid: S.optional(S.String),
           SystemNumber: S.optional(S.String),
           ParentComponent: S.optional(S.String),
-          ChildComponents: S.optional(__S(5)),
+          ChildComponents: S.optional(ComponentIdList),
           ApplicationId: S.optional(S.String),
-          ComponentType: S.optional(S.String),
-          Status: S.optional(S.String),
+          ComponentType: S.optional(ComponentType),
+          Status: S.optional(ComponentStatus),
           SapHostname: S.optional(S.String),
           SapFeature: S.optional(S.String),
           SapKernelVersion: S.optional(S.String),
           HdbVersion: S.optional(S.String),
-          Resilience: S.optional(__S(10)),
-          AssociatedHost: S.optional(__S(13)),
-          Databases: S.optional(__S(5)),
-          Hosts: S.optional(__S(15)),
+          Resilience: S.optional(Resilience),
+          AssociatedHost: S.optional(AssociatedHost),
+          Databases: S.optional(DatabaseIdList),
+          Hosts: S.optional(HostList),
           PrimaryHost: S.optional(S.String),
-          DatabaseConnection: S.optional(__S(16)),
+          DatabaseConnection: S.optional(DatabaseConnection),
           LastUpdated: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           Arn: S.optional(S.String),
         }),
       ).annotate({ identifier: "Component" });
     case 2:
       return S.suspend(() =>
-        S.Struct({ Component: S.optional(__S(17)), Tags: S.optional(__S(7)) }),
+        S.Struct({ Component: S.optional(Component), Tags: S.optional(TagMap) }),
       ).annotate({ identifier: "GetComponentOutput" });
     case 3:
       return S.suspend(() =>
@@ -1529,21 +1791,21 @@ function __c2(j: number): any {
         S.Struct({
           Id: S.optional(S.String),
           ApplicationId: S.optional(S.String),
-          Status: S.optional(S.String),
+          Status: S.optional(OperationStatus),
           StatusMessage: S.optional(S.String),
-          ConfigurationCheckId: S.optional(S.String),
+          ConfigurationCheckId: S.optional(ConfigurationCheckType),
           ConfigurationCheckName: S.optional(S.String),
           ConfigurationCheckDescription: S.optional(S.String),
           StartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           EndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          RuleStatusCounts: S.optional(__S(20)),
+          RuleStatusCounts: S.optional(RuleStatusCounts),
         }),
       ).annotate({
         identifier: "ConfigurationCheckOperation",
       });
     case 6:
       return S.suspend(() =>
-        S.Struct({ ConfigurationCheckOperation: S.optional(__S(21)) }),
+        S.Struct({ ConfigurationCheckOperation: S.optional(ConfigurationCheckOperation) }),
       ).annotate({
         identifier: "GetConfigurationCheckOperationOutput",
       });
@@ -1566,32 +1828,32 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           DatabaseName: S.String,
-          CredentialType: S.String,
+          CredentialType: CredentialType,
           SecretId: SensitiveString,
         }),
       ).annotate({ identifier: "ApplicationCredential" });
     case 1:
-      return S.Array(__S(24));
+      return S.Array(ApplicationCredential);
     case 2:
       return S.suspend(() =>
         S.Struct({
           ApplicationId: S.optional(S.String),
           ComponentId: S.optional(S.String),
-          Credentials: S.optional(__S(25)),
+          Credentials: S.optional(ApplicationCredentialList),
           DatabaseId: S.optional(S.String),
           DatabaseName: S.optional(S.String),
-          DatabaseType: S.optional(S.String),
+          DatabaseType: S.optional(DatabaseType),
           Arn: S.optional(S.String),
-          Status: S.optional(S.String),
+          Status: S.optional(DatabaseStatus),
           PrimaryHost: S.optional(S.String),
           SQLPort: S.optional(S.Number),
           LastUpdated: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          ConnectedComponentArns: S.optional(__S(5)),
+          ConnectedComponentArns: S.optional(ComponentArnList),
         }),
       ).annotate({ identifier: "Database" });
     case 3:
       return S.suspend(() =>
-        S.Struct({ Database: S.optional(__S(26)), Tags: S.optional(__S(7)) }),
+        S.Struct({ Database: S.optional(Database), Tags: S.optional(TagMap) }),
       ).annotate({ identifier: "GetDatabaseOutput" });
     case 4:
       return S.suspend(() =>
@@ -1608,9 +1870,9 @@ function __c3(j: number): any {
         S.Struct({
           Id: S.optional(S.String),
           Type: S.optional(S.String),
-          Status: S.optional(S.String),
+          Status: S.optional(OperationStatus),
           StatusMessage: S.optional(S.String),
-          Properties: S.optional(__S(29)),
+          Properties: S.optional(OperationProperties),
           ResourceType: S.optional(S.String),
           ResourceId: S.optional(S.String),
           ResourceArn: S.optional(S.String),
@@ -1620,7 +1882,7 @@ function __c3(j: number): any {
         }),
       ).annotate({ identifier: "Operation" });
     case 7:
-      return S.suspend(() => S.Struct({ Operation: S.optional(__S(30)) })).annotate({
+      return S.suspend(() => S.Struct({ Operation: S.optional(Operation) })).annotate({
         identifier: "GetOperationOutput",
       });
   }
@@ -1629,7 +1891,7 @@ function __c4(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ ActionType: S.optional(S.String), ResourceArn: S.String }).pipe(
+        S.Struct({ ActionType: S.optional(PermissionActionType), ResourceArn: S.String }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/get-resource-permission" }),
             svc,
@@ -1644,16 +1906,16 @@ function __c4(j: number): any {
       });
     case 1:
       return S.suspend(() =>
-        S.Struct({ Name: S.String, Value: S.String, Operator: S.String }),
+        S.Struct({ Name: S.String, Value: S.String, Operator: FilterOperator }),
       ).annotate({ identifier: "Filter" });
     case 2:
-      return S.Array(__S(33));
+      return S.Array(Filter);
     case 3:
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
-          Filters: S.optional(__S(34)),
+          Filters: S.optional(FilterList),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/list-applications" }),
@@ -1669,18 +1931,18 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Id: S.optional(S.String),
-          DiscoveryStatus: S.optional(S.String),
-          Type: S.optional(S.String),
+          DiscoveryStatus: S.optional(ApplicationDiscoveryStatus),
+          Type: S.optional(ApplicationType),
           Arn: S.optional(S.String),
-          Tags: S.optional(__S(7)),
+          Tags: S.optional(TagMap),
         }),
       ).annotate({ identifier: "ApplicationSummary" });
     case 5:
-      return S.Array(__S(36));
+      return S.Array(ApplicationSummary);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          Applications: S.optional(__S(37)),
+          Applications: S.optional(ApplicationSummaryList),
           NextToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListApplicationsOutput" });
@@ -1703,16 +1965,16 @@ function __c5(j: number): any {
         S.Struct({
           ApplicationId: S.optional(S.String),
           ComponentId: S.optional(S.String),
-          ComponentType: S.optional(S.String),
-          Tags: S.optional(__S(7)),
+          ComponentType: S.optional(ComponentType),
+          Tags: S.optional(TagMap),
           Arn: S.optional(S.String),
         }),
       ).annotate({ identifier: "ComponentSummary" });
     case 1:
-      return S.Array(__S(40));
+      return S.Array(ComponentSummary);
     case 2:
       return S.suspend(() =>
-        S.Struct({ Components: S.optional(__S(41)), NextToken: S.optional(S.String) }),
+        S.Struct({ Components: S.optional(ComponentSummaryList), NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListComponentsOutput" });
     case 3:
       return S.suspend(() =>
@@ -1730,24 +1992,24 @@ function __c5(j: number): any {
         identifier: "ListConfigurationCheckDefinitionsInput",
       });
     case 4:
-      return S.Array(S.String);
+      return S.Array(ApplicationType);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          Id: S.optional(S.String),
+          Id: S.optional(ConfigurationCheckType),
           Name: S.optional(S.String),
           Description: S.optional(S.String),
-          ApplicableApplicationTypes: S.optional(__S(44)),
+          ApplicableApplicationTypes: S.optional(ApplicationTypeList),
         }),
       ).annotate({
         identifier: "ConfigurationCheckDefinition",
       });
     case 6:
-      return S.Array(__S(45));
+      return S.Array(ConfigurationCheckDefinition);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          ConfigurationChecks: S.optional(__S(46)),
+          ConfigurationChecks: S.optional(ConfigurationCheckDefinitionList),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -1761,10 +2023,10 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ApplicationId: S.String,
-          ListMode: S.optional(S.String),
+          ListMode: S.optional(ConfigurationCheckOperationListingMode),
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
-          Filters: S.optional(__S(34)),
+          Filters: S.optional(FilterList),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/list-configuration-check-operations" }),
@@ -1779,11 +2041,11 @@ function __c6(j: number): any {
         identifier: "ListConfigurationCheckOperationsInput",
       });
     case 1:
-      return S.Array(__S(21));
+      return S.Array(ConfigurationCheckOperation);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          ConfigurationCheckOperations: S.optional(__S(49)),
+          ConfigurationCheckOperations: S.optional(ConfigurationCheckOperationList),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -1806,16 +2068,16 @@ function __c6(j: number): any {
           ApplicationId: S.optional(S.String),
           ComponentId: S.optional(S.String),
           DatabaseId: S.optional(S.String),
-          DatabaseType: S.optional(S.String),
+          DatabaseType: S.optional(DatabaseType),
           Arn: S.optional(S.String),
-          Tags: S.optional(__S(7)),
+          Tags: S.optional(TagMap),
         }),
       ).annotate({ identifier: "DatabaseSummary" });
     case 5:
-      return S.Array(__S(52));
+      return S.Array(DatabaseSummary);
     case 6:
       return S.suspend(() =>
-        S.Struct({ Databases: S.optional(__S(53)), NextToken: S.optional(S.String) }),
+        S.Struct({ Databases: S.optional(DatabaseSummaryList), NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListDatabasesOutput" });
     case 7:
       return S.suspend(() =>
@@ -1823,7 +2085,7 @@ function __c6(j: number): any {
           OperationId: S.String,
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
-          Filters: S.optional(__S(34)),
+          Filters: S.optional(FilterList),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/list-operation-events" }),
@@ -1847,18 +2109,18 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Description: S.optional(S.String),
-          Resource: S.optional(__S(56)),
-          Status: S.optional(S.String),
+          Resource: S.optional(Resource),
+          Status: S.optional(OperationEventStatus),
           StatusMessage: S.optional(S.String),
           Timestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "OperationEvent" });
     case 2:
-      return S.Array(__S(57));
+      return S.Array(OperationEvent);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          OperationEvents: S.optional(__S(58)),
+          OperationEvents: S.optional(OperationEventList),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -1870,16 +2132,16 @@ function __c7(j: number): any {
           ApplicationId: S.String,
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
-          Filters: S.optional(__S(34)),
+          Filters: S.optional(FilterList),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/list-operations" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "ListOperationsInput" });
     case 5:
-      return S.Array(__S(30));
+      return S.Array(Operation);
     case 6:
       return S.suspend(() =>
-        S.Struct({ Operations: S.optional(__S(61)), NextToken: S.optional(S.String) }),
+        S.Struct({ Operations: S.optional(OperationList), NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListOperationsOutput" });
     case 7:
       return S.suspend(() =>
@@ -1908,15 +2170,15 @@ function __c8(j: number): any {
           Id: S.optional(S.String),
           Name: S.optional(S.String),
           Description: S.optional(S.String),
-          References: S.optional(__S(5)),
+          References: S.optional(SubCheckReferencesList),
         }),
       ).annotate({ identifier: "SubCheckResult" });
     case 1:
-      return S.Array(__S(64));
+      return S.Array(SubCheckResult);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          SubCheckResults: S.optional(__S(65)),
+          SubCheckResults: S.optional(SubCheckResultList),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -1948,16 +2210,16 @@ function __c8(j: number): any {
         S.Struct({
           Id: S.optional(S.String),
           Description: S.optional(S.String),
-          Status: S.optional(S.String),
+          Status: S.optional(RuleResultStatus),
           Message: S.optional(S.String),
-          Metadata: S.optional(__S(68)),
+          Metadata: S.optional(RuleResultMetadata),
         }),
       ).annotate({ identifier: "RuleResult" });
     case 6:
-      return S.Array(__S(69));
+      return S.Array(RuleResult);
     case 7:
       return S.suspend(() =>
-        S.Struct({ RuleResults: S.optional(__S(70)), NextToken: S.optional(S.String) }),
+        S.Struct({ RuleResults: S.optional(RuleResultList), NextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListSubCheckRuleResultsOutput",
       });
@@ -1981,13 +2243,13 @@ function __c9(j: number): any {
         identifier: "ListTagsForResourceRequest",
       });
     case 1:
-      return S.suspend(() => S.Struct({ tags: S.optional(__S(7)) })).annotate({
+      return S.suspend(() => S.Struct({ tags: S.optional(TagMap) })).annotate({
         identifier: "ListTagsForResourceResponse",
       });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          ActionType: S.String,
+          ActionType: PermissionActionType,
           SourceResourceArn: S.String,
           ResourceArn: S.String,
         }).pipe(
@@ -2005,22 +2267,22 @@ function __c9(j: number): any {
       });
     case 3:
       return S.suspend(() =>
-        S.Struct({ ComponentType: S.String, Sid: S.String, Ec2InstanceId: S.String }),
+        S.Struct({ ComponentType: ComponentType, Sid: S.String, Ec2InstanceId: S.String }),
       ).annotate({ identifier: "ComponentInfo" });
     case 4:
-      return S.Array(__S(75));
+      return S.Array(ComponentInfo);
     case 5:
       return S.suspend(() =>
         S.Struct({
           ApplicationId: S.String,
-          ApplicationType: S.String,
-          Instances: __S(5),
+          ApplicationType: ApplicationType,
+          Instances: InstanceList,
           SapInstanceNumber: S.optional(S.String),
           Sid: S.optional(S.String),
-          Tags: S.optional(__S(7)),
-          Credentials: S.optional(__S(25)),
+          Tags: S.optional(TagMap),
+          Credentials: S.optional(ApplicationCredentialList),
           DatabaseArn: S.optional(S.String),
-          ComponentsInfo: S.optional(__S(76)),
+          ComponentsInfo: S.optional(ComponentInfoList),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/register-application" }),
@@ -2034,7 +2296,7 @@ function __c9(j: number): any {
       ).annotate({ identifier: "RegisterApplicationInput" });
     case 6:
       return S.suspend(() =>
-        S.Struct({ Application: S.optional(__S(6)), OperationId: S.optional(S.String) }),
+        S.Struct({ Application: S.optional(Application), OperationId: S.optional(S.String) }),
       ).annotate({
         identifier: "RegisterApplicationOutput",
       });
@@ -2082,7 +2344,7 @@ function __c10(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ApplicationId: S.String,
-          ConfigurationCheckIds: S.optional(__S(44)),
+          ConfigurationCheckIds: S.optional(ConfigurationCheckTypeList),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/start-configuration-checks" }),
@@ -2098,7 +2360,7 @@ function __c10(j: number): any {
       });
     case 4:
       return S.suspend(() =>
-        S.Struct({ ConfigurationCheckOperations: S.optional(__S(49)) }),
+        S.Struct({ ConfigurationCheckOperations: S.optional(ConfigurationCheckOperationList) }),
       ).annotate({
         identifier: "StartConfigurationChecksOutput",
       });
@@ -2106,7 +2368,7 @@ function __c10(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ApplicationId: S.String,
-          StopConnectedEntity: S.optional(S.String),
+          StopConnectedEntity: S.optional(ConnectedEntityType),
           IncludeEc2InstanceShutdown: S.optional(S.Boolean),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/stop-application" }), svc, auth, proto, ver, rules),
@@ -2114,7 +2376,7 @@ function __c10(j: number): any {
       ).annotate({ identifier: "StopApplicationInput" });
     case 6:
       return S.suspend(() =>
-        S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")), tags: __S(7) }).pipe(
+        S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")), tags: TagMap }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/tags/{resourceArn}" }),
             svc,
@@ -2129,7 +2391,7 @@ function __c10(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
-          tagKeys: __S(5).pipe(T.HttpQuery("tagKeys")),
+          tagKeys: TagKeyList.pipe(T.HttpQuery("tagKeys")),
         }).pipe(
           T.all(
             T.Http({ method: "DELETE", uri: "/tags/{resourceArn}" }),
@@ -2147,15 +2409,15 @@ function __c11(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ BackintMode: S.String, EnsureNoBackupInProcess: S.Boolean }),
+        S.Struct({ BackintMode: BackintMode, EnsureNoBackupInProcess: S.Boolean }),
       ).annotate({ identifier: "BackintConfig" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           ApplicationId: S.String,
-          CredentialsToAddOrUpdate: S.optional(__S(25)),
-          CredentialsToRemove: S.optional(__S(25)),
-          Backint: S.optional(__S(88)),
+          CredentialsToAddOrUpdate: S.optional(ApplicationCredentialList),
+          CredentialsToRemove: S.optional(ApplicationCredentialList),
+          Backint: S.optional(BackintConfig),
           DatabaseArn: S.optional(S.String),
         }).pipe(
           T.all(
@@ -2172,42 +2434,9 @@ function __c11(j: number): any {
       });
     case 2:
       return S.suspend(() =>
-        S.Struct({ Message: S.optional(S.String), OperationIds: S.optional(__S(5)) }),
+        S.Struct({ Message: S.optional(S.String), OperationIds: S.optional(OperationIdList) }),
       ).annotate({
         identifier: "UpdateApplicationSettingsOutput",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
-    case 9:
-      return __c9(i & 7);
-    case 10:
-      return __c10(i & 7);
-    case 11:
-      return __c11(i & 7);
   }
 }

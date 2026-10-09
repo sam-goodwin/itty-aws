@@ -11,8 +11,6 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString, SensitiveBlob } from "../sensitive.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "Bedrock Runtime",
   serviceShapeName: "AmazonBedrockFrontendService",
@@ -162,27 +160,41 @@ export class ValidationException
 export type GuardrailIdentifier = string;
 export type GuardrailVersion = string;
 export type GuardrailContentSource = "INPUT" | "OUTPUT" | (string & {});
+const GuardrailContentSource = S.String;
+
 export type GuardrailContentQualifier =
   | "grounding_source"
   | "query"
   | "guard_content"
   | (string & {});
+const GuardrailContentQualifier = S.String;
+
 export type GuardrailContentQualifierList = GuardrailContentQualifier[];
+const GuardrailContentQualifierList = /*@__PURE__*/ __L.at(__c0, 0);
 export interface GuardrailTextBlock {
   text: string;
   qualifiers?: GuardrailContentQualifier[];
 }
+const GuardrailTextBlock = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<GuardrailTextBlock>;
 export type GuardrailImageFormat = "png" | "jpeg" | (string & {});
+const GuardrailImageFormat = S.String;
+
 export type GuardrailImageSource = { bytes: Uint8Array };
+const GuardrailImageSource = /*@__PURE__*/ __L.at(__c0, 2);
 export interface GuardrailImageBlock {
   format: GuardrailImageFormat;
   source: GuardrailImageSource;
 }
+const GuardrailImageBlock = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<GuardrailImageBlock>;
 export type GuardrailContentBlock =
   | { text: GuardrailTextBlock; image?: never }
   | { text?: never; image: GuardrailImageBlock };
+const GuardrailContentBlock = /*@__PURE__*/ __L.at(__c0, 4);
 export type GuardrailContentBlockList = GuardrailContentBlock[];
+const GuardrailContentBlockList = /*@__PURE__*/ __L.at(__c0, 5);
 export type GuardrailOutputScope = "INTERVENTIONS" | "FULL" | (string & {});
+const GuardrailOutputScope = S.String;
+
 export interface ApplyGuardrailRequest {
   guardrailIdentifier: string;
   guardrailVersion: string;
@@ -190,6 +202,10 @@ export interface ApplyGuardrailRequest {
   content: GuardrailContentBlock[];
   outputScope?: GuardrailOutputScope;
 }
+const ApplyGuardrailRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<ApplyGuardrailRequest>;
 export type GuardrailTopicPolicyUnitsProcessed = number;
 export type GuardrailContentPolicyUnitsProcessed = number;
 export type GuardrailWordPolicyUnitsProcessed = number;
@@ -210,24 +226,42 @@ export interface GuardrailUsage {
   automatedReasoningPolicyUnits?: number;
   automatedReasoningPolicies?: number;
 }
+const GuardrailUsage = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<GuardrailUsage>;
 export type GuardrailAction = "NONE" | "GUARDRAIL_INTERVENED" | (string & {});
+const GuardrailAction = S.String;
+
 export type GuardrailOutputText = string;
 export interface GuardrailOutputContent {
   text?: string;
 }
+const GuardrailOutputContent = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<GuardrailOutputContent>;
 export type GuardrailOutputContentList = GuardrailOutputContent[];
+const GuardrailOutputContentList = /*@__PURE__*/ __L.at(__c1, 1);
 export type GuardrailTopicType = "DENY" | (string & {});
+const GuardrailTopicType = S.String;
+
 export type GuardrailTopicPolicyAction = "BLOCKED" | "NONE" | (string & {});
+const GuardrailTopicPolicyAction = S.String;
+
 export interface GuardrailTopic {
   name: string;
   type: GuardrailTopicType;
   action: GuardrailTopicPolicyAction;
   detected?: boolean;
 }
+const GuardrailTopic = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<GuardrailTopic>;
 export type GuardrailTopicList = GuardrailTopic[];
+const GuardrailTopicList = /*@__PURE__*/ __L.at(__c1, 3);
 export interface GuardrailTopicPolicyAssessment {
   topics: GuardrailTopic[];
 }
+const GuardrailTopicPolicyAssessment = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<GuardrailTopicPolicyAssessment>;
 export type GuardrailContentFilterType =
   | "INSULTS"
   | "HATE"
@@ -236,9 +270,17 @@ export type GuardrailContentFilterType =
   | "MISCONDUCT"
   | "PROMPT_ATTACK"
   | (string & {});
+const GuardrailContentFilterType = S.String;
+
 export type GuardrailContentFilterConfidence = "NONE" | "LOW" | "MEDIUM" | "HIGH" | (string & {});
+const GuardrailContentFilterConfidence = S.String;
+
 export type GuardrailContentFilterStrength = "NONE" | "LOW" | "MEDIUM" | "HIGH" | (string & {});
+const GuardrailContentFilterStrength = S.String;
+
 export type GuardrailContentPolicyAction = "BLOCKED" | "NONE" | (string & {});
+const GuardrailContentPolicyAction = S.String;
+
 export interface GuardrailContentFilter {
   type: GuardrailContentFilterType;
   confidence: GuardrailContentFilterConfidence;
@@ -246,29 +288,50 @@ export interface GuardrailContentFilter {
   action: GuardrailContentPolicyAction;
   detected?: boolean;
 }
+const GuardrailContentFilter = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<GuardrailContentFilter>;
 export type GuardrailContentFilterList = GuardrailContentFilter[];
+const GuardrailContentFilterList = /*@__PURE__*/ __L.at(__c1, 6);
 export interface GuardrailContentPolicyAssessment {
   filters: GuardrailContentFilter[];
 }
+const GuardrailContentPolicyAssessment = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<GuardrailContentPolicyAssessment>;
 export type GuardrailWordPolicyAction = "BLOCKED" | "NONE" | (string & {});
+const GuardrailWordPolicyAction = S.String;
+
 export interface GuardrailCustomWord {
   match: string;
   action: GuardrailWordPolicyAction;
   detected?: boolean;
 }
+const GuardrailCustomWord = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<GuardrailCustomWord>;
 export type GuardrailCustomWordList = GuardrailCustomWord[];
+const GuardrailCustomWordList = /*@__PURE__*/ __L.at(__c2, 1);
 export type GuardrailManagedWordType = "PROFANITY" | (string & {});
+const GuardrailManagedWordType = S.String;
+
 export interface GuardrailManagedWord {
   match: string;
   type: GuardrailManagedWordType;
   action: GuardrailWordPolicyAction;
   detected?: boolean;
 }
+const GuardrailManagedWord = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<GuardrailManagedWord>;
 export type GuardrailManagedWordList = GuardrailManagedWord[];
+const GuardrailManagedWordList = /*@__PURE__*/ __L.at(__c2, 3);
 export interface GuardrailWordPolicyAssessment {
   customWords: GuardrailCustomWord[];
   managedWordLists: GuardrailManagedWord[];
 }
+const GuardrailWordPolicyAssessment = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<GuardrailWordPolicyAssessment>;
 export type GuardrailPiiEntityType =
   | "ADDRESS"
   | "AGE"
@@ -307,6 +370,8 @@ export type GuardrailSensitiveInformationPolicyAction =
   | "BLOCKED"
   | "NONE"
   | (string & {});
+const GuardrailSensitiveInformationPolicyAction = S.String;
+
 export interface GuardrailPiiEntityFilter {
   match: string;
   type: GuardrailPiiEntityType;
@@ -314,6 +379,8 @@ export interface GuardrailPiiEntityFilter {
   detected?: boolean;
 }
 export type GuardrailPiiEntityFilterList = GuardrailPiiEntityFilter[];
+const GuardrailPiiEntityFilterList =
+  GuardrailManagedWordList as any as S.Schema<GuardrailPiiEntityFilterList>;
 export interface GuardrailRegexFilter {
   name?: string;
   match?: string;
@@ -321,13 +388,23 @@ export interface GuardrailRegexFilter {
   action: GuardrailSensitiveInformationPolicyAction;
   detected?: boolean;
 }
+const GuardrailRegexFilter = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<GuardrailRegexFilter>;
 export type GuardrailRegexFilterList = GuardrailRegexFilter[];
+const GuardrailRegexFilterList = /*@__PURE__*/ __L.at(__c2, 6);
 export interface GuardrailSensitiveInformationPolicyAssessment {
   piiEntities: GuardrailPiiEntityFilter[];
   regexes: GuardrailRegexFilter[];
 }
+const GuardrailSensitiveInformationPolicyAssessment = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<GuardrailSensitiveInformationPolicyAssessment>;
 export type GuardrailContextualGroundingFilterType = "GROUNDING" | "RELEVANCE" | (string & {});
+const GuardrailContextualGroundingFilterType = S.String;
+
 export type GuardrailContextualGroundingPolicyAction = "BLOCKED" | "NONE" | (string & {});
+const GuardrailContextualGroundingPolicyAction = S.String;
+
 export interface GuardrailContextualGroundingFilter {
   type: GuardrailContextualGroundingFilterType;
   threshold: number;
@@ -335,10 +412,19 @@ export interface GuardrailContextualGroundingFilter {
   action: GuardrailContextualGroundingPolicyAction;
   detected?: boolean;
 }
+const GuardrailContextualGroundingFilter = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<GuardrailContextualGroundingFilter>;
 export type GuardrailContextualGroundingFilters = GuardrailContextualGroundingFilter[];
+const GuardrailContextualGroundingFilters = /*@__PURE__*/ __L.at(__c3, 1);
 export interface GuardrailContextualGroundingPolicyAssessment {
   filters?: GuardrailContextualGroundingFilter[];
 }
+const GuardrailContextualGroundingPolicyAssessment = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<GuardrailContextualGroundingPolicyAssessment>;
 export type GuardrailAutomatedReasoningStatementLogicContent = string | redacted.Redacted<string>;
 export type GuardrailAutomatedReasoningStatementNaturalLanguageContent =
   | string
@@ -347,12 +433,22 @@ export interface GuardrailAutomatedReasoningStatement {
   logic?: string | redacted.Redacted<string>;
   naturalLanguage?: string | redacted.Redacted<string>;
 }
+const GuardrailAutomatedReasoningStatement = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<GuardrailAutomatedReasoningStatement>;
 export type GuardrailAutomatedReasoningStatementList = GuardrailAutomatedReasoningStatement[];
+const GuardrailAutomatedReasoningStatementList = /*@__PURE__*/ __L.at(__c3, 4);
 export interface GuardrailAutomatedReasoningInputTextReference {
   text?: string | redacted.Redacted<string>;
 }
+const GuardrailAutomatedReasoningInputTextReference = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<GuardrailAutomatedReasoningInputTextReference>;
 export type GuardrailAutomatedReasoningInputTextReferenceList =
   GuardrailAutomatedReasoningInputTextReference[];
+const GuardrailAutomatedReasoningInputTextReferenceList = /*@__PURE__*/ __L.at(__c3, 6);
 export type GuardrailAutomatedReasoningTranslationConfidence = number;
 export interface GuardrailAutomatedReasoningTranslation {
   premises?: GuardrailAutomatedReasoningStatement[];
@@ -361,61 +457,111 @@ export interface GuardrailAutomatedReasoningTranslation {
   untranslatedClaims?: GuardrailAutomatedReasoningInputTextReference[];
   confidence?: number;
 }
+const GuardrailAutomatedReasoningTranslation = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<GuardrailAutomatedReasoningTranslation>;
 export interface GuardrailAutomatedReasoningScenario {
   statements?: GuardrailAutomatedReasoningStatement[];
 }
+const GuardrailAutomatedReasoningScenario = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<GuardrailAutomatedReasoningScenario>;
 export type AutomatedReasoningRuleIdentifier = string;
 export type GuardrailAutomatedReasoningPolicyVersionArn = string;
 export interface GuardrailAutomatedReasoningRule {
   identifier?: string;
   policyVersionArn?: string;
 }
+const GuardrailAutomatedReasoningRule = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<GuardrailAutomatedReasoningRule>;
 export type GuardrailAutomatedReasoningRuleList = GuardrailAutomatedReasoningRule[];
+const GuardrailAutomatedReasoningRuleList = /*@__PURE__*/ __L.at(__c4, 2);
 export type GuardrailAutomatedReasoningLogicWarningType =
   | "ALWAYS_FALSE"
   | "ALWAYS_TRUE"
   | (string & {});
+const GuardrailAutomatedReasoningLogicWarningType = S.String;
+
 export interface GuardrailAutomatedReasoningLogicWarning {
   type?: GuardrailAutomatedReasoningLogicWarningType;
   premises?: GuardrailAutomatedReasoningStatement[];
   claims?: GuardrailAutomatedReasoningStatement[];
 }
+const GuardrailAutomatedReasoningLogicWarning = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<GuardrailAutomatedReasoningLogicWarning>;
 export interface GuardrailAutomatedReasoningValidFinding {
   translation?: GuardrailAutomatedReasoningTranslation;
   claimsTrueScenario?: GuardrailAutomatedReasoningScenario;
   supportingRules?: GuardrailAutomatedReasoningRule[];
   logicWarning?: GuardrailAutomatedReasoningLogicWarning;
 }
+const GuardrailAutomatedReasoningValidFinding = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<GuardrailAutomatedReasoningValidFinding>;
 export interface GuardrailAutomatedReasoningInvalidFinding {
   translation?: GuardrailAutomatedReasoningTranslation;
   contradictingRules?: GuardrailAutomatedReasoningRule[];
   logicWarning?: GuardrailAutomatedReasoningLogicWarning;
 }
+const GuardrailAutomatedReasoningInvalidFinding = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<GuardrailAutomatedReasoningInvalidFinding>;
 export interface GuardrailAutomatedReasoningSatisfiableFinding {
   translation?: GuardrailAutomatedReasoningTranslation;
   claimsTrueScenario?: GuardrailAutomatedReasoningScenario;
   claimsFalseScenario?: GuardrailAutomatedReasoningScenario;
   logicWarning?: GuardrailAutomatedReasoningLogicWarning;
 }
+const GuardrailAutomatedReasoningSatisfiableFinding = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<GuardrailAutomatedReasoningSatisfiableFinding>;
 export interface GuardrailAutomatedReasoningImpossibleFinding {
   translation?: GuardrailAutomatedReasoningTranslation;
   contradictingRules?: GuardrailAutomatedReasoningRule[];
   logicWarning?: GuardrailAutomatedReasoningLogicWarning;
 }
+const GuardrailAutomatedReasoningImpossibleFinding =
+  GuardrailAutomatedReasoningInvalidFinding as any as S.Schema<GuardrailAutomatedReasoningImpossibleFinding>;
 export type GuardrailAutomatedReasoningTranslationList = GuardrailAutomatedReasoningTranslation[];
+const GuardrailAutomatedReasoningTranslationList = /*@__PURE__*/ __L.at(__c4, 7);
 export interface GuardrailAutomatedReasoningTranslationOption {
   translations?: GuardrailAutomatedReasoningTranslation[];
 }
+const GuardrailAutomatedReasoningTranslationOption = /*@__PURE__*/ __L.at(
+  __c5,
+  0,
+) as any as S.Schema<GuardrailAutomatedReasoningTranslationOption>;
 export type GuardrailAutomatedReasoningTranslationOptionList =
   GuardrailAutomatedReasoningTranslationOption[];
+const GuardrailAutomatedReasoningTranslationOptionList = /*@__PURE__*/ __L.at(__c5, 1);
 export type GuardrailAutomatedReasoningDifferenceScenarioList =
   GuardrailAutomatedReasoningScenario[];
+const GuardrailAutomatedReasoningDifferenceScenarioList = /*@__PURE__*/ __L.at(__c5, 2);
 export interface GuardrailAutomatedReasoningTranslationAmbiguousFinding {
   options?: GuardrailAutomatedReasoningTranslationOption[];
   differenceScenarios?: GuardrailAutomatedReasoningScenario[];
 }
+const GuardrailAutomatedReasoningTranslationAmbiguousFinding = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<GuardrailAutomatedReasoningTranslationAmbiguousFinding>;
 export interface GuardrailAutomatedReasoningTooComplexFinding {}
+const GuardrailAutomatedReasoningTooComplexFinding = /*@__PURE__*/ __L.at(
+  __c5,
+  4,
+) as any as S.Schema<GuardrailAutomatedReasoningTooComplexFinding>;
 export interface GuardrailAutomatedReasoningNoTranslationsFinding {}
+const GuardrailAutomatedReasoningNoTranslationsFinding =
+  GuardrailAutomatedReasoningTooComplexFinding as any as S.Schema<GuardrailAutomatedReasoningNoTranslationsFinding>;
 export type GuardrailAutomatedReasoningFinding =
   | {
       valid: GuardrailAutomatedReasoningValidFinding;
@@ -480,10 +626,16 @@ export type GuardrailAutomatedReasoningFinding =
       tooComplex?: never;
       noTranslations: GuardrailAutomatedReasoningNoTranslationsFinding;
     };
+const GuardrailAutomatedReasoningFinding = /*@__PURE__*/ __L.at(__c5, 5);
 export type GuardrailAutomatedReasoningFindingList = GuardrailAutomatedReasoningFinding[];
+const GuardrailAutomatedReasoningFindingList = /*@__PURE__*/ __L.at(__c5, 6);
 export interface GuardrailAutomatedReasoningPolicyAssessment {
   findings?: GuardrailAutomatedReasoningFinding[];
 }
+const GuardrailAutomatedReasoningPolicyAssessment = /*@__PURE__*/ __L.at(
+  __c5,
+  7,
+) as any as S.Schema<GuardrailAutomatedReasoningPolicyAssessment>;
 export type GuardrailProcessingLatency = number;
 export type TextCharactersGuarded = number;
 export type TextCharactersTotal = number;
@@ -491,21 +643,34 @@ export interface GuardrailTextCharactersCoverage {
   guarded?: number;
   total?: number;
 }
+const GuardrailTextCharactersCoverage = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<GuardrailTextCharactersCoverage>;
 export type ImagesGuarded = number;
 export type ImagesTotal = number;
 export interface GuardrailImageCoverage {
   guarded?: number;
   total?: number;
 }
+const GuardrailImageCoverage = /*@__PURE__*/ __L.at(
+  __c6,
+  1,
+) as any as S.Schema<GuardrailImageCoverage>;
 export interface GuardrailCoverage {
   textCharacters?: GuardrailTextCharactersCoverage;
   images?: GuardrailImageCoverage;
 }
+const GuardrailCoverage = /*@__PURE__*/ __L.at(__c6, 2) as any as S.Schema<GuardrailCoverage>;
 export interface GuardrailInvocationMetrics {
   guardrailProcessingLatency?: number;
   usage?: GuardrailUsage;
   guardrailCoverage?: GuardrailCoverage;
 }
+const GuardrailInvocationMetrics = /*@__PURE__*/ __L.at(
+  __c6,
+  3,
+) as any as S.Schema<GuardrailInvocationMetrics>;
 export type GuardrailId = string;
 export type GuardrailArn = string;
 export type GuardrailOrigin =
@@ -514,7 +679,10 @@ export type GuardrailOrigin =
   | "ORGANIZATION_ENFORCED"
   | (string & {});
 export type GuardrailOriginList = GuardrailOrigin[];
+const GuardrailOriginList = GuardrailContentQualifierList as any as S.Schema<GuardrailOriginList>;
 export type GuardrailOwnership = "SELF" | "CROSS_ACCOUNT" | (string & {});
+const GuardrailOwnership = S.String;
+
 export interface AppliedGuardrailDetails {
   guardrailId?: string;
   guardrailVersion?: string;
@@ -522,6 +690,10 @@ export interface AppliedGuardrailDetails {
   guardrailOrigin?: GuardrailOrigin[];
   guardrailOwnership?: GuardrailOwnership;
 }
+const AppliedGuardrailDetails = /*@__PURE__*/ __L.at(
+  __c6,
+  4,
+) as any as S.Schema<AppliedGuardrailDetails>;
 export interface GuardrailAssessment {
   topicPolicy?: GuardrailTopicPolicyAssessment;
   contentPolicy?: GuardrailContentPolicyAssessment;
@@ -532,7 +704,9 @@ export interface GuardrailAssessment {
   invocationMetrics?: GuardrailInvocationMetrics;
   appliedGuardrailDetails?: AppliedGuardrailDetails;
 }
+const GuardrailAssessment = /*@__PURE__*/ __L.at(__c6, 5) as any as S.Schema<GuardrailAssessment>;
 export type GuardrailAssessmentList = GuardrailAssessment[];
+const GuardrailAssessmentList = /*@__PURE__*/ __L.at(__c6, 6);
 export interface ApplyGuardrailResponse {
   usage: GuardrailUsage;
   action: GuardrailAction;
@@ -541,26 +715,38 @@ export interface ApplyGuardrailResponse {
   assessments: GuardrailAssessment[];
   guardrailCoverage?: GuardrailCoverage;
 }
+const ApplyGuardrailResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  7,
+) as any as S.Schema<ApplyGuardrailResponse>;
 export type ConversationalModelId = string;
 export type ConversationRole = "user" | "assistant" | "system" | (string & {});
+const ConversationRole = S.String;
+
 export type ImageFormat = "png" | "jpeg" | "gif" | "webp" | (string & {});
+const ImageFormat = S.String;
+
 export type S3Uri = string;
 export type AccountId = string;
 export interface S3Location {
   uri: string;
   bucketOwner?: string;
 }
+const S3Location = /*@__PURE__*/ __L.at(__c7, 0) as any as S.Schema<S3Location>;
 export type ImageSource =
   | { bytes: Uint8Array; s3Location?: never }
   | { bytes?: never; s3Location: S3Location };
+const ImageSource = /*@__PURE__*/ __L.at(__c7, 1);
 export interface ErrorBlock {
   message?: string;
 }
+const ErrorBlock = /*@__PURE__*/ __L.at(__c7, 2) as any as S.Schema<ErrorBlock>;
 export interface ImageBlock {
   format: ImageFormat;
   source: ImageSource;
   error?: ErrorBlock;
 }
+const ImageBlock = /*@__PURE__*/ __L.at(__c7, 3) as any as S.Schema<ImageBlock>;
 export type DocumentFormat =
   | "pdf"
   | "csv"
@@ -572,16 +758,22 @@ export type DocumentFormat =
   | "txt"
   | "md"
   | (string & {});
+const DocumentFormat = S.String;
+
 export type DocumentContentBlock = { text: string };
+const DocumentContentBlock = /*@__PURE__*/ __L.at(__c7, 4);
 export type DocumentContentBlocks = DocumentContentBlock[];
+const DocumentContentBlocks = /*@__PURE__*/ __L.at(__c7, 5);
 export type DocumentSource =
   | { bytes: Uint8Array; s3Location?: never; text?: never; content?: never }
   | { bytes?: never; s3Location: S3Location; text?: never; content?: never }
   | { bytes?: never; s3Location?: never; text: string; content?: never }
   | { bytes?: never; s3Location?: never; text?: never; content: DocumentContentBlock[] };
+const DocumentSource = /*@__PURE__*/ __L.at(__c7, 6);
 export interface CitationsConfig {
   enabled: boolean;
 }
+const CitationsConfig = /*@__PURE__*/ __L.at(__c7, 7) as any as S.Schema<CitationsConfig>;
 export interface DocumentBlock {
   format?: DocumentFormat;
   name: string;
@@ -589,6 +781,7 @@ export interface DocumentBlock {
   context?: string;
   citations?: CitationsConfig;
 }
+const DocumentBlock = /*@__PURE__*/ __L.at(__c8, 0) as any as S.Schema<DocumentBlock>;
 export type VideoFormat =
   | "mkv"
   | "mov"
@@ -600,13 +793,17 @@ export type VideoFormat =
   | "wmv"
   | "three_gp"
   | (string & {});
+const VideoFormat = S.String;
+
 export type VideoSource =
   | { bytes: Uint8Array; s3Location?: never }
   | { bytes?: never; s3Location: S3Location };
+const VideoSource = ImageSource as any as S.Schema<VideoSource>;
 export interface VideoBlock {
   format: VideoFormat;
   source: VideoSource;
 }
+const VideoBlock = /*@__PURE__*/ __L.at(__c8, 1) as any as S.Schema<VideoBlock>;
 export type AudioFormat =
   | "mp3"
   | "opus"
@@ -624,33 +821,46 @@ export type AudioFormat =
   | "pcm"
   | "webm"
   | (string & {});
+const AudioFormat = S.String;
+
 export type AudioSource =
   | { bytes: Uint8Array; s3Location?: never }
   | { bytes?: never; s3Location: S3Location };
+const AudioSource = ImageSource as any as S.Schema<AudioSource>;
 export interface AudioBlock {
   format: AudioFormat;
   source: AudioSource;
   error?: ErrorBlock;
 }
+const AudioBlock = /*@__PURE__*/ __L.at(__c8, 2) as any as S.Schema<AudioBlock>;
 export type ToolUseId = string;
 export type ToolName = string;
 export type ToolUseType = "server_tool_use" | (string & {});
+const ToolUseType = S.String;
+
 export interface ToolUseBlock {
   toolUseId: string;
   name: string;
   input: any;
   type?: ToolUseType;
 }
+const ToolUseBlock = /*@__PURE__*/ __L.at(__c8, 3) as any as S.Schema<ToolUseBlock>;
 export interface SearchResultContentBlock {
   text: string;
 }
+const SearchResultContentBlock = /*@__PURE__*/ __L.at(
+  __c8,
+  4,
+) as any as S.Schema<SearchResultContentBlock>;
 export type SearchResultContentBlocks = SearchResultContentBlock[];
+const SearchResultContentBlocks = /*@__PURE__*/ __L.at(__c8, 5);
 export interface SearchResultBlock {
   source: string;
   title: string;
   content: SearchResultContentBlock[];
   citations?: CitationsConfig;
 }
+const SearchResultBlock = /*@__PURE__*/ __L.at(__c8, 6) as any as S.Schema<SearchResultBlock>;
 export type ToolResultContentBlock =
   | {
       json: any;
@@ -700,74 +910,117 @@ export type ToolResultContentBlock =
       video?: never;
       searchResult: SearchResultBlock;
     };
+const ToolResultContentBlock = /*@__PURE__*/ __L.at(__c8, 7);
 export type ToolResultContentBlocks = ToolResultContentBlock[];
+const ToolResultContentBlocks = /*@__PURE__*/ __L.at(__c9, 0);
 export type ToolResultStatus = "success" | "error" | (string & {});
+const ToolResultStatus = S.String;
+
 export interface ToolResultBlock {
   toolUseId: string;
   content: ToolResultContentBlock[];
   status?: ToolResultStatus;
   type?: string;
 }
+const ToolResultBlock = /*@__PURE__*/ __L.at(__c9, 1) as any as S.Schema<ToolResultBlock>;
 export type GuardrailConverseContentQualifier =
   | "grounding_source"
   | "query"
   | "guard_content"
   | (string & {});
+const GuardrailConverseContentQualifier = S.String;
+
 export type GuardrailConverseContentQualifierList = GuardrailConverseContentQualifier[];
+const GuardrailConverseContentQualifierList = /*@__PURE__*/ __L.at(__c9, 2);
 export interface GuardrailConverseTextBlock {
   text: string;
   qualifiers?: GuardrailConverseContentQualifier[];
 }
+const GuardrailConverseTextBlock = /*@__PURE__*/ __L.at(
+  __c9,
+  3,
+) as any as S.Schema<GuardrailConverseTextBlock>;
 export type GuardrailConverseImageFormat = "png" | "jpeg" | (string & {});
+const GuardrailConverseImageFormat = S.String;
+
 export type GuardrailConverseImageSource = { bytes: Uint8Array };
+const GuardrailConverseImageSource =
+  GuardrailImageSource as any as S.Schema<GuardrailConverseImageSource>;
 export interface GuardrailConverseImageBlock {
   format: GuardrailConverseImageFormat;
   source: GuardrailConverseImageSource;
 }
+const GuardrailConverseImageBlock = /*@__PURE__*/ __L.at(
+  __c9,
+  4,
+) as any as S.Schema<GuardrailConverseImageBlock>;
 export type GuardrailConverseContentBlock =
   | { text: GuardrailConverseTextBlock; image?: never }
   | { text?: never; image: GuardrailConverseImageBlock };
+const GuardrailConverseContentBlock = /*@__PURE__*/ __L.at(__c9, 5);
 export type CachePointType = "default" | (string & {});
+const CachePointType = S.String;
+
 export type CacheTTL = "5m" | "1h" | (string & {});
+const CacheTTL = S.String;
+
 export interface CachePointBlock {
   type: CachePointType;
   ttl?: CacheTTL;
 }
+const CachePointBlock = /*@__PURE__*/ __L.at(__c9, 6) as any as S.Schema<CachePointBlock>;
 export interface ReasoningTextBlock {
   text: string;
   signature?: string;
 }
+const ReasoningTextBlock = /*@__PURE__*/ __L.at(__c9, 7) as any as S.Schema<ReasoningTextBlock>;
 export type ReasoningContentBlock =
   | { reasoningText: ReasoningTextBlock; redactedContent?: never }
   | { reasoningText?: never; redactedContent: Uint8Array };
+const ReasoningContentBlock = /*@__PURE__*/ __L.at(__c10, 0);
 export type CitationGeneratedContent = { text: string };
 export type CitationGeneratedContentList = CitationGeneratedContent[];
+const CitationGeneratedContentList =
+  DocumentContentBlocks as any as S.Schema<CitationGeneratedContentList>;
 export type CitationSourceContent = { text: string };
 export type CitationSourceContentList = CitationSourceContent[];
+const CitationSourceContentList =
+  DocumentContentBlocks as any as S.Schema<CitationSourceContentList>;
 export interface WebLocation {
   url?: string;
   domain?: string;
 }
+const WebLocation = /*@__PURE__*/ __L.at(__c10, 1) as any as S.Schema<WebLocation>;
 export interface DocumentCharLocation {
   documentIndex?: number;
   start?: number;
   end?: number;
 }
+const DocumentCharLocation = /*@__PURE__*/ __L.at(
+  __c10,
+  2,
+) as any as S.Schema<DocumentCharLocation>;
 export interface DocumentPageLocation {
   documentIndex?: number;
   start?: number;
   end?: number;
 }
+const DocumentPageLocation = DocumentCharLocation as any as S.Schema<DocumentPageLocation>;
 export interface DocumentChunkLocation {
   documentIndex?: number;
   start?: number;
   end?: number;
 }
+const DocumentChunkLocation = DocumentCharLocation as any as S.Schema<DocumentChunkLocation>;
 export interface SearchResultLocation {
   searchResultIndex?: number;
   start?: number;
   end?: number;
 }
+const SearchResultLocation = /*@__PURE__*/ __L.at(
+  __c10,
+  3,
+) as any as S.Schema<SearchResultLocation>;
 export type CitationLocation =
   | {
       web: WebLocation;
@@ -804,28 +1057,38 @@ export type CitationLocation =
       documentChunk?: never;
       searchResultLocation: SearchResultLocation;
     };
+const CitationLocation = /*@__PURE__*/ __L.at(__c10, 4);
 export interface Citation {
   title?: string;
   source?: string;
   sourceContent?: CitationSourceContent[];
   location?: CitationLocation;
 }
+const Citation = /*@__PURE__*/ __L.at(__c10, 5) as any as S.Schema<Citation>;
 export type Citations = Citation[];
+const Citations = /*@__PURE__*/ __L.at(__c10, 6);
 export interface CitationsContentBlock {
   content?: CitationGeneratedContent[];
   citations?: Citation[];
 }
+const CitationsContentBlock = /*@__PURE__*/ __L.at(
+  __c10,
+  7,
+) as any as S.Schema<CitationsContentBlock>;
 export interface ToolReference {
   type?: string;
   name?: string;
   serverName?: string;
 }
+const ToolReference = /*@__PURE__*/ __L.at(__c11, 0) as any as S.Schema<ToolReference>;
 export interface ToolAdditionBlock {
   tool: ToolReference;
 }
+const ToolAdditionBlock = /*@__PURE__*/ __L.at(__c11, 1) as any as S.Schema<ToolAdditionBlock>;
 export interface ToolRemovalBlock {
   tool: ToolReference;
 }
+const ToolRemovalBlock = ToolAdditionBlock as any as S.Schema<ToolRemovalBlock>;
 export type ContentBlock =
   | {
       text: string;
@@ -1051,86 +1314,136 @@ export type ContentBlock =
       toolAddition?: never;
       toolRemoval: ToolRemovalBlock;
     };
+const ContentBlock = /*@__PURE__*/ __L.at(__c11, 2);
 export type ContentBlocks = ContentBlock[];
+const ContentBlocks = /*@__PURE__*/ __L.at(__c11, 3);
 export interface Message {
   role: ConversationRole;
   content: ContentBlock[];
 }
+const Message = /*@__PURE__*/ __L.at(__c11, 4) as any as S.Schema<Message>;
 export type Messages = Message[];
+const Messages = /*@__PURE__*/ __L.at(__c11, 5);
 export type NonEmptyString = string;
 export type SystemContentBlock =
   | { text: string; guardContent?: never; cachePoint?: never }
   | { text?: never; guardContent: GuardrailConverseContentBlock; cachePoint?: never }
   | { text?: never; guardContent?: never; cachePoint: CachePointBlock };
+const SystemContentBlock = /*@__PURE__*/ __L.at(__c11, 6);
 export type SystemContentBlocks = SystemContentBlock[];
+const SystemContentBlocks = /*@__PURE__*/ __L.at(__c11, 7);
 export type NonEmptyStringList = string[];
+const NonEmptyStringList = /*@__PURE__*/ __L.at(__c12, 0);
 export interface InferenceConfiguration {
   maxTokens?: number;
   temperature?: number;
   topP?: number;
   stopSequences?: string[];
 }
+const InferenceConfiguration = /*@__PURE__*/ __L.at(
+  __c12,
+  1,
+) as any as S.Schema<InferenceConfiguration>;
 export type ToolInputSchema = { json: any };
+const ToolInputSchema = /*@__PURE__*/ __L.at(__c12, 2);
 export interface ToolSpecification {
   name: string;
   description?: string;
   inputSchema: ToolInputSchema;
   strict?: boolean;
 }
+const ToolSpecification = /*@__PURE__*/ __L.at(__c12, 3) as any as S.Schema<ToolSpecification>;
 export interface SystemTool {
   name: string;
 }
+const SystemTool = /*@__PURE__*/ __L.at(__c12, 4) as any as S.Schema<SystemTool>;
 export type Tool =
   | { toolSpec: ToolSpecification; systemTool?: never; cachePoint?: never }
   | { toolSpec?: never; systemTool: SystemTool; cachePoint?: never }
   | { toolSpec?: never; systemTool?: never; cachePoint: CachePointBlock };
+const Tool = /*@__PURE__*/ __L.at(__c12, 5);
 export type Tools = Tool[];
+const Tools = /*@__PURE__*/ __L.at(__c12, 6);
 export interface AutoToolChoice {}
+const AutoToolChoice = /*@__PURE__*/ __L.at(__c12, 7) as any as S.Schema<AutoToolChoice>;
 export interface AnyToolChoice {}
+const AnyToolChoice = AutoToolChoice as any as S.Schema<AnyToolChoice>;
 export interface SpecificToolChoice {
   name: string;
 }
+const SpecificToolChoice = /*@__PURE__*/ __L.at(__c13, 0) as any as S.Schema<SpecificToolChoice>;
 export type ToolChoice =
   | { auto: AutoToolChoice; any?: never; tool?: never }
   | { auto?: never; any: AnyToolChoice; tool?: never }
   | { auto?: never; any?: never; tool: SpecificToolChoice };
+const ToolChoice = /*@__PURE__*/ __L.at(__c13, 1);
 export interface ToolConfiguration {
   tools: Tool[];
   toolChoice?: ToolChoice;
 }
+const ToolConfiguration = /*@__PURE__*/ __L.at(__c13, 2) as any as S.Schema<ToolConfiguration>;
 export type GuardrailTrace = "enabled" | "disabled" | "enabled_full" | (string & {});
+const GuardrailTrace = S.String;
+
 export interface GuardrailConfiguration {
   guardrailIdentifier?: string;
   guardrailVersion?: string;
   trace?: GuardrailTrace;
 }
+const GuardrailConfiguration = /*@__PURE__*/ __L.at(
+  __c13,
+  3,
+) as any as S.Schema<GuardrailConfiguration>;
 export type PromptVariableValues = { text: string };
+const PromptVariableValues = DocumentContentBlock as any as S.Schema<PromptVariableValues>;
 export type PromptVariableMap = { [key: string]: PromptVariableValues | undefined };
+const PromptVariableMap = /*@__PURE__*/ __L.at(__c13, 4);
 export type AdditionalModelResponseFieldPaths = string[];
+const AdditionalModelResponseFieldPaths =
+  NonEmptyStringList as any as S.Schema<AdditionalModelResponseFieldPaths>;
 export type RequestMetadata = { [key: string]: string | undefined };
+const RequestMetadata = /*@__PURE__*/ __L.at(__c13, 5);
 export type PerformanceConfigLatency = "standard" | "optimized" | (string & {});
+const PerformanceConfigLatency = S.String;
+
 export interface PerformanceConfiguration {
   latency?: PerformanceConfigLatency;
 }
+const PerformanceConfiguration = /*@__PURE__*/ __L.at(
+  __c13,
+  6,
+) as any as S.Schema<PerformanceConfiguration>;
 export type ServiceTierType = "priority" | "default" | "flex" | "reserved" | (string & {});
+const ServiceTierType = S.String;
+
 export interface ServiceTier {
   type: ServiceTierType;
 }
+const ServiceTier = /*@__PURE__*/ __L.at(__c13, 7) as any as S.Schema<ServiceTier>;
 export type OutputFormatType = "json_schema" | (string & {});
+const OutputFormatType = S.String;
+
 export interface JsonSchemaDefinition {
   schema: string;
   name?: string;
   description?: string;
 }
+const JsonSchemaDefinition = /*@__PURE__*/ __L.at(
+  __c14,
+  0,
+) as any as S.Schema<JsonSchemaDefinition>;
 export type OutputFormatStructure = { jsonSchema: JsonSchemaDefinition };
+const OutputFormatStructure = /*@__PURE__*/ __L.at(__c14, 1);
 export interface OutputFormat {
   type: OutputFormatType;
   structure: OutputFormatStructure;
 }
+const OutputFormat = /*@__PURE__*/ __L.at(__c14, 2) as any as S.Schema<OutputFormat>;
 export interface OutputConfig {
   textFormat?: OutputFormat;
   effort?: string;
 }
+const OutputConfig = /*@__PURE__*/ __L.at(__c14, 3) as any as S.Schema<OutputConfig>;
 export interface ConverseRequest {
   modelId: string;
   messages?: Message[];
@@ -1146,7 +1459,9 @@ export interface ConverseRequest {
   serviceTier?: ServiceTier;
   outputConfig?: OutputConfig;
 }
+const ConverseRequest = /*@__PURE__*/ __L.at(__c14, 4) as any as S.Schema<ConverseRequest>;
 export type ConverseOutput = { message: Message };
+const ConverseOutput = /*@__PURE__*/ __L.at(__c14, 5);
 export type StopReason =
   | "end_turn"
   | "tool_use"
@@ -1158,11 +1473,15 @@ export type StopReason =
   | "malformed_tool_use"
   | "model_context_window_exceeded"
   | (string & {});
+const StopReason = S.String;
+
 export interface CacheDetail {
   ttl: CacheTTL;
   inputTokens: number;
 }
+const CacheDetail = /*@__PURE__*/ __L.at(__c14, 6) as any as S.Schema<CacheDetail>;
 export type CacheDetailsList = CacheDetail[];
+const CacheDetailsList = /*@__PURE__*/ __L.at(__c14, 7);
 export interface TokenUsage {
   inputTokens: number;
   outputTokens: number;
@@ -1171,26 +1490,37 @@ export interface TokenUsage {
   cacheWriteInputTokens?: number;
   cacheDetails?: CacheDetail[];
 }
+const TokenUsage = /*@__PURE__*/ __L.at(__c15, 0) as any as S.Schema<TokenUsage>;
 export interface ConverseMetrics {
   latencyMs: number;
 }
+const ConverseMetrics = /*@__PURE__*/ __L.at(__c15, 1) as any as S.Schema<ConverseMetrics>;
 export type ModelOutputs = string[];
+const ModelOutputs = NonEmptyStringList as any as S.Schema<ModelOutputs>;
 export type GuardrailAssessmentMap = { [key: string]: GuardrailAssessment | undefined };
+const GuardrailAssessmentMap = /*@__PURE__*/ __L.at(__c15, 2);
 export type GuardrailAssessmentListMap = { [key: string]: GuardrailAssessment[] | undefined };
+const GuardrailAssessmentListMap = /*@__PURE__*/ __L.at(__c15, 3);
 export interface GuardrailTraceAssessment {
   modelOutput?: string[];
   inputAssessment?: { [key: string]: GuardrailAssessment | undefined };
   outputAssessments?: { [key: string]: GuardrailAssessment[] | undefined };
   actionReason?: string;
 }
+const GuardrailTraceAssessment = /*@__PURE__*/ __L.at(
+  __c15,
+  4,
+) as any as S.Schema<GuardrailTraceAssessment>;
 export type InvokedModelId = string;
 export interface PromptRouterTrace {
   invokedModelId?: string;
 }
+const PromptRouterTrace = /*@__PURE__*/ __L.at(__c15, 5) as any as S.Schema<PromptRouterTrace>;
 export interface ConverseTrace {
   guardrail?: GuardrailTraceAssessment;
   promptRouter?: PromptRouterTrace;
 }
+const ConverseTrace = /*@__PURE__*/ __L.at(__c15, 6) as any as S.Schema<ConverseTrace>;
 export interface ConverseResponse {
   output: ConverseOutput;
   stopReason: StopReason;
@@ -1201,13 +1531,20 @@ export interface ConverseResponse {
   performanceConfig?: PerformanceConfiguration;
   serviceTier?: ServiceTier;
 }
+const ConverseResponse = /*@__PURE__*/ __L.at(__c15, 7) as any as S.Schema<ConverseResponse>;
 export type GuardrailStreamProcessingMode = "sync" | "async" | (string & {});
+const GuardrailStreamProcessingMode = S.String;
+
 export interface GuardrailStreamConfiguration {
   guardrailIdentifier?: string;
   guardrailVersion?: string;
   trace?: GuardrailTrace;
   streamProcessingMode?: GuardrailStreamProcessingMode;
 }
+const GuardrailStreamConfiguration = /*@__PURE__*/ __L.at(
+  __c16,
+  0,
+) as any as S.Schema<GuardrailStreamConfiguration>;
 export interface ConverseStreamRequest {
   modelId: string;
   messages?: Message[];
@@ -1223,54 +1560,81 @@ export interface ConverseStreamRequest {
   serviceTier?: ServiceTier;
   outputConfig?: OutputConfig;
 }
+const ConverseStreamRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  1,
+) as any as S.Schema<ConverseStreamRequest>;
 export interface MessageStartEvent {
   role: ConversationRole;
 }
+const MessageStartEvent = /*@__PURE__*/ __L.at(__c16, 2) as any as S.Schema<MessageStartEvent>;
 export interface ToolUseBlockStart {
   toolUseId: string;
   name: string;
   type?: ToolUseType;
 }
+const ToolUseBlockStart = /*@__PURE__*/ __L.at(__c16, 3) as any as S.Schema<ToolUseBlockStart>;
 export interface ToolResultBlockStart {
   toolUseId: string;
   type?: string;
   status?: ToolResultStatus;
 }
+const ToolResultBlockStart = /*@__PURE__*/ __L.at(
+  __c16,
+  4,
+) as any as S.Schema<ToolResultBlockStart>;
 export interface ImageBlockStart {
   format: ImageFormat;
 }
+const ImageBlockStart = /*@__PURE__*/ __L.at(__c16, 5) as any as S.Schema<ImageBlockStart>;
 export type ContentBlockStart =
   | { toolUse: ToolUseBlockStart; toolResult?: never; image?: never }
   | { toolUse?: never; toolResult: ToolResultBlockStart; image?: never }
   | { toolUse?: never; toolResult?: never; image: ImageBlockStart };
+const ContentBlockStart = /*@__PURE__*/ __L.at(__c16, 6);
 export type NonNegativeInteger = number;
 export interface ContentBlockStartEvent {
   start: ContentBlockStart;
   contentBlockIndex: number;
 }
+const ContentBlockStartEvent = /*@__PURE__*/ __L.at(
+  __c16,
+  7,
+) as any as S.Schema<ContentBlockStartEvent>;
 export interface ToolUseBlockDelta {
   input: string;
 }
+const ToolUseBlockDelta = /*@__PURE__*/ __L.at(__c17, 0) as any as S.Schema<ToolUseBlockDelta>;
 export type ToolResultBlockDelta = { text: string; json?: never } | { text?: never; json: any };
+const ToolResultBlockDelta = /*@__PURE__*/ __L.at(__c17, 1);
 export type ToolResultBlocksDelta = ToolResultBlockDelta[];
+const ToolResultBlocksDelta = /*@__PURE__*/ __L.at(__c17, 2);
 export type ReasoningContentBlockDelta =
   | { text: string; redactedContent?: never; signature?: never }
   | { text?: never; redactedContent: Uint8Array; signature?: never }
   | { text?: never; redactedContent?: never; signature: string };
+const ReasoningContentBlockDelta = /*@__PURE__*/ __L.at(__c17, 3);
 export interface CitationSourceContentDelta {
   text?: string;
 }
+const CitationSourceContentDelta = /*@__PURE__*/ __L.at(
+  __c17,
+  4,
+) as any as S.Schema<CitationSourceContentDelta>;
 export type CitationSourceContentListDelta = CitationSourceContentDelta[];
+const CitationSourceContentListDelta = /*@__PURE__*/ __L.at(__c17, 5);
 export interface CitationsDelta {
   title?: string;
   source?: string;
   sourceContent?: CitationSourceContentDelta[];
   location?: CitationLocation;
 }
+const CitationsDelta = /*@__PURE__*/ __L.at(__c17, 6) as any as S.Schema<CitationsDelta>;
 export interface ImageBlockDelta {
   source?: ImageSource;
   error?: ErrorBlock;
 }
+const ImageBlockDelta = /*@__PURE__*/ __L.at(__c17, 7) as any as S.Schema<ImageBlockDelta>;
 export type ContentBlockDelta =
   | {
       text: string;
@@ -1320,24 +1684,36 @@ export type ContentBlockDelta =
       citation?: never;
       image: ImageBlockDelta;
     };
+const ContentBlockDelta = /*@__PURE__*/ __L.at(__c18, 0);
 export interface ContentBlockDeltaEvent {
   delta: ContentBlockDelta;
   contentBlockIndex: number;
 }
+const ContentBlockDeltaEvent = /*@__PURE__*/ __L.at(
+  __c18,
+  1,
+) as any as S.Schema<ContentBlockDeltaEvent>;
 export interface ContentBlockStopEvent {
   contentBlockIndex: number;
 }
+const ContentBlockStopEvent = /*@__PURE__*/ __L.at(
+  __c18,
+  2,
+) as any as S.Schema<ContentBlockStopEvent>;
 export interface MessageStopEvent {
   stopReason: StopReason;
   additionalModelResponseFields?: any;
 }
+const MessageStopEvent = /*@__PURE__*/ __L.at(__c18, 3) as any as S.Schema<MessageStopEvent>;
 export interface ConverseStreamMetrics {
   latencyMs: number;
 }
+const ConverseStreamMetrics = ConverseMetrics as any as S.Schema<ConverseStreamMetrics>;
 export interface ConverseStreamTrace {
   guardrail?: GuardrailTraceAssessment;
   promptRouter?: PromptRouterTrace;
 }
+const ConverseStreamTrace = ConverseTrace as any as S.Schema<ConverseStreamTrace>;
 export interface ConverseStreamMetadataEvent {
   usage: TokenUsage;
   metrics: ConverseStreamMetrics;
@@ -1345,6 +1721,10 @@ export interface ConverseStreamMetadataEvent {
   performanceConfig?: PerformanceConfiguration;
   serviceTier?: ServiceTier;
 }
+const ConverseStreamMetadataEvent = /*@__PURE__*/ __L.at(
+  __c18,
+  4,
+) as any as S.Schema<ConverseStreamMetadataEvent>;
 export type NonBlankString = string;
 export type StatusCode = number;
 export type ConverseStreamOutput =
@@ -1491,37 +1871,61 @@ export type ConverseStreamOutput =
       throttlingException?: never;
       serviceUnavailableException: ServiceUnavailableException;
     };
+const ConverseStreamOutput = /*@__PURE__*/ __L.at(__c18, 5) as any as S.Schema<
+  stream.Stream<ConverseStreamOutput, Error, never>
+>;
 export interface ConverseStreamResponse {
   stream?: stream.Stream<ConverseStreamOutput, Error, never>;
 }
+const ConverseStreamResponse = /*@__PURE__*/ __L.at(
+  __c18,
+  6,
+) as any as S.Schema<ConverseStreamResponse>;
 export type FoundationModelVersionIdentifier = string;
 export type Body = Uint8Array | redacted.Redacted<Uint8Array>;
 export interface InvokeModelTokensRequest {
   body: Uint8Array | redacted.Redacted<Uint8Array>;
 }
+const InvokeModelTokensRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  7,
+) as any as S.Schema<InvokeModelTokensRequest>;
 export interface ConverseTokensRequest {
   messages?: Message[];
   system?: SystemContentBlock[];
   toolConfig?: ToolConfiguration;
   additionalModelRequestFields?: any;
 }
+const ConverseTokensRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  0,
+) as any as S.Schema<ConverseTokensRequest>;
 export type CountTokensInput =
   | { invokeModel: InvokeModelTokensRequest; converse?: never }
   | { invokeModel?: never; converse: ConverseTokensRequest };
+const CountTokensInput = /*@__PURE__*/ __L.at(__c19, 1);
 export interface CountTokensRequest {
   modelId: string;
   input: CountTokensInput;
 }
+const CountTokensRequest = /*@__PURE__*/ __L.at(__c19, 2) as any as S.Schema<CountTokensRequest>;
 export interface CountTokensResponse {
   inputTokens: number;
 }
+const CountTokensResponse = /*@__PURE__*/ __L.at(__c19, 3) as any as S.Schema<CountTokensResponse>;
 export type InvocationArn = string;
 export interface GetAsyncInvokeRequest {
   invocationArn: string;
 }
+const GetAsyncInvokeRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  4,
+) as any as S.Schema<GetAsyncInvokeRequest>;
 export type AsyncInvokeArn = string;
 export type AsyncInvokeIdempotencyToken = string;
 export type AsyncInvokeStatus = "InProgress" | "Completed" | "Failed" | (string & {});
+const AsyncInvokeStatus = S.String;
+
 export type AsyncInvokeMessage = string | redacted.Redacted<string>;
 export type KmsKeyId = string;
 export interface AsyncInvokeS3OutputDataConfig {
@@ -1529,7 +1933,12 @@ export interface AsyncInvokeS3OutputDataConfig {
   kmsKeyId?: string;
   bucketOwner?: string;
 }
+const AsyncInvokeS3OutputDataConfig = /*@__PURE__*/ __L.at(
+  __c19,
+  5,
+) as any as S.Schema<AsyncInvokeS3OutputDataConfig>;
 export type AsyncInvokeOutputDataConfig = { s3OutputDataConfig: AsyncInvokeS3OutputDataConfig };
+const AsyncInvokeOutputDataConfig = /*@__PURE__*/ __L.at(__c19, 6);
 export interface GetAsyncInvokeResponse {
   invocationArn: string;
   modelArn: string;
@@ -1541,15 +1950,28 @@ export interface GetAsyncInvokeResponse {
   endTime?: Date;
   outputDataConfig: AsyncInvokeOutputDataConfig;
 }
+const GetAsyncInvokeResponse = /*@__PURE__*/ __L.at(
+  __c19,
+  7,
+) as any as S.Schema<GetAsyncInvokeResponse>;
 export type GuardrailChecksRole = "user" | "assistant" | "system" | (string & {});
+const GuardrailChecksRole = S.String;
+
 export type GuardrailChecksTextContent = string | redacted.Redacted<string>;
 export type GuardrailChecksContentBlock = { text: string | redacted.Redacted<string> };
+const GuardrailChecksContentBlock = /*@__PURE__*/ __L.at(__c20, 0);
 export type GuardrailChecksContentBlockList = GuardrailChecksContentBlock[];
+const GuardrailChecksContentBlockList = /*@__PURE__*/ __L.at(__c20, 1);
 export interface GuardrailChecksMessage {
   role: GuardrailChecksRole;
   content: GuardrailChecksContentBlock[];
 }
+const GuardrailChecksMessage = /*@__PURE__*/ __L.at(
+  __c20,
+  2,
+) as any as S.Schema<GuardrailChecksMessage>;
 export type GuardrailChecksMessageList = GuardrailChecksMessage[];
+const GuardrailChecksMessageList = /*@__PURE__*/ __L.at(__c20, 3);
 export type GuardrailChecksContentFilterCategory =
   | "VIOLENCE"
   | "HATE"
@@ -1557,14 +1979,25 @@ export type GuardrailChecksContentFilterCategory =
   | "MISCONDUCT"
   | "INSULTS"
   | (string & {});
+const GuardrailChecksContentFilterCategory = S.String;
+
 export interface GuardrailChecksContentFilterCategoryConfig {
   category: GuardrailChecksContentFilterCategory;
 }
+const GuardrailChecksContentFilterCategoryConfig = /*@__PURE__*/ __L.at(
+  __c20,
+  4,
+) as any as S.Schema<GuardrailChecksContentFilterCategoryConfig>;
 export type GuardrailChecksContentFilterCategoryConfigList =
   GuardrailChecksContentFilterCategoryConfig[];
+const GuardrailChecksContentFilterCategoryConfigList = /*@__PURE__*/ __L.at(__c20, 5);
 export interface GuardrailChecksContentFilterConfig {
   categories: GuardrailChecksContentFilterCategoryConfig[];
 }
+const GuardrailChecksContentFilterConfig = /*@__PURE__*/ __L.at(
+  __c20,
+  6,
+) as any as S.Schema<GuardrailChecksContentFilterConfig>;
 export type GuardrailChecksPromptAttackCategory =
   | "JAILBREAK"
   | "PROMPT_INJECTION"
@@ -1578,6 +2011,8 @@ export type GuardrailChecksPromptAttackCategoryConfigList =
 export interface GuardrailChecksPromptAttackConfig {
   categories: GuardrailChecksPromptAttackCategoryConfig[];
 }
+const GuardrailChecksPromptAttackConfig =
+  GuardrailChecksContentFilterConfig as any as S.Schema<GuardrailChecksPromptAttackConfig>;
 export type GuardrailChecksSensitiveInformationEntityType =
   | "ADDRESS"
   | "AGE"
@@ -1611,31 +2046,59 @@ export type GuardrailChecksSensitiveInformationEntityType =
   | "US_SOCIAL_SECURITY_NUMBER"
   | "VEHICLE_IDENTIFICATION_NUMBER"
   | (string & {});
+const GuardrailChecksSensitiveInformationEntityType = S.String;
+
 export interface GuardrailChecksSensitiveInformationEntityConfig {
   type: GuardrailChecksSensitiveInformationEntityType;
 }
+const GuardrailChecksSensitiveInformationEntityConfig = /*@__PURE__*/ __L.at(
+  __c20,
+  7,
+) as any as S.Schema<GuardrailChecksSensitiveInformationEntityConfig>;
 export type GuardrailChecksSensitiveInformationEntityConfigList =
   GuardrailChecksSensitiveInformationEntityConfig[];
+const GuardrailChecksSensitiveInformationEntityConfigList = /*@__PURE__*/ __L.at(__c21, 0);
 export interface GuardrailChecksSensitiveInformationConfig {
   entities: GuardrailChecksSensitiveInformationEntityConfig[];
 }
+const GuardrailChecksSensitiveInformationConfig = /*@__PURE__*/ __L.at(
+  __c21,
+  1,
+) as any as S.Schema<GuardrailChecksSensitiveInformationConfig>;
 export interface GuardrailChecksConfig {
   contentFilter?: GuardrailChecksContentFilterConfig;
   promptAttack?: GuardrailChecksPromptAttackConfig;
   sensitiveInformation?: GuardrailChecksSensitiveInformationConfig;
 }
+const GuardrailChecksConfig = /*@__PURE__*/ __L.at(
+  __c21,
+  2,
+) as any as S.Schema<GuardrailChecksConfig>;
 export interface InvokeGuardrailChecksRequest {
   messages: GuardrailChecksMessage[];
   checks: GuardrailChecksConfig;
 }
+const InvokeGuardrailChecksRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  3,
+) as any as S.Schema<InvokeGuardrailChecksRequest>;
 export interface GuardrailChecksContentFilterResultEntry {
   category: GuardrailChecksContentFilterCategory;
   severityScore: number;
 }
+const GuardrailChecksContentFilterResultEntry = /*@__PURE__*/ __L.at(
+  __c21,
+  4,
+) as any as S.Schema<GuardrailChecksContentFilterResultEntry>;
 export type GuardrailChecksContentFilterResultList = GuardrailChecksContentFilterResultEntry[];
+const GuardrailChecksContentFilterResultList = /*@__PURE__*/ __L.at(__c21, 5);
 export interface GuardrailChecksContentFilterResult {
   results: GuardrailChecksContentFilterResultEntry[];
 }
+const GuardrailChecksContentFilterResult = /*@__PURE__*/ __L.at(
+  __c21,
+  6,
+) as any as S.Schema<GuardrailChecksContentFilterResult>;
 export interface GuardrailChecksPromptAttackResultEntry {
   category: GuardrailChecksPromptAttackCategory;
   severityScore: number;
@@ -1644,6 +2107,8 @@ export type GuardrailChecksPromptAttackResultList = GuardrailChecksPromptAttackR
 export interface GuardrailChecksPromptAttackResult {
   results: GuardrailChecksPromptAttackResultEntry[];
 }
+const GuardrailChecksPromptAttackResult =
+  GuardrailChecksContentFilterResult as any as S.Schema<GuardrailChecksPromptAttackResult>;
 export interface GuardrailChecksSensitiveInformationResultEntry {
   type: GuardrailChecksSensitiveInformationEntityType;
   confidenceScore: number;
@@ -1652,38 +2117,69 @@ export interface GuardrailChecksSensitiveInformationResultEntry {
   messageIndex: number;
   contentIndex: number;
 }
+const GuardrailChecksSensitiveInformationResultEntry = /*@__PURE__*/ __L.at(
+  __c21,
+  7,
+) as any as S.Schema<GuardrailChecksSensitiveInformationResultEntry>;
 export type GuardrailChecksSensitiveInformationResultList =
   GuardrailChecksSensitiveInformationResultEntry[];
+const GuardrailChecksSensitiveInformationResultList = /*@__PURE__*/ __L.at(__c22, 0);
 export interface GuardrailChecksSensitiveInformationResult {
   results: GuardrailChecksSensitiveInformationResultEntry[];
   truncated?: boolean;
 }
+const GuardrailChecksSensitiveInformationResult = /*@__PURE__*/ __L.at(
+  __c22,
+  1,
+) as any as S.Schema<GuardrailChecksSensitiveInformationResult>;
 export interface GuardrailChecksResults {
   contentFilter?: GuardrailChecksContentFilterResult;
   promptAttack?: GuardrailChecksPromptAttackResult;
   sensitiveInformation?: GuardrailChecksSensitiveInformationResult;
 }
+const GuardrailChecksResults = /*@__PURE__*/ __L.at(
+  __c22,
+  2,
+) as any as S.Schema<GuardrailChecksResults>;
 export interface GuardrailChecksContentFilterUsage {
   textUnits: number;
 }
+const GuardrailChecksContentFilterUsage = /*@__PURE__*/ __L.at(
+  __c22,
+  3,
+) as any as S.Schema<GuardrailChecksContentFilterUsage>;
 export interface GuardrailChecksPromptAttackUsage {
   textUnits: number;
 }
+const GuardrailChecksPromptAttackUsage =
+  GuardrailChecksContentFilterUsage as any as S.Schema<GuardrailChecksPromptAttackUsage>;
 export interface GuardrailChecksSensitiveInformationUsage {
   textUnits: number;
 }
+const GuardrailChecksSensitiveInformationUsage =
+  GuardrailChecksContentFilterUsage as any as S.Schema<GuardrailChecksSensitiveInformationUsage>;
 export interface GuardrailChecksUsageResults {
   contentFilter?: GuardrailChecksContentFilterUsage;
   promptAttack?: GuardrailChecksPromptAttackUsage;
   sensitiveInformation?: GuardrailChecksSensitiveInformationUsage;
 }
+const GuardrailChecksUsageResults = /*@__PURE__*/ __L.at(
+  __c22,
+  4,
+) as any as S.Schema<GuardrailChecksUsageResults>;
 export interface InvokeGuardrailChecksResponse {
   results: GuardrailChecksResults;
   usage: GuardrailChecksUsageResults;
 }
+const InvokeGuardrailChecksResponse = /*@__PURE__*/ __L.at(
+  __c22,
+  5,
+) as any as S.Schema<InvokeGuardrailChecksResponse>;
 export type MimeType = string;
 export type InvokeModelIdentifier = string;
 export type Trace = "ENABLED" | "DISABLED" | "ENABLED_FULL" | (string & {});
+const Trace = S.String;
+
 export type RequestMetadataJson = string | redacted.Redacted<string>;
 export interface InvokeModelRequest {
   body?: T.StreamingInputBody;
@@ -1697,24 +2193,39 @@ export interface InvokeModelRequest {
   serviceTier?: ServiceTierType;
   requestMetadata?: string | redacted.Redacted<string>;
 }
+const InvokeModelRequest = /*@__PURE__*/ __L.at(__c22, 6) as any as S.Schema<InvokeModelRequest>;
 export interface InvokeModelResponse {
   body: T.StreamingOutputBody;
   contentType: string;
   performanceConfigLatency?: PerformanceConfigLatency;
   serviceTier?: ServiceTierType;
 }
+const InvokeModelResponse = /*@__PURE__*/ __L.at(__c22, 7) as any as S.Schema<InvokeModelResponse>;
 export type PartBody = Uint8Array | redacted.Redacted<Uint8Array>;
 export interface BidirectionalInputPayloadPart {
   bytes?: Uint8Array | redacted.Redacted<Uint8Array>;
 }
+const BidirectionalInputPayloadPart = /*@__PURE__*/ __L.at(
+  __c23,
+  0,
+) as any as S.Schema<BidirectionalInputPayloadPart>;
 export type InvokeModelWithBidirectionalStreamInput = { chunk: BidirectionalInputPayloadPart };
+const InvokeModelWithBidirectionalStreamInput = /*@__PURE__*/ __L.at(__c23, 1) as any as S.Schema<
+  stream.Stream<InvokeModelWithBidirectionalStreamInput, Error, never>
+>;
 export interface InvokeModelWithBidirectionalStreamRequest {
   modelId: string;
   body: stream.Stream<InvokeModelWithBidirectionalStreamInput, Error, never>;
 }
+const InvokeModelWithBidirectionalStreamRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  2,
+) as any as S.Schema<InvokeModelWithBidirectionalStreamRequest>;
 export interface BidirectionalOutputPayloadPart {
   bytes?: Uint8Array | redacted.Redacted<Uint8Array>;
 }
+const BidirectionalOutputPayloadPart =
+  BidirectionalInputPayloadPart as any as S.Schema<BidirectionalOutputPayloadPart>;
 export type InvokeModelWithBidirectionalStreamOutput =
   | {
       chunk: BidirectionalOutputPayloadPart;
@@ -1779,9 +2290,16 @@ export type InvokeModelWithBidirectionalStreamOutput =
       modelTimeoutException?: never;
       serviceUnavailableException: ServiceUnavailableException;
     };
+const InvokeModelWithBidirectionalStreamOutput = /*@__PURE__*/ __L.at(__c23, 3) as any as S.Schema<
+  stream.Stream<InvokeModelWithBidirectionalStreamOutput, Error, never>
+>;
 export interface InvokeModelWithBidirectionalStreamResponse {
   body: stream.Stream<InvokeModelWithBidirectionalStreamOutput, Error, never>;
 }
+const InvokeModelWithBidirectionalStreamResponse = /*@__PURE__*/ __L.at(
+  __c23,
+  4,
+) as any as S.Schema<InvokeModelWithBidirectionalStreamResponse>;
 export interface InvokeModelWithResponseStreamRequest {
   body?: T.StreamingInputBody;
   contentType?: string;
@@ -1794,9 +2312,14 @@ export interface InvokeModelWithResponseStreamRequest {
   serviceTier?: ServiceTierType;
   requestMetadata?: string | redacted.Redacted<string>;
 }
+const InvokeModelWithResponseStreamRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  5,
+) as any as S.Schema<InvokeModelWithResponseStreamRequest>;
 export interface PayloadPart {
   bytes?: Uint8Array | redacted.Redacted<Uint8Array>;
 }
+const PayloadPart = /*@__PURE__*/ __L.at(__c23, 6) as any as S.Schema<PayloadPart>;
 export type ResponseStream =
   | {
       chunk: PayloadPart;
@@ -1861,16 +2384,27 @@ export type ResponseStream =
       modelTimeoutException?: never;
       serviceUnavailableException: ServiceUnavailableException;
     };
+const ResponseStream = /*@__PURE__*/ __L.at(__c23, 7) as any as S.Schema<
+  stream.Stream<ResponseStream, Error, never>
+>;
 export interface InvokeModelWithResponseStreamResponse {
   body: stream.Stream<ResponseStream, Error, never>;
   contentType: string;
   performanceConfigLatency?: PerformanceConfigLatency;
   serviceTier?: ServiceTierType;
 }
+const InvokeModelWithResponseStreamResponse = /*@__PURE__*/ __L.at(
+  __c24,
+  0,
+) as any as S.Schema<InvokeModelWithResponseStreamResponse>;
 export type MaxResults = number;
 export type PaginationToken = string;
 export type SortAsyncInvocationBy = "SubmissionTime" | (string & {});
+const SortAsyncInvocationBy = S.String;
+
 export type SortOrder = "Ascending" | "Descending" | (string & {});
+const SortOrder = S.String;
+
 export interface ListAsyncInvokesRequest {
   submitTimeAfter?: Date;
   submitTimeBefore?: Date;
@@ -1880,6 +2414,10 @@ export interface ListAsyncInvokesRequest {
   sortBy?: SortAsyncInvocationBy;
   sortOrder?: SortOrder;
 }
+const ListAsyncInvokesRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  1,
+) as any as S.Schema<ListAsyncInvokesRequest>;
 export interface AsyncInvokeSummary {
   invocationArn: string;
   modelArn: string;
@@ -1891,11 +2429,17 @@ export interface AsyncInvokeSummary {
   endTime?: Date;
   outputDataConfig: AsyncInvokeOutputDataConfig;
 }
+const AsyncInvokeSummary = /*@__PURE__*/ __L.at(__c24, 2) as any as S.Schema<AsyncInvokeSummary>;
 export type AsyncInvokeSummaries = AsyncInvokeSummary[];
+const AsyncInvokeSummaries = /*@__PURE__*/ __L.at(__c24, 3);
 export interface ListAsyncInvokesResponse {
   nextToken?: string;
   asyncInvokeSummaries?: AsyncInvokeSummary[];
 }
+const ListAsyncInvokesResponse = /*@__PURE__*/ __L.at(
+  __c24,
+  4,
+) as any as S.Schema<ListAsyncInvokesResponse>;
 export type AsyncInvokeIdentifier = string;
 export type ModelInputPayload = unknown;
 export type TagKey = string;
@@ -1904,7 +2448,9 @@ export interface Tag {
   key: string;
   value: string;
 }
+const Tag = /*@__PURE__*/ __L.at(__c24, 5) as any as S.Schema<Tag>;
 export type TagList = Tag[];
+const TagList = /*@__PURE__*/ __L.at(__c24, 6);
 export interface StartAsyncInvokeRequest {
   clientRequestToken?: string;
   modelId: string;
@@ -1912,9 +2458,17 @@ export interface StartAsyncInvokeRequest {
   outputDataConfig: AsyncInvokeOutputDataConfig;
   tags?: Tag[];
 }
+const StartAsyncInvokeRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  7,
+) as any as S.Schema<StartAsyncInvokeRequest>;
 export interface StartAsyncInvokeResponse {
   invocationArn: string;
 }
+const StartAsyncInvokeResponse = /*@__PURE__*/ __L.at(
+  __c25,
+  0,
+) as any as S.Schema<StartAsyncInvokeResponse>;
 export type ApplyGuardrailError =
   | AccessDeniedException
   | InternalServerException
@@ -1935,8 +2489,8 @@ export const applyGuardrail: API.OperationMethod<
   ApplyGuardrailError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6) as any as S.Schema<ApplyGuardrailRequest>,
-  output: __S(55) as any as S.Schema<ApplyGuardrailResponse>,
+  input: ApplyGuardrailRequest,
+  output: ApplyGuardrailResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1987,8 +2541,8 @@ export const converse: API.OperationMethod<
   ConverseError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(116) as any as S.Schema<ConverseRequest>,
-  output: __S(127) as any as S.Schema<ConverseResponse>,
+  input: ConverseRequest,
+  output: ConverseResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2045,8 +2599,8 @@ export const converseStream: API.OperationMethod<
   ConverseStreamError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(129) as any as S.Schema<ConverseStreamRequest>,
-  output: __S(150) as any as S.Schema<ConverseStreamResponse>,
+  input: ConverseStreamRequest,
+  output: ConverseStreamResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2098,8 +2652,8 @@ export const countTokens: API.OperationMethod<
   CountTokensError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(154) as any as S.Schema<CountTokensRequest>,
-  output: __S(155) as any as S.Schema<CountTokensResponse>,
+  input: CountTokensRequest,
+  output: CountTokensResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2128,8 +2682,8 @@ export const getAsyncInvoke: API.OperationMethod<
   GetAsyncInvokeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(156) as any as S.Schema<GetAsyncInvokeRequest>,
-  output: __S(159) as any as S.Schema<GetAsyncInvokeResponse>,
+  input: GetAsyncInvokeRequest,
+  output: GetAsyncInvokeResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2157,8 +2711,8 @@ export const invokeGuardrailChecks: API.OperationMethod<
   InvokeGuardrailChecksError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(171) as any as S.Schema<InvokeGuardrailChecksRequest>,
-  output: __S(181) as any as S.Schema<InvokeGuardrailChecksResponse>,
+  input: InvokeGuardrailChecksRequest,
+  output: InvokeGuardrailChecksResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2200,8 +2754,8 @@ export const invokeModel: API.OperationMethod<
   InvokeModelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(182) as any as S.Schema<InvokeModelRequest>,
-  output: __S(183) as any as S.Schema<InvokeModelResponse>,
+  input: InvokeModelRequest,
+  output: InvokeModelResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2243,8 +2797,8 @@ export const invokeModelWithBidirectionalStream: API.OperationMethod<
   InvokeModelWithBidirectionalStreamError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(186) as any as S.Schema<InvokeModelWithBidirectionalStreamRequest>,
-  output: __S(188) as any as S.Schema<InvokeModelWithBidirectionalStreamResponse>,
+  input: InvokeModelWithBidirectionalStreamRequest,
+  output: InvokeModelWithBidirectionalStreamResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2297,8 +2851,8 @@ export const invokeModelWithResponseStream: API.OperationMethod<
   InvokeModelWithResponseStreamError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(189) as any as S.Schema<InvokeModelWithResponseStreamRequest>,
-  output: __S(192) as any as S.Schema<InvokeModelWithResponseStreamResponse>,
+  input: InvokeModelWithResponseStreamRequest,
+  output: InvokeModelWithResponseStreamResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2333,8 +2887,8 @@ export const listAsyncInvokes: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   AsyncInvokeSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(193) as any as S.Schema<ListAsyncInvokesRequest>,
-  output: __S(196) as any as S.Schema<ListAsyncInvokesResponse>,
+  input: ListAsyncInvokesRequest,
+  output: ListAsyncInvokesResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2375,8 +2929,8 @@ export const startAsyncInvoke: API.OperationMethod<
   StartAsyncInvokeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(199) as any as S.Schema<StartAsyncInvokeRequest>,
-  output: __S(200) as any as S.Schema<StartAsyncInvokeResponse>,
+  input: StartAsyncInvokeRequest,
+  output: StartAsyncInvokeResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2396,32 +2950,32 @@ export const startAsyncInvoke: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
+      return S.Array(GuardrailContentQualifier);
     case 1:
-      return S.suspend(() => S.Struct({ text: S.String, qualifiers: S.optional(__S(0)) })).annotate(
-        { identifier: "GuardrailTextBlock" },
-      );
+      return S.suspend(() =>
+        S.Struct({ text: S.String, qualifiers: S.optional(GuardrailContentQualifierList) }),
+      ).annotate({ identifier: "GuardrailTextBlock" });
     case 2:
       return S.Union([/*@__PURE__*/ S.Struct({ bytes: T.Blob })]);
     case 3:
-      return S.suspend(() => S.Struct({ format: S.String, source: __S(2) })).annotate({
-        identifier: "GuardrailImageBlock",
-      });
+      return S.suspend(() =>
+        S.Struct({ format: GuardrailImageFormat, source: GuardrailImageSource }),
+      ).annotate({ identifier: "GuardrailImageBlock" });
     case 4:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ text: __S(1) }),
-        /*@__PURE__*/ S.Struct({ image: __S(3) }),
+        /*@__PURE__*/ S.Struct({ text: GuardrailTextBlock }),
+        /*@__PURE__*/ S.Struct({ image: GuardrailImageBlock }),
       ]);
     case 5:
-      return S.Array(__S(4));
+      return S.Array(GuardrailContentBlock);
     case 6:
       return S.suspend(() =>
         S.Struct({
           guardrailIdentifier: S.String.pipe(T.HttpLabel("guardrailIdentifier")),
           guardrailVersion: S.String.pipe(T.HttpLabel("guardrailVersion")),
-          source: S.String,
-          content: __S(5),
-          outputScope: S.optional(S.String),
+          source: GuardrailContentSource,
+          content: GuardrailContentBlockList,
+          outputScope: S.optional(GuardrailOutputScope),
         }).pipe(
           T.all(
             T.Http({
@@ -2459,36 +3013,36 @@ function __c1(j: number): any {
         identifier: "GuardrailOutputContent",
       });
     case 1:
-      return S.Array(__S(8));
+      return S.Array(GuardrailOutputContent);
     case 2:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          type: S.String,
-          action: S.String,
+          type: GuardrailTopicType,
+          action: GuardrailTopicPolicyAction,
           detected: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "GuardrailTopic" });
     case 3:
-      return S.Array(__S(10));
+      return S.Array(GuardrailTopic);
     case 4:
-      return S.suspend(() => S.Struct({ topics: __S(11) })).annotate({
+      return S.suspend(() => S.Struct({ topics: GuardrailTopicList })).annotate({
         identifier: "GuardrailTopicPolicyAssessment",
       });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          type: S.String,
-          confidence: S.String,
-          filterStrength: S.optional(S.String),
-          action: S.String,
+          type: GuardrailContentFilterType,
+          confidence: GuardrailContentFilterConfidence,
+          filterStrength: S.optional(GuardrailContentFilterStrength),
+          action: GuardrailContentPolicyAction,
           detected: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "GuardrailContentFilter" });
     case 6:
-      return S.Array(__S(13));
+      return S.Array(GuardrailContentFilter);
     case 7:
-      return S.suspend(() => S.Struct({ filters: __S(14) })).annotate({
+      return S.suspend(() => S.Struct({ filters: GuardrailContentFilterList })).annotate({
         identifier: "GuardrailContentPolicyAssessment",
       });
   }
@@ -2499,28 +3053,28 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           match: S.String,
-          action: S.String,
+          action: GuardrailWordPolicyAction,
           detected: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "GuardrailCustomWord" });
     case 1:
-      return S.Array(__S(16));
+      return S.Array(GuardrailCustomWord);
     case 2:
       return S.suspend(() =>
         S.Struct({
           match: S.String,
-          type: S.String,
-          action: S.String,
+          type: GuardrailManagedWordType,
+          action: GuardrailWordPolicyAction,
           detected: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "GuardrailManagedWord" });
     case 3:
-      return S.Array(__S(18));
+      return S.Array(GuardrailManagedWord);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          customWords: __S(17),
-          managedWordLists: __S(19),
+          customWords: GuardrailCustomWordList,
+          managedWordLists: GuardrailManagedWordList,
         }),
       ).annotate({
         identifier: "GuardrailWordPolicyAssessment",
@@ -2531,14 +3085,16 @@ function __c2(j: number): any {
           name: S.optional(S.String),
           match: S.optional(S.String),
           regex: S.optional(S.String),
-          action: S.String,
+          action: GuardrailSensitiveInformationPolicyAction,
           detected: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "GuardrailRegexFilter" });
     case 6:
-      return S.Array(__S(21));
+      return S.Array(GuardrailRegexFilter);
     case 7:
-      return S.suspend(() => S.Struct({ piiEntities: __S(19), regexes: __S(22) })).annotate({
+      return S.suspend(() =>
+        S.Struct({ piiEntities: GuardrailPiiEntityFilterList, regexes: GuardrailRegexFilterList }),
+      ).annotate({
         identifier: "GuardrailSensitiveInformationPolicyAssessment",
       });
   }
@@ -2548,19 +3104,21 @@ function __c3(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          type: S.String,
+          type: GuardrailContextualGroundingFilterType,
           threshold: S.Number,
           score: S.Number,
-          action: S.String,
+          action: GuardrailContextualGroundingPolicyAction,
           detected: S.optional(S.Boolean),
         }),
       ).annotate({
         identifier: "GuardrailContextualGroundingFilter",
       });
     case 1:
-      return S.Array(__S(24));
+      return S.Array(GuardrailContextualGroundingFilter);
     case 2:
-      return S.suspend(() => S.Struct({ filters: S.optional(__S(25)) })).annotate({
+      return S.suspend(() =>
+        S.Struct({ filters: S.optional(GuardrailContextualGroundingFilters) }),
+      ).annotate({
         identifier: "GuardrailContextualGroundingPolicyAssessment",
       });
     case 3:
@@ -2573,20 +3131,20 @@ function __c3(j: number): any {
         identifier: "GuardrailAutomatedReasoningStatement",
       });
     case 4:
-      return S.Array(__S(27));
+      return S.Array(GuardrailAutomatedReasoningStatement);
     case 5:
       return S.suspend(() => S.Struct({ text: S.optional(SensitiveString) })).annotate({
         identifier: "GuardrailAutomatedReasoningInputTextReference",
       });
     case 6:
-      return S.Array(__S(29));
+      return S.Array(GuardrailAutomatedReasoningInputTextReference);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          premises: S.optional(__S(28)),
-          claims: S.optional(__S(28)),
-          untranslatedPremises: S.optional(__S(30)),
-          untranslatedClaims: S.optional(__S(30)),
+          premises: S.optional(GuardrailAutomatedReasoningStatementList),
+          claims: S.optional(GuardrailAutomatedReasoningStatementList),
+          untranslatedPremises: S.optional(GuardrailAutomatedReasoningInputTextReferenceList),
+          untranslatedClaims: S.optional(GuardrailAutomatedReasoningInputTextReferenceList),
           confidence: S.optional(S.Number),
         }),
       ).annotate({
@@ -2597,7 +3155,9 @@ function __c3(j: number): any {
 function __c4(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ statements: S.optional(__S(28)) })).annotate({
+      return S.suspend(() =>
+        S.Struct({ statements: S.optional(GuardrailAutomatedReasoningStatementList) }),
+      ).annotate({
         identifier: "GuardrailAutomatedReasoningScenario",
       });
     case 1:
@@ -2607,13 +3167,13 @@ function __c4(j: number): any {
         identifier: "GuardrailAutomatedReasoningRule",
       });
     case 2:
-      return S.Array(__S(33));
+      return S.Array(GuardrailAutomatedReasoningRule);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(S.String),
-          premises: S.optional(__S(28)),
-          claims: S.optional(__S(28)),
+          type: S.optional(GuardrailAutomatedReasoningLogicWarningType),
+          premises: S.optional(GuardrailAutomatedReasoningStatementList),
+          claims: S.optional(GuardrailAutomatedReasoningStatementList),
         }),
       ).annotate({
         identifier: "GuardrailAutomatedReasoningLogicWarning",
@@ -2621,10 +3181,10 @@ function __c4(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          translation: S.optional(__S(31)),
-          claimsTrueScenario: S.optional(__S(32)),
-          supportingRules: S.optional(__S(34)),
-          logicWarning: S.optional(__S(35)),
+          translation: S.optional(GuardrailAutomatedReasoningTranslation),
+          claimsTrueScenario: S.optional(GuardrailAutomatedReasoningScenario),
+          supportingRules: S.optional(GuardrailAutomatedReasoningRuleList),
+          logicWarning: S.optional(GuardrailAutomatedReasoningLogicWarning),
         }),
       ).annotate({
         identifier: "GuardrailAutomatedReasoningValidFinding",
@@ -2632,9 +3192,9 @@ function __c4(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          translation: S.optional(__S(31)),
-          contradictingRules: S.optional(__S(34)),
-          logicWarning: S.optional(__S(35)),
+          translation: S.optional(GuardrailAutomatedReasoningTranslation),
+          contradictingRules: S.optional(GuardrailAutomatedReasoningRuleList),
+          logicWarning: S.optional(GuardrailAutomatedReasoningLogicWarning),
         }),
       ).annotate({
         identifier: "GuardrailAutomatedReasoningInvalidFinding",
@@ -2642,33 +3202,35 @@ function __c4(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          translation: S.optional(__S(31)),
-          claimsTrueScenario: S.optional(__S(32)),
-          claimsFalseScenario: S.optional(__S(32)),
-          logicWarning: S.optional(__S(35)),
+          translation: S.optional(GuardrailAutomatedReasoningTranslation),
+          claimsTrueScenario: S.optional(GuardrailAutomatedReasoningScenario),
+          claimsFalseScenario: S.optional(GuardrailAutomatedReasoningScenario),
+          logicWarning: S.optional(GuardrailAutomatedReasoningLogicWarning),
         }),
       ).annotate({
         identifier: "GuardrailAutomatedReasoningSatisfiableFinding",
       });
     case 7:
-      return S.Array(__S(31));
+      return S.Array(GuardrailAutomatedReasoningTranslation);
   }
 }
 function __c5(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ translations: S.optional(__S(39)) })).annotate({
+      return S.suspend(() =>
+        S.Struct({ translations: S.optional(GuardrailAutomatedReasoningTranslationList) }),
+      ).annotate({
         identifier: "GuardrailAutomatedReasoningTranslationOption",
       });
     case 1:
-      return S.Array(__S(40));
+      return S.Array(GuardrailAutomatedReasoningTranslationOption);
     case 2:
-      return S.Array(__S(32));
+      return S.Array(GuardrailAutomatedReasoningScenario);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          options: S.optional(__S(41)),
-          differenceScenarios: S.optional(__S(42)),
+          options: S.optional(GuardrailAutomatedReasoningTranslationOptionList),
+          differenceScenarios: S.optional(GuardrailAutomatedReasoningDifferenceScenarioList),
         }),
       ).annotate({
         identifier: "GuardrailAutomatedReasoningTranslationAmbiguousFinding",
@@ -2679,22 +3241,24 @@ function __c5(j: number): any {
       });
     case 5:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ valid: __S(36) }),
-        /*@__PURE__*/ S.Struct({ invalid: __S(37) }),
-        /*@__PURE__*/ S.Struct({ satisfiable: __S(38) }),
-        /*@__PURE__*/ S.Struct({ impossible: __S(37) }),
+        /*@__PURE__*/ S.Struct({ valid: GuardrailAutomatedReasoningValidFinding }),
+        /*@__PURE__*/ S.Struct({ invalid: GuardrailAutomatedReasoningInvalidFinding }),
+        /*@__PURE__*/ S.Struct({ satisfiable: GuardrailAutomatedReasoningSatisfiableFinding }),
+        /*@__PURE__*/ S.Struct({ impossible: GuardrailAutomatedReasoningImpossibleFinding }),
         /*@__PURE__*/ S.Struct({
-          translationAmbiguous: __S(43),
+          translationAmbiguous: GuardrailAutomatedReasoningTranslationAmbiguousFinding,
         }),
-        /*@__PURE__*/ S.Struct({ tooComplex: __S(44) }),
+        /*@__PURE__*/ S.Struct({ tooComplex: GuardrailAutomatedReasoningTooComplexFinding }),
         /*@__PURE__*/ S.Struct({
-          noTranslations: __S(44),
+          noTranslations: GuardrailAutomatedReasoningNoTranslationsFinding,
         }),
       ]);
     case 6:
-      return S.Array(__S(45));
+      return S.Array(GuardrailAutomatedReasoningFinding);
     case 7:
-      return S.suspend(() => S.Struct({ findings: S.optional(__S(46)) })).annotate({
+      return S.suspend(() =>
+        S.Struct({ findings: S.optional(GuardrailAutomatedReasoningFindingList) }),
+      ).annotate({
         identifier: "GuardrailAutomatedReasoningPolicyAssessment",
       });
   }
@@ -2714,16 +3278,16 @@ function __c6(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          textCharacters: S.optional(__S(48)),
-          images: S.optional(__S(49)),
+          textCharacters: S.optional(GuardrailTextCharactersCoverage),
+          images: S.optional(GuardrailImageCoverage),
         }),
       ).annotate({ identifier: "GuardrailCoverage" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           guardrailProcessingLatency: S.optional(S.Number),
-          usage: S.optional(__S(7)),
-          guardrailCoverage: S.optional(__S(50)),
+          usage: S.optional(GuardrailUsage),
+          guardrailCoverage: S.optional(GuardrailCoverage),
         }),
       ).annotate({
         identifier: "GuardrailInvocationMetrics",
@@ -2734,34 +3298,34 @@ function __c6(j: number): any {
           guardrailId: S.optional(S.String),
           guardrailVersion: S.optional(S.String),
           guardrailArn: S.optional(S.String),
-          guardrailOrigin: S.optional(__S(0)),
-          guardrailOwnership: S.optional(S.String),
+          guardrailOrigin: S.optional(GuardrailOriginList),
+          guardrailOwnership: S.optional(GuardrailOwnership),
         }),
       ).annotate({ identifier: "AppliedGuardrailDetails" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          topicPolicy: S.optional(__S(12)),
-          contentPolicy: S.optional(__S(15)),
-          wordPolicy: S.optional(__S(20)),
-          sensitiveInformationPolicy: S.optional(__S(23)),
-          contextualGroundingPolicy: S.optional(__S(26)),
-          automatedReasoningPolicy: S.optional(__S(47)),
-          invocationMetrics: S.optional(__S(51)),
-          appliedGuardrailDetails: S.optional(__S(52)),
+          topicPolicy: S.optional(GuardrailTopicPolicyAssessment),
+          contentPolicy: S.optional(GuardrailContentPolicyAssessment),
+          wordPolicy: S.optional(GuardrailWordPolicyAssessment),
+          sensitiveInformationPolicy: S.optional(GuardrailSensitiveInformationPolicyAssessment),
+          contextualGroundingPolicy: S.optional(GuardrailContextualGroundingPolicyAssessment),
+          automatedReasoningPolicy: S.optional(GuardrailAutomatedReasoningPolicyAssessment),
+          invocationMetrics: S.optional(GuardrailInvocationMetrics),
+          appliedGuardrailDetails: S.optional(AppliedGuardrailDetails),
         }),
       ).annotate({ identifier: "GuardrailAssessment" });
     case 6:
-      return S.Array(__S(53));
+      return S.Array(GuardrailAssessment);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          usage: __S(7),
-          action: S.String,
+          usage: GuardrailUsage,
+          action: GuardrailAction,
           actionReason: S.optional(S.String),
-          outputs: __S(9),
-          assessments: __S(54),
-          guardrailCoverage: S.optional(__S(50)),
+          outputs: GuardrailOutputContentList,
+          assessments: GuardrailAssessmentList,
+          guardrailCoverage: S.optional(GuardrailCoverage),
         }),
       ).annotate({ identifier: "ApplyGuardrailResponse" });
   }
@@ -2775,7 +3339,7 @@ function __c7(j: number): any {
     case 1:
       return S.Union([
         /*@__PURE__*/ S.Struct({ bytes: T.Blob }),
-        /*@__PURE__*/ S.Struct({ s3Location: __S(56) }),
+        /*@__PURE__*/ S.Struct({ s3Location: S3Location }),
       ]);
     case 2:
       return S.suspend(() => S.Struct({ message: S.optional(S.String) })).annotate({
@@ -2783,18 +3347,18 @@ function __c7(j: number): any {
       });
     case 3:
       return S.suspend(() =>
-        S.Struct({ format: S.String, source: __S(57), error: S.optional(__S(58)) }),
+        S.Struct({ format: ImageFormat, source: ImageSource, error: S.optional(ErrorBlock) }),
       ).annotate({ identifier: "ImageBlock" });
     case 4:
       return S.Union([/*@__PURE__*/ S.Struct({ text: S.String })]);
     case 5:
-      return S.Array(__S(60));
+      return S.Array(DocumentContentBlock);
     case 6:
       return S.Union([
         /*@__PURE__*/ S.Struct({ bytes: T.Blob }),
-        /*@__PURE__*/ S.Struct({ s3Location: __S(56) }),
+        /*@__PURE__*/ S.Struct({ s3Location: S3Location }),
         /*@__PURE__*/ S.Struct({ text: S.String }),
-        /*@__PURE__*/ S.Struct({ content: __S(61) }),
+        /*@__PURE__*/ S.Struct({ content: DocumentContentBlocks }),
       ]);
     case 7:
       return S.suspend(() => S.Struct({ enabled: S.Boolean })).annotate({
@@ -2807,20 +3371,20 @@ function __c8(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          format: S.optional(S.String),
+          format: S.optional(DocumentFormat),
           name: S.String,
-          source: __S(62),
+          source: DocumentSource,
           context: S.optional(S.String),
-          citations: S.optional(__S(63)),
+          citations: S.optional(CitationsConfig),
         }),
       ).annotate({ identifier: "DocumentBlock" });
     case 1:
-      return S.suspend(() => S.Struct({ format: S.String, source: __S(57) })).annotate({
+      return S.suspend(() => S.Struct({ format: VideoFormat, source: VideoSource })).annotate({
         identifier: "VideoBlock",
       });
     case 2:
       return S.suspend(() =>
-        S.Struct({ format: S.String, source: __S(57), error: S.optional(__S(58)) }),
+        S.Struct({ format: AudioFormat, source: AudioSource, error: S.optional(ErrorBlock) }),
       ).annotate({ identifier: "AudioBlock" });
     case 3:
       return S.suspend(() =>
@@ -2828,7 +3392,7 @@ function __c8(j: number): any {
           toolUseId: S.String,
           name: S.String,
           input: S.Any,
-          type: S.optional(S.String),
+          type: S.optional(ToolUseType),
         }),
       ).annotate({ identifier: "ToolUseBlock" });
     case 4:
@@ -2836,61 +3400,63 @@ function __c8(j: number): any {
         identifier: "SearchResultContentBlock",
       });
     case 5:
-      return S.Array(__S(68));
+      return S.Array(SearchResultContentBlock);
     case 6:
       return S.suspend(() =>
         S.Struct({
           source: S.String,
           title: S.String,
-          content: __S(69),
-          citations: S.optional(__S(63)),
+          content: SearchResultContentBlocks,
+          citations: S.optional(CitationsConfig),
         }),
       ).annotate({ identifier: "SearchResultBlock" });
     case 7:
       return S.Union([
         /*@__PURE__*/ S.Struct({ json: S.Any }),
         /*@__PURE__*/ S.Struct({ text: S.String }),
-        /*@__PURE__*/ S.Struct({ image: __S(59) }),
-        /*@__PURE__*/ S.Struct({ document: __S(64) }),
-        /*@__PURE__*/ S.Struct({ video: __S(65) }),
-        /*@__PURE__*/ S.Struct({ searchResult: __S(70) }),
+        /*@__PURE__*/ S.Struct({ image: ImageBlock }),
+        /*@__PURE__*/ S.Struct({ document: DocumentBlock }),
+        /*@__PURE__*/ S.Struct({ video: VideoBlock }),
+        /*@__PURE__*/ S.Struct({ searchResult: SearchResultBlock }),
       ]);
   }
 }
 function __c9(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(71));
+      return S.Array(ToolResultContentBlock);
     case 1:
       return S.suspend(() =>
         S.Struct({
           toolUseId: S.String,
-          content: __S(72),
-          status: S.optional(S.String),
+          content: ToolResultContentBlocks,
+          status: S.optional(ToolResultStatus),
           type: S.optional(S.String),
         }),
       ).annotate({ identifier: "ToolResultBlock" });
     case 2:
-      return S.Array(S.String);
+      return S.Array(GuardrailConverseContentQualifier);
     case 3:
       return S.suspend(() =>
-        S.Struct({ text: S.String, qualifiers: S.optional(__S(74)) }),
+        S.Struct({ text: S.String, qualifiers: S.optional(GuardrailConverseContentQualifierList) }),
       ).annotate({
         identifier: "GuardrailConverseTextBlock",
       });
     case 4:
-      return S.suspend(() => S.Struct({ format: S.String, source: __S(2) })).annotate({
+      return S.suspend(() =>
+        S.Struct({ format: GuardrailConverseImageFormat, source: GuardrailConverseImageSource }),
+      ).annotate({
         identifier: "GuardrailConverseImageBlock",
       });
     case 5:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ text: __S(75) }),
-        /*@__PURE__*/ S.Struct({ image: __S(76) }),
+        /*@__PURE__*/ S.Struct({ text: GuardrailConverseTextBlock }),
+        /*@__PURE__*/ S.Struct({ image: GuardrailConverseImageBlock }),
       ]);
     case 6:
-      return S.suspend(() => S.Struct({ type: S.String, ttl: S.optional(S.String) })).annotate({
-        identifier: "CachePointBlock",
-      });
+      return S.suspend(() =>
+        S.Struct({ type: CachePointType, ttl: S.optional(CacheTTL) }),
+      ).annotate({ identifier: "CachePointBlock" });
     case 7:
       return S.suspend(() =>
         S.Struct({ text: S.String, signature: S.optional(S.String) }),
@@ -2901,7 +3467,7 @@ function __c10(j: number): any {
   switch (j) {
     case 0:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ reasoningText: __S(79) }),
+        /*@__PURE__*/ S.Struct({ reasoningText: ReasoningTextBlock }),
         /*@__PURE__*/ S.Struct({ redactedContent: T.Blob }),
       ]);
     case 1:
@@ -2926,28 +3492,28 @@ function __c10(j: number): any {
       ).annotate({ identifier: "SearchResultLocation" });
     case 4:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ web: __S(81) }),
-        /*@__PURE__*/ S.Struct({ documentChar: __S(82) }),
-        /*@__PURE__*/ S.Struct({ documentPage: __S(82) }),
-        /*@__PURE__*/ S.Struct({ documentChunk: __S(82) }),
-        /*@__PURE__*/ S.Struct({ searchResultLocation: __S(83) }),
+        /*@__PURE__*/ S.Struct({ web: WebLocation }),
+        /*@__PURE__*/ S.Struct({ documentChar: DocumentCharLocation }),
+        /*@__PURE__*/ S.Struct({ documentPage: DocumentPageLocation }),
+        /*@__PURE__*/ S.Struct({ documentChunk: DocumentChunkLocation }),
+        /*@__PURE__*/ S.Struct({ searchResultLocation: SearchResultLocation }),
       ]);
     case 5:
       return S.suspend(() =>
         S.Struct({
           title: S.optional(S.String),
           source: S.optional(S.String),
-          sourceContent: S.optional(__S(61)),
-          location: S.optional(__S(84)),
+          sourceContent: S.optional(CitationSourceContentList),
+          location: S.optional(CitationLocation),
         }),
       ).annotate({ identifier: "Citation" });
     case 6:
-      return S.Array(__S(85));
+      return S.Array(Citation);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          content: S.optional(__S(61)),
-          citations: S.optional(__S(86)),
+          content: S.optional(CitationGeneratedContentList),
+          citations: S.optional(Citations),
         }),
       ).annotate({ identifier: "CitationsContentBlock" });
   }
@@ -2963,42 +3529,42 @@ function __c11(j: number): any {
         }),
       ).annotate({ identifier: "ToolReference" });
     case 1:
-      return S.suspend(() => S.Struct({ tool: __S(88) })).annotate({
+      return S.suspend(() => S.Struct({ tool: ToolReference })).annotate({
         identifier: "ToolAdditionBlock",
       });
     case 2:
       return S.Union([
         /*@__PURE__*/ S.Struct({ text: S.String }),
-        /*@__PURE__*/ S.Struct({ image: __S(59) }),
-        /*@__PURE__*/ S.Struct({ document: __S(64) }),
-        /*@__PURE__*/ S.Struct({ video: __S(65) }),
-        /*@__PURE__*/ S.Struct({ audio: __S(66) }),
-        /*@__PURE__*/ S.Struct({ toolUse: __S(67) }),
-        /*@__PURE__*/ S.Struct({ toolResult: __S(73) }),
-        /*@__PURE__*/ S.Struct({ guardContent: __S(77) }),
-        /*@__PURE__*/ S.Struct({ cachePoint: __S(78) }),
-        /*@__PURE__*/ S.Struct({ reasoningContent: __S(80) }),
-        /*@__PURE__*/ S.Struct({ citationsContent: __S(87) }),
-        /*@__PURE__*/ S.Struct({ searchResult: __S(70) }),
-        /*@__PURE__*/ S.Struct({ toolAddition: __S(89) }),
-        /*@__PURE__*/ S.Struct({ toolRemoval: __S(89) }),
+        /*@__PURE__*/ S.Struct({ image: ImageBlock }),
+        /*@__PURE__*/ S.Struct({ document: DocumentBlock }),
+        /*@__PURE__*/ S.Struct({ video: VideoBlock }),
+        /*@__PURE__*/ S.Struct({ audio: AudioBlock }),
+        /*@__PURE__*/ S.Struct({ toolUse: ToolUseBlock }),
+        /*@__PURE__*/ S.Struct({ toolResult: ToolResultBlock }),
+        /*@__PURE__*/ S.Struct({ guardContent: GuardrailConverseContentBlock }),
+        /*@__PURE__*/ S.Struct({ cachePoint: CachePointBlock }),
+        /*@__PURE__*/ S.Struct({ reasoningContent: ReasoningContentBlock }),
+        /*@__PURE__*/ S.Struct({ citationsContent: CitationsContentBlock }),
+        /*@__PURE__*/ S.Struct({ searchResult: SearchResultBlock }),
+        /*@__PURE__*/ S.Struct({ toolAddition: ToolAdditionBlock }),
+        /*@__PURE__*/ S.Struct({ toolRemoval: ToolRemovalBlock }),
       ]);
     case 3:
-      return S.Array(__S(90));
+      return S.Array(ContentBlock);
     case 4:
-      return S.suspend(() => S.Struct({ role: S.String, content: __S(91) })).annotate({
-        identifier: "Message",
-      });
+      return S.suspend(() => S.Struct({ role: ConversationRole, content: ContentBlocks })).annotate(
+        { identifier: "Message" },
+      );
     case 5:
-      return S.Array(__S(92));
+      return S.Array(Message);
     case 6:
       return S.Union([
         /*@__PURE__*/ S.Struct({ text: S.String }),
-        /*@__PURE__*/ S.Struct({ guardContent: __S(77) }),
-        /*@__PURE__*/ S.Struct({ cachePoint: __S(78) }),
+        /*@__PURE__*/ S.Struct({ guardContent: GuardrailConverseContentBlock }),
+        /*@__PURE__*/ S.Struct({ cachePoint: CachePointBlock }),
       ]);
     case 7:
-      return S.Array(__S(94));
+      return S.Array(SystemContentBlock);
   }
 }
 function __c12(j: number): any {
@@ -3011,7 +3577,7 @@ function __c12(j: number): any {
           maxTokens: S.optional(S.Number),
           temperature: S.optional(S.Number),
           topP: S.optional(S.Number),
-          stopSequences: S.optional(__S(96)),
+          stopSequences: S.optional(NonEmptyStringList),
         }),
       ).annotate({ identifier: "InferenceConfiguration" });
     case 2:
@@ -3021,7 +3587,7 @@ function __c12(j: number): any {
         S.Struct({
           name: S.String,
           description: S.optional(S.String),
-          inputSchema: __S(98),
+          inputSchema: ToolInputSchema,
           strict: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "ToolSpecification" });
@@ -3031,12 +3597,12 @@ function __c12(j: number): any {
       });
     case 5:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ toolSpec: __S(99) }),
-        /*@__PURE__*/ S.Struct({ systemTool: __S(100) }),
-        /*@__PURE__*/ S.Struct({ cachePoint: __S(78) }),
+        /*@__PURE__*/ S.Struct({ toolSpec: ToolSpecification }),
+        /*@__PURE__*/ S.Struct({ systemTool: SystemTool }),
+        /*@__PURE__*/ S.Struct({ cachePoint: CachePointBlock }),
       ]);
     case 6:
-      return S.Array(__S(101));
+      return S.Array(Tool);
     case 7:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "AutoToolChoice",
@@ -3051,32 +3617,32 @@ function __c13(j: number): any {
       });
     case 1:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ auto: __S(103) }),
-        /*@__PURE__*/ S.Struct({ any: __S(103) }),
-        /*@__PURE__*/ S.Struct({ tool: __S(104) }),
+        /*@__PURE__*/ S.Struct({ auto: AutoToolChoice }),
+        /*@__PURE__*/ S.Struct({ any: AnyToolChoice }),
+        /*@__PURE__*/ S.Struct({ tool: SpecificToolChoice }),
       ]);
     case 2:
       return S.suspend(() =>
-        S.Struct({ tools: __S(102), toolChoice: S.optional(__S(105)) }),
+        S.Struct({ tools: Tools, toolChoice: S.optional(ToolChoice) }),
       ).annotate({ identifier: "ToolConfiguration" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           guardrailIdentifier: S.optional(S.String),
           guardrailVersion: S.optional(S.String),
-          trace: S.optional(S.String),
+          trace: S.optional(GuardrailTrace),
         }),
       ).annotate({ identifier: "GuardrailConfiguration" });
     case 4:
-      return S.Record(S.String, /*@__PURE__*/ __S(60).pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ PromptVariableValues.pipe(S.optional));
     case 5:
       return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
     case 6:
-      return S.suspend(() => S.Struct({ latency: S.optional(S.String) })).annotate({
+      return S.suspend(() => S.Struct({ latency: S.optional(PerformanceConfigLatency) })).annotate({
         identifier: "PerformanceConfiguration",
       });
     case 7:
-      return S.suspend(() => S.Struct({ type: S.String })).annotate({
+      return S.suspend(() => S.Struct({ type: ServiceTierType })).annotate({
         identifier: "ServiceTier",
       });
   }
@@ -3092,31 +3658,31 @@ function __c14(j: number): any {
         }),
       ).annotate({ identifier: "JsonSchemaDefinition" });
     case 1:
-      return S.Union([/*@__PURE__*/ S.Struct({ jsonSchema: __S(112) })]);
+      return S.Union([/*@__PURE__*/ S.Struct({ jsonSchema: JsonSchemaDefinition })]);
     case 2:
-      return S.suspend(() => S.Struct({ type: S.String, structure: __S(113) })).annotate({
-        identifier: "OutputFormat",
-      });
+      return S.suspend(() =>
+        S.Struct({ type: OutputFormatType, structure: OutputFormatStructure }),
+      ).annotate({ identifier: "OutputFormat" });
     case 3:
       return S.suspend(() =>
-        S.Struct({ textFormat: S.optional(__S(114)), effort: S.optional(S.String) }),
+        S.Struct({ textFormat: S.optional(OutputFormat), effort: S.optional(S.String) }),
       ).annotate({ identifier: "OutputConfig" });
     case 4:
       return S.suspend(() =>
         S.Struct({
           modelId: S.String.pipe(T.HttpLabel("modelId")),
-          messages: S.optional(__S(93)),
-          system: S.optional(__S(95)),
-          inferenceConfig: S.optional(__S(97)),
-          toolConfig: S.optional(__S(106)),
-          guardrailConfig: S.optional(__S(107)),
+          messages: S.optional(Messages),
+          system: S.optional(SystemContentBlocks),
+          inferenceConfig: S.optional(InferenceConfiguration),
+          toolConfig: S.optional(ToolConfiguration),
+          guardrailConfig: S.optional(GuardrailConfiguration),
           additionalModelRequestFields: S.optional(S.Any),
-          promptVariables: S.optional(__S(108)),
-          additionalModelResponseFieldPaths: S.optional(__S(96)),
-          requestMetadata: S.optional(__S(109)),
-          performanceConfig: S.optional(__S(110)),
-          serviceTier: S.optional(__S(111)),
-          outputConfig: S.optional(__S(115)),
+          promptVariables: S.optional(PromptVariableMap),
+          additionalModelResponseFieldPaths: S.optional(AdditionalModelResponseFieldPaths),
+          requestMetadata: S.optional(RequestMetadata),
+          performanceConfig: S.optional(PerformanceConfiguration),
+          serviceTier: S.optional(ServiceTier),
+          outputConfig: S.optional(OutputConfig),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/model/{modelId}/converse" }),
@@ -3129,13 +3695,13 @@ function __c14(j: number): any {
         ),
       ).annotate({ identifier: "ConverseRequest" });
     case 5:
-      return S.Union([/*@__PURE__*/ S.Struct({ message: __S(92) })]);
+      return S.Union([/*@__PURE__*/ S.Struct({ message: Message })]);
     case 6:
-      return S.suspend(() => S.Struct({ ttl: S.String, inputTokens: S.Number })).annotate({
+      return S.suspend(() => S.Struct({ ttl: CacheTTL, inputTokens: S.Number })).annotate({
         identifier: "CacheDetail",
       });
     case 7:
-      return S.Array(__S(118));
+      return S.Array(CacheDetail);
   }
 }
 function __c15(j: number): any {
@@ -3148,7 +3714,7 @@ function __c15(j: number): any {
           totalTokens: S.Number,
           cacheReadInputTokens: S.optional(S.Number),
           cacheWriteInputTokens: S.optional(S.Number),
-          cacheDetails: S.optional(__S(119)),
+          cacheDetails: S.optional(CacheDetailsList),
         }),
       ).annotate({ identifier: "TokenUsage" });
     case 1:
@@ -3156,15 +3722,15 @@ function __c15(j: number): any {
         identifier: "ConverseMetrics",
       });
     case 2:
-      return S.Record(S.String, /*@__PURE__*/ __S(53).pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ GuardrailAssessment.pipe(S.optional));
     case 3:
-      return S.Record(S.String, /*@__PURE__*/ __S(54).pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ GuardrailAssessmentList.pipe(S.optional));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          modelOutput: S.optional(__S(96)),
-          inputAssessment: S.optional(__S(122)),
-          outputAssessments: S.optional(__S(123)),
+          modelOutput: S.optional(ModelOutputs),
+          inputAssessment: S.optional(GuardrailAssessmentMap),
+          outputAssessments: S.optional(GuardrailAssessmentListMap),
           actionReason: S.optional(S.String),
         }),
       ).annotate({ identifier: "GuardrailTraceAssessment" });
@@ -3175,21 +3741,21 @@ function __c15(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          guardrail: S.optional(__S(124)),
-          promptRouter: S.optional(__S(125)),
+          guardrail: S.optional(GuardrailTraceAssessment),
+          promptRouter: S.optional(PromptRouterTrace),
         }),
       ).annotate({ identifier: "ConverseTrace" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          output: __S(117),
-          stopReason: S.String,
-          usage: __S(120),
-          metrics: __S(121),
+          output: ConverseOutput,
+          stopReason: StopReason,
+          usage: TokenUsage,
+          metrics: ConverseMetrics,
           additionalModelResponseFields: S.optional(S.Any),
-          trace: S.optional(__S(126)),
-          performanceConfig: S.optional(__S(110)),
-          serviceTier: S.optional(__S(111)),
+          trace: S.optional(ConverseTrace),
+          performanceConfig: S.optional(PerformanceConfiguration),
+          serviceTier: S.optional(ServiceTier),
         }),
       ).annotate({ identifier: "ConverseResponse" });
   }
@@ -3201,8 +3767,8 @@ function __c16(j: number): any {
         S.Struct({
           guardrailIdentifier: S.optional(S.String),
           guardrailVersion: S.optional(S.String),
-          trace: S.optional(S.String),
-          streamProcessingMode: S.optional(S.String),
+          trace: S.optional(GuardrailTrace),
+          streamProcessingMode: S.optional(GuardrailStreamProcessingMode),
         }),
       ).annotate({
         identifier: "GuardrailStreamConfiguration",
@@ -3211,18 +3777,18 @@ function __c16(j: number): any {
       return S.suspend(() =>
         S.Struct({
           modelId: S.String.pipe(T.HttpLabel("modelId")),
-          messages: S.optional(__S(93)),
-          system: S.optional(__S(95)),
-          inferenceConfig: S.optional(__S(97)),
-          toolConfig: S.optional(__S(106)),
-          guardrailConfig: S.optional(__S(128)),
+          messages: S.optional(Messages),
+          system: S.optional(SystemContentBlocks),
+          inferenceConfig: S.optional(InferenceConfiguration),
+          toolConfig: S.optional(ToolConfiguration),
+          guardrailConfig: S.optional(GuardrailStreamConfiguration),
           additionalModelRequestFields: S.optional(S.Any),
-          promptVariables: S.optional(__S(108)),
-          additionalModelResponseFieldPaths: S.optional(__S(96)),
-          requestMetadata: S.optional(__S(109)),
-          performanceConfig: S.optional(__S(110)),
-          serviceTier: S.optional(__S(111)),
-          outputConfig: S.optional(__S(115)),
+          promptVariables: S.optional(PromptVariableMap),
+          additionalModelResponseFieldPaths: S.optional(AdditionalModelResponseFieldPaths),
+          requestMetadata: S.optional(RequestMetadata),
+          performanceConfig: S.optional(PerformanceConfiguration),
+          serviceTier: S.optional(ServiceTier),
+          outputConfig: S.optional(OutputConfig),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/model/{modelId}/converse-stream" }),
@@ -3235,35 +3801,35 @@ function __c16(j: number): any {
         ),
       ).annotate({ identifier: "ConverseStreamRequest" });
     case 2:
-      return S.suspend(() => S.Struct({ role: S.String })).annotate({
+      return S.suspend(() => S.Struct({ role: ConversationRole })).annotate({
         identifier: "MessageStartEvent",
       });
     case 3:
       return S.suspend(() =>
-        S.Struct({ toolUseId: S.String, name: S.String, type: S.optional(S.String) }),
+        S.Struct({ toolUseId: S.String, name: S.String, type: S.optional(ToolUseType) }),
       ).annotate({ identifier: "ToolUseBlockStart" });
     case 4:
       return S.suspend(() =>
         S.Struct({
           toolUseId: S.String,
           type: S.optional(S.String),
-          status: S.optional(S.String),
+          status: S.optional(ToolResultStatus),
         }),
       ).annotate({ identifier: "ToolResultBlockStart" });
     case 5:
-      return S.suspend(() => S.Struct({ format: S.String })).annotate({
+      return S.suspend(() => S.Struct({ format: ImageFormat })).annotate({
         identifier: "ImageBlockStart",
       });
     case 6:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ toolUse: __S(131) }),
-        /*@__PURE__*/ S.Struct({ toolResult: __S(132) }),
-        /*@__PURE__*/ S.Struct({ image: __S(133) }),
+        /*@__PURE__*/ S.Struct({ toolUse: ToolUseBlockStart }),
+        /*@__PURE__*/ S.Struct({ toolResult: ToolResultBlockStart }),
+        /*@__PURE__*/ S.Struct({ image: ImageBlockStart }),
       ]);
     case 7:
-      return S.suspend(() => S.Struct({ start: __S(134), contentBlockIndex: S.Number })).annotate({
-        identifier: "ContentBlockStartEvent",
-      });
+      return S.suspend(() =>
+        S.Struct({ start: ContentBlockStart, contentBlockIndex: S.Number }),
+      ).annotate({ identifier: "ContentBlockStartEvent" });
   }
 }
 function __c17(j: number): any {
@@ -3278,7 +3844,7 @@ function __c17(j: number): any {
         /*@__PURE__*/ S.Struct({ json: S.Any }),
       ]);
     case 2:
-      return S.Array(__S(137));
+      return S.Array(ToolResultBlockDelta);
     case 3:
       return S.Union([
         /*@__PURE__*/ S.Struct({ text: S.String }),
@@ -3290,19 +3856,19 @@ function __c17(j: number): any {
         identifier: "CitationSourceContentDelta",
       });
     case 5:
-      return S.Array(__S(140));
+      return S.Array(CitationSourceContentDelta);
     case 6:
       return S.suspend(() =>
         S.Struct({
           title: S.optional(S.String),
           source: S.optional(S.String),
-          sourceContent: S.optional(__S(141)),
-          location: S.optional(__S(84)),
+          sourceContent: S.optional(CitationSourceContentListDelta),
+          location: S.optional(CitationLocation),
         }),
       ).annotate({ identifier: "CitationsDelta" });
     case 7:
       return S.suspend(() =>
-        S.Struct({ source: S.optional(__S(57)), error: S.optional(__S(58)) }),
+        S.Struct({ source: S.optional(ImageSource), error: S.optional(ErrorBlock) }),
       ).annotate({ identifier: "ImageBlockDelta" });
   }
 }
@@ -3311,32 +3877,32 @@ function __c18(j: number): any {
     case 0:
       return S.Union([
         /*@__PURE__*/ S.Struct({ text: S.String }),
-        /*@__PURE__*/ S.Struct({ toolUse: __S(136) }),
-        /*@__PURE__*/ S.Struct({ toolResult: __S(138) }),
-        /*@__PURE__*/ S.Struct({ reasoningContent: __S(139) }),
-        /*@__PURE__*/ S.Struct({ citation: __S(142) }),
-        /*@__PURE__*/ S.Struct({ image: __S(143) }),
+        /*@__PURE__*/ S.Struct({ toolUse: ToolUseBlockDelta }),
+        /*@__PURE__*/ S.Struct({ toolResult: ToolResultBlocksDelta }),
+        /*@__PURE__*/ S.Struct({ reasoningContent: ReasoningContentBlockDelta }),
+        /*@__PURE__*/ S.Struct({ citation: CitationsDelta }),
+        /*@__PURE__*/ S.Struct({ image: ImageBlockDelta }),
       ]);
     case 1:
-      return S.suspend(() => S.Struct({ delta: __S(144), contentBlockIndex: S.Number })).annotate({
-        identifier: "ContentBlockDeltaEvent",
-      });
+      return S.suspend(() =>
+        S.Struct({ delta: ContentBlockDelta, contentBlockIndex: S.Number }),
+      ).annotate({ identifier: "ContentBlockDeltaEvent" });
     case 2:
       return S.suspend(() => S.Struct({ contentBlockIndex: S.Number })).annotate({
         identifier: "ContentBlockStopEvent",
       });
     case 3:
       return S.suspend(() =>
-        S.Struct({ stopReason: S.String, additionalModelResponseFields: S.optional(S.Any) }),
+        S.Struct({ stopReason: StopReason, additionalModelResponseFields: S.optional(S.Any) }),
       ).annotate({ identifier: "MessageStopEvent" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          usage: __S(120),
-          metrics: __S(121),
-          trace: S.optional(__S(126)),
-          performanceConfig: S.optional(__S(110)),
-          serviceTier: S.optional(__S(111)),
+          usage: TokenUsage,
+          metrics: ConverseStreamMetrics,
+          trace: S.optional(ConverseStreamTrace),
+          performanceConfig: S.optional(PerformanceConfiguration),
+          serviceTier: S.optional(ServiceTier),
         }),
       ).annotate({
         identifier: "ConverseStreamMetadataEvent",
@@ -3344,12 +3910,12 @@ function __c18(j: number): any {
     case 5:
       return T.EventStream(
         /*@__PURE__*/ S.Union([
-          /*@__PURE__*/ S.Struct({ messageStart: __S(130) }),
-          /*@__PURE__*/ S.Struct({ contentBlockStart: __S(135) }),
-          /*@__PURE__*/ S.Struct({ contentBlockDelta: __S(145) }),
-          /*@__PURE__*/ S.Struct({ contentBlockStop: __S(146) }),
-          /*@__PURE__*/ S.Struct({ messageStop: __S(147) }),
-          /*@__PURE__*/ S.Struct({ metadata: __S(148) }),
+          /*@__PURE__*/ S.Struct({ messageStart: MessageStartEvent }),
+          /*@__PURE__*/ S.Struct({ contentBlockStart: ContentBlockStartEvent }),
+          /*@__PURE__*/ S.Struct({ contentBlockDelta: ContentBlockDeltaEvent }),
+          /*@__PURE__*/ S.Struct({ contentBlockStop: ContentBlockStopEvent }),
+          /*@__PURE__*/ S.Struct({ messageStop: MessageStopEvent }),
+          /*@__PURE__*/ S.Struct({ metadata: ConverseStreamMetadataEvent }),
           /*@__PURE__*/ S.Struct({
             internalServerException: /*@__PURE__*/ S.suspend(
               () => InternalServerException,
@@ -3385,7 +3951,7 @@ function __c18(j: number): any {
       );
     case 6:
       return S.suspend(() =>
-        S.Struct({ stream: S.optional(__S(149)).pipe(T.HttpPayload()) }),
+        S.Struct({ stream: S.optional(ConverseStreamOutput).pipe(T.HttpPayload()) }),
       ).annotate({ identifier: "ConverseStreamResponse" });
     case 7:
       return S.suspend(() => S.Struct({ body: SensitiveBlob })).annotate({
@@ -3398,20 +3964,20 @@ function __c19(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          messages: S.optional(__S(93)),
-          system: S.optional(__S(95)),
-          toolConfig: S.optional(__S(106)),
+          messages: S.optional(Messages),
+          system: S.optional(SystemContentBlocks),
+          toolConfig: S.optional(ToolConfiguration),
           additionalModelRequestFields: S.optional(S.Any),
         }),
       ).annotate({ identifier: "ConverseTokensRequest" });
     case 1:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ invokeModel: __S(151) }),
-        /*@__PURE__*/ S.Struct({ converse: __S(152) }),
+        /*@__PURE__*/ S.Struct({ invokeModel: InvokeModelTokensRequest }),
+        /*@__PURE__*/ S.Struct({ converse: ConverseTokensRequest }),
       ]);
     case 2:
       return S.suspend(() =>
-        S.Struct({ modelId: S.String.pipe(T.HttpLabel("modelId")), input: __S(153) }).pipe(
+        S.Struct({ modelId: S.String.pipe(T.HttpLabel("modelId")), input: CountTokensInput }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/model/{modelId}/count-tokens" }),
             svc,
@@ -3450,19 +4016,21 @@ function __c19(j: number): any {
         identifier: "AsyncInvokeS3OutputDataConfig",
       });
     case 6:
-      return S.Union([/*@__PURE__*/ S.Struct({ s3OutputDataConfig: __S(157) })]);
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ s3OutputDataConfig: AsyncInvokeS3OutputDataConfig }),
+      ]);
     case 7:
       return S.suspend(() =>
         S.Struct({
           invocationArn: S.String,
           modelArn: S.String,
           clientRequestToken: S.optional(S.String),
-          status: S.String,
+          status: AsyncInvokeStatus,
           failureMessage: S.optional(SensitiveString),
           submitTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           lastModifiedTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           endTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          outputDataConfig: __S(158),
+          outputDataConfig: AsyncInvokeOutputDataConfig,
         }),
       ).annotate({ identifier: "GetAsyncInvokeResponse" });
   }
@@ -3472,25 +4040,31 @@ function __c20(j: number): any {
     case 0:
       return S.Union([/*@__PURE__*/ S.Struct({ text: SensitiveString })]);
     case 1:
-      return S.Array(__S(160));
+      return S.Array(GuardrailChecksContentBlock);
     case 2:
-      return S.suspend(() => S.Struct({ role: S.String, content: __S(161) })).annotate({
-        identifier: "GuardrailChecksMessage",
-      });
+      return S.suspend(() =>
+        S.Struct({ role: GuardrailChecksRole, content: GuardrailChecksContentBlockList }),
+      ).annotate({ identifier: "GuardrailChecksMessage" });
     case 3:
-      return S.Array(__S(162));
+      return S.Array(GuardrailChecksMessage);
     case 4:
-      return S.suspend(() => S.Struct({ category: S.String })).annotate({
-        identifier: "GuardrailChecksContentFilterCategoryConfig",
-      });
+      return S.suspend(() => S.Struct({ category: GuardrailChecksContentFilterCategory })).annotate(
+        {
+          identifier: "GuardrailChecksContentFilterCategoryConfig",
+        },
+      );
     case 5:
-      return S.Array(__S(164));
+      return S.Array(GuardrailChecksContentFilterCategoryConfig);
     case 6:
-      return S.suspend(() => S.Struct({ categories: __S(165) })).annotate({
+      return S.suspend(() =>
+        S.Struct({ categories: GuardrailChecksContentFilterCategoryConfigList }),
+      ).annotate({
         identifier: "GuardrailChecksContentFilterConfig",
       });
     case 7:
-      return S.suspend(() => S.Struct({ type: S.String })).annotate({
+      return S.suspend(() =>
+        S.Struct({ type: GuardrailChecksSensitiveInformationEntityType }),
+      ).annotate({
         identifier: "GuardrailChecksSensitiveInformationEntityConfig",
       });
   }
@@ -3498,22 +4072,24 @@ function __c20(j: number): any {
 function __c21(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(167));
+      return S.Array(GuardrailChecksSensitiveInformationEntityConfig);
     case 1:
-      return S.suspend(() => S.Struct({ entities: __S(168) })).annotate({
+      return S.suspend(() =>
+        S.Struct({ entities: GuardrailChecksSensitiveInformationEntityConfigList }),
+      ).annotate({
         identifier: "GuardrailChecksSensitiveInformationConfig",
       });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          contentFilter: S.optional(__S(166)),
-          promptAttack: S.optional(__S(166)),
-          sensitiveInformation: S.optional(__S(169)),
+          contentFilter: S.optional(GuardrailChecksContentFilterConfig),
+          promptAttack: S.optional(GuardrailChecksPromptAttackConfig),
+          sensitiveInformation: S.optional(GuardrailChecksSensitiveInformationConfig),
         }),
       ).annotate({ identifier: "GuardrailChecksConfig" });
     case 3:
       return S.suspend(() =>
-        S.Struct({ messages: __S(163), checks: __S(170) }).pipe(
+        S.Struct({ messages: GuardrailChecksMessageList, checks: GuardrailChecksConfig }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/guardrail-checks/invoke" }),
             svc,
@@ -3527,19 +4103,23 @@ function __c21(j: number): any {
         identifier: "InvokeGuardrailChecksRequest",
       });
     case 4:
-      return S.suspend(() => S.Struct({ category: S.String, severityScore: S.Number })).annotate({
+      return S.suspend(() =>
+        S.Struct({ category: GuardrailChecksContentFilterCategory, severityScore: S.Number }),
+      ).annotate({
         identifier: "GuardrailChecksContentFilterResultEntry",
       });
     case 5:
-      return S.Array(__S(172));
+      return S.Array(GuardrailChecksContentFilterResultEntry);
     case 6:
-      return S.suspend(() => S.Struct({ results: __S(173) })).annotate({
+      return S.suspend(() =>
+        S.Struct({ results: GuardrailChecksContentFilterResultList }),
+      ).annotate({
         identifier: "GuardrailChecksContentFilterResult",
       });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          type: S.String,
+          type: GuardrailChecksSensitiveInformationEntityType,
           confidenceScore: S.Number,
           beginOffset: S.Number,
           endOffset: S.Number,
@@ -3554,11 +4134,11 @@ function __c21(j: number): any {
 function __c22(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(175));
+      return S.Array(GuardrailChecksSensitiveInformationResultEntry);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          results: __S(176),
+          results: GuardrailChecksSensitiveInformationResultList,
           truncated: S.optional(S.Boolean),
         }),
       ).annotate({
@@ -3567,9 +4147,9 @@ function __c22(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          contentFilter: S.optional(__S(174)),
-          promptAttack: S.optional(__S(174)),
-          sensitiveInformation: S.optional(__S(177)),
+          contentFilter: S.optional(GuardrailChecksContentFilterResult),
+          promptAttack: S.optional(GuardrailChecksPromptAttackResult),
+          sensitiveInformation: S.optional(GuardrailChecksSensitiveInformationResult),
         }),
       ).annotate({ identifier: "GuardrailChecksResults" });
     case 3:
@@ -3579,15 +4159,17 @@ function __c22(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          contentFilter: S.optional(__S(179)),
-          promptAttack: S.optional(__S(179)),
-          sensitiveInformation: S.optional(__S(179)),
+          contentFilter: S.optional(GuardrailChecksContentFilterUsage),
+          promptAttack: S.optional(GuardrailChecksPromptAttackUsage),
+          sensitiveInformation: S.optional(GuardrailChecksSensitiveInformationUsage),
         }),
       ).annotate({
         identifier: "GuardrailChecksUsageResults",
       });
     case 5:
-      return S.suspend(() => S.Struct({ results: __S(178), usage: __S(180) })).annotate({
+      return S.suspend(() =>
+        S.Struct({ results: GuardrailChecksResults, usage: GuardrailChecksUsageResults }),
+      ).annotate({
         identifier: "InvokeGuardrailChecksResponse",
       });
     case 6:
@@ -3597,17 +4179,19 @@ function __c22(j: number): any {
           contentType: S.optional(S.String).pipe(T.HttpHeader("Content-Type")),
           accept: S.optional(S.String).pipe(T.HttpHeader("Accept")),
           modelId: S.String.pipe(T.HttpLabel("modelId")),
-          trace: S.optional(S.String).pipe(T.HttpHeader("X-Amzn-Bedrock-Trace")),
+          trace: S.optional(Trace).pipe(T.HttpHeader("X-Amzn-Bedrock-Trace")),
           guardrailIdentifier: S.optional(S.String).pipe(
             T.HttpHeader("X-Amzn-Bedrock-GuardrailIdentifier"),
           ),
           guardrailVersion: S.optional(S.String).pipe(
             T.HttpHeader("X-Amzn-Bedrock-GuardrailVersion"),
           ),
-          performanceConfigLatency: S.optional(S.String).pipe(
+          performanceConfigLatency: S.optional(PerformanceConfigLatency).pipe(
             T.HttpHeader("X-Amzn-Bedrock-PerformanceConfig-Latency"),
           ),
-          serviceTier: S.optional(S.String).pipe(T.HttpHeader("X-Amzn-Bedrock-Service-Tier")),
+          serviceTier: S.optional(ServiceTierType).pipe(
+            T.HttpHeader("X-Amzn-Bedrock-Service-Tier"),
+          ),
           requestMetadata: S.optional(SensitiveString).pipe(
             T.HttpHeader("X-Amzn-Bedrock-Request-Metadata"),
           ),
@@ -3627,10 +4211,12 @@ function __c22(j: number): any {
         S.Struct({
           body: T.StreamingOutput.pipe(T.HttpPayload()),
           contentType: S.String.pipe(T.HttpHeader("Content-Type")),
-          performanceConfigLatency: S.optional(S.String).pipe(
+          performanceConfigLatency: S.optional(PerformanceConfigLatency).pipe(
             T.HttpHeader("X-Amzn-Bedrock-PerformanceConfig-Latency"),
           ),
-          serviceTier: S.optional(S.String).pipe(T.HttpHeader("X-Amzn-Bedrock-Service-Tier")),
+          serviceTier: S.optional(ServiceTierType).pipe(
+            T.HttpHeader("X-Amzn-Bedrock-Service-Tier"),
+          ),
         }),
       ).annotate({ identifier: "InvokeModelResponse" });
   }
@@ -3643,13 +4229,13 @@ function __c23(j: number): any {
       });
     case 1:
       return T.InputEventStream(
-        /*@__PURE__*/ S.Union([/*@__PURE__*/ S.Struct({ chunk: __S(184) })]),
+        /*@__PURE__*/ S.Union([/*@__PURE__*/ S.Struct({ chunk: BidirectionalInputPayloadPart })]),
       );
     case 2:
       return S.suspend(() =>
         S.Struct({
           modelId: S.String.pipe(T.HttpLabel("modelId")),
-          body: __S(185).pipe(T.HttpPayload()),
+          body: InvokeModelWithBidirectionalStreamInput.pipe(T.HttpPayload()),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/model/{modelId}/invoke-with-bidirectional-stream" }),
@@ -3666,7 +4252,7 @@ function __c23(j: number): any {
     case 3:
       return T.EventStream(
         /*@__PURE__*/ S.Union([
-          /*@__PURE__*/ S.Struct({ chunk: __S(184) }),
+          /*@__PURE__*/ S.Struct({ chunk: BidirectionalOutputPayloadPart }),
           /*@__PURE__*/ S.Struct({
             internalServerException: /*@__PURE__*/ S.suspend(
               () => InternalServerException,
@@ -3706,7 +4292,9 @@ function __c23(j: number): any {
         ]),
       );
     case 4:
-      return S.suspend(() => S.Struct({ body: __S(187).pipe(T.HttpPayload()) })).annotate({
+      return S.suspend(() =>
+        S.Struct({ body: InvokeModelWithBidirectionalStreamOutput.pipe(T.HttpPayload()) }),
+      ).annotate({
         identifier: "InvokeModelWithBidirectionalStreamResponse",
       });
     case 5:
@@ -3716,17 +4304,19 @@ function __c23(j: number): any {
           contentType: S.optional(S.String).pipe(T.HttpHeader("Content-Type")),
           accept: S.optional(S.String).pipe(T.HttpHeader("X-Amzn-Bedrock-Accept")),
           modelId: S.String.pipe(T.HttpLabel("modelId")),
-          trace: S.optional(S.String).pipe(T.HttpHeader("X-Amzn-Bedrock-Trace")),
+          trace: S.optional(Trace).pipe(T.HttpHeader("X-Amzn-Bedrock-Trace")),
           guardrailIdentifier: S.optional(S.String).pipe(
             T.HttpHeader("X-Amzn-Bedrock-GuardrailIdentifier"),
           ),
           guardrailVersion: S.optional(S.String).pipe(
             T.HttpHeader("X-Amzn-Bedrock-GuardrailVersion"),
           ),
-          performanceConfigLatency: S.optional(S.String).pipe(
+          performanceConfigLatency: S.optional(PerformanceConfigLatency).pipe(
             T.HttpHeader("X-Amzn-Bedrock-PerformanceConfig-Latency"),
           ),
-          serviceTier: S.optional(S.String).pipe(T.HttpHeader("X-Amzn-Bedrock-Service-Tier")),
+          serviceTier: S.optional(ServiceTierType).pipe(
+            T.HttpHeader("X-Amzn-Bedrock-Service-Tier"),
+          ),
           requestMetadata: S.optional(SensitiveString).pipe(
             T.HttpHeader("X-Amzn-Bedrock-Request-Metadata"),
           ),
@@ -3750,7 +4340,7 @@ function __c23(j: number): any {
     case 7:
       return T.EventStream(
         /*@__PURE__*/ S.Union([
-          /*@__PURE__*/ S.Struct({ chunk: __S(190) }),
+          /*@__PURE__*/ S.Struct({ chunk: PayloadPart }),
           /*@__PURE__*/ S.Struct({
             internalServerException: /*@__PURE__*/ S.suspend(
               () => InternalServerException,
@@ -3796,12 +4386,14 @@ function __c24(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          body: __S(191).pipe(T.HttpPayload()),
+          body: ResponseStream.pipe(T.HttpPayload()),
           contentType: S.String.pipe(T.HttpHeader("X-Amzn-Bedrock-Content-Type")),
-          performanceConfigLatency: S.optional(S.String).pipe(
+          performanceConfigLatency: S.optional(PerformanceConfigLatency).pipe(
             T.HttpHeader("X-Amzn-Bedrock-PerformanceConfig-Latency"),
           ),
-          serviceTier: S.optional(S.String).pipe(T.HttpHeader("X-Amzn-Bedrock-Service-Tier")),
+          serviceTier: S.optional(ServiceTierType).pipe(
+            T.HttpHeader("X-Amzn-Bedrock-Service-Tier"),
+          ),
         }),
       ).annotate({
         identifier: "InvokeModelWithResponseStreamResponse",
@@ -3815,11 +4407,11 @@ function __c24(j: number): any {
           submitTimeBefore: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))).pipe(
             T.HttpQuery("submitTimeBefore"),
           ),
-          statusEquals: S.optional(S.String).pipe(T.HttpQuery("statusEquals")),
+          statusEquals: S.optional(AsyncInvokeStatus).pipe(T.HttpQuery("statusEquals")),
           maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
           nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-          sortBy: S.optional(S.String).pipe(T.HttpQuery("sortBy")),
-          sortOrder: S.optional(S.String).pipe(T.HttpQuery("sortOrder")),
+          sortBy: S.optional(SortAsyncInvocationBy).pipe(T.HttpQuery("sortBy")),
+          sortOrder: S.optional(SortOrder).pipe(T.HttpQuery("sortOrder")),
         }).pipe(
           T.all(T.Http({ method: "GET", uri: "/async-invoke" }), svc, auth, proto, ver, rules),
         ),
@@ -3830,21 +4422,21 @@ function __c24(j: number): any {
           invocationArn: S.String,
           modelArn: S.String,
           clientRequestToken: S.optional(S.String),
-          status: S.optional(S.String),
+          status: S.optional(AsyncInvokeStatus),
           failureMessage: S.optional(SensitiveString),
           submitTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           lastModifiedTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           endTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          outputDataConfig: __S(158),
+          outputDataConfig: AsyncInvokeOutputDataConfig,
         }),
       ).annotate({ identifier: "AsyncInvokeSummary" });
     case 3:
-      return S.Array(__S(194));
+      return S.Array(AsyncInvokeSummary);
     case 4:
       return S.suspend(() =>
         S.Struct({
           nextToken: S.optional(S.String),
-          asyncInvokeSummaries: S.optional(__S(195)),
+          asyncInvokeSummaries: S.optional(AsyncInvokeSummaries),
         }),
       ).annotate({ identifier: "ListAsyncInvokesResponse" });
     case 5:
@@ -3852,15 +4444,15 @@ function __c24(j: number): any {
         identifier: "Tag",
       });
     case 6:
-      return S.Array(__S(197));
+      return S.Array(Tag);
     case 7:
       return S.suspend(() =>
         S.Struct({
           clientRequestToken: S.optional(S.String).pipe(T.IdempotencyToken()),
           modelId: S.String,
           modelInput: S.Any,
-          outputDataConfig: __S(158),
-          tags: S.optional(__S(198)),
+          outputDataConfig: AsyncInvokeOutputDataConfig,
+          tags: S.optional(TagList),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/async-invoke" }), svc, auth, proto, ver, rules),
         ),
@@ -3873,66 +4465,5 @@ function __c25(j: number): any {
       return S.suspend(() => S.Struct({ invocationArn: S.String })).annotate({
         identifier: "StartAsyncInvokeResponse",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
-    case 9:
-      return __c9(i & 7);
-    case 10:
-      return __c10(i & 7);
-    case 11:
-      return __c11(i & 7);
-    case 12:
-      return __c12(i & 7);
-    case 13:
-      return __c13(i & 7);
-    case 14:
-      return __c14(i & 7);
-    case 15:
-      return __c15(i & 7);
-    case 16:
-      return __c16(i & 7);
-    case 17:
-      return __c17(i & 7);
-    case 18:
-      return __c18(i & 7);
-    case 19:
-      return __c19(i & 7);
-    case 20:
-      return __c20(i & 7);
-    case 21:
-      return __c21(i & 7);
-    case 22:
-      return __c22(i & 7);
-    case 23:
-      return __c23(i & 7);
-    case 24:
-      return __c24(i & 7);
-    case 25:
-      return __c25(i & 7);
   }
 }

@@ -5,8 +5,6 @@ import * as S from "@distilled.cloud/core/schema";
 import { PosthogProtocol, type PosthogOpError, type PosthogOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { PosthogOpError, PosthogOpContext };
 
@@ -14,26 +12,52 @@ export interface GetHeatmapCapturePageRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
+const GetHeatmapCapturePageRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<GetHeatmapCapturePageRequest>;
+
 export interface HeatmapCapturePage {
   /** A page URL that currently sends heatmap data. */
   url: string;
   /** Heatmap events captured on this page in the last 30 days. */
   count: number;
 }
+const HeatmapCapturePage = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<HeatmapCapturePage>;
+
 /** Top pages by recent heatmap volume, most active first. */
 export type HeatmapCapturePagesPagesList = Array<HeatmapCapturePage>;
+const HeatmapCapturePagesPagesList = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<HeatmapCapturePagesPagesList>;
+
 export interface HeatmapCapturePages {
   /** Top pages by recent heatmap volume, most active first. */
   pages: HeatmapCapturePagesPagesList;
 }
+const HeatmapCapturePages = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<HeatmapCapturePages>;
+
 export interface GetHeatmapCaptureSettingsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
+const GetHeatmapCaptureSettingsRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<GetHeatmapCaptureSettingsRequest>;
+
 /** * `all` - All URLs * `url_allowlist` - Only listed URLs */
 export type TeamHeatmapConfigCaptureModeEnum = "all" | "url_allowlist";
+const TeamHeatmapConfigCaptureModeEnum = S.String;
+
 /** Full http(s) URLs that may send heatmap data. Use * to match any characters. */
 export type HeatmapCaptureSettingsUrlAllowlistList = Array<string>;
+const HeatmapCaptureSettingsUrlAllowlistList = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<HeatmapCaptureSettingsUrlAllowlistList>;
+
 export interface HeatmapCaptureSettings {
   /** Whether to capture heatmap data from every page ('all') or only listed URLs ('url_allowlist'). * `all` - All URLs * `url_allowlist` - Only listed URLs */
   capture_mode: TeamHeatmapConfigCaptureModeEnum;
@@ -46,8 +70,16 @@ export interface HeatmapCaptureSettings {
   /** How many URLs this plan may capture, or null when the plan captures all pages. */
   capture_url_limit: number | null;
 }
+const HeatmapCaptureSettings = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<HeatmapCaptureSettings>;
+
 /** Full http(s) URLs that may send heatmap data. Use * to match any characters. */
 export type UpdateHeatmapCaptureSettingsRequestUrlAllowlistList = Array<string>;
+const UpdateHeatmapCaptureSettingsRequestUrlAllowlistList =
+  HeatmapCaptureSettingsUrlAllowlistList as any as S.Schema<UpdateHeatmapCaptureSettingsRequestUrlAllowlistList>;
+
 export interface UpdateHeatmapCaptureSettingsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -56,6 +88,11 @@ export interface UpdateHeatmapCaptureSettingsRequest {
   /** Full http(s) URLs that may send heatmap data. Use * to match any characters. */
   url_allowlist?: UpdateHeatmapCaptureSettingsRequestUrlAllowlistList;
 }
+const UpdateHeatmapCaptureSettingsRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<UpdateHeatmapCaptureSettingsRequest>;
+
 export type GetHeatmapCapturePageError = PosthogOpError;
 export const getHeatmapCapturePage: API.OperationMethod<
   GetHeatmapCapturePageRequest,
@@ -63,8 +100,8 @@ export const getHeatmapCapturePage: API.OperationMethod<
   GetHeatmapCapturePageError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<GetHeatmapCapturePageRequest>,
-  output: __S(3) as any as S.Schema<HeatmapCapturePages>,
+  input: GetHeatmapCapturePageRequest,
+  output: HeatmapCapturePages,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -77,8 +114,8 @@ export const getHeatmapCaptureSettings: API.OperationMethod<
   GetHeatmapCaptureSettingsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4) as any as S.Schema<GetHeatmapCaptureSettingsRequest>,
-  output: __S(6) as any as S.Schema<HeatmapCaptureSettings>,
+  input: GetHeatmapCaptureSettingsRequest,
+  output: HeatmapCaptureSettings,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -91,8 +128,8 @@ export const updateHeatmapCaptureSettings: API.OperationMethod<
   UpdateHeatmapCaptureSettingsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7) as any as S.Schema<UpdateHeatmapCaptureSettingsRequest>,
-  output: __S(6) as any as S.Schema<HeatmapCaptureSettings>,
+  input: UpdateHeatmapCaptureSettingsRequest,
+  output: HeatmapCaptureSettings,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -123,11 +160,11 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "HeatmapCapturePage" });
     case 2:
-      return S.Array(__S(1));
+      return S.Array(HeatmapCapturePage);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          pages: __S(2),
+          pages: HeatmapCapturePagesPagesList,
         }),
       ).annotate({ identifier: "HeatmapCapturePages" });
     case 4:
@@ -149,8 +186,8 @@ function __c0(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          capture_mode: S.String,
-          url_allowlist: __S(5),
+          capture_mode: TeamHeatmapConfigCaptureModeEnum,
+          url_allowlist: HeatmapCaptureSettingsUrlAllowlistList,
           enforcement_enabled: S.Boolean,
           can_capture_all_urls: S.Boolean,
           capture_url_limit: S.NullOr(S.Number),
@@ -160,8 +197,8 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
-          capture_mode: S.optional(S.String),
-          url_allowlist: S.optional(__S(5)),
+          capture_mode: S.optional(TeamHeatmapConfigCaptureModeEnum),
+          url_allowlist: S.optional(UpdateHeatmapCaptureSettingsRequestUrlAllowlistList),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -172,16 +209,5 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "UpdateHeatmapCaptureSettingsRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
   }
 }

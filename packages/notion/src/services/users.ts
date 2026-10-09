@@ -7,12 +7,12 @@ import { paginateCursor } from "../pagination.ts";
 import { NotionProtocol, type NotionOpError, type NotionOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { NotionOpError, NotionOpContext };
 
 export interface GetSelfRequest {}
+const GetSelfRequest = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<GetSelfRequest>;
+
 /** Details about the person, when the `type` of the user is `person`. */
 export interface GetSelfResponsePerson {
   /** The email of the person. */
@@ -20,6 +20,11 @@ export interface GetSelfResponsePerson {
   /** Whether the person's email is verified. */
   email_verified?: boolean;
 }
+const GetSelfResponsePerson = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<GetSelfResponsePerson>;
+
 /** The person info of the user. */
 export type BotInfoResponseOwnerCase0UserCase0Person = GetSelfResponsePerson;
 export interface BotInfoResponseOwnerCase0UserCase0 {
@@ -76,6 +81,8 @@ export interface BotInfoResponse {
 }
 /** Details about the bot, when the `type` of the user is `bot`. */
 export type GetSelfResponseBot = unknown | BotInfoResponse;
+const GetSelfResponseBot = /*@__PURE__*/ S.Unknown as any as S.Schema<GetSelfResponseBot>;
+
 export interface GetSelfResponse {
   /** The ID of the user. */
   id: string;
@@ -92,13 +99,19 @@ export interface GetSelfResponse {
   /** Details about the bot, when the `type` of the user is `bot`. */
   bot?: GetSelfResponseBot;
 }
+const GetSelfResponse = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<GetSelfResponse>;
+
 export interface GetUserRequest {
   user_id: string;
 }
+const GetUserRequest = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<GetUserRequest>;
+
 /** Details about the person, when the `type` of the user is `person`. */
 export type GetUserResponsePerson = GetSelfResponsePerson;
 /** Details about the bot, when the `type` of the user is `bot`. */
 export type GetUserResponseBot = unknown | BotInfoResponse;
+const GetUserResponseBot = /*@__PURE__*/ S.Unknown as any as S.Schema<GetUserResponseBot>;
+
 export interface GetUserResponse {
   /** The ID of the user. */
   id: string;
@@ -115,14 +128,20 @@ export interface GetUserResponse {
   /** Details about the bot, when the `type` of the user is `bot`. */
   bot?: GetUserResponseBot;
 }
+const GetUserResponse = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<GetUserResponse>;
+
 export interface ListUsersRequest {
   start_cursor?: string;
   page_size?: number;
 }
+const ListUsersRequest = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<ListUsersRequest>;
+
 /** Details about the person, when the `type` of the user is `person`. */
 export type UserObjectResponsePerson = GetSelfResponsePerson;
 /** Details about the bot, when the `type` of the user is `bot`. */
 export type UserObjectResponseBot = unknown | BotInfoResponse;
+const UserObjectResponseBot = /*@__PURE__*/ S.Unknown as any as S.Schema<UserObjectResponseBot>;
+
 export interface UserObjectResponse {
   /** The ID of the user. */
   id: string;
@@ -139,7 +158,14 @@ export interface UserObjectResponse {
   /** Details about the bot, when the `type` of the user is `bot`. */
   bot?: UserObjectResponseBot;
 }
+const UserObjectResponse = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<UserObjectResponse>;
+
 export type ListUsersResponseResultsList = Array<UserObjectResponse>;
+const ListUsersResponseResultsList = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<ListUsersResponseResultsList>;
+
 export interface ListUsersResponse {
   type: string;
   user: unknown;
@@ -148,6 +174,8 @@ export interface ListUsersResponse {
   has_more: boolean;
   results: ListUsersResponseResultsList;
 }
+const ListUsersResponse = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<ListUsersResponse>;
+
 export type GetSelfError = NotionOpError;
 /** Retrieve your token's bot user */
 export const getSelf: API.OperationMethod<
@@ -156,8 +184,8 @@ export const getSelf: API.OperationMethod<
   GetSelfError,
   NotionOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<GetSelfRequest>,
-  output: __S(2) as any as S.Schema<GetSelfResponse>,
+  input: GetSelfRequest,
+  output: GetSelfResponse,
   errors: [UnknownNotionError],
   protocol: NotionProtocol,
   retry: Retry.Retry,
@@ -171,8 +199,8 @@ export const getUser: API.OperationMethod<
   GetUserError,
   NotionOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3) as any as S.Schema<GetUserRequest>,
-  output: __S(4) as any as S.Schema<GetUserResponse>,
+  input: GetUserRequest,
+  output: GetUserResponse,
   errors: [UnknownNotionError],
   protocol: NotionProtocol,
   retry: Retry.Retry,
@@ -188,8 +216,8 @@ export const listUsers: API.PaginatedOperationMethod<
   UserObjectResponse
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(5) as any as S.Schema<ListUsersRequest>,
-    output: __S(8) as any as S.Schema<ListUsersResponse>,
+    input: ListUsersRequest,
+    output: ListUsersResponse,
     errors: [UnknownNotionError],
     protocol: NotionProtocol,
     retry: Retry.Retry,
@@ -225,8 +253,8 @@ function __c0(j: number): any {
           name: S.NullOr(S.String),
           avatar_url: S.NullOr(S.String),
           type: S.optional(S.String),
-          person: S.optional(__S(1)),
-          bot: S.optional(S.Unknown),
+          person: S.optional(GetSelfResponsePerson),
+          bot: S.optional(GetSelfResponseBot),
         }),
       ).annotate({ identifier: "GetSelfResponse" });
     case 3:
@@ -243,8 +271,8 @@ function __c0(j: number): any {
           name: S.NullOr(S.String),
           avatar_url: S.NullOr(S.String),
           type: S.optional(S.String),
-          person: S.optional(__S(1)),
-          bot: S.optional(S.Unknown),
+          person: S.optional(GetSelfResponsePerson),
+          bot: S.optional(GetUserResponseBot),
         }),
       ).annotate({ identifier: "GetUserResponse" });
     case 5:
@@ -262,12 +290,12 @@ function __c0(j: number): any {
           name: S.NullOr(S.String),
           avatar_url: S.NullOr(S.String),
           type: S.optional(S.String),
-          person: S.optional(__S(1)),
-          bot: S.optional(S.Unknown),
+          person: S.optional(GetSelfResponsePerson),
+          bot: S.optional(UserObjectResponseBot),
         }),
       ).annotate({ identifier: "UserObjectResponse" });
     case 7:
-      return S.Array(__S(6));
+      return S.Array(UserObjectResponse);
   }
 }
 function __c1(j: number): any {
@@ -280,21 +308,8 @@ function __c1(j: number): any {
           object: S.String,
           next_cursor: S.NullOr(S.String),
           has_more: S.Boolean,
-          results: __S(7),
+          results: ListUsersResponseResultsList,
         }),
       ).annotate({ identifier: "ListUsersResponse" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
   }
 }

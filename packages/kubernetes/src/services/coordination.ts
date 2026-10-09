@@ -11,8 +11,6 @@ import {
 } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { KubernetesOpError, KubernetesOpContext };
 
@@ -47,12 +45,25 @@ export class UnprocessableEntity
 export type IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap = {
   [key: string]: string | undefined;
 };
+const IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap>;
+
 /** Must be empty before the object is deleted from the registry. Each entry is an identifier for the responsible component that will remove the entry from the list. If the deletionTimestamp of the object is non-nil, entries in this list can only be removed. Finalizers may be processed and removed in any order. Order is NOT enforced because it introduces significant risk of stuck finalizers. finalizers is a shared field, any actor with permission can reorder it. If the finalizer list is processed in order, then this can lead to a situation in which the component responsible for the first finalizer in the list is waiting for a signal (field value, external system, or other) produced by a component responsible for a finalizer later in the list, resulting in a deadlock. Without enforced ordering finalizers are free to order amongst themselves and are not vulnerable to ordering changes in the list. */
 export type IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList = Array<string>;
+const IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList>;
+
 /** Map of string keys and values that can be used to organize and categorize (scope and select) objects. May match selectors of replication controllers and services. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels */
 export type IoK8sApimachineryPkgApisMetaV1ObjectMetaLabelsMap = {
   [key: string]: string | undefined;
 };
+const IoK8sApimachineryPkgApisMetaV1ObjectMetaLabelsMap =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ObjectMetaLabelsMap>;
+
 /** ManagedFieldsEntry is a workflow-id, a FieldSet and the group version of the resource that the fieldset applies to. */
 export interface IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry {
   /** APIVersion defines the version of this resource that this field set applies to. The format is "group/version" just like the top-level APIVersion field. It is necessary to track the version of a field set because it cannot be automatically converted. */
@@ -70,9 +81,19 @@ export interface IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry {
   /** Time is the timestamp of when the ManagedFields entry was added. The timestamp will also be updated if a field is added, the manager changes any of the owned fields value or removes a field. The timestamp does not update when a field is removed from the entry because another manager took it over. */
   time?: string;
 }
+const IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry>;
+
 /** ManagedFields maps workflow-id and version to the set of fields that are managed by that workflow. This is mostly for internal housekeeping, and users typically shouldn't need to set or understand this field. A workflow can be the user's name, a controller's name, or the name of a specific apply path like "ci-cd". The set of fields is always in the version that the workflow used when modifying the object. */
 export type IoK8sApimachineryPkgApisMetaV1ObjectMetaManagedFieldsList =
   Array<IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry>;
+const IoK8sApimachineryPkgApisMetaV1ObjectMetaManagedFieldsList = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ObjectMetaManagedFieldsList>;
+
 /** OwnerReference contains enough information to let you identify an owning object. An owning object must be in the same namespace as the dependent, or be cluster-scoped, so there is no namespace field. */
 export interface IoK8sApimachineryPkgApisMetaV1OwnerReference {
   /** API version of the referent. */
@@ -88,9 +109,19 @@ export interface IoK8sApimachineryPkgApisMetaV1OwnerReference {
   /** UID of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names#uids */
   uid: string;
 }
+const IoK8sApimachineryPkgApisMetaV1OwnerReference = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1OwnerReference>;
+
 /** List of objects depended by this object. If ALL objects in the list have been deleted, this object will be garbage collected. If this object is managed by a controller, then an entry in this list will point to this controller, with the controller field set to true. There cannot be more than one managing controller. */
 export type IoK8sApimachineryPkgApisMetaV1ObjectMetaOwnerReferencesList =
   Array<IoK8sApimachineryPkgApisMetaV1OwnerReference>;
+const IoK8sApimachineryPkgApisMetaV1ObjectMetaOwnerReferencesList = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ObjectMetaOwnerReferencesList>;
+
 /** ObjectMeta is metadata that all persisted resources must have, which includes all objects users must create. */
 export interface IoK8sApimachineryPkgApisMetaV1ObjectMeta {
   /** Annotations is an unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations */
@@ -124,6 +155,11 @@ export interface IoK8sApimachineryPkgApisMetaV1ObjectMeta {
   /** UID is the unique in time and space value for this object. It is typically generated by the server on successful creation of a resource and is not allowed to change on PUT operations. Populated by the system. Read-only. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names#uids */
   uid?: string;
 }
+const IoK8sApimachineryPkgApisMetaV1ObjectMeta = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ObjectMeta>;
+
 /** LeaseCandidateSpec is a specification of a Lease. */
 export interface IoK8sApiCoordinationV1alpha2LeaseCandidateSpec {
   /** binaryVersion is the binary version. It must be in a semver format without leading `v`. This field is required. */
@@ -139,6 +175,11 @@ export interface IoK8sApiCoordinationV1alpha2LeaseCandidateSpec {
   /** strategy is the strategy that coordinated leader election will use for picking the leader. If multiple candidates for the same Lease return different strategies, the strategy provided by the candidate with the latest BinaryVersion will be used. If there is still conflict, this is a user error and coordinated leader election will not operate the Lease until resolved. */
   strategy: string;
 }
+const IoK8sApiCoordinationV1alpha2LeaseCandidateSpec = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<IoK8sApiCoordinationV1alpha2LeaseCandidateSpec>;
+
 export interface CreateCoordinationV1alpha2NamespacedLeaseCandidateRequest {
   /** object name and auth scope, such as for teams and projects */
   namespace: string;
@@ -159,6 +200,11 @@ export interface CreateCoordinationV1alpha2NamespacedLeaseCandidateRequest {
   /** spec contains the specification of the Lease. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status */
   spec: IoK8sApiCoordinationV1alpha2LeaseCandidateSpec;
 }
+const CreateCoordinationV1alpha2NamespacedLeaseCandidateRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<CreateCoordinationV1alpha2NamespacedLeaseCandidateRequest>;
+
 /** LeaseCandidate defines a candidate for a Lease object. Candidates are created such that coordinated leader election will pick the best leader from the list of candidates. */
 export interface IoK8sApiCoordinationV1alpha2LeaseCandidate {
   /** APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources */
@@ -170,6 +216,11 @@ export interface IoK8sApiCoordinationV1alpha2LeaseCandidate {
   /** spec contains the specification of the Lease. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status */
   spec: IoK8sApiCoordinationV1alpha2LeaseCandidateSpec;
 }
+const IoK8sApiCoordinationV1alpha2LeaseCandidate = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<IoK8sApiCoordinationV1alpha2LeaseCandidate>;
+
 /** LeaseCandidateSpec is a specification of a Lease. */
 export interface IoK8sApiCoordinationV1beta1LeaseCandidateSpec {
   /** binaryVersion is the binary version. It must be in a semver format without leading `v`. This field is required. */
@@ -185,6 +236,9 @@ export interface IoK8sApiCoordinationV1beta1LeaseCandidateSpec {
   /** strategy is the strategy that coordinated leader election will use for picking the leader. If multiple candidates for the same Lease return different strategies, the strategy provided by the candidate with the latest BinaryVersion will be used. If there is still conflict, this is a user error and coordinated leader election will not operate the Lease until resolved. */
   strategy: string;
 }
+const IoK8sApiCoordinationV1beta1LeaseCandidateSpec =
+  IoK8sApiCoordinationV1alpha2LeaseCandidateSpec as any as S.Schema<IoK8sApiCoordinationV1beta1LeaseCandidateSpec>;
+
 export interface CreateCoordinationV1beta1NamespacedLeaseCandidateRequest {
   /** object name and auth scope, such as for teams and projects */
   namespace: string;
@@ -205,6 +259,11 @@ export interface CreateCoordinationV1beta1NamespacedLeaseCandidateRequest {
   /** spec contains the specification of the Lease. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status */
   spec: IoK8sApiCoordinationV1beta1LeaseCandidateSpec;
 }
+const CreateCoordinationV1beta1NamespacedLeaseCandidateRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<CreateCoordinationV1beta1NamespacedLeaseCandidateRequest>;
+
 /** LeaseCandidate defines a candidate for a Lease object. Candidates are created such that coordinated leader election will pick the best leader from the list of candidates. */
 export interface IoK8sApiCoordinationV1beta1LeaseCandidate {
   /** APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources */
@@ -216,6 +275,9 @@ export interface IoK8sApiCoordinationV1beta1LeaseCandidate {
   /** spec contains the specification of the Lease. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status */
   spec: IoK8sApiCoordinationV1beta1LeaseCandidateSpec;
 }
+const IoK8sApiCoordinationV1beta1LeaseCandidate =
+  IoK8sApiCoordinationV1alpha2LeaseCandidate as any as S.Schema<IoK8sApiCoordinationV1beta1LeaseCandidate>;
+
 /** LeaseSpec is a specification of a Lease. */
 export interface IoK8sApiCoordinationV1LeaseSpec {
   /** acquireTime is a time when the current lease was acquired. */
@@ -233,6 +295,11 @@ export interface IoK8sApiCoordinationV1LeaseSpec {
   /** strategy indicates the strategy for picking the leader for coordinated leader election. If the field is not specified, there is no active coordination for this lease. (Alpha) Using this field requires the CoordinatedLeaderElection feature gate to be enabled. */
   strategy?: string;
 }
+const IoK8sApiCoordinationV1LeaseSpec = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<IoK8sApiCoordinationV1LeaseSpec>;
+
 export interface CreateCoordinationV1NamespacedLeaseRequest {
   /** object name and auth scope, such as for teams and projects */
   namespace: string;
@@ -253,6 +320,11 @@ export interface CreateCoordinationV1NamespacedLeaseRequest {
   /** spec contains the specification of the Lease. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status */
   spec?: IoK8sApiCoordinationV1LeaseSpec;
 }
+const CreateCoordinationV1NamespacedLeaseRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<CreateCoordinationV1NamespacedLeaseRequest>;
+
 /** Lease defines a lease concept. */
 export interface IoK8sApiCoordinationV1Lease {
   /** APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources */
@@ -264,6 +336,11 @@ export interface IoK8sApiCoordinationV1Lease {
   /** spec contains the specification of the Lease. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status */
   spec?: IoK8sApiCoordinationV1LeaseSpec;
 }
+const IoK8sApiCoordinationV1Lease = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<IoK8sApiCoordinationV1Lease>;
+
 /** Preconditions must be fulfilled before an operation (update, delete, etc.) is carried out. */
 export interface IoK8sApimachineryPkgApisMetaV1Preconditions {
   /** Specifies the target ResourceVersion */
@@ -271,6 +348,11 @@ export interface IoK8sApimachineryPkgApisMetaV1Preconditions {
   /** Specifies the target UID. */
   uid?: string;
 }
+const IoK8sApimachineryPkgApisMetaV1Preconditions = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Preconditions>;
+
 export interface DeleteCoordinationV1alpha2CollectionNamespacedLeaseCandidateRequest {
   /** object name and auth scope, such as for teams and projects */
   namespace: string;
@@ -311,6 +393,11 @@ export interface DeleteCoordinationV1alpha2CollectionNamespacedLeaseCandidateReq
   /** Must be fulfilled before a deletion is carried out. If not possible, a 409 Conflict status will be returned. */
   preconditions?: IoK8sApimachineryPkgApisMetaV1Preconditions;
 }
+const DeleteCoordinationV1alpha2CollectionNamespacedLeaseCandidateRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<DeleteCoordinationV1alpha2CollectionNamespacedLeaseCandidateRequest>;
+
 /** StatusCause provides more information about an api.Status failure, including cases when multiple errors are encountered. */
 export interface IoK8sApimachineryPkgApisMetaV1StatusCause {
   /** The field of the resource that has caused this error, as named by its JSON serialization. May include dot and postfix notation for nested attributes. Arrays are zero-indexed. Fields may appear more than once in an array of causes due to fields having multiple errors. Optional. Examples: "name" - the field "name" on the current resource "items[0].name" - the field "name" on the first array entry in "items" */
@@ -320,9 +407,19 @@ export interface IoK8sApimachineryPkgApisMetaV1StatusCause {
   /** A machine-readable description of the cause of the error. If this value is empty there is no information available. */
   reason?: string;
 }
+const IoK8sApimachineryPkgApisMetaV1StatusCause = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1StatusCause>;
+
 /** The Causes array includes more details associated with the StatusReason failure. Not all StatusReasons may provide detailed causes. */
 export type IoK8sApimachineryPkgApisMetaV1StatusDetailsCausesList =
   Array<IoK8sApimachineryPkgApisMetaV1StatusCause>;
+const IoK8sApimachineryPkgApisMetaV1StatusDetailsCausesList = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1StatusDetailsCausesList>;
+
 /** StatusDetails is a set of additional properties that MAY be set by the server to provide additional information about a response. The Reason field of a Status object defines what attributes will be set. Clients must ignore fields that do not match the defined type of each attribute, and should assume that any attribute may be empty, invalid, or under defined. */
 export interface IoK8sApimachineryPkgApisMetaV1StatusDetails {
   /** The Causes array includes more details associated with the StatusReason failure. Not all StatusReasons may provide detailed causes. */
@@ -338,11 +435,21 @@ export interface IoK8sApimachineryPkgApisMetaV1StatusDetails {
   /** UID of the resource. (when there is a single resource which can be described). More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names#uids */
   uid?: string;
 }
+const IoK8sApimachineryPkgApisMetaV1StatusDetails = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1StatusDetails>;
+
 /** ShardInfo describes the shard selector that was applied to produce a list response. Its presence on a list response indicates the list is a filtered subset. */
 export interface IoK8sApimachineryPkgApisMetaV1ShardInfo {
   /** selector is the shard selector string from the request, echoed back so clients can verify which shard they received and merge responses from multiple shards. */
   selector: string;
 }
+const IoK8sApimachineryPkgApisMetaV1ShardInfo = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ShardInfo>;
+
 /** ListMeta describes metadata that synthetic resources must have, including lists and various status objects. A resource may have only one of {ObjectMeta, ListMeta}. */
 export interface IoK8sApimachineryPkgApisMetaV1ListMeta {
   /** continue may be set if the user set a limit on the number of items returned, and indicates that the server has more data available. The value is opaque and may be used to issue another request to the endpoint that served this list to retrieve the next set of available objects. Continuing a consistent list may not be possible if the server configuration has changed or more than a few minutes have passed. The resourceVersion field returned when using this continue value will be identical to the value in the first response, unless you have received this token from an error message. */
@@ -356,6 +463,11 @@ export interface IoK8sApimachineryPkgApisMetaV1ListMeta {
   /** shardInfo is set when the list is a filtered subset of the full collection, as selected by a shard selector on the request. It echoes back the selector so clients can verify which shard they received and merge sharded responses. Clients should not cache sharded list responses as a full representation of the collection. This is an alpha field and requires enabling the ShardedListAndWatch feature gate. */
   shardInfo?: IoK8sApimachineryPkgApisMetaV1ShardInfo;
 }
+const IoK8sApimachineryPkgApisMetaV1ListMeta = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ListMeta>;
+
 /** Status is a return value for calls that don't return other objects. */
 export interface IoK8sApimachineryPkgApisMetaV1Status {
   /** APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources */
@@ -375,6 +487,11 @@ export interface IoK8sApimachineryPkgApisMetaV1Status {
   /** Status of the operation. One of: "Success" or "Failure". More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status */
   status?: string;
 }
+const IoK8sApimachineryPkgApisMetaV1Status = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>;
+
 export interface DeleteCoordinationV1alpha2NamespacedLeaseCandidateRequest {
   /** object name and auth scope, such as for teams and projects */
   namespace: string;
@@ -399,6 +516,11 @@ export interface DeleteCoordinationV1alpha2NamespacedLeaseCandidateRequest {
   /** Must be fulfilled before a deletion is carried out. If not possible, a 409 Conflict status will be returned. */
   preconditions?: IoK8sApimachineryPkgApisMetaV1Preconditions;
 }
+const DeleteCoordinationV1alpha2NamespacedLeaseCandidateRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<DeleteCoordinationV1alpha2NamespacedLeaseCandidateRequest>;
+
 export interface DeleteCoordinationV1beta1CollectionNamespacedLeaseCandidateRequest {
   /** object name and auth scope, such as for teams and projects */
   namespace: string;
@@ -439,6 +561,11 @@ export interface DeleteCoordinationV1beta1CollectionNamespacedLeaseCandidateRequ
   /** Must be fulfilled before a deletion is carried out. If not possible, a 409 Conflict status will be returned. */
   preconditions?: IoK8sApimachineryPkgApisMetaV1Preconditions;
 }
+const DeleteCoordinationV1beta1CollectionNamespacedLeaseCandidateRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<DeleteCoordinationV1beta1CollectionNamespacedLeaseCandidateRequest>;
+
 export interface DeleteCoordinationV1beta1NamespacedLeaseCandidateRequest {
   /** object name and auth scope, such as for teams and projects */
   namespace: string;
@@ -463,6 +590,11 @@ export interface DeleteCoordinationV1beta1NamespacedLeaseCandidateRequest {
   /** Must be fulfilled before a deletion is carried out. If not possible, a 409 Conflict status will be returned. */
   preconditions?: IoK8sApimachineryPkgApisMetaV1Preconditions;
 }
+const DeleteCoordinationV1beta1NamespacedLeaseCandidateRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<DeleteCoordinationV1beta1NamespacedLeaseCandidateRequest>;
+
 export interface DeleteCoordinationV1CollectionNamespacedLeaseRequest {
   /** object name and auth scope, such as for teams and projects */
   namespace: string;
@@ -503,6 +635,11 @@ export interface DeleteCoordinationV1CollectionNamespacedLeaseRequest {
   /** Must be fulfilled before a deletion is carried out. If not possible, a 409 Conflict status will be returned. */
   preconditions?: IoK8sApimachineryPkgApisMetaV1Preconditions;
 }
+const DeleteCoordinationV1CollectionNamespacedLeaseRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<DeleteCoordinationV1CollectionNamespacedLeaseRequest>;
+
 export interface DeleteCoordinationV1NamespacedLeaseRequest {
   /** object name and auth scope, such as for teams and projects */
   namespace: string;
@@ -527,7 +664,17 @@ export interface DeleteCoordinationV1NamespacedLeaseRequest {
   /** Must be fulfilled before a deletion is carried out. If not possible, a 409 Conflict status will be returned. */
   preconditions?: IoK8sApimachineryPkgApisMetaV1Preconditions;
 }
+const DeleteCoordinationV1NamespacedLeaseRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<DeleteCoordinationV1NamespacedLeaseRequest>;
+
 export interface GetCoordinationAPIGroupRequest {}
+const GetCoordinationAPIGroupRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<GetCoordinationAPIGroupRequest>;
+
 /** GroupVersion contains the "group/version" and "version" string of a version. It is made a struct to keep extensibility. */
 export interface IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery {
   /** groupVersion specifies the API group and version in the form "group/version" */
@@ -535,6 +682,11 @@ export interface IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery {
   /** version specifies the version in the form of "version". This is to save the clients the trouble of splitting the GroupVersion. */
   version: string;
 }
+const IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery>;
+
 /** ServerAddressByClientCIDR helps the client to determine the server address that they should use, depending on the clientCIDR that they match. */
 export interface IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR {
   /** The CIDR with which clients can match their IP to figure out the server address that they should use. */
@@ -542,12 +694,27 @@ export interface IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR {
   /** Address of this server, suitable for a client that matches the above CIDR. This can be a hostname, hostname:port, IP or IP:port. */
   serverAddress: string;
 }
+const IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR>;
+
 /** a map of client CIDR to server address that is serving this group. This is to help clients reach servers in the most network-efficient way possible. Clients can use the appropriate server address as per the CIDR that they match. In case of multiple matches, clients should use the longest matching CIDR. The server returns only those CIDRs that it thinks that the client can match. For example: the master will return an internal IP CIDR only, if the client reaches the server using an internal IP. Server looks at X-Forwarded-For header or X-Real-Ip header or request.RemoteAddr (in that order) to get the client IP. */
 export type IoK8sApimachineryPkgApisMetaV1APIGroupServerAddressByClientCIDRsList =
   Array<IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR>;
+const IoK8sApimachineryPkgApisMetaV1APIGroupServerAddressByClientCIDRsList = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIGroupServerAddressByClientCIDRsList>;
+
 /** versions are the versions supported in this group. */
 export type IoK8sApimachineryPkgApisMetaV1APIGroupVersionsList =
   Array<IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery>;
+const IoK8sApimachineryPkgApisMetaV1APIGroupVersionsList = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIGroupVersionsList>;
+
 /** APIGroup contains the name, the supported versions, and the preferred version of a group. */
 export interface IoK8sApimachineryPkgApisMetaV1APIGroup {
   /** APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources */
@@ -563,13 +730,32 @@ export interface IoK8sApimachineryPkgApisMetaV1APIGroup {
   /** versions are the versions supported in this group. */
   versions: IoK8sApimachineryPkgApisMetaV1APIGroupVersionsList;
 }
+const IoK8sApimachineryPkgApisMetaV1APIGroup = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIGroup>;
+
 export interface GetCoordinationV1alpha2APIResourcesRequest {}
+const GetCoordinationV1alpha2APIResourcesRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<GetCoordinationV1alpha2APIResourcesRequest>;
+
 /** categories is a list of the grouped resources this resource belongs to (e.g. 'all') */
 export type IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList = Array<string>;
+const IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList>;
+
 /** shortNames is a list of suggested short names of the resource. */
 export type IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList = Array<string>;
+const IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList>;
+
 /** verbs is a list of supported kube verbs (this includes get, list, watch, create, update, patch, delete, deletecollection, and proxy) */
 export type IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList = Array<string>;
+const IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList>;
+
 /** APIResource specifies the name of a resource and whether it is namespaced. */
 export interface IoK8sApimachineryPkgApisMetaV1APIResource {
   /** categories is a list of the grouped resources this resource belongs to (e.g. 'all') */
@@ -593,9 +779,19 @@ export interface IoK8sApimachineryPkgApisMetaV1APIResource {
   /** version is the preferred version of the resource. Empty implies the version of the containing resource list For subresources, this may have a different value, for example: v1 (while inside a v1beta1 version of the core resource's group)". */
   version?: string;
 }
+const IoK8sApimachineryPkgApisMetaV1APIResource = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResource>;
+
 /** resources contains the name of the resources and if they are namespaced. */
 export type IoK8sApimachineryPkgApisMetaV1APIResourceListResourcesList =
   Array<IoK8sApimachineryPkgApisMetaV1APIResource>;
+const IoK8sApimachineryPkgApisMetaV1APIResourceListResourcesList = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceListResourcesList>;
+
 /** APIResourceList is a list of APIResource, it is used to expose the name of the resources supported in a specific group and version, and if the resource is namespaced. */
 export interface IoK8sApimachineryPkgApisMetaV1APIResourceList {
   /** APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources */
@@ -607,8 +803,23 @@ export interface IoK8sApimachineryPkgApisMetaV1APIResourceList {
   /** resources contains the name of the resources and if they are namespaced. */
   resources: IoK8sApimachineryPkgApisMetaV1APIResourceListResourcesList;
 }
+const IoK8sApimachineryPkgApisMetaV1APIResourceList = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceList>;
+
 export interface GetCoordinationV1APIResourcesRequest {}
+const GetCoordinationV1APIResourcesRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<GetCoordinationV1APIResourcesRequest>;
+
 export interface GetCoordinationV1beta1APIResourcesRequest {}
+const GetCoordinationV1beta1APIResourcesRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<GetCoordinationV1beta1APIResourcesRequest>;
+
 export interface ListCoordinationV1alpha2LeaseCandidateForAllNamespacesRequest {
   /** allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should not assume bookmarks are returned at any specific interval, nor may they assume the server will send any BOOKMARK event during a session. If this is not a watch, this field is ignored. */
   allowWatchBookmarks?: boolean;
@@ -635,9 +846,19 @@ export interface ListCoordinationV1alpha2LeaseCandidateForAllNamespacesRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
+const ListCoordinationV1alpha2LeaseCandidateForAllNamespacesRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<ListCoordinationV1alpha2LeaseCandidateForAllNamespacesRequest>;
+
 /** items is a list of schema objects. */
 export type IoK8sApiCoordinationV1alpha2LeaseCandidateListItemsList =
   Array<IoK8sApiCoordinationV1alpha2LeaseCandidate>;
+const IoK8sApiCoordinationV1alpha2LeaseCandidateListItemsList = /*@__PURE__*/ __L.at(
+  __c5,
+  0,
+) as any as S.Schema<IoK8sApiCoordinationV1alpha2LeaseCandidateListItemsList>;
+
 /** LeaseCandidateList is a list of Lease objects. */
 export interface IoK8sApiCoordinationV1alpha2LeaseCandidateList {
   /** APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources */
@@ -649,6 +870,11 @@ export interface IoK8sApiCoordinationV1alpha2LeaseCandidateList {
   /** Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata */
   metadata?: IoK8sApimachineryPkgApisMetaV1ListMeta;
 }
+const IoK8sApiCoordinationV1alpha2LeaseCandidateList = /*@__PURE__*/ __L.at(
+  __c5,
+  1,
+) as any as S.Schema<IoK8sApiCoordinationV1alpha2LeaseCandidateList>;
+
 export interface ListCoordinationV1alpha2NamespacedLeaseCandidateRequest {
   /** object name and auth scope, such as for teams and projects */
   namespace: string;
@@ -677,6 +903,11 @@ export interface ListCoordinationV1alpha2NamespacedLeaseCandidateRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
+const ListCoordinationV1alpha2NamespacedLeaseCandidateRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  2,
+) as any as S.Schema<ListCoordinationV1alpha2NamespacedLeaseCandidateRequest>;
+
 export interface ListCoordinationV1beta1LeaseCandidateForAllNamespacesRequest {
   /** allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should not assume bookmarks are returned at any specific interval, nor may they assume the server will send any BOOKMARK event during a session. If this is not a watch, this field is ignored. */
   allowWatchBookmarks?: boolean;
@@ -703,6 +934,11 @@ export interface ListCoordinationV1beta1LeaseCandidateForAllNamespacesRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
+const ListCoordinationV1beta1LeaseCandidateForAllNamespacesRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<ListCoordinationV1beta1LeaseCandidateForAllNamespacesRequest>;
+
 /** items is a list of schema objects. */
 export type IoK8sApiCoordinationV1beta1LeaseCandidateListItemsList =
   Array<IoK8sApiCoordinationV1beta1LeaseCandidate>;
@@ -717,6 +953,9 @@ export interface IoK8sApiCoordinationV1beta1LeaseCandidateList {
   /** Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata */
   metadata?: IoK8sApimachineryPkgApisMetaV1ListMeta;
 }
+const IoK8sApiCoordinationV1beta1LeaseCandidateList =
+  IoK8sApiCoordinationV1alpha2LeaseCandidateList as any as S.Schema<IoK8sApiCoordinationV1beta1LeaseCandidateList>;
+
 export interface ListCoordinationV1beta1NamespacedLeaseCandidateRequest {
   /** object name and auth scope, such as for teams and projects */
   namespace: string;
@@ -745,6 +984,11 @@ export interface ListCoordinationV1beta1NamespacedLeaseCandidateRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
+const ListCoordinationV1beta1NamespacedLeaseCandidateRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  4,
+) as any as S.Schema<ListCoordinationV1beta1NamespacedLeaseCandidateRequest>;
+
 export interface ListCoordinationV1LeaseForAllNamespacesRequest {
   /** allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should not assume bookmarks are returned at any specific interval, nor may they assume the server will send any BOOKMARK event during a session. If this is not a watch, this field is ignored. */
   allowWatchBookmarks?: boolean;
@@ -771,8 +1015,18 @@ export interface ListCoordinationV1LeaseForAllNamespacesRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
+const ListCoordinationV1LeaseForAllNamespacesRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  5,
+) as any as S.Schema<ListCoordinationV1LeaseForAllNamespacesRequest>;
+
 /** items is a list of schema objects. */
 export type IoK8sApiCoordinationV1LeaseListItemsList = Array<IoK8sApiCoordinationV1Lease>;
+const IoK8sApiCoordinationV1LeaseListItemsList = /*@__PURE__*/ __L.at(
+  __c5,
+  6,
+) as any as S.Schema<IoK8sApiCoordinationV1LeaseListItemsList>;
+
 /** LeaseList is a list of Lease objects. */
 export interface IoK8sApiCoordinationV1LeaseList {
   /** APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources */
@@ -784,6 +1038,11 @@ export interface IoK8sApiCoordinationV1LeaseList {
   /** Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata */
   metadata?: IoK8sApimachineryPkgApisMetaV1ListMeta;
 }
+const IoK8sApiCoordinationV1LeaseList = /*@__PURE__*/ __L.at(
+  __c5,
+  7,
+) as any as S.Schema<IoK8sApiCoordinationV1LeaseList>;
+
 export interface ListCoordinationV1NamespacedLeaseRequest {
   /** object name and auth scope, such as for teams and projects */
   namespace: string;
@@ -812,6 +1071,11 @@ export interface ListCoordinationV1NamespacedLeaseRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
+const ListCoordinationV1NamespacedLeaseRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<ListCoordinationV1NamespacedLeaseRequest>;
+
 export interface PatchCoordinationV1alpha2NamespacedLeaseCandidateRequest {
   /** object name and auth scope, such as for teams and projects */
   namespace: string;
@@ -828,6 +1092,11 @@ export interface PatchCoordinationV1alpha2NamespacedLeaseCandidateRequest {
   /** Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests. */
   force?: boolean;
 }
+const PatchCoordinationV1alpha2NamespacedLeaseCandidateRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  1,
+) as any as S.Schema<PatchCoordinationV1alpha2NamespacedLeaseCandidateRequest>;
+
 export interface PatchCoordinationV1beta1NamespacedLeaseCandidateRequest {
   /** object name and auth scope, such as for teams and projects */
   namespace: string;
@@ -844,6 +1113,11 @@ export interface PatchCoordinationV1beta1NamespacedLeaseCandidateRequest {
   /** Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests. */
   force?: boolean;
 }
+const PatchCoordinationV1beta1NamespacedLeaseCandidateRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  2,
+) as any as S.Schema<PatchCoordinationV1beta1NamespacedLeaseCandidateRequest>;
+
 export interface PatchCoordinationV1NamespacedLeaseRequest {
   /** object name and auth scope, such as for teams and projects */
   namespace: string;
@@ -860,6 +1134,11 @@ export interface PatchCoordinationV1NamespacedLeaseRequest {
   /** Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests. */
   force?: boolean;
 }
+const PatchCoordinationV1NamespacedLeaseRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  3,
+) as any as S.Schema<PatchCoordinationV1NamespacedLeaseRequest>;
+
 export interface ReadCoordinationV1alpha2NamespacedLeaseCandidateRequest {
   /** object name and auth scope, such as for teams and projects */
   namespace: string;
@@ -868,6 +1147,11 @@ export interface ReadCoordinationV1alpha2NamespacedLeaseCandidateRequest {
   /** If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). */
   pretty?: string;
 }
+const ReadCoordinationV1alpha2NamespacedLeaseCandidateRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  4,
+) as any as S.Schema<ReadCoordinationV1alpha2NamespacedLeaseCandidateRequest>;
+
 export interface ReadCoordinationV1beta1NamespacedLeaseCandidateRequest {
   /** object name and auth scope, such as for teams and projects */
   namespace: string;
@@ -876,6 +1160,11 @@ export interface ReadCoordinationV1beta1NamespacedLeaseCandidateRequest {
   /** If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). */
   pretty?: string;
 }
+const ReadCoordinationV1beta1NamespacedLeaseCandidateRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  5,
+) as any as S.Schema<ReadCoordinationV1beta1NamespacedLeaseCandidateRequest>;
+
 export interface ReadCoordinationV1NamespacedLeaseRequest {
   /** object name and auth scope, such as for teams and projects */
   namespace: string;
@@ -884,6 +1173,11 @@ export interface ReadCoordinationV1NamespacedLeaseRequest {
   /** If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). */
   pretty?: string;
 }
+const ReadCoordinationV1NamespacedLeaseRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  6,
+) as any as S.Schema<ReadCoordinationV1NamespacedLeaseRequest>;
+
 export interface ReplaceCoordinationV1alpha2NamespacedLeaseCandidateRequest {
   /** object name and auth scope, such as for teams and projects */
   namespace: string;
@@ -906,6 +1200,11 @@ export interface ReplaceCoordinationV1alpha2NamespacedLeaseCandidateRequest {
   /** spec contains the specification of the Lease. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status */
   spec: IoK8sApiCoordinationV1alpha2LeaseCandidateSpec;
 }
+const ReplaceCoordinationV1alpha2NamespacedLeaseCandidateRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  7,
+) as any as S.Schema<ReplaceCoordinationV1alpha2NamespacedLeaseCandidateRequest>;
+
 export interface ReplaceCoordinationV1beta1NamespacedLeaseCandidateRequest {
   /** object name and auth scope, such as for teams and projects */
   namespace: string;
@@ -928,6 +1227,11 @@ export interface ReplaceCoordinationV1beta1NamespacedLeaseCandidateRequest {
   /** spec contains the specification of the Lease. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status */
   spec: IoK8sApiCoordinationV1beta1LeaseCandidateSpec;
 }
+const ReplaceCoordinationV1beta1NamespacedLeaseCandidateRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  0,
+) as any as S.Schema<ReplaceCoordinationV1beta1NamespacedLeaseCandidateRequest>;
+
 export interface ReplaceCoordinationV1NamespacedLeaseRequest {
   /** object name and auth scope, such as for teams and projects */
   namespace: string;
@@ -950,6 +1254,11 @@ export interface ReplaceCoordinationV1NamespacedLeaseRequest {
   /** spec contains the specification of the Lease. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status */
   spec?: IoK8sApiCoordinationV1LeaseSpec;
 }
+const ReplaceCoordinationV1NamespacedLeaseRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  1,
+) as any as S.Schema<ReplaceCoordinationV1NamespacedLeaseRequest>;
+
 export interface WatchCoordinationV1alpha2LeaseCandidateListForAllNamespacesRequest {
   /** allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should not assume bookmarks are returned at any specific interval, nor may they assume the server will send any BOOKMARK event during a session. If this is not a watch, this field is ignored. */
   allowWatchBookmarks?: boolean;
@@ -976,12 +1285,22 @@ export interface WatchCoordinationV1alpha2LeaseCandidateListForAllNamespacesRequ
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
+const WatchCoordinationV1alpha2LeaseCandidateListForAllNamespacesRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  2,
+) as any as S.Schema<WatchCoordinationV1alpha2LeaseCandidateListForAllNamespacesRequest>;
+
 /** Event represents a single event to a watched resource. */
 export interface IoK8sApimachineryPkgApisMetaV1WatchEvent {
   /** Object is: * If Type is Added or Modified: the new state of the object. * If Type is Deleted: the state of the object immediately before deletion. * If Type is Error: *Status is recommended; other types may make sense depending on context. */
   object: unknown;
   type: string;
 }
+const IoK8sApimachineryPkgApisMetaV1WatchEvent = /*@__PURE__*/ __L.at(
+  __c7,
+  3,
+) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>;
+
 export interface WatchCoordinationV1alpha2NamespacedLeaseCandidateRequest {
   /** object name and auth scope, such as for teams and projects */
   namespace: string;
@@ -1012,6 +1331,11 @@ export interface WatchCoordinationV1alpha2NamespacedLeaseCandidateRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
+const WatchCoordinationV1alpha2NamespacedLeaseCandidateRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  4,
+) as any as S.Schema<WatchCoordinationV1alpha2NamespacedLeaseCandidateRequest>;
+
 export interface WatchCoordinationV1alpha2NamespacedLeaseCandidateListRequest {
   /** object name and auth scope, such as for teams and projects */
   namespace: string;
@@ -1040,6 +1364,11 @@ export interface WatchCoordinationV1alpha2NamespacedLeaseCandidateListRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
+const WatchCoordinationV1alpha2NamespacedLeaseCandidateListRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  5,
+) as any as S.Schema<WatchCoordinationV1alpha2NamespacedLeaseCandidateListRequest>;
+
 export interface WatchCoordinationV1beta1LeaseCandidateListForAllNamespacesRequest {
   /** allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should not assume bookmarks are returned at any specific interval, nor may they assume the server will send any BOOKMARK event during a session. If this is not a watch, this field is ignored. */
   allowWatchBookmarks?: boolean;
@@ -1066,6 +1395,11 @@ export interface WatchCoordinationV1beta1LeaseCandidateListForAllNamespacesReque
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
+const WatchCoordinationV1beta1LeaseCandidateListForAllNamespacesRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  6,
+) as any as S.Schema<WatchCoordinationV1beta1LeaseCandidateListForAllNamespacesRequest>;
+
 export interface WatchCoordinationV1beta1NamespacedLeaseCandidateRequest {
   /** object name and auth scope, such as for teams and projects */
   namespace: string;
@@ -1096,6 +1430,11 @@ export interface WatchCoordinationV1beta1NamespacedLeaseCandidateRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
+const WatchCoordinationV1beta1NamespacedLeaseCandidateRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  7,
+) as any as S.Schema<WatchCoordinationV1beta1NamespacedLeaseCandidateRequest>;
+
 export interface WatchCoordinationV1beta1NamespacedLeaseCandidateListRequest {
   /** object name and auth scope, such as for teams and projects */
   namespace: string;
@@ -1124,6 +1463,11 @@ export interface WatchCoordinationV1beta1NamespacedLeaseCandidateListRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
+const WatchCoordinationV1beta1NamespacedLeaseCandidateListRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  0,
+) as any as S.Schema<WatchCoordinationV1beta1NamespacedLeaseCandidateListRequest>;
+
 export interface WatchCoordinationV1LeaseListForAllNamespacesRequest {
   /** allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should not assume bookmarks are returned at any specific interval, nor may they assume the server will send any BOOKMARK event during a session. If this is not a watch, this field is ignored. */
   allowWatchBookmarks?: boolean;
@@ -1150,6 +1494,11 @@ export interface WatchCoordinationV1LeaseListForAllNamespacesRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
+const WatchCoordinationV1LeaseListForAllNamespacesRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  1,
+) as any as S.Schema<WatchCoordinationV1LeaseListForAllNamespacesRequest>;
+
 export interface WatchCoordinationV1NamespacedLeaseRequest {
   /** object name and auth scope, such as for teams and projects */
   namespace: string;
@@ -1180,6 +1529,11 @@ export interface WatchCoordinationV1NamespacedLeaseRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
+const WatchCoordinationV1NamespacedLeaseRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  2,
+) as any as S.Schema<WatchCoordinationV1NamespacedLeaseRequest>;
+
 export interface WatchCoordinationV1NamespacedLeaseListRequest {
   /** object name and auth scope, such as for teams and projects */
   namespace: string;
@@ -1208,6 +1562,11 @@ export interface WatchCoordinationV1NamespacedLeaseListRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
+const WatchCoordinationV1NamespacedLeaseListRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  3,
+) as any as S.Schema<WatchCoordinationV1NamespacedLeaseListRequest>;
+
 export type CreateCoordinationV1alpha2NamespacedLeaseCandidateError =
   | Conflict
   | UnprocessableEntity
@@ -1219,8 +1578,8 @@ export const createCoordinationV1alpha2NamespacedLeaseCandidate: API.OperationMe
   CreateCoordinationV1alpha2NamespacedLeaseCandidateError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8) as any as S.Schema<CreateCoordinationV1alpha2NamespacedLeaseCandidateRequest>,
-  output: __S(9) as any as S.Schema<IoK8sApiCoordinationV1alpha2LeaseCandidate>,
+  input: CreateCoordinationV1alpha2NamespacedLeaseCandidateRequest,
+  output: IoK8sApiCoordinationV1alpha2LeaseCandidate,
   errors: [Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1237,8 +1596,8 @@ export const createCoordinationV1beta1NamespacedLeaseCandidate: API.OperationMet
   CreateCoordinationV1beta1NamespacedLeaseCandidateError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10) as any as S.Schema<CreateCoordinationV1beta1NamespacedLeaseCandidateRequest>,
-  output: __S(9) as any as S.Schema<IoK8sApiCoordinationV1beta1LeaseCandidate>,
+  input: CreateCoordinationV1beta1NamespacedLeaseCandidateRequest,
+  output: IoK8sApiCoordinationV1beta1LeaseCandidate,
   errors: [Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1255,8 +1614,8 @@ export const createCoordinationV1NamespacedLease: API.OperationMethod<
   CreateCoordinationV1NamespacedLeaseError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12) as any as S.Schema<CreateCoordinationV1NamespacedLeaseRequest>,
-  output: __S(13) as any as S.Schema<IoK8sApiCoordinationV1Lease>,
+  input: CreateCoordinationV1NamespacedLeaseRequest,
+  output: IoK8sApiCoordinationV1Lease,
   errors: [Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1270,10 +1629,8 @@ export const deleteCoordinationV1alpha2CollectionNamespacedLeaseCandidate: API.O
   DeleteCoordinationV1alpha2CollectionNamespacedLeaseCandidateError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(
-    15,
-  ) as any as S.Schema<DeleteCoordinationV1alpha2CollectionNamespacedLeaseCandidateRequest>,
-  output: __S(21) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
+  input: DeleteCoordinationV1alpha2CollectionNamespacedLeaseCandidateRequest,
+  output: IoK8sApimachineryPkgApisMetaV1Status,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1290,8 +1647,8 @@ export const deleteCoordinationV1alpha2NamespacedLeaseCandidate: API.OperationMe
   DeleteCoordinationV1alpha2NamespacedLeaseCandidateError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22) as any as S.Schema<DeleteCoordinationV1alpha2NamespacedLeaseCandidateRequest>,
-  output: __S(21) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
+  input: DeleteCoordinationV1alpha2NamespacedLeaseCandidateRequest,
+  output: IoK8sApimachineryPkgApisMetaV1Status,
   errors: [NotFound, Conflict, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1305,10 +1662,8 @@ export const deleteCoordinationV1beta1CollectionNamespacedLeaseCandidate: API.Op
   DeleteCoordinationV1beta1CollectionNamespacedLeaseCandidateError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(
-    23,
-  ) as any as S.Schema<DeleteCoordinationV1beta1CollectionNamespacedLeaseCandidateRequest>,
-  output: __S(21) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
+  input: DeleteCoordinationV1beta1CollectionNamespacedLeaseCandidateRequest,
+  output: IoK8sApimachineryPkgApisMetaV1Status,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1325,8 +1680,8 @@ export const deleteCoordinationV1beta1NamespacedLeaseCandidate: API.OperationMet
   DeleteCoordinationV1beta1NamespacedLeaseCandidateError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24) as any as S.Schema<DeleteCoordinationV1beta1NamespacedLeaseCandidateRequest>,
-  output: __S(21) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
+  input: DeleteCoordinationV1beta1NamespacedLeaseCandidateRequest,
+  output: IoK8sApimachineryPkgApisMetaV1Status,
   errors: [NotFound, Conflict, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1340,8 +1695,8 @@ export const deleteCoordinationV1CollectionNamespacedLease: API.OperationMethod<
   DeleteCoordinationV1CollectionNamespacedLeaseError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25) as any as S.Schema<DeleteCoordinationV1CollectionNamespacedLeaseRequest>,
-  output: __S(21) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
+  input: DeleteCoordinationV1CollectionNamespacedLeaseRequest,
+  output: IoK8sApimachineryPkgApisMetaV1Status,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1355,8 +1710,8 @@ export const deleteCoordinationV1NamespacedLease: API.OperationMethod<
   DeleteCoordinationV1NamespacedLeaseError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26) as any as S.Schema<DeleteCoordinationV1NamespacedLeaseRequest>,
-  output: __S(21) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
+  input: DeleteCoordinationV1NamespacedLeaseRequest,
+  output: IoK8sApimachineryPkgApisMetaV1Status,
   errors: [NotFound, Conflict, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1370,8 +1725,8 @@ export const getCoordinationAPIGroup: API.OperationMethod<
   GetCoordinationAPIGroupError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27) as any as S.Schema<GetCoordinationAPIGroupRequest>,
-  output: __S(32) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIGroup>,
+  input: GetCoordinationAPIGroupRequest,
+  output: IoK8sApimachineryPkgApisMetaV1APIGroup,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1385,8 +1740,8 @@ export const getCoordinationV1alpha2APIResources: API.OperationMethod<
   GetCoordinationV1alpha2APIResourcesError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33) as any as S.Schema<GetCoordinationV1alpha2APIResourcesRequest>,
-  output: __S(36) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceList>,
+  input: GetCoordinationV1alpha2APIResourcesRequest,
+  output: IoK8sApimachineryPkgApisMetaV1APIResourceList,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1400,8 +1755,8 @@ export const getCoordinationV1APIResources: API.OperationMethod<
   GetCoordinationV1APIResourcesError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37) as any as S.Schema<GetCoordinationV1APIResourcesRequest>,
-  output: __S(36) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceList>,
+  input: GetCoordinationV1APIResourcesRequest,
+  output: IoK8sApimachineryPkgApisMetaV1APIResourceList,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1415,8 +1770,8 @@ export const getCoordinationV1beta1APIResources: API.OperationMethod<
   GetCoordinationV1beta1APIResourcesError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38) as any as S.Schema<GetCoordinationV1beta1APIResourcesRequest>,
-  output: __S(36) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceList>,
+  input: GetCoordinationV1beta1APIResourcesRequest,
+  output: IoK8sApimachineryPkgApisMetaV1APIResourceList,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1430,8 +1785,8 @@ export const listCoordinationV1alpha2LeaseCandidateForAllNamespaces: API.Operati
   ListCoordinationV1alpha2LeaseCandidateForAllNamespacesError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39) as any as S.Schema<ListCoordinationV1alpha2LeaseCandidateForAllNamespacesRequest>,
-  output: __S(41) as any as S.Schema<IoK8sApiCoordinationV1alpha2LeaseCandidateList>,
+  input: ListCoordinationV1alpha2LeaseCandidateForAllNamespacesRequest,
+  output: IoK8sApiCoordinationV1alpha2LeaseCandidateList,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1445,8 +1800,8 @@ export const listCoordinationV1alpha2NamespacedLeaseCandidate: API.OperationMeth
   ListCoordinationV1alpha2NamespacedLeaseCandidateError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42) as any as S.Schema<ListCoordinationV1alpha2NamespacedLeaseCandidateRequest>,
-  output: __S(41) as any as S.Schema<IoK8sApiCoordinationV1alpha2LeaseCandidateList>,
+  input: ListCoordinationV1alpha2NamespacedLeaseCandidateRequest,
+  output: IoK8sApiCoordinationV1alpha2LeaseCandidateList,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1460,8 +1815,8 @@ export const listCoordinationV1beta1LeaseCandidateForAllNamespaces: API.Operatio
   ListCoordinationV1beta1LeaseCandidateForAllNamespacesError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43) as any as S.Schema<ListCoordinationV1beta1LeaseCandidateForAllNamespacesRequest>,
-  output: __S(41) as any as S.Schema<IoK8sApiCoordinationV1beta1LeaseCandidateList>,
+  input: ListCoordinationV1beta1LeaseCandidateForAllNamespacesRequest,
+  output: IoK8sApiCoordinationV1beta1LeaseCandidateList,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1475,8 +1830,8 @@ export const listCoordinationV1beta1NamespacedLeaseCandidate: API.OperationMetho
   ListCoordinationV1beta1NamespacedLeaseCandidateError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44) as any as S.Schema<ListCoordinationV1beta1NamespacedLeaseCandidateRequest>,
-  output: __S(41) as any as S.Schema<IoK8sApiCoordinationV1beta1LeaseCandidateList>,
+  input: ListCoordinationV1beta1NamespacedLeaseCandidateRequest,
+  output: IoK8sApiCoordinationV1beta1LeaseCandidateList,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1490,8 +1845,8 @@ export const listCoordinationV1LeaseForAllNamespaces: API.OperationMethod<
   ListCoordinationV1LeaseForAllNamespacesError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45) as any as S.Schema<ListCoordinationV1LeaseForAllNamespacesRequest>,
-  output: __S(47) as any as S.Schema<IoK8sApiCoordinationV1LeaseList>,
+  input: ListCoordinationV1LeaseForAllNamespacesRequest,
+  output: IoK8sApiCoordinationV1LeaseList,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1505,8 +1860,8 @@ export const listCoordinationV1NamespacedLease: API.OperationMethod<
   ListCoordinationV1NamespacedLeaseError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48) as any as S.Schema<ListCoordinationV1NamespacedLeaseRequest>,
-  output: __S(47) as any as S.Schema<IoK8sApiCoordinationV1LeaseList>,
+  input: ListCoordinationV1NamespacedLeaseRequest,
+  output: IoK8sApiCoordinationV1LeaseList,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1524,8 +1879,8 @@ export const patchCoordinationV1alpha2NamespacedLeaseCandidate: API.OperationMet
   PatchCoordinationV1alpha2NamespacedLeaseCandidateError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49) as any as S.Schema<PatchCoordinationV1alpha2NamespacedLeaseCandidateRequest>,
-  output: __S(9) as any as S.Schema<IoK8sApiCoordinationV1alpha2LeaseCandidate>,
+  input: PatchCoordinationV1alpha2NamespacedLeaseCandidateRequest,
+  output: IoK8sApiCoordinationV1alpha2LeaseCandidate,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1543,8 +1898,8 @@ export const patchCoordinationV1beta1NamespacedLeaseCandidate: API.OperationMeth
   PatchCoordinationV1beta1NamespacedLeaseCandidateError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(50) as any as S.Schema<PatchCoordinationV1beta1NamespacedLeaseCandidateRequest>,
-  output: __S(9) as any as S.Schema<IoK8sApiCoordinationV1beta1LeaseCandidate>,
+  input: PatchCoordinationV1beta1NamespacedLeaseCandidateRequest,
+  output: IoK8sApiCoordinationV1beta1LeaseCandidate,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1562,8 +1917,8 @@ export const patchCoordinationV1NamespacedLease: API.OperationMethod<
   PatchCoordinationV1NamespacedLeaseError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(51) as any as S.Schema<PatchCoordinationV1NamespacedLeaseRequest>,
-  output: __S(13) as any as S.Schema<IoK8sApiCoordinationV1Lease>,
+  input: PatchCoordinationV1NamespacedLeaseRequest,
+  output: IoK8sApiCoordinationV1Lease,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1577,8 +1932,8 @@ export const readCoordinationV1alpha2NamespacedLeaseCandidate: API.OperationMeth
   ReadCoordinationV1alpha2NamespacedLeaseCandidateError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(52) as any as S.Schema<ReadCoordinationV1alpha2NamespacedLeaseCandidateRequest>,
-  output: __S(9) as any as S.Schema<IoK8sApiCoordinationV1alpha2LeaseCandidate>,
+  input: ReadCoordinationV1alpha2NamespacedLeaseCandidateRequest,
+  output: IoK8sApiCoordinationV1alpha2LeaseCandidate,
   errors: [NotFound, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1592,8 +1947,8 @@ export const readCoordinationV1beta1NamespacedLeaseCandidate: API.OperationMetho
   ReadCoordinationV1beta1NamespacedLeaseCandidateError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(53) as any as S.Schema<ReadCoordinationV1beta1NamespacedLeaseCandidateRequest>,
-  output: __S(9) as any as S.Schema<IoK8sApiCoordinationV1beta1LeaseCandidate>,
+  input: ReadCoordinationV1beta1NamespacedLeaseCandidateRequest,
+  output: IoK8sApiCoordinationV1beta1LeaseCandidate,
   errors: [NotFound, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1607,8 +1962,8 @@ export const readCoordinationV1NamespacedLease: API.OperationMethod<
   ReadCoordinationV1NamespacedLeaseError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(54) as any as S.Schema<ReadCoordinationV1NamespacedLeaseRequest>,
-  output: __S(13) as any as S.Schema<IoK8sApiCoordinationV1Lease>,
+  input: ReadCoordinationV1NamespacedLeaseRequest,
+  output: IoK8sApiCoordinationV1Lease,
   errors: [NotFound, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1626,8 +1981,8 @@ export const replaceCoordinationV1alpha2NamespacedLeaseCandidate: API.OperationM
   ReplaceCoordinationV1alpha2NamespacedLeaseCandidateError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(55) as any as S.Schema<ReplaceCoordinationV1alpha2NamespacedLeaseCandidateRequest>,
-  output: __S(9) as any as S.Schema<IoK8sApiCoordinationV1alpha2LeaseCandidate>,
+  input: ReplaceCoordinationV1alpha2NamespacedLeaseCandidateRequest,
+  output: IoK8sApiCoordinationV1alpha2LeaseCandidate,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1645,8 +2000,8 @@ export const replaceCoordinationV1beta1NamespacedLeaseCandidate: API.OperationMe
   ReplaceCoordinationV1beta1NamespacedLeaseCandidateError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56) as any as S.Schema<ReplaceCoordinationV1beta1NamespacedLeaseCandidateRequest>,
-  output: __S(9) as any as S.Schema<IoK8sApiCoordinationV1beta1LeaseCandidate>,
+  input: ReplaceCoordinationV1beta1NamespacedLeaseCandidateRequest,
+  output: IoK8sApiCoordinationV1beta1LeaseCandidate,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1664,8 +2019,8 @@ export const replaceCoordinationV1NamespacedLease: API.OperationMethod<
   ReplaceCoordinationV1NamespacedLeaseError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57) as any as S.Schema<ReplaceCoordinationV1NamespacedLeaseRequest>,
-  output: __S(13) as any as S.Schema<IoK8sApiCoordinationV1Lease>,
+  input: ReplaceCoordinationV1NamespacedLeaseRequest,
+  output: IoK8sApiCoordinationV1Lease,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1679,10 +2034,8 @@ export const watchCoordinationV1alpha2LeaseCandidateListForAllNamespaces: API.Op
   WatchCoordinationV1alpha2LeaseCandidateListForAllNamespacesError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(
-    58,
-  ) as any as S.Schema<WatchCoordinationV1alpha2LeaseCandidateListForAllNamespacesRequest>,
-  output: __S(59) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
+  input: WatchCoordinationV1alpha2LeaseCandidateListForAllNamespacesRequest,
+  output: IoK8sApimachineryPkgApisMetaV1WatchEvent,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1696,8 +2049,8 @@ export const watchCoordinationV1alpha2NamespacedLeaseCandidate: API.OperationMet
   WatchCoordinationV1alpha2NamespacedLeaseCandidateError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60) as any as S.Schema<WatchCoordinationV1alpha2NamespacedLeaseCandidateRequest>,
-  output: __S(59) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
+  input: WatchCoordinationV1alpha2NamespacedLeaseCandidateRequest,
+  output: IoK8sApimachineryPkgApisMetaV1WatchEvent,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1711,8 +2064,8 @@ export const watchCoordinationV1alpha2NamespacedLeaseCandidateList: API.Operatio
   WatchCoordinationV1alpha2NamespacedLeaseCandidateListError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(61) as any as S.Schema<WatchCoordinationV1alpha2NamespacedLeaseCandidateListRequest>,
-  output: __S(59) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
+  input: WatchCoordinationV1alpha2NamespacedLeaseCandidateListRequest,
+  output: IoK8sApimachineryPkgApisMetaV1WatchEvent,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1726,10 +2079,8 @@ export const watchCoordinationV1beta1LeaseCandidateListForAllNamespaces: API.Ope
   WatchCoordinationV1beta1LeaseCandidateListForAllNamespacesError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(
-    62,
-  ) as any as S.Schema<WatchCoordinationV1beta1LeaseCandidateListForAllNamespacesRequest>,
-  output: __S(59) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
+  input: WatchCoordinationV1beta1LeaseCandidateListForAllNamespacesRequest,
+  output: IoK8sApimachineryPkgApisMetaV1WatchEvent,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1743,8 +2094,8 @@ export const watchCoordinationV1beta1NamespacedLeaseCandidate: API.OperationMeth
   WatchCoordinationV1beta1NamespacedLeaseCandidateError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(63) as any as S.Schema<WatchCoordinationV1beta1NamespacedLeaseCandidateRequest>,
-  output: __S(59) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
+  input: WatchCoordinationV1beta1NamespacedLeaseCandidateRequest,
+  output: IoK8sApimachineryPkgApisMetaV1WatchEvent,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1758,8 +2109,8 @@ export const watchCoordinationV1beta1NamespacedLeaseCandidateList: API.Operation
   WatchCoordinationV1beta1NamespacedLeaseCandidateListError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(64) as any as S.Schema<WatchCoordinationV1beta1NamespacedLeaseCandidateListRequest>,
-  output: __S(59) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
+  input: WatchCoordinationV1beta1NamespacedLeaseCandidateListRequest,
+  output: IoK8sApimachineryPkgApisMetaV1WatchEvent,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1773,8 +2124,8 @@ export const watchCoordinationV1LeaseListForAllNamespaces: API.OperationMethod<
   WatchCoordinationV1LeaseListForAllNamespacesError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65) as any as S.Schema<WatchCoordinationV1LeaseListForAllNamespacesRequest>,
-  output: __S(59) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
+  input: WatchCoordinationV1LeaseListForAllNamespacesRequest,
+  output: IoK8sApimachineryPkgApisMetaV1WatchEvent,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1788,8 +2139,8 @@ export const watchCoordinationV1NamespacedLease: API.OperationMethod<
   WatchCoordinationV1NamespacedLeaseError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(66) as any as S.Schema<WatchCoordinationV1NamespacedLeaseRequest>,
-  output: __S(59) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
+  input: WatchCoordinationV1NamespacedLeaseRequest,
+  output: IoK8sApimachineryPkgApisMetaV1WatchEvent,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1803,8 +2154,8 @@ export const watchCoordinationV1NamespacedLeaseList: API.OperationMethod<
   WatchCoordinationV1NamespacedLeaseListError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(67) as any as S.Schema<WatchCoordinationV1NamespacedLeaseListRequest>,
-  output: __S(59) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
+  input: WatchCoordinationV1NamespacedLeaseListRequest,
+  output: IoK8sApimachineryPkgApisMetaV1WatchEvent,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1832,7 +2183,7 @@ function __c0(j: number): any {
         identifier: "IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry",
       });
     case 3:
-      return S.Array(__S(2));
+      return S.Array(IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry);
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -1847,22 +2198,22 @@ function __c0(j: number): any {
         identifier: "IoK8sApimachineryPkgApisMetaV1OwnerReference",
       });
     case 5:
-      return S.Array(__S(4));
+      return S.Array(IoK8sApimachineryPkgApisMetaV1OwnerReference);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          annotations: S.optional(__S(0)),
+          annotations: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap),
           creationTimestamp: S.optional(S.String),
           deletionGracePeriodSeconds: S.optional(S.Number),
           deletionTimestamp: S.optional(S.String),
-          finalizers: S.optional(__S(1)),
+          finalizers: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList),
           generateName: S.optional(S.String),
           generation: S.optional(S.Number),
-          labels: S.optional(__S(0)),
-          managedFields: S.optional(__S(3)),
+          labels: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMetaLabelsMap),
+          managedFields: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMetaManagedFieldsList),
           name: S.optional(S.String),
           namespace: S.optional(S.String),
-          ownerReferences: S.optional(__S(5)),
+          ownerReferences: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMetaOwnerReferencesList),
           resourceVersion: S.optional(S.String),
           selfLink: S.optional(S.String),
           uid: S.optional(S.String),
@@ -1897,8 +2248,8 @@ function __c1(j: number): any {
           fieldValidation: S.optional(S.String.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          metadata: S.optional(__S(6)),
-          spec: __S(7),
+          metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
+          spec: IoK8sApiCoordinationV1alpha2LeaseCandidateSpec,
         }).pipe(
           T.Http({
             method: "POST",
@@ -1914,8 +2265,8 @@ function __c1(j: number): any {
         S.Struct({
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          metadata: S.optional(__S(6)),
-          spec: __S(7),
+          metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
+          spec: IoK8sApiCoordinationV1alpha2LeaseCandidateSpec,
         }),
       ).annotate({
         identifier: "IoK8sApiCoordinationV1alpha2LeaseCandidate",
@@ -1930,8 +2281,8 @@ function __c1(j: number): any {
           fieldValidation: S.optional(S.String.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          metadata: S.optional(__S(6)),
-          spec: __S(7),
+          metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
+          spec: IoK8sApiCoordinationV1beta1LeaseCandidateSpec,
         }).pipe(
           T.Http({
             method: "POST",
@@ -1966,8 +2317,8 @@ function __c1(j: number): any {
           fieldValidation: S.optional(S.String.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          metadata: S.optional(__S(6)),
-          spec: S.optional(__S(11)),
+          metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
+          spec: S.optional(IoK8sApiCoordinationV1LeaseSpec),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1983,8 +2334,8 @@ function __c1(j: number): any {
         S.Struct({
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          metadata: S.optional(__S(6)),
-          spec: S.optional(__S(11)),
+          metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
+          spec: S.optional(IoK8sApiCoordinationV1LeaseSpec),
         }),
       ).annotate({
         identifier: "IoK8sApiCoordinationV1Lease",
@@ -2019,7 +2370,7 @@ function __c1(j: number): any {
           timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          preconditions: S.optional(__S(14)),
+          preconditions: S.optional(IoK8sApimachineryPkgApisMetaV1Preconditions),
         }).pipe(
           T.Http({
             method: "DELETE",
@@ -2045,11 +2396,11 @@ function __c2(j: number): any {
         identifier: "IoK8sApimachineryPkgApisMetaV1StatusCause",
       });
     case 1:
-      return S.Array(__S(16));
+      return S.Array(IoK8sApimachineryPkgApisMetaV1StatusCause);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          causes: S.optional(__S(17)),
+          causes: S.optional(IoK8sApimachineryPkgApisMetaV1StatusDetailsCausesList),
           group: S.optional(S.String),
           kind: S.optional(S.String),
           name: S.optional(S.String),
@@ -2074,7 +2425,7 @@ function __c2(j: number): any {
           remainingItemCount: S.optional(S.Number),
           resourceVersion: S.optional(S.String),
           selfLink: S.optional(S.String),
-          shardInfo: S.optional(__S(19)),
+          shardInfo: S.optional(IoK8sApimachineryPkgApisMetaV1ShardInfo),
         }),
       ).annotate({
         identifier: "IoK8sApimachineryPkgApisMetaV1ListMeta",
@@ -2084,10 +2435,10 @@ function __c2(j: number): any {
         S.Struct({
           apiVersion: S.optional(S.String),
           code: S.optional(S.Number),
-          details: S.optional(__S(18)),
+          details: S.optional(IoK8sApimachineryPkgApisMetaV1StatusDetails),
           kind: S.optional(S.String),
           message: S.optional(S.String),
-          metadata: S.optional(__S(20)),
+          metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ListMeta),
           reason: S.optional(S.String),
           status: S.optional(S.String),
         }),
@@ -2107,7 +2458,7 @@ function __c2(j: number): any {
           propagationPolicy: S.optional(S.String.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          preconditions: S.optional(__S(14)),
+          preconditions: S.optional(IoK8sApimachineryPkgApisMetaV1Preconditions),
         }).pipe(
           T.Http({
             method: "DELETE",
@@ -2139,7 +2490,7 @@ function __c2(j: number): any {
           timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          preconditions: S.optional(__S(14)),
+          preconditions: S.optional(IoK8sApimachineryPkgApisMetaV1Preconditions),
         }).pipe(
           T.Http({
             method: "DELETE",
@@ -2167,7 +2518,7 @@ function __c3(j: number): any {
           propagationPolicy: S.optional(S.String.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          preconditions: S.optional(__S(14)),
+          preconditions: S.optional(IoK8sApimachineryPkgApisMetaV1Preconditions),
         }).pipe(
           T.Http({
             method: "DELETE",
@@ -2199,7 +2550,7 @@ function __c3(j: number): any {
           timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          preconditions: S.optional(__S(14)),
+          preconditions: S.optional(IoK8sApimachineryPkgApisMetaV1Preconditions),
         }).pipe(
           T.Http({
             method: "DELETE",
@@ -2223,7 +2574,7 @@ function __c3(j: number): any {
           propagationPolicy: S.optional(S.String.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          preconditions: S.optional(__S(14)),
+          preconditions: S.optional(IoK8sApimachineryPkgApisMetaV1Preconditions),
         }).pipe(
           T.Http({
             method: "DELETE",
@@ -2259,9 +2610,9 @@ function __c3(j: number): any {
         identifier: "IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR",
       });
     case 6:
-      return S.Array(__S(29));
+      return S.Array(IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR);
     case 7:
-      return S.Array(__S(28));
+      return S.Array(IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery);
   }
 }
 function __c4(j: number): any {
@@ -2272,9 +2623,11 @@ function __c4(j: number): any {
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
           name: S.String,
-          preferredVersion: S.optional(__S(28)),
-          serverAddressByClientCIDRs: S.optional(__S(30)),
-          versions: __S(31),
+          preferredVersion: S.optional(IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery),
+          serverAddressByClientCIDRs: S.optional(
+            IoK8sApimachineryPkgApisMetaV1APIGroupServerAddressByClientCIDRsList,
+          ),
+          versions: IoK8sApimachineryPkgApisMetaV1APIGroupVersionsList,
         }),
       ).annotate({
         identifier: "IoK8sApimachineryPkgApisMetaV1APIGroup",
@@ -2290,29 +2643,29 @@ function __c4(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          categories: S.optional(__S(1)),
+          categories: S.optional(IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList),
           group: S.optional(S.String),
           kind: S.String,
           name: S.String,
           namespaced: S.Boolean,
-          shortNames: S.optional(__S(1)),
+          shortNames: S.optional(IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList),
           singularName: S.String,
           storageVersionHash: S.optional(S.String),
-          verbs: __S(1),
+          verbs: IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList,
           version: S.optional(S.String),
         }),
       ).annotate({
         identifier: "IoK8sApimachineryPkgApisMetaV1APIResource",
       });
     case 3:
-      return S.Array(__S(34));
+      return S.Array(IoK8sApimachineryPkgApisMetaV1APIResource);
     case 4:
       return S.suspend(() =>
         S.Struct({
           apiVersion: S.optional(S.String),
           groupVersion: S.String,
           kind: S.optional(S.String),
-          resources: __S(35),
+          resources: IoK8sApimachineryPkgApisMetaV1APIResourceListResourcesList,
         }),
       ).annotate({
         identifier: "IoK8sApimachineryPkgApisMetaV1APIResourceList",
@@ -2363,14 +2716,14 @@ function __c4(j: number): any {
 function __c5(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(9));
+      return S.Array(IoK8sApiCoordinationV1alpha2LeaseCandidate);
     case 1:
       return S.suspend(() =>
         S.Struct({
           apiVersion: S.optional(S.String),
-          items: __S(40),
+          items: IoK8sApiCoordinationV1alpha2LeaseCandidateListItemsList,
           kind: S.optional(S.String),
-          metadata: S.optional(__S(20)),
+          metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ListMeta),
         }),
       ).annotate({
         identifier: "IoK8sApiCoordinationV1alpha2LeaseCandidateList",
@@ -2472,14 +2825,14 @@ function __c5(j: number): any {
         identifier: "ListCoordinationV1LeaseForAllNamespacesRequest",
       });
     case 6:
-      return S.Array(__S(13));
+      return S.Array(IoK8sApiCoordinationV1Lease);
     case 7:
       return S.suspend(() =>
         S.Struct({
           apiVersion: S.optional(S.String),
-          items: __S(46),
+          items: IoK8sApiCoordinationV1LeaseListItemsList,
           kind: S.optional(S.String),
-          metadata: S.optional(__S(20)),
+          metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ListMeta),
         }),
       ).annotate({
         identifier: "IoK8sApiCoordinationV1LeaseList",
@@ -2633,8 +2986,8 @@ function __c6(j: number): any {
           fieldValidation: S.optional(S.String.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          metadata: S.optional(__S(6)),
-          spec: __S(7),
+          metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
+          spec: IoK8sApiCoordinationV1alpha2LeaseCandidateSpec,
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2660,8 +3013,8 @@ function __c7(j: number): any {
           fieldValidation: S.optional(S.String.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          metadata: S.optional(__S(6)),
-          spec: __S(7),
+          metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
+          spec: IoK8sApiCoordinationV1beta1LeaseCandidateSpec,
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2683,8 +3036,8 @@ function __c7(j: number): any {
           fieldValidation: S.optional(S.String.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          metadata: S.optional(__S(6)),
-          spec: S.optional(__S(11)),
+          metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
+          spec: S.optional(IoK8sApiCoordinationV1LeaseSpec),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2938,32 +3291,5 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "WatchCoordinationV1NamespacedLeaseListRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
   }
 }

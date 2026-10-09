@@ -7,8 +7,6 @@ import { UnknownStackitError } from "../errors.ts";
 import { StackitProtocol, type StackitOpError, type StackitOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { StackitOpError, StackitOpContext };
 
@@ -49,8 +47,12 @@ export class NotFound
   ) {}
 
 export type CreateInstanceRequestRegionId = "eu01";
+const CreateInstanceRequestRegionId = S.String;
+
 /** Object that represents the labels of an object. Regex for keys: `^([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9]$`. Regex for values: `^(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])*$`. Providing a `null` value for a key will remove that key. The `stackit-` prefix is reserved and cannot be used for Keys. */
 export type Labels = { [key: string]: string | undefined };
+const Labels = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<Labels>;
+
 export interface CreateInstanceRequest {
   /** portal project id */
   projectId: string;
@@ -61,6 +63,11 @@ export interface CreateInstanceRequest {
   labels?: Labels;
   name: string;
 }
+const CreateInstanceRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<CreateInstanceRequest>;
+
 export type InstanceState =
   | "pending"
   | "creating"
@@ -69,6 +76,8 @@ export type InstanceState =
   | "deleting"
   | "impaired"
   | "reconciling";
+const InstanceState = S.String;
+
 export interface Instance {
   bucketName?: string;
   deletedExperimentRetention?: string;
@@ -81,11 +90,20 @@ export interface Instance {
   state: InstanceState;
   url: string;
 }
+const Instance = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<Instance>;
+
 export interface CreateInstanceResponse {
   instance: Instance;
   message?: string;
 }
+const CreateInstanceResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<CreateInstanceResponse>;
+
 export type CreateInstanceTokenRequestRegionId = "eu01";
+const CreateInstanceTokenRequestRegionId = S.String;
+
 export interface CreateInstanceTokenRequest {
   /** portal project id */
   projectId: string;
@@ -99,8 +117,15 @@ export interface CreateInstanceTokenRequest {
   /** time to live duration. Must be valid duration string. Maximum allowed duration is 6 months. If not set, defaults to 6 months. */
   ttlDuration?: string;
 }
+const CreateInstanceTokenRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<CreateInstanceTokenRequest>;
+
 /** The lifecycle state of the token. */
 export type TokenState = "creating" | "active" | "deleting" | "inactive";
+const TokenState = S.String;
+
 export interface Token {
   content: string;
   description?: string;
@@ -111,11 +136,20 @@ export interface Token {
   state: TokenState;
   validUntil: string;
 }
+const Token = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<Token>;
+
 export interface CreateInstanceTokenResponse {
   message?: string;
   token: Token;
 }
+const CreateInstanceTokenResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<CreateInstanceTokenResponse>;
+
 export type DeleteInstanceRequestRegionId = "eu01";
+const DeleteInstanceRequestRegionId = S.String;
+
 export interface DeleteInstanceRequest {
   /** portal project id */
   projectId: string;
@@ -124,11 +158,20 @@ export interface DeleteInstanceRequest {
   /** instance id */
   instanceId: string;
 }
+const DeleteInstanceRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<DeleteInstanceRequest>;
+
 export interface DeleteInstanceResponse {
   instance: Instance;
   message?: string;
 }
+const DeleteInstanceResponse = CreateInstanceResponse as any as S.Schema<DeleteInstanceResponse>;
+
 export type DeleteInstanceTokenRequestRegionId = "eu01";
+const DeleteInstanceTokenRequestRegionId = S.String;
+
 export interface DeleteInstanceTokenRequest {
   /** portal project id */
   projectId: string;
@@ -139,6 +182,11 @@ export interface DeleteInstanceTokenRequest {
   /** token id */
   tokenId: string;
 }
+const DeleteInstanceTokenRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<DeleteInstanceTokenRequest>;
+
 export interface TokenMetadata {
   description?: string;
   id: string;
@@ -148,11 +196,20 @@ export interface TokenMetadata {
   state: TokenState;
   validUntil: string;
 }
+const TokenMetadata = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<TokenMetadata>;
+
 export interface DeleteInstanceTokenResponse {
   message?: string;
   token: TokenMetadata;
 }
+const DeleteInstanceTokenResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<DeleteInstanceTokenResponse>;
+
 export type GetInstanceRequestRegionId = "eu01";
+const GetInstanceRequestRegionId = S.String;
+
 export interface GetInstanceRequest {
   /** portal project id */
   projectId: string;
@@ -161,11 +218,17 @@ export interface GetInstanceRequest {
   /** instance id */
   instanceId: string;
 }
+const GetInstanceRequest = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<GetInstanceRequest>;
+
 export interface GetInstanceResponse {
   instance: Instance;
   message?: string;
 }
+const GetInstanceResponse = CreateInstanceResponse as any as S.Schema<GetInstanceResponse>;
+
 export type GetInstanceTokenRequestRegionId = "eu01";
+const GetInstanceTokenRequestRegionId = S.String;
+
 export interface GetInstanceTokenRequest {
   /** portal project id */
   projectId: string;
@@ -176,23 +239,49 @@ export interface GetInstanceTokenRequest {
   /** token id */
   tokenId: string;
 }
+const GetInstanceTokenRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<GetInstanceTokenRequest>;
+
 export interface GetInstanceTokenResponse {
   message?: string;
   token: TokenMetadata;
 }
+const GetInstanceTokenResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<GetInstanceTokenResponse>;
+
 export type ListInstancesRequestRegionId = "eu01";
+const ListInstancesRequestRegionId = S.String;
+
 export interface ListInstancesRequest {
   /** portal project id */
   projectId: string;
   /** region id */
   regionId: ListInstancesRequestRegionId | (string & {});
 }
+const ListInstancesRequest = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<ListInstancesRequest>;
+
 export type ListInstancesResponseInstancesList = Array<Instance>;
+const ListInstancesResponseInstancesList = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<ListInstancesResponseInstancesList>;
+
 export interface ListInstancesResponse {
   instances: ListInstancesResponseInstancesList;
   message?: string;
 }
+const ListInstancesResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<ListInstancesResponse>;
+
 export type ListInstanceTokensRequestRegionId = "eu01";
+const ListInstanceTokensRequestRegionId = S.String;
+
 export interface ListInstanceTokensRequest {
   /** portal project id */
   projectId: string;
@@ -201,14 +290,33 @@ export interface ListInstanceTokensRequest {
   /** instance id */
   instanceId: string;
 }
+const ListInstanceTokensRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<ListInstanceTokensRequest>;
+
 export type ListInstanceTokensResponseTokensList = Array<TokenMetadata>;
+const ListInstanceTokensResponseTokensList = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<ListInstanceTokensResponseTokensList>;
+
 export interface ListInstanceTokensResponse {
   message?: string;
   tokens: ListInstanceTokensResponseTokensList;
 }
+const ListInstanceTokensResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<ListInstanceTokensResponse>;
+
 export type PartialUpdateInstanceRequestRegionId = "eu01";
+const PartialUpdateInstanceRequestRegionId = S.String;
+
 /** Object that represents the labels of an object. Regex for keys: `^([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9]$`. Regex for values: `^(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])*$`. Providing a `null` value for a key will remove that key. The `stackit-` prefix is reserved and cannot be used for Keys. */
 export type LabelPatch = { [key: string]: string | null | undefined };
+const LabelPatch = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<LabelPatch>;
+
 export interface PartialUpdateInstanceRequest {
   /** portal project id */
   projectId: string;
@@ -221,11 +329,23 @@ export interface PartialUpdateInstanceRequest {
   labels?: LabelPatch;
   name?: string;
 }
+const PartialUpdateInstanceRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<PartialUpdateInstanceRequest>;
+
 export interface PartialUpdateInstanceResponse {
   instance: Instance;
   message?: string;
 }
+const PartialUpdateInstanceResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<PartialUpdateInstanceResponse>;
+
 export type PartialUpdateInstanceTokenRequestRegionId = "eu01";
+const PartialUpdateInstanceTokenRequestRegionId = S.String;
+
 export interface PartialUpdateInstanceTokenRequest {
   /** portal project id */
   projectId: string;
@@ -239,10 +359,18 @@ export interface PartialUpdateInstanceTokenRequest {
   labels?: LabelPatch;
   name?: string;
 }
+const PartialUpdateInstanceTokenRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<PartialUpdateInstanceTokenRequest>;
+
 export interface PartialUpdateInstanceTokenResponse {
   message?: string;
   token: TokenMetadata;
 }
+const PartialUpdateInstanceTokenResponse =
+  DeleteInstanceTokenResponse as any as S.Schema<PartialUpdateInstanceTokenResponse>;
+
 export type CreateInstanceError = BadRequest | Forbidden | NotFound | StackitOpError;
 /** create an instance in a project create an instance in a project */
 export const createInstance: API.OperationMethod<
@@ -251,8 +379,8 @@ export const createInstance: API.OperationMethod<
   CreateInstanceError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1) as any as S.Schema<CreateInstanceRequest>,
-  output: __S(3) as any as S.Schema<CreateInstanceResponse>,
+  input: CreateInstanceRequest,
+  output: CreateInstanceResponse,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -266,8 +394,8 @@ export const createInstanceToken: API.OperationMethod<
   CreateInstanceTokenError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4) as any as S.Schema<CreateInstanceTokenRequest>,
-  output: __S(6) as any as S.Schema<CreateInstanceTokenResponse>,
+  input: CreateInstanceTokenRequest,
+  output: CreateInstanceTokenResponse,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -281,8 +409,8 @@ export const deleteInstance: API.OperationMethod<
   DeleteInstanceError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7) as any as S.Schema<DeleteInstanceRequest>,
-  output: __S(3) as any as S.Schema<DeleteInstanceResponse>,
+  input: DeleteInstanceRequest,
+  output: DeleteInstanceResponse,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -301,8 +429,8 @@ export const deleteInstanceToken: API.OperationMethod<
   DeleteInstanceTokenError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8) as any as S.Schema<DeleteInstanceTokenRequest>,
-  output: __S(10) as any as S.Schema<DeleteInstanceTokenResponse>,
+  input: DeleteInstanceTokenRequest,
+  output: DeleteInstanceTokenResponse,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -316,8 +444,8 @@ export const getInstance: API.OperationMethod<
   GetInstanceError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11) as any as S.Schema<GetInstanceRequest>,
-  output: __S(3) as any as S.Schema<GetInstanceResponse>,
+  input: GetInstanceRequest,
+  output: GetInstanceResponse,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -331,8 +459,8 @@ export const getInstanceToken: API.OperationMethod<
   GetInstanceTokenError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12) as any as S.Schema<GetInstanceTokenRequest>,
-  output: __S(13) as any as S.Schema<GetInstanceTokenResponse>,
+  input: GetInstanceTokenRequest,
+  output: GetInstanceTokenResponse,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -346,8 +474,8 @@ export const listInstances: API.OperationMethod<
   ListInstancesError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14) as any as S.Schema<ListInstancesRequest>,
-  output: __S(16) as any as S.Schema<ListInstancesResponse>,
+  input: ListInstancesRequest,
+  output: ListInstancesResponse,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -361,8 +489,8 @@ export const listInstanceTokens: API.OperationMethod<
   ListInstanceTokensError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17) as any as S.Schema<ListInstanceTokensRequest>,
-  output: __S(19) as any as S.Schema<ListInstanceTokensResponse>,
+  input: ListInstanceTokensRequest,
+  output: ListInstanceTokensResponse,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -381,8 +509,8 @@ export const partialUpdateInstance: API.OperationMethod<
   PartialUpdateInstanceError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21) as any as S.Schema<PartialUpdateInstanceRequest>,
-  output: __S(22) as any as S.Schema<PartialUpdateInstanceResponse>,
+  input: PartialUpdateInstanceRequest,
+  output: PartialUpdateInstanceResponse,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -401,8 +529,8 @@ export const partialUpdateInstanceToken: API.OperationMethod<
   PartialUpdateInstanceTokenError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23) as any as S.Schema<PartialUpdateInstanceTokenRequest>,
-  output: __S(10) as any as S.Schema<PartialUpdateInstanceTokenResponse>,
+  input: PartialUpdateInstanceTokenRequest,
+  output: PartialUpdateInstanceTokenResponse,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -417,10 +545,10 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
-          regionId: S.String.pipe(T.Label()),
+          regionId: CreateInstanceRequestRegionId.pipe(T.Label()),
           deletedExperimentRetention: S.optional(S.String),
           description: S.optional(S.String),
-          labels: S.optional(__S(0)),
+          labels: S.optional(Labels),
           name: S.String,
         }).pipe(
           T.Http({
@@ -439,17 +567,17 @@ function __c0(j: number): any {
           description: S.optional(S.String),
           errorMessage: S.optional(S.String),
           id: S.String,
-          labels: S.optional(__S(0)),
+          labels: S.optional(Labels),
           name: S.String,
           region: S.optional(S.String),
-          state: S.String,
+          state: InstanceState,
           url: S.String,
         }),
       ).annotate({ identifier: "Instance" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          instance: __S(2),
+          instance: Instance,
           message: S.optional(S.String),
         }),
       ).annotate({ identifier: "CreateInstanceResponse" });
@@ -457,10 +585,10 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
-          regionId: S.String.pipe(T.Label()),
+          regionId: CreateInstanceTokenRequestRegionId.pipe(T.Label()),
           instanceId: S.String.pipe(T.Label()),
           description: S.optional(S.String),
-          labels: S.optional(__S(0)),
+          labels: S.optional(Labels),
           name: S.String,
           ttlDuration: S.optional(S.String),
         }).pipe(
@@ -480,10 +608,10 @@ function __c0(j: number): any {
           content: S.String,
           description: S.optional(S.String),
           id: S.String,
-          labels: S.optional(__S(0)),
+          labels: S.optional(Labels),
           name: S.String,
           region: S.String,
-          state: S.String,
+          state: TokenState,
           validUntil: S.String,
         }),
       ).annotate({ identifier: "Token" });
@@ -491,7 +619,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           message: S.optional(S.String),
-          token: __S(5),
+          token: Token,
         }),
       ).annotate({
         identifier: "CreateInstanceTokenResponse",
@@ -500,7 +628,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
-          regionId: S.String.pipe(T.Label()),
+          regionId: DeleteInstanceRequestRegionId.pipe(T.Label()),
           instanceId: S.String.pipe(T.Label()),
         }).pipe(
           T.Http({
@@ -519,7 +647,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
-          regionId: S.String.pipe(T.Label()),
+          regionId: DeleteInstanceTokenRequestRegionId.pipe(T.Label()),
           instanceId: S.String.pipe(T.Label()),
           tokenId: S.String.pipe(T.Label()),
         }).pipe(
@@ -538,10 +666,10 @@ function __c1(j: number): any {
         S.Struct({
           description: S.optional(S.String),
           id: S.String,
-          labels: S.optional(__S(0)),
+          labels: S.optional(Labels),
           name: S.String,
           region: S.String,
-          state: S.String,
+          state: TokenState,
           validUntil: S.String,
         }),
       ).annotate({ identifier: "TokenMetadata" });
@@ -549,7 +677,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           message: S.optional(S.String),
-          token: __S(9),
+          token: TokenMetadata,
         }),
       ).annotate({
         identifier: "DeleteInstanceTokenResponse",
@@ -558,7 +686,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
-          regionId: S.String.pipe(T.Label()),
+          regionId: GetInstanceRequestRegionId.pipe(T.Label()),
           instanceId: S.String.pipe(T.Label()),
         }).pipe(
           T.Http({
@@ -573,7 +701,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
-          regionId: S.String.pipe(T.Label()),
+          regionId: GetInstanceTokenRequestRegionId.pipe(T.Label()),
           instanceId: S.String.pipe(T.Label()),
           tokenId: S.String.pipe(T.Label()),
         }).pipe(
@@ -589,14 +717,14 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           message: S.optional(S.String),
-          token: __S(9),
+          token: TokenMetadata,
         }),
       ).annotate({ identifier: "GetInstanceTokenResponse" });
     case 6:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
-          regionId: S.String.pipe(T.Label()),
+          regionId: ListInstancesRequestRegionId.pipe(T.Label()),
         }).pipe(
           T.Http({
             method: "GET",
@@ -607,7 +735,7 @@ function __c1(j: number): any {
         ),
       ).annotate({ identifier: "ListInstancesRequest" });
     case 7:
-      return S.Array(__S(2));
+      return S.Array(Instance);
   }
 }
 function __c2(j: number): any {
@@ -615,7 +743,7 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          instances: __S(15),
+          instances: ListInstancesResponseInstancesList,
           message: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListInstancesResponse" });
@@ -623,7 +751,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
-          regionId: S.String.pipe(T.Label()),
+          regionId: ListInstanceTokensRequestRegionId.pipe(T.Label()),
           instanceId: S.String.pipe(T.Label()),
         }).pipe(
           T.Http({
@@ -637,12 +765,12 @@ function __c2(j: number): any {
         identifier: "ListInstanceTokensRequest",
       });
     case 2:
-      return S.Array(__S(9));
+      return S.Array(TokenMetadata);
     case 3:
       return S.suspend(() =>
         S.Struct({
           message: S.optional(S.String),
-          tokens: __S(18),
+          tokens: ListInstanceTokensResponseTokensList,
         }),
       ).annotate({
         identifier: "ListInstanceTokensResponse",
@@ -653,11 +781,11 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
-          regionId: S.String.pipe(T.Label()),
+          regionId: PartialUpdateInstanceRequestRegionId.pipe(T.Label()),
           instanceId: S.String.pipe(T.Label()),
           deletedExperimentRetention: S.optional(S.String),
           description: S.optional(S.String),
-          labels: S.optional(__S(20)),
+          labels: S.optional(LabelPatch),
           name: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -673,7 +801,7 @@ function __c2(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          instance: __S(2),
+          instance: Instance,
           message: S.optional(S.String),
         }),
       ).annotate({
@@ -683,11 +811,11 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
-          regionId: S.String.pipe(T.Label()),
+          regionId: PartialUpdateInstanceTokenRequestRegionId.pipe(T.Label()),
           instanceId: S.String.pipe(T.Label()),
           tokenId: S.String.pipe(T.Label()),
           description: S.optional(S.String),
-          labels: S.optional(__S(20)),
+          labels: S.optional(LabelPatch),
           name: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -700,20 +828,5 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "PartialUpdateInstanceTokenRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
   }
 }

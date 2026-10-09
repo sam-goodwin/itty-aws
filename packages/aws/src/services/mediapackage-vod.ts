@@ -8,8 +8,6 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "MediaPackage Vod",
   serviceShapeName: "MediaPackageVod",
@@ -115,15 +113,19 @@ export class UnprocessableEntityException
 export interface EgressAccessLogs {
   LogGroupName?: string;
 }
+const EgressAccessLogs = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<EgressAccessLogs>;
 export interface ConfigureLogsRequest {
   EgressAccessLogs?: EgressAccessLogs;
   Id: string;
 }
+const ConfigureLogsRequest = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<ConfigureLogsRequest>;
 export interface Authorization {
   CdnIdentifierSecret?: string;
   SecretsRoleArn?: string;
 }
+const Authorization = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<Authorization>;
 export type Tags = { [key: string]: string | undefined };
+const Tags = /*@__PURE__*/ __L.at(__c0, 3);
 export interface ConfigureLogsResponse {
   Arn?: string;
   Authorization?: Authorization & { CdnIdentifierSecret: string; SecretsRoleArn: string };
@@ -133,6 +135,10 @@ export interface ConfigureLogsResponse {
   Id?: string;
   Tags?: { [key: string]: string | undefined };
 }
+const ConfigureLogsResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<ConfigureLogsResponse>;
 export interface CreateAssetRequest {
   Id?: string;
   PackagingGroupId?: string;
@@ -141,11 +147,13 @@ export interface CreateAssetRequest {
   SourceRoleArn?: string;
   Tags?: { [key: string]: string | undefined };
 }
+const CreateAssetRequest = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<CreateAssetRequest>;
 export interface EgressEndpoint {
   PackagingConfigurationId?: string;
   Status?: string;
   Url?: string;
 }
+const EgressEndpoint = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<EgressEndpoint>;
 export type __listOfEgressEndpoint = EgressEndpoint[];
 const __listOfEgressEndpoint = /*@__PURE__*/ __L.at(__c0, 7);
 export interface CreateAssetResponse {
@@ -159,6 +167,7 @@ export interface CreateAssetResponse {
   SourceRoleArn?: string;
   Tags?: { [key: string]: string | undefined };
 }
+const CreateAssetResponse = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<CreateAssetResponse>;
 export type PresetSpeke20Audio =
   | "PRESET-AUDIO-1"
   | "PRESET-AUDIO-2"
@@ -166,6 +175,8 @@ export type PresetSpeke20Audio =
   | "SHARED"
   | "UNENCRYPTED"
   | (string & {});
+const PresetSpeke20Audio = S.String;
+
 export type PresetSpeke20Video =
   | "PRESET-VIDEO-1"
   | "PRESET-VIDEO-2"
@@ -178,10 +189,16 @@ export type PresetSpeke20Video =
   | "SHARED"
   | "UNENCRYPTED"
   | (string & {});
+const PresetSpeke20Video = S.String;
+
 export interface EncryptionContractConfiguration {
   PresetSpeke20Audio?: PresetSpeke20Audio;
   PresetSpeke20Video?: PresetSpeke20Video;
 }
+const EncryptionContractConfiguration = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<EncryptionContractConfiguration>;
 export type __listOf__string = string[];
 const __listOf__string = /*@__PURE__*/ __L.at(__c1, 2);
 export interface SpekeKeyProvider {
@@ -190,21 +207,28 @@ export interface SpekeKeyProvider {
   SystemIds?: string[];
   Url?: string;
 }
+const SpekeKeyProvider = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<SpekeKeyProvider>;
 export interface CmafEncryption {
   ConstantInitializationVector?: string;
   SpekeKeyProvider?: SpekeKeyProvider;
 }
+const CmafEncryption = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<CmafEncryption>;
 export type AdMarkers = "NONE" | "SCTE35_ENHANCED" | "PASSTHROUGH" | (string & {});
+const AdMarkers = S.String;
+
 export type StreamOrder =
   | "ORIGINAL"
   | "VIDEO_BITRATE_ASCENDING"
   | "VIDEO_BITRATE_DESCENDING"
   | (string & {});
+const StreamOrder = S.String;
+
 export interface StreamSelection {
   MaxVideoBitsPerSecond?: number;
   MinVideoBitsPerSecond?: number;
   StreamOrder?: StreamOrder;
 }
+const StreamSelection = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<StreamSelection>;
 export interface HlsManifest {
   AdMarkers?: AdMarkers;
   IncludeIframeOnlyStream?: boolean;
@@ -213,6 +237,7 @@ export interface HlsManifest {
   RepeatExtXKey?: boolean;
   StreamSelection?: StreamSelection;
 }
+const HlsManifest = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<HlsManifest>;
 export type __listOfHlsManifest = HlsManifest[];
 const __listOfHlsManifest = /*@__PURE__*/ __L.at(__c1, 7);
 export interface CmafPackage {
@@ -221,9 +246,16 @@ export interface CmafPackage {
   IncludeEncoderConfigurationInSegments?: boolean;
   SegmentDurationSeconds?: number;
 }
+const CmafPackage = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<CmafPackage>;
 export type ManifestLayout = "FULL" | "COMPACT" | (string & {});
+const ManifestLayout = S.String;
+
 export type Profile = "NONE" | "HBBTV_1_5" | (string & {});
+const Profile = S.String;
+
 export type ScteMarkersSource = "SEGMENTS" | "MANIFEST" | (string & {});
+const ScteMarkersSource = S.String;
+
 export interface DashManifest {
   ManifestLayout?: ManifestLayout;
   ManifestName?: string;
@@ -232,11 +264,13 @@ export interface DashManifest {
   ScteMarkersSource?: ScteMarkersSource;
   StreamSelection?: StreamSelection;
 }
+const DashManifest = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<DashManifest>;
 export type __listOfDashManifest = DashManifest[];
 const __listOfDashManifest = /*@__PURE__*/ __L.at(__c2, 2);
 export interface DashEncryption {
   SpekeKeyProvider?: SpekeKeyProvider;
 }
+const DashEncryption = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<DashEncryption>;
 export type __PeriodTriggersElement = "ADS" | (string & {});
 const __PeriodTriggersElement = S.String;
 
@@ -247,6 +281,8 @@ export type SegmentTemplateFormat =
   | "TIME_WITH_TIMELINE"
   | "NUMBER_WITH_DURATION"
   | (string & {});
+const SegmentTemplateFormat = S.String;
+
 export interface DashPackage {
   DashManifests?: DashManifest[];
   Encryption?: DashEncryption;
@@ -256,12 +292,16 @@ export interface DashPackage {
   SegmentDurationSeconds?: number;
   SegmentTemplateFormat?: SegmentTemplateFormat;
 }
+const DashPackage = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<DashPackage>;
 export type EncryptionMethod = "AES_128" | "SAMPLE_AES" | (string & {});
+const EncryptionMethod = S.String;
+
 export interface HlsEncryption {
   ConstantInitializationVector?: string;
   EncryptionMethod?: EncryptionMethod;
   SpekeKeyProvider?: SpekeKeyProvider;
 }
+const HlsEncryption = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<HlsEncryption>;
 export interface HlsPackage {
   Encryption?: HlsEncryption;
   HlsManifests?: HlsManifest[];
@@ -269,13 +309,16 @@ export interface HlsPackage {
   SegmentDurationSeconds?: number;
   UseAudioRenditionGroup?: boolean;
 }
+const HlsPackage = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<HlsPackage>;
 export interface MssEncryption {
   SpekeKeyProvider?: SpekeKeyProvider;
 }
+const MssEncryption = DashEncryption as any as S.Schema<MssEncryption>;
 export interface MssManifest {
   ManifestName?: string;
   StreamSelection?: StreamSelection;
 }
+const MssManifest = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<MssManifest>;
 export type __listOfMssManifest = MssManifest[];
 const __listOfMssManifest = /*@__PURE__*/ __L.at(__c3, 1);
 export interface MssPackage {
@@ -283,6 +326,7 @@ export interface MssPackage {
   MssManifests?: MssManifest[];
   SegmentDurationSeconds?: number;
 }
+const MssPackage = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<MssPackage>;
 export interface CreatePackagingConfigurationRequest {
   CmafPackage?: CmafPackage;
   DashPackage?: DashPackage;
@@ -292,6 +336,10 @@ export interface CreatePackagingConfigurationRequest {
   PackagingGroupId?: string;
   Tags?: { [key: string]: string | undefined };
 }
+const CreatePackagingConfigurationRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<CreatePackagingConfigurationRequest>;
 export interface CreatePackagingConfigurationResponse {
   Arn?: string;
   CmafPackage?: CmafPackage & {
@@ -355,12 +403,20 @@ export interface CreatePackagingConfigurationResponse {
   PackagingGroupId?: string;
   Tags?: { [key: string]: string | undefined };
 }
+const CreatePackagingConfigurationResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<CreatePackagingConfigurationResponse>;
 export interface CreatePackagingGroupRequest {
   Authorization?: Authorization;
   EgressAccessLogs?: EgressAccessLogs;
   Id?: string;
   Tags?: { [key: string]: string | undefined };
 }
+const CreatePackagingGroupRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<CreatePackagingGroupRequest>;
 export interface CreatePackagingGroupResponse {
   Arn?: string;
   Authorization?: Authorization & { CdnIdentifierSecret: string; SecretsRoleArn: string };
@@ -370,21 +426,42 @@ export interface CreatePackagingGroupResponse {
   Id?: string;
   Tags?: { [key: string]: string | undefined };
 }
+const CreatePackagingGroupResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<CreatePackagingGroupResponse>;
 export interface DeleteAssetRequest {
   Id: string;
 }
+const DeleteAssetRequest = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<DeleteAssetRequest>;
 export interface DeleteAssetResponse {}
+const DeleteAssetResponse = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<DeleteAssetResponse>;
 export interface DeletePackagingConfigurationRequest {
   Id: string;
 }
+const DeletePackagingConfigurationRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<DeletePackagingConfigurationRequest>;
 export interface DeletePackagingConfigurationResponse {}
+const DeletePackagingConfigurationResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<DeletePackagingConfigurationResponse>;
 export interface DeletePackagingGroupRequest {
   Id: string;
 }
+const DeletePackagingGroupRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<DeletePackagingGroupRequest>;
 export interface DeletePackagingGroupResponse {}
+const DeletePackagingGroupResponse =
+  DeleteAssetResponse as any as S.Schema<DeletePackagingGroupResponse>;
 export interface DescribeAssetRequest {
   Id: string;
 }
+const DescribeAssetRequest = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<DescribeAssetRequest>;
 export interface DescribeAssetResponse {
   Arn?: string;
   CreatedAt?: string;
@@ -396,9 +473,14 @@ export interface DescribeAssetResponse {
   SourceRoleArn?: string;
   Tags?: { [key: string]: string | undefined };
 }
+const DescribeAssetResponse = CreateAssetResponse as any as S.Schema<DescribeAssetResponse>;
 export interface DescribePackagingConfigurationRequest {
   Id: string;
 }
+const DescribePackagingConfigurationRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<DescribePackagingConfigurationRequest>;
 export interface DescribePackagingConfigurationResponse {
   Arn?: string;
   CmafPackage?: CmafPackage & {
@@ -462,9 +544,15 @@ export interface DescribePackagingConfigurationResponse {
   PackagingGroupId?: string;
   Tags?: { [key: string]: string | undefined };
 }
+const DescribePackagingConfigurationResponse =
+  CreatePackagingConfigurationResponse as any as S.Schema<DescribePackagingConfigurationResponse>;
 export interface DescribePackagingGroupRequest {
   Id: string;
 }
+const DescribePackagingGroupRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<DescribePackagingGroupRequest>;
 export interface DescribePackagingGroupResponse {
   ApproximateAssetCount?: number;
   Arn?: string;
@@ -475,12 +563,17 @@ export interface DescribePackagingGroupResponse {
   Id?: string;
   Tags?: { [key: string]: string | undefined };
 }
+const DescribePackagingGroupResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<DescribePackagingGroupResponse>;
 export type MaxResults = number;
 export interface ListAssetsRequest {
   MaxResults?: number;
   NextToken?: string;
   PackagingGroupId?: string;
 }
+const ListAssetsRequest = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<ListAssetsRequest>;
 export interface AssetShallow {
   Arn?: string;
   CreatedAt?: string;
@@ -491,17 +584,23 @@ export interface AssetShallow {
   SourceRoleArn?: string;
   Tags?: { [key: string]: string | undefined };
 }
+const AssetShallow = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<AssetShallow>;
 export type __listOfAssetShallow = AssetShallow[];
 const __listOfAssetShallow = /*@__PURE__*/ __L.at(__c5, 2);
 export interface ListAssetsResponse {
   Assets?: AssetShallow[];
   NextToken?: string;
 }
+const ListAssetsResponse = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<ListAssetsResponse>;
 export interface ListPackagingConfigurationsRequest {
   MaxResults?: number;
   NextToken?: string;
   PackagingGroupId?: string;
 }
+const ListPackagingConfigurationsRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  4,
+) as any as S.Schema<ListPackagingConfigurationsRequest>;
 export interface PackagingConfiguration {
   Arn?: string;
   CmafPackage?: CmafPackage;
@@ -513,6 +612,10 @@ export interface PackagingConfiguration {
   PackagingGroupId?: string;
   Tags?: { [key: string]: string | undefined };
 }
+const PackagingConfiguration = /*@__PURE__*/ __L.at(
+  __c5,
+  5,
+) as any as S.Schema<PackagingConfiguration>;
 export type __listOfPackagingConfiguration = PackagingConfiguration[];
 const __listOfPackagingConfiguration = /*@__PURE__*/ __L.at(__c5, 6);
 export interface ListPackagingConfigurationsResponse {
@@ -576,10 +679,18 @@ export interface ListPackagingConfigurationsResponse {
     };
   })[];
 }
+const ListPackagingConfigurationsResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  7,
+) as any as S.Schema<ListPackagingConfigurationsResponse>;
 export interface ListPackagingGroupsRequest {
   MaxResults?: number;
   NextToken?: string;
 }
+const ListPackagingGroupsRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<ListPackagingGroupsRequest>;
 export interface PackagingGroup {
   ApproximateAssetCount?: number;
   Arn?: string;
@@ -590,6 +701,7 @@ export interface PackagingGroup {
   Id?: string;
   Tags?: { [key: string]: string | undefined };
 }
+const PackagingGroup = /*@__PURE__*/ __L.at(__c6, 1) as any as S.Schema<PackagingGroup>;
 export type __listOfPackagingGroup = PackagingGroup[];
 const __listOfPackagingGroup = /*@__PURE__*/ __L.at(__c6, 2);
 export interface ListPackagingGroupsResponse {
@@ -598,28 +710,48 @@ export interface ListPackagingGroupsResponse {
     Authorization: Authorization & { CdnIdentifierSecret: string; SecretsRoleArn: string };
   })[];
 }
+const ListPackagingGroupsResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  3,
+) as any as S.Schema<ListPackagingGroupsResponse>;
 export interface ListTagsForResourceRequest {
   ResourceArn: string;
 }
+const ListTagsForResourceRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  4,
+) as any as S.Schema<ListTagsForResourceRequest>;
 export type __mapOf__string = { [key: string]: string | undefined };
 const __mapOf__string = /*@__PURE__*/ __L.at(__c6, 5);
 export interface ListTagsForResourceResponse {
   Tags?: { [key: string]: string | undefined };
 }
+const ListTagsForResourceResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  6,
+) as any as S.Schema<ListTagsForResourceResponse>;
 export interface TagResourceRequest {
   ResourceArn: string;
   Tags?: { [key: string]: string | undefined };
 }
+const TagResourceRequest = /*@__PURE__*/ __L.at(__c6, 7) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
+const TagResourceResponse = DeleteAssetResponse as any as S.Schema<TagResourceResponse>;
 export interface UntagResourceRequest {
   ResourceArn: string;
   TagKeys?: string[];
 }
+const UntagResourceRequest = /*@__PURE__*/ __L.at(__c7, 0) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
+const UntagResourceResponse = DeleteAssetResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdatePackagingGroupRequest {
   Authorization?: Authorization;
   Id: string;
 }
+const UpdatePackagingGroupRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  1,
+) as any as S.Schema<UpdatePackagingGroupRequest>;
 export interface UpdatePackagingGroupResponse {
   ApproximateAssetCount?: number;
   Arn?: string;
@@ -630,6 +762,8 @@ export interface UpdatePackagingGroupResponse {
   Id?: string;
   Tags?: { [key: string]: string | undefined };
 }
+const UpdatePackagingGroupResponse =
+  DescribePackagingGroupResponse as any as S.Schema<UpdatePackagingGroupResponse>;
 export type ConfigureLogsError =
   | ForbiddenException
   | InternalServerErrorException
@@ -647,8 +781,8 @@ export const configureLogs: API.OperationMethod<
   ConfigureLogsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1) as any as S.Schema<ConfigureLogsRequest>,
-  output: __S(4) as any as S.Schema<ConfigureLogsResponse>,
+  input: ConfigureLogsRequest,
+  output: ConfigureLogsResponse,
   errors: [
     ForbiddenException,
     InternalServerErrorException,
@@ -679,8 +813,8 @@ export const createAsset: API.OperationMethod<
   CreateAssetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5) as any as S.Schema<CreateAssetRequest>,
-  output: __S(8) as any as S.Schema<CreateAssetResponse>,
+  input: CreateAssetRequest,
+  output: CreateAssetResponse,
   errors: [
     ForbiddenException,
     InternalServerErrorException,
@@ -711,8 +845,8 @@ export const createPackagingConfiguration: API.OperationMethod<
   CreatePackagingConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27) as any as S.Schema<CreatePackagingConfigurationRequest>,
-  output: __S(28) as any as S.Schema<CreatePackagingConfigurationResponse>,
+  input: CreatePackagingConfigurationRequest,
+  output: CreatePackagingConfigurationResponse,
   errors: [
     ForbiddenException,
     InternalServerErrorException,
@@ -743,8 +877,8 @@ export const createPackagingGroup: API.OperationMethod<
   CreatePackagingGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29) as any as S.Schema<CreatePackagingGroupRequest>,
-  output: __S(30) as any as S.Schema<CreatePackagingGroupResponse>,
+  input: CreatePackagingGroupRequest,
+  output: CreatePackagingGroupResponse,
   errors: [
     ForbiddenException,
     InternalServerErrorException,
@@ -775,8 +909,8 @@ export const deleteAsset: API.OperationMethod<
   DeleteAssetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31) as any as S.Schema<DeleteAssetRequest>,
-  output: __S(32) as any as S.Schema<DeleteAssetResponse>,
+  input: DeleteAssetRequest,
+  output: DeleteAssetResponse,
   errors: [
     ForbiddenException,
     InternalServerErrorException,
@@ -807,8 +941,8 @@ export const deletePackagingConfiguration: API.OperationMethod<
   DeletePackagingConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33) as any as S.Schema<DeletePackagingConfigurationRequest>,
-  output: __S(34) as any as S.Schema<DeletePackagingConfigurationResponse>,
+  input: DeletePackagingConfigurationRequest,
+  output: DeletePackagingConfigurationResponse,
   errors: [
     ForbiddenException,
     InternalServerErrorException,
@@ -839,8 +973,8 @@ export const deletePackagingGroup: API.OperationMethod<
   DeletePackagingGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35) as any as S.Schema<DeletePackagingGroupRequest>,
-  output: __S(32) as any as S.Schema<DeletePackagingGroupResponse>,
+  input: DeletePackagingGroupRequest,
+  output: DeletePackagingGroupResponse,
   errors: [
     ForbiddenException,
     InternalServerErrorException,
@@ -871,8 +1005,8 @@ export const describeAsset: API.OperationMethod<
   DescribeAssetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36) as any as S.Schema<DescribeAssetRequest>,
-  output: __S(8) as any as S.Schema<DescribeAssetResponse>,
+  input: DescribeAssetRequest,
+  output: DescribeAssetResponse,
   errors: [
     ForbiddenException,
     InternalServerErrorException,
@@ -903,8 +1037,8 @@ export const describePackagingConfiguration: API.OperationMethod<
   DescribePackagingConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37) as any as S.Schema<DescribePackagingConfigurationRequest>,
-  output: __S(28) as any as S.Schema<DescribePackagingConfigurationResponse>,
+  input: DescribePackagingConfigurationRequest,
+  output: DescribePackagingConfigurationResponse,
   errors: [
     ForbiddenException,
     InternalServerErrorException,
@@ -935,8 +1069,8 @@ export const describePackagingGroup: API.OperationMethod<
   DescribePackagingGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38) as any as S.Schema<DescribePackagingGroupRequest>,
-  output: __S(39) as any as S.Schema<DescribePackagingGroupResponse>,
+  input: DescribePackagingGroupRequest,
+  output: DescribePackagingGroupResponse,
   errors: [
     ForbiddenException,
     InternalServerErrorException,
@@ -968,8 +1102,8 @@ export const listAssets: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   AssetShallow
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(40) as any as S.Schema<ListAssetsRequest>,
-  output: __S(43) as any as S.Schema<ListAssetsResponse>,
+  input: ListAssetsRequest,
+  output: ListAssetsResponse,
   errors: [
     ForbiddenException,
     InternalServerErrorException,
@@ -1007,8 +1141,8 @@ export const listPackagingConfigurations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   PackagingConfiguration
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(44) as any as S.Schema<ListPackagingConfigurationsRequest>,
-  output: __S(47) as any as S.Schema<ListPackagingConfigurationsResponse>,
+  input: ListPackagingConfigurationsRequest,
+  output: ListPackagingConfigurationsResponse,
   errors: [
     ForbiddenException,
     InternalServerErrorException,
@@ -1046,8 +1180,8 @@ export const listPackagingGroups: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   PackagingGroup
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(48) as any as S.Schema<ListPackagingGroupsRequest>,
-  output: __S(51) as any as S.Schema<ListPackagingGroupsResponse>,
+  input: ListPackagingGroupsRequest,
+  output: ListPackagingGroupsResponse,
   errors: [
     ForbiddenException,
     InternalServerErrorException,
@@ -1077,8 +1211,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(52) as any as S.Schema<ListTagsForResourceRequest>,
-  output: __S(54) as any as S.Schema<ListTagsForResourceResponse>,
+  input: ListTagsForResourceRequest,
+  output: ListTagsForResourceResponse,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1095,8 +1229,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(55) as any as S.Schema<TagResourceRequest>,
-  output: __S(32) as any as S.Schema<TagResourceResponse>,
+  input: TagResourceRequest,
+  output: TagResourceResponse,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1113,8 +1247,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56) as any as S.Schema<UntagResourceRequest>,
-  output: __S(32) as any as S.Schema<UntagResourceResponse>,
+  input: UntagResourceRequest,
+  output: UntagResourceResponse,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1138,8 +1272,8 @@ export const updatePackagingGroup: API.OperationMethod<
   UpdatePackagingGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57) as any as S.Schema<UpdatePackagingGroupRequest>,
-  output: __S(39) as any as S.Schema<UpdatePackagingGroupResponse>,
+  input: UpdatePackagingGroupRequest,
+  output: UpdatePackagingGroupResponse,
   errors: [
     ForbiddenException,
     InternalServerErrorException,
@@ -1165,7 +1299,7 @@ function __c0(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          EgressAccessLogs: S.optional(__S(0)),
+          EgressAccessLogs: S.optional(EgressAccessLogs),
           Id: S.String.pipe(T.HttpLabel("Id")),
         })
           .pipe(S.encodeKeys({ EgressAccessLogs: "egressAccessLogs" }))
@@ -1198,12 +1332,12 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Arn: S.optional(S.String),
-          Authorization: S.optional(__S(2)),
+          Authorization: S.optional(Authorization),
           CreatedAt: S.optional(S.String),
           DomainName: S.optional(S.String),
-          EgressAccessLogs: S.optional(__S(0)),
+          EgressAccessLogs: S.optional(EgressAccessLogs),
           Id: S.optional(S.String),
-          Tags: S.optional(__S(3)),
+          Tags: S.optional(Tags),
         }).pipe(
           S.encodeKeys({
             Arn: "arn",
@@ -1224,7 +1358,7 @@ function __c0(j: number): any {
           ResourceId: S.optional(S.String),
           SourceArn: S.optional(S.String),
           SourceRoleArn: S.optional(S.String),
-          Tags: S.optional(__S(3)),
+          Tags: S.optional(Tags),
         })
           .pipe(
             S.encodeKeys({
@@ -1253,7 +1387,7 @@ function __c0(j: number): any {
         ),
       ).annotate({ identifier: "EgressEndpoint" });
     case 7:
-      return S.Array(__S(6));
+      return S.Array(EgressEndpoint);
   }
 }
 function __c1(j: number): any {
@@ -1269,7 +1403,7 @@ function __c1(j: number): any {
           ResourceId: S.optional(S.String),
           SourceArn: S.optional(S.String),
           SourceRoleArn: S.optional(S.String),
-          Tags: S.optional(__S(3)),
+          Tags: S.optional(Tags),
         }).pipe(
           S.encodeKeys({
             Arn: "arn",
@@ -1287,8 +1421,8 @@ function __c1(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          PresetSpeke20Audio: S.optional(S.String),
-          PresetSpeke20Video: S.optional(S.String),
+          PresetSpeke20Audio: S.optional(PresetSpeke20Audio),
+          PresetSpeke20Video: S.optional(PresetSpeke20Video),
         }).pipe(
           S.encodeKeys({
             PresetSpeke20Audio: "presetSpeke20Audio",
@@ -1303,7 +1437,7 @@ function __c1(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          EncryptionContractConfiguration: S.optional(__S(9)),
+          EncryptionContractConfiguration: S.optional(EncryptionContractConfiguration),
           RoleArn: S.optional(S.String),
           SystemIds: S.optional(__listOf__string),
           Url: S.optional(S.String),
@@ -1320,7 +1454,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ConstantInitializationVector: S.optional(S.String),
-          SpekeKeyProvider: S.optional(__S(11)),
+          SpekeKeyProvider: S.optional(SpekeKeyProvider),
         }).pipe(
           S.encodeKeys({
             ConstantInitializationVector: "constantInitializationVector",
@@ -1333,7 +1467,7 @@ function __c1(j: number): any {
         S.Struct({
           MaxVideoBitsPerSecond: S.optional(S.Number),
           MinVideoBitsPerSecond: S.optional(S.Number),
-          StreamOrder: S.optional(S.String),
+          StreamOrder: S.optional(StreamOrder),
         }).pipe(
           S.encodeKeys({
             MaxVideoBitsPerSecond: "maxVideoBitsPerSecond",
@@ -1345,12 +1479,12 @@ function __c1(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          AdMarkers: S.optional(S.String),
+          AdMarkers: S.optional(AdMarkers),
           IncludeIframeOnlyStream: S.optional(S.Boolean),
           ManifestName: S.optional(S.String),
           ProgramDateTimeIntervalSeconds: S.optional(S.Number),
           RepeatExtXKey: S.optional(S.Boolean),
-          StreamSelection: S.optional(__S(13)),
+          StreamSelection: S.optional(StreamSelection),
         }).pipe(
           S.encodeKeys({
             AdMarkers: "adMarkers",
@@ -1363,7 +1497,7 @@ function __c1(j: number): any {
         ),
       ).annotate({ identifier: "HlsManifest" });
     case 7:
-      return S.Array(__S(14));
+      return S.Array(HlsManifest);
   }
 }
 function __c2(j: number): any {
@@ -1371,7 +1505,7 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          Encryption: S.optional(__S(12)),
+          Encryption: S.optional(CmafEncryption),
           HlsManifests: S.optional(__listOfHlsManifest),
           IncludeEncoderConfigurationInSegments: S.optional(S.Boolean),
           SegmentDurationSeconds: S.optional(S.Number),
@@ -1387,12 +1521,12 @@ function __c2(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          ManifestLayout: S.optional(S.String),
+          ManifestLayout: S.optional(ManifestLayout),
           ManifestName: S.optional(S.String),
           MinBufferTimeSeconds: S.optional(S.Number),
-          Profile: S.optional(S.String),
-          ScteMarkersSource: S.optional(S.String),
-          StreamSelection: S.optional(__S(13)),
+          Profile: S.optional(Profile),
+          ScteMarkersSource: S.optional(ScteMarkersSource),
+          StreamSelection: S.optional(StreamSelection),
         }).pipe(
           S.encodeKeys({
             ManifestLayout: "manifestLayout",
@@ -1405,10 +1539,10 @@ function __c2(j: number): any {
         ),
       ).annotate({ identifier: "DashManifest" });
     case 2:
-      return S.Array(__S(17));
+      return S.Array(DashManifest);
     case 3:
       return S.suspend(() =>
-        S.Struct({ SpekeKeyProvider: S.optional(__S(11)) }).pipe(
+        S.Struct({ SpekeKeyProvider: S.optional(SpekeKeyProvider) }).pipe(
           S.encodeKeys({ SpekeKeyProvider: "spekeKeyProvider" }),
         ),
       ).annotate({ identifier: "DashEncryption" });
@@ -1418,12 +1552,12 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           DashManifests: S.optional(__listOfDashManifest),
-          Encryption: S.optional(__S(19)),
+          Encryption: S.optional(DashEncryption),
           IncludeEncoderConfigurationInSegments: S.optional(S.Boolean),
           IncludeIframeOnlyStream: S.optional(S.Boolean),
           PeriodTriggers: S.optional(__listOf__PeriodTriggersElement),
           SegmentDurationSeconds: S.optional(S.Number),
-          SegmentTemplateFormat: S.optional(S.String),
+          SegmentTemplateFormat: S.optional(SegmentTemplateFormat),
         }).pipe(
           S.encodeKeys({
             DashManifests: "dashManifests",
@@ -1440,8 +1574,8 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ConstantInitializationVector: S.optional(S.String),
-          EncryptionMethod: S.optional(S.String),
-          SpekeKeyProvider: S.optional(__S(11)),
+          EncryptionMethod: S.optional(EncryptionMethod),
+          SpekeKeyProvider: S.optional(SpekeKeyProvider),
         }).pipe(
           S.encodeKeys({
             ConstantInitializationVector: "constantInitializationVector",
@@ -1453,7 +1587,7 @@ function __c2(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          Encryption: S.optional(__S(22)),
+          Encryption: S.optional(HlsEncryption),
           HlsManifests: S.optional(__listOfHlsManifest),
           IncludeDvbSubtitles: S.optional(S.Boolean),
           SegmentDurationSeconds: S.optional(S.Number),
@@ -1476,15 +1610,15 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ManifestName: S.optional(S.String),
-          StreamSelection: S.optional(__S(13)),
+          StreamSelection: S.optional(StreamSelection),
         }).pipe(S.encodeKeys({ ManifestName: "manifestName", StreamSelection: "streamSelection" })),
       ).annotate({ identifier: "MssManifest" });
     case 1:
-      return S.Array(__S(24));
+      return S.Array(MssManifest);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          Encryption: S.optional(__S(19)),
+          Encryption: S.optional(MssEncryption),
           MssManifests: S.optional(__listOfMssManifest),
           SegmentDurationSeconds: S.optional(S.Number),
         }).pipe(
@@ -1498,13 +1632,13 @@ function __c3(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          CmafPackage: S.optional(__S(16)),
-          DashPackage: S.optional(__S(21)),
-          HlsPackage: S.optional(__S(23)),
+          CmafPackage: S.optional(CmafPackage),
+          DashPackage: S.optional(DashPackage),
+          HlsPackage: S.optional(HlsPackage),
           Id: S.optional(S.String),
-          MssPackage: S.optional(__S(26)),
+          MssPackage: S.optional(MssPackage),
           PackagingGroupId: S.optional(S.String),
-          Tags: S.optional(__S(3)),
+          Tags: S.optional(Tags),
         })
           .pipe(
             S.encodeKeys({
@@ -1534,14 +1668,14 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Arn: S.optional(S.String),
-          CmafPackage: S.optional(__S(16)),
+          CmafPackage: S.optional(CmafPackage),
           CreatedAt: S.optional(S.String),
-          DashPackage: S.optional(__S(21)),
-          HlsPackage: S.optional(__S(23)),
+          DashPackage: S.optional(DashPackage),
+          HlsPackage: S.optional(HlsPackage),
           Id: S.optional(S.String),
-          MssPackage: S.optional(__S(26)),
+          MssPackage: S.optional(MssPackage),
           PackagingGroupId: S.optional(S.String),
-          Tags: S.optional(__S(3)),
+          Tags: S.optional(Tags),
         }).pipe(
           S.encodeKeys({
             Arn: "arn",
@@ -1561,10 +1695,10 @@ function __c3(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          Authorization: S.optional(__S(2)),
-          EgressAccessLogs: S.optional(__S(0)),
+          Authorization: S.optional(Authorization),
+          EgressAccessLogs: S.optional(EgressAccessLogs),
           Id: S.optional(S.String),
-          Tags: S.optional(__S(3)),
+          Tags: S.optional(Tags),
         })
           .pipe(
             S.encodeKeys({
@@ -1591,12 +1725,12 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Arn: S.optional(S.String),
-          Authorization: S.optional(__S(2)),
+          Authorization: S.optional(Authorization),
           CreatedAt: S.optional(S.String),
           DomainName: S.optional(S.String),
-          EgressAccessLogs: S.optional(__S(0)),
+          EgressAccessLogs: S.optional(EgressAccessLogs),
           Id: S.optional(S.String),
-          Tags: S.optional(__S(3)),
+          Tags: S.optional(Tags),
         }).pipe(
           S.encodeKeys({
             Arn: "arn",
@@ -1700,12 +1834,12 @@ function __c4(j: number): any {
         S.Struct({
           ApproximateAssetCount: S.optional(S.Number),
           Arn: S.optional(S.String),
-          Authorization: S.optional(__S(2)),
+          Authorization: S.optional(Authorization),
           CreatedAt: S.optional(S.String),
           DomainName: S.optional(S.String),
-          EgressAccessLogs: S.optional(__S(0)),
+          EgressAccessLogs: S.optional(EgressAccessLogs),
           Id: S.optional(S.String),
-          Tags: S.optional(__S(3)),
+          Tags: S.optional(Tags),
         }).pipe(
           S.encodeKeys({
             ApproximateAssetCount: "approximateAssetCount",
@@ -1743,7 +1877,7 @@ function __c5(j: number): any {
           ResourceId: S.optional(S.String),
           SourceArn: S.optional(S.String),
           SourceRoleArn: S.optional(S.String),
-          Tags: S.optional(__S(3)),
+          Tags: S.optional(Tags),
         }).pipe(
           S.encodeKeys({
             Arn: "arn",
@@ -1758,7 +1892,7 @@ function __c5(j: number): any {
         ),
       ).annotate({ identifier: "AssetShallow" });
     case 2:
-      return S.Array(__S(41));
+      return S.Array(AssetShallow);
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -1789,14 +1923,14 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Arn: S.optional(S.String),
-          CmafPackage: S.optional(__S(16)),
+          CmafPackage: S.optional(CmafPackage),
           CreatedAt: S.optional(S.String),
-          DashPackage: S.optional(__S(21)),
-          HlsPackage: S.optional(__S(23)),
+          DashPackage: S.optional(DashPackage),
+          HlsPackage: S.optional(HlsPackage),
           Id: S.optional(S.String),
-          MssPackage: S.optional(__S(26)),
+          MssPackage: S.optional(MssPackage),
           PackagingGroupId: S.optional(S.String),
-          Tags: S.optional(__S(3)),
+          Tags: S.optional(Tags),
         }).pipe(
           S.encodeKeys({
             Arn: "arn",
@@ -1812,7 +1946,7 @@ function __c5(j: number): any {
         ),
       ).annotate({ identifier: "PackagingConfiguration" });
     case 6:
-      return S.Array(__S(45));
+      return S.Array(PackagingConfiguration);
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -1847,12 +1981,12 @@ function __c6(j: number): any {
         S.Struct({
           ApproximateAssetCount: S.optional(S.Number),
           Arn: S.optional(S.String),
-          Authorization: S.optional(__S(2)),
+          Authorization: S.optional(Authorization),
           CreatedAt: S.optional(S.String),
           DomainName: S.optional(S.String),
-          EgressAccessLogs: S.optional(__S(0)),
+          EgressAccessLogs: S.optional(EgressAccessLogs),
           Id: S.optional(S.String),
-          Tags: S.optional(__S(3)),
+          Tags: S.optional(Tags),
         }).pipe(
           S.encodeKeys({
             ApproximateAssetCount: "approximateAssetCount",
@@ -1867,7 +2001,7 @@ function __c6(j: number): any {
         ),
       ).annotate({ identifier: "PackagingGroup" });
     case 2:
-      return S.Array(__S(49));
+      return S.Array(PackagingGroup);
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -1940,7 +2074,7 @@ function __c7(j: number): any {
       ).annotate({ identifier: "UntagResourceRequest" });
     case 1:
       return S.suspend(() =>
-        S.Struct({ Authorization: S.optional(__S(2)), Id: S.String.pipe(T.HttpLabel("Id")) })
+        S.Struct({ Authorization: S.optional(Authorization), Id: S.String.pipe(T.HttpLabel("Id")) })
           .pipe(S.encodeKeys({ Authorization: "authorization" }))
           .pipe(
             T.all(
@@ -1955,30 +2089,5 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "UpdatePackagingGroupRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
   }
 }

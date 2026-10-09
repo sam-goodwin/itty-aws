@@ -8,8 +8,6 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 const ns = /*@__PURE__*/ T.XmlNamespace("http://cloudsearch.amazonaws.com/doc/2013-01-01/");
 const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "CloudSearch",
@@ -167,20 +165,31 @@ export type DomainName = string;
 export interface BuildSuggestersRequest {
   DomainName: string;
 }
+const BuildSuggestersRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<BuildSuggestersRequest>;
 export type FieldName = string;
 export type FieldNameList = string[];
+const FieldNameList = /*@__PURE__*/ __L.at(__c0, 1);
 export interface BuildSuggestersResponse {
   FieldNames?: string[];
 }
+const BuildSuggestersResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<BuildSuggestersResponse>;
 export interface CreateDomainRequest {
   DomainName: string;
 }
+const CreateDomainRequest = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<CreateDomainRequest>;
 export type DomainId = string;
 export type ARN = string;
 export type ServiceUrl = string;
 export interface ServiceEndpoint {
   Endpoint?: string;
 }
+const ServiceEndpoint = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<ServiceEndpoint>;
 export type SearchInstanceType = string;
 export type PartitionCount = number;
 export type InstanceCount = number;
@@ -190,6 +199,7 @@ export interface Limits {
   MaximumReplicationCount: number;
   MaximumPartitionCount: number;
 }
+const Limits = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<Limits>;
 export interface DomainStatus {
   DomainId: string;
   DomainName: string;
@@ -205,9 +215,11 @@ export interface DomainStatus {
   SearchInstanceCount?: number;
   Limits?: Limits;
 }
+const DomainStatus = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<DomainStatus>;
 export interface CreateDomainResponse {
   DomainStatus?: DomainStatus;
 }
+const CreateDomainResponse = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<CreateDomainResponse>;
 export type StandardName = string;
 export type AnalysisSchemeLanguage =
   | "ar"
@@ -246,7 +258,11 @@ export type AnalysisSchemeLanguage =
   | "zh-Hans"
   | "zh-Hant"
   | (string & {});
+const AnalysisSchemeLanguage = S.String;
+
 export type AlgorithmicStemming = "none" | "minimal" | "light" | "full" | (string & {});
+const AlgorithmicStemming = S.String;
+
 export interface AnalysisOptions {
   Synonyms?: string;
   Stopwords?: string;
@@ -254,15 +270,21 @@ export interface AnalysisOptions {
   JapaneseTokenizationDictionary?: string;
   AlgorithmicStemming?: AlgorithmicStemming;
 }
+const AnalysisOptions = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<AnalysisOptions>;
 export interface AnalysisScheme {
   AnalysisSchemeName: string;
   AnalysisSchemeLanguage: AnalysisSchemeLanguage;
   AnalysisOptions?: AnalysisOptions;
 }
+const AnalysisScheme = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<AnalysisScheme>;
 export interface DefineAnalysisSchemeRequest {
   DomainName: string;
   AnalysisScheme: AnalysisScheme;
 }
+const DefineAnalysisSchemeRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<DefineAnalysisSchemeRequest>;
 export type UpdateTimestamp = Date;
 export type UIntValue = number;
 export type OptionState =
@@ -271,6 +293,8 @@ export type OptionState =
   | "Active"
   | "FailedToValidate"
   | (string & {});
+const OptionState = S.String;
+
 export interface OptionStatus {
   CreationDate: Date;
   UpdateDate: Date;
@@ -278,29 +302,45 @@ export interface OptionStatus {
   State: OptionState;
   PendingDeletion?: boolean;
 }
+const OptionStatus = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<OptionStatus>;
 export interface AnalysisSchemeStatus {
   Options: AnalysisScheme;
   Status: OptionStatus;
 }
+const AnalysisSchemeStatus = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<AnalysisSchemeStatus>;
 export interface DefineAnalysisSchemeResponse {
   AnalysisScheme: AnalysisSchemeStatus;
 }
+const DefineAnalysisSchemeResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<DefineAnalysisSchemeResponse>;
 export type ExpressionValue = string;
 export interface Expression {
   ExpressionName: string;
   ExpressionValue: string;
 }
+const Expression = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<Expression>;
 export interface DefineExpressionRequest {
   DomainName: string;
   Expression: Expression;
 }
+const DefineExpressionRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<DefineExpressionRequest>;
 export interface ExpressionStatus {
   Options: Expression;
   Status: OptionStatus;
 }
+const ExpressionStatus = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<ExpressionStatus>;
 export interface DefineExpressionResponse {
   Expression: ExpressionStatus;
 }
+const DefineExpressionResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<DefineExpressionResponse>;
 export type DynamicFieldName = string;
 export type IndexFieldType =
   | "int"
@@ -315,6 +355,8 @@ export type IndexFieldType =
   | "text-array"
   | "date-array"
   | (string & {});
+const IndexFieldType = S.String;
+
 export interface IntOptions {
   DefaultValue?: number;
   SourceField?: string;
@@ -323,6 +365,7 @@ export interface IntOptions {
   ReturnEnabled?: boolean;
   SortEnabled?: boolean;
 }
+const IntOptions = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<IntOptions>;
 export interface DoubleOptions {
   DefaultValue?: number;
   SourceField?: string;
@@ -331,6 +374,7 @@ export interface DoubleOptions {
   ReturnEnabled?: boolean;
   SortEnabled?: boolean;
 }
+const DoubleOptions = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<DoubleOptions>;
 export type FieldValue = string;
 export interface LiteralOptions {
   DefaultValue?: string;
@@ -340,6 +384,7 @@ export interface LiteralOptions {
   ReturnEnabled?: boolean;
   SortEnabled?: boolean;
 }
+const LiteralOptions = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<LiteralOptions>;
 export type Word = string;
 export interface TextOptions {
   DefaultValue?: string;
@@ -349,6 +394,7 @@ export interface TextOptions {
   HighlightEnabled?: boolean;
   AnalysisScheme?: string;
 }
+const TextOptions = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<TextOptions>;
 export interface DateOptions {
   DefaultValue?: string;
   SourceField?: string;
@@ -357,6 +403,7 @@ export interface DateOptions {
   ReturnEnabled?: boolean;
   SortEnabled?: boolean;
 }
+const DateOptions = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<DateOptions>;
 export interface LatLonOptions {
   DefaultValue?: string;
   SourceField?: string;
@@ -365,6 +412,7 @@ export interface LatLonOptions {
   ReturnEnabled?: boolean;
   SortEnabled?: boolean;
 }
+const LatLonOptions = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<LatLonOptions>;
 export type FieldNameCommaList = string;
 export interface IntArrayOptions {
   DefaultValue?: number;
@@ -373,6 +421,7 @@ export interface IntArrayOptions {
   SearchEnabled?: boolean;
   ReturnEnabled?: boolean;
 }
+const IntArrayOptions = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<IntArrayOptions>;
 export interface DoubleArrayOptions {
   DefaultValue?: number;
   SourceFields?: string;
@@ -380,6 +429,7 @@ export interface DoubleArrayOptions {
   SearchEnabled?: boolean;
   ReturnEnabled?: boolean;
 }
+const DoubleArrayOptions = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<DoubleArrayOptions>;
 export interface LiteralArrayOptions {
   DefaultValue?: string;
   SourceFields?: string;
@@ -387,6 +437,7 @@ export interface LiteralArrayOptions {
   SearchEnabled?: boolean;
   ReturnEnabled?: boolean;
 }
+const LiteralArrayOptions = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<LiteralArrayOptions>;
 export interface TextArrayOptions {
   DefaultValue?: string;
   SourceFields?: string;
@@ -394,6 +445,7 @@ export interface TextArrayOptions {
   HighlightEnabled?: boolean;
   AnalysisScheme?: string;
 }
+const TextArrayOptions = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<TextArrayOptions>;
 export interface DateArrayOptions {
   DefaultValue?: string;
   SourceFields?: string;
@@ -401,6 +453,7 @@ export interface DateArrayOptions {
   SearchEnabled?: boolean;
   ReturnEnabled?: boolean;
 }
+const DateArrayOptions = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<DateArrayOptions>;
 export interface IndexField {
   IndexFieldName: string;
   IndexFieldType: IndexFieldType;
@@ -416,143 +469,276 @@ export interface IndexField {
   TextArrayOptions?: TextArrayOptions;
   DateArrayOptions?: DateArrayOptions;
 }
+const IndexField = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<IndexField>;
 export interface DefineIndexFieldRequest {
   DomainName: string;
   IndexField: IndexField;
 }
+const DefineIndexFieldRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<DefineIndexFieldRequest>;
 export interface IndexFieldStatus {
   Options: IndexField;
   Status: OptionStatus;
 }
+const IndexFieldStatus = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<IndexFieldStatus>;
 export interface DefineIndexFieldResponse {
   IndexField: IndexFieldStatus;
 }
+const DefineIndexFieldResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<DefineIndexFieldResponse>;
 export type SuggesterFuzzyMatching = "none" | "low" | "high" | (string & {});
+const SuggesterFuzzyMatching = S.String;
+
 export interface DocumentSuggesterOptions {
   SourceField: string;
   FuzzyMatching?: SuggesterFuzzyMatching;
   SortExpression?: string;
 }
+const DocumentSuggesterOptions = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<DocumentSuggesterOptions>;
 export interface Suggester {
   SuggesterName: string;
   DocumentSuggesterOptions: DocumentSuggesterOptions;
 }
+const Suggester = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<Suggester>;
 export interface DefineSuggesterRequest {
   DomainName: string;
   Suggester: Suggester;
 }
+const DefineSuggesterRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<DefineSuggesterRequest>;
 export interface SuggesterStatus {
   Options: Suggester;
   Status: OptionStatus;
 }
+const SuggesterStatus = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<SuggesterStatus>;
 export interface DefineSuggesterResponse {
   Suggester: SuggesterStatus;
 }
+const DefineSuggesterResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<DefineSuggesterResponse>;
 export interface DeleteAnalysisSchemeRequest {
   DomainName: string;
   AnalysisSchemeName: string;
 }
+const DeleteAnalysisSchemeRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<DeleteAnalysisSchemeRequest>;
 export interface DeleteAnalysisSchemeResponse {
   AnalysisScheme: AnalysisSchemeStatus;
 }
+const DeleteAnalysisSchemeResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<DeleteAnalysisSchemeResponse>;
 export interface DeleteDomainRequest {
   DomainName: string;
 }
+const DeleteDomainRequest = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<DeleteDomainRequest>;
 export interface DeleteDomainResponse {
   DomainStatus?: DomainStatus;
 }
+const DeleteDomainResponse = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<DeleteDomainResponse>;
 export interface DeleteExpressionRequest {
   DomainName: string;
   ExpressionName: string;
 }
+const DeleteExpressionRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  2,
+) as any as S.Schema<DeleteExpressionRequest>;
 export interface DeleteExpressionResponse {
   Expression: ExpressionStatus;
 }
+const DeleteExpressionResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<DeleteExpressionResponse>;
 export interface DeleteIndexFieldRequest {
   DomainName: string;
   IndexFieldName: string;
 }
+const DeleteIndexFieldRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  4,
+) as any as S.Schema<DeleteIndexFieldRequest>;
 export interface DeleteIndexFieldResponse {
   IndexField: IndexFieldStatus;
 }
+const DeleteIndexFieldResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  5,
+) as any as S.Schema<DeleteIndexFieldResponse>;
 export interface DeleteSuggesterRequest {
   DomainName: string;
   SuggesterName: string;
 }
+const DeleteSuggesterRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  6,
+) as any as S.Schema<DeleteSuggesterRequest>;
 export interface DeleteSuggesterResponse {
   Suggester: SuggesterStatus;
 }
+const DeleteSuggesterResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  7,
+) as any as S.Schema<DeleteSuggesterResponse>;
 export type StandardNameList = string[];
+const StandardNameList = /*@__PURE__*/ __L.at(__c6, 0);
 export interface DescribeAnalysisSchemesRequest {
   DomainName: string;
   AnalysisSchemeNames?: string[];
   Deployed?: boolean;
 }
+const DescribeAnalysisSchemesRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  1,
+) as any as S.Schema<DescribeAnalysisSchemesRequest>;
 export type AnalysisSchemeStatusList = AnalysisSchemeStatus[];
+const AnalysisSchemeStatusList = /*@__PURE__*/ __L.at(__c6, 2);
 export interface DescribeAnalysisSchemesResponse {
   AnalysisSchemes: AnalysisSchemeStatus[];
 }
+const DescribeAnalysisSchemesResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  3,
+) as any as S.Schema<DescribeAnalysisSchemesResponse>;
 export interface DescribeAvailabilityOptionsRequest {
   DomainName: string;
   Deployed?: boolean;
 }
+const DescribeAvailabilityOptionsRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  4,
+) as any as S.Schema<DescribeAvailabilityOptionsRequest>;
 export type MultiAZ = boolean;
 export interface AvailabilityOptionsStatus {
   Options: boolean;
   Status: OptionStatus;
 }
+const AvailabilityOptionsStatus = /*@__PURE__*/ __L.at(
+  __c6,
+  5,
+) as any as S.Schema<AvailabilityOptionsStatus>;
 export interface DescribeAvailabilityOptionsResponse {
   AvailabilityOptions?: AvailabilityOptionsStatus;
 }
+const DescribeAvailabilityOptionsResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  6,
+) as any as S.Schema<DescribeAvailabilityOptionsResponse>;
 export interface DescribeDomainEndpointOptionsRequest {
   DomainName: string;
   Deployed?: boolean;
 }
+const DescribeDomainEndpointOptionsRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  7,
+) as any as S.Schema<DescribeDomainEndpointOptionsRequest>;
 export type TLSSecurityPolicy =
   | "Policy-Min-TLS-1-0-2019-07"
   | "Policy-Min-TLS-1-2-2019-07"
   | (string & {});
+const TLSSecurityPolicy = S.String;
+
 export interface DomainEndpointOptions {
   EnforceHTTPS?: boolean;
   TLSSecurityPolicy?: TLSSecurityPolicy;
 }
+const DomainEndpointOptions = /*@__PURE__*/ __L.at(
+  __c7,
+  0,
+) as any as S.Schema<DomainEndpointOptions>;
 export interface DomainEndpointOptionsStatus {
   Options: DomainEndpointOptions;
   Status: OptionStatus;
 }
+const DomainEndpointOptionsStatus = /*@__PURE__*/ __L.at(
+  __c7,
+  1,
+) as any as S.Schema<DomainEndpointOptionsStatus>;
 export interface DescribeDomainEndpointOptionsResponse {
   DomainEndpointOptions?: DomainEndpointOptionsStatus;
 }
+const DescribeDomainEndpointOptionsResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  2,
+) as any as S.Schema<DescribeDomainEndpointOptionsResponse>;
 export type DomainNameList = string[];
+const DomainNameList = /*@__PURE__*/ __L.at(__c7, 3);
 export interface DescribeDomainsRequest {
   DomainNames?: string[];
 }
+const DescribeDomainsRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  4,
+) as any as S.Schema<DescribeDomainsRequest>;
 export type DomainStatusList = DomainStatus[];
+const DomainStatusList = /*@__PURE__*/ __L.at(__c7, 5);
 export interface DescribeDomainsResponse {
   DomainStatusList: DomainStatus[];
 }
+const DescribeDomainsResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  6,
+) as any as S.Schema<DescribeDomainsResponse>;
 export interface DescribeExpressionsRequest {
   DomainName: string;
   ExpressionNames?: string[];
   Deployed?: boolean;
 }
+const DescribeExpressionsRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  7,
+) as any as S.Schema<DescribeExpressionsRequest>;
 export type ExpressionStatusList = ExpressionStatus[];
+const ExpressionStatusList = /*@__PURE__*/ __L.at(__c8, 0);
 export interface DescribeExpressionsResponse {
   Expressions: ExpressionStatus[];
 }
+const DescribeExpressionsResponse = /*@__PURE__*/ __L.at(
+  __c8,
+  1,
+) as any as S.Schema<DescribeExpressionsResponse>;
 export type DynamicFieldNameList = string[];
+const DynamicFieldNameList = /*@__PURE__*/ __L.at(__c8, 2);
 export interface DescribeIndexFieldsRequest {
   DomainName: string;
   FieldNames?: string[];
   Deployed?: boolean;
 }
+const DescribeIndexFieldsRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  3,
+) as any as S.Schema<DescribeIndexFieldsRequest>;
 export type IndexFieldStatusList = IndexFieldStatus[];
+const IndexFieldStatusList = /*@__PURE__*/ __L.at(__c8, 4);
 export interface DescribeIndexFieldsResponse {
   IndexFields: IndexFieldStatus[];
 }
+const DescribeIndexFieldsResponse = /*@__PURE__*/ __L.at(
+  __c8,
+  5,
+) as any as S.Schema<DescribeIndexFieldsResponse>;
 export interface DescribeScalingParametersRequest {
   DomainName: string;
 }
+const DescribeScalingParametersRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  6,
+) as any as S.Schema<DescribeScalingParametersRequest>;
 export type PartitionInstanceType =
   | "search.m1.small"
   | "search.m1.large"
@@ -572,79 +758,157 @@ export type PartitionInstanceType =
   | "search.previousgeneration.xlarge"
   | "search.previousgeneration.2xlarge"
   | (string & {});
+const PartitionInstanceType = S.String;
+
 export interface ScalingParameters {
   DesiredInstanceType?: PartitionInstanceType;
   DesiredReplicationCount?: number;
   DesiredPartitionCount?: number;
 }
+const ScalingParameters = /*@__PURE__*/ __L.at(__c8, 7) as any as S.Schema<ScalingParameters>;
 export interface ScalingParametersStatus {
   Options: ScalingParameters;
   Status: OptionStatus;
 }
+const ScalingParametersStatus = /*@__PURE__*/ __L.at(
+  __c9,
+  0,
+) as any as S.Schema<ScalingParametersStatus>;
 export interface DescribeScalingParametersResponse {
   ScalingParameters: ScalingParametersStatus;
 }
+const DescribeScalingParametersResponse = /*@__PURE__*/ __L.at(
+  __c9,
+  1,
+) as any as S.Schema<DescribeScalingParametersResponse>;
 export interface DescribeServiceAccessPoliciesRequest {
   DomainName: string;
   Deployed?: boolean;
 }
+const DescribeServiceAccessPoliciesRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  2,
+) as any as S.Schema<DescribeServiceAccessPoliciesRequest>;
 export type PolicyDocument = string;
 export interface AccessPoliciesStatus {
   Options: string;
   Status: OptionStatus;
 }
+const AccessPoliciesStatus = /*@__PURE__*/ __L.at(__c9, 3) as any as S.Schema<AccessPoliciesStatus>;
 export interface DescribeServiceAccessPoliciesResponse {
   AccessPolicies: AccessPoliciesStatus;
 }
+const DescribeServiceAccessPoliciesResponse = /*@__PURE__*/ __L.at(
+  __c9,
+  4,
+) as any as S.Schema<DescribeServiceAccessPoliciesResponse>;
 export interface DescribeSuggestersRequest {
   DomainName: string;
   SuggesterNames?: string[];
   Deployed?: boolean;
 }
+const DescribeSuggestersRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  5,
+) as any as S.Schema<DescribeSuggestersRequest>;
 export type SuggesterStatusList = SuggesterStatus[];
+const SuggesterStatusList = /*@__PURE__*/ __L.at(__c9, 6);
 export interface DescribeSuggestersResponse {
   Suggesters: SuggesterStatus[];
 }
+const DescribeSuggestersResponse = /*@__PURE__*/ __L.at(
+  __c9,
+  7,
+) as any as S.Schema<DescribeSuggestersResponse>;
 export interface IndexDocumentsRequest {
   DomainName: string;
 }
+const IndexDocumentsRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  0,
+) as any as S.Schema<IndexDocumentsRequest>;
 export interface IndexDocumentsResponse {
   FieldNames?: string[];
 }
+const IndexDocumentsResponse = /*@__PURE__*/ __L.at(
+  __c10,
+  1,
+) as any as S.Schema<IndexDocumentsResponse>;
 export interface ListDomainNamesRequest {}
+const ListDomainNamesRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  2,
+) as any as S.Schema<ListDomainNamesRequest>;
 export type APIVersion = string;
 export type DomainNameMap = { [key: string]: string | undefined };
+const DomainNameMap = /*@__PURE__*/ __L.at(__c10, 3);
 export interface ListDomainNamesResponse {
   DomainNames?: { [key: string]: string | undefined };
 }
+const ListDomainNamesResponse = /*@__PURE__*/ __L.at(
+  __c10,
+  4,
+) as any as S.Schema<ListDomainNamesResponse>;
 export interface UpdateAvailabilityOptionsRequest {
   DomainName: string;
   MultiAZ: boolean;
 }
+const UpdateAvailabilityOptionsRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  5,
+) as any as S.Schema<UpdateAvailabilityOptionsRequest>;
 export interface UpdateAvailabilityOptionsResponse {
   AvailabilityOptions?: AvailabilityOptionsStatus;
 }
+const UpdateAvailabilityOptionsResponse = /*@__PURE__*/ __L.at(
+  __c10,
+  6,
+) as any as S.Schema<UpdateAvailabilityOptionsResponse>;
 export interface UpdateDomainEndpointOptionsRequest {
   DomainName: string;
   DomainEndpointOptions: DomainEndpointOptions;
 }
+const UpdateDomainEndpointOptionsRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  7,
+) as any as S.Schema<UpdateDomainEndpointOptionsRequest>;
 export interface UpdateDomainEndpointOptionsResponse {
   DomainEndpointOptions?: DomainEndpointOptionsStatus;
 }
+const UpdateDomainEndpointOptionsResponse = /*@__PURE__*/ __L.at(
+  __c11,
+  0,
+) as any as S.Schema<UpdateDomainEndpointOptionsResponse>;
 export interface UpdateScalingParametersRequest {
   DomainName: string;
   ScalingParameters: ScalingParameters;
 }
+const UpdateScalingParametersRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  1,
+) as any as S.Schema<UpdateScalingParametersRequest>;
 export interface UpdateScalingParametersResponse {
   ScalingParameters: ScalingParametersStatus;
 }
+const UpdateScalingParametersResponse = /*@__PURE__*/ __L.at(
+  __c11,
+  2,
+) as any as S.Schema<UpdateScalingParametersResponse>;
 export interface UpdateServiceAccessPoliciesRequest {
   DomainName: string;
   AccessPolicies: string;
 }
+const UpdateServiceAccessPoliciesRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  3,
+) as any as S.Schema<UpdateServiceAccessPoliciesRequest>;
 export interface UpdateServiceAccessPoliciesResponse {
   AccessPolicies: AccessPoliciesStatus;
 }
+const UpdateServiceAccessPoliciesResponse = /*@__PURE__*/ __L.at(
+  __c11,
+  4,
+) as any as S.Schema<UpdateServiceAccessPoliciesResponse>;
 export type ErrorCode = string;
 export type ErrorMessage = string;
 export type BuildSuggestersError =
@@ -662,8 +926,8 @@ export const buildSuggesters: API.OperationMethod<
   BuildSuggestersError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<BuildSuggestersRequest>,
-  output: __S(2) as any as S.Schema<BuildSuggestersResponse>,
+  input: BuildSuggestersRequest,
+  output: BuildSuggestersResponse,
   errors: [BaseException, InternalException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -687,8 +951,8 @@ export const createDomain: API.OperationMethod<
   CreateDomainError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3) as any as S.Schema<CreateDomainRequest>,
-  output: __S(7) as any as S.Schema<CreateDomainResponse>,
+  input: CreateDomainRequest,
+  output: CreateDomainResponse,
   errors: [
     BaseException,
     InternalException,
@@ -718,8 +982,8 @@ export const defineAnalysisScheme: API.OperationMethod<
   DefineAnalysisSchemeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10) as any as S.Schema<DefineAnalysisSchemeRequest>,
-  output: __S(13) as any as S.Schema<DefineAnalysisSchemeResponse>,
+  input: DefineAnalysisSchemeRequest,
+  output: DefineAnalysisSchemeResponse,
   errors: [
     BaseException,
     InternalException,
@@ -750,8 +1014,8 @@ export const defineExpression: API.OperationMethod<
   DefineExpressionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15) as any as S.Schema<DefineExpressionRequest>,
-  output: __S(17) as any as S.Schema<DefineExpressionResponse>,
+  input: DefineExpressionRequest,
+  output: DefineExpressionResponse,
   errors: [
     BaseException,
     InternalException,
@@ -782,8 +1046,8 @@ export const defineIndexField: API.OperationMethod<
   DefineIndexFieldError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30) as any as S.Schema<DefineIndexFieldRequest>,
-  output: __S(32) as any as S.Schema<DefineIndexFieldResponse>,
+  input: DefineIndexFieldRequest,
+  output: DefineIndexFieldResponse,
   errors: [
     BaseException,
     InternalException,
@@ -814,8 +1078,8 @@ export const defineSuggester: API.OperationMethod<
   DefineSuggesterError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35) as any as S.Schema<DefineSuggesterRequest>,
-  output: __S(37) as any as S.Schema<DefineSuggesterResponse>,
+  input: DefineSuggesterRequest,
+  output: DefineSuggesterResponse,
   errors: [
     BaseException,
     InternalException,
@@ -845,8 +1109,8 @@ export const deleteAnalysisScheme: API.OperationMethod<
   DeleteAnalysisSchemeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38) as any as S.Schema<DeleteAnalysisSchemeRequest>,
-  output: __S(39) as any as S.Schema<DeleteAnalysisSchemeResponse>,
+  input: DeleteAnalysisSchemeRequest,
+  output: DeleteAnalysisSchemeResponse,
   errors: [
     BaseException,
     InternalException,
@@ -870,8 +1134,8 @@ export const deleteDomain: API.OperationMethod<
   DeleteDomainError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40) as any as S.Schema<DeleteDomainRequest>,
-  output: __S(41) as any as S.Schema<DeleteDomainResponse>,
+  input: DeleteDomainRequest,
+  output: DeleteDomainResponse,
   errors: [BaseException, InternalException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -894,8 +1158,8 @@ export const deleteExpression: API.OperationMethod<
   DeleteExpressionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42) as any as S.Schema<DeleteExpressionRequest>,
-  output: __S(43) as any as S.Schema<DeleteExpressionResponse>,
+  input: DeleteExpressionRequest,
+  output: DeleteExpressionResponse,
   errors: [
     BaseException,
     InternalException,
@@ -924,8 +1188,8 @@ export const deleteIndexField: API.OperationMethod<
   DeleteIndexFieldError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44) as any as S.Schema<DeleteIndexFieldRequest>,
-  output: __S(45) as any as S.Schema<DeleteIndexFieldResponse>,
+  input: DeleteIndexFieldRequest,
+  output: DeleteIndexFieldResponse,
   errors: [
     BaseException,
     InternalException,
@@ -954,8 +1218,8 @@ export const deleteSuggester: API.OperationMethod<
   DeleteSuggesterError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(46) as any as S.Schema<DeleteSuggesterRequest>,
-  output: __S(47) as any as S.Schema<DeleteSuggesterResponse>,
+  input: DeleteSuggesterRequest,
+  output: DeleteSuggesterResponse,
   errors: [
     BaseException,
     InternalException,
@@ -982,8 +1246,8 @@ export const describeAnalysisSchemes: API.OperationMethod<
   DescribeAnalysisSchemesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49) as any as S.Schema<DescribeAnalysisSchemesRequest>,
-  output: __S(51) as any as S.Schema<DescribeAnalysisSchemesResponse>,
+  input: DescribeAnalysisSchemesRequest,
+  output: DescribeAnalysisSchemesResponse,
   errors: [BaseException, InternalException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1007,8 +1271,8 @@ export const describeAvailabilityOptions: API.OperationMethod<
   DescribeAvailabilityOptionsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(52) as any as S.Schema<DescribeAvailabilityOptionsRequest>,
-  output: __S(54) as any as S.Schema<DescribeAvailabilityOptionsResponse>,
+  input: DescribeAvailabilityOptionsRequest,
+  output: DescribeAvailabilityOptionsResponse,
   errors: [
     BaseException,
     DisabledOperationException,
@@ -1038,8 +1302,8 @@ export const describeDomainEndpointOptions: API.OperationMethod<
   DescribeDomainEndpointOptionsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(55) as any as S.Schema<DescribeDomainEndpointOptionsRequest>,
-  output: __S(58) as any as S.Schema<DescribeDomainEndpointOptionsResponse>,
+  input: DescribeDomainEndpointOptionsRequest,
+  output: DescribeDomainEndpointOptionsResponse,
   errors: [
     BaseException,
     DisabledOperationException,
@@ -1064,8 +1328,8 @@ export const describeDomains: API.OperationMethod<
   DescribeDomainsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60) as any as S.Schema<DescribeDomainsRequest>,
-  output: __S(62) as any as S.Schema<DescribeDomainsResponse>,
+  input: DescribeDomainsRequest,
+  output: DescribeDomainsResponse,
   errors: [BaseException, InternalException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1086,8 +1350,8 @@ export const describeExpressions: API.OperationMethod<
   DescribeExpressionsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(63) as any as S.Schema<DescribeExpressionsRequest>,
-  output: __S(65) as any as S.Schema<DescribeExpressionsResponse>,
+  input: DescribeExpressionsRequest,
+  output: DescribeExpressionsResponse,
   errors: [BaseException, InternalException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1110,8 +1374,8 @@ export const describeIndexFields: API.OperationMethod<
   DescribeIndexFieldsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(67) as any as S.Schema<DescribeIndexFieldsRequest>,
-  output: __S(69) as any as S.Schema<DescribeIndexFieldsResponse>,
+  input: DescribeIndexFieldsRequest,
+  output: DescribeIndexFieldsResponse,
   errors: [BaseException, InternalException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1132,8 +1396,8 @@ export const describeScalingParameters: API.OperationMethod<
   DescribeScalingParametersError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(70) as any as S.Schema<DescribeScalingParametersRequest>,
-  output: __S(73) as any as S.Schema<DescribeScalingParametersResponse>,
+  input: DescribeScalingParametersRequest,
+  output: DescribeScalingParametersResponse,
   errors: [BaseException, InternalException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1155,8 +1419,8 @@ export const describeServiceAccessPolicies: API.OperationMethod<
   DescribeServiceAccessPoliciesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(74) as any as S.Schema<DescribeServiceAccessPoliciesRequest>,
-  output: __S(76) as any as S.Schema<DescribeServiceAccessPoliciesResponse>,
+  input: DescribeServiceAccessPoliciesRequest,
+  output: DescribeServiceAccessPoliciesResponse,
   errors: [BaseException, InternalException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1177,8 +1441,8 @@ export const describeSuggesters: API.OperationMethod<
   DescribeSuggestersError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(77) as any as S.Schema<DescribeSuggestersRequest>,
-  output: __S(79) as any as S.Schema<DescribeSuggestersResponse>,
+  input: DescribeSuggestersRequest,
+  output: DescribeSuggestersResponse,
   errors: [BaseException, InternalException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1200,8 +1464,8 @@ export const indexDocuments: API.OperationMethod<
   IndexDocumentsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(80) as any as S.Schema<IndexDocumentsRequest>,
-  output: __S(81) as any as S.Schema<IndexDocumentsResponse>,
+  input: IndexDocumentsRequest,
+  output: IndexDocumentsResponse,
   errors: [BaseException, InternalException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1218,8 +1482,8 @@ export const listDomainNames: API.OperationMethod<
   ListDomainNamesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(82) as any as S.Schema<ListDomainNamesRequest>,
-  output: __S(84) as any as S.Schema<ListDomainNamesResponse>,
+  input: ListDomainNamesRequest,
+  output: ListDomainNamesResponse,
   errors: [BaseException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1244,8 +1508,8 @@ export const updateAvailabilityOptions: API.OperationMethod<
   UpdateAvailabilityOptionsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(85) as any as S.Schema<UpdateAvailabilityOptionsRequest>,
-  output: __S(86) as any as S.Schema<UpdateAvailabilityOptionsResponse>,
+  input: UpdateAvailabilityOptionsRequest,
+  output: UpdateAvailabilityOptionsResponse,
   errors: [
     BaseException,
     DisabledOperationException,
@@ -1278,8 +1542,8 @@ export const updateDomainEndpointOptions: API.OperationMethod<
   UpdateDomainEndpointOptionsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(87) as any as S.Schema<UpdateDomainEndpointOptionsRequest>,
-  output: __S(88) as any as S.Schema<UpdateDomainEndpointOptionsResponse>,
+  input: UpdateDomainEndpointOptionsRequest,
+  output: UpdateDomainEndpointOptionsResponse,
   errors: [
     BaseException,
     DisabledOperationException,
@@ -1311,8 +1575,8 @@ export const updateScalingParameters: API.OperationMethod<
   UpdateScalingParametersError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(89) as any as S.Schema<UpdateScalingParametersRequest>,
-  output: __S(90) as any as S.Schema<UpdateScalingParametersResponse>,
+  input: UpdateScalingParametersRequest,
+  output: UpdateScalingParametersResponse,
   errors: [
     BaseException,
     InternalException,
@@ -1345,8 +1609,8 @@ export const updateServiceAccessPolicies: API.OperationMethod<
   UpdateServiceAccessPoliciesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(91) as any as S.Schema<UpdateServiceAccessPoliciesRequest>,
-  output: __S(92) as any as S.Schema<UpdateServiceAccessPoliciesResponse>,
+  input: UpdateServiceAccessPoliciesRequest,
+  output: UpdateServiceAccessPoliciesResponse,
   errors: [
     BaseException,
     InternalException,
@@ -1372,9 +1636,9 @@ function __c0(j: number): any {
     case 1:
       return S.Array(S.String);
     case 2:
-      return S.suspend(() => S.Struct({ FieldNames: S.optional(__S(1)) }).pipe(ns)).annotate({
-        identifier: "BuildSuggestersResponse",
-      });
+      return S.suspend(() => S.Struct({ FieldNames: S.optional(FieldNameList) }).pipe(ns)).annotate(
+        { identifier: "BuildSuggestersResponse" },
+      );
     case 3:
       return S.suspend(() =>
         S.Struct({ DomainName: S.String }).pipe(
@@ -1397,20 +1661,20 @@ function __c0(j: number): any {
           ARN: S.optional(S.String),
           Created: S.optional(S.Boolean),
           Deleted: S.optional(S.Boolean),
-          DocService: S.optional(__S(4)),
-          SearchService: S.optional(__S(4)),
+          DocService: S.optional(ServiceEndpoint),
+          SearchService: S.optional(ServiceEndpoint),
           RequiresIndexDocuments: S.Boolean,
           Processing: S.optional(S.Boolean),
           SearchInstanceType: S.optional(S.String),
           SearchPartitionCount: S.optional(S.Number),
           SearchInstanceCount: S.optional(S.Number),
-          Limits: S.optional(__S(5)),
+          Limits: S.optional(Limits),
         }),
       ).annotate({ identifier: "DomainStatus" });
     case 7:
-      return S.suspend(() => S.Struct({ DomainStatus: S.optional(__S(6)) }).pipe(ns)).annotate({
-        identifier: "CreateDomainResponse",
-      });
+      return S.suspend(() =>
+        S.Struct({ DomainStatus: S.optional(DomainStatus) }).pipe(ns),
+      ).annotate({ identifier: "CreateDomainResponse" });
   }
 }
 function __c1(j: number): any {
@@ -1422,20 +1686,20 @@ function __c1(j: number): any {
           Stopwords: S.optional(S.String),
           StemmingDictionary: S.optional(S.String),
           JapaneseTokenizationDictionary: S.optional(S.String),
-          AlgorithmicStemming: S.optional(S.String),
+          AlgorithmicStemming: S.optional(AlgorithmicStemming),
         }),
       ).annotate({ identifier: "AnalysisOptions" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           AnalysisSchemeName: S.String,
-          AnalysisSchemeLanguage: S.String,
-          AnalysisOptions: S.optional(__S(8)),
+          AnalysisSchemeLanguage: AnalysisSchemeLanguage,
+          AnalysisOptions: S.optional(AnalysisOptions),
         }),
       ).annotate({ identifier: "AnalysisScheme" });
     case 2:
       return S.suspend(() =>
-        S.Struct({ DomainName: S.String, AnalysisScheme: __S(9) }).pipe(
+        S.Struct({ DomainName: S.String, AnalysisScheme: AnalysisScheme }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
@@ -1447,16 +1711,16 @@ function __c1(j: number): any {
           CreationDate: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           UpdateDate: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           UpdateVersion: S.optional(S.Number),
-          State: S.String,
+          State: OptionState,
           PendingDeletion: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "OptionStatus" });
     case 4:
-      return S.suspend(() => S.Struct({ Options: __S(9), Status: __S(11) })).annotate({
+      return S.suspend(() => S.Struct({ Options: AnalysisScheme, Status: OptionStatus })).annotate({
         identifier: "AnalysisSchemeStatus",
       });
     case 5:
-      return S.suspend(() => S.Struct({ AnalysisScheme: __S(12) }).pipe(ns)).annotate({
+      return S.suspend(() => S.Struct({ AnalysisScheme: AnalysisSchemeStatus }).pipe(ns)).annotate({
         identifier: "DefineAnalysisSchemeResponse",
       });
     case 6:
@@ -1465,7 +1729,7 @@ function __c1(j: number): any {
       ).annotate({ identifier: "Expression" });
     case 7:
       return S.suspend(() =>
-        S.Struct({ DomainName: S.String, Expression: __S(14) }).pipe(
+        S.Struct({ DomainName: S.String, Expression: Expression }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "DefineExpressionRequest" });
@@ -1474,11 +1738,11 @@ function __c1(j: number): any {
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ Options: __S(14), Status: __S(11) })).annotate({
+      return S.suspend(() => S.Struct({ Options: Expression, Status: OptionStatus })).annotate({
         identifier: "ExpressionStatus",
       });
     case 1:
-      return S.suspend(() => S.Struct({ Expression: __S(16) }).pipe(ns)).annotate({
+      return S.suspend(() => S.Struct({ Expression: ExpressionStatus }).pipe(ns)).annotate({
         identifier: "DefineExpressionResponse",
       });
     case 2:
@@ -1605,28 +1869,28 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           IndexFieldName: S.String,
-          IndexFieldType: S.String,
-          IntOptions: S.optional(__S(18)),
-          DoubleOptions: S.optional(__S(19)),
-          LiteralOptions: S.optional(__S(20)),
-          TextOptions: S.optional(__S(21)),
-          DateOptions: S.optional(__S(22)),
-          LatLonOptions: S.optional(__S(23)),
-          IntArrayOptions: S.optional(__S(24)),
-          DoubleArrayOptions: S.optional(__S(25)),
-          LiteralArrayOptions: S.optional(__S(26)),
-          TextArrayOptions: S.optional(__S(27)),
-          DateArrayOptions: S.optional(__S(28)),
+          IndexFieldType: IndexFieldType,
+          IntOptions: S.optional(IntOptions),
+          DoubleOptions: S.optional(DoubleOptions),
+          LiteralOptions: S.optional(LiteralOptions),
+          TextOptions: S.optional(TextOptions),
+          DateOptions: S.optional(DateOptions),
+          LatLonOptions: S.optional(LatLonOptions),
+          IntArrayOptions: S.optional(IntArrayOptions),
+          DoubleArrayOptions: S.optional(DoubleArrayOptions),
+          LiteralArrayOptions: S.optional(LiteralArrayOptions),
+          TextArrayOptions: S.optional(TextArrayOptions),
+          DateArrayOptions: S.optional(DateArrayOptions),
         }),
       ).annotate({ identifier: "IndexField" });
     case 6:
       return S.suspend(() =>
-        S.Struct({ DomainName: S.String, IndexField: __S(29) }).pipe(
+        S.Struct({ DomainName: S.String, IndexField: IndexField }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "DefineIndexFieldRequest" });
     case 7:
-      return S.suspend(() => S.Struct({ Options: __S(29), Status: __S(11) })).annotate({
+      return S.suspend(() => S.Struct({ Options: IndexField, Status: OptionStatus })).annotate({
         identifier: "IndexFieldStatus",
       });
   }
@@ -1634,33 +1898,33 @@ function __c3(j: number): any {
 function __c4(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ IndexField: __S(31) }).pipe(ns)).annotate({
+      return S.suspend(() => S.Struct({ IndexField: IndexFieldStatus }).pipe(ns)).annotate({
         identifier: "DefineIndexFieldResponse",
       });
     case 1:
       return S.suspend(() =>
         S.Struct({
           SourceField: S.String,
-          FuzzyMatching: S.optional(S.String),
+          FuzzyMatching: S.optional(SuggesterFuzzyMatching),
           SortExpression: S.optional(S.String),
         }),
       ).annotate({ identifier: "DocumentSuggesterOptions" });
     case 2:
       return S.suspend(() =>
-        S.Struct({ SuggesterName: S.String, DocumentSuggesterOptions: __S(33) }),
+        S.Struct({ SuggesterName: S.String, DocumentSuggesterOptions: DocumentSuggesterOptions }),
       ).annotate({ identifier: "Suggester" });
     case 3:
       return S.suspend(() =>
-        S.Struct({ DomainName: S.String, Suggester: __S(34) }).pipe(
+        S.Struct({ DomainName: S.String, Suggester: Suggester }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "DefineSuggesterRequest" });
     case 4:
-      return S.suspend(() => S.Struct({ Options: __S(34), Status: __S(11) })).annotate({
+      return S.suspend(() => S.Struct({ Options: Suggester, Status: OptionStatus })).annotate({
         identifier: "SuggesterStatus",
       });
     case 5:
-      return S.suspend(() => S.Struct({ Suggester: __S(36) }).pipe(ns)).annotate({
+      return S.suspend(() => S.Struct({ Suggester: SuggesterStatus }).pipe(ns)).annotate({
         identifier: "DefineSuggesterResponse",
       });
     case 6:
@@ -1672,7 +1936,7 @@ function __c4(j: number): any {
         identifier: "DeleteAnalysisSchemeRequest",
       });
     case 7:
-      return S.suspend(() => S.Struct({ AnalysisScheme: __S(12) }).pipe(ns)).annotate({
+      return S.suspend(() => S.Struct({ AnalysisScheme: AnalysisSchemeStatus }).pipe(ns)).annotate({
         identifier: "DeleteAnalysisSchemeResponse",
       });
   }
@@ -1686,9 +1950,9 @@ function __c5(j: number): any {
         ),
       ).annotate({ identifier: "DeleteDomainRequest" });
     case 1:
-      return S.suspend(() => S.Struct({ DomainStatus: S.optional(__S(6)) }).pipe(ns)).annotate({
-        identifier: "DeleteDomainResponse",
-      });
+      return S.suspend(() =>
+        S.Struct({ DomainStatus: S.optional(DomainStatus) }).pipe(ns),
+      ).annotate({ identifier: "DeleteDomainResponse" });
     case 2:
       return S.suspend(() =>
         S.Struct({ DomainName: S.String, ExpressionName: S.String }).pipe(
@@ -1696,7 +1960,7 @@ function __c5(j: number): any {
         ),
       ).annotate({ identifier: "DeleteExpressionRequest" });
     case 3:
-      return S.suspend(() => S.Struct({ Expression: __S(16) }).pipe(ns)).annotate({
+      return S.suspend(() => S.Struct({ Expression: ExpressionStatus }).pipe(ns)).annotate({
         identifier: "DeleteExpressionResponse",
       });
     case 4:
@@ -1706,7 +1970,7 @@ function __c5(j: number): any {
         ),
       ).annotate({ identifier: "DeleteIndexFieldRequest" });
     case 5:
-      return S.suspend(() => S.Struct({ IndexField: __S(31) }).pipe(ns)).annotate({
+      return S.suspend(() => S.Struct({ IndexField: IndexFieldStatus }).pipe(ns)).annotate({
         identifier: "DeleteIndexFieldResponse",
       });
     case 6:
@@ -1716,7 +1980,7 @@ function __c5(j: number): any {
         ),
       ).annotate({ identifier: "DeleteSuggesterRequest" });
     case 7:
-      return S.suspend(() => S.Struct({ Suggester: __S(36) }).pipe(ns)).annotate({
+      return S.suspend(() => S.Struct({ Suggester: SuggesterStatus }).pipe(ns)).annotate({
         identifier: "DeleteSuggesterResponse",
       });
   }
@@ -1729,16 +1993,18 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           DomainName: S.String,
-          AnalysisSchemeNames: S.optional(__S(48)),
+          AnalysisSchemeNames: S.optional(StandardNameList),
           Deployed: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "DescribeAnalysisSchemesRequest",
       });
     case 2:
-      return S.Array(__S(12));
+      return S.Array(AnalysisSchemeStatus);
     case 3:
-      return S.suspend(() => S.Struct({ AnalysisSchemes: __S(50) }).pipe(ns)).annotate({
+      return S.suspend(() =>
+        S.Struct({ AnalysisSchemes: AnalysisSchemeStatusList }).pipe(ns),
+      ).annotate({
         identifier: "DescribeAnalysisSchemesResponse",
       });
     case 4:
@@ -1750,12 +2016,12 @@ function __c6(j: number): any {
         identifier: "DescribeAvailabilityOptionsRequest",
       });
     case 5:
-      return S.suspend(() => S.Struct({ Options: S.Boolean, Status: __S(11) })).annotate({
+      return S.suspend(() => S.Struct({ Options: S.Boolean, Status: OptionStatus })).annotate({
         identifier: "AvailabilityOptionsStatus",
       });
     case 6:
       return S.suspend(() =>
-        S.Struct({ AvailabilityOptions: S.optional(__S(53)) }).pipe(ns),
+        S.Struct({ AvailabilityOptions: S.optional(AvailabilityOptionsStatus) }).pipe(ns),
       ).annotate({
         identifier: "DescribeAvailabilityOptionsResponse",
       });
@@ -1775,16 +2041,18 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           EnforceHTTPS: S.optional(S.Boolean),
-          TLSSecurityPolicy: S.optional(S.String),
+          TLSSecurityPolicy: S.optional(TLSSecurityPolicy),
         }),
       ).annotate({ identifier: "DomainEndpointOptions" });
     case 1:
-      return S.suspend(() => S.Struct({ Options: __S(56), Status: __S(11) })).annotate({
+      return S.suspend(() =>
+        S.Struct({ Options: DomainEndpointOptions, Status: OptionStatus }),
+      ).annotate({
         identifier: "DomainEndpointOptionsStatus",
       });
     case 2:
       return S.suspend(() =>
-        S.Struct({ DomainEndpointOptions: S.optional(__S(57)) }).pipe(ns),
+        S.Struct({ DomainEndpointOptions: S.optional(DomainEndpointOptionsStatus) }).pipe(ns),
       ).annotate({
         identifier: "DescribeDomainEndpointOptionsResponse",
       });
@@ -1792,21 +2060,21 @@ function __c7(j: number): any {
       return S.Array(S.String);
     case 4:
       return S.suspend(() =>
-        S.Struct({ DomainNames: S.optional(__S(59)) }).pipe(
+        S.Struct({ DomainNames: S.optional(DomainNameList) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "DescribeDomainsRequest" });
     case 5:
-      return S.Array(__S(6));
+      return S.Array(DomainStatus);
     case 6:
-      return S.suspend(() => S.Struct({ DomainStatusList: __S(61) }).pipe(ns)).annotate({
+      return S.suspend(() => S.Struct({ DomainStatusList: DomainStatusList }).pipe(ns)).annotate({
         identifier: "DescribeDomainsResponse",
       });
     case 7:
       return S.suspend(() =>
         S.Struct({
           DomainName: S.String,
-          ExpressionNames: S.optional(__S(48)),
+          ExpressionNames: S.optional(StandardNameList),
           Deployed: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
@@ -1817,9 +2085,9 @@ function __c7(j: number): any {
 function __c8(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(16));
+      return S.Array(ExpressionStatus);
     case 1:
-      return S.suspend(() => S.Struct({ Expressions: __S(64) }).pipe(ns)).annotate({
+      return S.suspend(() => S.Struct({ Expressions: ExpressionStatusList }).pipe(ns)).annotate({
         identifier: "DescribeExpressionsResponse",
       });
     case 2:
@@ -1828,16 +2096,16 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           DomainName: S.String,
-          FieldNames: S.optional(__S(66)),
+          FieldNames: S.optional(DynamicFieldNameList),
           Deployed: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "DescribeIndexFieldsRequest",
       });
     case 4:
-      return S.Array(__S(31));
+      return S.Array(IndexFieldStatus);
     case 5:
-      return S.suspend(() => S.Struct({ IndexFields: __S(68) }).pipe(ns)).annotate({
+      return S.suspend(() => S.Struct({ IndexFields: IndexFieldStatusList }).pipe(ns)).annotate({
         identifier: "DescribeIndexFieldsResponse",
       });
     case 6:
@@ -1851,7 +2119,7 @@ function __c8(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          DesiredInstanceType: S.optional(S.String),
+          DesiredInstanceType: S.optional(PartitionInstanceType),
           DesiredReplicationCount: S.optional(S.Number),
           DesiredPartitionCount: S.optional(S.Number),
         }),
@@ -1861,11 +2129,13 @@ function __c8(j: number): any {
 function __c9(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ Options: __S(71), Status: __S(11) })).annotate({
-        identifier: "ScalingParametersStatus",
-      });
+      return S.suspend(() =>
+        S.Struct({ Options: ScalingParameters, Status: OptionStatus }),
+      ).annotate({ identifier: "ScalingParametersStatus" });
     case 1:
-      return S.suspend(() => S.Struct({ ScalingParameters: __S(72) }).pipe(ns)).annotate({
+      return S.suspend(() =>
+        S.Struct({ ScalingParameters: ScalingParametersStatus }).pipe(ns),
+      ).annotate({
         identifier: "DescribeScalingParametersResponse",
       });
     case 2:
@@ -1877,27 +2147,27 @@ function __c9(j: number): any {
         identifier: "DescribeServiceAccessPoliciesRequest",
       });
     case 3:
-      return S.suspend(() => S.Struct({ Options: S.String, Status: __S(11) })).annotate({
+      return S.suspend(() => S.Struct({ Options: S.String, Status: OptionStatus })).annotate({
         identifier: "AccessPoliciesStatus",
       });
     case 4:
-      return S.suspend(() => S.Struct({ AccessPolicies: __S(75) }).pipe(ns)).annotate({
+      return S.suspend(() => S.Struct({ AccessPolicies: AccessPoliciesStatus }).pipe(ns)).annotate({
         identifier: "DescribeServiceAccessPoliciesResponse",
       });
     case 5:
       return S.suspend(() =>
         S.Struct({
           DomainName: S.String,
-          SuggesterNames: S.optional(__S(48)),
+          SuggesterNames: S.optional(StandardNameList),
           Deployed: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "DescribeSuggestersRequest",
       });
     case 6:
-      return S.Array(__S(36));
+      return S.Array(SuggesterStatus);
     case 7:
-      return S.suspend(() => S.Struct({ Suggesters: __S(78) }).pipe(ns)).annotate({
+      return S.suspend(() => S.Struct({ Suggesters: SuggesterStatusList }).pipe(ns)).annotate({
         identifier: "DescribeSuggestersResponse",
       });
   }
@@ -1911,9 +2181,9 @@ function __c10(j: number): any {
         ),
       ).annotate({ identifier: "IndexDocumentsRequest" });
     case 1:
-      return S.suspend(() => S.Struct({ FieldNames: S.optional(__S(1)) }).pipe(ns)).annotate({
-        identifier: "IndexDocumentsResponse",
-      });
+      return S.suspend(() => S.Struct({ FieldNames: S.optional(FieldNameList) }).pipe(ns)).annotate(
+        { identifier: "IndexDocumentsResponse" },
+      );
     case 2:
       return S.suspend(() =>
         S.Struct({}).pipe(
@@ -1923,9 +2193,9 @@ function __c10(j: number): any {
     case 3:
       return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
     case 4:
-      return S.suspend(() => S.Struct({ DomainNames: S.optional(__S(83)) }).pipe(ns)).annotate({
-        identifier: "ListDomainNamesResponse",
-      });
+      return S.suspend(() =>
+        S.Struct({ DomainNames: S.optional(DomainNameMap) }).pipe(ns),
+      ).annotate({ identifier: "ListDomainNamesResponse" });
     case 5:
       return S.suspend(() =>
         S.Struct({ DomainName: S.String, MultiAZ: S.Boolean }).pipe(
@@ -1936,13 +2206,13 @@ function __c10(j: number): any {
       });
     case 6:
       return S.suspend(() =>
-        S.Struct({ AvailabilityOptions: S.optional(__S(53)) }).pipe(ns),
+        S.Struct({ AvailabilityOptions: S.optional(AvailabilityOptionsStatus) }).pipe(ns),
       ).annotate({
         identifier: "UpdateAvailabilityOptionsResponse",
       });
     case 7:
       return S.suspend(() =>
-        S.Struct({ DomainName: S.String, DomainEndpointOptions: __S(56) }).pipe(
+        S.Struct({ DomainName: S.String, DomainEndpointOptions: DomainEndpointOptions }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
@@ -1954,20 +2224,22 @@ function __c11(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ DomainEndpointOptions: S.optional(__S(57)) }).pipe(ns),
+        S.Struct({ DomainEndpointOptions: S.optional(DomainEndpointOptionsStatus) }).pipe(ns),
       ).annotate({
         identifier: "UpdateDomainEndpointOptionsResponse",
       });
     case 1:
       return S.suspend(() =>
-        S.Struct({ DomainName: S.String, ScalingParameters: __S(71) }).pipe(
+        S.Struct({ DomainName: S.String, ScalingParameters: ScalingParameters }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
         identifier: "UpdateScalingParametersRequest",
       });
     case 2:
-      return S.suspend(() => S.Struct({ ScalingParameters: __S(72) }).pipe(ns)).annotate({
+      return S.suspend(() =>
+        S.Struct({ ScalingParameters: ScalingParametersStatus }).pipe(ns),
+      ).annotate({
         identifier: "UpdateScalingParametersResponse",
       });
     case 3:
@@ -1979,41 +2251,8 @@ function __c11(j: number): any {
         identifier: "UpdateServiceAccessPoliciesRequest",
       });
     case 4:
-      return S.suspend(() => S.Struct({ AccessPolicies: __S(75) }).pipe(ns)).annotate({
+      return S.suspend(() => S.Struct({ AccessPolicies: AccessPoliciesStatus }).pipe(ns)).annotate({
         identifier: "UpdateServiceAccessPoliciesResponse",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
-    case 9:
-      return __c9(i & 7);
-    case 10:
-      return __c10(i & 7);
-    case 11:
-      return __c11(i & 7);
   }
 }

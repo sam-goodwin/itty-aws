@@ -5,8 +5,6 @@ import * as S from "@distilled.cloud/core/schema";
 import { PosthogProtocol, type PosthogOpError, type PosthogOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { PosthogOpError, PosthogOpContext };
 
@@ -24,7 +22,17 @@ export interface CreateWarehouseExpressionRequest {
   /** ExternalDataSource id to scope the expression to that connection's direct-query database. Null applies it to the default warehouse database. */
   connection_id?: string | null;
 }
+const CreateWarehouseExpressionRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<CreateWarehouseExpressionRequest>;
+
 export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
+const UserBasicHedgehogConfigMap = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<UserBasicHedgehogConfigMap>;
+
 /** * `engineering` - Engineering * `data` - Data * `product` - Product Management * `founder` - Founder * `leadership` - Leadership * `marketing` - Marketing * `sales` - Sales / Success * `student` - Student * `other` - Other */
 export type RoleAtOrganizationEnum =
   | "engineering"
@@ -38,6 +46,8 @@ export type RoleAtOrganizationEnum =
   | "other";
 export type BlankEnum = "";
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
+const UserBasicRoleAtOrganization = S.Unknown as any as S.Schema<UserBasicRoleAtOrganization>;
+
 export interface UserBasic {
   id?: number;
   uuid?: string;
@@ -49,6 +59,8 @@ export interface UserBasic {
   hedgehog_config?: UserBasicHedgehogConfigMap | null;
   role_at_organization?: UserBasicRoleAtOrganization | null;
 }
+const UserBasic = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<UserBasic>;
+
 export interface DataWarehouseExpression {
   id: string;
   /** Whether this expression has been soft-deleted. */
@@ -64,12 +76,22 @@ export interface DataWarehouseExpression {
   /** ExternalDataSource id to scope the expression to that connection's direct-query database. Null applies it to the default warehouse database. */
   connection_id?: string | null;
 }
+const DataWarehouseExpression = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<DataWarehouseExpression>;
+
 export interface GetWarehouseExpressionRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A UUID string identifying this data warehouse expression. */
   id: string;
 }
+const GetWarehouseExpressionRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<GetWarehouseExpressionRequest>;
+
 export interface ListWarehouseExpressionsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -80,13 +102,28 @@ export interface ListWarehouseExpressionsRequest {
   /** A search term. */
   search?: string;
 }
+const ListWarehouseExpressionsRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<ListWarehouseExpressionsRequest>;
+
 export type PaginatedDataWarehouseExpressionListResultsList = Array<DataWarehouseExpression>;
+const PaginatedDataWarehouseExpressionListResultsList = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<PaginatedDataWarehouseExpressionListResultsList>;
+
 export interface PaginatedDataWarehouseExpressionList {
   count: number;
   next?: string | null;
   previous?: string | null;
   results: PaginatedDataWarehouseExpressionListResultsList;
 }
+const PaginatedDataWarehouseExpressionList = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<PaginatedDataWarehouseExpressionList>;
+
 export interface UpdateWarehouseExpressionRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -103,6 +140,11 @@ export interface UpdateWarehouseExpressionRequest {
   /** ExternalDataSource id to scope the expression to that connection's direct-query database. Null applies it to the default warehouse database. */
   connection_id?: string | null;
 }
+const UpdateWarehouseExpressionRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<UpdateWarehouseExpressionRequest>;
+
 export interface UpdateWarehouseExpressionsPartialRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -119,13 +161,28 @@ export interface UpdateWarehouseExpressionsPartialRequest {
   /** ExternalDataSource id to scope the expression to that connection's direct-query database. Null applies it to the default warehouse database. */
   connection_id?: string | null;
 }
+const UpdateWarehouseExpressionsPartialRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<UpdateWarehouseExpressionsPartialRequest>;
+
 export interface WarehouseExpressionsDestroyRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A UUID string identifying this data warehouse expression. */
   id: string;
 }
+const WarehouseExpressionsDestroyRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<WarehouseExpressionsDestroyRequest>;
+
 export interface WarehouseExpressionsDestroyResponse {}
+const WarehouseExpressionsDestroyResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<WarehouseExpressionsDestroyResponse>;
+
 export type CreateWarehouseExpressionError = PosthogOpError;
 /** Create, read, update and delete saved HogQL expressions that appear as virtual fields on tables. */
 export const createWarehouseExpression: API.OperationMethod<
@@ -134,8 +191,8 @@ export const createWarehouseExpression: API.OperationMethod<
   CreateWarehouseExpressionError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<CreateWarehouseExpressionRequest>,
-  output: __S(3) as any as S.Schema<DataWarehouseExpression>,
+  input: CreateWarehouseExpressionRequest,
+  output: DataWarehouseExpression,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -149,8 +206,8 @@ export const getWarehouseExpression: API.OperationMethod<
   GetWarehouseExpressionError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4) as any as S.Schema<GetWarehouseExpressionRequest>,
-  output: __S(3) as any as S.Schema<DataWarehouseExpression>,
+  input: GetWarehouseExpressionRequest,
+  output: DataWarehouseExpression,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -164,8 +221,8 @@ export const listWarehouseExpressions: API.OperationMethod<
   ListWarehouseExpressionsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5) as any as S.Schema<ListWarehouseExpressionsRequest>,
-  output: __S(7) as any as S.Schema<PaginatedDataWarehouseExpressionList>,
+  input: ListWarehouseExpressionsRequest,
+  output: PaginatedDataWarehouseExpressionList,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -179,8 +236,8 @@ export const updateWarehouseExpression: API.OperationMethod<
   UpdateWarehouseExpressionError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8) as any as S.Schema<UpdateWarehouseExpressionRequest>,
-  output: __S(3) as any as S.Schema<DataWarehouseExpression>,
+  input: UpdateWarehouseExpressionRequest,
+  output: DataWarehouseExpression,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -194,8 +251,8 @@ export const updateWarehouseExpressionsPartial: API.OperationMethod<
   UpdateWarehouseExpressionsPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9) as any as S.Schema<UpdateWarehouseExpressionsPartialRequest>,
-  output: __S(3) as any as S.Schema<DataWarehouseExpression>,
+  input: UpdateWarehouseExpressionsPartialRequest,
+  output: DataWarehouseExpression,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -209,8 +266,8 @@ export const warehouseExpressionsDestroy: API.OperationMethod<
   WarehouseExpressionsDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10) as any as S.Schema<WarehouseExpressionsDestroyRequest>,
-  output: __S(11) as any as S.Schema<WarehouseExpressionsDestroyResponse>,
+  input: WarehouseExpressionsDestroyRequest,
+  output: WarehouseExpressionsDestroyResponse,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -250,8 +307,8 @@ function __c0(j: number): any {
           last_name: S.optional(S.String),
           email: S.optional(S.String),
           is_email_verified: S.optional(S.NullOr(S.Boolean)),
-          hedgehog_config: S.optional(S.NullOr(__S(1))),
-          role_at_organization: S.optional(S.NullOr(S.Unknown)),
+          hedgehog_config: S.optional(S.NullOr(UserBasicHedgehogConfigMap)),
+          role_at_organization: S.optional(S.NullOr(UserBasicRoleAtOrganization)),
         }),
       ).annotate({ identifier: "UserBasic" });
     case 3:
@@ -259,7 +316,7 @@ function __c0(j: number): any {
         S.Struct({
           id: S.String,
           deleted: S.optional(S.NullOr(S.Boolean)),
-          created_by: __S(2),
+          created_by: UserBasic,
           created_at: S.String,
           table_name: S.String,
           field_name: S.String,
@@ -300,14 +357,14 @@ function __c0(j: number): any {
         identifier: "ListWarehouseExpressionsRequest",
       });
     case 6:
-      return S.Array(__S(3));
+      return S.Array(DataWarehouseExpression);
     case 7:
       return S.suspend(() =>
         S.Struct({
           count: S.Number,
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: __S(6),
+          results: PaginatedDataWarehouseExpressionListResultsList,
         }),
       ).annotate({
         identifier: "PaginatedDataWarehouseExpressionList",
@@ -375,18 +432,5 @@ function __c1(j: number): any {
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "WarehouseExpressionsDestroyResponse",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
   }
 }

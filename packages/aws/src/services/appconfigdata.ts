@@ -8,8 +8,6 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "AppConfigData",
   serviceShapeName: "AppConfigData",
@@ -86,7 +84,7 @@ export class BadRequestException
       message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
       Reason: /*@__PURE__*/ S.optional(S.String),
       Details: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => __S(6)).annotate({
+        /*@__PURE__*/ S.suspend(() => BadRequestDetails).annotate({
           identifier: "BadRequestDetails",
         }),
       ),
@@ -106,7 +104,7 @@ export class ResourceNotFoundException
       message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
       ResourceType: /*@__PURE__*/ S.optional(S.String),
       ReferencedBy: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => __S(7)).annotate({ identifier: "StringMap" }),
+        /*@__PURE__*/ S.suspend(() => StringMap).annotate({ identifier: "StringMap" }),
       ),
     },
     /*@__PURE__*/ T.HttpError(404),
@@ -121,6 +119,10 @@ export type Token = string;
 export interface GetLatestConfigurationRequest {
   ConfigurationToken: string;
 }
+const GetLatestConfigurationRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<GetLatestConfigurationRequest>;
 export interface GetLatestConfigurationResponse {
   NextPollConfigurationToken?: string;
   NextPollIntervalInSeconds?: number;
@@ -128,6 +130,10 @@ export interface GetLatestConfigurationResponse {
   Configuration?: T.StreamingOutputBody;
   VersionLabel?: string;
 }
+const GetLatestConfigurationResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<GetLatestConfigurationResponse>;
 export type Identifier = string;
 export type OptionalPollSeconds = number;
 export interface StartConfigurationSessionRequest {
@@ -136,20 +142,35 @@ export interface StartConfigurationSessionRequest {
   ConfigurationProfileIdentifier: string;
   RequiredMinimumPollIntervalInSeconds?: number;
 }
+const StartConfigurationSessionRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<StartConfigurationSessionRequest>;
 export interface StartConfigurationSessionResponse {
   InitialConfigurationToken?: string;
 }
+const StartConfigurationSessionResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<StartConfigurationSessionResponse>;
 export type BadRequestReason = string;
 export type InvalidParameterProblem = string;
 export interface InvalidParameterDetail {
   Problem?: string;
 }
+const InvalidParameterDetail = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<InvalidParameterDetail>;
 export type InvalidParameterMap = { [key: string]: InvalidParameterDetail | undefined };
+const InvalidParameterMap = /*@__PURE__*/ __L.at(__c0, 5);
 export type BadRequestDetails = {
   InvalidParameters: { [key: string]: InvalidParameterDetail | undefined };
 };
+const BadRequestDetails = /*@__PURE__*/ __L.at(__c0, 6);
 export type ResourceType = string;
 export type StringMap = { [key: string]: string | undefined };
+const StringMap = /*@__PURE__*/ __L.at(__c0, 7);
 export type GetLatestConfigurationError =
   | BadRequestException
   | InternalServerException
@@ -179,8 +200,8 @@ export const getLatestConfiguration: API.OperationMethod<
   GetLatestConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<GetLatestConfigurationRequest>,
-  output: __S(1) as any as S.Schema<GetLatestConfigurationResponse>,
+  input: GetLatestConfigurationRequest,
+  output: GetLatestConfigurationResponse,
   errors: [
     BadRequestException,
     InternalServerException,
@@ -210,8 +231,8 @@ export const startConfigurationSession: API.OperationMethod<
   StartConfigurationSessionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2) as any as S.Schema<StartConfigurationSessionRequest>,
-  output: __S(3) as any as S.Schema<StartConfigurationSessionResponse>,
+  input: StartConfigurationSessionRequest,
+  output: StartConfigurationSessionResponse,
   errors: [
     BadRequestException,
     InternalServerException,
@@ -281,21 +302,10 @@ function __c0(j: number): any {
         identifier: "InvalidParameterDetail",
       });
     case 5:
-      return S.Record(S.String, /*@__PURE__*/ __S(4).pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ InvalidParameterDetail.pipe(S.optional));
     case 6:
-      return S.Union([/*@__PURE__*/ S.Struct({ InvalidParameters: __S(5) })]);
+      return S.Union([/*@__PURE__*/ S.Struct({ InvalidParameters: InvalidParameterMap })]);
     case 7:
       return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
   }
 }

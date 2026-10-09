@@ -10,8 +10,6 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 const ns = /*@__PURE__*/ T.XmlNamespace("http://events.amazonaws.com/doc/2015-10-07");
 const svc = /*@__PURE__*/ T.AwsApiService({ sdkId: "EventBridge", serviceShapeName: "AWSEvents" });
 const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "events" });
@@ -202,11 +200,20 @@ export type EventSourceName = string;
 export interface ActivateEventSourceRequest {
   Name: string;
 }
+const ActivateEventSourceRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<ActivateEventSourceRequest>;
 export interface ActivateEventSourceResponse {}
+const ActivateEventSourceResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<ActivateEventSourceResponse>;
 export type ReplayName = string;
 export interface CancelReplayRequest {
   ReplayName: string;
 }
+const CancelReplayRequest = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<CancelReplayRequest>;
 export type ReplayArn = string;
 export type ReplayState =
   | "STARTING"
@@ -216,12 +223,15 @@ export type ReplayState =
   | "CANCELLED"
   | "FAILED"
   | (string & {});
+const ReplayState = S.String;
+
 export type ReplayStateReason = string;
 export interface CancelReplayResponse {
   ReplayArn?: string;
   State?: ReplayState;
   StateReason?: string;
 }
+const CancelReplayResponse = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<CancelReplayResponse>;
 export type ApiDestinationName = string;
 export type ApiDestinationDescription = string;
 export type ConnectionArn = string;
@@ -235,6 +245,8 @@ export type ApiDestinationHttpMethod =
   | "PATCH"
   | "DELETE"
   | (string & {});
+const ApiDestinationHttpMethod = S.String;
+
 export type ApiDestinationInvocationRateLimitPerSecond = number;
 export interface CreateApiDestinationRequest {
   Name: string;
@@ -244,14 +256,24 @@ export interface CreateApiDestinationRequest {
   HttpMethod: ApiDestinationHttpMethod;
   InvocationRateLimitPerSecond?: number;
 }
+const CreateApiDestinationRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<CreateApiDestinationRequest>;
 export type ApiDestinationArn = string;
 export type ApiDestinationState = "ACTIVE" | "INACTIVE" | (string & {});
+const ApiDestinationState = S.String;
+
 export interface CreateApiDestinationResponse {
   ApiDestinationArn?: string;
   ApiDestinationState?: ApiDestinationState;
   CreationTime?: Date;
   LastModifiedTime?: Date;
 }
+const CreateApiDestinationResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<CreateApiDestinationResponse>;
 export type ArchiveName = string;
 export type EventBusArn = string;
 export type ArchiveDescription = string;
@@ -266,6 +288,7 @@ export interface CreateArchiveRequest {
   RetentionDays?: number;
   KmsKeyIdentifier?: string;
 }
+const CreateArchiveRequest = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<CreateArchiveRequest>;
 export type ArchiveArn = string;
 export type ArchiveState =
   | "ENABLED"
@@ -275,6 +298,8 @@ export type ArchiveState =
   | "CREATE_FAILED"
   | "UPDATE_FAILED"
   | (string & {});
+const ArchiveState = S.String;
+
 export type ArchiveStateReason = string;
 export interface CreateArchiveResponse {
   ArchiveArn?: string;
@@ -282,6 +307,10 @@ export interface CreateArchiveResponse {
   StateReason?: string;
   CreationTime?: Date;
 }
+const CreateArchiveResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<CreateArchiveResponse>;
 export type ConnectionName = string;
 export type ConnectionDescription = string;
 export type ConnectionAuthorizationType =
@@ -289,17 +318,29 @@ export type ConnectionAuthorizationType =
   | "OAUTH_CLIENT_CREDENTIALS"
   | "API_KEY"
   | (string & {});
+const ConnectionAuthorizationType = S.String;
+
 export type AuthHeaderParameters = string;
 export type AuthHeaderParametersSensitive = string | redacted.Redacted<string>;
 export interface CreateConnectionBasicAuthRequestParameters {
   Username: string;
   Password: string | redacted.Redacted<string>;
 }
+const CreateConnectionBasicAuthRequestParameters = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<CreateConnectionBasicAuthRequestParameters>;
 export interface CreateConnectionOAuthClientRequestParameters {
   ClientID: string;
   ClientSecret: string | redacted.Redacted<string>;
 }
+const CreateConnectionOAuthClientRequestParameters = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<CreateConnectionOAuthClientRequestParameters>;
 export type ConnectionOAuthHttpMethod = "GET" | "POST" | "PUT" | (string & {});
+const ConnectionOAuthHttpMethod = S.String;
+
 export type HeaderKey = string;
 export type HeaderValueSensitive = string | redacted.Redacted<string>;
 export interface ConnectionHeaderParameter {
@@ -307,7 +348,12 @@ export interface ConnectionHeaderParameter {
   Value?: string | redacted.Redacted<string>;
   IsValueSecret?: boolean;
 }
+const ConnectionHeaderParameter = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<ConnectionHeaderParameter>;
 export type ConnectionHeaderParametersList = ConnectionHeaderParameter[];
+const ConnectionHeaderParametersList = /*@__PURE__*/ __L.at(__c1, 3);
 export type QueryStringKey = string;
 export type QueryStringValueSensitive = string | redacted.Redacted<string>;
 export interface ConnectionQueryStringParameter {
@@ -315,36 +361,64 @@ export interface ConnectionQueryStringParameter {
   Value?: string | redacted.Redacted<string>;
   IsValueSecret?: boolean;
 }
+const ConnectionQueryStringParameter =
+  ConnectionHeaderParameter as any as S.Schema<ConnectionQueryStringParameter>;
 export type ConnectionQueryStringParametersList = ConnectionQueryStringParameter[];
+const ConnectionQueryStringParametersList = /*@__PURE__*/ __L.at(__c1, 4);
 export type SensitiveString = string | redacted.Redacted<string>;
 export interface ConnectionBodyParameter {
   Key?: string;
   Value?: string | redacted.Redacted<string>;
   IsValueSecret?: boolean;
 }
+const ConnectionBodyParameter = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<ConnectionBodyParameter>;
 export type ConnectionBodyParametersList = ConnectionBodyParameter[];
+const ConnectionBodyParametersList = /*@__PURE__*/ __L.at(__c1, 6);
 export interface ConnectionHttpParameters {
   HeaderParameters?: ConnectionHeaderParameter[];
   QueryStringParameters?: ConnectionQueryStringParameter[];
   BodyParameters?: ConnectionBodyParameter[];
 }
+const ConnectionHttpParameters = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<ConnectionHttpParameters>;
 export interface CreateConnectionOAuthRequestParameters {
   ClientParameters: CreateConnectionOAuthClientRequestParameters;
   AuthorizationEndpoint: string;
   HttpMethod: ConnectionOAuthHttpMethod;
   OAuthHttpParameters?: ConnectionHttpParameters;
 }
+const CreateConnectionOAuthRequestParameters = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<CreateConnectionOAuthRequestParameters>;
 export interface CreateConnectionApiKeyAuthRequestParameters {
   ApiKeyName: string;
   ApiKeyValue: string | redacted.Redacted<string>;
 }
+const CreateConnectionApiKeyAuthRequestParameters = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<CreateConnectionApiKeyAuthRequestParameters>;
 export type ResourceConfigurationArn = string;
 export interface ConnectivityResourceConfigurationArn {
   ResourceConfigurationArn: string;
 }
+const ConnectivityResourceConfigurationArn = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<ConnectivityResourceConfigurationArn>;
 export interface ConnectivityResourceParameters {
   ResourceParameters: ConnectivityResourceConfigurationArn;
 }
+const ConnectivityResourceParameters = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<ConnectivityResourceParameters>;
 export interface CreateConnectionAuthRequestParameters {
   BasicAuthParameters?: CreateConnectionBasicAuthRequestParameters;
   OAuthParameters?: CreateConnectionOAuthRequestParameters;
@@ -352,6 +426,10 @@ export interface CreateConnectionAuthRequestParameters {
   InvocationHttpParameters?: ConnectionHttpParameters;
   ConnectivityParameters?: ConnectivityResourceParameters;
 }
+const CreateConnectionAuthRequestParameters = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<CreateConnectionAuthRequestParameters>;
 export interface CreateConnectionRequest {
   Name: string;
   Description?: string;
@@ -360,6 +438,10 @@ export interface CreateConnectionRequest {
   InvocationConnectivityParameters?: ConnectivityResourceParameters;
   KmsKeyIdentifier?: string;
 }
+const CreateConnectionRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<CreateConnectionRequest>;
 export type ConnectionState =
   | "CREATING"
   | "UPDATING"
@@ -371,38 +453,53 @@ export type ConnectionState =
   | "ACTIVE"
   | "FAILED_CONNECTIVITY"
   | (string & {});
+const ConnectionState = S.String;
+
 export interface CreateConnectionResponse {
   ConnectionArn?: string;
   ConnectionState?: ConnectionState;
   CreationTime?: Date;
   LastModifiedTime?: Date;
 }
+const CreateConnectionResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<CreateConnectionResponse>;
 export type EndpointName = string;
 export type EndpointDescription = string;
 export type HealthCheck = string;
 export interface Primary {
   HealthCheck: string;
 }
+const Primary = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<Primary>;
 export type Route = string;
 export interface Secondary {
   Route: string;
 }
+const Secondary = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<Secondary>;
 export interface FailoverConfig {
   Primary: Primary;
   Secondary: Secondary;
 }
+const FailoverConfig = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<FailoverConfig>;
 export interface RoutingConfig {
   FailoverConfig: FailoverConfig;
 }
+const RoutingConfig = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<RoutingConfig>;
 export type ReplicationState = "ENABLED" | "DISABLED" | (string & {});
+const ReplicationState = S.String;
+
 export interface ReplicationConfig {
   State?: ReplicationState;
 }
+const ReplicationConfig = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<ReplicationConfig>;
 export type NonPartnerEventBusArn = string;
 export interface EndpointEventBus {
   EventBusArn: string;
 }
+const EndpointEventBus = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<EndpointEventBus>;
 export type EndpointEventBusList = EndpointEventBus[];
+const EndpointEventBusList = /*@__PURE__*/ __L.at(__c3, 5);
 export type IamRoleArn = string;
 export interface CreateEndpointRequest {
   Name: string;
@@ -412,6 +509,10 @@ export interface CreateEndpointRequest {
   EventBuses: EndpointEventBus[];
   RoleArn?: string;
 }
+const CreateEndpointRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<CreateEndpointRequest>;
 export type EndpointArn = string;
 export type EndpointState =
   | "ACTIVE"
@@ -422,6 +523,8 @@ export type EndpointState =
   | "UPDATE_FAILED"
   | "DELETE_FAILED"
   | (string & {});
+const EndpointState = S.String;
+
 export interface CreateEndpointResponse {
   Name?: string;
   Arn?: string;
@@ -431,25 +534,37 @@ export interface CreateEndpointResponse {
   RoleArn?: string;
   State?: EndpointState;
 }
+const CreateEndpointResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<CreateEndpointResponse>;
 export type EventBusName = string;
 export type EventBusDescription = string;
 export type ResourceArn = string;
 export interface DeadLetterConfig {
   Arn?: string;
 }
+const DeadLetterConfig = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<DeadLetterConfig>;
 export type IncludeDetail = "NONE" | "FULL" | (string & {});
+const IncludeDetail = S.String;
+
 export type Level = "OFF" | "ERROR" | "INFO" | "TRACE" | (string & {});
+const Level = S.String;
+
 export interface LogConfig {
   IncludeDetail?: IncludeDetail;
   Level?: Level;
 }
+const LogConfig = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<LogConfig>;
 export type TagKey = string;
 export type TagValue = string;
 export interface Tag {
   Key: string;
   Value: string;
 }
+const Tag = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<Tag>;
 export type TagList = Tag[];
+const TagList = /*@__PURE__*/ __L.at(__c4, 3);
 export interface CreateEventBusRequest {
   Name: string;
   EventSourceName?: string;
@@ -459,6 +574,10 @@ export interface CreateEventBusRequest {
   LogConfig?: LogConfig;
   Tags?: Tag[];
 }
+const CreateEventBusRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<CreateEventBusRequest>;
 export interface CreateEventBusResponse {
   EventBusArn?: string;
   Description?: string;
@@ -466,21 +585,43 @@ export interface CreateEventBusResponse {
   DeadLetterConfig?: DeadLetterConfig;
   LogConfig?: LogConfig;
 }
+const CreateEventBusResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<CreateEventBusResponse>;
 export type AccountId = string;
 export interface CreatePartnerEventSourceRequest {
   Name: string;
   Account: string;
 }
+const CreatePartnerEventSourceRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<CreatePartnerEventSourceRequest>;
 export interface CreatePartnerEventSourceResponse {
   EventSourceArn?: string;
 }
+const CreatePartnerEventSourceResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<CreatePartnerEventSourceResponse>;
 export interface DeactivateEventSourceRequest {
   Name: string;
 }
+const DeactivateEventSourceRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  0,
+) as any as S.Schema<DeactivateEventSourceRequest>;
 export interface DeactivateEventSourceResponse {}
+const DeactivateEventSourceResponse =
+  ActivateEventSourceResponse as any as S.Schema<DeactivateEventSourceResponse>;
 export interface DeauthorizeConnectionRequest {
   Name: string;
 }
+const DeauthorizeConnectionRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  1,
+) as any as S.Schema<DeauthorizeConnectionRequest>;
 export interface DeauthorizeConnectionResponse {
   ConnectionArn?: string;
   ConnectionState?: ConnectionState;
@@ -488,17 +629,36 @@ export interface DeauthorizeConnectionResponse {
   LastModifiedTime?: Date;
   LastAuthorizedTime?: Date;
 }
+const DeauthorizeConnectionResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  2,
+) as any as S.Schema<DeauthorizeConnectionResponse>;
 export interface DeleteApiDestinationRequest {
   Name: string;
 }
+const DeleteApiDestinationRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<DeleteApiDestinationRequest>;
 export interface DeleteApiDestinationResponse {}
+const DeleteApiDestinationResponse =
+  ActivateEventSourceResponse as any as S.Schema<DeleteApiDestinationResponse>;
 export interface DeleteArchiveRequest {
   ArchiveName: string;
 }
+const DeleteArchiveRequest = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<DeleteArchiveRequest>;
 export interface DeleteArchiveResponse {}
+const DeleteArchiveResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  5,
+) as any as S.Schema<DeleteArchiveResponse>;
 export interface DeleteConnectionRequest {
   Name: string;
 }
+const DeleteConnectionRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  6,
+) as any as S.Schema<DeleteConnectionRequest>;
 export interface DeleteConnectionResponse {
   ConnectionArn?: string;
   ConnectionState?: ConnectionState;
@@ -506,19 +666,42 @@ export interface DeleteConnectionResponse {
   LastModifiedTime?: Date;
   LastAuthorizedTime?: Date;
 }
+const DeleteConnectionResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  7,
+) as any as S.Schema<DeleteConnectionResponse>;
 export interface DeleteEndpointRequest {
   Name: string;
 }
+const DeleteEndpointRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<DeleteEndpointRequest>;
 export interface DeleteEndpointResponse {}
+const DeleteEndpointResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  1,
+) as any as S.Schema<DeleteEndpointResponse>;
 export interface DeleteEventBusRequest {
   Name: string;
 }
+const DeleteEventBusRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  2,
+) as any as S.Schema<DeleteEventBusRequest>;
 export interface DeleteEventBusResponse {}
+const DeleteEventBusResponse = DeleteEndpointResponse as any as S.Schema<DeleteEventBusResponse>;
 export interface DeletePartnerEventSourceRequest {
   Name: string;
   Account: string;
 }
+const DeletePartnerEventSourceRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  3,
+) as any as S.Schema<DeletePartnerEventSourceRequest>;
 export interface DeletePartnerEventSourceResponse {}
+const DeletePartnerEventSourceResponse =
+  ActivateEventSourceResponse as any as S.Schema<DeletePartnerEventSourceResponse>;
 export type RuleName = string;
 export type EventBusNameOrArn = string;
 export interface DeleteRuleRequest {
@@ -526,10 +709,16 @@ export interface DeleteRuleRequest {
   EventBusName?: string;
   Force?: boolean;
 }
+const DeleteRuleRequest = /*@__PURE__*/ __L.at(__c6, 4) as any as S.Schema<DeleteRuleRequest>;
 export interface DeleteRuleResponse {}
+const DeleteRuleResponse = DeleteArchiveResponse as any as S.Schema<DeleteRuleResponse>;
 export interface DescribeApiDestinationRequest {
   Name: string;
 }
+const DescribeApiDestinationRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  5,
+) as any as S.Schema<DescribeApiDestinationRequest>;
 export interface DescribeApiDestinationResponse {
   ApiDestinationArn?: string;
   Name?: string;
@@ -542,9 +731,17 @@ export interface DescribeApiDestinationResponse {
   CreationTime?: Date;
   LastModifiedTime?: Date;
 }
+const DescribeApiDestinationResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  6,
+) as any as S.Schema<DescribeApiDestinationResponse>;
 export interface DescribeArchiveRequest {
   ArchiveName: string;
 }
+const DescribeArchiveRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  7,
+) as any as S.Schema<DescribeArchiveRequest>;
 export interface DescribeArchiveResponse {
   ArchiveArn?: string;
   ArchiveName?: string;
@@ -559,34 +756,66 @@ export interface DescribeArchiveResponse {
   EventCount?: number;
   CreationTime?: Date;
 }
+const DescribeArchiveResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  0,
+) as any as S.Schema<DescribeArchiveResponse>;
 export interface DescribeConnectionRequest {
   Name: string;
 }
+const DescribeConnectionRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  1,
+) as any as S.Schema<DescribeConnectionRequest>;
 export type ResourceAssociationArn = string;
 export interface DescribeConnectionResourceParameters {
   ResourceConfigurationArn: string;
   ResourceAssociationArn: string;
 }
+const DescribeConnectionResourceParameters = /*@__PURE__*/ __L.at(
+  __c7,
+  2,
+) as any as S.Schema<DescribeConnectionResourceParameters>;
 export interface DescribeConnectionConnectivityParameters {
   ResourceParameters: DescribeConnectionResourceParameters;
 }
+const DescribeConnectionConnectivityParameters = /*@__PURE__*/ __L.at(
+  __c7,
+  3,
+) as any as S.Schema<DescribeConnectionConnectivityParameters>;
 export type ConnectionStateReason = string;
 export type SecretsManagerSecretArn = string;
 export interface ConnectionBasicAuthResponseParameters {
   Username?: string;
 }
+const ConnectionBasicAuthResponseParameters = /*@__PURE__*/ __L.at(
+  __c7,
+  4,
+) as any as S.Schema<ConnectionBasicAuthResponseParameters>;
 export interface ConnectionOAuthClientResponseParameters {
   ClientID?: string;
 }
+const ConnectionOAuthClientResponseParameters = /*@__PURE__*/ __L.at(
+  __c7,
+  5,
+) as any as S.Schema<ConnectionOAuthClientResponseParameters>;
 export interface ConnectionOAuthResponseParameters {
   ClientParameters?: ConnectionOAuthClientResponseParameters;
   AuthorizationEndpoint?: string;
   HttpMethod?: ConnectionOAuthHttpMethod;
   OAuthHttpParameters?: ConnectionHttpParameters;
 }
+const ConnectionOAuthResponseParameters = /*@__PURE__*/ __L.at(
+  __c7,
+  6,
+) as any as S.Schema<ConnectionOAuthResponseParameters>;
 export interface ConnectionApiKeyAuthResponseParameters {
   ApiKeyName?: string;
 }
+const ConnectionApiKeyAuthResponseParameters = /*@__PURE__*/ __L.at(
+  __c7,
+  7,
+) as any as S.Schema<ConnectionApiKeyAuthResponseParameters>;
 export interface ConnectionAuthResponseParameters {
   BasicAuthParameters?: ConnectionBasicAuthResponseParameters;
   OAuthParameters?: ConnectionOAuthResponseParameters;
@@ -594,6 +823,10 @@ export interface ConnectionAuthResponseParameters {
   InvocationHttpParameters?: ConnectionHttpParameters;
   ConnectivityParameters?: DescribeConnectionConnectivityParameters;
 }
+const ConnectionAuthResponseParameters = /*@__PURE__*/ __L.at(
+  __c8,
+  0,
+) as any as S.Schema<ConnectionAuthResponseParameters>;
 export interface DescribeConnectionResponse {
   ConnectionArn?: string;
   Name?: string;
@@ -609,11 +842,19 @@ export interface DescribeConnectionResponse {
   LastModifiedTime?: Date;
   LastAuthorizedTime?: Date;
 }
+const DescribeConnectionResponse = /*@__PURE__*/ __L.at(
+  __c8,
+  1,
+) as any as S.Schema<DescribeConnectionResponse>;
 export type HomeRegion = string;
 export interface DescribeEndpointRequest {
   Name: string;
   HomeRegion?: string;
 }
+const DescribeEndpointRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  2,
+) as any as S.Schema<DescribeEndpointRequest>;
 export type EndpointId = string;
 export type EndpointUrl = string;
 export type EndpointStateReason = string;
@@ -632,9 +873,17 @@ export interface DescribeEndpointResponse {
   CreationTime?: Date;
   LastModifiedTime?: Date;
 }
+const DescribeEndpointResponse = /*@__PURE__*/ __L.at(
+  __c8,
+  3,
+) as any as S.Schema<DescribeEndpointResponse>;
 export interface DescribeEventBusRequest {
   Name?: string;
 }
+const DescribeEventBusRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  4,
+) as any as S.Schema<DescribeEventBusRequest>;
 export type ManagedBy = string;
 export interface DescribeEventBusResponse {
   Name?: string;
@@ -648,10 +897,20 @@ export interface DescribeEventBusResponse {
   LastModifiedTime?: Date;
   ManagedBy?: string;
 }
+const DescribeEventBusResponse = /*@__PURE__*/ __L.at(
+  __c8,
+  5,
+) as any as S.Schema<DescribeEventBusResponse>;
 export interface DescribeEventSourceRequest {
   Name: string;
 }
+const DescribeEventSourceRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  6,
+) as any as S.Schema<DescribeEventSourceRequest>;
 export type EventSourceState = "PENDING" | "ACTIVE" | "DELETED" | (string & {});
+const EventSourceState = S.String;
+
 export interface DescribeEventSourceResponse {
   Arn?: string;
   CreatedBy?: string;
@@ -660,23 +919,41 @@ export interface DescribeEventSourceResponse {
   Name?: string;
   State?: EventSourceState;
 }
+const DescribeEventSourceResponse = /*@__PURE__*/ __L.at(
+  __c8,
+  7,
+) as any as S.Schema<DescribeEventSourceResponse>;
 export interface DescribePartnerEventSourceRequest {
   Name: string;
 }
+const DescribePartnerEventSourceRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  0,
+) as any as S.Schema<DescribePartnerEventSourceRequest>;
 export interface DescribePartnerEventSourceResponse {
   Arn?: string;
   Name?: string;
 }
+const DescribePartnerEventSourceResponse = /*@__PURE__*/ __L.at(
+  __c9,
+  1,
+) as any as S.Schema<DescribePartnerEventSourceResponse>;
 export interface DescribeReplayRequest {
   ReplayName: string;
 }
+const DescribeReplayRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  2,
+) as any as S.Schema<DescribeReplayRequest>;
 export type ReplayDescription = string;
 export type Arn = string;
 export type ReplayDestinationFilters = string[];
+const ReplayDestinationFilters = /*@__PURE__*/ __L.at(__c9, 3);
 export interface ReplayDestination {
   Arn: string;
   FilterArns?: string[];
 }
+const ReplayDestination = /*@__PURE__*/ __L.at(__c9, 4) as any as S.Schema<ReplayDestination>;
 export interface DescribeReplayResponse {
   ReplayName?: string;
   ReplayArn?: string;
@@ -691,10 +968,15 @@ export interface DescribeReplayResponse {
   ReplayStartTime?: Date;
   ReplayEndTime?: Date;
 }
+const DescribeReplayResponse = /*@__PURE__*/ __L.at(
+  __c9,
+  5,
+) as any as S.Schema<DescribeReplayResponse>;
 export interface DescribeRuleRequest {
   Name: string;
   EventBusName?: string;
 }
+const DescribeRuleRequest = /*@__PURE__*/ __L.at(__c9, 6) as any as S.Schema<DescribeRuleRequest>;
 export type RuleArn = string;
 export type ScheduleExpression = string;
 export type RuleState =
@@ -702,6 +984,8 @@ export type RuleState =
   | "DISABLED"
   | "ENABLED_WITH_ALL_CLOUDTRAIL_MANAGEMENT_EVENTS"
   | (string & {});
+const RuleState = S.String;
+
 export type RuleDescription = string;
 export type RoleArn = string;
 export type CreatedBy = string;
@@ -717,16 +1001,21 @@ export interface DescribeRuleResponse {
   EventBusName?: string;
   CreatedBy?: string;
 }
+const DescribeRuleResponse = /*@__PURE__*/ __L.at(__c9, 7) as any as S.Schema<DescribeRuleResponse>;
 export interface DisableRuleRequest {
   Name: string;
   EventBusName?: string;
 }
+const DisableRuleRequest = /*@__PURE__*/ __L.at(__c10, 0) as any as S.Schema<DisableRuleRequest>;
 export interface DisableRuleResponse {}
+const DisableRuleResponse = DeleteArchiveResponse as any as S.Schema<DisableRuleResponse>;
 export interface EnableRuleRequest {
   Name: string;
   EventBusName?: string;
 }
+const EnableRuleRequest = /*@__PURE__*/ __L.at(__c10, 1) as any as S.Schema<EnableRuleRequest>;
 export interface EnableRuleResponse {}
+const EnableRuleResponse = DeleteArchiveResponse as any as S.Schema<EnableRuleResponse>;
 export type NextToken = string;
 export type LimitMax100 = number;
 export interface ListApiDestinationsRequest {
@@ -735,6 +1024,10 @@ export interface ListApiDestinationsRequest {
   NextToken?: string;
   Limit?: number;
 }
+const ListApiDestinationsRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  2,
+) as any as S.Schema<ListApiDestinationsRequest>;
 export interface ApiDestination {
   ApiDestinationArn?: string;
   Name?: string;
@@ -746,11 +1039,17 @@ export interface ApiDestination {
   CreationTime?: Date;
   LastModifiedTime?: Date;
 }
+const ApiDestination = /*@__PURE__*/ __L.at(__c10, 3) as any as S.Schema<ApiDestination>;
 export type ApiDestinationResponseList = ApiDestination[];
+const ApiDestinationResponseList = /*@__PURE__*/ __L.at(__c10, 4);
 export interface ListApiDestinationsResponse {
   ApiDestinations?: ApiDestination[];
   NextToken?: string;
 }
+const ListApiDestinationsResponse = /*@__PURE__*/ __L.at(
+  __c10,
+  5,
+) as any as S.Schema<ListApiDestinationsResponse>;
 export interface ListArchivesRequest {
   NamePrefix?: string;
   EventSourceArn?: string;
@@ -758,6 +1057,7 @@ export interface ListArchivesRequest {
   NextToken?: string;
   Limit?: number;
 }
+const ListArchivesRequest = /*@__PURE__*/ __L.at(__c10, 6) as any as S.Schema<ListArchivesRequest>;
 export interface Archive {
   ArchiveName?: string;
   EventSourceArn?: string;
@@ -768,17 +1068,27 @@ export interface Archive {
   EventCount?: number;
   CreationTime?: Date;
 }
+const Archive = /*@__PURE__*/ __L.at(__c10, 7) as any as S.Schema<Archive>;
 export type ArchiveResponseList = Archive[];
+const ArchiveResponseList = /*@__PURE__*/ __L.at(__c11, 0);
 export interface ListArchivesResponse {
   Archives?: Archive[];
   NextToken?: string;
 }
+const ListArchivesResponse = /*@__PURE__*/ __L.at(
+  __c11,
+  1,
+) as any as S.Schema<ListArchivesResponse>;
 export interface ListConnectionsRequest {
   NamePrefix?: string;
   ConnectionState?: ConnectionState;
   NextToken?: string;
   Limit?: number;
 }
+const ListConnectionsRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  2,
+) as any as S.Schema<ListConnectionsRequest>;
 export interface Connection {
   ConnectionArn?: string;
   Name?: string;
@@ -789,17 +1099,27 @@ export interface Connection {
   LastModifiedTime?: Date;
   LastAuthorizedTime?: Date;
 }
+const Connection = /*@__PURE__*/ __L.at(__c11, 3) as any as S.Schema<Connection>;
 export type ConnectionResponseList = Connection[];
+const ConnectionResponseList = /*@__PURE__*/ __L.at(__c11, 4);
 export interface ListConnectionsResponse {
   Connections?: Connection[];
   NextToken?: string;
 }
+const ListConnectionsResponse = /*@__PURE__*/ __L.at(
+  __c11,
+  5,
+) as any as S.Schema<ListConnectionsResponse>;
 export interface ListEndpointsRequest {
   NamePrefix?: string;
   HomeRegion?: string;
   NextToken?: string;
   MaxResults?: number;
 }
+const ListEndpointsRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  6,
+) as any as S.Schema<ListEndpointsRequest>;
 export interface Endpoint {
   Name?: string;
   Description?: string;
@@ -817,15 +1137,24 @@ export interface Endpoint {
 }
 const Endpoint = /*@__PURE__*/ __L.at(__c11, 7) as any as S.Schema<Endpoint>;
 export type EndpointList = Endpoint[];
+const EndpointList = /*@__PURE__*/ __L.at(__c12, 0);
 export interface ListEndpointsResponse {
   Endpoints?: Endpoint[];
   NextToken?: string;
 }
+const ListEndpointsResponse = /*@__PURE__*/ __L.at(
+  __c12,
+  1,
+) as any as S.Schema<ListEndpointsResponse>;
 export interface ListEventBusesRequest {
   NamePrefix?: string;
   NextToken?: string;
   Limit?: number;
 }
+const ListEventBusesRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  2,
+) as any as S.Schema<ListEventBusesRequest>;
 export interface EventBus {
   Name?: string;
   Arn?: string;
@@ -835,17 +1164,27 @@ export interface EventBus {
   LastModifiedTime?: Date;
   ManagedBy?: string;
 }
+const EventBus = /*@__PURE__*/ __L.at(__c12, 3) as any as S.Schema<EventBus>;
 export type EventBusList = EventBus[];
+const EventBusList = /*@__PURE__*/ __L.at(__c12, 4);
 export interface ListEventBusesResponse {
   EventBuses?: EventBus[];
   NextToken?: string;
 }
+const ListEventBusesResponse = /*@__PURE__*/ __L.at(
+  __c12,
+  5,
+) as any as S.Schema<ListEventBusesResponse>;
 export type EventSourceNamePrefix = string;
 export interface ListEventSourcesRequest {
   NamePrefix?: string;
   NextToken?: string;
   Limit?: number;
 }
+const ListEventSourcesRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  6,
+) as any as S.Schema<ListEventSourcesRequest>;
 export interface EventSource {
   Arn?: string;
   CreatedBy?: string;
@@ -854,42 +1193,71 @@ export interface EventSource {
   Name?: string;
   State?: EventSourceState;
 }
+const EventSource = /*@__PURE__*/ __L.at(__c12, 7) as any as S.Schema<EventSource>;
 export type EventSourceList = EventSource[];
+const EventSourceList = /*@__PURE__*/ __L.at(__c13, 0);
 export interface ListEventSourcesResponse {
   EventSources?: EventSource[];
   NextToken?: string;
 }
+const ListEventSourcesResponse = /*@__PURE__*/ __L.at(
+  __c13,
+  1,
+) as any as S.Schema<ListEventSourcesResponse>;
 export interface ListPartnerEventSourceAccountsRequest {
   EventSourceName: string;
   NextToken?: string;
   Limit?: number;
 }
+const ListPartnerEventSourceAccountsRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  2,
+) as any as S.Schema<ListPartnerEventSourceAccountsRequest>;
 export interface PartnerEventSourceAccount {
   Account?: string;
   CreationTime?: Date;
   ExpirationTime?: Date;
   State?: EventSourceState;
 }
+const PartnerEventSourceAccount = /*@__PURE__*/ __L.at(
+  __c13,
+  3,
+) as any as S.Schema<PartnerEventSourceAccount>;
 export type PartnerEventSourceAccountList = PartnerEventSourceAccount[];
+const PartnerEventSourceAccountList = /*@__PURE__*/ __L.at(__c13, 4);
 export interface ListPartnerEventSourceAccountsResponse {
   PartnerEventSourceAccounts?: PartnerEventSourceAccount[];
   NextToken?: string;
 }
+const ListPartnerEventSourceAccountsResponse = /*@__PURE__*/ __L.at(
+  __c13,
+  5,
+) as any as S.Schema<ListPartnerEventSourceAccountsResponse>;
 export type PartnerEventSourceNamePrefix = string;
 export interface ListPartnerEventSourcesRequest {
   NamePrefix: string;
   NextToken?: string;
   Limit?: number;
 }
+const ListPartnerEventSourcesRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  6,
+) as any as S.Schema<ListPartnerEventSourcesRequest>;
 export interface PartnerEventSource {
   Arn?: string;
   Name?: string;
 }
+const PartnerEventSource = /*@__PURE__*/ __L.at(__c13, 7) as any as S.Schema<PartnerEventSource>;
 export type PartnerEventSourceList = PartnerEventSource[];
+const PartnerEventSourceList = /*@__PURE__*/ __L.at(__c14, 0);
 export interface ListPartnerEventSourcesResponse {
   PartnerEventSources?: PartnerEventSource[];
   NextToken?: string;
 }
+const ListPartnerEventSourcesResponse = /*@__PURE__*/ __L.at(
+  __c14,
+  1,
+) as any as S.Schema<ListPartnerEventSourcesResponse>;
 export interface ListReplaysRequest {
   NamePrefix?: string;
   State?: ReplayState;
@@ -897,6 +1265,7 @@ export interface ListReplaysRequest {
   NextToken?: string;
   Limit?: number;
 }
+const ListReplaysRequest = /*@__PURE__*/ __L.at(__c14, 2) as any as S.Schema<ListReplaysRequest>;
 export interface Replay {
   ReplayName?: string;
   EventSourceArn?: string;
@@ -908,11 +1277,14 @@ export interface Replay {
   ReplayStartTime?: Date;
   ReplayEndTime?: Date;
 }
+const Replay = /*@__PURE__*/ __L.at(__c14, 3) as any as S.Schema<Replay>;
 export type ReplayList = Replay[];
+const ReplayList = /*@__PURE__*/ __L.at(__c14, 4);
 export interface ListReplaysResponse {
   Replays?: Replay[];
   NextToken?: string;
 }
+const ListReplaysResponse = /*@__PURE__*/ __L.at(__c14, 5) as any as S.Schema<ListReplaysResponse>;
 export type TargetArn = string;
 export interface ListRuleNamesByTargetRequest {
   TargetArn: string;
@@ -920,17 +1292,27 @@ export interface ListRuleNamesByTargetRequest {
   NextToken?: string;
   Limit?: number;
 }
+const ListRuleNamesByTargetRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  6,
+) as any as S.Schema<ListRuleNamesByTargetRequest>;
 export type RuleNameList = string[];
+const RuleNameList = ReplayDestinationFilters as any as S.Schema<RuleNameList>;
 export interface ListRuleNamesByTargetResponse {
   RuleNames?: string[];
   NextToken?: string;
 }
+const ListRuleNamesByTargetResponse = /*@__PURE__*/ __L.at(
+  __c14,
+  7,
+) as any as S.Schema<ListRuleNamesByTargetResponse>;
 export interface ListRulesRequest {
   NamePrefix?: string;
   EventBusName?: string;
   NextToken?: string;
   Limit?: number;
 }
+const ListRulesRequest = /*@__PURE__*/ __L.at(__c15, 0) as any as S.Schema<ListRulesRequest>;
 export interface Rule {
   Name?: string;
   Arn?: string;
@@ -942,60 +1324,95 @@ export interface Rule {
   ManagedBy?: string;
   EventBusName?: string;
 }
+const Rule = /*@__PURE__*/ __L.at(__c15, 1) as any as S.Schema<Rule>;
 export type RuleResponseList = Rule[];
+const RuleResponseList = /*@__PURE__*/ __L.at(__c15, 2);
 export interface ListRulesResponse {
   Rules?: Rule[];
   NextToken?: string;
 }
+const ListRulesResponse = /*@__PURE__*/ __L.at(__c15, 3) as any as S.Schema<ListRulesResponse>;
 export interface ListTagsForResourceRequest {
   ResourceARN: string;
 }
+const ListTagsForResourceRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  4,
+) as any as S.Schema<ListTagsForResourceRequest>;
 export interface ListTagsForResourceResponse {
   Tags?: Tag[];
 }
+const ListTagsForResourceResponse = /*@__PURE__*/ __L.at(
+  __c15,
+  5,
+) as any as S.Schema<ListTagsForResourceResponse>;
 export interface ListTargetsByRuleRequest {
   Rule: string;
   EventBusName?: string;
   NextToken?: string;
   Limit?: number;
 }
+const ListTargetsByRuleRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  6,
+) as any as S.Schema<ListTargetsByRuleRequest>;
 export type TargetId = string;
 export type TargetInput = string;
 export type TargetInputPath = string;
 export type InputTransformerPathKey = string;
 export type TransformerPaths = { [key: string]: string | undefined };
+const TransformerPaths = /*@__PURE__*/ __L.at(__c15, 7);
 export type TransformerInput = string;
 export interface InputTransformer {
   InputPathsMap?: { [key: string]: string | undefined };
   InputTemplate: string;
 }
+const InputTransformer = /*@__PURE__*/ __L.at(__c16, 0) as any as S.Schema<InputTransformer>;
 export type TargetPartitionKeyPath = string;
 export interface KinesisParameters {
   PartitionKeyPath: string;
 }
+const KinesisParameters = /*@__PURE__*/ __L.at(__c16, 1) as any as S.Schema<KinesisParameters>;
 export type RunCommandTargetKey = string;
 export type RunCommandTargetValue = string;
 export type RunCommandTargetValues = string[];
+const RunCommandTargetValues = ReplayDestinationFilters as any as S.Schema<RunCommandTargetValues>;
 export interface RunCommandTarget {
   Key: string;
   Values: string[];
 }
+const RunCommandTarget = /*@__PURE__*/ __L.at(__c16, 2) as any as S.Schema<RunCommandTarget>;
 export type RunCommandTargets = RunCommandTarget[];
+const RunCommandTargets = /*@__PURE__*/ __L.at(__c16, 3);
 export interface RunCommandParameters {
   RunCommandTargets: RunCommandTarget[];
 }
+const RunCommandParameters = /*@__PURE__*/ __L.at(
+  __c16,
+  4,
+) as any as S.Schema<RunCommandParameters>;
 export type LimitMin1 = number;
 export type LaunchType = "EC2" | "FARGATE" | "EXTERNAL" | (string & {});
+const LaunchType = S.String;
+
 export type StringList = string[];
+const StringList = ReplayDestinationFilters as any as S.Schema<StringList>;
 export type AssignPublicIp = "ENABLED" | "DISABLED" | (string & {});
+const AssignPublicIp = S.String;
+
 export interface AwsVpcConfiguration {
   Subnets: string[];
   SecurityGroups?: string[];
   AssignPublicIp?: AssignPublicIp;
 }
+const AwsVpcConfiguration = /*@__PURE__*/ __L.at(__c16, 5) as any as S.Schema<AwsVpcConfiguration>;
 export interface NetworkConfiguration {
   awsvpcConfiguration?: AwsVpcConfiguration;
 }
+const NetworkConfiguration = /*@__PURE__*/ __L.at(
+  __c16,
+  6,
+) as any as S.Schema<NetworkConfiguration>;
 export type CapacityProvider = string;
 export type CapacityProviderStrategyItemWeight = number;
 export type CapacityProviderStrategyItemBase = number;
@@ -1004,22 +1421,37 @@ export interface CapacityProviderStrategyItem {
   weight?: number;
   base?: number;
 }
+const CapacityProviderStrategyItem = /*@__PURE__*/ __L.at(
+  __c16,
+  7,
+) as any as S.Schema<CapacityProviderStrategyItem>;
 export type CapacityProviderStrategy = CapacityProviderStrategyItem[];
+const CapacityProviderStrategy = /*@__PURE__*/ __L.at(__c17, 0);
 export type PlacementConstraintType = "distinctInstance" | "memberOf" | (string & {});
+const PlacementConstraintType = S.String;
+
 export type PlacementConstraintExpression = string;
 export interface PlacementConstraint {
   type?: PlacementConstraintType;
   expression?: string;
 }
+const PlacementConstraint = /*@__PURE__*/ __L.at(__c17, 1) as any as S.Schema<PlacementConstraint>;
 export type PlacementConstraints = PlacementConstraint[];
+const PlacementConstraints = /*@__PURE__*/ __L.at(__c17, 2);
 export type PlacementStrategyType = "random" | "spread" | "binpack" | (string & {});
+const PlacementStrategyType = S.String;
+
 export type PlacementStrategyField = string;
 export interface PlacementStrategy {
   type?: PlacementStrategyType;
   field?: string;
 }
+const PlacementStrategy = /*@__PURE__*/ __L.at(__c17, 3) as any as S.Schema<PlacementStrategy>;
 export type PlacementStrategies = PlacementStrategy[];
+const PlacementStrategies = /*@__PURE__*/ __L.at(__c17, 4);
 export type PropagateTags = "TASK_DEFINITION" | (string & {});
+const PropagateTags = S.String;
+
 export type ReferenceId = string;
 export interface EcsParameters {
   TaskDefinitionArn: string;
@@ -1037,39 +1469,52 @@ export interface EcsParameters {
   ReferenceId?: string;
   Tags?: Tag[];
 }
+const EcsParameters = /*@__PURE__*/ __L.at(__c17, 5) as any as S.Schema<EcsParameters>;
 export interface BatchArrayProperties {
   Size?: number;
 }
+const BatchArrayProperties = /*@__PURE__*/ __L.at(
+  __c17,
+  6,
+) as any as S.Schema<BatchArrayProperties>;
 export interface BatchRetryStrategy {
   Attempts?: number;
 }
+const BatchRetryStrategy = /*@__PURE__*/ __L.at(__c17, 7) as any as S.Schema<BatchRetryStrategy>;
 export interface BatchParameters {
   JobDefinition: string;
   JobName: string;
   ArrayProperties?: BatchArrayProperties;
   RetryStrategy?: BatchRetryStrategy;
 }
+const BatchParameters = /*@__PURE__*/ __L.at(__c18, 0) as any as S.Schema<BatchParameters>;
 export type MessageGroupId = string;
 export interface SqsParameters {
   MessageGroupId?: string;
 }
+const SqsParameters = /*@__PURE__*/ __L.at(__c18, 1) as any as S.Schema<SqsParameters>;
 export type PathParameter = string;
 export type PathParameterList = string[];
+const PathParameterList = ReplayDestinationFilters as any as S.Schema<PathParameterList>;
 export type HeaderValue = string;
 export type HeaderParametersMap = { [key: string]: string | undefined };
+const HeaderParametersMap = TransformerPaths as any as S.Schema<HeaderParametersMap>;
 export type QueryStringValue = string;
 export type QueryStringParametersMap = { [key: string]: string | undefined };
+const QueryStringParametersMap = TransformerPaths as any as S.Schema<QueryStringParametersMap>;
 export interface HttpParameters {
   PathParameterValues?: string[];
   HeaderParameters?: { [key: string]: string | undefined };
   QueryStringParameters?: { [key: string]: string | undefined };
 }
+const HttpParameters = /*@__PURE__*/ __L.at(__c18, 2) as any as S.Schema<HttpParameters>;
 export type RedshiftSecretManagerArn = string;
 export type Database = string;
 export type DbUser = string;
 export type Sql = string | redacted.Redacted<string>;
 export type StatementName = string;
 export type Sqls = (string | redacted.Redacted<string>)[];
+const Sqls = /*@__PURE__*/ __L.at(__c18, 3);
 export interface RedshiftDataParameters {
   SecretManagerArn?: string;
   Database: string;
@@ -1079,26 +1524,41 @@ export interface RedshiftDataParameters {
   WithEvent?: boolean;
   Sqls?: (string | redacted.Redacted<string>)[];
 }
+const RedshiftDataParameters = /*@__PURE__*/ __L.at(
+  __c18,
+  4,
+) as any as S.Schema<RedshiftDataParameters>;
 export type SageMakerPipelineParameterName = string;
 export type SageMakerPipelineParameterValue = string;
 export interface SageMakerPipelineParameter {
   Name: string;
   Value: string;
 }
+const SageMakerPipelineParameter = /*@__PURE__*/ __L.at(
+  __c18,
+  5,
+) as any as S.Schema<SageMakerPipelineParameter>;
 export type SageMakerPipelineParameterList = SageMakerPipelineParameter[];
+const SageMakerPipelineParameterList = /*@__PURE__*/ __L.at(__c18, 6);
 export interface SageMakerPipelineParameters {
   PipelineParameterList?: SageMakerPipelineParameter[];
 }
+const SageMakerPipelineParameters = /*@__PURE__*/ __L.at(
+  __c18,
+  7,
+) as any as S.Schema<SageMakerPipelineParameters>;
 export type MaximumRetryAttempts = number;
 export type MaximumEventAgeInSeconds = number;
 export interface RetryPolicy {
   MaximumRetryAttempts?: number;
   MaximumEventAgeInSeconds?: number;
 }
+const RetryPolicy = /*@__PURE__*/ __L.at(__c19, 0) as any as S.Schema<RetryPolicy>;
 export type GraphQLOperation = string | redacted.Redacted<string>;
 export interface AppSyncParameters {
   GraphQLOperation?: string | redacted.Redacted<string>;
 }
+const AppSyncParameters = /*@__PURE__*/ __L.at(__c19, 1) as any as S.Schema<AppSyncParameters>;
 export interface Target {
   Id: string;
   Arn: string;
@@ -1118,14 +1578,21 @@ export interface Target {
   RetryPolicy?: RetryPolicy;
   AppSyncParameters?: AppSyncParameters;
 }
+const Target = /*@__PURE__*/ __L.at(__c19, 2) as any as S.Schema<Target>;
 export type TargetList = Target[];
+const TargetList = /*@__PURE__*/ __L.at(__c19, 3);
 export interface ListTargetsByRuleResponse {
   Targets?: Target[];
   NextToken?: string;
 }
+const ListTargetsByRuleResponse = /*@__PURE__*/ __L.at(
+  __c19,
+  4,
+) as any as S.Schema<ListTargetsByRuleResponse>;
 export type EventTime = Date;
 export type EventResource = string;
 export type EventResourceList = string[];
+const EventResourceList = ReplayDestinationFilters as any as S.Schema<EventResourceList>;
 export type NonPartnerEventBusNameOrArn = string;
 export type TraceHeader = string;
 export interface PutEventsRequestEntry {
@@ -1137,11 +1604,17 @@ export interface PutEventsRequestEntry {
   EventBusName?: string;
   TraceHeader?: string;
 }
+const PutEventsRequestEntry = /*@__PURE__*/ __L.at(
+  __c19,
+  5,
+) as any as S.Schema<PutEventsRequestEntry>;
 export type PutEventsRequestEntryList = PutEventsRequestEntry[];
+const PutEventsRequestEntryList = /*@__PURE__*/ __L.at(__c19, 6);
 export interface PutEventsRequest {
   Entries: PutEventsRequestEntry[];
   EndpointId?: string;
 }
+const PutEventsRequest = /*@__PURE__*/ __L.at(__c19, 7) as any as S.Schema<PutEventsRequest>;
 export type EventId = string;
 export type ErrorCode = string;
 export type ErrorMessage = string;
@@ -1150,11 +1623,17 @@ export interface PutEventsResultEntry {
   ErrorCode?: string;
   ErrorMessage?: string;
 }
+const PutEventsResultEntry = /*@__PURE__*/ __L.at(
+  __c20,
+  0,
+) as any as S.Schema<PutEventsResultEntry>;
 export type PutEventsResultEntryList = PutEventsResultEntry[];
+const PutEventsResultEntryList = /*@__PURE__*/ __L.at(__c20, 1);
 export interface PutEventsResponse {
   FailedEntryCount?: number;
   Entries?: PutEventsResultEntry[];
 }
+const PutEventsResponse = /*@__PURE__*/ __L.at(__c20, 2) as any as S.Schema<PutEventsResponse>;
 export interface PutPartnerEventsRequestEntry {
   Time?: Date;
   Source?: string;
@@ -1162,20 +1641,38 @@ export interface PutPartnerEventsRequestEntry {
   DetailType?: string;
   Detail?: string;
 }
+const PutPartnerEventsRequestEntry = /*@__PURE__*/ __L.at(
+  __c20,
+  3,
+) as any as S.Schema<PutPartnerEventsRequestEntry>;
 export type PutPartnerEventsRequestEntryList = PutPartnerEventsRequestEntry[];
+const PutPartnerEventsRequestEntryList = /*@__PURE__*/ __L.at(__c20, 4);
 export interface PutPartnerEventsRequest {
   Entries: PutPartnerEventsRequestEntry[];
 }
+const PutPartnerEventsRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  5,
+) as any as S.Schema<PutPartnerEventsRequest>;
 export interface PutPartnerEventsResultEntry {
   EventId?: string;
   ErrorCode?: string;
   ErrorMessage?: string;
 }
+const PutPartnerEventsResultEntry = /*@__PURE__*/ __L.at(
+  __c20,
+  6,
+) as any as S.Schema<PutPartnerEventsResultEntry>;
 export type PutPartnerEventsResultEntryList = PutPartnerEventsResultEntry[];
+const PutPartnerEventsResultEntryList = /*@__PURE__*/ __L.at(__c20, 7);
 export interface PutPartnerEventsResponse {
   FailedEntryCount?: number;
   Entries?: PutPartnerEventsResultEntry[];
 }
+const PutPartnerEventsResponse = /*@__PURE__*/ __L.at(
+  __c21,
+  0,
+) as any as S.Schema<PutPartnerEventsResponse>;
 export type NonPartnerEventBusName = string;
 export type Action = string;
 export type Principal = string;
@@ -1185,6 +1682,7 @@ export interface Condition {
   Key: string;
   Value: string;
 }
+const Condition = /*@__PURE__*/ __L.at(__c21, 1) as any as S.Schema<Condition>;
 export interface PutPermissionRequest {
   EventBusName?: string;
   Action?: string;
@@ -1193,7 +1691,12 @@ export interface PutPermissionRequest {
   Condition?: Condition;
   Policy?: string;
 }
+const PutPermissionRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  2,
+) as any as S.Schema<PutPermissionRequest>;
 export interface PutPermissionResponse {}
+const PutPermissionResponse = DeleteArchiveResponse as any as S.Schema<PutPermissionResponse>;
 export interface PutRuleRequest {
   Name: string;
   ScheduleExpression?: string;
@@ -1204,37 +1707,59 @@ export interface PutRuleRequest {
   Tags?: Tag[];
   EventBusName?: string;
 }
+const PutRuleRequest = /*@__PURE__*/ __L.at(__c21, 3) as any as S.Schema<PutRuleRequest>;
 export interface PutRuleResponse {
   RuleArn?: string;
 }
+const PutRuleResponse = /*@__PURE__*/ __L.at(__c21, 4) as any as S.Schema<PutRuleResponse>;
 export interface PutTargetsRequest {
   Rule: string;
   EventBusName?: string;
   Targets: Target[];
 }
+const PutTargetsRequest = /*@__PURE__*/ __L.at(__c21, 5) as any as S.Schema<PutTargetsRequest>;
 export interface PutTargetsResultEntry {
   TargetId?: string;
   ErrorCode?: string;
   ErrorMessage?: string;
 }
+const PutTargetsResultEntry = /*@__PURE__*/ __L.at(
+  __c21,
+  6,
+) as any as S.Schema<PutTargetsResultEntry>;
 export type PutTargetsResultEntryList = PutTargetsResultEntry[];
+const PutTargetsResultEntryList = /*@__PURE__*/ __L.at(__c21, 7);
 export interface PutTargetsResponse {
   FailedEntryCount?: number;
   FailedEntries?: PutTargetsResultEntry[];
 }
+const PutTargetsResponse = /*@__PURE__*/ __L.at(__c22, 0) as any as S.Schema<PutTargetsResponse>;
 export interface RemovePermissionRequest {
   StatementId?: string;
   RemoveAllPermissions?: boolean;
   EventBusName?: string;
 }
+const RemovePermissionRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  1,
+) as any as S.Schema<RemovePermissionRequest>;
 export interface RemovePermissionResponse {}
+const RemovePermissionResponse = /*@__PURE__*/ __L.at(
+  __c22,
+  2,
+) as any as S.Schema<RemovePermissionResponse>;
 export type TargetIdList = string[];
+const TargetIdList = ReplayDestinationFilters as any as S.Schema<TargetIdList>;
 export interface RemoveTargetsRequest {
   Rule: string;
   EventBusName?: string;
   Ids: string[];
   Force?: boolean;
 }
+const RemoveTargetsRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  3,
+) as any as S.Schema<RemoveTargetsRequest>;
 export interface RemoveTargetsResultEntry {
   TargetId?: string;
   ErrorCode?: string;
@@ -1245,6 +1770,7 @@ export interface RemoveTargetsResponse {
   FailedEntryCount?: number;
   FailedEntries?: RemoveTargetsResultEntry[];
 }
+const RemoveTargetsResponse = PutTargetsResponse as any as S.Schema<RemoveTargetsResponse>;
 export interface StartReplayRequest {
   ReplayName: string;
   Description?: string;
@@ -1253,30 +1779,48 @@ export interface StartReplayRequest {
   EventEndTime: Date;
   Destination: ReplayDestination;
 }
+const StartReplayRequest = /*@__PURE__*/ __L.at(__c22, 4) as any as S.Schema<StartReplayRequest>;
 export interface StartReplayResponse {
   ReplayArn?: string;
   State?: ReplayState;
   StateReason?: string;
   ReplayStartTime?: Date;
 }
+const StartReplayResponse = /*@__PURE__*/ __L.at(__c22, 5) as any as S.Schema<StartReplayResponse>;
 export interface TagResourceRequest {
   ResourceARN: string;
   Tags: Tag[];
 }
+const TagResourceRequest = /*@__PURE__*/ __L.at(__c22, 6) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
+const TagResourceResponse = DeleteArchiveResponse as any as S.Schema<TagResourceResponse>;
 export interface TestEventPatternRequest {
   EventPattern: string;
   Event: string;
 }
+const TestEventPatternRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  7,
+) as any as S.Schema<TestEventPatternRequest>;
 export interface TestEventPatternResponse {
   Result?: boolean;
 }
+const TestEventPatternResponse = /*@__PURE__*/ __L.at(
+  __c23,
+  0,
+) as any as S.Schema<TestEventPatternResponse>;
 export type TagKeyList = string[];
+const TagKeyList = ReplayDestinationFilters as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   ResourceARN: string;
   TagKeys: string[];
 }
+const UntagResourceRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  1,
+) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
+const UntagResourceResponse = DeleteArchiveResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateApiDestinationRequest {
   Name: string;
   Description?: string;
@@ -1285,12 +1829,18 @@ export interface UpdateApiDestinationRequest {
   HttpMethod?: ApiDestinationHttpMethod;
   InvocationRateLimitPerSecond?: number;
 }
+const UpdateApiDestinationRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  2,
+) as any as S.Schema<UpdateApiDestinationRequest>;
 export interface UpdateApiDestinationResponse {
   ApiDestinationArn?: string;
   ApiDestinationState?: ApiDestinationState;
   CreationTime?: Date;
   LastModifiedTime?: Date;
 }
+const UpdateApiDestinationResponse =
+  CreateApiDestinationResponse as any as S.Schema<UpdateApiDestinationResponse>;
 export interface UpdateArchiveRequest {
   ArchiveName: string;
   Description?: string;
@@ -1298,30 +1848,51 @@ export interface UpdateArchiveRequest {
   RetentionDays?: number;
   KmsKeyIdentifier?: string;
 }
+const UpdateArchiveRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  3,
+) as any as S.Schema<UpdateArchiveRequest>;
 export interface UpdateArchiveResponse {
   ArchiveArn?: string;
   State?: ArchiveState;
   StateReason?: string;
   CreationTime?: Date;
 }
+const UpdateArchiveResponse = CreateArchiveResponse as any as S.Schema<UpdateArchiveResponse>;
 export interface UpdateConnectionBasicAuthRequestParameters {
   Username?: string;
   Password?: string | redacted.Redacted<string>;
 }
+const UpdateConnectionBasicAuthRequestParameters = /*@__PURE__*/ __L.at(
+  __c23,
+  4,
+) as any as S.Schema<UpdateConnectionBasicAuthRequestParameters>;
 export interface UpdateConnectionOAuthClientRequestParameters {
   ClientID?: string;
   ClientSecret?: string | redacted.Redacted<string>;
 }
+const UpdateConnectionOAuthClientRequestParameters = /*@__PURE__*/ __L.at(
+  __c23,
+  5,
+) as any as S.Schema<UpdateConnectionOAuthClientRequestParameters>;
 export interface UpdateConnectionOAuthRequestParameters {
   ClientParameters?: UpdateConnectionOAuthClientRequestParameters;
   AuthorizationEndpoint?: string;
   HttpMethod?: ConnectionOAuthHttpMethod;
   OAuthHttpParameters?: ConnectionHttpParameters;
 }
+const UpdateConnectionOAuthRequestParameters = /*@__PURE__*/ __L.at(
+  __c23,
+  6,
+) as any as S.Schema<UpdateConnectionOAuthRequestParameters>;
 export interface UpdateConnectionApiKeyAuthRequestParameters {
   ApiKeyName?: string;
   ApiKeyValue?: string | redacted.Redacted<string>;
 }
+const UpdateConnectionApiKeyAuthRequestParameters = /*@__PURE__*/ __L.at(
+  __c23,
+  7,
+) as any as S.Schema<UpdateConnectionApiKeyAuthRequestParameters>;
 export interface UpdateConnectionAuthRequestParameters {
   BasicAuthParameters?: UpdateConnectionBasicAuthRequestParameters;
   OAuthParameters?: UpdateConnectionOAuthRequestParameters;
@@ -1329,6 +1900,10 @@ export interface UpdateConnectionAuthRequestParameters {
   InvocationHttpParameters?: ConnectionHttpParameters;
   ConnectivityParameters?: ConnectivityResourceParameters;
 }
+const UpdateConnectionAuthRequestParameters = /*@__PURE__*/ __L.at(
+  __c24,
+  0,
+) as any as S.Schema<UpdateConnectionAuthRequestParameters>;
 export interface UpdateConnectionRequest {
   Name: string;
   Description?: string;
@@ -1337,6 +1912,10 @@ export interface UpdateConnectionRequest {
   InvocationConnectivityParameters?: ConnectivityResourceParameters;
   KmsKeyIdentifier?: string;
 }
+const UpdateConnectionRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  1,
+) as any as S.Schema<UpdateConnectionRequest>;
 export interface UpdateConnectionResponse {
   ConnectionArn?: string;
   ConnectionState?: ConnectionState;
@@ -1344,6 +1923,8 @@ export interface UpdateConnectionResponse {
   LastModifiedTime?: Date;
   LastAuthorizedTime?: Date;
 }
+const UpdateConnectionResponse =
+  DeleteConnectionResponse as any as S.Schema<UpdateConnectionResponse>;
 export interface UpdateEndpointRequest {
   Name: string;
   Description?: string;
@@ -1352,6 +1933,10 @@ export interface UpdateEndpointRequest {
   EventBuses?: EndpointEventBus[];
   RoleArn?: string;
 }
+const UpdateEndpointRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  2,
+) as any as S.Schema<UpdateEndpointRequest>;
 export interface UpdateEndpointResponse {
   Name?: string;
   Arn?: string;
@@ -1363,6 +1948,10 @@ export interface UpdateEndpointResponse {
   EndpointUrl?: string;
   State?: EndpointState;
 }
+const UpdateEndpointResponse = /*@__PURE__*/ __L.at(
+  __c24,
+  3,
+) as any as S.Schema<UpdateEndpointResponse>;
 export interface UpdateEventBusRequest {
   Name?: string;
   KmsKeyIdentifier?: string;
@@ -1370,6 +1959,10 @@ export interface UpdateEventBusRequest {
   DeadLetterConfig?: DeadLetterConfig;
   LogConfig?: LogConfig;
 }
+const UpdateEventBusRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  4,
+) as any as S.Schema<UpdateEventBusRequest>;
 export interface UpdateEventBusResponse {
   Arn?: string;
   Name?: string;
@@ -1378,6 +1971,10 @@ export interface UpdateEventBusResponse {
   DeadLetterConfig?: DeadLetterConfig;
   LogConfig?: LogConfig;
 }
+const UpdateEventBusResponse = /*@__PURE__*/ __L.at(
+  __c24,
+  5,
+) as any as S.Schema<UpdateEventBusResponse>;
 export type ActivateEventSourceError =
   | ConcurrentModificationException
   | InternalException
@@ -1395,8 +1992,8 @@ export const activateEventSource: API.OperationMethod<
   ActivateEventSourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<ActivateEventSourceRequest>,
-  output: __S(1) as any as S.Schema<ActivateEventSourceResponse>,
+  input: ActivateEventSourceRequest,
+  output: ActivateEventSourceResponse,
   errors: [
     ConcurrentModificationException,
     InternalException,
@@ -1424,8 +2021,8 @@ export const cancelReplay: API.OperationMethod<
   CancelReplayError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2) as any as S.Schema<CancelReplayRequest>,
-  output: __S(3) as any as S.Schema<CancelReplayResponse>,
+  input: CancelReplayRequest,
+  output: CancelReplayResponse,
   errors: [
     ConcurrentModificationException,
     IllegalStatusException,
@@ -1459,8 +2056,8 @@ export const createApiDestination: API.OperationMethod<
   CreateApiDestinationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4) as any as S.Schema<CreateApiDestinationRequest>,
-  output: __S(5) as any as S.Schema<CreateApiDestinationResponse>,
+  input: CreateApiDestinationRequest,
+  output: CreateApiDestinationResponse,
   errors: [
     InternalException,
     LimitExceededException,
@@ -1498,8 +2095,8 @@ export const createArchive: API.OperationMethod<
   CreateArchiveError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6) as any as S.Schema<CreateArchiveRequest>,
-  output: __S(7) as any as S.Schema<CreateArchiveResponse>,
+  input: CreateArchiveRequest,
+  output: CreateArchiveResponse,
   errors: [
     ConcurrentModificationException,
     InternalException,
@@ -1533,8 +2130,8 @@ export const createConnection: API.OperationMethod<
   CreateConnectionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21) as any as S.Schema<CreateConnectionRequest>,
-  output: __S(22) as any as S.Schema<CreateConnectionResponse>,
+  input: CreateConnectionRequest,
+  output: CreateConnectionResponse,
   errors: [
     AccessDeniedException,
     InternalException,
@@ -1567,8 +2164,8 @@ export const createEndpoint: API.OperationMethod<
   CreateEndpointError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30) as any as S.Schema<CreateEndpointRequest>,
-  output: __S(31) as any as S.Schema<CreateEndpointResponse>,
+  input: CreateEndpointRequest,
+  output: CreateEndpointResponse,
   errors: [InternalException, LimitExceededException, ResourceAlreadyExistsException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1595,8 +2192,8 @@ export const createEventBus: API.OperationMethod<
   CreateEventBusError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36) as any as S.Schema<CreateEventBusRequest>,
-  output: __S(37) as any as S.Schema<CreateEventBusResponse>,
+  input: CreateEventBusRequest,
+  output: CreateEventBusResponse,
   errors: [
     ConcurrentModificationException,
     InternalException,
@@ -1661,8 +2258,8 @@ export const createPartnerEventSource: API.OperationMethod<
   CreatePartnerEventSourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38) as any as S.Schema<CreatePartnerEventSourceRequest>,
-  output: __S(39) as any as S.Schema<CreatePartnerEventSourceResponse>,
+  input: CreatePartnerEventSourceRequest,
+  output: CreatePartnerEventSourceResponse,
   errors: [
     ConcurrentModificationException,
     InternalException,
@@ -1697,8 +2294,8 @@ export const deactivateEventSource: API.OperationMethod<
   DeactivateEventSourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40) as any as S.Schema<DeactivateEventSourceRequest>,
-  output: __S(1) as any as S.Schema<DeactivateEventSourceResponse>,
+  input: DeactivateEventSourceRequest,
+  output: DeactivateEventSourceResponse,
   errors: [
     ConcurrentModificationException,
     InternalException,
@@ -1726,8 +2323,8 @@ export const deauthorizeConnection: API.OperationMethod<
   DeauthorizeConnectionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41) as any as S.Schema<DeauthorizeConnectionRequest>,
-  output: __S(42) as any as S.Schema<DeauthorizeConnectionResponse>,
+  input: DeauthorizeConnectionRequest,
+  output: DeauthorizeConnectionResponse,
   errors: [ConcurrentModificationException, InternalException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1748,8 +2345,8 @@ export const deleteApiDestination: API.OperationMethod<
   DeleteApiDestinationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43) as any as S.Schema<DeleteApiDestinationRequest>,
-  output: __S(1) as any as S.Schema<DeleteApiDestinationResponse>,
+  input: DeleteApiDestinationRequest,
+  output: DeleteApiDestinationResponse,
   errors: [ConcurrentModificationException, InternalException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1770,8 +2367,8 @@ export const deleteArchive: API.OperationMethod<
   DeleteArchiveError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44) as any as S.Schema<DeleteArchiveRequest>,
-  output: __S(45) as any as S.Schema<DeleteArchiveResponse>,
+  input: DeleteArchiveRequest,
+  output: DeleteArchiveResponse,
   errors: [ConcurrentModificationException, InternalException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1792,8 +2389,8 @@ export const deleteConnection: API.OperationMethod<
   DeleteConnectionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(46) as any as S.Schema<DeleteConnectionRequest>,
-  output: __S(47) as any as S.Schema<DeleteConnectionResponse>,
+  input: DeleteConnectionRequest,
+  output: DeleteConnectionResponse,
   errors: [ConcurrentModificationException, InternalException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1818,8 +2415,8 @@ export const deleteEndpoint: API.OperationMethod<
   DeleteEndpointError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48) as any as S.Schema<DeleteEndpointRequest>,
-  output: __S(49) as any as S.Schema<DeleteEndpointResponse>,
+  input: DeleteEndpointRequest,
+  output: DeleteEndpointResponse,
   errors: [ConcurrentModificationException, InternalException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1842,8 +2439,8 @@ export const deleteEventBus: API.OperationMethod<
   DeleteEventBusError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(50) as any as S.Schema<DeleteEventBusRequest>,
-  output: __S(49) as any as S.Schema<DeleteEventBusResponse>,
+  input: DeleteEventBusRequest,
+  output: DeleteEventBusResponse,
   errors: [
     ConcurrentModificationException,
     InternalException,
@@ -1873,8 +2470,8 @@ export const deletePartnerEventSource: API.OperationMethod<
   DeletePartnerEventSourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(51) as any as S.Schema<DeletePartnerEventSourceRequest>,
-  output: __S(1) as any as S.Schema<DeletePartnerEventSourceResponse>,
+  input: DeletePartnerEventSourceRequest,
+  output: DeletePartnerEventSourceResponse,
   errors: [ConcurrentModificationException, InternalException, OperationDisabledException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1911,8 +2508,8 @@ export const deleteRule: API.OperationMethod<
   DeleteRuleError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(52) as any as S.Schema<DeleteRuleRequest>,
-  output: __S(45) as any as S.Schema<DeleteRuleResponse>,
+  input: DeleteRuleRequest,
+  output: DeleteRuleResponse,
   errors: [
     ConcurrentModificationException,
     InternalException,
@@ -1937,8 +2534,8 @@ export const describeApiDestination: API.OperationMethod<
   DescribeApiDestinationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(53) as any as S.Schema<DescribeApiDestinationRequest>,
-  output: __S(54) as any as S.Schema<DescribeApiDestinationResponse>,
+  input: DescribeApiDestinationRequest,
+  output: DescribeApiDestinationResponse,
   errors: [InternalException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1959,8 +2556,8 @@ export const describeArchive: API.OperationMethod<
   DescribeArchiveError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(55) as any as S.Schema<DescribeArchiveRequest>,
-  output: __S(56) as any as S.Schema<DescribeArchiveResponse>,
+  input: DescribeArchiveRequest,
+  output: DescribeArchiveResponse,
   errors: [InternalException, ResourceAlreadyExistsException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1977,8 +2574,8 @@ export const describeConnection: API.OperationMethod<
   DescribeConnectionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57) as any as S.Schema<DescribeConnectionRequest>,
-  output: __S(65) as any as S.Schema<DescribeConnectionResponse>,
+  input: DescribeConnectionRequest,
+  output: DescribeConnectionResponse,
   errors: [InternalException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2000,8 +2597,8 @@ export const describeEndpoint: API.OperationMethod<
   DescribeEndpointError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(66) as any as S.Schema<DescribeEndpointRequest>,
-  output: __S(67) as any as S.Schema<DescribeEndpointResponse>,
+  input: DescribeEndpointRequest,
+  output: DescribeEndpointResponse,
   errors: [InternalException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2025,8 +2622,8 @@ export const describeEventBus: API.OperationMethod<
   DescribeEventBusError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(68) as any as S.Schema<DescribeEventBusRequest>,
-  output: __S(69) as any as S.Schema<DescribeEventBusResponse>,
+  input: DescribeEventBusRequest,
+  output: DescribeEventBusResponse,
   errors: [InternalException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2048,8 +2645,8 @@ export const describeEventSource: API.OperationMethod<
   DescribeEventSourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(70) as any as S.Schema<DescribeEventSourceRequest>,
-  output: __S(71) as any as S.Schema<DescribeEventSourceResponse>,
+  input: DescribeEventSourceRequest,
+  output: DescribeEventSourceResponse,
   errors: [InternalException, OperationDisabledException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2072,8 +2669,8 @@ export const describePartnerEventSource: API.OperationMethod<
   DescribePartnerEventSourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(72) as any as S.Schema<DescribePartnerEventSourceRequest>,
-  output: __S(73) as any as S.Schema<DescribePartnerEventSourceResponse>,
+  input: DescribePartnerEventSourceRequest,
+  output: DescribePartnerEventSourceResponse,
   errors: [InternalException, OperationDisabledException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2098,8 +2695,8 @@ export const describeReplay: API.OperationMethod<
   DescribeReplayError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(74) as any as S.Schema<DescribeReplayRequest>,
-  output: __S(77) as any as S.Schema<DescribeReplayResponse>,
+  input: DescribeReplayRequest,
+  output: DescribeReplayResponse,
   errors: [InternalException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2119,8 +2716,8 @@ export const describeRule: API.OperationMethod<
   DescribeRuleError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(78) as any as S.Schema<DescribeRuleRequest>,
-  output: __S(79) as any as S.Schema<DescribeRuleResponse>,
+  input: DescribeRuleRequest,
+  output: DescribeRuleResponse,
   errors: [InternalException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2146,8 +2743,8 @@ export const disableRule: API.OperationMethod<
   DisableRuleError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(80) as any as S.Schema<DisableRuleRequest>,
-  output: __S(45) as any as S.Schema<DisableRuleResponse>,
+  input: DisableRuleRequest,
+  output: DisableRuleResponse,
   errors: [
     ConcurrentModificationException,
     InternalException,
@@ -2177,8 +2774,8 @@ export const enableRule: API.OperationMethod<
   EnableRuleError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(81) as any as S.Schema<EnableRuleRequest>,
-  output: __S(45) as any as S.Schema<EnableRuleResponse>,
+  input: EnableRuleRequest,
+  output: EnableRuleResponse,
   errors: [
     ConcurrentModificationException,
     InternalException,
@@ -2200,8 +2797,8 @@ export const listApiDestinations: API.OperationMethod<
   ListApiDestinationsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(82) as any as S.Schema<ListApiDestinationsRequest>,
-  output: __S(85) as any as S.Schema<ListApiDestinationsResponse>,
+  input: ListApiDestinationsRequest,
+  output: ListApiDestinationsResponse,
   errors: [InternalException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2219,8 +2816,8 @@ export const listArchives: API.OperationMethod<
   ListArchivesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(86) as any as S.Schema<ListArchivesRequest>,
-  output: __S(89) as any as S.Schema<ListArchivesResponse>,
+  input: ListArchivesRequest,
+  output: ListArchivesResponse,
   errors: [InternalException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2237,8 +2834,8 @@ export const listConnections: API.OperationMethod<
   ListConnectionsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(90) as any as S.Schema<ListConnectionsRequest>,
-  output: __S(93) as any as S.Schema<ListConnectionsResponse>,
+  input: ListConnectionsRequest,
+  output: ListConnectionsResponse,
   errors: [InternalException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2260,8 +2857,8 @@ export const listEndpoints: API.OperationMethod<
   ListEndpointsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(94) as any as S.Schema<ListEndpointsRequest>,
-  output: __S(97) as any as S.Schema<ListEndpointsResponse>,
+  input: ListEndpointsRequest,
+  output: ListEndpointsResponse,
   errors: [InternalException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2279,8 +2876,8 @@ export const listEventBuses: API.OperationMethod<
   ListEventBusesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(98) as any as S.Schema<ListEventBusesRequest>,
-  output: __S(101) as any as S.Schema<ListEventBusesResponse>,
+  input: ListEventBusesRequest,
+  output: ListEventBusesResponse,
   errors: [InternalException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2298,8 +2895,8 @@ export const listEventSources: API.OperationMethod<
   ListEventSourcesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(102) as any as S.Schema<ListEventSourcesRequest>,
-  output: __S(105) as any as S.Schema<ListEventSourcesResponse>,
+  input: ListEventSourcesRequest,
+  output: ListEventSourcesResponse,
   errors: [InternalException, OperationDisabledException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2321,8 +2918,8 @@ export const listPartnerEventSourceAccounts: API.OperationMethod<
   ListPartnerEventSourceAccountsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(106) as any as S.Schema<ListPartnerEventSourceAccountsRequest>,
-  output: __S(109) as any as S.Schema<ListPartnerEventSourceAccountsResponse>,
+  input: ListPartnerEventSourceAccountsRequest,
+  output: ListPartnerEventSourceAccountsResponse,
   errors: [InternalException, OperationDisabledException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2343,8 +2940,8 @@ export const listPartnerEventSources: API.OperationMethod<
   ListPartnerEventSourcesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(110) as any as S.Schema<ListPartnerEventSourcesRequest>,
-  output: __S(113) as any as S.Schema<ListPartnerEventSourcesResponse>,
+  input: ListPartnerEventSourcesRequest,
+  output: ListPartnerEventSourcesResponse,
   errors: [InternalException, OperationDisabledException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2362,8 +2959,8 @@ export const listReplays: API.OperationMethod<
   ListReplaysError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(114) as any as S.Schema<ListReplaysRequest>,
-  output: __S(117) as any as S.Schema<ListReplaysResponse>,
+  input: ListReplaysRequest,
+  output: ListReplaysResponse,
   errors: [InternalException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2386,8 +2983,8 @@ export const listRuleNamesByTarget: API.OperationMethod<
   ListRuleNamesByTargetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(118) as any as S.Schema<ListRuleNamesByTargetRequest>,
-  output: __S(119) as any as S.Schema<ListRuleNamesByTargetResponse>,
+  input: ListRuleNamesByTargetRequest,
+  output: ListRuleNamesByTargetResponse,
   errors: [InternalException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2410,8 +3007,8 @@ export const listRules: API.OperationMethod<
   ListRulesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(120) as any as S.Schema<ListRulesRequest>,
-  output: __S(123) as any as S.Schema<ListRulesResponse>,
+  input: ListRulesRequest,
+  output: ListRulesResponse,
   errors: [InternalException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2433,8 +3030,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(124) as any as S.Schema<ListTagsForResourceRequest>,
-  output: __S(125) as any as S.Schema<ListTagsForResourceResponse>,
+  input: ListTagsForResourceRequest,
+  output: ListTagsForResourceResponse,
   errors: [InternalException, ResourceNotFoundException, ThrottlingException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2453,8 +3050,8 @@ export const listTargetsByRule: API.OperationMethod<
   ListTargetsByRuleError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(126) as any as S.Schema<ListTargetsByRuleRequest>,
-  output: __S(156) as any as S.Schema<ListTargetsByRuleResponse>,
+  input: ListTargetsByRuleRequest,
+  output: ListTargetsByRuleResponse,
   errors: [InternalException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2484,8 +3081,8 @@ export const putEvents: API.OperationMethod<
   PutEventsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(159) as any as S.Schema<PutEventsRequest>,
-  output: __S(162) as any as S.Schema<PutEventsResponse>,
+  input: PutEventsRequest,
+  output: PutEventsResponse,
   errors: [InternalException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2505,8 +3102,8 @@ export const putPartnerEvents: API.OperationMethod<
   PutPartnerEventsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(165) as any as S.Schema<PutPartnerEventsRequest>,
-  output: __S(168) as any as S.Schema<PutPartnerEventsResponse>,
+  input: PutPartnerEventsRequest,
+  output: PutPartnerEventsResponse,
   errors: [InternalException, OperationDisabledException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2548,8 +3145,8 @@ export const putPermission: API.OperationMethod<
   PutPermissionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(170) as any as S.Schema<PutPermissionRequest>,
-  output: __S(45) as any as S.Schema<PutPermissionResponse>,
+  input: PutPermissionRequest,
+  output: PutPermissionResponse,
   errors: [
     ConcurrentModificationException,
     InternalException,
@@ -2631,8 +3228,8 @@ export const putRule: API.OperationMethod<
   PutRuleError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(171) as any as S.Schema<PutRuleRequest>,
-  output: __S(172) as any as S.Schema<PutRuleResponse>,
+  input: PutRuleRequest,
+  output: PutRuleResponse,
   errors: [
     ConcurrentModificationException,
     InternalException,
@@ -2759,8 +3356,8 @@ export const putTargets: API.OperationMethod<
   PutTargetsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(173) as any as S.Schema<PutTargetsRequest>,
-  output: __S(176) as any as S.Schema<PutTargetsResponse>,
+  input: PutTargetsRequest,
+  output: PutTargetsResponse,
   errors: [
     ConcurrentModificationException,
     InternalException,
@@ -2791,8 +3388,8 @@ export const removePermission: API.OperationMethod<
   RemovePermissionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(177) as any as S.Schema<RemovePermissionRequest>,
-  output: __S(178) as any as S.Schema<RemovePermissionResponse>,
+  input: RemovePermissionRequest,
+  output: RemovePermissionResponse,
   errors: [
     ConcurrentModificationException,
     InternalException,
@@ -2832,8 +3429,8 @@ export const removeTargets: API.OperationMethod<
   RemoveTargetsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(179) as any as S.Schema<RemoveTargetsRequest>,
-  output: __S(176) as any as S.Schema<RemoveTargetsResponse>,
+  input: RemoveTargetsRequest,
+  output: RemoveTargetsResponse,
   errors: [
     ConcurrentModificationException,
     InternalException,
@@ -2869,8 +3466,8 @@ export const startReplay: API.OperationMethod<
   StartReplayError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(180) as any as S.Schema<StartReplayRequest>,
-  output: __S(181) as any as S.Schema<StartReplayResponse>,
+  input: StartReplayRequest,
+  output: StartReplayResponse,
   errors: [
     InternalException,
     InvalidEventPatternException,
@@ -2912,8 +3509,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(182) as any as S.Schema<TagResourceRequest>,
-  output: __S(45) as any as S.Schema<TagResourceResponse>,
+  input: TagResourceRequest,
+  output: TagResourceResponse,
   errors: [
     ConcurrentModificationException,
     InternalException,
@@ -2941,8 +3538,8 @@ export const testEventPattern: API.OperationMethod<
   TestEventPatternError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(183) as any as S.Schema<TestEventPatternRequest>,
-  output: __S(184) as any as S.Schema<TestEventPatternResponse>,
+  input: TestEventPatternRequest,
+  output: TestEventPatternResponse,
   errors: [InternalException, InvalidEventPatternException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2965,8 +3562,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(185) as any as S.Schema<UntagResourceRequest>,
-  output: __S(45) as any as S.Schema<UntagResourceResponse>,
+  input: UntagResourceRequest,
+  output: UntagResourceResponse,
   errors: [
     ConcurrentModificationException,
     InternalException,
@@ -2994,8 +3591,8 @@ export const updateApiDestination: API.OperationMethod<
   UpdateApiDestinationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(186) as any as S.Schema<UpdateApiDestinationRequest>,
-  output: __S(5) as any as S.Schema<UpdateApiDestinationResponse>,
+  input: UpdateApiDestinationRequest,
+  output: UpdateApiDestinationResponse,
   errors: [
     ConcurrentModificationException,
     InternalException,
@@ -3023,8 +3620,8 @@ export const updateArchive: API.OperationMethod<
   UpdateArchiveError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(187) as any as S.Schema<UpdateArchiveRequest>,
-  output: __S(7) as any as S.Schema<UpdateArchiveResponse>,
+  input: UpdateArchiveRequest,
+  output: UpdateArchiveResponse,
   errors: [
     ConcurrentModificationException,
     InternalException,
@@ -3054,8 +3651,8 @@ export const updateConnection: API.OperationMethod<
   UpdateConnectionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(193) as any as S.Schema<UpdateConnectionRequest>,
-  output: __S(47) as any as S.Schema<UpdateConnectionResponse>,
+  input: UpdateConnectionRequest,
+  output: UpdateConnectionResponse,
   errors: [
     AccessDeniedException,
     ConcurrentModificationException,
@@ -3087,8 +3684,8 @@ export const updateEndpoint: API.OperationMethod<
   UpdateEndpointError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(194) as any as S.Schema<UpdateEndpointRequest>,
-  output: __S(195) as any as S.Schema<UpdateEndpointResponse>,
+  input: UpdateEndpointRequest,
+  output: UpdateEndpointResponse,
   errors: [ConcurrentModificationException, InternalException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3110,8 +3707,8 @@ export const updateEventBus: API.OperationMethod<
   UpdateEventBusError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(196) as any as S.Schema<UpdateEventBusRequest>,
-  output: __S(197) as any as S.Schema<UpdateEventBusResponse>,
+  input: UpdateEventBusRequest,
+  output: UpdateEventBusResponse,
   errors: [
     ConcurrentModificationException,
     InternalException,
@@ -3148,7 +3745,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ReplayArn: S.optional(S.String),
-          State: S.optional(S.String),
+          State: S.optional(ReplayState),
           StateReason: S.optional(S.String),
         }).pipe(ns),
       ).annotate({ identifier: "CancelReplayResponse" });
@@ -3159,7 +3756,7 @@ function __c0(j: number): any {
           Description: S.optional(S.String),
           ConnectionArn: S.String,
           InvocationEndpoint: S.String,
-          HttpMethod: S.String,
+          HttpMethod: ApiDestinationHttpMethod,
           InvocationRateLimitPerSecond: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
@@ -3169,7 +3766,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ApiDestinationArn: S.optional(S.String),
-          ApiDestinationState: S.optional(S.String),
+          ApiDestinationState: S.optional(ApiDestinationState),
           CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           LastModifiedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }).pipe(ns),
@@ -3191,7 +3788,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ArchiveArn: S.optional(S.String),
-          State: S.optional(S.String),
+          State: S.optional(ArchiveState),
           StateReason: S.optional(S.String),
           CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }).pipe(ns),
@@ -3221,9 +3818,9 @@ function __c1(j: number): any {
         identifier: "ConnectionHeaderParameter",
       });
     case 3:
-      return S.Array(__S(10));
+      return S.Array(ConnectionHeaderParameter);
     case 4:
-      return S.Array(__S(10));
+      return S.Array(ConnectionQueryStringParameter);
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -3233,13 +3830,13 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "ConnectionBodyParameter" });
     case 6:
-      return S.Array(__S(13));
+      return S.Array(ConnectionBodyParameter);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          HeaderParameters: S.optional(__S(11)),
-          QueryStringParameters: S.optional(__S(12)),
-          BodyParameters: S.optional(__S(14)),
+          HeaderParameters: S.optional(ConnectionHeaderParametersList),
+          QueryStringParameters: S.optional(ConnectionQueryStringParametersList),
+          BodyParameters: S.optional(ConnectionBodyParametersList),
         }),
       ).annotate({ identifier: "ConnectionHttpParameters" });
   }
@@ -3249,10 +3846,10 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          ClientParameters: __S(9),
+          ClientParameters: CreateConnectionOAuthClientRequestParameters,
           AuthorizationEndpoint: S.String,
-          HttpMethod: S.String,
-          OAuthHttpParameters: S.optional(__S(15)),
+          HttpMethod: ConnectionOAuthHttpMethod,
+          OAuthHttpParameters: S.optional(ConnectionHttpParameters),
         }),
       ).annotate({
         identifier: "CreateConnectionOAuthRequestParameters",
@@ -3268,17 +3865,19 @@ function __c2(j: number): any {
         identifier: "ConnectivityResourceConfigurationArn",
       });
     case 3:
-      return S.suspend(() => S.Struct({ ResourceParameters: __S(18) })).annotate({
+      return S.suspend(() =>
+        S.Struct({ ResourceParameters: ConnectivityResourceConfigurationArn }),
+      ).annotate({
         identifier: "ConnectivityResourceParameters",
       });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          BasicAuthParameters: S.optional(__S(8)),
-          OAuthParameters: S.optional(__S(16)),
-          ApiKeyAuthParameters: S.optional(__S(17)),
-          InvocationHttpParameters: S.optional(__S(15)),
-          ConnectivityParameters: S.optional(__S(19)),
+          BasicAuthParameters: S.optional(CreateConnectionBasicAuthRequestParameters),
+          OAuthParameters: S.optional(CreateConnectionOAuthRequestParameters),
+          ApiKeyAuthParameters: S.optional(CreateConnectionApiKeyAuthRequestParameters),
+          InvocationHttpParameters: S.optional(ConnectionHttpParameters),
+          ConnectivityParameters: S.optional(ConnectivityResourceParameters),
         }),
       ).annotate({
         identifier: "CreateConnectionAuthRequestParameters",
@@ -3288,9 +3887,9 @@ function __c2(j: number): any {
         S.Struct({
           Name: S.String,
           Description: S.optional(S.String),
-          AuthorizationType: S.String,
-          AuthParameters: __S(20),
-          InvocationConnectivityParameters: S.optional(__S(19)),
+          AuthorizationType: ConnectionAuthorizationType,
+          AuthParameters: CreateConnectionAuthRequestParameters,
+          InvocationConnectivityParameters: S.optional(ConnectivityResourceParameters),
           KmsKeyIdentifier: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateConnectionRequest" });
@@ -3298,7 +3897,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ConnectionArn: S.optional(S.String),
-          ConnectionState: S.optional(S.String),
+          ConnectionState: S.optional(ConnectionState),
           CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           LastModifiedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }).pipe(ns),
@@ -3316,15 +3915,15 @@ function __c3(j: number): any {
         identifier: "Secondary",
       });
     case 1:
-      return S.suspend(() => S.Struct({ Primary: __S(23), Secondary: __S(24) })).annotate({
+      return S.suspend(() => S.Struct({ Primary: Primary, Secondary: Secondary })).annotate({
         identifier: "FailoverConfig",
       });
     case 2:
-      return S.suspend(() => S.Struct({ FailoverConfig: __S(25) })).annotate({
+      return S.suspend(() => S.Struct({ FailoverConfig: FailoverConfig })).annotate({
         identifier: "RoutingConfig",
       });
     case 3:
-      return S.suspend(() => S.Struct({ State: S.optional(S.String) })).annotate({
+      return S.suspend(() => S.Struct({ State: S.optional(ReplicationState) })).annotate({
         identifier: "ReplicationConfig",
       });
     case 4:
@@ -3332,15 +3931,15 @@ function __c3(j: number): any {
         identifier: "EndpointEventBus",
       });
     case 5:
-      return S.Array(__S(28));
+      return S.Array(EndpointEventBus);
     case 6:
       return S.suspend(() =>
         S.Struct({
           Name: S.String,
           Description: S.optional(S.String),
-          RoutingConfig: __S(26),
-          ReplicationConfig: S.optional(__S(27)),
-          EventBuses: __S(29),
+          RoutingConfig: RoutingConfig,
+          ReplicationConfig: S.optional(ReplicationConfig),
+          EventBuses: EndpointEventBusList,
           RoleArn: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateEndpointRequest" });
@@ -3349,11 +3948,11 @@ function __c3(j: number): any {
         S.Struct({
           Name: S.optional(S.String),
           Arn: S.optional(S.String),
-          RoutingConfig: S.optional(__S(26)),
-          ReplicationConfig: S.optional(__S(27)),
-          EventBuses: S.optional(__S(29)),
+          RoutingConfig: S.optional(RoutingConfig),
+          ReplicationConfig: S.optional(ReplicationConfig),
+          EventBuses: S.optional(EndpointEventBusList),
           RoleArn: S.optional(S.String),
-          State: S.optional(S.String),
+          State: S.optional(EndpointState),
         }).pipe(ns),
       ).annotate({ identifier: "CreateEndpointResponse" });
   }
@@ -3366,14 +3965,14 @@ function __c4(j: number): any {
       });
     case 1:
       return S.suspend(() =>
-        S.Struct({ IncludeDetail: S.optional(S.String), Level: S.optional(S.String) }),
+        S.Struct({ IncludeDetail: S.optional(IncludeDetail), Level: S.optional(Level) }),
       ).annotate({ identifier: "LogConfig" });
     case 2:
       return S.suspend(() => S.Struct({ Key: S.String, Value: S.String })).annotate({
         identifier: "Tag",
       });
     case 3:
-      return S.Array(__S(34));
+      return S.Array(Tag);
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -3381,9 +3980,9 @@ function __c4(j: number): any {
           EventSourceName: S.optional(S.String),
           Description: S.optional(S.String),
           KmsKeyIdentifier: S.optional(S.String),
-          DeadLetterConfig: S.optional(__S(32)),
-          LogConfig: S.optional(__S(33)),
-          Tags: S.optional(__S(35)),
+          DeadLetterConfig: S.optional(DeadLetterConfig),
+          LogConfig: S.optional(LogConfig),
+          Tags: S.optional(TagList),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateEventBusRequest" });
     case 5:
@@ -3392,8 +3991,8 @@ function __c4(j: number): any {
           EventBusArn: S.optional(S.String),
           Description: S.optional(S.String),
           KmsKeyIdentifier: S.optional(S.String),
-          DeadLetterConfig: S.optional(__S(32)),
-          LogConfig: S.optional(__S(33)),
+          DeadLetterConfig: S.optional(DeadLetterConfig),
+          LogConfig: S.optional(LogConfig),
         }).pipe(ns),
       ).annotate({ identifier: "CreateEventBusResponse" });
     case 6:
@@ -3432,7 +4031,7 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ConnectionArn: S.optional(S.String),
-          ConnectionState: S.optional(S.String),
+          ConnectionState: S.optional(ConnectionState),
           CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           LastModifiedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           LastAuthorizedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
@@ -3468,7 +4067,7 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ConnectionArn: S.optional(S.String),
-          ConnectionState: S.optional(S.String),
+          ConnectionState: S.optional(ConnectionState),
           CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           LastModifiedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           LastAuthorizedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
@@ -3524,10 +4123,10 @@ function __c6(j: number): any {
           ApiDestinationArn: S.optional(S.String),
           Name: S.optional(S.String),
           Description: S.optional(S.String),
-          ApiDestinationState: S.optional(S.String),
+          ApiDestinationState: S.optional(ApiDestinationState),
           ConnectionArn: S.optional(S.String),
           InvocationEndpoint: S.optional(S.String),
-          HttpMethod: S.optional(S.String),
+          HttpMethod: S.optional(ApiDestinationHttpMethod),
           InvocationRateLimitPerSecond: S.optional(S.Number),
           CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           LastModifiedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
@@ -3553,7 +4152,7 @@ function __c7(j: number): any {
           EventSourceArn: S.optional(S.String),
           Description: S.optional(S.String),
           EventPattern: S.optional(S.String),
-          State: S.optional(S.String),
+          State: S.optional(ArchiveState),
           StateReason: S.optional(S.String),
           KmsKeyIdentifier: S.optional(S.String),
           RetentionDays: S.optional(S.Number),
@@ -3577,7 +4176,9 @@ function __c7(j: number): any {
         identifier: "DescribeConnectionResourceParameters",
       });
     case 3:
-      return S.suspend(() => S.Struct({ ResourceParameters: __S(58) })).annotate({
+      return S.suspend(() =>
+        S.Struct({ ResourceParameters: DescribeConnectionResourceParameters }),
+      ).annotate({
         identifier: "DescribeConnectionConnectivityParameters",
       });
     case 4:
@@ -3591,10 +4192,10 @@ function __c7(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          ClientParameters: S.optional(__S(61)),
+          ClientParameters: S.optional(ConnectionOAuthClientResponseParameters),
           AuthorizationEndpoint: S.optional(S.String),
-          HttpMethod: S.optional(S.String),
-          OAuthHttpParameters: S.optional(__S(15)),
+          HttpMethod: S.optional(ConnectionOAuthHttpMethod),
+          OAuthHttpParameters: S.optional(ConnectionHttpParameters),
         }),
       ).annotate({
         identifier: "ConnectionOAuthResponseParameters",
@@ -3610,11 +4211,11 @@ function __c8(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          BasicAuthParameters: S.optional(__S(60)),
-          OAuthParameters: S.optional(__S(62)),
-          ApiKeyAuthParameters: S.optional(__S(63)),
-          InvocationHttpParameters: S.optional(__S(15)),
-          ConnectivityParameters: S.optional(__S(59)),
+          BasicAuthParameters: S.optional(ConnectionBasicAuthResponseParameters),
+          OAuthParameters: S.optional(ConnectionOAuthResponseParameters),
+          ApiKeyAuthParameters: S.optional(ConnectionApiKeyAuthResponseParameters),
+          InvocationHttpParameters: S.optional(ConnectionHttpParameters),
+          ConnectivityParameters: S.optional(DescribeConnectionConnectivityParameters),
         }),
       ).annotate({
         identifier: "ConnectionAuthResponseParameters",
@@ -3625,13 +4226,13 @@ function __c8(j: number): any {
           ConnectionArn: S.optional(S.String),
           Name: S.optional(S.String),
           Description: S.optional(S.String),
-          InvocationConnectivityParameters: S.optional(__S(59)),
-          ConnectionState: S.optional(S.String),
+          InvocationConnectivityParameters: S.optional(DescribeConnectionConnectivityParameters),
+          ConnectionState: S.optional(ConnectionState),
           StateReason: S.optional(S.String),
-          AuthorizationType: S.optional(S.String),
+          AuthorizationType: S.optional(ConnectionAuthorizationType),
           SecretArn: S.optional(S.String),
           KmsKeyIdentifier: S.optional(S.String),
-          AuthParameters: S.optional(__S(64)),
+          AuthParameters: S.optional(ConnectionAuthResponseParameters),
           CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           LastModifiedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           LastAuthorizedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
@@ -3651,13 +4252,13 @@ function __c8(j: number): any {
           Name: S.optional(S.String),
           Description: S.optional(S.String),
           Arn: S.optional(S.String),
-          RoutingConfig: S.optional(__S(26)),
-          ReplicationConfig: S.optional(__S(27)),
-          EventBuses: S.optional(__S(29)),
+          RoutingConfig: S.optional(RoutingConfig),
+          ReplicationConfig: S.optional(ReplicationConfig),
+          EventBuses: S.optional(EndpointEventBusList),
           RoleArn: S.optional(S.String),
           EndpointId: S.optional(S.String),
           EndpointUrl: S.optional(S.String),
-          State: S.optional(S.String),
+          State: S.optional(EndpointState),
           StateReason: S.optional(S.String),
           CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           LastModifiedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
@@ -3676,9 +4277,9 @@ function __c8(j: number): any {
           Arn: S.optional(S.String),
           Description: S.optional(S.String),
           KmsKeyIdentifier: S.optional(S.String),
-          DeadLetterConfig: S.optional(__S(32)),
+          DeadLetterConfig: S.optional(DeadLetterConfig),
           Policy: S.optional(S.String),
-          LogConfig: S.optional(__S(33)),
+          LogConfig: S.optional(LogConfig),
           CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           LastModifiedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           ManagedBy: S.optional(S.String),
@@ -3700,7 +4301,7 @@ function __c8(j: number): any {
           CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           ExpirationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           Name: S.optional(S.String),
-          State: S.optional(S.String),
+          State: S.optional(EventSourceState),
         }).pipe(ns),
       ).annotate({
         identifier: "DescribeEventSourceResponse",
@@ -3732,19 +4333,19 @@ function __c9(j: number): any {
     case 3:
       return S.Array(S.String);
     case 4:
-      return S.suspend(() => S.Struct({ Arn: S.String, FilterArns: S.optional(__S(75)) })).annotate(
-        { identifier: "ReplayDestination" },
-      );
+      return S.suspend(() =>
+        S.Struct({ Arn: S.String, FilterArns: S.optional(ReplayDestinationFilters) }),
+      ).annotate({ identifier: "ReplayDestination" });
     case 5:
       return S.suspend(() =>
         S.Struct({
           ReplayName: S.optional(S.String),
           ReplayArn: S.optional(S.String),
           Description: S.optional(S.String),
-          State: S.optional(S.String),
+          State: S.optional(ReplayState),
           StateReason: S.optional(S.String),
           EventSourceArn: S.optional(S.String),
-          Destination: S.optional(__S(76)),
+          Destination: S.optional(ReplayDestination),
           EventStartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           EventEndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           EventLastReplayedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
@@ -3765,7 +4366,7 @@ function __c9(j: number): any {
           Arn: S.optional(S.String),
           EventPattern: S.optional(S.String),
           ScheduleExpression: S.optional(S.String),
-          State: S.optional(S.String),
+          State: S.optional(RuleState),
           Description: S.optional(S.String),
           RoleArn: S.optional(S.String),
           ManagedBy: S.optional(S.String),
@@ -3805,21 +4406,21 @@ function __c10(j: number): any {
         S.Struct({
           ApiDestinationArn: S.optional(S.String),
           Name: S.optional(S.String),
-          ApiDestinationState: S.optional(S.String),
+          ApiDestinationState: S.optional(ApiDestinationState),
           ConnectionArn: S.optional(S.String),
           InvocationEndpoint: S.optional(S.String),
-          HttpMethod: S.optional(S.String),
+          HttpMethod: S.optional(ApiDestinationHttpMethod),
           InvocationRateLimitPerSecond: S.optional(S.Number),
           CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           LastModifiedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "ApiDestination" });
     case 4:
-      return S.Array(__S(83));
+      return S.Array(ApiDestination);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          ApiDestinations: S.optional(__S(84)),
+          ApiDestinations: S.optional(ApiDestinationResponseList),
           NextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
@@ -3830,7 +4431,7 @@ function __c10(j: number): any {
         S.Struct({
           NamePrefix: S.optional(S.String),
           EventSourceArn: S.optional(S.String),
-          State: S.optional(S.String),
+          State: S.optional(ArchiveState),
           NextToken: S.optional(S.String),
           Limit: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -3840,7 +4441,7 @@ function __c10(j: number): any {
         S.Struct({
           ArchiveName: S.optional(S.String),
           EventSourceArn: S.optional(S.String),
-          State: S.optional(S.String),
+          State: S.optional(ArchiveState),
           StateReason: S.optional(S.String),
           RetentionDays: S.optional(S.Number),
           SizeBytes: S.optional(S.Number),
@@ -3853,11 +4454,11 @@ function __c10(j: number): any {
 function __c11(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(87));
+      return S.Array(Archive);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          Archives: S.optional(__S(88)),
+          Archives: S.optional(ArchiveResponseList),
           NextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({ identifier: "ListArchivesResponse" });
@@ -3865,7 +4466,7 @@ function __c11(j: number): any {
       return S.suspend(() =>
         S.Struct({
           NamePrefix: S.optional(S.String),
-          ConnectionState: S.optional(S.String),
+          ConnectionState: S.optional(ConnectionState),
           NextToken: S.optional(S.String),
           Limit: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -3875,20 +4476,20 @@ function __c11(j: number): any {
         S.Struct({
           ConnectionArn: S.optional(S.String),
           Name: S.optional(S.String),
-          ConnectionState: S.optional(S.String),
+          ConnectionState: S.optional(ConnectionState),
           StateReason: S.optional(S.String),
-          AuthorizationType: S.optional(S.String),
+          AuthorizationType: S.optional(ConnectionAuthorizationType),
           CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           LastModifiedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           LastAuthorizedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "Connection" });
     case 4:
-      return S.Array(__S(91));
+      return S.Array(Connection);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          Connections: S.optional(__S(92)),
+          Connections: S.optional(ConnectionResponseList),
           NextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({ identifier: "ListConnectionsResponse" });
@@ -3907,13 +4508,13 @@ function __c11(j: number): any {
           Name: S.optional(S.String),
           Description: S.optional(S.String),
           Arn: S.optional(S.String),
-          RoutingConfig: S.optional(__S(26)),
-          ReplicationConfig: S.optional(__S(27)),
-          EventBuses: S.optional(__S(29)),
+          RoutingConfig: S.optional(RoutingConfig),
+          ReplicationConfig: S.optional(ReplicationConfig),
+          EventBuses: S.optional(EndpointEventBusList),
           RoleArn: S.optional(S.String),
           EndpointId: S.optional(S.String),
           EndpointUrl: S.optional(S.String),
-          State: S.optional(S.String),
+          State: S.optional(EndpointState),
           StateReason: S.optional(S.String),
           CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           LastModifiedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
@@ -3927,7 +4528,7 @@ function __c12(j: number): any {
       return S.Array(Endpoint);
     case 1:
       return S.suspend(() =>
-        S.Struct({ Endpoints: S.optional(__S(96)), NextToken: S.optional(S.String) }).pipe(ns),
+        S.Struct({ Endpoints: S.optional(EndpointList), NextToken: S.optional(S.String) }).pipe(ns),
       ).annotate({ identifier: "ListEndpointsResponse" });
     case 2:
       return S.suspend(() =>
@@ -3950,10 +4551,12 @@ function __c12(j: number): any {
         }),
       ).annotate({ identifier: "EventBus" });
     case 4:
-      return S.Array(__S(99));
+      return S.Array(EventBus);
     case 5:
       return S.suspend(() =>
-        S.Struct({ EventBuses: S.optional(__S(100)), NextToken: S.optional(S.String) }).pipe(ns),
+        S.Struct({ EventBuses: S.optional(EventBusList), NextToken: S.optional(S.String) }).pipe(
+          ns,
+        ),
       ).annotate({ identifier: "ListEventBusesResponse" });
     case 6:
       return S.suspend(() =>
@@ -3971,7 +4574,7 @@ function __c12(j: number): any {
           CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           ExpirationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           Name: S.optional(S.String),
-          State: S.optional(S.String),
+          State: S.optional(EventSourceState),
         }),
       ).annotate({ identifier: "EventSource" });
   }
@@ -3979,11 +4582,11 @@ function __c12(j: number): any {
 function __c13(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(103));
+      return S.Array(EventSource);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          EventSources: S.optional(__S(104)),
+          EventSources: S.optional(EventSourceList),
           NextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({ identifier: "ListEventSourcesResponse" });
@@ -4003,17 +4606,17 @@ function __c13(j: number): any {
           Account: S.optional(S.String),
           CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           ExpirationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          State: S.optional(S.String),
+          State: S.optional(EventSourceState),
         }),
       ).annotate({
         identifier: "PartnerEventSourceAccount",
       });
     case 4:
-      return S.Array(__S(107));
+      return S.Array(PartnerEventSourceAccount);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          PartnerEventSourceAccounts: S.optional(__S(108)),
+          PartnerEventSourceAccounts: S.optional(PartnerEventSourceAccountList),
           NextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
@@ -4038,11 +4641,11 @@ function __c13(j: number): any {
 function __c14(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(111));
+      return S.Array(PartnerEventSource);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          PartnerEventSources: S.optional(__S(112)),
+          PartnerEventSources: S.optional(PartnerEventSourceList),
           NextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
@@ -4052,7 +4655,7 @@ function __c14(j: number): any {
       return S.suspend(() =>
         S.Struct({
           NamePrefix: S.optional(S.String),
-          State: S.optional(S.String),
+          State: S.optional(ReplayState),
           EventSourceArn: S.optional(S.String),
           NextToken: S.optional(S.String),
           Limit: S.optional(S.Number),
@@ -4063,7 +4666,7 @@ function __c14(j: number): any {
         S.Struct({
           ReplayName: S.optional(S.String),
           EventSourceArn: S.optional(S.String),
-          State: S.optional(S.String),
+          State: S.optional(ReplayState),
           StateReason: S.optional(S.String),
           EventStartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           EventEndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
@@ -4073,10 +4676,10 @@ function __c14(j: number): any {
         }),
       ).annotate({ identifier: "Replay" });
     case 4:
-      return S.Array(__S(115));
+      return S.Array(Replay);
     case 5:
       return S.suspend(() =>
-        S.Struct({ Replays: S.optional(__S(116)), NextToken: S.optional(S.String) }).pipe(ns),
+        S.Struct({ Replays: S.optional(ReplayList), NextToken: S.optional(S.String) }).pipe(ns),
       ).annotate({ identifier: "ListReplaysResponse" });
     case 6:
       return S.suspend(() =>
@@ -4091,7 +4694,7 @@ function __c14(j: number): any {
       });
     case 7:
       return S.suspend(() =>
-        S.Struct({ RuleNames: S.optional(__S(75)), NextToken: S.optional(S.String) }).pipe(ns),
+        S.Struct({ RuleNames: S.optional(RuleNameList), NextToken: S.optional(S.String) }).pipe(ns),
       ).annotate({
         identifier: "ListRuleNamesByTargetResponse",
       });
@@ -4114,7 +4717,7 @@ function __c15(j: number): any {
           Name: S.optional(S.String),
           Arn: S.optional(S.String),
           EventPattern: S.optional(S.String),
-          State: S.optional(S.String),
+          State: S.optional(RuleState),
           Description: S.optional(S.String),
           ScheduleExpression: S.optional(S.String),
           RoleArn: S.optional(S.String),
@@ -4123,10 +4726,10 @@ function __c15(j: number): any {
         }),
       ).annotate({ identifier: "Rule" });
     case 2:
-      return S.Array(__S(121));
+      return S.Array(Rule);
     case 3:
       return S.suspend(() =>
-        S.Struct({ Rules: S.optional(__S(122)), NextToken: S.optional(S.String) }).pipe(ns),
+        S.Struct({ Rules: S.optional(RuleResponseList), NextToken: S.optional(S.String) }).pipe(ns),
       ).annotate({ identifier: "ListRulesResponse" });
     case 4:
       return S.suspend(() =>
@@ -4137,7 +4740,7 @@ function __c15(j: number): any {
         identifier: "ListTagsForResourceRequest",
       });
     case 5:
-      return S.suspend(() => S.Struct({ Tags: S.optional(__S(35)) }).pipe(ns)).annotate({
+      return S.suspend(() => S.Struct({ Tags: S.optional(TagList) }).pipe(ns)).annotate({
         identifier: "ListTagsForResourceResponse",
       });
     case 6:
@@ -4157,34 +4760,34 @@ function __c16(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ InputPathsMap: S.optional(__S(127)), InputTemplate: S.String }),
+        S.Struct({ InputPathsMap: S.optional(TransformerPaths), InputTemplate: S.String }),
       ).annotate({ identifier: "InputTransformer" });
     case 1:
       return S.suspend(() => S.Struct({ PartitionKeyPath: S.String })).annotate({
         identifier: "KinesisParameters",
       });
     case 2:
-      return S.suspend(() => S.Struct({ Key: S.String, Values: __S(75) })).annotate({
+      return S.suspend(() => S.Struct({ Key: S.String, Values: RunCommandTargetValues })).annotate({
         identifier: "RunCommandTarget",
       });
     case 3:
-      return S.Array(__S(130));
+      return S.Array(RunCommandTarget);
     case 4:
-      return S.suspend(() => S.Struct({ RunCommandTargets: __S(131) })).annotate({
+      return S.suspend(() => S.Struct({ RunCommandTargets: RunCommandTargets })).annotate({
         identifier: "RunCommandParameters",
       });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          Subnets: __S(75),
-          SecurityGroups: S.optional(__S(75)),
-          AssignPublicIp: S.optional(S.String),
+          Subnets: StringList,
+          SecurityGroups: S.optional(StringList),
+          AssignPublicIp: S.optional(AssignPublicIp),
         }),
       ).annotate({ identifier: "AwsVpcConfiguration" });
     case 6:
-      return S.suspend(() => S.Struct({ awsvpcConfiguration: S.optional(__S(133)) })).annotate({
-        identifier: "NetworkConfiguration",
-      });
+      return S.suspend(() =>
+        S.Struct({ awsvpcConfiguration: S.optional(AwsVpcConfiguration) }),
+      ).annotate({ identifier: "NetworkConfiguration" });
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -4200,36 +4803,36 @@ function __c16(j: number): any {
 function __c17(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(135));
+      return S.Array(CapacityProviderStrategyItem);
     case 1:
       return S.suspend(() =>
-        S.Struct({ type: S.optional(S.String), expression: S.optional(S.String) }),
+        S.Struct({ type: S.optional(PlacementConstraintType), expression: S.optional(S.String) }),
       ).annotate({ identifier: "PlacementConstraint" });
     case 2:
-      return S.Array(__S(137));
+      return S.Array(PlacementConstraint);
     case 3:
       return S.suspend(() =>
-        S.Struct({ type: S.optional(S.String), field: S.optional(S.String) }),
+        S.Struct({ type: S.optional(PlacementStrategyType), field: S.optional(S.String) }),
       ).annotate({ identifier: "PlacementStrategy" });
     case 4:
-      return S.Array(__S(139));
+      return S.Array(PlacementStrategy);
     case 5:
       return S.suspend(() =>
         S.Struct({
           TaskDefinitionArn: S.String,
           TaskCount: S.optional(S.Number),
-          LaunchType: S.optional(S.String),
-          NetworkConfiguration: S.optional(__S(134)),
+          LaunchType: S.optional(LaunchType),
+          NetworkConfiguration: S.optional(NetworkConfiguration),
           PlatformVersion: S.optional(S.String),
           Group: S.optional(S.String),
-          CapacityProviderStrategy: S.optional(__S(136)),
+          CapacityProviderStrategy: S.optional(CapacityProviderStrategy),
           EnableECSManagedTags: S.optional(S.Boolean),
           EnableExecuteCommand: S.optional(S.Boolean),
-          PlacementConstraints: S.optional(__S(138)),
-          PlacementStrategy: S.optional(__S(140)),
-          PropagateTags: S.optional(S.String),
+          PlacementConstraints: S.optional(PlacementConstraints),
+          PlacementStrategy: S.optional(PlacementStrategies),
+          PropagateTags: S.optional(PropagateTags),
           ReferenceId: S.optional(S.String),
-          Tags: S.optional(__S(35)),
+          Tags: S.optional(TagList),
         }),
       ).annotate({ identifier: "EcsParameters" });
     case 6:
@@ -4249,8 +4852,8 @@ function __c18(j: number): any {
         S.Struct({
           JobDefinition: S.String,
           JobName: S.String,
-          ArrayProperties: S.optional(__S(142)),
-          RetryStrategy: S.optional(__S(143)),
+          ArrayProperties: S.optional(BatchArrayProperties),
+          RetryStrategy: S.optional(BatchRetryStrategy),
         }),
       ).annotate({ identifier: "BatchParameters" });
     case 1:
@@ -4260,9 +4863,9 @@ function __c18(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          PathParameterValues: S.optional(__S(75)),
-          HeaderParameters: S.optional(__S(127)),
-          QueryStringParameters: S.optional(__S(127)),
+          PathParameterValues: S.optional(PathParameterList),
+          HeaderParameters: S.optional(HeaderParametersMap),
+          QueryStringParameters: S.optional(QueryStringParametersMap),
         }),
       ).annotate({ identifier: "HttpParameters" });
     case 3:
@@ -4276,7 +4879,7 @@ function __c18(j: number): any {
           Sql: S.optional(SensitiveString),
           StatementName: S.optional(S.String),
           WithEvent: S.optional(S.Boolean),
-          Sqls: S.optional(__S(147)),
+          Sqls: S.optional(Sqls),
         }),
       ).annotate({ identifier: "RedshiftDataParameters" });
     case 5:
@@ -4284,9 +4887,11 @@ function __c18(j: number): any {
         identifier: "SageMakerPipelineParameter",
       });
     case 6:
-      return S.Array(__S(149));
+      return S.Array(SageMakerPipelineParameter);
     case 7:
-      return S.suspend(() => S.Struct({ PipelineParameterList: S.optional(__S(150)) })).annotate({
+      return S.suspend(() =>
+        S.Struct({ PipelineParameterList: S.optional(SageMakerPipelineParameterList) }),
+      ).annotate({
         identifier: "SageMakerPipelineParameters",
       });
   }
@@ -4312,25 +4917,25 @@ function __c19(j: number): any {
           RoleArn: S.optional(S.String),
           Input: S.optional(S.String),
           InputPath: S.optional(S.String),
-          InputTransformer: S.optional(__S(128)),
-          KinesisParameters: S.optional(__S(129)),
-          RunCommandParameters: S.optional(__S(132)),
-          EcsParameters: S.optional(__S(141)),
-          BatchParameters: S.optional(__S(144)),
-          SqsParameters: S.optional(__S(145)),
-          HttpParameters: S.optional(__S(146)),
-          RedshiftDataParameters: S.optional(__S(148)),
-          SageMakerPipelineParameters: S.optional(__S(151)),
-          DeadLetterConfig: S.optional(__S(32)),
-          RetryPolicy: S.optional(__S(152)),
-          AppSyncParameters: S.optional(__S(153)),
+          InputTransformer: S.optional(InputTransformer),
+          KinesisParameters: S.optional(KinesisParameters),
+          RunCommandParameters: S.optional(RunCommandParameters),
+          EcsParameters: S.optional(EcsParameters),
+          BatchParameters: S.optional(BatchParameters),
+          SqsParameters: S.optional(SqsParameters),
+          HttpParameters: S.optional(HttpParameters),
+          RedshiftDataParameters: S.optional(RedshiftDataParameters),
+          SageMakerPipelineParameters: S.optional(SageMakerPipelineParameters),
+          DeadLetterConfig: S.optional(DeadLetterConfig),
+          RetryPolicy: S.optional(RetryPolicy),
+          AppSyncParameters: S.optional(AppSyncParameters),
         }),
       ).annotate({ identifier: "Target" });
     case 3:
-      return S.Array(__S(154));
+      return S.Array(Target);
     case 4:
       return S.suspend(() =>
-        S.Struct({ Targets: S.optional(__S(155)), NextToken: S.optional(S.String) }).pipe(ns),
+        S.Struct({ Targets: S.optional(TargetList), NextToken: S.optional(S.String) }).pipe(ns),
       ).annotate({
         identifier: "ListTargetsByRuleResponse",
       });
@@ -4339,7 +4944,7 @@ function __c19(j: number): any {
         S.Struct({
           Time: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           Source: S.optional(S.String),
-          Resources: S.optional(__S(75)),
+          Resources: S.optional(EventResourceList),
           DetailType: S.optional(S.String),
           Detail: S.optional(S.String),
           EventBusName: S.optional(S.String),
@@ -4347,11 +4952,11 @@ function __c19(j: number): any {
         }),
       ).annotate({ identifier: "PutEventsRequestEntry" });
     case 6:
-      return S.Array(__S(157));
+      return S.Array(PutEventsRequestEntry);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          Entries: __S(158),
+          Entries: PutEventsRequestEntryList,
           EndpointId: S.optional(S.String).pipe(T.ContextParam("EndpointId")),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "PutEventsRequest" });
@@ -4368,12 +4973,12 @@ function __c20(j: number): any {
         }),
       ).annotate({ identifier: "PutEventsResultEntry" });
     case 1:
-      return S.Array(__S(160));
+      return S.Array(PutEventsResultEntry);
     case 2:
       return S.suspend(() =>
         S.Struct({
           FailedEntryCount: S.optional(S.Number),
-          Entries: S.optional(__S(161)),
+          Entries: S.optional(PutEventsResultEntryList),
         }).pipe(ns),
       ).annotate({ identifier: "PutEventsResponse" });
     case 3:
@@ -4381,7 +4986,7 @@ function __c20(j: number): any {
         S.Struct({
           Time: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           Source: S.optional(S.String),
-          Resources: S.optional(__S(75)),
+          Resources: S.optional(EventResourceList),
           DetailType: S.optional(S.String),
           Detail: S.optional(S.String),
         }),
@@ -4389,10 +4994,10 @@ function __c20(j: number): any {
         identifier: "PutPartnerEventsRequestEntry",
       });
     case 4:
-      return S.Array(__S(163));
+      return S.Array(PutPartnerEventsRequestEntry);
     case 5:
       return S.suspend(() =>
-        S.Struct({ Entries: __S(164) }).pipe(
+        S.Struct({ Entries: PutPartnerEventsRequestEntryList }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "PutPartnerEventsRequest" });
@@ -4407,7 +5012,7 @@ function __c20(j: number): any {
         identifier: "PutPartnerEventsResultEntry",
       });
     case 7:
-      return S.Array(__S(166));
+      return S.Array(PutPartnerEventsResultEntry);
   }
 }
 function __c21(j: number): any {
@@ -4416,7 +5021,7 @@ function __c21(j: number): any {
       return S.suspend(() =>
         S.Struct({
           FailedEntryCount: S.optional(S.Number),
-          Entries: S.optional(__S(167)),
+          Entries: S.optional(PutPartnerEventsResultEntryList),
         }).pipe(ns),
       ).annotate({ identifier: "PutPartnerEventsResponse" });
     case 1:
@@ -4430,7 +5035,7 @@ function __c21(j: number): any {
           Action: S.optional(S.String),
           Principal: S.optional(S.String),
           StatementId: S.optional(S.String),
-          Condition: S.optional(__S(169)),
+          Condition: S.optional(Condition),
           Policy: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "PutPermissionRequest" });
@@ -4440,10 +5045,10 @@ function __c21(j: number): any {
           Name: S.String,
           ScheduleExpression: S.optional(S.String),
           EventPattern: S.optional(S.String),
-          State: S.optional(S.String),
+          State: S.optional(RuleState),
           Description: S.optional(S.String),
           RoleArn: S.optional(S.String),
-          Tags: S.optional(__S(35)),
+          Tags: S.optional(TagList),
           EventBusName: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "PutRuleRequest" });
@@ -4453,7 +5058,7 @@ function __c21(j: number): any {
       });
     case 5:
       return S.suspend(() =>
-        S.Struct({ Rule: S.String, EventBusName: S.optional(S.String), Targets: __S(155) }).pipe(
+        S.Struct({ Rule: S.String, EventBusName: S.optional(S.String), Targets: TargetList }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "PutTargetsRequest" });
@@ -4466,7 +5071,7 @@ function __c21(j: number): any {
         }),
       ).annotate({ identifier: "PutTargetsResultEntry" });
     case 7:
-      return S.Array(__S(174));
+      return S.Array(PutTargetsResultEntry);
   }
 }
 function __c22(j: number): any {
@@ -4475,7 +5080,7 @@ function __c22(j: number): any {
       return S.suspend(() =>
         S.Struct({
           FailedEntryCount: S.optional(S.Number),
-          FailedEntries: S.optional(__S(175)),
+          FailedEntries: S.optional(PutTargetsResultEntryList),
         }).pipe(ns),
       ).annotate({ identifier: "PutTargetsResponse" });
     case 1:
@@ -4495,7 +5100,7 @@ function __c22(j: number): any {
         S.Struct({
           Rule: S.String,
           EventBusName: S.optional(S.String),
-          Ids: __S(75),
+          Ids: TargetIdList,
           Force: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "RemoveTargetsRequest" });
@@ -4507,21 +5112,21 @@ function __c22(j: number): any {
           EventSourceArn: S.String,
           EventStartTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           EventEndTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          Destination: __S(76),
+          Destination: ReplayDestination,
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "StartReplayRequest" });
     case 5:
       return S.suspend(() =>
         S.Struct({
           ReplayArn: S.optional(S.String),
-          State: S.optional(S.String),
+          State: S.optional(ReplayState),
           StateReason: S.optional(S.String),
           ReplayStartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }).pipe(ns),
       ).annotate({ identifier: "StartReplayResponse" });
     case 6:
       return S.suspend(() =>
-        S.Struct({ ResourceARN: S.String, Tags: __S(35) }).pipe(
+        S.Struct({ ResourceARN: S.String, Tags: TagList }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "TagResourceRequest" });
@@ -4541,7 +5146,7 @@ function __c23(j: number): any {
       });
     case 1:
       return S.suspend(() =>
-        S.Struct({ ResourceARN: S.String, TagKeys: __S(75) }).pipe(
+        S.Struct({ ResourceARN: S.String, TagKeys: TagKeyList }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "UntagResourceRequest" });
@@ -4552,7 +5157,7 @@ function __c23(j: number): any {
           Description: S.optional(S.String),
           ConnectionArn: S.optional(S.String),
           InvocationEndpoint: S.optional(S.String),
-          HttpMethod: S.optional(S.String),
+          HttpMethod: S.optional(ApiDestinationHttpMethod),
           InvocationRateLimitPerSecond: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
@@ -4583,10 +5188,10 @@ function __c23(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          ClientParameters: S.optional(__S(189)),
+          ClientParameters: S.optional(UpdateConnectionOAuthClientRequestParameters),
           AuthorizationEndpoint: S.optional(S.String),
-          HttpMethod: S.optional(S.String),
-          OAuthHttpParameters: S.optional(__S(15)),
+          HttpMethod: S.optional(ConnectionOAuthHttpMethod),
+          OAuthHttpParameters: S.optional(ConnectionHttpParameters),
         }),
       ).annotate({
         identifier: "UpdateConnectionOAuthRequestParameters",
@@ -4604,11 +5209,11 @@ function __c24(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          BasicAuthParameters: S.optional(__S(188)),
-          OAuthParameters: S.optional(__S(190)),
-          ApiKeyAuthParameters: S.optional(__S(191)),
-          InvocationHttpParameters: S.optional(__S(15)),
-          ConnectivityParameters: S.optional(__S(19)),
+          BasicAuthParameters: S.optional(UpdateConnectionBasicAuthRequestParameters),
+          OAuthParameters: S.optional(UpdateConnectionOAuthRequestParameters),
+          ApiKeyAuthParameters: S.optional(UpdateConnectionApiKeyAuthRequestParameters),
+          InvocationHttpParameters: S.optional(ConnectionHttpParameters),
+          ConnectivityParameters: S.optional(ConnectivityResourceParameters),
         }),
       ).annotate({
         identifier: "UpdateConnectionAuthRequestParameters",
@@ -4618,9 +5223,9 @@ function __c24(j: number): any {
         S.Struct({
           Name: S.String,
           Description: S.optional(S.String),
-          AuthorizationType: S.optional(S.String),
-          AuthParameters: S.optional(__S(192)),
-          InvocationConnectivityParameters: S.optional(__S(19)),
+          AuthorizationType: S.optional(ConnectionAuthorizationType),
+          AuthParameters: S.optional(UpdateConnectionAuthRequestParameters),
+          InvocationConnectivityParameters: S.optional(ConnectivityResourceParameters),
           KmsKeyIdentifier: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "UpdateConnectionRequest" });
@@ -4629,9 +5234,9 @@ function __c24(j: number): any {
         S.Struct({
           Name: S.String,
           Description: S.optional(S.String),
-          RoutingConfig: S.optional(__S(26)),
-          ReplicationConfig: S.optional(__S(27)),
-          EventBuses: S.optional(__S(29)),
+          RoutingConfig: S.optional(RoutingConfig),
+          ReplicationConfig: S.optional(ReplicationConfig),
+          EventBuses: S.optional(EndpointEventBusList),
           RoleArn: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "UpdateEndpointRequest" });
@@ -4640,13 +5245,13 @@ function __c24(j: number): any {
         S.Struct({
           Name: S.optional(S.String),
           Arn: S.optional(S.String),
-          RoutingConfig: S.optional(__S(26)),
-          ReplicationConfig: S.optional(__S(27)),
-          EventBuses: S.optional(__S(29)),
+          RoutingConfig: S.optional(RoutingConfig),
+          ReplicationConfig: S.optional(ReplicationConfig),
+          EventBuses: S.optional(EndpointEventBusList),
           RoleArn: S.optional(S.String),
           EndpointId: S.optional(S.String),
           EndpointUrl: S.optional(S.String),
-          State: S.optional(S.String),
+          State: S.optional(EndpointState),
         }).pipe(ns),
       ).annotate({ identifier: "UpdateEndpointResponse" });
     case 4:
@@ -4655,8 +5260,8 @@ function __c24(j: number): any {
           Name: S.optional(S.String),
           KmsKeyIdentifier: S.optional(S.String),
           Description: S.optional(S.String),
-          DeadLetterConfig: S.optional(__S(32)),
-          LogConfig: S.optional(__S(33)),
+          DeadLetterConfig: S.optional(DeadLetterConfig),
+          LogConfig: S.optional(LogConfig),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "UpdateEventBusRequest" });
     case 5:
@@ -4666,68 +5271,9 @@ function __c24(j: number): any {
           Name: S.optional(S.String),
           KmsKeyIdentifier: S.optional(S.String),
           Description: S.optional(S.String),
-          DeadLetterConfig: S.optional(__S(32)),
-          LogConfig: S.optional(__S(33)),
+          DeadLetterConfig: S.optional(DeadLetterConfig),
+          LogConfig: S.optional(LogConfig),
         }).pipe(ns),
       ).annotate({ identifier: "UpdateEventBusResponse" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
-    case 9:
-      return __c9(i & 7);
-    case 10:
-      return __c10(i & 7);
-    case 11:
-      return __c11(i & 7);
-    case 12:
-      return __c12(i & 7);
-    case 13:
-      return __c13(i & 7);
-    case 14:
-      return __c14(i & 7);
-    case 15:
-      return __c15(i & 7);
-    case 16:
-      return __c16(i & 7);
-    case 17:
-      return __c17(i & 7);
-    case 18:
-      return __c18(i & 7);
-    case 19:
-      return __c19(i & 7);
-    case 20:
-      return __c20(i & 7);
-    case 21:
-      return __c21(i & 7);
-    case 22:
-      return __c22(i & 7);
-    case 23:
-      return __c23(i & 7);
-    case 24:
-      return __c24(i & 7);
   }
 }

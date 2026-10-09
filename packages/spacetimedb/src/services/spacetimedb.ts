@@ -12,8 +12,6 @@ import {
 } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { SpacetimeDBOpError, SpacetimeDBOpContext };
 
@@ -40,15 +38,35 @@ export interface AddDatabaseNameRequest {
   name_or_identity: string;
   body: string | Uint8Array | Blob;
 }
+const AddDatabaseNameRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<AddDatabaseNameRequest>;
+
 export interface AddDatabaseNameResponseSuccess {
   domain?: string;
   database_result?: string;
 }
+const AddDatabaseNameResponseSuccess = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<AddDatabaseNameResponseSuccess>;
+
 export interface AddDatabaseNameResponse {
   Success: AddDatabaseNameResponseSuccess;
 }
+const AddDatabaseNameResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<AddDatabaseNameResponse>;
+
 /** JSON array of arguments to the reducer. */
 export type CallReducerRequestBodyList = Array<unknown>;
+const CallReducerRequestBodyList = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<CallReducerRequestBodyList>;
+
 export interface CallReducerRequest {
   /** Database name or Spacetime identity. */
   name_or_identity: string;
@@ -56,42 +74,97 @@ export interface CallReducerRequest {
   reducer: string;
   body: CallReducerRequestBodyList;
 }
+const CallReducerRequest = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<CallReducerRequest>;
+
 export type CallReducerResponse = unknown;
+const CallReducerResponse = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<CallReducerResponse>;
+
 export interface CreateIdentityRequest {}
+const CreateIdentityRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<CreateIdentityRequest>;
+
 export interface CreateIdentityResponse {
   identity: string;
   token: string | Redacted.Redacted<string>;
 }
+const CreateIdentityResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<CreateIdentityResponse>;
+
 export interface CreateWebsocketTokenRequest {}
+const CreateWebsocketTokenRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<CreateWebsocketTokenRequest>;
+
 export interface CreateWebsocketTokenResponse {
   token: string | Redacted.Redacted<string>;
 }
+const CreateWebsocketTokenResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<CreateWebsocketTokenResponse>;
+
 export interface DeleteDatabaseRequest {
   /** Database name or Spacetime identity. */
   name_or_identity: string;
 }
+const DeleteDatabaseRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<DeleteDatabaseRequest>;
+
 export interface DeleteDatabaseResponse {}
+const DeleteDatabaseResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<DeleteDatabaseResponse>;
+
 export interface ExecuteSqlRequest {
   /** Database name or Spacetime identity. */
   name_or_identity: string;
   body: string | Uint8Array | Blob;
 }
+const ExecuteSqlRequest = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<ExecuteSqlRequest>;
+
 /** JSON-encoded ProductValues conforming to schema. */
 export type ExecuteSqlResponseBodyItemRowsList = Array<unknown>;
+const ExecuteSqlResponseBodyItemRowsList =
+  CallReducerRequestBodyList as any as S.Schema<ExecuteSqlResponseBodyItemRowsList>;
+
 export interface ExecuteSqlResponseBodyItem {
   /** JSON-encoded ProductType of the returned rows. */
   schema: unknown;
   /** JSON-encoded ProductValues conforming to schema. */
   rows: ExecuteSqlResponseBodyItemRowsList;
 }
+const ExecuteSqlResponseBodyItem = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<ExecuteSqlResponseBodyItem>;
+
 export type ExecuteSqlResponseBodyList = Array<ExecuteSqlResponseBodyItem>;
+const ExecuteSqlResponseBodyList = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<ExecuteSqlResponseBodyList>;
+
 export type ExecuteSqlResponse = ExecuteSqlResponseBodyList;
+const ExecuteSqlResponse = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<ExecuteSqlResponse>;
+
 export interface GetDatabaseRequest {
   /** Database name or Spacetime identity. */
   name_or_identity: string;
 }
+const GetDatabaseRequest = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<GetDatabaseRequest>;
+
 /** The module host type; currently always "wasm". */
 export type GetDatabaseResponseHostType = "wasm";
+const GetDatabaseResponseHostType = S.String;
+
 export interface GetDatabaseResponse {
   /** The Spacetime identity of the database. */
   database_identity: string;
@@ -102,11 +175,23 @@ export interface GetDatabaseResponse {
   /** Hash of the WASM module with which the database was initialized. */
   initial_program: string;
 }
+const GetDatabaseResponse = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<GetDatabaseResponse>;
+
 export interface GetDatabaseIdentityRequest {
   /** Database name or Spacetime identity. */
   name_or_identity: string;
 }
+const GetDatabaseIdentityRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<GetDatabaseIdentityRequest>;
+
 export type GetDatabaseIdentityResponse = string;
+const GetDatabaseIdentityResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<GetDatabaseIdentityResponse>;
+
 export interface GetDatabaseLogsRequest {
   /** Database name or Spacetime identity. */
   name_or_identity: string;
@@ -115,58 +200,149 @@ export interface GetDatabaseLogsRequest {
   /** Whether to continue receiving new logs via a stream. */
   follow?: boolean;
 }
+const GetDatabaseLogsRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<GetDatabaseLogsRequest>;
+
 export type GetDatabaseLogsResponse = string;
+const GetDatabaseLogsResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<GetDatabaseLogsResponse>;
+
 export interface GetDatabaseNamesRequest {
   /** Database name or Spacetime identity. */
   name_or_identity: string;
 }
+const GetDatabaseNamesRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<GetDatabaseNamesRequest>;
+
 export type GetDatabaseNamesResponseNamesList = Array<string>;
+const GetDatabaseNamesResponseNamesList = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<GetDatabaseNamesResponseNamesList>;
+
 export interface GetDatabaseNamesResponse {
   names: GetDatabaseNamesResponseNamesList;
 }
+const GetDatabaseNamesResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<GetDatabaseNamesResponse>;
+
 export interface GetDatabaseSchemaRequest {
   /** Database name or Spacetime identity. */
   name_or_identity: string;
   /** The version of RawModuleDef to return, e.g. 9. */
   version?: number;
 }
+const GetDatabaseSchemaRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<GetDatabaseSchemaRequest>;
+
 export type GetDatabaseSchemaResponseBodyMap = { [key: string]: unknown | undefined };
+const GetDatabaseSchemaResponseBodyMap = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<GetDatabaseSchemaResponseBodyMap>;
+
 export type GetDatabaseSchemaResponse = GetDatabaseSchemaResponseBodyMap;
+const GetDatabaseSchemaResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<GetDatabaseSchemaResponse>;
+
 export interface GetPublicKeyRequest {}
+const GetPublicKeyRequest = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<GetPublicKeyRequest>;
+
 export type GetPublicKeyResponse = string;
+const GetPublicKeyResponse = GetDatabaseLogsResponse as any as S.Schema<GetPublicKeyResponse>;
+
 export interface ListIdentityDatabasesRequest {
   /** A Spacetime identity. */
   identity: string;
 }
+const ListIdentityDatabasesRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<ListIdentityDatabasesRequest>;
+
 /** Identities of databases owned by the path identity. */
 export type ListIdentityDatabasesResponseIdentitiesList = Array<string>;
+const ListIdentityDatabasesResponseIdentitiesList =
+  GetDatabaseNamesResponseNamesList as any as S.Schema<ListIdentityDatabasesResponseIdentitiesList>;
+
 export interface ListIdentityDatabasesResponse {
   /** Identities of databases owned by the path identity. */
   identities: ListIdentityDatabasesResponseIdentitiesList;
 }
+const ListIdentityDatabasesResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<ListIdentityDatabasesResponse>;
+
 export interface PingRequest {}
+const PingRequest = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<PingRequest>;
+
 export interface PingResponse {}
+const PingResponse = DeleteDatabaseResponse as any as S.Schema<PingResponse>;
+
 export interface PublishDatabaseRequest {
   body: string | Uint8Array | Blob;
 }
+const PublishDatabaseRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<PublishDatabaseRequest>;
+
 export type PublishDatabaseResponseSuccessOp = "created" | "updated";
+const PublishDatabaseResponseSuccessOp = S.String;
+
 export interface PublishDatabaseResponseSuccess {
   database_identity: string;
   op: PublishDatabaseResponseSuccessOp;
 }
+const PublishDatabaseResponseSuccess = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<PublishDatabaseResponseSuccess>;
+
 export interface PublishDatabaseResponse {
   Success: PublishDatabaseResponseSuccess;
 }
+const PublishDatabaseResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<PublishDatabaseResponse>;
+
 /** Names for this database. */
 export type SetDatabaseNamesRequestBodyList = Array<string>;
+const SetDatabaseNamesRequestBodyList =
+  GetDatabaseNamesResponseNamesList as any as S.Schema<SetDatabaseNamesRequestBodyList>;
+
 export interface SetDatabaseNamesRequest {
   /** Database name or Spacetime identity. */
   name_or_identity: string;
   body: SetDatabaseNamesRequestBodyList;
 }
+const SetDatabaseNamesRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<SetDatabaseNamesRequest>;
+
 export interface SetDatabaseNamesResponse {
   Success: unknown | null;
 }
+const SetDatabaseNamesResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<SetDatabaseNamesResponse>;
+
 export interface UpdateDatabaseRequest {
   /** Database name or Spacetime identity. */
   name_or_identity: string;
@@ -174,20 +350,44 @@ export interface UpdateDatabaseRequest {
   clear?: boolean;
   body: string | Uint8Array | Blob;
 }
+const UpdateDatabaseRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<UpdateDatabaseRequest>;
+
 export type UpdateDatabaseResponseSuccessOp = "created" | "updated";
+const UpdateDatabaseResponseSuccessOp = S.String;
+
 export interface UpdateDatabaseResponseSuccess {
   domain?: string | null;
   database_identity: string;
   op: UpdateDatabaseResponseSuccessOp;
 }
+const UpdateDatabaseResponseSuccess = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<UpdateDatabaseResponseSuccess>;
+
 export interface UpdateDatabaseResponse {
   Success: UpdateDatabaseResponseSuccess;
 }
+const UpdateDatabaseResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<UpdateDatabaseResponse>;
+
 export interface VerifyIdentityRequest {
   /** A Spacetime identity. */
   identity: string;
 }
+const VerifyIdentityRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  0,
+) as any as S.Schema<VerifyIdentityRequest>;
+
 export interface VerifyIdentityResponse {}
+const VerifyIdentityResponse = DeleteDatabaseResponse as any as S.Schema<VerifyIdentityResponse>;
+
 export type AddDatabaseNameError = SpacetimeDBOpError;
 /** Add a new name for this database. Takes as the request body a string containing the new name of the database. */
 export const addDatabaseName: API.OperationMethod<
@@ -196,8 +396,8 @@ export const addDatabaseName: API.OperationMethod<
   AddDatabaseNameError,
   SpacetimeDBOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<AddDatabaseNameRequest>,
-  output: __S(2) as any as S.Schema<AddDatabaseNameResponse>,
+  input: AddDatabaseNameRequest,
+  output: AddDatabaseNameResponse,
   errors: [UnknownSpacetimeDBError],
   protocol: SpacetimeDBProtocol,
   retry: Retry.Retry,
@@ -211,8 +411,8 @@ export const callReducer: API.OperationMethod<
   CallReducerError,
   SpacetimeDBOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4) as any as S.Schema<CallReducerRequest>,
-  output: __S(5) as any as S.Schema<CallReducerResponse>,
+  input: CallReducerRequest,
+  output: CallReducerResponse,
   errors: [NotFound, UnknownSpacetimeDBError],
   protocol: SpacetimeDBProtocol,
   retry: Retry.Retry,
@@ -226,8 +426,8 @@ export const createIdentity: API.OperationMethod<
   CreateIdentityError,
   SpacetimeDBOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6) as any as S.Schema<CreateIdentityRequest>,
-  output: __S(7) as any as S.Schema<CreateIdentityResponse>,
+  input: CreateIdentityRequest,
+  output: CreateIdentityResponse,
   errors: [UnknownSpacetimeDBError],
   protocol: SpacetimeDBProtocol,
   retry: Retry.Retry,
@@ -241,8 +441,8 @@ export const createWebsocketToken: API.OperationMethod<
   CreateWebsocketTokenError,
   SpacetimeDBOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8) as any as S.Schema<CreateWebsocketTokenRequest>,
-  output: __S(9) as any as S.Schema<CreateWebsocketTokenResponse>,
+  input: CreateWebsocketTokenRequest,
+  output: CreateWebsocketTokenResponse,
   errors: [UnknownSpacetimeDBError],
   protocol: SpacetimeDBProtocol,
   retry: Retry.Retry,
@@ -256,8 +456,8 @@ export const deleteDatabase: API.OperationMethod<
   DeleteDatabaseError,
   SpacetimeDBOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10) as any as S.Schema<DeleteDatabaseRequest>,
-  output: __S(11) as any as S.Schema<DeleteDatabaseResponse>,
+  input: DeleteDatabaseRequest,
+  output: DeleteDatabaseResponse,
   errors: [NotFound, UnknownSpacetimeDBError],
   protocol: SpacetimeDBProtocol,
   retry: Retry.Retry,
@@ -271,8 +471,8 @@ export const executeSql: API.OperationMethod<
   ExecuteSqlError,
   SpacetimeDBOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12) as any as S.Schema<ExecuteSqlRequest>,
-  output: __S(15) as any as S.Schema<ExecuteSqlResponse>,
+  input: ExecuteSqlRequest,
+  output: ExecuteSqlResponse,
   errors: [NotFound, UnknownSpacetimeDBError],
   protocol: SpacetimeDBProtocol,
   retry: Retry.Retry,
@@ -286,8 +486,8 @@ export const getDatabase: API.OperationMethod<
   GetDatabaseError,
   SpacetimeDBOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16) as any as S.Schema<GetDatabaseRequest>,
-  output: __S(17) as any as S.Schema<GetDatabaseResponse>,
+  input: GetDatabaseRequest,
+  output: GetDatabaseResponse,
   errors: [NotFound, UnknownSpacetimeDBError],
   protocol: SpacetimeDBProtocol,
   retry: Retry.Retry,
@@ -301,8 +501,8 @@ export const getDatabaseIdentity: API.OperationMethod<
   GetDatabaseIdentityError,
   SpacetimeDBOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18) as any as S.Schema<GetDatabaseIdentityRequest>,
-  output: __S(19) as any as S.Schema<GetDatabaseIdentityResponse>,
+  input: GetDatabaseIdentityRequest,
+  output: GetDatabaseIdentityResponse,
   errors: [NotFound, UnknownSpacetimeDBError],
   protocol: SpacetimeDBProtocol,
   retry: Retry.Retry,
@@ -316,8 +516,8 @@ export const getDatabaseLogs: API.OperationMethod<
   GetDatabaseLogsError,
   SpacetimeDBOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20) as any as S.Schema<GetDatabaseLogsRequest>,
-  output: __S(21) as any as S.Schema<GetDatabaseLogsResponse>,
+  input: GetDatabaseLogsRequest,
+  output: GetDatabaseLogsResponse,
   errors: [NotFound, UnknownSpacetimeDBError],
   protocol: SpacetimeDBProtocol,
   retry: Retry.Retry,
@@ -331,8 +531,8 @@ export const getDatabaseNames: API.OperationMethod<
   GetDatabaseNamesError,
   SpacetimeDBOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22) as any as S.Schema<GetDatabaseNamesRequest>,
-  output: __S(24) as any as S.Schema<GetDatabaseNamesResponse>,
+  input: GetDatabaseNamesRequest,
+  output: GetDatabaseNamesResponse,
   errors: [NotFound, UnknownSpacetimeDBError],
   protocol: SpacetimeDBProtocol,
   retry: Retry.Retry,
@@ -346,8 +546,8 @@ export const getDatabaseSchema: API.OperationMethod<
   GetDatabaseSchemaError,
   SpacetimeDBOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25) as any as S.Schema<GetDatabaseSchemaRequest>,
-  output: __S(27) as any as S.Schema<GetDatabaseSchemaResponse>,
+  input: GetDatabaseSchemaRequest,
+  output: GetDatabaseSchemaResponse,
   errors: [NotFound, UnknownSpacetimeDBError],
   protocol: SpacetimeDBProtocol,
   retry: Retry.Retry,
@@ -361,8 +561,8 @@ export const getPublicKey: API.OperationMethod<
   GetPublicKeyError,
   SpacetimeDBOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28) as any as S.Schema<GetPublicKeyRequest>,
-  output: __S(21) as any as S.Schema<GetPublicKeyResponse>,
+  input: GetPublicKeyRequest,
+  output: GetPublicKeyResponse,
   errors: [UnknownSpacetimeDBError],
   protocol: SpacetimeDBProtocol,
   retry: Retry.Retry,
@@ -376,8 +576,8 @@ export const listIdentityDatabases: API.OperationMethod<
   ListIdentityDatabasesError,
   SpacetimeDBOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29) as any as S.Schema<ListIdentityDatabasesRequest>,
-  output: __S(30) as any as S.Schema<ListIdentityDatabasesResponse>,
+  input: ListIdentityDatabasesRequest,
+  output: ListIdentityDatabasesResponse,
   errors: [UnknownSpacetimeDBError],
   protocol: SpacetimeDBProtocol,
   retry: Retry.Retry,
@@ -387,8 +587,8 @@ export type PingError = SpacetimeDBOpError;
 /** No-op connectivity probe. Does nothing and returns no data. Clients can send requests to this endpoint to determine whether they are able to connect to SpacetimeDB. */
 export const ping: API.OperationMethod<PingRequest, PingResponse, PingError, SpacetimeDBOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(31) as any as S.Schema<PingRequest>,
-    output: __S(11) as any as S.Schema<PingResponse>,
+    input: PingRequest,
+    output: PingResponse,
     errors: [UnknownSpacetimeDBError],
     protocol: SpacetimeDBProtocol,
     retry: Retry.Retry,
@@ -402,8 +602,8 @@ export const publishDatabase: API.OperationMethod<
   PublishDatabaseError,
   SpacetimeDBOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32) as any as S.Schema<PublishDatabaseRequest>,
-  output: __S(34) as any as S.Schema<PublishDatabaseResponse>,
+  input: PublishDatabaseRequest,
+  output: PublishDatabaseResponse,
   errors: [UnknownSpacetimeDBError],
   protocol: SpacetimeDBProtocol,
   retry: Retry.Retry,
@@ -417,8 +617,8 @@ export const setDatabaseNames: API.OperationMethod<
   SetDatabaseNamesError,
   SpacetimeDBOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35) as any as S.Schema<SetDatabaseNamesRequest>,
-  output: __S(36) as any as S.Schema<SetDatabaseNamesResponse>,
+  input: SetDatabaseNamesRequest,
+  output: SetDatabaseNamesResponse,
   errors: [UnknownSpacetimeDBError],
   protocol: SpacetimeDBProtocol,
   retry: Retry.Retry,
@@ -432,8 +632,8 @@ export const updateDatabase: API.OperationMethod<
   UpdateDatabaseError,
   SpacetimeDBOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37) as any as S.Schema<UpdateDatabaseRequest>,
-  output: __S(39) as any as S.Schema<UpdateDatabaseResponse>,
+  input: UpdateDatabaseRequest,
+  output: UpdateDatabaseResponse,
   errors: [UnknownSpacetimeDBError],
   protocol: SpacetimeDBProtocol,
   retry: Retry.Retry,
@@ -447,8 +647,8 @@ export const verifyIdentity: API.OperationMethod<
   VerifyIdentityError,
   SpacetimeDBOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40) as any as S.Schema<VerifyIdentityRequest>,
-  output: __S(11) as any as S.Schema<VerifyIdentityResponse>,
+  input: VerifyIdentityRequest,
+  output: VerifyIdentityResponse,
   errors: [BadRequest, UnknownSpacetimeDBError],
   protocol: SpacetimeDBProtocol,
   retry: Retry.Retry,
@@ -483,7 +683,7 @@ function __c0(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          Success: __S(1),
+          Success: AddDatabaseNameResponseSuccess,
         }),
       ).annotate({ identifier: "AddDatabaseNameResponse" });
     case 3:
@@ -493,7 +693,7 @@ function __c0(j: number): any {
         S.Struct({
           name_or_identity: S.String.pipe(T.Label()),
           reducer: S.String.pipe(T.Label()),
-          body: __S(3).pipe(T.HttpBody()),
+          body: CallReducerRequestBodyList.pipe(T.HttpBody()),
         }).pipe(
           T.Http({
             method: "POST",
@@ -565,15 +765,15 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           schema: S.Unknown,
-          rows: __S(3),
+          rows: ExecuteSqlResponseBodyItemRowsList,
         }),
       ).annotate({
         identifier: "ExecuteSqlResponseBodyItem",
       });
     case 6:
-      return S.Array(__S(13));
+      return S.Array(ExecuteSqlResponseBodyItem);
     case 7:
-      return S.suspend(() => __S(14).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => ExecuteSqlResponseBodyList.pipe(T.RawResponseRoot())).annotate({
         identifier: "ExecuteSqlResponse",
       });
   }
@@ -591,7 +791,7 @@ function __c2(j: number): any {
         S.Struct({
           database_identity: S.String,
           owner_identity: S.String,
-          host_type: S.String,
+          host_type: GetDatabaseResponseHostType,
           initial_program: S.String,
         }),
       ).annotate({ identifier: "GetDatabaseResponse" });
@@ -636,7 +836,7 @@ function __c3(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          names: __S(23),
+          names: GetDatabaseNamesResponseNamesList,
         }),
       ).annotate({ identifier: "GetDatabaseNamesResponse" });
     case 1:
@@ -651,7 +851,7 @@ function __c3(j: number): any {
     case 2:
       return S.Record(S.String, S.Unknown);
     case 3:
-      return S.suspend(() => __S(26).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => GetDatabaseSchemaResponseBodyMap.pipe(T.RawResponseRoot())).annotate({
         identifier: "GetDatabaseSchemaResponse",
       });
     case 4:
@@ -669,7 +869,7 @@ function __c3(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          identities: __S(23),
+          identities: ListIdentityDatabasesResponseIdentitiesList,
         }),
       ).annotate({
         identifier: "ListIdentityDatabasesResponse",
@@ -699,7 +899,7 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           database_identity: S.String,
-          op: S.String,
+          op: PublishDatabaseResponseSuccessOp,
         }),
       ).annotate({
         identifier: "PublishDatabaseResponseSuccess",
@@ -707,14 +907,14 @@ function __c4(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          Success: __S(33),
+          Success: PublishDatabaseResponseSuccess,
         }),
       ).annotate({ identifier: "PublishDatabaseResponse" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           name_or_identity: S.String.pipe(T.Label()),
-          body: __S(23).pipe(T.HttpBody()),
+          body: SetDatabaseNamesRequestBodyList.pipe(T.HttpBody()),
         }).pipe(T.Http({ method: "PUT", uri: "/v1/database/{name_or_identity}/names", code: 200 })),
       ).annotate({ identifier: "SetDatabaseNamesRequest" });
     case 4:
@@ -743,7 +943,7 @@ function __c4(j: number): any {
         S.Struct({
           domain: S.optional(S.NullOr(S.String)),
           database_identity: S.String,
-          op: S.String,
+          op: UpdateDatabaseResponseSuccessOp,
         }),
       ).annotate({
         identifier: "UpdateDatabaseResponseSuccess",
@@ -751,7 +951,7 @@ function __c4(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          Success: __S(38),
+          Success: UpdateDatabaseResponseSuccess,
         }),
       ).annotate({ identifier: "UpdateDatabaseResponse" });
   }
@@ -764,26 +964,5 @@ function __c5(j: number): any {
           identity: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/v1/identity/{identity}/verify", code: 200 })),
       ).annotate({ identifier: "VerifyIdentityRequest" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
   }
 }

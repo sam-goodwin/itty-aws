@@ -6,18 +6,26 @@ import { UnknownAzureError } from "../errors.ts";
 import { AzureProtocol, type AzureOpError, type AzureOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { AzureOpError, AzureOpContext };
 
 /** resource tags. */
 export type AccountsCreateAndUpdateRequestTagsMap = { [key: string]: string | undefined };
+const AccountsCreateAndUpdateRequestTagsMap = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<AccountsCreateAndUpdateRequestTagsMap>;
+
 /** Property bag from billing account */
 export interface AccountsCreateAndUpdateRequestProperties {
   /** Customer owned application ID */
   appId: string;
 }
+const AccountsCreateAndUpdateRequestProperties = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<AccountsCreateAndUpdateRequestProperties>;
+
 export interface AccountsCreateAndUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -32,20 +40,32 @@ export interface AccountsCreateAndUpdateRequest {
   /** Property bag from billing account */
   properties: AccountsCreateAndUpdateRequestProperties;
 }
+const AccountsCreateAndUpdateRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<AccountsCreateAndUpdateRequest>;
+
 /** resource tags. */
 export type AccountsCreateAndUpdateResponseTagsMap = { [key: string]: string | undefined };
+const AccountsCreateAndUpdateResponseTagsMap =
+  AccountsCreateAndUpdateRequestTagsMap as any as S.Schema<AccountsCreateAndUpdateResponseTagsMap>;
+
 /** The type of identity that created the resource. */
 export type AccountsCreateAndUpdateResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
+const AccountsCreateAndUpdateResponseSystemDataCreatedByType = S.String;
+
 /** The type of identity that last modified the resource. */
 export type AccountsCreateAndUpdateResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
+const AccountsCreateAndUpdateResponseSystemDataLastModifiedByType = S.String;
+
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface AccountsCreateAndUpdateResponseSystemData {
   /** The type of identity that created the resource. */
@@ -57,11 +77,18 @@ export interface AccountsCreateAndUpdateResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const AccountsCreateAndUpdateResponseSystemData = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<AccountsCreateAndUpdateResponseSystemData>;
+
 /** Provisioning state. */
 export type AccountsCreateAndUpdateResponsePropertiesProvisioningState =
   | "Succeeded"
   | "Failed"
   | "Canceled";
+const AccountsCreateAndUpdateResponsePropertiesProvisioningState = S.String;
+
 /** Property bag from billing account */
 export interface AccountsCreateAndUpdateResponseProperties {
   /** Provisioning state. */
@@ -71,6 +98,11 @@ export interface AccountsCreateAndUpdateResponseProperties {
   /** Billing Plan Id */
   billingPlanId?: string;
 }
+const AccountsCreateAndUpdateResponseProperties = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<AccountsCreateAndUpdateResponseProperties>;
+
 export interface AccountsCreateAndUpdateResponse {
   /** Azure resource ID. */
   id?: string;
@@ -87,6 +119,11 @@ export interface AccountsCreateAndUpdateResponse {
   /** Property bag from billing account */
   properties: AccountsCreateAndUpdateResponseProperties;
 }
+const AccountsCreateAndUpdateResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<AccountsCreateAndUpdateResponse>;
+
 export interface DeleteAccountRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -95,7 +132,14 @@ export interface DeleteAccountRequest {
   /** The name of the resource. */
   resourceName: string;
 }
+const DeleteAccountRequest = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<DeleteAccountRequest>;
+
 export interface DeleteAccountResponse {}
+const DeleteAccountResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<DeleteAccountResponse>;
+
 export interface GetAccountRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -104,8 +148,13 @@ export interface GetAccountRequest {
   /** The name of the resource. */
   resourceName: string;
 }
+const GetAccountRequest = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<GetAccountRequest>;
+
 /** resource tags. */
 export type GetAccountResponseTagsMap = { [key: string]: string | undefined };
+const GetAccountResponseTagsMap =
+  AccountsCreateAndUpdateRequestTagsMap as any as S.Schema<GetAccountResponseTagsMap>;
+
 /** The type of identity that created the resource. */
 export type GetAccountResponseSystemDataCreatedByType =
   | "User"
@@ -129,6 +178,9 @@ export interface GetAccountResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const GetAccountResponseSystemData =
+  AccountsCreateAndUpdateResponseSystemData as any as S.Schema<GetAccountResponseSystemData>;
+
 /** Provisioning state. */
 export type GetAccountResponsePropertiesProvisioningState = "Succeeded" | "Failed" | "Canceled";
 /** Property bag from billing account */
@@ -140,6 +192,9 @@ export interface GetAccountResponseProperties {
   /** Billing Plan Id */
   billingPlanId?: string;
 }
+const GetAccountResponseProperties =
+  AccountsCreateAndUpdateResponseProperties as any as S.Schema<GetAccountResponseProperties>;
+
 export interface GetAccountResponse {
   /** Azure resource ID. */
   id?: string;
@@ -156,14 +211,24 @@ export interface GetAccountResponse {
   /** Property bag from billing account */
   properties: GetAccountResponseProperties;
 }
+const GetAccountResponse = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<GetAccountResponse>;
+
 export interface ListAccountByResourceGroupRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
+const ListAccountByResourceGroupRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<ListAccountByResourceGroupRequest>;
+
 /** resource tags. */
 export type AccountResourceTagsMap = { [key: string]: string | undefined };
+const AccountResourceTagsMap =
+  AccountsCreateAndUpdateRequestTagsMap as any as S.Schema<AccountResourceTagsMap>;
+
 /** The type of identity that created the resource. */
 export type AccountResourceSystemDataCreatedByType =
   | "User"
@@ -187,6 +252,9 @@ export interface AccountResourceSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const AccountResourceSystemData =
+  AccountsCreateAndUpdateResponseSystemData as any as S.Schema<AccountResourceSystemData>;
+
 /** Provisioning state. */
 export type AccountResourcePropertiesProvisioningState = "Succeeded" | "Failed" | "Canceled";
 /** Property bag from billing account */
@@ -198,6 +266,9 @@ export interface AccountResourceProperties {
   /** Billing Plan Id */
   billingPlanId?: string;
 }
+const AccountResourceProperties =
+  AccountsCreateAndUpdateResponseProperties as any as S.Schema<AccountResourceProperties>;
+
 /** Account details */
 export interface AccountResource {
   /** Azure resource ID. */
@@ -215,8 +286,15 @@ export interface AccountResource {
   /** Property bag from billing account */
   properties: AccountResourceProperties;
 }
+const AccountResource = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<AccountResource>;
+
 /** The list of recommendations. */
 export type AccountResourceListValueList = Array<AccountResource>;
+const AccountResourceListValueList = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<AccountResourceListValueList>;
+
 /** The list of accounts. */
 export interface AccountResourceList {
   /** The link to the next page of items */
@@ -224,11 +302,23 @@ export interface AccountResourceList {
   /** The list of recommendations. */
   value?: AccountResourceListValueList;
 }
+const AccountResourceList = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<AccountResourceList>;
+
 export interface ListAccountBySubscriptionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
 }
+const ListAccountBySubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<ListAccountBySubscriptionRequest>;
+
 export interface ListOperationsRequest {}
+const ListOperationsRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<ListOperationsRequest>;
+
 /** Localized display information for this particular operation. */
 export interface OperationDisplay {
   /** The localized friendly form of the resource provider name, e.g. "Microsoft Monitoring Insights" or "Microsoft Compute". */
@@ -240,10 +330,16 @@ export interface OperationDisplay {
   /** The short, localized friendly description of the operation; suitable for tool tips and detailed views. */
   description?: string;
 }
+const OperationDisplay = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<OperationDisplay>;
+
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
 export type OperationOrigin = "user" | "system" | "user,system";
+const OperationOrigin = S.String;
+
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
 export type OperationActionType = "Internal";
+const OperationActionType = S.String;
+
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
 export interface Operation {
   /** The name of the operation, as per Resource-Based Access Control (RBAC). Examples: "Microsoft.Compute/virtualMachines/write", "Microsoft.Compute/virtualMachines/capture/action" */
@@ -257,16 +353,31 @@ export interface Operation {
   /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
   actionType?: OperationActionType;
 }
+const Operation = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<Operation>;
+
 /** List of operations supported by the resource provider */
 export type ListOperationsResponseValueList = Array<Operation>;
+const ListOperationsResponseValueList = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<ListOperationsResponseValueList>;
+
 export interface ListOperationsResponse {
   /** List of operations supported by the resource provider */
   value?: ListOperationsResponseValueList;
   /** URL to get the next set of operation list results (if there are any). */
   nextLink?: string;
 }
+const ListOperationsResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<ListOperationsResponse>;
+
 /** List of key value pairs that describe the resource. This will overwrite the existing tags. */
 export type UpdateAccountRequestTagsMap = { [key: string]: string | undefined };
+const UpdateAccountRequestTagsMap =
+  AccountsCreateAndUpdateRequestTagsMap as any as S.Schema<UpdateAccountRequestTagsMap>;
+
 export interface UpdateAccountRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -277,8 +388,13 @@ export interface UpdateAccountRequest {
   /** List of key value pairs that describe the resource. This will overwrite the existing tags. */
   tags?: UpdateAccountRequestTagsMap;
 }
+const UpdateAccountRequest = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<UpdateAccountRequest>;
+
 /** resource tags. */
 export type UpdateAccountResponseTagsMap = { [key: string]: string | undefined };
+const UpdateAccountResponseTagsMap =
+  AccountsCreateAndUpdateRequestTagsMap as any as S.Schema<UpdateAccountResponseTagsMap>;
+
 /** The type of identity that created the resource. */
 export type UpdateAccountResponseSystemDataCreatedByType =
   | "User"
@@ -302,6 +418,9 @@ export interface UpdateAccountResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const UpdateAccountResponseSystemData =
+  AccountsCreateAndUpdateResponseSystemData as any as S.Schema<UpdateAccountResponseSystemData>;
+
 /** Provisioning state. */
 export type UpdateAccountResponsePropertiesProvisioningState = "Succeeded" | "Failed" | "Canceled";
 /** Property bag from billing account */
@@ -313,6 +432,9 @@ export interface UpdateAccountResponseProperties {
   /** Billing Plan Id */
   billingPlanId?: string;
 }
+const UpdateAccountResponseProperties =
+  AccountsCreateAndUpdateResponseProperties as any as S.Schema<UpdateAccountResponseProperties>;
+
 export interface UpdateAccountResponse {
   /** Azure resource ID. */
   id?: string;
@@ -329,6 +451,11 @@ export interface UpdateAccountResponse {
   /** Property bag from billing account */
   properties: UpdateAccountResponseProperties;
 }
+const UpdateAccountResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<UpdateAccountResponse>;
+
 export type AccountsCreateAndUpdateError = AzureOpError;
 /** Create or update account resource. */
 export const AccountsCreateAndUpdate: API.OperationMethod<
@@ -337,8 +464,8 @@ export const AccountsCreateAndUpdate: API.OperationMethod<
   AccountsCreateAndUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2) as any as S.Schema<AccountsCreateAndUpdateRequest>,
-  output: __S(5) as any as S.Schema<AccountsCreateAndUpdateResponse>,
+  input: AccountsCreateAndUpdateRequest,
+  output: AccountsCreateAndUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -352,8 +479,8 @@ export const DeleteAccount: API.OperationMethod<
   DeleteAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6) as any as S.Schema<DeleteAccountRequest>,
-  output: __S(7) as any as S.Schema<DeleteAccountResponse>,
+  input: DeleteAccountRequest,
+  output: DeleteAccountResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -367,8 +494,8 @@ export const GetAccount: API.OperationMethod<
   GetAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8) as any as S.Schema<GetAccountRequest>,
-  output: __S(9) as any as S.Schema<GetAccountResponse>,
+  input: GetAccountRequest,
+  output: GetAccountResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -382,8 +509,8 @@ export const ListAccountByResourceGroup: API.OperationMethod<
   ListAccountByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10) as any as S.Schema<ListAccountByResourceGroupRequest>,
-  output: __S(13) as any as S.Schema<AccountResourceList>,
+  input: ListAccountByResourceGroupRequest,
+  output: AccountResourceList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -397,8 +524,8 @@ export const ListAccountBySubscription: API.OperationMethod<
   ListAccountBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14) as any as S.Schema<ListAccountBySubscriptionRequest>,
-  output: __S(13) as any as S.Schema<AccountResourceList>,
+  input: ListAccountBySubscriptionRequest,
+  output: AccountResourceList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -412,8 +539,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15) as any as S.Schema<ListOperationsRequest>,
-  output: __S(19) as any as S.Schema<ListOperationsResponse>,
+  input: ListOperationsRequest,
+  output: ListOperationsResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -427,8 +554,8 @@ export const UpdateAccount: API.OperationMethod<
   UpdateAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20) as any as S.Schema<UpdateAccountRequest>,
-  output: __S(21) as any as S.Schema<UpdateAccountResponse>,
+  input: UpdateAccountRequest,
+  output: UpdateAccountResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -454,8 +581,8 @@ function __c0(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
           location: S.optional(S.String),
-          tags: S.optional(__S(0)),
-          properties: __S(1),
+          tags: S.optional(AccountsCreateAndUpdateRequestTagsMap),
+          properties: AccountsCreateAndUpdateRequestProperties,
         }).pipe(
           T.Http({
             method: "PUT",
@@ -470,9 +597,11 @@ function __c0(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          createdByType: S.optional(S.String),
+          createdByType: S.optional(AccountsCreateAndUpdateResponseSystemDataCreatedByType),
           createdAt: S.optional(S.String),
-          lastModifiedByType: S.optional(S.String),
+          lastModifiedByType: S.optional(
+            AccountsCreateAndUpdateResponseSystemDataLastModifiedByType,
+          ),
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({
@@ -481,7 +610,7 @@ function __c0(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          provisioningState: S.optional(S.String),
+          provisioningState: S.optional(AccountsCreateAndUpdateResponsePropertiesProvisioningState),
           appId: S.String,
           billingPlanId: S.optional(S.String),
         }),
@@ -495,9 +624,9 @@ function __c0(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           location: S.optional(S.String),
-          tags: S.optional(__S(0)),
-          systemData: S.optional(__S(3)),
-          properties: __S(4),
+          tags: S.optional(AccountsCreateAndUpdateResponseTagsMap),
+          systemData: S.optional(AccountsCreateAndUpdateResponseSystemData),
+          properties: AccountsCreateAndUpdateResponseProperties,
         }),
       ).annotate({
         identifier: "AccountsCreateAndUpdateResponse",
@@ -547,9 +676,9 @@ function __c1(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           location: S.optional(S.String),
-          tags: S.optional(__S(0)),
-          systemData: S.optional(__S(3)),
-          properties: __S(4),
+          tags: S.optional(GetAccountResponseTagsMap),
+          systemData: S.optional(GetAccountResponseSystemData),
+          properties: GetAccountResponseProperties,
         }),
       ).annotate({ identifier: "GetAccountResponse" });
     case 2:
@@ -575,18 +704,18 @@ function __c1(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           location: S.optional(S.String),
-          tags: S.optional(__S(0)),
-          systemData: S.optional(__S(3)),
-          properties: __S(4),
+          tags: S.optional(AccountResourceTagsMap),
+          systemData: S.optional(AccountResourceSystemData),
+          properties: AccountResourceProperties,
         }),
       ).annotate({ identifier: "AccountResource" });
     case 4:
-      return S.Array(__S(11));
+      return S.Array(AccountResource);
     case 5:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(__S(12)),
+          value: S.optional(AccountResourceListValueList),
         }),
       ).annotate({ identifier: "AccountResourceList" });
     case 6:
@@ -633,17 +762,17 @@ function __c2(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           isDataAction: S.optional(S.Boolean),
-          display: S.optional(__S(16)),
-          origin: S.optional(S.String),
-          actionType: S.optional(S.String),
+          display: S.optional(OperationDisplay),
+          origin: S.optional(OperationOrigin),
+          actionType: S.optional(OperationActionType),
         }),
       ).annotate({ identifier: "Operation" });
     case 2:
-      return S.Array(__S(17));
+      return S.Array(Operation);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(18)),
+          value: S.optional(ListOperationsResponseValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
@@ -653,7 +782,7 @@ function __c2(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(0)),
+          tags: S.optional(UpdateAccountRequestTagsMap),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -670,25 +799,10 @@ function __c2(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           location: S.optional(S.String),
-          tags: S.optional(__S(0)),
-          systemData: S.optional(__S(3)),
-          properties: __S(4),
+          tags: S.optional(UpdateAccountResponseTagsMap),
+          systemData: S.optional(UpdateAccountResponseSystemData),
+          properties: UpdateAccountResponseProperties,
         }),
       ).annotate({ identifier: "UpdateAccountResponse" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
   }
 }

@@ -6,19 +6,34 @@ import { UnknownAxiomError } from "../errors.ts";
 import { AxiomProtocol, type AxiomOpError, type AxiomOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { AxiomOpError, AxiomOpContext };
 
 export type QueryAplRequestFormat = "legacy" | "tabular" | "tabular-rows";
+const QueryAplRequestFormat = S.String;
+
 export interface QueryAplRequestDefaultOrderItem {
   desc?: boolean;
   field?: string;
 }
+const QueryAplRequestDefaultOrderItem = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<QueryAplRequestDefaultOrderItem>;
+
 /** The default order to use when no order is specified in the query. */
 export type QueryAplRequestDefaultOrderList = Array<QueryAplRequestDefaultOrderItem>;
+const QueryAplRequestDefaultOrderList = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<QueryAplRequestDefaultOrderList>;
+
 export type QueryAplRequestLibrariesList = Array<string>;
+const QueryAplRequestLibrariesList = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<QueryAplRequestLibrariesList>;
+
 export interface QueryOptions {
   against?: string;
   againstStart?: string;
@@ -48,8 +63,15 @@ export interface QueryOptions {
   timeSeriesVariant?: string;
   timeSeriesView?: string;
 }
+const QueryOptions = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<QueryOptions>;
+
 /** Variables is an optional set of additional variables that are inserted into the APL */
 export type QueryAplRequestVariablesMap = { [key: string]: unknown | undefined };
+const QueryAplRequestVariablesMap = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<QueryAplRequestVariablesMap>;
+
 export interface QueryAplRequest {
   format: QueryAplRequestFormat | (string & {});
   nocache?: boolean;
@@ -86,7 +108,11 @@ export interface QueryAplRequest {
   /** Variables is an optional set of additional variables that are inserted into the APL */
   variables?: QueryAplRequestVariablesMap;
 }
+const QueryAplRequest = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<QueryAplRequest>;
+
 export type QueryAplResponse = unknown;
+const QueryAplResponse = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<QueryAplResponse>;
+
 export type QueryAplError = AxiomOpError;
 export const queryApl: API.OperationMethod<
   QueryAplRequest,
@@ -94,8 +120,8 @@ export const queryApl: API.OperationMethod<
   QueryAplError,
   AxiomOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5) as any as S.Schema<QueryAplRequest>,
-  output: __S(6) as any as S.Schema<QueryAplResponse>,
+  input: QueryAplRequest,
+  output: QueryAplResponse,
   errors: [UnknownAxiomError],
   protocol: AxiomProtocol,
   retry: Retry.Retry,
@@ -114,7 +140,7 @@ function __c0(j: number): any {
         identifier: "QueryAplRequestDefaultOrderItem",
       });
     case 1:
-      return S.Array(__S(0));
+      return S.Array(QueryAplRequestDefaultOrderItem);
     case 2:
       return S.Array(S.String);
     case 3:
@@ -154,7 +180,7 @@ function __c0(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          format: S.String.pipe(T.Query()),
+          format: QueryAplRequestFormat.pipe(T.Query()),
           nocache: S.optional(S.Boolean.pipe(T.Query())),
           saveAsKind: S.optional(S.String.pipe(T.Query())),
           id: S.optional(S.String.pipe(T.Query())),
@@ -165,31 +191,20 @@ function __c0(j: number): any {
           apl: S.String,
           cursor: S.optional(S.String),
           defaultLimit: S.optional(S.Number),
-          defaultOrder: S.optional(__S(1)),
+          defaultOrder: S.optional(QueryAplRequestDefaultOrderList),
           endTime: S.optional(S.String),
           includeCursor: S.optional(S.Boolean),
           includeCursorField: S.optional(S.Boolean),
-          libraries: S.optional(__S(2)),
+          libraries: S.optional(QueryAplRequestLibrariesList),
           maxBinAutoGroups: S.optional(S.Number),
-          queryOptions: S.optional(__S(3)),
+          queryOptions: S.optional(QueryOptions),
           startTime: S.optional(S.String),
-          variables: S.optional(__S(4)),
+          variables: S.optional(QueryAplRequestVariablesMap),
         }).pipe(T.Http({ method: "POST", uri: "/v1/datasets/_apl", code: 200 })),
       ).annotate({ identifier: "QueryAplRequest" });
     case 6:
       return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
         identifier: "QueryAplResponse",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
   }
 }

@@ -7,8 +7,6 @@ import { paginateToken } from "../pagination.ts";
 import { IcebergProtocol, type IcebergOpError, type IcebergOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { IcebergOpError, IcebergOpContext };
 
@@ -269,9 +267,16 @@ export class UnsupportedOperationException
 export type CancelPlanningRequestXIcebergAccessDelegationItem =
   | "vended-credentials"
   | "remote-signing";
+const CancelPlanningRequestXIcebergAccessDelegationItem = S.String;
+
 export type CancelPlanningRequestXIcebergAccessDelegationList = Array<
   CancelPlanningRequestXIcebergAccessDelegationItem | (string & {})
 >;
+const CancelPlanningRequestXIcebergAccessDelegationList = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<CancelPlanningRequestXIcebergAccessDelegationList>;
+
 export interface CancelPlanningRequest {
   /** A namespace identifier as a single string. Multipart namespace parts must be separated by the namespace separator as indicated via the /config override `namespace-separator`, which defaults to the unit separator `0x1F` byte (url encoded `%1F`). To be compatible with older clients, servers must use both the advertised separator and `0x1F` as valid separators when decoding namespaces. The `namespace-separator` should be provided in a url encoded form. */
   namespace: string;
@@ -284,17 +289,38 @@ export interface CancelPlanningRequest {
   /** Optional client-provided idempotency key for safe request retries. When present, the server ensures no additional effects for requests that carry the same Idempotency-Key. If a prior request with this key has been finalized, the server returns an equivalent final response without re-running the operation. The response body may reflect a newer state of the catalog than existed at the time of the commit. Finalization rules: - Finalize & replay: 200, 201, 204, and deterministic terminal 4xx (including 409 such as AlreadyExists, NamespaceNotEmpty, etc.) - Do not finalize (not stored/replayed): 5xx Key Requirements: - Key format: UUIDv7 in string form (RFC 9562). - The idempotency key must be globally unique (no reuse across different operations). - Catalogs SHOULD NOT expire keys before the end of the advertised token lifetime. - If Idempotency-Key is used, clients MUST reuse the same key when retrying the same logical operation and MUST generate a new key for a different operation. */
   idempotencyKey?: string;
 }
+const CancelPlanningRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<CancelPlanningRequest>;
+
 export interface CancelPlanningResponse {}
+const CancelPlanningResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<CancelPlanningResponse>;
+
 /** Reference to one or more levels of a namespace */
 export type Namespace = Array<string>;
+const Namespace = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<Namespace>;
+
 export interface TableIdentifier {
   namespace: Namespace;
   name: string;
 }
+const TableIdentifier = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<TableIdentifier>;
+
 export interface TableRequirement {
   type: string;
 }
+const TableRequirement = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<TableRequirement>;
+
 export type CommitTableRequestInputRequirementsList = Array<TableRequirement>;
+const CommitTableRequestInputRequirementsList = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<CommitTableRequestInputRequirementsList>;
+
 /** Assigning a UUID to a table/view should only be done when creating the table/view. It is not safe to re-assign the UUID if a table/view already has a UUID assigned */
 export interface AssignUUIDUpdate {
   action: string;
@@ -324,7 +350,11 @@ export interface MapType {
   value_required: boolean;
 }
 export type Type = string | StructType | ListType | MapType;
+const Type = /*@__PURE__*/ S.Unknown as any as S.Schema<Type>;
+
 export type PrimitiveTypeValue = boolean | number | number | string;
+const PrimitiveTypeValue = /*@__PURE__*/ S.Unknown as any as S.Schema<PrimitiveTypeValue>;
+
 export interface StructField {
   id: number;
   name: string;
@@ -334,13 +364,27 @@ export interface StructField {
   initial_default?: PrimitiveTypeValue;
   write_default?: PrimitiveTypeValue;
 }
+const StructField = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<StructField>;
+
 export type SchemaInputFieldsList = Array<StructField>;
+const SchemaInputFieldsList = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<SchemaInputFieldsList>;
+
 export type SchemaInputIdentifierFieldIdsList = Array<number>;
+const SchemaInputIdentifierFieldIdsList = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<SchemaInputIdentifierFieldIdsList>;
+
 export interface SchemaInput {
   type: string;
   fields: SchemaInputFieldsList;
   identifier_field_ids?: SchemaInputIdentifierFieldIdsList;
 }
+const SchemaInput = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<SchemaInput>;
+
 export interface AddSchemaUpdateInput {
   action: string;
   schema: SchemaInput;
@@ -358,10 +402,19 @@ export interface PartitionField {
   name: string;
   transform: string;
 }
+const PartitionField = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<PartitionField>;
+
 export type PartitionSpecInputFieldsList = Array<PartitionField>;
+const PartitionSpecInputFieldsList = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<PartitionSpecInputFieldsList>;
+
 export interface PartitionSpecInput {
   fields: PartitionSpecInputFieldsList;
 }
+const PartitionSpecInput = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<PartitionSpecInput>;
+
 export interface AddPartitionSpecUpdateInput {
   action: string;
   spec: PartitionSpecInput;
@@ -372,17 +425,30 @@ export interface SetDefaultSpecUpdate {
   spec_id: number;
 }
 export type SortDirection = "asc" | "desc";
+const SortDirection = S.String;
+
 export type NullOrder = "nulls-first" | "nulls-last";
+const NullOrder = S.String;
+
 export interface SortField {
   source_id: number;
   transform: string;
   direction: SortDirection | (string & {});
   null_order: NullOrder | (string & {});
 }
+const SortField = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<SortField>;
+
 export type SortOrderInputFieldsList = Array<SortField>;
+const SortOrderInputFieldsList = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<SortOrderInputFieldsList>;
+
 export interface SortOrderInput {
   fields: SortOrderInputFieldsList;
 }
+const SortOrderInput = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<SortOrderInput>;
+
 export interface AddSortOrderUpdateInput {
   action: string;
   sort_order: SortOrderInput;
@@ -393,9 +459,13 @@ export interface SetDefaultSortOrderUpdate {
   sort_order_id: number;
 }
 export type SnapshotSummaryOperation = "append" | "replace" | "overwrite" | "delete";
+const SnapshotSummaryOperation = S.String;
+
 export interface SnapshotSummary {
   operation: SnapshotSummaryOperation | (string & {});
 }
+const SnapshotSummary = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<SnapshotSummary>;
+
 export interface Snapshot {
   snapshot_id: number;
   parent_snapshot_id?: number;
@@ -410,6 +480,8 @@ export interface Snapshot {
   summary: SnapshotSummary;
   schema_id?: number;
 }
+const Snapshot = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<Snapshot>;
+
 export interface AddSnapshotUpdate {
   action: string;
   snapshot: Snapshot;
@@ -438,17 +510,33 @@ export interface SetLocationUpdate {
   location: string;
 }
 export type SetPropertiesUpdateUpdatesMap = { [key: string]: string | undefined };
+const SetPropertiesUpdateUpdatesMap = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<SetPropertiesUpdateUpdatesMap>;
+
 export interface SetPropertiesUpdate {
   action: string;
   updates: SetPropertiesUpdateUpdatesMap;
 }
 export type RemovePropertiesUpdateRemovalsList = Array<string>;
+const RemovePropertiesUpdateRemovalsList = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<RemovePropertiesUpdateRemovalsList>;
+
 export interface RemovePropertiesUpdate {
   action: string;
   removals: RemovePropertiesUpdateRemovalsList;
 }
 export type BlobMetadataFieldsList = Array<number>;
+const BlobMetadataFieldsList =
+  SchemaInputIdentifierFieldIdsList as any as S.Schema<BlobMetadataFieldsList>;
+
 export type BlobMetadataPropertiesMap = { [key: string]: string | undefined };
+const BlobMetadataPropertiesMap =
+  SetPropertiesUpdateUpdatesMap as any as S.Schema<BlobMetadataPropertiesMap>;
+
 export interface BlobMetadata {
   type: string;
   snapshot_id: number;
@@ -456,7 +544,14 @@ export interface BlobMetadata {
   fields: BlobMetadataFieldsList;
   properties?: BlobMetadataPropertiesMap;
 }
+const BlobMetadata = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<BlobMetadata>;
+
 export type StatisticsFileBlobMetadataList = Array<BlobMetadata>;
+const StatisticsFileBlobMetadataList = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<StatisticsFileBlobMetadataList>;
+
 export interface StatisticsFile {
   snapshot_id: number;
   statistics_path: string;
@@ -464,6 +559,8 @@ export interface StatisticsFile {
   file_footer_size_in_bytes: number;
   blob_metadata: StatisticsFileBlobMetadataList;
 }
+const StatisticsFile = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<StatisticsFile>;
+
 export interface SetStatisticsUpdate {
   action: string;
   /** This optional field is **DEPRECATED for REMOVAL** since it contains redundant information. Clients should use the `statistics.snapshot-id` field instead. */
@@ -479,6 +576,11 @@ export interface PartitionStatisticsFile {
   statistics_path: string;
   file_size_in_bytes: number;
 }
+const PartitionStatisticsFile = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<PartitionStatisticsFile>;
+
 export interface SetPartitionStatisticsUpdate {
   action: string;
   partition_statistics: PartitionStatisticsFile;
@@ -495,12 +597,17 @@ export interface RemoveSchemasUpdate {
   schema_ids: RemoveSchemasUpdateSchemaIdsList;
 }
 export type EncryptedKeyPropertiesMap = { [key: string]: string | undefined };
+const EncryptedKeyPropertiesMap =
+  SetPropertiesUpdateUpdatesMap as any as S.Schema<EncryptedKeyPropertiesMap>;
+
 export interface EncryptedKey {
   key_id: string;
   encrypted_key_metadata: string;
   encrypted_by_id?: string;
   properties?: EncryptedKeyPropertiesMap;
 }
+const EncryptedKey = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<EncryptedKey>;
+
 export interface AddEncryptionKeyUpdate {
   action: string;
   encryption_key: EncryptedKey;
@@ -533,22 +640,52 @@ export type TableUpdateInput =
   | RemoveSchemasUpdate
   | AddEncryptionKeyUpdate
   | RemoveEncryptionKeyUpdate;
+const TableUpdateInput = /*@__PURE__*/ S.Unknown as any as S.Schema<TableUpdateInput>;
+
 export type CommitTableRequestInputUpdatesList = Array<TableUpdateInput>;
+const CommitTableRequestInputUpdatesList = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<CommitTableRequestInputUpdatesList>;
+
 export interface CommitTableRequestInput {
   /** Table identifier to update; must be present for CommitTransactionRequest */
   identifier?: TableIdentifier;
   requirements: CommitTableRequestInputRequirementsList;
   updates: CommitTableRequestInputUpdatesList;
 }
+const CommitTableRequestInput = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<CommitTableRequestInput>;
+
 export type CommitTransactionRequestTableChangesList = Array<CommitTableRequestInput>;
+const CommitTransactionRequestTableChangesList = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<CommitTransactionRequestTableChangesList>;
+
 export interface CommitTransactionRequest {
   /** Optional client-provided idempotency key for safe request retries. When present, the server ensures no additional effects for requests that carry the same Idempotency-Key. If a prior request with this key has been finalized, the server returns an equivalent final response without re-running the operation. The response body may reflect a newer state of the catalog than existed at the time of the commit. Finalization rules: - Finalize & replay: 200, 201, 204, and deterministic terminal 4xx (including 409 such as AlreadyExists, NamespaceNotEmpty, etc.) - Do not finalize (not stored/replayed): 5xx Key Requirements: - Key format: UUIDv7 in string form (RFC 9562). - The idempotency key must be globally unique (no reuse across different operations). - Catalogs SHOULD NOT expire keys before the end of the advertised token lifetime. - If Idempotency-Key is used, clients MUST reuse the same key when retrying the same logical operation and MUST generate a new key for a different operation. */
   idempotencyKey?: string;
   table_changes: CommitTransactionRequestTableChangesList;
 }
+const CommitTransactionRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<CommitTransactionRequest>;
+
 export interface CommitTransactionResponse {}
+const CommitTransactionResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<CommitTransactionResponse>;
+
 /** Configured string to string map of properties for the namespace */
 export type CreateNamespaceRequestPropertiesMap = { [key: string]: string | undefined };
+const CreateNamespaceRequestPropertiesMap =
+  SetPropertiesUpdateUpdatesMap as any as S.Schema<CreateNamespaceRequestPropertiesMap>;
+
 export interface CreateNamespaceRequest {
   /** Optional client-provided idempotency key for safe request retries. When present, the server ensures no additional effects for requests that carry the same Idempotency-Key. If a prior request with this key has been finalized, the server returns an equivalent final response without re-running the operation. The response body may reflect a newer state of the catalog than existed at the time of the commit. Finalization rules: - Finalize & replay: 200, 201, 204, and deterministic terminal 4xx (including 409 such as AlreadyExists, NamespaceNotEmpty, etc.) - Do not finalize (not stored/replayed): 5xx Key Requirements: - Key format: UUIDv7 in string form (RFC 9562). - The idempotency key must be globally unique (no reuse across different operations). - Catalogs SHOULD NOT expire keys before the end of the advertised token lifetime. - If Idempotency-Key is used, clients MUST reuse the same key when retrying the same logical operation and MUST generate a new key for a different operation. */
   idempotencyKey?: string;
@@ -556,20 +693,39 @@ export interface CreateNamespaceRequest {
   /** Configured string to string map of properties for the namespace */
   properties?: CreateNamespaceRequestPropertiesMap;
 }
+const CreateNamespaceRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<CreateNamespaceRequest>;
+
 /** Properties stored on the namespace, if supported by the server. */
 export type CreateNamespaceResponsePropertiesMap = { [key: string]: string | undefined };
+const CreateNamespaceResponsePropertiesMap =
+  SetPropertiesUpdateUpdatesMap as any as S.Schema<CreateNamespaceResponsePropertiesMap>;
+
 export interface CreateNamespaceResponse {
   namespace: Namespace;
   /** Properties stored on the namespace, if supported by the server. */
   properties?: CreateNamespaceResponsePropertiesMap;
 }
+const CreateNamespaceResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<CreateNamespaceResponse>;
+
 export type CreateTableRequestXIcebergAccessDelegationItem =
   | "vended-credentials"
   | "remote-signing";
 export type CreateTableRequestXIcebergAccessDelegationList = Array<
   CreateTableRequestXIcebergAccessDelegationItem | (string & {})
 >;
+const CreateTableRequestXIcebergAccessDelegationList =
+  CancelPlanningRequestXIcebergAccessDelegationList as any as S.Schema<CreateTableRequestXIcebergAccessDelegationList>;
+
 export type CreateTableRequestPropertiesMap = { [key: string]: string | undefined };
+const CreateTableRequestPropertiesMap =
+  SetPropertiesUpdateUpdatesMap as any as S.Schema<CreateTableRequestPropertiesMap>;
+
 export interface CreateTableRequest {
   /** A namespace identifier as a single string. Multipart namespace parts must be separated by the namespace separator as indicated via the /config override `namespace-separator`, which defaults to the unit separator `0x1F` byte (url encoded `%1F`). To be compatible with older clients, servers must use both the advertised separator and `0x1F` as valid separators when decoding namespaces. The `namespace-separator` should be provided in a url encoded form. */
   namespace: string;
@@ -585,31 +741,79 @@ export interface CreateTableRequest {
   stage_create?: boolean;
   properties?: CreateTableRequestPropertiesMap;
 }
+const CreateTableRequest = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<CreateTableRequest>;
+
 export type TableMetadataPropertiesMap = { [key: string]: string | undefined };
+const TableMetadataPropertiesMap =
+  SetPropertiesUpdateUpdatesMap as any as S.Schema<TableMetadataPropertiesMap>;
+
 export type SchemaFieldsList = Array<StructField>;
+const SchemaFieldsList = SchemaInputFieldsList as any as S.Schema<SchemaFieldsList>;
+
 export type SchemaIdentifierFieldIdsList = Array<number>;
+const SchemaIdentifierFieldIdsList =
+  SchemaInputIdentifierFieldIdsList as any as S.Schema<SchemaIdentifierFieldIdsList>;
+
 export interface Schema {
   type: string;
   fields: SchemaFieldsList;
   schema_id?: number;
   identifier_field_ids?: SchemaIdentifierFieldIdsList;
 }
+const Schema = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<Schema>;
+
 export type TableMetadataSchemasList = Array<Schema>;
+const TableMetadataSchemasList = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<TableMetadataSchemasList>;
+
 export type PartitionSpecFieldsList = Array<PartitionField>;
+const PartitionSpecFieldsList =
+  PartitionSpecInputFieldsList as any as S.Schema<PartitionSpecFieldsList>;
+
 export interface PartitionSpec {
   spec_id?: number;
   fields: PartitionSpecFieldsList;
 }
+const PartitionSpec = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<PartitionSpec>;
+
 export type TableMetadataPartitionSpecsList = Array<PartitionSpec>;
+const TableMetadataPartitionSpecsList = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<TableMetadataPartitionSpecsList>;
+
 export type SortOrderFieldsList = Array<SortField>;
+const SortOrderFieldsList = SortOrderInputFieldsList as any as S.Schema<SortOrderFieldsList>;
+
 export interface SortOrder {
   order_id: number;
   fields: SortOrderFieldsList;
 }
+const SortOrder = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<SortOrder>;
+
 export type TableMetadataSortOrdersList = Array<SortOrder>;
+const TableMetadataSortOrdersList = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<TableMetadataSortOrdersList>;
+
 export type TableMetadataEncryptionKeysList = Array<EncryptedKey>;
+const TableMetadataEncryptionKeysList = /*@__PURE__*/ __L.at(
+  __c5,
+  0,
+) as any as S.Schema<TableMetadataEncryptionKeysList>;
+
 export type TableMetadataSnapshotsList = Array<Snapshot>;
+const TableMetadataSnapshotsList = /*@__PURE__*/ __L.at(
+  __c5,
+  1,
+) as any as S.Schema<TableMetadataSnapshotsList>;
+
 export type SnapshotReferenceType = "tag" | "branch";
+const SnapshotReferenceType = S.String;
+
 export interface SnapshotReference {
   type: SnapshotReferenceType;
   snapshot_id: number;
@@ -617,19 +821,41 @@ export interface SnapshotReference {
   max_snapshot_age_ms?: number;
   min_snapshots_to_keep?: number;
 }
+const SnapshotReference = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<SnapshotReference>;
+
 export type SnapshotReferences = { [key: string]: SnapshotReference | undefined };
+const SnapshotReferences = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<SnapshotReferences>;
+
 export interface SnapshotLogItem {
   snapshot_id: number;
   timestamp_ms: number;
 }
+const SnapshotLogItem = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<SnapshotLogItem>;
+
 export type SnapshotLog = Array<SnapshotLogItem>;
+const SnapshotLog = /*@__PURE__*/ __L.at(__c5, 5) as any as S.Schema<SnapshotLog>;
+
 export interface MetadataLogItem {
   metadata_file: string;
   timestamp_ms: number;
 }
+const MetadataLogItem = /*@__PURE__*/ __L.at(__c5, 6) as any as S.Schema<MetadataLogItem>;
+
 export type MetadataLog = Array<MetadataLogItem>;
+const MetadataLog = /*@__PURE__*/ __L.at(__c5, 7) as any as S.Schema<MetadataLog>;
+
 export type TableMetadataStatisticsList = Array<StatisticsFile>;
+const TableMetadataStatisticsList = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<TableMetadataStatisticsList>;
+
 export type TableMetadataPartitionStatisticsList = Array<PartitionStatisticsFile>;
+const TableMetadataPartitionStatisticsList = /*@__PURE__*/ __L.at(
+  __c6,
+  1,
+) as any as S.Schema<TableMetadataPartitionStatisticsList>;
+
 export interface TableMetadata {
   format_version: number;
   table_uuid: string;
@@ -656,19 +882,42 @@ export interface TableMetadata {
   statistics?: TableMetadataStatisticsList;
   partition_statistics?: TableMetadataPartitionStatisticsList;
 }
+const TableMetadata = /*@__PURE__*/ __L.at(__c6, 2) as any as S.Schema<TableMetadata>;
+
 export type LoadTableResultConfigMap = { [key: string]: string | undefined };
+const LoadTableResultConfigMap =
+  SetPropertiesUpdateUpdatesMap as any as S.Schema<LoadTableResultConfigMap>;
+
 export type StorageCredentialConfigMap = { [key: string]: string | undefined };
+const StorageCredentialConfigMap =
+  SetPropertiesUpdateUpdatesMap as any as S.Schema<StorageCredentialConfigMap>;
+
 export interface StorageCredential {
   /** Indicates a storage location prefix where the credential is relevant. Clients should choose the most specific prefix (by selecting the longest prefix) if several credentials of the same type are available. */
   prefix: string;
   config: StorageCredentialConfigMap;
 }
+const StorageCredential = /*@__PURE__*/ __L.at(__c6, 3) as any as S.Schema<StorageCredential>;
+
 export type LoadTableResultStorageCredentialsList = Array<StorageCredential>;
+const LoadTableResultStorageCredentialsList = /*@__PURE__*/ __L.at(
+  __c6,
+  4,
+) as any as S.Schema<LoadTableResultStorageCredentialsList>;
+
 /** Static key-value pairs the signer client MUST pass through unchanged in the `properties` field of every `RemoteSignRequest` sent to the signing endpoint. */
 export type RemoteSigningConfigPropertiesMap = { [key: string]: string | undefined };
+const RemoteSigningConfigPropertiesMap =
+  SetPropertiesUpdateUpdatesMap as any as S.Schema<RemoteSigningConfigPropertiesMap>;
+
 export type MultiValuedMapValueList = Array<string>;
+const MultiValuedMapValueList =
+  RemovePropertiesUpdateRemovalsList as any as S.Schema<MultiValuedMapValueList>;
+
 /** A map of string keys where each key can map to multiple string values. */
 export type MultiValuedMap = { [key: string]: MultiValuedMapValueList | undefined };
+const MultiValuedMap = /*@__PURE__*/ __L.at(__c6, 5) as any as S.Schema<MultiValuedMap>;
+
 /** Configuration for the remote signer client. */
 export interface RemoteSigningConfig {
   /** Static key-value pairs the signer client MUST pass through unchanged in the `properties` field of every `RemoteSignRequest` sent to the signing endpoint. */
@@ -676,13 +925,22 @@ export interface RemoteSigningConfig {
   /** Static headers the signer client MUST include unchanged in every request to the signing endpoint. */
   headers?: MultiValuedMap;
 }
+const RemoteSigningConfig = /*@__PURE__*/ __L.at(__c6, 6) as any as S.Schema<RemoteSigningConfig>;
+
 export interface Action {
   action: string;
   /** Field ID of the column being projected. */
   field_id: number;
 }
+const Action = /*@__PURE__*/ __L.at(__c6, 7) as any as S.Schema<Action>;
+
 /** A list of columns that require specific actions to be applied when reading. A server must not return an action for a column whose type is not listed in that action's "Applicable to" set. If absent or empty, no required actions apply; columns not listed are not subject to any required action. 1. For each column listed, the reader must apply the specified action before returning values for that column. 2. The reader must replace all output references to the column with the result of the action, presenting the result under the original field-id. For example, if the action for field-id `9` is mask-alphanum, the reader must return the masked value as field-id `9` in the query output. 3. A server must not return more than one projection for the same field-id in required-column-projections. If a duplicate field-id appears, the reader must fail the query. 4. A server must not return a projection that targets a map's key field-id; a reader that receives one must fail the query. Applying an action to keys can produce duplicate or null keys, which readers silently coalesce or reject, causing data loss. 5. A reader must enforce projections on the columns it is actually reading. Projections referencing columns that are not being read do not apply. 6. A server must not return projections on both a nested-typed field (struct, list, or map) and any field-id nested within it at any depth. A reader that receives such a response must fail the query. */
 export type ReadRestrictionsRequiredColumnProjectionsList = Array<Action>;
+const ReadRestrictionsRequiredColumnProjectionsList = /*@__PURE__*/ __L.at(
+  __c7,
+  0,
+) as any as S.Schema<ReadRestrictionsRequiredColumnProjectionsList>;
+
 /** Deprecated. Use the bare boolean literal `true` as a predicate instead. */
 export type TrueExpression = TableRequirement;
 /** Deprecated. Use the bare boolean literal `false` as a predicate instead. */
@@ -717,6 +975,9 @@ export interface NamedReference {
 export type Reference = IdReference | NamedReference;
 /** Reference to a catalog object (for example, table, view, or namespace) as an ordered list of hierarchical levels. The object kind is determined by context (e.g. the endpoint or a companion type discriminator), not by the identifier structure alone. */
 export type CatalogObjectIdentifier = Array<string>;
+const CatalogObjectIdentifier =
+  RemovePropertiesUpdateRemovalsList as any as S.Schema<CatalogObjectIdentifier>;
+
 export interface ApplyFunctionCase2 {
   catalog?: string;
   identifier: CatalogObjectIdentifier;
@@ -759,6 +1020,11 @@ export interface ComparisonPredicate {
 }
 export type LiteralsCase0List = Array<Literal>;
 export type LiteralsCase1ValuesList = Array<PrimitiveTypeValue>;
+const LiteralsCase1ValuesList = /*@__PURE__*/ __L.at(
+  __c7,
+  1,
+) as any as S.Schema<LiteralsCase1ValuesList>;
+
 export interface LiteralsCase1 {
   type: string;
   values: LiteralsCase1ValuesList;
@@ -783,6 +1049,8 @@ export type Predicate =
   | UnaryPredicate
   | ComparisonPredicate
   | SetPredicate;
+const Predicate = /*@__PURE__*/ S.Unknown as any as S.Schema<Predicate>;
+
 /** Read restrictions for a table. A reader evaluates the row filter against original, untransformed column values, then applies required-column-projections to the surviving rows. Each action must produce a value of the same type as the input column. If a reader that supports read-restrictions cannot apply any returned restriction (a filter expression or an action), it must fail the query and must not silently return raw, partial, or empty results. A missing or empty ReadRestrictions object (no required-column-projections and no required-row-filter) imposes no restrictions. */
 export interface ReadRestrictions {
   /** A list of columns that require specific actions to be applied when reading. A server must not return an action for a column whose type is not listed in that action's "Applicable to" set. If absent or empty, no required actions apply; columns not listed are not subject to any required action. 1. For each column listed, the reader must apply the specified action before returning values for that column. 2. The reader must replace all output references to the column with the result of the action, presenting the result under the original field-id. For example, if the action for field-id `9` is mask-alphanum, the reader must return the masked value as field-id `9` in the query output. 3. A server must not return more than one projection for the same field-id in required-column-projections. If a duplicate field-id appears, the reader must fail the query. 4. A server must not return a projection that targets a map's key field-id; a reader that receives one must fail the query. Applying an action to keys can produce duplicate or null keys, which readers silently coalesce or reject, causing data loss. 5. A reader must enforce projections on the columns it is actually reading. Projections referencing columns that are not being read do not apply. 6. A server must not return projections on both a nested-typed field (struct, list, or map) and any field-id nested within it at any depth. A reader that receives such a response must fail the query. */
@@ -790,10 +1058,16 @@ export interface ReadRestrictions {
   /** An expression that limits which rows the reader may return. 1. The expression must evaluate to a boolean (TRUE or FALSE; Iceberg predicates never produce NULL). A reader must discard any row for which the filter evaluates to FALSE, and no information derived from discarded rows may be included in the query result. 2. If this property is absent, null, or always true then no mandatory filtering is required. 3. Column references within the expression must use field IDs (IdReference), not column names. This ensures the filter remains valid across column renames, consistent with required-column-projections which also reference columns by field-id. */
   required_row_filter?: Predicate;
 }
+const ReadRestrictions = /*@__PURE__*/ __L.at(__c7, 2) as any as S.Schema<ReadRestrictions>;
+
 /** Flat key-value labels attached to the object (table, view, ...) as a whole. */
 export type CatalogObjectLabels = { [key: string]: string | undefined };
+const CatalogObjectLabels = SetPropertiesUpdateUpdatesMap as any as S.Schema<CatalogObjectLabels>;
+
 /** Flat key-value labels for this field */
 export type FieldLabelsLabelsMap = { [key: string]: string | undefined };
+const FieldLabelsLabelsMap = SetPropertiesUpdateUpdatesMap as any as S.Schema<FieldLabelsLabelsMap>;
+
 /** Labels attached to a single field, identified by field-id. */
 export interface FieldLabels {
   /** Field ID from the schema of the table or view */
@@ -801,14 +1075,20 @@ export interface FieldLabels {
   /** Flat key-value labels for this field */
   labels: FieldLabelsLabelsMap;
 }
+const FieldLabels = /*@__PURE__*/ __L.at(__c7, 3) as any as S.Schema<FieldLabels>;
+
 /** Field-level labels. Each entry identifies its field by field-id. */
 export type LabelsFieldsList = Array<FieldLabels>;
+const LabelsFieldsList = /*@__PURE__*/ __L.at(__c7, 4) as any as S.Schema<LabelsFieldsList>;
+
 /** Catalog-provided metadata enrichment (for example ownership, classification, or cost attribution) returned with a table or view. Labels are catalog-provided and optional; clients may ignore them, and may cache them following the response ETag. The spec does not require how a catalog produces or stores labels, nor whether they are persisted or versioned. `object-labels` carries labels for the object as a whole; `fields` carries per-field labels, each identified by field-id. */
 export interface Labels {
   object_labels?: CatalogObjectLabels;
   /** Field-level labels. Each entry identifies its field by field-id. */
   fields?: LabelsFieldsList;
 }
+const Labels = /*@__PURE__*/ __L.at(__c7, 5) as any as S.Schema<Labels>;
+
 /** Result used when a table is successfully loaded. The table metadata JSON is returned in the `metadata` field. The corresponding file location of table metadata should be returned in the `metadata-location` field, unless the metadata is not yet committed. For example, a create transaction may return metadata that is staged but not committed. Clients can check whether metadata has changed by comparing metadata locations after the table has been created. The `config` map returns table-specific configuration for the table's resources, including its HTTP client and FileIO. For example, config may contain a specific FileIO implementation class for the table depending on its underlying storage. The following configurations should be respected by clients: ## General Configurations - `token`: Authorization bearer token to use for table requests if OAuth2 security is enabled - `scan-planning-mode`: Communicates to clients the supported planning mode. Clients should use this value to fail fast if the supported scanning mode is not available on the client. Valid values: - `client`: Clients MUST use client-side scan planning - `server`: Clients MUST use server-side scan planning via the `planTableScan` endpoint ## AWS Configurations The following configurations should be respected when working with tables stored in AWS S3 - `client.region`: region to configure client for making requests to AWS - `s3.access-key-id`: id for credentials that provide access to the data in S3 - `s3.secret-access-key`: secret for credentials that provide access to data in S3 - `s3.session-token`: if present, this value should be used for as the session token - `s3.remote-signing-enabled`: if `true` remote signing should be performed as described in the `RemoteSignRequest` schema section of this spec document. - `s3.cross-region-access-enabled`: if `true`, S3 Cross-Region bucket access is enabled ## Storage Credentials Credentials for ADLS / GCS / S3 / ... are provided through the `storage-credentials` field. Clients must first check whether the respective credentials exist in the `storage-credentials` field before checking the `config` for credentials. ## Remote Signing If remote signing for a specific storage provider is enabled, the server SHOULD use the `remote-signing-config` field to communicate all signer client settings. When the `remote-signing-config` field is present, clients SHOULD respect the provided configuration. For backward compatibility, the following `config` properties are still supported but **DEPRECATED** and SHOULD NOT be used by clients able to consume the remote signing configuration: - `signer.endpoint` **DEPRECATED**.: the remote signer endpoint. Can either be a relative path (to be resolved against `signer.uri`) or an absolute URI. - `signer.uri` **DEPRECATED**.: the base URI to resolve `signer.endpoint` against. Only meaningful if `signer.endpoint` is a relative path. Defaults to the catalog's base URI if not set. If any of these properties is present, clients SHOULD use them to compute the actual remote signing endpoint URI to contact. If none of these properties is present, clients SHOULD contact the default remote signing endpoint using the catalog's base URI. */
 export interface LoadTableResult {
   /** May be null if the table is staged as part of a transaction */
@@ -820,13 +1100,28 @@ export interface LoadTableResult {
   read_restrictions?: ReadRestrictions;
   labels?: Labels;
 }
+const LoadTableResult = /*@__PURE__*/ __L.at(__c7, 6) as any as S.Schema<LoadTableResult>;
+
 export type ViewVersionSummaryMap = { [key: string]: string | undefined };
+const ViewVersionSummaryMap =
+  SetPropertiesUpdateUpdatesMap as any as S.Schema<ViewVersionSummaryMap>;
+
 export interface SQLViewRepresentation {
   type: string;
   sql: string;
   dialect: string;
 }
+const SQLViewRepresentation = /*@__PURE__*/ __L.at(
+  __c7,
+  7,
+) as any as S.Schema<SQLViewRepresentation>;
+
 export type ViewVersionRepresentationsList = Array<SQLViewRepresentation>;
+const ViewVersionRepresentationsList = /*@__PURE__*/ __L.at(
+  __c8,
+  0,
+) as any as S.Schema<ViewVersionRepresentationsList>;
+
 export interface ViewVersion {
   version_id: number;
   timestamp_ms: number;
@@ -837,7 +1132,12 @@ export interface ViewVersion {
   default_catalog?: string;
   default_namespace: Namespace;
 }
+const ViewVersion = /*@__PURE__*/ __L.at(__c8, 1) as any as S.Schema<ViewVersion>;
+
 export type CreateViewRequestPropertiesMap = { [key: string]: string | undefined };
+const CreateViewRequestPropertiesMap =
+  SetPropertiesUpdateUpdatesMap as any as S.Schema<CreateViewRequestPropertiesMap>;
+
 export interface CreateViewRequest {
   /** A namespace identifier as a single string. Multipart namespace parts must be separated by the namespace separator as indicated via the /config override `namespace-separator`, which defaults to the unit separator `0x1F` byte (url encoded `%1F`). To be compatible with older clients, servers must use both the advertised separator and `0x1F` as valid separators when decoding namespaces. The `namespace-separator` should be provided in a url encoded form. */
   namespace: string;
@@ -848,14 +1148,34 @@ export interface CreateViewRequest {
   view_version: ViewVersion;
   properties: CreateViewRequestPropertiesMap;
 }
+const CreateViewRequest = /*@__PURE__*/ __L.at(__c8, 2) as any as S.Schema<CreateViewRequest>;
+
 export type ViewMetadataVersionsList = Array<ViewVersion>;
+const ViewMetadataVersionsList = /*@__PURE__*/ __L.at(
+  __c8,
+  3,
+) as any as S.Schema<ViewMetadataVersionsList>;
+
 export interface ViewHistoryEntry {
   version_id: number;
   timestamp_ms: number;
 }
+const ViewHistoryEntry = /*@__PURE__*/ __L.at(__c8, 4) as any as S.Schema<ViewHistoryEntry>;
+
 export type ViewMetadataVersionLogList = Array<ViewHistoryEntry>;
+const ViewMetadataVersionLogList = /*@__PURE__*/ __L.at(
+  __c8,
+  5,
+) as any as S.Schema<ViewMetadataVersionLogList>;
+
 export type ViewMetadataSchemasList = Array<Schema>;
+const ViewMetadataSchemasList =
+  TableMetadataSchemasList as any as S.Schema<ViewMetadataSchemasList>;
+
 export type ViewMetadataPropertiesMap = { [key: string]: string | undefined };
+const ViewMetadataPropertiesMap =
+  SetPropertiesUpdateUpdatesMap as any as S.Schema<ViewMetadataPropertiesMap>;
+
 export interface ViewMetadata {
   view_uuid: string;
   format_version: number;
@@ -866,7 +1186,12 @@ export interface ViewMetadata {
   schemas: ViewMetadataSchemasList;
   properties?: ViewMetadataPropertiesMap;
 }
+const ViewMetadata = /*@__PURE__*/ __L.at(__c8, 6) as any as S.Schema<ViewMetadata>;
+
 export type LoadViewResultConfigMap = { [key: string]: string | undefined };
+const LoadViewResultConfigMap =
+  SetPropertiesUpdateUpdatesMap as any as S.Schema<LoadViewResultConfigMap>;
+
 /** Result used when a view is successfully loaded. The view metadata JSON is returned in the `metadata` field. The corresponding file location of view metadata is returned in the `metadata-location` field. Clients can check whether metadata has changed by comparing metadata locations after the view has been created. The `config` map returns view-specific configuration for the view's resources. The following configurations should be respected by clients: ## General Configurations - `token`: Authorization bearer token to use for view requests if OAuth2 security is enabled */
 export interface LoadViewResult {
   metadata_location: string;
@@ -874,13 +1199,19 @@ export interface LoadViewResult {
   config?: LoadViewResultConfigMap;
   labels?: Labels;
 }
+const LoadViewResult = /*@__PURE__*/ __L.at(__c8, 7) as any as S.Schema<LoadViewResult>;
+
 export interface DropNamespaceRequest {
   /** A namespace identifier as a single string. Multipart namespace parts must be separated by the namespace separator as indicated via the /config override `namespace-separator`, which defaults to the unit separator `0x1F` byte (url encoded `%1F`). To be compatible with older clients, servers must use both the advertised separator and `0x1F` as valid separators when decoding namespaces. The `namespace-separator` should be provided in a url encoded form. */
   namespace: string;
   /** Optional client-provided idempotency key for safe request retries. When present, the server ensures no additional effects for requests that carry the same Idempotency-Key. If a prior request with this key has been finalized, the server returns an equivalent final response without re-running the operation. The response body may reflect a newer state of the catalog than existed at the time of the commit. Finalization rules: - Finalize & replay: 200, 201, 204, and deterministic terminal 4xx (including 409 such as AlreadyExists, NamespaceNotEmpty, etc.) - Do not finalize (not stored/replayed): 5xx Key Requirements: - Key format: UUIDv7 in string form (RFC 9562). - The idempotency key must be globally unique (no reuse across different operations). - Catalogs SHOULD NOT expire keys before the end of the advertised token lifetime. - If Idempotency-Key is used, clients MUST reuse the same key when retrying the same logical operation and MUST generate a new key for a different operation. */
   idempotencyKey?: string;
 }
+const DropNamespaceRequest = /*@__PURE__*/ __L.at(__c9, 0) as any as S.Schema<DropNamespaceRequest>;
+
 export interface DropNamespaceResponse {}
+const DropNamespaceResponse = CancelPlanningResponse as any as S.Schema<DropNamespaceResponse>;
+
 export interface DropTableRequest {
   /** A namespace identifier as a single string. Multipart namespace parts must be separated by the namespace separator as indicated via the /config override `namespace-separator`, which defaults to the unit separator `0x1F` byte (url encoded `%1F`). To be compatible with older clients, servers must use both the advertised separator and `0x1F` as valid separators when decoding namespaces. The `namespace-separator` should be provided in a url encoded form. */
   namespace: string;
@@ -891,7 +1222,11 @@ export interface DropTableRequest {
   /** Optional client-provided idempotency key for safe request retries. When present, the server ensures no additional effects for requests that carry the same Idempotency-Key. If a prior request with this key has been finalized, the server returns an equivalent final response without re-running the operation. The response body may reflect a newer state of the catalog than existed at the time of the commit. Finalization rules: - Finalize & replay: 200, 201, 204, and deterministic terminal 4xx (including 409 such as AlreadyExists, NamespaceNotEmpty, etc.) - Do not finalize (not stored/replayed): 5xx Key Requirements: - Key format: UUIDv7 in string form (RFC 9562). - The idempotency key must be globally unique (no reuse across different operations). - Catalogs SHOULD NOT expire keys before the end of the advertised token lifetime. - If Idempotency-Key is used, clients MUST reuse the same key when retrying the same logical operation and MUST generate a new key for a different operation. */
   idempotencyKey?: string;
 }
+const DropTableRequest = /*@__PURE__*/ __L.at(__c9, 1) as any as S.Schema<DropTableRequest>;
+
 export interface DropTableResponse {}
+const DropTableResponse = CancelPlanningResponse as any as S.Schema<DropTableResponse>;
+
 export interface DropViewRequest {
   /** A namespace identifier as a single string. Multipart namespace parts must be separated by the namespace separator as indicated via the /config override `namespace-separator`, which defaults to the unit separator `0x1F` byte (url encoded `%1F`). To be compatible with older clients, servers must use both the advertised separator and `0x1F` as valid separators when decoding namespaces. The `namespace-separator` should be provided in a url encoded form. */
   namespace: string;
@@ -900,13 +1235,20 @@ export interface DropViewRequest {
   /** Optional client-provided idempotency key for safe request retries. When present, the server ensures no additional effects for requests that carry the same Idempotency-Key. If a prior request with this key has been finalized, the server returns an equivalent final response without re-running the operation. The response body may reflect a newer state of the catalog than existed at the time of the commit. Finalization rules: - Finalize & replay: 200, 201, 204, and deterministic terminal 4xx (including 409 such as AlreadyExists, NamespaceNotEmpty, etc.) - Do not finalize (not stored/replayed): 5xx Key Requirements: - Key format: UUIDv7 in string form (RFC 9562). - The idempotency key must be globally unique (no reuse across different operations). - Catalogs SHOULD NOT expire keys before the end of the advertised token lifetime. - If Idempotency-Key is used, clients MUST reuse the same key when retrying the same logical operation and MUST generate a new key for a different operation. */
   idempotencyKey?: string;
 }
+const DropViewRequest = /*@__PURE__*/ __L.at(__c9, 2) as any as S.Schema<DropViewRequest>;
+
 export interface DropViewResponse {}
+const DropViewResponse = CancelPlanningResponse as any as S.Schema<DropViewResponse>;
+
 export type FetchPlanningResultRequestXIcebergAccessDelegationItem =
   | "vended-credentials"
   | "remote-signing";
 export type FetchPlanningResultRequestXIcebergAccessDelegationList = Array<
   FetchPlanningResultRequestXIcebergAccessDelegationItem | (string & {})
 >;
+const FetchPlanningResultRequestXIcebergAccessDelegationList =
+  CancelPlanningRequestXIcebergAccessDelegationList as any as S.Schema<FetchPlanningResultRequestXIcebergAccessDelegationList>;
+
 export interface FetchPlanningResultRequest {
   /** A namespace identifier as a single string. Multipart namespace parts must be separated by the namespace separator as indicated via the /config override `namespace-separator`, which defaults to the unit separator `0x1F` byte (url encoded `%1F`). To be compatible with older clients, servers must use both the advertised separator and `0x1F` as valid separators when decoding namespaces. The `namespace-separator` should be provided in a url encoded form. */
   namespace: string;
@@ -917,7 +1259,14 @@ export interface FetchPlanningResultRequest {
   /** Optional signal to the server that the client supports delegated access via a comma-separated list of access mechanisms. The server may choose to supply access via any or none of the requested mechanisms. Specific properties and handling for `vended-credentials` and `remote-signing` are documented in the `LoadTableResult` schema section of this spec document. */
   xIcebergAccessDelegation?: FetchPlanningResultRequestXIcebergAccessDelegationList;
 }
+const FetchPlanningResultRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  3,
+) as any as S.Schema<FetchPlanningResultRequest>;
+
 export type FileFormat = "avro" | "orc" | "parquet" | "puffin";
+const FileFormat = S.String;
+
 /** A list of partition field values ordered based on the fields of the partition spec specified by the `spec-id` */
 export type PositionDeleteFilePartitionList = Array<PrimitiveTypeValue>;
 /** List of splittable offsets */
@@ -926,8 +1275,15 @@ export interface FieldStatistics {
   /** Avg value size in memory (uncompressed) in bytes over non-null values to estimate memory consumption */
   avg_value_size_in_bytes?: number;
 }
+const FieldStatistics = /*@__PURE__*/ __L.at(__c9, 4) as any as S.Schema<FieldStatistics>;
+
 /** Container struct for per-field metrics structs */
 export type PositionDeleteFileContentStatsMap = { [key: string]: FieldStatistics | undefined };
+const PositionDeleteFileContentStatsMap = /*@__PURE__*/ __L.at(
+  __c9,
+  5,
+) as any as S.Schema<PositionDeleteFileContentStatsMap>;
+
 export interface PositionDeleteFile {
   content: string;
   file_path: string;
@@ -981,34 +1337,61 @@ export interface EqualityDeleteFile {
   equality_ids?: EqualityDeleteFileEqualityIdsList;
 }
 export type DeleteFile = PositionDeleteFile | EqualityDeleteFile;
+const DeleteFile = /*@__PURE__*/ S.Unknown as any as S.Schema<DeleteFile>;
+
 /** Delete files referenced by file scan tasks */
 export type CompletedPlanningResultDeleteFilesList = Array<DeleteFile>;
+const CompletedPlanningResultDeleteFilesList = /*@__PURE__*/ __L.at(
+  __c9,
+  6,
+) as any as S.Schema<CompletedPlanningResultDeleteFilesList>;
+
 /** A list of partition field values ordered based on the fields of the partition spec specified by the `spec-id` */
 export type DataFilePartitionList = Array<PrimitiveTypeValue>;
+const DataFilePartitionList = LiteralsCase1ValuesList as any as S.Schema<DataFilePartitionList>;
+
 /** List of splittable offsets */
 export type DataFileSplitOffsetsList = Array<number>;
+const DataFileSplitOffsetsList =
+  SchemaInputIdentifierFieldIdsList as any as S.Schema<DataFileSplitOffsetsList>;
+
 /** Container struct for per-field metrics structs */
 export type DataFileContentStatsMap = { [key: string]: FieldStatistics | undefined };
+const DataFileContentStatsMap =
+  PositionDeleteFileContentStatsMap as any as S.Schema<DataFileContentStatsMap>;
+
 /** List of integer column ids for each corresponding value */
 export type CountMapKeysList = Array<number>;
+const CountMapKeysList = SchemaInputIdentifierFieldIdsList as any as S.Schema<CountMapKeysList>;
+
 /** List of Long values, matched to 'keys' by index */
 export type CountMapValuesList = Array<number>;
+const CountMapValuesList = SchemaInputIdentifierFieldIdsList as any as S.Schema<CountMapValuesList>;
+
 export interface CountMap {
   /** List of integer column ids for each corresponding value */
   keys?: CountMapKeysList;
   /** List of Long values, matched to 'keys' by index */
   values?: CountMapValuesList;
 }
+const CountMap = /*@__PURE__*/ __L.at(__c9, 7) as any as S.Schema<CountMap>;
+
 /** List of integer column ids for each corresponding value */
 export type ValueMapKeysList = Array<number>;
+const ValueMapKeysList = SchemaInputIdentifierFieldIdsList as any as S.Schema<ValueMapKeysList>;
+
 /** List of primitive type values, matched to 'keys' by index */
 export type ValueMapValuesList = Array<PrimitiveTypeValue>;
+const ValueMapValuesList = LiteralsCase1ValuesList as any as S.Schema<ValueMapValuesList>;
+
 export interface ValueMap {
   /** List of integer column ids for each corresponding value */
   keys?: ValueMapKeysList;
   /** List of primitive type values, matched to 'keys' by index */
   values?: ValueMapValuesList;
 }
+const ValueMap = /*@__PURE__*/ __L.at(__c10, 0) as any as S.Schema<ValueMap>;
+
 export interface DataFile {
   content: string;
   file_path: string;
@@ -1042,8 +1425,13 @@ export interface DataFile {
   /** Map of column id to upper bound primitive type values */
   upper_bounds?: ValueMap;
 }
+const DataFile = /*@__PURE__*/ __L.at(__c10, 1) as any as S.Schema<DataFile>;
+
 /** A list of indices in the delete files array (0-based) */
 export type FileScanTaskDeleteFileReferencesList = Array<number>;
+const FileScanTaskDeleteFileReferencesList =
+  SchemaInputIdentifierFieldIdsList as any as S.Schema<FileScanTaskDeleteFileReferencesList>;
+
 export interface FileScanTask {
   data_file: DataFile;
   /** A list of indices in the delete files array (0-based) */
@@ -1051,7 +1439,14 @@ export interface FileScanTask {
   /** An optional filter to be applied to rows in this file scan task. If the residual is not present, the client must produce the residual or use the original filter. */
   residual_filter?: Predicate;
 }
+const FileScanTask = /*@__PURE__*/ __L.at(__c10, 2) as any as S.Schema<FileScanTask>;
+
 export type CompletedPlanningResultFileScanTasksList = Array<FileScanTask>;
+const CompletedPlanningResultFileScanTasksList = /*@__PURE__*/ __L.at(
+  __c10,
+  3,
+) as any as S.Schema<CompletedPlanningResultFileScanTasksList>;
+
 export type CompletedPlanningResultPlanTasksList = Array<string>;
 /** Status of a server-side planning operation */
 export type PlanStatus = "completed" | "submitted" | "cancelled" | "failed";
@@ -1089,7 +1484,14 @@ export interface EmptyPlanningResult {
 }
 /** Result of server-side scan planning for fetchPlanningResult */
 export type PlanningResult = CompletedPlanningResult | FailedPlanningResult | EmptyPlanningResult;
+const PlanningResult = /*@__PURE__*/ S.Unknown as any as S.Schema<PlanningResult>;
+
 export type FetchPlanningResultResponse = PlanningResult;
+const FetchPlanningResultResponse = /*@__PURE__*/ __L.at(
+  __c10,
+  4,
+) as any as S.Schema<FetchPlanningResultResponse>;
+
 export interface FetchScanTasksRequest {
   /** A namespace identifier as a single string. Multipart namespace parts must be separated by the namespace separator as indicated via the /config override `namespace-separator`, which defaults to the unit separator `0x1F` byte (url encoded `%1F`). To be compatible with older clients, servers must use both the advertised separator and `0x1F` as valid separators when decoding namespaces. The `namespace-separator` should be provided in a url encoded form. */
   namespace: string;
@@ -1099,26 +1501,56 @@ export interface FetchScanTasksRequest {
   idempotencyKey?: string;
   plan_task: string;
 }
+const FetchScanTasksRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  5,
+) as any as S.Schema<FetchScanTasksRequest>;
+
 /** Delete files referenced by file scan tasks */
 export type FetchScanTasksResponseDeleteFilesList = Array<DeleteFile>;
+const FetchScanTasksResponseDeleteFilesList =
+  CompletedPlanningResultDeleteFilesList as any as S.Schema<FetchScanTasksResponseDeleteFilesList>;
+
 export type FetchScanTasksResponseFileScanTasksList = Array<FileScanTask>;
+const FetchScanTasksResponseFileScanTasksList =
+  CompletedPlanningResultFileScanTasksList as any as S.Schema<FetchScanTasksResponseFileScanTasksList>;
+
 export type FetchScanTasksResponsePlanTasksList = Array<string>;
+const FetchScanTasksResponsePlanTasksList =
+  RemovePropertiesUpdateRemovalsList as any as S.Schema<FetchScanTasksResponsePlanTasksList>;
+
 export interface FetchScanTasksResponse {
   /** Delete files referenced by file scan tasks */
   delete_files?: FetchScanTasksResponseDeleteFilesList;
   file_scan_tasks?: FetchScanTasksResponseFileScanTasksList;
   plan_tasks?: FetchScanTasksResponsePlanTasksList;
 }
+const FetchScanTasksResponse = /*@__PURE__*/ __L.at(
+  __c10,
+  6,
+) as any as S.Schema<FetchScanTasksResponse>;
+
 export interface GetConfigRequest {
   /** Warehouse location or identifier to request from the service */
   warehouse?: string;
 }
+const GetConfigRequest = /*@__PURE__*/ __L.at(__c10, 7) as any as S.Schema<GetConfigRequest>;
+
 /** Properties that should be used to override client configuration; applied after defaults and client configuration. */
 export type CatalogConfigOverridesMap = { [key: string]: string | undefined };
+const CatalogConfigOverridesMap =
+  SetPropertiesUpdateUpdatesMap as any as S.Schema<CatalogConfigOverridesMap>;
+
 /** Properties that should be used as default configuration; applied before client configuration. */
 export type CatalogConfigDefaultsMap = { [key: string]: string | undefined };
+const CatalogConfigDefaultsMap =
+  SetPropertiesUpdateUpdatesMap as any as S.Schema<CatalogConfigDefaultsMap>;
+
 /** A list of endpoints that the server supports. The format of each endpoint must be "<HTTP verb> <resource path from OpenAPI REST spec>". The HTTP verb and the resource path must be separated by a space character. */
 export type CatalogConfigEndpointsList = Array<string>;
+const CatalogConfigEndpointsList =
+  RemovePropertiesUpdateRemovalsList as any as S.Schema<CatalogConfigEndpointsList>;
+
 /** Server-provided configuration for the catalog. */
 export interface CatalogConfig {
   /** Properties that should be used to override client configuration; applied after defaults and client configuration. */
@@ -1130,6 +1562,8 @@ export interface CatalogConfig {
   /** Client reuse window for an Idempotency-Key (ISO-8601 duration, e.g., PT30M, PT24H). Interpreted as the maximum time from the first submission using a key to the last retry during which a client may reuse that key. Servers SHOULD accept retries for at least this duration and MAY include a grace period to account for delays/clock skew. Clients SHOULD NOT reuse an Idempotency-Key after this window elapses; they SHOULD generate a new key for any subsequent attempt. Presence of this field indicates the server supports Idempotency-Key semantics for mutation endpoints. If absent, clients MUST assume idempotency is not supported. */
   idempotency_key_lifetime?: string;
 }
+const CatalogConfig = /*@__PURE__*/ __L.at(__c11, 0) as any as S.Schema<CatalogConfig>;
+
 export interface ListFunctionsRequest {
   /** A namespace identifier as a single string. Multipart namespace parts must be separated by the namespace separator as indicated via the /config override `namespace-separator`, which defaults to the unit separator `0x1F` byte (url encoded `%1F`). To be compatible with older clients, servers must use both the advertised separator and `0x1F` as valid separators when decoding namespaces. The `namespace-separator` should be provided in a url encoded form. */
   namespace: string;
@@ -1137,11 +1571,26 @@ export interface ListFunctionsRequest {
   /** For servers that support pagination, this signals an upper bound of the number of results that a client will receive. For servers that do not support pagination, clients may receive results larger than the indicated `pageSize`. */
   pageSize?: number;
 }
+const ListFunctionsRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  1,
+) as any as S.Schema<ListFunctionsRequest>;
+
 export type ListFunctionsResponseIdentifiersList = Array<CatalogObjectIdentifier>;
+const ListFunctionsResponseIdentifiersList = /*@__PURE__*/ __L.at(
+  __c11,
+  2,
+) as any as S.Schema<ListFunctionsResponseIdentifiersList>;
+
 export interface ListFunctionsResponse {
   next_page_token?: string | null;
   identifiers: ListFunctionsResponseIdentifiersList;
 }
+const ListFunctionsResponse = /*@__PURE__*/ __L.at(
+  __c11,
+  3,
+) as any as S.Schema<ListFunctionsResponse>;
+
 export interface ListNamespacesRequest {
   pageToken?: string;
   /** For servers that support pagination, this signals an upper bound of the number of results that a client will receive. For servers that do not support pagination, clients may receive results larger than the indicated `pageSize`. */
@@ -1149,11 +1598,26 @@ export interface ListNamespacesRequest {
   /** An optional namespace, underneath which to list namespaces. If not provided, all top-level namespaces should be listed. For backward compatibility, empty string is treated as absent for now. If parent is a multipart namespace, the parts must be separated by the namespace separator as indicated via the /config override `namespace-separator`, which defaults to the unit separator `0x1F` byte (url encoded `%1F`). To be compatible with older clients, servers must use both the advertised separator and `0x1F` as valid separators when decoding namespaces. The `namespace-separator` should be provided in a url encoded form. */
   parent?: string;
 }
+const ListNamespacesRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  4,
+) as any as S.Schema<ListNamespacesRequest>;
+
 export type ListNamespacesResponseNamespacesList = Array<Namespace>;
+const ListNamespacesResponseNamespacesList = /*@__PURE__*/ __L.at(
+  __c11,
+  5,
+) as any as S.Schema<ListNamespacesResponseNamespacesList>;
+
 export interface ListNamespacesResponse {
   next_page_token?: string | null;
   namespaces: ListNamespacesResponseNamespacesList;
 }
+const ListNamespacesResponse = /*@__PURE__*/ __L.at(
+  __c11,
+  6,
+) as any as S.Schema<ListNamespacesResponse>;
+
 export interface ListTablesRequest {
   /** A namespace identifier as a single string. Multipart namespace parts must be separated by the namespace separator as indicated via the /config override `namespace-separator`, which defaults to the unit separator `0x1F` byte (url encoded `%1F`). To be compatible with older clients, servers must use both the advertised separator and `0x1F` as valid separators when decoding namespaces. The `namespace-separator` should be provided in a url encoded form. */
   namespace: string;
@@ -1161,11 +1625,20 @@ export interface ListTablesRequest {
   /** For servers that support pagination, this signals an upper bound of the number of results that a client will receive. For servers that do not support pagination, clients may receive results larger than the indicated `pageSize`. */
   pageSize?: number;
 }
+const ListTablesRequest = /*@__PURE__*/ __L.at(__c11, 7) as any as S.Schema<ListTablesRequest>;
+
 export type ListTablesResponseIdentifiersList = Array<TableIdentifier>;
+const ListTablesResponseIdentifiersList = /*@__PURE__*/ __L.at(
+  __c12,
+  0,
+) as any as S.Schema<ListTablesResponseIdentifiersList>;
+
 export interface ListTablesResponse {
   next_page_token?: string | null;
   identifiers: ListTablesResponseIdentifiersList;
 }
+const ListTablesResponse = /*@__PURE__*/ __L.at(__c12, 1) as any as S.Schema<ListTablesResponse>;
+
 export interface ListViewsRequest {
   /** A namespace identifier as a single string. Multipart namespace parts must be separated by the namespace separator as indicated via the /config override `namespace-separator`, which defaults to the unit separator `0x1F` byte (url encoded `%1F`). To be compatible with older clients, servers must use both the advertised separator and `0x1F` as valid separators when decoding namespaces. The `namespace-separator` should be provided in a url encoded form. */
   namespace: string;
@@ -1173,6 +1646,8 @@ export interface ListViewsRequest {
   /** For servers that support pagination, this signals an upper bound of the number of results that a client will receive. For servers that do not support pagination, clients may receive results larger than the indicated `pageSize`. */
   pageSize?: number;
 }
+const ListViewsRequest = /*@__PURE__*/ __L.at(__c12, 2) as any as S.Schema<ListViewsRequest>;
+
 export interface LoadCredentialsRequest {
   /** A namespace identifier as a single string. Multipart namespace parts must be separated by the namespace separator as indicated via the /config override `namespace-separator`, which defaults to the unit separator `0x1F` byte (url encoded `%1F`). To be compatible with older clients, servers must use both the advertised separator and `0x1F` as valid separators when decoding namespaces. The `namespace-separator` should be provided in a url encoded form. */
   namespace: string;
@@ -1183,16 +1658,31 @@ export interface LoadCredentialsRequest {
   /** A comma-separated list of fully qualified view names (namespace and view name) representing the view reference chain when an entity (table or view) is loaded via a view. The list should be ordered with the outermost view first, followed by any intermediate views it references, down to the view that directly references the entity. For a simple case where a view directly references the entity, the list contains a single view identifier. For nested views (a view referencing another view which references the entity), the list contains multiple view identifiers representing the complete dependency chain. The view identifier is a composite string of the format {namespace}{separator}{viewName}. The namespace-separator (defined in /config) acts as the delimiter. When parsing, the last occurrence of this separator identifies the boundary between the namespace and the view name. Multipart namespaces must follow the encoding rules of the parent parameter in the list namespaces endpoint. Multiple view identifiers are separated by commas. Servers should split the parameter value on comma characters to parse individual view identifiers. If view names contain commas, they must be url-encoded as %2C. Example with multiple views (where prod%1Fanalytics is a nested namespace which has a quarterly_view which references to monthly_view which then references the entity being loaded) - prod%1Fanalytics%1Fquarterly_view,prod%1Fanalytics%1Fmonthly_view */
   referenced_by?: string;
 }
+const LoadCredentialsRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  3,
+) as any as S.Schema<LoadCredentialsRequest>;
+
 export type LoadCredentialsResponseStorageCredentialsList = Array<StorageCredential>;
+const LoadCredentialsResponseStorageCredentialsList =
+  LoadTableResultStorageCredentialsList as any as S.Schema<LoadCredentialsResponseStorageCredentialsList>;
+
 export interface LoadCredentialsResponse {
   storage_credentials: LoadCredentialsResponseStorageCredentialsList;
 }
+const LoadCredentialsResponse = /*@__PURE__*/ __L.at(
+  __c12,
+  4,
+) as any as S.Schema<LoadCredentialsResponse>;
+
 export interface LoadFunctionRequest {
   /** A namespace identifier as a single string. Multipart namespace parts must be separated by the namespace separator as indicated via the /config override `namespace-separator`, which defaults to the unit separator `0x1F` byte (url encoded `%1F`). To be compatible with older clients, servers must use both the advertised separator and `0x1F` as valid separators when decoding namespaces. The `namespace-separator` should be provided in a url encoded form. */
   namespace: string;
   /** A function name */
   function: string;
 }
+const LoadFunctionRequest = /*@__PURE__*/ __L.at(__c12, 5) as any as S.Schema<LoadFunctionRequest>;
+
 /** UDF list type object. */
 export interface FunctionListType {
   type: string;
@@ -1217,14 +1707,23 @@ export interface FunctionStructType {
 }
 /** A type for function parameters or return value. It is encoded either as a type string or as a JSON object for nested types (struct, list, map) following the UDF spec Types section. Primitive and semi-structured type strings are encoded based on the Iceberg type JSON representation (e.g., "int", "string", "timestamp", "decimal(9,2)", "variant"). Type strings must contain no spaces or quote characters. Nested types are based on the Iceberg type JSON representation, but the UDF spec only requires a subset of fields (e.g., list requires `type` and `element`; map requires `type`, `key`, and `value`; struct requires `type` and `fields`). Any other fields must be ignored. */
 export type FunctionDataType = string | FunctionListType | FunctionMapType | FunctionStructType;
+const FunctionDataType = /*@__PURE__*/ S.Unknown as any as S.Schema<FunctionDataType>;
+
 export interface FunctionParameter {
   type: FunctionDataType;
   name: string;
   /** Parameter documentation. */
   doc?: string;
 }
+const FunctionParameter = /*@__PURE__*/ __L.at(__c12, 6) as any as S.Schema<FunctionParameter>;
+
 /** Ordered list of function parameters. Invocation order must match this list. */
 export type FunctionDefinitionParametersList = Array<FunctionParameter>;
+const FunctionDefinitionParametersList = /*@__PURE__*/ __L.at(
+  __c12,
+  7,
+) as any as S.Schema<FunctionDefinitionParametersList>;
+
 export interface FunctionSQLRepresentation {
   type: string;
   /** SQL dialect identifier (e.g., "spark", "trino"). */
@@ -1232,10 +1731,22 @@ export interface FunctionSQLRepresentation {
   /** SQL expression text. */
   sql: string;
 }
+const FunctionSQLRepresentation = /*@__PURE__*/ __L.at(
+  __c13,
+  0,
+) as any as S.Schema<FunctionSQLRepresentation>;
+
 /** UDF implementations. */
 export type FunctionDefinitionVersionRepresentationsList = Array<FunctionSQLRepresentation>;
+const FunctionDefinitionVersionRepresentationsList = /*@__PURE__*/ __L.at(
+  __c13,
+  1,
+) as any as S.Schema<FunctionDefinitionVersionRepresentationsList>;
+
 /** Defines how the UDF behaves when any input parameter is NULL. */
 export type FunctionDefinitionVersionOnNullInput = "return-null" | "call";
+const FunctionDefinitionVersionOnNullInput = S.String;
+
 export interface FunctionDefinitionVersion {
   /** Monotonically increasing identifier of the definition version. */
   version_id: number;
@@ -1248,10 +1759,22 @@ export interface FunctionDefinitionVersion {
   /** Creation timestamp of this version (unix epoch millis). */
   timestamp_ms: number;
 }
+const FunctionDefinitionVersion = /*@__PURE__*/ __L.at(
+  __c13,
+  2,
+) as any as S.Schema<FunctionDefinitionVersion>;
+
 /** Versioned implementations of this definition. */
 export type FunctionDefinitionVersionsList = Array<FunctionDefinitionVersion>;
+const FunctionDefinitionVersionsList = /*@__PURE__*/ __L.at(
+  __c13,
+  3,
+) as any as S.Schema<FunctionDefinitionVersionsList>;
+
 /** Function type. When set to "udtf", "return-type" must be a struct describing the output schema. */
 export type FunctionDefinitionFunctionType = "udf" | "udtf";
+const FunctionDefinitionFunctionType = S.String;
+
 export interface FunctionDefinition {
   /** A canonical string derived from the parameter types, formatted as a comma-separated list with no spaces. */
   definition_id: string;
@@ -1271,24 +1794,54 @@ export interface FunctionDefinition {
   /** Documentation string. */
   doc?: string;
 }
+const FunctionDefinition = /*@__PURE__*/ __L.at(__c13, 4) as any as S.Schema<FunctionDefinition>;
+
 /** List of function definition entities. */
 export type FunctionMetadataDefinitionsList = Array<FunctionDefinition>;
+const FunctionMetadataDefinitionsList = /*@__PURE__*/ __L.at(
+  __c13,
+  5,
+) as any as S.Schema<FunctionMetadataDefinitionsList>;
+
 export interface FunctionDefinitionVersionRef {
   definition_id: string;
   version_id: number;
 }
+const FunctionDefinitionVersionRef = /*@__PURE__*/ __L.at(
+  __c13,
+  6,
+) as any as S.Schema<FunctionDefinitionVersionRef>;
+
 /** Mapping of each definition to its selected version at this time. */
 export type FunctionDefinitionLogEntryDefinitionVersionsList = Array<FunctionDefinitionVersionRef>;
+const FunctionDefinitionLogEntryDefinitionVersionsList = /*@__PURE__*/ __L.at(
+  __c13,
+  7,
+) as any as S.Schema<FunctionDefinitionLogEntryDefinitionVersionsList>;
+
 export interface FunctionDefinitionLogEntry {
   /** Timestamp when the function was updated to use the definition versions. */
   timestamp_ms: number;
   /** Mapping of each definition to its selected version at this time. */
   definition_versions: FunctionDefinitionLogEntryDefinitionVersionsList;
 }
+const FunctionDefinitionLogEntry = /*@__PURE__*/ __L.at(
+  __c14,
+  0,
+) as any as S.Schema<FunctionDefinitionLogEntry>;
+
 /** History of versions within the function's definitions. */
 export type FunctionMetadataDefinitionLogList = Array<FunctionDefinitionLogEntry>;
+const FunctionMetadataDefinitionLogList = /*@__PURE__*/ __L.at(
+  __c14,
+  1,
+) as any as S.Schema<FunctionMetadataDefinitionLogList>;
+
 /** A string-to-string map of properties. */
 export type FunctionMetadataPropertiesMap = { [key: string]: string | undefined };
+const FunctionMetadataPropertiesMap =
+  SetPropertiesUpdateUpdatesMap as any as S.Schema<FunctionMetadataPropertiesMap>;
+
 /** Portable UDF metadata format. Each function is represented by a self-contained metadata file. The `format-version` field identifies the UDF metadata format. */
 export interface FunctionMetadata {
   /** A UUID that identifies this UDF, generated once at creation. */
@@ -1308,27 +1861,49 @@ export interface FunctionMetadata {
   /** Documentation string. */
   doc?: string;
 }
+const FunctionMetadata = /*@__PURE__*/ __L.at(__c14, 2) as any as S.Schema<FunctionMetadata>;
+
 /** Result returned when a function is loaded from the catalog. The function metadata JSON is returned in the `metadata` field. The location of the metadata file is returned in the `metadata-location` field, if available. */
 export interface LoadFunctionResult {
   metadata_location?: string;
   metadata: FunctionMetadata;
 }
+const LoadFunctionResult = /*@__PURE__*/ __L.at(__c14, 3) as any as S.Schema<LoadFunctionResult>;
+
 export interface LoadNamespaceMetadataRequest {
   /** A namespace identifier as a single string. Multipart namespace parts must be separated by the namespace separator as indicated via the /config override `namespace-separator`, which defaults to the unit separator `0x1F` byte (url encoded `%1F`). To be compatible with older clients, servers must use both the advertised separator and `0x1F` as valid separators when decoding namespaces. The `namespace-separator` should be provided in a url encoded form. */
   namespace: string;
 }
+const LoadNamespaceMetadataRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  4,
+) as any as S.Schema<LoadNamespaceMetadataRequest>;
+
 /** Properties stored on the namespace, if supported by the server. If the server does not support namespace properties, it should return null for this field. If namespace properties are supported, but none are set, it should return an empty object. */
 export type GetNamespaceResponsePropertiesMap = { [key: string]: string | undefined };
+const GetNamespaceResponsePropertiesMap =
+  SetPropertiesUpdateUpdatesMap as any as S.Schema<GetNamespaceResponsePropertiesMap>;
+
 export interface GetNamespaceResponse {
   namespace: Namespace;
   /** Properties stored on the namespace, if supported by the server. If the server does not support namespace properties, it should return null for this field. If namespace properties are supported, but none are set, it should return an empty object. */
   properties?: GetNamespaceResponsePropertiesMap | null;
 }
+const GetNamespaceResponse = /*@__PURE__*/ __L.at(
+  __c14,
+  5,
+) as any as S.Schema<GetNamespaceResponse>;
+
 export type LoadTableRequestSnapshots = "all" | "refs";
+const LoadTableRequestSnapshots = S.String;
+
 export type LoadTableRequestXIcebergAccessDelegationItem = "vended-credentials" | "remote-signing";
 export type LoadTableRequestXIcebergAccessDelegationList = Array<
   LoadTableRequestXIcebergAccessDelegationItem | (string & {})
 >;
+const LoadTableRequestXIcebergAccessDelegationList =
+  CancelPlanningRequestXIcebergAccessDelegationList as any as S.Schema<LoadTableRequestXIcebergAccessDelegationList>;
+
 export interface LoadTableRequest {
   /** A namespace identifier as a single string. Multipart namespace parts must be separated by the namespace separator as indicated via the /config override `namespace-separator`, which defaults to the unit separator `0x1F` byte (url encoded `%1F`). To be compatible with older clients, servers must use both the advertised separator and `0x1F` as valid separators when decoding namespaces. The `namespace-separator` should be provided in a url encoded form. */
   namespace: string;
@@ -1343,6 +1918,8 @@ export interface LoadTableRequest {
   /** An optional header that allows the server to return 304 (Not Modified) if the metadata is current. The content is the value of the ETag received in a CreateTableResponse, LoadTableResponse or CommitTableResponse. */
   ifNoneMatch?: string;
 }
+const LoadTableRequest = /*@__PURE__*/ __L.at(__c14, 6) as any as S.Schema<LoadTableRequest>;
+
 export interface LoadViewRequest {
   /** A namespace identifier as a single string. Multipart namespace parts must be separated by the namespace separator as indicated via the /config override `namespace-separator`, which defaults to the unit separator `0x1F` byte (url encoded `%1F`). To be compatible with older clients, servers must use both the advertised separator and `0x1F` as valid separators when decoding namespaces. The `namespace-separator` should be provided in a url encoded form. */
   namespace: string;
@@ -1351,21 +1928,39 @@ export interface LoadViewRequest {
   /** A comma-separated list of fully qualified view names (namespace and view name) representing the view reference chain when an entity (table or view) is loaded via a view. The list should be ordered with the outermost view first, followed by any intermediate views it references, down to the view that directly references the entity. For a simple case where a view directly references the entity, the list contains a single view identifier. For nested views (a view referencing another view which references the entity), the list contains multiple view identifiers representing the complete dependency chain. The view identifier is a composite string of the format {namespace}{separator}{viewName}. The namespace-separator (defined in /config) acts as the delimiter. When parsing, the last occurrence of this separator identifies the boundary between the namespace and the view name. Multipart namespaces must follow the encoding rules of the parent parameter in the list namespaces endpoint. Multiple view identifiers are separated by commas. Servers should split the parameter value on comma characters to parse individual view identifiers. If view names contain commas, they must be url-encoded as %2C. Example with multiple views (where prod%1Fanalytics is a nested namespace which has a quarterly_view which references to monthly_view which then references the entity being loaded) - prod%1Fanalytics%1Fquarterly_view,prod%1Fanalytics%1Fmonthly_view */
   referenced_by?: string;
 }
+const LoadViewRequest = /*@__PURE__*/ __L.at(__c14, 7) as any as S.Schema<LoadViewRequest>;
+
 export interface NamespaceExistsRequest {
   /** A namespace identifier as a single string. Multipart namespace parts must be separated by the namespace separator as indicated via the /config override `namespace-separator`, which defaults to the unit separator `0x1F` byte (url encoded `%1F`). To be compatible with older clients, servers must use both the advertised separator and `0x1F` as valid separators when decoding namespaces. The `namespace-separator` should be provided in a url encoded form. */
   namespace: string;
 }
+const NamespaceExistsRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  0,
+) as any as S.Schema<NamespaceExistsRequest>;
+
 export interface NamespaceExistsResponse {}
+const NamespaceExistsResponse = CancelPlanningResponse as any as S.Schema<NamespaceExistsResponse>;
+
 export type PlanTableScanRequestXIcebergAccessDelegationItem =
   | "vended-credentials"
   | "remote-signing";
 export type PlanTableScanRequestXIcebergAccessDelegationList = Array<
   PlanTableScanRequestXIcebergAccessDelegationItem | (string & {})
 >;
+const PlanTableScanRequestXIcebergAccessDelegationList =
+  CancelPlanningRequestXIcebergAccessDelegationList as any as S.Schema<PlanTableScanRequestXIcebergAccessDelegationList>;
+
 /** List of selected schema fields */
 export type PlanTableScanRequestSelectList = Array<string>;
+const PlanTableScanRequestSelectList =
+  RemovePropertiesUpdateRemovalsList as any as S.Schema<PlanTableScanRequestSelectList>;
+
 /** List of fields for which the service should send column stats. */
 export type PlanTableScanRequestStatsFieldsList = Array<string>;
+const PlanTableScanRequestStatsFieldsList =
+  RemovePropertiesUpdateRemovalsList as any as S.Schema<PlanTableScanRequestStatsFieldsList>;
+
 export interface PlanTableScanRequest {
   /** A namespace identifier as a single string. Multipart namespace parts must be separated by the namespace separator as indicated via the /config override `namespace-separator`, which defaults to the unit separator `0x1F` byte (url encoded `%1F`). To be compatible with older clients, servers must use both the advertised separator and `0x1F` as valid separators when decoding namespaces. The `namespace-separator` should be provided in a url encoded form. */
   namespace: string;
@@ -1394,6 +1989,11 @@ export interface PlanTableScanRequest {
   /** List of fields for which the service should send column stats. */
   stats_fields?: PlanTableScanRequestStatsFieldsList;
 }
+const PlanTableScanRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  1,
+) as any as S.Schema<PlanTableScanRequest>;
+
 /** Delete files referenced by file scan tasks */
 export type CompletedPlanningWithIDResultDeleteFilesList = Array<DeleteFile>;
 export type CompletedPlanningWithIDResultFileScanTasksList = Array<FileScanTask>;
@@ -1422,13 +2022,23 @@ export type PlanTableScanResult =
   | FailedPlanningResult
   | AsyncPlanningResult
   | EmptyPlanningResult;
+const PlanTableScanResult = /*@__PURE__*/ S.Unknown as any as S.Schema<PlanTableScanResult>;
+
 export type PlanTableScanResponse = PlanTableScanResult;
+const PlanTableScanResponse = /*@__PURE__*/ __L.at(
+  __c15,
+  2,
+) as any as S.Schema<PlanTableScanResponse>;
+
 export type RegisterTableRequestXIcebergAccessDelegationItem =
   | "vended-credentials"
   | "remote-signing";
 export type RegisterTableRequestXIcebergAccessDelegationList = Array<
   RegisterTableRequestXIcebergAccessDelegationItem | (string & {})
 >;
+const RegisterTableRequestXIcebergAccessDelegationList =
+  CancelPlanningRequestXIcebergAccessDelegationList as any as S.Schema<RegisterTableRequestXIcebergAccessDelegationList>;
+
 export interface RegisterTableRequest {
   /** A namespace identifier as a single string. Multipart namespace parts must be separated by the namespace separator as indicated via the /config override `namespace-separator`, which defaults to the unit separator `0x1F` byte (url encoded `%1F`). To be compatible with older clients, servers must use both the advertised separator and `0x1F` as valid separators when decoding namespaces. The `namespace-separator` should be provided in a url encoded form. */
   namespace: string;
@@ -1441,6 +2051,11 @@ export interface RegisterTableRequest {
   /** Whether to overwrite table metadata if the table already exists */
   overwrite?: boolean;
 }
+const RegisterTableRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  3,
+) as any as S.Schema<RegisterTableRequest>;
+
 export interface RegisterViewRequest {
   /** A namespace identifier as a single string. Multipart namespace parts must be separated by the namespace separator as indicated via the /config override `namespace-separator`, which defaults to the unit separator `0x1F` byte (url encoded `%1F`). To be compatible with older clients, servers must use both the advertised separator and `0x1F` as valid separators when decoding namespaces. The `namespace-separator` should be provided in a url encoded form. */
   namespace: string;
@@ -1449,26 +2064,43 @@ export interface RegisterViewRequest {
   name: string;
   metadata_location: string;
 }
+const RegisterViewRequest = /*@__PURE__*/ __L.at(__c15, 4) as any as S.Schema<RegisterViewRequest>;
+
 export interface RenameTableRequest {
   /** Optional client-provided idempotency key for safe request retries. When present, the server ensures no additional effects for requests that carry the same Idempotency-Key. If a prior request with this key has been finalized, the server returns an equivalent final response without re-running the operation. The response body may reflect a newer state of the catalog than existed at the time of the commit. Finalization rules: - Finalize & replay: 200, 201, 204, and deterministic terminal 4xx (including 409 such as AlreadyExists, NamespaceNotEmpty, etc.) - Do not finalize (not stored/replayed): 5xx Key Requirements: - Key format: UUIDv7 in string form (RFC 9562). - The idempotency key must be globally unique (no reuse across different operations). - Catalogs SHOULD NOT expire keys before the end of the advertised token lifetime. - If Idempotency-Key is used, clients MUST reuse the same key when retrying the same logical operation and MUST generate a new key for a different operation. */
   idempotencyKey?: string;
   source: TableIdentifier;
   destination: TableIdentifier;
 }
+const RenameTableRequest = /*@__PURE__*/ __L.at(__c15, 5) as any as S.Schema<RenameTableRequest>;
+
 export interface RenameTableResponse {}
+const RenameTableResponse = CancelPlanningResponse as any as S.Schema<RenameTableResponse>;
+
 export interface RenameViewRequest {
   /** Optional client-provided idempotency key for safe request retries. When present, the server ensures no additional effects for requests that carry the same Idempotency-Key. If a prior request with this key has been finalized, the server returns an equivalent final response without re-running the operation. The response body may reflect a newer state of the catalog than existed at the time of the commit. Finalization rules: - Finalize & replay: 200, 201, 204, and deterministic terminal 4xx (including 409 such as AlreadyExists, NamespaceNotEmpty, etc.) - Do not finalize (not stored/replayed): 5xx Key Requirements: - Key format: UUIDv7 in string form (RFC 9562). - The idempotency key must be globally unique (no reuse across different operations). - Catalogs SHOULD NOT expire keys before the end of the advertised token lifetime. - If Idempotency-Key is used, clients MUST reuse the same key when retrying the same logical operation and MUST generate a new key for a different operation. */
   idempotencyKey?: string;
   source: TableIdentifier;
   destination: TableIdentifier;
 }
+const RenameViewRequest = /*@__PURE__*/ __L.at(__c15, 6) as any as S.Schema<RenameViewRequest>;
+
 export interface RenameViewResponse {}
+const RenameViewResponse = CancelPlanningResponse as any as S.Schema<RenameViewResponse>;
+
 /** The view UUID must match the requirement's `uuid` */
 export interface AssertViewUUID {
   type: string;
   uuid: string;
 }
+const AssertViewUUID = /*@__PURE__*/ __L.at(__c15, 7) as any as S.Schema<AssertViewUUID>;
+
 export type ReplaceViewRequestRequirementsList = Array<AssertViewUUID>;
+const ReplaceViewRequestRequirementsList = /*@__PURE__*/ __L.at(
+  __c16,
+  0,
+) as any as S.Schema<ReplaceViewRequestRequirementsList>;
+
 export interface AddViewVersionUpdate {
   action: string;
   view_version: ViewVersion;
@@ -1487,7 +2119,14 @@ export type ViewUpdateInput =
   | RemovePropertiesUpdate
   | AddViewVersionUpdate
   | SetCurrentViewVersionUpdate;
+const ViewUpdateInput = /*@__PURE__*/ S.Unknown as any as S.Schema<ViewUpdateInput>;
+
 export type ReplaceViewRequestUpdatesList = Array<ViewUpdateInput>;
+const ReplaceViewRequestUpdatesList = /*@__PURE__*/ __L.at(
+  __c16,
+  1,
+) as any as S.Schema<ReplaceViewRequestUpdatesList>;
+
 export interface ReplaceViewRequest {
   /** A namespace identifier as a single string. Multipart namespace parts must be separated by the namespace separator as indicated via the /config override `namespace-separator`, which defaults to the unit separator `0x1F` byte (url encoded `%1F`). To be compatible with older clients, servers must use both the advertised separator and `0x1F` as valid separators when decoding namespaces. The `namespace-separator` should be provided in a url encoded form. */
   namespace: string;
@@ -1500,6 +2139,8 @@ export interface ReplaceViewRequest {
   requirements?: ReplaceViewRequestRequirementsList;
   updates: ReplaceViewRequestUpdatesList;
 }
+const ReplaceViewRequest = /*@__PURE__*/ __L.at(__c16, 2) as any as S.Schema<ReplaceViewRequest>;
+
 export interface ReportMetricsRequest {
   /** A namespace identifier as a single string. Multipart namespace parts must be separated by the namespace separator as indicated via the /config override `namespace-separator`, which defaults to the unit separator `0x1F` byte (url encoded `%1F`). To be compatible with older clients, servers must use both the advertised separator and `0x1F` as valid separators when decoding namespaces. The `namespace-separator` should be provided in a url encoded form. */
   namespace: string;
@@ -1507,7 +2148,14 @@ export interface ReportMetricsRequest {
   table: string;
   report_type: string;
 }
+const ReportMetricsRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  3,
+) as any as S.Schema<ReportMetricsRequest>;
+
 export interface ReportMetricsResponse {}
+const ReportMetricsResponse = CancelPlanningResponse as any as S.Schema<ReportMetricsResponse>;
+
 export type SignRequestRequestMethod =
   | "PUT"
   | "GET"
@@ -1516,7 +2164,12 @@ export type SignRequestRequestMethod =
   | "DELETE"
   | "PATCH"
   | "OPTIONS";
+const SignRequestRequestMethod = S.String;
+
 export type SignRequestRequestPropertiesMap = { [key: string]: string | undefined };
+const SignRequestRequestPropertiesMap =
+  SetPropertiesUpdateUpdatesMap as any as S.Schema<SignRequestRequestPropertiesMap>;
+
 export interface SignRequestRequest {
   /** A namespace identifier as a single string. Multipart namespace parts must be separated by the namespace separator as indicated via the /config override `namespace-separator`, which defaults to the unit separator `0x1F` byte (url encoded `%1F`). To be compatible with older clients, servers must use both the advertised separator and `0x1F` as valid separators when decoding namespaces. The `namespace-separator` should be provided in a url encoded form. */
   namespace: string;
@@ -1532,18 +2185,26 @@ export interface SignRequestRequest {
   /** The storage provider for which the request is to be signed. The provider should correspond to the scheme used for a storage native URI. For example `s3` for AWS S3 paths. For backwards compatibility, if this is not specified, the provider is assumed to be `s3`. */
   provider?: string;
 }
+const SignRequestRequest = /*@__PURE__*/ __L.at(__c16, 4) as any as S.Schema<SignRequestRequest>;
+
 /** The result of a remote request signing operation. */
 export interface RemoteSignResult {
   uri: string;
   headers: MultiValuedMap;
 }
+const RemoteSignResult = /*@__PURE__*/ __L.at(__c16, 5) as any as S.Schema<RemoteSignResult>;
+
 export interface TableExistsRequest {
   /** A namespace identifier as a single string. Multipart namespace parts must be separated by the namespace separator as indicated via the /config override `namespace-separator`, which defaults to the unit separator `0x1F` byte (url encoded `%1F`). To be compatible with older clients, servers must use both the advertised separator and `0x1F` as valid separators when decoding namespaces. The `namespace-separator` should be provided in a url encoded form. */
   namespace: string;
   /** A table name */
   table: string;
 }
+const TableExistsRequest = /*@__PURE__*/ __L.at(__c16, 6) as any as S.Schema<TableExistsRequest>;
+
 export interface TableExistsResponse {}
+const TableExistsResponse = CancelPlanningResponse as any as S.Schema<TableExistsResponse>;
+
 export interface UnregisterTableRequest {
   /** A namespace identifier as a single string. Multipart namespace parts must be separated by the namespace separator as indicated via the /config override `namespace-separator`, which defaults to the unit separator `0x1F` byte (url encoded `%1F`). To be compatible with older clients, servers must use both the advertised separator and `0x1F` as valid separators when decoding namespaces. The `namespace-separator` should be provided in a url encoded form. */
   namespace: string;
@@ -1552,14 +2213,30 @@ export interface UnregisterTableRequest {
   /** Optional client-provided idempotency key for safe request retries. When present, the server ensures no additional effects for requests that carry the same Idempotency-Key. If a prior request with this key has been finalized, the server returns an equivalent final response without re-running the operation. The response body may reflect a newer state of the catalog than existed at the time of the commit. Finalization rules: - Finalize & replay: 200, 201, 204, and deterministic terminal 4xx (including 409 such as AlreadyExists, NamespaceNotEmpty, etc.) - Do not finalize (not stored/replayed): 5xx Key Requirements: - Key format: UUIDv7 in string form (RFC 9562). - The idempotency key must be globally unique (no reuse across different operations). - Catalogs SHOULD NOT expire keys before the end of the advertised token lifetime. - If Idempotency-Key is used, clients MUST reuse the same key when retrying the same logical operation and MUST generate a new key for a different operation. */
   idempotencyKey?: string;
 }
+const UnregisterTableRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  7,
+) as any as S.Schema<UnregisterTableRequest>;
+
 /** Last metadata location and the corresponding table metadata for the table that was successfully unregistered and is no longer tracked by the catalog. */
 export interface UnregisterTableResult {
   /** The last metadata location for the table at the time it was unregistered. */
   metadata_location: string;
   metadata: TableMetadata;
 }
+const UnregisterTableResult = /*@__PURE__*/ __L.at(
+  __c17,
+  0,
+) as any as S.Schema<UnregisterTableResult>;
+
 export type UpdatePropertiesRequestRemovalsList = Array<string>;
+const UpdatePropertiesRequestRemovalsList =
+  RemovePropertiesUpdateRemovalsList as any as S.Schema<UpdatePropertiesRequestRemovalsList>;
+
 export type UpdatePropertiesRequestUpdatesMap = { [key: string]: string | undefined };
+const UpdatePropertiesRequestUpdatesMap =
+  SetPropertiesUpdateUpdatesMap as any as S.Schema<UpdatePropertiesRequestUpdatesMap>;
+
 export interface UpdatePropertiesRequest {
   /** A namespace identifier as a single string. Multipart namespace parts must be separated by the namespace separator as indicated via the /config override `namespace-separator`, which defaults to the unit separator `0x1F` byte (url encoded `%1F`). To be compatible with older clients, servers must use both the advertised separator and `0x1F` as valid separators when decoding namespaces. The `namespace-separator` should be provided in a url encoded form. */
   namespace: string;
@@ -1568,12 +2245,26 @@ export interface UpdatePropertiesRequest {
   removals?: UpdatePropertiesRequestRemovalsList;
   updates?: UpdatePropertiesRequestUpdatesMap;
 }
+const UpdatePropertiesRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  1,
+) as any as S.Schema<UpdatePropertiesRequest>;
+
 /** List of property keys that were added or updated */
 export type UpdateNamespacePropertiesResponseUpdatedList = Array<string>;
+const UpdateNamespacePropertiesResponseUpdatedList =
+  RemovePropertiesUpdateRemovalsList as any as S.Schema<UpdateNamespacePropertiesResponseUpdatedList>;
+
 /** List of properties that were removed */
 export type UpdateNamespacePropertiesResponseRemovedList = Array<string>;
+const UpdateNamespacePropertiesResponseRemovedList =
+  RemovePropertiesUpdateRemovalsList as any as S.Schema<UpdateNamespacePropertiesResponseRemovedList>;
+
 /** List of properties requested for removal that were not found in the namespace's properties. Represents a partial success response. Server's do not need to implement this. */
 export type UpdateNamespacePropertiesResponseMissingList = Array<string>;
+const UpdateNamespacePropertiesResponseMissingList =
+  RemovePropertiesUpdateRemovalsList as any as S.Schema<UpdateNamespacePropertiesResponseMissingList>;
+
 export interface UpdateNamespacePropertiesResponse {
   /** List of property keys that were added or updated */
   updated: UpdateNamespacePropertiesResponseUpdatedList;
@@ -1582,8 +2273,19 @@ export interface UpdateNamespacePropertiesResponse {
   /** List of properties requested for removal that were not found in the namespace's properties. Represents a partial success response. Server's do not need to implement this. */
   missing?: UpdateNamespacePropertiesResponseMissingList | null;
 }
+const UpdateNamespacePropertiesResponse = /*@__PURE__*/ __L.at(
+  __c17,
+  2,
+) as any as S.Schema<UpdateNamespacePropertiesResponse>;
+
 export type UpdateTableRequestRequirementsList = Array<TableRequirement>;
+const UpdateTableRequestRequirementsList =
+  CommitTableRequestInputRequirementsList as any as S.Schema<UpdateTableRequestRequirementsList>;
+
 export type UpdateTableRequestUpdatesList = Array<TableUpdateInput>;
+const UpdateTableRequestUpdatesList =
+  CommitTableRequestInputUpdatesList as any as S.Schema<UpdateTableRequestUpdatesList>;
+
 export interface UpdateTableRequest {
   /** A namespace identifier as a single string. Multipart namespace parts must be separated by the namespace separator as indicated via the /config override `namespace-separator`, which defaults to the unit separator `0x1F` byte (url encoded `%1F`). To be compatible with older clients, servers must use both the advertised separator and `0x1F` as valid separators when decoding namespaces. The `namespace-separator` should be provided in a url encoded form. */
   namespace: string;
@@ -1596,17 +2298,25 @@ export interface UpdateTableRequest {
   requirements: UpdateTableRequestRequirementsList;
   updates: UpdateTableRequestUpdatesList;
 }
+const UpdateTableRequest = /*@__PURE__*/ __L.at(__c17, 3) as any as S.Schema<UpdateTableRequest>;
+
 export interface CommitTableResponse {
   metadata_location: string;
   metadata: TableMetadata;
 }
+const CommitTableResponse = UnregisterTableResult as any as S.Schema<CommitTableResponse>;
+
 export interface ViewExistsRequest {
   /** A namespace identifier as a single string. Multipart namespace parts must be separated by the namespace separator as indicated via the /config override `namespace-separator`, which defaults to the unit separator `0x1F` byte (url encoded `%1F`). To be compatible with older clients, servers must use both the advertised separator and `0x1F` as valid separators when decoding namespaces. The `namespace-separator` should be provided in a url encoded form. */
   namespace: string;
   /** A view name */
   view: string;
 }
+const ViewExistsRequest = /*@__PURE__*/ __L.at(__c17, 4) as any as S.Schema<ViewExistsRequest>;
+
 export interface ViewExistsResponse {}
+const ViewExistsResponse = CancelPlanningResponse as any as S.Schema<ViewExistsResponse>;
+
 export type CancelPlanningError =
   | NoSuchNamespaceException
   | NoSuchPlanIdException
@@ -1619,8 +2329,8 @@ export const cancelPlanning: API.OperationMethod<
   CancelPlanningError,
   IcebergOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1) as any as S.Schema<CancelPlanningRequest>,
-  output: __S(2) as any as S.Schema<CancelPlanningResponse>,
+  input: CancelPlanningRequest,
+  output: CancelPlanningResponse,
   errors: [NoSuchNamespaceException, NoSuchPlanIdException, NoSuchTableException],
   protocol: IcebergProtocol,
   retry: Retry.Retry,
@@ -1638,8 +2348,8 @@ export const commitTransaction: API.OperationMethod<
   CommitTransactionError,
   IcebergOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29) as any as S.Schema<CommitTransactionRequest>,
-  output: __S(30) as any as S.Schema<CommitTransactionResponse>,
+  input: CommitTransactionRequest,
+  output: CommitTransactionResponse,
   errors: [CommitFailedException, CommitStateUnknownException, NoSuchTableException],
   protocol: IcebergProtocol,
   retry: Retry.Retry,
@@ -1656,8 +2366,8 @@ export const createNamespace: API.OperationMethod<
   CreateNamespaceError,
   IcebergOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31) as any as S.Schema<CreateNamespaceRequest>,
-  output: __S(32) as any as S.Schema<CreateNamespaceResponse>,
+  input: CreateNamespaceRequest,
+  output: CreateNamespaceResponse,
   errors: [AlreadyExistsException, UnsupportedOperationException],
   protocol: IcebergProtocol,
   retry: Retry.Retry,
@@ -1671,8 +2381,8 @@ export const createTable: API.OperationMethod<
   CreateTableError,
   IcebergOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33) as any as S.Schema<CreateTableRequest>,
-  output: __S(62) as any as S.Schema<LoadTableResult>,
+  input: CreateTableRequest,
+  output: LoadTableResult,
   errors: [AlreadyExistsException, NoSuchNamespaceException],
   protocol: IcebergProtocol,
   retry: Retry.Retry,
@@ -1686,8 +2396,8 @@ export const createView: API.OperationMethod<
   CreateViewError,
   IcebergOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(66) as any as S.Schema<CreateViewRequest>,
-  output: __S(71) as any as S.Schema<LoadViewResult>,
+  input: CreateViewRequest,
+  output: LoadViewResult,
   errors: [AlreadyExistsException, NoSuchNamespaceException],
   protocol: IcebergProtocol,
   retry: Retry.Retry,
@@ -1704,8 +2414,8 @@ export const dropNamespace: API.OperationMethod<
   DropNamespaceError,
   IcebergOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(72) as any as S.Schema<DropNamespaceRequest>,
-  output: __S(2) as any as S.Schema<DropNamespaceResponse>,
+  input: DropNamespaceRequest,
+  output: DropNamespaceResponse,
   errors: [NamespaceNotEmptyException, NoSuchNamespaceException],
   protocol: IcebergProtocol,
   retry: Retry.Retry,
@@ -1719,8 +2429,8 @@ export const dropTable: API.OperationMethod<
   DropTableError,
   IcebergOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(73) as any as S.Schema<DropTableRequest>,
-  output: __S(2) as any as S.Schema<DropTableResponse>,
+  input: DropTableRequest,
+  output: DropTableResponse,
   errors: [NoSuchTableException],
   protocol: IcebergProtocol,
   retry: Retry.Retry,
@@ -1734,8 +2444,8 @@ export const dropView: API.OperationMethod<
   DropViewError,
   IcebergOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(74) as any as S.Schema<DropViewRequest>,
-  output: __S(2) as any as S.Schema<DropViewResponse>,
+  input: DropViewRequest,
+  output: DropViewResponse,
   errors: [NoSuchViewException],
   protocol: IcebergProtocol,
   retry: Retry.Retry,
@@ -1753,8 +2463,8 @@ export const fetchPlanningResult: API.OperationMethod<
   FetchPlanningResultError,
   IcebergOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(75) as any as S.Schema<FetchPlanningResultRequest>,
-  output: __S(84) as any as S.Schema<FetchPlanningResultResponse>,
+  input: FetchPlanningResultRequest,
+  output: FetchPlanningResultResponse,
   errors: [NoSuchNamespaceException, NoSuchPlanIdException, NoSuchTableException],
   protocol: IcebergProtocol,
   retry: Retry.Retry,
@@ -1772,8 +2482,8 @@ export const fetchScanTasks: API.OperationMethod<
   FetchScanTasksError,
   IcebergOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(85) as any as S.Schema<FetchScanTasksRequest>,
-  output: __S(86) as any as S.Schema<FetchScanTasksResponse>,
+  input: FetchScanTasksRequest,
+  output: FetchScanTasksResponse,
   errors: [NoSuchNamespaceException, NoSuchPlanTaskException, NoSuchTableException],
   protocol: IcebergProtocol,
   retry: Retry.Retry,
@@ -1787,8 +2497,8 @@ export const getConfig: API.OperationMethod<
   GetConfigError,
   IcebergOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(87) as any as S.Schema<GetConfigRequest>,
-  output: __S(88) as any as S.Schema<CatalogConfig>,
+  input: GetConfigRequest,
+  output: CatalogConfig,
   errors: [NoSuchWarehouseException],
   protocol: IcebergProtocol,
   retry: Retry.Retry,
@@ -1804,8 +2514,8 @@ export const listFunctions: API.PaginatedOperationMethod<
   CatalogObjectIdentifier
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(89) as any as S.Schema<ListFunctionsRequest>,
-    output: __S(91) as any as S.Schema<ListFunctionsResponse>,
+    input: ListFunctionsRequest,
+    output: ListFunctionsResponse,
     errors: [NoSuchNamespaceException],
     protocol: IcebergProtocol,
     retry: Retry.Retry,
@@ -1830,8 +2540,8 @@ export const listNamespaces: API.PaginatedOperationMethod<
   Namespace
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(92) as any as S.Schema<ListNamespacesRequest>,
-    output: __S(94) as any as S.Schema<ListNamespacesResponse>,
+    input: ListNamespacesRequest,
+    output: ListNamespacesResponse,
     errors: [NoSuchNamespaceException],
     protocol: IcebergProtocol,
     retry: Retry.Retry,
@@ -1856,8 +2566,8 @@ export const listTables: API.PaginatedOperationMethod<
   TableIdentifier
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(95) as any as S.Schema<ListTablesRequest>,
-    output: __S(97) as any as S.Schema<ListTablesResponse>,
+    input: ListTablesRequest,
+    output: ListTablesResponse,
     errors: [NoSuchNamespaceException],
     protocol: IcebergProtocol,
     retry: Retry.Retry,
@@ -1882,8 +2592,8 @@ export const listViews: API.PaginatedOperationMethod<
   TableIdentifier
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(98) as any as S.Schema<ListViewsRequest>,
-    output: __S(97) as any as S.Schema<ListTablesResponse>,
+    input: ListViewsRequest,
+    output: ListTablesResponse,
     errors: [NoSuchNamespaceException],
     protocol: IcebergProtocol,
     retry: Retry.Retry,
@@ -1906,8 +2616,8 @@ export const loadCredentials: API.OperationMethod<
   LoadCredentialsError,
   IcebergOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(99) as any as S.Schema<LoadCredentialsRequest>,
-  output: __S(100) as any as S.Schema<LoadCredentialsResponse>,
+  input: LoadCredentialsRequest,
+  output: LoadCredentialsResponse,
   errors: [NoSuchTableException],
   protocol: IcebergProtocol,
   retry: Retry.Retry,
@@ -1921,8 +2631,8 @@ export const loadFunction: API.OperationMethod<
   LoadFunctionError,
   IcebergOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(101) as any as S.Schema<LoadFunctionRequest>,
-  output: __S(115) as any as S.Schema<LoadFunctionResult>,
+  input: LoadFunctionRequest,
+  output: LoadFunctionResult,
   errors: [NoSuchFunctionException, NoSuchNamespaceException],
   protocol: IcebergProtocol,
   retry: Retry.Retry,
@@ -1936,8 +2646,8 @@ export const loadNamespaceMetadata: API.OperationMethod<
   LoadNamespaceMetadataError,
   IcebergOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(116) as any as S.Schema<LoadNamespaceMetadataRequest>,
-  output: __S(117) as any as S.Schema<GetNamespaceResponse>,
+  input: LoadNamespaceMetadataRequest,
+  output: GetNamespaceResponse,
   errors: [NoSuchNamespaceException],
   protocol: IcebergProtocol,
   retry: Retry.Retry,
@@ -1951,8 +2661,8 @@ export const loadTable: API.OperationMethod<
   LoadTableError,
   IcebergOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(118) as any as S.Schema<LoadTableRequest>,
-  output: __S(62) as any as S.Schema<LoadTableResult>,
+  input: LoadTableRequest,
+  output: LoadTableResult,
   errors: [NoSuchTableException],
   protocol: IcebergProtocol,
   retry: Retry.Retry,
@@ -1966,8 +2676,8 @@ export const loadView: API.OperationMethod<
   LoadViewError,
   IcebergOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(119) as any as S.Schema<LoadViewRequest>,
-  output: __S(71) as any as S.Schema<LoadViewResult>,
+  input: LoadViewRequest,
+  output: LoadViewResult,
   errors: [NoSuchViewException],
   protocol: IcebergProtocol,
   retry: Retry.Retry,
@@ -1981,8 +2691,8 @@ export const namespaceExists: API.OperationMethod<
   NamespaceExistsError,
   IcebergOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(120) as any as S.Schema<NamespaceExistsRequest>,
-  output: __S(2) as any as S.Schema<NamespaceExistsResponse>,
+  input: NamespaceExistsRequest,
+  output: NamespaceExistsResponse,
   errors: [],
   protocol: IcebergProtocol,
   retry: Retry.Retry,
@@ -2000,8 +2710,8 @@ export const planTableScan: API.OperationMethod<
   PlanTableScanError,
   IcebergOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(121) as any as S.Schema<PlanTableScanRequest>,
-  output: __S(122) as any as S.Schema<PlanTableScanResponse>,
+  input: PlanTableScanRequest,
+  output: PlanTableScanResponse,
   errors: [NoSuchNamespaceException, NoSuchTableException, UnsupportedOperationException],
   protocol: IcebergProtocol,
   retry: Retry.Retry,
@@ -2015,8 +2725,8 @@ export const registerTable: API.OperationMethod<
   RegisterTableError,
   IcebergOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(123) as any as S.Schema<RegisterTableRequest>,
-  output: __S(62) as any as S.Schema<LoadTableResult>,
+  input: RegisterTableRequest,
+  output: LoadTableResult,
   errors: [AlreadyExistsException, NoSuchNamespaceException],
   protocol: IcebergProtocol,
   retry: Retry.Retry,
@@ -2030,8 +2740,8 @@ export const registerView: API.OperationMethod<
   RegisterViewError,
   IcebergOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(124) as any as S.Schema<RegisterViewRequest>,
-  output: __S(71) as any as S.Schema<LoadViewResult>,
+  input: RegisterViewRequest,
+  output: LoadViewResult,
   errors: [AlreadyExistsException, NoSuchNamespaceException],
   protocol: IcebergProtocol,
   retry: Retry.Retry,
@@ -2049,8 +2759,8 @@ export const renameTable: API.OperationMethod<
   RenameTableError,
   IcebergOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(125) as any as S.Schema<RenameTableRequest>,
-  output: __S(2) as any as S.Schema<RenameTableResponse>,
+  input: RenameTableRequest,
+  output: RenameTableResponse,
   errors: [NoSuchNamespaceException, NoSuchTableException, UnsupportedOperationException],
   protocol: IcebergProtocol,
   retry: Retry.Retry,
@@ -2068,8 +2778,8 @@ export const renameView: API.OperationMethod<
   RenameViewError,
   IcebergOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(126) as any as S.Schema<RenameViewRequest>,
-  output: __S(2) as any as S.Schema<RenameViewResponse>,
+  input: RenameViewRequest,
+  output: RenameViewResponse,
   errors: [NoSuchNamespaceException, NoSuchViewException, UnsupportedOperationException],
   protocol: IcebergProtocol,
   retry: Retry.Retry,
@@ -2087,8 +2797,8 @@ export const replaceView: API.OperationMethod<
   ReplaceViewError,
   IcebergOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(130) as any as S.Schema<ReplaceViewRequest>,
-  output: __S(71) as any as S.Schema<LoadViewResult>,
+  input: ReplaceViewRequest,
+  output: LoadViewResult,
   errors: [CommitFailedException, CommitStateUnknownException, NoSuchViewException],
   protocol: IcebergProtocol,
   retry: Retry.Retry,
@@ -2102,8 +2812,8 @@ export const reportMetrics: API.OperationMethod<
   ReportMetricsError,
   IcebergOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(131) as any as S.Schema<ReportMetricsRequest>,
-  output: __S(2) as any as S.Schema<ReportMetricsResponse>,
+  input: ReportMetricsRequest,
+  output: ReportMetricsResponse,
   errors: [NoSuchTableException],
   protocol: IcebergProtocol,
   retry: Retry.Retry,
@@ -2117,8 +2827,8 @@ export const signRequest: API.OperationMethod<
   SignRequestError,
   IcebergOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(132) as any as S.Schema<SignRequestRequest>,
-  output: __S(133) as any as S.Schema<RemoteSignResult>,
+  input: SignRequestRequest,
+  output: RemoteSignResult,
   errors: [],
   protocol: IcebergProtocol,
   retry: Retry.Retry,
@@ -2132,8 +2842,8 @@ export const tableExists: API.OperationMethod<
   TableExistsError,
   IcebergOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(134) as any as S.Schema<TableExistsRequest>,
-  output: __S(2) as any as S.Schema<TableExistsResponse>,
+  input: TableExistsRequest,
+  output: TableExistsResponse,
   errors: [],
   protocol: IcebergProtocol,
   retry: Retry.Retry,
@@ -2147,8 +2857,8 @@ export const unregisterTable: API.OperationMethod<
   UnregisterTableError,
   IcebergOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(135) as any as S.Schema<UnregisterTableRequest>,
-  output: __S(136) as any as S.Schema<UnregisterTableResult>,
+  input: UnregisterTableRequest,
+  output: UnregisterTableResult,
   errors: [NoSuchTableException],
   protocol: IcebergProtocol,
   retry: Retry.Retry,
@@ -2166,8 +2876,8 @@ export const updateProperties: API.OperationMethod<
   UpdatePropertiesError,
   IcebergOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(137) as any as S.Schema<UpdatePropertiesRequest>,
-  output: __S(138) as any as S.Schema<UpdateNamespacePropertiesResponse>,
+  input: UpdatePropertiesRequest,
+  output: UpdateNamespacePropertiesResponse,
   errors: [NoSuchNamespaceException, UnprocessableEntityException, UnsupportedOperationException],
   protocol: IcebergProtocol,
   retry: Retry.Retry,
@@ -2185,8 +2895,8 @@ export const updateTable: API.OperationMethod<
   UpdateTableError,
   IcebergOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(139) as any as S.Schema<UpdateTableRequest>,
-  output: __S(136) as any as S.Schema<CommitTableResponse>,
+  input: UpdateTableRequest,
+  output: CommitTableResponse,
   errors: [CommitFailedException, CommitStateUnknownException, NoSuchTableException],
   protocol: IcebergProtocol,
   retry: Retry.Retry,
@@ -2200,8 +2910,8 @@ export const viewExists: API.OperationMethod<
   ViewExistsError,
   IcebergOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(140) as any as S.Schema<ViewExistsRequest>,
-  output: __S(2) as any as S.Schema<ViewExistsResponse>,
+  input: ViewExistsRequest,
+  output: ViewExistsResponse,
   errors: [],
   protocol: IcebergProtocol,
   retry: Retry.Retry,
@@ -2211,7 +2921,7 @@ export const viewExists: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
+      return S.Array(CancelPlanningRequestXIcebergAccessDelegationItem);
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2219,7 +2929,9 @@ function __c0(j: number): any {
           table: S.String.pipe(T.Label()),
           plan_id: S.String.pipe(T.Label()),
           xIcebergAccessDelegation: S.optional(
-            __S(0).pipe(T.Header("X-Iceberg-Access-Delegation")),
+            CancelPlanningRequestXIcebergAccessDelegationList.pipe(
+              T.Header("X-Iceberg-Access-Delegation"),
+            ),
           ),
           idempotencyKey: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
         })
@@ -2241,7 +2953,7 @@ function __c0(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          namespace: __S(3),
+          namespace: Namespace,
           name: S.String,
         }),
       ).annotate({ identifier: "TableIdentifier" });
@@ -2252,17 +2964,17 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "TableRequirement" });
     case 6:
-      return S.Array(__S(5));
+      return S.Array(TableRequirement);
     case 7:
       return S.suspend(() =>
         S.Struct({
           id: S.Number,
           name: S.String,
-          type: S.Unknown,
+          type: Type,
           required: S.Boolean,
           doc: S.optional(S.String),
-          initial_default: S.optional(S.Unknown.pipe(T.Body("initial-default"))),
-          write_default: S.optional(S.Unknown.pipe(T.Body("write-default"))),
+          initial_default: S.optional(PrimitiveTypeValue.pipe(T.Body("initial-default"))),
+          write_default: S.optional(PrimitiveTypeValue.pipe(T.Body("write-default"))),
         }),
       ).annotate({ identifier: "StructField" });
   }
@@ -2270,15 +2982,17 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(7));
+      return S.Array(StructField);
     case 1:
       return S.Array(S.Number);
     case 2:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
-          fields: __S(8),
-          identifier_field_ids: S.optional(__S(9).pipe(T.Body("identifier-field-ids"))),
+          fields: SchemaInputFieldsList,
+          identifier_field_ids: S.optional(
+            SchemaInputIdentifierFieldIdsList.pipe(T.Body("identifier-field-ids")),
+          ),
         }),
       ).annotate({ identifier: "SchemaInput" });
     case 3:
@@ -2291,11 +3005,11 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "PartitionField" });
     case 4:
-      return S.Array(__S(11));
+      return S.Array(PartitionField);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          fields: __S(12),
+          fields: PartitionSpecInputFieldsList,
         }),
       ).annotate({ identifier: "PartitionSpecInput" });
     case 6:
@@ -2303,12 +3017,12 @@ function __c1(j: number): any {
         S.Struct({
           source_id: S.Number.pipe(T.Body("source-id")),
           transform: S.String,
-          direction: S.String,
-          null_order: S.String.pipe(T.Body("null-order")),
+          direction: SortDirection,
+          null_order: NullOrder.pipe(T.Body("null-order")),
         }),
       ).annotate({ identifier: "SortField" });
     case 7:
-      return S.Array(__S(14));
+      return S.Array(SortField);
   }
 }
 function __c2(j: number): any {
@@ -2316,13 +3030,13 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          fields: __S(15),
+          fields: SortOrderInputFieldsList,
         }),
       ).annotate({ identifier: "SortOrderInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          operation: S.String,
+          operation: SnapshotSummaryOperation,
         }),
       ).annotate({ identifier: "SnapshotSummary" });
     case 2:
@@ -2335,7 +3049,7 @@ function __c2(j: number): any {
           manifest_list: S.String.pipe(T.Body("manifest-list")),
           first_row_id: S.optional(S.Number.pipe(T.Body("first-row-id"))),
           added_rows: S.optional(S.Number.pipe(T.Body("added-rows"))),
-          summary: __S(17),
+          summary: SnapshotSummary,
           schema_id: S.optional(S.Number.pipe(T.Body("schema-id"))),
         }),
       ).annotate({ identifier: "Snapshot" });
@@ -2349,12 +3063,12 @@ function __c2(j: number): any {
           type: S.String,
           snapshot_id: S.Number.pipe(T.Body("snapshot-id")),
           sequence_number: S.Number.pipe(T.Body("sequence-number")),
-          fields: __S(9),
-          properties: S.optional(__S(19)),
+          fields: BlobMetadataFieldsList,
+          properties: S.optional(BlobMetadataPropertiesMap),
         }),
       ).annotate({ identifier: "BlobMetadata" });
     case 6:
-      return S.Array(__S(21));
+      return S.Array(BlobMetadata);
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -2362,7 +3076,7 @@ function __c2(j: number): any {
           statistics_path: S.String.pipe(T.Body("statistics-path")),
           file_size_in_bytes: S.Number.pipe(T.Body("file-size-in-bytes")),
           file_footer_size_in_bytes: S.Number.pipe(T.Body("file-footer-size-in-bytes")),
-          blob_metadata: __S(22).pipe(T.Body("blob-metadata")),
+          blob_metadata: StatisticsFileBlobMetadataList.pipe(T.Body("blob-metadata")),
         }),
       ).annotate({ identifier: "StatisticsFile" });
   }
@@ -2383,26 +3097,26 @@ function __c3(j: number): any {
           key_id: S.String.pipe(T.Body("key-id")),
           encrypted_key_metadata: S.String.pipe(T.Body("encrypted-key-metadata")),
           encrypted_by_id: S.optional(S.String.pipe(T.Body("encrypted-by-id"))),
-          properties: S.optional(__S(19)),
+          properties: S.optional(EncryptedKeyPropertiesMap),
         }),
       ).annotate({ identifier: "EncryptedKey" });
     case 2:
-      return S.Array(S.Unknown);
+      return S.Array(TableUpdateInput);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          identifier: S.optional(__S(4)),
-          requirements: __S(6),
-          updates: __S(26),
+          identifier: S.optional(TableIdentifier),
+          requirements: CommitTableRequestInputRequirementsList,
+          updates: CommitTableRequestInputUpdatesList,
         }),
       ).annotate({ identifier: "CommitTableRequestInput" });
     case 4:
-      return S.Array(__S(27));
+      return S.Array(CommitTableRequestInput);
     case 5:
       return S.suspend(() =>
         S.Struct({
           idempotencyKey: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
-          table_changes: __S(28).pipe(T.Body("table-changes")),
+          table_changes: CommitTransactionRequestTableChangesList.pipe(T.Body("table-changes")),
         })
           .pipe(T.Http({ method: "POST", uri: "/transactions/commit", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -2415,8 +3129,8 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           idempotencyKey: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
-          namespace: __S(3),
-          properties: S.optional(__S(19)),
+          namespace: Namespace,
+          properties: S.optional(CreateNamespaceRequestPropertiesMap),
         })
           .pipe(T.Http({ method: "POST", uri: "/namespaces", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -2428,8 +3142,8 @@ function __c4(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          namespace: __S(3),
-          properties: S.optional(__S(19)),
+          namespace: Namespace,
+          properties: S.optional(CreateNamespaceResponsePropertiesMap),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "CreateNamespaceResponse" });
     case 1:
@@ -2437,16 +3151,18 @@ function __c4(j: number): any {
         S.Struct({
           namespace: S.String.pipe(T.Label()),
           xIcebergAccessDelegation: S.optional(
-            __S(0).pipe(T.Header("X-Iceberg-Access-Delegation")),
+            CreateTableRequestXIcebergAccessDelegationList.pipe(
+              T.Header("X-Iceberg-Access-Delegation"),
+            ),
           ),
           idempotencyKey: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
           name: S.String,
           location: S.optional(S.String),
-          schema: __S(10),
-          partition_spec: S.optional(__S(13).pipe(T.Body("partition-spec"))),
-          write_order: S.optional(__S(16).pipe(T.Body("write-order"))),
+          schema: SchemaInput,
+          partition_spec: S.optional(PartitionSpecInput.pipe(T.Body("partition-spec"))),
+          write_order: S.optional(SortOrderInput.pipe(T.Body("write-order"))),
           stage_create: S.optional(S.Boolean.pipe(T.Body("stage-create"))),
-          properties: S.optional(__S(19)),
+          properties: S.optional(CreateTableRequestPropertiesMap),
         })
           .pipe(T.Http({ method: "POST", uri: "/namespaces/{namespace}/tables", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -2455,43 +3171,45 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           type: S.String,
-          fields: __S(8),
+          fields: SchemaFieldsList,
           schema_id: S.optional(S.Number.pipe(T.Body("schema-id"))),
-          identifier_field_ids: S.optional(__S(9).pipe(T.Body("identifier-field-ids"))),
+          identifier_field_ids: S.optional(
+            SchemaIdentifierFieldIdsList.pipe(T.Body("identifier-field-ids")),
+          ),
         }),
       ).annotate({ identifier: "Schema" });
     case 3:
-      return S.Array(__S(34));
+      return S.Array(Schema);
     case 4:
       return S.suspend(() =>
         S.Struct({
           spec_id: S.optional(S.Number.pipe(T.Body("spec-id"))),
-          fields: __S(12),
+          fields: PartitionSpecFieldsList,
         }),
       ).annotate({ identifier: "PartitionSpec" });
     case 5:
-      return S.Array(__S(36));
+      return S.Array(PartitionSpec);
     case 6:
       return S.suspend(() =>
         S.Struct({
           order_id: S.Number.pipe(T.Body("order-id")),
-          fields: __S(15),
+          fields: SortOrderFieldsList,
         }),
       ).annotate({ identifier: "SortOrder" });
     case 7:
-      return S.Array(__S(38));
+      return S.Array(SortOrder);
   }
 }
 function __c5(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(25));
+      return S.Array(EncryptedKey);
     case 1:
-      return S.Array(__S(18));
+      return S.Array(Snapshot);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          type: S.String,
+          type: SnapshotReferenceType,
           snapshot_id: S.Number.pipe(T.Body("snapshot-id")),
           max_ref_age_ms: S.optional(S.Number.pipe(T.Body("max-ref-age-ms"))),
           max_snapshot_age_ms: S.optional(S.Number.pipe(T.Body("max-snapshot-age-ms"))),
@@ -2499,7 +3217,7 @@ function __c5(j: number): any {
         }),
       ).annotate({ identifier: "SnapshotReference" });
     case 3:
-      return S.Record(S.String, __S(42));
+      return S.Record(S.String, SnapshotReference);
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -2508,7 +3226,7 @@ function __c5(j: number): any {
         }),
       ).annotate({ identifier: "SnapshotLogItem" });
     case 5:
-      return S.Array(__S(44));
+      return S.Array(SnapshotLogItem);
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -2517,15 +3235,15 @@ function __c5(j: number): any {
         }),
       ).annotate({ identifier: "MetadataLogItem" });
     case 7:
-      return S.Array(__S(46));
+      return S.Array(MetadataLogItem);
   }
 }
 function __c6(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(23));
+      return S.Array(StatisticsFile);
     case 1:
-      return S.Array(__S(24));
+      return S.Array(PartitionStatisticsFile);
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -2534,42 +3252,48 @@ function __c6(j: number): any {
           location: S.optional(S.String),
           last_updated_ms: S.optional(S.Number.pipe(T.Body("last-updated-ms"))),
           next_row_id: S.optional(S.Number.pipe(T.Body("next-row-id"))),
-          properties: S.optional(__S(19)),
-          schemas: S.optional(__S(35)),
+          properties: S.optional(TableMetadataPropertiesMap),
+          schemas: S.optional(TableMetadataSchemasList),
           current_schema_id: S.optional(S.Number.pipe(T.Body("current-schema-id"))),
           last_column_id: S.optional(S.Number.pipe(T.Body("last-column-id"))),
-          partition_specs: S.optional(__S(37).pipe(T.Body("partition-specs"))),
+          partition_specs: S.optional(
+            TableMetadataPartitionSpecsList.pipe(T.Body("partition-specs")),
+          ),
           default_spec_id: S.optional(S.Number.pipe(T.Body("default-spec-id"))),
           last_partition_id: S.optional(S.Number.pipe(T.Body("last-partition-id"))),
-          sort_orders: S.optional(__S(39).pipe(T.Body("sort-orders"))),
+          sort_orders: S.optional(TableMetadataSortOrdersList.pipe(T.Body("sort-orders"))),
           default_sort_order_id: S.optional(S.Number.pipe(T.Body("default-sort-order-id"))),
-          encryption_keys: S.optional(__S(40).pipe(T.Body("encryption-keys"))),
-          snapshots: S.optional(__S(41)),
-          refs: S.optional(__S(43)),
+          encryption_keys: S.optional(
+            TableMetadataEncryptionKeysList.pipe(T.Body("encryption-keys")),
+          ),
+          snapshots: S.optional(TableMetadataSnapshotsList),
+          refs: S.optional(SnapshotReferences),
           current_snapshot_id: S.optional(S.Number.pipe(T.Body("current-snapshot-id"))),
           last_sequence_number: S.optional(S.Number.pipe(T.Body("last-sequence-number"))),
-          snapshot_log: S.optional(__S(45).pipe(T.Body("snapshot-log"))),
-          metadata_log: S.optional(__S(47).pipe(T.Body("metadata-log"))),
-          statistics: S.optional(__S(48)),
-          partition_statistics: S.optional(__S(49).pipe(T.Body("partition-statistics"))),
+          snapshot_log: S.optional(SnapshotLog.pipe(T.Body("snapshot-log"))),
+          metadata_log: S.optional(MetadataLog.pipe(T.Body("metadata-log"))),
+          statistics: S.optional(TableMetadataStatisticsList),
+          partition_statistics: S.optional(
+            TableMetadataPartitionStatisticsList.pipe(T.Body("partition-statistics")),
+          ),
         }),
       ).annotate({ identifier: "TableMetadata" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           prefix: S.String,
-          config: __S(19),
+          config: StorageCredentialConfigMap,
         }),
       ).annotate({ identifier: "StorageCredential" });
     case 4:
-      return S.Array(__S(51));
+      return S.Array(StorageCredential);
     case 5:
-      return S.Record(S.String, __S(20));
+      return S.Record(S.String, MultiValuedMapValueList);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          properties: S.optional(__S(19)),
-          headers: S.optional(__S(53)),
+          properties: S.optional(RemoteSigningConfigPropertiesMap),
+          headers: S.optional(MultiValuedMap),
         }),
       ).annotate({ identifier: "RemoteSigningConfig" });
     case 7:
@@ -2584,44 +3308,50 @@ function __c6(j: number): any {
 function __c7(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(55));
+      return S.Array(Action);
     case 1:
-      return S.Array(S.Unknown);
+      return S.Array(PrimitiveTypeValue);
     case 2:
       return S.suspend(() =>
         S.Struct({
           required_column_projections: S.optional(
-            __S(56).pipe(T.Body("required-column-projections")),
+            ReadRestrictionsRequiredColumnProjectionsList.pipe(
+              T.Body("required-column-projections"),
+            ),
           ),
-          required_row_filter: S.optional(S.Unknown.pipe(T.Body("required-row-filter"))),
+          required_row_filter: S.optional(Predicate.pipe(T.Body("required-row-filter"))),
         }),
       ).annotate({ identifier: "ReadRestrictions" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           field_id: S.Number.pipe(T.Body("field-id")),
-          labels: __S(19),
+          labels: FieldLabelsLabelsMap,
         }),
       ).annotate({ identifier: "FieldLabels" });
     case 4:
-      return S.Array(__S(59));
+      return S.Array(FieldLabels);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          object_labels: S.optional(__S(19).pipe(T.Body("object-labels"))),
-          fields: S.optional(__S(60)),
+          object_labels: S.optional(CatalogObjectLabels.pipe(T.Body("object-labels"))),
+          fields: S.optional(LabelsFieldsList),
         }),
       ).annotate({ identifier: "Labels" });
     case 6:
       return S.suspend(() =>
         S.Struct({
           metadata_location: S.optional(S.NullOr(S.String).pipe(T.Body("metadata-location"))),
-          metadata: __S(50),
-          config: S.optional(__S(19)),
-          storage_credentials: S.optional(__S(52).pipe(T.Body("storage-credentials"))),
-          remote_signing_config: S.optional(__S(54).pipe(T.Body("remote-signing-config"))),
-          read_restrictions: S.optional(__S(58).pipe(T.Body("read-restrictions"))),
-          labels: S.optional(__S(61)),
+          metadata: TableMetadata,
+          config: S.optional(LoadTableResultConfigMap),
+          storage_credentials: S.optional(
+            LoadTableResultStorageCredentialsList.pipe(T.Body("storage-credentials")),
+          ),
+          remote_signing_config: S.optional(
+            RemoteSigningConfig.pipe(T.Body("remote-signing-config")),
+          ),
+          read_restrictions: S.optional(ReadRestrictions.pipe(T.Body("read-restrictions"))),
+          labels: S.optional(Labels),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "LoadTableResult" });
     case 7:
@@ -2637,17 +3367,17 @@ function __c7(j: number): any {
 function __c8(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(63));
+      return S.Array(SQLViewRepresentation);
     case 1:
       return S.suspend(() =>
         S.Struct({
           version_id: S.Number.pipe(T.Body("version-id")),
           timestamp_ms: S.Number.pipe(T.Body("timestamp-ms")),
           schema_id: S.Number.pipe(T.Body("schema-id")),
-          summary: __S(19),
-          representations: __S(64),
+          summary: ViewVersionSummaryMap,
+          representations: ViewVersionRepresentationsList,
           default_catalog: S.optional(S.String.pipe(T.Body("default-catalog"))),
-          default_namespace: __S(3).pipe(T.Body("default-namespace")),
+          default_namespace: Namespace.pipe(T.Body("default-namespace")),
         }),
       ).annotate({ identifier: "ViewVersion" });
     case 2:
@@ -2656,15 +3386,15 @@ function __c8(j: number): any {
           namespace: S.String.pipe(T.Label()),
           name: S.String,
           location: S.optional(S.String),
-          schema: __S(10),
-          view_version: __S(65).pipe(T.Body("view-version")),
-          properties: __S(19),
+          schema: SchemaInput,
+          view_version: ViewVersion.pipe(T.Body("view-version")),
+          properties: CreateViewRequestPropertiesMap,
         })
           .pipe(T.Http({ method: "POST", uri: "/namespaces/{namespace}/views", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "CreateViewRequest" });
     case 3:
-      return S.Array(__S(65));
+      return S.Array(ViewVersion);
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -2673,7 +3403,7 @@ function __c8(j: number): any {
         }),
       ).annotate({ identifier: "ViewHistoryEntry" });
     case 5:
-      return S.Array(__S(68));
+      return S.Array(ViewHistoryEntry);
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -2681,19 +3411,19 @@ function __c8(j: number): any {
           format_version: S.Number.pipe(T.Body("format-version")),
           location: S.String,
           current_version_id: S.Number.pipe(T.Body("current-version-id")),
-          versions: __S(67),
-          version_log: __S(69).pipe(T.Body("version-log")),
-          schemas: __S(35),
-          properties: S.optional(__S(19)),
+          versions: ViewMetadataVersionsList,
+          version_log: ViewMetadataVersionLogList.pipe(T.Body("version-log")),
+          schemas: ViewMetadataSchemasList,
+          properties: S.optional(ViewMetadataPropertiesMap),
         }),
       ).annotate({ identifier: "ViewMetadata" });
     case 7:
       return S.suspend(() =>
         S.Struct({
           metadata_location: S.String.pipe(T.Body("metadata-location")),
-          metadata: __S(70),
-          config: S.optional(__S(19)),
-          labels: S.optional(__S(61)),
+          metadata: ViewMetadata,
+          config: S.optional(LoadViewResultConfigMap),
+          labels: S.optional(Labels),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "LoadViewResult" });
   }
@@ -2741,7 +3471,9 @@ function __c9(j: number): any {
           table: S.String.pipe(T.Label()),
           plan_id: S.String.pipe(T.Label()),
           xIcebergAccessDelegation: S.optional(
-            __S(0).pipe(T.Header("X-Iceberg-Access-Delegation")),
+            FetchPlanningResultRequestXIcebergAccessDelegationList.pipe(
+              T.Header("X-Iceberg-Access-Delegation"),
+            ),
           ),
         })
           .pipe(
@@ -2762,14 +3494,14 @@ function __c9(j: number): any {
         }),
       ).annotate({ identifier: "FieldStatistics" });
     case 5:
-      return S.Record(S.String, __S(76));
+      return S.Record(S.String, FieldStatistics);
     case 6:
-      return S.Array(S.Unknown);
+      return S.Array(DeleteFile);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          keys: S.optional(__S(9)),
-          values: S.optional(__S(9)),
+          keys: S.optional(CountMapKeysList),
+          values: S.optional(CountMapValuesList),
         }),
       ).annotate({ identifier: "CountMap" });
   }
@@ -2779,8 +3511,8 @@ function __c10(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          keys: S.optional(__S(9)),
-          values: S.optional(__S(57)),
+          keys: S.optional(ValueMapKeysList),
+          values: S.optional(ValueMapValuesList),
         }),
       ).annotate({ identifier: "ValueMap" });
     case 1:
@@ -2788,37 +3520,39 @@ function __c10(j: number): any {
         S.Struct({
           content: S.String,
           file_path: S.String.pipe(T.Body("file-path")),
-          file_format: S.String.pipe(T.Body("file-format")),
+          file_format: FileFormat.pipe(T.Body("file-format")),
           spec_id: S.Number.pipe(T.Body("spec-id")),
-          partition: __S(57),
+          partition: DataFilePartitionList,
           file_size_in_bytes: S.Number.pipe(T.Body("file-size-in-bytes")),
           record_count: S.Number.pipe(T.Body("record-count")),
           key_metadata: S.optional(S.String.pipe(T.Body("key-metadata"))),
-          split_offsets: S.optional(__S(9).pipe(T.Body("split-offsets"))),
+          split_offsets: S.optional(DataFileSplitOffsetsList.pipe(T.Body("split-offsets"))),
           sort_order_id: S.optional(S.Number.pipe(T.Body("sort-order-id"))),
-          content_stats: S.optional(__S(77).pipe(T.Body("content-stats"))),
+          content_stats: S.optional(DataFileContentStatsMap.pipe(T.Body("content-stats"))),
           first_row_id: S.optional(S.Number.pipe(T.Body("first-row-id"))),
-          column_sizes: S.optional(__S(79).pipe(T.Body("column-sizes"))),
-          value_counts: S.optional(__S(79).pipe(T.Body("value-counts"))),
-          null_value_counts: S.optional(__S(79).pipe(T.Body("null-value-counts"))),
-          nan_value_counts: S.optional(__S(79).pipe(T.Body("nan-value-counts"))),
-          lower_bounds: S.optional(__S(80).pipe(T.Body("lower-bounds"))),
-          upper_bounds: S.optional(__S(80).pipe(T.Body("upper-bounds"))),
+          column_sizes: S.optional(CountMap.pipe(T.Body("column-sizes"))),
+          value_counts: S.optional(CountMap.pipe(T.Body("value-counts"))),
+          null_value_counts: S.optional(CountMap.pipe(T.Body("null-value-counts"))),
+          nan_value_counts: S.optional(CountMap.pipe(T.Body("nan-value-counts"))),
+          lower_bounds: S.optional(ValueMap.pipe(T.Body("lower-bounds"))),
+          upper_bounds: S.optional(ValueMap.pipe(T.Body("upper-bounds"))),
         }),
       ).annotate({ identifier: "DataFile" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          data_file: __S(81).pipe(T.Body("data-file")),
-          delete_file_references: S.optional(__S(9).pipe(T.Body("delete-file-references"))),
-          residual_filter: S.optional(S.Unknown.pipe(T.Body("residual-filter"))),
+          data_file: DataFile.pipe(T.Body("data-file")),
+          delete_file_references: S.optional(
+            FileScanTaskDeleteFileReferencesList.pipe(T.Body("delete-file-references")),
+          ),
+          residual_filter: S.optional(Predicate.pipe(T.Body("residual-filter"))),
         }),
       ).annotate({ identifier: "FileScanTask" });
     case 3:
-      return S.Array(__S(82));
+      return S.Array(FileScanTask);
     case 4:
       return S.suspend(() =>
-        S.Unknown.pipe(T.RawResponseRoot(), T.KeyDictionary(KEY_DICTIONARY)),
+        PlanningResult.pipe(T.RawResponseRoot(), T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "FetchPlanningResultResponse",
       });
@@ -2842,9 +3576,13 @@ function __c10(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          delete_files: S.optional(__S(78).pipe(T.Body("delete-files"))),
-          file_scan_tasks: S.optional(__S(83).pipe(T.Body("file-scan-tasks"))),
-          plan_tasks: S.optional(__S(20).pipe(T.Body("plan-tasks"))),
+          delete_files: S.optional(
+            FetchScanTasksResponseDeleteFilesList.pipe(T.Body("delete-files")),
+          ),
+          file_scan_tasks: S.optional(
+            FetchScanTasksResponseFileScanTasksList.pipe(T.Body("file-scan-tasks")),
+          ),
+          plan_tasks: S.optional(FetchScanTasksResponsePlanTasksList.pipe(T.Body("plan-tasks"))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "FetchScanTasksResponse" });
     case 7:
@@ -2862,9 +3600,9 @@ function __c11(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          overrides: __S(19),
-          defaults: __S(19),
-          endpoints: S.optional(__S(20)),
+          overrides: CatalogConfigOverridesMap,
+          defaults: CatalogConfigDefaultsMap,
+          endpoints: S.optional(CatalogConfigEndpointsList),
           idempotency_key_lifetime: S.optional(S.String.pipe(T.Body("idempotency-key-lifetime"))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "CatalogConfig" });
@@ -2879,12 +3617,12 @@ function __c11(j: number): any {
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListFunctionsRequest" });
     case 2:
-      return S.Array(__S(20));
+      return S.Array(CatalogObjectIdentifier);
     case 3:
       return S.suspend(() =>
         S.Struct({
           next_page_token: S.optional(S.NullOr(S.String).pipe(T.Body("next-page-token"))),
-          identifiers: __S(90),
+          identifiers: ListFunctionsResponseIdentifiersList,
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListFunctionsResponse" });
     case 4:
@@ -2898,12 +3636,12 @@ function __c11(j: number): any {
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListNamespacesRequest" });
     case 5:
-      return S.Array(__S(3));
+      return S.Array(Namespace);
     case 6:
       return S.suspend(() =>
         S.Struct({
           next_page_token: S.optional(S.NullOr(S.String).pipe(T.Body("next-page-token"))),
-          namespaces: __S(93),
+          namespaces: ListNamespacesResponseNamespacesList,
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListNamespacesResponse" });
     case 7:
@@ -2921,12 +3659,12 @@ function __c11(j: number): any {
 function __c12(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(4));
+      return S.Array(TableIdentifier);
     case 1:
       return S.suspend(() =>
         S.Struct({
           next_page_token: S.optional(S.NullOr(S.String).pipe(T.Body("next-page-token"))),
-          identifiers: __S(96),
+          identifiers: ListTablesResponseIdentifiersList,
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListTablesResponse" });
     case 2:
@@ -2959,7 +3697,9 @@ function __c12(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          storage_credentials: __S(52).pipe(T.Body("storage-credentials")),
+          storage_credentials: LoadCredentialsResponseStorageCredentialsList.pipe(
+            T.Body("storage-credentials"),
+          ),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "LoadCredentialsResponse" });
     case 5:
@@ -2980,13 +3720,13 @@ function __c12(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          type: S.Unknown,
+          type: FunctionDataType,
           name: S.String,
           doc: S.optional(S.String),
         }),
       ).annotate({ identifier: "FunctionParameter" });
     case 7:
-      return S.Array(__S(102));
+      return S.Array(FunctionParameter);
   }
 }
 function __c13(j: number): any {
@@ -3002,37 +3742,39 @@ function __c13(j: number): any {
         identifier: "FunctionSQLRepresentation",
       });
     case 1:
-      return S.Array(__S(104));
+      return S.Array(FunctionSQLRepresentation);
     case 2:
       return S.suspend(() =>
         S.Struct({
           version_id: S.Number.pipe(T.Body("version-id")),
-          representations: __S(105),
+          representations: FunctionDefinitionVersionRepresentationsList,
           deterministic: S.optional(S.Boolean),
-          on_null_input: S.optional(S.String.pipe(T.Body("on-null-input"))),
+          on_null_input: S.optional(
+            FunctionDefinitionVersionOnNullInput.pipe(T.Body("on-null-input")),
+          ),
           timestamp_ms: S.Number.pipe(T.Body("timestamp-ms")),
         }),
       ).annotate({
         identifier: "FunctionDefinitionVersion",
       });
     case 3:
-      return S.Array(__S(106));
+      return S.Array(FunctionDefinitionVersion);
     case 4:
       return S.suspend(() =>
         S.Struct({
           definition_id: S.String.pipe(T.Body("definition-id")),
           specific_name: S.optional(S.String.pipe(T.Body("specific-name"))),
-          parameters: __S(103),
-          return_type: S.Unknown.pipe(T.Body("return-type")),
+          parameters: FunctionDefinitionParametersList,
+          return_type: FunctionDataType.pipe(T.Body("return-type")),
           return_nullable: S.optional(S.Boolean.pipe(T.Body("return-nullable"))),
-          versions: __S(107),
+          versions: FunctionDefinitionVersionsList,
           current_version_id: S.Number.pipe(T.Body("current-version-id")),
-          function_type: S.String.pipe(T.Body("function-type")),
+          function_type: FunctionDefinitionFunctionType.pipe(T.Body("function-type")),
           doc: S.optional(S.String),
         }),
       ).annotate({ identifier: "FunctionDefinition" });
     case 5:
-      return S.Array(__S(108));
+      return S.Array(FunctionDefinition);
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -3043,7 +3785,7 @@ function __c13(j: number): any {
         identifier: "FunctionDefinitionVersionRef",
       });
     case 7:
-      return S.Array(__S(110));
+      return S.Array(FunctionDefinitionVersionRef);
   }
 }
 function __c14(j: number): any {
@@ -3052,22 +3794,24 @@ function __c14(j: number): any {
       return S.suspend(() =>
         S.Struct({
           timestamp_ms: S.Number.pipe(T.Body("timestamp-ms")),
-          definition_versions: __S(111).pipe(T.Body("definition-versions")),
+          definition_versions: FunctionDefinitionLogEntryDefinitionVersionsList.pipe(
+            T.Body("definition-versions"),
+          ),
         }),
       ).annotate({
         identifier: "FunctionDefinitionLogEntry",
       });
     case 1:
-      return S.Array(__S(112));
+      return S.Array(FunctionDefinitionLogEntry);
     case 2:
       return S.suspend(() =>
         S.Struct({
           function_uuid: S.String.pipe(T.Body("function-uuid")),
           format_version: S.Number.pipe(T.Body("format-version")),
-          definitions: __S(109),
-          definition_log: __S(113).pipe(T.Body("definition-log")),
+          definitions: FunctionMetadataDefinitionsList,
+          definition_log: FunctionMetadataDefinitionLogList.pipe(T.Body("definition-log")),
           location: S.optional(S.String),
-          properties: S.optional(__S(19)),
+          properties: S.optional(FunctionMetadataPropertiesMap),
           secure: S.optional(S.Boolean),
           doc: S.optional(S.String),
         }),
@@ -3076,7 +3820,7 @@ function __c14(j: number): any {
       return S.suspend(() =>
         S.Struct({
           metadata_location: S.optional(S.String.pipe(T.Body("metadata-location"))),
-          metadata: __S(114),
+          metadata: FunctionMetadata,
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "LoadFunctionResult" });
     case 4:
@@ -3092,8 +3836,8 @@ function __c14(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          namespace: __S(3),
-          properties: S.optional(S.NullOr(__S(19))),
+          namespace: Namespace,
+          properties: S.optional(S.NullOr(GetNamespaceResponsePropertiesMap)),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetNamespaceResponse" });
     case 6:
@@ -3101,10 +3845,12 @@ function __c14(j: number): any {
         S.Struct({
           namespace: S.String.pipe(T.Label()),
           table: S.String.pipe(T.Label()),
-          snapshots: S.optional(S.String.pipe(T.Query())),
+          snapshots: S.optional(LoadTableRequestSnapshots.pipe(T.Query())),
           referenced_by: S.optional(S.String.pipe(T.Query("referenced-by"))),
           xIcebergAccessDelegation: S.optional(
-            __S(0).pipe(T.Header("X-Iceberg-Access-Delegation")),
+            LoadTableRequestXIcebergAccessDelegationList.pipe(
+              T.Header("X-Iceberg-Access-Delegation"),
+            ),
           ),
           ifNoneMatch: S.optional(S.String.pipe(T.Header("If-None-Match"))),
         })
@@ -3139,18 +3885,22 @@ function __c15(j: number): any {
           namespace: S.String.pipe(T.Label()),
           table: S.String.pipe(T.Label()),
           xIcebergAccessDelegation: S.optional(
-            __S(0).pipe(T.Header("X-Iceberg-Access-Delegation")),
+            PlanTableScanRequestXIcebergAccessDelegationList.pipe(
+              T.Header("X-Iceberg-Access-Delegation"),
+            ),
           ),
           idempotencyKey: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
           snapshot_id: S.optional(S.Number.pipe(T.Body("snapshot-id"))),
-          select: S.optional(__S(20)),
-          filter: S.optional(S.Unknown),
+          select: S.optional(PlanTableScanRequestSelectList),
+          filter: S.optional(Predicate),
           min_rows_requested: S.optional(S.Number.pipe(T.Body("min-rows-requested"))),
           case_sensitive: S.optional(S.Boolean.pipe(T.Body("case-sensitive"))),
           use_snapshot_schema: S.optional(S.Boolean.pipe(T.Body("use-snapshot-schema"))),
           start_snapshot_id: S.optional(S.Number.pipe(T.Body("start-snapshot-id"))),
           end_snapshot_id: S.optional(S.Number.pipe(T.Body("end-snapshot-id"))),
-          stats_fields: S.optional(__S(20).pipe(T.Body("stats-fields"))),
+          stats_fields: S.optional(
+            PlanTableScanRequestStatsFieldsList.pipe(T.Body("stats-fields")),
+          ),
         })
           .pipe(
             T.Http({
@@ -3163,14 +3913,16 @@ function __c15(j: number): any {
       ).annotate({ identifier: "PlanTableScanRequest" });
     case 2:
       return S.suspend(() =>
-        S.Unknown.pipe(T.RawResponseRoot(), T.KeyDictionary(KEY_DICTIONARY)),
+        PlanTableScanResult.pipe(T.RawResponseRoot(), T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "PlanTableScanResponse" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
           xIcebergAccessDelegation: S.optional(
-            __S(0).pipe(T.Header("X-Iceberg-Access-Delegation")),
+            RegisterTableRequestXIcebergAccessDelegationList.pipe(
+              T.Header("X-Iceberg-Access-Delegation"),
+            ),
           ),
           idempotencyKey: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
           name: S.String,
@@ -3195,8 +3947,8 @@ function __c15(j: number): any {
       return S.suspend(() =>
         S.Struct({
           idempotencyKey: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
-          source: __S(4),
-          destination: __S(4),
+          source: TableIdentifier,
+          destination: TableIdentifier,
         })
           .pipe(T.Http({ method: "POST", uri: "/tables/rename", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -3205,8 +3957,8 @@ function __c15(j: number): any {
       return S.suspend(() =>
         S.Struct({
           idempotencyKey: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
-          source: __S(4),
-          destination: __S(4),
+          source: TableIdentifier,
+          destination: TableIdentifier,
         })
           .pipe(T.Http({ method: "POST", uri: "/views/rename", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -3223,18 +3975,18 @@ function __c15(j: number): any {
 function __c16(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(127));
+      return S.Array(AssertViewUUID);
     case 1:
-      return S.Array(S.Unknown);
+      return S.Array(ViewUpdateInput);
     case 2:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
           view: S.String.pipe(T.Label()),
           idempotencyKey: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
-          identifier: S.optional(__S(4)),
-          requirements: S.optional(__S(128)),
-          updates: __S(129),
+          identifier: S.optional(TableIdentifier),
+          requirements: S.optional(ReplaceViewRequestRequirementsList),
+          updates: ReplaceViewRequestUpdatesList,
         })
           .pipe(T.Http({ method: "POST", uri: "/namespaces/{namespace}/views/{view}", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -3262,9 +4014,9 @@ function __c16(j: number): any {
           table: S.String.pipe(T.Label()),
           region: S.String,
           uri: S.String,
-          method: S.String,
-          headers: __S(53),
-          properties: S.optional(__S(19)),
+          method: SignRequestRequestMethod,
+          headers: MultiValuedMap,
+          properties: S.optional(SignRequestRequestPropertiesMap),
           body: S.optional(S.String),
           provider: S.optional(S.String),
         })
@@ -3281,7 +4033,7 @@ function __c16(j: number): any {
       return S.suspend(() =>
         S.Struct({
           uri: S.String,
-          headers: __S(53),
+          headers: MultiValuedMap,
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "RemoteSignResult" });
     case 6:
@@ -3319,7 +4071,7 @@ function __c17(j: number): any {
       return S.suspend(() =>
         S.Struct({
           metadata_location: S.String.pipe(T.Body("metadata-location")),
-          metadata: __S(50),
+          metadata: TableMetadata,
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "UnregisterTableResult" });
     case 1:
@@ -3327,8 +4079,8 @@ function __c17(j: number): any {
         S.Struct({
           namespace: S.String.pipe(T.Label()),
           idempotencyKey: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
-          removals: S.optional(__S(20)),
-          updates: S.optional(__S(19)),
+          removals: S.optional(UpdatePropertiesRequestRemovalsList),
+          updates: S.optional(UpdatePropertiesRequestUpdatesMap),
         })
           .pipe(T.Http({ method: "POST", uri: "/namespaces/{namespace}/properties", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -3336,9 +4088,9 @@ function __c17(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          updated: __S(20),
-          removed: __S(20),
-          missing: S.optional(S.NullOr(__S(20))),
+          updated: UpdateNamespacePropertiesResponseUpdatedList,
+          removed: UpdateNamespacePropertiesResponseRemovedList,
+          missing: S.optional(S.NullOr(UpdateNamespacePropertiesResponseMissingList)),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "UpdateNamespacePropertiesResponse",
@@ -3349,9 +4101,9 @@ function __c17(j: number): any {
           namespace: S.String.pipe(T.Label()),
           table: S.String.pipe(T.Label()),
           idempotencyKey: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
-          identifier: S.optional(__S(4)),
-          requirements: __S(6),
-          updates: __S(26),
+          identifier: S.optional(TableIdentifier),
+          requirements: UpdateTableRequestRequirementsList,
+          updates: UpdateTableRequestUpdatesList,
         })
           .pipe(
             T.Http({ method: "POST", uri: "/namespaces/{namespace}/tables/{table}", code: 200 }),
@@ -3367,50 +4119,5 @@ function __c17(j: number): any {
           .pipe(T.Http({ method: "HEAD", uri: "/namespaces/{namespace}/views/{view}", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ViewExistsRequest" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
-    case 9:
-      return __c9(i & 7);
-    case 10:
-      return __c10(i & 7);
-    case 11:
-      return __c11(i & 7);
-    case 12:
-      return __c12(i & 7);
-    case 13:
-      return __c13(i & 7);
-    case 14:
-      return __c14(i & 7);
-    case 15:
-      return __c15(i & 7);
-    case 16:
-      return __c16(i & 7);
-    case 17:
-      return __c17(i & 7);
   }
 }

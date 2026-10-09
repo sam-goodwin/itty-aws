@@ -8,8 +8,6 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 const svc = /*@__PURE__*/ T.AwsApiService({ sdkId: "Kafka", serviceShapeName: "Kafka" });
 const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "kafka" });
 const ver = /*@__PURE__*/ T.ServiceVersion("2018-11-14");
@@ -289,61 +287,94 @@ export interface BatchAssociateScramSecretRequest {
   ClusterArn: string;
   SecretArnList?: string[];
 }
+const BatchAssociateScramSecretRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<BatchAssociateScramSecretRequest>;
 export interface UnprocessedScramSecret {
   ErrorCode?: string;
   ErrorMessage?: string;
   SecretArn?: string;
 }
+const UnprocessedScramSecret = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<UnprocessedScramSecret>;
 export type __listOfUnprocessedScramSecret = UnprocessedScramSecret[];
 const __listOfUnprocessedScramSecret = /*@__PURE__*/ __L.at(__c0, 3);
 export interface BatchAssociateScramSecretResponse {
   ClusterArn?: string;
   UnprocessedScramSecrets?: UnprocessedScramSecret[];
 }
+const BatchAssociateScramSecretResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<BatchAssociateScramSecretResponse>;
 export interface BatchDisassociateScramSecretRequest {
   ClusterArn: string;
   SecretArnList?: string[];
 }
+const BatchDisassociateScramSecretRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<BatchDisassociateScramSecretRequest>;
 export interface BatchDisassociateScramSecretResponse {
   ClusterArn?: string;
   UnprocessedScramSecrets?: UnprocessedScramSecret[];
 }
+const BatchDisassociateScramSecretResponse =
+  BatchAssociateScramSecretResponse as any as S.Schema<BatchDisassociateScramSecretResponse>;
 export interface EncryptionConfiguration {
   KmsKeyArn?: string;
 }
+const EncryptionConfiguration = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<EncryptionConfiguration>;
 export interface Catalog {
   CatalogArn?: string;
   WarehouseLocation?: string;
 }
+const Catalog = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<Catalog>;
 export interface DeadLetterQueueS3 {
   BucketArn?: string;
   ErrorOutputPrefix?: string;
   ExpectedBucketOwner?: string;
 }
+const DeadLetterQueueS3 = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<DeadLetterQueueS3>;
 export type PartitionStrategy = "TIME_HOUR" | (string & {});
+const PartitionStrategy = S.String;
+
 export interface PartitionSource {
   SourceName?: string;
 }
+const PartitionSource = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<PartitionSource>;
 export type __listOfPartitionSource = PartitionSource[];
 const __listOfPartitionSource = /*@__PURE__*/ __L.at(__c1, 2);
 export interface PartitionSpec {
   PartitionStrategy?: PartitionStrategy;
   SourceList?: PartitionSource[];
 }
+const PartitionSpec = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<PartitionSpec>;
 export interface DestinationTable {
   DestinationDatabaseName?: string;
   DestinationTableName?: string;
   PartitionSpec?: PartitionSpec;
 }
+const DestinationTable = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<DestinationTable>;
 export type __listOfDestinationTable = DestinationTable[];
 const __listOfDestinationTable = /*@__PURE__*/ __L.at(__c1, 5);
 export interface SchemaEvolution {
   EnableSchemaEvolution?: boolean;
 }
+const SchemaEvolution = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<SchemaEvolution>;
 export interface TableCreation {
   EnableTableCreation?: boolean;
 }
+const TableCreation = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<TableCreation>;
 export type IcebergCompressionType = "ZSTD" | "SNAPPY" | (string & {});
+const IcebergCompressionType = S.String;
+
 export interface IcebergDestinationConfiguration {
   AppendOnly?: boolean;
   Catalog?: Catalog;
@@ -355,8 +386,16 @@ export interface IcebergDestinationConfiguration {
   TableCreation?: TableCreation;
   CompressionType?: IcebergCompressionType;
 }
+const IcebergDestinationConfiguration = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<IcebergDestinationConfiguration>;
 export type S3CompressionType = "NONE" | "GZIP" | "ZSTD" | (string & {});
+const S3CompressionType = S.String;
+
 export type S3StorageClass = "STANDARD" | "INTELLIGENT_TIERING" | "GLACIER_IR" | (string & {});
+const S3StorageClass = S.String;
+
 export interface S3Storage {
   BucketArn?: string;
   CompressionType?: S3CompressionType;
@@ -365,46 +404,60 @@ export interface S3Storage {
   StorageClass?: S3StorageClass;
   ExpectedBucketOwner?: string;
 }
+const S3Storage = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<S3Storage>;
 export interface S3DestinationConfiguration {
   DataFreshnessInSeconds?: number;
   DeadLetterQueueS3?: DeadLetterQueueS3;
   ServiceExecutionRoleArn?: string;
   Storage?: S3Storage;
 }
+const S3DestinationConfiguration = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<S3DestinationConfiguration>;
 export type __mapOf__string = { [key: string]: string | undefined };
 const __mapOf__string = /*@__PURE__*/ __L.at(__c2, 3);
 export type ValueConverter = "BYTE_ARRAY" | "JSON" | "JSON_SCHEMA_GSR" | "STRING" | (string & {});
+const ValueConverter = S.String;
+
 export interface RecordConverter {
   ValueConverter?: ValueConverter;
 }
+const RecordConverter = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<RecordConverter>;
 export interface RecordSchema {
   GsrArn?: string;
 }
+const RecordSchema = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<RecordSchema>;
 export interface TopicConfiguration {
   RecordConverter?: RecordConverter;
   RecordSchema?: RecordSchema;
   TopicArn?: string;
 }
+const TopicConfiguration = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<TopicConfiguration>;
 export type __listOfTopicConfiguration = TopicConfiguration[];
 const __listOfTopicConfiguration = /*@__PURE__*/ __L.at(__c2, 7);
 export interface CloudWatchLogs {
   Enabled?: boolean;
   LogGroup?: string;
 }
+const CloudWatchLogs = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<CloudWatchLogs>;
 export interface Firehose {
   DeliveryStream?: string;
   Enabled?: boolean;
 }
+const Firehose = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<Firehose>;
 export interface S3 {
   Bucket?: string;
   Enabled?: boolean;
   Prefix?: string;
 }
+const S3 = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<S3>;
 export interface ChannelLoggingInfo {
   CloudWatchLogs?: CloudWatchLogs;
   Firehose?: Firehose;
   S3?: S3;
 }
+const ChannelLoggingInfo = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<ChannelLoggingInfo>;
 export interface CreateChannelRequest {
   ChannelName?: string;
   ClusterArn: string;
@@ -415,53 +468,79 @@ export interface CreateChannelRequest {
   TopicConfigurationList?: TopicConfiguration[];
   LoggingInfo?: ChannelLoggingInfo;
 }
+const CreateChannelRequest = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<CreateChannelRequest>;
 export interface CreateChannelResponse {
   ChannelArn: string;
   ClusterOperationArn?: string;
 }
+const CreateChannelResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<CreateChannelResponse>;
 export type BrokerAZDistribution = "DEFAULT" | (string & {});
+const BrokerAZDistribution = S.String;
+
 export type __stringMin5Max32 = string;
 export interface ProvisionedThroughput {
   Enabled?: boolean;
   VolumeThroughput?: number;
 }
+const ProvisionedThroughput = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<ProvisionedThroughput>;
 export type __integerMin1Max16384 = number;
 export interface EBSStorageInfo {
   ProvisionedThroughput?: ProvisionedThroughput;
   VolumeSize?: number;
 }
+const EBSStorageInfo = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<EBSStorageInfo>;
 export interface StorageInfo {
   EbsStorageInfo?: EBSStorageInfo;
 }
+const StorageInfo = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<StorageInfo>;
 export interface PublicAccess {
   Type?: string;
 }
+const PublicAccess = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<PublicAccess>;
 export interface VpcConnectivityScram {
   Enabled?: boolean;
 }
+const VpcConnectivityScram = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<VpcConnectivityScram>;
 export interface VpcConnectivityIam {
   Enabled?: boolean;
 }
+const VpcConnectivityIam = VpcConnectivityScram as any as S.Schema<VpcConnectivityIam>;
 export interface VpcConnectivitySasl {
   Scram?: VpcConnectivityScram;
   Iam?: VpcConnectivityIam;
 }
+const VpcConnectivitySasl = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<VpcConnectivitySasl>;
 export interface VpcConnectivityTls {
   Enabled?: boolean;
 }
+const VpcConnectivityTls = VpcConnectivityScram as any as S.Schema<VpcConnectivityTls>;
 export interface VpcConnectivityClientAuthentication {
   Sasl?: VpcConnectivitySasl;
   Tls?: VpcConnectivityTls;
 }
+const VpcConnectivityClientAuthentication = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<VpcConnectivityClientAuthentication>;
 export interface VpcConnectivity {
   ClientAuthentication?: VpcConnectivityClientAuthentication;
 }
+const VpcConnectivity = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<VpcConnectivity>;
 export type NetworkType = "IPV4" | "DUAL" | (string & {});
+const NetworkType = S.String;
+
 export interface ConnectivityInfo {
   PublicAccess?: PublicAccess;
   VpcConnectivity?: VpcConnectivity;
   NetworkType?: NetworkType;
 }
+const ConnectivityInfo = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<ConnectivityInfo>;
 export interface BrokerNodeGroupInfo {
   BrokerAZDistribution?: BrokerAZDistribution;
   ClientSubnets?: string[];
@@ -471,85 +550,111 @@ export interface BrokerNodeGroupInfo {
   ConnectivityInfo?: ConnectivityInfo;
   ZoneIds?: string[];
 }
+const BrokerNodeGroupInfo = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<BrokerNodeGroupInfo>;
 export type RebalancingStatus = "PAUSED" | "ACTIVE" | (string & {});
+const RebalancingStatus = S.String;
+
 export interface Rebalancing {
   Status?: RebalancingStatus;
 }
+const Rebalancing = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<Rebalancing>;
 export interface Scram {
   Enabled?: boolean;
 }
 export interface Iam {
   Enabled?: boolean;
 }
+const Iam = VpcConnectivityScram as any as S.Schema<Iam>;
 export interface Sasl {
   Scram?: Scram;
   Iam?: Iam;
 }
+const Sasl = VpcConnectivitySasl as any as S.Schema<Sasl>;
 export interface Tls {
   CertificateAuthorityArnList?: string[];
   Enabled?: boolean;
 }
+const Tls = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<Tls>;
 export interface Unauthenticated {
   Enabled?: boolean;
 }
+const Unauthenticated = VpcConnectivityScram as any as S.Schema<Unauthenticated>;
 export interface ClientAuthentication {
   Sasl?: Sasl;
   Tls?: Tls;
   Unauthenticated?: Unauthenticated;
 }
+const ClientAuthentication = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<ClientAuthentication>;
 export type __stringMin1Max64 = string;
 export interface ConfigurationInfo {
   Arn?: string;
   Revision?: number;
 }
+const ConfigurationInfo = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<ConfigurationInfo>;
 export interface EncryptionAtRest {
   DataVolumeKMSKeyId?: string;
 }
+const EncryptionAtRest = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<EncryptionAtRest>;
 export type ClientBroker = "TLS" | "TLS_PLAINTEXT" | "PLAINTEXT" | (string & {});
+const ClientBroker = S.String;
+
 export interface EncryptionInTransit {
   ClientBroker?: ClientBroker;
   InCluster?: boolean;
 }
+const EncryptionInTransit = /*@__PURE__*/ __L.at(__c5, 5) as any as S.Schema<EncryptionInTransit>;
 export interface EncryptionInfo {
   EncryptionAtRest?: EncryptionAtRest;
   EncryptionInTransit?: EncryptionInTransit;
 }
+const EncryptionInfo = /*@__PURE__*/ __L.at(__c5, 6) as any as S.Schema<EncryptionInfo>;
 export type EnhancedMonitoring =
   | "DEFAULT"
   | "PER_BROKER"
   | "PER_TOPIC_PER_BROKER"
   | "PER_TOPIC_PER_PARTITION"
   | (string & {});
+const EnhancedMonitoring = S.String;
+
 export interface JmxExporterInfo {
   EnabledInBroker?: boolean;
 }
+const JmxExporterInfo = /*@__PURE__*/ __L.at(__c5, 7) as any as S.Schema<JmxExporterInfo>;
 export interface NodeExporterInfo {
   EnabledInBroker?: boolean;
 }
+const NodeExporterInfo = JmxExporterInfo as any as S.Schema<NodeExporterInfo>;
 export interface PrometheusInfo {
   JmxExporter?: JmxExporterInfo;
   NodeExporter?: NodeExporterInfo;
 }
+const PrometheusInfo = /*@__PURE__*/ __L.at(__c6, 0) as any as S.Schema<PrometheusInfo>;
 export interface OpenMonitoringInfo {
   Prometheus?: PrometheusInfo;
 }
+const OpenMonitoringInfo = /*@__PURE__*/ __L.at(__c6, 1) as any as S.Schema<OpenMonitoringInfo>;
 export type __stringMin1Max128 = string;
 export interface AuthorizerLogs {
   CloudWatchLogs?: CloudWatchLogs;
   Firehose?: Firehose;
   S3?: S3;
 }
+const AuthorizerLogs = ChannelLoggingInfo as any as S.Schema<AuthorizerLogs>;
 export interface BrokerLogs {
   CloudWatchLogs?: CloudWatchLogs;
   Firehose?: Firehose;
   S3?: S3;
 }
+const BrokerLogs = ChannelLoggingInfo as any as S.Schema<BrokerLogs>;
 export interface LoggingInfo {
   AuthorizerLogs?: AuthorizerLogs;
   BrokerLogs?: BrokerLogs;
 }
+const LoggingInfo = /*@__PURE__*/ __L.at(__c6, 2) as any as S.Schema<LoggingInfo>;
 export type __integerMin1Max15 = number;
 export type StorageMode = "LOCAL" | "TIERED" | (string & {});
+const StorageMode = S.String;
+
 export interface CreateClusterRequest {
   BrokerNodeGroupInfo?: BrokerNodeGroupInfo;
   Rebalancing?: Rebalancing;
@@ -565,6 +670,7 @@ export interface CreateClusterRequest {
   Tags?: { [key: string]: string | undefined };
   StorageMode?: StorageMode;
 }
+const CreateClusterRequest = /*@__PURE__*/ __L.at(__c6, 3) as any as S.Schema<CreateClusterRequest>;
 export type ClusterState =
   | "ACTIVE"
   | "CREATING"
@@ -575,11 +681,17 @@ export type ClusterState =
   | "REBOOTING_BROKER"
   | "UPDATING"
   | (string & {});
+const ClusterState = S.String;
+
 export interface CreateClusterResponse {
   ClusterArn?: string;
   ClusterName?: string;
   State?: ClusterState;
 }
+const CreateClusterResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  4,
+) as any as S.Schema<CreateClusterResponse>;
 export interface ProvisionedRequest {
   BrokerNodeGroupInfo?: BrokerNodeGroupInfo;
   Rebalancing?: Rebalancing;
@@ -593,35 +705,53 @@ export interface ProvisionedRequest {
   NumberOfBrokerNodes?: number;
   StorageMode?: StorageMode;
 }
+const ProvisionedRequest = /*@__PURE__*/ __L.at(__c6, 5) as any as S.Schema<ProvisionedRequest>;
 export interface VpcConfig {
   SubnetIds?: string[];
   SecurityGroupIds?: string[];
 }
+const VpcConfig = /*@__PURE__*/ __L.at(__c6, 6) as any as S.Schema<VpcConfig>;
 export type __listOfVpcConfig = VpcConfig[];
 const __listOfVpcConfig = /*@__PURE__*/ __L.at(__c6, 7);
 export interface ServerlessSasl {
   Iam?: Iam;
 }
+const ServerlessSasl = /*@__PURE__*/ __L.at(__c7, 0) as any as S.Schema<ServerlessSasl>;
 export interface ServerlessClientAuthentication {
   Sasl?: ServerlessSasl;
 }
+const ServerlessClientAuthentication = /*@__PURE__*/ __L.at(
+  __c7,
+  1,
+) as any as S.Schema<ServerlessClientAuthentication>;
 export interface ServerlessRequest {
   VpcConfigs?: VpcConfig[];
   ClientAuthentication?: ServerlessClientAuthentication;
 }
+const ServerlessRequest = /*@__PURE__*/ __L.at(__c7, 2) as any as S.Schema<ServerlessRequest>;
 export interface CreateClusterV2Request {
   ClusterName?: string;
   Tags?: { [key: string]: string | undefined };
   Provisioned?: ProvisionedRequest;
   Serverless?: ServerlessRequest;
 }
+const CreateClusterV2Request = /*@__PURE__*/ __L.at(
+  __c7,
+  3,
+) as any as S.Schema<CreateClusterV2Request>;
 export type ClusterType = "PROVISIONED" | "SERVERLESS" | (string & {});
+const ClusterType = S.String;
+
 export interface CreateClusterV2Response {
   ClusterArn?: string;
   ClusterName?: string;
   State?: ClusterState;
   ClusterType?: ClusterType;
 }
+const CreateClusterV2Response = /*@__PURE__*/ __L.at(
+  __c7,
+  4,
+) as any as S.Schema<CreateClusterV2Response>;
 export type __blob = Uint8Array;
 export interface CreateConfigurationRequest {
   Description?: string;
@@ -629,13 +759,23 @@ export interface CreateConfigurationRequest {
   Name?: string;
   ServerProperties?: Uint8Array;
 }
+const CreateConfigurationRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  5,
+) as any as S.Schema<CreateConfigurationRequest>;
 export type __timestampIso8601 = Date;
 export interface ConfigurationRevision {
   CreationTime?: Date;
   Description?: string;
   Revision?: number;
 }
+const ConfigurationRevision = /*@__PURE__*/ __L.at(
+  __c7,
+  6,
+) as any as S.Schema<ConfigurationRevision>;
 export type ConfigurationState = "ACTIVE" | "DELETING" | "DELETE_FAILED" | (string & {});
+const ConfigurationState = S.String;
+
 export interface CreateConfigurationResponse {
   Arn?: string;
   CreationTime?: Date;
@@ -643,41 +783,75 @@ export interface CreateConfigurationResponse {
   Name?: string;
   State?: ConfigurationState;
 }
+const CreateConfigurationResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  7,
+) as any as S.Schema<CreateConfigurationResponse>;
 export type __stringMax1024 = string;
 export interface AmazonMskCluster {
   MskClusterArn?: string;
 }
+const AmazonMskCluster = /*@__PURE__*/ __L.at(__c8, 0) as any as S.Schema<AmazonMskCluster>;
 export interface ApacheKafkaCluster {
   ApacheKafkaClusterId?: string;
   BootstrapBrokerString?: string;
 }
+const ApacheKafkaCluster = /*@__PURE__*/ __L.at(__c8, 1) as any as S.Schema<ApacheKafkaCluster>;
 export interface KafkaClusterClientVpcConfig {
   SecurityGroupIds?: string[];
   SubnetIds?: string[];
 }
+const KafkaClusterClientVpcConfig = /*@__PURE__*/ __L.at(
+  __c8,
+  2,
+) as any as S.Schema<KafkaClusterClientVpcConfig>;
 export type KafkaClusterSaslScramMechanism = "SHA256" | "SHA512" | (string & {});
+const KafkaClusterSaslScramMechanism = S.String;
+
 export interface KafkaClusterSaslScramAuthentication {
   Mechanism?: KafkaClusterSaslScramMechanism;
   SecretArn?: string;
 }
+const KafkaClusterSaslScramAuthentication = /*@__PURE__*/ __L.at(
+  __c8,
+  3,
+) as any as S.Schema<KafkaClusterSaslScramAuthentication>;
 export interface KafkaClusterMTLSAuthentication {
   SecretArn?: string;
 }
+const KafkaClusterMTLSAuthentication = /*@__PURE__*/ __L.at(
+  __c8,
+  4,
+) as any as S.Schema<KafkaClusterMTLSAuthentication>;
 export interface KafkaClusterOAuthClientCredentials {
   TokenRequestSecretArn?: string;
 }
+const KafkaClusterOAuthClientCredentials = /*@__PURE__*/ __L.at(
+  __c8,
+  5,
+) as any as S.Schema<KafkaClusterOAuthClientCredentials>;
 export type JwtSigningAlgorithm = "RS256" | "ES384" | (string & {});
+const JwtSigningAlgorithm = S.String;
+
 export interface KafkaClusterOAuthIamJwtBearer {
   Audience?: string;
   SigningAlgorithm?: JwtSigningAlgorithm;
   TokenRequestSecretArn?: string;
 }
+const KafkaClusterOAuthIamJwtBearer = /*@__PURE__*/ __L.at(
+  __c8,
+  6,
+) as any as S.Schema<KafkaClusterOAuthIamJwtBearer>;
 export interface KafkaClusterOAuthClientCredentialsAssertion {
   Audience?: string;
   SigningAlgorithm?: JwtSigningAlgorithm;
   TokenRequestSecretArn?: string;
 }
+const KafkaClusterOAuthClientCredentialsAssertion =
+  KafkaClusterOAuthIamJwtBearer as any as S.Schema<KafkaClusterOAuthClientCredentialsAssertion>;
 export type TokenEndpointAuthenticationMethod = "POST" | "BASIC" | "NONE" | (string & {});
+const TokenEndpointAuthenticationMethod = S.String;
+
 export interface KafkaClusterSaslOAuthBearerAuthentication {
   TokenEndpointUrl?: string;
   ClientCredentials?: KafkaClusterOAuthClientCredentials;
@@ -687,16 +861,30 @@ export interface KafkaClusterSaslOAuthBearerAuthentication {
   Scope?: string;
   TokenEndpointTlsCertificateArn?: string;
 }
+const KafkaClusterSaslOAuthBearerAuthentication = /*@__PURE__*/ __L.at(
+  __c8,
+  7,
+) as any as S.Schema<KafkaClusterSaslOAuthBearerAuthentication>;
 export interface KafkaClusterClientAuthentication {
   SaslScram?: KafkaClusterSaslScramAuthentication;
   MTLS?: KafkaClusterMTLSAuthentication;
   SaslOAuthBearer?: KafkaClusterSaslOAuthBearerAuthentication;
 }
+const KafkaClusterClientAuthentication = /*@__PURE__*/ __L.at(
+  __c9,
+  0,
+) as any as S.Schema<KafkaClusterClientAuthentication>;
 export type KafkaClusterEncryptionInTransitType = "TLS" | (string & {});
+const KafkaClusterEncryptionInTransitType = S.String;
+
 export interface KafkaClusterEncryptionInTransit {
   EncryptionType?: KafkaClusterEncryptionInTransitType;
   RootCaCertificate?: string;
 }
+const KafkaClusterEncryptionInTransit = /*@__PURE__*/ __L.at(
+  __c9,
+  1,
+) as any as S.Schema<KafkaClusterEncryptionInTransit>;
 export interface KafkaCluster {
   AmazonMskCluster?: AmazonMskCluster;
   ApacheKafkaCluster?: ApacheKafkaCluster;
@@ -704,12 +892,15 @@ export interface KafkaCluster {
   ClientAuthentication?: KafkaClusterClientAuthentication;
   EncryptionInTransit?: KafkaClusterEncryptionInTransit;
 }
+const KafkaCluster = /*@__PURE__*/ __L.at(__c9, 2) as any as S.Schema<KafkaCluster>;
 export type __listOfKafkaCluster = KafkaCluster[];
 const __listOfKafkaCluster = /*@__PURE__*/ __L.at(__c9, 3);
 export type __stringMax256 = string;
 export type __listOf__stringMax256 = string[];
 const __listOf__stringMax256 = __listOf__string as any as S.Schema<__listOf__stringMax256>;
 export type ConsumerGroupOffsetSyncMode = "LEGACY" | "ENHANCED" | (string & {});
+const ConsumerGroupOffsetSyncMode = S.String;
+
 export interface ConsumerGroupReplication {
   ConsumerGroupsToExclude?: string[];
   ConsumerGroupsToReplicate?: string[];
@@ -717,11 +908,23 @@ export interface ConsumerGroupReplication {
   SynchroniseConsumerGroupOffsets?: boolean;
   ConsumerGroupOffsetSyncMode?: ConsumerGroupOffsetSyncMode;
 }
+const ConsumerGroupReplication = /*@__PURE__*/ __L.at(
+  __c9,
+  4,
+) as any as S.Schema<ConsumerGroupReplication>;
 export type TargetCompressionType = "NONE" | "GZIP" | "SNAPPY" | "LZ4" | "ZSTD" | (string & {});
+const TargetCompressionType = S.String;
+
 export type ReplicationStartingPositionType = "LATEST" | "EARLIEST" | (string & {});
+const ReplicationStartingPositionType = S.String;
+
 export interface ReplicationStartingPosition {
   Type?: ReplicationStartingPositionType;
 }
+const ReplicationStartingPosition = /*@__PURE__*/ __L.at(
+  __c9,
+  5,
+) as any as S.Schema<ReplicationStartingPosition>;
 export type ReplicationTopicNameConfigurationType =
   | "PREFIXED_WITH_SOURCE_CLUSTER_ALIAS"
   | "IDENTICAL"
@@ -729,6 +932,8 @@ export type ReplicationTopicNameConfigurationType =
 export interface ReplicationTopicNameConfiguration {
   Type?: ReplicationTopicNameConfigurationType;
 }
+const ReplicationTopicNameConfiguration =
+  ReplicationStartingPosition as any as S.Schema<ReplicationTopicNameConfiguration>;
 export type __stringMax249 = string;
 export type __listOf__stringMax249 = string[];
 const __listOf__stringMax249 = __listOf__string as any as S.Schema<__listOf__stringMax249>;
@@ -741,6 +946,7 @@ export interface TopicReplication {
   TopicsToExclude?: string[];
   TopicsToReplicate?: string[];
 }
+const TopicReplication = /*@__PURE__*/ __L.at(__c9, 6) as any as S.Schema<TopicReplication>;
 export interface ReplicationInfo {
   ConsumerGroupReplication?: ConsumerGroupReplication;
   SourceKafkaClusterArn?: string;
@@ -750,6 +956,7 @@ export interface ReplicationInfo {
   TargetKafkaClusterId?: string;
   TopicReplication?: TopicReplication;
 }
+const ReplicationInfo = /*@__PURE__*/ __L.at(__c9, 7) as any as S.Schema<ReplicationInfo>;
 export type __listOfReplicationInfo = ReplicationInfo[];
 const __listOfReplicationInfo = /*@__PURE__*/ __L.at(__c10, 0);
 export type __stringMin1Max128Pattern09AZaZ09AZaZ0 = string;
@@ -757,23 +964,31 @@ export interface ReplicatorCloudWatchLogs {
   Enabled?: boolean;
   LogGroup?: string;
 }
+const ReplicatorCloudWatchLogs = CloudWatchLogs as any as S.Schema<ReplicatorCloudWatchLogs>;
 export interface ReplicatorFirehose {
   Enabled?: boolean;
   DeliveryStream?: string;
 }
+const ReplicatorFirehose = /*@__PURE__*/ __L.at(__c10, 1) as any as S.Schema<ReplicatorFirehose>;
 export interface ReplicatorS3 {
   Enabled?: boolean;
   Bucket?: string;
   Prefix?: string;
 }
+const ReplicatorS3 = /*@__PURE__*/ __L.at(__c10, 2) as any as S.Schema<ReplicatorS3>;
 export interface ReplicatorLogDelivery {
   CloudWatchLogs?: ReplicatorCloudWatchLogs;
   Firehose?: ReplicatorFirehose;
   S3?: ReplicatorS3;
 }
+const ReplicatorLogDelivery = /*@__PURE__*/ __L.at(
+  __c10,
+  3,
+) as any as S.Schema<ReplicatorLogDelivery>;
 export interface LogDelivery {
   ReplicatorLogDelivery?: ReplicatorLogDelivery;
 }
+const LogDelivery = /*@__PURE__*/ __L.at(__c10, 4) as any as S.Schema<LogDelivery>;
 export interface CreateReplicatorRequest {
   Description?: string;
   KafkaClusters?: KafkaCluster[];
@@ -783,6 +998,10 @@ export interface CreateReplicatorRequest {
   Tags?: { [key: string]: string | undefined };
   LogDelivery?: LogDelivery;
 }
+const CreateReplicatorRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  5,
+) as any as S.Schema<CreateReplicatorRequest>;
 export type ReplicatorState =
   | "RUNNING"
   | "CREATING"
@@ -790,11 +1009,17 @@ export type ReplicatorState =
   | "DELETING"
   | "FAILED"
   | (string & {});
+const ReplicatorState = S.String;
+
 export interface CreateReplicatorResponse {
   ReplicatorArn?: string;
   ReplicatorName?: string;
   ReplicatorState?: ReplicatorState;
 }
+const CreateReplicatorResponse = /*@__PURE__*/ __L.at(
+  __c10,
+  6,
+) as any as S.Schema<CreateReplicatorResponse>;
 export type __integerMin1 = number;
 export interface CreateTopicRequest {
   ClusterArn: string;
@@ -803,12 +1028,16 @@ export interface CreateTopicRequest {
   ReplicationFactor?: number;
   Configs?: string;
 }
+const CreateTopicRequest = /*@__PURE__*/ __L.at(__c10, 7) as any as S.Schema<CreateTopicRequest>;
 export type TopicState = "CREATING" | "UPDATING" | "DELETING" | "ACTIVE" | (string & {});
+const TopicState = S.String;
+
 export interface CreateTopicResponse {
   TopicArn?: string;
   TopicName?: string;
   Status?: TopicState;
 }
+const CreateTopicResponse = /*@__PURE__*/ __L.at(__c11, 0) as any as S.Schema<CreateTopicResponse>;
 export interface CreateVpcConnectionRequest {
   TargetClusterArn?: string;
   Authentication?: string;
@@ -817,6 +1046,10 @@ export interface CreateVpcConnectionRequest {
   SecurityGroups?: string[];
   Tags?: { [key: string]: string | undefined };
 }
+const CreateVpcConnectionRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  1,
+) as any as S.Schema<CreateVpcConnectionRequest>;
 export type VpcConnectionState =
   | "CREATING"
   | "AVAILABLE"
@@ -827,6 +1060,8 @@ export type VpcConnectionState =
   | "REJECTED"
   | "REJECTING"
   | (string & {});
+const VpcConnectionState = S.String;
+
 export interface CreateVpcConnectionResponse {
   VpcConnectionArn?: string;
   State?: VpcConnectionState;
@@ -837,61 +1072,116 @@ export interface CreateVpcConnectionResponse {
   CreationTime?: Date;
   Tags?: { [key: string]: string | undefined };
 }
+const CreateVpcConnectionResponse = /*@__PURE__*/ __L.at(
+  __c11,
+  2,
+) as any as S.Schema<CreateVpcConnectionResponse>;
 export interface DeleteChannelRequest {
   ChannelArn: string;
   ClusterArn: string;
 }
+const DeleteChannelRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  3,
+) as any as S.Schema<DeleteChannelRequest>;
 export interface DeleteChannelResponse {
   ChannelArn: string;
   ClusterOperationArn?: string;
 }
+const DeleteChannelResponse = CreateChannelResponse as any as S.Schema<DeleteChannelResponse>;
 export interface DeleteClusterRequest {
   ClusterArn: string;
   CurrentVersion?: string;
 }
+const DeleteClusterRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  4,
+) as any as S.Schema<DeleteClusterRequest>;
 export interface DeleteClusterResponse {
   ClusterArn?: string;
   State?: ClusterState;
 }
+const DeleteClusterResponse = /*@__PURE__*/ __L.at(
+  __c11,
+  5,
+) as any as S.Schema<DeleteClusterResponse>;
 export interface DeleteClusterPolicyRequest {
   ClusterArn: string;
 }
+const DeleteClusterPolicyRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  6,
+) as any as S.Schema<DeleteClusterPolicyRequest>;
 export interface DeleteClusterPolicyResponse {}
+const DeleteClusterPolicyResponse = /*@__PURE__*/ __L.at(
+  __c11,
+  7,
+) as any as S.Schema<DeleteClusterPolicyResponse>;
 export interface DeleteConfigurationRequest {
   Arn: string;
 }
+const DeleteConfigurationRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  0,
+) as any as S.Schema<DeleteConfigurationRequest>;
 export interface DeleteConfigurationResponse {
   Arn?: string;
   State?: ConfigurationState;
 }
+const DeleteConfigurationResponse = /*@__PURE__*/ __L.at(
+  __c12,
+  1,
+) as any as S.Schema<DeleteConfigurationResponse>;
 export interface DeleteReplicatorRequest {
   CurrentVersion?: string;
   ReplicatorArn: string;
 }
+const DeleteReplicatorRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  2,
+) as any as S.Schema<DeleteReplicatorRequest>;
 export interface DeleteReplicatorResponse {
   ReplicatorArn?: string;
   ReplicatorState?: ReplicatorState;
 }
+const DeleteReplicatorResponse = /*@__PURE__*/ __L.at(
+  __c12,
+  3,
+) as any as S.Schema<DeleteReplicatorResponse>;
 export interface DeleteTopicRequest {
   ClusterArn: string;
   TopicName: string;
 }
+const DeleteTopicRequest = /*@__PURE__*/ __L.at(__c12, 4) as any as S.Schema<DeleteTopicRequest>;
 export interface DeleteTopicResponse {
   TopicArn?: string;
   TopicName?: string;
   Status?: TopicState;
 }
+const DeleteTopicResponse = CreateTopicResponse as any as S.Schema<DeleteTopicResponse>;
 export interface DeleteVpcConnectionRequest {
   Arn: string;
 }
+const DeleteVpcConnectionRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  5,
+) as any as S.Schema<DeleteVpcConnectionRequest>;
 export interface DeleteVpcConnectionResponse {
   VpcConnectionArn?: string;
   State?: VpcConnectionState;
 }
+const DeleteVpcConnectionResponse = /*@__PURE__*/ __L.at(
+  __c12,
+  6,
+) as any as S.Schema<DeleteVpcConnectionResponse>;
 export interface DescribeChannelRequest {
   ChannelArn: string;
   ClusterArn: string;
 }
+const DescribeChannelRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  7,
+) as any as S.Schema<DescribeChannelRequest>;
 export type ChannelStatus =
   | "CREATING"
   | "ACTIVE"
@@ -901,11 +1191,16 @@ export type ChannelStatus =
   | "SUSPENDING"
   | "SUSPENDED"
   | (string & {});
+const ChannelStatus = S.String;
+
 export type ChannelDestinationType = "ICEBERG" | "S3" | (string & {});
+const ChannelDestinationType = S.String;
+
 export interface ChannelStateInfo {
   Code?: string;
   Message?: string;
 }
+const ChannelStateInfo = /*@__PURE__*/ __L.at(__c13, 0) as any as S.Schema<ChannelStateInfo>;
 export interface DescribeChannelResponse {
   ChannelArn: string;
   ChannelName: string;
@@ -946,36 +1241,52 @@ export interface DescribeChannelResponse {
   ClusterOperationArn?: string;
   Tags?: { [key: string]: string | undefined };
 }
+const DescribeChannelResponse = /*@__PURE__*/ __L.at(
+  __c13,
+  1,
+) as any as S.Schema<DescribeChannelResponse>;
 export interface DescribeClusterRequest {
   ClusterArn: string;
 }
+const DescribeClusterRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  2,
+) as any as S.Schema<DescribeClusterRequest>;
 export interface BrokerSoftwareInfo {
   ConfigurationArn?: string;
   ConfigurationRevision?: number;
   KafkaVersion?: string;
 }
+const BrokerSoftwareInfo = /*@__PURE__*/ __L.at(__c13, 3) as any as S.Schema<BrokerSoftwareInfo>;
 export interface JmxExporter {
   EnabledInBroker?: boolean;
 }
+const JmxExporter = JmxExporterInfo as any as S.Schema<JmxExporter>;
 export interface NodeExporter {
   EnabledInBroker?: boolean;
 }
+const NodeExporter = JmxExporterInfo as any as S.Schema<NodeExporter>;
 export interface Prometheus {
   JmxExporter?: JmxExporter;
   NodeExporter?: NodeExporter;
 }
+const Prometheus = /*@__PURE__*/ __L.at(__c13, 4) as any as S.Schema<Prometheus>;
 export interface OpenMonitoring {
   Prometheus?: Prometheus;
 }
+const OpenMonitoring = /*@__PURE__*/ __L.at(__c13, 5) as any as S.Schema<OpenMonitoring>;
 export interface StateInfo {
   Code?: string;
   Message?: string;
 }
+const StateInfo = ChannelStateInfo as any as S.Schema<StateInfo>;
 export type CustomerActionStatus =
   | "CRITICAL_ACTION_REQUIRED"
   | "ACTION_RECOMMENDED"
   | "NONE"
   | (string & {});
+const CustomerActionStatus = S.String;
+
 export interface ClusterInfo {
   ActiveOperationArn?: string;
   BrokerNodeGroupInfo?: BrokerNodeGroupInfo;
@@ -999,6 +1310,7 @@ export interface ClusterInfo {
   StorageMode?: StorageMode;
   CustomerActionStatus?: CustomerActionStatus;
 }
+const ClusterInfo = /*@__PURE__*/ __L.at(__c13, 6) as any as S.Schema<ClusterInfo>;
 export interface DescribeClusterResponse {
   ClusterInfo?: ClusterInfo & {
     BrokerNodeGroupInfo: BrokerNodeGroupInfo & {
@@ -1028,20 +1340,37 @@ export interface DescribeClusterResponse {
     };
   };
 }
+const DescribeClusterResponse = /*@__PURE__*/ __L.at(
+  __c13,
+  7,
+) as any as S.Schema<DescribeClusterResponse>;
 export interface DescribeClusterOperationRequest {
   ClusterOperationArn: string;
 }
+const DescribeClusterOperationRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  0,
+) as any as S.Schema<DescribeClusterOperationRequest>;
 export interface ErrorInfo {
   ErrorCode?: string;
   ErrorString?: string;
 }
+const ErrorInfo = /*@__PURE__*/ __L.at(__c14, 1) as any as S.Schema<ErrorInfo>;
 export interface ClusterOperationStepInfo {
   StepStatus?: string;
 }
+const ClusterOperationStepInfo = /*@__PURE__*/ __L.at(
+  __c14,
+  2,
+) as any as S.Schema<ClusterOperationStepInfo>;
 export interface ClusterOperationStep {
   StepInfo?: ClusterOperationStepInfo;
   StepName?: string;
 }
+const ClusterOperationStep = /*@__PURE__*/ __L.at(
+  __c14,
+  3,
+) as any as S.Schema<ClusterOperationStep>;
 export type __listOfClusterOperationStep = ClusterOperationStep[];
 const __listOfClusterOperationStep = /*@__PURE__*/ __L.at(__c14, 4);
 export interface BrokerEBSVolumeInfo {
@@ -1049,17 +1378,23 @@ export interface BrokerEBSVolumeInfo {
   ProvisionedThroughput?: ProvisionedThroughput;
   VolumeSizeGB?: number;
 }
+const BrokerEBSVolumeInfo = /*@__PURE__*/ __L.at(__c14, 5) as any as S.Schema<BrokerEBSVolumeInfo>;
 export type __listOfBrokerEBSVolumeInfo = BrokerEBSVolumeInfo[];
 const __listOfBrokerEBSVolumeInfo = /*@__PURE__*/ __L.at(__c14, 6);
 export interface ZookeeperAccess {
   Enabled?: boolean;
 }
+const ZookeeperAccess = VpcConnectivityScram as any as S.Schema<ZookeeperAccess>;
 export type __listOf__double = number[];
 const __listOf__double = /*@__PURE__*/ __L.at(__c14, 7);
 export interface BrokerCountUpdateInfo {
   CreatedBrokerIds?: number[];
   DeletedBrokerIds?: number[];
 }
+const BrokerCountUpdateInfo = /*@__PURE__*/ __L.at(
+  __c15,
+  0,
+) as any as S.Schema<BrokerCountUpdateInfo>;
 export interface MutableClusterInfo {
   BrokerEBSVolumeInfo?: BrokerEBSVolumeInfo[];
   ConfigurationInfo?: ConfigurationInfo;
@@ -1077,17 +1412,22 @@ export interface MutableClusterInfo {
   BrokerCountUpdateInfo?: BrokerCountUpdateInfo;
   Rebalancing?: Rebalancing;
 }
+const MutableClusterInfo = /*@__PURE__*/ __L.at(__c15, 1) as any as S.Schema<MutableClusterInfo>;
 export type UserIdentityType = "AWSACCOUNT" | "AWSSERVICE" | (string & {});
+const UserIdentityType = S.String;
+
 export interface UserIdentity {
   Type?: UserIdentityType;
   PrincipalId?: string;
 }
+const UserIdentity = /*@__PURE__*/ __L.at(__c15, 2) as any as S.Schema<UserIdentity>;
 export interface VpcConnectionInfo {
   VpcConnectionArn?: string;
   Owner?: string;
   UserIdentity?: UserIdentity;
   CreationTime?: Date;
 }
+const VpcConnectionInfo = /*@__PURE__*/ __L.at(__c15, 3) as any as S.Schema<VpcConnectionInfo>;
 export interface ClusterOperationInfo {
   ClientRequestId?: string;
   ClusterArn?: string;
@@ -1102,6 +1442,10 @@ export interface ClusterOperationInfo {
   TargetClusterInfo?: MutableClusterInfo;
   VpcConnectionInfo?: VpcConnectionInfo;
 }
+const ClusterOperationInfo = /*@__PURE__*/ __L.at(
+  __c15,
+  4,
+) as any as S.Schema<ClusterOperationInfo>;
 export interface DescribeClusterOperationResponse {
   ClusterOperationInfo?: ClusterOperationInfo & {
     SourceClusterInfo: MutableClusterInfo & {
@@ -1156,29 +1500,53 @@ export interface DescribeClusterOperationResponse {
     };
   };
 }
+const DescribeClusterOperationResponse = /*@__PURE__*/ __L.at(
+  __c15,
+  5,
+) as any as S.Schema<DescribeClusterOperationResponse>;
 export interface DescribeClusterOperationV2Request {
   ClusterOperationArn: string;
 }
+const DescribeClusterOperationV2Request = /*@__PURE__*/ __L.at(
+  __c15,
+  6,
+) as any as S.Schema<DescribeClusterOperationV2Request>;
 export interface ClusterOperationV2Provisioned {
   OperationSteps?: ClusterOperationStep[];
   SourceClusterInfo?: MutableClusterInfo;
   TargetClusterInfo?: MutableClusterInfo;
   VpcConnectionInfo?: VpcConnectionInfo;
 }
+const ClusterOperationV2Provisioned = /*@__PURE__*/ __L.at(
+  __c15,
+  7,
+) as any as S.Schema<ClusterOperationV2Provisioned>;
 export interface ServerlessConnectivityInfo {
   NetworkType?: NetworkType;
 }
+const ServerlessConnectivityInfo = /*@__PURE__*/ __L.at(
+  __c16,
+  0,
+) as any as S.Schema<ServerlessConnectivityInfo>;
 export interface VpcConnectionInfoServerless {
   CreationTime?: Date;
   Owner?: string;
   UserIdentity?: UserIdentity;
   VpcConnectionArn?: string;
 }
+const VpcConnectionInfoServerless = /*@__PURE__*/ __L.at(
+  __c16,
+  1,
+) as any as S.Schema<VpcConnectionInfoServerless>;
 export interface ClusterOperationV2Serverless {
   SourceClusterInfo?: ServerlessConnectivityInfo;
   TargetClusterInfo?: ServerlessConnectivityInfo;
   VpcConnectionInfo?: VpcConnectionInfoServerless;
 }
+const ClusterOperationV2Serverless = /*@__PURE__*/ __L.at(
+  __c16,
+  2,
+) as any as S.Schema<ClusterOperationV2Serverless>;
 export interface ClusterOperationV2 {
   ClusterArn?: string;
   ClusterType?: ClusterType;
@@ -1191,6 +1559,7 @@ export interface ClusterOperationV2 {
   Provisioned?: ClusterOperationV2Provisioned;
   Serverless?: ClusterOperationV2Serverless;
 }
+const ClusterOperationV2 = /*@__PURE__*/ __L.at(__c16, 3) as any as S.Schema<ClusterOperationV2>;
 export interface DescribeClusterOperationV2Response {
   ClusterOperationInfo?: ClusterOperationV2 & {
     Provisioned: ClusterOperationV2Provisioned & {
@@ -1247,9 +1616,17 @@ export interface DescribeClusterOperationV2Response {
     };
   };
 }
+const DescribeClusterOperationV2Response = /*@__PURE__*/ __L.at(
+  __c16,
+  4,
+) as any as S.Schema<DescribeClusterOperationV2Response>;
 export interface DescribeClusterV2Request {
   ClusterArn: string;
 }
+const DescribeClusterV2Request = /*@__PURE__*/ __L.at(
+  __c16,
+  5,
+) as any as S.Schema<DescribeClusterV2Request>;
 export interface Provisioned {
   BrokerNodeGroupInfo?: BrokerNodeGroupInfo;
   Rebalancing?: Rebalancing;
@@ -1265,11 +1642,13 @@ export interface Provisioned {
   StorageMode?: StorageMode;
   CustomerActionStatus?: CustomerActionStatus;
 }
+const Provisioned = /*@__PURE__*/ __L.at(__c16, 6) as any as S.Schema<Provisioned>;
 export interface Serverless {
   VpcConfigs?: VpcConfig[];
   ClientAuthentication?: ServerlessClientAuthentication;
   ConnectivityInfo?: ServerlessConnectivityInfo;
 }
+const Serverless = /*@__PURE__*/ __L.at(__c16, 7) as any as S.Schema<Serverless>;
 export interface Cluster {
   ActiveOperationArn?: string;
   ClusterType?: ClusterType;
@@ -1283,6 +1662,7 @@ export interface Cluster {
   Provisioned?: Provisioned;
   Serverless?: Serverless;
 }
+const Cluster = /*@__PURE__*/ __L.at(__c17, 0) as any as S.Schema<Cluster>;
 export interface DescribeClusterV2Response {
   ClusterInfo?: Cluster & {
     Provisioned: Provisioned & {
@@ -1316,9 +1696,17 @@ export interface DescribeClusterV2Response {
     Serverless: Serverless & { VpcConfigs: (VpcConfig & { SubnetIds: __listOf__string })[] };
   };
 }
+const DescribeClusterV2Response = /*@__PURE__*/ __L.at(
+  __c17,
+  1,
+) as any as S.Schema<DescribeClusterV2Response>;
 export interface DescribeConfigurationRequest {
   Arn: string;
 }
+const DescribeConfigurationRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  2,
+) as any as S.Schema<DescribeConfigurationRequest>;
 export interface DescribeConfigurationResponse {
   Arn?: string;
   CreationTime?: Date;
@@ -1328,10 +1716,18 @@ export interface DescribeConfigurationResponse {
   Name?: string;
   State?: ConfigurationState;
 }
+const DescribeConfigurationResponse = /*@__PURE__*/ __L.at(
+  __c17,
+  3,
+) as any as S.Schema<DescribeConfigurationResponse>;
 export interface DescribeConfigurationRevisionRequest {
   Arn: string;
   Revision: number;
 }
+const DescribeConfigurationRevisionRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  4,
+) as any as S.Schema<DescribeConfigurationRevisionRequest>;
 export interface DescribeConfigurationRevisionResponse {
   Arn?: string;
   CreationTime?: Date;
@@ -1339,9 +1735,17 @@ export interface DescribeConfigurationRevisionResponse {
   Revision?: number;
   ServerProperties?: Uint8Array;
 }
+const DescribeConfigurationRevisionResponse = /*@__PURE__*/ __L.at(
+  __c17,
+  5,
+) as any as S.Schema<DescribeConfigurationRevisionResponse>;
 export interface DescribeReplicatorRequest {
   ReplicatorArn: string;
 }
+const DescribeReplicatorRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  6,
+) as any as S.Schema<DescribeReplicatorRequest>;
 export interface KafkaClusterDescription {
   AmazonMskCluster?: AmazonMskCluster;
   ApacheKafkaCluster?: ApacheKafkaCluster;
@@ -1350,6 +1754,10 @@ export interface KafkaClusterDescription {
   ClientAuthentication?: KafkaClusterClientAuthentication;
   EncryptionInTransit?: KafkaClusterEncryptionInTransit;
 }
+const KafkaClusterDescription = /*@__PURE__*/ __L.at(
+  __c17,
+  7,
+) as any as S.Schema<KafkaClusterDescription>;
 export type __listOfKafkaClusterDescription = KafkaClusterDescription[];
 const __listOfKafkaClusterDescription = /*@__PURE__*/ __L.at(__c18, 0);
 export interface ReplicationInfoDescription {
@@ -1359,12 +1767,17 @@ export interface ReplicationInfoDescription {
   TargetKafkaClusterAlias?: string;
   TopicReplication?: TopicReplication;
 }
+const ReplicationInfoDescription = /*@__PURE__*/ __L.at(
+  __c18,
+  1,
+) as any as S.Schema<ReplicationInfoDescription>;
 export type __listOfReplicationInfoDescription = ReplicationInfoDescription[];
 const __listOfReplicationInfoDescription = /*@__PURE__*/ __L.at(__c18, 2);
 export interface ReplicationStateInfo {
   Code?: string;
   Message?: string;
 }
+const ReplicationStateInfo = ChannelStateInfo as any as S.Schema<ReplicationStateInfo>;
 export interface DescribeReplicatorResponse {
   CreationTime?: Date;
   CurrentVersion?: string;
@@ -1422,10 +1835,18 @@ export interface DescribeReplicatorResponse {
     };
   };
 }
+const DescribeReplicatorResponse = /*@__PURE__*/ __L.at(
+  __c18,
+  3,
+) as any as S.Schema<DescribeReplicatorResponse>;
 export interface DescribeTopicRequest {
   ClusterArn: string;
   TopicName: string;
 }
+const DescribeTopicRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  4,
+) as any as S.Schema<DescribeTopicRequest>;
 export interface DescribeTopicResponse {
   TopicArn?: string;
   TopicName?: string;
@@ -1434,6 +1855,10 @@ export interface DescribeTopicResponse {
   Configs?: string;
   Status?: TopicState;
 }
+const DescribeTopicResponse = /*@__PURE__*/ __L.at(
+  __c18,
+  5,
+) as any as S.Schema<DescribeTopicResponse>;
 export type MaxResults = number;
 export interface DescribeTopicPartitionsRequest {
   ClusterArn: string;
@@ -1441,6 +1866,10 @@ export interface DescribeTopicPartitionsRequest {
   MaxResults?: number;
   NextToken?: string;
 }
+const DescribeTopicPartitionsRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  6,
+) as any as S.Schema<DescribeTopicPartitionsRequest>;
 export type __listOf__integer = number[];
 const __listOf__integer = __listOf__double as any as S.Schema<__listOf__integer>;
 export interface TopicPartitionInfo {
@@ -1449,15 +1878,24 @@ export interface TopicPartitionInfo {
   Replicas?: number[];
   Isr?: number[];
 }
+const TopicPartitionInfo = /*@__PURE__*/ __L.at(__c18, 7) as any as S.Schema<TopicPartitionInfo>;
 export type __listOfTopicPartitionInfo = TopicPartitionInfo[];
 const __listOfTopicPartitionInfo = /*@__PURE__*/ __L.at(__c19, 0);
 export interface DescribeTopicPartitionsResponse {
   Partitions?: TopicPartitionInfo[];
   NextToken?: string;
 }
+const DescribeTopicPartitionsResponse = /*@__PURE__*/ __L.at(
+  __c19,
+  1,
+) as any as S.Schema<DescribeTopicPartitionsResponse>;
 export interface DescribeVpcConnectionRequest {
   Arn: string;
 }
+const DescribeVpcConnectionRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  2,
+) as any as S.Schema<DescribeVpcConnectionRequest>;
 export interface DescribeVpcConnectionResponse {
   VpcConnectionArn?: string;
   TargetClusterArn?: string;
@@ -1469,9 +1907,17 @@ export interface DescribeVpcConnectionResponse {
   CreationTime?: Date;
   Tags?: { [key: string]: string | undefined };
 }
+const DescribeVpcConnectionResponse = /*@__PURE__*/ __L.at(
+  __c19,
+  3,
+) as any as S.Schema<DescribeVpcConnectionResponse>;
 export interface GetBootstrapBrokersRequest {
   ClusterArn: string;
 }
+const GetBootstrapBrokersRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  4,
+) as any as S.Schema<GetBootstrapBrokersRequest>;
 export interface GetBootstrapBrokersResponse {
   BootstrapBrokerString?: string;
   BootstrapBrokerStringTls?: string;
@@ -1488,31 +1934,56 @@ export interface GetBootstrapBrokersResponse {
   BootstrapBrokerStringSaslScramIpv6?: string;
   BootstrapBrokerStringSaslIamIpv6?: string;
 }
+const GetBootstrapBrokersResponse = /*@__PURE__*/ __L.at(
+  __c19,
+  5,
+) as any as S.Schema<GetBootstrapBrokersResponse>;
 export interface GetClusterPolicyRequest {
   ClusterArn: string;
 }
+const GetClusterPolicyRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  6,
+) as any as S.Schema<GetClusterPolicyRequest>;
 export interface GetClusterPolicyResponse {
   CurrentVersion?: string;
   Policy?: string;
 }
+const GetClusterPolicyResponse = /*@__PURE__*/ __L.at(
+  __c19,
+  7,
+) as any as S.Schema<GetClusterPolicyResponse>;
 export interface GetCompatibleKafkaVersionsRequest {
   ClusterArn?: string;
 }
+const GetCompatibleKafkaVersionsRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  0,
+) as any as S.Schema<GetCompatibleKafkaVersionsRequest>;
 export interface CompatibleKafkaVersion {
   SourceVersion?: string;
   TargetVersions?: string[];
 }
+const CompatibleKafkaVersion = /*@__PURE__*/ __L.at(
+  __c20,
+  1,
+) as any as S.Schema<CompatibleKafkaVersion>;
 export type __listOfCompatibleKafkaVersion = CompatibleKafkaVersion[];
 const __listOfCompatibleKafkaVersion = /*@__PURE__*/ __L.at(__c20, 2);
 export interface GetCompatibleKafkaVersionsResponse {
   CompatibleKafkaVersions?: CompatibleKafkaVersion[];
 }
+const GetCompatibleKafkaVersionsResponse = /*@__PURE__*/ __L.at(
+  __c20,
+  3,
+) as any as S.Schema<GetCompatibleKafkaVersionsResponse>;
 export interface ListChannelsRequest {
   ClusterArn: string;
   MaxResults?: number;
   NextToken?: string;
   TopicNameFilter?: string;
 }
+const ListChannelsRequest = /*@__PURE__*/ __L.at(__c20, 4) as any as S.Schema<ListChannelsRequest>;
 export interface ChannelInfo {
   ChannelArn?: string;
   ChannelName?: string;
@@ -1521,6 +1992,7 @@ export interface ChannelInfo {
   DestinationType?: ChannelDestinationType;
   ClusterOperationArn?: string;
 }
+const ChannelInfo = /*@__PURE__*/ __L.at(__c20, 5) as any as S.Schema<ChannelInfo>;
 export type __listOfChannelInfo = ChannelInfo[];
 const __listOfChannelInfo = /*@__PURE__*/ __L.at(__c20, 6);
 export interface ListChannelsResponse {
@@ -1533,11 +2005,19 @@ export interface ListChannelsResponse {
   })[];
   NextToken?: string;
 }
+const ListChannelsResponse = /*@__PURE__*/ __L.at(
+  __c20,
+  7,
+) as any as S.Schema<ListChannelsResponse>;
 export interface ListClientVpcConnectionsRequest {
   ClusterArn: string;
   MaxResults?: number;
   NextToken?: string;
 }
+const ListClientVpcConnectionsRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  0,
+) as any as S.Schema<ListClientVpcConnectionsRequest>;
 export interface ClientVpcConnection {
   Authentication?: string;
   CreationTime?: Date;
@@ -1545,17 +2025,26 @@ export interface ClientVpcConnection {
   VpcConnectionArn?: string;
   Owner?: string;
 }
+const ClientVpcConnection = /*@__PURE__*/ __L.at(__c21, 1) as any as S.Schema<ClientVpcConnection>;
 export type __listOfClientVpcConnection = ClientVpcConnection[];
 const __listOfClientVpcConnection = /*@__PURE__*/ __L.at(__c21, 2);
 export interface ListClientVpcConnectionsResponse {
   ClientVpcConnections?: (ClientVpcConnection & { VpcConnectionArn: string })[];
   NextToken?: string;
 }
+const ListClientVpcConnectionsResponse = /*@__PURE__*/ __L.at(
+  __c21,
+  3,
+) as any as S.Schema<ListClientVpcConnectionsResponse>;
 export interface ListClusterOperationsRequest {
   ClusterArn: string;
   MaxResults?: number;
   NextToken?: string;
 }
+const ListClusterOperationsRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  4,
+) as any as S.Schema<ListClusterOperationsRequest>;
 export type __listOfClusterOperationInfo = ClusterOperationInfo[];
 const __listOfClusterOperationInfo = /*@__PURE__*/ __L.at(__c21, 5);
 export interface ListClusterOperationsResponse {
@@ -1613,11 +2102,19 @@ export interface ListClusterOperationsResponse {
   })[];
   NextToken?: string;
 }
+const ListClusterOperationsResponse = /*@__PURE__*/ __L.at(
+  __c21,
+  6,
+) as any as S.Schema<ListClusterOperationsResponse>;
 export interface ListClusterOperationsV2Request {
   ClusterArn: string;
   MaxResults?: number;
   NextToken?: string;
 }
+const ListClusterOperationsV2Request = /*@__PURE__*/ __L.at(
+  __c21,
+  7,
+) as any as S.Schema<ListClusterOperationsV2Request>;
 export interface ClusterOperationV2Summary {
   ClusterArn?: string;
   ClusterType?: ClusterType;
@@ -1627,17 +2124,26 @@ export interface ClusterOperationV2Summary {
   OperationState?: string;
   OperationType?: string;
 }
+const ClusterOperationV2Summary = /*@__PURE__*/ __L.at(
+  __c22,
+  0,
+) as any as S.Schema<ClusterOperationV2Summary>;
 export type __listOfClusterOperationV2Summary = ClusterOperationV2Summary[];
 const __listOfClusterOperationV2Summary = /*@__PURE__*/ __L.at(__c22, 1);
 export interface ListClusterOperationsV2Response {
   ClusterOperationInfoList?: ClusterOperationV2Summary[];
   NextToken?: string;
 }
+const ListClusterOperationsV2Response = /*@__PURE__*/ __L.at(
+  __c22,
+  2,
+) as any as S.Schema<ListClusterOperationsV2Response>;
 export interface ListClustersRequest {
   ClusterNameFilter?: string;
   MaxResults?: number;
   NextToken?: string;
 }
+const ListClustersRequest = /*@__PURE__*/ __L.at(__c22, 3) as any as S.Schema<ListClustersRequest>;
 export type __listOfClusterInfo = ClusterInfo[];
 const __listOfClusterInfo = /*@__PURE__*/ __L.at(__c22, 4);
 export interface ListClustersResponse {
@@ -1670,12 +2176,20 @@ export interface ListClustersResponse {
   })[];
   NextToken?: string;
 }
+const ListClustersResponse = /*@__PURE__*/ __L.at(
+  __c22,
+  5,
+) as any as S.Schema<ListClustersResponse>;
 export interface ListClustersV2Request {
   ClusterNameFilter?: string;
   ClusterTypeFilter?: string;
   MaxResults?: number;
   NextToken?: string;
 }
+const ListClustersV2Request = /*@__PURE__*/ __L.at(
+  __c22,
+  6,
+) as any as S.Schema<ListClustersV2Request>;
 export type __listOfCluster = Cluster[];
 const __listOfCluster = /*@__PURE__*/ __L.at(__c22, 7);
 export interface ListClustersV2Response {
@@ -1712,21 +2226,37 @@ export interface ListClustersV2Response {
   })[];
   NextToken?: string;
 }
+const ListClustersV2Response = /*@__PURE__*/ __L.at(
+  __c23,
+  0,
+) as any as S.Schema<ListClustersV2Response>;
 export interface ListConfigurationRevisionsRequest {
   Arn: string;
   MaxResults?: number;
   NextToken?: string;
 }
+const ListConfigurationRevisionsRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  1,
+) as any as S.Schema<ListConfigurationRevisionsRequest>;
 export type __listOfConfigurationRevision = ConfigurationRevision[];
 const __listOfConfigurationRevision = /*@__PURE__*/ __L.at(__c23, 2);
 export interface ListConfigurationRevisionsResponse {
   NextToken?: string;
   Revisions?: (ConfigurationRevision & { CreationTime: __timestampIso8601; Revision: number })[];
 }
+const ListConfigurationRevisionsResponse = /*@__PURE__*/ __L.at(
+  __c23,
+  3,
+) as any as S.Schema<ListConfigurationRevisionsResponse>;
 export interface ListConfigurationsRequest {
   MaxResults?: number;
   NextToken?: string;
 }
+const ListConfigurationsRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  4,
+) as any as S.Schema<ListConfigurationsRequest>;
 export interface Configuration {
   Arn?: string;
   CreationTime?: Date;
@@ -1736,6 +2266,7 @@ export interface Configuration {
   Name?: string;
   State?: ConfigurationState;
 }
+const Configuration = /*@__PURE__*/ __L.at(__c23, 5) as any as S.Schema<Configuration>;
 export type __listOfConfiguration = Configuration[];
 const __listOfConfiguration = /*@__PURE__*/ __L.at(__c23, 6);
 export interface ListConfigurationsResponse {
@@ -1750,26 +2281,42 @@ export interface ListConfigurationsResponse {
   })[];
   NextToken?: string;
 }
+const ListConfigurationsResponse = /*@__PURE__*/ __L.at(
+  __c23,
+  7,
+) as any as S.Schema<ListConfigurationsResponse>;
 export interface ListKafkaVersionsRequest {
   MaxResults?: number;
   NextToken?: string;
 }
+const ListKafkaVersionsRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  0,
+) as any as S.Schema<ListKafkaVersionsRequest>;
 export type KafkaVersionStatus = "ACTIVE" | "DEPRECATED" | (string & {});
+const KafkaVersionStatus = S.String;
+
 export interface KafkaVersion {
   Version?: string;
   Status?: KafkaVersionStatus;
 }
+const KafkaVersion = /*@__PURE__*/ __L.at(__c24, 1) as any as S.Schema<KafkaVersion>;
 export type __listOfKafkaVersion = KafkaVersion[];
 const __listOfKafkaVersion = /*@__PURE__*/ __L.at(__c24, 2);
 export interface ListKafkaVersionsResponse {
   KafkaVersions?: KafkaVersion[];
   NextToken?: string;
 }
+const ListKafkaVersionsResponse = /*@__PURE__*/ __L.at(
+  __c24,
+  3,
+) as any as S.Schema<ListKafkaVersionsResponse>;
 export interface ListNodesRequest {
   ClusterArn: string;
   MaxResults?: number;
   NextToken?: string;
 }
+const ListNodesRequest = /*@__PURE__*/ __L.at(__c24, 4) as any as S.Schema<ListNodesRequest>;
 export interface BrokerNodeInfo {
   AttachedENIId?: string;
   BrokerId?: number;
@@ -1778,10 +2325,14 @@ export interface BrokerNodeInfo {
   CurrentBrokerSoftwareInfo?: BrokerSoftwareInfo;
   Endpoints?: string[];
 }
+const BrokerNodeInfo = /*@__PURE__*/ __L.at(__c24, 5) as any as S.Schema<BrokerNodeInfo>;
 export interface ControllerNodeInfo {
   Endpoints?: string[];
 }
+const ControllerNodeInfo = /*@__PURE__*/ __L.at(__c24, 6) as any as S.Schema<ControllerNodeInfo>;
 export type NodeType = "BROKER" | (string & {});
+const NodeType = S.String;
+
 export interface ZookeeperNodeInfo {
   AttachedENIId?: string;
   ClientVpcIpAddress?: string;
@@ -1789,6 +2340,7 @@ export interface ZookeeperNodeInfo {
   ZookeeperId?: number;
   ZookeeperVersion?: string;
 }
+const ZookeeperNodeInfo = /*@__PURE__*/ __L.at(__c24, 7) as any as S.Schema<ZookeeperNodeInfo>;
 export interface NodeInfo {
   AddedToClusterTime?: string;
   BrokerNodeInfo?: BrokerNodeInfo;
@@ -1798,28 +2350,39 @@ export interface NodeInfo {
   NodeType?: NodeType;
   ZookeeperNodeInfo?: ZookeeperNodeInfo;
 }
+const NodeInfo = /*@__PURE__*/ __L.at(__c25, 0) as any as S.Schema<NodeInfo>;
 export type __listOfNodeInfo = NodeInfo[];
 const __listOfNodeInfo = /*@__PURE__*/ __L.at(__c25, 1);
 export interface ListNodesResponse {
   NextToken?: string;
   NodeInfoList?: NodeInfo[];
 }
+const ListNodesResponse = /*@__PURE__*/ __L.at(__c25, 2) as any as S.Schema<ListNodesResponse>;
 export interface ListReplicatorsRequest {
   MaxResults?: number;
   NextToken?: string;
   ReplicatorNameFilter?: string;
 }
+const ListReplicatorsRequest = /*@__PURE__*/ __L.at(
+  __c25,
+  3,
+) as any as S.Schema<ListReplicatorsRequest>;
 export interface KafkaClusterSummary {
   AmazonMskCluster?: AmazonMskCluster;
   ApacheKafkaCluster?: ApacheKafkaCluster;
   KafkaClusterAlias?: string;
 }
+const KafkaClusterSummary = /*@__PURE__*/ __L.at(__c25, 4) as any as S.Schema<KafkaClusterSummary>;
 export type __listOfKafkaClusterSummary = KafkaClusterSummary[];
 const __listOfKafkaClusterSummary = /*@__PURE__*/ __L.at(__c25, 5);
 export interface ReplicationInfoSummary {
   SourceKafkaClusterAlias?: string;
   TargetKafkaClusterAlias?: string;
 }
+const ReplicationInfoSummary = /*@__PURE__*/ __L.at(
+  __c25,
+  6,
+) as any as S.Schema<ReplicationInfoSummary>;
 export type __listOfReplicationInfoSummary = ReplicationInfoSummary[];
 const __listOfReplicationInfoSummary = /*@__PURE__*/ __L.at(__c25, 7);
 export interface ReplicatorSummary {
@@ -1833,6 +2396,7 @@ export interface ReplicatorSummary {
   ReplicatorResourceArn?: string;
   ReplicatorState?: ReplicatorState;
 }
+const ReplicatorSummary = /*@__PURE__*/ __L.at(__c26, 0) as any as S.Schema<ReplicatorSummary>;
 export type __listOfReplicatorSummary = ReplicatorSummary[];
 const __listOfReplicatorSummary = /*@__PURE__*/ __L.at(__c26, 1);
 export interface ListReplicatorsResponse {
@@ -1847,27 +2411,48 @@ export interface ListReplicatorsResponse {
     })[];
   })[];
 }
+const ListReplicatorsResponse = /*@__PURE__*/ __L.at(
+  __c26,
+  2,
+) as any as S.Schema<ListReplicatorsResponse>;
 export interface ListScramSecretsRequest {
   ClusterArn: string;
   MaxResults?: number;
   NextToken?: string;
 }
+const ListScramSecretsRequest = /*@__PURE__*/ __L.at(
+  __c26,
+  3,
+) as any as S.Schema<ListScramSecretsRequest>;
 export interface ListScramSecretsResponse {
   NextToken?: string;
   SecretArnList?: string[];
 }
+const ListScramSecretsResponse = /*@__PURE__*/ __L.at(
+  __c26,
+  4,
+) as any as S.Schema<ListScramSecretsResponse>;
 export interface ListTagsForResourceRequest {
   ResourceArn: string;
 }
+const ListTagsForResourceRequest = /*@__PURE__*/ __L.at(
+  __c26,
+  5,
+) as any as S.Schema<ListTagsForResourceRequest>;
 export interface ListTagsForResourceResponse {
   Tags?: { [key: string]: string | undefined };
 }
+const ListTagsForResourceResponse = /*@__PURE__*/ __L.at(
+  __c26,
+  6,
+) as any as S.Schema<ListTagsForResourceResponse>;
 export interface ListTopicsRequest {
   ClusterArn: string;
   MaxResults?: number;
   NextToken?: string;
   TopicNameFilter?: string;
 }
+const ListTopicsRequest = /*@__PURE__*/ __L.at(__c26, 7) as any as S.Schema<ListTopicsRequest>;
 export interface TopicInfo {
   TopicArn?: string;
   TopicName?: string;
@@ -1875,16 +2460,22 @@ export interface TopicInfo {
   PartitionCount?: number;
   OutOfSyncReplicaCount?: number;
 }
+const TopicInfo = /*@__PURE__*/ __L.at(__c27, 0) as any as S.Schema<TopicInfo>;
 export type __listOfTopicInfo = TopicInfo[];
 const __listOfTopicInfo = /*@__PURE__*/ __L.at(__c27, 1);
 export interface ListTopicsResponse {
   Topics?: TopicInfo[];
   NextToken?: string;
 }
+const ListTopicsResponse = /*@__PURE__*/ __L.at(__c27, 2) as any as S.Schema<ListTopicsResponse>;
 export interface ListVpcConnectionsRequest {
   MaxResults?: number;
   NextToken?: string;
 }
+const ListVpcConnectionsRequest = /*@__PURE__*/ __L.at(
+  __c27,
+  3,
+) as any as S.Schema<ListVpcConnectionsRequest>;
 export interface VpcConnection {
   VpcConnectionArn?: string;
   TargetClusterArn?: string;
@@ -1893,124 +2484,212 @@ export interface VpcConnection {
   VpcId?: string;
   State?: VpcConnectionState;
 }
+const VpcConnection = /*@__PURE__*/ __L.at(__c27, 4) as any as S.Schema<VpcConnection>;
 export type __listOfVpcConnection = VpcConnection[];
 const __listOfVpcConnection = /*@__PURE__*/ __L.at(__c27, 5);
 export interface ListVpcConnectionsResponse {
   VpcConnections?: (VpcConnection & { VpcConnectionArn: string; TargetClusterArn: string })[];
   NextToken?: string;
 }
+const ListVpcConnectionsResponse = /*@__PURE__*/ __L.at(
+  __c27,
+  6,
+) as any as S.Schema<ListVpcConnectionsResponse>;
 export interface PutClusterPolicyRequest {
   ClusterArn: string;
   CurrentVersion?: string;
   Policy?: string;
 }
+const PutClusterPolicyRequest = /*@__PURE__*/ __L.at(
+  __c27,
+  7,
+) as any as S.Schema<PutClusterPolicyRequest>;
 export interface PutClusterPolicyResponse {
   CurrentVersion?: string;
 }
+const PutClusterPolicyResponse = /*@__PURE__*/ __L.at(
+  __c28,
+  0,
+) as any as S.Schema<PutClusterPolicyResponse>;
 export interface RebootBrokerRequest {
   BrokerIds?: string[];
   ClusterArn: string;
 }
+const RebootBrokerRequest = /*@__PURE__*/ __L.at(__c28, 1) as any as S.Schema<RebootBrokerRequest>;
 export interface RebootBrokerResponse {
   ClusterArn?: string;
   ClusterOperationArn?: string;
 }
+const RebootBrokerResponse = /*@__PURE__*/ __L.at(
+  __c28,
+  2,
+) as any as S.Schema<RebootBrokerResponse>;
 export interface RejectClientVpcConnectionRequest {
   ClusterArn: string;
   VpcConnectionArn?: string;
 }
+const RejectClientVpcConnectionRequest = /*@__PURE__*/ __L.at(
+  __c28,
+  3,
+) as any as S.Schema<RejectClientVpcConnectionRequest>;
 export interface RejectClientVpcConnectionResponse {}
+const RejectClientVpcConnectionResponse = /*@__PURE__*/ __L.at(
+  __c28,
+  4,
+) as any as S.Schema<RejectClientVpcConnectionResponse>;
 export interface TagResourceRequest {
   ResourceArn: string;
   Tags?: { [key: string]: string | undefined };
 }
+const TagResourceRequest = /*@__PURE__*/ __L.at(__c28, 5) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
+const TagResourceResponse = DeleteClusterPolicyResponse as any as S.Schema<TagResourceResponse>;
 export interface UntagResourceRequest {
   ResourceArn: string;
   TagKeys?: string[];
 }
+const UntagResourceRequest = /*@__PURE__*/ __L.at(
+  __c28,
+  6,
+) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
+const UntagResourceResponse = DeleteClusterPolicyResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateBrokerCountRequest {
   ClusterArn: string;
   CurrentVersion?: string;
   TargetNumberOfBrokerNodes?: number;
 }
+const UpdateBrokerCountRequest = /*@__PURE__*/ __L.at(
+  __c28,
+  7,
+) as any as S.Schema<UpdateBrokerCountRequest>;
 export interface UpdateBrokerCountResponse {
   ClusterArn?: string;
   ClusterOperationArn?: string;
 }
+const UpdateBrokerCountResponse = /*@__PURE__*/ __L.at(
+  __c29,
+  0,
+) as any as S.Schema<UpdateBrokerCountResponse>;
 export interface UpdateBrokerStorageRequest {
   ClusterArn: string;
   CurrentVersion?: string;
   TargetBrokerEBSVolumeInfo?: BrokerEBSVolumeInfo[];
 }
+const UpdateBrokerStorageRequest = /*@__PURE__*/ __L.at(
+  __c29,
+  1,
+) as any as S.Schema<UpdateBrokerStorageRequest>;
 export interface UpdateBrokerStorageResponse {
   ClusterArn?: string;
   ClusterOperationArn?: string;
 }
+const UpdateBrokerStorageResponse =
+  UpdateBrokerCountResponse as any as S.Schema<UpdateBrokerStorageResponse>;
 export interface UpdateBrokerTypeRequest {
   ClusterArn: string;
   CurrentVersion?: string;
   TargetInstanceType?: string;
 }
+const UpdateBrokerTypeRequest = /*@__PURE__*/ __L.at(
+  __c29,
+  2,
+) as any as S.Schema<UpdateBrokerTypeRequest>;
 export interface UpdateBrokerTypeResponse {
   ClusterArn?: string;
   ClusterOperationArn?: string;
 }
+const UpdateBrokerTypeResponse = RebootBrokerResponse as any as S.Schema<UpdateBrokerTypeResponse>;
 export interface IcebergDestinationUpdate {
   DataFreshnessInSeconds?: number;
 }
+const IcebergDestinationUpdate = /*@__PURE__*/ __L.at(
+  __c29,
+  3,
+) as any as S.Schema<IcebergDestinationUpdate>;
 export interface S3DestinationUpdate {
   DataFreshnessInSeconds?: number;
 }
+const S3DestinationUpdate = IcebergDestinationUpdate as any as S.Schema<S3DestinationUpdate>;
 export interface UpdateChannelRequest {
   ChannelArn: string;
   ClusterArn: string;
   IcebergDestinationUpdate?: IcebergDestinationUpdate;
   S3DestinationUpdate?: S3DestinationUpdate;
 }
+const UpdateChannelRequest = /*@__PURE__*/ __L.at(
+  __c29,
+  4,
+) as any as S.Schema<UpdateChannelRequest>;
 export interface UpdateChannelResponse {
   ChannelArn: string;
   ClusterOperationArn?: string;
 }
+const UpdateChannelResponse = CreateChannelResponse as any as S.Schema<UpdateChannelResponse>;
 export interface UpdateClusterConfigurationRequest {
   ClusterArn: string;
   ConfigurationInfo?: ConfigurationInfo;
   CurrentVersion?: string;
 }
+const UpdateClusterConfigurationRequest = /*@__PURE__*/ __L.at(
+  __c29,
+  5,
+) as any as S.Schema<UpdateClusterConfigurationRequest>;
 export interface UpdateClusterConfigurationResponse {
   ClusterArn?: string;
   ClusterOperationArn?: string;
 }
+const UpdateClusterConfigurationResponse =
+  UpdateBrokerCountResponse as any as S.Schema<UpdateClusterConfigurationResponse>;
 export interface UpdateClusterKafkaVersionRequest {
   ClusterArn: string;
   ConfigurationInfo?: ConfigurationInfo;
   CurrentVersion?: string;
   TargetKafkaVersion?: string;
 }
+const UpdateClusterKafkaVersionRequest = /*@__PURE__*/ __L.at(
+  __c29,
+  6,
+) as any as S.Schema<UpdateClusterKafkaVersionRequest>;
 export interface UpdateClusterKafkaVersionResponse {
   ClusterArn?: string;
   ClusterOperationArn?: string;
 }
+const UpdateClusterKafkaVersionResponse =
+  UpdateBrokerCountResponse as any as S.Schema<UpdateClusterKafkaVersionResponse>;
 export interface UpdateConfigurationRequest {
   Arn: string;
   Description?: string;
   ServerProperties?: Uint8Array;
 }
+const UpdateConfigurationRequest = /*@__PURE__*/ __L.at(
+  __c29,
+  7,
+) as any as S.Schema<UpdateConfigurationRequest>;
 export interface UpdateConfigurationResponse {
   Arn?: string;
   LatestRevision?: ConfigurationRevision & { CreationTime: __timestampIso8601; Revision: number };
 }
+const UpdateConfigurationResponse = /*@__PURE__*/ __L.at(
+  __c30,
+  0,
+) as any as S.Schema<UpdateConfigurationResponse>;
 export interface UpdateConnectivityRequest {
   ClusterArn: string;
   ConnectivityInfo?: ConnectivityInfo;
   CurrentVersion?: string;
   ZookeeperAccess?: ZookeeperAccess;
 }
+const UpdateConnectivityRequest = /*@__PURE__*/ __L.at(
+  __c30,
+  1,
+) as any as S.Schema<UpdateConnectivityRequest>;
 export interface UpdateConnectivityResponse {
   ClusterArn?: string;
   ClusterOperationArn?: string;
 }
+const UpdateConnectivityResponse =
+  UpdateBrokerCountResponse as any as S.Schema<UpdateConnectivityResponse>;
 export interface UpdateMonitoringRequest {
   ClusterArn: string;
   CurrentVersion?: string;
@@ -2018,25 +2697,40 @@ export interface UpdateMonitoringRequest {
   OpenMonitoring?: OpenMonitoringInfo;
   LoggingInfo?: LoggingInfo;
 }
+const UpdateMonitoringRequest = /*@__PURE__*/ __L.at(
+  __c30,
+  2,
+) as any as S.Schema<UpdateMonitoringRequest>;
 export interface UpdateMonitoringResponse {
   ClusterArn?: string;
   ClusterOperationArn?: string;
 }
+const UpdateMonitoringResponse = RebootBrokerResponse as any as S.Schema<UpdateMonitoringResponse>;
 export interface UpdateRebalancingRequest {
   ClusterArn: string;
   CurrentVersion?: string;
   Rebalancing?: Rebalancing;
 }
+const UpdateRebalancingRequest = /*@__PURE__*/ __L.at(
+  __c30,
+  3,
+) as any as S.Schema<UpdateRebalancingRequest>;
 export interface UpdateRebalancingResponse {
   ClusterArn?: string;
   ClusterOperationArn?: string;
 }
+const UpdateRebalancingResponse =
+  UpdateBrokerCountResponse as any as S.Schema<UpdateRebalancingResponse>;
 export interface ConsumerGroupReplicationUpdate {
   ConsumerGroupsToExclude?: string[];
   ConsumerGroupsToReplicate?: string[];
   DetectAndCopyNewConsumerGroups?: boolean;
   SynchroniseConsumerGroupOffsets?: boolean;
 }
+const ConsumerGroupReplicationUpdate = /*@__PURE__*/ __L.at(
+  __c30,
+  4,
+) as any as S.Schema<ConsumerGroupReplicationUpdate>;
 export interface TopicReplicationUpdate {
   CopyAccessControlListsForTopics?: boolean;
   CopyTopicConfigurations?: boolean;
@@ -2044,6 +2738,10 @@ export interface TopicReplicationUpdate {
   TopicsToExclude?: string[];
   TopicsToReplicate?: string[];
 }
+const TopicReplicationUpdate = /*@__PURE__*/ __L.at(
+  __c30,
+  5,
+) as any as S.Schema<TopicReplicationUpdate>;
 export interface UpdateReplicationInfoRequest {
   ConsumerGroupReplication?: ConsumerGroupReplicationUpdate;
   CurrentVersion?: string;
@@ -2055,20 +2753,33 @@ export interface UpdateReplicationInfoRequest {
   TopicReplication?: TopicReplicationUpdate;
   LogDelivery?: LogDelivery;
 }
+const UpdateReplicationInfoRequest = /*@__PURE__*/ __L.at(
+  __c30,
+  6,
+) as any as S.Schema<UpdateReplicationInfoRequest>;
 export interface UpdateReplicationInfoResponse {
   ReplicatorArn?: string;
   ReplicatorState?: ReplicatorState;
 }
+const UpdateReplicationInfoResponse = /*@__PURE__*/ __L.at(
+  __c30,
+  7,
+) as any as S.Schema<UpdateReplicationInfoResponse>;
 export interface UpdateSecurityRequest {
   ClientAuthentication?: ClientAuthentication;
   ClusterArn: string;
   CurrentVersion?: string;
   EncryptionInfo?: EncryptionInfo;
 }
+const UpdateSecurityRequest = /*@__PURE__*/ __L.at(
+  __c31,
+  0,
+) as any as S.Schema<UpdateSecurityRequest>;
 export interface UpdateSecurityResponse {
   ClusterArn?: string;
   ClusterOperationArn?: string;
 }
+const UpdateSecurityResponse = RebootBrokerResponse as any as S.Schema<UpdateSecurityResponse>;
 export interface UpdateStorageRequest {
   ClusterArn: string;
   CurrentVersion?: string;
@@ -2076,21 +2787,28 @@ export interface UpdateStorageRequest {
   StorageMode?: StorageMode;
   VolumeSizeGB?: number;
 }
+const UpdateStorageRequest = /*@__PURE__*/ __L.at(
+  __c31,
+  1,
+) as any as S.Schema<UpdateStorageRequest>;
 export interface UpdateStorageResponse {
   ClusterArn?: string;
   ClusterOperationArn?: string;
 }
+const UpdateStorageResponse = RebootBrokerResponse as any as S.Schema<UpdateStorageResponse>;
 export interface UpdateTopicRequest {
   ClusterArn: string;
   TopicName: string;
   Configs?: string;
   PartitionCount?: number;
 }
+const UpdateTopicRequest = /*@__PURE__*/ __L.at(__c31, 2) as any as S.Schema<UpdateTopicRequest>;
 export interface UpdateTopicResponse {
   TopicArn?: string;
   TopicName?: string;
   Status?: TopicState;
 }
+const UpdateTopicResponse = CreateTopicResponse as any as S.Schema<UpdateTopicResponse>;
 export type BatchAssociateScramSecretError =
   | BadRequestException
   | ForbiddenException
@@ -2109,8 +2827,8 @@ export const batchAssociateScramSecret: API.OperationMethod<
   BatchAssociateScramSecretError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1) as any as S.Schema<BatchAssociateScramSecretRequest>,
-  output: __S(4) as any as S.Schema<BatchAssociateScramSecretResponse>,
+  input: BatchAssociateScramSecretRequest,
+  output: BatchAssociateScramSecretResponse,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -2143,8 +2861,8 @@ export const batchDisassociateScramSecret: API.OperationMethod<
   BatchDisassociateScramSecretError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5) as any as S.Schema<BatchDisassociateScramSecretRequest>,
-  output: __S(4) as any as S.Schema<BatchDisassociateScramSecretResponse>,
+  input: BatchDisassociateScramSecretRequest,
+  output: BatchDisassociateScramSecretResponse,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -2178,8 +2896,8 @@ export const createChannel: API.OperationMethod<
   CreateChannelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28) as any as S.Schema<CreateChannelRequest>,
-  output: __S(29) as any as S.Schema<CreateChannelResponse>,
+  input: CreateChannelRequest,
+  output: CreateChannelResponse,
   errors: [
     BadRequestException,
     ConflictException,
@@ -2213,8 +2931,8 @@ export const createCluster: API.OperationMethod<
   CreateClusterError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(51) as any as S.Schema<CreateClusterRequest>,
-  output: __S(52) as any as S.Schema<CreateClusterResponse>,
+  input: CreateClusterRequest,
+  output: CreateClusterResponse,
   errors: [
     BadRequestException,
     ConflictException,
@@ -2247,8 +2965,8 @@ export const createClusterV2: API.OperationMethod<
   CreateClusterV2Error,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(59) as any as S.Schema<CreateClusterV2Request>,
-  output: __S(60) as any as S.Schema<CreateClusterV2Response>,
+  input: CreateClusterV2Request,
+  output: CreateClusterV2Response,
   errors: [
     BadRequestException,
     ConflictException,
@@ -2281,8 +2999,8 @@ export const createConfiguration: API.OperationMethod<
   CreateConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(61) as any as S.Schema<CreateConfigurationRequest>,
-  output: __S(63) as any as S.Schema<CreateConfigurationResponse>,
+  input: CreateConfigurationRequest,
+  output: CreateConfigurationResponse,
   errors: [
     BadRequestException,
     ConflictException,
@@ -2316,8 +3034,8 @@ export const createReplicator: API.OperationMethod<
   CreateReplicatorError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(85) as any as S.Schema<CreateReplicatorRequest>,
-  output: __S(86) as any as S.Schema<CreateReplicatorResponse>,
+  input: CreateReplicatorRequest,
+  output: CreateReplicatorResponse,
   errors: [
     BadRequestException,
     ConflictException,
@@ -2360,8 +3078,8 @@ export const createTopic: API.OperationMethod<
   CreateTopicError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(87) as any as S.Schema<CreateTopicRequest>,
-  output: __S(88) as any as S.Schema<CreateTopicResponse>,
+  input: CreateTopicRequest,
+  output: CreateTopicResponse,
   errors: [
     BadRequestException,
     ClusterConnectivityException,
@@ -2402,8 +3120,8 @@ export const createVpcConnection: API.OperationMethod<
   CreateVpcConnectionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(89) as any as S.Schema<CreateVpcConnectionRequest>,
-  output: __S(90) as any as S.Schema<CreateVpcConnectionResponse>,
+  input: CreateVpcConnectionRequest,
+  output: CreateVpcConnectionResponse,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -2435,8 +3153,8 @@ export const deleteChannel: API.OperationMethod<
   DeleteChannelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(91) as any as S.Schema<DeleteChannelRequest>,
-  output: __S(29) as any as S.Schema<DeleteChannelResponse>,
+  input: DeleteChannelRequest,
+  output: DeleteChannelResponse,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -2466,8 +3184,8 @@ export const deleteCluster: API.OperationMethod<
   DeleteClusterError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(92) as any as S.Schema<DeleteClusterRequest>,
-  output: __S(93) as any as S.Schema<DeleteClusterResponse>,
+  input: DeleteClusterRequest,
+  output: DeleteClusterResponse,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -2494,8 +3212,8 @@ export const deleteClusterPolicy: API.OperationMethod<
   DeleteClusterPolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(94) as any as S.Schema<DeleteClusterPolicyRequest>,
-  output: __S(95) as any as S.Schema<DeleteClusterPolicyResponse>,
+  input: DeleteClusterPolicyRequest,
+  output: DeleteClusterPolicyResponse,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -2522,8 +3240,8 @@ export const deleteConfiguration: API.OperationMethod<
   DeleteConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(96) as any as S.Schema<DeleteConfigurationRequest>,
-  output: __S(97) as any as S.Schema<DeleteConfigurationResponse>,
+  input: DeleteConfigurationRequest,
+  output: DeleteConfigurationResponse,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -2553,8 +3271,8 @@ export const deleteReplicator: API.OperationMethod<
   DeleteReplicatorError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(98) as any as S.Schema<DeleteReplicatorRequest>,
-  output: __S(99) as any as S.Schema<DeleteReplicatorResponse>,
+  input: DeleteReplicatorRequest,
+  output: DeleteReplicatorResponse,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -2592,8 +3310,8 @@ export const deleteTopic: API.OperationMethod<
   DeleteTopicError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(100) as any as S.Schema<DeleteTopicRequest>,
-  output: __S(88) as any as S.Schema<DeleteTopicResponse>,
+  input: DeleteTopicRequest,
+  output: DeleteTopicResponse,
   errors: [
     BadRequestException,
     ClusterConnectivityException,
@@ -2628,8 +3346,8 @@ export const deleteVpcConnection: API.OperationMethod<
   DeleteVpcConnectionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(101) as any as S.Schema<DeleteVpcConnectionRequest>,
-  output: __S(102) as any as S.Schema<DeleteVpcConnectionResponse>,
+  input: DeleteVpcConnectionRequest,
+  output: DeleteVpcConnectionResponse,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -2659,8 +3377,8 @@ export const describeChannel: API.OperationMethod<
   DescribeChannelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(103) as any as S.Schema<DescribeChannelRequest>,
-  output: __S(105) as any as S.Schema<DescribeChannelResponse>,
+  input: DescribeChannelRequest,
+  output: DescribeChannelResponse,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -2691,8 +3409,8 @@ export const describeCluster: API.OperationMethod<
   DescribeClusterError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(106) as any as S.Schema<DescribeClusterRequest>,
-  output: __S(111) as any as S.Schema<DescribeClusterResponse>,
+  input: DescribeClusterRequest,
+  output: DescribeClusterResponse,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -2721,8 +3439,8 @@ export const describeClusterOperation: API.OperationMethod<
   DescribeClusterOperationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(112) as any as S.Schema<DescribeClusterOperationRequest>,
-  output: __S(125) as any as S.Schema<DescribeClusterOperationResponse>,
+  input: DescribeClusterOperationRequest,
+  output: DescribeClusterOperationResponse,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -2753,8 +3471,8 @@ export const describeClusterOperationV2: API.OperationMethod<
   DescribeClusterOperationV2Error,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(126) as any as S.Schema<DescribeClusterOperationV2Request>,
-  output: __S(132) as any as S.Schema<DescribeClusterOperationV2Response>,
+  input: DescribeClusterOperationV2Request,
+  output: DescribeClusterOperationV2Response,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -2785,8 +3503,8 @@ export const describeClusterV2: API.OperationMethod<
   DescribeClusterV2Error,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(133) as any as S.Schema<DescribeClusterV2Request>,
-  output: __S(137) as any as S.Schema<DescribeClusterV2Response>,
+  input: DescribeClusterV2Request,
+  output: DescribeClusterV2Response,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -2816,8 +3534,8 @@ export const describeConfiguration: API.OperationMethod<
   DescribeConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(138) as any as S.Schema<DescribeConfigurationRequest>,
-  output: __S(139) as any as S.Schema<DescribeConfigurationResponse>,
+  input: DescribeConfigurationRequest,
+  output: DescribeConfigurationResponse,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -2848,8 +3566,8 @@ export const describeConfigurationRevision: API.OperationMethod<
   DescribeConfigurationRevisionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(140) as any as S.Schema<DescribeConfigurationRevisionRequest>,
-  output: __S(141) as any as S.Schema<DescribeConfigurationRevisionResponse>,
+  input: DescribeConfigurationRevisionRequest,
+  output: DescribeConfigurationRevisionResponse,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -2881,8 +3599,8 @@ export const describeReplicator: API.OperationMethod<
   DescribeReplicatorError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(142) as any as S.Schema<DescribeReplicatorRequest>,
-  output: __S(147) as any as S.Schema<DescribeReplicatorResponse>,
+  input: DescribeReplicatorRequest,
+  output: DescribeReplicatorResponse,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -2913,8 +3631,8 @@ export const describeTopic: API.OperationMethod<
   DescribeTopicError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(148) as any as S.Schema<DescribeTopicRequest>,
-  output: __S(149) as any as S.Schema<DescribeTopicResponse>,
+  input: DescribeTopicRequest,
+  output: DescribeTopicResponse,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -2944,8 +3662,8 @@ export const describeTopicPartitions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   TopicPartitionInfo
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(150) as any as S.Schema<DescribeTopicPartitionsRequest>,
-  output: __S(153) as any as S.Schema<DescribeTopicPartitionsResponse>,
+  input: DescribeTopicPartitionsRequest,
+  output: DescribeTopicPartitionsResponse,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -2981,8 +3699,8 @@ export const describeVpcConnection: API.OperationMethod<
   DescribeVpcConnectionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(154) as any as S.Schema<DescribeVpcConnectionRequest>,
-  output: __S(155) as any as S.Schema<DescribeVpcConnectionResponse>,
+  input: DescribeVpcConnectionRequest,
+  output: DescribeVpcConnectionResponse,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -3013,8 +3731,8 @@ export const getBootstrapBrokers: API.OperationMethod<
   GetBootstrapBrokersError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(156) as any as S.Schema<GetBootstrapBrokersRequest>,
-  output: __S(157) as any as S.Schema<GetBootstrapBrokersResponse>,
+  input: GetBootstrapBrokersRequest,
+  output: GetBootstrapBrokersResponse,
   errors: [
     BadRequestException,
     ConflictException,
@@ -3043,8 +3761,8 @@ export const getClusterPolicy: API.OperationMethod<
   GetClusterPolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(158) as any as S.Schema<GetClusterPolicyRequest>,
-  output: __S(159) as any as S.Schema<GetClusterPolicyResponse>,
+  input: GetClusterPolicyRequest,
+  output: GetClusterPolicyResponse,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -3074,8 +3792,8 @@ export const getCompatibleKafkaVersions: API.OperationMethod<
   GetCompatibleKafkaVersionsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(160) as any as S.Schema<GetCompatibleKafkaVersionsRequest>,
-  output: __S(163) as any as S.Schema<GetCompatibleKafkaVersionsResponse>,
+  input: GetCompatibleKafkaVersionsRequest,
+  output: GetCompatibleKafkaVersionsResponse,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -3108,8 +3826,8 @@ export const listChannels: API.OperationMethod<
   ListChannelsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(164) as any as S.Schema<ListChannelsRequest>,
-  output: __S(167) as any as S.Schema<ListChannelsResponse>,
+  input: ListChannelsRequest,
+  output: ListChannelsResponse,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -3141,8 +3859,8 @@ export const listClientVpcConnections: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ClientVpcConnection
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(168) as any as S.Schema<ListClientVpcConnectionsRequest>,
-  output: __S(171) as any as S.Schema<ListClientVpcConnectionsResponse>,
+  input: ListClientVpcConnectionsRequest,
+  output: ListClientVpcConnectionsResponse,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -3177,8 +3895,8 @@ export const listClusterOperations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ClusterOperationInfo
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(172) as any as S.Schema<ListClusterOperationsRequest>,
-  output: __S(174) as any as S.Schema<ListClusterOperationsResponse>,
+  input: ListClusterOperationsRequest,
+  output: ListClusterOperationsResponse,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -3215,8 +3933,8 @@ export const listClusterOperationsV2: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ClusterOperationV2Summary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(175) as any as S.Schema<ListClusterOperationsV2Request>,
-  output: __S(178) as any as S.Schema<ListClusterOperationsV2Response>,
+  input: ListClusterOperationsV2Request,
+  output: ListClusterOperationsV2Response,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -3253,8 +3971,8 @@ export const listClusters: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ClusterInfo
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(179) as any as S.Schema<ListClustersRequest>,
-  output: __S(181) as any as S.Schema<ListClustersResponse>,
+  input: ListClustersRequest,
+  output: ListClustersResponse,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -3288,8 +4006,8 @@ export const listClustersV2: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Cluster
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(182) as any as S.Schema<ListClustersV2Request>,
-  output: __S(184) as any as S.Schema<ListClustersV2Response>,
+  input: ListClustersV2Request,
+  output: ListClustersV2Response,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -3325,8 +4043,8 @@ export const listConfigurationRevisions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ConfigurationRevision
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(185) as any as S.Schema<ListConfigurationRevisionsRequest>,
-  output: __S(187) as any as S.Schema<ListConfigurationRevisionsResponse>,
+  input: ListConfigurationRevisionsRequest,
+  output: ListConfigurationRevisionsResponse,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -3363,8 +4081,8 @@ export const listConfigurations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Configuration
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(188) as any as S.Schema<ListConfigurationsRequest>,
-  output: __S(191) as any as S.Schema<ListConfigurationsResponse>,
+  input: ListConfigurationsRequest,
+  output: ListConfigurationsResponse,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -3399,8 +4117,8 @@ export const listKafkaVersions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   KafkaVersion
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(192) as any as S.Schema<ListKafkaVersionsRequest>,
-  output: __S(195) as any as S.Schema<ListKafkaVersionsResponse>,
+  input: ListKafkaVersionsRequest,
+  output: ListKafkaVersionsResponse,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -3434,8 +4152,8 @@ export const listNodes: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   NodeInfo
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(196) as any as S.Schema<ListNodesRequest>,
-  output: __S(202) as any as S.Schema<ListNodesResponse>,
+  input: ListNodesRequest,
+  output: ListNodesResponse,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -3472,8 +4190,8 @@ export const listReplicators: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ReplicatorSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(203) as any as S.Schema<ListReplicatorsRequest>,
-  output: __S(210) as any as S.Schema<ListReplicatorsResponse>,
+  input: ListReplicatorsRequest,
+  output: ListReplicatorsResponse,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -3513,8 +4231,8 @@ export const listScramSecrets: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   string
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(211) as any as S.Schema<ListScramSecretsRequest>,
-  output: __S(212) as any as S.Schema<ListScramSecretsResponse>,
+  input: ListScramSecretsRequest,
+  output: ListScramSecretsResponse,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -3549,8 +4267,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(213) as any as S.Schema<ListTagsForResourceRequest>,
-  output: __S(214) as any as S.Schema<ListTagsForResourceResponse>,
+  input: ListTagsForResourceRequest,
+  output: ListTagsForResourceResponse,
   errors: [BadRequestException, InternalServerErrorException, NotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3575,8 +4293,8 @@ export const listTopics: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   TopicInfo
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(215) as any as S.Schema<ListTopicsRequest>,
-  output: __S(218) as any as S.Schema<ListTopicsResponse>,
+  input: ListTopicsRequest,
+  output: ListTopicsResponse,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -3613,8 +4331,8 @@ export const listVpcConnections: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   VpcConnection
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(219) as any as S.Schema<ListVpcConnectionsRequest>,
-  output: __S(222) as any as S.Schema<ListVpcConnectionsResponse>,
+  input: ListVpcConnectionsRequest,
+  output: ListVpcConnectionsResponse,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -3647,8 +4365,8 @@ export const putClusterPolicy: API.OperationMethod<
   PutClusterPolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(223) as any as S.Schema<PutClusterPolicyRequest>,
-  output: __S(224) as any as S.Schema<PutClusterPolicyResponse>,
+  input: PutClusterPolicyRequest,
+  output: PutClusterPolicyResponse,
   errors: [BadRequestException, ForbiddenException, InternalServerErrorException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3673,8 +4391,8 @@ export const rebootBroker: API.OperationMethod<
   RebootBrokerError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(225) as any as S.Schema<RebootBrokerRequest>,
-  output: __S(226) as any as S.Schema<RebootBrokerResponse>,
+  input: RebootBrokerRequest,
+  output: RebootBrokerResponse,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -3705,8 +4423,8 @@ export const rejectClientVpcConnection: API.OperationMethod<
   RejectClientVpcConnectionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(227) as any as S.Schema<RejectClientVpcConnectionRequest>,
-  output: __S(228) as any as S.Schema<RejectClientVpcConnectionResponse>,
+  input: RejectClientVpcConnectionRequest,
+  output: RejectClientVpcConnectionResponse,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -3733,8 +4451,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(229) as any as S.Schema<TagResourceRequest>,
-  output: __S(95) as any as S.Schema<TagResourceResponse>,
+  input: TagResourceRequest,
+  output: TagResourceResponse,
   errors: [BadRequestException, InternalServerErrorException, NotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3755,8 +4473,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(230) as any as S.Schema<UntagResourceRequest>,
-  output: __S(95) as any as S.Schema<UntagResourceResponse>,
+  input: UntagResourceRequest,
+  output: UntagResourceResponse,
   errors: [BadRequestException, InternalServerErrorException, NotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3779,8 +4497,8 @@ export const updateBrokerCount: API.OperationMethod<
   UpdateBrokerCountError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(231) as any as S.Schema<UpdateBrokerCountRequest>,
-  output: __S(232) as any as S.Schema<UpdateBrokerCountResponse>,
+  input: UpdateBrokerCountRequest,
+  output: UpdateBrokerCountResponse,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -3809,8 +4527,8 @@ export const updateBrokerStorage: API.OperationMethod<
   UpdateBrokerStorageError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(233) as any as S.Schema<UpdateBrokerStorageRequest>,
-  output: __S(232) as any as S.Schema<UpdateBrokerStorageResponse>,
+  input: UpdateBrokerStorageRequest,
+  output: UpdateBrokerStorageResponse,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -3841,8 +4559,8 @@ export const updateBrokerType: API.OperationMethod<
   UpdateBrokerTypeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(234) as any as S.Schema<UpdateBrokerTypeRequest>,
-  output: __S(226) as any as S.Schema<UpdateBrokerTypeResponse>,
+  input: UpdateBrokerTypeRequest,
+  output: UpdateBrokerTypeResponse,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -3875,8 +4593,8 @@ export const updateChannel: API.OperationMethod<
   UpdateChannelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(236) as any as S.Schema<UpdateChannelRequest>,
-  output: __S(29) as any as S.Schema<UpdateChannelResponse>,
+  input: UpdateChannelRequest,
+  output: UpdateChannelResponse,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -3908,8 +4626,8 @@ export const updateClusterConfiguration: API.OperationMethod<
   UpdateClusterConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(237) as any as S.Schema<UpdateClusterConfigurationRequest>,
-  output: __S(232) as any as S.Schema<UpdateClusterConfigurationResponse>,
+  input: UpdateClusterConfigurationRequest,
+  output: UpdateClusterConfigurationResponse,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -3941,8 +4659,8 @@ export const updateClusterKafkaVersion: API.OperationMethod<
   UpdateClusterKafkaVersionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(238) as any as S.Schema<UpdateClusterKafkaVersionRequest>,
-  output: __S(232) as any as S.Schema<UpdateClusterKafkaVersionResponse>,
+  input: UpdateClusterKafkaVersionRequest,
+  output: UpdateClusterKafkaVersionResponse,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -3974,8 +4692,8 @@ export const updateConfiguration: API.OperationMethod<
   UpdateConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(239) as any as S.Schema<UpdateConfigurationRequest>,
-  output: __S(240) as any as S.Schema<UpdateConfigurationResponse>,
+  input: UpdateConfigurationRequest,
+  output: UpdateConfigurationResponse,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -4006,8 +4724,8 @@ export const updateConnectivity: API.OperationMethod<
   UpdateConnectivityError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(241) as any as S.Schema<UpdateConnectivityRequest>,
-  output: __S(232) as any as S.Schema<UpdateConnectivityResponse>,
+  input: UpdateConnectivityRequest,
+  output: UpdateConnectivityResponse,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -4037,8 +4755,8 @@ export const updateMonitoring: API.OperationMethod<
   UpdateMonitoringError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(242) as any as S.Schema<UpdateMonitoringRequest>,
-  output: __S(226) as any as S.Schema<UpdateMonitoringResponse>,
+  input: UpdateMonitoringRequest,
+  output: UpdateMonitoringResponse,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -4069,8 +4787,8 @@ export const updateRebalancing: API.OperationMethod<
   UpdateRebalancingError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(243) as any as S.Schema<UpdateRebalancingRequest>,
-  output: __S(232) as any as S.Schema<UpdateRebalancingResponse>,
+  input: UpdateRebalancingRequest,
+  output: UpdateRebalancingResponse,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -4103,8 +4821,8 @@ export const updateReplicationInfo: API.OperationMethod<
   UpdateReplicationInfoError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(246) as any as S.Schema<UpdateReplicationInfoRequest>,
-  output: __S(247) as any as S.Schema<UpdateReplicationInfoResponse>,
+  input: UpdateReplicationInfoRequest,
+  output: UpdateReplicationInfoResponse,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -4137,8 +4855,8 @@ export const updateSecurity: API.OperationMethod<
   UpdateSecurityError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(248) as any as S.Schema<UpdateSecurityRequest>,
-  output: __S(226) as any as S.Schema<UpdateSecurityResponse>,
+  input: UpdateSecurityRequest,
+  output: UpdateSecurityResponse,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -4171,8 +4889,8 @@ export const updateStorage: API.OperationMethod<
   UpdateStorageError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(249) as any as S.Schema<UpdateStorageRequest>,
-  output: __S(226) as any as S.Schema<UpdateStorageResponse>,
+  input: UpdateStorageRequest,
+  output: UpdateStorageResponse,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -4212,8 +4930,8 @@ export const updateTopic: API.OperationMethod<
   UpdateTopicError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(250) as any as S.Schema<UpdateTopicRequest>,
-  output: __S(88) as any as S.Schema<UpdateTopicResponse>,
+  input: UpdateTopicRequest,
+  output: UpdateTopicResponse,
   errors: [
     BadRequestException,
     ClusterConnectivityException,
@@ -4275,7 +4993,7 @@ function __c0(j: number): any {
         ),
       ).annotate({ identifier: "UnprocessedScramSecret" });
     case 3:
-      return S.Array(__S(2));
+      return S.Array(UnprocessedScramSecret);
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -4348,11 +5066,11 @@ function __c1(j: number): any {
         ),
       ).annotate({ identifier: "PartitionSource" });
     case 2:
-      return S.Array(__S(9));
+      return S.Array(PartitionSource);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          PartitionStrategy: S.optional(S.String),
+          PartitionStrategy: S.optional(PartitionStrategy),
           SourceList: S.optional(__listOfPartitionSource),
         }).pipe(S.encodeKeys({ PartitionStrategy: "partitionStrategy", SourceList: "sourceList" })),
       ).annotate({ identifier: "PartitionSpec" });
@@ -4361,7 +5079,7 @@ function __c1(j: number): any {
         S.Struct({
           DestinationDatabaseName: S.optional(S.String),
           DestinationTableName: S.optional(S.String),
-          PartitionSpec: S.optional(__S(11)),
+          PartitionSpec: S.optional(PartitionSpec),
         }).pipe(
           S.encodeKeys({
             DestinationDatabaseName: "destinationDatabaseName",
@@ -4371,7 +5089,7 @@ function __c1(j: number): any {
         ),
       ).annotate({ identifier: "DestinationTable" });
     case 5:
-      return S.Array(__S(12));
+      return S.Array(DestinationTable);
     case 6:
       return S.suspend(() =>
         S.Struct({ EnableSchemaEvolution: S.optional(S.Boolean) }).pipe(
@@ -4392,14 +5110,14 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           AppendOnly: S.optional(S.Boolean),
-          Catalog: S.optional(__S(7)),
+          Catalog: S.optional(Catalog),
           DataFreshnessInSeconds: S.optional(S.Number),
-          DeadLetterQueueS3: S.optional(__S(8)),
+          DeadLetterQueueS3: S.optional(DeadLetterQueueS3),
           DestinationTableList: S.optional(__listOfDestinationTable),
-          SchemaEvolution: S.optional(__S(14)),
+          SchemaEvolution: S.optional(SchemaEvolution),
           ServiceExecutionRoleArn: S.optional(S.String),
-          TableCreation: S.optional(__S(15)),
-          CompressionType: S.optional(S.String),
+          TableCreation: S.optional(TableCreation),
+          CompressionType: S.optional(IcebergCompressionType),
         }).pipe(
           S.encodeKeys({
             AppendOnly: "appendOnly",
@@ -4420,10 +5138,10 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           BucketArn: S.optional(S.String),
-          CompressionType: S.optional(S.String),
+          CompressionType: S.optional(S3CompressionType),
           OutputPrefix: S.optional(S.String),
           OutputKeyTemplate: S.optional(S.String),
-          StorageClass: S.optional(S.String),
+          StorageClass: S.optional(S3StorageClass),
           ExpectedBucketOwner: S.optional(S.String),
         }).pipe(
           S.encodeKeys({
@@ -4440,9 +5158,9 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           DataFreshnessInSeconds: S.optional(S.Number),
-          DeadLetterQueueS3: S.optional(__S(8)),
+          DeadLetterQueueS3: S.optional(DeadLetterQueueS3),
           ServiceExecutionRoleArn: S.optional(S.String),
-          Storage: S.optional(__S(17)),
+          Storage: S.optional(S3Storage),
         }).pipe(
           S.encodeKeys({
             DataFreshnessInSeconds: "dataFreshnessInSeconds",
@@ -4458,7 +5176,7 @@ function __c2(j: number): any {
       return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
     case 4:
       return S.suspend(() =>
-        S.Struct({ ValueConverter: S.optional(S.String) }).pipe(
+        S.Struct({ ValueConverter: S.optional(ValueConverter) }).pipe(
           S.encodeKeys({ ValueConverter: "valueConverter" }),
         ),
       ).annotate({ identifier: "RecordConverter" });
@@ -4469,8 +5187,8 @@ function __c2(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          RecordConverter: S.optional(__S(20)),
-          RecordSchema: S.optional(__S(21)),
+          RecordConverter: S.optional(RecordConverter),
+          RecordSchema: S.optional(RecordSchema),
           TopicArn: S.optional(S.String),
         }).pipe(
           S.encodeKeys({
@@ -4481,7 +5199,7 @@ function __c2(j: number): any {
         ),
       ).annotate({ identifier: "TopicConfiguration" });
     case 7:
-      return S.Array(__S(22));
+      return S.Array(TopicConfiguration);
   }
 }
 function __c3(j: number): any {
@@ -4509,9 +5227,9 @@ function __c3(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          CloudWatchLogs: S.optional(__S(24)),
-          Firehose: S.optional(__S(25)),
-          S3: S.optional(__S(26)),
+          CloudWatchLogs: S.optional(CloudWatchLogs),
+          Firehose: S.optional(Firehose),
+          S3: S.optional(S3),
         }).pipe(S.encodeKeys({ CloudWatchLogs: "cloudWatchLogs", Firehose: "firehose", S3: "s3" })),
       ).annotate({ identifier: "ChannelLoggingInfo" });
     case 4:
@@ -4519,12 +5237,12 @@ function __c3(j: number): any {
         S.Struct({
           ChannelName: S.optional(S.String),
           ClusterArn: S.String.pipe(T.HttpLabel("ClusterArn")),
-          EncryptionConfiguration: S.optional(__S(6)),
-          IcebergDestinationConfiguration: S.optional(__S(16)),
-          S3DestinationConfiguration: S.optional(__S(18)),
+          EncryptionConfiguration: S.optional(EncryptionConfiguration),
+          IcebergDestinationConfiguration: S.optional(IcebergDestinationConfiguration),
+          S3DestinationConfiguration: S.optional(S3DestinationConfiguration),
           Tags: S.optional(__mapOf__string),
           TopicConfigurationList: S.optional(__listOfTopicConfiguration),
-          LoggingInfo: S.optional(__S(27)),
+          LoggingInfo: S.optional(ChannelLoggingInfo),
         })
           .pipe(
             S.encodeKeys({
@@ -4566,7 +5284,7 @@ function __c3(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          ProvisionedThroughput: S.optional(__S(30)),
+          ProvisionedThroughput: S.optional(ProvisionedThroughput),
           VolumeSize: S.optional(S.Number),
         }).pipe(
           S.encodeKeys({
@@ -4581,7 +5299,7 @@ function __c4(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ EbsStorageInfo: S.optional(__S(31)) }).pipe(
+        S.Struct({ EbsStorageInfo: S.optional(EBSStorageInfo) }).pipe(
           S.encodeKeys({ EbsStorageInfo: "ebsStorageInfo" }),
         ),
       ).annotate({ identifier: "StorageInfo" });
@@ -4596,31 +5314,31 @@ function __c4(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          Scram: S.optional(__S(34)),
-          Iam: S.optional(__S(34)),
+          Scram: S.optional(VpcConnectivityScram),
+          Iam: S.optional(VpcConnectivityIam),
         }).pipe(S.encodeKeys({ Scram: "scram", Iam: "iam" })),
       ).annotate({ identifier: "VpcConnectivitySasl" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          Sasl: S.optional(__S(35)),
-          Tls: S.optional(__S(34)),
+          Sasl: S.optional(VpcConnectivitySasl),
+          Tls: S.optional(VpcConnectivityTls),
         }).pipe(S.encodeKeys({ Sasl: "sasl", Tls: "tls" })),
       ).annotate({
         identifier: "VpcConnectivityClientAuthentication",
       });
     case 5:
       return S.suspend(() =>
-        S.Struct({ ClientAuthentication: S.optional(__S(36)) }).pipe(
+        S.Struct({ ClientAuthentication: S.optional(VpcConnectivityClientAuthentication) }).pipe(
           S.encodeKeys({ ClientAuthentication: "clientAuthentication" }),
         ),
       ).annotate({ identifier: "VpcConnectivity" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          PublicAccess: S.optional(__S(33)),
-          VpcConnectivity: S.optional(__S(37)),
-          NetworkType: S.optional(S.String),
+          PublicAccess: S.optional(PublicAccess),
+          VpcConnectivity: S.optional(VpcConnectivity),
+          NetworkType: S.optional(NetworkType),
         }).pipe(
           S.encodeKeys({
             PublicAccess: "publicAccess",
@@ -4632,12 +5350,12 @@ function __c4(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          BrokerAZDistribution: S.optional(S.String),
+          BrokerAZDistribution: S.optional(BrokerAZDistribution),
           ClientSubnets: S.optional(__listOf__string),
           InstanceType: S.optional(S.String),
           SecurityGroups: S.optional(__listOf__string),
-          StorageInfo: S.optional(__S(32)),
-          ConnectivityInfo: S.optional(__S(38)),
+          StorageInfo: S.optional(StorageInfo),
+          ConnectivityInfo: S.optional(ConnectivityInfo),
           ZoneIds: S.optional(__listOf__string),
         }).pipe(
           S.encodeKeys({
@@ -4657,7 +5375,9 @@ function __c5(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ Status: S.optional(S.String) }).pipe(S.encodeKeys({ Status: "status" })),
+        S.Struct({ Status: S.optional(RebalancingStatus) }).pipe(
+          S.encodeKeys({ Status: "status" }),
+        ),
       ).annotate({ identifier: "Rebalancing" });
     case 1:
       return S.suspend(() =>
@@ -4674,9 +5394,9 @@ function __c5(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          Sasl: S.optional(__S(35)),
-          Tls: S.optional(__S(41)),
-          Unauthenticated: S.optional(__S(34)),
+          Sasl: S.optional(Sasl),
+          Tls: S.optional(Tls),
+          Unauthenticated: S.optional(Unauthenticated),
         }).pipe(S.encodeKeys({ Sasl: "sasl", Tls: "tls", Unauthenticated: "unauthenticated" })),
       ).annotate({ identifier: "ClientAuthentication" });
     case 3:
@@ -4693,15 +5413,15 @@ function __c5(j: number): any {
       ).annotate({ identifier: "EncryptionAtRest" });
     case 5:
       return S.suspend(() =>
-        S.Struct({ ClientBroker: S.optional(S.String), InCluster: S.optional(S.Boolean) }).pipe(
+        S.Struct({ ClientBroker: S.optional(ClientBroker), InCluster: S.optional(S.Boolean) }).pipe(
           S.encodeKeys({ ClientBroker: "clientBroker", InCluster: "inCluster" }),
         ),
       ).annotate({ identifier: "EncryptionInTransit" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          EncryptionAtRest: S.optional(__S(44)),
-          EncryptionInTransit: S.optional(__S(45)),
+          EncryptionAtRest: S.optional(EncryptionAtRest),
+          EncryptionInTransit: S.optional(EncryptionInTransit),
         }).pipe(
           S.encodeKeys({
             EncryptionAtRest: "encryptionAtRest",
@@ -4722,39 +5442,39 @@ function __c6(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          JmxExporter: S.optional(__S(47)),
-          NodeExporter: S.optional(__S(47)),
+          JmxExporter: S.optional(JmxExporterInfo),
+          NodeExporter: S.optional(NodeExporterInfo),
         }).pipe(S.encodeKeys({ JmxExporter: "jmxExporter", NodeExporter: "nodeExporter" })),
       ).annotate({ identifier: "PrometheusInfo" });
     case 1:
       return S.suspend(() =>
-        S.Struct({ Prometheus: S.optional(__S(48)) }).pipe(
+        S.Struct({ Prometheus: S.optional(PrometheusInfo) }).pipe(
           S.encodeKeys({ Prometheus: "prometheus" }),
         ),
       ).annotate({ identifier: "OpenMonitoringInfo" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          AuthorizerLogs: S.optional(__S(27)),
-          BrokerLogs: S.optional(__S(27)),
+          AuthorizerLogs: S.optional(AuthorizerLogs),
+          BrokerLogs: S.optional(BrokerLogs),
         }).pipe(S.encodeKeys({ AuthorizerLogs: "authorizerLogs", BrokerLogs: "brokerLogs" })),
       ).annotate({ identifier: "LoggingInfo" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          BrokerNodeGroupInfo: S.optional(__S(39)),
-          Rebalancing: S.optional(__S(40)),
-          ClientAuthentication: S.optional(__S(42)),
+          BrokerNodeGroupInfo: S.optional(BrokerNodeGroupInfo),
+          Rebalancing: S.optional(Rebalancing),
+          ClientAuthentication: S.optional(ClientAuthentication),
           ClusterName: S.optional(S.String),
-          ConfigurationInfo: S.optional(__S(43)),
-          EncryptionInfo: S.optional(__S(46)),
-          EnhancedMonitoring: S.optional(S.String),
-          OpenMonitoring: S.optional(__S(49)),
+          ConfigurationInfo: S.optional(ConfigurationInfo),
+          EncryptionInfo: S.optional(EncryptionInfo),
+          EnhancedMonitoring: S.optional(EnhancedMonitoring),
+          OpenMonitoring: S.optional(OpenMonitoringInfo),
           KafkaVersion: S.optional(S.String),
-          LoggingInfo: S.optional(__S(50)),
+          LoggingInfo: S.optional(LoggingInfo),
           NumberOfBrokerNodes: S.optional(S.Number),
           Tags: S.optional(__mapOf__string),
-          StorageMode: S.optional(S.String),
+          StorageMode: S.optional(StorageMode),
         })
           .pipe(
             S.encodeKeys({
@@ -4782,7 +5502,7 @@ function __c6(j: number): any {
         S.Struct({
           ClusterArn: S.optional(S.String),
           ClusterName: S.optional(S.String),
-          State: S.optional(S.String),
+          State: S.optional(ClusterState),
         }).pipe(
           S.encodeKeys({ ClusterArn: "clusterArn", ClusterName: "clusterName", State: "state" }),
         ),
@@ -4790,17 +5510,17 @@ function __c6(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          BrokerNodeGroupInfo: S.optional(__S(39)),
-          Rebalancing: S.optional(__S(40)),
-          ClientAuthentication: S.optional(__S(42)),
-          ConfigurationInfo: S.optional(__S(43)),
-          EncryptionInfo: S.optional(__S(46)),
-          EnhancedMonitoring: S.optional(S.String),
-          OpenMonitoring: S.optional(__S(49)),
+          BrokerNodeGroupInfo: S.optional(BrokerNodeGroupInfo),
+          Rebalancing: S.optional(Rebalancing),
+          ClientAuthentication: S.optional(ClientAuthentication),
+          ConfigurationInfo: S.optional(ConfigurationInfo),
+          EncryptionInfo: S.optional(EncryptionInfo),
+          EnhancedMonitoring: S.optional(EnhancedMonitoring),
+          OpenMonitoring: S.optional(OpenMonitoringInfo),
           KafkaVersion: S.optional(S.String),
-          LoggingInfo: S.optional(__S(50)),
+          LoggingInfo: S.optional(LoggingInfo),
           NumberOfBrokerNodes: S.optional(S.Number),
-          StorageMode: S.optional(S.String),
+          StorageMode: S.optional(StorageMode),
         }).pipe(
           S.encodeKeys({
             BrokerNodeGroupInfo: "brokerNodeGroupInfo",
@@ -4825,18 +5545,18 @@ function __c6(j: number): any {
         }).pipe(S.encodeKeys({ SubnetIds: "subnetIds", SecurityGroupIds: "securityGroupIds" })),
       ).annotate({ identifier: "VpcConfig" });
     case 7:
-      return S.Array(__S(54));
+      return S.Array(VpcConfig);
   }
 }
 function __c7(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ Iam: S.optional(__S(34)) }).pipe(S.encodeKeys({ Iam: "iam" })),
+        S.Struct({ Iam: S.optional(Iam) }).pipe(S.encodeKeys({ Iam: "iam" })),
       ).annotate({ identifier: "ServerlessSasl" });
     case 1:
       return S.suspend(() =>
-        S.Struct({ Sasl: S.optional(__S(56)) }).pipe(S.encodeKeys({ Sasl: "sasl" })),
+        S.Struct({ Sasl: S.optional(ServerlessSasl) }).pipe(S.encodeKeys({ Sasl: "sasl" })),
       ).annotate({
         identifier: "ServerlessClientAuthentication",
       });
@@ -4844,7 +5564,7 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           VpcConfigs: S.optional(__listOfVpcConfig),
-          ClientAuthentication: S.optional(__S(57)),
+          ClientAuthentication: S.optional(ServerlessClientAuthentication),
         }).pipe(
           S.encodeKeys({ VpcConfigs: "vpcConfigs", ClientAuthentication: "clientAuthentication" }),
         ),
@@ -4854,8 +5574,8 @@ function __c7(j: number): any {
         S.Struct({
           ClusterName: S.optional(S.String),
           Tags: S.optional(__mapOf__string),
-          Provisioned: S.optional(__S(53)),
-          Serverless: S.optional(__S(58)),
+          Provisioned: S.optional(ProvisionedRequest),
+          Serverless: S.optional(ServerlessRequest),
         })
           .pipe(
             S.encodeKeys({
@@ -4881,8 +5601,8 @@ function __c7(j: number): any {
         S.Struct({
           ClusterArn: S.optional(S.String),
           ClusterName: S.optional(S.String),
-          State: S.optional(S.String),
-          ClusterType: S.optional(S.String),
+          State: S.optional(ClusterState),
+          ClusterType: S.optional(ClusterType),
         }).pipe(
           S.encodeKeys({
             ClusterArn: "clusterArn",
@@ -4940,9 +5660,9 @@ function __c7(j: number): any {
         S.Struct({
           Arn: S.optional(S.String),
           CreationTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          LatestRevision: S.optional(__S(62)),
+          LatestRevision: S.optional(ConfigurationRevision),
           Name: S.optional(S.String),
-          State: S.optional(S.String),
+          State: S.optional(ConfigurationState),
         }).pipe(
           S.encodeKeys({
             Arn: "arn",
@@ -4989,7 +5709,7 @@ function __c8(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          Mechanism: S.optional(S.String),
+          Mechanism: S.optional(KafkaClusterSaslScramMechanism),
           SecretArn: S.optional(S.String),
         }).pipe(S.encodeKeys({ Mechanism: "mechanism", SecretArn: "secretArn" })),
       ).annotate({
@@ -5015,7 +5735,7 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Audience: S.optional(S.String),
-          SigningAlgorithm: S.optional(S.String),
+          SigningAlgorithm: S.optional(JwtSigningAlgorithm),
           TokenRequestSecretArn: S.optional(S.String),
         }).pipe(
           S.encodeKeys({
@@ -5031,10 +5751,10 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           TokenEndpointUrl: S.optional(S.String),
-          ClientCredentials: S.optional(__S(69)),
-          IamJwtBearer: S.optional(__S(70)),
-          ClientCredentialsAssertion: S.optional(__S(70)),
-          TokenEndpointAuthenticationMethod: S.optional(S.String),
+          ClientCredentials: S.optional(KafkaClusterOAuthClientCredentials),
+          IamJwtBearer: S.optional(KafkaClusterOAuthIamJwtBearer),
+          ClientCredentialsAssertion: S.optional(KafkaClusterOAuthClientCredentialsAssertion),
+          TokenEndpointAuthenticationMethod: S.optional(TokenEndpointAuthenticationMethod),
           Scope: S.optional(S.String),
           TokenEndpointTlsCertificateArn: S.optional(S.String),
         }).pipe(
@@ -5058,9 +5778,9 @@ function __c9(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          SaslScram: S.optional(__S(67)),
-          MTLS: S.optional(__S(68)),
-          SaslOAuthBearer: S.optional(__S(71)),
+          SaslScram: S.optional(KafkaClusterSaslScramAuthentication),
+          MTLS: S.optional(KafkaClusterMTLSAuthentication),
+          SaslOAuthBearer: S.optional(KafkaClusterSaslOAuthBearerAuthentication),
         }).pipe(
           S.encodeKeys({
             SaslScram: "saslScram",
@@ -5074,7 +5794,7 @@ function __c9(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          EncryptionType: S.optional(S.String),
+          EncryptionType: S.optional(KafkaClusterEncryptionInTransitType),
           RootCaCertificate: S.optional(S.String),
         }).pipe(
           S.encodeKeys({
@@ -5088,11 +5808,11 @@ function __c9(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          AmazonMskCluster: S.optional(__S(64)),
-          ApacheKafkaCluster: S.optional(__S(65)),
-          VpcConfig: S.optional(__S(66)),
-          ClientAuthentication: S.optional(__S(72)),
-          EncryptionInTransit: S.optional(__S(73)),
+          AmazonMskCluster: S.optional(AmazonMskCluster),
+          ApacheKafkaCluster: S.optional(ApacheKafkaCluster),
+          VpcConfig: S.optional(KafkaClusterClientVpcConfig),
+          ClientAuthentication: S.optional(KafkaClusterClientAuthentication),
+          EncryptionInTransit: S.optional(KafkaClusterEncryptionInTransit),
         }).pipe(
           S.encodeKeys({
             AmazonMskCluster: "amazonMskCluster",
@@ -5104,7 +5824,7 @@ function __c9(j: number): any {
         ),
       ).annotate({ identifier: "KafkaCluster" });
     case 3:
-      return S.Array(__S(74));
+      return S.Array(KafkaCluster);
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -5112,7 +5832,7 @@ function __c9(j: number): any {
           ConsumerGroupsToReplicate: S.optional(__listOf__stringMax256),
           DetectAndCopyNewConsumerGroups: S.optional(S.Boolean),
           SynchroniseConsumerGroupOffsets: S.optional(S.Boolean),
-          ConsumerGroupOffsetSyncMode: S.optional(S.String),
+          ConsumerGroupOffsetSyncMode: S.optional(ConsumerGroupOffsetSyncMode),
         }).pipe(
           S.encodeKeys({
             ConsumerGroupsToExclude: "consumerGroupsToExclude",
@@ -5125,7 +5845,9 @@ function __c9(j: number): any {
       ).annotate({ identifier: "ConsumerGroupReplication" });
     case 5:
       return S.suspend(() =>
-        S.Struct({ Type: S.optional(S.String) }).pipe(S.encodeKeys({ Type: "type" })),
+        S.Struct({ Type: S.optional(ReplicationStartingPositionType) }).pipe(
+          S.encodeKeys({ Type: "type" }),
+        ),
       ).annotate({
         identifier: "ReplicationStartingPosition",
       });
@@ -5135,8 +5857,8 @@ function __c9(j: number): any {
           CopyAccessControlListsForTopics: S.optional(S.Boolean),
           CopyTopicConfigurations: S.optional(S.Boolean),
           DetectAndCopyNewTopics: S.optional(S.Boolean),
-          StartingPosition: S.optional(__S(77)),
-          TopicNameConfiguration: S.optional(__S(77)),
+          StartingPosition: S.optional(ReplicationStartingPosition),
+          TopicNameConfiguration: S.optional(ReplicationTopicNameConfiguration),
           TopicsToExclude: S.optional(__listOf__stringMax249),
           TopicsToReplicate: S.optional(__listOf__stringMax249),
         }).pipe(
@@ -5154,13 +5876,13 @@ function __c9(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          ConsumerGroupReplication: S.optional(__S(76)),
+          ConsumerGroupReplication: S.optional(ConsumerGroupReplication),
           SourceKafkaClusterArn: S.optional(S.String),
           SourceKafkaClusterId: S.optional(S.String),
-          TargetCompressionType: S.optional(S.String),
+          TargetCompressionType: S.optional(TargetCompressionType),
           TargetKafkaClusterArn: S.optional(S.String),
           TargetKafkaClusterId: S.optional(S.String),
-          TopicReplication: S.optional(__S(78)),
+          TopicReplication: S.optional(TopicReplication),
         }).pipe(
           S.encodeKeys({
             ConsumerGroupReplication: "consumerGroupReplication",
@@ -5178,7 +5900,7 @@ function __c9(j: number): any {
 function __c10(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(79));
+      return S.Array(ReplicationInfo);
     case 1:
       return S.suspend(() =>
         S.Struct({ Enabled: S.optional(S.Boolean), DeliveryStream: S.optional(S.String) }).pipe(
@@ -5196,14 +5918,14 @@ function __c10(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          CloudWatchLogs: S.optional(__S(24)),
-          Firehose: S.optional(__S(81)),
-          S3: S.optional(__S(82)),
+          CloudWatchLogs: S.optional(ReplicatorCloudWatchLogs),
+          Firehose: S.optional(ReplicatorFirehose),
+          S3: S.optional(ReplicatorS3),
         }).pipe(S.encodeKeys({ CloudWatchLogs: "cloudWatchLogs", Firehose: "firehose", S3: "s3" })),
       ).annotate({ identifier: "ReplicatorLogDelivery" });
     case 4:
       return S.suspend(() =>
-        S.Struct({ ReplicatorLogDelivery: S.optional(__S(83)) }).pipe(
+        S.Struct({ ReplicatorLogDelivery: S.optional(ReplicatorLogDelivery) }).pipe(
           S.encodeKeys({ ReplicatorLogDelivery: "replicatorLogDelivery" }),
         ),
       ).annotate({ identifier: "LogDelivery" });
@@ -5216,7 +5938,7 @@ function __c10(j: number): any {
           ReplicatorName: S.optional(S.String),
           ServiceExecutionRoleArn: S.optional(S.String),
           Tags: S.optional(__mapOf__string),
-          LogDelivery: S.optional(__S(84)),
+          LogDelivery: S.optional(LogDelivery),
         })
           .pipe(
             S.encodeKeys({
@@ -5245,7 +5967,7 @@ function __c10(j: number): any {
         S.Struct({
           ReplicatorArn: S.optional(S.String),
           ReplicatorName: S.optional(S.String),
-          ReplicatorState: S.optional(S.String),
+          ReplicatorState: S.optional(ReplicatorState),
         }).pipe(
           S.encodeKeys({
             ReplicatorArn: "replicatorArn",
@@ -5291,7 +6013,7 @@ function __c11(j: number): any {
         S.Struct({
           TopicArn: S.optional(S.String),
           TopicName: S.optional(S.String),
-          Status: S.optional(S.String),
+          Status: S.optional(TopicState),
         }).pipe(S.encodeKeys({ TopicArn: "topicArn", TopicName: "topicName", Status: "status" })),
       ).annotate({ identifier: "CreateTopicResponse" });
     case 1:
@@ -5331,7 +6053,7 @@ function __c11(j: number): any {
       return S.suspend(() =>
         S.Struct({
           VpcConnectionArn: S.optional(S.String),
-          State: S.optional(S.String),
+          State: S.optional(VpcConnectionState),
           Authentication: S.optional(S.String),
           VpcId: S.optional(S.String),
           ClientSubnets: S.optional(__listOf__string),
@@ -5387,7 +6109,7 @@ function __c11(j: number): any {
       ).annotate({ identifier: "DeleteClusterRequest" });
     case 5:
       return S.suspend(() =>
-        S.Struct({ ClusterArn: S.optional(S.String), State: S.optional(S.String) }).pipe(
+        S.Struct({ ClusterArn: S.optional(S.String), State: S.optional(ClusterState) }).pipe(
           S.encodeKeys({ ClusterArn: "clusterArn", State: "state" }),
         ),
       ).annotate({ identifier: "DeleteClusterResponse" });
@@ -5431,7 +6153,7 @@ function __c12(j: number): any {
       });
     case 1:
       return S.suspend(() =>
-        S.Struct({ Arn: S.optional(S.String), State: S.optional(S.String) }).pipe(
+        S.Struct({ Arn: S.optional(S.String), State: S.optional(ConfigurationState) }).pipe(
           S.encodeKeys({ Arn: "arn", State: "state" }),
         ),
       ).annotate({
@@ -5457,7 +6179,7 @@ function __c12(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ReplicatorArn: S.optional(S.String),
-          ReplicatorState: S.optional(S.String),
+          ReplicatorState: S.optional(ReplicatorState),
         }).pipe(
           S.encodeKeys({ ReplicatorArn: "replicatorArn", ReplicatorState: "replicatorState" }),
         ),
@@ -5497,7 +6219,7 @@ function __c12(j: number): any {
       return S.suspend(() =>
         S.Struct({
           VpcConnectionArn: S.optional(S.String),
-          State: S.optional(S.String),
+          State: S.optional(VpcConnectionState),
         }).pipe(S.encodeKeys({ VpcConnectionArn: "vpcConnectionArn", State: "state" })),
       ).annotate({
         identifier: "DeleteVpcConnectionResponse",
@@ -5533,15 +6255,15 @@ function __c13(j: number): any {
         S.Struct({
           ChannelArn: S.optional(S.String),
           ChannelName: S.optional(S.String),
-          EncryptionConfiguration: S.optional(__S(6)),
-          IcebergDestinationConfiguration: S.optional(__S(16)),
-          S3DestinationConfiguration: S.optional(__S(18)),
-          Status: S.optional(S.String),
-          DestinationType: S.optional(S.String),
+          EncryptionConfiguration: S.optional(EncryptionConfiguration),
+          IcebergDestinationConfiguration: S.optional(IcebergDestinationConfiguration),
+          S3DestinationConfiguration: S.optional(S3DestinationConfiguration),
+          Status: S.optional(ChannelStatus),
+          DestinationType: S.optional(ChannelDestinationType),
           CreationTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           TopicConfigurationList: S.optional(__listOfTopicConfiguration),
-          LoggingInfo: S.optional(__S(27)),
-          StateInfo: S.optional(__S(104)),
+          LoggingInfo: S.optional(ChannelLoggingInfo),
+          StateInfo: S.optional(ChannelStateInfo),
           ClusterOperationArn: S.optional(S.String),
           Tags: S.optional(__mapOf__string),
         }).pipe(
@@ -5592,13 +6314,13 @@ function __c13(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          JmxExporter: S.optional(__S(47)),
-          NodeExporter: S.optional(__S(47)),
+          JmxExporter: S.optional(JmxExporter),
+          NodeExporter: S.optional(NodeExporter),
         }).pipe(S.encodeKeys({ JmxExporter: "jmxExporter", NodeExporter: "nodeExporter" })),
       ).annotate({ identifier: "Prometheus" });
     case 5:
       return S.suspend(() =>
-        S.Struct({ Prometheus: S.optional(__S(108)) }).pipe(
+        S.Struct({ Prometheus: S.optional(Prometheus) }).pipe(
           S.encodeKeys({ Prometheus: "prometheus" }),
         ),
       ).annotate({ identifier: "OpenMonitoring" });
@@ -5606,26 +6328,26 @@ function __c13(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ActiveOperationArn: S.optional(S.String),
-          BrokerNodeGroupInfo: S.optional(__S(39)),
-          Rebalancing: S.optional(__S(40)),
-          ClientAuthentication: S.optional(__S(42)),
+          BrokerNodeGroupInfo: S.optional(BrokerNodeGroupInfo),
+          Rebalancing: S.optional(Rebalancing),
+          ClientAuthentication: S.optional(ClientAuthentication),
           ClusterArn: S.optional(S.String),
           ClusterName: S.optional(S.String),
           CreationTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          CurrentBrokerSoftwareInfo: S.optional(__S(107)),
+          CurrentBrokerSoftwareInfo: S.optional(BrokerSoftwareInfo),
           CurrentVersion: S.optional(S.String),
-          EncryptionInfo: S.optional(__S(46)),
-          EnhancedMonitoring: S.optional(S.String),
-          OpenMonitoring: S.optional(__S(109)),
-          LoggingInfo: S.optional(__S(50)),
+          EncryptionInfo: S.optional(EncryptionInfo),
+          EnhancedMonitoring: S.optional(EnhancedMonitoring),
+          OpenMonitoring: S.optional(OpenMonitoring),
+          LoggingInfo: S.optional(LoggingInfo),
           NumberOfBrokerNodes: S.optional(S.Number),
-          State: S.optional(S.String),
-          StateInfo: S.optional(__S(104)),
+          State: S.optional(ClusterState),
+          StateInfo: S.optional(StateInfo),
           Tags: S.optional(__mapOf__string),
           ZookeeperConnectString: S.optional(S.String),
           ZookeeperConnectStringTls: S.optional(S.String),
-          StorageMode: S.optional(S.String),
-          CustomerActionStatus: S.optional(S.String),
+          StorageMode: S.optional(StorageMode),
+          CustomerActionStatus: S.optional(CustomerActionStatus),
         }).pipe(
           S.encodeKeys({
             ActiveOperationArn: "activeOperationArn",
@@ -5654,7 +6376,7 @@ function __c13(j: number): any {
       ).annotate({ identifier: "ClusterInfo" });
     case 7:
       return S.suspend(() =>
-        S.Struct({ ClusterInfo: S.optional(__S(110)) }).pipe(
+        S.Struct({ ClusterInfo: S.optional(ClusterInfo) }).pipe(
           S.encodeKeys({ ClusterInfo: "clusterInfo" }),
         ),
       ).annotate({ identifier: "DescribeClusterResponse" });
@@ -5692,17 +6414,17 @@ function __c14(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          StepInfo: S.optional(__S(114)),
+          StepInfo: S.optional(ClusterOperationStepInfo),
           StepName: S.optional(S.String),
         }).pipe(S.encodeKeys({ StepInfo: "stepInfo", StepName: "stepName" })),
       ).annotate({ identifier: "ClusterOperationStep" });
     case 4:
-      return S.Array(__S(115));
+      return S.Array(ClusterOperationStep);
     case 5:
       return S.suspend(() =>
         S.Struct({
           KafkaBrokerNodeId: S.optional(S.String),
-          ProvisionedThroughput: S.optional(__S(30)),
+          ProvisionedThroughput: S.optional(ProvisionedThroughput),
           VolumeSizeGB: S.optional(S.Number),
         }).pipe(
           S.encodeKeys({
@@ -5713,7 +6435,7 @@ function __c14(j: number): any {
         ),
       ).annotate({ identifier: "BrokerEBSVolumeInfo" });
     case 6:
-      return S.Array(__S(117));
+      return S.Array(BrokerEBSVolumeInfo);
     case 7:
       return S.Array(S.Number);
   }
@@ -5736,20 +6458,20 @@ function __c15(j: number): any {
       return S.suspend(() =>
         S.Struct({
           BrokerEBSVolumeInfo: S.optional(__listOfBrokerEBSVolumeInfo),
-          ConfigurationInfo: S.optional(__S(43)),
+          ConfigurationInfo: S.optional(ConfigurationInfo),
           NumberOfBrokerNodes: S.optional(S.Number),
-          EnhancedMonitoring: S.optional(S.String),
-          OpenMonitoring: S.optional(__S(109)),
-          ZookeeperAccess: S.optional(__S(34)),
+          EnhancedMonitoring: S.optional(EnhancedMonitoring),
+          OpenMonitoring: S.optional(OpenMonitoring),
+          ZookeeperAccess: S.optional(ZookeeperAccess),
           KafkaVersion: S.optional(S.String),
-          LoggingInfo: S.optional(__S(50)),
+          LoggingInfo: S.optional(LoggingInfo),
           InstanceType: S.optional(S.String),
-          ClientAuthentication: S.optional(__S(42)),
-          EncryptionInfo: S.optional(__S(46)),
-          ConnectivityInfo: S.optional(__S(38)),
-          StorageMode: S.optional(S.String),
-          BrokerCountUpdateInfo: S.optional(__S(120)),
-          Rebalancing: S.optional(__S(40)),
+          ClientAuthentication: S.optional(ClientAuthentication),
+          EncryptionInfo: S.optional(EncryptionInfo),
+          ConnectivityInfo: S.optional(ConnectivityInfo),
+          StorageMode: S.optional(StorageMode),
+          BrokerCountUpdateInfo: S.optional(BrokerCountUpdateInfo),
+          Rebalancing: S.optional(Rebalancing),
         }).pipe(
           S.encodeKeys({
             BrokerEBSVolumeInfo: "brokerEBSVolumeInfo",
@@ -5772,7 +6494,7 @@ function __c15(j: number): any {
       ).annotate({ identifier: "MutableClusterInfo" });
     case 2:
       return S.suspend(() =>
-        S.Struct({ Type: S.optional(S.String), PrincipalId: S.optional(S.String) }).pipe(
+        S.Struct({ Type: S.optional(UserIdentityType), PrincipalId: S.optional(S.String) }).pipe(
           S.encodeKeys({ Type: "type", PrincipalId: "principalId" }),
         ),
       ).annotate({ identifier: "UserIdentity" });
@@ -5781,7 +6503,7 @@ function __c15(j: number): any {
         S.Struct({
           VpcConnectionArn: S.optional(S.String),
           Owner: S.optional(S.String),
-          UserIdentity: S.optional(__S(122)),
+          UserIdentity: S.optional(UserIdentity),
           CreationTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
         }).pipe(
           S.encodeKeys({
@@ -5799,14 +6521,14 @@ function __c15(j: number): any {
           ClusterArn: S.optional(S.String),
           CreationTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           EndTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          ErrorInfo: S.optional(__S(113)),
+          ErrorInfo: S.optional(ErrorInfo),
           OperationArn: S.optional(S.String),
           OperationState: S.optional(S.String),
           OperationSteps: S.optional(__listOfClusterOperationStep),
           OperationType: S.optional(S.String),
-          SourceClusterInfo: S.optional(__S(121)),
-          TargetClusterInfo: S.optional(__S(121)),
-          VpcConnectionInfo: S.optional(__S(123)),
+          SourceClusterInfo: S.optional(MutableClusterInfo),
+          TargetClusterInfo: S.optional(MutableClusterInfo),
+          VpcConnectionInfo: S.optional(VpcConnectionInfo),
         }).pipe(
           S.encodeKeys({
             ClientRequestId: "clientRequestId",
@@ -5826,7 +6548,7 @@ function __c15(j: number): any {
       ).annotate({ identifier: "ClusterOperationInfo" });
     case 5:
       return S.suspend(() =>
-        S.Struct({ ClusterOperationInfo: S.optional(__S(124)) }).pipe(
+        S.Struct({ ClusterOperationInfo: S.optional(ClusterOperationInfo) }).pipe(
           S.encodeKeys({ ClusterOperationInfo: "clusterOperationInfo" }),
         ),
       ).annotate({
@@ -5851,9 +6573,9 @@ function __c15(j: number): any {
       return S.suspend(() =>
         S.Struct({
           OperationSteps: S.optional(__listOfClusterOperationStep),
-          SourceClusterInfo: S.optional(__S(121)),
-          TargetClusterInfo: S.optional(__S(121)),
-          VpcConnectionInfo: S.optional(__S(123)),
+          SourceClusterInfo: S.optional(MutableClusterInfo),
+          TargetClusterInfo: S.optional(MutableClusterInfo),
+          VpcConnectionInfo: S.optional(VpcConnectionInfo),
         }).pipe(
           S.encodeKeys({
             OperationSteps: "operationSteps",
@@ -5871,7 +6593,7 @@ function __c16(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ NetworkType: S.optional(S.String) }).pipe(
+        S.Struct({ NetworkType: S.optional(NetworkType) }).pipe(
           S.encodeKeys({ NetworkType: "networkType" }),
         ),
       ).annotate({
@@ -5882,7 +6604,7 @@ function __c16(j: number): any {
         S.Struct({
           CreationTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           Owner: S.optional(S.String),
-          UserIdentity: S.optional(__S(122)),
+          UserIdentity: S.optional(UserIdentity),
           VpcConnectionArn: S.optional(S.String),
         }).pipe(
           S.encodeKeys({
@@ -5898,9 +6620,9 @@ function __c16(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          SourceClusterInfo: S.optional(__S(128)),
-          TargetClusterInfo: S.optional(__S(128)),
-          VpcConnectionInfo: S.optional(__S(129)),
+          SourceClusterInfo: S.optional(ServerlessConnectivityInfo),
+          TargetClusterInfo: S.optional(ServerlessConnectivityInfo),
+          VpcConnectionInfo: S.optional(VpcConnectionInfoServerless),
         }).pipe(
           S.encodeKeys({
             SourceClusterInfo: "sourceClusterInfo",
@@ -5915,15 +6637,15 @@ function __c16(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ClusterArn: S.optional(S.String),
-          ClusterType: S.optional(S.String),
+          ClusterType: S.optional(ClusterType),
           StartTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           EndTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          ErrorInfo: S.optional(__S(113)),
+          ErrorInfo: S.optional(ErrorInfo),
           OperationArn: S.optional(S.String),
           OperationState: S.optional(S.String),
           OperationType: S.optional(S.String),
-          Provisioned: S.optional(__S(127)),
-          Serverless: S.optional(__S(130)),
+          Provisioned: S.optional(ClusterOperationV2Provisioned),
+          Serverless: S.optional(ClusterOperationV2Serverless),
         }).pipe(
           S.encodeKeys({
             ClusterArn: "clusterArn",
@@ -5941,7 +6663,7 @@ function __c16(j: number): any {
       ).annotate({ identifier: "ClusterOperationV2" });
     case 4:
       return S.suspend(() =>
-        S.Struct({ ClusterOperationInfo: S.optional(__S(131)) }).pipe(
+        S.Struct({ ClusterOperationInfo: S.optional(ClusterOperationV2) }).pipe(
           S.encodeKeys({ ClusterOperationInfo: "clusterOperationInfo" }),
         ),
       ).annotate({
@@ -5963,19 +6685,19 @@ function __c16(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          BrokerNodeGroupInfo: S.optional(__S(39)),
-          Rebalancing: S.optional(__S(40)),
-          CurrentBrokerSoftwareInfo: S.optional(__S(107)),
-          ClientAuthentication: S.optional(__S(42)),
-          EncryptionInfo: S.optional(__S(46)),
-          EnhancedMonitoring: S.optional(S.String),
-          OpenMonitoring: S.optional(__S(49)),
-          LoggingInfo: S.optional(__S(50)),
+          BrokerNodeGroupInfo: S.optional(BrokerNodeGroupInfo),
+          Rebalancing: S.optional(Rebalancing),
+          CurrentBrokerSoftwareInfo: S.optional(BrokerSoftwareInfo),
+          ClientAuthentication: S.optional(ClientAuthentication),
+          EncryptionInfo: S.optional(EncryptionInfo),
+          EnhancedMonitoring: S.optional(EnhancedMonitoring),
+          OpenMonitoring: S.optional(OpenMonitoringInfo),
+          LoggingInfo: S.optional(LoggingInfo),
           NumberOfBrokerNodes: S.optional(S.Number),
           ZookeeperConnectString: S.optional(S.String),
           ZookeeperConnectStringTls: S.optional(S.String),
-          StorageMode: S.optional(S.String),
-          CustomerActionStatus: S.optional(S.String),
+          StorageMode: S.optional(StorageMode),
+          CustomerActionStatus: S.optional(CustomerActionStatus),
         }).pipe(
           S.encodeKeys({
             BrokerNodeGroupInfo: "brokerNodeGroupInfo",
@@ -5998,8 +6720,8 @@ function __c16(j: number): any {
       return S.suspend(() =>
         S.Struct({
           VpcConfigs: S.optional(__listOfVpcConfig),
-          ClientAuthentication: S.optional(__S(57)),
-          ConnectivityInfo: S.optional(__S(128)),
+          ClientAuthentication: S.optional(ServerlessClientAuthentication),
+          ConnectivityInfo: S.optional(ServerlessConnectivityInfo),
         }).pipe(
           S.encodeKeys({
             VpcConfigs: "vpcConfigs",
@@ -6016,16 +6738,16 @@ function __c17(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ActiveOperationArn: S.optional(S.String),
-          ClusterType: S.optional(S.String),
+          ClusterType: S.optional(ClusterType),
           ClusterArn: S.optional(S.String),
           ClusterName: S.optional(S.String),
           CreationTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           CurrentVersion: S.optional(S.String),
-          State: S.optional(S.String),
-          StateInfo: S.optional(__S(104)),
+          State: S.optional(ClusterState),
+          StateInfo: S.optional(StateInfo),
           Tags: S.optional(__mapOf__string),
-          Provisioned: S.optional(__S(134)),
-          Serverless: S.optional(__S(135)),
+          Provisioned: S.optional(Provisioned),
+          Serverless: S.optional(Serverless),
         }).pipe(
           S.encodeKeys({
             ActiveOperationArn: "activeOperationArn",
@@ -6044,7 +6766,7 @@ function __c17(j: number): any {
       ).annotate({ identifier: "Cluster" });
     case 1:
       return S.suspend(() =>
-        S.Struct({ ClusterInfo: S.optional(__S(136)) }).pipe(
+        S.Struct({ ClusterInfo: S.optional(Cluster) }).pipe(
           S.encodeKeys({ ClusterInfo: "clusterInfo" }),
         ),
       ).annotate({
@@ -6072,9 +6794,9 @@ function __c17(j: number): any {
           CreationTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           Description: S.optional(S.String),
           KafkaVersions: S.optional(__listOf__string),
-          LatestRevision: S.optional(__S(62)),
+          LatestRevision: S.optional(ConfigurationRevision),
           Name: S.optional(S.String),
-          State: S.optional(S.String),
+          State: S.optional(ConfigurationState),
         }).pipe(
           S.encodeKeys({
             Arn: "arn",
@@ -6145,12 +6867,12 @@ function __c17(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          AmazonMskCluster: S.optional(__S(64)),
-          ApacheKafkaCluster: S.optional(__S(65)),
+          AmazonMskCluster: S.optional(AmazonMskCluster),
+          ApacheKafkaCluster: S.optional(ApacheKafkaCluster),
           KafkaClusterAlias: S.optional(S.String),
-          VpcConfig: S.optional(__S(66)),
-          ClientAuthentication: S.optional(__S(72)),
-          EncryptionInTransit: S.optional(__S(73)),
+          VpcConfig: S.optional(KafkaClusterClientVpcConfig),
+          ClientAuthentication: S.optional(KafkaClusterClientAuthentication),
+          EncryptionInTransit: S.optional(KafkaClusterEncryptionInTransit),
         }).pipe(
           S.encodeKeys({
             AmazonMskCluster: "amazonMskCluster",
@@ -6167,15 +6889,15 @@ function __c17(j: number): any {
 function __c18(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(143));
+      return S.Array(KafkaClusterDescription);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          ConsumerGroupReplication: S.optional(__S(76)),
+          ConsumerGroupReplication: S.optional(ConsumerGroupReplication),
           SourceKafkaClusterAlias: S.optional(S.String),
-          TargetCompressionType: S.optional(S.String),
+          TargetCompressionType: S.optional(TargetCompressionType),
           TargetKafkaClusterAlias: S.optional(S.String),
-          TopicReplication: S.optional(__S(78)),
+          TopicReplication: S.optional(TopicReplication),
         }).pipe(
           S.encodeKeys({
             ConsumerGroupReplication: "consumerGroupReplication",
@@ -6189,7 +6911,7 @@ function __c18(j: number): any {
         identifier: "ReplicationInfoDescription",
       });
     case 2:
-      return S.Array(__S(145));
+      return S.Array(ReplicationInfoDescription);
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -6202,11 +6924,11 @@ function __c18(j: number): any {
           ReplicatorDescription: S.optional(S.String),
           ReplicatorName: S.optional(S.String),
           ReplicatorResourceArn: S.optional(S.String),
-          ReplicatorState: S.optional(S.String),
+          ReplicatorState: S.optional(ReplicatorState),
           ServiceExecutionRoleArn: S.optional(S.String),
-          StateInfo: S.optional(__S(104)),
+          StateInfo: S.optional(ReplicationStateInfo),
           Tags: S.optional(__mapOf__string),
-          LogDelivery: S.optional(__S(84)),
+          LogDelivery: S.optional(LogDelivery),
         }).pipe(
           S.encodeKeys({
             CreationTime: "creationTime",
@@ -6252,7 +6974,7 @@ function __c18(j: number): any {
           ReplicationFactor: S.optional(S.Number),
           PartitionCount: S.optional(S.Number),
           Configs: S.optional(S.String),
-          Status: S.optional(S.String),
+          Status: S.optional(TopicState),
         }).pipe(
           S.encodeKeys({
             TopicArn: "topicArn",
@@ -6308,7 +7030,7 @@ function __c18(j: number): any {
 function __c19(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(151));
+      return S.Array(TopicPartitionInfo);
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -6338,7 +7060,7 @@ function __c19(j: number): any {
         S.Struct({
           VpcConnectionArn: S.optional(S.String),
           TargetClusterArn: S.optional(S.String),
-          State: S.optional(S.String),
+          State: S.optional(VpcConnectionState),
           Authentication: S.optional(S.String),
           VpcId: S.optional(S.String),
           Subnets: S.optional(__listOf__string),
@@ -6462,7 +7184,7 @@ function __c20(j: number): any {
         }).pipe(S.encodeKeys({ SourceVersion: "sourceVersion", TargetVersions: "targetVersions" })),
       ).annotate({ identifier: "CompatibleKafkaVersion" });
     case 2:
-      return S.Array(__S(161));
+      return S.Array(CompatibleKafkaVersion);
     case 3:
       return S.suspend(() =>
         S.Struct({ CompatibleKafkaVersions: S.optional(__listOfCompatibleKafkaVersion) }).pipe(
@@ -6494,9 +7216,9 @@ function __c20(j: number): any {
         S.Struct({
           ChannelArn: S.optional(S.String),
           ChannelName: S.optional(S.String),
-          Status: S.optional(S.String),
+          Status: S.optional(ChannelStatus),
           CreationTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          DestinationType: S.optional(S.String),
+          DestinationType: S.optional(ChannelDestinationType),
           ClusterOperationArn: S.optional(S.String),
         }).pipe(
           S.encodeKeys({
@@ -6510,7 +7232,7 @@ function __c20(j: number): any {
         ),
       ).annotate({ identifier: "ChannelInfo" });
     case 6:
-      return S.Array(__S(165));
+      return S.Array(ChannelInfo);
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -6546,7 +7268,7 @@ function __c21(j: number): any {
         S.Struct({
           Authentication: S.optional(S.String),
           CreationTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          State: S.optional(S.String),
+          State: S.optional(VpcConnectionState),
           VpcConnectionArn: S.optional(S.String),
           Owner: S.optional(S.String),
         }).pipe(
@@ -6560,7 +7282,7 @@ function __c21(j: number): any {
         ),
       ).annotate({ identifier: "ClientVpcConnection" });
     case 2:
-      return S.Array(__S(169));
+      return S.Array(ClientVpcConnection);
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -6592,7 +7314,7 @@ function __c21(j: number): any {
         identifier: "ListClusterOperationsRequest",
       });
     case 5:
-      return S.Array(__S(124));
+      return S.Array(ClusterOperationInfo);
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -6634,7 +7356,7 @@ function __c22(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ClusterArn: S.optional(S.String),
-          ClusterType: S.optional(S.String),
+          ClusterType: S.optional(ClusterType),
           StartTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           EndTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           OperationArn: S.optional(S.String),
@@ -6655,7 +7377,7 @@ function __c22(j: number): any {
         identifier: "ClusterOperationV2Summary",
       });
     case 1:
-      return S.Array(__S(176));
+      return S.Array(ClusterOperationV2Summary);
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -6681,7 +7403,7 @@ function __c22(j: number): any {
         ),
       ).annotate({ identifier: "ListClustersRequest" });
     case 4:
-      return S.Array(__S(110));
+      return S.Array(ClusterInfo);
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -6701,7 +7423,7 @@ function __c22(j: number): any {
         ),
       ).annotate({ identifier: "ListClustersV2Request" });
     case 7:
-      return S.Array(__S(136));
+      return S.Array(Cluster);
   }
 }
 function __c23(j: number): any {
@@ -6733,7 +7455,7 @@ function __c23(j: number): any {
         identifier: "ListConfigurationRevisionsRequest",
       });
     case 2:
-      return S.Array(__S(62));
+      return S.Array(ConfigurationRevision);
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -6761,9 +7483,9 @@ function __c23(j: number): any {
           CreationTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           Description: S.optional(S.String),
           KafkaVersions: S.optional(__listOf__string),
-          LatestRevision: S.optional(__S(62)),
+          LatestRevision: S.optional(ConfigurationRevision),
           Name: S.optional(S.String),
-          State: S.optional(S.String),
+          State: S.optional(ConfigurationState),
         }).pipe(
           S.encodeKeys({
             Arn: "arn",
@@ -6777,7 +7499,7 @@ function __c23(j: number): any {
         ),
       ).annotate({ identifier: "Configuration" });
     case 6:
-      return S.Array(__S(189));
+      return S.Array(Configuration);
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -6802,12 +7524,12 @@ function __c24(j: number): any {
       ).annotate({ identifier: "ListKafkaVersionsRequest" });
     case 1:
       return S.suspend(() =>
-        S.Struct({ Version: S.optional(S.String), Status: S.optional(S.String) }).pipe(
+        S.Struct({ Version: S.optional(S.String), Status: S.optional(KafkaVersionStatus) }).pipe(
           S.encodeKeys({ Version: "version", Status: "status" }),
         ),
       ).annotate({ identifier: "KafkaVersion" });
     case 2:
-      return S.Array(__S(193));
+      return S.Array(KafkaVersion);
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -6841,7 +7563,7 @@ function __c24(j: number): any {
           BrokerId: S.optional(S.Number),
           ClientSubnet: S.optional(S.String),
           ClientVpcIpAddress: S.optional(S.String),
-          CurrentBrokerSoftwareInfo: S.optional(__S(107)),
+          CurrentBrokerSoftwareInfo: S.optional(BrokerSoftwareInfo),
           Endpoints: S.optional(__listOf__string),
         }).pipe(
           S.encodeKeys({
@@ -6886,12 +7608,12 @@ function __c25(j: number): any {
       return S.suspend(() =>
         S.Struct({
           AddedToClusterTime: S.optional(S.String),
-          BrokerNodeInfo: S.optional(__S(197)),
-          ControllerNodeInfo: S.optional(__S(198)),
+          BrokerNodeInfo: S.optional(BrokerNodeInfo),
+          ControllerNodeInfo: S.optional(ControllerNodeInfo),
           InstanceType: S.optional(S.String),
           NodeARN: S.optional(S.String),
-          NodeType: S.optional(S.String),
-          ZookeeperNodeInfo: S.optional(__S(199)),
+          NodeType: S.optional(NodeType),
+          ZookeeperNodeInfo: S.optional(ZookeeperNodeInfo),
         }).pipe(
           S.encodeKeys({
             AddedToClusterTime: "addedToClusterTime",
@@ -6905,7 +7627,7 @@ function __c25(j: number): any {
         ),
       ).annotate({ identifier: "NodeInfo" });
     case 1:
-      return S.Array(__S(200));
+      return S.Array(NodeInfo);
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -6933,8 +7655,8 @@ function __c25(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          AmazonMskCluster: S.optional(__S(64)),
-          ApacheKafkaCluster: S.optional(__S(65)),
+          AmazonMskCluster: S.optional(AmazonMskCluster),
+          ApacheKafkaCluster: S.optional(ApacheKafkaCluster),
           KafkaClusterAlias: S.optional(S.String),
         }).pipe(
           S.encodeKeys({
@@ -6945,7 +7667,7 @@ function __c25(j: number): any {
         ),
       ).annotate({ identifier: "KafkaClusterSummary" });
     case 5:
-      return S.Array(__S(204));
+      return S.Array(KafkaClusterSummary);
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -6959,7 +7681,7 @@ function __c25(j: number): any {
         ),
       ).annotate({ identifier: "ReplicationInfoSummary" });
     case 7:
-      return S.Array(__S(206));
+      return S.Array(ReplicationInfoSummary);
   }
 }
 function __c26(j: number): any {
@@ -6975,7 +7697,7 @@ function __c26(j: number): any {
           ReplicatorArn: S.optional(S.String),
           ReplicatorName: S.optional(S.String),
           ReplicatorResourceArn: S.optional(S.String),
-          ReplicatorState: S.optional(S.String),
+          ReplicatorState: S.optional(ReplicatorState),
         }).pipe(
           S.encodeKeys({
             CreationTime: "creationTime",
@@ -6991,7 +7713,7 @@ function __c26(j: number): any {
         ),
       ).annotate({ identifier: "ReplicatorSummary" });
     case 1:
-      return S.Array(__S(208));
+      return S.Array(ReplicatorSummary);
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -7085,7 +7807,7 @@ function __c27(j: number): any {
         ),
       ).annotate({ identifier: "TopicInfo" });
     case 1:
-      return S.Array(__S(216));
+      return S.Array(TopicInfo);
     case 2:
       return S.suspend(() =>
         S.Struct({ Topics: S.optional(__listOfTopicInfo), NextToken: S.optional(S.String) }).pipe(
@@ -7118,7 +7840,7 @@ function __c27(j: number): any {
           CreationTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           Authentication: S.optional(S.String),
           VpcId: S.optional(S.String),
-          State: S.optional(S.String),
+          State: S.optional(VpcConnectionState),
         }).pipe(
           S.encodeKeys({
             VpcConnectionArn: "vpcConnectionArn",
@@ -7131,7 +7853,7 @@ function __c27(j: number): any {
         ),
       ).annotate({ identifier: "VpcConnection" });
     case 5:
-      return S.Array(__S(220));
+      return S.Array(VpcConnection);
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -7355,8 +8077,8 @@ function __c29(j: number): any {
         S.Struct({
           ChannelArn: S.String.pipe(T.HttpLabel("ChannelArn")),
           ClusterArn: S.String.pipe(T.HttpLabel("ClusterArn")),
-          IcebergDestinationUpdate: S.optional(__S(235)),
-          S3DestinationUpdate: S.optional(__S(235)),
+          IcebergDestinationUpdate: S.optional(IcebergDestinationUpdate),
+          S3DestinationUpdate: S.optional(S3DestinationUpdate),
         })
           .pipe(
             S.encodeKeys({
@@ -7379,7 +8101,7 @@ function __c29(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ClusterArn: S.String.pipe(T.HttpLabel("ClusterArn")),
-          ConfigurationInfo: S.optional(__S(43)),
+          ConfigurationInfo: S.optional(ConfigurationInfo),
           CurrentVersion: S.optional(S.String),
         })
           .pipe(
@@ -7405,7 +8127,7 @@ function __c29(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ClusterArn: S.String.pipe(T.HttpLabel("ClusterArn")),
-          ConfigurationInfo: S.optional(__S(43)),
+          ConfigurationInfo: S.optional(ConfigurationInfo),
           CurrentVersion: S.optional(S.String),
           TargetKafkaVersion: S.optional(S.String),
         })
@@ -7458,7 +8180,7 @@ function __c30(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Arn: S.optional(S.String),
-          LatestRevision: S.optional(__S(62)),
+          LatestRevision: S.optional(ConfigurationRevision),
         }).pipe(S.encodeKeys({ Arn: "arn", LatestRevision: "latestRevision" })),
       ).annotate({
         identifier: "UpdateConfigurationResponse",
@@ -7467,9 +8189,9 @@ function __c30(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ClusterArn: S.String.pipe(T.HttpLabel("ClusterArn")),
-          ConnectivityInfo: S.optional(__S(38)),
+          ConnectivityInfo: S.optional(ConnectivityInfo),
           CurrentVersion: S.optional(S.String),
-          ZookeeperAccess: S.optional(__S(34)),
+          ZookeeperAccess: S.optional(ZookeeperAccess),
         })
           .pipe(
             S.encodeKeys({
@@ -7496,9 +8218,9 @@ function __c30(j: number): any {
         S.Struct({
           ClusterArn: S.String.pipe(T.HttpLabel("ClusterArn")),
           CurrentVersion: S.optional(S.String),
-          EnhancedMonitoring: S.optional(S.String),
-          OpenMonitoring: S.optional(__S(49)),
-          LoggingInfo: S.optional(__S(50)),
+          EnhancedMonitoring: S.optional(EnhancedMonitoring),
+          OpenMonitoring: S.optional(OpenMonitoringInfo),
+          LoggingInfo: S.optional(LoggingInfo),
         })
           .pipe(
             S.encodeKeys({
@@ -7524,7 +8246,7 @@ function __c30(j: number): any {
         S.Struct({
           ClusterArn: S.String.pipe(T.HttpLabel("ClusterArn")),
           CurrentVersion: S.optional(S.String),
-          Rebalancing: S.optional(__S(40)),
+          Rebalancing: S.optional(Rebalancing),
         })
           .pipe(S.encodeKeys({ CurrentVersion: "currentVersion", Rebalancing: "rebalancing" }))
           .pipe(
@@ -7577,15 +8299,15 @@ function __c30(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          ConsumerGroupReplication: S.optional(__S(244)),
+          ConsumerGroupReplication: S.optional(ConsumerGroupReplicationUpdate),
           CurrentVersion: S.optional(S.String),
           ReplicatorArn: S.String.pipe(T.HttpLabel("ReplicatorArn")),
           SourceKafkaClusterArn: S.optional(S.String),
           SourceKafkaClusterId: S.optional(S.String),
           TargetKafkaClusterArn: S.optional(S.String),
           TargetKafkaClusterId: S.optional(S.String),
-          TopicReplication: S.optional(__S(245)),
-          LogDelivery: S.optional(__S(84)),
+          TopicReplication: S.optional(TopicReplicationUpdate),
+          LogDelivery: S.optional(LogDelivery),
         })
           .pipe(
             S.encodeKeys({
@@ -7619,7 +8341,7 @@ function __c30(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ReplicatorArn: S.optional(S.String),
-          ReplicatorState: S.optional(S.String),
+          ReplicatorState: S.optional(ReplicatorState),
         }).pipe(
           S.encodeKeys({ ReplicatorArn: "replicatorArn", ReplicatorState: "replicatorState" }),
         ),
@@ -7633,10 +8355,10 @@ function __c31(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          ClientAuthentication: S.optional(__S(42)),
+          ClientAuthentication: S.optional(ClientAuthentication),
           ClusterArn: S.String.pipe(T.HttpLabel("ClusterArn")),
           CurrentVersion: S.optional(S.String),
-          EncryptionInfo: S.optional(__S(46)),
+          EncryptionInfo: S.optional(EncryptionInfo),
         })
           .pipe(
             S.encodeKeys({
@@ -7661,8 +8383,8 @@ function __c31(j: number): any {
         S.Struct({
           ClusterArn: S.String.pipe(T.HttpLabel("ClusterArn")),
           CurrentVersion: S.optional(S.String),
-          ProvisionedThroughput: S.optional(__S(30)),
-          StorageMode: S.optional(S.String),
+          ProvisionedThroughput: S.optional(ProvisionedThroughput),
+          StorageMode: S.optional(StorageMode),
           VolumeSizeGB: S.optional(S.Number),
         })
           .pipe(
@@ -7704,78 +8426,5 @@ function __c31(j: number): any {
             ),
           ),
       ).annotate({ identifier: "UpdateTopicRequest" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
-    case 9:
-      return __c9(i & 7);
-    case 10:
-      return __c10(i & 7);
-    case 11:
-      return __c11(i & 7);
-    case 12:
-      return __c12(i & 7);
-    case 13:
-      return __c13(i & 7);
-    case 14:
-      return __c14(i & 7);
-    case 15:
-      return __c15(i & 7);
-    case 16:
-      return __c16(i & 7);
-    case 17:
-      return __c17(i & 7);
-    case 18:
-      return __c18(i & 7);
-    case 19:
-      return __c19(i & 7);
-    case 20:
-      return __c20(i & 7);
-    case 21:
-      return __c21(i & 7);
-    case 22:
-      return __c22(i & 7);
-    case 23:
-      return __c23(i & 7);
-    case 24:
-      return __c24(i & 7);
-    case 25:
-      return __c25(i & 7);
-    case 26:
-      return __c26(i & 7);
-    case 27:
-      return __c27(i & 7);
-    case 28:
-      return __c28(i & 7);
-    case 29:
-      return __c29(i & 7);
-    case 30:
-      return __c30(i & 7);
-    case 31:
-      return __c31(i & 7);
   }
 }

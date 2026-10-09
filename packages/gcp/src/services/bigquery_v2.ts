@@ -7,8 +7,6 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -65,6 +63,8 @@ export class NotFound
   ) {}
 
 export type StringList = Array<string>;
+const StringList = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<StringList>;
+
 /** Request message for the BatchDeleteRowAccessPoliciesRequest method. */
 export interface BatchDeleteRowAccessPoliciesRequest {
   /** If set to true, it deletes the row access policy even if it's the last row access policy on the table and the deletion will widen the access rather narrowing it. */
@@ -72,6 +72,11 @@ export interface BatchDeleteRowAccessPoliciesRequest {
   /** Required. Policy IDs of the row access policies. */
   policyIds?: StringList;
 }
+const BatchDeleteRowAccessPoliciesRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<BatchDeleteRowAccessPoliciesRequest>;
+
 export interface BatchDeleteRowAccessPoliciesRequest_ {
   /** Required. Table ID of the table to delete the row access policies. */
   tableId: string;
@@ -82,7 +87,17 @@ export interface BatchDeleteRowAccessPoliciesRequest_ {
   /** Request body */
   body?: BatchDeleteRowAccessPoliciesRequest;
 }
+const BatchDeleteRowAccessPoliciesRequest_ = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<BatchDeleteRowAccessPoliciesRequest_>;
+
 export interface BatchDeleteRowAccessPoliciesResponse {}
+const BatchDeleteRowAccessPoliciesResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<BatchDeleteRowAccessPoliciesResponse>;
+
 export interface CancelJobsRequest {
   /** Required. Project ID of the job to cancel */
   projectId: string;
@@ -91,6 +106,8 @@ export interface CancelJobsRequest {
   /** Required. Job ID of the job to cancel */
   jobId: string;
 }
+const CancelJobsRequest = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<CancelJobsRequest>;
+
 /** A job reference is a fully qualified identifier for referring to a job. */
 export interface JobReference {
   /** Required. The ID of the job. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), or dashes (-). The maximum length is 1,024 characters. */
@@ -100,16 +117,25 @@ export interface JobReference {
   /** Optional. The geographic location of the job. The default value is US. For more information about BigQuery locations, see: https://cloud.google.com/bigquery/docs/locations */
   location?: string;
 }
+const JobReference = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<JobReference>;
+
 /** Statistics for row-level security. */
 export interface RowLevelSecurityStatistics {
   /** Whether any accessed data was protected by row access policies. */
   rowLevelSecurityApplied?: boolean;
 }
+const RowLevelSecurityStatistics = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<RowLevelSecurityStatistics>;
+
 /** Provides error statistics for the query job across all AI function calls. */
 export interface GenAiErrorStats {
   /** A list of unique errors at query level (up to 5, truncated to 100 chars) */
   errors?: StringList;
 }
+const GenAiErrorStats = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<GenAiErrorStats>;
+
 /** Provides error statistics for a GenAi function call. */
 export interface GenAiFunctionErrorStats {
   /** Number of failed rows processed by the function */
@@ -117,6 +143,11 @@ export interface GenAiFunctionErrorStats {
   /** A list of unique errors at function level (up to 5, truncated to 100 chars). */
   errors?: StringList;
 }
+const GenAiFunctionErrorStats = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<GenAiFunctionErrorStats>;
+
 /** Provides cost optimization statistics for a GenAi function call. */
 export interface GenAiFunctionCostOptimizationStats {
   /** System generated message to provide insights into cost optimization state. */
@@ -124,11 +155,21 @@ export interface GenAiFunctionCostOptimizationStats {
   /** Number of rows inferred via cost optimized workflow. */
   numCostOptimizedRows?: string;
 }
+const GenAiFunctionCostOptimizationStats = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<GenAiFunctionCostOptimizationStats>;
+
 /** Provides cache statistics for a GenAi function call. */
 export interface GenAiFunctionCacheStats {
   /** Number of rows served from cache. */
   numCacheHitRows?: string;
 }
+const GenAiFunctionCacheStats = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<GenAiFunctionCacheStats>;
+
 /** Provides statistics for each Ai function call within a query. */
 export interface GenAiFunctionStats {
   /** User input prompt of the function (truncated to 20 chars). */
@@ -144,7 +185,14 @@ export interface GenAiFunctionStats {
   /** Number of rows processed by this GenAi function. This includes all cost_optimized, llm_inferred and failed_rows. */
   numProcessedRows?: string;
 }
+const GenAiFunctionStats = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<GenAiFunctionStats>;
+
 export type GenAiFunctionStatsList = Array<GenAiFunctionStats>;
+const GenAiFunctionStatsList = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<GenAiFunctionStatsList>;
+
 /** GenAi stats for the query job. */
 export interface GenAiStats {
   /** Job level error stats across all GenAi functions */
@@ -152,6 +200,8 @@ export interface GenAiStats {
   /** Function level stats for GenAI Functions. For more information, see [Generative AI overview](https://docs.cloud.google.com/bigquery/docs/generative-ai-overview). */
   functionStats?: GenAiFunctionStatsList;
 }
+const GenAiStats = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<GenAiStats>;
+
 export interface TableReference {
   /** Required. The ID of the dataset containing this table. */
   datasetId?: string;
@@ -160,6 +210,8 @@ export interface TableReference {
   /** Required. The ID of the table. The ID can contain Unicode characters in category L (letter), M (mark), N (number), Pc (connector, including underscore), Pd (dash), and Zs (space). For more information, see [General Category](https://wikipedia.org/wiki/Unicode_character_property#General_Category). The maximum length is 1,024 characters. Certain operations allow suffixing of the table ID with a partition decorator, such as `sample_table$20190123`. */
   tableId?: string;
 }
+const TableReference = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<TableReference>;
+
 /** Statistics for index pruning. */
 export interface IndexPruningStats {
   /** The number of parallel inputs after index pruning. */
@@ -171,12 +223,21 @@ export interface IndexPruningStats {
   /** The number of parallel inputs before index pruning. */
   preIndexPruningParallelInputCount?: string;
 }
+const IndexPruningStats = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<IndexPruningStats>;
+
 export type IndexPruningStatsList = Array<IndexPruningStats>;
+const IndexPruningStatsList = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<IndexPruningStatsList>;
+
 export type SearchStatisticsIndexUsageModeEnum =
   | "INDEX_USAGE_MODE_UNSPECIFIED"
   | "UNUSED"
   | "PARTIALLY_USED"
   | "FULLY_USED";
+const SearchStatisticsIndexUsageModeEnum = S.String;
+
 export type IndexUnusedReasonCodeEnum =
   | "CODE_UNSPECIFIED"
   | "INDEX_CONFIG_NOT_AVAILABLE"
@@ -200,6 +261,8 @@ export type IndexUnusedReasonCodeEnum =
   | "STALE_INDEX"
   | "INTERNAL_ERROR"
   | "OTHER_REASON";
+const IndexUnusedReasonCodeEnum = S.String;
+
 /** Reason about why no search index was used in the search query (or sub-query). */
 export interface IndexUnusedReason {
   /** Specifies the high-level reason for the scenario when no search index was used. */
@@ -211,7 +274,14 @@ export interface IndexUnusedReason {
   /** Specifies the name of the unused search index, if available. */
   indexName?: string;
 }
+const IndexUnusedReason = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<IndexUnusedReason>;
+
 export type IndexUnusedReasonList = Array<IndexUnusedReason>;
+const IndexUnusedReasonList = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<IndexUnusedReasonList>;
+
 /** Statistics for a search query. Populated as part of JobStatistics2. */
 export interface SearchStatistics {
   /** Search index pruning statistics, one for each base table that has a search index. If a base table does not have a search index or the index does not help with pruning on the base table, then there is no pruning statistics for that table. */
@@ -221,11 +291,15 @@ export interface SearchStatistics {
   /** When `indexUsageMode` is `UNUSED` or `PARTIALLY_USED`, this field explains why indexes were not used in all or part of the search query. If `indexUsageMode` is `FULLY_USED`, this field is not populated. */
   indexUnusedReasons?: IndexUnusedReasonList;
 }
+const SearchStatistics = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<SearchStatistics>;
+
 export type TableMetadataCacheUsageUnusedReasonEnum =
   | "UNUSED_REASON_UNSPECIFIED"
   | "EXCEEDED_MAX_STALENESS"
   | "METADATA_CACHING_NOT_ENABLED"
   | "OTHER_REASON";
+const TableMetadataCacheUsageUnusedReasonEnum = S.String;
+
 /** The column metadata index pruning statistics. */
 export interface PruningStats {
   /** The number of parallel inputs matched. */
@@ -235,6 +309,8 @@ export interface PruningStats {
   /** The number of parallel inputs scanned. */
   preCmetaPruningParallelInputCount?: string;
 }
+const PruningStats = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<PruningStats>;
+
 /** Table level detail on the usage of metadata caching. Only set for Metadata caching eligible tables referenced in the query. */
 export interface TableMetadataCacheUsage {
   /** Metadata caching eligible table referenced in the query. */
@@ -250,25 +326,54 @@ export interface TableMetadataCacheUsage {
   /** Free form human-readable reason metadata caching was unused for the job. */
   explanation?: string;
 }
+const TableMetadataCacheUsage = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<TableMetadataCacheUsage>;
+
 export type TableMetadataCacheUsageList = Array<TableMetadataCacheUsage>;
+const TableMetadataCacheUsageList = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<TableMetadataCacheUsageList>;
+
 /** Statistics for metadata caching in queried tables. */
 export interface MetadataCacheStatistics {
   /** Set for the Metadata caching eligible tables referenced in the query. */
   tableMetadataCacheUsage?: TableMetadataCacheUsageList;
 }
+const MetadataCacheStatistics = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<MetadataCacheStatistics>;
+
 export type DocumentMap = { [key: string]: unknown | undefined };
+const DocumentMap = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<DocumentMap>;
+
 /** Query optimization information for a QUERY job. */
 export interface QueryInfo {
   /** Output only. Information about query optimizations. */
   optimizationDetails?: DocumentMap;
 }
+const QueryInfo = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<QueryInfo>;
+
 export interface JobStatistics2ReservationUsageItem {
   /** Reservation name or "unreserved" for on-demand resource usage and multi-statement queries. */
   name?: string;
   /** Total slot milliseconds used by the reservation for a particular job. */
   slotMs?: string;
 }
+const JobStatistics2ReservationUsageItem = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<JobStatistics2ReservationUsageItem>;
+
 export type JobStatistics2ReservationUsageItemList = Array<JobStatistics2ReservationUsageItem>;
+const JobStatistics2ReservationUsageItemList = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<JobStatistics2ReservationUsageItemList>;
+
 export type StoredColumnsUnusedReasonCodeEnum =
   | "CODE_UNSPECIFIED"
   | "STORED_COLUMNS_COVER_INSUFFICIENT"
@@ -277,6 +382,8 @@ export type StoredColumnsUnusedReasonCodeEnum =
   | "UNSUPPORTED_PREFILTER"
   | "INTERNAL_ERROR"
   | "OTHER_REASON";
+const StoredColumnsUnusedReasonCodeEnum = S.String;
+
 /** If the stored column was not used, explain why. */
 export interface StoredColumnsUnusedReason {
   /** Specifies which columns were not covered by the stored columns for the specified code up to 20 columns. This is populated when the code is STORED_COLUMNS_COVER_INSUFFICIENT and BASE_TABLE_HAS_CLS. */
@@ -286,7 +393,17 @@ export interface StoredColumnsUnusedReason {
   /** Specifies the detailed description for the scenario. */
   message?: string;
 }
+const StoredColumnsUnusedReason = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<StoredColumnsUnusedReason>;
+
 export type StoredColumnsUnusedReasonList = Array<StoredColumnsUnusedReason>;
+const StoredColumnsUnusedReasonList = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<StoredColumnsUnusedReasonList>;
+
 /** Indicates the stored columns usage in the query. */
 export interface StoredColumnsUsage {
   /** If stored columns were not used, explain why. */
@@ -296,12 +413,21 @@ export interface StoredColumnsUsage {
   /** Specifies whether the query was accelerated with stored columns. */
   isQueryAccelerated?: boolean;
 }
+const StoredColumnsUsage = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<StoredColumnsUsage>;
+
 export type StoredColumnsUsageList = Array<StoredColumnsUsage>;
+const StoredColumnsUsageList = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<StoredColumnsUsageList>;
+
 export type VectorSearchStatisticsIndexUsageModeEnum =
   | "INDEX_USAGE_MODE_UNSPECIFIED"
   | "UNUSED"
   | "PARTIALLY_USED"
   | "FULLY_USED";
+const VectorSearchStatisticsIndexUsageModeEnum = S.String;
+
 /** Statistics for a vector search query. Populated as part of JobStatistics2. */
 export interface VectorSearchStatistics {
   /** When `indexUsageMode` is `UNUSED` or `PARTIALLY_USED`, this field explains why indexes were not used in all or part of the vector search query. If `indexUsageMode` is `FULLY_USED`, this field is not populated. */
@@ -311,6 +437,11 @@ export interface VectorSearchStatistics {
   /** Specifies the index usage mode for the query. */
   indexUsageMode?: VectorSearchStatisticsIndexUsageModeEnum | (string & {});
 }
+const VectorSearchStatistics = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<VectorSearchStatistics>;
+
 /** Identifier for a dataset. */
 export interface DatasetReference {
   /** Optional. The ID of the project containing this dataset. */
@@ -318,6 +449,8 @@ export interface DatasetReference {
   /** Required. A unique ID for this dataset, without the project name. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 1,024 characters. */
   datasetId?: string;
 }
+const DatasetReference = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<DatasetReference>;
+
 /** Id path of a row access policy. */
 export interface RowAccessPolicyReference {
   /** Required. The ID of the dataset containing this row access policy. */
@@ -329,6 +462,11 @@ export interface RowAccessPolicyReference {
   /** Required. The ID of the project containing this row access policy. */
   projectId?: string;
 }
+const RowAccessPolicyReference = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<RowAccessPolicyReference>;
+
 /** Id path of a routine. */
 export interface RoutineReference {
   /** Required. The ID of the project containing this routine. */
@@ -338,7 +476,11 @@ export interface RoutineReference {
   /** Required. The ID of the dataset containing this routine. */
   datasetId?: string;
 }
+const RoutineReference = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<RoutineReference>;
+
 export type RoutineReferenceList = Array<RoutineReference>;
+const RoutineReferenceList = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<RoutineReferenceList>;
+
 /** The external service cost is a portion of the total cost, these costs are not additive with total_bytes_billed. Moreover, this field only track external service costs that will show up as BigQuery costs (e.g. training BigQuery ML job with google cloud CAIP or Automl Tables services), not other costs which may be accrued by running the query (e.g. reading from Bigtable or Cloud Storage). The external service costs with different billing sku (e.g. CAIP job is charged based on VM usage) are converted to BigQuery billed_bytes and slot_ms with equivalent amount of US dollars. Services may not directly correlate to these metrics, but these are the equivalents for billing purposes. Output only. */
 export interface ExternalServiceCost {
   /** Non-preemptable reserved slots used for external job. For example, reserved slots for Cloua AI Platform job are the VM usages converted to BigQuery slot with equivalent mount of price. */
@@ -354,11 +496,20 @@ export interface ExternalServiceCost {
   /** External service cost in terms of bigquery slot milliseconds. */
   slotMs?: string;
 }
+const ExternalServiceCost = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<ExternalServiceCost>;
+
 export type ExternalServiceCostList = Array<ExternalServiceCost>;
+const ExternalServiceCostList = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<ExternalServiceCostList>;
+
 export type ExplainQueryStageComputeModeEnum =
   | "COMPUTE_MODE_UNSPECIFIED"
   | "BIGQUERY"
   | "BI_ENGINE";
+const ExplainQueryStageComputeModeEnum = S.String;
+
 /** An operation within a stage. */
 export interface ExplainQueryStep {
   /** Machine-readable operation type. */
@@ -366,7 +517,11 @@ export interface ExplainQueryStep {
   /** Human-readable description of the step(s). */
   substeps?: StringList;
 }
+const ExplainQueryStep = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<ExplainQueryStep>;
+
 export type ExplainQueryStepList = Array<ExplainQueryStep>;
+const ExplainQueryStepList = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<ExplainQueryStepList>;
+
 /** A single stage of query execution. */
 export interface ExplainQueryStage {
   /** Relative amount of time the average shard spent waiting to be scheduled. */
@@ -432,12 +587,21 @@ export interface ExplainQueryStage {
   /** Milliseconds the slowest shard spent reading input. */
   readMsMax?: string;
 }
+const ExplainQueryStage = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<ExplainQueryStage>;
+
 export type ExplainQueryStageList = Array<ExplainQueryStage>;
+const ExplainQueryStageList = /*@__PURE__*/ __L.at(
+  __c5,
+  2,
+) as any as S.Schema<ExplainQueryStageList>;
+
 /** Details about the input data change insight. */
 export interface InputDataChange {
   /** Output only. Records read difference percentage compared to a previous run. */
   recordsReadDiffPercentage?: number;
 }
+const InputDataChange = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<InputDataChange>;
+
 /** Performance insights compared to the previous executions for a specific stage. */
 export interface StagePerformanceChangeInsight {
   /** Output only. Input data change insight of the query stage. */
@@ -445,7 +609,17 @@ export interface StagePerformanceChangeInsight {
   /** Output only. The stage id that the insight mapped to. */
   stageId?: string;
 }
+const StagePerformanceChangeInsight = /*@__PURE__*/ __L.at(
+  __c5,
+  4,
+) as any as S.Schema<StagePerformanceChangeInsight>;
+
 export type StagePerformanceChangeInsightList = Array<StagePerformanceChangeInsight>;
+const StagePerformanceChangeInsightList = /*@__PURE__*/ __L.at(
+  __c5,
+  5,
+) as any as S.Schema<StagePerformanceChangeInsightList>;
+
 /** Column Metadata Index staleness detailed infnormation. */
 export interface MetadataCacheStalenessInsight {
   /** Output only. Average column metadata index staleness of previous runs with the same query hash. */
@@ -453,6 +627,11 @@ export interface MetadataCacheStalenessInsight {
   /** Output only. The percent increase in staleness between the current job and the average staleness of previous jobs with the same query hash. */
   stalenessPercentageIncrease?: number;
 }
+const MetadataCacheStalenessInsight = /*@__PURE__*/ __L.at(
+  __c5,
+  6,
+) as any as S.Schema<MetadataCacheStalenessInsight>;
+
 /** Table-level performance insights compared to previous runs. These insights don't apply to specific query stages, rather they apply to the whole table. */
 export interface TableChangeInsight {
   /** Output only. If present, indicates that the table's metadata column index staleness has increased significantly compared to previous jobs with the same query hash. */
@@ -462,7 +641,14 @@ export interface TableChangeInsight {
   /** Output only. True if the table's column metadata index was not used in the current job, but was used in a previous job with the same query hash. */
   metadataCacheNotUsedButUsedPreviously?: boolean;
 }
+const TableChangeInsight = /*@__PURE__*/ __L.at(__c5, 7) as any as S.Schema<TableChangeInsight>;
+
 export type TableChangeInsightList = Array<TableChangeInsight>;
+const TableChangeInsightList = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<TableChangeInsightList>;
+
 export type BiEngineReasonCodeEnum =
   | "CODE_UNSPECIFIED"
   | "NO_RESERVATION"
@@ -471,6 +657,8 @@ export type BiEngineReasonCodeEnum =
   | "INPUT_TOO_LARGE"
   | "OTHER_REASON"
   | "TABLE_EXCLUDED";
+const BiEngineReasonCodeEnum = S.String;
+
 /** Reason why BI Engine didn't accelerate the query (or sub-query). */
 export interface BiEngineReason {
   /** Output only. Free form human-readable reason for partial or disabled acceleration. */
@@ -478,7 +666,11 @@ export interface BiEngineReason {
   /** Output only. High-level BI Engine reason for partial or disabled acceleration */
   code?: BiEngineReasonCodeEnum | (string & {});
 }
+const BiEngineReason = /*@__PURE__*/ __L.at(__c6, 1) as any as S.Schema<BiEngineReason>;
+
 export type BiEngineReasonList = Array<BiEngineReason>;
+const BiEngineReasonList = /*@__PURE__*/ __L.at(__c6, 2) as any as S.Schema<BiEngineReasonList>;
+
 /** High cardinality join detailed information. */
 export interface HighCardinalityJoin {
   /** Output only. Count of right input rows. */
@@ -490,7 +682,14 @@ export interface HighCardinalityJoin {
   /** Output only. The index of the join operator in the ExplainQueryStep lists. */
   stepIndex?: number;
 }
+const HighCardinalityJoin = /*@__PURE__*/ __L.at(__c6, 3) as any as S.Schema<HighCardinalityJoin>;
+
 export type HighCardinalityJoinList = Array<HighCardinalityJoin>;
+const HighCardinalityJoinList = /*@__PURE__*/ __L.at(
+  __c6,
+  4,
+) as any as S.Schema<HighCardinalityJoinList>;
+
 /** Details about source stages which produce skewed data. */
 export interface SkewSource {
   /** Output only. Max partition output size (in bytes) for this stage. */
@@ -502,12 +701,18 @@ export interface SkewSource {
   /** Output only. Median partition output size (in bytes) for this stage. */
   outputBytesMedian?: string;
 }
+const SkewSource = /*@__PURE__*/ __L.at(__c6, 5) as any as S.Schema<SkewSource>;
+
 export type SkewSourceList = Array<SkewSource>;
+const SkewSourceList = /*@__PURE__*/ __L.at(__c6, 6) as any as S.Schema<SkewSourceList>;
+
 /** Partition skew detailed information. */
 export interface PartitionSkew {
   /** Output only. Source stages which produce skewed data. */
   skewSources?: SkewSourceList;
 }
+const PartitionSkew = /*@__PURE__*/ __L.at(__c6, 7) as any as S.Schema<PartitionSkew>;
+
 /** Standalone performance insights for a specific stage. */
 export interface StagePerformanceStandaloneInsight {
   /** Output only. True if the stage has insufficient shuffle quota. */
@@ -523,7 +728,17 @@ export interface StagePerformanceStandaloneInsight {
   /** Output only. Partition skew in the stage. */
   partitionSkew?: PartitionSkew;
 }
+const StagePerformanceStandaloneInsight = /*@__PURE__*/ __L.at(
+  __c7,
+  0,
+) as any as S.Schema<StagePerformanceStandaloneInsight>;
+
 export type StagePerformanceStandaloneInsightList = Array<StagePerformanceStandaloneInsight>;
+const StagePerformanceStandaloneInsightList = /*@__PURE__*/ __L.at(
+  __c7,
+  1,
+) as any as S.Schema<StagePerformanceStandaloneInsightList>;
+
 /** Performance insights for the job. */
 export interface PerformanceInsights {
   /** Output only. Query stage performance insights compared to previous runs, for diagnosing performance regression. */
@@ -535,8 +750,14 @@ export interface PerformanceInsights {
   /** Output only. Average execution ms of previous runs. Indicates the job ran slow compared to previous executions. To find previous executions, use INFORMATION_SCHEMA tables and filter jobs with same query hash. */
   avgPreviousExecutionMs?: string;
 }
+const PerformanceInsights = /*@__PURE__*/ __L.at(__c7, 2) as any as S.Schema<PerformanceInsights>;
+
 export type TableReferenceList = Array<TableReference>;
+const TableReferenceList = /*@__PURE__*/ __L.at(__c7, 3) as any as S.Schema<TableReferenceList>;
+
 export type StringMap = { [key: string]: string | undefined };
+const StringMap = /*@__PURE__*/ __L.at(__c7, 4) as any as S.Schema<StringMap>;
+
 /** Spark job logs can be filtered by these fields in Cloud Logging. */
 export interface SparkLoggingInfo {
   /** Output only. Resource type used for logging. */
@@ -544,6 +765,8 @@ export interface SparkLoggingInfo {
   /** Output only. Project ID where the Spark logs were written. */
   projectId?: string;
 }
+const SparkLoggingInfo = /*@__PURE__*/ __L.at(__c7, 5) as any as S.Schema<SparkLoggingInfo>;
+
 /** Statistics for a BigSpark query. Populated as part of JobStatistics2 */
 export interface SparkStatistics {
   /** Output only. Endpoints returned from Dataproc. Key list: - history_server_endpoint: A link to Spark job UI. */
@@ -559,6 +782,8 @@ export interface SparkStatistics {
   /** Output only. The Google Cloud Storage bucket that is used as the default file system by the Spark application. This field is only filled when the Spark procedure uses the invoker security mode. The `gcsStagingBucket` bucket is inferred from the `@@spark_proc_properties.staging_bucket` system variable (if it is provided). Otherwise, BigQuery creates a default staging bucket for the job and returns the bucket name in this field. Example: * `gs://[bucket_name]` */
   gcsStagingBucket?: string;
 }
+const SparkStatistics = /*@__PURE__*/ __L.at(__c7, 6) as any as S.Schema<SparkStatistics>;
+
 /** Statistics for the EXPORT DATA statement as part of Query Job. EXTRACT JOB statistics are populated in JobStatistics4. */
 export interface ExportDataStatistics {
   /** Number of destination files generated in case of EXPORT DATA statement only. */
@@ -566,6 +791,8 @@ export interface ExportDataStatistics {
   /** [Alpha] Number of destination rows generated in case of EXPORT DATA statement only. */
   rowCount?: string;
 }
+const ExportDataStatistics = /*@__PURE__*/ __L.at(__c7, 7) as any as S.Schema<ExportDataStatistics>;
+
 /** Statistics for a LOAD query. */
 export interface LoadQueryStatistics {
   /** Output only. Size of the loaded data in bytes. Note that while a LOAD query is in the running state, this value may change. */
@@ -581,6 +808,8 @@ export interface LoadQueryStatistics {
   /** Output only. Number of rows imported in a LOAD query. Note that while a LOAD query is in the running state, this value may change. */
   outputRows?: string;
 }
+const LoadQueryStatistics = /*@__PURE__*/ __L.at(__c8, 0) as any as S.Schema<LoadQueryStatistics>;
+
 export type MaterializedViewRejectedReasonEnum =
   | "REJECTED_REASON_UNSPECIFIED"
   | "NO_DATA"
@@ -594,6 +823,8 @@ export type MaterializedViewRejectedReasonEnum =
   | "OUT_OF_TIME_TRAVEL_WINDOW"
   | "BASE_TABLE_FINE_GRAINED_SECURITY_POLICY"
   | "BASE_TABLE_TOO_STALE";
+const MaterializedViewRejectedReasonEnum = S.String;
+
 /** A materialized view considered for a query job. */
 export interface MaterializedView {
   /** The candidate materialized view. */
@@ -605,12 +836,21 @@ export interface MaterializedView {
   /** If present, specifies the reason why the materialized view was not chosen for the query. */
   rejectedReason?: MaterializedViewRejectedReasonEnum | (string & {});
 }
+const MaterializedView = /*@__PURE__*/ __L.at(__c8, 1) as any as S.Schema<MaterializedView>;
+
 export type MaterializedViewList = Array<MaterializedView>;
+const MaterializedViewList = /*@__PURE__*/ __L.at(__c8, 2) as any as S.Schema<MaterializedViewList>;
+
 /** Statistics of materialized views considered in a query job. */
 export interface MaterializedViewStatistics {
   /** Materialized views considered for the query job. Only certain materialized views are used. For a detailed list, see the child message. If many materialized views are considered, then the list might be incomplete. */
   materializedView?: MaterializedViewList;
 }
+const MaterializedViewStatistics = /*@__PURE__*/ __L.at(
+  __c8,
+  3,
+) as any as S.Schema<MaterializedViewStatistics>;
+
 /** Summary of the state of query execution at a given time. */
 export interface QueryTimelineSample {
   /** Milliseconds elapsed since the start of query execution. */
@@ -628,24 +868,40 @@ export interface QueryTimelineSample {
   /** Cumulative slot-ms consumed by the query. */
   totalSlotMs?: string;
 }
+const QueryTimelineSample = /*@__PURE__*/ __L.at(__c8, 4) as any as S.Schema<QueryTimelineSample>;
+
 export type QueryTimelineSampleList = Array<QueryTimelineSample>;
+const QueryTimelineSampleList = /*@__PURE__*/ __L.at(
+  __c8,
+  5,
+) as any as S.Schema<QueryTimelineSampleList>;
+
 export interface BigQueryModelTraining {
   /** Deprecated. */
   expectedTotalIterations?: string;
   /** Deprecated. */
   currentIteration?: number;
 }
+const BigQueryModelTraining = /*@__PURE__*/ __L.at(
+  __c8,
+  6,
+) as any as S.Schema<BigQueryModelTraining>;
+
 export type BiEngineStatisticsAccelerationModeEnum =
   | "BI_ENGINE_ACCELERATION_MODE_UNSPECIFIED"
   | "BI_ENGINE_DISABLED"
   | "PARTIAL_INPUT"
   | "FULL_INPUT"
   | "FULL_QUERY";
+const BiEngineStatisticsAccelerationModeEnum = S.String;
+
 export type BiEngineStatisticsBiEngineModeEnum =
   | "ACCELERATION_MODE_UNSPECIFIED"
   | "DISABLED"
   | "PARTIAL"
   | "FULL";
+const BiEngineStatisticsBiEngineModeEnum = S.String;
+
 /** Statistics for a BI Engine specific query. Populated as part of JobStatistics2 */
 export interface BiEngineStatistics {
   /** Output only. Specifies which mode of BI Engine acceleration was performed (if any). */
@@ -655,10 +911,14 @@ export interface BiEngineStatistics {
   /** Output only. Specifies which mode of BI Engine acceleration was performed (if any). */
   biEngineMode?: BiEngineStatisticsBiEngineModeEnum | (string & {});
 }
+const BiEngineStatistics = /*@__PURE__*/ __L.at(__c8, 7) as any as S.Schema<BiEngineStatistics>;
+
 export type IncrementalResultStatsDisabledReasonEnum =
   | "DISABLED_REASON_UNSPECIFIED"
   | "OTHER"
   | "UNSUPPORTED_OPERATOR";
+const IncrementalResultStatsDisabledReasonEnum = S.String;
+
 /** Statistics related to Incremental Query Results. Populated as part of JobStatistics2. This feature is not yet available. */
 export interface IncrementalResultStats {
   /** Output only. The time at which the last incremental result was written. Does not include the final result written after query completion. */
@@ -676,11 +936,18 @@ export interface IncrementalResultStats {
   /** Output only. Number of rows that were in the latest result set before query completion. */
   incrementalRowCount?: string;
 }
+const IncrementalResultStats = /*@__PURE__*/ __L.at(
+  __c9,
+  0,
+) as any as S.Schema<IncrementalResultStats>;
+
 export type ObjectStorageStatsCloudProviderEnum =
   | "CLOUD_PROVIDER_UNSPECIFIED"
   | "GCP"
   | "AWS"
   | "AZURE";
+const ObjectStorageStatsCloudProviderEnum = S.String;
+
 /** Storage and caching statistics for object storage. */
 export interface ObjectStorageStats {
   /** The cloud provider for this block of statistics. */
@@ -690,8 +957,17 @@ export interface ObjectStorageStats {
   /** Total bytes read directly from the cloud provider's storage. */
   objectStorageBytesRead?: string;
 }
+const ObjectStorageStats = /*@__PURE__*/ __L.at(__c9, 1) as any as S.Schema<ObjectStorageStats>;
+
 export type ObjectStorageStatsList = Array<ObjectStorageStats>;
+const ObjectStorageStatsList = /*@__PURE__*/ __L.at(
+  __c9,
+  2,
+) as any as S.Schema<ObjectStorageStatsList>;
+
 export type DoubleList = Array<number>;
+const DoubleList = /*@__PURE__*/ __L.at(__c9, 3) as any as S.Schema<DoubleList>;
+
 /** Arima coefficients. */
 export interface ArimaCoefficients {
   /** Auto-regressive coefficients, an array of double. */
@@ -701,6 +977,8 @@ export interface ArimaCoefficients {
   /** Moving-average coefficients, an array of double. */
   movingAverageCoefficients?: DoubleList;
 }
+const ArimaCoefficients = /*@__PURE__*/ __L.at(__c9, 4) as any as S.Schema<ArimaCoefficients>;
+
 /** Arima order, can be used for both non-seasonal and seasonal parts. */
 export interface ArimaOrder {
   /** Order of the differencing part. */
@@ -710,6 +988,8 @@ export interface ArimaOrder {
   /** Order of the autoregressive part. */
   p?: string;
 }
+const ArimaOrder = /*@__PURE__*/ __L.at(__c9, 5) as any as S.Schema<ArimaOrder>;
+
 /** ARIMA model fitting metrics. */
 export interface ArimaFittingMetrics {
   /** Variance. */
@@ -719,6 +999,8 @@ export interface ArimaFittingMetrics {
   /** AIC. */
   aic?: number;
 }
+const ArimaFittingMetrics = /*@__PURE__*/ __L.at(__c9, 6) as any as S.Schema<ArimaFittingMetrics>;
+
 export type ArimaModelInfoSeasonalPeriodsItemEnum =
   | "SEASONAL_PERIOD_TYPE_UNSPECIFIED"
   | "NO_SEASONALITY"
@@ -728,9 +1010,16 @@ export type ArimaModelInfoSeasonalPeriodsItemEnum =
   | "QUARTERLY"
   | "YEARLY"
   | "HOURLY";
+const ArimaModelInfoSeasonalPeriodsItemEnum = S.String;
+
 export type ArimaModelInfoSeasonalPeriodsItemEnumList = Array<
   ArimaModelInfoSeasonalPeriodsItemEnum | (string & {})
 >;
+const ArimaModelInfoSeasonalPeriodsItemEnumList = /*@__PURE__*/ __L.at(
+  __c9,
+  7,
+) as any as S.Schema<ArimaModelInfoSeasonalPeriodsItemEnumList>;
+
 /** Arima model information. */
 export interface ArimaModelInfo {
   /** Arima coefficients. */
@@ -754,7 +1043,11 @@ export interface ArimaModelInfo {
   /** Seasonal periods. Repeated because multiple periods are supported for one time series. */
   seasonalPeriods?: ArimaModelInfoSeasonalPeriodsItemEnumList;
 }
+const ArimaModelInfo = /*@__PURE__*/ __L.at(__c10, 0) as any as S.Schema<ArimaModelInfo>;
+
 export type ArimaModelInfoList = Array<ArimaModelInfo>;
+const ArimaModelInfoList = /*@__PURE__*/ __L.at(__c10, 1) as any as S.Schema<ArimaModelInfoList>;
+
 export type ArimaResultSeasonalPeriodsItemEnum =
   | "SEASONAL_PERIOD_TYPE_UNSPECIFIED"
   | "NO_SEASONALITY"
@@ -767,6 +1060,9 @@ export type ArimaResultSeasonalPeriodsItemEnum =
 export type ArimaResultSeasonalPeriodsItemEnumList = Array<
   ArimaResultSeasonalPeriodsItemEnum | (string & {})
 >;
+const ArimaResultSeasonalPeriodsItemEnumList =
+  ArimaModelInfoSeasonalPeriodsItemEnumList as any as S.Schema<ArimaResultSeasonalPeriodsItemEnumList>;
+
 /** (Auto-)arima fitting result. Wrap everything in ArimaResult for easier refactoring if we want to use model-specific iteration results. */
 export interface ArimaResult {
   /** This message is repeated because there are multiple arima models fitted in auto-arima. For non-auto-arima model, its size is one. */
@@ -774,6 +1070,8 @@ export interface ArimaResult {
   /** Seasonal periods. Repeated because multiple periods are supported for one time series. */
   seasonalPeriods?: ArimaResultSeasonalPeriodsItemEnumList;
 }
+const ArimaResult = /*@__PURE__*/ __L.at(__c10, 2) as any as S.Schema<ArimaResult>;
+
 /** Principal component infos, used only for eigen decomposition based models, e.g., PCA. Ordered by explained_variance in the descending order. */
 export interface PrincipalComponentInfo {
   /** The explained_variance is pre-ordered in the descending order to compute the cumulative explained variance ratio. */
@@ -785,7 +1083,17 @@ export interface PrincipalComponentInfo {
   /** Id of the principal component. */
   principalComponentId?: string;
 }
+const PrincipalComponentInfo = /*@__PURE__*/ __L.at(
+  __c10,
+  3,
+) as any as S.Schema<PrincipalComponentInfo>;
+
 export type PrincipalComponentInfoList = Array<PrincipalComponentInfo>;
+const PrincipalComponentInfoList = /*@__PURE__*/ __L.at(
+  __c10,
+  4,
+) as any as S.Schema<PrincipalComponentInfoList>;
+
 /** Information about a single cluster for clustering model. */
 export interface ClusterInfo {
   /** Centroid id. */
@@ -795,7 +1103,11 @@ export interface ClusterInfo {
   /** Cluster radius, the average distance from centroid to each point assigned to the cluster. */
   clusterRadius?: number;
 }
+const ClusterInfo = /*@__PURE__*/ __L.at(__c10, 5) as any as S.Schema<ClusterInfo>;
+
 export type ClusterInfoList = Array<ClusterInfo>;
+const ClusterInfoList = /*@__PURE__*/ __L.at(__c10, 6) as any as S.Schema<ClusterInfoList>;
+
 /** Information about a single iteration of the training run. */
 export interface IterationResult {
   /** Learn rate used for this iteration. */
@@ -815,7 +1127,11 @@ export interface IterationResult {
   /** Time taken to run the iteration in milliseconds. */
   durationMs?: string;
 }
+const IterationResult = /*@__PURE__*/ __L.at(__c10, 7) as any as S.Schema<IterationResult>;
+
 export type IterationResultList = Array<IterationResult>;
+const IterationResultList = /*@__PURE__*/ __L.at(__c11, 0) as any as S.Schema<IterationResultList>;
+
 export type MlStatisticsModelTypeEnum =
   | "MODEL_TYPE_UNSPECIFIED"
   | "LINEAR_REGRESSION"
@@ -843,17 +1159,25 @@ export type MlStatisticsModelTypeEnum =
   | "ONNX"
   | "TRANSFORM_ONLY"
   | "CONTRIBUTION_ANALYSIS";
+const MlStatisticsModelTypeEnum = S.String;
+
 export type MlStatisticsTrainingTypeEnum =
   | "TRAINING_TYPE_UNSPECIFIED"
   | "SINGLE_TRAINING"
   | "HPARAM_TUNING";
+const MlStatisticsTrainingTypeEnum = S.String;
+
 export type TrainingOptionsFeedbackTypeEnum = "FEEDBACK_TYPE_UNSPECIFIED" | "IMPLICIT" | "EXPLICIT";
+const TrainingOptionsFeedbackTypeEnum = S.String;
+
 export type TrainingOptionsTreeMethodEnum =
   | "TREE_METHOD_UNSPECIFIED"
   | "AUTO"
   | "EXACT"
   | "APPROX"
   | "HIST";
+const TrainingOptionsTreeMethodEnum = S.String;
+
 export type TrainingOptionsHolidayRegionsItemEnum =
   | "HOLIDAY_REGION_UNSPECIFIED"
   | "GLOBAL"
@@ -927,6 +1251,9 @@ export type TrainingOptionsHolidayRegionsItemEnum =
 export type TrainingOptionsHolidayRegionsItemEnumList = Array<
   TrainingOptionsHolidayRegionsItemEnum | (string & {})
 >;
+const TrainingOptionsHolidayRegionsItemEnumList =
+  ArimaModelInfoSeasonalPeriodsItemEnumList as any as S.Schema<TrainingOptionsHolidayRegionsItemEnumList>;
+
 export type TrainingOptionsDataSplitMethodEnum =
   | "DATA_SPLIT_METHOD_UNSPECIFIED"
   | "RANDOM"
@@ -934,11 +1261,17 @@ export type TrainingOptionsDataSplitMethodEnum =
   | "SEQUENTIAL"
   | "NO_SPLIT"
   | "AUTO_SPLIT";
+const TrainingOptionsDataSplitMethodEnum = S.String;
+
 export type TrainingOptionsLearnRateStrategyEnum =
   | "LEARN_RATE_STRATEGY_UNSPECIFIED"
   | "LINE_SEARCH"
   | "CONSTANT";
+const TrainingOptionsLearnRateStrategyEnum = S.String;
+
 export type TrainingOptionsBoosterTypeEnum = "BOOSTER_TYPE_UNSPECIFIED" | "GBTREE" | "DART";
+const TrainingOptionsBoosterTypeEnum = S.String;
+
 export type TrainingOptionsHparamTuningObjectivesItemEnum =
   | "HPARAM_TUNING_OBJECTIVE_UNSPECIFIED"
   | "MEAN_ABSOLUTE_ERROR"
@@ -960,17 +1293,26 @@ export type TrainingOptionsHparamTuningObjectivesItemEnum =
 export type TrainingOptionsHparamTuningObjectivesItemEnumList = Array<
   TrainingOptionsHparamTuningObjectivesItemEnum | (string & {})
 >;
+const TrainingOptionsHparamTuningObjectivesItemEnumList =
+  ArimaModelInfoSeasonalPeriodsItemEnumList as any as S.Schema<TrainingOptionsHparamTuningObjectivesItemEnumList>;
+
 export type TrainingOptionsPcaSolverEnum = "UNSPECIFIED" | "FULL" | "RANDOMIZED" | "AUTO";
+const TrainingOptionsPcaSolverEnum = S.String;
+
 export type TrainingOptionsKmeansInitializationMethodEnum =
   | "KMEANS_INITIALIZATION_METHOD_UNSPECIFIED"
   | "RANDOM"
   | "CUSTOM"
   | "KMEANS_PLUS_PLUS";
+const TrainingOptionsKmeansInitializationMethodEnum = S.String;
+
 export type TrainingOptionsReservationAffinityTypeEnum =
   | "RESERVATION_AFFINITY_TYPE_UNSPECIFIED"
   | "NO_RESERVATION"
   | "ANY_RESERVATION"
   | "SPECIFIC_RESERVATION";
+const TrainingOptionsReservationAffinityTypeEnum = S.String;
+
 export type TrainingOptionsHolidayRegionEnum =
   | "HOLIDAY_REGION_UNSPECIFIED"
   | "GLOBAL"
@@ -1041,11 +1383,17 @@ export type TrainingOptionsHolidayRegionEnum =
   | "VE"
   | "VN"
   | "ZA";
+const TrainingOptionsHolidayRegionEnum = S.String;
+
 export type DoubleMap = { [key: string]: number | undefined };
+const DoubleMap = /*@__PURE__*/ __L.at(__c11, 1) as any as S.Schema<DoubleMap>;
+
 export type TrainingOptionsLossTypeEnum =
   | "LOSS_TYPE_UNSPECIFIED"
   | "MEAN_SQUARED_LOSS"
   | "MEAN_LOG_LOSS";
+const TrainingOptionsLossTypeEnum = S.String;
+
 export type TrainingOptionsDataFrequencyEnum =
   | "DATA_FREQUENCY_UNSPECIFIED"
   | "AUTO_FREQUENCY"
@@ -1056,11 +1404,17 @@ export type TrainingOptionsDataFrequencyEnum =
   | "DAILY"
   | "HOURLY"
   | "PER_MINUTE";
+const TrainingOptionsDataFrequencyEnum = S.String;
+
 export type TrainingOptionsDartNormalizeTypeEnum =
   | "DART_NORMALIZE_TYPE_UNSPECIFIED"
   | "TREE"
   | "FOREST";
+const TrainingOptionsDartNormalizeTypeEnum = S.String;
+
 export type TrainingOptionsDistanceTypeEnum = "DISTANCE_TYPE_UNSPECIFIED" | "EUCLIDEAN" | "COSINE";
+const TrainingOptionsDistanceTypeEnum = S.String;
+
 export type TrainingOptionsColorSpaceEnum =
   | "COLOR_SPACE_UNSPECIFIED"
   | "RGB"
@@ -1068,16 +1422,24 @@ export type TrainingOptionsColorSpaceEnum =
   | "YIQ"
   | "YUV"
   | "GRAYSCALE";
+const TrainingOptionsColorSpaceEnum = S.String;
+
 export type TrainingOptionsModelRegistryEnum = "MODEL_REGISTRY_UNSPECIFIED" | "VERTEX_AI";
+const TrainingOptionsModelRegistryEnum = S.String;
+
 export type TrainingOptionsOptimizationStrategyEnum =
   | "OPTIMIZATION_STRATEGY_UNSPECIFIED"
   | "BATCH_GRADIENT_DESCENT"
   | "NORMAL_EQUATION";
+const TrainingOptionsOptimizationStrategyEnum = S.String;
+
 export type TrainingOptionsCategoryEncodingMethodEnum =
   | "ENCODING_METHOD_UNSPECIFIED"
   | "ONE_HOT_ENCODING"
   | "LABEL_ENCODING"
   | "DUMMY_ENCODING";
+const TrainingOptionsCategoryEncodingMethodEnum = S.String;
+
 /** Options used in model training. */
 export interface TrainingOptions {
   /** Feedback type that specifies which algorithm to run for matrix factorization. */
@@ -1283,6 +1645,8 @@ export interface TrainingOptions {
   /** Number of integral steps for the integrated gradients explain method. */
   integratedGradientsNumSteps?: string;
 }
+const TrainingOptions = /*@__PURE__*/ __L.at(__c11, 2) as any as S.Schema<TrainingOptions>;
+
 /** A single entry in the confusion matrix. */
 export interface Entry {
   /** Number of items being predicted as this label. */
@@ -1290,7 +1654,11 @@ export interface Entry {
   /** The predicted label. For confidence_threshold > 0, we will also add an entry indicating the number of items under the confidence threshold. */
   predictedLabel?: string;
 }
+const Entry = /*@__PURE__*/ __L.at(__c11, 3) as any as S.Schema<Entry>;
+
 export type EntryList = Array<Entry>;
+const EntryList = /*@__PURE__*/ __L.at(__c11, 4) as any as S.Schema<EntryList>;
+
 /** A single row in the confusion matrix. */
 export interface Row {
   /** Info describing predicted label distribution. */
@@ -1298,7 +1666,11 @@ export interface Row {
   /** The original label of this row. */
   actualLabel?: string;
 }
+const Row = /*@__PURE__*/ __L.at(__c11, 5) as any as S.Schema<Row>;
+
 export type RowList = Array<Row>;
+const RowList = /*@__PURE__*/ __L.at(__c11, 6) as any as S.Schema<RowList>;
+
 /** Confusion matrix for multi-class classification models. */
 export interface ConfusionMatrix {
   /** Confidence threshold used when computing the entries of the confusion matrix. */
@@ -1306,7 +1678,11 @@ export interface ConfusionMatrix {
   /** One row per actual label. */
   rows?: RowList;
 }
+const ConfusionMatrix = /*@__PURE__*/ __L.at(__c11, 7) as any as S.Schema<ConfusionMatrix>;
+
 export type ConfusionMatrixList = Array<ConfusionMatrix>;
+const ConfusionMatrixList = /*@__PURE__*/ __L.at(__c12, 0) as any as S.Schema<ConfusionMatrixList>;
+
 /** Aggregate metrics for classification/classifier models. For multi-class models, the metrics are either macro-averaged or micro-averaged. When macro-averaged, the metrics are calculated for each label and then an unweighted average is taken of those values. When micro-averaged, the metric is calculated globally by counting the total number of correctly predicted rows. */
 export interface AggregateClassificationMetrics {
   /** Area Under a ROC Curve. For multiclass this is a macro-averaged metric. */
@@ -1324,6 +1700,11 @@ export interface AggregateClassificationMetrics {
   /** Logarithmic Loss. For multiclass this is a macro-averaged metric. */
   logLoss?: number;
 }
+const AggregateClassificationMetrics = /*@__PURE__*/ __L.at(
+  __c12,
+  1,
+) as any as S.Schema<AggregateClassificationMetrics>;
+
 /** Evaluation metrics for multi-class classification/classifier models. */
 export interface MultiClassClassificationMetrics {
   /** Confusion matrix at different thresholds. */
@@ -1331,11 +1712,21 @@ export interface MultiClassClassificationMetrics {
   /** Aggregate classification metrics. */
   aggregateClassificationMetrics?: AggregateClassificationMetrics;
 }
+const MultiClassClassificationMetrics = /*@__PURE__*/ __L.at(
+  __c12,
+  2,
+) as any as S.Schema<MultiClassClassificationMetrics>;
+
 /** Model evaluation metrics for dimensionality reduction models. */
 export interface DimensionalityReductionMetrics {
   /** Total percentage of variance explained by the selected principal components. */
   totalExplainedVarianceRatio?: number;
 }
+const DimensionalityReductionMetrics = /*@__PURE__*/ __L.at(
+  __c12,
+  3,
+) as any as S.Schema<DimensionalityReductionMetrics>;
+
 /** Represents the count of a single category within the cluster. */
 export interface CategoryCount {
   /** The name of category. */
@@ -1343,12 +1734,18 @@ export interface CategoryCount {
   /** The count of training samples matching the category within the cluster. */
   count?: string;
 }
+const CategoryCount = /*@__PURE__*/ __L.at(__c12, 4) as any as S.Schema<CategoryCount>;
+
 export type CategoryCountList = Array<CategoryCount>;
+const CategoryCountList = /*@__PURE__*/ __L.at(__c12, 5) as any as S.Schema<CategoryCountList>;
+
 /** Representative value of a categorical feature. */
 export interface CategoricalValue {
   /** Counts of all categories for the categorical feature. If there are more than ten categories, we return top ten (by count) and return one more CategoryCount with category "_OTHER_" and count as aggregate counts of remaining categories. */
   categoryCounts?: CategoryCountList;
 }
+const CategoricalValue = /*@__PURE__*/ __L.at(__c12, 6) as any as S.Schema<CategoricalValue>;
+
 /** Representative value of a single feature within the cluster. */
 export interface FeatureValue {
   /** The numerical feature value. This is the centroid value for this feature. */
@@ -1358,7 +1755,11 @@ export interface FeatureValue {
   /** The categorical feature value. */
   categoricalValue?: CategoricalValue;
 }
+const FeatureValue = /*@__PURE__*/ __L.at(__c12, 7) as any as S.Schema<FeatureValue>;
+
 export type FeatureValueList = Array<FeatureValue>;
+const FeatureValueList = /*@__PURE__*/ __L.at(__c13, 0) as any as S.Schema<FeatureValueList>;
+
 /** Message containing the information about one cluster. */
 export interface Cluster {
   /** Centroid id. */
@@ -1368,7 +1769,11 @@ export interface Cluster {
   /** Count of training data rows that were assigned to this cluster. */
   count?: string;
 }
+const Cluster = /*@__PURE__*/ __L.at(__c13, 1) as any as S.Schema<Cluster>;
+
 export type ClusterList = Array<Cluster>;
+const ClusterList = /*@__PURE__*/ __L.at(__c13, 2) as any as S.Schema<ClusterList>;
+
 /** Evaluation metrics for clustering models. */
 export interface ClusteringMetrics {
   /** Mean of squared distances between each sample to its cluster centroid. */
@@ -1378,7 +1783,14 @@ export interface ClusteringMetrics {
   /** Davies-Bouldin index. */
   daviesBouldinIndex?: number;
 }
+const ClusteringMetrics = /*@__PURE__*/ __L.at(__c13, 3) as any as S.Schema<ClusteringMetrics>;
+
 export type ArimaFittingMetricsList = Array<ArimaFittingMetrics>;
+const ArimaFittingMetricsList = /*@__PURE__*/ __L.at(
+  __c13,
+  4,
+) as any as S.Schema<ArimaFittingMetricsList>;
+
 export type ArimaSingleModelForecastingMetricsSeasonalPeriodsItemEnum =
   | "SEASONAL_PERIOD_TYPE_UNSPECIFIED"
   | "NO_SEASONALITY"
@@ -1391,6 +1803,9 @@ export type ArimaSingleModelForecastingMetricsSeasonalPeriodsItemEnum =
 export type ArimaSingleModelForecastingMetricsSeasonalPeriodsItemEnumList = Array<
   ArimaSingleModelForecastingMetricsSeasonalPeriodsItemEnum | (string & {})
 >;
+const ArimaSingleModelForecastingMetricsSeasonalPeriodsItemEnumList =
+  ArimaModelInfoSeasonalPeriodsItemEnumList as any as S.Schema<ArimaSingleModelForecastingMetricsSeasonalPeriodsItemEnumList>;
+
 /** Model evaluation metrics for a single ARIMA forecasting model. */
 export interface ArimaSingleModelForecastingMetrics {
   /** Is arima model fitted with drift or not. It is always false when d is not 1. */
@@ -1412,9 +1827,23 @@ export interface ArimaSingleModelForecastingMetrics {
   /** Seasonal periods. Repeated because multiple periods are supported for one time series. */
   seasonalPeriods?: ArimaSingleModelForecastingMetricsSeasonalPeriodsItemEnumList;
 }
+const ArimaSingleModelForecastingMetrics = /*@__PURE__*/ __L.at(
+  __c13,
+  5,
+) as any as S.Schema<ArimaSingleModelForecastingMetrics>;
+
 export type ArimaSingleModelForecastingMetricsList = Array<ArimaSingleModelForecastingMetrics>;
+const ArimaSingleModelForecastingMetricsList = /*@__PURE__*/ __L.at(
+  __c13,
+  6,
+) as any as S.Schema<ArimaSingleModelForecastingMetricsList>;
+
 export type BooleanList = Array<boolean>;
+const BooleanList = /*@__PURE__*/ __L.at(__c13, 7) as any as S.Schema<BooleanList>;
+
 export type ArimaOrderList = Array<ArimaOrder>;
+const ArimaOrderList = /*@__PURE__*/ __L.at(__c14, 0) as any as S.Schema<ArimaOrderList>;
+
 export type ArimaForecastingMetricsSeasonalPeriodsItemEnum =
   | "SEASONAL_PERIOD_TYPE_UNSPECIFIED"
   | "NO_SEASONALITY"
@@ -1427,6 +1856,9 @@ export type ArimaForecastingMetricsSeasonalPeriodsItemEnum =
 export type ArimaForecastingMetricsSeasonalPeriodsItemEnumList = Array<
   ArimaForecastingMetricsSeasonalPeriodsItemEnum | (string & {})
 >;
+const ArimaForecastingMetricsSeasonalPeriodsItemEnumList =
+  ArimaModelInfoSeasonalPeriodsItemEnumList as any as S.Schema<ArimaForecastingMetricsSeasonalPeriodsItemEnumList>;
+
 /** Model evaluation metrics for ARIMA forecasting models. */
 export interface ArimaForecastingMetrics {
   /** Arima model fitting metrics. */
@@ -1442,6 +1874,11 @@ export interface ArimaForecastingMetrics {
   /** Seasonal periods. Repeated because multiple periods are supported for one time series. */
   seasonalPeriods?: ArimaForecastingMetricsSeasonalPeriodsItemEnumList;
 }
+const ArimaForecastingMetrics = /*@__PURE__*/ __L.at(
+  __c14,
+  1,
+) as any as S.Schema<ArimaForecastingMetrics>;
+
 /** Evaluation metrics used by weighted-ALS models specified by feedback_type=implicit. */
 export interface RankingMetrics {
   /** Calculates a precision per user for all the items by ranking them and then averages all the precisions across all the users. */
@@ -1453,6 +1890,8 @@ export interface RankingMetrics {
   /** Similar to the mean squared error computed in regression and explicit recommendation models except instead of computing the rating directly, the output from evaluate is computed against a preference which is 1 or 0 depending on if the rating exists or not. */
   meanSquaredError?: number;
 }
+const RankingMetrics = /*@__PURE__*/ __L.at(__c14, 2) as any as S.Schema<RankingMetrics>;
+
 /** Confusion matrix for binary classification models. */
 export interface BinaryConfusionMatrix {
   /** The fraction of actual positive labels that were given a positive prediction. */
@@ -1474,7 +1913,17 @@ export interface BinaryConfusionMatrix {
   /** Number of true samples predicted as false. */
   trueNegatives?: string;
 }
+const BinaryConfusionMatrix = /*@__PURE__*/ __L.at(
+  __c14,
+  3,
+) as any as S.Schema<BinaryConfusionMatrix>;
+
 export type BinaryConfusionMatrixList = Array<BinaryConfusionMatrix>;
+const BinaryConfusionMatrixList = /*@__PURE__*/ __L.at(
+  __c14,
+  4,
+) as any as S.Schema<BinaryConfusionMatrixList>;
+
 /** Evaluation metrics for binary classification/classifier models. */
 export interface BinaryClassificationMetrics {
   /** Aggregate classification metrics. */
@@ -1486,6 +1935,11 @@ export interface BinaryClassificationMetrics {
   /** Label representing the positive class. */
   positiveLabel?: string;
 }
+const BinaryClassificationMetrics = /*@__PURE__*/ __L.at(
+  __c14,
+  5,
+) as any as S.Schema<BinaryClassificationMetrics>;
+
 /** Evaluation metrics for regression and explicit feedback type matrix factorization models. */
 export interface RegressionMetrics {
   /** Mean squared log error. */
@@ -1499,6 +1953,8 @@ export interface RegressionMetrics {
   /** R^2 score. This corresponds to r2_score in ML.EVALUATE. */
   rSquared?: number;
 }
+const RegressionMetrics = /*@__PURE__*/ __L.at(__c14, 6) as any as S.Schema<RegressionMetrics>;
+
 /** Evaluation metrics of a model. These are either computed on all training data or just the eval data based on whether eval data was used during training. These are not present for imported models. */
 export interface EvaluationMetrics {
   /** Populated for multi-class classification/classifier models. */
@@ -1516,6 +1972,8 @@ export interface EvaluationMetrics {
   /** Populated for regression models and explicit feedback type matrix factorization models. */
   regressionMetrics?: RegressionMetrics;
 }
+const EvaluationMetrics = /*@__PURE__*/ __L.at(__c14, 7) as any as S.Schema<EvaluationMetrics>;
+
 export type HparamTuningTrialStatusEnum =
   | "TRIAL_STATUS_UNSPECIFIED"
   | "NOT_STARTED"
@@ -1524,6 +1982,8 @@ export type HparamTuningTrialStatusEnum =
   | "FAILED"
   | "INFEASIBLE"
   | "STOPPED_EARLY";
+const HparamTuningTrialStatusEnum = S.String;
+
 /** Training info of a trial in [hyperparameter tuning](https://cloud.google.com/bigquery-ml/docs/reference/standard-sql/bigqueryml-syntax-hp-tuning-overview) models. */
 export interface HparamTuningTrial {
   /** The hyperprameters selected for this trial. */
@@ -1547,7 +2007,14 @@ export interface HparamTuningTrial {
   /** Loss computed on the training data at the end of trial. */
   trainingLoss?: number;
 }
+const HparamTuningTrial = /*@__PURE__*/ __L.at(__c15, 0) as any as S.Schema<HparamTuningTrial>;
+
 export type HparamTuningTrialList = Array<HparamTuningTrial>;
+const HparamTuningTrialList = /*@__PURE__*/ __L.at(
+  __c15,
+  1,
+) as any as S.Schema<HparamTuningTrialList>;
+
 /** Job statistics specific to a BigQuery ML training job. */
 export interface MlStatistics {
   /** Results for all completed iterations. Empty for [hyperparameter tuning jobs](https://cloud.google.com/bigquery-ml/docs/reference/standard-sql/bigqueryml-syntax-hp-tuning-overview). */
@@ -1561,15 +2028,21 @@ export interface MlStatistics {
   /** Output only. Maximum number of iterations specified as max_iterations in the 'CREATE MODEL' query. The actual number of iterations may be less than this number due to early stop. */
   maxIterations?: string;
 }
+const MlStatistics = /*@__PURE__*/ __L.at(__c15, 2) as any as S.Schema<MlStatistics>;
+
 export type DmlStatisticsFineGrainedDmlUnusedReasonEnum =
   | "FINE_GRAINED_DML_UNUSED_REASON_UNSPECIFIED"
   | "MAX_PARTITION_SIZE_EXCEEDED"
   | "TABLE_NOT_ENROLLED"
   | "DML_IN_MULTI_STATEMENT_TRANSACTION";
+const DmlStatisticsFineGrainedDmlUnusedReasonEnum = S.String;
+
 export type DmlStatisticsDmlModeEnum =
   | "DML_MODE_UNSPECIFIED"
   | "COARSE_GRAINED_DML"
   | "FINE_GRAINED_DML";
+const DmlStatisticsDmlModeEnum = S.String;
+
 /** Detailed statistics for DML statements */
 export interface DmlStatistics {
   /** Output only. Reason for disabling fine-grained DML if applicable. */
@@ -1583,6 +2056,8 @@ export interface DmlStatistics {
   /** Output only. Number of deleted Rows. populated by DML DELETE, MERGE and TRUNCATE statements. */
   deletedRowCount?: string;
 }
+const DmlStatistics = /*@__PURE__*/ __L.at(__c15, 3) as any as S.Schema<DmlStatistics>;
+
 /** Id path of a property graph. */
 export interface PropertyGraphReference {
   /** Required. The ID of the property graph. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 256 characters. */
@@ -1592,8 +2067,23 @@ export interface PropertyGraphReference {
   /** Required. The ID of the dataset containing this property graph. */
   datasetId?: string;
 }
+const PropertyGraphReference = /*@__PURE__*/ __L.at(
+  __c15,
+  4,
+) as any as S.Schema<PropertyGraphReference>;
+
 export type PropertyGraphReferenceList = Array<PropertyGraphReference>;
+const PropertyGraphReferenceList = /*@__PURE__*/ __L.at(
+  __c15,
+  5,
+) as any as S.Schema<PropertyGraphReferenceList>;
+
 export type QueryParameterValueList = Array<QueryParameterValue>;
+const QueryParameterValueList = /*@__PURE__*/ __L.at(
+  __c15,
+  6,
+) as any as S.Schema<QueryParameterValueList>;
+
 /** Represents the value of a range. */
 export interface RangeValue {
   /** Optional. The end value of the range. A missing value represents an unbounded end. */
@@ -1601,7 +2091,14 @@ export interface RangeValue {
   /** Optional. The start value of the range. A missing value represents an unbounded start. */
   start?: QueryParameterValue;
 }
+const RangeValue = /*@__PURE__*/ __L.at(__c15, 7) as any as S.Schema<RangeValue>;
+
 export type QueryParameterValueMap = { [key: string]: QueryParameterValue | undefined };
+const QueryParameterValueMap = /*@__PURE__*/ __L.at(
+  __c16,
+  0,
+) as any as S.Schema<QueryParameterValueMap>;
+
 /** The value of a query parameter. */
 export interface QueryParameterValue {
   /** Optional. The array values, if this is an array type. */
@@ -1613,6 +2110,8 @@ export interface QueryParameterValue {
   /** The struct field values. */
   structValues?: QueryParameterValueMap;
 }
+const QueryParameterValue = /*@__PURE__*/ __L.at(__c16, 1) as any as S.Schema<QueryParameterValue>;
+
 export interface QueryParameterTypeStructTypesItem {
   /** Required. The type of this field. */
   type?: QueryParameterType;
@@ -1621,7 +2120,17 @@ export interface QueryParameterTypeStructTypesItem {
   /** Optional. The name of this field. */
   name?: string;
 }
+const QueryParameterTypeStructTypesItem = /*@__PURE__*/ __L.at(
+  __c16,
+  2,
+) as any as S.Schema<QueryParameterTypeStructTypesItem>;
+
 export type QueryParameterTypeStructTypesItemList = Array<QueryParameterTypeStructTypesItem>;
+const QueryParameterTypeStructTypesItemList = /*@__PURE__*/ __L.at(
+  __c16,
+  3,
+) as any as S.Schema<QueryParameterTypeStructTypesItemList>;
+
 /** The type of a query parameter. */
 export interface QueryParameterType {
   /** Optional. Precision (maximum number of total digits in base 10) for seconds of TIMESTAMP type. Possible values include: * 6 (Default, for TIMESTAMP type with microsecond precision) * 12 (For TIMESTAMP type with picosecond precision) */
@@ -1635,6 +2144,8 @@ export interface QueryParameterType {
   /** Required. The top level type of this field. */
   type?: string;
 }
+const QueryParameterType = /*@__PURE__*/ __L.at(__c16, 4) as any as S.Schema<QueryParameterType>;
+
 /** A parameter given to a query. */
 export interface QueryParameter {
   /** Optional. If unset, this is a positional parameter. Otherwise, should be unique within a query. */
@@ -1644,34 +2155,64 @@ export interface QueryParameter {
   /** Required. The type of this parameter. */
   parameterType?: QueryParameterType;
 }
+const QueryParameter = /*@__PURE__*/ __L.at(__c16, 5) as any as S.Schema<QueryParameter>;
+
 export type QueryParameterList = Array<QueryParameter>;
+const QueryParameterList = /*@__PURE__*/ __L.at(__c16, 6) as any as S.Schema<QueryParameterList>;
+
 /** Data policy option. For more information, see [Mask data by applying data policies to a column](https://docs.cloud.google.com/bigquery/docs/column-data-masking#data-policies-on-column). */
 export interface DataPolicyOption {
   /** Data policy resource name in the form of projects/project_id/locations/location_id/dataPolicies/data_policy_id. */
   name?: string;
 }
+const DataPolicyOption = /*@__PURE__*/ __L.at(__c16, 7) as any as S.Schema<DataPolicyOption>;
+
 export type DataPolicyOptionList = Array<DataPolicyOption>;
+const DataPolicyOptionList = /*@__PURE__*/ __L.at(
+  __c17,
+  0,
+) as any as S.Schema<DataPolicyOptionList>;
+
 /** A list of data policy options. For more information, see [Mask data by applying data policies to a column](https://docs.cloud.google.com/bigquery/docs/column-data-masking#data-policies-on-column). */
 export interface DataPolicyList {
   /** Contains a list of data policy options. At most 9 data policies are allowed per field. */
   dataPolicies?: DataPolicyOptionList;
 }
+const DataPolicyList = /*@__PURE__*/ __L.at(__c17, 1) as any as S.Schema<DataPolicyList>;
+
 export type TableFieldSchemaRoundingModeEnum =
   | "ROUNDING_MODE_UNSPECIFIED"
   | "ROUND_HALF_AWAY_FROM_ZERO"
   | "ROUND_HALF_EVEN";
+const TableFieldSchemaRoundingModeEnum = S.String;
+
 export interface TableFieldSchemaDataGovernanceTagsInfo {
   /** Optional. The data governance tags added to this field are used for field-level access control. Only one data governance tag is currently supported on a field. Tag keys are globally unique. Tag key is expected to be in the namespaced format, for example "parent-id/pii" where parent-id is the ID of the parent organization or project resource for this tag key. Tag value is expected to be the short name, for example "sensitive". See [Tag definitions](https://cloud.google.com/iam/docs/tags-access-control#definitions) for more details. For example: "parent-id/pii": "sensitive", "myProject/cost_center": "sales" */
   dataGovernanceTags?: StringMap;
 }
+const TableFieldSchemaDataGovernanceTagsInfo = /*@__PURE__*/ __L.at(
+  __c17,
+  2,
+) as any as S.Schema<TableFieldSchemaDataGovernanceTagsInfo>;
+
 export interface TableFieldSchemaCategories {
   /** Deprecated. */
   names?: StringList;
 }
+const TableFieldSchemaCategories = /*@__PURE__*/ __L.at(
+  __c17,
+  3,
+) as any as S.Schema<TableFieldSchemaCategories>;
+
 export interface TableFieldSchemaRangeElementType {
   /** Required. The type of a field element. For more information, see TableFieldSchema.type. */
   type?: string;
 }
+const TableFieldSchemaRangeElementType = /*@__PURE__*/ __L.at(
+  __c17,
+  4,
+) as any as S.Schema<TableFieldSchemaRangeElementType>;
+
 /** Definition of the expression used to generate the field. */
 export interface GeneratedExpressionInfo {
   /** Optional. Whether the generated column is stored in the table. */
@@ -1681,10 +2222,17 @@ export interface GeneratedExpressionInfo {
   /** Optional. Whether the column generation is done asynchronously. */
   asynchronous?: boolean;
 }
+const GeneratedExpressionInfo = /*@__PURE__*/ __L.at(
+  __c17,
+  5,
+) as any as S.Schema<GeneratedExpressionInfo>;
+
 export type GeneratedColumnGeneratedModeEnum =
   | "GENERATED_MODE_UNSPECIFIED"
   | "GENERATED_ALWAYS"
   | "GENERATED_BY_DEFAULT";
+const GeneratedColumnGeneratedModeEnum = S.String;
+
 /** Optional. Definition of how values are generated for the field. Only valid for top-level schema fields (not nested fields). */
 export interface GeneratedColumn {
   /** Definition of the expression used to generate the field. */
@@ -1692,10 +2240,15 @@ export interface GeneratedColumn {
   /** Optional. Dictates when system generated values are used to populate the field. */
   generatedMode?: GeneratedColumnGeneratedModeEnum | (string & {});
 }
+const GeneratedColumn = /*@__PURE__*/ __L.at(__c17, 6) as any as S.Schema<GeneratedColumn>;
+
 export interface TableFieldSchemaPolicyTags {
   /** A list of policy tag resource names. For example, "projects/1/locations/eu/taxonomies/2/policyTags/3". At most 1 policy tag is currently allowed. */
   names?: StringList;
 }
+const TableFieldSchemaPolicyTags =
+  TableFieldSchemaCategories as any as S.Schema<TableFieldSchemaPolicyTags>;
+
 /** A field in TableSchema */
 export interface TableFieldSchema {
   /** Optional. Specifies data policies attached to this field, used for field-level access control. When set, this will be the source of truth for data policy information. */
@@ -1739,13 +2292,24 @@ export interface TableFieldSchema {
   /** Optional. Field collation can be set only when the type of field is STRING. The following values are supported: * 'und:ci': undetermined locale, case insensitive. * '': empty string. Default to case-sensitive behavior. */
   collation?: string;
 }
+const TableFieldSchema = /*@__PURE__*/ __L.at(__c17, 7) as any as S.Schema<TableFieldSchema>;
+
 export type TableFieldSchemaList = Array<TableFieldSchema>;
+const TableFieldSchemaList = /*@__PURE__*/ __L.at(
+  __c18,
+  0,
+) as any as S.Schema<TableFieldSchemaList>;
+
 export type ForeignTypeInfoTypeSystemEnum = "TYPE_SYSTEM_UNSPECIFIED" | "HIVE";
+const ForeignTypeInfoTypeSystemEnum = S.String;
+
 /** Metadata about the foreign data type definition such as the system in which the type is defined. */
 export interface ForeignTypeInfo {
   /** Required. Specifies the system which defines the foreign data type. */
   typeSystem?: ForeignTypeInfoTypeSystemEnum | (string & {});
 }
+const ForeignTypeInfo = /*@__PURE__*/ __L.at(__c18, 1) as any as S.Schema<ForeignTypeInfo>;
+
 /** Schema of a table */
 export interface TableSchema {
   /** Describes the fields in a table. */
@@ -1753,6 +2317,8 @@ export interface TableSchema {
   /** Optional. Specifies metadata of the foreign data type definition in field schema (TableFieldSchema.foreign_type_definition). */
   foreignTypeInfo?: ForeignTypeInfo;
 }
+const TableSchema = /*@__PURE__*/ __L.at(__c18, 2) as any as S.Schema<TableSchema>;
+
 /** Statistics for a query job. */
 export interface JobStatistics2 {
   /** Output only. Statistics related to GenAI usage in the query. */
@@ -1856,6 +2422,8 @@ export interface JobStatistics2 {
   /** Output only. For dry-run jobs, totalBytesProcessed is an estimate and this field specifies the accuracy of the estimate. Possible values can be: UNKNOWN: accuracy of the estimate is unknown. PRECISE: estimate is precise. LOWER_BOUND: estimate is lower bound of what the query would cost. UPPER_BOUND: estimate is upper bound of what the query would cost. */
   totalBytesProcessedAccuracy?: string;
 }
+const JobStatistics2 = /*@__PURE__*/ __L.at(__c18, 3) as any as S.Schema<JobStatistics2>;
+
 /** Statistics for a load job. */
 export interface JobStatistics3 {
   /** Output only. Number of bytes of source data in a load job. */
@@ -1871,20 +2439,31 @@ export interface JobStatistics3 {
   /** Output only. The number of bad records encountered. Note that if the job has failed because of more bad records encountered than the maximum allowed in the load job configuration, then this number can be less than the total number of bad records present in the input data. */
   badRecords?: string;
 }
+const JobStatistics3 = /*@__PURE__*/ __L.at(__c18, 4) as any as S.Schema<JobStatistics3>;
+
 /** Statistics for data-masking. */
 export interface DataMaskingStatistics {
   /** Whether any accessed data was protected by the data masking. */
   dataMaskingApplied?: boolean;
 }
+const DataMaskingStatistics = /*@__PURE__*/ __L.at(
+  __c18,
+  5,
+) as any as S.Schema<DataMaskingStatistics>;
+
 /** [Alpha] Information of a multi-statement transaction. */
 export interface TransactionInfo {
   /** Output only. [Alpha] Id of the transaction. */
   transactionId?: string;
 }
+const TransactionInfo = /*@__PURE__*/ __L.at(__c18, 6) as any as S.Schema<TransactionInfo>;
+
 export type ScriptStatisticsEvaluationKindEnum =
   | "EVALUATION_KIND_UNSPECIFIED"
   | "STATEMENT"
   | "EXPRESSION";
+const ScriptStatisticsEvaluationKindEnum = S.String;
+
 /** Represents the location of the statement/expression being evaluated. Line and column numbers are defined as follows: - Line and column numbers start with one. That is, line 1 column 1 denotes the start of the script. - When inside a stored procedure, all line/column numbers are relative to the procedure body, not the script in which the procedure was defined. - Start/end positions exclude leading/trailing comments and whitespace. The end position always ends with a ";", when present. - Multi-byte Unicode characters are treated as just one column. - If the original script (or procedure definition) contains TAB characters, a tab "snaps" the indentation forward to the nearest multiple of 8 characters, plus 1. For example, a TAB on column 1, 2, 3, 4, 5, 6 , or 8 will advance the next character to column 9. A TAB on column 9, 10, 11, 12, 13, 14, 15, or 16 will advance the next character to column 17. */
 export interface ScriptStackFrame {
   /** Output only. One-based end column. */
@@ -1900,7 +2479,14 @@ export interface ScriptStackFrame {
   /** Output only. One-based start column. */
   startColumn?: number;
 }
+const ScriptStackFrame = /*@__PURE__*/ __L.at(__c18, 7) as any as S.Schema<ScriptStackFrame>;
+
 export type ScriptStackFrameList = Array<ScriptStackFrame>;
+const ScriptStackFrameList = /*@__PURE__*/ __L.at(
+  __c19,
+  0,
+) as any as S.Schema<ScriptStackFrameList>;
+
 /** Job statistics specific to the child job of a script. */
 export interface ScriptStatistics {
   /** Whether this child job was a statement or expression. */
@@ -1908,18 +2494,27 @@ export interface ScriptStatistics {
   /** Stack trace showing the line/column/procedure name of each frame on the stack at the point where the current evaluation happened. The leaf frame is first, the primary script is last. Never empty. */
   stackFrames?: ScriptStackFrameList;
 }
+const ScriptStatistics = /*@__PURE__*/ __L.at(__c19, 1) as any as S.Schema<ScriptStatistics>;
+
 export type JobStatisticsReservationUsageItem = JobStatistics2ReservationUsageItem;
 export type JobStatisticsReservationUsageItemList = Array<JobStatistics2ReservationUsageItem>;
+const JobStatisticsReservationUsageItemList =
+  JobStatistics2ReservationUsageItemList as any as S.Schema<JobStatisticsReservationUsageItemList>;
+
 /** [Preview] Information related to sessions. */
 export interface SessionInfo {
   /** Output only. The id of the session. */
   sessionId?: string;
 }
+const SessionInfo = /*@__PURE__*/ __L.at(__c19, 2) as any as S.Schema<SessionInfo>;
+
 export type JobStatisticsEditionEnum =
   | "RESERVATION_EDITION_UNSPECIFIED"
   | "STANDARD"
   | "ENTERPRISE"
   | "ENTERPRISE_PLUS";
+const JobStatisticsEditionEnum = S.String;
+
 /** Statistics for an extract job. */
 export interface JobStatistics4 {
   /** Output only. Number of files per destination URI or URI pattern specified in the extract configuration. These values will be in the same order as the URIs specified in the 'destinationUris' field. */
@@ -1929,6 +2524,8 @@ export interface JobStatistics4 {
   /** Output only. Describes a timeline of job execution. */
   timeline?: QueryTimelineSampleList;
 }
+const JobStatistics4 = /*@__PURE__*/ __L.at(__c19, 3) as any as S.Schema<JobStatistics4>;
+
 /** Statistics for a copy job. */
 export interface JobStatistics5 {
   /** Output only. Destination region for a cross-region copy job. Not set for in-region copy jobs. */
@@ -1938,6 +2535,8 @@ export interface JobStatistics5 {
   /** Output only. Number of logical bytes copied to the destination table. */
   copiedLogicalBytes?: string;
 }
+const JobStatistics5 = /*@__PURE__*/ __L.at(__c19, 4) as any as S.Schema<JobStatistics5>;
+
 /** Statistics for a single job execution. */
 export interface JobStatistics {
   /** Output only. Total bytes processed for the job. */
@@ -1991,6 +2590,8 @@ export interface JobStatistics {
   /** Output only. Statistics for a copy job. */
   copy?: JobStatistics5;
 }
+const JobStatistics = /*@__PURE__*/ __L.at(__c19, 5) as any as S.Schema<JobStatistics>;
+
 /** Error details. */
 export interface ErrorProto {
   /** Debugging information. This property is internal to Google and should not be used. */
@@ -2002,7 +2603,11 @@ export interface ErrorProto {
   /** Specifies where the error occurred, if present. */
   location?: string;
 }
+const ErrorProto = /*@__PURE__*/ __L.at(__c19, 6) as any as S.Schema<ErrorProto>;
+
 export type ErrorProtoList = Array<ErrorProto>;
+const ErrorProtoList = /*@__PURE__*/ __L.at(__c19, 7) as any as S.Schema<ErrorProtoList>;
+
 export interface JobStatus {
   /** Output only. Running state of the job. Valid states include 'PENDING', 'RUNNING', and 'DONE'. */
   state?: string;
@@ -2011,6 +2616,8 @@ export interface JobStatus {
   /** Output only. Final error result of the job. If present, indicates that the job has completed and was unsuccessful. */
   errorResult?: ErrorProto;
 }
+const JobStatus = /*@__PURE__*/ __L.at(__c20, 0) as any as S.Schema<JobStatus>;
+
 /** Options for configuring hive partitioning detect. */
 export interface HivePartitioningOptions {
   /** Optional. When set, what mode of hive partitioning to use when reading data. The following modes are supported: * AUTO: automatically infer partition key name(s) and type(s). * STRINGS: automatically infer partition key name(s). All types are strings. * CUSTOM: partition key schema is encoded in the source URI prefix. Not all storage formats support hive partitioning. Requesting hive partitioning on an unsupported format will lead to an error. Currently supported formats are: JSON, CSV, ORC, Avro and Parquet. */
@@ -2022,7 +2629,14 @@ export interface HivePartitioningOptions {
   /** Optional. If set to true, queries over this table require a partition filter that can be used for partition elimination to be specified. Note that this field should only be true when creating a permanent external table or querying a temporary external table. Hive-partitioned loads with require_partition_filter explicitly set to true will fail. */
   requirePartitionFilter?: boolean;
 }
+const HivePartitioningOptions = /*@__PURE__*/ __L.at(
+  __c20,
+  1,
+) as any as S.Schema<HivePartitioningOptions>;
+
 export type ParquetOptionsMapTargetTypeEnum = "MAP_TARGET_TYPE_UNSPECIFIED" | "ARRAY_OF_STRUCT";
+const ParquetOptionsMapTargetTypeEnum = S.String;
+
 /** Parquet Options for load and make external tables. */
 export interface ParquetOptions {
   /** Optional. Indicates whether to use schema inference specifically for Parquet LIST logical type. */
@@ -2032,7 +2646,11 @@ export interface ParquetOptions {
   /** Optional. Indicates whether to infer Parquet ENUM logical type as STRING instead of BYTES by default. */
   enumAsString?: boolean;
 }
+const ParquetOptions = /*@__PURE__*/ __L.at(__c20, 2) as any as S.Schema<ParquetOptions>;
+
 export type JobConfigurationLoadJsonExtensionEnum = "JSON_EXTENSION_UNSPECIFIED" | "GEOJSON";
+const JobConfigurationLoadJsonExtensionEnum = S.String;
+
 /** A connection-level property to customize query behavior. Under JDBC, these correspond directly to connection properties passed to the DriverManager. Under ODBC, these correspond to properties in the connection string. Currently supported connection properties: * **dataset_project_id**: represents the default project for datasets that are used in the query. Setting the system variable `@@dataset_project_id` achieves the same behavior. For more information about system variables, see: https://cloud.google.com/bigquery/docs/reference/system-variables * **time_zone**: represents the default timezone used to run the query. * **session_id**: associates the query with a given session. * **query_label**: associates the query with a given job label. If set, all subsequent queries in a script or session will have this label. For the format in which a you can specify a query label, see labels in the JobConfiguration resource type: https://cloud.google.com/bigquery/docs/reference/rest/v2/Job#jobconfiguration * **service_account**: indicates the service account to use to run a continuous query. If set, the query job uses the service account to access Google Cloud resources. Service account access is bounded by the IAM permissions that you have granted to the service account. Additional properties are allowed, but ignored. Specifying multiple connection properties with the same key returns an error. */
 export interface ConnectionProperty {
   /** The value of the property to set. */
@@ -2040,11 +2658,20 @@ export interface ConnectionProperty {
   /** The key of the property to set. */
   key?: string;
 }
+const ConnectionProperty = /*@__PURE__*/ __L.at(__c20, 3) as any as S.Schema<ConnectionProperty>;
+
 export type ConnectionPropertyList = Array<ConnectionProperty>;
+const ConnectionPropertyList = /*@__PURE__*/ __L.at(
+  __c20,
+  4,
+) as any as S.Schema<ConnectionPropertyList>;
+
 export type JobConfigurationLoadSourceColumnMatchEnum =
   | "SOURCE_COLUMN_MATCH_UNSPECIFIED"
   | "POSITION"
   | "NAME";
+const JobConfigurationLoadSourceColumnMatchEnum = S.String;
+
 /** Properties for the destination table. */
 export interface DestinationTableProperties {
   /** Optional. The description for the destination table. This will only be used if the destination table is newly created. If the table already exists and a value different than the current description is provided, the job will fail. */
@@ -2056,6 +2683,11 @@ export interface DestinationTableProperties {
   /** Optional. The labels associated with this table. You can use these to organize and group your tables. This will only be used if the destination table is newly created. If the table already exists and labels are different than the current labels are provided, the job will fail. */
   labels?: StringMap;
 }
+const DestinationTableProperties = /*@__PURE__*/ __L.at(
+  __c20,
+  5,
+) as any as S.Schema<DestinationTableProperties>;
+
 export type JobConfigurationLoadDecimalTargetTypesItemEnum =
   | "DECIMAL_TARGET_TYPE_UNSPECIFIED"
   | "NUMERIC"
@@ -2064,24 +2696,38 @@ export type JobConfigurationLoadDecimalTargetTypesItemEnum =
 export type JobConfigurationLoadDecimalTargetTypesItemEnumList = Array<
   JobConfigurationLoadDecimalTargetTypesItemEnum | (string & {})
 >;
+const JobConfigurationLoadDecimalTargetTypesItemEnumList =
+  ArimaModelInfoSeasonalPeriodsItemEnumList as any as S.Schema<JobConfigurationLoadDecimalTargetTypesItemEnumList>;
+
 /** Configuration for Cloud KMS encryption settings. */
 export interface EncryptionConfiguration {
   /** Optional. Describes the Cloud KMS encryption key that will be used to protect destination BigQuery table. The BigQuery Service Account associated with your project requires access to this encryption key. */
   kmsKeyName?: string;
 }
+const EncryptionConfiguration = /*@__PURE__*/ __L.at(
+  __c20,
+  6,
+) as any as S.Schema<EncryptionConfiguration>;
+
 export type JobConfigurationLoadColumnNameCharacterMapEnum =
   | "COLUMN_NAME_CHARACTER_MAP_UNSPECIFIED"
   | "STRICT"
   | "V1"
   | "V2";
+const JobConfigurationLoadColumnNameCharacterMapEnum = S.String;
+
 /** Configures table clustering. */
 export interface Clustering {
   /** One or more fields on which data should be clustered. Only top-level, non-repeated, simple-type fields are supported. The ordering of the clustering fields should be prioritized from most to least important for filtering purposes. For additional information, see [Introduction to clustered tables](https://cloud.google.com/bigquery/docs/clustered-tables#limitations). */
   fields?: StringList;
 }
+const Clustering = /*@__PURE__*/ __L.at(__c20, 7) as any as S.Schema<Clustering>;
+
 export type JobConfigurationLoadFileSetSpecTypeEnum =
   | "FILE_SET_SPEC_TYPE_FILE_SYSTEM_MATCH"
   | "FILE_SET_SPEC_TYPE_NEW_LINE_DELIMITED_MANIFEST";
+const JobConfigurationLoadFileSetSpecTypeEnum = S.String;
+
 export interface TimePartitioning {
   /** Optional. Number of milliseconds for which to keep the storage for a partition. A wrapper is used here because 0 is an invalid value. */
   expirationMs?: string;
@@ -2092,6 +2738,8 @@ export interface TimePartitioning {
   /** Required. The supported types are DAY, HOUR, MONTH, and YEAR, which will generate one partition per day, hour, month, and year, respectively. */
   type?: string;
 }
+const TimePartitioning = /*@__PURE__*/ __L.at(__c21, 0) as any as S.Schema<TimePartitioning>;
+
 export interface RangePartitioningRange {
   /** [Experimental] The start of range partitioning, inclusive. */
   start?: string;
@@ -2100,13 +2748,22 @@ export interface RangePartitioningRange {
   /** [Experimental] The width of each interval. */
   interval?: string;
 }
+const RangePartitioningRange = /*@__PURE__*/ __L.at(
+  __c21,
+  1,
+) as any as S.Schema<RangePartitioningRange>;
+
 export interface RangePartitioning {
   /** Required. The name of the column to partition the table on. It must be a top-level, INT64 column whose mode is NULLABLE or REQUIRED. */
   field?: string;
   /** [Experimental] Defines the ranges for range partitioning. */
   range?: RangePartitioningRange;
 }
+const RangePartitioning = /*@__PURE__*/ __L.at(__c21, 2) as any as S.Schema<RangePartitioning>;
+
 export type IntegerList = Array<number>;
+const IntegerList = DoubleList as any as S.Schema<IntegerList>;
+
 /** JobConfigurationLoad contains the configuration properties for loading data into a destination table. */
 export interface JobConfigurationLoad {
   /** Optional. If this property is true, the job creates a new session using a randomly generated session_id. To continue using a created session with subsequent queries, pass the existing session identifier as a `ConnectionProperty` value. The session identifier is returned as part of the `SessionInfo` message within the query statistics. The new session's location will be set to `Job.JobReference.location` if it is present, otherwise it's set to the default location based on existing routing logic. */
@@ -2200,12 +2857,19 @@ export interface JobConfigurationLoad {
   /** Precisions (maximum number of total digits in base 10) for seconds of TIMESTAMP types that are allowed to the destination table for autodetection mode. Available for the formats: CSV, PARQUET, AVRO, and Iceberg External Table. Possible values include: Not Specified, [], or [6]: timestamp(6) for all auto detected TIMESTAMP columns [6, 12]: timestamp(6) for all auto detected TIMESTAMP columns that have less than 6 digits of subseconds. timestamp(12) for all auto detected TIMESTAMP columns that have more than 6 digits of subseconds. [12]: timestamp(12) for all auto detected TIMESTAMP columns. The order of the elements in this array is ignored. Inputs that have higher precision than the highest target precision in this array will be truncated. */
   timestampTargetPrecision?: IntegerList;
 }
+const JobConfigurationLoad = /*@__PURE__*/ __L.at(
+  __c21,
+  3,
+) as any as S.Schema<JobConfigurationLoad>;
+
 export type JobConfigurationTableCopyOperationTypeEnum =
   | "OPERATION_TYPE_UNSPECIFIED"
   | "COPY"
   | "SNAPSHOT"
   | "RESTORE"
   | "CLONE";
+const JobConfigurationTableCopyOperationTypeEnum = S.String;
+
 /** JobConfigurationTableCopy configures a job that copies data from one table to another. For more information on copying tables, see [Copy a table](https://cloud.google.com/bigquery/docs/managing-tables#copy-table). */
 export interface JobConfigurationTableCopy {
   /** Optional. Specifies whether the job is allowed to create new tables. The following values are supported: * CREATE_IF_NEEDED: If the table does not exist, BigQuery creates the table. * CREATE_NEVER: The table must already exist. If it does not, a 'notFound' error is returned in the job result. The default value is CREATE_IF_NEEDED. Creation, truncation and append actions occur as one atomic update upon job completion. */
@@ -2225,6 +2889,11 @@ export interface JobConfigurationTableCopy {
   /** Custom encryption configuration (e.g., Cloud KMS keys). */
   destinationEncryptionConfiguration?: EncryptionConfiguration;
 }
+const JobConfigurationTableCopy = /*@__PURE__*/ __L.at(
+  __c21,
+  4,
+) as any as S.Schema<JobConfigurationTableCopy>;
+
 /** A field or a column. */
 export interface StandardSqlField {
   /** Optional. The type of this parameter. Absent if not explicitly specified (e.g., CREATE FUNCTION statement can omit the return type; in this case the output parameter does not have this "type" field). */
@@ -2232,12 +2901,24 @@ export interface StandardSqlField {
   /** Optional. The name of this field. Can be absent for struct fields. */
   name?: string;
 }
+const StandardSqlField = /*@__PURE__*/ __L.at(__c21, 5) as any as S.Schema<StandardSqlField>;
+
 export type StandardSqlFieldList = Array<StandardSqlField>;
+const StandardSqlFieldList = /*@__PURE__*/ __L.at(
+  __c21,
+  6,
+) as any as S.Schema<StandardSqlFieldList>;
+
 /** The representation of a SQL STRUCT type. */
 export interface StandardSqlStructType {
   /** Fields within the struct. */
   fields?: StandardSqlFieldList;
 }
+const StandardSqlStructType = /*@__PURE__*/ __L.at(
+  __c21,
+  7,
+) as any as S.Schema<StandardSqlStructType>;
+
 export type StandardSqlDataTypeTypeKindEnum =
   | "TYPE_KIND_UNSPECIFIED"
   | "INT64"
@@ -2258,6 +2939,8 @@ export type StandardSqlDataTypeTypeKindEnum =
   | "STRUCT"
   | "RANGE"
   | "UUID";
+const StandardSqlDataTypeTypeKindEnum = S.String;
+
 /** The data type of a variable such as a function argument. Examples include: * INT64: `{"typeKind": "INT64"}` * ARRAY: { "typeKind": "ARRAY", "arrayElementType": {"typeKind": "STRING"} } * STRUCT>: { "typeKind": "STRUCT", "structType": { "fields": [ { "name": "x", "type": {"typeKind": "STRING"} }, { "name": "y", "type": { "typeKind": "ARRAY", "arrayElementType": {"typeKind": "DATE"} } } ] } } * RANGE: { "typeKind": "RANGE", "rangeElementType": {"typeKind": "DATE"} } */
 export interface StandardSqlDataType {
   /** The type of the range's elements, if type_kind = "RANGE". */
@@ -2269,7 +2952,14 @@ export interface StandardSqlDataType {
   /** Required. The top level type of this field. Can be any GoogleSQL data type (e.g., "INT64", "DATE", "ARRAY"). */
   typeKind?: StandardSqlDataTypeTypeKindEnum | (string & {});
 }
+const StandardSqlDataType = /*@__PURE__*/ __L.at(__c22, 0) as any as S.Schema<StandardSqlDataType>;
+
 export type StandardSqlDataTypeMap = { [key: string]: StandardSqlDataType | undefined };
+const StandardSqlDataTypeMap = /*@__PURE__*/ __L.at(
+  __c22,
+  1,
+) as any as S.Schema<StandardSqlDataTypeMap>;
+
 /** System variables given to a query. */
 export interface SystemVariables {
   /** Output only. Data type for each system variable. */
@@ -2277,6 +2967,8 @@ export interface SystemVariables {
   /** Output only. Value for each system variable. */
   values?: DocumentMap;
 }
+const SystemVariables = /*@__PURE__*/ __L.at(__c22, 2) as any as S.Schema<SystemVariables>;
+
 /** This is used for defining User Defined Function (UDF) resources only when using legacy SQL. Users of GoogleSQL should leverage either DDL (e.g. CREATE [TEMPORARY] FUNCTION ... ) or the Routines API to define UDF resources. For additional information on migrating, see: https://cloud.google.com/bigquery/docs/reference/standard-sql/migrating-from-legacy-sql#differences_in_user-defined_javascript_functions */
 export interface UserDefinedFunctionResource {
   /** [Pick one] An inline resource that contains code for a user-defined function (UDF). Providing a inline code resource is equivalent to providing a URI for a file containing the same code. */
@@ -2284,10 +2976,22 @@ export interface UserDefinedFunctionResource {
   /** [Pick one] A code resource to load from a Google Cloud Storage URI (gs://bucket/path). */
   resourceUri?: string;
 }
+const UserDefinedFunctionResource = /*@__PURE__*/ __L.at(
+  __c22,
+  3,
+) as any as S.Schema<UserDefinedFunctionResource>;
+
 export type UserDefinedFunctionResourceList = Array<UserDefinedFunctionResource>;
+const UserDefinedFunctionResourceList = /*@__PURE__*/ __L.at(
+  __c22,
+  4,
+) as any as S.Schema<UserDefinedFunctionResourceList>;
+
 export type ExternalDataConfigurationFileSetSpecTypeEnum =
   | "FILE_SET_SPEC_TYPE_FILE_SYSTEM_MATCH"
   | "FILE_SET_SPEC_TYPE_NEW_LINE_DELIMITED_MANIFEST";
+const ExternalDataConfigurationFileSetSpecTypeEnum = S.String;
+
 /** Information related to a CSV data source. */
 export interface CsvOptions {
   /** Optional. The number of rows at the top of a CSV file that BigQuery will skip when reading the data. The default value is 0. This property is useful if you have header rows in the file that should be skipped. When autodetect is on, the behavior is the following: * skipLeadingRows unspecified - Autodetect tries to detect headers in the first row. If they are not detected, the row is read as data. Otherwise data is read starting from the second row. * skipLeadingRows is 0 - Instructs autodetect that there are no headers and data should be read starting from the first row. * skipLeadingRows = N > 0 - Autodetect skips N-1 rows and tries to detect headers in row N. If headers are not detected, row N is just skipped. Otherwise row N is used to extract column names for the detected schema. */
@@ -2311,11 +3015,17 @@ export interface CsvOptions {
   /** Optional. Controls the strategy used to match loaded columns to the schema. If not set, a sensible default is chosen based on how the schema is provided. If autodetect is used, then columns are matched by name. Otherwise, columns are matched by position. This is done to keep the behavior backward-compatible. Acceptable values are: POSITION - matches by position. This assumes that the columns are ordered the same way as the schema. NAME - matches by name. This reads the header row as column names and reorders columns to match the field names in the schema. */
   sourceColumnMatch?: string;
 }
+const CsvOptions = /*@__PURE__*/ __L.at(__c22, 5) as any as S.Schema<CsvOptions>;
+
 export type ExternalDataConfigurationJsonExtensionEnum = "JSON_EXTENSION_UNSPECIFIED" | "GEOJSON";
+const ExternalDataConfigurationJsonExtensionEnum = S.String;
+
 export type ExternalDataConfigurationMetadataCacheModeEnum =
   | "METADATA_CACHE_MODE_UNSPECIFIED"
   | "AUTOMATIC"
   | "MANUAL";
+const ExternalDataConfigurationMetadataCacheModeEnum = S.String;
+
 /** Options specific to Google Sheets data sources. */
 export interface GoogleSheetsOptions {
   /** Optional. Range of a sheet to query from. Only used when non-empty. Typical format: sheet_name!top_left_cell_id:bottom_right_cell_id For example: sheet1!A1:B20 */
@@ -2323,15 +3033,21 @@ export interface GoogleSheetsOptions {
   /** Optional. The number of rows at the top of a sheet that BigQuery will skip when reading the data. The default value is 0. This property is useful if you have header rows that should be skipped. When autodetect is on, the behavior is the following: * skipLeadingRows unspecified - Autodetect tries to detect headers in the first row. If they are not detected, the row is read as data. Otherwise data is read starting from the second row. * skipLeadingRows is 0 - Instructs autodetect that there are no headers and data should be read starting from the first row. * skipLeadingRows = N > 0 - Autodetect skips N-1 rows and tries to detect headers in row N. If headers are not detected, row N is just skipped. Otherwise row N is used to extract column names for the detected schema. */
   skipLeadingRows?: string;
 }
+const GoogleSheetsOptions = /*@__PURE__*/ __L.at(__c22, 6) as any as S.Schema<GoogleSheetsOptions>;
+
 export type ExternalDataConfigurationObjectMetadataEnum =
   | "OBJECT_METADATA_UNSPECIFIED"
   | "DIRECTORY"
   | "SIMPLE";
+const ExternalDataConfigurationObjectMetadataEnum = S.String;
+
 /** Json Options for load and make external tables. */
 export interface JsonOptions {
   /** Optional. The character encoding of the data. The supported values are UTF-8, UTF-16BE, UTF-16LE, UTF-32BE, and UTF-32LE. The default value is UTF-8. */
   encoding?: string;
 }
+const JsonOptions = /*@__PURE__*/ __L.at(__c22, 7) as any as S.Schema<JsonOptions>;
+
 export type ExternalDataConfigurationDecimalTargetTypesItemEnum =
   | "DECIMAL_TARGET_TYPE_UNSPECIFIED"
   | "NUMERIC"
@@ -2340,6 +3056,9 @@ export type ExternalDataConfigurationDecimalTargetTypesItemEnum =
 export type ExternalDataConfigurationDecimalTargetTypesItemEnumList = Array<
   ExternalDataConfigurationDecimalTargetTypesItemEnum | (string & {})
 >;
+const ExternalDataConfigurationDecimalTargetTypesItemEnumList =
+  ArimaModelInfoSeasonalPeriodsItemEnumList as any as S.Schema<ExternalDataConfigurationDecimalTargetTypesItemEnumList>;
+
 /** Information related to a Bigtable protobuf column. */
 export interface BigtableProtoConfig {
   /** Optional. The fully qualified proto message name of the protobuf. In the format of "foo.bar.Message". */
@@ -2347,6 +3066,8 @@ export interface BigtableProtoConfig {
   /** Optional. The ID of the Bigtable SchemaBundle resource associated with this protobuf. The ID should be referred to within the parent table, e.g., `foo` rather than `projects/{project}/instances/{instance}/tables/{table}/schemaBundles/foo`. See [more details on Bigtable SchemaBundles](https://docs.cloud.google.com/bigtable/docs/create-manage-protobuf-schemas). */
   schemaBundleId?: string;
 }
+const BigtableProtoConfig = /*@__PURE__*/ __L.at(__c23, 0) as any as S.Schema<BigtableProtoConfig>;
+
 /** Information related to a Bigtable column. */
 export interface BigtableColumn {
   /** Optional. If the qualifier is not a valid BigQuery field identifier i.e. does not match a-zA-Z*, a valid identifier must be provided as the column field name and is used as field name in queries. */
@@ -2364,7 +3085,11 @@ export interface BigtableColumn {
   /** Optional. Protobuf-specific configurations, only takes effect when the encoding is PROTO_BINARY. */
   protoConfig?: BigtableProtoConfig;
 }
+const BigtableColumn = /*@__PURE__*/ __L.at(__c23, 1) as any as S.Schema<BigtableColumn>;
+
 export type BigtableColumnList = Array<BigtableColumn>;
+const BigtableColumnList = /*@__PURE__*/ __L.at(__c23, 2) as any as S.Schema<BigtableColumnList>;
+
 /** Information related to a Bigtable column family. */
 export interface BigtableColumnFamily {
   /** Optional. Lists of columns that should be exposed as individual fields as opposed to a list of (column name, value) pairs. All columns whose qualifier matches a qualifier in this list can be accessed as `.`. Other columns can be accessed as a list through the `.Column` field. */
@@ -2380,7 +3105,17 @@ export interface BigtableColumnFamily {
   /** Optional. If this is set only the latest version of value are exposed for all columns in this column family. This can be overridden for a specific column by listing that column in 'columns' and specifying a different setting for that column. */
   onlyReadLatest?: boolean;
 }
+const BigtableColumnFamily = /*@__PURE__*/ __L.at(
+  __c23,
+  3,
+) as any as S.Schema<BigtableColumnFamily>;
+
 export type BigtableColumnFamilyList = Array<BigtableColumnFamily>;
+const BigtableColumnFamilyList = /*@__PURE__*/ __L.at(
+  __c23,
+  4,
+) as any as S.Schema<BigtableColumnFamilyList>;
+
 /** Options specific to Google Cloud Bigtable data sources. */
 export interface BigtableOptions {
   /** Optional. If field is true, then each column family will be read as a single JSON column. Otherwise they are read as a repeated cell structure containing timestamp/value tuples. The default value is false. */
@@ -2392,11 +3127,15 @@ export interface BigtableOptions {
   /** Optional. If field is true, then the column families that are not specified in columnFamilies list are not exposed in the table schema. Otherwise, they are read with BYTES type values. The default value is false. */
   ignoreUnspecifiedColumnFamilies?: boolean;
 }
+const BigtableOptions = /*@__PURE__*/ __L.at(__c23, 5) as any as S.Schema<BigtableOptions>;
+
 /** Options for external data sources. */
 export interface AvroOptions {
   /** Optional. If sourceFormat is set to "AVRO", indicates whether to interpret logical types as the corresponding BigQuery data type (for example, TIMESTAMP), instead of using the raw type (for example, INTEGER). */
   useAvroLogicalTypes?: boolean;
 }
+const AvroOptions = /*@__PURE__*/ __L.at(__c23, 6) as any as S.Schema<AvroOptions>;
+
 export interface ExternalDataConfiguration {
   /** Optional. Indicates if BigQuery should allow extra values that are not represented in the table schema. If true, the extra values are ignored. If false, records with extra columns are treated as bad records, and if there are too many bad records, an invalid error is returned in the job result. The default value is false. The sourceFormat property determines what BigQuery treats as an extra value: CSV: Trailing columns JSON: Named values that don't match any column names Google Cloud Bigtable: This setting is ignored. Google Cloud Datastore backups: This setting is ignored. Avro: This setting is ignored. ORC: This setting is ignored. Parquet: This setting is ignored. */
   ignoreUnknownValues?: boolean;
@@ -2453,11 +3192,23 @@ export interface ExternalDataConfiguration {
   /** [Required] The data format. For CSV files, specify "CSV". For Google sheets, specify "GOOGLE_SHEETS". For newline-delimited JSON, specify "NEWLINE_DELIMITED_JSON". For Avro files, specify "AVRO". For Google Cloud Datastore backups, specify "DATASTORE_BACKUP". For Apache Iceberg tables, specify "ICEBERG". For ORC files, specify "ORC". For Parquet files, specify "PARQUET". [Beta] For Google Cloud Bigtable, specify "BIGTABLE". */
   sourceFormat?: string;
 }
+const ExternalDataConfiguration = /*@__PURE__*/ __L.at(
+  __c23,
+  7,
+) as any as S.Schema<ExternalDataConfiguration>;
+
 export type ExternalDataConfigurationMap = { [key: string]: ExternalDataConfiguration | undefined };
+const ExternalDataConfigurationMap = /*@__PURE__*/ __L.at(
+  __c24,
+  0,
+) as any as S.Schema<ExternalDataConfigurationMap>;
+
 export type ScriptOptionsKeyResultStatementEnum =
   | "KEY_RESULT_STATEMENT_KIND_UNSPECIFIED"
   | "LAST"
   | "FIRST_SELECT";
+const ScriptOptionsKeyResultStatementEnum = S.String;
+
 /** Options related to script execution. */
 export interface ScriptOptions {
   /** Determines which statement in the script represents the "key result", used to populate the schema and query results of the script job. Default is LAST. */
@@ -2467,11 +3218,15 @@ export interface ScriptOptions {
   /** Timeout period for each statement in a script. */
   statementTimeoutMs?: string;
 }
+const ScriptOptions = /*@__PURE__*/ __L.at(__c24, 1) as any as S.Schema<ScriptOptions>;
+
 /** A set of key-value pairs representing the secure context. */
 export interface SecureContext {
   /** Optional. A set of key-value pairs representing the secure parameter values. They can be retrieved via the SECURE_CONTEXT() function and used to modify the run-time behavior of a query. */
   secureParameterEntries?: DocumentMap;
 }
+const SecureContext = /*@__PURE__*/ __L.at(__c24, 2) as any as S.Schema<SecureContext>;
+
 /** JobConfigurationQuery configures a BigQuery query job. */
 export interface JobConfigurationQuery {
   /** Optional. Specifies whether to use BigQuery's legacy SQL dialect for this query. The default value is true. If set to false, the query uses BigQuery's [GoogleSQL](https://docs.cloud.google.com/bigquery/docs/introduction-sql). When useLegacySql is set to false, the value of flattenResults is ignored; query will be run as if flattenResults is false. */
@@ -2533,11 +3288,18 @@ export interface JobConfigurationQuery {
   /** [Deprecated] This property is deprecated. */
   preserveNulls?: boolean;
 }
+const JobConfigurationQuery = /*@__PURE__*/ __L.at(
+  __c24,
+  3,
+) as any as S.Schema<JobConfigurationQuery>;
+
 /** Options related to model extraction. */
 export interface ModelExtractOptions {
   /** The 1-based ID of the trial to be exported from a hyperparameter tuning model. If not specified, the trial with id = [Model](https://cloud.google.com/bigquery/docs/reference/rest/v2/models#resource:-model).defaultTrialId is exported. This field is ignored for models not trained with hyperparameter tuning. */
   trialId?: string;
 }
+const ModelExtractOptions = /*@__PURE__*/ __L.at(__c24, 4) as any as S.Schema<ModelExtractOptions>;
+
 /** Id path of a model. */
 export interface ModelReference {
   /** Required. The ID of the model. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 1,024 characters. */
@@ -2547,6 +3309,8 @@ export interface ModelReference {
   /** Required. The ID of the dataset containing this model. */
   datasetId?: string;
 }
+const ModelReference = /*@__PURE__*/ __L.at(__c24, 5) as any as S.Schema<ModelReference>;
+
 /** JobConfigurationExtract configures a job that exports data from a BigQuery table into Google Cloud Storage. */
 export interface JobConfigurationExtract {
   /** Optional. Model extract options only applicable when extracting models. */
@@ -2572,6 +3336,11 @@ export interface JobConfigurationExtract {
   /** [Pick one] DEPRECATED: Use destinationUris instead, passing only one URI as necessary. The fully-qualified Google Cloud Storage URI where the extracted table should be written. */
   destinationUri?: string;
 }
+const JobConfigurationExtract = /*@__PURE__*/ __L.at(
+  __c24,
+  6,
+) as any as S.Schema<JobConfigurationExtract>;
+
 export interface JobConfiguration {
   /** [Pick one] Configures a load job. */
   load?: JobConfigurationLoad;
@@ -2594,17 +3363,23 @@ export interface JobConfiguration {
   /** [Pick one] Configures an extract job. */
   extract?: JobConfigurationExtract;
 }
+const JobConfiguration = /*@__PURE__*/ __L.at(__c24, 7) as any as S.Schema<JobConfiguration>;
+
 export type JobCreationReasonCodeEnum =
   | "CODE_UNSPECIFIED"
   | "REQUESTED"
   | "LONG_RUNNING"
   | "LARGE_RESULTS"
   | "OTHER";
+const JobCreationReasonCodeEnum = S.String;
+
 /** Reason about why a Job was created from a [`jobs.query`](https://cloud.google.com/bigquery/docs/reference/rest/v2/jobs/query) method when used with `JOB_CREATION_OPTIONAL` Job creation mode. For [`jobs.insert`](https://cloud.google.com/bigquery/docs/reference/rest/v2/jobs/insert) method calls it will always be `REQUESTED`. */
 export interface JobCreationReason {
   /** Output only. Specifies the high level reason why a Job was created. */
   code?: JobCreationReasonCodeEnum | (string & {});
 }
+const JobCreationReason = /*@__PURE__*/ __L.at(__c25, 0) as any as S.Schema<JobCreationReason>;
+
 export interface Job {
   /** Output only. Opaque ID field of the job. */
   id?: string;
@@ -2629,6 +3404,8 @@ export interface Job {
   /** Output only. A URL that can be used to access the resource again. */
   selfLink?: string;
 }
+const Job = /*@__PURE__*/ __L.at(__c25, 1) as any as S.Schema<Job>;
+
 /** Describes format of a jobs cancellation response. */
 export interface JobCancelResponse {
   /** The resource type of the response. */
@@ -2636,6 +3413,8 @@ export interface JobCancelResponse {
   /** The final state of the job. */
   job?: Job;
 }
+const JobCancelResponse = /*@__PURE__*/ __L.at(__c25, 2) as any as S.Schema<JobCancelResponse>;
+
 export interface DeleteDatasetsRequest {
   /** If True, delete all the tables in the dataset. If False and the dataset contains tables, the request will fail. Default is False */
   deleteContents?: boolean;
@@ -2644,7 +3423,17 @@ export interface DeleteDatasetsRequest {
   /** Required. Project ID of the dataset being deleted */
   projectId: string;
 }
+const DeleteDatasetsRequest = /*@__PURE__*/ __L.at(
+  __c25,
+  3,
+) as any as S.Schema<DeleteDatasetsRequest>;
+
 export interface DeleteDatasetsResponse {}
+const DeleteDatasetsResponse = /*@__PURE__*/ __L.at(
+  __c25,
+  4,
+) as any as S.Schema<DeleteDatasetsResponse>;
+
 export interface DeleteJobsRequest {
   /** Required. Project ID of the job for which metadata is to be deleted. */
   projectId: string;
@@ -2653,7 +3442,11 @@ export interface DeleteJobsRequest {
   /** The geographic location of the job. Required. For more information, see how to [specify locations](https://cloud.google.com/bigquery/docs/locations#specify_locations). */
   location?: string;
 }
+const DeleteJobsRequest = /*@__PURE__*/ __L.at(__c25, 5) as any as S.Schema<DeleteJobsRequest>;
+
 export interface DeleteJobsResponse {}
+const DeleteJobsResponse = DeleteDatasetsResponse as any as S.Schema<DeleteJobsResponse>;
+
 export interface DeleteModelsRequest {
   /** Required. Project ID of the model to delete. */
   projectId: string;
@@ -2662,7 +3455,11 @@ export interface DeleteModelsRequest {
   /** Required. Model ID of the model to delete. */
   modelId: string;
 }
+const DeleteModelsRequest = /*@__PURE__*/ __L.at(__c25, 6) as any as S.Schema<DeleteModelsRequest>;
+
 export interface DeleteModelsResponse {}
+const DeleteModelsResponse = DeleteDatasetsResponse as any as S.Schema<DeleteModelsResponse>;
+
 export interface DeleteRoutinesRequest {
   /** Required. Dataset ID of the routine to delete */
   datasetId: string;
@@ -2671,7 +3468,14 @@ export interface DeleteRoutinesRequest {
   /** Required. Routine ID of the routine to delete */
   routineId: string;
 }
+const DeleteRoutinesRequest = /*@__PURE__*/ __L.at(
+  __c25,
+  7,
+) as any as S.Schema<DeleteRoutinesRequest>;
+
 export interface DeleteRoutinesResponse {}
+const DeleteRoutinesResponse = DeleteDatasetsResponse as any as S.Schema<DeleteRoutinesResponse>;
+
 export interface DeleteRowAccessPoliciesRequest {
   /** If set to true, it deletes the row access policy even if it's the last row access policy on the table and the deletion will widen the access rather narrowing it. */
   force?: boolean;
@@ -2684,7 +3488,17 @@ export interface DeleteRowAccessPoliciesRequest {
   /** Required. Project ID of the table to delete the row access policy. */
   projectId: string;
 }
+const DeleteRowAccessPoliciesRequest = /*@__PURE__*/ __L.at(
+  __c26,
+  0,
+) as any as S.Schema<DeleteRowAccessPoliciesRequest>;
+
 export interface DeleteRowAccessPoliciesResponse {}
+const DeleteRowAccessPoliciesResponse = /*@__PURE__*/ __L.at(
+  __c26,
+  1,
+) as any as S.Schema<DeleteRowAccessPoliciesResponse>;
+
 export interface DeleteTablesRequest {
   /** Required. Table ID of the table to delete */
   tableId: string;
@@ -2693,8 +3507,14 @@ export interface DeleteTablesRequest {
   /** Required. Project ID of the table to delete */
   projectId: string;
 }
+const DeleteTablesRequest = /*@__PURE__*/ __L.at(__c26, 2) as any as S.Schema<DeleteTablesRequest>;
+
 export interface DeleteTablesResponse {}
+const DeleteTablesResponse = DeleteDatasetsResponse as any as S.Schema<DeleteTablesResponse>;
+
 export type GetDatasetsDatasetViewEnum = "DATASET_VIEW_UNSPECIFIED" | "METADATA" | "ACL" | "FULL";
+const GetDatasetsDatasetViewEnum = S.String;
+
 export interface GetDatasetsRequest {
   /** Required. Dataset ID of the requested dataset */
   datasetId: string;
@@ -2705,15 +3525,23 @@ export interface GetDatasetsRequest {
   /** Optional. Specifies the view that determines which dataset information is returned. By default, metadata and ACL information are returned. */
   datasetView?: GetDatasetsDatasetViewEnum | (string & {});
 }
+const GetDatasetsRequest = /*@__PURE__*/ __L.at(__c26, 3) as any as S.Schema<GetDatasetsRequest>;
+
 export type RestrictionConfigTypeEnum = "RESTRICTION_TYPE_UNSPECIFIED" | "RESTRICTED_DATA_EGRESS";
+const RestrictionConfigTypeEnum = S.String;
+
 export interface RestrictionConfig {
   /** Output only. Specifies the type of dataset/table restriction. */
   type?: RestrictionConfigTypeEnum | (string & {});
 }
+const RestrictionConfig = /*@__PURE__*/ __L.at(__c26, 4) as any as S.Schema<RestrictionConfig>;
+
 export type DatasetStorageBillingModelEnum =
   | "STORAGE_BILLING_MODEL_UNSPECIFIED"
   | "LOGICAL"
   | "PHYSICAL";
+const DatasetStorageBillingModelEnum = S.String;
+
 /** Options defining open source compatible datasets living in the BigQuery catalog. Contains metadata of open source database, schema, or namespace represented by the current dataset. */
 export interface ExternalCatalogDatasetOptions {
   /** Optional. A map of key value pairs defining the parameters and properties of the open source schema. Maximum size of 2MiB. */
@@ -2721,17 +3549,31 @@ export interface ExternalCatalogDatasetOptions {
   /** Optional. The storage location URI for all tables in the dataset. Equivalent to hive metastore's database locationUri. Maximum length of 1024 characters. */
   defaultStorageLocationUri?: string;
 }
+const ExternalCatalogDatasetOptions = /*@__PURE__*/ __L.at(
+  __c26,
+  5,
+) as any as S.Schema<ExternalCatalogDatasetOptions>;
+
 export type LinkedDatasetMetadataLinkStateEnum = "LINK_STATE_UNSPECIFIED" | "LINKED" | "UNLINKED";
+const LinkedDatasetMetadataLinkStateEnum = S.String;
+
 /** Metadata about the Linked Dataset. */
 export interface LinkedDatasetMetadata {
   /** Output only. Specifies whether Linked Dataset is currently in a linked state or not. */
   linkState?: LinkedDatasetMetadataLinkStateEnum | (string & {});
 }
+const LinkedDatasetMetadata = /*@__PURE__*/ __L.at(
+  __c26,
+  6,
+) as any as S.Schema<LinkedDatasetMetadata>;
+
 /** A dataset source type which refers to another BigQuery dataset. */
 export interface LinkedDatasetSource {
   /** The source dataset reference contains project numbers and not project ids. */
   sourceDataset?: DatasetReference;
 }
+const LinkedDatasetSource = /*@__PURE__*/ __L.at(__c26, 7) as any as S.Schema<LinkedDatasetSource>;
+
 /** Configures the access a dataset defined in an external metadata storage. */
 export interface ExternalDatasetReference {
   /** Required. The connection id that is used to access the external_source. Format: projects/{project_id}/locations/{location_id}/connections/{connection_id} */
@@ -2739,17 +3581,28 @@ export interface ExternalDatasetReference {
   /** Required. External source that backs this dataset. */
   externalSource?: string;
 }
+const ExternalDatasetReference = /*@__PURE__*/ __L.at(
+  __c27,
+  0,
+) as any as S.Schema<ExternalDatasetReference>;
+
 export interface DatasetTagsItem {
   /** Required. The friendly short name of the tag value, e.g. "production". */
   tagValue?: string;
   /** Required. The namespaced friendly name of the tag key, e.g. "12345/environment" where 12345 is org id. */
   tagKey?: string;
 }
+const DatasetTagsItem = /*@__PURE__*/ __L.at(__c27, 1) as any as S.Schema<DatasetTagsItem>;
+
 export type DatasetTagsItemList = Array<DatasetTagsItem>;
+const DatasetTagsItemList = /*@__PURE__*/ __L.at(__c27, 2) as any as S.Schema<DatasetTagsItemList>;
+
 export type DatasetDefaultRoundingModeEnum =
   | "ROUNDING_MODE_UNSPECIFIED"
   | "ROUND_HALF_AWAY_FROM_ZERO"
   | "ROUND_HALF_EVEN";
+const DatasetDefaultRoundingModeEnum = S.String;
+
 export type DatasetAccessEntryTargetTypesItemEnum =
   | "TARGET_TYPE_UNSPECIFIED"
   | "VIEWS"
@@ -2757,6 +3610,9 @@ export type DatasetAccessEntryTargetTypesItemEnum =
 export type DatasetAccessEntryTargetTypesItemEnumList = Array<
   DatasetAccessEntryTargetTypesItemEnum | (string & {})
 >;
+const DatasetAccessEntryTargetTypesItemEnumList =
+  ArimaModelInfoSeasonalPeriodsItemEnumList as any as S.Schema<DatasetAccessEntryTargetTypesItemEnumList>;
+
 /** Grants all resources of particular types in a particular dataset read access to the current dataset. Similar to how individually authorized views work, updates to any resource granted through its dataset (including creation of new resources) requires read permission to referenced resources, plus write permission to the authorizing dataset. */
 export interface DatasetAccessEntry {
   /** The dataset this entry applies to */
@@ -2764,6 +3620,8 @@ export interface DatasetAccessEntry {
   /** Which resources in the dataset this entry applies to. Currently, only views are supported, but additional target types may be added in the future. */
   targetTypes?: DatasetAccessEntryTargetTypesItemEnumList;
 }
+const DatasetAccessEntry = /*@__PURE__*/ __L.at(__c27, 3) as any as S.Schema<DatasetAccessEntry>;
+
 /** Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information. */
 export interface Expr {
   /** Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file. */
@@ -2775,6 +3633,8 @@ export interface Expr {
   /** Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI. */
   description?: string;
 }
+const Expr = /*@__PURE__*/ __L.at(__c27, 4) as any as S.Schema<Expr>;
+
 export interface DatasetAccessItem {
   /** [Pick one] A grant authorizing all resources of a particular type in a particular dataset access to this dataset. Only views are supported for now. The role field is not required when this field is set. If that dataset is deleted and re-created, its access needs to be granted again via an update operation. */
   dataset?: DatasetAccessEntry;
@@ -2797,7 +3657,14 @@ export interface DatasetAccessItem {
   /** [Pick one] A routine from a different dataset to grant access to. Queries executed against that routine will have read access to views/tables/routines in this dataset. Only UDF is supported for now. The role field is not required when this field is set. If that routine is updated by any user, access to the routine needs to be granted again via an update operation. */
   routine?: RoutineReference;
 }
+const DatasetAccessItem = /*@__PURE__*/ __L.at(__c27, 5) as any as S.Schema<DatasetAccessItem>;
+
 export type DatasetAccessItemList = Array<DatasetAccessItem>;
+const DatasetAccessItemList = /*@__PURE__*/ __L.at(
+  __c27,
+  6,
+) as any as S.Schema<DatasetAccessItemList>;
+
 /** Represents a BigQuery dataset. */
 export interface Dataset {
   /** Output only. The resource type. */
@@ -2863,22 +3730,33 @@ export interface Dataset {
   /** Output only. Reserved for future use. */
   satisfiesPzi?: boolean;
 }
+const Dataset = /*@__PURE__*/ __L.at(__c27, 7) as any as S.Schema<Dataset>;
+
 /** Encapsulates settings provided to GetIamPolicy. */
 export interface GetPolicyOptions {
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   requestedPolicyVersion?: number;
 }
+const GetPolicyOptions = /*@__PURE__*/ __L.at(__c28, 0) as any as S.Schema<GetPolicyOptions>;
+
 /** Request message for `GetIamPolicy` method. */
 export interface GetIamPolicyRequest {
   /** OPTIONAL: A `GetPolicyOptions` object for specifying options to `GetIamPolicy`. */
   options?: GetPolicyOptions;
 }
+const GetIamPolicyRequest = /*@__PURE__*/ __L.at(__c28, 1) as any as S.Schema<GetIamPolicyRequest>;
+
 export interface GetIamPolicyRoutinesRequest {
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: GetIamPolicyRequest;
 }
+const GetIamPolicyRoutinesRequest = /*@__PURE__*/ __L.at(
+  __c28,
+  2,
+) as any as S.Schema<GetIamPolicyRoutinesRequest>;
+
 /** Associates `members`, or principals, with a `role`. */
 export interface Binding {
   /** Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles). */
@@ -2888,12 +3766,18 @@ export interface Binding {
   /** Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`. */
   members?: StringList;
 }
+const Binding = /*@__PURE__*/ __L.at(__c28, 3) as any as S.Schema<Binding>;
+
 export type BindingList = Array<Binding>;
+const BindingList = /*@__PURE__*/ __L.at(__c28, 4) as any as S.Schema<BindingList>;
+
 export type AuditLogConfigLogTypeEnum =
   | "LOG_TYPE_UNSPECIFIED"
   | "ADMIN_READ"
   | "DATA_WRITE"
   | "DATA_READ";
+const AuditLogConfigLogTypeEnum = S.String;
+
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
 export interface AuditLogConfig {
   /** The log type that this config enables. */
@@ -2901,7 +3785,11 @@ export interface AuditLogConfig {
   /** Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members. */
   exemptedMembers?: StringList;
 }
+const AuditLogConfig = /*@__PURE__*/ __L.at(__c28, 5) as any as S.Schema<AuditLogConfig>;
+
 export type AuditLogConfigList = Array<AuditLogConfig>;
+const AuditLogConfigList = /*@__PURE__*/ __L.at(__c28, 6) as any as S.Schema<AuditLogConfigList>;
+
 /** Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts `jose@example.com` from DATA_READ logging, and `aliya@example.com` from DATA_WRITE logging. */
 export interface AuditConfig {
   /** The configuration for logging of each type of permission. */
@@ -2909,7 +3797,11 @@ export interface AuditConfig {
   /** Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services. */
   service?: string;
 }
+const AuditConfig = /*@__PURE__*/ __L.at(__c28, 7) as any as S.Schema<AuditConfig>;
+
 export type AuditConfigList = Array<AuditConfig>;
+const AuditConfigList = /*@__PURE__*/ __L.at(__c29, 0) as any as S.Schema<AuditConfigList>;
+
 /** An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single `role`. Principals can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** ``` { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } ``` **YAML example:** ``` bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/). */
 export interface Policy {
   /** Associates a list of `members`, or principals, with a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one principal. The `bindings` in a `Policy` can refer to up to 1,500 principals; up to 250 of these principals can be Google groups. Each occurrence of a principal counts towards these limits. For example, if the `bindings` grant 50 different roles to `user:alice@example.com`, and not to any other principal, then you can add another 1,450 principals to the `bindings` in the `Policy`. */
@@ -2921,18 +3813,30 @@ export interface Policy {
   /** `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. */
   etag?: string;
 }
+const Policy = /*@__PURE__*/ __L.at(__c29, 1) as any as S.Schema<Policy>;
+
 export interface GetIamPolicyRowAccessPoliciesRequest {
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: GetIamPolicyRequest;
 }
+const GetIamPolicyRowAccessPoliciesRequest = /*@__PURE__*/ __L.at(
+  __c29,
+  2,
+) as any as S.Schema<GetIamPolicyRowAccessPoliciesRequest>;
+
 export interface GetIamPolicyTablesRequest {
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: GetIamPolicyRequest;
 }
+const GetIamPolicyTablesRequest = /*@__PURE__*/ __L.at(
+  __c29,
+  3,
+) as any as S.Schema<GetIamPolicyTablesRequest>;
+
 export interface GetJobsRequest {
   /** Required. Job ID of the requested job. */
   jobId: string;
@@ -2941,6 +3845,8 @@ export interface GetJobsRequest {
   /** Required. Project ID of the requested job. */
   projectId: string;
 }
+const GetJobsRequest = /*@__PURE__*/ __L.at(__c29, 4) as any as S.Schema<GetJobsRequest>;
+
 export interface GetModelsRequest {
   /** Required. Model ID of the requested model. */
   modelId: string;
@@ -2949,6 +3855,8 @@ export interface GetModelsRequest {
   /** Required. Project ID of the requested model. */
   projectId: string;
 }
+const GetModelsRequest = /*@__PURE__*/ __L.at(__c29, 5) as any as S.Schema<GetModelsRequest>;
+
 export type ModelModelTypeEnum =
   | "MODEL_TYPE_UNSPECIFIED"
   | "LINEAR_REGRESSION"
@@ -2976,6 +3884,8 @@ export type ModelModelTypeEnum =
   | "ONNX"
   | "TRANSFORM_ONLY"
   | "CONTRIBUTION_ANALYSIS";
+const ModelModelTypeEnum = S.String;
+
 /** Explanation for a single feature. */
 export interface Explanation {
   /** Attribution of feature. */
@@ -2983,7 +3893,11 @@ export interface Explanation {
   /** The full feature name. For non-numerical features, will be formatted like `.`. Overall size of feature name will always be truncated to first 120 characters. */
   featureName?: string;
 }
+const Explanation = /*@__PURE__*/ __L.at(__c29, 6) as any as S.Schema<Explanation>;
+
 export type ExplanationList = Array<Explanation>;
+const ExplanationList = /*@__PURE__*/ __L.at(__c29, 7) as any as S.Schema<ExplanationList>;
+
 /** Global explanations containing the top most important features after training. */
 export interface GlobalExplanation {
   /** Class label for this set of global explanations. Will be empty/null for binary logistic and linear regression models. Sorted alphabetically in descending order. */
@@ -2991,7 +3905,14 @@ export interface GlobalExplanation {
   /** A list of the top global explanations. Sorted by absolute value of attribution in descending order. */
   explanations?: ExplanationList;
 }
+const GlobalExplanation = /*@__PURE__*/ __L.at(__c30, 0) as any as S.Schema<GlobalExplanation>;
+
 export type GlobalExplanationList = Array<GlobalExplanation>;
+const GlobalExplanationList = /*@__PURE__*/ __L.at(
+  __c30,
+  1,
+) as any as S.Schema<GlobalExplanationList>;
+
 /** Data split result. This contains references to the training and evaluation data tables that were used to train the model. */
 export interface DataSplitResult {
   /** Table reference of the test data after split. */
@@ -3001,6 +3922,8 @@ export interface DataSplitResult {
   /** Table reference of the evaluation data after split. */
   evaluationTable?: TableReference;
 }
+const DataSplitResult = /*@__PURE__*/ __L.at(__c30, 2) as any as S.Schema<DataSplitResult>;
+
 /** Information about a single training query run for the model. */
 export interface TrainingRun {
   /** Output only. The evaluation metrics over training/eval data that were computed at the end of training. */
@@ -3024,17 +3947,28 @@ export interface TrainingRun {
   /** Output only. The start time of this training run. */
   startTime?: string;
 }
+const TrainingRun = /*@__PURE__*/ __L.at(__c30, 3) as any as S.Schema<TrainingRun>;
+
 export type TrainingRunList = Array<TrainingRun>;
+const TrainingRunList = /*@__PURE__*/ __L.at(__c30, 4) as any as S.Schema<TrainingRunList>;
+
 /** Search space for string and enum. */
 export interface StringHparamSearchSpace {
   /** Canididates for the string or enum parameter in lower case. */
   candidates?: StringList;
 }
+const StringHparamSearchSpace = /*@__PURE__*/ __L.at(
+  __c30,
+  5,
+) as any as S.Schema<StringHparamSearchSpace>;
+
 /** Discrete candidates of a double hyperparameter. */
 export interface DoubleCandidates {
   /** Candidates for the double parameter in increasing order. */
   candidates?: DoubleList;
 }
+const DoubleCandidates = /*@__PURE__*/ __L.at(__c30, 6) as any as S.Schema<DoubleCandidates>;
+
 /** Range of a double hyperparameter. */
 export interface DoubleRange {
   /** Min value of the double parameter. */
@@ -3042,6 +3976,8 @@ export interface DoubleRange {
   /** Max value of the double parameter. */
   max?: number;
 }
+const DoubleRange = /*@__PURE__*/ __L.at(__c30, 7) as any as S.Schema<DoubleRange>;
+
 /** Search space for a double hyperparameter. */
 export interface DoubleHparamSearchSpace {
   /** Candidates of the double hyperparameter. */
@@ -3049,6 +3985,11 @@ export interface DoubleHparamSearchSpace {
   /** Range of the double hyperparameter. */
   range?: DoubleRange;
 }
+const DoubleHparamSearchSpace = /*@__PURE__*/ __L.at(
+  __c31,
+  0,
+) as any as S.Schema<DoubleHparamSearchSpace>;
+
 /** Range of an int hyperparameter. */
 export interface IntRange {
   /** Max value of the int parameter. */
@@ -3056,11 +3997,15 @@ export interface IntRange {
   /** Min value of the int parameter. */
   min?: string;
 }
+const IntRange = /*@__PURE__*/ __L.at(__c31, 1) as any as S.Schema<IntRange>;
+
 /** Discrete candidates of an int hyperparameter. */
 export interface IntCandidates {
   /** Candidates for the int parameter in increasing order. */
   candidates?: StringList;
 }
+const IntCandidates = StringHparamSearchSpace as any as S.Schema<IntCandidates>;
+
 /** Search space for an int hyperparameter. */
 export interface IntHparamSearchSpace {
   /** Range of the int hyperparameter. */
@@ -3068,17 +4013,31 @@ export interface IntHparamSearchSpace {
   /** Candidates of the int hyperparameter. */
   candidates?: IntCandidates;
 }
+const IntHparamSearchSpace = /*@__PURE__*/ __L.at(
+  __c31,
+  2,
+) as any as S.Schema<IntHparamSearchSpace>;
+
 /** An array of int. */
 export interface IntArray {
   /** Elements in the int array. */
   elements?: StringList;
 }
+const IntArray = /*@__PURE__*/ __L.at(__c31, 3) as any as S.Schema<IntArray>;
+
 export type IntArrayList = Array<IntArray>;
+const IntArrayList = /*@__PURE__*/ __L.at(__c31, 4) as any as S.Schema<IntArrayList>;
+
 /** Search space for int array. */
 export interface IntArrayHparamSearchSpace {
   /** Candidates for the int array parameter. */
   candidates?: IntArrayList;
 }
+const IntArrayHparamSearchSpace = /*@__PURE__*/ __L.at(
+  __c31,
+  5,
+) as any as S.Schema<IntArrayHparamSearchSpace>;
+
 /** Hyperparameter search spaces. These should be a subset of training_options. */
 export interface HparamSearchSpaces {
   /** Booster type for boosted tree models. */
@@ -3126,12 +4085,16 @@ export interface HparamSearchSpaces {
   /** Activation functions of neural network models. */
   activationFn?: StringHparamSearchSpace;
 }
+const HparamSearchSpaces = /*@__PURE__*/ __L.at(__c31, 6) as any as S.Schema<HparamSearchSpaces>;
+
 export type RemoteModelInfoRemoteServiceTypeEnum =
   | "REMOTE_SERVICE_TYPE_UNSPECIFIED"
   | "CLOUD_AI_TRANSLATE_V3"
   | "CLOUD_AI_VISION_V1"
   | "CLOUD_AI_NATURAL_LANGUAGE_V1"
   | "CLOUD_AI_SPEECH_TO_TEXT_V2";
+const RemoteModelInfoRemoteServiceTypeEnum = S.String;
+
 /** Remote Model Info */
 export interface RemoteModelInfo {
   /** Output only. Max number of rows in each batch sent to the remote service. If unset, the number of rows in each batch is set dynamically. */
@@ -3147,6 +4110,8 @@ export interface RemoteModelInfo {
   /** Output only. The model version for LLM. */
   remoteModelVersion?: string;
 }
+const RemoteModelInfo = /*@__PURE__*/ __L.at(__c31, 7) as any as S.Schema<RemoteModelInfo>;
+
 /** Information about a single transform column. */
 export interface TransformColumn {
   /** Output only. Name of the column. */
@@ -3156,7 +4121,11 @@ export interface TransformColumn {
   /** Output only. Data type of the column after the transform. */
   type?: StandardSqlDataType;
 }
+const TransformColumn = /*@__PURE__*/ __L.at(__c32, 0) as any as S.Schema<TransformColumn>;
+
 export type TransformColumnList = Array<TransformColumn>;
+const TransformColumnList = /*@__PURE__*/ __L.at(__c32, 1) as any as S.Schema<TransformColumnList>;
+
 export interface Model {
   /** Output only. For single-objective [hyperparameter tuning](https://cloud.google.com/bigquery-ml/docs/reference/standard-sql/bigqueryml-syntax-hp-tuning-overview) models, it only contains the best trial. For multi-objective [hyperparameter tuning](https://cloud.google.com/bigquery-ml/docs/reference/standard-sql/bigqueryml-syntax-hp-tuning-overview) models, it contains all Pareto optimal trials sorted by trial_id. */
   optimalTrialIds?: StringList;
@@ -3201,11 +4170,15 @@ export interface Model {
   /** Output only. This field will be populated if a TRANSFORM clause was used to train a model. TRANSFORM clause (if used) takes feature_columns as input and outputs transform_columns. transform_columns then are used to train the model. */
   transformColumns?: TransformColumnList;
 }
+const Model = /*@__PURE__*/ __L.at(__c32, 2) as any as S.Schema<Model>;
+
 export type GetQueryResultsJobsFormatOptions_timestampOutputFormatEnum =
   | "TIMESTAMP_OUTPUT_FORMAT_UNSPECIFIED"
   | "FLOAT64"
   | "INT64"
   | "ISO8601_STRING";
+const GetQueryResultsJobsFormatOptions_timestampOutputFormatEnum = S.String;
+
 export interface GetQueryResultsJobsRequest {
   /** The geographic location of the job. You must specify the location to run the job for the following scenarios: * If the location to run a job is not in the `us` or the `eu` multi-regional location * If the job's location is in a single region (for example, `us-central1`) For more information, see how to [specify locations](https://cloud.google.com/bigquery/docs/locations#specify_locations). */
   location?: string;
@@ -3228,15 +4201,28 @@ export interface GetQueryResultsJobsRequest {
   /** Optional: Specifies the maximum amount of time, in milliseconds, that the client is willing to wait for the query to complete. By default, this limit is 10 seconds (10,000 milliseconds). If the query is complete, the jobComplete field in the response is true. If the query has not yet completed, jobComplete is false. You can request a longer timeout period in the timeoutMs field. However, the call is not guaranteed to wait for the specified timeout; it typically returns after around 200 seconds (200,000 milliseconds), even if the query is not complete. If jobComplete is false, you can continue to wait for the query to complete by calling the getQueryResults method until the jobComplete field in the getQueryResults response is true. */
   timeoutMs?: number;
 }
+const GetQueryResultsJobsRequest = /*@__PURE__*/ __L.at(
+  __c32,
+  3,
+) as any as S.Schema<GetQueryResultsJobsRequest>;
+
 export interface TableCell {
   v?: unknown;
 }
+const TableCell = /*@__PURE__*/ __L.at(__c32, 4) as any as S.Schema<TableCell>;
+
 export type TableCellList = Array<TableCell>;
+const TableCellList = /*@__PURE__*/ __L.at(__c32, 5) as any as S.Schema<TableCellList>;
+
 export interface TableRow {
   /** Represents a single row in the result set, consisting of one or more fields. */
   f?: TableCellList;
 }
+const TableRow = /*@__PURE__*/ __L.at(__c32, 6) as any as S.Schema<TableRow>;
+
 export type TableRowList = Array<TableRow>;
+const TableRowList = /*@__PURE__*/ __L.at(__c32, 7) as any as S.Schema<TableRowList>;
+
 /** Response object of GetQueryResults. */
 export interface GetQueryResultsResponse {
   /** An object with as many results as can be contained within the maximum permitted reply size. To get any additional rows, you can call GetQueryResults and specify the jobReference returned above. Present only when the query completes successfully. The REST-based representation of this data leverages a series of JSON f,v objects for indicating fields and values. */
@@ -3264,6 +4250,11 @@ export interface GetQueryResultsResponse {
   /** A token used for paging results. When this token is non-empty, it indicates additional results are available. */
   pageToken?: string;
 }
+const GetQueryResultsResponse = /*@__PURE__*/ __L.at(
+  __c33,
+  0,
+) as any as S.Schema<GetQueryResultsResponse>;
+
 export interface GetRoutinesRequest {
   /** Required. Project ID of the requested routine */
   projectId: string;
@@ -3274,6 +4265,8 @@ export interface GetRoutinesRequest {
   /** Required. Dataset ID of the requested routine */
   datasetId: string;
 }
+const GetRoutinesRequest = /*@__PURE__*/ __L.at(__c33, 1) as any as S.Schema<GetRoutinesRequest>;
+
 /** Options for a remote user-defined function. */
 export interface RemoteFunctionOptions {
   /** Fully qualified name of the user-provided connection object which holds the authentication information to send requests to the remote service. Format: ```"projects/{projectId}/locations/{locationId}/connections/{connectionId}"``` */
@@ -3285,11 +4278,18 @@ export interface RemoteFunctionOptions {
   /** Max number of rows in each batch sent to the remote service. If absent or if 0, BigQuery dynamically decides the number of rows in a batch. */
   maxBatchingRows?: string;
 }
+const RemoteFunctionOptions = /*@__PURE__*/ __L.at(
+  __c33,
+  2,
+) as any as S.Schema<RemoteFunctionOptions>;
+
 export type RoutineBuildStatusBuildStateEnum =
   | "BUILD_STATE_UNSPECIFIED"
   | "IN_PROGRESS"
   | "SUCCEEDED"
   | "FAILED";
+const RoutineBuildStatusBuildStateEnum = S.String;
+
 /** The status of a routine build. */
 export interface RoutineBuildStatus {
   /** Output only. The time taken for the image build. Populated only after the build succeeds or fails. */
@@ -3303,11 +4303,18 @@ export interface RoutineBuildStatus {
   /** Output only. The current build state of the routine. */
   buildState?: RoutineBuildStatusBuildStateEnum | (string & {});
 }
+const RoutineBuildStatus = /*@__PURE__*/ __L.at(__c33, 3) as any as S.Schema<RoutineBuildStatus>;
+
 /** A table type */
 export interface StandardSqlTableType {
   /** The columns in this table type */
   columns?: StandardSqlFieldList;
 }
+const StandardSqlTableType = /*@__PURE__*/ __L.at(
+  __c33,
+  4,
+) as any as S.Schema<StandardSqlTableType>;
+
 /** Options for a user-defined Python function. */
 export interface PythonOptions {
   /** Required. The name of the function defined in Python code as the entry point when the Python UDF is invoked. */
@@ -3315,6 +4322,8 @@ export interface PythonOptions {
   /** Optional. A list of Python package names along with versions to be installed. Example: ["pandas>=2.1", "google-cloud-translate==3.11"]. For more information, see [Use third-party packages](https://cloud.google.com/bigquery/docs/user-defined-functions-python#third-party-packages). */
   packages?: StringList;
 }
+const PythonOptions = /*@__PURE__*/ __L.at(__c33, 5) as any as S.Schema<PythonOptions>;
+
 /** Options for a user-defined Spark routine. */
 export interface SparkOptions {
   /** Configuration properties as a set of key/value pairs, which will be passed on to the Spark application. For more information, see [Apache Spark](https://spark.apache.org/docs/latest/index.html) and the [procedure option list](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#procedure_option_list). */
@@ -3338,14 +4347,22 @@ export interface SparkOptions {
   /** The main file/jar URI of the Spark application. Exactly one of the definition_body field and the main_file_uri field must be set for Python. Exactly one of main_class and main_file_uri field should be set for Java/Scala language type. */
   mainFileUri?: string;
 }
+const SparkOptions = /*@__PURE__*/ __L.at(__c33, 6) as any as S.Schema<SparkOptions>;
+
 export type RoutineDataGovernanceTypeEnum = "DATA_GOVERNANCE_TYPE_UNSPECIFIED" | "DATA_MASKING";
+const RoutineDataGovernanceTypeEnum = S.String;
+
 export type ArgumentModeEnum = "MODE_UNSPECIFIED" | "IN" | "OUT" | "INOUT";
+const ArgumentModeEnum = S.String;
+
 export type ArgumentArgumentKindEnum =
   | "ARGUMENT_KIND_UNSPECIFIED"
   | "FIXED_TYPE"
   | "ANY_TYPE"
   | "FIXED_TABLE"
   | "ANY_TABLE";
+const ArgumentArgumentKindEnum = S.String;
+
 /** Input/output argument of a function or a stored procedure. */
 export interface Argument {
   /** Set if argument_kind == FIXED_TYPE. */
@@ -3361,7 +4378,11 @@ export interface Argument {
   /** Optional. Whether the argument is an aggregate function parameter. Must be Unset for routine types other than AGGREGATE_FUNCTION. For AGGREGATE_FUNCTION, if set to false, it is equivalent to adding "NOT AGGREGATE" clause in DDL; Otherwise, it is equivalent to omitting "NOT AGGREGATE" clause in DDL. */
   isAggregate?: boolean;
 }
+const Argument = /*@__PURE__*/ __L.at(__c33, 7) as any as S.Schema<Argument>;
+
 export type ArgumentList = Array<Argument>;
+const ArgumentList = /*@__PURE__*/ __L.at(__c34, 0) as any as S.Schema<ArgumentList>;
+
 /** Configuration of a volume mount for the Python UDF container that executes the managed function. */
 export interface ExternalVolumeMount {
   /** Optional. The absolute path within the container where the volume should be mounted. */
@@ -3369,7 +4390,14 @@ export interface ExternalVolumeMount {
   /** Optional. The absolute path of the source to be mounted, only support Google Cloud Storage bucket or folder now. Eg: gs://bucket-xxx for Google Cloud Storage bucket, gs://bucket-xxx/folder1/folder2 for Google Cloud Storage folder. */
   sourcePath?: string;
 }
+const ExternalVolumeMount = /*@__PURE__*/ __L.at(__c34, 1) as any as S.Schema<ExternalVolumeMount>;
+
 export type ExternalVolumeMountList = Array<ExternalVolumeMount>;
+const ExternalVolumeMountList = /*@__PURE__*/ __L.at(
+  __c34,
+  2,
+) as any as S.Schema<ExternalVolumeMountList>;
+
 /** Options for the runtime of the external system. */
 export interface ExternalRuntimeOptions {
   /** Optional. Amount of CPU provisioned for a Python UDF container instance. For more information, see [Configure container limits for Python UDFs](https://cloud.google.com/bigquery/docs/user-defined-functions-python#configure-container-limits) */
@@ -3387,6 +4415,11 @@ export interface ExternalRuntimeOptions {
   /** Optional. Fully qualified name of the connection whose service account will be used to execute the code in the container. Format: ```"projects/{project_id}/locations/{location_id}/connections/{connection_id}"``` */
   runtimeConnection?: string;
 }
+const ExternalRuntimeOptions = /*@__PURE__*/ __L.at(
+  __c34,
+  3,
+) as any as S.Schema<ExternalRuntimeOptions>;
+
 export type RoutineLanguageEnum =
   | "LANGUAGE_UNSPECIFIED"
   | "SQL"
@@ -3394,17 +4427,25 @@ export type RoutineLanguageEnum =
   | "PYTHON"
   | "JAVA"
   | "SCALA";
+const RoutineLanguageEnum = S.String;
+
 export type RoutineDeterminismLevelEnum =
   | "DETERMINISM_LEVEL_UNSPECIFIED"
   | "DETERMINISTIC"
   | "NOT_DETERMINISTIC";
+const RoutineDeterminismLevelEnum = S.String;
+
 export type RoutineSecurityModeEnum = "SECURITY_MODE_UNSPECIFIED" | "DEFINER" | "INVOKER";
+const RoutineSecurityModeEnum = S.String;
+
 export type RoutineRoutineTypeEnum =
   | "ROUTINE_TYPE_UNSPECIFIED"
   | "SCALAR_FUNCTION"
   | "PROCEDURE"
   | "TABLE_VALUED_FUNCTION"
   | "AGGREGATE_FUNCTION";
+const RoutineRoutineTypeEnum = S.String;
+
 /** A user-defined function or a stored procedure. */
 export interface Routine {
   /** Optional. Remote function specific options. */
@@ -3450,6 +4491,8 @@ export interface Routine {
   /** Required. The body of the routine. For functions, this is the expression in the AS clause. If `language = "SQL"`, it is the substring inside (but excluding) the parentheses. For example, for the function created with the following statement: `CREATE FUNCTION JoinLines(x string, y string) as (concat(x, "\n", y))` The definition_body is `concat(x, "\n", y)` (\n is not replaced with linebreak). If `language="JAVASCRIPT"`, it is the evaluated string in the AS clause. For example, for the function created with the following statement: `CREATE FUNCTION f() RETURNS STRING LANGUAGE js AS 'return "\n";\n'` The definition_body is `return "\n";\n` Note that both \n are replaced with linebreaks. If `definition_body` references another routine, then that routine must be fully qualified with its project ID. */
   definitionBody?: string;
 }
+const Routine = /*@__PURE__*/ __L.at(__c34, 4) as any as S.Schema<Routine>;
+
 export interface GetRowAccessPoliciesRequest {
   /** Required. Policy ID of the row access policy. */
   policyId: string;
@@ -3460,6 +4503,11 @@ export interface GetRowAccessPoliciesRequest {
   /** Required. Dataset ID of the table to get the row access policy. */
   datasetId: string;
 }
+const GetRowAccessPoliciesRequest = /*@__PURE__*/ __L.at(
+  __c34,
+  5,
+) as any as S.Schema<GetRowAccessPoliciesRequest>;
+
 /** Represents access on a subset of rows on the specified table, defined by its filter predicate. Access to the subset of rows is controlled by its IAM policy. */
 export interface RowAccessPolicy {
   /** Output only. A hash of this resource. */
@@ -3475,10 +4523,17 @@ export interface RowAccessPolicy {
   /** Required. Reference describing the ID of this row access policy. */
   rowAccessPolicyReference?: RowAccessPolicyReference;
 }
+const RowAccessPolicy = /*@__PURE__*/ __L.at(__c34, 6) as any as S.Schema<RowAccessPolicy>;
+
 export interface GetServiceAccountProjectsRequest {
   /** Required. ID of the project. */
   projectId: string;
 }
+const GetServiceAccountProjectsRequest = /*@__PURE__*/ __L.at(
+  __c34,
+  7,
+) as any as S.Schema<GetServiceAccountProjectsRequest>;
+
 /** Response object of GetServiceAccount */
 export interface GetServiceAccountResponse {
   /** The service account email address. */
@@ -3486,11 +4541,18 @@ export interface GetServiceAccountResponse {
   /** The resource type of the response. */
   kind?: string;
 }
+const GetServiceAccountResponse = /*@__PURE__*/ __L.at(
+  __c35,
+  0,
+) as any as S.Schema<GetServiceAccountResponse>;
+
 export type GetTablesViewEnum =
   | "TABLE_METADATA_VIEW_UNSPECIFIED"
   | "BASIC"
   | "STORAGE_STATS"
   | "FULL";
+const GetTablesViewEnum = S.String;
+
 export interface GetTablesRequest {
   /** Required. Project ID of the requested table */
   projectId: string;
@@ -3503,12 +4565,16 @@ export interface GetTablesRequest {
   /** Optional. Specifies the view that determines which table information is returned. By default, basic table information and storage statistics (STORAGE_STATS) are returned. */
   view?: GetTablesViewEnum | (string & {});
 }
+const GetTablesRequest = /*@__PURE__*/ __L.at(__c35, 1) as any as S.Schema<GetTablesRequest>;
+
 export type JoinRestrictionPolicyJoinConditionEnum =
   | "JOIN_CONDITION_UNSPECIFIED"
   | "JOIN_ANY"
   | "JOIN_ALL"
   | "JOIN_NOT_REQUIRED"
   | "JOIN_BLOCKED";
+const JoinRestrictionPolicyJoinConditionEnum = S.String;
+
 /** Represents privacy policy associated with "join restrictions". Join restriction gives data providers the ability to enforce joins on the 'join_allowed_columns' when data is queried from a privacy protected view. */
 export interface JoinRestrictionPolicy {
   /** Optional. The only columns that joins are allowed on. This field is must be specified for join_conditions JOIN_ANY and JOIN_ALL and it cannot be set for JOIN_BLOCKED. */
@@ -3516,6 +4582,11 @@ export interface JoinRestrictionPolicy {
   /** Optional. Specifies if a join is required or not on queries for the view. Default is JOIN_CONDITION_UNSPECIFIED. */
   joinCondition?: JoinRestrictionPolicyJoinConditionEnum | (string & {});
 }
+const JoinRestrictionPolicy = /*@__PURE__*/ __L.at(
+  __c35,
+  2,
+) as any as S.Schema<JoinRestrictionPolicy>;
+
 /** Represents privacy policy associated with "aggregation threshold" method. */
 export interface AggregationThresholdPolicy {
   /** Optional. The privacy unit column(s) associated with this policy. For now, only one column per data source object (table, view) is allowed as a privacy unit column. Representing as a repeated field in metadata for extensibility to multiple columns in future. Duplicates and Repeated struct fields are not allowed. For nested fields, use dot notation ("outer.inner") */
@@ -3523,6 +4594,11 @@ export interface AggregationThresholdPolicy {
   /** Optional. The threshold for the "aggregation threshold" policy. */
   threshold?: string;
 }
+const AggregationThresholdPolicy = /*@__PURE__*/ __L.at(
+  __c35,
+  3,
+) as any as S.Schema<AggregationThresholdPolicy>;
+
 /** Represents privacy policy associated with "differential privacy" method. */
 export interface DifferentialPrivacyPolicy {
   /** Optional. The maximum epsilon value that a query can consume. If the subscriber specifies epsilon as a parameter in a SELECT query, it must be less than or equal to this value. The epsilon parameter controls the amount of noise that is added to the groups -- a higher epsilon means less noise. */
@@ -3542,6 +4618,11 @@ export interface DifferentialPrivacyPolicy {
   /** Optional. The total epsilon budget for all queries against the privacy-protected view. Each subscriber query against this view charges the amount of epsilon they request in their query. If there is sufficient budget, then the subscriber query attempts to complete. It might still fail due to other reasons, in which case the charge is refunded. If there is insufficient budget the query is rejected. There might be multiple charge attempts if a single query references multiple views. In this case there must be sufficient budget for all charges or the query is rejected and charges are refunded in best effort. The budget does not have a refresh policy and can only be updated via ALTER VIEW or circumvented by creating a new view that can be queried with a fresh budget. */
   epsilonBudget?: number;
 }
+const DifferentialPrivacyPolicy = /*@__PURE__*/ __L.at(
+  __c35,
+  4,
+) as any as S.Schema<DifferentialPrivacyPolicy>;
+
 /** Represents privacy policy that contains the privacy requirements specified by the data owner. Currently, this is only supported on views. */
 export interface PrivacyPolicy {
   /** Optional. Join restriction policy is outside of the one of policies, since this policy can be set along with other policies. This policy gives data providers the ability to enforce joins on the 'join_allowed_columns' when data is queried from a privacy protected view. */
@@ -3551,6 +4632,8 @@ export interface PrivacyPolicy {
   /** Optional. Policy used for differential privacy. */
   differentialPrivacyPolicy?: DifferentialPrivacyPolicy;
 }
+const PrivacyPolicy = /*@__PURE__*/ __L.at(__c35, 5) as any as S.Schema<PrivacyPolicy>;
+
 /** A view can be represented in multiple ways. Each representation has its own dialect. This message stores the metadata required for these representations. */
 export interface ForeignViewDefinition {
   /** Optional. Represents the dialect of the query. */
@@ -3558,7 +4641,17 @@ export interface ForeignViewDefinition {
   /** Required. The query that defines the view. */
   query?: string;
 }
+const ForeignViewDefinition = /*@__PURE__*/ __L.at(
+  __c35,
+  6,
+) as any as S.Schema<ForeignViewDefinition>;
+
 export type ForeignViewDefinitionList = Array<ForeignViewDefinition>;
+const ForeignViewDefinitionList = /*@__PURE__*/ __L.at(
+  __c35,
+  7,
+) as any as S.Schema<ForeignViewDefinitionList>;
+
 /** Describes the definition of a logical view. */
 export interface ViewDefinition {
   /** Optional. Specifies the privacy policy for the view. */
@@ -3574,6 +4667,8 @@ export interface ViewDefinition {
   /** Optional. Foreign view representations. */
   foreignDefinitions?: ForeignViewDefinitionList;
 }
+const ViewDefinition = /*@__PURE__*/ __L.at(__c36, 0) as any as S.Schema<ViewDefinition>;
+
 /** Information about base table and clone time of a table clone. */
 export interface CloneDefinition {
   /** Required. The time at which the base table was cloned. This value is reported in the JSON response using RFC3339 format. */
@@ -3581,17 +4676,31 @@ export interface CloneDefinition {
   /** Required. Reference describing the ID of the table that was cloned. */
   baseTableReference?: TableReference;
 }
+const CloneDefinition = /*@__PURE__*/ __L.at(__c36, 1) as any as S.Schema<CloneDefinition>;
+
 /** The partitioning column information. */
 export interface PartitionedColumn {
   /** Required. The name of the partition column. */
   field?: string;
 }
+const PartitionedColumn = /*@__PURE__*/ __L.at(__c36, 2) as any as S.Schema<PartitionedColumn>;
+
 export type PartitionedColumnList = Array<PartitionedColumn>;
+const PartitionedColumnList = /*@__PURE__*/ __L.at(
+  __c36,
+  3,
+) as any as S.Schema<PartitionedColumnList>;
+
 /** The partitioning information, which includes managed table, external table and metastore partitioned table partition information. */
 export interface PartitioningDefinition {
   /** Optional. Details about each partitioning column. This field is output only for all partitioning types other than metastore partitioned tables. BigQuery native tables only support 1 partitioning column. Other table types may support 0, 1 or more partitioning columns. For metastore partitioned tables, the order must match the definition order in the Hive Metastore, where it must match the physical layout of the table. For example, CREATE TABLE a_table(id BIGINT, name STRING) PARTITIONED BY (city STRING, state STRING). In this case the values must be ['city', 'state'] in that order. */
   partitionedColumn?: PartitionedColumnList;
 }
+const PartitioningDefinition = /*@__PURE__*/ __L.at(
+  __c36,
+  4,
+) as any as S.Schema<PartitioningDefinition>;
+
 export interface Streamingbuffer {
   /** Output only. Contains the timestamp of the oldest entry in the streaming buffer, in milliseconds since the epoch, if the streaming buffer is available. */
   oldestEntryTime?: string;
@@ -3600,12 +4709,16 @@ export interface Streamingbuffer {
   /** Output only. A lower-bound estimate of the number of rows currently in the streaming buffer. */
   estimatedRows?: string;
 }
+const Streamingbuffer = /*@__PURE__*/ __L.at(__c36, 5) as any as S.Schema<Streamingbuffer>;
+
 export type TableReplicationInfoReplicationStatusEnum =
   | "REPLICATION_STATUS_UNSPECIFIED"
   | "ACTIVE"
   | "SOURCE_DELETED"
   | "PERMISSION_DENIED"
   | "UNSUPPORTED_CONFIGURATION";
+const TableReplicationInfoReplicationStatusEnum = S.String;
+
 /** Replication info of a table created using `AS REPLICA` DDL like: `CREATE MATERIALIZED VIEW mv1 AS REPLICA OF src_mv` */
 export interface TableReplicationInfo {
   /** Optional. Output only. Replication error that will permanently stopped table replication. */
@@ -3619,6 +4732,11 @@ export interface TableReplicationInfo {
   /** Required. Source table reference that is replicated. */
   sourceTable?: TableReference;
 }
+const TableReplicationInfo = /*@__PURE__*/ __L.at(
+  __c36,
+  6,
+) as any as S.Schema<TableReplicationInfo>;
+
 /** Serializer and deserializer information. */
 export interface SerDeInfo {
   /** Required. Specifies a fully-qualified class name of the serialization library that is responsible for the translation of data between table representation and the underlying low-level input and output format structures. The maximum length is 256 characters. */
@@ -3628,6 +4746,8 @@ export interface SerDeInfo {
   /** Optional. Key-value pairs that define the initialization parameters for the serialization library. Maximum size 10 Kib. */
   parameters?: StringMap;
 }
+const SerDeInfo = /*@__PURE__*/ __L.at(__c36, 7) as any as S.Schema<SerDeInfo>;
+
 /** Contains information about how a table's data is stored and accessed by open source query engines. */
 export interface StorageDescriptor {
   /** Optional. Serializer and deserializer information. */
@@ -3639,6 +4759,8 @@ export interface StorageDescriptor {
   /** Optional. Specifies the fully qualified class name of the OutputFormat (e.g. "org.apache.hadoop.hive.ql.io.orc.OrcOutputFormat"). The maximum length is 128 characters. */
   outputFormat?: string;
 }
+const StorageDescriptor = /*@__PURE__*/ __L.at(__c37, 0) as any as S.Schema<StorageDescriptor>;
+
 /** Metadata about open source compatible table. The fields contained in these options correspond to Hive metastore's table-level properties. */
 export interface ExternalCatalogTableOptions {
   /** Optional. A map of the key-value pairs defining the parameters and properties of the open source table. Corresponds with Hive metastore table parameters. Maximum size of 4MiB. */
@@ -3648,6 +4770,11 @@ export interface ExternalCatalogTableOptions {
   /** Optional. A storage descriptor containing information about the physical storage of this table. */
   storageDescriptor?: StorageDescriptor;
 }
+const ExternalCatalogTableOptions = /*@__PURE__*/ __L.at(
+  __c37,
+  1,
+) as any as S.Schema<ExternalCatalogTableOptions>;
+
 /** Definition and configuration of a materialized view. */
 export interface MaterializedViewDefinition {
   /** Optional. This option declares the intention to construct a materialized view that isn't refreshed incrementally. Non-incremental materialized views support an expanded range of SQL queries. The `allow_non_incremental_definition` option can't be changed after the materialized view is created. */
@@ -3663,6 +4790,11 @@ export interface MaterializedViewDefinition {
   /** Optional. The maximum frequency at which this materialized view will be refreshed. The default value is "1800000" (30 minutes). */
   refreshIntervalMs?: string;
 }
+const MaterializedViewDefinition = /*@__PURE__*/ __L.at(
+  __c37,
+  2,
+) as any as S.Schema<MaterializedViewDefinition>;
+
 /** Status of a materialized view. The last refresh timestamp status is omitted here, but is present in the MaterializedViewDefinition message. */
 export interface MaterializedViewStatus {
   /** Output only. Error result of the last automatic refresh. If present, indicates that the last automatic refresh was unsuccessful. */
@@ -3670,8 +4802,17 @@ export interface MaterializedViewStatus {
   /** Output only. Refresh watermark of materialized view. The base tables' data were collected into the materialized view cache until this time. */
   refreshWatermark?: string;
 }
+const MaterializedViewStatus = /*@__PURE__*/ __L.at(
+  __c37,
+  3,
+) as any as S.Schema<MaterializedViewStatus>;
+
 export type BigLakeConfigurationTableFormatEnum = "TABLE_FORMAT_UNSPECIFIED" | "ICEBERG";
+const BigLakeConfigurationTableFormatEnum = S.String;
+
 export type BigLakeConfigurationFileFormatEnum = "FILE_FORMAT_UNSPECIFIED" | "PARQUET";
+const BigLakeConfigurationFileFormatEnum = S.String;
+
 /** Configuration for BigQuery tables for Apache Iceberg (formerly BigLake managed tables.) */
 export interface BigLakeConfiguration {
   /** Optional. The fully qualified location prefix of the external folder where table data is stored. The '*' wildcard character is not allowed. The URI should be in the format `gs://bucket/path_to_table/` */
@@ -3683,7 +4824,14 @@ export interface BigLakeConfiguration {
   /** Optional. The file format the table data is stored in. */
   fileFormat?: BigLakeConfigurationFileFormatEnum | (string & {});
 }
+const BigLakeConfiguration = /*@__PURE__*/ __L.at(
+  __c37,
+  4,
+) as any as S.Schema<BigLakeConfiguration>;
+
 export type TableManagedTableTypeEnum = "MANAGED_TABLE_TYPE_UNSPECIFIED" | "NATIVE" | "BIGLAKE";
+const TableManagedTableTypeEnum = S.String;
+
 /** Information about base table and snapshot time of the snapshot. */
 export interface SnapshotDefinition {
   /** Required. The time at which the base table was snapshot. This value is reported in the JSON response using RFC3339 format. */
@@ -3691,19 +4839,36 @@ export interface SnapshotDefinition {
   /** Required. Reference describing the ID of the table that was snapshot. */
   baseTableReference?: TableReference;
 }
+const SnapshotDefinition = /*@__PURE__*/ __L.at(__c37, 5) as any as S.Schema<SnapshotDefinition>;
+
 export interface TableConstraintsForeignKeysItemReferencedTable {
   tableId?: string;
   projectId?: string;
   datasetId?: string;
 }
+const TableConstraintsForeignKeysItemReferencedTable = /*@__PURE__*/ __L.at(
+  __c37,
+  6,
+) as any as S.Schema<TableConstraintsForeignKeysItemReferencedTable>;
+
 export interface TableConstraintsForeignKeysItemColumnReferencesItem {
   /** Required. The column in the primary key that are referenced by the referencing_column. */
   referencedColumn?: string;
   /** Required. The column that composes the foreign key. */
   referencingColumn?: string;
 }
+const TableConstraintsForeignKeysItemColumnReferencesItem = /*@__PURE__*/ __L.at(
+  __c37,
+  7,
+) as any as S.Schema<TableConstraintsForeignKeysItemColumnReferencesItem>;
+
 export type TableConstraintsForeignKeysItemColumnReferencesItemList =
   Array<TableConstraintsForeignKeysItemColumnReferencesItem>;
+const TableConstraintsForeignKeysItemColumnReferencesItemList = /*@__PURE__*/ __L.at(
+  __c38,
+  0,
+) as any as S.Schema<TableConstraintsForeignKeysItemColumnReferencesItemList>;
+
 export interface TableConstraintsForeignKeysItem {
   /** Optional. Set only if the foreign key constraint is named. */
   name?: string;
@@ -3711,11 +4876,26 @@ export interface TableConstraintsForeignKeysItem {
   /** Required. The columns that compose the foreign key. */
   columnReferences?: TableConstraintsForeignKeysItemColumnReferencesItemList;
 }
+const TableConstraintsForeignKeysItem = /*@__PURE__*/ __L.at(
+  __c38,
+  1,
+) as any as S.Schema<TableConstraintsForeignKeysItem>;
+
 export type TableConstraintsForeignKeysItemList = Array<TableConstraintsForeignKeysItem>;
+const TableConstraintsForeignKeysItemList = /*@__PURE__*/ __L.at(
+  __c38,
+  2,
+) as any as S.Schema<TableConstraintsForeignKeysItemList>;
+
 export interface TableConstraintsPrimaryKey {
   /** Required. The columns that are composed of the primary key constraint. */
   columns?: StringList;
 }
+const TableConstraintsPrimaryKey = /*@__PURE__*/ __L.at(
+  __c38,
+  3,
+) as any as S.Schema<TableConstraintsPrimaryKey>;
+
 /** The TableConstraints defines the primary key and foreign key. */
 export interface TableConstraints {
   /** Optional. Present only if the table has a foreign key. The foreign key is not enforced. */
@@ -3723,15 +4903,24 @@ export interface TableConstraints {
   /** Represents the primary key constraint on a table's columns. */
   primaryKey?: TableConstraintsPrimaryKey;
 }
+const TableConstraints = /*@__PURE__*/ __L.at(__c38, 4) as any as S.Schema<TableConstraints>;
+
 export type TableDefaultRoundingModeEnum =
   | "ROUNDING_MODE_UNSPECIFIED"
   | "ROUND_HALF_AWAY_FROM_ZERO"
   | "ROUND_HALF_EVEN";
+const TableDefaultRoundingModeEnum = S.String;
+
 export interface ModelDefinitionModelOptions {
   labels?: StringList;
   lossType?: string;
   modelType?: string;
 }
+const ModelDefinitionModelOptions = /*@__PURE__*/ __L.at(
+  __c38,
+  5,
+) as any as S.Schema<ModelDefinitionModelOptions>;
+
 export interface BqmlTrainingRunTrainingOptions {
   lineSearchInitLearnRate?: number;
   learnRate?: number;
@@ -3743,6 +4932,11 @@ export interface BqmlTrainingRunTrainingOptions {
   l2Reg?: number;
   earlyStop?: boolean;
 }
+const BqmlTrainingRunTrainingOptions = /*@__PURE__*/ __L.at(
+  __c38,
+  6,
+) as any as S.Schema<BqmlTrainingRunTrainingOptions>;
+
 export interface BqmlIterationResult {
   /** Deprecated. */
   index?: number;
@@ -3755,7 +4949,14 @@ export interface BqmlIterationResult {
   /** Deprecated. */
   learnRate?: number;
 }
+const BqmlIterationResult = /*@__PURE__*/ __L.at(__c38, 7) as any as S.Schema<BqmlIterationResult>;
+
 export type BqmlIterationResultList = Array<BqmlIterationResult>;
+const BqmlIterationResultList = /*@__PURE__*/ __L.at(
+  __c39,
+  0,
+) as any as S.Schema<BqmlIterationResultList>;
+
 export interface BqmlTrainingRun {
   /** Deprecated. */
   state?: string;
@@ -3766,13 +4967,19 @@ export interface BqmlTrainingRun {
   /** Deprecated. */
   iterationResults?: BqmlIterationResultList;
 }
+const BqmlTrainingRun = /*@__PURE__*/ __L.at(__c39, 1) as any as S.Schema<BqmlTrainingRun>;
+
 export type BqmlTrainingRunList = Array<BqmlTrainingRun>;
+const BqmlTrainingRunList = /*@__PURE__*/ __L.at(__c39, 2) as any as S.Schema<BqmlTrainingRunList>;
+
 export interface ModelDefinition {
   /** Deprecated. */
   modelOptions?: ModelDefinitionModelOptions;
   /** Deprecated. */
   trainingRuns?: BqmlTrainingRunList;
 }
+const ModelDefinition = /*@__PURE__*/ __L.at(__c39, 3) as any as S.Schema<ModelDefinition>;
+
 export interface Table {
   /** Output only. The size of this table in logical bytes, excluding any data in the streaming buffer. */
   numBytes?: string;
@@ -3879,16 +5086,32 @@ export interface Table {
   /** Deprecated. */
   model?: ModelDefinition;
 }
+const Table = /*@__PURE__*/ __L.at(__c39, 4) as any as S.Schema<Table>;
+
 export type JsonValue = unknown;
+const JsonValue = /*@__PURE__*/ S.Unknown;
+
 /** Represents a single JSON object. */
 export type JsonObject = { [key: string]: JsonValue | undefined };
+const JsonObject = /*@__PURE__*/ __L.at(__c39, 5) as any as S.Schema<JsonObject>;
+
 export interface TableDataInsertAllRequestRowsItem {
   /** Data for a single row. */
   json?: JsonObject;
   /** Insertion ID for best-effort deduplication. This feature is not recommended, and users seeking stronger insertion semantics are encouraged to use other mechanisms such as the BigQuery Write API. */
   insertId?: string;
 }
+const TableDataInsertAllRequestRowsItem = /*@__PURE__*/ __L.at(
+  __c39,
+  6,
+) as any as S.Schema<TableDataInsertAllRequestRowsItem>;
+
 export type TableDataInsertAllRequestRowsItemList = Array<TableDataInsertAllRequestRowsItem>;
+const TableDataInsertAllRequestRowsItemList = /*@__PURE__*/ __L.at(
+  __c39,
+  7,
+) as any as S.Schema<TableDataInsertAllRequestRowsItemList>;
+
 /** Request for sending a single streaming insert. */
 export interface TableDataInsertAllRequest {
   /** Optional. If specified, treats the destination table as a base template, and inserts the rows into an instance table named "{destination}{templateSuffix}". BigQuery will manage creation of the instance table, using the schema of the base template table. See https://cloud.google.com/bigquery/streaming-data-into-bigquery#template-tables for considerations when working with templates tables. */
@@ -3903,6 +5126,11 @@ export interface TableDataInsertAllRequest {
   /** Optional. Unique request trace id. Used for debugging purposes only. It is case-sensitive, limited to up to 36 ASCII characters. A UUID is recommended. */
   traceId?: string;
 }
+const TableDataInsertAllRequest = /*@__PURE__*/ __L.at(
+  __c40,
+  0,
+) as any as S.Schema<TableDataInsertAllRequest>;
+
 export interface InsertAllTabledataRequest {
   /** Required. Dataset ID of the destination. */
   datasetId: string;
@@ -3913,14 +5141,29 @@ export interface InsertAllTabledataRequest {
   /** Request body */
   body?: TableDataInsertAllRequest;
 }
+const InsertAllTabledataRequest = /*@__PURE__*/ __L.at(
+  __c40,
+  1,
+) as any as S.Schema<InsertAllTabledataRequest>;
+
 export interface TableDataInsertAllResponseInsertErrorsItem {
   /** Error information for the row indicated by the index property. */
   errors?: ErrorProtoList;
   /** The index of the row that error applies to. */
   index?: number;
 }
+const TableDataInsertAllResponseInsertErrorsItem = /*@__PURE__*/ __L.at(
+  __c40,
+  2,
+) as any as S.Schema<TableDataInsertAllResponseInsertErrorsItem>;
+
 export type TableDataInsertAllResponseInsertErrorsItemList =
   Array<TableDataInsertAllResponseInsertErrorsItem>;
+const TableDataInsertAllResponseInsertErrorsItemList = /*@__PURE__*/ __L.at(
+  __c40,
+  3,
+) as any as S.Schema<TableDataInsertAllResponseInsertErrorsItemList>;
+
 /** Describes the format of a streaming insert response. */
 export interface TableDataInsertAllResponse {
   /** Describes specific errors encountered while processing the request. */
@@ -3928,6 +5171,11 @@ export interface TableDataInsertAllResponse {
   /** Returns "bigquery#tableDataInsertAllResponse". */
   kind?: string;
 }
+const TableDataInsertAllResponse = /*@__PURE__*/ __L.at(
+  __c40,
+  4,
+) as any as S.Schema<TableDataInsertAllResponse>;
+
 export interface InsertDatasetsRequest {
   /** Optional. The version of the provided access policy schema. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. This version refers to the schema version of the access policy and not the version of access policy. This field's value can be equal or more than the access policy schema provided in the request. For example, * Requests with conditional access policy binding in datasets must specify version 3. * But dataset with no conditional role bindings in access policy may specify any valid value or leave the field unset. If unset or if 0 or 1 value is used for dataset with conditional bindings, request will be rejected. This field will be mapped to IAM Policy version (https://cloud.google.com/iam/docs/policies#versions) and will be used to set policy in IAM. */
   accessPolicyVersion?: number;
@@ -3936,12 +5184,19 @@ export interface InsertDatasetsRequest {
   /** Request body */
   body?: Dataset;
 }
+const InsertDatasetsRequest = /*@__PURE__*/ __L.at(
+  __c40,
+  5,
+) as any as S.Schema<InsertDatasetsRequest>;
+
 export interface InsertJobsRequest {
   /** Project ID of project that will be billed for the job. */
   projectId: string;
   /** Request body */
   body?: Job;
 }
+const InsertJobsRequest = /*@__PURE__*/ __L.at(__c40, 6) as any as S.Schema<InsertJobsRequest>;
+
 export interface InsertRoutinesRequest {
   /** Required. Dataset ID of the new routine */
   datasetId: string;
@@ -3950,6 +5205,11 @@ export interface InsertRoutinesRequest {
   /** Request body */
   body?: Routine;
 }
+const InsertRoutinesRequest = /*@__PURE__*/ __L.at(
+  __c40,
+  7,
+) as any as S.Schema<InsertRoutinesRequest>;
+
 export interface InsertRowAccessPoliciesRequest {
   /** Required. Project ID of the table to get the row access policy. */
   projectId: string;
@@ -3960,6 +5220,11 @@ export interface InsertRowAccessPoliciesRequest {
   /** Request body */
   body?: RowAccessPolicy;
 }
+const InsertRowAccessPoliciesRequest = /*@__PURE__*/ __L.at(
+  __c41,
+  0,
+) as any as S.Schema<InsertRowAccessPoliciesRequest>;
+
 export interface InsertTablesRequest {
   /** Required. Dataset ID of the new table */
   datasetId: string;
@@ -3968,6 +5233,8 @@ export interface InsertTablesRequest {
   /** Request body */
   body?: Table;
 }
+const InsertTablesRequest = /*@__PURE__*/ __L.at(__c41, 1) as any as S.Schema<InsertTablesRequest>;
+
 export interface ListDatasetsRequest {
   /** Required. Project ID of the datasets to be listed */
   projectId: string;
@@ -3980,6 +5247,8 @@ export interface ListDatasetsRequest {
   /** The maximum number of results to return in a single response page. Leverage the page tokens to iterate through the entire collection. */
   maxResults?: number;
 }
+const ListDatasetsRequest = /*@__PURE__*/ __L.at(__c41, 2) as any as S.Schema<ListDatasetsRequest>;
+
 export interface DatasetListDatasetsItem {
   /** The geographic location where the dataset resides. */
   location?: string;
@@ -4000,7 +5269,17 @@ export interface DatasetListDatasetsItem {
   /** The resource type. This property always returns the value "bigquery#dataset" */
   kind?: string;
 }
+const DatasetListDatasetsItem = /*@__PURE__*/ __L.at(
+  __c41,
+  3,
+) as any as S.Schema<DatasetListDatasetsItem>;
+
 export type DatasetListDatasetsItemList = Array<DatasetListDatasetsItem>;
+const DatasetListDatasetsItemList = /*@__PURE__*/ __L.at(
+  __c41,
+  4,
+) as any as S.Schema<DatasetListDatasetsItemList>;
+
 /** Response format for a page of results when listing datasets. */
 export interface DatasetList {
   /** An array of the dataset resources in the project. Each resource contains basic information. For full information about a particular dataset resource, use the Datasets: get method. This property is omitted when there are no datasets in the project. */
@@ -4014,9 +5293,16 @@ export interface DatasetList {
   /** A token that can be used to request the next results page. This property is omitted on the final results page. */
   nextPageToken?: string;
 }
+const DatasetList = /*@__PURE__*/ __L.at(__c41, 5) as any as S.Schema<DatasetList>;
+
 export type ListJobsProjectionEnum = "full" | "minimal";
+const ListJobsProjectionEnum = S.String;
+
 export type ListJobsStateFilterEnum = "done" | "pending" | "running";
 export type ListJobsStateFilterEnumList = Array<ListJobsStateFilterEnum | (string & {})>;
+const ListJobsStateFilterEnumList =
+  ArimaModelInfoSeasonalPeriodsItemEnumList as any as S.Schema<ListJobsStateFilterEnumList>;
+
 export interface ListJobsRequest {
   /** Whether to display jobs owned by all users in the project. Default False. */
   allUsers?: boolean;
@@ -4037,6 +5323,8 @@ export interface ListJobsRequest {
   /** Filter for job state */
   stateFilter?: ListJobsStateFilterEnumList;
 }
+const ListJobsRequest = /*@__PURE__*/ __L.at(__c41, 6) as any as S.Schema<ListJobsRequest>;
+
 export interface JobListJobsItem {
   /** Running state of the job. When the state is DONE, errorResult can be checked to determine whether the job succeeded or failed. */
   state?: string;
@@ -4059,7 +5347,11 @@ export interface JobListJobsItem {
   /** Required. Describes the job configuration. */
   configuration?: JobConfiguration;
 }
+const JobListJobsItem = /*@__PURE__*/ __L.at(__c41, 7) as any as S.Schema<JobListJobsItem>;
+
 export type JobListJobsItemList = Array<JobListJobsItem>;
+const JobListJobsItemList = /*@__PURE__*/ __L.at(__c42, 0) as any as S.Schema<JobListJobsItemList>;
+
 /** JobList is the response format for a jobs.list call. */
 export interface JobList {
   /** A token to request the next page of results. */
@@ -4073,6 +5365,8 @@ export interface JobList {
   /** The resource type of the response. */
   kind?: string;
 }
+const JobList = /*@__PURE__*/ __L.at(__c42, 1) as any as S.Schema<JobList>;
+
 export interface ListModelsRequest {
   /** The maximum number of results to return in a single response page. Leverage the page tokens to iterate through the entire collection. */
   maxResults?: number;
@@ -4083,7 +5377,11 @@ export interface ListModelsRequest {
   /** Required. Project ID of the models to list. */
   projectId: string;
 }
+const ListModelsRequest = /*@__PURE__*/ __L.at(__c42, 2) as any as S.Schema<ListModelsRequest>;
+
 export type ModelList = Array<Model>;
+const ModelList = /*@__PURE__*/ __L.at(__c42, 3) as any as S.Schema<ModelList>;
+
 /** Response format for a single page when listing BigQuery ML models. */
 export interface ListModelsResponse {
   /** Models in the requested dataset. Only the following fields are populated: model_reference, model_type, creation_time, last_modified_time and labels. */
@@ -4091,17 +5389,23 @@ export interface ListModelsResponse {
   /** A token to request the next page of results. */
   nextPageToken?: string;
 }
+const ListModelsResponse = /*@__PURE__*/ __L.at(__c42, 4) as any as S.Schema<ListModelsResponse>;
+
 export interface ListProjectsRequest {
   /** Page token, returned by a previous call, to request the next page of results. If not present, no further pages are present. */
   pageToken?: string;
   /** `maxResults` unset returns all results, up to 50 per page. Additionally, the number of projects in a page may be fewer than `maxResults` because projects are retrieved and then filtered to only projects with the BigQuery API enabled. */
   maxResults?: number;
 }
+const ListProjectsRequest = /*@__PURE__*/ __L.at(__c42, 5) as any as S.Schema<ListProjectsRequest>;
+
 /** A unique reference to a project. */
 export interface ProjectReference {
   /** Required. ID of the project. Can be either the numeric ID or the assigned ID of the project. */
   projectId?: string;
 }
+const ProjectReference = /*@__PURE__*/ __L.at(__c42, 6) as any as S.Schema<ProjectReference>;
+
 export interface ProjectListProjectsItem {
   /** The resource type. */
   kind?: string;
@@ -4114,7 +5418,17 @@ export interface ProjectListProjectsItem {
   /** The numeric ID of this project. */
   numericId?: string;
 }
+const ProjectListProjectsItem = /*@__PURE__*/ __L.at(
+  __c42,
+  7,
+) as any as S.Schema<ProjectListProjectsItem>;
+
 export type ProjectListProjectsItemList = Array<ProjectListProjectsItem>;
+const ProjectListProjectsItemList = /*@__PURE__*/ __L.at(
+  __c43,
+  0,
+) as any as S.Schema<ProjectListProjectsItemList>;
+
 /** Response object of ListProjects */
 export interface ProjectList {
   /** The total number of projects in the page. A wrapper is used here because the field should still be in the response when the value is 0. */
@@ -4128,6 +5442,8 @@ export interface ProjectList {
   /** The resource type of the response. */
   kind?: string;
 }
+const ProjectList = /*@__PURE__*/ __L.at(__c43, 1) as any as S.Schema<ProjectList>;
+
 export interface ListRoutinesRequest {
   /** Page token, returned by a previous call, to request the next page of results */
   pageToken?: string;
@@ -4142,7 +5458,11 @@ export interface ListRoutinesRequest {
   /** Required. Dataset ID of the routines to list */
   datasetId: string;
 }
+const ListRoutinesRequest = /*@__PURE__*/ __L.at(__c43, 2) as any as S.Schema<ListRoutinesRequest>;
+
 export type RoutineList = Array<Routine>;
+const RoutineList = /*@__PURE__*/ __L.at(__c43, 3) as any as S.Schema<RoutineList>;
+
 /** Describes the format of a single result page when listing routines. */
 export interface ListRoutinesResponse {
   /** Routines in the requested dataset. Unless read_mask is set in the request, only the following fields are populated: etag, project_id, dataset_id, routine_id, routine_type, creation_time, last_modified_time, language, and remote_function_options. */
@@ -4150,6 +5470,11 @@ export interface ListRoutinesResponse {
   /** A token to request the next page of results. */
   nextPageToken?: string;
 }
+const ListRoutinesResponse = /*@__PURE__*/ __L.at(
+  __c43,
+  4,
+) as any as S.Schema<ListRoutinesResponse>;
+
 export interface ListRowAccessPoliciesRequest {
   /** The maximum number of results to return in a single response page. Leverage the page tokens to iterate through the entire collection. */
   pageSize?: number;
@@ -4162,7 +5487,14 @@ export interface ListRowAccessPoliciesRequest {
   /** Page token, returned by a previous call, to request the next page of results. */
   pageToken?: string;
 }
+const ListRowAccessPoliciesRequest = /*@__PURE__*/ __L.at(
+  __c43,
+  5,
+) as any as S.Schema<ListRowAccessPoliciesRequest>;
+
 export type RowAccessPolicyList = Array<RowAccessPolicy>;
+const RowAccessPolicyList = /*@__PURE__*/ __L.at(__c43, 6) as any as S.Schema<RowAccessPolicyList>;
+
 /** Response message for the ListRowAccessPolicies method. */
 export interface ListRowAccessPoliciesResponse {
   /** A token to request the next page of results. */
@@ -4170,11 +5502,18 @@ export interface ListRowAccessPoliciesResponse {
   /** Row access policies on the requested table. */
   rowAccessPolicies?: RowAccessPolicyList;
 }
+const ListRowAccessPoliciesResponse = /*@__PURE__*/ __L.at(
+  __c43,
+  7,
+) as any as S.Schema<ListRowAccessPoliciesResponse>;
+
 export type ListTabledataFormatOptions_timestampOutputFormatEnum =
   | "TIMESTAMP_OUTPUT_FORMAT_UNSPECIFIED"
   | "FLOAT64"
   | "INT64"
   | "ISO8601_STRING";
+const ListTabledataFormatOptions_timestampOutputFormatEnum = S.String;
+
 export interface ListTabledataRequest {
   /** Start row index of the table. */
   startIndex?: string;
@@ -4197,6 +5536,11 @@ export interface ListTabledataRequest {
   /** Row limit of the table. */
   maxResults?: number;
 }
+const ListTabledataRequest = /*@__PURE__*/ __L.at(
+  __c44,
+  0,
+) as any as S.Schema<ListTabledataRequest>;
+
 export interface TableDataList {
   /** Total rows of the entire table. In order to show default value 0 we have to present it as string. */
   totalRows?: string;
@@ -4209,6 +5553,8 @@ export interface TableDataList {
   /** The resource type of the response. */
   kind?: string;
 }
+const TableDataList = /*@__PURE__*/ __L.at(__c44, 1) as any as S.Schema<TableDataList>;
+
 export interface ListTablesRequest {
   /** Required. Dataset ID of the tables to list */
   datasetId: string;
@@ -4219,12 +5565,19 @@ export interface ListTablesRequest {
   /** Required. Project ID of the tables to list */
   projectId: string;
 }
+const ListTablesRequest = /*@__PURE__*/ __L.at(__c44, 2) as any as S.Schema<ListTablesRequest>;
+
 export interface TableListTablesItemView {
   /** True if view is defined in legacy SQL dialect, false if in GoogleSQL. */
   useLegacySql?: boolean;
   /** Specifies the privacy policy for the view. */
   privacyPolicy?: PrivacyPolicy;
 }
+const TableListTablesItemView = /*@__PURE__*/ __L.at(
+  __c44,
+  3,
+) as any as S.Schema<TableListTablesItemView>;
+
 export interface TableListTablesItem {
   /** The resource type. */
   kind?: string;
@@ -4253,7 +5606,14 @@ export interface TableListTablesItem {
   /** Clustering specification for this table, if configured. */
   clustering?: Clustering;
 }
+const TableListTablesItem = /*@__PURE__*/ __L.at(__c44, 4) as any as S.Schema<TableListTablesItem>;
+
 export type TableListTablesItemList = Array<TableListTablesItem>;
+const TableListTablesItemList = /*@__PURE__*/ __L.at(
+  __c44,
+  5,
+) as any as S.Schema<TableListTablesItemList>;
+
 /** Partial projection of the metadata for a given table in a list response. */
 export interface TableList {
   /** Tables in the requested dataset. */
@@ -4267,11 +5627,15 @@ export interface TableList {
   /** The total number of tables in the dataset. */
   totalItems?: number;
 }
+const TableList = /*@__PURE__*/ __L.at(__c44, 6) as any as S.Schema<TableList>;
+
 export type PatchDatasetsUpdateModeEnum =
   | "UPDATE_MODE_UNSPECIFIED"
   | "UPDATE_METADATA"
   | "UPDATE_ACL"
   | "UPDATE_FULL";
+const PatchDatasetsUpdateModeEnum = S.String;
+
 export interface PatchDatasetsRequest {
   /** Required. Dataset ID of the dataset being updated */
   datasetId: string;
@@ -4284,6 +5648,11 @@ export interface PatchDatasetsRequest {
   /** Request body */
   body?: Dataset;
 }
+const PatchDatasetsRequest = /*@__PURE__*/ __L.at(
+  __c44,
+  7,
+) as any as S.Schema<PatchDatasetsRequest>;
+
 export interface PatchModelsRequest {
   /** Required. Dataset ID of the model to patch. */
   datasetId: string;
@@ -4294,6 +5663,8 @@ export interface PatchModelsRequest {
   /** Request body */
   body?: Model;
 }
+const PatchModelsRequest = /*@__PURE__*/ __L.at(__c45, 0) as any as S.Schema<PatchModelsRequest>;
+
 export interface PatchTablesRequest {
   /** Required. Dataset ID of the table to update */
   datasetId: string;
@@ -4306,11 +5677,15 @@ export interface PatchTablesRequest {
   /** Request body */
   body?: Table;
 }
+const PatchTablesRequest = /*@__PURE__*/ __L.at(__c45, 1) as any as S.Schema<PatchTablesRequest>;
+
 export type DataFormatOptionsTimestampOutputFormatEnum =
   | "TIMESTAMP_OUTPUT_FORMAT_UNSPECIFIED"
   | "FLOAT64"
   | "INT64"
   | "ISO8601_STRING";
+const DataFormatOptionsTimestampOutputFormatEnum = S.String;
+
 /** Options for data format adjustments. */
 export interface DataFormatOptions {
   /** Optional. The API output format for a timestamp. This offers more explicit control over the timestamp output format as compared to the existing `use_int64_timestamp` option. */
@@ -4318,15 +5693,21 @@ export interface DataFormatOptions {
   /** Optional. Output timestamp as usec int64. Default is false. */
   useInt64Timestamp?: boolean;
 }
+const DataFormatOptions = /*@__PURE__*/ __L.at(__c45, 2) as any as S.Schema<DataFormatOptions>;
+
 export type ArrowSerializationOptionsBufferCompressionEnum =
   | "COMPRESSION_UNSPECIFIED"
   | "LZ4_FRAME"
   | "ZSTD";
+const ArrowSerializationOptionsBufferCompressionEnum = S.String;
+
 export type ArrowSerializationOptionsPicosTimestampPrecisionEnum =
   | "PICOS_TIMESTAMP_PRECISION_UNSPECIFIED"
   | "TIMESTAMP_PRECISION_MICROS"
   | "TIMESTAMP_PRECISION_NANOS"
   | "TIMESTAMP_PRECISION_PICOS";
+const ArrowSerializationOptionsPicosTimestampPrecisionEnum = S.String;
+
 /** Contains options specific to Arrow Serialization. This feature is not yet available. */
 export interface ArrowSerializationOptions {
   /** The compression codec to use for Arrow buffers in serialized record batches. */
@@ -4334,14 +5715,23 @@ export interface ArrowSerializationOptions {
   /** Optional. Set timestamp precision option. If not set, the default precision is microseconds. */
   picosTimestampPrecision?: ArrowSerializationOptionsPicosTimestampPrecisionEnum | (string & {});
 }
+const ArrowSerializationOptions = /*@__PURE__*/ __L.at(
+  __c45,
+  3,
+) as any as S.Schema<ArrowSerializationOptions>;
+
 export type QueryRequestQueryResultsFormatEnum =
   | "QUERY_RESULTS_FORMAT_UNSPECIFIED"
   | "STRUCT_ENCODING"
   | "ARROW";
+const QueryRequestQueryResultsFormatEnum = S.String;
+
 export type QueryRequestJobCreationModeEnum =
   | "JOB_CREATION_MODE_UNSPECIFIED"
   | "JOB_CREATION_REQUIRED"
   | "JOB_CREATION_OPTIONAL";
+const QueryRequestJobCreationModeEnum = S.String;
+
 /** Describes the format of the jobs.query request. */
 export interface QueryRequest {
   /** Optional. A set of key-value pairs representing the secure context. This can be used to pass sensitive or context-specific information. They can be retrieved via the SECURE_CONTEXT() function and used to modify the run-time behavior of a query. */
@@ -4401,22 +5791,30 @@ export interface QueryRequest {
   /** Specifies whether to use BigQuery's legacy SQL dialect for this query. The default value is true. If set to false, the query uses BigQuery's [GoogleSQL](https://docs.cloud.google.com/bigquery/docs/introduction-sql). When useLegacySql is set to false, the value of flattenResults is ignored; query will be run as if flattenResults is false. */
   useLegacySql?: boolean;
 }
+const QueryRequest = /*@__PURE__*/ __L.at(__c45, 4) as any as S.Schema<QueryRequest>;
+
 export interface QueryJobsRequest {
   /** Required. Project ID of the query request. */
   projectId: string;
   /** Request body */
   body?: QueryRequest;
 }
+const QueryJobsRequest = /*@__PURE__*/ __L.at(__c45, 5) as any as S.Schema<QueryJobsRequest>;
+
 /** Arrow schema as specified in https://arrow.apache.org/docs/python/api/datatypes.html and serialized to bytes using IPC: https://arrow.apache.org/docs/format/Columnar.html#serialization-and-interprocess-communication-ipc See code samples on how this message can be deserialized. This feature is not yet available. */
 export interface ArrowSchema {
   /** IPC serialized Arrow schema. */
   serializedSchema?: string;
 }
+const ArrowSchema = /*@__PURE__*/ __L.at(__c45, 6) as any as S.Schema<ArrowSchema>;
+
 /** Arrow RecordBatch. This feature is not yet available. */
 export interface ArrowRecordBatch {
   /** IPC-serialized Arrow RecordBatch. */
   serializedRecordBatch?: string;
 }
+const ArrowRecordBatch = /*@__PURE__*/ __L.at(__c45, 7) as any as S.Schema<ArrowRecordBatch>;
+
 export interface QueryResponse {
   /** Output only. End time of this query, in milliseconds since the epoch. This field will be present whenever a query job is in the DONE state. */
   endTime?: string;
@@ -4469,6 +5867,8 @@ export interface QueryResponse {
   /** Output only. The type of query statement, if valid. Possible values: * `SELECT`: [`SELECT`](https://cloud.google.com/bigquery/docs/reference/standard-sql/query-syntax#select_list) statement. * `ASSERT`: [`ASSERT`](https://cloud.google.com/bigquery/docs/reference/standard-sql/debugging-statements#assert) statement. * `INSERT`: [`INSERT`](https://cloud.google.com/bigquery/docs/reference/standard-sql/dml-syntax#insert_statement) statement. * `UPDATE`: [`UPDATE`](https://cloud.google.com/bigquery/docs/reference/standard-sql/dml-syntax#update_statement) statement. * `DELETE`: [`DELETE`](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language) statement. * `MERGE`: [`MERGE`](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language) statement. * `TRUNCATE_TABLE`: [`TRUNCATE TABLE`](https://cloud.google.com/bigquery/docs/reference/standard-sql/dml-syntax#truncate_table_statement) statement. * `CREATE_TABLE`: [`CREATE TABLE`](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#create_table_statement) statement, without `AS SELECT`. * `CREATE_TABLE_AS_SELECT`: [`CREATE TABLE AS SELECT`](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#create_table_statement) statement. * `CREATE_VIEW`: [`CREATE VIEW`](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#create_view_statement) statement. * `CREATE_MODEL`: [`CREATE MODEL`](https://cloud.google.com/bigquery-ml/docs/reference/standard-sql/bigqueryml-syntax-create#create_model_statement) statement. * `CREATE_MATERIALIZED_VIEW`: [`CREATE MATERIALIZED VIEW`](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#create_materialized_view_statement) statement. * `CREATE_FUNCTION`: [`CREATE FUNCTION`](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#create_function_statement) statement. * `CREATE_TABLE_FUNCTION`: [`CREATE TABLE FUNCTION`](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#create_table_function_statement) statement. * `CREATE_PROCEDURE`: [`CREATE PROCEDURE`](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#create_procedure) statement. * `CREATE_ROW_ACCESS_POLICY`: [`CREATE ROW ACCESS POLICY`](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#create_row_access_policy_statement) statement. * `CREATE_SCHEMA`: [`CREATE SCHEMA`](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#create_schema_statement) statement. * `CREATE_EXTERNAL_SCHEMA`: [`CREATE EXTERNAL SCHEMA`](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#create_external_schema_statement) statement. * `CREATE_EXTERNAL_TABLE`: [`CREATE EXTERNAL TABLE`](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#create_external_table_statement) statement. * `CREATE_SNAPSHOT_TABLE`: [`CREATE SNAPSHOT TABLE`](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#create_snapshot_table_statement) statement. * `CREATE_SEARCH_INDEX`: [`CREATE SEARCH INDEX`](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#create_search_index_statement) statement. * `CREATE_VECTOR_INDEX`: [`CREATE VECTOR INDEX`](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#create_vector_index_statement) statement. * `CREATE_CONNECTION`: [`CREATE CONNECTION`](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#create_connection_statement) statement. * `CREATE_DATA_POLICY`: [`CREATE DATA_POLICY`](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#create_data_policy_statement) statement. * `CREATE_PROPERTY_GRAPH`: [`CREATE PROPERTY GRAPH`](https://cloud.google.com/bigquery/docs/reference/standard-sql/graph-schema-statements#gql_create_graph) statement. * `CREATE_CAPACITY`: [`CREATE CAPACITY`](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#create_capacity_statement) statement. * `CREATE_RESERVATION`: [`CREATE RESERVATION`](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#create_reservation_statement) statement. * `CREATE_ASSIGNMENT`: [`CREATE ASSIGNMENT`](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#create_assignment_statement) statement. * `DROP_TABLE`: [`DROP TABLE`](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#drop_table_statement) statement. * `DROP_EXTERNAL_TABLE`: [`DROP EXTERNAL TABLE`](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#drop_external_table_statement) statement. * `DROP_VIEW`: [`DROP VIEW`](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#drop_view_statement) statement. * `DROP_MODEL`: [`DROP MODEL`](https://cloud.google.com/bigquery-ml/docs/reference/standard-sql/bigqueryml-syntax-drop-model) statement. * `DROP_MATERIALIZED_VIEW`: [`DROP MATERIALIZED VIEW`](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#drop_materialized_view_statement) statement. * `DROP_FUNCTION`: [`DROP FUNCTION`](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#drop_function_statement) statement. * `DROP_TABLE_FUNCTION`: [`DROP TABLE FUNCTION`](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#drop_table_function) statement. * `DROP_PROCEDURE`: [`DROP PROCEDURE`](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#drop_procedure_statement) statement. * `DROP_SEARCH_INDEX`: [`DROP SEARCH INDEX`](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#drop_search_index) statement. * `DROP_VECTOR_INDEX`: [`DROP VECTOR INDEX`](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#drop_vector_index) statement. * `DROP_SCHEMA`: [`DROP SCHEMA`](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#drop_schema_statement) statement. * `UNDROP_SCHEMA`: [`UNDROP SCHEMA`](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#undrop_schema_statement) statement. * `DROP_SNAPSHOT_TABLE`: [`DROP SNAPSHOT TABLE`](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#drop_snapshot_table_statement) statement. * `DROP_ROW_ACCESS_POLICY`: [`DROP [ALL] ROW ACCESS POLICY|POLICIES`](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#drop_row_access_policy_statement) statement. * `DROP_CONNECTION`: [`DROP CONNECTION`](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#drop_connection_statement) statement. * `DROP_DATA_POLICY`: [`DROP DATA_POLICY`](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#drop_data_policy) statement. * `DROP_PROPERTY_GRAPH`: [`DROP PROPERTY GRAPH`](https://cloud.google.com/bigquery/docs/reference/standard-sql/graph-schema-statements#gql_drop_graph) statement. * `DROP_CAPACITY`: [`DROP CAPACITY`](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#drop_capacity_statement) statement. * `DROP_RESERVATION`: [`DROP RESERVATION`](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#drop_reservation_statement) statement. * `DROP_ASSIGNMENT`: [`DROP ASSIGNMENT`](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#drop_assignment_statement) statement. * `ALTER_TABLE`: [`ALTER TABLE`](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#alter_table_set_options_statement) statement. * `ALTER_VIEW`: [`ALTER VIEW`](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#alter_view_set_options_statement) statement. * `ALTER_MATERIALIZED_VIEW`: [`ALTER MATERIALIZED VIEW`](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#alter_materialized_view_set_options_statement) statement. * `ALTER_SCHEMA`: [`ALTER SCHEMA`](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#alter_schema_set_options_statement) statement. * `ALTER_MODEL`: [`ALTER MODEL`](https://cloud.google.com/bigquery-ml/docs/reference/standard-sql/bigqueryml-syntax-alter-model) statement. * `ALTER_SEARCH_INDEX`: [`ALTER SEARCH INDEX`](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#alter_search_index_statement) statement. * `ALTER_VECTOR_INDEX`: [`ALTER VECTOR INDEX`](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#alter_vector_index_rebuild_statement) statement. * `ALTER_CONNECTION`: [`ALTER CONNECTION`](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#alter_connection_set_options_statement) statement. * `ALTER_DATA_POLICY`: [`ALTER DATA_POLICY`](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#alter_data_policy_statement) statement. * `ALTER_PROJECT`: [`ALTER PROJECT`](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#alter_project_set_options_statement) statement. * `ALTER_ORGANIZATION`: [`ALTER ORGANIZATION`](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#alter_organization_set_options_statement) statement. * `ALTER_BI_CAPACITY`: [`ALTER BI_CAPACITY`](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#alter_bi_capacity_set_options_statement) statement. * `ALTER_CAPACITY`: [`ALTER CAPACITY`](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#alter_capacity_set_options_statement) statement. * `ALTER_RESERVATION`: [`ALTER RESERVATION`](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#alter_reservation_set_options_statement) statement. * `SCRIPT`: [`SCRIPT`](https://cloud.google.com/bigquery/docs/reference/standard-sql/procedural-language) statement. * `CALL`: [`CALL`](https://cloud.google.com/bigquery/docs/reference/standard-sql/procedural-language#call) statement. * `BEGIN_TRANSACTION`: [`BEGIN TRANSACTION`](https://cloud.google.com/bigquery/docs/reference/standard-sql/procedural-language#begin_transaction) statement. * `COMMIT_TRANSACTION`: [`COMMIT TRANSACTION`](https://cloud.google.com/bigquery/docs/reference/standard-sql/procedural-language#commit_transaction) statement. * `ROLLBACK_TRANSACTION`: [`ROLLBACK TRANSACTION`](https://cloud.google.com/bigquery/docs/reference/standard-sql/procedural-language#rollback_transaction) statement. * `EXPORT_DATA`: [`EXPORT DATA`](https://cloud.google.com/bigquery/docs/reference/standard-sql/export-statements#export_data_statement) statement. * `EXPORT_MODEL`: [`EXPORT MODEL`](https://cloud.google.com/bigquery-ml/docs/reference/standard-sql/bigqueryml-syntax-export-model) statement. * `EXPORT_METADATA`: [`EXPORT TABLE METADATA`](https://cloud.google.com/bigquery/docs/biglake-iceberg-tables-in-bigquery) statement, for BigLake Iceberg tables. * `LOAD_DATA`: [`LOAD DATA`](https://cloud.google.com/bigquery/docs/reference/standard-sql/load-statements#load_data_statement) statement. * `GRANT_ON_SCHEMA`: [`GRANT ... ON SCHEMA`](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-control-language#grant_statement) statement. * `GRANT_ON_TABLE`: [`GRANT ... ON TABLE`](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-control-language#grant_statement) statement. Also used for `GRANT ... ON EXTERNAL TABLE`. * `GRANT_ON_VIEW`: [`GRANT ... ON VIEW`](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-control-language#grant_statement) statement. * `GRANT_ON_PROJECT`: [`GRANT ... ON PROJECT`](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-control-language#grant_statement) statement. * `REVOKE_ON_SCHEMA`: [`REVOKE ... ON SCHEMA`](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-control-language#revoke_statement) statement. * `REVOKE_ON_TABLE`: [`REVOKE ... ON TABLE`](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-control-language#revoke_statement) statement. Also used for `REVOKE ... ON EXTERNAL TABLE`. * `REVOKE_ON_VIEW`: [`REVOKE ... ON VIEW`](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-control-language#revoke_statement) statement. * `REVOKE_ON_PROJECT`: [`REVOKE ... ON PROJECT`](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-control-language#revoke_statement) statement. */
   statementType?: string;
 }
+const QueryResponse = /*@__PURE__*/ __L.at(__c46, 0) as any as S.Schema<QueryResponse>;
+
 /** Request message for `SetIamPolicy` method. */
 export interface SetIamPolicyRequest {
   /** OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask will be modified. If no mask is provided, the following default mask is used: `paths: "bindings, etag"` */
@@ -4476,51 +5876,91 @@ export interface SetIamPolicyRequest {
   /** REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Google Cloud services (such as Projects) might reject them. */
   policy?: Policy;
 }
+const SetIamPolicyRequest = /*@__PURE__*/ __L.at(__c46, 1) as any as S.Schema<SetIamPolicyRequest>;
+
 export interface SetIamPolicyRoutinesRequest {
   /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: SetIamPolicyRequest;
 }
+const SetIamPolicyRoutinesRequest = /*@__PURE__*/ __L.at(
+  __c46,
+  2,
+) as any as S.Schema<SetIamPolicyRoutinesRequest>;
+
 export interface SetIamPolicyTablesRequest {
   /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: SetIamPolicyRequest;
 }
+const SetIamPolicyTablesRequest = /*@__PURE__*/ __L.at(
+  __c46,
+  3,
+) as any as S.Schema<SetIamPolicyTablesRequest>;
+
 /** Request message for `TestIamPermissions` method. */
 export interface TestIamPermissionsRequest {
   /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
   permissions?: StringList;
 }
+const TestIamPermissionsRequest = /*@__PURE__*/ __L.at(
+  __c46,
+  4,
+) as any as S.Schema<TestIamPermissionsRequest>;
+
 export interface TestIamPermissionsRoutinesRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
+const TestIamPermissionsRoutinesRequest = /*@__PURE__*/ __L.at(
+  __c46,
+  5,
+) as any as S.Schema<TestIamPermissionsRoutinesRequest>;
+
 /** Response message for `TestIamPermissions` method. */
 export interface TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
   permissions?: StringList;
 }
+const TestIamPermissionsResponse =
+  TestIamPermissionsRequest as any as S.Schema<TestIamPermissionsResponse>;
+
 export interface TestIamPermissionsRowAccessPoliciesRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
+const TestIamPermissionsRowAccessPoliciesRequest = /*@__PURE__*/ __L.at(
+  __c46,
+  6,
+) as any as S.Schema<TestIamPermissionsRowAccessPoliciesRequest>;
+
 export interface TestIamPermissionsTablesRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
+const TestIamPermissionsTablesRequest = /*@__PURE__*/ __L.at(
+  __c46,
+  7,
+) as any as S.Schema<TestIamPermissionsTablesRequest>;
+
 /** Request format for undeleting a dataset. */
 export interface UndeleteDatasetRequest {
   /** Optional. The exact time when the dataset was deleted. If not specified, the most recently deleted version is undeleted. Undeleting a dataset using deletion time is not supported. */
   deletionTime?: string;
 }
+const UndeleteDatasetRequest = /*@__PURE__*/ __L.at(
+  __c47,
+  0,
+) as any as S.Schema<UndeleteDatasetRequest>;
+
 export interface UndeleteDatasetsRequest {
   /** Required. Dataset ID of dataset being deleted */
   datasetId: string;
@@ -4529,11 +5969,18 @@ export interface UndeleteDatasetsRequest {
   /** Request body */
   body?: UndeleteDatasetRequest;
 }
+const UndeleteDatasetsRequest = /*@__PURE__*/ __L.at(
+  __c47,
+  1,
+) as any as S.Schema<UndeleteDatasetsRequest>;
+
 export type UpdateDatasetsUpdateModeEnum =
   | "UPDATE_MODE_UNSPECIFIED"
   | "UPDATE_METADATA"
   | "UPDATE_ACL"
   | "UPDATE_FULL";
+const UpdateDatasetsUpdateModeEnum = S.String;
+
 export interface UpdateDatasetsRequest {
   /** Optional. The version of the provided access policy schema. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. This version refers to the schema version of the access policy and not the version of access policy. This field's value can be equal or more than the access policy schema provided in the request. For example, * Operations updating conditional access policy binding in datasets must specify version 3. Some of the operations are : - Adding a new access policy entry with condition. - Removing an access policy entry with condition. - Updating an access policy entry with condition. * But dataset with no conditional role bindings in access policy may specify any valid value or leave the field unset. If unset or if 0 or 1 value is used for dataset with conditional bindings, request will be rejected. This field will be mapped to IAM Policy version (https://cloud.google.com/iam/docs/policies#versions) and will be used to set policy in IAM. */
   accessPolicyVersion?: number;
@@ -4546,6 +5993,11 @@ export interface UpdateDatasetsRequest {
   /** Request body */
   body?: Dataset;
 }
+const UpdateDatasetsRequest = /*@__PURE__*/ __L.at(
+  __c47,
+  2,
+) as any as S.Schema<UpdateDatasetsRequest>;
+
 export interface UpdateRoutinesRequest {
   /** Required. Project ID of the routine to update */
   projectId: string;
@@ -4556,6 +6008,11 @@ export interface UpdateRoutinesRequest {
   /** Request body */
   body?: Routine;
 }
+const UpdateRoutinesRequest = /*@__PURE__*/ __L.at(
+  __c47,
+  3,
+) as any as S.Schema<UpdateRoutinesRequest>;
+
 export interface UpdateRowAccessPoliciesRequest {
   /** Required. Project ID of the table to get the row access policy. */
   projectId: string;
@@ -4568,6 +6025,11 @@ export interface UpdateRowAccessPoliciesRequest {
   /** Request body */
   body?: RowAccessPolicy;
 }
+const UpdateRowAccessPoliciesRequest = /*@__PURE__*/ __L.at(
+  __c47,
+  4,
+) as any as S.Schema<UpdateRowAccessPoliciesRequest>;
+
 export interface UpdateTablesRequest {
   /** Optional. When true will autodetect schema, else will keep original schema */
   autodetect_schema?: boolean;
@@ -4580,6 +6042,8 @@ export interface UpdateTablesRequest {
   /** Request body */
   body?: Table;
 }
+const UpdateTablesRequest = /*@__PURE__*/ __L.at(__c47, 5) as any as S.Schema<UpdateTablesRequest>;
+
 export type BatchDeleteRowAccessPoliciesError =
   | NotFound
   | Forbidden
@@ -4593,8 +6057,8 @@ export const batchDeleteRowAccessPolicies: API.OperationMethod<
   BatchDeleteRowAccessPoliciesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2) as any as S.Schema<BatchDeleteRowAccessPoliciesRequest_>,
-  output: __S(3) as any as S.Schema<BatchDeleteRowAccessPoliciesResponse>,
+  input: BatchDeleteRowAccessPoliciesRequest_,
+  output: BatchDeleteRowAccessPoliciesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4608,8 +6072,8 @@ export const cancelJobs: API.OperationMethod<
   CancelJobsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4) as any as S.Schema<CancelJobsRequest>,
-  output: __S(202) as any as S.Schema<JobCancelResponse>,
+  input: CancelJobsRequest,
+  output: JobCancelResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4623,8 +6087,8 @@ export const deleteDatasets: API.OperationMethod<
   DeleteDatasetsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(203) as any as S.Schema<DeleteDatasetsRequest>,
-  output: __S(204) as any as S.Schema<DeleteDatasetsResponse>,
+  input: DeleteDatasetsRequest,
+  output: DeleteDatasetsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4638,8 +6102,8 @@ export const deleteJobs: API.OperationMethod<
   DeleteJobsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(205) as any as S.Schema<DeleteJobsRequest>,
-  output: __S(204) as any as S.Schema<DeleteJobsResponse>,
+  input: DeleteJobsRequest,
+  output: DeleteJobsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4653,8 +6117,8 @@ export const deleteModels: API.OperationMethod<
   DeleteModelsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(206) as any as S.Schema<DeleteModelsRequest>,
-  output: __S(204) as any as S.Schema<DeleteModelsResponse>,
+  input: DeleteModelsRequest,
+  output: DeleteModelsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4668,8 +6132,8 @@ export const deleteRoutines: API.OperationMethod<
   DeleteRoutinesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(207) as any as S.Schema<DeleteRoutinesRequest>,
-  output: __S(204) as any as S.Schema<DeleteRoutinesResponse>,
+  input: DeleteRoutinesRequest,
+  output: DeleteRoutinesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4688,8 +6152,8 @@ export const deleteRowAccessPolicies: API.OperationMethod<
   DeleteRowAccessPoliciesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(208) as any as S.Schema<DeleteRowAccessPoliciesRequest>,
-  output: __S(209) as any as S.Schema<DeleteRowAccessPoliciesResponse>,
+  input: DeleteRowAccessPoliciesRequest,
+  output: DeleteRowAccessPoliciesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4703,8 +6167,8 @@ export const deleteTables: API.OperationMethod<
   DeleteTablesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(210) as any as S.Schema<DeleteTablesRequest>,
-  output: __S(204) as any as S.Schema<DeleteTablesResponse>,
+  input: DeleteTablesRequest,
+  output: DeleteTablesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4718,8 +6182,8 @@ export const getDatasets: API.OperationMethod<
   GetDatasetsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(211) as any as S.Schema<GetDatasetsRequest>,
-  output: __S(223) as any as S.Schema<Dataset>,
+  input: GetDatasetsRequest,
+  output: Dataset,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4733,8 +6197,8 @@ export const getIamPolicyRoutines: API.OperationMethod<
   GetIamPolicyRoutinesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(226) as any as S.Schema<GetIamPolicyRoutinesRequest>,
-  output: __S(233) as any as S.Schema<Policy>,
+  input: GetIamPolicyRoutinesRequest,
+  output: Policy,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4753,8 +6217,8 @@ export const getIamPolicyRowAccessPolicies: API.OperationMethod<
   GetIamPolicyRowAccessPoliciesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(234) as any as S.Schema<GetIamPolicyRowAccessPoliciesRequest>,
-  output: __S(233) as any as S.Schema<Policy>,
+  input: GetIamPolicyRowAccessPoliciesRequest,
+  output: Policy,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4768,8 +6232,8 @@ export const getIamPolicyTables: API.OperationMethod<
   GetIamPolicyTablesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(235) as any as S.Schema<GetIamPolicyTablesRequest>,
-  output: __S(233) as any as S.Schema<Policy>,
+  input: GetIamPolicyTablesRequest,
+  output: Policy,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4779,8 +6243,8 @@ export type GetJobsError = NotFound | Forbidden | GcpOpError;
 /** Returns information about a specific job. Job information is available for a six month period after creation. Requires that you're the person who ran the job, or have the Is Owner project role. # IAM Permissions Requires the `bigquery.jobs.get` permission on the job resource. If the user matches the creator of the job, the `bigquery.jobs.create` permission on the project is required instead. */
 export const getJobs: API.OperationMethod<GetJobsRequest, Job, GetJobsError, GcpOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(236) as any as S.Schema<GetJobsRequest>,
-    output: __S(201) as any as S.Schema<Job>,
+    input: GetJobsRequest,
+    output: Job,
     errors: [NotFound, Forbidden, UnknownGCPError],
     protocol: GcpProtocol,
     retry: Retry.Retry,
@@ -4790,8 +6254,8 @@ export type GetModelsError = NotFound | Forbidden | GcpOpError;
 /** Gets the specified model resource by model ID. # IAM Permissions Requires the `bigquery.models.getMetadata` permission on the model. */
 export const getModels: API.OperationMethod<GetModelsRequest, Model, GetModelsError, GcpOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(237) as any as S.Schema<GetModelsRequest>,
-    output: __S(258) as any as S.Schema<Model>,
+    input: GetModelsRequest,
+    output: Model,
     errors: [NotFound, Forbidden, UnknownGCPError],
     protocol: GcpProtocol,
     retry: Retry.Retry,
@@ -4805,8 +6269,8 @@ export const getQueryResultsJobs: API.OperationMethod<
   GetQueryResultsJobsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(259) as any as S.Schema<GetQueryResultsJobsRequest>,
-  output: __S(264) as any as S.Schema<GetQueryResultsResponse>,
+  input: GetQueryResultsJobsRequest,
+  output: GetQueryResultsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4820,8 +6284,8 @@ export const getRoutines: API.OperationMethod<
   GetRoutinesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(265) as any as S.Schema<GetRoutinesRequest>,
-  output: __S(276) as any as S.Schema<Routine>,
+  input: GetRoutinesRequest,
+  output: Routine,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4835,8 +6299,8 @@ export const getRowAccessPolicies: API.OperationMethod<
   GetRowAccessPoliciesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(277) as any as S.Schema<GetRowAccessPoliciesRequest>,
-  output: __S(278) as any as S.Schema<RowAccessPolicy>,
+  input: GetRowAccessPoliciesRequest,
+  output: RowAccessPolicy,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4850,8 +6314,8 @@ export const getServiceAccountProjects: API.OperationMethod<
   GetServiceAccountProjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(279) as any as S.Schema<GetServiceAccountProjectsRequest>,
-  output: __S(280) as any as S.Schema<GetServiceAccountResponse>,
+  input: GetServiceAccountProjectsRequest,
+  output: GetServiceAccountResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4861,8 +6325,8 @@ export type GetTablesError = NotFound | Forbidden | GcpOpError;
 /** Gets the specified table resource by table ID. This method does not return the data in the table, it only returns the table resource, which describes the structure of this table. # IAM Permissions Requires the `bigquery.tables.get` permission on the table. */
 export const getTables: API.OperationMethod<GetTablesRequest, Table, GetTablesError, GcpOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(281) as any as S.Schema<GetTablesRequest>,
-    output: __S(316) as any as S.Schema<Table>,
+    input: GetTablesRequest,
+    output: Table,
     errors: [NotFound, Forbidden, UnknownGCPError],
     protocol: GcpProtocol,
     retry: Retry.Retry,
@@ -4876,8 +6340,8 @@ export const insertAllTabledata: API.OperationMethod<
   InsertAllTabledataError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(321) as any as S.Schema<InsertAllTabledataRequest>,
-  output: __S(324) as any as S.Schema<TableDataInsertAllResponse>,
+  input: InsertAllTabledataRequest,
+  output: TableDataInsertAllResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4891,8 +6355,8 @@ export const insertDatasets: API.OperationMethod<
   InsertDatasetsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(325) as any as S.Schema<InsertDatasetsRequest>,
-  output: __S(223) as any as S.Schema<Dataset>,
+  input: InsertDatasetsRequest,
+  output: Dataset,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4906,8 +6370,8 @@ export const insertJobs: API.OperationMethod<
   InsertJobsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(326) as any as S.Schema<InsertJobsRequest>,
-  output: __S(201) as any as S.Schema<Job>,
+  input: InsertJobsRequest,
+  output: Job,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4921,8 +6385,8 @@ export const insertRoutines: API.OperationMethod<
   InsertRoutinesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(327) as any as S.Schema<InsertRoutinesRequest>,
-  output: __S(276) as any as S.Schema<Routine>,
+  input: InsertRoutinesRequest,
+  output: Routine,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4941,8 +6405,8 @@ export const insertRowAccessPolicies: API.OperationMethod<
   InsertRowAccessPoliciesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(328) as any as S.Schema<InsertRowAccessPoliciesRequest>,
-  output: __S(278) as any as S.Schema<RowAccessPolicy>,
+  input: InsertRowAccessPoliciesRequest,
+  output: RowAccessPolicy,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4956,8 +6420,8 @@ export const insertTables: API.OperationMethod<
   InsertTablesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(329) as any as S.Schema<InsertTablesRequest>,
-  output: __S(316) as any as S.Schema<Table>,
+  input: InsertTablesRequest,
+  output: Table,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4972,8 +6436,8 @@ export const listDatasets: API.PaginatedOperationMethod<
   GcpOpContext,
   DatasetList
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(330) as any as S.Schema<ListDatasetsRequest>,
-  output: __S(333) as any as S.Schema<DatasetList>,
+  input: ListDatasetsRequest,
+  output: DatasetList,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4989,8 +6453,8 @@ export const listJobs: API.PaginatedOperationMethod<
   GcpOpContext,
   JobList
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(334) as any as S.Schema<ListJobsRequest>,
-  output: __S(337) as any as S.Schema<JobList>,
+  input: ListJobsRequest,
+  output: JobList,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5006,8 +6470,8 @@ export const listModels: API.PaginatedOperationMethod<
   GcpOpContext,
   ListModelsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(338) as any as S.Schema<ListModelsRequest>,
-  output: __S(340) as any as S.Schema<ListModelsResponse>,
+  input: ListModelsRequest,
+  output: ListModelsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5023,8 +6487,8 @@ export const listProjects: API.PaginatedOperationMethod<
   GcpOpContext,
   ProjectList
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(341) as any as S.Schema<ListProjectsRequest>,
-  output: __S(345) as any as S.Schema<ProjectList>,
+  input: ListProjectsRequest,
+  output: ProjectList,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5040,8 +6504,8 @@ export const listRoutines: API.PaginatedOperationMethod<
   GcpOpContext,
   ListRoutinesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(346) as any as S.Schema<ListRoutinesRequest>,
-  output: __S(348) as any as S.Schema<ListRoutinesResponse>,
+  input: ListRoutinesRequest,
+  output: ListRoutinesResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5057,8 +6521,8 @@ export const listRowAccessPolicies: API.PaginatedOperationMethod<
   GcpOpContext,
   ListRowAccessPoliciesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(349) as any as S.Schema<ListRowAccessPoliciesRequest>,
-  output: __S(351) as any as S.Schema<ListRowAccessPoliciesResponse>,
+  input: ListRowAccessPoliciesRequest,
+  output: ListRowAccessPoliciesResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5073,8 +6537,8 @@ export const listTabledata: API.OperationMethod<
   ListTabledataError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(352) as any as S.Schema<ListTabledataRequest>,
-  output: __S(353) as any as S.Schema<TableDataList>,
+  input: ListTabledataRequest,
+  output: TableDataList,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5089,8 +6553,8 @@ export const listTables: API.PaginatedOperationMethod<
   GcpOpContext,
   TableList
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(354) as any as S.Schema<ListTablesRequest>,
-  output: __S(358) as any as S.Schema<TableList>,
+  input: ListTablesRequest,
+  output: TableList,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5105,8 +6569,8 @@ export const patchDatasets: API.OperationMethod<
   PatchDatasetsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(359) as any as S.Schema<PatchDatasetsRequest>,
-  output: __S(223) as any as S.Schema<Dataset>,
+  input: PatchDatasetsRequest,
+  output: Dataset,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5120,8 +6584,8 @@ export const patchModels: API.OperationMethod<
   PatchModelsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(360) as any as S.Schema<PatchModelsRequest>,
-  output: __S(258) as any as S.Schema<Model>,
+  input: PatchModelsRequest,
+  output: Model,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5135,8 +6599,8 @@ export const patchTables: API.OperationMethod<
   PatchTablesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(361) as any as S.Schema<PatchTablesRequest>,
-  output: __S(316) as any as S.Schema<Table>,
+  input: PatchTablesRequest,
+  output: Table,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5150,8 +6614,8 @@ export const queryJobs: API.OperationMethod<
   QueryJobsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(365) as any as S.Schema<QueryJobsRequest>,
-  output: __S(368) as any as S.Schema<QueryResponse>,
+  input: QueryJobsRequest,
+  output: QueryResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5165,8 +6629,8 @@ export const setIamPolicyRoutines: API.OperationMethod<
   SetIamPolicyRoutinesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(370) as any as S.Schema<SetIamPolicyRoutinesRequest>,
-  output: __S(233) as any as S.Schema<Policy>,
+  input: SetIamPolicyRoutinesRequest,
+  output: Policy,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5180,8 +6644,8 @@ export const setIamPolicyTables: API.OperationMethod<
   SetIamPolicyTablesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(371) as any as S.Schema<SetIamPolicyTablesRequest>,
-  output: __S(233) as any as S.Schema<Policy>,
+  input: SetIamPolicyTablesRequest,
+  output: Policy,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5200,8 +6664,8 @@ export const testIamPermissionsRoutines: API.OperationMethod<
   TestIamPermissionsRoutinesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(373) as any as S.Schema<TestIamPermissionsRoutinesRequest>,
-  output: __S(372) as any as S.Schema<TestIamPermissionsResponse>,
+  input: TestIamPermissionsRoutinesRequest,
+  output: TestIamPermissionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5220,8 +6684,8 @@ export const testIamPermissionsRowAccessPolicies: API.OperationMethod<
   TestIamPermissionsRowAccessPoliciesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(374) as any as S.Schema<TestIamPermissionsRowAccessPoliciesRequest>,
-  output: __S(372) as any as S.Schema<TestIamPermissionsResponse>,
+  input: TestIamPermissionsRowAccessPoliciesRequest,
+  output: TestIamPermissionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5240,8 +6704,8 @@ export const testIamPermissionsTables: API.OperationMethod<
   TestIamPermissionsTablesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(375) as any as S.Schema<TestIamPermissionsTablesRequest>,
-  output: __S(372) as any as S.Schema<TestIamPermissionsResponse>,
+  input: TestIamPermissionsTablesRequest,
+  output: TestIamPermissionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5255,8 +6719,8 @@ export const undeleteDatasets: API.OperationMethod<
   UndeleteDatasetsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(377) as any as S.Schema<UndeleteDatasetsRequest>,
-  output: __S(223) as any as S.Schema<Dataset>,
+  input: UndeleteDatasetsRequest,
+  output: Dataset,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5270,8 +6734,8 @@ export const updateDatasets: API.OperationMethod<
   UpdateDatasetsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(378) as any as S.Schema<UpdateDatasetsRequest>,
-  output: __S(223) as any as S.Schema<Dataset>,
+  input: UpdateDatasetsRequest,
+  output: Dataset,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5285,8 +6749,8 @@ export const updateRoutines: API.OperationMethod<
   UpdateRoutinesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(379) as any as S.Schema<UpdateRoutinesRequest>,
-  output: __S(276) as any as S.Schema<Routine>,
+  input: UpdateRoutinesRequest,
+  output: Routine,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5305,8 +6769,8 @@ export const updateRowAccessPolicies: API.OperationMethod<
   UpdateRowAccessPoliciesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(380) as any as S.Schema<UpdateRowAccessPoliciesRequest>,
-  output: __S(278) as any as S.Schema<RowAccessPolicy>,
+  input: UpdateRowAccessPoliciesRequest,
+  output: RowAccessPolicy,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5320,8 +6784,8 @@ export const updateTables: API.OperationMethod<
   UpdateTablesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(381) as any as S.Schema<UpdateTablesRequest>,
-  output: __S(316) as any as S.Schema<Table>,
+  input: UpdateTablesRequest,
+  output: Table,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5336,7 +6800,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           force: S.optional(S.Boolean),
-          policyIds: S.optional(__S(0)),
+          policyIds: S.optional(StringList),
         }),
       ).annotate({
         identifier: "BatchDeleteRowAccessPoliciesRequest",
@@ -5347,7 +6811,7 @@ function __c0(j: number): any {
           tableId: S.String.pipe(T.Label()),
           projectId: S.String.pipe(T.Label()),
           datasetId: S.String.pipe(T.Label()),
-          body: S.optional(__S(1).pipe(T.HttpBody())),
+          body: S.optional(BatchDeleteRowAccessPoliciesRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5395,7 +6859,7 @@ function __c0(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          errors: S.optional(__S(0)),
+          errors: S.optional(StringList),
         }),
       ).annotate({ identifier: "GenAiErrorStats" });
   }
@@ -5406,7 +6870,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           numFailedRows: S.optional(S.String),
-          errors: S.optional(__S(0)),
+          errors: S.optional(StringList),
         }),
       ).annotate({ identifier: "GenAiFunctionErrorStats" });
     case 1:
@@ -5428,20 +6892,20 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           prompt: S.optional(S.String),
-          errorStats: S.optional(__S(8)),
-          costOptimizationStats: S.optional(__S(9)),
-          cacheStats: S.optional(__S(10)),
+          errorStats: S.optional(GenAiFunctionErrorStats),
+          costOptimizationStats: S.optional(GenAiFunctionCostOptimizationStats),
+          cacheStats: S.optional(GenAiFunctionCacheStats),
           functionName: S.optional(S.String),
           numProcessedRows: S.optional(S.String),
         }),
       ).annotate({ identifier: "GenAiFunctionStats" });
     case 4:
-      return S.Array(__S(11));
+      return S.Array(GenAiFunctionStats);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          errorStats: S.optional(__S(7)),
-          functionStats: S.optional(__S(12)),
+          errorStats: S.optional(GenAiErrorStats),
+          functionStats: S.optional(GenAiFunctionStatsList),
         }),
       ).annotate({ identifier: "GenAiStats" });
     case 6:
@@ -5456,7 +6920,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           postIndexPruningParallelInputCount: S.optional(S.String),
-          baseTable: S.optional(__S(14)),
+          baseTable: S.optional(TableReference),
           indexId: S.optional(S.String),
           preIndexPruningParallelInputCount: S.optional(S.String),
         }),
@@ -5466,24 +6930,24 @@ function __c1(j: number): any {
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(15));
+      return S.Array(IndexPruningStats);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          code: S.optional(S.String),
+          code: S.optional(IndexUnusedReasonCodeEnum),
           message: S.optional(S.String),
-          baseTable: S.optional(__S(14)),
+          baseTable: S.optional(TableReference),
           indexName: S.optional(S.String),
         }),
       ).annotate({ identifier: "IndexUnusedReason" });
     case 2:
-      return S.Array(__S(17));
+      return S.Array(IndexUnusedReason);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          indexPruningStats: S.optional(__S(16)),
-          indexUsageMode: S.optional(S.String),
-          indexUnusedReasons: S.optional(__S(18)),
+          indexPruningStats: S.optional(IndexPruningStatsList),
+          indexUsageMode: S.optional(SearchStatisticsIndexUsageModeEnum),
+          indexUnusedReasons: S.optional(IndexUnusedReasonList),
         }),
       ).annotate({ identifier: "SearchStatistics" });
     case 4:
@@ -5497,20 +6961,20 @@ function __c2(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          tableReference: S.optional(__S(14)),
+          tableReference: S.optional(TableReference),
           staleness: S.optional(S.String),
           tableType: S.optional(S.String),
-          unusedReason: S.optional(S.String),
-          pruningStats: S.optional(__S(20)),
+          unusedReason: S.optional(TableMetadataCacheUsageUnusedReasonEnum),
+          pruningStats: S.optional(PruningStats),
           explanation: S.optional(S.String),
         }),
       ).annotate({ identifier: "TableMetadataCacheUsage" });
     case 6:
-      return S.Array(__S(21));
+      return S.Array(TableMetadataCacheUsage);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          tableMetadataCacheUsage: S.optional(__S(22)),
+          tableMetadataCacheUsage: S.optional(TableMetadataCacheUsageList),
         }),
       ).annotate({ identifier: "MetadataCacheStatistics" });
   }
@@ -5522,7 +6986,7 @@ function __c3(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          optimizationDetails: S.optional(__S(24)),
+          optimizationDetails: S.optional(DocumentMap),
         }),
       ).annotate({ identifier: "QueryInfo" });
     case 2:
@@ -5535,29 +6999,29 @@ function __c3(j: number): any {
         identifier: "JobStatistics2ReservationUsageItem",
       });
     case 3:
-      return S.Array(__S(26));
+      return S.Array(JobStatistics2ReservationUsageItem);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          uncoveredColumns: S.optional(__S(0)),
-          code: S.optional(S.String),
+          uncoveredColumns: S.optional(StringList),
+          code: S.optional(StoredColumnsUnusedReasonCodeEnum),
           message: S.optional(S.String),
         }),
       ).annotate({
         identifier: "StoredColumnsUnusedReason",
       });
     case 5:
-      return S.Array(__S(28));
+      return S.Array(StoredColumnsUnusedReason);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          storedColumnsUnusedReasons: S.optional(__S(29)),
-          baseTable: S.optional(__S(14)),
+          storedColumnsUnusedReasons: S.optional(StoredColumnsUnusedReasonList),
+          baseTable: S.optional(TableReference),
           isQueryAccelerated: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "StoredColumnsUsage" });
     case 7:
-      return S.Array(__S(30));
+      return S.Array(StoredColumnsUsage);
   }
 }
 function __c4(j: number): any {
@@ -5565,9 +7029,9 @@ function __c4(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          indexUnusedReasons: S.optional(__S(18)),
-          storedColumnsUsages: S.optional(__S(31)),
-          indexUsageMode: S.optional(S.String),
+          indexUnusedReasons: S.optional(IndexUnusedReasonList),
+          storedColumnsUsages: S.optional(StoredColumnsUsageList),
+          indexUsageMode: S.optional(VectorSearchStatisticsIndexUsageModeEnum),
         }),
       ).annotate({ identifier: "VectorSearchStatistics" });
     case 1:
@@ -5595,7 +7059,7 @@ function __c4(j: number): any {
         }),
       ).annotate({ identifier: "RoutineReference" });
     case 4:
-      return S.Array(__S(35));
+      return S.Array(RoutineReference);
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -5608,12 +7072,12 @@ function __c4(j: number): any {
         }),
       ).annotate({ identifier: "ExternalServiceCost" });
     case 6:
-      return S.Array(__S(37));
+      return S.Array(ExternalServiceCost);
     case 7:
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
-          substeps: S.optional(__S(0)),
+          substeps: S.optional(StringList),
         }),
       ).annotate({ identifier: "ExplainQueryStep" });
   }
@@ -5621,7 +7085,7 @@ function __c4(j: number): any {
 function __c5(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(39));
+      return S.Array(ExplainQueryStep);
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -5631,13 +7095,13 @@ function __c5(j: number): any {
           computeRatioMax: S.optional(S.Number),
           waitMsAvg: S.optional(S.String),
           writeRatioMax: S.optional(S.Number),
-          inputStages: S.optional(__S(0)),
+          inputStages: S.optional(StringList),
           name: S.optional(S.String),
           readRatioMax: S.optional(S.Number),
           computeMsAvg: S.optional(S.String),
           parallelInputs: S.optional(S.String),
           startMs: S.optional(S.String),
-          computeMode: S.optional(S.String),
+          computeMode: S.optional(ExplainQueryStageComputeModeEnum),
           waitRatioMax: S.optional(S.Number),
           computeRatioAvg: S.optional(S.Number),
           recordsWritten: S.optional(S.String),
@@ -5647,7 +7111,7 @@ function __c5(j: number): any {
           endMs: S.optional(S.String),
           writeMsAvg: S.optional(S.String),
           status: S.optional(S.String),
-          steps: S.optional(__S(40)),
+          steps: S.optional(ExplainQueryStepList),
           writeMsMax: S.optional(S.String),
           slotMs: S.optional(S.String),
           id: S.optional(S.String),
@@ -5659,7 +7123,7 @@ function __c5(j: number): any {
         }),
       ).annotate({ identifier: "ExplainQueryStage" });
     case 2:
-      return S.Array(__S(41));
+      return S.Array(ExplainQueryStage);
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -5669,14 +7133,14 @@ function __c5(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          inputDataChange: S.optional(__S(43)),
+          inputDataChange: S.optional(InputDataChange),
           stageId: S.optional(S.String),
         }),
       ).annotate({
         identifier: "StagePerformanceChangeInsight",
       });
     case 5:
-      return S.Array(__S(44));
+      return S.Array(StagePerformanceChangeInsight);
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -5689,8 +7153,8 @@ function __c5(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          metadataCacheStalenessInsight: S.optional(__S(46)),
-          tableReference: S.optional(__S(14)),
+          metadataCacheStalenessInsight: S.optional(MetadataCacheStalenessInsight),
+          tableReference: S.optional(TableReference),
           metadataCacheNotUsedButUsedPreviously: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "TableChangeInsight" });
@@ -5699,16 +7163,16 @@ function __c5(j: number): any {
 function __c6(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(47));
+      return S.Array(TableChangeInsight);
     case 1:
       return S.suspend(() =>
         S.Struct({
           message: S.optional(S.String),
-          code: S.optional(S.String),
+          code: S.optional(BiEngineReasonCodeEnum),
         }),
       ).annotate({ identifier: "BiEngineReason" });
     case 2:
-      return S.Array(__S(49));
+      return S.Array(BiEngineReason);
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -5719,7 +7183,7 @@ function __c6(j: number): any {
         }),
       ).annotate({ identifier: "HighCardinalityJoin" });
     case 4:
-      return S.Array(__S(51));
+      return S.Array(HighCardinalityJoin);
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -5730,11 +7194,11 @@ function __c6(j: number): any {
         }),
       ).annotate({ identifier: "SkewSource" });
     case 6:
-      return S.Array(__S(53));
+      return S.Array(SkewSource);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          skewSources: S.optional(__S(54)),
+          skewSources: S.optional(SkewSourceList),
         }),
       ).annotate({ identifier: "PartitionSkew" });
   }
@@ -5745,28 +7209,28 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           insufficientShuffleQuota: S.optional(S.Boolean),
-          biEngineReasons: S.optional(__S(50)),
+          biEngineReasons: S.optional(BiEngineReasonList),
           stageId: S.optional(S.String),
-          highCardinalityJoins: S.optional(__S(52)),
+          highCardinalityJoins: S.optional(HighCardinalityJoinList),
           slotContention: S.optional(S.Boolean),
-          partitionSkew: S.optional(__S(55)),
+          partitionSkew: S.optional(PartitionSkew),
         }),
       ).annotate({
         identifier: "StagePerformanceStandaloneInsight",
       });
     case 1:
-      return S.Array(__S(56));
+      return S.Array(StagePerformanceStandaloneInsight);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          stagePerformanceChangeInsights: S.optional(__S(45)),
-          tableChangeInsights: S.optional(__S(48)),
-          stagePerformanceStandaloneInsights: S.optional(__S(57)),
+          stagePerformanceChangeInsights: S.optional(StagePerformanceChangeInsightList),
+          tableChangeInsights: S.optional(TableChangeInsightList),
+          stagePerformanceStandaloneInsights: S.optional(StagePerformanceStandaloneInsightList),
           avgPreviousExecutionMs: S.optional(S.String),
         }),
       ).annotate({ identifier: "PerformanceInsights" });
     case 3:
-      return S.Array(__S(14));
+      return S.Array(TableReference);
     case 4:
       return S.Record(S.String, S.String);
     case 5:
@@ -5779,8 +7243,8 @@ function __c7(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          endpoints: S.optional(__S(60)),
-          loggingInfo: S.optional(__S(61)),
+          endpoints: S.optional(StringMap),
+          loggingInfo: S.optional(SparkLoggingInfo),
           sparkJobLocation: S.optional(S.String),
           sparkJobId: S.optional(S.String),
           kmsKeyName: S.optional(S.String),
@@ -5812,18 +7276,18 @@ function __c8(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          tableReference: S.optional(__S(14)),
+          tableReference: S.optional(TableReference),
           chosen: S.optional(S.Boolean),
           estimatedBytesSaved: S.optional(S.String),
-          rejectedReason: S.optional(S.String),
+          rejectedReason: S.optional(MaterializedViewRejectedReasonEnum),
         }),
       ).annotate({ identifier: "MaterializedView" });
     case 2:
-      return S.Array(__S(65));
+      return S.Array(MaterializedView);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          materializedView: S.optional(__S(66)),
+          materializedView: S.optional(MaterializedViewList),
         }),
       ).annotate({
         identifier: "MaterializedViewStatistics",
@@ -5841,7 +7305,7 @@ function __c8(j: number): any {
         }),
       ).annotate({ identifier: "QueryTimelineSample" });
     case 5:
-      return S.Array(__S(68));
+      return S.Array(QueryTimelineSample);
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -5852,9 +7316,9 @@ function __c8(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          accelerationMode: S.optional(S.String),
-          biEngineReasons: S.optional(__S(50)),
-          biEngineMode: S.optional(S.String),
+          accelerationMode: S.optional(BiEngineStatisticsAccelerationModeEnum),
+          biEngineReasons: S.optional(BiEngineReasonList),
+          biEngineMode: S.optional(BiEngineStatisticsBiEngineModeEnum),
         }),
       ).annotate({ identifier: "BiEngineStatistics" });
   }
@@ -5868,7 +7332,7 @@ function __c9(j: number): any {
           disabledReasonDetails: S.optional(S.String),
           resultSetLastModifyTime: S.optional(S.String),
           resultSetLastReplaceTime: S.optional(S.String),
-          disabledReason: S.optional(S.String),
+          disabledReason: S.optional(IncrementalResultStatsDisabledReasonEnum),
           firstIncrementalRowTime: S.optional(S.String),
           incrementalRowCount: S.optional(S.String),
         }),
@@ -5876,21 +7340,21 @@ function __c9(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          cloudProvider: S.optional(S.String),
+          cloudProvider: S.optional(ObjectStorageStatsCloudProviderEnum),
           cacheBytesRead: S.optional(S.String),
           objectStorageBytesRead: S.optional(S.String),
         }),
       ).annotate({ identifier: "ObjectStorageStats" });
     case 2:
-      return S.Array(__S(73));
+      return S.Array(ObjectStorageStats);
     case 3:
       return S.Array(S.Number);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          autoRegressiveCoefficients: S.optional(__S(75)),
+          autoRegressiveCoefficients: S.optional(DoubleList),
           interceptCoefficient: S.optional(S.Number),
-          movingAverageCoefficients: S.optional(__S(75)),
+          movingAverageCoefficients: S.optional(DoubleList),
         }),
       ).annotate({ identifier: "ArimaCoefficients" });
     case 5:
@@ -5910,7 +7374,7 @@ function __c9(j: number): any {
         }),
       ).annotate({ identifier: "ArimaFittingMetrics" });
     case 7:
-      return S.Array(S.String);
+      return S.Array(ArimaModelInfoSeasonalPeriodsItemEnum);
   }
 }
 function __c10(j: number): any {
@@ -5918,25 +7382,25 @@ function __c10(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          arimaCoefficients: S.optional(__S(76)),
+          arimaCoefficients: S.optional(ArimaCoefficients),
           hasDrift: S.optional(S.Boolean),
           hasHolidayEffect: S.optional(S.Boolean),
-          nonSeasonalOrder: S.optional(__S(77)),
-          arimaFittingMetrics: S.optional(__S(78)),
+          nonSeasonalOrder: S.optional(ArimaOrder),
+          arimaFittingMetrics: S.optional(ArimaFittingMetrics),
           hasStepChanges: S.optional(S.Boolean),
-          timeSeriesIds: S.optional(__S(0)),
+          timeSeriesIds: S.optional(StringList),
           hasSpikesAndDips: S.optional(S.Boolean),
           timeSeriesId: S.optional(S.String),
-          seasonalPeriods: S.optional(__S(79)),
+          seasonalPeriods: S.optional(ArimaModelInfoSeasonalPeriodsItemEnumList),
         }),
       ).annotate({ identifier: "ArimaModelInfo" });
     case 1:
-      return S.Array(__S(80));
+      return S.Array(ArimaModelInfo);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          arimaModelInfo: S.optional(__S(81)),
-          seasonalPeriods: S.optional(__S(79)),
+          arimaModelInfo: S.optional(ArimaModelInfoList),
+          seasonalPeriods: S.optional(ArimaResultSeasonalPeriodsItemEnumList),
         }),
       ).annotate({ identifier: "ArimaResult" });
     case 3:
@@ -5949,7 +7413,7 @@ function __c10(j: number): any {
         }),
       ).annotate({ identifier: "PrincipalComponentInfo" });
     case 4:
-      return S.Array(__S(83));
+      return S.Array(PrincipalComponentInfo);
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -5959,15 +7423,15 @@ function __c10(j: number): any {
         }),
       ).annotate({ identifier: "ClusterInfo" });
     case 6:
-      return S.Array(__S(85));
+      return S.Array(ClusterInfo);
     case 7:
       return S.suspend(() =>
         S.Struct({
           learnRate: S.optional(S.Number),
-          arimaResult: S.optional(__S(82)),
-          principalComponentInfos: S.optional(__S(84)),
+          arimaResult: S.optional(ArimaResult),
+          principalComponentInfos: S.optional(PrincipalComponentInfoList),
           trainingLoss: S.optional(S.Number),
-          clusterInfos: S.optional(__S(86)),
+          clusterInfos: S.optional(ClusterInfoList),
           evalLoss: S.optional(S.Number),
           index: S.optional(S.Number),
           durationMs: S.optional(S.String),
@@ -5978,41 +7442,41 @@ function __c10(j: number): any {
 function __c11(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(87));
+      return S.Array(IterationResult);
     case 1:
       return S.Record(S.String, S.Number);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          feedbackType: S.optional(S.String),
+          feedbackType: S.optional(TrainingOptionsFeedbackTypeEnum),
           subsample: S.optional(S.Number),
-          reservationAffinityValues: S.optional(__S(0)),
-          treeMethod: S.optional(S.String),
+          reservationAffinityValues: S.optional(StringList),
+          treeMethod: S.optional(TrainingOptionsTreeMethodEnum),
           approxGlobalFeatureContrib: S.optional(S.Boolean),
           reservationAffinityKey: S.optional(S.String),
-          holidayRegions: S.optional(__S(79)),
+          holidayRegions: S.optional(TrainingOptionsHolidayRegionsItemEnumList),
           timeSeriesLengthFraction: S.optional(S.Number),
           numParallelTree: S.optional(S.String),
-          dataSplitMethod: S.optional(S.String),
+          dataSplitMethod: S.optional(TrainingOptionsDataSplitMethodEnum),
           timeSeriesDataColumn: S.optional(S.String),
           fitIntercept: S.optional(S.Boolean),
           maxParallelTrials: S.optional(S.String),
-          vertexAiModelVersionAliases: S.optional(__S(0)),
+          vertexAiModelVersionAliases: S.optional(StringList),
           trendSmoothingWindowSize: S.optional(S.String),
           minAprioriSupport: S.optional(S.Number),
           minReplicaCount: S.optional(S.String),
-          learnRateStrategy: S.optional(S.String),
-          boosterType: S.optional(S.String),
+          learnRateStrategy: S.optional(TrainingOptionsLearnRateStrategyEnum),
+          boosterType: S.optional(TrainingOptionsBoosterTypeEnum),
           activationFn: S.optional(S.String),
-          hparamTuningObjectives: S.optional(__S(79)),
+          hparamTuningObjectives: S.optional(TrainingOptionsHparamTuningObjectivesItemEnumList),
           warmStart: S.optional(S.Boolean),
           timeSeriesTimestampColumn: S.optional(S.String),
           batchSize: S.optional(S.String),
-          hiddenUnits: S.optional(__S(0)),
+          hiddenUnits: S.optional(StringList),
           includeDrift: S.optional(S.Boolean),
           forecastLimitLowerBound: S.optional(S.Number),
           horizon: S.optional(S.String),
-          pcaSolver: S.optional(S.String),
+          pcaSolver: S.optional(TrainingOptionsPcaSolverEnum),
           timeSeriesIdColumn: S.optional(S.String),
           minTimeSeriesLength: S.optional(S.String),
           maxReplicaCount: S.optional(S.String),
@@ -6022,60 +7486,60 @@ function __c11(j: number): any {
           numTrials: S.optional(S.String),
           tfVersion: S.optional(S.String),
           kmeansInitializationColumn: S.optional(S.String),
-          kmeansInitializationMethod: S.optional(S.String),
-          reservationAffinityType: S.optional(S.String),
+          kmeansInitializationMethod: S.optional(TrainingOptionsKmeansInitializationMethodEnum),
+          reservationAffinityType: S.optional(TrainingOptionsReservationAffinityTypeEnum),
           autoClassWeights: S.optional(S.Boolean),
-          holidayRegion: S.optional(S.String),
+          holidayRegion: S.optional(TrainingOptionsHolidayRegionEnum),
           xgboostVersion: S.optional(S.String),
           initialLearnRate: S.optional(S.Number),
           instanceWeightColumn: S.optional(S.String),
           maxTimeSeriesLength: S.optional(S.String),
           isTestColumn: S.optional(S.String),
           machineType: S.optional(S.String),
-          labelClassWeights: S.optional(__S(89)),
+          labelClassWeights: S.optional(DoubleMap),
           decomposeTimeSeries: S.optional(S.Boolean),
           colsampleBylevel: S.optional(S.Number),
           l1RegActivation: S.optional(S.Number),
           enableGlobalExplain: S.optional(S.Boolean),
           numFactors: S.optional(S.String),
           earlyStop: S.optional(S.Boolean),
-          dimensionIdColumns: S.optional(__S(0)),
+          dimensionIdColumns: S.optional(StringList),
           autoArimaMinOrder: S.optional(S.String),
-          lossType: S.optional(S.String),
+          lossType: S.optional(TrainingOptionsLossTypeEnum),
           itemColumn: S.optional(S.String),
-          dataFrequency: S.optional(S.String),
+          dataFrequency: S.optional(TrainingOptionsDataFrequencyEnum),
           l2Regularization: S.optional(S.Number),
           dataSplitColumn: S.optional(S.String),
           cleanSpikesAndDips: S.optional(S.Boolean),
           autoArimaMaxOrder: S.optional(S.String),
           numPrincipalComponents: S.optional(S.String),
           forecastLimitUpperBound: S.optional(S.Number),
-          timeSeriesIdColumns: S.optional(__S(0)),
+          timeSeriesIdColumns: S.optional(StringList),
           colsampleBynode: S.optional(S.Number),
           standardizeFeatures: S.optional(S.Boolean),
-          dartNormalizeType: S.optional(S.String),
-          distanceType: S.optional(S.String),
+          dartNormalizeType: S.optional(TrainingOptionsDartNormalizeTypeEnum),
+          distanceType: S.optional(TrainingOptionsDistanceTypeEnum),
           calculatePValues: S.optional(S.Boolean),
           minRelativeProgress: S.optional(S.Number),
           modelGardenModelName: S.optional(S.String),
-          colorSpace: S.optional(S.String),
+          colorSpace: S.optional(TrainingOptionsColorSpaceEnum),
           adjustStepChanges: S.optional(S.Boolean),
           budgetHours: S.optional(S.Number),
           pcaExplainedVarianceRatio: S.optional(S.Number),
           maxIterations: S.optional(S.String),
-          modelRegistry: S.optional(S.String),
+          modelRegistry: S.optional(TrainingOptionsModelRegistryEnum),
           l1Regularization: S.optional(S.Number),
           huggingFaceModelId: S.optional(S.String),
-          optimizationStrategy: S.optional(S.String),
-          categoryEncodingMethod: S.optional(S.String),
-          inputLabelColumns: S.optional(__S(0)),
+          optimizationStrategy: S.optional(TrainingOptionsOptimizationStrategyEnum),
+          categoryEncodingMethod: S.optional(TrainingOptionsCategoryEncodingMethodEnum),
+          inputLabelColumns: S.optional(StringList),
           contributionMetric: S.optional(S.String),
           endpointIdleTtl: S.optional(S.String),
           minSplitLoss: S.optional(S.Number),
           sampledShapleyNumPaths: S.optional(S.String),
           dataSplitEvalFraction: S.optional(S.Number),
           numClusters: S.optional(S.String),
-          nonSeasonalOrder: S.optional(__S(77)),
+          nonSeasonalOrder: S.optional(ArimaOrder),
           autoArima: S.optional(S.Boolean),
           optimizer: S.optional(S.String),
           dropout: S.optional(S.Number),
@@ -6095,21 +7559,21 @@ function __c11(j: number): any {
         }),
       ).annotate({ identifier: "Entry" });
     case 4:
-      return S.Array(__S(91));
+      return S.Array(Entry);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          entries: S.optional(__S(92)),
+          entries: S.optional(EntryList),
           actualLabel: S.optional(S.String),
         }),
       ).annotate({ identifier: "Row" });
     case 6:
-      return S.Array(__S(93));
+      return S.Array(Row);
     case 7:
       return S.suspend(() =>
         S.Struct({
           confidenceThreshold: S.optional(S.Number),
-          rows: S.optional(__S(94)),
+          rows: S.optional(RowList),
         }),
       ).annotate({ identifier: "ConfusionMatrix" });
   }
@@ -6117,7 +7581,7 @@ function __c11(j: number): any {
 function __c12(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(95));
+      return S.Array(ConfusionMatrix);
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -6135,8 +7599,8 @@ function __c12(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          confusionMatrixList: S.optional(__S(96)),
-          aggregateClassificationMetrics: S.optional(__S(97)),
+          confusionMatrixList: S.optional(ConfusionMatrixList),
+          aggregateClassificationMetrics: S.optional(AggregateClassificationMetrics),
         }),
       ).annotate({
         identifier: "MultiClassClassificationMetrics",
@@ -6157,11 +7621,11 @@ function __c12(j: number): any {
         }),
       ).annotate({ identifier: "CategoryCount" });
     case 5:
-      return S.Array(__S(100));
+      return S.Array(CategoryCount);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          categoryCounts: S.optional(__S(101)),
+          categoryCounts: S.optional(CategoryCountList),
         }),
       ).annotate({ identifier: "CategoricalValue" });
     case 7:
@@ -6169,7 +7633,7 @@ function __c12(j: number): any {
         S.Struct({
           numericalValue: S.optional(S.Number),
           featureColumn: S.optional(S.String),
-          categoricalValue: S.optional(__S(102)),
+          categoricalValue: S.optional(CategoricalValue),
         }),
       ).annotate({ identifier: "FeatureValue" });
   }
@@ -6177,45 +7641,47 @@ function __c12(j: number): any {
 function __c13(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(103));
+      return S.Array(FeatureValue);
     case 1:
       return S.suspend(() =>
         S.Struct({
           centroidId: S.optional(S.String),
-          featureValues: S.optional(__S(104)),
+          featureValues: S.optional(FeatureValueList),
           count: S.optional(S.String),
         }),
       ).annotate({ identifier: "Cluster" });
     case 2:
-      return S.Array(__S(105));
+      return S.Array(Cluster);
     case 3:
       return S.suspend(() =>
         S.Struct({
           meanSquaredDistance: S.optional(S.Number),
-          clusters: S.optional(__S(106)),
+          clusters: S.optional(ClusterList),
           daviesBouldinIndex: S.optional(S.Number),
         }),
       ).annotate({ identifier: "ClusteringMetrics" });
     case 4:
-      return S.Array(__S(78));
+      return S.Array(ArimaFittingMetrics);
     case 5:
       return S.suspend(() =>
         S.Struct({
           hasDrift: S.optional(S.Boolean),
           hasHolidayEffect: S.optional(S.Boolean),
-          nonSeasonalOrder: S.optional(__S(77)),
+          nonSeasonalOrder: S.optional(ArimaOrder),
           timeSeriesId: S.optional(S.String),
           hasSpikesAndDips: S.optional(S.Boolean),
-          arimaFittingMetrics: S.optional(__S(78)),
-          timeSeriesIds: S.optional(__S(0)),
+          arimaFittingMetrics: S.optional(ArimaFittingMetrics),
+          timeSeriesIds: S.optional(StringList),
           hasStepChanges: S.optional(S.Boolean),
-          seasonalPeriods: S.optional(__S(79)),
+          seasonalPeriods: S.optional(
+            ArimaSingleModelForecastingMetricsSeasonalPeriodsItemEnumList,
+          ),
         }),
       ).annotate({
         identifier: "ArimaSingleModelForecastingMetrics",
       });
     case 6:
-      return S.Array(__S(109));
+      return S.Array(ArimaSingleModelForecastingMetrics);
     case 7:
       return S.Array(S.Boolean);
   }
@@ -6223,16 +7689,16 @@ function __c13(j: number): any {
 function __c14(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(77));
+      return S.Array(ArimaOrder);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          arimaFittingMetrics: S.optional(__S(108)),
-          arimaSingleModelForecastingMetrics: S.optional(__S(110)),
-          hasDrift: S.optional(__S(111)),
-          timeSeriesId: S.optional(__S(0)),
-          nonSeasonalOrder: S.optional(__S(112)),
-          seasonalPeriods: S.optional(__S(79)),
+          arimaFittingMetrics: S.optional(ArimaFittingMetricsList),
+          arimaSingleModelForecastingMetrics: S.optional(ArimaSingleModelForecastingMetricsList),
+          hasDrift: S.optional(BooleanList),
+          timeSeriesId: S.optional(StringList),
+          nonSeasonalOrder: S.optional(ArimaOrderList),
+          seasonalPeriods: S.optional(ArimaForecastingMetricsSeasonalPeriodsItemEnumList),
         }),
       ).annotate({ identifier: "ArimaForecastingMetrics" });
     case 2:
@@ -6259,12 +7725,12 @@ function __c14(j: number): any {
         }),
       ).annotate({ identifier: "BinaryConfusionMatrix" });
     case 4:
-      return S.Array(__S(115));
+      return S.Array(BinaryConfusionMatrix);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          aggregateClassificationMetrics: S.optional(__S(97)),
-          binaryConfusionMatrixList: S.optional(__S(116)),
+          aggregateClassificationMetrics: S.optional(AggregateClassificationMetrics),
+          binaryConfusionMatrixList: S.optional(BinaryConfusionMatrixList),
           negativeLabel: S.optional(S.String),
           positiveLabel: S.optional(S.String),
         }),
@@ -6284,13 +7750,13 @@ function __c14(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          multiClassClassificationMetrics: S.optional(__S(98)),
-          dimensionalityReductionMetrics: S.optional(__S(99)),
-          clusteringMetrics: S.optional(__S(107)),
-          arimaForecastingMetrics: S.optional(__S(113)),
-          rankingMetrics: S.optional(__S(114)),
-          binaryClassificationMetrics: S.optional(__S(117)),
-          regressionMetrics: S.optional(__S(118)),
+          multiClassClassificationMetrics: S.optional(MultiClassClassificationMetrics),
+          dimensionalityReductionMetrics: S.optional(DimensionalityReductionMetrics),
+          clusteringMetrics: S.optional(ClusteringMetrics),
+          arimaForecastingMetrics: S.optional(ArimaForecastingMetrics),
+          rankingMetrics: S.optional(RankingMetrics),
+          binaryClassificationMetrics: S.optional(BinaryClassificationMetrics),
+          regressionMetrics: S.optional(RegressionMetrics),
         }),
       ).annotate({ identifier: "EvaluationMetrics" });
   }
@@ -6300,37 +7766,37 @@ function __c15(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          hparams: S.optional(__S(90)),
+          hparams: S.optional(TrainingOptions),
           startTimeMs: S.optional(S.String),
-          evaluationMetrics: S.optional(__S(119)),
+          evaluationMetrics: S.optional(EvaluationMetrics),
           evalLoss: S.optional(S.Number),
-          status: S.optional(S.String),
+          status: S.optional(HparamTuningTrialStatusEnum),
           errorMessage: S.optional(S.String),
           trialId: S.optional(S.String),
-          hparamTuningEvaluationMetrics: S.optional(__S(119)),
+          hparamTuningEvaluationMetrics: S.optional(EvaluationMetrics),
           endTimeMs: S.optional(S.String),
           trainingLoss: S.optional(S.Number),
         }),
       ).annotate({ identifier: "HparamTuningTrial" });
     case 1:
-      return S.Array(__S(120));
+      return S.Array(HparamTuningTrial);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          iterationResults: S.optional(__S(88)),
-          modelType: S.optional(S.String),
-          trainingType: S.optional(S.String),
-          hparamTrials: S.optional(__S(121)),
+          iterationResults: S.optional(IterationResultList),
+          modelType: S.optional(MlStatisticsModelTypeEnum),
+          trainingType: S.optional(MlStatisticsTrainingTypeEnum),
+          hparamTrials: S.optional(HparamTuningTrialList),
           maxIterations: S.optional(S.String),
         }),
       ).annotate({ identifier: "MlStatistics" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          fineGrainedDmlUnusedReason: S.optional(S.String),
+          fineGrainedDmlUnusedReason: S.optional(DmlStatisticsFineGrainedDmlUnusedReasonEnum),
           updatedRowCount: S.optional(S.String),
           insertedRowCount: S.optional(S.String),
-          dmlMode: S.optional(S.String),
+          dmlMode: S.optional(DmlStatisticsDmlModeEnum),
           deletedRowCount: S.optional(S.String),
         }),
       ).annotate({ identifier: "DmlStatistics" });
@@ -6343,14 +7809,14 @@ function __c15(j: number): any {
         }),
       ).annotate({ identifier: "PropertyGraphReference" });
     case 5:
-      return S.Array(__S(124));
+      return S.Array(PropertyGraphReference);
     case 6:
-      return S.Array(/*@__PURE__*/ S.suspend(() => __S(129)));
+      return S.Array(/*@__PURE__*/ S.suspend(() => QueryParameterValue));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          end: S.optional(S.suspend(() => __S(129))),
-          start: S.optional(S.suspend(() => __S(129))),
+          end: S.optional(S.suspend(() => QueryParameterValue)),
+          start: S.optional(S.suspend(() => QueryParameterValue)),
         }),
       ).annotate({ identifier: "RangeValue" });
   }
@@ -6360,21 +7826,21 @@ function __c16(j: number): any {
     case 0:
       return S.Record(
         S.String,
-        /*@__PURE__*/ S.suspend(() => __S(129)),
+        /*@__PURE__*/ S.suspend(() => QueryParameterValue),
       );
     case 1:
       return S.suspend(() =>
         S.Struct({
-          arrayValues: S.optional(__S(126)),
+          arrayValues: S.optional(QueryParameterValueList),
           value: S.optional(S.String),
-          rangeValue: S.optional(__S(127)),
-          structValues: S.optional(__S(128)),
+          rangeValue: S.optional(RangeValue),
+          structValues: S.optional(QueryParameterValueMap),
         }),
       ).annotate({ identifier: "QueryParameterValue" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(S.suspend(() => __S(132))),
+          type: S.optional(S.suspend(() => QueryParameterType)),
           description: S.optional(S.String),
           name: S.optional(S.String),
         }),
@@ -6382,14 +7848,14 @@ function __c16(j: number): any {
         identifier: "QueryParameterTypeStructTypesItem",
       });
     case 3:
-      return S.Array(__S(130));
+      return S.Array(QueryParameterTypeStructTypesItem);
     case 4:
       return S.suspend(() =>
         S.Struct({
           timestampPrecision: S.optional(S.String),
-          rangeElementType: S.optional(__S(132)),
-          arrayType: S.optional(__S(132)),
-          structTypes: S.optional(__S(131)),
+          rangeElementType: S.optional(QueryParameterType),
+          arrayType: S.optional(QueryParameterType),
+          structTypes: S.optional(QueryParameterTypeStructTypesItemList),
           type: S.optional(S.String),
         }),
       ).annotate({ identifier: "QueryParameterType" });
@@ -6397,12 +7863,12 @@ function __c16(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          parameterValue: S.optional(__S(129)),
-          parameterType: S.optional(__S(132)),
+          parameterValue: S.optional(QueryParameterValue),
+          parameterType: S.optional(QueryParameterType),
         }),
       ).annotate({ identifier: "QueryParameter" });
     case 6:
-      return S.Array(__S(133));
+      return S.Array(QueryParameter);
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -6414,17 +7880,17 @@ function __c16(j: number): any {
 function __c17(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(135));
+      return S.Array(DataPolicyOption);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          dataPolicies: S.optional(__S(136)),
+          dataPolicies: S.optional(DataPolicyOptionList),
         }),
       ).annotate({ identifier: "DataPolicyList" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          dataGovernanceTags: S.optional(__S(60)),
+          dataGovernanceTags: S.optional(StringMap),
         }),
       ).annotate({
         identifier: "TableFieldSchemaDataGovernanceTagsInfo",
@@ -6432,7 +7898,7 @@ function __c17(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          names: S.optional(__S(0)),
+          names: S.optional(StringList),
         }),
       ).annotate({
         identifier: "TableFieldSchemaCategories",
@@ -6456,32 +7922,32 @@ function __c17(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          generatedExpressionInfo: S.optional(__S(141)),
-          generatedMode: S.optional(S.String),
+          generatedExpressionInfo: S.optional(GeneratedExpressionInfo),
+          generatedMode: S.optional(GeneratedColumnGeneratedModeEnum),
         }),
       ).annotate({ identifier: "GeneratedColumn" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          dataPolicyList: S.optional(__S(137)),
-          roundingMode: S.optional(S.String),
-          dataGovernanceTagsInfo: S.optional(__S(138)),
-          categories: S.optional(__S(139)),
+          dataPolicyList: S.optional(DataPolicyList),
+          roundingMode: S.optional(TableFieldSchemaRoundingModeEnum),
+          dataGovernanceTagsInfo: S.optional(TableFieldSchemaDataGovernanceTagsInfo),
+          categories: S.optional(TableFieldSchemaCategories),
           mode: S.optional(S.String),
-          rangeElementType: S.optional(__S(140)),
+          rangeElementType: S.optional(TableFieldSchemaRangeElementType),
           type: S.optional(S.String),
           defaultValueExpression: S.optional(S.String),
-          fields: S.optional(S.suspend(() => __S(144))),
+          fields: S.optional(S.suspend(() => TableFieldSchemaList)),
           name: S.optional(S.String),
           timestampPrecision: S.optional(S.String),
           precision: S.optional(S.String),
           description: S.optional(S.String),
-          generatedColumn: S.optional(__S(142)),
-          dataPolicies: S.optional(__S(136)),
+          generatedColumn: S.optional(GeneratedColumn),
+          dataPolicies: S.optional(DataPolicyOptionList),
           foreignTypeDefinition: S.optional(S.String),
           scale: S.optional(S.String),
           maxLength: S.optional(S.String),
-          policyTags: S.optional(__S(139)),
+          policyTags: S.optional(TableFieldSchemaPolicyTags),
           collation: S.optional(S.String),
         }),
       ).annotate({ identifier: "TableFieldSchema" });
@@ -6490,71 +7956,71 @@ function __c17(j: number): any {
 function __c18(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(143));
+      return S.Array(TableFieldSchema);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          typeSystem: S.optional(S.String),
+          typeSystem: S.optional(ForeignTypeInfoTypeSystemEnum),
         }),
       ).annotate({ identifier: "ForeignTypeInfo" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          fields: S.optional(__S(144)),
-          foreignTypeInfo: S.optional(__S(145)),
+          fields: S.optional(TableFieldSchemaList),
+          foreignTypeInfo: S.optional(ForeignTypeInfo),
         }),
       ).annotate({ identifier: "TableSchema" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          genAiStats: S.optional(__S(13)),
-          searchStatistics: S.optional(__S(19)),
-          metadataCacheStatistics: S.optional(__S(23)),
-          queryInfo: S.optional(__S(25)),
+          genAiStats: S.optional(GenAiStats),
+          searchStatistics: S.optional(SearchStatistics),
+          metadataCacheStatistics: S.optional(MetadataCacheStatistics),
+          queryInfo: S.optional(QueryInfo),
           ddlOperationPerformed: S.optional(S.String),
           statementType: S.optional(S.String),
-          reservationUsage: S.optional(__S(27)),
-          vectorSearchStatistics: S.optional(__S(32)),
-          dclTargetDataset: S.optional(__S(33)),
-          ddlTargetRowAccessPolicy: S.optional(__S(34)),
+          reservationUsage: S.optional(JobStatistics2ReservationUsageItemList),
+          vectorSearchStatistics: S.optional(VectorSearchStatistics),
+          dclTargetDataset: S.optional(DatasetReference),
+          ddlTargetRowAccessPolicy: S.optional(RowAccessPolicyReference),
           billingTier: S.optional(S.Number),
           totalServicesSkuSlotMs: S.optional(S.String),
-          referencedRoutines: S.optional(__S(36)),
-          externalServiceCosts: S.optional(__S(38)),
-          ddlDestinationTable: S.optional(__S(14)),
-          queryPlan: S.optional(__S(42)),
-          performanceInsights: S.optional(__S(58)),
-          dclTargetTable: S.optional(__S(14)),
-          referencedLogicalViews: S.optional(__S(59)),
+          referencedRoutines: S.optional(RoutineReferenceList),
+          externalServiceCosts: S.optional(ExternalServiceCostList),
+          ddlDestinationTable: S.optional(TableReference),
+          queryPlan: S.optional(ExplainQueryStageList),
+          performanceInsights: S.optional(PerformanceInsights),
+          dclTargetTable: S.optional(TableReference),
+          referencedLogicalViews: S.optional(TableReferenceList),
           totalPartitionsProcessed: S.optional(S.String),
           totalSlotMs: S.optional(S.String),
-          sparkStatistics: S.optional(__S(62)),
-          exportDataStatistics: S.optional(__S(63)),
-          loadQueryStatistics: S.optional(__S(64)),
+          sparkStatistics: S.optional(SparkStatistics),
+          exportDataStatistics: S.optional(ExportDataStatistics),
+          loadQueryStatistics: S.optional(LoadQueryStatistics),
           totalBytesBilled: S.optional(S.String),
-          materializedViewStatistics: S.optional(__S(67)),
-          timeline: S.optional(__S(69)),
-          modelTraining: S.optional(__S(70)),
+          materializedViewStatistics: S.optional(MaterializedViewStatistics),
+          timeline: S.optional(QueryTimelineSampleList),
+          modelTraining: S.optional(BigQueryModelTraining),
           cacheHit: S.optional(S.Boolean),
           totalBytesProcessed: S.optional(S.String),
-          biEngineStatistics: S.optional(__S(71)),
-          incrementalResultStats: S.optional(__S(72)),
+          biEngineStatistics: S.optional(BiEngineStatistics),
+          incrementalResultStats: S.optional(IncrementalResultStats),
           transferredBytes: S.optional(S.String),
           ddlAffectedRowAccessPolicyCount: S.optional(S.String),
-          objectStorageStats: S.optional(__S(74)),
-          ddlTargetTable: S.optional(__S(14)),
-          ddlTargetDataset: S.optional(__S(33)),
-          mlStatistics: S.optional(__S(122)),
+          objectStorageStats: S.optional(ObjectStorageStatsList),
+          ddlTargetTable: S.optional(TableReference),
+          ddlTargetDataset: S.optional(DatasetReference),
+          mlStatistics: S.optional(MlStatistics),
           estimatedBytesProcessed: S.optional(S.String),
-          dmlStats: S.optional(__S(123)),
-          referencedPropertyGraphs: S.optional(__S(125)),
+          dmlStats: S.optional(DmlStatistics),
+          referencedPropertyGraphs: S.optional(PropertyGraphReferenceList),
           modelTrainingCurrentIteration: S.optional(S.Number),
-          ddlTargetRoutine: S.optional(__S(35)),
+          ddlTargetRoutine: S.optional(RoutineReference),
           numDmlAffectedRows: S.optional(S.String),
-          undeclaredQueryParameters: S.optional(__S(134)),
-          dclTargetView: S.optional(__S(14)),
-          referencedTables: S.optional(__S(59)),
-          schema: S.optional(__S(146)),
+          undeclaredQueryParameters: S.optional(QueryParameterList),
+          dclTargetView: S.optional(TableReference),
+          referencedTables: S.optional(TableReferenceList),
+          schema: S.optional(TableSchema),
           modelTrainingExpectedTotalIteration: S.optional(S.String),
           totalBytesProcessedAccuracy: S.optional(S.String),
         }),
@@ -6563,7 +8029,7 @@ function __c18(j: number): any {
       return S.suspend(() =>
         S.Struct({
           inputFileBytes: S.optional(S.String),
-          timeline: S.optional(__S(69)),
+          timeline: S.optional(QueryTimelineSampleList),
           outputRows: S.optional(S.String),
           outputBytes: S.optional(S.String),
           inputFiles: S.optional(S.String),
@@ -6598,12 +8064,12 @@ function __c18(j: number): any {
 function __c19(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(151));
+      return S.Array(ScriptStackFrame);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          evaluationKind: S.optional(S.String),
-          stackFrames: S.optional(__S(152)),
+          evaluationKind: S.optional(ScriptStatisticsEvaluationKindEnum),
+          stackFrames: S.optional(ScriptStackFrameList),
         }),
       ).annotate({ identifier: "ScriptStatistics" });
     case 2:
@@ -6615,9 +8081,9 @@ function __c19(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          destinationUriFileCounts: S.optional(__S(0)),
+          destinationUriFileCounts: S.optional(StringList),
           inputBytes: S.optional(S.String),
-          timeline: S.optional(__S(69)),
+          timeline: S.optional(QueryTimelineSampleList),
         }),
       ).annotate({ identifier: "JobStatistics4" });
     case 4:
@@ -6632,30 +8098,30 @@ function __c19(j: number): any {
       return S.suspend(() =>
         S.Struct({
           totalBytesProcessed: S.optional(S.String),
-          rowLevelSecurityStatistics: S.optional(__S(6)),
+          rowLevelSecurityStatistics: S.optional(RowLevelSecurityStatistics),
           totalSlotMs: S.optional(S.String),
-          globalQueryRemoteRegions: S.optional(__S(0)),
-          query: S.optional(__S(147)),
-          load: S.optional(__S(148)),
+          globalQueryRemoteRegions: S.optional(StringList),
+          query: S.optional(JobStatistics2),
+          load: S.optional(JobStatistics3),
           parentJobId: S.optional(S.String),
-          dataMaskingStatistics: S.optional(__S(149)),
-          transactionInfo: S.optional(__S(150)),
-          scriptStatistics: S.optional(__S(153)),
+          dataMaskingStatistics: S.optional(DataMaskingStatistics),
+          transactionInfo: S.optional(TransactionInfo),
+          scriptStatistics: S.optional(ScriptStatistics),
           completionRatio: S.optional(S.Number),
-          reservationUsage: S.optional(__S(27)),
-          quotaDeferments: S.optional(__S(0)),
+          reservationUsage: S.optional(JobStatisticsReservationUsageItemList),
+          quotaDeferments: S.optional(StringList),
           startTime: S.optional(S.String),
-          reservationGroupPath: S.optional(__S(0)),
-          sessionInfo: S.optional(__S(154)),
-          edition: S.optional(S.String),
+          reservationGroupPath: S.optional(StringList),
+          sessionInfo: S.optional(SessionInfo),
+          edition: S.optional(JobStatisticsEditionEnum),
           finalExecutionDurationMs: S.optional(S.String),
           endTime: S.optional(S.String),
-          extract: S.optional(__S(155)),
+          extract: S.optional(JobStatistics4),
           reservation_id: S.optional(S.String),
           numChildJobs: S.optional(S.String),
           creationTime: S.optional(S.String),
-          parentGlobalQueryJob: S.optional(__S(5)),
-          copy: S.optional(__S(156)),
+          parentGlobalQueryJob: S.optional(JobReference),
+          copy: S.optional(JobStatistics5),
         }),
       ).annotate({ identifier: "JobStatistics" });
     case 6:
@@ -6668,7 +8134,7 @@ function __c19(j: number): any {
         }),
       ).annotate({ identifier: "ErrorProto" });
     case 7:
-      return S.Array(__S(158));
+      return S.Array(ErrorProto);
   }
 }
 function __c20(j: number): any {
@@ -6677,8 +8143,8 @@ function __c20(j: number): any {
       return S.suspend(() =>
         S.Struct({
           state: S.optional(S.String),
-          errors: S.optional(__S(159)),
-          errorResult: S.optional(__S(158)),
+          errors: S.optional(ErrorProtoList),
+          errorResult: S.optional(ErrorProto),
         }),
       ).annotate({ identifier: "JobStatus" });
     case 1:
@@ -6686,7 +8152,7 @@ function __c20(j: number): any {
         S.Struct({
           mode: S.optional(S.String),
           sourceUriPrefix: S.optional(S.String),
-          fields: S.optional(__S(0)),
+          fields: S.optional(StringList),
           requirePartitionFilter: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "HivePartitioningOptions" });
@@ -6694,7 +8160,7 @@ function __c20(j: number): any {
       return S.suspend(() =>
         S.Struct({
           enableListInference: S.optional(S.Boolean),
-          mapTargetType: S.optional(S.String),
+          mapTargetType: S.optional(ParquetOptionsMapTargetTypeEnum),
           enumAsString: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "ParquetOptions" });
@@ -6706,14 +8172,14 @@ function __c20(j: number): any {
         }),
       ).annotate({ identifier: "ConnectionProperty" });
     case 4:
-      return S.Array(__S(163));
+      return S.Array(ConnectionProperty);
     case 5:
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
           friendlyName: S.optional(S.String),
           expirationTime: S.optional(S.String),
-          labels: S.optional(__S(60)),
+          labels: S.optional(StringMap),
         }),
       ).annotate({
         identifier: "DestinationTableProperties",
@@ -6727,7 +8193,7 @@ function __c20(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          fields: S.optional(__S(0)),
+          fields: S.optional(StringList),
         }),
       ).annotate({ identifier: "Clustering" });
   }
@@ -6755,7 +8221,7 @@ function __c21(j: number): any {
       return S.suspend(() =>
         S.Struct({
           field: S.optional(S.String),
-          range: S.optional(__S(169)),
+          range: S.optional(RangePartitioningRange),
         }),
       ).annotate({ identifier: "RangePartitioning" });
     case 3:
@@ -6764,61 +8230,61 @@ function __c21(j: number): any {
           createSession: S.optional(S.Boolean),
           schemaInline: S.optional(S.String),
           referenceFileSchemaUri: S.optional(S.String),
-          nullMarkers: S.optional(__S(0)),
+          nullMarkers: S.optional(StringList),
           preserveAsciiControlCharacters: S.optional(S.Boolean),
-          sourceUris: S.optional(__S(0)),
+          sourceUris: S.optional(StringList),
           skipLeadingRows: S.optional(S.Number),
-          schemaUpdateOptions: S.optional(__S(0)),
-          hivePartitioningOptions: S.optional(__S(161)),
-          parquetOptions: S.optional(__S(162)),
-          projectionFields: S.optional(__S(0)),
+          schemaUpdateOptions: S.optional(StringList),
+          hivePartitioningOptions: S.optional(HivePartitioningOptions),
+          parquetOptions: S.optional(ParquetOptions),
+          projectionFields: S.optional(StringList),
           datetimeFormat: S.optional(S.String),
-          jsonExtension: S.optional(S.String),
+          jsonExtension: S.optional(JobConfigurationLoadJsonExtensionEnum),
           encoding: S.optional(S.String),
-          connectionProperties: S.optional(__S(164)),
+          connectionProperties: S.optional(ConnectionPropertyList),
           timeZone: S.optional(S.String),
           allowQuotedNewlines: S.optional(S.Boolean),
           quote: S.optional(S.String),
           ignoreUnknownValues: S.optional(S.Boolean),
-          sourceColumnMatch: S.optional(S.String),
-          destinationTableProperties: S.optional(__S(165)),
-          destinationTable: S.optional(__S(14)),
+          sourceColumnMatch: S.optional(JobConfigurationLoadSourceColumnMatchEnum),
+          destinationTableProperties: S.optional(DestinationTableProperties),
+          destinationTable: S.optional(TableReference),
           useAvroLogicalTypes: S.optional(S.Boolean),
-          decimalTargetTypes: S.optional(__S(79)),
+          decimalTargetTypes: S.optional(JobConfigurationLoadDecimalTargetTypesItemEnumList),
           autodetect: S.optional(S.Boolean),
-          destinationEncryptionConfiguration: S.optional(__S(166)),
+          destinationEncryptionConfiguration: S.optional(EncryptionConfiguration),
           maxBadRecords: S.optional(S.Number),
-          columnNameCharacterMap: S.optional(S.String),
+          columnNameCharacterMap: S.optional(JobConfigurationLoadColumnNameCharacterMapEnum),
           sourceFormat: S.optional(S.String),
           schemaInlineFormat: S.optional(S.String),
           nullMarker: S.optional(S.String),
           copyFilesOnly: S.optional(S.Boolean),
-          clustering: S.optional(__S(167)),
-          schema: S.optional(__S(146)),
+          clustering: S.optional(Clustering),
+          schema: S.optional(TableSchema),
           timestampFormat: S.optional(S.String),
           fieldDelimiter: S.optional(S.String),
           timeFormat: S.optional(S.String),
-          fileSetSpecType: S.optional(S.String),
+          fileSetSpecType: S.optional(JobConfigurationLoadFileSetSpecTypeEnum),
           dateFormat: S.optional(S.String),
           allowJaggedRows: S.optional(S.Boolean),
           writeDisposition: S.optional(S.String),
-          timePartitioning: S.optional(__S(168)),
+          timePartitioning: S.optional(TimePartitioning),
           createDisposition: S.optional(S.String),
-          rangePartitioning: S.optional(__S(170)),
-          timestampTargetPrecision: S.optional(__S(75)),
+          rangePartitioning: S.optional(RangePartitioning),
+          timestampTargetPrecision: S.optional(IntegerList),
         }),
       ).annotate({ identifier: "JobConfigurationLoad" });
     case 4:
       return S.suspend(() =>
         S.Struct({
           createDisposition: S.optional(S.String),
-          operationType: S.optional(S.String),
+          operationType: S.optional(JobConfigurationTableCopyOperationTypeEnum),
           writeDisposition: S.optional(S.String),
-          sourceTables: S.optional(__S(59)),
-          sourceTable: S.optional(__S(14)),
+          sourceTables: S.optional(TableReferenceList),
+          sourceTable: S.optional(TableReference),
           destinationExpirationTime: S.optional(S.String),
-          destinationTable: S.optional(__S(14)),
-          destinationEncryptionConfiguration: S.optional(__S(166)),
+          destinationTable: S.optional(TableReference),
+          destinationEncryptionConfiguration: S.optional(EncryptionConfiguration),
         }),
       ).annotate({
         identifier: "JobConfigurationTableCopy",
@@ -6826,16 +8292,16 @@ function __c21(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(S.suspend(() => __S(176))),
+          type: S.optional(S.suspend(() => StandardSqlDataType)),
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "StandardSqlField" });
     case 6:
-      return S.Array(__S(173));
+      return S.Array(StandardSqlField);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          fields: S.optional(__S(174)),
+          fields: S.optional(StandardSqlFieldList),
         }),
       ).annotate({ identifier: "StandardSqlStructType" });
   }
@@ -6845,19 +8311,19 @@ function __c22(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          rangeElementType: S.optional(__S(176)),
-          structType: S.optional(__S(175)),
-          arrayElementType: S.optional(__S(176)),
-          typeKind: S.optional(S.String),
+          rangeElementType: S.optional(StandardSqlDataType),
+          structType: S.optional(StandardSqlStructType),
+          arrayElementType: S.optional(StandardSqlDataType),
+          typeKind: S.optional(StandardSqlDataTypeTypeKindEnum),
         }),
       ).annotate({ identifier: "StandardSqlDataType" });
     case 1:
-      return S.Record(S.String, __S(176));
+      return S.Record(S.String, StandardSqlDataType);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          types: S.optional(__S(177)),
-          values: S.optional(__S(24)),
+          types: S.optional(StandardSqlDataTypeMap),
+          values: S.optional(DocumentMap),
         }),
       ).annotate({ identifier: "SystemVariables" });
     case 3:
@@ -6870,7 +8336,7 @@ function __c22(j: number): any {
         identifier: "UserDefinedFunctionResource",
       });
     case 4:
-      return S.Array(__S(179));
+      return S.Array(UserDefinedFunctionResource);
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -6880,7 +8346,7 @@ function __c22(j: number): any {
           encoding: S.optional(S.String),
           nullMarker: S.optional(S.String),
           quote: S.optional(S.String),
-          nullMarkers: S.optional(__S(0)),
+          nullMarkers: S.optional(StringList),
           fieldDelimiter: S.optional(S.String),
           allowJaggedRows: S.optional(S.Boolean),
           sourceColumnMatch: S.optional(S.String),
@@ -6919,16 +8385,16 @@ function __c23(j: number): any {
           qualifierString: S.optional(S.String),
           encoding: S.optional(S.String),
           onlyReadLatest: S.optional(S.Boolean),
-          protoConfig: S.optional(__S(184)),
+          protoConfig: S.optional(BigtableProtoConfig),
         }),
       ).annotate({ identifier: "BigtableColumn" });
     case 2:
-      return S.Array(__S(185));
+      return S.Array(BigtableColumn);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          columns: S.optional(__S(186)),
-          protoConfig: S.optional(__S(184)),
+          columns: S.optional(BigtableColumnList),
+          protoConfig: S.optional(BigtableProtoConfig),
           type: S.optional(S.String),
           encoding: S.optional(S.String),
           familyId: S.optional(S.String),
@@ -6936,13 +8402,13 @@ function __c23(j: number): any {
         }),
       ).annotate({ identifier: "BigtableColumnFamily" });
     case 4:
-      return S.Array(__S(187));
+      return S.Array(BigtableColumnFamily);
     case 5:
       return S.suspend(() =>
         S.Struct({
           outputColumnFamiliesAsJson: S.optional(S.Boolean),
           readRowkeyAsString: S.optional(S.Boolean),
-          columnFamilies: S.optional(__S(188)),
+          columnFamilies: S.optional(BigtableColumnFamilyList),
           ignoreUnspecifiedColumnFamilies: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "BigtableOptions" });
@@ -6956,30 +8422,30 @@ function __c23(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ignoreUnknownValues: S.optional(S.Boolean),
-          fileSetSpecType: S.optional(S.String),
+          fileSetSpecType: S.optional(ExternalDataConfigurationFileSetSpecTypeEnum),
           autodetect: S.optional(S.Boolean),
-          csvOptions: S.optional(__S(181)),
-          jsonExtension: S.optional(S.String),
-          metadataCacheMode: S.optional(S.String),
-          googleSheetsOptions: S.optional(__S(182)),
+          csvOptions: S.optional(CsvOptions),
+          jsonExtension: S.optional(ExternalDataConfigurationJsonExtensionEnum),
+          metadataCacheMode: S.optional(ExternalDataConfigurationMetadataCacheModeEnum),
+          googleSheetsOptions: S.optional(GoogleSheetsOptions),
           dateFormat: S.optional(S.String),
           timeFormat: S.optional(S.String),
           referenceFileSchemaUri: S.optional(S.String),
-          objectMetadata: S.optional(S.String),
+          objectMetadata: S.optional(ExternalDataConfigurationObjectMetadataEnum),
           timestampFormat: S.optional(S.String),
-          schema: S.optional(__S(146)),
-          jsonOptions: S.optional(__S(183)),
+          schema: S.optional(TableSchema),
+          jsonOptions: S.optional(JsonOptions),
           datetimeFormat: S.optional(S.String),
-          decimalTargetTypes: S.optional(__S(79)),
-          hivePartitioningOptions: S.optional(__S(161)),
-          sourceUris: S.optional(__S(0)),
-          bigtableOptions: S.optional(__S(189)),
+          decimalTargetTypes: S.optional(ExternalDataConfigurationDecimalTargetTypesItemEnumList),
+          hivePartitioningOptions: S.optional(HivePartitioningOptions),
+          sourceUris: S.optional(StringList),
+          bigtableOptions: S.optional(BigtableOptions),
           timeZone: S.optional(S.String),
-          avroOptions: S.optional(__S(190)),
-          timestampTargetPrecision: S.optional(__S(75)),
+          avroOptions: S.optional(AvroOptions),
+          timestampTargetPrecision: S.optional(IntegerList),
           maxBadRecords: S.optional(S.Number),
           compression: S.optional(S.String),
-          parquetOptions: S.optional(__S(162)),
+          parquetOptions: S.optional(ParquetOptions),
           connectionId: S.optional(S.String),
           sourceFormat: S.optional(S.String),
         }),
@@ -6991,11 +8457,11 @@ function __c23(j: number): any {
 function __c24(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, __S(191));
+      return S.Record(S.String, ExternalDataConfiguration);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          keyResultStatement: S.optional(S.String),
+          keyResultStatement: S.optional(ScriptOptionsKeyResultStatementEnum),
           statementByteBudget: S.optional(S.String),
           statementTimeoutMs: S.optional(S.String),
         }),
@@ -7003,38 +8469,38 @@ function __c24(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          secureParameterEntries: S.optional(__S(24)),
+          secureParameterEntries: S.optional(DocumentMap),
         }),
       ).annotate({ identifier: "SecureContext" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           useLegacySql: S.optional(S.Boolean),
-          defaultDataset: S.optional(__S(33)),
-          destinationTable: S.optional(__S(14)),
+          defaultDataset: S.optional(DatasetReference),
+          destinationTable: S.optional(TableReference),
           maximumBillingTier: S.optional(S.Number),
           flattenResults: S.optional(S.Boolean),
-          systemVariables: S.optional(__S(178)),
-          userDefinedFunctionResources: S.optional(__S(180)),
-          schemaUpdateOptions: S.optional(__S(0)),
+          systemVariables: S.optional(SystemVariables),
+          userDefinedFunctionResources: S.optional(UserDefinedFunctionResourceList),
+          schemaUpdateOptions: S.optional(StringList),
           createDisposition: S.optional(S.String),
-          rangePartitioning: S.optional(__S(170)),
-          connectionProperties: S.optional(__S(164)),
+          rangePartitioning: S.optional(RangePartitioning),
+          connectionProperties: S.optional(ConnectionPropertyList),
           createSession: S.optional(S.Boolean),
           continuous: S.optional(S.Boolean),
           parameterMode: S.optional(S.String),
-          tableDefinitions: S.optional(__S(192)),
+          tableDefinitions: S.optional(ExternalDataConfigurationMap),
           maximumBytesBilled: S.optional(S.String),
           priority: S.optional(S.String),
-          scriptOptions: S.optional(__S(193)),
-          destinationEncryptionConfiguration: S.optional(__S(166)),
+          scriptOptions: S.optional(ScriptOptions),
+          destinationEncryptionConfiguration: S.optional(EncryptionConfiguration),
           allowLargeResults: S.optional(S.Boolean),
-          queryParameters: S.optional(__S(134)),
-          clustering: S.optional(__S(167)),
-          secureContext: S.optional(__S(194)),
+          queryParameters: S.optional(QueryParameterList),
+          clustering: S.optional(Clustering),
+          secureContext: S.optional(SecureContext),
           writeIncrementalResults: S.optional(S.Boolean),
           writeDisposition: S.optional(S.String),
-          timePartitioning: S.optional(__S(168)),
+          timePartitioning: S.optional(TimePartitioning),
           useQueryCache: S.optional(S.Boolean),
           query: S.optional(S.String),
           preserveNulls: S.optional(S.Boolean),
@@ -7057,12 +8523,12 @@ function __c24(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          modelExtractOptions: S.optional(__S(196)),
+          modelExtractOptions: S.optional(ModelExtractOptions),
           printHeader: S.optional(S.Boolean),
-          sourceModel: S.optional(__S(197)),
+          sourceModel: S.optional(ModelReference),
           useAvroLogicalTypes: S.optional(S.Boolean),
-          sourceTable: S.optional(__S(14)),
-          destinationUris: S.optional(__S(0)),
+          sourceTable: S.optional(TableReference),
+          destinationUris: S.optional(StringList),
           destinationFormat: S.optional(S.String),
           fieldDelimiter: S.optional(S.String),
           nativeGeographyExportEnabled: S.optional(S.Boolean),
@@ -7073,16 +8539,16 @@ function __c24(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          load: S.optional(__S(171)),
+          load: S.optional(JobConfigurationLoad),
           dryRun: S.optional(S.Boolean),
           maxSlots: S.optional(S.Number),
-          copy: S.optional(__S(172)),
-          labels: S.optional(__S(60)),
-          query: S.optional(__S(195)),
+          copy: S.optional(JobConfigurationTableCopy),
+          labels: S.optional(StringMap),
+          query: S.optional(JobConfigurationQuery),
           reservation: S.optional(S.String),
           jobTimeoutMs: S.optional(S.String),
           jobType: S.optional(S.String),
-          extract: S.optional(__S(198)),
+          extract: S.optional(JobConfigurationExtract),
         }),
       ).annotate({ identifier: "JobConfiguration" });
   }
@@ -7092,7 +8558,7 @@ function __c25(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          code: S.optional(S.String),
+          code: S.optional(JobCreationReasonCodeEnum),
         }),
       ).annotate({ identifier: "JobCreationReason" });
     case 1:
@@ -7101,13 +8567,13 @@ function __c25(j: number): any {
           id: S.optional(S.String),
           user_email: S.optional(S.String),
           principal_subject: S.optional(S.String),
-          jobReference: S.optional(__S(5)),
+          jobReference: S.optional(JobReference),
           etag: S.optional(S.String),
-          statistics: S.optional(__S(157)),
-          status: S.optional(__S(160)),
-          configuration: S.optional(__S(199)),
+          statistics: S.optional(JobStatistics),
+          status: S.optional(JobStatus),
+          configuration: S.optional(JobConfiguration),
           kind: S.optional(S.String),
-          jobCreationReason: S.optional(__S(200)),
+          jobCreationReason: S.optional(JobCreationReason),
           selfLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "Job" });
@@ -7115,7 +8581,7 @@ function __c25(j: number): any {
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
-          job: S.optional(__S(201)),
+          job: S.optional(Job),
         }),
       ).annotate({ identifier: "JobCancelResponse" });
     case 3:
@@ -7224,7 +8690,7 @@ function __c26(j: number): any {
           datasetId: S.String.pipe(T.Label()),
           accessPolicyVersion: S.optional(S.Number.pipe(T.Query())),
           projectId: S.String.pipe(T.Label()),
-          datasetView: S.optional(S.String.pipe(T.Query())),
+          datasetView: S.optional(GetDatasetsDatasetViewEnum.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -7236,13 +8702,13 @@ function __c26(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(S.String),
+          type: S.optional(RestrictionConfigTypeEnum),
         }),
       ).annotate({ identifier: "RestrictionConfig" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          parameters: S.optional(__S(60)),
+          parameters: S.optional(StringMap),
           defaultStorageLocationUri: S.optional(S.String),
         }),
       ).annotate({
@@ -7251,13 +8717,13 @@ function __c26(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          linkState: S.optional(S.String),
+          linkState: S.optional(LinkedDatasetMetadataLinkStateEnum),
         }),
       ).annotate({ identifier: "LinkedDatasetMetadata" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          sourceDataset: S.optional(__S(33)),
+          sourceDataset: S.optional(DatasetReference),
         }),
       ).annotate({ identifier: "LinkedDatasetSource" });
   }
@@ -7279,12 +8745,12 @@ function __c27(j: number): any {
         }),
       ).annotate({ identifier: "DatasetTagsItem" });
     case 2:
-      return S.Array(__S(217));
+      return S.Array(DatasetTagsItem);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          dataset: S.optional(__S(33)),
-          targetTypes: S.optional(__S(79)),
+          dataset: S.optional(DatasetReference),
+          targetTypes: S.optional(DatasetAccessEntryTargetTypesItemEnumList),
         }),
       ).annotate({ identifier: "DatasetAccessEntry" });
     case 4:
@@ -7299,53 +8765,53 @@ function __c27(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          dataset: S.optional(__S(219)),
-          view: S.optional(__S(14)),
+          dataset: S.optional(DatasetAccessEntry),
+          view: S.optional(TableReference),
           iamMember: S.optional(S.String),
           specialGroup: S.optional(S.String),
           groupByEmail: S.optional(S.String),
           role: S.optional(S.String),
-          condition: S.optional(__S(220)),
+          condition: S.optional(Expr),
           userByEmail: S.optional(S.String),
           domain: S.optional(S.String),
-          routine: S.optional(__S(35)),
+          routine: S.optional(RoutineReference),
         }),
       ).annotate({ identifier: "DatasetAccessItem" });
     case 6:
-      return S.Array(__S(221));
+      return S.Array(DatasetAccessItem);
     case 7:
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
           defaultTableExpirationMs: S.optional(S.String),
-          restrictions: S.optional(__S(212)),
+          restrictions: S.optional(RestrictionConfig),
           lastModifiedTime: S.optional(S.String),
-          storageBillingModel: S.optional(S.String),
-          labels: S.optional(__S(60)),
+          storageBillingModel: S.optional(DatasetStorageBillingModelEnum),
+          labels: S.optional(StringMap),
           satisfiesPzs: S.optional(S.Boolean),
-          externalCatalogDatasetOptions: S.optional(__S(213)),
-          defaultEncryptionConfiguration: S.optional(__S(166)),
-          linkedDatasetMetadata: S.optional(__S(214)),
+          externalCatalogDatasetOptions: S.optional(ExternalCatalogDatasetOptions),
+          defaultEncryptionConfiguration: S.optional(EncryptionConfiguration),
+          linkedDatasetMetadata: S.optional(LinkedDatasetMetadata),
           isCaseInsensitive: S.optional(S.Boolean),
-          linkedDatasetSource: S.optional(__S(215)),
-          resourceTags: S.optional(__S(60)),
+          linkedDatasetSource: S.optional(LinkedDatasetSource),
+          resourceTags: S.optional(StringMap),
           defaultPartitionExpirationMs: S.optional(S.String),
           friendlyName: S.optional(S.String),
           maxTimeTravelHours: S.optional(S.String),
-          externalDatasetReference: S.optional(__S(216)),
+          externalDatasetReference: S.optional(ExternalDatasetReference),
           id: S.optional(S.String),
           type: S.optional(S.String),
           location: S.optional(S.String),
           catalogSource: S.optional(S.String),
           etag: S.optional(S.String),
           selfLink: S.optional(S.String),
-          datasetReference: S.optional(__S(33)),
+          datasetReference: S.optional(DatasetReference),
           creationTime: S.optional(S.String),
-          tags: S.optional(__S(218)),
+          tags: S.optional(DatasetTagsItemList),
           defaultCollation: S.optional(S.String),
-          defaultRoundingMode: S.optional(S.String),
+          defaultRoundingMode: S.optional(DatasetDefaultRoundingModeEnum),
           description: S.optional(S.String),
-          access: S.optional(__S(222)),
+          access: S.optional(DatasetAccessItemList),
           satisfiesPzi: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "Dataset" });
@@ -7362,14 +8828,14 @@ function __c28(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          options: S.optional(__S(224)),
+          options: S.optional(GetPolicyOptions),
         }),
       ).annotate({ identifier: "GetIamPolicyRequest" });
     case 2:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(225).pipe(T.HttpBody())),
+          body: S.optional(GetIamPolicyRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7384,25 +8850,25 @@ function __c28(j: number): any {
       return S.suspend(() =>
         S.Struct({
           role: S.optional(S.String),
-          condition: S.optional(__S(220)),
-          members: S.optional(__S(0)),
+          condition: S.optional(Expr),
+          members: S.optional(StringList),
         }),
       ).annotate({ identifier: "Binding" });
     case 4:
-      return S.Array(__S(227));
+      return S.Array(Binding);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          logType: S.optional(S.String),
-          exemptedMembers: S.optional(__S(0)),
+          logType: S.optional(AuditLogConfigLogTypeEnum),
+          exemptedMembers: S.optional(StringList),
         }),
       ).annotate({ identifier: "AuditLogConfig" });
     case 6:
-      return S.Array(__S(229));
+      return S.Array(AuditLogConfig);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          auditLogConfigs: S.optional(__S(230)),
+          auditLogConfigs: S.optional(AuditLogConfigList),
           service: S.optional(S.String),
         }),
       ).annotate({ identifier: "AuditConfig" });
@@ -7411,12 +8877,12 @@ function __c28(j: number): any {
 function __c29(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(231));
+      return S.Array(AuditConfig);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          bindings: S.optional(__S(228)),
-          auditConfigs: S.optional(__S(232)),
+          bindings: S.optional(BindingList),
+          auditConfigs: S.optional(AuditConfigList),
           version: S.optional(S.Number),
           etag: S.optional(S.String),
         }),
@@ -7425,7 +8891,7 @@ function __c29(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(225).pipe(T.HttpBody())),
+          body: S.optional(GetIamPolicyRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7440,7 +8906,7 @@ function __c29(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(225).pipe(T.HttpBody())),
+          body: S.optional(GetIamPolicyRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7487,7 +8953,7 @@ function __c29(j: number): any {
         }),
       ).annotate({ identifier: "Explanation" });
     case 7:
-      return S.Array(__S(238));
+      return S.Array(Explanation);
   }
 }
 function __c30(j: number): any {
@@ -7496,46 +8962,46 @@ function __c30(j: number): any {
       return S.suspend(() =>
         S.Struct({
           classLabel: S.optional(S.String),
-          explanations: S.optional(__S(239)),
+          explanations: S.optional(ExplanationList),
         }),
       ).annotate({ identifier: "GlobalExplanation" });
     case 1:
-      return S.Array(__S(240));
+      return S.Array(GlobalExplanation);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          testTable: S.optional(__S(14)),
-          trainingTable: S.optional(__S(14)),
-          evaluationTable: S.optional(__S(14)),
+          testTable: S.optional(TableReference),
+          trainingTable: S.optional(TableReference),
+          evaluationTable: S.optional(TableReference),
         }),
       ).annotate({ identifier: "DataSplitResult" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          evaluationMetrics: S.optional(__S(119)),
-          results: S.optional(__S(88)),
+          evaluationMetrics: S.optional(EvaluationMetrics),
+          results: S.optional(IterationResultList),
           trainingStartTime: S.optional(S.String),
           vertexAiModelVersion: S.optional(S.String),
           vertexAiModelId: S.optional(S.String),
-          trainingOptions: S.optional(__S(90)),
-          classLevelGlobalExplanations: S.optional(__S(241)),
-          modelLevelGlobalExplanation: S.optional(__S(240)),
-          dataSplitResult: S.optional(__S(242)),
+          trainingOptions: S.optional(TrainingOptions),
+          classLevelGlobalExplanations: S.optional(GlobalExplanationList),
+          modelLevelGlobalExplanation: S.optional(GlobalExplanation),
+          dataSplitResult: S.optional(DataSplitResult),
           startTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "TrainingRun" });
     case 4:
-      return S.Array(__S(243));
+      return S.Array(TrainingRun);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          candidates: S.optional(__S(0)),
+          candidates: S.optional(StringList),
         }),
       ).annotate({ identifier: "StringHparamSearchSpace" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          candidates: S.optional(__S(75)),
+          candidates: S.optional(DoubleList),
         }),
       ).annotate({ identifier: "DoubleCandidates" });
     case 7:
@@ -7552,8 +9018,8 @@ function __c31(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          candidates: S.optional(__S(246)),
-          range: S.optional(__S(247)),
+          candidates: S.optional(DoubleCandidates),
+          range: S.optional(DoubleRange),
         }),
       ).annotate({ identifier: "DoubleHparamSearchSpace" });
     case 1:
@@ -7566,22 +9032,22 @@ function __c31(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          range: S.optional(__S(249)),
-          candidates: S.optional(__S(245)),
+          range: S.optional(IntRange),
+          candidates: S.optional(IntCandidates),
         }),
       ).annotate({ identifier: "IntHparamSearchSpace" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          elements: S.optional(__S(0)),
+          elements: S.optional(StringList),
         }),
       ).annotate({ identifier: "IntArray" });
     case 4:
-      return S.Array(__S(251));
+      return S.Array(IntArray);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          candidates: S.optional(__S(252)),
+          candidates: S.optional(IntArrayList),
         }),
       ).annotate({
         identifier: "IntArrayHparamSearchSpace",
@@ -7589,28 +9055,28 @@ function __c31(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          boosterType: S.optional(__S(245)),
-          minSplitLoss: S.optional(__S(248)),
-          colsampleBytree: S.optional(__S(248)),
-          colsampleBylevel: S.optional(__S(248)),
-          numFactors: S.optional(__S(250)),
-          l1Reg: S.optional(__S(248)),
-          subsample: S.optional(__S(248)),
-          l2Reg: S.optional(__S(248)),
-          optimizer: S.optional(__S(245)),
-          batchSize: S.optional(__S(250)),
-          minTreeChildWeight: S.optional(__S(250)),
-          treeMethod: S.optional(__S(245)),
-          hiddenUnits: S.optional(__S(253)),
-          maxTreeDepth: S.optional(__S(250)),
-          learnRate: S.optional(__S(248)),
-          walsAlpha: S.optional(__S(248)),
-          dartNormalizeType: S.optional(__S(245)),
-          colsampleBynode: S.optional(__S(248)),
-          dropout: S.optional(__S(248)),
-          numClusters: S.optional(__S(250)),
-          numParallelTree: S.optional(__S(250)),
-          activationFn: S.optional(__S(245)),
+          boosterType: S.optional(StringHparamSearchSpace),
+          minSplitLoss: S.optional(DoubleHparamSearchSpace),
+          colsampleBytree: S.optional(DoubleHparamSearchSpace),
+          colsampleBylevel: S.optional(DoubleHparamSearchSpace),
+          numFactors: S.optional(IntHparamSearchSpace),
+          l1Reg: S.optional(DoubleHparamSearchSpace),
+          subsample: S.optional(DoubleHparamSearchSpace),
+          l2Reg: S.optional(DoubleHparamSearchSpace),
+          optimizer: S.optional(StringHparamSearchSpace),
+          batchSize: S.optional(IntHparamSearchSpace),
+          minTreeChildWeight: S.optional(IntHparamSearchSpace),
+          treeMethod: S.optional(StringHparamSearchSpace),
+          hiddenUnits: S.optional(IntArrayHparamSearchSpace),
+          maxTreeDepth: S.optional(IntHparamSearchSpace),
+          learnRate: S.optional(DoubleHparamSearchSpace),
+          walsAlpha: S.optional(DoubleHparamSearchSpace),
+          dartNormalizeType: S.optional(StringHparamSearchSpace),
+          colsampleBynode: S.optional(DoubleHparamSearchSpace),
+          dropout: S.optional(DoubleHparamSearchSpace),
+          numClusters: S.optional(IntHparamSearchSpace),
+          numParallelTree: S.optional(IntHparamSearchSpace),
+          activationFn: S.optional(StringHparamSearchSpace),
         }),
       ).annotate({ identifier: "HparamSearchSpaces" });
     case 7:
@@ -7619,7 +9085,7 @@ function __c31(j: number): any {
           maxBatchingRows: S.optional(S.String),
           speechRecognizer: S.optional(S.String),
           endpoint: S.optional(S.String),
-          remoteServiceType: S.optional(S.String),
+          remoteServiceType: S.optional(RemoteModelInfoRemoteServiceTypeEnum),
           connection: S.optional(S.String),
           remoteModelVersion: S.optional(S.String),
         }),
@@ -7633,42 +9099,44 @@ function __c32(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           transformSql: S.optional(S.String),
-          type: S.optional(__S(176)),
+          type: S.optional(StandardSqlDataType),
         }),
       ).annotate({ identifier: "TransformColumn" });
     case 1:
-      return S.Array(__S(256));
+      return S.Array(TransformColumn);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          optimalTrialIds: S.optional(__S(0)),
-          featureColumns: S.optional(__S(174)),
+          optimalTrialIds: S.optional(StringList),
+          featureColumns: S.optional(StandardSqlFieldList),
           defaultTrialId: S.optional(S.String),
-          encryptionConfiguration: S.optional(__S(166)),
+          encryptionConfiguration: S.optional(EncryptionConfiguration),
           location: S.optional(S.String),
-          modelReference: S.optional(__S(197)),
-          modelType: S.optional(S.String),
+          modelReference: S.optional(ModelReference),
+          modelType: S.optional(ModelModelTypeEnum),
           etag: S.optional(S.String),
-          labelColumns: S.optional(__S(174)),
+          labelColumns: S.optional(StandardSqlFieldList),
           description: S.optional(S.String),
-          trainingRuns: S.optional(__S(244)),
-          hparamTrials: S.optional(__S(121)),
+          trainingRuns: S.optional(TrainingRunList),
+          hparamTrials: S.optional(HparamTuningTrialList),
           lastModifiedTime: S.optional(S.String),
-          labels: S.optional(__S(60)),
+          labels: S.optional(StringMap),
           friendlyName: S.optional(S.String),
           expirationTime: S.optional(S.String),
-          hparamSearchSpaces: S.optional(__S(254)),
+          hparamSearchSpaces: S.optional(HparamSearchSpaces),
           bestTrialId: S.optional(S.String),
           creationTime: S.optional(S.String),
-          remoteModelInfo: S.optional(__S(255)),
-          transformColumns: S.optional(__S(257)),
+          remoteModelInfo: S.optional(RemoteModelInfo),
+          transformColumns: S.optional(TransformColumnList),
         }),
       ).annotate({ identifier: "Model" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           location: S.optional(S.String.pipe(T.Query())),
-          "formatOptions.timestampOutputFormat": S.optional(S.String.pipe(T.Query())),
+          "formatOptions.timestampOutputFormat": S.optional(
+            GetQueryResultsJobsFormatOptions_timestampOutputFormatEnum.pipe(T.Query()),
+          ),
           maxResults: S.optional(S.Number.pipe(T.Query())),
           startIndex: S.optional(S.String.pipe(T.Query())),
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -7693,15 +9161,15 @@ function __c32(j: number): any {
         }),
       ).annotate({ identifier: "TableCell" });
     case 5:
-      return S.Array(__S(260));
+      return S.Array(TableCell);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          f: S.optional(__S(261)),
+          f: S.optional(TableCellList),
         }),
       ).annotate({ identifier: "TableRow" });
     case 7:
-      return S.Array(__S(262));
+      return S.Array(TableRow);
   }
 }
 function __c33(j: number): any {
@@ -7709,13 +9177,13 @@ function __c33(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          rows: S.optional(__S(263)),
+          rows: S.optional(TableRowList),
           numDmlAffectedRows: S.optional(S.String),
           etag: S.optional(S.String),
-          schema: S.optional(__S(146)),
-          errors: S.optional(__S(159)),
+          schema: S.optional(TableSchema),
+          errors: S.optional(ErrorProtoList),
           cacheHit: S.optional(S.Boolean),
-          jobReference: S.optional(__S(5)),
+          jobReference: S.optional(JobReference),
           totalBytesProcessed: S.optional(S.String),
           kind: S.optional(S.String),
           jobComplete: S.optional(S.Boolean),
@@ -7742,7 +9210,7 @@ function __c33(j: number): any {
       return S.suspend(() =>
         S.Struct({
           connection: S.optional(S.String),
-          userDefinedContext: S.optional(__S(60)),
+          userDefinedContext: S.optional(StringMap),
           endpoint: S.optional(S.String),
           maxBatchingRows: S.optional(S.String),
         }),
@@ -7752,32 +9220,32 @@ function __c33(j: number): any {
         S.Struct({
           buildDuration: S.optional(S.String),
           buildStateUpdateTime: S.optional(S.String),
-          errorResult: S.optional(__S(158)),
+          errorResult: S.optional(ErrorProto),
           imageSizeBytes: S.optional(S.String),
-          buildState: S.optional(S.String),
+          buildState: S.optional(RoutineBuildStatusBuildStateEnum),
         }),
       ).annotate({ identifier: "RoutineBuildStatus" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          columns: S.optional(__S(174)),
+          columns: S.optional(StandardSqlFieldList),
         }),
       ).annotate({ identifier: "StandardSqlTableType" });
     case 5:
       return S.suspend(() =>
         S.Struct({
           entryPoint: S.optional(S.String),
-          packages: S.optional(__S(0)),
+          packages: S.optional(StringList),
         }),
       ).annotate({ identifier: "PythonOptions" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          properties: S.optional(__S(60)),
-          jarUris: S.optional(__S(0)),
-          pyFileUris: S.optional(__S(0)),
-          fileUris: S.optional(__S(0)),
-          archiveUris: S.optional(__S(0)),
+          properties: S.optional(StringMap),
+          jarUris: S.optional(StringList),
+          pyFileUris: S.optional(StringList),
+          fileUris: S.optional(StringList),
+          archiveUris: S.optional(StringList),
           containerImage: S.optional(S.String),
           connection: S.optional(S.String),
           runtimeVersion: S.optional(S.String),
@@ -7788,10 +9256,10 @@ function __c33(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          dataType: S.optional(__S(176)),
-          tableType: S.optional(__S(268)),
-          mode: S.optional(S.String),
-          argumentKind: S.optional(S.String),
+          dataType: S.optional(StandardSqlDataType),
+          tableType: S.optional(StandardSqlTableType),
+          mode: S.optional(ArgumentModeEnum),
+          argumentKind: S.optional(ArgumentArgumentKindEnum),
           name: S.optional(S.String),
           isAggregate: S.optional(S.Boolean),
         }),
@@ -7801,7 +9269,7 @@ function __c33(j: number): any {
 function __c34(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(271));
+      return S.Array(Argument);
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -7810,7 +9278,7 @@ function __c34(j: number): any {
         }),
       ).annotate({ identifier: "ExternalVolumeMount" });
     case 2:
-      return S.Array(__S(273));
+      return S.Array(ExternalVolumeMount);
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -7819,33 +9287,33 @@ function __c34(j: number): any {
           maxBatchingRows: S.optional(S.String),
           containerRequestConcurrency: S.optional(S.String),
           runtimeVersion: S.optional(S.String),
-          volumeMounts: S.optional(__S(274)),
+          volumeMounts: S.optional(ExternalVolumeMountList),
           runtimeConnection: S.optional(S.String),
         }),
       ).annotate({ identifier: "ExternalRuntimeOptions" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          remoteFunctionOptions: S.optional(__S(266)),
+          remoteFunctionOptions: S.optional(RemoteFunctionOptions),
           description: S.optional(S.String),
           lastModifiedTime: S.optional(S.String),
-          buildStatus: S.optional(__S(267)),
-          returnTableType: S.optional(__S(268)),
-          pythonOptions: S.optional(__S(269)),
-          sparkOptions: S.optional(__S(270)),
-          routineReference: S.optional(__S(35)),
-          dataGovernanceType: S.optional(S.String),
-          arguments: S.optional(__S(272)),
-          externalRuntimeOptions: S.optional(__S(275)),
+          buildStatus: S.optional(RoutineBuildStatus),
+          returnTableType: S.optional(StandardSqlTableType),
+          pythonOptions: S.optional(PythonOptions),
+          sparkOptions: S.optional(SparkOptions),
+          routineReference: S.optional(RoutineReference),
+          dataGovernanceType: S.optional(RoutineDataGovernanceTypeEnum),
+          arguments: S.optional(ArgumentList),
+          externalRuntimeOptions: S.optional(ExternalRuntimeOptions),
           strictMode: S.optional(S.Boolean),
           etag: S.optional(S.String),
-          language: S.optional(S.String),
+          language: S.optional(RoutineLanguageEnum),
           creationTime: S.optional(S.String),
-          importedLibraries: S.optional(__S(0)),
-          determinismLevel: S.optional(S.String),
-          securityMode: S.optional(S.String),
-          returnType: S.optional(__S(176)),
-          routineType: S.optional(S.String),
+          importedLibraries: S.optional(StringList),
+          determinismLevel: S.optional(RoutineDeterminismLevelEnum),
+          securityMode: S.optional(RoutineSecurityModeEnum),
+          returnType: S.optional(StandardSqlDataType),
+          routineType: S.optional(RoutineRoutineTypeEnum),
           definitionBody: S.optional(S.String),
         }),
       ).annotate({ identifier: "Routine" });
@@ -7871,10 +9339,10 @@ function __c34(j: number): any {
         S.Struct({
           etag: S.optional(S.String),
           lastModifiedTime: S.optional(S.String),
-          grantees: S.optional(__S(0)),
+          grantees: S.optional(StringList),
           creationTime: S.optional(S.String),
           filterPredicate: S.optional(S.String),
-          rowAccessPolicyReference: S.optional(__S(34)),
+          rowAccessPolicyReference: S.optional(RowAccessPolicyReference),
         }),
       ).annotate({ identifier: "RowAccessPolicy" });
     case 7:
@@ -7911,7 +9379,7 @@ function __c35(j: number): any {
           datasetId: S.String.pipe(T.Label()),
           selectedFields: S.optional(S.String.pipe(T.Query())),
           tableId: S.String.pipe(T.Label()),
-          view: S.optional(S.String.pipe(T.Query())),
+          view: S.optional(GetTablesViewEnum.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -7923,14 +9391,14 @@ function __c35(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          joinAllowedColumns: S.optional(__S(0)),
-          joinCondition: S.optional(S.String),
+          joinAllowedColumns: S.optional(StringList),
+          joinCondition: S.optional(JoinRestrictionPolicyJoinConditionEnum),
         }),
       ).annotate({ identifier: "JoinRestrictionPolicy" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          privacyUnitColumns: S.optional(__S(0)),
+          privacyUnitColumns: S.optional(StringList),
           threshold: S.optional(S.String),
         }),
       ).annotate({
@@ -7954,9 +9422,9 @@ function __c35(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          joinRestrictionPolicy: S.optional(__S(282)),
-          aggregationThresholdPolicy: S.optional(__S(283)),
-          differentialPrivacyPolicy: S.optional(__S(284)),
+          joinRestrictionPolicy: S.optional(JoinRestrictionPolicy),
+          aggregationThresholdPolicy: S.optional(AggregationThresholdPolicy),
+          differentialPrivacyPolicy: S.optional(DifferentialPrivacyPolicy),
         }),
       ).annotate({ identifier: "PrivacyPolicy" });
     case 6:
@@ -7967,7 +9435,7 @@ function __c35(j: number): any {
         }),
       ).annotate({ identifier: "ForeignViewDefinition" });
     case 7:
-      return S.Array(__S(286));
+      return S.Array(ForeignViewDefinition);
   }
 }
 function __c36(j: number): any {
@@ -7975,19 +9443,19 @@ function __c36(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          privacyPolicy: S.optional(__S(285)),
-          userDefinedFunctionResources: S.optional(__S(180)),
+          privacyPolicy: S.optional(PrivacyPolicy),
+          userDefinedFunctionResources: S.optional(UserDefinedFunctionResourceList),
           useLegacySql: S.optional(S.Boolean),
           query: S.optional(S.String),
           useExplicitColumnNames: S.optional(S.Boolean),
-          foreignDefinitions: S.optional(__S(287)),
+          foreignDefinitions: S.optional(ForeignViewDefinitionList),
         }),
       ).annotate({ identifier: "ViewDefinition" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           cloneTime: S.optional(S.String),
-          baseTableReference: S.optional(__S(14)),
+          baseTableReference: S.optional(TableReference),
         }),
       ).annotate({ identifier: "CloneDefinition" });
     case 2:
@@ -7997,11 +9465,11 @@ function __c36(j: number): any {
         }),
       ).annotate({ identifier: "PartitionedColumn" });
     case 3:
-      return S.Array(__S(290));
+      return S.Array(PartitionedColumn);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          partitionedColumn: S.optional(__S(291)),
+          partitionedColumn: S.optional(PartitionedColumnList),
         }),
       ).annotate({ identifier: "PartitioningDefinition" });
     case 5:
@@ -8015,11 +9483,11 @@ function __c36(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          replicationError: S.optional(__S(158)),
+          replicationError: S.optional(ErrorProto),
           replicationIntervalMs: S.optional(S.String),
           replicatedSourceLastRefreshTime: S.optional(S.String),
-          replicationStatus: S.optional(S.String),
-          sourceTable: S.optional(__S(14)),
+          replicationStatus: S.optional(TableReplicationInfoReplicationStatusEnum),
+          sourceTable: S.optional(TableReference),
         }),
       ).annotate({ identifier: "TableReplicationInfo" });
     case 7:
@@ -8027,7 +9495,7 @@ function __c36(j: number): any {
         S.Struct({
           serializationLibrary: S.optional(S.String),
           name: S.optional(S.String),
-          parameters: S.optional(__S(60)),
+          parameters: S.optional(StringMap),
         }),
       ).annotate({ identifier: "SerDeInfo" });
   }
@@ -8037,7 +9505,7 @@ function __c37(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          serdeInfo: S.optional(__S(295)),
+          serdeInfo: S.optional(SerDeInfo),
           inputFormat: S.optional(S.String),
           locationUri: S.optional(S.String),
           outputFormat: S.optional(S.String),
@@ -8046,9 +9514,9 @@ function __c37(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          parameters: S.optional(__S(60)),
+          parameters: S.optional(StringMap),
           connectionId: S.optional(S.String),
-          storageDescriptor: S.optional(__S(296)),
+          storageDescriptor: S.optional(StorageDescriptor),
         }),
       ).annotate({
         identifier: "ExternalCatalogTableOptions",
@@ -8069,7 +9537,7 @@ function __c37(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          lastRefreshStatus: S.optional(__S(158)),
+          lastRefreshStatus: S.optional(ErrorProto),
           refreshWatermark: S.optional(S.String),
         }),
       ).annotate({ identifier: "MaterializedViewStatus" });
@@ -8077,16 +9545,16 @@ function __c37(j: number): any {
       return S.suspend(() =>
         S.Struct({
           storageUri: S.optional(S.String),
-          tableFormat: S.optional(S.String),
+          tableFormat: S.optional(BigLakeConfigurationTableFormatEnum),
           connectionId: S.optional(S.String),
-          fileFormat: S.optional(S.String),
+          fileFormat: S.optional(BigLakeConfigurationFileFormatEnum),
         }),
       ).annotate({ identifier: "BigLakeConfiguration" });
     case 5:
       return S.suspend(() =>
         S.Struct({
           snapshotTime: S.optional(S.String),
-          baseTableReference: S.optional(__S(14)),
+          baseTableReference: S.optional(TableReference),
         }),
       ).annotate({ identifier: "SnapshotDefinition" });
     case 6:
@@ -8113,23 +9581,23 @@ function __c37(j: number): any {
 function __c38(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(303));
+      return S.Array(TableConstraintsForeignKeysItemColumnReferencesItem);
     case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          referencedTable: S.optional(__S(302)),
-          columnReferences: S.optional(__S(304)),
+          referencedTable: S.optional(TableConstraintsForeignKeysItemReferencedTable),
+          columnReferences: S.optional(TableConstraintsForeignKeysItemColumnReferencesItemList),
         }),
       ).annotate({
         identifier: "TableConstraintsForeignKeysItem",
       });
     case 2:
-      return S.Array(__S(305));
+      return S.Array(TableConstraintsForeignKeysItem);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          columns: S.optional(__S(0)),
+          columns: S.optional(StringList),
         }),
       ).annotate({
         identifier: "TableConstraintsPrimaryKey",
@@ -8137,14 +9605,14 @@ function __c38(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          foreignKeys: S.optional(__S(306)),
-          primaryKey: S.optional(__S(307)),
+          foreignKeys: S.optional(TableConstraintsForeignKeysItemList),
+          primaryKey: S.optional(TableConstraintsPrimaryKey),
         }),
       ).annotate({ identifier: "TableConstraints" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          labels: S.optional(__S(0)),
+          labels: S.optional(StringList),
           lossType: S.optional(S.String),
           modelType: S.optional(S.String),
         }),
@@ -8182,95 +9650,95 @@ function __c38(j: number): any {
 function __c39(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(311));
+      return S.Array(BqmlIterationResult);
     case 1:
       return S.suspend(() =>
         S.Struct({
           state: S.optional(S.String),
           startTime: S.optional(S.String),
-          trainingOptions: S.optional(__S(310)),
-          iterationResults: S.optional(__S(312)),
+          trainingOptions: S.optional(BqmlTrainingRunTrainingOptions),
+          iterationResults: S.optional(BqmlIterationResultList),
         }),
       ).annotate({ identifier: "BqmlTrainingRun" });
     case 2:
-      return S.Array(__S(313));
+      return S.Array(BqmlTrainingRun);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          modelOptions: S.optional(__S(309)),
-          trainingRuns: S.optional(__S(314)),
+          modelOptions: S.optional(ModelDefinitionModelOptions),
+          trainingRuns: S.optional(BqmlTrainingRunList),
         }),
       ).annotate({ identifier: "ModelDefinition" });
     case 4:
       return S.suspend(() =>
         S.Struct({
           numBytes: S.optional(S.String),
-          resourceTags: S.optional(__S(60)),
+          resourceTags: S.optional(StringMap),
           numActivePhysicalBytes: S.optional(S.String),
           location: S.optional(S.String),
           kind: S.optional(S.String),
           friendlyName: S.optional(S.String),
           id: S.optional(S.String),
-          rangePartitioning: S.optional(__S(170)),
-          externalDataConfiguration: S.optional(__S(191)),
+          rangePartitioning: S.optional(RangePartitioning),
+          externalDataConfiguration: S.optional(ExternalDataConfiguration),
           lastModifiedTime: S.optional(S.String),
           selfLink: S.optional(S.String),
-          labels: S.optional(__S(60)),
+          labels: S.optional(StringMap),
           numActiveLogicalBytes: S.optional(S.String),
           numCurrentPhysicalBytes: S.optional(S.String),
           numPartitions: S.optional(S.String),
           numLongTermLogicalBytes: S.optional(S.String),
           numPhysicalBytes: S.optional(S.String),
-          view: S.optional(__S(288)),
+          view: S.optional(ViewDefinition),
           numLongTermBytes: S.optional(S.String),
           numTotalPhysicalBytes: S.optional(S.String),
-          cloneDefinition: S.optional(__S(289)),
-          clustering: S.optional(__S(167)),
-          partitionDefinition: S.optional(__S(292)),
-          streamingBuffer: S.optional(__S(293)),
-          tableReplicationInfo: S.optional(__S(294)),
-          tableReference: S.optional(__S(14)),
-          externalCatalogTableOptions: S.optional(__S(297)),
-          materializedView: S.optional(__S(298)),
-          materializedViewStatus: S.optional(__S(299)),
+          cloneDefinition: S.optional(CloneDefinition),
+          clustering: S.optional(Clustering),
+          partitionDefinition: S.optional(PartitioningDefinition),
+          streamingBuffer: S.optional(Streamingbuffer),
+          tableReplicationInfo: S.optional(TableReplicationInfo),
+          tableReference: S.optional(TableReference),
+          externalCatalogTableOptions: S.optional(ExternalCatalogTableOptions),
+          materializedView: S.optional(MaterializedViewDefinition),
+          materializedViewStatus: S.optional(MaterializedViewStatus),
           numRows: S.optional(S.String),
           numLongTermPhysicalBytes: S.optional(S.String),
-          restrictions: S.optional(__S(212)),
+          restrictions: S.optional(RestrictionConfig),
           numTimeTravelPhysicalBytes: S.optional(S.String),
-          biglakeConfiguration: S.optional(__S(300)),
+          biglakeConfiguration: S.optional(BigLakeConfiguration),
           expirationTime: S.optional(S.String),
           requirePartitionFilter: S.optional(S.Boolean),
           maxStaleness: S.optional(S.String),
-          schema: S.optional(__S(146)),
-          managedTableType: S.optional(S.String),
+          schema: S.optional(TableSchema),
+          managedTableType: S.optional(TableManagedTableTypeEnum),
           type: S.optional(S.String),
-          snapshotDefinition: S.optional(__S(301)),
-          replicas: S.optional(__S(59)),
-          timePartitioning: S.optional(__S(168)),
-          tableConstraints: S.optional(__S(308)),
+          snapshotDefinition: S.optional(SnapshotDefinition),
+          replicas: S.optional(TableReferenceList),
+          timePartitioning: S.optional(TimePartitioning),
+          tableConstraints: S.optional(TableConstraints),
           etag: S.optional(S.String),
-          encryptionConfiguration: S.optional(__S(166)),
+          encryptionConfiguration: S.optional(EncryptionConfiguration),
           creationTime: S.optional(S.String),
           numTotalLogicalBytes: S.optional(S.String),
           defaultCollation: S.optional(S.String),
-          defaultRoundingMode: S.optional(S.String),
+          defaultRoundingMode: S.optional(TableDefaultRoundingModeEnum),
           description: S.optional(S.String),
-          model: S.optional(__S(315)),
+          model: S.optional(ModelDefinition),
         }),
       ).annotate({ identifier: "Table" });
     case 5:
-      return S.Record(S.String, S.Unknown);
+      return S.Record(S.String, JsonValue);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          json: S.optional(__S(317)),
+          json: S.optional(JsonObject),
           insertId: S.optional(S.String),
         }),
       ).annotate({
         identifier: "TableDataInsertAllRequestRowsItem",
       });
     case 7:
-      return S.Array(__S(318));
+      return S.Array(TableDataInsertAllRequestRowsItem);
   }
 }
 function __c40(j: number): any {
@@ -8279,7 +9747,7 @@ function __c40(j: number): any {
       return S.suspend(() =>
         S.Struct({
           templateSuffix: S.optional(S.String),
-          rows: S.optional(__S(319)),
+          rows: S.optional(TableDataInsertAllRequestRowsItemList),
           ignoreUnknownValues: S.optional(S.Boolean),
           skipInvalidRows: S.optional(S.Boolean),
           kind: S.optional(S.String),
@@ -8294,7 +9762,7 @@ function __c40(j: number): any {
           datasetId: S.String.pipe(T.Label()),
           projectId: S.String.pipe(T.Label()),
           tableId: S.String.pipe(T.Label()),
-          body: S.optional(__S(320).pipe(T.HttpBody())),
+          body: S.optional(TableDataInsertAllRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -8308,18 +9776,18 @@ function __c40(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          errors: S.optional(__S(159)),
+          errors: S.optional(ErrorProtoList),
           index: S.optional(S.Number),
         }),
       ).annotate({
         identifier: "TableDataInsertAllResponseInsertErrorsItem",
       });
     case 3:
-      return S.Array(__S(322));
+      return S.Array(TableDataInsertAllResponseInsertErrorsItem);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          insertErrors: S.optional(__S(323)),
+          insertErrors: S.optional(TableDataInsertAllResponseInsertErrorsItemList),
           kind: S.optional(S.String),
         }),
       ).annotate({
@@ -8330,7 +9798,7 @@ function __c40(j: number): any {
         S.Struct({
           accessPolicyVersion: S.optional(S.Number.pipe(T.Query())),
           projectId: S.String.pipe(T.Label()),
-          body: S.optional(__S(223).pipe(T.HttpBody())),
+          body: S.optional(Dataset.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -8343,7 +9811,7 @@ function __c40(j: number): any {
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
-          body: S.optional(__S(201).pipe(T.HttpBody())),
+          body: S.optional(Job.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -8357,7 +9825,7 @@ function __c40(j: number): any {
         S.Struct({
           datasetId: S.String.pipe(T.Label()),
           projectId: S.String.pipe(T.Label()),
-          body: S.optional(__S(276).pipe(T.HttpBody())),
+          body: S.optional(Routine.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -8376,7 +9844,7 @@ function __c41(j: number): any {
           projectId: S.String.pipe(T.Label()),
           datasetId: S.String.pipe(T.Label()),
           tableId: S.String.pipe(T.Label()),
-          body: S.optional(__S(278).pipe(T.HttpBody())),
+          body: S.optional(RowAccessPolicy.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -8392,7 +9860,7 @@ function __c41(j: number): any {
         S.Struct({
           datasetId: S.String.pipe(T.Label()),
           projectId: S.String.pipe(T.Label()),
-          body: S.optional(__S(316).pipe(T.HttpBody())),
+          body: S.optional(Table.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -8423,23 +9891,23 @@ function __c41(j: number): any {
           location: S.optional(S.String),
           type: S.optional(S.String),
           catalogSource: S.optional(S.String),
-          externalDatasetReference: S.optional(__S(216)),
+          externalDatasetReference: S.optional(ExternalDatasetReference),
           friendlyName: S.optional(S.String),
-          datasetReference: S.optional(__S(33)),
+          datasetReference: S.optional(DatasetReference),
           id: S.optional(S.String),
-          labels: S.optional(__S(60)),
+          labels: S.optional(StringMap),
           kind: S.optional(S.String),
         }),
       ).annotate({ identifier: "DatasetListDatasetsItem" });
     case 4:
-      return S.Array(__S(331));
+      return S.Array(DatasetListDatasetsItem);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          datasets: S.optional(__S(332)),
+          datasets: S.optional(DatasetListDatasetsItemList),
           etag: S.optional(S.String),
           kind: S.optional(S.String),
-          unreachable: S.optional(__S(0)),
+          unreachable: S.optional(StringList),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "DatasetList" });
@@ -8452,9 +9920,9 @@ function __c41(j: number): any {
           maxCreationTime: S.optional(S.String.pipe(T.Query())),
           minCreationTime: S.optional(S.String.pipe(T.Query())),
           projectId: S.String.pipe(T.Label()),
-          projection: S.optional(S.String.pipe(T.Query())),
+          projection: S.optional(ListJobsProjectionEnum.pipe(T.Query())),
           pageToken: S.optional(S.String.pipe(T.Query())),
-          stateFilter: S.optional(__S(79).pipe(T.Query())),
+          stateFilter: S.optional(ListJobsStateFilterEnumList.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -8467,15 +9935,15 @@ function __c41(j: number): any {
       return S.suspend(() =>
         S.Struct({
           state: S.optional(S.String),
-          jobReference: S.optional(__S(5)),
-          errorResult: S.optional(__S(158)),
-          statistics: S.optional(__S(157)),
-          status: S.optional(__S(160)),
+          jobReference: S.optional(JobReference),
+          errorResult: S.optional(ErrorProto),
+          statistics: S.optional(JobStatistics),
+          status: S.optional(JobStatus),
           id: S.optional(S.String),
           principal_subject: S.optional(S.String),
           user_email: S.optional(S.String),
           kind: S.optional(S.String),
-          configuration: S.optional(__S(199)),
+          configuration: S.optional(JobConfiguration),
         }),
       ).annotate({ identifier: "JobListJobsItem" });
   }
@@ -8483,14 +9951,14 @@ function __c41(j: number): any {
 function __c42(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(335));
+      return S.Array(JobListJobsItem);
     case 1:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          jobs: S.optional(__S(336)),
+          jobs: S.optional(JobListJobsItemList),
           etag: S.optional(S.String),
-          unreachable: S.optional(__S(0)),
+          unreachable: S.optional(StringList),
           kind: S.optional(S.String),
         }),
       ).annotate({ identifier: "JobList" });
@@ -8510,11 +9978,11 @@ function __c42(j: number): any {
         ),
       ).annotate({ identifier: "ListModelsRequest" });
     case 3:
-      return S.Array(__S(258));
+      return S.Array(Model);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          models: S.optional(__S(339)),
+          models: S.optional(ModelList),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListModelsResponse" });
@@ -8543,7 +10011,7 @@ function __c42(j: number): any {
           kind: S.optional(S.String),
           friendlyName: S.optional(S.String),
           id: S.optional(S.String),
-          projectReference: S.optional(__S(342)),
+          projectReference: S.optional(ProjectReference),
           numericId: S.optional(S.String),
         }),
       ).annotate({ identifier: "ProjectListProjectsItem" });
@@ -8552,13 +10020,13 @@ function __c42(j: number): any {
 function __c43(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(343));
+      return S.Array(ProjectListProjectsItem);
     case 1:
       return S.suspend(() =>
         S.Struct({
           totalItems: S.optional(S.Number),
           nextPageToken: S.optional(S.String),
-          projects: S.optional(__S(344)),
+          projects: S.optional(ProjectListProjectsItemList),
           etag: S.optional(S.String),
           kind: S.optional(S.String),
         }),
@@ -8581,11 +10049,11 @@ function __c43(j: number): any {
         ),
       ).annotate({ identifier: "ListRoutinesRequest" });
     case 3:
-      return S.Array(__S(276));
+      return S.Array(Routine);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          routines: S.optional(__S(347)),
+          routines: S.optional(RoutineList),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListRoutinesResponse" });
@@ -8608,12 +10076,12 @@ function __c43(j: number): any {
         identifier: "ListRowAccessPoliciesRequest",
       });
     case 6:
-      return S.Array(__S(278));
+      return S.Array(RowAccessPolicy);
     case 7:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          rowAccessPolicies: S.optional(__S(350)),
+          rowAccessPolicies: S.optional(RowAccessPolicyList),
         }),
       ).annotate({
         identifier: "ListRowAccessPoliciesResponse",
@@ -8630,7 +10098,9 @@ function __c44(j: number): any {
           "formatOptions.useInt64Timestamp": S.optional(S.Boolean.pipe(T.Query())),
           selectedFields: S.optional(S.String.pipe(T.Query())),
           pageToken: S.optional(S.String.pipe(T.Query())),
-          "formatOptions.timestampOutputFormat": S.optional(S.String.pipe(T.Query())),
+          "formatOptions.timestampOutputFormat": S.optional(
+            ListTabledataFormatOptions_timestampOutputFormatEnum.pipe(T.Query()),
+          ),
           datasetId: S.String.pipe(T.Label()),
           projectId: S.String.pipe(T.Label()),
           maxResults: S.optional(S.Number.pipe(T.Query())),
@@ -8646,7 +10116,7 @@ function __c44(j: number): any {
       return S.suspend(() =>
         S.Struct({
           totalRows: S.optional(S.String),
-          rows: S.optional(__S(263)),
+          rows: S.optional(TableRowList),
           pageToken: S.optional(S.String),
           etag: S.optional(S.String),
           kind: S.optional(S.String),
@@ -8671,33 +10141,33 @@ function __c44(j: number): any {
       return S.suspend(() =>
         S.Struct({
           useLegacySql: S.optional(S.Boolean),
-          privacyPolicy: S.optional(__S(285)),
+          privacyPolicy: S.optional(PrivacyPolicy),
         }),
       ).annotate({ identifier: "TableListTablesItemView" });
     case 4:
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
-          tableReference: S.optional(__S(14)),
-          labels: S.optional(__S(60)),
-          rangePartitioning: S.optional(__S(170)),
-          view: S.optional(__S(355)),
+          tableReference: S.optional(TableReference),
+          labels: S.optional(StringMap),
+          rangePartitioning: S.optional(RangePartitioning),
+          view: S.optional(TableListTablesItemView),
           expirationTime: S.optional(S.String),
           requirePartitionFilter: S.optional(S.Boolean),
           friendlyName: S.optional(S.String),
-          timePartitioning: S.optional(__S(168)),
+          timePartitioning: S.optional(TimePartitioning),
           id: S.optional(S.String),
           creationTime: S.optional(S.String),
           type: S.optional(S.String),
-          clustering: S.optional(__S(167)),
+          clustering: S.optional(Clustering),
         }),
       ).annotate({ identifier: "TableListTablesItem" });
     case 5:
-      return S.Array(__S(356));
+      return S.Array(TableListTablesItem);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          tables: S.optional(__S(357)),
+          tables: S.optional(TableListTablesItemList),
           nextPageToken: S.optional(S.String),
           etag: S.optional(S.String),
           kind: S.optional(S.String),
@@ -8709,9 +10179,9 @@ function __c44(j: number): any {
         S.Struct({
           datasetId: S.String.pipe(T.Label()),
           projectId: S.String.pipe(T.Label()),
-          updateMode: S.optional(S.String.pipe(T.Query())),
+          updateMode: S.optional(PatchDatasetsUpdateModeEnum.pipe(T.Query())),
           accessPolicyVersion: S.optional(S.Number.pipe(T.Query())),
-          body: S.optional(__S(223).pipe(T.HttpBody())),
+          body: S.optional(Dataset.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -8730,7 +10200,7 @@ function __c45(j: number): any {
           datasetId: S.String.pipe(T.Label()),
           modelId: S.String.pipe(T.Label()),
           projectId: S.String.pipe(T.Label()),
-          body: S.optional(__S(258).pipe(T.HttpBody())),
+          body: S.optional(Model.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -8746,7 +10216,7 @@ function __c45(j: number): any {
           projectId: S.String.pipe(T.Label()),
           tableId: S.String.pipe(T.Label()),
           autodetect_schema: S.optional(S.Boolean.pipe(T.Query())),
-          body: S.optional(__S(316).pipe(T.HttpBody())),
+          body: S.optional(Table.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -8758,15 +10228,15 @@ function __c45(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          timestampOutputFormat: S.optional(S.String),
+          timestampOutputFormat: S.optional(DataFormatOptionsTimestampOutputFormatEnum),
           useInt64Timestamp: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "DataFormatOptions" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          bufferCompression: S.optional(S.String),
-          picosTimestampPrecision: S.optional(S.String),
+          bufferCompression: S.optional(ArrowSerializationOptionsBufferCompressionEnum),
+          picosTimestampPrecision: S.optional(ArrowSerializationOptionsPicosTimestampPrecisionEnum),
         }),
       ).annotate({
         identifier: "ArrowSerializationOptions",
@@ -8774,31 +10244,31 @@ function __c45(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          secureContext: S.optional(__S(194)),
+          secureContext: S.optional(SecureContext),
           location: S.optional(S.String),
           maximumBytesBilled: S.optional(S.String),
           maxResults: S.optional(S.Number),
           reservation: S.optional(S.String),
           maxSlots: S.optional(S.Number),
           createSession: S.optional(S.Boolean),
-          formatOptions: S.optional(__S(362)),
+          formatOptions: S.optional(DataFormatOptions),
           parameterMode: S.optional(S.String),
           timeoutMs: S.optional(S.Number),
-          queryParameters: S.optional(__S(134)),
+          queryParameters: S.optional(QueryParameterList),
           writeIncrementalResults: S.optional(S.Boolean),
           continuous: S.optional(S.Boolean),
-          destinationEncryptionConfiguration: S.optional(__S(166)),
+          destinationEncryptionConfiguration: S.optional(EncryptionConfiguration),
           dryRun: S.optional(S.Boolean),
-          arrowSerializationOptions: S.optional(__S(363)),
-          connectionProperties: S.optional(__S(164)),
+          arrowSerializationOptions: S.optional(ArrowSerializationOptions),
+          connectionProperties: S.optional(ConnectionPropertyList),
           preserveNulls: S.optional(S.Boolean),
           requestId: S.optional(S.String),
-          queryResultsFormat: S.optional(S.String),
-          labels: S.optional(__S(60)),
-          jobCreationMode: S.optional(S.String),
+          queryResultsFormat: S.optional(QueryRequestQueryResultsFormatEnum),
+          labels: S.optional(StringMap),
+          jobCreationMode: S.optional(QueryRequestJobCreationModeEnum),
           query: S.optional(S.String),
           useQueryCache: S.optional(S.Boolean),
-          defaultDataset: S.optional(__S(33)),
+          defaultDataset: S.optional(DatasetReference),
           kind: S.optional(S.String),
           jobTimeoutMs: S.optional(S.String),
           useLegacySql: S.optional(S.Boolean),
@@ -8808,7 +10278,7 @@ function __c45(j: number): any {
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
-          body: S.optional(__S(364).pipe(T.HttpBody())),
+          body: S.optional(QueryRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -8837,25 +10307,25 @@ function __c46(j: number): any {
       return S.suspend(() =>
         S.Struct({
           endTime: S.optional(S.String),
-          dmlStats: S.optional(__S(123)),
+          dmlStats: S.optional(DmlStatistics),
           numDmlAffectedRows: S.optional(S.String),
-          sessionInfo: S.optional(__S(154)),
-          rows: S.optional(__S(263)),
+          sessionInfo: S.optional(SessionInfo),
+          rows: S.optional(TableRowList),
           creationTime: S.optional(S.String),
           startTime: S.optional(S.String),
           cacheHit: S.optional(S.Boolean),
           location: S.optional(S.String),
-          jobReference: S.optional(__S(5)),
+          jobReference: S.optional(JobReference),
           pageRowCount: S.optional(S.String),
           totalBytesProcessed: S.optional(S.String),
           queryId: S.optional(S.String),
           totalRows: S.optional(S.String),
-          errors: S.optional(__S(159)),
+          errors: S.optional(ErrorProtoList),
           totalBytesBilled: S.optional(S.String),
-          arrowSchema: S.optional(__S(366)),
-          arrowRecordBatch: S.optional(__S(367)),
-          schema: S.optional(__S(146)),
-          jobCreationReason: S.optional(__S(200)),
+          arrowSchema: S.optional(ArrowSchema),
+          arrowRecordBatch: S.optional(ArrowRecordBatch),
+          schema: S.optional(TableSchema),
+          jobCreationReason: S.optional(JobCreationReason),
           pageToken: S.optional(S.String),
           totalSlotMs: S.optional(S.String),
           kind: S.optional(S.String),
@@ -8867,14 +10337,14 @@ function __c46(j: number): any {
       return S.suspend(() =>
         S.Struct({
           updateMask: S.optional(S.String),
-          policy: S.optional(__S(233)),
+          policy: S.optional(Policy),
         }),
       ).annotate({ identifier: "SetIamPolicyRequest" });
     case 2:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(369).pipe(T.HttpBody())),
+          body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -8889,7 +10359,7 @@ function __c46(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(369).pipe(T.HttpBody())),
+          body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -8903,7 +10373,7 @@ function __c46(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          permissions: S.optional(__S(0)),
+          permissions: S.optional(StringList),
         }),
       ).annotate({
         identifier: "TestIamPermissionsRequest",
@@ -8912,7 +10382,7 @@ function __c46(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(372).pipe(T.HttpBody())),
+          body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -8927,7 +10397,7 @@ function __c46(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(372).pipe(T.HttpBody())),
+          body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -8942,7 +10412,7 @@ function __c46(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(372).pipe(T.HttpBody())),
+          body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -8968,7 +10438,7 @@ function __c47(j: number): any {
         S.Struct({
           datasetId: S.String.pipe(T.Label()),
           projectId: S.String.pipe(T.Label()),
-          body: S.optional(__S(376).pipe(T.HttpBody())),
+          body: S.optional(UndeleteDatasetRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -8983,8 +10453,8 @@ function __c47(j: number): any {
           accessPolicyVersion: S.optional(S.Number.pipe(T.Query())),
           datasetId: S.String.pipe(T.Label()),
           projectId: S.String.pipe(T.Label()),
-          updateMode: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(223).pipe(T.HttpBody())),
+          updateMode: S.optional(UpdateDatasetsUpdateModeEnum.pipe(T.Query())),
+          body: S.optional(Dataset.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -8999,7 +10469,7 @@ function __c47(j: number): any {
           projectId: S.String.pipe(T.Label()),
           routineId: S.String.pipe(T.Label()),
           datasetId: S.String.pipe(T.Label()),
-          body: S.optional(__S(276).pipe(T.HttpBody())),
+          body: S.optional(Routine.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -9015,7 +10485,7 @@ function __c47(j: number): any {
           datasetId: S.String.pipe(T.Label()),
           policyId: S.String.pipe(T.Label()),
           tableId: S.String.pipe(T.Label()),
-          body: S.optional(__S(278).pipe(T.HttpBody())),
+          body: S.optional(RowAccessPolicy.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -9033,7 +10503,7 @@ function __c47(j: number): any {
           datasetId: S.String.pipe(T.Label()),
           tableId: S.String.pipe(T.Label()),
           projectId: S.String.pipe(T.Label()),
-          body: S.optional(__S(316).pipe(T.HttpBody())),
+          body: S.optional(Table.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -9042,110 +10512,5 @@ function __c47(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateTablesRequest" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
-    case 9:
-      return __c9(i & 7);
-    case 10:
-      return __c10(i & 7);
-    case 11:
-      return __c11(i & 7);
-    case 12:
-      return __c12(i & 7);
-    case 13:
-      return __c13(i & 7);
-    case 14:
-      return __c14(i & 7);
-    case 15:
-      return __c15(i & 7);
-    case 16:
-      return __c16(i & 7);
-    case 17:
-      return __c17(i & 7);
-    case 18:
-      return __c18(i & 7);
-    case 19:
-      return __c19(i & 7);
-    case 20:
-      return __c20(i & 7);
-    case 21:
-      return __c21(i & 7);
-    case 22:
-      return __c22(i & 7);
-    case 23:
-      return __c23(i & 7);
-    case 24:
-      return __c24(i & 7);
-    case 25:
-      return __c25(i & 7);
-    case 26:
-      return __c26(i & 7);
-    case 27:
-      return __c27(i & 7);
-    case 28:
-      return __c28(i & 7);
-    case 29:
-      return __c29(i & 7);
-    case 30:
-      return __c30(i & 7);
-    case 31:
-      return __c31(i & 7);
-    case 32:
-      return __c32(i & 7);
-    case 33:
-      return __c33(i & 7);
-    case 34:
-      return __c34(i & 7);
-    case 35:
-      return __c35(i & 7);
-    case 36:
-      return __c36(i & 7);
-    case 37:
-      return __c37(i & 7);
-    case 38:
-      return __c38(i & 7);
-    case 39:
-      return __c39(i & 7);
-    case 40:
-      return __c40(i & 7);
-    case 41:
-      return __c41(i & 7);
-    case 42:
-      return __c42(i & 7);
-    case 43:
-      return __c43(i & 7);
-    case 44:
-      return __c44(i & 7);
-    case 45:
-      return __c45(i & 7);
-    case 46:
-      return __c46(i & 7);
-    case 47:
-      return __c47(i & 7);
   }
 }

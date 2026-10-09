@@ -7,8 +7,6 @@ import { UnknownOvhError } from "../errors.ts";
 import { OvhProtocol, type OvhOpError, type OvhOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { OvhOpError, OvhOpContext };
 
@@ -26,6 +24,11 @@ export interface AddDHCPStaticAddressRequest {
   /** Name of the DHCP static lease */
   name?: string;
 }
+const AddDHCPStaticAddressRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<AddDHCPStaticAddressRequest>;
+
 /** DHCP Static Address */
 export interface XdslDHCPStaticAddress {
   /** IP address (e.g., 192.0.2.0) */
@@ -37,10 +40,19 @@ export interface XdslDHCPStaticAddress {
   /** ID of the ongoing todo (NULL if none) */
   taskId?: number | null;
 }
+const XdslDHCPStaticAddress = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<XdslDHCPStaticAddress>;
+
 /** Frequency between notifications. */
 export type XdslMonitoringNotificationsFrequencyEnum = "1h" | "5m" | "6h" | "once";
+const XdslMonitoringNotificationsFrequencyEnum = S.String;
+
 /** Type of notification. */
 export type XdslMonitoringNotificationsTypeEnum = "mail" | "sms";
+const XdslMonitoringNotificationsTypeEnum = S.String;
+
 export interface AddMonitoringNotificationRequest {
   /** Service name */
   serviceName: string;
@@ -59,6 +71,11 @@ export interface AddMonitoringNotificationRequest {
   /** Type of notification. */
   type: XdslMonitoringNotificationsTypeEnum | (string & {});
 }
+const AddMonitoringNotificationRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<AddMonitoringNotificationRequest>;
+
 /** Defines where and how the notifications will be sent */
 export interface XdslMonitoringNotification {
   /** Whether or not to allow notifications for generic incidents */
@@ -78,8 +95,15 @@ export interface XdslMonitoringNotification {
   smsAccount?: string | null;
   type?: XdslMonitoringNotificationsTypeEnum;
 }
+const XdslMonitoringNotification = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<XdslMonitoringNotification>;
+
 /** Type of protocol for the Port Mapping */
 export type XdslXdslModemConfigProtocolTypeEnum = "TCP" | "UDP";
+const XdslXdslModemConfigProtocolTypeEnum = S.String;
+
 export interface AddPortMappingRequest {
   /** Service name */
   serviceName: string;
@@ -102,6 +126,11 @@ export interface AddPortMappingRequest {
   /** Type of protocol for the Port Mapping */
   protocol: XdslXdslModemConfigProtocolTypeEnum | (string & {});
 }
+const AddPortMappingRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<AddPortMappingRequest>;
+
 /** Port Mappings */
 export interface XdslPortMapping {
   /** An ip which will access to the defined rule. Default : no restriction applied */
@@ -127,14 +156,23 @@ export interface XdslPortMapping {
   /** ID of the ongoing todo (NULL if none) */
   taskId?: number | null;
 }
+const XdslPortMapping = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<XdslPortMapping>;
+
 export interface ApplyTemplateModemRequest {
   /** Service name */
   serviceName: string;
   /** Modem Template Name */
   templateName: string;
 }
+const ApplyTemplateModemRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<ApplyTemplateModemRequest>;
+
 /** Status of a task. */
 export type XdslTaskStatusEnum = "cancelled" | "doing" | "done" | "error" | "problem" | "todo";
+const XdslTaskStatusEnum = S.String;
+
 /** Describes the current status of a task */
 export interface XdslTask {
   function?: string;
@@ -144,13 +182,25 @@ export interface XdslTask {
   todoDate?: string;
   updateDate?: string;
 }
+const XdslTask = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<XdslTask>;
+
 export interface ArchiveXdslTaskRequest {
   /** Service name */
   serviceName: string;
   /** Id */
   id: number;
 }
+const ArchiveXdslTaskRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<ArchiveXdslTaskRequest>;
+
 export interface ArchiveXdslTaskResponse {}
+const ArchiveXdslTaskResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<ArchiveXdslTaskResponse>;
+
 export interface BookMeetingRequest {
   /** Service name */
   serviceName: string;
@@ -161,19 +211,41 @@ export interface BookMeetingRequest {
   /** Meeting ui code ( code linked to the meeting returned by POST /xdsl/{serviceName}/orderMeetings ) */
   uiCode: string;
 }
+const BookMeetingRequest = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<BookMeetingRequest>;
+
 export interface BookMeetingResponse {}
+const BookMeetingResponse = ArchiveXdslTaskResponse as any as S.Schema<BookMeetingResponse>;
+
 export interface CancelXdslLinesDiagnosticRequest {
   /** Service name */
   serviceName: string;
   /** Number */
   number: string;
 }
+const CancelXdslLinesDiagnosticRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<CancelXdslLinesDiagnosticRequest>;
+
 export interface CancelXdslLinesDiagnosticResponse {}
+const CancelXdslLinesDiagnosticResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<CancelXdslLinesDiagnosticResponse>;
+
 export interface CancelXdslResiliationRequest {
   /** Service name */
   serviceName: string;
 }
+const CancelXdslResiliationRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<CancelXdslResiliationRequest>;
+
 export interface CancelXdslResiliationResponse {}
+const CancelXdslResiliationResponse =
+  ArchiveXdslTaskResponse as any as S.Schema<CancelXdslResiliationResponse>;
+
 export interface ChangeContactRequest {
   /** Service name */
   serviceName: string;
@@ -184,16 +256,35 @@ export interface ChangeContactRequest {
   /** The contact to set as tech contact */
   contactTech?: string;
 }
+const ChangeContactRequest = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<ChangeContactRequest>;
+
 export type ChangeContactResponseBodyList = Array<number>;
+const ChangeContactResponseBodyList = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<ChangeContactResponseBodyList>;
+
 export type ChangeContactResponse = ChangeContactResponseBodyList;
+const ChangeContactResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<ChangeContactResponse>;
+
 export interface ChangeEmailPasswordRequest {
   /** Email */
   email: string;
   /** New email password */
   password: string | Redacted.Redacted<string>;
 }
+const ChangeEmailPasswordRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<ChangeEmailPasswordRequest>;
+
 /** Status of an Email Pro task. */
 export type XdslEmailProTaskStatusEnum = "cancelled" | "doing" | "done" | "error" | "todo";
+const XdslEmailProTaskStatusEnum = S.String;
+
 /** Task Struct */
 export interface XdslEmailProTask {
   /** Finished date of the task */
@@ -205,6 +296,8 @@ export interface XdslEmailProTask {
   /** Todo date of the task */
   todoDate?: string;
 }
+const XdslEmailProTask = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<XdslEmailProTask>;
+
 export interface ChangeLineDSLAMProfileRequest {
   /** Service name */
   serviceName: string;
@@ -213,12 +306,22 @@ export interface ChangeLineDSLAMProfileRequest {
   /** The id of the xdsl.DslamLineProfile */
   dslamProfileId: number;
 }
+const ChangeLineDSLAMProfileRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<ChangeLineDSLAMProfileRequest>;
+
 export interface CreateModemTemplateRequest {
   /** Modem Template name (only alphanumeric characters) */
   name: string;
   /** The access name with the config you want to duplicate */
   serviceName: string;
 }
+const CreateModemTemplateRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<CreateModemTemplateRequest>;
+
 /** DHCP Configuration for Modem Template */
 export interface XdslTemplateModemDHCP {
   /** IP address (e.g., 192.0.2.0) */
@@ -242,10 +345,22 @@ export interface XdslTemplateModemDHCP {
   /** IP address (e.g., 192.0.2.0) */
   subnetMask?: string;
 }
+const XdslTemplateModemDHCP = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<XdslTemplateModemDHCP>;
+
 /** List of DHCP for this template */
 export type XdslTemplateModemDHCPList = Array<XdslTemplateModemDHCP>;
+const XdslTemplateModemDHCPList = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<XdslTemplateModemDHCPList>;
+
 /** How the modem gets its LAN IP Address */
 export type XdslXdslModemConfigAddressingTypeEnum = "DHCP" | "Static";
+const XdslXdslModemConfigAddressingTypeEnum = S.String;
+
 /** LAN Configuration for Modem Template */
 export interface XdslTemplateModemLAN {
   /** IP address (e.g., 192.0.2.0) */
@@ -257,12 +372,23 @@ export interface XdslTemplateModemLAN {
   /** IP address (e.g., 192.0.2.0) */
   subnetMask?: string;
 }
+const XdslTemplateModemLAN = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<XdslTemplateModemLAN>;
+
 /** List of LAN for this template */
 export type XdslTemplateModemLANList = Array<XdslTemplateModemLAN>;
+const XdslTemplateModemLANList = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<XdslTemplateModemLANList>;
+
 /** How the WiFi channel is selected */
 export type XdslXdslModemConfigChannelModeEnum = "Auto" | "Manual";
+const XdslXdslModemConfigChannelModeEnum = S.String;
+
 /** Modem frequency */
 export type XdslXdslModemConfigFrequencyEnum = "2.4GHz" | "5GHz";
+const XdslXdslModemConfigFrequencyEnum = S.String;
+
 /** Type of WLAN security protection */
 export type XdslTemplateModemSecurityTypeEnum =
   | "None"
@@ -271,6 +397,8 @@ export type XdslTemplateModemSecurityTypeEnum =
   | "WPA2andWPA3"
   | "WPA3"
   | "WPAandWPA2";
+const XdslTemplateModemSecurityTypeEnum = S.String;
+
 /** WLAN Configuration for Modem Template */
 export interface XdslTemplateModemWLAN {
   /** Service Set Identifier of the WLAN interface */
@@ -296,14 +424,34 @@ export interface XdslTemplateModemWLAN {
   /** Wifi Name */
   wifiName?: string;
 }
+const XdslTemplateModemWLAN = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<XdslTemplateModemWLAN>;
+
 /** List of WLAN for this template */
 export type XdslTemplateModemWLANList = Array<XdslTemplateModemWLAN>;
+const XdslTemplateModemWLANList = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<XdslTemplateModemWLANList>;
+
 /** Size of the Maximum Transmission Unit on the modem's interfaces */
 export type XdslXdslModemConfigMTUSizeEnum = 1432 | 1456 | 1492;
+const XdslXdslModemConfigMTUSizeEnum = S.Number;
+
 /** WLAN names list to ignore. Ignore only listed WLAN */
 export type XdslTemplateModemParametersToIgnoreWLANListList = Array<string>;
+const XdslTemplateModemParametersToIgnoreWLANListList = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<XdslTemplateModemParametersToIgnoreWLANListList>;
+
 /** PortMapping names list to ignore. Ignore only listed portMapping */
 export type XdslTemplateModemParametersToIgnorePortMappingListList = Array<string>;
+const XdslTemplateModemParametersToIgnorePortMappingListList =
+  XdslTemplateModemParametersToIgnoreWLANListList as any as S.Schema<XdslTemplateModemParametersToIgnorePortMappingListList>;
+
 /** Parameters and values to ignore when apply modem template configuration */
 export interface XdslTemplateModemParametersToIgnore {
   /** Ignore LAN and DHCP configurations */
@@ -317,6 +465,11 @@ export interface XdslTemplateModemParametersToIgnore {
   /** PortMapping names list to ignore. Ignore only listed portMapping */
   portMappingList?: XdslTemplateModemParametersToIgnorePortMappingListList | null;
 }
+const XdslTemplateModemParametersToIgnore = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<XdslTemplateModemParametersToIgnore>;
+
 /** PortMapping Configuration for Modem Template */
 export interface XdslTemplateModemPortMapping {
   /** An ip which will access to the defined rule. Default : no restriction applied */
@@ -336,8 +489,18 @@ export interface XdslTemplateModemPortMapping {
   /** Type of protocol for the Port Mapping */
   protocol?: XdslXdslModemConfigProtocolTypeEnum;
 }
+const XdslTemplateModemPortMapping = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<XdslTemplateModemPortMapping>;
+
 /** List of PortMapping for this template */
 export type XdslTemplateModemPortMappingList = Array<XdslTemplateModemPortMapping>;
+const XdslTemplateModemPortMappingList = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<XdslTemplateModemPortMappingList>;
+
 /** Modem Template */
 export interface XdslTemplateModem {
   /** List of DHCP for this template */
@@ -361,66 +524,140 @@ export interface XdslTemplateModem {
   /** List of PortMapping for this template */
   portMapping?: XdslTemplateModemPortMappingList;
 }
+const XdslTemplateModem = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<XdslTemplateModem>;
+
 export interface CreateXdslAddressMoveExtraIpRangeMoveRequest {
   /** Service name */
   serviceName: string;
 }
+const CreateXdslAddressMoveExtraIpRangeMoveRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<CreateXdslAddressMoveExtraIpRangeMoveRequest>;
+
 export interface CreateXdslDiagnosticRequest {
   /** Service name */
   serviceName: string;
 }
+const CreateXdslDiagnosticRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<CreateXdslDiagnosticRequest>;
+
 export interface CreateXdslIpsRequest {
   /** Service name */
   serviceName: string;
 }
+const CreateXdslIpsRequest = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<CreateXdslIpsRequest>;
+
 export interface CreateXdslModemReconfigureVoipRequest {
   /** Service name */
   serviceName: string;
 }
+const CreateXdslModemReconfigureVoipRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<CreateXdslModemReconfigureVoipRequest>;
+
 export interface CreateXdslModemReconfigureVoipResponse {}
+const CreateXdslModemReconfigureVoipResponse =
+  CancelXdslLinesDiagnosticResponse as any as S.Schema<CreateXdslModemReconfigureVoipResponse>;
+
 export interface CreateXdslRequestPPPLoginMailRequest {
   /** Service name */
   serviceName: string;
 }
+const CreateXdslRequestPPPLoginMailRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<CreateXdslRequestPPPLoginMailRequest>;
+
 export interface CreateXdslRequestPPPLoginMailResponse {}
+const CreateXdslRequestPPPLoginMailResponse =
+  CancelXdslLinesDiagnosticResponse as any as S.Schema<CreateXdslRequestPPPLoginMailResponse>;
+
 export interface CreateXdslSpareReturnMerchandiseRequest {
   /** Spare */
   spare: string;
 }
+const CreateXdslSpareReturnMerchandiseRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<CreateXdslSpareReturnMerchandiseRequest>;
+
 export interface CreateXdslSpareReturnMerchandiseResponse {}
+const CreateXdslSpareReturnMerchandiseResponse =
+  CancelXdslLinesDiagnosticResponse as any as S.Schema<CreateXdslSpareReturnMerchandiseResponse>;
+
 export interface DeleteModemTemplateRequest {
   /** Name */
   name: string;
 }
+const DeleteModemTemplateRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<DeleteModemTemplateRequest>;
+
 export interface DeleteModemTemplateResponse {}
+const DeleteModemTemplateResponse =
+  ArchiveXdslTaskResponse as any as S.Schema<DeleteModemTemplateResponse>;
+
 export interface DeleteXdslEmailProRequest {
   /** Email */
   email: string;
 }
+const DeleteXdslEmailProRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<DeleteXdslEmailProRequest>;
+
 export interface DeleteXdslEmailProResponse {}
+const DeleteXdslEmailProResponse =
+  ArchiveXdslTaskResponse as any as S.Schema<DeleteXdslEmailProResponse>;
+
 export interface DeleteXdslIpsRequest {
   /** Service name */
   serviceName: string;
   /** Ip */
   ip: string;
 }
+const DeleteXdslIpsRequest = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<DeleteXdslIpsRequest>;
+
 export interface DeleteXdslIpsResponse {}
+const DeleteXdslIpsResponse = ArchiveXdslTaskResponse as any as S.Schema<DeleteXdslIpsResponse>;
+
 export interface DeleteXdslRmaRequest {
   /** Service name */
   serviceName: string;
   /** Id */
   id: string;
 }
+const DeleteXdslRmaRequest = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<DeleteXdslRmaRequest>;
+
 export interface DeleteXdslRmaResponse {}
+const DeleteXdslRmaResponse = ArchiveXdslTaskResponse as any as S.Schema<DeleteXdslRmaResponse>;
+
 export interface DeleteXdslSpareRequest {
   /** Spare */
   spare: string;
 }
+const DeleteXdslSpareRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  2,
+) as any as S.Schema<DeleteXdslSpareRequest>;
+
 export interface DeleteXdslSpareResponse {}
+const DeleteXdslSpareResponse = ArchiveXdslTaskResponse as any as S.Schema<DeleteXdslSpareResponse>;
+
 export interface GetAccessModemReplacementRequest {
   /** Service name */
   serviceName: string;
 }
+const GetAccessModemReplacementRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<GetAccessModemReplacementRequest>;
+
 /** Currency code */
 export type OrderCurrencyCodeEnum =
   | "AUD"
@@ -438,6 +675,8 @@ export type OrderCurrencyCodeEnum =
   | "USD"
   | "XOF"
   | "points";
+const OrderCurrencyCodeEnum = S.String;
+
 /** Price with its currency and textual representation */
 export interface OrderPrice {
   /** Currency code */
@@ -449,6 +688,8 @@ export interface OrderPrice {
   /** The effective price */
   value?: number;
 }
+const OrderPrice = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<OrderPrice>;
+
 /** Information about modem exchange */
 export interface XdslModemExchangeInfo {
   /** To know if you can exchange your modem */
@@ -460,18 +701,45 @@ export interface XdslModemExchangeInfo {
   /** Price with it's currency and textual representation */
   priceWithTax?: OrderPrice;
 }
+const XdslModemExchangeInfo = /*@__PURE__*/ __L.at(
+  __c5,
+  5,
+) as any as S.Schema<XdslModemExchangeInfo>;
+
 export interface GetBlocIPStatusRequest {
   /** Service name */
   serviceName: string;
 }
+const GetBlocIPStatusRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  6,
+) as any as S.Schema<GetBlocIPStatusRequest>;
+
 /** Status of the service */
 export type XdslServiceStatusEnum = "disabled" | "enabled";
+const XdslServiceStatusEnum = S.String;
+
 export type GetBlocIPStatusResponse = XdslServiceStatusEnum;
+const GetBlocIPStatusResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  7,
+) as any as S.Schema<GetBlocIPStatusResponse>;
+
 export interface GetContentSharingStatusRequest {
   /** Service name */
   serviceName: string;
 }
+const GetContentSharingStatusRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<GetContentSharingStatusRequest>;
+
 export type GetContentSharingStatusResponse = XdslServiceStatusEnum;
+const GetContentSharingStatusResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  1,
+) as any as S.Schema<GetContentSharingStatusResponse>;
+
 export interface GetDHCPStaticAddressRequest {
   /** Service name */
   serviceName: string;
@@ -482,6 +750,11 @@ export interface GetDHCPStaticAddressRequest {
   /** macaddress */
   MACAddress: string;
 }
+const GetDHCPStaticAddressRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  2,
+) as any as S.Schema<GetDHCPStaticAddressRequest>;
+
 export interface GetDHCPStaticAddressesRequest {
   /** Service name */
   serviceName: string;
@@ -490,85 +763,208 @@ export interface GetDHCPStaticAddressesRequest {
   /** Dhcp name */
   dhcpName: string;
 }
+const GetDHCPStaticAddressesRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  3,
+) as any as S.Schema<GetDHCPStaticAddressesRequest>;
+
 export type GetDHCPStaticAddressesResponseBodyList = Array<string>;
+const GetDHCPStaticAddressesResponseBodyList =
+  XdslTemplateModemParametersToIgnoreWLANListList as any as S.Schema<GetDHCPStaticAddressesResponseBodyList>;
+
 export type GetDHCPStaticAddressesResponse = GetDHCPStaticAddressesResponseBodyList;
+const GetDHCPStaticAddressesResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  4,
+) as any as S.Schema<GetDHCPStaticAddressesResponse>;
+
 export interface GetFirmwareVersionRequest {
   /** Service name */
   serviceName: string;
 }
+const GetFirmwareVersionRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  5,
+) as any as S.Schema<GetFirmwareVersionRequest>;
+
 export type GetFirmwareVersionResponse = string;
+const GetFirmwareVersionResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  6,
+) as any as S.Schema<GetFirmwareVersionResponse>;
+
 export interface GetFTPStatusRequest {
   /** Service name */
   serviceName: string;
 }
+const GetFTPStatusRequest = /*@__PURE__*/ __L.at(__c6, 7) as any as S.Schema<GetFTPStatusRequest>;
+
 export type GetFTPStatusResponse = XdslServiceStatusEnum;
+const GetFTPStatusResponse = GetBlocIPStatusResponse as any as S.Schema<GetFTPStatusResponse>;
+
 export interface GetIpsecAlgStatusRequest {
   /** Service name */
   serviceName: string;
 }
+const GetIpsecAlgStatusRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  0,
+) as any as S.Schema<GetIpsecAlgStatusRequest>;
+
 export type GetIpsecAlgStatusResponse = XdslServiceStatusEnum;
+const GetIpsecAlgStatusResponse =
+  GetContentSharingStatusResponse as any as S.Schema<GetIpsecAlgStatusResponse>;
+
 export interface GetModemCallWaitingStatusRequest {
   /** Service name */
   serviceName: string;
 }
+const GetModemCallWaitingStatusRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  1,
+) as any as S.Schema<GetModemCallWaitingStatusRequest>;
+
 export type GetModemCallWaitingStatusResponse = XdslServiceStatusEnum;
+const GetModemCallWaitingStatusResponse =
+  GetContentSharingStatusResponse as any as S.Schema<GetModemCallWaitingStatusResponse>;
+
 export interface GetModemTemplateRequest {
   /** Name */
   name: string;
 }
+const GetModemTemplateRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  2,
+) as any as S.Schema<GetModemTemplateRequest>;
+
 export interface GetModemTemplatesRequest {}
+const GetModemTemplatesRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  3,
+) as any as S.Schema<GetModemTemplatesRequest>;
+
 export type GetModemTemplatesResponseBodyList = Array<string>;
 export type GetModemTemplatesResponse = GetModemTemplatesResponseBodyList;
+const GetModemTemplatesResponse =
+  GetDHCPStaticAddressesResponse as any as S.Schema<GetModemTemplatesResponse>;
+
 export interface GetMonitoringNotificationRequest {
   /** Service name */
   serviceName: string;
   /** Id */
   id: number;
 }
+const GetMonitoringNotificationRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  4,
+) as any as S.Schema<GetMonitoringNotificationRequest>;
+
 export interface GetMonitoringNotificationsRequest {
   /** Service name */
   serviceName: string;
 }
+const GetMonitoringNotificationsRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  5,
+) as any as S.Schema<GetMonitoringNotificationsRequest>;
+
 export type GetMonitoringNotificationsResponseBodyList = Array<number>;
+const GetMonitoringNotificationsResponseBodyList =
+  ChangeContactResponseBodyList as any as S.Schema<GetMonitoringNotificationsResponseBodyList>;
+
 export type GetMonitoringNotificationsResponse = GetMonitoringNotificationsResponseBodyList;
+const GetMonitoringNotificationsResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  6,
+) as any as S.Schema<GetMonitoringNotificationsResponse>;
+
 export interface GetPortMappingRequest {
   /** Service name */
   serviceName: string;
   /** Name */
   name: string;
 }
+const GetPortMappingRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  7,
+) as any as S.Schema<GetPortMappingRequest>;
+
 export interface GetPortMappingsRequest {
   /** Service name */
   serviceName: string;
 }
+const GetPortMappingsRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  0,
+) as any as S.Schema<GetPortMappingsRequest>;
+
 export type GetPortMappingsResponseBodyList = Array<string>;
+const GetPortMappingsResponseBodyList =
+  XdslTemplateModemParametersToIgnoreWLANListList as any as S.Schema<GetPortMappingsResponseBodyList>;
+
 export type GetPortMappingsResponse = GetPortMappingsResponseBodyList;
+const GetPortMappingsResponse = /*@__PURE__*/ __L.at(
+  __c8,
+  1,
+) as any as S.Schema<GetPortMappingsResponse>;
+
 export interface GetSipAlgStatusRequest {
   /** Service name */
   serviceName: string;
 }
+const GetSipAlgStatusRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  2,
+) as any as S.Schema<GetSipAlgStatusRequest>;
+
 export type GetSipAlgStatusResponse = XdslServiceStatusEnum;
+const GetSipAlgStatusResponse = GetBlocIPStatusResponse as any as S.Schema<GetSipAlgStatusResponse>;
+
 export interface GetUpnpStatusRequest {
   /** Service name */
   serviceName: string;
 }
+const GetUpnpStatusRequest = /*@__PURE__*/ __L.at(__c8, 3) as any as S.Schema<GetUpnpStatusRequest>;
+
 export type GetUpnpStatusResponse = XdslServiceStatusEnum;
+const GetUpnpStatusResponse = GetBlocIPStatusResponse as any as S.Schema<GetUpnpStatusResponse>;
+
 export interface GetWifiMeshStatusRequest {
   /** Service name */
   serviceName: string;
 }
+const GetWifiMeshStatusRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  4,
+) as any as S.Schema<GetWifiMeshStatusRequest>;
+
 export type GetWifiMeshStatusResponse = XdslServiceStatusEnum;
+const GetWifiMeshStatusResponse =
+  GetContentSharingStatusResponse as any as S.Schema<GetWifiMeshStatusResponse>;
+
 export interface GetWifiOneSsidStatusRequest {
   /** Service name */
   serviceName: string;
 }
+const GetWifiOneSsidStatusRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  5,
+) as any as S.Schema<GetWifiOneSsidStatusRequest>;
+
 export type GetWifiOneSsidStatusResponse = XdslServiceStatusEnum;
+const GetWifiOneSsidStatusResponse =
+  GetContentSharingStatusResponse as any as S.Schema<GetWifiOneSsidStatusResponse>;
+
 export interface GetXdslRequest {
   /** Service name */
   serviceName: string;
 }
+const GetXdslRequest = /*@__PURE__*/ __L.at(__c8, 6) as any as S.Schema<GetXdslRequest>;
+
 /** Possible DSL technologies */
 export type XdslDslTypeEnum = "adsl" | "ftte" | "ftth" | "sdsl" | "vdsl";
+const XdslDslTypeEnum = S.String;
+
 /** All components of an address */
 export interface XdslAddressDetail {
   building?: string | null;
@@ -587,6 +983,8 @@ export interface XdslAddressDetail {
   street?: string;
   zipCode?: string;
 }
+const XdslAddressDetail = /*@__PURE__*/ __L.at(__c8, 7) as any as S.Schema<XdslAddressDetail>;
+
 /** Describe the capabilities of the Access */
 export interface XdslAccessCapabilities {
   canApplyLnsRateLimit?: boolean;
@@ -596,8 +994,18 @@ export interface XdslAccessCapabilities {
   canResetDslamPort?: boolean;
   hasDslamPort?: boolean;
 }
+const XdslAccessCapabilities = /*@__PURE__*/ __L.at(
+  __c9,
+  0,
+) as any as S.Schema<XdslAccessCapabilities>;
+
 /** Resource tags. Tags that were internally computed are prefixed with ovh: */
 export type IamResourceMetadataTagsMap = { [key: string]: string | undefined };
+const IamResourceMetadataTagsMap = /*@__PURE__*/ __L.at(
+  __c9,
+  1,
+) as any as S.Schema<IamResourceMetadataTagsMap>;
+
 /** IAM resource metadata embedded in services models */
 export interface IamResourceMetadata {
   /** Resource display name */
@@ -609,8 +1017,12 @@ export interface IamResourceMetadata {
   /** Unique resource name used in policies */
   urn?: string;
 }
+const IamResourceMetadata = /*@__PURE__*/ __L.at(__c9, 2) as any as S.Schema<IamResourceMetadata>;
+
 /** Status allowed for mail sending */
 export type XdslMailSendingAccessStatusEnum = "blockedForSpam" | "disabled" | "enabled";
+const XdslMailSendingAccessStatusEnum = S.String;
+
 /** The providers */
 export type XdslProviderEnum =
   | "axione"
@@ -621,8 +1033,12 @@ export type XdslProviderEnum =
   | "koscDeg"
   | "ovh"
   | "sfr";
+const XdslProviderEnum = S.String;
+
 /** Available access roles */
 export type XdslAccessRoleEnum = "backup" | "main";
+const XdslAccessRoleEnum = S.String;
+
 /** Status of the access */
 export type XdslAccessStatusEnum =
   | "active"
@@ -634,6 +1050,8 @@ export type XdslAccessStatusEnum =
   | "slamming"
   | "terminated"
   | "upgradeOffer";
+const XdslAccessStatusEnum = S.String;
+
 /** XDSL Access */
 export interface XdslAccessWithIAM {
   accessName?: string;
@@ -661,10 +1079,17 @@ export interface XdslAccessWithIAM {
   role?: XdslAccessRoleEnum;
   status?: XdslAccessStatusEnum;
 }
+const XdslAccessWithIAM = /*@__PURE__*/ __L.at(__c9, 3) as any as S.Schema<XdslAccessWithIAM>;
+
 export interface GetXdslAddressMoveExtraIpRangeRequest {
   /** Service name */
   serviceName: string;
 }
+const GetXdslAddressMoveExtraIpRangeRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  4,
+) as any as S.Schema<GetXdslAddressMoveExtraIpRangeRequest>;
+
 /** Informations about the extra IP range during address move */
 export interface XdslExtraIpRangeMove {
   /** Date of the migration */
@@ -674,14 +1099,23 @@ export interface XdslExtraIpRangeMove {
   /** Access where the IP range will be moved to */
   moveTo?: string;
 }
+const XdslExtraIpRangeMove = /*@__PURE__*/ __L.at(__c9, 5) as any as S.Schema<XdslExtraIpRangeMove>;
+
 export interface GetXdslAntiSpamRequest {
   /** Service name */
   serviceName: string;
   /** Ip */
   ip: string;
 }
+const GetXdslAntiSpamRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  6,
+) as any as S.Schema<GetXdslAntiSpamRequest>;
+
 /** AntiSpam status */
 export type XdslAntiSpamAntiSpamStatusEnum = "block" | "done" | "new" | "unblock" | "warn";
+const XdslAntiSpamAntiSpamStatusEnum = S.String;
+
 /** Spams detected from xdsl access */
 export interface XdslAntiSpam {
   /** Detection date */
@@ -693,15 +1127,32 @@ export interface XdslAntiSpam {
   /** AntiSpam status */
   status?: XdslAntiSpamAntiSpamStatusEnum;
 }
+const XdslAntiSpam = /*@__PURE__*/ __L.at(__c9, 7) as any as S.Schema<XdslAntiSpam>;
+
 export interface GetXdslCanCancelResiliationRequest {
   /** Service name */
   serviceName: string;
 }
+const GetXdslCanCancelResiliationRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  0,
+) as any as S.Schema<GetXdslCanCancelResiliationRequest>;
+
 export type GetXdslCanCancelResiliationResponse = boolean;
+const GetXdslCanCancelResiliationResponse = /*@__PURE__*/ __L.at(
+  __c10,
+  1,
+) as any as S.Schema<GetXdslCanCancelResiliationResponse>;
+
 export interface GetXdslDiagnosticRequest {
   /** Service name */
   serviceName: string;
 }
+const GetXdslDiagnosticRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  2,
+) as any as S.Schema<GetXdslDiagnosticRequest>;
+
 /** Describe the capabilities of the access diagnostic */
 export interface XdslAccessDiagnosticCapabilities {
   incident?: boolean;
@@ -712,6 +1163,11 @@ export interface XdslAccessDiagnosticCapabilities {
   proposedProfileId?: boolean;
   sync?: boolean;
 }
+const XdslAccessDiagnosticCapabilities = /*@__PURE__*/ __L.at(
+  __c10,
+  3,
+) as any as S.Schema<XdslAccessDiagnosticCapabilities>;
+
 /** Line tests results */
 export type XdslLineTestEnum =
   | "actionPending"
@@ -719,6 +1175,8 @@ export type XdslLineTestEnum =
   | "error"
   | "noProblem"
   | "ovhSideProblem";
+const XdslLineTestEnum = S.String;
+
 /** Detailed line tests */
 export interface XdslLineDiagnostic {
   lineTest?: XdslLineTestEnum | null;
@@ -727,8 +1185,15 @@ export interface XdslLineDiagnostic {
   proposedProfileId?: number | null;
   sync?: boolean;
 }
+const XdslLineDiagnostic = /*@__PURE__*/ __L.at(__c10, 4) as any as S.Schema<XdslLineDiagnostic>;
+
 /** Test details by line */
 export type XdslAccessDiagnosticLineDetailsList = Array<XdslLineDiagnostic>;
+const XdslAccessDiagnosticLineDetailsList = /*@__PURE__*/ __L.at(
+  __c10,
+  5,
+) as any as S.Schema<XdslAccessDiagnosticLineDetailsList>;
+
 /** Diagnostic of the access */
 export interface XdslAccessDiagnostic {
   /** Available tests for this access */
@@ -750,15 +1215,30 @@ export interface XdslAccessDiagnostic {
   /** Remaining number of diagnostic for this access */
   remaining?: number;
 }
+const XdslAccessDiagnostic = /*@__PURE__*/ __L.at(
+  __c10,
+  6,
+) as any as S.Schema<XdslAccessDiagnostic>;
+
 export interface GetXdslEmailProRequest {
   /** Email */
   email: string;
 }
+const GetXdslEmailProRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  7,
+) as any as S.Schema<GetXdslEmailProRequest>;
+
 /** complexType.UnitAndValue_double */
 export interface ComplexTypeUnitAndValueDouble {
   unit?: string;
   value?: number;
 }
+const ComplexTypeUnitAndValueDouble = /*@__PURE__*/ __L.at(
+  __c11,
+  0,
+) as any as S.Schema<ComplexTypeUnitAndValueDouble>;
+
 /** complexType.UnitAndValue_long */
 export type ComplexTypeUnitAndValueLong = ComplexTypeUnitAndValueDouble;
 /** Current object state */
@@ -770,6 +1250,8 @@ export type EmailProObjectStateEnum =
   | "suspended"
   | "suspending"
   | "unknown";
+const EmailProObjectStateEnum = S.String;
+
 /** XDSL Email Pro */
 export interface XdslXdslEmailProWithIAM {
   /** Mailbox usage */
@@ -805,12 +1287,22 @@ export interface XdslXdslEmailProWithIAM {
   /** Pending tasks for this account */
   taskPendingId?: number | null;
 }
+const XdslXdslEmailProWithIAM = /*@__PURE__*/ __L.at(
+  __c11,
+  1,
+) as any as S.Schema<XdslXdslEmailProWithIAM>;
+
 export interface GetXdslFiberEligibilityRequest {
   /** Service name */
   serviceName: string;
   /** Id */
   id: number;
 }
+const GetXdslFiberEligibilityRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  2,
+) as any as S.Schema<GetXdslFiberEligibilityRequest>;
+
 /** Copper grid closure trajectory */
 export interface XdslCopperGridClosureTrajectory {
   /** Commercial closure announcement date */
@@ -842,6 +1334,11 @@ export interface XdslCopperGridClosureTrajectory {
   /** Technical closure initial date */
   technicalClosureInitialDate?: string | null;
 }
+const XdslCopperGridClosureTrajectory = /*@__PURE__*/ __L.at(
+  __c11,
+  3,
+) as any as S.Schema<XdslCopperGridClosureTrajectory>;
+
 /** GRT option for an access. */
 export type XdslGtrEnum =
   | "10ho"
@@ -853,8 +1350,15 @@ export type XdslGtrEnum =
   | "5m_4ho"
   | "dplus1"
   | "none";
+const XdslGtrEnum = S.String;
+
 /** Available GRTs */
 export type XdslFiberEligibilityGrtsList = Array<XdslGtrEnum>;
+const XdslFiberEligibilityGrtsList = /*@__PURE__*/ __L.at(
+  __c11,
+  4,
+) as any as S.Schema<XdslFiberEligibilityGrtsList>;
+
 /** Details of a provider */
 export interface XdslOffer {
   /** Offer code */
@@ -862,6 +1366,8 @@ export interface XdslOffer {
   /** Offer name */
   name?: string;
 }
+const XdslOffer = /*@__PURE__*/ __L.at(__c11, 5) as any as S.Schema<XdslOffer>;
+
 /** Details of a provider */
 export interface XdslProvider {
   /** Provider code */
@@ -869,12 +1375,16 @@ export interface XdslProvider {
   /** Provider name */
   name?: string;
 }
+const XdslProvider = XdslOffer as any as S.Schema<XdslProvider>;
+
 /** Status of the fiber eligibility */
 export type XdslFiberEligibilityStatusEnum =
   | "eligible"
   | "no_building"
   | "not_eligible"
   | "not_yet_eligible";
+const XdslFiberEligibilityStatusEnum = S.String;
+
 /** Fiber eligibility */
 export interface XdslFiberEligibility {
   /** Availability date */
@@ -902,18 +1412,37 @@ export interface XdslFiberEligibility {
   /** Status */
   status?: XdslFiberEligibilityStatusEnum;
 }
+const XdslFiberEligibility = /*@__PURE__*/ __L.at(
+  __c11,
+  6,
+) as any as S.Schema<XdslFiberEligibility>;
+
 export interface GetXdslIncidentRequest {
   /** Id */
   id: number;
 }
+const GetXdslIncidentRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  7,
+) as any as S.Schema<GetXdslIncidentRequest>;
+
 /** Department list */
 export type XdslIncidentDepartmentsList = Array<string>;
+const XdslIncidentDepartmentsList =
+  XdslTemplateModemParametersToIgnoreWLANListList as any as S.Schema<XdslIncidentDepartmentsList>;
+
 /** NRA list */
 export type XdslIncidentNraList = Array<string>;
+const XdslIncidentNraList =
+  XdslTemplateModemParametersToIgnoreWLANListList as any as S.Schema<XdslIncidentNraList>;
+
 /** Operators */
 export type XdslOperatorTypeEnum = "collect" | "kosc" | "ovh";
 /** Operator */
 export type XdslIncidentOperatorsList = Array<XdslOperatorTypeEnum>;
+const XdslIncidentOperatorsList =
+  XdslFiberEligibilityGrtsList as any as S.Schema<XdslIncidentOperatorsList>;
+
 /** Detected incident */
 export interface XdslIncident {
   comment?: string;
@@ -933,21 +1462,37 @@ export interface XdslIncident {
   taskId?: number | null;
   taskReference?: string | null;
 }
+const XdslIncident = /*@__PURE__*/ __L.at(__c12, 0) as any as S.Schema<XdslIncident>;
+
 export interface GetXdslIncidentRequest2 {
   /** Service name */
   serviceName: string;
 }
+const GetXdslIncidentRequest2 = /*@__PURE__*/ __L.at(
+  __c12,
+  1,
+) as any as S.Schema<GetXdslIncidentRequest2>;
+
 export interface GetXdslIpsRequest {
   /** Service name */
   serviceName: string;
   /** Ip */
   ip: string;
 }
+const GetXdslIpsRequest = /*@__PURE__*/ __L.at(__c12, 2) as any as S.Schema<GetXdslIpsRequest>;
+
 export type XdslIPDnsListList = Array<string>;
+const XdslIPDnsListList =
+  XdslTemplateModemParametersToIgnoreWLANListList as any as S.Schema<XdslIPDnsListList>;
+
 /** Status of an IP. */
 export type XdslIpStatusEnum = "active" | "close" | "toDelete";
+const XdslIpStatusEnum = S.String;
+
 /** Ip versions */
 export type CoreTypesIpVersionEnum = "v4" | "v6";
+const CoreTypesIpVersionEnum = S.String;
+
 /** Informations about an IP address */
 export interface XdslIP {
   dnsList?: XdslIPDnsListList;
@@ -958,12 +1503,16 @@ export interface XdslIP {
   status?: XdslIpStatusEnum;
   version?: CoreTypesIpVersionEnum;
 }
+const XdslIP = /*@__PURE__*/ __L.at(__c12, 3) as any as S.Schema<XdslIP>;
+
 export interface GetXdslLineRequest {
   /** Service name */
   serviceName: string;
   /** Number */
   number: string;
 }
+const GetXdslLineRequest = /*@__PURE__*/ __L.at(__c12, 4) as any as S.Schema<GetXdslLineRequest>;
+
 /** Infos about a Landline at the concentration point */
 export interface XdslLandlineConcentrationPoint {
   /** Identifier of the head of the cable from the MDF */
@@ -973,6 +1522,11 @@ export interface XdslLandlineConcentrationPoint {
   /** Identifier of the pair at the lineHead's lineInitialSection */
   lineInitialSectionPair?: number;
 }
+const XdslLandlineConcentrationPoint = /*@__PURE__*/ __L.at(
+  __c12,
+  5,
+) as any as S.Schema<XdslLandlineConcentrationPoint>;
+
 /** Deconsolidation of the line. */
 export type XdslDeconsolidationEnum =
   | "createNeighbour"
@@ -980,8 +1534,12 @@ export type XdslDeconsolidationEnum =
   | "creationNeighbour"
   | "partial"
   | "total";
+const XdslDeconsolidationEnum = S.String;
+
 /** Maximum time needed to repair a landline */
 export type XdslFaultRepairTimeEnum = "10HO" | "4HNO" | "4HO" | "DPLUS1" | "NORMAL";
+const XdslFaultRepairTimeEnum = S.String;
+
 /** xdsl.LineSectionLength */
 export interface XdslLineSectionLength {
   /** The diameter of this section in millimeters */
@@ -989,8 +1547,18 @@ export interface XdslLineSectionLength {
   /** The length of this section in meters */
   length?: number;
 }
+const XdslLineSectionLength = /*@__PURE__*/ __L.at(
+  __c12,
+  6,
+) as any as S.Schema<XdslLineSectionLength>;
+
 /** Detailed information about the sections between the DSLAM and the telephone jack */
 export type XdslLineLineSectionsLengthList = Array<XdslLineSectionLength>;
+const XdslLineLineSectionsLengthList = /*@__PURE__*/ __L.at(
+  __c12,
+  7,
+) as any as S.Schema<XdslLineLineSectionsLengthList>;
+
 /** Information about the physical copper line */
 export interface XdslLine {
   /** Data to identify the line at the concentration point */
@@ -1016,20 +1584,34 @@ export interface XdslLine {
   /** The upload synchronisation on the DSLAM in Kbps */
   syncUp?: number | null;
 }
+const XdslLine = /*@__PURE__*/ __L.at(__c13, 0) as any as S.Schema<XdslLine>;
+
 export interface GetXdslLineDslamPortRequest {
   /** Service name */
   serviceName: string;
   /** Number */
   number: string;
 }
+const GetXdslLineDslamPortRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  1,
+) as any as S.Schema<GetXdslLineDslamPortRequest>;
+
 /** Profile on the DSLAM */
 export interface XdslDslamLineProfile {
   id?: number;
   isCurrent?: boolean;
   name?: string;
 }
+const XdslDslamLineProfile = /*@__PURE__*/ __L.at(
+  __c13,
+  2,
+) as any as S.Schema<XdslDslamLineProfile>;
+
 /** Different states of a DSLAM port */
 export type XdslDslamPortStatusEnum = "activated" | "deactivated" | "outofsync";
+const XdslDslamPortStatusEnum = S.String;
+
 /** Information about the port on the DSLAM */
 export interface XdslDslamPort {
   /** Last time the port lost the synchronization */
@@ -1039,12 +1621,18 @@ export interface XdslDslamPort {
   profile?: XdslDslamLineProfile | null;
   status?: XdslDslamPortStatusEnum;
 }
+const XdslDslamPort = /*@__PURE__*/ __L.at(__c13, 3) as any as S.Schema<XdslDslamPort>;
+
 export interface GetXdslModemRequest {
   /** Service name */
   serviceName: string;
 }
+const GetXdslModemRequest = /*@__PURE__*/ __L.at(__c13, 4) as any as S.Schema<GetXdslModemRequest>;
+
 /** ACS backend used by the modem */
 export type XdslXdslModemConfigACSBackendEnum = "beta" | "dev" | "stable";
+const XdslXdslModemConfigACSBackendEnum = S.String;
+
 /** Describe the capabilities of the Modem */
 export interface XdslModemCapabilities {
   canBeManagedByOvh?: boolean;
@@ -1067,8 +1655,15 @@ export interface XdslModemCapabilities {
   canReset?: boolean;
   canUseWifiRadio?: boolean;
 }
+const XdslModemCapabilities = /*@__PURE__*/ __L.at(
+  __c13,
+  5,
+) as any as S.Schema<XdslModemCapabilities>;
+
 /** Level of the Firewall ( BlockAll will block all connections, Normal will block all incoming connections except those in PortMapping and let go all outgoing connections , Disabled will disable all the Firewall and let all incoming or outgoing connections pass through ) */
 export type XdslXdslModemConfigEasyFirewallLevelEnum = "BlockAll" | "Disabled" | "Normal";
+const XdslXdslModemConfigEasyFirewallLevelEnum = S.String;
+
 /** Modem */
 export interface XdslModem {
   /** ACS backend used by the modem */
@@ -1095,14 +1690,23 @@ export interface XdslModem {
   mtuSize?: XdslXdslModemConfigMTUSizeEnum | null;
   serialNumber?: string;
 }
+const XdslModem = /*@__PURE__*/ __L.at(__c13, 6) as any as S.Schema<XdslModem>;
+
 export interface GetXdslModemConnectedDeviceRequest {
   /** Service name */
   serviceName: string;
   /** Mac address */
   macAddress: string;
 }
+const GetXdslModemConnectedDeviceRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  7,
+) as any as S.Schema<GetXdslModemConnectedDeviceRequest>;
+
 /** How did the device got its IP Address */
 export type XdslXdslModemConfigConnectedDeviceAddressSourceEnum = "DHCP" | "Static" | "Unknown";
+const XdslXdslModemConfigConnectedDeviceAddressSourceEnum = S.String;
+
 /** Connected Device */
 export interface XdslConnectedDevice {
   /** The state of this device on the modem */
@@ -1122,10 +1726,17 @@ export interface XdslConnectedDevice {
   /** MAC address of the device */
   macAddress?: string;
 }
+const XdslConnectedDevice = /*@__PURE__*/ __L.at(__c14, 0) as any as S.Schema<XdslConnectedDevice>;
+
 export interface GetXdslModemInfoRequest {
   /** Service name */
   serviceName: string;
 }
+const GetXdslModemInfoRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  1,
+) as any as S.Schema<GetXdslModemInfoRequest>;
+
 /** Describe device information of a Modem */
 export interface XdslDeviceModemInfo {
   /** Modem brand */
@@ -1149,6 +1760,8 @@ export interface XdslDeviceModemInfo {
   /** Software Version */
   softVersion?: string;
 }
+const XdslDeviceModemInfo = /*@__PURE__*/ __L.at(__c14, 2) as any as S.Schema<XdslDeviceModemInfo>;
+
 /** Describe statistics information of a Modem */
 export interface XdslStatsModemInfo {
   /** Connection uptime */
@@ -1182,6 +1795,8 @@ export interface XdslStatsModemInfo {
   /** Upstream synchronization */
   upstreamSync?: number;
 }
+const XdslStatsModemInfo = /*@__PURE__*/ __L.at(__c14, 3) as any as S.Schema<XdslStatsModemInfo>;
+
 /** Describe general information of a Modem */
 export interface XdslModemInfo {
   /** Describe device information of a Modem */
@@ -1189,8 +1804,12 @@ export interface XdslModemInfo {
   /** Describe statistics information of a Modem */
   statistics?: XdslStatsModemInfo;
 }
+const XdslModemInfo = /*@__PURE__*/ __L.at(__c14, 4) as any as S.Schema<XdslModemInfo>;
+
 /** AsyncTask status */
 export type XdslAsyncTaskStatusEnum = "error" | "ok" | "pending";
+const XdslAsyncTaskStatusEnum = S.String;
+
 /** xdsl.AsyncTask_xdsl.ModemInfo */
 export interface XdslAsyncTaskXdslModemInfo {
   error?: string | null;
@@ -1199,12 +1818,22 @@ export interface XdslAsyncTaskXdslModemInfo {
   /** AsyncTask status */
   status?: XdslAsyncTaskStatusEnum;
 }
+const XdslAsyncTaskXdslModemInfo = /*@__PURE__*/ __L.at(
+  __c14,
+  5,
+) as any as S.Schema<XdslAsyncTaskXdslModemInfo>;
+
 export interface GetXdslModemLanRequest {
   /** Service name */
   serviceName: string;
   /** Lan name */
   lanName: string;
 }
+const GetXdslModemLanRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  6,
+) as any as S.Schema<GetXdslModemLanRequest>;
+
 /** LAN Configuration of the Modem */
 export interface XdslLAN {
   /** IP address (e.g., 192.0.2.0) */
@@ -1218,6 +1847,8 @@ export interface XdslLAN {
   /** ID of the ongoing todo (NULL if none) */
   taskId?: number | null;
 }
+const XdslLAN = /*@__PURE__*/ __L.at(__c14, 7) as any as S.Schema<XdslLAN>;
+
 export interface GetXdslModemLanDhcpRequest {
   /** Service name */
   serviceName: string;
@@ -1226,6 +1857,11 @@ export interface GetXdslModemLanDhcpRequest {
   /** Dhcp name */
   dhcpName: string;
 }
+const GetXdslModemLanDhcpRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  0,
+) as any as S.Schema<GetXdslModemLanDhcpRequest>;
+
 /** DHCP Configuration of the Modem */
 export interface XdslDHCP {
   /** IP address (e.g., 192.0.2.0) */
@@ -1251,12 +1887,19 @@ export interface XdslDHCP {
   /** ID of the ongoing todo (NULL if none) */
   taskId?: number | null;
 }
+const XdslDHCP = /*@__PURE__*/ __L.at(__c15, 1) as any as S.Schema<XdslDHCP>;
+
 export interface GetXdslModemWifiRequest {
   /** Service name */
   serviceName: string;
   /** Wifi name */
   wifiName: string;
 }
+const GetXdslModemWifiRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  2,
+) as any as S.Schema<GetXdslModemWifiRequest>;
+
 /** Type of WLAN security protection */
 export type XdslXdslModemConfigSecurityTypeEnum =
   | "None"
@@ -1266,6 +1909,8 @@ export type XdslXdslModemConfigSecurityTypeEnum =
   | "WPA2andWPA3"
   | "WPA3"
   | "WPAandWPA2";
+const XdslXdslModemConfigSecurityTypeEnum = S.String;
+
 /** WLAN Configuration of the Modem */
 export interface XdslWLAN {
   /** Service Set Identifier of the WLAN interface */
@@ -1293,25 +1938,49 @@ export interface XdslWLAN {
   /** Name of the Wifi */
   wifiName?: string;
 }
+const XdslWLAN = /*@__PURE__*/ __L.at(__c15, 3) as any as S.Schema<XdslWLAN>;
+
 export interface GetXdslModemWifiQrCodeRequest {
   /** Service name */
   serviceName: string;
   /** Wifi name */
   wifiName: string;
 }
+const GetXdslModemWifiQrCodeRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  4,
+) as any as S.Schema<GetXdslModemWifiQrCodeRequest>;
+
 export type GetXdslModemWifiQrCodeResponse = string;
+const GetXdslModemWifiQrCodeResponse =
+  GetFirmwareVersionResponse as any as S.Schema<GetXdslModemWifiQrCodeResponse>;
+
 export interface GetXdslModemWifiRadioRequest {
   /** Service name */
   serviceName: string;
   /** Radio name */
   radioName: string;
 }
+const GetXdslModemWifiRadioRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  5,
+) as any as S.Schema<GetXdslModemWifiRadioRequest>;
+
 /** Supported channels by this radio */
 export type XdslWifiRadioSupportedChannelsList = Array<number>;
+const XdslWifiRadioSupportedChannelsList =
+  ChangeContactResponseBodyList as any as S.Schema<XdslWifiRadioSupportedChannelsList>;
+
 /** Supported transmit power levels as percentage of full power */
 export type XdslWifiRadioSupportedPowersList = Array<number>;
+const XdslWifiRadioSupportedPowersList =
+  ChangeContactResponseBodyList as any as S.Schema<XdslWifiRadioSupportedPowersList>;
+
 /** Supported IEEE 802.11 standards by this radio */
 export type XdslWifiRadioSupportedStandardsList = Array<string>;
+const XdslWifiRadioSupportedStandardsList =
+  XdslTemplateModemParametersToIgnoreWLANListList as any as S.Schema<XdslWifiRadioSupportedStandardsList>;
+
 /** Wifi Radio Configuration of the Modem */
 export interface XdslWifiRadio {
   /** Current radio channel */
@@ -1339,10 +2008,14 @@ export interface XdslWifiRadio {
   /** Current transmit power level */
   transmitPower?: number;
 }
+const XdslWifiRadio = /*@__PURE__*/ __L.at(__c15, 6) as any as S.Schema<XdslWifiRadio>;
+
 export interface GetXdslOntRequest {
   /** Service name */
   serviceName: string;
 }
+const GetXdslOntRequest = /*@__PURE__*/ __L.at(__c15, 7) as any as S.Schema<GetXdslOntRequest>;
+
 /** Access ONT information */
 export interface XdslOnt {
   /** MAC address of the device */
@@ -1350,19 +2023,33 @@ export interface XdslOnt {
   /** Serial of the device */
   serial?: string;
 }
+const XdslOnt = /*@__PURE__*/ __L.at(__c16, 0) as any as S.Schema<XdslOnt>;
+
 export interface GetXdslPendingActionRequest {
   /** Service name */
   serviceName: string;
 }
+const GetXdslPendingActionRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  1,
+) as any as S.Schema<GetXdslPendingActionRequest>;
+
 /** Scheduled action before the next renewal of the service */
 export interface XdslPendingAction {
   action?: string;
   dateTodo?: string;
 }
+const XdslPendingAction = /*@__PURE__*/ __L.at(__c16, 2) as any as S.Schema<XdslPendingAction>;
+
 export interface GetXdslResiliationFollowupRequest {
   /** Service name */
   serviceName: string;
 }
+const GetXdslResiliationFollowupRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  3,
+) as any as S.Schema<GetXdslResiliationFollowupRequest>;
+
 /** Details about the resiliation */
 export interface XdslResiliationFollowUpDetail {
   /** Date when the resiliation will take effect */
@@ -1374,12 +2061,22 @@ export interface XdslResiliationFollowUpDetail {
   /** Status of the resiliation */
   status?: string;
 }
+const XdslResiliationFollowUpDetail = /*@__PURE__*/ __L.at(
+  __c16,
+  4,
+) as any as S.Schema<XdslResiliationFollowUpDetail>;
+
 export interface GetXdslResiliationTermsRequest {
   /** Service name */
   serviceName: string;
   /** The desired resiliation date */
   resiliationDate?: string;
 }
+const GetXdslResiliationTermsRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  5,
+) as any as S.Schema<GetXdslResiliationTermsRequest>;
+
 /** Reason of a resiliation */
 export type XdslResiliationReasonEnum =
   | "addressMove"
@@ -1392,6 +2089,9 @@ export type XdslResiliationReasonEnum =
   | "technicalProblems";
 /** List of available resiliation reasons */
 export type XdslResiliationTermsResiliationReasonsList = Array<XdslResiliationReasonEnum>;
+const XdslResiliationTermsResiliationReasonsList =
+  XdslFiberEligibilityGrtsList as any as S.Schema<XdslResiliationTermsResiliationReasonsList>;
+
 /** Show the resiliation terms */
 export interface XdslResiliationTerms {
   /** Price with it's currency and textual representation */
@@ -1405,16 +2105,27 @@ export interface XdslResiliationTerms {
   /** List of available resiliation reasons */
   resiliationReasons?: XdslResiliationTermsResiliationReasonsList;
 }
+const XdslResiliationTerms = /*@__PURE__*/ __L.at(
+  __c16,
+  6,
+) as any as S.Schema<XdslResiliationTerms>;
+
 export interface GetXdslRmaRequest {
   /** Service name */
   serviceName: string;
   /** Id */
   id: string;
 }
+const GetXdslRmaRequest = /*@__PURE__*/ __L.at(__c16, 7) as any as S.Schema<GetXdslRmaRequest>;
+
 /** Return merchandise authorisation offer type */
 export type TelephonyRmaOfferTypeEnum = "deposit" | "loan" | "purchase";
+const TelephonyRmaOfferTypeEnum = S.String;
+
 /** Return merchandise authorisation type */
 export type TelephonyRmaReplaceTypeEnum = "changePhone" | "phoneRestitution" | "undefined";
+const TelephonyRmaReplaceTypeEnum = S.String;
+
 /** ISO country codes */
 export type CoreTypesCountryEnum =
   | "ac"
@@ -1677,6 +2388,8 @@ export type CoreTypesCountryEnum =
   | "za"
   | "zm"
   | "zw";
+const CoreTypesCountryEnum = S.String;
+
 /** Contact information structure */
 export interface TelephonyContact {
   /** Contact address */
@@ -1697,8 +2410,12 @@ export interface TelephonyContact {
   /** Contact zip */
   zip?: string | null;
 }
+const TelephonyContact = /*@__PURE__*/ __L.at(__c17, 0) as any as S.Schema<TelephonyContact>;
+
 /** Return merchandise authorisation step */
 export type TelephonyRmaStatusEnum = "closed" | "open" | "received";
+const TelephonyRmaStatusEnum = S.String;
+
 /** RMA step names */
 export type TelephonyRmaStepNameEnum =
   | "dispatchJustification"
@@ -1708,8 +2425,12 @@ export type TelephonyRmaStepNameEnum =
   | "parcelReception"
   | "parcelValidation"
   | "validation";
+const TelephonyRmaStepNameEnum = S.String;
+
 /** Status of the RMA step */
 export type TelephonyRmaStepStatusEnum = "done" | "todo";
+const TelephonyRmaStepStatusEnum = S.String;
+
 /** Informations related to the current RMA step status */
 export interface TelephonyRmaStep {
   /** A brief description of the step */
@@ -1723,8 +2444,15 @@ export interface TelephonyRmaStep {
   /** Status of the RMA step */
   status?: TelephonyRmaStepStatusEnum;
 }
+const TelephonyRmaStep = /*@__PURE__*/ __L.at(__c17, 1) as any as S.Schema<TelephonyRmaStep>;
+
 /** Indicates the current status of the RMA with a list of steps */
 export type TelephonyRmaStepsList = Array<TelephonyRmaStep>;
+const TelephonyRmaStepsList = /*@__PURE__*/ __L.at(
+  __c17,
+  2,
+) as any as S.Schema<TelephonyRmaStepsList>;
+
 /** Return merchandise authorisation type */
 export type TelephonyRmaTypeEnum =
   | "after sale equipment service exchange"
@@ -1738,6 +2466,8 @@ export type TelephonyRmaTypeEnum =
   | "specific return merchandise authorisation"
   | "termination"
   | "unknown";
+const TelephonyRmaTypeEnum = S.String;
+
 /** Current Return Merchandise Authorisation */
 export interface TelephonyRma {
   /** Is the RMA cancellable? */
@@ -1769,12 +2499,22 @@ export interface TelephonyRma {
   /** Typology process of merchandise return */
   type?: TelephonyRmaTypeEnum;
 }
+const TelephonyRma = /*@__PURE__*/ __L.at(__c17, 3) as any as S.Schema<TelephonyRma>;
+
 export interface GetXdslServiceInfosRequest {
   /** Service name */
   serviceName: string;
 }
+const GetXdslServiceInfosRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  4,
+) as any as S.Schema<GetXdslServiceInfosRequest>;
+
 /** All the possible renew period of your service in month */
 export type ServicesServicePossibleRenewPeriodList = Array<number>;
+const ServicesServicePossibleRenewPeriodList =
+  ChangeContactResponseBodyList as any as S.Schema<ServicesServicePossibleRenewPeriodList>;
+
 /** Map a possible renew for a specific service */
 export interface ServiceRenewType {
   /** The service is automatically renewed */
@@ -1788,6 +2528,8 @@ export interface ServiceRenewType {
   /** period of renew in month */
   period?: number | null;
 }
+const ServiceRenewType = /*@__PURE__*/ __L.at(__c17, 5) as any as S.Schema<ServiceRenewType>;
+
 /** Detailed renewal type of a service */
 export type ServiceRenewalTypeEnum =
   | "automaticForcedProduct"
@@ -1797,6 +2539,8 @@ export type ServiceRenewalTypeEnum =
   | "manual"
   | "oneShot"
   | "option";
+const ServiceRenewalTypeEnum = S.String;
+
 /** service.StateEnum */
 export type ServiceStateEnum =
   | "autorenewInProgress"
@@ -1805,6 +2549,8 @@ export type ServiceStateEnum =
   | "ok"
   | "pendingDebt"
   | "unPaid";
+const ServiceStateEnum = S.String;
+
 /** Details about a Service */
 export interface ServicesService {
   /** Indicates that the service can be set up to be deleted at expiration */
@@ -1824,10 +2570,14 @@ export interface ServicesService {
   serviceId?: number;
   status?: ServiceStateEnum;
 }
+const ServicesService = /*@__PURE__*/ __L.at(__c17, 6) as any as S.Schema<ServicesService>;
+
 export interface GetXdslSpareRequest {
   /** Spare */
   spare: string;
 }
+const GetXdslSpareRequest = /*@__PURE__*/ __L.at(__c17, 7) as any as S.Schema<GetXdslSpareRequest>;
+
 /** Spare properties */
 export interface SpareXdslXdslSpareWithIAM {
   /** Modem brand model */
@@ -1837,20 +2587,37 @@ export interface SpareXdslXdslSpareWithIAM {
   /** Mac address */
   macAddress?: string;
 }
+const SpareXdslXdslSpareWithIAM = /*@__PURE__*/ __L.at(
+  __c18,
+  0,
+) as any as S.Schema<SpareXdslXdslSpareWithIAM>;
+
 export interface GetXdslSpareServiceInfosRequest {
   /** Spare */
   spare: string;
 }
+const GetXdslSpareServiceInfosRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  1,
+) as any as S.Schema<GetXdslSpareServiceInfosRequest>;
+
 export interface GetXdslTaskRequest {
   /** Service name */
   serviceName: string;
   /** Id */
   id: number;
 }
+const GetXdslTaskRequest = /*@__PURE__*/ __L.at(__c18, 2) as any as S.Schema<GetXdslTaskRequest>;
+
 export interface GetXdslTotalDeconsolidationTermsRequest {
   /** Service name */
   serviceName: string;
 }
+const GetXdslTotalDeconsolidationTermsRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  3,
+) as any as S.Schema<GetXdslTotalDeconsolidationTermsRequest>;
+
 /** Show the deconsolidation terms */
 export interface XdslDeconsolidationTerms {
   /** Duration of month the access will be engaged */
@@ -1860,6 +2627,11 @@ export interface XdslDeconsolidationTerms {
   /** Price with it's currency and textual representation */
   price?: OrderPrice;
 }
+const XdslDeconsolidationTerms = /*@__PURE__*/ __L.at(
+  __c18,
+  4,
+) as any as S.Schema<XdslDeconsolidationTerms>;
+
 export interface InstallFrimwareRequest {
   /** Service name */
   serviceName: string;
@@ -1868,24 +2640,51 @@ export interface InstallFrimwareRequest {
   /** Date of execution, default is now */
   todoDate?: string;
 }
+const InstallFrimwareRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  5,
+) as any as S.Schema<InstallFrimwareRequest>;
+
 /** Resource tag filter */
 export interface IamResourceTagFilterInput {}
+const IamResourceTagFilterInput =
+  ArchiveXdslTaskResponse as any as S.Schema<IamResourceTagFilterInput>;
+
 export type ListXdslRequestIamTagsValueList = Array<IamResourceTagFilterInput>;
+const ListXdslRequestIamTagsValueList = /*@__PURE__*/ __L.at(
+  __c18,
+  6,
+) as any as S.Schema<ListXdslRequestIamTagsValueList>;
+
 export type ListXdslRequestIamTagsMap = {
   [key: string]: ListXdslRequestIamTagsValueList | undefined;
 };
+const ListXdslRequestIamTagsMap = /*@__PURE__*/ __L.at(
+  __c18,
+  7,
+) as any as S.Schema<ListXdslRequestIamTagsMap>;
+
 export interface ListXdslRequest {
   /** Filter resources on IAM tags */
   iamTags?: ListXdslRequestIamTagsMap;
 }
+const ListXdslRequest = /*@__PURE__*/ __L.at(__c19, 0) as any as S.Schema<ListXdslRequest>;
+
 export type ListXdslResponseBodyList = Array<string>;
 export type ListXdslResponse = ListXdslResponseBodyList;
+const ListXdslResponse = GetPortMappingsResponse as any as S.Schema<ListXdslResponse>;
+
 export interface ListXdslAntiSpamEvidencesRequest {
   /** Service name */
   serviceName: string;
   /** Ip */
   ip: string;
 }
+const ListXdslAntiSpamEvidencesRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  1,
+) as any as S.Schema<ListXdslAntiSpamEvidencesRequest>;
+
 /** detail on evidences stored on PCS */
 export interface XdslAntiSpamEvidencesInfoDetail {
   /** File date on the PCS */
@@ -1895,10 +2694,22 @@ export interface XdslAntiSpamEvidencesInfoDetail {
   /** Temporary URL to access file */
   url?: string;
 }
+const XdslAntiSpamEvidencesInfoDetail = /*@__PURE__*/ __L.at(
+  __c19,
+  2,
+) as any as S.Schema<XdslAntiSpamEvidencesInfoDetail>;
+
 /** Table with evidences stored on PCS */
 export type XdslAntiSpamEvidencesInfoResultList = Array<XdslAntiSpamEvidencesInfoDetail>;
+const XdslAntiSpamEvidencesInfoResultList = /*@__PURE__*/ __L.at(
+  __c19,
+  3,
+) as any as S.Schema<XdslAntiSpamEvidencesInfoResultList>;
+
 /** Evidences AsyncTask status */
 export type XdslAntiSpamEvidencesInfoStatusEnum = "error" | "ok" | "pending";
+const XdslAntiSpamEvidencesInfoStatusEnum = S.String;
+
 /** List of evidences */
 export interface XdslAntiSpamEvidencesInfo {
   /** AsyncTask detailed error */
@@ -1908,53 +2719,112 @@ export interface XdslAntiSpamEvidencesInfo {
   /** Evidences AsyncTask status */
   status?: XdslAntiSpamEvidencesInfoStatusEnum;
 }
+const XdslAntiSpamEvidencesInfo = /*@__PURE__*/ __L.at(
+  __c19,
+  4,
+) as any as S.Schema<XdslAntiSpamEvidencesInfo>;
+
 export interface ListXdslAntiSpamsRequest {
   /** Service name */
   serviceName: string;
 }
+const ListXdslAntiSpamsRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  5,
+) as any as S.Schema<ListXdslAntiSpamsRequest>;
+
 export type ListXdslAntiSpamsResponseBodyList = Array<string>;
 export type ListXdslAntiSpamsResponse = ListXdslAntiSpamsResponseBodyList;
+const ListXdslAntiSpamsResponse =
+  GetDHCPStaticAddressesResponse as any as S.Schema<ListXdslAntiSpamsResponse>;
+
 export type ListXdslEmailProRequestIamTagsValueList = Array<IamResourceTagFilterInput>;
 export type ListXdslEmailProRequestIamTagsMap = {
   [key: string]: ListXdslEmailProRequestIamTagsValueList | undefined;
 };
+const ListXdslEmailProRequestIamTagsMap =
+  ListXdslRequestIamTagsMap as any as S.Schema<ListXdslEmailProRequestIamTagsMap>;
+
 export interface ListXdslEmailProRequest {
   /** Filter resources on IAM tags */
   iamTags?: ListXdslEmailProRequestIamTagsMap;
 }
+const ListXdslEmailProRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  6,
+) as any as S.Schema<ListXdslEmailProRequest>;
+
 export type ListXdslEmailProResponseBodyList = Array<string>;
 export type ListXdslEmailProResponse = ListXdslEmailProResponseBodyList;
+const ListXdslEmailProResponse =
+  GetPortMappingsResponse as any as S.Schema<ListXdslEmailProResponse>;
+
 export interface ListXdslFiberEligibilitiesRequest {
   /** Service name */
   serviceName: string;
   /** Filter the value of status property (=) */
   status?: XdslFiberEligibilityStatusEnum | (string & {});
 }
+const ListXdslFiberEligibilitiesRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  7,
+) as any as S.Schema<ListXdslFiberEligibilitiesRequest>;
+
 export type ListXdslFiberEligibilitiesResponseBodyList = Array<number>;
 export type ListXdslFiberEligibilitiesResponse = ListXdslFiberEligibilitiesResponseBodyList;
+const ListXdslFiberEligibilitiesResponse =
+  GetMonitoringNotificationsResponse as any as S.Schema<ListXdslFiberEligibilitiesResponse>;
+
 export interface ListXdslIncidentsRequest {
   /** Filter the value of creationDate property (>) */
   creationDate?: string;
   /** Filter the value of endDate property (<) */
   endDate?: string;
 }
+const ListXdslIncidentsRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  0,
+) as any as S.Schema<ListXdslIncidentsRequest>;
+
 export type ListXdslIncidentsResponseBodyList = Array<number>;
 export type ListXdslIncidentsResponse = ListXdslIncidentsResponseBodyList;
+const ListXdslIncidentsResponse =
+  GetMonitoringNotificationsResponse as any as S.Schema<ListXdslIncidentsResponse>;
+
 export interface ListXdslIpsRequest {
   /** Service name */
   serviceName: string;
 }
+const ListXdslIpsRequest = /*@__PURE__*/ __L.at(__c20, 1) as any as S.Schema<ListXdslIpsRequest>;
+
 export type ListXdslIpsResponseBodyList = Array<string>;
 export type ListXdslIpsResponse = ListXdslIpsResponseBodyList;
+const ListXdslIpsResponse = GetPortMappingsResponse as any as S.Schema<ListXdslIpsResponse>;
+
 export interface ListXdslLineDslamPortAvailableProfilesRequest {
   /** Service name */
   serviceName: string;
   /** Number */
   number: string;
 }
+const ListXdslLineDslamPortAvailableProfilesRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  2,
+) as any as S.Schema<ListXdslLineDslamPortAvailableProfilesRequest>;
+
 export type ListXdslLineDslamPortAvailableProfilesResponseBodyList = Array<XdslDslamLineProfile>;
+const ListXdslLineDslamPortAvailableProfilesResponseBodyList = /*@__PURE__*/ __L.at(
+  __c20,
+  3,
+) as any as S.Schema<ListXdslLineDslamPortAvailableProfilesResponseBodyList>;
+
 export type ListXdslLineDslamPortAvailableProfilesResponse =
   ListXdslLineDslamPortAvailableProfilesResponseBodyList;
+const ListXdslLineDslamPortAvailableProfilesResponse = /*@__PURE__*/ __L.at(
+  __c20,
+  4,
+) as any as S.Schema<ListXdslLineDslamPortAvailableProfilesResponse>;
+
 export interface ListXdslLineDslamPortLogsRequest {
   /** Service name */
   serviceName: string;
@@ -1962,6 +2832,11 @@ export interface ListXdslLineDslamPortLogsRequest {
   number: string;
   limit: number;
 }
+const ListXdslLineDslamPortLogsRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  5,
+) as any as S.Schema<ListXdslLineDslamPortLogsRequest>;
+
 /** A message log from the DSLAM */
 export interface XdslDslamPortLog {
   date?: string;
@@ -1971,16 +2846,37 @@ export interface XdslDslamPortLog {
   /** The number of times this message occured between date and lastOccurrenceDate */
   numberOfOccurrences?: number;
 }
+const XdslDslamPortLog = /*@__PURE__*/ __L.at(__c20, 6) as any as S.Schema<XdslDslamPortLog>;
+
 export type ListXdslLineDslamPortLogsResponseBodyList = Array<XdslDslamPortLog>;
+const ListXdslLineDslamPortLogsResponseBodyList = /*@__PURE__*/ __L.at(
+  __c20,
+  7,
+) as any as S.Schema<ListXdslLineDslamPortLogsResponseBodyList>;
+
 export type ListXdslLineDslamPortLogsResponse = ListXdslLineDslamPortLogsResponseBodyList;
+const ListXdslLineDslamPortLogsResponse = /*@__PURE__*/ __L.at(
+  __c21,
+  0,
+) as any as S.Schema<ListXdslLineDslamPortLogsResponse>;
+
 export interface ListXdslLinesRequest {
   /** Service name */
   serviceName: string;
 }
+const ListXdslLinesRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  1,
+) as any as S.Schema<ListXdslLinesRequest>;
+
 export type ListXdslLinesResponseBodyList = Array<string>;
 export type ListXdslLinesResponse = ListXdslLinesResponseBodyList;
+const ListXdslLinesResponse = GetPortMappingsResponse as any as S.Schema<ListXdslLinesResponse>;
+
 /** Periods for statistics. */
 export type XdslStatisticsPeriodEnum = "daily" | "monthly" | "preview" | "weekly" | "yearly";
+const XdslStatisticsPeriodEnum = S.String;
+
 /** Various types of statisctics available for the line. */
 export type XdslLineStatisticsTypeEnum =
   | "attenuation:download"
@@ -1992,6 +2888,8 @@ export type XdslLineStatisticsTypeEnum =
   | "snr:upload"
   | "synchronization:download"
   | "synchronization:upload";
+const XdslLineStatisticsTypeEnum = S.String;
+
 export interface ListXdslLineStatisticsRequest {
   /** Service name */
   serviceName: string;
@@ -2000,80 +2898,176 @@ export interface ListXdslLineStatisticsRequest {
   period: XdslStatisticsPeriodEnum | (string & {});
   type: XdslLineStatisticsTypeEnum | (string & {});
 }
+const ListXdslLineStatisticsRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  2,
+) as any as S.Schema<ListXdslLineStatisticsRequest>;
+
 /** A value associated to a timestamp */
 export interface XdslTimestampAndValue {
   timestamp?: number;
   value?: number | null;
 }
+const XdslTimestampAndValue = /*@__PURE__*/ __L.at(
+  __c21,
+  3,
+) as any as S.Schema<XdslTimestampAndValue>;
+
 export type ComplexTypeUnitAndValuesXdslTimestampAndValueValuesList = Array<XdslTimestampAndValue>;
+const ComplexTypeUnitAndValuesXdslTimestampAndValueValuesList = /*@__PURE__*/ __L.at(
+  __c21,
+  4,
+) as any as S.Schema<ComplexTypeUnitAndValuesXdslTimestampAndValueValuesList>;
+
 /** complexType.UnitAndValues_xdsl.TimestampAndValue */
 export interface ComplexTypeUnitAndValuesXdslTimestampAndValue {
   unit?: string;
   values?: ComplexTypeUnitAndValuesXdslTimestampAndValueValuesList;
 }
+const ComplexTypeUnitAndValuesXdslTimestampAndValue = /*@__PURE__*/ __L.at(
+  __c21,
+  5,
+) as any as S.Schema<ComplexTypeUnitAndValuesXdslTimestampAndValue>;
+
 export interface ListXdslModemAvailableACSBackendRequest {
   /** Service name */
   serviceName: string;
 }
+const ListXdslModemAvailableACSBackendRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  6,
+) as any as S.Schema<ListXdslModemAvailableACSBackendRequest>;
+
 export type ListXdslModemAvailableACSBackendResponseBodyList = Array<string>;
 export type ListXdslModemAvailableACSBackendResponse =
   ListXdslModemAvailableACSBackendResponseBodyList;
+const ListXdslModemAvailableACSBackendResponse =
+  GetDHCPStaticAddressesResponse as any as S.Schema<ListXdslModemAvailableACSBackendResponse>;
+
 /** Frequency of WLAN */
 export type XdslWLANFrequencyEnum = "2.4GHz" | "5GHz";
+const XdslWLANFrequencyEnum = S.String;
+
 export interface ListXdslModemAvailableWLANChannelRequest {
   /** Service name */
   serviceName: string;
   /** WLAN frequency you want to retrieve channels */
   frequency: XdslWLANFrequencyEnum | (string & {});
 }
+const ListXdslModemAvailableWLANChannelRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  7,
+) as any as S.Schema<ListXdslModemAvailableWLANChannelRequest>;
+
 export type ListXdslModemAvailableWLANChannelResponseBodyList = Array<number>;
 export type ListXdslModemAvailableWLANChannelResponse =
   ListXdslModemAvailableWLANChannelResponseBodyList;
+const ListXdslModemAvailableWLANChannelResponse =
+  GetMonitoringNotificationsResponse as any as S.Schema<ListXdslModemAvailableWLANChannelResponse>;
+
 export interface ListXdslModemConnectedDevicesRequest {
   /** Service name */
   serviceName: string;
 }
+const ListXdslModemConnectedDevicesRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  0,
+) as any as S.Schema<ListXdslModemConnectedDevicesRequest>;
+
 export type ListXdslModemConnectedDevicesResponseBodyList = Array<string>;
 export type ListXdslModemConnectedDevicesResponse = ListXdslModemConnectedDevicesResponseBodyList;
+const ListXdslModemConnectedDevicesResponse =
+  GetDHCPStaticAddressesResponse as any as S.Schema<ListXdslModemConnectedDevicesResponse>;
+
 export interface ListXdslModemFirmwareAvailableRequest {
   /** Service name */
   serviceName: string;
 }
+const ListXdslModemFirmwareAvailableRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  1,
+) as any as S.Schema<ListXdslModemFirmwareAvailableRequest>;
+
 export type ListXdslModemFirmwareAvailableResponseBodyList = Array<string>;
 export type ListXdslModemFirmwareAvailableResponse = ListXdslModemFirmwareAvailableResponseBodyList;
+const ListXdslModemFirmwareAvailableResponse =
+  GetDHCPStaticAddressesResponse as any as S.Schema<ListXdslModemFirmwareAvailableResponse>;
+
 export interface ListXdslModemLanRequest {
   /** Service name */
   serviceName: string;
 }
+const ListXdslModemLanRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  2,
+) as any as S.Schema<ListXdslModemLanRequest>;
+
 export type ListXdslModemLanResponseBodyList = Array<string>;
 export type ListXdslModemLanResponse = ListXdslModemLanResponseBodyList;
+const ListXdslModemLanResponse =
+  GetPortMappingsResponse as any as S.Schema<ListXdslModemLanResponse>;
+
 export interface ListXdslModemLanDhcpRequest {
   /** Service name */
   serviceName: string;
   /** Lan name */
   lanName: string;
 }
+const ListXdslModemLanDhcpRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  3,
+) as any as S.Schema<ListXdslModemLanDhcpRequest>;
+
 export type ListXdslModemLanDhcpResponseBodyList = Array<string>;
 export type ListXdslModemLanDhcpResponse = ListXdslModemLanDhcpResponseBodyList;
+const ListXdslModemLanDhcpResponse =
+  GetDHCPStaticAddressesResponse as any as S.Schema<ListXdslModemLanDhcpResponse>;
+
 export interface ListXdslModemWifiRequest {
   /** Service name */
   serviceName: string;
 }
+const ListXdslModemWifiRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  4,
+) as any as S.Schema<ListXdslModemWifiRequest>;
+
 export type ListXdslModemWifiResponseBodyList = Array<string>;
 export type ListXdslModemWifiResponse = ListXdslModemWifiResponseBodyList;
+const ListXdslModemWifiResponse =
+  GetDHCPStaticAddressesResponse as any as S.Schema<ListXdslModemWifiResponse>;
+
 export interface ListXdslModemWifiRadioRequest {
   /** Service name */
   serviceName: string;
 }
+const ListXdslModemWifiRadioRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  5,
+) as any as S.Schema<ListXdslModemWifiRadioRequest>;
+
 export type ListXdslModemWifiRadioResponseBodyList = Array<string>;
 export type ListXdslModemWifiRadioResponse = ListXdslModemWifiRadioResponseBodyList;
+const ListXdslModemWifiRadioResponse =
+  GetDHCPStaticAddressesResponse as any as S.Schema<ListXdslModemWifiRadioResponse>;
+
 export interface ListXdslOrderFollowupRequest {
   /** Service name */
   serviceName: string;
 }
+const ListXdslOrderFollowupRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  6,
+) as any as S.Schema<ListXdslOrderFollowupRequest>;
+
 export type XdslOrderFollowupStepCommentsList = Array<string>;
+const XdslOrderFollowupStepCommentsList =
+  XdslTemplateModemParametersToIgnoreWLANListList as any as S.Schema<XdslOrderFollowupStepCommentsList>;
+
 /** The duration units */
 export type XdslOrderFollowupDurationUnitEnum = "day" | "hour" | "minute";
+const XdslOrderFollowupDurationUnitEnum = S.String;
+
 /** The status of an order step */
 export type XdslOrderFollowupStepNameEnum =
   | "accessIsOperational"
@@ -2087,6 +3081,8 @@ export type XdslOrderFollowupStepNameEnum =
   | "setupCustomerPremisesEquipment"
   | "waitingForProviderInstallReport"
   | "waitingForWithdrawalPeriodToBeOver";
+const XdslOrderFollowupStepNameEnum = S.String;
+
 /** The status of an order step */
 export type XdslOrderFollowupStepStatusEnum =
   | "doing"
@@ -2094,6 +3090,8 @@ export type XdslOrderFollowupStepStatusEnum =
   | "error"
   | "todo"
   | "waitingCustomer";
+const XdslOrderFollowupStepStatusEnum = S.String;
+
 /** A step of the order process */
 export interface XdslOrderFollowupStep {
   comments?: XdslOrderFollowupStepCommentsList;
@@ -2106,12 +3104,32 @@ export interface XdslOrderFollowupStep {
   /** The status of an order step */
   status?: XdslOrderFollowupStepStatusEnum;
 }
+const XdslOrderFollowupStep = /*@__PURE__*/ __L.at(
+  __c22,
+  7,
+) as any as S.Schema<XdslOrderFollowupStep>;
+
 export type ListXdslOrderFollowupResponseBodyList = Array<XdslOrderFollowupStep>;
+const ListXdslOrderFollowupResponseBodyList = /*@__PURE__*/ __L.at(
+  __c23,
+  0,
+) as any as S.Schema<ListXdslOrderFollowupResponseBodyList>;
+
 export type ListXdslOrderFollowupResponse = ListXdslOrderFollowupResponseBodyList;
+const ListXdslOrderFollowupResponse = /*@__PURE__*/ __L.at(
+  __c23,
+  1,
+) as any as S.Schema<ListXdslOrderFollowupResponse>;
+
 export interface ListXdslRadiusConnectionLogsRequest {
   /** Service name */
   serviceName: string;
 }
+const ListXdslRadiusConnectionLogsRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  2,
+) as any as S.Schema<ListXdslRadiusConnectionLogsRequest>;
+
 /** Log entry of an auth attempt to the radius server */
 export interface XdslRadiusConnectionLog {
   date?: string;
@@ -2119,42 +3137,94 @@ export interface XdslRadiusConnectionLog {
   message?: string;
   state?: string;
 }
+const XdslRadiusConnectionLog = /*@__PURE__*/ __L.at(
+  __c23,
+  3,
+) as any as S.Schema<XdslRadiusConnectionLog>;
+
 export type ListXdslRadiusConnectionLogsResponseBodyList = Array<XdslRadiusConnectionLog>;
+const ListXdslRadiusConnectionLogsResponseBodyList = /*@__PURE__*/ __L.at(
+  __c23,
+  4,
+) as any as S.Schema<ListXdslRadiusConnectionLogsResponseBodyList>;
+
 export type ListXdslRadiusConnectionLogsResponse = ListXdslRadiusConnectionLogsResponseBodyList;
+const ListXdslRadiusConnectionLogsResponse = /*@__PURE__*/ __L.at(
+  __c23,
+  5,
+) as any as S.Schema<ListXdslRadiusConnectionLogsResponse>;
+
 export interface ListXdslRmaRequest {
   /** Service name */
   serviceName: string;
 }
+const ListXdslRmaRequest = /*@__PURE__*/ __L.at(__c23, 6) as any as S.Schema<ListXdslRmaRequest>;
+
 export type ListXdslRmaResponseBodyList = Array<string>;
 export type ListXdslRmaResponse = ListXdslRmaResponseBodyList;
+const ListXdslRmaResponse = GetPortMappingsResponse as any as S.Schema<ListXdslRmaResponse>;
+
 export type ListXdslSpareRequestIamTagsValueList = Array<IamResourceTagFilterInput>;
 export type ListXdslSpareRequestIamTagsMap = {
   [key: string]: ListXdslSpareRequestIamTagsValueList | undefined;
 };
+const ListXdslSpareRequestIamTagsMap =
+  ListXdslRequestIamTagsMap as any as S.Schema<ListXdslSpareRequestIamTagsMap>;
+
 export interface ListXdslSpareRequest {
   /** Filter resources on IAM tags */
   iamTags?: ListXdslSpareRequestIamTagsMap;
 }
+const ListXdslSpareRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  7,
+) as any as S.Schema<ListXdslSpareRequest>;
+
 export type ListXdslSpareResponseBodyList = Array<string>;
 export type ListXdslSpareResponse = ListXdslSpareResponseBodyList;
+const ListXdslSpareResponse = GetPortMappingsResponse as any as S.Schema<ListXdslSpareResponse>;
+
 export interface ListXdslSpareBrandsRequest {}
+const ListXdslSpareBrandsRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  0,
+) as any as S.Schema<ListXdslSpareBrandsRequest>;
+
 export type ListXdslSpareBrandsResponseBodyList = Array<string>;
 export type ListXdslSpareBrandsResponse = ListXdslSpareBrandsResponseBodyList;
+const ListXdslSpareBrandsResponse =
+  GetDHCPStaticAddressesResponse as any as S.Schema<ListXdslSpareBrandsResponse>;
+
 export interface ListXdslSpareCompatibleReplacementRequest {
   /** Spare */
   spare: string;
 }
+const ListXdslSpareCompatibleReplacementRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  1,
+) as any as S.Schema<ListXdslSpareCompatibleReplacementRequest>;
+
 export type ListXdslSpareCompatibleReplacementResponseBodyList = Array<string>;
 export type ListXdslSpareCompatibleReplacementResponse =
   ListXdslSpareCompatibleReplacementResponseBodyList;
+const ListXdslSpareCompatibleReplacementResponse =
+  GetDHCPStaticAddressesResponse as any as S.Schema<ListXdslSpareCompatibleReplacementResponse>;
+
 /** Various types of statisctics available for the access. */
 export type XdslAccessStatisticsTypeEnum = "ping" | "traffic:download" | "traffic:upload";
+const XdslAccessStatisticsTypeEnum = S.String;
+
 export interface ListXdslStatisticsRequest {
   /** Service name */
   serviceName: string;
   period: XdslStatisticsPeriodEnum | (string & {});
   type: XdslAccessStatisticsTypeEnum | (string & {});
 }
+const ListXdslStatisticsRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  2,
+) as any as S.Schema<ListXdslStatisticsRequest>;
+
 /** An access latency item */
 export interface XdslAccessLatency {
   loss?: number | null;
@@ -2163,12 +3233,24 @@ export interface XdslAccessLatency {
   value?: number | null;
   verboseStatus?: string | null;
 }
+const XdslAccessLatency = /*@__PURE__*/ __L.at(__c24, 3) as any as S.Schema<XdslAccessLatency>;
+
 export type ComplexTypeUnitAndValuesXdslAccessLatencyValuesList = Array<XdslAccessLatency>;
+const ComplexTypeUnitAndValuesXdslAccessLatencyValuesList = /*@__PURE__*/ __L.at(
+  __c24,
+  4,
+) as any as S.Schema<ComplexTypeUnitAndValuesXdslAccessLatencyValuesList>;
+
 /** complexType.UnitAndValues_xdsl.AccessLatency */
 export interface ComplexTypeUnitAndValuesXdslAccessLatency {
   unit?: string;
   values?: ComplexTypeUnitAndValuesXdslAccessLatencyValuesList;
 }
+const ComplexTypeUnitAndValuesXdslAccessLatency = /*@__PURE__*/ __L.at(
+  __c24,
+  5,
+) as any as S.Schema<ComplexTypeUnitAndValuesXdslAccessLatency>;
+
 export interface ListXdslTasksRequest {
   /** Service name */
   serviceName: string;
@@ -2177,8 +3259,15 @@ export interface ListXdslTasksRequest {
   /** Filter the value of status property (=) */
   status?: XdslTaskStatusEnum | (string & {});
 }
+const ListXdslTasksRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  6,
+) as any as S.Schema<ListXdslTasksRequest>;
+
 export type ListXdslTasksResponseBodyList = Array<number>;
 export type ListXdslTasksResponse = ListXdslTasksResponseBodyList;
+const ListXdslTasksResponse = ChangeContactResponse as any as S.Schema<ListXdslTasksResponse>;
+
 export interface PutXdslRequest {
   /** Service name */
   serviceName: string;
@@ -2188,7 +3277,11 @@ export interface PutXdslRequest {
   /** Whether or not this access is monitored */
   monitoring?: boolean;
 }
+const PutXdslRequest = /*@__PURE__*/ __L.at(__c24, 7) as any as S.Schema<PutXdslRequest>;
+
 export interface PutXdslResponse {}
+const PutXdslResponse = ArchiveXdslTaskResponse as any as S.Schema<PutXdslResponse>;
+
 export interface PutXdslEmailProRequest {
   /** Email */
   email: string;
@@ -2201,7 +3294,14 @@ export interface PutXdslEmailProRequest {
   /** Account last name */
   lastName?: string | null;
 }
+const PutXdslEmailProRequest = /*@__PURE__*/ __L.at(
+  __c25,
+  0,
+) as any as S.Schema<PutXdslEmailProRequest>;
+
 export interface PutXdslEmailProResponse {}
+const PutXdslEmailProResponse = ArchiveXdslTaskResponse as any as S.Schema<PutXdslEmailProResponse>;
+
 export interface PutXdslModemRequest {
   /** Service name */
   serviceName: string;
@@ -2216,7 +3316,11 @@ export interface PutXdslModemRequest {
   /** Size of the Maximum Transmission Unit on the modem's interfaces */
   mtuSize?: XdslXdslModemConfigMTUSizeEnum | (number & {}) | null;
 }
+const PutXdslModemRequest = /*@__PURE__*/ __L.at(__c25, 1) as any as S.Schema<PutXdslModemRequest>;
+
 export interface PutXdslModemResponse {}
+const PutXdslModemResponse = ArchiveXdslTaskResponse as any as S.Schema<PutXdslModemResponse>;
+
 export interface PutXdslModemLanRequest {
   /** Service name */
   serviceName: string;
@@ -2229,7 +3333,14 @@ export interface PutXdslModemLanRequest {
   /** IP address (e.g., 192.0.2.0) */
   subnetMask?: string;
 }
+const PutXdslModemLanRequest = /*@__PURE__*/ __L.at(
+  __c25,
+  2,
+) as any as S.Schema<PutXdslModemLanRequest>;
+
 export interface PutXdslModemLanResponse {}
+const PutXdslModemLanResponse = ArchiveXdslTaskResponse as any as S.Schema<PutXdslModemLanResponse>;
+
 export interface PutXdslModemLanDhcpRequest {
   /** Service name */
   serviceName: string;
@@ -2256,7 +3367,15 @@ export interface PutXdslModemLanDhcpRequest {
   /** IP address (e.g., 192.0.2.0) */
   subnetMask?: string;
 }
+const PutXdslModemLanDhcpRequest = /*@__PURE__*/ __L.at(
+  __c25,
+  3,
+) as any as S.Schema<PutXdslModemLanDhcpRequest>;
+
 export interface PutXdslModemLanDhcpResponse {}
+const PutXdslModemLanDhcpResponse =
+  ArchiveXdslTaskResponse as any as S.Schema<PutXdslModemLanDhcpResponse>;
+
 export interface PutXdslModemWifiRequest {
   /** Service name */
   serviceName: string;
@@ -2277,7 +3396,15 @@ export interface PutXdslModemWifiRequest {
   /** Type of WLAN security protection */
   securityType?: XdslXdslModemConfigSecurityTypeEnum | (string & {});
 }
+const PutXdslModemWifiRequest = /*@__PURE__*/ __L.at(
+  __c25,
+  4,
+) as any as S.Schema<PutXdslModemWifiRequest>;
+
 export interface PutXdslModemWifiResponse {}
+const PutXdslModemWifiResponse =
+  ArchiveXdslTaskResponse as any as S.Schema<PutXdslModemWifiResponse>;
+
 export interface PutXdslModemWifiRadioRequest {
   /** Service name */
   serviceName: string;
@@ -2288,6 +3415,11 @@ export interface PutXdslModemWifiRadioRequest {
   /** Change channel selection mode (auto | manual) */
   channelMode?: XdslXdslModemConfigChannelModeEnum | (string & {});
 }
+const PutXdslModemWifiRadioRequest = /*@__PURE__*/ __L.at(
+  __c25,
+  5,
+) as any as S.Schema<PutXdslModemWifiRadioRequest>;
+
 export interface PutXdslRmaRequest {
   /** Service name */
   serviceName: string;
@@ -2298,31 +3430,58 @@ export interface PutXdslRmaRequest {
   /** Contact information structure */
   shippingContact?: TelephonyContact;
 }
+const PutXdslRmaRequest = /*@__PURE__*/ __L.at(__c25, 6) as any as S.Schema<PutXdslRmaRequest>;
+
 export interface PutXdslRmaResponse {}
+const PutXdslRmaResponse = ArchiveXdslTaskResponse as any as S.Schema<PutXdslRmaResponse>;
+
 export interface PutXdslServiceInfosRequest {
   /** Service name */
   serviceName: string;
   /** Way of handling the renew */
   renew?: ServiceRenewType | null;
 }
+const PutXdslServiceInfosRequest = /*@__PURE__*/ __L.at(
+  __c25,
+  7,
+) as any as S.Schema<PutXdslServiceInfosRequest>;
+
 export interface PutXdslServiceInfosResponse {}
+const PutXdslServiceInfosResponse =
+  ArchiveXdslTaskResponse as any as S.Schema<PutXdslServiceInfosResponse>;
+
 export interface PutXdslSpareServiceInfosRequest {
   /** Spare */
   spare: string;
   /** Way of handling the renew */
   renew?: ServiceRenewType | null;
 }
+const PutXdslSpareServiceInfosRequest = /*@__PURE__*/ __L.at(
+  __c26,
+  0,
+) as any as S.Schema<PutXdslSpareServiceInfosRequest>;
+
 export interface PutXdslSpareServiceInfosResponse {}
+const PutXdslSpareServiceInfosResponse =
+  CancelXdslLinesDiagnosticResponse as any as S.Schema<PutXdslSpareServiceInfosResponse>;
+
 export interface RebootModemRequest {
   /** Service name */
   serviceName: string;
   /** Date when the reboot will start */
   todoDate?: string;
 }
+const RebootModemRequest = /*@__PURE__*/ __L.at(__c26, 1) as any as S.Schema<RebootModemRequest>;
+
 export interface RefreshXdslModemConnectedDevicesRequest {
   /** Service name */
   serviceName: string;
 }
+const RefreshXdslModemConnectedDevicesRequest = /*@__PURE__*/ __L.at(
+  __c26,
+  2,
+) as any as S.Schema<RefreshXdslModemConnectedDevicesRequest>;
+
 export interface RemoveDHCPStaticAddressRequest {
   /** Service name */
   serviceName: string;
@@ -2333,25 +3492,48 @@ export interface RemoveDHCPStaticAddressRequest {
   /** macaddress */
   MACAddress: string;
 }
+const RemoveDHCPStaticAddressRequest = /*@__PURE__*/ __L.at(
+  __c26,
+  3,
+) as any as S.Schema<RemoveDHCPStaticAddressRequest>;
+
 export interface RemoveMonitoringNotificationRequest {
   /** Service name */
   serviceName: string;
   /** Id */
   id: number;
 }
+const RemoveMonitoringNotificationRequest = /*@__PURE__*/ __L.at(
+  __c26,
+  4,
+) as any as S.Schema<RemoveMonitoringNotificationRequest>;
+
 export interface RemoveMonitoringNotificationResponse {}
+const RemoveMonitoringNotificationResponse =
+  CancelXdslLinesDiagnosticResponse as any as S.Schema<RemoveMonitoringNotificationResponse>;
+
 export interface RemovePortMappingRequest {
   /** Service name */
   serviceName: string;
   /** Name */
   name: string;
 }
+const RemovePortMappingRequest = /*@__PURE__*/ __L.at(
+  __c26,
+  5,
+) as any as S.Schema<RemovePortMappingRequest>;
+
 export interface ReplaceAccessModemRequest {
   /** Service name */
   serviceName: string;
   /** Customer identifier for shipping address. By default Internet access address will be used. Allowed values are nichandle or «/me/contact/xyz» */
   contactShipping?: string;
 }
+const ReplaceAccessModemRequest = /*@__PURE__*/ __L.at(
+  __c26,
+  6,
+) as any as S.Schema<ReplaceAccessModemRequest>;
+
 /** A contract */
 export interface OrderContract {
   /** Terms of the contract */
@@ -2361,8 +3543,15 @@ export interface OrderContract {
   /** URL to download the contract */
   url?: string;
 }
+const OrderContract = /*@__PURE__*/ __L.at(__c26, 7) as any as S.Schema<OrderContract>;
+
 /** List of contracts related to the order */
 export type OrderOrderContractsList = Array<OrderContract>;
+const OrderOrderContractsList = /*@__PURE__*/ __L.at(
+  __c27,
+  0,
+) as any as S.Schema<OrderOrderContractsList>;
+
 /** Product type of item in order */
 export type OrderOrderDetailTypeEnum =
   | "ACCESSORY"
@@ -2385,10 +3574,16 @@ export type OrderOrderDetailTypeEnum =
   | "SWITCH"
   | "TRANSFER"
   | "VOUCHER";
+const OrderOrderDetailTypeEnum = S.String;
+
 /** Context of the reduction */
 export type OrderReductionContextEnum = "promotion" | "voucher";
+const OrderReductionContextEnum = S.String;
+
 /** Type of reduction */
 export type OrderReductionTypeEnum = "fixed_amount" | "forced_amount" | "percentage";
+const OrderReductionTypeEnum = S.String;
+
 /** Order detail reduction */
 export interface OrderReduction {
   /** In which context the reduction is applied */
@@ -2404,8 +3599,15 @@ export interface OrderReduction {
   /** The reduction value */
   value?: OrderPrice;
 }
+const OrderReduction = /*@__PURE__*/ __L.at(__c27, 1) as any as S.Schema<OrderReduction>;
+
 /** List of reductions applied to the detail */
 export type OrderOrderDetailReductionsList = Array<OrderReduction>;
+const OrderOrderDetailReductionsList = /*@__PURE__*/ __L.at(
+  __c27,
+  2,
+) as any as S.Schema<OrderOrderDetailReductionsList>;
+
 /** Detail of an order */
 export interface OrderOrderDetail {
   /** Cart Item ID the details is related to */
@@ -2429,8 +3631,15 @@ export interface OrderOrderDetail {
   /** Unitary price of the service */
   unitPrice?: OrderPrice;
 }
+const OrderOrderDetail = /*@__PURE__*/ __L.at(__c27, 3) as any as S.Schema<OrderOrderDetail>;
+
 /** Details of the order */
 export type OrderOrderDetailsList = Array<OrderOrderDetail>;
+const OrderOrderDetailsList = /*@__PURE__*/ __L.at(
+  __c27,
+  4,
+) as any as S.Schema<OrderOrderDetailsList>;
+
 /** Prices of an order */
 export interface OrderOrderPrices {
   /** Price before reduction application */
@@ -2444,6 +3653,8 @@ export interface OrderOrderPrices {
   /** Price without tax */
   withoutTax?: OrderPrice;
 }
+const OrderOrderPrices = /*@__PURE__*/ __L.at(__c27, 5) as any as S.Schema<OrderOrderPrices>;
+
 /** An order */
 export interface OrderOrder {
   /** List of contracts related to the order */
@@ -2457,13 +3668,23 @@ export interface OrderOrder {
   /** URL to download the order */
   url?: string | null;
 }
+const OrderOrder = /*@__PURE__*/ __L.at(__c27, 6) as any as S.Schema<OrderOrder>;
+
 export interface ReplaceModemBySpareRequest {
   /** Spare */
   spare: string;
   /** The modem to replace by the spare */
   domain: string;
 }
+const ReplaceModemBySpareRequest = /*@__PURE__*/ __L.at(
+  __c27,
+  7,
+) as any as S.Schema<ReplaceModemBySpareRequest>;
+
 export interface ReplaceModemBySpareResponse {}
+const ReplaceModemBySpareResponse =
+  ArchiveXdslTaskResponse as any as S.Schema<ReplaceModemBySpareResponse>;
+
 export interface RequestTotalDeconsolidationRequest {
   /** Service name */
   serviceName: string;
@@ -2472,23 +3693,46 @@ export interface RequestTotalDeconsolidationRequest {
   /** A token to prove the ownership of the line number, needed to port the number */
   rio?: string;
 }
+const RequestTotalDeconsolidationRequest = /*@__PURE__*/ __L.at(
+  __c28,
+  0,
+) as any as S.Schema<RequestTotalDeconsolidationRequest>;
+
 export interface ResetModemConfigurationRequest {
   /** Service name */
   serviceName: string;
   /** Reset configuration stored in OVH databases */
   resetOvhConfig?: boolean;
 }
+const ResetModemConfigurationRequest = /*@__PURE__*/ __L.at(
+  __c28,
+  1,
+) as any as S.Schema<ResetModemConfigurationRequest>;
+
 export interface ResetXdslLinesDslamPortRequest {
   /** Service name */
   serviceName: string;
   /** Number */
   number: string;
 }
+const ResetXdslLinesDslamPortRequest = /*@__PURE__*/ __L.at(
+  __c28,
+  2,
+) as any as S.Schema<ResetXdslLinesDslamPortRequest>;
+
 export interface ResetXdslModemPortMappingConfigRequest {
   /** Service name */
   serviceName: string;
 }
+const ResetXdslModemPortMappingConfigRequest = /*@__PURE__*/ __L.at(
+  __c28,
+  3,
+) as any as S.Schema<ResetXdslModemPortMappingConfigRequest>;
+
 export interface ResetXdslModemPortMappingConfigResponse {}
+const ResetXdslModemPortMappingConfigResponse =
+  CancelXdslLinesDiagnosticResponse as any as S.Schema<ResetXdslModemPortMappingConfigResponse>;
+
 /** Information about the reason for the resiliation */
 export type XdslResiliationSurveyInput = IamResourceTagFilterInput;
 export interface ResiliateAccessRequest {
@@ -2499,10 +3743,20 @@ export interface ResiliateAccessRequest {
   /** Information about the reason for the resiliation */
   resiliationSurvey: IamResourceTagFilterInput;
 }
+const ResiliateAccessRequest = /*@__PURE__*/ __L.at(
+  __c28,
+  4,
+) as any as S.Schema<ResiliateAccessRequest>;
+
 export interface SearchXdslOrderMeetingsRequest {
   /** Service name */
   serviceName: string;
 }
+const SearchXdslOrderMeetingsRequest = /*@__PURE__*/ __L.at(
+  __c28,
+  5,
+) as any as S.Schema<SearchXdslOrderMeetingsRequest>;
+
 /** Represents meeting booking options */
 export interface ConnectivityEligibilityMeetingCapacities {
   /** Whether or not it is possible to book a meeting online */
@@ -2510,6 +3764,11 @@ export interface ConnectivityEligibilityMeetingCapacities {
   /** Whether or not it is possible to be be called by phone to book a meeting */
   phoneCall?: boolean;
 }
+const ConnectivityEligibilityMeetingCapacities = /*@__PURE__*/ __L.at(
+  __c28,
+  6,
+) as any as S.Schema<ConnectivityEligibilityMeetingCapacities>;
+
 /** Represents a time slot for a meeting */
 export interface ConnectivityEligibilityMeetingSlot {
   /** End date */
@@ -2521,9 +3780,19 @@ export interface ConnectivityEligibilityMeetingSlot {
   /** An opaque string that represents an intervention unit */
   uiCode?: string | null;
 }
+const ConnectivityEligibilityMeetingSlot = /*@__PURE__*/ __L.at(
+  __c28,
+  7,
+) as any as S.Schema<ConnectivityEligibilityMeetingSlot>;
+
 /** A time slot */
 export type ConnectivityEligibilityMeetingsMeetingSlotsList =
   Array<ConnectivityEligibilityMeetingSlot>;
+const ConnectivityEligibilityMeetingsMeetingSlotsList = /*@__PURE__*/ __L.at(
+  __c29,
+  0,
+) as any as S.Schema<ConnectivityEligibilityMeetingsMeetingSlotsList>;
+
 /** List of available meeting time slots */
 export interface ConnectivityEligibilityMeetings {
   /** Whether or not it is possible to book a fake meeting */
@@ -2533,6 +3802,11 @@ export interface ConnectivityEligibilityMeetings {
   /** A time slot */
   meetingSlots?: ConnectivityEligibilityMeetingsMeetingSlotsList;
 }
+const ConnectivityEligibilityMeetings = /*@__PURE__*/ __L.at(
+  __c29,
+  1,
+) as any as S.Schema<ConnectivityEligibilityMeetings>;
+
 /** xdsl.AsyncTask_connectivity.eligibility.Meetings */
 export interface XdslAsyncTaskConnectivityEligibilityMeetings {
   error?: string | null;
@@ -2541,35 +3815,70 @@ export interface XdslAsyncTaskConnectivityEligibilityMeetings {
   /** AsyncTask status */
   status?: XdslAsyncTaskStatusEnum;
 }
+const XdslAsyncTaskConnectivityEligibilityMeetings = /*@__PURE__*/ __L.at(
+  __c29,
+  2,
+) as any as S.Schema<XdslAsyncTaskConnectivityEligibilityMeetings>;
+
 export interface SendXdslOrderToProviderRequest {
   /** Service name */
   serviceName: string;
 }
+const SendXdslOrderToProviderRequest = /*@__PURE__*/ __L.at(
+  __c29,
+  3,
+) as any as S.Schema<SendXdslOrderToProviderRequest>;
+
 export interface SendXdslOrderToProviderResponse {}
+const SendXdslOrderToProviderResponse = /*@__PURE__*/ __L.at(
+  __c29,
+  4,
+) as any as S.Schema<SendXdslOrderToProviderResponse>;
+
 export interface SetWifiMeshStatusRequest {
   /** Service name */
   serviceName: string;
   /** Status of the mesh */
   wifiMesh: XdslServiceStatusEnum | (string & {});
 }
+const SetWifiMeshStatusRequest = /*@__PURE__*/ __L.at(
+  __c29,
+  5,
+) as any as S.Schema<SetWifiMeshStatusRequest>;
+
 export interface SetWifiOneSsidStatusRequest {
   /** Service name */
   serviceName: string;
   /** Status of the onessid */
   wifiOneSsid: XdslServiceStatusEnum | (string & {});
 }
+const SetWifiOneSsidStatusRequest = /*@__PURE__*/ __L.at(
+  __c29,
+  6,
+) as any as S.Schema<SetWifiOneSsidStatusRequest>;
+
 export interface UpdateBlocIPStatusRequest {
   /** Service name */
   serviceName: string;
   /** Status of the service */
   status: XdslServiceStatusEnum | (string & {});
 }
+const UpdateBlocIPStatusRequest = /*@__PURE__*/ __L.at(
+  __c29,
+  7,
+) as any as S.Schema<UpdateBlocIPStatusRequest>;
+
 export interface UpdateContentSharingStatusRequest {
   /** Service name */
   serviceName: string;
   /** Status of the service */
   contentSharing: XdslServiceStatusEnum | (string & {});
 }
+const UpdateContentSharingStatusRequest = /*@__PURE__*/ __L.at(
+  __c30,
+  0,
+) as any as S.Schema<UpdateContentSharingStatusRequest>;
+
 export interface UpdateDHCPStaticAddressRequest {
   /** Service name */
   serviceName: string;
@@ -2584,25 +3893,45 @@ export interface UpdateDHCPStaticAddressRequest {
   /** Name of the DHCP Static lease */
   name?: string | null;
 }
+const UpdateDHCPStaticAddressRequest = /*@__PURE__*/ __L.at(
+  __c30,
+  1,
+) as any as S.Schema<UpdateDHCPStaticAddressRequest>;
+
 export interface UpdateDHCPStaticAddressResponse {}
+const UpdateDHCPStaticAddressResponse =
+  SendXdslOrderToProviderResponse as any as S.Schema<UpdateDHCPStaticAddressResponse>;
+
 export interface UpdateFTPStatusRequest {
   /** Service name */
   serviceName: string;
   /** Status of the service */
   ftp: XdslServiceStatusEnum | (string & {});
 }
+const UpdateFTPStatusRequest = /*@__PURE__*/ __L.at(
+  __c30,
+  2,
+) as any as S.Schema<UpdateFTPStatusRequest>;
+
 export interface UpdateIpRequest {
   /** Service name */
   serviceName: string;
   /** Should the IPv6 be enabled ? */
   enabled: boolean;
 }
+const UpdateIpRequest = /*@__PURE__*/ __L.at(__c30, 3) as any as S.Schema<UpdateIpRequest>;
+
 export interface UpdateIpsecAlgStatusRequest {
   /** Service name */
   serviceName: string;
   /** Status of the service */
   ipsecAlg: XdslServiceStatusEnum | (string & {});
 }
+const UpdateIpsecAlgStatusRequest = /*@__PURE__*/ __L.at(
+  __c30,
+  4,
+) as any as S.Schema<UpdateIpsecAlgStatusRequest>;
+
 /** Customer possible actions */
 export type XdslLineDiagnosticCustomerActionsEnum =
   | "bePreparedToCheckModemSynchronization"
@@ -2618,10 +3947,15 @@ export type XdslLineDiagnosticCustomerActionsEnum =
   | "resetModem"
   | "unplugEveryModems"
   | "unplugModem";
+const XdslLineDiagnosticCustomerActionsEnum = S.String;
+
 /** Customer possible actions */
 export type UpdateLineDiagnosticRequestActionsDoneList = Array<
   XdslLineDiagnosticCustomerActionsEnum | (string & {})
 >;
+const UpdateLineDiagnosticRequestActionsDoneList =
+  XdslFiberEligibilityGrtsList as any as S.Schema<UpdateLineDiagnosticRequestActionsDoneList>;
+
 /** Customer answers for line diagnostic */
 export type XdslLineDiagnosticAnswersInput = IamResourceTagFilterInput;
 /** Line diagnostic fault type */
@@ -2630,6 +3964,8 @@ export type XdslLineDiagnosticFaultTypeEnum =
   | "noSync"
   | "syncLossOrLowBandwidth"
   | "unknown";
+const XdslLineDiagnosticFaultTypeEnum = S.String;
+
 export interface UpdateLineDiagnosticRequest {
   /** Service name */
   serviceName: string;
@@ -2642,9 +3978,17 @@ export interface UpdateLineDiagnosticRequest {
   /** Line diagnostic fault type */
   faultType: XdslLineDiagnosticFaultTypeEnum | (string & {});
 }
+const UpdateLineDiagnosticRequest = /*@__PURE__*/ __L.at(
+  __c30,
+  5,
+) as any as S.Schema<UpdateLineDiagnosticRequest>;
+
 /** List of actions already done by customer */
 export type XdslLineDiagnosticDiagnosticDataActionsDoneList =
   Array<XdslLineDiagnosticCustomerActionsEnum>;
+const XdslLineDiagnosticDiagnosticDataActionsDoneList =
+  UpdateLineDiagnosticRequestActionsDoneList as any as S.Schema<XdslLineDiagnosticDiagnosticDataActionsDoneList>;
+
 /** Customer action to do */
 export interface XdslLineDiagnosticCustomerActionToDo {
   /** action's description */
@@ -2652,13 +3996,27 @@ export interface XdslLineDiagnosticCustomerActionToDo {
   /** Customer possible actions */
   name?: XdslLineDiagnosticCustomerActionsEnum;
 }
+const XdslLineDiagnosticCustomerActionToDo = /*@__PURE__*/ __L.at(
+  __c30,
+  6,
+) as any as S.Schema<XdslLineDiagnosticCustomerActionToDo>;
+
 /** List of actions that must be done by customer */
 export type XdslLineDiagnosticDiagnosticDataActionsToDoList =
   Array<XdslLineDiagnosticCustomerActionToDo>;
+const XdslLineDiagnosticDiagnosticDataActionsToDoList = /*@__PURE__*/ __L.at(
+  __c30,
+  7,
+) as any as S.Schema<XdslLineDiagnosticDiagnosticDataActionsToDoList>;
+
 /** bandwidth unit for proof.ovh.net test values */
 export type XdslLineDiagnosticBandwidthTestUnitEnum = "Kbps" | "Mbps";
+const XdslLineDiagnosticBandwidthTestUnitEnum = S.String;
+
 /** Possible customer questions */
 export type XdslLineDiagnosticProblemTypeEnum = "lowBandwidth" | "syncLoss";
+const XdslLineDiagnosticProblemTypeEnum = S.String;
+
 /** Customer answers for line diagnostic */
 export interface XdslLineDiagnosticAnswers {
   /** bandwidth unit for proof.ovh.net test values */
@@ -2716,6 +4074,11 @@ export interface XdslLineDiagnosticAnswers {
   /** bandwidth upload value on proof.ovh.net test */
   uploadBandwidthTest?: number | null;
 }
+const XdslLineDiagnosticAnswers = /*@__PURE__*/ __L.at(
+  __c31,
+  0,
+) as any as S.Schema<XdslLineDiagnosticAnswers>;
+
 /** Informations directly get on DSLAM or Modem */
 export interface XdslLineDiagnosticConnectionInformations {
   /** Amount of CRC error detected */
@@ -2737,6 +4100,11 @@ export interface XdslLineDiagnosticConnectionInformations {
   /** Upstream synchronization */
   upstreamSync?: number | null;
 }
+const XdslLineDiagnosticConnectionInformations = /*@__PURE__*/ __L.at(
+  __c31,
+  1,
+) as any as S.Schema<XdslLineDiagnosticConnectionInformations>;
+
 /** Theoretical line capabilities */
 export interface XdslLineDiagnosticLineCapabilities {
   /** Theoretical Downstream synchronization */
@@ -2748,6 +4116,11 @@ export interface XdslLineDiagnosticLineCapabilities {
   /** Theoretical Upstream synchronization */
   up?: number | null;
 }
+const XdslLineDiagnosticLineCapabilities = /*@__PURE__*/ __L.at(
+  __c31,
+  2,
+) as any as S.Schema<XdslLineDiagnosticLineCapabilities>;
+
 /** Cables section details */
 export interface XdslLineDiagnosticSection {
   /** cables length in meters */
@@ -2755,8 +4128,18 @@ export interface XdslLineDiagnosticSection {
   /** cables section in millimeters */
   section?: number;
 }
+const XdslLineDiagnosticSection = /*@__PURE__*/ __L.at(
+  __c31,
+  3,
+) as any as S.Schema<XdslLineDiagnosticSection>;
+
 /** cables sections details */
 export type XdslLineDiagnosticLineDetailsSectionsList = Array<XdslLineDiagnosticSection>;
+const XdslLineDiagnosticLineDetailsSectionsList = /*@__PURE__*/ __L.at(
+  __c31,
+  4,
+) as any as S.Schema<XdslLineDiagnosticLineDetailsSectionsList>;
+
 /** Line information */
 export interface XdslLineDiagnosticLineDetails {
   /** access name */
@@ -2790,6 +4173,11 @@ export interface XdslLineDiagnosticLineDetails {
   /** cables sections details */
   sections?: XdslLineDiagnosticLineDetailsSectionsList | null;
 }
+const XdslLineDiagnosticLineDetails = /*@__PURE__*/ __L.at(
+  __c31,
+  5,
+) as any as S.Schema<XdslLineDiagnosticLineDetails>;
+
 /** Diagnostic robot possible actions */
 export type XdslLineDiagnosticRobotActionsEnum =
   | "alignmentLockTest"
@@ -2815,12 +4203,20 @@ export type XdslLineDiagnosticRobotActionsEnum =
   | "requestOperatorIntervention"
   | "requestOvhIntervention"
   | "seltTest";
+const XdslLineDiagnosticRobotActionsEnum = S.String;
+
 /** Possible SELT test prelocalizations */
 export type XdslLineDiagnosticSeltPrelocEnum = "CUST" | "DSLAM" | "LINE" | "RE";
+const XdslLineDiagnosticSeltPrelocEnum = S.String;
+
 /** Possible SELT test states */
 export type XdslLineDiagnosticSeltStateEnum = "open" | "short" | "synced" | "unknown";
+const XdslLineDiagnosticSeltStateEnum = S.String;
+
 /** Possible SELT test status */
 export type XdslLineDiagnosticSeltStatusEnum = "failed" | "notAvailable" | "ok";
+const XdslLineDiagnosticSeltStatusEnum = S.String;
+
 /** Customer answers for line diagnostic */
 export interface XdslLineDiagnosticSeltResult {
   /** SELT test running date */
@@ -2834,8 +4230,16 @@ export interface XdslLineDiagnosticSeltResult {
   /** SELT test status */
   status?: XdslLineDiagnosticSeltStatusEnum | null;
 }
+const XdslLineDiagnosticSeltResult = /*@__PURE__*/ __L.at(
+  __c31,
+  6,
+) as any as S.Schema<XdslLineDiagnosticSeltResult>;
+
 /** available values for enum */
 export type XdslLineDiagnosticQuestionEnumValuesList = Array<string>;
+const XdslLineDiagnosticQuestionEnumValuesList =
+  XdslTemplateModemParametersToIgnoreWLANListList as any as S.Schema<XdslLineDiagnosticQuestionEnumValuesList>;
+
 /** Possible customer questions */
 export type XdslLineDiagnosticQuestionsEnum =
   | "bandwidthTestUnit"
@@ -2865,6 +4269,8 @@ export type XdslLineDiagnosticQuestionsEnum =
   | "startAfternoonHours"
   | "startMorningHours"
   | "uploadBandwidthTest";
+const XdslLineDiagnosticQuestionsEnum = S.String;
+
 /** possible value for specific answer */
 export interface XdslLineDiagnosticPossibleValue {
   /** answer id */
@@ -2874,8 +4280,18 @@ export interface XdslLineDiagnosticPossibleValue {
   /** answer choice value */
   value?: string | null;
 }
+const XdslLineDiagnosticPossibleValue = /*@__PURE__*/ __L.at(
+  __c31,
+  7,
+) as any as S.Schema<XdslLineDiagnosticPossibleValue>;
+
 /** list of possible values */
 export type XdslLineDiagnosticQuestionPossibleValuesList = Array<XdslLineDiagnosticPossibleValue>;
+const XdslLineDiagnosticQuestionPossibleValuesList = /*@__PURE__*/ __L.at(
+  __c32,
+  0,
+) as any as S.Schema<XdslLineDiagnosticQuestionPossibleValuesList>;
+
 /** Question to customer */
 export interface XdslLineDiagnosticQuestion {
   /** question description */
@@ -2893,8 +4309,18 @@ export interface XdslLineDiagnosticQuestion {
   /** answer type */
   type?: string;
 }
+const XdslLineDiagnosticQuestion = /*@__PURE__*/ __L.at(
+  __c32,
+  1,
+) as any as S.Schema<XdslLineDiagnosticQuestion>;
+
 /** List of questions that must be answered by customer */
 export type XdslLineDiagnosticDiagnosticDataToAnswerList = Array<XdslLineDiagnosticQuestion>;
+const XdslLineDiagnosticDiagnosticDataToAnswerList = /*@__PURE__*/ __L.at(
+  __c32,
+  2,
+) as any as S.Schema<XdslLineDiagnosticDiagnosticDataToAnswerList>;
+
 /** Diagnostic data and information */
 export interface XdslLineDiagnosticDiagnosticData {
   /** List of actions already done by customer */
@@ -2924,6 +4350,11 @@ export interface XdslLineDiagnosticDiagnosticData {
   /** List of questions that must be answered by customer */
   toAnswer?: XdslLineDiagnosticDiagnosticDataToAnswerList;
 }
+const XdslLineDiagnosticDiagnosticData = /*@__PURE__*/ __L.at(
+  __c32,
+  3,
+) as any as S.Schema<XdslLineDiagnosticDiagnosticData>;
+
 /** Diagnostic status possible values */
 export type XdslLineDiagnosticDiagnosticStatusEnum =
   | "cancelled"
@@ -2942,6 +4373,8 @@ export type XdslLineDiagnosticDiagnosticStatusEnum =
   | "waitingHuman"
   | "waitingRobot"
   | "waitingValidation";
+const XdslLineDiagnosticDiagnosticStatusEnum = S.String;
+
 /** Diagnostic status and information */
 export interface XdslLineDiagnosticDiagnostic {
   /** Diagnostic data and information */
@@ -2953,27 +4386,52 @@ export interface XdslLineDiagnosticDiagnostic {
   /** Diagnostic status possible values */
   status?: XdslLineDiagnosticDiagnosticStatusEnum;
 }
+const XdslLineDiagnosticDiagnostic = /*@__PURE__*/ __L.at(
+  __c32,
+  4,
+) as any as S.Schema<XdslLineDiagnosticDiagnostic>;
+
 /** Status allowed for mail sending */
 export type XdslMailSendingStatusEnum = "disabled" | "enabled";
+const XdslMailSendingStatusEnum = S.String;
+
 export interface UpdateMailSendingRequest {
   /** Service name */
   serviceName: string;
   /** Status allowed for mail sending */
   status: XdslMailSendingStatusEnum | (string & {});
 }
+const UpdateMailSendingRequest = /*@__PURE__*/ __L.at(
+  __c32,
+  5,
+) as any as S.Schema<UpdateMailSendingRequest>;
+
 export interface UpdateModemCallWaitingRequest {
   /** Service name */
   serviceName: string;
   /** Status of the service */
   callWaiting: XdslServiceStatusEnum | (string & {});
 }
+const UpdateModemCallWaitingRequest = /*@__PURE__*/ __L.at(
+  __c32,
+  6,
+) as any as S.Schema<UpdateModemCallWaitingRequest>;
+
 export interface UpdateModemTemplateRequest {
   /** Name */
   name: string;
   /** Do not apply these parameters from template. You can use parametersCapabilities to know availability */
   parametersToIgnore?: XdslTemplateModemParametersToIgnore | null;
 }
+const UpdateModemTemplateRequest = /*@__PURE__*/ __L.at(
+  __c32,
+  7,
+) as any as S.Schema<UpdateModemTemplateRequest>;
+
 export interface UpdateModemTemplateResponse {}
+const UpdateModemTemplateResponse =
+  ArchiveXdslTaskResponse as any as S.Schema<UpdateModemTemplateResponse>;
+
 export interface UpdateMonitoringNotificationRequest {
   /** Service name */
   serviceName: string;
@@ -2992,7 +4450,15 @@ export interface UpdateMonitoringNotificationRequest {
   /** The phone number, if type is sms */
   phone?: string | null;
 }
+const UpdateMonitoringNotificationRequest = /*@__PURE__*/ __L.at(
+  __c33,
+  0,
+) as any as S.Schema<UpdateMonitoringNotificationRequest>;
+
 export interface UpdateMonitoringNotificationResponse {}
+const UpdateMonitoringNotificationResponse =
+  CancelXdslLinesDiagnosticResponse as any as S.Schema<UpdateMonitoringNotificationResponse>;
+
 export interface UpdatePortMappingRequest {
   /** Service name */
   serviceName: string;
@@ -3015,7 +4481,15 @@ export interface UpdatePortMappingRequest {
   /** Type of protocol for the Port Mapping */
   protocol?: XdslXdslModemConfigProtocolTypeEnum | (string & {});
 }
+const UpdatePortMappingRequest = /*@__PURE__*/ __L.at(
+  __c33,
+  1,
+) as any as S.Schema<UpdatePortMappingRequest>;
+
 export interface UpdatePortMappingResponse {}
+const UpdatePortMappingResponse =
+  ArchiveXdslTaskResponse as any as S.Schema<UpdatePortMappingResponse>;
+
 export interface UpdateRIORequest {
   /** Service name */
   serviceName: string;
@@ -3024,9 +4498,15 @@ export interface UpdateRIORequest {
   /** RIO number for portability */
   rio?: string;
 }
+const UpdateRIORequest = /*@__PURE__*/ __L.at(__c33, 2) as any as S.Schema<UpdateRIORequest>;
+
 export interface UpdateRIOResponse {}
+const UpdateRIOResponse = ArchiveXdslTaskResponse as any as S.Schema<UpdateRIOResponse>;
+
 /** Types of return merchandise authorisation you can change to */
 export type TelephonyRmaChangeTypeEnum = "resiliate" | "toSip";
+const TelephonyRmaChangeTypeEnum = S.String;
+
 export interface UpdateRMATypeRequest {
   /** Service name */
   serviceName: string;
@@ -3035,19 +4515,36 @@ export interface UpdateRMATypeRequest {
   /** Types of return merchandise authorisation you can change to */
   type: TelephonyRmaChangeTypeEnum | (string & {});
 }
+const UpdateRMATypeRequest = /*@__PURE__*/ __L.at(
+  __c33,
+  3,
+) as any as S.Schema<UpdateRMATypeRequest>;
+
 export interface UpdateRMATypeResponse {}
+const UpdateRMATypeResponse = ArchiveXdslTaskResponse as any as S.Schema<UpdateRMATypeResponse>;
+
 export interface UpdateSipAlgStatusRequest {
   /** Service name */
   serviceName: string;
   /** Status of the service */
   sipAlg: XdslServiceStatusEnum | (string & {});
 }
+const UpdateSipAlgStatusRequest = /*@__PURE__*/ __L.at(
+  __c33,
+  4,
+) as any as S.Schema<UpdateSipAlgStatusRequest>;
+
 export interface UpdateUpnpStatusRequest {
   /** Service name */
   serviceName: string;
   /** Status of the service */
   upnp: XdslServiceStatusEnum | (string & {});
 }
+const UpdateUpnpStatusRequest = /*@__PURE__*/ __L.at(
+  __c33,
+  5,
+) as any as S.Schema<UpdateUpnpStatusRequest>;
+
 export type AddDHCPStaticAddressError = OvhOpError;
 /** Add a DHCP static lease */
 export const addDHCPStaticAddress: API.OperationMethod<
@@ -3056,8 +4553,8 @@ export const addDHCPStaticAddress: API.OperationMethod<
   AddDHCPStaticAddressError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<AddDHCPStaticAddressRequest>,
-  output: __S(1) as any as S.Schema<XdslDHCPStaticAddress>,
+  input: AddDHCPStaticAddressRequest,
+  output: XdslDHCPStaticAddress,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3071,8 +4568,8 @@ export const addMonitoringNotification: API.OperationMethod<
   AddMonitoringNotificationError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2) as any as S.Schema<AddMonitoringNotificationRequest>,
-  output: __S(3) as any as S.Schema<XdslMonitoringNotification>,
+  input: AddMonitoringNotificationRequest,
+  output: XdslMonitoringNotification,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3086,8 +4583,8 @@ export const addPortMapping: API.OperationMethod<
   AddPortMappingError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4) as any as S.Schema<AddPortMappingRequest>,
-  output: __S(5) as any as S.Schema<XdslPortMapping>,
+  input: AddPortMappingRequest,
+  output: XdslPortMapping,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3101,8 +4598,8 @@ export const applyTemplateModem: API.OperationMethod<
   ApplyTemplateModemError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6) as any as S.Schema<ApplyTemplateModemRequest>,
-  output: __S(7) as any as S.Schema<XdslTask>,
+  input: ApplyTemplateModemRequest,
+  output: XdslTask,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3116,8 +4613,8 @@ export const archiveXdslTask: API.OperationMethod<
   ArchiveXdslTaskError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8) as any as S.Schema<ArchiveXdslTaskRequest>,
-  output: __S(9) as any as S.Schema<ArchiveXdslTaskResponse>,
+  input: ArchiveXdslTaskRequest,
+  output: ArchiveXdslTaskResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3131,8 +4628,8 @@ export const bookMeeting: API.OperationMethod<
   BookMeetingError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10) as any as S.Schema<BookMeetingRequest>,
-  output: __S(9) as any as S.Schema<BookMeetingResponse>,
+  input: BookMeetingRequest,
+  output: BookMeetingResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3146,8 +4643,8 @@ export const cancelXdslLinesDiagnostic: API.OperationMethod<
   CancelXdslLinesDiagnosticError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11) as any as S.Schema<CancelXdslLinesDiagnosticRequest>,
-  output: __S(12) as any as S.Schema<CancelXdslLinesDiagnosticResponse>,
+  input: CancelXdslLinesDiagnosticRequest,
+  output: CancelXdslLinesDiagnosticResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3161,8 +4658,8 @@ export const cancelXdslResiliation: API.OperationMethod<
   CancelXdslResiliationError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13) as any as S.Schema<CancelXdslResiliationRequest>,
-  output: __S(9) as any as S.Schema<CancelXdslResiliationResponse>,
+  input: CancelXdslResiliationRequest,
+  output: CancelXdslResiliationResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3176,8 +4673,8 @@ export const changeContact: API.OperationMethod<
   ChangeContactError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14) as any as S.Schema<ChangeContactRequest>,
-  output: __S(16) as any as S.Schema<ChangeContactResponse>,
+  input: ChangeContactRequest,
+  output: ChangeContactResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3191,8 +4688,8 @@ export const changeEmailPassword: API.OperationMethod<
   ChangeEmailPasswordError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17) as any as S.Schema<ChangeEmailPasswordRequest>,
-  output: __S(18) as any as S.Schema<XdslEmailProTask>,
+  input: ChangeEmailPasswordRequest,
+  output: XdslEmailProTask,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3206,8 +4703,8 @@ export const changeLineDSLAMProfile: API.OperationMethod<
   ChangeLineDSLAMProfileError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19) as any as S.Schema<ChangeLineDSLAMProfileRequest>,
-  output: __S(7) as any as S.Schema<XdslTask>,
+  input: ChangeLineDSLAMProfileRequest,
+  output: XdslTask,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3221,8 +4718,8 @@ export const createModemTemplate: API.OperationMethod<
   CreateModemTemplateError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20) as any as S.Schema<CreateModemTemplateRequest>,
-  output: __S(31) as any as S.Schema<XdslTemplateModem>,
+  input: CreateModemTemplateRequest,
+  output: XdslTemplateModem,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3236,8 +4733,8 @@ export const createXdslAddressMoveExtraIpRangeMove: API.OperationMethod<
   CreateXdslAddressMoveExtraIpRangeMoveError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32) as any as S.Schema<CreateXdslAddressMoveExtraIpRangeMoveRequest>,
-  output: __S(7) as any as S.Schema<XdslTask>,
+  input: CreateXdslAddressMoveExtraIpRangeMoveRequest,
+  output: XdslTask,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3251,8 +4748,8 @@ export const createXdslDiagnostic: API.OperationMethod<
   CreateXdslDiagnosticError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33) as any as S.Schema<CreateXdslDiagnosticRequest>,
-  output: __S(7) as any as S.Schema<XdslTask>,
+  input: CreateXdslDiagnosticRequest,
+  output: XdslTask,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3266,8 +4763,8 @@ export const createXdslIps: API.OperationMethod<
   CreateXdslIpsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34) as any as S.Schema<CreateXdslIpsRequest>,
-  output: __S(7) as any as S.Schema<XdslTask>,
+  input: CreateXdslIpsRequest,
+  output: XdslTask,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3281,8 +4778,8 @@ export const createXdslModemReconfigureVoip: API.OperationMethod<
   CreateXdslModemReconfigureVoipError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35) as any as S.Schema<CreateXdslModemReconfigureVoipRequest>,
-  output: __S(12) as any as S.Schema<CreateXdslModemReconfigureVoipResponse>,
+  input: CreateXdslModemReconfigureVoipRequest,
+  output: CreateXdslModemReconfigureVoipResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3296,8 +4793,8 @@ export const createXdslRequestPPPLoginMail: API.OperationMethod<
   CreateXdslRequestPPPLoginMailError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36) as any as S.Schema<CreateXdslRequestPPPLoginMailRequest>,
-  output: __S(12) as any as S.Schema<CreateXdslRequestPPPLoginMailResponse>,
+  input: CreateXdslRequestPPPLoginMailRequest,
+  output: CreateXdslRequestPPPLoginMailResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3311,8 +4808,8 @@ export const createXdslSpareReturnMerchandise: API.OperationMethod<
   CreateXdslSpareReturnMerchandiseError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37) as any as S.Schema<CreateXdslSpareReturnMerchandiseRequest>,
-  output: __S(12) as any as S.Schema<CreateXdslSpareReturnMerchandiseResponse>,
+  input: CreateXdslSpareReturnMerchandiseRequest,
+  output: CreateXdslSpareReturnMerchandiseResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3326,8 +4823,8 @@ export const deleteModemTemplate: API.OperationMethod<
   DeleteModemTemplateError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38) as any as S.Schema<DeleteModemTemplateRequest>,
-  output: __S(9) as any as S.Schema<DeleteModemTemplateResponse>,
+  input: DeleteModemTemplateRequest,
+  output: DeleteModemTemplateResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3341,8 +4838,8 @@ export const deleteXdslEmailPro: API.OperationMethod<
   DeleteXdslEmailProError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39) as any as S.Schema<DeleteXdslEmailProRequest>,
-  output: __S(9) as any as S.Schema<DeleteXdslEmailProResponse>,
+  input: DeleteXdslEmailProRequest,
+  output: DeleteXdslEmailProResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3356,8 +4853,8 @@ export const deleteXdslIps: API.OperationMethod<
   DeleteXdslIpsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40) as any as S.Schema<DeleteXdslIpsRequest>,
-  output: __S(9) as any as S.Schema<DeleteXdslIpsResponse>,
+  input: DeleteXdslIpsRequest,
+  output: DeleteXdslIpsResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3371,8 +4868,8 @@ export const deleteXdslRma: API.OperationMethod<
   DeleteXdslRmaError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41) as any as S.Schema<DeleteXdslRmaRequest>,
-  output: __S(9) as any as S.Schema<DeleteXdslRmaResponse>,
+  input: DeleteXdslRmaRequest,
+  output: DeleteXdslRmaResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3386,8 +4883,8 @@ export const deleteXdslSpare: API.OperationMethod<
   DeleteXdslSpareError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42) as any as S.Schema<DeleteXdslSpareRequest>,
-  output: __S(9) as any as S.Schema<DeleteXdslSpareResponse>,
+  input: DeleteXdslSpareRequest,
+  output: DeleteXdslSpareResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3401,8 +4898,8 @@ export const getAccessModemReplacement: API.OperationMethod<
   GetAccessModemReplacementError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43) as any as S.Schema<GetAccessModemReplacementRequest>,
-  output: __S(45) as any as S.Schema<XdslModemExchangeInfo>,
+  input: GetAccessModemReplacementRequest,
+  output: XdslModemExchangeInfo,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3416,8 +4913,8 @@ export const getBlocIPStatus: API.OperationMethod<
   GetBlocIPStatusError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(46) as any as S.Schema<GetBlocIPStatusRequest>,
-  output: __S(47) as any as S.Schema<GetBlocIPStatusResponse>,
+  input: GetBlocIPStatusRequest,
+  output: GetBlocIPStatusResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3431,8 +4928,8 @@ export const getContentSharingStatus: API.OperationMethod<
   GetContentSharingStatusError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48) as any as S.Schema<GetContentSharingStatusRequest>,
-  output: __S(49) as any as S.Schema<GetContentSharingStatusResponse>,
+  input: GetContentSharingStatusRequest,
+  output: GetContentSharingStatusResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3446,8 +4943,8 @@ export const getDHCPStaticAddress: API.OperationMethod<
   GetDHCPStaticAddressError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(50) as any as S.Schema<GetDHCPStaticAddressRequest>,
-  output: __S(1) as any as S.Schema<XdslDHCPStaticAddress>,
+  input: GetDHCPStaticAddressRequest,
+  output: XdslDHCPStaticAddress,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3461,8 +4958,8 @@ export const getDHCPStaticAddresses: API.OperationMethod<
   GetDHCPStaticAddressesError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(51) as any as S.Schema<GetDHCPStaticAddressesRequest>,
-  output: __S(52) as any as S.Schema<GetDHCPStaticAddressesResponse>,
+  input: GetDHCPStaticAddressesRequest,
+  output: GetDHCPStaticAddressesResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3476,8 +4973,8 @@ export const getFirmwareVersion: API.OperationMethod<
   GetFirmwareVersionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(53) as any as S.Schema<GetFirmwareVersionRequest>,
-  output: __S(54) as any as S.Schema<GetFirmwareVersionResponse>,
+  input: GetFirmwareVersionRequest,
+  output: GetFirmwareVersionResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3491,8 +4988,8 @@ export const getFTPStatus: API.OperationMethod<
   GetFTPStatusError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(55) as any as S.Schema<GetFTPStatusRequest>,
-  output: __S(47) as any as S.Schema<GetFTPStatusResponse>,
+  input: GetFTPStatusRequest,
+  output: GetFTPStatusResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3506,8 +5003,8 @@ export const getIpsecAlgStatus: API.OperationMethod<
   GetIpsecAlgStatusError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56) as any as S.Schema<GetIpsecAlgStatusRequest>,
-  output: __S(49) as any as S.Schema<GetIpsecAlgStatusResponse>,
+  input: GetIpsecAlgStatusRequest,
+  output: GetIpsecAlgStatusResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3521,8 +5018,8 @@ export const getModemCallWaitingStatus: API.OperationMethod<
   GetModemCallWaitingStatusError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57) as any as S.Schema<GetModemCallWaitingStatusRequest>,
-  output: __S(49) as any as S.Schema<GetModemCallWaitingStatusResponse>,
+  input: GetModemCallWaitingStatusRequest,
+  output: GetModemCallWaitingStatusResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3536,8 +5033,8 @@ export const getModemTemplate: API.OperationMethod<
   GetModemTemplateError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(58) as any as S.Schema<GetModemTemplateRequest>,
-  output: __S(31) as any as S.Schema<XdslTemplateModem>,
+  input: GetModemTemplateRequest,
+  output: XdslTemplateModem,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3551,8 +5048,8 @@ export const getModemTemplates: API.OperationMethod<
   GetModemTemplatesError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(59) as any as S.Schema<GetModemTemplatesRequest>,
-  output: __S(52) as any as S.Schema<GetModemTemplatesResponse>,
+  input: GetModemTemplatesRequest,
+  output: GetModemTemplatesResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3566,8 +5063,8 @@ export const getMonitoringNotification: API.OperationMethod<
   GetMonitoringNotificationError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60) as any as S.Schema<GetMonitoringNotificationRequest>,
-  output: __S(3) as any as S.Schema<XdslMonitoringNotification>,
+  input: GetMonitoringNotificationRequest,
+  output: XdslMonitoringNotification,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3581,8 +5078,8 @@ export const getMonitoringNotifications: API.OperationMethod<
   GetMonitoringNotificationsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(61) as any as S.Schema<GetMonitoringNotificationsRequest>,
-  output: __S(62) as any as S.Schema<GetMonitoringNotificationsResponse>,
+  input: GetMonitoringNotificationsRequest,
+  output: GetMonitoringNotificationsResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3596,8 +5093,8 @@ export const getPortMapping: API.OperationMethod<
   GetPortMappingError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(63) as any as S.Schema<GetPortMappingRequest>,
-  output: __S(5) as any as S.Schema<XdslPortMapping>,
+  input: GetPortMappingRequest,
+  output: XdslPortMapping,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3611,8 +5108,8 @@ export const getPortMappings: API.OperationMethod<
   GetPortMappingsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(64) as any as S.Schema<GetPortMappingsRequest>,
-  output: __S(65) as any as S.Schema<GetPortMappingsResponse>,
+  input: GetPortMappingsRequest,
+  output: GetPortMappingsResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3626,8 +5123,8 @@ export const getSipAlgStatus: API.OperationMethod<
   GetSipAlgStatusError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(66) as any as S.Schema<GetSipAlgStatusRequest>,
-  output: __S(47) as any as S.Schema<GetSipAlgStatusResponse>,
+  input: GetSipAlgStatusRequest,
+  output: GetSipAlgStatusResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3641,8 +5138,8 @@ export const getUpnpStatus: API.OperationMethod<
   GetUpnpStatusError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(67) as any as S.Schema<GetUpnpStatusRequest>,
-  output: __S(47) as any as S.Schema<GetUpnpStatusResponse>,
+  input: GetUpnpStatusRequest,
+  output: GetUpnpStatusResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3656,8 +5153,8 @@ export const getWifiMeshStatus: API.OperationMethod<
   GetWifiMeshStatusError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(68) as any as S.Schema<GetWifiMeshStatusRequest>,
-  output: __S(49) as any as S.Schema<GetWifiMeshStatusResponse>,
+  input: GetWifiMeshStatusRequest,
+  output: GetWifiMeshStatusResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3671,8 +5168,8 @@ export const getWifiOneSsidStatus: API.OperationMethod<
   GetWifiOneSsidStatusError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(69) as any as S.Schema<GetWifiOneSsidStatusRequest>,
-  output: __S(49) as any as S.Schema<GetWifiOneSsidStatusResponse>,
+  input: GetWifiOneSsidStatusRequest,
+  output: GetWifiOneSsidStatusResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3686,8 +5183,8 @@ export const getXdsl: API.OperationMethod<
   GetXdslError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(70) as any as S.Schema<GetXdslRequest>,
-  output: __S(75) as any as S.Schema<XdslAccessWithIAM>,
+  input: GetXdslRequest,
+  output: XdslAccessWithIAM,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3701,8 +5198,8 @@ export const getXdslAddressMoveExtraIpRange: API.OperationMethod<
   GetXdslAddressMoveExtraIpRangeError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(76) as any as S.Schema<GetXdslAddressMoveExtraIpRangeRequest>,
-  output: __S(77) as any as S.Schema<XdslExtraIpRangeMove>,
+  input: GetXdslAddressMoveExtraIpRangeRequest,
+  output: XdslExtraIpRangeMove,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3716,8 +5213,8 @@ export const getXdslAntiSpam: API.OperationMethod<
   GetXdslAntiSpamError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(78) as any as S.Schema<GetXdslAntiSpamRequest>,
-  output: __S(79) as any as S.Schema<XdslAntiSpam>,
+  input: GetXdslAntiSpamRequest,
+  output: XdslAntiSpam,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3731,8 +5228,8 @@ export const getXdslCanCancelResiliation: API.OperationMethod<
   GetXdslCanCancelResiliationError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(80) as any as S.Schema<GetXdslCanCancelResiliationRequest>,
-  output: __S(81) as any as S.Schema<GetXdslCanCancelResiliationResponse>,
+  input: GetXdslCanCancelResiliationRequest,
+  output: GetXdslCanCancelResiliationResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3746,8 +5243,8 @@ export const getXdslDiagnostic: API.OperationMethod<
   GetXdslDiagnosticError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(82) as any as S.Schema<GetXdslDiagnosticRequest>,
-  output: __S(86) as any as S.Schema<XdslAccessDiagnostic>,
+  input: GetXdslDiagnosticRequest,
+  output: XdslAccessDiagnostic,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3761,8 +5258,8 @@ export const getXdslEmailPro: API.OperationMethod<
   GetXdslEmailProError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(87) as any as S.Schema<GetXdslEmailProRequest>,
-  output: __S(89) as any as S.Schema<XdslXdslEmailProWithIAM>,
+  input: GetXdslEmailProRequest,
+  output: XdslXdslEmailProWithIAM,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3776,8 +5273,8 @@ export const getXdslFiberEligibility: API.OperationMethod<
   GetXdslFiberEligibilityError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(90) as any as S.Schema<GetXdslFiberEligibilityRequest>,
-  output: __S(94) as any as S.Schema<XdslFiberEligibility>,
+  input: GetXdslFiberEligibilityRequest,
+  output: XdslFiberEligibility,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3791,8 +5288,8 @@ export const getXdslIncident: API.OperationMethod<
   GetXdslIncidentError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(95) as any as S.Schema<GetXdslIncidentRequest>,
-  output: __S(96) as any as S.Schema<XdslIncident>,
+  input: GetXdslIncidentRequest,
+  output: XdslIncident,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3806,8 +5303,8 @@ export const getXdslIncident2: API.OperationMethod<
   GetXdslIncident2Error,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(97) as any as S.Schema<GetXdslIncidentRequest2>,
-  output: __S(96) as any as S.Schema<XdslIncident>,
+  input: GetXdslIncidentRequest2,
+  output: XdslIncident,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3821,8 +5318,8 @@ export const getXdslIps: API.OperationMethod<
   GetXdslIpsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(98) as any as S.Schema<GetXdslIpsRequest>,
-  output: __S(99) as any as S.Schema<XdslIP>,
+  input: GetXdslIpsRequest,
+  output: XdslIP,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3836,8 +5333,8 @@ export const getXdslLine: API.OperationMethod<
   GetXdslLineError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(100) as any as S.Schema<GetXdslLineRequest>,
-  output: __S(104) as any as S.Schema<XdslLine>,
+  input: GetXdslLineRequest,
+  output: XdslLine,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3851,8 +5348,8 @@ export const getXdslLineDslamPort: API.OperationMethod<
   GetXdslLineDslamPortError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(105) as any as S.Schema<GetXdslLineDslamPortRequest>,
-  output: __S(107) as any as S.Schema<XdslDslamPort>,
+  input: GetXdslLineDslamPortRequest,
+  output: XdslDslamPort,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3866,8 +5363,8 @@ export const getXdslModem: API.OperationMethod<
   GetXdslModemError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(108) as any as S.Schema<GetXdslModemRequest>,
-  output: __S(110) as any as S.Schema<XdslModem>,
+  input: GetXdslModemRequest,
+  output: XdslModem,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3881,8 +5378,8 @@ export const getXdslModemConnectedDevice: API.OperationMethod<
   GetXdslModemConnectedDeviceError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(111) as any as S.Schema<GetXdslModemConnectedDeviceRequest>,
-  output: __S(112) as any as S.Schema<XdslConnectedDevice>,
+  input: GetXdslModemConnectedDeviceRequest,
+  output: XdslConnectedDevice,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3896,8 +5393,8 @@ export const getXdslModemInfo: API.OperationMethod<
   GetXdslModemInfoError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(113) as any as S.Schema<GetXdslModemInfoRequest>,
-  output: __S(117) as any as S.Schema<XdslAsyncTaskXdslModemInfo>,
+  input: GetXdslModemInfoRequest,
+  output: XdslAsyncTaskXdslModemInfo,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3911,8 +5408,8 @@ export const getXdslModemLan: API.OperationMethod<
   GetXdslModemLanError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(118) as any as S.Schema<GetXdslModemLanRequest>,
-  output: __S(119) as any as S.Schema<XdslLAN>,
+  input: GetXdslModemLanRequest,
+  output: XdslLAN,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3926,8 +5423,8 @@ export const getXdslModemLanDhcp: API.OperationMethod<
   GetXdslModemLanDhcpError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(120) as any as S.Schema<GetXdslModemLanDhcpRequest>,
-  output: __S(121) as any as S.Schema<XdslDHCP>,
+  input: GetXdslModemLanDhcpRequest,
+  output: XdslDHCP,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3941,8 +5438,8 @@ export const getXdslModemWifi: API.OperationMethod<
   GetXdslModemWifiError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(122) as any as S.Schema<GetXdslModemWifiRequest>,
-  output: __S(123) as any as S.Schema<XdslWLAN>,
+  input: GetXdslModemWifiRequest,
+  output: XdslWLAN,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3956,8 +5453,8 @@ export const getXdslModemWifiQrCode: API.OperationMethod<
   GetXdslModemWifiQrCodeError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(124) as any as S.Schema<GetXdslModemWifiQrCodeRequest>,
-  output: __S(54) as any as S.Schema<GetXdslModemWifiQrCodeResponse>,
+  input: GetXdslModemWifiQrCodeRequest,
+  output: GetXdslModemWifiQrCodeResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3971,8 +5468,8 @@ export const getXdslModemWifiRadio: API.OperationMethod<
   GetXdslModemWifiRadioError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(125) as any as S.Schema<GetXdslModemWifiRadioRequest>,
-  output: __S(126) as any as S.Schema<XdslWifiRadio>,
+  input: GetXdslModemWifiRadioRequest,
+  output: XdslWifiRadio,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3986,8 +5483,8 @@ export const getXdslOnt: API.OperationMethod<
   GetXdslOntError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(127) as any as S.Schema<GetXdslOntRequest>,
-  output: __S(128) as any as S.Schema<XdslOnt>,
+  input: GetXdslOntRequest,
+  output: XdslOnt,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4001,8 +5498,8 @@ export const getXdslPendingAction: API.OperationMethod<
   GetXdslPendingActionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(129) as any as S.Schema<GetXdslPendingActionRequest>,
-  output: __S(130) as any as S.Schema<XdslPendingAction>,
+  input: GetXdslPendingActionRequest,
+  output: XdslPendingAction,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4016,8 +5513,8 @@ export const getXdslResiliationFollowup: API.OperationMethod<
   GetXdslResiliationFollowupError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(131) as any as S.Schema<GetXdslResiliationFollowupRequest>,
-  output: __S(132) as any as S.Schema<XdslResiliationFollowUpDetail>,
+  input: GetXdslResiliationFollowupRequest,
+  output: XdslResiliationFollowUpDetail,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4031,8 +5528,8 @@ export const getXdslResiliationTerms: API.OperationMethod<
   GetXdslResiliationTermsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(133) as any as S.Schema<GetXdslResiliationTermsRequest>,
-  output: __S(134) as any as S.Schema<XdslResiliationTerms>,
+  input: GetXdslResiliationTermsRequest,
+  output: XdslResiliationTerms,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4046,8 +5543,8 @@ export const getXdslRma: API.OperationMethod<
   GetXdslRmaError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(135) as any as S.Schema<GetXdslRmaRequest>,
-  output: __S(139) as any as S.Schema<TelephonyRma>,
+  input: GetXdslRmaRequest,
+  output: TelephonyRma,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4061,8 +5558,8 @@ export const getXdslServiceInfos: API.OperationMethod<
   GetXdslServiceInfosError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(140) as any as S.Schema<GetXdslServiceInfosRequest>,
-  output: __S(142) as any as S.Schema<ServicesService>,
+  input: GetXdslServiceInfosRequest,
+  output: ServicesService,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4076,8 +5573,8 @@ export const getXdslSpare: API.OperationMethod<
   GetXdslSpareError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(143) as any as S.Schema<GetXdslSpareRequest>,
-  output: __S(144) as any as S.Schema<SpareXdslXdslSpareWithIAM>,
+  input: GetXdslSpareRequest,
+  output: SpareXdslXdslSpareWithIAM,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4091,8 +5588,8 @@ export const getXdslSpareServiceInfos: API.OperationMethod<
   GetXdslSpareServiceInfosError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(145) as any as S.Schema<GetXdslSpareServiceInfosRequest>,
-  output: __S(142) as any as S.Schema<ServicesService>,
+  input: GetXdslSpareServiceInfosRequest,
+  output: ServicesService,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4106,8 +5603,8 @@ export const getXdslTask: API.OperationMethod<
   GetXdslTaskError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(146) as any as S.Schema<GetXdslTaskRequest>,
-  output: __S(7) as any as S.Schema<XdslTask>,
+  input: GetXdslTaskRequest,
+  output: XdslTask,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4121,8 +5618,8 @@ export const getXdslTotalDeconsolidationTerms: API.OperationMethod<
   GetXdslTotalDeconsolidationTermsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(147) as any as S.Schema<GetXdslTotalDeconsolidationTermsRequest>,
-  output: __S(148) as any as S.Schema<XdslDeconsolidationTerms>,
+  input: GetXdslTotalDeconsolidationTermsRequest,
+  output: XdslDeconsolidationTerms,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4136,8 +5633,8 @@ export const installFrimware: API.OperationMethod<
   InstallFrimwareError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(149) as any as S.Schema<InstallFrimwareRequest>,
-  output: __S(7) as any as S.Schema<XdslTask>,
+  input: InstallFrimwareRequest,
+  output: XdslTask,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4151,8 +5648,8 @@ export const listXdsl: API.OperationMethod<
   ListXdslError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(152) as any as S.Schema<ListXdslRequest>,
-  output: __S(65) as any as S.Schema<ListXdslResponse>,
+  input: ListXdslRequest,
+  output: ListXdslResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4166,8 +5663,8 @@ export const listXdslAntiSpamEvidences: API.OperationMethod<
   ListXdslAntiSpamEvidencesError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(153) as any as S.Schema<ListXdslAntiSpamEvidencesRequest>,
-  output: __S(156) as any as S.Schema<XdslAntiSpamEvidencesInfo>,
+  input: ListXdslAntiSpamEvidencesRequest,
+  output: XdslAntiSpamEvidencesInfo,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4181,8 +5678,8 @@ export const listXdslAntiSpams: API.OperationMethod<
   ListXdslAntiSpamsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(157) as any as S.Schema<ListXdslAntiSpamsRequest>,
-  output: __S(52) as any as S.Schema<ListXdslAntiSpamsResponse>,
+  input: ListXdslAntiSpamsRequest,
+  output: ListXdslAntiSpamsResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4196,8 +5693,8 @@ export const listXdslEmailPro: API.OperationMethod<
   ListXdslEmailProError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(158) as any as S.Schema<ListXdslEmailProRequest>,
-  output: __S(65) as any as S.Schema<ListXdslEmailProResponse>,
+  input: ListXdslEmailProRequest,
+  output: ListXdslEmailProResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4211,8 +5708,8 @@ export const listXdslFiberEligibilities: API.OperationMethod<
   ListXdslFiberEligibilitiesError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(159) as any as S.Schema<ListXdslFiberEligibilitiesRequest>,
-  output: __S(62) as any as S.Schema<ListXdslFiberEligibilitiesResponse>,
+  input: ListXdslFiberEligibilitiesRequest,
+  output: ListXdslFiberEligibilitiesResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4226,8 +5723,8 @@ export const listXdslIncidents: API.OperationMethod<
   ListXdslIncidentsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(160) as any as S.Schema<ListXdslIncidentsRequest>,
-  output: __S(62) as any as S.Schema<ListXdslIncidentsResponse>,
+  input: ListXdslIncidentsRequest,
+  output: ListXdslIncidentsResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4241,8 +5738,8 @@ export const listXdslIps: API.OperationMethod<
   ListXdslIpsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(161) as any as S.Schema<ListXdslIpsRequest>,
-  output: __S(65) as any as S.Schema<ListXdslIpsResponse>,
+  input: ListXdslIpsRequest,
+  output: ListXdslIpsResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4256,8 +5753,8 @@ export const listXdslLineDslamPortAvailableProfiles: API.OperationMethod<
   ListXdslLineDslamPortAvailableProfilesError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(162) as any as S.Schema<ListXdslLineDslamPortAvailableProfilesRequest>,
-  output: __S(164) as any as S.Schema<ListXdslLineDslamPortAvailableProfilesResponse>,
+  input: ListXdslLineDslamPortAvailableProfilesRequest,
+  output: ListXdslLineDslamPortAvailableProfilesResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4271,8 +5768,8 @@ export const listXdslLineDslamPortLogs: API.OperationMethod<
   ListXdslLineDslamPortLogsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(165) as any as S.Schema<ListXdslLineDslamPortLogsRequest>,
-  output: __S(168) as any as S.Schema<ListXdslLineDslamPortLogsResponse>,
+  input: ListXdslLineDslamPortLogsRequest,
+  output: ListXdslLineDslamPortLogsResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4286,8 +5783,8 @@ export const listXdslLines: API.OperationMethod<
   ListXdslLinesError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(169) as any as S.Schema<ListXdslLinesRequest>,
-  output: __S(65) as any as S.Schema<ListXdslLinesResponse>,
+  input: ListXdslLinesRequest,
+  output: ListXdslLinesResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4301,8 +5798,8 @@ export const listXdslLineStatistics: API.OperationMethod<
   ListXdslLineStatisticsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(170) as any as S.Schema<ListXdslLineStatisticsRequest>,
-  output: __S(173) as any as S.Schema<ComplexTypeUnitAndValuesXdslTimestampAndValue>,
+  input: ListXdslLineStatisticsRequest,
+  output: ComplexTypeUnitAndValuesXdslTimestampAndValue,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4316,8 +5813,8 @@ export const listXdslModemAvailableACSBackend: API.OperationMethod<
   ListXdslModemAvailableACSBackendError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(174) as any as S.Schema<ListXdslModemAvailableACSBackendRequest>,
-  output: __S(52) as any as S.Schema<ListXdslModemAvailableACSBackendResponse>,
+  input: ListXdslModemAvailableACSBackendRequest,
+  output: ListXdslModemAvailableACSBackendResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4331,8 +5828,8 @@ export const listXdslModemAvailableWLANChannel: API.OperationMethod<
   ListXdslModemAvailableWLANChannelError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(175) as any as S.Schema<ListXdslModemAvailableWLANChannelRequest>,
-  output: __S(62) as any as S.Schema<ListXdslModemAvailableWLANChannelResponse>,
+  input: ListXdslModemAvailableWLANChannelRequest,
+  output: ListXdslModemAvailableWLANChannelResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4346,8 +5843,8 @@ export const listXdslModemConnectedDevices: API.OperationMethod<
   ListXdslModemConnectedDevicesError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(176) as any as S.Schema<ListXdslModemConnectedDevicesRequest>,
-  output: __S(52) as any as S.Schema<ListXdslModemConnectedDevicesResponse>,
+  input: ListXdslModemConnectedDevicesRequest,
+  output: ListXdslModemConnectedDevicesResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4361,8 +5858,8 @@ export const listXdslModemFirmwareAvailable: API.OperationMethod<
   ListXdslModemFirmwareAvailableError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(177) as any as S.Schema<ListXdslModemFirmwareAvailableRequest>,
-  output: __S(52) as any as S.Schema<ListXdslModemFirmwareAvailableResponse>,
+  input: ListXdslModemFirmwareAvailableRequest,
+  output: ListXdslModemFirmwareAvailableResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4376,8 +5873,8 @@ export const listXdslModemLan: API.OperationMethod<
   ListXdslModemLanError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(178) as any as S.Schema<ListXdslModemLanRequest>,
-  output: __S(65) as any as S.Schema<ListXdslModemLanResponse>,
+  input: ListXdslModemLanRequest,
+  output: ListXdslModemLanResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4391,8 +5888,8 @@ export const listXdslModemLanDhcp: API.OperationMethod<
   ListXdslModemLanDhcpError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(179) as any as S.Schema<ListXdslModemLanDhcpRequest>,
-  output: __S(52) as any as S.Schema<ListXdslModemLanDhcpResponse>,
+  input: ListXdslModemLanDhcpRequest,
+  output: ListXdslModemLanDhcpResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4406,8 +5903,8 @@ export const listXdslModemWifi: API.OperationMethod<
   ListXdslModemWifiError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(180) as any as S.Schema<ListXdslModemWifiRequest>,
-  output: __S(52) as any as S.Schema<ListXdslModemWifiResponse>,
+  input: ListXdslModemWifiRequest,
+  output: ListXdslModemWifiResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4421,8 +5918,8 @@ export const listXdslModemWifiRadio: API.OperationMethod<
   ListXdslModemWifiRadioError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(181) as any as S.Schema<ListXdslModemWifiRadioRequest>,
-  output: __S(52) as any as S.Schema<ListXdslModemWifiRadioResponse>,
+  input: ListXdslModemWifiRadioRequest,
+  output: ListXdslModemWifiRadioResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4436,8 +5933,8 @@ export const listXdslOrderFollowup: API.OperationMethod<
   ListXdslOrderFollowupError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(182) as any as S.Schema<ListXdslOrderFollowupRequest>,
-  output: __S(185) as any as S.Schema<ListXdslOrderFollowupResponse>,
+  input: ListXdslOrderFollowupRequest,
+  output: ListXdslOrderFollowupResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4451,8 +5948,8 @@ export const listXdslRadiusConnectionLogs: API.OperationMethod<
   ListXdslRadiusConnectionLogsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(186) as any as S.Schema<ListXdslRadiusConnectionLogsRequest>,
-  output: __S(189) as any as S.Schema<ListXdslRadiusConnectionLogsResponse>,
+  input: ListXdslRadiusConnectionLogsRequest,
+  output: ListXdslRadiusConnectionLogsResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4466,8 +5963,8 @@ export const listXdslRma: API.OperationMethod<
   ListXdslRmaError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(190) as any as S.Schema<ListXdslRmaRequest>,
-  output: __S(65) as any as S.Schema<ListXdslRmaResponse>,
+  input: ListXdslRmaRequest,
+  output: ListXdslRmaResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4481,8 +5978,8 @@ export const listXdslSpare: API.OperationMethod<
   ListXdslSpareError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(191) as any as S.Schema<ListXdslSpareRequest>,
-  output: __S(65) as any as S.Schema<ListXdslSpareResponse>,
+  input: ListXdslSpareRequest,
+  output: ListXdslSpareResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4496,8 +5993,8 @@ export const listXdslSpareBrands: API.OperationMethod<
   ListXdslSpareBrandsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(192) as any as S.Schema<ListXdslSpareBrandsRequest>,
-  output: __S(52) as any as S.Schema<ListXdslSpareBrandsResponse>,
+  input: ListXdslSpareBrandsRequest,
+  output: ListXdslSpareBrandsResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4511,8 +6008,8 @@ export const listXdslSpareCompatibleReplacement: API.OperationMethod<
   ListXdslSpareCompatibleReplacementError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(193) as any as S.Schema<ListXdslSpareCompatibleReplacementRequest>,
-  output: __S(52) as any as S.Schema<ListXdslSpareCompatibleReplacementResponse>,
+  input: ListXdslSpareCompatibleReplacementRequest,
+  output: ListXdslSpareCompatibleReplacementResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4526,8 +6023,8 @@ export const listXdslStatistics: API.OperationMethod<
   ListXdslStatisticsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(194) as any as S.Schema<ListXdslStatisticsRequest>,
-  output: __S(197) as any as S.Schema<ComplexTypeUnitAndValuesXdslAccessLatency>,
+  input: ListXdslStatisticsRequest,
+  output: ComplexTypeUnitAndValuesXdslAccessLatency,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4541,8 +6038,8 @@ export const listXdslTasks: API.OperationMethod<
   ListXdslTasksError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(198) as any as S.Schema<ListXdslTasksRequest>,
-  output: __S(16) as any as S.Schema<ListXdslTasksResponse>,
+  input: ListXdslTasksRequest,
+  output: ListXdslTasksResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4556,8 +6053,8 @@ export const putXdsl: API.OperationMethod<
   PutXdslError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(199) as any as S.Schema<PutXdslRequest>,
-  output: __S(9) as any as S.Schema<PutXdslResponse>,
+  input: PutXdslRequest,
+  output: PutXdslResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4571,8 +6068,8 @@ export const putXdslEmailPro: API.OperationMethod<
   PutXdslEmailProError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(200) as any as S.Schema<PutXdslEmailProRequest>,
-  output: __S(9) as any as S.Schema<PutXdslEmailProResponse>,
+  input: PutXdslEmailProRequest,
+  output: PutXdslEmailProResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4586,8 +6083,8 @@ export const putXdslModem: API.OperationMethod<
   PutXdslModemError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(201) as any as S.Schema<PutXdslModemRequest>,
-  output: __S(9) as any as S.Schema<PutXdslModemResponse>,
+  input: PutXdslModemRequest,
+  output: PutXdslModemResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4601,8 +6098,8 @@ export const putXdslModemLan: API.OperationMethod<
   PutXdslModemLanError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(202) as any as S.Schema<PutXdslModemLanRequest>,
-  output: __S(9) as any as S.Schema<PutXdslModemLanResponse>,
+  input: PutXdslModemLanRequest,
+  output: PutXdslModemLanResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4616,8 +6113,8 @@ export const putXdslModemLanDhcp: API.OperationMethod<
   PutXdslModemLanDhcpError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(203) as any as S.Schema<PutXdslModemLanDhcpRequest>,
-  output: __S(9) as any as S.Schema<PutXdslModemLanDhcpResponse>,
+  input: PutXdslModemLanDhcpRequest,
+  output: PutXdslModemLanDhcpResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4631,8 +6128,8 @@ export const putXdslModemWifi: API.OperationMethod<
   PutXdslModemWifiError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(204) as any as S.Schema<PutXdslModemWifiRequest>,
-  output: __S(9) as any as S.Schema<PutXdslModemWifiResponse>,
+  input: PutXdslModemWifiRequest,
+  output: PutXdslModemWifiResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4646,8 +6143,8 @@ export const putXdslModemWifiRadio: API.OperationMethod<
   PutXdslModemWifiRadioError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(205) as any as S.Schema<PutXdslModemWifiRadioRequest>,
-  output: __S(7) as any as S.Schema<XdslTask>,
+  input: PutXdslModemWifiRadioRequest,
+  output: XdslTask,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4661,8 +6158,8 @@ export const putXdslRma: API.OperationMethod<
   PutXdslRmaError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(206) as any as S.Schema<PutXdslRmaRequest>,
-  output: __S(9) as any as S.Schema<PutXdslRmaResponse>,
+  input: PutXdslRmaRequest,
+  output: PutXdslRmaResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4676,8 +6173,8 @@ export const putXdslServiceInfos: API.OperationMethod<
   PutXdslServiceInfosError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(207) as any as S.Schema<PutXdslServiceInfosRequest>,
-  output: __S(9) as any as S.Schema<PutXdslServiceInfosResponse>,
+  input: PutXdslServiceInfosRequest,
+  output: PutXdslServiceInfosResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4691,8 +6188,8 @@ export const putXdslSpareServiceInfos: API.OperationMethod<
   PutXdslSpareServiceInfosError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(208) as any as S.Schema<PutXdslSpareServiceInfosRequest>,
-  output: __S(12) as any as S.Schema<PutXdslSpareServiceInfosResponse>,
+  input: PutXdslSpareServiceInfosRequest,
+  output: PutXdslSpareServiceInfosResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4706,8 +6203,8 @@ export const rebootModem: API.OperationMethod<
   RebootModemError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(209) as any as S.Schema<RebootModemRequest>,
-  output: __S(7) as any as S.Schema<XdslTask>,
+  input: RebootModemRequest,
+  output: XdslTask,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4721,8 +6218,8 @@ export const refreshXdslModemConnectedDevices: API.OperationMethod<
   RefreshXdslModemConnectedDevicesError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(210) as any as S.Schema<RefreshXdslModemConnectedDevicesRequest>,
-  output: __S(7) as any as S.Schema<XdslTask>,
+  input: RefreshXdslModemConnectedDevicesRequest,
+  output: XdslTask,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4736,8 +6233,8 @@ export const removeDHCPStaticAddress: API.OperationMethod<
   RemoveDHCPStaticAddressError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(211) as any as S.Schema<RemoveDHCPStaticAddressRequest>,
-  output: __S(7) as any as S.Schema<XdslTask>,
+  input: RemoveDHCPStaticAddressRequest,
+  output: XdslTask,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4751,8 +6248,8 @@ export const removeMonitoringNotification: API.OperationMethod<
   RemoveMonitoringNotificationError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(212) as any as S.Schema<RemoveMonitoringNotificationRequest>,
-  output: __S(12) as any as S.Schema<RemoveMonitoringNotificationResponse>,
+  input: RemoveMonitoringNotificationRequest,
+  output: RemoveMonitoringNotificationResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4766,8 +6263,8 @@ export const removePortMapping: API.OperationMethod<
   RemovePortMappingError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(213) as any as S.Schema<RemovePortMappingRequest>,
-  output: __S(7) as any as S.Schema<XdslTask>,
+  input: RemovePortMappingRequest,
+  output: XdslTask,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4781,8 +6278,8 @@ export const replaceAccessModem: API.OperationMethod<
   ReplaceAccessModemError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(214) as any as S.Schema<ReplaceAccessModemRequest>,
-  output: __S(222) as any as S.Schema<OrderOrder>,
+  input: ReplaceAccessModemRequest,
+  output: OrderOrder,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4796,8 +6293,8 @@ export const replaceModemBySpare: API.OperationMethod<
   ReplaceModemBySpareError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(223) as any as S.Schema<ReplaceModemBySpareRequest>,
-  output: __S(9) as any as S.Schema<ReplaceModemBySpareResponse>,
+  input: ReplaceModemBySpareRequest,
+  output: ReplaceModemBySpareResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4811,8 +6308,8 @@ export const requestTotalDeconsolidation: API.OperationMethod<
   RequestTotalDeconsolidationError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(224) as any as S.Schema<RequestTotalDeconsolidationRequest>,
-  output: __S(7) as any as S.Schema<XdslTask>,
+  input: RequestTotalDeconsolidationRequest,
+  output: XdslTask,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4826,8 +6323,8 @@ export const resetModemConfiguration: API.OperationMethod<
   ResetModemConfigurationError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(225) as any as S.Schema<ResetModemConfigurationRequest>,
-  output: __S(7) as any as S.Schema<XdslTask>,
+  input: ResetModemConfigurationRequest,
+  output: XdslTask,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4841,8 +6338,8 @@ export const resetXdslLinesDslamPort: API.OperationMethod<
   ResetXdslLinesDslamPortError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(226) as any as S.Schema<ResetXdslLinesDslamPortRequest>,
-  output: __S(7) as any as S.Schema<XdslTask>,
+  input: ResetXdslLinesDslamPortRequest,
+  output: XdslTask,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4856,8 +6353,8 @@ export const resetXdslModemPortMappingConfig: API.OperationMethod<
   ResetXdslModemPortMappingConfigError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(227) as any as S.Schema<ResetXdslModemPortMappingConfigRequest>,
-  output: __S(12) as any as S.Schema<ResetXdslModemPortMappingConfigResponse>,
+  input: ResetXdslModemPortMappingConfigRequest,
+  output: ResetXdslModemPortMappingConfigResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4871,8 +6368,8 @@ export const resiliateAccess: API.OperationMethod<
   ResiliateAccessError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(228) as any as S.Schema<ResiliateAccessRequest>,
-  output: __S(132) as any as S.Schema<XdslResiliationFollowUpDetail>,
+  input: ResiliateAccessRequest,
+  output: XdslResiliationFollowUpDetail,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4886,8 +6383,8 @@ export const searchXdslOrderMeetings: API.OperationMethod<
   SearchXdslOrderMeetingsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(229) as any as S.Schema<SearchXdslOrderMeetingsRequest>,
-  output: __S(234) as any as S.Schema<XdslAsyncTaskConnectivityEligibilityMeetings>,
+  input: SearchXdslOrderMeetingsRequest,
+  output: XdslAsyncTaskConnectivityEligibilityMeetings,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4901,8 +6398,8 @@ export const sendXdslOrderToProvider: API.OperationMethod<
   SendXdslOrderToProviderError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(235) as any as S.Schema<SendXdslOrderToProviderRequest>,
-  output: __S(236) as any as S.Schema<SendXdslOrderToProviderResponse>,
+  input: SendXdslOrderToProviderRequest,
+  output: SendXdslOrderToProviderResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4916,8 +6413,8 @@ export const setWifiMeshStatus: API.OperationMethod<
   SetWifiMeshStatusError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(237) as any as S.Schema<SetWifiMeshStatusRequest>,
-  output: __S(7) as any as S.Schema<XdslTask>,
+  input: SetWifiMeshStatusRequest,
+  output: XdslTask,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4931,8 +6428,8 @@ export const setWifiOneSsidStatus: API.OperationMethod<
   SetWifiOneSsidStatusError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(238) as any as S.Schema<SetWifiOneSsidStatusRequest>,
-  output: __S(7) as any as S.Schema<XdslTask>,
+  input: SetWifiOneSsidStatusRequest,
+  output: XdslTask,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4946,8 +6443,8 @@ export const updateBlocIPStatus: API.OperationMethod<
   UpdateBlocIPStatusError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(239) as any as S.Schema<UpdateBlocIPStatusRequest>,
-  output: __S(7) as any as S.Schema<XdslTask>,
+  input: UpdateBlocIPStatusRequest,
+  output: XdslTask,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4961,8 +6458,8 @@ export const updateContentSharingStatus: API.OperationMethod<
   UpdateContentSharingStatusError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(240) as any as S.Schema<UpdateContentSharingStatusRequest>,
-  output: __S(7) as any as S.Schema<XdslTask>,
+  input: UpdateContentSharingStatusRequest,
+  output: XdslTask,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4976,8 +6473,8 @@ export const updateDHCPStaticAddress: API.OperationMethod<
   UpdateDHCPStaticAddressError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(241) as any as S.Schema<UpdateDHCPStaticAddressRequest>,
-  output: __S(236) as any as S.Schema<UpdateDHCPStaticAddressResponse>,
+  input: UpdateDHCPStaticAddressRequest,
+  output: UpdateDHCPStaticAddressResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4991,8 +6488,8 @@ export const updateFTPStatus: API.OperationMethod<
   UpdateFTPStatusError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(242) as any as S.Schema<UpdateFTPStatusRequest>,
-  output: __S(7) as any as S.Schema<XdslTask>,
+  input: UpdateFTPStatusRequest,
+  output: XdslTask,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5002,8 +6499,8 @@ export type UpdateIpError = OvhOpError;
 /** Change the status of the IPv6 for this access */
 export const updateIp: API.OperationMethod<UpdateIpRequest, XdslTask, UpdateIpError, OvhOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(243) as any as S.Schema<UpdateIpRequest>,
-    output: __S(7) as any as S.Schema<XdslTask>,
+    input: UpdateIpRequest,
+    output: XdslTask,
     errors: [UnknownOvhError],
     protocol: OvhProtocol,
     retry: Retry.Retry,
@@ -5017,8 +6514,8 @@ export const updateIpsecAlgStatus: API.OperationMethod<
   UpdateIpsecAlgStatusError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(244) as any as S.Schema<UpdateIpsecAlgStatusRequest>,
-  output: __S(7) as any as S.Schema<XdslTask>,
+  input: UpdateIpsecAlgStatusRequest,
+  output: XdslTask,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5032,8 +6529,8 @@ export const updateLineDiagnostic: API.OperationMethod<
   UpdateLineDiagnosticError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(245) as any as S.Schema<UpdateLineDiagnosticRequest>,
-  output: __S(260) as any as S.Schema<XdslLineDiagnosticDiagnostic>,
+  input: UpdateLineDiagnosticRequest,
+  output: XdslLineDiagnosticDiagnostic,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5047,8 +6544,8 @@ export const updateMailSending: API.OperationMethod<
   UpdateMailSendingError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(261) as any as S.Schema<UpdateMailSendingRequest>,
-  output: __S(7) as any as S.Schema<XdslTask>,
+  input: UpdateMailSendingRequest,
+  output: XdslTask,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5062,8 +6559,8 @@ export const updateModemCallWaiting: API.OperationMethod<
   UpdateModemCallWaitingError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(262) as any as S.Schema<UpdateModemCallWaitingRequest>,
-  output: __S(7) as any as S.Schema<XdslTask>,
+  input: UpdateModemCallWaitingRequest,
+  output: XdslTask,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5077,8 +6574,8 @@ export const updateModemTemplate: API.OperationMethod<
   UpdateModemTemplateError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(263) as any as S.Schema<UpdateModemTemplateRequest>,
-  output: __S(9) as any as S.Schema<UpdateModemTemplateResponse>,
+  input: UpdateModemTemplateRequest,
+  output: UpdateModemTemplateResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5092,8 +6589,8 @@ export const updateMonitoringNotification: API.OperationMethod<
   UpdateMonitoringNotificationError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(264) as any as S.Schema<UpdateMonitoringNotificationRequest>,
-  output: __S(12) as any as S.Schema<UpdateMonitoringNotificationResponse>,
+  input: UpdateMonitoringNotificationRequest,
+  output: UpdateMonitoringNotificationResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5107,8 +6604,8 @@ export const updatePortMapping: API.OperationMethod<
   UpdatePortMappingError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(265) as any as S.Schema<UpdatePortMappingRequest>,
-  output: __S(9) as any as S.Schema<UpdatePortMappingResponse>,
+  input: UpdatePortMappingRequest,
+  output: UpdatePortMappingResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5122,8 +6619,8 @@ export const updateRIO: API.OperationMethod<
   UpdateRIOError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(266) as any as S.Schema<UpdateRIORequest>,
-  output: __S(9) as any as S.Schema<UpdateRIOResponse>,
+  input: UpdateRIORequest,
+  output: UpdateRIOResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5137,8 +6634,8 @@ export const updateRMAType: API.OperationMethod<
   UpdateRMATypeError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(267) as any as S.Schema<UpdateRMATypeRequest>,
-  output: __S(9) as any as S.Schema<UpdateRMATypeResponse>,
+  input: UpdateRMATypeRequest,
+  output: UpdateRMATypeResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5152,8 +6649,8 @@ export const updateSipAlgStatus: API.OperationMethod<
   UpdateSipAlgStatusError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(268) as any as S.Schema<UpdateSipAlgStatusRequest>,
-  output: __S(7) as any as S.Schema<XdslTask>,
+  input: UpdateSipAlgStatusRequest,
+  output: XdslTask,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5167,8 +6664,8 @@ export const updateUpnpStatus: API.OperationMethod<
   UpdateUpnpStatusError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(269) as any as S.Schema<UpdateUpnpStatusRequest>,
-  output: __S(7) as any as S.Schema<XdslTask>,
+  input: UpdateUpnpStatusRequest,
+  output: XdslTask,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5212,10 +6709,10 @@ function __c0(j: number): any {
           allowIncident: S.optional(S.Boolean),
           downThreshold: S.optional(S.Number),
           email: S.optional(S.String),
-          frequency: S.String,
+          frequency: XdslMonitoringNotificationsFrequencyEnum,
           phone: S.optional(S.String),
           smsAccount: S.optional(S.String),
-          type: S.String,
+          type: XdslMonitoringNotificationsTypeEnum,
         }).pipe(
           T.Http({ method: "POST", uri: "/xdsl/{serviceName}/monitoringNotifications", code: 200 }),
         ),
@@ -5229,11 +6726,11 @@ function __c0(j: number): any {
           downThreshold: S.optional(S.Number),
           email: S.optional(S.NullOr(S.String)),
           enabled: S.optional(S.Boolean),
-          frequency: S.optional(S.String),
+          frequency: S.optional(XdslMonitoringNotificationsFrequencyEnum),
           id: S.optional(S.Number),
           phone: S.optional(S.NullOr(S.String)),
           smsAccount: S.optional(S.NullOr(S.String)),
-          type: S.optional(S.String),
+          type: S.optional(XdslMonitoringNotificationsTypeEnum),
         }),
       ).annotate({
         identifier: "XdslMonitoringNotification",
@@ -5250,7 +6747,7 @@ function __c0(j: number): any {
           internalPort: S.Number,
           internalPortEnd: S.optional(S.Number),
           name: S.String,
-          protocol: S.String,
+          protocol: XdslXdslModemConfigProtocolTypeEnum,
         }).pipe(
           T.Http({ method: "POST", uri: "/xdsl/{serviceName}/modem/portMappings", code: 200 }),
         ),
@@ -5267,7 +6764,7 @@ function __c0(j: number): any {
           internalPort: S.optional(S.Number),
           internalPortEnd: S.optional(S.NullOr(S.Number)),
           name: S.optional(S.String),
-          protocol: S.optional(S.String),
+          protocol: S.optional(XdslXdslModemConfigProtocolTypeEnum),
           taskId: S.optional(S.NullOr(S.Number)),
         }),
       ).annotate({ identifier: "XdslPortMapping" });
@@ -5287,7 +6784,7 @@ function __c0(j: number): any {
         S.Struct({
           function: S.optional(S.String),
           id: S.optional(S.Number),
-          status: S.optional(S.String),
+          status: S.optional(XdslTaskStatusEnum),
           todoDate: S.optional(S.String),
           updateDate: S.optional(S.String),
         }),
@@ -5363,7 +6860,7 @@ function __c1(j: number): any {
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => __S(15).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => ChangeContactResponseBodyList.pipe(T.RawResponseRoot())).annotate({
         identifier: "ChangeContactResponse",
       });
     case 1:
@@ -5382,7 +6879,7 @@ function __c2(j: number): any {
         S.Struct({
           finishDate: S.optional(S.NullOr(S.String)),
           function: S.optional(S.String),
-          status: S.optional(S.String),
+          status: S.optional(XdslEmailProTaskStatusEnum),
           todoDate: S.optional(S.String),
         }),
       ).annotate({ identifier: "XdslEmailProTask" });
@@ -5427,12 +6924,12 @@ function __c2(j: number): any {
         }),
       ).annotate({ identifier: "XdslTemplateModemDHCP" });
     case 6:
-      return S.Array(__S(21));
+      return S.Array(XdslTemplateModemDHCP);
     case 7:
       return S.suspend(() =>
         S.Struct({
           IPAddress: S.optional(S.String),
-          addressingType: S.optional(S.String),
+          addressingType: S.optional(XdslXdslModemConfigAddressingTypeEnum),
           lanName: S.optional(S.String),
           subnetMask: S.optional(S.String),
         }),
@@ -5442,7 +6939,7 @@ function __c2(j: number): any {
 function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(23));
+      return S.Array(XdslTemplateModemLAN);
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -5450,27 +6947,29 @@ function __c3(j: number): any {
           SSIDAdvertisementEnabled: S.optional(S.Boolean),
           bandSteering: S.optional(S.Boolean),
           channel: S.optional(S.Number),
-          channelMode: S.optional(S.String),
+          channelMode: S.optional(XdslXdslModemConfigChannelModeEnum),
           enabled: S.optional(S.Boolean),
-          frequency: S.optional(S.String),
+          frequency: S.optional(XdslXdslModemConfigFrequencyEnum),
           guest: S.optional(S.Boolean),
           securityKey: S.optional(S.String),
-          securityType: S.optional(S.String),
+          securityType: S.optional(XdslTemplateModemSecurityTypeEnum),
           wifiName: S.optional(S.String),
         }),
       ).annotate({ identifier: "XdslTemplateModemWLAN" });
     case 2:
-      return S.Array(__S(25));
+      return S.Array(XdslTemplateModemWLAN);
     case 3:
       return S.Array(S.String);
     case 4:
       return S.suspend(() =>
         S.Struct({
           LANandDHCP: S.optional(S.NullOr(S.Boolean)),
-          WLANList: S.optional(S.NullOr(__S(27))),
+          WLANList: S.optional(S.NullOr(XdslTemplateModemParametersToIgnoreWLANListList)),
           dmzIP: S.optional(S.NullOr(S.Boolean)),
           mtuSize: S.optional(S.NullOr(S.Boolean)),
-          portMappingList: S.optional(S.NullOr(__S(27))),
+          portMappingList: S.optional(
+            S.NullOr(XdslTemplateModemParametersToIgnorePortMappingListList),
+          ),
         }),
       ).annotate({
         identifier: "XdslTemplateModemParametersToIgnore",
@@ -5485,26 +6984,26 @@ function __c3(j: number): any {
           internalClient: S.optional(S.String),
           internalPort: S.optional(S.Number),
           name: S.optional(S.String),
-          protocol: S.optional(S.String),
+          protocol: S.optional(XdslXdslModemConfigProtocolTypeEnum),
         }),
       ).annotate({
         identifier: "XdslTemplateModemPortMapping",
       });
     case 6:
-      return S.Array(__S(29));
+      return S.Array(XdslTemplateModemPortMapping);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          DHCP: S.optional(__S(22)),
-          LAN: S.optional(__S(24)),
-          WLAN: S.optional(__S(26)),
+          DHCP: S.optional(XdslTemplateModemDHCPList),
+          LAN: S.optional(XdslTemplateModemLANList),
+          WLAN: S.optional(XdslTemplateModemWLANList),
           capabilities: S.optional(S.String),
           creationDate: S.optional(S.String),
           dmzIP: S.optional(S.NullOr(S.String)),
-          mtuSize: S.optional(S.NullOr(S.Number)),
+          mtuSize: S.optional(S.NullOr(XdslXdslModemConfigMTUSizeEnum)),
           name: S.optional(S.String),
-          parametersToIgnore: S.optional(S.NullOr(__S(28))),
-          portMapping: S.optional(__S(30)),
+          parametersToIgnore: S.optional(S.NullOr(XdslTemplateModemParametersToIgnore)),
+          portMapping: S.optional(XdslTemplateModemPortMappingList),
         }),
       ).annotate({ identifier: "XdslTemplateModem" });
   }
@@ -5622,7 +7121,7 @@ function __c5(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          currencyCode: S.optional(S.String),
+          currencyCode: S.optional(OrderCurrencyCodeEnum),
           priceInUcents: S.optional(S.NullOr(S.Number)),
           text: S.optional(S.String),
           value: S.optional(S.Number),
@@ -5633,8 +7132,8 @@ function __c5(j: number): any {
         S.Struct({
           canExchange: S.optional(S.Boolean),
           newModel: S.optional(S.String),
-          price: S.optional(__S(44)),
-          priceWithTax: S.optional(__S(44)),
+          price: S.optional(OrderPrice),
+          priceWithTax: S.optional(OrderPrice),
         }),
       ).annotate({ identifier: "XdslModemExchangeInfo" });
     case 6:
@@ -5644,7 +7143,7 @@ function __c5(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/xdsl/{serviceName}/modem/blocIp", code: 200 })),
       ).annotate({ identifier: "GetBlocIPStatusRequest" });
     case 7:
-      return S.suspend(() => S.String.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => XdslServiceStatusEnum.pipe(T.RawResponseRoot())).annotate({
         identifier: "GetBlocIPStatusResponse",
       });
   }
@@ -5662,7 +7161,7 @@ function __c6(j: number): any {
         identifier: "GetContentSharingStatusRequest",
       });
     case 1:
-      return S.suspend(() => S.String.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => XdslServiceStatusEnum.pipe(T.RawResponseRoot())).annotate({
         identifier: "GetContentSharingStatusResponse",
       });
     case 2:
@@ -5699,7 +7198,9 @@ function __c6(j: number): any {
         identifier: "GetDHCPStaticAddressesRequest",
       });
     case 4:
-      return S.suspend(() => __S(27).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        GetDHCPStaticAddressesResponseBodyList.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "GetDHCPStaticAddressesResponse",
       });
     case 5:
@@ -5774,7 +7275,9 @@ function __c7(j: number): any {
         identifier: "GetMonitoringNotificationsRequest",
       });
     case 6:
-      return S.suspend(() => __S(15).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        GetMonitoringNotificationsResponseBodyList.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "GetMonitoringNotificationsResponse",
       });
     case 7:
@@ -5803,7 +7306,7 @@ function __c8(j: number): any {
         ),
       ).annotate({ identifier: "GetPortMappingsRequest" });
     case 1:
-      return S.suspend(() => __S(27).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => GetPortMappingsResponseBodyList.pipe(T.RawResponseRoot())).annotate({
         identifier: "GetPortMappingsResponse",
       });
     case 2:
@@ -5878,7 +7381,7 @@ function __c9(j: number): any {
         S.Struct({
           displayName: S.optional(S.NullOr(S.String)),
           id: S.optional(S.String),
-          tags: S.optional(S.NullOr(__S(73))),
+          tags: S.optional(S.NullOr(IamResourceMetadataTagsMap)),
           urn: S.optional(S.String),
         }),
       ).annotate({ identifier: "IamResourceMetadata" });
@@ -5886,22 +7389,22 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           accessName: S.optional(S.String),
-          accessType: S.optional(S.String),
-          address: S.optional(__S(71)),
-          capabilities: S.optional(__S(72)),
+          accessType: S.optional(XdslDslTypeEnum),
+          address: S.optional(XdslAddressDetail),
+          capabilities: S.optional(XdslAccessCapabilities),
           description: S.optional(S.String),
-          iam: S.optional(S.NullOr(__S(74))),
+          iam: S.optional(S.NullOr(IamResourceMetadata)),
           ipv6Enabled: S.optional(S.Boolean),
           lnsRateLimit: S.optional(S.NullOr(S.Number)),
-          mailSending: S.optional(S.NullOr(S.String)),
+          mailSending: S.optional(S.NullOr(XdslMailSendingAccessStatusEnum)),
           monitoring: S.optional(S.Boolean),
           nra: S.optional(S.String),
           packName: S.optional(S.NullOr(S.String)),
           pairsNumber: S.optional(S.Number),
-          provider: S.optional(S.String),
+          provider: S.optional(XdslProviderEnum),
           providerInfra: S.optional(S.NullOr(S.String)),
-          role: S.optional(S.String),
-          status: S.optional(S.String),
+          role: S.optional(XdslAccessRoleEnum),
+          status: S.optional(XdslAccessStatusEnum),
         }),
       ).annotate({ identifier: "XdslAccessWithIAM" });
     case 4:
@@ -5935,7 +7438,7 @@ function __c9(j: number): any {
           date: S.optional(S.String),
           ip: S.optional(S.String),
           lastSpamDetected: S.optional(S.String),
-          status: S.optional(S.String),
+          status: S.optional(XdslAntiSpamAntiSpamStatusEnum),
         }),
       ).annotate({ identifier: "XdslAntiSpam" });
   }
@@ -5979,7 +7482,7 @@ function __c10(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          lineTest: S.optional(S.NullOr(S.String)),
+          lineTest: S.optional(S.NullOr(XdslLineTestEnum)),
           lineTestTime: S.optional(S.NullOr(S.String)),
           number: S.optional(S.String),
           proposedProfileId: S.optional(S.NullOr(S.Number)),
@@ -5987,16 +7490,16 @@ function __c10(j: number): any {
         }),
       ).annotate({ identifier: "XdslLineDiagnostic" });
     case 5:
-      return S.Array(__S(84));
+      return S.Array(XdslLineDiagnostic);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          capabilities: S.optional(__S(83)),
+          capabilities: S.optional(XdslAccessDiagnosticCapabilities),
           diagnosticTime: S.optional(S.String),
           incident: S.optional(S.NullOr(S.Boolean)),
           isActiveOnLns: S.optional(S.NullOr(S.Boolean)),
           isModemConnected: S.optional(S.NullOr(S.Boolean)),
-          lineDetails: S.optional(S.NullOr(__S(85))),
+          lineDetails: S.optional(S.NullOr(XdslAccessDiagnosticLineDetailsList)),
           maintenance: S.optional(S.NullOr(S.Boolean)),
           ping: S.optional(S.NullOr(S.Boolean)),
           remaining: S.optional(S.Number),
@@ -6024,11 +7527,11 @@ function __c11(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          currentUsage: S.optional(__S(88)),
+          currentUsage: S.optional(ComplexTypeUnitAndValueDouble),
           displayName: S.optional(S.NullOr(S.String)),
           domain: S.optional(S.String),
           firstName: S.optional(S.NullOr(S.String)),
-          iam: S.optional(S.NullOr(__S(74))),
+          iam: S.optional(S.NullOr(IamResourceMetadata)),
           id: S.optional(S.Number),
           initial: S.optional(S.NullOr(S.String)),
           lastLogoffDate: S.optional(S.NullOr(S.String)),
@@ -6037,8 +7540,8 @@ function __c11(j: number): any {
           login: S.optional(S.String),
           passwordLastUpdate: S.optional(S.NullOr(S.String).pipe(T.SensitiveValue({}))),
           primaryEmailAddress: S.optional(S.String),
-          quota: S.optional(__S(88)),
-          state: S.optional(S.String),
+          quota: S.optional(ComplexTypeUnitAndValueDouble),
+          state: S.optional(EmailProObjectStateEnum),
           taskPendingId: S.optional(S.NullOr(S.Number)),
         }),
       ).annotate({ identifier: "XdslXdslEmailProWithIAM" });
@@ -6075,7 +7578,7 @@ function __c11(j: number): any {
         identifier: "XdslCopperGridClosureTrajectory",
       });
     case 4:
-      return S.Array(S.String);
+      return S.Array(XdslGtrEnum);
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -6090,14 +7593,14 @@ function __c11(j: number): any {
           buildingName: S.optional(S.NullOr(S.String)),
           buildingReference: S.optional(S.NullOr(S.String)),
           buildingSeqId: S.optional(S.NullOr(S.Number)),
-          copperGridClosureTrajectory: S.optional(S.NullOr(__S(91))),
+          copperGridClosureTrajectory: S.optional(S.NullOr(XdslCopperGridClosureTrajectory)),
           firstEligibleDate: S.optional(S.NullOr(S.String)),
-          grts: S.optional(S.NullOr(__S(92))),
+          grts: S.optional(S.NullOr(XdslFiberEligibilityGrtsList)),
           id: S.optional(S.Number),
           lastUpdate: S.optional(S.String),
-          offer: S.optional(S.NullOr(__S(93))),
-          provider: S.optional(S.NullOr(__S(93))),
-          status: S.optional(S.String),
+          offer: S.optional(S.NullOr(XdslOffer)),
+          provider: S.optional(S.NullOr(XdslProvider)),
+          status: S.optional(XdslFiberEligibilityStatusEnum),
         }),
       ).annotate({ identifier: "XdslFiberEligibility" });
     case 7:
@@ -6115,11 +7618,11 @@ function __c12(j: number): any {
         S.Struct({
           comment: S.optional(S.String),
           creationDate: S.optional(S.String),
-          departments: S.optional(__S(27)),
+          departments: S.optional(XdslIncidentDepartmentsList),
           endDate: S.optional(S.NullOr(S.String)),
           id: S.optional(S.Number),
-          nra: S.optional(__S(27)),
-          operators: S.optional(__S(92)),
+          nra: S.optional(XdslIncidentNraList),
+          operators: S.optional(XdslIncidentOperatorsList),
           taskId: S.optional(S.NullOr(S.Number)),
           taskReference: S.optional(S.NullOr(S.String)),
         }),
@@ -6140,11 +7643,11 @@ function __c12(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          dnsList: S.optional(__S(27)),
+          dnsList: S.optional(XdslIPDnsListList),
           ip: S.optional(S.String),
           range: S.optional(S.Number),
-          status: S.optional(S.String),
-          version: S.optional(S.String),
+          status: S.optional(XdslIpStatusEnum),
+          version: S.optional(CoreTypesIpVersionEnum),
         }),
       ).annotate({ identifier: "XdslIP" });
     case 4:
@@ -6172,7 +7675,7 @@ function __c12(j: number): any {
         }),
       ).annotate({ identifier: "XdslLineSectionLength" });
     case 7:
-      return S.Array(__S(102));
+      return S.Array(XdslLineSectionLength);
   }
 }
 function __c13(j: number): any {
@@ -6180,12 +7683,12 @@ function __c13(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          concentrationPoint: S.optional(S.NullOr(__S(101))),
-          deconsolidation: S.optional(S.String),
+          concentrationPoint: S.optional(S.NullOr(XdslLandlineConcentrationPoint)),
+          deconsolidation: S.optional(XdslDeconsolidationEnum),
           directDistribution: S.optional(S.NullOr(S.Boolean)),
           distance: S.optional(S.Number),
-          faultRepairTime: S.optional(S.String),
-          lineSectionsLength: S.optional(__S(103)),
+          faultRepairTime: S.optional(XdslFaultRepairTimeEnum),
+          lineSectionsLength: S.optional(XdslLineLineSectionsLengthList),
           mitigation: S.optional(S.Number),
           number: S.optional(S.String),
           originalNumber: S.optional(S.NullOr(S.String)),
@@ -6218,8 +7721,8 @@ function __c13(j: number): any {
         S.Struct({
           lastDesyncDate: S.optional(S.NullOr(S.String)),
           lastSyncDate: S.optional(S.NullOr(S.String)),
-          profile: S.optional(S.NullOr(__S(106))),
-          status: S.optional(S.String),
+          profile: S.optional(S.NullOr(XdslDslamLineProfile)),
+          status: S.optional(XdslDslamPortStatusEnum),
         }),
       ).annotate({ identifier: "XdslDslamPort" });
     case 4:
@@ -6255,19 +7758,19 @@ function __c13(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          acsBackend: S.optional(S.String),
+          acsBackend: S.optional(XdslXdslModemConfigACSBackendEnum),
           acsVersion: S.optional(S.NullOr(S.String)),
           brandName: S.optional(S.String),
-          capabilities: S.optional(__S(109)),
+          capabilities: S.optional(XdslModemCapabilities),
           dmzIP: S.optional(S.NullOr(S.String)),
-          easyFirewallLevel: S.optional(S.NullOr(S.String)),
+          easyFirewallLevel: S.optional(S.NullOr(XdslXdslModemConfigEasyFirewallLevelEnum)),
           ipv6Support: S.optional(S.Boolean),
           isBridged: S.optional(S.Boolean),
           lastCwmpRequestDate: S.optional(S.NullOr(S.String)),
           macAddress: S.optional(S.String),
           managedByOvh: S.optional(S.Boolean),
           model: S.optional(S.String),
-          mtuSize: S.optional(S.NullOr(S.Number)),
+          mtuSize: S.optional(S.NullOr(XdslXdslModemConfigMTUSizeEnum)),
           serialNumber: S.optional(S.String),
         }),
       ).annotate({ identifier: "XdslModem" });
@@ -6294,7 +7797,7 @@ function __c14(j: number): any {
       return S.suspend(() =>
         S.Struct({
           active: S.optional(S.Boolean),
-          addressSource: S.optional(S.String),
+          addressSource: S.optional(XdslXdslModemConfigConnectedDeviceAddressSourceEnum),
           hostName: S.optional(S.String),
           informationDate: S.optional(S.String),
           interfaceType: S.optional(S.String),
@@ -6349,16 +7852,16 @@ function __c14(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          device: S.optional(__S(114)),
-          statistics: S.optional(__S(115)),
+          device: S.optional(XdslDeviceModemInfo),
+          statistics: S.optional(XdslStatsModemInfo),
         }),
       ).annotate({ identifier: "XdslModemInfo" });
     case 5:
       return S.suspend(() =>
         S.Struct({
           error: S.optional(S.NullOr(S.String)),
-          result: S.optional(S.NullOr(__S(116))),
-          status: S.optional(S.String),
+          result: S.optional(S.NullOr(XdslModemInfo)),
+          status: S.optional(XdslAsyncTaskStatusEnum),
         }),
       ).annotate({
         identifier: "XdslAsyncTaskXdslModemInfo",
@@ -6376,7 +7879,7 @@ function __c14(j: number): any {
       return S.suspend(() =>
         S.Struct({
           IPAddress: S.optional(S.String),
-          addressingType: S.optional(S.String),
+          addressingType: S.optional(XdslXdslModemConfigAddressingTypeEnum),
           lanName: S.optional(S.String),
           subnetMask: S.optional(S.String),
           taskId: S.optional(S.NullOr(S.Number)),
@@ -6434,12 +7937,12 @@ function __c15(j: number): any {
           SSIDAdvertisementEnabled: S.optional(S.Boolean),
           bandSteering: S.optional(S.Boolean),
           channel: S.optional(S.Number),
-          channelMode: S.optional(S.String),
+          channelMode: S.optional(XdslXdslModemConfigChannelModeEnum),
           enabled: S.optional(S.Boolean),
-          frequency: S.optional(S.String),
+          frequency: S.optional(XdslXdslModemConfigFrequencyEnum),
           guest: S.optional(S.Boolean),
           securityKey: S.optional(S.String),
-          securityType: S.optional(S.String),
+          securityType: S.optional(XdslXdslModemConfigSecurityTypeEnum),
           taskId: S.optional(S.NullOr(S.Number)),
           wifiName: S.optional(S.String),
         }),
@@ -6479,15 +7982,15 @@ function __c15(j: number): any {
         S.Struct({
           channel: S.optional(S.Number),
           channelBandwidth: S.optional(S.String),
-          channelMode: S.optional(S.String),
+          channelMode: S.optional(XdslXdslModemConfigChannelModeEnum),
           enabled: S.optional(S.Boolean),
-          frequency: S.optional(S.String),
+          frequency: S.optional(XdslXdslModemConfigFrequencyEnum),
           maxBitRate: S.optional(S.Number),
           radioName: S.optional(S.String),
           standards: S.optional(S.String),
-          supportedChannels: S.optional(__S(15)),
-          supportedPowers: S.optional(__S(15)),
-          supportedStandards: S.optional(__S(27)),
+          supportedChannels: S.optional(XdslWifiRadioSupportedChannelsList),
+          supportedPowers: S.optional(XdslWifiRadioSupportedPowersList),
+          supportedStandards: S.optional(XdslWifiRadioSupportedStandardsList),
           transmitPower: S.optional(S.Number),
         }),
       ).annotate({ identifier: "XdslWifiRadio" });
@@ -6556,11 +8059,11 @@ function __c16(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          due: S.optional(__S(44)),
+          due: S.optional(OrderPrice),
           engageDate: S.optional(S.NullOr(S.String)),
           minResiliationDate: S.optional(S.String),
           resiliationDate: S.optional(S.String),
-          resiliationReasons: S.optional(__S(92)),
+          resiliationReasons: S.optional(XdslResiliationTermsResiliationReasonsList),
         }),
       ).annotate({ identifier: "XdslResiliationTerms" });
     case 7:
@@ -6579,7 +8082,7 @@ function __c17(j: number): any {
         S.Struct({
           address: S.optional(S.NullOr(S.String)),
           city: S.optional(S.NullOr(S.String)),
-          country: S.optional(S.NullOr(S.String)),
+          country: S.optional(S.NullOr(CoreTypesCountryEnum)),
           email: S.optional(S.NullOr(S.String)),
           firstname: S.optional(S.NullOr(S.String)),
           name: S.optional(S.NullOr(S.String)),
@@ -6594,12 +8097,12 @@ function __c17(j: number): any {
           description: S.optional(S.String),
           doneDate: S.optional(S.NullOr(S.String)),
           infos: S.optional(S.NullOr(S.String)),
-          name: S.optional(S.String),
-          status: S.optional(S.String),
+          name: S.optional(TelephonyRmaStepNameEnum),
+          status: S.optional(TelephonyRmaStepStatusEnum),
         }),
       ).annotate({ identifier: "TelephonyRmaStep" });
     case 2:
-      return S.Array(__S(137));
+      return S.Array(TelephonyRmaStep);
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -6608,15 +8111,15 @@ function __c17(j: number): any {
           equipmentReference: S.optional(S.String),
           id: S.optional(S.String),
           newMerchandise: S.optional(S.NullOr(S.String)),
-          offerTypeNew: S.optional(S.NullOr(S.String)),
-          offerTypeOld: S.optional(S.String),
-          process: S.optional(S.String),
+          offerTypeNew: S.optional(S.NullOr(TelephonyRmaOfferTypeEnum)),
+          offerTypeOld: S.optional(TelephonyRmaOfferTypeEnum),
+          process: S.optional(TelephonyRmaReplaceTypeEnum),
           receptionDatetime: S.optional(S.NullOr(S.String)),
-          shippingContact: S.optional(__S(136)),
-          status: S.optional(S.String),
-          steps: S.optional(__S(138)),
+          shippingContact: S.optional(TelephonyContact),
+          status: S.optional(TelephonyRmaStatusEnum),
+          steps: S.optional(TelephonyRmaStepsList),
           terminationDatetime: S.optional(S.NullOr(S.String)),
-          type: S.optional(S.String),
+          type: S.optional(TelephonyRmaTypeEnum),
         }),
       ).annotate({ identifier: "TelephonyRma" });
     case 4:
@@ -6648,11 +8151,11 @@ function __c17(j: number): any {
           domain: S.optional(S.String),
           engagedUpTo: S.optional(S.NullOr(S.String)),
           expiration: S.optional(S.String),
-          possibleRenewPeriod: S.optional(S.NullOr(__S(15))),
-          renew: S.optional(S.NullOr(__S(141))),
-          renewalType: S.optional(S.String),
+          possibleRenewPeriod: S.optional(S.NullOr(ServicesServicePossibleRenewPeriodList)),
+          renew: S.optional(S.NullOr(ServiceRenewType)),
+          renewalType: S.optional(ServiceRenewalTypeEnum),
           serviceId: S.optional(S.Number),
-          status: S.optional(S.String),
+          status: S.optional(ServiceStateEnum),
         }),
       ).annotate({ identifier: "ServicesService" });
     case 7:
@@ -6669,7 +8172,7 @@ function __c18(j: number): any {
       return S.suspend(() =>
         S.Struct({
           brand: S.optional(S.String),
-          iam: S.optional(S.NullOr(__S(74))),
+          iam: S.optional(S.NullOr(IamResourceMetadata)),
           macAddress: S.optional(S.String),
         }),
       ).annotate({
@@ -6708,8 +8211,8 @@ function __c18(j: number): any {
       return S.suspend(() =>
         S.Struct({
           engagement: S.optional(S.Number),
-          monthlyPrice: S.optional(__S(44)),
-          price: S.optional(__S(44)),
+          monthlyPrice: S.optional(OrderPrice),
+          price: S.optional(OrderPrice),
         }),
       ).annotate({ identifier: "XdslDeconsolidationTerms" });
     case 5:
@@ -6721,9 +8224,9 @@ function __c18(j: number): any {
         }).pipe(T.Http({ method: "POST", uri: "/xdsl/{serviceName}/modem/firmware", code: 200 })),
       ).annotate({ identifier: "InstallFrimwareRequest" });
     case 6:
-      return S.Array(__S(9));
+      return S.Array(IamResourceTagFilterInput);
     case 7:
-      return S.Record(S.String, __S(150));
+      return S.Record(S.String, ListXdslRequestIamTagsValueList);
   }
 }
 function __c19(j: number): any {
@@ -6731,7 +8234,7 @@ function __c19(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          iamTags: S.optional(__S(151).pipe(T.Query())),
+          iamTags: S.optional(ListXdslRequestIamTagsMap.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/xdsl", code: 200 })),
       ).annotate({ identifier: "ListXdslRequest" });
     case 1:
@@ -6756,13 +8259,13 @@ function __c19(j: number): any {
         identifier: "XdslAntiSpamEvidencesInfoDetail",
       });
     case 3:
-      return S.Array(__S(154));
+      return S.Array(XdslAntiSpamEvidencesInfoDetail);
     case 4:
       return S.suspend(() =>
         S.Struct({
           error: S.optional(S.NullOr(S.String)),
-          result: S.optional(S.NullOr(__S(155))),
-          status: S.optional(S.String),
+          result: S.optional(S.NullOr(XdslAntiSpamEvidencesInfoResultList)),
+          status: S.optional(XdslAntiSpamEvidencesInfoStatusEnum),
         }),
       ).annotate({
         identifier: "XdslAntiSpamEvidencesInfo",
@@ -6776,14 +8279,14 @@ function __c19(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          iamTags: S.optional(__S(151).pipe(T.Query())),
+          iamTags: S.optional(ListXdslEmailProRequestIamTagsMap.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/xdsl/email/pro", code: 200 })),
       ).annotate({ identifier: "ListXdslEmailProRequest" });
     case 7:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
-          status: S.optional(S.String.pipe(T.Query())),
+          status: S.optional(XdslFiberEligibilityStatusEnum.pipe(T.Query())),
         }).pipe(
           T.Http({ method: "GET", uri: "/xdsl/{serviceName}/fiberEligibilities", code: 200 }),
         ),
@@ -6823,9 +8326,11 @@ function __c20(j: number): any {
         identifier: "ListXdslLineDslamPortAvailableProfilesRequest",
       });
     case 3:
-      return S.Array(__S(106));
+      return S.Array(XdslDslamLineProfile);
     case 4:
-      return S.suspend(() => __S(163).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        ListXdslLineDslamPortAvailableProfilesResponseBodyList.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "ListXdslLineDslamPortAvailableProfilesResponse",
       });
     case 5:
@@ -6854,13 +8359,15 @@ function __c20(j: number): any {
         }),
       ).annotate({ identifier: "XdslDslamPortLog" });
     case 7:
-      return S.Array(__S(166));
+      return S.Array(XdslDslamPortLog);
   }
 }
 function __c21(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => __S(167).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        ListXdslLineDslamPortLogsResponseBodyList.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "ListXdslLineDslamPortLogsResponse",
       });
     case 1:
@@ -6874,8 +8381,8 @@ function __c21(j: number): any {
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
           number: S.String.pipe(T.Label()),
-          period: S.String.pipe(T.Query()),
-          type: S.String.pipe(T.Query()),
+          period: XdslStatisticsPeriodEnum.pipe(T.Query()),
+          type: XdslLineStatisticsTypeEnum.pipe(T.Query()),
         }).pipe(
           T.Http({
             method: "GET",
@@ -6894,12 +8401,12 @@ function __c21(j: number): any {
         }),
       ).annotate({ identifier: "XdslTimestampAndValue" });
     case 4:
-      return S.Array(__S(171));
+      return S.Array(XdslTimestampAndValue);
     case 5:
       return S.suspend(() =>
         S.Struct({
           unit: S.optional(S.String),
-          values: S.optional(__S(172)),
+          values: S.optional(ComplexTypeUnitAndValuesXdslTimestampAndValueValuesList),
         }),
       ).annotate({
         identifier: "ComplexTypeUnitAndValuesXdslTimestampAndValue",
@@ -6922,7 +8429,7 @@ function __c21(j: number): any {
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
-          frequency: S.String.pipe(T.Query()),
+          frequency: XdslWLANFrequencyEnum.pipe(T.Query()),
         }).pipe(
           T.Http({
             method: "GET",
@@ -6999,12 +8506,12 @@ function __c22(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          comments: S.optional(__S(27)),
+          comments: S.optional(XdslOrderFollowupStepCommentsList),
           doneDate: S.optional(S.NullOr(S.String)),
-          durationUnit: S.optional(S.String),
+          durationUnit: S.optional(XdslOrderFollowupDurationUnitEnum),
           expectedDuration: S.optional(S.Number),
-          name: S.optional(S.String),
-          status: S.optional(S.String),
+          name: S.optional(XdslOrderFollowupStepNameEnum),
+          status: S.optional(XdslOrderFollowupStepStatusEnum),
         }),
       ).annotate({ identifier: "XdslOrderFollowupStep" });
   }
@@ -7012,9 +8519,11 @@ function __c22(j: number): any {
 function __c23(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(183));
+      return S.Array(XdslOrderFollowupStep);
     case 1:
-      return S.suspend(() => __S(184).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        ListXdslOrderFollowupResponseBodyList.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "ListXdslOrderFollowupResponse",
       });
     case 2:
@@ -7037,9 +8546,11 @@ function __c23(j: number): any {
         }),
       ).annotate({ identifier: "XdslRadiusConnectionLog" });
     case 4:
-      return S.Array(__S(187));
+      return S.Array(XdslRadiusConnectionLog);
     case 5:
-      return S.suspend(() => __S(188).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        ListXdslRadiusConnectionLogsResponseBodyList.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "ListXdslRadiusConnectionLogsResponse",
       });
     case 6:
@@ -7051,7 +8562,7 @@ function __c23(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          iamTags: S.optional(__S(151).pipe(T.Query())),
+          iamTags: S.optional(ListXdslSpareRequestIamTagsMap.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/xdsl/spare", code: 200 })),
       ).annotate({ identifier: "ListXdslSpareRequest" });
   }
@@ -7078,8 +8589,8 @@ function __c24(j: number): any {
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
-          period: S.String.pipe(T.Query()),
-          type: S.String.pipe(T.Query()),
+          period: XdslStatisticsPeriodEnum.pipe(T.Query()),
+          type: XdslAccessStatisticsTypeEnum.pipe(T.Query()),
         }).pipe(T.Http({ method: "GET", uri: "/xdsl/{serviceName}/statistics", code: 200 })),
       ).annotate({
         identifier: "ListXdslStatisticsRequest",
@@ -7095,12 +8606,12 @@ function __c24(j: number): any {
         }),
       ).annotate({ identifier: "XdslAccessLatency" });
     case 4:
-      return S.Array(__S(195));
+      return S.Array(XdslAccessLatency);
     case 5:
       return S.suspend(() =>
         S.Struct({
           unit: S.optional(S.String),
-          values: S.optional(__S(196)),
+          values: S.optional(ComplexTypeUnitAndValuesXdslAccessLatencyValuesList),
         }),
       ).annotate({
         identifier: "ComplexTypeUnitAndValuesXdslAccessLatency",
@@ -7110,7 +8621,7 @@ function __c24(j: number): any {
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
           function: S.optional(S.String.pipe(T.Query())),
-          status: S.optional(S.String.pipe(T.Query())),
+          status: S.optional(XdslTaskStatusEnum.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/xdsl/{serviceName}/tasks", code: 200 })),
       ).annotate({ identifier: "ListXdslTasksRequest" });
     case 7:
@@ -7140,11 +8651,11 @@ function __c25(j: number): any {
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
-          acsBackend: S.optional(S.String),
+          acsBackend: S.optional(XdslXdslModemConfigACSBackendEnum),
           dmzIP: S.optional(S.NullOr(S.String)),
           isBridged: S.optional(S.Boolean),
           managedByOvh: S.optional(S.Boolean),
-          mtuSize: S.optional(S.NullOr(S.Number)),
+          mtuSize: S.optional(S.NullOr(XdslXdslModemConfigMTUSizeEnum)),
         }).pipe(T.Http({ method: "PUT", uri: "/xdsl/{serviceName}/modem", code: 200 })),
       ).annotate({ identifier: "PutXdslModemRequest" });
     case 2:
@@ -7153,7 +8664,7 @@ function __c25(j: number): any {
           serviceName: S.String.pipe(T.Label()),
           lanName: S.String.pipe(T.Label()),
           IPAddress: S.optional(S.String),
-          addressingType: S.optional(S.String),
+          addressingType: S.optional(XdslXdslModemConfigAddressingTypeEnum),
           subnetMask: S.optional(S.String),
         }).pipe(
           T.Http({ method: "PUT", uri: "/xdsl/{serviceName}/modem/lan/{lanName}", code: 200 }),
@@ -7192,10 +8703,10 @@ function __c25(j: number): any {
           SSID: S.optional(S.String),
           SSIDAdvertisementEnabled: S.optional(S.Boolean),
           channel: S.optional(S.Number),
-          channelMode: S.optional(S.String),
+          channelMode: S.optional(XdslXdslModemConfigChannelModeEnum),
           enabled: S.optional(S.Boolean),
           securityKey: S.optional(S.String),
-          securityType: S.optional(S.String),
+          securityType: S.optional(XdslXdslModemConfigSecurityTypeEnum),
         }).pipe(
           T.Http({ method: "PUT", uri: "/xdsl/{serviceName}/modem/wifi/{wifiName}", code: 200 }),
         ),
@@ -7206,7 +8717,7 @@ function __c25(j: number): any {
           serviceName: S.String.pipe(T.Label()),
           radioName: S.String.pipe(T.Label()),
           channel: S.optional(S.Number),
-          channelMode: S.optional(S.String),
+          channelMode: S.optional(XdslXdslModemConfigChannelModeEnum),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -7222,15 +8733,15 @@ function __c25(j: number): any {
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
-          process: S.optional(S.String),
-          shippingContact: S.optional(__S(136)),
+          process: S.optional(TelephonyRmaReplaceTypeEnum),
+          shippingContact: S.optional(TelephonyContact),
         }).pipe(T.Http({ method: "PUT", uri: "/xdsl/{serviceName}/rma/{id}", code: 200 })),
       ).annotate({ identifier: "PutXdslRmaRequest" });
     case 7:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
-          renew: S.optional(S.NullOr(__S(141))),
+          renew: S.optional(S.NullOr(ServiceRenewType)),
         }).pipe(T.Http({ method: "PUT", uri: "/xdsl/{serviceName}/serviceInfos", code: 200 })),
       ).annotate({
         identifier: "PutXdslServiceInfosRequest",
@@ -7243,7 +8754,7 @@ function __c26(j: number): any {
       return S.suspend(() =>
         S.Struct({
           spare: S.String.pipe(T.Label()),
-          renew: S.optional(S.NullOr(__S(141))),
+          renew: S.optional(S.NullOr(ServiceRenewType)),
         }).pipe(T.Http({ method: "PUT", uri: "/xdsl/spare/{spare}/serviceInfos", code: 200 })),
       ).annotate({
         identifier: "PutXdslSpareServiceInfosRequest",
@@ -7338,54 +8849,54 @@ function __c26(j: number): any {
 function __c27(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(215));
+      return S.Array(OrderContract);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          context: S.optional(S.String),
+          context: S.optional(OrderReductionContextEnum),
           description: S.optional(S.String),
-          price: S.optional(__S(44)),
+          price: S.optional(OrderPrice),
           reductionDescription: S.optional(S.String),
-          type: S.optional(S.String),
-          value: S.optional(__S(44)),
+          type: S.optional(OrderReductionTypeEnum),
+          value: S.optional(OrderPrice),
         }),
       ).annotate({ identifier: "OrderReduction" });
     case 2:
-      return S.Array(__S(217));
+      return S.Array(OrderReduction);
     case 3:
       return S.suspend(() =>
         S.Struct({
           cartItemID: S.optional(S.NullOr(S.Number)),
           description: S.optional(S.String),
-          detailType: S.optional(S.NullOr(S.String)),
+          detailType: S.optional(S.NullOr(OrderOrderDetailTypeEnum)),
           domain: S.optional(S.String),
-          originalTotalPrice: S.optional(__S(44)),
+          originalTotalPrice: S.optional(OrderPrice),
           quantity: S.optional(S.Number),
-          reductionTotalPrice: S.optional(__S(44)),
-          reductions: S.optional(__S(218)),
-          totalPrice: S.optional(__S(44)),
-          unitPrice: S.optional(__S(44)),
+          reductionTotalPrice: S.optional(OrderPrice),
+          reductions: S.optional(OrderOrderDetailReductionsList),
+          totalPrice: S.optional(OrderPrice),
+          unitPrice: S.optional(OrderPrice),
         }),
       ).annotate({ identifier: "OrderOrderDetail" });
     case 4:
-      return S.Array(__S(219));
+      return S.Array(OrderOrderDetail);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          originalWithoutTax: S.optional(S.NullOr(__S(44))),
-          reduction: S.optional(S.NullOr(__S(44))),
-          tax: S.optional(__S(44)),
-          withTax: S.optional(__S(44)),
-          withoutTax: S.optional(__S(44)),
+          originalWithoutTax: S.optional(S.NullOr(OrderPrice)),
+          reduction: S.optional(S.NullOr(OrderPrice)),
+          tax: S.optional(OrderPrice),
+          withTax: S.optional(OrderPrice),
+          withoutTax: S.optional(OrderPrice),
         }),
       ).annotate({ identifier: "OrderOrderPrices" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          contracts: S.optional(__S(216)),
-          details: S.optional(__S(220)),
+          contracts: S.optional(OrderOrderContractsList),
+          details: S.optional(OrderOrderDetailsList),
           orderId: S.optional(S.NullOr(S.Number)),
-          prices: S.optional(__S(221)),
+          prices: S.optional(OrderOrderPrices),
           url: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "OrderOrder" });
@@ -7461,7 +8972,7 @@ function __c28(j: number): any {
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
           resiliationDate: S.optional(S.String),
-          resiliationSurvey: __S(9),
+          resiliationSurvey: IamResourceTagFilterInput,
         }).pipe(T.Http({ method: "POST", uri: "/xdsl/{serviceName}/resiliate", code: 200 })),
       ).annotate({ identifier: "ResiliateAccessRequest" });
     case 5:
@@ -7499,13 +9010,13 @@ function __c28(j: number): any {
 function __c29(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(231));
+      return S.Array(ConnectivityEligibilityMeetingSlot);
     case 1:
       return S.suspend(() =>
         S.Struct({
           canBookFakeMeeting: S.optional(S.Boolean),
-          capacities: S.optional(__S(230)),
-          meetingSlots: S.optional(__S(232)),
+          capacities: S.optional(ConnectivityEligibilityMeetingCapacities),
+          meetingSlots: S.optional(ConnectivityEligibilityMeetingsMeetingSlotsList),
         }),
       ).annotate({
         identifier: "ConnectivityEligibilityMeetings",
@@ -7514,8 +9025,8 @@ function __c29(j: number): any {
       return S.suspend(() =>
         S.Struct({
           error: S.optional(S.NullOr(S.String)),
-          result: S.optional(__S(233)),
-          status: S.optional(S.String),
+          result: S.optional(ConnectivityEligibilityMeetings),
+          status: S.optional(XdslAsyncTaskStatusEnum),
         }),
       ).annotate({
         identifier: "XdslAsyncTaskConnectivityEligibilityMeetings",
@@ -7538,14 +9049,14 @@ function __c29(j: number): any {
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
-          wifiMesh: S.String,
+          wifiMesh: XdslServiceStatusEnum,
         }).pipe(T.Http({ method: "PUT", uri: "/xdsl/{serviceName}/modem/mesh", code: 200 })),
       ).annotate({ identifier: "SetWifiMeshStatusRequest" });
     case 6:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
-          wifiOneSsid: S.String,
+          wifiOneSsid: XdslServiceStatusEnum,
         }).pipe(T.Http({ method: "PUT", uri: "/xdsl/{serviceName}/modem/onessid", code: 200 })),
       ).annotate({
         identifier: "SetWifiOneSsidStatusRequest",
@@ -7554,7 +9065,7 @@ function __c29(j: number): any {
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
-          status: S.String,
+          status: XdslServiceStatusEnum,
         }).pipe(T.Http({ method: "POST", uri: "/xdsl/{serviceName}/modem/blocIp", code: 200 })),
       ).annotate({
         identifier: "UpdateBlocIPStatusRequest",
@@ -7567,7 +9078,7 @@ function __c30(j: number): any {
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
-          contentSharing: S.String,
+          contentSharing: XdslServiceStatusEnum,
         }).pipe(
           T.Http({ method: "POST", uri: "/xdsl/{serviceName}/modem/contentSharing", code: 200 }),
         ),
@@ -7597,7 +9108,7 @@ function __c30(j: number): any {
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
-          ftp: S.String,
+          ftp: XdslServiceStatusEnum,
         }).pipe(T.Http({ method: "POST", uri: "/xdsl/{serviceName}/modem/ftp", code: 200 })),
       ).annotate({ identifier: "UpdateFTPStatusRequest" });
     case 3:
@@ -7611,7 +9122,7 @@ function __c30(j: number): any {
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
-          ipsecAlg: S.String,
+          ipsecAlg: XdslServiceStatusEnum,
         }).pipe(T.Http({ method: "POST", uri: "/xdsl/{serviceName}/modem/ipsecAlg", code: 200 })),
       ).annotate({
         identifier: "UpdateIpsecAlgStatusRequest",
@@ -7621,9 +9132,9 @@ function __c30(j: number): any {
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
           number: S.String.pipe(T.Label()),
-          actionsDone: S.optional(__S(92)),
-          answers: S.optional(__S(9)),
-          faultType: S.String,
+          actionsDone: S.optional(UpdateLineDiagnosticRequestActionsDoneList),
+          answers: S.optional(IamResourceTagFilterInput),
+          faultType: XdslLineDiagnosticFaultTypeEnum,
         }).pipe(
           T.Http({
             method: "POST",
@@ -7638,13 +9149,13 @@ function __c30(j: number): any {
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
-          name: S.optional(S.String),
+          name: S.optional(XdslLineDiagnosticCustomerActionsEnum),
         }),
       ).annotate({
         identifier: "XdslLineDiagnosticCustomerActionToDo",
       });
     case 7:
-      return S.Array(__S(246));
+      return S.Array(XdslLineDiagnosticCustomerActionToDo);
   }
 }
 function __c31(j: number): any {
@@ -7652,7 +9163,7 @@ function __c31(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          bandwidthTestUnit: S.optional(S.NullOr(S.String)),
+          bandwidthTestUnit: S.optional(S.NullOr(XdslLineDiagnosticBandwidthTestUnitEnum)),
           comment: S.optional(S.NullOr(S.String)),
           conditionsAccepted: S.optional(S.NullOr(S.Boolean)),
           contactPhone: S.optional(S.NullOr(S.String)),
@@ -7669,7 +9180,7 @@ function __c31(j: number): any {
           modemStillSynchronized: S.optional(S.NullOr(S.Boolean)),
           modemType: S.optional(S.NullOr(S.String)),
           ovhTicket: S.optional(S.NullOr(S.String)),
-          problemType: S.optional(S.NullOr(S.String)),
+          problemType: S.optional(S.NullOr(XdslLineDiagnosticProblemTypeEnum)),
           resolvedAfterTests: S.optional(S.NullOr(S.Boolean)),
           secureSite: S.optional(S.NullOr(S.Boolean)),
           severalInternetConnections: S.optional(S.NullOr(S.Boolean)),
@@ -7720,25 +9231,25 @@ function __c31(j: number): any {
         identifier: "XdslLineDiagnosticSection",
       });
     case 4:
-      return S.Array(__S(251));
+      return S.Array(XdslLineDiagnosticSection);
     case 5:
       return S.suspend(() =>
         S.Struct({
           accessName: S.optional(S.String),
           accessPing: S.optional(S.NullOr(S.Boolean)),
           address: S.optional(S.NullOr(S.String)),
-          connectionInfo: S.optional(S.NullOr(__S(249))),
+          connectionInfo: S.optional(S.NullOr(XdslLineDiagnosticConnectionInformations)),
           contactPhone: S.optional(S.NullOr(S.String)),
           description: S.optional(S.NullOr(S.String)),
           dslamIsSynchronized: S.optional(S.NullOr(S.Boolean)),
           gtr: S.optional(S.Boolean),
           length: S.optional(S.Number),
-          lineCapabilities: S.optional(S.NullOr(__S(250))),
-          lineType: S.optional(S.String),
+          lineCapabilities: S.optional(S.NullOr(XdslLineDiagnosticLineCapabilities)),
+          lineType: S.optional(XdslDslTypeEnum),
           nra: S.optional(S.NullOr(S.String)),
           number: S.optional(S.String),
-          operator: S.optional(S.String),
-          sections: S.optional(S.NullOr(__S(252))),
+          operator: S.optional(XdslProviderEnum),
+          sections: S.optional(S.NullOr(XdslLineDiagnosticLineDetailsSectionsList)),
         }),
       ).annotate({
         identifier: "XdslLineDiagnosticLineDetails",
@@ -7748,9 +9259,9 @@ function __c31(j: number): any {
         S.Struct({
           date: S.optional(S.NullOr(S.String)),
           distance: S.optional(S.NullOr(S.Number)),
-          preloc: S.optional(S.NullOr(S.String)),
-          state: S.optional(S.NullOr(S.String)),
-          status: S.optional(S.NullOr(S.String)),
+          preloc: S.optional(S.NullOr(XdslLineDiagnosticSeltPrelocEnum)),
+          state: S.optional(S.NullOr(XdslLineDiagnosticSeltStateEnum)),
+          status: S.optional(S.NullOr(XdslLineDiagnosticSeltStatusEnum)),
         }),
       ).annotate({
         identifier: "XdslLineDiagnosticSeltResult",
@@ -7770,15 +9281,15 @@ function __c31(j: number): any {
 function __c32(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(255));
+      return S.Array(XdslLineDiagnosticPossibleValue);
     case 1:
       return S.suspend(() =>
         S.Struct({
           defaultValue: S.optional(S.NullOr(S.String)),
           description: S.optional(S.String),
-          enumValues: S.optional(S.NullOr(__S(27))),
-          name: S.optional(S.String),
-          possibleValues: S.optional(S.NullOr(__S(256))),
+          enumValues: S.optional(S.NullOr(XdslLineDiagnosticQuestionEnumValuesList)),
+          name: S.optional(XdslLineDiagnosticQuestionsEnum),
+          possibleValues: S.optional(S.NullOr(XdslLineDiagnosticQuestionPossibleValuesList)),
           required: S.optional(S.NullOr(S.Boolean)),
           type: S.optional(S.String),
         }),
@@ -7786,23 +9297,23 @@ function __c32(j: number): any {
         identifier: "XdslLineDiagnosticQuestion",
       });
     case 2:
-      return S.Array(__S(257));
+      return S.Array(XdslLineDiagnosticQuestion);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          actionsDone: S.optional(__S(92)),
-          actionsToDo: S.optional(__S(247)),
-          answers: S.optional(__S(248)),
+          actionsDone: S.optional(XdslLineDiagnosticDiagnosticDataActionsDoneList),
+          actionsToDo: S.optional(XdslLineDiagnosticDiagnosticDataActionsToDoList),
+          answers: S.optional(XdslLineDiagnosticAnswers),
           comment: S.optional(S.NullOr(S.String)),
           creationDate: S.optional(S.String),
           diagnosticDoneDate: S.optional(S.NullOr(S.String)),
           error: S.optional(S.String),
           lastUpdate: S.optional(S.String),
-          lineDetails: S.optional(__S(253)),
-          robotAction: S.optional(S.NullOr(S.String)),
-          seltTest: S.optional(__S(254)),
+          lineDetails: S.optional(XdslLineDiagnosticLineDetails),
+          robotAction: S.optional(S.NullOr(XdslLineDiagnosticRobotActionsEnum)),
+          seltTest: S.optional(XdslLineDiagnosticSeltResult),
           timeout: S.optional(S.Number),
-          toAnswer: S.optional(__S(258)),
+          toAnswer: S.optional(XdslLineDiagnosticDiagnosticDataToAnswerList),
         }),
       ).annotate({
         identifier: "XdslLineDiagnosticDiagnosticData",
@@ -7810,10 +9321,10 @@ function __c32(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(__S(259)),
-          faultType: S.optional(S.String),
+          data: S.optional(XdslLineDiagnosticDiagnosticData),
+          faultType: S.optional(XdslLineDiagnosticFaultTypeEnum),
           id: S.optional(S.Number),
-          status: S.optional(S.String),
+          status: S.optional(XdslLineDiagnosticDiagnosticStatusEnum),
         }),
       ).annotate({
         identifier: "XdslLineDiagnosticDiagnostic",
@@ -7822,14 +9333,14 @@ function __c32(j: number): any {
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
-          status: S.String,
+          status: XdslMailSendingStatusEnum,
         }).pipe(T.Http({ method: "POST", uri: "/xdsl/{serviceName}/mailSending", code: 200 })),
       ).annotate({ identifier: "UpdateMailSendingRequest" });
     case 6:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
-          callWaiting: S.String,
+          callWaiting: XdslServiceStatusEnum,
         }).pipe(
           T.Http({ method: "POST", uri: "/xdsl/{serviceName}/modem/callWaiting", code: 200 }),
         ),
@@ -7840,7 +9351,7 @@ function __c32(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          parametersToIgnore: S.optional(S.NullOr(__S(28))),
+          parametersToIgnore: S.optional(S.NullOr(XdslTemplateModemParametersToIgnore)),
         }).pipe(T.Http({ method: "PUT", uri: "/xdsl/templateModem/{name}", code: 200 })),
       ).annotate({
         identifier: "UpdateModemTemplateRequest",
@@ -7858,7 +9369,7 @@ function __c33(j: number): any {
           downThreshold: S.optional(S.Number),
           email: S.optional(S.NullOr(S.String)),
           enabled: S.optional(S.Boolean),
-          frequency: S.optional(S.String),
+          frequency: S.optional(XdslMonitoringNotificationsFrequencyEnum),
           phone: S.optional(S.NullOr(S.String)),
         }).pipe(
           T.Http({
@@ -7882,7 +9393,7 @@ function __c33(j: number): any {
           internalClient: S.optional(S.String),
           internalPort: S.optional(S.Number),
           internalPortEnd: S.optional(S.NullOr(S.Number)),
-          protocol: S.optional(S.String),
+          protocol: S.optional(XdslXdslModemConfigProtocolTypeEnum),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -7910,7 +9421,7 @@ function __c33(j: number): any {
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
-          type: S.String,
+          type: TelephonyRmaChangeTypeEnum,
         }).pipe(
           T.Http({ method: "POST", uri: "/xdsl/{serviceName}/rma/{id}/changeType", code: 200 }),
         ),
@@ -7919,7 +9430,7 @@ function __c33(j: number): any {
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
-          sipAlg: S.String,
+          sipAlg: XdslServiceStatusEnum,
         }).pipe(T.Http({ method: "POST", uri: "/xdsl/{serviceName}/modem/sipAlg", code: 200 })),
       ).annotate({
         identifier: "UpdateSipAlgStatusRequest",
@@ -7928,85 +9439,8 @@ function __c33(j: number): any {
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
-          upnp: S.String,
+          upnp: XdslServiceStatusEnum,
         }).pipe(T.Http({ method: "POST", uri: "/xdsl/{serviceName}/modem/upnp", code: 200 })),
       ).annotate({ identifier: "UpdateUpnpStatusRequest" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
-    case 9:
-      return __c9(i & 7);
-    case 10:
-      return __c10(i & 7);
-    case 11:
-      return __c11(i & 7);
-    case 12:
-      return __c12(i & 7);
-    case 13:
-      return __c13(i & 7);
-    case 14:
-      return __c14(i & 7);
-    case 15:
-      return __c15(i & 7);
-    case 16:
-      return __c16(i & 7);
-    case 17:
-      return __c17(i & 7);
-    case 18:
-      return __c18(i & 7);
-    case 19:
-      return __c19(i & 7);
-    case 20:
-      return __c20(i & 7);
-    case 21:
-      return __c21(i & 7);
-    case 22:
-      return __c22(i & 7);
-    case 23:
-      return __c23(i & 7);
-    case 24:
-      return __c24(i & 7);
-    case 25:
-      return __c25(i & 7);
-    case 26:
-      return __c26(i & 7);
-    case 27:
-      return __c27(i & 7);
-    case 28:
-      return __c28(i & 7);
-    case 29:
-      return __c29(i & 7);
-    case 30:
-      return __c30(i & 7);
-    case 31:
-      return __c31(i & 7);
-    case 32:
-      return __c32(i & 7);
-    case 33:
-      return __c33(i & 7);
   }
 }

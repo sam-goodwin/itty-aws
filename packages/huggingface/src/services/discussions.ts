@@ -9,13 +9,15 @@ import {
 } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { HuggingFaceOpError, HuggingFaceOpContext };
 
 export type ChangeStatusRequestRepoType = "models" | "spaces" | "datasets" | "kernels";
+const ChangeStatusRequestRepoType = S.String;
+
 export type ChangeStatusRequestStatus = "open" | "closed";
+const ChangeStatusRequestStatus = S.String;
+
 export interface ChangeStatusRequest {
   repoType: ChangeStatusRequestRepoType | (string & {});
   namespace: string;
@@ -24,6 +26,8 @@ export interface ChangeStatusRequest {
   status: ChangeStatusRequestStatus | (string & {});
   comment?: string;
 }
+const ChangeStatusRequest = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<ChangeStatusRequest>;
+
 export interface ChangeStatusResponseNewStatusAuthorCase0OauthAppImageData {
   emoji: string;
   colorFrom: string;
@@ -108,11 +112,21 @@ export interface ChangeStatusResponseNewStatusAuthorCase1 {
 export type ChangeStatusResponseNewStatusAuthor =
   | ChangeStatusResponseNewStatusAuthorCase0
   | ChangeStatusResponseNewStatusAuthorCase1;
+const ChangeStatusResponseNewStatusAuthor =
+  S.Unknown as any as S.Schema<ChangeStatusResponseNewStatusAuthor>;
+
 export type ChangeStatusResponseNewStatusDataStatus = "draft" | "open" | "closed" | "merged";
+const ChangeStatusResponseNewStatusDataStatus = S.String;
+
 export interface ChangeStatusResponseNewStatusData {
   status: ChangeStatusResponseNewStatusDataStatus;
   reason?: string;
 }
+const ChangeStatusResponseNewStatusData = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<ChangeStatusResponseNewStatusData>;
+
 export interface ChangeStatusResponseNewStatus {
   id: string;
   createdAt: string;
@@ -120,10 +134,19 @@ export interface ChangeStatusResponseNewStatus {
   type: string;
   data: ChangeStatusResponseNewStatusData;
 }
+const ChangeStatusResponseNewStatus = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<ChangeStatusResponseNewStatus>;
+
 export interface ChangeStatusResponse {
   newStatus: ChangeStatusResponseNewStatus;
 }
+const ChangeStatusResponse = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<ChangeStatusResponse>;
+
 export type ChangeTitleRequestRepoType = "models" | "spaces" | "datasets" | "kernels";
+const ChangeTitleRequestRepoType = S.String;
+
 export interface ChangeTitleRequest {
   repoType: ChangeTitleRequestRepoType | (string & {});
   namespace: string;
@@ -131,6 +154,8 @@ export interface ChangeTitleRequest {
   num: string;
   title: string;
 }
+const ChangeTitleRequest = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<ChangeTitleRequest>;
+
 export type ChangeTitleResponseNewTitleAuthorCase0OauthAppImageData =
   ChangeStatusResponseNewStatusAuthorCase0OauthAppImageData;
 export type ChangeTitleResponseNewTitleAuthorCase0OauthApp =
@@ -208,10 +233,18 @@ export interface ChangeTitleResponseNewTitleAuthorCase1 {
 export type ChangeTitleResponseNewTitleAuthor =
   | ChangeTitleResponseNewTitleAuthorCase0
   | ChangeTitleResponseNewTitleAuthorCase1;
+const ChangeTitleResponseNewTitleAuthor =
+  S.Unknown as any as S.Schema<ChangeTitleResponseNewTitleAuthor>;
+
 export interface ChangeTitleResponseNewTitleData {
   from: string;
   to: string;
 }
+const ChangeTitleResponseNewTitleData = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<ChangeTitleResponseNewTitleData>;
+
 export interface ChangeTitleResponseNewTitle {
   id: string;
   createdAt: string;
@@ -219,13 +252,25 @@ export interface ChangeTitleResponseNewTitle {
   type: string;
   data: ChangeTitleResponseNewTitleData;
 }
+const ChangeTitleResponseNewTitle = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<ChangeTitleResponseNewTitle>;
+
 export interface ChangeTitleResponse {
   newTitle: ChangeTitleResponseNewTitle;
 }
+const ChangeTitleResponse = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<ChangeTitleResponse>;
+
 export interface CreateBlogCommentRequest {
   slug: string;
   comment: string;
 }
+const CreateBlogCommentRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<CreateBlogCommentRequest>;
+
 export type CreateBlogCommentResponseNewMessageAuthorCase0OauthAppImageData =
   ChangeStatusResponseNewStatusAuthorCase0OauthAppImageData;
 export type CreateBlogCommentResponseNewMessageAuthorCase0OauthApp =
@@ -303,6 +348,9 @@ export interface CreateBlogCommentResponseNewMessageAuthorCase1 {
 export type CreateBlogCommentResponseNewMessageAuthor =
   | CreateBlogCommentResponseNewMessageAuthorCase0
   | CreateBlogCommentResponseNewMessageAuthorCase1;
+const CreateBlogCommentResponseNewMessageAuthor =
+  S.Unknown as any as S.Schema<CreateBlogCommentResponseNewMessageAuthor>;
+
 export type CreateBlogCommentResponseNewMessageDataHiddenReason =
   | "Spam"
   | "Abuse"
@@ -310,6 +358,8 @@ export type CreateBlogCommentResponseNewMessageDataHiddenReason =
   | "Resolved"
   | "Off-Topic"
   | "Low Quality";
+const CreateBlogCommentResponseNewMessageDataHiddenReason = S.String;
+
 export type CreateBlogCommentResponseNewMessageDataLatestAuthorCase0Plan =
   | "team"
   | "enterprise"
@@ -371,14 +421,30 @@ export interface CreateBlogCommentResponseNewMessageDataLatestAuthorCase1 {
 export type CreateBlogCommentResponseNewMessageDataLatestAuthor =
   | CreateBlogCommentResponseNewMessageDataLatestAuthorCase0
   | CreateBlogCommentResponseNewMessageDataLatestAuthorCase1;
+const CreateBlogCommentResponseNewMessageDataLatestAuthor =
+  S.Unknown as any as S.Schema<CreateBlogCommentResponseNewMessageDataLatestAuthor>;
+
 export interface CreateBlogCommentResponseNewMessageDataLatest {
   raw: string;
   html: string;
   updatedAt: string;
   author?: CreateBlogCommentResponseNewMessageDataLatestAuthor;
 }
+const CreateBlogCommentResponseNewMessageDataLatest = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<CreateBlogCommentResponseNewMessageDataLatest>;
+
 export type CreateBlogCommentResponseNewMessageDataEditorsList = Array<string>;
+const CreateBlogCommentResponseNewMessageDataEditorsList = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<CreateBlogCommentResponseNewMessageDataEditorsList>;
+
 export type CreateBlogCommentResponseNewMessageDataEditorAvatarUrlsList = Array<string>;
+const CreateBlogCommentResponseNewMessageDataEditorAvatarUrlsList =
+  CreateBlogCommentResponseNewMessageDataEditorsList as any as S.Schema<CreateBlogCommentResponseNewMessageDataEditorAvatarUrlsList>;
+
 export type CreateBlogCommentResponseNewMessageDataReactionsItemReaction =
   | "\ud83d\udd25"
   | "\ud83d\ude80"
@@ -392,18 +458,38 @@ export type CreateBlogCommentResponseNewMessageDataReactionsItemReaction =
   | "\ud83e\udd1d"
   | "\ud83d\ude14"
   | "\ud83e\udd2f";
+const CreateBlogCommentResponseNewMessageDataReactionsItemReaction = S.String;
+
 export type CreateBlogCommentResponseNewMessageDataReactionsItemUsersList = Array<string>;
+const CreateBlogCommentResponseNewMessageDataReactionsItemUsersList =
+  CreateBlogCommentResponseNewMessageDataEditorsList as any as S.Schema<CreateBlogCommentResponseNewMessageDataReactionsItemUsersList>;
+
 export interface CreateBlogCommentResponseNewMessageDataReactionsItem {
   reaction: CreateBlogCommentResponseNewMessageDataReactionsItemReaction;
   users: CreateBlogCommentResponseNewMessageDataReactionsItemUsersList;
   count: number;
 }
+const CreateBlogCommentResponseNewMessageDataReactionsItem = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<CreateBlogCommentResponseNewMessageDataReactionsItem>;
+
 export type CreateBlogCommentResponseNewMessageDataReactionsList =
   Array<CreateBlogCommentResponseNewMessageDataReactionsItem>;
+const CreateBlogCommentResponseNewMessageDataReactionsList = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<CreateBlogCommentResponseNewMessageDataReactionsList>;
+
 export interface CreateBlogCommentResponseNewMessageDataIdentifiedLanguage {
   language: string;
   probability: number;
 }
+const CreateBlogCommentResponseNewMessageDataIdentifiedLanguage = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<CreateBlogCommentResponseNewMessageDataIdentifiedLanguage>;
+
 export interface CreateBlogCommentResponseNewMessageData {
   edited: boolean;
   hidden: boolean;
@@ -419,6 +505,11 @@ export interface CreateBlogCommentResponseNewMessageData {
   isReport?: boolean;
   parentCommentId?: string;
 }
+const CreateBlogCommentResponseNewMessageData = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<CreateBlogCommentResponseNewMessageData>;
+
 export interface CreateBlogCommentResponseNewMessage {
   id: string;
   createdAt: string;
@@ -426,14 +517,29 @@ export interface CreateBlogCommentResponseNewMessage {
   type: string;
   data: CreateBlogCommentResponseNewMessageData;
 }
+const CreateBlogCommentResponseNewMessage = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<CreateBlogCommentResponseNewMessage>;
+
 export interface CreateBlogCommentResponse {
   newMessage: CreateBlogCommentResponseNewMessage;
 }
+const CreateBlogCommentResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<CreateBlogCommentResponse>;
+
 export interface CreateCommunityBlogCommentRequest {
   namespace: string;
   slug: string;
   comment: string;
 }
+const CreateCommunityBlogCommentRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<CreateCommunityBlogCommentRequest>;
+
 export type CreateCommunityBlogCommentResponseNewMessageAuthorCase0OauthAppImageData =
   ChangeStatusResponseNewStatusAuthorCase0OauthAppImageData;
 export type CreateCommunityBlogCommentResponseNewMessageAuthorCase0OauthApp =
@@ -511,6 +617,9 @@ export interface CreateCommunityBlogCommentResponseNewMessageAuthorCase1 {
 export type CreateCommunityBlogCommentResponseNewMessageAuthor =
   | CreateCommunityBlogCommentResponseNewMessageAuthorCase0
   | CreateCommunityBlogCommentResponseNewMessageAuthorCase1;
+const CreateCommunityBlogCommentResponseNewMessageAuthor =
+  S.Unknown as any as S.Schema<CreateCommunityBlogCommentResponseNewMessageAuthor>;
+
 export type CreateCommunityBlogCommentResponseNewMessageDataHiddenReason =
   | "Spam"
   | "Abuse"
@@ -518,6 +627,8 @@ export type CreateCommunityBlogCommentResponseNewMessageDataHiddenReason =
   | "Resolved"
   | "Off-Topic"
   | "Low Quality";
+const CreateCommunityBlogCommentResponseNewMessageDataHiddenReason = S.String;
+
 export type CreateCommunityBlogCommentResponseNewMessageDataLatestAuthorCase0Plan =
   | "team"
   | "enterprise"
@@ -579,14 +690,30 @@ export interface CreateCommunityBlogCommentResponseNewMessageDataLatestAuthorCas
 export type CreateCommunityBlogCommentResponseNewMessageDataLatestAuthor =
   | CreateCommunityBlogCommentResponseNewMessageDataLatestAuthorCase0
   | CreateCommunityBlogCommentResponseNewMessageDataLatestAuthorCase1;
+const CreateCommunityBlogCommentResponseNewMessageDataLatestAuthor =
+  S.Unknown as any as S.Schema<CreateCommunityBlogCommentResponseNewMessageDataLatestAuthor>;
+
 export interface CreateCommunityBlogCommentResponseNewMessageDataLatest {
   raw: string;
   html: string;
   updatedAt: string;
   author?: CreateCommunityBlogCommentResponseNewMessageDataLatestAuthor;
 }
+const CreateCommunityBlogCommentResponseNewMessageDataLatest = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<CreateCommunityBlogCommentResponseNewMessageDataLatest>;
+
 export type CreateCommunityBlogCommentResponseNewMessageDataEditorsList = Array<string>;
+const CreateCommunityBlogCommentResponseNewMessageDataEditorsList =
+  CreateBlogCommentResponseNewMessageDataEditorsList as any as S.Schema<CreateCommunityBlogCommentResponseNewMessageDataEditorsList>;
+
 export type CreateCommunityBlogCommentResponseNewMessageDataEditorAvatarUrlsList = Array<string>;
+const CreateCommunityBlogCommentResponseNewMessageDataEditorAvatarUrlsList = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<CreateCommunityBlogCommentResponseNewMessageDataEditorAvatarUrlsList>;
+
 export type CreateCommunityBlogCommentResponseNewMessageDataReactionsItemReaction =
   | "\ud83d\udd25"
   | "\ud83d\ude80"
@@ -600,14 +727,29 @@ export type CreateCommunityBlogCommentResponseNewMessageDataReactionsItemReactio
   | "\ud83e\udd1d"
   | "\ud83d\ude14"
   | "\ud83e\udd2f";
+const CreateCommunityBlogCommentResponseNewMessageDataReactionsItemReaction = S.String;
+
 export type CreateCommunityBlogCommentResponseNewMessageDataReactionsItemUsersList = Array<string>;
+const CreateCommunityBlogCommentResponseNewMessageDataReactionsItemUsersList =
+  CreateCommunityBlogCommentResponseNewMessageDataEditorAvatarUrlsList as any as S.Schema<CreateCommunityBlogCommentResponseNewMessageDataReactionsItemUsersList>;
+
 export interface CreateCommunityBlogCommentResponseNewMessageDataReactionsItem {
   reaction: CreateCommunityBlogCommentResponseNewMessageDataReactionsItemReaction;
   users: CreateCommunityBlogCommentResponseNewMessageDataReactionsItemUsersList;
   count: number;
 }
+const CreateCommunityBlogCommentResponseNewMessageDataReactionsItem = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<CreateCommunityBlogCommentResponseNewMessageDataReactionsItem>;
+
 export type CreateCommunityBlogCommentResponseNewMessageDataReactionsList =
   Array<CreateCommunityBlogCommentResponseNewMessageDataReactionsItem>;
+const CreateCommunityBlogCommentResponseNewMessageDataReactionsList = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<CreateCommunityBlogCommentResponseNewMessageDataReactionsList>;
+
 export type CreateCommunityBlogCommentResponseNewMessageDataIdentifiedLanguage =
   CreateBlogCommentResponseNewMessageDataIdentifiedLanguage;
 export interface CreateCommunityBlogCommentResponseNewMessageData {
@@ -625,6 +767,11 @@ export interface CreateCommunityBlogCommentResponseNewMessageData {
   isReport?: boolean;
   parentCommentId?: string;
 }
+const CreateCommunityBlogCommentResponseNewMessageData = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<CreateCommunityBlogCommentResponseNewMessageData>;
+
 export interface CreateCommunityBlogCommentResponseNewMessage {
   id: string;
   createdAt: string;
@@ -632,10 +779,22 @@ export interface CreateCommunityBlogCommentResponseNewMessage {
   type: string;
   data: CreateCommunityBlogCommentResponseNewMessageData;
 }
+const CreateCommunityBlogCommentResponseNewMessage = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<CreateCommunityBlogCommentResponseNewMessage>;
+
 export interface CreateCommunityBlogCommentResponse {
   newMessage: CreateCommunityBlogCommentResponseNewMessage;
 }
+const CreateCommunityBlogCommentResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<CreateCommunityBlogCommentResponse>;
+
 export type CreateDiscussionRequestRepoType = "models" | "spaces" | "datasets" | "kernels";
+const CreateDiscussionRequestRepoType = S.String;
+
 export interface CreateDiscussionRequest {
   repoType: CreateDiscussionRequestRepoType | (string & {});
   namespace: string;
@@ -644,17 +803,34 @@ export interface CreateDiscussionRequest {
   description: string;
   pullRequest?: boolean;
 }
+const CreateDiscussionRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<CreateDiscussionRequest>;
+
 export interface CreateDiscussionResponseReferences {
   base: string;
   mergeCommitId?: string;
 }
+const CreateDiscussionResponseReferences = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<CreateDiscussionResponseReferences>;
+
 export interface CreateDiscussionResponse {
   url: string;
   num: number;
   pullRequest: boolean;
   references?: CreateDiscussionResponseReferences;
 }
+const CreateDiscussionResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<CreateDiscussionResponse>;
+
 export type CreateDiscussionCommentRequestRepoType = "models" | "spaces" | "datasets" | "kernels";
+const CreateDiscussionCommentRequestRepoType = S.String;
+
 export interface CreateDiscussionCommentRequest {
   repoType: CreateDiscussionCommentRequestRepoType | (string & {});
   namespace: string;
@@ -662,6 +838,11 @@ export interface CreateDiscussionCommentRequest {
   num: string;
   comment: string;
 }
+const CreateDiscussionCommentRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<CreateDiscussionCommentRequest>;
+
 export type CreateDiscussionCommentResponseNewMessageAuthorCase0OauthAppImageData =
   ChangeStatusResponseNewStatusAuthorCase0OauthAppImageData;
 export type CreateDiscussionCommentResponseNewMessageAuthorCase0OauthApp =
@@ -739,6 +920,9 @@ export interface CreateDiscussionCommentResponseNewMessageAuthorCase1 {
 export type CreateDiscussionCommentResponseNewMessageAuthor =
   | CreateDiscussionCommentResponseNewMessageAuthorCase0
   | CreateDiscussionCommentResponseNewMessageAuthorCase1;
+const CreateDiscussionCommentResponseNewMessageAuthor =
+  S.Unknown as any as S.Schema<CreateDiscussionCommentResponseNewMessageAuthor>;
+
 export type CreateDiscussionCommentResponseNewMessageDataHiddenReason =
   | "Spam"
   | "Abuse"
@@ -746,6 +930,8 @@ export type CreateDiscussionCommentResponseNewMessageDataHiddenReason =
   | "Resolved"
   | "Off-Topic"
   | "Low Quality";
+const CreateDiscussionCommentResponseNewMessageDataHiddenReason = S.String;
+
 export type CreateDiscussionCommentResponseNewMessageDataLatestAuthorCase0Plan =
   | "team"
   | "enterprise"
@@ -807,14 +993,28 @@ export interface CreateDiscussionCommentResponseNewMessageDataLatestAuthorCase1 
 export type CreateDiscussionCommentResponseNewMessageDataLatestAuthor =
   | CreateDiscussionCommentResponseNewMessageDataLatestAuthorCase0
   | CreateDiscussionCommentResponseNewMessageDataLatestAuthorCase1;
+const CreateDiscussionCommentResponseNewMessageDataLatestAuthor =
+  S.Unknown as any as S.Schema<CreateDiscussionCommentResponseNewMessageDataLatestAuthor>;
+
 export interface CreateDiscussionCommentResponseNewMessageDataLatest {
   raw: string;
   html: string;
   updatedAt: string;
   author?: CreateDiscussionCommentResponseNewMessageDataLatestAuthor;
 }
+const CreateDiscussionCommentResponseNewMessageDataLatest = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<CreateDiscussionCommentResponseNewMessageDataLatest>;
+
 export type CreateDiscussionCommentResponseNewMessageDataEditorsList = Array<string>;
+const CreateDiscussionCommentResponseNewMessageDataEditorsList =
+  CreateBlogCommentResponseNewMessageDataEditorsList as any as S.Schema<CreateDiscussionCommentResponseNewMessageDataEditorsList>;
+
 export type CreateDiscussionCommentResponseNewMessageDataEditorAvatarUrlsList = Array<string>;
+const CreateDiscussionCommentResponseNewMessageDataEditorAvatarUrlsList =
+  CreateCommunityBlogCommentResponseNewMessageDataEditorAvatarUrlsList as any as S.Schema<CreateDiscussionCommentResponseNewMessageDataEditorAvatarUrlsList>;
+
 export type CreateDiscussionCommentResponseNewMessageDataReactionsItemReaction =
   | "\ud83d\udd25"
   | "\ud83d\ude80"
@@ -828,14 +1028,29 @@ export type CreateDiscussionCommentResponseNewMessageDataReactionsItemReaction =
   | "\ud83e\udd1d"
   | "\ud83d\ude14"
   | "\ud83e\udd2f";
+const CreateDiscussionCommentResponseNewMessageDataReactionsItemReaction = S.String;
+
 export type CreateDiscussionCommentResponseNewMessageDataReactionsItemUsersList = Array<string>;
+const CreateDiscussionCommentResponseNewMessageDataReactionsItemUsersList =
+  CreateCommunityBlogCommentResponseNewMessageDataEditorAvatarUrlsList as any as S.Schema<CreateDiscussionCommentResponseNewMessageDataReactionsItemUsersList>;
+
 export interface CreateDiscussionCommentResponseNewMessageDataReactionsItem {
   reaction: CreateDiscussionCommentResponseNewMessageDataReactionsItemReaction;
   users: CreateDiscussionCommentResponseNewMessageDataReactionsItemUsersList;
   count: number;
 }
+const CreateDiscussionCommentResponseNewMessageDataReactionsItem = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<CreateDiscussionCommentResponseNewMessageDataReactionsItem>;
+
 export type CreateDiscussionCommentResponseNewMessageDataReactionsList =
   Array<CreateDiscussionCommentResponseNewMessageDataReactionsItem>;
+const CreateDiscussionCommentResponseNewMessageDataReactionsList = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<CreateDiscussionCommentResponseNewMessageDataReactionsList>;
+
 export type CreateDiscussionCommentResponseNewMessageDataIdentifiedLanguage =
   CreateBlogCommentResponseNewMessageDataIdentifiedLanguage;
 export interface CreateDiscussionCommentResponseNewMessageData {
@@ -853,6 +1068,11 @@ export interface CreateDiscussionCommentResponseNewMessageData {
   isReport?: boolean;
   parentCommentId?: string;
 }
+const CreateDiscussionCommentResponseNewMessageData = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<CreateDiscussionCommentResponseNewMessageData>;
+
 export interface CreateDiscussionCommentResponseNewMessage {
   id: string;
   createdAt: string;
@@ -860,13 +1080,28 @@ export interface CreateDiscussionCommentResponseNewMessage {
   type: string;
   data: CreateDiscussionCommentResponseNewMessageData;
 }
+const CreateDiscussionCommentResponseNewMessage = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<CreateDiscussionCommentResponseNewMessage>;
+
 export interface CreateDiscussionCommentResponse {
   newMessage: CreateDiscussionCommentResponseNewMessage;
 }
+const CreateDiscussionCommentResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<CreateDiscussionCommentResponse>;
+
 export interface CreatePaperCommentRequest {
   paperId: string;
   comment: string;
 }
+const CreatePaperCommentRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<CreatePaperCommentRequest>;
+
 export type CreatePaperCommentResponseNewMessageAuthorCase0OauthAppImageData =
   ChangeStatusResponseNewStatusAuthorCase0OauthAppImageData;
 export type CreatePaperCommentResponseNewMessageAuthorCase0OauthApp =
@@ -944,6 +1179,9 @@ export interface CreatePaperCommentResponseNewMessageAuthorCase1 {
 export type CreatePaperCommentResponseNewMessageAuthor =
   | CreatePaperCommentResponseNewMessageAuthorCase0
   | CreatePaperCommentResponseNewMessageAuthorCase1;
+const CreatePaperCommentResponseNewMessageAuthor =
+  S.Unknown as any as S.Schema<CreatePaperCommentResponseNewMessageAuthor>;
+
 export type CreatePaperCommentResponseNewMessageDataHiddenReason =
   | "Spam"
   | "Abuse"
@@ -951,6 +1189,8 @@ export type CreatePaperCommentResponseNewMessageDataHiddenReason =
   | "Resolved"
   | "Off-Topic"
   | "Low Quality";
+const CreatePaperCommentResponseNewMessageDataHiddenReason = S.String;
+
 export type CreatePaperCommentResponseNewMessageDataLatestAuthorCase0Plan =
   | "team"
   | "enterprise"
@@ -1012,14 +1252,28 @@ export interface CreatePaperCommentResponseNewMessageDataLatestAuthorCase1 {
 export type CreatePaperCommentResponseNewMessageDataLatestAuthor =
   | CreatePaperCommentResponseNewMessageDataLatestAuthorCase0
   | CreatePaperCommentResponseNewMessageDataLatestAuthorCase1;
+const CreatePaperCommentResponseNewMessageDataLatestAuthor =
+  S.Unknown as any as S.Schema<CreatePaperCommentResponseNewMessageDataLatestAuthor>;
+
 export interface CreatePaperCommentResponseNewMessageDataLatest {
   raw: string;
   html: string;
   updatedAt: string;
   author?: CreatePaperCommentResponseNewMessageDataLatestAuthor;
 }
+const CreatePaperCommentResponseNewMessageDataLatest = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<CreatePaperCommentResponseNewMessageDataLatest>;
+
 export type CreatePaperCommentResponseNewMessageDataEditorsList = Array<string>;
+const CreatePaperCommentResponseNewMessageDataEditorsList =
+  CreateBlogCommentResponseNewMessageDataEditorsList as any as S.Schema<CreatePaperCommentResponseNewMessageDataEditorsList>;
+
 export type CreatePaperCommentResponseNewMessageDataEditorAvatarUrlsList = Array<string>;
+const CreatePaperCommentResponseNewMessageDataEditorAvatarUrlsList =
+  CreateBlogCommentResponseNewMessageDataEditorsList as any as S.Schema<CreatePaperCommentResponseNewMessageDataEditorAvatarUrlsList>;
+
 export type CreatePaperCommentResponseNewMessageDataReactionsItemReaction =
   | "\ud83d\udd25"
   | "\ud83d\ude80"
@@ -1033,14 +1287,29 @@ export type CreatePaperCommentResponseNewMessageDataReactionsItemReaction =
   | "\ud83e\udd1d"
   | "\ud83d\ude14"
   | "\ud83e\udd2f";
+const CreatePaperCommentResponseNewMessageDataReactionsItemReaction = S.String;
+
 export type CreatePaperCommentResponseNewMessageDataReactionsItemUsersList = Array<string>;
+const CreatePaperCommentResponseNewMessageDataReactionsItemUsersList =
+  CreateBlogCommentResponseNewMessageDataEditorsList as any as S.Schema<CreatePaperCommentResponseNewMessageDataReactionsItemUsersList>;
+
 export interface CreatePaperCommentResponseNewMessageDataReactionsItem {
   reaction: CreatePaperCommentResponseNewMessageDataReactionsItemReaction;
   users: CreatePaperCommentResponseNewMessageDataReactionsItemUsersList;
   count: number;
 }
+const CreatePaperCommentResponseNewMessageDataReactionsItem = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<CreatePaperCommentResponseNewMessageDataReactionsItem>;
+
 export type CreatePaperCommentResponseNewMessageDataReactionsList =
   Array<CreatePaperCommentResponseNewMessageDataReactionsItem>;
+const CreatePaperCommentResponseNewMessageDataReactionsList = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<CreatePaperCommentResponseNewMessageDataReactionsList>;
+
 export type CreatePaperCommentResponseNewMessageDataIdentifiedLanguage =
   CreateBlogCommentResponseNewMessageDataIdentifiedLanguage;
 export interface CreatePaperCommentResponseNewMessageData {
@@ -1058,6 +1327,11 @@ export interface CreatePaperCommentResponseNewMessageData {
   isReport?: boolean;
   parentCommentId?: string;
 }
+const CreatePaperCommentResponseNewMessageData = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<CreatePaperCommentResponseNewMessageData>;
+
 export interface CreatePaperCommentResponseNewMessage {
   id: string;
   createdAt: string;
@@ -1065,14 +1339,29 @@ export interface CreatePaperCommentResponseNewMessage {
   type: string;
   data: CreatePaperCommentResponseNewMessageData;
 }
+const CreatePaperCommentResponseNewMessage = /*@__PURE__*/ __L.at(
+  __c5,
+  0,
+) as any as S.Schema<CreatePaperCommentResponseNewMessage>;
+
 export interface CreatePaperCommentResponse {
   newMessage: CreatePaperCommentResponseNewMessage;
 }
+const CreatePaperCommentResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  1,
+) as any as S.Schema<CreatePaperCommentResponse>;
+
 export interface CreatePostCommentRequest {
   username: string;
   postSlug: string;
   comment: string;
 }
+const CreatePostCommentRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  2,
+) as any as S.Schema<CreatePostCommentRequest>;
+
 export type CreatePostCommentResponseNewMessageAuthorCase0OauthAppImageData =
   ChangeStatusResponseNewStatusAuthorCase0OauthAppImageData;
 export type CreatePostCommentResponseNewMessageAuthorCase0OauthApp =
@@ -1150,6 +1439,9 @@ export interface CreatePostCommentResponseNewMessageAuthorCase1 {
 export type CreatePostCommentResponseNewMessageAuthor =
   | CreatePostCommentResponseNewMessageAuthorCase0
   | CreatePostCommentResponseNewMessageAuthorCase1;
+const CreatePostCommentResponseNewMessageAuthor =
+  S.Unknown as any as S.Schema<CreatePostCommentResponseNewMessageAuthor>;
+
 export type CreatePostCommentResponseNewMessageDataHiddenReason =
   | "Spam"
   | "Abuse"
@@ -1157,6 +1449,8 @@ export type CreatePostCommentResponseNewMessageDataHiddenReason =
   | "Resolved"
   | "Off-Topic"
   | "Low Quality";
+const CreatePostCommentResponseNewMessageDataHiddenReason = S.String;
+
 export type CreatePostCommentResponseNewMessageDataLatestAuthorCase0Plan =
   | "team"
   | "enterprise"
@@ -1218,14 +1512,28 @@ export interface CreatePostCommentResponseNewMessageDataLatestAuthorCase1 {
 export type CreatePostCommentResponseNewMessageDataLatestAuthor =
   | CreatePostCommentResponseNewMessageDataLatestAuthorCase0
   | CreatePostCommentResponseNewMessageDataLatestAuthorCase1;
+const CreatePostCommentResponseNewMessageDataLatestAuthor =
+  S.Unknown as any as S.Schema<CreatePostCommentResponseNewMessageDataLatestAuthor>;
+
 export interface CreatePostCommentResponseNewMessageDataLatest {
   raw: string;
   html: string;
   updatedAt: string;
   author?: CreatePostCommentResponseNewMessageDataLatestAuthor;
 }
+const CreatePostCommentResponseNewMessageDataLatest = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<CreatePostCommentResponseNewMessageDataLatest>;
+
 export type CreatePostCommentResponseNewMessageDataEditorsList = Array<string>;
+const CreatePostCommentResponseNewMessageDataEditorsList =
+  CreateBlogCommentResponseNewMessageDataEditorsList as any as S.Schema<CreatePostCommentResponseNewMessageDataEditorsList>;
+
 export type CreatePostCommentResponseNewMessageDataEditorAvatarUrlsList = Array<string>;
+const CreatePostCommentResponseNewMessageDataEditorAvatarUrlsList =
+  CreateBlogCommentResponseNewMessageDataEditorsList as any as S.Schema<CreatePostCommentResponseNewMessageDataEditorAvatarUrlsList>;
+
 export type CreatePostCommentResponseNewMessageDataReactionsItemReaction =
   | "\ud83d\udd25"
   | "\ud83d\ude80"
@@ -1239,14 +1547,29 @@ export type CreatePostCommentResponseNewMessageDataReactionsItemReaction =
   | "\ud83e\udd1d"
   | "\ud83d\ude14"
   | "\ud83e\udd2f";
+const CreatePostCommentResponseNewMessageDataReactionsItemReaction = S.String;
+
 export type CreatePostCommentResponseNewMessageDataReactionsItemUsersList = Array<string>;
+const CreatePostCommentResponseNewMessageDataReactionsItemUsersList =
+  CreateBlogCommentResponseNewMessageDataEditorsList as any as S.Schema<CreatePostCommentResponseNewMessageDataReactionsItemUsersList>;
+
 export interface CreatePostCommentResponseNewMessageDataReactionsItem {
   reaction: CreatePostCommentResponseNewMessageDataReactionsItemReaction;
   users: CreatePostCommentResponseNewMessageDataReactionsItemUsersList;
   count: number;
 }
+const CreatePostCommentResponseNewMessageDataReactionsItem = /*@__PURE__*/ __L.at(
+  __c5,
+  4,
+) as any as S.Schema<CreatePostCommentResponseNewMessageDataReactionsItem>;
+
 export type CreatePostCommentResponseNewMessageDataReactionsList =
   Array<CreatePostCommentResponseNewMessageDataReactionsItem>;
+const CreatePostCommentResponseNewMessageDataReactionsList = /*@__PURE__*/ __L.at(
+  __c5,
+  5,
+) as any as S.Schema<CreatePostCommentResponseNewMessageDataReactionsList>;
+
 export type CreatePostCommentResponseNewMessageDataIdentifiedLanguage =
   CreateBlogCommentResponseNewMessageDataIdentifiedLanguage;
 export interface CreatePostCommentResponseNewMessageData {
@@ -1264,6 +1587,11 @@ export interface CreatePostCommentResponseNewMessageData {
   isReport?: boolean;
   parentCommentId?: string;
 }
+const CreatePostCommentResponseNewMessageData = /*@__PURE__*/ __L.at(
+  __c5,
+  6,
+) as any as S.Schema<CreatePostCommentResponseNewMessageData>;
+
 export interface CreatePostCommentResponseNewMessage {
   id: string;
   createdAt: string;
@@ -1271,37 +1599,76 @@ export interface CreatePostCommentResponseNewMessage {
   type: string;
   data: CreatePostCommentResponseNewMessageData;
 }
+const CreatePostCommentResponseNewMessage = /*@__PURE__*/ __L.at(
+  __c5,
+  7,
+) as any as S.Schema<CreatePostCommentResponseNewMessage>;
+
 export interface CreatePostCommentResponse {
   newMessage: CreatePostCommentResponseNewMessage;
 }
+const CreatePostCommentResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<CreatePostCommentResponse>;
+
 export type DeleteDiscussionRequestRepoType = "models" | "spaces" | "datasets" | "kernels";
+const DeleteDiscussionRequestRepoType = S.String;
+
 export interface DeleteDiscussionRequest {
   repoType: DeleteDiscussionRequestRepoType | (string & {});
   namespace: string;
   repo: string;
   num: string;
 }
+const DeleteDiscussionRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  1,
+) as any as S.Schema<DeleteDiscussionRequest>;
+
 export interface DeleteDiscussionResponse {}
+const DeleteDiscussionResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  2,
+) as any as S.Schema<DeleteDiscussionResponse>;
+
 export interface DeletePostRequest {
   username: string;
   postSlug: string;
 }
+const DeletePostRequest = /*@__PURE__*/ __L.at(__c6, 3) as any as S.Schema<DeletePostRequest>;
+
 export interface DeletePostResponse {}
+const DeletePostResponse = DeleteDiscussionResponse as any as S.Schema<DeletePostResponse>;
+
 export type DeletePrRefRequestRepoType = "models" | "spaces" | "datasets" | "kernels";
+const DeletePrRefRequestRepoType = S.String;
+
 export interface DeletePrRefRequest {
   repoType: DeletePrRefRequestRepoType | (string & {});
   namespace: string;
   repo: string;
   num: string;
 }
+const DeletePrRefRequest = /*@__PURE__*/ __L.at(__c6, 4) as any as S.Schema<DeletePrRefRequest>;
+
 export interface DeletePrRefResponse {}
+const DeletePrRefResponse = DeleteDiscussionResponse as any as S.Schema<DeletePrRefResponse>;
+
 export type GetDiscussionDetailsRequestRepoType = "models" | "spaces" | "datasets" | "kernels";
+const GetDiscussionDetailsRequestRepoType = S.String;
+
 export interface GetDiscussionDetailsRequest {
   repoType: GetDiscussionDetailsRequestRepoType | (string & {});
   namespace: string;
   repo: string;
   num: string;
 }
+const GetDiscussionDetailsRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  5,
+) as any as S.Schema<GetDiscussionDetailsRequest>;
+
 export type GetDiscussionDetailsResponseBodyCase0AuthorCase0Plan =
   | "team"
   | "enterprise"
@@ -1381,10 +1748,14 @@ export interface GetDiscussionDetailsResponseBodyCase0Org {
   requiresSSO?: boolean;
 }
 export type RepoIdType = "dataset" | "model" | "space" | "bucket" | "kernel" | "container";
+const RepoIdType = S.String;
+
 export interface RepoId {
   name: string;
   type: RepoIdType;
 }
+const RepoId = /*@__PURE__*/ __L.at(__c6, 6) as any as S.Schema<RepoId>;
+
 export type GetDiscussionDetailsResponseBodyCase0Status = "draft" | "open" | "closed" | "merged";
 export type GetDiscussionDetailsResponseBodyCase0EventsItemCase0AuthorCase0OauthAppImageData =
   ChangeStatusResponseNewStatusAuthorCase0OauthAppImageData;
@@ -3341,7 +3712,15 @@ export interface GetDiscussionDetailsResponseBodyCase1 {
 export type GetDiscussionDetailsResponseBody =
   | GetDiscussionDetailsResponseBodyCase0
   | GetDiscussionDetailsResponseBodyCase1;
+const GetDiscussionDetailsResponseBody =
+  S.Unknown as any as S.Schema<GetDiscussionDetailsResponseBody>;
+
 export type GetDiscussionDetailsResponse = GetDiscussionDetailsResponseBody;
+const GetDiscussionDetailsResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  7,
+) as any as S.Schema<GetDiscussionDetailsResponse>;
+
 export type HideBlogCommentRequestReason =
   | "Spam"
   | "Abuse"
@@ -3349,12 +3728,22 @@ export type HideBlogCommentRequestReason =
   | "Resolved"
   | "Off-Topic"
   | "Low Quality";
+const HideBlogCommentRequestReason = S.String;
+
 export interface HideBlogCommentRequest {
   slug: string;
   commentId: string;
   reason?: HideBlogCommentRequestReason | (string & {});
 }
+const HideBlogCommentRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  0,
+) as any as S.Schema<HideBlogCommentRequest>;
+
 export interface HideBlogCommentResponse {}
+const HideBlogCommentResponse =
+  DeleteDiscussionResponse as any as S.Schema<HideBlogCommentResponse>;
+
 export type HideCommunityBlogCommentRequestReason =
   | "Spam"
   | "Abuse"
@@ -3362,14 +3751,28 @@ export type HideCommunityBlogCommentRequestReason =
   | "Resolved"
   | "Off-Topic"
   | "Low Quality";
+const HideCommunityBlogCommentRequestReason = S.String;
+
 export interface HideCommunityBlogCommentRequest {
   namespace: string;
   slug: string;
   commentId: string;
   reason?: HideCommunityBlogCommentRequestReason | (string & {});
 }
+const HideCommunityBlogCommentRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  1,
+) as any as S.Schema<HideCommunityBlogCommentRequest>;
+
 export interface HideCommunityBlogCommentResponse {}
+const HideCommunityBlogCommentResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  2,
+) as any as S.Schema<HideCommunityBlogCommentResponse>;
+
 export type HideDiscussionCommentRequestRepoType = "models" | "spaces" | "datasets" | "kernels";
+const HideDiscussionCommentRequestRepoType = S.String;
+
 export type HideDiscussionCommentRequestReason =
   | "Spam"
   | "Abuse"
@@ -3377,6 +3780,8 @@ export type HideDiscussionCommentRequestReason =
   | "Resolved"
   | "Off-Topic"
   | "Low Quality";
+const HideDiscussionCommentRequestReason = S.String;
+
 export interface HideDiscussionCommentRequest {
   repoType: HideDiscussionCommentRequestRepoType | (string & {});
   namespace: string;
@@ -3385,7 +3790,15 @@ export interface HideDiscussionCommentRequest {
   commentId: string;
   reason?: HideDiscussionCommentRequestReason | (string & {});
 }
+const HideDiscussionCommentRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  3,
+) as any as S.Schema<HideDiscussionCommentRequest>;
+
 export interface HideDiscussionCommentResponse {}
+const HideDiscussionCommentResponse =
+  DeleteDiscussionResponse as any as S.Schema<HideDiscussionCommentResponse>;
+
 export type HidePaperCommentRequestReason =
   | "Spam"
   | "Abuse"
@@ -3393,12 +3806,22 @@ export type HidePaperCommentRequestReason =
   | "Resolved"
   | "Off-Topic"
   | "Low Quality";
+const HidePaperCommentRequestReason = S.String;
+
 export interface HidePaperCommentRequest {
   paperId: string;
   commentId: string;
   reason?: HidePaperCommentRequestReason | (string & {});
 }
+const HidePaperCommentRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  4,
+) as any as S.Schema<HidePaperCommentRequest>;
+
 export interface HidePaperCommentResponse {}
+const HidePaperCommentResponse =
+  DeleteDiscussionResponse as any as S.Schema<HidePaperCommentResponse>;
+
 export type HidePostCommentRequestReason =
   | "Spam"
   | "Abuse"
@@ -3406,17 +3829,35 @@ export type HidePostCommentRequestReason =
   | "Resolved"
   | "Off-Topic"
   | "Low Quality";
+const HidePostCommentRequestReason = S.String;
+
 export interface HidePostCommentRequest {
   username: string;
   postSlug: string;
   commentId: string;
   reason?: HidePostCommentRequestReason | (string & {});
 }
+const HidePostCommentRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  5,
+) as any as S.Schema<HidePostCommentRequest>;
+
 export interface HidePostCommentResponse {}
+const HidePostCommentResponse =
+  DeleteDiscussionResponse as any as S.Schema<HidePostCommentResponse>;
+
 export type ListDiscussionsRequestRepoType = "models" | "spaces" | "datasets" | "kernels";
+const ListDiscussionsRequestRepoType = S.String;
+
 export type ListDiscussionsRequestType = "all" | "discussion" | "pull_request";
+const ListDiscussionsRequestType = S.String;
+
 export type ListDiscussionsRequestStatus = "all" | "open" | "closed";
+const ListDiscussionsRequestStatus = S.String;
+
 export type ListDiscussionsRequestSort = "recently-created" | "trending" | "reactions";
+const ListDiscussionsRequestSort = S.String;
+
 export interface ListDiscussionsRequest {
   repoType: ListDiscussionsRequestRepoType | (string & {});
   namespace: string;
@@ -3428,6 +3869,11 @@ export interface ListDiscussionsRequest {
   search?: string;
   sort?: ListDiscussionsRequestSort | (string & {});
 }
+const ListDiscussionsRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  6,
+) as any as S.Schema<ListDiscussionsRequest>;
+
 export type ListDiscussionsResponseDiscussionsItemAuthorCase0Plan =
   | "team"
   | "enterprise"
@@ -3489,6 +3935,9 @@ export interface ListDiscussionsResponseDiscussionsItemAuthorCase1 {
 export type ListDiscussionsResponseDiscussionsItemAuthor =
   | ListDiscussionsResponseDiscussionsItemAuthorCase0
   | ListDiscussionsResponseDiscussionsItemAuthorCase1;
+const ListDiscussionsResponseDiscussionsItemAuthor =
+  S.Unknown as any as S.Schema<ListDiscussionsResponseDiscussionsItemAuthor>;
+
 export type ListDiscussionsResponseDiscussionsItemTopReactionsItemReaction =
   | "\ud83d\udd25"
   | "\ud83d\ude80"
@@ -3502,20 +3951,41 @@ export type ListDiscussionsResponseDiscussionsItemTopReactionsItemReaction =
   | "\ud83e\udd1d"
   | "\ud83d\ude14"
   | "\ud83e\udd2f";
+const ListDiscussionsResponseDiscussionsItemTopReactionsItemReaction = S.String;
+
 export interface ListDiscussionsResponseDiscussionsItemTopReactionsItem {
   reaction: ListDiscussionsResponseDiscussionsItemTopReactionsItemReaction;
   count: number;
 }
+const ListDiscussionsResponseDiscussionsItemTopReactionsItem = /*@__PURE__*/ __L.at(
+  __c7,
+  7,
+) as any as S.Schema<ListDiscussionsResponseDiscussionsItemTopReactionsItem>;
+
 export type ListDiscussionsResponseDiscussionsItemTopReactionsList =
   Array<ListDiscussionsResponseDiscussionsItemTopReactionsItem>;
+const ListDiscussionsResponseDiscussionsItemTopReactionsList = /*@__PURE__*/ __L.at(
+  __c8,
+  0,
+) as any as S.Schema<ListDiscussionsResponseDiscussionsItemTopReactionsList>;
+
 export type ListDiscussionsResponseDiscussionsItemStatus = "draft" | "open" | "closed" | "merged";
+const ListDiscussionsResponseDiscussionsItemStatus = S.String;
+
 export type ListDiscussionsResponseDiscussionsItemRepoOwnerType = "org" | "user";
+const ListDiscussionsResponseDiscussionsItemRepoOwnerType = S.String;
+
 export interface ListDiscussionsResponseDiscussionsItemRepoOwner {
   name: string;
   type: ListDiscussionsResponseDiscussionsItemRepoOwnerType;
   isParticipating: boolean;
   isDiscussionAuthor: boolean;
 }
+const ListDiscussionsResponseDiscussionsItemRepoOwner = /*@__PURE__*/ __L.at(
+  __c8,
+  1,
+) as any as S.Schema<ListDiscussionsResponseDiscussionsItemRepoOwner>;
+
 export interface ListDiscussionsResponseDiscussionsItem {
   num: number;
   author?: ListDiscussionsResponseDiscussionsItemAuthor;
@@ -3530,7 +4000,17 @@ export interface ListDiscussionsResponseDiscussionsItem {
   pinned: boolean;
   repoOwner?: ListDiscussionsResponseDiscussionsItemRepoOwner;
 }
+const ListDiscussionsResponseDiscussionsItem = /*@__PURE__*/ __L.at(
+  __c8,
+  2,
+) as any as S.Schema<ListDiscussionsResponseDiscussionsItem>;
+
 export type ListDiscussionsResponseDiscussionsList = Array<ListDiscussionsResponseDiscussionsItem>;
+const ListDiscussionsResponseDiscussionsList = /*@__PURE__*/ __L.at(
+  __c8,
+  3,
+) as any as S.Schema<ListDiscussionsResponseDiscussionsList>;
+
 export interface ListDiscussionsResponse {
   discussions: ListDiscussionsResponseDiscussionsList;
   count: number;
@@ -3538,7 +4018,14 @@ export interface ListDiscussionsResponse {
   /** Number of closed discussions on the first page */
   numClosedDiscussions?: number;
 }
+const ListDiscussionsResponse = /*@__PURE__*/ __L.at(
+  __c8,
+  4,
+) as any as S.Schema<ListDiscussionsResponse>;
+
 export type MergePullRequestRequestRepoType = "models" | "spaces" | "datasets" | "kernels";
+const MergePullRequestRequestRepoType = S.String;
+
 export interface MergePullRequestRequest {
   repoType: MergePullRequestRequestRepoType | (string & {});
   namespace: string;
@@ -3546,8 +4033,18 @@ export interface MergePullRequestRequest {
   num: string;
   comment?: string;
 }
+const MergePullRequestRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  5,
+) as any as S.Schema<MergePullRequestRequest>;
+
 export interface MergePullRequestResponse {}
+const MergePullRequestResponse =
+  DeleteDiscussionResponse as any as S.Schema<MergePullRequestResponse>;
+
 export type PinDiscussionRequestRepoType = "models" | "spaces" | "datasets" | "kernels";
+const PinDiscussionRequestRepoType = S.String;
+
 export interface PinDiscussionRequest {
   repoType: PinDiscussionRequestRepoType | (string & {});
   namespace: string;
@@ -3555,20 +4052,36 @@ export interface PinDiscussionRequest {
   num: string;
   pinned: boolean;
 }
+const PinDiscussionRequest = /*@__PURE__*/ __L.at(__c8, 6) as any as S.Schema<PinDiscussionRequest>;
+
 export interface PinDiscussionResponse {}
+const PinDiscussionResponse = DeleteDiscussionResponse as any as S.Schema<PinDiscussionResponse>;
+
 export type PrStorageEstimateRequestRepoType = "models" | "spaces" | "datasets" | "kernels";
+const PrStorageEstimateRequestRepoType = S.String;
+
 export interface PrStorageEstimateRequest {
   repoType: PrStorageEstimateRequestRepoType | (string & {});
   namespace: string;
   repo: string;
   num: string;
 }
+const PrStorageEstimateRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  7,
+) as any as S.Schema<PrStorageEstimateRequest>;
+
 export interface PrStorageEstimateResponse {
   /** Estimated storage in bytes that may be freed */
   estimatedStorage: number;
   /** Whether the ref has already been deleted */
   refDeleted: boolean;
 }
+const PrStorageEstimateResponse = /*@__PURE__*/ __L.at(
+  __c9,
+  0,
+) as any as S.Schema<PrStorageEstimateResponse>;
+
 export type ReactToBlogCommentRequestReaction =
   | "\ud83d\udd25"
   | "\ud83d\ude80"
@@ -3582,14 +4095,26 @@ export type ReactToBlogCommentRequestReaction =
   | "\ud83e\udd1d"
   | "\ud83d\ude14"
   | "\ud83e\udd2f";
+const ReactToBlogCommentRequestReaction = S.String;
+
 export type ReactToBlogCommentRequestAction = "add" | "remove";
+const ReactToBlogCommentRequestAction = S.String;
+
 export interface ReactToBlogCommentRequest {
   slug: string;
   commentId: string;
   reaction: ReactToBlogCommentRequestReaction | (string & {});
   action: ReactToBlogCommentRequestAction | (string & {});
 }
+const ReactToBlogCommentRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  1,
+) as any as S.Schema<ReactToBlogCommentRequest>;
+
 export interface ReactToBlogCommentResponse {}
+const ReactToBlogCommentResponse =
+  DeleteDiscussionResponse as any as S.Schema<ReactToBlogCommentResponse>;
+
 export type ReactToCommunityBlogCommentRequestReaction =
   | "\ud83d\udd25"
   | "\ud83d\ude80"
@@ -3603,7 +4128,11 @@ export type ReactToCommunityBlogCommentRequestReaction =
   | "\ud83e\udd1d"
   | "\ud83d\ude14"
   | "\ud83e\udd2f";
+const ReactToCommunityBlogCommentRequestReaction = S.String;
+
 export type ReactToCommunityBlogCommentRequestAction = "add" | "remove";
+const ReactToCommunityBlogCommentRequestAction = S.String;
+
 export interface ReactToCommunityBlogCommentRequest {
   namespace: string;
   slug: string;
@@ -3611,8 +4140,18 @@ export interface ReactToCommunityBlogCommentRequest {
   reaction: ReactToCommunityBlogCommentRequestReaction | (string & {});
   action: ReactToCommunityBlogCommentRequestAction | (string & {});
 }
+const ReactToCommunityBlogCommentRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  2,
+) as any as S.Schema<ReactToCommunityBlogCommentRequest>;
+
 export interface ReactToCommunityBlogCommentResponse {}
+const ReactToCommunityBlogCommentResponse =
+  HideCommunityBlogCommentResponse as any as S.Schema<ReactToCommunityBlogCommentResponse>;
+
 export type ReactToDiscussionCommentRequestRepoType = "models" | "spaces" | "datasets" | "kernels";
+const ReactToDiscussionCommentRequestRepoType = S.String;
+
 export type ReactToDiscussionCommentRequestReaction =
   | "\ud83d\udd25"
   | "\ud83d\ude80"
@@ -3626,7 +4165,11 @@ export type ReactToDiscussionCommentRequestReaction =
   | "\ud83e\udd1d"
   | "\ud83d\ude14"
   | "\ud83e\udd2f";
+const ReactToDiscussionCommentRequestReaction = S.String;
+
 export type ReactToDiscussionCommentRequestAction = "add" | "remove";
+const ReactToDiscussionCommentRequestAction = S.String;
+
 export interface ReactToDiscussionCommentRequest {
   repoType: ReactToDiscussionCommentRequestRepoType | (string & {});
   namespace: string;
@@ -3636,7 +4179,15 @@ export interface ReactToDiscussionCommentRequest {
   reaction: ReactToDiscussionCommentRequestReaction | (string & {});
   action: ReactToDiscussionCommentRequestAction | (string & {});
 }
+const ReactToDiscussionCommentRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  3,
+) as any as S.Schema<ReactToDiscussionCommentRequest>;
+
 export interface ReactToDiscussionCommentResponse {}
+const ReactToDiscussionCommentResponse =
+  HideCommunityBlogCommentResponse as any as S.Schema<ReactToDiscussionCommentResponse>;
+
 export type ReactToPaperCommentRequestReaction =
   | "\ud83d\udd25"
   | "\ud83d\ude80"
@@ -3650,14 +4201,26 @@ export type ReactToPaperCommentRequestReaction =
   | "\ud83e\udd1d"
   | "\ud83d\ude14"
   | "\ud83e\udd2f";
+const ReactToPaperCommentRequestReaction = S.String;
+
 export type ReactToPaperCommentRequestAction = "add" | "remove";
+const ReactToPaperCommentRequestAction = S.String;
+
 export interface ReactToPaperCommentRequest {
   paperId: string;
   commentId: string;
   reaction: ReactToPaperCommentRequestReaction | (string & {});
   action: ReactToPaperCommentRequestAction | (string & {});
 }
+const ReactToPaperCommentRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  4,
+) as any as S.Schema<ReactToPaperCommentRequest>;
+
 export interface ReactToPaperCommentResponse {}
+const ReactToPaperCommentResponse =
+  DeleteDiscussionResponse as any as S.Schema<ReactToPaperCommentResponse>;
+
 export type ReactToPostCommentRequestReaction =
   | "\ud83d\udd25"
   | "\ud83d\ude80"
@@ -3671,7 +4234,11 @@ export type ReactToPostCommentRequestReaction =
   | "\ud83e\udd1d"
   | "\ud83d\ude14"
   | "\ud83e\udd2f";
+const ReactToPostCommentRequestReaction = S.String;
+
 export type ReactToPostCommentRequestAction = "add" | "remove";
+const ReactToPostCommentRequestAction = S.String;
+
 export interface ReactToPostCommentRequest {
   username: string;
   postSlug: string;
@@ -3679,12 +4246,25 @@ export interface ReactToPostCommentRequest {
   reaction: ReactToPostCommentRequestReaction | (string & {});
   action: ReactToPostCommentRequestAction | (string & {});
 }
+const ReactToPostCommentRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  5,
+) as any as S.Schema<ReactToPostCommentRequest>;
+
 export interface ReactToPostCommentResponse {}
+const ReactToPostCommentResponse =
+  DeleteDiscussionResponse as any as S.Schema<ReactToPostCommentResponse>;
+
 export interface ReplyToBlogCommentRequest {
   slug: string;
   commentId: string;
   comment: string;
 }
+const ReplyToBlogCommentRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  6,
+) as any as S.Schema<ReplyToBlogCommentRequest>;
+
 export type ReplyToBlogCommentResponseNewMessageAuthorCase0OauthAppImageData =
   ChangeStatusResponseNewStatusAuthorCase0OauthAppImageData;
 export type ReplyToBlogCommentResponseNewMessageAuthorCase0OauthApp =
@@ -3762,6 +4342,9 @@ export interface ReplyToBlogCommentResponseNewMessageAuthorCase1 {
 export type ReplyToBlogCommentResponseNewMessageAuthor =
   | ReplyToBlogCommentResponseNewMessageAuthorCase0
   | ReplyToBlogCommentResponseNewMessageAuthorCase1;
+const ReplyToBlogCommentResponseNewMessageAuthor =
+  S.Unknown as any as S.Schema<ReplyToBlogCommentResponseNewMessageAuthor>;
+
 export type ReplyToBlogCommentResponseNewMessageDataHiddenReason =
   | "Spam"
   | "Abuse"
@@ -3769,6 +4352,8 @@ export type ReplyToBlogCommentResponseNewMessageDataHiddenReason =
   | "Resolved"
   | "Off-Topic"
   | "Low Quality";
+const ReplyToBlogCommentResponseNewMessageDataHiddenReason = S.String;
+
 export type ReplyToBlogCommentResponseNewMessageDataLatestAuthorCase0Plan =
   | "team"
   | "enterprise"
@@ -3830,14 +4415,28 @@ export interface ReplyToBlogCommentResponseNewMessageDataLatestAuthorCase1 {
 export type ReplyToBlogCommentResponseNewMessageDataLatestAuthor =
   | ReplyToBlogCommentResponseNewMessageDataLatestAuthorCase0
   | ReplyToBlogCommentResponseNewMessageDataLatestAuthorCase1;
+const ReplyToBlogCommentResponseNewMessageDataLatestAuthor =
+  S.Unknown as any as S.Schema<ReplyToBlogCommentResponseNewMessageDataLatestAuthor>;
+
 export interface ReplyToBlogCommentResponseNewMessageDataLatest {
   raw: string;
   html: string;
   updatedAt: string;
   author?: ReplyToBlogCommentResponseNewMessageDataLatestAuthor;
 }
+const ReplyToBlogCommentResponseNewMessageDataLatest = /*@__PURE__*/ __L.at(
+  __c9,
+  7,
+) as any as S.Schema<ReplyToBlogCommentResponseNewMessageDataLatest>;
+
 export type ReplyToBlogCommentResponseNewMessageDataEditorsList = Array<string>;
+const ReplyToBlogCommentResponseNewMessageDataEditorsList =
+  CreateBlogCommentResponseNewMessageDataEditorsList as any as S.Schema<ReplyToBlogCommentResponseNewMessageDataEditorsList>;
+
 export type ReplyToBlogCommentResponseNewMessageDataEditorAvatarUrlsList = Array<string>;
+const ReplyToBlogCommentResponseNewMessageDataEditorAvatarUrlsList =
+  CreateBlogCommentResponseNewMessageDataEditorsList as any as S.Schema<ReplyToBlogCommentResponseNewMessageDataEditorAvatarUrlsList>;
+
 export type ReplyToBlogCommentResponseNewMessageDataReactionsItemReaction =
   | "\ud83d\udd25"
   | "\ud83d\ude80"
@@ -3851,14 +4450,29 @@ export type ReplyToBlogCommentResponseNewMessageDataReactionsItemReaction =
   | "\ud83e\udd1d"
   | "\ud83d\ude14"
   | "\ud83e\udd2f";
+const ReplyToBlogCommentResponseNewMessageDataReactionsItemReaction = S.String;
+
 export type ReplyToBlogCommentResponseNewMessageDataReactionsItemUsersList = Array<string>;
+const ReplyToBlogCommentResponseNewMessageDataReactionsItemUsersList =
+  CreateBlogCommentResponseNewMessageDataEditorsList as any as S.Schema<ReplyToBlogCommentResponseNewMessageDataReactionsItemUsersList>;
+
 export interface ReplyToBlogCommentResponseNewMessageDataReactionsItem {
   reaction: ReplyToBlogCommentResponseNewMessageDataReactionsItemReaction;
   users: ReplyToBlogCommentResponseNewMessageDataReactionsItemUsersList;
   count: number;
 }
+const ReplyToBlogCommentResponseNewMessageDataReactionsItem = /*@__PURE__*/ __L.at(
+  __c10,
+  0,
+) as any as S.Schema<ReplyToBlogCommentResponseNewMessageDataReactionsItem>;
+
 export type ReplyToBlogCommentResponseNewMessageDataReactionsList =
   Array<ReplyToBlogCommentResponseNewMessageDataReactionsItem>;
+const ReplyToBlogCommentResponseNewMessageDataReactionsList = /*@__PURE__*/ __L.at(
+  __c10,
+  1,
+) as any as S.Schema<ReplyToBlogCommentResponseNewMessageDataReactionsList>;
+
 export type ReplyToBlogCommentResponseNewMessageDataIdentifiedLanguage =
   CreateBlogCommentResponseNewMessageDataIdentifiedLanguage;
 export interface ReplyToBlogCommentResponseNewMessageData {
@@ -3876,6 +4490,11 @@ export interface ReplyToBlogCommentResponseNewMessageData {
   isReport?: boolean;
   parentCommentId?: string;
 }
+const ReplyToBlogCommentResponseNewMessageData = /*@__PURE__*/ __L.at(
+  __c10,
+  2,
+) as any as S.Schema<ReplyToBlogCommentResponseNewMessageData>;
+
 export interface ReplyToBlogCommentResponseNewMessage {
   id: string;
   createdAt: string;
@@ -3883,15 +4502,30 @@ export interface ReplyToBlogCommentResponseNewMessage {
   type: string;
   data: ReplyToBlogCommentResponseNewMessageData;
 }
+const ReplyToBlogCommentResponseNewMessage = /*@__PURE__*/ __L.at(
+  __c10,
+  3,
+) as any as S.Schema<ReplyToBlogCommentResponseNewMessage>;
+
 export interface ReplyToBlogCommentResponse {
   newMessage: ReplyToBlogCommentResponseNewMessage;
 }
+const ReplyToBlogCommentResponse = /*@__PURE__*/ __L.at(
+  __c10,
+  4,
+) as any as S.Schema<ReplyToBlogCommentResponse>;
+
 export interface ReplyToCommunityBlogCommentRequest {
   namespace: string;
   slug: string;
   commentId: string;
   comment: string;
 }
+const ReplyToCommunityBlogCommentRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  5,
+) as any as S.Schema<ReplyToCommunityBlogCommentRequest>;
+
 export type ReplyToCommunityBlogCommentResponseNewMessageAuthorCase0OauthAppImageData =
   ChangeStatusResponseNewStatusAuthorCase0OauthAppImageData;
 export type ReplyToCommunityBlogCommentResponseNewMessageAuthorCase0OauthApp =
@@ -3969,6 +4603,9 @@ export interface ReplyToCommunityBlogCommentResponseNewMessageAuthorCase1 {
 export type ReplyToCommunityBlogCommentResponseNewMessageAuthor =
   | ReplyToCommunityBlogCommentResponseNewMessageAuthorCase0
   | ReplyToCommunityBlogCommentResponseNewMessageAuthorCase1;
+const ReplyToCommunityBlogCommentResponseNewMessageAuthor =
+  S.Unknown as any as S.Schema<ReplyToCommunityBlogCommentResponseNewMessageAuthor>;
+
 export type ReplyToCommunityBlogCommentResponseNewMessageDataHiddenReason =
   | "Spam"
   | "Abuse"
@@ -3976,6 +4613,8 @@ export type ReplyToCommunityBlogCommentResponseNewMessageDataHiddenReason =
   | "Resolved"
   | "Off-Topic"
   | "Low Quality";
+const ReplyToCommunityBlogCommentResponseNewMessageDataHiddenReason = S.String;
+
 export type ReplyToCommunityBlogCommentResponseNewMessageDataLatestAuthorCase0Plan =
   | "team"
   | "enterprise"
@@ -4037,14 +4676,28 @@ export interface ReplyToCommunityBlogCommentResponseNewMessageDataLatestAuthorCa
 export type ReplyToCommunityBlogCommentResponseNewMessageDataLatestAuthor =
   | ReplyToCommunityBlogCommentResponseNewMessageDataLatestAuthorCase0
   | ReplyToCommunityBlogCommentResponseNewMessageDataLatestAuthorCase1;
+const ReplyToCommunityBlogCommentResponseNewMessageDataLatestAuthor =
+  S.Unknown as any as S.Schema<ReplyToCommunityBlogCommentResponseNewMessageDataLatestAuthor>;
+
 export interface ReplyToCommunityBlogCommentResponseNewMessageDataLatest {
   raw: string;
   html: string;
   updatedAt: string;
   author?: ReplyToCommunityBlogCommentResponseNewMessageDataLatestAuthor;
 }
+const ReplyToCommunityBlogCommentResponseNewMessageDataLatest = /*@__PURE__*/ __L.at(
+  __c10,
+  6,
+) as any as S.Schema<ReplyToCommunityBlogCommentResponseNewMessageDataLatest>;
+
 export type ReplyToCommunityBlogCommentResponseNewMessageDataEditorsList = Array<string>;
+const ReplyToCommunityBlogCommentResponseNewMessageDataEditorsList =
+  CreateBlogCommentResponseNewMessageDataEditorsList as any as S.Schema<ReplyToCommunityBlogCommentResponseNewMessageDataEditorsList>;
+
 export type ReplyToCommunityBlogCommentResponseNewMessageDataEditorAvatarUrlsList = Array<string>;
+const ReplyToCommunityBlogCommentResponseNewMessageDataEditorAvatarUrlsList =
+  CreateCommunityBlogCommentResponseNewMessageDataEditorAvatarUrlsList as any as S.Schema<ReplyToCommunityBlogCommentResponseNewMessageDataEditorAvatarUrlsList>;
+
 export type ReplyToCommunityBlogCommentResponseNewMessageDataReactionsItemReaction =
   | "\ud83d\udd25"
   | "\ud83d\ude80"
@@ -4058,14 +4711,29 @@ export type ReplyToCommunityBlogCommentResponseNewMessageDataReactionsItemReacti
   | "\ud83e\udd1d"
   | "\ud83d\ude14"
   | "\ud83e\udd2f";
+const ReplyToCommunityBlogCommentResponseNewMessageDataReactionsItemReaction = S.String;
+
 export type ReplyToCommunityBlogCommentResponseNewMessageDataReactionsItemUsersList = Array<string>;
+const ReplyToCommunityBlogCommentResponseNewMessageDataReactionsItemUsersList =
+  CreateCommunityBlogCommentResponseNewMessageDataEditorAvatarUrlsList as any as S.Schema<ReplyToCommunityBlogCommentResponseNewMessageDataReactionsItemUsersList>;
+
 export interface ReplyToCommunityBlogCommentResponseNewMessageDataReactionsItem {
   reaction: ReplyToCommunityBlogCommentResponseNewMessageDataReactionsItemReaction;
   users: ReplyToCommunityBlogCommentResponseNewMessageDataReactionsItemUsersList;
   count: number;
 }
+const ReplyToCommunityBlogCommentResponseNewMessageDataReactionsItem = /*@__PURE__*/ __L.at(
+  __c10,
+  7,
+) as any as S.Schema<ReplyToCommunityBlogCommentResponseNewMessageDataReactionsItem>;
+
 export type ReplyToCommunityBlogCommentResponseNewMessageDataReactionsList =
   Array<ReplyToCommunityBlogCommentResponseNewMessageDataReactionsItem>;
+const ReplyToCommunityBlogCommentResponseNewMessageDataReactionsList = /*@__PURE__*/ __L.at(
+  __c11,
+  0,
+) as any as S.Schema<ReplyToCommunityBlogCommentResponseNewMessageDataReactionsList>;
+
 export type ReplyToCommunityBlogCommentResponseNewMessageDataIdentifiedLanguage =
   CreateBlogCommentResponseNewMessageDataIdentifiedLanguage;
 export interface ReplyToCommunityBlogCommentResponseNewMessageData {
@@ -4083,6 +4751,11 @@ export interface ReplyToCommunityBlogCommentResponseNewMessageData {
   isReport?: boolean;
   parentCommentId?: string;
 }
+const ReplyToCommunityBlogCommentResponseNewMessageData = /*@__PURE__*/ __L.at(
+  __c11,
+  1,
+) as any as S.Schema<ReplyToCommunityBlogCommentResponseNewMessageData>;
+
 export interface ReplyToCommunityBlogCommentResponseNewMessage {
   id: string;
   createdAt: string;
@@ -4090,14 +4763,29 @@ export interface ReplyToCommunityBlogCommentResponseNewMessage {
   type: string;
   data: ReplyToCommunityBlogCommentResponseNewMessageData;
 }
+const ReplyToCommunityBlogCommentResponseNewMessage = /*@__PURE__*/ __L.at(
+  __c11,
+  2,
+) as any as S.Schema<ReplyToCommunityBlogCommentResponseNewMessage>;
+
 export interface ReplyToCommunityBlogCommentResponse {
   newMessage: ReplyToCommunityBlogCommentResponseNewMessage;
 }
+const ReplyToCommunityBlogCommentResponse = /*@__PURE__*/ __L.at(
+  __c11,
+  3,
+) as any as S.Schema<ReplyToCommunityBlogCommentResponse>;
+
 export interface ReplyToPaperCommentRequest {
   paperId: string;
   commentId: string;
   comment: string;
 }
+const ReplyToPaperCommentRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  4,
+) as any as S.Schema<ReplyToPaperCommentRequest>;
+
 export type ReplyToPaperCommentResponseNewMessageAuthorCase0OauthAppImageData =
   ChangeStatusResponseNewStatusAuthorCase0OauthAppImageData;
 export type ReplyToPaperCommentResponseNewMessageAuthorCase0OauthApp =
@@ -4175,6 +4863,9 @@ export interface ReplyToPaperCommentResponseNewMessageAuthorCase1 {
 export type ReplyToPaperCommentResponseNewMessageAuthor =
   | ReplyToPaperCommentResponseNewMessageAuthorCase0
   | ReplyToPaperCommentResponseNewMessageAuthorCase1;
+const ReplyToPaperCommentResponseNewMessageAuthor =
+  S.Unknown as any as S.Schema<ReplyToPaperCommentResponseNewMessageAuthor>;
+
 export type ReplyToPaperCommentResponseNewMessageDataHiddenReason =
   | "Spam"
   | "Abuse"
@@ -4182,6 +4873,8 @@ export type ReplyToPaperCommentResponseNewMessageDataHiddenReason =
   | "Resolved"
   | "Off-Topic"
   | "Low Quality";
+const ReplyToPaperCommentResponseNewMessageDataHiddenReason = S.String;
+
 export type ReplyToPaperCommentResponseNewMessageDataLatestAuthorCase0Plan =
   | "team"
   | "enterprise"
@@ -4243,14 +4936,28 @@ export interface ReplyToPaperCommentResponseNewMessageDataLatestAuthorCase1 {
 export type ReplyToPaperCommentResponseNewMessageDataLatestAuthor =
   | ReplyToPaperCommentResponseNewMessageDataLatestAuthorCase0
   | ReplyToPaperCommentResponseNewMessageDataLatestAuthorCase1;
+const ReplyToPaperCommentResponseNewMessageDataLatestAuthor =
+  S.Unknown as any as S.Schema<ReplyToPaperCommentResponseNewMessageDataLatestAuthor>;
+
 export interface ReplyToPaperCommentResponseNewMessageDataLatest {
   raw: string;
   html: string;
   updatedAt: string;
   author?: ReplyToPaperCommentResponseNewMessageDataLatestAuthor;
 }
+const ReplyToPaperCommentResponseNewMessageDataLatest = /*@__PURE__*/ __L.at(
+  __c11,
+  5,
+) as any as S.Schema<ReplyToPaperCommentResponseNewMessageDataLatest>;
+
 export type ReplyToPaperCommentResponseNewMessageDataEditorsList = Array<string>;
+const ReplyToPaperCommentResponseNewMessageDataEditorsList =
+  CreateBlogCommentResponseNewMessageDataEditorsList as any as S.Schema<ReplyToPaperCommentResponseNewMessageDataEditorsList>;
+
 export type ReplyToPaperCommentResponseNewMessageDataEditorAvatarUrlsList = Array<string>;
+const ReplyToPaperCommentResponseNewMessageDataEditorAvatarUrlsList =
+  CreateBlogCommentResponseNewMessageDataEditorsList as any as S.Schema<ReplyToPaperCommentResponseNewMessageDataEditorAvatarUrlsList>;
+
 export type ReplyToPaperCommentResponseNewMessageDataReactionsItemReaction =
   | "\ud83d\udd25"
   | "\ud83d\ude80"
@@ -4264,14 +4971,29 @@ export type ReplyToPaperCommentResponseNewMessageDataReactionsItemReaction =
   | "\ud83e\udd1d"
   | "\ud83d\ude14"
   | "\ud83e\udd2f";
+const ReplyToPaperCommentResponseNewMessageDataReactionsItemReaction = S.String;
+
 export type ReplyToPaperCommentResponseNewMessageDataReactionsItemUsersList = Array<string>;
+const ReplyToPaperCommentResponseNewMessageDataReactionsItemUsersList =
+  CreateCommunityBlogCommentResponseNewMessageDataEditorAvatarUrlsList as any as S.Schema<ReplyToPaperCommentResponseNewMessageDataReactionsItemUsersList>;
+
 export interface ReplyToPaperCommentResponseNewMessageDataReactionsItem {
   reaction: ReplyToPaperCommentResponseNewMessageDataReactionsItemReaction;
   users: ReplyToPaperCommentResponseNewMessageDataReactionsItemUsersList;
   count: number;
 }
+const ReplyToPaperCommentResponseNewMessageDataReactionsItem = /*@__PURE__*/ __L.at(
+  __c11,
+  6,
+) as any as S.Schema<ReplyToPaperCommentResponseNewMessageDataReactionsItem>;
+
 export type ReplyToPaperCommentResponseNewMessageDataReactionsList =
   Array<ReplyToPaperCommentResponseNewMessageDataReactionsItem>;
+const ReplyToPaperCommentResponseNewMessageDataReactionsList = /*@__PURE__*/ __L.at(
+  __c11,
+  7,
+) as any as S.Schema<ReplyToPaperCommentResponseNewMessageDataReactionsList>;
+
 export type ReplyToPaperCommentResponseNewMessageDataIdentifiedLanguage =
   CreateBlogCommentResponseNewMessageDataIdentifiedLanguage;
 export interface ReplyToPaperCommentResponseNewMessageData {
@@ -4289,6 +5011,11 @@ export interface ReplyToPaperCommentResponseNewMessageData {
   isReport?: boolean;
   parentCommentId?: string;
 }
+const ReplyToPaperCommentResponseNewMessageData = /*@__PURE__*/ __L.at(
+  __c12,
+  0,
+) as any as S.Schema<ReplyToPaperCommentResponseNewMessageData>;
+
 export interface ReplyToPaperCommentResponseNewMessage {
   id: string;
   createdAt: string;
@@ -4296,15 +5023,30 @@ export interface ReplyToPaperCommentResponseNewMessage {
   type: string;
   data: ReplyToPaperCommentResponseNewMessageData;
 }
+const ReplyToPaperCommentResponseNewMessage = /*@__PURE__*/ __L.at(
+  __c12,
+  1,
+) as any as S.Schema<ReplyToPaperCommentResponseNewMessage>;
+
 export interface ReplyToPaperCommentResponse {
   newMessage: ReplyToPaperCommentResponseNewMessage;
 }
+const ReplyToPaperCommentResponse = /*@__PURE__*/ __L.at(
+  __c12,
+  2,
+) as any as S.Schema<ReplyToPaperCommentResponse>;
+
 export interface ReplyToPostCommentRequest {
   username: string;
   postSlug: string;
   commentId: string;
   comment: string;
 }
+const ReplyToPostCommentRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  3,
+) as any as S.Schema<ReplyToPostCommentRequest>;
+
 export type ReplyToPostCommentResponseNewMessageAuthorCase0OauthAppImageData =
   ChangeStatusResponseNewStatusAuthorCase0OauthAppImageData;
 export type ReplyToPostCommentResponseNewMessageAuthorCase0OauthApp =
@@ -4382,6 +5124,9 @@ export interface ReplyToPostCommentResponseNewMessageAuthorCase1 {
 export type ReplyToPostCommentResponseNewMessageAuthor =
   | ReplyToPostCommentResponseNewMessageAuthorCase0
   | ReplyToPostCommentResponseNewMessageAuthorCase1;
+const ReplyToPostCommentResponseNewMessageAuthor =
+  S.Unknown as any as S.Schema<ReplyToPostCommentResponseNewMessageAuthor>;
+
 export type ReplyToPostCommentResponseNewMessageDataHiddenReason =
   | "Spam"
   | "Abuse"
@@ -4389,6 +5134,8 @@ export type ReplyToPostCommentResponseNewMessageDataHiddenReason =
   | "Resolved"
   | "Off-Topic"
   | "Low Quality";
+const ReplyToPostCommentResponseNewMessageDataHiddenReason = S.String;
+
 export type ReplyToPostCommentResponseNewMessageDataLatestAuthorCase0Plan =
   | "team"
   | "enterprise"
@@ -4450,14 +5197,28 @@ export interface ReplyToPostCommentResponseNewMessageDataLatestAuthorCase1 {
 export type ReplyToPostCommentResponseNewMessageDataLatestAuthor =
   | ReplyToPostCommentResponseNewMessageDataLatestAuthorCase0
   | ReplyToPostCommentResponseNewMessageDataLatestAuthorCase1;
+const ReplyToPostCommentResponseNewMessageDataLatestAuthor =
+  S.Unknown as any as S.Schema<ReplyToPostCommentResponseNewMessageDataLatestAuthor>;
+
 export interface ReplyToPostCommentResponseNewMessageDataLatest {
   raw: string;
   html: string;
   updatedAt: string;
   author?: ReplyToPostCommentResponseNewMessageDataLatestAuthor;
 }
+const ReplyToPostCommentResponseNewMessageDataLatest = /*@__PURE__*/ __L.at(
+  __c12,
+  4,
+) as any as S.Schema<ReplyToPostCommentResponseNewMessageDataLatest>;
+
 export type ReplyToPostCommentResponseNewMessageDataEditorsList = Array<string>;
+const ReplyToPostCommentResponseNewMessageDataEditorsList =
+  CreateBlogCommentResponseNewMessageDataEditorsList as any as S.Schema<ReplyToPostCommentResponseNewMessageDataEditorsList>;
+
 export type ReplyToPostCommentResponseNewMessageDataEditorAvatarUrlsList = Array<string>;
+const ReplyToPostCommentResponseNewMessageDataEditorAvatarUrlsList =
+  CreateBlogCommentResponseNewMessageDataEditorsList as any as S.Schema<ReplyToPostCommentResponseNewMessageDataEditorAvatarUrlsList>;
+
 export type ReplyToPostCommentResponseNewMessageDataReactionsItemReaction =
   | "\ud83d\udd25"
   | "\ud83d\ude80"
@@ -4471,14 +5232,29 @@ export type ReplyToPostCommentResponseNewMessageDataReactionsItemReaction =
   | "\ud83e\udd1d"
   | "\ud83d\ude14"
   | "\ud83e\udd2f";
+const ReplyToPostCommentResponseNewMessageDataReactionsItemReaction = S.String;
+
 export type ReplyToPostCommentResponseNewMessageDataReactionsItemUsersList = Array<string>;
+const ReplyToPostCommentResponseNewMessageDataReactionsItemUsersList =
+  CreateBlogCommentResponseNewMessageDataEditorsList as any as S.Schema<ReplyToPostCommentResponseNewMessageDataReactionsItemUsersList>;
+
 export interface ReplyToPostCommentResponseNewMessageDataReactionsItem {
   reaction: ReplyToPostCommentResponseNewMessageDataReactionsItemReaction;
   users: ReplyToPostCommentResponseNewMessageDataReactionsItemUsersList;
   count: number;
 }
+const ReplyToPostCommentResponseNewMessageDataReactionsItem = /*@__PURE__*/ __L.at(
+  __c12,
+  5,
+) as any as S.Schema<ReplyToPostCommentResponseNewMessageDataReactionsItem>;
+
 export type ReplyToPostCommentResponseNewMessageDataReactionsList =
   Array<ReplyToPostCommentResponseNewMessageDataReactionsItem>;
+const ReplyToPostCommentResponseNewMessageDataReactionsList = /*@__PURE__*/ __L.at(
+  __c12,
+  6,
+) as any as S.Schema<ReplyToPostCommentResponseNewMessageDataReactionsList>;
+
 export type ReplyToPostCommentResponseNewMessageDataIdentifiedLanguage =
   CreateBlogCommentResponseNewMessageDataIdentifiedLanguage;
 export interface ReplyToPostCommentResponseNewMessageData {
@@ -4496,6 +5272,11 @@ export interface ReplyToPostCommentResponseNewMessageData {
   isReport?: boolean;
   parentCommentId?: string;
 }
+const ReplyToPostCommentResponseNewMessageData = /*@__PURE__*/ __L.at(
+  __c12,
+  7,
+) as any as S.Schema<ReplyToPostCommentResponseNewMessageData>;
+
 export interface ReplyToPostCommentResponseNewMessage {
   id: string;
   createdAt: string;
@@ -4503,11 +5284,25 @@ export interface ReplyToPostCommentResponseNewMessage {
   type: string;
   data: ReplyToPostCommentResponseNewMessageData;
 }
+const ReplyToPostCommentResponseNewMessage = /*@__PURE__*/ __L.at(
+  __c13,
+  0,
+) as any as S.Schema<ReplyToPostCommentResponseNewMessage>;
+
 export interface ReplyToPostCommentResponse {
   newMessage: ReplyToPostCommentResponseNewMessage;
 }
+const ReplyToPostCommentResponse = /*@__PURE__*/ __L.at(
+  __c13,
+  1,
+) as any as S.Schema<ReplyToPostCommentResponse>;
+
 export type ToggleIgnoreDiscussionRequestRepoType = "models" | "spaces" | "datasets" | "kernels";
+const ToggleIgnoreDiscussionRequestRepoType = S.String;
+
 export type ToggleIgnoreDiscussionRequestAction = "add" | "remove";
+const ToggleIgnoreDiscussionRequestAction = S.String;
+
 export interface ToggleIgnoreDiscussionRequest {
   repoType: ToggleIgnoreDiscussionRequestRepoType | (string & {});
   namespace: string;
@@ -4515,21 +5310,47 @@ export interface ToggleIgnoreDiscussionRequest {
   num: string;
   action: ToggleIgnoreDiscussionRequestAction | (string & {});
 }
+const ToggleIgnoreDiscussionRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  2,
+) as any as S.Schema<ToggleIgnoreDiscussionRequest>;
+
 export interface ToggleIgnoreDiscussionResponse {}
+const ToggleIgnoreDiscussionResponse =
+  DeleteDiscussionResponse as any as S.Schema<ToggleIgnoreDiscussionResponse>;
+
 export interface UpdateBlogCommentRequest {
   slug: string;
   commentId: string;
   content: string;
 }
+const UpdateBlogCommentRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  3,
+) as any as S.Schema<UpdateBlogCommentRequest>;
+
 export interface UpdateBlogCommentResponse {}
+const UpdateBlogCommentResponse =
+  DeleteDiscussionResponse as any as S.Schema<UpdateBlogCommentResponse>;
+
 export interface UpdateCommunityBlogCommentRequest {
   namespace: string;
   slug: string;
   commentId: string;
   content: string;
 }
+const UpdateCommunityBlogCommentRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  4,
+) as any as S.Schema<UpdateCommunityBlogCommentRequest>;
+
 export interface UpdateCommunityBlogCommentResponse {}
+const UpdateCommunityBlogCommentResponse =
+  HideCommunityBlogCommentResponse as any as S.Schema<UpdateCommunityBlogCommentResponse>;
+
 export type UpdateDiscussionCommentRequestRepoType = "models" | "spaces" | "datasets" | "kernels";
+const UpdateDiscussionCommentRequestRepoType = S.String;
+
 export interface UpdateDiscussionCommentRequest {
   repoType: UpdateDiscussionCommentRequestRepoType | (string & {});
   namespace: string;
@@ -4538,20 +5359,46 @@ export interface UpdateDiscussionCommentRequest {
   commentId: string;
   content: string;
 }
+const UpdateDiscussionCommentRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  5,
+) as any as S.Schema<UpdateDiscussionCommentRequest>;
+
 export interface UpdateDiscussionCommentResponse {}
+const UpdateDiscussionCommentResponse = /*@__PURE__*/ __L.at(
+  __c13,
+  6,
+) as any as S.Schema<UpdateDiscussionCommentResponse>;
+
 export interface UpdatePaperCommentRequest {
   paperId: string;
   commentId: string;
   content: string;
 }
+const UpdatePaperCommentRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  7,
+) as any as S.Schema<UpdatePaperCommentRequest>;
+
 export interface UpdatePaperCommentResponse {}
+const UpdatePaperCommentResponse =
+  DeleteDiscussionResponse as any as S.Schema<UpdatePaperCommentResponse>;
+
 export interface UpdatePostCommentRequest {
   username: string;
   postSlug: string;
   commentId: string;
   content: string;
 }
+const UpdatePostCommentRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  0,
+) as any as S.Schema<UpdatePostCommentRequest>;
+
 export interface UpdatePostCommentResponse {}
+const UpdatePostCommentResponse =
+  DeleteDiscussionResponse as any as S.Schema<UpdatePostCommentResponse>;
+
 export type ChangeStatusError = HuggingFaceOpError;
 /** Change status Change the status of a discussion */
 export const changeStatus: API.OperationMethod<
@@ -4560,8 +5407,8 @@ export const changeStatus: API.OperationMethod<
   ChangeStatusError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<ChangeStatusRequest>,
-  output: __S(3) as any as S.Schema<ChangeStatusResponse>,
+  input: ChangeStatusRequest,
+  output: ChangeStatusResponse,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -4575,8 +5422,8 @@ export const changeTitle: API.OperationMethod<
   ChangeTitleError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4) as any as S.Schema<ChangeTitleRequest>,
-  output: __S(7) as any as S.Schema<ChangeTitleResponse>,
+  input: ChangeTitleRequest,
+  output: ChangeTitleResponse,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -4590,8 +5437,8 @@ export const createBlogComment: API.OperationMethod<
   CreateBlogCommentError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8) as any as S.Schema<CreateBlogCommentRequest>,
-  output: __S(16) as any as S.Schema<CreateBlogCommentResponse>,
+  input: CreateBlogCommentRequest,
+  output: CreateBlogCommentResponse,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -4605,8 +5452,8 @@ export const createCommunityBlogComment: API.OperationMethod<
   CreateCommunityBlogCommentError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17) as any as S.Schema<CreateCommunityBlogCommentRequest>,
-  output: __S(24) as any as S.Schema<CreateCommunityBlogCommentResponse>,
+  input: CreateCommunityBlogCommentRequest,
+  output: CreateCommunityBlogCommentResponse,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -4620,8 +5467,8 @@ export const createDiscussion: API.OperationMethod<
   CreateDiscussionError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25) as any as S.Schema<CreateDiscussionRequest>,
-  output: __S(27) as any as S.Schema<CreateDiscussionResponse>,
+  input: CreateDiscussionRequest,
+  output: CreateDiscussionResponse,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -4635,8 +5482,8 @@ export const createDiscussionComment: API.OperationMethod<
   CreateDiscussionCommentError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28) as any as S.Schema<CreateDiscussionCommentRequest>,
-  output: __S(34) as any as S.Schema<CreateDiscussionCommentResponse>,
+  input: CreateDiscussionCommentRequest,
+  output: CreateDiscussionCommentResponse,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -4650,8 +5497,8 @@ export const createPaperComment: API.OperationMethod<
   CreatePaperCommentError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35) as any as S.Schema<CreatePaperCommentRequest>,
-  output: __S(41) as any as S.Schema<CreatePaperCommentResponse>,
+  input: CreatePaperCommentRequest,
+  output: CreatePaperCommentResponse,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -4665,8 +5512,8 @@ export const createPostComment: API.OperationMethod<
   CreatePostCommentError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42) as any as S.Schema<CreatePostCommentRequest>,
-  output: __S(48) as any as S.Schema<CreatePostCommentResponse>,
+  input: CreatePostCommentRequest,
+  output: CreatePostCommentResponse,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -4680,8 +5527,8 @@ export const deleteDiscussion: API.OperationMethod<
   DeleteDiscussionError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49) as any as S.Schema<DeleteDiscussionRequest>,
-  output: __S(50) as any as S.Schema<DeleteDiscussionResponse>,
+  input: DeleteDiscussionRequest,
+  output: DeleteDiscussionResponse,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -4695,8 +5542,8 @@ export const deletePost: API.OperationMethod<
   DeletePostError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(51) as any as S.Schema<DeletePostRequest>,
-  output: __S(50) as any as S.Schema<DeletePostResponse>,
+  input: DeletePostRequest,
+  output: DeletePostResponse,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -4710,8 +5557,8 @@ export const deletePrRef: API.OperationMethod<
   DeletePrRefError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(52) as any as S.Schema<DeletePrRefRequest>,
-  output: __S(50) as any as S.Schema<DeletePrRefResponse>,
+  input: DeletePrRefRequest,
+  output: DeletePrRefResponse,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -4725,8 +5572,8 @@ export const getDiscussionDetails: API.OperationMethod<
   GetDiscussionDetailsError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(53) as any as S.Schema<GetDiscussionDetailsRequest>,
-  output: __S(55) as any as S.Schema<GetDiscussionDetailsResponse>,
+  input: GetDiscussionDetailsRequest,
+  output: GetDiscussionDetailsResponse,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -4740,8 +5587,8 @@ export const hideBlogComment: API.OperationMethod<
   HideBlogCommentError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56) as any as S.Schema<HideBlogCommentRequest>,
-  output: __S(50) as any as S.Schema<HideBlogCommentResponse>,
+  input: HideBlogCommentRequest,
+  output: HideBlogCommentResponse,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -4755,8 +5602,8 @@ export const hideCommunityBlogComment: API.OperationMethod<
   HideCommunityBlogCommentError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57) as any as S.Schema<HideCommunityBlogCommentRequest>,
-  output: __S(58) as any as S.Schema<HideCommunityBlogCommentResponse>,
+  input: HideCommunityBlogCommentRequest,
+  output: HideCommunityBlogCommentResponse,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -4770,8 +5617,8 @@ export const hideDiscussionComment: API.OperationMethod<
   HideDiscussionCommentError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(59) as any as S.Schema<HideDiscussionCommentRequest>,
-  output: __S(50) as any as S.Schema<HideDiscussionCommentResponse>,
+  input: HideDiscussionCommentRequest,
+  output: HideDiscussionCommentResponse,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -4785,8 +5632,8 @@ export const hidePaperComment: API.OperationMethod<
   HidePaperCommentError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60) as any as S.Schema<HidePaperCommentRequest>,
-  output: __S(50) as any as S.Schema<HidePaperCommentResponse>,
+  input: HidePaperCommentRequest,
+  output: HidePaperCommentResponse,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -4800,8 +5647,8 @@ export const hidePostComment: API.OperationMethod<
   HidePostCommentError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(61) as any as S.Schema<HidePostCommentRequest>,
-  output: __S(50) as any as S.Schema<HidePostCommentResponse>,
+  input: HidePostCommentRequest,
+  output: HidePostCommentResponse,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -4815,8 +5662,8 @@ export const listDiscussions: API.OperationMethod<
   ListDiscussionsError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(62) as any as S.Schema<ListDiscussionsRequest>,
-  output: __S(68) as any as S.Schema<ListDiscussionsResponse>,
+  input: ListDiscussionsRequest,
+  output: ListDiscussionsResponse,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -4830,8 +5677,8 @@ export const mergePullRequest: API.OperationMethod<
   MergePullRequestError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(69) as any as S.Schema<MergePullRequestRequest>,
-  output: __S(50) as any as S.Schema<MergePullRequestResponse>,
+  input: MergePullRequestRequest,
+  output: MergePullRequestResponse,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -4845,8 +5692,8 @@ export const pinDiscussion: API.OperationMethod<
   PinDiscussionError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(70) as any as S.Schema<PinDiscussionRequest>,
-  output: __S(50) as any as S.Schema<PinDiscussionResponse>,
+  input: PinDiscussionRequest,
+  output: PinDiscussionResponse,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -4860,8 +5707,8 @@ export const prStorageEstimate: API.OperationMethod<
   PrStorageEstimateError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(71) as any as S.Schema<PrStorageEstimateRequest>,
-  output: __S(72) as any as S.Schema<PrStorageEstimateResponse>,
+  input: PrStorageEstimateRequest,
+  output: PrStorageEstimateResponse,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -4875,8 +5722,8 @@ export const reactToBlogComment: API.OperationMethod<
   ReactToBlogCommentError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(73) as any as S.Schema<ReactToBlogCommentRequest>,
-  output: __S(50) as any as S.Schema<ReactToBlogCommentResponse>,
+  input: ReactToBlogCommentRequest,
+  output: ReactToBlogCommentResponse,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -4890,8 +5737,8 @@ export const reactToCommunityBlogComment: API.OperationMethod<
   ReactToCommunityBlogCommentError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(74) as any as S.Schema<ReactToCommunityBlogCommentRequest>,
-  output: __S(58) as any as S.Schema<ReactToCommunityBlogCommentResponse>,
+  input: ReactToCommunityBlogCommentRequest,
+  output: ReactToCommunityBlogCommentResponse,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -4905,8 +5752,8 @@ export const reactToDiscussionComment: API.OperationMethod<
   ReactToDiscussionCommentError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(75) as any as S.Schema<ReactToDiscussionCommentRequest>,
-  output: __S(58) as any as S.Schema<ReactToDiscussionCommentResponse>,
+  input: ReactToDiscussionCommentRequest,
+  output: ReactToDiscussionCommentResponse,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -4920,8 +5767,8 @@ export const reactToPaperComment: API.OperationMethod<
   ReactToPaperCommentError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(76) as any as S.Schema<ReactToPaperCommentRequest>,
-  output: __S(50) as any as S.Schema<ReactToPaperCommentResponse>,
+  input: ReactToPaperCommentRequest,
+  output: ReactToPaperCommentResponse,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -4935,8 +5782,8 @@ export const reactToPostComment: API.OperationMethod<
   ReactToPostCommentError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(77) as any as S.Schema<ReactToPostCommentRequest>,
-  output: __S(50) as any as S.Schema<ReactToPostCommentResponse>,
+  input: ReactToPostCommentRequest,
+  output: ReactToPostCommentResponse,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -4950,8 +5797,8 @@ export const replyToBlogComment: API.OperationMethod<
   ReplyToBlogCommentError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(78) as any as S.Schema<ReplyToBlogCommentRequest>,
-  output: __S(84) as any as S.Schema<ReplyToBlogCommentResponse>,
+  input: ReplyToBlogCommentRequest,
+  output: ReplyToBlogCommentResponse,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -4965,8 +5812,8 @@ export const replyToCommunityBlogComment: API.OperationMethod<
   ReplyToCommunityBlogCommentError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(85) as any as S.Schema<ReplyToCommunityBlogCommentRequest>,
-  output: __S(91) as any as S.Schema<ReplyToCommunityBlogCommentResponse>,
+  input: ReplyToCommunityBlogCommentRequest,
+  output: ReplyToCommunityBlogCommentResponse,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -4980,8 +5827,8 @@ export const replyToPaperComment: API.OperationMethod<
   ReplyToPaperCommentError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(92) as any as S.Schema<ReplyToPaperCommentRequest>,
-  output: __S(98) as any as S.Schema<ReplyToPaperCommentResponse>,
+  input: ReplyToPaperCommentRequest,
+  output: ReplyToPaperCommentResponse,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -4995,8 +5842,8 @@ export const replyToPostComment: API.OperationMethod<
   ReplyToPostCommentError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(99) as any as S.Schema<ReplyToPostCommentRequest>,
-  output: __S(105) as any as S.Schema<ReplyToPostCommentResponse>,
+  input: ReplyToPostCommentRequest,
+  output: ReplyToPostCommentResponse,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -5010,8 +5857,8 @@ export const toggleIgnoreDiscussion: API.OperationMethod<
   ToggleIgnoreDiscussionError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(106) as any as S.Schema<ToggleIgnoreDiscussionRequest>,
-  output: __S(50) as any as S.Schema<ToggleIgnoreDiscussionResponse>,
+  input: ToggleIgnoreDiscussionRequest,
+  output: ToggleIgnoreDiscussionResponse,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -5025,8 +5872,8 @@ export const updateBlogComment: API.OperationMethod<
   UpdateBlogCommentError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(107) as any as S.Schema<UpdateBlogCommentRequest>,
-  output: __S(50) as any as S.Schema<UpdateBlogCommentResponse>,
+  input: UpdateBlogCommentRequest,
+  output: UpdateBlogCommentResponse,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -5040,8 +5887,8 @@ export const updateCommunityBlogComment: API.OperationMethod<
   UpdateCommunityBlogCommentError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(108) as any as S.Schema<UpdateCommunityBlogCommentRequest>,
-  output: __S(58) as any as S.Schema<UpdateCommunityBlogCommentResponse>,
+  input: UpdateCommunityBlogCommentRequest,
+  output: UpdateCommunityBlogCommentResponse,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -5055,8 +5902,8 @@ export const updateDiscussionComment: API.OperationMethod<
   UpdateDiscussionCommentError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(109) as any as S.Schema<UpdateDiscussionCommentRequest>,
-  output: __S(110) as any as S.Schema<UpdateDiscussionCommentResponse>,
+  input: UpdateDiscussionCommentRequest,
+  output: UpdateDiscussionCommentResponse,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -5070,8 +5917,8 @@ export const updatePaperComment: API.OperationMethod<
   UpdatePaperCommentError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(111) as any as S.Schema<UpdatePaperCommentRequest>,
-  output: __S(50) as any as S.Schema<UpdatePaperCommentResponse>,
+  input: UpdatePaperCommentRequest,
+  output: UpdatePaperCommentResponse,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -5085,8 +5932,8 @@ export const updatePostComment: API.OperationMethod<
   UpdatePostCommentError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(112) as any as S.Schema<UpdatePostCommentRequest>,
-  output: __S(50) as any as S.Schema<UpdatePostCommentResponse>,
+  input: UpdatePostCommentRequest,
+  output: UpdatePostCommentResponse,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -5098,11 +5945,11 @@ function __c0(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          repoType: S.String.pipe(T.Label()),
+          repoType: ChangeStatusRequestRepoType.pipe(T.Label()),
           namespace: S.String.pipe(T.Label()),
           repo: S.String.pipe(T.Label()),
           num: S.String.pipe(T.Label()),
-          status: S.String,
+          status: ChangeStatusRequestStatus,
           comment: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -5115,7 +5962,7 @@ function __c0(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          status: S.String,
+          status: ChangeStatusResponseNewStatusDataStatus,
           reason: S.optional(S.String),
         }),
       ).annotate({
@@ -5126,9 +5973,9 @@ function __c0(j: number): any {
         S.Struct({
           id: S.String,
           createdAt: S.String,
-          author: S.optional(S.Unknown),
+          author: S.optional(ChangeStatusResponseNewStatusAuthor),
           type: S.String,
-          data: __S(1),
+          data: ChangeStatusResponseNewStatusData,
         }),
       ).annotate({
         identifier: "ChangeStatusResponseNewStatus",
@@ -5136,13 +5983,13 @@ function __c0(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          newStatus: __S(2),
+          newStatus: ChangeStatusResponseNewStatus,
         }),
       ).annotate({ identifier: "ChangeStatusResponse" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          repoType: S.String.pipe(T.Label()),
+          repoType: ChangeTitleRequestRepoType.pipe(T.Label()),
           namespace: S.String.pipe(T.Label()),
           repo: S.String.pipe(T.Label()),
           num: S.String.pipe(T.Label()),
@@ -5169,9 +6016,9 @@ function __c0(j: number): any {
         S.Struct({
           id: S.String,
           createdAt: S.String,
-          author: S.optional(S.Unknown),
+          author: S.optional(ChangeTitleResponseNewTitleAuthor),
           type: S.String,
-          data: __S(5),
+          data: ChangeTitleResponseNewTitleData,
         }),
       ).annotate({
         identifier: "ChangeTitleResponseNewTitle",
@@ -5179,7 +6026,7 @@ function __c0(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          newTitle: __S(6),
+          newTitle: ChangeTitleResponseNewTitle,
         }),
       ).annotate({ identifier: "ChangeTitleResponse" });
   }
@@ -5199,7 +6046,7 @@ function __c1(j: number): any {
           raw: S.String,
           html: S.String,
           updatedAt: S.String,
-          author: S.optional(S.Unknown),
+          author: S.optional(CreateBlogCommentResponseNewMessageDataLatestAuthor),
         }),
       ).annotate({
         identifier: "CreateBlogCommentResponseNewMessageDataLatest",
@@ -5209,15 +6056,15 @@ function __c1(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          reaction: S.String,
-          users: __S(10),
+          reaction: CreateBlogCommentResponseNewMessageDataReactionsItemReaction,
+          users: CreateBlogCommentResponseNewMessageDataReactionsItemUsersList,
           count: S.Number,
         }),
       ).annotate({
         identifier: "CreateBlogCommentResponseNewMessageDataReactionsItem",
       });
     case 4:
-      return S.Array(__S(11));
+      return S.Array(CreateBlogCommentResponseNewMessageDataReactionsItem);
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -5233,13 +6080,13 @@ function __c1(j: number): any {
           edited: S.Boolean,
           hidden: S.Boolean,
           hiddenBy: S.optional(S.String),
-          hiddenReason: S.optional(S.String),
-          latest: __S(9),
+          hiddenReason: S.optional(CreateBlogCommentResponseNewMessageDataHiddenReason),
+          latest: CreateBlogCommentResponseNewMessageDataLatest,
           numEdits: S.Number,
-          editors: __S(10),
-          editorAvatarUrls: __S(10),
-          reactions: __S(12),
-          identifiedLanguage: S.optional(__S(13)),
+          editors: CreateBlogCommentResponseNewMessageDataEditorsList,
+          editorAvatarUrls: CreateBlogCommentResponseNewMessageDataEditorAvatarUrlsList,
+          reactions: CreateBlogCommentResponseNewMessageDataReactionsList,
+          identifiedLanguage: S.optional(CreateBlogCommentResponseNewMessageDataIdentifiedLanguage),
           relatedEventId: S.optional(S.String),
           isReport: S.optional(S.Boolean),
           parentCommentId: S.optional(S.String),
@@ -5252,9 +6099,9 @@ function __c1(j: number): any {
         S.Struct({
           id: S.String,
           createdAt: S.String,
-          author: S.optional(S.Unknown),
+          author: S.optional(CreateBlogCommentResponseNewMessageAuthor),
           type: S.String,
-          data: __S(14),
+          data: CreateBlogCommentResponseNewMessageData,
         }),
       ).annotate({
         identifier: "CreateBlogCommentResponseNewMessage",
@@ -5266,7 +6113,7 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          newMessage: __S(15),
+          newMessage: CreateBlogCommentResponseNewMessage,
         }),
       ).annotate({
         identifier: "CreateBlogCommentResponse",
@@ -5287,7 +6134,7 @@ function __c2(j: number): any {
           raw: S.String,
           html: S.String,
           updatedAt: S.String,
-          author: S.optional(S.Unknown),
+          author: S.optional(CreateCommunityBlogCommentResponseNewMessageDataLatestAuthor),
         }),
       ).annotate({
         identifier: "CreateCommunityBlogCommentResponseNewMessageDataLatest",
@@ -5297,28 +6144,28 @@ function __c2(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          reaction: S.String,
-          users: __S(19),
+          reaction: CreateCommunityBlogCommentResponseNewMessageDataReactionsItemReaction,
+          users: CreateCommunityBlogCommentResponseNewMessageDataReactionsItemUsersList,
           count: S.Number,
         }),
       ).annotate({
         identifier: "CreateCommunityBlogCommentResponseNewMessageDataReactionsItem",
       });
     case 5:
-      return S.Array(__S(20));
+      return S.Array(CreateCommunityBlogCommentResponseNewMessageDataReactionsItem);
     case 6:
       return S.suspend(() =>
         S.Struct({
           edited: S.Boolean,
           hidden: S.Boolean,
           hiddenBy: S.optional(S.String),
-          hiddenReason: S.optional(S.String),
-          latest: __S(18),
+          hiddenReason: S.optional(CreateCommunityBlogCommentResponseNewMessageDataHiddenReason),
+          latest: CreateCommunityBlogCommentResponseNewMessageDataLatest,
           numEdits: S.Number,
-          editors: __S(10),
-          editorAvatarUrls: __S(19),
-          reactions: __S(21),
-          identifiedLanguage: S.optional(__S(13)),
+          editors: CreateCommunityBlogCommentResponseNewMessageDataEditorsList,
+          editorAvatarUrls: CreateCommunityBlogCommentResponseNewMessageDataEditorAvatarUrlsList,
+          reactions: CreateCommunityBlogCommentResponseNewMessageDataReactionsList,
+          identifiedLanguage: S.optional(CreateBlogCommentResponseNewMessageDataIdentifiedLanguage),
           relatedEventId: S.optional(S.String),
           isReport: S.optional(S.Boolean),
           parentCommentId: S.optional(S.String),
@@ -5331,9 +6178,9 @@ function __c2(j: number): any {
         S.Struct({
           id: S.String,
           createdAt: S.String,
-          author: S.optional(S.Unknown),
+          author: S.optional(CreateCommunityBlogCommentResponseNewMessageAuthor),
           type: S.String,
-          data: __S(22),
+          data: CreateCommunityBlogCommentResponseNewMessageData,
         }),
       ).annotate({
         identifier: "CreateCommunityBlogCommentResponseNewMessage",
@@ -5345,7 +6192,7 @@ function __c3(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          newMessage: __S(23),
+          newMessage: CreateCommunityBlogCommentResponseNewMessage,
         }),
       ).annotate({
         identifier: "CreateCommunityBlogCommentResponse",
@@ -5353,7 +6200,7 @@ function __c3(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          repoType: S.String.pipe(T.Label()),
+          repoType: CreateDiscussionRequestRepoType.pipe(T.Label()),
           namespace: S.String.pipe(T.Label()),
           repo: S.String.pipe(T.Label()),
           title: S.String,
@@ -5382,13 +6229,13 @@ function __c3(j: number): any {
           url: S.String,
           num: S.Number,
           pullRequest: S.Boolean,
-          references: S.optional(__S(26)),
+          references: S.optional(CreateDiscussionResponseReferences),
         }),
       ).annotate({ identifier: "CreateDiscussionResponse" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          repoType: S.String.pipe(T.Label()),
+          repoType: CreateDiscussionCommentRequestRepoType.pipe(T.Label()),
           namespace: S.String.pipe(T.Label()),
           repo: S.String.pipe(T.Label()),
           num: S.String.pipe(T.Label()),
@@ -5409,7 +6256,7 @@ function __c3(j: number): any {
           raw: S.String,
           html: S.String,
           updatedAt: S.String,
-          author: S.optional(S.Unknown),
+          author: S.optional(CreateDiscussionCommentResponseNewMessageDataLatestAuthor),
         }),
       ).annotate({
         identifier: "CreateDiscussionCommentResponseNewMessageDataLatest",
@@ -5417,15 +6264,15 @@ function __c3(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          reaction: S.String,
-          users: __S(19),
+          reaction: CreateDiscussionCommentResponseNewMessageDataReactionsItemReaction,
+          users: CreateDiscussionCommentResponseNewMessageDataReactionsItemUsersList,
           count: S.Number,
         }),
       ).annotate({
         identifier: "CreateDiscussionCommentResponseNewMessageDataReactionsItem",
       });
     case 7:
-      return S.Array(__S(30));
+      return S.Array(CreateDiscussionCommentResponseNewMessageDataReactionsItem);
   }
 }
 function __c4(j: number): any {
@@ -5436,13 +6283,13 @@ function __c4(j: number): any {
           edited: S.Boolean,
           hidden: S.Boolean,
           hiddenBy: S.optional(S.String),
-          hiddenReason: S.optional(S.String),
-          latest: __S(29),
+          hiddenReason: S.optional(CreateDiscussionCommentResponseNewMessageDataHiddenReason),
+          latest: CreateDiscussionCommentResponseNewMessageDataLatest,
           numEdits: S.Number,
-          editors: __S(10),
-          editorAvatarUrls: __S(19),
-          reactions: __S(31),
-          identifiedLanguage: S.optional(__S(13)),
+          editors: CreateDiscussionCommentResponseNewMessageDataEditorsList,
+          editorAvatarUrls: CreateDiscussionCommentResponseNewMessageDataEditorAvatarUrlsList,
+          reactions: CreateDiscussionCommentResponseNewMessageDataReactionsList,
+          identifiedLanguage: S.optional(CreateBlogCommentResponseNewMessageDataIdentifiedLanguage),
           relatedEventId: S.optional(S.String),
           isReport: S.optional(S.Boolean),
           parentCommentId: S.optional(S.String),
@@ -5455,9 +6302,9 @@ function __c4(j: number): any {
         S.Struct({
           id: S.String,
           createdAt: S.String,
-          author: S.optional(S.Unknown),
+          author: S.optional(CreateDiscussionCommentResponseNewMessageAuthor),
           type: S.String,
-          data: __S(32),
+          data: CreateDiscussionCommentResponseNewMessageData,
         }),
       ).annotate({
         identifier: "CreateDiscussionCommentResponseNewMessage",
@@ -5465,7 +6312,7 @@ function __c4(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          newMessage: __S(33),
+          newMessage: CreateDiscussionCommentResponseNewMessage,
         }),
       ).annotate({
         identifier: "CreateDiscussionCommentResponse",
@@ -5485,7 +6332,7 @@ function __c4(j: number): any {
           raw: S.String,
           html: S.String,
           updatedAt: S.String,
-          author: S.optional(S.Unknown),
+          author: S.optional(CreatePaperCommentResponseNewMessageDataLatestAuthor),
         }),
       ).annotate({
         identifier: "CreatePaperCommentResponseNewMessageDataLatest",
@@ -5493,28 +6340,28 @@ function __c4(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          reaction: S.String,
-          users: __S(10),
+          reaction: CreatePaperCommentResponseNewMessageDataReactionsItemReaction,
+          users: CreatePaperCommentResponseNewMessageDataReactionsItemUsersList,
           count: S.Number,
         }),
       ).annotate({
         identifier: "CreatePaperCommentResponseNewMessageDataReactionsItem",
       });
     case 6:
-      return S.Array(__S(37));
+      return S.Array(CreatePaperCommentResponseNewMessageDataReactionsItem);
     case 7:
       return S.suspend(() =>
         S.Struct({
           edited: S.Boolean,
           hidden: S.Boolean,
           hiddenBy: S.optional(S.String),
-          hiddenReason: S.optional(S.String),
-          latest: __S(36),
+          hiddenReason: S.optional(CreatePaperCommentResponseNewMessageDataHiddenReason),
+          latest: CreatePaperCommentResponseNewMessageDataLatest,
           numEdits: S.Number,
-          editors: __S(10),
-          editorAvatarUrls: __S(10),
-          reactions: __S(38),
-          identifiedLanguage: S.optional(__S(13)),
+          editors: CreatePaperCommentResponseNewMessageDataEditorsList,
+          editorAvatarUrls: CreatePaperCommentResponseNewMessageDataEditorAvatarUrlsList,
+          reactions: CreatePaperCommentResponseNewMessageDataReactionsList,
+          identifiedLanguage: S.optional(CreateBlogCommentResponseNewMessageDataIdentifiedLanguage),
           relatedEventId: S.optional(S.String),
           isReport: S.optional(S.Boolean),
           parentCommentId: S.optional(S.String),
@@ -5531,9 +6378,9 @@ function __c5(j: number): any {
         S.Struct({
           id: S.String,
           createdAt: S.String,
-          author: S.optional(S.Unknown),
+          author: S.optional(CreatePaperCommentResponseNewMessageAuthor),
           type: S.String,
-          data: __S(39),
+          data: CreatePaperCommentResponseNewMessageData,
         }),
       ).annotate({
         identifier: "CreatePaperCommentResponseNewMessage",
@@ -5541,7 +6388,7 @@ function __c5(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          newMessage: __S(40),
+          newMessage: CreatePaperCommentResponseNewMessage,
         }),
       ).annotate({
         identifier: "CreatePaperCommentResponse",
@@ -5562,7 +6409,7 @@ function __c5(j: number): any {
           raw: S.String,
           html: S.String,
           updatedAt: S.String,
-          author: S.optional(S.Unknown),
+          author: S.optional(CreatePostCommentResponseNewMessageDataLatestAuthor),
         }),
       ).annotate({
         identifier: "CreatePostCommentResponseNewMessageDataLatest",
@@ -5570,28 +6417,28 @@ function __c5(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          reaction: S.String,
-          users: __S(10),
+          reaction: CreatePostCommentResponseNewMessageDataReactionsItemReaction,
+          users: CreatePostCommentResponseNewMessageDataReactionsItemUsersList,
           count: S.Number,
         }),
       ).annotate({
         identifier: "CreatePostCommentResponseNewMessageDataReactionsItem",
       });
     case 5:
-      return S.Array(__S(44));
+      return S.Array(CreatePostCommentResponseNewMessageDataReactionsItem);
     case 6:
       return S.suspend(() =>
         S.Struct({
           edited: S.Boolean,
           hidden: S.Boolean,
           hiddenBy: S.optional(S.String),
-          hiddenReason: S.optional(S.String),
-          latest: __S(43),
+          hiddenReason: S.optional(CreatePostCommentResponseNewMessageDataHiddenReason),
+          latest: CreatePostCommentResponseNewMessageDataLatest,
           numEdits: S.Number,
-          editors: __S(10),
-          editorAvatarUrls: __S(10),
-          reactions: __S(45),
-          identifiedLanguage: S.optional(__S(13)),
+          editors: CreatePostCommentResponseNewMessageDataEditorsList,
+          editorAvatarUrls: CreatePostCommentResponseNewMessageDataEditorAvatarUrlsList,
+          reactions: CreatePostCommentResponseNewMessageDataReactionsList,
+          identifiedLanguage: S.optional(CreateBlogCommentResponseNewMessageDataIdentifiedLanguage),
           relatedEventId: S.optional(S.String),
           isReport: S.optional(S.Boolean),
           parentCommentId: S.optional(S.String),
@@ -5604,9 +6451,9 @@ function __c5(j: number): any {
         S.Struct({
           id: S.String,
           createdAt: S.String,
-          author: S.optional(S.Unknown),
+          author: S.optional(CreatePostCommentResponseNewMessageAuthor),
           type: S.String,
-          data: __S(46),
+          data: CreatePostCommentResponseNewMessageData,
         }),
       ).annotate({
         identifier: "CreatePostCommentResponseNewMessage",
@@ -5618,7 +6465,7 @@ function __c6(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          newMessage: __S(47),
+          newMessage: CreatePostCommentResponseNewMessage,
         }),
       ).annotate({
         identifier: "CreatePostCommentResponse",
@@ -5626,7 +6473,7 @@ function __c6(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          repoType: S.String.pipe(T.Label()),
+          repoType: DeleteDiscussionRequestRepoType.pipe(T.Label()),
           namespace: S.String.pipe(T.Label()),
           repo: S.String.pipe(T.Label()),
           num: S.String.pipe(T.Label()),
@@ -5652,7 +6499,7 @@ function __c6(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          repoType: S.String.pipe(T.Label()),
+          repoType: DeletePrRefRequestRepoType.pipe(T.Label()),
           namespace: S.String.pipe(T.Label()),
           repo: S.String.pipe(T.Label()),
           num: S.String.pipe(T.Label()),
@@ -5667,7 +6514,7 @@ function __c6(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          repoType: S.String.pipe(T.Label()),
+          repoType: GetDiscussionDetailsRequestRepoType.pipe(T.Label()),
           namespace: S.String.pipe(T.Label()),
           repo: S.String.pipe(T.Label()),
           num: S.String.pipe(T.Label()),
@@ -5685,11 +6532,11 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          type: S.String,
+          type: RepoIdType,
         }),
       ).annotate({ identifier: "RepoId" });
     case 7:
-      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => GetDiscussionDetailsResponseBody.pipe(T.RawResponseRoot())).annotate({
         identifier: "GetDiscussionDetailsResponse",
       });
   }
@@ -5701,7 +6548,7 @@ function __c7(j: number): any {
         S.Struct({
           slug: S.String.pipe(T.Label()),
           commentId: S.String.pipe(T.Label()),
-          reason: S.optional(S.String),
+          reason: S.optional(HideBlogCommentRequestReason),
         }).pipe(
           T.Http({ method: "POST", uri: "/api/blog/{slug}/comment/{commentId}/hide", code: 200 }),
         ),
@@ -5712,7 +6559,7 @@ function __c7(j: number): any {
           namespace: S.String.pipe(T.Label()),
           slug: S.String.pipe(T.Label()),
           commentId: S.String.pipe(T.Label()),
-          reason: S.optional(S.String),
+          reason: S.optional(HideCommunityBlogCommentRequestReason),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5730,12 +6577,12 @@ function __c7(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          repoType: S.String.pipe(T.Label()),
+          repoType: HideDiscussionCommentRequestRepoType.pipe(T.Label()),
           namespace: S.String.pipe(T.Label()),
           repo: S.String.pipe(T.Label()),
           num: S.String.pipe(T.Label()),
           commentId: S.String.pipe(T.Label()),
-          reason: S.optional(S.String),
+          reason: S.optional(HideDiscussionCommentRequestReason),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5751,7 +6598,7 @@ function __c7(j: number): any {
         S.Struct({
           paperId: S.String.pipe(T.Label()),
           commentId: S.String.pipe(T.Label()),
-          reason: S.optional(S.String),
+          reason: S.optional(HidePaperCommentRequestReason),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5766,7 +6613,7 @@ function __c7(j: number): any {
           username: S.String.pipe(T.Label()),
           postSlug: S.String.pipe(T.Label()),
           commentId: S.String.pipe(T.Label()),
-          reason: S.optional(S.String),
+          reason: S.optional(HidePostCommentRequestReason),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5778,15 +6625,15 @@ function __c7(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          repoType: S.String.pipe(T.Label()),
+          repoType: ListDiscussionsRequestRepoType.pipe(T.Label()),
           namespace: S.String.pipe(T.Label()),
           repo: S.String.pipe(T.Label()),
           p: S.optional(S.Number.pipe(T.Query())),
-          type: S.optional(S.String.pipe(T.Query())),
-          status: S.optional(S.String.pipe(T.Query())),
+          type: S.optional(ListDiscussionsRequestType.pipe(T.Query())),
+          status: S.optional(ListDiscussionsRequestStatus.pipe(T.Query())),
           author: S.optional(S.String.pipe(T.Query())),
           search: S.optional(S.String.pipe(T.Query())),
-          sort: S.optional(S.String.pipe(T.Query())),
+          sort: S.optional(ListDiscussionsRequestSort.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -5798,7 +6645,7 @@ function __c7(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          reaction: S.String,
+          reaction: ListDiscussionsResponseDiscussionsItemTopReactionsItemReaction,
           count: S.Number,
         }),
       ).annotate({
@@ -5809,12 +6656,12 @@ function __c7(j: number): any {
 function __c8(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(63));
+      return S.Array(ListDiscussionsResponseDiscussionsItemTopReactionsItem);
     case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          type: S.String,
+          type: ListDiscussionsResponseDiscussionsItemRepoOwnerType,
           isParticipating: S.Boolean,
           isDiscussionAuthor: S.Boolean,
         }),
@@ -5825,27 +6672,27 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           num: S.Number,
-          author: S.optional(S.Unknown),
-          repo: __S(54),
+          author: S.optional(ListDiscussionsResponseDiscussionsItemAuthor),
+          repo: RepoId,
           title: S.String,
           createdAt: S.String,
-          topReactions: __S(64),
-          status: S.String,
+          topReactions: ListDiscussionsResponseDiscussionsItemTopReactionsList,
+          status: ListDiscussionsResponseDiscussionsItemStatus,
           isPullRequest: S.Boolean,
           numComments: S.Number,
           numReactionUsers: S.Number,
           pinned: S.Boolean,
-          repoOwner: S.optional(__S(65)),
+          repoOwner: S.optional(ListDiscussionsResponseDiscussionsItemRepoOwner),
         }),
       ).annotate({
         identifier: "ListDiscussionsResponseDiscussionsItem",
       });
     case 3:
-      return S.Array(__S(66));
+      return S.Array(ListDiscussionsResponseDiscussionsItem);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          discussions: __S(67),
+          discussions: ListDiscussionsResponseDiscussionsList,
           count: S.Number,
           start: S.Number,
           numClosedDiscussions: S.optional(S.Number),
@@ -5854,7 +6701,7 @@ function __c8(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          repoType: S.String.pipe(T.Label()),
+          repoType: MergePullRequestRequestRepoType.pipe(T.Label()),
           namespace: S.String.pipe(T.Label()),
           repo: S.String.pipe(T.Label()),
           num: S.String.pipe(T.Label()),
@@ -5870,7 +6717,7 @@ function __c8(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          repoType: S.String.pipe(T.Label()),
+          repoType: PinDiscussionRequestRepoType.pipe(T.Label()),
           namespace: S.String.pipe(T.Label()),
           repo: S.String.pipe(T.Label()),
           num: S.String.pipe(T.Label()),
@@ -5886,7 +6733,7 @@ function __c8(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          repoType: S.String.pipe(T.Label()),
+          repoType: PrStorageEstimateRequestRepoType.pipe(T.Label()),
           namespace: S.String.pipe(T.Label()),
           repo: S.String.pipe(T.Label()),
           num: S.String.pipe(T.Label()),
@@ -5916,8 +6763,8 @@ function __c9(j: number): any {
         S.Struct({
           slug: S.String.pipe(T.Label()),
           commentId: S.String.pipe(T.Label()),
-          reaction: S.String,
-          action: S.String,
+          reaction: ReactToBlogCommentRequestReaction,
+          action: ReactToBlogCommentRequestAction,
         }).pipe(
           T.Http({
             method: "POST",
@@ -5934,8 +6781,8 @@ function __c9(j: number): any {
           namespace: S.String.pipe(T.Label()),
           slug: S.String.pipe(T.Label()),
           commentId: S.String.pipe(T.Label()),
-          reaction: S.String,
-          action: S.String,
+          reaction: ReactToCommunityBlogCommentRequestReaction,
+          action: ReactToCommunityBlogCommentRequestAction,
         }).pipe(
           T.Http({
             method: "POST",
@@ -5949,13 +6796,13 @@ function __c9(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          repoType: S.String.pipe(T.Label()),
+          repoType: ReactToDiscussionCommentRequestRepoType.pipe(T.Label()),
           namespace: S.String.pipe(T.Label()),
           repo: S.String.pipe(T.Label()),
           num: S.String.pipe(T.Label()),
           commentId: S.String.pipe(T.Label()),
-          reaction: S.String,
-          action: S.String,
+          reaction: ReactToDiscussionCommentRequestReaction,
+          action: ReactToDiscussionCommentRequestAction,
         }).pipe(
           T.Http({
             method: "POST",
@@ -5971,8 +6818,8 @@ function __c9(j: number): any {
         S.Struct({
           paperId: S.String.pipe(T.Label()),
           commentId: S.String.pipe(T.Label()),
-          reaction: S.String,
-          action: S.String,
+          reaction: ReactToPaperCommentRequestReaction,
+          action: ReactToPaperCommentRequestAction,
         }).pipe(
           T.Http({
             method: "POST",
@@ -5989,8 +6836,8 @@ function __c9(j: number): any {
           username: S.String.pipe(T.Label()),
           postSlug: S.String.pipe(T.Label()),
           commentId: S.String.pipe(T.Label()),
-          reaction: S.String,
-          action: S.String,
+          reaction: ReactToPostCommentRequestReaction,
+          action: ReactToPostCommentRequestAction,
         }).pipe(
           T.Http({
             method: "POST",
@@ -6019,7 +6866,7 @@ function __c9(j: number): any {
           raw: S.String,
           html: S.String,
           updatedAt: S.String,
-          author: S.optional(S.Unknown),
+          author: S.optional(ReplyToBlogCommentResponseNewMessageDataLatestAuthor),
         }),
       ).annotate({
         identifier: "ReplyToBlogCommentResponseNewMessageDataLatest",
@@ -6031,28 +6878,28 @@ function __c10(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          reaction: S.String,
-          users: __S(10),
+          reaction: ReplyToBlogCommentResponseNewMessageDataReactionsItemReaction,
+          users: ReplyToBlogCommentResponseNewMessageDataReactionsItemUsersList,
           count: S.Number,
         }),
       ).annotate({
         identifier: "ReplyToBlogCommentResponseNewMessageDataReactionsItem",
       });
     case 1:
-      return S.Array(__S(80));
+      return S.Array(ReplyToBlogCommentResponseNewMessageDataReactionsItem);
     case 2:
       return S.suspend(() =>
         S.Struct({
           edited: S.Boolean,
           hidden: S.Boolean,
           hiddenBy: S.optional(S.String),
-          hiddenReason: S.optional(S.String),
-          latest: __S(79),
+          hiddenReason: S.optional(ReplyToBlogCommentResponseNewMessageDataHiddenReason),
+          latest: ReplyToBlogCommentResponseNewMessageDataLatest,
           numEdits: S.Number,
-          editors: __S(10),
-          editorAvatarUrls: __S(10),
-          reactions: __S(81),
-          identifiedLanguage: S.optional(__S(13)),
+          editors: ReplyToBlogCommentResponseNewMessageDataEditorsList,
+          editorAvatarUrls: ReplyToBlogCommentResponseNewMessageDataEditorAvatarUrlsList,
+          reactions: ReplyToBlogCommentResponseNewMessageDataReactionsList,
+          identifiedLanguage: S.optional(CreateBlogCommentResponseNewMessageDataIdentifiedLanguage),
           relatedEventId: S.optional(S.String),
           isReport: S.optional(S.Boolean),
           parentCommentId: S.optional(S.String),
@@ -6065,9 +6912,9 @@ function __c10(j: number): any {
         S.Struct({
           id: S.String,
           createdAt: S.String,
-          author: S.optional(S.Unknown),
+          author: S.optional(ReplyToBlogCommentResponseNewMessageAuthor),
           type: S.String,
-          data: __S(82),
+          data: ReplyToBlogCommentResponseNewMessageData,
         }),
       ).annotate({
         identifier: "ReplyToBlogCommentResponseNewMessage",
@@ -6075,7 +6922,7 @@ function __c10(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          newMessage: __S(83),
+          newMessage: ReplyToBlogCommentResponseNewMessage,
         }),
       ).annotate({
         identifier: "ReplyToBlogCommentResponse",
@@ -6103,7 +6950,7 @@ function __c10(j: number): any {
           raw: S.String,
           html: S.String,
           updatedAt: S.String,
-          author: S.optional(S.Unknown),
+          author: S.optional(ReplyToCommunityBlogCommentResponseNewMessageDataLatestAuthor),
         }),
       ).annotate({
         identifier: "ReplyToCommunityBlogCommentResponseNewMessageDataLatest",
@@ -6111,8 +6958,8 @@ function __c10(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          reaction: S.String,
-          users: __S(19),
+          reaction: ReplyToCommunityBlogCommentResponseNewMessageDataReactionsItemReaction,
+          users: ReplyToCommunityBlogCommentResponseNewMessageDataReactionsItemUsersList,
           count: S.Number,
         }),
       ).annotate({
@@ -6123,20 +6970,20 @@ function __c10(j: number): any {
 function __c11(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(87));
+      return S.Array(ReplyToCommunityBlogCommentResponseNewMessageDataReactionsItem);
     case 1:
       return S.suspend(() =>
         S.Struct({
           edited: S.Boolean,
           hidden: S.Boolean,
           hiddenBy: S.optional(S.String),
-          hiddenReason: S.optional(S.String),
-          latest: __S(86),
+          hiddenReason: S.optional(ReplyToCommunityBlogCommentResponseNewMessageDataHiddenReason),
+          latest: ReplyToCommunityBlogCommentResponseNewMessageDataLatest,
           numEdits: S.Number,
-          editors: __S(10),
-          editorAvatarUrls: __S(19),
-          reactions: __S(88),
-          identifiedLanguage: S.optional(__S(13)),
+          editors: ReplyToCommunityBlogCommentResponseNewMessageDataEditorsList,
+          editorAvatarUrls: ReplyToCommunityBlogCommentResponseNewMessageDataEditorAvatarUrlsList,
+          reactions: ReplyToCommunityBlogCommentResponseNewMessageDataReactionsList,
+          identifiedLanguage: S.optional(CreateBlogCommentResponseNewMessageDataIdentifiedLanguage),
           relatedEventId: S.optional(S.String),
           isReport: S.optional(S.Boolean),
           parentCommentId: S.optional(S.String),
@@ -6149,9 +6996,9 @@ function __c11(j: number): any {
         S.Struct({
           id: S.String,
           createdAt: S.String,
-          author: S.optional(S.Unknown),
+          author: S.optional(ReplyToCommunityBlogCommentResponseNewMessageAuthor),
           type: S.String,
-          data: __S(89),
+          data: ReplyToCommunityBlogCommentResponseNewMessageData,
         }),
       ).annotate({
         identifier: "ReplyToCommunityBlogCommentResponseNewMessage",
@@ -6159,7 +7006,7 @@ function __c11(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          newMessage: __S(90),
+          newMessage: ReplyToCommunityBlogCommentResponseNewMessage,
         }),
       ).annotate({
         identifier: "ReplyToCommunityBlogCommentResponse",
@@ -6186,7 +7033,7 @@ function __c11(j: number): any {
           raw: S.String,
           html: S.String,
           updatedAt: S.String,
-          author: S.optional(S.Unknown),
+          author: S.optional(ReplyToPaperCommentResponseNewMessageDataLatestAuthor),
         }),
       ).annotate({
         identifier: "ReplyToPaperCommentResponseNewMessageDataLatest",
@@ -6194,15 +7041,15 @@ function __c11(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          reaction: S.String,
-          users: __S(19),
+          reaction: ReplyToPaperCommentResponseNewMessageDataReactionsItemReaction,
+          users: ReplyToPaperCommentResponseNewMessageDataReactionsItemUsersList,
           count: S.Number,
         }),
       ).annotate({
         identifier: "ReplyToPaperCommentResponseNewMessageDataReactionsItem",
       });
     case 7:
-      return S.Array(__S(94));
+      return S.Array(ReplyToPaperCommentResponseNewMessageDataReactionsItem);
   }
 }
 function __c12(j: number): any {
@@ -6213,13 +7060,13 @@ function __c12(j: number): any {
           edited: S.Boolean,
           hidden: S.Boolean,
           hiddenBy: S.optional(S.String),
-          hiddenReason: S.optional(S.String),
-          latest: __S(93),
+          hiddenReason: S.optional(ReplyToPaperCommentResponseNewMessageDataHiddenReason),
+          latest: ReplyToPaperCommentResponseNewMessageDataLatest,
           numEdits: S.Number,
-          editors: __S(10),
-          editorAvatarUrls: __S(10),
-          reactions: __S(95),
-          identifiedLanguage: S.optional(__S(13)),
+          editors: ReplyToPaperCommentResponseNewMessageDataEditorsList,
+          editorAvatarUrls: ReplyToPaperCommentResponseNewMessageDataEditorAvatarUrlsList,
+          reactions: ReplyToPaperCommentResponseNewMessageDataReactionsList,
+          identifiedLanguage: S.optional(CreateBlogCommentResponseNewMessageDataIdentifiedLanguage),
           relatedEventId: S.optional(S.String),
           isReport: S.optional(S.Boolean),
           parentCommentId: S.optional(S.String),
@@ -6232,9 +7079,9 @@ function __c12(j: number): any {
         S.Struct({
           id: S.String,
           createdAt: S.String,
-          author: S.optional(S.Unknown),
+          author: S.optional(ReplyToPaperCommentResponseNewMessageAuthor),
           type: S.String,
-          data: __S(96),
+          data: ReplyToPaperCommentResponseNewMessageData,
         }),
       ).annotate({
         identifier: "ReplyToPaperCommentResponseNewMessage",
@@ -6242,7 +7089,7 @@ function __c12(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          newMessage: __S(97),
+          newMessage: ReplyToPaperCommentResponseNewMessage,
         }),
       ).annotate({
         identifier: "ReplyToPaperCommentResponse",
@@ -6270,7 +7117,7 @@ function __c12(j: number): any {
           raw: S.String,
           html: S.String,
           updatedAt: S.String,
-          author: S.optional(S.Unknown),
+          author: S.optional(ReplyToPostCommentResponseNewMessageDataLatestAuthor),
         }),
       ).annotate({
         identifier: "ReplyToPostCommentResponseNewMessageDataLatest",
@@ -6278,28 +7125,28 @@ function __c12(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          reaction: S.String,
-          users: __S(10),
+          reaction: ReplyToPostCommentResponseNewMessageDataReactionsItemReaction,
+          users: ReplyToPostCommentResponseNewMessageDataReactionsItemUsersList,
           count: S.Number,
         }),
       ).annotate({
         identifier: "ReplyToPostCommentResponseNewMessageDataReactionsItem",
       });
     case 6:
-      return S.Array(__S(101));
+      return S.Array(ReplyToPostCommentResponseNewMessageDataReactionsItem);
     case 7:
       return S.suspend(() =>
         S.Struct({
           edited: S.Boolean,
           hidden: S.Boolean,
           hiddenBy: S.optional(S.String),
-          hiddenReason: S.optional(S.String),
-          latest: __S(100),
+          hiddenReason: S.optional(ReplyToPostCommentResponseNewMessageDataHiddenReason),
+          latest: ReplyToPostCommentResponseNewMessageDataLatest,
           numEdits: S.Number,
-          editors: __S(10),
-          editorAvatarUrls: __S(10),
-          reactions: __S(102),
-          identifiedLanguage: S.optional(__S(13)),
+          editors: ReplyToPostCommentResponseNewMessageDataEditorsList,
+          editorAvatarUrls: ReplyToPostCommentResponseNewMessageDataEditorAvatarUrlsList,
+          reactions: ReplyToPostCommentResponseNewMessageDataReactionsList,
+          identifiedLanguage: S.optional(CreateBlogCommentResponseNewMessageDataIdentifiedLanguage),
           relatedEventId: S.optional(S.String),
           isReport: S.optional(S.Boolean),
           parentCommentId: S.optional(S.String),
@@ -6316,9 +7163,9 @@ function __c13(j: number): any {
         S.Struct({
           id: S.String,
           createdAt: S.String,
-          author: S.optional(S.Unknown),
+          author: S.optional(ReplyToPostCommentResponseNewMessageAuthor),
           type: S.String,
-          data: __S(103),
+          data: ReplyToPostCommentResponseNewMessageData,
         }),
       ).annotate({
         identifier: "ReplyToPostCommentResponseNewMessage",
@@ -6326,7 +7173,7 @@ function __c13(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          newMessage: __S(104),
+          newMessage: ReplyToPostCommentResponseNewMessage,
         }),
       ).annotate({
         identifier: "ReplyToPostCommentResponse",
@@ -6334,11 +7181,11 @@ function __c13(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          repoType: S.String.pipe(T.Label()),
+          repoType: ToggleIgnoreDiscussionRequestRepoType.pipe(T.Label()),
           namespace: S.String.pipe(T.Label()),
           repo: S.String.pipe(T.Label()),
           num: S.String.pipe(T.Label()),
-          action: S.String,
+          action: ToggleIgnoreDiscussionRequestAction,
         }).pipe(
           T.Http({
             method: "POST",
@@ -6379,7 +7226,7 @@ function __c13(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          repoType: S.String.pipe(T.Label()),
+          repoType: UpdateDiscussionCommentRequestRepoType.pipe(T.Label()),
           namespace: S.String.pipe(T.Label()),
           repo: S.String.pipe(T.Label()),
           num: S.String.pipe(T.Label()),
@@ -6434,44 +7281,5 @@ function __c14(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdatePostCommentRequest" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
-    case 9:
-      return __c9(i & 7);
-    case 10:
-      return __c10(i & 7);
-    case 11:
-      return __c11(i & 7);
-    case 12:
-      return __c12(i & 7);
-    case 13:
-      return __c13(i & 7);
-    case 14:
-      return __c14(i & 7);
   }
 }

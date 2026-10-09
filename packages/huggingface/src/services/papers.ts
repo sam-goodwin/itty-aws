@@ -9,8 +9,6 @@ import {
 } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { HuggingFaceOpError, HuggingFaceOpContext };
 
@@ -22,11 +20,23 @@ export interface ClaimPaperAuthorshipRequest {
   /** HF user who should receive the claim. */
   targetUserId?: string;
 }
+const ClaimPaperAuthorshipRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<ClaimPaperAuthorshipRequest>;
+
 export interface ClaimPaperAuthorshipResponse {
   ok: boolean;
   claimedPaperId: string;
 }
+const ClaimPaperAuthorshipResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<ClaimPaperAuthorshipResponse>;
+
 export type GetDailyPapersRequestSort = "publishedAt" | "trending";
+const GetDailyPapersRequestSort = S.String;
+
 export interface GetDailyPapersRequest {
   p?: number;
   limit?: number;
@@ -36,6 +46,11 @@ export interface GetDailyPapersRequest {
   submitter?: string;
   sort?: GetDailyPapersRequestSort | (string & {});
 }
+const GetDailyPapersRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<GetDailyPapersRequest>;
+
 /** User overview information */
 export interface GetDailyPapersResponseBodyItemPaperAuthorsItemUser {
   _id: string;
@@ -50,6 +65,11 @@ export interface GetDailyPapersResponseBodyItemPaperAuthorsItemUser {
   isMod?: boolean;
   followerCount?: number;
 }
+const GetDailyPapersResponseBodyItemPaperAuthorsItemUser = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<GetDailyPapersResponseBodyItemPaperAuthorsItemUser>;
+
 /** Paper author information */
 export interface GetDailyPapersResponseBodyItemPaperAuthorsItem {
   _id: string;
@@ -60,13 +80,31 @@ export interface GetDailyPapersResponseBodyItemPaperAuthorsItem {
   user?: GetDailyPapersResponseBodyItemPaperAuthorsItemUser;
   hidden: boolean;
 }
+const GetDailyPapersResponseBodyItemPaperAuthorsItem = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<GetDailyPapersResponseBodyItemPaperAuthorsItem>;
+
 export type GetDailyPapersResponseBodyItemPaperAuthorsList =
   Array<GetDailyPapersResponseBodyItemPaperAuthorsItem>;
+const GetDailyPapersResponseBodyItemPaperAuthorsList = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<GetDailyPapersResponseBodyItemPaperAuthorsList>;
+
 export type GetDailyPapersResponseBodyItemPaperMediaUrlsList = Array<string>;
+const GetDailyPapersResponseBodyItemPaperMediaUrlsList = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<GetDailyPapersResponseBodyItemPaperMediaUrlsList>;
+
 /** User overview information */
 export type GetDailyPapersResponseBodyItemPaperSubmittedOnDailyBy =
   GetDailyPapersResponseBodyItemPaperAuthorsItemUser;
 export type GetDailyPapersResponseBodyItemPaperAiKeywordsList = Array<string>;
+const GetDailyPapersResponseBodyItemPaperAiKeywordsList =
+  GetDailyPapersResponseBodyItemPaperMediaUrlsList as any as S.Schema<GetDailyPapersResponseBodyItemPaperAiKeywordsList>;
+
 /** Paper data with metadata */
 export interface GetDailyPapersResponseBodyItemPaper {
   id: string;
@@ -88,7 +126,15 @@ export interface GetDailyPapersResponseBodyItemPaper {
   ai_summary_model?: string;
   githubStars?: number;
 }
+const GetDailyPapersResponseBodyItemPaper = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<GetDailyPapersResponseBodyItemPaper>;
+
 export type GetDailyPapersResponseBodyItemMediaUrlsList = Array<string>;
+const GetDailyPapersResponseBodyItemMediaUrlsList =
+  GetDailyPapersResponseBodyItemPaperMediaUrlsList as any as S.Schema<GetDailyPapersResponseBodyItemMediaUrlsList>;
+
 /** User overview information */
 export type GetDailyPapersResponseBodyItemSubmittedBy =
   GetDailyPapersResponseBodyItemPaperAuthorsItemUser;
@@ -106,25 +152,53 @@ export interface GetDailyPapersResponseBodyItem {
   submittedBy: GetDailyPapersResponseBodyItemPaperAuthorsItemUser;
   isAuthorParticipating: boolean;
 }
+const GetDailyPapersResponseBodyItem = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<GetDailyPapersResponseBodyItem>;
+
 export type GetDailyPapersResponseBodyList = Array<GetDailyPapersResponseBodyItem>;
+const GetDailyPapersResponseBodyList = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<GetDailyPapersResponseBodyList>;
+
 export type GetDailyPapersResponse = GetDailyPapersResponseBodyList;
+const GetDailyPapersResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<GetDailyPapersResponse>;
+
 export type GetPaperRequestFieldCase0 = "submissionDeadline" | "comments";
 export type GetPaperRequestFieldCase1Item = "submissionDeadline" | "comments";
 export type GetPaperRequestFieldCase1List = Array<GetPaperRequestFieldCase1Item | (string & {})>;
 export type GetPaperRequestField = GetPaperRequestFieldCase0 | GetPaperRequestFieldCase1List;
+const GetPaperRequestField = S.Unknown as any as S.Schema<GetPaperRequestField>;
+
 export interface GetPaperRequest {
   paperId: string;
   field?: GetPaperRequestField;
 }
+const GetPaperRequest = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<GetPaperRequest>;
+
 /** User overview information */
 export type GetPaperResponseAuthorsItemUser = GetDailyPapersResponseBodyItemPaperAuthorsItemUser;
 /** Paper author information */
 export type GetPaperResponseAuthorsItem = GetDailyPapersResponseBodyItemPaperAuthorsItem;
 export type GetPaperResponseAuthorsList = Array<GetDailyPapersResponseBodyItemPaperAuthorsItem>;
+const GetPaperResponseAuthorsList =
+  GetDailyPapersResponseBodyItemPaperAuthorsList as any as S.Schema<GetPaperResponseAuthorsList>;
+
 export type GetPaperResponseMediaUrlsList = Array<string>;
+const GetPaperResponseMediaUrlsList =
+  GetDailyPapersResponseBodyItemPaperMediaUrlsList as any as S.Schema<GetPaperResponseMediaUrlsList>;
+
 /** User overview information */
 export type GetPaperResponseSubmittedOnDailyBy = GetDailyPapersResponseBodyItemPaperAuthorsItemUser;
 export type GetPaperResponseAiKeywordsList = Array<string>;
+const GetPaperResponseAiKeywordsList =
+  GetDailyPapersResponseBodyItemPaperMediaUrlsList as any as S.Schema<GetPaperResponseAiKeywordsList>;
+
 export type GetPaperResponseLinkedModelsItemAvailableInferenceProvidersItemProvider =
   | "baseten"
   | "cerebras"
@@ -145,14 +219,20 @@ export type GetPaperResponseLinkedModelsItemAvailableInferenceProvidersItemProvi
   | "together"
   | "wavespeed"
   | "zai-org";
+const GetPaperResponseLinkedModelsItemAvailableInferenceProvidersItemProvider = S.String;
+
 export type GetPaperResponseLinkedModelsItemAvailableInferenceProvidersItemProviderStatus =
   | "live"
   | "staging"
   | "error";
+const GetPaperResponseLinkedModelsItemAvailableInferenceProvidersItemProviderStatus = S.String;
+
 export type GetPaperResponseLinkedModelsItemAvailableInferenceProvidersItemModelStatus =
   | "live"
   | "staging"
   | "error";
+const GetPaperResponseLinkedModelsItemAvailableInferenceProvidersItemModelStatus = S.String;
+
 export type GetPaperResponseLinkedModelsItemAvailableInferenceProvidersItemTask =
   | "text-classification"
   | "token-classification"
@@ -212,9 +292,17 @@ export type GetPaperResponseLinkedModelsItemAvailableInferenceProvidersItemTask 
   | "video-to-video"
   | "other"
   | "conversational";
+const GetPaperResponseLinkedModelsItemAvailableInferenceProvidersItemTask = S.String;
+
 export interface GetPaperResponseLinkedModelsItemAvailableInferenceProvidersItemFeatures {
   toolCalling?: boolean;
 }
+const GetPaperResponseLinkedModelsItemAvailableInferenceProvidersItemFeatures =
+  /*@__PURE__*/ __L.at(
+    __c1,
+    4,
+  ) as any as S.Schema<GetPaperResponseLinkedModelsItemAvailableInferenceProvidersItemFeatures>;
+
 export interface GetPaperResponseLinkedModelsItemAvailableInferenceProvidersItem {
   provider: GetPaperResponseLinkedModelsItemAvailableInferenceProvidersItemProvider;
   providerStatus: GetPaperResponseLinkedModelsItemAvailableInferenceProvidersItemProviderStatus;
@@ -231,18 +319,36 @@ export interface GetPaperResponseLinkedModelsItemAvailableInferenceProvidersItem
   pricingOutput?: number;
   freeUntil?: string;
 }
+const GetPaperResponseLinkedModelsItemAvailableInferenceProvidersItem = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<GetPaperResponseLinkedModelsItemAvailableInferenceProvidersItem>;
+
 export type GetPaperResponseLinkedModelsItemAvailableInferenceProvidersList =
   Array<GetPaperResponseLinkedModelsItemAvailableInferenceProvidersItem>;
+const GetPaperResponseLinkedModelsItemAvailableInferenceProvidersList = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<GetPaperResponseLinkedModelsItemAvailableInferenceProvidersList>;
+
 export type GetPaperResponseLinkedModelsItemGatedCase1 = "auto" | "manual";
 export type GetPaperResponseLinkedModelsItemGated =
   | boolean
   | GetPaperResponseLinkedModelsItemGatedCase1;
+const GetPaperResponseLinkedModelsItemGated =
+  S.Unknown as any as S.Schema<GetPaperResponseLinkedModelsItemGated>;
+
 export interface GetPaperResponseLinkedModelsItemResourceGroup {
   /** A hex string of 24 characters representing an ObjectId. */
   id: string;
   name: string;
   numUsers?: number;
 }
+const GetPaperResponseLinkedModelsItemResourceGroup = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<GetPaperResponseLinkedModelsItemResourceGroup>;
+
 export type GetPaperResponseLinkedModelsItemAuthorDataCase0Plan =
   | "team"
   | "enterprise"
@@ -304,7 +410,13 @@ export interface GetPaperResponseLinkedModelsItemAuthorDataCase1 {
 export type GetPaperResponseLinkedModelsItemAuthorData =
   | GetPaperResponseLinkedModelsItemAuthorDataCase0
   | GetPaperResponseLinkedModelsItemAuthorDataCase1;
+const GetPaperResponseLinkedModelsItemAuthorData =
+  S.Unknown as any as S.Schema<GetPaperResponseLinkedModelsItemAuthorData>;
+
 export type GetPaperResponseLinkedModelsItemWidgetOutputUrlsList = Array<string>;
+const GetPaperResponseLinkedModelsItemWidgetOutputUrlsList =
+  GetDailyPapersResponseBodyItemPaperMediaUrlsList as any as S.Schema<GetPaperResponseLinkedModelsItemWidgetOutputUrlsList>;
+
 export interface GetPaperResponseLinkedModelsItem {
   author: string;
   downloads: number;
@@ -323,11 +435,23 @@ export interface GetPaperResponseLinkedModelsItem {
   widgetOutputUrls?: GetPaperResponseLinkedModelsItemWidgetOutputUrlsList;
   isPreRelease?: boolean;
 }
+const GetPaperResponseLinkedModelsItem = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<GetPaperResponseLinkedModelsItem>;
+
 export type GetPaperResponseLinkedModelsList = Array<GetPaperResponseLinkedModelsItem>;
+const GetPaperResponseLinkedModelsList = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<GetPaperResponseLinkedModelsList>;
+
 export type GetPaperResponseLinkedDatasetsItemDatasetsServerInfoViewer =
   | "preview"
   | "viewer-partial"
   | "viewer";
+const GetPaperResponseLinkedDatasetsItemDatasetsServerInfoViewer = S.String;
+
 export type GetPaperResponseLinkedDatasetsItemDatasetsServerInfoLibrariesItem =
   | "mlcroissant"
   | "webdataset"
@@ -345,8 +469,15 @@ export type GetPaperResponseLinkedDatasetsItemDatasetsServerInfoLibrariesItem =
   | "verifiers"
   | "openenv"
   | "nemo-gym";
+const GetPaperResponseLinkedDatasetsItemDatasetsServerInfoLibrariesItem = S.String;
+
 export type GetPaperResponseLinkedDatasetsItemDatasetsServerInfoLibrariesList =
   Array<GetPaperResponseLinkedDatasetsItemDatasetsServerInfoLibrariesItem>;
+const GetPaperResponseLinkedDatasetsItemDatasetsServerInfoLibrariesList = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<GetPaperResponseLinkedDatasetsItemDatasetsServerInfoLibrariesList>;
+
 export type GetPaperResponseLinkedDatasetsItemDatasetsServerInfoFormatsItem =
   | "json"
   | "csv"
@@ -360,6 +491,9 @@ export type GetPaperResponseLinkedDatasetsItemDatasetsServerInfoFormatsItem =
   | "agent-traces";
 export type GetPaperResponseLinkedDatasetsItemDatasetsServerInfoFormatsList =
   Array<GetPaperResponseLinkedDatasetsItemDatasetsServerInfoFormatsItem>;
+const GetPaperResponseLinkedDatasetsItemDatasetsServerInfoFormatsList =
+  GetPaperResponseLinkedDatasetsItemDatasetsServerInfoLibrariesList as any as S.Schema<GetPaperResponseLinkedDatasetsItemDatasetsServerInfoFormatsList>;
+
 export type GetPaperResponseLinkedDatasetsItemDatasetsServerInfoModalitiesItem =
   | "3d"
   | "audio"
@@ -372,6 +506,9 @@ export type GetPaperResponseLinkedDatasetsItemDatasetsServerInfoModalitiesItem =
   | "video";
 export type GetPaperResponseLinkedDatasetsItemDatasetsServerInfoModalitiesList =
   Array<GetPaperResponseLinkedDatasetsItemDatasetsServerInfoModalitiesItem>;
+const GetPaperResponseLinkedDatasetsItemDatasetsServerInfoModalitiesList =
+  GetPaperResponseLinkedDatasetsItemDatasetsServerInfoLibrariesList as any as S.Schema<GetPaperResponseLinkedDatasetsItemDatasetsServerInfoModalitiesList>;
+
 export interface GetPaperResponseLinkedDatasetsItemDatasetsServerInfo {
   viewer: GetPaperResponseLinkedDatasetsItemDatasetsServerInfoViewer;
   numRows: number | null;
@@ -379,10 +516,18 @@ export interface GetPaperResponseLinkedDatasetsItemDatasetsServerInfo {
   formats: GetPaperResponseLinkedDatasetsItemDatasetsServerInfoFormatsList;
   modalities: GetPaperResponseLinkedDatasetsItemDatasetsServerInfoModalitiesList;
 }
+const GetPaperResponseLinkedDatasetsItemDatasetsServerInfo = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<GetPaperResponseLinkedDatasetsItemDatasetsServerInfo>;
+
 export type GetPaperResponseLinkedDatasetsItemGatedCase1 = "auto" | "manual";
 export type GetPaperResponseLinkedDatasetsItemGated =
   | boolean
   | GetPaperResponseLinkedDatasetsItemGatedCase1;
+const GetPaperResponseLinkedDatasetsItemGated =
+  S.Unknown as any as S.Schema<GetPaperResponseLinkedDatasetsItemGated>;
+
 export type GetPaperResponseLinkedDatasetsItemResourceGroup =
   GetPaperResponseLinkedModelsItemResourceGroup;
 export interface GetPaperResponseLinkedDatasetsItem {
@@ -401,7 +546,17 @@ export interface GetPaperResponseLinkedDatasetsItem {
   isTraces?: boolean;
   isEnvironment?: boolean;
 }
+const GetPaperResponseLinkedDatasetsItem = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<GetPaperResponseLinkedDatasetsItem>;
+
 export type GetPaperResponseLinkedDatasetsList = Array<GetPaperResponseLinkedDatasetsItem>;
+const GetPaperResponseLinkedDatasetsList = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<GetPaperResponseLinkedDatasetsList>;
+
 export interface GetPaperResponseLinkedSpacesItem {
   id: string;
   emoji: string;
@@ -409,7 +564,17 @@ export interface GetPaperResponseLinkedSpacesItem {
   shortDescription?: string;
   featured: boolean;
 }
+const GetPaperResponseLinkedSpacesItem = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<GetPaperResponseLinkedSpacesItem>;
+
 export type GetPaperResponseLinkedSpacesList = Array<GetPaperResponseLinkedSpacesItem>;
+const GetPaperResponseLinkedSpacesList = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<GetPaperResponseLinkedSpacesList>;
+
 export interface GetPaperResponseCommentsItemAuthorCase0OauthAppImageData {
   emoji: string;
   colorFrom: string;
@@ -494,6 +659,9 @@ export interface GetPaperResponseCommentsItemAuthorCase1 {
 export type GetPaperResponseCommentsItemAuthor =
   | GetPaperResponseCommentsItemAuthorCase0
   | GetPaperResponseCommentsItemAuthorCase1;
+const GetPaperResponseCommentsItemAuthor =
+  S.Unknown as any as S.Schema<GetPaperResponseCommentsItemAuthor>;
+
 export type GetPaperResponseCommentsItemDataHiddenReason =
   | "Spam"
   | "Abuse"
@@ -501,6 +669,8 @@ export type GetPaperResponseCommentsItemDataHiddenReason =
   | "Resolved"
   | "Off-Topic"
   | "Low Quality";
+const GetPaperResponseCommentsItemDataHiddenReason = S.String;
+
 export type GetPaperResponseCommentsItemDataLatestAuthorCase0Plan =
   | "team"
   | "enterprise"
@@ -562,14 +732,28 @@ export interface GetPaperResponseCommentsItemDataLatestAuthorCase1 {
 export type GetPaperResponseCommentsItemDataLatestAuthor =
   | GetPaperResponseCommentsItemDataLatestAuthorCase0
   | GetPaperResponseCommentsItemDataLatestAuthorCase1;
+const GetPaperResponseCommentsItemDataLatestAuthor =
+  S.Unknown as any as S.Schema<GetPaperResponseCommentsItemDataLatestAuthor>;
+
 export interface GetPaperResponseCommentsItemDataLatest {
   raw: string;
   html: string;
   updatedAt: string;
   author?: GetPaperResponseCommentsItemDataLatestAuthor;
 }
+const GetPaperResponseCommentsItemDataLatest = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<GetPaperResponseCommentsItemDataLatest>;
+
 export type GetPaperResponseCommentsItemDataEditorsList = Array<string>;
+const GetPaperResponseCommentsItemDataEditorsList =
+  GetDailyPapersResponseBodyItemPaperMediaUrlsList as any as S.Schema<GetPaperResponseCommentsItemDataEditorsList>;
+
 export type GetPaperResponseCommentsItemDataEditorAvatarUrlsList = Array<string>;
+const GetPaperResponseCommentsItemDataEditorAvatarUrlsList =
+  GetDailyPapersResponseBodyItemPaperMediaUrlsList as any as S.Schema<GetPaperResponseCommentsItemDataEditorAvatarUrlsList>;
+
 export type GetPaperResponseCommentsItemDataReactionsItemReaction =
   | "\ud83d\udd25"
   | "\ud83d\ude80"
@@ -583,18 +767,38 @@ export type GetPaperResponseCommentsItemDataReactionsItemReaction =
   | "\ud83e\udd1d"
   | "\ud83d\ude14"
   | "\ud83e\udd2f";
+const GetPaperResponseCommentsItemDataReactionsItemReaction = S.String;
+
 export type GetPaperResponseCommentsItemDataReactionsItemUsersList = Array<string>;
+const GetPaperResponseCommentsItemDataReactionsItemUsersList =
+  GetDailyPapersResponseBodyItemPaperMediaUrlsList as any as S.Schema<GetPaperResponseCommentsItemDataReactionsItemUsersList>;
+
 export interface GetPaperResponseCommentsItemDataReactionsItem {
   reaction: GetPaperResponseCommentsItemDataReactionsItemReaction;
   users: GetPaperResponseCommentsItemDataReactionsItemUsersList;
   count: number;
 }
+const GetPaperResponseCommentsItemDataReactionsItem = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<GetPaperResponseCommentsItemDataReactionsItem>;
+
 export type GetPaperResponseCommentsItemDataReactionsList =
   Array<GetPaperResponseCommentsItemDataReactionsItem>;
+const GetPaperResponseCommentsItemDataReactionsList = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<GetPaperResponseCommentsItemDataReactionsList>;
+
 export interface GetPaperResponseCommentsItemDataIdentifiedLanguage {
   language: string;
   probability: number;
 }
+const GetPaperResponseCommentsItemDataIdentifiedLanguage = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<GetPaperResponseCommentsItemDataIdentifiedLanguage>;
+
 export interface GetPaperResponseCommentsItemData {
   edited: boolean;
   hidden: boolean;
@@ -610,6 +814,11 @@ export interface GetPaperResponseCommentsItemData {
   isReport?: boolean;
   parentCommentId?: string;
 }
+const GetPaperResponseCommentsItemData = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<GetPaperResponseCommentsItemData>;
+
 export interface GetPaperResponseCommentsItem {
   id: string;
   createdAt: string;
@@ -617,8 +826,18 @@ export interface GetPaperResponseCommentsItem {
   type: string;
   data: GetPaperResponseCommentsItemData;
 }
+const GetPaperResponseCommentsItem = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<GetPaperResponseCommentsItem>;
+
 /** only available when field contains 'comments' */
 export type GetPaperResponseCommentsList = Array<GetPaperResponseCommentsItem>;
+const GetPaperResponseCommentsList = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<GetPaperResponseCommentsList>;
+
 export interface GetPaperResponse {
   id: string;
   authors: GetPaperResponseAuthorsList;
@@ -649,15 +868,23 @@ export interface GetPaperResponse {
   /** only available when field contains 'comments' */
   comments?: GetPaperResponseCommentsList;
 }
+const GetPaperResponse = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<GetPaperResponse>;
+
 export interface IndexPaperRequest {
   /** The arXiv ID of the paper to index (e.g. 2301.00001) */
   arxivId: string;
 }
+const IndexPaperRequest = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<IndexPaperRequest>;
+
 export type IndexPaperResponse = unknown;
+const IndexPaperResponse = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<IndexPaperResponse>;
+
 export interface ListPapersRequest {
   cursor?: string;
   limit?: number;
 }
+const ListPapersRequest = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<ListPapersRequest>;
+
 /** User overview information */
 export type ListPapersResponseBodyItemAuthorsItemUser =
   GetDailyPapersResponseBodyItemPaperAuthorsItemUser;
@@ -665,12 +892,20 @@ export type ListPapersResponseBodyItemAuthorsItemUser =
 export type ListPapersResponseBodyItemAuthorsItem = GetDailyPapersResponseBodyItemPaperAuthorsItem;
 export type ListPapersResponseBodyItemAuthorsList =
   Array<GetDailyPapersResponseBodyItemPaperAuthorsItem>;
+const ListPapersResponseBodyItemAuthorsList =
+  GetDailyPapersResponseBodyItemPaperAuthorsList as any as S.Schema<ListPapersResponseBodyItemAuthorsList>;
+
 export interface ListPapersResponseBodyItemOrganization {
   _id: string;
   name: string;
   fullname?: string;
   avatar?: string;
 }
+const ListPapersResponseBodyItemOrganization = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<ListPapersResponseBodyItemOrganization>;
+
 export interface ListPapersResponseBodyItem {
   id: string;
   title: string;
@@ -684,20 +919,43 @@ export interface ListPapersResponseBodyItem {
   ai_summary?: string;
   organization?: ListPapersResponseBodyItemOrganization;
 }
+const ListPapersResponseBodyItem = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<ListPapersResponseBodyItem>;
+
 export type ListPapersResponseBodyList = Array<ListPapersResponseBodyItem>;
+const ListPapersResponseBodyList = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<ListPapersResponseBodyList>;
+
 export type ListPapersResponse = ListPapersResponseBodyList;
+const ListPapersResponse = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<ListPapersResponse>;
+
 export interface SearchPapersRequest {
   q?: string;
   limit?: number;
 }
+const SearchPapersRequest = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<SearchPapersRequest>;
+
 export interface SearchPapersResponse {}
+const SearchPapersResponse = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<SearchPapersResponse>;
+
 export interface UpdatePaperLinksRequest {
   paperId: string;
   projectPage?: string | null;
   githubRepo?: string | null;
   organizationId?: string | null;
 }
+const UpdatePaperLinksRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  1,
+) as any as S.Schema<UpdatePaperLinksRequest>;
+
 export type UpdatePaperLinksResponse = unknown;
+const UpdatePaperLinksResponse = IndexPaperResponse as any as S.Schema<UpdatePaperLinksResponse>;
+
 export type ClaimPaperAuthorshipError = HuggingFaceOpError;
 /** Claim paper authorship */
 export const claimPaperAuthorship: API.OperationMethod<
@@ -706,8 +964,8 @@ export const claimPaperAuthorship: API.OperationMethod<
   ClaimPaperAuthorshipError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<ClaimPaperAuthorshipRequest>,
-  output: __S(1) as any as S.Schema<ClaimPaperAuthorshipResponse>,
+  input: ClaimPaperAuthorshipRequest,
+  output: ClaimPaperAuthorshipResponse,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -721,8 +979,8 @@ export const getDailyPapers: API.OperationMethod<
   GetDailyPapersError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2) as any as S.Schema<GetDailyPapersRequest>,
-  output: __S(10) as any as S.Schema<GetDailyPapersResponse>,
+  input: GetDailyPapersRequest,
+  output: GetDailyPapersResponse,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -736,8 +994,8 @@ export const getPaper: API.OperationMethod<
   GetPaperError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11) as any as S.Schema<GetPaperRequest>,
-  output: __S(31) as any as S.Schema<GetPaperResponse>,
+  input: GetPaperRequest,
+  output: GetPaperResponse,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -751,8 +1009,8 @@ export const indexPaper: API.OperationMethod<
   IndexPaperError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32) as any as S.Schema<IndexPaperRequest>,
-  output: __S(33) as any as S.Schema<IndexPaperResponse>,
+  input: IndexPaperRequest,
+  output: IndexPaperResponse,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -766,8 +1024,8 @@ export const listPapers: API.OperationMethod<
   ListPapersError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34) as any as S.Schema<ListPapersRequest>,
-  output: __S(38) as any as S.Schema<ListPapersResponse>,
+  input: ListPapersRequest,
+  output: ListPapersResponse,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -781,8 +1039,8 @@ export const searchPapers: API.OperationMethod<
   SearchPapersError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39) as any as S.Schema<SearchPapersRequest>,
-  output: __S(40) as any as S.Schema<SearchPapersResponse>,
+  input: SearchPapersRequest,
+  output: SearchPapersResponse,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -796,8 +1054,8 @@ export const updatePaperLinks: API.OperationMethod<
   UpdatePaperLinksError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41) as any as S.Schema<UpdatePaperLinksRequest>,
-  output: __S(33) as any as S.Schema<UpdatePaperLinksResponse>,
+  input: UpdatePaperLinksRequest,
+  output: UpdatePaperLinksResponse,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -834,7 +1092,7 @@ function __c0(j: number): any {
           week: S.optional(S.String.pipe(T.Query())),
           month: S.optional(S.String.pipe(T.Query())),
           submitter: S.optional(S.String.pipe(T.Query())),
-          sort: S.optional(S.String.pipe(T.Query())),
+          sort: S.optional(GetDailyPapersRequestSort.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/api/daily_papers", code: 200 })),
       ).annotate({ identifier: "GetDailyPapersRequest" });
     case 3:
@@ -862,26 +1120,26 @@ function __c0(j: number): any {
           name: S.String,
           status: S.optional(S.String),
           statusLastChangedAt: S.optional(S.String),
-          user: S.optional(__S(3)),
+          user: S.optional(GetDailyPapersResponseBodyItemPaperAuthorsItemUser),
           hidden: S.Boolean,
         }),
       ).annotate({
         identifier: "GetDailyPapersResponseBodyItemPaperAuthorsItem",
       });
     case 5:
-      return S.Array(__S(4));
+      return S.Array(GetDailyPapersResponseBodyItemPaperAuthorsItem);
     case 6:
       return S.Array(S.String);
     case 7:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          authors: __S(5),
-          mediaUrls: S.optional(__S(6)),
+          authors: GetDailyPapersResponseBodyItemPaperAuthorsList,
+          mediaUrls: S.optional(GetDailyPapersResponseBodyItemPaperMediaUrlsList),
           publishedAt: S.String,
           submittedOnDailyAt: S.optional(S.String),
           title: S.String,
-          submittedOnDailyBy: S.optional(__S(3)),
+          submittedOnDailyBy: S.optional(GetDailyPapersResponseBodyItemPaperAuthorsItemUser),
           summary: S.String,
           upvotes: S.Number,
           withdrawnAt: S.optional(S.String),
@@ -889,7 +1147,7 @@ function __c0(j: number): any {
           projectPage: S.optional(S.String),
           githubRepo: S.optional(S.String),
           ai_summary: S.optional(S.String),
-          ai_keywords: S.optional(__S(6)),
+          ai_keywords: S.optional(GetDailyPapersResponseBodyItemPaperAiKeywordsList),
           ai_summary_model: S.optional(S.String),
           githubStars: S.optional(S.Number),
         }),
@@ -903,30 +1161,30 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          paper: __S(7),
+          paper: GetDailyPapersResponseBodyItemPaper,
           publishedAt: S.String,
           title: S.String,
           summary: S.String,
-          mediaUrls: S.optional(__S(6)),
+          mediaUrls: S.optional(GetDailyPapersResponseBodyItemMediaUrlsList),
           thumbnail: S.String,
           numComments: S.Number,
-          submittedBy: __S(3),
+          submittedBy: GetDailyPapersResponseBodyItemPaperAuthorsItemUser,
           isAuthorParticipating: S.Boolean,
         }),
       ).annotate({
         identifier: "GetDailyPapersResponseBodyItem",
       });
     case 1:
-      return S.Array(__S(8));
+      return S.Array(GetDailyPapersResponseBodyItem);
     case 2:
-      return S.suspend(() => __S(9).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => GetDailyPapersResponseBodyList.pipe(T.RawResponseRoot())).annotate({
         identifier: "GetDailyPapersResponse",
       });
     case 3:
       return S.suspend(() =>
         S.Struct({
           paperId: S.String.pipe(T.Label()),
-          field: S.optional(S.Unknown.pipe(T.Query())),
+          field: S.optional(GetPaperRequestField.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/api/papers/{paperId}", code: 200 })),
       ).annotate({ identifier: "GetPaperRequest" });
     case 4:
@@ -940,14 +1198,17 @@ function __c1(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          provider: S.String,
-          providerStatus: S.String,
-          modelStatus: S.String,
+          provider: GetPaperResponseLinkedModelsItemAvailableInferenceProvidersItemProvider,
+          providerStatus:
+            GetPaperResponseLinkedModelsItemAvailableInferenceProvidersItemProviderStatus,
+          modelStatus: GetPaperResponseLinkedModelsItemAvailableInferenceProvidersItemModelStatus,
           providerId: S.String,
-          task: S.String,
+          task: GetPaperResponseLinkedModelsItemAvailableInferenceProvidersItemTask,
           adapterType: S.optional(S.String),
           adapterWeightsPath: S.optional(S.String),
-          features: S.optional(__S(12)),
+          features: S.optional(
+            GetPaperResponseLinkedModelsItemAvailableInferenceProvidersItemFeatures,
+          ),
           isCheapestPricingOutput: S.Boolean,
           isFastestThroughput: S.Boolean,
           isModelAuthor: S.Boolean,
@@ -959,7 +1220,7 @@ function __c1(j: number): any {
         identifier: "GetPaperResponseLinkedModelsItemAvailableInferenceProvidersItem",
       });
     case 6:
-      return S.Array(__S(13));
+      return S.Array(GetPaperResponseLinkedModelsItemAvailableInferenceProvidersItem);
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -980,35 +1241,36 @@ function __c2(j: number): any {
           author: S.String,
           downloads: S.Number,
           id: S.String,
-          availableInferenceProviders: __S(14),
+          availableInferenceProviders:
+            GetPaperResponseLinkedModelsItemAvailableInferenceProvidersList,
           isLikedByUser: S.Boolean,
           lastModified: S.String,
           likes: S.Number,
           pipeline_tag: S.optional(S.String),
           private: S.Boolean,
           repoType: S.String,
-          gated: S.Unknown,
-          resourceGroup: S.optional(__S(15)),
+          gated: GetPaperResponseLinkedModelsItemGated,
+          resourceGroup: S.optional(GetPaperResponseLinkedModelsItemResourceGroup),
           numParameters: S.optional(S.Number),
-          authorData: S.optional(S.Unknown),
-          widgetOutputUrls: S.optional(__S(6)),
+          authorData: S.optional(GetPaperResponseLinkedModelsItemAuthorData),
+          widgetOutputUrls: S.optional(GetPaperResponseLinkedModelsItemWidgetOutputUrlsList),
           isPreRelease: S.optional(S.Boolean),
         }),
       ).annotate({
         identifier: "GetPaperResponseLinkedModelsItem",
       });
     case 1:
-      return S.Array(__S(16));
+      return S.Array(GetPaperResponseLinkedModelsItem);
     case 2:
-      return S.Array(S.String);
+      return S.Array(GetPaperResponseLinkedDatasetsItemDatasetsServerInfoLibrariesItem);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          viewer: S.String,
+          viewer: GetPaperResponseLinkedDatasetsItemDatasetsServerInfoViewer,
           numRows: S.NullOr(S.Number),
-          libraries: __S(18),
-          formats: __S(18),
-          modalities: __S(18),
+          libraries: GetPaperResponseLinkedDatasetsItemDatasetsServerInfoLibrariesList,
+          formats: GetPaperResponseLinkedDatasetsItemDatasetsServerInfoFormatsList,
+          modalities: GetPaperResponseLinkedDatasetsItemDatasetsServerInfoModalitiesList,
         }),
       ).annotate({
         identifier: "GetPaperResponseLinkedDatasetsItemDatasetsServerInfo",
@@ -1020,13 +1282,13 @@ function __c2(j: number): any {
           id: S.String,
           isLikedByUser: S.Boolean,
           likes: S.Number,
-          datasetsServerInfo: S.optional(__S(19)),
+          datasetsServerInfo: S.optional(GetPaperResponseLinkedDatasetsItemDatasetsServerInfo),
           private: S.Boolean,
           repoType: S.String,
           downloads: S.Number,
-          gated: S.Unknown,
+          gated: GetPaperResponseLinkedDatasetsItemGated,
           lastModified: S.String,
-          resourceGroup: S.optional(__S(15)),
+          resourceGroup: S.optional(GetPaperResponseLinkedModelsItemResourceGroup),
           isBenchmark: S.optional(S.Boolean),
           isTraces: S.optional(S.Boolean),
           isEnvironment: S.optional(S.Boolean),
@@ -1035,7 +1297,7 @@ function __c2(j: number): any {
         identifier: "GetPaperResponseLinkedDatasetsItem",
       });
     case 5:
-      return S.Array(__S(20));
+      return S.Array(GetPaperResponseLinkedDatasetsItem);
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -1049,7 +1311,7 @@ function __c2(j: number): any {
         identifier: "GetPaperResponseLinkedSpacesItem",
       });
     case 7:
-      return S.Array(__S(22));
+      return S.Array(GetPaperResponseLinkedSpacesItem);
   }
 }
 function __c3(j: number): any {
@@ -1060,7 +1322,7 @@ function __c3(j: number): any {
           raw: S.String,
           html: S.String,
           updatedAt: S.String,
-          author: S.optional(S.Unknown),
+          author: S.optional(GetPaperResponseCommentsItemDataLatestAuthor),
         }),
       ).annotate({
         identifier: "GetPaperResponseCommentsItemDataLatest",
@@ -1068,15 +1330,15 @@ function __c3(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          reaction: S.String,
-          users: __S(6),
+          reaction: GetPaperResponseCommentsItemDataReactionsItemReaction,
+          users: GetPaperResponseCommentsItemDataReactionsItemUsersList,
           count: S.Number,
         }),
       ).annotate({
         identifier: "GetPaperResponseCommentsItemDataReactionsItem",
       });
     case 2:
-      return S.Array(__S(25));
+      return S.Array(GetPaperResponseCommentsItemDataReactionsItem);
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -1092,13 +1354,13 @@ function __c3(j: number): any {
           edited: S.Boolean,
           hidden: S.Boolean,
           hiddenBy: S.optional(S.String),
-          hiddenReason: S.optional(S.String),
-          latest: __S(24),
+          hiddenReason: S.optional(GetPaperResponseCommentsItemDataHiddenReason),
+          latest: GetPaperResponseCommentsItemDataLatest,
           numEdits: S.Number,
-          editors: __S(6),
-          editorAvatarUrls: __S(6),
-          reactions: __S(26),
-          identifiedLanguage: S.optional(__S(27)),
+          editors: GetPaperResponseCommentsItemDataEditorsList,
+          editorAvatarUrls: GetPaperResponseCommentsItemDataEditorAvatarUrlsList,
+          reactions: GetPaperResponseCommentsItemDataReactionsList,
+          identifiedLanguage: S.optional(GetPaperResponseCommentsItemDataIdentifiedLanguage),
           relatedEventId: S.optional(S.String),
           isReport: S.optional(S.Boolean),
           parentCommentId: S.optional(S.String),
@@ -1111,25 +1373,25 @@ function __c3(j: number): any {
         S.Struct({
           id: S.String,
           createdAt: S.String,
-          author: S.optional(S.Unknown),
+          author: S.optional(GetPaperResponseCommentsItemAuthor),
           type: S.String,
-          data: __S(28),
+          data: GetPaperResponseCommentsItemData,
         }),
       ).annotate({
         identifier: "GetPaperResponseCommentsItem",
       });
     case 6:
-      return S.Array(__S(29));
+      return S.Array(GetPaperResponseCommentsItem);
     case 7:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          authors: __S(5),
-          mediaUrls: S.optional(__S(6)),
+          authors: GetPaperResponseAuthorsList,
+          mediaUrls: S.optional(GetPaperResponseMediaUrlsList),
           publishedAt: S.String,
           submittedOnDailyAt: S.optional(S.String),
           title: S.String,
-          submittedOnDailyBy: S.optional(__S(3)),
+          submittedOnDailyBy: S.optional(GetDailyPapersResponseBodyItemPaperAuthorsItemUser),
           summary: S.String,
           upvotes: S.Number,
           withdrawnAt: S.optional(S.String),
@@ -1137,17 +1399,17 @@ function __c3(j: number): any {
           projectPage: S.optional(S.String),
           githubRepo: S.optional(S.String),
           ai_summary: S.optional(S.String),
-          ai_keywords: S.optional(__S(6)),
+          ai_keywords: S.optional(GetPaperResponseAiKeywordsList),
           ai_summary_model: S.optional(S.String),
           githubStars: S.optional(S.Number),
           submissionDeadline: S.optional(S.String),
-          linkedModels: __S(17),
+          linkedModels: GetPaperResponseLinkedModelsList,
           numTotalModels: S.Number,
-          linkedDatasets: __S(21),
+          linkedDatasets: GetPaperResponseLinkedDatasetsList,
           numTotalDatasets: S.Number,
-          linkedSpaces: __S(23),
+          linkedSpaces: GetPaperResponseLinkedSpacesList,
           numTotalSpaces: S.Number,
-          comments: S.optional(__S(30)),
+          comments: S.optional(GetPaperResponseCommentsList),
         }),
       ).annotate({ identifier: "GetPaperResponse" });
   }
@@ -1190,20 +1452,20 @@ function __c4(j: number): any {
           upvotes: S.Number,
           publishedAt: S.String,
           thumbnailUrl: S.optional(S.String),
-          authors: __S(5),
+          authors: ListPapersResponseBodyItemAuthorsList,
           summary: S.String,
           projectPage: S.optional(S.String),
           githubRepo: S.optional(S.String),
           ai_summary: S.optional(S.String),
-          organization: S.optional(__S(35)),
+          organization: S.optional(ListPapersResponseBodyItemOrganization),
         }),
       ).annotate({
         identifier: "ListPapersResponseBodyItem",
       });
     case 5:
-      return S.Array(__S(36));
+      return S.Array(ListPapersResponseBodyItem);
     case 6:
-      return S.suspend(() => __S(37).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => ListPapersResponseBodyList.pipe(T.RawResponseRoot())).annotate({
         identifier: "ListPapersResponse",
       });
     case 7:
@@ -1230,26 +1492,5 @@ function __c5(j: number): any {
           organizationId: S.optional(S.NullOr(S.String)),
         }).pipe(T.Http({ method: "POST", uri: "/api/papers/{paperId}/links", code: 200 })),
       ).annotate({ identifier: "UpdatePaperLinksRequest" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
   }
 }

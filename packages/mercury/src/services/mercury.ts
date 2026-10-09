@@ -8,8 +8,6 @@ import { UnknownMercuryError } from "../errors.ts";
 import { MercuryProtocol, type MercuryOpError, type MercuryOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { MercuryOpError, MercuryOpContext };
 
@@ -34,6 +32,8 @@ export class NotFound
 export interface CancelCardRequest {
   cardId: string;
 }
+const CancelCardRequest = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<CancelCardRequest>;
+
 /** Current-cycle limits for one budget linked to this card and cardholder. */
 export interface CardBudget {
   /** The cardholder's spend limit for the current budget cycle, in cents. */
@@ -45,8 +45,12 @@ export interface CardBudget {
   /** Current-cycle limit minus recorded spend, clamped at zero, in cents. Authorization also uses cached allocations and in-flight holds, so its available amount may differ. */
   remainingAmountCents: number;
 }
+const CardBudget = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<CardBudget>;
+
 /** One entry per active budget linked to this card and cardholder. Empty under cardLimit, or when this response has no active budget for the cardholder. */
 export type CardBudgetsList = Array<CardBudget>;
+const CardBudgetsList = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<CardBudgetsList>;
+
 export type MercuryCategory =
   | "Other"
   | "Advertising"
@@ -87,18 +91,29 @@ export type MercuryCategory =
   | "Taxes"
   | "Utilities"
   | "VehicleExpenses";
+const MercuryCategory = S.String;
+
 /** Mercury spend-category locks applied to this card, in no particular order. Empty when the card has no category restrictions. */
 export type CardCategoryLocksList = Array<MercuryCategory>;
+const CardCategoryLocksList = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<CardCategoryLocksList>;
+
 export interface CardExpiration {
   /** Calendar month. */
   month: number;
   /** Four-digit calendar year. */
   year: number;
 }
+const CardExpiration = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<CardExpiration>;
+
 export interface CardMerchantLock {
   id: string;
   name: string;
 }
+const CardMerchantLock = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<CardMerchantLock>;
+
 export interface CardSpendLimit {
   /** Maximum total spend allowed per interval, in cents. */
   amountCents: number;
@@ -106,6 +121,8 @@ export interface CardSpendLimit {
   atmAmountCents?: number | null;
   interval: unknown;
 }
+const CardSpendLimit = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<CardSpendLimit>;
+
 export interface Card {
   /** The Mercury account this card is associated with. */
   accountId: string;
@@ -136,15 +153,29 @@ export interface Card {
   /** Mercury User who owns the card. */
   userId: string;
 }
+const Card = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<Card>;
+
 export interface CancelInvoiceRequest {
   invoiceId: string;
 }
+const CancelInvoiceRequest = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<CancelInvoiceRequest>;
+
 export interface CancelInvoiceResponse {}
+const CancelInvoiceResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<CancelInvoiceResponse>;
+
 export interface CreateCardRequestSpendLimit {
   /** Maximum total spend allowed per interval, in cents. */
   amountCents: number;
   interval: unknown;
 }
+const CreateCardRequestSpendLimit = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<CreateCardRequestSpendLimit>;
+
 export interface CreateCardRequest {
   accountId?: unknown | null;
   kind: unknown;
@@ -154,6 +185,8 @@ export interface CreateCardRequest {
   type: unknown;
   userId: unknown;
 }
+const CreateCardRequest = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<CreateCardRequest>;
+
 export interface CreateCategoryRequest {
   name: unknown;
   /** Whether this category is applicable to card transactions */
@@ -163,6 +196,11 @@ export interface CreateCategoryRequest {
   /** Whether this category is applicable to expense reimbursement transactions */
   visibleForReimbursements: boolean;
 }
+const CreateCategoryRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<CreateCategoryRequest>;
+
 /** Represents an expense category for transaction classification. */
 export interface CategoryData {
   id: unknown;
@@ -175,6 +213,8 @@ export interface CategoryData {
   /** Whether this category is applicable to expense reimbursement transactions */
   visibleForReimbursements: boolean;
 }
+const CategoryData = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<CategoryData>;
+
 export interface CreateCustomerRequestAddress {
   /** Primary street address line. */
   address1: string;
@@ -189,12 +229,22 @@ export interface CreateCustomerRequestAddress {
   postalCode: string;
   region: unknown;
 }
+const CreateCustomerRequestAddress = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<CreateCustomerRequestAddress>;
+
 export interface CreateCustomerRequest {
   address?: CreateCustomerRequestAddress | null;
   email: unknown;
   /** The name of the customer. */
   name: string;
 }
+const CreateCustomerRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<CreateCustomerRequest>;
+
 export interface ApiV1ArCustomerResponseDataAddress {
   /** Primary street address line. */
   address1: string;
@@ -207,6 +257,11 @@ export interface ApiV1ArCustomerResponseDataAddress {
   postalCode: string;
   region: unknown;
 }
+const ApiV1ArCustomerResponseDataAddress = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<ApiV1ArCustomerResponseDataAddress>;
+
 /** Response data for Accounts Receivable customer API endpoints */
 export interface ApiV1ArCustomerResponseData {
   address?: ApiV1ArCustomerResponseDataAddress | null;
@@ -216,6 +271,11 @@ export interface ApiV1ArCustomerResponseData {
   /** Name of customer. */
   name: string;
 }
+const ApiV1ArCustomerResponseData = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<ApiV1ArCustomerResponseData>;
+
 export interface CreateInternalTransferRequest {
   amount: number;
   destinationAccountId: string;
@@ -223,13 +283,30 @@ export interface CreateInternalTransferRequest {
   note?: string | null;
   sourceAccountId: string;
 }
+const CreateInternalTransferRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<CreateInternalTransferRequest>;
+
 export type TransactionAttachmentType = "checkImage" | "receipt" | "other";
+const TransactionAttachmentType = S.String;
+
 export interface TransactionAttachment {
   attachmentType: TransactionAttachmentType;
   fileName: string;
   url: string;
 }
+const TransactionAttachment = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<TransactionAttachment>;
+
 export type TransactionAttachmentsList = Array<TransactionAttachment>;
+const TransactionAttachmentsList = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<TransactionAttachmentsList>;
+
 export interface CurrencyExchangeInfo {
   convertedFromAmount: number;
   convertedFromCurrency: string;
@@ -241,6 +318,8 @@ export interface CurrencyExchangeInfo {
   feePercentage: number;
   feeTransactionId?: string | null;
 }
+const CurrencyExchangeInfo = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<CurrencyExchangeInfo>;
+
 export type USState =
   | "AL"
   | "AK"
@@ -293,6 +372,8 @@ export type USState =
   | "WV"
   | "WI"
   | "WY";
+const USState = S.String;
+
 export interface AddressData {
   address1: string;
   address2?: string | null;
@@ -300,14 +381,20 @@ export interface AddressData {
   postalCode: string;
   state?: USState | (string & {}) | null;
 }
+const AddressData = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<AddressData>;
+
 export interface CreditCardInfo {
   email?: string | null;
   id: unknown;
   paymentMethod: string;
 }
+const CreditCardInfo = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<CreditCardInfo>;
+
 export interface DebitCardInfo {
   id: unknown;
 }
+const DebitCardInfo = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<DebitCardInfo>;
+
 export interface AddressWithoutName {
   address1: string;
   address2?: string | null;
@@ -316,12 +403,19 @@ export interface AddressWithoutName {
   postalCode: string;
   region: string;
 }
+const AddressWithoutName = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<AddressWithoutName>;
+
 export interface DomesticWireRoutingInfo {
   accountNumber: string;
   address?: AddressWithoutName | null;
   bankName?: string | null;
   routingNumber: string;
 }
+const DomesticWireRoutingInfo = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<DomesticWireRoutingInfo>;
+
 export type ElectronicAccountType =
   | "businessChecking"
   | "businessSavings"
@@ -331,6 +425,8 @@ export type ElectronicAccountType =
   | "personalGeneralLedger"
   | "businessLoan"
   | "personalLoan";
+const ElectronicAccountType = S.String;
+
 export interface ElectronicRoutingInfo {
   accountNumber: string;
   address?: AddressWithoutName | null;
@@ -338,53 +434,114 @@ export interface ElectronicRoutingInfo {
   electronicAccountType: ElectronicAccountType;
   routingNumber: string;
 }
+const ElectronicRoutingInfo = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<ElectronicRoutingInfo>;
+
 export interface SwiftCodeData {
   bankCityState: string;
   bankCountry: string;
   bankName: string;
 }
+const SwiftCodeData = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<SwiftCodeData>;
+
 export interface InternationalWireCorrespondentInfo {
   bankName?: string | null;
   routingNumber?: string | null;
   swiftCode?: string | null;
 }
+const InternationalWireCorrespondentInfo = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<InternationalWireCorrespondentInfo>;
+
 export interface InternationalWireAustraliaSpecificData {
   bsbCode: string;
 }
+const InternationalWireAustraliaSpecificData = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<InternationalWireAustraliaSpecificData>;
+
 export interface InternationalWireBrazilSpecificData {
   legalId: string;
 }
+const InternationalWireBrazilSpecificData = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<InternationalWireBrazilSpecificData>;
+
 export interface InternationalWireCanadaSpecificData {
   bankCode: string;
   transitNumber: string;
 }
+const InternationalWireCanadaSpecificData = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<InternationalWireCanadaSpecificData>;
+
 export type InternationalWireChileSpecificData = InternationalWireBrazilSpecificData;
 export type InternationalWireColombiaSpecificData = InternationalWireBrazilSpecificData;
 export type SwiftBankAccountType = "checking" | "savings";
+const SwiftBankAccountType = S.String;
+
 export interface InternationalWireDominicanRepublicSpecificData {
   accountType: SwiftBankAccountType;
   legalId: string;
 }
+const InternationalWireDominicanRepublicSpecificData = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<InternationalWireDominicanRepublicSpecificData>;
+
 export type InternationalWireHondurasSpecificData = InternationalWireDominicanRepublicSpecificData;
 export interface InternationalWireIndiaSpecificData {
   ifscCode: string;
 }
+const InternationalWireIndiaSpecificData = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<InternationalWireIndiaSpecificData>;
+
 export type InternationalWireKazakhstanSpecificData = InternationalWireBrazilSpecificData;
 export type PakistaniLegalIdType = "CNIC" | "SNIC" | "Passport" | "NTN";
+const PakistaniLegalIdType = S.String;
+
 export interface InternationalWirePakistanSpecificData {
   legalId: string;
   legalIdType: PakistaniLegalIdType;
 }
+const InternationalWirePakistanSpecificData = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<InternationalWirePakistanSpecificData>;
+
 export type InternationalWireParaguaySpecificData = InternationalWireBrazilSpecificData;
 export interface InternationalWirePhilippinesSpecificData {
   routingNumber: string;
 }
+const InternationalWirePhilippinesSpecificData = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<InternationalWirePhilippinesSpecificData>;
+
 export interface InternationalWireRussiaSpecificData {
   inn: string;
 }
+const InternationalWireRussiaSpecificData = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<InternationalWireRussiaSpecificData>;
+
 export interface InternationalWireSouthAfricaSpecificData {
   branchCode: string;
 }
+const InternationalWireSouthAfricaSpecificData = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<InternationalWireSouthAfricaSpecificData>;
+
 export interface InternationalWireCountrySpecificData {
   australia?: InternationalWireAustraliaSpecificData | null;
   brazil?: InternationalWireBrazilSpecificData | null;
@@ -401,6 +558,11 @@ export interface InternationalWireCountrySpecificData {
   russia?: InternationalWireRussiaSpecificData | null;
   southAfrica?: InternationalWireSouthAfricaSpecificData | null;
 }
+const InternationalWireCountrySpecificData = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<InternationalWireCountrySpecificData>;
+
 export interface InternationalWireRoutingInfo {
   address?: AddressWithoutName | null;
   bankDetails?: SwiftCodeData | null;
@@ -411,6 +573,11 @@ export interface InternationalWireRoutingInfo {
   phoneNumber?: string | null;
   swiftCode: string;
 }
+const InternationalWireRoutingInfo = /*@__PURE__*/ __L.at(
+  __c5,
+  0,
+) as any as S.Schema<InternationalWireRoutingInfo>;
+
 export interface TransactionMethodData {
   address?: AddressData | null;
   creditCardInfo?: CreditCardInfo | null;
@@ -419,6 +586,11 @@ export interface TransactionMethodData {
   electronicRoutingInfo?: ElectronicRoutingInfo | null;
   internationalWireRoutingInfo?: InternationalWireRoutingInfo | null;
 }
+const TransactionMethodData = /*@__PURE__*/ __L.at(
+  __c5,
+  1,
+) as any as S.Schema<TransactionMethodData>;
+
 /** A GL code allocation on a transaction -- a GL code name paired with the amount allocated to it. When a transaction is fully categorized, the amounts across all allocations sum to the transaction total. */
 export interface GlAllocation {
   /** The amount allocated to this GL code */
@@ -428,8 +600,15 @@ export interface GlAllocation {
   /** The name of the GL code from the connected accounting integration */
   glCodeName: string;
 }
+const GlAllocation = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<GlAllocation>;
+
 /** GL code allocations assigned to this transaction via a connected accounting software integration (e.g. QuickBooks, Xero, NetSuite). Each allocation has a GL code name and the amount allocated to it; amounts sum to the transaction total when the transaction is fully categorized. Empty if no GL codes have been assigned. Distinct from Mercury custom categories (see transactionCategoryData). */
 export type TransactionGlAllocationsList = Array<GlAllocation>;
+const TransactionGlAllocationsList = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<TransactionGlAllocationsList>;
+
 export type TransactionKind =
   | "externalTransfer"
   | "internalTransfer"
@@ -454,6 +633,8 @@ export type TransactionKind =
   | "exogenousWireDrawdown"
   | "interestPayment"
   | "other";
+const TransactionKind = S.String;
+
 export interface TransactionMerchant {
   /** The transaction amount in the smallest unit of the merchant's currency (e.g., cents for USD/EUR, yen for JPY, fils for BHD). For debits this is negative, for credits positive. Use 'merchantCurrency' to determine the appropriate decimal scaling: most currencies use 2 decimal places (divide by 100), but JPY uses 0 (no division needed) and BHD/KWD/OMR use 3 (divide by 1000). This is useful for international transactions where the merchant charges in a currency different from the account currency. Nothing if not available. */
   amount?: number | null;
@@ -464,6 +645,8 @@ export interface TransactionMerchant {
   /** Merchant ID for card transactions */
   id?: string | null;
 }
+const TransactionMerchant = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<TransactionMerchant>;
+
 export type TransactionRelationKind =
   | "ProvisionalCreditReversalToMerchantRefund"
   | "MerchantRefundToProvisionalCreditReversal"
@@ -493,6 +676,8 @@ export type TransactionRelationKind =
   | "ReversalToProvisionalCredit"
   | "MerchantRefundToOriginalCharge"
   | "OriginalChargeToMerchantRefund";
+const TransactionRelationKind = S.String;
+
 /** A Public API version of RelatedTransactionData. */
 export interface RelatedTransactionData {
   accountId: string;
@@ -500,7 +685,17 @@ export interface RelatedTransactionData {
   id: string;
   relationKind: TransactionRelationKind;
 }
+const RelatedTransactionData = /*@__PURE__*/ __L.at(
+  __c5,
+  5,
+) as any as S.Schema<RelatedTransactionData>;
+
 export type TransactionRelatedTransactionsList = Array<RelatedTransactionData>;
+const TransactionRelatedTransactionsList = /*@__PURE__*/ __L.at(
+  __c5,
+  6,
+) as any as S.Schema<TransactionRelatedTransactionsList>;
+
 export type TransactionStatus =
   | "pending"
   | "sent"
@@ -508,6 +703,8 @@ export type TransactionStatus =
   | "failed"
   | "reversed"
   | "blocked";
+const TransactionStatus = S.String;
+
 export interface Transaction {
   accountId: unknown;
   amount: number;
@@ -549,13 +746,25 @@ export interface Transaction {
   /** Present for transactions that have tracking numbers (e.g., RTP, ACH, wires); Nothing otherwise. */
   trackingNumber?: string | null;
 }
+const Transaction = /*@__PURE__*/ __L.at(__c5, 7) as any as S.Schema<Transaction>;
+
 /** Response for POST /api/v1/transfer endpoint. Returns both the credit and debit transactions for the transfer (depository, treasury, or investment). */
 export interface InternalTransferAPIResponse {
   creditTransaction: Transaction;
   debitTransaction: Transaction;
 }
+const InternalTransferAPIResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<InternalTransferAPIResponse>;
+
 /** Emails to be CCed on invoice notifications/reminders. */
 export type CreateInvoiceRequestCcEmailsList = Array<string>;
+const CreateInvoiceRequestCcEmailsList = /*@__PURE__*/ __L.at(
+  __c6,
+  1,
+) as any as S.Schema<CreateInvoiceRequestCcEmailsList>;
+
 /** Data for an invoice line item */
 export interface ApiV1ArLineItemData {
   /** the name of the line item */
@@ -567,8 +776,15 @@ export interface ApiV1ArLineItemData {
   /** the price of one unit of the item before sales tax */
   unitPrice: number;
 }
+const ApiV1ArLineItemData = /*@__PURE__*/ __L.at(__c6, 2) as any as S.Schema<ApiV1ArLineItemData>;
+
 /** The line items for the invoice */
 export type CreateInvoiceRequestLineItemsList = Array<ApiV1ArLineItemData>;
+const CreateInvoiceRequestLineItemsList = /*@__PURE__*/ __L.at(
+  __c6,
+  3,
+) as any as S.Schema<CreateInvoiceRequestLineItemsList>;
+
 export interface CreateInvoiceRequest {
   /** Whether or not the invoice can be paid via ACH debit. */
   achDebitEnabled: boolean;
@@ -597,10 +813,18 @@ export interface CreateInvoiceRequest {
   /** Whether or not the invoice payment instructions will show the real account and routing number for the destination account or use virtual account numbers instead. Virtual accounts are safer and are preferred in most cases. */
   useRealAccountNumber: boolean;
 }
+const CreateInvoiceRequest = /*@__PURE__*/ __L.at(__c6, 4) as any as S.Schema<CreateInvoiceRequest>;
+
 /** Emails to be CCed on invoice notifications/reminders. */
 export type ApiV1ArInvoiceResponseCcEmailsList = Array<string>;
+const ApiV1ArInvoiceResponseCcEmailsList =
+  CreateInvoiceRequestCcEmailsList as any as S.Schema<ApiV1ArInvoiceResponseCcEmailsList>;
+
 /** The line items for the invoice. */
 export type ApiV1ArInvoiceResponseLineItemsList = Array<ApiV1ArLineItemData>;
+const ApiV1ArInvoiceResponseLineItemsList =
+  CreateInvoiceRequestLineItemsList as any as S.Schema<ApiV1ArInvoiceResponseLineItemsList>;
+
 /** The response type for an invoice in the api. */
 export interface ApiV1ArInvoiceResponse {
   /** Whether or not the invoice can be paid via ach debit. */
@@ -638,10 +862,17 @@ export interface ApiV1ArInvoiceResponse {
   /** Whether or not the invoice payment instructions will show the real account and routing number for the destination account or use virtual account numbers instead. */
   useRealAccountNumber: boolean;
 }
+const ApiV1ArInvoiceResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  5,
+) as any as S.Schema<ApiV1ArInvoiceResponse>;
+
 export type CheckInfoRawAddress = AddressWithoutName;
 export interface CheckInfoRaw {
   address: AddressWithoutName;
 }
+const CheckInfoRaw = /*@__PURE__*/ __L.at(__c6, 6) as any as S.Schema<CheckInfoRaw>;
+
 export type DomesticWireRoutingInfoRawAddress = AddressWithoutName;
 export interface DomesticWireRoutingInfoRaw {
   /** The account number of the bank account to use for domestic wire payments. */
@@ -650,6 +881,11 @@ export interface DomesticWireRoutingInfoRaw {
   /** The routing number of the bank account to use for domestic wire payments. */
   routingNumber: string;
 }
+const DomesticWireRoutingInfoRaw = /*@__PURE__*/ __L.at(
+  __c6,
+  7,
+) as any as S.Schema<DomesticWireRoutingInfoRaw>;
+
 export type ElectronicRoutingInfoRawAddress = AddressWithoutName;
 export interface ElectronicRoutingInfoRaw {
   /** The account number of the bank account to use for ACH payments. */
@@ -659,7 +895,15 @@ export interface ElectronicRoutingInfoRaw {
   /** The routing number of the bank account to use for ACH payments. */
   routingNumber: string;
 }
+const ElectronicRoutingInfoRaw = /*@__PURE__*/ __L.at(
+  __c7,
+  0,
+) as any as S.Schema<ElectronicRoutingInfoRaw>;
+
 export type CreateRecipientRequestEmailsList = Array<string>;
+const CreateRecipientRequestEmailsList =
+  CreateInvoiceRequestCcEmailsList as any as S.Schema<CreateRecipientRequestEmailsList>;
+
 export type RealTimePaymentRoutingInfoRawAddress = AddressWithoutName;
 /** Routing information for real-time payments. */
 export interface RealTimePaymentRoutingInfoRaw {
@@ -669,6 +913,9 @@ export interface RealTimePaymentRoutingInfoRaw {
   /** The routing number of the bank account to use for real-time payments. */
   routingNumber: string;
 }
+const RealTimePaymentRoutingInfoRaw =
+  DomesticWireRoutingInfoRaw as any as S.Schema<RealTimePaymentRoutingInfoRaw>;
+
 export interface CreateRecipientRequest {
   /** Deprecated. Use checkInfo instead. */
   address?: AddressData;
@@ -686,6 +933,11 @@ export interface CreateRecipientRequest {
   /** Information needed to send a real-time payment. */
   realTimePaymentRoutingInfo?: RealTimePaymentRoutingInfoRaw;
 }
+const CreateRecipientRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  1,
+) as any as S.Schema<CreateRecipientRequest>;
+
 export interface Address {
   address1: string;
   address2?: string | null;
@@ -695,6 +947,8 @@ export interface Address {
   postalCode: string;
   region: string;
 }
+const Address = /*@__PURE__*/ __L.at(__c7, 2) as any as S.Schema<Address>;
+
 export interface RecipientAttachment {
   /** Name of the uploaded file */
   fileName: string;
@@ -703,7 +957,14 @@ export interface RecipientAttachment {
   /** Presigned URL to download the attachment (valid for 12 hours) */
   url: string;
 }
+const RecipientAttachment = /*@__PURE__*/ __L.at(__c7, 3) as any as S.Schema<RecipientAttachment>;
+
 export type RecipientInfoAttachmentsList = Array<RecipientAttachment>;
+const RecipientInfoAttachmentsList = /*@__PURE__*/ __L.at(
+  __c7,
+  4,
+) as any as S.Schema<RecipientInfoAttachmentsList>;
+
 export type CheckInfo = CheckInfoRaw;
 export type PaymentMethod =
   | "ach"
@@ -711,9 +972,16 @@ export type PaymentMethod =
   | "domesticWire"
   | "internationalWire"
   | "realTimePayment";
+const PaymentMethod = S.String;
+
 export type RecipientInfoEmailsList = Array<string>;
+const RecipientInfoEmailsList =
+  CreateInvoiceRequestCcEmailsList as any as S.Schema<RecipientInfoEmailsList>;
+
 export type RealTimePaymentRoutingInfo = DomesticWireRoutingInfo;
 export type RecipientStatus = "active" | "deleted";
+const RecipientStatus = S.String;
+
 export interface RecipientInfo {
   address?: Address | null;
   attachments: RecipientInfoAttachmentsList;
@@ -734,8 +1002,13 @@ export interface RecipientInfo {
   realTimePaymentRoutingInfo?: DomesticWireRoutingInfo | null;
   status: RecipientStatus;
 }
+const RecipientInfo = /*@__PURE__*/ __L.at(__c7, 5) as any as S.Schema<RecipientInfo>;
+
 /** Payment methods the recipient may submit details for. */
 export type CreateRecipientInviteRequestPaymentMethodsList = Array<PaymentMethod | (string & {})>;
+const CreateRecipientInviteRequestPaymentMethodsList =
+  CardCategoryLocksList as any as S.Schema<CreateRecipientInviteRequestPaymentMethodsList>;
+
 export interface CreateRecipientInviteRequest {
   contactEmail: unknown;
   /** Name the invite is created for. This field is required when 'recipientId' is absent. When 'recipientId' is present, this field is optional and updates the recipient's name to this value. */
@@ -752,8 +1025,16 @@ export interface CreateRecipientInviteRequest {
   /** When true, sends an Email to the invitee. When false, does not send an email to the invitee. */
   sendEmail: boolean;
 }
+const CreateRecipientInviteRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  6,
+) as any as S.Schema<CreateRecipientInviteRequest>;
+
 /** Payment methods the recipient may submit details for. */
 export type RecipientInviteApiResponsePaymentMethodsList = Array<PaymentMethod>;
+const RecipientInviteApiResponsePaymentMethodsList =
+  CreateRecipientInviteRequestPaymentMethodsList as any as S.Schema<RecipientInviteApiResponsePaymentMethodsList>;
+
 export interface RecipientInviteApiResponse {
   contactEmail: unknown;
   createdAt: unknown;
@@ -772,7 +1053,14 @@ export interface RecipientInviteApiResponse {
   requireTaxDocument: boolean;
   status: unknown;
 }
+const RecipientInviteApiResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  7,
+) as any as S.Schema<RecipientInviteApiResponse>;
+
 export type PostTransactionPaymentMethod = "ach" | "check" | "domesticWire" | "realTimePayment";
+const PostTransactionPaymentMethod = S.String;
+
 /** Payment category. */
 export type SimplePurposeCategory =
   | "employee"
@@ -788,16 +1076,25 @@ export type SimplePurposeCategory =
   | "expenses"
   | "travel"
   | "other";
+const SimplePurposeCategory = S.String;
+
 export interface SimplePurpose {
   /** Additional information. Required for: Vendor (vendor name), Contractor (contractor name), Other (payment description). Optional for Subsidiary (subsidiary name). Not accepted for any other categories. */
   additionalInfo?: string;
   /** Payment category. */
   category: SimplePurposeCategory | (string & {});
 }
+const SimplePurpose = /*@__PURE__*/ __L.at(__c8, 0) as any as S.Schema<SimplePurpose>;
+
 /** External API representation of SendMoneyPurpose. Only exposes the 'simple' field to decouple internal implementation from external API. */
 export interface PostTransactionSendMoneyPurpose {
   simple?: SimplePurpose | null;
 }
+const PostTransactionSendMoneyPurpose = /*@__PURE__*/ __L.at(
+  __c8,
+  1,
+) as any as S.Schema<PostTransactionSendMoneyPurpose>;
+
 export interface CreateTransactionRequest {
   accountId: string;
   /** Amount of USD you want to send, must be a positive number. */
@@ -815,6 +1112,11 @@ export interface CreateTransactionRequest {
   /** Recipient ID from the /recipients endpoint. */
   recipientId: string;
 }
+const CreateTransactionRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  2,
+) as any as S.Schema<CreateTransactionRequest>;
+
 export type WebhookEventType =
   | "transaction.created"
   | "transaction.updated"
@@ -825,6 +1127,9 @@ export type WebhookEventType =
   | "creditAccount.balance.updated";
 /** Optional array of event types to subscribe to. Nothing means subscribe to all event types. */
 export type CreateWebhookRequestEventTypesList = Array<WebhookEventType | (string & {})>;
+const CreateWebhookRequestEventTypesList =
+  CardCategoryLocksList as any as S.Schema<CreateWebhookRequestEventTypesList>;
+
 export type ResourceField =
   | "transaction.amount"
   | "transaction.bankDescription"
@@ -857,6 +1162,9 @@ export type ResourceField =
   | "creditAccount.inFlightBalance";
 /** Optional array of resource field paths to filter events by. When specified, webhook events will only be sent when one of these fields changes. Nothing means no filtering (all events are sent). */
 export type CreateWebhookRequestFilterPathsList = Array<ResourceField | (string & {})>;
+const CreateWebhookRequestFilterPathsList =
+  CardCategoryLocksList as any as S.Schema<CreateWebhookRequestFilterPathsList>;
+
 export interface CreateWebhookRequest {
   /** Optional array of event types to subscribe to. Nothing means subscribe to all event types. */
   eventTypes?: CreateWebhookRequestEventTypesList | null;
@@ -865,10 +1173,18 @@ export interface CreateWebhookRequest {
   /** The URL to which webhook events will be delivered */
   url: string;
 }
+const CreateWebhookRequest = /*@__PURE__*/ __L.at(__c8, 3) as any as S.Schema<CreateWebhookRequest>;
+
 /** Optional array of event types this webhook is subscribed to. Nothing means all events. */
 export type ApiWebhookResponseEventTypesList = Array<WebhookEventType>;
+const ApiWebhookResponseEventTypesList =
+  CreateWebhookRequestEventTypesList as any as S.Schema<ApiWebhookResponseEventTypesList>;
+
 /** Optional array of resource field paths to filter events by. Nothing means no filtering. */
 export type ApiWebhookResponseFilterPathsList = Array<ResourceField>;
+const ApiWebhookResponseFilterPathsList =
+  CreateWebhookRequestFilterPathsList as any as S.Schema<ApiWebhookResponseFilterPathsList>;
+
 /** Webhook configuration details */
 export interface ApiWebhookResponse {
   createdAt: unknown;
@@ -884,26 +1200,61 @@ export interface ApiWebhookResponse {
   /** The URL that will receive webhook POST requests */
   url: string;
 }
+const ApiWebhookResponse = /*@__PURE__*/ __L.at(__c8, 4) as any as S.Schema<ApiWebhookResponse>;
+
 export interface DeleteCategoryRequest {
   expenseCategoryId: string;
 }
+const DeleteCategoryRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  5,
+) as any as S.Schema<DeleteCategoryRequest>;
+
 export interface DeleteCategoryResponse {}
+const DeleteCategoryResponse = CancelInvoiceResponse as any as S.Schema<DeleteCategoryResponse>;
+
 export interface DeleteCustomerRequest {
   customerId: string;
 }
+const DeleteCustomerRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  6,
+) as any as S.Schema<DeleteCustomerRequest>;
+
 export interface DeleteCustomerResponse {}
+const DeleteCustomerResponse = CancelInvoiceResponse as any as S.Schema<DeleteCustomerResponse>;
+
 export interface DeleteRecipientRequest {
   recipientId: string;
 }
+const DeleteRecipientRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  7,
+) as any as S.Schema<DeleteRecipientRequest>;
+
 export interface DeleteRecipientResponse {}
+const DeleteRecipientResponse = CancelInvoiceResponse as any as S.Schema<DeleteRecipientResponse>;
+
 export interface DeleteRecipientInviteRequest {
   inviteId: string;
 }
+const DeleteRecipientInviteRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  0,
+) as any as S.Schema<DeleteRecipientInviteRequest>;
+
 export interface DeleteRecipientInviteResponse {}
+const DeleteRecipientInviteResponse =
+  CancelInvoiceResponse as any as S.Schema<DeleteRecipientInviteResponse>;
+
 export interface DeleteWebhookRequest {
   webhookEndpointId: string;
 }
+const DeleteWebhookRequest = /*@__PURE__*/ __L.at(__c9, 1) as any as S.Schema<DeleteWebhookRequest>;
+
 export interface DeleteWebhookResponse {}
+const DeleteWebhookResponse = CancelInvoiceResponse as any as S.Schema<DeleteWebhookResponse>;
+
 export interface EditCategoryRequest {
   expenseCategoryId: string;
   name?: unknown | null;
@@ -914,18 +1265,35 @@ export interface EditCategoryRequest {
   /** Whether this category is applicable to expense reimbursement transactions */
   visibleForReimbursements?: boolean | null;
 }
+const EditCategoryRequest = /*@__PURE__*/ __L.at(__c9, 2) as any as S.Schema<EditCategoryRequest>;
+
 export interface FreezeCardRequest {
   cardId: string;
 }
+const FreezeCardRequest = /*@__PURE__*/ __L.at(__c9, 3) as any as S.Schema<FreezeCardRequest>;
+
 export interface GetAccountCardsRequest {
   accountId: string;
 }
+const GetAccountCardsRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  4,
+) as any as S.Schema<GetAccountCardsRequest>;
+
 export type CardNetwork = "visa" | "mastercard";
+const CardNetwork = S.String;
+
 export type PhysicalCardStatus = "inactive" | "active" | "locked";
+const PhysicalCardStatus = S.String;
+
 /** Spending controls applied to a card */
 export type SpendLimit = CardSpendLimit;
 export type CardStatus = "active" | "frozen" | "cancelled" | "inactive" | "expired" | "suspended";
+const CardStatus = S.String;
+
 export type CardType = "virtual" | "physical";
+const CardType = S.String;
+
 /** Deprecated account card representation, used by the @/v1/account\/:id\/cards@ endpoint. */
 export interface AccountCard {
   cardId: string;
@@ -940,20 +1308,37 @@ export interface AccountCard {
   updatedAt: string;
   userId: string;
 }
+const AccountCard = /*@__PURE__*/ __L.at(__c9, 5) as any as S.Schema<AccountCard>;
+
 export type AccountCardsResponseCardsList = Array<AccountCard>;
+const AccountCardsResponseCardsList = /*@__PURE__*/ __L.at(
+  __c9,
+  6,
+) as any as S.Schema<AccountCardsResponseCardsList>;
+
 export interface AccountCardsResponse {
   cards: AccountCardsResponseCardsList;
 }
+const AccountCardsResponse = /*@__PURE__*/ __L.at(__c9, 7) as any as S.Schema<AccountCardsResponse>;
+
 /** Sort order. Can be 'asc' or 'desc'. Defaults to 'asc' */
 export type GetAccountsRequestOrder = "asc" | "desc";
+const GetAccountsRequestOrder = S.String;
+
 export interface GetAccountsRequest {
   limit?: number;
   order?: GetAccountsRequestOrder | (string & {});
   start_after?: string;
   end_before?: string;
 }
+const GetAccountsRequest = /*@__PURE__*/ __L.at(__c10, 0) as any as S.Schema<GetAccountsRequest>;
+
 export type AccountStatus = "active" | "deleted" | "pending" | "archived";
+const AccountStatus = S.String;
+
 export type AccountType = "mercury" | "external" | "recipient";
+const AccountType = S.String;
+
 export interface Account {
   accountNumber: string;
   availableBalance: number;
@@ -972,13 +1357,25 @@ export interface Account {
   status: AccountStatus;
   type: AccountType;
 }
+const Account = /*@__PURE__*/ __L.at(__c10, 1) as any as S.Schema<Account>;
+
 /** List of accounts in the current page */
 export type AccountsPaginatedResponseAccountsList = Array<Account>;
+const AccountsPaginatedResponseAccountsList = /*@__PURE__*/ __L.at(
+  __c10,
+  2,
+) as any as S.Schema<AccountsPaginatedResponseAccountsList>;
+
 /** Pagination information including cursors for navigating to next/previous pages */
 export interface AccountsPaginatedResponsePage {
   nextPage?: string;
   previousPage?: string;
 }
+const AccountsPaginatedResponsePage = /*@__PURE__*/ __L.at(
+  __c10,
+  3,
+) as any as S.Schema<AccountsPaginatedResponsePage>;
+
 /** Paginated response containing a list of accounts. | Use the page cursor information to fetch additional pages of accounts. */
 export interface AccountsPaginatedResponse {
   /** List of accounts in the current page */
@@ -986,8 +1383,15 @@ export interface AccountsPaginatedResponse {
   /** Pagination information including cursors for navigating to next/previous pages */
   page: AccountsPaginatedResponsePage;
 }
+const AccountsPaginatedResponse = /*@__PURE__*/ __L.at(
+  __c10,
+  4,
+) as any as S.Schema<AccountsPaginatedResponse>;
+
 /** Sort order. Can be 'asc' or 'desc'. Defaults to 'desc' */
 export type GetAccountStatementsRequestOrder = "asc" | "desc";
+const GetAccountStatementsRequestOrder = S.String;
+
 export interface GetAccountStatementsRequest {
   accountId: string;
   limit?: number;
@@ -997,13 +1401,28 @@ export interface GetAccountStatementsRequest {
   start?: string;
   end?: string;
 }
+const GetAccountStatementsRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  5,
+) as any as S.Schema<GetAccountStatementsRequest>;
+
 export type DepositoryAccountStatementsPaginatedResponsePage = AccountsPaginatedResponsePage;
 export interface AccountStatementTransaction {
   createdAt: string;
   id: string;
   postedAt?: string | null;
 }
+const AccountStatementTransaction = /*@__PURE__*/ __L.at(
+  __c10,
+  6,
+) as any as S.Schema<AccountStatementTransaction>;
+
 export type DepositoryAccountStatementTransactionsList = Array<AccountStatementTransaction>;
+const DepositoryAccountStatementTransactionsList = /*@__PURE__*/ __L.at(
+  __c10,
+  7,
+) as any as S.Schema<DepositoryAccountStatementTransactionsList>;
+
 export interface DepositoryAccountStatement {
   accountNumber: string;
   companyLegalAddress: Address;
@@ -1017,16 +1436,36 @@ export interface DepositoryAccountStatement {
   startDate: string;
   transactions: DepositoryAccountStatementTransactionsList;
 }
+const DepositoryAccountStatement = /*@__PURE__*/ __L.at(
+  __c11,
+  0,
+) as any as S.Schema<DepositoryAccountStatement>;
+
 export type DepositoryAccountStatementsPaginatedResponseStatementsList =
   Array<DepositoryAccountStatement>;
+const DepositoryAccountStatementsPaginatedResponseStatementsList = /*@__PURE__*/ __L.at(
+  __c11,
+  1,
+) as any as S.Schema<DepositoryAccountStatementsPaginatedResponseStatementsList>;
+
 /** Paginated response for depository account statements (v1 API) */
 export interface DepositoryAccountStatementsPaginatedResponse {
   page: AccountsPaginatedResponsePage;
   statements: DepositoryAccountStatementsPaginatedResponseStatementsList;
 }
+const DepositoryAccountStatementsPaginatedResponse = /*@__PURE__*/ __L.at(
+  __c11,
+  2,
+) as any as S.Schema<DepositoryAccountStatementsPaginatedResponse>;
+
 export interface GetAttachmentRequest {
   attachmentId: string;
 }
+const GetAttachmentRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  3,
+) as any as S.Schema<GetAttachmentRequest>;
+
 /** The object representing a file attachment for an invoice. The file is not a part of this object itself but information for where to download it will be in this object. */
 export interface ApiV1ArAttachmentResponseData {
   /** The filename for the file. */
@@ -1035,17 +1474,31 @@ export interface ApiV1ArAttachmentResponseData {
   /** The signed download URL for the file itself. */
   url: string;
 }
+const ApiV1ArAttachmentResponseData = /*@__PURE__*/ __L.at(
+  __c11,
+  4,
+) as any as S.Schema<ApiV1ArAttachmentResponseData>;
+
 export interface GetCardRequest {
   cardId: string;
 }
+const GetCardRequest = /*@__PURE__*/ __L.at(__c11, 5) as any as S.Schema<GetCardRequest>;
+
 export interface GetCustomerRequest {
   customerId: string;
 }
+const GetCustomerRequest = /*@__PURE__*/ __L.at(__c11, 6) as any as S.Schema<GetCustomerRequest>;
+
 export interface GetEventRequest {
   eventId: string;
 }
+const GetEventRequest = /*@__PURE__*/ __L.at(__c11, 7) as any as S.Schema<GetEventRequest>;
+
 /** List of JSON paths that were modified in this event */
 export type ApiEventResponseChangedPathsList = Array<string>;
+const ApiEventResponseChangedPathsList =
+  CreateInvoiceRequestCcEmailsList as any as S.Schema<ApiEventResponseChangedPathsList>;
+
 /** Represents a single event in the Mercury API event stream. Events track changes to resources over time, providing an audit trail of all modifications with before/after values and metadata about what changed. */
 export interface ApiEventResponse {
   /** List of JSON paths that were modified in this event */
@@ -1061,8 +1514,12 @@ export interface ApiEventResponse {
   resourceType: unknown;
   resourceVersion: unknown;
 }
+const ApiEventResponse = /*@__PURE__*/ __L.at(__c12, 0) as any as S.Schema<ApiEventResponse>;
+
 /** Sort order. Can be 'asc' or 'desc'. Defaults to 'asc' */
 export type GetEventsRequestOrder = "asc" | "desc";
+const GetEventsRequestOrder = S.String;
+
 export type GetEventsRequestResourceType =
   | "transaction"
   | "checkingAccount"
@@ -1070,6 +1527,8 @@ export type GetEventsRequestResourceType =
   | "treasuryAccount"
   | "investmentAccount"
   | "creditAccount";
+const GetEventsRequestResourceType = S.String;
+
 export interface GetEventsRequest {
   limit?: number;
   start_after?: string;
@@ -1078,8 +1537,15 @@ export interface GetEventsRequest {
   resourceType?: GetEventsRequestResourceType | (string & {});
   resourceId?: string;
 }
+const GetEventsRequest = /*@__PURE__*/ __L.at(__c12, 1) as any as S.Schema<GetEventsRequest>;
+
 /** List of events in the current page */
 export type ApiEventsPaginatedResponseEventsList = Array<ApiEventResponse>;
+const ApiEventsPaginatedResponseEventsList = /*@__PURE__*/ __L.at(
+  __c12,
+  2,
+) as any as S.Schema<ApiEventsPaginatedResponseEventsList>;
+
 /** Pagination information including cursors for navigating to next/previous pages */
 export type ApiEventsPaginatedResponsePage = AccountsPaginatedResponsePage;
 /** Paginated response containing a list of API events. | Use the page cursor information to fetch additional pages of events. */
@@ -1089,14 +1555,33 @@ export interface ApiEventsPaginatedResponse {
   /** Pagination information including cursors for navigating to next/previous pages */
   page: AccountsPaginatedResponsePage;
 }
+const ApiEventsPaginatedResponse = /*@__PURE__*/ __L.at(
+  __c12,
+  3,
+) as any as S.Schema<ApiEventsPaginatedResponse>;
+
 export interface GetInvoiceRequest {
   invoiceId: string;
 }
+const GetInvoiceRequest = /*@__PURE__*/ __L.at(__c12, 4) as any as S.Schema<GetInvoiceRequest>;
+
 export interface GetInvoicePdfRequest {
   invoiceId: string;
 }
+const GetInvoicePdfRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  5,
+) as any as S.Schema<GetInvoicePdfRequest>;
+
 export interface GetInvoicePdfResponse {}
+const GetInvoicePdfResponse = CancelInvoiceResponse as any as S.Schema<GetInvoicePdfResponse>;
+
 export interface GetOrganizationRequest {}
+const GetOrganizationRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  6,
+) as any as S.Schema<GetOrganizationRequest>;
+
 /** DBA (Doing Business As) information */
 export interface OrganizationDBA {
   /** Whether this DBA is set as the default for payments */
@@ -1104,8 +1589,15 @@ export interface OrganizationDBA {
   /** The DBA name */
   dbaName: string;
 }
+const OrganizationDBA = /*@__PURE__*/ __L.at(__c12, 7) as any as S.Schema<OrganizationDBA>;
+
 /** List of DBAs (Doing Business As names) for this organization */
 export type OrganizationResponseOrganizationDbasList = Array<OrganizationDBA>;
+const OrganizationResponseOrganizationDbasList = /*@__PURE__*/ __L.at(
+  __c13,
+  0,
+) as any as S.Schema<OrganizationResponseOrganizationDbasList>;
+
 export interface OrganizationResponseOrganization {
   billingCadence: unknown;
   /** List of DBAs (Doing Business As names) for this organization */
@@ -1118,28 +1610,57 @@ export interface OrganizationResponseOrganization {
   legalBusinessName: string;
   subscriptionTier: unknown;
 }
+const OrganizationResponseOrganization = /*@__PURE__*/ __L.at(
+  __c13,
+  1,
+) as any as S.Schema<OrganizationResponseOrganization>;
+
 /** Response containing organization details. */
 export interface OrganizationResponse {
   organization: OrganizationResponseOrganization;
 }
+const OrganizationResponse = /*@__PURE__*/ __L.at(
+  __c13,
+  2,
+) as any as S.Schema<OrganizationResponse>;
+
 export interface GetRecipientRequest {
   recipientId: string;
 }
+const GetRecipientRequest = /*@__PURE__*/ __L.at(__c13, 3) as any as S.Schema<GetRecipientRequest>;
+
 export interface GetRecipientInviteRequest {
   inviteId: string;
 }
+const GetRecipientInviteRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  4,
+) as any as S.Schema<GetRecipientInviteRequest>;
+
 /** Sort order. Can be 'asc' or 'desc'. Defaults to 'asc' */
 export type GetRecipientsRequestOrder = "asc" | "desc";
+const GetRecipientsRequestOrder = S.String;
+
 export interface GetRecipientsRequest {
   limit?: number;
   start_after?: string;
   end_before?: string;
   order?: GetRecipientsRequestOrder | (string & {});
 }
+const GetRecipientsRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  5,
+) as any as S.Schema<GetRecipientsRequest>;
+
 /** Pagination information including cursors for navigating to next/previous pages */
 export type RecipientsPaginatedResponsePage = AccountsPaginatedResponsePage;
 /** List of recipients in the current page */
 export type RecipientsPaginatedResponseRecipientsList = Array<RecipientInfo>;
+const RecipientsPaginatedResponseRecipientsList = /*@__PURE__*/ __L.at(
+  __c13,
+  6,
+) as any as S.Schema<RecipientsPaginatedResponseRecipientsList>;
+
 export interface RecipientsPaginatedResponse {
   /** Pagination information including cursors for navigating to next/previous pages */
   page: AccountsPaginatedResponsePage;
@@ -1147,13 +1668,25 @@ export interface RecipientsPaginatedResponse {
   recipients: RecipientsPaginatedResponseRecipientsList;
   total: unknown;
 }
+const RecipientsPaginatedResponse = /*@__PURE__*/ __L.at(
+  __c13,
+  7,
+) as any as S.Schema<RecipientsPaginatedResponse>;
+
 export interface GetSafeRequestRequest {
   safeRequestId: string;
 }
+const GetSafeRequestRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  0,
+) as any as S.Schema<GetSafeRequestRequest>;
+
 export type SafeRequestInvestorType =
   | "SafeRequestInvestorTypeIndividual"
   | "SafeRequestInvestorTypeVentureFund"
   | "SafeRequestInvestorTypeOther";
+const SafeRequestInvestorType = S.String;
+
 /** Details about the investor buying the equity. */
 export interface APISafeRequestInvestor {
   additionalBylines?: string | null;
@@ -1164,6 +1697,11 @@ export interface APISafeRequestInvestor {
   signatoryName: string;
   signatoryTitle?: string | null;
 }
+const APISafeRequestInvestor = /*@__PURE__*/ __L.at(
+  __c14,
+  1,
+) as any as S.Schema<APISafeRequestInvestor>;
+
 /** Details about the organization selling the equity */
 export interface APISafeRequestOrganization {
   legalEntityName: string;
@@ -1171,7 +1709,14 @@ export interface APISafeRequestOrganization {
   signatoryName: string;
   signatoryTitle: string;
 }
+const APISafeRequestOrganization = /*@__PURE__*/ __L.at(
+  __c14,
+  2,
+) as any as S.Schema<APISafeRequestOrganization>;
+
 export type ValuationType = "PreMoney" | "PostMoney" | "NoValuation";
+const ValuationType = S.String;
+
 /** A summary of a SAFE request. */
 export interface APISafeRequest {
   canceledAt?: string | null;
@@ -1192,31 +1737,77 @@ export interface APISafeRequest {
   valuationCap?: number | null;
   valuationType: ValuationType;
 }
+const APISafeRequest = /*@__PURE__*/ __L.at(__c14, 3) as any as S.Schema<APISafeRequest>;
+
 export interface GetSafeRequestDocumentRequest {
   safeRequestId: string;
 }
+const GetSafeRequestDocumentRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  4,
+) as any as S.Schema<GetSafeRequestDocumentRequest>;
+
 export interface GetSafeRequestDocumentResponse {}
+const GetSafeRequestDocumentResponse =
+  CancelInvoiceResponse as any as S.Schema<GetSafeRequestDocumentResponse>;
+
 export interface GetSafeRequestsRequest {}
+const GetSafeRequestsRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  5,
+) as any as S.Schema<GetSafeRequestsRequest>;
+
 export type GetSafeRequestsResponseBodyList = Array<APISafeRequest>;
+const GetSafeRequestsResponseBodyList = /*@__PURE__*/ __L.at(
+  __c14,
+  6,
+) as any as S.Schema<GetSafeRequestsResponseBodyList>;
+
 export type GetSafeRequestsResponse = GetSafeRequestsResponseBodyList;
+const GetSafeRequestsResponse = /*@__PURE__*/ __L.at(
+  __c14,
+  7,
+) as any as S.Schema<GetSafeRequestsResponse>;
+
 export interface GetSendMoneyApprovalRequestRequest {
   requestId: string;
 }
+const GetSendMoneyApprovalRequestRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  0,
+) as any as S.Schema<GetSendMoneyApprovalRequestRequest>;
+
 export type RequestSendMoneyPaymentMethod =
   | "ach"
   | "check"
   | "domesticWire"
   | "internationalWire"
   | "realTimePayment";
+const RequestSendMoneyPaymentMethod = S.String;
+
 export type PaymentApprovalReviewStatus = "approved" | "rejected";
+const PaymentApprovalReviewStatus = S.String;
+
 export interface PaymentApprovalReview {
   reviewedAt: string;
   reviewerUserId: string;
   status: PaymentApprovalReviewStatus;
 }
+const PaymentApprovalReview = /*@__PURE__*/ __L.at(
+  __c15,
+  1,
+) as any as S.Schema<PaymentApprovalReview>;
+
 /** Approval decisions recorded against this request, ordered from oldest to most recent. */
 export type SendMoneyApprovalRequestResponseReviewsList = Array<PaymentApprovalReview>;
+const SendMoneyApprovalRequestResponseReviewsList = /*@__PURE__*/ __L.at(
+  __c15,
+  2,
+) as any as S.Schema<SendMoneyApprovalRequestResponseReviewsList>;
+
 export type ReviewRequestStatus = "pendingApproval" | "approved" | "rejected" | "cancelled";
+const ReviewRequestStatus = S.String;
+
 /** A pending or completed approval request for a Mercury payment. */
 export interface SendMoneyApprovalRequestResponse {
   accountId: string;
@@ -1236,25 +1827,51 @@ export interface SendMoneyApprovalRequestResponse {
   scheduledSendDate?: unknown | null;
   status: ReviewRequestStatus;
 }
+const SendMoneyApprovalRequestResponse = /*@__PURE__*/ __L.at(
+  __c15,
+  3,
+) as any as S.Schema<SendMoneyApprovalRequestResponse>;
+
 export interface GetStatementPdfRequest {
   statementId: string;
 }
+const GetStatementPdfRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  4,
+) as any as S.Schema<GetStatementPdfRequest>;
+
 export interface GetStatementPdfResponse {}
+const GetStatementPdfResponse = CancelInvoiceResponse as any as S.Schema<GetStatementPdfResponse>;
+
 export interface GetTransactionRequest {
   accountId: string;
   transactionId: string;
 }
+const GetTransactionRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  5,
+) as any as S.Schema<GetTransactionRequest>;
+
 export interface GetTransactionByTransactionIdRequest {
   transactionId: string;
 }
+const GetTransactionByTransactionIdRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  6,
+) as any as S.Schema<GetTransactionByTransactionIdRequest>;
+
 /** Sort order. Can be 'asc' or 'desc'. Defaults to 'asc' */
 export type GetTreasuryRequestOrder = "asc" | "desc";
+const GetTreasuryRequestOrder = S.String;
+
 export interface GetTreasuryRequest {
   limit?: number;
   start_after?: string;
   end_before?: string;
   order?: GetTreasuryRequestOrder | (string & {});
 }
+const GetTreasuryRequest = /*@__PURE__*/ __L.at(__c15, 7) as any as S.Schema<GetTreasuryRequest>;
+
 /** Dividend information for a specific treasury security */
 export interface TreasuryDividend {
   /** Dividend amount for this security */
@@ -1265,8 +1882,15 @@ export interface TreasuryDividend {
   securityName: string;
   type: unknown;
 }
+const TreasuryDividend = /*@__PURE__*/ __L.at(__c16, 0) as any as S.Schema<TreasuryDividend>;
+
 /** List of dividends received by security */
 export type TreasuryNetReturnDividendsList = Array<TreasuryDividend>;
+const TreasuryNetReturnDividendsList = /*@__PURE__*/ __L.at(
+  __c16,
+  1,
+) as any as S.Schema<TreasuryNetReturnDividendsList>;
+
 /** Monthly net return breakdown for a treasury account */
 export interface TreasuryNetReturn {
   /** List of dividends received by security */
@@ -1278,8 +1902,15 @@ export interface TreasuryNetReturn {
   /** Treasury fee charged for this period (positive value) */
   treasuryFee: number;
 }
+const TreasuryNetReturn = /*@__PURE__*/ __L.at(__c16, 2) as any as S.Schema<TreasuryNetReturn>;
+
 /** Monthly net return breakdown with dividend and fee details */
 export type TreasuryAccountNetReturnsList = Array<TreasuryNetReturn>;
+const TreasuryAccountNetReturnsList = /*@__PURE__*/ __L.at(
+  __c16,
+  3,
+) as any as S.Schema<TreasuryAccountNetReturnsList>;
+
 export interface TreasuryAccount {
   availableBalance: number;
   createdAt: string;
@@ -1289,8 +1920,15 @@ export interface TreasuryAccount {
   netReturns: TreasuryAccountNetReturnsList;
   status: AccountStatus;
 }
+const TreasuryAccount = /*@__PURE__*/ __L.at(__c16, 4) as any as S.Schema<TreasuryAccount>;
+
 /** List of treasury accounts in the current page */
 export type TreasuryAccountsPaginatedResponseAccountsList = Array<TreasuryAccount>;
+const TreasuryAccountsPaginatedResponseAccountsList = /*@__PURE__*/ __L.at(
+  __c16,
+  5,
+) as any as S.Schema<TreasuryAccountsPaginatedResponseAccountsList>;
+
 /** Pagination information including cursors for navigating to next/previous pages */
 export type TreasuryAccountsPaginatedResponsePage = AccountsPaginatedResponsePage;
 /** Paginated response type for treasury accounts API endpoint */
@@ -1300,8 +1938,15 @@ export interface TreasuryAccountsPaginatedResponse {
   /** Pagination information including cursors for navigating to next/previous pages */
   page: AccountsPaginatedResponsePage;
 }
+const TreasuryAccountsPaginatedResponse = /*@__PURE__*/ __L.at(
+  __c16,
+  6,
+) as any as S.Schema<TreasuryAccountsPaginatedResponse>;
+
 /** Sort order. Can be 'asc' or 'desc'. Defaults to 'asc' */
 export type GetTreasuryStatementsRequestOrder = "asc" | "desc";
+const GetTreasuryStatementsRequestOrder = S.String;
+
 /** Filter statements by document type. */
 export type GetTreasuryStatementsRequestDocumentType =
   | "MonthlyStatement"
@@ -1314,6 +1959,8 @@ export type GetTreasuryStatementsRequestDocumentType =
   | "1099Q"
   | "FMV"
   | "SDIRA";
+const GetTreasuryStatementsRequestDocumentType = S.String;
+
 export interface GetTreasuryStatementsRequest {
   treasuryId: string;
   limit?: number;
@@ -1322,6 +1969,11 @@ export interface GetTreasuryStatementsRequest {
   end_before?: string;
   documentType?: GetTreasuryStatementsRequestDocumentType | (string & {});
 }
+const GetTreasuryStatementsRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  7,
+) as any as S.Schema<GetTreasuryStatementsRequest>;
+
 export type TreasuryStatementsPaginatedResponsePage = AccountsPaginatedResponsePage;
 /** Individual treasury statement in the response */
 export interface TreasuryStatement {
@@ -1338,20 +1990,39 @@ export interface TreasuryStatement {
   periodStart: unknown;
   updatedAt: unknown;
 }
+const TreasuryStatement = /*@__PURE__*/ __L.at(__c17, 0) as any as S.Schema<TreasuryStatement>;
+
 export type TreasuryStatementsPaginatedResponseStatementsList = Array<TreasuryStatement>;
+const TreasuryStatementsPaginatedResponseStatementsList = /*@__PURE__*/ __L.at(
+  __c17,
+  1,
+) as any as S.Schema<TreasuryStatementsPaginatedResponseStatementsList>;
+
 /** Paginated response for treasury account statements */
 export interface TreasuryStatementsPaginatedResponse {
   page: AccountsPaginatedResponsePage;
   statements: TreasuryStatementsPaginatedResponseStatementsList;
 }
+const TreasuryStatementsPaginatedResponse = /*@__PURE__*/ __L.at(
+  __c17,
+  2,
+) as any as S.Schema<TreasuryStatementsPaginatedResponse>;
+
 /** Sort order for transactions. Can be 'asc' or 'desc'. Defaults to 'desc' */
 export type GetTreasuryTransactionsRequestOrder = "asc" | "desc";
+const GetTreasuryTransactionsRequestOrder = S.String;
+
 export interface GetTreasuryTransactionsRequest {
   treasuryId: string;
   limit?: number;
   order?: GetTreasuryTransactionsRequestOrder | (string & {});
   cursor?: number;
 }
+const GetTreasuryTransactionsRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  3,
+) as any as S.Schema<GetTreasuryTransactionsRequest>;
+
 export interface TreasuryTransactionDetails {
   creditDescription?: string | null;
   depositCounterpartyId?: string | null;
@@ -1362,6 +2033,11 @@ export interface TreasuryTransactionDetails {
   tradeAction?: string | null;
   withdrawalCounterpartyId?: string | null;
 }
+const TreasuryTransactionDetails = /*@__PURE__*/ __L.at(
+  __c17,
+  4,
+) as any as S.Schema<TreasuryTransactionDetails>;
+
 export type TreasuryTransactionType =
   | "depositCanceled"
   | "depositComplete"
@@ -1396,6 +2072,8 @@ export type TreasuryTransactionType =
   | "oemsFixedIncomeOrderSettled"
   | "oemsFixedIncomeOrderCanceled"
   | "oemsFixedIncomeOrderRejected";
+const TreasuryTransactionType = S.String;
+
 /** Treasury transaction data for external API consumption */
 export interface TreasuryTxn {
   accountId: string;
@@ -1409,17 +2087,31 @@ export interface TreasuryTxn {
   security?: string | null;
   type: TreasuryTransactionType;
 }
+const TreasuryTxn = /*@__PURE__*/ __L.at(__c17, 5) as any as S.Schema<TreasuryTxn>;
+
 /** List of treasury transactions in the response */
 export type TreasuryTransactionsResponseTransactionsList = Array<TreasuryTxn>;
+const TreasuryTransactionsResponseTransactionsList = /*@__PURE__*/ __L.at(
+  __c17,
+  6,
+) as any as S.Schema<TreasuryTransactionsResponseTransactionsList>;
+
 /** Response type for treasury transactions API endpoint */
 export interface TreasuryTransactionsResponse {
   cursor?: unknown | null;
   /** List of treasury transactions in the response */
   transactions: TreasuryTransactionsResponseTransactionsList;
 }
+const TreasuryTransactionsResponse = /*@__PURE__*/ __L.at(
+  __c17,
+  7,
+) as any as S.Schema<TreasuryTransactionsResponse>;
+
 export interface GetUserRequest {
   userId: string;
 }
+const GetUserRequest = /*@__PURE__*/ __L.at(__c18, 0) as any as S.Schema<GetUserRequest>;
+
 /** Details of a user within an organization. */
 export interface UserDetails {
   /** User's email address */
@@ -1431,18 +2123,29 @@ export interface UserDetails {
   organizationRole: unknown;
   userId: unknown;
 }
+const UserDetails = /*@__PURE__*/ __L.at(__c18, 1) as any as S.Schema<UserDetails>;
+
 /** Sort order. Can be 'asc' or 'desc'. Defaults to 'asc' */
 export type GetUsersRequestOrder = "asc" | "desc";
+const GetUsersRequestOrder = S.String;
+
 export interface GetUsersRequest {
   limit?: number;
   start_after?: string;
   end_before?: string;
   order?: GetUsersRequestOrder | (string & {});
 }
+const GetUsersRequest = /*@__PURE__*/ __L.at(__c18, 2) as any as S.Schema<GetUsersRequest>;
+
 /** Pagination information including cursors for navigating to next/previous pages */
 export type UsersPaginatedResponsePage = AccountsPaginatedResponsePage;
 /** List of users in the current page */
 export type UsersPaginatedResponseUsersList = Array<UserDetails>;
+const UsersPaginatedResponseUsersList = /*@__PURE__*/ __L.at(
+  __c18,
+  3,
+) as any as S.Schema<UsersPaginatedResponseUsersList>;
+
 /** Paginated response containing a list of organization users. */
 export interface UsersPaginatedResponse {
   /** Pagination information including cursors for navigating to next/previous pages */
@@ -1450,13 +2153,25 @@ export interface UsersPaginatedResponse {
   /** List of users in the current page */
   users: UsersPaginatedResponseUsersList;
 }
+const UsersPaginatedResponse = /*@__PURE__*/ __L.at(
+  __c18,
+  4,
+) as any as S.Schema<UsersPaginatedResponse>;
+
 export interface GetWebhookRequest {
   webhookEndpointId: string;
 }
+const GetWebhookRequest = /*@__PURE__*/ __L.at(__c18, 5) as any as S.Schema<GetWebhookRequest>;
+
 export type GetWebhooksRequestStatusItem = "active" | "paused" | "disabled" | "deleted";
 export type GetWebhooksRequestStatusList = Array<GetWebhooksRequestStatusItem | (string & {})>;
+const GetWebhooksRequestStatusList =
+  CardCategoryLocksList as any as S.Schema<GetWebhooksRequestStatusList>;
+
 /** Sort order. Can be 'asc' or 'desc'. Defaults to 'asc' */
 export type GetWebhooksRequestOrder = "asc" | "desc";
+const GetWebhooksRequestOrder = S.String;
+
 export interface GetWebhooksRequest {
   status?: GetWebhooksRequestStatusList;
   limit?: number;
@@ -1464,10 +2179,17 @@ export interface GetWebhooksRequest {
   end_before?: string;
   order?: GetWebhooksRequestOrder | (string & {});
 }
+const GetWebhooksRequest = /*@__PURE__*/ __L.at(__c18, 6) as any as S.Schema<GetWebhooksRequest>;
+
 /** Pagination information including cursors for navigating to next/previous pages */
 export type ApiWebhooksPaginatedResponsePage = AccountsPaginatedResponsePage;
 /** List of webhooks in the current page */
 export type ApiWebhooksPaginatedResponseWebhooksList = Array<ApiWebhookResponse>;
+const ApiWebhooksPaginatedResponseWebhooksList = /*@__PURE__*/ __L.at(
+  __c18,
+  7,
+) as any as S.Schema<ApiWebhooksPaginatedResponseWebhooksList>;
+
 /** API response for listing webhook endpoints with pagination */
 export interface ApiWebhooksPaginatedResponse {
   /** Pagination information including cursors for navigating to next/previous pages */
@@ -1475,6 +2197,11 @@ export interface ApiWebhooksPaginatedResponse {
   /** List of webhooks in the current page */
   webhooks: ApiWebhooksPaginatedResponseWebhooksList;
 }
+const ApiWebhooksPaginatedResponse = /*@__PURE__*/ __L.at(
+  __c19,
+  0,
+) as any as S.Schema<ApiWebhooksPaginatedResponse>;
+
 export type ListAccountTransactionsRequestStatus =
   | "pending"
   | "sent"
@@ -1482,8 +2209,12 @@ export type ListAccountTransactionsRequestStatus =
   | "failed"
   | "reversed"
   | "blocked";
+const ListAccountTransactionsRequestStatus = S.String;
+
 /** Sort order. Can be 'asc' or 'desc'. Defaults to 'desc' */
 export type ListAccountTransactionsRequestOrder = "asc" | "desc";
+const ListAccountTransactionsRequestOrder = S.String;
+
 export interface ListAccountTransactionsRequest {
   accountId: string;
   limit?: number;
@@ -1497,13 +2228,31 @@ export interface ListAccountTransactionsRequest {
   mercuryCategory?: string;
   categoryId?: string;
 }
+const ListAccountTransactionsRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  1,
+) as any as S.Schema<ListAccountTransactionsRequest>;
+
 export type TransactionsResponseTransactionsList = Array<Transaction>;
+const TransactionsResponseTransactionsList = /*@__PURE__*/ __L.at(
+  __c19,
+  2,
+) as any as S.Schema<TransactionsResponseTransactionsList>;
+
 export interface TransactionsResponse {
   total: number;
   transactions: TransactionsResponseTransactionsList;
 }
+const TransactionsResponse = /*@__PURE__*/ __L.at(
+  __c19,
+  3,
+) as any as S.Schema<TransactionsResponse>;
+
 /** Filter cards by one or more account IDs. */
 export type ListCardsRequestAccountIdList = Array<string>;
+const ListCardsRequestAccountIdList =
+  CreateInvoiceRequestCcEmailsList as any as S.Schema<ListCardsRequestAccountIdList>;
+
 export type ListCardsRequestStatusItem =
   | "active"
   | "frozen"
@@ -1513,14 +2262,23 @@ export type ListCardsRequestStatusItem =
   | "suspended";
 /** Filter cards by one or more statuses. */
 export type ListCardsRequestStatusList = Array<ListCardsRequestStatusItem | (string & {})>;
+const ListCardsRequestStatusList =
+  CardCategoryLocksList as any as S.Schema<ListCardsRequestStatusList>;
+
 export type ListCardsRequestTypeItem = "virtual" | "physical";
 /** Filter cards by type (virtual or physical). */
 export type ListCardsRequestTypeList = Array<ListCardsRequestTypeItem | (string & {})>;
+const ListCardsRequestTypeList = CardCategoryLocksList as any as S.Schema<ListCardsRequestTypeList>;
+
 export type ListCardsRequestKindItem = "debit" | "credit";
 /** Filter cards by kind (debit or credit). */
 export type ListCardsRequestKindList = Array<ListCardsRequestKindItem | (string & {})>;
+const ListCardsRequestKindList = CardCategoryLocksList as any as S.Schema<ListCardsRequestKindList>;
+
 /** Sort order. Can be 'asc' or 'desc'. Defaults to 'asc' */
 export type ListCardsRequestOrder = "asc" | "desc";
+const ListCardsRequestOrder = S.String;
+
 export interface ListCardsRequest {
   accountId?: ListCardsRequestAccountIdList;
   status?: ListCardsRequestStatusList;
@@ -1533,8 +2291,15 @@ export interface ListCardsRequest {
   start_after?: string;
   end_before?: string;
 }
+const ListCardsRequest = /*@__PURE__*/ __L.at(__c19, 4) as any as S.Schema<ListCardsRequest>;
+
 /** List of cards in the current page. */
 export type CardListResponseCardsList = Array<Card>;
+const CardListResponseCardsList = /*@__PURE__*/ __L.at(
+  __c19,
+  5,
+) as any as S.Schema<CardListResponseCardsList>;
+
 /** Pagination cursors for navigating to next/previous pages. */
 export interface CardListResponsePage {
   /** Unique identifier for a card */
@@ -1542,22 +2307,41 @@ export interface CardListResponsePage {
   /** Unique identifier for a card */
   previousPage?: string;
 }
+const CardListResponsePage = /*@__PURE__*/ __L.at(
+  __c19,
+  6,
+) as any as S.Schema<CardListResponsePage>;
+
 export interface CardListResponse {
   /** List of cards in the current page. */
   cards: CardListResponseCardsList;
   /** Pagination cursors for navigating to next/previous pages. */
   page: CardListResponsePage;
 }
+const CardListResponse = /*@__PURE__*/ __L.at(__c19, 7) as any as S.Schema<CardListResponse>;
+
 /** Sort order. Can be 'asc' or 'desc'. Defaults to 'asc' */
 export type ListCategoriesRequestOrder = "asc" | "desc";
+const ListCategoriesRequestOrder = S.String;
+
 export interface ListCategoriesRequest {
   limit?: number;
   order?: ListCategoriesRequestOrder | (string & {});
   start_after?: string;
   end_before?: string;
 }
+const ListCategoriesRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  0,
+) as any as S.Schema<ListCategoriesRequest>;
+
 /** List of categories in the current page */
 export type CategoriesPaginatedResponseCategoriesList = Array<CategoryData>;
+const CategoriesPaginatedResponseCategoriesList = /*@__PURE__*/ __L.at(
+  __c20,
+  1,
+) as any as S.Schema<CategoriesPaginatedResponseCategoriesList>;
+
 /** Pagination information including cursors for navigating to next/previous pages */
 export type CategoriesPaginatedResponsePage = AccountsPaginatedResponsePage;
 /** Paginated response containing a list of categories. | Use the page cursor information to fetch additional pages of categories. */
@@ -1567,7 +2351,14 @@ export interface CategoriesPaginatedResponse {
   /** Pagination information including cursors for navigating to next/previous pages */
   page: AccountsPaginatedResponsePage;
 }
+const CategoriesPaginatedResponse = /*@__PURE__*/ __L.at(
+  __c20,
+  2,
+) as any as S.Schema<CategoriesPaginatedResponse>;
+
 export interface ListCreditRequest {}
+const ListCreditRequest = /*@__PURE__*/ __L.at(__c20, 3) as any as S.Schema<ListCreditRequest>;
+
 export interface CreditAccount {
   availableBalance: number;
   createdAt: string;
@@ -1575,20 +2366,44 @@ export interface CreditAccount {
   id: string;
   status: AccountStatus;
 }
+const CreditAccount = /*@__PURE__*/ __L.at(__c20, 4) as any as S.Schema<CreditAccount>;
+
 export type CreditAccountsResponseAccountsList = Array<CreditAccount>;
+const CreditAccountsResponseAccountsList = /*@__PURE__*/ __L.at(
+  __c20,
+  5,
+) as any as S.Schema<CreditAccountsResponseAccountsList>;
+
 export interface CreditAccountsResponse {
   accounts: CreditAccountsResponseAccountsList;
 }
+const CreditAccountsResponse = /*@__PURE__*/ __L.at(
+  __c20,
+  6,
+) as any as S.Schema<CreditAccountsResponse>;
+
 /** Sort order. Can be 'asc' or 'desc'. Defaults to 'asc' */
 export type ListCustomersRequestOrder = "asc" | "desc";
+const ListCustomersRequestOrder = S.String;
+
 export interface ListCustomersRequest {
   limit?: number;
   start_after?: string;
   end_before?: string;
   order?: ListCustomersRequestOrder | (string & {});
 }
+const ListCustomersRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  7,
+) as any as S.Schema<ListCustomersRequest>;
+
 /** The list of customers for this page */
 export type ApiV1ArCustomerPaginatedResponseDataCustomersList = Array<ApiV1ArCustomerResponseData>;
+const ApiV1ArCustomerPaginatedResponseDataCustomersList = /*@__PURE__*/ __L.at(
+  __c21,
+  0,
+) as any as S.Schema<ApiV1ArCustomerPaginatedResponseDataCustomersList>;
+
 /** Pagination cursors for navigating to next/previous pages */
 export type ApiV1ArCustomerPaginatedResponseDataPage = AccountsPaginatedResponsePage;
 /** Paginated response data for Accounts Receivable customers API endpoint */
@@ -1598,26 +2413,53 @@ export interface ApiV1ArCustomerPaginatedResponseData {
   /** Pagination cursors for navigating to next/previous pages */
   page: AccountsPaginatedResponsePage;
 }
+const ApiV1ArCustomerPaginatedResponseData = /*@__PURE__*/ __L.at(
+  __c21,
+  1,
+) as any as S.Schema<ApiV1ArCustomerPaginatedResponseData>;
+
 export interface ListInvoiceAttachmentsRequest {
   invoiceId: string;
 }
+const ListInvoiceAttachmentsRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  2,
+) as any as S.Schema<ListInvoiceAttachmentsRequest>;
+
 /** The list of attachments */
 export type ApiV1ArAttachmentsResponseDataAttachmentsList = Array<ApiV1ArAttachmentResponseData>;
+const ApiV1ArAttachmentsResponseDataAttachmentsList = /*@__PURE__*/ __L.at(
+  __c21,
+  3,
+) as any as S.Schema<ApiV1ArAttachmentsResponseDataAttachmentsList>;
+
 /** The response type for fetching attachments related to an AR Invoice. */
 export interface ApiV1ArAttachmentsResponseData {
   /** The list of attachments */
   attachments: ApiV1ArAttachmentsResponseDataAttachmentsList;
 }
+const ApiV1ArAttachmentsResponseData = /*@__PURE__*/ __L.at(
+  __c21,
+  4,
+) as any as S.Schema<ApiV1ArAttachmentsResponseData>;
+
 /** Sort order. Can be 'asc' or 'desc'. Defaults to 'asc' */
 export type ListInvoicesRequestOrder = "asc" | "desc";
+const ListInvoicesRequestOrder = S.String;
+
 export interface ListInvoicesRequest {
   limit?: number;
   order?: ListInvoicesRequestOrder | (string & {});
   start_after?: string;
   end_before?: string;
 }
+const ListInvoicesRequest = /*@__PURE__*/ __L.at(__c21, 5) as any as S.Schema<ListInvoicesRequest>;
+
 /** Emails to be CCed on invoice notifications/reminders. */
 export type ApiV1ArInvoicesDataCcEmailsList = Array<string>;
+const ApiV1ArInvoicesDataCcEmailsList =
+  CreateInvoiceRequestCcEmailsList as any as S.Schema<ApiV1ArInvoicesDataCcEmailsList>;
+
 /** Response data for Accounts Receivable invoices API Endpoint */
 export interface ApiV1ArInvoicesData {
   /** Whether or not the invoice can be paid via ach debit. */
@@ -1651,8 +2493,15 @@ export interface ApiV1ArInvoicesData {
   /** Whether or not the invoice payment instructions will show the real account and routing number for the destination account or use virtual account numbers instead. */
   useRealAccountNumber: boolean;
 }
+const ApiV1ArInvoicesData = /*@__PURE__*/ __L.at(__c21, 6) as any as S.Schema<ApiV1ArInvoicesData>;
+
 /** List of invoices in the current page */
 export type ApiV1ArInvoicesPaginatedResponseInvoicesList = Array<ApiV1ArInvoicesData>;
+const ApiV1ArInvoicesPaginatedResponseInvoicesList = /*@__PURE__*/ __L.at(
+  __c21,
+  7,
+) as any as S.Schema<ApiV1ArInvoicesPaginatedResponseInvoicesList>;
+
 /** Pagination information including cursors for navigating to next/previous pages */
 export type ApiV1ArInvoicesPaginatedResponsePage = AccountsPaginatedResponsePage;
 /** Paginated response containing a list of invoices. | Use the page cursor information to fetch additional pages of invoices. */
@@ -1662,8 +2511,15 @@ export interface ApiV1ArInvoicesPaginatedResponse {
   /** Pagination information including cursors for navigating to next/previous pages */
   page: AccountsPaginatedResponsePage;
 }
+const ApiV1ArInvoicesPaginatedResponse = /*@__PURE__*/ __L.at(
+  __c22,
+  0,
+) as any as S.Schema<ApiV1ArInvoicesPaginatedResponse>;
+
 /** Sort order. Can be 'asc' or 'desc'. Defaults to 'asc' */
 export type ListMerchantsRequestOrder = "asc" | "desc";
+const ListMerchantsRequestOrder = S.String;
+
 export interface ListMerchantsRequest {
   limit?: number;
   order?: ListMerchantsRequestOrder | (string & {});
@@ -1671,18 +2527,34 @@ export interface ListMerchantsRequest {
   end_before?: string;
   search?: string;
 }
+const ListMerchantsRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  1,
+) as any as S.Schema<ListMerchantsRequest>;
+
 /** Information about a merchant that can be used for spend controls like merchant locking. */
 export type MerchantInfo = CardMerchantLock;
 export type MerchantsResponseDataList = Array<CardMerchantLock>;
+const MerchantsResponseDataList = /*@__PURE__*/ __L.at(
+  __c22,
+  2,
+) as any as S.Schema<MerchantsResponseDataList>;
+
 export type MerchantsResponsePage = AccountsPaginatedResponsePage;
 /** Paginated response for merchants endpoint */
 export interface MerchantsResponse {
   data: MerchantsResponseDataList;
   page: AccountsPaginatedResponsePage;
 }
+const MerchantsResponse = /*@__PURE__*/ __L.at(__c22, 3) as any as S.Schema<MerchantsResponse>;
+
 /** Sort order. Can be 'asc' or 'desc'. Defaults to 'asc' */
 export type ListRecipientInvitesRequestOrder = "asc" | "desc";
+const ListRecipientInvitesRequestOrder = S.String;
+
 export type ListRecipientInvitesRequestStatus = "created" | "completed" | "expired";
+const ListRecipientInvitesRequestStatus = S.String;
+
 export interface ListRecipientInvitesRequest {
   limit?: number;
   start_after?: string;
@@ -1690,8 +2562,18 @@ export interface ListRecipientInvitesRequest {
   order?: ListRecipientInvitesRequestOrder | (string & {});
   status?: ListRecipientInvitesRequestStatus | (string & {});
 }
+const ListRecipientInvitesRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  4,
+) as any as S.Schema<ListRecipientInvitesRequest>;
+
 /** List of invites in the current page. */
 export type RecipientInviteApiPaginatedResponseInvitesList = Array<RecipientInviteApiResponse>;
+const RecipientInviteApiPaginatedResponseInvitesList = /*@__PURE__*/ __L.at(
+  __c22,
+  5,
+) as any as S.Schema<RecipientInviteApiPaginatedResponseInvitesList>;
+
 /** Pagination cursors (inviteId) for navigating to next/previous pages. */
 export type RecipientInviteApiPaginatedResponsePage = AccountsPaginatedResponsePage;
 /** API response for listing recipient invites with pagination. */
@@ -1701,14 +2583,26 @@ export interface RecipientInviteApiPaginatedResponse {
   /** Pagination cursors (inviteId) for navigating to next/previous pages. */
   page: AccountsPaginatedResponsePage;
 }
+const RecipientInviteApiPaginatedResponse = /*@__PURE__*/ __L.at(
+  __c22,
+  6,
+) as any as S.Schema<RecipientInviteApiPaginatedResponse>;
+
 /** Sort order. Can be 'asc' or 'desc'. Defaults to 'asc' */
 export type ListRecipientsAttachmentsRequestOrder = "asc" | "desc";
+const ListRecipientsAttachmentsRequestOrder = S.String;
+
 export interface ListRecipientsAttachmentsRequest {
   limit?: number;
   start_after?: string;
   end_before?: string;
   order?: ListRecipientsAttachmentsRequestOrder | (string & {});
 }
+const ListRecipientsAttachmentsRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  7,
+) as any as S.Schema<ListRecipientsAttachmentsRequest>;
+
 export interface RecipientAttachmentWithId {
   /** Name of the uploaded file */
   fileName: string;
@@ -1719,9 +2613,19 @@ export interface RecipientAttachmentWithId {
   /** Presigned URL to download the attachment (valid for 12 hours) */
   url: string;
 }
+const RecipientAttachmentWithId = /*@__PURE__*/ __L.at(
+  __c23,
+  0,
+) as any as S.Schema<RecipientAttachmentWithId>;
+
 /** List of attachments with recipient IDs */
 export type RecipientsAttachmentsPaginatedResponseAttachmentsList =
   Array<RecipientAttachmentWithId>;
+const RecipientsAttachmentsPaginatedResponseAttachmentsList = /*@__PURE__*/ __L.at(
+  __c23,
+  1,
+) as any as S.Schema<RecipientsAttachmentsPaginatedResponseAttachmentsList>;
+
 /** Pagination information */
 export type RecipientsAttachmentsPaginatedResponsePage = AccountsPaginatedResponsePage;
 export interface RecipientsAttachmentsPaginatedResponse {
@@ -1731,11 +2635,18 @@ export interface RecipientsAttachmentsPaginatedResponse {
   page: AccountsPaginatedResponsePage;
   total: unknown;
 }
+const RecipientsAttachmentsPaginatedResponse = /*@__PURE__*/ __L.at(
+  __c23,
+  2,
+) as any as S.Schema<RecipientsAttachmentsPaginatedResponse>;
+
 export type ListSendMoneyApprovalRequestsRequestStatus =
   | "pendingApproval"
   | "approved"
   | "rejected"
   | "cancelled";
+const ListSendMoneyApprovalRequestsRequestStatus = S.String;
+
 export interface ListSendMoneyApprovalRequestsRequest {
   accountId?: string;
   status?: ListSendMoneyApprovalRequestsRequestStatus | (string & {});
@@ -1743,13 +2654,28 @@ export interface ListSendMoneyApprovalRequestsRequest {
   end_before?: string;
   limit?: number;
 }
+const ListSendMoneyApprovalRequestsRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  3,
+) as any as S.Schema<ListSendMoneyApprovalRequestsRequest>;
+
 export type SendMoneyApprovalRequestsPaginatedResponsePage = AccountsPaginatedResponsePage;
 export type SendMoneyApprovalRequestsPaginatedResponseRequestsList =
   Array<SendMoneyApprovalRequestResponse>;
+const SendMoneyApprovalRequestsPaginatedResponseRequestsList = /*@__PURE__*/ __L.at(
+  __c23,
+  4,
+) as any as S.Schema<SendMoneyApprovalRequestsPaginatedResponseRequestsList>;
+
 export interface SendMoneyApprovalRequestsPaginatedResponse {
   page: AccountsPaginatedResponsePage;
   requests: SendMoneyApprovalRequestsPaginatedResponseRequestsList;
 }
+const SendMoneyApprovalRequestsPaginatedResponse = /*@__PURE__*/ __L.at(
+  __c23,
+  5,
+) as any as S.Schema<SendMoneyApprovalRequestsPaginatedResponse>;
+
 export type ListTransactionsRequestStatusItem =
   | "pending"
   | "sent"
@@ -1760,10 +2686,21 @@ export type ListTransactionsRequestStatusItem =
 export type ListTransactionsRequestStatusList = Array<
   ListTransactionsRequestStatusItem | (string & {})
 >;
+const ListTransactionsRequestStatusList =
+  CardCategoryLocksList as any as S.Schema<ListTransactionsRequestStatusList>;
+
 export type ListTransactionsRequestAccountIdList = Array<string>;
+const ListTransactionsRequestAccountIdList =
+  CreateInvoiceRequestCcEmailsList as any as S.Schema<ListTransactionsRequestAccountIdList>;
+
 export type ListTransactionsRequestCardIdList = Array<string>;
+const ListTransactionsRequestCardIdList =
+  CreateInvoiceRequestCcEmailsList as any as S.Schema<ListTransactionsRequestCardIdList>;
+
 /** Sort order. Can be 'asc' or 'desc'. Defaults to 'asc' */
 export type ListTransactionsRequestOrder = "asc" | "desc";
+const ListTransactionsRequestOrder = S.String;
+
 export interface ListTransactionsRequest {
   status?: ListTransactionsRequestStatusList;
   search?: string;
@@ -1781,14 +2718,29 @@ export interface ListTransactionsRequest {
   limit?: number;
   order?: ListTransactionsRequestOrder | (string & {});
 }
+const ListTransactionsRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  6,
+) as any as S.Schema<ListTransactionsRequest>;
+
 export type TransactionsPaginatedResponsePage = AccountsPaginatedResponsePage;
 export type TransactionsPaginatedResponseTransactionsList = Array<Transaction>;
+const TransactionsPaginatedResponseTransactionsList =
+  TransactionsResponseTransactionsList as any as S.Schema<TransactionsPaginatedResponseTransactionsList>;
+
 export interface TransactionsPaginatedResponse {
   page: AccountsPaginatedResponsePage;
   transactions: TransactionsPaginatedResponseTransactionsList;
 }
+const TransactionsPaginatedResponse = /*@__PURE__*/ __L.at(
+  __c23,
+  7,
+) as any as S.Schema<TransactionsPaginatedResponse>;
+
 /** The grant type for the token request. Must be "authorization_code" for the authorization code flow or "refresh_token" when refreshing an access token. */
 export type ObtainAccessTokenRequestGrantType = "authorization_code" | "refresh_token";
+const ObtainAccessTokenRequestGrantType = S.String;
+
 export interface ObtainAccessTokenRequest {
   /** The authorization code received from the authorization server. Required when grant_type is "authorization_code". */
   code: string;
@@ -1803,6 +2755,11 @@ export interface ObtainAccessTokenRequest {
   /** A space-separated list of the scopes requested for the access token. Required when grant_type is \`refresh_token\`. Must be a subset of the scopes granted during the original authorization. */
   scope: string;
 }
+const ObtainAccessTokenRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  0,
+) as any as S.Schema<ObtainAccessTokenRequest>;
+
 export interface OAuth2TokenResponse {
   /** The access token issued by the authorization server. */
   access_token: string | Redacted.Redacted<string>;
@@ -1815,8 +2772,12 @@ export interface OAuth2TokenResponse {
   /** The type of the token issued. Value is case insensitive and should be "Bearer". */
   token_type: string;
 }
+const OAuth2TokenResponse = /*@__PURE__*/ __L.at(__c24, 1) as any as S.Schema<OAuth2TokenResponse>;
+
 /** Who pays intermediary bank fees on a USD international wire. Pass 'ours' so the recipient receives the full amount (Mercury charges a $15 fee), or 'shared' to split those fees. If omitted on a USD international wire, this defaults to 'ours'. Do not include this field for other payment methods or accounts that are not charged international-wire fees. */
 export type RequestSendMoneyRequestChargeType = "ours" | "shared";
+const RequestSendMoneyRequestChargeType = S.String;
+
 export interface RequestSendMoneyRequest {
   accountId: string;
   /** Amount of USD you want to send, must be a positive number. */
@@ -1836,6 +2797,11 @@ export interface RequestSendMoneyRequest {
   /** Recipient ID from the /recipients endpoint. */
   recipientId: string;
 }
+const RequestSendMoneyRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  2,
+) as any as S.Schema<RequestSendMoneyRequest>;
+
 export interface RequestTransferMoneyRequest {
   amount: number;
   destinationAccountId: string;
@@ -1843,8 +2809,16 @@ export interface RequestTransferMoneyRequest {
   note?: string | null;
   sourceAccountId: string;
 }
+const RequestTransferMoneyRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  3,
+) as any as S.Schema<RequestTransferMoneyRequest>;
+
 /** Approval decisions recorded on this request, oldest first. */
 export type TransferMoneyApprovalRequestResponseReviewsList = Array<PaymentApprovalReview>;
+const TransferMoneyApprovalRequestResponseReviewsList =
+  SendMoneyApprovalRequestResponseReviewsList as any as S.Schema<TransferMoneyApprovalRequestResponseReviewsList>;
+
 /** An approval request for a transfer between accounts. */
 export interface TransferMoneyApprovalRequestResponse {
   amount: number;
@@ -1865,9 +2839,19 @@ export interface TransferMoneyApprovalRequestResponse {
   sourceAccountId: unknown;
   status: ReviewRequestStatus;
 }
+const TransferMoneyApprovalRequestResponse = /*@__PURE__*/ __L.at(
+  __c24,
+  4,
+) as any as S.Schema<TransferMoneyApprovalRequestResponse>;
+
 export interface RevealCardPanRequest {
   cardId: string;
 }
+const RevealCardPanRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  5,
+) as any as S.Schema<RevealCardPanRequest>;
+
 export type CardRevealResponseExpiration = CardExpiration;
 /** Sensitive card details returned by the card reveal endpoint: the card's full number, expiration, and CVC. */
 export interface CardRevealResponse {
@@ -1877,6 +2861,8 @@ export interface CardRevealResponse {
   cvc: string;
   expiration: CardExpiration;
 }
+const CardRevealResponse = /*@__PURE__*/ __L.at(__c24, 6) as any as S.Schema<CardRevealResponse>;
+
 export interface StartOAuth2FlowRequest {
   /** The client ID you received from Mercury when you registered the client. */
   client_id: string;
@@ -1893,16 +2879,27 @@ export interface StartOAuth2FlowRequest {
   /** Required for clients with PKCE flow. Must have value S256, the SHA256 function used to hash the code challenge. */
   code_challenge_method?: string;
 }
+const StartOAuth2FlowRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  7,
+) as any as S.Schema<StartOAuth2FlowRequest>;
+
 export interface StartOAuth2FlowResponse {}
+const StartOAuth2FlowResponse = CancelInvoiceResponse as any as S.Schema<StartOAuth2FlowResponse>;
+
 export interface UnfreezeCardRequest {
   cardId: string;
 }
+const UnfreezeCardRequest = /*@__PURE__*/ __L.at(__c25, 0) as any as S.Schema<UnfreezeCardRequest>;
+
 export type UpdateCardRequestSpendLimit = CardSpendLimit;
 export interface UpdateCardRequest {
   cardId: string;
   nickname: unknown;
   spendLimit?: CardSpendLimit | null;
 }
+const UpdateCardRequest = /*@__PURE__*/ __L.at(__c25, 1) as any as S.Schema<UpdateCardRequest>;
+
 export type UpdateCustomerRequestAddress = CreateCustomerRequestAddress;
 export interface UpdateCustomerRequest {
   customerId: string;
@@ -1913,10 +2910,21 @@ export interface UpdateCustomerRequest {
   /** Open invoices for the customer will be resent with updated data when this is true. */
   resendOpenInvoices: boolean;
 }
+const UpdateCustomerRequest = /*@__PURE__*/ __L.at(
+  __c25,
+  2,
+) as any as S.Schema<UpdateCustomerRequest>;
+
 /** List of emails to be CCed on notifications/reminders. */
 export type UpdateInvoiceRequestCcEmailsList = Array<string>;
+const UpdateInvoiceRequestCcEmailsList =
+  CreateInvoiceRequestCcEmailsList as any as S.Schema<UpdateInvoiceRequestCcEmailsList>;
+
 /** The line items for the invoice */
 export type UpdateInvoiceRequestLineItemsList = Array<ApiV1ArLineItemData>;
+const UpdateInvoiceRequestLineItemsList =
+  CreateInvoiceRequestLineItemsList as any as S.Schema<UpdateInvoiceRequestLineItemsList>;
+
 export interface UpdateInvoiceRequest {
   invoiceId: string;
   /** Whether or not the invoice can be paid via ACH debit. */
@@ -1942,7 +2950,15 @@ export interface UpdateInvoiceRequest {
   /** Whether or not the invoice payment instructions will show the real account and routing number for the destination account or use virtual account numbers instead. */
   useRealAccountNumber: boolean;
 }
+const UpdateInvoiceRequest = /*@__PURE__*/ __L.at(
+  __c25,
+  3,
+) as any as S.Schema<UpdateInvoiceRequest>;
+
 export type UpdateRecipientRequestEmailsList = Array<string>;
+const UpdateRecipientRequestEmailsList =
+  CreateInvoiceRequestCcEmailsList as any as S.Schema<UpdateRecipientRequestEmailsList>;
+
 export interface UpdateRecipientRequest {
   recipientId: string;
   /** Deprecated. Use checkInfo instead. */
@@ -1961,15 +2977,31 @@ export interface UpdateRecipientRequest {
   /** Information needed to send a real-time payment. */
   realTimePaymentRoutingInfo?: RealTimePaymentRoutingInfoRaw;
 }
+const UpdateRecipientRequest = /*@__PURE__*/ __L.at(
+  __c25,
+  4,
+) as any as S.Schema<UpdateRecipientRequest>;
+
 export interface UpdateTransactionRequest {
   transactionId: string;
   categoryId: unknown;
   note: unknown;
 }
+const UpdateTransactionRequest = /*@__PURE__*/ __L.at(
+  __c25,
+  5,
+) as any as S.Schema<UpdateTransactionRequest>;
+
 /** Event types to subscribe to. Send null to subscribe to all event types. Send an array to subscribe to specific types. Omit to leave unchanged. */
 export type UpdateWebhookRequestEventTypesList = Array<WebhookEventType | (string & {})>;
+const UpdateWebhookRequestEventTypesList =
+  CreateWebhookRequestEventTypesList as any as S.Schema<UpdateWebhookRequestEventTypesList>;
+
 /** Resource field paths to filter events by. When specified, webhook events will only be sent when one of these fields changes. Send null for no filtering. Send an array to filter by specific fields. Omit to leave unchanged. */
 export type UpdateWebhookRequestFilterPathsList = Array<ResourceField | (string & {})>;
+const UpdateWebhookRequestFilterPathsList =
+  CreateWebhookRequestFilterPathsList as any as S.Schema<UpdateWebhookRequestFilterPathsList>;
+
 export interface UpdateWebhookRequest {
   webhookEndpointId: string;
   /** Event types to subscribe to. Send null to subscribe to all event types. Send an array to subscribe to specific types. Omit to leave unchanged. */
@@ -1980,15 +3012,32 @@ export interface UpdateWebhookRequest {
   /** The URL to which webhook events will be delivered. Omit to leave unchanged. */
   url?: string | null;
 }
+const UpdateWebhookRequest = /*@__PURE__*/ __L.at(
+  __c25,
+  6,
+) as any as S.Schema<UpdateWebhookRequest>;
+
 export interface UploadRecipientAttachmentRequest {
   /** ID of the recipient to attach the file to */
   recipientId: string;
   /** The file to upload (tax form document) */
   file: string;
 }
+const UploadRecipientAttachmentRequest = /*@__PURE__*/ __L.at(
+  __c25,
+  7,
+) as any as S.Schema<UploadRecipientAttachmentRequest>;
+
 export interface UploadRecipientAttachmentResponse {}
+const UploadRecipientAttachmentResponse = /*@__PURE__*/ __L.at(
+  __c26,
+  0,
+) as any as S.Schema<UploadRecipientAttachmentResponse>;
+
 /** Type of attachment: 'receipt', 'bill', or 'other'. Defaults to 'other'. */
 export type UploadTransactionAttachmentRequestAttachmentType = "receipt" | "bill" | "other";
+const UploadTransactionAttachmentRequestAttachmentType = S.String;
+
 export interface UploadTransactionAttachmentRequest {
   /** ID of the transaction to attach the file to */
   transactionId: string;
@@ -1997,12 +3046,27 @@ export interface UploadTransactionAttachmentRequest {
   /** The file to upload */
   file: string;
 }
+const UploadTransactionAttachmentRequest = /*@__PURE__*/ __L.at(
+  __c26,
+  1,
+) as any as S.Schema<UploadTransactionAttachmentRequest>;
+
 export interface UploadTransactionAttachmentResponse {}
+const UploadTransactionAttachmentResponse =
+  UploadRecipientAttachmentResponse as any as S.Schema<UploadTransactionAttachmentResponse>;
+
 export interface VerifyWebhookRequest {
   webhookEndpointId: string;
   eventType?: unknown | null;
 }
+const VerifyWebhookRequest = /*@__PURE__*/ __L.at(
+  __c26,
+  2,
+) as any as S.Schema<VerifyWebhookRequest>;
+
 export interface VerifyWebhookResponse {}
+const VerifyWebhookResponse = CancelInvoiceResponse as any as S.Schema<VerifyWebhookResponse>;
+
 export type CancelCardError = NotFound | MercuryOpError;
 /** Cancel a card Permanently cancel a card. This action cannot be undone. */
 export const cancelCard: API.OperationMethod<
@@ -2011,8 +3075,8 @@ export const cancelCard: API.OperationMethod<
   CancelCardError,
   MercuryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<CancelCardRequest>,
-  output: __S(7) as any as S.Schema<Card>,
+  input: CancelCardRequest,
+  output: Card,
   errors: [NotFound, UnknownMercuryError],
   protocol: MercuryProtocol,
   retry: Retry.Retry,
@@ -2026,8 +3090,8 @@ export const cancelInvoice: API.OperationMethod<
   CancelInvoiceError,
   MercuryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8) as any as S.Schema<CancelInvoiceRequest>,
-  output: __S(9) as any as S.Schema<CancelInvoiceResponse>,
+  input: CancelInvoiceRequest,
+  output: CancelInvoiceResponse,
   errors: [NotFound, UnknownMercuryError],
   protocol: MercuryProtocol,
   retry: Retry.Retry,
@@ -2041,8 +3105,8 @@ export const createCard: API.OperationMethod<
   CreateCardError,
   MercuryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11) as any as S.Schema<CreateCardRequest>,
-  output: __S(7) as any as S.Schema<Card>,
+  input: CreateCardRequest,
+  output: Card,
   errors: [BadRequest, UnknownMercuryError],
   protocol: MercuryProtocol,
   retry: Retry.Retry,
@@ -2056,8 +3120,8 @@ export const createCategory: API.OperationMethod<
   CreateCategoryError,
   MercuryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12) as any as S.Schema<CreateCategoryRequest>,
-  output: __S(13) as any as S.Schema<CategoryData>,
+  input: CreateCategoryRequest,
+  output: CategoryData,
   errors: [BadRequest, UnknownMercuryError],
   protocol: MercuryProtocol,
   retry: Retry.Retry,
@@ -2071,8 +3135,8 @@ export const createCustomer: API.OperationMethod<
   CreateCustomerError,
   MercuryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15) as any as S.Schema<CreateCustomerRequest>,
-  output: __S(17) as any as S.Schema<ApiV1ArCustomerResponseData>,
+  input: CreateCustomerRequest,
+  output: ApiV1ArCustomerResponseData,
   errors: [BadRequest, UnknownMercuryError],
   protocol: MercuryProtocol,
   retry: Retry.Retry,
@@ -2086,8 +3150,8 @@ export const createInternalTransfer: API.OperationMethod<
   CreateInternalTransferError,
   MercuryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18) as any as S.Schema<CreateInternalTransferRequest>,
-  output: __S(48) as any as S.Schema<InternalTransferAPIResponse>,
+  input: CreateInternalTransferRequest,
+  output: InternalTransferAPIResponse,
   errors: [BadRequest, UnknownMercuryError],
   protocol: MercuryProtocol,
   retry: Retry.Retry,
@@ -2101,8 +3165,8 @@ export const createInvoice: API.OperationMethod<
   CreateInvoiceError,
   MercuryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(52) as any as S.Schema<CreateInvoiceRequest>,
-  output: __S(53) as any as S.Schema<ApiV1ArInvoiceResponse>,
+  input: CreateInvoiceRequest,
+  output: ApiV1ArInvoiceResponse,
   errors: [BadRequest, UnknownMercuryError],
   protocol: MercuryProtocol,
   retry: Retry.Retry,
@@ -2116,8 +3180,8 @@ export const createRecipient: API.OperationMethod<
   CreateRecipientError,
   MercuryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57) as any as S.Schema<CreateRecipientRequest>,
-  output: __S(61) as any as S.Schema<RecipientInfo>,
+  input: CreateRecipientRequest,
+  output: RecipientInfo,
   errors: [BadRequest, UnknownMercuryError],
   protocol: MercuryProtocol,
   retry: Retry.Retry,
@@ -2131,8 +3195,8 @@ export const createRecipientInvite: API.OperationMethod<
   CreateRecipientInviteError,
   MercuryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(62) as any as S.Schema<CreateRecipientInviteRequest>,
-  output: __S(63) as any as S.Schema<RecipientInviteApiResponse>,
+  input: CreateRecipientInviteRequest,
+  output: RecipientInviteApiResponse,
   errors: [BadRequest, UnknownMercuryError],
   protocol: MercuryProtocol,
   retry: Retry.Retry,
@@ -2146,8 +3210,8 @@ export const createTransaction: API.OperationMethod<
   CreateTransactionError,
   MercuryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(66) as any as S.Schema<CreateTransactionRequest>,
-  output: __S(47) as any as S.Schema<Transaction>,
+  input: CreateTransactionRequest,
+  output: Transaction,
   errors: [BadRequest, NotFound, UnknownMercuryError],
   protocol: MercuryProtocol,
   retry: Retry.Retry,
@@ -2161,8 +3225,8 @@ export const createWebhook: API.OperationMethod<
   CreateWebhookError,
   MercuryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(67) as any as S.Schema<CreateWebhookRequest>,
-  output: __S(68) as any as S.Schema<ApiWebhookResponse>,
+  input: CreateWebhookRequest,
+  output: ApiWebhookResponse,
   errors: [BadRequest, UnknownMercuryError],
   protocol: MercuryProtocol,
   retry: Retry.Retry,
@@ -2176,8 +3240,8 @@ export const deleteCategory: API.OperationMethod<
   DeleteCategoryError,
   MercuryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(69) as any as S.Schema<DeleteCategoryRequest>,
-  output: __S(9) as any as S.Schema<DeleteCategoryResponse>,
+  input: DeleteCategoryRequest,
+  output: DeleteCategoryResponse,
   errors: [NotFound, UnknownMercuryError],
   protocol: MercuryProtocol,
   retry: Retry.Retry,
@@ -2191,8 +3255,8 @@ export const deleteCustomer: API.OperationMethod<
   DeleteCustomerError,
   MercuryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(70) as any as S.Schema<DeleteCustomerRequest>,
-  output: __S(9) as any as S.Schema<DeleteCustomerResponse>,
+  input: DeleteCustomerRequest,
+  output: DeleteCustomerResponse,
   errors: [NotFound, UnknownMercuryError],
   protocol: MercuryProtocol,
   retry: Retry.Retry,
@@ -2206,8 +3270,8 @@ export const deleteRecipient: API.OperationMethod<
   DeleteRecipientError,
   MercuryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(71) as any as S.Schema<DeleteRecipientRequest>,
-  output: __S(9) as any as S.Schema<DeleteRecipientResponse>,
+  input: DeleteRecipientRequest,
+  output: DeleteRecipientResponse,
   errors: [NotFound, UnknownMercuryError],
   protocol: MercuryProtocol,
   retry: Retry.Retry,
@@ -2221,8 +3285,8 @@ export const deleteRecipientInvite: API.OperationMethod<
   DeleteRecipientInviteError,
   MercuryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(72) as any as S.Schema<DeleteRecipientInviteRequest>,
-  output: __S(9) as any as S.Schema<DeleteRecipientInviteResponse>,
+  input: DeleteRecipientInviteRequest,
+  output: DeleteRecipientInviteResponse,
   errors: [NotFound, UnknownMercuryError],
   protocol: MercuryProtocol,
   retry: Retry.Retry,
@@ -2236,8 +3300,8 @@ export const deleteWebhook: API.OperationMethod<
   DeleteWebhookError,
   MercuryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(73) as any as S.Schema<DeleteWebhookRequest>,
-  output: __S(9) as any as S.Schema<DeleteWebhookResponse>,
+  input: DeleteWebhookRequest,
+  output: DeleteWebhookResponse,
   errors: [NotFound, UnknownMercuryError],
   protocol: MercuryProtocol,
   retry: Retry.Retry,
@@ -2251,8 +3315,8 @@ export const editCategory: API.OperationMethod<
   EditCategoryError,
   MercuryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(74) as any as S.Schema<EditCategoryRequest>,
-  output: __S(13) as any as S.Schema<CategoryData>,
+  input: EditCategoryRequest,
+  output: CategoryData,
   errors: [BadRequest, NotFound, UnknownMercuryError],
   protocol: MercuryProtocol,
   retry: Retry.Retry,
@@ -2266,8 +3330,8 @@ export const freezeCard: API.OperationMethod<
   FreezeCardError,
   MercuryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(75) as any as S.Schema<FreezeCardRequest>,
-  output: __S(7) as any as S.Schema<Card>,
+  input: FreezeCardRequest,
+  output: Card,
   errors: [NotFound, UnknownMercuryError],
   protocol: MercuryProtocol,
   retry: Retry.Retry,
@@ -2281,8 +3345,8 @@ export const getAccountCards: API.OperationMethod<
   GetAccountCardsError,
   MercuryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(76) as any as S.Schema<GetAccountCardsRequest>,
-  output: __S(79) as any as S.Schema<AccountCardsResponse>,
+  input: GetAccountCardsRequest,
+  output: AccountCardsResponse,
   errors: [NotFound, UnknownMercuryError],
   protocol: MercuryProtocol,
   retry: Retry.Retry,
@@ -2296,8 +3360,8 @@ export const getAccounts: API.OperationMethod<
   GetAccountsError,
   MercuryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(80) as any as S.Schema<GetAccountsRequest>,
-  output: __S(84) as any as S.Schema<AccountsPaginatedResponse>,
+  input: GetAccountsRequest,
+  output: AccountsPaginatedResponse,
   errors: [BadRequest, UnknownMercuryError],
   protocol: MercuryProtocol,
   retry: Retry.Retry,
@@ -2311,8 +3375,8 @@ export const getAccountStatements: API.OperationMethod<
   GetAccountStatementsError,
   MercuryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(85) as any as S.Schema<GetAccountStatementsRequest>,
-  output: __S(90) as any as S.Schema<DepositoryAccountStatementsPaginatedResponse>,
+  input: GetAccountStatementsRequest,
+  output: DepositoryAccountStatementsPaginatedResponse,
   errors: [BadRequest, NotFound, UnknownMercuryError],
   protocol: MercuryProtocol,
   retry: Retry.Retry,
@@ -2326,8 +3390,8 @@ export const getAttachment: API.OperationMethod<
   GetAttachmentError,
   MercuryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(91) as any as S.Schema<GetAttachmentRequest>,
-  output: __S(92) as any as S.Schema<ApiV1ArAttachmentResponseData>,
+  input: GetAttachmentRequest,
+  output: ApiV1ArAttachmentResponseData,
   errors: [NotFound, UnknownMercuryError],
   protocol: MercuryProtocol,
   retry: Retry.Retry,
@@ -2337,8 +3401,8 @@ export type GetCardError = NotFound | MercuryOpError;
 /** Get a card Retrieve details of a specific card by its ID. */
 export const getCard: API.OperationMethod<GetCardRequest, Card, GetCardError, MercuryOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(93) as any as S.Schema<GetCardRequest>,
-    output: __S(7) as any as S.Schema<Card>,
+    input: GetCardRequest,
+    output: Card,
     errors: [NotFound, UnknownMercuryError],
     protocol: MercuryProtocol,
     retry: Retry.Retry,
@@ -2352,8 +3416,8 @@ export const getCustomer: API.OperationMethod<
   GetCustomerError,
   MercuryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(94) as any as S.Schema<GetCustomerRequest>,
-  output: __S(17) as any as S.Schema<ApiV1ArCustomerResponseData>,
+  input: GetCustomerRequest,
+  output: ApiV1ArCustomerResponseData,
   errors: [NotFound, UnknownMercuryError],
   protocol: MercuryProtocol,
   retry: Retry.Retry,
@@ -2367,8 +3431,8 @@ export const getEvent: API.OperationMethod<
   GetEventError,
   MercuryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(95) as any as S.Schema<GetEventRequest>,
-  output: __S(96) as any as S.Schema<ApiEventResponse>,
+  input: GetEventRequest,
+  output: ApiEventResponse,
   errors: [NotFound, UnknownMercuryError],
   protocol: MercuryProtocol,
   retry: Retry.Retry,
@@ -2382,8 +3446,8 @@ export const getEvents: API.OperationMethod<
   GetEventsError,
   MercuryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(97) as any as S.Schema<GetEventsRequest>,
-  output: __S(99) as any as S.Schema<ApiEventsPaginatedResponse>,
+  input: GetEventsRequest,
+  output: ApiEventsPaginatedResponse,
   errors: [BadRequest, UnknownMercuryError],
   protocol: MercuryProtocol,
   retry: Retry.Retry,
@@ -2397,8 +3461,8 @@ export const getInvoice: API.OperationMethod<
   GetInvoiceError,
   MercuryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(100) as any as S.Schema<GetInvoiceRequest>,
-  output: __S(53) as any as S.Schema<ApiV1ArInvoiceResponse>,
+  input: GetInvoiceRequest,
+  output: ApiV1ArInvoiceResponse,
   errors: [NotFound, UnknownMercuryError],
   protocol: MercuryProtocol,
   retry: Retry.Retry,
@@ -2412,8 +3476,8 @@ export const getInvoicePdf: API.OperationMethod<
   GetInvoicePdfError,
   MercuryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(101) as any as S.Schema<GetInvoicePdfRequest>,
-  output: __S(9) as any as S.Schema<GetInvoicePdfResponse>,
+  input: GetInvoicePdfRequest,
+  output: GetInvoicePdfResponse,
   errors: [NotFound, UnknownMercuryError],
   protocol: MercuryProtocol,
   retry: Retry.Retry,
@@ -2427,8 +3491,8 @@ export const getOrganization: API.OperationMethod<
   GetOrganizationError,
   MercuryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(102) as any as S.Schema<GetOrganizationRequest>,
-  output: __S(106) as any as S.Schema<OrganizationResponse>,
+  input: GetOrganizationRequest,
+  output: OrganizationResponse,
   errors: [UnknownMercuryError],
   protocol: MercuryProtocol,
   retry: Retry.Retry,
@@ -2442,8 +3506,8 @@ export const getRecipient: API.OperationMethod<
   GetRecipientError,
   MercuryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(107) as any as S.Schema<GetRecipientRequest>,
-  output: __S(61) as any as S.Schema<RecipientInfo>,
+  input: GetRecipientRequest,
+  output: RecipientInfo,
   errors: [NotFound, UnknownMercuryError],
   protocol: MercuryProtocol,
   retry: Retry.Retry,
@@ -2457,8 +3521,8 @@ export const getRecipientInvite: API.OperationMethod<
   GetRecipientInviteError,
   MercuryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(108) as any as S.Schema<GetRecipientInviteRequest>,
-  output: __S(63) as any as S.Schema<RecipientInviteApiResponse>,
+  input: GetRecipientInviteRequest,
+  output: RecipientInviteApiResponse,
   errors: [NotFound, UnknownMercuryError],
   protocol: MercuryProtocol,
   retry: Retry.Retry,
@@ -2472,8 +3536,8 @@ export const getRecipients: API.OperationMethod<
   GetRecipientsError,
   MercuryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(109) as any as S.Schema<GetRecipientsRequest>,
-  output: __S(111) as any as S.Schema<RecipientsPaginatedResponse>,
+  input: GetRecipientsRequest,
+  output: RecipientsPaginatedResponse,
   errors: [BadRequest, UnknownMercuryError],
   protocol: MercuryProtocol,
   retry: Retry.Retry,
@@ -2487,8 +3551,8 @@ export const getSafeRequest: API.OperationMethod<
   GetSafeRequestError,
   MercuryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(112) as any as S.Schema<GetSafeRequestRequest>,
-  output: __S(115) as any as S.Schema<APISafeRequest>,
+  input: GetSafeRequestRequest,
+  output: APISafeRequest,
   errors: [NotFound, UnknownMercuryError],
   protocol: MercuryProtocol,
   retry: Retry.Retry,
@@ -2502,8 +3566,8 @@ export const getSafeRequestDocument: API.OperationMethod<
   GetSafeRequestDocumentError,
   MercuryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(116) as any as S.Schema<GetSafeRequestDocumentRequest>,
-  output: __S(9) as any as S.Schema<GetSafeRequestDocumentResponse>,
+  input: GetSafeRequestDocumentRequest,
+  output: GetSafeRequestDocumentResponse,
   errors: [NotFound, UnknownMercuryError],
   protocol: MercuryProtocol,
   retry: Retry.Retry,
@@ -2517,8 +3581,8 @@ export const getSafeRequests: API.OperationMethod<
   GetSafeRequestsError,
   MercuryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(117) as any as S.Schema<GetSafeRequestsRequest>,
-  output: __S(119) as any as S.Schema<GetSafeRequestsResponse>,
+  input: GetSafeRequestsRequest,
+  output: GetSafeRequestsResponse,
   errors: [UnknownMercuryError],
   protocol: MercuryProtocol,
   retry: Retry.Retry,
@@ -2532,8 +3596,8 @@ export const getSendMoneyApprovalRequest: API.OperationMethod<
   GetSendMoneyApprovalRequestError,
   MercuryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(120) as any as S.Schema<GetSendMoneyApprovalRequestRequest>,
-  output: __S(123) as any as S.Schema<SendMoneyApprovalRequestResponse>,
+  input: GetSendMoneyApprovalRequestRequest,
+  output: SendMoneyApprovalRequestResponse,
   errors: [NotFound, UnknownMercuryError],
   protocol: MercuryProtocol,
   retry: Retry.Retry,
@@ -2547,8 +3611,8 @@ export const getStatementPdf: API.OperationMethod<
   GetStatementPdfError,
   MercuryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(124) as any as S.Schema<GetStatementPdfRequest>,
-  output: __S(9) as any as S.Schema<GetStatementPdfResponse>,
+  input: GetStatementPdfRequest,
+  output: GetStatementPdfResponse,
   errors: [NotFound, UnknownMercuryError],
   protocol: MercuryProtocol,
   retry: Retry.Retry,
@@ -2562,8 +3626,8 @@ export const getTransaction: API.OperationMethod<
   GetTransactionError,
   MercuryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(125) as any as S.Schema<GetTransactionRequest>,
-  output: __S(47) as any as S.Schema<Transaction>,
+  input: GetTransactionRequest,
+  output: Transaction,
   errors: [NotFound, UnknownMercuryError],
   protocol: MercuryProtocol,
   retry: Retry.Retry,
@@ -2577,8 +3641,8 @@ export const getTransactionByTransactionId: API.OperationMethod<
   GetTransactionByTransactionIdError,
   MercuryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(126) as any as S.Schema<GetTransactionByTransactionIdRequest>,
-  output: __S(47) as any as S.Schema<Transaction>,
+  input: GetTransactionByTransactionIdRequest,
+  output: Transaction,
   errors: [NotFound, UnknownMercuryError],
   protocol: MercuryProtocol,
   retry: Retry.Retry,
@@ -2592,8 +3656,8 @@ export const getTreasury: API.OperationMethod<
   GetTreasuryError,
   MercuryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(127) as any as S.Schema<GetTreasuryRequest>,
-  output: __S(134) as any as S.Schema<TreasuryAccountsPaginatedResponse>,
+  input: GetTreasuryRequest,
+  output: TreasuryAccountsPaginatedResponse,
   errors: [BadRequest, UnknownMercuryError],
   protocol: MercuryProtocol,
   retry: Retry.Retry,
@@ -2607,8 +3671,8 @@ export const getTreasuryStatements: API.OperationMethod<
   GetTreasuryStatementsError,
   MercuryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(135) as any as S.Schema<GetTreasuryStatementsRequest>,
-  output: __S(138) as any as S.Schema<TreasuryStatementsPaginatedResponse>,
+  input: GetTreasuryStatementsRequest,
+  output: TreasuryStatementsPaginatedResponse,
   errors: [BadRequest, NotFound, UnknownMercuryError],
   protocol: MercuryProtocol,
   retry: Retry.Retry,
@@ -2622,8 +3686,8 @@ export const getTreasuryTransactions: API.OperationMethod<
   GetTreasuryTransactionsError,
   MercuryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(139) as any as S.Schema<GetTreasuryTransactionsRequest>,
-  output: __S(143) as any as S.Schema<TreasuryTransactionsResponse>,
+  input: GetTreasuryTransactionsRequest,
+  output: TreasuryTransactionsResponse,
   errors: [BadRequest, NotFound, UnknownMercuryError],
   protocol: MercuryProtocol,
   retry: Retry.Retry,
@@ -2637,8 +3701,8 @@ export const getUser: API.OperationMethod<
   GetUserError,
   MercuryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(144) as any as S.Schema<GetUserRequest>,
-  output: __S(145) as any as S.Schema<UserDetails>,
+  input: GetUserRequest,
+  output: UserDetails,
   errors: [NotFound, UnknownMercuryError],
   protocol: MercuryProtocol,
   retry: Retry.Retry,
@@ -2652,8 +3716,8 @@ export const getUsers: API.OperationMethod<
   GetUsersError,
   MercuryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(146) as any as S.Schema<GetUsersRequest>,
-  output: __S(148) as any as S.Schema<UsersPaginatedResponse>,
+  input: GetUsersRequest,
+  output: UsersPaginatedResponse,
   errors: [BadRequest, UnknownMercuryError],
   protocol: MercuryProtocol,
   retry: Retry.Retry,
@@ -2667,8 +3731,8 @@ export const getWebhook: API.OperationMethod<
   GetWebhookError,
   MercuryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(149) as any as S.Schema<GetWebhookRequest>,
-  output: __S(68) as any as S.Schema<ApiWebhookResponse>,
+  input: GetWebhookRequest,
+  output: ApiWebhookResponse,
   errors: [NotFound, UnknownMercuryError],
   protocol: MercuryProtocol,
   retry: Retry.Retry,
@@ -2682,8 +3746,8 @@ export const getWebhooks: API.OperationMethod<
   GetWebhooksError,
   MercuryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(150) as any as S.Schema<GetWebhooksRequest>,
-  output: __S(152) as any as S.Schema<ApiWebhooksPaginatedResponse>,
+  input: GetWebhooksRequest,
+  output: ApiWebhooksPaginatedResponse,
   errors: [BadRequest, UnknownMercuryError],
   protocol: MercuryProtocol,
   retry: Retry.Retry,
@@ -2697,8 +3761,8 @@ export const listAccountTransactions: API.OperationMethod<
   ListAccountTransactionsError,
   MercuryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(153) as any as S.Schema<ListAccountTransactionsRequest>,
-  output: __S(155) as any as S.Schema<TransactionsResponse>,
+  input: ListAccountTransactionsRequest,
+  output: TransactionsResponse,
   errors: [BadRequest, NotFound, UnknownMercuryError],
   protocol: MercuryProtocol,
   retry: Retry.Retry,
@@ -2712,8 +3776,8 @@ export const listCards: API.OperationMethod<
   ListCardsError,
   MercuryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(156) as any as S.Schema<ListCardsRequest>,
-  output: __S(159) as any as S.Schema<CardListResponse>,
+  input: ListCardsRequest,
+  output: CardListResponse,
   errors: [BadRequest, UnknownMercuryError],
   protocol: MercuryProtocol,
   retry: Retry.Retry,
@@ -2727,8 +3791,8 @@ export const listCategories: API.OperationMethod<
   ListCategoriesError,
   MercuryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(160) as any as S.Schema<ListCategoriesRequest>,
-  output: __S(162) as any as S.Schema<CategoriesPaginatedResponse>,
+  input: ListCategoriesRequest,
+  output: CategoriesPaginatedResponse,
   errors: [BadRequest, UnknownMercuryError],
   protocol: MercuryProtocol,
   retry: Retry.Retry,
@@ -2742,8 +3806,8 @@ export const listCredit: API.OperationMethod<
   ListCreditError,
   MercuryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(163) as any as S.Schema<ListCreditRequest>,
-  output: __S(166) as any as S.Schema<CreditAccountsResponse>,
+  input: ListCreditRequest,
+  output: CreditAccountsResponse,
   errors: [UnknownMercuryError],
   protocol: MercuryProtocol,
   retry: Retry.Retry,
@@ -2757,8 +3821,8 @@ export const listCustomers: API.OperationMethod<
   ListCustomersError,
   MercuryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(167) as any as S.Schema<ListCustomersRequest>,
-  output: __S(169) as any as S.Schema<ApiV1ArCustomerPaginatedResponseData>,
+  input: ListCustomersRequest,
+  output: ApiV1ArCustomerPaginatedResponseData,
   errors: [BadRequest, UnknownMercuryError],
   protocol: MercuryProtocol,
   retry: Retry.Retry,
@@ -2772,8 +3836,8 @@ export const listInvoiceAttachments: API.OperationMethod<
   ListInvoiceAttachmentsError,
   MercuryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(170) as any as S.Schema<ListInvoiceAttachmentsRequest>,
-  output: __S(172) as any as S.Schema<ApiV1ArAttachmentsResponseData>,
+  input: ListInvoiceAttachmentsRequest,
+  output: ApiV1ArAttachmentsResponseData,
   errors: [NotFound, UnknownMercuryError],
   protocol: MercuryProtocol,
   retry: Retry.Retry,
@@ -2787,8 +3851,8 @@ export const listInvoices: API.OperationMethod<
   ListInvoicesError,
   MercuryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(173) as any as S.Schema<ListInvoicesRequest>,
-  output: __S(176) as any as S.Schema<ApiV1ArInvoicesPaginatedResponse>,
+  input: ListInvoicesRequest,
+  output: ApiV1ArInvoicesPaginatedResponse,
   errors: [BadRequest, UnknownMercuryError],
   protocol: MercuryProtocol,
   retry: Retry.Retry,
@@ -2802,8 +3866,8 @@ export const listMerchants: API.OperationMethod<
   ListMerchantsError,
   MercuryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(177) as any as S.Schema<ListMerchantsRequest>,
-  output: __S(179) as any as S.Schema<MerchantsResponse>,
+  input: ListMerchantsRequest,
+  output: MerchantsResponse,
   errors: [BadRequest, UnknownMercuryError],
   protocol: MercuryProtocol,
   retry: Retry.Retry,
@@ -2817,8 +3881,8 @@ export const listRecipientInvites: API.OperationMethod<
   ListRecipientInvitesError,
   MercuryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(180) as any as S.Schema<ListRecipientInvitesRequest>,
-  output: __S(182) as any as S.Schema<RecipientInviteApiPaginatedResponse>,
+  input: ListRecipientInvitesRequest,
+  output: RecipientInviteApiPaginatedResponse,
   errors: [BadRequest, UnknownMercuryError],
   protocol: MercuryProtocol,
   retry: Retry.Retry,
@@ -2832,8 +3896,8 @@ export const listRecipientsAttachments: API.OperationMethod<
   ListRecipientsAttachmentsError,
   MercuryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(183) as any as S.Schema<ListRecipientsAttachmentsRequest>,
-  output: __S(186) as any as S.Schema<RecipientsAttachmentsPaginatedResponse>,
+  input: ListRecipientsAttachmentsRequest,
+  output: RecipientsAttachmentsPaginatedResponse,
   errors: [BadRequest, UnknownMercuryError],
   protocol: MercuryProtocol,
   retry: Retry.Retry,
@@ -2847,8 +3911,8 @@ export const listSendMoneyApprovalRequests: API.OperationMethod<
   ListSendMoneyApprovalRequestsError,
   MercuryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(187) as any as S.Schema<ListSendMoneyApprovalRequestsRequest>,
-  output: __S(189) as any as S.Schema<SendMoneyApprovalRequestsPaginatedResponse>,
+  input: ListSendMoneyApprovalRequestsRequest,
+  output: SendMoneyApprovalRequestsPaginatedResponse,
   errors: [BadRequest, UnknownMercuryError],
   protocol: MercuryProtocol,
   retry: Retry.Retry,
@@ -2862,8 +3926,8 @@ export const listTransactions: API.OperationMethod<
   ListTransactionsError,
   MercuryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(190) as any as S.Schema<ListTransactionsRequest>,
-  output: __S(191) as any as S.Schema<TransactionsPaginatedResponse>,
+  input: ListTransactionsRequest,
+  output: TransactionsPaginatedResponse,
   errors: [BadRequest, UnknownMercuryError],
   protocol: MercuryProtocol,
   retry: Retry.Retry,
@@ -2877,8 +3941,8 @@ export const obtainAccessToken: API.OperationMethod<
   ObtainAccessTokenError,
   MercuryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(192) as any as S.Schema<ObtainAccessTokenRequest>,
-  output: __S(193) as any as S.Schema<OAuth2TokenResponse>,
+  input: ObtainAccessTokenRequest,
+  output: OAuth2TokenResponse,
   errors: [BadRequest, UnknownMercuryError],
   protocol: MercuryProtocol,
   retry: Retry.Retry,
@@ -2892,8 +3956,8 @@ export const requestSendMoney: API.OperationMethod<
   RequestSendMoneyError,
   MercuryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(194) as any as S.Schema<RequestSendMoneyRequest>,
-  output: __S(123) as any as S.Schema<SendMoneyApprovalRequestResponse>,
+  input: RequestSendMoneyRequest,
+  output: SendMoneyApprovalRequestResponse,
   errors: [BadRequest, NotFound, UnknownMercuryError],
   protocol: MercuryProtocol,
   retry: Retry.Retry,
@@ -2907,8 +3971,8 @@ export const requestTransferMoney: API.OperationMethod<
   RequestTransferMoneyError,
   MercuryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(195) as any as S.Schema<RequestTransferMoneyRequest>,
-  output: __S(196) as any as S.Schema<TransferMoneyApprovalRequestResponse>,
+  input: RequestTransferMoneyRequest,
+  output: TransferMoneyApprovalRequestResponse,
   errors: [BadRequest, UnknownMercuryError],
   protocol: MercuryProtocol,
   retry: Retry.Retry,
@@ -2922,8 +3986,8 @@ export const revealCardPan: API.OperationMethod<
   RevealCardPanError,
   MercuryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(197) as any as S.Schema<RevealCardPanRequest>,
-  output: __S(198) as any as S.Schema<CardRevealResponse>,
+  input: RevealCardPanRequest,
+  output: CardRevealResponse,
   errors: [NotFound, UnknownMercuryError],
   protocol: MercuryProtocol,
   retry: Retry.Retry,
@@ -2937,8 +4001,8 @@ export const startOAuth2Flow: API.OperationMethod<
   StartOAuth2FlowError,
   MercuryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(199) as any as S.Schema<StartOAuth2FlowRequest>,
-  output: __S(9) as any as S.Schema<StartOAuth2FlowResponse>,
+  input: StartOAuth2FlowRequest,
+  output: StartOAuth2FlowResponse,
   errors: [BadRequest, UnknownMercuryError],
   protocol: MercuryProtocol,
   retry: Retry.Retry,
@@ -2952,8 +4016,8 @@ export const unfreezeCard: API.OperationMethod<
   UnfreezeCardError,
   MercuryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(200) as any as S.Schema<UnfreezeCardRequest>,
-  output: __S(7) as any as S.Schema<Card>,
+  input: UnfreezeCardRequest,
+  output: Card,
   errors: [NotFound, UnknownMercuryError],
   protocol: MercuryProtocol,
   retry: Retry.Retry,
@@ -2967,8 +4031,8 @@ export const updateCard: API.OperationMethod<
   UpdateCardError,
   MercuryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(201) as any as S.Schema<UpdateCardRequest>,
-  output: __S(7) as any as S.Schema<Card>,
+  input: UpdateCardRequest,
+  output: Card,
   errors: [BadRequest, NotFound, UnknownMercuryError],
   protocol: MercuryProtocol,
   retry: Retry.Retry,
@@ -2982,8 +4046,8 @@ export const updateCustomer: API.OperationMethod<
   UpdateCustomerError,
   MercuryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(202) as any as S.Schema<UpdateCustomerRequest>,
-  output: __S(17) as any as S.Schema<ApiV1ArCustomerResponseData>,
+  input: UpdateCustomerRequest,
+  output: ApiV1ArCustomerResponseData,
   errors: [BadRequest, NotFound, UnknownMercuryError],
   protocol: MercuryProtocol,
   retry: Retry.Retry,
@@ -2997,8 +4061,8 @@ export const updateInvoice: API.OperationMethod<
   UpdateInvoiceError,
   MercuryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(203) as any as S.Schema<UpdateInvoiceRequest>,
-  output: __S(53) as any as S.Schema<ApiV1ArInvoiceResponse>,
+  input: UpdateInvoiceRequest,
+  output: ApiV1ArInvoiceResponse,
   errors: [BadRequest, NotFound, UnknownMercuryError],
   protocol: MercuryProtocol,
   retry: Retry.Retry,
@@ -3012,8 +4076,8 @@ export const updateRecipient: API.OperationMethod<
   UpdateRecipientError,
   MercuryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(204) as any as S.Schema<UpdateRecipientRequest>,
-  output: __S(61) as any as S.Schema<RecipientInfo>,
+  input: UpdateRecipientRequest,
+  output: RecipientInfo,
   errors: [BadRequest, NotFound, UnknownMercuryError],
   protocol: MercuryProtocol,
   retry: Retry.Retry,
@@ -3027,8 +4091,8 @@ export const updateTransaction: API.OperationMethod<
   UpdateTransactionError,
   MercuryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(205) as any as S.Schema<UpdateTransactionRequest>,
-  output: __S(47) as any as S.Schema<Transaction>,
+  input: UpdateTransactionRequest,
+  output: Transaction,
   errors: [BadRequest, NotFound, UnknownMercuryError],
   protocol: MercuryProtocol,
   retry: Retry.Retry,
@@ -3042,8 +4106,8 @@ export const updateWebhook: API.OperationMethod<
   UpdateWebhookError,
   MercuryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(206) as any as S.Schema<UpdateWebhookRequest>,
-  output: __S(68) as any as S.Schema<ApiWebhookResponse>,
+  input: UpdateWebhookRequest,
+  output: ApiWebhookResponse,
   errors: [BadRequest, NotFound, UnknownMercuryError],
   protocol: MercuryProtocol,
   retry: Retry.Retry,
@@ -3057,8 +4121,8 @@ export const uploadRecipientAttachment: API.OperationMethod<
   UploadRecipientAttachmentError,
   MercuryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(207) as any as S.Schema<UploadRecipientAttachmentRequest>,
-  output: __S(208) as any as S.Schema<UploadRecipientAttachmentResponse>,
+  input: UploadRecipientAttachmentRequest,
+  output: UploadRecipientAttachmentResponse,
   errors: [BadRequest, NotFound, UnknownMercuryError],
   protocol: MercuryProtocol,
   retry: Retry.Retry,
@@ -3072,8 +4136,8 @@ export const uploadTransactionAttachment: API.OperationMethod<
   UploadTransactionAttachmentError,
   MercuryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(209) as any as S.Schema<UploadTransactionAttachmentRequest>,
-  output: __S(208) as any as S.Schema<UploadTransactionAttachmentResponse>,
+  input: UploadTransactionAttachmentRequest,
+  output: UploadTransactionAttachmentResponse,
   errors: [BadRequest, NotFound, UnknownMercuryError],
   protocol: MercuryProtocol,
   retry: Retry.Retry,
@@ -3087,8 +4151,8 @@ export const verifyWebhook: API.OperationMethod<
   VerifyWebhookError,
   MercuryOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(210) as any as S.Schema<VerifyWebhookRequest>,
-  output: __S(9) as any as S.Schema<VerifyWebhookResponse>,
+  input: VerifyWebhookRequest,
+  output: VerifyWebhookResponse,
   errors: [BadRequest, NotFound, UnknownMercuryError],
   protocol: MercuryProtocol,
   retry: Retry.Retry,
@@ -3113,9 +4177,9 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "CardBudget" });
     case 2:
-      return S.Array(__S(1));
+      return S.Array(CardBudget);
     case 3:
-      return S.Array(S.String);
+      return S.Array(MercuryCategory);
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -3142,19 +4206,19 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           accountId: S.String,
-          budgets: __S(2),
-          categoryLocks: __S(3),
+          budgets: CardBudgetsList,
+          categoryLocks: CardCategoryLocksList,
           createdAt: S.Unknown,
-          expiration: __S(4),
+          expiration: CardExpiration,
           id: S.String,
           isAgentCard: S.Boolean,
           kind: S.Unknown,
           lastFour: S.String,
-          merchantLock: S.optional(S.NullOr(__S(5))),
+          merchantLock: S.optional(S.NullOr(CardMerchantLock)),
           nameOnCard: S.String,
           nickname: S.optional(S.NullOr(S.String)),
           physicalCardStatus: S.optional(S.NullOr(S.Unknown)),
-          spendLimit: S.optional(S.NullOr(__S(6))),
+          spendLimit: S.optional(S.NullOr(CardSpendLimit)),
           spendLimitType: S.Unknown,
           status: S.Unknown,
           type: S.Unknown,
@@ -3191,7 +4255,7 @@ function __c1(j: number): any {
           accountId: S.optional(S.NullOr(S.Unknown)),
           kind: S.Unknown,
           nickname: S.optional(S.NullOr(S.String)),
-          spendLimit: S.optional(S.NullOr(__S(10))),
+          spendLimit: S.optional(S.NullOr(CreateCardRequestSpendLimit)),
           type: S.Unknown,
           userId: S.Unknown,
         }).pipe(T.Http({ method: "POST", uri: "/cards", code: 200 })),
@@ -3232,7 +4296,7 @@ function __c1(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          address: S.optional(S.NullOr(__S(14))),
+          address: S.optional(S.NullOr(CreateCustomerRequestAddress)),
           email: S.Unknown,
           name: S.String,
         }).pipe(T.Http({ method: "POST", uri: "/ar/customers", code: 200 })),
@@ -3257,7 +4321,7 @@ function __c2(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          address: S.optional(S.NullOr(__S(16))),
+          address: S.optional(S.NullOr(ApiV1ArCustomerResponseDataAddress)),
           deletedAt: S.optional(S.NullOr(S.Unknown)),
           email: S.Unknown,
           id: S.Unknown,
@@ -3281,13 +4345,13 @@ function __c2(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          attachmentType: S.String,
+          attachmentType: TransactionAttachmentType,
           fileName: S.String,
           url: S.String,
         }),
       ).annotate({ identifier: "TransactionAttachment" });
     case 4:
-      return S.Array(__S(19));
+      return S.Array(TransactionAttachment);
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -3308,7 +4372,7 @@ function __c2(j: number): any {
           address2: S.optional(S.NullOr(S.String)),
           city: S.String,
           postalCode: S.String,
-          state: S.optional(S.NullOr(S.String)),
+          state: S.optional(S.NullOr(USState)),
         }),
       ).annotate({ identifier: "AddressData" });
     case 7:
@@ -3344,7 +4408,7 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           accountNumber: S.String,
-          address: S.optional(S.NullOr(__S(25))),
+          address: S.optional(S.NullOr(AddressWithoutName)),
           bankName: S.optional(S.NullOr(S.String)),
           routingNumber: S.String,
         }),
@@ -3353,9 +4417,9 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           accountNumber: S.String,
-          address: S.optional(S.NullOr(__S(25))),
+          address: S.optional(S.NullOr(AddressWithoutName)),
           bankName: S.optional(S.NullOr(S.String)),
-          electronicAccountType: S.String,
+          electronicAccountType: ElectronicAccountType,
           routingNumber: S.String,
         }),
       ).annotate({ identifier: "ElectronicRoutingInfo" });
@@ -3409,7 +4473,7 @@ function __c4(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          accountType: S.String,
+          accountType: SwiftBankAccountType,
           legalId: S.String,
         }),
       ).annotate({
@@ -3427,7 +4491,7 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           legalId: S.String,
-          legalIdType: S.String,
+          legalIdType: PakistaniLegalIdType,
         }),
       ).annotate({
         identifier: "InternationalWirePakistanSpecificData",
@@ -3459,20 +4523,20 @@ function __c4(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          australia: S.optional(S.NullOr(__S(30))),
-          brazil: S.optional(S.NullOr(__S(31))),
-          canada: S.optional(S.NullOr(__S(32))),
-          chile: S.optional(S.NullOr(__S(31))),
-          colombia: S.optional(S.NullOr(__S(31))),
-          dominicanRepublic: S.optional(S.NullOr(__S(33))),
-          honduras: S.optional(S.NullOr(__S(33))),
-          india: S.optional(S.NullOr(__S(34))),
-          kazakhstan: S.optional(S.NullOr(__S(31))),
-          pakistan: S.optional(S.NullOr(__S(35))),
-          paraguay: S.optional(S.NullOr(__S(31))),
-          philippines: S.optional(S.NullOr(__S(36))),
-          russia: S.optional(S.NullOr(__S(37))),
-          southAfrica: S.optional(S.NullOr(__S(38))),
+          australia: S.optional(S.NullOr(InternationalWireAustraliaSpecificData)),
+          brazil: S.optional(S.NullOr(InternationalWireBrazilSpecificData)),
+          canada: S.optional(S.NullOr(InternationalWireCanadaSpecificData)),
+          chile: S.optional(S.NullOr(InternationalWireBrazilSpecificData)),
+          colombia: S.optional(S.NullOr(InternationalWireBrazilSpecificData)),
+          dominicanRepublic: S.optional(S.NullOr(InternationalWireDominicanRepublicSpecificData)),
+          honduras: S.optional(S.NullOr(InternationalWireDominicanRepublicSpecificData)),
+          india: S.optional(S.NullOr(InternationalWireIndiaSpecificData)),
+          kazakhstan: S.optional(S.NullOr(InternationalWireBrazilSpecificData)),
+          pakistan: S.optional(S.NullOr(InternationalWirePakistanSpecificData)),
+          paraguay: S.optional(S.NullOr(InternationalWireBrazilSpecificData)),
+          philippines: S.optional(S.NullOr(InternationalWirePhilippinesSpecificData)),
+          russia: S.optional(S.NullOr(InternationalWireRussiaSpecificData)),
+          southAfrica: S.optional(S.NullOr(InternationalWireSouthAfricaSpecificData)),
         }),
       ).annotate({
         identifier: "InternationalWireCountrySpecificData",
@@ -3484,10 +4548,10 @@ function __c5(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          address: S.optional(S.NullOr(__S(25))),
-          bankDetails: S.optional(S.NullOr(__S(28))),
-          correspondentInfo: S.optional(S.NullOr(__S(29))),
-          countrySpecific: __S(39),
+          address: S.optional(S.NullOr(AddressWithoutName)),
+          bankDetails: S.optional(S.NullOr(SwiftCodeData)),
+          correspondentInfo: S.optional(S.NullOr(InternationalWireCorrespondentInfo)),
+          countrySpecific: InternationalWireCountrySpecificData,
           emailAddress: S.optional(S.NullOr(S.String)),
           iban: S.String,
           phoneNumber: S.optional(S.NullOr(S.String)),
@@ -3499,12 +4563,12 @@ function __c5(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          address: S.optional(S.NullOr(__S(22))),
-          creditCardInfo: S.optional(S.NullOr(__S(23))),
-          debitCardInfo: S.optional(S.NullOr(__S(24))),
-          domesticWireRoutingInfo: S.optional(S.NullOr(__S(26))),
-          electronicRoutingInfo: S.optional(S.NullOr(__S(27))),
-          internationalWireRoutingInfo: S.optional(S.NullOr(__S(40))),
+          address: S.optional(S.NullOr(AddressData)),
+          creditCardInfo: S.optional(S.NullOr(CreditCardInfo)),
+          debitCardInfo: S.optional(S.NullOr(DebitCardInfo)),
+          domesticWireRoutingInfo: S.optional(S.NullOr(DomesticWireRoutingInfo)),
+          electronicRoutingInfo: S.optional(S.NullOr(ElectronicRoutingInfo)),
+          internationalWireRoutingInfo: S.optional(S.NullOr(InternationalWireRoutingInfo)),
         }),
       ).annotate({ identifier: "TransactionMethodData" });
     case 2:
@@ -3516,7 +4580,7 @@ function __c5(j: number): any {
         }),
       ).annotate({ identifier: "GlAllocation" });
     case 3:
-      return S.Array(__S(42));
+      return S.Array(GlAllocation);
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -3533,20 +4597,20 @@ function __c5(j: number): any {
           accountId: S.String,
           amount: S.Number,
           id: S.String,
-          relationKind: S.String,
+          relationKind: TransactionRelationKind,
         }),
       ).annotate({ identifier: "RelatedTransactionData" });
     case 6:
-      return S.Array(__S(45));
+      return S.Array(RelatedTransactionData);
     case 7:
       return S.suspend(() =>
         S.Struct({
           accountId: S.Unknown,
           amount: S.Number,
-          attachments: __S(20),
+          attachments: TransactionAttachmentsList,
           bankDescription: S.optional(S.NullOr(S.String)),
           cardId: S.optional(S.NullOr(S.String)),
-          categoryData: S.optional(S.NullOr(__S(13))),
+          categoryData: S.optional(S.NullOr(CategoryData)),
           checkNumber: S.optional(S.NullOr(S.String)),
           compliantWithReceiptPolicy: S.Boolean,
           counterpartyId: S.String,
@@ -3554,26 +4618,26 @@ function __c5(j: number): any {
           counterpartyNickname: S.optional(S.NullOr(S.String)),
           createdAt: S.String,
           creditAccountPeriodId: S.optional(S.NullOr(S.String)),
-          currencyExchangeInfo: S.optional(S.NullOr(__S(21))),
+          currencyExchangeInfo: S.optional(S.NullOr(CurrencyExchangeInfo)),
           dashboardLink: S.String,
-          details: S.optional(S.NullOr(__S(41))),
+          details: S.optional(S.NullOr(TransactionMethodData)),
           estimatedDeliveryDate: S.String,
           externalMemo: S.optional(S.NullOr(S.String)),
           failedAt: S.optional(S.NullOr(S.String)),
           feeId: S.optional(S.NullOr(S.String)),
           generalLedgerCodeName: S.optional(S.NullOr(S.String)),
-          glAllocations: __S(43),
+          glAllocations: TransactionGlAllocationsList,
           hasGeneratedReceipt: S.Boolean,
           id: S.String,
-          kind: S.String,
-          merchant: S.optional(S.NullOr(__S(44))),
-          mercuryCategory: S.optional(S.NullOr(S.String)),
+          kind: TransactionKind,
+          merchant: S.optional(S.NullOr(TransactionMerchant)),
+          mercuryCategory: S.optional(S.NullOr(MercuryCategory)),
           note: S.optional(S.NullOr(S.String)),
           postedAt: S.optional(S.NullOr(S.String)),
           reasonForFailure: S.optional(S.NullOr(S.String)),
-          relatedTransactions: __S(46),
+          relatedTransactions: TransactionRelatedTransactionsList,
           requestId: S.optional(S.NullOr(S.String)),
-          status: S.String,
+          status: TransactionStatus,
           trackingNumber: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "Transaction" });
@@ -3584,8 +4648,8 @@ function __c6(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          creditTransaction: __S(47),
-          debitTransaction: __S(47),
+          creditTransaction: Transaction,
+          debitTransaction: Transaction,
         }),
       ).annotate({
         identifier: "InternalTransferAPIResponse",
@@ -3602,12 +4666,12 @@ function __c6(j: number): any {
         }),
       ).annotate({ identifier: "ApiV1ArLineItemData" });
     case 3:
-      return S.Array(__S(50));
+      return S.Array(ApiV1ArLineItemData);
     case 4:
       return S.suspend(() =>
         S.Struct({
           achDebitEnabled: S.Boolean,
-          ccEmails: __S(49),
+          ccEmails: CreateInvoiceRequestCcEmailsList,
           creditCardEnabled: S.Boolean,
           currencyCode: S.optional(S.NullOr(S.Unknown)),
           customerId: S.Unknown,
@@ -3616,7 +4680,7 @@ function __c6(j: number): any {
           internalNote: S.optional(S.NullOr(S.String)),
           invoiceDate: S.Unknown,
           invoiceNumber: S.optional(S.NullOr(S.String)),
-          lineItems: __S(51),
+          lineItems: CreateInvoiceRequestLineItemsList,
           payerMemo: S.optional(S.NullOr(S.String)),
           poNumber: S.optional(S.NullOr(S.String)),
           sendEmailOption: S.optional(S.NullOr(S.Unknown)),
@@ -3631,7 +4695,7 @@ function __c6(j: number): any {
           achDebitEnabled: S.Boolean,
           amount: S.Number,
           canceledAt: S.optional(S.NullOr(S.Unknown)),
-          ccEmails: __S(49),
+          ccEmails: ApiV1ArInvoiceResponseCcEmailsList,
           createdAt: S.Unknown,
           creditCardEnabled: S.Boolean,
           currencyCode: S.Unknown,
@@ -3642,7 +4706,7 @@ function __c6(j: number): any {
           internalNote: S.optional(S.NullOr(S.String)),
           invoiceDate: S.Unknown,
           invoiceNumber: S.String,
-          lineItems: __S(51),
+          lineItems: ApiV1ArInvoiceResponseLineItemsList,
           payerMemo: S.optional(S.NullOr(S.String)),
           poNumber: S.optional(S.NullOr(S.String)),
           servicePeriodEndDate: S.optional(S.NullOr(S.Unknown)),
@@ -3656,14 +4720,14 @@ function __c6(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          address: __S(25),
+          address: AddressWithoutName,
         }),
       ).annotate({ identifier: "CheckInfoRaw" });
     case 7:
       return S.suspend(() =>
         S.Struct({
           accountNumber: S.String,
-          address: __S(25),
+          address: AddressWithoutName,
           routingNumber: S.String,
         }),
       ).annotate({
@@ -3677,7 +4741,7 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           accountNumber: S.String,
-          address: __S(25),
+          address: AddressWithoutName,
           electronicAccountType: S.Unknown,
           routingNumber: S.String,
         }),
@@ -3685,15 +4749,15 @@ function __c7(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          address: S.optional(__S(22)),
-          checkInfo: S.optional(__S(54)),
+          address: S.optional(AddressData),
+          checkInfo: S.optional(CheckInfoRaw),
           contactEmail: S.optional(S.String),
-          domesticWireRoutingInfo: S.optional(__S(55)),
-          electronicRoutingInfo: S.optional(__S(56)),
-          emails: __S(49),
+          domesticWireRoutingInfo: S.optional(DomesticWireRoutingInfoRaw),
+          electronicRoutingInfo: S.optional(ElectronicRoutingInfoRaw),
+          emails: CreateRecipientRequestEmailsList,
           name: S.String,
           nickname: S.optional(S.String),
-          realTimePaymentRoutingInfo: S.optional(__S(55)),
+          realTimePaymentRoutingInfo: S.optional(RealTimePaymentRoutingInfoRaw),
         }).pipe(T.Http({ method: "POST", uri: "/recipients", code: 200 })),
       ).annotate({ identifier: "CreateRecipientRequest" });
     case 2:
@@ -3718,28 +4782,28 @@ function __c7(j: number): any {
         }),
       ).annotate({ identifier: "RecipientAttachment" });
     case 4:
-      return S.Array(__S(59));
+      return S.Array(RecipientAttachment);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          address: S.optional(S.NullOr(__S(58))),
-          attachments: __S(60),
-          checkInfo: S.optional(S.NullOr(__S(54))),
+          address: S.optional(S.NullOr(Address)),
+          attachments: RecipientInfoAttachmentsList,
+          checkInfo: S.optional(S.NullOr(CheckInfoRaw)),
           contactEmail: S.optional(S.NullOr(S.String)),
           dateLastPaid: S.optional(S.NullOr(S.String)),
-          defaultAddress: S.optional(S.NullOr(__S(25))),
-          defaultPaymentMethod: S.String,
-          domesticWireRoutingInfo: S.optional(S.NullOr(__S(26))),
-          electronicRoutingInfo: S.optional(S.NullOr(__S(27))),
-          emails: __S(49),
+          defaultAddress: S.optional(S.NullOr(AddressWithoutName)),
+          defaultPaymentMethod: PaymentMethod,
+          domesticWireRoutingInfo: S.optional(S.NullOr(DomesticWireRoutingInfo)),
+          electronicRoutingInfo: S.optional(S.NullOr(ElectronicRoutingInfo)),
+          emails: RecipientInfoEmailsList,
           id: S.String,
-          internationalWireRoutingInfo: S.optional(S.NullOr(__S(40))),
+          internationalWireRoutingInfo: S.optional(S.NullOr(InternationalWireRoutingInfo)),
           inviteId: S.optional(S.NullOr(S.String)),
           isBusiness: S.optional(S.NullOr(S.Boolean)),
           name: S.String,
           nickname: S.optional(S.NullOr(S.String)),
-          realTimePaymentRoutingInfo: S.optional(S.NullOr(__S(26))),
-          status: S.String,
+          realTimePaymentRoutingInfo: S.optional(S.NullOr(DomesticWireRoutingInfo)),
+          status: RecipientStatus,
         }),
       ).annotate({ identifier: "RecipientInfo" });
     case 6:
@@ -3749,7 +4813,7 @@ function __c7(j: number): any {
           name: S.optional(S.NullOr(S.String)),
           notes: S.optional(S.NullOr(S.String)),
           organizationNameOnRequest: S.optional(S.NullOr(S.String)),
-          paymentMethods: __S(3),
+          paymentMethods: CreateRecipientInviteRequestPaymentMethodsList,
           recipientId: S.optional(S.NullOr(S.Unknown)),
           requireTaxDocument: S.Boolean,
           sendEmail: S.Boolean,
@@ -3767,7 +4831,7 @@ function __c7(j: number): any {
           name: S.String,
           notes: S.optional(S.NullOr(S.String)),
           onboardingUrl: S.String,
-          paymentMethods: __S(3),
+          paymentMethods: RecipientInviteApiResponsePaymentMethodsList,
           recipientId: S.optional(S.NullOr(S.Unknown)),
           requireTaxDocument: S.Boolean,
           status: S.Unknown,
@@ -3783,13 +4847,13 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           additionalInfo: S.optional(S.String),
-          category: S.String,
+          category: SimplePurposeCategory,
         }),
       ).annotate({ identifier: "SimplePurpose" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          simple: S.optional(S.NullOr(__S(64))),
+          simple: S.optional(S.NullOr(SimplePurpose)),
         }),
       ).annotate({
         identifier: "PostTransactionSendMoneyPurpose",
@@ -3802,16 +4866,16 @@ function __c8(j: number): any {
           externalMemo: S.optional(S.String),
           idempotencyKey: S.String,
           note: S.optional(S.String),
-          paymentMethod: S.String,
-          purpose: S.optional(__S(65)),
+          paymentMethod: PostTransactionPaymentMethod,
+          purpose: S.optional(PostTransactionSendMoneyPurpose),
           recipientId: S.String,
         }).pipe(T.Http({ method: "POST", uri: "/account/{accountId}/transactions", code: 200 })),
       ).annotate({ identifier: "CreateTransactionRequest" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          eventTypes: S.optional(S.NullOr(__S(3))),
-          filterPaths: S.optional(S.NullOr(__S(3))),
+          eventTypes: S.optional(S.NullOr(CreateWebhookRequestEventTypesList)),
+          filterPaths: S.optional(S.NullOr(CreateWebhookRequestFilterPathsList)),
           url: S.String,
         }).pipe(T.Http({ method: "POST", uri: "/webhooks", code: 200 })),
       ).annotate({ identifier: "CreateWebhookRequest" });
@@ -3819,8 +4883,8 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           createdAt: S.Unknown,
-          eventTypes: S.optional(S.NullOr(__S(3))),
-          filterPaths: S.optional(S.NullOr(__S(3))),
+          eventTypes: S.optional(S.NullOr(ApiWebhookResponseEventTypesList)),
+          filterPaths: S.optional(S.NullOr(ApiWebhookResponseFilterPathsList)),
           id: S.Unknown,
           secret: S.optional(S.NullOr(S.String).pipe(T.SensitiveValue({}))),
           status: S.Unknown,
@@ -3893,21 +4957,21 @@ function __c9(j: number): any {
           createdAt: S.String,
           lastFourDigits: S.String,
           nameOnCard: S.String,
-          network: S.String,
-          physicalCardStatus: S.optional(S.NullOr(S.String)),
-          spendLimit: __S(6),
-          status: S.String,
-          type: S.String,
+          network: CardNetwork,
+          physicalCardStatus: S.optional(S.NullOr(PhysicalCardStatus)),
+          spendLimit: CardSpendLimit,
+          status: CardStatus,
+          type: CardType,
           updatedAt: S.String,
           userId: S.String,
         }),
       ).annotate({ identifier: "AccountCard" });
     case 6:
-      return S.Array(__S(77));
+      return S.Array(AccountCard);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          cards: __S(78),
+          cards: AccountCardsResponseCardsList,
         }),
       ).annotate({ identifier: "AccountCardsResponse" });
   }
@@ -3918,7 +4982,7 @@ function __c10(j: number): any {
       return S.suspend(() =>
         S.Struct({
           limit: S.optional(S.Number.pipe(T.Query())),
-          order: S.optional(S.String.pipe(T.Query())),
+          order: S.optional(GetAccountsRequestOrder.pipe(T.Query())),
           start_after: S.optional(S.String.pipe(T.Query())),
           end_before: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/accounts", code: 200 })),
@@ -3939,12 +5003,12 @@ function __c10(j: number): any {
           name: S.String,
           nickname: S.optional(S.NullOr(S.String)),
           routingNumber: S.String,
-          status: S.String,
-          type: S.String,
+          status: AccountStatus,
+          type: AccountType,
         }),
       ).annotate({ identifier: "Account" });
     case 2:
-      return S.Array(__S(81));
+      return S.Array(Account);
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -3957,8 +5021,8 @@ function __c10(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          accounts: __S(82),
-          page: __S(83),
+          accounts: AccountsPaginatedResponseAccountsList,
+          page: AccountsPaginatedResponsePage,
         }),
       ).annotate({
         identifier: "AccountsPaginatedResponse",
@@ -3968,7 +5032,7 @@ function __c10(j: number): any {
         S.Struct({
           accountId: S.String.pipe(T.Label()),
           limit: S.optional(S.Number.pipe(T.Query())),
-          order: S.optional(S.String.pipe(T.Query())),
+          order: S.optional(GetAccountStatementsRequestOrder.pipe(T.Query())),
           start_after: S.optional(S.String.pipe(T.Query())),
           end_before: S.optional(S.String.pipe(T.Query())),
           start: S.optional(S.String.pipe(T.Query())),
@@ -3988,7 +5052,7 @@ function __c10(j: number): any {
         identifier: "AccountStatementTransaction",
       });
     case 7:
-      return S.Array(__S(86));
+      return S.Array(AccountStatementTransaction);
   }
 }
 function __c11(j: number): any {
@@ -3997,7 +5061,7 @@ function __c11(j: number): any {
       return S.suspend(() =>
         S.Struct({
           accountNumber: S.String,
-          companyLegalAddress: __S(58),
+          companyLegalAddress: Address,
           companyLegalName: S.String,
           downloadUrl: S.String,
           ein: S.optional(S.NullOr(S.String)),
@@ -4006,18 +5070,18 @@ function __c11(j: number): any {
           id: S.String,
           routingNumber: S.String,
           startDate: S.String,
-          transactions: __S(87),
+          transactions: DepositoryAccountStatementTransactionsList,
         }),
       ).annotate({
         identifier: "DepositoryAccountStatement",
       });
     case 1:
-      return S.Array(__S(88));
+      return S.Array(DepositoryAccountStatement);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          page: __S(83),
-          statements: __S(89),
+          page: AccountsPaginatedResponsePage,
+          statements: DepositoryAccountStatementsPaginatedResponseStatementsList,
         }),
       ).annotate({
         identifier: "DepositoryAccountStatementsPaginatedResponse",
@@ -4063,7 +5127,7 @@ function __c12(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          changedPaths: __S(49),
+          changedPaths: ApiEventResponseChangedPathsList,
           id: S.Unknown,
           mergePatch: S.Unknown,
           occurredAt: S.Unknown,
@@ -4080,18 +5144,18 @@ function __c12(j: number): any {
           limit: S.optional(S.Number.pipe(T.Query())),
           start_after: S.optional(S.String.pipe(T.Query())),
           end_before: S.optional(S.String.pipe(T.Query())),
-          order: S.optional(S.String.pipe(T.Query())),
-          resourceType: S.optional(S.String.pipe(T.Query())),
+          order: S.optional(GetEventsRequestOrder.pipe(T.Query())),
+          resourceType: S.optional(GetEventsRequestResourceType.pipe(T.Query())),
           resourceId: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/events", code: 200 })),
       ).annotate({ identifier: "GetEventsRequest" });
     case 2:
-      return S.Array(__S(96));
+      return S.Array(ApiEventResponse);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          events: __S(98),
-          page: __S(83),
+          events: ApiEventsPaginatedResponseEventsList,
+          page: AccountsPaginatedResponsePage,
         }),
       ).annotate({
         identifier: "ApiEventsPaginatedResponse",
@@ -4124,12 +5188,12 @@ function __c12(j: number): any {
 function __c13(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(103));
+      return S.Array(OrganizationDBA);
     case 1:
       return S.suspend(() =>
         S.Struct({
           billingCadence: S.Unknown,
-          dbas: __S(104),
+          dbas: OrganizationResponseOrganizationDbasList,
           ein: S.optional(S.NullOr(S.String)),
           id: S.Unknown,
           kind: S.Unknown,
@@ -4142,7 +5206,7 @@ function __c13(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          organization: __S(105),
+          organization: OrganizationResponseOrganization,
         }),
       ).annotate({ identifier: "OrganizationResponse" });
     case 3:
@@ -4165,16 +5229,16 @@ function __c13(j: number): any {
           limit: S.optional(S.Number.pipe(T.Query())),
           start_after: S.optional(S.String.pipe(T.Query())),
           end_before: S.optional(S.String.pipe(T.Query())),
-          order: S.optional(S.String.pipe(T.Query())),
+          order: S.optional(GetRecipientsRequestOrder.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/recipients", code: 200 })),
       ).annotate({ identifier: "GetRecipientsRequest" });
     case 6:
-      return S.Array(__S(61));
+      return S.Array(RecipientInfo);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          page: __S(83),
-          recipients: __S(110),
+          page: AccountsPaginatedResponsePage,
+          recipients: RecipientsPaginatedResponseRecipientsList,
           total: S.Unknown,
         }),
       ).annotate({
@@ -4195,7 +5259,7 @@ function __c14(j: number): any {
         S.Struct({
           additionalBylines: S.optional(S.NullOr(S.String)),
           address: S.optional(S.NullOr(S.String)),
-          investorType: S.String,
+          investorType: SafeRequestInvestorType,
           legalEntityName: S.String,
           signatoryEmail: S.String,
           signatoryName: S.String,
@@ -4220,19 +5284,19 @@ function __c14(j: number): any {
           discountRate: S.optional(S.NullOr(S.Number)),
           documentUrl: S.String,
           expiresAt: S.String,
-          governingState: S.optional(S.NullOr(S.String)),
+          governingState: S.optional(S.NullOr(USState)),
           id: S.String,
           includesMostFavoredNationClause: S.Boolean,
           includesProRataRightsLetter: S.Boolean,
           investmentAmount: S.Number,
           investmentDate: S.String,
-          investor: __S(113),
-          organization: __S(114),
+          investor: APISafeRequestInvestor,
+          organization: APISafeRequestOrganization,
           paidAt: S.optional(S.NullOr(S.String)),
           signedByInvestorAt: S.optional(S.NullOr(S.String)),
           signedByOwnerAt: S.optional(S.NullOr(S.String)),
           valuationCap: S.optional(S.NullOr(S.Number)),
-          valuationType: S.String,
+          valuationType: ValuationType,
         }),
       ).annotate({ identifier: "APISafeRequest" });
     case 4:
@@ -4248,9 +5312,9 @@ function __c14(j: number): any {
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/safes", code: 200 })),
       ).annotate({ identifier: "GetSafeRequestsRequest" });
     case 6:
-      return S.Array(__S(115));
+      return S.Array(APISafeRequest);
     case 7:
-      return S.suspend(() => __S(118).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => GetSafeRequestsResponseBodyList.pipe(T.RawResponseRoot())).annotate({
         identifier: "GetSafeRequestsResponse",
       });
   }
@@ -4270,11 +5334,11 @@ function __c15(j: number): any {
         S.Struct({
           reviewedAt: S.String,
           reviewerUserId: S.String,
-          status: S.String,
+          status: PaymentApprovalReviewStatus,
         }),
       ).annotate({ identifier: "PaymentApprovalReview" });
     case 2:
-      return S.Array(__S(121));
+      return S.Array(PaymentApprovalReview);
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -4283,14 +5347,14 @@ function __c15(j: number): any {
           createdAt: S.Unknown,
           memo: S.optional(S.NullOr(S.String)),
           numberOfApproversRequired: S.optional(S.NullOr(S.Number)),
-          paymentMethod: S.String,
+          paymentMethod: RequestSendMoneyPaymentMethod,
           recipientId: S.String,
           requestId: S.String,
           requestedByUserId: S.Unknown,
           requesterMayApprove: S.optional(S.NullOr(S.Boolean)),
-          reviews: __S(122),
+          reviews: SendMoneyApprovalRequestResponseReviewsList,
           scheduledSendDate: S.optional(S.NullOr(S.Unknown)),
-          status: S.String,
+          status: ReviewRequestStatus,
         }),
       ).annotate({
         identifier: "SendMoneyApprovalRequestResponse",
@@ -4328,7 +5392,7 @@ function __c15(j: number): any {
           limit: S.optional(S.Number.pipe(T.Query())),
           start_after: S.optional(S.String.pipe(T.Query())),
           end_before: S.optional(S.String.pipe(T.Query())),
-          order: S.optional(S.String.pipe(T.Query())),
+          order: S.optional(GetTreasuryRequestOrder.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/treasury", code: 200 })),
       ).annotate({ identifier: "GetTreasuryRequest" });
   }
@@ -4345,11 +5409,11 @@ function __c16(j: number): any {
         }),
       ).annotate({ identifier: "TreasuryDividend" });
     case 1:
-      return S.Array(__S(128));
+      return S.Array(TreasuryDividend);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          dividends: __S(129),
+          dividends: TreasuryNetReturnDividendsList,
           month: S.Unknown,
           netAmount: S.Number,
           status: S.Unknown,
@@ -4357,7 +5421,7 @@ function __c16(j: number): any {
         }),
       ).annotate({ identifier: "TreasuryNetReturn" });
     case 3:
-      return S.Array(__S(130));
+      return S.Array(TreasuryNetReturn);
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -4365,17 +5429,17 @@ function __c16(j: number): any {
           createdAt: S.String,
           currentBalance: S.Number,
           id: S.String,
-          netReturns: __S(131),
-          status: S.String,
+          netReturns: TreasuryAccountNetReturnsList,
+          status: AccountStatus,
         }),
       ).annotate({ identifier: "TreasuryAccount" });
     case 5:
-      return S.Array(__S(132));
+      return S.Array(TreasuryAccount);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          accounts: __S(133),
-          page: __S(83),
+          accounts: TreasuryAccountsPaginatedResponseAccountsList,
+          page: AccountsPaginatedResponsePage,
         }),
       ).annotate({
         identifier: "TreasuryAccountsPaginatedResponse",
@@ -4385,10 +5449,10 @@ function __c16(j: number): any {
         S.Struct({
           treasuryId: S.String.pipe(T.Label()),
           limit: S.optional(S.Number.pipe(T.Query())),
-          order: S.optional(S.String.pipe(T.Query())),
+          order: S.optional(GetTreasuryStatementsRequestOrder.pipe(T.Query())),
           start_after: S.optional(S.String.pipe(T.Query())),
           end_before: S.optional(S.String.pipe(T.Query())),
-          documentType: S.optional(S.String.pipe(T.Query())),
+          documentType: S.optional(GetTreasuryStatementsRequestDocumentType.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/treasury/{treasuryId}/statements", code: 200 })),
       ).annotate({
         identifier: "GetTreasuryStatementsRequest",
@@ -4413,12 +5477,12 @@ function __c17(j: number): any {
         }),
       ).annotate({ identifier: "TreasuryStatement" });
     case 1:
-      return S.Array(__S(136));
+      return S.Array(TreasuryStatement);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          page: __S(83),
-          statements: __S(137),
+          page: AccountsPaginatedResponsePage,
+          statements: TreasuryStatementsPaginatedResponseStatementsList,
         }),
       ).annotate({
         identifier: "TreasuryStatementsPaginatedResponse",
@@ -4428,7 +5492,7 @@ function __c17(j: number): any {
         S.Struct({
           treasuryId: S.String.pipe(T.Label()),
           limit: S.optional(S.Number.pipe(T.Query())),
-          order: S.optional(S.String.pipe(T.Query())),
+          order: S.optional(GetTreasuryTransactionsRequestOrder.pipe(T.Query())),
           cursor: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/treasury/{treasuryId}/transactions", code: 200 })),
       ).annotate({
@@ -4458,19 +5522,19 @@ function __c17(j: number): any {
           balance: S.Number,
           canonicalDay: S.String,
           description: S.String,
-          details: S.optional(S.NullOr(__S(140))),
+          details: S.optional(S.NullOr(TreasuryTransactionDetails)),
           id: S.String,
           security: S.optional(S.NullOr(S.String)),
-          type: S.String,
+          type: TreasuryTransactionType,
         }),
       ).annotate({ identifier: "TreasuryTxn" });
     case 6:
-      return S.Array(__S(141));
+      return S.Array(TreasuryTxn);
     case 7:
       return S.suspend(() =>
         S.Struct({
           cursor: S.optional(S.NullOr(S.Unknown)),
-          transactions: __S(142),
+          transactions: TreasuryTransactionsResponseTransactionsList,
         }),
       ).annotate({
         identifier: "TreasuryTransactionsResponse",
@@ -4501,16 +5565,16 @@ function __c18(j: number): any {
           limit: S.optional(S.Number.pipe(T.Query())),
           start_after: S.optional(S.String.pipe(T.Query())),
           end_before: S.optional(S.String.pipe(T.Query())),
-          order: S.optional(S.String.pipe(T.Query())),
+          order: S.optional(GetUsersRequestOrder.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/users", code: 200 })),
       ).annotate({ identifier: "GetUsersRequest" });
     case 3:
-      return S.Array(__S(145));
+      return S.Array(UserDetails);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          page: __S(83),
-          users: __S(147),
+          page: AccountsPaginatedResponsePage,
+          users: UsersPaginatedResponseUsersList,
         }),
       ).annotate({ identifier: "UsersPaginatedResponse" });
     case 5:
@@ -4522,15 +5586,15 @@ function __c18(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(__S(3).pipe(T.Query())),
+          status: S.optional(GetWebhooksRequestStatusList.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
           start_after: S.optional(S.String.pipe(T.Query())),
           end_before: S.optional(S.String.pipe(T.Query())),
-          order: S.optional(S.String.pipe(T.Query())),
+          order: S.optional(GetWebhooksRequestOrder.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/webhooks", code: 200 })),
       ).annotate({ identifier: "GetWebhooksRequest" });
     case 7:
-      return S.Array(__S(68));
+      return S.Array(ApiWebhookResponse);
   }
 }
 function __c19(j: number): any {
@@ -4538,8 +5602,8 @@ function __c19(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          page: __S(83),
-          webhooks: __S(151),
+          page: AccountsPaginatedResponsePage,
+          webhooks: ApiWebhooksPaginatedResponseWebhooksList,
         }),
       ).annotate({
         identifier: "ApiWebhooksPaginatedResponse",
@@ -4552,9 +5616,9 @@ function __c19(j: number): any {
           start: S.optional(S.String.pipe(T.Query())),
           end: S.optional(S.String.pipe(T.Query())),
           search: S.optional(S.String.pipe(T.Query())),
-          status: S.optional(S.String.pipe(T.Query())),
+          status: S.optional(ListAccountTransactionsRequestStatus.pipe(T.Query())),
           offset: S.optional(S.Number.pipe(T.Query())),
-          order: S.optional(S.String.pipe(T.Query())),
+          order: S.optional(ListAccountTransactionsRequestOrder.pipe(T.Query())),
           requestId: S.optional(S.String.pipe(T.Query())),
           mercuryCategory: S.optional(S.String.pipe(T.Query())),
           categoryId: S.optional(S.String.pipe(T.Query())),
@@ -4563,31 +5627,31 @@ function __c19(j: number): any {
         identifier: "ListAccountTransactionsRequest",
       });
     case 2:
-      return S.Array(__S(47));
+      return S.Array(Transaction);
     case 3:
       return S.suspend(() =>
         S.Struct({
           total: S.Number,
-          transactions: __S(154),
+          transactions: TransactionsResponseTransactionsList,
         }),
       ).annotate({ identifier: "TransactionsResponse" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          accountId: S.optional(__S(49).pipe(T.Query())),
-          status: S.optional(__S(3).pipe(T.Query())),
-          type: S.optional(__S(3).pipe(T.Query())),
-          kind: S.optional(__S(3).pipe(T.Query())),
+          accountId: S.optional(ListCardsRequestAccountIdList.pipe(T.Query())),
+          status: S.optional(ListCardsRequestStatusList.pipe(T.Query())),
+          type: S.optional(ListCardsRequestTypeList.pipe(T.Query())),
+          kind: S.optional(ListCardsRequestKindList.pipe(T.Query())),
           userId: S.optional(S.String.pipe(T.Query())),
           isAgentCard: S.optional(S.Boolean.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
-          order: S.optional(S.String.pipe(T.Query())),
+          order: S.optional(ListCardsRequestOrder.pipe(T.Query())),
           start_after: S.optional(S.String.pipe(T.Query())),
           end_before: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/cards", code: 200 })),
       ).annotate({ identifier: "ListCardsRequest" });
     case 5:
-      return S.Array(__S(7));
+      return S.Array(Card);
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -4598,8 +5662,8 @@ function __c19(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          cards: __S(157),
-          page: __S(158),
+          cards: CardListResponseCardsList,
+          page: CardListResponsePage,
         }),
       ).annotate({ identifier: "CardListResponse" });
   }
@@ -4610,18 +5674,18 @@ function __c20(j: number): any {
       return S.suspend(() =>
         S.Struct({
           limit: S.optional(S.Number.pipe(T.Query())),
-          order: S.optional(S.String.pipe(T.Query())),
+          order: S.optional(ListCategoriesRequestOrder.pipe(T.Query())),
           start_after: S.optional(S.String.pipe(T.Query())),
           end_before: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/categories", code: 200 })),
       ).annotate({ identifier: "ListCategoriesRequest" });
     case 1:
-      return S.Array(__S(13));
+      return S.Array(CategoryData);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          categories: __S(161),
-          page: __S(83),
+          categories: CategoriesPaginatedResponseCategoriesList,
+          page: AccountsPaginatedResponsePage,
         }),
       ).annotate({
         identifier: "CategoriesPaginatedResponse",
@@ -4637,15 +5701,15 @@ function __c20(j: number): any {
           createdAt: S.String,
           currentBalance: S.Number,
           id: S.String,
-          status: S.String,
+          status: AccountStatus,
         }),
       ).annotate({ identifier: "CreditAccount" });
     case 5:
-      return S.Array(__S(164));
+      return S.Array(CreditAccount);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          accounts: __S(165),
+          accounts: CreditAccountsResponseAccountsList,
         }),
       ).annotate({ identifier: "CreditAccountsResponse" });
     case 7:
@@ -4654,7 +5718,7 @@ function __c20(j: number): any {
           limit: S.optional(S.Number.pipe(T.Query())),
           start_after: S.optional(S.String.pipe(T.Query())),
           end_before: S.optional(S.String.pipe(T.Query())),
-          order: S.optional(S.String.pipe(T.Query())),
+          order: S.optional(ListCustomersRequestOrder.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/ar/customers", code: 200 })),
       ).annotate({ identifier: "ListCustomersRequest" });
   }
@@ -4662,12 +5726,12 @@ function __c20(j: number): any {
 function __c21(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(17));
+      return S.Array(ApiV1ArCustomerResponseData);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          customers: __S(168),
-          page: __S(83),
+          customers: ApiV1ArCustomerPaginatedResponseDataCustomersList,
+          page: AccountsPaginatedResponsePage,
         }),
       ).annotate({
         identifier: "ApiV1ArCustomerPaginatedResponseData",
@@ -4681,11 +5745,11 @@ function __c21(j: number): any {
         identifier: "ListInvoiceAttachmentsRequest",
       });
     case 3:
-      return S.Array(__S(92));
+      return S.Array(ApiV1ArAttachmentResponseData);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          attachments: __S(171),
+          attachments: ApiV1ArAttachmentsResponseDataAttachmentsList,
         }),
       ).annotate({
         identifier: "ApiV1ArAttachmentsResponseData",
@@ -4694,7 +5758,7 @@ function __c21(j: number): any {
       return S.suspend(() =>
         S.Struct({
           limit: S.optional(S.Number.pipe(T.Query())),
-          order: S.optional(S.String.pipe(T.Query())),
+          order: S.optional(ListInvoicesRequestOrder.pipe(T.Query())),
           start_after: S.optional(S.String.pipe(T.Query())),
           end_before: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/ar/invoices", code: 200 })),
@@ -4705,7 +5769,7 @@ function __c21(j: number): any {
           achDebitEnabled: S.Boolean,
           amount: S.Number,
           canceledAt: S.optional(S.NullOr(S.Unknown)),
-          ccEmails: __S(49),
+          ccEmails: ApiV1ArInvoicesDataCcEmailsList,
           createdAt: S.Unknown,
           creditCardEnabled: S.Boolean,
           currencyCode: S.Unknown,
@@ -4725,7 +5789,7 @@ function __c21(j: number): any {
         }),
       ).annotate({ identifier: "ApiV1ArInvoicesData" });
     case 7:
-      return S.Array(__S(174));
+      return S.Array(ApiV1ArInvoicesData);
   }
 }
 function __c22(j: number): any {
@@ -4733,8 +5797,8 @@ function __c22(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          invoices: __S(175),
-          page: __S(83),
+          invoices: ApiV1ArInvoicesPaginatedResponseInvoicesList,
+          page: AccountsPaginatedResponsePage,
         }),
       ).annotate({
         identifier: "ApiV1ArInvoicesPaginatedResponse",
@@ -4743,19 +5807,19 @@ function __c22(j: number): any {
       return S.suspend(() =>
         S.Struct({
           limit: S.optional(S.Number.pipe(T.Query())),
-          order: S.optional(S.String.pipe(T.Query())),
+          order: S.optional(ListMerchantsRequestOrder.pipe(T.Query())),
           start_after: S.optional(S.String.pipe(T.Query())),
           end_before: S.optional(S.String.pipe(T.Query())),
           search: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/merchants", code: 200 })),
       ).annotate({ identifier: "ListMerchantsRequest" });
     case 2:
-      return S.Array(__S(5));
+      return S.Array(CardMerchantLock);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          data: __S(178),
-          page: __S(83),
+          data: MerchantsResponseDataList,
+          page: AccountsPaginatedResponsePage,
         }),
       ).annotate({ identifier: "MerchantsResponse" });
     case 4:
@@ -4764,19 +5828,19 @@ function __c22(j: number): any {
           limit: S.optional(S.Number.pipe(T.Query())),
           start_after: S.optional(S.String.pipe(T.Query())),
           end_before: S.optional(S.String.pipe(T.Query())),
-          order: S.optional(S.String.pipe(T.Query())),
-          status: S.optional(S.String.pipe(T.Query())),
+          order: S.optional(ListRecipientInvitesRequestOrder.pipe(T.Query())),
+          status: S.optional(ListRecipientInvitesRequestStatus.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/recipients/invites", code: 200 })),
       ).annotate({
         identifier: "ListRecipientInvitesRequest",
       });
     case 5:
-      return S.Array(__S(63));
+      return S.Array(RecipientInviteApiResponse);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          invites: __S(181),
-          page: __S(83),
+          invites: RecipientInviteApiPaginatedResponseInvitesList,
+          page: AccountsPaginatedResponsePage,
         }),
       ).annotate({
         identifier: "RecipientInviteApiPaginatedResponse",
@@ -4787,7 +5851,7 @@ function __c22(j: number): any {
           limit: S.optional(S.Number.pipe(T.Query())),
           start_after: S.optional(S.String.pipe(T.Query())),
           end_before: S.optional(S.String.pipe(T.Query())),
-          order: S.optional(S.String.pipe(T.Query())),
+          order: S.optional(ListRecipientsAttachmentsRequestOrder.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/recipients/attachments", code: 200 })),
       ).annotate({
         identifier: "ListRecipientsAttachmentsRequest",
@@ -4810,12 +5874,12 @@ function __c23(j: number): any {
         identifier: "RecipientAttachmentWithId",
       });
     case 1:
-      return S.Array(__S(184));
+      return S.Array(RecipientAttachmentWithId);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          attachments: __S(185),
-          page: __S(83),
+          attachments: RecipientsAttachmentsPaginatedResponseAttachmentsList,
+          page: AccountsPaginatedResponsePage,
           total: S.Unknown,
         }),
       ).annotate({
@@ -4825,7 +5889,7 @@ function __c23(j: number): any {
       return S.suspend(() =>
         S.Struct({
           accountId: S.optional(S.String.pipe(T.Query())),
-          status: S.optional(S.String.pipe(T.Query())),
+          status: S.optional(ListSendMoneyApprovalRequestsRequestStatus.pipe(T.Query())),
           start_after: S.optional(S.String.pipe(T.Query())),
           end_before: S.optional(S.String.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
@@ -4834,12 +5898,12 @@ function __c23(j: number): any {
         identifier: "ListSendMoneyApprovalRequestsRequest",
       });
     case 4:
-      return S.Array(__S(123));
+      return S.Array(SendMoneyApprovalRequestResponse);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          page: __S(83),
-          requests: __S(188),
+          page: AccountsPaginatedResponsePage,
+          requests: SendMoneyApprovalRequestsPaginatedResponseRequestsList,
         }),
       ).annotate({
         identifier: "SendMoneyApprovalRequestsPaginatedResponse",
@@ -4847,28 +5911,28 @@ function __c23(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(__S(3).pipe(T.Query())),
+          status: S.optional(ListTransactionsRequestStatusList.pipe(T.Query())),
           search: S.optional(S.String.pipe(T.Query())),
           start: S.optional(S.String.pipe(T.Query())),
           end: S.optional(S.String.pipe(T.Query())),
           postedStart: S.optional(S.String.pipe(T.Query())),
           postedEnd: S.optional(S.String.pipe(T.Query())),
-          accountId: S.optional(__S(49).pipe(T.Query())),
-          cardId: S.optional(__S(49).pipe(T.Query())),
+          accountId: S.optional(ListTransactionsRequestAccountIdList.pipe(T.Query())),
+          cardId: S.optional(ListTransactionsRequestCardIdList.pipe(T.Query())),
           mercuryCategory: S.optional(S.String.pipe(T.Query())),
           categoryId: S.optional(S.String.pipe(T.Query())),
           start_at: S.optional(S.String.pipe(T.Query())),
           start_after: S.optional(S.String.pipe(T.Query())),
           end_before: S.optional(S.String.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
-          order: S.optional(S.String.pipe(T.Query())),
+          order: S.optional(ListTransactionsRequestOrder.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/transactions", code: 200 })),
       ).annotate({ identifier: "ListTransactionsRequest" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          page: __S(83),
-          transactions: __S(154),
+          page: AccountsPaginatedResponsePage,
+          transactions: TransactionsPaginatedResponseTransactionsList,
         }),
       ).annotate({
         identifier: "TransactionsPaginatedResponse",
@@ -4882,7 +5946,7 @@ function __c24(j: number): any {
         S.Struct({
           code: S.String,
           code_verifier: S.String,
-          grant_type: S.String,
+          grant_type: ObtainAccessTokenRequestGrantType,
           redirect_uri: S.String,
           refresh_token: S.String.pipe(T.SensitiveValue({})),
           scope: S.String,
@@ -4903,12 +5967,12 @@ function __c24(j: number): any {
         S.Struct({
           accountId: S.String.pipe(T.Label()),
           amount: S.Number,
-          chargeType: S.optional(S.String),
+          chargeType: S.optional(RequestSendMoneyRequestChargeType),
           externalMemo: S.optional(S.String),
           idempotencyKey: S.String,
           note: S.optional(S.String),
-          paymentMethod: S.String,
-          purpose: S.optional(__S(65)),
+          paymentMethod: RequestSendMoneyPaymentMethod,
+          purpose: S.optional(PostTransactionSendMoneyPurpose),
           recipientId: S.String,
         }).pipe(
           T.Http({ method: "POST", uri: "/account/{accountId}/request-send-money", code: 200 }),
@@ -4938,9 +6002,9 @@ function __c24(j: number): any {
           requestId: S.String,
           requestedByUserId: S.Unknown,
           requesterMayApprove: S.optional(S.NullOr(S.Boolean)),
-          reviews: __S(122),
+          reviews: TransferMoneyApprovalRequestResponseReviewsList,
           sourceAccountId: S.Unknown,
-          status: S.String,
+          status: ReviewRequestStatus,
         }),
       ).annotate({
         identifier: "TransferMoneyApprovalRequestResponse",
@@ -4956,7 +6020,7 @@ function __c24(j: number): any {
         S.Struct({
           cardNumber: S.String,
           cvc: S.String,
-          expiration: __S(4),
+          expiration: CardExpiration,
         }),
       ).annotate({ identifier: "CardRevealResponse" });
     case 7:
@@ -4986,14 +6050,14 @@ function __c25(j: number): any {
         S.Struct({
           cardId: S.String.pipe(T.Label()),
           nickname: S.Unknown,
-          spendLimit: S.optional(S.NullOr(__S(6))),
+          spendLimit: S.optional(S.NullOr(CardSpendLimit)),
         }).pipe(T.Http({ method: "POST", uri: "/cards/{cardId}", code: 200 })),
       ).annotate({ identifier: "UpdateCardRequest" });
     case 2:
       return S.suspend(() =>
         S.Struct({
           customerId: S.String.pipe(T.Label()),
-          address: S.optional(S.NullOr(__S(14))),
+          address: S.optional(S.NullOr(CreateCustomerRequestAddress)),
           email: S.Unknown,
           name: S.String,
           resendOpenInvoices: S.Boolean,
@@ -5004,13 +6068,13 @@ function __c25(j: number): any {
         S.Struct({
           invoiceId: S.String.pipe(T.Label()),
           achDebitEnabled: S.Boolean,
-          ccEmails: __S(49),
+          ccEmails: UpdateInvoiceRequestCcEmailsList,
           creditCardEnabled: S.Boolean,
           dueDate: S.Unknown,
           internalNote: S.optional(S.NullOr(S.String)),
           invoiceDate: S.Unknown,
           invoiceNumber: S.String,
-          lineItems: __S(51),
+          lineItems: UpdateInvoiceRequestLineItemsList,
           payerMemo: S.optional(S.NullOr(S.String)),
           poNumber: S.optional(S.NullOr(S.String)),
           servicePeriodEndDate: S.optional(S.NullOr(S.Unknown)),
@@ -5022,15 +6086,15 @@ function __c25(j: number): any {
       return S.suspend(() =>
         S.Struct({
           recipientId: S.String.pipe(T.Label()),
-          address: S.optional(__S(22)),
-          checkInfo: S.optional(__S(54)),
+          address: S.optional(AddressData),
+          checkInfo: S.optional(CheckInfoRaw),
           contactEmail: S.optional(S.String),
-          domesticWireRoutingInfo: S.optional(__S(55)),
-          electronicRoutingInfo: S.optional(__S(56)),
-          emails: S.optional(__S(49)),
+          domesticWireRoutingInfo: S.optional(DomesticWireRoutingInfoRaw),
+          electronicRoutingInfo: S.optional(ElectronicRoutingInfoRaw),
+          emails: S.optional(UpdateRecipientRequestEmailsList),
           name: S.optional(S.String),
           nickname: S.optional(S.String),
-          realTimePaymentRoutingInfo: S.optional(__S(55)),
+          realTimePaymentRoutingInfo: S.optional(RealTimePaymentRoutingInfoRaw),
         }).pipe(T.Http({ method: "POST", uri: "/recipient/{recipientId}", code: 200 })),
       ).annotate({ identifier: "UpdateRecipientRequest" });
     case 5:
@@ -5045,8 +6109,8 @@ function __c25(j: number): any {
       return S.suspend(() =>
         S.Struct({
           webhookEndpointId: S.String.pipe(T.Label()),
-          eventTypes: S.optional(S.NullOr(__S(3))),
-          filterPaths: S.optional(S.NullOr(__S(3))),
+          eventTypes: S.optional(S.NullOr(UpdateWebhookRequestEventTypesList)),
+          filterPaths: S.optional(S.NullOr(UpdateWebhookRequestFilterPathsList)),
           status: S.optional(S.NullOr(S.Unknown)),
           url: S.optional(S.NullOr(S.String)),
         }).pipe(T.Http({ method: "POST", uri: "/webhooks/{webhookEndpointId}", code: 200 })),
@@ -5079,7 +6143,7 @@ function __c26(j: number): any {
       return S.suspend(() =>
         S.Struct({
           transactionId: S.String.pipe(T.Label()),
-          attachmentType: S.optional(S.String),
+          attachmentType: S.optional(UploadTransactionAttachmentRequestAttachmentType),
           file: S.String,
         }).pipe(
           T.Http({
@@ -5099,68 +6163,5 @@ function __c26(j: number): any {
           eventType: S.optional(S.NullOr(S.Unknown)),
         }).pipe(T.Http({ method: "POST", uri: "/webhooks/{webhookEndpointId}/verify", code: 200 })),
       ).annotate({ identifier: "VerifyWebhookRequest" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
-    case 9:
-      return __c9(i & 7);
-    case 10:
-      return __c10(i & 7);
-    case 11:
-      return __c11(i & 7);
-    case 12:
-      return __c12(i & 7);
-    case 13:
-      return __c13(i & 7);
-    case 14:
-      return __c14(i & 7);
-    case 15:
-      return __c15(i & 7);
-    case 16:
-      return __c16(i & 7);
-    case 17:
-      return __c17(i & 7);
-    case 18:
-      return __c18(i & 7);
-    case 19:
-      return __c19(i & 7);
-    case 20:
-      return __c20(i & 7);
-    case 21:
-      return __c21(i & 7);
-    case 22:
-      return __c22(i & 7);
-    case 23:
-      return __c23(i & 7);
-    case 24:
-      return __c24(i & 7);
-    case 25:
-      return __c25(i & 7);
-    case 26:
-      return __c26(i & 7);
   }
 }

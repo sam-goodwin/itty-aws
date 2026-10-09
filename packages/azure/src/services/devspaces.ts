@@ -6,23 +6,35 @@ import { UnknownAzureError } from "../errors.ts";
 import { AzureProtocol, type AzureOpError, type AzureOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { AzureOpError, AzureOpContext };
 
 /** Tags for the Azure resource. */
 export type CreateControllerRequestTagsMap = { [key: string]: string | undefined };
+const CreateControllerRequestTagsMap = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<CreateControllerRequestTagsMap>;
+
 export interface ControllerPropertiesInput {
   /** Resource ID of the target container host */
   targetContainerHostResourceId: string;
   /** Credentials of the target container host (base64). */
   targetContainerHostCredentialsBase64: string;
 }
+const ControllerPropertiesInput = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<ControllerPropertiesInput>;
+
 /** The name of the SKU for Azure Dev Spaces Controller. */
 export type SkuName = "S1";
+const SkuName = S.String;
+
 /** The tier of the SKU for Azure Dev Spaces Controller. */
 export type SkuTier = "Standard";
+const SkuTier = S.String;
+
 /** Model representing SKU for Azure Dev Spaces Controller. */
 export interface Sku {
   /** The name of the SKU for Azure Dev Spaces Controller. */
@@ -30,6 +42,8 @@ export interface Sku {
   /** The tier of the SKU for Azure Dev Spaces Controller. */
   tier?: SkuTier | (string & {});
 }
+const Sku = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<Sku>;
+
 export interface CreateControllerRequest {
   /** Azure subscription ID. */
   subscriptionId: string;
@@ -44,8 +58,16 @@ export interface CreateControllerRequest {
   properties: ControllerPropertiesInput;
   sku: Sku;
 }
+const CreateControllerRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<CreateControllerRequest>;
+
 /** Tags for the Azure resource. */
 export type CreateControllerResponseTagsMap = { [key: string]: string | undefined };
+const CreateControllerResponseTagsMap =
+  CreateControllerRequestTagsMap as any as S.Schema<CreateControllerResponseTagsMap>;
+
 /** Provisioning state of the Azure Dev Spaces Controller. */
 export type ControllerPropertiesProvisioningState =
   | "Succeeded"
@@ -55,6 +77,8 @@ export type ControllerPropertiesProvisioningState =
   | "Creating"
   | "Deleting"
   | "Deleted";
+const ControllerPropertiesProvisioningState = S.String;
+
 export interface ControllerProperties {
   /** Provisioning state of the Azure Dev Spaces Controller. */
   provisioningState?: ControllerPropertiesProvisioningState;
@@ -69,6 +93,8 @@ export interface ControllerProperties {
   /** Credentials of the target container host (base64). */
   targetContainerHostCredentialsBase64: string;
 }
+const ControllerProperties = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<ControllerProperties>;
+
 export interface CreateControllerResponse {
   /** Fully qualified resource Id for the resource. */
   id?: string;
@@ -83,6 +109,11 @@ export interface CreateControllerResponse {
   properties: ControllerProperties;
   sku: Sku;
 }
+const CreateControllerResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<CreateControllerResponse>;
+
 export interface DeleteControllerRequest {
   /** Azure subscription ID. */
   subscriptionId: string;
@@ -91,7 +122,17 @@ export interface DeleteControllerRequest {
   /** Name of the resource. */
   name: string;
 }
+const DeleteControllerRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<DeleteControllerRequest>;
+
 export interface DeleteControllerResponse {}
+const DeleteControllerResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<DeleteControllerResponse>;
+
 export interface GetContainerHostMappingContainerHostMappingRequest {
   /** Azure subscription ID. */
   subscriptionId: string;
@@ -102,6 +143,11 @@ export interface GetContainerHostMappingContainerHostMappingRequest {
   /** ARM ID of the Container Host resource */
   containerHostResourceId?: string;
 }
+const GetContainerHostMappingContainerHostMappingRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<GetContainerHostMappingContainerHostMappingRequest>;
+
 /** Container host mapping object specifying the Container host resource ID and its associated Controller resource. */
 export interface ContainerHostMapping {
   /** ARM ID of the Container Host resource */
@@ -109,6 +155,8 @@ export interface ContainerHostMapping {
   /** ARM ID of the mapped Controller resource */
   mappedControllerResourceId?: string;
 }
+const ContainerHostMapping = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<ContainerHostMapping>;
+
 export interface GetControllerRequest {
   /** Azure subscription ID. */
   subscriptionId: string;
@@ -117,6 +165,8 @@ export interface GetControllerRequest {
   /** Name of the resource. */
   name: string;
 }
+const GetControllerRequest = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<GetControllerRequest>;
+
 /** Tags for the Azure resource. */
 export type GetControllerResponseTagsMap = { [key: string]: string | undefined };
 export interface GetControllerResponse {
@@ -133,12 +183,19 @@ export interface GetControllerResponse {
   properties: ControllerProperties;
   sku: Sku;
 }
+const GetControllerResponse = CreateControllerResponse as any as S.Schema<GetControllerResponse>;
+
 export interface ListControllerByResourceGroupRequest {
   /** Azure subscription ID. */
   subscriptionId: string;
   /** Resource group to which the resource belongs. */
   resourceGroupName: string;
 }
+const ListControllerByResourceGroupRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<ListControllerByResourceGroupRequest>;
+
 /** Tags for the Azure resource. */
 export type ControllerTagsMap = { [key: string]: string | undefined };
 export interface Controller {
@@ -155,14 +212,23 @@ export interface Controller {
   properties: ControllerProperties;
   sku: Sku;
 }
+const Controller = CreateControllerResponse as any as S.Schema<Controller>;
+
 /** List of Azure Dev Spaces Controllers. */
 export type ControllerListValueList = Array<Controller>;
+const ControllerListValueList = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<ControllerListValueList>;
+
 export interface ControllerList {
   /** List of Azure Dev Spaces Controllers. */
   value?: ControllerListValueList;
   /** The URI that can be used to request the next page for list of Azure Dev Spaces Controllers. */
   nextLink?: string;
 }
+const ControllerList = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<ControllerList>;
+
 export interface ListControllerConnectionDetailsRequest {
   /** Azure subscription ID. */
   subscriptionId: string;
@@ -173,26 +239,61 @@ export interface ListControllerConnectionDetailsRequest {
   /** Resource ID of the target container host mapped to the Azure Dev Spaces Controller. */
   targetContainerHostResourceId: string;
 }
+const ListControllerConnectionDetailsRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<ListControllerConnectionDetailsRequest>;
+
 /** Base class for types that supply values used to connect to container orchestrators */
 export interface OrchestratorSpecificConnectionDetails {
   /** Gets the Instance type. */
   instanceType?: string;
 }
+const OrchestratorSpecificConnectionDetails = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<OrchestratorSpecificConnectionDetails>;
+
 export interface ControllerConnectionDetails {
   orchestratorSpecificConnectionDetails?: OrchestratorSpecificConnectionDetails;
 }
+const ControllerConnectionDetails = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<ControllerConnectionDetails>;
+
 /** List of Azure Dev Spaces Controller connection details. */
 export type ControllerConnectionDetailsListConnectionDetailsListList =
   Array<ControllerConnectionDetails>;
+const ControllerConnectionDetailsListConnectionDetailsListList = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<ControllerConnectionDetailsListConnectionDetailsListList>;
+
 export interface ControllerConnectionDetailsList {
   /** List of Azure Dev Spaces Controller connection details. */
   connectionDetailsList?: ControllerConnectionDetailsListConnectionDetailsListList;
 }
+const ControllerConnectionDetailsList = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<ControllerConnectionDetailsList>;
+
 export interface ListControllersRequest {
   /** Azure subscription ID. */
   subscriptionId: string;
 }
+const ListControllersRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<ListControllersRequest>;
+
 export interface ListOperationsRequest {}
+const ListOperationsRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<ListOperationsRequest>;
+
 export interface ResourceProviderOperationDisplay {
   /** Name of the resource provider. */
   provider?: string;
@@ -203,25 +304,53 @@ export interface ResourceProviderOperationDisplay {
   /** Description of the resource provider operation. */
   description?: string;
 }
+const ResourceProviderOperationDisplay = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<ResourceProviderOperationDisplay>;
+
 export interface ResourceProviderOperationDefinition {
   /** Resource provider operation name. */
   name?: string;
   display?: ResourceProviderOperationDisplay;
 }
+const ResourceProviderOperationDefinition = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<ResourceProviderOperationDefinition>;
+
 /** Resource provider operations list. */
 export type ResourceProviderOperationListValueList = Array<ResourceProviderOperationDefinition>;
+const ResourceProviderOperationListValueList = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<ResourceProviderOperationListValueList>;
+
 export interface ResourceProviderOperationList {
   /** Resource provider operations list. */
   value?: ResourceProviderOperationListValueList;
   /** The URI that can be used to request the next page for list of Azure operations. */
   nextLink?: string;
 }
+const ResourceProviderOperationList = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<ResourceProviderOperationList>;
+
 /** Tags for the Azure Dev Spaces Controller. */
 export type UpdateControllerRequestTagsMap = { [key: string]: string | undefined };
+const UpdateControllerRequestTagsMap =
+  CreateControllerRequestTagsMap as any as S.Schema<UpdateControllerRequestTagsMap>;
+
 export interface ControllerUpdateParametersProperties {
   /** Credentials of the target container host (base64). */
   targetContainerHostCredentialsBase64?: string;
 }
+const ControllerUpdateParametersProperties = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<ControllerUpdateParametersProperties>;
+
 export interface UpdateControllerRequest {
   /** Azure subscription ID. */
   subscriptionId: string;
@@ -233,6 +362,11 @@ export interface UpdateControllerRequest {
   tags?: UpdateControllerRequestTagsMap;
   properties?: ControllerUpdateParametersProperties;
 }
+const UpdateControllerRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<UpdateControllerRequest>;
+
 /** Tags for the Azure resource. */
 export type UpdateControllerResponseTagsMap = { [key: string]: string | undefined };
 export interface UpdateControllerResponse {
@@ -249,6 +383,9 @@ export interface UpdateControllerResponse {
   properties: ControllerProperties;
   sku: Sku;
 }
+const UpdateControllerResponse =
+  CreateControllerResponse as any as S.Schema<UpdateControllerResponse>;
+
 export type CreateControllerError = AzureOpError;
 /** Creates an Azure Dev Spaces Controller. Creates an Azure Dev Spaces Controller with the specified create parameters. */
 export const CreateController: API.OperationMethod<
@@ -257,8 +394,8 @@ export const CreateController: API.OperationMethod<
   CreateControllerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3) as any as S.Schema<CreateControllerRequest>,
-  output: __S(5) as any as S.Schema<CreateControllerResponse>,
+  input: CreateControllerRequest,
+  output: CreateControllerResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -272,8 +409,8 @@ export const DeleteController: API.OperationMethod<
   DeleteControllerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6) as any as S.Schema<DeleteControllerRequest>,
-  output: __S(7) as any as S.Schema<DeleteControllerResponse>,
+  input: DeleteControllerRequest,
+  output: DeleteControllerResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -287,8 +424,8 @@ export const GetContainerHostMappingContainerHostMapping: API.OperationMethod<
   GetContainerHostMappingContainerHostMappingError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8) as any as S.Schema<GetContainerHostMappingContainerHostMappingRequest>,
-  output: __S(9) as any as S.Schema<ContainerHostMapping>,
+  input: GetContainerHostMappingContainerHostMappingRequest,
+  output: ContainerHostMapping,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -302,8 +439,8 @@ export const GetController: API.OperationMethod<
   GetControllerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10) as any as S.Schema<GetControllerRequest>,
-  output: __S(5) as any as S.Schema<GetControllerResponse>,
+  input: GetControllerRequest,
+  output: GetControllerResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -317,8 +454,8 @@ export const ListControllerByResourceGroup: API.OperationMethod<
   ListControllerByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11) as any as S.Schema<ListControllerByResourceGroupRequest>,
-  output: __S(13) as any as S.Schema<ControllerList>,
+  input: ListControllerByResourceGroupRequest,
+  output: ControllerList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -332,8 +469,8 @@ export const ListControllerConnectionDetails: API.OperationMethod<
   ListControllerConnectionDetailsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14) as any as S.Schema<ListControllerConnectionDetailsRequest>,
-  output: __S(18) as any as S.Schema<ControllerConnectionDetailsList>,
+  input: ListControllerConnectionDetailsRequest,
+  output: ControllerConnectionDetailsList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -347,8 +484,8 @@ export const ListControllers: API.OperationMethod<
   ListControllersError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19) as any as S.Schema<ListControllersRequest>,
-  output: __S(13) as any as S.Schema<ControllerList>,
+  input: ListControllersRequest,
+  output: ControllerList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -362,8 +499,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20) as any as S.Schema<ListOperationsRequest>,
-  output: __S(24) as any as S.Schema<ResourceProviderOperationList>,
+  input: ListOperationsRequest,
+  output: ResourceProviderOperationList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -377,8 +514,8 @@ export const UpdateController: API.OperationMethod<
   UpdateControllerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26) as any as S.Schema<UpdateControllerRequest>,
-  output: __S(5) as any as S.Schema<UpdateControllerResponse>,
+  input: UpdateControllerRequest,
+  output: UpdateControllerResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -401,8 +538,8 @@ function __c0(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          name: S.String,
-          tier: S.optional(S.String),
+          name: SkuName,
+          tier: S.optional(SkuTier),
         }),
       ).annotate({ identifier: "Sku" });
     case 3:
@@ -411,10 +548,10 @@ function __c0(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
-          tags: S.optional(__S(0)),
+          tags: S.optional(CreateControllerRequestTagsMap),
           location: S.String,
-          properties: __S(1),
-          sku: __S(2),
+          properties: ControllerPropertiesInput,
+          sku: Sku,
         }).pipe(
           T.Http({
             method: "PUT",
@@ -427,7 +564,7 @@ function __c0(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          provisioningState: S.optional(S.String),
+          provisioningState: S.optional(ControllerPropertiesProvisioningState),
           hostSuffix: S.optional(S.String),
           dataPlaneFqdn: S.optional(S.String),
           targetContainerHostApiServerFqdn: S.optional(S.String),
@@ -441,10 +578,10 @@ function __c0(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          tags: S.optional(__S(0)),
+          tags: S.optional(CreateControllerResponseTagsMap),
           location: S.String,
-          properties: __S(4),
-          sku: __S(2),
+          properties: ControllerProperties,
+          sku: Sku,
         }),
       ).annotate({ identifier: "CreateControllerResponse" });
     case 6:
@@ -527,11 +664,11 @@ function __c1(j: number): any {
         identifier: "ListControllerByResourceGroupRequest",
       });
     case 4:
-      return S.Array(__S(5));
+      return S.Array(Controller);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(12)),
+          value: S.optional(ControllerListValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ControllerList" });
@@ -568,17 +705,19 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          orchestratorSpecificConnectionDetails: S.optional(__S(15)),
+          orchestratorSpecificConnectionDetails: S.optional(OrchestratorSpecificConnectionDetails),
         }),
       ).annotate({
         identifier: "ControllerConnectionDetails",
       });
     case 1:
-      return S.Array(__S(16));
+      return S.Array(ControllerConnectionDetails);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          connectionDetailsList: S.optional(__S(17)),
+          connectionDetailsList: S.optional(
+            ControllerConnectionDetailsListConnectionDetailsListList,
+          ),
         }),
       ).annotate({
         identifier: "ControllerConnectionDetailsList",
@@ -622,13 +761,13 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          display: S.optional(__S(21)),
+          display: S.optional(ResourceProviderOperationDisplay),
         }),
       ).annotate({
         identifier: "ResourceProviderOperationDefinition",
       });
     case 7:
-      return S.Array(__S(22));
+      return S.Array(ResourceProviderOperationDefinition);
   }
 }
 function __c3(j: number): any {
@@ -636,7 +775,7 @@ function __c3(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(23)),
+          value: S.optional(ResourceProviderOperationListValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -656,8 +795,8 @@ function __c3(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
-          tags: S.optional(__S(0)),
-          properties: S.optional(__S(25)),
+          tags: S.optional(UpdateControllerRequestTagsMap),
+          properties: S.optional(ControllerUpdateParametersProperties),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -667,22 +806,5 @@ function __c3(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateControllerRequest" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
   }
 }

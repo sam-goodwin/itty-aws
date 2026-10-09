@@ -7,8 +7,6 @@ import * as Redacted from "effect/Redacted";
 import { VercelProtocol, type VercelOpError, type VercelOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { VercelOpError, VercelOpContext };
 
@@ -69,6 +67,8 @@ export interface AssignAliasRequest {
   /** The redirect property will take precedence over the deployment id from the URL and consists of a hostname (like test.com) to which the alias should redirect using status code 307 */
   redirect?: string | null;
 }
+const AssignAliasRequest = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<AssignAliasRequest>;
+
 export interface AssignAliasResponse {
   /** The assigned alias name */
   alias: string;
@@ -79,6 +79,8 @@ export interface AssignAliasResponse {
   /** The unique identifier of the alias */
   uid: string;
 }
+const AssignAliasResponse = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<AssignAliasResponse>;
+
 export interface DeleteAliasRequest {
   /** The ID or alias that will be removed */
   aliasId: string;
@@ -87,10 +89,16 @@ export interface DeleteAliasRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
+const DeleteAliasRequest = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<DeleteAliasRequest>;
+
 export type DeleteAliasResponseStatus = "SUCCESS";
+const DeleteAliasResponseStatus = S.String;
+
 export interface DeleteAliasResponse {
   status: DeleteAliasResponseStatus;
 }
+const DeleteAliasResponse = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<DeleteAliasResponse>;
+
 export interface GetAliasRequest {
   /** The alias or alias ID to be retrieved */
   idOrAlias: string;
@@ -107,6 +115,8 @@ export interface GetAliasRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
+const GetAliasRequest = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<GetAliasRequest>;
+
 /** Information of the user who created the alias */
 export interface GetAliasResponseCreator {
   /** Email of the user who created the alias */
@@ -116,6 +126,11 @@ export interface GetAliasResponseCreator {
   /** Username of the user who created the alias */
   username?: string;
 }
+const GetAliasResponseCreator = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<GetAliasResponseCreator>;
+
 /** A map with the deployment ID, URL and metadata */
 export interface GetAliasResponseDeployment {
   /** The deployment unique identifier */
@@ -125,6 +140,11 @@ export interface GetAliasResponseDeployment {
   /** The deployment unique URL */
   url?: string;
 }
+const GetAliasResponseDeployment = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<GetAliasResponseDeployment>;
+
 /** A list of the deployment routing information for each project. */
 export interface GetAliasResponseMicrofrontendsApplicationsCase0Item {
   /** This is always set. In production it is used as a pointer to each apps production deployment. For pre-production, it's used as the fallback if there is no deployment for the branch. */
@@ -168,14 +188,27 @@ export type GetAliasResponseMicrofrontendsApplications =
   | GetAliasResponseMicrofrontendsApplicationsCase0List
   | GetAliasResponseMicrofrontendsApplicationsCase1List
   | GetAliasResponseMicrofrontendsApplicationsCase2List;
+const GetAliasResponseMicrofrontendsApplications =
+  S.Unknown as any as S.Schema<GetAliasResponseMicrofrontendsApplications>;
+
 export interface GetAliasResponseMicrofrontendsDefaultApp {
   projectId: string;
 }
+const GetAliasResponseMicrofrontendsDefaultApp = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<GetAliasResponseMicrofrontendsDefaultApp>;
+
 /** The microfrontends for the alias including the routing configuration */
 export interface GetAliasResponseMicrofrontends {
   applications: GetAliasResponseMicrofrontendsApplications;
   defaultApp: GetAliasResponseMicrofrontendsDefaultApp;
 }
+const GetAliasResponseMicrofrontends = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<GetAliasResponseMicrofrontends>;
+
 export type GetAliasResponseProtectionBypassValueCase0Scope = "shareable-link";
 /** The protection bypass for the alias */
 export interface GetAliasResponseProtectionBypassValueCase0 {
@@ -214,12 +247,22 @@ export type GetAliasResponseProtectionBypassValue =
   | GetAliasResponseProtectionBypassValueCase1
   | GetAliasResponseProtectionBypassValueCase2
   | GetAliasResponseProtectionBypassValueCase3;
+const GetAliasResponseProtectionBypassValue =
+  S.Unknown as any as S.Schema<GetAliasResponseProtectionBypassValue>;
+
 /** The protection bypass for the alias */
 export type GetAliasResponseProtectionBypassMap = {
   [key: string]: GetAliasResponseProtectionBypassValue | undefined;
 };
+const GetAliasResponseProtectionBypassMap = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<GetAliasResponseProtectionBypassMap>;
+
 /** Status code to be used on redirect */
 export type GetAliasResponseRedirectStatusCode = 301 | 302 | 307 | 308;
+const GetAliasResponseRedirectStatusCode = S.Number;
+
 export interface GetAliasResponse {
   /** The alias name, it could be a `.vercel.app` subdomain or a custom domain */
   alias: string;
@@ -250,9 +293,13 @@ export interface GetAliasResponse {
   /** The date when the alias was updated in milliseconds since the UNIX epoch */
   updatedAt?: number | null;
 }
+const GetAliasResponse = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<GetAliasResponse>;
+
 export type ListAliasesRequestDomainCase0List = Array<string>;
 /** Get only aliases of the given domain name */
 export type ListAliasesRequestDomain = ListAliasesRequestDomainCase0List | string;
+const ListAliasesRequestDomain = S.Unknown as any as S.Schema<ListAliasesRequestDomain>;
+
 export interface ListAliasesRequest {
   /** Get only aliases of the given domain name */
   domain?: ListAliasesRequestDomain;
@@ -273,6 +320,8 @@ export interface ListAliasesRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
+const ListAliasesRequest = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<ListAliasesRequest>;
+
 /** Information of the user who created the alias */
 export type ListAliasesResponseAliasesItemCreator = GetAliasResponseCreator;
 /** A map with the deployment ID, URL and metadata */
@@ -299,6 +348,9 @@ export type ListAliasesResponseAliasesItemMicrofrontendsApplications =
   | ListAliasesResponseAliasesItemMicrofrontendsApplicationsCase0List
   | ListAliasesResponseAliasesItemMicrofrontendsApplicationsCase1List
   | ListAliasesResponseAliasesItemMicrofrontendsApplicationsCase2List;
+const ListAliasesResponseAliasesItemMicrofrontendsApplications =
+  S.Unknown as any as S.Schema<ListAliasesResponseAliasesItemMicrofrontendsApplications>;
+
 export type ListAliasesResponseAliasesItemMicrofrontendsDefaultApp =
   GetAliasResponseMicrofrontendsDefaultApp;
 /** The microfrontends for the alias including the routing configuration */
@@ -306,6 +358,11 @@ export interface ListAliasesResponseAliasesItemMicrofrontends {
   applications: ListAliasesResponseAliasesItemMicrofrontendsApplications;
   defaultApp: GetAliasResponseMicrofrontendsDefaultApp;
 }
+const ListAliasesResponseAliasesItemMicrofrontends = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<ListAliasesResponseAliasesItemMicrofrontends>;
+
 export type ListAliasesResponseAliasesItemProtectionBypassValueCase0Scope = "shareable-link";
 /** The protection bypass for the alias */
 export interface ListAliasesResponseAliasesItemProtectionBypassValueCase0 {
@@ -347,12 +404,22 @@ export type ListAliasesResponseAliasesItemProtectionBypassValue =
   | ListAliasesResponseAliasesItemProtectionBypassValueCase1
   | ListAliasesResponseAliasesItemProtectionBypassValueCase2
   | ListAliasesResponseAliasesItemProtectionBypassValueCase3;
+const ListAliasesResponseAliasesItemProtectionBypassValue =
+  S.Unknown as any as S.Schema<ListAliasesResponseAliasesItemProtectionBypassValue>;
+
 /** The protection bypass for the alias */
 export type ListAliasesResponseAliasesItemProtectionBypassMap = {
   [key: string]: ListAliasesResponseAliasesItemProtectionBypassValue | undefined;
 };
+const ListAliasesResponseAliasesItemProtectionBypassMap = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<ListAliasesResponseAliasesItemProtectionBypassMap>;
+
 /** Status code to be used on redirect */
 export type ListAliasesResponseAliasesItemRedirectStatusCode = 301 | 302 | 307 | 308;
+const ListAliasesResponseAliasesItemRedirectStatusCode = S.Number;
+
 export interface ListAliasesResponseAliasesItem {
   /** The alias name, it could be a `.vercel.app` subdomain or a custom domain */
   alias: string;
@@ -383,7 +450,17 @@ export interface ListAliasesResponseAliasesItem {
   /** The date when the alias was updated in milliseconds since the UNIX epoch */
   updatedAt?: number;
 }
+const ListAliasesResponseAliasesItem = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<ListAliasesResponseAliasesItem>;
+
 export type ListAliasesResponseAliasesList = Array<ListAliasesResponseAliasesItem>;
+const ListAliasesResponseAliasesList = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<ListAliasesResponseAliasesList>;
+
 /** This object contains information related to the pagination of the current request, including the necessary parameters to get the next or previous page of data. */
 export interface Pagination {
   /** Amount of items in the current page. */
@@ -393,10 +470,14 @@ export interface Pagination {
   /** Timestamp that must be used to request the previous page. */
   prev: number | null;
 }
+const Pagination = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<Pagination>;
+
 export interface ListAliasesResponse {
   aliases: ListAliasesResponseAliasesList;
   pagination: Pagination;
 }
+const ListAliasesResponse = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<ListAliasesResponse>;
+
 export interface ListDeploymentAliasesRequest {
   /** The ID of the deployment the aliases should be listed for */
   id: string;
@@ -405,6 +486,11 @@ export interface ListDeploymentAliasesRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
+const ListDeploymentAliasesRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<ListDeploymentAliasesRequest>;
+
 export type ListDeploymentAliasesResponseAliasesItemProtectionBypassValueCase0Scope =
   "shareable-link";
 /** The protection bypass for the alias */
@@ -448,10 +534,18 @@ export type ListDeploymentAliasesResponseAliasesItemProtectionBypassValue =
   | ListDeploymentAliasesResponseAliasesItemProtectionBypassValueCase1
   | ListDeploymentAliasesResponseAliasesItemProtectionBypassValueCase2
   | ListDeploymentAliasesResponseAliasesItemProtectionBypassValueCase3;
+const ListDeploymentAliasesResponseAliasesItemProtectionBypassValue =
+  S.Unknown as any as S.Schema<ListDeploymentAliasesResponseAliasesItemProtectionBypassValue>;
+
 /** The protection bypass for the alias */
 export type ListDeploymentAliasesResponseAliasesItemProtectionBypassMap = {
   [key: string]: ListDeploymentAliasesResponseAliasesItemProtectionBypassValue | undefined;
 };
+const ListDeploymentAliasesResponseAliasesItemProtectionBypassMap = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<ListDeploymentAliasesResponseAliasesItemProtectionBypassMap>;
+
 /** A list of the aliases assigned to the deployment */
 export interface ListDeploymentAliasesResponseAliasesItem {
   /** The alias name, it could be a `.vercel.app` subdomain or a custom domain */
@@ -465,13 +559,28 @@ export interface ListDeploymentAliasesResponseAliasesItem {
   /** The unique identifier of the alias */
   uid: string;
 }
+const ListDeploymentAliasesResponseAliasesItem = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<ListDeploymentAliasesResponseAliasesItem>;
+
 /** A list of the aliases assigned to the deployment */
 export type ListDeploymentAliasesResponseAliasesList =
   Array<ListDeploymentAliasesResponseAliasesItem>;
+const ListDeploymentAliasesResponseAliasesList = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<ListDeploymentAliasesResponseAliasesList>;
+
 export interface ListDeploymentAliasesResponse {
   /** A list of the aliases assigned to the deployment */
   aliases: ListDeploymentAliasesResponseAliasesList;
 }
+const ListDeploymentAliasesResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<ListDeploymentAliasesResponse>;
+
 /** Optional instructions for revoking and regenerating a shareable link */
 export interface PatchUrlProtectionBypassRequestBodyCase0Revoke {
   /** Sharebale link to revoked */
@@ -513,6 +622,9 @@ export type PatchUrlProtectionBypassRequestBody =
   | PatchUrlProtectionBypassRequestBodyCase0
   | PatchUrlProtectionBypassRequestBodyCase1
   | PatchUrlProtectionBypassRequestBodyCase2;
+const PatchUrlProtectionBypassRequestBody =
+  S.Unknown as any as S.Schema<PatchUrlProtectionBypassRequestBody>;
+
 export interface PatchUrlProtectionBypassRequest {
   /** The alias or deployment ID */
   id: string;
@@ -522,8 +634,23 @@ export interface PatchUrlProtectionBypassRequest {
   slug?: string;
   body?: PatchUrlProtectionBypassRequestBody;
 }
+const PatchUrlProtectionBypassRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<PatchUrlProtectionBypassRequest>;
+
 export type PatchUrlProtectionBypassResponseBodyMap = { [key: string]: unknown | undefined };
+const PatchUrlProtectionBypassResponseBodyMap = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<PatchUrlProtectionBypassResponseBodyMap>;
+
 export type PatchUrlProtectionBypassResponse = PatchUrlProtectionBypassResponseBodyMap;
+const PatchUrlProtectionBypassResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<PatchUrlProtectionBypassResponse>;
+
 export type AssignAliasError =
   | BadRequest
   | PaymentRequired
@@ -538,8 +665,8 @@ export const assignAlias: API.OperationMethod<
   AssignAliasError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<AssignAliasRequest>,
-  output: __S(1) as any as S.Schema<AssignAliasResponse>,
+  input: AssignAliasRequest,
+  output: AssignAliasResponse,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound, Conflict],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -553,8 +680,8 @@ export const deleteAlias: API.OperationMethod<
   DeleteAliasError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2) as any as S.Schema<DeleteAliasRequest>,
-  output: __S(3) as any as S.Schema<DeleteAliasResponse>,
+  input: DeleteAliasRequest,
+  output: DeleteAliasResponse,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -568,8 +695,8 @@ export const getAlias: API.OperationMethod<
   GetAliasError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4) as any as S.Schema<GetAliasRequest>,
-  output: __S(10) as any as S.Schema<GetAliasResponse>,
+  input: GetAliasRequest,
+  output: GetAliasResponse,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -583,8 +710,8 @@ export const listAliases: API.OperationMethod<
   ListAliasesError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11) as any as S.Schema<ListAliasesRequest>,
-  output: __S(17) as any as S.Schema<ListAliasesResponse>,
+  input: ListAliasesRequest,
+  output: ListAliasesResponse,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -598,8 +725,8 @@ export const listDeploymentAliases: API.OperationMethod<
   ListDeploymentAliasesError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18) as any as S.Schema<ListDeploymentAliasesRequest>,
-  output: __S(22) as any as S.Schema<ListDeploymentAliasesResponse>,
+  input: ListDeploymentAliasesRequest,
+  output: ListDeploymentAliasesResponse,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -618,8 +745,8 @@ export const patchUrlProtectionBypass: API.OperationMethod<
   PatchUrlProtectionBypassError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23) as any as S.Schema<PatchUrlProtectionBypassRequest>,
-  output: __S(25) as any as S.Schema<PatchUrlProtectionBypassResponse>,
+  input: PatchUrlProtectionBypassRequest,
+  output: PatchUrlProtectionBypassResponse,
   errors: [BadRequest, Forbidden, NotFound, Conflict],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -658,7 +785,7 @@ function __c0(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          status: S.String,
+          status: DeleteAliasResponseStatus,
         }),
       ).annotate({ identifier: "DeleteAliasResponse" });
     case 4:
@@ -706,29 +833,29 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          applications: S.Unknown,
-          defaultApp: __S(7),
+          applications: GetAliasResponseMicrofrontendsApplications,
+          defaultApp: GetAliasResponseMicrofrontendsDefaultApp,
         }),
       ).annotate({
         identifier: "GetAliasResponseMicrofrontends",
       });
     case 1:
-      return S.Record(S.String, S.Unknown);
+      return S.Record(S.String, GetAliasResponseProtectionBypassValue);
     case 2:
       return S.suspend(() =>
         S.Struct({
           alias: S.String,
           created: S.String,
           createdAt: S.optional(S.NullOr(S.Number)),
-          creator: S.optional(__S(5)),
+          creator: S.optional(GetAliasResponseCreator),
           deletedAt: S.optional(S.NullOr(S.Number)),
-          deployment: S.optional(__S(6)),
+          deployment: S.optional(GetAliasResponseDeployment),
           deploymentId: S.NullOr(S.String),
-          microfrontends: S.optional(__S(8)),
+          microfrontends: S.optional(GetAliasResponseMicrofrontends),
           projectId: S.NullOr(S.String),
-          protectionBypass: S.optional(__S(9)),
+          protectionBypass: S.optional(GetAliasResponseProtectionBypassMap),
           redirect: S.optional(S.NullOr(S.String)),
-          redirectStatusCode: S.optional(S.NullOr(S.Number)),
+          redirectStatusCode: S.optional(S.NullOr(GetAliasResponseRedirectStatusCode)),
           uid: S.String,
           updatedAt: S.optional(S.NullOr(S.Number)),
         }),
@@ -736,7 +863,7 @@ function __c1(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          domain: S.optional(S.Unknown.pipe(T.Query())),
+          domain: S.optional(ListAliasesRequestDomain.pipe(T.Query())),
           from: S.optional(S.Number.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
           projectId: S.optional(S.String.pipe(T.Query())),
@@ -750,29 +877,31 @@ function __c1(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          applications: S.Unknown,
-          defaultApp: __S(7),
+          applications: ListAliasesResponseAliasesItemMicrofrontendsApplications,
+          defaultApp: GetAliasResponseMicrofrontendsDefaultApp,
         }),
       ).annotate({
         identifier: "ListAliasesResponseAliasesItemMicrofrontends",
       });
     case 5:
-      return S.Record(S.String, S.Unknown);
+      return S.Record(S.String, ListAliasesResponseAliasesItemProtectionBypassValue);
     case 6:
       return S.suspend(() =>
         S.Struct({
           alias: S.String,
           created: S.String,
           createdAt: S.optional(S.Number),
-          creator: S.optional(__S(5)),
+          creator: S.optional(GetAliasResponseCreator),
           deletedAt: S.optional(S.NullOr(S.Number)),
-          deployment: S.optional(__S(6)),
+          deployment: S.optional(GetAliasResponseDeployment),
           deploymentId: S.NullOr(S.String),
-          microfrontends: S.optional(__S(12)),
+          microfrontends: S.optional(ListAliasesResponseAliasesItemMicrofrontends),
           projectId: S.NullOr(S.String),
-          protectionBypass: S.optional(__S(13)),
+          protectionBypass: S.optional(ListAliasesResponseAliasesItemProtectionBypassMap),
           redirect: S.optional(S.NullOr(S.String)),
-          redirectStatusCode: S.optional(S.NullOr(S.Number)),
+          redirectStatusCode: S.optional(
+            S.NullOr(ListAliasesResponseAliasesItemRedirectStatusCode),
+          ),
           uid: S.String,
           updatedAt: S.optional(S.Number),
         }),
@@ -780,7 +909,7 @@ function __c1(j: number): any {
         identifier: "ListAliasesResponseAliasesItem",
       });
     case 7:
-      return S.Array(__S(14));
+      return S.Array(ListAliasesResponseAliasesItem);
   }
 }
 function __c2(j: number): any {
@@ -796,8 +925,8 @@ function __c2(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          aliases: __S(15),
-          pagination: __S(16),
+          aliases: ListAliasesResponseAliasesList,
+          pagination: Pagination,
         }),
       ).annotate({ identifier: "ListAliasesResponse" });
     case 2:
@@ -811,13 +940,13 @@ function __c2(j: number): any {
         identifier: "ListDeploymentAliasesRequest",
       });
     case 3:
-      return S.Record(S.String, S.Unknown);
+      return S.Record(S.String, ListDeploymentAliasesResponseAliasesItemProtectionBypassValue);
     case 4:
       return S.suspend(() =>
         S.Struct({
           alias: S.String,
           created: S.String,
-          protectionBypass: S.optional(__S(19)),
+          protectionBypass: S.optional(ListDeploymentAliasesResponseAliasesItemProtectionBypassMap),
           redirect: S.optional(S.NullOr(S.String)),
           uid: S.String,
         }),
@@ -825,11 +954,11 @@ function __c2(j: number): any {
         identifier: "ListDeploymentAliasesResponseAliasesItem",
       });
     case 5:
-      return S.Array(__S(20));
+      return S.Array(ListDeploymentAliasesResponseAliasesItem);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          aliases: __S(21),
+          aliases: ListDeploymentAliasesResponseAliasesList,
         }),
       ).annotate({
         identifier: "ListDeploymentAliasesResponse",
@@ -840,7 +969,7 @@ function __c2(j: number): any {
           id: S.String.pipe(T.Label()),
           teamId: S.optional(S.String.pipe(T.Query())),
           slug: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(S.Unknown.pipe(T.HttpBody())),
+          body: S.optional(PatchUrlProtectionBypassRequestBody.pipe(T.HttpBody())),
         }).pipe(T.Http({ method: "PATCH", uri: "/aliases/{id}/protection-bypass", code: 200 })),
       ).annotate({
         identifier: "PatchUrlProtectionBypassRequest",
@@ -852,25 +981,10 @@ function __c3(j: number): any {
     case 0:
       return S.Record(S.String, S.Unknown);
     case 1:
-      return S.suspend(() => __S(24).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        PatchUrlProtectionBypassResponseBodyMap.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "PatchUrlProtectionBypassResponse",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
   }
 }

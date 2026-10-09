@@ -7,8 +7,6 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -65,6 +63,8 @@ export class NotFound
   ) {}
 
 export type MemberRoleEnum = "ROLE_UNSPECIFIED" | "COHOST";
+const MemberRoleEnum = S.String;
+
 /** Users who are configured to have a role in the space. These users can join the space without knocking. */
 export interface Member {
   /** Email for the member. This is required for creating the member. */
@@ -74,6 +74,8 @@ export interface Member {
   /** The meeting role assigned to the member. */
   role?: MemberRoleEnum | (string & {});
 }
+const Member = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<Member>;
+
 /** Request to update a member. */
 export interface UpdateMemberRequest {
   /** Required. The Member to update. Format: spaces/{space}/members/{member} */
@@ -81,7 +83,14 @@ export interface UpdateMemberRequest {
   /** Optional. Field mask used to specify the fields to be updated in the member. If update_mask isn't provided(not set, set with empty paths, or only has "" as paths), it defaults to update all fields provided with values in the request. Using "*" as update_mask will update all fields, including deleting fields not set in the request. In case of BatchUpdate, it must be absent or the same as the update_mask in BatchUpdateMembersRequest when UpdateMemberRequest is built as a child request of BatchUpdateMembersRequest. */
   updateMask?: string;
 }
+const UpdateMemberRequest = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<UpdateMemberRequest>;
+
 export type UpdateMemberRequestList = Array<UpdateMemberRequest>;
+const UpdateMemberRequestList = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<UpdateMemberRequestList>;
+
 /** Request to update members of one space within a batch. */
 export interface BatchUpdateMembersRequest {
   /** Optional. Top-level field mask used to specify the fields to be updated in the member for all UpdateMemberRequests. There are 4 possible scenarios for top-level and child field mask: 1. top-level and child field mask is absent: All fields provided in the requests are updated, including deleting fields not set in the requests. 2. top-level field mask is present but child field mask is absent: The fields specified in the top-level field mask are updated. 3. top-level and child field mask is present: The child field mask must be the same as the top-level field mask. 4. top-level field mask is absent but child field mask is present: It isn't supported and will return an error. */
@@ -89,44 +98,75 @@ export interface BatchUpdateMembersRequest {
   /** Required. The request message specifying the resources to update. A maximum of 500 members can be modified in a batch. */
   requests?: UpdateMemberRequestList;
 }
+const BatchUpdateMembersRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<BatchUpdateMembersRequest>;
+
 export interface BatchUpdateSpacesMembersRequest {
   /** Required. The parent resource shared by all Members being updated. Format: spaces/{space} */
   parent: string;
   /** Request body */
   body?: BatchUpdateMembersRequest;
 }
+const BatchUpdateSpacesMembersRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<BatchUpdateSpacesMembersRequest>;
+
 export type MemberList = Array<Member>;
+const MemberList = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<MemberList>;
+
 /** Response of batch update members. */
 export interface BatchUpdateMembersResponse {
   /** Members updated. */
   members?: MemberList;
 }
+const BatchUpdateMembersResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<BatchUpdateMembersResponse>;
+
 export type SpaceConfigAccessTypeEnum =
   | "ACCESS_TYPE_UNSPECIFIED"
   | "OPEN"
   | "TRUSTED"
   | "RESTRICTED";
+const SpaceConfigAccessTypeEnum = S.String;
+
 export type SpaceConfigModerationEnum = "MODERATION_UNSPECIFIED" | "OFF" | "ON";
+const SpaceConfigModerationEnum = S.String;
+
 export type SpaceConfigEntryPointAccessEnum =
   | "ENTRY_POINT_ACCESS_UNSPECIFIED"
   | "ALL"
   | "CREATOR_APP_ONLY";
+const SpaceConfigEntryPointAccessEnum = S.String;
+
 export type ModerationRestrictionsChatRestrictionEnum =
   | "RESTRICTION_TYPE_UNSPECIFIED"
   | "HOSTS_ONLY"
   | "NO_RESTRICTION";
+const ModerationRestrictionsChatRestrictionEnum = S.String;
+
 export type ModerationRestrictionsDefaultJoinAsViewerTypeEnum =
   | "DEFAULT_JOIN_AS_VIEWER_TYPE_UNSPECIFIED"
   | "ON"
   | "OFF";
+const ModerationRestrictionsDefaultJoinAsViewerTypeEnum = S.String;
+
 export type ModerationRestrictionsPresentRestrictionEnum =
   | "RESTRICTION_TYPE_UNSPECIFIED"
   | "HOSTS_ONLY"
   | "NO_RESTRICTION";
+const ModerationRestrictionsPresentRestrictionEnum = S.String;
+
 export type ModerationRestrictionsReactionRestrictionEnum =
   | "RESTRICTION_TYPE_UNSPECIFIED"
   | "HOSTS_ONLY"
   | "NO_RESTRICTION";
+const ModerationRestrictionsReactionRestrictionEnum = S.String;
+
 /** Defines restrictions for features when the meeting is moderated. */
 export interface ModerationRestrictions {
   /** Defines who has permission to send chat messages in the meeting space. */
@@ -138,37 +178,56 @@ export interface ModerationRestrictions {
   /** Defines who has permission to send reactions in the meeting space. */
   reactionRestriction?: ModerationRestrictionsReactionRestrictionEnum | (string & {});
 }
+const ModerationRestrictions = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<ModerationRestrictions>;
+
 export type SpaceConfigAttendanceReportGenerationTypeEnum =
   | "ATTENDANCE_REPORT_GENERATION_TYPE_UNSPECIFIED"
   | "GENERATE_REPORT"
   | "DO_NOT_GENERATE";
+const SpaceConfigAttendanceReportGenerationTypeEnum = S.String;
+
 export type RecordingConfigAutoRecordingGenerationEnum =
   | "AUTO_GENERATION_TYPE_UNSPECIFIED"
   | "ON"
   | "OFF";
+const RecordingConfigAutoRecordingGenerationEnum = S.String;
+
 /** Configuration related to recording in a meeting space. */
 export interface RecordingConfig {
   /** Defines whether a meeting space is automatically recorded when someone with the privilege to record joins the meeting. */
   autoRecordingGeneration?: RecordingConfigAutoRecordingGenerationEnum | (string & {});
 }
+const RecordingConfig = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<RecordingConfig>;
+
 export type SmartNotesConfigAutoSmartNotesGenerationEnum =
   | "AUTO_GENERATION_TYPE_UNSPECIFIED"
   | "ON"
   | "OFF";
+const SmartNotesConfigAutoSmartNotesGenerationEnum = S.String;
+
 /** Configuration related to smart notes in a meeting space. For more information about smart notes, see ["Take notes for me" in Google Meet](https://support.google.com/meet/answer/14754931). */
 export interface SmartNotesConfig {
   /** Defines whether to automatically generate a summary and recap of the meeting for all invitees in the organization when someone with the privilege to enable smart notes joins the meeting. */
   autoSmartNotesGeneration?: SmartNotesConfigAutoSmartNotesGenerationEnum | (string & {});
 }
+const SmartNotesConfig = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<SmartNotesConfig>;
+
 export type TranscriptionConfigAutoTranscriptionGenerationEnum =
   | "AUTO_GENERATION_TYPE_UNSPECIFIED"
   | "ON"
   | "OFF";
+const TranscriptionConfigAutoTranscriptionGenerationEnum = S.String;
+
 /** Configuration related to transcription in a meeting space. */
 export interface TranscriptionConfig {
   /** Defines whether the content of a meeting is automatically transcribed when someone with the privilege to transcribe joins the meeting. */
   autoTranscriptionGeneration?: TranscriptionConfigAutoTranscriptionGenerationEnum | (string & {});
 }
+const TranscriptionConfig = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<TranscriptionConfig>;
+
 /** Configuration related to meeting artifacts potentially generated by this meeting space. */
 export interface ArtifactConfig {
   /** Configuration for recording. */
@@ -178,6 +237,8 @@ export interface ArtifactConfig {
   /** Configuration for auto-transcript. */
   transcriptionConfig?: TranscriptionConfig;
 }
+const ArtifactConfig = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<ArtifactConfig>;
+
 /** The configuration pertaining to a meeting space. */
 export interface SpaceConfig {
   /** Access type of the meeting space that determines who can join without knocking. Default: The user's default access settings. Controlled by the user's admin for enterprise users or RESTRICTED. */
@@ -193,11 +254,15 @@ export interface SpaceConfig {
   /** Configuration pertaining to the auto-generated artifacts that the meeting supports. */
   artifactConfig?: ArtifactConfig;
 }
+const SpaceConfig = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<SpaceConfig>;
+
 /** Active conference. */
 export interface ActiveConference {
   /** Output only. Reference to 'ConferenceRecord' resource. Format: `conferenceRecords/{conference_record}` where `{conference_record}` is a unique ID for each instance of a call within a space. */
   conferenceRecord?: string;
 }
+const ActiveConference = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<ActiveConference>;
+
 /** Details how to join the conference through a SIP gateway. */
 export interface GatewaySipAccess {
   /** The permanent numeric code for manual entry on specially configured devices. */
@@ -205,7 +270,11 @@ export interface GatewaySipAccess {
   /** The Session Initiation Protocol (SIP) URI the conference can be reached through. The string is in one of these formats: * "sip:USER_ID@GATEWAY_ADDRESS" * "sips:USER_ID@GATEWAY_ADDRESS" where USER_ID is the 13-digit universal pin (with the future option to support using a Meet meeting code as well), and GATEWAY_ADDRESS is a valid address to be resolved using a DNS SRV lookup, or a dotted quad. */
   uri?: string;
 }
+const GatewaySipAccess = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<GatewaySipAccess>;
+
 export type GatewaySipAccessList = Array<GatewaySipAccess>;
+const GatewaySipAccessList = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<GatewaySipAccessList>;
+
 /** Phone access contains information required to dial into a conference using a regional phone number and a PIN that is specific to that phone number. */
 export interface PhoneAccess {
   /** The BCP 47/LDML language code for the language associated with this phone access. To be parsed by the i18n LanguageCode utility. Examples: "es-419" for Latin American Spanish, "fr-CA" for Canadian French. */
@@ -217,7 +286,11 @@ export interface PhoneAccess {
   /** The CLDR/ISO 3166 region code for the country associated with this phone access. To be parsed by the i18n RegionCode utility. Example: "SE" for Sweden. */
   regionCode?: string;
 }
+const PhoneAccess = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<PhoneAccess>;
+
 export type PhoneAccessList = Array<PhoneAccess>;
+const PhoneAccessList = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<PhoneAccessList>;
+
 /** Virtual place where conferences are held. Only one active conference can be held in one space at any given time. */
 export interface Space {
   /** Configuration pertaining to the meeting space. */
@@ -235,34 +308,62 @@ export interface Space {
   /** Output only. All regional phone access methods for this meeting space. Can be empty. */
   phoneAccess?: PhoneAccessList;
 }
+const Space = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<Space>;
+
 export interface CreateSpacesRequest {
   /** Request body */
   body?: Space;
 }
+const CreateSpacesRequest = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<CreateSpacesRequest>;
+
 export interface CreateSpacesMembersRequest {
   /** Required. Format: spaces/{space} */
   parent: string;
   /** Request body */
   body?: Member;
 }
+const CreateSpacesMembersRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<CreateSpacesMembersRequest>;
+
 export interface DeleteSpacesMembersRequest {
   /** Required. Format: "spaces/{space}/members/{member}" */
   name: string;
 }
+const DeleteSpacesMembersRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<DeleteSpacesMembersRequest>;
+
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
+const Empty = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<Empty>;
+
 /** Request to end an ongoing conference of a space. */
 export interface EndActiveConferenceRequest {}
+const EndActiveConferenceRequest = Empty as any as S.Schema<EndActiveConferenceRequest>;
+
 export interface EndActiveConferenceSpacesRequest {
   /** Required. Resource name of the space. Format: `spaces/{space}`. `{space}` is the resource identifier for the space. It's a unique, server-generated ID and is case sensitive. For example, `jQCFfuBOdN5z`. For more information, see [How Meet identifies a meeting space](https://developers.google.com/workspace/meet/api/guides/meeting-spaces#identify-meeting-space). */
   name: string;
   /** Request body */
   body?: EndActiveConferenceRequest;
 }
+const EndActiveConferenceSpacesRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<EndActiveConferenceSpacesRequest>;
+
 export interface GetConferenceRecordsRequest {
   /** Required. Resource name of the conference. */
   name: string;
 }
+const GetConferenceRecordsRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<GetConferenceRecordsRequest>;
+
 /** Single instance of a meeting held in a space. */
 export interface ConferenceRecord {
   /** Identifier. Resource name of the conference record. Format: `conferenceRecords/{conference_record}` where `{conference_record}` is a unique ID for each instance of a call within a space. */
@@ -276,10 +377,17 @@ export interface ConferenceRecord {
   /** Output only. Timestamp when the conference started. Always set. */
   startTime?: string;
 }
+const ConferenceRecord = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<ConferenceRecord>;
+
 export interface GetConferenceRecordsParticipantsRequest {
   /** Required. Resource name of the participant. */
   name: string;
 }
+const GetConferenceRecordsParticipantsRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<GetConferenceRecordsParticipantsRequest>;
+
 /** A signed-in user can be: a) An individual joining from a personal computer, mobile device, or through companion mode. b) A robot account used by conference room devices. */
 export interface SignedinUser {
   /** Output only. Unique ID for the user. Interoperable with Admin SDK API and People API. Format: `users/{user}` */
@@ -287,16 +395,22 @@ export interface SignedinUser {
   /** Output only. For a personal device, it's the user's first name and last name. For a robot account, it's the administrator-specified device name. For example, "Altostrat Room". */
   displayName?: string;
 }
+const SignedinUser = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<SignedinUser>;
+
 /** User dialing in from a phone where the user's identity is unknown because they haven't signed in with a Google Account. */
 export interface PhoneUser {
   /** Output only. Partially redacted user's phone number when calling. */
   displayName?: string;
 }
+const PhoneUser = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<PhoneUser>;
+
 /** User who joins anonymously (meaning not signed into a Google Account). */
 export interface AnonymousUser {
   /** Output only. User provided name when they join a conference anonymously. */
   displayName?: string;
 }
+const AnonymousUser = PhoneUser as any as S.Schema<AnonymousUser>;
+
 /** User who attended or is attending a conference. */
 export interface Participant {
   /** Output only. Time when the participant first joined the meeting. */
@@ -312,10 +426,17 @@ export interface Participant {
   /** Output only. Time when the participant left the meeting for the last time. This can be null if it's an active meeting. */
   latestEndTime?: string;
 }
+const Participant = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<Participant>;
+
 export interface GetConferenceRecordsParticipantsParticipantSessionsRequest {
   /** Required. Resource name of the participant. */
   name: string;
 }
+const GetConferenceRecordsParticipantsParticipantSessionsRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<GetConferenceRecordsParticipantsParticipantSessionsRequest>;
+
 /** Refers to each unique join or leave session when a user joins a conference from a device. Note that any time a user joins the conference a new unique ID is assigned. That means if a user joins a space multiple times from the same device, they're assigned different IDs, and are also be treated as different participant sessions. */
 export interface ParticipantSession {
   /** Output only. Timestamp when the user session ends. Unset if the user session hasn't ended. */
@@ -325,10 +446,17 @@ export interface ParticipantSession {
   /** Output only. Timestamp when the user session starts. */
   startTime?: string;
 }
+const ParticipantSession = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<ParticipantSession>;
+
 export interface GetConferenceRecordsRecordingsRequest {
   /** Required. Resource name of the recording. */
   name: string;
 }
+const GetConferenceRecordsRecordingsRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<GetConferenceRecordsRecordingsRequest>;
+
 /** Export location where a recording file is saved in Google Drive. */
 export interface DriveDestination {
   /** Output only. Link used to play back the recording file in the browser. For example, `https://drive.google.com/file/d/{$fileId}/view`. */
@@ -336,7 +464,11 @@ export interface DriveDestination {
   /** Output only. The `fileId` for the underlying MP4 file. For example, "1kuceFZohVoCh6FulBHxwy6I15Ogpc4hP". Use `$ GET https://www.googleapis.com/drive/v3/files/{$fileId}?alt=media` to download the blob. For more information, see https://developers.google.com/drive/api/v3/reference/files/get. */
   file?: string;
 }
+const DriveDestination = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<DriveDestination>;
+
 export type RecordingStateEnum = "STATE_UNSPECIFIED" | "STARTED" | "ENDED" | "FILE_GENERATED";
+const RecordingStateEnum = S.String;
+
 /** Metadata about a recording created during a conference. */
 export interface Recording {
   /** Output only. Resource name of the recording. Format: `conferenceRecords/{conference_record}/recordings/{recording}` where `{recording}` is a 1:1 mapping to each unique recording session during the conference. */
@@ -350,11 +482,20 @@ export interface Recording {
   /** Output only. Timestamp when the recording started. */
   startTime?: string;
 }
+const Recording = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<Recording>;
+
 export interface GetConferenceRecordsSmartNotesRequest {
   /** Required. Resource name of the smart note. Format: conferenceRecords/{conference_record}/smartNotes/{smart_note} */
   name: string;
 }
+const GetConferenceRecordsSmartNotesRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<GetConferenceRecordsSmartNotesRequest>;
+
 export type SmartNoteStateEnum = "STATE_UNSPECIFIED" | "STARTED" | "ENDED" | "FILE_GENERATED";
+const SmartNoteStateEnum = S.String;
+
 /** Google Docs location where the transcript file is saved. */
 export interface DocsDestination {
   /** Output only. The document ID for the underlying Google Docs transcript file. For example, "1kuceFZohVoCh6FulBHxwy6I15Ogpc4hP". Use the `documents.get` method of the Google Docs API (https://developers.google.com/docs/api/reference/rest/v1/documents/get) to fetch the content. */
@@ -362,6 +503,8 @@ export interface DocsDestination {
   /** Output only. URI for the Google Docs transcript file. Use `https://docs.google.com/document/d/{$DocumentId}/view` to browse the transcript in the browser. */
   exportUri?: string;
 }
+const DocsDestination = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<DocsDestination>;
+
 /** Metadata for a smart note generated from a conference. It refers to the notes generated from Take Notes with Gemini during the conference. */
 export interface SmartNote {
   /** Output only. Timestamp when the smart notes stopped. */
@@ -375,11 +518,20 @@ export interface SmartNote {
   /** Output only. Timestamp when the smart notes started. */
   startTime?: string;
 }
+const SmartNote = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<SmartNote>;
+
 export interface GetConferenceRecordsTranscriptsRequest {
   /** Required. Resource name of the transcript. */
   name: string;
 }
+const GetConferenceRecordsTranscriptsRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<GetConferenceRecordsTranscriptsRequest>;
+
 export type TranscriptStateEnum = "STATE_UNSPECIFIED" | "STARTED" | "ENDED" | "FILE_GENERATED";
+const TranscriptStateEnum = S.String;
+
 /** Metadata for a transcript generated from a conference. It refers to the ASR (Automatic Speech Recognition) result of user's speech during the conference. */
 export interface Transcript {
   /** Output only. Timestamp when the transcript started. */
@@ -393,10 +545,17 @@ export interface Transcript {
   /** Output only. Current state. */
   state?: TranscriptStateEnum;
 }
+const Transcript = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<Transcript>;
+
 export interface GetConferenceRecordsTranscriptsEntriesRequest {
   /** Required. Resource name of the `TranscriptEntry`. */
   name: string;
 }
+const GetConferenceRecordsTranscriptsEntriesRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  0,
+) as any as S.Schema<GetConferenceRecordsTranscriptsEntriesRequest>;
+
 /** Single entry for one user's speech during a transcript session. */
 export interface TranscriptEntry {
   /** Output only. Refers to the participant who speaks. */
@@ -412,14 +571,23 @@ export interface TranscriptEntry {
   /** Output only. Timestamp when the transcript entry started. */
   startTime?: string;
 }
+const TranscriptEntry = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<TranscriptEntry>;
+
 export interface GetSpacesRequest {
   /** Required. Resource name of the space. Format: `spaces/{space}` or `spaces/{meetingCode}`. `{space}` is the resource identifier for the space. It's a unique, server-generated ID and is case sensitive. For example, `jQCFfuBOdN5z`. `{meetingCode}` is an alias for the space. It's a typeable, unique character string and is non-case sensitive. For example, `abc-mnop-xyz`. The maximum length is 128 characters. A `meetingCode` shouldn't be stored long term as it can become dissociated from a meeting space and can be reused for different meeting spaces in the future. Generally, a `meetingCode` expires 365 days after last use. For more information, see [Learn about meeting codes in Google Meet](https://support.google.com/meet/answer/10710509). For more information, see [How Meet identifies a meeting space](https://developers.google.com/workspace/meet/api/guides/meeting-spaces#identify-meeting-space). */
   name: string;
 }
+const GetSpacesRequest = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<GetSpacesRequest>;
+
 export interface GetSpacesMembersRequest {
   /** Required. Format: "spaces/{space}/members/{member}" */
   name: string;
 }
+const GetSpacesMembersRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<GetSpacesMembersRequest>;
+
 export interface ListConferenceRecordsRequest {
   /** Optional. Maximum number of conference records to return. The service might return fewer than this value. If unspecified, at most 25 conference records are returned. The maximum value is 100; values above 100 are coerced to 100. Maximum might change in the future. */
   pageSize?: number;
@@ -428,7 +596,14 @@ export interface ListConferenceRecordsRequest {
   /** Optional. User specified filtering condition in [EBNF format](https://en.wikipedia.org/wiki/Extended_Backus%E2%80%93Naur_form). The following are the filterable fields: * `space.meeting_code` * `space.name` * `start_time` * `end_time` For example, consider the following filters: * `space.name = "spaces/NAME"` * `space.meeting_code = "abc-mnop-xyz"` * `start_time>="2024-01-01T00:00:00.000Z" AND start_time<="2024-01-02T00:00:00.000Z"` * `end_time IS NULL` */
   filter?: string;
 }
+const ListConferenceRecordsRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  4,
+) as any as S.Schema<ListConferenceRecordsRequest>;
+
 export type ConferenceRecordList = Array<ConferenceRecord>;
+const ConferenceRecordList = /*@__PURE__*/ __L.at(__c5, 5) as any as S.Schema<ConferenceRecordList>;
+
 /** Response of ListConferenceRecords method. */
 export interface ListConferenceRecordsResponse {
   /** List of conferences in one page. */
@@ -436,6 +611,11 @@ export interface ListConferenceRecordsResponse {
   /** Token to be circulated back for further List call if current List does NOT include all the Conferences. Unset if all conferences have been returned. */
   nextPageToken?: string;
 }
+const ListConferenceRecordsResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  6,
+) as any as S.Schema<ListConferenceRecordsResponse>;
+
 export interface ListConferenceRecordsParticipantsRequest {
   /** Optional. User specified filtering condition in [EBNF format](https://en.wikipedia.org/wiki/Extended_Backus%E2%80%93Naur_form). The following are the filterable fields: * `earliest_start_time` * `latest_end_time` For example, `latest_end_time IS NULL` returns active participants in the conference. */
   filter?: string;
@@ -446,7 +626,14 @@ export interface ListConferenceRecordsParticipantsRequest {
   /** Required. Format: `conferenceRecords/{conference_record}` */
   parent: string;
 }
+const ListConferenceRecordsParticipantsRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  7,
+) as any as S.Schema<ListConferenceRecordsParticipantsRequest>;
+
 export type ParticipantList = Array<Participant>;
+const ParticipantList = /*@__PURE__*/ __L.at(__c6, 0) as any as S.Schema<ParticipantList>;
+
 /** Response of ListParticipants method. */
 export interface ListParticipantsResponse {
   /** Token to be circulated back for further List call if current List doesn't include all the participants. Unset if all participants are returned. */
@@ -456,6 +643,11 @@ export interface ListParticipantsResponse {
   /** Total, exact number of `participants`. By default, this field isn't included in the response. Set the field mask in [SystemParameterContext](https://cloud.google.com/apis/docs/system-parameters) to receive this field in the response. */
   totalSize?: number;
 }
+const ListParticipantsResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  1,
+) as any as S.Schema<ListParticipantsResponse>;
+
 export interface ListConferenceRecordsParticipantsParticipantSessionsRequest {
   /** Required. Format: `conferenceRecords/{conference_record}/participants/{participant}` */
   parent: string;
@@ -466,7 +658,17 @@ export interface ListConferenceRecordsParticipantsParticipantSessionsRequest {
   /** Optional. User specified filtering condition in [EBNF format](https://en.wikipedia.org/wiki/Extended_Backus%E2%80%93Naur_form). The following are the filterable fields: * `start_time` * `end_time` For example, `end_time IS NULL` returns active participant sessions in the conference record. */
   filter?: string;
 }
+const ListConferenceRecordsParticipantsParticipantSessionsRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  2,
+) as any as S.Schema<ListConferenceRecordsParticipantsParticipantSessionsRequest>;
+
 export type ParticipantSessionList = Array<ParticipantSession>;
+const ParticipantSessionList = /*@__PURE__*/ __L.at(
+  __c6,
+  3,
+) as any as S.Schema<ParticipantSessionList>;
+
 /** Response of ListParticipants method. */
 export interface ListParticipantSessionsResponse {
   /** List of participants in one page. */
@@ -474,6 +676,11 @@ export interface ListParticipantSessionsResponse {
   /** Token to be circulated back for further List call if current List doesn't include all the participants. Unset if all participants are returned. */
   nextPageToken?: string;
 }
+const ListParticipantSessionsResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  4,
+) as any as S.Schema<ListParticipantSessionsResponse>;
+
 export interface ListConferenceRecordsRecordingsRequest {
   /** Page token returned from previous List Call. */
   pageToken?: string;
@@ -482,7 +689,14 @@ export interface ListConferenceRecordsRecordingsRequest {
   /** Maximum number of recordings to return. The service might return fewer than this value. If unspecified, at most 10 recordings are returned. The maximum value is 100; values above 100 are coerced to 100. Maximum might change in the future. */
   pageSize?: number;
 }
+const ListConferenceRecordsRecordingsRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  5,
+) as any as S.Schema<ListConferenceRecordsRecordingsRequest>;
+
 export type RecordingList = Array<Recording>;
+const RecordingList = /*@__PURE__*/ __L.at(__c6, 6) as any as S.Schema<RecordingList>;
+
 /** Response for ListRecordings method. */
 export interface ListRecordingsResponse {
   /** List of recordings in one page. */
@@ -490,6 +704,11 @@ export interface ListRecordingsResponse {
   /** Token to be circulated back for further List call if current List doesn't include all the recordings. Unset if all recordings are returned. */
   nextPageToken?: string;
 }
+const ListRecordingsResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  7,
+) as any as S.Schema<ListRecordingsResponse>;
+
 export interface ListConferenceRecordsSmartNotesRequest {
   /** Required. Format: `conferenceRecords/{conference_record}` */
   parent: string;
@@ -498,7 +717,14 @@ export interface ListConferenceRecordsSmartNotesRequest {
   /** Optional. Maximum number of smart notes to return. The service might return fewer than this value. If unspecified, at most 10 smart notes are returned. The maximum value is 100; values above 100 are coerced to 100. Maximum might change in the future. */
   pageSize?: number;
 }
+const ListConferenceRecordsSmartNotesRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  0,
+) as any as S.Schema<ListConferenceRecordsSmartNotesRequest>;
+
 export type SmartNoteList = Array<SmartNote>;
+const SmartNoteList = /*@__PURE__*/ __L.at(__c7, 1) as any as S.Schema<SmartNoteList>;
+
 /** Response for ListSmartNotes method. */
 export interface ListSmartNotesResponse {
   /** Token to be circulated back for further List call if current List doesn't include all the smart notes. Unset if all smart notes are returned. */
@@ -506,6 +732,11 @@ export interface ListSmartNotesResponse {
   /** List of smart notes in one page. */
   smartNotes?: SmartNoteList;
 }
+const ListSmartNotesResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  2,
+) as any as S.Schema<ListSmartNotesResponse>;
+
 export interface ListConferenceRecordsTranscriptsRequest {
   /** Maximum number of transcripts to return. The service might return fewer than this value. If unspecified, at most 10 transcripts are returned. The maximum value is 100; values above 100 are coerced to 100. Maximum might change in the future. */
   pageSize?: number;
@@ -514,7 +745,14 @@ export interface ListConferenceRecordsTranscriptsRequest {
   /** Page token returned from previous List Call. */
   pageToken?: string;
 }
+const ListConferenceRecordsTranscriptsRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  3,
+) as any as S.Schema<ListConferenceRecordsTranscriptsRequest>;
+
 export type TranscriptList = Array<Transcript>;
+const TranscriptList = /*@__PURE__*/ __L.at(__c7, 4) as any as S.Schema<TranscriptList>;
+
 /** Response for ListTranscripts method. */
 export interface ListTranscriptsResponse {
   /** Token to be circulated back for further List call if current List doesn't include all the transcripts. Unset if all transcripts are returned. */
@@ -522,6 +760,11 @@ export interface ListTranscriptsResponse {
   /** List of transcripts in one page. */
   transcripts?: TranscriptList;
 }
+const ListTranscriptsResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  5,
+) as any as S.Schema<ListTranscriptsResponse>;
+
 export interface ListConferenceRecordsTranscriptsEntriesRequest {
   /** Page token returned from previous List Call. */
   pageToken?: string;
@@ -530,7 +773,14 @@ export interface ListConferenceRecordsTranscriptsEntriesRequest {
   /** Required. Format: `conferenceRecords/{conference_record}/transcripts/{transcript}` */
   parent: string;
 }
+const ListConferenceRecordsTranscriptsEntriesRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  6,
+) as any as S.Schema<ListConferenceRecordsTranscriptsEntriesRequest>;
+
 export type TranscriptEntryList = Array<TranscriptEntry>;
+const TranscriptEntryList = /*@__PURE__*/ __L.at(__c7, 7) as any as S.Schema<TranscriptEntryList>;
+
 /** Response for ListTranscriptEntries method. */
 export interface ListTranscriptEntriesResponse {
   /** List of TranscriptEntries in one page. */
@@ -538,6 +788,11 @@ export interface ListTranscriptEntriesResponse {
   /** Token to be circulated back for further List call if current List doesn't include all the transcript entries. Unset if all entries are returned. */
   nextPageToken?: string;
 }
+const ListTranscriptEntriesResponse = /*@__PURE__*/ __L.at(
+  __c8,
+  0,
+) as any as S.Schema<ListTranscriptEntriesResponse>;
+
 export interface ListSpacesMembersRequest {
   /** Optional. Page token returned from previous List Call. */
   pageToken?: string;
@@ -546,6 +801,11 @@ export interface ListSpacesMembersRequest {
   /** Required. Format: spaces/{space} */
   parent: string;
 }
+const ListSpacesMembersRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  1,
+) as any as S.Schema<ListSpacesMembersRequest>;
+
 /** Response of list members. */
 export interface ListMembersResponse {
   /** The list of members for the current page. */
@@ -553,6 +813,8 @@ export interface ListMembersResponse {
   /** Token to be circulated back for further list call if current list doesn't include all the members. Unset if all members are returned. */
   nextPageToken?: string;
 }
+const ListMembersResponse = /*@__PURE__*/ __L.at(__c8, 2) as any as S.Schema<ListMembersResponse>;
+
 export interface PatchSpacesRequest {
   /** Immutable. Resource name of the space. Format: `spaces/{space}`. `{space}` is the resource identifier for the space. It's a unique, server-generated ID and is case sensitive. For example, `jQCFfuBOdN5z`. For more information, see [How Meet identifies a meeting space](https://developers.google.com/workspace/meet/api/guides/meeting-spaces#identify-meeting-space). */
   name: string;
@@ -561,6 +823,8 @@ export interface PatchSpacesRequest {
   /** Request body */
   body?: Space;
 }
+const PatchSpacesRequest = /*@__PURE__*/ __L.at(__c8, 3) as any as S.Schema<PatchSpacesRequest>;
+
 export interface PatchSpacesMembersRequest {
   /** Optional. Field mask used to specify the fields to be updated in the member. If update_mask isn't provided(not set, set with empty paths, or only has "" as paths), it defaults to update all fields provided with values in the request. Using "*" as update_mask will update all fields, including deleting fields not set in the request. In case of BatchUpdate, it must be absent or the same as the update_mask in BatchUpdateMembersRequest when UpdateMemberRequest is built as a child request of BatchUpdateMembersRequest. */
   updateMask?: string;
@@ -569,6 +833,11 @@ export interface PatchSpacesMembersRequest {
   /** Request body */
   body?: Member;
 }
+const PatchSpacesMembersRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  4,
+) as any as S.Schema<PatchSpacesMembersRequest>;
+
 export type BatchUpdateSpacesMembersError =
   | NotFound
   | Forbidden
@@ -582,8 +851,8 @@ export const batchUpdateSpacesMembers: API.OperationMethod<
   BatchUpdateSpacesMembersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4) as any as S.Schema<BatchUpdateSpacesMembersRequest>,
-  output: __S(6) as any as S.Schema<BatchUpdateMembersResponse>,
+  input: BatchUpdateSpacesMembersRequest,
+  output: BatchUpdateMembersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -597,8 +866,8 @@ export const createSpaces: API.OperationMethod<
   CreateSpacesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19) as any as S.Schema<CreateSpacesRequest>,
-  output: __S(18) as any as S.Schema<Space>,
+  input: CreateSpacesRequest,
+  output: Space,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -612,8 +881,8 @@ export const createSpacesMembers: API.OperationMethod<
   CreateSpacesMembersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20) as any as S.Schema<CreateSpacesMembersRequest>,
-  output: __S(0) as any as S.Schema<Member>,
+  input: CreateSpacesMembersRequest,
+  output: Member,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -627,8 +896,8 @@ export const deleteSpacesMembers: API.OperationMethod<
   DeleteSpacesMembersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21) as any as S.Schema<DeleteSpacesMembersRequest>,
-  output: __S(22) as any as S.Schema<Empty>,
+  input: DeleteSpacesMembersRequest,
+  output: Empty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -647,8 +916,8 @@ export const endActiveConferenceSpaces: API.OperationMethod<
   EndActiveConferenceSpacesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23) as any as S.Schema<EndActiveConferenceSpacesRequest>,
-  output: __S(22) as any as S.Schema<Empty>,
+  input: EndActiveConferenceSpacesRequest,
+  output: Empty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -662,8 +931,8 @@ export const getConferenceRecords: API.OperationMethod<
   GetConferenceRecordsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24) as any as S.Schema<GetConferenceRecordsRequest>,
-  output: __S(25) as any as S.Schema<ConferenceRecord>,
+  input: GetConferenceRecordsRequest,
+  output: ConferenceRecord,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -677,8 +946,8 @@ export const getConferenceRecordsParticipants: API.OperationMethod<
   GetConferenceRecordsParticipantsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26) as any as S.Schema<GetConferenceRecordsParticipantsRequest>,
-  output: __S(29) as any as S.Schema<Participant>,
+  input: GetConferenceRecordsParticipantsRequest,
+  output: Participant,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -695,8 +964,8 @@ export const getConferenceRecordsParticipantsParticipantSessions: API.OperationM
   GetConferenceRecordsParticipantsParticipantSessionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30) as any as S.Schema<GetConferenceRecordsParticipantsParticipantSessionsRequest>,
-  output: __S(31) as any as S.Schema<ParticipantSession>,
+  input: GetConferenceRecordsParticipantsParticipantSessionsRequest,
+  output: ParticipantSession,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -710,8 +979,8 @@ export const getConferenceRecordsRecordings: API.OperationMethod<
   GetConferenceRecordsRecordingsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32) as any as S.Schema<GetConferenceRecordsRecordingsRequest>,
-  output: __S(34) as any as S.Schema<Recording>,
+  input: GetConferenceRecordsRecordingsRequest,
+  output: Recording,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -725,8 +994,8 @@ export const getConferenceRecordsSmartNotes: API.OperationMethod<
   GetConferenceRecordsSmartNotesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35) as any as S.Schema<GetConferenceRecordsSmartNotesRequest>,
-  output: __S(37) as any as S.Schema<SmartNote>,
+  input: GetConferenceRecordsSmartNotesRequest,
+  output: SmartNote,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -740,8 +1009,8 @@ export const getConferenceRecordsTranscripts: API.OperationMethod<
   GetConferenceRecordsTranscriptsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38) as any as S.Schema<GetConferenceRecordsTranscriptsRequest>,
-  output: __S(39) as any as S.Schema<Transcript>,
+  input: GetConferenceRecordsTranscriptsRequest,
+  output: Transcript,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -755,8 +1024,8 @@ export const getConferenceRecordsTranscriptsEntries: API.OperationMethod<
   GetConferenceRecordsTranscriptsEntriesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40) as any as S.Schema<GetConferenceRecordsTranscriptsEntriesRequest>,
-  output: __S(41) as any as S.Schema<TranscriptEntry>,
+  input: GetConferenceRecordsTranscriptsEntriesRequest,
+  output: TranscriptEntry,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -766,8 +1035,8 @@ export type GetSpacesError = NotFound | Forbidden | GcpOpError;
 /** Gets details about a meeting space. For more information, see [Manage meeting spaces](https://developers.google.com/workspace/meet/api/guides/manage-meeting-spaces). For an example, see [Get a meeting space](https://developers.google.com/workspace/meet/api/guides/meeting-spaces#get-meeting-space). */
 export const getSpaces: API.OperationMethod<GetSpacesRequest, Space, GetSpacesError, GcpOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(42) as any as S.Schema<GetSpacesRequest>,
-    output: __S(18) as any as S.Schema<Space>,
+    input: GetSpacesRequest,
+    output: Space,
     errors: [NotFound, Forbidden, UnknownGCPError],
     protocol: GcpProtocol,
     retry: Retry.Retry,
@@ -781,8 +1050,8 @@ export const getSpacesMembers: API.OperationMethod<
   GetSpacesMembersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43) as any as S.Schema<GetSpacesMembersRequest>,
-  output: __S(0) as any as S.Schema<Member>,
+  input: GetSpacesMembersRequest,
+  output: Member,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -797,8 +1066,8 @@ export const listConferenceRecords: API.PaginatedOperationMethod<
   GcpOpContext,
   ListConferenceRecordsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(44) as any as S.Schema<ListConferenceRecordsRequest>,
-  output: __S(46) as any as S.Schema<ListConferenceRecordsResponse>,
+  input: ListConferenceRecordsRequest,
+  output: ListConferenceRecordsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -814,8 +1083,8 @@ export const listConferenceRecordsParticipants: API.PaginatedOperationMethod<
   GcpOpContext,
   ListParticipantsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(47) as any as S.Schema<ListConferenceRecordsParticipantsRequest>,
-  output: __S(49) as any as S.Schema<ListParticipantsResponse>,
+  input: ListConferenceRecordsParticipantsRequest,
+  output: ListParticipantsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -834,8 +1103,8 @@ export const listConferenceRecordsParticipantsParticipantSessions: API.Paginated
   GcpOpContext,
   ListParticipantSessionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(50) as any as S.Schema<ListConferenceRecordsParticipantsParticipantSessionsRequest>,
-  output: __S(52) as any as S.Schema<ListParticipantSessionsResponse>,
+  input: ListConferenceRecordsParticipantsParticipantSessionsRequest,
+  output: ListParticipantSessionsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -851,8 +1120,8 @@ export const listConferenceRecordsRecordings: API.PaginatedOperationMethod<
   GcpOpContext,
   ListRecordingsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(53) as any as S.Schema<ListConferenceRecordsRecordingsRequest>,
-  output: __S(55) as any as S.Schema<ListRecordingsResponse>,
+  input: ListConferenceRecordsRecordingsRequest,
+  output: ListRecordingsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -868,8 +1137,8 @@ export const listConferenceRecordsSmartNotes: API.PaginatedOperationMethod<
   GcpOpContext,
   ListSmartNotesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(56) as any as S.Schema<ListConferenceRecordsSmartNotesRequest>,
-  output: __S(58) as any as S.Schema<ListSmartNotesResponse>,
+  input: ListConferenceRecordsSmartNotesRequest,
+  output: ListSmartNotesResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -885,8 +1154,8 @@ export const listConferenceRecordsTranscripts: API.PaginatedOperationMethod<
   GcpOpContext,
   ListTranscriptsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(59) as any as S.Schema<ListConferenceRecordsTranscriptsRequest>,
-  output: __S(61) as any as S.Schema<ListTranscriptsResponse>,
+  input: ListConferenceRecordsTranscriptsRequest,
+  output: ListTranscriptsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -902,8 +1171,8 @@ export const listConferenceRecordsTranscriptsEntries: API.PaginatedOperationMeth
   GcpOpContext,
   ListTranscriptEntriesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(62) as any as S.Schema<ListConferenceRecordsTranscriptsEntriesRequest>,
-  output: __S(64) as any as S.Schema<ListTranscriptEntriesResponse>,
+  input: ListConferenceRecordsTranscriptsEntriesRequest,
+  output: ListTranscriptEntriesResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -919,8 +1188,8 @@ export const listSpacesMembers: API.PaginatedOperationMethod<
   GcpOpContext,
   ListMembersResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(65) as any as S.Schema<ListSpacesMembersRequest>,
-  output: __S(66) as any as S.Schema<ListMembersResponse>,
+  input: ListSpacesMembersRequest,
+  output: ListMembersResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -935,8 +1204,8 @@ export const patchSpaces: API.OperationMethod<
   PatchSpacesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(67) as any as S.Schema<PatchSpacesRequest>,
-  output: __S(18) as any as S.Schema<Space>,
+  input: PatchSpacesRequest,
+  output: Space,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -950,8 +1219,8 @@ export const patchSpacesMembers: API.OperationMethod<
   PatchSpacesMembersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(68) as any as S.Schema<PatchSpacesMembersRequest>,
-  output: __S(0) as any as S.Schema<Member>,
+  input: PatchSpacesMembersRequest,
+  output: Member,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -965,23 +1234,23 @@ function __c0(j: number): any {
         S.Struct({
           email: S.optional(S.String),
           name: S.optional(S.String),
-          role: S.optional(S.String),
+          role: S.optional(MemberRoleEnum),
         }),
       ).annotate({ identifier: "Member" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          member: S.optional(__S(0)),
+          member: S.optional(Member),
           updateMask: S.optional(S.String),
         }),
       ).annotate({ identifier: "UpdateMemberRequest" });
     case 2:
-      return S.Array(__S(1));
+      return S.Array(UpdateMemberRequest);
     case 3:
       return S.suspend(() =>
         S.Struct({
           updateMask: S.optional(S.String),
-          requests: S.optional(__S(2)),
+          requests: S.optional(UpdateMemberRequestList),
         }),
       ).annotate({
         identifier: "BatchUpdateMembersRequest",
@@ -990,7 +1259,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(3).pipe(T.HttpBody())),
+          body: S.optional(BatchUpdateMembersRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1002,11 +1271,11 @@ function __c0(j: number): any {
         identifier: "BatchUpdateSpacesMembersRequest",
       });
     case 5:
-      return S.Array(__S(0));
+      return S.Array(Member);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          members: S.optional(__S(5)),
+          members: S.optional(MemberList),
         }),
       ).annotate({
         identifier: "BatchUpdateMembersResponse",
@@ -1014,10 +1283,10 @@ function __c0(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          chatRestriction: S.optional(S.String),
-          defaultJoinAsViewerType: S.optional(S.String),
-          presentRestriction: S.optional(S.String),
-          reactionRestriction: S.optional(S.String),
+          chatRestriction: S.optional(ModerationRestrictionsChatRestrictionEnum),
+          defaultJoinAsViewerType: S.optional(ModerationRestrictionsDefaultJoinAsViewerTypeEnum),
+          presentRestriction: S.optional(ModerationRestrictionsPresentRestrictionEnum),
+          reactionRestriction: S.optional(ModerationRestrictionsReactionRestrictionEnum),
         }),
       ).annotate({ identifier: "ModerationRestrictions" });
   }
@@ -1027,38 +1296,40 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          autoRecordingGeneration: S.optional(S.String),
+          autoRecordingGeneration: S.optional(RecordingConfigAutoRecordingGenerationEnum),
         }),
       ).annotate({ identifier: "RecordingConfig" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          autoSmartNotesGeneration: S.optional(S.String),
+          autoSmartNotesGeneration: S.optional(SmartNotesConfigAutoSmartNotesGenerationEnum),
         }),
       ).annotate({ identifier: "SmartNotesConfig" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          autoTranscriptionGeneration: S.optional(S.String),
+          autoTranscriptionGeneration: S.optional(
+            TranscriptionConfigAutoTranscriptionGenerationEnum,
+          ),
         }),
       ).annotate({ identifier: "TranscriptionConfig" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          recordingConfig: S.optional(__S(8)),
-          smartNotesConfig: S.optional(__S(9)),
-          transcriptionConfig: S.optional(__S(10)),
+          recordingConfig: S.optional(RecordingConfig),
+          smartNotesConfig: S.optional(SmartNotesConfig),
+          transcriptionConfig: S.optional(TranscriptionConfig),
         }),
       ).annotate({ identifier: "ArtifactConfig" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          accessType: S.optional(S.String),
-          moderation: S.optional(S.String),
-          entryPointAccess: S.optional(S.String),
-          moderationRestrictions: S.optional(__S(7)),
-          attendanceReportGenerationType: S.optional(S.String),
-          artifactConfig: S.optional(__S(11)),
+          accessType: S.optional(SpaceConfigAccessTypeEnum),
+          moderation: S.optional(SpaceConfigModerationEnum),
+          entryPointAccess: S.optional(SpaceConfigEntryPointAccessEnum),
+          moderationRestrictions: S.optional(ModerationRestrictions),
+          attendanceReportGenerationType: S.optional(SpaceConfigAttendanceReportGenerationTypeEnum),
+          artifactConfig: S.optional(ArtifactConfig),
         }),
       ).annotate({ identifier: "SpaceConfig" });
     case 5:
@@ -1075,7 +1346,7 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "GatewaySipAccess" });
     case 7:
-      return S.Array(__S(14));
+      return S.Array(GatewaySipAccess);
   }
 }
 function __c2(j: number): any {
@@ -1090,23 +1361,23 @@ function __c2(j: number): any {
         }),
       ).annotate({ identifier: "PhoneAccess" });
     case 1:
-      return S.Array(__S(16));
+      return S.Array(PhoneAccess);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          config: S.optional(__S(12)),
-          activeConference: S.optional(__S(13)),
+          config: S.optional(SpaceConfig),
+          activeConference: S.optional(ActiveConference),
           meetingUri: S.optional(S.String),
-          gatewaySipAccess: S.optional(__S(15)),
+          gatewaySipAccess: S.optional(GatewaySipAccessList),
           name: S.optional(S.String),
           meetingCode: S.optional(S.String),
-          phoneAccess: S.optional(__S(17)),
+          phoneAccess: S.optional(PhoneAccessList),
         }),
       ).annotate({ identifier: "Space" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(__S(18).pipe(T.HttpBody())),
+          body: S.optional(Space.pipe(T.HttpBody())),
         }).pipe(
           T.Http({ method: "POST", uri: "v2/spaces", baseUrl: "https://meet.googleapis.com/" }),
         ),
@@ -1115,7 +1386,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(0).pipe(T.HttpBody())),
+          body: S.optional(Member.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1144,7 +1415,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(22).pipe(T.HttpBody())),
+          body: S.optional(EndActiveConferenceRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1207,9 +1478,9 @@ function __c3(j: number): any {
         S.Struct({
           earliestStartTime: S.optional(S.String),
           name: S.optional(S.String),
-          signedinUser: S.optional(__S(27)),
-          phoneUser: S.optional(__S(28)),
-          anonymousUser: S.optional(__S(28)),
+          signedinUser: S.optional(SignedinUser),
+          phoneUser: S.optional(PhoneUser),
+          anonymousUser: S.optional(AnonymousUser),
           latestEndTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "Participant" });
@@ -1256,8 +1527,8 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          driveDestination: S.optional(__S(33)),
-          state: S.optional(S.String),
+          driveDestination: S.optional(DriveDestination),
+          state: S.optional(RecordingStateEnum),
           endTime: S.optional(S.String),
           startTime: S.optional(S.String),
         }),
@@ -1283,9 +1554,9 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           endTime: S.optional(S.String),
-          state: S.optional(S.String),
+          state: S.optional(SmartNoteStateEnum),
           name: S.optional(S.String),
-          docsDestination: S.optional(__S(36)),
+          docsDestination: S.optional(DocsDestination),
           startTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "SmartNote" });
@@ -1304,9 +1575,9 @@ function __c4(j: number): any {
         S.Struct({
           startTime: S.optional(S.String),
           endTime: S.optional(S.String),
-          docsDestination: S.optional(__S(36)),
+          docsDestination: S.optional(DocsDestination),
           name: S.optional(S.String),
-          state: S.optional(S.String),
+          state: S.optional(TranscriptStateEnum),
         }),
       ).annotate({ identifier: "Transcript" });
   }
@@ -1367,11 +1638,11 @@ function __c5(j: number): any {
         identifier: "ListConferenceRecordsRequest",
       });
     case 5:
-      return S.Array(__S(25));
+      return S.Array(ConferenceRecord);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          conferenceRecords: S.optional(__S(45)),
+          conferenceRecords: S.optional(ConferenceRecordList),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -1399,12 +1670,12 @@ function __c5(j: number): any {
 function __c6(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(29));
+      return S.Array(Participant);
     case 1:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          participants: S.optional(__S(48)),
+          participants: S.optional(ParticipantList),
           totalSize: S.optional(S.Number),
         }),
       ).annotate({ identifier: "ListParticipantsResponse" });
@@ -1426,11 +1697,11 @@ function __c6(j: number): any {
         identifier: "ListConferenceRecordsParticipantsParticipantSessionsRequest",
       });
     case 3:
-      return S.Array(__S(31));
+      return S.Array(ParticipantSession);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          participantSessions: S.optional(__S(51)),
+          participantSessions: S.optional(ParticipantSessionList),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -1453,11 +1724,11 @@ function __c6(j: number): any {
         identifier: "ListConferenceRecordsRecordingsRequest",
       });
     case 6:
-      return S.Array(__S(34));
+      return S.Array(Recording);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          recordings: S.optional(__S(54)),
+          recordings: S.optional(RecordingList),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListRecordingsResponse" });
@@ -1482,12 +1753,12 @@ function __c7(j: number): any {
         identifier: "ListConferenceRecordsSmartNotesRequest",
       });
     case 1:
-      return S.Array(__S(37));
+      return S.Array(SmartNote);
     case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          smartNotes: S.optional(__S(57)),
+          smartNotes: S.optional(SmartNoteList),
         }),
       ).annotate({ identifier: "ListSmartNotesResponse" });
     case 3:
@@ -1507,12 +1778,12 @@ function __c7(j: number): any {
         identifier: "ListConferenceRecordsTranscriptsRequest",
       });
     case 4:
-      return S.Array(__S(39));
+      return S.Array(Transcript);
     case 5:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          transcripts: S.optional(__S(60)),
+          transcripts: S.optional(TranscriptList),
         }),
       ).annotate({ identifier: "ListTranscriptsResponse" });
     case 6:
@@ -1532,7 +1803,7 @@ function __c7(j: number): any {
         identifier: "ListConferenceRecordsTranscriptsEntriesRequest",
       });
     case 7:
-      return S.Array(__S(41));
+      return S.Array(TranscriptEntry);
   }
 }
 function __c8(j: number): any {
@@ -1540,7 +1811,7 @@ function __c8(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          transcriptEntries: S.optional(__S(63)),
+          transcriptEntries: S.optional(TranscriptEntryList),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -1563,7 +1834,7 @@ function __c8(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          members: S.optional(__S(5)),
+          members: S.optional(MemberList),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListMembersResponse" });
@@ -1572,7 +1843,7 @@ function __c8(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(18).pipe(T.HttpBody())),
+          body: S.optional(Space.pipe(T.HttpBody())),
         }).pipe(
           T.Http({ method: "PATCH", uri: "v2/{+name}", baseUrl: "https://meet.googleapis.com/" }),
         ),
@@ -1582,39 +1853,12 @@ function __c8(j: number): any {
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(0).pipe(T.HttpBody())),
+          body: S.optional(Member.pipe(T.HttpBody())),
         }).pipe(
           T.Http({ method: "PATCH", uri: "v2/{+name}", baseUrl: "https://meet.googleapis.com/" }),
         ),
       ).annotate({
         identifier: "PatchSpacesMembersRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
   }
 }

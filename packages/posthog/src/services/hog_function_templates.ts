@@ -6,8 +6,6 @@ import * as S from "@distilled.cloud/core/schema";
 import { PosthogProtocol, type PosthogOpError, type PosthogOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { PosthogOpError, PosthogOpContext };
 
@@ -43,6 +41,11 @@ export interface GetHogFunctionTemplateRequest {
   project_id: string;
   template_id: string;
 }
+const GetHogFunctionTemplateRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<GetHogFunctionTemplateRequest>;
+
 export interface HogFunctionMappingTemplate {
   /** Name of this mapping template. */
   name?: string;
@@ -57,8 +60,18 @@ export interface HogFunctionMappingTemplate {
   /** Additional input schema fields specific to this mapping. */
   inputs_schema?: unknown;
 }
+const HogFunctionMappingTemplate = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<HogFunctionMappingTemplate>;
+
 /** Pre-defined mapping configurations for destination templates. */
 export type HogFunctionTemplateMappingTemplatesList = Array<HogFunctionMappingTemplate>;
+const HogFunctionTemplateMappingTemplatesList = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<HogFunctionTemplateMappingTemplatesList>;
+
 export interface HogFunctionTemplate {
   /** Unique template identifier (e.g. 'template-slack'). */
   id?: string;
@@ -89,6 +102,8 @@ export interface HogFunctionTemplate {
   /** Pre-defined mapping configurations for destination templates. */
   mapping_templates?: HogFunctionTemplateMappingTemplatesList | null;
 }
+const HogFunctionTemplate = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<HogFunctionTemplate>;
+
 export interface ListHogFunctionTemplatesRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -103,13 +118,28 @@ export interface ListHogFunctionTemplatesRequest {
   /** Comma-separated list of template types to include (e.g. destination,email,sms_provider). */
   types?: string;
 }
+const ListHogFunctionTemplatesRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<ListHogFunctionTemplatesRequest>;
+
 export type PaginatedHogFunctionTemplateListResultsList = Array<HogFunctionTemplate>;
+const PaginatedHogFunctionTemplateListResultsList = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<PaginatedHogFunctionTemplateListResultsList>;
+
 export interface PaginatedHogFunctionTemplateList {
   count?: number;
   next?: string | null;
   previous?: string | null;
   results?: PaginatedHogFunctionTemplateListResultsList;
 }
+const PaginatedHogFunctionTemplateList = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<PaginatedHogFunctionTemplateList>;
+
 export interface ListPublicHogFunctionTemplatesRequest {
   /** Number of results to return per page. */
   limit?: number;
@@ -122,6 +152,11 @@ export interface ListPublicHogFunctionTemplatesRequest {
   /** Comma-separated list of template types to include (e.g. destination,email,sms_provider). */
   types?: string;
 }
+const ListPublicHogFunctionTemplatesRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<ListPublicHogFunctionTemplatesRequest>;
+
 export type GetHogFunctionTemplateError = Forbidden | NotFound | PosthogOpError;
 export const getHogFunctionTemplate: API.OperationMethod<
   GetHogFunctionTemplateRequest,
@@ -129,8 +164,8 @@ export const getHogFunctionTemplate: API.OperationMethod<
   GetHogFunctionTemplateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<GetHogFunctionTemplateRequest>,
-  output: __S(3) as any as S.Schema<HogFunctionTemplate>,
+  input: GetHogFunctionTemplateRequest,
+  output: HogFunctionTemplate,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -143,8 +178,8 @@ export const listHogFunctionTemplates: API.OperationMethod<
   ListHogFunctionTemplatesError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4) as any as S.Schema<ListHogFunctionTemplatesRequest>,
-  output: __S(6) as any as S.Schema<PaginatedHogFunctionTemplateList>,
+  input: ListHogFunctionTemplatesRequest,
+  output: PaginatedHogFunctionTemplateList,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -157,8 +192,8 @@ export const listPublicHogFunctionTemplates: API.OperationMethod<
   ListPublicHogFunctionTemplatesError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7) as any as S.Schema<ListPublicHogFunctionTemplatesRequest>,
-  output: __S(6) as any as S.Schema<PaginatedHogFunctionTemplateList>,
+  input: ListPublicHogFunctionTemplatesRequest,
+  output: PaginatedHogFunctionTemplateList,
   errors: [BadRequest, Forbidden],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -196,7 +231,7 @@ function __c0(j: number): any {
         identifier: "HogFunctionMappingTemplate",
       });
     case 2:
-      return S.Array(__S(1));
+      return S.Array(HogFunctionMappingTemplate);
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -213,7 +248,7 @@ function __c0(j: number): any {
           icon_url: S.optional(S.NullOr(S.String)),
           filters: S.optional(S.Unknown),
           masking: S.optional(S.Unknown),
-          mapping_templates: S.optional(S.NullOr(__S(2))),
+          mapping_templates: S.optional(S.NullOr(HogFunctionTemplateMappingTemplatesList)),
         }),
       ).annotate({ identifier: "HogFunctionTemplate" });
     case 4:
@@ -236,14 +271,14 @@ function __c0(j: number): any {
         identifier: "ListHogFunctionTemplatesRequest",
       });
     case 5:
-      return S.Array(__S(3));
+      return S.Array(HogFunctionTemplate);
     case 6:
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.Number),
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: S.optional(__S(5)),
+          results: S.optional(PaginatedHogFunctionTemplateListResultsList),
         }),
       ).annotate({
         identifier: "PaginatedHogFunctionTemplateList",
@@ -260,16 +295,5 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "ListPublicHogFunctionTemplatesRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
   }
 }

@@ -6,8 +6,6 @@ import * as S from "@distilled.cloud/core/schema";
 import { WhopProtocol, type WhopOpError, type WhopOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { WhopOpError, WhopOpContext };
 
@@ -51,6 +49,11 @@ export interface GetPayoutAccountRequest {
   /** The unique identifier of the payout account to retrieve. */
   id: string;
 }
+const GetPayoutAccountRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<GetPayoutAccountRequest>;
+
 /** The physical address associated with this payout account */
 export interface PayoutAccountAddress {
   /** The city of the address. */
@@ -66,6 +69,8 @@ export interface PayoutAccountAddress {
   /** The state of the address. */
   state: string | null;
 }
+const PayoutAccountAddress = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<PayoutAccountAddress>;
+
 /** The business representative for this payout account */
 export interface PayoutAccountBusinessRepresentative {
   /** The date of birth of the business representative in ISO 8601 format (YYYY-MM-DD). */
@@ -77,6 +82,11 @@ export interface PayoutAccountBusinessRepresentative {
   /** The middle name of the business representative. */
   middle_name: string | null;
 }
+const PayoutAccountBusinessRepresentative = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<PayoutAccountBusinessRepresentative>;
+
 /** An error code for a verification attempt. */
 export type VerificationErrorCodes =
   | "abandoned"
@@ -98,6 +108,8 @@ export type VerificationErrorCodes =
   | "selfie_manipulated"
   | "selfie_unverified_other"
   | "under_supported_age";
+const VerificationErrorCodes = S.String;
+
 /** A status for a verification. */
 export type VerificationStatuses =
   | "requires_input"
@@ -115,6 +127,8 @@ export type VerificationStatuses =
   | "review"
   | "action_required"
   | "manual_review";
+const VerificationStatuses = S.String;
+
 /** The latest verification for the connected account. */
 export interface PayoutAccountLatestVerification {
   /** The numeric id of the verification record. */
@@ -126,6 +140,11 @@ export interface PayoutAccountLatestVerification {
   /** The current status of this verification session. */
   status: VerificationStatuses;
 }
+const PayoutAccountLatestVerification = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<PayoutAccountLatestVerification>;
+
 /** The granular calculated statuses reflecting payout account KYC and payout readiness. */
 export type PayoutAccountCalculatedStatuses =
   | "connected"
@@ -137,6 +156,8 @@ export type PayoutAccountCalculatedStatuses =
   | "denied"
   | "not_started"
   | "blocked_by_parent";
+const PayoutAccountCalculatedStatuses = S.String;
+
 /** An object representing an account used for payouts. */
 export interface PayoutAccount {
   /** The physical address associated with this payout account */
@@ -156,6 +177,8 @@ export interface PayoutAccount {
   /** The granular calculated status of the payout account reflecting its current KYC and payout readiness state. */
   status: PayoutAccountCalculatedStatuses | null;
 }
+const PayoutAccount = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<PayoutAccount>;
+
 export type GetPayoutAccountError =
   | BadRequest
   | Forbidden
@@ -169,8 +192,8 @@ export const getPayoutAccount: API.OperationMethod<
   GetPayoutAccountError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<GetPayoutAccountRequest>,
-  output: __S(4) as any as S.Schema<PayoutAccount>,
+  input: GetPayoutAccountRequest,
+  output: PayoutAccount,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -211,9 +234,9 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          last_error_code: S.NullOr(S.String),
+          last_error_code: S.NullOr(VerificationErrorCodes),
           last_error_reason: S.NullOr(S.String),
-          status: S.String,
+          status: VerificationStatuses,
         }),
       ).annotate({
         identifier: "PayoutAccountLatestVerification",
@@ -221,26 +244,15 @@ function __c0(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          address: S.NullOr(__S(1)),
+          address: S.NullOr(PayoutAccountAddress),
           business_name: S.NullOr(S.String),
-          business_representative: S.NullOr(__S(2)),
+          business_representative: S.NullOr(PayoutAccountBusinessRepresentative),
           email: S.NullOr(S.String),
           id: S.String,
-          latest_verification: S.NullOr(__S(3)),
+          latest_verification: S.NullOr(PayoutAccountLatestVerification),
           phone: S.NullOr(S.String),
-          status: S.NullOr(S.String),
+          status: S.NullOr(PayoutAccountCalculatedStatuses),
         }),
       ).annotate({ identifier: "PayoutAccount" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
   }
 }

@@ -6,8 +6,6 @@ import { SlackError, SlackRateLimited } from "../errors.ts";
 import { SlackProtocol, type SlackOpError, type SlackOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { SlackOpError, SlackOpContext };
 
@@ -20,11 +18,15 @@ export interface PublishViewRequest {
   hash?: string;
   interactivity_pointer?: string;
 }
+const PublishViewRequest = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<PublishViewRequest>;
+
 export interface PublishViewResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
   view: unknown;
 }
+const PublishViewResponse = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<PublishViewResponse>;
+
 export interface UpdateViewRequest {
   /** A unique identifier of the view to be updated. Either `view_id` or `external_id` is required. */
   view_id?: string;
@@ -35,12 +37,21 @@ export interface UpdateViewRequest {
   /** A string that represents view state to protect against possible race conditions. */
   hash?: string;
 }
+const UpdateViewRequest = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<UpdateViewRequest>;
+
 export interface UpdateViewResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
   view: unknown;
 }
+const UpdateViewResponse = PublishViewResponse as any as S.Schema<UpdateViewResponse>;
+
 export type ViewsOpenRequestViewMap = { [key: string]: unknown | undefined };
+const ViewsOpenRequestViewMap = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<ViewsOpenRequestViewMap>;
+
 export interface ViewsOpenRequest {
   /** Exchange a trigger to post to the user. */
   trigger_id?: string | null;
@@ -49,11 +60,15 @@ export interface ViewsOpenRequest {
   /** A [view payload](/reference/views). This must be a JSON-encoded string. */
   view: ViewsOpenRequestViewMap;
 }
+const ViewsOpenRequest = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<ViewsOpenRequest>;
+
 export interface ViewsOpenResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
   view: unknown;
 }
+const ViewsOpenResponse = PublishViewResponse as any as S.Schema<ViewsOpenResponse>;
+
 export interface ViewsPushRequest {
   /** Exchange a trigger to post to the user. */
   trigger_id?: string | null;
@@ -62,11 +77,15 @@ export interface ViewsPushRequest {
   /** A [view payload](/reference/views). This must be a JSON-encoded string. */
   view: unknown;
 }
+const ViewsPushRequest = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<ViewsPushRequest>;
+
 export interface ViewsPushResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
   view: unknown;
 }
+const ViewsPushResponse = PublishViewResponse as any as S.Schema<ViewsPushResponse>;
+
 export type PublishViewError = SlackOpError;
 /** Publish a static view for a User. Rate limit tier: 4 Method-specific errors (the `error` slug on the SlackError): - `duplicate_external_id` -- Error returned when the given `external_id` has already be used. - `hash_conflict` -- Error returned when the provided `hash` doesn't match the current stored value. - `missing_profile_id` -- A profile id was not provided when trying to publish a view of type profile. - `not_allowed_token_type` -- The type of token your app used when requesting this method is not allowed. - `not_enabled` -- Error returned if a `home` view is published but the Home tab isn't enabled for the app. - `not_implemented` -- The profile view experiment is not enabled for this user. - `view_too_large` -- Error returned if the provided view is greater than 250kb. See https://docs.slack.dev/reference/methods/views.publish */
 export const publishView: API.OperationMethod<
@@ -75,8 +94,8 @@ export const publishView: API.OperationMethod<
   PublishViewError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<PublishViewRequest>,
-  output: __S(1) as any as S.Schema<PublishViewResponse>,
+  input: PublishViewRequest,
+  output: PublishViewResponse,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -90,8 +109,8 @@ export const updateView: API.OperationMethod<
   UpdateViewError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2) as any as S.Schema<UpdateViewRequest>,
-  output: __S(1) as any as S.Schema<UpdateViewResponse>,
+  input: UpdateViewRequest,
+  output: UpdateViewResponse,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -105,8 +124,8 @@ export const viewsOpen: API.OperationMethod<
   ViewsOpenError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4) as any as S.Schema<ViewsOpenRequest>,
-  output: __S(1) as any as S.Schema<ViewsOpenResponse>,
+  input: ViewsOpenRequest,
+  output: ViewsOpenResponse,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -120,8 +139,8 @@ export const viewsPush: API.OperationMethod<
   ViewsPushError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5) as any as S.Schema<ViewsPushRequest>,
-  output: __S(1) as any as S.Schema<ViewsPushResponse>,
+  input: ViewsPushRequest,
+  output: ViewsPushResponse,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -162,7 +181,7 @@ function __c0(j: number): any {
         S.Struct({
           trigger_id: S.optional(S.NullOr(S.String)),
           interactivity_pointer: S.optional(S.NullOr(S.String)),
-          view: __S(3),
+          view: ViewsOpenRequestViewMap,
         }).pipe(T.Http({ method: "POST", uri: "/views.open", code: 200 })),
       ).annotate({ identifier: "ViewsOpenRequest" });
     case 5:
@@ -173,16 +192,5 @@ function __c0(j: number): any {
           view: S.Unknown,
         }).pipe(T.Http({ method: "POST", uri: "/views.push", code: 200 })),
       ).annotate({ identifier: "ViewsPushRequest" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
   }
 }

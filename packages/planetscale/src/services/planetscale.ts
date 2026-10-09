@@ -13,8 +13,6 @@ import {
 } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { PlanetScaleOpError, PlanetScaleOpContext };
 
@@ -62,6 +60,11 @@ export interface AddOrganizationTeamMemberRequest {
   /** The ID of the organization member to add to the team */
   user_id: string;
 }
+const AddOrganizationTeamMemberRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<AddOrganizationTeamMemberRequest>;
+
 export interface OrganizationTeamMembershipUserDefaultOrganization {
   /** The ID for the resource */
   id: string;
@@ -74,6 +77,11 @@ export interface OrganizationTeamMembershipUserDefaultOrganization {
   /** When the resource was deleted, if deleted */
   deleted_at: string | null;
 }
+const OrganizationTeamMembershipUserDefaultOrganization = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<OrganizationTeamMembershipUserDefaultOrganization>;
+
 export interface OrganizationTeamMembershipUser {
   /** The ID of the user */
   id: string;
@@ -101,6 +109,11 @@ export interface OrganizationTeamMembershipUser {
   /** Whether or not the user is verified by email. */
   email_verified?: boolean | null;
 }
+const OrganizationTeamMembershipUser = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<OrganizationTeamMembershipUser>;
+
 export interface OrganizationTeamMembershipActor {
   /** The ID of the actor */
   id: string;
@@ -109,21 +122,44 @@ export interface OrganizationTeamMembershipActor {
   /** The URL of the actor's avatar */
   avatar_url: string;
 }
+const OrganizationTeamMembershipActor = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<OrganizationTeamMembershipActor>;
+
 /** The role for the password */
 export type OrganizationTeamMembershipPasswordsItemRole =
   | "reader"
   | "writer"
   | "admin"
   | "readwriter";
+const OrganizationTeamMembershipPasswordsItemRole = S.String;
+
 /** List of IP addresses or CIDR ranges that can use this password */
 export type OrganizationTeamMembershipPasswordsItemCidrsList = Array<string>;
+const OrganizationTeamMembershipPasswordsItemCidrsList = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<OrganizationTeamMembershipPasswordsItemCidrsList>;
+
 /** The list of hosts in each availability zone providing direct access to a vtgate */
 export type OrganizationTeamMembershipPasswordsItemDirectVtgateAddressesList = Array<string>;
+const OrganizationTeamMembershipPasswordsItemDirectVtgateAddressesList = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<OrganizationTeamMembershipPasswordsItemDirectVtgateAddressesList>;
+
 /** The read-only replica host URLs */
 export type OrganizationTeamMembershipPasswordsItemAccessHostRegionalUrlsList = Array<string>;
+const OrganizationTeamMembershipPasswordsItemAccessHostRegionalUrlsList =
+  OrganizationTeamMembershipPasswordsItemDirectVtgateAddressesList as any as S.Schema<OrganizationTeamMembershipPasswordsItemAccessHostRegionalUrlsList>;
+
 export type OrganizationTeamMembershipPasswordsItemActor = OrganizationTeamMembershipActor;
 /** Public IP addresses for the region */
 export type OrganizationTeamMembershipPasswordsItemRegionPublicIpAddressesList = Array<string>;
+const OrganizationTeamMembershipPasswordsItemRegionPublicIpAddressesList =
+  OrganizationTeamMembershipPasswordsItemDirectVtgateAddressesList as any as S.Schema<OrganizationTeamMembershipPasswordsItemRegionPublicIpAddressesList>;
+
 export interface OrganizationTeamMembershipPasswordsItemRegion {
   /** The ID of the region */
   id: string;
@@ -148,6 +184,11 @@ export interface OrganizationTeamMembershipPasswordsItemRegion {
   /** Whether the region supports Neki databases */
   neki_supported: boolean;
 }
+const OrganizationTeamMembershipPasswordsItemRegion = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<OrganizationTeamMembershipPasswordsItemRegion>;
+
 export interface OrganizationTeamMembershipPasswordsItemDatabaseBranch {
   /** The name for the branch */
   name: string;
@@ -160,6 +201,11 @@ export interface OrganizationTeamMembershipPasswordsItemDatabaseBranch {
   /** True if private connectivity is enabled */
   private_edge_connectivity: boolean;
 }
+const OrganizationTeamMembershipPasswordsItemDatabaseBranch = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<OrganizationTeamMembershipPasswordsItemDatabaseBranch>;
+
 export interface OrganizationTeamMembershipPasswordsItem {
   /** The ID for the password */
   id: string;
@@ -205,8 +251,18 @@ export interface OrganizationTeamMembershipPasswordsItem {
   renewable: boolean;
   database_branch: OrganizationTeamMembershipPasswordsItemDatabaseBranch;
 }
+const OrganizationTeamMembershipPasswordsItem = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<OrganizationTeamMembershipPasswordsItem>;
+
 export type OrganizationTeamMembershipPasswordsList =
   Array<OrganizationTeamMembershipPasswordsItem>;
+const OrganizationTeamMembershipPasswordsList = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<OrganizationTeamMembershipPasswordsList>;
+
 export interface OrganizationTeamMembership {
   /** The ID of the team membership */
   id: string;
@@ -218,8 +274,16 @@ export interface OrganizationTeamMembership {
   updated_at: string;
   passwords: OrganizationTeamMembershipPasswordsList;
 }
+const OrganizationTeamMembership = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<OrganizationTeamMembership>;
+
 /** The IDs of the shards to assign */
 export type AssignShardConfigurationProfileShardsRequestShardIdsList = Array<string>;
+const AssignShardConfigurationProfileShardsRequestShardIdsList =
+  OrganizationTeamMembershipPasswordsItemCidrsList as any as S.Schema<AssignShardConfigurationProfileShardsRequestShardIdsList>;
+
 export interface AssignShardConfigurationProfileShardsRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
@@ -232,8 +296,18 @@ export interface AssignShardConfigurationProfileShardsRequest {
   /** The IDs of the shards to assign */
   shard_ids: AssignShardConfigurationProfileShardsRequestShardIdsList;
 }
+const AssignShardConfigurationProfileShardsRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<AssignShardConfigurationProfileShardsRequest>;
+
 /** The assignment error */
 export type NekiShardAssignmentErrorMap = { [key: string]: unknown | undefined };
+const NekiShardAssignmentErrorMap = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<NekiShardAssignmentErrorMap>;
+
 export interface NekiShardAssignment {
   /** The public ID of the shard */
   id: string;
@@ -242,9 +316,21 @@ export interface NekiShardAssignment {
   /** The assignment error */
   error?: NekiShardAssignmentErrorMap | null;
 }
+const NekiShardAssignment = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<NekiShardAssignment>;
+
 export type AssignShardConfigurationProfileShardsResponseBodyList = Array<NekiShardAssignment>;
+const AssignShardConfigurationProfileShardsResponseBodyList = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<AssignShardConfigurationProfileShardsResponseBodyList>;
+
 export type AssignShardConfigurationProfileShardsResponse =
   AssignShardConfigurationProfileShardsResponseBodyList;
+const AssignShardConfigurationProfileShardsResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<AssignShardConfigurationProfileShardsResponse>;
+
 export interface BulkCreateShardConfigurationProfileShardsRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
@@ -257,14 +343,27 @@ export interface BulkCreateShardConfigurationProfileShardsRequest {
   /** The number of shards to add */
   count: number;
 }
+const BulkCreateShardConfigurationProfileShardsRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<BulkCreateShardConfigurationProfileShardsRequest>;
+
 /** The public IDs of the created shards */
 export type BulkCreateShardConfigurationProfileShardsResponseShardIdsList = Array<string>;
+const BulkCreateShardConfigurationProfileShardsResponseShardIdsList =
+  OrganizationTeamMembershipPasswordsItemCidrsList as any as S.Schema<BulkCreateShardConfigurationProfileShardsResponseShardIdsList>;
+
 export interface BulkCreateShardConfigurationProfileShardsResponse {
   /** The number of shards created */
   created: number;
   /** The public IDs of the created shards */
   shard_ids: BulkCreateShardConfigurationProfileShardsResponseShardIdsList;
 }
+const BulkCreateShardConfigurationProfileShardsResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<BulkCreateShardConfigurationProfileShardsResponse>;
+
 export interface CancelAdminChangeRequestRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
@@ -275,7 +374,17 @@ export interface CancelAdminChangeRequestRequest {
   /** The ID of the change request */
   id: string;
 }
+const CancelAdminChangeRequestRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<CancelAdminChangeRequestRequest>;
+
 export interface CancelAdminChangeRequestResponse {}
+const CancelAdminChangeRequestResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<CancelAdminChangeRequestResponse>;
+
 export interface CancelBouncerResizeRequestRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
@@ -286,7 +395,15 @@ export interface CancelBouncerResizeRequestRequest {
   /** The name of the bouncer */
   bouncer: string;
 }
+const CancelBouncerResizeRequestRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<CancelBouncerResizeRequestRequest>;
+
 export interface CancelBouncerResizeRequestResponse {}
+const CancelBouncerResizeRequestResponse =
+  CancelAdminChangeRequestResponse as any as S.Schema<CancelBouncerResizeRequestResponse>;
+
 export interface CancelBranchChangeRequestRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
@@ -295,7 +412,15 @@ export interface CancelBranchChangeRequestRequest {
   /** Branch name from `list_branches`. Example: `main`. */
   branch: string;
 }
+const CancelBranchChangeRequestRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<CancelBranchChangeRequestRequest>;
+
 export interface CancelBranchChangeRequestResponse {}
+const CancelBranchChangeRequestResponse =
+  CancelAdminChangeRequestResponse as any as S.Schema<CancelBranchChangeRequestResponse>;
+
 export interface CancelBranchConfigChangeRequestRequest {
   /** The name of the organization the branch belongs to */
   organization: string;
@@ -306,7 +431,15 @@ export interface CancelBranchConfigChangeRequestRequest {
   /** The ID of the config change request */
   id: string;
 }
+const CancelBranchConfigChangeRequestRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<CancelBranchConfigChangeRequestRequest>;
+
 export interface CancelBranchConfigChangeRequestResponse {}
+const CancelBranchConfigChangeRequestResponse =
+  CancelAdminChangeRequestResponse as any as S.Schema<CancelBranchConfigChangeRequestResponse>;
+
 export interface CancelDeployRequestRequest {
   /** The name of the deploy request's organization */
   organization: string;
@@ -315,11 +448,18 @@ export interface CancelDeployRequestRequest {
   /** The number of the deploy request */
   number: number;
 }
+const CancelDeployRequestRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<CancelDeployRequestRequest>;
+
 export type DatabaseDeployRequestActor = OrganizationTeamMembershipActor;
 export type DatabaseDeployRequestClosedBy = OrganizationTeamMembershipActor;
 export type DatabaseDeployRequestBranchDeletedBy = OrganizationTeamMembershipActor;
 /** Whether the deploy request is open or closed */
 export type DatabaseDeployRequestState = "open" | "closed";
+const DatabaseDeployRequestState = S.String;
+
 /** The deployment state of the deploy request */
 export type DatabaseDeployRequestDeploymentState =
   | "pending"
@@ -342,6 +482,8 @@ export type DatabaseDeployRequestDeploymentState =
   | "complete_revert_error"
   | "cancelled"
   | "error";
+const DatabaseDeployRequestDeploymentState = S.String;
+
 /** The state the deployment is in */
 export type DatabaseDeployRequestDeploymentState2 =
   | "pending"
@@ -364,12 +506,22 @@ export type DatabaseDeployRequestDeploymentState2 =
   | "complete_revert_error"
   | "cancelled"
   | "error";
+const DatabaseDeployRequestDeploymentState2 = S.String;
+
 export type DatabaseDeployRequestDeploymentPrecedingDeploymentsItemMap = {
   [key: string]: unknown | undefined;
 };
+const DatabaseDeployRequestDeploymentPrecedingDeploymentsItemMap =
+  NekiShardAssignmentErrorMap as any as S.Schema<DatabaseDeployRequestDeploymentPrecedingDeploymentsItemMap>;
+
 /** The deployments ahead of this one in the queue */
 export type DatabaseDeployRequestDeploymentPrecedingDeploymentsList =
   Array<DatabaseDeployRequestDeploymentPrecedingDeploymentsItemMap>;
+const DatabaseDeployRequestDeploymentPrecedingDeploymentsList = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<DatabaseDeployRequestDeploymentPrecedingDeploymentsList>;
+
 /** The state of the deploy operation */
 export type DatabaseDeployRequestDeploymentDeployOperationsItemState =
   | "pending"
@@ -378,9 +530,14 @@ export type DatabaseDeployRequestDeploymentDeployOperationsItemState =
   | "complete"
   | "cancelled"
   | "error";
+const DatabaseDeployRequestDeploymentDeployOperationsItemState = S.String;
+
 /** Names of foreign keys removed by this operation */
 export type DatabaseDeployRequestDeploymentDeployOperationsItemRemovedForeignKeyNamesList =
   Array<string>;
+const DatabaseDeployRequestDeploymentDeployOperationsItemRemovedForeignKeyNamesList =
+  OrganizationTeamMembershipPasswordsItemDirectVtgateAddressesList as any as S.Schema<DatabaseDeployRequestDeploymentDeployOperationsItemRemovedForeignKeyNamesList>;
+
 export interface DatabaseDeployRequestDeploymentDeployOperationsItem {
   /** The ID for the deploy operation */
   id: string;
@@ -421,8 +578,18 @@ export interface DatabaseDeployRequestDeploymentDeployOperationsItem {
   /** Deploy errors for the deploy operation */
   deploy_errors: string | null;
 }
+const DatabaseDeployRequestDeploymentDeployOperationsItem = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<DatabaseDeployRequestDeploymentDeployOperationsItem>;
+
 export type DatabaseDeployRequestDeploymentDeployOperationsList =
   Array<DatabaseDeployRequestDeploymentDeployOperationsItem>;
+const DatabaseDeployRequestDeploymentDeployOperationsList = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<DatabaseDeployRequestDeploymentDeployOperationsList>;
+
 /** The state of the deploy operation summary */
 export type DatabaseDeployRequestDeploymentDeployOperationSummariesItemState =
   | "pending"
@@ -430,12 +597,20 @@ export type DatabaseDeployRequestDeploymentDeployOperationSummariesItemState =
   | "complete"
   | "cancelled"
   | "error";
+const DatabaseDeployRequestDeploymentDeployOperationSummariesItemState = S.String;
+
 /** Names of foreign keys removed by this operation summary */
 export type DatabaseDeployRequestDeploymentDeployOperationSummariesItemRemovedForeignKeyNamesList =
   Array<string>;
+const DatabaseDeployRequestDeploymentDeployOperationSummariesItemRemovedForeignKeyNamesList =
+  OrganizationTeamMembershipPasswordsItemDirectVtgateAddressesList as any as S.Schema<DatabaseDeployRequestDeploymentDeployOperationSummariesItemRemovedForeignKeyNamesList>;
+
 /** Names of shards in the keyspace modified by the deploy operation summary */
 export type DatabaseDeployRequestDeploymentDeployOperationSummariesItemShardNamesList =
   Array<string>;
+const DatabaseDeployRequestDeploymentDeployOperationSummariesItemShardNamesList =
+  OrganizationTeamMembershipPasswordsItemDirectVtgateAddressesList as any as S.Schema<DatabaseDeployRequestDeploymentDeployOperationSummariesItemShardNamesList>;
+
 /** The state of the deploy operation */
 export type DatabaseDeployRequestDeploymentDeployOperationSummariesItemOperationsItemState =
   | "pending"
@@ -444,6 +619,8 @@ export type DatabaseDeployRequestDeploymentDeployOperationSummariesItemOperation
   | "complete"
   | "cancelled"
   | "error";
+const DatabaseDeployRequestDeploymentDeployOperationSummariesItemOperationsItemState = S.String;
+
 export interface DatabaseDeployRequestDeploymentDeployOperationSummariesItemOperationsItem {
   /** The ID for the deploy operation */
   id: string;
@@ -456,8 +633,20 @@ export interface DatabaseDeployRequestDeploymentDeployOperationSummariesItemOper
   /** The estimated seconds until completion for the deploy operation */
   eta_seconds: number;
 }
+const DatabaseDeployRequestDeploymentDeployOperationSummariesItemOperationsItem =
+  /*@__PURE__*/ __L.at(
+    __c3,
+    3,
+  ) as any as S.Schema<DatabaseDeployRequestDeploymentDeployOperationSummariesItemOperationsItem>;
+
 export type DatabaseDeployRequestDeploymentDeployOperationSummariesItemOperationsList =
   Array<DatabaseDeployRequestDeploymentDeployOperationSummariesItemOperationsItem>;
+const DatabaseDeployRequestDeploymentDeployOperationSummariesItemOperationsList =
+  /*@__PURE__*/ __L.at(
+    __c3,
+    4,
+  ) as any as S.Schema<DatabaseDeployRequestDeploymentDeployOperationSummariesItemOperationsList>;
+
 export interface DatabaseDeployRequestDeploymentDeployOperationSummariesItem {
   /** The ID for the deploy operation summary */
   id: string;
@@ -499,34 +688,66 @@ export interface DatabaseDeployRequestDeploymentDeployOperationSummariesItem {
   sharded: boolean;
   operations: DatabaseDeployRequestDeploymentDeployOperationSummariesItemOperationsList;
 }
+const DatabaseDeployRequestDeploymentDeployOperationSummariesItem = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<DatabaseDeployRequestDeploymentDeployOperationSummariesItem>;
+
 export type DatabaseDeployRequestDeploymentDeployOperationSummariesList =
   Array<DatabaseDeployRequestDeploymentDeployOperationSummariesItem>;
+const DatabaseDeployRequestDeploymentDeployOperationSummariesList = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<DatabaseDeployRequestDeploymentDeployOperationSummariesList>;
+
 export type DatabaseDeployRequestDeploymentLintErrorsItemMap = {
   [key: string]: unknown | undefined;
 };
 /** Schema lint errors preventing the deployment from completing */
 export type DatabaseDeployRequestDeploymentLintErrorsList =
   Array<DatabaseDeployRequestDeploymentLintErrorsItemMap>;
+const DatabaseDeployRequestDeploymentLintErrorsList =
+  DatabaseDeployRequestDeploymentPrecedingDeploymentsList as any as S.Schema<DatabaseDeployRequestDeploymentLintErrorsList>;
+
 export type DatabaseDeployRequestDeploymentSequentialDiffDependenciesItemMap = {
   [key: string]: unknown | undefined;
 };
+const DatabaseDeployRequestDeploymentSequentialDiffDependenciesItemMap = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<DatabaseDeployRequestDeploymentSequentialDiffDependenciesItemMap>;
+
 /** The schema dependencies that must be satisfied */
 export type DatabaseDeployRequestDeploymentSequentialDiffDependenciesList =
   Array<DatabaseDeployRequestDeploymentSequentialDiffDependenciesItemMap>;
+const DatabaseDeployRequestDeploymentSequentialDiffDependenciesList = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<DatabaseDeployRequestDeploymentSequentialDiffDependenciesList>;
+
 export type DatabaseDeployRequestDeploymentLookupVindexOperationsItemMap = {
   [key: string]: unknown | undefined;
 };
 /** Lookup Vitess index operations */
 export type DatabaseDeployRequestDeploymentLookupVindexOperationsList =
   Array<DatabaseDeployRequestDeploymentLookupVindexOperationsItemMap>;
+const DatabaseDeployRequestDeploymentLookupVindexOperationsList =
+  DatabaseDeployRequestDeploymentPrecedingDeploymentsList as any as S.Schema<DatabaseDeployRequestDeploymentLookupVindexOperationsList>;
+
 /** Deployment throttling configurations. */
 export type DatabaseDeployRequestDeploymentThrottlerConfigurationsMap = {
   [key: string]: unknown | undefined;
 };
+const DatabaseDeployRequestDeploymentThrottlerConfigurationsMap =
+  NekiShardAssignmentErrorMap as any as S.Schema<DatabaseDeployRequestDeploymentThrottlerConfigurationsMap>;
+
 /** The request to revert the schema operations in this deployment */
 export type DatabaseDeployRequestDeploymentDeploymentRevertRequestMap = {
   [key: string]: unknown | undefined;
 };
+const DatabaseDeployRequestDeploymentDeploymentRevertRequestMap =
+  NekiShardAssignmentErrorMap as any as S.Schema<DatabaseDeployRequestDeploymentDeploymentRevertRequestMap>;
+
 export type DatabaseDeployRequestDeploymentActor = OrganizationTeamMembershipActor;
 export type DatabaseDeployRequestDeploymentCutoverActor = OrganizationTeamMembershipActor;
 export type DatabaseDeployRequestDeploymentCancelledActor = OrganizationTeamMembershipActor;
@@ -599,6 +820,11 @@ export interface DatabaseDeployRequestDeployment {
   /** A human-readable reason the deploy queue is paused, if known */
   queue_pause_reason: string | null;
 }
+const DatabaseDeployRequestDeployment = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<DatabaseDeployRequestDeployment>;
+
 export interface DatabaseDeployRequest {
   /** The ID of the deploy request */
   id: string;
@@ -647,6 +873,11 @@ export interface DatabaseDeployRequest {
   /** When the deploy request was deployed */
   deployed_at: string | null;
 }
+const DatabaseDeployRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<DatabaseDeployRequest>;
+
 export interface CancelKeyspaceConfigChangeRequestRequest {
   /** The name of the organization the branch belongs to */
   organization: string;
@@ -659,7 +890,15 @@ export interface CancelKeyspaceConfigChangeRequestRequest {
   /** The ID of the config change request */
   id: string;
 }
+const CancelKeyspaceConfigChangeRequestRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<CancelKeyspaceConfigChangeRequestRequest>;
+
 export interface CancelKeyspaceConfigChangeRequestResponse {}
+const CancelKeyspaceConfigChangeRequestResponse =
+  CancelAdminChangeRequestResponse as any as S.Schema<CancelKeyspaceConfigChangeRequestResponse>;
+
 export interface CancelKeyspaceResizeRequestRequest {
   /** The name of the organization the branch belongs to */
   organization: string;
@@ -670,7 +909,15 @@ export interface CancelKeyspaceResizeRequestRequest {
   /** The name of the keyspace */
   keyspace: string;
 }
+const CancelKeyspaceResizeRequestRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<CancelKeyspaceResizeRequestRequest>;
+
 export interface CancelKeyspaceResizeRequestResponse {}
+const CancelKeyspaceResizeRequestResponse =
+  CancelAdminChangeRequestResponse as any as S.Schema<CancelKeyspaceResizeRequestResponse>;
+
 export interface CancelMoveTablesWorkflowRequest {
   /** Organization name */
   organization: string;
@@ -681,7 +928,15 @@ export interface CancelMoveTablesWorkflowRequest {
   /** Workflow name */
   workflow: string;
 }
+const CancelMoveTablesWorkflowRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<CancelMoveTablesWorkflowRequest>;
+
 export interface CancelMoveTablesWorkflowResponse {}
+const CancelMoveTablesWorkflowResponse =
+  CancelAdminChangeRequestResponse as any as S.Schema<CancelMoveTablesWorkflowResponse>;
+
 export interface CancelNekiChangeRequestRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
@@ -692,14 +947,32 @@ export interface CancelNekiChangeRequestRequest {
   /** The ID of the change request */
   id: string;
 }
+const CancelNekiChangeRequestRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<CancelNekiChangeRequestRequest>;
+
 export interface CancelNekiChangeRequestResponse {}
+const CancelNekiChangeRequestResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<CancelNekiChangeRequestResponse>;
+
 export interface CancelOrganizationInvitationRequest {
   /** The name of the organization */
   organization: string;
   /** The ID of the invitation */
   id: string;
 }
+const CancelOrganizationInvitationRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  0,
+) as any as S.Schema<CancelOrganizationInvitationRequest>;
+
 export interface CancelOrganizationInvitationResponse {}
+const CancelOrganizationInvitationResponse =
+  CancelAdminChangeRequestResponse as any as S.Schema<CancelOrganizationInvitationResponse>;
+
 export interface CancelRouterChangeRequestRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
@@ -712,7 +985,15 @@ export interface CancelRouterChangeRequestRequest {
   /** The ID of the change request */
   id: string;
 }
+const CancelRouterChangeRequestRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  1,
+) as any as S.Schema<CancelRouterChangeRequestRequest>;
+
 export interface CancelRouterChangeRequestResponse {}
+const CancelRouterChangeRequestResponse =
+  CancelAdminChangeRequestResponse as any as S.Schema<CancelRouterChangeRequestResponse>;
+
 export interface CancelShardConfigurationProfileChangeRequestRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
@@ -725,7 +1006,15 @@ export interface CancelShardConfigurationProfileChangeRequestRequest {
   /** The ID of the change request */
   id: string;
 }
+const CancelShardConfigurationProfileChangeRequestRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  2,
+) as any as S.Schema<CancelShardConfigurationProfileChangeRequestRequest>;
+
 export interface CancelShardConfigurationProfileChangeRequestResponse {}
+const CancelShardConfigurationProfileChangeRequestResponse =
+  CancelAdminChangeRequestResponse as any as S.Schema<CancelShardConfigurationProfileChangeRequestResponse>;
+
 export interface CancelSidecarChangeRequestRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
@@ -738,7 +1027,15 @@ export interface CancelSidecarChangeRequestRequest {
   /** The ID of the change request */
   id: string;
 }
+const CancelSidecarChangeRequestRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<CancelSidecarChangeRequestRequest>;
+
 export interface CancelSidecarChangeRequestResponse {}
+const CancelSidecarChangeRequestResponse =
+  CancelAdminChangeRequestResponse as any as S.Schema<CancelSidecarChangeRequestResponse>;
+
 export interface CancelWorkflowRequest {
   /** The name of the organization the workflow belongs to */
   organization: string;
@@ -747,6 +1044,11 @@ export interface CancelWorkflowRequest {
   /** The sequence number of the workflow */
   number: number;
 }
+const CancelWorkflowRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  4,
+) as any as S.Schema<CancelWorkflowRequest>;
+
 /** The state of the workflow */
 export type WorkflowState =
   | "pending"
@@ -768,10 +1070,16 @@ export type WorkflowState =
   | "cancelling"
   | "cancelled"
   | "error";
+const WorkflowState = S.String;
+
 /** The type of the workflow */
 export type WorkflowWorkflowType = "move_tables";
+const WorkflowWorkflowType = S.String;
+
 /** The behavior when DDL changes during the workflow */
 export type WorkflowOnDdl = "IGNORE" | "STOP" | "EXEC" | "EXEC_IGNORE";
+const WorkflowOnDdl = S.String;
+
 export type WorkflowActor = OrganizationTeamMembershipActor;
 export type WorkflowVerifyDataBy = OrganizationTeamMembershipActor;
 export type WorkflowReversedBy = OrganizationTeamMembershipActor;
@@ -856,6 +1164,8 @@ export interface Workflow {
   target_keyspace: OrganizationTeamMembershipUserDefaultOrganization;
   global_keyspace: OrganizationTeamMembershipUserDefaultOrganization;
 }
+const Workflow = /*@__PURE__*/ __L.at(__c5, 5) as any as S.Schema<Workflow>;
+
 export interface CompleteRevertRequest {
   /** The name of the deploy request's organization */
   organization: string;
@@ -864,6 +1174,11 @@ export interface CompleteRevertRequest {
   /** The number of the deploy request */
   number: number;
 }
+const CompleteRevertRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  6,
+) as any as S.Schema<CompleteRevertRequest>;
+
 export interface CompleteWorkflowRequest {
   /** The name of the organization the workflow belongs to */
   organization: string;
@@ -872,16 +1187,33 @@ export interface CompleteWorkflowRequest {
   /** The sequence number of the workflow */
   number: number;
 }
+const CompleteWorkflowRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  7,
+) as any as S.Schema<CompleteWorkflowRequest>;
+
 export interface ConfigureOrganizationSsoRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
 }
+const ConfigureOrganizationSsoRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<ConfigureOrganizationSsoRequest>;
+
 export interface ConfigureOrganizationSsoResponse {
   /** URL to open for configuring the identity provider */
   portal_url: string;
 }
+const ConfigureOrganizationSsoResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  1,
+) as any as S.Schema<ConfigureOrganizationSsoResponse>;
+
 /** Unit for the retention period of the backup */
 export type CreateBackupRequestRetentionUnit = "hour" | "day" | "week" | "month" | "year";
+const CreateBackupRequestRetentionUnit = S.String;
+
 export interface CreateBackupRequest {
   /** The name of the organization the branch belongs to */
   organization: string;
@@ -898,13 +1230,24 @@ export interface CreateBackupRequest {
   /** Whether the backup is an immediate backup that may affect database performance. Emergency backups are only supported for PostgreSQL databases. */
   emergency?: boolean;
 }
+const CreateBackupRequest = /*@__PURE__*/ __L.at(__c6, 2) as any as S.Schema<CreateBackupRequest>;
+
 /** The current state of the backup */
 export type BackupState = "pending" | "running" | "success" | "failed" | "canceled" | "ignored";
+const BackupState = S.String;
+
 export type BackupRestoredBranchesItem = OrganizationTeamMembershipUserDefaultOrganization;
 export type BackupRestoredBranchesList = Array<OrganizationTeamMembershipUserDefaultOrganization>;
+const BackupRestoredBranchesList = /*@__PURE__*/ __L.at(
+  __c6,
+  3,
+) as any as S.Schema<BackupRestoredBranchesList>;
+
 export type BackupActor = OrganizationTeamMembershipActor;
 /** Whether the policy is for production or development branches */
 export type BackupBackupPolicyTarget = "production" | "development";
+const BackupBackupPolicyTarget = S.String;
+
 export interface BackupBackupPolicy {
   /** The ID of the backup policy */
   id: string;
@@ -939,6 +1282,8 @@ export interface BackupBackupPolicy {
   /** Whether the policy is a required system backup */
   required: boolean;
 }
+const BackupBackupPolicy = /*@__PURE__*/ __L.at(__c6, 4) as any as S.Schema<BackupBackupPolicy>;
+
 export interface BackupSchemaSnapshot {
   /** The ID of the schema snapshot */
   id: string;
@@ -953,6 +1298,8 @@ export interface BackupSchemaSnapshot {
   /** The URL to the schema snapshot in the PlanetScale app */
   url: string;
 }
+const BackupSchemaSnapshot = /*@__PURE__*/ __L.at(__c6, 5) as any as S.Schema<BackupSchemaSnapshot>;
+
 export type BackupDatabaseBranch = OrganizationTeamMembershipUserDefaultOrganization;
 export interface Backup {
   /** The ID of the backup */
@@ -991,12 +1338,20 @@ export interface Backup {
   schema_snapshot?: BackupSchemaSnapshot | null;
   database_branch?: OrganizationTeamMembershipUserDefaultOrganization | null;
 }
+const Backup = /*@__PURE__*/ __L.at(__c6, 6) as any as S.Schema<Backup>;
+
 /** Whether the policy is for production or development branches */
 export type CreateBackupPolicyRequestTarget = "production" | "development";
+const CreateBackupPolicyRequestTarget = S.String;
+
 /** The unit for the retention period of the backup policy */
 export type CreateBackupPolicyRequestRetentionUnit = "hour" | "day" | "week" | "month" | "year";
+const CreateBackupPolicyRequestRetentionUnit = S.String;
+
 /** The unit for the frequency of the backup policy */
 export type CreateBackupPolicyRequestFrequencyUnit = "hour" | "day" | "week" | "month";
+const CreateBackupPolicyRequestFrequencyUnit = S.String;
+
 export interface CreateBackupPolicyRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
@@ -1021,6 +1376,11 @@ export interface CreateBackupPolicyRequest {
   /** Week of the month that the backup is scheduled. 0 is the first week, 3 is the fourth week */
   schedule_week?: number;
 }
+const CreateBackupPolicyRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  7,
+) as any as S.Schema<CreateBackupPolicyRequest>;
+
 /** Whether the policy is for production or development branches */
 export type BackupPolicyTarget = "production" | "development";
 export interface BackupPolicy {
@@ -1057,6 +1417,8 @@ export interface BackupPolicy {
   /** Whether the policy is a required system backup */
   required: boolean;
 }
+const BackupPolicy = BackupBackupPolicy as any as S.Schema<BackupPolicy>;
+
 export interface CreateBouncerRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
@@ -1075,6 +1437,8 @@ export interface CreateBouncerRequest {
   /** The ID of the dedicated read replica where the bouncer should run */
   dedicated_read_replica_id?: string;
 }
+const CreateBouncerRequest = /*@__PURE__*/ __L.at(__c7, 0) as any as S.Schema<CreateBouncerRequest>;
+
 export interface PostgresBouncerSku {
   /** The name of the Postgres bouncer SKU */
   name: string;
@@ -1087,12 +1451,18 @@ export interface PostgresBouncerSku {
   /** The sort order of the Postgres bouncer SKU */
   sort_order: number;
 }
+const PostgresBouncerSku = /*@__PURE__*/ __L.at(__c7, 1) as any as S.Schema<PostgresBouncerSku>;
+
 /** The instance type the bouncer targets */
 export type PostgresBouncerTarget = "primary" | "replica" | "replica_az_affinity";
+const PostgresBouncerTarget = S.String;
+
 export type PostgresBouncerActor = OrganizationTeamMembershipActor;
 export type PostgresBouncerBranch = OrganizationTeamMembershipUserDefaultOrganization;
 /** The namespace of the parameter */
 export type PostgresBouncerParametersItemNamespace = "pgbouncer";
+const PostgresBouncerParametersItemNamespace = S.String;
+
 /** The type of the parameter */
 export type PostgresBouncerParametersItemParameterType =
   | "array"
@@ -1100,8 +1470,13 @@ export type PostgresBouncerParametersItemParameterType =
   | "seconds"
   | "select"
   | "string";
+const PostgresBouncerParametersItemParameterType = S.String;
+
 /** Valid options for the parameter value */
 export type PostgresBouncerParametersItemOptionsList = Array<string>;
+const PostgresBouncerParametersItemOptionsList =
+  OrganizationTeamMembershipPasswordsItemCidrsList as any as S.Schema<PostgresBouncerParametersItemOptionsList>;
+
 export type PostgresBouncerParametersItemActor = OrganizationTeamMembershipActor;
 export interface PostgresBouncerParametersItem {
   /** The ID of the parameter */
@@ -1142,7 +1517,17 @@ export interface PostgresBouncerParametersItem {
   options: PostgresBouncerParametersItemOptionsList;
   actor: OrganizationTeamMembershipActor;
 }
+const PostgresBouncerParametersItem = /*@__PURE__*/ __L.at(
+  __c7,
+  2,
+) as any as S.Schema<PostgresBouncerParametersItem>;
+
 export type PostgresBouncerParametersList = Array<PostgresBouncerParametersItem>;
+const PostgresBouncerParametersList = /*@__PURE__*/ __L.at(
+  __c7,
+  3,
+) as any as S.Schema<PostgresBouncerParametersList>;
+
 export interface PostgresBouncer {
   /** The ID of the bouncer */
   id: string;
@@ -1163,22 +1548,42 @@ export interface PostgresBouncer {
   branch: OrganizationTeamMembershipUserDefaultOrganization;
   parameters: PostgresBouncerParametersList;
 }
+const PostgresBouncer = /*@__PURE__*/ __L.at(__c7, 4) as any as S.Schema<PostgresBouncer>;
+
 /** If provided, restores the last successful backup's schema and data to the new branch. Must have `restore_production_branch_backup(s)` or `restore_backup(s)` access to do this, in addition to Data Branching(TM) being enabled for the branch. */
 export type CreateBranchRequestSeedData = "last_successful_backup";
+const CreateBranchRequestSeedData = S.String;
+
 /** For MySQL backup restores, per-keyspace cluster sizes. Each entry is { "keyspace_name": "main", "cluster_size": "PS_40" }. When provided, each restored keyspace must have a size here or via cluster_size. */
 export type CreateBranchRequestKeyspaceClusterSizesList = Array<string>;
+const CreateBranchRequestKeyspaceClusterSizesList =
+  OrganizationTeamMembershipPasswordsItemCidrsList as any as S.Schema<CreateBranchRequestKeyspaceClusterSizesList>;
+
 /** For Neki backup restores, per-configuration-profile cluster size and replica count. Each entry is { "name": "default", "cluster_size": "PS_40", "replicas": 2 }. Omitted profiles inherit the source size and replica count. */
 export type CreateBranchRequestConfigurationProfileSizesList = Array<string>;
+const CreateBranchRequestConfigurationProfileSizesList =
+  OrganizationTeamMembershipPasswordsItemCidrsList as any as S.Schema<CreateBranchRequestConfigurationProfileSizesList>;
+
 /** For Neki backup restores, per-router size and replica count. Each entry is { "name": "default", "router_size": "NKR_20", "replicas_per_cell": 1 }. Omitted routers inherit the source size and replica count. */
 export type CreateBranchRequestRouterSizesList = Array<string>;
+const CreateBranchRequestRouterSizesList =
+  OrganizationTeamMembershipPasswordsItemCidrsList as any as S.Schema<CreateBranchRequestRouterSizesList>;
+
 export interface CreateBranchRequestStorage {
   /** The minimum storage size in bytes. */
   minimum_storage_bytes?: number;
   /** The maximum storage size in bytes for autoscaling. */
   maximum_storage_bytes?: number;
 }
+const CreateBranchRequestStorage = /*@__PURE__*/ __L.at(
+  __c7,
+  5,
+) as any as S.Schema<CreateBranchRequestStorage>;
+
 /** The kind of branch to create. Required when create_database_if_missing is set. */
 export type CreateBranchRequestKind = "mysql" | "postgresql" | "neki";
+const CreateBranchRequestKind = S.String;
+
 export interface CreateBranchRequest {
   /** The name of the organization the branch belongs to */
   organization: string;
@@ -1216,8 +1621,12 @@ export interface CreateBranchRequest {
   /** The kind of branch to create. Required when create_database_if_missing is set. */
   kind?: CreateBranchRequestKind | (string & {});
 }
+const CreateBranchRequest = /*@__PURE__*/ __L.at(__c7, 6) as any as S.Schema<CreateBranchRequest>;
+
 /** The kind of branch */
 export type DatabaseBranchKind = "mysql" | "postgresql" | "neki";
+const DatabaseBranchKind = S.String;
+
 /** The current state of the branch */
 export type DatabaseBranchState =
   | "pending"
@@ -1225,10 +1634,15 @@ export type DatabaseBranchState =
   | "sleeping"
   | "awakening"
   | "ready";
+const DatabaseBranchState = S.String;
+
 export type DatabaseBranchActor = OrganizationTeamMembershipActor;
 export type DatabaseBranchRestoredFromBranch = OrganizationTeamMembershipUserDefaultOrganization;
 /** Public IP addresses for the region */
 export type DatabaseBranchRegionPublicIpAddressesList = Array<string>;
+const DatabaseBranchRegionPublicIpAddressesList =
+  OrganizationTeamMembershipPasswordsItemCidrsList as any as S.Schema<DatabaseBranchRegionPublicIpAddressesList>;
+
 export interface DatabaseBranchRegion {
   /** The ID of the region */
   id: string;
@@ -1253,8 +1667,13 @@ export interface DatabaseBranchRegion {
   /** Whether the region supports Neki databases */
   neki_supported: boolean;
 }
+const DatabaseBranchRegion = /*@__PURE__*/ __L.at(__c7, 7) as any as S.Schema<DatabaseBranchRegion>;
+
 /** VTGate configuration options */
 export type DatabaseBranchVtgateOptionsMap = { [key: string]: unknown | undefined };
+const DatabaseBranchVtgateOptionsMap =
+  NekiShardAssignmentErrorMap as any as S.Schema<DatabaseBranchVtgateOptionsMap>;
+
 export interface DatabaseBranch {
   /** The ID of the branch */
   id: string;
@@ -1335,12 +1754,19 @@ export interface DatabaseBranch {
   vtgate_options?: DatabaseBranchVtgateOptionsMap | null;
   cluster_architecture?: string;
 }
+const DatabaseBranch = /*@__PURE__*/ __L.at(__c8, 0) as any as S.Schema<DatabaseBranch>;
+
 /** The component to configure. Always `vtgate`. */
 export type CreateBranchConfigChangeRequestRequestChangeType = "vtgate";
+const CreateBranchConfigChangeRequestRequestChangeType = S.String;
+
 /** Parameter names and the values to set them to. Set a value to `null` to reset the parameter to its default. */
 export type CreateBranchConfigChangeRequestRequestOptionsMap = {
   [key: string]: unknown | undefined;
 };
+const CreateBranchConfigChangeRequestRequestOptionsMap =
+  NekiShardAssignmentErrorMap as any as S.Schema<CreateBranchConfigChangeRequestRequestOptionsMap>;
+
 export interface CreateBranchConfigChangeRequestRequest {
   /** The name of the organization the branch belongs to */
   organization: string;
@@ -1353,6 +1779,11 @@ export interface CreateBranchConfigChangeRequestRequest {
   /** Parameter names and the values to set them to. Set a value to `null` to reset the parameter to its default. */
   options: CreateBranchConfigChangeRequestRequestOptionsMap;
 }
+const CreateBranchConfigChangeRequestRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  1,
+) as any as S.Schema<CreateBranchConfigChangeRequestRequest>;
+
 /** The state of the config change request */
 export type BranchConfigChangeRequestState =
   | "draft"
@@ -1362,12 +1793,22 @@ export type BranchConfigChangeRequestState =
   | "completed"
   | "failed"
   | "canceled";
+const BranchConfigChangeRequestState = S.String;
+
 /** The type of configuration being changed */
 export type BranchConfigChangeRequestChangeType = "vtgate";
+const BranchConfigChangeRequestChangeType = S.String;
+
 /** The previous option values */
 export type BranchConfigChangeRequestPreviousOptionsMap = { [key: string]: unknown | undefined };
+const BranchConfigChangeRequestPreviousOptionsMap =
+  NekiShardAssignmentErrorMap as any as S.Schema<BranchConfigChangeRequestPreviousOptionsMap>;
+
 /** The new option values */
 export type BranchConfigChangeRequestNewOptionsMap = { [key: string]: unknown | undefined };
+const BranchConfigChangeRequestNewOptionsMap =
+  NekiShardAssignmentErrorMap as any as S.Schema<BranchConfigChangeRequestNewOptionsMap>;
+
 export type BranchConfigChangeRequestActor = OrganizationTeamMembershipActor;
 export interface BranchConfigChangeRequest {
   /** The ID of the config change request */
@@ -1396,6 +1837,11 @@ export interface BranchConfigChangeRequest {
   queued_until: string | null;
   actor: OrganizationTeamMembershipActor;
 }
+const BranchConfigChangeRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  2,
+) as any as S.Schema<BranchConfigChangeRequest>;
+
 export interface CreateBranchLogSignatureRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
@@ -1404,6 +1850,11 @@ export interface CreateBranchLogSignatureRequest {
   /** Branch name from `list_branches`. Example: `main`. */
   branch: string;
 }
+const CreateBranchLogSignatureRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  3,
+) as any as S.Schema<CreateBranchLogSignatureRequest>;
+
 export interface CreateBranchLogSignatureResponse {
   /** The signature token */
   sig: string;
@@ -1412,14 +1863,24 @@ export interface CreateBranchLogSignatureResponse {
   /** The signed branch logs query URL */
   url: string;
 }
+const CreateBranchLogSignatureResponse = /*@__PURE__*/ __L.at(
+  __c8,
+  4,
+) as any as S.Schema<CreateBranchLogSignatureResponse>;
+
 /** The kind of database to create. */
 export type CreateDatabaseRequestKind = "mysql" | "postgresql" | "neki";
+const CreateDatabaseRequestKind = S.String;
+
 export interface CreateDatabaseRequestStorage {
   /** The initial minimum storage size in bytes. */
   minimum_storage_bytes?: number;
   /** The maximum storage size in bytes for autoscaling. */
   maximum_storage_bytes?: number;
 }
+const CreateDatabaseRequestStorage =
+  CreateBranchRequestStorage as any as S.Schema<CreateDatabaseRequestStorage>;
+
 export interface CreateDatabaseRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
@@ -1437,6 +1898,11 @@ export interface CreateDatabaseRequest {
   major_version?: string;
   storage?: CreateDatabaseRequestStorage;
 }
+const CreateDatabaseRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  5,
+) as any as S.Schema<CreateDatabaseRequest>;
+
 /** Public IP addresses for the region */
 export type DatabaseRegionPublicIpAddressesList = Array<string>;
 export interface DatabaseRegion {
@@ -1463,6 +1929,8 @@ export interface DatabaseRegion {
   /** Whether the region supports Neki databases */
   neki_supported: boolean;
 }
+const DatabaseRegion = DatabaseBranchRegion as any as S.Schema<DatabaseRegion>;
+
 /** State of the database */
 export type DatabaseState =
   | "pending"
@@ -1472,8 +1940,12 @@ export type DatabaseState =
   | "awakening"
   | "import_ready"
   | "ready";
+const DatabaseState = S.String;
+
 /** The kind of database */
 export type DatabaseKind = "mysql" | "postgresql" | "neki";
+const DatabaseKind = S.String;
+
 export interface Database {
   /** The ID of the database */
   id: string;
@@ -1561,8 +2033,13 @@ export interface Database {
   /** The kind of database */
   kind: DatabaseKind;
 }
+const Database = /*@__PURE__*/ __L.at(__c8, 6) as any as S.Schema<Database>;
+
 /** List of IPv4 CIDR ranges (e.g., ['192.168.1.0/24', '192.168.1.1/32']). Must contain at least one valid IPv4 address or range. */
 export type CreateDatabasePostgresCidrRequestCidrsList = Array<string>;
+const CreateDatabasePostgresCidrRequestCidrsList =
+  OrganizationTeamMembershipPasswordsItemCidrsList as any as S.Schema<CreateDatabasePostgresCidrRequestCidrsList>;
+
 export interface CreateDatabasePostgresCidrRequest {
   /** The name of the organization the database belongs to */
   organization: string;
@@ -1577,8 +2054,16 @@ export interface CreateDatabasePostgresCidrRequest {
   /** An optional description for the IP restriction rule. */
   description?: string;
 }
+const CreateDatabasePostgresCidrRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  7,
+) as any as S.Schema<CreateDatabasePostgresCidrRequest>;
+
 /** List of CIDR ranges */
 export type PostgresClusterCidrCidrsList = Array<string>;
+const PostgresClusterCidrCidrsList =
+  OrganizationTeamMembershipPasswordsItemCidrsList as any as S.Schema<PostgresClusterCidrCidrsList>;
+
 export type PostgresClusterCidrActor = OrganizationTeamMembershipActor;
 export interface PostgresClusterCidr {
   /** The ID of the IP allowlist entry */
@@ -1599,6 +2084,8 @@ export interface PostgresClusterCidr {
   deleted_at: string | null;
   actor: OrganizationTeamMembershipActor;
 }
+const PostgresClusterCidr = /*@__PURE__*/ __L.at(__c9, 0) as any as S.Schema<PostgresClusterCidr>;
+
 export interface CreateDedicatedReadReplicaRequestStorage {
   /** The minimum storage size in bytes. */
   minimum_storage_bytes?: number;
@@ -1611,6 +2098,11 @@ export interface CreateDedicatedReadReplicaRequestStorage {
   /** The storage throughput in MiB/s. */
   storage_throughput_mibs?: number;
 }
+const CreateDedicatedReadReplicaRequestStorage = /*@__PURE__*/ __L.at(
+  __c9,
+  1,
+) as any as S.Schema<CreateDedicatedReadReplicaRequestStorage>;
+
 export interface CreateDedicatedReadReplicaRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
@@ -1628,6 +2120,11 @@ export interface CreateDedicatedReadReplicaRequest {
   cluster_size?: string;
   storage?: CreateDedicatedReadReplicaRequestStorage;
 }
+const CreateDedicatedReadReplicaRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  2,
+) as any as S.Schema<CreateDedicatedReadReplicaRequest>;
+
 /** The storage type */
 export type PostgresReadOnlyReplicaStorageType =
   | "gp3"
@@ -1635,9 +2132,14 @@ export type PostgresReadOnlyReplicaStorageType =
   | "pd_ssd"
   | "hyperdisk_balanced"
   | "premium_v2_lrs";
+const PostgresReadOnlyReplicaStorageType = S.String;
+
 export type PostgresReadOnlyReplicaActor = OrganizationTeamMembershipActor;
 /** Public IP addresses for the region */
 export type PostgresReadOnlyReplicaRegionPublicIpAddressesList = Array<string>;
+const PostgresReadOnlyReplicaRegionPublicIpAddressesList =
+  OrganizationTeamMembershipPasswordsItemCidrsList as any as S.Schema<PostgresReadOnlyReplicaRegionPublicIpAddressesList>;
+
 export interface PostgresReadOnlyReplicaRegion {
   /** The ID of the region */
   id: string;
@@ -1662,14 +2164,29 @@ export interface PostgresReadOnlyReplicaRegion {
   /** Whether the region supports Neki databases */
   neki_supported: boolean;
 }
+const PostgresReadOnlyReplicaRegion = /*@__PURE__*/ __L.at(
+  __c9,
+  3,
+) as any as S.Schema<PostgresReadOnlyReplicaRegion>;
+
 /** The namespace of the parameter */
 export type PostgresReadOnlyReplicaParametersItemNamespace = "pgconf";
+const PostgresReadOnlyReplicaParametersItemNamespace = S.String;
+
 /** The type of the parameter */
 export type PostgresReadOnlyReplicaParametersItemParameterType = "integer" | "time";
+const PostgresReadOnlyReplicaParametersItemParameterType = S.String;
+
 /** Valid options for the parameter value */
 export type PostgresReadOnlyReplicaParametersItemOptionsList = Array<string>;
+const PostgresReadOnlyReplicaParametersItemOptionsList =
+  OrganizationTeamMembershipPasswordsItemCidrsList as any as S.Schema<PostgresReadOnlyReplicaParametersItemOptionsList>;
+
 /** Display units for the parameter value */
 export type PostgresReadOnlyReplicaParametersItemUnitsList = Array<string>;
+const PostgresReadOnlyReplicaParametersItemUnitsList =
+  OrganizationTeamMembershipPasswordsItemCidrsList as any as S.Schema<PostgresReadOnlyReplicaParametersItemUnitsList>;
+
 export type PostgresReadOnlyReplicaParametersItemActor = OrganizationTeamMembershipActor;
 export interface PostgresReadOnlyReplicaParametersItem {
   /** The ID of the parameter */
@@ -1714,7 +2231,17 @@ export interface PostgresReadOnlyReplicaParametersItem {
   units: PostgresReadOnlyReplicaParametersItemUnitsList;
   actor: OrganizationTeamMembershipActor;
 }
+const PostgresReadOnlyReplicaParametersItem = /*@__PURE__*/ __L.at(
+  __c9,
+  4,
+) as any as S.Schema<PostgresReadOnlyReplicaParametersItem>;
+
 export type PostgresReadOnlyReplicaParametersList = Array<PostgresReadOnlyReplicaParametersItem>;
+const PostgresReadOnlyReplicaParametersList = /*@__PURE__*/ __L.at(
+  __c9,
+  5,
+) as any as S.Schema<PostgresReadOnlyReplicaParametersList>;
+
 export interface PostgresReadOnlyReplica {
   /** The ID of the dedicated read replica */
   id: string;
@@ -1760,6 +2287,11 @@ export interface PostgresReadOnlyReplica {
   region: PostgresReadOnlyReplicaRegion;
   parameters: PostgresReadOnlyReplicaParametersList;
 }
+const PostgresReadOnlyReplica = /*@__PURE__*/ __L.at(
+  __c9,
+  6,
+) as any as S.Schema<PostgresReadOnlyReplica>;
+
 export interface CreateDeployRequestRequest {
   /** The name of the deploy request's organization */
   organization: string;
@@ -1776,14 +2308,27 @@ export interface CreateDeployRequestRequest {
   /** Whether or not to enable auto_delete_branch for the deploy request. When enabled, will delete the branch once the DR successfully completes. */
   auto_delete_branch?: boolean;
 }
+const CreateDeployRequestRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  7,
+) as any as S.Schema<CreateDeployRequestRequest>;
+
 /** The work the Insights agent should perform */
 export type CreateInsightsAgentRunRequestType =
   | "review_slow_queries"
   | "implement_schema_recommendation";
+const CreateInsightsAgentRunRequestType = S.String;
+
 /** The slow query patterns to review */
 export type CreateInsightsAgentRunRequestQueryPatternsAttributesList = Array<string>;
+const CreateInsightsAgentRunRequestQueryPatternsAttributesList =
+  OrganizationTeamMembershipPasswordsItemCidrsList as any as S.Schema<CreateInsightsAgentRunRequestQueryPatternsAttributesList>;
+
 /** The schema recommendation numbers to implement */
 export type CreateInsightsAgentRunRequestSchemaNumbersList = Array<string>;
+const CreateInsightsAgentRunRequestSchemaNumbersList =
+  OrganizationTeamMembershipPasswordsItemCidrsList as any as S.Schema<CreateInsightsAgentRunRequestSchemaNumbersList>;
+
 export interface CreateInsightsAgentRunRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
@@ -1798,17 +2343,35 @@ export interface CreateInsightsAgentRunRequest {
   /** The schema recommendation numbers to implement */
   schema_numbers?: CreateInsightsAgentRunRequestSchemaNumbersList;
 }
+const CreateInsightsAgentRunRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  0,
+) as any as S.Schema<CreateInsightsAgentRunRequest>;
+
 /** The work performed by the run */
 export type InsightsAgentRunType = "review_slow_queries" | "implement_schema_recommendation";
+const InsightsAgentRunType = S.String;
+
 /** The run state */
 export type InsightsAgentRunState = "queued" | "running" | "succeeded" | "failed" | "cancelled";
+const InsightsAgentRunState = S.String;
+
 /** The repository snapshot and analyzed commit */
 export type InsightsAgentRunRepositoryMap = { [key: string]: unknown | undefined };
+const InsightsAgentRunRepositoryMap =
+  NekiShardAssignmentErrorMap as any as S.Schema<InsightsAgentRunRepositoryMap>;
+
 /** The agent execution snapshot */
 export type InsightsAgentRunAgentMap = { [key: string]: unknown | undefined };
+const InsightsAgentRunAgentMap =
+  NekiShardAssignmentErrorMap as any as S.Schema<InsightsAgentRunAgentMap>;
+
 export type InsightsAgentRunSelectedTargetsItemMap = { [key: string]: unknown | undefined };
 /** The query patterns or schema recommendations selected for the run */
 export type InsightsAgentRunSelectedTargetsList = Array<InsightsAgentRunSelectedTargetsItemMap>;
+const InsightsAgentRunSelectedTargetsList =
+  DatabaseDeployRequestDeploymentPrecedingDeploymentsList as any as S.Schema<InsightsAgentRunSelectedTargetsList>;
+
 export interface InsightsAgentRun {
   /** The Insights agent run ID */
   id: string;
@@ -1855,6 +2418,8 @@ export interface InsightsAgentRun {
   /** When the run was last updated */
   updated_at: string;
 }
+const InsightsAgentRun = /*@__PURE__*/ __L.at(__c10, 1) as any as S.Schema<InsightsAgentRun>;
+
 export interface CreateKeyspaceRequest {
   /** The name of the organization the branch belongs to */
   organization: string;
@@ -1871,13 +2436,22 @@ export interface CreateKeyspaceRequest {
   /** The number of shards. Default: 1 */
   shards?: number;
 }
+const CreateKeyspaceRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  2,
+) as any as S.Schema<CreateKeyspaceRequest>;
+
 /** Controls when node TTL drains are allowed */
 export type DatabaseBranchKeyspaceNodeTtlStrategy =
   | "node_ttl_follow_maintenance"
   | "node_ttl_always"
   | "node_ttl_off";
+const DatabaseBranchKeyspaceNodeTtlStrategy = S.String;
+
 /** The disk scaling strategy */
 export type DatabaseBranchKeyspaceStorageDiskScalingStrategy = "grow" | "disable" | "shrink";
+const DatabaseBranchKeyspaceStorageDiskScalingStrategy = S.String;
+
 export interface DatabaseBranchKeyspaceStorage {
   /** The current provisioned disk size in bytes. Disks grow from and shrink to this size. Custom shards may have staff-set overrides */
   storage_bytes: number;
@@ -1886,15 +2460,27 @@ export interface DatabaseBranchKeyspaceStorage {
   /** The disk scaling strategy */
   disk_scaling_strategy: DatabaseBranchKeyspaceStorageDiskScalingStrategy;
 }
+const DatabaseBranchKeyspaceStorage = /*@__PURE__*/ __L.at(
+  __c10,
+  3,
+) as any as S.Schema<DatabaseBranchKeyspaceStorage>;
+
 /** The replication durability strategy */
 export type DatabaseBranchKeyspaceReplicationDurabilityConstraintsStrategy =
   | "available"
   | "lag"
   | "always";
+const DatabaseBranchKeyspaceReplicationDurabilityConstraintsStrategy = S.String;
+
 export interface DatabaseBranchKeyspaceReplicationDurabilityConstraints {
   /** The replication durability strategy */
   strategy?: DatabaseBranchKeyspaceReplicationDurabilityConstraintsStrategy | null;
 }
+const DatabaseBranchKeyspaceReplicationDurabilityConstraints = /*@__PURE__*/ __L.at(
+  __c10,
+  4,
+) as any as S.Schema<DatabaseBranchKeyspaceReplicationDurabilityConstraints>;
+
 export interface DatabaseBranchKeyspaceVreplicationFlags {
   /** Enable optimized inserts */
   optimize_inserts: boolean;
@@ -1903,16 +2489,32 @@ export interface DatabaseBranchKeyspaceVreplicationFlags {
   /** Enable VPlayer batching */
   vplayer_batching: boolean;
 }
+const DatabaseBranchKeyspaceVreplicationFlags = /*@__PURE__*/ __L.at(
+  __c10,
+  5,
+) as any as S.Schema<DatabaseBranchKeyspaceVreplicationFlags>;
+
 export interface DatabaseBranchKeyspaceThrottler {
   /** Whether the keyspace throttler is enabled */
   enabled: boolean;
   /** Replication lag in seconds that trips the throttler */
   threshold: number | null;
 }
+const DatabaseBranchKeyspaceThrottler = /*@__PURE__*/ __L.at(
+  __c10,
+  6,
+) as any as S.Schema<DatabaseBranchKeyspaceThrottler>;
+
 /** MySQL daemon configuration options */
 export type DatabaseBranchKeyspaceMysqldOptionsMap = { [key: string]: unknown | undefined };
+const DatabaseBranchKeyspaceMysqldOptionsMap =
+  NekiShardAssignmentErrorMap as any as S.Schema<DatabaseBranchKeyspaceMysqldOptionsMap>;
+
 /** VTTablet configuration options */
 export type DatabaseBranchKeyspaceVttabletOptionsMap = { [key: string]: unknown | undefined };
+const DatabaseBranchKeyspaceVttabletOptionsMap =
+  NekiShardAssignmentErrorMap as any as S.Schema<DatabaseBranchKeyspaceVttabletOptionsMap>;
+
 export interface DatabaseBranchKeyspace {
   /** The ID of the keyspace */
   id: string;
@@ -1967,12 +2569,22 @@ export interface DatabaseBranchKeyspace {
   /** VTTablet configuration options */
   vttablet_options: DatabaseBranchKeyspaceVttabletOptionsMap;
 }
+const DatabaseBranchKeyspace = /*@__PURE__*/ __L.at(
+  __c10,
+  7,
+) as any as S.Schema<DatabaseBranchKeyspace>;
+
 /** The component to configure: `vttablet` or `mysqld` */
 export type CreateKeyspaceConfigChangeRequestRequestChangeType = "mysqld" | "vttablet";
+const CreateKeyspaceConfigChangeRequestRequestChangeType = S.String;
+
 /** Parameter names and the values to set them to. Set a value to `null` to reset the parameter to its default. */
 export type CreateKeyspaceConfigChangeRequestRequestOptionsMap = {
   [key: string]: unknown | undefined;
 };
+const CreateKeyspaceConfigChangeRequestRequestOptionsMap =
+  NekiShardAssignmentErrorMap as any as S.Schema<CreateKeyspaceConfigChangeRequestRequestOptionsMap>;
+
 export interface CreateKeyspaceConfigChangeRequestRequest {
   /** The name of the organization the branch belongs to */
   organization: string;
@@ -1987,6 +2599,11 @@ export interface CreateKeyspaceConfigChangeRequestRequest {
   /** Parameter names and the values to set them to. Set a value to `null` to reset the parameter to its default. */
   options: CreateKeyspaceConfigChangeRequestRequestOptionsMap;
 }
+const CreateKeyspaceConfigChangeRequestRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  0,
+) as any as S.Schema<CreateKeyspaceConfigChangeRequestRequest>;
+
 /** The state of the config change request */
 export type KeyspaceConfigChangeRequestState =
   | "draft"
@@ -1996,12 +2613,22 @@ export type KeyspaceConfigChangeRequestState =
   | "completed"
   | "failed"
   | "canceled";
+const KeyspaceConfigChangeRequestState = S.String;
+
 /** The type of configuration being changed */
 export type KeyspaceConfigChangeRequestChangeType = "mysqld" | "vttablet";
+const KeyspaceConfigChangeRequestChangeType = S.String;
+
 /** The previous option values */
 export type KeyspaceConfigChangeRequestPreviousOptionsMap = { [key: string]: unknown | undefined };
+const KeyspaceConfigChangeRequestPreviousOptionsMap =
+  NekiShardAssignmentErrorMap as any as S.Schema<KeyspaceConfigChangeRequestPreviousOptionsMap>;
+
 /** The new option values */
 export type KeyspaceConfigChangeRequestNewOptionsMap = { [key: string]: unknown | undefined };
+const KeyspaceConfigChangeRequestNewOptionsMap =
+  NekiShardAssignmentErrorMap as any as S.Schema<KeyspaceConfigChangeRequestNewOptionsMap>;
+
 export type KeyspaceConfigChangeRequestActor = OrganizationTeamMembershipActor;
 export interface KeyspaceConfigChangeRequest {
   /** The ID of the config change request */
@@ -2030,6 +2657,11 @@ export interface KeyspaceConfigChangeRequest {
   queued_until: string | null;
   actor: OrganizationTeamMembershipActor;
 }
+const KeyspaceConfigChangeRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  1,
+) as any as S.Schema<KeyspaceConfigChangeRequest>;
+
 export interface CreateMoveTablesWorkflowRequest {
   /** Organization name */
   organization: string;
@@ -2038,9 +2670,19 @@ export interface CreateMoveTablesWorkflowRequest {
   /** Branch name */
   branch: string;
 }
+const CreateMoveTablesWorkflowRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  2,
+) as any as S.Schema<CreateMoveTablesWorkflowRequest>;
+
 export interface CreateMoveTablesWorkflowResponse {}
+const CreateMoveTablesWorkflowResponse =
+  CancelAdminChangeRequestResponse as any as S.Schema<CreateMoveTablesWorkflowResponse>;
+
 /** Whether an OAuth grant code or a refresh token is being exchanged for an OAuth token */
 export type CreateOauthTokenRequestGrantType = "authorization_code" | "refresh_token";
+const CreateOauthTokenRequestGrantType = S.String;
+
 export interface CreateOauthTokenRequest {
   /** The name of the organization the OAuth application belongs to */
   organization: string;
@@ -2059,6 +2701,11 @@ export interface CreateOauthTokenRequest {
   /** The refresh token from the original OAuth token grant. Required when grant_type is refresh_token */
   refresh_token?: Redacted.Redacted<string>;
 }
+const CreateOauthTokenRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  3,
+) as any as S.Schema<CreateOauthTokenRequest>;
+
 export type ServiceTokenServiceTokenAccessesItemResource =
   OrganizationTeamMembershipUserDefaultOrganization;
 export interface ServiceTokenServiceTokenAccessesItem {
@@ -2076,7 +2723,17 @@ export interface ServiceTokenServiceTokenAccessesItem {
   resource_type: string;
   resource: OrganizationTeamMembershipUserDefaultOrganization;
 }
+const ServiceTokenServiceTokenAccessesItem = /*@__PURE__*/ __L.at(
+  __c11,
+  4,
+) as any as S.Schema<ServiceTokenServiceTokenAccessesItem>;
+
 export type ServiceTokenServiceTokenAccessesList = Array<ServiceTokenServiceTokenAccessesItem>;
+const ServiceTokenServiceTokenAccessesList = /*@__PURE__*/ __L.at(
+  __c11,
+  5,
+) as any as S.Schema<ServiceTokenServiceTokenAccessesList>;
+
 export interface ServiceTokenOauthAccessesByResourceDatabaseDatabasesItem {
   /** the name of the database the token has access to */
   name: string;
@@ -2087,20 +2744,45 @@ export interface ServiceTokenOauthAccessesByResourceDatabaseDatabasesItem {
   /** the planetscale app url for the database */
   url: string;
 }
+const ServiceTokenOauthAccessesByResourceDatabaseDatabasesItem = /*@__PURE__*/ __L.at(
+  __c11,
+  6,
+) as any as S.Schema<ServiceTokenOauthAccessesByResourceDatabaseDatabasesItem>;
+
 export type ServiceTokenOauthAccessesByResourceDatabaseDatabasesList =
   Array<ServiceTokenOauthAccessesByResourceDatabaseDatabasesItem>;
+const ServiceTokenOauthAccessesByResourceDatabaseDatabasesList = /*@__PURE__*/ __L.at(
+  __c11,
+  7,
+) as any as S.Schema<ServiceTokenOauthAccessesByResourceDatabaseDatabasesList>;
+
 export interface ServiceTokenOauthAccessesByResourceDatabaseAccessesItem {
   /** The name of the access scope */
   name: string;
   /** The scope description */
   description: string;
 }
+const ServiceTokenOauthAccessesByResourceDatabaseAccessesItem = /*@__PURE__*/ __L.at(
+  __c12,
+  0,
+) as any as S.Schema<ServiceTokenOauthAccessesByResourceDatabaseAccessesItem>;
+
 export type ServiceTokenOauthAccessesByResourceDatabaseAccessesList =
   Array<ServiceTokenOauthAccessesByResourceDatabaseAccessesItem>;
+const ServiceTokenOauthAccessesByResourceDatabaseAccessesList = /*@__PURE__*/ __L.at(
+  __c12,
+  1,
+) as any as S.Schema<ServiceTokenOauthAccessesByResourceDatabaseAccessesList>;
+
 export interface ServiceTokenOauthAccessesByResourceDatabase {
   databases: ServiceTokenOauthAccessesByResourceDatabaseDatabasesList;
   accesses: ServiceTokenOauthAccessesByResourceDatabaseAccessesList;
 }
+const ServiceTokenOauthAccessesByResourceDatabase = /*@__PURE__*/ __L.at(
+  __c12,
+  2,
+) as any as S.Schema<ServiceTokenOauthAccessesByResourceDatabase>;
+
 export interface ServiceTokenOauthAccessesByResourceOrganizationOrganizationsItem {
   /** the name of the organization */
   name: string;
@@ -2109,16 +2791,34 @@ export interface ServiceTokenOauthAccessesByResourceOrganizationOrganizationsIte
   /** the planetscale app url for the organization */
   url: string;
 }
+const ServiceTokenOauthAccessesByResourceOrganizationOrganizationsItem = /*@__PURE__*/ __L.at(
+  __c12,
+  3,
+) as any as S.Schema<ServiceTokenOauthAccessesByResourceOrganizationOrganizationsItem>;
+
 export type ServiceTokenOauthAccessesByResourceOrganizationOrganizationsList =
   Array<ServiceTokenOauthAccessesByResourceOrganizationOrganizationsItem>;
+const ServiceTokenOauthAccessesByResourceOrganizationOrganizationsList = /*@__PURE__*/ __L.at(
+  __c12,
+  4,
+) as any as S.Schema<ServiceTokenOauthAccessesByResourceOrganizationOrganizationsList>;
+
 export type ServiceTokenOauthAccessesByResourceOrganizationAccessesItem =
   ServiceTokenOauthAccessesByResourceDatabaseAccessesItem;
 export type ServiceTokenOauthAccessesByResourceOrganizationAccessesList =
   Array<ServiceTokenOauthAccessesByResourceDatabaseAccessesItem>;
+const ServiceTokenOauthAccessesByResourceOrganizationAccessesList =
+  ServiceTokenOauthAccessesByResourceDatabaseAccessesList as any as S.Schema<ServiceTokenOauthAccessesByResourceOrganizationAccessesList>;
+
 export interface ServiceTokenOauthAccessesByResourceOrganization {
   organizations: ServiceTokenOauthAccessesByResourceOrganizationOrganizationsList;
   accesses: ServiceTokenOauthAccessesByResourceOrganizationAccessesList;
 }
+const ServiceTokenOauthAccessesByResourceOrganization = /*@__PURE__*/ __L.at(
+  __c12,
+  5,
+) as any as S.Schema<ServiceTokenOauthAccessesByResourceOrganization>;
+
 export interface ServiceTokenOauthAccessesByResourceBranchBranchesItem {
   /** the name of the branch */
   name: string;
@@ -2131,38 +2831,79 @@ export interface ServiceTokenOauthAccessesByResourceBranchBranchesItem {
   /** the planetscale app url for the branch */
   url: string;
 }
+const ServiceTokenOauthAccessesByResourceBranchBranchesItem = /*@__PURE__*/ __L.at(
+  __c12,
+  6,
+) as any as S.Schema<ServiceTokenOauthAccessesByResourceBranchBranchesItem>;
+
 export type ServiceTokenOauthAccessesByResourceBranchBranchesList =
   Array<ServiceTokenOauthAccessesByResourceBranchBranchesItem>;
+const ServiceTokenOauthAccessesByResourceBranchBranchesList = /*@__PURE__*/ __L.at(
+  __c12,
+  7,
+) as any as S.Schema<ServiceTokenOauthAccessesByResourceBranchBranchesList>;
+
 export type ServiceTokenOauthAccessesByResourceBranchAccessesItem =
   ServiceTokenOauthAccessesByResourceDatabaseAccessesItem;
 export type ServiceTokenOauthAccessesByResourceBranchAccessesList =
   Array<ServiceTokenOauthAccessesByResourceDatabaseAccessesItem>;
+const ServiceTokenOauthAccessesByResourceBranchAccessesList =
+  ServiceTokenOauthAccessesByResourceDatabaseAccessesList as any as S.Schema<ServiceTokenOauthAccessesByResourceBranchAccessesList>;
+
 export interface ServiceTokenOauthAccessesByResourceBranch {
   branches: ServiceTokenOauthAccessesByResourceBranchBranchesList;
   accesses: ServiceTokenOauthAccessesByResourceBranchAccessesList;
 }
+const ServiceTokenOauthAccessesByResourceBranch = /*@__PURE__*/ __L.at(
+  __c13,
+  0,
+) as any as S.Schema<ServiceTokenOauthAccessesByResourceBranch>;
+
 export interface ServiceTokenOauthAccessesByResourceUserUsersItem {
   /** the name of the user */
   name: string;
   /** the id of the user */
   id: string;
 }
+const ServiceTokenOauthAccessesByResourceUserUsersItem = /*@__PURE__*/ __L.at(
+  __c13,
+  1,
+) as any as S.Schema<ServiceTokenOauthAccessesByResourceUserUsersItem>;
+
 export type ServiceTokenOauthAccessesByResourceUserUsersList =
   Array<ServiceTokenOauthAccessesByResourceUserUsersItem>;
+const ServiceTokenOauthAccessesByResourceUserUsersList = /*@__PURE__*/ __L.at(
+  __c13,
+  2,
+) as any as S.Schema<ServiceTokenOauthAccessesByResourceUserUsersList>;
+
 export type ServiceTokenOauthAccessesByResourceUserAccessesItem =
   ServiceTokenOauthAccessesByResourceDatabaseAccessesItem;
 export type ServiceTokenOauthAccessesByResourceUserAccessesList =
   Array<ServiceTokenOauthAccessesByResourceDatabaseAccessesItem>;
+const ServiceTokenOauthAccessesByResourceUserAccessesList =
+  ServiceTokenOauthAccessesByResourceDatabaseAccessesList as any as S.Schema<ServiceTokenOauthAccessesByResourceUserAccessesList>;
+
 export interface ServiceTokenOauthAccessesByResourceUser {
   users: ServiceTokenOauthAccessesByResourceUserUsersList;
   accesses: ServiceTokenOauthAccessesByResourceUserAccessesList;
 }
+const ServiceTokenOauthAccessesByResourceUser = /*@__PURE__*/ __L.at(
+  __c13,
+  3,
+) as any as S.Schema<ServiceTokenOauthAccessesByResourceUser>;
+
 export interface ServiceTokenOauthAccessesByResource {
   database: ServiceTokenOauthAccessesByResourceDatabase;
   organization: ServiceTokenOauthAccessesByResourceOrganization;
   branch: ServiceTokenOauthAccessesByResourceBranch;
   user: ServiceTokenOauthAccessesByResourceUser;
 }
+const ServiceTokenOauthAccessesByResource = /*@__PURE__*/ __L.at(
+  __c13,
+  4,
+) as any as S.Schema<ServiceTokenOauthAccessesByResource>;
+
 export interface ServiceToken {
   /** The ID of the service token */
   id: string;
@@ -2193,8 +2934,12 @@ export interface ServiceToken {
   service_token_accesses?: ServiceTokenServiceTokenAccessesList | null;
   oauth_accesses_by_resource?: ServiceTokenOauthAccessesByResource | null;
 }
+const ServiceToken = /*@__PURE__*/ __L.at(__c13, 5) as any as S.Schema<ServiceToken>;
+
 /** The role granted when the invitation is accepted. Defaults to member. Service tokens can only invite members; requesting another role returns 422. */
 export type CreateOrganizationInvitationRequestRole = "admin" | "analyst" | "member";
+const CreateOrganizationInvitationRequestRole = S.String;
+
 export interface CreateOrganizationInvitationRequest {
   /** The name of the organization */
   organization: string;
@@ -2203,8 +2948,15 @@ export interface CreateOrganizationInvitationRequest {
   /** The role granted when the invitation is accepted. Defaults to member. Service tokens can only invite members; requesting another role returns 422. */
   role?: CreateOrganizationInvitationRequestRole | (string & {});
 }
+const CreateOrganizationInvitationRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  6,
+) as any as S.Schema<CreateOrganizationInvitationRequest>;
+
 /** The role granted when the invitation is accepted. Invitations sent by service tokens are always member. */
 export type OrganizationInvitationRole = "admin" | "analyst" | "member";
+const OrganizationInvitationRole = S.String;
+
 export type OrganizationInvitationSenderDefaultOrganization =
   OrganizationTeamMembershipUserDefaultOrganization;
 export type OrganizationInvitationSender = OrganizationTeamMembershipUser;
@@ -2229,14 +2981,27 @@ export interface OrganizationInvitation {
   /** The URL of the avatar shown for the invitation */
   avatar_url: string;
 }
+const OrganizationInvitation = /*@__PURE__*/ __L.at(
+  __c13,
+  7,
+) as any as S.Schema<OrganizationInvitation>;
+
 export interface CreateOrganizationSsoDomainRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
 }
+const CreateOrganizationSsoDomainRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  0,
+) as any as S.Schema<CreateOrganizationSsoDomainRequest>;
+
 export interface CreateOrganizationSsoDomainResponse {
   /** URL to open for verifying an email domain */
   portal_url: string;
 }
+const CreateOrganizationSsoDomainResponse =
+  ConfigureOrganizationSsoResponse as any as S.Schema<CreateOrganizationSsoDomainResponse>;
+
 export interface CreateOrganizationTeamRequest {
   /** The name of the organization */
   organization: string;
@@ -2245,11 +3010,21 @@ export interface CreateOrganizationTeamRequest {
   /** A description of the team's purpose */
   description?: string;
 }
+const CreateOrganizationTeamRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  1,
+) as any as S.Schema<CreateOrganizationTeamRequest>;
+
 export type OrganizationTeamCreator = OrganizationTeamMembershipActor;
 export type OrganizationTeamMembersItemDefaultOrganization =
   OrganizationTeamMembershipUserDefaultOrganization;
 export type OrganizationTeamMembersItem = OrganizationTeamMembershipUser;
 export type OrganizationTeamMembersList = Array<OrganizationTeamMembershipUser>;
+const OrganizationTeamMembersList = /*@__PURE__*/ __L.at(
+  __c14,
+  2,
+) as any as S.Schema<OrganizationTeamMembersList>;
+
 export interface OrganizationTeamDatabasesItem {
   /** The ID of the database */
   id: string;
@@ -2260,9 +3035,22 @@ export interface OrganizationTeamDatabasesItem {
   /** The URL to retrieve this database's branches via the API */
   branches_url: string;
 }
+const OrganizationTeamDatabasesItem = /*@__PURE__*/ __L.at(
+  __c14,
+  3,
+) as any as S.Schema<OrganizationTeamDatabasesItem>;
+
 export type OrganizationTeamDatabasesList = Array<OrganizationTeamDatabasesItem>;
+const OrganizationTeamDatabasesList = /*@__PURE__*/ __L.at(
+  __c14,
+  4,
+) as any as S.Schema<OrganizationTeamDatabasesList>;
+
 export type OrganizationTeamAnalystDatabasesItem = OrganizationTeamDatabasesItem;
 export type OrganizationTeamAnalystDatabasesList = Array<OrganizationTeamDatabasesItem>;
+const OrganizationTeamAnalystDatabasesList =
+  OrganizationTeamDatabasesList as any as S.Schema<OrganizationTeamAnalystDatabasesList>;
+
 export interface OrganizationTeam {
   /** The ID of the team */
   id: string;
@@ -2285,10 +3073,17 @@ export interface OrganizationTeam {
   /** Whether the team is managed through SSO/directory services */
   managed: boolean;
 }
+const OrganizationTeam = /*@__PURE__*/ __L.at(__c14, 5) as any as S.Schema<OrganizationTeam>;
+
 /** The database role of the password (i.e. admin) */
 export type CreatePasswordRequestRole = "reader" | "writer" | "admin" | "readwriter";
+const CreatePasswordRequestRole = S.String;
+
 /** List of IP addresses or CIDR ranges that can use this password */
 export type CreatePasswordRequestCidrsList = Array<string>;
+const CreatePasswordRequestCidrsList =
+  OrganizationTeamMembershipPasswordsItemCidrsList as any as S.Schema<CreatePasswordRequestCidrsList>;
+
 export interface CreatePasswordRequest {
   /** The name of the organization the password belongs to */
   organization: string;
@@ -2309,14 +3104,30 @@ export interface CreatePasswordRequest {
   /** Whether the password connects directly to a VTGate */
   direct_vtgate?: boolean;
 }
+const CreatePasswordRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  6,
+) as any as S.Schema<CreatePasswordRequest>;
+
 /** The role for the password */
 export type DatabaseBranchPasswordWithSecretRole = "reader" | "writer" | "admin" | "readwriter";
+const DatabaseBranchPasswordWithSecretRole = S.String;
+
 /** List of IP addresses or CIDR ranges that can use this password */
 export type DatabaseBranchPasswordWithSecretCidrsList = Array<string>;
+const DatabaseBranchPasswordWithSecretCidrsList =
+  OrganizationTeamMembershipPasswordsItemCidrsList as any as S.Schema<DatabaseBranchPasswordWithSecretCidrsList>;
+
 /** The list of hosts in each availability zone providing direct access to a vtgate */
 export type DatabaseBranchPasswordWithSecretDirectVtgateAddressesList = Array<string>;
+const DatabaseBranchPasswordWithSecretDirectVtgateAddressesList =
+  OrganizationTeamMembershipPasswordsItemCidrsList as any as S.Schema<DatabaseBranchPasswordWithSecretDirectVtgateAddressesList>;
+
 /** The read-only replica host URLs */
 export type DatabaseBranchPasswordWithSecretAccessHostRegionalUrlsList = Array<string>;
+const DatabaseBranchPasswordWithSecretAccessHostRegionalUrlsList =
+  OrganizationTeamMembershipPasswordsItemCidrsList as any as S.Schema<DatabaseBranchPasswordWithSecretAccessHostRegionalUrlsList>;
+
 export type DatabaseBranchPasswordWithSecretActor = OrganizationTeamMembershipActor;
 /** Public IP addresses for the region */
 export type DatabaseBranchPasswordWithSecretRegionPublicIpAddressesList = Array<string>;
@@ -2344,6 +3155,9 @@ export interface DatabaseBranchPasswordWithSecretRegion {
   /** Whether the region supports Neki databases */
   neki_supported: boolean;
 }
+const DatabaseBranchPasswordWithSecretRegion =
+  PostgresReadOnlyReplicaRegion as any as S.Schema<DatabaseBranchPasswordWithSecretRegion>;
+
 export type DatabaseBranchPasswordWithSecretDatabaseBranch =
   OrganizationTeamMembershipPasswordsItemDatabaseBranch;
 export interface DatabaseBranchPasswordWithSecret {
@@ -2391,6 +3205,11 @@ export interface DatabaseBranchPasswordWithSecret {
   renewable: boolean;
   database_branch: OrganizationTeamMembershipPasswordsItemDatabaseBranch;
 }
+const DatabaseBranchPasswordWithSecret = /*@__PURE__*/ __L.at(
+  __c14,
+  7,
+) as any as S.Schema<DatabaseBranchPasswordWithSecret>;
+
 export interface CreateQueryPatternsReportRequest {
   /** The name of the organization the branch belongs to */
   organization: string;
@@ -2399,8 +3218,15 @@ export interface CreateQueryPatternsReportRequest {
   /** The name of the branch */
   branch: string;
 }
+const CreateQueryPatternsReportRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  0,
+) as any as S.Schema<CreateQueryPatternsReportRequest>;
+
 /** The state of the download */
 export type QueryPatternsDownloadState = "pending" | "completed" | "failed";
+const QueryPatternsDownloadState = S.String;
+
 export type QueryPatternsDownloadActor = OrganizationTeamMembershipActor;
 export interface QueryPatternsDownload {
   /** The ID of the query patterns download */
@@ -2417,6 +3243,11 @@ export interface QueryPatternsDownload {
   download_url: string;
   actor: OrganizationTeamMembershipActor;
 }
+const QueryPatternsDownload = /*@__PURE__*/ __L.at(
+  __c15,
+  1,
+) as any as S.Schema<QueryPatternsDownload>;
+
 export type CreateRoleRequestInheritedRolesItem =
   | "pg_checkpoint"
   | "pg_create_subscription"
@@ -2432,10 +3263,17 @@ export type CreateRoleRequestInheritedRolesItem =
   | "postgres"
   | "neki_operator"
   | "neki_viewer";
+const CreateRoleRequestInheritedRolesItem = S.String;
+
 /** Roles to inherit from */
 export type CreateRoleRequestInheritedRolesList = Array<
   CreateRoleRequestInheritedRolesItem | (string & {})
 >;
+const CreateRoleRequestInheritedRolesList = /*@__PURE__*/ __L.at(
+  __c15,
+  2,
+) as any as S.Schema<CreateRoleRequestInheritedRolesList>;
+
 export interface CreateRoleRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
@@ -2456,6 +3294,8 @@ export interface CreateRoleRequest {
   /** Require WHERE clause on UPDATE statements */
   require_where_on_update?: string;
 }
+const CreateRoleRequest = /*@__PURE__*/ __L.at(__c15, 3) as any as S.Schema<CreateRoleRequest>;
+
 export type PostgresRoleInheritedRolesItem =
   | "pg_checkpoint"
   | "pg_create_subscription"
@@ -2471,18 +3311,30 @@ export type PostgresRoleInheritedRolesItem =
   | "postgres";
 /** Database roles these credentials inherit */
 export type PostgresRoleInheritedRolesList = Array<PostgresRoleInheritedRolesItem>;
+const PostgresRoleInheritedRolesList =
+  CreateRoleRequestInheritedRolesList as any as S.Schema<PostgresRoleInheritedRolesList>;
+
 export type PostgresRoleBranch = OrganizationTeamMembershipUserDefaultOrganization;
 export type PostgresRoleActor = OrganizationTeamMembershipActor;
 /** Require WHERE clause on DELETE statements */
 export type PostgresRoleQuerySafetySettingsRequireWhereOnDelete = "off" | "warn" | "on";
+const PostgresRoleQuerySafetySettingsRequireWhereOnDelete = S.String;
+
 /** Require WHERE clause on UPDATE statements */
 export type PostgresRoleQuerySafetySettingsRequireWhereOnUpdate = "off" | "warn" | "on";
+const PostgresRoleQuerySafetySettingsRequireWhereOnUpdate = S.String;
+
 export interface PostgresRoleQuerySafetySettings {
   /** Require WHERE clause on DELETE statements */
   require_where_on_delete: PostgresRoleQuerySafetySettingsRequireWhereOnDelete;
   /** Require WHERE clause on UPDATE statements */
   require_where_on_update: PostgresRoleQuerySafetySettingsRequireWhereOnUpdate;
 }
+const PostgresRoleQuerySafetySettings = /*@__PURE__*/ __L.at(
+  __c15,
+  4,
+) as any as S.Schema<PostgresRoleQuerySafetySettings>;
+
 export interface PostgresRole {
   /** The ID of the role */
   id: string;
@@ -2532,6 +3384,8 @@ export interface PostgresRole {
   actor: OrganizationTeamMembershipActor;
   query_safety_settings: PostgresRoleQuerySafetySettings;
 }
+const PostgresRole = /*@__PURE__*/ __L.at(__c15, 5) as any as S.Schema<PostgresRole>;
+
 export interface CreateRouterRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
@@ -2546,6 +3400,8 @@ export interface CreateRouterRequest {
   /** The number of router instances per availability zone. Defaults to the service's default count. */
   replicas_per_cell?: number;
 }
+const CreateRouterRequest = /*@__PURE__*/ __L.at(__c15, 6) as any as S.Schema<CreateRouterRequest>;
+
 export interface NekiRouterSku {
   /** The name of the Neki router SKU */
   name: string;
@@ -2562,8 +3418,12 @@ export interface NekiRouterSku {
   /** Whether or not the router SKU is enabled for the organization */
   enabled: boolean;
 }
+const NekiRouterSku = /*@__PURE__*/ __L.at(__c15, 7) as any as S.Schema<NekiRouterSku>;
+
 /** The current state of the router */
 export type NekiRouterState = "pending" | "applying" | "ready";
+const NekiRouterState = S.String;
+
 export interface NekiRouter {
   /** The ID of the router */
   id: string;
@@ -2589,6 +3449,8 @@ export interface NekiRouter {
   /** When the router was last updated */
   updated_at: string;
 }
+const NekiRouter = /*@__PURE__*/ __L.at(__c16, 0) as any as S.Schema<NekiRouter>;
+
 export interface CreateServiceTokenRequest {
   /** The name of the organization */
   organization: string;
@@ -2597,6 +3459,11 @@ export interface CreateServiceTokenRequest {
   /** Time to live (in seconds) for the service token. The token will be invalid when TTL has passed */
   ttl?: number;
 }
+const CreateServiceTokenRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  1,
+) as any as S.Schema<CreateServiceTokenRequest>;
+
 export interface CreateShardRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
@@ -2605,7 +3472,11 @@ export interface CreateShardRequest {
   /** Branch name from `list_branches`. Example: `main`. */
   branch: string;
 }
+const CreateShardRequest = /*@__PURE__*/ __L.at(__c16, 2) as any as S.Schema<CreateShardRequest>;
+
 export interface CreateShardResponse {}
+const CreateShardResponse = /*@__PURE__*/ __L.at(__c16, 3) as any as S.Schema<CreateShardResponse>;
+
 export type CreateShardConfigurationProfileRequestStorage =
   CreateDedicatedReadReplicaRequestStorage;
 export interface CreateShardConfigurationProfileRequest {
@@ -2627,6 +3498,11 @@ export interface CreateShardConfigurationProfileRequest {
   postgres_minor_version?: string;
   storage?: CreateDedicatedReadReplicaRequestStorage;
 }
+const CreateShardConfigurationProfileRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  4,
+) as any as S.Schema<CreateShardConfigurationProfileRequest>;
+
 export interface NekiShardConfigurationProfileStorage {
   /** The minimum storage size in bytes */
   minimum_storage_bytes: number | null;
@@ -2639,8 +3515,15 @@ export interface NekiShardConfigurationProfileStorage {
   /** The storage throughput in MiB/s */
   storage_throughput_mibs: number | null;
 }
+const NekiShardConfigurationProfileStorage = /*@__PURE__*/ __L.at(
+  __c16,
+  5,
+) as any as S.Schema<NekiShardConfigurationProfileStorage>;
+
 /** The current state of the shard configuration profile */
 export type NekiShardConfigurationProfileState = "draft" | "pending" | "applying" | "ready";
+const NekiShardConfigurationProfileState = S.String;
+
 export interface NekiShardConfigurationProfile {
   /** The ID of the shard configuration profile */
   id: string;
@@ -2678,6 +3561,11 @@ export interface NekiShardConfigurationProfile {
   /** When the shard configuration profile was last updated */
   updated_at: string;
 }
+const NekiShardConfigurationProfile = /*@__PURE__*/ __L.at(
+  __c16,
+  6,
+) as any as S.Schema<NekiShardConfigurationProfile>;
+
 export interface CreateShardConfigurationProfileShardRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
@@ -2690,6 +3578,11 @@ export interface CreateShardConfigurationProfileShardRequest {
   /** The display name of the shard */
   display_name?: string;
 }
+const CreateShardConfigurationProfileShardRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  7,
+) as any as S.Schema<CreateShardConfigurationProfileShardRequest>;
+
 export interface NekiShard {
   /** The ID of the shard */
   id: string;
@@ -2706,6 +3599,8 @@ export interface NekiShard {
   /** Whether the shard is the authoritative shard of the cluster */
   authoritative: boolean;
 }
+const NekiShard = /*@__PURE__*/ __L.at(__c17, 0) as any as S.Schema<NekiShard>;
+
 export interface CreateSwitchoverRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
@@ -2716,10 +3611,19 @@ export interface CreateSwitchoverRequest {
   /** The exact `name` of the replica returned by the branch's Postgres infrastructure endpoint to promote. Omit to let the operator select an eligible replica. Only applies to branches with replicas. */
   candidate?: string;
 }
+const CreateSwitchoverRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  1,
+) as any as S.Schema<CreateSwitchoverRequest>;
+
 /** The state of the switchover */
 export type PostgresSwitchoverState = "pending" | "running" | "succeeded" | "failed" | "canceled";
+const PostgresSwitchoverState = S.String;
+
 /** How the primary was moved. `switchover` promotes a replica on a highly available branch; `restart` restarts the single instance of a branch that has no replicas. Absent until the operator selects one. */
 export type PostgresSwitchoverMethod = "switchover" | "restart";
+const PostgresSwitchoverMethod = S.String;
+
 export type PostgresSwitchoverActor = OrganizationTeamMembershipActor;
 export interface PostgresSwitchover {
   /** The ID of the switchover */
@@ -2740,10 +3644,17 @@ export interface PostgresSwitchover {
   updated_at: string;
   actor: OrganizationTeamMembershipActor;
 }
+const PostgresSwitchover = /*@__PURE__*/ __L.at(__c17, 2) as any as S.Schema<PostgresSwitchover>;
+
 /** The mode of the traffic budget */
 export type CreateTrafficBudgetRequestMode = "enforce" | "warn" | "off";
+const CreateTrafficBudgetRequestMode = S.String;
+
 /** Array of traffic rules to apply to the budget */
 export type CreateTrafficBudgetRequestRulesList = Array<string>;
+const CreateTrafficBudgetRequestRulesList =
+  OrganizationTeamMembershipPasswordsItemCidrsList as any as S.Schema<CreateTrafficBudgetRequestRulesList>;
+
 export interface CreateTrafficBudgetRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
@@ -2768,13 +3679,24 @@ export interface CreateTrafficBudgetRequest {
   /** Array of traffic rules to apply to the budget */
   rules?: CreateTrafficBudgetRequestRulesList;
 }
+const CreateTrafficBudgetRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  3,
+) as any as S.Schema<CreateTrafficBudgetRequest>;
+
 /** The mode of the budget */
 export type TrafficBudgetMode = "enforce" | "warn" | "off";
+const TrafficBudgetMode = S.String;
+
 export type TrafficBudgetActor = OrganizationTeamMembershipActor;
 /** The kind of rule */
 export type TrafficBudgetRulesItemKind = "match" | "each";
+const TrafficBudgetRulesItemKind = S.String;
+
 /** The source of this tag */
 export type TrafficBudgetRulesItemTagsItemSource = "sql" | "system";
+const TrafficBudgetRulesItemTagsItemSource = S.String;
+
 export interface TrafficBudgetRulesItemTagsItem {
   /** The ID of the key for this tag */
   key_id: string;
@@ -2785,7 +3707,17 @@ export interface TrafficBudgetRulesItemTagsItem {
   /** The source of this tag */
   source: TrafficBudgetRulesItemTagsItemSource;
 }
+const TrafficBudgetRulesItemTagsItem = /*@__PURE__*/ __L.at(
+  __c17,
+  4,
+) as any as S.Schema<TrafficBudgetRulesItemTagsItem>;
+
 export type TrafficBudgetRulesItemTagsList = Array<TrafficBudgetRulesItemTagsItem>;
+const TrafficBudgetRulesItemTagsList = /*@__PURE__*/ __L.at(
+  __c17,
+  5,
+) as any as S.Schema<TrafficBudgetRulesItemTagsList>;
+
 export type TrafficBudgetRulesItemActor = OrganizationTeamMembershipActor;
 export interface TrafficBudgetRulesItem {
   /** The ID of the traffic rule */
@@ -2805,7 +3737,17 @@ export interface TrafficBudgetRulesItem {
   /** When the rule was updated */
   updated_at: string;
 }
+const TrafficBudgetRulesItem = /*@__PURE__*/ __L.at(
+  __c17,
+  6,
+) as any as S.Schema<TrafficBudgetRulesItem>;
+
 export type TrafficBudgetRulesList = Array<TrafficBudgetRulesItem>;
+const TrafficBudgetRulesList = /*@__PURE__*/ __L.at(
+  __c17,
+  7,
+) as any as S.Schema<TrafficBudgetRulesList>;
+
 export interface TrafficBudget {
   /** The ID of the traffic budget */
   id: string;
@@ -2830,10 +3772,17 @@ export interface TrafficBudget {
   /** When the budget was updated */
   updated_at: string;
 }
+const TrafficBudget = /*@__PURE__*/ __L.at(__c18, 0) as any as S.Schema<TrafficBudget>;
+
 /** Kind of rule */
 export type CreateTrafficRuleRequestKind = "match" | "each";
+const CreateTrafficRuleRequestKind = S.String;
+
 /** Optional array of tags for this rule. Each rules take exactly one tag. */
 export type CreateTrafficRuleRequestTagsList = Array<string>;
+const CreateTrafficRuleRequestTagsList =
+  OrganizationTeamMembershipPasswordsItemCidrsList as any as S.Schema<CreateTrafficRuleRequestTagsList>;
+
 export interface CreateTrafficRuleRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
@@ -2852,10 +3801,19 @@ export interface CreateTrafficRuleRequest {
   /** Optional array of tags for this rule. Each rules take exactly one tag. */
   tags?: CreateTrafficRuleRequestTagsList;
 }
+const CreateTrafficRuleRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  1,
+) as any as S.Schema<CreateTrafficRuleRequest>;
+
 /** The kind of rule */
 export type TrafficRuleKind = "match" | "each";
+const TrafficRuleKind = S.String;
+
 /** The source of this tag */
 export type TrafficRuleTagsItemSource = "sql" | "system";
+const TrafficRuleTagsItemSource = S.String;
+
 export interface TrafficRuleTagsItem {
   /** The ID of the key for this tag */
   key_id: string;
@@ -2866,7 +3824,11 @@ export interface TrafficRuleTagsItem {
   /** The source of this tag */
   source: TrafficRuleTagsItemSource;
 }
+const TrafficRuleTagsItem = /*@__PURE__*/ __L.at(__c18, 2) as any as S.Schema<TrafficRuleTagsItem>;
+
 export type TrafficRuleTagsList = Array<TrafficRuleTagsItem>;
+const TrafficRuleTagsList = /*@__PURE__*/ __L.at(__c18, 3) as any as S.Schema<TrafficRuleTagsList>;
+
 export type TrafficRuleActor = OrganizationTeamMembershipActor;
 export interface TrafficRule {
   /** The ID of the traffic rule */
@@ -2886,8 +3848,13 @@ export interface TrafficRule {
   /** When the rule was updated */
   updated_at: string;
 }
+const TrafficRule = /*@__PURE__*/ __L.at(__c18, 4) as any as S.Schema<TrafficRule>;
+
 /** The events this webhook should subscribe to */
 export type CreateWebhookRequestEventsList = Array<string>;
+const CreateWebhookRequestEventsList =
+  OrganizationTeamMembershipPasswordsItemCidrsList as any as S.Schema<CreateWebhookRequestEventsList>;
+
 export interface CreateWebhookRequest {
   /** The name of the organization */
   organization: string;
@@ -2902,6 +3869,11 @@ export interface CreateWebhookRequest {
   /** The events this webhook should subscribe to */
   events?: CreateWebhookRequestEventsList;
 }
+const CreateWebhookRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  5,
+) as any as S.Schema<CreateWebhookRequest>;
+
 export type DatabaseWebhookEventsItem =
   | "branch.ready"
   | "branch.anomaly"
@@ -2927,6 +3899,9 @@ export type DatabaseWebhookEventsItem =
   | "webhook.test";
 /** The events this webhook subscribes to */
 export type DatabaseWebhookEventsList = Array<DatabaseWebhookEventsItem>;
+const DatabaseWebhookEventsList =
+  CreateRoleRequestInheritedRolesList as any as S.Schema<DatabaseWebhookEventsList>;
+
 export interface DatabaseWebhook {
   /** The ID of the webhook */
   id: string;
@@ -2951,10 +3926,17 @@ export interface DatabaseWebhook {
   /** The events this webhook subscribes to */
   events: DatabaseWebhookEventsList;
 }
+const DatabaseWebhook = /*@__PURE__*/ __L.at(__c18, 6) as any as S.Schema<DatabaseWebhook>;
+
 /** The behavior when DDL changes during the workflow */
 export type CreateWorkflowRequestOnDdl = "IGNORE" | "STOP" | "EXEC" | "EXEC_IGNORE";
+const CreateWorkflowRequestOnDdl = S.String;
+
 /** List of tables to move */
 export type CreateWorkflowRequestTablesList = Array<string>;
+const CreateWorkflowRequestTablesList =
+  OrganizationTeamMembershipPasswordsItemCidrsList as any as S.Schema<CreateWorkflowRequestTablesList>;
+
 export interface CreateWorkflowRequest {
   /** The name of the organization the workflow belongs to */
   organization: string;
@@ -2975,6 +3957,11 @@ export interface CreateWorkflowRequest {
   /** List of tables to move */
   tables: CreateWorkflowRequestTablesList;
 }
+const CreateWorkflowRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  7,
+) as any as S.Schema<CreateWorkflowRequest>;
+
 export interface DeleteBackupRequest {
   /** The name of the organization the branch belongs to */
   organization: string;
@@ -2985,7 +3972,11 @@ export interface DeleteBackupRequest {
   /** The ID of the backup */
   id: string;
 }
+const DeleteBackupRequest = /*@__PURE__*/ __L.at(__c19, 0) as any as S.Schema<DeleteBackupRequest>;
+
 export interface DeleteBackupResponse {}
+const DeleteBackupResponse = CreateShardResponse as any as S.Schema<DeleteBackupResponse>;
+
 export interface DeleteBackupPolicyRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
@@ -2994,7 +3985,15 @@ export interface DeleteBackupPolicyRequest {
   /** The ID of the backup policy */
   id: string;
 }
+const DeleteBackupPolicyRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  1,
+) as any as S.Schema<DeleteBackupPolicyRequest>;
+
 export interface DeleteBackupPolicyResponse {}
+const DeleteBackupPolicyResponse =
+  CreateShardResponse as any as S.Schema<DeleteBackupPolicyResponse>;
+
 export interface DeleteBouncerRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
@@ -3005,7 +4004,14 @@ export interface DeleteBouncerRequest {
   /** The name of the bouncer */
   bouncer: string;
 }
+const DeleteBouncerRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  2,
+) as any as S.Schema<DeleteBouncerRequest>;
+
 export interface DeleteBouncerResponse {}
+const DeleteBouncerResponse = CreateShardResponse as any as S.Schema<DeleteBouncerResponse>;
+
 export interface DeleteBranchRequest {
   /** The name of the organization the branch belongs to */
   organization: string;
@@ -3016,14 +4022,25 @@ export interface DeleteBranchRequest {
   /** If true, recursively delete all descendant branches along with this branch */
   delete_descendants?: boolean;
 }
+const DeleteBranchRequest = /*@__PURE__*/ __L.at(__c19, 3) as any as S.Schema<DeleteBranchRequest>;
+
 export interface DeleteBranchResponse {}
+const DeleteBranchResponse = CreateShardResponse as any as S.Schema<DeleteBranchResponse>;
+
 export interface DeleteDatabaseRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
   /** Database name slug from `list_databases`. Example: `app-db`. */
   database: string;
 }
+const DeleteDatabaseRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  4,
+) as any as S.Schema<DeleteDatabaseRequest>;
+
 export interface DeleteDatabaseResponse {}
+const DeleteDatabaseResponse = CreateShardResponse as any as S.Schema<DeleteDatabaseResponse>;
+
 export interface DeleteDatabasePostgresCidrRequest {
   /** The name of the organization the database belongs to */
   organization: string;
@@ -3032,7 +4049,15 @@ export interface DeleteDatabasePostgresCidrRequest {
   /** The ID of the IP restriction entry */
   id: string;
 }
+const DeleteDatabasePostgresCidrRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  5,
+) as any as S.Schema<DeleteDatabasePostgresCidrRequest>;
+
 export interface DeleteDatabasePostgresCidrResponse {}
+const DeleteDatabasePostgresCidrResponse =
+  CancelAdminChangeRequestResponse as any as S.Schema<DeleteDatabasePostgresCidrResponse>;
+
 export interface DeleteDedicatedReadReplicaRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
@@ -3043,7 +4068,15 @@ export interface DeleteDedicatedReadReplicaRequest {
   /** The name of the dedicated read replica */
   dedicated_read_replica: string;
 }
+const DeleteDedicatedReadReplicaRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  6,
+) as any as S.Schema<DeleteDedicatedReadReplicaRequest>;
+
 export interface DeleteDedicatedReadReplicaResponse {}
+const DeleteDedicatedReadReplicaResponse =
+  CancelAdminChangeRequestResponse as any as S.Schema<DeleteDedicatedReadReplicaResponse>;
+
 export interface DeleteKeyspaceRequest {
   /** The name of the organization the branch belongs to */
   organization: string;
@@ -3054,7 +4087,14 @@ export interface DeleteKeyspaceRequest {
   /** The name of the keyspace */
   keyspace: string;
 }
+const DeleteKeyspaceRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  7,
+) as any as S.Schema<DeleteKeyspaceRequest>;
+
 export interface DeleteKeyspaceResponse {}
+const DeleteKeyspaceResponse = CreateShardResponse as any as S.Schema<DeleteKeyspaceResponse>;
+
 export interface DeleteOauthTokenRequest {
   /** The name of the organization the OAuth application belongs to */
   organization: string;
@@ -3063,26 +4103,57 @@ export interface DeleteOauthTokenRequest {
   /** The ID of the OAuth application token */
   token_id: string;
 }
+const DeleteOauthTokenRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  0,
+) as any as S.Schema<DeleteOauthTokenRequest>;
+
 export interface DeleteOauthTokenResponse {}
+const DeleteOauthTokenResponse = CreateShardResponse as any as S.Schema<DeleteOauthTokenResponse>;
+
 export interface DeleteOrganizationBillingPaymentMethodRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
 }
+const DeleteOrganizationBillingPaymentMethodRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  1,
+) as any as S.Schema<DeleteOrganizationBillingPaymentMethodRequest>;
+
 export interface DeleteOrganizationBillingPaymentMethodResponse {}
+const DeleteOrganizationBillingPaymentMethodResponse =
+  CancelAdminChangeRequestResponse as any as S.Schema<DeleteOrganizationBillingPaymentMethodResponse>;
+
 export interface DeleteOrganizationSsoDomainRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
   /** The public ID of the organization domain */
   id: string;
 }
+const DeleteOrganizationSsoDomainRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  2,
+) as any as S.Schema<DeleteOrganizationSsoDomainRequest>;
+
 export interface DeleteOrganizationSsoDomainResponse {}
+const DeleteOrganizationSsoDomainResponse =
+  CancelAdminChangeRequestResponse as any as S.Schema<DeleteOrganizationSsoDomainResponse>;
+
 export interface DeleteOrganizationTeamRequest {
   /** The name of the organization */
   organization: string;
   /** The slug of the team */
   team: string;
 }
+const DeleteOrganizationTeamRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  3,
+) as any as S.Schema<DeleteOrganizationTeamRequest>;
+
 export interface DeleteOrganizationTeamResponse {}
+const DeleteOrganizationTeamResponse =
+  CreateShardResponse as any as S.Schema<DeleteOrganizationTeamResponse>;
+
 export interface DeletePasswordRequest {
   /** The name of the organization the password belongs to */
   organization: string;
@@ -3093,7 +4164,14 @@ export interface DeletePasswordRequest {
   /** The ID of the password */
   id: string;
 }
+const DeletePasswordRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  4,
+) as any as S.Schema<DeletePasswordRequest>;
+
 export interface DeletePasswordResponse {}
+const DeletePasswordResponse = CreateShardResponse as any as S.Schema<DeletePasswordResponse>;
+
 export interface DeleteQueryPatternsReportRequest {
   /** The name of the organization the branch belongs to */
   organization: string;
@@ -3104,7 +4182,15 @@ export interface DeleteQueryPatternsReportRequest {
   /** The ID of the query patterns report */
   id: string;
 }
+const DeleteQueryPatternsReportRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  5,
+) as any as S.Schema<DeleteQueryPatternsReportRequest>;
+
 export interface DeleteQueryPatternsReportResponse {}
+const DeleteQueryPatternsReportResponse =
+  CancelAdminChangeRequestResponse as any as S.Schema<DeleteQueryPatternsReportResponse>;
+
 export interface DeleteRoleRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
@@ -3117,7 +4203,11 @@ export interface DeleteRoleRequest {
   /** The optional role to reassign ownership to before dropping. Accepts the role's ID, or its username with or without the branch ID suffix. */
   successor?: string;
 }
+const DeleteRoleRequest = /*@__PURE__*/ __L.at(__c20, 6) as any as S.Schema<DeleteRoleRequest>;
+
 export interface DeleteRoleResponse {}
+const DeleteRoleResponse = CreateShardResponse as any as S.Schema<DeleteRoleResponse>;
+
 export interface DeleteRouterRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
@@ -3128,14 +4218,26 @@ export interface DeleteRouterRequest {
   /** Name from `list_routers`. */
   router: string;
 }
+const DeleteRouterRequest = /*@__PURE__*/ __L.at(__c20, 7) as any as S.Schema<DeleteRouterRequest>;
+
 export interface DeleteRouterResponse {}
+const DeleteRouterResponse = CreateShardResponse as any as S.Schema<DeleteRouterResponse>;
+
 export interface DeleteServiceTokenRequest {
   /** The name of the organization */
   organization: string;
   /** The ID of the service token */
   id: string;
 }
+const DeleteServiceTokenRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  0,
+) as any as S.Schema<DeleteServiceTokenRequest>;
+
 export interface DeleteServiceTokenResponse {}
+const DeleteServiceTokenResponse =
+  CreateShardResponse as any as S.Schema<DeleteServiceTokenResponse>;
+
 export interface DeleteShardRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
@@ -3146,7 +4248,11 @@ export interface DeleteShardRequest {
   /** The ID of the shard */
   id: string;
 }
+const DeleteShardRequest = /*@__PURE__*/ __L.at(__c21, 1) as any as S.Schema<DeleteShardRequest>;
+
 export interface DeleteShardResponse {}
+const DeleteShardResponse = CreateShardResponse as any as S.Schema<DeleteShardResponse>;
+
 export interface DeleteShardConfigurationProfileRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
@@ -3157,7 +4263,15 @@ export interface DeleteShardConfigurationProfileRequest {
   /** Name from `list_shard_configuration_profiles`. */
   configuration_profile: string;
 }
+const DeleteShardConfigurationProfileRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  2,
+) as any as S.Schema<DeleteShardConfigurationProfileRequest>;
+
 export interface DeleteShardConfigurationProfileResponse {}
+const DeleteShardConfigurationProfileResponse =
+  CancelAdminChangeRequestResponse as any as S.Schema<DeleteShardConfigurationProfileResponse>;
+
 export interface DeleteShardConfigurationProfileShardRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
@@ -3170,8 +4284,19 @@ export interface DeleteShardConfigurationProfileShardRequest {
   /** The ID of the shard */
   id: string;
 }
+const DeleteShardConfigurationProfileShardRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  3,
+) as any as S.Schema<DeleteShardConfigurationProfileShardRequest>;
+
 export interface DeleteShardConfigurationProfileShardResponse {}
+const DeleteShardConfigurationProfileShardResponse =
+  CancelAdminChangeRequestResponse as any as S.Schema<DeleteShardConfigurationProfileShardResponse>;
+
 export type DeleteShardConfigurationProfileShardsRequestShardIdsList = Array<string>;
+const DeleteShardConfigurationProfileShardsRequestShardIdsList =
+  OrganizationTeamMembershipPasswordsItemCidrsList as any as S.Schema<DeleteShardConfigurationProfileShardsRequestShardIdsList>;
+
 export interface DeleteShardConfigurationProfileShardsRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
@@ -3184,7 +4309,15 @@ export interface DeleteShardConfigurationProfileShardsRequest {
   /** The IDs of the shards to remove */
   shard_ids: DeleteShardConfigurationProfileShardsRequestShardIdsList;
 }
+const DeleteShardConfigurationProfileShardsRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  4,
+) as any as S.Schema<DeleteShardConfigurationProfileShardsRequest>;
+
 export interface DeleteShardConfigurationProfileShardsResponse {}
+const DeleteShardConfigurationProfileShardsResponse =
+  CancelAdminChangeRequestResponse as any as S.Schema<DeleteShardConfigurationProfileShardsResponse>;
+
 export interface DeleteTrafficBudgetRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
@@ -3195,7 +4328,15 @@ export interface DeleteTrafficBudgetRequest {
   /** The ID of the traffic budget */
   id: string;
 }
+const DeleteTrafficBudgetRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  5,
+) as any as S.Schema<DeleteTrafficBudgetRequest>;
+
 export interface DeleteTrafficBudgetResponse {}
+const DeleteTrafficBudgetResponse =
+  CreateShardResponse as any as S.Schema<DeleteTrafficBudgetResponse>;
+
 export interface DeleteTrafficRuleRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
@@ -3208,7 +4349,14 @@ export interface DeleteTrafficRuleRequest {
   /** The ID of the traffic rule */
   id: string;
 }
+const DeleteTrafficRuleRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  6,
+) as any as S.Schema<DeleteTrafficRuleRequest>;
+
 export interface DeleteTrafficRuleResponse {}
+const DeleteTrafficRuleResponse = CreateShardResponse as any as S.Schema<DeleteTrafficRuleResponse>;
+
 export interface DeleteWebhookRequest {
   /** The name of the organization */
   organization: string;
@@ -3217,7 +4365,14 @@ export interface DeleteWebhookRequest {
   /** The ID of the webhook */
   id: string;
 }
+const DeleteWebhookRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  7,
+) as any as S.Schema<DeleteWebhookRequest>;
+
 export interface DeleteWebhookResponse {}
+const DeleteWebhookResponse = CreateShardResponse as any as S.Schema<DeleteWebhookResponse>;
+
 export interface DemoteBranchRequest {
   /** The name of the organization the branch belongs to */
   organization: string;
@@ -3226,6 +4381,8 @@ export interface DemoteBranchRequest {
   /** The name of the branch */
   branch: string;
 }
+const DemoteBranchRequest = /*@__PURE__*/ __L.at(__c22, 0) as any as S.Schema<DemoteBranchRequest>;
+
 export interface DeployCheckRequestStorageRequest {
   /** The name of the deploy request's organization */
   organization: string;
@@ -3234,6 +4391,11 @@ export interface DeployCheckRequestStorageRequest {
   /** The number of the deploy request */
   number: number;
 }
+const DeployCheckRequestStorageRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  1,
+) as any as S.Schema<DeployCheckRequestStorageRequest>;
+
 export interface DeployCheckRequestStorageResponseStorageReportValueValue {
   /** Current storage used in bytes */
   used?: number;
@@ -3250,14 +4412,29 @@ export interface DeployCheckRequestStorageResponseStorageReportValueValue {
   /** Whether this shard lacks storage only because a competing in-flight deployment is still copying */
   blocked_by_in_flight?: boolean;
 }
+const DeployCheckRequestStorageResponseStorageReportValueValue = /*@__PURE__*/ __L.at(
+  __c22,
+  2,
+) as any as S.Schema<DeployCheckRequestStorageResponseStorageReportValueValue>;
+
 /** Per-shard storage details. Keys are shard names. */
 export type DeployCheckRequestStorageResponseStorageReportValueMap = {
   [key: string]: DeployCheckRequestStorageResponseStorageReportValueValue | undefined;
 };
+const DeployCheckRequestStorageResponseStorageReportValueMap = /*@__PURE__*/ __L.at(
+  __c22,
+  3,
+) as any as S.Schema<DeployCheckRequestStorageResponseStorageReportValueMap>;
+
 /** Per-keyspace and per-shard storage report. Keys are keyspace names. */
 export type DeployCheckRequestStorageResponseStorageReportMap = {
   [key: string]: DeployCheckRequestStorageResponseStorageReportValueMap | undefined;
 };
+const DeployCheckRequestStorageResponseStorageReportMap = /*@__PURE__*/ __L.at(
+  __c22,
+  4,
+) as any as S.Schema<DeployCheckRequestStorageResponseStorageReportMap>;
+
 export interface DeployCheckRequestStorageResponse {
   /** Whether the cluster has enough storage to safely deploy */
   enough_storage: boolean;
@@ -3268,8 +4445,15 @@ export interface DeployCheckRequestStorageResponse {
   /** Per-keyspace and per-shard storage report. Keys are keyspace names. */
   storage_report: DeployCheckRequestStorageResponseStorageReportMap;
 }
+const DeployCheckRequestStorageResponse = /*@__PURE__*/ __L.at(
+  __c22,
+  5,
+) as any as S.Schema<DeployCheckRequestStorageResponse>;
+
 /** The deploy request will be updated to this state */
 export type DeployCloseRequestRequestState = "closed";
+const DeployCloseRequestRequestState = S.String;
+
 export interface DeployCloseRequestRequest {
   /** The name of the deploy request's organization */
   organization: string;
@@ -3280,6 +4464,11 @@ export interface DeployCloseRequestRequest {
   /** The deploy request will be updated to this state */
   state?: DeployCloseRequestRequestState | (string & {});
 }
+const DeployCloseRequestRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  6,
+) as any as S.Schema<DeployCloseRequestRequest>;
+
 export interface DeployCompleteErroredRequest {
   /** The name of the deploy request's organization */
   organization: string;
@@ -3288,6 +4477,11 @@ export interface DeployCompleteErroredRequest {
   /** The number of the deploy request */
   number: number;
 }
+const DeployCompleteErroredRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  7,
+) as any as S.Schema<DeployCompleteErroredRequest>;
+
 export interface DeployCompleteGatedRequestRequest {
   /** The name of the deploy request's organization */
   organization: string;
@@ -3296,6 +4490,11 @@ export interface DeployCompleteGatedRequestRequest {
   /** The number of the deploy request */
   number: number;
 }
+const DeployCompleteGatedRequestRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  0,
+) as any as S.Schema<DeployCompleteGatedRequestRequest>;
+
 export interface DeployForceCutoverRequestRequest {
   /** The name of the deploy request's organization */
   organization: string;
@@ -3304,6 +4503,11 @@ export interface DeployForceCutoverRequestRequest {
   /** The number of the deploy request */
   number: number;
 }
+const DeployForceCutoverRequestRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  1,
+) as any as S.Schema<DeployForceCutoverRequestRequest>;
+
 export interface DeployQueueRequestRequest {
   /** The name of the deploy request's organization */
   organization: string;
@@ -3314,8 +4518,15 @@ export interface DeployQueueRequestRequest {
   /** Whether or not to deploy the request with instant DDL. Defaults to false. */
   instant_ddl?: boolean;
 }
+const DeployQueueRequestRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  2,
+) as any as S.Schema<DeployQueueRequestRequest>;
+
 /** Whether the review is a comment or approval. Service tokens must have corresponding access (either `approve_deploy_request` or `review_deploy_request`) */
 export type DeployReviewRequestRequestState = "commented" | "approved";
+const DeployReviewRequestRequestState = S.String;
+
 export interface DeployReviewRequestRequest {
   /** The name of the organization the deploy request belongs to */
   organization: string;
@@ -3328,8 +4539,15 @@ export interface DeployReviewRequestRequest {
   /** Deploy request review comments */
   body?: string;
 }
+const DeployReviewRequestRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  3,
+) as any as S.Schema<DeployReviewRequestRequest>;
+
 /** Whether the review is a comment or approval */
 export type DeployRequestReviewState = "commented" | "approved";
+const DeployRequestReviewState = S.String;
+
 export type DeployRequestReviewActor = OrganizationTeamMembershipActor;
 export interface DeployRequestReview {
   /** The ID of the review */
@@ -3346,16 +4564,29 @@ export interface DeployRequestReview {
   updated_at: string;
   actor: OrganizationTeamMembershipActor;
 }
+const DeployRequestReview = /*@__PURE__*/ __L.at(__c23, 4) as any as S.Schema<DeployRequestReview>;
+
 export interface DisableOrganizationSsoRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
 }
+const DisableOrganizationSsoRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  5,
+) as any as S.Schema<DisableOrganizationSsoRequest>;
+
 /** The resource type */
 export type OrganizationSsoSerializerType = "OrganizationSSO";
+const OrganizationSsoSerializerType = S.String;
+
 /** The resource type */
 export type OrganizationSsoSerializerDomainsItemType = "OrganizationDomain";
+const OrganizationSsoSerializerDomainsItemType = S.String;
+
 /** The verification state of the domain */
 export type OrganizationSsoSerializerDomainsItemState = "pending" | "verified" | "failed";
+const OrganizationSsoSerializerDomainsItemState = S.String;
+
 export interface OrganizationSsoSerializerDomainsItem {
   /** The resource type */
   type: OrganizationSsoSerializerDomainsItemType;
@@ -3374,7 +4605,17 @@ export interface OrganizationSsoSerializerDomainsItem {
   /** When the domain was last updated */
   updated_at: string;
 }
+const OrganizationSsoSerializerDomainsItem = /*@__PURE__*/ __L.at(
+  __c23,
+  6,
+) as any as S.Schema<OrganizationSsoSerializerDomainsItem>;
+
 export type OrganizationSsoSerializerDomainsList = Array<OrganizationSsoSerializerDomainsItem>;
+const OrganizationSsoSerializerDomainsList = /*@__PURE__*/ __L.at(
+  __c23,
+  7,
+) as any as S.Schema<OrganizationSsoSerializerDomainsList>;
+
 export interface OrganizationSsoSerializer {
   /** The resource type */
   type: OrganizationSsoSerializerType;
@@ -3392,10 +4633,20 @@ export interface OrganizationSsoSerializer {
   /** URL to open for verifying an email domain, returned when SSO is enabled */
   domain_verification_url: string | null;
 }
+const OrganizationSsoSerializer = /*@__PURE__*/ __L.at(
+  __c24,
+  0,
+) as any as S.Schema<OrganizationSsoSerializer>;
+
 export interface DisableOrganizationSsoDirectoryRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
 }
+const DisableOrganizationSsoDirectoryRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  1,
+) as any as S.Schema<DisableOrganizationSsoDirectoryRequest>;
+
 export interface DisableSafeMigrationsRequest {
   /** The name of the organization the branch belongs to */
   organization: string;
@@ -3404,6 +4655,11 @@ export interface DisableSafeMigrationsRequest {
   /** The name of the branch */
   branch: string;
 }
+const DisableSafeMigrationsRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  2,
+) as any as S.Schema<DisableSafeMigrationsRequest>;
+
 export interface DismissSchemaRecommendationRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
@@ -3414,8 +4670,15 @@ export interface DismissSchemaRecommendationRequest {
   /** The reason for dismissing the recommendation (max 500 characters) */
   reason?: string;
 }
+const DismissSchemaRecommendationRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  3,
+) as any as S.Schema<DismissSchemaRecommendationRequest>;
+
 /** The state of the recommendation */
 export type SchemaRecommendationState = "open" | "applied" | "dismissed" | "stale";
+const SchemaRecommendationState = S.String;
+
 /** The type of recommendation */
 export type SchemaRecommendationRecommendationType =
   | "unused_table"
@@ -3427,6 +4690,8 @@ export type SchemaRecommendationRecommendationType =
   | "encoding_upgrade"
   | "bloated_table"
   | "bloated_index";
+const SchemaRecommendationRecommendationType = S.String;
+
 export interface SchemaRecommendationClosedByDeployRequest {
   /** The ID of the deploy request */
   id: string;
@@ -3435,6 +4700,11 @@ export interface SchemaRecommendationClosedByDeployRequest {
   /** The number of the deploy request */
   number: number;
 }
+const SchemaRecommendationClosedByDeployRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  4,
+) as any as S.Schema<SchemaRecommendationClosedByDeployRequest>;
+
 export type SchemaRecommendationDismissedBy = OrganizationTeamMembershipActor;
 export interface SchemaRecommendation {
   /** The ID of the schema recommendation */
@@ -3466,18 +4736,36 @@ export interface SchemaRecommendation {
   closed_by_deploy_request: SchemaRecommendationClosedByDeployRequest | null;
   dismissed_by: OrganizationTeamMembershipActor | null;
 }
+const SchemaRecommendation = /*@__PURE__*/ __L.at(
+  __c24,
+  5,
+) as any as S.Schema<SchemaRecommendation>;
+
 export interface EnableOrganizationSsoRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
 }
+const EnableOrganizationSsoRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  6,
+) as any as S.Schema<EnableOrganizationSsoRequest>;
+
 export interface EnableOrganizationSsoDirectoryRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
 }
+const EnableOrganizationSsoDirectoryRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  7,
+) as any as S.Schema<EnableOrganizationSsoDirectoryRequest>;
+
 export interface EnableOrganizationSsoDirectoryResponse {
   /** URL to open for configuring directory sync */
   portal_url: string;
 }
+const EnableOrganizationSsoDirectoryResponse =
+  ConfigureOrganizationSsoResponse as any as S.Schema<EnableOrganizationSsoDirectoryResponse>;
+
 export interface EnableSafeMigrationsRequest {
   /** The name of the organization the branch belongs to */
   organization: string;
@@ -3486,6 +4774,11 @@ export interface EnableSafeMigrationsRequest {
   /** The name of the branch */
   branch: string;
 }
+const EnableSafeMigrationsRequest = /*@__PURE__*/ __L.at(
+  __c25,
+  0,
+) as any as S.Schema<EnableSafeMigrationsRequest>;
+
 export interface GetAdminRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
@@ -3494,6 +4787,8 @@ export interface GetAdminRequest {
   /** Branch name from `list_branches`. Example: `main`. */
   branch: string;
 }
+const GetAdminRequest = /*@__PURE__*/ __L.at(__c25, 1) as any as S.Schema<GetAdminRequest>;
+
 export interface NekiAdminSku {
   /** The name of the Neki admin SKU */
   name: string;
@@ -3506,8 +4801,12 @@ export interface NekiAdminSku {
   /** The sort order of the Neki admin SKU */
   sort_order: number;
 }
+const NekiAdminSku = PostgresBouncerSku as any as S.Schema<NekiAdminSku>;
+
 /** The current state of the admin */
 export type NekiAdminState = "pending" | "applying" | "ready";
+const NekiAdminState = S.String;
+
 export interface NekiAdmin {
   /** The ID of the admin */
   id: string;
@@ -3521,6 +4820,8 @@ export interface NekiAdmin {
   /** When the admin was last updated */
   updated_at: string;
 }
+const NekiAdmin = /*@__PURE__*/ __L.at(__c25, 2) as any as S.Schema<NekiAdmin>;
+
 export interface GetAdminChangeRequestRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
@@ -3531,7 +4832,15 @@ export interface GetAdminChangeRequestRequest {
   /** The ID of the change request */
   id: string;
 }
+const GetAdminChangeRequestRequest = /*@__PURE__*/ __L.at(
+  __c25,
+  3,
+) as any as S.Schema<GetAdminChangeRequestRequest>;
+
 export interface GetAdminChangeRequestResponse {}
+const GetAdminChangeRequestResponse =
+  CreateShardResponse as any as S.Schema<GetAdminChangeRequestResponse>;
+
 export interface GetBackupRequest {
   /** The name of the organization the branch belongs to */
   organization: string;
@@ -3542,6 +4851,8 @@ export interface GetBackupRequest {
   /** The ID for the backup */
   id: string;
 }
+const GetBackupRequest = /*@__PURE__*/ __L.at(__c25, 4) as any as S.Schema<GetBackupRequest>;
+
 export interface GetBackupPolicyRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
@@ -3550,6 +4861,11 @@ export interface GetBackupPolicyRequest {
   /** The ID of the backup policy */
   id: string;
 }
+const GetBackupPolicyRequest = /*@__PURE__*/ __L.at(
+  __c25,
+  5,
+) as any as S.Schema<GetBackupPolicyRequest>;
+
 export interface GetBouncerRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
@@ -3560,6 +4876,8 @@ export interface GetBouncerRequest {
   /** The name of the bouncer */
   bouncer: string;
 }
+const GetBouncerRequest = /*@__PURE__*/ __L.at(__c25, 6) as any as S.Schema<GetBouncerRequest>;
+
 export interface GetBranchRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
@@ -3568,6 +4886,8 @@ export interface GetBranchRequest {
   /** Branch name from `list_branches`. Example: `main`. */
   branch: string;
 }
+const GetBranchRequest = /*@__PURE__*/ __L.at(__c25, 7) as any as S.Schema<GetBranchRequest>;
+
 export interface GetBranchAnomalyRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
@@ -3578,8 +4898,15 @@ export interface GetBranchAnomalyRequest {
   /** The anomaly ID */
   id: string;
 }
+const GetBranchAnomalyRequest = /*@__PURE__*/ __L.at(
+  __c26,
+  0,
+) as any as S.Schema<GetBranchAnomalyRequest>;
+
 /** The tablet type the query ran against */
 export type AnomalyCorrelationsItemTabletType = "primary" | "replica" | "rdonly";
+const AnomalyCorrelationsItemTabletType = S.String;
+
 export interface AnomalyCorrelationsItem {
   /** The ID of the correlation */
   id: string;
@@ -3596,7 +4923,17 @@ export interface AnomalyCorrelationsItem {
   /** The tablet type the query ran against */
   tablet_type: AnomalyCorrelationsItemTabletType;
 }
+const AnomalyCorrelationsItem = /*@__PURE__*/ __L.at(
+  __c26,
+  1,
+) as any as S.Schema<AnomalyCorrelationsItem>;
+
 export type AnomalyCorrelationsList = Array<AnomalyCorrelationsItem>;
+const AnomalyCorrelationsList = /*@__PURE__*/ __L.at(
+  __c26,
+  2,
+) as any as S.Schema<AnomalyCorrelationsList>;
+
 export interface Anomaly {
   /** The ID of the anomaly */
   id: string;
@@ -3616,6 +4953,8 @@ export interface Anomaly {
   metrics_end: string;
   correlations?: AnomalyCorrelationsList | null;
 }
+const Anomaly = /*@__PURE__*/ __L.at(__c26, 3) as any as S.Schema<Anomaly>;
+
 export interface GetBranchChangeRequestRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
@@ -3626,6 +4965,11 @@ export interface GetBranchChangeRequestRequest {
   /** The ID of the change request */
   id: string;
 }
+const GetBranchChangeRequestRequest = /*@__PURE__*/ __L.at(
+  __c26,
+  4,
+) as any as S.Schema<GetBranchChangeRequestRequest>;
+
 /** The state of the branch change request */
 export type PostgresClusterResizeRequestState =
   | "queued"
@@ -3633,13 +4977,21 @@ export type PostgresClusterResizeRequestState =
   | "resizing"
   | "canceled"
   | "completed";
+const PostgresClusterResizeRequestState = S.String;
+
 export type PostgresClusterResizeRequestActor = OrganizationTeamMembershipActor;
 /** The branch parameters */
 export type PostgresClusterResizeRequestParametersMap = { [key: string]: unknown | undefined };
+const PostgresClusterResizeRequestParametersMap =
+  NekiShardAssignmentErrorMap as any as S.Schema<PostgresClusterResizeRequestParametersMap>;
+
 /** The previous branch parameters */
 export type PostgresClusterResizeRequestPreviousParametersMap = {
   [key: string]: unknown | undefined;
 };
+const PostgresClusterResizeRequestPreviousParametersMap =
+  NekiShardAssignmentErrorMap as any as S.Schema<PostgresClusterResizeRequestPreviousParametersMap>;
+
 /** The storage type (gp3 or io2) */
 export type PostgresClusterResizeRequestStorageType =
   | "gp3"
@@ -3647,6 +4999,8 @@ export type PostgresClusterResizeRequestStorageType =
   | "pd_ssd"
   | "hyperdisk_balanced"
   | "premium_v2_lrs";
+const PostgresClusterResizeRequestStorageType = S.String;
+
 export interface PostgresClusterResizeRequest {
   /** The ID of the branch change request */
   id: string;
@@ -3716,6 +5070,11 @@ export interface PostgresClusterResizeRequest {
   /** Whether the change re-applies the current minimum disk size to shrink the provisioned disk */
   confirm_shrink: boolean;
 }
+const PostgresClusterResizeRequest = /*@__PURE__*/ __L.at(
+  __c26,
+  5,
+) as any as S.Schema<PostgresClusterResizeRequest>;
+
 export interface GetBranchConfigChangeRequestRequest {
   /** The name of the organization the branch belongs to */
   organization: string;
@@ -3726,6 +5085,11 @@ export interface GetBranchConfigChangeRequestRequest {
   /** The ID of the config change request */
   id: string;
 }
+const GetBranchConfigChangeRequestRequest = /*@__PURE__*/ __L.at(
+  __c26,
+  6,
+) as any as S.Schema<GetBranchConfigChangeRequestRequest>;
+
 export interface GetBranchKeyspaceTableMetricsRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
@@ -3734,7 +5098,15 @@ export interface GetBranchKeyspaceTableMetricsRequest {
   /** Branch name from `list_branches`. Example: `main`. */
   branch: string;
 }
+const GetBranchKeyspaceTableMetricsRequest = /*@__PURE__*/ __L.at(
+  __c26,
+  7,
+) as any as S.Schema<GetBranchKeyspaceTableMetricsRequest>;
+
 export interface GetBranchKeyspaceTableMetricsResponse {}
+const GetBranchKeyspaceTableMetricsResponse =
+  CancelAdminChangeRequestResponse as any as S.Schema<GetBranchKeyspaceTableMetricsResponse>;
+
 export type GetBranchMetricsRequestMetricsItem =
   | "avg_parallel_workers"
   | "avg_shard_queries"
@@ -3856,6 +5228,9 @@ export type GetBranchMetricsRequestMetricsItem =
 export type GetBranchMetricsRequestMetricsList = Array<
   GetBranchMetricsRequestMetricsItem | (string & {})
 >;
+const GetBranchMetricsRequestMetricsList =
+  CreateRoleRequestInheritedRolesList as any as S.Schema<GetBranchMetricsRequestMetricsList>;
+
 export type GetBranchMetricsRequestPeriod =
   | "15m"
   | "1h"
@@ -3866,9 +5241,19 @@ export type GetBranchMetricsRequestPeriod =
   | "2d"
   | "7d"
   | "8d";
+const GetBranchMetricsRequestPeriod = S.String;
+
 export type GetBranchMetricsRequestTabletType = "primary" | "replica" | "rdonly";
+const GetBranchMetricsRequestTabletType = S.String;
+
 export type GetBranchMetricsRequestPodsList = Array<string>;
+const GetBranchMetricsRequestPodsList =
+  OrganizationTeamMembershipPasswordsItemCidrsList as any as S.Schema<GetBranchMetricsRequestPodsList>;
+
 export type GetBranchMetricsRequestQueryIdsList = Array<string>;
+const GetBranchMetricsRequestQueryIdsList =
+  OrganizationTeamMembershipPasswordsItemCidrsList as any as S.Schema<GetBranchMetricsRequestQueryIdsList>;
+
 export interface GetBranchMetricsRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
@@ -3915,11 +5300,29 @@ export interface GetBranchMetricsRequest {
   /** Filter by search terms */
   q?: string;
 }
+const GetBranchMetricsRequest = /*@__PURE__*/ __L.at(
+  __c27,
+  0,
+) as any as S.Schema<GetBranchMetricsRequest>;
+
 /** Key/value labels, also known as tags, identifying the time series */
 export type MetricSeriesSeriesItemLabelsMap = { [key: string]: unknown | undefined };
+const MetricSeriesSeriesItemLabelsMap =
+  NekiShardAssignmentErrorMap as any as S.Schema<MetricSeriesSeriesItemLabelsMap>;
+
 export type MetricSeriesSeriesItemPointsItemList = Array<number>;
+const MetricSeriesSeriesItemPointsItemList = /*@__PURE__*/ __L.at(
+  __c27,
+  1,
+) as any as S.Schema<MetricSeriesSeriesItemPointsItemList>;
+
 /** Sampled data points as [Unix timestamp, value] pairs */
 export type MetricSeriesSeriesItemPointsList = Array<MetricSeriesSeriesItemPointsItemList>;
+const MetricSeriesSeriesItemPointsList = /*@__PURE__*/ __L.at(
+  __c27,
+  2,
+) as any as S.Schema<MetricSeriesSeriesItemPointsList>;
+
 export interface MetricSeriesSeriesItem {
   /** The time-series response type */
   type: string;
@@ -3932,7 +5335,17 @@ export interface MetricSeriesSeriesItem {
   /** Sampled data points as [Unix timestamp, value] pairs */
   points: MetricSeriesSeriesItemPointsList;
 }
+const MetricSeriesSeriesItem = /*@__PURE__*/ __L.at(
+  __c27,
+  3,
+) as any as S.Schema<MetricSeriesSeriesItem>;
+
 export type MetricSeriesSeriesList = Array<MetricSeriesSeriesItem>;
+const MetricSeriesSeriesList = /*@__PURE__*/ __L.at(
+  __c27,
+  4,
+) as any as S.Schema<MetricSeriesSeriesList>;
+
 export interface MetricSeries {
   /** The metrics response type */
   type: string;
@@ -3944,6 +5357,8 @@ export interface MetricSeries {
   interval: number;
   series: MetricSeriesSeriesList;
 }
+const MetricSeries = /*@__PURE__*/ __L.at(__c27, 5) as any as S.Schema<MetricSeries>;
+
 export interface GetBranchQueryRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
@@ -3954,13 +5369,25 @@ export interface GetBranchQueryRequest {
   /** The query ID */
   id: string;
 }
+const GetBranchQueryRequest = /*@__PURE__*/ __L.at(
+  __c27,
+  6,
+) as any as S.Schema<GetBranchQueryRequest>;
+
 /** The database password used for the query */
 export type QueryPasswordMap = { [key: string]: unknown | undefined };
+const QueryPasswordMap = NekiShardAssignmentErrorMap as any as S.Schema<QueryPasswordMap>;
+
 export type QueryTagsItemMap = { [key: string]: unknown | undefined };
 /** Tags associated with the query */
 export type QueryTagsList = Array<QueryTagsItemMap>;
+const QueryTagsList =
+  DatabaseDeployRequestDeploymentPrecedingDeploymentsList as any as S.Schema<QueryTagsList>;
+
 /** Tables accessed by the query */
 export type QueryTablesList = Array<string>;
+const QueryTablesList = /*@__PURE__*/ __L.at(__c27, 7) as any as S.Schema<QueryTablesList>;
+
 export interface Query {
   /** The ID of the query */
   id: string;
@@ -4011,6 +5438,8 @@ export interface Query {
   /** Whether the query was truncated */
   truncated: boolean;
 }
+const Query = /*@__PURE__*/ __L.at(__c28, 0) as any as S.Schema<Query>;
+
 export type GetBranchQueryErrorRequestPeriod =
   | "15m"
   | "1h"
@@ -4021,6 +5450,8 @@ export type GetBranchQueryErrorRequestPeriod =
   | "2d"
   | "7d"
   | "8d";
+const GetBranchQueryErrorRequestPeriod = S.String;
+
 export interface GetBranchQueryErrorRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
@@ -4041,13 +5472,27 @@ export interface GetBranchQueryErrorRequest {
   /** If provided, specifies the number of returned results */
   per_page?: number;
 }
+const GetBranchQueryErrorRequest = /*@__PURE__*/ __L.at(
+  __c28,
+  1,
+) as any as S.Schema<GetBranchQueryErrorRequest>;
+
 /** The database password used for the query */
 export type PaginatedQueryDataItemPasswordMap = { [key: string]: unknown | undefined };
+const PaginatedQueryDataItemPasswordMap =
+  NekiShardAssignmentErrorMap as any as S.Schema<PaginatedQueryDataItemPasswordMap>;
+
 export type PaginatedQueryDataItemTagsItemMap = { [key: string]: unknown | undefined };
 /** Tags associated with the query */
 export type PaginatedQueryDataItemTagsList = Array<PaginatedQueryDataItemTagsItemMap>;
+const PaginatedQueryDataItemTagsList =
+  DatabaseDeployRequestDeploymentPrecedingDeploymentsList as any as S.Schema<PaginatedQueryDataItemTagsList>;
+
 /** Tables accessed by the query */
 export type PaginatedQueryDataItemTablesList = Array<string>;
+const PaginatedQueryDataItemTablesList =
+  OrganizationTeamMembershipPasswordsItemCidrsList as any as S.Schema<PaginatedQueryDataItemTablesList>;
+
 export interface PaginatedQueryDataItem {
   /** The ID of the query */
   id: string;
@@ -4098,7 +5543,17 @@ export interface PaginatedQueryDataItem {
   /** Whether the query was truncated */
   truncated: boolean;
 }
+const PaginatedQueryDataItem = /*@__PURE__*/ __L.at(
+  __c28,
+  2,
+) as any as S.Schema<PaginatedQueryDataItem>;
+
 export type PaginatedQueryDataList = Array<PaginatedQueryDataItem>;
+const PaginatedQueryDataList = /*@__PURE__*/ __L.at(
+  __c28,
+  3,
+) as any as S.Schema<PaginatedQueryDataList>;
+
 export interface PaginatedQuery {
   /** The response type. Always "list" for paginated responses. */
   type: string;
@@ -4116,6 +5571,8 @@ export interface PaginatedQuery {
   prev_page_url?: string | null;
   data: PaginatedQueryDataList;
 }
+const PaginatedQuery = /*@__PURE__*/ __L.at(__c28, 4) as any as S.Schema<PaginatedQuery>;
+
 export type GetBranchQueryMetricsRequestMetricsItem =
   | "avg_parallel_workers"
   | "avg_shard_queries"
@@ -4157,7 +5614,13 @@ export type GetBranchQueryMetricsRequestMetricsItem =
 export type GetBranchQueryMetricsRequestMetricsList = Array<
   GetBranchQueryMetricsRequestMetricsItem | (string & {})
 >;
+const GetBranchQueryMetricsRequestMetricsList =
+  CreateRoleRequestInheritedRolesList as any as S.Schema<GetBranchQueryMetricsRequestMetricsList>;
+
 export type GetBranchQueryMetricsRequestQueryIdsList = Array<string>;
+const GetBranchQueryMetricsRequestQueryIdsList =
+  OrganizationTeamMembershipPasswordsItemCidrsList as any as S.Schema<GetBranchQueryMetricsRequestQueryIdsList>;
+
 export type GetBranchQueryMetricsRequestPeriod =
   | "15m"
   | "1h"
@@ -4168,7 +5631,11 @@ export type GetBranchQueryMetricsRequestPeriod =
   | "2d"
   | "7d"
   | "8d";
+const GetBranchQueryMetricsRequestPeriod = S.String;
+
 export type GetBranchQueryMetricsRequestTabletType = "primary" | "replica" | "rdonly";
+const GetBranchQueryMetricsRequestTabletType = S.String;
+
 export interface GetBranchQueryMetricsRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
@@ -4201,6 +5668,11 @@ export interface GetBranchQueryMetricsRequest {
   /** Filter by search terms */
   q?: string;
 }
+const GetBranchQueryMetricsRequest = /*@__PURE__*/ __L.at(
+  __c28,
+  5,
+) as any as S.Schema<GetBranchQueryMetricsRequest>;
+
 export type GetBranchQueryTagRequestPeriod =
   | "15m"
   | "1h"
@@ -4211,7 +5683,11 @@ export type GetBranchQueryTagRequestPeriod =
   | "2d"
   | "7d"
   | "8d";
+const GetBranchQueryTagRequestPeriod = S.String;
+
 export type GetBranchQueryTagRequestTabletType = "primary" | "replica" | "rdonly";
+const GetBranchQueryTagRequestTabletType = S.String;
+
 export interface GetBranchQueryTagRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
@@ -4238,10 +5714,19 @@ export interface GetBranchQueryTagRequest {
   /** Only return literal tag values, excluding overflow and collapsed values */
   literal_values_only?: boolean;
 }
+const GetBranchQueryTagRequest = /*@__PURE__*/ __L.at(
+  __c28,
+  6,
+) as any as S.Schema<GetBranchQueryTagRequest>;
+
 /** The source of the tag */
 export type QueryTagSource = "sql" | "system";
+const QueryTagSource = S.String;
+
 /** The kind of tag value */
 export type QueryTagValuesItemKind = "literal" | "overflow" | "collapsed";
+const QueryTagValuesItemKind = S.String;
+
 export interface QueryTagValuesItem {
   /** The name of the tag value */
   name: string;
@@ -4250,7 +5735,11 @@ export interface QueryTagValuesItem {
   /** The kind of tag value */
   kind: QueryTagValuesItemKind;
 }
+const QueryTagValuesItem = /*@__PURE__*/ __L.at(__c28, 7) as any as S.Schema<QueryTagValuesItem>;
+
 export type QueryTagValuesList = Array<QueryTagValuesItem>;
+const QueryTagValuesList = /*@__PURE__*/ __L.at(__c29, 0) as any as S.Schema<QueryTagValuesList>;
+
 export interface QueryTag {
   /** The ID of the tag */
   id: string;
@@ -4262,6 +5751,8 @@ export interface QueryTag {
   query_count: number;
   values: QueryTagValuesList;
 }
+const QueryTag = /*@__PURE__*/ __L.at(__c29, 1) as any as S.Schema<QueryTag>;
+
 export interface GetBranchResizeRequestRequest {
   /** The name of the organization the branch belongs to */
   organization: string;
@@ -4272,6 +5763,11 @@ export interface GetBranchResizeRequestRequest {
   /** The ID of the branch resize request */
   resize: string;
 }
+const GetBranchResizeRequestRequest = /*@__PURE__*/ __L.at(
+  __c29,
+  2,
+) as any as S.Schema<GetBranchResizeRequestRequest>;
+
 /** The state of the branch resize request */
 export type MysqlClusterResizeRequestState =
   | "pending"
@@ -4279,6 +5775,8 @@ export type MysqlClusterResizeRequestState =
   | "canceled"
   | "completed"
   | "queued";
+const MysqlClusterResizeRequestState = S.String;
+
 export type MysqlClusterResizeRequestActor = OrganizationTeamMembershipActor;
 export interface MysqlClusterResizeRequest {
   /** The ID of the branch resize request */
@@ -4323,6 +5821,11 @@ export interface MysqlClusterResizeRequest {
   previous_vtgate_display_name: string;
   actor: OrganizationTeamMembershipActor;
 }
+const MysqlClusterResizeRequest = /*@__PURE__*/ __L.at(
+  __c29,
+  3,
+) as any as S.Schema<MysqlClusterResizeRequest>;
+
 export interface GetBranchSchemaRequest {
   /** The name of the organization the branch belongs to */
   organization: string;
@@ -4335,6 +5838,11 @@ export interface GetBranchSchemaRequest {
   /** Return the schema for a PostgreSQL catalog namespace in `<database>.<schema>` format (e.g. public.schema1) */
   namespace?: string;
 }
+const GetBranchSchemaRequest = /*@__PURE__*/ __L.at(
+  __c29,
+  4,
+) as any as S.Schema<GetBranchSchemaRequest>;
+
 export interface GetBranchSchemaResponseDataItem {
   /** Name of the table */
   name: string;
@@ -4343,10 +5851,25 @@ export interface GetBranchSchemaResponseDataItem {
   /** The table's schema */
   raw: string;
 }
+const GetBranchSchemaResponseDataItem = /*@__PURE__*/ __L.at(
+  __c29,
+  5,
+) as any as S.Schema<GetBranchSchemaResponseDataItem>;
+
 export type GetBranchSchemaResponseDataList = Array<GetBranchSchemaResponseDataItem>;
+const GetBranchSchemaResponseDataList = /*@__PURE__*/ __L.at(
+  __c29,
+  6,
+) as any as S.Schema<GetBranchSchemaResponseDataList>;
+
 export interface GetBranchSchemaResponse {
   data: GetBranchSchemaResponseDataList;
 }
+const GetBranchSchemaResponse = /*@__PURE__*/ __L.at(
+  __c29,
+  7,
+) as any as S.Schema<GetBranchSchemaResponse>;
+
 export interface GetBranchTableMetricsRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
@@ -4355,7 +5878,15 @@ export interface GetBranchTableMetricsRequest {
   /** Branch name from `list_branches`. Example: `main`. */
   branch: string;
 }
+const GetBranchTableMetricsRequest = /*@__PURE__*/ __L.at(
+  __c30,
+  0,
+) as any as S.Schema<GetBranchTableMetricsRequest>;
+
 export interface GetBranchTableMetricsResponse {}
+const GetBranchTableMetricsResponse =
+  CreateShardResponse as any as S.Schema<GetBranchTableMetricsResponse>;
+
 export type GetBranchTagMetricsRequestMetricsItem =
   | "avg_parallel_workers"
   | "avg_shard_queries"
@@ -4394,7 +5925,13 @@ export type GetBranchTagMetricsRequestMetricsItem =
 export type GetBranchTagMetricsRequestMetricsList = Array<
   GetBranchTagMetricsRequestMetricsItem | (string & {})
 >;
+const GetBranchTagMetricsRequestMetricsList =
+  CreateRoleRequestInheritedRolesList as any as S.Schema<GetBranchTagMetricsRequestMetricsList>;
+
 export type GetBranchTagMetricsRequestTagSetsList = Array<string>;
+const GetBranchTagMetricsRequestTagSetsList =
+  OrganizationTeamMembershipPasswordsItemCidrsList as any as S.Schema<GetBranchTagMetricsRequestTagSetsList>;
+
 export type GetBranchTagMetricsRequestPeriod =
   | "15m"
   | "1h"
@@ -4405,7 +5942,11 @@ export type GetBranchTagMetricsRequestPeriod =
   | "2d"
   | "7d"
   | "8d";
+const GetBranchTagMetricsRequestPeriod = S.String;
+
 export type GetBranchTagMetricsRequestTabletType = "primary" | "replica" | "rdonly";
+const GetBranchTagMetricsRequestTabletType = S.String;
+
 export interface GetBranchTagMetricsRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
@@ -4434,7 +5975,17 @@ export interface GetBranchTagMetricsRequest {
   /** Filter by search terms */
   q?: string;
 }
+const GetBranchTagMetricsRequest = /*@__PURE__*/ __L.at(
+  __c30,
+  1,
+) as any as S.Schema<GetBranchTagMetricsRequest>;
+
 export interface GetCurrentUserRequest {}
+const GetCurrentUserRequest = /*@__PURE__*/ __L.at(
+  __c30,
+  2,
+) as any as S.Schema<GetCurrentUserRequest>;
+
 export type UserDefaultOrganization = OrganizationTeamMembershipUserDefaultOrganization;
 export interface User {
   /** The ID of the user */
@@ -4463,12 +6014,16 @@ export interface User {
   /** Whether or not the user is verified by email. */
   email_verified?: boolean | null;
 }
+const User = /*@__PURE__*/ __L.at(__c30, 3) as any as S.Schema<User>;
+
 export interface GetDatabaseRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
   /** Database name slug from `list_databases`. Example: `app-db`. */
   database: string;
 }
+const GetDatabaseRequest = /*@__PURE__*/ __L.at(__c30, 4) as any as S.Schema<GetDatabaseRequest>;
+
 export interface GetDatabasePostgresCidrRequest {
   /** The name of the organization the database belongs to */
   organization: string;
@@ -4477,14 +6032,27 @@ export interface GetDatabasePostgresCidrRequest {
   /** The ID of the IP restriction entry */
   id: string;
 }
+const GetDatabasePostgresCidrRequest = /*@__PURE__*/ __L.at(
+  __c30,
+  5,
+) as any as S.Schema<GetDatabasePostgresCidrRequest>;
+
 export interface GetDatabaseThrottlerRequest {
   /** The name of the organization that the throttled deploy requests belong to */
   organization: string;
   /** The name of the database that the throttled deploy requests belong to */
   database: string;
 }
+const GetDatabaseThrottlerRequest = /*@__PURE__*/ __L.at(
+  __c30,
+  6,
+) as any as S.Schema<GetDatabaseThrottlerRequest>;
+
 /** Keyspaces that are eligible for throttler configuration in the configurable resource (database or deploy request) */
 export type ThrottlerConfigurationsKeyspacesList = Array<string>;
+const ThrottlerConfigurationsKeyspacesList =
+  OrganizationTeamMembershipPasswordsItemCidrsList as any as S.Schema<ThrottlerConfigurationsKeyspacesList>;
+
 export type ThrottlerConfigurationsConfigurable = OrganizationTeamMembershipUserDefaultOrganization;
 export interface ThrottlerConfigurationsConfigurationsItem {
   /** Name of keyspace this throttler ratio applies to */
@@ -4492,14 +6060,29 @@ export interface ThrottlerConfigurationsConfigurationsItem {
   /** A throttler ratio between 0 and 95 that applies to migrations in this specific keyspace */
   ratio: number;
 }
+const ThrottlerConfigurationsConfigurationsItem = /*@__PURE__*/ __L.at(
+  __c30,
+  7,
+) as any as S.Schema<ThrottlerConfigurationsConfigurationsItem>;
+
 export type ThrottlerConfigurationsConfigurationsList =
   Array<ThrottlerConfigurationsConfigurationsItem>;
+const ThrottlerConfigurationsConfigurationsList = /*@__PURE__*/ __L.at(
+  __c31,
+  0,
+) as any as S.Schema<ThrottlerConfigurationsConfigurationsList>;
+
 export interface ThrottlerConfigurations {
   /** Keyspaces that are eligible for throttler configuration in the configurable resource (database or deploy request) */
   keyspaces: ThrottlerConfigurationsKeyspacesList;
   configurable: OrganizationTeamMembershipUserDefaultOrganization;
   configurations: ThrottlerConfigurationsConfigurationsList;
 }
+const ThrottlerConfigurations = /*@__PURE__*/ __L.at(
+  __c31,
+  1,
+) as any as S.Schema<ThrottlerConfigurations>;
+
 export interface GetDataTopologyRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
@@ -4508,14 +6091,24 @@ export interface GetDataTopologyRequest {
   /** Branch name from `list_branches`. Example: `main`. */
   branch: string;
 }
+const GetDataTopologyRequest = /*@__PURE__*/ __L.at(
+  __c31,
+  2,
+) as any as S.Schema<GetDataTopologyRequest>;
+
 /** The data topology for the branch */
 export type NekiDataTopologyDataTopologyMap = { [key: string]: unknown | undefined };
+const NekiDataTopologyDataTopologyMap =
+  NekiShardAssignmentErrorMap as any as S.Schema<NekiDataTopologyDataTopologyMap>;
+
 export interface NekiDataTopology {
   /** The data topology for the branch */
   data_topology: NekiDataTopologyDataTopologyMap;
   /** When the data topology was last synced */
   synced_at: string | null;
 }
+const NekiDataTopology = /*@__PURE__*/ __L.at(__c31, 3) as any as S.Schema<NekiDataTopology>;
+
 export interface GetDedicatedReadReplicaRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
@@ -4526,6 +6119,11 @@ export interface GetDedicatedReadReplicaRequest {
   /** The name of the dedicated read replica */
   dedicated_read_replica: string;
 }
+const GetDedicatedReadReplicaRequest = /*@__PURE__*/ __L.at(
+  __c31,
+  4,
+) as any as S.Schema<GetDedicatedReadReplicaRequest>;
+
 export interface GetDefaultRoleRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
@@ -4534,6 +6132,11 @@ export interface GetDefaultRoleRequest {
   /** Branch name from `list_branches`. Example: `main`. */
   branch: string;
 }
+const GetDefaultRoleRequest = /*@__PURE__*/ __L.at(
+  __c31,
+  5,
+) as any as S.Schema<GetDefaultRoleRequest>;
+
 export interface GetDefaultShardConfigurationProfileRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
@@ -4542,7 +6145,15 @@ export interface GetDefaultShardConfigurationProfileRequest {
   /** Branch name from `list_branches`. Example: `main`. */
   branch: string;
 }
+const GetDefaultShardConfigurationProfileRequest = /*@__PURE__*/ __L.at(
+  __c31,
+  6,
+) as any as S.Schema<GetDefaultShardConfigurationProfileRequest>;
+
 export interface GetDefaultShardConfigurationProfileResponse {}
+const GetDefaultShardConfigurationProfileResponse =
+  CancelAdminChangeRequestResponse as any as S.Schema<GetDefaultShardConfigurationProfileResponse>;
+
 export interface GetDeploymentRequest {
   /** The name of the deploy request's organization */
   organization: string;
@@ -4551,6 +6162,11 @@ export interface GetDeploymentRequest {
   /** The number of the deploy request */
   number: number;
 }
+const GetDeploymentRequest = /*@__PURE__*/ __L.at(
+  __c31,
+  7,
+) as any as S.Schema<GetDeploymentRequest>;
+
 /** The state the deployment is in */
 export type DeploymentState =
   | "pending"
@@ -4573,9 +6189,14 @@ export type DeploymentState =
   | "complete_revert_error"
   | "cancelled"
   | "error";
+const DeploymentState = S.String;
+
 export type DeploymentPrecedingDeploymentsItemMap = { [key: string]: unknown | undefined };
 /** The deployments ahead of this one in the queue */
 export type DeploymentPrecedingDeploymentsList = Array<DeploymentPrecedingDeploymentsItemMap>;
+const DeploymentPrecedingDeploymentsList =
+  DatabaseDeployRequestDeploymentPrecedingDeploymentsList as any as S.Schema<DeploymentPrecedingDeploymentsList>;
+
 /** The state of the deploy operation */
 export type DeploymentDeployOperationsItemState =
   | "pending"
@@ -4584,8 +6205,13 @@ export type DeploymentDeployOperationsItemState =
   | "complete"
   | "cancelled"
   | "error";
+const DeploymentDeployOperationsItemState = S.String;
+
 /** Names of foreign keys removed by this operation */
 export type DeploymentDeployOperationsItemRemovedForeignKeyNamesList = Array<string>;
+const DeploymentDeployOperationsItemRemovedForeignKeyNamesList =
+  OrganizationTeamMembershipPasswordsItemCidrsList as any as S.Schema<DeploymentDeployOperationsItemRemovedForeignKeyNamesList>;
+
 export interface DeploymentDeployOperationsItem {
   /** The ID for the deploy operation */
   id: string;
@@ -4626,7 +6252,17 @@ export interface DeploymentDeployOperationsItem {
   /** Deploy errors for the deploy operation */
   deploy_errors: string | null;
 }
+const DeploymentDeployOperationsItem = /*@__PURE__*/ __L.at(
+  __c32,
+  0,
+) as any as S.Schema<DeploymentDeployOperationsItem>;
+
 export type DeploymentDeployOperationsList = Array<DeploymentDeployOperationsItem>;
+const DeploymentDeployOperationsList = /*@__PURE__*/ __L.at(
+  __c32,
+  1,
+) as any as S.Schema<DeploymentDeployOperationsList>;
+
 /** The state of the deploy operation summary */
 export type DeploymentDeployOperationSummariesItemState =
   | "pending"
@@ -4634,10 +6270,18 @@ export type DeploymentDeployOperationSummariesItemState =
   | "complete"
   | "cancelled"
   | "error";
+const DeploymentDeployOperationSummariesItemState = S.String;
+
 /** Names of foreign keys removed by this operation summary */
 export type DeploymentDeployOperationSummariesItemRemovedForeignKeyNamesList = Array<string>;
+const DeploymentDeployOperationSummariesItemRemovedForeignKeyNamesList =
+  OrganizationTeamMembershipPasswordsItemDirectVtgateAddressesList as any as S.Schema<DeploymentDeployOperationSummariesItemRemovedForeignKeyNamesList>;
+
 /** Names of shards in the keyspace modified by the deploy operation summary */
 export type DeploymentDeployOperationSummariesItemShardNamesList = Array<string>;
+const DeploymentDeployOperationSummariesItemShardNamesList =
+  OrganizationTeamMembershipPasswordsItemCidrsList as any as S.Schema<DeploymentDeployOperationSummariesItemShardNamesList>;
+
 /** The state of the deploy operation */
 export type DeploymentDeployOperationSummariesItemOperationsItemState =
   | "pending"
@@ -4646,6 +6290,8 @@ export type DeploymentDeployOperationSummariesItemOperationsItemState =
   | "complete"
   | "cancelled"
   | "error";
+const DeploymentDeployOperationSummariesItemOperationsItemState = S.String;
+
 export interface DeploymentDeployOperationSummariesItemOperationsItem {
   /** The ID for the deploy operation */
   id: string;
@@ -4658,8 +6304,18 @@ export interface DeploymentDeployOperationSummariesItemOperationsItem {
   /** The estimated seconds until completion for the deploy operation */
   eta_seconds: number;
 }
+const DeploymentDeployOperationSummariesItemOperationsItem = /*@__PURE__*/ __L.at(
+  __c32,
+  2,
+) as any as S.Schema<DeploymentDeployOperationSummariesItemOperationsItem>;
+
 export type DeploymentDeployOperationSummariesItemOperationsList =
   Array<DeploymentDeployOperationSummariesItemOperationsItem>;
+const DeploymentDeployOperationSummariesItemOperationsList = /*@__PURE__*/ __L.at(
+  __c32,
+  3,
+) as any as S.Schema<DeploymentDeployOperationSummariesItemOperationsList>;
+
 export interface DeploymentDeployOperationSummariesItem {
   /** The ID for the deploy operation summary */
   id: string;
@@ -4701,21 +6357,46 @@ export interface DeploymentDeployOperationSummariesItem {
   sharded: boolean;
   operations: DeploymentDeployOperationSummariesItemOperationsList;
 }
+const DeploymentDeployOperationSummariesItem = /*@__PURE__*/ __L.at(
+  __c32,
+  4,
+) as any as S.Schema<DeploymentDeployOperationSummariesItem>;
+
 export type DeploymentDeployOperationSummariesList = Array<DeploymentDeployOperationSummariesItem>;
+const DeploymentDeployOperationSummariesList = /*@__PURE__*/ __L.at(
+  __c32,
+  5,
+) as any as S.Schema<DeploymentDeployOperationSummariesList>;
+
 export type DeploymentLintErrorsItemMap = { [key: string]: unknown | undefined };
 /** Schema lint errors preventing the deployment from completing */
 export type DeploymentLintErrorsList = Array<DeploymentLintErrorsItemMap>;
+const DeploymentLintErrorsList =
+  DatabaseDeployRequestDeploymentPrecedingDeploymentsList as any as S.Schema<DeploymentLintErrorsList>;
+
 export type DeploymentSequentialDiffDependenciesItemMap = { [key: string]: unknown | undefined };
 /** The schema dependencies that must be satisfied */
 export type DeploymentSequentialDiffDependenciesList =
   Array<DeploymentSequentialDiffDependenciesItemMap>;
+const DeploymentSequentialDiffDependenciesList =
+  DatabaseDeployRequestDeploymentPrecedingDeploymentsList as any as S.Schema<DeploymentSequentialDiffDependenciesList>;
+
 export type DeploymentLookupVindexOperationsItemMap = { [key: string]: unknown | undefined };
 /** Lookup Vitess index operations */
 export type DeploymentLookupVindexOperationsList = Array<DeploymentLookupVindexOperationsItemMap>;
+const DeploymentLookupVindexOperationsList =
+  DatabaseDeployRequestDeploymentPrecedingDeploymentsList as any as S.Schema<DeploymentLookupVindexOperationsList>;
+
 /** Deployment throttling configurations. */
 export type DeploymentThrottlerConfigurationsMap = { [key: string]: unknown | undefined };
+const DeploymentThrottlerConfigurationsMap =
+  NekiShardAssignmentErrorMap as any as S.Schema<DeploymentThrottlerConfigurationsMap>;
+
 /** The request to revert the schema operations in this deployment */
 export type DeploymentDeploymentRevertRequestMap = { [key: string]: unknown | undefined };
+const DeploymentDeploymentRevertRequestMap =
+  NekiShardAssignmentErrorMap as any as S.Schema<DeploymentDeploymentRevertRequestMap>;
+
 export type DeploymentActor = OrganizationTeamMembershipActor;
 export type DeploymentCutoverActor = OrganizationTeamMembershipActor;
 export type DeploymentCancelledActor = OrganizationTeamMembershipActor;
@@ -4788,6 +6469,8 @@ export interface Deployment {
   /** A human-readable reason the deploy queue is paused, if known */
   queue_pause_reason: string | null;
 }
+const Deployment = /*@__PURE__*/ __L.at(__c32, 6) as any as S.Schema<Deployment>;
+
 export interface GetDeployQueueRequest {
   /** The name of the deploy request's organization */
   organization: string;
@@ -4798,6 +6481,11 @@ export interface GetDeployQueueRequest {
   /** If provided, specifies the number of returned results */
   per_page?: number;
 }
+const GetDeployQueueRequest = /*@__PURE__*/ __L.at(
+  __c32,
+  7,
+) as any as S.Schema<GetDeployQueueRequest>;
+
 /** The state the deployment is in */
 export type PaginatedDeploymentDataItemState =
   | "pending"
@@ -4820,12 +6508,17 @@ export type PaginatedDeploymentDataItemState =
   | "complete_revert_error"
   | "cancelled"
   | "error";
+const PaginatedDeploymentDataItemState = S.String;
+
 export type PaginatedDeploymentDataItemPrecedingDeploymentsItemMap = {
   [key: string]: unknown | undefined;
 };
 /** The deployments ahead of this one in the queue */
 export type PaginatedDeploymentDataItemPrecedingDeploymentsList =
   Array<PaginatedDeploymentDataItemPrecedingDeploymentsItemMap>;
+const PaginatedDeploymentDataItemPrecedingDeploymentsList =
+  DatabaseDeployRequestDeploymentPrecedingDeploymentsList as any as S.Schema<PaginatedDeploymentDataItemPrecedingDeploymentsList>;
+
 /** The state of the deploy operation */
 export type PaginatedDeploymentDataItemDeployOperationsItemState =
   | "pending"
@@ -4834,9 +6527,14 @@ export type PaginatedDeploymentDataItemDeployOperationsItemState =
   | "complete"
   | "cancelled"
   | "error";
+const PaginatedDeploymentDataItemDeployOperationsItemState = S.String;
+
 /** Names of foreign keys removed by this operation */
 export type PaginatedDeploymentDataItemDeployOperationsItemRemovedForeignKeyNamesList =
   Array<string>;
+const PaginatedDeploymentDataItemDeployOperationsItemRemovedForeignKeyNamesList =
+  OrganizationTeamMembershipPasswordsItemDirectVtgateAddressesList as any as S.Schema<PaginatedDeploymentDataItemDeployOperationsItemRemovedForeignKeyNamesList>;
+
 export interface PaginatedDeploymentDataItemDeployOperationsItem {
   /** The ID for the deploy operation */
   id: string;
@@ -4877,8 +6575,18 @@ export interface PaginatedDeploymentDataItemDeployOperationsItem {
   /** Deploy errors for the deploy operation */
   deploy_errors: string | null;
 }
+const PaginatedDeploymentDataItemDeployOperationsItem = /*@__PURE__*/ __L.at(
+  __c33,
+  0,
+) as any as S.Schema<PaginatedDeploymentDataItemDeployOperationsItem>;
+
 export type PaginatedDeploymentDataItemDeployOperationsList =
   Array<PaginatedDeploymentDataItemDeployOperationsItem>;
+const PaginatedDeploymentDataItemDeployOperationsList = /*@__PURE__*/ __L.at(
+  __c33,
+  1,
+) as any as S.Schema<PaginatedDeploymentDataItemDeployOperationsList>;
+
 /** The state of the deploy operation summary */
 export type PaginatedDeploymentDataItemDeployOperationSummariesItemState =
   | "pending"
@@ -4886,11 +6594,19 @@ export type PaginatedDeploymentDataItemDeployOperationSummariesItemState =
   | "complete"
   | "cancelled"
   | "error";
+const PaginatedDeploymentDataItemDeployOperationSummariesItemState = S.String;
+
 /** Names of foreign keys removed by this operation summary */
 export type PaginatedDeploymentDataItemDeployOperationSummariesItemRemovedForeignKeyNamesList =
   Array<string>;
+const PaginatedDeploymentDataItemDeployOperationSummariesItemRemovedForeignKeyNamesList =
+  OrganizationTeamMembershipPasswordsItemDirectVtgateAddressesList as any as S.Schema<PaginatedDeploymentDataItemDeployOperationSummariesItemRemovedForeignKeyNamesList>;
+
 /** Names of shards in the keyspace modified by the deploy operation summary */
 export type PaginatedDeploymentDataItemDeployOperationSummariesItemShardNamesList = Array<string>;
+const PaginatedDeploymentDataItemDeployOperationSummariesItemShardNamesList =
+  OrganizationTeamMembershipPasswordsItemDirectVtgateAddressesList as any as S.Schema<PaginatedDeploymentDataItemDeployOperationSummariesItemShardNamesList>;
+
 /** The state of the deploy operation */
 export type PaginatedDeploymentDataItemDeployOperationSummariesItemOperationsItemState =
   | "pending"
@@ -4913,6 +6629,9 @@ export interface PaginatedDeploymentDataItemDeployOperationSummariesItemOperatio
 }
 export type PaginatedDeploymentDataItemDeployOperationSummariesItemOperationsList =
   Array<PaginatedDeploymentDataItemDeployOperationSummariesItemOperationsItem>;
+const PaginatedDeploymentDataItemDeployOperationSummariesItemOperationsList =
+  DatabaseDeployRequestDeploymentDeployOperationSummariesItemOperationsList as any as S.Schema<PaginatedDeploymentDataItemDeployOperationSummariesItemOperationsList>;
+
 export interface PaginatedDeploymentDataItemDeployOperationSummariesItem {
   /** The ID for the deploy operation summary */
   id: string;
@@ -4954,32 +6673,57 @@ export interface PaginatedDeploymentDataItemDeployOperationSummariesItem {
   sharded: boolean;
   operations: PaginatedDeploymentDataItemDeployOperationSummariesItemOperationsList;
 }
+const PaginatedDeploymentDataItemDeployOperationSummariesItem = /*@__PURE__*/ __L.at(
+  __c33,
+  2,
+) as any as S.Schema<PaginatedDeploymentDataItemDeployOperationSummariesItem>;
+
 export type PaginatedDeploymentDataItemDeployOperationSummariesList =
   Array<PaginatedDeploymentDataItemDeployOperationSummariesItem>;
+const PaginatedDeploymentDataItemDeployOperationSummariesList = /*@__PURE__*/ __L.at(
+  __c33,
+  3,
+) as any as S.Schema<PaginatedDeploymentDataItemDeployOperationSummariesList>;
+
 export type PaginatedDeploymentDataItemLintErrorsItemMap = { [key: string]: unknown | undefined };
 /** Schema lint errors preventing the deployment from completing */
 export type PaginatedDeploymentDataItemLintErrorsList =
   Array<PaginatedDeploymentDataItemLintErrorsItemMap>;
+const PaginatedDeploymentDataItemLintErrorsList =
+  DatabaseDeployRequestDeploymentPrecedingDeploymentsList as any as S.Schema<PaginatedDeploymentDataItemLintErrorsList>;
+
 export type PaginatedDeploymentDataItemSequentialDiffDependenciesItemMap = {
   [key: string]: unknown | undefined;
 };
 /** The schema dependencies that must be satisfied */
 export type PaginatedDeploymentDataItemSequentialDiffDependenciesList =
   Array<PaginatedDeploymentDataItemSequentialDiffDependenciesItemMap>;
+const PaginatedDeploymentDataItemSequentialDiffDependenciesList =
+  DatabaseDeployRequestDeploymentPrecedingDeploymentsList as any as S.Schema<PaginatedDeploymentDataItemSequentialDiffDependenciesList>;
+
 export type PaginatedDeploymentDataItemLookupVindexOperationsItemMap = {
   [key: string]: unknown | undefined;
 };
 /** Lookup Vitess index operations */
 export type PaginatedDeploymentDataItemLookupVindexOperationsList =
   Array<PaginatedDeploymentDataItemLookupVindexOperationsItemMap>;
+const PaginatedDeploymentDataItemLookupVindexOperationsList =
+  DatabaseDeployRequestDeploymentPrecedingDeploymentsList as any as S.Schema<PaginatedDeploymentDataItemLookupVindexOperationsList>;
+
 /** Deployment throttling configurations. */
 export type PaginatedDeploymentDataItemThrottlerConfigurationsMap = {
   [key: string]: unknown | undefined;
 };
+const PaginatedDeploymentDataItemThrottlerConfigurationsMap =
+  NekiShardAssignmentErrorMap as any as S.Schema<PaginatedDeploymentDataItemThrottlerConfigurationsMap>;
+
 /** The request to revert the schema operations in this deployment */
 export type PaginatedDeploymentDataItemDeploymentRevertRequestMap = {
   [key: string]: unknown | undefined;
 };
+const PaginatedDeploymentDataItemDeploymentRevertRequestMap =
+  NekiShardAssignmentErrorMap as any as S.Schema<PaginatedDeploymentDataItemDeploymentRevertRequestMap>;
+
 export type PaginatedDeploymentDataItemActor = OrganizationTeamMembershipActor;
 export type PaginatedDeploymentDataItemCutoverActor = OrganizationTeamMembershipActor;
 export type PaginatedDeploymentDataItemCancelledActor = OrganizationTeamMembershipActor;
@@ -5052,7 +6796,17 @@ export interface PaginatedDeploymentDataItem {
   /** A human-readable reason the deploy queue is paused, if known */
   queue_pause_reason: string | null;
 }
+const PaginatedDeploymentDataItem = /*@__PURE__*/ __L.at(
+  __c33,
+  4,
+) as any as S.Schema<PaginatedDeploymentDataItem>;
+
 export type PaginatedDeploymentDataList = Array<PaginatedDeploymentDataItem>;
+const PaginatedDeploymentDataList = /*@__PURE__*/ __L.at(
+  __c33,
+  5,
+) as any as S.Schema<PaginatedDeploymentDataList>;
+
 export interface PaginatedDeployment {
   /** The response type. Always "list" for paginated responses. */
   type: string;
@@ -5070,6 +6824,8 @@ export interface PaginatedDeployment {
   prev_page_url: string | null;
   data: PaginatedDeploymentDataList;
 }
+const PaginatedDeployment = /*@__PURE__*/ __L.at(__c33, 6) as any as S.Schema<PaginatedDeployment>;
+
 export interface GetDeployRequestRequest {
   /** The name of the deploy request's organization */
   organization: string;
@@ -5078,6 +6834,11 @@ export interface GetDeployRequestRequest {
   /** The number of the deploy request */
   number: number;
 }
+const GetDeployRequestRequest = /*@__PURE__*/ __L.at(
+  __c33,
+  7,
+) as any as S.Schema<GetDeployRequestRequest>;
+
 export interface GetDeployRequestThrottlerRequest {
   /** The name of the deploy request's organization */
   organization: string;
@@ -5086,6 +6847,11 @@ export interface GetDeployRequestThrottlerRequest {
   /** The number of the deploy request */
   number: number;
 }
+const GetDeployRequestThrottlerRequest = /*@__PURE__*/ __L.at(
+  __c34,
+  0,
+) as any as S.Schema<GetDeployRequestThrottlerRequest>;
+
 export interface GetInsightsAgentRunRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
@@ -5096,6 +6862,11 @@ export interface GetInsightsAgentRunRequest {
   /** The Insights agent run ID */
   id: string;
 }
+const GetInsightsAgentRunRequest = /*@__PURE__*/ __L.at(
+  __c34,
+  1,
+) as any as S.Schema<GetInsightsAgentRunRequest>;
+
 export type GetInstantBranchMetricsRequestMetricsItem =
   | "planetscale_backup_fetch_percent"
   | "planetscale_backup_restore_active"
@@ -5117,6 +6888,9 @@ export type GetInstantBranchMetricsRequestMetricsItem =
 export type GetInstantBranchMetricsRequestMetricsList = Array<
   GetInstantBranchMetricsRequestMetricsItem | (string & {})
 >;
+const GetInstantBranchMetricsRequestMetricsList =
+  CreateRoleRequestInheritedRolesList as any as S.Schema<GetInstantBranchMetricsRequestMetricsList>;
+
 export interface GetInstantBranchMetricsRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
@@ -5137,6 +6911,11 @@ export interface GetInstantBranchMetricsRequest {
   /** Filter by pod */
   pod?: string;
 }
+const GetInstantBranchMetricsRequest = /*@__PURE__*/ __L.at(
+  __c34,
+  2,
+) as any as S.Schema<GetInstantBranchMetricsRequest>;
+
 export type GetInstantBranchMetricsResponseBranch =
   OrganizationTeamMembershipUserDefaultOrganization;
 export interface GetInstantBranchMetricsResponseMetricsItemValuesItem {
@@ -5147,8 +6926,18 @@ export interface GetInstantBranchMetricsResponseMetricsItemValuesItem {
   /** Current metric value */
   value: number;
 }
+const GetInstantBranchMetricsResponseMetricsItemValuesItem = /*@__PURE__*/ __L.at(
+  __c34,
+  3,
+) as any as S.Schema<GetInstantBranchMetricsResponseMetricsItemValuesItem>;
+
 export type GetInstantBranchMetricsResponseMetricsItemValuesList =
   Array<GetInstantBranchMetricsResponseMetricsItemValuesItem>;
+const GetInstantBranchMetricsResponseMetricsItemValuesList = /*@__PURE__*/ __L.at(
+  __c34,
+  4,
+) as any as S.Schema<GetInstantBranchMetricsResponseMetricsItemValuesList>;
+
 export interface GetInstantBranchMetricsResponseMetricsItem {
   /** The metric name */
   metric: string;
@@ -5156,14 +6945,29 @@ export interface GetInstantBranchMetricsResponseMetricsItem {
   label: string;
   values: GetInstantBranchMetricsResponseMetricsItemValuesList;
 }
+const GetInstantBranchMetricsResponseMetricsItem = /*@__PURE__*/ __L.at(
+  __c34,
+  5,
+) as any as S.Schema<GetInstantBranchMetricsResponseMetricsItem>;
+
 export type GetInstantBranchMetricsResponseMetricsList =
   Array<GetInstantBranchMetricsResponseMetricsItem>;
+const GetInstantBranchMetricsResponseMetricsList = /*@__PURE__*/ __L.at(
+  __c34,
+  6,
+) as any as S.Schema<GetInstantBranchMetricsResponseMetricsList>;
+
 export interface GetInstantBranchMetricsResponse {
   /** The metrics response type */
   type: string;
   branch: OrganizationTeamMembershipUserDefaultOrganization;
   metrics: GetInstantBranchMetricsResponseMetricsList;
 }
+const GetInstantBranchMetricsResponse = /*@__PURE__*/ __L.at(
+  __c34,
+  7,
+) as any as S.Schema<GetInstantBranchMetricsResponse>;
+
 export type GetInstantTabletMetricsRequestMetricsItem =
   | "replication_lag"
   | "primary_cpu_usage"
@@ -5173,6 +6977,9 @@ export type GetInstantTabletMetricsRequestMetricsItem =
 export type GetInstantTabletMetricsRequestMetricsList = Array<
   GetInstantTabletMetricsRequestMetricsItem | (string & {})
 >;
+const GetInstantTabletMetricsRequestMetricsList =
+  CreateRoleRequestInheritedRolesList as any as S.Schema<GetInstantTabletMetricsRequestMetricsList>;
+
 export interface GetInstantTabletMetricsRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
@@ -5187,6 +6994,11 @@ export interface GetInstantTabletMetricsRequest {
   /** Filter by shard */
   shard?: string;
 }
+const GetInstantTabletMetricsRequest = /*@__PURE__*/ __L.at(
+  __c35,
+  0,
+) as any as S.Schema<GetInstantTabletMetricsRequest>;
+
 export type GetInstantTabletMetricsResponseBranch =
   OrganizationTeamMembershipUserDefaultOrganization;
 export type GetInstantTabletMetricsResponseMetricsItemValuesItem =
@@ -5208,12 +7020,17 @@ export interface GetInstantTabletMetricsResponse {
   branch: OrganizationTeamMembershipUserDefaultOrganization;
   metrics: GetInstantTabletMetricsResponseMetricsList;
 }
+const GetInstantTabletMetricsResponse =
+  GetInstantBranchMetricsResponse as any as S.Schema<GetInstantTabletMetricsResponse>;
+
 export interface GetInvoiceRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
   /** Invoice public ID from `list_invoices`. Example: `aabb12123434`. */
   id: string;
 }
+const GetInvoiceRequest = /*@__PURE__*/ __L.at(__c35, 1) as any as S.Schema<GetInvoiceRequest>;
+
 export interface Invoice {
   /** The ID of the invoice */
   id: string;
@@ -5228,6 +7045,8 @@ export interface Invoice {
   /** Whether the invoice is past due and unpaid */
   overdue: boolean;
 }
+const Invoice = /*@__PURE__*/ __L.at(__c35, 2) as any as S.Schema<Invoice>;
+
 export interface GetInvoiceLineItemsRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
@@ -5238,6 +7057,11 @@ export interface GetInvoiceLineItemsRequest {
   /** If provided, specifies the number of returned results */
   per_page?: number;
 }
+const GetInvoiceLineItemsRequest = /*@__PURE__*/ __L.at(
+  __c35,
+  3,
+) as any as S.Schema<GetInvoiceLineItemsRequest>;
+
 export type PaginatedLineItemDataItemResource = OrganizationTeamMembershipUserDefaultOrganization;
 export interface PaginatedLineItemDataItem {
   /** The ID for the line item */
@@ -5256,7 +7080,17 @@ export interface PaginatedLineItemDataItem {
   database_name: string;
   resource: OrganizationTeamMembershipUserDefaultOrganization;
 }
+const PaginatedLineItemDataItem = /*@__PURE__*/ __L.at(
+  __c35,
+  4,
+) as any as S.Schema<PaginatedLineItemDataItem>;
+
 export type PaginatedLineItemDataList = Array<PaginatedLineItemDataItem>;
+const PaginatedLineItemDataList = /*@__PURE__*/ __L.at(
+  __c35,
+  5,
+) as any as S.Schema<PaginatedLineItemDataList>;
+
 export interface PaginatedLineItem {
   /** The response type. Always "list" for paginated responses. */
   type: string;
@@ -5274,6 +7108,8 @@ export interface PaginatedLineItem {
   prev_page_url: string | null;
   data: PaginatedLineItemDataList;
 }
+const PaginatedLineItem = /*@__PURE__*/ __L.at(__c35, 6) as any as S.Schema<PaginatedLineItem>;
+
 export interface GetKeyspaceRequest {
   /** The name of the organization the branch belongs to */
   organization: string;
@@ -5284,6 +7120,8 @@ export interface GetKeyspaceRequest {
   /** The name of the keyspace */
   keyspace: string;
 }
+const GetKeyspaceRequest = /*@__PURE__*/ __L.at(__c35, 7) as any as S.Schema<GetKeyspaceRequest>;
+
 export interface GetKeyspaceConfigChangeRequestRequest {
   /** The name of the organization the branch belongs to */
   organization: string;
@@ -5296,6 +7134,11 @@ export interface GetKeyspaceConfigChangeRequestRequest {
   /** The ID of the config change request */
   id: string;
 }
+const GetKeyspaceConfigChangeRequestRequest = /*@__PURE__*/ __L.at(
+  __c36,
+  0,
+) as any as S.Schema<GetKeyspaceConfigChangeRequestRequest>;
+
 export interface GetKeyspaceResizeRequestRequest {
   /** The name of the organization the branch belongs to */
   organization: string;
@@ -5308,6 +7151,11 @@ export interface GetKeyspaceResizeRequestRequest {
   /** The ID of the resize request */
   id: string;
 }
+const GetKeyspaceResizeRequestRequest = /*@__PURE__*/ __L.at(
+  __c36,
+  1,
+) as any as S.Schema<GetKeyspaceResizeRequestRequest>;
+
 /** The state of the resize request */
 export type KeyspaceResizeRequestState =
   | "pending"
@@ -5315,6 +7163,8 @@ export type KeyspaceResizeRequestState =
   | "canceled"
   | "completed"
   | "queued";
+const KeyspaceResizeRequestState = S.String;
+
 export type KeyspaceResizeRequestActor = OrganizationTeamMembershipActor;
 export interface KeyspaceResizeRequest {
   /** The ID of the keyspace resize request */
@@ -5349,6 +7199,11 @@ export interface KeyspaceResizeRequest {
   previous_replicas: number;
   actor: OrganizationTeamMembershipActor;
 }
+const KeyspaceResizeRequest = /*@__PURE__*/ __L.at(
+  __c36,
+  2,
+) as any as S.Schema<KeyspaceResizeRequest>;
+
 export interface GetKeyspaceRolloutStatusRequest {
   /** The name of the organization the branch belongs to */
   organization: string;
@@ -5359,6 +7214,11 @@ export interface GetKeyspaceRolloutStatusRequest {
   /** The name of the keyspace */
   keyspace: string;
 }
+const GetKeyspaceRolloutStatusRequest = /*@__PURE__*/ __L.at(
+  __c36,
+  3,
+) as any as S.Schema<GetKeyspaceRolloutStatusRequest>;
+
 export interface GetKeyspaceRolloutStatusResponseShardsItem {
   /** The name of the shard */
   name: string;
@@ -5369,8 +7229,18 @@ export interface GetKeyspaceRolloutStatusResponseShardsItem {
   /** The current state of the rollout at the shard level */
   state: string;
 }
+const GetKeyspaceRolloutStatusResponseShardsItem = /*@__PURE__*/ __L.at(
+  __c36,
+  4,
+) as any as S.Schema<GetKeyspaceRolloutStatusResponseShardsItem>;
+
 export type GetKeyspaceRolloutStatusResponseShardsList =
   Array<GetKeyspaceRolloutStatusResponseShardsItem>;
+const GetKeyspaceRolloutStatusResponseShardsList = /*@__PURE__*/ __L.at(
+  __c36,
+  5,
+) as any as S.Schema<GetKeyspaceRolloutStatusResponseShardsList>;
+
 export interface GetKeyspaceRolloutStatusResponse {
   /** The name of the keyspace */
   name: string;
@@ -5378,6 +7248,11 @@ export interface GetKeyspaceRolloutStatusResponse {
   state: string;
   shards: GetKeyspaceRolloutStatusResponseShardsList;
 }
+const GetKeyspaceRolloutStatusResponse = /*@__PURE__*/ __L.at(
+  __c36,
+  6,
+) as any as S.Schema<GetKeyspaceRolloutStatusResponse>;
+
 export interface GetKeyspaceVschemaRequest {
   /** The name of the organization the branch belongs to */
   organization: string;
@@ -5388,10 +7263,20 @@ export interface GetKeyspaceVschemaRequest {
   /** The name of the keyspace */
   keyspace: string;
 }
+const GetKeyspaceVschemaRequest = /*@__PURE__*/ __L.at(
+  __c36,
+  7,
+) as any as S.Schema<GetKeyspaceVschemaRequest>;
+
 export interface GetKeyspaceVschemaResponse {
   /** The keyspace's VSchema */
   raw: string;
 }
+const GetKeyspaceVschemaResponse = /*@__PURE__*/ __L.at(
+  __c37,
+  0,
+) as any as S.Schema<GetKeyspaceVschemaResponse>;
+
 export interface GetMaintenanceScheduleRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
@@ -5400,8 +7285,15 @@ export interface GetMaintenanceScheduleRequest {
   /** The ID of the maintenance schedule */
   id: string;
 }
+const GetMaintenanceScheduleRequest = /*@__PURE__*/ __L.at(
+  __c37,
+  1,
+) as any as S.Schema<GetMaintenanceScheduleRequest>;
+
 /** The frequency unit of the maintenance schedule */
 export type BranchMaintenanceScheduleFrequencyUnit = "day" | "week" | "month" | "once";
+const BranchMaintenanceScheduleFrequencyUnit = S.String;
+
 export interface BranchMaintenanceSchedule {
   /** The ID of the maintenance schedule */
   id: string;
@@ -5444,6 +7336,11 @@ export interface BranchMaintenanceSchedule {
   /** The pending MySQL version, if any */
   pending_mysql_version?: string | null;
 }
+const BranchMaintenanceSchedule = /*@__PURE__*/ __L.at(
+  __c37,
+  2,
+) as any as S.Schema<BranchMaintenanceSchedule>;
+
 export interface GetMoveTablesWorkflowRequest {
   /** Organization name */
   organization: string;
@@ -5456,19 +7353,37 @@ export interface GetMoveTablesWorkflowRequest {
   /** Target keyspace name */
   target_keyspace: string;
 }
+const GetMoveTablesWorkflowRequest = /*@__PURE__*/ __L.at(
+  __c37,
+  3,
+) as any as S.Schema<GetMoveTablesWorkflowRequest>;
+
 export type GetMoveTablesWorkflowResponseDataWorkflowsItemMap = {
   [key: string]: unknown | undefined;
 };
 /** The workflows Vitess reports for the target keyspace */
 export type GetMoveTablesWorkflowResponseDataWorkflowsList =
   Array<GetMoveTablesWorkflowResponseDataWorkflowsItemMap>;
+const GetMoveTablesWorkflowResponseDataWorkflowsList =
+  DatabaseDeployRequestDeploymentPrecedingDeploymentsList as any as S.Schema<GetMoveTablesWorkflowResponseDataWorkflowsList>;
+
 export interface GetMoveTablesWorkflowResponseData {
   /** The workflows Vitess reports for the target keyspace */
   workflows?: GetMoveTablesWorkflowResponseDataWorkflowsList;
 }
+const GetMoveTablesWorkflowResponseData = /*@__PURE__*/ __L.at(
+  __c37,
+  4,
+) as any as S.Schema<GetMoveTablesWorkflowResponseData>;
+
 export interface GetMoveTablesWorkflowResponse {
   data: GetMoveTablesWorkflowResponseData;
 }
+const GetMoveTablesWorkflowResponse = /*@__PURE__*/ __L.at(
+  __c37,
+  5,
+) as any as S.Schema<GetMoveTablesWorkflowResponse>;
+
 export interface GetMoveTablesWorkflowStatusRequest {
   /** Organization name */
   organization: string;
@@ -5481,6 +7396,11 @@ export interface GetMoveTablesWorkflowStatusRequest {
   /** Target keyspace name */
   target_keyspace: string;
 }
+const GetMoveTablesWorkflowStatusRequest = /*@__PURE__*/ __L.at(
+  __c37,
+  6,
+) as any as S.Schema<GetMoveTablesWorkflowStatusRequest>;
+
 export interface GetMoveTablesWorkflowStatusResponseDataTableCopyStateValue {
   rows_copied?: number;
   rows_total?: number;
@@ -5489,14 +7409,27 @@ export interface GetMoveTablesWorkflowStatusResponseDataTableCopyStateValue {
   bytes_total?: number;
   bytes_percentage?: number;
 }
+const GetMoveTablesWorkflowStatusResponseDataTableCopyStateValue = /*@__PURE__*/ __L.at(
+  __c37,
+  7,
+) as any as S.Schema<GetMoveTablesWorkflowStatusResponseDataTableCopyStateValue>;
+
 /** VReplication table copy progress, keyed by table name */
 export type GetMoveTablesWorkflowStatusResponseDataTableCopyStateMap = {
   [key: string]: GetMoveTablesWorkflowStatusResponseDataTableCopyStateValue | undefined;
 };
+const GetMoveTablesWorkflowStatusResponseDataTableCopyStateMap = /*@__PURE__*/ __L.at(
+  __c38,
+  0,
+) as any as S.Schema<GetMoveTablesWorkflowStatusResponseDataTableCopyStateMap>;
+
 /** VReplication stream status, keyed by Vitess keyspace/shard */
 export type GetMoveTablesWorkflowStatusResponseDataShardStreamsMap = {
   [key: string]: unknown | undefined;
 };
+const GetMoveTablesWorkflowStatusResponseDataShardStreamsMap =
+  NekiShardAssignmentErrorMap as any as S.Schema<GetMoveTablesWorkflowStatusResponseDataShardStreamsMap>;
+
 export interface GetMoveTablesWorkflowStatusResponseData {
   /** Human-readable summary of the workflow's current traffic state */
   traffic_state?: string;
@@ -5505,9 +7438,19 @@ export interface GetMoveTablesWorkflowStatusResponseData {
   /** VReplication stream status, keyed by Vitess keyspace/shard */
   shard_streams?: GetMoveTablesWorkflowStatusResponseDataShardStreamsMap;
 }
+const GetMoveTablesWorkflowStatusResponseData = /*@__PURE__*/ __L.at(
+  __c38,
+  1,
+) as any as S.Schema<GetMoveTablesWorkflowStatusResponseData>;
+
 export interface GetMoveTablesWorkflowStatusResponse {
   data: GetMoveTablesWorkflowStatusResponseData;
 }
+const GetMoveTablesWorkflowStatusResponse = /*@__PURE__*/ __L.at(
+  __c38,
+  2,
+) as any as S.Schema<GetMoveTablesWorkflowStatusResponse>;
+
 export interface GetNekiChangeRequestRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
@@ -5518,6 +7461,11 @@ export interface GetNekiChangeRequestRequest {
   /** The ID of the change request */
   id: string;
 }
+const GetNekiChangeRequestRequest = /*@__PURE__*/ __L.at(
+  __c38,
+  3,
+) as any as S.Schema<GetNekiChangeRequestRequest>;
+
 /** The type of change request */
 export type NekiChangeRequestType =
   | "NekiAdminChangeRequest"
@@ -5526,8 +7474,12 @@ export type NekiChangeRequestType =
   | "NekiExternalShardChangeRequest"
   | "NekiRouterChangeRequest"
   | "NekiSidecarChangeRequest";
+const NekiChangeRequestType = S.String;
+
 /** The state of the change request */
 export type NekiChangeRequestState = "draft" | "pending" | "applying" | "canceled" | "completed";
+const NekiChangeRequestState = S.String;
+
 export type NekiChangeRequestActor = OrganizationTeamMembershipActor;
 /** The type of resource being changed */
 export type NekiChangeRequestTargetType =
@@ -5537,14 +7489,28 @@ export type NekiChangeRequestTargetType =
   | "NekiExternalShard"
   | "NekiRouter"
   | "NekiSidecar";
+const NekiChangeRequestTargetType = S.String;
+
 /** The parameters requested for the target resource */
 export type NekiChangeRequestParametersMap = { [key: string]: unknown | undefined };
+const NekiChangeRequestParametersMap =
+  NekiShardAssignmentErrorMap as any as S.Schema<NekiChangeRequestParametersMap>;
+
 /** The target resource parameters before the change */
 export type NekiChangeRequestPreviousParametersMap = { [key: string]: unknown | undefined };
+const NekiChangeRequestPreviousParametersMap =
+  NekiShardAssignmentErrorMap as any as S.Schema<NekiChangeRequestPreviousParametersMap>;
+
 /** The cluster flags */
 export type NekiChangeRequestFlagsList = Array<string>;
+const NekiChangeRequestFlagsList =
+  OrganizationTeamMembershipPasswordsItemCidrsList as any as S.Schema<NekiChangeRequestFlagsList>;
+
 /** The previous cluster flags */
 export type NekiChangeRequestPreviousFlagsList = Array<string>;
+const NekiChangeRequestPreviousFlagsList =
+  OrganizationTeamMembershipPasswordsItemCidrsList as any as S.Schema<NekiChangeRequestPreviousFlagsList>;
+
 export type NekiChangeRequestStorage = NekiShardConfigurationProfileStorage;
 export type NekiChangeRequestPreviousStorage = NekiShardConfigurationProfileStorage;
 export interface NekiChangeRequest {
@@ -5654,19 +7620,35 @@ export interface NekiChangeRequest {
   previous_postgres_image_version?: string | null;
   previous_storage?: NekiShardConfigurationProfileStorage | null;
 }
+const NekiChangeRequest = /*@__PURE__*/ __L.at(__c38, 4) as any as S.Schema<NekiChangeRequest>;
+
 export interface GetOauthApplicationRequest {
   /** The name of the organization the OAuth application belongs to */
   organization: string;
   /** The ID of the OAuth application */
   application_id: string;
 }
+const GetOauthApplicationRequest = /*@__PURE__*/ __L.at(
+  __c38,
+  5,
+) as any as S.Schema<GetOauthApplicationRequest>;
+
 /** Scopes grouped by resource type (database, organization, branch, user) with scope, description, and admin flag */
 export type OauthApplicationScopesByResourceMap = { [key: string]: unknown | undefined };
+const OauthApplicationScopesByResourceMap =
+  NekiShardAssignmentErrorMap as any as S.Schema<OauthApplicationScopesByResourceMap>;
+
 /** All available scopes grouped by resource type with scope, description, selected, and admin flags */
 export type OauthApplicationAllScopesByResourceMap = { [key: string]: unknown | undefined };
+const OauthApplicationAllScopesByResourceMap =
+  NekiShardAssignmentErrorMap as any as S.Schema<OauthApplicationAllScopesByResourceMap>;
+
 export type OauthApplicationMcpToolGroupsItemMap = { [key: string]: unknown | undefined };
 /** MCP tool groups (id, label, section, tools, scopes, parent_id, default_enabled, roles) selectable when authorizing a DCR app; only present for DCR apps. Database-section groups also carry org_scopes (the organization-tier scope names granting the group across all databases in an organization) and org_roles (the organization roles allowed to grant them); both are null for organization-section groups */
 export type OauthApplicationMcpToolGroupsList = Array<OauthApplicationMcpToolGroupsItemMap>;
+const OauthApplicationMcpToolGroupsList =
+  DatabaseDeployRequestDeploymentPrecedingDeploymentsList as any as S.Schema<OauthApplicationMcpToolGroupsList>;
+
 export interface OauthApplication {
   /** The ID of the app */
   id: string;
@@ -5701,6 +7683,8 @@ export interface OauthApplication {
   /** MCP tool groups (id, label, section, tools, scopes, parent_id, default_enabled, roles) selectable when authorizing a DCR app; only present for DCR apps. Database-section groups also carry org_scopes (the organization-tier scope names granting the group across all databases in an organization) and org_roles (the organization roles allowed to grant them); both are null for organization-section groups */
   mcp_tool_groups?: OauthApplicationMcpToolGroupsList | null;
 }
+const OauthApplication = /*@__PURE__*/ __L.at(__c38, 6) as any as S.Schema<OauthApplication>;
+
 export interface GetOauthTokenRequest {
   /** The name of the organization the OAuth application belongs to */
   organization: string;
@@ -5709,12 +7693,25 @@ export interface GetOauthTokenRequest {
   /** The ID of the OAuth application token */
   token_id: string;
 }
+const GetOauthTokenRequest = /*@__PURE__*/ __L.at(
+  __c38,
+  7,
+) as any as S.Schema<GetOauthTokenRequest>;
+
 export interface GetOrganizationRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
 }
+const GetOrganizationRequest = /*@__PURE__*/ __L.at(
+  __c39,
+  0,
+) as any as S.Schema<GetOrganizationRequest>;
+
 /** Features that can be enabled on the organization */
 export type OrganizationFeaturesMap = { [key: string]: unknown | undefined };
+const OrganizationFeaturesMap =
+  NekiShardAssignmentErrorMap as any as S.Schema<OrganizationFeaturesMap>;
+
 export interface Organization {
   /** The ID for the organization */
   id: string;
@@ -5759,12 +7756,21 @@ export interface Organization {
   /** Whether or not the organization requires payment information */
   payment_info_required: boolean;
 }
+const Organization = /*@__PURE__*/ __L.at(__c39, 1) as any as S.Schema<Organization>;
+
 export interface GetOrganizationBillingPaymentMethodRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
 }
+const GetOrganizationBillingPaymentMethodRequest = /*@__PURE__*/ __L.at(
+  __c39,
+  2,
+) as any as S.Schema<GetOrganizationBillingPaymentMethodRequest>;
+
 /** The resource type */
 export type BillingPaymentMethodType = "PaymentMethod";
+const BillingPaymentMethodType = S.String;
+
 export interface BillingPaymentMethod {
   /** The resource type */
   type: BillingPaymentMethodType;
@@ -5781,12 +7787,22 @@ export interface BillingPaymentMethod {
   /** The cardholder name */
   name: string | null;
 }
+const BillingPaymentMethod = /*@__PURE__*/ __L.at(
+  __c39,
+  3,
+) as any as S.Schema<BillingPaymentMethod>;
+
 export interface GetOrganizationMembershipRequest {
   /** The name of the organization */
   organization: string;
   /** The ID of the user */
   id: string;
 }
+const GetOrganizationMembershipRequest = /*@__PURE__*/ __L.at(
+  __c39,
+  4,
+) as any as S.Schema<GetOrganizationMembershipRequest>;
+
 export type OrganizationMembershipUserDefaultOrganization =
   OrganizationTeamMembershipUserDefaultOrganization;
 export interface OrganizationMembershipUser {
@@ -5816,8 +7832,15 @@ export interface OrganizationMembershipUser {
   /** Whether or not the user is verified by email. */
   email_verified?: boolean | null;
 }
+const OrganizationMembershipUser = /*@__PURE__*/ __L.at(
+  __c39,
+  5,
+) as any as S.Schema<OrganizationMembershipUser>;
+
 /** The role of the user in the organization */
 export type OrganizationMembershipRole = "member" | "admin";
+const OrganizationMembershipRole = S.String;
+
 export interface OrganizationMembership {
   /** The ID of the membership */
   id: string;
@@ -5829,20 +7852,39 @@ export interface OrganizationMembership {
   /** When the membership was last updated */
   updated_at: string;
 }
+const OrganizationMembership = /*@__PURE__*/ __L.at(
+  __c39,
+  6,
+) as any as S.Schema<OrganizationMembership>;
+
 export interface GetOrganizationSsoRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
 }
+const GetOrganizationSsoRequest = /*@__PURE__*/ __L.at(
+  __c39,
+  7,
+) as any as S.Schema<GetOrganizationSsoRequest>;
+
 export interface GetOrganizationSsoDomainRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
   /** The public ID of the organization domain */
   id: string;
 }
+const GetOrganizationSsoDomainRequest = /*@__PURE__*/ __L.at(
+  __c40,
+  0,
+) as any as S.Schema<GetOrganizationSsoDomainRequest>;
+
 /** The resource type */
 export type OrganizationDomainType = "OrganizationDomain";
+const OrganizationDomainType = S.String;
+
 /** The verification state of the domain */
 export type OrganizationDomainState = "pending" | "verified" | "failed";
+const OrganizationDomainState = S.String;
+
 export interface OrganizationDomain {
   /** The resource type */
   type: OrganizationDomainType;
@@ -5861,12 +7903,19 @@ export interface OrganizationDomain {
   /** When the domain was last updated */
   updated_at: string;
 }
+const OrganizationDomain = /*@__PURE__*/ __L.at(__c40, 1) as any as S.Schema<OrganizationDomain>;
+
 export interface GetOrganizationTeamRequest {
   /** The name of the organization */
   organization: string;
   /** The slug of the team */
   team: string;
 }
+const GetOrganizationTeamRequest = /*@__PURE__*/ __L.at(
+  __c40,
+  2,
+) as any as S.Schema<GetOrganizationTeamRequest>;
+
 export interface GetOrganizationTeamMemberRequest {
   /** The name of the organization */
   organization: string;
@@ -5875,6 +7924,11 @@ export interface GetOrganizationTeamMemberRequest {
   /** The ID of the team membership or the ID of the member */
   id: string;
 }
+const GetOrganizationTeamMemberRequest = /*@__PURE__*/ __L.at(
+  __c40,
+  3,
+) as any as S.Schema<GetOrganizationTeamMemberRequest>;
+
 export interface GetPasswordRequest {
   /** The name of the organization the password belongs to */
   organization: string;
@@ -5885,14 +7939,27 @@ export interface GetPasswordRequest {
   /** The ID of the password */
   id: string;
 }
+const GetPasswordRequest = /*@__PURE__*/ __L.at(__c40, 4) as any as S.Schema<GetPasswordRequest>;
+
 /** The role for the password */
 export type DatabaseBranchPasswordRole = "reader" | "writer" | "admin" | "readwriter";
+const DatabaseBranchPasswordRole = S.String;
+
 /** List of IP addresses or CIDR ranges that can use this password */
 export type DatabaseBranchPasswordCidrsList = Array<string>;
+const DatabaseBranchPasswordCidrsList =
+  OrganizationTeamMembershipPasswordsItemCidrsList as any as S.Schema<DatabaseBranchPasswordCidrsList>;
+
 /** The list of hosts in each availability zone providing direct access to a vtgate */
 export type DatabaseBranchPasswordDirectVtgateAddressesList = Array<string>;
+const DatabaseBranchPasswordDirectVtgateAddressesList =
+  OrganizationTeamMembershipPasswordsItemCidrsList as any as S.Schema<DatabaseBranchPasswordDirectVtgateAddressesList>;
+
 /** The read-only replica host URLs */
 export type DatabaseBranchPasswordAccessHostRegionalUrlsList = Array<string>;
+const DatabaseBranchPasswordAccessHostRegionalUrlsList =
+  OrganizationTeamMembershipPasswordsItemCidrsList as any as S.Schema<DatabaseBranchPasswordAccessHostRegionalUrlsList>;
+
 export type DatabaseBranchPasswordActor = OrganizationTeamMembershipActor;
 /** Public IP addresses for the region */
 export type DatabaseBranchPasswordRegionPublicIpAddressesList = Array<string>;
@@ -5920,6 +7987,9 @@ export interface DatabaseBranchPasswordRegion {
   /** Whether the region supports Neki databases */
   neki_supported: boolean;
 }
+const DatabaseBranchPasswordRegion =
+  PostgresReadOnlyReplicaRegion as any as S.Schema<DatabaseBranchPasswordRegion>;
+
 export type DatabaseBranchPasswordDatabaseBranch =
   OrganizationTeamMembershipPasswordsItemDatabaseBranch;
 export interface DatabaseBranchPassword {
@@ -5967,16 +8037,30 @@ export interface DatabaseBranchPassword {
   renewable: boolean;
   database_branch: OrganizationTeamMembershipPasswordsItemDatabaseBranch;
 }
+const DatabaseBranchPassword = /*@__PURE__*/ __L.at(
+  __c40,
+  5,
+) as any as S.Schema<DatabaseBranchPassword>;
+
 export interface GetPaymentMethodSetupRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
   /** Billing payment method setup ID from `update_payment_method`. Example: `pmsetup_1234`. */
   id: string;
 }
+const GetPaymentMethodSetupRequest = /*@__PURE__*/ __L.at(
+  __c40,
+  6,
+) as any as S.Schema<GetPaymentMethodSetupRequest>;
+
 /** The resource type */
 export type BillingPaymentMethodSetupType = "BillingPaymentMethodSetup";
+const BillingPaymentMethodSetupType = S.String;
+
 /** The setup state */
 export type BillingPaymentMethodSetupState = "pending" | "completed" | "failed" | "expired";
+const BillingPaymentMethodSetupState = S.String;
+
 export interface BillingPaymentMethodSetup {
   /** The resource type */
   type: BillingPaymentMethodSetupType;
@@ -5995,6 +8079,11 @@ export interface BillingPaymentMethodSetup {
   /** When the setup failed */
   failed_at: string | null;
 }
+const BillingPaymentMethodSetup = /*@__PURE__*/ __L.at(
+  __c40,
+  7,
+) as any as S.Schema<BillingPaymentMethodSetup>;
+
 export interface GetQueryPatternsReportRequest {
   /** The name of the organization the branch belongs to */
   organization: string;
@@ -6005,7 +8094,15 @@ export interface GetQueryPatternsReportRequest {
   /** The ID of the query patterns report */
   id: string;
 }
+const GetQueryPatternsReportRequest = /*@__PURE__*/ __L.at(
+  __c41,
+  0,
+) as any as S.Schema<GetQueryPatternsReportRequest>;
+
 export interface GetQueryPatternsReportResponse {}
+const GetQueryPatternsReportResponse =
+  CreateShardResponse as any as S.Schema<GetQueryPatternsReportResponse>;
+
 export interface GetQueryPatternsReportStatusRequest {
   /** The name of the organization the branch belongs to */
   organization: string;
@@ -6016,6 +8113,11 @@ export interface GetQueryPatternsReportStatusRequest {
   /** The ID of the query patterns report */
   id: string;
 }
+const GetQueryPatternsReportStatusRequest = /*@__PURE__*/ __L.at(
+  __c41,
+  1,
+) as any as S.Schema<GetQueryPatternsReportStatusRequest>;
+
 export type GetQueryStatisticsRequestPeriod =
   | "15m"
   | "1h"
@@ -6026,6 +8128,8 @@ export type GetQueryStatisticsRequestPeriod =
   | "2d"
   | "7d"
   | "8d";
+const GetQueryStatisticsRequestPeriod = S.String;
+
 export interface GetQueryStatisticsRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
@@ -6048,6 +8152,11 @@ export interface GetQueryStatisticsRequest {
   /** If provided, specifies the number of returned results */
   per_page?: number;
 }
+const GetQueryStatisticsRequest = /*@__PURE__*/ __L.at(
+  __c41,
+  2,
+) as any as S.Schema<GetQueryStatisticsRequest>;
+
 export type GetQuerySummaryRequestPeriod =
   | "15m"
   | "1h"
@@ -6058,6 +8167,8 @@ export type GetQuerySummaryRequestPeriod =
   | "2d"
   | "7d"
   | "8d";
+const GetQuerySummaryRequestPeriod = S.String;
+
 export interface GetQuerySummaryRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
@@ -6076,18 +8187,38 @@ export interface GetQuerySummaryRequest {
   /** Time period for filtering query statistics */
   period?: GetQuerySummaryRequestPeriod | (string & {});
 }
+const GetQuerySummaryRequest = /*@__PURE__*/ __L.at(
+  __c41,
+  3,
+) as any as S.Schema<GetQuerySummaryRequest>;
+
 /** Tables accessed by the query */
 export type QuerySummaryTablesList = Array<string>;
+const QuerySummaryTablesList =
+  OrganizationTeamMembershipPasswordsItemCidrsList as any as S.Schema<QuerySummaryTablesList>;
+
 /** Fully qualified tables accessed by the query */
 export type QuerySummaryQualifiedTablesList = Array<string>;
+const QuerySummaryQualifiedTablesList =
+  OrganizationTeamMembershipPasswordsItemCidrsList as any as S.Schema<QuerySummaryQualifiedTablesList>;
+
 /** Keyspaces or schemas accessed by the query */
 export type QuerySummaryTableKeyspacesList = Array<string>;
+const QuerySummaryTableKeyspacesList =
+  OrganizationTeamMembershipPasswordsItemCidrsList as any as S.Schema<QuerySummaryTableKeyspacesList>;
+
 export type QuerySummaryIndexUsagesItemMap = { [key: string]: unknown | undefined };
 /** Index usage information */
 export type QuerySummaryIndexUsagesList = Array<QuerySummaryIndexUsagesItemMap>;
+const QuerySummaryIndexUsagesList =
+  DatabaseDeployRequestDeploymentPrecedingDeploymentsList as any as S.Schema<QuerySummaryIndexUsagesList>;
+
 export type QuerySummaryRoutingIndexUsagesItemMap = { [key: string]: unknown | undefined };
 /** Routing index usage information */
 export type QuerySummaryRoutingIndexUsagesList = Array<QuerySummaryRoutingIndexUsagesItemMap>;
+const QuerySummaryRoutingIndexUsagesList =
+  DatabaseDeployRequestDeploymentPrecedingDeploymentsList as any as S.Schema<QuerySummaryRoutingIndexUsagesList>;
+
 export interface QuerySummary {
   /** The ID of the query summary */
   id: string;
@@ -6190,6 +8321,8 @@ export interface QuerySummary {
   /** The number of executions checked by traffic control rules */
   traffic_control_checked: number;
 }
+const QuerySummary = /*@__PURE__*/ __L.at(__c41, 4) as any as S.Schema<QuerySummary>;
+
 export interface GetRoleRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
@@ -6210,6 +8343,8 @@ export interface GetRoleRequest {
   /** Return libpq options that pin this Neki shard */
   shard?: string;
 }
+const GetRoleRequest = /*@__PURE__*/ __L.at(__c41, 5) as any as S.Schema<GetRoleRequest>;
+
 export interface GetRouterRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
@@ -6220,6 +8355,8 @@ export interface GetRouterRequest {
   /** Name from `list_routers`. */
   router: string;
 }
+const GetRouterRequest = /*@__PURE__*/ __L.at(__c41, 6) as any as S.Schema<GetRouterRequest>;
+
 export interface GetRouterChangeRequestRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
@@ -6232,7 +8369,15 @@ export interface GetRouterChangeRequestRequest {
   /** The ID of the change request */
   id: string;
 }
+const GetRouterChangeRequestRequest = /*@__PURE__*/ __L.at(
+  __c41,
+  7,
+) as any as S.Schema<GetRouterChangeRequestRequest>;
+
 export interface GetRouterChangeRequestResponse {}
+const GetRouterChangeRequestResponse =
+  CreateShardResponse as any as S.Schema<GetRouterChangeRequestResponse>;
+
 export interface GetSchemaRecommendationRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
@@ -6241,12 +8386,22 @@ export interface GetSchemaRecommendationRequest {
   /** Schema recommendation sequence number. Example: `42`. */
   number: number;
 }
+const GetSchemaRecommendationRequest = /*@__PURE__*/ __L.at(
+  __c42,
+  0,
+) as any as S.Schema<GetSchemaRecommendationRequest>;
+
 export interface GetServiceTokenRequest {
   /** The name of the organization */
   organization: string;
   /** The ID of the service token */
   id: string;
 }
+const GetServiceTokenRequest = /*@__PURE__*/ __L.at(
+  __c42,
+  1,
+) as any as S.Schema<GetServiceTokenRequest>;
+
 export interface GetShardRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
@@ -6257,6 +8412,8 @@ export interface GetShardRequest {
   /** The ID of the shard */
   id: string;
 }
+const GetShardRequest = /*@__PURE__*/ __L.at(__c42, 2) as any as S.Schema<GetShardRequest>;
+
 export interface GetShardConfigurationProfileRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
@@ -6267,6 +8424,11 @@ export interface GetShardConfigurationProfileRequest {
   /** Name from `list_shard_configuration_profiles`. */
   configuration_profile: string;
 }
+const GetShardConfigurationProfileRequest = /*@__PURE__*/ __L.at(
+  __c42,
+  3,
+) as any as S.Schema<GetShardConfigurationProfileRequest>;
+
 export interface GetShardConfigurationProfileChangeRequestRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
@@ -6279,7 +8441,15 @@ export interface GetShardConfigurationProfileChangeRequestRequest {
   /** The ID of the change request */
   id: string;
 }
+const GetShardConfigurationProfileChangeRequestRequest = /*@__PURE__*/ __L.at(
+  __c42,
+  4,
+) as any as S.Schema<GetShardConfigurationProfileChangeRequestRequest>;
+
 export interface GetShardConfigurationProfileChangeRequestResponse {}
+const GetShardConfigurationProfileChangeRequestResponse =
+  CancelAdminChangeRequestResponse as any as S.Schema<GetShardConfigurationProfileChangeRequestResponse>;
+
 export interface GetShardConfigurationProfileShardRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
@@ -6292,6 +8462,11 @@ export interface GetShardConfigurationProfileShardRequest {
   /** The ID of the shard */
   id: string;
 }
+const GetShardConfigurationProfileShardRequest = /*@__PURE__*/ __L.at(
+  __c42,
+  5,
+) as any as S.Schema<GetShardConfigurationProfileShardRequest>;
+
 export interface GetSidecarRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
@@ -6302,8 +8477,12 @@ export interface GetSidecarRequest {
   /** ID from `list_sidecars`, or the configuration profile name. */
   sidecar: string;
 }
+const GetSidecarRequest = /*@__PURE__*/ __L.at(__c42, 6) as any as S.Schema<GetSidecarRequest>;
+
 /** The current state of the sidecar */
 export type NekiSidecarState = "pending" | "applying" | "ready";
+const NekiSidecarState = S.String;
+
 export interface NekiSidecar {
   /** The ID of the sidecar */
   id: string;
@@ -6316,6 +8495,8 @@ export interface NekiSidecar {
   /** When the sidecar was last updated */
   updated_at: string;
 }
+const NekiSidecar = /*@__PURE__*/ __L.at(__c42, 7) as any as S.Schema<NekiSidecar>;
+
 export interface GetSidecarChangeRequestRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
@@ -6328,7 +8509,15 @@ export interface GetSidecarChangeRequestRequest {
   /** The ID of the change request */
   id: string;
 }
+const GetSidecarChangeRequestRequest = /*@__PURE__*/ __L.at(
+  __c43,
+  0,
+) as any as S.Schema<GetSidecarChangeRequestRequest>;
+
 export interface GetSidecarChangeRequestResponse {}
+const GetSidecarChangeRequestResponse =
+  CancelNekiChangeRequestResponse as any as S.Schema<GetSidecarChangeRequestResponse>;
+
 export interface GetSwitchoverRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
@@ -6339,6 +8528,11 @@ export interface GetSwitchoverRequest {
   /** The ID of the switchover */
   id: string;
 }
+const GetSwitchoverRequest = /*@__PURE__*/ __L.at(
+  __c43,
+  1,
+) as any as S.Schema<GetSwitchoverRequest>;
+
 export type GetTabletMetricsRequestMetricsItem =
   | "replication_lag"
   | "vreplication_lag"
@@ -6359,6 +8553,9 @@ export type GetTabletMetricsRequestMetricsItem =
 export type GetTabletMetricsRequestMetricsList = Array<
   GetTabletMetricsRequestMetricsItem | (string & {})
 >;
+const GetTabletMetricsRequestMetricsList =
+  CreateRoleRequestInheritedRolesList as any as S.Schema<GetTabletMetricsRequestMetricsList>;
+
 export type GetTabletMetricsRequestPeriod =
   | "15m"
   | "1h"
@@ -6369,6 +8566,8 @@ export type GetTabletMetricsRequestPeriod =
   | "2d"
   | "7d"
   | "8d";
+const GetTabletMetricsRequestPeriod = S.String;
+
 export interface GetTabletMetricsRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
@@ -6395,6 +8594,11 @@ export interface GetTabletMetricsRequest {
   /** Filter by workflow ID */
   workflow?: string;
 }
+const GetTabletMetricsRequest = /*@__PURE__*/ __L.at(
+  __c43,
+  2,
+) as any as S.Schema<GetTabletMetricsRequest>;
+
 export interface GetTrafficBudgetRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
@@ -6405,6 +8609,11 @@ export interface GetTrafficBudgetRequest {
   /** The ID of the traffic budget */
   id: string;
 }
+const GetTrafficBudgetRequest = /*@__PURE__*/ __L.at(
+  __c43,
+  3,
+) as any as S.Schema<GetTrafficBudgetRequest>;
+
 export interface GetVtctldOperationRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
@@ -6415,6 +8624,11 @@ export interface GetVtctldOperationRequest {
   /** The vtctld operation UUID */
   id: string;
 }
+const GetVtctldOperationRequest = /*@__PURE__*/ __L.at(
+  __c43,
+  4,
+) as any as S.Schema<GetVtctldOperationRequest>;
+
 /** The current state of the operation */
 export type GetVtctldOperationResponseState =
   | "pending"
@@ -6422,10 +8636,18 @@ export type GetVtctldOperationResponseState =
   | "completed"
   | "failed"
   | "cancelled";
+const GetVtctldOperationResponseState = S.String;
+
 /** Operation-specific metadata captured when the operation started */
 export type GetVtctldOperationResponseMetadataMap = { [key: string]: unknown | undefined };
+const GetVtctldOperationResponseMetadataMap =
+  NekiShardAssignmentErrorMap as any as S.Schema<GetVtctldOperationResponseMetadataMap>;
+
 /** Operation-specific result payload, present once the operation succeeds */
 export type GetVtctldOperationResponseResultMap = { [key: string]: unknown | undefined };
+const GetVtctldOperationResponseResultMap =
+  NekiShardAssignmentErrorMap as any as S.Schema<GetVtctldOperationResponseResultMap>;
+
 export interface GetVtctldOperationResponse {
   /** The object type, always VtctldOperation */
   type: string;
@@ -6450,6 +8672,11 @@ export interface GetVtctldOperationResponse {
   /** The error message, present when the operation fails or its status could not be checked */
   error?: string;
 }
+const GetVtctldOperationResponse = /*@__PURE__*/ __L.at(
+  __c43,
+  5,
+) as any as S.Schema<GetVtctldOperationResponse>;
+
 export interface GetWebhookRequest {
   /** The name of the organization */
   organization: string;
@@ -6458,6 +8685,8 @@ export interface GetWebhookRequest {
   /** The ID of the webhook */
   id: string;
 }
+const GetWebhookRequest = /*@__PURE__*/ __L.at(__c43, 6) as any as S.Schema<GetWebhookRequest>;
+
 export interface GetWorkflowRequest {
   /** The name of the organization the workflow belongs to */
   organization: string;
@@ -6466,6 +8695,8 @@ export interface GetWorkflowRequest {
   /** The sequence number of the workflow */
   number: number;
 }
+const GetWorkflowRequest = /*@__PURE__*/ __L.at(__c43, 7) as any as S.Schema<GetWorkflowRequest>;
+
 export interface LintBranchSchemaRequest {
   /** The name of the organization the branch belongs to */
   organization: string;
@@ -6478,15 +8709,28 @@ export interface LintBranchSchemaRequest {
   /** If provided, specifies the number of returned results */
   per_page?: number;
 }
+const LintBranchSchemaRequest = /*@__PURE__*/ __L.at(
+  __c44,
+  0,
+) as any as S.Schema<LintBranchSchemaRequest>;
+
 /** The subject for the errors */
 export type PaginatedSchemaLintErrorDataItemSubjectType =
   | "table_error"
   | "vschema_error"
   | "routing_rules_error";
+const PaginatedSchemaLintErrorDataItemSubjectType = S.String;
+
 /** A list of invalid foreign key columns in a table */
 export type PaginatedSchemaLintErrorDataItemForeignKeyColumnNamesList = Array<string>;
+const PaginatedSchemaLintErrorDataItemForeignKeyColumnNamesList =
+  OrganizationTeamMembershipPasswordsItemCidrsList as any as S.Schema<PaginatedSchemaLintErrorDataItemForeignKeyColumnNamesList>;
+
 /** A list of invalid auto-incremented columns */
 export type PaginatedSchemaLintErrorDataItemAutoIncrementColumnNamesList = Array<string>;
+const PaginatedSchemaLintErrorDataItemAutoIncrementColumnNamesList =
+  OrganizationTeamMembershipPasswordsItemCidrsList as any as S.Schema<PaginatedSchemaLintErrorDataItemAutoIncrementColumnNamesList>;
+
 export interface PaginatedSchemaLintErrorDataItem {
   /** Code representing the type of error */
   lint_error: string;
@@ -6523,7 +8767,17 @@ export interface PaginatedSchemaLintErrorDataItem {
   /** The name of the invalid partition in the schema */
   partition_name: string | null;
 }
+const PaginatedSchemaLintErrorDataItem = /*@__PURE__*/ __L.at(
+  __c44,
+  1,
+) as any as S.Schema<PaginatedSchemaLintErrorDataItem>;
+
 export type PaginatedSchemaLintErrorDataList = Array<PaginatedSchemaLintErrorDataItem>;
+const PaginatedSchemaLintErrorDataList = /*@__PURE__*/ __L.at(
+  __c44,
+  2,
+) as any as S.Schema<PaginatedSchemaLintErrorDataList>;
+
 export interface PaginatedSchemaLintError {
   /** The response type. Always "list" for paginated responses. */
   type: string;
@@ -6541,6 +8795,11 @@ export interface PaginatedSchemaLintError {
   prev_page_url: string | null;
   data: PaginatedSchemaLintErrorDataList;
 }
+const PaginatedSchemaLintError = /*@__PURE__*/ __L.at(
+  __c44,
+  3,
+) as any as S.Schema<PaginatedSchemaLintError>;
+
 export type ListAdminChangeRequestsRequestPeriod =
   | "15m"
   | "1h"
@@ -6551,6 +8810,8 @@ export type ListAdminChangeRequestsRequestPeriod =
   | "2d"
   | "7d"
   | "8d";
+const ListAdminChangeRequestsRequestPeriod = S.String;
+
 export interface ListAdminChangeRequestsRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
@@ -6567,7 +8828,15 @@ export interface ListAdminChangeRequestsRequest {
   /** Filter change requests completed between two ISO 8601 timestamps */
   completed_at?: string;
 }
+const ListAdminChangeRequestsRequest = /*@__PURE__*/ __L.at(
+  __c44,
+  4,
+) as any as S.Schema<ListAdminChangeRequestsRequest>;
+
 export interface ListAdminChangeRequestsResponse {}
+const ListAdminChangeRequestsResponse =
+  CancelNekiChangeRequestResponse as any as S.Schema<ListAdminChangeRequestsResponse>;
+
 export interface ListAdminParametersRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
@@ -6576,8 +8845,15 @@ export interface ListAdminParametersRequest {
   /** Branch name from `list_branches`. Example: `main`. */
   branch: string;
 }
+const ListAdminParametersRequest = /*@__PURE__*/ __L.at(
+  __c44,
+  5,
+) as any as S.Schema<ListAdminParametersRequest>;
+
 /** The namespace of the parameter */
 export type NekiParameterNamespace = "pgconf" | "router" | "sidecar" | "admin" | "replicator";
+const NekiParameterNamespace = S.String;
+
 /** The type of the parameter */
 export type NekiParameterParameterType =
   | "array"
@@ -6588,10 +8864,18 @@ export type NekiParameterParameterType =
   | "select"
   | "string"
   | "time";
+const NekiParameterParameterType = S.String;
+
 /** Valid options for the parameter value. Null represents an unset value */
 export type NekiParameterOptionsList = Array<string>;
+const NekiParameterOptionsList =
+  OrganizationTeamMembershipPasswordsItemCidrsList as any as S.Schema<NekiParameterOptionsList>;
+
 /** The units of the parameter value */
 export type NekiParameterUnitsList = Array<string>;
+const NekiParameterUnitsList =
+  OrganizationTeamMembershipPasswordsItemCidrsList as any as S.Schema<NekiParameterUnitsList>;
+
 export type NekiParameterActor = OrganizationTeamMembershipActor;
 export interface NekiParameter {
   /** The ID of the parameter */
@@ -6634,8 +8918,20 @@ export interface NekiParameter {
   url: string;
   actor: OrganizationTeamMembershipActor;
 }
+const NekiParameter = /*@__PURE__*/ __L.at(__c44, 6) as any as S.Schema<NekiParameter>;
+
 export type ListAdminParametersResponseBodyList = Array<NekiParameter>;
+const ListAdminParametersResponseBodyList = /*@__PURE__*/ __L.at(
+  __c44,
+  7,
+) as any as S.Schema<ListAdminParametersResponseBodyList>;
+
 export type ListAdminParametersResponse = ListAdminParametersResponseBodyList;
+const ListAdminParametersResponse = /*@__PURE__*/ __L.at(
+  __c45,
+  0,
+) as any as S.Schema<ListAdminParametersResponse>;
+
 export interface ListAdminSizeSkusRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
@@ -6644,9 +8940,24 @@ export interface ListAdminSizeSkusRequest {
   /** Branch name from `list_branches`. Example: `main`. */
   branch: string;
 }
+const ListAdminSizeSkusRequest = /*@__PURE__*/ __L.at(
+  __c45,
+  1,
+) as any as S.Schema<ListAdminSizeSkusRequest>;
+
 export type NekiAdminSizeSku = NekiAdminSku;
 export type ListAdminSizeSkusResponseBodyList = Array<NekiAdminSku>;
+const ListAdminSizeSkusResponseBodyList = /*@__PURE__*/ __L.at(
+  __c45,
+  2,
+) as any as S.Schema<ListAdminSizeSkusResponseBodyList>;
+
 export type ListAdminSizeSkusResponse = ListAdminSizeSkusResponseBodyList;
+const ListAdminSizeSkusResponse = /*@__PURE__*/ __L.at(
+  __c45,
+  3,
+) as any as S.Schema<ListAdminSizeSkusResponse>;
+
 export interface ListAuditLogsRequest {
   /** The name of the organization */
   organization: string;
@@ -6657,8 +8968,16 @@ export interface ListAuditLogsRequest {
   /** If provided, specifies the number of returned results (max 100) */
   limit?: number;
 }
+const ListAuditLogsRequest = /*@__PURE__*/ __L.at(
+  __c45,
+  4,
+) as any as S.Schema<ListAuditLogsRequest>;
+
 /** Additional metadata containing details about the change */
 export type PaginatedAuditLogEventDataItemMetadataMap = { [key: string]: unknown | undefined };
+const PaginatedAuditLogEventDataItemMetadataMap =
+  NekiShardAssignmentErrorMap as any as S.Schema<PaginatedAuditLogEventDataItemMetadataMap>;
+
 export interface PaginatedAuditLogEventDataItem {
   /** The ID for the audit log */
   id: string;
@@ -6695,7 +9014,17 @@ export interface PaginatedAuditLogEventDataItem {
   /** Additional metadata containing details about the change */
   metadata: PaginatedAuditLogEventDataItemMetadataMap | null;
 }
+const PaginatedAuditLogEventDataItem = /*@__PURE__*/ __L.at(
+  __c45,
+  5,
+) as any as S.Schema<PaginatedAuditLogEventDataItem>;
+
 export type PaginatedAuditLogEventDataList = Array<PaginatedAuditLogEventDataItem>;
+const PaginatedAuditLogEventDataList = /*@__PURE__*/ __L.at(
+  __c45,
+  6,
+) as any as S.Schema<PaginatedAuditLogEventDataList>;
+
 export interface PaginatedAuditLogEvent {
   /** The response type. Always "list" for paginated responses. */
   type: string;
@@ -6709,6 +9038,11 @@ export interface PaginatedAuditLogEvent {
   cursor_end: string | null;
   data: PaginatedAuditLogEventDataList;
 }
+const PaginatedAuditLogEvent = /*@__PURE__*/ __L.at(
+  __c45,
+  7,
+) as any as S.Schema<PaginatedAuditLogEvent>;
+
 export interface ListBackupPoliciesRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
@@ -6719,8 +9053,15 @@ export interface ListBackupPoliciesRequest {
   /** If provided, specifies the number of returned results */
   per_page?: number;
 }
+const ListBackupPoliciesRequest = /*@__PURE__*/ __L.at(
+  __c46,
+  0,
+) as any as S.Schema<ListBackupPoliciesRequest>;
+
 /** Whether the policy is for production or development branches */
 export type PaginatedBackupPolicyDataItemTarget = "production" | "development";
+const PaginatedBackupPolicyDataItemTarget = S.String;
+
 export interface PaginatedBackupPolicyDataItem {
   /** The ID of the backup policy */
   id: string;
@@ -6755,7 +9096,17 @@ export interface PaginatedBackupPolicyDataItem {
   /** Whether the policy is a required system backup */
   required: boolean;
 }
+const PaginatedBackupPolicyDataItem = /*@__PURE__*/ __L.at(
+  __c46,
+  1,
+) as any as S.Schema<PaginatedBackupPolicyDataItem>;
+
 export type PaginatedBackupPolicyDataList = Array<PaginatedBackupPolicyDataItem>;
+const PaginatedBackupPolicyDataList = /*@__PURE__*/ __L.at(
+  __c46,
+  2,
+) as any as S.Schema<PaginatedBackupPolicyDataList>;
+
 export interface PaginatedBackupPolicy {
   /** The response type. Always "list" for paginated responses. */
   type: string;
@@ -6773,6 +9124,11 @@ export interface PaginatedBackupPolicy {
   prev_page_url: string | null;
   data: PaginatedBackupPolicyDataList;
 }
+const PaginatedBackupPolicy = /*@__PURE__*/ __L.at(
+  __c46,
+  3,
+) as any as S.Schema<PaginatedBackupPolicy>;
+
 export type ListBackupsRequestState =
   | "pending"
   | "running"
@@ -6780,6 +9136,8 @@ export type ListBackupsRequestState =
   | "failed"
   | "canceled"
   | "ignored";
+const ListBackupsRequestState = S.String;
+
 export interface ListBackupsRequest {
   /** The name of the organization the branch belongs to */
   organization: string;
@@ -6806,6 +9164,8 @@ export interface ListBackupsRequest {
   /** If provided, specifies the number of returned results */
   per_page?: number;
 }
+const ListBackupsRequest = /*@__PURE__*/ __L.at(__c46, 4) as any as S.Schema<ListBackupsRequest>;
+
 /** The current state of the backup */
 export type PaginatedBackupDataItemState =
   | "pending"
@@ -6814,10 +9174,15 @@ export type PaginatedBackupDataItemState =
   | "failed"
   | "canceled"
   | "ignored";
+const PaginatedBackupDataItemState = S.String;
+
 export type PaginatedBackupDataItemRestoredBranchesItem =
   OrganizationTeamMembershipUserDefaultOrganization;
 export type PaginatedBackupDataItemRestoredBranchesList =
   Array<OrganizationTeamMembershipUserDefaultOrganization>;
+const PaginatedBackupDataItemRestoredBranchesList =
+  BackupRestoredBranchesList as any as S.Schema<PaginatedBackupDataItemRestoredBranchesList>;
+
 export type PaginatedBackupDataItemActor = OrganizationTeamMembershipActor;
 /** Whether the policy is for production or development branches */
 export type PaginatedBackupDataItemBackupPolicyTarget = "production" | "development";
@@ -6855,6 +9220,9 @@ export interface PaginatedBackupDataItemBackupPolicy {
   /** Whether the policy is a required system backup */
   required: boolean;
 }
+const PaginatedBackupDataItemBackupPolicy =
+  PaginatedBackupPolicyDataItem as any as S.Schema<PaginatedBackupDataItemBackupPolicy>;
+
 export type PaginatedBackupDataItemSchemaSnapshot = BackupSchemaSnapshot;
 export type PaginatedBackupDataItemDatabaseBranch =
   OrganizationTeamMembershipUserDefaultOrganization;
@@ -6895,7 +9263,17 @@ export interface PaginatedBackupDataItem {
   schema_snapshot?: BackupSchemaSnapshot | null;
   database_branch?: OrganizationTeamMembershipUserDefaultOrganization | null;
 }
+const PaginatedBackupDataItem = /*@__PURE__*/ __L.at(
+  __c46,
+  5,
+) as any as S.Schema<PaginatedBackupDataItem>;
+
 export type PaginatedBackupDataList = Array<PaginatedBackupDataItem>;
+const PaginatedBackupDataList = /*@__PURE__*/ __L.at(
+  __c46,
+  6,
+) as any as S.Schema<PaginatedBackupDataList>;
+
 export interface PaginatedBackup {
   /** The response type. Always "list" for paginated responses. */
   type: string;
@@ -6917,6 +9295,8 @@ export interface PaginatedBackup {
   total_pages: number;
   data: PaginatedBackupDataList;
 }
+const PaginatedBackup = /*@__PURE__*/ __L.at(__c46, 7) as any as S.Schema<PaginatedBackup>;
+
 export interface ListBouncerResizeRequestsRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
@@ -6931,30 +9311,47 @@ export interface ListBouncerResizeRequestsRequest {
   /** If provided, specifies the number of returned results */
   per_page?: number;
 }
+const ListBouncerResizeRequestsRequest = /*@__PURE__*/ __L.at(
+  __c47,
+  0,
+) as any as S.Schema<ListBouncerResizeRequestsRequest>;
+
 /** The state of the bouncer resize */
 export type PaginatedPostgresBouncerResizeRequestDataItemState =
   | "pending"
   | "resizing"
   | "canceled"
   | "completed";
+const PaginatedPostgresBouncerResizeRequestDataItemState = S.String;
+
 /** The backend target for the bouncer after the resize */
 export type PaginatedPostgresBouncerResizeRequestDataItemTarget =
   | "primary"
   | "replica"
   | "replica_az_affinity";
+const PaginatedPostgresBouncerResizeRequestDataItemTarget = S.String;
+
 /** The bouncer parameters */
 export type PaginatedPostgresBouncerResizeRequestDataItemParametersMap = {
   [key: string]: unknown | undefined;
 };
+const PaginatedPostgresBouncerResizeRequestDataItemParametersMap =
+  NekiShardAssignmentErrorMap as any as S.Schema<PaginatedPostgresBouncerResizeRequestDataItemParametersMap>;
+
 /** The backend target for the bouncer before the resize */
 export type PaginatedPostgresBouncerResizeRequestDataItemPreviousTarget =
   | "primary"
   | "replica"
   | "replica_az_affinity";
+const PaginatedPostgresBouncerResizeRequestDataItemPreviousTarget = S.String;
+
 /** The previous bouncer parameters */
 export type PaginatedPostgresBouncerResizeRequestDataItemPreviousParametersMap = {
   [key: string]: unknown | undefined;
 };
+const PaginatedPostgresBouncerResizeRequestDataItemPreviousParametersMap =
+  DatabaseDeployRequestDeploymentSequentialDiffDependenciesItemMap as any as S.Schema<PaginatedPostgresBouncerResizeRequestDataItemPreviousParametersMap>;
+
 export type PaginatedPostgresBouncerResizeRequestDataItemActor = OrganizationTeamMembershipActor;
 export type PaginatedPostgresBouncerResizeRequestDataItemBouncer =
   OrganizationTeamMembershipUserDefaultOrganization;
@@ -6990,8 +9387,18 @@ export interface PaginatedPostgresBouncerResizeRequestDataItem {
   sku: PostgresBouncerSku;
   previous_sku: PostgresBouncerSku;
 }
+const PaginatedPostgresBouncerResizeRequestDataItem = /*@__PURE__*/ __L.at(
+  __c47,
+  1,
+) as any as S.Schema<PaginatedPostgresBouncerResizeRequestDataItem>;
+
 export type PaginatedPostgresBouncerResizeRequestDataList =
   Array<PaginatedPostgresBouncerResizeRequestDataItem>;
+const PaginatedPostgresBouncerResizeRequestDataList = /*@__PURE__*/ __L.at(
+  __c47,
+  2,
+) as any as S.Schema<PaginatedPostgresBouncerResizeRequestDataList>;
+
 export interface PaginatedPostgresBouncerResizeRequest {
   /** The response type. Always "list" for paginated responses. */
   type: string;
@@ -7009,6 +9416,11 @@ export interface PaginatedPostgresBouncerResizeRequest {
   prev_page_url: string | null;
   data: PaginatedPostgresBouncerResizeRequestDataList;
 }
+const PaginatedPostgresBouncerResizeRequest = /*@__PURE__*/ __L.at(
+  __c47,
+  3,
+) as any as S.Schema<PaginatedPostgresBouncerResizeRequest>;
+
 export interface ListBouncersRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
@@ -7021,14 +9433,20 @@ export interface ListBouncersRequest {
   /** If provided, specifies the number of returned results */
   per_page?: number;
 }
+const ListBouncersRequest = /*@__PURE__*/ __L.at(__c47, 4) as any as S.Schema<ListBouncersRequest>;
+
 export type PaginatedPostgresBouncerDataItemSku = PostgresBouncerSku;
 /** The instance type the bouncer targets */
 export type PaginatedPostgresBouncerDataItemTarget = "primary" | "replica" | "replica_az_affinity";
+const PaginatedPostgresBouncerDataItemTarget = S.String;
+
 export type PaginatedPostgresBouncerDataItemActor = OrganizationTeamMembershipActor;
 export type PaginatedPostgresBouncerDataItemBranch =
   OrganizationTeamMembershipUserDefaultOrganization;
 /** The namespace of the parameter */
 export type PaginatedPostgresBouncerDataItemParametersItemNamespace = "pgbouncer";
+const PaginatedPostgresBouncerDataItemParametersItemNamespace = S.String;
+
 /** The type of the parameter */
 export type PaginatedPostgresBouncerDataItemParametersItemParameterType =
   | "array"
@@ -7036,8 +9454,13 @@ export type PaginatedPostgresBouncerDataItemParametersItemParameterType =
   | "seconds"
   | "select"
   | "string";
+const PaginatedPostgresBouncerDataItemParametersItemParameterType = S.String;
+
 /** Valid options for the parameter value */
 export type PaginatedPostgresBouncerDataItemParametersItemOptionsList = Array<string>;
+const PaginatedPostgresBouncerDataItemParametersItemOptionsList =
+  OrganizationTeamMembershipPasswordsItemCidrsList as any as S.Schema<PaginatedPostgresBouncerDataItemParametersItemOptionsList>;
+
 export type PaginatedPostgresBouncerDataItemParametersItemActor = OrganizationTeamMembershipActor;
 export interface PaginatedPostgresBouncerDataItemParametersItem {
   /** The ID of the parameter */
@@ -7078,8 +9501,18 @@ export interface PaginatedPostgresBouncerDataItemParametersItem {
   options: PaginatedPostgresBouncerDataItemParametersItemOptionsList;
   actor: OrganizationTeamMembershipActor;
 }
+const PaginatedPostgresBouncerDataItemParametersItem = /*@__PURE__*/ __L.at(
+  __c47,
+  5,
+) as any as S.Schema<PaginatedPostgresBouncerDataItemParametersItem>;
+
 export type PaginatedPostgresBouncerDataItemParametersList =
   Array<PaginatedPostgresBouncerDataItemParametersItem>;
+const PaginatedPostgresBouncerDataItemParametersList = /*@__PURE__*/ __L.at(
+  __c47,
+  6,
+) as any as S.Schema<PaginatedPostgresBouncerDataItemParametersList>;
+
 export interface PaginatedPostgresBouncerDataItem {
   /** The ID of the bouncer */
   id: string;
@@ -7100,7 +9533,17 @@ export interface PaginatedPostgresBouncerDataItem {
   branch: OrganizationTeamMembershipUserDefaultOrganization;
   parameters: PaginatedPostgresBouncerDataItemParametersList;
 }
+const PaginatedPostgresBouncerDataItem = /*@__PURE__*/ __L.at(
+  __c47,
+  7,
+) as any as S.Schema<PaginatedPostgresBouncerDataItem>;
+
 export type PaginatedPostgresBouncerDataList = Array<PaginatedPostgresBouncerDataItem>;
+const PaginatedPostgresBouncerDataList = /*@__PURE__*/ __L.at(
+  __c48,
+  0,
+) as any as S.Schema<PaginatedPostgresBouncerDataList>;
+
 export interface PaginatedPostgresBouncer {
   /** The response type. Always "list" for paginated responses. */
   type: string;
@@ -7118,6 +9561,11 @@ export interface PaginatedPostgresBouncer {
   prev_page_url: string | null;
   data: PaginatedPostgresBouncerDataList;
 }
+const PaginatedPostgresBouncer = /*@__PURE__*/ __L.at(
+  __c48,
+  1,
+) as any as S.Schema<PaginatedPostgresBouncer>;
+
 export type ListBranchAnomaliesRequestPeriod =
   | "15m"
   | "1h"
@@ -7128,6 +9576,8 @@ export type ListBranchAnomaliesRequestPeriod =
   | "2d"
   | "7d"
   | "8d";
+const ListBranchAnomaliesRequestPeriod = S.String;
+
 export interface ListBranchAnomaliesRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
@@ -7146,8 +9596,15 @@ export interface ListBranchAnomaliesRequest {
   /** If provided, specifies the number of returned results */
   per_page?: number;
 }
+const ListBranchAnomaliesRequest = /*@__PURE__*/ __L.at(
+  __c48,
+  2,
+) as any as S.Schema<ListBranchAnomaliesRequest>;
+
 /** The tablet type the query ran against */
 export type PaginatedAnomalyDataItemCorrelationsItemTabletType = "primary" | "replica" | "rdonly";
+const PaginatedAnomalyDataItemCorrelationsItemTabletType = S.String;
+
 export interface PaginatedAnomalyDataItemCorrelationsItem {
   /** The ID of the correlation */
   id: string;
@@ -7164,8 +9621,18 @@ export interface PaginatedAnomalyDataItemCorrelationsItem {
   /** The tablet type the query ran against */
   tablet_type: PaginatedAnomalyDataItemCorrelationsItemTabletType;
 }
+const PaginatedAnomalyDataItemCorrelationsItem = /*@__PURE__*/ __L.at(
+  __c48,
+  3,
+) as any as S.Schema<PaginatedAnomalyDataItemCorrelationsItem>;
+
 export type PaginatedAnomalyDataItemCorrelationsList =
   Array<PaginatedAnomalyDataItemCorrelationsItem>;
+const PaginatedAnomalyDataItemCorrelationsList = /*@__PURE__*/ __L.at(
+  __c48,
+  4,
+) as any as S.Schema<PaginatedAnomalyDataItemCorrelationsList>;
+
 export interface PaginatedAnomalyDataItem {
   /** The ID of the anomaly */
   id: string;
@@ -7185,7 +9652,17 @@ export interface PaginatedAnomalyDataItem {
   metrics_end: string;
   correlations?: PaginatedAnomalyDataItemCorrelationsList | null;
 }
+const PaginatedAnomalyDataItem = /*@__PURE__*/ __L.at(
+  __c48,
+  5,
+) as any as S.Schema<PaginatedAnomalyDataItem>;
+
 export type PaginatedAnomalyDataList = Array<PaginatedAnomalyDataItem>;
+const PaginatedAnomalyDataList = /*@__PURE__*/ __L.at(
+  __c48,
+  6,
+) as any as S.Schema<PaginatedAnomalyDataList>;
+
 export interface PaginatedAnomaly {
   /** The response type. Always "list" for paginated responses. */
   type: string;
@@ -7203,6 +9680,8 @@ export interface PaginatedAnomaly {
   prev_page_url: string | null;
   data: PaginatedAnomalyDataList;
 }
+const PaginatedAnomaly = /*@__PURE__*/ __L.at(__c48, 7) as any as S.Schema<PaginatedAnomaly>;
+
 export interface ListBranchBouncerResizeRequestsRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
@@ -7215,6 +9694,11 @@ export interface ListBranchBouncerResizeRequestsRequest {
   /** If provided, specifies the number of returned results */
   per_page?: number;
 }
+const ListBranchBouncerResizeRequestsRequest = /*@__PURE__*/ __L.at(
+  __c49,
+  0,
+) as any as S.Schema<ListBranchBouncerResizeRequestsRequest>;
+
 export interface ListBranchChangeRequestsRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
@@ -7227,6 +9711,11 @@ export interface ListBranchChangeRequestsRequest {
   /** If provided, specifies the number of returned results */
   per_page?: number;
 }
+const ListBranchChangeRequestsRequest = /*@__PURE__*/ __L.at(
+  __c49,
+  1,
+) as any as S.Schema<ListBranchChangeRequestsRequest>;
+
 /** The state of the branch change request */
 export type PaginatedPostgresClusterResizeRequestDataItemState =
   | "queued"
@@ -7234,15 +9723,23 @@ export type PaginatedPostgresClusterResizeRequestDataItemState =
   | "resizing"
   | "canceled"
   | "completed";
+const PaginatedPostgresClusterResizeRequestDataItemState = S.String;
+
 export type PaginatedPostgresClusterResizeRequestDataItemActor = OrganizationTeamMembershipActor;
 /** The branch parameters */
 export type PaginatedPostgresClusterResizeRequestDataItemParametersMap = {
   [key: string]: unknown | undefined;
 };
+const PaginatedPostgresClusterResizeRequestDataItemParametersMap =
+  NekiShardAssignmentErrorMap as any as S.Schema<PaginatedPostgresClusterResizeRequestDataItemParametersMap>;
+
 /** The previous branch parameters */
 export type PaginatedPostgresClusterResizeRequestDataItemPreviousParametersMap = {
   [key: string]: unknown | undefined;
 };
+const PaginatedPostgresClusterResizeRequestDataItemPreviousParametersMap =
+  DatabaseDeployRequestDeploymentSequentialDiffDependenciesItemMap as any as S.Schema<PaginatedPostgresClusterResizeRequestDataItemPreviousParametersMap>;
+
 /** The storage type (gp3 or io2) */
 export type PaginatedPostgresClusterResizeRequestDataItemStorageType =
   | "gp3"
@@ -7250,6 +9747,8 @@ export type PaginatedPostgresClusterResizeRequestDataItemStorageType =
   | "pd_ssd"
   | "hyperdisk_balanced"
   | "premium_v2_lrs";
+const PaginatedPostgresClusterResizeRequestDataItemStorageType = S.String;
+
 export interface PaginatedPostgresClusterResizeRequestDataItem {
   /** The ID of the branch change request */
   id: string;
@@ -7319,8 +9818,18 @@ export interface PaginatedPostgresClusterResizeRequestDataItem {
   /** Whether the change re-applies the current minimum disk size to shrink the provisioned disk */
   confirm_shrink: boolean;
 }
+const PaginatedPostgresClusterResizeRequestDataItem = /*@__PURE__*/ __L.at(
+  __c49,
+  2,
+) as any as S.Schema<PaginatedPostgresClusterResizeRequestDataItem>;
+
 export type PaginatedPostgresClusterResizeRequestDataList =
   Array<PaginatedPostgresClusterResizeRequestDataItem>;
+const PaginatedPostgresClusterResizeRequestDataList = /*@__PURE__*/ __L.at(
+  __c49,
+  3,
+) as any as S.Schema<PaginatedPostgresClusterResizeRequestDataList>;
+
 export interface PaginatedPostgresClusterResizeRequest {
   /** The response type. Always "list" for paginated responses. */
   type: string;
@@ -7338,6 +9847,11 @@ export interface PaginatedPostgresClusterResizeRequest {
   prev_page_url: string | null;
   data: PaginatedPostgresClusterResizeRequestDataList;
 }
+const PaginatedPostgresClusterResizeRequest = /*@__PURE__*/ __L.at(
+  __c49,
+  4,
+) as any as S.Schema<PaginatedPostgresClusterResizeRequest>;
+
 export interface ListBranchConfigChangeRequestsRequest {
   /** The name of the organization the branch belongs to */
   organization: string;
@@ -7350,6 +9864,11 @@ export interface ListBranchConfigChangeRequestsRequest {
   /** If provided, specifies the number of returned results */
   per_page?: number;
 }
+const ListBranchConfigChangeRequestsRequest = /*@__PURE__*/ __L.at(
+  __c49,
+  5,
+) as any as S.Schema<ListBranchConfigChangeRequestsRequest>;
+
 /** The state of the config change request */
 export type PaginatedConfigChangeRequestDataItemState =
   | "draft"
@@ -7359,16 +9878,26 @@ export type PaginatedConfigChangeRequestDataItemState =
   | "completed"
   | "failed"
   | "canceled";
+const PaginatedConfigChangeRequestDataItemState = S.String;
+
 /** The type of configuration being changed */
 export type PaginatedConfigChangeRequestDataItemChangeType = "vtgate" | "mysqld" | "vttablet";
+const PaginatedConfigChangeRequestDataItemChangeType = S.String;
+
 /** The previous option values */
 export type PaginatedConfigChangeRequestDataItemPreviousOptionsMap = {
   [key: string]: unknown | undefined;
 };
+const PaginatedConfigChangeRequestDataItemPreviousOptionsMap =
+  NekiShardAssignmentErrorMap as any as S.Schema<PaginatedConfigChangeRequestDataItemPreviousOptionsMap>;
+
 /** The new option values */
 export type PaginatedConfigChangeRequestDataItemNewOptionsMap = {
   [key: string]: unknown | undefined;
 };
+const PaginatedConfigChangeRequestDataItemNewOptionsMap =
+  NekiShardAssignmentErrorMap as any as S.Schema<PaginatedConfigChangeRequestDataItemNewOptionsMap>;
+
 export type PaginatedConfigChangeRequestDataItemActor = OrganizationTeamMembershipActor;
 export interface PaginatedConfigChangeRequestDataItem {
   /** The ID of the config change request */
@@ -7397,7 +9926,17 @@ export interface PaginatedConfigChangeRequestDataItem {
   queued_until: string | null;
   actor: OrganizationTeamMembershipActor;
 }
+const PaginatedConfigChangeRequestDataItem = /*@__PURE__*/ __L.at(
+  __c49,
+  6,
+) as any as S.Schema<PaginatedConfigChangeRequestDataItem>;
+
 export type PaginatedConfigChangeRequestDataList = Array<PaginatedConfigChangeRequestDataItem>;
+const PaginatedConfigChangeRequestDataList = /*@__PURE__*/ __L.at(
+  __c49,
+  7,
+) as any as S.Schema<PaginatedConfigChangeRequestDataList>;
+
 export interface PaginatedConfigChangeRequest {
   /** The response type. Always "list" for paginated responses. */
   type: string;
@@ -7415,7 +9954,14 @@ export interface PaginatedConfigChangeRequest {
   prev_page_url: string | null;
   data: PaginatedConfigChangeRequestDataList;
 }
+const PaginatedConfigChangeRequest = /*@__PURE__*/ __L.at(
+  __c50,
+  0,
+) as any as S.Schema<PaginatedConfigChangeRequest>;
+
 export type ListBranchesRequestOrder = "asc" | "desc";
+const ListBranchesRequestOrder = S.String;
+
 export interface ListBranchesRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
@@ -7434,8 +9980,12 @@ export interface ListBranchesRequest {
   /** If provided, specifies the number of returned results */
   per_page?: number;
 }
+const ListBranchesRequest = /*@__PURE__*/ __L.at(__c50, 1) as any as S.Schema<ListBranchesRequest>;
+
 /** The kind of branch */
 export type PaginatedDatabaseBranchDataItemKind = "mysql" | "postgresql" | "neki";
+const PaginatedDatabaseBranchDataItemKind = S.String;
+
 /** The current state of the branch */
 export type PaginatedDatabaseBranchDataItemState =
   | "pending"
@@ -7443,6 +9993,8 @@ export type PaginatedDatabaseBranchDataItemState =
   | "sleeping"
   | "awakening"
   | "ready";
+const PaginatedDatabaseBranchDataItemState = S.String;
+
 export type PaginatedDatabaseBranchDataItemActor = OrganizationTeamMembershipActor;
 export type PaginatedDatabaseBranchDataItemRestoredFromBranch =
   OrganizationTeamMembershipUserDefaultOrganization;
@@ -7472,10 +10024,16 @@ export interface PaginatedDatabaseBranchDataItemRegion {
   /** Whether the region supports Neki databases */
   neki_supported: boolean;
 }
+const PaginatedDatabaseBranchDataItemRegion =
+  PostgresReadOnlyReplicaRegion as any as S.Schema<PaginatedDatabaseBranchDataItemRegion>;
+
 /** VTGate configuration options */
 export type PaginatedDatabaseBranchDataItemVtgateOptionsMap = {
   [key: string]: unknown | undefined;
 };
+const PaginatedDatabaseBranchDataItemVtgateOptionsMap =
+  NekiShardAssignmentErrorMap as any as S.Schema<PaginatedDatabaseBranchDataItemVtgateOptionsMap>;
+
 export interface PaginatedDatabaseBranchDataItem {
   /** The ID of the branch */
   id: string;
@@ -7556,7 +10114,17 @@ export interface PaginatedDatabaseBranchDataItem {
   vtgate_options?: PaginatedDatabaseBranchDataItemVtgateOptionsMap | null;
   cluster_architecture?: string;
 }
+const PaginatedDatabaseBranchDataItem = /*@__PURE__*/ __L.at(
+  __c50,
+  2,
+) as any as S.Schema<PaginatedDatabaseBranchDataItem>;
+
 export type PaginatedDatabaseBranchDataList = Array<PaginatedDatabaseBranchDataItem>;
+const PaginatedDatabaseBranchDataList = /*@__PURE__*/ __L.at(
+  __c50,
+  3,
+) as any as S.Schema<PaginatedDatabaseBranchDataList>;
+
 export interface PaginatedDatabaseBranch {
   /** The response type. Always "list" for paginated responses. */
   type: string;
@@ -7578,6 +10146,11 @@ export interface PaginatedDatabaseBranch {
   total_pages: number;
   data: PaginatedDatabaseBranchDataList;
 }
+const PaginatedDatabaseBranch = /*@__PURE__*/ __L.at(
+  __c50,
+  4,
+) as any as S.Schema<PaginatedDatabaseBranch>;
+
 export type ListBranchQueriesRequestPeriod =
   | "15m"
   | "1h"
@@ -7588,6 +10161,8 @@ export type ListBranchQueriesRequestPeriod =
   | "2d"
   | "7d"
   | "8d";
+const ListBranchQueriesRequestPeriod = S.String;
+
 export type ListBranchQueriesRequestSort =
   | "keyspace"
   | "query"
@@ -7634,10 +10209,21 @@ export type ListBranchQueriesRequestSort =
   | "trafficControlThrottled"
   | "trafficControlChecked"
   | "trafficControlBudgetsUsed";
+const ListBranchQueriesRequestSort = S.String;
+
 export type ListBranchQueriesRequestDir = "asc" | "desc";
+const ListBranchQueriesRequestDir = S.String;
+
 export type ListBranchQueriesRequestTabletType = "primary" | "replica" | "rdonly";
+const ListBranchQueriesRequestTabletType = S.String;
+
 export type ListBranchQueriesRequestType = "SELECT" | "INSERT" | "UPDATE" | "DELETE";
+const ListBranchQueriesRequestType = S.String;
+
 export type ListBranchQueriesRequestFieldsList = Array<string>;
+const ListBranchQueriesRequestFieldsList =
+  OrganizationTeamMembershipPasswordsItemCidrsList as any as S.Schema<ListBranchQueriesRequestFieldsList>;
+
 export interface ListBranchQueriesRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
@@ -7668,24 +10254,44 @@ export interface ListBranchQueriesRequest {
   /** If provided, specifies the number of returned results */
   per_page?: number;
 }
+const ListBranchQueriesRequest = /*@__PURE__*/ __L.at(
+  __c50,
+  5,
+) as any as S.Schema<ListBranchQueriesRequest>;
+
 /** Tables accessed by the query */
 export type PaginatedQuerySummaryDataItemTablesList = Array<string>;
+const PaginatedQuerySummaryDataItemTablesList =
+  OrganizationTeamMembershipPasswordsItemCidrsList as any as S.Schema<PaginatedQuerySummaryDataItemTablesList>;
+
 /** Fully qualified tables accessed by the query */
 export type PaginatedQuerySummaryDataItemQualifiedTablesList = Array<string>;
+const PaginatedQuerySummaryDataItemQualifiedTablesList =
+  OrganizationTeamMembershipPasswordsItemCidrsList as any as S.Schema<PaginatedQuerySummaryDataItemQualifiedTablesList>;
+
 /** Keyspaces or schemas accessed by the query */
 export type PaginatedQuerySummaryDataItemTableKeyspacesList = Array<string>;
+const PaginatedQuerySummaryDataItemTableKeyspacesList =
+  OrganizationTeamMembershipPasswordsItemCidrsList as any as S.Schema<PaginatedQuerySummaryDataItemTableKeyspacesList>;
+
 export type PaginatedQuerySummaryDataItemIndexUsagesItemMap = {
   [key: string]: unknown | undefined;
 };
 /** Index usage information */
 export type PaginatedQuerySummaryDataItemIndexUsagesList =
   Array<PaginatedQuerySummaryDataItemIndexUsagesItemMap>;
+const PaginatedQuerySummaryDataItemIndexUsagesList =
+  DatabaseDeployRequestDeploymentPrecedingDeploymentsList as any as S.Schema<PaginatedQuerySummaryDataItemIndexUsagesList>;
+
 export type PaginatedQuerySummaryDataItemRoutingIndexUsagesItemMap = {
   [key: string]: unknown | undefined;
 };
 /** Routing index usage information */
 export type PaginatedQuerySummaryDataItemRoutingIndexUsagesList =
   Array<PaginatedQuerySummaryDataItemRoutingIndexUsagesItemMap>;
+const PaginatedQuerySummaryDataItemRoutingIndexUsagesList =
+  DatabaseDeployRequestDeploymentPrecedingDeploymentsList as any as S.Schema<PaginatedQuerySummaryDataItemRoutingIndexUsagesList>;
+
 export interface PaginatedQuerySummaryDataItem {
   /** The ID of the query summary */
   id: string;
@@ -7788,7 +10394,17 @@ export interface PaginatedQuerySummaryDataItem {
   /** The number of executions checked by traffic control rules */
   traffic_control_checked: number;
 }
+const PaginatedQuerySummaryDataItem = /*@__PURE__*/ __L.at(
+  __c50,
+  6,
+) as any as S.Schema<PaginatedQuerySummaryDataItem>;
+
 export type PaginatedQuerySummaryDataList = Array<PaginatedQuerySummaryDataItem>;
+const PaginatedQuerySummaryDataList = /*@__PURE__*/ __L.at(
+  __c50,
+  7,
+) as any as S.Schema<PaginatedQuerySummaryDataList>;
+
 export interface PaginatedQuerySummary {
   /** The response type. Always "list" for paginated responses. */
   type: string;
@@ -7806,6 +10422,11 @@ export interface PaginatedQuerySummary {
   prev_page_url?: string | null;
   data: PaginatedQuerySummaryDataList;
 }
+const PaginatedQuerySummary = /*@__PURE__*/ __L.at(
+  __c51,
+  0,
+) as any as S.Schema<PaginatedQuerySummary>;
+
 export type ListBranchQueryErrorsRequestPeriod =
   | "15m"
   | "1h"
@@ -7816,14 +10437,22 @@ export type ListBranchQueryErrorsRequestPeriod =
   | "2d"
   | "7d"
   | "8d";
+const ListBranchQueryErrorsRequestPeriod = S.String;
+
 export type ListBranchQueryErrorsRequestSort =
   | "error"
   | "lastRun"
   | "count"
   | "totalTime"
   | "timePerQuery";
+const ListBranchQueryErrorsRequestSort = S.String;
+
 export type ListBranchQueryErrorsRequestDir = "asc" | "desc";
+const ListBranchQueryErrorsRequestDir = S.String;
+
 export type ListBranchQueryErrorsRequestTabletType = "primary" | "replica" | "rdonly";
+const ListBranchQueryErrorsRequestTabletType = S.String;
+
 export interface ListBranchQueryErrorsRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
@@ -7850,6 +10479,11 @@ export interface ListBranchQueryErrorsRequest {
   /** If provided, specifies the number of returned results */
   per_page?: number;
 }
+const ListBranchQueryErrorsRequest = /*@__PURE__*/ __L.at(
+  __c51,
+  1,
+) as any as S.Schema<ListBranchQueryErrorsRequest>;
+
 export interface PaginatedErrorSummaryDataItem {
   /** The ID of the error summary */
   id: string;
@@ -7866,7 +10500,17 @@ export interface PaginatedErrorSummaryDataItem {
   /** The error message */
   error_message: string;
 }
+const PaginatedErrorSummaryDataItem = /*@__PURE__*/ __L.at(
+  __c51,
+  2,
+) as any as S.Schema<PaginatedErrorSummaryDataItem>;
+
 export type PaginatedErrorSummaryDataList = Array<PaginatedErrorSummaryDataItem>;
+const PaginatedErrorSummaryDataList = /*@__PURE__*/ __L.at(
+  __c51,
+  3,
+) as any as S.Schema<PaginatedErrorSummaryDataList>;
+
 export interface PaginatedErrorSummary {
   /** The response type. Always "list" for paginated responses. */
   type: string;
@@ -7884,6 +10528,11 @@ export interface PaginatedErrorSummary {
   prev_page_url?: string | null;
   data: PaginatedErrorSummaryDataList;
 }
+const PaginatedErrorSummary = /*@__PURE__*/ __L.at(
+  __c51,
+  4,
+) as any as S.Schema<PaginatedErrorSummary>;
+
 export type ListBranchQueryTagsRequestPeriod =
   | "15m"
   | "1h"
@@ -7894,7 +10543,11 @@ export type ListBranchQueryTagsRequestPeriod =
   | "2d"
   | "7d"
   | "8d";
+const ListBranchQueryTagsRequestPeriod = S.String;
+
 export type ListBranchQueryTagsRequestTabletType = "primary" | "replica" | "rdonly";
+const ListBranchQueryTagsRequestTabletType = S.String;
+
 export interface ListBranchQueryTagsRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
@@ -7925,10 +10578,19 @@ export interface ListBranchQueryTagsRequest {
   /** If provided, specifies the number of returned results */
   per_page?: number;
 }
+const ListBranchQueryTagsRequest = /*@__PURE__*/ __L.at(
+  __c51,
+  5,
+) as any as S.Schema<ListBranchQueryTagsRequest>;
+
 /** The source of the tag */
 export type PaginatedQueryTagDataItemSource = "sql" | "system";
+const PaginatedQueryTagDataItemSource = S.String;
+
 /** The kind of tag value */
 export type PaginatedQueryTagDataItemValuesItemKind = "literal" | "overflow" | "collapsed";
+const PaginatedQueryTagDataItemValuesItemKind = S.String;
+
 export interface PaginatedQueryTagDataItemValuesItem {
   /** The name of the tag value */
   name: string;
@@ -7937,7 +10599,17 @@ export interface PaginatedQueryTagDataItemValuesItem {
   /** The kind of tag value */
   kind: PaginatedQueryTagDataItemValuesItemKind;
 }
+const PaginatedQueryTagDataItemValuesItem = /*@__PURE__*/ __L.at(
+  __c51,
+  6,
+) as any as S.Schema<PaginatedQueryTagDataItemValuesItem>;
+
 export type PaginatedQueryTagDataItemValuesList = Array<PaginatedQueryTagDataItemValuesItem>;
+const PaginatedQueryTagDataItemValuesList = /*@__PURE__*/ __L.at(
+  __c51,
+  7,
+) as any as S.Schema<PaginatedQueryTagDataItemValuesList>;
+
 export interface PaginatedQueryTagDataItem {
   /** The ID of the tag */
   id: string;
@@ -7949,7 +10621,17 @@ export interface PaginatedQueryTagDataItem {
   query_count: number;
   values: PaginatedQueryTagDataItemValuesList;
 }
+const PaginatedQueryTagDataItem = /*@__PURE__*/ __L.at(
+  __c52,
+  0,
+) as any as S.Schema<PaginatedQueryTagDataItem>;
+
 export type PaginatedQueryTagDataList = Array<PaginatedQueryTagDataItem>;
+const PaginatedQueryTagDataList = /*@__PURE__*/ __L.at(
+  __c52,
+  1,
+) as any as S.Schema<PaginatedQueryTagDataList>;
+
 export interface PaginatedQueryTag {
   /** The response type. Always "list" for paginated responses. */
   type: string;
@@ -7967,7 +10649,12 @@ export interface PaginatedQueryTag {
   prev_page_url?: string | null;
   data: PaginatedQueryTagDataList;
 }
+const PaginatedQueryTag = /*@__PURE__*/ __L.at(__c52, 2) as any as S.Schema<PaginatedQueryTag>;
+
 export type ListBranchQueryTagSummariesRequestTagsList = Array<string>;
+const ListBranchQueryTagSummariesRequestTagsList =
+  OrganizationTeamMembershipPasswordsItemCidrsList as any as S.Schema<ListBranchQueryTagSummariesRequestTagsList>;
+
 export type ListBranchQueryTagSummariesRequestPeriod =
   | "15m"
   | "1h"
@@ -7978,6 +10665,8 @@ export type ListBranchQueryTagSummariesRequestPeriod =
   | "2d"
   | "7d"
   | "8d";
+const ListBranchQueryTagSummariesRequestPeriod = S.String;
+
 export type ListBranchQueryTagSummariesRequestSort =
   | "dimensions"
   | "lastRun"
@@ -8023,10 +10712,21 @@ export type ListBranchQueryTagSummariesRequestSort =
   | "trafficControlThrottled"
   | "trafficControlChecked"
   | "trafficControlBudgetsUsed";
+const ListBranchQueryTagSummariesRequestSort = S.String;
+
 export type ListBranchQueryTagSummariesRequestDir = "asc" | "desc";
+const ListBranchQueryTagSummariesRequestDir = S.String;
+
 export type ListBranchQueryTagSummariesRequestTabletType = "primary" | "replica" | "rdonly";
+const ListBranchQueryTagSummariesRequestTabletType = S.String;
+
 export type ListBranchQueryTagSummariesRequestType = "SELECT" | "INSERT" | "UPDATE" | "DELETE";
+const ListBranchQueryTagSummariesRequestType = S.String;
+
 export type ListBranchQueryTagSummariesRequestFieldsList = Array<string>;
+const ListBranchQueryTagSummariesRequestFieldsList =
+  OrganizationTeamMembershipPasswordsItemCidrsList as any as S.Schema<ListBranchQueryTagSummariesRequestFieldsList>;
+
 export interface ListBranchQueryTagSummariesRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
@@ -8059,28 +10759,51 @@ export interface ListBranchQueryTagSummariesRequest {
   /** If provided, specifies the number of returned results */
   per_page?: number;
 }
+const ListBranchQueryTagSummariesRequest = /*@__PURE__*/ __L.at(
+  __c52,
+  3,
+) as any as S.Schema<ListBranchQueryTagSummariesRequest>;
+
 /** The tag names and values this summary is grouped by */
 export type PaginatedDimensionsQuerySummaryDataItemDimensionsMap = {
   [key: string]: unknown | undefined;
 };
+const PaginatedDimensionsQuerySummaryDataItemDimensionsMap =
+  NekiShardAssignmentErrorMap as any as S.Schema<PaginatedDimensionsQuerySummaryDataItemDimensionsMap>;
+
 /** Tables accessed by the query */
 export type PaginatedDimensionsQuerySummaryDataItemTablesList = Array<string>;
+const PaginatedDimensionsQuerySummaryDataItemTablesList =
+  OrganizationTeamMembershipPasswordsItemCidrsList as any as S.Schema<PaginatedDimensionsQuerySummaryDataItemTablesList>;
+
 /** Fully qualified tables accessed by the query */
 export type PaginatedDimensionsQuerySummaryDataItemQualifiedTablesList = Array<string>;
+const PaginatedDimensionsQuerySummaryDataItemQualifiedTablesList =
+  OrganizationTeamMembershipPasswordsItemCidrsList as any as S.Schema<PaginatedDimensionsQuerySummaryDataItemQualifiedTablesList>;
+
 /** Keyspaces or schemas accessed by the query */
 export type PaginatedDimensionsQuerySummaryDataItemTableKeyspacesList = Array<string>;
+const PaginatedDimensionsQuerySummaryDataItemTableKeyspacesList =
+  OrganizationTeamMembershipPasswordsItemCidrsList as any as S.Schema<PaginatedDimensionsQuerySummaryDataItemTableKeyspacesList>;
+
 export type PaginatedDimensionsQuerySummaryDataItemIndexUsagesItemMap = {
   [key: string]: unknown | undefined;
 };
 /** Index usage information */
 export type PaginatedDimensionsQuerySummaryDataItemIndexUsagesList =
   Array<PaginatedDimensionsQuerySummaryDataItemIndexUsagesItemMap>;
+const PaginatedDimensionsQuerySummaryDataItemIndexUsagesList =
+  DatabaseDeployRequestDeploymentPrecedingDeploymentsList as any as S.Schema<PaginatedDimensionsQuerySummaryDataItemIndexUsagesList>;
+
 export type PaginatedDimensionsQuerySummaryDataItemRoutingIndexUsagesItemMap = {
   [key: string]: unknown | undefined;
 };
 /** Routing index usage information */
 export type PaginatedDimensionsQuerySummaryDataItemRoutingIndexUsagesList =
   Array<PaginatedDimensionsQuerySummaryDataItemRoutingIndexUsagesItemMap>;
+const PaginatedDimensionsQuerySummaryDataItemRoutingIndexUsagesList =
+  DatabaseDeployRequestDeploymentSequentialDiffDependenciesList as any as S.Schema<PaginatedDimensionsQuerySummaryDataItemRoutingIndexUsagesList>;
+
 export interface PaginatedDimensionsQuerySummaryDataItem {
   /** The tag names and values this summary is grouped by */
   dimensions: PaginatedDimensionsQuerySummaryDataItemDimensionsMap;
@@ -8171,8 +10894,18 @@ export interface PaginatedDimensionsQuerySummaryDataItem {
   /** The number of executions checked by traffic control rules */
   traffic_control_checked: number;
 }
+const PaginatedDimensionsQuerySummaryDataItem = /*@__PURE__*/ __L.at(
+  __c52,
+  4,
+) as any as S.Schema<PaginatedDimensionsQuerySummaryDataItem>;
+
 export type PaginatedDimensionsQuerySummaryDataList =
   Array<PaginatedDimensionsQuerySummaryDataItem>;
+const PaginatedDimensionsQuerySummaryDataList = /*@__PURE__*/ __L.at(
+  __c52,
+  5,
+) as any as S.Schema<PaginatedDimensionsQuerySummaryDataList>;
+
 export interface PaginatedDimensionsQuerySummary {
   /** The response type. Always "list" for paginated responses. */
   type: string;
@@ -8190,6 +10923,11 @@ export interface PaginatedDimensionsQuerySummary {
   prev_page_url?: string | null;
   data: PaginatedDimensionsQuerySummaryDataList;
 }
+const PaginatedDimensionsQuerySummary = /*@__PURE__*/ __L.at(
+  __c52,
+  6,
+) as any as S.Schema<PaginatedDimensionsQuerySummary>;
+
 export interface ListBranchResizeRequestsRequest {
   /** The name of the organization the branch belongs to */
   organization: string;
@@ -8202,6 +10940,11 @@ export interface ListBranchResizeRequestsRequest {
   /** If provided, specifies the number of returned results */
   per_page?: number;
 }
+const ListBranchResizeRequestsRequest = /*@__PURE__*/ __L.at(
+  __c52,
+  7,
+) as any as S.Schema<ListBranchResizeRequestsRequest>;
+
 /** The state of the branch resize request */
 export type PaginatedMysqlClusterResizeRequestDataItemState =
   | "pending"
@@ -8253,8 +10996,16 @@ export interface PaginatedMysqlClusterResizeRequestDataItem {
   previous_vtgate_display_name: string;
   actor: OrganizationTeamMembershipActor;
 }
+const PaginatedMysqlClusterResizeRequestDataItem =
+  MysqlClusterResizeRequest as any as S.Schema<PaginatedMysqlClusterResizeRequestDataItem>;
+
 export type PaginatedMysqlClusterResizeRequestDataList =
   Array<PaginatedMysqlClusterResizeRequestDataItem>;
+const PaginatedMysqlClusterResizeRequestDataList = /*@__PURE__*/ __L.at(
+  __c53,
+  0,
+) as any as S.Schema<PaginatedMysqlClusterResizeRequestDataList>;
+
 export interface PaginatedMysqlClusterResizeRequest {
   /** The response type. Always "list" for paginated responses. */
   type: string;
@@ -8272,6 +11023,11 @@ export interface PaginatedMysqlClusterResizeRequest {
   prev_page_url: string | null;
   data: PaginatedMysqlClusterResizeRequestDataList;
 }
+const PaginatedMysqlClusterResizeRequest = /*@__PURE__*/ __L.at(
+  __c53,
+  1,
+) as any as S.Schema<PaginatedMysqlClusterResizeRequest>;
+
 export interface ListBranchVitessParametersRequest {
   /** The name of the organization the branch belongs to */
   organization: string;
@@ -8280,13 +11036,23 @@ export interface ListBranchVitessParametersRequest {
   /** The name of the branch */
   branch: string;
 }
+const ListBranchVitessParametersRequest = /*@__PURE__*/ __L.at(
+  __c53,
+  2,
+) as any as S.Schema<ListBranchVitessParametersRequest>;
+
 /** The component the parameter configures */
 export type ListBranchVitessParametersResponseVtgateItemComponent =
   | "vtgate"
   | "vttablet"
   | "mysqld";
+const ListBranchVitessParametersResponseVtgateItemComponent = S.String;
+
 /** The allowed values for `select` parameters */
 export type ListBranchVitessParametersResponseVtgateItemOptionsList = Array<string>;
+const ListBranchVitessParametersResponseVtgateItemOptionsList =
+  OrganizationTeamMembershipPasswordsItemCidrsList as any as S.Schema<ListBranchVitessParametersResponseVtgateItemOptionsList>;
+
 export interface ListBranchVitessParametersResponseVtgateItem {
   /** The object type. Always "VitessParameterDefinition". */
   type: string;
@@ -8311,22 +11077,50 @@ export interface ListBranchVitessParametersResponseVtgateItem {
   /** The allowed values for `select` parameters */
   options?: ListBranchVitessParametersResponseVtgateItemOptionsList;
 }
+const ListBranchVitessParametersResponseVtgateItem = /*@__PURE__*/ __L.at(
+  __c53,
+  3,
+) as any as S.Schema<ListBranchVitessParametersResponseVtgateItem>;
+
 export type ListBranchVitessParametersResponseVtgateList =
   Array<ListBranchVitessParametersResponseVtgateItem>;
+const ListBranchVitessParametersResponseVtgateList = /*@__PURE__*/ __L.at(
+  __c53,
+  4,
+) as any as S.Schema<ListBranchVitessParametersResponseVtgateList>;
+
 /** The VTTablet parameters for the keyspace */
 export type ListBranchVitessParametersResponseKeyspacesValueVttabletList = Array<unknown>;
+const ListBranchVitessParametersResponseKeyspacesValueVttabletList = /*@__PURE__*/ __L.at(
+  __c53,
+  5,
+) as any as S.Schema<ListBranchVitessParametersResponseKeyspacesValueVttabletList>;
+
 /** The MySQL parameters for the keyspace */
 export type ListBranchVitessParametersResponseKeyspacesValueMysqldList = Array<unknown>;
+const ListBranchVitessParametersResponseKeyspacesValueMysqldList =
+  ListBranchVitessParametersResponseKeyspacesValueVttabletList as any as S.Schema<ListBranchVitessParametersResponseKeyspacesValueMysqldList>;
+
 export interface ListBranchVitessParametersResponseKeyspacesValue {
   /** The VTTablet parameters for the keyspace */
   vttablet?: ListBranchVitessParametersResponseKeyspacesValueVttabletList;
   /** The MySQL parameters for the keyspace */
   mysqld?: ListBranchVitessParametersResponseKeyspacesValueMysqldList;
 }
+const ListBranchVitessParametersResponseKeyspacesValue = /*@__PURE__*/ __L.at(
+  __c53,
+  6,
+) as any as S.Schema<ListBranchVitessParametersResponseKeyspacesValue>;
+
 /** The parameters for each keyspace, keyed by keyspace name. Each value has `vttablet` and `mysqld` arrays of parameters in the same format as `vtgate`. */
 export type ListBranchVitessParametersResponseKeyspacesMap = {
   [key: string]: ListBranchVitessParametersResponseKeyspacesValue | undefined;
 };
+const ListBranchVitessParametersResponseKeyspacesMap = /*@__PURE__*/ __L.at(
+  __c53,
+  7,
+) as any as S.Schema<ListBranchVitessParametersResponseKeyspacesMap>;
+
 export interface ListBranchVitessParametersResponse {
   /** The response type. Always "VitessParameters". */
   type: string;
@@ -8334,7 +11128,14 @@ export interface ListBranchVitessParametersResponse {
   /** The parameters for each keyspace, keyed by keyspace name. Each value has `vttablet` and `mysqld` arrays of parameters in the same format as `vtgate`. */
   keyspaces: ListBranchVitessParametersResponseKeyspacesMap;
 }
+const ListBranchVitessParametersResponse = /*@__PURE__*/ __L.at(
+  __c54,
+  0,
+) as any as S.Schema<ListBranchVitessParametersResponse>;
+
 export type ListClusterSizeSkusRequestEngine = "mysql" | "postgresql" | "neki";
+const ListClusterSizeSkusRequestEngine = S.String;
+
 export interface ListClusterSizeSkusRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
@@ -8349,6 +11150,11 @@ export interface ListClusterSizeSkusRequest {
   /** When true, list cluster sizes for external keyspaces. Defaults to false. */
   external?: boolean;
 }
+const ListClusterSizeSkusRequest = /*@__PURE__*/ __L.at(
+  __c54,
+  1,
+) as any as S.Schema<ListClusterSizeSkusRequest>;
+
 export interface ClusterSizeSku {
   /** The name of the cluster SKU */
   name: string;
@@ -8389,8 +11195,20 @@ export interface ClusterSizeSku {
   /** Whether or not the cluster SKU is a production SKU */
   production: boolean;
 }
+const ClusterSizeSku = /*@__PURE__*/ __L.at(__c54, 2) as any as S.Schema<ClusterSizeSku>;
+
 export type ListClusterSizeSkusResponseBodyList = Array<ClusterSizeSku>;
+const ListClusterSizeSkusResponseBodyList = /*@__PURE__*/ __L.at(
+  __c54,
+  3,
+) as any as S.Schema<ListClusterSizeSkusResponseBodyList>;
+
 export type ListClusterSizeSkusResponse = ListClusterSizeSkusResponseBodyList;
+const ListClusterSizeSkusResponse = /*@__PURE__*/ __L.at(
+  __c54,
+  4,
+) as any as S.Schema<ListClusterSizeSkusResponse>;
+
 export interface ListDatabasePostgresCidrsRequest {
   /** The name of the organization the database belongs to */
   organization: string;
@@ -8401,8 +11219,16 @@ export interface ListDatabasePostgresCidrsRequest {
   /** If provided, specifies the number of returned results */
   per_page?: number;
 }
+const ListDatabasePostgresCidrsRequest = /*@__PURE__*/ __L.at(
+  __c54,
+  5,
+) as any as S.Schema<ListDatabasePostgresCidrsRequest>;
+
 /** List of CIDR ranges */
 export type PaginatedPostgresClusterCidrDataItemCidrsList = Array<string>;
+const PaginatedPostgresClusterCidrDataItemCidrsList =
+  OrganizationTeamMembershipPasswordsItemCidrsList as any as S.Schema<PaginatedPostgresClusterCidrDataItemCidrsList>;
+
 export type PaginatedPostgresClusterCidrDataItemActor = OrganizationTeamMembershipActor;
 export interface PaginatedPostgresClusterCidrDataItem {
   /** The ID of the IP allowlist entry */
@@ -8423,7 +11249,17 @@ export interface PaginatedPostgresClusterCidrDataItem {
   deleted_at: string | null;
   actor: OrganizationTeamMembershipActor;
 }
+const PaginatedPostgresClusterCidrDataItem = /*@__PURE__*/ __L.at(
+  __c54,
+  6,
+) as any as S.Schema<PaginatedPostgresClusterCidrDataItem>;
+
 export type PaginatedPostgresClusterCidrDataList = Array<PaginatedPostgresClusterCidrDataItem>;
+const PaginatedPostgresClusterCidrDataList = /*@__PURE__*/ __L.at(
+  __c54,
+  7,
+) as any as S.Schema<PaginatedPostgresClusterCidrDataList>;
+
 export interface PaginatedPostgresClusterCidr {
   /** The response type. Always "list" for paginated responses. */
   type: string;
@@ -8445,6 +11281,11 @@ export interface PaginatedPostgresClusterCidr {
   total_pages: number;
   data: PaginatedPostgresClusterCidrDataList;
 }
+const PaginatedPostgresClusterCidr = /*@__PURE__*/ __L.at(
+  __c55,
+  0,
+) as any as S.Schema<PaginatedPostgresClusterCidr>;
+
 export interface ListDatabaseRegionsRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
@@ -8455,6 +11296,11 @@ export interface ListDatabaseRegionsRequest {
   /** If provided, specifies the number of returned results */
   per_page?: number;
 }
+const ListDatabaseRegionsRequest = /*@__PURE__*/ __L.at(
+  __c55,
+  1,
+) as any as S.Schema<ListDatabaseRegionsRequest>;
+
 /** Public IP addresses for the region */
 export type PaginatedPlanetscaleRegionDataItemPublicIpAddressesList = Array<string>;
 export interface PaginatedPlanetscaleRegionDataItem {
@@ -8481,7 +11327,15 @@ export interface PaginatedPlanetscaleRegionDataItem {
   /** Whether the region supports Neki databases */
   neki_supported: boolean;
 }
+const PaginatedPlanetscaleRegionDataItem =
+  PostgresReadOnlyReplicaRegion as any as S.Schema<PaginatedPlanetscaleRegionDataItem>;
+
 export type PaginatedPlanetscaleRegionDataList = Array<PaginatedPlanetscaleRegionDataItem>;
+const PaginatedPlanetscaleRegionDataList = /*@__PURE__*/ __L.at(
+  __c55,
+  2,
+) as any as S.Schema<PaginatedPlanetscaleRegionDataList>;
+
 export interface PaginatedPlanetscaleRegion {
   /** The response type. Always "list" for paginated responses. */
   type: string;
@@ -8499,6 +11353,11 @@ export interface PaginatedPlanetscaleRegion {
   prev_page_url: string | null;
   data: PaginatedPlanetscaleRegionDataList;
 }
+const PaginatedPlanetscaleRegion = /*@__PURE__*/ __L.at(
+  __c55,
+  3,
+) as any as S.Schema<PaginatedPlanetscaleRegion>;
+
 export interface ListDatabasesRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
@@ -8509,6 +11368,11 @@ export interface ListDatabasesRequest {
   /** If provided, specifies the number of returned results */
   per_page?: number;
 }
+const ListDatabasesRequest = /*@__PURE__*/ __L.at(
+  __c55,
+  4,
+) as any as S.Schema<ListDatabasesRequest>;
+
 /** Public IP addresses for the region */
 export type PaginatedDatabaseDataItemRegionPublicIpAddressesList = Array<string>;
 export interface PaginatedDatabaseDataItemRegion {
@@ -8535,6 +11399,9 @@ export interface PaginatedDatabaseDataItemRegion {
   /** Whether the region supports Neki databases */
   neki_supported: boolean;
 }
+const PaginatedDatabaseDataItemRegion =
+  PostgresReadOnlyReplicaRegion as any as S.Schema<PaginatedDatabaseDataItemRegion>;
+
 /** State of the database */
 export type PaginatedDatabaseDataItemState =
   | "pending"
@@ -8544,8 +11411,12 @@ export type PaginatedDatabaseDataItemState =
   | "awakening"
   | "import_ready"
   | "ready";
+const PaginatedDatabaseDataItemState = S.String;
+
 /** The kind of database */
 export type PaginatedDatabaseDataItemKind = "mysql" | "postgresql" | "neki";
+const PaginatedDatabaseDataItemKind = S.String;
+
 export interface PaginatedDatabaseDataItem {
   /** The ID of the database */
   id: string;
@@ -8633,7 +11504,17 @@ export interface PaginatedDatabaseDataItem {
   /** The kind of database */
   kind: PaginatedDatabaseDataItemKind;
 }
+const PaginatedDatabaseDataItem = /*@__PURE__*/ __L.at(
+  __c55,
+  5,
+) as any as S.Schema<PaginatedDatabaseDataItem>;
+
 export type PaginatedDatabaseDataList = Array<PaginatedDatabaseDataItem>;
+const PaginatedDatabaseDataList = /*@__PURE__*/ __L.at(
+  __c55,
+  6,
+) as any as S.Schema<PaginatedDatabaseDataList>;
+
 export interface PaginatedDatabase {
   /** The response type. Always "list" for paginated responses. */
   type: string;
@@ -8655,6 +11536,8 @@ export interface PaginatedDatabase {
   total_pages: number;
   data: PaginatedDatabaseDataList;
 }
+const PaginatedDatabase = /*@__PURE__*/ __L.at(__c55, 7) as any as S.Schema<PaginatedDatabase>;
+
 export type ListDedicatedReadReplicaChangeRequestsRequestPeriod =
   | "15m"
   | "1h"
@@ -8665,6 +11548,8 @@ export type ListDedicatedReadReplicaChangeRequestsRequestPeriod =
   | "2d"
   | "7d"
   | "8d";
+const ListDedicatedReadReplicaChangeRequestsRequestPeriod = S.String;
+
 export interface ListDedicatedReadReplicaChangeRequestsRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
@@ -8681,16 +11566,26 @@ export interface ListDedicatedReadReplicaChangeRequestsRequest {
   /** Filter change requests completed between two ISO 8601 timestamps */
   completed_at?: string;
 }
+const ListDedicatedReadReplicaChangeRequestsRequest = /*@__PURE__*/ __L.at(
+  __c56,
+  0,
+) as any as S.Schema<ListDedicatedReadReplicaChangeRequestsRequest>;
+
 /** The state of the change request */
 export type PaginatedPostgresReadOnlyReplicaChangeRequestDataItemState =
   | "pending"
   | "resizing"
   | "canceled"
   | "completed";
+const PaginatedPostgresReadOnlyReplicaChangeRequestDataItemState = S.String;
+
 /** The new parameters */
 export type PaginatedPostgresReadOnlyReplicaChangeRequestDataItemParametersMap = {
   [key: string]: unknown | undefined;
 };
+const PaginatedPostgresReadOnlyReplicaChangeRequestDataItemParametersMap =
+  DatabaseDeployRequestDeploymentSequentialDiffDependenciesItemMap as any as S.Schema<PaginatedPostgresReadOnlyReplicaChangeRequestDataItemParametersMap>;
+
 /** The new storage type */
 export type PaginatedPostgresReadOnlyReplicaChangeRequestDataItemStorageType =
   | "gp3"
@@ -8698,10 +11593,15 @@ export type PaginatedPostgresReadOnlyReplicaChangeRequestDataItemStorageType =
   | "pd_ssd"
   | "hyperdisk_balanced"
   | "premium_v2_lrs";
+const PaginatedPostgresReadOnlyReplicaChangeRequestDataItemStorageType = S.String;
+
 /** The previous parameters */
 export type PaginatedPostgresReadOnlyReplicaChangeRequestDataItemPreviousParametersMap = {
   [key: string]: unknown | undefined;
 };
+const PaginatedPostgresReadOnlyReplicaChangeRequestDataItemPreviousParametersMap =
+  DatabaseDeployRequestDeploymentSequentialDiffDependenciesItemMap as any as S.Schema<PaginatedPostgresReadOnlyReplicaChangeRequestDataItemPreviousParametersMap>;
+
 export type PaginatedPostgresReadOnlyReplicaChangeRequestDataItemActor =
   OrganizationTeamMembershipActor;
 export type PaginatedPostgresReadOnlyReplicaChangeRequestDataItemReplica =
@@ -8766,8 +11666,18 @@ export interface PaginatedPostgresReadOnlyReplicaChangeRequestDataItem {
   actor: OrganizationTeamMembershipActor;
   replica: OrganizationTeamMembershipUserDefaultOrganization;
 }
+const PaginatedPostgresReadOnlyReplicaChangeRequestDataItem = /*@__PURE__*/ __L.at(
+  __c56,
+  1,
+) as any as S.Schema<PaginatedPostgresReadOnlyReplicaChangeRequestDataItem>;
+
 export type PaginatedPostgresReadOnlyReplicaChangeRequestDataList =
   Array<PaginatedPostgresReadOnlyReplicaChangeRequestDataItem>;
+const PaginatedPostgresReadOnlyReplicaChangeRequestDataList = /*@__PURE__*/ __L.at(
+  __c56,
+  2,
+) as any as S.Schema<PaginatedPostgresReadOnlyReplicaChangeRequestDataList>;
+
 export interface PaginatedPostgresReadOnlyReplicaChangeRequest {
   /** The response type. Always "list" for paginated responses. */
   type: string;
@@ -8785,6 +11695,11 @@ export interface PaginatedPostgresReadOnlyReplicaChangeRequest {
   prev_page_url: string | null;
   data: PaginatedPostgresReadOnlyReplicaChangeRequestDataList;
 }
+const PaginatedPostgresReadOnlyReplicaChangeRequest = /*@__PURE__*/ __L.at(
+  __c56,
+  3,
+) as any as S.Schema<PaginatedPostgresReadOnlyReplicaChangeRequest>;
+
 export interface ListDedicatedReadReplicasRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
@@ -8793,8 +11708,23 @@ export interface ListDedicatedReadReplicasRequest {
   /** Branch name from `list_branches`. Example: `main`. */
   branch: string;
 }
+const ListDedicatedReadReplicasRequest = /*@__PURE__*/ __L.at(
+  __c56,
+  4,
+) as any as S.Schema<ListDedicatedReadReplicasRequest>;
+
 export type ListDedicatedReadReplicasResponseBodyList = Array<PostgresReadOnlyReplica>;
+const ListDedicatedReadReplicasResponseBodyList = /*@__PURE__*/ __L.at(
+  __c56,
+  5,
+) as any as S.Schema<ListDedicatedReadReplicasResponseBodyList>;
+
 export type ListDedicatedReadReplicasResponse = ListDedicatedReadReplicasResponseBodyList;
+const ListDedicatedReadReplicasResponse = /*@__PURE__*/ __L.at(
+  __c56,
+  6,
+) as any as S.Schema<ListDedicatedReadReplicasResponse>;
+
 export interface ListDeployOperationsRequest {
   /** The name of the deploy request's organization */
   organization: string;
@@ -8807,6 +11737,11 @@ export interface ListDeployOperationsRequest {
   /** If provided, specifies the number of returned results */
   per_page?: number;
 }
+const ListDeployOperationsRequest = /*@__PURE__*/ __L.at(
+  __c56,
+  7,
+) as any as S.Schema<ListDeployOperationsRequest>;
+
 /** The state of the deploy operation */
 export type PaginatedDeployOperationDataItemState =
   | "pending"
@@ -8815,8 +11750,13 @@ export type PaginatedDeployOperationDataItemState =
   | "complete"
   | "cancelled"
   | "error";
+const PaginatedDeployOperationDataItemState = S.String;
+
 /** Names of foreign keys removed by this operation */
 export type PaginatedDeployOperationDataItemRemovedForeignKeyNamesList = Array<string>;
+const PaginatedDeployOperationDataItemRemovedForeignKeyNamesList =
+  OrganizationTeamMembershipPasswordsItemCidrsList as any as S.Schema<PaginatedDeployOperationDataItemRemovedForeignKeyNamesList>;
+
 export interface PaginatedDeployOperationDataItem {
   /** The ID for the deploy operation */
   id: string;
@@ -8857,7 +11797,17 @@ export interface PaginatedDeployOperationDataItem {
   /** Deploy errors for the deploy operation */
   deploy_errors: string | null;
 }
+const PaginatedDeployOperationDataItem = /*@__PURE__*/ __L.at(
+  __c57,
+  0,
+) as any as S.Schema<PaginatedDeployOperationDataItem>;
+
 export type PaginatedDeployOperationDataList = Array<PaginatedDeployOperationDataItem>;
+const PaginatedDeployOperationDataList = /*@__PURE__*/ __L.at(
+  __c57,
+  1,
+) as any as S.Schema<PaginatedDeployOperationDataList>;
+
 export interface PaginatedDeployOperation {
   /** The response type. Always "list" for paginated responses. */
   type: string;
@@ -8875,6 +11825,11 @@ export interface PaginatedDeployOperation {
   prev_page_url: string | null;
   data: PaginatedDeployOperationDataList;
 }
+const PaginatedDeployOperation = /*@__PURE__*/ __L.at(
+  __c57,
+  2,
+) as any as S.Schema<PaginatedDeployOperation>;
+
 export interface ListDeployRequestReviewsRequest {
   /** The name of the organization the deploy request belongs to */
   organization: string;
@@ -8887,8 +11842,15 @@ export interface ListDeployRequestReviewsRequest {
   /** If provided, specifies the number of returned results */
   per_page?: number;
 }
+const ListDeployRequestReviewsRequest = /*@__PURE__*/ __L.at(
+  __c57,
+  3,
+) as any as S.Schema<ListDeployRequestReviewsRequest>;
+
 /** Whether the review is a comment or approval */
 export type PaginatedDeployRequestReviewDataItemState = "commented" | "approved";
+const PaginatedDeployRequestReviewDataItemState = S.String;
+
 export type PaginatedDeployRequestReviewDataItemActor = OrganizationTeamMembershipActor;
 export interface PaginatedDeployRequestReviewDataItem {
   /** The ID of the review */
@@ -8905,7 +11867,17 @@ export interface PaginatedDeployRequestReviewDataItem {
   updated_at: string;
   actor: OrganizationTeamMembershipActor;
 }
+const PaginatedDeployRequestReviewDataItem = /*@__PURE__*/ __L.at(
+  __c57,
+  4,
+) as any as S.Schema<PaginatedDeployRequestReviewDataItem>;
+
 export type PaginatedDeployRequestReviewDataList = Array<PaginatedDeployRequestReviewDataItem>;
+const PaginatedDeployRequestReviewDataList = /*@__PURE__*/ __L.at(
+  __c57,
+  5,
+) as any as S.Schema<PaginatedDeployRequestReviewDataList>;
+
 export interface PaginatedDeployRequestReview {
   /** The response type. Always "list" for paginated responses. */
   type: string;
@@ -8923,6 +11895,11 @@ export interface PaginatedDeployRequestReview {
   prev_page_url: string | null;
   data: PaginatedDeployRequestReviewDataList;
 }
+const PaginatedDeployRequestReview = /*@__PURE__*/ __L.at(
+  __c57,
+  6,
+) as any as S.Schema<PaginatedDeployRequestReview>;
+
 export interface ListDeployRequestsRequest {
   /** The name of the deploy request's organization */
   organization: string;
@@ -8943,11 +11920,18 @@ export interface ListDeployRequestsRequest {
   /** If provided, specifies the number of returned results */
   per_page?: number;
 }
+const ListDeployRequestsRequest = /*@__PURE__*/ __L.at(
+  __c57,
+  7,
+) as any as S.Schema<ListDeployRequestsRequest>;
+
 export type PaginatedDatabaseDeployRequestDataItemActor = OrganizationTeamMembershipActor;
 export type PaginatedDatabaseDeployRequestDataItemClosedBy = OrganizationTeamMembershipActor;
 export type PaginatedDatabaseDeployRequestDataItemBranchDeletedBy = OrganizationTeamMembershipActor;
 /** Whether the deploy request is open or closed */
 export type PaginatedDatabaseDeployRequestDataItemState = "open" | "closed";
+const PaginatedDatabaseDeployRequestDataItemState = S.String;
+
 /** The deployment state of the deploy request */
 export type PaginatedDatabaseDeployRequestDataItemDeploymentState =
   | "pending"
@@ -8970,6 +11954,8 @@ export type PaginatedDatabaseDeployRequestDataItemDeploymentState =
   | "complete_revert_error"
   | "cancelled"
   | "error";
+const PaginatedDatabaseDeployRequestDataItemDeploymentState = S.String;
+
 /** The state the deployment is in */
 export type PaginatedDatabaseDeployRequestDataItemDeploymentState2 =
   | "pending"
@@ -8992,12 +11978,23 @@ export type PaginatedDatabaseDeployRequestDataItemDeploymentState2 =
   | "complete_revert_error"
   | "cancelled"
   | "error";
+const PaginatedDatabaseDeployRequestDataItemDeploymentState2 = S.String;
+
 export type PaginatedDatabaseDeployRequestDataItemDeploymentPrecedingDeploymentsItemMap = {
   [key: string]: unknown | undefined;
 };
+const PaginatedDatabaseDeployRequestDataItemDeploymentPrecedingDeploymentsItemMap =
+  DatabaseDeployRequestDeploymentSequentialDiffDependenciesItemMap as any as S.Schema<PaginatedDatabaseDeployRequestDataItemDeploymentPrecedingDeploymentsItemMap>;
+
 /** The deployments ahead of this one in the queue */
 export type PaginatedDatabaseDeployRequestDataItemDeploymentPrecedingDeploymentsList =
   Array<PaginatedDatabaseDeployRequestDataItemDeploymentPrecedingDeploymentsItemMap>;
+const PaginatedDatabaseDeployRequestDataItemDeploymentPrecedingDeploymentsList =
+  /*@__PURE__*/ __L.at(
+    __c58,
+    0,
+  ) as any as S.Schema<PaginatedDatabaseDeployRequestDataItemDeploymentPrecedingDeploymentsList>;
+
 /** The state of the deploy operation */
 export type PaginatedDatabaseDeployRequestDataItemDeploymentDeployOperationsItemState =
   | "pending"
@@ -9006,9 +12003,14 @@ export type PaginatedDatabaseDeployRequestDataItemDeploymentDeployOperationsItem
   | "complete"
   | "cancelled"
   | "error";
+const PaginatedDatabaseDeployRequestDataItemDeploymentDeployOperationsItemState = S.String;
+
 /** Names of foreign keys removed by this operation */
 export type PaginatedDatabaseDeployRequestDataItemDeploymentDeployOperationsItemRemovedForeignKeyNamesList =
   Array<string>;
+const PaginatedDatabaseDeployRequestDataItemDeploymentDeployOperationsItemRemovedForeignKeyNamesList =
+  OrganizationTeamMembershipPasswordsItemDirectVtgateAddressesList as any as S.Schema<PaginatedDatabaseDeployRequestDataItemDeploymentDeployOperationsItemRemovedForeignKeyNamesList>;
+
 export interface PaginatedDatabaseDeployRequestDataItemDeploymentDeployOperationsItem {
   /** The ID for the deploy operation */
   id: string;
@@ -9049,8 +12051,18 @@ export interface PaginatedDatabaseDeployRequestDataItemDeploymentDeployOperation
   /** Deploy errors for the deploy operation */
   deploy_errors: string | null;
 }
+const PaginatedDatabaseDeployRequestDataItemDeploymentDeployOperationsItem = /*@__PURE__*/ __L.at(
+  __c58,
+  1,
+) as any as S.Schema<PaginatedDatabaseDeployRequestDataItemDeploymentDeployOperationsItem>;
+
 export type PaginatedDatabaseDeployRequestDataItemDeploymentDeployOperationsList =
   Array<PaginatedDatabaseDeployRequestDataItemDeploymentDeployOperationsItem>;
+const PaginatedDatabaseDeployRequestDataItemDeploymentDeployOperationsList = /*@__PURE__*/ __L.at(
+  __c58,
+  2,
+) as any as S.Schema<PaginatedDatabaseDeployRequestDataItemDeploymentDeployOperationsList>;
+
 /** The state of the deploy operation summary */
 export type PaginatedDatabaseDeployRequestDataItemDeploymentDeployOperationSummariesItemState =
   | "pending"
@@ -9058,12 +12070,20 @@ export type PaginatedDatabaseDeployRequestDataItemDeploymentDeployOperationSumma
   | "complete"
   | "cancelled"
   | "error";
+const PaginatedDatabaseDeployRequestDataItemDeploymentDeployOperationSummariesItemState = S.String;
+
 /** Names of foreign keys removed by this operation summary */
 export type PaginatedDatabaseDeployRequestDataItemDeploymentDeployOperationSummariesItemRemovedForeignKeyNamesList =
   Array<string>;
+const PaginatedDatabaseDeployRequestDataItemDeploymentDeployOperationSummariesItemRemovedForeignKeyNamesList =
+  OrganizationTeamMembershipPasswordsItemDirectVtgateAddressesList as any as S.Schema<PaginatedDatabaseDeployRequestDataItemDeploymentDeployOperationSummariesItemRemovedForeignKeyNamesList>;
+
 /** Names of shards in the keyspace modified by the deploy operation summary */
 export type PaginatedDatabaseDeployRequestDataItemDeploymentDeployOperationSummariesItemShardNamesList =
   Array<string>;
+const PaginatedDatabaseDeployRequestDataItemDeploymentDeployOperationSummariesItemShardNamesList =
+  OrganizationTeamMembershipPasswordsItemDirectVtgateAddressesList as any as S.Schema<PaginatedDatabaseDeployRequestDataItemDeploymentDeployOperationSummariesItemShardNamesList>;
+
 /** The state of the deploy operation */
 export type PaginatedDatabaseDeployRequestDataItemDeploymentDeployOperationSummariesItemOperationsItemState =
   | "pending"
@@ -9072,6 +12092,9 @@ export type PaginatedDatabaseDeployRequestDataItemDeploymentDeployOperationSumma
   | "complete"
   | "cancelled"
   | "error";
+const PaginatedDatabaseDeployRequestDataItemDeploymentDeployOperationSummariesItemOperationsItemState =
+  S.String;
+
 export interface PaginatedDatabaseDeployRequestDataItemDeploymentDeployOperationSummariesItemOperationsItem {
   /** The ID for the deploy operation */
   id: string;
@@ -9084,8 +12107,20 @@ export interface PaginatedDatabaseDeployRequestDataItemDeploymentDeployOperation
   /** The estimated seconds until completion for the deploy operation */
   eta_seconds: number;
 }
+const PaginatedDatabaseDeployRequestDataItemDeploymentDeployOperationSummariesItemOperationsItem =
+  /*@__PURE__*/ __L.at(
+    __c58,
+    3,
+  ) as any as S.Schema<PaginatedDatabaseDeployRequestDataItemDeploymentDeployOperationSummariesItemOperationsItem>;
+
 export type PaginatedDatabaseDeployRequestDataItemDeploymentDeployOperationSummariesItemOperationsList =
   Array<PaginatedDatabaseDeployRequestDataItemDeploymentDeployOperationSummariesItemOperationsItem>;
+const PaginatedDatabaseDeployRequestDataItemDeploymentDeployOperationSummariesItemOperationsList =
+  /*@__PURE__*/ __L.at(
+    __c58,
+    4,
+  ) as any as S.Schema<PaginatedDatabaseDeployRequestDataItemDeploymentDeployOperationSummariesItemOperationsList>;
+
 export interface PaginatedDatabaseDeployRequestDataItemDeploymentDeployOperationSummariesItem {
   /** The ID for the deploy operation summary */
   id: string;
@@ -9127,34 +12162,61 @@ export interface PaginatedDatabaseDeployRequestDataItemDeploymentDeployOperation
   sharded: boolean;
   operations: PaginatedDatabaseDeployRequestDataItemDeploymentDeployOperationSummariesItemOperationsList;
 }
+const PaginatedDatabaseDeployRequestDataItemDeploymentDeployOperationSummariesItem =
+  /*@__PURE__*/ __L.at(
+    __c58,
+    5,
+  ) as any as S.Schema<PaginatedDatabaseDeployRequestDataItemDeploymentDeployOperationSummariesItem>;
+
 export type PaginatedDatabaseDeployRequestDataItemDeploymentDeployOperationSummariesList =
   Array<PaginatedDatabaseDeployRequestDataItemDeploymentDeployOperationSummariesItem>;
+const PaginatedDatabaseDeployRequestDataItemDeploymentDeployOperationSummariesList =
+  /*@__PURE__*/ __L.at(
+    __c58,
+    6,
+  ) as any as S.Schema<PaginatedDatabaseDeployRequestDataItemDeploymentDeployOperationSummariesList>;
+
 export type PaginatedDatabaseDeployRequestDataItemDeploymentLintErrorsItemMap = {
   [key: string]: unknown | undefined;
 };
 /** Schema lint errors preventing the deployment from completing */
 export type PaginatedDatabaseDeployRequestDataItemDeploymentLintErrorsList =
   Array<PaginatedDatabaseDeployRequestDataItemDeploymentLintErrorsItemMap>;
+const PaginatedDatabaseDeployRequestDataItemDeploymentLintErrorsList =
+  DatabaseDeployRequestDeploymentSequentialDiffDependenciesList as any as S.Schema<PaginatedDatabaseDeployRequestDataItemDeploymentLintErrorsList>;
+
 export type PaginatedDatabaseDeployRequestDataItemDeploymentSequentialDiffDependenciesItemMap = {
   [key: string]: unknown | undefined;
 };
 /** The schema dependencies that must be satisfied */
 export type PaginatedDatabaseDeployRequestDataItemDeploymentSequentialDiffDependenciesList =
   Array<PaginatedDatabaseDeployRequestDataItemDeploymentSequentialDiffDependenciesItemMap>;
+const PaginatedDatabaseDeployRequestDataItemDeploymentSequentialDiffDependenciesList =
+  PaginatedDatabaseDeployRequestDataItemDeploymentPrecedingDeploymentsList as any as S.Schema<PaginatedDatabaseDeployRequestDataItemDeploymentSequentialDiffDependenciesList>;
+
 export type PaginatedDatabaseDeployRequestDataItemDeploymentLookupVindexOperationsItemMap = {
   [key: string]: unknown | undefined;
 };
 /** Lookup Vitess index operations */
 export type PaginatedDatabaseDeployRequestDataItemDeploymentLookupVindexOperationsList =
   Array<PaginatedDatabaseDeployRequestDataItemDeploymentLookupVindexOperationsItemMap>;
+const PaginatedDatabaseDeployRequestDataItemDeploymentLookupVindexOperationsList =
+  PaginatedDatabaseDeployRequestDataItemDeploymentPrecedingDeploymentsList as any as S.Schema<PaginatedDatabaseDeployRequestDataItemDeploymentLookupVindexOperationsList>;
+
 /** Deployment throttling configurations. */
 export type PaginatedDatabaseDeployRequestDataItemDeploymentThrottlerConfigurationsMap = {
   [key: string]: unknown | undefined;
 };
+const PaginatedDatabaseDeployRequestDataItemDeploymentThrottlerConfigurationsMap =
+  DatabaseDeployRequestDeploymentSequentialDiffDependenciesItemMap as any as S.Schema<PaginatedDatabaseDeployRequestDataItemDeploymentThrottlerConfigurationsMap>;
+
 /** The request to revert the schema operations in this deployment */
 export type PaginatedDatabaseDeployRequestDataItemDeploymentDeploymentRevertRequestMap = {
   [key: string]: unknown | undefined;
 };
+const PaginatedDatabaseDeployRequestDataItemDeploymentDeploymentRevertRequestMap =
+  DatabaseDeployRequestDeploymentSequentialDiffDependenciesItemMap as any as S.Schema<PaginatedDatabaseDeployRequestDataItemDeploymentDeploymentRevertRequestMap>;
+
 export type PaginatedDatabaseDeployRequestDataItemDeploymentActor = OrganizationTeamMembershipActor;
 export type PaginatedDatabaseDeployRequestDataItemDeploymentCutoverActor =
   OrganizationTeamMembershipActor;
@@ -9229,6 +12291,11 @@ export interface PaginatedDatabaseDeployRequestDataItemDeployment {
   /** A human-readable reason the deploy queue is paused, if known */
   queue_pause_reason: string | null;
 }
+const PaginatedDatabaseDeployRequestDataItemDeployment = /*@__PURE__*/ __L.at(
+  __c58,
+  7,
+) as any as S.Schema<PaginatedDatabaseDeployRequestDataItemDeployment>;
+
 export interface PaginatedDatabaseDeployRequestDataItem {
   /** The ID of the deploy request */
   id: string;
@@ -9277,7 +12344,17 @@ export interface PaginatedDatabaseDeployRequestDataItem {
   /** When the deploy request was deployed */
   deployed_at: string | null;
 }
+const PaginatedDatabaseDeployRequestDataItem = /*@__PURE__*/ __L.at(
+  __c59,
+  0,
+) as any as S.Schema<PaginatedDatabaseDeployRequestDataItem>;
+
 export type PaginatedDatabaseDeployRequestDataList = Array<PaginatedDatabaseDeployRequestDataItem>;
+const PaginatedDatabaseDeployRequestDataList = /*@__PURE__*/ __L.at(
+  __c59,
+  1,
+) as any as S.Schema<PaginatedDatabaseDeployRequestDataList>;
+
 export interface PaginatedDatabaseDeployRequest {
   /** The response type. Always "list" for paginated responses. */
   type: string;
@@ -9299,6 +12376,11 @@ export interface PaginatedDatabaseDeployRequest {
   total_pages: number;
   data: PaginatedDatabaseDeployRequestDataList;
 }
+const PaginatedDatabaseDeployRequest = /*@__PURE__*/ __L.at(
+  __c59,
+  2,
+) as any as S.Schema<PaginatedDatabaseDeployRequest>;
+
 export interface ListExtensionsRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
@@ -9307,12 +12389,24 @@ export interface ListExtensionsRequest {
   /** Branch name from `list_branches`. Example: `main`. */
   branch: string;
 }
+const ListExtensionsRequest = /*@__PURE__*/ __L.at(
+  __c59,
+  3,
+) as any as S.Schema<ListExtensionsRequest>;
+
 export interface PostgresExtensionDefinitionRequirements {
   /** The Postgres image version required to use the extension */
   postgres_image_version?: string | null;
 }
+const PostgresExtensionDefinitionRequirements = /*@__PURE__*/ __L.at(
+  __c59,
+  4,
+) as any as S.Schema<PostgresExtensionDefinitionRequirements>;
+
 /** The namespace of the parameter */
 export type PostgresExtensionDefinitionParametersItemNamespace = "patroni" | "pgconf" | "pgbouncer";
+const PostgresExtensionDefinitionParametersItemNamespace = S.String;
+
 /** The type of the parameter */
 export type PostgresExtensionDefinitionParametersItemParameterType =
   | "array"
@@ -9324,8 +12418,13 @@ export type PostgresExtensionDefinitionParametersItemParameterType =
   | "select"
   | "string"
   | "time";
+const PostgresExtensionDefinitionParametersItemParameterType = S.String;
+
 /** Valid options for the parameter value */
 export type PostgresExtensionDefinitionParametersItemOptionsList = Array<string>;
+const PostgresExtensionDefinitionParametersItemOptionsList =
+  OrganizationTeamMembershipPasswordsItemCidrsList as any as S.Schema<PostgresExtensionDefinitionParametersItemOptionsList>;
+
 export type PostgresExtensionDefinitionParametersItemActor = OrganizationTeamMembershipActor;
 export interface PostgresExtensionDefinitionParametersItem {
   /** The name of the parameter */
@@ -9366,8 +12465,18 @@ export interface PostgresExtensionDefinitionParametersItem {
   options: PostgresExtensionDefinitionParametersItemOptionsList;
   actor: OrganizationTeamMembershipActor;
 }
+const PostgresExtensionDefinitionParametersItem = /*@__PURE__*/ __L.at(
+  __c59,
+  5,
+) as any as S.Schema<PostgresExtensionDefinitionParametersItem>;
+
 export type PostgresExtensionDefinitionParametersList =
   Array<PostgresExtensionDefinitionParametersItem>;
+const PostgresExtensionDefinitionParametersList = /*@__PURE__*/ __L.at(
+  __c59,
+  6,
+) as any as S.Schema<PostgresExtensionDefinitionParametersList>;
+
 export interface PostgresExtensionDefinition {
   /** The name of the extension */
   name: string;
@@ -9384,8 +12493,23 @@ export interface PostgresExtensionDefinition {
   url: string;
   parameters: PostgresExtensionDefinitionParametersList;
 }
+const PostgresExtensionDefinition = /*@__PURE__*/ __L.at(
+  __c59,
+  7,
+) as any as S.Schema<PostgresExtensionDefinition>;
+
 export type ListExtensionsResponseBodyList = Array<PostgresExtensionDefinition>;
+const ListExtensionsResponseBodyList = /*@__PURE__*/ __L.at(
+  __c60,
+  0,
+) as any as S.Schema<ListExtensionsResponseBodyList>;
+
 export type ListExtensionsResponse = ListExtensionsResponseBodyList;
+const ListExtensionsResponse = /*@__PURE__*/ __L.at(
+  __c60,
+  1,
+) as any as S.Schema<ListExtensionsResponse>;
+
 export interface ListGeneratedQueryPatternsReportsRequest {
   /** The name of the organization the branch belongs to */
   organization: string;
@@ -9400,8 +12524,15 @@ export interface ListGeneratedQueryPatternsReportsRequest {
   /** If provided, specifies the number of returned results (max 100) */
   limit?: number;
 }
+const ListGeneratedQueryPatternsReportsRequest = /*@__PURE__*/ __L.at(
+  __c60,
+  2,
+) as any as S.Schema<ListGeneratedQueryPatternsReportsRequest>;
+
 /** The state of the download */
 export type PaginatedQueryPatternsDownloadDataItemState = "pending" | "completed" | "failed";
+const PaginatedQueryPatternsDownloadDataItemState = S.String;
+
 export type PaginatedQueryPatternsDownloadDataItemActor = OrganizationTeamMembershipActor;
 export interface PaginatedQueryPatternsDownloadDataItem {
   /** The ID of the query patterns download */
@@ -9418,7 +12549,17 @@ export interface PaginatedQueryPatternsDownloadDataItem {
   download_url: string;
   actor: OrganizationTeamMembershipActor;
 }
+const PaginatedQueryPatternsDownloadDataItem = /*@__PURE__*/ __L.at(
+  __c60,
+  3,
+) as any as S.Schema<PaginatedQueryPatternsDownloadDataItem>;
+
 export type PaginatedQueryPatternsDownloadDataList = Array<PaginatedQueryPatternsDownloadDataItem>;
+const PaginatedQueryPatternsDownloadDataList = /*@__PURE__*/ __L.at(
+  __c60,
+  4,
+) as any as S.Schema<PaginatedQueryPatternsDownloadDataList>;
+
 export interface PaginatedQueryPatternsDownload {
   /** The response type. Always "list" for paginated responses. */
   type: string;
@@ -9432,6 +12573,11 @@ export interface PaginatedQueryPatternsDownload {
   cursor_end: string | null;
   data: PaginatedQueryPatternsDownloadDataList;
 }
+const PaginatedQueryPatternsDownload = /*@__PURE__*/ __L.at(
+  __c60,
+  5,
+) as any as S.Schema<PaginatedQueryPatternsDownload>;
+
 export interface ListInsightsAgentRunsRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
@@ -9444,10 +12590,17 @@ export interface ListInsightsAgentRunsRequest {
   /** If provided, specifies the number of returned results */
   per_page?: number;
 }
+const ListInsightsAgentRunsRequest = /*@__PURE__*/ __L.at(
+  __c60,
+  6,
+) as any as S.Schema<ListInsightsAgentRunsRequest>;
+
 /** The work performed by the run */
 export type PaginatedInsightsAgentRunDataItemType =
   | "review_slow_queries"
   | "implement_schema_recommendation";
+const PaginatedInsightsAgentRunDataItemType = S.String;
+
 /** The run state */
 export type PaginatedInsightsAgentRunDataItemState =
   | "queued"
@@ -9455,16 +12608,27 @@ export type PaginatedInsightsAgentRunDataItemState =
   | "succeeded"
   | "failed"
   | "cancelled";
+const PaginatedInsightsAgentRunDataItemState = S.String;
+
 /** The repository snapshot and analyzed commit */
 export type PaginatedInsightsAgentRunDataItemRepositoryMap = { [key: string]: unknown | undefined };
+const PaginatedInsightsAgentRunDataItemRepositoryMap =
+  NekiShardAssignmentErrorMap as any as S.Schema<PaginatedInsightsAgentRunDataItemRepositoryMap>;
+
 /** The agent execution snapshot */
 export type PaginatedInsightsAgentRunDataItemAgentMap = { [key: string]: unknown | undefined };
+const PaginatedInsightsAgentRunDataItemAgentMap =
+  NekiShardAssignmentErrorMap as any as S.Schema<PaginatedInsightsAgentRunDataItemAgentMap>;
+
 export type PaginatedInsightsAgentRunDataItemSelectedTargetsItemMap = {
   [key: string]: unknown | undefined;
 };
 /** The query patterns or schema recommendations selected for the run */
 export type PaginatedInsightsAgentRunDataItemSelectedTargetsList =
   Array<PaginatedInsightsAgentRunDataItemSelectedTargetsItemMap>;
+const PaginatedInsightsAgentRunDataItemSelectedTargetsList =
+  DatabaseDeployRequestDeploymentPrecedingDeploymentsList as any as S.Schema<PaginatedInsightsAgentRunDataItemSelectedTargetsList>;
+
 export interface PaginatedInsightsAgentRunDataItem {
   /** The Insights agent run ID */
   id: string;
@@ -9511,7 +12675,17 @@ export interface PaginatedInsightsAgentRunDataItem {
   /** When the run was last updated */
   updated_at: string;
 }
+const PaginatedInsightsAgentRunDataItem = /*@__PURE__*/ __L.at(
+  __c60,
+  7,
+) as any as S.Schema<PaginatedInsightsAgentRunDataItem>;
+
 export type PaginatedInsightsAgentRunDataList = Array<PaginatedInsightsAgentRunDataItem>;
+const PaginatedInsightsAgentRunDataList = /*@__PURE__*/ __L.at(
+  __c61,
+  0,
+) as any as S.Schema<PaginatedInsightsAgentRunDataList>;
+
 export interface PaginatedInsightsAgentRun {
   /** The response type. Always "list" for paginated responses. */
   type: string;
@@ -9529,6 +12703,11 @@ export interface PaginatedInsightsAgentRun {
   prev_page_url: string | null;
   data: PaginatedInsightsAgentRunDataList;
 }
+const PaginatedInsightsAgentRun = /*@__PURE__*/ __L.at(
+  __c61,
+  1,
+) as any as S.Schema<PaginatedInsightsAgentRun>;
+
 export interface ListInsightsAgentSchedulesRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
@@ -9537,12 +12716,21 @@ export interface ListInsightsAgentSchedulesRequest {
   /** Branch name from `list_branches`. Example: `main`. */
   branch: string;
 }
+const ListInsightsAgentSchedulesRequest = /*@__PURE__*/ __L.at(
+  __c61,
+  2,
+) as any as S.Schema<ListInsightsAgentSchedulesRequest>;
+
 /** The scheduled run type */
 export type InsightsAgentScheduleRunType =
   | "review_slow_queries"
   | "implement_schema_recommendation";
+const InsightsAgentScheduleRunType = S.String;
+
 /** The cadence unit */
 export type InsightsAgentScheduleFrequencyUnit = "day" | "week" | "month";
+const InsightsAgentScheduleFrequencyUnit = S.String;
+
 export interface InsightsAgentSchedule {
   /** The schedule ID */
   id: string | null;
@@ -9563,8 +12751,23 @@ export interface InsightsAgentSchedule {
   /** When the schedule will run next */
   next_run_at: string | null;
 }
+const InsightsAgentSchedule = /*@__PURE__*/ __L.at(
+  __c61,
+  3,
+) as any as S.Schema<InsightsAgentSchedule>;
+
 export type ListInsightsAgentSchedulesResponseBodyList = Array<InsightsAgentSchedule>;
+const ListInsightsAgentSchedulesResponseBodyList = /*@__PURE__*/ __L.at(
+  __c61,
+  4,
+) as any as S.Schema<ListInsightsAgentSchedulesResponseBodyList>;
+
 export type ListInsightsAgentSchedulesResponse = ListInsightsAgentSchedulesResponseBodyList;
+const ListInsightsAgentSchedulesResponse = /*@__PURE__*/ __L.at(
+  __c61,
+  5,
+) as any as S.Schema<ListInsightsAgentSchedulesResponse>;
+
 export interface ListInvoicesRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
@@ -9573,6 +12776,8 @@ export interface ListInvoicesRequest {
   /** If provided, specifies the number of returned results */
   per_page?: number;
 }
+const ListInvoicesRequest = /*@__PURE__*/ __L.at(__c61, 6) as any as S.Schema<ListInvoicesRequest>;
+
 export interface PaginatedInvoiceDataItem {
   /** The ID of the invoice */
   id: string;
@@ -9587,7 +12792,14 @@ export interface PaginatedInvoiceDataItem {
   /** Whether the invoice is past due and unpaid */
   overdue: boolean;
 }
+const PaginatedInvoiceDataItem = Invoice as any as S.Schema<PaginatedInvoiceDataItem>;
+
 export type PaginatedInvoiceDataList = Array<PaginatedInvoiceDataItem>;
+const PaginatedInvoiceDataList = /*@__PURE__*/ __L.at(
+  __c61,
+  7,
+) as any as S.Schema<PaginatedInvoiceDataList>;
+
 export interface PaginatedInvoice {
   /** The response type. Always "list" for paginated responses. */
   type: string;
@@ -9605,6 +12817,8 @@ export interface PaginatedInvoice {
   prev_page_url: string | null;
   data: PaginatedInvoiceDataList;
 }
+const PaginatedInvoice = /*@__PURE__*/ __L.at(__c62, 0) as any as S.Schema<PaginatedInvoice>;
+
 export interface ListKeyspaceConfigChangeRequestsRequest {
   /** The name of the organization the branch belongs to */
   organization: string;
@@ -9619,6 +12833,11 @@ export interface ListKeyspaceConfigChangeRequestsRequest {
   /** If provided, specifies the number of returned results */
   per_page?: number;
 }
+const ListKeyspaceConfigChangeRequestsRequest = /*@__PURE__*/ __L.at(
+  __c62,
+  1,
+) as any as S.Schema<ListKeyspaceConfigChangeRequestsRequest>;
+
 /** The state of the config change request */
 export type PaginatedKeyspaceConfigChangeRequestDataItemState =
   | "draft"
@@ -9628,16 +12847,26 @@ export type PaginatedKeyspaceConfigChangeRequestDataItemState =
   | "completed"
   | "failed"
   | "canceled";
+const PaginatedKeyspaceConfigChangeRequestDataItemState = S.String;
+
 /** The type of configuration being changed */
 export type PaginatedKeyspaceConfigChangeRequestDataItemChangeType = "mysqld" | "vttablet";
+const PaginatedKeyspaceConfigChangeRequestDataItemChangeType = S.String;
+
 /** The previous option values */
 export type PaginatedKeyspaceConfigChangeRequestDataItemPreviousOptionsMap = {
   [key: string]: unknown | undefined;
 };
+const PaginatedKeyspaceConfigChangeRequestDataItemPreviousOptionsMap =
+  DatabaseDeployRequestDeploymentSequentialDiffDependenciesItemMap as any as S.Schema<PaginatedKeyspaceConfigChangeRequestDataItemPreviousOptionsMap>;
+
 /** The new option values */
 export type PaginatedKeyspaceConfigChangeRequestDataItemNewOptionsMap = {
   [key: string]: unknown | undefined;
 };
+const PaginatedKeyspaceConfigChangeRequestDataItemNewOptionsMap =
+  NekiShardAssignmentErrorMap as any as S.Schema<PaginatedKeyspaceConfigChangeRequestDataItemNewOptionsMap>;
+
 export type PaginatedKeyspaceConfigChangeRequestDataItemActor = OrganizationTeamMembershipActor;
 export interface PaginatedKeyspaceConfigChangeRequestDataItem {
   /** The ID of the config change request */
@@ -9666,8 +12895,18 @@ export interface PaginatedKeyspaceConfigChangeRequestDataItem {
   queued_until: string | null;
   actor: OrganizationTeamMembershipActor;
 }
+const PaginatedKeyspaceConfigChangeRequestDataItem = /*@__PURE__*/ __L.at(
+  __c62,
+  2,
+) as any as S.Schema<PaginatedKeyspaceConfigChangeRequestDataItem>;
+
 export type PaginatedKeyspaceConfigChangeRequestDataList =
   Array<PaginatedKeyspaceConfigChangeRequestDataItem>;
+const PaginatedKeyspaceConfigChangeRequestDataList = /*@__PURE__*/ __L.at(
+  __c62,
+  3,
+) as any as S.Schema<PaginatedKeyspaceConfigChangeRequestDataList>;
+
 export interface PaginatedKeyspaceConfigChangeRequest {
   /** The response type. Always "list" for paginated responses. */
   type: string;
@@ -9685,6 +12924,11 @@ export interface PaginatedKeyspaceConfigChangeRequest {
   prev_page_url: string | null;
   data: PaginatedKeyspaceConfigChangeRequestDataList;
 }
+const PaginatedKeyspaceConfigChangeRequest = /*@__PURE__*/ __L.at(
+  __c62,
+  4,
+) as any as S.Schema<PaginatedKeyspaceConfigChangeRequest>;
+
 export interface ListKeyspaceResizeRequestsRequest {
   /** The name of the organization the branch belongs to */
   organization: string;
@@ -9701,6 +12945,11 @@ export interface ListKeyspaceResizeRequestsRequest {
   /** Filter resize requests completed between two dates (e.g. 2023-01-01T:00:00:00Z..2023-01-31T:23:59:59Z) */
   completed_at?: string;
 }
+const ListKeyspaceResizeRequestsRequest = /*@__PURE__*/ __L.at(
+  __c62,
+  5,
+) as any as S.Schema<ListKeyspaceResizeRequestsRequest>;
+
 /** The state of the resize request */
 export type PaginatedKeyspaceResizeRequestDataItemState =
   | "pending"
@@ -9708,6 +12957,8 @@ export type PaginatedKeyspaceResizeRequestDataItemState =
   | "canceled"
   | "completed"
   | "queued";
+const PaginatedKeyspaceResizeRequestDataItemState = S.String;
+
 export type PaginatedKeyspaceResizeRequestDataItemActor = OrganizationTeamMembershipActor;
 export interface PaginatedKeyspaceResizeRequestDataItem {
   /** The ID of the keyspace resize request */
@@ -9742,7 +12993,17 @@ export interface PaginatedKeyspaceResizeRequestDataItem {
   previous_replicas: number;
   actor: OrganizationTeamMembershipActor;
 }
+const PaginatedKeyspaceResizeRequestDataItem = /*@__PURE__*/ __L.at(
+  __c62,
+  6,
+) as any as S.Schema<PaginatedKeyspaceResizeRequestDataItem>;
+
 export type PaginatedKeyspaceResizeRequestDataList = Array<PaginatedKeyspaceResizeRequestDataItem>;
+const PaginatedKeyspaceResizeRequestDataList = /*@__PURE__*/ __L.at(
+  __c62,
+  7,
+) as any as S.Schema<PaginatedKeyspaceResizeRequestDataList>;
+
 export interface PaginatedKeyspaceResizeRequest {
   /** The response type. Always "list" for paginated responses. */
   type: string;
@@ -9760,6 +13021,11 @@ export interface PaginatedKeyspaceResizeRequest {
   prev_page_url: string | null;
   data: PaginatedKeyspaceResizeRequestDataList;
 }
+const PaginatedKeyspaceResizeRequest = /*@__PURE__*/ __L.at(
+  __c63,
+  0,
+) as any as S.Schema<PaginatedKeyspaceResizeRequest>;
+
 export interface ListKeyspacesRequest {
   /** The name of the organization the branch belongs to */
   organization: string;
@@ -9772,11 +13038,18 @@ export interface ListKeyspacesRequest {
   /** If provided, specifies the number of returned results */
   per_page?: number;
 }
+const ListKeyspacesRequest = /*@__PURE__*/ __L.at(
+  __c63,
+  1,
+) as any as S.Schema<ListKeyspacesRequest>;
+
 /** Controls when node TTL drains are allowed */
 export type PaginatedDatabaseBranchKeyspaceDataItemNodeTtlStrategy =
   | "node_ttl_follow_maintenance"
   | "node_ttl_always"
   | "node_ttl_off";
+const PaginatedDatabaseBranchKeyspaceDataItemNodeTtlStrategy = S.String;
+
 /** The disk scaling strategy */
 export type PaginatedDatabaseBranchKeyspaceDataItemStorageDiskScalingStrategy =
   | "grow"
@@ -9790,15 +13063,26 @@ export interface PaginatedDatabaseBranchKeyspaceDataItemStorage {
   /** The disk scaling strategy */
   disk_scaling_strategy: PaginatedDatabaseBranchKeyspaceDataItemStorageDiskScalingStrategy;
 }
+const PaginatedDatabaseBranchKeyspaceDataItemStorage =
+  DatabaseBranchKeyspaceStorage as any as S.Schema<PaginatedDatabaseBranchKeyspaceDataItemStorage>;
+
 /** The replication durability strategy */
 export type PaginatedDatabaseBranchKeyspaceDataItemReplicationDurabilityConstraintsStrategy =
   | "available"
   | "lag"
   | "always";
+const PaginatedDatabaseBranchKeyspaceDataItemReplicationDurabilityConstraintsStrategy = S.String;
+
 export interface PaginatedDatabaseBranchKeyspaceDataItemReplicationDurabilityConstraints {
   /** The replication durability strategy */
   strategy?: PaginatedDatabaseBranchKeyspaceDataItemReplicationDurabilityConstraintsStrategy | null;
 }
+const PaginatedDatabaseBranchKeyspaceDataItemReplicationDurabilityConstraints =
+  /*@__PURE__*/ __L.at(
+    __c63,
+    2,
+  ) as any as S.Schema<PaginatedDatabaseBranchKeyspaceDataItemReplicationDurabilityConstraints>;
+
 export type PaginatedDatabaseBranchKeyspaceDataItemVreplicationFlags =
   DatabaseBranchKeyspaceVreplicationFlags;
 export type PaginatedDatabaseBranchKeyspaceDataItemThrottler = DatabaseBranchKeyspaceThrottler;
@@ -9806,10 +13090,16 @@ export type PaginatedDatabaseBranchKeyspaceDataItemThrottler = DatabaseBranchKey
 export type PaginatedDatabaseBranchKeyspaceDataItemMysqldOptionsMap = {
   [key: string]: unknown | undefined;
 };
+const PaginatedDatabaseBranchKeyspaceDataItemMysqldOptionsMap =
+  NekiShardAssignmentErrorMap as any as S.Schema<PaginatedDatabaseBranchKeyspaceDataItemMysqldOptionsMap>;
+
 /** VTTablet configuration options */
 export type PaginatedDatabaseBranchKeyspaceDataItemVttabletOptionsMap = {
   [key: string]: unknown | undefined;
 };
+const PaginatedDatabaseBranchKeyspaceDataItemVttabletOptionsMap =
+  NekiShardAssignmentErrorMap as any as S.Schema<PaginatedDatabaseBranchKeyspaceDataItemVttabletOptionsMap>;
+
 export interface PaginatedDatabaseBranchKeyspaceDataItem {
   /** The ID of the keyspace */
   id: string;
@@ -9864,8 +13154,18 @@ export interface PaginatedDatabaseBranchKeyspaceDataItem {
   /** VTTablet configuration options */
   vttablet_options: PaginatedDatabaseBranchKeyspaceDataItemVttabletOptionsMap;
 }
+const PaginatedDatabaseBranchKeyspaceDataItem = /*@__PURE__*/ __L.at(
+  __c63,
+  3,
+) as any as S.Schema<PaginatedDatabaseBranchKeyspaceDataItem>;
+
 export type PaginatedDatabaseBranchKeyspaceDataList =
   Array<PaginatedDatabaseBranchKeyspaceDataItem>;
+const PaginatedDatabaseBranchKeyspaceDataList = /*@__PURE__*/ __L.at(
+  __c63,
+  4,
+) as any as S.Schema<PaginatedDatabaseBranchKeyspaceDataList>;
+
 export interface PaginatedDatabaseBranchKeyspace {
   /** The response type. Always "list" for paginated responses. */
   type: string;
@@ -9883,6 +13183,11 @@ export interface PaginatedDatabaseBranchKeyspace {
   prev_page_url: string | null;
   data: PaginatedDatabaseBranchKeyspaceDataList;
 }
+const PaginatedDatabaseBranchKeyspace = /*@__PURE__*/ __L.at(
+  __c63,
+  5,
+) as any as S.Schema<PaginatedDatabaseBranchKeyspace>;
+
 export interface ListMaintenanceSchedulesRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
@@ -9893,6 +13198,11 @@ export interface ListMaintenanceSchedulesRequest {
   /** If provided, specifies the number of returned results */
   per_page?: number;
 }
+const ListMaintenanceSchedulesRequest = /*@__PURE__*/ __L.at(
+  __c63,
+  6,
+) as any as S.Schema<ListMaintenanceSchedulesRequest>;
+
 /** The frequency unit of the maintenance schedule */
 export type PaginatedBranchMaintenanceScheduleDataItemFrequencyUnit =
   | "day"
@@ -9941,8 +13251,16 @@ export interface PaginatedBranchMaintenanceScheduleDataItem {
   /** The pending MySQL version, if any */
   pending_mysql_version?: string | null;
 }
+const PaginatedBranchMaintenanceScheduleDataItem =
+  BranchMaintenanceSchedule as any as S.Schema<PaginatedBranchMaintenanceScheduleDataItem>;
+
 export type PaginatedBranchMaintenanceScheduleDataList =
   Array<PaginatedBranchMaintenanceScheduleDataItem>;
+const PaginatedBranchMaintenanceScheduleDataList = /*@__PURE__*/ __L.at(
+  __c63,
+  7,
+) as any as S.Schema<PaginatedBranchMaintenanceScheduleDataList>;
+
 export interface PaginatedBranchMaintenanceSchedule {
   /** The response type. Always "list" for paginated responses. */
   type: string;
@@ -9960,6 +13278,11 @@ export interface PaginatedBranchMaintenanceSchedule {
   prev_page_url: string | null;
   data: PaginatedBranchMaintenanceScheduleDataList;
 }
+const PaginatedBranchMaintenanceSchedule = /*@__PURE__*/ __L.at(
+  __c64,
+  0,
+) as any as S.Schema<PaginatedBranchMaintenanceSchedule>;
+
 export interface ListMaintenanceWindowsRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
@@ -9972,6 +13295,11 @@ export interface ListMaintenanceWindowsRequest {
   /** If provided, specifies the number of returned results */
   per_page?: number;
 }
+const ListMaintenanceWindowsRequest = /*@__PURE__*/ __L.at(
+  __c64,
+  1,
+) as any as S.Schema<ListMaintenanceWindowsRequest>;
+
 export interface PaginatedBranchMaintenanceWindowDataItem {
   /** The ID of the maintenance window */
   id: string;
@@ -9984,8 +13312,18 @@ export interface PaginatedBranchMaintenanceWindowDataItem {
   /** When the maintenance window finished */
   finished_at: string | null;
 }
+const PaginatedBranchMaintenanceWindowDataItem = /*@__PURE__*/ __L.at(
+  __c64,
+  2,
+) as any as S.Schema<PaginatedBranchMaintenanceWindowDataItem>;
+
 export type PaginatedBranchMaintenanceWindowDataList =
   Array<PaginatedBranchMaintenanceWindowDataItem>;
+const PaginatedBranchMaintenanceWindowDataList = /*@__PURE__*/ __L.at(
+  __c64,
+  3,
+) as any as S.Schema<PaginatedBranchMaintenanceWindowDataList>;
+
 export interface PaginatedBranchMaintenanceWindow {
   /** The response type. Always "list" for paginated responses. */
   type: string;
@@ -10003,6 +13341,11 @@ export interface PaginatedBranchMaintenanceWindow {
   prev_page_url: string | null;
   data: PaginatedBranchMaintenanceWindowDataList;
 }
+const PaginatedBranchMaintenanceWindow = /*@__PURE__*/ __L.at(
+  __c64,
+  4,
+) as any as S.Schema<PaginatedBranchMaintenanceWindow>;
+
 export interface ListMoveTablesWorkflowsRequest {
   /** Organization name */
   organization: string;
@@ -10013,21 +13356,45 @@ export interface ListMoveTablesWorkflowsRequest {
   /** Filter by target keyspace (returns workflows from all kept keyspaces if omitted) */
   target_keyspace?: string;
 }
+const ListMoveTablesWorkflowsRequest = /*@__PURE__*/ __L.at(
+  __c64,
+  5,
+) as any as S.Schema<ListMoveTablesWorkflowsRequest>;
+
 export type ListMoveTablesWorkflowsResponseDataWorkflowsItemMap = {
   [key: string]: unknown | undefined;
 };
 /** MoveTables workflows reported by Vitess */
 export type ListMoveTablesWorkflowsResponseDataWorkflowsList =
   Array<ListMoveTablesWorkflowsResponseDataWorkflowsItemMap>;
+const ListMoveTablesWorkflowsResponseDataWorkflowsList =
+  DatabaseDeployRequestDeploymentPrecedingDeploymentsList as any as S.Schema<ListMoveTablesWorkflowsResponseDataWorkflowsList>;
+
 export interface ListMoveTablesWorkflowsResponseData {
   /** MoveTables workflows reported by Vitess */
   workflows: ListMoveTablesWorkflowsResponseDataWorkflowsList;
 }
+const ListMoveTablesWorkflowsResponseData = /*@__PURE__*/ __L.at(
+  __c64,
+  6,
+) as any as S.Schema<ListMoveTablesWorkflowsResponseData>;
+
 export interface ListMoveTablesWorkflowsResponse {
   data: ListMoveTablesWorkflowsResponseData;
 }
+const ListMoveTablesWorkflowsResponse = /*@__PURE__*/ __L.at(
+  __c64,
+  7,
+) as any as S.Schema<ListMoveTablesWorkflowsResponse>;
+
 export type ListNekiChangeRequestsRequestStateList = Array<string>;
+const ListNekiChangeRequestsRequestStateList =
+  OrganizationTeamMembershipPasswordsItemCidrsList as any as S.Schema<ListNekiChangeRequestsRequestStateList>;
+
 export type ListNekiChangeRequestsRequestTargetTypesList = Array<string>;
+const ListNekiChangeRequestsRequestTargetTypesList =
+  OrganizationTeamMembershipPasswordsItemCidrsList as any as S.Schema<ListNekiChangeRequestsRequestTargetTypesList>;
+
 export type ListNekiChangeRequestsRequestPeriod =
   | "15m"
   | "1h"
@@ -10038,6 +13405,8 @@ export type ListNekiChangeRequestsRequestPeriod =
   | "2d"
   | "7d"
   | "8d";
+const ListNekiChangeRequestsRequestPeriod = S.String;
+
 export interface ListNekiChangeRequestsRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
@@ -10060,6 +13429,11 @@ export interface ListNekiChangeRequestsRequest {
   /** Filter change requests completed between two ISO 8601 timestamps */
   completed_at?: string;
 }
+const ListNekiChangeRequestsRequest = /*@__PURE__*/ __L.at(
+  __c65,
+  0,
+) as any as S.Schema<ListNekiChangeRequestsRequest>;
+
 /** The type of change request */
 export type PaginatedNekiChangeRequestDataItemType =
   | "NekiAdminChangeRequest"
@@ -10068,6 +13442,8 @@ export type PaginatedNekiChangeRequestDataItemType =
   | "NekiExternalShardChangeRequest"
   | "NekiRouterChangeRequest"
   | "NekiSidecarChangeRequest";
+const PaginatedNekiChangeRequestDataItemType = S.String;
+
 /** The state of the change request */
 export type PaginatedNekiChangeRequestDataItemState =
   | "draft"
@@ -10075,6 +13451,8 @@ export type PaginatedNekiChangeRequestDataItemState =
   | "applying"
   | "canceled"
   | "completed";
+const PaginatedNekiChangeRequestDataItemState = S.String;
+
 export type PaginatedNekiChangeRequestDataItemActor = OrganizationTeamMembershipActor;
 /** The type of resource being changed */
 export type PaginatedNekiChangeRequestDataItemTargetType =
@@ -10084,18 +13462,32 @@ export type PaginatedNekiChangeRequestDataItemTargetType =
   | "NekiExternalShard"
   | "NekiRouter"
   | "NekiSidecar";
+const PaginatedNekiChangeRequestDataItemTargetType = S.String;
+
 /** The parameters requested for the target resource */
 export type PaginatedNekiChangeRequestDataItemParametersMap = {
   [key: string]: unknown | undefined;
 };
+const PaginatedNekiChangeRequestDataItemParametersMap =
+  NekiShardAssignmentErrorMap as any as S.Schema<PaginatedNekiChangeRequestDataItemParametersMap>;
+
 /** The target resource parameters before the change */
 export type PaginatedNekiChangeRequestDataItemPreviousParametersMap = {
   [key: string]: unknown | undefined;
 };
+const PaginatedNekiChangeRequestDataItemPreviousParametersMap =
+  NekiShardAssignmentErrorMap as any as S.Schema<PaginatedNekiChangeRequestDataItemPreviousParametersMap>;
+
 /** The cluster flags */
 export type PaginatedNekiChangeRequestDataItemFlagsList = Array<string>;
+const PaginatedNekiChangeRequestDataItemFlagsList =
+  OrganizationTeamMembershipPasswordsItemCidrsList as any as S.Schema<PaginatedNekiChangeRequestDataItemFlagsList>;
+
 /** The previous cluster flags */
 export type PaginatedNekiChangeRequestDataItemPreviousFlagsList = Array<string>;
+const PaginatedNekiChangeRequestDataItemPreviousFlagsList =
+  OrganizationTeamMembershipPasswordsItemCidrsList as any as S.Schema<PaginatedNekiChangeRequestDataItemPreviousFlagsList>;
+
 export type PaginatedNekiChangeRequestDataItemStorage = NekiShardConfigurationProfileStorage;
 export type PaginatedNekiChangeRequestDataItemPreviousStorage =
   NekiShardConfigurationProfileStorage;
@@ -10206,7 +13598,17 @@ export interface PaginatedNekiChangeRequestDataItem {
   previous_postgres_image_version?: string | null;
   previous_storage?: NekiShardConfigurationProfileStorage | null;
 }
+const PaginatedNekiChangeRequestDataItem = /*@__PURE__*/ __L.at(
+  __c65,
+  1,
+) as any as S.Schema<PaginatedNekiChangeRequestDataItem>;
+
 export type PaginatedNekiChangeRequestDataList = Array<PaginatedNekiChangeRequestDataItem>;
+const PaginatedNekiChangeRequestDataList = /*@__PURE__*/ __L.at(
+  __c65,
+  2,
+) as any as S.Schema<PaginatedNekiChangeRequestDataList>;
+
 export interface PaginatedNekiChangeRequest {
   /** The response type. Always "list" for paginated responses. */
   type: string;
@@ -10224,6 +13626,11 @@ export interface PaginatedNekiChangeRequest {
   prev_page_url: string | null;
   data: PaginatedNekiChangeRequestDataList;
 }
+const PaginatedNekiChangeRequest = /*@__PURE__*/ __L.at(
+  __c65,
+  3,
+) as any as S.Schema<PaginatedNekiChangeRequest>;
+
 export interface ListOauthApplicationsRequest {
   /** The name of the organization the OAuth applications belong to */
   organization: string;
@@ -10232,20 +13639,34 @@ export interface ListOauthApplicationsRequest {
   /** If provided, specifies the number of returned results */
   per_page?: number;
 }
+const ListOauthApplicationsRequest = /*@__PURE__*/ __L.at(
+  __c65,
+  4,
+) as any as S.Schema<ListOauthApplicationsRequest>;
+
 /** Scopes grouped by resource type (database, organization, branch, user) with scope, description, and admin flag */
 export type PaginatedOauthApplicationDataItemScopesByResourceMap = {
   [key: string]: unknown | undefined;
 };
+const PaginatedOauthApplicationDataItemScopesByResourceMap =
+  NekiShardAssignmentErrorMap as any as S.Schema<PaginatedOauthApplicationDataItemScopesByResourceMap>;
+
 /** All available scopes grouped by resource type with scope, description, selected, and admin flags */
 export type PaginatedOauthApplicationDataItemAllScopesByResourceMap = {
   [key: string]: unknown | undefined;
 };
+const PaginatedOauthApplicationDataItemAllScopesByResourceMap =
+  NekiShardAssignmentErrorMap as any as S.Schema<PaginatedOauthApplicationDataItemAllScopesByResourceMap>;
+
 export type PaginatedOauthApplicationDataItemMcpToolGroupsItemMap = {
   [key: string]: unknown | undefined;
 };
 /** MCP tool groups (id, label, section, tools, scopes, parent_id, default_enabled, roles) selectable when authorizing a DCR app; only present for DCR apps. Database-section groups also carry org_scopes (the organization-tier scope names granting the group across all databases in an organization) and org_roles (the organization roles allowed to grant them); both are null for organization-section groups */
 export type PaginatedOauthApplicationDataItemMcpToolGroupsList =
   Array<PaginatedOauthApplicationDataItemMcpToolGroupsItemMap>;
+const PaginatedOauthApplicationDataItemMcpToolGroupsList =
+  DatabaseDeployRequestDeploymentPrecedingDeploymentsList as any as S.Schema<PaginatedOauthApplicationDataItemMcpToolGroupsList>;
+
 export interface PaginatedOauthApplicationDataItem {
   /** The ID of the app */
   id: string;
@@ -10280,7 +13701,17 @@ export interface PaginatedOauthApplicationDataItem {
   /** MCP tool groups (id, label, section, tools, scopes, parent_id, default_enabled, roles) selectable when authorizing a DCR app; only present for DCR apps. Database-section groups also carry org_scopes (the organization-tier scope names granting the group across all databases in an organization) and org_roles (the organization roles allowed to grant them); both are null for organization-section groups */
   mcp_tool_groups?: PaginatedOauthApplicationDataItemMcpToolGroupsList | null;
 }
+const PaginatedOauthApplicationDataItem = /*@__PURE__*/ __L.at(
+  __c65,
+  5,
+) as any as S.Schema<PaginatedOauthApplicationDataItem>;
+
 export type PaginatedOauthApplicationDataList = Array<PaginatedOauthApplicationDataItem>;
+const PaginatedOauthApplicationDataList = /*@__PURE__*/ __L.at(
+  __c65,
+  6,
+) as any as S.Schema<PaginatedOauthApplicationDataList>;
+
 export interface PaginatedOauthApplication {
   /** The response type. Always "list" for paginated responses. */
   type: string;
@@ -10302,6 +13733,11 @@ export interface PaginatedOauthApplication {
   total_pages: number;
   data: PaginatedOauthApplicationDataList;
 }
+const PaginatedOauthApplication = /*@__PURE__*/ __L.at(
+  __c65,
+  7,
+) as any as S.Schema<PaginatedOauthApplication>;
+
 export interface ListOauthTokensRequest {
   /** The name of the organization the OAuth application belongs to */
   organization: string;
@@ -10312,66 +13748,133 @@ export interface ListOauthTokensRequest {
   /** If provided, specifies the number of returned results */
   per_page?: number;
 }
+const ListOauthTokensRequest = /*@__PURE__*/ __L.at(
+  __c66,
+  0,
+) as any as S.Schema<ListOauthTokensRequest>;
+
 export type PaginatedServiceTokenDataItemServiceTokenAccessesItemResource =
   OrganizationTeamMembershipUserDefaultOrganization;
 export type PaginatedServiceTokenDataItemServiceTokenAccessesItem =
   ServiceTokenServiceTokenAccessesItem;
 export type PaginatedServiceTokenDataItemServiceTokenAccessesList =
   Array<ServiceTokenServiceTokenAccessesItem>;
+const PaginatedServiceTokenDataItemServiceTokenAccessesList =
+  ServiceTokenServiceTokenAccessesList as any as S.Schema<PaginatedServiceTokenDataItemServiceTokenAccessesList>;
+
 export type PaginatedServiceTokenDataItemOauthAccessesByResourceDatabaseDatabasesItem =
   ServiceTokenOauthAccessesByResourceDatabaseDatabasesItem;
 export type PaginatedServiceTokenDataItemOauthAccessesByResourceDatabaseDatabasesList =
   Array<ServiceTokenOauthAccessesByResourceDatabaseDatabasesItem>;
+const PaginatedServiceTokenDataItemOauthAccessesByResourceDatabaseDatabasesList =
+  /*@__PURE__*/ __L.at(
+    __c66,
+    1,
+  ) as any as S.Schema<PaginatedServiceTokenDataItemOauthAccessesByResourceDatabaseDatabasesList>;
+
 export type PaginatedServiceTokenDataItemOauthAccessesByResourceDatabaseAccessesItem =
   ServiceTokenOauthAccessesByResourceDatabaseAccessesItem;
 export type PaginatedServiceTokenDataItemOauthAccessesByResourceDatabaseAccessesList =
   Array<ServiceTokenOauthAccessesByResourceDatabaseAccessesItem>;
+const PaginatedServiceTokenDataItemOauthAccessesByResourceDatabaseAccessesList =
+  /*@__PURE__*/ __L.at(
+    __c66,
+    2,
+  ) as any as S.Schema<PaginatedServiceTokenDataItemOauthAccessesByResourceDatabaseAccessesList>;
+
 export interface PaginatedServiceTokenDataItemOauthAccessesByResourceDatabase {
   databases: PaginatedServiceTokenDataItemOauthAccessesByResourceDatabaseDatabasesList;
   accesses: PaginatedServiceTokenDataItemOauthAccessesByResourceDatabaseAccessesList;
 }
+const PaginatedServiceTokenDataItemOauthAccessesByResourceDatabase = /*@__PURE__*/ __L.at(
+  __c66,
+  3,
+) as any as S.Schema<PaginatedServiceTokenDataItemOauthAccessesByResourceDatabase>;
+
 export type PaginatedServiceTokenDataItemOauthAccessesByResourceOrganizationOrganizationsItem =
   ServiceTokenOauthAccessesByResourceOrganizationOrganizationsItem;
 export type PaginatedServiceTokenDataItemOauthAccessesByResourceOrganizationOrganizationsList =
   Array<ServiceTokenOauthAccessesByResourceOrganizationOrganizationsItem>;
+const PaginatedServiceTokenDataItemOauthAccessesByResourceOrganizationOrganizationsList =
+  ServiceTokenOauthAccessesByResourceOrganizationOrganizationsList as any as S.Schema<PaginatedServiceTokenDataItemOauthAccessesByResourceOrganizationOrganizationsList>;
+
 export type PaginatedServiceTokenDataItemOauthAccessesByResourceOrganizationAccessesItem =
   ServiceTokenOauthAccessesByResourceDatabaseAccessesItem;
 export type PaginatedServiceTokenDataItemOauthAccessesByResourceOrganizationAccessesList =
   Array<ServiceTokenOauthAccessesByResourceDatabaseAccessesItem>;
+const PaginatedServiceTokenDataItemOauthAccessesByResourceOrganizationAccessesList =
+  PaginatedServiceTokenDataItemOauthAccessesByResourceDatabaseAccessesList as any as S.Schema<PaginatedServiceTokenDataItemOauthAccessesByResourceOrganizationAccessesList>;
+
 export interface PaginatedServiceTokenDataItemOauthAccessesByResourceOrganization {
   organizations: PaginatedServiceTokenDataItemOauthAccessesByResourceOrganizationOrganizationsList;
   accesses: PaginatedServiceTokenDataItemOauthAccessesByResourceOrganizationAccessesList;
 }
+const PaginatedServiceTokenDataItemOauthAccessesByResourceOrganization = /*@__PURE__*/ __L.at(
+  __c66,
+  4,
+) as any as S.Schema<PaginatedServiceTokenDataItemOauthAccessesByResourceOrganization>;
+
 export type PaginatedServiceTokenDataItemOauthAccessesByResourceBranchBranchesItem =
   ServiceTokenOauthAccessesByResourceBranchBranchesItem;
 export type PaginatedServiceTokenDataItemOauthAccessesByResourceBranchBranchesList =
   Array<ServiceTokenOauthAccessesByResourceBranchBranchesItem>;
+const PaginatedServiceTokenDataItemOauthAccessesByResourceBranchBranchesList = /*@__PURE__*/ __L.at(
+  __c66,
+  5,
+) as any as S.Schema<PaginatedServiceTokenDataItemOauthAccessesByResourceBranchBranchesList>;
+
 export type PaginatedServiceTokenDataItemOauthAccessesByResourceBranchAccessesItem =
   ServiceTokenOauthAccessesByResourceDatabaseAccessesItem;
 export type PaginatedServiceTokenDataItemOauthAccessesByResourceBranchAccessesList =
   Array<ServiceTokenOauthAccessesByResourceDatabaseAccessesItem>;
+const PaginatedServiceTokenDataItemOauthAccessesByResourceBranchAccessesList =
+  PaginatedServiceTokenDataItemOauthAccessesByResourceDatabaseAccessesList as any as S.Schema<PaginatedServiceTokenDataItemOauthAccessesByResourceBranchAccessesList>;
+
 export interface PaginatedServiceTokenDataItemOauthAccessesByResourceBranch {
   branches: PaginatedServiceTokenDataItemOauthAccessesByResourceBranchBranchesList;
   accesses: PaginatedServiceTokenDataItemOauthAccessesByResourceBranchAccessesList;
 }
+const PaginatedServiceTokenDataItemOauthAccessesByResourceBranch = /*@__PURE__*/ __L.at(
+  __c66,
+  6,
+) as any as S.Schema<PaginatedServiceTokenDataItemOauthAccessesByResourceBranch>;
+
 export type PaginatedServiceTokenDataItemOauthAccessesByResourceUserUsersItem =
   ServiceTokenOauthAccessesByResourceUserUsersItem;
 export type PaginatedServiceTokenDataItemOauthAccessesByResourceUserUsersList =
   Array<ServiceTokenOauthAccessesByResourceUserUsersItem>;
+const PaginatedServiceTokenDataItemOauthAccessesByResourceUserUsersList = /*@__PURE__*/ __L.at(
+  __c66,
+  7,
+) as any as S.Schema<PaginatedServiceTokenDataItemOauthAccessesByResourceUserUsersList>;
+
 export type PaginatedServiceTokenDataItemOauthAccessesByResourceUserAccessesItem =
   ServiceTokenOauthAccessesByResourceDatabaseAccessesItem;
 export type PaginatedServiceTokenDataItemOauthAccessesByResourceUserAccessesList =
   Array<ServiceTokenOauthAccessesByResourceDatabaseAccessesItem>;
+const PaginatedServiceTokenDataItemOauthAccessesByResourceUserAccessesList =
+  PaginatedServiceTokenDataItemOauthAccessesByResourceDatabaseAccessesList as any as S.Schema<PaginatedServiceTokenDataItemOauthAccessesByResourceUserAccessesList>;
+
 export interface PaginatedServiceTokenDataItemOauthAccessesByResourceUser {
   users: PaginatedServiceTokenDataItemOauthAccessesByResourceUserUsersList;
   accesses: PaginatedServiceTokenDataItemOauthAccessesByResourceUserAccessesList;
 }
+const PaginatedServiceTokenDataItemOauthAccessesByResourceUser = /*@__PURE__*/ __L.at(
+  __c67,
+  0,
+) as any as S.Schema<PaginatedServiceTokenDataItemOauthAccessesByResourceUser>;
+
 export interface PaginatedServiceTokenDataItemOauthAccessesByResource {
   database: PaginatedServiceTokenDataItemOauthAccessesByResourceDatabase;
   organization: PaginatedServiceTokenDataItemOauthAccessesByResourceOrganization;
   branch: PaginatedServiceTokenDataItemOauthAccessesByResourceBranch;
   user: PaginatedServiceTokenDataItemOauthAccessesByResourceUser;
 }
+const PaginatedServiceTokenDataItemOauthAccessesByResource = /*@__PURE__*/ __L.at(
+  __c67,
+  1,
+) as any as S.Schema<PaginatedServiceTokenDataItemOauthAccessesByResource>;
+
 export interface PaginatedServiceTokenDataItem {
   /** The ID of the service token */
   id: string;
@@ -10402,7 +13905,17 @@ export interface PaginatedServiceTokenDataItem {
   service_token_accesses?: PaginatedServiceTokenDataItemServiceTokenAccessesList | null;
   oauth_accesses_by_resource?: PaginatedServiceTokenDataItemOauthAccessesByResource | null;
 }
+const PaginatedServiceTokenDataItem = /*@__PURE__*/ __L.at(
+  __c67,
+  2,
+) as any as S.Schema<PaginatedServiceTokenDataItem>;
+
 export type PaginatedServiceTokenDataList = Array<PaginatedServiceTokenDataItem>;
+const PaginatedServiceTokenDataList = /*@__PURE__*/ __L.at(
+  __c67,
+  3,
+) as any as S.Schema<PaginatedServiceTokenDataList>;
+
 export interface PaginatedServiceToken {
   /** The response type. Always "list" for paginated responses. */
   type: string;
@@ -10424,6 +13937,11 @@ export interface PaginatedServiceToken {
   total_pages: number;
   data: PaginatedServiceTokenDataList;
 }
+const PaginatedServiceToken = /*@__PURE__*/ __L.at(
+  __c67,
+  4,
+) as any as S.Schema<PaginatedServiceToken>;
+
 export interface ListOrganizationInvitationsRequest {
   /** The name of the organization */
   organization: string;
@@ -10432,8 +13950,15 @@ export interface ListOrganizationInvitationsRequest {
   /** If provided, specifies the number of returned results */
   per_page?: number;
 }
+const ListOrganizationInvitationsRequest = /*@__PURE__*/ __L.at(
+  __c67,
+  5,
+) as any as S.Schema<ListOrganizationInvitationsRequest>;
+
 /** The role granted when the invitation is accepted. Invitations sent by service tokens are always member. */
 export type PaginatedOrganizationInvitationDataItemRole = "admin" | "analyst" | "member";
+const PaginatedOrganizationInvitationDataItemRole = S.String;
+
 export type PaginatedOrganizationInvitationDataItemSenderDefaultOrganization =
   OrganizationTeamMembershipUserDefaultOrganization;
 export type PaginatedOrganizationInvitationDataItemSender = OrganizationTeamMembershipUser;
@@ -10458,8 +13983,18 @@ export interface PaginatedOrganizationInvitationDataItem {
   /** The URL of the avatar shown for the invitation */
   avatar_url: string;
 }
+const PaginatedOrganizationInvitationDataItem = /*@__PURE__*/ __L.at(
+  __c67,
+  6,
+) as any as S.Schema<PaginatedOrganizationInvitationDataItem>;
+
 export type PaginatedOrganizationInvitationDataList =
   Array<PaginatedOrganizationInvitationDataItem>;
+const PaginatedOrganizationInvitationDataList = /*@__PURE__*/ __L.at(
+  __c67,
+  7,
+) as any as S.Schema<PaginatedOrganizationInvitationDataList>;
+
 export interface PaginatedOrganizationInvitation {
   /** The response type. Always "list" for paginated responses. */
   type: string;
@@ -10481,6 +14016,11 @@ export interface PaginatedOrganizationInvitation {
   total_pages: number;
   data: PaginatedOrganizationInvitationDataList;
 }
+const PaginatedOrganizationInvitation = /*@__PURE__*/ __L.at(
+  __c68,
+  0,
+) as any as S.Schema<PaginatedOrganizationInvitation>;
+
 export interface ListOrganizationMembersRequest {
   /** The name of the organization */
   organization: string;
@@ -10491,11 +14031,18 @@ export interface ListOrganizationMembersRequest {
   /** If provided, specifies the number of returned results */
   per_page?: number;
 }
+const ListOrganizationMembersRequest = /*@__PURE__*/ __L.at(
+  __c68,
+  1,
+) as any as S.Schema<ListOrganizationMembersRequest>;
+
 export type PaginatedOrganizationMembershipDataItemUserDefaultOrganization =
   OrganizationTeamMembershipUserDefaultOrganization;
 export type PaginatedOrganizationMembershipDataItemUser = OrganizationMembershipUser;
 /** The role of the user in the organization */
 export type PaginatedOrganizationMembershipDataItemRole = "member" | "admin";
+const PaginatedOrganizationMembershipDataItemRole = S.String;
+
 export interface PaginatedOrganizationMembershipDataItem {
   /** The ID of the membership */
   id: string;
@@ -10507,8 +14054,18 @@ export interface PaginatedOrganizationMembershipDataItem {
   /** When the membership was last updated */
   updated_at: string;
 }
+const PaginatedOrganizationMembershipDataItem = /*@__PURE__*/ __L.at(
+  __c68,
+  2,
+) as any as S.Schema<PaginatedOrganizationMembershipDataItem>;
+
 export type PaginatedOrganizationMembershipDataList =
   Array<PaginatedOrganizationMembershipDataItem>;
+const PaginatedOrganizationMembershipDataList = /*@__PURE__*/ __L.at(
+  __c68,
+  3,
+) as any as S.Schema<PaginatedOrganizationMembershipDataList>;
+
 export interface PaginatedOrganizationMembership {
   /** The response type. Always "list" for paginated responses. */
   type: string;
@@ -10530,14 +14087,27 @@ export interface PaginatedOrganizationMembership {
   total_pages: number;
   data: PaginatedOrganizationMembershipDataList;
 }
+const PaginatedOrganizationMembership = /*@__PURE__*/ __L.at(
+  __c68,
+  4,
+) as any as S.Schema<PaginatedOrganizationMembership>;
+
 export interface ListOrganizationsRequest {
   /** If provided, specifies the page offset of returned results */
   page?: number;
   /** If provided, specifies the number of returned results */
   per_page?: number;
 }
+const ListOrganizationsRequest = /*@__PURE__*/ __L.at(
+  __c68,
+  5,
+) as any as S.Schema<ListOrganizationsRequest>;
+
 /** Features that can be enabled on the organization */
 export type PaginatedOrganizationDataItemFeaturesMap = { [key: string]: unknown | undefined };
+const PaginatedOrganizationDataItemFeaturesMap =
+  NekiShardAssignmentErrorMap as any as S.Schema<PaginatedOrganizationDataItemFeaturesMap>;
+
 export interface PaginatedOrganizationDataItem {
   /** The ID for the organization */
   id: string;
@@ -10582,7 +14152,17 @@ export interface PaginatedOrganizationDataItem {
   /** Whether or not the organization requires payment information */
   payment_info_required: boolean;
 }
+const PaginatedOrganizationDataItem = /*@__PURE__*/ __L.at(
+  __c68,
+  6,
+) as any as S.Schema<PaginatedOrganizationDataItem>;
+
 export type PaginatedOrganizationDataList = Array<PaginatedOrganizationDataItem>;
+const PaginatedOrganizationDataList = /*@__PURE__*/ __L.at(
+  __c68,
+  7,
+) as any as S.Schema<PaginatedOrganizationDataList>;
+
 export interface PaginatedOrganization {
   /** The response type. Always "list" for paginated responses. */
   type: string;
@@ -10600,12 +14180,32 @@ export interface PaginatedOrganization {
   prev_page_url: string | null;
   data: PaginatedOrganizationDataList;
 }
+const PaginatedOrganization = /*@__PURE__*/ __L.at(
+  __c69,
+  0,
+) as any as S.Schema<PaginatedOrganization>;
+
 export interface ListOrganizationSsoDomainsRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
 }
+const ListOrganizationSsoDomainsRequest = /*@__PURE__*/ __L.at(
+  __c69,
+  1,
+) as any as S.Schema<ListOrganizationSsoDomainsRequest>;
+
 export type ListOrganizationSsoDomainsResponseBodyList = Array<OrganizationDomain>;
+const ListOrganizationSsoDomainsResponseBodyList = /*@__PURE__*/ __L.at(
+  __c69,
+  2,
+) as any as S.Schema<ListOrganizationSsoDomainsResponseBodyList>;
+
 export type ListOrganizationSsoDomainsResponse = ListOrganizationSsoDomainsResponseBodyList;
+const ListOrganizationSsoDomainsResponse = /*@__PURE__*/ __L.at(
+  __c69,
+  3,
+) as any as S.Schema<ListOrganizationSsoDomainsResponse>;
+
 export interface ListOrganizationTeamMembersRequest {
   /** The name of the organization */
   organization: string;
@@ -10616,6 +14216,11 @@ export interface ListOrganizationTeamMembersRequest {
   /** If provided, specifies the number of returned results */
   per_page?: number;
 }
+const ListOrganizationTeamMembersRequest = /*@__PURE__*/ __L.at(
+  __c69,
+  4,
+) as any as S.Schema<ListOrganizationTeamMembersRequest>;
+
 export type PaginatedOrganizationTeamMembershipDataItemUserDefaultOrganization =
   OrganizationTeamMembershipUserDefaultOrganization;
 export type PaginatedOrganizationTeamMembershipDataItemUser = OrganizationTeamMembershipUser;
@@ -10626,19 +14231,33 @@ export type PaginatedOrganizationTeamMembershipDataItemPasswordsItemRole =
   | "writer"
   | "admin"
   | "readwriter";
+const PaginatedOrganizationTeamMembershipDataItemPasswordsItemRole = S.String;
+
 /** List of IP addresses or CIDR ranges that can use this password */
 export type PaginatedOrganizationTeamMembershipDataItemPasswordsItemCidrsList = Array<string>;
+const PaginatedOrganizationTeamMembershipDataItemPasswordsItemCidrsList =
+  OrganizationTeamMembershipPasswordsItemDirectVtgateAddressesList as any as S.Schema<PaginatedOrganizationTeamMembershipDataItemPasswordsItemCidrsList>;
+
 /** The list of hosts in each availability zone providing direct access to a vtgate */
 export type PaginatedOrganizationTeamMembershipDataItemPasswordsItemDirectVtgateAddressesList =
   Array<string>;
+const PaginatedOrganizationTeamMembershipDataItemPasswordsItemDirectVtgateAddressesList =
+  OrganizationTeamMembershipPasswordsItemDirectVtgateAddressesList as any as S.Schema<PaginatedOrganizationTeamMembershipDataItemPasswordsItemDirectVtgateAddressesList>;
+
 /** The read-only replica host URLs */
 export type PaginatedOrganizationTeamMembershipDataItemPasswordsItemAccessHostRegionalUrlsList =
   Array<string>;
+const PaginatedOrganizationTeamMembershipDataItemPasswordsItemAccessHostRegionalUrlsList =
+  OrganizationTeamMembershipPasswordsItemDirectVtgateAddressesList as any as S.Schema<PaginatedOrganizationTeamMembershipDataItemPasswordsItemAccessHostRegionalUrlsList>;
+
 export type PaginatedOrganizationTeamMembershipDataItemPasswordsItemActor =
   OrganizationTeamMembershipActor;
 /** Public IP addresses for the region */
 export type PaginatedOrganizationTeamMembershipDataItemPasswordsItemRegionPublicIpAddressesList =
   Array<string>;
+const PaginatedOrganizationTeamMembershipDataItemPasswordsItemRegionPublicIpAddressesList =
+  OrganizationTeamMembershipPasswordsItemDirectVtgateAddressesList as any as S.Schema<PaginatedOrganizationTeamMembershipDataItemPasswordsItemRegionPublicIpAddressesList>;
+
 export interface PaginatedOrganizationTeamMembershipDataItemPasswordsItemRegion {
   /** The ID of the region */
   id: string;
@@ -10663,6 +14282,11 @@ export interface PaginatedOrganizationTeamMembershipDataItemPasswordsItemRegion 
   /** Whether the region supports Neki databases */
   neki_supported: boolean;
 }
+const PaginatedOrganizationTeamMembershipDataItemPasswordsItemRegion = /*@__PURE__*/ __L.at(
+  __c69,
+  5,
+) as any as S.Schema<PaginatedOrganizationTeamMembershipDataItemPasswordsItemRegion>;
+
 export type PaginatedOrganizationTeamMembershipDataItemPasswordsItemDatabaseBranch =
   OrganizationTeamMembershipPasswordsItemDatabaseBranch;
 export interface PaginatedOrganizationTeamMembershipDataItemPasswordsItem {
@@ -10710,8 +14334,18 @@ export interface PaginatedOrganizationTeamMembershipDataItemPasswordsItem {
   renewable: boolean;
   database_branch: OrganizationTeamMembershipPasswordsItemDatabaseBranch;
 }
+const PaginatedOrganizationTeamMembershipDataItemPasswordsItem = /*@__PURE__*/ __L.at(
+  __c69,
+  6,
+) as any as S.Schema<PaginatedOrganizationTeamMembershipDataItemPasswordsItem>;
+
 export type PaginatedOrganizationTeamMembershipDataItemPasswordsList =
   Array<PaginatedOrganizationTeamMembershipDataItemPasswordsItem>;
+const PaginatedOrganizationTeamMembershipDataItemPasswordsList = /*@__PURE__*/ __L.at(
+  __c69,
+  7,
+) as any as S.Schema<PaginatedOrganizationTeamMembershipDataItemPasswordsList>;
+
 export interface PaginatedOrganizationTeamMembershipDataItem {
   /** The ID of the team membership */
   id: string;
@@ -10723,8 +14357,18 @@ export interface PaginatedOrganizationTeamMembershipDataItem {
   updated_at: string;
   passwords: PaginatedOrganizationTeamMembershipDataItemPasswordsList;
 }
+const PaginatedOrganizationTeamMembershipDataItem = /*@__PURE__*/ __L.at(
+  __c70,
+  0,
+) as any as S.Schema<PaginatedOrganizationTeamMembershipDataItem>;
+
 export type PaginatedOrganizationTeamMembershipDataList =
   Array<PaginatedOrganizationTeamMembershipDataItem>;
+const PaginatedOrganizationTeamMembershipDataList = /*@__PURE__*/ __L.at(
+  __c70,
+  1,
+) as any as S.Schema<PaginatedOrganizationTeamMembershipDataList>;
+
 export interface PaginatedOrganizationTeamMembership {
   /** The response type. Always "list" for paginated responses. */
   type: string;
@@ -10746,6 +14390,11 @@ export interface PaginatedOrganizationTeamMembership {
   total_pages: number;
   data: PaginatedOrganizationTeamMembershipDataList;
 }
+const PaginatedOrganizationTeamMembership = /*@__PURE__*/ __L.at(
+  __c70,
+  2,
+) as any as S.Schema<PaginatedOrganizationTeamMembership>;
+
 export interface ListOrganizationTeamsRequest {
   /** The name of the organization */
   organization: string;
@@ -10756,16 +14405,30 @@ export interface ListOrganizationTeamsRequest {
   /** If provided, specifies the number of returned results */
   per_page?: number;
 }
+const ListOrganizationTeamsRequest = /*@__PURE__*/ __L.at(
+  __c70,
+  3,
+) as any as S.Schema<ListOrganizationTeamsRequest>;
+
 export type PaginatedOrganizationTeamDataItemCreator = OrganizationTeamMembershipActor;
 export type PaginatedOrganizationTeamDataItemMembersItemDefaultOrganization =
   OrganizationTeamMembershipUserDefaultOrganization;
 export type PaginatedOrganizationTeamDataItemMembersItem = OrganizationTeamMembershipUser;
 export type PaginatedOrganizationTeamDataItemMembersList = Array<OrganizationTeamMembershipUser>;
+const PaginatedOrganizationTeamDataItemMembersList =
+  OrganizationTeamMembersList as any as S.Schema<PaginatedOrganizationTeamDataItemMembersList>;
+
 export type PaginatedOrganizationTeamDataItemDatabasesItem = OrganizationTeamDatabasesItem;
 export type PaginatedOrganizationTeamDataItemDatabasesList = Array<OrganizationTeamDatabasesItem>;
+const PaginatedOrganizationTeamDataItemDatabasesList =
+  OrganizationTeamDatabasesList as any as S.Schema<PaginatedOrganizationTeamDataItemDatabasesList>;
+
 export type PaginatedOrganizationTeamDataItemAnalystDatabasesItem = OrganizationTeamDatabasesItem;
 export type PaginatedOrganizationTeamDataItemAnalystDatabasesList =
   Array<OrganizationTeamDatabasesItem>;
+const PaginatedOrganizationTeamDataItemAnalystDatabasesList =
+  OrganizationTeamDatabasesList as any as S.Schema<PaginatedOrganizationTeamDataItemAnalystDatabasesList>;
+
 export interface PaginatedOrganizationTeamDataItem {
   /** The ID of the team */
   id: string;
@@ -10788,7 +14451,17 @@ export interface PaginatedOrganizationTeamDataItem {
   /** Whether the team is managed through SSO/directory services */
   managed: boolean;
 }
+const PaginatedOrganizationTeamDataItem = /*@__PURE__*/ __L.at(
+  __c70,
+  4,
+) as any as S.Schema<PaginatedOrganizationTeamDataItem>;
+
 export type PaginatedOrganizationTeamDataList = Array<PaginatedOrganizationTeamDataItem>;
+const PaginatedOrganizationTeamDataList = /*@__PURE__*/ __L.at(
+  __c70,
+  5,
+) as any as S.Schema<PaginatedOrganizationTeamDataList>;
+
 export interface PaginatedOrganizationTeam {
   /** The response type. Always "list" for paginated responses. */
   type: string;
@@ -10810,6 +14483,11 @@ export interface PaginatedOrganizationTeam {
   total_pages: number;
   data: PaginatedOrganizationTeamDataList;
 }
+const PaginatedOrganizationTeam = /*@__PURE__*/ __L.at(
+  __c70,
+  6,
+) as any as S.Schema<PaginatedOrganizationTeam>;
+
 export interface ListParametersRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
@@ -10818,8 +14496,15 @@ export interface ListParametersRequest {
   /** Branch name from `list_branches`. Example: `main`. */
   branch: string;
 }
+const ListParametersRequest = /*@__PURE__*/ __L.at(
+  __c70,
+  7,
+) as any as S.Schema<ListParametersRequest>;
+
 /** The namespace of the parameter */
 export type PostgresClusterParameterNamespace = "patroni" | "pgconf" | "pgbouncer";
+const PostgresClusterParameterNamespace = S.String;
+
 /** The type of the parameter */
 export type PostgresClusterParameterParameterType =
   | "array"
@@ -10831,8 +14516,13 @@ export type PostgresClusterParameterParameterType =
   | "select"
   | "string"
   | "time";
+const PostgresClusterParameterParameterType = S.String;
+
 /** Valid options for the parameter value */
 export type PostgresClusterParameterOptionsList = Array<string>;
+const PostgresClusterParameterOptionsList =
+  OrganizationTeamMembershipPasswordsItemCidrsList as any as S.Schema<PostgresClusterParameterOptionsList>;
+
 export type PostgresClusterParameterActor = OrganizationTeamMembershipActor;
 export interface PostgresClusterParameter {
   /** The name of the parameter */
@@ -10873,8 +14563,23 @@ export interface PostgresClusterParameter {
   options: PostgresClusterParameterOptionsList;
   actor: OrganizationTeamMembershipActor;
 }
+const PostgresClusterParameter = /*@__PURE__*/ __L.at(
+  __c71,
+  0,
+) as any as S.Schema<PostgresClusterParameter>;
+
 export type ListParametersResponseBodyList = Array<PostgresClusterParameter>;
+const ListParametersResponseBodyList = /*@__PURE__*/ __L.at(
+  __c71,
+  1,
+) as any as S.Schema<ListParametersResponseBodyList>;
+
 export type ListParametersResponse = ListParametersResponseBodyList;
+const ListParametersResponse = /*@__PURE__*/ __L.at(
+  __c71,
+  2,
+) as any as S.Schema<ListParametersResponse>;
+
 export interface ListPasswordsRequest {
   /** The name of the organization the password belongs to */
   organization: string;
@@ -10893,18 +14598,34 @@ export interface ListPasswordsRequest {
   /** If provided, specifies the number of returned results */
   per_page?: number;
 }
+const ListPasswordsRequest = /*@__PURE__*/ __L.at(
+  __c71,
+  3,
+) as any as S.Schema<ListPasswordsRequest>;
+
 /** The role for the password */
 export type PaginatedDatabaseBranchPasswordDataItemRole =
   | "reader"
   | "writer"
   | "admin"
   | "readwriter";
+const PaginatedDatabaseBranchPasswordDataItemRole = S.String;
+
 /** List of IP addresses or CIDR ranges that can use this password */
 export type PaginatedDatabaseBranchPasswordDataItemCidrsList = Array<string>;
+const PaginatedDatabaseBranchPasswordDataItemCidrsList =
+  OrganizationTeamMembershipPasswordsItemCidrsList as any as S.Schema<PaginatedDatabaseBranchPasswordDataItemCidrsList>;
+
 /** The list of hosts in each availability zone providing direct access to a vtgate */
 export type PaginatedDatabaseBranchPasswordDataItemDirectVtgateAddressesList = Array<string>;
+const PaginatedDatabaseBranchPasswordDataItemDirectVtgateAddressesList =
+  OrganizationTeamMembershipPasswordsItemDirectVtgateAddressesList as any as S.Schema<PaginatedDatabaseBranchPasswordDataItemDirectVtgateAddressesList>;
+
 /** The read-only replica host URLs */
 export type PaginatedDatabaseBranchPasswordDataItemAccessHostRegionalUrlsList = Array<string>;
+const PaginatedDatabaseBranchPasswordDataItemAccessHostRegionalUrlsList =
+  OrganizationTeamMembershipPasswordsItemDirectVtgateAddressesList as any as S.Schema<PaginatedDatabaseBranchPasswordDataItemAccessHostRegionalUrlsList>;
+
 export type PaginatedDatabaseBranchPasswordDataItemActor = OrganizationTeamMembershipActor;
 /** Public IP addresses for the region */
 export type PaginatedDatabaseBranchPasswordDataItemRegionPublicIpAddressesList = Array<string>;
@@ -10932,6 +14653,9 @@ export interface PaginatedDatabaseBranchPasswordDataItemRegion {
   /** Whether the region supports Neki databases */
   neki_supported: boolean;
 }
+const PaginatedDatabaseBranchPasswordDataItemRegion =
+  OrganizationTeamMembershipPasswordsItemRegion as any as S.Schema<PaginatedDatabaseBranchPasswordDataItemRegion>;
+
 export type PaginatedDatabaseBranchPasswordDataItemDatabaseBranch =
   OrganizationTeamMembershipPasswordsItemDatabaseBranch;
 export interface PaginatedDatabaseBranchPasswordDataItem {
@@ -10979,8 +14703,18 @@ export interface PaginatedDatabaseBranchPasswordDataItem {
   renewable: boolean;
   database_branch: OrganizationTeamMembershipPasswordsItemDatabaseBranch;
 }
+const PaginatedDatabaseBranchPasswordDataItem = /*@__PURE__*/ __L.at(
+  __c71,
+  4,
+) as any as S.Schema<PaginatedDatabaseBranchPasswordDataItem>;
+
 export type PaginatedDatabaseBranchPasswordDataList =
   Array<PaginatedDatabaseBranchPasswordDataItem>;
+const PaginatedDatabaseBranchPasswordDataList = /*@__PURE__*/ __L.at(
+  __c71,
+  5,
+) as any as S.Schema<PaginatedDatabaseBranchPasswordDataList>;
+
 export interface PaginatedDatabaseBranchPassword {
   /** The response type. Always "list" for paginated responses. */
   type: string;
@@ -11002,11 +14736,23 @@ export interface PaginatedDatabaseBranchPassword {
   total_pages: number;
   data: PaginatedDatabaseBranchPasswordDataList;
 }
+const PaginatedDatabaseBranchPassword = /*@__PURE__*/ __L.at(
+  __c71,
+  6,
+) as any as S.Schema<PaginatedDatabaseBranchPassword>;
+
 export type ListPostgresVersionsRequestEngine = "neki";
+const ListPostgresVersionsRequestEngine = S.String;
+
 export interface ListPostgresVersionsRequest {
   /** The database engine to list Postgres versions for. */
   engine: ListPostgresVersionsRequestEngine | (string & {});
 }
+const ListPostgresVersionsRequest = /*@__PURE__*/ __L.at(
+  __c71,
+  7,
+) as any as S.Schema<ListPostgresVersionsRequest>;
+
 export interface NekiPostgresVersion {
   /** The ID of the version */
   id: string;
@@ -11019,16 +14765,36 @@ export interface NekiPostgresVersion {
   /** Whether this is the default minor version for its PostgreSQL major version */
   default: boolean;
 }
+const NekiPostgresVersion = /*@__PURE__*/ __L.at(__c72, 0) as any as S.Schema<NekiPostgresVersion>;
+
 export type ListPostgresVersionsResponseBodyList = Array<NekiPostgresVersion>;
+const ListPostgresVersionsResponseBodyList = /*@__PURE__*/ __L.at(
+  __c72,
+  1,
+) as any as S.Schema<ListPostgresVersionsResponseBodyList>;
+
 export type ListPostgresVersionsResponse = ListPostgresVersionsResponseBodyList;
+const ListPostgresVersionsResponse = /*@__PURE__*/ __L.at(
+  __c72,
+  2,
+) as any as S.Schema<ListPostgresVersionsResponse>;
+
 export interface ListPublicRegionsRequest {
   /** If provided, specifies the page offset of returned results */
   page?: number;
   /** If provided, specifies the number of returned results */
   per_page?: number;
 }
+const ListPublicRegionsRequest = /*@__PURE__*/ __L.at(
+  __c72,
+  3,
+) as any as S.Schema<ListPublicRegionsRequest>;
+
 /** List of public IP addresses for the region */
 export type PaginatedPublicPlanetscaleRegionSerializerDataItemPublicIpAddressesList = Array<string>;
+const PaginatedPublicPlanetscaleRegionSerializerDataItemPublicIpAddressesList =
+  OrganizationTeamMembershipPasswordsItemDirectVtgateAddressesList as any as S.Schema<PaginatedPublicPlanetscaleRegionSerializerDataItemPublicIpAddressesList>;
+
 export interface PaginatedPublicPlanetscaleRegionSerializerDataItem {
   /** The ID of the region */
   id: string;
@@ -11045,8 +14811,18 @@ export interface PaginatedPublicPlanetscaleRegionSerializerDataItem {
   /** The slug identifier for the region */
   slug: string;
 }
+const PaginatedPublicPlanetscaleRegionSerializerDataItem = /*@__PURE__*/ __L.at(
+  __c72,
+  4,
+) as any as S.Schema<PaginatedPublicPlanetscaleRegionSerializerDataItem>;
+
 export type PaginatedPublicPlanetscaleRegionSerializerDataList =
   Array<PaginatedPublicPlanetscaleRegionSerializerDataItem>;
+const PaginatedPublicPlanetscaleRegionSerializerDataList = /*@__PURE__*/ __L.at(
+  __c72,
+  5,
+) as any as S.Schema<PaginatedPublicPlanetscaleRegionSerializerDataList>;
+
 export interface PaginatedPublicPlanetscaleRegionSerializer {
   /** The response type. Always "list" for paginated responses. */
   type: string;
@@ -11064,6 +14840,11 @@ export interface PaginatedPublicPlanetscaleRegionSerializer {
   prev_page_url: string | null;
   data: PaginatedPublicPlanetscaleRegionSerializerDataList;
 }
+const PaginatedPublicPlanetscaleRegionSerializer = /*@__PURE__*/ __L.at(
+  __c72,
+  6,
+) as any as S.Schema<PaginatedPublicPlanetscaleRegionSerializer>;
+
 export interface ListReadOnlyRegionsRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
@@ -11074,6 +14855,11 @@ export interface ListReadOnlyRegionsRequest {
   /** If provided, specifies the number of returned results */
   per_page?: number;
 }
+const ListReadOnlyRegionsRequest = /*@__PURE__*/ __L.at(
+  __c72,
+  7,
+) as any as S.Schema<ListReadOnlyRegionsRequest>;
+
 export type PaginatedDatabaseBranchReadOnlyRegionDataItemActor = OrganizationTeamMembershipActor;
 /** Public IP addresses for the region */
 export type PaginatedDatabaseBranchReadOnlyRegionDataItemRegionPublicIpAddressesList =
@@ -11102,6 +14888,9 @@ export interface PaginatedDatabaseBranchReadOnlyRegionDataItemRegion {
   /** Whether the region supports Neki databases */
   neki_supported: boolean;
 }
+const PaginatedDatabaseBranchReadOnlyRegionDataItemRegion =
+  OrganizationTeamMembershipPasswordsItemRegion as any as S.Schema<PaginatedDatabaseBranchReadOnlyRegionDataItemRegion>;
+
 export interface PaginatedDatabaseBranchReadOnlyRegionDataItem {
   /** The ID of the read-only region */
   id: string;
@@ -11118,8 +14907,18 @@ export interface PaginatedDatabaseBranchReadOnlyRegionDataItem {
   actor: OrganizationTeamMembershipActor;
   region: PaginatedDatabaseBranchReadOnlyRegionDataItemRegion;
 }
+const PaginatedDatabaseBranchReadOnlyRegionDataItem = /*@__PURE__*/ __L.at(
+  __c73,
+  0,
+) as any as S.Schema<PaginatedDatabaseBranchReadOnlyRegionDataItem>;
+
 export type PaginatedDatabaseBranchReadOnlyRegionDataList =
   Array<PaginatedDatabaseBranchReadOnlyRegionDataItem>;
+const PaginatedDatabaseBranchReadOnlyRegionDataList = /*@__PURE__*/ __L.at(
+  __c73,
+  1,
+) as any as S.Schema<PaginatedDatabaseBranchReadOnlyRegionDataList>;
+
 export interface PaginatedDatabaseBranchReadOnlyRegion {
   /** The response type. Always "list" for paginated responses. */
   type: string;
@@ -11137,6 +14936,11 @@ export interface PaginatedDatabaseBranchReadOnlyRegion {
   prev_page_url: string | null;
   data: PaginatedDatabaseBranchReadOnlyRegionDataList;
 }
+const PaginatedDatabaseBranchReadOnlyRegion = /*@__PURE__*/ __L.at(
+  __c73,
+  2,
+) as any as S.Schema<PaginatedDatabaseBranchReadOnlyRegion>;
+
 export interface ListRegionsForOrganizationRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
@@ -11145,6 +14949,11 @@ export interface ListRegionsForOrganizationRequest {
   /** If provided, specifies the number of returned results */
   per_page?: number;
 }
+const ListRegionsForOrganizationRequest = /*@__PURE__*/ __L.at(
+  __c73,
+  3,
+) as any as S.Schema<ListRegionsForOrganizationRequest>;
+
 export interface ListRolesRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
@@ -11161,6 +14970,8 @@ export interface ListRolesRequest {
   /** Search roles by name or username */
   q?: string;
 }
+const ListRolesRequest = /*@__PURE__*/ __L.at(__c73, 4) as any as S.Schema<ListRolesRequest>;
+
 export type PaginatedPostgresRoleDataItemInheritedRolesItem =
   | "pg_checkpoint"
   | "pg_create_subscription"
@@ -11177,6 +14988,9 @@ export type PaginatedPostgresRoleDataItemInheritedRolesItem =
 /** Database roles these credentials inherit */
 export type PaginatedPostgresRoleDataItemInheritedRolesList =
   Array<PaginatedPostgresRoleDataItemInheritedRolesItem>;
+const PaginatedPostgresRoleDataItemInheritedRolesList =
+  CreateRoleRequestInheritedRolesList as any as S.Schema<PaginatedPostgresRoleDataItemInheritedRolesList>;
+
 export type PaginatedPostgresRoleDataItemBranch = OrganizationTeamMembershipUserDefaultOrganization;
 export type PaginatedPostgresRoleDataItemActor = OrganizationTeamMembershipActor;
 /** Require WHERE clause on DELETE statements */
@@ -11195,6 +15009,9 @@ export interface PaginatedPostgresRoleDataItemQuerySafetySettings {
   /** Require WHERE clause on UPDATE statements */
   require_where_on_update: PaginatedPostgresRoleDataItemQuerySafetySettingsRequireWhereOnUpdate;
 }
+const PaginatedPostgresRoleDataItemQuerySafetySettings =
+  PostgresRoleQuerySafetySettings as any as S.Schema<PaginatedPostgresRoleDataItemQuerySafetySettings>;
+
 export interface PaginatedPostgresRoleDataItem {
   /** The ID of the role */
   id: string;
@@ -11244,7 +15061,17 @@ export interface PaginatedPostgresRoleDataItem {
   actor: OrganizationTeamMembershipActor;
   query_safety_settings: PaginatedPostgresRoleDataItemQuerySafetySettings;
 }
+const PaginatedPostgresRoleDataItem = /*@__PURE__*/ __L.at(
+  __c73,
+  5,
+) as any as S.Schema<PaginatedPostgresRoleDataItem>;
+
 export type PaginatedPostgresRoleDataList = Array<PaginatedPostgresRoleDataItem>;
+const PaginatedPostgresRoleDataList = /*@__PURE__*/ __L.at(
+  __c73,
+  6,
+) as any as S.Schema<PaginatedPostgresRoleDataList>;
+
 export interface PaginatedPostgresRole {
   /** The response type. Always "list" for paginated responses. */
   type: string;
@@ -11266,6 +15093,11 @@ export interface PaginatedPostgresRole {
   total_pages: number;
   data: PaginatedPostgresRoleDataList;
 }
+const PaginatedPostgresRole = /*@__PURE__*/ __L.at(
+  __c73,
+  7,
+) as any as S.Schema<PaginatedPostgresRole>;
+
 export type ListRouterChangeRequestsRequestPeriod =
   | "15m"
   | "1h"
@@ -11276,6 +15108,8 @@ export type ListRouterChangeRequestsRequestPeriod =
   | "2d"
   | "7d"
   | "8d";
+const ListRouterChangeRequestsRequestPeriod = S.String;
+
 export interface ListRouterChangeRequestsRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
@@ -11294,7 +15128,15 @@ export interface ListRouterChangeRequestsRequest {
   /** Filter change requests completed between two ISO 8601 timestamps */
   completed_at?: string;
 }
+const ListRouterChangeRequestsRequest = /*@__PURE__*/ __L.at(
+  __c74,
+  0,
+) as any as S.Schema<ListRouterChangeRequestsRequest>;
+
 export interface ListRouterChangeRequestsResponse {}
+const ListRouterChangeRequestsResponse =
+  CancelAdminChangeRequestResponse as any as S.Schema<ListRouterChangeRequestsResponse>;
+
 export interface ListRouterParametersRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
@@ -11305,8 +15147,16 @@ export interface ListRouterParametersRequest {
   /** Name from `list_routers`. */
   router: string;
 }
+const ListRouterParametersRequest = /*@__PURE__*/ __L.at(
+  __c74,
+  1,
+) as any as S.Schema<ListRouterParametersRequest>;
+
 export type ListRouterParametersResponseBodyList = Array<NekiParameter>;
 export type ListRouterParametersResponse = ListRouterParametersResponseBodyList;
+const ListRouterParametersResponse =
+  ListAdminParametersResponse as any as S.Schema<ListRouterParametersResponse>;
+
 export interface ListRoutersRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
@@ -11315,8 +15165,17 @@ export interface ListRoutersRequest {
   /** Branch name from `list_branches`. Example: `main`. */
   branch: string;
 }
+const ListRoutersRequest = /*@__PURE__*/ __L.at(__c74, 2) as any as S.Schema<ListRoutersRequest>;
+
 export type ListRoutersResponseBodyList = Array<NekiRouter>;
+const ListRoutersResponseBodyList = /*@__PURE__*/ __L.at(
+  __c74,
+  3,
+) as any as S.Schema<ListRoutersResponseBodyList>;
+
 export type ListRoutersResponse = ListRoutersResponseBodyList;
+const ListRoutersResponse = /*@__PURE__*/ __L.at(__c74, 4) as any as S.Schema<ListRoutersResponse>;
+
 export interface ListRouterSizeSkusRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
@@ -11325,10 +15184,27 @@ export interface ListRouterSizeSkusRequest {
   /** Branch name from `list_branches`. Example: `main`. */
   branch: string;
 }
+const ListRouterSizeSkusRequest = /*@__PURE__*/ __L.at(
+  __c74,
+  5,
+) as any as S.Schema<ListRouterSizeSkusRequest>;
+
 export type NekiRouterSizeSku = NekiRouterSku;
 export type ListRouterSizeSkusResponseBodyList = Array<NekiRouterSku>;
+const ListRouterSizeSkusResponseBodyList = /*@__PURE__*/ __L.at(
+  __c74,
+  6,
+) as any as S.Schema<ListRouterSizeSkusResponseBodyList>;
+
 export type ListRouterSizeSkusResponse = ListRouterSizeSkusResponseBodyList;
+const ListRouterSizeSkusResponse = /*@__PURE__*/ __L.at(
+  __c74,
+  7,
+) as any as S.Schema<ListRouterSizeSkusResponse>;
+
 export type ListSchemaRecommendationsRequestState = "open" | "closed";
+const ListSchemaRecommendationsRequestState = S.String;
+
 export interface ListSchemaRecommendationsRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
@@ -11341,8 +15217,15 @@ export interface ListSchemaRecommendationsRequest {
   /** If provided, specifies the number of returned results */
   per_page?: number;
 }
+const ListSchemaRecommendationsRequest = /*@__PURE__*/ __L.at(
+  __c75,
+  0,
+) as any as S.Schema<ListSchemaRecommendationsRequest>;
+
 /** The state of the recommendation */
 export type PaginatedSchemaRecommendationDataItemState = "open" | "applied" | "dismissed" | "stale";
+const PaginatedSchemaRecommendationDataItemState = S.String;
+
 /** The type of recommendation */
 export type PaginatedSchemaRecommendationDataItemRecommendationType =
   | "unused_table"
@@ -11354,6 +15237,8 @@ export type PaginatedSchemaRecommendationDataItemRecommendationType =
   | "encoding_upgrade"
   | "bloated_table"
   | "bloated_index";
+const PaginatedSchemaRecommendationDataItemRecommendationType = S.String;
+
 export type PaginatedSchemaRecommendationDataItemClosedByDeployRequest =
   SchemaRecommendationClosedByDeployRequest;
 export type PaginatedSchemaRecommendationDataItemDismissedBy = OrganizationTeamMembershipActor;
@@ -11387,7 +15272,17 @@ export interface PaginatedSchemaRecommendationDataItem {
   closed_by_deploy_request: SchemaRecommendationClosedByDeployRequest | null;
   dismissed_by: OrganizationTeamMembershipActor | null;
 }
+const PaginatedSchemaRecommendationDataItem = /*@__PURE__*/ __L.at(
+  __c75,
+  1,
+) as any as S.Schema<PaginatedSchemaRecommendationDataItem>;
+
 export type PaginatedSchemaRecommendationDataList = Array<PaginatedSchemaRecommendationDataItem>;
+const PaginatedSchemaRecommendationDataList = /*@__PURE__*/ __L.at(
+  __c75,
+  2,
+) as any as S.Schema<PaginatedSchemaRecommendationDataList>;
+
 export interface PaginatedSchemaRecommendation {
   /** The response type. Always "list" for paginated responses. */
   type: string;
@@ -11409,6 +15304,11 @@ export interface PaginatedSchemaRecommendation {
   total_pages: number;
   data: PaginatedSchemaRecommendationDataList;
 }
+const PaginatedSchemaRecommendation = /*@__PURE__*/ __L.at(
+  __c75,
+  3,
+) as any as S.Schema<PaginatedSchemaRecommendation>;
+
 export interface ListServiceTokensRequest {
   /** The name of the organization */
   organization: string;
@@ -11417,6 +15317,11 @@ export interface ListServiceTokensRequest {
   /** If provided, specifies the number of returned results */
   per_page?: number;
 }
+const ListServiceTokensRequest = /*@__PURE__*/ __L.at(
+  __c75,
+  4,
+) as any as S.Schema<ListServiceTokensRequest>;
+
 export type ListShardConfigurationProfileChangeRequestsRequestPeriod =
   | "15m"
   | "1h"
@@ -11427,6 +15332,8 @@ export type ListShardConfigurationProfileChangeRequestsRequestPeriod =
   | "2d"
   | "7d"
   | "8d";
+const ListShardConfigurationProfileChangeRequestsRequestPeriod = S.String;
+
 export interface ListShardConfigurationProfileChangeRequestsRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
@@ -11445,7 +15352,15 @@ export interface ListShardConfigurationProfileChangeRequestsRequest {
   /** Filter change requests completed between two ISO 8601 timestamps */
   completed_at?: string;
 }
+const ListShardConfigurationProfileChangeRequestsRequest = /*@__PURE__*/ __L.at(
+  __c75,
+  5,
+) as any as S.Schema<ListShardConfigurationProfileChangeRequestsRequest>;
+
 export interface ListShardConfigurationProfileChangeRequestsResponse {}
+const ListShardConfigurationProfileChangeRequestsResponse =
+  CancelAdminChangeRequestResponse as any as S.Schema<ListShardConfigurationProfileChangeRequestsResponse>;
+
 export interface ListShardConfigurationProfileExtensionsRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
@@ -11456,6 +15371,11 @@ export interface ListShardConfigurationProfileExtensionsRequest {
   /** Name from `list_shard_configuration_profiles`. */
   configuration_profile: string;
 }
+const ListShardConfigurationProfileExtensionsRequest = /*@__PURE__*/ __L.at(
+  __c75,
+  6,
+) as any as S.Schema<ListShardConfigurationProfileExtensionsRequest>;
+
 /** The namespace of the parameter */
 export type NekiExtensionDefinitionParametersItemNamespace =
   | "pgconf"
@@ -11463,6 +15383,8 @@ export type NekiExtensionDefinitionParametersItemNamespace =
   | "sidecar"
   | "admin"
   | "replicator";
+const NekiExtensionDefinitionParametersItemNamespace = S.String;
+
 /** The type of the parameter */
 export type NekiExtensionDefinitionParametersItemParameterType =
   | "array"
@@ -11473,10 +15395,18 @@ export type NekiExtensionDefinitionParametersItemParameterType =
   | "select"
   | "string"
   | "time";
+const NekiExtensionDefinitionParametersItemParameterType = S.String;
+
 /** Valid options for the parameter value. Null represents an unset value */
 export type NekiExtensionDefinitionParametersItemOptionsList = Array<string>;
+const NekiExtensionDefinitionParametersItemOptionsList =
+  OrganizationTeamMembershipPasswordsItemCidrsList as any as S.Schema<NekiExtensionDefinitionParametersItemOptionsList>;
+
 /** The units of the parameter value */
 export type NekiExtensionDefinitionParametersItemUnitsList = Array<string>;
+const NekiExtensionDefinitionParametersItemUnitsList =
+  OrganizationTeamMembershipPasswordsItemCidrsList as any as S.Schema<NekiExtensionDefinitionParametersItemUnitsList>;
+
 export type NekiExtensionDefinitionParametersItemActor = OrganizationTeamMembershipActor;
 export interface NekiExtensionDefinitionParametersItem {
   /** The ID of the parameter */
@@ -11519,7 +15449,17 @@ export interface NekiExtensionDefinitionParametersItem {
   url: string;
   actor: OrganizationTeamMembershipActor;
 }
+const NekiExtensionDefinitionParametersItem = /*@__PURE__*/ __L.at(
+  __c75,
+  7,
+) as any as S.Schema<NekiExtensionDefinitionParametersItem>;
+
 export type NekiExtensionDefinitionParametersList = Array<NekiExtensionDefinitionParametersItem>;
+const NekiExtensionDefinitionParametersList = /*@__PURE__*/ __L.at(
+  __c76,
+  0,
+) as any as S.Schema<NekiExtensionDefinitionParametersList>;
+
 export type NekiExtensionDefinitionRequirements = PostgresExtensionDefinitionRequirements;
 export interface NekiExtensionDefinition {
   /** The name of the extension */
@@ -11537,10 +15477,25 @@ export interface NekiExtensionDefinition {
   /** The URL of the extension */
   url: string;
 }
+const NekiExtensionDefinition = /*@__PURE__*/ __L.at(
+  __c76,
+  1,
+) as any as S.Schema<NekiExtensionDefinition>;
+
 export type ListShardConfigurationProfileExtensionsResponseBodyList =
   Array<NekiExtensionDefinition>;
+const ListShardConfigurationProfileExtensionsResponseBodyList = /*@__PURE__*/ __L.at(
+  __c76,
+  2,
+) as any as S.Schema<ListShardConfigurationProfileExtensionsResponseBodyList>;
+
 export type ListShardConfigurationProfileExtensionsResponse =
   ListShardConfigurationProfileExtensionsResponseBodyList;
+const ListShardConfigurationProfileExtensionsResponse = /*@__PURE__*/ __L.at(
+  __c76,
+  3,
+) as any as S.Schema<ListShardConfigurationProfileExtensionsResponse>;
+
 export interface ListShardConfigurationProfileParametersRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
@@ -11551,9 +15506,17 @@ export interface ListShardConfigurationProfileParametersRequest {
   /** Name from `list_shard_configuration_profiles`. */
   configuration_profile: string;
 }
+const ListShardConfigurationProfileParametersRequest = /*@__PURE__*/ __L.at(
+  __c76,
+  4,
+) as any as S.Schema<ListShardConfigurationProfileParametersRequest>;
+
 export type ListShardConfigurationProfileParametersResponseBodyList = Array<NekiParameter>;
 export type ListShardConfigurationProfileParametersResponse =
   ListShardConfigurationProfileParametersResponseBodyList;
+const ListShardConfigurationProfileParametersResponse =
+  ListAdminParametersResponse as any as S.Schema<ListShardConfigurationProfileParametersResponse>;
+
 export interface ListShardConfigurationProfilesRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
@@ -11562,8 +15525,23 @@ export interface ListShardConfigurationProfilesRequest {
   /** Branch name from `list_branches`. Example: `main`. */
   branch: string;
 }
+const ListShardConfigurationProfilesRequest = /*@__PURE__*/ __L.at(
+  __c76,
+  5,
+) as any as S.Schema<ListShardConfigurationProfilesRequest>;
+
 export type ListShardConfigurationProfilesResponseBodyList = Array<NekiShardConfigurationProfile>;
+const ListShardConfigurationProfilesResponseBodyList = /*@__PURE__*/ __L.at(
+  __c76,
+  6,
+) as any as S.Schema<ListShardConfigurationProfilesResponseBodyList>;
+
 export type ListShardConfigurationProfilesResponse = ListShardConfigurationProfilesResponseBodyList;
+const ListShardConfigurationProfilesResponse = /*@__PURE__*/ __L.at(
+  __c76,
+  7,
+) as any as S.Schema<ListShardConfigurationProfilesResponse>;
+
 export interface ListShardConfigurationProfileShardsRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
@@ -11580,6 +15558,11 @@ export interface ListShardConfigurationProfileShardsRequest {
   /** Search shards by name or display name */
   q?: string;
 }
+const ListShardConfigurationProfileShardsRequest = /*@__PURE__*/ __L.at(
+  __c77,
+  0,
+) as any as S.Schema<ListShardConfigurationProfileShardsRequest>;
+
 export interface PaginatedNekiShardDataItem {
   /** The ID of the shard */
   id: string;
@@ -11596,7 +15579,17 @@ export interface PaginatedNekiShardDataItem {
   /** Whether the shard is the authoritative shard of the cluster */
   authoritative: boolean;
 }
+const PaginatedNekiShardDataItem = /*@__PURE__*/ __L.at(
+  __c77,
+  1,
+) as any as S.Schema<PaginatedNekiShardDataItem>;
+
 export type PaginatedNekiShardDataList = Array<PaginatedNekiShardDataItem>;
+const PaginatedNekiShardDataList = /*@__PURE__*/ __L.at(
+  __c77,
+  2,
+) as any as S.Schema<PaginatedNekiShardDataList>;
+
 export interface PaginatedNekiShard {
   /** The response type. Always "list" for paginated responses. */
   type: string;
@@ -11618,6 +15611,8 @@ export interface PaginatedNekiShard {
   total_pages: number;
   data: PaginatedNekiShardDataList;
 }
+const PaginatedNekiShard = /*@__PURE__*/ __L.at(__c77, 3) as any as S.Schema<PaginatedNekiShard>;
+
 export interface ListShardsRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
@@ -11634,6 +15629,8 @@ export interface ListShardsRequest {
   /** Search shards by name, display name, or configuration profile */
   q?: string;
 }
+const ListShardsRequest = /*@__PURE__*/ __L.at(__c77, 4) as any as S.Schema<ListShardsRequest>;
+
 export type ListSidecarChangeRequestsRequestPeriod =
   | "15m"
   | "1h"
@@ -11644,6 +15641,8 @@ export type ListSidecarChangeRequestsRequestPeriod =
   | "2d"
   | "7d"
   | "8d";
+const ListSidecarChangeRequestsRequestPeriod = S.String;
+
 export interface ListSidecarChangeRequestsRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
@@ -11662,7 +15661,15 @@ export interface ListSidecarChangeRequestsRequest {
   /** Filter change requests completed between two ISO 8601 timestamps */
   completed_at?: string;
 }
+const ListSidecarChangeRequestsRequest = /*@__PURE__*/ __L.at(
+  __c77,
+  5,
+) as any as S.Schema<ListSidecarChangeRequestsRequest>;
+
 export interface ListSidecarChangeRequestsResponse {}
+const ListSidecarChangeRequestsResponse =
+  CancelAdminChangeRequestResponse as any as S.Schema<ListSidecarChangeRequestsResponse>;
+
 export interface ListSidecarParametersRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
@@ -11673,8 +15680,16 @@ export interface ListSidecarParametersRequest {
   /** ID from `list_sidecars`, or the configuration profile name. */
   sidecar: string;
 }
+const ListSidecarParametersRequest = /*@__PURE__*/ __L.at(
+  __c77,
+  6,
+) as any as S.Schema<ListSidecarParametersRequest>;
+
 export type ListSidecarParametersResponseBodyList = Array<NekiParameter>;
 export type ListSidecarParametersResponse = ListSidecarParametersResponseBodyList;
+const ListSidecarParametersResponse =
+  ListAdminParametersResponse as any as S.Schema<ListSidecarParametersResponse>;
+
 export interface ListSidecarsRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
@@ -11683,8 +15698,20 @@ export interface ListSidecarsRequest {
   /** Branch name from `list_branches`. Example: `main`. */
   branch: string;
 }
+const ListSidecarsRequest = /*@__PURE__*/ __L.at(__c77, 7) as any as S.Schema<ListSidecarsRequest>;
+
 export type ListSidecarsResponseBodyList = Array<NekiSidecar>;
+const ListSidecarsResponseBodyList = /*@__PURE__*/ __L.at(
+  __c78,
+  0,
+) as any as S.Schema<ListSidecarsResponseBodyList>;
+
 export type ListSidecarsResponse = ListSidecarsResponseBodyList;
+const ListSidecarsResponse = /*@__PURE__*/ __L.at(
+  __c78,
+  1,
+) as any as S.Schema<ListSidecarsResponse>;
+
 export interface ListSwitchoversRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
@@ -11697,6 +15724,11 @@ export interface ListSwitchoversRequest {
   /** If provided, specifies the number of returned results */
   per_page?: number;
 }
+const ListSwitchoversRequest = /*@__PURE__*/ __L.at(
+  __c78,
+  2,
+) as any as S.Schema<ListSwitchoversRequest>;
+
 /** The state of the switchover */
 export type PaginatedPostgresSwitchoverDataItemState =
   | "pending"
@@ -11704,8 +15736,12 @@ export type PaginatedPostgresSwitchoverDataItemState =
   | "succeeded"
   | "failed"
   | "canceled";
+const PaginatedPostgresSwitchoverDataItemState = S.String;
+
 /** How the primary was moved. `switchover` promotes a replica on a highly available branch; `restart` restarts the single instance of a branch that has no replicas. Absent until the operator selects one. */
 export type PaginatedPostgresSwitchoverDataItemMethod = "switchover" | "restart";
+const PaginatedPostgresSwitchoverDataItemMethod = S.String;
+
 export type PaginatedPostgresSwitchoverDataItemActor = OrganizationTeamMembershipActor;
 export interface PaginatedPostgresSwitchoverDataItem {
   /** The ID of the switchover */
@@ -11726,7 +15762,17 @@ export interface PaginatedPostgresSwitchoverDataItem {
   updated_at: string;
   actor: OrganizationTeamMembershipActor;
 }
+const PaginatedPostgresSwitchoverDataItem = /*@__PURE__*/ __L.at(
+  __c78,
+  3,
+) as any as S.Schema<PaginatedPostgresSwitchoverDataItem>;
+
 export type PaginatedPostgresSwitchoverDataList = Array<PaginatedPostgresSwitchoverDataItem>;
+const PaginatedPostgresSwitchoverDataList = /*@__PURE__*/ __L.at(
+  __c78,
+  4,
+) as any as S.Schema<PaginatedPostgresSwitchoverDataList>;
+
 export interface PaginatedPostgresSwitchover {
   /** The response type. Always "list" for paginated responses. */
   type: string;
@@ -11744,6 +15790,11 @@ export interface PaginatedPostgresSwitchover {
   prev_page_url: string | null;
   data: PaginatedPostgresSwitchoverDataList;
 }
+const PaginatedPostgresSwitchover = /*@__PURE__*/ __L.at(
+  __c78,
+  5,
+) as any as S.Schema<PaginatedPostgresSwitchover>;
+
 export type ListTrafficBudgetsRequestPeriod =
   | "15m"
   | "1h"
@@ -11754,6 +15805,8 @@ export type ListTrafficBudgetsRequestPeriod =
   | "2d"
   | "7d"
   | "8d";
+const ListTrafficBudgetsRequestPeriod = S.String;
+
 export interface ListTrafficBudgetsRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
@@ -11772,11 +15825,20 @@ export interface ListTrafficBudgetsRequest {
   /** Filter budgets by query fingerprint */
   fingerprint?: string;
 }
+const ListTrafficBudgetsRequest = /*@__PURE__*/ __L.at(
+  __c78,
+  6,
+) as any as S.Schema<ListTrafficBudgetsRequest>;
+
 /** The mode of the budget */
 export type PaginatedTrafficBudgetDataItemMode = "enforce" | "warn" | "off";
+const PaginatedTrafficBudgetDataItemMode = S.String;
+
 export type PaginatedTrafficBudgetDataItemActor = OrganizationTeamMembershipActor;
 /** The kind of rule */
 export type PaginatedTrafficBudgetDataItemRulesItemKind = "match" | "each";
+const PaginatedTrafficBudgetDataItemRulesItemKind = S.String;
+
 /** The source of this tag */
 export type PaginatedTrafficBudgetDataItemRulesItemTagsItemSource = "sql" | "system";
 export interface PaginatedTrafficBudgetDataItemRulesItemTagsItem {
@@ -11791,6 +15853,9 @@ export interface PaginatedTrafficBudgetDataItemRulesItemTagsItem {
 }
 export type PaginatedTrafficBudgetDataItemRulesItemTagsList =
   Array<PaginatedTrafficBudgetDataItemRulesItemTagsItem>;
+const PaginatedTrafficBudgetDataItemRulesItemTagsList =
+  TrafficBudgetRulesItemTagsList as any as S.Schema<PaginatedTrafficBudgetDataItemRulesItemTagsList>;
+
 export type PaginatedTrafficBudgetDataItemRulesItemActor = OrganizationTeamMembershipActor;
 export interface PaginatedTrafficBudgetDataItemRulesItem {
   /** The ID of the traffic rule */
@@ -11810,8 +15875,18 @@ export interface PaginatedTrafficBudgetDataItemRulesItem {
   /** When the rule was updated */
   updated_at: string;
 }
+const PaginatedTrafficBudgetDataItemRulesItem = /*@__PURE__*/ __L.at(
+  __c78,
+  7,
+) as any as S.Schema<PaginatedTrafficBudgetDataItemRulesItem>;
+
 export type PaginatedTrafficBudgetDataItemRulesList =
   Array<PaginatedTrafficBudgetDataItemRulesItem>;
+const PaginatedTrafficBudgetDataItemRulesList = /*@__PURE__*/ __L.at(
+  __c79,
+  0,
+) as any as S.Schema<PaginatedTrafficBudgetDataItemRulesList>;
+
 export interface PaginatedTrafficBudgetDataItem {
   /** The ID of the traffic budget */
   id: string;
@@ -11836,7 +15911,17 @@ export interface PaginatedTrafficBudgetDataItem {
   /** When the budget was updated */
   updated_at: string;
 }
+const PaginatedTrafficBudgetDataItem = /*@__PURE__*/ __L.at(
+  __c79,
+  1,
+) as any as S.Schema<PaginatedTrafficBudgetDataItem>;
+
 export type PaginatedTrafficBudgetDataList = Array<PaginatedTrafficBudgetDataItem>;
+const PaginatedTrafficBudgetDataList = /*@__PURE__*/ __L.at(
+  __c79,
+  2,
+) as any as S.Schema<PaginatedTrafficBudgetDataList>;
+
 export interface PaginatedTrafficBudget {
   /** The response type. Always "list" for paginated responses. */
   type: string;
@@ -11854,6 +15939,11 @@ export interface PaginatedTrafficBudget {
   prev_page_url: string | null;
   data: PaginatedTrafficBudgetDataList;
 }
+const PaginatedTrafficBudget = /*@__PURE__*/ __L.at(
+  __c79,
+  3,
+) as any as S.Schema<PaginatedTrafficBudget>;
+
 export interface ListTrafficBudgetsForQueryRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
@@ -11870,6 +15960,11 @@ export interface ListTrafficBudgetsForQueryRequest {
   /** Optional keyspace filter */
   keyspace?: string;
 }
+const ListTrafficBudgetsForQueryRequest = /*@__PURE__*/ __L.at(
+  __c79,
+  4,
+) as any as S.Schema<ListTrafficBudgetsForQueryRequest>;
+
 export interface ListWebhooksRequest {
   /** The name of the organization */
   organization: string;
@@ -11880,6 +15975,8 @@ export interface ListWebhooksRequest {
   /** If provided, specifies the number of returned results */
   per_page?: number;
 }
+const ListWebhooksRequest = /*@__PURE__*/ __L.at(__c79, 5) as any as S.Schema<ListWebhooksRequest>;
+
 export type PaginatedDatabaseWebhookDataItemEventsItem =
   | "branch.ready"
   | "branch.anomaly"
@@ -11906,6 +16003,9 @@ export type PaginatedDatabaseWebhookDataItemEventsItem =
 /** The events this webhook subscribes to */
 export type PaginatedDatabaseWebhookDataItemEventsList =
   Array<PaginatedDatabaseWebhookDataItemEventsItem>;
+const PaginatedDatabaseWebhookDataItemEventsList =
+  CreateRoleRequestInheritedRolesList as any as S.Schema<PaginatedDatabaseWebhookDataItemEventsList>;
+
 export interface PaginatedDatabaseWebhookDataItem {
   /** The ID of the webhook */
   id: string;
@@ -11930,7 +16030,17 @@ export interface PaginatedDatabaseWebhookDataItem {
   /** The events this webhook subscribes to */
   events: PaginatedDatabaseWebhookDataItemEventsList;
 }
+const PaginatedDatabaseWebhookDataItem = /*@__PURE__*/ __L.at(
+  __c79,
+  6,
+) as any as S.Schema<PaginatedDatabaseWebhookDataItem>;
+
 export type PaginatedDatabaseWebhookDataList = Array<PaginatedDatabaseWebhookDataItem>;
+const PaginatedDatabaseWebhookDataList = /*@__PURE__*/ __L.at(
+  __c79,
+  7,
+) as any as S.Schema<PaginatedDatabaseWebhookDataList>;
+
 export interface PaginatedDatabaseWebhook {
   /** The response type. Always "list" for paginated responses. */
   type: string;
@@ -11948,6 +16058,11 @@ export interface PaginatedDatabaseWebhook {
   prev_page_url: string | null;
   data: PaginatedDatabaseWebhookDataList;
 }
+const PaginatedDatabaseWebhook = /*@__PURE__*/ __L.at(
+  __c80,
+  0,
+) as any as S.Schema<PaginatedDatabaseWebhook>;
+
 export interface ListWorkflowsRequest {
   /** The name of the organization the workflow belongs to */
   organization: string;
@@ -11960,6 +16075,11 @@ export interface ListWorkflowsRequest {
   /** If provided, specifies the number of returned results */
   per_page?: number;
 }
+const ListWorkflowsRequest = /*@__PURE__*/ __L.at(
+  __c80,
+  1,
+) as any as S.Schema<ListWorkflowsRequest>;
+
 /** The state of the workflow */
 export type PaginatedWorkflowDataItemState =
   | "pending"
@@ -11981,10 +16101,16 @@ export type PaginatedWorkflowDataItemState =
   | "cancelling"
   | "cancelled"
   | "error";
+const PaginatedWorkflowDataItemState = S.String;
+
 /** The type of the workflow */
 export type PaginatedWorkflowDataItemWorkflowType = "move_tables";
+const PaginatedWorkflowDataItemWorkflowType = S.String;
+
 /** The behavior when DDL changes during the workflow */
 export type PaginatedWorkflowDataItemOnDdl = "IGNORE" | "STOP" | "EXEC" | "EXEC_IGNORE";
+const PaginatedWorkflowDataItemOnDdl = S.String;
+
 export type PaginatedWorkflowDataItemActor = OrganizationTeamMembershipActor;
 export type PaginatedWorkflowDataItemVerifyDataBy = OrganizationTeamMembershipActor;
 export type PaginatedWorkflowDataItemReversedBy = OrganizationTeamMembershipActor;
@@ -12072,7 +16198,17 @@ export interface PaginatedWorkflowDataItem {
   target_keyspace: OrganizationTeamMembershipUserDefaultOrganization;
   global_keyspace: OrganizationTeamMembershipUserDefaultOrganization;
 }
+const PaginatedWorkflowDataItem = /*@__PURE__*/ __L.at(
+  __c80,
+  2,
+) as any as S.Schema<PaginatedWorkflowDataItem>;
+
 export type PaginatedWorkflowDataList = Array<PaginatedWorkflowDataItem>;
+const PaginatedWorkflowDataList = /*@__PURE__*/ __L.at(
+  __c80,
+  3,
+) as any as S.Schema<PaginatedWorkflowDataList>;
+
 export interface PaginatedWorkflow {
   /** The response type. Always "list" for paginated responses. */
   type: string;
@@ -12090,6 +16226,8 @@ export interface PaginatedWorkflow {
   prev_page_url: string | null;
   data: PaginatedWorkflowDataList;
 }
+const PaginatedWorkflow = /*@__PURE__*/ __L.at(__c80, 4) as any as S.Schema<PaginatedWorkflow>;
+
 export interface MoveCompleteTablesWorkflowRequest {
   /** Organization name */
   organization: string;
@@ -12100,7 +16238,15 @@ export interface MoveCompleteTablesWorkflowRequest {
   /** Workflow name */
   workflow: string;
 }
+const MoveCompleteTablesWorkflowRequest = /*@__PURE__*/ __L.at(
+  __c80,
+  5,
+) as any as S.Schema<MoveCompleteTablesWorkflowRequest>;
+
 export interface MoveCompleteTablesWorkflowResponse {}
+const MoveCompleteTablesWorkflowResponse =
+  CancelAdminChangeRequestResponse as any as S.Schema<MoveCompleteTablesWorkflowResponse>;
+
 export interface MoveReverseTrafficTablesWorkflowRequest {
   /** Organization name */
   organization: string;
@@ -12111,7 +16257,15 @@ export interface MoveReverseTrafficTablesWorkflowRequest {
   /** Workflow name */
   workflow: string;
 }
+const MoveReverseTrafficTablesWorkflowRequest = /*@__PURE__*/ __L.at(
+  __c80,
+  6,
+) as any as S.Schema<MoveReverseTrafficTablesWorkflowRequest>;
+
 export interface MoveReverseTrafficTablesWorkflowResponse {}
+const MoveReverseTrafficTablesWorkflowResponse =
+  CancelAdminChangeRequestResponse as any as S.Schema<MoveReverseTrafficTablesWorkflowResponse>;
+
 export interface MoveSwitchTrafficTablesWorkflowRequest {
   /** Organization name */
   organization: string;
@@ -12122,7 +16276,15 @@ export interface MoveSwitchTrafficTablesWorkflowRequest {
   /** Workflow name */
   workflow: string;
 }
+const MoveSwitchTrafficTablesWorkflowRequest = /*@__PURE__*/ __L.at(
+  __c80,
+  7,
+) as any as S.Schema<MoveSwitchTrafficTablesWorkflowRequest>;
+
 export interface MoveSwitchTrafficTablesWorkflowResponse {}
+const MoveSwitchTrafficTablesWorkflowResponse =
+  CancelAdminChangeRequestResponse as any as S.Schema<MoveSwitchTrafficTablesWorkflowResponse>;
+
 export interface PromoteBranchRequest {
   /** The name of the organization the branch belongs to */
   organization: string;
@@ -12131,6 +16293,11 @@ export interface PromoteBranchRequest {
   /** The name of the branch */
   branch: string;
 }
+const PromoteBranchRequest = /*@__PURE__*/ __L.at(
+  __c81,
+  0,
+) as any as S.Schema<PromoteBranchRequest>;
+
 export interface ReassignRoleObjectsRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
@@ -12143,7 +16310,15 @@ export interface ReassignRoleObjectsRequest {
   /** The role to reassign ownership to. Accepts the role's ID, or its username with or without the branch ID suffix. */
   successor: string;
 }
+const ReassignRoleObjectsRequest = /*@__PURE__*/ __L.at(
+  __c81,
+  1,
+) as any as S.Schema<ReassignRoleObjectsRequest>;
+
 export interface ReassignRoleObjectsResponse {}
+const ReassignRoleObjectsResponse =
+  CreateShardResponse as any as S.Schema<ReassignRoleObjectsResponse>;
+
 export interface RemoveOrganizationMemberRequest {
   /** The name of the organization */
   organization: string;
@@ -12154,7 +16329,15 @@ export interface RemoveOrganizationMemberRequest {
   /** Whether to delete all service tokens associated with the member. Only available when removing other members (not yourself). */
   delete_service_tokens?: boolean;
 }
+const RemoveOrganizationMemberRequest = /*@__PURE__*/ __L.at(
+  __c81,
+  2,
+) as any as S.Schema<RemoveOrganizationMemberRequest>;
+
 export interface RemoveOrganizationMemberResponse {}
+const RemoveOrganizationMemberResponse =
+  CancelAdminChangeRequestResponse as any as S.Schema<RemoveOrganizationMemberResponse>;
+
 export interface RemoveOrganizationTeamMemberRequest {
   /** The name of the organization */
   organization: string;
@@ -12165,7 +16348,15 @@ export interface RemoveOrganizationTeamMemberRequest {
   /** Whether to delete the member's passwords created through this team */
   delete_passwords?: boolean;
 }
+const RemoveOrganizationTeamMemberRequest = /*@__PURE__*/ __L.at(
+  __c81,
+  3,
+) as any as S.Schema<RemoveOrganizationTeamMemberRequest>;
+
 export interface RemoveOrganizationTeamMemberResponse {}
+const RemoveOrganizationTeamMemberResponse =
+  CancelAdminChangeRequestResponse as any as S.Schema<RemoveOrganizationTeamMemberResponse>;
+
 export interface RenewPasswordRequest {
   /** The name of the organization the password belongs to */
   organization: string;
@@ -12176,6 +16367,11 @@ export interface RenewPasswordRequest {
   /** The ID of the password */
   id: string;
 }
+const RenewPasswordRequest = /*@__PURE__*/ __L.at(
+  __c81,
+  4,
+) as any as S.Schema<RenewPasswordRequest>;
+
 export interface RenewRoleRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
@@ -12186,6 +16382,8 @@ export interface RenewRoleRequest {
   /** The ID of the role */
   id: string;
 }
+const RenewRoleRequest = /*@__PURE__*/ __L.at(__c81, 5) as any as S.Schema<RenewRoleRequest>;
+
 export interface ResetDefaultRoleRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
@@ -12194,6 +16392,11 @@ export interface ResetDefaultRoleRequest {
   /** Branch name from `list_branches`. Example: `main`. */
   branch: string;
 }
+const ResetDefaultRoleRequest = /*@__PURE__*/ __L.at(
+  __c81,
+  6,
+) as any as S.Schema<ResetDefaultRoleRequest>;
+
 export interface ResetRoleRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
@@ -12204,6 +16407,8 @@ export interface ResetRoleRequest {
   /** The ID of the role */
   id: string;
 }
+const ResetRoleRequest = /*@__PURE__*/ __L.at(__c81, 7) as any as S.Schema<ResetRoleRequest>;
+
 export interface RetryWorkflowRequest {
   /** The name of the organization the workflow belongs to */
   organization: string;
@@ -12212,6 +16417,11 @@ export interface RetryWorkflowRequest {
   /** The sequence number of the workflow */
   number: number;
 }
+const RetryWorkflowRequest = /*@__PURE__*/ __L.at(
+  __c82,
+  0,
+) as any as S.Schema<RetryWorkflowRequest>;
+
 export interface RunBranchMaintenanceRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
@@ -12222,7 +16432,15 @@ export interface RunBranchMaintenanceRequest {
   /** Whether to upgrade the branch to the latest PostgreSQL minor version during maintenance. */
   update_postgres_minor_version?: boolean;
 }
+const RunBranchMaintenanceRequest = /*@__PURE__*/ __L.at(
+  __c82,
+  1,
+) as any as S.Schema<RunBranchMaintenanceRequest>;
+
 export interface RunBranchMaintenanceResponse {}
+const RunBranchMaintenanceResponse =
+  CreateShardResponse as any as S.Schema<RunBranchMaintenanceResponse>;
+
 export interface RunShardConfigurationProfileMaintenanceRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
@@ -12233,10 +16451,21 @@ export interface RunShardConfigurationProfileMaintenanceRequest {
   /** Name from `list_shard_configuration_profiles`. */
   configuration_profile: string;
 }
+const RunShardConfigurationProfileMaintenanceRequest = /*@__PURE__*/ __L.at(
+  __c82,
+  2,
+) as any as S.Schema<RunShardConfigurationProfileMaintenanceRequest>;
+
 export interface RunShardConfigurationProfileMaintenanceResponse {}
+const RunShardConfigurationProfileMaintenanceResponse =
+  CancelAdminChangeRequestResponse as any as S.Schema<RunShardConfigurationProfileMaintenanceResponse>;
+
 /** The names of the shard configuration profiles to maintain */
 export type RunShardConfigurationProfilesMaintenanceRequestConfigurationProfileNamesList =
   Array<string>;
+const RunShardConfigurationProfilesMaintenanceRequestConfigurationProfileNamesList =
+  OrganizationTeamMembershipPasswordsItemDirectVtgateAddressesList as any as S.Schema<RunShardConfigurationProfilesMaintenanceRequestConfigurationProfileNamesList>;
+
 export interface RunShardConfigurationProfilesMaintenanceRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
@@ -12247,7 +16476,15 @@ export interface RunShardConfigurationProfilesMaintenanceRequest {
   /** The names of the shard configuration profiles to maintain */
   configuration_profile_names: RunShardConfigurationProfilesMaintenanceRequestConfigurationProfileNamesList;
 }
+const RunShardConfigurationProfilesMaintenanceRequest = /*@__PURE__*/ __L.at(
+  __c82,
+  3,
+) as any as S.Schema<RunShardConfigurationProfilesMaintenanceRequest>;
+
 export interface RunShardConfigurationProfilesMaintenanceResponse {}
+const RunShardConfigurationProfilesMaintenanceResponse =
+  CancelAdminChangeRequestResponse as any as S.Schema<RunShardConfigurationProfilesMaintenanceResponse>;
+
 export interface SetDefaultShardConfigurationProfileRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
@@ -12258,6 +16495,11 @@ export interface SetDefaultShardConfigurationProfileRequest {
   /** The name of the shard configuration profile to make the default */
   configuration_profile: string;
 }
+const SetDefaultShardConfigurationProfileRequest = /*@__PURE__*/ __L.at(
+  __c82,
+  4,
+) as any as S.Schema<SetDefaultShardConfigurationProfileRequest>;
+
 export interface SkipRevertPeriodRequest {
   /** The name of the deploy request's organization */
   organization: string;
@@ -12266,6 +16508,11 @@ export interface SkipRevertPeriodRequest {
   /** The number of the deploy request */
   number: number;
 }
+const SkipRevertPeriodRequest = /*@__PURE__*/ __L.at(
+  __c82,
+  5,
+) as any as S.Schema<SkipRevertPeriodRequest>;
+
 export interface StartMoveTablesWorkflowRequest {
   /** Organization name */
   organization: string;
@@ -12276,13 +16523,28 @@ export interface StartMoveTablesWorkflowRequest {
   /** Workflow name */
   workflow: string;
 }
+const StartMoveTablesWorkflowRequest = /*@__PURE__*/ __L.at(
+  __c82,
+  6,
+) as any as S.Schema<StartMoveTablesWorkflowRequest>;
+
 export interface StartMoveTablesWorkflowResponseData {
   /** Human-readable summary of the start result */
   summary?: string;
 }
+const StartMoveTablesWorkflowResponseData = /*@__PURE__*/ __L.at(
+  __c82,
+  7,
+) as any as S.Schema<StartMoveTablesWorkflowResponseData>;
+
 export interface StartMoveTablesWorkflowResponse {
   data: StartMoveTablesWorkflowResponseData;
 }
+const StartMoveTablesWorkflowResponse = /*@__PURE__*/ __L.at(
+  __c83,
+  0,
+) as any as S.Schema<StartMoveTablesWorkflowResponse>;
+
 export interface StopMoveTablesWorkflowRequest {
   /** Organization name */
   organization: string;
@@ -12293,6 +16555,11 @@ export interface StopMoveTablesWorkflowRequest {
   /** Workflow name */
   workflow: string;
 }
+const StopMoveTablesWorkflowRequest = /*@__PURE__*/ __L.at(
+  __c83,
+  1,
+) as any as S.Schema<StopMoveTablesWorkflowRequest>;
+
 export interface StopMoveTablesWorkflowResponseData {
   /** Human-readable summary of the stop result */
   summary?: string;
@@ -12300,8 +16567,14 @@ export interface StopMoveTablesWorkflowResponseData {
 export interface StopMoveTablesWorkflowResponse {
   data: StopMoveTablesWorkflowResponseData;
 }
+const StopMoveTablesWorkflowResponse =
+  StartMoveTablesWorkflowResponse as any as S.Schema<StopMoveTablesWorkflowResponse>;
+
 /** The IDs of the draft config change requests to submit */
 export type SubmitBranchConfigChangeRequestsRequestIdsList = Array<string>;
+const SubmitBranchConfigChangeRequestsRequestIdsList =
+  OrganizationTeamMembershipPasswordsItemCidrsList as any as S.Schema<SubmitBranchConfigChangeRequestsRequestIdsList>;
+
 export interface SubmitBranchConfigChangeRequestsRequest {
   /** The name of the organization the branch belongs to */
   organization: string;
@@ -12312,10 +16585,20 @@ export interface SubmitBranchConfigChangeRequestsRequest {
   /** The IDs of the draft config change requests to submit */
   ids: SubmitBranchConfigChangeRequestsRequestIdsList;
 }
+const SubmitBranchConfigChangeRequestsRequest = /*@__PURE__*/ __L.at(
+  __c83,
+  2,
+) as any as S.Schema<SubmitBranchConfigChangeRequestsRequest>;
+
 export interface SubmitBranchConfigChangeRequestsResponse {
   /** The number of config change requests submitted */
   submitted: number;
 }
+const SubmitBranchConfigChangeRequestsResponse = /*@__PURE__*/ __L.at(
+  __c83,
+  3,
+) as any as S.Schema<SubmitBranchConfigChangeRequestsResponse>;
+
 export interface TestWebhookRequest {
   /** The name of the organization */
   organization: string;
@@ -12324,9 +16607,16 @@ export interface TestWebhookRequest {
   /** The ID of the webhook */
   id: string;
 }
+const TestWebhookRequest = /*@__PURE__*/ __L.at(__c83, 4) as any as S.Schema<TestWebhookRequest>;
+
 export interface TestWebhookResponse {}
+const TestWebhookResponse = CreateShardResponse as any as S.Schema<TestWebhookResponse>;
+
 /** Admin parameters nested by namespace (e.g., {"admin": {"recovery-poll-interval": "10s"}}) */
 export type UpdateAdminRequestParametersMap = { [key: string]: unknown | undefined };
+const UpdateAdminRequestParametersMap =
+  NekiShardAssignmentErrorMap as any as S.Schema<UpdateAdminRequestParametersMap>;
+
 export interface UpdateAdminRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
@@ -12339,6 +16629,8 @@ export interface UpdateAdminRequest {
   /** Admin parameters nested by namespace (e.g., {"admin": {"recovery-poll-interval": "10s"}}) */
   parameters?: UpdateAdminRequestParametersMap;
 }
+const UpdateAdminRequest = /*@__PURE__*/ __L.at(__c83, 5) as any as S.Schema<UpdateAdminRequest>;
+
 export interface UpdateAutoApplyRequest {
   /** The name of the deploy request's organization */
   organization: string;
@@ -12349,6 +16641,11 @@ export interface UpdateAutoApplyRequest {
   /** Whether or not to enable auto-apply for the deploy request */
   enable?: boolean;
 }
+const UpdateAutoApplyRequest = /*@__PURE__*/ __L.at(
+  __c83,
+  6,
+) as any as S.Schema<UpdateAutoApplyRequest>;
+
 export interface UpdateAutoDeleteBranchRequest {
   /** The name of the deploy request's organization */
   organization: string;
@@ -12359,6 +16656,11 @@ export interface UpdateAutoDeleteBranchRequest {
   /** Whether or not to enable auto-delete branch for the deploy request */
   enable?: boolean;
 }
+const UpdateAutoDeleteBranchRequest = /*@__PURE__*/ __L.at(
+  __c83,
+  7,
+) as any as S.Schema<UpdateAutoDeleteBranchRequest>;
+
 export interface UpdateBackupRequest {
   /** The name of the organization the branch belongs to */
   organization: string;
@@ -12371,12 +16673,20 @@ export interface UpdateBackupRequest {
   /** Whether the backup is protected from deletion or not */
   protected?: boolean;
 }
+const UpdateBackupRequest = /*@__PURE__*/ __L.at(__c84, 0) as any as S.Schema<UpdateBackupRequest>;
+
 /** Whether the policy is for production or development branches */
 export type UpdateBackupPolicyRequestTarget = "production" | "development";
+const UpdateBackupPolicyRequestTarget = S.String;
+
 /** The unit for the retention period of the backup policy */
 export type UpdateBackupPolicyRequestRetentionUnit = "hour" | "day" | "week" | "month" | "year";
+const UpdateBackupPolicyRequestRetentionUnit = S.String;
+
 /** The unit for the frequency of the backup policy */
 export type UpdateBackupPolicyRequestFrequencyUnit = "hour" | "day" | "week" | "month";
+const UpdateBackupPolicyRequestFrequencyUnit = S.String;
+
 export interface UpdateBackupPolicyRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
@@ -12403,8 +16713,16 @@ export interface UpdateBackupPolicyRequest {
   /** Week of the month that the backup is scheduled. 0 is the first week, 3 is the fourth week */
   schedule_week?: number;
 }
+const UpdateBackupPolicyRequest = /*@__PURE__*/ __L.at(
+  __c84,
+  1,
+) as any as S.Schema<UpdateBackupPolicyRequest>;
+
 /** Bouncer configuration parameters nested by namespace (e.g., {"pgbouncer": {"default_pool_size": "100"}}). Use the 'List cluster parameters' endpoint to retrieve available parameters. Only parameters with namespace 'pgbouncer' can be updated. */
 export type UpdateBouncerResizeRequestRequestParametersMap = { [key: string]: unknown | undefined };
+const UpdateBouncerResizeRequestRequestParametersMap =
+  NekiShardAssignmentErrorMap as any as S.Schema<UpdateBouncerResizeRequestRequestParametersMap>;
+
 export interface UpdateBouncerResizeRequestRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
@@ -12423,21 +16741,38 @@ export interface UpdateBouncerResizeRequestRequest {
   /** Bouncer configuration parameters nested by namespace (e.g., {"pgbouncer": {"default_pool_size": "100"}}). Use the 'List cluster parameters' endpoint to retrieve available parameters. Only parameters with namespace 'pgbouncer' can be updated. */
   parameters?: UpdateBouncerResizeRequestRequestParametersMap;
 }
+const UpdateBouncerResizeRequestRequest = /*@__PURE__*/ __L.at(
+  __c84,
+  2,
+) as any as S.Schema<UpdateBouncerResizeRequestRequest>;
+
 /** The state of the bouncer resize */
 export type PostgresBouncerResizeRequestState = "pending" | "resizing" | "canceled" | "completed";
+const PostgresBouncerResizeRequestState = S.String;
+
 /** The backend target for the bouncer after the resize */
 export type PostgresBouncerResizeRequestTarget = "primary" | "replica" | "replica_az_affinity";
+const PostgresBouncerResizeRequestTarget = S.String;
+
 /** The bouncer parameters */
 export type PostgresBouncerResizeRequestParametersMap = { [key: string]: unknown | undefined };
+const PostgresBouncerResizeRequestParametersMap =
+  NekiShardAssignmentErrorMap as any as S.Schema<PostgresBouncerResizeRequestParametersMap>;
+
 /** The backend target for the bouncer before the resize */
 export type PostgresBouncerResizeRequestPreviousTarget =
   | "primary"
   | "replica"
   | "replica_az_affinity";
+const PostgresBouncerResizeRequestPreviousTarget = S.String;
+
 /** The previous bouncer parameters */
 export type PostgresBouncerResizeRequestPreviousParametersMap = {
   [key: string]: unknown | undefined;
 };
+const PostgresBouncerResizeRequestPreviousParametersMap =
+  NekiShardAssignmentErrorMap as any as S.Schema<PostgresBouncerResizeRequestPreviousParametersMap>;
+
 export type PostgresBouncerResizeRequestActor = OrganizationTeamMembershipActor;
 export type PostgresBouncerResizeRequestBouncer = OrganizationTeamMembershipUserDefaultOrganization;
 export type PostgresBouncerResizeRequestSku = PostgresBouncerSku;
@@ -12472,6 +16807,11 @@ export interface PostgresBouncerResizeRequest {
   sku: PostgresBouncerSku;
   previous_sku: PostgresBouncerSku;
 }
+const PostgresBouncerResizeRequest = /*@__PURE__*/ __L.at(
+  __c84,
+  3,
+) as any as S.Schema<PostgresBouncerResizeRequest>;
+
 export interface UpdateBranchRequest {
   /** The name of the organization the branch belongs to */
   organization: string;
@@ -12484,10 +16824,18 @@ export interface UpdateBranchRequest {
   /** Whether deletion protection is enabled for the branch */
   deletion_protected?: boolean;
 }
+const UpdateBranchRequest = /*@__PURE__*/ __L.at(__c84, 4) as any as S.Schema<UpdateBranchRequest>;
+
 /** Extensions to enable. This replaces the current set; omit it to leave them unchanged. */
 export type UpdateBranchChangeRequestRequestExtensionsList = Array<string>;
+const UpdateBranchChangeRequestRequestExtensionsList =
+  OrganizationTeamMembershipPasswordsItemCidrsList as any as S.Schema<UpdateBranchChangeRequestRequestExtensionsList>;
+
 /** Cluster configuration parameters nested by namespace (e.g., {"pgconf": {"max_connections": "200"}}). Use the 'List cluster parameters' endpoint to retrieve available parameters. Supported namespaces include 'patroni', 'pgconf', and 'pgbouncer'. */
 export type UpdateBranchChangeRequestRequestParametersMap = { [key: string]: unknown | undefined };
+const UpdateBranchChangeRequestRequestParametersMap =
+  NekiShardAssignmentErrorMap as any as S.Schema<UpdateBranchChangeRequestRequestParametersMap>;
+
 export interface UpdateBranchChangeRequestRequestStorage {
   /** The minimum storage size in bytes. */
   minimum_storage_bytes?: number;
@@ -12502,6 +16850,11 @@ export interface UpdateBranchChangeRequestRequestStorage {
   /** Re-apply the current minimum disk size to shrink the provisioned disk. */
   confirm_shrink?: boolean;
 }
+const UpdateBranchChangeRequestRequestStorage = /*@__PURE__*/ __L.at(
+  __c84,
+  5,
+) as any as S.Schema<UpdateBranchChangeRequestRequestStorage>;
+
 export interface UpdateBranchChangeRequestRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
@@ -12519,6 +16872,11 @@ export interface UpdateBranchChangeRequestRequest {
   parameters?: UpdateBranchChangeRequestRequestParametersMap;
   storage?: UpdateBranchChangeRequestRequestStorage;
 }
+const UpdateBranchChangeRequestRequest = /*@__PURE__*/ __L.at(
+  __c84,
+  6,
+) as any as S.Schema<UpdateBranchChangeRequestRequest>;
+
 export interface UpdateBranchClusterConfigRequest {
   /** The name of the organization the branch belongs to */
   organization: string;
@@ -12529,7 +16887,15 @@ export interface UpdateBranchClusterConfigRequest {
   /** The new size of the database cluster: PS_10, PS_20,... */
   cluster_size: string;
 }
+const UpdateBranchClusterConfigRequest = /*@__PURE__*/ __L.at(
+  __c84,
+  7,
+) as any as S.Schema<UpdateBranchClusterConfigRequest>;
+
 export interface UpdateBranchClusterConfigResponse {}
+const UpdateBranchClusterConfigResponse =
+  CancelAdminChangeRequestResponse as any as S.Schema<UpdateBranchClusterConfigResponse>;
+
 export interface UpdateBranchResizeRequestRequest {
   /** The name of the organization the branch belongs to */
   organization: string;
@@ -12548,8 +16914,16 @@ export interface UpdateBranchResizeRequestRequest {
   /** The target CPU utilization for the vtgate cluster when autoscaling is enabled */
   vtgate_target_cpu_utilization?: number;
 }
+const UpdateBranchResizeRequestRequest = /*@__PURE__*/ __L.at(
+  __c85,
+  0,
+) as any as S.Schema<UpdateBranchResizeRequestRequest>;
+
 /** List of IPv4 CIDR ranges (e.g., ['192.168.1.0/24', '192.168.1.1/32']). Only provided fields will be updated. */
 export type UpdateDatabasePostgresCidrRequestCidrsList = Array<string>;
+const UpdateDatabasePostgresCidrRequestCidrsList =
+  OrganizationTeamMembershipPasswordsItemCidrsList as any as S.Schema<UpdateDatabasePostgresCidrRequestCidrsList>;
+
 export interface UpdateDatabasePostgresCidrRequest {
   /** The name of the organization the database belongs to */
   organization: string;
@@ -12566,6 +16940,11 @@ export interface UpdateDatabasePostgresCidrRequest {
   /** An optional description for the IP restriction rule. Pass an empty string to clear. */
   description?: string;
 }
+const UpdateDatabasePostgresCidrRequest = /*@__PURE__*/ __L.at(
+  __c85,
+  1,
+) as any as S.Schema<UpdateDatabasePostgresCidrRequest>;
+
 export interface UpdateDatabaseSettingsRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
@@ -12598,8 +16977,16 @@ export interface UpdateDatabaseSettingsRequest {
   /** The number of development branches this database can have, up to 5000. */
   development_branches_limit?: number;
 }
+const UpdateDatabaseSettingsRequest = /*@__PURE__*/ __L.at(
+  __c85,
+  2,
+) as any as S.Schema<UpdateDatabaseSettingsRequest>;
+
 /** If specifying throttler ratios per keyspace, an array of { "keyspace_name": "mykeyspace", "ratio": 10 }, one for each eligible keyspace */
 export type UpdateDatabaseThrottlerRequestConfigurationsList = Array<string>;
+const UpdateDatabaseThrottlerRequestConfigurationsList =
+  OrganizationTeamMembershipPasswordsItemCidrsList as any as S.Schema<UpdateDatabaseThrottlerRequestConfigurationsList>;
+
 export interface UpdateDatabaseThrottlerRequest {
   /** The name of the organization that the throttled deploy requests belong to */
   organization: string;
@@ -12610,8 +16997,16 @@ export interface UpdateDatabaseThrottlerRequest {
   /** If specifying throttler ratios per keyspace, an array of { "keyspace_name": "mykeyspace", "ratio": 10 }, one for each eligible keyspace */
   configurations?: UpdateDatabaseThrottlerRequestConfigurationsList;
 }
+const UpdateDatabaseThrottlerRequest = /*@__PURE__*/ __L.at(
+  __c85,
+  3,
+) as any as S.Schema<UpdateDatabaseThrottlerRequest>;
+
 /** The data topology JSON to set for the branch */
 export type UpdateDataTopologyRequestDataTopologyMap = { [key: string]: unknown | undefined };
+const UpdateDataTopologyRequestDataTopologyMap =
+  NekiShardAssignmentErrorMap as any as S.Schema<UpdateDataTopologyRequestDataTopologyMap>;
+
 export interface UpdateDataTopologyRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
@@ -12622,8 +17017,16 @@ export interface UpdateDataTopologyRequest {
   /** The data topology JSON to set for the branch */
   data_topology: UpdateDataTopologyRequestDataTopologyMap;
 }
+const UpdateDataTopologyRequest = /*@__PURE__*/ __L.at(
+  __c85,
+  4,
+) as any as S.Schema<UpdateDataTopologyRequest>;
+
 /** Configuration parameters nested by namespace (e.g., {"pgconf": {"max_connections": "300"}}). Values must be greater than or equal to the primary's. */
 export type UpdateDedicatedReadReplicaRequestParametersMap = { [key: string]: unknown | undefined };
+const UpdateDedicatedReadReplicaRequestParametersMap =
+  NekiShardAssignmentErrorMap as any as S.Schema<UpdateDedicatedReadReplicaRequestParametersMap>;
+
 export type UpdateDedicatedReadReplicaRequestStorage = CreateDedicatedReadReplicaRequestStorage;
 export interface UpdateDedicatedReadReplicaRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
@@ -12642,8 +17045,16 @@ export interface UpdateDedicatedReadReplicaRequest {
   parameters?: UpdateDedicatedReadReplicaRequestParametersMap;
   storage?: CreateDedicatedReadReplicaRequestStorage;
 }
+const UpdateDedicatedReadReplicaRequest = /*@__PURE__*/ __L.at(
+  __c85,
+  5,
+) as any as S.Schema<UpdateDedicatedReadReplicaRequest>;
+
 /** If specifying throttler ratios per keyspace, an array of { "keyspace_name": "mykeyspace", "ratio": 10 }, one for each eligible keyspace */
 export type UpdateDeployRequestThrottlerRequestConfigurationsList = Array<string>;
+const UpdateDeployRequestThrottlerRequestConfigurationsList =
+  OrganizationTeamMembershipPasswordsItemCidrsList as any as S.Schema<UpdateDeployRequestThrottlerRequestConfigurationsList>;
+
 export interface UpdateDeployRequestThrottlerRequest {
   /** The name of the deploy request's organization */
   organization: string;
@@ -12656,11 +17067,20 @@ export interface UpdateDeployRequestThrottlerRequest {
   /** If specifying throttler ratios per keyspace, an array of { "keyspace_name": "mykeyspace", "ratio": 10 }, one for each eligible keyspace */
   configurations?: UpdateDeployRequestThrottlerRequestConfigurationsList;
 }
+const UpdateDeployRequestThrottlerRequest = /*@__PURE__*/ __L.at(
+  __c85,
+  6,
+) as any as S.Schema<UpdateDeployRequestThrottlerRequest>;
+
 export type UpdateInsightsAgentScheduleRequestRunType =
   | "review_slow_queries"
   | "implement_schema_recommendation";
+const UpdateInsightsAgentScheduleRequestRunType = S.String;
+
 /** The cadence unit */
 export type UpdateInsightsAgentScheduleRequestFrequencyUnit = "day" | "week" | "month";
+const UpdateInsightsAgentScheduleRequestFrequencyUnit = S.String;
+
 export interface UpdateInsightsAgentScheduleRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
@@ -12683,10 +17103,20 @@ export interface UpdateInsightsAgentScheduleRequest {
   /** The day of month for monthly schedules */
   day_of_month?: number;
 }
+const UpdateInsightsAgentScheduleRequest = /*@__PURE__*/ __L.at(
+  __c85,
+  7,
+) as any as S.Schema<UpdateInsightsAgentScheduleRequest>;
+
 export interface UpdateKeyspaceRequestReplicationDurabilityConstraints {
   /** The replication durability strategy */
   strategy?: string;
 }
+const UpdateKeyspaceRequestReplicationDurabilityConstraints = /*@__PURE__*/ __L.at(
+  __c86,
+  0,
+) as any as S.Schema<UpdateKeyspaceRequestReplicationDurabilityConstraints>;
+
 export interface UpdateKeyspaceRequestVreplicationFlags {
   /** Enable optimized inserts */
   optimize_inserts?: boolean;
@@ -12695,12 +17125,22 @@ export interface UpdateKeyspaceRequestVreplicationFlags {
   /** Enable VPlayer batching */
   vplayer_batching?: boolean;
 }
+const UpdateKeyspaceRequestVreplicationFlags = /*@__PURE__*/ __L.at(
+  __c86,
+  1,
+) as any as S.Schema<UpdateKeyspaceRequestVreplicationFlags>;
+
 export interface UpdateKeyspaceRequestThrottler {
   /** Whether the keyspace throttler is enabled */
   enabled?: boolean;
   /** Replication lag in seconds that trips the throttler. Must be >= 0 */
   threshold?: number;
 }
+const UpdateKeyspaceRequestThrottler = /*@__PURE__*/ __L.at(
+  __c86,
+  2,
+) as any as S.Schema<UpdateKeyspaceRequestThrottler>;
+
 export interface UpdateKeyspaceRequest {
   /** The name of the organization the branch belongs to */
   organization: string;
@@ -12716,6 +17156,11 @@ export interface UpdateKeyspaceRequest {
   max_rollout?: number | null;
   throttler?: UpdateKeyspaceRequestThrottler;
 }
+const UpdateKeyspaceRequest = /*@__PURE__*/ __L.at(
+  __c86,
+  3,
+) as any as S.Schema<UpdateKeyspaceRequest>;
+
 export interface UpdateKeyspaceResizeRequestRequest {
   /** The name of the organization the branch belongs to */
   organization: string;
@@ -12732,6 +17177,11 @@ export interface UpdateKeyspaceResizeRequestRequest {
   /** The percentage of the buffer pool allocated to vector indexes */
   vector_pool_allocation?: number;
 }
+const UpdateKeyspaceResizeRequestRequest = /*@__PURE__*/ __L.at(
+  __c86,
+  4,
+) as any as S.Schema<UpdateKeyspaceResizeRequestRequest>;
+
 export interface UpdateKeyspaceVschemaRequest {
   /** The name of the organization the branch belongs to */
   organization: string;
@@ -12744,10 +17194,18 @@ export interface UpdateKeyspaceVschemaRequest {
   /** The new VSchema for the keyspace */
   vschema: string;
 }
+const UpdateKeyspaceVschemaRequest = /*@__PURE__*/ __L.at(
+  __c86,
+  5,
+) as any as S.Schema<UpdateKeyspaceVschemaRequest>;
+
 export interface UpdateKeyspaceVschemaResponse {
   /** The keyspace's VSchema */
   raw: string;
 }
+const UpdateKeyspaceVschemaResponse =
+  GetKeyspaceVschemaResponse as any as S.Schema<UpdateKeyspaceVschemaResponse>;
+
 export interface UpdateOrganizationRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
@@ -12758,6 +17216,11 @@ export interface UpdateOrganizationRequest {
   /** The expected monthly budget for the organization */
   invoice_budget_amount?: number;
 }
+const UpdateOrganizationRequest = /*@__PURE__*/ __L.at(
+  __c86,
+  6,
+) as any as S.Schema<UpdateOrganizationRequest>;
+
 export interface UpdateOrganizationMembershipRequest {
   /** The name of the organization */
   organization: string;
@@ -12766,6 +17229,11 @@ export interface UpdateOrganizationMembershipRequest {
   /** The role to assign to the member (e.g., 'admin', 'member'). Note: Cannot update your own role. Roles managed by IdP cannot be updated via API. */
   role: string;
 }
+const UpdateOrganizationMembershipRequest = /*@__PURE__*/ __L.at(
+  __c86,
+  7,
+) as any as S.Schema<UpdateOrganizationMembershipRequest>;
+
 export interface UpdateOrganizationTeamRequest {
   /** The name of the organization */
   organization: string;
@@ -12776,8 +17244,16 @@ export interface UpdateOrganizationTeamRequest {
   /** The new description for the team */
   description?: string;
 }
+const UpdateOrganizationTeamRequest = /*@__PURE__*/ __L.at(
+  __c87,
+  0,
+) as any as S.Schema<UpdateOrganizationTeamRequest>;
+
 /** List of IP addresses or CIDR ranges that can use this password */
 export type UpdatePasswordRequestCidrsList = Array<string>;
+const UpdatePasswordRequestCidrsList =
+  OrganizationTeamMembershipPasswordsItemCidrsList as any as S.Schema<UpdatePasswordRequestCidrsList>;
+
 export interface UpdatePasswordRequest {
   /** The name of the organization the password belongs to */
   organization: string;
@@ -12792,10 +17268,20 @@ export interface UpdatePasswordRequest {
   /** List of IP addresses or CIDR ranges that can use this password */
   cidrs?: UpdatePasswordRequestCidrsList;
 }
+const UpdatePasswordRequest = /*@__PURE__*/ __L.at(
+  __c87,
+  1,
+) as any as S.Schema<UpdatePasswordRequest>;
+
 export interface UpdatePaymentMethodRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
 }
+const UpdatePaymentMethodRequest = /*@__PURE__*/ __L.at(
+  __c87,
+  2,
+) as any as S.Schema<UpdatePaymentMethodRequest>;
+
 export interface UpdateRoleRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
@@ -12812,8 +17298,13 @@ export interface UpdateRoleRequest {
   /** Require WHERE clause on UPDATE statements */
   require_where_on_update?: string;
 }
+const UpdateRoleRequest = /*@__PURE__*/ __L.at(__c87, 3) as any as S.Schema<UpdateRoleRequest>;
+
 /** Router parameters nested by namespace (e.g., {"router": {"replication-lag-tolerable-max": "15m"}}) */
 export type UpdateRouterRequestParametersMap = { [key: string]: unknown | undefined };
+const UpdateRouterRequestParametersMap =
+  NekiShardAssignmentErrorMap as any as S.Schema<UpdateRouterRequestParametersMap>;
+
 export interface UpdateRouterRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
@@ -12836,6 +17327,8 @@ export interface UpdateRouterRequest {
   /** Router parameters nested by namespace (e.g., {"router": {"replication-lag-tolerable-max": "15m"}}) */
   parameters?: UpdateRouterRequestParametersMap;
 }
+const UpdateRouterRequest = /*@__PURE__*/ __L.at(__c87, 4) as any as S.Schema<UpdateRouterRequest>;
+
 export interface UpdateSafeMigrationsRequest {
   /** The name of the organization the branch belongs to */
   organization: string;
@@ -12846,6 +17339,11 @@ export interface UpdateSafeMigrationsRequest {
   /** Whether safe migrations are enabled */
   safe_migrations: boolean;
 }
+const UpdateSafeMigrationsRequest = /*@__PURE__*/ __L.at(
+  __c87,
+  5,
+) as any as S.Schema<UpdateSafeMigrationsRequest>;
+
 export interface UpdateShardRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
@@ -12856,13 +17354,23 @@ export interface UpdateShardRequest {
   /** The ID of the shard */
   id: string;
 }
+const UpdateShardRequest = /*@__PURE__*/ __L.at(__c87, 6) as any as S.Schema<UpdateShardRequest>;
+
 export interface UpdateShardResponse {}
+const UpdateShardResponse = CreateShardResponse as any as S.Schema<UpdateShardResponse>;
+
 /** Extensions to enable. This replaces the current set; omit it to leave them unchanged. */
 export type UpdateShardConfigurationProfileRequestExtensionsList = Array<string>;
+const UpdateShardConfigurationProfileRequestExtensionsList =
+  OrganizationTeamMembershipPasswordsItemCidrsList as any as S.Schema<UpdateShardConfigurationProfileRequestExtensionsList>;
+
 /** Configuration profile parameters nested by namespace (e.g., {"pgconf": {"max_connections": "200"}}). */
 export type UpdateShardConfigurationProfileRequestParametersMap = {
   [key: string]: unknown | undefined;
 };
+const UpdateShardConfigurationProfileRequestParametersMap =
+  NekiShardAssignmentErrorMap as any as S.Schema<UpdateShardConfigurationProfileRequestParametersMap>;
+
 export type UpdateShardConfigurationProfileRequestStorage =
   CreateDedicatedReadReplicaRequestStorage;
 export interface UpdateShardConfigurationProfileRequest {
@@ -12890,6 +17398,11 @@ export interface UpdateShardConfigurationProfileRequest {
   postgres_minor_version?: string;
   storage?: CreateDedicatedReadReplicaRequestStorage;
 }
+const UpdateShardConfigurationProfileRequest = /*@__PURE__*/ __L.at(
+  __c87,
+  7,
+) as any as S.Schema<UpdateShardConfigurationProfileRequest>;
+
 export interface UpdateShardConfigurationProfileShardRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
@@ -12904,8 +17417,16 @@ export interface UpdateShardConfigurationProfileShardRequest {
   /** The display name of the shard */
   display_name?: string;
 }
+const UpdateShardConfigurationProfileShardRequest = /*@__PURE__*/ __L.at(
+  __c88,
+  0,
+) as any as S.Schema<UpdateShardConfigurationProfileShardRequest>;
+
 /** Sidecar parameters nested by namespace (e.g., {"sidecar": {"pool-capacity": "100"}}) */
 export type UpdateSidecarRequestParametersMap = { [key: string]: unknown | undefined };
+const UpdateSidecarRequestParametersMap =
+  NekiShardAssignmentErrorMap as any as S.Schema<UpdateSidecarRequestParametersMap>;
+
 export interface UpdateSidecarRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
@@ -12918,10 +17439,20 @@ export interface UpdateSidecarRequest {
   /** Sidecar parameters nested by namespace (e.g., {"sidecar": {"pool-capacity": "100"}}) */
   parameters?: UpdateSidecarRequestParametersMap;
 }
+const UpdateSidecarRequest = /*@__PURE__*/ __L.at(
+  __c88,
+  1,
+) as any as S.Schema<UpdateSidecarRequest>;
+
 /** The mode of the traffic budget */
 export type UpdateTrafficBudgetRequestMode = "enforce" | "warn" | "off";
+const UpdateTrafficBudgetRequestMode = S.String;
+
 /** Array of traffic rules to apply to the budget */
 export type UpdateTrafficBudgetRequestRulesList = Array<string>;
+const UpdateTrafficBudgetRequestRulesList =
+  OrganizationTeamMembershipPasswordsItemCidrsList as any as S.Schema<UpdateTrafficBudgetRequestRulesList>;
+
 export interface UpdateTrafficBudgetRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
@@ -12948,8 +17479,16 @@ export interface UpdateTrafficBudgetRequest {
   /** Array of traffic rules to apply to the budget */
   rules?: UpdateTrafficBudgetRequestRulesList;
 }
+const UpdateTrafficBudgetRequest = /*@__PURE__*/ __L.at(
+  __c88,
+  2,
+) as any as S.Schema<UpdateTrafficBudgetRequest>;
+
 /** The events this webhook should subscribe to */
 export type UpdateWebhookRequestEventsList = Array<string>;
+const UpdateWebhookRequestEventsList =
+  OrganizationTeamMembershipPasswordsItemCidrsList as any as S.Schema<UpdateWebhookRequestEventsList>;
+
 export interface UpdateWebhookRequest {
   /** The name of the organization */
   organization: string;
@@ -12966,6 +17505,11 @@ export interface UpdateWebhookRequest {
   /** The events this webhook should subscribe to */
   events?: UpdateWebhookRequestEventsList;
 }
+const UpdateWebhookRequest = /*@__PURE__*/ __L.at(
+  __c88,
+  3,
+) as any as S.Schema<UpdateWebhookRequest>;
+
 export interface VerifyWorkflowRequest {
   /** The name of the organization the workflow belongs to */
   organization: string;
@@ -12974,6 +17518,11 @@ export interface VerifyWorkflowRequest {
   /** The sequence number of the workflow */
   number: number;
 }
+const VerifyWorkflowRequest = /*@__PURE__*/ __L.at(
+  __c88,
+  4,
+) as any as S.Schema<VerifyWorkflowRequest>;
+
 export interface WorkflowCutoverRequest {
   /** The name of the organization the workflow belongs to */
   organization: string;
@@ -12982,6 +17531,11 @@ export interface WorkflowCutoverRequest {
   /** The sequence number of the workflow */
   number: number;
 }
+const WorkflowCutoverRequest = /*@__PURE__*/ __L.at(
+  __c88,
+  5,
+) as any as S.Schema<WorkflowCutoverRequest>;
+
 export interface WorkflowReverseCutoverRequest {
   /** The name of the organization the workflow belongs to */
   organization: string;
@@ -12990,6 +17544,11 @@ export interface WorkflowReverseCutoverRequest {
   /** The sequence number of the workflow */
   number: number;
 }
+const WorkflowReverseCutoverRequest = /*@__PURE__*/ __L.at(
+  __c88,
+  6,
+) as any as S.Schema<WorkflowReverseCutoverRequest>;
+
 export interface WorkflowReverseTrafficRequest {
   /** The name of the organization the workflow belongs to */
   organization: string;
@@ -12998,6 +17557,11 @@ export interface WorkflowReverseTrafficRequest {
   /** The sequence number of the workflow */
   number: number;
 }
+const WorkflowReverseTrafficRequest = /*@__PURE__*/ __L.at(
+  __c88,
+  7,
+) as any as S.Schema<WorkflowReverseTrafficRequest>;
+
 export interface WorkflowSwitchPrimariesRequest {
   /** The name of the organization the workflow belongs to */
   organization: string;
@@ -13006,6 +17570,11 @@ export interface WorkflowSwitchPrimariesRequest {
   /** The sequence number of the workflow */
   number: number;
 }
+const WorkflowSwitchPrimariesRequest = /*@__PURE__*/ __L.at(
+  __c89,
+  0,
+) as any as S.Schema<WorkflowSwitchPrimariesRequest>;
+
 export interface WorkflowSwitchReplicasRequest {
   /** The name of the organization the workflow belongs to */
   organization: string;
@@ -13014,6 +17583,11 @@ export interface WorkflowSwitchReplicasRequest {
   /** The sequence number of the workflow */
   number: number;
 }
+const WorkflowSwitchReplicasRequest = /*@__PURE__*/ __L.at(
+  __c89,
+  1,
+) as any as S.Schema<WorkflowSwitchReplicasRequest>;
+
 export type AddOrganizationTeamMemberError =
   | BadRequest
   | Forbidden
@@ -13027,8 +17601,8 @@ export const addOrganizationTeamMember: API.OperationMethod<
   AddOrganizationTeamMemberError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<AddOrganizationTeamMemberRequest>,
-  output: __S(10) as any as S.Schema<OrganizationTeamMembership>,
+  input: AddOrganizationTeamMemberRequest,
+  output: OrganizationTeamMembership,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -13046,8 +17620,8 @@ export const assignShardConfigurationProfileShards: API.OperationMethod<
   AssignShardConfigurationProfileShardsError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11) as any as S.Schema<AssignShardConfigurationProfileShardsRequest>,
-  output: __S(15) as any as S.Schema<AssignShardConfigurationProfileShardsResponse>,
+  input: AssignShardConfigurationProfileShardsRequest,
+  output: AssignShardConfigurationProfileShardsResponse,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -13065,8 +17639,8 @@ export const bulkCreateShardConfigurationProfileShards: API.OperationMethod<
   BulkCreateShardConfigurationProfileShardsError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16) as any as S.Schema<BulkCreateShardConfigurationProfileShardsRequest>,
-  output: __S(17) as any as S.Schema<BulkCreateShardConfigurationProfileShardsResponse>,
+  input: BulkCreateShardConfigurationProfileShardsRequest,
+  output: BulkCreateShardConfigurationProfileShardsResponse,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -13084,8 +17658,8 @@ export const cancelAdminChangeRequest: API.OperationMethod<
   CancelAdminChangeRequestError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18) as any as S.Schema<CancelAdminChangeRequestRequest>,
-  output: __S(19) as any as S.Schema<CancelAdminChangeRequestResponse>,
+  input: CancelAdminChangeRequestRequest,
+  output: CancelAdminChangeRequestResponse,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -13103,8 +17677,8 @@ export const cancelBouncerResizeRequest: API.OperationMethod<
   CancelBouncerResizeRequestError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20) as any as S.Schema<CancelBouncerResizeRequestRequest>,
-  output: __S(19) as any as S.Schema<CancelBouncerResizeRequestResponse>,
+  input: CancelBouncerResizeRequestRequest,
+  output: CancelBouncerResizeRequestResponse,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -13122,8 +17696,8 @@ export const cancelBranchChangeRequest: API.OperationMethod<
   CancelBranchChangeRequestError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21) as any as S.Schema<CancelBranchChangeRequestRequest>,
-  output: __S(19) as any as S.Schema<CancelBranchChangeRequestResponse>,
+  input: CancelBranchChangeRequestRequest,
+  output: CancelBranchChangeRequestResponse,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -13141,8 +17715,8 @@ export const cancelBranchConfigChangeRequest: API.OperationMethod<
   CancelBranchConfigChangeRequestError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22) as any as S.Schema<CancelBranchConfigChangeRequestRequest>,
-  output: __S(19) as any as S.Schema<CancelBranchConfigChangeRequestResponse>,
+  input: CancelBranchConfigChangeRequestRequest,
+  output: CancelBranchConfigChangeRequestResponse,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -13160,8 +17734,8 @@ export const cancelDeployRequest: API.OperationMethod<
   CancelDeployRequestError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23) as any as S.Schema<CancelDeployRequestRequest>,
-  output: __S(34) as any as S.Schema<DatabaseDeployRequest>,
+  input: CancelDeployRequestRequest,
+  output: DatabaseDeployRequest,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -13179,8 +17753,8 @@ export const cancelKeyspaceConfigChangeRequest: API.OperationMethod<
   CancelKeyspaceConfigChangeRequestError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35) as any as S.Schema<CancelKeyspaceConfigChangeRequestRequest>,
-  output: __S(19) as any as S.Schema<CancelKeyspaceConfigChangeRequestResponse>,
+  input: CancelKeyspaceConfigChangeRequestRequest,
+  output: CancelKeyspaceConfigChangeRequestResponse,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -13198,8 +17772,8 @@ export const cancelKeyspaceResizeRequest: API.OperationMethod<
   CancelKeyspaceResizeRequestError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36) as any as S.Schema<CancelKeyspaceResizeRequestRequest>,
-  output: __S(19) as any as S.Schema<CancelKeyspaceResizeRequestResponse>,
+  input: CancelKeyspaceResizeRequestRequest,
+  output: CancelKeyspaceResizeRequestResponse,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -13217,8 +17791,8 @@ export const cancelMoveTablesWorkflow: API.OperationMethod<
   CancelMoveTablesWorkflowError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37) as any as S.Schema<CancelMoveTablesWorkflowRequest>,
-  output: __S(19) as any as S.Schema<CancelMoveTablesWorkflowResponse>,
+  input: CancelMoveTablesWorkflowRequest,
+  output: CancelMoveTablesWorkflowResponse,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -13236,8 +17810,8 @@ export const cancelNekiChangeRequest: API.OperationMethod<
   CancelNekiChangeRequestError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38) as any as S.Schema<CancelNekiChangeRequestRequest>,
-  output: __S(39) as any as S.Schema<CancelNekiChangeRequestResponse>,
+  input: CancelNekiChangeRequestRequest,
+  output: CancelNekiChangeRequestResponse,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -13255,8 +17829,8 @@ export const cancelOrganizationInvitation: API.OperationMethod<
   CancelOrganizationInvitationError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40) as any as S.Schema<CancelOrganizationInvitationRequest>,
-  output: __S(19) as any as S.Schema<CancelOrganizationInvitationResponse>,
+  input: CancelOrganizationInvitationRequest,
+  output: CancelOrganizationInvitationResponse,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -13274,8 +17848,8 @@ export const cancelRouterChangeRequest: API.OperationMethod<
   CancelRouterChangeRequestError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41) as any as S.Schema<CancelRouterChangeRequestRequest>,
-  output: __S(19) as any as S.Schema<CancelRouterChangeRequestResponse>,
+  input: CancelRouterChangeRequestRequest,
+  output: CancelRouterChangeRequestResponse,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -13293,8 +17867,8 @@ export const cancelShardConfigurationProfileChangeRequest: API.OperationMethod<
   CancelShardConfigurationProfileChangeRequestError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42) as any as S.Schema<CancelShardConfigurationProfileChangeRequestRequest>,
-  output: __S(19) as any as S.Schema<CancelShardConfigurationProfileChangeRequestResponse>,
+  input: CancelShardConfigurationProfileChangeRequestRequest,
+  output: CancelShardConfigurationProfileChangeRequestResponse,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -13312,8 +17886,8 @@ export const cancelSidecarChangeRequest: API.OperationMethod<
   CancelSidecarChangeRequestError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43) as any as S.Schema<CancelSidecarChangeRequestRequest>,
-  output: __S(19) as any as S.Schema<CancelSidecarChangeRequestResponse>,
+  input: CancelSidecarChangeRequestRequest,
+  output: CancelSidecarChangeRequestResponse,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -13327,8 +17901,8 @@ export const cancelWorkflow: API.OperationMethod<
   CancelWorkflowError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44) as any as S.Schema<CancelWorkflowRequest>,
-  output: __S(45) as any as S.Schema<Workflow>,
+  input: CancelWorkflowRequest,
+  output: Workflow,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -13342,8 +17916,8 @@ export const completeRevert: API.OperationMethod<
   CompleteRevertError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(46) as any as S.Schema<CompleteRevertRequest>,
-  output: __S(34) as any as S.Schema<DatabaseDeployRequest>,
+  input: CompleteRevertRequest,
+  output: DatabaseDeployRequest,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -13357,8 +17931,8 @@ export const completeWorkflow: API.OperationMethod<
   CompleteWorkflowError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47) as any as S.Schema<CompleteWorkflowRequest>,
-  output: __S(45) as any as S.Schema<Workflow>,
+  input: CompleteWorkflowRequest,
+  output: Workflow,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -13376,8 +17950,8 @@ export const configureOrganizationSso: API.OperationMethod<
   ConfigureOrganizationSsoError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48) as any as S.Schema<ConfigureOrganizationSsoRequest>,
-  output: __S(49) as any as S.Schema<ConfigureOrganizationSsoResponse>,
+  input: ConfigureOrganizationSsoRequest,
+  output: ConfigureOrganizationSsoResponse,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -13391,8 +17965,8 @@ export const createBackup: API.OperationMethod<
   CreateBackupError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(50) as any as S.Schema<CreateBackupRequest>,
-  output: __S(54) as any as S.Schema<Backup>,
+  input: CreateBackupRequest,
+  output: Backup,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -13410,8 +17984,8 @@ export const createBackupPolicy: API.OperationMethod<
   CreateBackupPolicyError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(55) as any as S.Schema<CreateBackupPolicyRequest>,
-  output: __S(52) as any as S.Schema<BackupPolicy>,
+  input: CreateBackupPolicyRequest,
+  output: BackupPolicy,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -13425,8 +17999,8 @@ export const createBouncer: API.OperationMethod<
   CreateBouncerError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56) as any as S.Schema<CreateBouncerRequest>,
-  output: __S(60) as any as S.Schema<PostgresBouncer>,
+  input: CreateBouncerRequest,
+  output: PostgresBouncer,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -13440,8 +18014,8 @@ export const createBranch: API.OperationMethod<
   CreateBranchError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(62) as any as S.Schema<CreateBranchRequest>,
-  output: __S(64) as any as S.Schema<DatabaseBranch>,
+  input: CreateBranchRequest,
+  output: DatabaseBranch,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -13459,8 +18033,8 @@ export const createBranchConfigChangeRequest: API.OperationMethod<
   CreateBranchConfigChangeRequestError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65) as any as S.Schema<CreateBranchConfigChangeRequestRequest>,
-  output: __S(66) as any as S.Schema<BranchConfigChangeRequest>,
+  input: CreateBranchConfigChangeRequestRequest,
+  output: BranchConfigChangeRequest,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -13478,8 +18052,8 @@ export const createBranchLogSignature: API.OperationMethod<
   CreateBranchLogSignatureError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(67) as any as S.Schema<CreateBranchLogSignatureRequest>,
-  output: __S(68) as any as S.Schema<CreateBranchLogSignatureResponse>,
+  input: CreateBranchLogSignatureRequest,
+  output: CreateBranchLogSignatureResponse,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -13493,8 +18067,8 @@ export const createDatabase: API.OperationMethod<
   CreateDatabaseError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(69) as any as S.Schema<CreateDatabaseRequest>,
-  output: __S(70) as any as S.Schema<Database>,
+  input: CreateDatabaseRequest,
+  output: Database,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -13512,8 +18086,8 @@ export const createDatabasePostgresCidr: API.OperationMethod<
   CreateDatabasePostgresCidrError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(71) as any as S.Schema<CreateDatabasePostgresCidrRequest>,
-  output: __S(72) as any as S.Schema<PostgresClusterCidr>,
+  input: CreateDatabasePostgresCidrRequest,
+  output: PostgresClusterCidr,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -13531,8 +18105,8 @@ export const createDedicatedReadReplica: API.OperationMethod<
   CreateDedicatedReadReplicaError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(74) as any as S.Schema<CreateDedicatedReadReplicaRequest>,
-  output: __S(78) as any as S.Schema<PostgresReadOnlyReplica>,
+  input: CreateDedicatedReadReplicaRequest,
+  output: PostgresReadOnlyReplica,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -13550,8 +18124,8 @@ export const createDeployRequest: API.OperationMethod<
   CreateDeployRequestError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(79) as any as S.Schema<CreateDeployRequestRequest>,
-  output: __S(34) as any as S.Schema<DatabaseDeployRequest>,
+  input: CreateDeployRequestRequest,
+  output: DatabaseDeployRequest,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -13569,8 +18143,8 @@ export const createInsightsAgentRun: API.OperationMethod<
   CreateInsightsAgentRunError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(80) as any as S.Schema<CreateInsightsAgentRunRequest>,
-  output: __S(81) as any as S.Schema<InsightsAgentRun>,
+  input: CreateInsightsAgentRunRequest,
+  output: InsightsAgentRun,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -13584,8 +18158,8 @@ export const createKeyspace: API.OperationMethod<
   CreateKeyspaceError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(82) as any as S.Schema<CreateKeyspaceRequest>,
-  output: __S(87) as any as S.Schema<DatabaseBranchKeyspace>,
+  input: CreateKeyspaceRequest,
+  output: DatabaseBranchKeyspace,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -13603,8 +18177,8 @@ export const createKeyspaceConfigChangeRequest: API.OperationMethod<
   CreateKeyspaceConfigChangeRequestError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(88) as any as S.Schema<CreateKeyspaceConfigChangeRequestRequest>,
-  output: __S(89) as any as S.Schema<KeyspaceConfigChangeRequest>,
+  input: CreateKeyspaceConfigChangeRequestRequest,
+  output: KeyspaceConfigChangeRequest,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -13622,8 +18196,8 @@ export const createMoveTablesWorkflow: API.OperationMethod<
   CreateMoveTablesWorkflowError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(90) as any as S.Schema<CreateMoveTablesWorkflowRequest>,
-  output: __S(19) as any as S.Schema<CreateMoveTablesWorkflowResponse>,
+  input: CreateMoveTablesWorkflowRequest,
+  output: CreateMoveTablesWorkflowResponse,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -13637,8 +18211,8 @@ export const createOauthToken: API.OperationMethod<
   CreateOauthTokenError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(91) as any as S.Schema<CreateOauthTokenRequest>,
-  output: __S(109) as any as S.Schema<ServiceToken>,
+  input: CreateOauthTokenRequest,
+  output: ServiceToken,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -13656,8 +18230,8 @@ export const createOrganizationInvitation: API.OperationMethod<
   CreateOrganizationInvitationError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(110) as any as S.Schema<CreateOrganizationInvitationRequest>,
-  output: __S(111) as any as S.Schema<OrganizationInvitation>,
+  input: CreateOrganizationInvitationRequest,
+  output: OrganizationInvitation,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -13675,8 +18249,8 @@ export const createOrganizationSsoDomain: API.OperationMethod<
   CreateOrganizationSsoDomainError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(112) as any as S.Schema<CreateOrganizationSsoDomainRequest>,
-  output: __S(49) as any as S.Schema<CreateOrganizationSsoDomainResponse>,
+  input: CreateOrganizationSsoDomainRequest,
+  output: CreateOrganizationSsoDomainResponse,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -13695,8 +18269,8 @@ export const createOrganizationTeam: API.OperationMethod<
   CreateOrganizationTeamError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(113) as any as S.Schema<CreateOrganizationTeamRequest>,
-  output: __S(117) as any as S.Schema<OrganizationTeam>,
+  input: CreateOrganizationTeamRequest,
+  output: OrganizationTeam,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -13710,8 +18284,8 @@ export const createPassword: API.OperationMethod<
   CreatePasswordError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(118) as any as S.Schema<CreatePasswordRequest>,
-  output: __S(119) as any as S.Schema<DatabaseBranchPasswordWithSecret>,
+  input: CreatePasswordRequest,
+  output: DatabaseBranchPasswordWithSecret,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -13729,8 +18303,8 @@ export const createQueryPatternsReport: API.OperationMethod<
   CreateQueryPatternsReportError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(120) as any as S.Schema<CreateQueryPatternsReportRequest>,
-  output: __S(121) as any as S.Schema<QueryPatternsDownload>,
+  input: CreateQueryPatternsReportRequest,
+  output: QueryPatternsDownload,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -13744,8 +18318,8 @@ export const createRole: API.OperationMethod<
   CreateRoleError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(123) as any as S.Schema<CreateRoleRequest>,
-  output: __S(125) as any as S.Schema<PostgresRole>,
+  input: CreateRoleRequest,
+  output: PostgresRole,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -13759,8 +18333,8 @@ export const createRouter: API.OperationMethod<
   CreateRouterError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(126) as any as S.Schema<CreateRouterRequest>,
-  output: __S(128) as any as S.Schema<NekiRouter>,
+  input: CreateRouterRequest,
+  output: NekiRouter,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -13778,8 +18352,8 @@ export const createServiceToken: API.OperationMethod<
   CreateServiceTokenError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(129) as any as S.Schema<CreateServiceTokenRequest>,
-  output: __S(109) as any as S.Schema<ServiceToken>,
+  input: CreateServiceTokenRequest,
+  output: ServiceToken,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -13793,8 +18367,8 @@ export const createShard: API.OperationMethod<
   CreateShardError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(130) as any as S.Schema<CreateShardRequest>,
-  output: __S(131) as any as S.Schema<CreateShardResponse>,
+  input: CreateShardRequest,
+  output: CreateShardResponse,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -13812,8 +18386,8 @@ export const createShardConfigurationProfile: API.OperationMethod<
   CreateShardConfigurationProfileError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(132) as any as S.Schema<CreateShardConfigurationProfileRequest>,
-  output: __S(134) as any as S.Schema<NekiShardConfigurationProfile>,
+  input: CreateShardConfigurationProfileRequest,
+  output: NekiShardConfigurationProfile,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -13831,8 +18405,8 @@ export const createShardConfigurationProfileShard: API.OperationMethod<
   CreateShardConfigurationProfileShardError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(135) as any as S.Schema<CreateShardConfigurationProfileShardRequest>,
-  output: __S(136) as any as S.Schema<NekiShard>,
+  input: CreateShardConfigurationProfileShardRequest,
+  output: NekiShard,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -13851,8 +18425,8 @@ export const createSwitchover: API.OperationMethod<
   CreateSwitchoverError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(137) as any as S.Schema<CreateSwitchoverRequest>,
-  output: __S(138) as any as S.Schema<PostgresSwitchover>,
+  input: CreateSwitchoverRequest,
+  output: PostgresSwitchover,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -13870,8 +18444,8 @@ export const createTrafficBudget: API.OperationMethod<
   CreateTrafficBudgetError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(139) as any as S.Schema<CreateTrafficBudgetRequest>,
-  output: __S(144) as any as S.Schema<TrafficBudget>,
+  input: CreateTrafficBudgetRequest,
+  output: TrafficBudget,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -13889,8 +18463,8 @@ export const createTrafficRule: API.OperationMethod<
   CreateTrafficRuleError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(145) as any as S.Schema<CreateTrafficRuleRequest>,
-  output: __S(148) as any as S.Schema<TrafficRule>,
+  input: CreateTrafficRuleRequest,
+  output: TrafficRule,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -13904,8 +18478,8 @@ export const createWebhook: API.OperationMethod<
   CreateWebhookError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(149) as any as S.Schema<CreateWebhookRequest>,
-  output: __S(150) as any as S.Schema<DatabaseWebhook>,
+  input: CreateWebhookRequest,
+  output: DatabaseWebhook,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -13919,8 +18493,8 @@ export const createWorkflow: API.OperationMethod<
   CreateWorkflowError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(151) as any as S.Schema<CreateWorkflowRequest>,
-  output: __S(45) as any as S.Schema<Workflow>,
+  input: CreateWorkflowRequest,
+  output: Workflow,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -13934,8 +18508,8 @@ export const deleteBackup: API.OperationMethod<
   DeleteBackupError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(152) as any as S.Schema<DeleteBackupRequest>,
-  output: __S(131) as any as S.Schema<DeleteBackupResponse>,
+  input: DeleteBackupRequest,
+  output: DeleteBackupResponse,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -13953,8 +18527,8 @@ export const deleteBackupPolicy: API.OperationMethod<
   DeleteBackupPolicyError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(153) as any as S.Schema<DeleteBackupPolicyRequest>,
-  output: __S(131) as any as S.Schema<DeleteBackupPolicyResponse>,
+  input: DeleteBackupPolicyRequest,
+  output: DeleteBackupPolicyResponse,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -13968,8 +18542,8 @@ export const deleteBouncer: API.OperationMethod<
   DeleteBouncerError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(154) as any as S.Schema<DeleteBouncerRequest>,
-  output: __S(131) as any as S.Schema<DeleteBouncerResponse>,
+  input: DeleteBouncerRequest,
+  output: DeleteBouncerResponse,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -13983,8 +18557,8 @@ export const deleteBranch: API.OperationMethod<
   DeleteBranchError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(155) as any as S.Schema<DeleteBranchRequest>,
-  output: __S(131) as any as S.Schema<DeleteBranchResponse>,
+  input: DeleteBranchRequest,
+  output: DeleteBranchResponse,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -13998,8 +18572,8 @@ export const deleteDatabase: API.OperationMethod<
   DeleteDatabaseError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(156) as any as S.Schema<DeleteDatabaseRequest>,
-  output: __S(131) as any as S.Schema<DeleteDatabaseResponse>,
+  input: DeleteDatabaseRequest,
+  output: DeleteDatabaseResponse,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -14017,8 +18591,8 @@ export const deleteDatabasePostgresCidr: API.OperationMethod<
   DeleteDatabasePostgresCidrError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(157) as any as S.Schema<DeleteDatabasePostgresCidrRequest>,
-  output: __S(19) as any as S.Schema<DeleteDatabasePostgresCidrResponse>,
+  input: DeleteDatabasePostgresCidrRequest,
+  output: DeleteDatabasePostgresCidrResponse,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -14036,8 +18610,8 @@ export const deleteDedicatedReadReplica: API.OperationMethod<
   DeleteDedicatedReadReplicaError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(158) as any as S.Schema<DeleteDedicatedReadReplicaRequest>,
-  output: __S(19) as any as S.Schema<DeleteDedicatedReadReplicaResponse>,
+  input: DeleteDedicatedReadReplicaRequest,
+  output: DeleteDedicatedReadReplicaResponse,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -14051,8 +18625,8 @@ export const deleteKeyspace: API.OperationMethod<
   DeleteKeyspaceError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(159) as any as S.Schema<DeleteKeyspaceRequest>,
-  output: __S(131) as any as S.Schema<DeleteKeyspaceResponse>,
+  input: DeleteKeyspaceRequest,
+  output: DeleteKeyspaceResponse,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -14066,8 +18640,8 @@ export const deleteOauthToken: API.OperationMethod<
   DeleteOauthTokenError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(160) as any as S.Schema<DeleteOauthTokenRequest>,
-  output: __S(131) as any as S.Schema<DeleteOauthTokenResponse>,
+  input: DeleteOauthTokenRequest,
+  output: DeleteOauthTokenResponse,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -14085,8 +18659,8 @@ export const deleteOrganizationBillingPaymentMethod: API.OperationMethod<
   DeleteOrganizationBillingPaymentMethodError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(161) as any as S.Schema<DeleteOrganizationBillingPaymentMethodRequest>,
-  output: __S(19) as any as S.Schema<DeleteOrganizationBillingPaymentMethodResponse>,
+  input: DeleteOrganizationBillingPaymentMethodRequest,
+  output: DeleteOrganizationBillingPaymentMethodResponse,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -14104,8 +18678,8 @@ export const deleteOrganizationSsoDomain: API.OperationMethod<
   DeleteOrganizationSsoDomainError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(162) as any as S.Schema<DeleteOrganizationSsoDomainRequest>,
-  output: __S(19) as any as S.Schema<DeleteOrganizationSsoDomainResponse>,
+  input: DeleteOrganizationSsoDomainRequest,
+  output: DeleteOrganizationSsoDomainResponse,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -14124,8 +18698,8 @@ export const deleteOrganizationTeam: API.OperationMethod<
   DeleteOrganizationTeamError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(163) as any as S.Schema<DeleteOrganizationTeamRequest>,
-  output: __S(131) as any as S.Schema<DeleteOrganizationTeamResponse>,
+  input: DeleteOrganizationTeamRequest,
+  output: DeleteOrganizationTeamResponse,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -14139,8 +18713,8 @@ export const deletePassword: API.OperationMethod<
   DeletePasswordError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(164) as any as S.Schema<DeletePasswordRequest>,
-  output: __S(131) as any as S.Schema<DeletePasswordResponse>,
+  input: DeletePasswordRequest,
+  output: DeletePasswordResponse,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -14158,8 +18732,8 @@ export const deleteQueryPatternsReport: API.OperationMethod<
   DeleteQueryPatternsReportError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(165) as any as S.Schema<DeleteQueryPatternsReportRequest>,
-  output: __S(19) as any as S.Schema<DeleteQueryPatternsReportResponse>,
+  input: DeleteQueryPatternsReportRequest,
+  output: DeleteQueryPatternsReportResponse,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -14173,8 +18747,8 @@ export const deleteRole: API.OperationMethod<
   DeleteRoleError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(166) as any as S.Schema<DeleteRoleRequest>,
-  output: __S(131) as any as S.Schema<DeleteRoleResponse>,
+  input: DeleteRoleRequest,
+  output: DeleteRoleResponse,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -14188,8 +18762,8 @@ export const deleteRouter: API.OperationMethod<
   DeleteRouterError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(167) as any as S.Schema<DeleteRouterRequest>,
-  output: __S(131) as any as S.Schema<DeleteRouterResponse>,
+  input: DeleteRouterRequest,
+  output: DeleteRouterResponse,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -14207,8 +18781,8 @@ export const deleteServiceToken: API.OperationMethod<
   DeleteServiceTokenError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(168) as any as S.Schema<DeleteServiceTokenRequest>,
-  output: __S(131) as any as S.Schema<DeleteServiceTokenResponse>,
+  input: DeleteServiceTokenRequest,
+  output: DeleteServiceTokenResponse,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -14222,8 +18796,8 @@ export const deleteShard: API.OperationMethod<
   DeleteShardError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(169) as any as S.Schema<DeleteShardRequest>,
-  output: __S(131) as any as S.Schema<DeleteShardResponse>,
+  input: DeleteShardRequest,
+  output: DeleteShardResponse,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -14241,8 +18815,8 @@ export const deleteShardConfigurationProfile: API.OperationMethod<
   DeleteShardConfigurationProfileError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(170) as any as S.Schema<DeleteShardConfigurationProfileRequest>,
-  output: __S(19) as any as S.Schema<DeleteShardConfigurationProfileResponse>,
+  input: DeleteShardConfigurationProfileRequest,
+  output: DeleteShardConfigurationProfileResponse,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -14260,8 +18834,8 @@ export const deleteShardConfigurationProfileShard: API.OperationMethod<
   DeleteShardConfigurationProfileShardError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(171) as any as S.Schema<DeleteShardConfigurationProfileShardRequest>,
-  output: __S(19) as any as S.Schema<DeleteShardConfigurationProfileShardResponse>,
+  input: DeleteShardConfigurationProfileShardRequest,
+  output: DeleteShardConfigurationProfileShardResponse,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -14279,8 +18853,8 @@ export const deleteShardConfigurationProfileShards: API.OperationMethod<
   DeleteShardConfigurationProfileShardsError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(172) as any as S.Schema<DeleteShardConfigurationProfileShardsRequest>,
-  output: __S(19) as any as S.Schema<DeleteShardConfigurationProfileShardsResponse>,
+  input: DeleteShardConfigurationProfileShardsRequest,
+  output: DeleteShardConfigurationProfileShardsResponse,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -14298,8 +18872,8 @@ export const deleteTrafficBudget: API.OperationMethod<
   DeleteTrafficBudgetError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(173) as any as S.Schema<DeleteTrafficBudgetRequest>,
-  output: __S(131) as any as S.Schema<DeleteTrafficBudgetResponse>,
+  input: DeleteTrafficBudgetRequest,
+  output: DeleteTrafficBudgetResponse,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -14317,8 +18891,8 @@ export const deleteTrafficRule: API.OperationMethod<
   DeleteTrafficRuleError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(174) as any as S.Schema<DeleteTrafficRuleRequest>,
-  output: __S(131) as any as S.Schema<DeleteTrafficRuleResponse>,
+  input: DeleteTrafficRuleRequest,
+  output: DeleteTrafficRuleResponse,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -14332,8 +18906,8 @@ export const deleteWebhook: API.OperationMethod<
   DeleteWebhookError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(175) as any as S.Schema<DeleteWebhookRequest>,
-  output: __S(131) as any as S.Schema<DeleteWebhookResponse>,
+  input: DeleteWebhookRequest,
+  output: DeleteWebhookResponse,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -14347,8 +18921,8 @@ export const demoteBranch: API.OperationMethod<
   DemoteBranchError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(176) as any as S.Schema<DemoteBranchRequest>,
-  output: __S(64) as any as S.Schema<DatabaseBranch>,
+  input: DemoteBranchRequest,
+  output: DatabaseBranch,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -14366,8 +18940,8 @@ export const deployCheckRequestStorage: API.OperationMethod<
   DeployCheckRequestStorageError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(177) as any as S.Schema<DeployCheckRequestStorageRequest>,
-  output: __S(181) as any as S.Schema<DeployCheckRequestStorageResponse>,
+  input: DeployCheckRequestStorageRequest,
+  output: DeployCheckRequestStorageResponse,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -14385,8 +18959,8 @@ export const deployCloseRequest: API.OperationMethod<
   DeployCloseRequestError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(182) as any as S.Schema<DeployCloseRequestRequest>,
-  output: __S(34) as any as S.Schema<DatabaseDeployRequest>,
+  input: DeployCloseRequestRequest,
+  output: DatabaseDeployRequest,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -14404,8 +18978,8 @@ export const deployCompleteErrored: API.OperationMethod<
   DeployCompleteErroredError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(183) as any as S.Schema<DeployCompleteErroredRequest>,
-  output: __S(34) as any as S.Schema<DatabaseDeployRequest>,
+  input: DeployCompleteErroredRequest,
+  output: DatabaseDeployRequest,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -14423,8 +18997,8 @@ export const deployCompleteGatedRequest: API.OperationMethod<
   DeployCompleteGatedRequestError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(184) as any as S.Schema<DeployCompleteGatedRequestRequest>,
-  output: __S(34) as any as S.Schema<DatabaseDeployRequest>,
+  input: DeployCompleteGatedRequestRequest,
+  output: DatabaseDeployRequest,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -14442,8 +19016,8 @@ export const deployForceCutoverRequest: API.OperationMethod<
   DeployForceCutoverRequestError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(185) as any as S.Schema<DeployForceCutoverRequestRequest>,
-  output: __S(34) as any as S.Schema<DatabaseDeployRequest>,
+  input: DeployForceCutoverRequestRequest,
+  output: DatabaseDeployRequest,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -14461,8 +19035,8 @@ export const deployQueueRequest: API.OperationMethod<
   DeployQueueRequestError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(186) as any as S.Schema<DeployQueueRequestRequest>,
-  output: __S(34) as any as S.Schema<DatabaseDeployRequest>,
+  input: DeployQueueRequestRequest,
+  output: DatabaseDeployRequest,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -14480,8 +19054,8 @@ export const deployReviewRequest: API.OperationMethod<
   DeployReviewRequestError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(187) as any as S.Schema<DeployReviewRequestRequest>,
-  output: __S(188) as any as S.Schema<DeployRequestReview>,
+  input: DeployReviewRequestRequest,
+  output: DeployRequestReview,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -14499,8 +19073,8 @@ export const disableOrganizationSso: API.OperationMethod<
   DisableOrganizationSsoError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(189) as any as S.Schema<DisableOrganizationSsoRequest>,
-  output: __S(192) as any as S.Schema<OrganizationSsoSerializer>,
+  input: DisableOrganizationSsoRequest,
+  output: OrganizationSsoSerializer,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -14518,8 +19092,8 @@ export const disableOrganizationSsoDirectory: API.OperationMethod<
   DisableOrganizationSsoDirectoryError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(193) as any as S.Schema<DisableOrganizationSsoDirectoryRequest>,
-  output: __S(192) as any as S.Schema<OrganizationSsoSerializer>,
+  input: DisableOrganizationSsoDirectoryRequest,
+  output: OrganizationSsoSerializer,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -14537,8 +19111,8 @@ export const disableSafeMigrations: API.OperationMethod<
   DisableSafeMigrationsError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(194) as any as S.Schema<DisableSafeMigrationsRequest>,
-  output: __S(64) as any as S.Schema<DatabaseBranch>,
+  input: DisableSafeMigrationsRequest,
+  output: DatabaseBranch,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -14556,8 +19130,8 @@ export const dismissSchemaRecommendation: API.OperationMethod<
   DismissSchemaRecommendationError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(195) as any as S.Schema<DismissSchemaRecommendationRequest>,
-  output: __S(197) as any as S.Schema<SchemaRecommendation>,
+  input: DismissSchemaRecommendationRequest,
+  output: SchemaRecommendation,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -14575,8 +19149,8 @@ export const enableOrganizationSso: API.OperationMethod<
   EnableOrganizationSsoError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(198) as any as S.Schema<EnableOrganizationSsoRequest>,
-  output: __S(192) as any as S.Schema<OrganizationSsoSerializer>,
+  input: EnableOrganizationSsoRequest,
+  output: OrganizationSsoSerializer,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -14594,8 +19168,8 @@ export const enableOrganizationSsoDirectory: API.OperationMethod<
   EnableOrganizationSsoDirectoryError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(199) as any as S.Schema<EnableOrganizationSsoDirectoryRequest>,
-  output: __S(49) as any as S.Schema<EnableOrganizationSsoDirectoryResponse>,
+  input: EnableOrganizationSsoDirectoryRequest,
+  output: EnableOrganizationSsoDirectoryResponse,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -14613,8 +19187,8 @@ export const enableSafeMigrations: API.OperationMethod<
   EnableSafeMigrationsError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(200) as any as S.Schema<EnableSafeMigrationsRequest>,
-  output: __S(64) as any as S.Schema<DatabaseBranch>,
+  input: EnableSafeMigrationsRequest,
+  output: DatabaseBranch,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -14628,8 +19202,8 @@ export const getAdmin: API.OperationMethod<
   GetAdminError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(201) as any as S.Schema<GetAdminRequest>,
-  output: __S(202) as any as S.Schema<NekiAdmin>,
+  input: GetAdminRequest,
+  output: NekiAdmin,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -14647,8 +19221,8 @@ export const getAdminChangeRequest: API.OperationMethod<
   GetAdminChangeRequestError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(203) as any as S.Schema<GetAdminChangeRequestRequest>,
-  output: __S(131) as any as S.Schema<GetAdminChangeRequestResponse>,
+  input: GetAdminChangeRequestRequest,
+  output: GetAdminChangeRequestResponse,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -14662,8 +19236,8 @@ export const getBackup: API.OperationMethod<
   GetBackupError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(204) as any as S.Schema<GetBackupRequest>,
-  output: __S(54) as any as S.Schema<Backup>,
+  input: GetBackupRequest,
+  output: Backup,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -14677,8 +19251,8 @@ export const getBackupPolicy: API.OperationMethod<
   GetBackupPolicyError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(205) as any as S.Schema<GetBackupPolicyRequest>,
-  output: __S(52) as any as S.Schema<BackupPolicy>,
+  input: GetBackupPolicyRequest,
+  output: BackupPolicy,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -14692,8 +19266,8 @@ export const getBouncer: API.OperationMethod<
   GetBouncerError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(206) as any as S.Schema<GetBouncerRequest>,
-  output: __S(60) as any as S.Schema<PostgresBouncer>,
+  input: GetBouncerRequest,
+  output: PostgresBouncer,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -14707,8 +19281,8 @@ export const getBranch: API.OperationMethod<
   GetBranchError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(207) as any as S.Schema<GetBranchRequest>,
-  output: __S(64) as any as S.Schema<DatabaseBranch>,
+  input: GetBranchRequest,
+  output: DatabaseBranch,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -14722,8 +19296,8 @@ export const getBranchAnomaly: API.OperationMethod<
   GetBranchAnomalyError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(208) as any as S.Schema<GetBranchAnomalyRequest>,
-  output: __S(211) as any as S.Schema<Anomaly>,
+  input: GetBranchAnomalyRequest,
+  output: Anomaly,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -14741,8 +19315,8 @@ export const getBranchChangeRequest: API.OperationMethod<
   GetBranchChangeRequestError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(212) as any as S.Schema<GetBranchChangeRequestRequest>,
-  output: __S(213) as any as S.Schema<PostgresClusterResizeRequest>,
+  input: GetBranchChangeRequestRequest,
+  output: PostgresClusterResizeRequest,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -14760,8 +19334,8 @@ export const getBranchConfigChangeRequest: API.OperationMethod<
   GetBranchConfigChangeRequestError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(214) as any as S.Schema<GetBranchConfigChangeRequestRequest>,
-  output: __S(66) as any as S.Schema<BranchConfigChangeRequest>,
+  input: GetBranchConfigChangeRequestRequest,
+  output: BranchConfigChangeRequest,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -14779,8 +19353,8 @@ export const getBranchKeyspaceTableMetrics: API.OperationMethod<
   GetBranchKeyspaceTableMetricsError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(215) as any as S.Schema<GetBranchKeyspaceTableMetricsRequest>,
-  output: __S(19) as any as S.Schema<GetBranchKeyspaceTableMetricsResponse>,
+  input: GetBranchKeyspaceTableMetricsRequest,
+  output: GetBranchKeyspaceTableMetricsResponse,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -14799,8 +19373,8 @@ export const getBranchMetrics: API.OperationMethod<
   GetBranchMetricsError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(216) as any as S.Schema<GetBranchMetricsRequest>,
-  output: __S(221) as any as S.Schema<MetricSeries>,
+  input: GetBranchMetricsRequest,
+  output: MetricSeries,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -14814,8 +19388,8 @@ export const getBranchQuery: API.OperationMethod<
   GetBranchQueryError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(222) as any as S.Schema<GetBranchQueryRequest>,
-  output: __S(224) as any as S.Schema<Query>,
+  input: GetBranchQueryRequest,
+  output: Query,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -14835,8 +19409,8 @@ export const getBranchQueryError: API.PaginatedOperationMethod<
   PaginatedQueryDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(225) as any as S.Schema<GetBranchQueryErrorRequest>,
-    output: __S(228) as any as S.Schema<PaginatedQuery>,
+    input: GetBranchQueryErrorRequest,
+    output: PaginatedQuery,
     errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
     protocol: PlanetScaleProtocol,
     retry: Retry.Retry,
@@ -14863,8 +19437,8 @@ export const getBranchQueryMetrics: API.OperationMethod<
   GetBranchQueryMetricsError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(229) as any as S.Schema<GetBranchQueryMetricsRequest>,
-  output: __S(221) as any as S.Schema<MetricSeries>,
+  input: GetBranchQueryMetricsRequest,
+  output: MetricSeries,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -14883,8 +19457,8 @@ export const getBranchQueryTag: API.OperationMethod<
   GetBranchQueryTagError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(230) as any as S.Schema<GetBranchQueryTagRequest>,
-  output: __S(233) as any as S.Schema<QueryTag>,
+  input: GetBranchQueryTagRequest,
+  output: QueryTag,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -14902,8 +19476,8 @@ export const getBranchResizeRequest: API.OperationMethod<
   GetBranchResizeRequestError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(234) as any as S.Schema<GetBranchResizeRequestRequest>,
-  output: __S(235) as any as S.Schema<MysqlClusterResizeRequest>,
+  input: GetBranchResizeRequestRequest,
+  output: MysqlClusterResizeRequest,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -14917,8 +19491,8 @@ export const getBranchSchema: API.OperationMethod<
   GetBranchSchemaError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(236) as any as S.Schema<GetBranchSchemaRequest>,
-  output: __S(239) as any as S.Schema<GetBranchSchemaResponse>,
+  input: GetBranchSchemaRequest,
+  output: GetBranchSchemaResponse,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -14936,8 +19510,8 @@ export const getBranchTableMetrics: API.OperationMethod<
   GetBranchTableMetricsError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(240) as any as S.Schema<GetBranchTableMetricsRequest>,
-  output: __S(131) as any as S.Schema<GetBranchTableMetricsResponse>,
+  input: GetBranchTableMetricsRequest,
+  output: GetBranchTableMetricsResponse,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -14956,8 +19530,8 @@ export const getBranchTagMetrics: API.OperationMethod<
   GetBranchTagMetricsError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(241) as any as S.Schema<GetBranchTagMetricsRequest>,
-  output: __S(221) as any as S.Schema<MetricSeries>,
+  input: GetBranchTagMetricsRequest,
+  output: MetricSeries,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -14971,8 +19545,8 @@ export const getCurrentUser: API.OperationMethod<
   GetCurrentUserError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(242) as any as S.Schema<GetCurrentUserRequest>,
-  output: __S(243) as any as S.Schema<User>,
+  input: GetCurrentUserRequest,
+  output: User,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -14986,8 +19560,8 @@ export const getDatabase: API.OperationMethod<
   GetDatabaseError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(244) as any as S.Schema<GetDatabaseRequest>,
-  output: __S(70) as any as S.Schema<Database>,
+  input: GetDatabaseRequest,
+  output: Database,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -15005,8 +19579,8 @@ export const getDatabasePostgresCidr: API.OperationMethod<
   GetDatabasePostgresCidrError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(245) as any as S.Schema<GetDatabasePostgresCidrRequest>,
-  output: __S(72) as any as S.Schema<PostgresClusterCidr>,
+  input: GetDatabasePostgresCidrRequest,
+  output: PostgresClusterCidr,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -15024,8 +19598,8 @@ export const getDatabaseThrottler: API.OperationMethod<
   GetDatabaseThrottlerError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(246) as any as S.Schema<GetDatabaseThrottlerRequest>,
-  output: __S(249) as any as S.Schema<ThrottlerConfigurations>,
+  input: GetDatabaseThrottlerRequest,
+  output: ThrottlerConfigurations,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -15039,8 +19613,8 @@ export const getDataTopology: API.OperationMethod<
   GetDataTopologyError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(250) as any as S.Schema<GetDataTopologyRequest>,
-  output: __S(251) as any as S.Schema<NekiDataTopology>,
+  input: GetDataTopologyRequest,
+  output: NekiDataTopology,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -15058,8 +19632,8 @@ export const getDedicatedReadReplica: API.OperationMethod<
   GetDedicatedReadReplicaError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(252) as any as S.Schema<GetDedicatedReadReplicaRequest>,
-  output: __S(78) as any as S.Schema<PostgresReadOnlyReplica>,
+  input: GetDedicatedReadReplicaRequest,
+  output: PostgresReadOnlyReplica,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -15073,8 +19647,8 @@ export const getDefaultRole: API.OperationMethod<
   GetDefaultRoleError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(253) as any as S.Schema<GetDefaultRoleRequest>,
-  output: __S(125) as any as S.Schema<PostgresRole>,
+  input: GetDefaultRoleRequest,
+  output: PostgresRole,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -15092,8 +19666,8 @@ export const getDefaultShardConfigurationProfile: API.OperationMethod<
   GetDefaultShardConfigurationProfileError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(254) as any as S.Schema<GetDefaultShardConfigurationProfileRequest>,
-  output: __S(19) as any as S.Schema<GetDefaultShardConfigurationProfileResponse>,
+  input: GetDefaultShardConfigurationProfileRequest,
+  output: GetDefaultShardConfigurationProfileResponse,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -15107,8 +19681,8 @@ export const getDeployment: API.OperationMethod<
   GetDeploymentError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(255) as any as S.Schema<GetDeploymentRequest>,
-  output: __S(262) as any as S.Schema<Deployment>,
+  input: GetDeploymentRequest,
+  output: Deployment,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -15124,8 +19698,8 @@ export const getDeployQueue: API.PaginatedOperationMethod<
   PaginatedDeploymentDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(263) as any as S.Schema<GetDeployQueueRequest>,
-    output: __S(270) as any as S.Schema<PaginatedDeployment>,
+    input: GetDeployQueueRequest,
+    output: PaginatedDeployment,
     errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
     protocol: PlanetScaleProtocol,
     retry: Retry.Retry,
@@ -15147,8 +19721,8 @@ export const getDeployRequest: API.OperationMethod<
   GetDeployRequestError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(271) as any as S.Schema<GetDeployRequestRequest>,
-  output: __S(34) as any as S.Schema<DatabaseDeployRequest>,
+  input: GetDeployRequestRequest,
+  output: DatabaseDeployRequest,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -15166,8 +19740,8 @@ export const getDeployRequestThrottler: API.OperationMethod<
   GetDeployRequestThrottlerError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(272) as any as S.Schema<GetDeployRequestThrottlerRequest>,
-  output: __S(249) as any as S.Schema<ThrottlerConfigurations>,
+  input: GetDeployRequestThrottlerRequest,
+  output: ThrottlerConfigurations,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -15185,8 +19759,8 @@ export const getInsightsAgentRun: API.OperationMethod<
   GetInsightsAgentRunError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(273) as any as S.Schema<GetInsightsAgentRunRequest>,
-  output: __S(81) as any as S.Schema<InsightsAgentRun>,
+  input: GetInsightsAgentRunRequest,
+  output: InsightsAgentRun,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -15205,8 +19779,8 @@ export const getInstantBranchMetrics: API.OperationMethod<
   GetInstantBranchMetricsError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(274) as any as S.Schema<GetInstantBranchMetricsRequest>,
-  output: __S(279) as any as S.Schema<GetInstantBranchMetricsResponse>,
+  input: GetInstantBranchMetricsRequest,
+  output: GetInstantBranchMetricsResponse,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -15225,8 +19799,8 @@ export const getInstantTabletMetrics: API.OperationMethod<
   GetInstantTabletMetricsError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(280) as any as S.Schema<GetInstantTabletMetricsRequest>,
-  output: __S(279) as any as S.Schema<GetInstantTabletMetricsResponse>,
+  input: GetInstantTabletMetricsRequest,
+  output: GetInstantTabletMetricsResponse,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -15240,8 +19814,8 @@ export const getInvoice: API.OperationMethod<
   GetInvoiceError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(281) as any as S.Schema<GetInvoiceRequest>,
-  output: __S(282) as any as S.Schema<Invoice>,
+  input: GetInvoiceRequest,
+  output: Invoice,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -15261,8 +19835,8 @@ export const getInvoiceLineItems: API.PaginatedOperationMethod<
   PaginatedLineItemDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(283) as any as S.Schema<GetInvoiceLineItemsRequest>,
-    output: __S(286) as any as S.Schema<PaginatedLineItem>,
+    input: GetInvoiceLineItemsRequest,
+    output: PaginatedLineItem,
     errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
     protocol: PlanetScaleProtocol,
     retry: Retry.Retry,
@@ -15284,8 +19858,8 @@ export const getKeyspace: API.OperationMethod<
   GetKeyspaceError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(287) as any as S.Schema<GetKeyspaceRequest>,
-  output: __S(87) as any as S.Schema<DatabaseBranchKeyspace>,
+  input: GetKeyspaceRequest,
+  output: DatabaseBranchKeyspace,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -15303,8 +19877,8 @@ export const getKeyspaceConfigChangeRequest: API.OperationMethod<
   GetKeyspaceConfigChangeRequestError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(288) as any as S.Schema<GetKeyspaceConfigChangeRequestRequest>,
-  output: __S(89) as any as S.Schema<KeyspaceConfigChangeRequest>,
+  input: GetKeyspaceConfigChangeRequestRequest,
+  output: KeyspaceConfigChangeRequest,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -15322,8 +19896,8 @@ export const getKeyspaceResizeRequest: API.OperationMethod<
   GetKeyspaceResizeRequestError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(289) as any as S.Schema<GetKeyspaceResizeRequestRequest>,
-  output: __S(290) as any as S.Schema<KeyspaceResizeRequest>,
+  input: GetKeyspaceResizeRequestRequest,
+  output: KeyspaceResizeRequest,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -15341,8 +19915,8 @@ export const getKeyspaceRolloutStatus: API.OperationMethod<
   GetKeyspaceRolloutStatusError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(291) as any as S.Schema<GetKeyspaceRolloutStatusRequest>,
-  output: __S(294) as any as S.Schema<GetKeyspaceRolloutStatusResponse>,
+  input: GetKeyspaceRolloutStatusRequest,
+  output: GetKeyspaceRolloutStatusResponse,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -15360,8 +19934,8 @@ export const getKeyspaceVschema: API.OperationMethod<
   GetKeyspaceVschemaError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(295) as any as S.Schema<GetKeyspaceVschemaRequest>,
-  output: __S(296) as any as S.Schema<GetKeyspaceVschemaResponse>,
+  input: GetKeyspaceVschemaRequest,
+  output: GetKeyspaceVschemaResponse,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -15379,8 +19953,8 @@ export const getMaintenanceSchedule: API.OperationMethod<
   GetMaintenanceScheduleError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(297) as any as S.Schema<GetMaintenanceScheduleRequest>,
-  output: __S(298) as any as S.Schema<BranchMaintenanceSchedule>,
+  input: GetMaintenanceScheduleRequest,
+  output: BranchMaintenanceSchedule,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -15398,8 +19972,8 @@ export const getMoveTablesWorkflow: API.OperationMethod<
   GetMoveTablesWorkflowError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(299) as any as S.Schema<GetMoveTablesWorkflowRequest>,
-  output: __S(301) as any as S.Schema<GetMoveTablesWorkflowResponse>,
+  input: GetMoveTablesWorkflowRequest,
+  output: GetMoveTablesWorkflowResponse,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -15417,8 +19991,8 @@ export const getMoveTablesWorkflowStatus: API.OperationMethod<
   GetMoveTablesWorkflowStatusError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(302) as any as S.Schema<GetMoveTablesWorkflowStatusRequest>,
-  output: __S(306) as any as S.Schema<GetMoveTablesWorkflowStatusResponse>,
+  input: GetMoveTablesWorkflowStatusRequest,
+  output: GetMoveTablesWorkflowStatusResponse,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -15436,8 +20010,8 @@ export const getNekiChangeRequest: API.OperationMethod<
   GetNekiChangeRequestError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(307) as any as S.Schema<GetNekiChangeRequestRequest>,
-  output: __S(308) as any as S.Schema<NekiChangeRequest>,
+  input: GetNekiChangeRequestRequest,
+  output: NekiChangeRequest,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -15455,8 +20029,8 @@ export const getOauthApplication: API.OperationMethod<
   GetOauthApplicationError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(309) as any as S.Schema<GetOauthApplicationRequest>,
-  output: __S(310) as any as S.Schema<OauthApplication>,
+  input: GetOauthApplicationRequest,
+  output: OauthApplication,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -15470,8 +20044,8 @@ export const getOauthToken: API.OperationMethod<
   GetOauthTokenError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(311) as any as S.Schema<GetOauthTokenRequest>,
-  output: __S(109) as any as S.Schema<ServiceToken>,
+  input: GetOauthTokenRequest,
+  output: ServiceToken,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -15485,8 +20059,8 @@ export const getOrganization: API.OperationMethod<
   GetOrganizationError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(312) as any as S.Schema<GetOrganizationRequest>,
-  output: __S(313) as any as S.Schema<Organization>,
+  input: GetOrganizationRequest,
+  output: Organization,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -15504,8 +20078,8 @@ export const getOrganizationBillingPaymentMethod: API.OperationMethod<
   GetOrganizationBillingPaymentMethodError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(314) as any as S.Schema<GetOrganizationBillingPaymentMethodRequest>,
-  output: __S(315) as any as S.Schema<BillingPaymentMethod>,
+  input: GetOrganizationBillingPaymentMethodRequest,
+  output: BillingPaymentMethod,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -15523,8 +20097,8 @@ export const getOrganizationMembership: API.OperationMethod<
   GetOrganizationMembershipError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(316) as any as S.Schema<GetOrganizationMembershipRequest>,
-  output: __S(318) as any as S.Schema<OrganizationMembership>,
+  input: GetOrganizationMembershipRequest,
+  output: OrganizationMembership,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -15542,8 +20116,8 @@ export const getOrganizationSso: API.OperationMethod<
   GetOrganizationSsoError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(319) as any as S.Schema<GetOrganizationSsoRequest>,
-  output: __S(192) as any as S.Schema<OrganizationSsoSerializer>,
+  input: GetOrganizationSsoRequest,
+  output: OrganizationSsoSerializer,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -15561,8 +20135,8 @@ export const getOrganizationSsoDomain: API.OperationMethod<
   GetOrganizationSsoDomainError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(320) as any as S.Schema<GetOrganizationSsoDomainRequest>,
-  output: __S(321) as any as S.Schema<OrganizationDomain>,
+  input: GetOrganizationSsoDomainRequest,
+  output: OrganizationDomain,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -15581,8 +20155,8 @@ export const getOrganizationTeam: API.OperationMethod<
   GetOrganizationTeamError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(322) as any as S.Schema<GetOrganizationTeamRequest>,
-  output: __S(117) as any as S.Schema<OrganizationTeam>,
+  input: GetOrganizationTeamRequest,
+  output: OrganizationTeam,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -15601,8 +20175,8 @@ export const getOrganizationTeamMember: API.OperationMethod<
   GetOrganizationTeamMemberError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(323) as any as S.Schema<GetOrganizationTeamMemberRequest>,
-  output: __S(10) as any as S.Schema<OrganizationTeamMembership>,
+  input: GetOrganizationTeamMemberRequest,
+  output: OrganizationTeamMembership,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -15616,8 +20190,8 @@ export const getPassword: API.OperationMethod<
   GetPasswordError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(324) as any as S.Schema<GetPasswordRequest>,
-  output: __S(325) as any as S.Schema<DatabaseBranchPassword>,
+  input: GetPasswordRequest,
+  output: DatabaseBranchPassword,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -15635,8 +20209,8 @@ export const getPaymentMethodSetup: API.OperationMethod<
   GetPaymentMethodSetupError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(326) as any as S.Schema<GetPaymentMethodSetupRequest>,
-  output: __S(327) as any as S.Schema<BillingPaymentMethodSetup>,
+  input: GetPaymentMethodSetupRequest,
+  output: BillingPaymentMethodSetup,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -15654,8 +20228,8 @@ export const getQueryPatternsReport: API.OperationMethod<
   GetQueryPatternsReportError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(328) as any as S.Schema<GetQueryPatternsReportRequest>,
-  output: __S(131) as any as S.Schema<GetQueryPatternsReportResponse>,
+  input: GetQueryPatternsReportRequest,
+  output: GetQueryPatternsReportResponse,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -15673,8 +20247,8 @@ export const getQueryPatternsReportStatus: API.OperationMethod<
   GetQueryPatternsReportStatusError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(329) as any as S.Schema<GetQueryPatternsReportStatusRequest>,
-  output: __S(121) as any as S.Schema<QueryPatternsDownload>,
+  input: GetQueryPatternsReportStatusRequest,
+  output: QueryPatternsDownload,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -15694,8 +20268,8 @@ export const getQueryStatistics: API.PaginatedOperationMethod<
   PaginatedQueryDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(330) as any as S.Schema<GetQueryStatisticsRequest>,
-    output: __S(228) as any as S.Schema<PaginatedQuery>,
+    input: GetQueryStatisticsRequest,
+    output: PaginatedQuery,
     errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
     protocol: PlanetScaleProtocol,
     retry: Retry.Retry,
@@ -15722,8 +20296,8 @@ export const getQuerySummary: API.OperationMethod<
   GetQuerySummaryError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(331) as any as S.Schema<GetQuerySummaryRequest>,
-  output: __S(332) as any as S.Schema<QuerySummary>,
+  input: GetQuerySummaryRequest,
+  output: QuerySummary,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -15737,8 +20311,8 @@ export const getRole: API.OperationMethod<
   GetRoleError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(333) as any as S.Schema<GetRoleRequest>,
-  output: __S(125) as any as S.Schema<PostgresRole>,
+  input: GetRoleRequest,
+  output: PostgresRole,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -15752,8 +20326,8 @@ export const getRouter: API.OperationMethod<
   GetRouterError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(334) as any as S.Schema<GetRouterRequest>,
-  output: __S(128) as any as S.Schema<NekiRouter>,
+  input: GetRouterRequest,
+  output: NekiRouter,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -15771,8 +20345,8 @@ export const getRouterChangeRequest: API.OperationMethod<
   GetRouterChangeRequestError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(335) as any as S.Schema<GetRouterChangeRequestRequest>,
-  output: __S(131) as any as S.Schema<GetRouterChangeRequestResponse>,
+  input: GetRouterChangeRequestRequest,
+  output: GetRouterChangeRequestResponse,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -15790,8 +20364,8 @@ export const getSchemaRecommendation: API.OperationMethod<
   GetSchemaRecommendationError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(336) as any as S.Schema<GetSchemaRecommendationRequest>,
-  output: __S(197) as any as S.Schema<SchemaRecommendation>,
+  input: GetSchemaRecommendationRequest,
+  output: SchemaRecommendation,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -15805,8 +20379,8 @@ export const getServiceToken: API.OperationMethod<
   GetServiceTokenError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(337) as any as S.Schema<GetServiceTokenRequest>,
-  output: __S(109) as any as S.Schema<ServiceToken>,
+  input: GetServiceTokenRequest,
+  output: ServiceToken,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -15820,8 +20394,8 @@ export const getShard: API.OperationMethod<
   GetShardError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(338) as any as S.Schema<GetShardRequest>,
-  output: __S(136) as any as S.Schema<NekiShard>,
+  input: GetShardRequest,
+  output: NekiShard,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -15839,8 +20413,8 @@ export const getShardConfigurationProfile: API.OperationMethod<
   GetShardConfigurationProfileError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(339) as any as S.Schema<GetShardConfigurationProfileRequest>,
-  output: __S(134) as any as S.Schema<NekiShardConfigurationProfile>,
+  input: GetShardConfigurationProfileRequest,
+  output: NekiShardConfigurationProfile,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -15858,8 +20432,8 @@ export const getShardConfigurationProfileChangeRequest: API.OperationMethod<
   GetShardConfigurationProfileChangeRequestError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(340) as any as S.Schema<GetShardConfigurationProfileChangeRequestRequest>,
-  output: __S(19) as any as S.Schema<GetShardConfigurationProfileChangeRequestResponse>,
+  input: GetShardConfigurationProfileChangeRequestRequest,
+  output: GetShardConfigurationProfileChangeRequestResponse,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -15877,8 +20451,8 @@ export const getShardConfigurationProfileShard: API.OperationMethod<
   GetShardConfigurationProfileShardError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(341) as any as S.Schema<GetShardConfigurationProfileShardRequest>,
-  output: __S(136) as any as S.Schema<NekiShard>,
+  input: GetShardConfigurationProfileShardRequest,
+  output: NekiShard,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -15892,8 +20466,8 @@ export const getSidecar: API.OperationMethod<
   GetSidecarError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(342) as any as S.Schema<GetSidecarRequest>,
-  output: __S(343) as any as S.Schema<NekiSidecar>,
+  input: GetSidecarRequest,
+  output: NekiSidecar,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -15911,8 +20485,8 @@ export const getSidecarChangeRequest: API.OperationMethod<
   GetSidecarChangeRequestError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(344) as any as S.Schema<GetSidecarChangeRequestRequest>,
-  output: __S(39) as any as S.Schema<GetSidecarChangeRequestResponse>,
+  input: GetSidecarChangeRequestRequest,
+  output: GetSidecarChangeRequestResponse,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -15926,8 +20500,8 @@ export const getSwitchover: API.OperationMethod<
   GetSwitchoverError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(345) as any as S.Schema<GetSwitchoverRequest>,
-  output: __S(138) as any as S.Schema<PostgresSwitchover>,
+  input: GetSwitchoverRequest,
+  output: PostgresSwitchover,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -15946,8 +20520,8 @@ export const getTabletMetrics: API.OperationMethod<
   GetTabletMetricsError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(346) as any as S.Schema<GetTabletMetricsRequest>,
-  output: __S(221) as any as S.Schema<MetricSeries>,
+  input: GetTabletMetricsRequest,
+  output: MetricSeries,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -15961,8 +20535,8 @@ export const getTrafficBudget: API.OperationMethod<
   GetTrafficBudgetError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(347) as any as S.Schema<GetTrafficBudgetRequest>,
-  output: __S(144) as any as S.Schema<TrafficBudget>,
+  input: GetTrafficBudgetRequest,
+  output: TrafficBudget,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -15980,8 +20554,8 @@ export const getVtctldOperation: API.OperationMethod<
   GetVtctldOperationError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(348) as any as S.Schema<GetVtctldOperationRequest>,
-  output: __S(349) as any as S.Schema<GetVtctldOperationResponse>,
+  input: GetVtctldOperationRequest,
+  output: GetVtctldOperationResponse,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -15995,8 +20569,8 @@ export const getWebhook: API.OperationMethod<
   GetWebhookError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(350) as any as S.Schema<GetWebhookRequest>,
-  output: __S(150) as any as S.Schema<DatabaseWebhook>,
+  input: GetWebhookRequest,
+  output: DatabaseWebhook,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -16010,8 +20584,8 @@ export const getWorkflow: API.OperationMethod<
   GetWorkflowError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(351) as any as S.Schema<GetWorkflowRequest>,
-  output: __S(45) as any as S.Schema<Workflow>,
+  input: GetWorkflowRequest,
+  output: Workflow,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -16027,8 +20601,8 @@ export const lintBranchSchema: API.PaginatedOperationMethod<
   PaginatedSchemaLintErrorDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(352) as any as S.Schema<LintBranchSchemaRequest>,
-    output: __S(355) as any as S.Schema<PaginatedSchemaLintError>,
+    input: LintBranchSchemaRequest,
+    output: PaginatedSchemaLintError,
     errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
     protocol: PlanetScaleProtocol,
     retry: Retry.Retry,
@@ -16054,8 +20628,8 @@ export const listAdminChangeRequests: API.OperationMethod<
   ListAdminChangeRequestsError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(356) as any as S.Schema<ListAdminChangeRequestsRequest>,
-  output: __S(39) as any as S.Schema<ListAdminChangeRequestsResponse>,
+  input: ListAdminChangeRequestsRequest,
+  output: ListAdminChangeRequestsResponse,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -16073,8 +20647,8 @@ export const listAdminParameters: API.OperationMethod<
   ListAdminParametersError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(357) as any as S.Schema<ListAdminParametersRequest>,
-  output: __S(360) as any as S.Schema<ListAdminParametersResponse>,
+  input: ListAdminParametersRequest,
+  output: ListAdminParametersResponse,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -16092,8 +20666,8 @@ export const listAdminSizeSkus: API.OperationMethod<
   ListAdminSizeSkusError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(361) as any as S.Schema<ListAdminSizeSkusRequest>,
-  output: __S(363) as any as S.Schema<ListAdminSizeSkusResponse>,
+  input: ListAdminSizeSkusRequest,
+  output: ListAdminSizeSkusResponse,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -16107,8 +20681,8 @@ export const listAuditLogs: API.OperationMethod<
   ListAuditLogsError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(364) as any as S.Schema<ListAuditLogsRequest>,
-  output: __S(367) as any as S.Schema<PaginatedAuditLogEvent>,
+  input: ListAuditLogsRequest,
+  output: PaginatedAuditLogEvent,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -16128,8 +20702,8 @@ export const listBackupPolicies: API.PaginatedOperationMethod<
   PaginatedBackupPolicyDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(368) as any as S.Schema<ListBackupPoliciesRequest>,
-    output: __S(371) as any as S.Schema<PaginatedBackupPolicy>,
+    input: ListBackupPoliciesRequest,
+    output: PaginatedBackupPolicy,
     errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
     protocol: PlanetScaleProtocol,
     retry: Retry.Retry,
@@ -16153,8 +20727,8 @@ export const listBackups: API.PaginatedOperationMethod<
   PaginatedBackupDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(372) as any as S.Schema<ListBackupsRequest>,
-    output: __S(375) as any as S.Schema<PaginatedBackup>,
+    input: ListBackupsRequest,
+    output: PaginatedBackup,
     errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
     protocol: PlanetScaleProtocol,
     retry: Retry.Retry,
@@ -16182,8 +20756,8 @@ export const listBouncerResizeRequests: API.PaginatedOperationMethod<
   PaginatedPostgresBouncerResizeRequestDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(376) as any as S.Schema<ListBouncerResizeRequestsRequest>,
-    output: __S(379) as any as S.Schema<PaginatedPostgresBouncerResizeRequest>,
+    input: ListBouncerResizeRequestsRequest,
+    output: PaginatedPostgresBouncerResizeRequest,
     errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
     protocol: PlanetScaleProtocol,
     retry: Retry.Retry,
@@ -16207,8 +20781,8 @@ export const listBouncers: API.PaginatedOperationMethod<
   PaginatedPostgresBouncerDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(380) as any as S.Schema<ListBouncersRequest>,
-    output: __S(385) as any as S.Schema<PaginatedPostgresBouncer>,
+    input: ListBouncersRequest,
+    output: PaginatedPostgresBouncer,
     errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
     protocol: PlanetScaleProtocol,
     retry: Retry.Retry,
@@ -16236,8 +20810,8 @@ export const listBranchAnomalies: API.PaginatedOperationMethod<
   PaginatedAnomalyDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(386) as any as S.Schema<ListBranchAnomaliesRequest>,
-    output: __S(391) as any as S.Schema<PaginatedAnomaly>,
+    input: ListBranchAnomaliesRequest,
+    output: PaginatedAnomaly,
     errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
     protocol: PlanetScaleProtocol,
     retry: Retry.Retry,
@@ -16265,8 +20839,8 @@ export const listBranchBouncerResizeRequests: API.PaginatedOperationMethod<
   PaginatedPostgresBouncerResizeRequestDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(392) as any as S.Schema<ListBranchBouncerResizeRequestsRequest>,
-    output: __S(379) as any as S.Schema<PaginatedPostgresBouncerResizeRequest>,
+    input: ListBranchBouncerResizeRequestsRequest,
+    output: PaginatedPostgresBouncerResizeRequest,
     errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
     protocol: PlanetScaleProtocol,
     retry: Retry.Retry,
@@ -16294,8 +20868,8 @@ export const listBranchChangeRequests: API.PaginatedOperationMethod<
   PaginatedPostgresClusterResizeRequestDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(393) as any as S.Schema<ListBranchChangeRequestsRequest>,
-    output: __S(396) as any as S.Schema<PaginatedPostgresClusterResizeRequest>,
+    input: ListBranchChangeRequestsRequest,
+    output: PaginatedPostgresClusterResizeRequest,
     errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
     protocol: PlanetScaleProtocol,
     retry: Retry.Retry,
@@ -16323,8 +20897,8 @@ export const listBranchConfigChangeRequests: API.PaginatedOperationMethod<
   PaginatedConfigChangeRequestDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(397) as any as S.Schema<ListBranchConfigChangeRequestsRequest>,
-    output: __S(400) as any as S.Schema<PaginatedConfigChangeRequest>,
+    input: ListBranchConfigChangeRequestsRequest,
+    output: PaginatedConfigChangeRequest,
     errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
     protocol: PlanetScaleProtocol,
     retry: Retry.Retry,
@@ -16348,8 +20922,8 @@ export const listBranches: API.PaginatedOperationMethod<
   PaginatedDatabaseBranchDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(401) as any as S.Schema<ListBranchesRequest>,
-    output: __S(404) as any as S.Schema<PaginatedDatabaseBranch>,
+    input: ListBranchesRequest,
+    output: PaginatedDatabaseBranch,
     errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
     protocol: PlanetScaleProtocol,
     retry: Retry.Retry,
@@ -16378,8 +20952,8 @@ export const listBranchQueries: API.PaginatedOperationMethod<
   PaginatedQuerySummaryDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(405) as any as S.Schema<ListBranchQueriesRequest>,
-    output: __S(408) as any as S.Schema<PaginatedQuerySummary>,
+    input: ListBranchQueriesRequest,
+    output: PaginatedQuerySummary,
     errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
     protocol: PlanetScaleProtocol,
     retry: Retry.Retry,
@@ -16407,8 +20981,8 @@ export const listBranchQueryErrors: API.PaginatedOperationMethod<
   PaginatedErrorSummaryDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(409) as any as S.Schema<ListBranchQueryErrorsRequest>,
-    output: __S(412) as any as S.Schema<PaginatedErrorSummary>,
+    input: ListBranchQueryErrorsRequest,
+    output: PaginatedErrorSummary,
     errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
     protocol: PlanetScaleProtocol,
     retry: Retry.Retry,
@@ -16437,8 +21011,8 @@ export const listBranchQueryTags: API.PaginatedOperationMethod<
   PaginatedQueryTagDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(413) as any as S.Schema<ListBranchQueryTagsRequest>,
-    output: __S(418) as any as S.Schema<PaginatedQueryTag>,
+    input: ListBranchQueryTagsRequest,
+    output: PaginatedQueryTag,
     errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
     protocol: PlanetScaleProtocol,
     retry: Retry.Retry,
@@ -16467,8 +21041,8 @@ export const listBranchQueryTagSummaries: API.PaginatedOperationMethod<
   PaginatedDimensionsQuerySummaryDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(419) as any as S.Schema<ListBranchQueryTagSummariesRequest>,
-    output: __S(422) as any as S.Schema<PaginatedDimensionsQuerySummary>,
+    input: ListBranchQueryTagSummariesRequest,
+    output: PaginatedDimensionsQuerySummary,
     errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
     protocol: PlanetScaleProtocol,
     retry: Retry.Retry,
@@ -16496,8 +21070,8 @@ export const listBranchResizeRequests: API.PaginatedOperationMethod<
   PaginatedMysqlClusterResizeRequestDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(423) as any as S.Schema<ListBranchResizeRequestsRequest>,
-    output: __S(425) as any as S.Schema<PaginatedMysqlClusterResizeRequest>,
+    input: ListBranchResizeRequestsRequest,
+    output: PaginatedMysqlClusterResizeRequest,
     errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
     protocol: PlanetScaleProtocol,
     retry: Retry.Retry,
@@ -16523,8 +21097,8 @@ export const listBranchVitessParameters: API.OperationMethod<
   ListBranchVitessParametersError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(426) as any as S.Schema<ListBranchVitessParametersRequest>,
-  output: __S(432) as any as S.Schema<ListBranchVitessParametersResponse>,
+  input: ListBranchVitessParametersRequest,
+  output: ListBranchVitessParametersResponse,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -16542,8 +21116,8 @@ export const listClusterSizeSkus: API.OperationMethod<
   ListClusterSizeSkusError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(433) as any as S.Schema<ListClusterSizeSkusRequest>,
-  output: __S(436) as any as S.Schema<ListClusterSizeSkusResponse>,
+  input: ListClusterSizeSkusRequest,
+  output: ListClusterSizeSkusResponse,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -16563,8 +21137,8 @@ export const listDatabasePostgresCidrs: API.PaginatedOperationMethod<
   PaginatedPostgresClusterCidrDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(437) as any as S.Schema<ListDatabasePostgresCidrsRequest>,
-    output: __S(440) as any as S.Schema<PaginatedPostgresClusterCidr>,
+    input: ListDatabasePostgresCidrsRequest,
+    output: PaginatedPostgresClusterCidr,
     errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
     protocol: PlanetScaleProtocol,
     retry: Retry.Retry,
@@ -16592,8 +21166,8 @@ export const listDatabaseRegions: API.PaginatedOperationMethod<
   PaginatedPlanetscaleRegionDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(441) as any as S.Schema<ListDatabaseRegionsRequest>,
-    output: __S(443) as any as S.Schema<PaginatedPlanetscaleRegion>,
+    input: ListDatabaseRegionsRequest,
+    output: PaginatedPlanetscaleRegion,
     errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
     protocol: PlanetScaleProtocol,
     retry: Retry.Retry,
@@ -16617,8 +21191,8 @@ export const listDatabases: API.PaginatedOperationMethod<
   PaginatedDatabaseDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(444) as any as S.Schema<ListDatabasesRequest>,
-    output: __S(447) as any as S.Schema<PaginatedDatabase>,
+    input: ListDatabasesRequest,
+    output: PaginatedDatabase,
     errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
     protocol: PlanetScaleProtocol,
     retry: Retry.Retry,
@@ -16646,8 +21220,8 @@ export const listDedicatedReadReplicaChangeRequests: API.PaginatedOperationMetho
   PaginatedPostgresReadOnlyReplicaChangeRequestDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(448) as any as S.Schema<ListDedicatedReadReplicaChangeRequestsRequest>,
-    output: __S(451) as any as S.Schema<PaginatedPostgresReadOnlyReplicaChangeRequest>,
+    input: ListDedicatedReadReplicaChangeRequestsRequest,
+    output: PaginatedPostgresReadOnlyReplicaChangeRequest,
     errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
     protocol: PlanetScaleProtocol,
     retry: Retry.Retry,
@@ -16673,8 +21247,8 @@ export const listDedicatedReadReplicas: API.OperationMethod<
   ListDedicatedReadReplicasError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(452) as any as S.Schema<ListDedicatedReadReplicasRequest>,
-  output: __S(454) as any as S.Schema<ListDedicatedReadReplicasResponse>,
+  input: ListDedicatedReadReplicasRequest,
+  output: ListDedicatedReadReplicasResponse,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -16694,8 +21268,8 @@ export const listDeployOperations: API.PaginatedOperationMethod<
   PaginatedDeployOperationDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(455) as any as S.Schema<ListDeployOperationsRequest>,
-    output: __S(458) as any as S.Schema<PaginatedDeployOperation>,
+    input: ListDeployOperationsRequest,
+    output: PaginatedDeployOperation,
     errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
     protocol: PlanetScaleProtocol,
     retry: Retry.Retry,
@@ -16723,8 +21297,8 @@ export const listDeployRequestReviews: API.PaginatedOperationMethod<
   PaginatedDeployRequestReviewDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(459) as any as S.Schema<ListDeployRequestReviewsRequest>,
-    output: __S(462) as any as S.Schema<PaginatedDeployRequestReview>,
+    input: ListDeployRequestReviewsRequest,
+    output: PaginatedDeployRequestReview,
     errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
     protocol: PlanetScaleProtocol,
     retry: Retry.Retry,
@@ -16752,8 +21326,8 @@ export const listDeployRequests: API.PaginatedOperationMethod<
   PaginatedDatabaseDeployRequestDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(463) as any as S.Schema<ListDeployRequestsRequest>,
-    output: __S(474) as any as S.Schema<PaginatedDatabaseDeployRequest>,
+    input: ListDeployRequestsRequest,
+    output: PaginatedDatabaseDeployRequest,
     errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
     protocol: PlanetScaleProtocol,
     retry: Retry.Retry,
@@ -16775,8 +21349,8 @@ export const listExtensions: API.OperationMethod<
   ListExtensionsError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(475) as any as S.Schema<ListExtensionsRequest>,
-  output: __S(481) as any as S.Schema<ListExtensionsResponse>,
+  input: ListExtensionsRequest,
+  output: ListExtensionsResponse,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -16794,8 +21368,8 @@ export const listGeneratedQueryPatternsReports: API.OperationMethod<
   ListGeneratedQueryPatternsReportsError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(482) as any as S.Schema<ListGeneratedQueryPatternsReportsRequest>,
-  output: __S(485) as any as S.Schema<PaginatedQueryPatternsDownload>,
+  input: ListGeneratedQueryPatternsReportsRequest,
+  output: PaginatedQueryPatternsDownload,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -16815,8 +21389,8 @@ export const listInsightsAgentRuns: API.PaginatedOperationMethod<
   PaginatedInsightsAgentRunDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(486) as any as S.Schema<ListInsightsAgentRunsRequest>,
-    output: __S(489) as any as S.Schema<PaginatedInsightsAgentRun>,
+    input: ListInsightsAgentRunsRequest,
+    output: PaginatedInsightsAgentRun,
     errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
     protocol: PlanetScaleProtocol,
     retry: Retry.Retry,
@@ -16842,8 +21416,8 @@ export const listInsightsAgentSchedules: API.OperationMethod<
   ListInsightsAgentSchedulesError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(490) as any as S.Schema<ListInsightsAgentSchedulesRequest>,
-  output: __S(493) as any as S.Schema<ListInsightsAgentSchedulesResponse>,
+  input: ListInsightsAgentSchedulesRequest,
+  output: ListInsightsAgentSchedulesResponse,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -16859,8 +21433,8 @@ export const listInvoices: API.PaginatedOperationMethod<
   PaginatedInvoiceDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(494) as any as S.Schema<ListInvoicesRequest>,
-    output: __S(496) as any as S.Schema<PaginatedInvoice>,
+    input: ListInvoicesRequest,
+    output: PaginatedInvoice,
     errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
     protocol: PlanetScaleProtocol,
     retry: Retry.Retry,
@@ -16888,8 +21462,8 @@ export const listKeyspaceConfigChangeRequests: API.PaginatedOperationMethod<
   PaginatedKeyspaceConfigChangeRequestDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(497) as any as S.Schema<ListKeyspaceConfigChangeRequestsRequest>,
-    output: __S(500) as any as S.Schema<PaginatedKeyspaceConfigChangeRequest>,
+    input: ListKeyspaceConfigChangeRequestsRequest,
+    output: PaginatedKeyspaceConfigChangeRequest,
     errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
     protocol: PlanetScaleProtocol,
     retry: Retry.Retry,
@@ -16917,8 +21491,8 @@ export const listKeyspaceResizeRequests: API.PaginatedOperationMethod<
   PaginatedKeyspaceResizeRequestDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(501) as any as S.Schema<ListKeyspaceResizeRequestsRequest>,
-    output: __S(504) as any as S.Schema<PaginatedKeyspaceResizeRequest>,
+    input: ListKeyspaceResizeRequestsRequest,
+    output: PaginatedKeyspaceResizeRequest,
     errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
     protocol: PlanetScaleProtocol,
     retry: Retry.Retry,
@@ -16942,8 +21516,8 @@ export const listKeyspaces: API.PaginatedOperationMethod<
   PaginatedDatabaseBranchKeyspaceDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(505) as any as S.Schema<ListKeyspacesRequest>,
-    output: __S(509) as any as S.Schema<PaginatedDatabaseBranchKeyspace>,
+    input: ListKeyspacesRequest,
+    output: PaginatedDatabaseBranchKeyspace,
     errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
     protocol: PlanetScaleProtocol,
     retry: Retry.Retry,
@@ -16971,8 +21545,8 @@ export const listMaintenanceSchedules: API.PaginatedOperationMethod<
   PaginatedBranchMaintenanceScheduleDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(510) as any as S.Schema<ListMaintenanceSchedulesRequest>,
-    output: __S(512) as any as S.Schema<PaginatedBranchMaintenanceSchedule>,
+    input: ListMaintenanceSchedulesRequest,
+    output: PaginatedBranchMaintenanceSchedule,
     errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
     protocol: PlanetScaleProtocol,
     retry: Retry.Retry,
@@ -17000,8 +21574,8 @@ export const listMaintenanceWindows: API.PaginatedOperationMethod<
   PaginatedBranchMaintenanceWindowDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(513) as any as S.Schema<ListMaintenanceWindowsRequest>,
-    output: __S(516) as any as S.Schema<PaginatedBranchMaintenanceWindow>,
+    input: ListMaintenanceWindowsRequest,
+    output: PaginatedBranchMaintenanceWindow,
     errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
     protocol: PlanetScaleProtocol,
     retry: Retry.Retry,
@@ -17027,8 +21601,8 @@ export const listMoveTablesWorkflows: API.OperationMethod<
   ListMoveTablesWorkflowsError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(517) as any as S.Schema<ListMoveTablesWorkflowsRequest>,
-  output: __S(519) as any as S.Schema<ListMoveTablesWorkflowsResponse>,
+  input: ListMoveTablesWorkflowsRequest,
+  output: ListMoveTablesWorkflowsResponse,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -17048,8 +21622,8 @@ export const listNekiChangeRequests: API.PaginatedOperationMethod<
   PaginatedNekiChangeRequestDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(520) as any as S.Schema<ListNekiChangeRequestsRequest>,
-    output: __S(523) as any as S.Schema<PaginatedNekiChangeRequest>,
+    input: ListNekiChangeRequestsRequest,
+    output: PaginatedNekiChangeRequest,
     errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
     protocol: PlanetScaleProtocol,
     retry: Retry.Retry,
@@ -17077,8 +21651,8 @@ export const listOauthApplications: API.PaginatedOperationMethod<
   PaginatedOauthApplicationDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(524) as any as S.Schema<ListOauthApplicationsRequest>,
-    output: __S(527) as any as S.Schema<PaginatedOauthApplication>,
+    input: ListOauthApplicationsRequest,
+    output: PaginatedOauthApplication,
     errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
     protocol: PlanetScaleProtocol,
     retry: Retry.Retry,
@@ -17102,8 +21676,8 @@ export const listOauthTokens: API.PaginatedOperationMethod<
   PaginatedServiceTokenDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(528) as any as S.Schema<ListOauthTokensRequest>,
-    output: __S(540) as any as S.Schema<PaginatedServiceToken>,
+    input: ListOauthTokensRequest,
+    output: PaginatedServiceToken,
     errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
     protocol: PlanetScaleProtocol,
     retry: Retry.Retry,
@@ -17131,8 +21705,8 @@ export const listOrganizationInvitations: API.PaginatedOperationMethod<
   PaginatedOrganizationInvitationDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(541) as any as S.Schema<ListOrganizationInvitationsRequest>,
-    output: __S(544) as any as S.Schema<PaginatedOrganizationInvitation>,
+    input: ListOrganizationInvitationsRequest,
+    output: PaginatedOrganizationInvitation,
     errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
     protocol: PlanetScaleProtocol,
     retry: Retry.Retry,
@@ -17160,8 +21734,8 @@ export const listOrganizationMembers: API.PaginatedOperationMethod<
   PaginatedOrganizationMembershipDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(545) as any as S.Schema<ListOrganizationMembersRequest>,
-    output: __S(548) as any as S.Schema<PaginatedOrganizationMembership>,
+    input: ListOrganizationMembersRequest,
+    output: PaginatedOrganizationMembership,
     errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
     protocol: PlanetScaleProtocol,
     retry: Retry.Retry,
@@ -17189,8 +21763,8 @@ export const listOrganizations: API.PaginatedOperationMethod<
   PaginatedOrganizationDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(549) as any as S.Schema<ListOrganizationsRequest>,
-    output: __S(552) as any as S.Schema<PaginatedOrganization>,
+    input: ListOrganizationsRequest,
+    output: PaginatedOrganization,
     errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
     protocol: PlanetScaleProtocol,
     retry: Retry.Retry,
@@ -17216,8 +21790,8 @@ export const listOrganizationSsoDomains: API.OperationMethod<
   ListOrganizationSsoDomainsError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(553) as any as S.Schema<ListOrganizationSsoDomainsRequest>,
-  output: __S(555) as any as S.Schema<ListOrganizationSsoDomainsResponse>,
+  input: ListOrganizationSsoDomainsRequest,
+  output: ListOrganizationSsoDomainsResponse,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -17238,8 +21812,8 @@ export const listOrganizationTeamMembers: API.PaginatedOperationMethod<
   PaginatedOrganizationTeamMembershipDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(556) as any as S.Schema<ListOrganizationTeamMembersRequest>,
-    output: __S(562) as any as S.Schema<PaginatedOrganizationTeamMembership>,
+    input: ListOrganizationTeamMembersRequest,
+    output: PaginatedOrganizationTeamMembership,
     errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
     protocol: PlanetScaleProtocol,
     retry: Retry.Retry,
@@ -17268,8 +21842,8 @@ export const listOrganizationTeams: API.PaginatedOperationMethod<
   PaginatedOrganizationTeamDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(563) as any as S.Schema<ListOrganizationTeamsRequest>,
-    output: __S(566) as any as S.Schema<PaginatedOrganizationTeam>,
+    input: ListOrganizationTeamsRequest,
+    output: PaginatedOrganizationTeam,
     errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
     protocol: PlanetScaleProtocol,
     retry: Retry.Retry,
@@ -17291,8 +21865,8 @@ export const listParameters: API.OperationMethod<
   ListParametersError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(567) as any as S.Schema<ListParametersRequest>,
-  output: __S(570) as any as S.Schema<ListParametersResponse>,
+  input: ListParametersRequest,
+  output: ListParametersResponse,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -17308,8 +21882,8 @@ export const listPasswords: API.PaginatedOperationMethod<
   PaginatedDatabaseBranchPasswordDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(571) as any as S.Schema<ListPasswordsRequest>,
-    output: __S(574) as any as S.Schema<PaginatedDatabaseBranchPassword>,
+    input: ListPasswordsRequest,
+    output: PaginatedDatabaseBranchPassword,
     errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
     protocol: PlanetScaleProtocol,
     retry: Retry.Retry,
@@ -17335,8 +21909,8 @@ export const listPostgresVersions: API.OperationMethod<
   ListPostgresVersionsError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(575) as any as S.Schema<ListPostgresVersionsRequest>,
-  output: __S(578) as any as S.Schema<ListPostgresVersionsResponse>,
+  input: ListPostgresVersionsRequest,
+  output: ListPostgresVersionsResponse,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -17356,8 +21930,8 @@ export const listPublicRegions: API.PaginatedOperationMethod<
   PaginatedPublicPlanetscaleRegionSerializerDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(579) as any as S.Schema<ListPublicRegionsRequest>,
-    output: __S(582) as any as S.Schema<PaginatedPublicPlanetscaleRegionSerializer>,
+    input: ListPublicRegionsRequest,
+    output: PaginatedPublicPlanetscaleRegionSerializer,
     errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
     protocol: PlanetScaleProtocol,
     retry: Retry.Retry,
@@ -17385,8 +21959,8 @@ export const listReadOnlyRegions: API.PaginatedOperationMethod<
   PaginatedDatabaseBranchReadOnlyRegionDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(583) as any as S.Schema<ListReadOnlyRegionsRequest>,
-    output: __S(586) as any as S.Schema<PaginatedDatabaseBranchReadOnlyRegion>,
+    input: ListReadOnlyRegionsRequest,
+    output: PaginatedDatabaseBranchReadOnlyRegion,
     errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
     protocol: PlanetScaleProtocol,
     retry: Retry.Retry,
@@ -17414,8 +21988,8 @@ export const listRegionsForOrganization: API.PaginatedOperationMethod<
   PaginatedPlanetscaleRegionDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(587) as any as S.Schema<ListRegionsForOrganizationRequest>,
-    output: __S(443) as any as S.Schema<PaginatedPlanetscaleRegion>,
+    input: ListRegionsForOrganizationRequest,
+    output: PaginatedPlanetscaleRegion,
     errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
     protocol: PlanetScaleProtocol,
     retry: Retry.Retry,
@@ -17439,8 +22013,8 @@ export const listRoles: API.PaginatedOperationMethod<
   PaginatedPostgresRoleDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(588) as any as S.Schema<ListRolesRequest>,
-    output: __S(591) as any as S.Schema<PaginatedPostgresRole>,
+    input: ListRolesRequest,
+    output: PaginatedPostgresRole,
     errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
     protocol: PlanetScaleProtocol,
     retry: Retry.Retry,
@@ -17466,8 +22040,8 @@ export const listRouterChangeRequests: API.OperationMethod<
   ListRouterChangeRequestsError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(592) as any as S.Schema<ListRouterChangeRequestsRequest>,
-  output: __S(19) as any as S.Schema<ListRouterChangeRequestsResponse>,
+  input: ListRouterChangeRequestsRequest,
+  output: ListRouterChangeRequestsResponse,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -17485,8 +22059,8 @@ export const listRouterParameters: API.OperationMethod<
   ListRouterParametersError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(593) as any as S.Schema<ListRouterParametersRequest>,
-  output: __S(360) as any as S.Schema<ListRouterParametersResponse>,
+  input: ListRouterParametersRequest,
+  output: ListRouterParametersResponse,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -17500,8 +22074,8 @@ export const listRouters: API.OperationMethod<
   ListRoutersError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(594) as any as S.Schema<ListRoutersRequest>,
-  output: __S(596) as any as S.Schema<ListRoutersResponse>,
+  input: ListRoutersRequest,
+  output: ListRoutersResponse,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -17519,8 +22093,8 @@ export const listRouterSizeSkus: API.OperationMethod<
   ListRouterSizeSkusError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(597) as any as S.Schema<ListRouterSizeSkusRequest>,
-  output: __S(599) as any as S.Schema<ListRouterSizeSkusResponse>,
+  input: ListRouterSizeSkusRequest,
+  output: ListRouterSizeSkusResponse,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -17540,8 +22114,8 @@ export const listSchemaRecommendations: API.PaginatedOperationMethod<
   PaginatedSchemaRecommendationDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(600) as any as S.Schema<ListSchemaRecommendationsRequest>,
-    output: __S(603) as any as S.Schema<PaginatedSchemaRecommendation>,
+    input: ListSchemaRecommendationsRequest,
+    output: PaginatedSchemaRecommendation,
     errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
     protocol: PlanetScaleProtocol,
     retry: Retry.Retry,
@@ -17569,8 +22143,8 @@ export const listServiceTokens: API.PaginatedOperationMethod<
   PaginatedServiceTokenDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(604) as any as S.Schema<ListServiceTokensRequest>,
-    output: __S(540) as any as S.Schema<PaginatedServiceToken>,
+    input: ListServiceTokensRequest,
+    output: PaginatedServiceToken,
     errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
     protocol: PlanetScaleProtocol,
     retry: Retry.Retry,
@@ -17596,8 +22170,8 @@ export const listShardConfigurationProfileChangeRequests: API.OperationMethod<
   ListShardConfigurationProfileChangeRequestsError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(605) as any as S.Schema<ListShardConfigurationProfileChangeRequestsRequest>,
-  output: __S(19) as any as S.Schema<ListShardConfigurationProfileChangeRequestsResponse>,
+  input: ListShardConfigurationProfileChangeRequestsRequest,
+  output: ListShardConfigurationProfileChangeRequestsResponse,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -17615,8 +22189,8 @@ export const listShardConfigurationProfileExtensions: API.OperationMethod<
   ListShardConfigurationProfileExtensionsError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(606) as any as S.Schema<ListShardConfigurationProfileExtensionsRequest>,
-  output: __S(611) as any as S.Schema<ListShardConfigurationProfileExtensionsResponse>,
+  input: ListShardConfigurationProfileExtensionsRequest,
+  output: ListShardConfigurationProfileExtensionsResponse,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -17634,8 +22208,8 @@ export const listShardConfigurationProfileParameters: API.OperationMethod<
   ListShardConfigurationProfileParametersError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(612) as any as S.Schema<ListShardConfigurationProfileParametersRequest>,
-  output: __S(360) as any as S.Schema<ListShardConfigurationProfileParametersResponse>,
+  input: ListShardConfigurationProfileParametersRequest,
+  output: ListShardConfigurationProfileParametersResponse,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -17653,8 +22227,8 @@ export const listShardConfigurationProfiles: API.OperationMethod<
   ListShardConfigurationProfilesError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(613) as any as S.Schema<ListShardConfigurationProfilesRequest>,
-  output: __S(615) as any as S.Schema<ListShardConfigurationProfilesResponse>,
+  input: ListShardConfigurationProfilesRequest,
+  output: ListShardConfigurationProfilesResponse,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -17674,8 +22248,8 @@ export const listShardConfigurationProfileShards: API.PaginatedOperationMethod<
   PaginatedNekiShardDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(616) as any as S.Schema<ListShardConfigurationProfileShardsRequest>,
-    output: __S(619) as any as S.Schema<PaginatedNekiShard>,
+    input: ListShardConfigurationProfileShardsRequest,
+    output: PaginatedNekiShard,
     errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
     protocol: PlanetScaleProtocol,
     retry: Retry.Retry,
@@ -17699,8 +22273,8 @@ export const listShards: API.PaginatedOperationMethod<
   PaginatedNekiShardDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(620) as any as S.Schema<ListShardsRequest>,
-    output: __S(619) as any as S.Schema<PaginatedNekiShard>,
+    input: ListShardsRequest,
+    output: PaginatedNekiShard,
     errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
     protocol: PlanetScaleProtocol,
     retry: Retry.Retry,
@@ -17726,8 +22300,8 @@ export const listSidecarChangeRequests: API.OperationMethod<
   ListSidecarChangeRequestsError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(621) as any as S.Schema<ListSidecarChangeRequestsRequest>,
-  output: __S(19) as any as S.Schema<ListSidecarChangeRequestsResponse>,
+  input: ListSidecarChangeRequestsRequest,
+  output: ListSidecarChangeRequestsResponse,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -17745,8 +22319,8 @@ export const listSidecarParameters: API.OperationMethod<
   ListSidecarParametersError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(622) as any as S.Schema<ListSidecarParametersRequest>,
-  output: __S(360) as any as S.Schema<ListSidecarParametersResponse>,
+  input: ListSidecarParametersRequest,
+  output: ListSidecarParametersResponse,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -17760,8 +22334,8 @@ export const listSidecars: API.OperationMethod<
   ListSidecarsError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(623) as any as S.Schema<ListSidecarsRequest>,
-  output: __S(625) as any as S.Schema<ListSidecarsResponse>,
+  input: ListSidecarsRequest,
+  output: ListSidecarsResponse,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -17777,8 +22351,8 @@ export const listSwitchovers: API.PaginatedOperationMethod<
   PaginatedPostgresSwitchoverDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(626) as any as S.Schema<ListSwitchoversRequest>,
-    output: __S(629) as any as S.Schema<PaginatedPostgresSwitchover>,
+    input: ListSwitchoversRequest,
+    output: PaginatedPostgresSwitchover,
     errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
     protocol: PlanetScaleProtocol,
     retry: Retry.Retry,
@@ -17806,8 +22380,8 @@ export const listTrafficBudgets: API.PaginatedOperationMethod<
   PaginatedTrafficBudgetDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(630) as any as S.Schema<ListTrafficBudgetsRequest>,
-    output: __S(635) as any as S.Schema<PaginatedTrafficBudget>,
+    input: ListTrafficBudgetsRequest,
+    output: PaginatedTrafficBudget,
     errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
     protocol: PlanetScaleProtocol,
     retry: Retry.Retry,
@@ -17835,8 +22409,8 @@ export const listTrafficBudgetsForQuery: API.PaginatedOperationMethod<
   PaginatedTrafficBudgetDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(636) as any as S.Schema<ListTrafficBudgetsForQueryRequest>,
-    output: __S(635) as any as S.Schema<PaginatedTrafficBudget>,
+    input: ListTrafficBudgetsForQueryRequest,
+    output: PaginatedTrafficBudget,
     errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
     protocol: PlanetScaleProtocol,
     retry: Retry.Retry,
@@ -17860,8 +22434,8 @@ export const listWebhooks: API.PaginatedOperationMethod<
   PaginatedDatabaseWebhookDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(637) as any as S.Schema<ListWebhooksRequest>,
-    output: __S(640) as any as S.Schema<PaginatedDatabaseWebhook>,
+    input: ListWebhooksRequest,
+    output: PaginatedDatabaseWebhook,
     errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
     protocol: PlanetScaleProtocol,
     retry: Retry.Retry,
@@ -17885,8 +22459,8 @@ export const listWorkflows: API.PaginatedOperationMethod<
   PaginatedWorkflowDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(641) as any as S.Schema<ListWorkflowsRequest>,
-    output: __S(644) as any as S.Schema<PaginatedWorkflow>,
+    input: ListWorkflowsRequest,
+    output: PaginatedWorkflow,
     errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
     protocol: PlanetScaleProtocol,
     retry: Retry.Retry,
@@ -17912,8 +22486,8 @@ export const moveCompleteTablesWorkflow: API.OperationMethod<
   MoveCompleteTablesWorkflowError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(645) as any as S.Schema<MoveCompleteTablesWorkflowRequest>,
-  output: __S(19) as any as S.Schema<MoveCompleteTablesWorkflowResponse>,
+  input: MoveCompleteTablesWorkflowRequest,
+  output: MoveCompleteTablesWorkflowResponse,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -17931,8 +22505,8 @@ export const moveReverseTrafficTablesWorkflow: API.OperationMethod<
   MoveReverseTrafficTablesWorkflowError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(646) as any as S.Schema<MoveReverseTrafficTablesWorkflowRequest>,
-  output: __S(19) as any as S.Schema<MoveReverseTrafficTablesWorkflowResponse>,
+  input: MoveReverseTrafficTablesWorkflowRequest,
+  output: MoveReverseTrafficTablesWorkflowResponse,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -17950,8 +22524,8 @@ export const moveSwitchTrafficTablesWorkflow: API.OperationMethod<
   MoveSwitchTrafficTablesWorkflowError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(647) as any as S.Schema<MoveSwitchTrafficTablesWorkflowRequest>,
-  output: __S(19) as any as S.Schema<MoveSwitchTrafficTablesWorkflowResponse>,
+  input: MoveSwitchTrafficTablesWorkflowRequest,
+  output: MoveSwitchTrafficTablesWorkflowResponse,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -17965,8 +22539,8 @@ export const promoteBranch: API.OperationMethod<
   PromoteBranchError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(648) as any as S.Schema<PromoteBranchRequest>,
-  output: __S(64) as any as S.Schema<DatabaseBranch>,
+  input: PromoteBranchRequest,
+  output: DatabaseBranch,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -17984,8 +22558,8 @@ export const reassignRoleObjects: API.OperationMethod<
   ReassignRoleObjectsError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(649) as any as S.Schema<ReassignRoleObjectsRequest>,
-  output: __S(131) as any as S.Schema<ReassignRoleObjectsResponse>,
+  input: ReassignRoleObjectsRequest,
+  output: ReassignRoleObjectsResponse,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -18003,8 +22577,8 @@ export const removeOrganizationMember: API.OperationMethod<
   RemoveOrganizationMemberError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(650) as any as S.Schema<RemoveOrganizationMemberRequest>,
-  output: __S(19) as any as S.Schema<RemoveOrganizationMemberResponse>,
+  input: RemoveOrganizationMemberRequest,
+  output: RemoveOrganizationMemberResponse,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -18023,8 +22597,8 @@ export const removeOrganizationTeamMember: API.OperationMethod<
   RemoveOrganizationTeamMemberError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(651) as any as S.Schema<RemoveOrganizationTeamMemberRequest>,
-  output: __S(19) as any as S.Schema<RemoveOrganizationTeamMemberResponse>,
+  input: RemoveOrganizationTeamMemberRequest,
+  output: RemoveOrganizationTeamMemberResponse,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -18038,8 +22612,8 @@ export const renewPassword: API.OperationMethod<
   RenewPasswordError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(652) as any as S.Schema<RenewPasswordRequest>,
-  output: __S(119) as any as S.Schema<DatabaseBranchPasswordWithSecret>,
+  input: RenewPasswordRequest,
+  output: DatabaseBranchPasswordWithSecret,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -18053,8 +22627,8 @@ export const renewRole: API.OperationMethod<
   RenewRoleError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(653) as any as S.Schema<RenewRoleRequest>,
-  output: __S(125) as any as S.Schema<PostgresRole>,
+  input: RenewRoleRequest,
+  output: PostgresRole,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -18068,8 +22642,8 @@ export const resetDefaultRole: API.OperationMethod<
   ResetDefaultRoleError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(654) as any as S.Schema<ResetDefaultRoleRequest>,
-  output: __S(125) as any as S.Schema<PostgresRole>,
+  input: ResetDefaultRoleRequest,
+  output: PostgresRole,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -18083,8 +22657,8 @@ export const resetRole: API.OperationMethod<
   ResetRoleError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(655) as any as S.Schema<ResetRoleRequest>,
-  output: __S(125) as any as S.Schema<PostgresRole>,
+  input: ResetRoleRequest,
+  output: PostgresRole,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -18098,8 +22672,8 @@ export const retryWorkflow: API.OperationMethod<
   RetryWorkflowError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(656) as any as S.Schema<RetryWorkflowRequest>,
-  output: __S(45) as any as S.Schema<Workflow>,
+  input: RetryWorkflowRequest,
+  output: Workflow,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -18117,8 +22691,8 @@ export const runBranchMaintenance: API.OperationMethod<
   RunBranchMaintenanceError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(657) as any as S.Schema<RunBranchMaintenanceRequest>,
-  output: __S(131) as any as S.Schema<RunBranchMaintenanceResponse>,
+  input: RunBranchMaintenanceRequest,
+  output: RunBranchMaintenanceResponse,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -18136,8 +22710,8 @@ export const runShardConfigurationProfileMaintenance: API.OperationMethod<
   RunShardConfigurationProfileMaintenanceError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(658) as any as S.Schema<RunShardConfigurationProfileMaintenanceRequest>,
-  output: __S(19) as any as S.Schema<RunShardConfigurationProfileMaintenanceResponse>,
+  input: RunShardConfigurationProfileMaintenanceRequest,
+  output: RunShardConfigurationProfileMaintenanceResponse,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -18155,8 +22729,8 @@ export const runShardConfigurationProfilesMaintenance: API.OperationMethod<
   RunShardConfigurationProfilesMaintenanceError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(659) as any as S.Schema<RunShardConfigurationProfilesMaintenanceRequest>,
-  output: __S(19) as any as S.Schema<RunShardConfigurationProfilesMaintenanceResponse>,
+  input: RunShardConfigurationProfilesMaintenanceRequest,
+  output: RunShardConfigurationProfilesMaintenanceResponse,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -18174,8 +22748,8 @@ export const setDefaultShardConfigurationProfile: API.OperationMethod<
   SetDefaultShardConfigurationProfileError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(660) as any as S.Schema<SetDefaultShardConfigurationProfileRequest>,
-  output: __S(134) as any as S.Schema<NekiShardConfigurationProfile>,
+  input: SetDefaultShardConfigurationProfileRequest,
+  output: NekiShardConfigurationProfile,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -18189,8 +22763,8 @@ export const skipRevertPeriod: API.OperationMethod<
   SkipRevertPeriodError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(661) as any as S.Schema<SkipRevertPeriodRequest>,
-  output: __S(34) as any as S.Schema<DatabaseDeployRequest>,
+  input: SkipRevertPeriodRequest,
+  output: DatabaseDeployRequest,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -18208,8 +22782,8 @@ export const startMoveTablesWorkflow: API.OperationMethod<
   StartMoveTablesWorkflowError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(662) as any as S.Schema<StartMoveTablesWorkflowRequest>,
-  output: __S(664) as any as S.Schema<StartMoveTablesWorkflowResponse>,
+  input: StartMoveTablesWorkflowRequest,
+  output: StartMoveTablesWorkflowResponse,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -18227,8 +22801,8 @@ export const stopMoveTablesWorkflow: API.OperationMethod<
   StopMoveTablesWorkflowError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(665) as any as S.Schema<StopMoveTablesWorkflowRequest>,
-  output: __S(664) as any as S.Schema<StopMoveTablesWorkflowResponse>,
+  input: StopMoveTablesWorkflowRequest,
+  output: StopMoveTablesWorkflowResponse,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -18246,8 +22820,8 @@ export const submitBranchConfigChangeRequests: API.OperationMethod<
   SubmitBranchConfigChangeRequestsError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(666) as any as S.Schema<SubmitBranchConfigChangeRequestsRequest>,
-  output: __S(667) as any as S.Schema<SubmitBranchConfigChangeRequestsResponse>,
+  input: SubmitBranchConfigChangeRequestsRequest,
+  output: SubmitBranchConfigChangeRequestsResponse,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -18261,8 +22835,8 @@ export const testWebhook: API.OperationMethod<
   TestWebhookError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(668) as any as S.Schema<TestWebhookRequest>,
-  output: __S(131) as any as S.Schema<TestWebhookResponse>,
+  input: TestWebhookRequest,
+  output: TestWebhookResponse,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -18276,8 +22850,8 @@ export const updateAdmin: API.OperationMethod<
   UpdateAdminError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(669) as any as S.Schema<UpdateAdminRequest>,
-  output: __S(202) as any as S.Schema<NekiAdmin>,
+  input: UpdateAdminRequest,
+  output: NekiAdmin,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -18291,8 +22865,8 @@ export const updateAutoApply: API.OperationMethod<
   UpdateAutoApplyError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(670) as any as S.Schema<UpdateAutoApplyRequest>,
-  output: __S(34) as any as S.Schema<DatabaseDeployRequest>,
+  input: UpdateAutoApplyRequest,
+  output: DatabaseDeployRequest,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -18310,8 +22884,8 @@ export const updateAutoDeleteBranch: API.OperationMethod<
   UpdateAutoDeleteBranchError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(671) as any as S.Schema<UpdateAutoDeleteBranchRequest>,
-  output: __S(34) as any as S.Schema<DatabaseDeployRequest>,
+  input: UpdateAutoDeleteBranchRequest,
+  output: DatabaseDeployRequest,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -18325,8 +22899,8 @@ export const updateBackup: API.OperationMethod<
   UpdateBackupError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(672) as any as S.Schema<UpdateBackupRequest>,
-  output: __S(54) as any as S.Schema<Backup>,
+  input: UpdateBackupRequest,
+  output: Backup,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -18344,8 +22918,8 @@ export const updateBackupPolicy: API.OperationMethod<
   UpdateBackupPolicyError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(673) as any as S.Schema<UpdateBackupPolicyRequest>,
-  output: __S(52) as any as S.Schema<BackupPolicy>,
+  input: UpdateBackupPolicyRequest,
+  output: BackupPolicy,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -18363,8 +22937,8 @@ export const updateBouncerResizeRequest: API.OperationMethod<
   UpdateBouncerResizeRequestError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(674) as any as S.Schema<UpdateBouncerResizeRequestRequest>,
-  output: __S(675) as any as S.Schema<PostgresBouncerResizeRequest>,
+  input: UpdateBouncerResizeRequestRequest,
+  output: PostgresBouncerResizeRequest,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -18378,8 +22952,8 @@ export const updateBranch: API.OperationMethod<
   UpdateBranchError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(676) as any as S.Schema<UpdateBranchRequest>,
-  output: __S(64) as any as S.Schema<DatabaseBranch>,
+  input: UpdateBranchRequest,
+  output: DatabaseBranch,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -18397,8 +22971,8 @@ export const updateBranchChangeRequest: API.OperationMethod<
   UpdateBranchChangeRequestError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(678) as any as S.Schema<UpdateBranchChangeRequestRequest>,
-  output: __S(213) as any as S.Schema<PostgresClusterResizeRequest>,
+  input: UpdateBranchChangeRequestRequest,
+  output: PostgresClusterResizeRequest,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -18416,8 +22990,8 @@ export const updateBranchClusterConfig: API.OperationMethod<
   UpdateBranchClusterConfigError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(679) as any as S.Schema<UpdateBranchClusterConfigRequest>,
-  output: __S(19) as any as S.Schema<UpdateBranchClusterConfigResponse>,
+  input: UpdateBranchClusterConfigRequest,
+  output: UpdateBranchClusterConfigResponse,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -18435,8 +23009,8 @@ export const updateBranchResizeRequest: API.OperationMethod<
   UpdateBranchResizeRequestError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(680) as any as S.Schema<UpdateBranchResizeRequestRequest>,
-  output: __S(235) as any as S.Schema<MysqlClusterResizeRequest>,
+  input: UpdateBranchResizeRequestRequest,
+  output: MysqlClusterResizeRequest,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -18454,8 +23028,8 @@ export const updateDatabasePostgresCidr: API.OperationMethod<
   UpdateDatabasePostgresCidrError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(681) as any as S.Schema<UpdateDatabasePostgresCidrRequest>,
-  output: __S(72) as any as S.Schema<PostgresClusterCidr>,
+  input: UpdateDatabasePostgresCidrRequest,
+  output: PostgresClusterCidr,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -18473,8 +23047,8 @@ export const updateDatabaseSettings: API.OperationMethod<
   UpdateDatabaseSettingsError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(682) as any as S.Schema<UpdateDatabaseSettingsRequest>,
-  output: __S(70) as any as S.Schema<Database>,
+  input: UpdateDatabaseSettingsRequest,
+  output: Database,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -18492,8 +23066,8 @@ export const updateDatabaseThrottler: API.OperationMethod<
   UpdateDatabaseThrottlerError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(683) as any as S.Schema<UpdateDatabaseThrottlerRequest>,
-  output: __S(249) as any as S.Schema<ThrottlerConfigurations>,
+  input: UpdateDatabaseThrottlerRequest,
+  output: ThrottlerConfigurations,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -18511,8 +23085,8 @@ export const updateDataTopology: API.OperationMethod<
   UpdateDataTopologyError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(684) as any as S.Schema<UpdateDataTopologyRequest>,
-  output: __S(251) as any as S.Schema<NekiDataTopology>,
+  input: UpdateDataTopologyRequest,
+  output: NekiDataTopology,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -18530,8 +23104,8 @@ export const updateDedicatedReadReplica: API.OperationMethod<
   UpdateDedicatedReadReplicaError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(685) as any as S.Schema<UpdateDedicatedReadReplicaRequest>,
-  output: __S(78) as any as S.Schema<PostgresReadOnlyReplica>,
+  input: UpdateDedicatedReadReplicaRequest,
+  output: PostgresReadOnlyReplica,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -18549,8 +23123,8 @@ export const updateDeployRequestThrottler: API.OperationMethod<
   UpdateDeployRequestThrottlerError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(686) as any as S.Schema<UpdateDeployRequestThrottlerRequest>,
-  output: __S(249) as any as S.Schema<ThrottlerConfigurations>,
+  input: UpdateDeployRequestThrottlerRequest,
+  output: ThrottlerConfigurations,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -18568,8 +23142,8 @@ export const updateInsightsAgentSchedule: API.OperationMethod<
   UpdateInsightsAgentScheduleError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(687) as any as S.Schema<UpdateInsightsAgentScheduleRequest>,
-  output: __S(491) as any as S.Schema<InsightsAgentSchedule>,
+  input: UpdateInsightsAgentScheduleRequest,
+  output: InsightsAgentSchedule,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -18583,8 +23157,8 @@ export const updateKeyspace: API.OperationMethod<
   UpdateKeyspaceError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(691) as any as S.Schema<UpdateKeyspaceRequest>,
-  output: __S(87) as any as S.Schema<DatabaseBranchKeyspace>,
+  input: UpdateKeyspaceRequest,
+  output: DatabaseBranchKeyspace,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -18602,8 +23176,8 @@ export const updateKeyspaceResizeRequest: API.OperationMethod<
   UpdateKeyspaceResizeRequestError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(692) as any as S.Schema<UpdateKeyspaceResizeRequestRequest>,
-  output: __S(290) as any as S.Schema<KeyspaceResizeRequest>,
+  input: UpdateKeyspaceResizeRequestRequest,
+  output: KeyspaceResizeRequest,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -18621,8 +23195,8 @@ export const updateKeyspaceVschema: API.OperationMethod<
   UpdateKeyspaceVschemaError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(693) as any as S.Schema<UpdateKeyspaceVschemaRequest>,
-  output: __S(296) as any as S.Schema<UpdateKeyspaceVschemaResponse>,
+  input: UpdateKeyspaceVschemaRequest,
+  output: UpdateKeyspaceVschemaResponse,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -18640,8 +23214,8 @@ export const updateOrganization: API.OperationMethod<
   UpdateOrganizationError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(694) as any as S.Schema<UpdateOrganizationRequest>,
-  output: __S(313) as any as S.Schema<Organization>,
+  input: UpdateOrganizationRequest,
+  output: Organization,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -18659,8 +23233,8 @@ export const updateOrganizationMembership: API.OperationMethod<
   UpdateOrganizationMembershipError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(695) as any as S.Schema<UpdateOrganizationMembershipRequest>,
-  output: __S(318) as any as S.Schema<OrganizationMembership>,
+  input: UpdateOrganizationMembershipRequest,
+  output: OrganizationMembership,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -18679,8 +23253,8 @@ export const updateOrganizationTeam: API.OperationMethod<
   UpdateOrganizationTeamError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(696) as any as S.Schema<UpdateOrganizationTeamRequest>,
-  output: __S(117) as any as S.Schema<OrganizationTeam>,
+  input: UpdateOrganizationTeamRequest,
+  output: OrganizationTeam,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -18694,8 +23268,8 @@ export const updatePassword: API.OperationMethod<
   UpdatePasswordError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(697) as any as S.Schema<UpdatePasswordRequest>,
-  output: __S(325) as any as S.Schema<DatabaseBranchPassword>,
+  input: UpdatePasswordRequest,
+  output: DatabaseBranchPassword,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -18713,8 +23287,8 @@ export const updatePaymentMethod: API.OperationMethod<
   UpdatePaymentMethodError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(698) as any as S.Schema<UpdatePaymentMethodRequest>,
-  output: __S(327) as any as S.Schema<BillingPaymentMethodSetup>,
+  input: UpdatePaymentMethodRequest,
+  output: BillingPaymentMethodSetup,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -18728,8 +23302,8 @@ export const updateRole: API.OperationMethod<
   UpdateRoleError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(699) as any as S.Schema<UpdateRoleRequest>,
-  output: __S(125) as any as S.Schema<PostgresRole>,
+  input: UpdateRoleRequest,
+  output: PostgresRole,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -18743,8 +23317,8 @@ export const updateRouter: API.OperationMethod<
   UpdateRouterError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(700) as any as S.Schema<UpdateRouterRequest>,
-  output: __S(128) as any as S.Schema<NekiRouter>,
+  input: UpdateRouterRequest,
+  output: NekiRouter,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -18762,8 +23336,8 @@ export const updateSafeMigrations: API.OperationMethod<
   UpdateSafeMigrationsError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(701) as any as S.Schema<UpdateSafeMigrationsRequest>,
-  output: __S(64) as any as S.Schema<DatabaseBranch>,
+  input: UpdateSafeMigrationsRequest,
+  output: DatabaseBranch,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -18777,8 +23351,8 @@ export const updateShard: API.OperationMethod<
   UpdateShardError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(702) as any as S.Schema<UpdateShardRequest>,
-  output: __S(131) as any as S.Schema<UpdateShardResponse>,
+  input: UpdateShardRequest,
+  output: UpdateShardResponse,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -18796,8 +23370,8 @@ export const updateShardConfigurationProfile: API.OperationMethod<
   UpdateShardConfigurationProfileError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(703) as any as S.Schema<UpdateShardConfigurationProfileRequest>,
-  output: __S(134) as any as S.Schema<NekiShardConfigurationProfile>,
+  input: UpdateShardConfigurationProfileRequest,
+  output: NekiShardConfigurationProfile,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -18815,8 +23389,8 @@ export const updateShardConfigurationProfileShard: API.OperationMethod<
   UpdateShardConfigurationProfileShardError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(704) as any as S.Schema<UpdateShardConfigurationProfileShardRequest>,
-  output: __S(136) as any as S.Schema<NekiShard>,
+  input: UpdateShardConfigurationProfileShardRequest,
+  output: NekiShard,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -18830,8 +23404,8 @@ export const updateSidecar: API.OperationMethod<
   UpdateSidecarError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(705) as any as S.Schema<UpdateSidecarRequest>,
-  output: __S(343) as any as S.Schema<NekiSidecar>,
+  input: UpdateSidecarRequest,
+  output: NekiSidecar,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -18849,8 +23423,8 @@ export const updateTrafficBudget: API.OperationMethod<
   UpdateTrafficBudgetError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(706) as any as S.Schema<UpdateTrafficBudgetRequest>,
-  output: __S(144) as any as S.Schema<TrafficBudget>,
+  input: UpdateTrafficBudgetRequest,
+  output: TrafficBudget,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -18864,8 +23438,8 @@ export const updateWebhook: API.OperationMethod<
   UpdateWebhookError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(707) as any as S.Schema<UpdateWebhookRequest>,
-  output: __S(150) as any as S.Schema<DatabaseWebhook>,
+  input: UpdateWebhookRequest,
+  output: DatabaseWebhook,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -18879,8 +23453,8 @@ export const verifyWorkflow: API.OperationMethod<
   VerifyWorkflowError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(708) as any as S.Schema<VerifyWorkflowRequest>,
-  output: __S(45) as any as S.Schema<Workflow>,
+  input: VerifyWorkflowRequest,
+  output: Workflow,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -18894,8 +23468,8 @@ export const workflowCutover: API.OperationMethod<
   WorkflowCutoverError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(709) as any as S.Schema<WorkflowCutoverRequest>,
-  output: __S(45) as any as S.Schema<Workflow>,
+  input: WorkflowCutoverRequest,
+  output: Workflow,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -18913,8 +23487,8 @@ export const workflowReverseCutover: API.OperationMethod<
   WorkflowReverseCutoverError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(710) as any as S.Schema<WorkflowReverseCutoverRequest>,
-  output: __S(45) as any as S.Schema<Workflow>,
+  input: WorkflowReverseCutoverRequest,
+  output: Workflow,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -18932,8 +23506,8 @@ export const workflowReverseTraffic: API.OperationMethod<
   WorkflowReverseTrafficError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(711) as any as S.Schema<WorkflowReverseTrafficRequest>,
-  output: __S(45) as any as S.Schema<Workflow>,
+  input: WorkflowReverseTrafficRequest,
+  output: Workflow,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -18951,8 +23525,8 @@ export const workflowSwitchPrimaries: API.OperationMethod<
   WorkflowSwitchPrimariesError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(712) as any as S.Schema<WorkflowSwitchPrimariesRequest>,
-  output: __S(45) as any as S.Schema<Workflow>,
+  input: WorkflowSwitchPrimariesRequest,
+  output: Workflow,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -18970,8 +23544,8 @@ export const workflowSwitchReplicas: API.OperationMethod<
   WorkflowSwitchReplicasError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(713) as any as S.Schema<WorkflowSwitchReplicasRequest>,
-  output: __S(45) as any as S.Schema<Workflow>,
+  input: WorkflowSwitchReplicasRequest,
+  output: Workflow,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -19655,7 +24229,9 @@ function __c0(j: number): any {
           created_at: S.String,
           updated_at: S.String,
           two_factor_auth_configured: S.Boolean,
-          default_organization: S.optional(S.NullOr(__S(1))),
+          default_organization: S.optional(
+            S.NullOr(OrganizationTeamMembershipUserDefaultOrganization),
+          ),
           sso: S.optional(S.NullOr(S.Boolean)),
           managed: S.optional(S.NullOr(S.Boolean)),
           directory_managed: S.optional(S.NullOr(S.Boolean)),
@@ -19684,7 +24260,7 @@ function __c0(j: number): any {
           id: S.String,
           provider: S.String,
           enabled: S.Boolean,
-          public_ip_addresses: __S(5),
+          public_ip_addresses: OrganizationTeamMembershipPasswordsItemRegionPublicIpAddressesList,
           display_name: S.String,
           location: S.String,
           slug: S.String,
@@ -19717,42 +24293,43 @@ function __c1(j: number): any {
         S.Struct({
           id: S.String,
           name: S.String,
-          role: S.String,
-          cidrs: S.NullOr(__S(4)),
+          role: OrganizationTeamMembershipPasswordsItemRole,
+          cidrs: S.NullOr(OrganizationTeamMembershipPasswordsItemCidrsList),
           created_at: S.String,
           deleted_at: S.NullOr(S.String),
           expires_at: S.NullOr(S.String),
           last_used_at: S.NullOr(S.String),
           expired: S.Boolean,
           direct_vtgate: S.Boolean,
-          direct_vtgate_addresses: __S(5),
+          direct_vtgate_addresses: OrganizationTeamMembershipPasswordsItemDirectVtgateAddressesList,
           ttl_seconds: S.NullOr(S.Number),
           access_host_url: S.String,
           access_host_regional_url: S.String,
-          access_host_regional_urls: __S(5),
-          actor: S.NullOr(__S(3)),
-          region: __S(6),
+          access_host_regional_urls:
+            OrganizationTeamMembershipPasswordsItemAccessHostRegionalUrlsList,
+          actor: S.NullOr(OrganizationTeamMembershipActor),
+          region: OrganizationTeamMembershipPasswordsItemRegion,
           username: S.String,
           plain_text: S.NullOr(S.String).pipe(T.SensitiveValue({})),
           replica: S.Boolean,
           read_only_region: S.Boolean,
           renewable: S.Boolean,
-          database_branch: __S(7),
+          database_branch: OrganizationTeamMembershipPasswordsItemDatabaseBranch,
         }),
       ).annotate({
         identifier: "OrganizationTeamMembershipPasswordsItem",
       });
     case 1:
-      return S.Array(__S(8));
+      return S.Array(OrganizationTeamMembershipPasswordsItem);
     case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          user: __S(2),
-          actor: __S(3),
+          user: OrganizationTeamMembershipUser,
+          actor: OrganizationTeamMembershipActor,
           created_at: S.String,
           updated_at: S.String,
-          passwords: __S(9),
+          passwords: OrganizationTeamMembershipPasswordsList,
         }),
       ).annotate({
         identifier: "OrganizationTeamMembership",
@@ -19764,7 +24341,7 @@ function __c1(j: number): any {
           database: S.String.pipe(T.Label()),
           branch: S.String.pipe(T.Label()),
           configuration_profile: S.String.pipe(T.Label()),
-          shard_ids: __S(4),
+          shard_ids: AssignShardConfigurationProfileShardsRequestShardIdsList,
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -19782,13 +24359,15 @@ function __c1(j: number): any {
         S.Struct({
           id: S.String,
           status: S.String,
-          error: S.optional(S.NullOr(__S(12))),
+          error: S.optional(S.NullOr(NekiShardAssignmentErrorMap)),
         }),
       ).annotate({ identifier: "NekiShardAssignment" });
     case 6:
-      return S.Array(__S(13));
+      return S.Array(NekiShardAssignment);
     case 7:
-      return S.suspend(() => __S(14).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        AssignShardConfigurationProfileShardsResponseBodyList.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "AssignShardConfigurationProfileShardsResponse",
       });
   }
@@ -19817,7 +24396,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           created: S.Number,
-          shard_ids: __S(4),
+          shard_ids: BulkCreateShardConfigurationProfileShardsResponseShardIdsList,
         }),
       ).annotate({
         identifier: "BulkCreateShardConfigurationProfileShardsResponse",
@@ -19914,12 +24493,12 @@ function __c2(j: number): any {
 function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(12));
+      return S.Array(DatabaseDeployRequestDeploymentPrecedingDeploymentsItemMap);
     case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          state: S.String,
+          state: DatabaseDeployRequestDeploymentDeployOperationsItemState,
           keyspace_name: S.String,
           table_name: S.String,
           operation_name: S.String,
@@ -19935,20 +24514,22 @@ function __c3(j: number): any {
           table_locked: S.Boolean,
           table_recently_used: S.Boolean,
           table_recently_used_at: S.NullOr(S.String),
-          removed_foreign_key_names: S.NullOr(__S(5)),
+          removed_foreign_key_names: S.NullOr(
+            DatabaseDeployRequestDeploymentDeployOperationsItemRemovedForeignKeyNamesList,
+          ),
           deploy_errors: S.NullOr(S.String),
         }),
       ).annotate({
         identifier: "DatabaseDeployRequestDeploymentDeployOperationsItem",
       });
     case 2:
-      return S.Array(__S(25));
+      return S.Array(DatabaseDeployRequestDeploymentDeployOperationsItem);
     case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           shard: S.String,
-          state: S.String,
+          state: DatabaseDeployRequestDeploymentDeployOperationSummariesItemOperationsItemState,
           progress_percentage: S.Number,
           eta_seconds: S.Number,
         }),
@@ -19956,7 +24537,7 @@ function __c3(j: number): any {
         identifier: "DatabaseDeployRequestDeploymentDeployOperationSummariesItemOperationsItem",
       });
     case 4:
-      return S.Array(__S(27));
+      return S.Array(DatabaseDeployRequestDeploymentDeployOperationSummariesItemOperationsItem);
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -19968,24 +24549,25 @@ function __c3(j: number): any {
           keyspace_name: S.String,
           operation_name: S.String,
           progress_percentage: S.Number,
-          state: S.String,
+          state: DatabaseDeployRequestDeploymentDeployOperationSummariesItemState,
           syntax_highlighted_ddl: S.String,
           table_name: S.String,
           table_recently_used_at: S.NullOr(S.String),
           throttled_at: S.NullOr(S.String),
-          removed_foreign_key_names: __S(5),
+          removed_foreign_key_names:
+            DatabaseDeployRequestDeploymentDeployOperationSummariesItemRemovedForeignKeyNamesList,
           shard_count: S.Number,
-          shard_names: __S(5),
+          shard_names: DatabaseDeployRequestDeploymentDeployOperationSummariesItemShardNamesList,
           can_drop_data: S.Boolean,
           table_recently_used: S.Boolean,
           sharded: S.Boolean,
-          operations: __S(28),
+          operations: DatabaseDeployRequestDeploymentDeployOperationSummariesItemOperationsList,
         }),
       ).annotate({
         identifier: "DatabaseDeployRequestDeploymentDeployOperationSummariesItem",
       });
     case 6:
-      return S.Array(__S(29));
+      return S.Array(DatabaseDeployRequestDeploymentDeployOperationSummariesItem);
     case 7:
       return S.Record(S.String, S.Unknown);
   }
@@ -19993,7 +24575,7 @@ function __c3(j: number): any {
 function __c4(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(31));
+      return S.Array(DatabaseDeployRequestDeploymentSequentialDiffDependenciesItemMap);
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -20009,23 +24591,28 @@ function __c4(j: number): any {
           queued_at: S.NullOr(S.String),
           ready_to_cutover_at: S.NullOr(S.String),
           started_at: S.NullOr(S.String),
-          state: S.String,
+          state: DatabaseDeployRequestDeploymentState2,
           submitted_at: S.NullOr(S.String),
           updated_at: S.String,
           into_branch: S.String,
           deploy_request_number: S.Number,
           deployable: S.Boolean,
-          preceding_deployments: __S(24),
-          deploy_operations: __S(26),
-          deploy_operation_summaries: __S(30),
-          lint_errors: __S(24),
-          sequential_diff_dependencies: __S(32),
-          lookup_vindex_operations: __S(24),
-          throttler_configurations: S.optional(S.NullOr(__S(12))),
-          deployment_revert_request: S.NullOr(__S(12)),
-          actor: S.optional(S.NullOr(__S(3))),
-          cutover_actor: S.optional(S.NullOr(__S(3))),
-          cancelled_actor: S.optional(S.NullOr(__S(3))),
+          preceding_deployments: DatabaseDeployRequestDeploymentPrecedingDeploymentsList,
+          deploy_operations: DatabaseDeployRequestDeploymentDeployOperationsList,
+          deploy_operation_summaries: DatabaseDeployRequestDeploymentDeployOperationSummariesList,
+          lint_errors: DatabaseDeployRequestDeploymentLintErrorsList,
+          sequential_diff_dependencies:
+            DatabaseDeployRequestDeploymentSequentialDiffDependenciesList,
+          lookup_vindex_operations: DatabaseDeployRequestDeploymentLookupVindexOperationsList,
+          throttler_configurations: S.optional(
+            S.NullOr(DatabaseDeployRequestDeploymentThrottlerConfigurationsMap),
+          ),
+          deployment_revert_request: S.NullOr(
+            DatabaseDeployRequestDeploymentDeploymentRevertRequestMap,
+          ),
+          actor: S.optional(S.NullOr(OrganizationTeamMembershipActor)),
+          cutover_actor: S.optional(S.NullOr(OrganizationTeamMembershipActor)),
+          cancelled_actor: S.optional(S.NullOr(OrganizationTeamMembershipActor)),
           schema_last_updated_at: S.NullOr(S.String),
           table_locked: S.Boolean,
           locked_table_name: S.optional(S.NullOr(S.String)),
@@ -20042,21 +24629,21 @@ function __c4(j: number): any {
         S.Struct({
           id: S.String,
           number: S.Number,
-          actor: __S(3),
-          closed_by: S.optional(S.NullOr(__S(3))),
+          actor: OrganizationTeamMembershipActor,
+          closed_by: S.optional(S.NullOr(OrganizationTeamMembershipActor)),
           branch: S.String,
           branch_id: S.String,
           branch_deleted: S.Boolean,
-          branch_deleted_by: S.optional(S.NullOr(__S(3))),
+          branch_deleted_by: S.optional(S.NullOr(OrganizationTeamMembershipActor)),
           branch_deleted_at: S.NullOr(S.String),
           into_branch: S.String,
           into_branch_sharded: S.Boolean,
           into_branch_shard_count: S.Number,
           into_branch_keyspace_count: S.Number,
           approved: S.Boolean,
-          state: S.String,
-          deployment_state: S.String,
-          deployment: __S(33),
+          state: DatabaseDeployRequestState,
+          deployment_state: DatabaseDeployRequestDeploymentState,
+          deployment: DatabaseDeployRequestDeployment,
           num_comments: S.Number,
           html_url: S.String,
           notes: S.String,
@@ -20233,7 +24820,7 @@ function __c5(j: number): any {
           id: S.String,
           name: S.String,
           number: S.Number,
-          state: S.String,
+          state: WorkflowState,
           created_at: S.String,
           updated_at: S.String,
           started_at: S.NullOr(S.String),
@@ -20248,29 +24835,29 @@ function __c5(j: number): any {
           switch_replicas_at: S.NullOr(S.String),
           switch_primaries_at: S.NullOr(S.String),
           verify_data_at: S.NullOr(S.String),
-          workflow_type: S.String,
+          workflow_type: WorkflowWorkflowType,
           workflow_subtype: S.String,
           defer_secondary_keys: S.Boolean,
-          on_ddl: S.String,
+          on_ddl: WorkflowOnDdl,
           workflow_errors: S.String,
           may_retry: S.Boolean,
           may_restart: S.Boolean,
           verified_data_stale: S.Boolean,
           sequence_tables_applied: S.Boolean,
-          actor: __S(3),
-          verify_data_by: __S(3),
-          reversed_by: __S(3),
-          switch_replicas_by: __S(3),
-          switch_primaries_by: __S(3),
-          cancelled_by: __S(3),
-          completed_by: __S(3),
-          retried_by: __S(3),
-          cutover_by: __S(3),
-          reversed_cutover_by: __S(3),
-          branch: __S(1),
-          source_keyspace: __S(1),
-          target_keyspace: __S(1),
-          global_keyspace: __S(1),
+          actor: OrganizationTeamMembershipActor,
+          verify_data_by: OrganizationTeamMembershipActor,
+          reversed_by: OrganizationTeamMembershipActor,
+          switch_replicas_by: OrganizationTeamMembershipActor,
+          switch_primaries_by: OrganizationTeamMembershipActor,
+          cancelled_by: OrganizationTeamMembershipActor,
+          completed_by: OrganizationTeamMembershipActor,
+          retried_by: OrganizationTeamMembershipActor,
+          cutover_by: OrganizationTeamMembershipActor,
+          reversed_cutover_by: OrganizationTeamMembershipActor,
+          branch: OrganizationTeamMembershipUserDefaultOrganization,
+          source_keyspace: OrganizationTeamMembershipUserDefaultOrganization,
+          target_keyspace: OrganizationTeamMembershipUserDefaultOrganization,
+          global_keyspace: OrganizationTeamMembershipUserDefaultOrganization,
         }),
       ).annotate({ identifier: "Workflow" });
     case 6:
@@ -20330,7 +24917,7 @@ function __c6(j: number): any {
           database: S.String.pipe(T.Label()),
           branch: S.String.pipe(T.Label()),
           name: S.optional(S.String),
-          retention_unit: S.optional(S.String),
+          retention_unit: S.optional(CreateBackupRequestRetentionUnit),
           retention_value: S.optional(S.Number),
           emergency: S.optional(S.Boolean),
         }).pipe(
@@ -20342,14 +24929,14 @@ function __c6(j: number): any {
         ),
       ).annotate({ identifier: "CreateBackupRequest" });
     case 3:
-      return S.Array(__S(1));
+      return S.Array(OrganizationTeamMembershipUserDefaultOrganization);
     case 4:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           display_name: S.String,
           name: S.String,
-          target: S.String,
+          target: BackupBackupPolicyTarget,
           retention_value: S.Number,
           retention_unit: S.String,
           frequency_value: S.Number,
@@ -20380,7 +24967,7 @@ function __c6(j: number): any {
         S.Struct({
           id: S.String,
           name: S.String,
-          state: S.String,
+          state: BackupState,
           size: S.Number,
           estimated_storage_cost: S.Number,
           created_at: S.String,
@@ -20393,11 +24980,11 @@ function __c6(j: number): any {
           uncompressed_size: S.Number,
           protected: S.Boolean,
           required: S.Boolean,
-          restored_branches: __S(51),
-          actor: S.NullOr(__S(3)),
-          backup_policy: S.optional(S.NullOr(__S(52))),
-          schema_snapshot: S.optional(S.NullOr(__S(53))),
-          database_branch: S.optional(S.NullOr(__S(1))),
+          restored_branches: BackupRestoredBranchesList,
+          actor: S.NullOr(OrganizationTeamMembershipActor),
+          backup_policy: S.optional(S.NullOr(BackupBackupPolicy)),
+          schema_snapshot: S.optional(S.NullOr(BackupSchemaSnapshot)),
+          database_branch: S.optional(S.NullOr(OrganizationTeamMembershipUserDefaultOrganization)),
         }),
       ).annotate({ identifier: "Backup" });
     case 7:
@@ -20406,11 +24993,11 @@ function __c6(j: number): any {
           organization: S.String.pipe(T.Label()),
           database: S.String.pipe(T.Label()),
           name: S.optional(S.String),
-          target: S.optional(S.String),
+          target: S.optional(CreateBackupPolicyRequestTarget),
           retention_value: S.optional(S.Number),
-          retention_unit: S.optional(S.String),
+          retention_unit: S.optional(CreateBackupPolicyRequestRetentionUnit),
           frequency_value: S.optional(S.Number),
-          frequency_unit: S.optional(S.String),
+          frequency_unit: S.optional(CreateBackupPolicyRequestFrequencyUnit),
           schedule_time: S.optional(S.String),
           schedule_day: S.optional(S.Number),
           schedule_week: S.optional(S.Number),
@@ -20461,13 +25048,13 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          namespace: S.String,
+          namespace: PostgresBouncerParametersItemNamespace,
           name: S.String,
           display_name: S.String,
           category: S.String,
           description: S.String,
           immutable: S.Boolean,
-          parameter_type: S.String,
+          parameter_type: PostgresBouncerParametersItemParameterType,
           default_value: S.String,
           value: S.String,
           required: S.Boolean,
@@ -20477,28 +25064,28 @@ function __c7(j: number): any {
           max: S.Number,
           min: S.Number,
           url: S.String,
-          options: __S(4),
-          actor: __S(3),
+          options: PostgresBouncerParametersItemOptionsList,
+          actor: OrganizationTeamMembershipActor,
         }),
       ).annotate({
         identifier: "PostgresBouncerParametersItem",
       });
     case 3:
-      return S.Array(__S(58));
+      return S.Array(PostgresBouncerParametersItem);
     case 4:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           name: S.String,
-          sku: __S(57),
-          target: S.String,
+          sku: PostgresBouncerSku,
+          target: PostgresBouncerTarget,
           replicas_per_cell: S.Number,
           created_at: S.String,
           updated_at: S.String,
           deleted_at: S.NullOr(S.String),
-          actor: __S(3),
-          branch: __S(1),
-          parameters: __S(59),
+          actor: OrganizationTeamMembershipActor,
+          branch: OrganizationTeamMembershipUserDefaultOrganization,
+          parameters: PostgresBouncerParametersList,
         }),
       ).annotate({ identifier: "PostgresBouncer" });
     case 5:
@@ -20522,15 +25109,15 @@ function __c7(j: number): any {
           region: S.optional(S.String),
           restore_point: S.optional(S.String),
           replicas: S.optional(S.Number),
-          seed_data: S.optional(S.String),
+          seed_data: S.optional(CreateBranchRequestSeedData),
           cluster_size: S.optional(S.String),
-          keyspace_cluster_sizes: S.optional(__S(4)),
-          configuration_profile_sizes: S.optional(__S(4)),
-          router_sizes: S.optional(__S(4)),
-          storage: S.optional(__S(61)),
+          keyspace_cluster_sizes: S.optional(CreateBranchRequestKeyspaceClusterSizesList),
+          configuration_profile_sizes: S.optional(CreateBranchRequestConfigurationProfileSizesList),
+          router_sizes: S.optional(CreateBranchRequestRouterSizesList),
+          storage: S.optional(CreateBranchRequestStorage),
           major_version: S.optional(S.String),
           create_database_if_missing: S.optional(S.Boolean),
-          kind: S.optional(S.String),
+          kind: S.optional(CreateBranchRequestKind),
         }).pipe(
           T.Http({
             method: "POST",
@@ -20545,7 +25132,7 @@ function __c7(j: number): any {
           id: S.String,
           provider: S.String,
           enabled: S.Boolean,
-          public_ip_addresses: __S(4),
+          public_ip_addresses: DatabaseBranchRegionPublicIpAddressesList,
           display_name: S.String,
           location: S.String,
           slug: S.String,
@@ -20569,10 +25156,10 @@ function __c8(j: number): any {
           deleted_at: S.NullOr(S.String),
           restore_checklist_completed_at: S.NullOr(S.String),
           schema_last_updated_at: S.NullOr(S.String),
-          kind: S.String,
+          kind: DatabaseBranchKind,
           mysql_address: S.optional(S.NullOr(S.String)),
           mysql_edge_address: S.optional(S.NullOr(S.String)),
-          state: S.String,
+          state: DatabaseBranchState,
           direct_vtgate: S.optional(S.NullOr(S.Boolean)),
           vtgate_size: S.optional(S.NullOr(S.String)),
           vtgate_name: S.optional(S.NullOr(S.String)),
@@ -20592,16 +25179,16 @@ function __c8(j: number): any {
           shard_count: S.optional(S.NullOr(S.Number)),
           keyspace_count: S.optional(S.Number),
           stale_schema: S.Boolean,
-          actor: S.NullOr(__S(3)),
-          restored_from_branch: S.NullOr(__S(1)),
+          actor: S.NullOr(OrganizationTeamMembershipActor),
+          restored_from_branch: S.NullOr(OrganizationTeamMembershipUserDefaultOrganization),
           private_edge_connectivity: S.Boolean,
           has_replicas: S.Boolean,
           has_read_only_replicas: S.Boolean,
           html_url: S.String,
           url: S.String,
-          region: __S(63),
+          region: DatabaseBranchRegion,
           parent_branch: S.NullOr(S.String),
-          vtgate_options: S.optional(S.NullOr(__S(12))),
+          vtgate_options: S.optional(S.NullOr(DatabaseBranchVtgateOptionsMap)),
           cluster_architecture: S.optional(S.String),
         }),
       ).annotate({ identifier: "DatabaseBranch" });
@@ -20611,8 +25198,8 @@ function __c8(j: number): any {
           organization: S.String.pipe(T.Label()),
           database: S.String.pipe(T.Label()),
           branch: S.String.pipe(T.Label()),
-          change_type: S.String,
-          options: __S(12),
+          change_type: CreateBranchConfigChangeRequestRequestChangeType,
+          options: CreateBranchConfigChangeRequestRequestOptionsMap,
         }).pipe(
           T.Http({
             method: "POST",
@@ -20627,10 +25214,10 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          state: S.String,
-          change_type: S.String,
-          previous_options: __S(12),
-          new_options: __S(12),
+          state: BranchConfigChangeRequestState,
+          change_type: BranchConfigChangeRequestChangeType,
+          previous_options: BranchConfigChangeRequestPreviousOptionsMap,
+          new_options: BranchConfigChangeRequestNewOptionsMap,
           error_message: S.NullOr(S.String),
           started_at: S.NullOr(S.String),
           completed_at: S.NullOr(S.String),
@@ -20638,7 +25225,7 @@ function __c8(j: number): any {
           updated_at: S.String,
           keyspace_name: S.NullOr(S.String),
           queued_until: S.NullOr(S.String),
-          actor: __S(3),
+          actor: OrganizationTeamMembershipActor,
         }),
       ).annotate({
         identifier: "BranchConfigChangeRequest",
@@ -20677,9 +25264,9 @@ function __c8(j: number): any {
           region: S.optional(S.String),
           cluster_size: S.String,
           replicas: S.optional(S.Number),
-          kind: S.optional(S.String),
+          kind: S.optional(CreateDatabaseRequestKind),
           major_version: S.optional(S.String),
-          storage: S.optional(__S(61)),
+          storage: S.optional(CreateDatabaseRequestStorage),
         }).pipe(
           T.Http({ method: "POST", uri: "/organizations/{organization}/databases", code: 200 }),
         ),
@@ -20700,10 +25287,10 @@ function __c8(j: number): any {
           ready: S.Boolean,
           at_backup_restore_branches_limit: S.optional(S.Boolean),
           at_development_branch_usage_limit: S.optional(S.Boolean),
-          region: __S(63),
+          region: DatabaseRegion,
           html_url: S.String,
           name: S.String,
-          state: S.String,
+          state: DatabaseState,
           sharded: S.optional(S.Boolean),
           default_branch_shard_count: S.optional(S.Number),
           default_branch_read_only_regions_count: S.optional(S.Number),
@@ -20729,7 +25316,7 @@ function __c8(j: number): any {
           created_at: S.String,
           updated_at: S.String,
           schema_last_updated_at: S.optional(S.NullOr(S.String)),
-          kind: S.String,
+          kind: DatabaseKind,
         }),
       ).annotate({ identifier: "Database" });
     case 7:
@@ -20739,7 +25326,7 @@ function __c8(j: number): any {
           database: S.String.pipe(T.Label()),
           schema: S.optional(S.String),
           role: S.optional(S.String),
-          cidrs: __S(4),
+          cidrs: CreateDatabasePostgresCidrRequestCidrsList,
           description: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -20761,12 +25348,12 @@ function __c9(j: number): any {
           id: S.String,
           schema: S.String,
           role: S.String,
-          cidrs: __S(4),
+          cidrs: PostgresClusterCidrCidrsList,
           description: S.NullOr(S.String),
           created_at: S.String,
           updated_at: S.String,
           deleted_at: S.NullOr(S.String),
-          actor: __S(3),
+          actor: OrganizationTeamMembershipActor,
         }),
       ).annotate({ identifier: "PostgresClusterCidr" });
     case 1:
@@ -20791,7 +25378,7 @@ function __c9(j: number): any {
           region: S.String,
           replicas: S.optional(S.Number),
           cluster_size: S.optional(S.String),
-          storage: S.optional(__S(73)),
+          storage: S.optional(CreateDedicatedReadReplicaRequestStorage),
         }).pipe(
           T.Http({
             method: "POST",
@@ -20808,7 +25395,7 @@ function __c9(j: number): any {
           id: S.String,
           provider: S.String,
           enabled: S.Boolean,
-          public_ip_addresses: __S(4),
+          public_ip_addresses: PostgresReadOnlyReplicaRegionPublicIpAddressesList,
           display_name: S.String,
           location: S.String,
           slug: S.String,
@@ -20824,13 +25411,13 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          namespace: S.String,
+          namespace: PostgresReadOnlyReplicaParametersItemNamespace,
           name: S.String,
           display_name: S.String,
           category: S.String,
           description: S.String,
           immutable: S.Boolean,
-          parameter_type: S.String,
+          parameter_type: PostgresReadOnlyReplicaParametersItemParameterType,
           default_value: S.String,
           disabled_reason: S.optional(S.NullOr(S.String)),
           value: S.String,
@@ -20841,15 +25428,15 @@ function __c9(j: number): any {
           max: S.Number,
           min: S.Number,
           url: S.String,
-          options: __S(4),
-          units: __S(4),
-          actor: __S(3),
+          options: PostgresReadOnlyReplicaParametersItemOptionsList,
+          units: PostgresReadOnlyReplicaParametersItemUnitsList,
+          actor: OrganizationTeamMembershipActor,
         }),
       ).annotate({
         identifier: "PostgresReadOnlyReplicaParametersItem",
       });
     case 5:
-      return S.Array(__S(76));
+      return S.Array(PostgresReadOnlyReplicaParametersItem);
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -20865,7 +25452,7 @@ function __c9(j: number): any {
           minimum_storage_bytes: S.NullOr(S.Number),
           maximum_storage_bytes: S.NullOr(S.Number),
           storage_autoscaling: S.NullOr(S.Boolean),
-          storage_type: S.NullOr(S.String),
+          storage_type: S.NullOr(PostgresReadOnlyReplicaStorageType),
           storage_iops: S.NullOr(S.Number),
           storage_throughput_mibs: S.NullOr(S.Number),
           volume_modifications_blocked_until: S.NullOr(S.String),
@@ -20873,9 +25460,9 @@ function __c9(j: number): any {
           updated_at: S.String,
           ready_at: S.NullOr(S.String),
           ready: S.Boolean,
-          actor: __S(3),
-          region: __S(75),
-          parameters: __S(77),
+          actor: OrganizationTeamMembershipActor,
+          region: PostgresReadOnlyReplicaRegion,
+          parameters: PostgresReadOnlyReplicaParametersList,
         }),
       ).annotate({ identifier: "PostgresReadOnlyReplica" });
     case 7:
@@ -20908,9 +25495,11 @@ function __c10(j: number): any {
           organization: S.String.pipe(T.Label()),
           database: S.String.pipe(T.Label()),
           branch: S.String.pipe(T.Label()),
-          type: S.String,
-          query_patterns_attributes: S.optional(__S(4)),
-          schema_numbers: S.optional(__S(4)),
+          type: CreateInsightsAgentRunRequestType,
+          query_patterns_attributes: S.optional(
+            CreateInsightsAgentRunRequestQueryPatternsAttributesList,
+          ),
+          schema_numbers: S.optional(CreateInsightsAgentRunRequestSchemaNumbersList),
         }).pipe(
           T.Http({
             method: "POST",
@@ -20927,13 +25516,13 @@ function __c10(j: number): any {
           id: S.String,
           number: S.Number,
           scheduled: S.Boolean,
-          type: S.String,
-          state: S.String,
-          repository: __S(12),
-          agent: S.NullOr(__S(12)),
+          type: InsightsAgentRunType,
+          state: InsightsAgentRunState,
+          repository: InsightsAgentRunRepositoryMap,
+          agent: S.NullOr(InsightsAgentRunAgentMap),
           schedule_id: S.NullOr(S.String),
           scheduled_for: S.NullOr(S.String),
-          selected_targets: __S(24),
+          selected_targets: InsightsAgentRunSelectedTargetsList,
           outcome: S.NullOr(S.String),
           title: S.NullOr(S.String),
           summary: S.NullOr(S.String),
@@ -20971,7 +25560,7 @@ function __c10(j: number): any {
         S.Struct({
           storage_bytes: S.Number,
           max_storage_bytes: S.Number,
-          disk_scaling_strategy: S.String,
+          disk_scaling_strategy: DatabaseBranchKeyspaceStorageDiskScalingStrategy,
         }),
       ).annotate({
         identifier: "DatabaseBranchKeyspaceStorage",
@@ -20979,7 +25568,9 @@ function __c10(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          strategy: S.optional(S.NullOr(S.String)),
+          strategy: S.optional(
+            S.NullOr(DatabaseBranchKeyspaceReplicationDurabilityConstraintsStrategy),
+          ),
         }),
       ).annotate({
         identifier: "DatabaseBranchKeyspaceReplicationDurabilityConstraints",
@@ -21026,14 +25617,15 @@ function __c10(j: number): any {
           default: S.Boolean,
           imported: S.Boolean,
           vector_pool_allocation: S.NullOr(S.Number),
-          node_ttl_strategy: S.String,
-          storage: __S(83),
+          node_ttl_strategy: DatabaseBranchKeyspaceNodeTtlStrategy,
+          storage: DatabaseBranchKeyspaceStorage,
           max_rollout: S.NullOr(S.Number),
-          replication_durability_constraints: __S(84),
-          vreplication_flags: __S(85),
-          throttler: __S(86),
-          mysqld_options: __S(12),
-          vttablet_options: __S(12),
+          replication_durability_constraints:
+            DatabaseBranchKeyspaceReplicationDurabilityConstraints,
+          vreplication_flags: DatabaseBranchKeyspaceVreplicationFlags,
+          throttler: DatabaseBranchKeyspaceThrottler,
+          mysqld_options: DatabaseBranchKeyspaceMysqldOptionsMap,
+          vttablet_options: DatabaseBranchKeyspaceVttabletOptionsMap,
         }),
       ).annotate({ identifier: "DatabaseBranchKeyspace" });
   }
@@ -21047,8 +25639,8 @@ function __c11(j: number): any {
           database: S.String.pipe(T.Label()),
           branch: S.String.pipe(T.Label()),
           keyspace: S.String.pipe(T.Label()),
-          change_type: S.String,
-          options: __S(12),
+          change_type: CreateKeyspaceConfigChangeRequestRequestChangeType,
+          options: CreateKeyspaceConfigChangeRequestRequestOptionsMap,
         }).pipe(
           T.Http({
             method: "POST",
@@ -21063,10 +25655,10 @@ function __c11(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          state: S.String,
-          change_type: S.String,
-          previous_options: __S(12),
-          new_options: __S(12),
+          state: KeyspaceConfigChangeRequestState,
+          change_type: KeyspaceConfigChangeRequestChangeType,
+          previous_options: KeyspaceConfigChangeRequestPreviousOptionsMap,
+          new_options: KeyspaceConfigChangeRequestNewOptionsMap,
           error_message: S.NullOr(S.String),
           started_at: S.NullOr(S.String),
           completed_at: S.NullOr(S.String),
@@ -21074,7 +25666,7 @@ function __c11(j: number): any {
           updated_at: S.String,
           keyspace_name: S.NullOr(S.String),
           queued_until: S.NullOr(S.String),
-          actor: __S(3),
+          actor: OrganizationTeamMembershipActor,
         }),
       ).annotate({
         identifier: "KeyspaceConfigChangeRequest",
@@ -21102,7 +25694,7 @@ function __c11(j: number): any {
           id: S.String.pipe(T.Label()),
           client_id: S.String,
           client_secret: S.String.pipe(T.SensitiveValue({})),
-          grant_type: S.String,
+          grant_type: CreateOauthTokenRequestGrantType,
           code: S.optional(S.String),
           redirect_uri: S.optional(S.String),
           refresh_token: S.optional(S.String.pipe(T.SensitiveValue({}))),
@@ -21123,13 +25715,13 @@ function __c11(j: number): any {
           resource_name: S.String,
           resource_id: S.String,
           resource_type: S.String,
-          resource: __S(1),
+          resource: OrganizationTeamMembershipUserDefaultOrganization,
         }),
       ).annotate({
         identifier: "ServiceTokenServiceTokenAccessesItem",
       });
     case 5:
-      return S.Array(__S(92));
+      return S.Array(ServiceTokenServiceTokenAccessesItem);
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -21142,7 +25734,7 @@ function __c11(j: number): any {
         identifier: "ServiceTokenOauthAccessesByResourceDatabaseDatabasesItem",
       });
     case 7:
-      return S.Array(__S(94));
+      return S.Array(ServiceTokenOauthAccessesByResourceDatabaseDatabasesItem);
   }
 }
 function __c12(j: number): any {
@@ -21157,12 +25749,12 @@ function __c12(j: number): any {
         identifier: "ServiceTokenOauthAccessesByResourceDatabaseAccessesItem",
       });
     case 1:
-      return S.Array(__S(96));
+      return S.Array(ServiceTokenOauthAccessesByResourceDatabaseAccessesItem);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          databases: __S(95),
-          accesses: __S(97),
+          databases: ServiceTokenOauthAccessesByResourceDatabaseDatabasesList,
+          accesses: ServiceTokenOauthAccessesByResourceDatabaseAccessesList,
         }),
       ).annotate({
         identifier: "ServiceTokenOauthAccessesByResourceDatabase",
@@ -21178,12 +25770,12 @@ function __c12(j: number): any {
         identifier: "ServiceTokenOauthAccessesByResourceOrganizationOrganizationsItem",
       });
     case 4:
-      return S.Array(__S(99));
+      return S.Array(ServiceTokenOauthAccessesByResourceOrganizationOrganizationsItem);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          organizations: __S(100),
-          accesses: __S(97),
+          organizations: ServiceTokenOauthAccessesByResourceOrganizationOrganizationsList,
+          accesses: ServiceTokenOauthAccessesByResourceOrganizationAccessesList,
         }),
       ).annotate({
         identifier: "ServiceTokenOauthAccessesByResourceOrganization",
@@ -21201,7 +25793,7 @@ function __c12(j: number): any {
         identifier: "ServiceTokenOauthAccessesByResourceBranchBranchesItem",
       });
     case 7:
-      return S.Array(__S(102));
+      return S.Array(ServiceTokenOauthAccessesByResourceBranchBranchesItem);
   }
 }
 function __c13(j: number): any {
@@ -21209,8 +25801,8 @@ function __c13(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          branches: __S(103),
-          accesses: __S(97),
+          branches: ServiceTokenOauthAccessesByResourceBranchBranchesList,
+          accesses: ServiceTokenOauthAccessesByResourceBranchAccessesList,
         }),
       ).annotate({
         identifier: "ServiceTokenOauthAccessesByResourceBranch",
@@ -21225,12 +25817,12 @@ function __c13(j: number): any {
         identifier: "ServiceTokenOauthAccessesByResourceUserUsersItem",
       });
     case 2:
-      return S.Array(__S(105));
+      return S.Array(ServiceTokenOauthAccessesByResourceUserUsersItem);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          users: __S(106),
-          accesses: __S(97),
+          users: ServiceTokenOauthAccessesByResourceUserUsersList,
+          accesses: ServiceTokenOauthAccessesByResourceUserAccessesList,
         }),
       ).annotate({
         identifier: "ServiceTokenOauthAccessesByResourceUser",
@@ -21238,10 +25830,10 @@ function __c13(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          database: __S(98),
-          organization: __S(101),
-          branch: __S(104),
-          user: __S(107),
+          database: ServiceTokenOauthAccessesByResourceDatabase,
+          organization: ServiceTokenOauthAccessesByResourceOrganization,
+          branch: ServiceTokenOauthAccessesByResourceBranch,
+          user: ServiceTokenOauthAccessesByResourceUser,
         }),
       ).annotate({
         identifier: "ServiceTokenOauthAccessesByResource",
@@ -21262,8 +25854,8 @@ function __c13(j: number): any {
           actor_id: S.NullOr(S.String),
           actor_display_name: S.NullOr(S.String),
           actor_type: S.NullOr(S.String),
-          service_token_accesses: S.optional(S.NullOr(__S(93))),
-          oauth_accesses_by_resource: S.optional(S.NullOr(__S(108))),
+          service_token_accesses: S.optional(S.NullOr(ServiceTokenServiceTokenAccessesList)),
+          oauth_accesses_by_resource: S.optional(S.NullOr(ServiceTokenOauthAccessesByResource)),
         }),
       ).annotate({ identifier: "ServiceToken" });
     case 6:
@@ -21271,7 +25863,7 @@ function __c13(j: number): any {
         S.Struct({
           organization: S.String.pipe(T.Label()),
           email: S.String,
-          role: S.optional(S.String),
+          role: S.optional(CreateOrganizationInvitationRequestRole),
         }).pipe(
           T.Http({ method: "POST", uri: "/organizations/{organization}/invitations", code: 200 }),
         ),
@@ -21283,9 +25875,9 @@ function __c13(j: number): any {
         S.Struct({
           id: S.String,
           email: S.String,
-          role: S.String,
-          sender: __S(2),
-          recipient: S.NullOr(__S(2)),
+          role: OrganizationInvitationRole,
+          sender: OrganizationTeamMembershipUser,
+          recipient: S.NullOr(OrganizationTeamMembershipUser),
           expired: S.Boolean,
           expires_at: S.String,
           created_at: S.String,
@@ -21317,7 +25909,7 @@ function __c14(j: number): any {
         identifier: "CreateOrganizationTeamRequest",
       });
     case 2:
-      return S.Array(__S(2));
+      return S.Array(OrganizationTeamMembershipUser);
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -21330,16 +25922,16 @@ function __c14(j: number): any {
         identifier: "OrganizationTeamDatabasesItem",
       });
     case 4:
-      return S.Array(__S(115));
+      return S.Array(OrganizationTeamDatabasesItem);
     case 5:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           display_name: S.String,
-          creator: __S(3),
-          members: __S(114),
-          databases: __S(116),
-          analyst_databases: __S(116),
+          creator: OrganizationTeamMembershipActor,
+          members: OrganizationTeamMembersList,
+          databases: OrganizationTeamDatabasesList,
+          analyst_databases: OrganizationTeamAnalystDatabasesList,
           name: S.String,
           slug: S.String,
           created_at: S.String,
@@ -21355,10 +25947,10 @@ function __c14(j: number): any {
           database: S.String.pipe(T.Label()),
           branch: S.String.pipe(T.Label()),
           name: S.optional(S.String),
-          role: S.optional(S.String),
+          role: S.optional(CreatePasswordRequestRole),
           replica: S.optional(S.Boolean),
           ttl: S.optional(S.Number),
-          cidrs: S.optional(__S(4)),
+          cidrs: S.optional(CreatePasswordRequestCidrsList),
           direct_vtgate: S.optional(S.Boolean),
         }).pipe(
           T.Http({
@@ -21373,27 +25965,27 @@ function __c14(j: number): any {
         S.Struct({
           id: S.String,
           name: S.String,
-          role: S.String,
-          cidrs: S.NullOr(__S(4)),
+          role: DatabaseBranchPasswordWithSecretRole,
+          cidrs: S.NullOr(DatabaseBranchPasswordWithSecretCidrsList),
           created_at: S.String,
           deleted_at: S.NullOr(S.String),
           expires_at: S.NullOr(S.String),
           last_used_at: S.NullOr(S.String),
           expired: S.Boolean,
           direct_vtgate: S.Boolean,
-          direct_vtgate_addresses: __S(4),
+          direct_vtgate_addresses: DatabaseBranchPasswordWithSecretDirectVtgateAddressesList,
           ttl_seconds: S.NullOr(S.Number),
           access_host_url: S.String,
           access_host_regional_url: S.String,
-          access_host_regional_urls: __S(4),
-          actor: S.NullOr(__S(3)),
-          region: __S(75),
+          access_host_regional_urls: DatabaseBranchPasswordWithSecretAccessHostRegionalUrlsList,
+          actor: S.NullOr(OrganizationTeamMembershipActor),
+          region: DatabaseBranchPasswordWithSecretRegion,
           username: S.String,
           plain_text: S.String.pipe(T.SensitiveValue({})),
           replica: S.Boolean,
           read_only_region: S.Boolean,
           renewable: S.Boolean,
-          database_branch: __S(7),
+          database_branch: OrganizationTeamMembershipPasswordsItemDatabaseBranch,
         }),
       ).annotate({
         identifier: "DatabaseBranchPasswordWithSecret",
@@ -21422,16 +26014,16 @@ function __c15(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          state: S.String,
+          state: QueryPatternsDownloadState,
           created_at: S.String,
           finished_at: S.NullOr(S.String),
           url: S.String,
           download_url: S.String,
-          actor: __S(3),
+          actor: OrganizationTeamMembershipActor,
         }),
       ).annotate({ identifier: "QueryPatternsDownload" });
     case 2:
-      return S.Array(S.String);
+      return S.Array(CreateRoleRequestInheritedRolesItem);
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -21440,7 +26032,7 @@ function __c15(j: number): any {
           branch: S.String.pipe(T.Label()),
           name: S.optional(S.String),
           ttl: S.optional(S.Number),
-          inherited_roles: S.optional(__S(122)),
+          inherited_roles: S.optional(CreateRoleRequestInheritedRolesList),
           with_replication: S.optional(S.Boolean),
           require_where_on_delete: S.optional(S.String),
           require_where_on_update: S.optional(S.String),
@@ -21455,8 +26047,8 @@ function __c15(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          require_where_on_delete: S.String,
-          require_where_on_update: S.String,
+          require_where_on_delete: PostgresRoleQuerySafetySettingsRequireWhereOnDelete,
+          require_where_on_update: PostgresRoleQuerySafetySettingsRequireWhereOnUpdate,
         }),
       ).annotate({
         identifier: "PostgresRoleQuerySafetySettings",
@@ -21484,11 +26076,11 @@ function __c15(j: number): any {
           expired: S.Boolean,
           default: S.Boolean,
           ttl: S.NullOr(S.Number),
-          inherited_roles: __S(122),
+          inherited_roles: PostgresRoleInheritedRolesList,
           with_replication: S.Boolean,
-          branch: __S(1),
-          actor: __S(3),
-          query_safety_settings: __S(124),
+          branch: OrganizationTeamMembershipUserDefaultOrganization,
+          actor: OrganizationTeamMembershipActor,
+          query_safety_settings: PostgresRoleQuerySafetySettings,
         }),
       ).annotate({ identifier: "PostgresRole" });
     case 6:
@@ -21530,13 +26122,13 @@ function __c16(j: number): any {
           id: S.String,
           name: S.String,
           default: S.Boolean,
-          sku: __S(127),
+          sku: NekiRouterSku,
           router_size: S.String,
           replicas_per_cell: S.Number,
           autoscaling: S.Boolean,
           max_replicas_per_cell: S.NullOr(S.Number),
           target_cpu_utilization: S.NullOr(S.Number),
-          state: S.String,
+          state: NekiRouterState,
           created_at: S.String,
           updated_at: S.String,
         }),
@@ -21586,7 +26178,7 @@ function __c16(j: number): any {
           replicas: S.optional(S.Number),
           postgres_major_version: S.optional(S.String),
           postgres_minor_version: S.optional(S.String),
-          storage: S.optional(__S(73)),
+          storage: S.optional(CreateDedicatedReadReplicaRequestStorage),
         }).pipe(
           T.Http({
             method: "POST",
@@ -21626,8 +26218,8 @@ function __c16(j: number): any {
           postgres_minor_version: S.Number,
           latest_postgres_minor_version: S.Number,
           shards: S.Number,
-          storage: __S(133),
-          state: S.String,
+          storage: NekiShardConfigurationProfileStorage,
+          state: NekiShardConfigurationProfileState,
           created_at: S.String,
           updated_at: S.String,
         }),
@@ -21687,14 +26279,14 @@ function __c17(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          state: S.String,
-          method: S.optional(S.NullOr(S.String)),
+          state: PostgresSwitchoverState,
+          method: S.optional(S.NullOr(PostgresSwitchoverMethod)),
           error: S.optional(S.NullOr(S.String)),
           started_at: S.NullOr(S.String),
           completed_at: S.NullOr(S.String),
           created_at: S.String,
           updated_at: S.String,
-          actor: __S(3),
+          actor: OrganizationTeamMembershipActor,
         }),
       ).annotate({ identifier: "PostgresSwitchover" });
     case 3:
@@ -21704,13 +26296,13 @@ function __c17(j: number): any {
           database: S.String.pipe(T.Label()),
           branch: S.String.pipe(T.Label()),
           name: S.optional(S.String),
-          mode: S.optional(S.String),
+          mode: S.optional(CreateTrafficBudgetRequestMode),
           capacity: S.optional(S.Number),
           rate: S.optional(S.Number),
           burst: S.optional(S.Number),
           concurrency: S.optional(S.Number),
           warning_threshold: S.optional(S.Number),
-          rules: S.optional(__S(4)),
+          rules: S.optional(CreateTrafficBudgetRequestRulesList),
         }).pipe(
           T.Http({
             method: "POST",
@@ -21727,29 +26319,29 @@ function __c17(j: number): any {
           key_id: S.String,
           key: S.String,
           value: S.String,
-          source: S.String,
+          source: TrafficBudgetRulesItemTagsItemSource,
         }),
       ).annotate({
         identifier: "TrafficBudgetRulesItemTagsItem",
       });
     case 5:
-      return S.Array(__S(140));
+      return S.Array(TrafficBudgetRulesItemTagsItem);
     case 6:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          kind: S.String,
-          tags: __S(141),
+          kind: TrafficBudgetRulesItemKind,
+          tags: TrafficBudgetRulesItemTagsList,
           fingerprint: S.optional(S.NullOr(S.String)),
           keyspace: S.optional(S.NullOr(S.String)),
-          actor: __S(3),
+          actor: OrganizationTeamMembershipActor,
           syntax_highlighted_sql: S.String,
           created_at: S.String,
           updated_at: S.String,
         }),
       ).annotate({ identifier: "TrafficBudgetRulesItem" });
     case 7:
-      return S.Array(__S(142));
+      return S.Array(TrafficBudgetRulesItem);
   }
 }
 function __c18(j: number): any {
@@ -21759,14 +26351,14 @@ function __c18(j: number): any {
         S.Struct({
           id: S.String,
           name: S.String,
-          mode: S.String,
+          mode: TrafficBudgetMode,
           capacity: S.optional(S.NullOr(S.Number)),
           rate: S.optional(S.NullOr(S.Number)),
           burst: S.optional(S.NullOr(S.Number)),
           concurrency: S.optional(S.NullOr(S.Number)),
           warning_threshold: S.optional(S.NullOr(S.Number)),
-          actor: __S(3),
-          rules: __S(143),
+          actor: OrganizationTeamMembershipActor,
+          rules: TrafficBudgetRulesList,
           created_at: S.String,
           updated_at: S.String,
         }),
@@ -21778,10 +26370,10 @@ function __c18(j: number): any {
           database: S.String.pipe(T.Label()),
           branch: S.String.pipe(T.Label()),
           budget_id: S.String.pipe(T.Label()),
-          kind: S.optional(S.String),
+          kind: S.optional(CreateTrafficRuleRequestKind),
           keyspace: S.optional(S.String),
           fingerprint: S.optional(S.String),
-          tags: S.optional(__S(4)),
+          tags: S.optional(CreateTrafficRuleRequestTagsList),
         }).pipe(
           T.Http({
             method: "POST",
@@ -21796,20 +26388,20 @@ function __c18(j: number): any {
           key_id: S.String,
           key: S.String,
           value: S.String,
-          source: S.String,
+          source: TrafficRuleTagsItemSource,
         }),
       ).annotate({ identifier: "TrafficRuleTagsItem" });
     case 3:
-      return S.Array(__S(146));
+      return S.Array(TrafficRuleTagsItem);
     case 4:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          kind: S.String,
-          tags: __S(147),
+          kind: TrafficRuleKind,
+          tags: TrafficRuleTagsList,
           fingerprint: S.optional(S.NullOr(S.String)),
           keyspace: S.optional(S.NullOr(S.String)),
-          actor: __S(3),
+          actor: OrganizationTeamMembershipActor,
           syntax_highlighted_sql: S.String,
           created_at: S.String,
           updated_at: S.String,
@@ -21823,7 +26415,7 @@ function __c18(j: number): any {
           url: S.String,
           authorization_header: S.optional(S.String),
           enabled: S.optional(S.Boolean),
-          events: S.optional(__S(4)),
+          events: S.optional(CreateWebhookRequestEventsList),
         }).pipe(
           T.Http({
             method: "POST",
@@ -21845,7 +26437,7 @@ function __c18(j: number): any {
           last_sent_at: S.NullOr(S.String),
           created_at: S.String,
           updated_at: S.String,
-          events: __S(122),
+          events: DatabaseWebhookEventsList,
         }),
       ).annotate({ identifier: "DatabaseWebhook" });
     case 7:
@@ -21858,8 +26450,8 @@ function __c18(j: number): any {
           target_keyspace: S.String,
           global_keyspace: S.optional(S.String),
           defer_secondary_keys: S.optional(S.Boolean),
-          on_ddl: S.optional(S.String),
-          tables: __S(4),
+          on_ddl: S.optional(CreateWorkflowRequestOnDdl),
+          tables: CreateWorkflowRequestTablesList,
         }).pipe(
           T.Http({
             method: "POST",
@@ -22195,7 +26787,7 @@ function __c21(j: number): any {
           database: S.String.pipe(T.Label()),
           branch: S.String.pipe(T.Label()),
           configuration_profile: S.String.pipe(T.Label()),
-          shard_ids: __S(4).pipe(T.Query()),
+          shard_ids: DeleteShardConfigurationProfileShardsRequestShardIdsList.pipe(T.Query()),
         }).pipe(
           T.Http({
             method: "DELETE",
@@ -22302,16 +26894,16 @@ function __c22(j: number): any {
         identifier: "DeployCheckRequestStorageResponseStorageReportValueValue",
       });
     case 3:
-      return S.Record(S.String, __S(178));
+      return S.Record(S.String, DeployCheckRequestStorageResponseStorageReportValueValue);
     case 4:
-      return S.Record(S.String, __S(179));
+      return S.Record(S.String, DeployCheckRequestStorageResponseStorageReportValueMap);
     case 5:
       return S.suspend(() =>
         S.Struct({
           enough_storage: S.Boolean,
           upgradeable: S.Boolean,
           storage_bytes_needed: S.Number,
-          storage_report: __S(180),
+          storage_report: DeployCheckRequestStorageResponseStorageReportMap,
         }),
       ).annotate({
         identifier: "DeployCheckRequestStorageResponse",
@@ -22322,7 +26914,7 @@ function __c22(j: number): any {
           organization: S.String.pipe(T.Label()),
           database: S.String.pipe(T.Label()),
           number: S.Number.pipe(T.Label()),
-          state: S.optional(S.String),
+          state: S.optional(DeployCloseRequestRequestState),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -22408,7 +27000,7 @@ function __c23(j: number): any {
           organization: S.String.pipe(T.Label()),
           database: S.String.pipe(T.Label()),
           number: S.Number.pipe(T.Label()),
-          state: S.optional(S.String),
+          state: S.optional(DeployReviewRequestRequestState),
           body: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -22426,10 +27018,10 @@ function __c23(j: number): any {
           id: S.String,
           body: S.String,
           html_body: S.String,
-          state: S.String,
+          state: DeployRequestReviewState,
           created_at: S.String,
           updated_at: S.String,
-          actor: __S(3),
+          actor: OrganizationTeamMembershipActor,
         }),
       ).annotate({ identifier: "DeployRequestReview" });
     case 5:
@@ -22443,10 +27035,10 @@ function __c23(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          type: S.String,
+          type: OrganizationSsoSerializerDomainsItemType,
           id: S.String,
           domain: S.String,
-          state: S.String,
+          state: OrganizationSsoSerializerDomainsItemState,
           verified_at: S.NullOr(S.String),
           failure_reason: S.NullOr(S.String),
           created_at: S.String,
@@ -22456,7 +27048,7 @@ function __c23(j: number): any {
         identifier: "OrganizationSsoSerializerDomainsItem",
       });
     case 7:
-      return S.Array(__S(190));
+      return S.Array(OrganizationSsoSerializerDomainsItem);
   }
 }
 function __c24(j: number): any {
@@ -22464,13 +27056,13 @@ function __c24(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          type: S.String,
+          type: OrganizationSsoSerializerType,
           id: S.String,
           enabled: S.Boolean,
           configured: S.Boolean,
           directory: S.Boolean,
           has_verified_domain: S.Boolean,
-          domains: __S(191),
+          domains: OrganizationSsoSerializerDomainsList,
           domain_verification_url: S.NullOr(S.String),
         }),
       ).annotate({
@@ -22543,14 +27135,14 @@ function __c24(j: number): any {
           keyspace: S.String,
           ddl_statement: S.String,
           number: S.Number,
-          state: S.String,
-          recommendation_type: S.String,
+          state: SchemaRecommendationState,
+          recommendation_type: SchemaRecommendationRecommendationType,
           created_at: S.String,
           updated_at: S.String,
           applied_at: S.NullOr(S.String),
           dismissed_at: S.NullOr(S.String),
-          closed_by_deploy_request: S.NullOr(__S(196)),
-          dismissed_by: S.NullOr(__S(3)),
+          closed_by_deploy_request: S.NullOr(SchemaRecommendationClosedByDeployRequest),
+          dismissed_by: S.NullOr(OrganizationTeamMembershipActor),
         }),
       ).annotate({ identifier: "SchemaRecommendation" });
     case 6:
@@ -22609,9 +27201,9 @@ function __c25(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          sku: __S(57),
+          sku: NekiAdminSku,
           admin_size: S.String,
-          state: S.String,
+          state: NekiAdminState,
           created_at: S.String,
           updated_at: S.String,
         }),
@@ -22719,11 +27311,11 @@ function __c26(j: number): any {
           fingerprint: S.String,
           normalized_sql: S.String,
           syntax_highlighted_sql: S.String,
-          tablet_type: S.String,
+          tablet_type: AnomalyCorrelationsItemTabletType,
         }),
       ).annotate({ identifier: "AnomalyCorrelationsItem" });
     case 2:
-      return S.Array(__S(209));
+      return S.Array(AnomalyCorrelationsItem);
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -22735,7 +27327,7 @@ function __c26(j: number): any {
           duration: S.Number,
           metrics_start: S.String,
           metrics_end: S.String,
-          correlations: S.optional(S.NullOr(__S(210))),
+          correlations: S.optional(S.NullOr(AnomalyCorrelationsList)),
         }),
       ).annotate({ identifier: "Anomaly" });
     case 4:
@@ -22759,29 +27351,29 @@ function __c26(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          state: S.String,
+          state: PostgresClusterResizeRequestState,
           started_at: S.NullOr(S.String),
           completed_at: S.NullOr(S.String),
           created_at: S.String,
           updated_at: S.String,
-          actor: __S(3),
+          actor: OrganizationTeamMembershipActor,
           cluster_name: S.String,
           cluster_display_name: S.String,
           cluster_metal: S.Boolean,
           replicas: S.Number,
           version: S.String,
-          parameters: __S(12),
+          parameters: PostgresClusterResizeRequestParametersMap,
           previous_cluster_name: S.String,
           previous_cluster_display_name: S.String,
           previous_cluster_metal: S.Boolean,
           previous_replicas: S.Number,
           previous_version: S.String,
-          previous_parameters: __S(12),
+          previous_parameters: PostgresClusterResizeRequestPreviousParametersMap,
           minimum_storage_bytes: S.Number,
           maximum_storage_bytes: S.Number,
           storage_autoscaling: S.Boolean,
           storage_shrinking: S.Boolean,
-          storage_type: S.String,
+          storage_type: PostgresClusterResizeRequestStorageType,
           storage_iops: S.Number,
           storage_throughput_mibs: S.Number,
           previous_minimum_storage_bytes: S.Number,
@@ -22839,12 +27431,12 @@ function __c27(j: number): any {
           organization: S.String.pipe(T.Label()),
           database: S.String.pipe(T.Label()),
           branch: S.String.pipe(T.Label()),
-          metrics: S.optional(__S(122).pipe(T.Query())),
-          period: S.optional(S.String.pipe(T.Query())),
+          metrics: S.optional(GetBranchMetricsRequestMetricsList.pipe(T.Query())),
+          period: S.optional(GetBranchMetricsRequestPeriod.pipe(T.Query())),
           from: S.optional(S.String.pipe(T.Query())),
           to: S.optional(S.String.pipe(T.Query())),
           steps: S.optional(S.Number.pipe(T.Query())),
-          tablet_type: S.optional(S.String.pipe(T.Query())),
+          tablet_type: S.optional(GetBranchMetricsRequestTabletType.pipe(T.Query())),
           keyspace: S.optional(S.String.pipe(T.Query())),
           shard: S.optional(S.String.pipe(T.Query())),
           shard_config_profile: S.optional(S.String.pipe(T.Query())),
@@ -22852,8 +27444,8 @@ function __c27(j: number): any {
           role: S.optional(S.String.pipe(T.Query())),
           container: S.optional(S.String.pipe(T.Query())),
           pod: S.optional(S.String.pipe(T.Query())),
-          pods: S.optional(__S(4).pipe(T.Query())),
-          query_ids: S.optional(__S(4).pipe(T.Query())),
+          pods: S.optional(GetBranchMetricsRequestPodsList.pipe(T.Query())),
+          query_ids: S.optional(GetBranchMetricsRequestQueryIdsList.pipe(T.Query())),
           fingerprint: S.optional(S.String.pipe(T.Query())),
           budget_id: S.optional(S.String.pipe(T.Query())),
           rule_id: S.optional(S.String.pipe(T.Query())),
@@ -22869,19 +27461,19 @@ function __c27(j: number): any {
     case 1:
       return S.Array(S.Number);
     case 2:
-      return S.Array(__S(217));
+      return S.Array(MetricSeriesSeriesItemPointsItemList);
     case 3:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
           metric: S.String,
           label: S.String,
-          labels: __S(12),
-          points: __S(218),
+          labels: MetricSeriesSeriesItemLabelsMap,
+          points: MetricSeriesSeriesItemPointsList,
         }),
       ).annotate({ identifier: "MetricSeriesSeriesItem" });
     case 4:
-      return S.Array(__S(219));
+      return S.Array(MetricSeriesSeriesItem);
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -22889,7 +27481,7 @@ function __c27(j: number): any {
           start_date: S.String,
           end_date: S.String,
           interval: S.Number,
-          series: __S(220),
+          series: MetricSeriesSeriesList,
         }),
       ).annotate({ identifier: "MetricSeries" });
     case 6:
@@ -22917,13 +27509,13 @@ function __c28(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          password: __S(12),
-          tags: __S(24),
+          password: QueryPasswordMap,
+          tags: QueryTagsList,
           fingerprint: S.String,
           started_at: S.NullOr(S.String),
           statement_type: S.String,
           keyspace: S.String,
-          tables: __S(223),
+          tables: QueryTablesList,
           username: S.String,
           remote_address: S.String,
           shard_queries: S.Number,
@@ -22951,7 +27543,7 @@ function __c28(j: number): any {
           fingerprint: S.String.pipe(T.Label()),
           from: S.optional(S.String.pipe(T.Query())),
           to: S.optional(S.String.pipe(T.Query())),
-          period: S.optional(S.String.pipe(T.Query())),
+          period: S.optional(GetBranchQueryErrorRequestPeriod.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
           per_page: S.optional(S.Number.pipe(T.Query())),
         }).pipe(
@@ -22968,13 +27560,13 @@ function __c28(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          password: __S(12),
-          tags: __S(24),
+          password: PaginatedQueryDataItemPasswordMap,
+          tags: PaginatedQueryDataItemTagsList,
           fingerprint: S.String,
           started_at: S.NullOr(S.String),
           statement_type: S.String,
           keyspace: S.String,
-          tables: __S(4),
+          tables: PaginatedQueryDataItemTablesList,
           username: S.String,
           remote_address: S.String,
           shard_queries: S.Number,
@@ -22994,7 +27586,7 @@ function __c28(j: number): any {
         }),
       ).annotate({ identifier: "PaginatedQueryDataItem" });
     case 3:
-      return S.Array(__S(226));
+      return S.Array(PaginatedQueryDataItem);
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -23005,7 +27597,7 @@ function __c28(j: number): any {
           next_page_url: S.optional(S.NullOr(S.String)),
           prev_page: S.NullOr(S.Number),
           prev_page_url: S.optional(S.NullOr(S.String)),
-          data: __S(227),
+          data: PaginatedQueryDataList,
         }),
       ).annotate({ identifier: "PaginatedQuery" });
     case 5:
@@ -23014,15 +27606,15 @@ function __c28(j: number): any {
           organization: S.String.pipe(T.Label()),
           database: S.String.pipe(T.Label()),
           branch: S.String.pipe(T.Label()),
-          metrics: S.optional(__S(122).pipe(T.Query())),
-          query_ids: S.optional(__S(4).pipe(T.Query())),
+          metrics: S.optional(GetBranchQueryMetricsRequestMetricsList.pipe(T.Query())),
+          query_ids: S.optional(GetBranchQueryMetricsRequestQueryIdsList.pipe(T.Query())),
           fingerprint: S.optional(S.String.pipe(T.Query())),
           keyspace: S.optional(S.String.pipe(T.Query())),
-          period: S.optional(S.String.pipe(T.Query())),
+          period: S.optional(GetBranchQueryMetricsRequestPeriod.pipe(T.Query())),
           from: S.optional(S.String.pipe(T.Query())),
           to: S.optional(S.String.pipe(T.Query())),
           steps: S.optional(S.Number.pipe(T.Query())),
-          tablet_type: S.optional(S.String.pipe(T.Query())),
+          tablet_type: S.optional(GetBranchQueryMetricsRequestTabletType.pipe(T.Query())),
           budget_id: S.optional(S.String.pipe(T.Query())),
           rule_id: S.optional(S.String.pipe(T.Query())),
           q: S.optional(S.String.pipe(T.Query())),
@@ -23045,10 +27637,10 @@ function __c28(j: number): any {
           tag: S.String.pipe(T.Label()),
           from: S.optional(S.String.pipe(T.Query())),
           to: S.optional(S.String.pipe(T.Query())),
-          period: S.optional(S.String.pipe(T.Query())),
+          period: S.optional(GetBranchQueryTagRequestPeriod.pipe(T.Query())),
           fingerprint: S.optional(S.String.pipe(T.Query())),
           keyspace: S.optional(S.String.pipe(T.Query())),
-          tablet_type: S.optional(S.String.pipe(T.Query())),
+          tablet_type: S.optional(GetBranchQueryTagRequestTabletType.pipe(T.Query())),
           values_limit: S.optional(S.Number.pipe(T.Query())),
           literal_values_only: S.optional(S.Boolean.pipe(T.Query())),
         }).pipe(
@@ -23064,7 +27656,7 @@ function __c28(j: number): any {
         S.Struct({
           name: S.String,
           query_count: S.Number,
-          kind: S.String,
+          kind: QueryTagValuesItemKind,
         }),
       ).annotate({ identifier: "QueryTagValuesItem" });
   }
@@ -23072,15 +27664,15 @@ function __c28(j: number): any {
 function __c29(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(231));
+      return S.Array(QueryTagValuesItem);
     case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           name: S.String,
-          source: S.String,
+          source: QueryTagSource,
           query_count: S.Number,
-          values: __S(232),
+          values: QueryTagValuesList,
         }),
       ).annotate({ identifier: "QueryTag" });
     case 2:
@@ -23104,7 +27696,7 @@ function __c29(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          state: S.String,
+          state: MysqlClusterResizeRequestState,
           started_at: S.NullOr(S.String),
           completed_at: S.NullOr(S.String),
           created_at: S.String,
@@ -23123,7 +27715,7 @@ function __c29(j: number): any {
           vtgate_display_name: S.String,
           previous_vtgate_name: S.String,
           previous_vtgate_display_name: S.String,
-          actor: __S(3),
+          actor: OrganizationTeamMembershipActor,
         }),
       ).annotate({
         identifier: "MysqlClusterResizeRequest",
@@ -23155,11 +27747,11 @@ function __c29(j: number): any {
         identifier: "GetBranchSchemaResponseDataItem",
       });
     case 6:
-      return S.Array(__S(237));
+      return S.Array(GetBranchSchemaResponseDataItem);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          data: __S(238),
+          data: GetBranchSchemaResponseDataList,
         }),
       ).annotate({ identifier: "GetBranchSchemaResponse" });
   }
@@ -23188,13 +27780,13 @@ function __c30(j: number): any {
           organization: S.String.pipe(T.Label()),
           database: S.String.pipe(T.Label()),
           branch: S.String.pipe(T.Label()),
-          metrics: S.optional(__S(122).pipe(T.Query())),
-          tag_sets: S.optional(__S(4).pipe(T.Query())),
-          period: S.optional(S.String.pipe(T.Query())),
+          metrics: S.optional(GetBranchTagMetricsRequestMetricsList.pipe(T.Query())),
+          tag_sets: S.optional(GetBranchTagMetricsRequestTagSetsList.pipe(T.Query())),
+          period: S.optional(GetBranchTagMetricsRequestPeriod.pipe(T.Query())),
           from: S.optional(S.String.pipe(T.Query())),
           to: S.optional(S.String.pipe(T.Query())),
           steps: S.optional(S.Number.pipe(T.Query())),
-          tablet_type: S.optional(S.String.pipe(T.Query())),
+          tablet_type: S.optional(GetBranchTagMetricsRequestTabletType.pipe(T.Query())),
           budget_id: S.optional(S.String.pipe(T.Query())),
           rule_id: S.optional(S.String.pipe(T.Query())),
           q: S.optional(S.String.pipe(T.Query())),
@@ -23223,7 +27815,9 @@ function __c30(j: number): any {
           created_at: S.String,
           updated_at: S.String,
           two_factor_auth_configured: S.Boolean,
-          default_organization: S.optional(S.NullOr(__S(1))),
+          default_organization: S.optional(
+            S.NullOr(OrganizationTeamMembershipUserDefaultOrganization),
+          ),
           sso: S.optional(S.NullOr(S.Boolean)),
           managed: S.optional(S.NullOr(S.Boolean)),
           directory_managed: S.optional(S.NullOr(S.Boolean)),
@@ -23288,13 +27882,13 @@ function __c30(j: number): any {
 function __c31(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(247));
+      return S.Array(ThrottlerConfigurationsConfigurationsItem);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          keyspaces: __S(4),
-          configurable: __S(1),
-          configurations: __S(248),
+          keyspaces: ThrottlerConfigurationsKeyspacesList,
+          configurable: OrganizationTeamMembershipUserDefaultOrganization,
+          configurations: ThrottlerConfigurationsConfigurationsList,
         }),
       ).annotate({ identifier: "ThrottlerConfigurations" });
     case 2:
@@ -23314,7 +27908,7 @@ function __c31(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          data_topology: __S(12),
+          data_topology: NekiDataTopologyDataTopologyMap,
           synced_at: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "NekiDataTopology" });
@@ -23387,7 +27981,7 @@ function __c32(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          state: S.String,
+          state: DeploymentDeployOperationsItemState,
           keyspace_name: S.String,
           table_name: S.String,
           operation_name: S.String,
@@ -23403,20 +27997,22 @@ function __c32(j: number): any {
           table_locked: S.Boolean,
           table_recently_used: S.Boolean,
           table_recently_used_at: S.NullOr(S.String),
-          removed_foreign_key_names: S.NullOr(__S(4)),
+          removed_foreign_key_names: S.NullOr(
+            DeploymentDeployOperationsItemRemovedForeignKeyNamesList,
+          ),
           deploy_errors: S.NullOr(S.String),
         }),
       ).annotate({
         identifier: "DeploymentDeployOperationsItem",
       });
     case 1:
-      return S.Array(__S(256));
+      return S.Array(DeploymentDeployOperationsItem);
     case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           shard: S.String,
-          state: S.String,
+          state: DeploymentDeployOperationSummariesItemOperationsItemState,
           progress_percentage: S.Number,
           eta_seconds: S.Number,
         }),
@@ -23424,7 +28020,7 @@ function __c32(j: number): any {
         identifier: "DeploymentDeployOperationSummariesItemOperationsItem",
       });
     case 3:
-      return S.Array(__S(258));
+      return S.Array(DeploymentDeployOperationSummariesItemOperationsItem);
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -23436,24 +28032,25 @@ function __c32(j: number): any {
           keyspace_name: S.String,
           operation_name: S.String,
           progress_percentage: S.Number,
-          state: S.String,
+          state: DeploymentDeployOperationSummariesItemState,
           syntax_highlighted_ddl: S.String,
           table_name: S.String,
           table_recently_used_at: S.NullOr(S.String),
           throttled_at: S.NullOr(S.String),
-          removed_foreign_key_names: __S(5),
+          removed_foreign_key_names:
+            DeploymentDeployOperationSummariesItemRemovedForeignKeyNamesList,
           shard_count: S.Number,
-          shard_names: __S(4),
+          shard_names: DeploymentDeployOperationSummariesItemShardNamesList,
           can_drop_data: S.Boolean,
           table_recently_used: S.Boolean,
           sharded: S.Boolean,
-          operations: __S(259),
+          operations: DeploymentDeployOperationSummariesItemOperationsList,
         }),
       ).annotate({
         identifier: "DeploymentDeployOperationSummariesItem",
       });
     case 5:
-      return S.Array(__S(260));
+      return S.Array(DeploymentDeployOperationSummariesItem);
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -23469,23 +28066,23 @@ function __c32(j: number): any {
           queued_at: S.NullOr(S.String),
           ready_to_cutover_at: S.NullOr(S.String),
           started_at: S.NullOr(S.String),
-          state: S.String,
+          state: DeploymentState,
           submitted_at: S.NullOr(S.String),
           updated_at: S.String,
           into_branch: S.String,
           deploy_request_number: S.Number,
           deployable: S.Boolean,
-          preceding_deployments: __S(24),
-          deploy_operations: __S(257),
-          deploy_operation_summaries: __S(261),
-          lint_errors: __S(24),
-          sequential_diff_dependencies: __S(24),
-          lookup_vindex_operations: __S(24),
-          throttler_configurations: S.optional(S.NullOr(__S(12))),
-          deployment_revert_request: S.NullOr(__S(12)),
-          actor: S.optional(S.NullOr(__S(3))),
-          cutover_actor: S.optional(S.NullOr(__S(3))),
-          cancelled_actor: S.optional(S.NullOr(__S(3))),
+          preceding_deployments: DeploymentPrecedingDeploymentsList,
+          deploy_operations: DeploymentDeployOperationsList,
+          deploy_operation_summaries: DeploymentDeployOperationSummariesList,
+          lint_errors: DeploymentLintErrorsList,
+          sequential_diff_dependencies: DeploymentSequentialDiffDependenciesList,
+          lookup_vindex_operations: DeploymentLookupVindexOperationsList,
+          throttler_configurations: S.optional(S.NullOr(DeploymentThrottlerConfigurationsMap)),
+          deployment_revert_request: S.NullOr(DeploymentDeploymentRevertRequestMap),
+          actor: S.optional(S.NullOr(OrganizationTeamMembershipActor)),
+          cutover_actor: S.optional(S.NullOr(OrganizationTeamMembershipActor)),
+          cancelled_actor: S.optional(S.NullOr(OrganizationTeamMembershipActor)),
           schema_last_updated_at: S.NullOr(S.String),
           table_locked: S.Boolean,
           locked_table_name: S.optional(S.NullOr(S.String)),
@@ -23518,7 +28115,7 @@ function __c33(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          state: S.String,
+          state: PaginatedDeploymentDataItemDeployOperationsItemState,
           keyspace_name: S.String,
           table_name: S.String,
           operation_name: S.String,
@@ -23534,14 +28131,16 @@ function __c33(j: number): any {
           table_locked: S.Boolean,
           table_recently_used: S.Boolean,
           table_recently_used_at: S.NullOr(S.String),
-          removed_foreign_key_names: S.NullOr(__S(5)),
+          removed_foreign_key_names: S.NullOr(
+            PaginatedDeploymentDataItemDeployOperationsItemRemovedForeignKeyNamesList,
+          ),
           deploy_errors: S.NullOr(S.String),
         }),
       ).annotate({
         identifier: "PaginatedDeploymentDataItemDeployOperationsItem",
       });
     case 1:
-      return S.Array(__S(264));
+      return S.Array(PaginatedDeploymentDataItemDeployOperationsItem);
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -23553,24 +28152,25 @@ function __c33(j: number): any {
           keyspace_name: S.String,
           operation_name: S.String,
           progress_percentage: S.Number,
-          state: S.String,
+          state: PaginatedDeploymentDataItemDeployOperationSummariesItemState,
           syntax_highlighted_ddl: S.String,
           table_name: S.String,
           table_recently_used_at: S.NullOr(S.String),
           throttled_at: S.NullOr(S.String),
-          removed_foreign_key_names: __S(5),
+          removed_foreign_key_names:
+            PaginatedDeploymentDataItemDeployOperationSummariesItemRemovedForeignKeyNamesList,
           shard_count: S.Number,
-          shard_names: __S(5),
+          shard_names: PaginatedDeploymentDataItemDeployOperationSummariesItemShardNamesList,
           can_drop_data: S.Boolean,
           table_recently_used: S.Boolean,
           sharded: S.Boolean,
-          operations: __S(28),
+          operations: PaginatedDeploymentDataItemDeployOperationSummariesItemOperationsList,
         }),
       ).annotate({
         identifier: "PaginatedDeploymentDataItemDeployOperationSummariesItem",
       });
     case 3:
-      return S.Array(__S(266));
+      return S.Array(PaginatedDeploymentDataItemDeployOperationSummariesItem);
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -23586,23 +28186,27 @@ function __c33(j: number): any {
           queued_at: S.NullOr(S.String),
           ready_to_cutover_at: S.NullOr(S.String),
           started_at: S.NullOr(S.String),
-          state: S.String,
+          state: PaginatedDeploymentDataItemState,
           submitted_at: S.NullOr(S.String),
           updated_at: S.String,
           into_branch: S.String,
           deploy_request_number: S.Number,
           deployable: S.Boolean,
-          preceding_deployments: __S(24),
-          deploy_operations: __S(265),
-          deploy_operation_summaries: __S(267),
-          lint_errors: __S(24),
-          sequential_diff_dependencies: __S(24),
-          lookup_vindex_operations: __S(24),
-          throttler_configurations: S.optional(S.NullOr(__S(12))),
-          deployment_revert_request: S.NullOr(__S(12)),
-          actor: S.optional(S.NullOr(__S(3))),
-          cutover_actor: S.optional(S.NullOr(__S(3))),
-          cancelled_actor: S.optional(S.NullOr(__S(3))),
+          preceding_deployments: PaginatedDeploymentDataItemPrecedingDeploymentsList,
+          deploy_operations: PaginatedDeploymentDataItemDeployOperationsList,
+          deploy_operation_summaries: PaginatedDeploymentDataItemDeployOperationSummariesList,
+          lint_errors: PaginatedDeploymentDataItemLintErrorsList,
+          sequential_diff_dependencies: PaginatedDeploymentDataItemSequentialDiffDependenciesList,
+          lookup_vindex_operations: PaginatedDeploymentDataItemLookupVindexOperationsList,
+          throttler_configurations: S.optional(
+            S.NullOr(PaginatedDeploymentDataItemThrottlerConfigurationsMap),
+          ),
+          deployment_revert_request: S.NullOr(
+            PaginatedDeploymentDataItemDeploymentRevertRequestMap,
+          ),
+          actor: S.optional(S.NullOr(OrganizationTeamMembershipActor)),
+          cutover_actor: S.optional(S.NullOr(OrganizationTeamMembershipActor)),
+          cancelled_actor: S.optional(S.NullOr(OrganizationTeamMembershipActor)),
           schema_last_updated_at: S.NullOr(S.String),
           table_locked: S.Boolean,
           locked_table_name: S.optional(S.NullOr(S.String)),
@@ -23615,7 +28219,7 @@ function __c33(j: number): any {
         identifier: "PaginatedDeploymentDataItem",
       });
     case 5:
-      return S.Array(__S(268));
+      return S.Array(PaginatedDeploymentDataItem);
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -23626,7 +28230,7 @@ function __c33(j: number): any {
           next_page_url: S.NullOr(S.String),
           prev_page: S.NullOr(S.Number),
           prev_page_url: S.NullOr(S.String),
-          data: __S(269),
+          data: PaginatedDeploymentDataList,
         }),
       ).annotate({ identifier: "PaginatedDeployment" });
     case 7:
@@ -23686,7 +28290,7 @@ function __c34(j: number): any {
           organization: S.String.pipe(T.Label()),
           database: S.String.pipe(T.Label()),
           branch: S.String.pipe(T.Label()),
-          metrics: S.optional(__S(122).pipe(T.Query())),
+          metrics: S.optional(GetInstantBranchMetricsRequestMetricsList.pipe(T.Query())),
           role: S.optional(S.String.pipe(T.Query())),
           shard: S.optional(S.String.pipe(T.Query())),
           shard_config_profile: S.optional(S.String.pipe(T.Query())),
@@ -23713,25 +28317,25 @@ function __c34(j: number): any {
         identifier: "GetInstantBranchMetricsResponseMetricsItemValuesItem",
       });
     case 4:
-      return S.Array(__S(275));
+      return S.Array(GetInstantBranchMetricsResponseMetricsItemValuesItem);
     case 5:
       return S.suspend(() =>
         S.Struct({
           metric: S.String,
           label: S.String,
-          values: __S(276),
+          values: GetInstantBranchMetricsResponseMetricsItemValuesList,
         }),
       ).annotate({
         identifier: "GetInstantBranchMetricsResponseMetricsItem",
       });
     case 6:
-      return S.Array(__S(277));
+      return S.Array(GetInstantBranchMetricsResponseMetricsItem);
     case 7:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
-          branch: __S(1),
-          metrics: __S(278),
+          branch: OrganizationTeamMembershipUserDefaultOrganization,
+          metrics: GetInstantBranchMetricsResponseMetricsList,
         }),
       ).annotate({
         identifier: "GetInstantBranchMetricsResponse",
@@ -23746,7 +28350,7 @@ function __c35(j: number): any {
           organization: S.String.pipe(T.Label()),
           database: S.String.pipe(T.Label()),
           branch: S.String.pipe(T.Label()),
-          metrics: S.optional(__S(122).pipe(T.Query())),
+          metrics: S.optional(GetInstantTabletMetricsRequestMetricsList.pipe(T.Query())),
           keyspace: S.optional(S.String.pipe(T.Query())),
           shard: S.optional(S.String.pipe(T.Query())),
         }).pipe(
@@ -23806,13 +28410,13 @@ function __c35(j: number): any {
           cloudflare_billed: S.Boolean,
           database_id: S.String,
           database_name: S.String,
-          resource: __S(1),
+          resource: OrganizationTeamMembershipUserDefaultOrganization,
         }),
       ).annotate({
         identifier: "PaginatedLineItemDataItem",
       });
     case 5:
-      return S.Array(__S(284));
+      return S.Array(PaginatedLineItemDataItem);
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -23823,7 +28427,7 @@ function __c35(j: number): any {
           next_page_url: S.NullOr(S.String),
           prev_page: S.NullOr(S.Number),
           prev_page_url: S.NullOr(S.String),
-          data: __S(285),
+          data: PaginatedLineItemDataList,
         }),
       ).annotate({ identifier: "PaginatedLineItem" });
     case 7:
@@ -23885,7 +28489,7 @@ function __c36(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          state: S.String,
+          state: KeyspaceResizeRequestState,
           started_at: S.NullOr(S.String),
           completed_at: S.NullOr(S.String),
           created_at: S.String,
@@ -23899,7 +28503,7 @@ function __c36(j: number): any {
           previous_cluster_display_name: S.String,
           replicas: S.Number,
           previous_replicas: S.Number,
-          actor: __S(3),
+          actor: OrganizationTeamMembershipActor,
         }),
       ).annotate({ identifier: "KeyspaceResizeRequest" });
     case 3:
@@ -23931,13 +28535,13 @@ function __c36(j: number): any {
         identifier: "GetKeyspaceRolloutStatusResponseShardsItem",
       });
     case 5:
-      return S.Array(__S(292));
+      return S.Array(GetKeyspaceRolloutStatusResponseShardsItem);
     case 6:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
           state: S.String,
-          shards: __S(293),
+          shards: GetKeyspaceRolloutStatusResponseShardsList,
         }),
       ).annotate({
         identifier: "GetKeyspaceRolloutStatusResponse",
@@ -24001,7 +28605,7 @@ function __c37(j: number): any {
           hour: S.Number,
           week: S.Number,
           frequency_value: S.Number,
-          frequency_unit: S.String,
+          frequency_unit: BranchMaintenanceScheduleFrequencyUnit,
           enabled: S.Boolean,
           expires_at: S.NullOr(S.String),
           deadline_at: S.NullOr(S.String),
@@ -24035,7 +28639,7 @@ function __c37(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          workflows: S.optional(__S(24)),
+          workflows: S.optional(GetMoveTablesWorkflowResponseDataWorkflowsList),
         }),
       ).annotate({
         identifier: "GetMoveTablesWorkflowResponseData",
@@ -24043,7 +28647,7 @@ function __c37(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          data: __S(300),
+          data: GetMoveTablesWorkflowResponseData,
         }),
       ).annotate({
         identifier: "GetMoveTablesWorkflowResponse",
@@ -24084,13 +28688,13 @@ function __c37(j: number): any {
 function __c38(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, __S(303));
+      return S.Record(S.String, GetMoveTablesWorkflowStatusResponseDataTableCopyStateValue);
     case 1:
       return S.suspend(() =>
         S.Struct({
           traffic_state: S.optional(S.String),
-          table_copy_state: S.optional(__S(304)),
-          shard_streams: S.optional(__S(12)),
+          table_copy_state: S.optional(GetMoveTablesWorkflowStatusResponseDataTableCopyStateMap),
+          shard_streams: S.optional(GetMoveTablesWorkflowStatusResponseDataShardStreamsMap),
         }),
       ).annotate({
         identifier: "GetMoveTablesWorkflowStatusResponseData",
@@ -24098,7 +28702,7 @@ function __c38(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          data: __S(305),
+          data: GetMoveTablesWorkflowStatusResponseData,
         }),
       ).annotate({
         identifier: "GetMoveTablesWorkflowStatusResponse",
@@ -24123,27 +28727,27 @@ function __c38(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          type: S.String,
+          type: NekiChangeRequestType,
           id: S.String,
-          state: S.String,
+          state: NekiChangeRequestState,
           can_delete: S.Boolean,
           started_at: S.NullOr(S.String),
           completed_at: S.NullOr(S.String),
           created_at: S.String,
           updated_at: S.String,
-          actor: __S(3),
+          actor: OrganizationTeamMembershipActor,
           target_id: S.NullOr(S.String),
-          target_type: S.String,
+          target_type: NekiChangeRequestTargetType,
           target_name: S.String,
           admin_size: S.optional(S.NullOr(S.String)),
           admin_size_display_name: S.optional(S.NullOr(S.String)),
-          parameters: S.optional(S.NullOr(__S(12))),
+          parameters: S.optional(S.NullOr(NekiChangeRequestParametersMap)),
           previous_admin_size: S.optional(S.NullOr(S.String)),
           previous_admin_size_display_name: S.optional(S.NullOr(S.String)),
-          previous_parameters: S.optional(S.NullOr(__S(12))),
-          flags: S.optional(S.NullOr(__S(4))),
+          previous_parameters: S.optional(S.NullOr(NekiChangeRequestPreviousParametersMap)),
+          flags: S.optional(S.NullOr(NekiChangeRequestFlagsList)),
           neki_image_version: S.optional(S.NullOr(S.String)),
-          previous_flags: S.optional(S.NullOr(__S(4))),
+          previous_flags: S.optional(S.NullOr(NekiChangeRequestPreviousFlagsList)),
           previous_neki_image_version: S.optional(S.NullOr(S.String)),
           replicas: S.optional(S.NullOr(S.Number)),
           previous_replicas: S.optional(S.NullOr(S.Number)),
@@ -24170,13 +28774,13 @@ function __c38(j: number): any {
           cluster_rank: S.optional(S.NullOr(S.Number)),
           shards: S.optional(S.NullOr(S.Number)),
           postgres_image_version: S.optional(S.NullOr(S.String)),
-          storage: S.optional(S.NullOr(__S(133))),
+          storage: S.optional(S.NullOr(NekiShardConfigurationProfileStorage)),
           previous_cluster_size: S.optional(S.NullOr(S.String)),
           previous_metal: S.optional(S.NullOr(S.Boolean)),
           previous_cluster_rank: S.optional(S.NullOr(S.Number)),
           previous_shards: S.optional(S.NullOr(S.Number)),
           previous_postgres_image_version: S.optional(S.NullOr(S.String)),
-          previous_storage: S.optional(S.NullOr(__S(133))),
+          previous_storage: S.optional(S.NullOr(NekiShardConfigurationProfileStorage)),
         }),
       ).annotate({ identifier: "NekiChangeRequest" });
     case 5:
@@ -24210,9 +28814,9 @@ function __c38(j: number): any {
           dcr: S.Boolean,
           single_org_authorization: S.Boolean,
           requires_org_scope: S.Boolean,
-          scopes_by_resource: __S(12),
-          all_scopes_by_resource: __S(12),
-          mcp_tool_groups: S.optional(S.NullOr(__S(24))),
+          scopes_by_resource: OauthApplicationScopesByResourceMap,
+          all_scopes_by_resource: OauthApplicationAllScopesByResourceMap,
+          mcp_tool_groups: S.optional(S.NullOr(OauthApplicationMcpToolGroupsList)),
         }),
       ).annotate({ identifier: "OauthApplication" });
     case 7:
@@ -24256,7 +28860,7 @@ function __c39(j: number): any {
           has_past_due_invoices: S.optional(S.NullOr(S.Boolean)),
           database_count: S.Number,
           sso_portal_url: S.optional(S.NullOr(S.String)),
-          features: __S(12),
+          features: OrganizationFeaturesMap,
           idp_managed_roles: S.Boolean,
           invoice_budget_amount: S.String,
           keyspace_shard_limit: S.Number,
@@ -24282,7 +28886,7 @@ function __c39(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          type: S.String,
+          type: BillingPaymentMethodType,
           id: S.String,
           brand: S.String,
           last4: S.String,
@@ -24313,7 +28917,9 @@ function __c39(j: number): any {
           created_at: S.String,
           updated_at: S.String,
           two_factor_auth_configured: S.Boolean,
-          default_organization: S.optional(S.NullOr(__S(1))),
+          default_organization: S.optional(
+            S.NullOr(OrganizationTeamMembershipUserDefaultOrganization),
+          ),
           sso: S.optional(S.NullOr(S.Boolean)),
           managed: S.optional(S.NullOr(S.Boolean)),
           directory_managed: S.optional(S.NullOr(S.Boolean)),
@@ -24326,8 +28932,8 @@ function __c39(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          user: __S(317),
-          role: S.String,
+          user: OrganizationMembershipUser,
+          role: OrganizationMembershipRole,
           created_at: S.String,
           updated_at: S.String,
         }),
@@ -24362,10 +28968,10 @@ function __c40(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          type: S.String,
+          type: OrganizationDomainType,
           id: S.String,
           domain: S.String,
-          state: S.String,
+          state: OrganizationDomainState,
           verified_at: S.NullOr(S.String),
           failure_reason: S.NullOr(S.String),
           created_at: S.String,
@@ -24419,27 +29025,27 @@ function __c40(j: number): any {
         S.Struct({
           id: S.String,
           name: S.String,
-          role: S.String,
-          cidrs: S.NullOr(__S(4)),
+          role: DatabaseBranchPasswordRole,
+          cidrs: S.NullOr(DatabaseBranchPasswordCidrsList),
           created_at: S.String,
           deleted_at: S.NullOr(S.String),
           expires_at: S.NullOr(S.String),
           last_used_at: S.NullOr(S.String),
           expired: S.Boolean,
           direct_vtgate: S.Boolean,
-          direct_vtgate_addresses: __S(4),
+          direct_vtgate_addresses: DatabaseBranchPasswordDirectVtgateAddressesList,
           ttl_seconds: S.NullOr(S.Number),
           access_host_url: S.String,
           access_host_regional_url: S.String,
-          access_host_regional_urls: __S(4),
-          actor: S.NullOr(__S(3)),
-          region: __S(75),
+          access_host_regional_urls: DatabaseBranchPasswordAccessHostRegionalUrlsList,
+          actor: S.NullOr(OrganizationTeamMembershipActor),
+          region: DatabaseBranchPasswordRegion,
           username: S.String,
           plain_text: S.NullOr(S.String).pipe(T.SensitiveValue({})),
           replica: S.Boolean,
           read_only_region: S.Boolean,
           renewable: S.Boolean,
-          database_branch: __S(7),
+          database_branch: OrganizationTeamMembershipPasswordsItemDatabaseBranch,
         }),
       ).annotate({ identifier: "DatabaseBranchPassword" });
     case 6:
@@ -24460,9 +29066,9 @@ function __c40(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          type: S.String,
+          type: BillingPaymentMethodSetupType,
           id: S.String,
-          state: S.String,
+          state: BillingPaymentMethodSetupState,
           checkout_url: S.NullOr(S.String),
           error: S.NullOr(S.String),
           expires_at: S.NullOr(S.String),
@@ -24520,7 +29126,7 @@ function __c41(j: number): any {
           keyspace: S.String.pipe(T.Query()),
           from: S.optional(S.String.pipe(T.Query())),
           to: S.optional(S.String.pipe(T.Query())),
-          period: S.optional(S.String.pipe(T.Query())),
+          period: S.optional(GetQueryStatisticsRequestPeriod.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
           per_page: S.optional(S.Number.pipe(T.Query())),
         }).pipe(
@@ -24543,7 +29149,7 @@ function __c41(j: number): any {
           keyspace: S.String.pipe(T.Query()),
           from: S.optional(S.String.pipe(T.Query())),
           to: S.optional(S.String.pipe(T.Query())),
-          period: S.optional(S.String.pipe(T.Query())),
+          period: S.optional(GetQuerySummaryRequestPeriod.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -24564,11 +29170,11 @@ function __c41(j: number): any {
           multishard: S.Boolean,
           query_count: S.Number,
           error_count: S.Number,
-          tables: __S(4),
-          qualified_tables: __S(4),
-          table_keyspaces: __S(4),
-          index_usages: __S(24),
-          routing_index_usages: __S(24),
+          tables: QuerySummaryTablesList,
+          qualified_tables: QuerySummaryQualifiedTablesList,
+          table_keyspaces: QuerySummaryTableKeyspacesList,
+          index_usages: QuerySummaryIndexUsagesList,
+          routing_index_usages: QuerySummaryRoutingIndexUsagesList,
           sum_shard_queries: S.Number,
           max_shard_queries: S.Number,
           avg_shard_queries: S.Number,
@@ -24781,7 +29387,7 @@ function __c42(j: number): any {
         S.Struct({
           id: S.String,
           configuration_profile: S.String,
-          state: S.String,
+          state: NekiSidecarState,
           created_at: S.String,
           updated_at: S.String,
         }),
@@ -24829,8 +29435,8 @@ function __c43(j: number): any {
           organization: S.String.pipe(T.Label()),
           database: S.String.pipe(T.Label()),
           branch: S.String.pipe(T.Label()),
-          metrics: S.optional(__S(122).pipe(T.Query())),
-          period: S.optional(S.String.pipe(T.Query())),
+          metrics: S.optional(GetTabletMetricsRequestMetricsList.pipe(T.Query())),
+          period: S.optional(GetTabletMetricsRequestPeriod.pipe(T.Query())),
           from: S.optional(S.String.pipe(T.Query())),
           to: S.optional(S.String.pipe(T.Query())),
           steps: S.optional(S.Number.pipe(T.Query())),
@@ -24887,10 +29493,10 @@ function __c43(j: number): any {
           timeout: S.Number,
           created_at: S.String,
           completed_at: S.NullOr(S.String),
-          state: S.String,
+          state: GetVtctldOperationResponseState,
           completed: S.String,
-          metadata: S.optional(__S(12)),
-          result: S.optional(__S(12)),
+          metadata: S.optional(GetVtctldOperationResponseMetadataMap),
+          result: S.optional(GetVtctldOperationResponseResultMap),
           error: S.optional(S.String),
         }),
       ).annotate({
@@ -24948,14 +29554,18 @@ function __c44(j: number): any {
       return S.suspend(() =>
         S.Struct({
           lint_error: S.String,
-          subject_type: S.String,
+          subject_type: PaginatedSchemaLintErrorDataItemSubjectType,
           keyspace_name: S.String,
           table_name: S.NullOr(S.String),
           error_description: S.NullOr(S.String),
           docs_url: S.String,
           column_name: S.NullOr(S.String),
-          foreign_key_column_names: S.NullOr(__S(4)),
-          auto_increment_column_names: S.NullOr(__S(4)),
+          foreign_key_column_names: S.NullOr(
+            PaginatedSchemaLintErrorDataItemForeignKeyColumnNamesList,
+          ),
+          auto_increment_column_names: S.NullOr(
+            PaginatedSchemaLintErrorDataItemAutoIncrementColumnNamesList,
+          ),
           charset_name: S.NullOr(S.String),
           engine_name: S.NullOr(S.String),
           vindex_name: S.NullOr(S.String),
@@ -24969,7 +29579,7 @@ function __c44(j: number): any {
         identifier: "PaginatedSchemaLintErrorDataItem",
       });
     case 2:
-      return S.Array(__S(353));
+      return S.Array(PaginatedSchemaLintErrorDataItem);
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -24980,7 +29590,7 @@ function __c44(j: number): any {
           next_page_url: S.NullOr(S.String),
           prev_page: S.NullOr(S.Number),
           prev_page_url: S.NullOr(S.String),
-          data: __S(354),
+          data: PaginatedSchemaLintErrorDataList,
         }),
       ).annotate({ identifier: "PaginatedSchemaLintError" });
     case 4:
@@ -24991,7 +29601,7 @@ function __c44(j: number): any {
           branch: S.String.pipe(T.Label()),
           page: S.optional(S.Number.pipe(T.Query())),
           per_page: S.optional(S.Number.pipe(T.Query())),
-          period: S.optional(S.String.pipe(T.Query())),
+          period: S.optional(ListAdminChangeRequestsRequestPeriod.pipe(T.Query())),
           completed_at: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
@@ -25025,11 +29635,11 @@ function __c44(j: number): any {
           id: S.NullOr(S.String),
           name: S.String,
           display_name: S.String,
-          namespace: S.String,
+          namespace: NekiParameterNamespace,
           advanced: S.Boolean,
           category: S.NullOr(S.String),
           description: S.String,
-          parameter_type: S.String,
+          parameter_type: NekiParameterParameterType,
           default_value: S.NullOr(S.String),
           value: S.NullOr(S.String),
           required: S.Boolean,
@@ -25038,20 +29648,22 @@ function __c44(j: number): any {
           restart: S.Boolean,
           max: S.optional(S.NullOr(S.Number)),
           min: S.optional(S.NullOr(S.Number)),
-          options: S.optional(S.NullOr(__S(4))),
-          units: S.optional(S.NullOr(__S(4))),
+          options: S.optional(S.NullOr(NekiParameterOptionsList)),
+          units: S.optional(S.NullOr(NekiParameterUnitsList)),
           url: S.String,
-          actor: __S(3),
+          actor: OrganizationTeamMembershipActor,
         }),
       ).annotate({ identifier: "NekiParameter" });
     case 7:
-      return S.Array(__S(358));
+      return S.Array(NekiParameter);
   }
 }
 function __c45(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => __S(359).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        ListAdminParametersResponseBodyList.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "ListAdminParametersResponse",
       });
     case 1:
@@ -25069,9 +29681,9 @@ function __c45(j: number): any {
         ),
       ).annotate({ identifier: "ListAdminSizeSkusRequest" });
     case 2:
-      return S.Array(__S(57));
+      return S.Array(NekiAdminSku);
     case 3:
-      return S.suspend(() => __S(362).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => ListAdminSizeSkusResponseBodyList.pipe(T.RawResponseRoot())).annotate({
         identifier: "ListAdminSizeSkusResponse",
       });
     case 4:
@@ -25104,13 +29716,13 @@ function __c45(j: number): any {
           remote_ip: S.NullOr(S.String),
           created_at: S.String,
           updated_at: S.String,
-          metadata: S.NullOr(__S(12)),
+          metadata: S.NullOr(PaginatedAuditLogEventDataItemMetadataMap),
         }),
       ).annotate({
         identifier: "PaginatedAuditLogEventDataItem",
       });
     case 6:
-      return S.Array(__S(365));
+      return S.Array(PaginatedAuditLogEventDataItem);
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -25119,7 +29731,7 @@ function __c45(j: number): any {
           has_prev: S.Boolean,
           cursor_start: S.NullOr(S.String),
           cursor_end: S.NullOr(S.String),
-          data: __S(366),
+          data: PaginatedAuditLogEventDataList,
         }),
       ).annotate({ identifier: "PaginatedAuditLogEvent" });
   }
@@ -25149,7 +29761,7 @@ function __c46(j: number): any {
           id: S.String,
           display_name: S.String,
           name: S.String,
-          target: S.String,
+          target: PaginatedBackupPolicyDataItemTarget,
           retention_value: S.Number,
           retention_unit: S.String,
           frequency_value: S.Number,
@@ -25167,7 +29779,7 @@ function __c46(j: number): any {
         identifier: "PaginatedBackupPolicyDataItem",
       });
     case 2:
-      return S.Array(__S(369));
+      return S.Array(PaginatedBackupPolicyDataItem);
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -25178,7 +29790,7 @@ function __c46(j: number): any {
           next_page_url: S.NullOr(S.String),
           prev_page: S.NullOr(S.Number),
           prev_page_url: S.NullOr(S.String),
-          data: __S(370),
+          data: PaginatedBackupPolicyDataList,
         }),
       ).annotate({ identifier: "PaginatedBackupPolicy" });
     case 4:
@@ -25188,7 +29800,7 @@ function __c46(j: number): any {
           database: S.String.pipe(T.Label()),
           branch: S.String.pipe(T.Label()),
           all: S.optional(S.Boolean.pipe(T.Query())),
-          state: S.optional(S.String.pipe(T.Query())),
+          state: S.optional(ListBackupsRequestState.pipe(T.Query())),
           policy: S.optional(S.String.pipe(T.Query())),
           from: S.optional(S.String.pipe(T.Query())),
           to: S.optional(S.String.pipe(T.Query())),
@@ -25209,7 +29821,7 @@ function __c46(j: number): any {
         S.Struct({
           id: S.String,
           name: S.String,
-          state: S.String,
+          state: PaginatedBackupDataItemState,
           size: S.Number,
           estimated_storage_cost: S.Number,
           created_at: S.String,
@@ -25222,15 +29834,15 @@ function __c46(j: number): any {
           uncompressed_size: S.Number,
           protected: S.Boolean,
           required: S.Boolean,
-          restored_branches: __S(51),
-          actor: S.NullOr(__S(3)),
-          backup_policy: S.optional(S.NullOr(__S(369))),
-          schema_snapshot: S.optional(S.NullOr(__S(53))),
-          database_branch: S.optional(S.NullOr(__S(1))),
+          restored_branches: PaginatedBackupDataItemRestoredBranchesList,
+          actor: S.NullOr(OrganizationTeamMembershipActor),
+          backup_policy: S.optional(S.NullOr(PaginatedBackupDataItemBackupPolicy)),
+          schema_snapshot: S.optional(S.NullOr(BackupSchemaSnapshot)),
+          database_branch: S.optional(S.NullOr(OrganizationTeamMembershipUserDefaultOrganization)),
         }),
       ).annotate({ identifier: "PaginatedBackupDataItem" });
     case 6:
-      return S.Array(__S(373));
+      return S.Array(PaginatedBackupDataItem);
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -25243,7 +29855,7 @@ function __c46(j: number): any {
           prev_page_url: S.NullOr(S.String),
           total_count: S.Number,
           total_pages: S.Number,
-          data: __S(374),
+          data: PaginatedBackupDataList,
         }),
       ).annotate({ identifier: "PaginatedBackup" });
   }
@@ -25273,27 +29885,27 @@ function __c47(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          state: S.String,
+          state: PaginatedPostgresBouncerResizeRequestDataItemState,
           replicas_per_cell: S.Number,
-          target: S.String,
-          parameters: __S(12),
+          target: PaginatedPostgresBouncerResizeRequestDataItemTarget,
+          parameters: PaginatedPostgresBouncerResizeRequestDataItemParametersMap,
           previous_replicas_per_cell: S.Number,
-          previous_target: S.String,
-          previous_parameters: __S(31),
+          previous_target: PaginatedPostgresBouncerResizeRequestDataItemPreviousTarget,
+          previous_parameters: PaginatedPostgresBouncerResizeRequestDataItemPreviousParametersMap,
           started_at: S.NullOr(S.String),
           completed_at: S.NullOr(S.String),
           created_at: S.String,
           updated_at: S.String,
-          actor: __S(3),
-          bouncer: __S(1),
-          sku: __S(57),
-          previous_sku: __S(57),
+          actor: OrganizationTeamMembershipActor,
+          bouncer: OrganizationTeamMembershipUserDefaultOrganization,
+          sku: PostgresBouncerSku,
+          previous_sku: PostgresBouncerSku,
         }),
       ).annotate({
         identifier: "PaginatedPostgresBouncerResizeRequestDataItem",
       });
     case 2:
-      return S.Array(__S(377));
+      return S.Array(PaginatedPostgresBouncerResizeRequestDataItem);
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -25304,7 +29916,7 @@ function __c47(j: number): any {
           next_page_url: S.NullOr(S.String),
           prev_page: S.NullOr(S.Number),
           prev_page_url: S.NullOr(S.String),
-          data: __S(378),
+          data: PaginatedPostgresBouncerResizeRequestDataList,
         }),
       ).annotate({
         identifier: "PaginatedPostgresBouncerResizeRequest",
@@ -25329,13 +29941,13 @@ function __c47(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          namespace: S.String,
+          namespace: PaginatedPostgresBouncerDataItemParametersItemNamespace,
           name: S.String,
           display_name: S.String,
           category: S.String,
           description: S.String,
           immutable: S.Boolean,
-          parameter_type: S.String,
+          parameter_type: PaginatedPostgresBouncerDataItemParametersItemParameterType,
           default_value: S.String,
           value: S.String,
           required: S.Boolean,
@@ -25345,28 +29957,28 @@ function __c47(j: number): any {
           max: S.Number,
           min: S.Number,
           url: S.String,
-          options: __S(4),
-          actor: __S(3),
+          options: PaginatedPostgresBouncerDataItemParametersItemOptionsList,
+          actor: OrganizationTeamMembershipActor,
         }),
       ).annotate({
         identifier: "PaginatedPostgresBouncerDataItemParametersItem",
       });
     case 6:
-      return S.Array(__S(381));
+      return S.Array(PaginatedPostgresBouncerDataItemParametersItem);
     case 7:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           name: S.String,
-          sku: __S(57),
-          target: S.String,
+          sku: PostgresBouncerSku,
+          target: PaginatedPostgresBouncerDataItemTarget,
           replicas_per_cell: S.Number,
           created_at: S.String,
           updated_at: S.String,
           deleted_at: S.NullOr(S.String),
-          actor: __S(3),
-          branch: __S(1),
-          parameters: __S(382),
+          actor: OrganizationTeamMembershipActor,
+          branch: OrganizationTeamMembershipUserDefaultOrganization,
+          parameters: PaginatedPostgresBouncerDataItemParametersList,
         }),
       ).annotate({
         identifier: "PaginatedPostgresBouncerDataItem",
@@ -25376,7 +29988,7 @@ function __c47(j: number): any {
 function __c48(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(383));
+      return S.Array(PaginatedPostgresBouncerDataItem);
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -25387,7 +29999,7 @@ function __c48(j: number): any {
           next_page_url: S.NullOr(S.String),
           prev_page: S.NullOr(S.Number),
           prev_page_url: S.NullOr(S.String),
-          data: __S(384),
+          data: PaginatedPostgresBouncerDataList,
         }),
       ).annotate({ identifier: "PaginatedPostgresBouncer" });
     case 2:
@@ -25398,7 +30010,7 @@ function __c48(j: number): any {
           branch: S.String.pipe(T.Label()),
           from: S.optional(S.String.pipe(T.Query())),
           to: S.optional(S.String.pipe(T.Query())),
-          period: S.optional(S.String.pipe(T.Query())),
+          period: S.optional(ListBranchAnomaliesRequestPeriod.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
           per_page: S.optional(S.Number.pipe(T.Query())),
         }).pipe(
@@ -25420,13 +30032,13 @@ function __c48(j: number): any {
           fingerprint: S.String,
           normalized_sql: S.String,
           syntax_highlighted_sql: S.String,
-          tablet_type: S.String,
+          tablet_type: PaginatedAnomalyDataItemCorrelationsItemTabletType,
         }),
       ).annotate({
         identifier: "PaginatedAnomalyDataItemCorrelationsItem",
       });
     case 4:
-      return S.Array(__S(387));
+      return S.Array(PaginatedAnomalyDataItemCorrelationsItem);
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -25438,11 +30050,11 @@ function __c48(j: number): any {
           duration: S.Number,
           metrics_start: S.String,
           metrics_end: S.String,
-          correlations: S.optional(S.NullOr(__S(388))),
+          correlations: S.optional(S.NullOr(PaginatedAnomalyDataItemCorrelationsList)),
         }),
       ).annotate({ identifier: "PaginatedAnomalyDataItem" });
     case 6:
-      return S.Array(__S(389));
+      return S.Array(PaginatedAnomalyDataItem);
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -25453,7 +30065,7 @@ function __c48(j: number): any {
           next_page_url: S.NullOr(S.String),
           prev_page: S.NullOr(S.Number),
           prev_page_url: S.NullOr(S.String),
-          data: __S(390),
+          data: PaginatedAnomalyDataList,
         }),
       ).annotate({ identifier: "PaginatedAnomaly" });
   }
@@ -25500,29 +30112,29 @@ function __c49(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          state: S.String,
+          state: PaginatedPostgresClusterResizeRequestDataItemState,
           started_at: S.NullOr(S.String),
           completed_at: S.NullOr(S.String),
           created_at: S.String,
           updated_at: S.String,
-          actor: __S(3),
+          actor: OrganizationTeamMembershipActor,
           cluster_name: S.String,
           cluster_display_name: S.String,
           cluster_metal: S.Boolean,
           replicas: S.Number,
           version: S.String,
-          parameters: __S(12),
+          parameters: PaginatedPostgresClusterResizeRequestDataItemParametersMap,
           previous_cluster_name: S.String,
           previous_cluster_display_name: S.String,
           previous_cluster_metal: S.Boolean,
           previous_replicas: S.Number,
           previous_version: S.String,
-          previous_parameters: __S(31),
+          previous_parameters: PaginatedPostgresClusterResizeRequestDataItemPreviousParametersMap,
           minimum_storage_bytes: S.Number,
           maximum_storage_bytes: S.Number,
           storage_autoscaling: S.Boolean,
           storage_shrinking: S.Boolean,
-          storage_type: S.String,
+          storage_type: PaginatedPostgresClusterResizeRequestDataItemStorageType,
           storage_iops: S.Number,
           storage_throughput_mibs: S.Number,
           previous_minimum_storage_bytes: S.Number,
@@ -25538,7 +30150,7 @@ function __c49(j: number): any {
         identifier: "PaginatedPostgresClusterResizeRequestDataItem",
       });
     case 3:
-      return S.Array(__S(394));
+      return S.Array(PaginatedPostgresClusterResizeRequestDataItem);
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -25549,7 +30161,7 @@ function __c49(j: number): any {
           next_page_url: S.NullOr(S.String),
           prev_page: S.NullOr(S.Number),
           prev_page_url: S.NullOr(S.String),
-          data: __S(395),
+          data: PaginatedPostgresClusterResizeRequestDataList,
         }),
       ).annotate({
         identifier: "PaginatedPostgresClusterResizeRequest",
@@ -25576,10 +30188,10 @@ function __c49(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          state: S.String,
-          change_type: S.String,
-          previous_options: __S(12),
-          new_options: __S(12),
+          state: PaginatedConfigChangeRequestDataItemState,
+          change_type: PaginatedConfigChangeRequestDataItemChangeType,
+          previous_options: PaginatedConfigChangeRequestDataItemPreviousOptionsMap,
+          new_options: PaginatedConfigChangeRequestDataItemNewOptionsMap,
           error_message: S.NullOr(S.String),
           started_at: S.NullOr(S.String),
           completed_at: S.NullOr(S.String),
@@ -25587,13 +30199,13 @@ function __c49(j: number): any {
           updated_at: S.String,
           keyspace_name: S.NullOr(S.String),
           queued_until: S.NullOr(S.String),
-          actor: __S(3),
+          actor: OrganizationTeamMembershipActor,
         }),
       ).annotate({
         identifier: "PaginatedConfigChangeRequestDataItem",
       });
     case 7:
-      return S.Array(__S(398));
+      return S.Array(PaginatedConfigChangeRequestDataItem);
   }
 }
 function __c50(j: number): any {
@@ -25608,7 +30220,7 @@ function __c50(j: number): any {
           next_page_url: S.NullOr(S.String),
           prev_page: S.NullOr(S.Number),
           prev_page_url: S.NullOr(S.String),
-          data: __S(399),
+          data: PaginatedConfigChangeRequestDataList,
         }),
       ).annotate({
         identifier: "PaginatedConfigChangeRequest",
@@ -25621,7 +30233,7 @@ function __c50(j: number): any {
           q: S.optional(S.String.pipe(T.Query())),
           production: S.optional(S.Boolean.pipe(T.Query())),
           safe_migrations: S.optional(S.Boolean.pipe(T.Query())),
-          order: S.optional(S.String.pipe(T.Query())),
+          order: S.optional(ListBranchesRequestOrder.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
           per_page: S.optional(S.Number.pipe(T.Query())),
         }).pipe(
@@ -25642,10 +30254,10 @@ function __c50(j: number): any {
           deleted_at: S.NullOr(S.String),
           restore_checklist_completed_at: S.NullOr(S.String),
           schema_last_updated_at: S.NullOr(S.String),
-          kind: S.String,
+          kind: PaginatedDatabaseBranchDataItemKind,
           mysql_address: S.optional(S.NullOr(S.String)),
           mysql_edge_address: S.optional(S.NullOr(S.String)),
-          state: S.String,
+          state: PaginatedDatabaseBranchDataItemState,
           direct_vtgate: S.optional(S.NullOr(S.Boolean)),
           vtgate_size: S.optional(S.NullOr(S.String)),
           vtgate_name: S.optional(S.NullOr(S.String)),
@@ -25665,23 +30277,23 @@ function __c50(j: number): any {
           shard_count: S.optional(S.NullOr(S.Number)),
           keyspace_count: S.optional(S.Number),
           stale_schema: S.Boolean,
-          actor: S.NullOr(__S(3)),
-          restored_from_branch: S.NullOr(__S(1)),
+          actor: S.NullOr(OrganizationTeamMembershipActor),
+          restored_from_branch: S.NullOr(OrganizationTeamMembershipUserDefaultOrganization),
           private_edge_connectivity: S.Boolean,
           has_replicas: S.Boolean,
           has_read_only_replicas: S.Boolean,
           html_url: S.String,
           url: S.String,
-          region: __S(75),
+          region: PaginatedDatabaseBranchDataItemRegion,
           parent_branch: S.NullOr(S.String),
-          vtgate_options: S.optional(S.NullOr(__S(12))),
+          vtgate_options: S.optional(S.NullOr(PaginatedDatabaseBranchDataItemVtgateOptionsMap)),
           cluster_architecture: S.optional(S.String),
         }),
       ).annotate({
         identifier: "PaginatedDatabaseBranchDataItem",
       });
     case 3:
-      return S.Array(__S(402));
+      return S.Array(PaginatedDatabaseBranchDataItem);
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -25694,7 +30306,7 @@ function __c50(j: number): any {
           prev_page_url: S.NullOr(S.String),
           total_count: S.Number,
           total_pages: S.Number,
-          data: __S(403),
+          data: PaginatedDatabaseBranchDataList,
         }),
       ).annotate({ identifier: "PaginatedDatabaseBranch" });
     case 5:
@@ -25706,12 +30318,12 @@ function __c50(j: number): any {
           q: S.optional(S.String.pipe(T.Query())),
           from: S.optional(S.String.pipe(T.Query())),
           to: S.optional(S.String.pipe(T.Query())),
-          period: S.optional(S.String.pipe(T.Query())),
-          sort: S.optional(S.String.pipe(T.Query())),
-          dir: S.optional(S.String.pipe(T.Query())),
-          tablet_type: S.optional(S.String.pipe(T.Query())),
-          type: S.optional(S.String.pipe(T.Query())),
-          fields: S.optional(__S(4).pipe(T.Query())),
+          period: S.optional(ListBranchQueriesRequestPeriod.pipe(T.Query())),
+          sort: S.optional(ListBranchQueriesRequestSort.pipe(T.Query())),
+          dir: S.optional(ListBranchQueriesRequestDir.pipe(T.Query())),
+          tablet_type: S.optional(ListBranchQueriesRequestTabletType.pipe(T.Query())),
+          type: S.optional(ListBranchQueriesRequestType.pipe(T.Query())),
+          fields: S.optional(ListBranchQueriesRequestFieldsList.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
           per_page: S.optional(S.Number.pipe(T.Query())),
         }).pipe(
@@ -25734,11 +30346,11 @@ function __c50(j: number): any {
           multishard: S.Boolean,
           query_count: S.Number,
           error_count: S.Number,
-          tables: __S(4),
-          qualified_tables: __S(4),
-          table_keyspaces: __S(4),
-          index_usages: __S(24),
-          routing_index_usages: __S(24),
+          tables: PaginatedQuerySummaryDataItemTablesList,
+          qualified_tables: PaginatedQuerySummaryDataItemQualifiedTablesList,
+          table_keyspaces: PaginatedQuerySummaryDataItemTableKeyspacesList,
+          index_usages: PaginatedQuerySummaryDataItemIndexUsagesList,
+          routing_index_usages: PaginatedQuerySummaryDataItemRoutingIndexUsagesList,
           sum_shard_queries: S.Number,
           max_shard_queries: S.Number,
           avg_shard_queries: S.Number,
@@ -25780,7 +30392,7 @@ function __c50(j: number): any {
         identifier: "PaginatedQuerySummaryDataItem",
       });
     case 7:
-      return S.Array(__S(406));
+      return S.Array(PaginatedQuerySummaryDataItem);
   }
 }
 function __c51(j: number): any {
@@ -25795,7 +30407,7 @@ function __c51(j: number): any {
           next_page_url: S.optional(S.NullOr(S.String)),
           prev_page: S.NullOr(S.Number),
           prev_page_url: S.optional(S.NullOr(S.String)),
-          data: __S(407),
+          data: PaginatedQuerySummaryDataList,
         }),
       ).annotate({ identifier: "PaginatedQuerySummary" });
     case 1:
@@ -25807,10 +30419,10 @@ function __c51(j: number): any {
           q: S.optional(S.String.pipe(T.Query())),
           from: S.optional(S.String.pipe(T.Query())),
           to: S.optional(S.String.pipe(T.Query())),
-          period: S.optional(S.String.pipe(T.Query())),
-          sort: S.optional(S.String.pipe(T.Query())),
-          dir: S.optional(S.String.pipe(T.Query())),
-          tablet_type: S.optional(S.String.pipe(T.Query())),
+          period: S.optional(ListBranchQueryErrorsRequestPeriod.pipe(T.Query())),
+          sort: S.optional(ListBranchQueryErrorsRequestSort.pipe(T.Query())),
+          dir: S.optional(ListBranchQueryErrorsRequestDir.pipe(T.Query())),
+          tablet_type: S.optional(ListBranchQueryErrorsRequestTabletType.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
           per_page: S.optional(S.Number.pipe(T.Query())),
         }).pipe(
@@ -25838,7 +30450,7 @@ function __c51(j: number): any {
         identifier: "PaginatedErrorSummaryDataItem",
       });
     case 3:
-      return S.Array(__S(410));
+      return S.Array(PaginatedErrorSummaryDataItem);
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -25849,7 +30461,7 @@ function __c51(j: number): any {
           next_page_url: S.optional(S.NullOr(S.String)),
           prev_page: S.NullOr(S.Number),
           prev_page_url: S.optional(S.NullOr(S.String)),
-          data: __S(411),
+          data: PaginatedErrorSummaryDataList,
         }),
       ).annotate({ identifier: "PaginatedErrorSummary" });
     case 5:
@@ -25861,10 +30473,10 @@ function __c51(j: number): any {
           q: S.optional(S.String.pipe(T.Query())),
           from: S.optional(S.String.pipe(T.Query())),
           to: S.optional(S.String.pipe(T.Query())),
-          period: S.optional(S.String.pipe(T.Query())),
+          period: S.optional(ListBranchQueryTagsRequestPeriod.pipe(T.Query())),
           fingerprint: S.optional(S.String.pipe(T.Query())),
           keyspace: S.optional(S.String.pipe(T.Query())),
-          tablet_type: S.optional(S.String.pipe(T.Query())),
+          tablet_type: S.optional(ListBranchQueryTagsRequestTabletType.pipe(T.Query())),
           values_limit: S.optional(S.Number.pipe(T.Query())),
           literal_values_only: S.optional(S.Boolean.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
@@ -25884,13 +30496,13 @@ function __c51(j: number): any {
         S.Struct({
           name: S.String,
           query_count: S.Number,
-          kind: S.String,
+          kind: PaginatedQueryTagDataItemValuesItemKind,
         }),
       ).annotate({
         identifier: "PaginatedQueryTagDataItemValuesItem",
       });
     case 7:
-      return S.Array(__S(414));
+      return S.Array(PaginatedQueryTagDataItemValuesItem);
   }
 }
 function __c52(j: number): any {
@@ -25900,15 +30512,15 @@ function __c52(j: number): any {
         S.Struct({
           id: S.String,
           name: S.String,
-          source: S.String,
+          source: PaginatedQueryTagDataItemSource,
           query_count: S.Number,
-          values: __S(415),
+          values: PaginatedQueryTagDataItemValuesList,
         }),
       ).annotate({
         identifier: "PaginatedQueryTagDataItem",
       });
     case 1:
-      return S.Array(__S(416));
+      return S.Array(PaginatedQueryTagDataItem);
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -25919,7 +30531,7 @@ function __c52(j: number): any {
           next_page_url: S.optional(S.NullOr(S.String)),
           prev_page: S.NullOr(S.Number),
           prev_page_url: S.optional(S.NullOr(S.String)),
-          data: __S(417),
+          data: PaginatedQueryTagDataList,
         }),
       ).annotate({ identifier: "PaginatedQueryTag" });
     case 3:
@@ -25928,16 +30540,16 @@ function __c52(j: number): any {
           organization: S.String.pipe(T.Label()),
           database: S.String.pipe(T.Label()),
           branch: S.String.pipe(T.Label()),
-          tags: S.optional(__S(4).pipe(T.Query())),
+          tags: S.optional(ListBranchQueryTagSummariesRequestTagsList.pipe(T.Query())),
           q: S.optional(S.String.pipe(T.Query())),
           from: S.optional(S.String.pipe(T.Query())),
           to: S.optional(S.String.pipe(T.Query())),
-          period: S.optional(S.String.pipe(T.Query())),
-          sort: S.optional(S.String.pipe(T.Query())),
-          dir: S.optional(S.String.pipe(T.Query())),
-          tablet_type: S.optional(S.String.pipe(T.Query())),
-          type: S.optional(S.String.pipe(T.Query())),
-          fields: S.optional(__S(4).pipe(T.Query())),
+          period: S.optional(ListBranchQueryTagSummariesRequestPeriod.pipe(T.Query())),
+          sort: S.optional(ListBranchQueryTagSummariesRequestSort.pipe(T.Query())),
+          dir: S.optional(ListBranchQueryTagSummariesRequestDir.pipe(T.Query())),
+          tablet_type: S.optional(ListBranchQueryTagSummariesRequestTabletType.pipe(T.Query())),
+          type: S.optional(ListBranchQueryTagSummariesRequestType.pipe(T.Query())),
+          fields: S.optional(ListBranchQueryTagSummariesRequestFieldsList.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
           per_page: S.optional(S.Number.pipe(T.Query())),
         }).pipe(
@@ -25953,14 +30565,14 @@ function __c52(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          dimensions: __S(12),
+          dimensions: PaginatedDimensionsQuerySummaryDataItemDimensionsMap,
           query_count: S.Number,
           error_count: S.Number,
-          tables: __S(4),
-          qualified_tables: __S(4),
-          table_keyspaces: __S(4),
-          index_usages: __S(24),
-          routing_index_usages: __S(32),
+          tables: PaginatedDimensionsQuerySummaryDataItemTablesList,
+          qualified_tables: PaginatedDimensionsQuerySummaryDataItemQualifiedTablesList,
+          table_keyspaces: PaginatedDimensionsQuerySummaryDataItemTableKeyspacesList,
+          index_usages: PaginatedDimensionsQuerySummaryDataItemIndexUsagesList,
+          routing_index_usages: PaginatedDimensionsQuerySummaryDataItemRoutingIndexUsagesList,
           sum_shard_queries: S.Number,
           max_shard_queries: S.Number,
           avg_shard_queries: S.Number,
@@ -26002,7 +30614,7 @@ function __c52(j: number): any {
         identifier: "PaginatedDimensionsQuerySummaryDataItem",
       });
     case 5:
-      return S.Array(__S(420));
+      return S.Array(PaginatedDimensionsQuerySummaryDataItem);
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -26013,7 +30625,7 @@ function __c52(j: number): any {
           next_page_url: S.optional(S.NullOr(S.String)),
           prev_page: S.NullOr(S.Number),
           prev_page_url: S.optional(S.NullOr(S.String)),
-          data: __S(421),
+          data: PaginatedDimensionsQuerySummaryDataList,
         }),
       ).annotate({
         identifier: "PaginatedDimensionsQuerySummary",
@@ -26041,7 +30653,7 @@ function __c52(j: number): any {
 function __c53(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(235));
+      return S.Array(PaginatedMysqlClusterResizeRequestDataItem);
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -26052,7 +30664,7 @@ function __c53(j: number): any {
           next_page_url: S.NullOr(S.String),
           prev_page: S.NullOr(S.Number),
           prev_page_url: S.NullOr(S.String),
-          data: __S(424),
+          data: PaginatedMysqlClusterResizeRequestDataList,
         }),
       ).annotate({
         identifier: "PaginatedMysqlClusterResizeRequest",
@@ -26079,33 +30691,33 @@ function __c53(j: number): any {
           type: S.String,
           name: S.String,
           title: S.optional(S.String),
-          component: S.String,
+          component: ListBranchVitessParametersResponseVtgateItemComponent,
           description: S.String,
           category: S.String,
           parameter_type: S.String,
           default_value: S.NullOr(S.String),
           value: S.NullOr(S.String),
           override: S.Boolean,
-          options: S.optional(__S(4)),
+          options: S.optional(ListBranchVitessParametersResponseVtgateItemOptionsList),
         }),
       ).annotate({
         identifier: "ListBranchVitessParametersResponseVtgateItem",
       });
     case 4:
-      return S.Array(__S(427));
+      return S.Array(ListBranchVitessParametersResponseVtgateItem);
     case 5:
       return S.Array(S.Unknown);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          vttablet: S.optional(__S(429)),
-          mysqld: S.optional(__S(429)),
+          vttablet: S.optional(ListBranchVitessParametersResponseKeyspacesValueVttabletList),
+          mysqld: S.optional(ListBranchVitessParametersResponseKeyspacesValueMysqldList),
         }),
       ).annotate({
         identifier: "ListBranchVitessParametersResponseKeyspacesValue",
       });
     case 7:
-      return S.Record(S.String, __S(430));
+      return S.Record(S.String, ListBranchVitessParametersResponseKeyspacesValue);
   }
 }
 function __c54(j: number): any {
@@ -26114,8 +30726,8 @@ function __c54(j: number): any {
       return S.suspend(() =>
         S.Struct({
           type: S.String,
-          vtgate: __S(428),
-          keyspaces: __S(431),
+          vtgate: ListBranchVitessParametersResponseVtgateList,
+          keyspaces: ListBranchVitessParametersResponseKeyspacesMap,
         }),
       ).annotate({
         identifier: "ListBranchVitessParametersResponse",
@@ -26124,7 +30736,7 @@ function __c54(j: number): any {
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
-          engine: S.optional(S.String.pipe(T.Query())),
+          engine: S.optional(ListClusterSizeSkusRequestEngine.pipe(T.Query())),
           rates: S.optional(S.Boolean.pipe(T.Query())),
           region: S.optional(S.String.pipe(T.Query())),
           database: S.optional(S.String.pipe(T.Query())),
@@ -26164,9 +30776,11 @@ function __c54(j: number): any {
         }),
       ).annotate({ identifier: "ClusterSizeSku" });
     case 3:
-      return S.Array(__S(434));
+      return S.Array(ClusterSizeSku);
     case 4:
-      return S.suspend(() => __S(435).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        ListClusterSizeSkusResponseBodyList.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "ListClusterSizeSkusResponse",
       });
     case 5:
@@ -26192,18 +30806,18 @@ function __c54(j: number): any {
           id: S.String,
           schema: S.String,
           role: S.String,
-          cidrs: __S(4),
+          cidrs: PaginatedPostgresClusterCidrDataItemCidrsList,
           description: S.NullOr(S.String),
           created_at: S.String,
           updated_at: S.String,
           deleted_at: S.NullOr(S.String),
-          actor: __S(3),
+          actor: OrganizationTeamMembershipActor,
         }),
       ).annotate({
         identifier: "PaginatedPostgresClusterCidrDataItem",
       });
     case 7:
-      return S.Array(__S(438));
+      return S.Array(PaginatedPostgresClusterCidrDataItem);
   }
 }
 function __c55(j: number): any {
@@ -26220,7 +30834,7 @@ function __c55(j: number): any {
           prev_page_url: S.NullOr(S.String),
           total_count: S.Number,
           total_pages: S.Number,
-          data: __S(439),
+          data: PaginatedPostgresClusterCidrDataList,
         }),
       ).annotate({
         identifier: "PaginatedPostgresClusterCidr",
@@ -26243,7 +30857,7 @@ function __c55(j: number): any {
         identifier: "ListDatabaseRegionsRequest",
       });
     case 2:
-      return S.Array(__S(75));
+      return S.Array(PaginatedPlanetscaleRegionDataItem);
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -26254,7 +30868,7 @@ function __c55(j: number): any {
           next_page_url: S.NullOr(S.String),
           prev_page: S.NullOr(S.Number),
           prev_page_url: S.NullOr(S.String),
-          data: __S(442),
+          data: PaginatedPlanetscaleRegionDataList,
         }),
       ).annotate({
         identifier: "PaginatedPlanetscaleRegion",
@@ -26286,10 +30900,10 @@ function __c55(j: number): any {
           ready: S.Boolean,
           at_backup_restore_branches_limit: S.optional(S.Boolean),
           at_development_branch_usage_limit: S.optional(S.Boolean),
-          region: __S(75),
+          region: PaginatedDatabaseDataItemRegion,
           html_url: S.String,
           name: S.String,
-          state: S.String,
+          state: PaginatedDatabaseDataItemState,
           sharded: S.optional(S.Boolean),
           default_branch_shard_count: S.optional(S.Number),
           default_branch_read_only_regions_count: S.optional(S.Number),
@@ -26315,13 +30929,13 @@ function __c55(j: number): any {
           created_at: S.String,
           updated_at: S.String,
           schema_last_updated_at: S.optional(S.NullOr(S.String)),
-          kind: S.String,
+          kind: PaginatedDatabaseDataItemKind,
         }),
       ).annotate({
         identifier: "PaginatedDatabaseDataItem",
       });
     case 6:
-      return S.Array(__S(445));
+      return S.Array(PaginatedDatabaseDataItem);
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -26334,7 +30948,7 @@ function __c55(j: number): any {
           prev_page_url: S.NullOr(S.String),
           total_count: S.Number,
           total_pages: S.Number,
-          data: __S(446),
+          data: PaginatedDatabaseDataList,
         }),
       ).annotate({ identifier: "PaginatedDatabase" });
   }
@@ -26349,7 +30963,7 @@ function __c56(j: number): any {
           branch: S.String.pipe(T.Label()),
           page: S.optional(S.Number.pipe(T.Query())),
           per_page: S.optional(S.Number.pipe(T.Query())),
-          period: S.optional(S.String.pipe(T.Query())),
+          period: S.optional(ListDedicatedReadReplicaChangeRequestsRequestPeriod.pipe(T.Query())),
           completed_at: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
@@ -26365,23 +30979,24 @@ function __c56(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          state: S.String,
+          state: PaginatedPostgresReadOnlyReplicaChangeRequestDataItemState,
           cluster_name: S.String,
           cluster_display_name: S.String,
           cluster_rank: S.Number,
           replicas: S.Number,
-          parameters: __S(31),
+          parameters: PaginatedPostgresReadOnlyReplicaChangeRequestDataItemParametersMap,
           minimum_storage_bytes: S.NullOr(S.Number),
           maximum_storage_bytes: S.NullOr(S.Number),
           storage_autoscaling: S.NullOr(S.Boolean),
-          storage_type: S.NullOr(S.String),
+          storage_type: S.NullOr(PaginatedPostgresReadOnlyReplicaChangeRequestDataItemStorageType),
           storage_iops: S.NullOr(S.Number),
           storage_throughput_mibs: S.NullOr(S.Number),
           previous_cluster_name: S.String,
           previous_cluster_display_name: S.String,
           previous_cluster_rank: S.Number,
           previous_replicas: S.Number,
-          previous_parameters: __S(31),
+          previous_parameters:
+            PaginatedPostgresReadOnlyReplicaChangeRequestDataItemPreviousParametersMap,
           previous_minimum_storage_bytes: S.NullOr(S.Number),
           previous_maximum_storage_bytes: S.NullOr(S.Number),
           previous_storage_autoscaling: S.NullOr(S.Boolean),
@@ -26392,14 +31007,14 @@ function __c56(j: number): any {
           completed_at: S.NullOr(S.String),
           created_at: S.String,
           updated_at: S.String,
-          actor: __S(3),
-          replica: __S(1),
+          actor: OrganizationTeamMembershipActor,
+          replica: OrganizationTeamMembershipUserDefaultOrganization,
         }),
       ).annotate({
         identifier: "PaginatedPostgresReadOnlyReplicaChangeRequestDataItem",
       });
     case 2:
-      return S.Array(__S(449));
+      return S.Array(PaginatedPostgresReadOnlyReplicaChangeRequestDataItem);
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -26410,7 +31025,7 @@ function __c56(j: number): any {
           next_page_url: S.NullOr(S.String),
           prev_page: S.NullOr(S.Number),
           prev_page_url: S.NullOr(S.String),
-          data: __S(450),
+          data: PaginatedPostgresReadOnlyReplicaChangeRequestDataList,
         }),
       ).annotate({
         identifier: "PaginatedPostgresReadOnlyReplicaChangeRequest",
@@ -26432,9 +31047,11 @@ function __c56(j: number): any {
         identifier: "ListDedicatedReadReplicasRequest",
       });
     case 5:
-      return S.Array(__S(78));
+      return S.Array(PostgresReadOnlyReplica);
     case 6:
-      return S.suspend(() => __S(453).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        ListDedicatedReadReplicasResponseBodyList.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "ListDedicatedReadReplicasResponse",
       });
     case 7:
@@ -26463,7 +31080,7 @@ function __c57(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          state: S.String,
+          state: PaginatedDeployOperationDataItemState,
           keyspace_name: S.String,
           table_name: S.String,
           operation_name: S.String,
@@ -26479,14 +31096,16 @@ function __c57(j: number): any {
           table_locked: S.Boolean,
           table_recently_used: S.Boolean,
           table_recently_used_at: S.NullOr(S.String),
-          removed_foreign_key_names: S.NullOr(__S(4)),
+          removed_foreign_key_names: S.NullOr(
+            PaginatedDeployOperationDataItemRemovedForeignKeyNamesList,
+          ),
           deploy_errors: S.NullOr(S.String),
         }),
       ).annotate({
         identifier: "PaginatedDeployOperationDataItem",
       });
     case 1:
-      return S.Array(__S(456));
+      return S.Array(PaginatedDeployOperationDataItem);
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -26497,7 +31116,7 @@ function __c57(j: number): any {
           next_page_url: S.NullOr(S.String),
           prev_page: S.NullOr(S.Number),
           prev_page_url: S.NullOr(S.String),
-          data: __S(457),
+          data: PaginatedDeployOperationDataList,
         }),
       ).annotate({ identifier: "PaginatedDeployOperation" });
     case 3:
@@ -26524,16 +31143,16 @@ function __c57(j: number): any {
           id: S.String,
           body: S.String,
           html_body: S.String,
-          state: S.String,
+          state: PaginatedDeployRequestReviewDataItemState,
           created_at: S.String,
           updated_at: S.String,
-          actor: __S(3),
+          actor: OrganizationTeamMembershipActor,
         }),
       ).annotate({
         identifier: "PaginatedDeployRequestReviewDataItem",
       });
     case 5:
-      return S.Array(__S(460));
+      return S.Array(PaginatedDeployRequestReviewDataItem);
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -26544,7 +31163,7 @@ function __c57(j: number): any {
           next_page_url: S.NullOr(S.String),
           prev_page: S.NullOr(S.Number),
           prev_page_url: S.NullOr(S.String),
-          data: __S(461),
+          data: PaginatedDeployRequestReviewDataList,
         }),
       ).annotate({
         identifier: "PaginatedDeployRequestReview",
@@ -26576,12 +31195,12 @@ function __c57(j: number): any {
 function __c58(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(31));
+      return S.Array(PaginatedDatabaseDeployRequestDataItemDeploymentPrecedingDeploymentsItemMap);
     case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          state: S.String,
+          state: PaginatedDatabaseDeployRequestDataItemDeploymentDeployOperationsItemState,
           keyspace_name: S.String,
           table_name: S.String,
           operation_name: S.String,
@@ -26597,20 +31216,23 @@ function __c58(j: number): any {
           table_locked: S.Boolean,
           table_recently_used: S.Boolean,
           table_recently_used_at: S.NullOr(S.String),
-          removed_foreign_key_names: S.NullOr(__S(5)),
+          removed_foreign_key_names: S.NullOr(
+            PaginatedDatabaseDeployRequestDataItemDeploymentDeployOperationsItemRemovedForeignKeyNamesList,
+          ),
           deploy_errors: S.NullOr(S.String),
         }),
       ).annotate({
         identifier: "PaginatedDatabaseDeployRequestDataItemDeploymentDeployOperationsItem",
       });
     case 2:
-      return S.Array(__S(465));
+      return S.Array(PaginatedDatabaseDeployRequestDataItemDeploymentDeployOperationsItem);
     case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           shard: S.String,
-          state: S.String,
+          state:
+            PaginatedDatabaseDeployRequestDataItemDeploymentDeployOperationSummariesItemOperationsItemState,
           progress_percentage: S.Number,
           eta_seconds: S.Number,
         }),
@@ -26619,7 +31241,9 @@ function __c58(j: number): any {
           "PaginatedDatabaseDeployRequestDataItemDeploymentDeployOperationSummariesItemOperationsItem",
       });
     case 4:
-      return S.Array(__S(467));
+      return S.Array(
+        PaginatedDatabaseDeployRequestDataItemDeploymentDeployOperationSummariesItemOperationsItem,
+      );
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -26631,24 +31255,27 @@ function __c58(j: number): any {
           keyspace_name: S.String,
           operation_name: S.String,
           progress_percentage: S.Number,
-          state: S.String,
+          state: PaginatedDatabaseDeployRequestDataItemDeploymentDeployOperationSummariesItemState,
           syntax_highlighted_ddl: S.String,
           table_name: S.String,
           table_recently_used_at: S.NullOr(S.String),
           throttled_at: S.NullOr(S.String),
-          removed_foreign_key_names: __S(5),
+          removed_foreign_key_names:
+            PaginatedDatabaseDeployRequestDataItemDeploymentDeployOperationSummariesItemRemovedForeignKeyNamesList,
           shard_count: S.Number,
-          shard_names: __S(5),
+          shard_names:
+            PaginatedDatabaseDeployRequestDataItemDeploymentDeployOperationSummariesItemShardNamesList,
           can_drop_data: S.Boolean,
           table_recently_used: S.Boolean,
           sharded: S.Boolean,
-          operations: __S(468),
+          operations:
+            PaginatedDatabaseDeployRequestDataItemDeploymentDeployOperationSummariesItemOperationsList,
         }),
       ).annotate({
         identifier: "PaginatedDatabaseDeployRequestDataItemDeploymentDeployOperationSummariesItem",
       });
     case 6:
-      return S.Array(__S(469));
+      return S.Array(PaginatedDatabaseDeployRequestDataItemDeploymentDeployOperationSummariesItem);
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -26664,23 +31291,31 @@ function __c58(j: number): any {
           queued_at: S.NullOr(S.String),
           ready_to_cutover_at: S.NullOr(S.String),
           started_at: S.NullOr(S.String),
-          state: S.String,
+          state: PaginatedDatabaseDeployRequestDataItemDeploymentState2,
           submitted_at: S.NullOr(S.String),
           updated_at: S.String,
           into_branch: S.String,
           deploy_request_number: S.Number,
           deployable: S.Boolean,
-          preceding_deployments: __S(464),
-          deploy_operations: __S(466),
-          deploy_operation_summaries: __S(470),
-          lint_errors: __S(32),
-          sequential_diff_dependencies: __S(464),
-          lookup_vindex_operations: __S(464),
-          throttler_configurations: S.optional(S.NullOr(__S(31))),
-          deployment_revert_request: S.NullOr(__S(31)),
-          actor: S.optional(S.NullOr(__S(3))),
-          cutover_actor: S.optional(S.NullOr(__S(3))),
-          cancelled_actor: S.optional(S.NullOr(__S(3))),
+          preceding_deployments:
+            PaginatedDatabaseDeployRequestDataItemDeploymentPrecedingDeploymentsList,
+          deploy_operations: PaginatedDatabaseDeployRequestDataItemDeploymentDeployOperationsList,
+          deploy_operation_summaries:
+            PaginatedDatabaseDeployRequestDataItemDeploymentDeployOperationSummariesList,
+          lint_errors: PaginatedDatabaseDeployRequestDataItemDeploymentLintErrorsList,
+          sequential_diff_dependencies:
+            PaginatedDatabaseDeployRequestDataItemDeploymentSequentialDiffDependenciesList,
+          lookup_vindex_operations:
+            PaginatedDatabaseDeployRequestDataItemDeploymentLookupVindexOperationsList,
+          throttler_configurations: S.optional(
+            S.NullOr(PaginatedDatabaseDeployRequestDataItemDeploymentThrottlerConfigurationsMap),
+          ),
+          deployment_revert_request: S.NullOr(
+            PaginatedDatabaseDeployRequestDataItemDeploymentDeploymentRevertRequestMap,
+          ),
+          actor: S.optional(S.NullOr(OrganizationTeamMembershipActor)),
+          cutover_actor: S.optional(S.NullOr(OrganizationTeamMembershipActor)),
+          cancelled_actor: S.optional(S.NullOr(OrganizationTeamMembershipActor)),
           schema_last_updated_at: S.NullOr(S.String),
           table_locked: S.Boolean,
           locked_table_name: S.optional(S.NullOr(S.String)),
@@ -26701,21 +31336,21 @@ function __c59(j: number): any {
         S.Struct({
           id: S.String,
           number: S.Number,
-          actor: __S(3),
-          closed_by: S.optional(S.NullOr(__S(3))),
+          actor: OrganizationTeamMembershipActor,
+          closed_by: S.optional(S.NullOr(OrganizationTeamMembershipActor)),
           branch: S.String,
           branch_id: S.String,
           branch_deleted: S.Boolean,
-          branch_deleted_by: S.optional(S.NullOr(__S(3))),
+          branch_deleted_by: S.optional(S.NullOr(OrganizationTeamMembershipActor)),
           branch_deleted_at: S.NullOr(S.String),
           into_branch: S.String,
           into_branch_sharded: S.Boolean,
           into_branch_shard_count: S.Number,
           into_branch_keyspace_count: S.Number,
           approved: S.Boolean,
-          state: S.String,
-          deployment_state: S.String,
-          deployment: __S(471),
+          state: PaginatedDatabaseDeployRequestDataItemState,
+          deployment_state: PaginatedDatabaseDeployRequestDataItemDeploymentState,
+          deployment: PaginatedDatabaseDeployRequestDataItemDeployment,
           num_comments: S.Number,
           html_url: S.String,
           notes: S.String,
@@ -26729,7 +31364,7 @@ function __c59(j: number): any {
         identifier: "PaginatedDatabaseDeployRequestDataItem",
       });
     case 1:
-      return S.Array(__S(472));
+      return S.Array(PaginatedDatabaseDeployRequestDataItem);
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -26742,7 +31377,7 @@ function __c59(j: number): any {
           prev_page_url: S.NullOr(S.String),
           total_count: S.Number,
           total_pages: S.Number,
-          data: __S(473),
+          data: PaginatedDatabaseDeployRequestDataList,
         }),
       ).annotate({
         identifier: "PaginatedDatabaseDeployRequest",
@@ -26774,12 +31409,12 @@ function __c59(j: number): any {
         S.Struct({
           name: S.String,
           display_name: S.String,
-          namespace: S.String,
+          namespace: PostgresExtensionDefinitionParametersItemNamespace,
           category: S.String,
           description: S.String,
           extension: S.Boolean,
           immutable: S.Boolean,
-          parameter_type: S.String,
+          parameter_type: PostgresExtensionDefinitionParametersItemParameterType,
           default_value: S.String,
           value: S.String,
           required: S.Boolean,
@@ -26789,14 +31424,14 @@ function __c59(j: number): any {
           max: S.Number,
           min: S.Number,
           url: S.String,
-          options: __S(4),
-          actor: __S(3),
+          options: PostgresExtensionDefinitionParametersItemOptionsList,
+          actor: OrganizationTeamMembershipActor,
         }),
       ).annotate({
         identifier: "PostgresExtensionDefinitionParametersItem",
       });
     case 6:
-      return S.Array(__S(477));
+      return S.Array(PostgresExtensionDefinitionParametersItem);
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -26805,9 +31440,9 @@ function __c59(j: number): any {
           description: S.String,
           enabled: S.optional(S.NullOr(S.Boolean)),
           internal: S.Boolean,
-          requirements: __S(476),
+          requirements: PostgresExtensionDefinitionRequirements,
           url: S.String,
-          parameters: __S(478),
+          parameters: PostgresExtensionDefinitionParametersList,
         }),
       ).annotate({
         identifier: "PostgresExtensionDefinition",
@@ -26817,9 +31452,9 @@ function __c59(j: number): any {
 function __c60(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(479));
+      return S.Array(PostgresExtensionDefinition);
     case 1:
-      return S.suspend(() => __S(480).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => ListExtensionsResponseBodyList.pipe(T.RawResponseRoot())).annotate({
         identifier: "ListExtensionsResponse",
       });
     case 2:
@@ -26845,18 +31480,18 @@ function __c60(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          state: S.String,
+          state: PaginatedQueryPatternsDownloadDataItemState,
           created_at: S.String,
           finished_at: S.NullOr(S.String),
           url: S.String,
           download_url: S.String,
-          actor: __S(3),
+          actor: OrganizationTeamMembershipActor,
         }),
       ).annotate({
         identifier: "PaginatedQueryPatternsDownloadDataItem",
       });
     case 4:
-      return S.Array(__S(483));
+      return S.Array(PaginatedQueryPatternsDownloadDataItem);
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -26865,7 +31500,7 @@ function __c60(j: number): any {
           has_prev: S.Boolean,
           cursor_start: S.NullOr(S.String),
           cursor_end: S.NullOr(S.String),
-          data: __S(484),
+          data: PaginatedQueryPatternsDownloadDataList,
         }),
       ).annotate({
         identifier: "PaginatedQueryPatternsDownload",
@@ -26894,13 +31529,13 @@ function __c60(j: number): any {
           id: S.String,
           number: S.Number,
           scheduled: S.Boolean,
-          type: S.String,
-          state: S.String,
-          repository: __S(12),
-          agent: S.NullOr(__S(12)),
+          type: PaginatedInsightsAgentRunDataItemType,
+          state: PaginatedInsightsAgentRunDataItemState,
+          repository: PaginatedInsightsAgentRunDataItemRepositoryMap,
+          agent: S.NullOr(PaginatedInsightsAgentRunDataItemAgentMap),
           schedule_id: S.NullOr(S.String),
           scheduled_for: S.NullOr(S.String),
-          selected_targets: __S(24),
+          selected_targets: PaginatedInsightsAgentRunDataItemSelectedTargetsList,
           outcome: S.NullOr(S.String),
           title: S.NullOr(S.String),
           summary: S.NullOr(S.String),
@@ -26922,7 +31557,7 @@ function __c60(j: number): any {
 function __c61(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(487));
+      return S.Array(PaginatedInsightsAgentRunDataItem);
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -26933,7 +31568,7 @@ function __c61(j: number): any {
           next_page_url: S.NullOr(S.String),
           prev_page: S.NullOr(S.Number),
           prev_page_url: S.NullOr(S.String),
-          data: __S(488),
+          data: PaginatedInsightsAgentRunDataList,
         }),
       ).annotate({
         identifier: "PaginatedInsightsAgentRun",
@@ -26958,9 +31593,9 @@ function __c61(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.NullOr(S.String),
-          run_type: S.String,
+          run_type: InsightsAgentScheduleRunType,
           enabled: S.Boolean,
-          frequency_unit: S.String,
+          frequency_unit: InsightsAgentScheduleFrequencyUnit,
           schedule_time: S.String,
           time_zone: S.String,
           day_of_week: S.NullOr(S.Number),
@@ -26969,9 +31604,11 @@ function __c61(j: number): any {
         }),
       ).annotate({ identifier: "InsightsAgentSchedule" });
     case 4:
-      return S.Array(__S(491));
+      return S.Array(InsightsAgentSchedule);
     case 5:
-      return S.suspend(() => __S(492).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        ListInsightsAgentSchedulesResponseBodyList.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "ListInsightsAgentSchedulesResponse",
       });
     case 6:
@@ -26985,7 +31622,7 @@ function __c61(j: number): any {
         ),
       ).annotate({ identifier: "ListInvoicesRequest" });
     case 7:
-      return S.Array(__S(282));
+      return S.Array(PaginatedInvoiceDataItem);
   }
 }
 function __c62(j: number): any {
@@ -27000,7 +31637,7 @@ function __c62(j: number): any {
           next_page_url: S.NullOr(S.String),
           prev_page: S.NullOr(S.Number),
           prev_page_url: S.NullOr(S.String),
-          data: __S(495),
+          data: PaginatedInvoiceDataList,
         }),
       ).annotate({ identifier: "PaginatedInvoice" });
     case 1:
@@ -27026,10 +31663,10 @@ function __c62(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          state: S.String,
-          change_type: S.String,
-          previous_options: __S(31),
-          new_options: __S(12),
+          state: PaginatedKeyspaceConfigChangeRequestDataItemState,
+          change_type: PaginatedKeyspaceConfigChangeRequestDataItemChangeType,
+          previous_options: PaginatedKeyspaceConfigChangeRequestDataItemPreviousOptionsMap,
+          new_options: PaginatedKeyspaceConfigChangeRequestDataItemNewOptionsMap,
           error_message: S.NullOr(S.String),
           started_at: S.NullOr(S.String),
           completed_at: S.NullOr(S.String),
@@ -27037,13 +31674,13 @@ function __c62(j: number): any {
           updated_at: S.String,
           keyspace_name: S.NullOr(S.String),
           queued_until: S.NullOr(S.String),
-          actor: __S(3),
+          actor: OrganizationTeamMembershipActor,
         }),
       ).annotate({
         identifier: "PaginatedKeyspaceConfigChangeRequestDataItem",
       });
     case 3:
-      return S.Array(__S(498));
+      return S.Array(PaginatedKeyspaceConfigChangeRequestDataItem);
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -27054,7 +31691,7 @@ function __c62(j: number): any {
           next_page_url: S.NullOr(S.String),
           prev_page: S.NullOr(S.Number),
           prev_page_url: S.NullOr(S.String),
-          data: __S(499),
+          data: PaginatedKeyspaceConfigChangeRequestDataList,
         }),
       ).annotate({
         identifier: "PaginatedKeyspaceConfigChangeRequest",
@@ -27083,7 +31720,7 @@ function __c62(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          state: S.String,
+          state: PaginatedKeyspaceResizeRequestDataItemState,
           started_at: S.NullOr(S.String),
           completed_at: S.NullOr(S.String),
           created_at: S.String,
@@ -27097,13 +31734,13 @@ function __c62(j: number): any {
           previous_cluster_display_name: S.String,
           replicas: S.Number,
           previous_replicas: S.Number,
-          actor: __S(3),
+          actor: OrganizationTeamMembershipActor,
         }),
       ).annotate({
         identifier: "PaginatedKeyspaceResizeRequestDataItem",
       });
     case 7:
-      return S.Array(__S(502));
+      return S.Array(PaginatedKeyspaceResizeRequestDataItem);
   }
 }
 function __c63(j: number): any {
@@ -27118,7 +31755,7 @@ function __c63(j: number): any {
           next_page_url: S.NullOr(S.String),
           prev_page: S.NullOr(S.Number),
           prev_page_url: S.NullOr(S.String),
-          data: __S(503),
+          data: PaginatedKeyspaceResizeRequestDataList,
         }),
       ).annotate({
         identifier: "PaginatedKeyspaceResizeRequest",
@@ -27142,7 +31779,11 @@ function __c63(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          strategy: S.optional(S.NullOr(S.String)),
+          strategy: S.optional(
+            S.NullOr(
+              PaginatedDatabaseBranchKeyspaceDataItemReplicationDurabilityConstraintsStrategy,
+            ),
+          ),
         }),
       ).annotate({
         identifier: "PaginatedDatabaseBranchKeyspaceDataItemReplicationDurabilityConstraints",
@@ -27170,20 +31811,21 @@ function __c63(j: number): any {
           default: S.Boolean,
           imported: S.Boolean,
           vector_pool_allocation: S.NullOr(S.Number),
-          node_ttl_strategy: S.String,
-          storage: __S(83),
+          node_ttl_strategy: PaginatedDatabaseBranchKeyspaceDataItemNodeTtlStrategy,
+          storage: PaginatedDatabaseBranchKeyspaceDataItemStorage,
           max_rollout: S.NullOr(S.Number),
-          replication_durability_constraints: __S(506),
-          vreplication_flags: __S(85),
-          throttler: __S(86),
-          mysqld_options: __S(12),
-          vttablet_options: __S(12),
+          replication_durability_constraints:
+            PaginatedDatabaseBranchKeyspaceDataItemReplicationDurabilityConstraints,
+          vreplication_flags: DatabaseBranchKeyspaceVreplicationFlags,
+          throttler: DatabaseBranchKeyspaceThrottler,
+          mysqld_options: PaginatedDatabaseBranchKeyspaceDataItemMysqldOptionsMap,
+          vttablet_options: PaginatedDatabaseBranchKeyspaceDataItemVttabletOptionsMap,
         }),
       ).annotate({
         identifier: "PaginatedDatabaseBranchKeyspaceDataItem",
       });
     case 4:
-      return S.Array(__S(507));
+      return S.Array(PaginatedDatabaseBranchKeyspaceDataItem);
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -27194,7 +31836,7 @@ function __c63(j: number): any {
           next_page_url: S.NullOr(S.String),
           prev_page: S.NullOr(S.Number),
           prev_page_url: S.NullOr(S.String),
-          data: __S(508),
+          data: PaginatedDatabaseBranchKeyspaceDataList,
         }),
       ).annotate({
         identifier: "PaginatedDatabaseBranchKeyspace",
@@ -27217,7 +31859,7 @@ function __c63(j: number): any {
         identifier: "ListMaintenanceSchedulesRequest",
       });
     case 7:
-      return S.Array(__S(298));
+      return S.Array(PaginatedBranchMaintenanceScheduleDataItem);
   }
 }
 function __c64(j: number): any {
@@ -27232,7 +31874,7 @@ function __c64(j: number): any {
           next_page_url: S.NullOr(S.String),
           prev_page: S.NullOr(S.Number),
           prev_page_url: S.NullOr(S.String),
-          data: __S(511),
+          data: PaginatedBranchMaintenanceScheduleDataList,
         }),
       ).annotate({
         identifier: "PaginatedBranchMaintenanceSchedule",
@@ -27268,7 +31910,7 @@ function __c64(j: number): any {
         identifier: "PaginatedBranchMaintenanceWindowDataItem",
       });
     case 3:
-      return S.Array(__S(514));
+      return S.Array(PaginatedBranchMaintenanceWindowDataItem);
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -27279,7 +31921,7 @@ function __c64(j: number): any {
           next_page_url: S.NullOr(S.String),
           prev_page: S.NullOr(S.Number),
           prev_page_url: S.NullOr(S.String),
-          data: __S(515),
+          data: PaginatedBranchMaintenanceWindowDataList,
         }),
       ).annotate({
         identifier: "PaginatedBranchMaintenanceWindow",
@@ -27304,7 +31946,7 @@ function __c64(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          workflows: __S(24),
+          workflows: ListMoveTablesWorkflowsResponseDataWorkflowsList,
         }),
       ).annotate({
         identifier: "ListMoveTablesWorkflowsResponseData",
@@ -27312,7 +31954,7 @@ function __c64(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          data: __S(518),
+          data: ListMoveTablesWorkflowsResponseData,
         }),
       ).annotate({
         identifier: "ListMoveTablesWorkflowsResponse",
@@ -27329,10 +31971,10 @@ function __c65(j: number): any {
           branch: S.String.pipe(T.Label()),
           page: S.optional(S.Number.pipe(T.Query())),
           per_page: S.optional(S.Number.pipe(T.Query())),
-          state: S.optional(__S(4).pipe(T.Query())),
-          target_types: S.optional(__S(4).pipe(T.Query())),
+          state: S.optional(ListNekiChangeRequestsRequestStateList.pipe(T.Query())),
+          target_types: S.optional(ListNekiChangeRequestsRequestTargetTypesList.pipe(T.Query())),
           target_id: S.optional(S.String.pipe(T.Query())),
-          period: S.optional(S.String.pipe(T.Query())),
+          period: S.optional(ListNekiChangeRequestsRequestPeriod.pipe(T.Query())),
           completed_at: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
@@ -27347,27 +31989,29 @@ function __c65(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          type: S.String,
+          type: PaginatedNekiChangeRequestDataItemType,
           id: S.String,
-          state: S.String,
+          state: PaginatedNekiChangeRequestDataItemState,
           can_delete: S.Boolean,
           started_at: S.NullOr(S.String),
           completed_at: S.NullOr(S.String),
           created_at: S.String,
           updated_at: S.String,
-          actor: __S(3),
+          actor: OrganizationTeamMembershipActor,
           target_id: S.NullOr(S.String),
-          target_type: S.String,
+          target_type: PaginatedNekiChangeRequestDataItemTargetType,
           target_name: S.String,
           admin_size: S.optional(S.NullOr(S.String)),
           admin_size_display_name: S.optional(S.NullOr(S.String)),
-          parameters: S.optional(S.NullOr(__S(12))),
+          parameters: S.optional(S.NullOr(PaginatedNekiChangeRequestDataItemParametersMap)),
           previous_admin_size: S.optional(S.NullOr(S.String)),
           previous_admin_size_display_name: S.optional(S.NullOr(S.String)),
-          previous_parameters: S.optional(S.NullOr(__S(12))),
-          flags: S.optional(S.NullOr(__S(4))),
+          previous_parameters: S.optional(
+            S.NullOr(PaginatedNekiChangeRequestDataItemPreviousParametersMap),
+          ),
+          flags: S.optional(S.NullOr(PaginatedNekiChangeRequestDataItemFlagsList)),
           neki_image_version: S.optional(S.NullOr(S.String)),
-          previous_flags: S.optional(S.NullOr(__S(4))),
+          previous_flags: S.optional(S.NullOr(PaginatedNekiChangeRequestDataItemPreviousFlagsList)),
           previous_neki_image_version: S.optional(S.NullOr(S.String)),
           replicas: S.optional(S.NullOr(S.Number)),
           previous_replicas: S.optional(S.NullOr(S.Number)),
@@ -27394,19 +32038,19 @@ function __c65(j: number): any {
           cluster_rank: S.optional(S.NullOr(S.Number)),
           shards: S.optional(S.NullOr(S.Number)),
           postgres_image_version: S.optional(S.NullOr(S.String)),
-          storage: S.optional(S.NullOr(__S(133))),
+          storage: S.optional(S.NullOr(NekiShardConfigurationProfileStorage)),
           previous_cluster_size: S.optional(S.NullOr(S.String)),
           previous_metal: S.optional(S.NullOr(S.Boolean)),
           previous_cluster_rank: S.optional(S.NullOr(S.Number)),
           previous_shards: S.optional(S.NullOr(S.Number)),
           previous_postgres_image_version: S.optional(S.NullOr(S.String)),
-          previous_storage: S.optional(S.NullOr(__S(133))),
+          previous_storage: S.optional(S.NullOr(NekiShardConfigurationProfileStorage)),
         }),
       ).annotate({
         identifier: "PaginatedNekiChangeRequestDataItem",
       });
     case 2:
-      return S.Array(__S(521));
+      return S.Array(PaginatedNekiChangeRequestDataItem);
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -27417,7 +32061,7 @@ function __c65(j: number): any {
           next_page_url: S.NullOr(S.String),
           prev_page: S.NullOr(S.Number),
           prev_page_url: S.NullOr(S.String),
-          data: __S(522),
+          data: PaginatedNekiChangeRequestDataList,
         }),
       ).annotate({
         identifier: "PaginatedNekiChangeRequest",
@@ -27454,15 +32098,15 @@ function __c65(j: number): any {
           dcr: S.Boolean,
           single_org_authorization: S.Boolean,
           requires_org_scope: S.Boolean,
-          scopes_by_resource: __S(12),
-          all_scopes_by_resource: __S(12),
-          mcp_tool_groups: S.optional(S.NullOr(__S(24))),
+          scopes_by_resource: PaginatedOauthApplicationDataItemScopesByResourceMap,
+          all_scopes_by_resource: PaginatedOauthApplicationDataItemAllScopesByResourceMap,
+          mcp_tool_groups: S.optional(S.NullOr(PaginatedOauthApplicationDataItemMcpToolGroupsList)),
         }),
       ).annotate({
         identifier: "PaginatedOauthApplicationDataItem",
       });
     case 6:
-      return S.Array(__S(525));
+      return S.Array(PaginatedOauthApplicationDataItem);
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -27475,7 +32119,7 @@ function __c65(j: number): any {
           prev_page_url: S.NullOr(S.String),
           total_count: S.Number,
           total_pages: S.Number,
-          data: __S(526),
+          data: PaginatedOauthApplicationDataList,
         }),
       ).annotate({
         identifier: "PaginatedOauthApplication",
@@ -27500,14 +32144,14 @@ function __c66(j: number): any {
         ),
       ).annotate({ identifier: "ListOauthTokensRequest" });
     case 1:
-      return S.Array(__S(94));
+      return S.Array(ServiceTokenOauthAccessesByResourceDatabaseDatabasesItem);
     case 2:
-      return S.Array(__S(96));
+      return S.Array(ServiceTokenOauthAccessesByResourceDatabaseAccessesItem);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          databases: __S(529),
-          accesses: __S(530),
+          databases: PaginatedServiceTokenDataItemOauthAccessesByResourceDatabaseDatabasesList,
+          accesses: PaginatedServiceTokenDataItemOauthAccessesByResourceDatabaseAccessesList,
         }),
       ).annotate({
         identifier: "PaginatedServiceTokenDataItemOauthAccessesByResourceDatabase",
@@ -27515,25 +32159,26 @@ function __c66(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          organizations: __S(100),
-          accesses: __S(530),
+          organizations:
+            PaginatedServiceTokenDataItemOauthAccessesByResourceOrganizationOrganizationsList,
+          accesses: PaginatedServiceTokenDataItemOauthAccessesByResourceOrganizationAccessesList,
         }),
       ).annotate({
         identifier: "PaginatedServiceTokenDataItemOauthAccessesByResourceOrganization",
       });
     case 5:
-      return S.Array(__S(102));
+      return S.Array(ServiceTokenOauthAccessesByResourceBranchBranchesItem);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          branches: __S(533),
-          accesses: __S(530),
+          branches: PaginatedServiceTokenDataItemOauthAccessesByResourceBranchBranchesList,
+          accesses: PaginatedServiceTokenDataItemOauthAccessesByResourceBranchAccessesList,
         }),
       ).annotate({
         identifier: "PaginatedServiceTokenDataItemOauthAccessesByResourceBranch",
       });
     case 7:
-      return S.Array(__S(105));
+      return S.Array(ServiceTokenOauthAccessesByResourceUserUsersItem);
   }
 }
 function __c67(j: number): any {
@@ -27541,8 +32186,8 @@ function __c67(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          users: __S(535),
-          accesses: __S(530),
+          users: PaginatedServiceTokenDataItemOauthAccessesByResourceUserUsersList,
+          accesses: PaginatedServiceTokenDataItemOauthAccessesByResourceUserAccessesList,
         }),
       ).annotate({
         identifier: "PaginatedServiceTokenDataItemOauthAccessesByResourceUser",
@@ -27550,10 +32195,10 @@ function __c67(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          database: __S(531),
-          organization: __S(532),
-          branch: __S(534),
-          user: __S(536),
+          database: PaginatedServiceTokenDataItemOauthAccessesByResourceDatabase,
+          organization: PaginatedServiceTokenDataItemOauthAccessesByResourceOrganization,
+          branch: PaginatedServiceTokenDataItemOauthAccessesByResourceBranch,
+          user: PaginatedServiceTokenDataItemOauthAccessesByResourceUser,
         }),
       ).annotate({
         identifier: "PaginatedServiceTokenDataItemOauthAccessesByResource",
@@ -27574,14 +32219,18 @@ function __c67(j: number): any {
           actor_id: S.NullOr(S.String),
           actor_display_name: S.NullOr(S.String),
           actor_type: S.NullOr(S.String),
-          service_token_accesses: S.optional(S.NullOr(__S(93))),
-          oauth_accesses_by_resource: S.optional(S.NullOr(__S(537))),
+          service_token_accesses: S.optional(
+            S.NullOr(PaginatedServiceTokenDataItemServiceTokenAccessesList),
+          ),
+          oauth_accesses_by_resource: S.optional(
+            S.NullOr(PaginatedServiceTokenDataItemOauthAccessesByResource),
+          ),
         }),
       ).annotate({
         identifier: "PaginatedServiceTokenDataItem",
       });
     case 3:
-      return S.Array(__S(538));
+      return S.Array(PaginatedServiceTokenDataItem);
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -27594,7 +32243,7 @@ function __c67(j: number): any {
           prev_page_url: S.NullOr(S.String),
           total_count: S.Number,
           total_pages: S.Number,
-          data: __S(539),
+          data: PaginatedServiceTokenDataList,
         }),
       ).annotate({ identifier: "PaginatedServiceToken" });
     case 5:
@@ -27614,9 +32263,9 @@ function __c67(j: number): any {
         S.Struct({
           id: S.String,
           email: S.String,
-          role: S.String,
-          sender: __S(2),
-          recipient: S.NullOr(__S(2)),
+          role: PaginatedOrganizationInvitationDataItemRole,
+          sender: OrganizationTeamMembershipUser,
+          recipient: S.NullOr(OrganizationTeamMembershipUser),
           expired: S.Boolean,
           expires_at: S.String,
           created_at: S.String,
@@ -27626,7 +32275,7 @@ function __c67(j: number): any {
         identifier: "PaginatedOrganizationInvitationDataItem",
       });
     case 7:
-      return S.Array(__S(542));
+      return S.Array(PaginatedOrganizationInvitationDataItem);
   }
 }
 function __c68(j: number): any {
@@ -27643,7 +32292,7 @@ function __c68(j: number): any {
           prev_page_url: S.NullOr(S.String),
           total_count: S.Number,
           total_pages: S.Number,
-          data: __S(543),
+          data: PaginatedOrganizationInvitationDataList,
         }),
       ).annotate({
         identifier: "PaginatedOrganizationInvitation",
@@ -27663,8 +32312,8 @@ function __c68(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          user: __S(317),
-          role: S.String,
+          user: OrganizationMembershipUser,
+          role: PaginatedOrganizationMembershipDataItemRole,
           created_at: S.String,
           updated_at: S.String,
         }),
@@ -27672,7 +32321,7 @@ function __c68(j: number): any {
         identifier: "PaginatedOrganizationMembershipDataItem",
       });
     case 3:
-      return S.Array(__S(546));
+      return S.Array(PaginatedOrganizationMembershipDataItem);
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -27685,7 +32334,7 @@ function __c68(j: number): any {
           prev_page_url: S.NullOr(S.String),
           total_count: S.Number,
           total_pages: S.Number,
-          data: __S(547),
+          data: PaginatedOrganizationMembershipDataList,
         }),
       ).annotate({
         identifier: "PaginatedOrganizationMembership",
@@ -27714,7 +32363,7 @@ function __c68(j: number): any {
           has_past_due_invoices: S.optional(S.NullOr(S.Boolean)),
           database_count: S.Number,
           sso_portal_url: S.optional(S.NullOr(S.String)),
-          features: __S(12),
+          features: PaginatedOrganizationDataItemFeaturesMap,
           idp_managed_roles: S.Boolean,
           invoice_budget_amount: S.String,
           keyspace_shard_limit: S.Number,
@@ -27726,7 +32375,7 @@ function __c68(j: number): any {
         identifier: "PaginatedOrganizationDataItem",
       });
     case 7:
-      return S.Array(__S(550));
+      return S.Array(PaginatedOrganizationDataItem);
   }
 }
 function __c69(j: number): any {
@@ -27741,7 +32390,7 @@ function __c69(j: number): any {
           next_page_url: S.NullOr(S.String),
           prev_page: S.NullOr(S.Number),
           prev_page_url: S.NullOr(S.String),
-          data: __S(551),
+          data: PaginatedOrganizationDataList,
         }),
       ).annotate({ identifier: "PaginatedOrganization" });
     case 1:
@@ -27755,9 +32404,11 @@ function __c69(j: number): any {
         identifier: "ListOrganizationSsoDomainsRequest",
       });
     case 2:
-      return S.Array(__S(321));
+      return S.Array(OrganizationDomain);
     case 3:
-      return S.suspend(() => __S(554).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        ListOrganizationSsoDomainsResponseBodyList.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "ListOrganizationSsoDomainsResponse",
       });
     case 4:
@@ -27783,7 +32434,8 @@ function __c69(j: number): any {
           id: S.String,
           provider: S.String,
           enabled: S.Boolean,
-          public_ip_addresses: __S(5),
+          public_ip_addresses:
+            PaginatedOrganizationTeamMembershipDataItemPasswordsItemRegionPublicIpAddressesList,
           display_name: S.String,
           location: S.String,
           slug: S.String,
@@ -27800,33 +32452,35 @@ function __c69(j: number): any {
         S.Struct({
           id: S.String,
           name: S.String,
-          role: S.String,
-          cidrs: S.NullOr(__S(5)),
+          role: PaginatedOrganizationTeamMembershipDataItemPasswordsItemRole,
+          cidrs: S.NullOr(PaginatedOrganizationTeamMembershipDataItemPasswordsItemCidrsList),
           created_at: S.String,
           deleted_at: S.NullOr(S.String),
           expires_at: S.NullOr(S.String),
           last_used_at: S.NullOr(S.String),
           expired: S.Boolean,
           direct_vtgate: S.Boolean,
-          direct_vtgate_addresses: __S(5),
+          direct_vtgate_addresses:
+            PaginatedOrganizationTeamMembershipDataItemPasswordsItemDirectVtgateAddressesList,
           ttl_seconds: S.NullOr(S.Number),
           access_host_url: S.String,
           access_host_regional_url: S.String,
-          access_host_regional_urls: __S(5),
-          actor: S.NullOr(__S(3)),
-          region: __S(557),
+          access_host_regional_urls:
+            PaginatedOrganizationTeamMembershipDataItemPasswordsItemAccessHostRegionalUrlsList,
+          actor: S.NullOr(OrganizationTeamMembershipActor),
+          region: PaginatedOrganizationTeamMembershipDataItemPasswordsItemRegion,
           username: S.String,
           plain_text: S.NullOr(S.String).pipe(T.SensitiveValue({})),
           replica: S.Boolean,
           read_only_region: S.Boolean,
           renewable: S.Boolean,
-          database_branch: __S(7),
+          database_branch: OrganizationTeamMembershipPasswordsItemDatabaseBranch,
         }),
       ).annotate({
         identifier: "PaginatedOrganizationTeamMembershipDataItemPasswordsItem",
       });
     case 7:
-      return S.Array(__S(558));
+      return S.Array(PaginatedOrganizationTeamMembershipDataItemPasswordsItem);
   }
 }
 function __c70(j: number): any {
@@ -27835,17 +32489,17 @@ function __c70(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          user: __S(2),
-          actor: __S(3),
+          user: OrganizationTeamMembershipUser,
+          actor: OrganizationTeamMembershipActor,
           created_at: S.String,
           updated_at: S.String,
-          passwords: __S(559),
+          passwords: PaginatedOrganizationTeamMembershipDataItemPasswordsList,
         }),
       ).annotate({
         identifier: "PaginatedOrganizationTeamMembershipDataItem",
       });
     case 1:
-      return S.Array(__S(560));
+      return S.Array(PaginatedOrganizationTeamMembershipDataItem);
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -27858,7 +32512,7 @@ function __c70(j: number): any {
           prev_page_url: S.NullOr(S.String),
           total_count: S.Number,
           total_pages: S.Number,
-          data: __S(561),
+          data: PaginatedOrganizationTeamMembershipDataList,
         }),
       ).annotate({
         identifier: "PaginatedOrganizationTeamMembership",
@@ -27879,10 +32533,10 @@ function __c70(j: number): any {
         S.Struct({
           id: S.String,
           display_name: S.String,
-          creator: __S(3),
-          members: __S(114),
-          databases: __S(116),
-          analyst_databases: __S(116),
+          creator: OrganizationTeamMembershipActor,
+          members: PaginatedOrganizationTeamDataItemMembersList,
+          databases: PaginatedOrganizationTeamDataItemDatabasesList,
+          analyst_databases: PaginatedOrganizationTeamDataItemAnalystDatabasesList,
           name: S.String,
           slug: S.String,
           created_at: S.String,
@@ -27894,7 +32548,7 @@ function __c70(j: number): any {
         identifier: "PaginatedOrganizationTeamDataItem",
       });
     case 5:
-      return S.Array(__S(564));
+      return S.Array(PaginatedOrganizationTeamDataItem);
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -27907,7 +32561,7 @@ function __c70(j: number): any {
           prev_page_url: S.NullOr(S.String),
           total_count: S.Number,
           total_pages: S.Number,
-          data: __S(565),
+          data: PaginatedOrganizationTeamDataList,
         }),
       ).annotate({
         identifier: "PaginatedOrganizationTeam",
@@ -27935,12 +32589,12 @@ function __c71(j: number): any {
         S.Struct({
           name: S.String,
           display_name: S.String,
-          namespace: S.String,
+          namespace: PostgresClusterParameterNamespace,
           category: S.String,
           description: S.String,
           extension: S.Boolean,
           immutable: S.Boolean,
-          parameter_type: S.String,
+          parameter_type: PostgresClusterParameterParameterType,
           default_value: S.String,
           value: S.String,
           required: S.Boolean,
@@ -27950,14 +32604,14 @@ function __c71(j: number): any {
           max: S.Number,
           min: S.Number,
           url: S.String,
-          options: __S(4),
-          actor: __S(3),
+          options: PostgresClusterParameterOptionsList,
+          actor: OrganizationTeamMembershipActor,
         }),
       ).annotate({ identifier: "PostgresClusterParameter" });
     case 1:
-      return S.Array(__S(568));
+      return S.Array(PostgresClusterParameter);
     case 2:
-      return S.suspend(() => __S(569).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => ListParametersResponseBodyList.pipe(T.RawResponseRoot())).annotate({
         identifier: "ListParametersResponse",
       });
     case 3:
@@ -27984,33 +32638,34 @@ function __c71(j: number): any {
         S.Struct({
           id: S.String,
           name: S.String,
-          role: S.String,
-          cidrs: S.NullOr(__S(4)),
+          role: PaginatedDatabaseBranchPasswordDataItemRole,
+          cidrs: S.NullOr(PaginatedDatabaseBranchPasswordDataItemCidrsList),
           created_at: S.String,
           deleted_at: S.NullOr(S.String),
           expires_at: S.NullOr(S.String),
           last_used_at: S.NullOr(S.String),
           expired: S.Boolean,
           direct_vtgate: S.Boolean,
-          direct_vtgate_addresses: __S(5),
+          direct_vtgate_addresses: PaginatedDatabaseBranchPasswordDataItemDirectVtgateAddressesList,
           ttl_seconds: S.NullOr(S.Number),
           access_host_url: S.String,
           access_host_regional_url: S.String,
-          access_host_regional_urls: __S(5),
-          actor: S.NullOr(__S(3)),
-          region: __S(6),
+          access_host_regional_urls:
+            PaginatedDatabaseBranchPasswordDataItemAccessHostRegionalUrlsList,
+          actor: S.NullOr(OrganizationTeamMembershipActor),
+          region: PaginatedDatabaseBranchPasswordDataItemRegion,
           username: S.String,
           plain_text: S.NullOr(S.String).pipe(T.SensitiveValue({})),
           replica: S.Boolean,
           read_only_region: S.Boolean,
           renewable: S.Boolean,
-          database_branch: __S(7),
+          database_branch: OrganizationTeamMembershipPasswordsItemDatabaseBranch,
         }),
       ).annotate({
         identifier: "PaginatedDatabaseBranchPasswordDataItem",
       });
     case 5:
-      return S.Array(__S(572));
+      return S.Array(PaginatedDatabaseBranchPasswordDataItem);
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -28023,7 +32678,7 @@ function __c71(j: number): any {
           prev_page_url: S.NullOr(S.String),
           total_count: S.Number,
           total_pages: S.Number,
-          data: __S(573),
+          data: PaginatedDatabaseBranchPasswordDataList,
         }),
       ).annotate({
         identifier: "PaginatedDatabaseBranchPassword",
@@ -28031,7 +32686,7 @@ function __c71(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          engine: S.String.pipe(T.Query()),
+          engine: ListPostgresVersionsRequestEngine.pipe(T.Query()),
         }).pipe(T.Http({ method: "GET", uri: "/postgres-versions", code: 200 })),
       ).annotate({
         identifier: "ListPostgresVersionsRequest",
@@ -28051,9 +32706,11 @@ function __c72(j: number): any {
         }),
       ).annotate({ identifier: "NekiPostgresVersion" });
     case 1:
-      return S.Array(__S(576));
+      return S.Array(NekiPostgresVersion);
     case 2:
-      return S.suspend(() => __S(577).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        ListPostgresVersionsResponseBodyList.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "ListPostgresVersionsResponse",
       });
     case 3:
@@ -28069,7 +32726,8 @@ function __c72(j: number): any {
           id: S.String,
           provider: S.String,
           enabled: S.Boolean,
-          public_ip_addresses: __S(5),
+          public_ip_addresses:
+            PaginatedPublicPlanetscaleRegionSerializerDataItemPublicIpAddressesList,
           display_name: S.String,
           location: S.String,
           slug: S.String,
@@ -28078,7 +32736,7 @@ function __c72(j: number): any {
         identifier: "PaginatedPublicPlanetscaleRegionSerializerDataItem",
       });
     case 5:
-      return S.Array(__S(580));
+      return S.Array(PaginatedPublicPlanetscaleRegionSerializerDataItem);
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -28089,7 +32747,7 @@ function __c72(j: number): any {
           next_page_url: S.NullOr(S.String),
           prev_page: S.NullOr(S.Number),
           prev_page_url: S.NullOr(S.String),
-          data: __S(581),
+          data: PaginatedPublicPlanetscaleRegionSerializerDataList,
         }),
       ).annotate({
         identifier: "PaginatedPublicPlanetscaleRegionSerializer",
@@ -28124,14 +32782,14 @@ function __c73(j: number): any {
           updated_at: S.String,
           ready_at: S.NullOr(S.String),
           ready: S.Boolean,
-          actor: __S(3),
-          region: __S(6),
+          actor: OrganizationTeamMembershipActor,
+          region: PaginatedDatabaseBranchReadOnlyRegionDataItemRegion,
         }),
       ).annotate({
         identifier: "PaginatedDatabaseBranchReadOnlyRegionDataItem",
       });
     case 1:
-      return S.Array(__S(584));
+      return S.Array(PaginatedDatabaseBranchReadOnlyRegionDataItem);
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -28142,7 +32800,7 @@ function __c73(j: number): any {
           next_page_url: S.NullOr(S.String),
           prev_page: S.NullOr(S.Number),
           prev_page_url: S.NullOr(S.String),
-          data: __S(585),
+          data: PaginatedDatabaseBranchReadOnlyRegionDataList,
         }),
       ).annotate({
         identifier: "PaginatedDatabaseBranchReadOnlyRegion",
@@ -28198,17 +32856,17 @@ function __c73(j: number): any {
           expired: S.Boolean,
           default: S.Boolean,
           ttl: S.NullOr(S.Number),
-          inherited_roles: __S(122),
+          inherited_roles: PaginatedPostgresRoleDataItemInheritedRolesList,
           with_replication: S.Boolean,
-          branch: __S(1),
-          actor: __S(3),
-          query_safety_settings: __S(124),
+          branch: OrganizationTeamMembershipUserDefaultOrganization,
+          actor: OrganizationTeamMembershipActor,
+          query_safety_settings: PaginatedPostgresRoleDataItemQuerySafetySettings,
         }),
       ).annotate({
         identifier: "PaginatedPostgresRoleDataItem",
       });
     case 6:
-      return S.Array(__S(589));
+      return S.Array(PaginatedPostgresRoleDataItem);
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -28221,7 +32879,7 @@ function __c73(j: number): any {
           prev_page_url: S.NullOr(S.String),
           total_count: S.Number,
           total_pages: S.Number,
-          data: __S(590),
+          data: PaginatedPostgresRoleDataList,
         }),
       ).annotate({ identifier: "PaginatedPostgresRole" });
   }
@@ -28237,7 +32895,7 @@ function __c74(j: number): any {
           router: S.String.pipe(T.Label()),
           page: S.optional(S.Number.pipe(T.Query())),
           per_page: S.optional(S.Number.pipe(T.Query())),
-          period: S.optional(S.String.pipe(T.Query())),
+          period: S.optional(ListRouterChangeRequestsRequestPeriod.pipe(T.Query())),
           completed_at: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
@@ -28281,9 +32939,9 @@ function __c74(j: number): any {
         ),
       ).annotate({ identifier: "ListRoutersRequest" });
     case 3:
-      return S.Array(__S(128));
+      return S.Array(NekiRouter);
     case 4:
-      return S.suspend(() => __S(595).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => ListRoutersResponseBodyList.pipe(T.RawResponseRoot())).annotate({
         identifier: "ListRoutersResponse",
       });
     case 5:
@@ -28303,11 +32961,13 @@ function __c74(j: number): any {
         identifier: "ListRouterSizeSkusRequest",
       });
     case 6:
-      return S.Array(__S(127));
+      return S.Array(NekiRouterSku);
     case 7:
-      return S.suspend(() => __S(598).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListRouterSizeSkusResponse",
-      });
+      return S.suspend(() => ListRouterSizeSkusResponseBodyList.pipe(T.RawResponseRoot())).annotate(
+        {
+          identifier: "ListRouterSizeSkusResponse",
+        },
+      );
   }
 }
 function __c75(j: number): any {
@@ -28317,7 +32977,7 @@ function __c75(j: number): any {
         S.Struct({
           organization: S.String.pipe(T.Label()),
           database: S.String.pipe(T.Label()),
-          state: S.optional(S.String.pipe(T.Query())),
+          state: S.optional(ListSchemaRecommendationsRequestState.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
           per_page: S.optional(S.Number.pipe(T.Query())),
         }).pipe(
@@ -28340,20 +33000,20 @@ function __c75(j: number): any {
           keyspace: S.String,
           ddl_statement: S.String,
           number: S.Number,
-          state: S.String,
-          recommendation_type: S.String,
+          state: PaginatedSchemaRecommendationDataItemState,
+          recommendation_type: PaginatedSchemaRecommendationDataItemRecommendationType,
           created_at: S.String,
           updated_at: S.String,
           applied_at: S.NullOr(S.String),
           dismissed_at: S.NullOr(S.String),
-          closed_by_deploy_request: S.NullOr(__S(196)),
-          dismissed_by: S.NullOr(__S(3)),
+          closed_by_deploy_request: S.NullOr(SchemaRecommendationClosedByDeployRequest),
+          dismissed_by: S.NullOr(OrganizationTeamMembershipActor),
         }),
       ).annotate({
         identifier: "PaginatedSchemaRecommendationDataItem",
       });
     case 2:
-      return S.Array(__S(601));
+      return S.Array(PaginatedSchemaRecommendationDataItem);
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -28366,7 +33026,7 @@ function __c75(j: number): any {
           prev_page_url: S.NullOr(S.String),
           total_count: S.Number,
           total_pages: S.Number,
-          data: __S(602),
+          data: PaginatedSchemaRecommendationDataList,
         }),
       ).annotate({
         identifier: "PaginatedSchemaRecommendation",
@@ -28390,7 +33050,9 @@ function __c75(j: number): any {
           configuration_profile: S.String.pipe(T.Label()),
           page: S.optional(S.Number.pipe(T.Query())),
           per_page: S.optional(S.Number.pipe(T.Query())),
-          period: S.optional(S.String.pipe(T.Query())),
+          period: S.optional(
+            ListShardConfigurationProfileChangeRequestsRequestPeriod.pipe(T.Query()),
+          ),
           completed_at: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
@@ -28425,11 +33087,11 @@ function __c75(j: number): any {
           id: S.NullOr(S.String),
           name: S.String,
           display_name: S.String,
-          namespace: S.String,
+          namespace: NekiExtensionDefinitionParametersItemNamespace,
           advanced: S.Boolean,
           category: S.NullOr(S.String),
           description: S.String,
-          parameter_type: S.String,
+          parameter_type: NekiExtensionDefinitionParametersItemParameterType,
           default_value: S.NullOr(S.String),
           value: S.NullOr(S.String),
           required: S.Boolean,
@@ -28438,10 +33100,10 @@ function __c75(j: number): any {
           restart: S.Boolean,
           max: S.optional(S.NullOr(S.Number)),
           min: S.optional(S.NullOr(S.Number)),
-          options: S.optional(S.NullOr(__S(4))),
-          units: S.optional(S.NullOr(__S(4))),
+          options: S.optional(S.NullOr(NekiExtensionDefinitionParametersItemOptionsList)),
+          units: S.optional(S.NullOr(NekiExtensionDefinitionParametersItemUnitsList)),
           url: S.String,
-          actor: __S(3),
+          actor: OrganizationTeamMembershipActor,
         }),
       ).annotate({
         identifier: "NekiExtensionDefinitionParametersItem",
@@ -28451,7 +33113,7 @@ function __c75(j: number): any {
 function __c76(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(607));
+      return S.Array(NekiExtensionDefinitionParametersItem);
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -28460,15 +33122,17 @@ function __c76(j: number): any {
           description: S.String,
           enabled: S.optional(S.NullOr(S.Boolean)),
           internal: S.Boolean,
-          parameters: __S(608),
-          requirements: __S(476),
+          parameters: NekiExtensionDefinitionParametersList,
+          requirements: PostgresExtensionDefinitionRequirements,
           url: S.String,
         }),
       ).annotate({ identifier: "NekiExtensionDefinition" });
     case 2:
-      return S.Array(__S(609));
+      return S.Array(NekiExtensionDefinition);
     case 3:
-      return S.suspend(() => __S(610).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        ListShardConfigurationProfileExtensionsResponseBodyList.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "ListShardConfigurationProfileExtensionsResponse",
       });
     case 4:
@@ -28505,9 +33169,11 @@ function __c76(j: number): any {
         identifier: "ListShardConfigurationProfilesRequest",
       });
     case 6:
-      return S.Array(__S(134));
+      return S.Array(NekiShardConfigurationProfile);
     case 7:
-      return S.suspend(() => __S(614).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        ListShardConfigurationProfilesResponseBodyList.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "ListShardConfigurationProfilesResponse",
       });
   }
@@ -28549,7 +33215,7 @@ function __c77(j: number): any {
         identifier: "PaginatedNekiShardDataItem",
       });
     case 2:
-      return S.Array(__S(617));
+      return S.Array(PaginatedNekiShardDataItem);
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -28562,7 +33228,7 @@ function __c77(j: number): any {
           prev_page_url: S.NullOr(S.String),
           total_count: S.Number,
           total_pages: S.Number,
-          data: __S(618),
+          data: PaginatedNekiShardDataList,
         }),
       ).annotate({ identifier: "PaginatedNekiShard" });
     case 4:
@@ -28592,7 +33258,7 @@ function __c77(j: number): any {
           sidecar: S.String.pipe(T.Label()),
           page: S.optional(S.Number.pipe(T.Query())),
           per_page: S.optional(S.Number.pipe(T.Query())),
-          period: S.optional(S.String.pipe(T.Query())),
+          period: S.optional(ListSidecarChangeRequestsRequestPeriod.pipe(T.Query())),
           completed_at: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
@@ -28640,9 +33306,9 @@ function __c77(j: number): any {
 function __c78(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(343));
+      return S.Array(NekiSidecar);
     case 1:
-      return S.suspend(() => __S(624).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => ListSidecarsResponseBodyList.pipe(T.RawResponseRoot())).annotate({
         identifier: "ListSidecarsResponse",
       });
     case 2:
@@ -28665,20 +33331,20 @@ function __c78(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          state: S.String,
-          method: S.optional(S.NullOr(S.String)),
+          state: PaginatedPostgresSwitchoverDataItemState,
+          method: S.optional(S.NullOr(PaginatedPostgresSwitchoverDataItemMethod)),
           error: S.optional(S.NullOr(S.String)),
           started_at: S.NullOr(S.String),
           completed_at: S.NullOr(S.String),
           created_at: S.String,
           updated_at: S.String,
-          actor: __S(3),
+          actor: OrganizationTeamMembershipActor,
         }),
       ).annotate({
         identifier: "PaginatedPostgresSwitchoverDataItem",
       });
     case 4:
-      return S.Array(__S(627));
+      return S.Array(PaginatedPostgresSwitchoverDataItem);
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -28689,7 +33355,7 @@ function __c78(j: number): any {
           next_page_url: S.NullOr(S.String),
           prev_page: S.NullOr(S.Number),
           prev_page_url: S.NullOr(S.String),
-          data: __S(628),
+          data: PaginatedPostgresSwitchoverDataList,
         }),
       ).annotate({
         identifier: "PaginatedPostgresSwitchover",
@@ -28702,7 +33368,7 @@ function __c78(j: number): any {
           branch: S.String.pipe(T.Label()),
           page: S.optional(S.Number.pipe(T.Query())),
           per_page: S.optional(S.Number.pipe(T.Query())),
-          period: S.optional(S.String.pipe(T.Query())),
+          period: S.optional(ListTrafficBudgetsRequestPeriod.pipe(T.Query())),
           created_at: S.optional(S.String.pipe(T.Query())),
           fingerprint: S.optional(S.String.pipe(T.Query())),
         }).pipe(
@@ -28719,11 +33385,11 @@ function __c78(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          kind: S.String,
-          tags: __S(141),
+          kind: PaginatedTrafficBudgetDataItemRulesItemKind,
+          tags: PaginatedTrafficBudgetDataItemRulesItemTagsList,
           fingerprint: S.optional(S.NullOr(S.String)),
           keyspace: S.optional(S.NullOr(S.String)),
-          actor: __S(3),
+          actor: OrganizationTeamMembershipActor,
           syntax_highlighted_sql: S.String,
           created_at: S.String,
           updated_at: S.String,
@@ -28736,20 +33402,20 @@ function __c78(j: number): any {
 function __c79(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(631));
+      return S.Array(PaginatedTrafficBudgetDataItemRulesItem);
     case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           name: S.String,
-          mode: S.String,
+          mode: PaginatedTrafficBudgetDataItemMode,
           capacity: S.optional(S.NullOr(S.Number)),
           rate: S.optional(S.NullOr(S.Number)),
           burst: S.optional(S.NullOr(S.Number)),
           concurrency: S.optional(S.NullOr(S.Number)),
           warning_threshold: S.optional(S.NullOr(S.Number)),
-          actor: __S(3),
-          rules: __S(632),
+          actor: OrganizationTeamMembershipActor,
+          rules: PaginatedTrafficBudgetDataItemRulesList,
           created_at: S.String,
           updated_at: S.String,
         }),
@@ -28757,7 +33423,7 @@ function __c79(j: number): any {
         identifier: "PaginatedTrafficBudgetDataItem",
       });
     case 2:
-      return S.Array(__S(633));
+      return S.Array(PaginatedTrafficBudgetDataItem);
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -28768,7 +33434,7 @@ function __c79(j: number): any {
           next_page_url: S.NullOr(S.String),
           prev_page: S.NullOr(S.Number),
           prev_page_url: S.NullOr(S.String),
-          data: __S(634),
+          data: PaginatedTrafficBudgetDataList,
         }),
       ).annotate({ identifier: "PaginatedTrafficBudget" });
     case 4:
@@ -28819,13 +33485,13 @@ function __c79(j: number): any {
           last_sent_at: S.NullOr(S.String),
           created_at: S.String,
           updated_at: S.String,
-          events: __S(122),
+          events: PaginatedDatabaseWebhookDataItemEventsList,
         }),
       ).annotate({
         identifier: "PaginatedDatabaseWebhookDataItem",
       });
     case 7:
-      return S.Array(__S(638));
+      return S.Array(PaginatedDatabaseWebhookDataItem);
   }
 }
 function __c80(j: number): any {
@@ -28840,7 +33506,7 @@ function __c80(j: number): any {
           next_page_url: S.NullOr(S.String),
           prev_page: S.NullOr(S.Number),
           prev_page_url: S.NullOr(S.String),
-          data: __S(639),
+          data: PaginatedDatabaseWebhookDataList,
         }),
       ).annotate({ identifier: "PaginatedDatabaseWebhook" });
     case 1:
@@ -28865,7 +33531,7 @@ function __c80(j: number): any {
           id: S.String,
           name: S.String,
           number: S.Number,
-          state: S.String,
+          state: PaginatedWorkflowDataItemState,
           created_at: S.String,
           updated_at: S.String,
           started_at: S.NullOr(S.String),
@@ -28880,35 +33546,35 @@ function __c80(j: number): any {
           switch_replicas_at: S.NullOr(S.String),
           switch_primaries_at: S.NullOr(S.String),
           verify_data_at: S.NullOr(S.String),
-          workflow_type: S.String,
+          workflow_type: PaginatedWorkflowDataItemWorkflowType,
           workflow_subtype: S.String,
           defer_secondary_keys: S.Boolean,
-          on_ddl: S.String,
+          on_ddl: PaginatedWorkflowDataItemOnDdl,
           workflow_errors: S.String,
           may_retry: S.Boolean,
           may_restart: S.Boolean,
           verified_data_stale: S.Boolean,
           sequence_tables_applied: S.Boolean,
-          actor: __S(3),
-          verify_data_by: __S(3),
-          reversed_by: __S(3),
-          switch_replicas_by: __S(3),
-          switch_primaries_by: __S(3),
-          cancelled_by: __S(3),
-          completed_by: __S(3),
-          retried_by: __S(3),
-          cutover_by: __S(3),
-          reversed_cutover_by: __S(3),
-          branch: __S(1),
-          source_keyspace: __S(1),
-          target_keyspace: __S(1),
-          global_keyspace: __S(1),
+          actor: OrganizationTeamMembershipActor,
+          verify_data_by: OrganizationTeamMembershipActor,
+          reversed_by: OrganizationTeamMembershipActor,
+          switch_replicas_by: OrganizationTeamMembershipActor,
+          switch_primaries_by: OrganizationTeamMembershipActor,
+          cancelled_by: OrganizationTeamMembershipActor,
+          completed_by: OrganizationTeamMembershipActor,
+          retried_by: OrganizationTeamMembershipActor,
+          cutover_by: OrganizationTeamMembershipActor,
+          reversed_cutover_by: OrganizationTeamMembershipActor,
+          branch: OrganizationTeamMembershipUserDefaultOrganization,
+          source_keyspace: OrganizationTeamMembershipUserDefaultOrganization,
+          target_keyspace: OrganizationTeamMembershipUserDefaultOrganization,
+          global_keyspace: OrganizationTeamMembershipUserDefaultOrganization,
         }),
       ).annotate({
         identifier: "PaginatedWorkflowDataItem",
       });
     case 3:
-      return S.Array(__S(642));
+      return S.Array(PaginatedWorkflowDataItem);
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -28919,7 +33585,7 @@ function __c80(j: number): any {
           next_page_url: S.NullOr(S.String),
           prev_page: S.NullOr(S.Number),
           prev_page_url: S.NullOr(S.String),
-          data: __S(643),
+          data: PaginatedWorkflowDataList,
         }),
       ).annotate({ identifier: "PaginatedWorkflow" });
     case 5:
@@ -29160,7 +33826,8 @@ function __c82(j: number): any {
           organization: S.String.pipe(T.Label()),
           database: S.String.pipe(T.Label()),
           branch: S.String.pipe(T.Label()),
-          configuration_profile_names: __S(5),
+          configuration_profile_names:
+            RunShardConfigurationProfilesMaintenanceRequestConfigurationProfileNamesList,
         }).pipe(
           T.Http({
             method: "POST",
@@ -29234,7 +33901,7 @@ function __c83(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          data: __S(663),
+          data: StartMoveTablesWorkflowResponseData,
         }),
       ).annotate({
         identifier: "StartMoveTablesWorkflowResponse",
@@ -29262,7 +33929,7 @@ function __c83(j: number): any {
           organization: S.String.pipe(T.Label()),
           database: S.String.pipe(T.Label()),
           branch: S.String.pipe(T.Label()),
-          ids: __S(4),
+          ids: SubmitBranchConfigChangeRequestsRequestIdsList,
         }).pipe(
           T.Http({
             method: "POST",
@@ -29302,7 +33969,7 @@ function __c83(j: number): any {
           database: S.String.pipe(T.Label()),
           branch: S.String.pipe(T.Label()),
           admin_size: S.optional(S.String),
-          parameters: S.optional(__S(12)),
+          parameters: S.optional(UpdateAdminRequestParametersMap),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -29370,11 +34037,11 @@ function __c84(j: number): any {
           database: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
           name: S.optional(S.String),
-          target: S.optional(S.String),
+          target: S.optional(UpdateBackupPolicyRequestTarget),
           retention_value: S.optional(S.Number),
-          retention_unit: S.optional(S.String),
+          retention_unit: S.optional(UpdateBackupPolicyRequestRetentionUnit),
           frequency_value: S.optional(S.Number),
-          frequency_unit: S.optional(S.String),
+          frequency_unit: S.optional(UpdateBackupPolicyRequestFrequencyUnit),
           schedule_time: S.optional(S.String),
           schedule_day: S.optional(S.Number),
           schedule_week: S.optional(S.Number),
@@ -29398,7 +34065,7 @@ function __c84(j: number): any {
           bouncer_size: S.optional(S.String),
           replicas_per_cell: S.optional(S.Number),
           target: S.optional(S.String),
-          parameters: S.optional(__S(12)),
+          parameters: S.optional(UpdateBouncerResizeRequestRequestParametersMap),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -29413,21 +34080,21 @@ function __c84(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          state: S.String,
+          state: PostgresBouncerResizeRequestState,
           replicas_per_cell: S.Number,
-          target: S.String,
-          parameters: __S(12),
+          target: PostgresBouncerResizeRequestTarget,
+          parameters: PostgresBouncerResizeRequestParametersMap,
           previous_replicas_per_cell: S.Number,
-          previous_target: S.String,
-          previous_parameters: __S(12),
+          previous_target: PostgresBouncerResizeRequestPreviousTarget,
+          previous_parameters: PostgresBouncerResizeRequestPreviousParametersMap,
           started_at: S.NullOr(S.String),
           completed_at: S.NullOr(S.String),
           created_at: S.String,
           updated_at: S.String,
-          actor: __S(3),
-          bouncer: __S(1),
-          sku: __S(57),
-          previous_sku: __S(57),
+          actor: OrganizationTeamMembershipActor,
+          bouncer: OrganizationTeamMembershipUserDefaultOrganization,
+          sku: PostgresBouncerSku,
+          previous_sku: PostgresBouncerSku,
         }),
       ).annotate({
         identifier: "PostgresBouncerResizeRequest",
@@ -29469,9 +34136,9 @@ function __c84(j: number): any {
           branch: S.String.pipe(T.Label()),
           cluster_size: S.optional(S.String),
           replicas: S.optional(S.Number),
-          extensions: S.optional(__S(4)),
-          parameters: S.optional(__S(12)),
-          storage: S.optional(__S(677)),
+          extensions: S.optional(UpdateBranchChangeRequestRequestExtensionsList),
+          parameters: S.optional(UpdateBranchChangeRequestRequestParametersMap),
+          storage: S.optional(UpdateBranchChangeRequestRequestStorage),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -29532,7 +34199,7 @@ function __c85(j: number): any {
           id: S.String.pipe(T.Label()),
           schema: S.optional(S.String),
           role: S.optional(S.String),
-          cidrs: S.optional(__S(4)),
+          cidrs: S.optional(UpdateDatabasePostgresCidrRequestCidrsList),
           description: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -29578,7 +34245,7 @@ function __c85(j: number): any {
           organization: S.String.pipe(T.Label()),
           database: S.String.pipe(T.Label()),
           ratio: S.optional(S.Number),
-          configurations: S.optional(__S(4)),
+          configurations: S.optional(UpdateDatabaseThrottlerRequestConfigurationsList),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -29595,7 +34262,7 @@ function __c85(j: number): any {
           organization: S.String.pipe(T.Label()),
           database: S.String.pipe(T.Label()),
           branch: S.String.pipe(T.Label()),
-          data_topology: __S(12),
+          data_topology: UpdateDataTopologyRequestDataTopologyMap,
         }).pipe(
           T.Http({
             method: "PUT",
@@ -29615,8 +34282,8 @@ function __c85(j: number): any {
           dedicated_read_replica: S.String.pipe(T.Label()),
           replicas: S.optional(S.Number),
           cluster_size: S.optional(S.String),
-          parameters: S.optional(__S(12)),
-          storage: S.optional(__S(73)),
+          parameters: S.optional(UpdateDedicatedReadReplicaRequestParametersMap),
+          storage: S.optional(CreateDedicatedReadReplicaRequestStorage),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -29634,7 +34301,7 @@ function __c85(j: number): any {
           database: S.String.pipe(T.Label()),
           number: S.Number.pipe(T.Label()),
           ratio: S.optional(S.Number),
-          configurations: S.optional(__S(4)),
+          configurations: S.optional(UpdateDeployRequestThrottlerRequestConfigurationsList),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -29651,9 +34318,9 @@ function __c85(j: number): any {
           organization: S.String.pipe(T.Label()),
           database: S.String.pipe(T.Label()),
           branch: S.String.pipe(T.Label()),
-          run_type: S.String.pipe(T.Label()),
+          run_type: UpdateInsightsAgentScheduleRequestRunType.pipe(T.Label()),
           enabled: S.optional(S.Boolean),
-          frequency_unit: S.optional(S.String),
+          frequency_unit: S.optional(UpdateInsightsAgentScheduleRequestFrequencyUnit),
           schedule_time: S.optional(S.String),
           time_zone: S.optional(S.String),
           day_of_week: S.optional(S.Number),
@@ -29706,10 +34373,12 @@ function __c86(j: number): any {
           database: S.String.pipe(T.Label()),
           branch: S.String.pipe(T.Label()),
           keyspace: S.String.pipe(T.Label()),
-          replication_durability_constraints: S.optional(__S(688)),
-          vreplication_flags: S.optional(__S(689)),
+          replication_durability_constraints: S.optional(
+            UpdateKeyspaceRequestReplicationDurabilityConstraints,
+          ),
+          vreplication_flags: S.optional(UpdateKeyspaceRequestVreplicationFlags),
           max_rollout: S.optional(S.NullOr(S.Number)),
-          throttler: S.optional(__S(690)),
+          throttler: S.optional(UpdateKeyspaceRequestThrottler),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -29804,7 +34473,7 @@ function __c87(j: number): any {
           branch: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
           name: S.optional(S.String),
-          cidrs: S.optional(__S(4)),
+          cidrs: S.optional(UpdatePasswordRequestCidrsList),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -29857,7 +34526,7 @@ function __c87(j: number): any {
           autoscaling: S.optional(S.Boolean),
           max_replicas_per_cell: S.optional(S.Number),
           target_cpu_utilization: S.optional(S.Number),
-          parameters: S.optional(__S(12)),
+          parameters: S.optional(UpdateRouterRequestParametersMap),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -29907,12 +34576,12 @@ function __c87(j: number): any {
           configuration_profile: S.String.pipe(T.Label()),
           name: S.optional(S.String),
           cluster_size: S.optional(S.String),
-          extensions: S.optional(__S(4)),
+          extensions: S.optional(UpdateShardConfigurationProfileRequestExtensionsList),
           replicas: S.optional(S.Number),
-          parameters: S.optional(__S(12)),
+          parameters: S.optional(UpdateShardConfigurationProfileRequestParametersMap),
           postgres_major_version: S.optional(S.String),
           postgres_minor_version: S.optional(S.String),
-          storage: S.optional(__S(73)),
+          storage: S.optional(CreateDedicatedReadReplicaRequestStorage),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -29953,7 +34622,7 @@ function __c88(j: number): any {
           database: S.String.pipe(T.Label()),
           branch: S.String.pipe(T.Label()),
           sidecar: S.String.pipe(T.Label()),
-          parameters: S.optional(__S(12)),
+          parameters: S.optional(UpdateSidecarRequestParametersMap),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -29970,13 +34639,13 @@ function __c88(j: number): any {
           branch: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
           name: S.optional(S.String),
-          mode: S.optional(S.String),
+          mode: S.optional(UpdateTrafficBudgetRequestMode),
           capacity: S.optional(S.Number),
           rate: S.optional(S.Number),
           burst: S.optional(S.Number),
           concurrency: S.optional(S.Number),
           warning_threshold: S.optional(S.Number),
-          rules: S.optional(__S(4)),
+          rules: S.optional(UpdateTrafficBudgetRequestRulesList),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -29996,7 +34665,7 @@ function __c88(j: number): any {
           url: S.optional(S.String),
           authorization_header: S.optional(S.String),
           enabled: S.optional(S.Boolean),
-          events: S.optional(__S(4)),
+          events: S.optional(UpdateWebhookRequestEventsList),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -30101,194 +34770,5 @@ function __c89(j: number): any {
       ).annotate({
         identifier: "WorkflowSwitchReplicasRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
-    case 9:
-      return __c9(i & 7);
-    case 10:
-      return __c10(i & 7);
-    case 11:
-      return __c11(i & 7);
-    case 12:
-      return __c12(i & 7);
-    case 13:
-      return __c13(i & 7);
-    case 14:
-      return __c14(i & 7);
-    case 15:
-      return __c15(i & 7);
-    case 16:
-      return __c16(i & 7);
-    case 17:
-      return __c17(i & 7);
-    case 18:
-      return __c18(i & 7);
-    case 19:
-      return __c19(i & 7);
-    case 20:
-      return __c20(i & 7);
-    case 21:
-      return __c21(i & 7);
-    case 22:
-      return __c22(i & 7);
-    case 23:
-      return __c23(i & 7);
-    case 24:
-      return __c24(i & 7);
-    case 25:
-      return __c25(i & 7);
-    case 26:
-      return __c26(i & 7);
-    case 27:
-      return __c27(i & 7);
-    case 28:
-      return __c28(i & 7);
-    case 29:
-      return __c29(i & 7);
-    case 30:
-      return __c30(i & 7);
-    case 31:
-      return __c31(i & 7);
-    case 32:
-      return __c32(i & 7);
-    case 33:
-      return __c33(i & 7);
-    case 34:
-      return __c34(i & 7);
-    case 35:
-      return __c35(i & 7);
-    case 36:
-      return __c36(i & 7);
-    case 37:
-      return __c37(i & 7);
-    case 38:
-      return __c38(i & 7);
-    case 39:
-      return __c39(i & 7);
-    case 40:
-      return __c40(i & 7);
-    case 41:
-      return __c41(i & 7);
-    case 42:
-      return __c42(i & 7);
-    case 43:
-      return __c43(i & 7);
-    case 44:
-      return __c44(i & 7);
-    case 45:
-      return __c45(i & 7);
-    case 46:
-      return __c46(i & 7);
-    case 47:
-      return __c47(i & 7);
-    case 48:
-      return __c48(i & 7);
-    case 49:
-      return __c49(i & 7);
-    case 50:
-      return __c50(i & 7);
-    case 51:
-      return __c51(i & 7);
-    case 52:
-      return __c52(i & 7);
-    case 53:
-      return __c53(i & 7);
-    case 54:
-      return __c54(i & 7);
-    case 55:
-      return __c55(i & 7);
-    case 56:
-      return __c56(i & 7);
-    case 57:
-      return __c57(i & 7);
-    case 58:
-      return __c58(i & 7);
-    case 59:
-      return __c59(i & 7);
-    case 60:
-      return __c60(i & 7);
-    case 61:
-      return __c61(i & 7);
-    case 62:
-      return __c62(i & 7);
-    case 63:
-      return __c63(i & 7);
-    case 64:
-      return __c64(i & 7);
-    case 65:
-      return __c65(i & 7);
-    case 66:
-      return __c66(i & 7);
-    case 67:
-      return __c67(i & 7);
-    case 68:
-      return __c68(i & 7);
-    case 69:
-      return __c69(i & 7);
-    case 70:
-      return __c70(i & 7);
-    case 71:
-      return __c71(i & 7);
-    case 72:
-      return __c72(i & 7);
-    case 73:
-      return __c73(i & 7);
-    case 74:
-      return __c74(i & 7);
-    case 75:
-      return __c75(i & 7);
-    case 76:
-      return __c76(i & 7);
-    case 77:
-      return __c77(i & 7);
-    case 78:
-      return __c78(i & 7);
-    case 79:
-      return __c79(i & 7);
-    case 80:
-      return __c80(i & 7);
-    case 81:
-      return __c81(i & 7);
-    case 82:
-      return __c82(i & 7);
-    case 83:
-      return __c83(i & 7);
-    case 84:
-      return __c84(i & 7);
-    case 85:
-      return __c85(i & 7);
-    case 86:
-      return __c86(i & 7);
-    case 87:
-      return __c87(i & 7);
-    case 88:
-      return __c88(i & 7);
-    case 89:
-      return __c89(i & 7);
   }
 }

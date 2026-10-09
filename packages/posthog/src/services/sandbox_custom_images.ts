@@ -5,8 +5,6 @@ import * as S from "@distilled.cloud/core/schema";
 import { PosthogProtocol, type PosthogOpError, type PosthogOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { PosthogOpError, PosthogOpContext };
 
@@ -22,9 +20,25 @@ export interface CreateSandboxCustomImageRequest {
   /** If true, only you can see and use this image; otherwise the whole team can. */
   private?: boolean;
 }
+const CreateSandboxCustomImageRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<CreateSandboxCustomImageRequest>;
+
 export type SandboxCustomImageDTOSpecMap = { [key: string]: unknown | undefined };
+const SandboxCustomImageDTOSpecMap = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<SandboxCustomImageDTOSpecMap>;
+
 export type SandboxCustomImageDTOScanResultMap = { [key: string]: unknown | undefined };
+const SandboxCustomImageDTOScanResultMap =
+  SandboxCustomImageDTOSpecMap as any as S.Schema<SandboxCustomImageDTOScanResultMap>;
+
 export type TaskUserBasicInfoHedgehogConfigMap = { [key: string]: unknown | undefined };
+const TaskUserBasicInfoHedgehogConfigMap =
+  SandboxCustomImageDTOSpecMap as any as S.Schema<TaskUserBasicInfoHedgehogConfigMap>;
+
 /** Response shape for a task creator, mirroring core ``UserBasicSerializer`` output. */
 export interface TaskUserBasicInfo {
   id: number;
@@ -37,6 +51,8 @@ export interface TaskUserBasicInfo {
   hedgehog_config?: TaskUserBasicInfoHedgehogConfigMap | null;
   role_at_organization?: string | null;
 }
+const TaskUserBasicInfo = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<TaskUserBasicInfo>;
+
 /** Detail response for a custom sandbox base image. */
 export interface SandboxCustomImageDTO {
   id: string;
@@ -57,6 +73,11 @@ export interface SandboxCustomImageDTO {
   created_at?: string | null;
   updated_at?: string | null;
 }
+const SandboxCustomImageDTO = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<SandboxCustomImageDTO>;
+
 export interface CreateSandboxCustomImagesBuildRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -64,16 +85,31 @@ export interface CreateSandboxCustomImagesBuildRequest {
   /** Image spec YAML to build. When omitted, the spec is read from the builder agent's live sandbox. */
   spec_yaml?: string | null;
 }
+const CreateSandboxCustomImagesBuildRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<CreateSandboxCustomImagesBuildRequest>;
+
 export interface CreateSandboxCustomImagesBuilderTaskRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   id: string;
 }
+const CreateSandboxCustomImagesBuilderTaskRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<CreateSandboxCustomImagesBuilderTaskRequest>;
+
 export interface GetSandboxCustomImageRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   id: string;
 }
+const GetSandboxCustomImageRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<GetSandboxCustomImageRequest>;
+
 export interface ListSandboxCustomImagesRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -82,19 +118,44 @@ export interface ListSandboxCustomImagesRequest {
   /** The initial index from which to return the results. */
   offset?: number;
 }
+const ListSandboxCustomImagesRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<ListSandboxCustomImagesRequest>;
+
 export type PaginatedSandboxCustomImageDTOListResultsList = Array<SandboxCustomImageDTO>;
+const PaginatedSandboxCustomImageDTOListResultsList = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<PaginatedSandboxCustomImageDTOListResultsList>;
+
 export interface PaginatedSandboxCustomImageDTOList {
   count: number;
   next?: string | null;
   previous?: string | null;
   results: PaginatedSandboxCustomImageDTOListResultsList;
 }
+const PaginatedSandboxCustomImageDTOList = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<PaginatedSandboxCustomImageDTOList>;
+
 export interface SandboxCustomImagesDestroyRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   id: string;
 }
+const SandboxCustomImagesDestroyRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<SandboxCustomImagesDestroyRequest>;
+
 export interface SandboxCustomImagesDestroyResponse {}
+const SandboxCustomImagesDestroyResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<SandboxCustomImagesDestroyResponse>;
+
 export interface UpdateSandboxCustomImagesPartialRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -104,6 +165,11 @@ export interface UpdateSandboxCustomImagesPartialRequest {
   /** New description. Omit to leave unchanged; pass an empty string to clear it. */
   description?: string;
 }
+const UpdateSandboxCustomImagesPartialRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<UpdateSandboxCustomImagesPartialRequest>;
+
 export type CreateSandboxCustomImageError = PosthogOpError;
 /** Create a draft custom image and start its interactive image-builder agent task. The returned builder_task_id points at the conversation. */
 export const createSandboxCustomImage: API.OperationMethod<
@@ -112,8 +178,8 @@ export const createSandboxCustomImage: API.OperationMethod<
   CreateSandboxCustomImageError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<CreateSandboxCustomImageRequest>,
-  output: __S(3) as any as S.Schema<SandboxCustomImageDTO>,
+  input: CreateSandboxCustomImageRequest,
+  output: SandboxCustomImageDTO,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -127,8 +193,8 @@ export const createSandboxCustomImagesBuild: API.OperationMethod<
   CreateSandboxCustomImagesBuildError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4) as any as S.Schema<CreateSandboxCustomImagesBuildRequest>,
-  output: __S(3) as any as S.Schema<SandboxCustomImageDTO>,
+  input: CreateSandboxCustomImagesBuildRequest,
+  output: SandboxCustomImageDTO,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -142,8 +208,8 @@ export const createSandboxCustomImagesBuilderTask: API.OperationMethod<
   CreateSandboxCustomImagesBuilderTaskError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5) as any as S.Schema<CreateSandboxCustomImagesBuilderTaskRequest>,
-  output: __S(3) as any as S.Schema<SandboxCustomImageDTO>,
+  input: CreateSandboxCustomImagesBuilderTaskRequest,
+  output: SandboxCustomImageDTO,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -157,8 +223,8 @@ export const getSandboxCustomImage: API.OperationMethod<
   GetSandboxCustomImageError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6) as any as S.Schema<GetSandboxCustomImageRequest>,
-  output: __S(3) as any as S.Schema<SandboxCustomImageDTO>,
+  input: GetSandboxCustomImageRequest,
+  output: SandboxCustomImageDTO,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -172,8 +238,8 @@ export const listSandboxCustomImages: API.OperationMethod<
   ListSandboxCustomImagesError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7) as any as S.Schema<ListSandboxCustomImagesRequest>,
-  output: __S(9) as any as S.Schema<PaginatedSandboxCustomImageDTOList>,
+  input: ListSandboxCustomImagesRequest,
+  output: PaginatedSandboxCustomImageDTOList,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -187,8 +253,8 @@ export const sandboxCustomImagesDestroy: API.OperationMethod<
   SandboxCustomImagesDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10) as any as S.Schema<SandboxCustomImagesDestroyRequest>,
-  output: __S(11) as any as S.Schema<SandboxCustomImagesDestroyResponse>,
+  input: SandboxCustomImagesDestroyRequest,
+  output: SandboxCustomImagesDestroyResponse,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -202,8 +268,8 @@ export const updateSandboxCustomImagesPartial: API.OperationMethod<
   UpdateSandboxCustomImagesPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12) as any as S.Schema<UpdateSandboxCustomImagesPartialRequest>,
-  output: __S(3) as any as S.Schema<SandboxCustomImageDTO>,
+  input: UpdateSandboxCustomImagesPartialRequest,
+  output: SandboxCustomImageDTO,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -242,7 +308,7 @@ function __c0(j: number): any {
           last_name: S.String,
           email: S.String,
           is_email_verified: S.optional(S.NullOr(S.Boolean)),
-          hedgehog_config: S.optional(S.NullOr(__S(1))),
+          hedgehog_config: S.optional(S.NullOr(TaskUserBasicInfoHedgehogConfigMap)),
           role_at_organization: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "TaskUserBasicInfo" });
@@ -257,13 +323,13 @@ function __c0(j: number): any {
           status: S.String,
           version: S.Number,
           modal_image_name: S.String,
-          spec: S.optional(__S(1)),
+          spec: S.optional(SandboxCustomImageDTOSpecMap),
           spec_yaml: S.optional(S.String),
-          scan_result: S.optional(__S(1)),
+          scan_result: S.optional(SandboxCustomImageDTOScanResultMap),
           build_log: S.optional(S.String),
           error: S.String,
           builder_task_id: S.optional(S.NullOr(S.String)),
-          created_by: S.optional(S.NullOr(__S(2))),
+          created_by: S.optional(S.NullOr(TaskUserBasicInfo)),
           created_at: S.optional(S.NullOr(S.String)),
           updated_at: S.optional(S.NullOr(S.String)),
         }),
@@ -335,14 +401,14 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(3));
+      return S.Array(SandboxCustomImageDTO);
     case 1:
       return S.suspend(() =>
         S.Struct({
           count: S.Number,
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: __S(8),
+          results: PaginatedSandboxCustomImageDTOListResultsList,
         }),
       ).annotate({
         identifier: "PaginatedSandboxCustomImageDTOList",
@@ -383,18 +449,5 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "UpdateSandboxCustomImagesPartialRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
   }
 }

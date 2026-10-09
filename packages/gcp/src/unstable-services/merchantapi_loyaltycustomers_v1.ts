@@ -7,8 +7,6 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -74,6 +72,8 @@ export type LoyaltyCustomerLoyaltyTierEnum =
   | "TIER6"
   | "TIER7"
   | "NON_MEMBER";
+const LoyaltyCustomerLoyaltyTierEnum = S.String;
+
 /** Represents a customer's physical address. */
 export interface AddressInfo {
   /** Optional. The Unicode country/region code (CLDR) of the customer, such as "US" or "CH". This field is case-insensitive. For more information, see https://cldr.unicode.org/ and https://www.unicode.org/cldr/charts/latest/supplemental/territory_containment_un_m_49.html. */
@@ -89,6 +89,8 @@ export interface AddressInfo {
   /** Optional. The postal code (zip code) of the customer. **Format Rules:** * **United States:** 5-digit zip codes (e.g., "94108"). */
   postalCode?: string;
 }
+const AddressInfo = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<AddressInfo>;
+
 /** The user identifiers associated with the customer. At least one of the fields within this message must be provided. */
 export interface UserIdentifier {
   /** Optional. The customer's physical address. */
@@ -98,6 +100,8 @@ export interface UserIdentifier {
   /** Optional. The customer's phone number, in [E.164 format](https://support.google.com/google-ads/answer/16355235) (e.g., "+16502530000"). */
   phoneNumber?: string;
 }
+const UserIdentifier = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<UserIdentifier>;
+
 /** Represents a customer's loyalty information. Represents loyalty customer data in `ManageLoyaltyCustomerMatch` API, but is not a resource that can be retrieved or listed by other methods. */
 export interface LoyaltyCustomer {
   /** Required. The tier label of the loyalty tier the customer belongs to. */
@@ -107,22 +111,37 @@ export interface LoyaltyCustomer {
   /** Required. The identifiers for the customer. */
   userIdentifier?: UserIdentifier;
 }
+const LoyaltyCustomer = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<LoyaltyCustomer>;
+
 /** Request message for the ManageLoyaltyCustomerMatch method. */
 export interface ManageLoyaltyCustomerMatchRequest {
   /** Required. The loyalty customer to insert, update, or remove. */
   loyaltyCustomer?: LoyaltyCustomer;
 }
+const ManageLoyaltyCustomerMatchRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<ManageLoyaltyCustomerMatchRequest>;
+
 export interface ManageAccountsLoyaltyCustomersRequest {
   /** Required. The parent account where this loyalty customer will be handled. Format: `accounts/{account}` */
   parent: string;
   /** Request body */
   body?: ManageLoyaltyCustomerMatchRequest;
 }
+const ManageAccountsLoyaltyCustomersRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<ManageAccountsLoyaltyCustomersRequest>;
+
 /** Response message for the ManageLoyaltyCustomerMatch method. */
 export interface ManageLoyaltyCustomerMatchResponse {
   /** The loyalty customer that was inserted, updated, or removed. If the customer's identifier cannot be matched to a Google account or if the user has not opted into loyalty personalization, this field will contain a default `LoyaltyCustomer` instance. */
   loyaltyCustomer?: LoyaltyCustomer;
 }
+const ManageLoyaltyCustomerMatchResponse =
+  ManageLoyaltyCustomerMatchRequest as any as S.Schema<ManageLoyaltyCustomerMatchResponse>;
+
 export type ManageAccountsLoyaltyCustomersError =
   | NotFound
   | Forbidden
@@ -136,8 +155,8 @@ export const manageAccountsLoyaltyCustomers: API.OperationMethod<
   ManageAccountsLoyaltyCustomersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4) as any as S.Schema<ManageAccountsLoyaltyCustomersRequest>,
-  output: __S(3) as any as S.Schema<ManageLoyaltyCustomerMatchResponse>,
+  input: ManageAccountsLoyaltyCustomersRequest,
+  output: ManageLoyaltyCustomerMatchResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -160,7 +179,7 @@ function __c0(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          address: S.optional(__S(0)),
+          address: S.optional(AddressInfo),
           emailAddress: S.optional(S.String),
           phoneNumber: S.optional(S.String),
         }),
@@ -168,15 +187,15 @@ function __c0(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          loyaltyTier: S.optional(S.String),
+          loyaltyTier: S.optional(LoyaltyCustomerLoyaltyTierEnum),
           pointBalance: S.optional(S.String),
-          userIdentifier: S.optional(__S(1)),
+          userIdentifier: S.optional(UserIdentifier),
         }),
       ).annotate({ identifier: "LoyaltyCustomer" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          loyaltyCustomer: S.optional(__S(2)),
+          loyaltyCustomer: S.optional(LoyaltyCustomer),
         }),
       ).annotate({
         identifier: "ManageLoyaltyCustomerMatchRequest",
@@ -185,7 +204,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(3).pipe(T.HttpBody())),
+          body: S.optional(ManageLoyaltyCustomerMatchRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -196,16 +215,5 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "ManageAccountsLoyaltyCustomersRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
   }
 }

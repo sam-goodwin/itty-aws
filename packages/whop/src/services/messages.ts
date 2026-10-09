@@ -7,8 +7,6 @@ import { paginateRelay } from "../pagination.ts";
 import { WhopProtocol, type WhopOpError, type WhopOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { WhopOpError, WhopOpContext };
 
@@ -53,8 +51,18 @@ export interface CreateMessageRequestAttachmentsItem {
   /** The ID of an existing file object. */
   id: string;
 }
+const CreateMessageRequestAttachmentsItem = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<CreateMessageRequestAttachmentsItem>;
+
 /** A list of file attachments to include with the message, such as images or videos. */
 export type CreateMessageRequestAttachmentsList = Array<CreateMessageRequestAttachmentsItem>;
+const CreateMessageRequestAttachmentsList = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<CreateMessageRequestAttachmentsList>;
+
 /** Input type for a single poll option */
 export interface CreateMessageRequestPollOptionsItem {
   /** Sequential ID for the poll option (starting from '1') */
@@ -62,13 +70,28 @@ export interface CreateMessageRequestPollOptionsItem {
   /** The text of the poll option */
   text: string;
 }
+const CreateMessageRequestPollOptionsItem = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<CreateMessageRequestPollOptionsItem>;
+
 /** The options for the poll. Must have sequential IDs starting from 1 */
 export type CreateMessageRequestPollOptionsList = Array<CreateMessageRequestPollOptionsItem>;
+const CreateMessageRequestPollOptionsList = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<CreateMessageRequestPollOptionsList>;
+
 /** A poll to attach to this message, allowing recipients to vote on options. */
 export interface CreateMessageRequestPoll {
   /** The options for the poll. Must have sequential IDs starting from 1 */
   options: CreateMessageRequestPollOptionsList;
 }
+const CreateMessageRequestPoll = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<CreateMessageRequestPoll>;
+
 export interface CreateMessageRequest {
   /** A list of file attachments to include with the message, such as images or videos. */
   attachments?: CreateMessageRequestAttachmentsList | null;
@@ -83,10 +106,16 @@ export interface CreateMessageRequest {
   /** The unique identifier of the message this is replying to, creating a threaded reply. */
   replying_to_message_id?: string | null;
 }
+const CreateMessageRequest = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<CreateMessageRequest>;
+
 /** A list of user IDs that are explicitly mentioned in this message. */
 export type MessageMentionsList = Array<string>;
+const MessageMentionsList = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<MessageMentionsList>;
+
 /** The types of post */
 export type DmsPostTypes = "regular" | "system" | "automated";
+const DmsPostTypes = S.String;
+
 /** Represents a single poll option */
 export interface MessagePollOptionsItem {
   /** The unique identifier for the poll option. */
@@ -94,13 +123,25 @@ export interface MessagePollOptionsItem {
   /** The text of the poll option */
   text: string;
 }
+const MessagePollOptionsItem = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<MessagePollOptionsItem>;
+
 /** The options for the poll */
 export type MessagePollOptionsList = Array<MessagePollOptionsItem>;
+const MessagePollOptionsList = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<MessagePollOptionsList>;
+
 /** A poll attached to this message. Null if the message does not contain a poll. */
 export interface MessagePoll {
   /** The options for the poll */
   options: MessagePollOptionsList | null;
 }
+const MessagePoll = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<MessagePoll>;
+
 /** Represents a reaction count for a feed post */
 export interface MessagePollVotesItem {
   /** The number of users who reacted */
@@ -108,8 +149,12 @@ export interface MessagePollVotesItem {
   /** The reaction that was used */
   option_id: string | null;
 }
+const MessagePollVotesItem = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<MessagePollVotesItem>;
+
 /** Aggregated reaction counts on this message, filtered to a specific reaction type. */
 export type MessagePollVotesList = Array<MessagePollVotesItem>;
+const MessagePollVotesList = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<MessagePollVotesList>;
+
 /** Represents a reaction count for a feed post */
 export interface MessageReactionCountsItem {
   /** The number of users who reacted */
@@ -117,8 +162,18 @@ export interface MessageReactionCountsItem {
   /** The emoji that was used in shortcode format (:heart:) */
   emoji: string | null;
 }
+const MessageReactionCountsItem = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<MessageReactionCountsItem>;
+
 /** Aggregated reaction counts on this message, filtered to a specific reaction type. */
 export type MessageReactionCountsList = Array<MessageReactionCountsItem>;
+const MessageReactionCountsList = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<MessageReactionCountsList>;
+
 /** The user who authored this message. */
 export interface MessageUser {
   /** The unique identifier for the user. */
@@ -128,6 +183,8 @@ export interface MessageUser {
   /** The user's unique username shown on their public profile. */
   username: string;
 }
+const MessageUser = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<MessageUser>;
+
 /** A message sent within an experience chat, direct message, or group chat. */
 export interface Message {
   /** The message content formatted as Markdown. Null if the message has no text content. */
@@ -161,17 +218,30 @@ export interface Message {
   /** The number of unique views this message has received. Null if view tracking is not enabled for this channel. */
   view_count: number | null;
 }
+const Message = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<Message>;
+
 export interface DeleteMessageRequest {
   /** The unique identifier of the message to delete. */
   id: string;
 }
+const DeleteMessageRequest = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<DeleteMessageRequest>;
+
 export type DeleteMessageResponse = boolean;
+const DeleteMessageResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<DeleteMessageResponse>;
+
 export interface GetMessageRequest {
   /** The unique identifier of the message to retrieve. */
   id: string;
 }
+const GetMessageRequest = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<GetMessageRequest>;
+
 /** The direction of the sort. */
 export type Direction = "asc" | "desc";
+const Direction = S.String;
+
 export interface ListMessageRequest {
   after?: string;
   before?: string;
@@ -180,6 +250,8 @@ export interface ListMessageRequest {
   channel_id: string;
   direction?: Direction | (string & {});
 }
+const ListMessageRequest = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<ListMessageRequest>;
+
 /** A list of user IDs that are explicitly mentioned in this message. */
 export type MessageListItemMentionsList = Array<string>;
 /** Represents a single poll option */
@@ -234,8 +306,15 @@ export interface MessageListItem {
   /** The number of unique views this message has received. Null if view tracking is not enabled for this channel. */
   view_count: number | null;
 }
+const MessageListItem = Message as any as S.Schema<MessageListItem>;
+
 /** A list of nodes. */
 export type ListMessageResponseDataList = Array<MessageListItem>;
+const ListMessageResponseDataList = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<ListMessageResponseDataList>;
+
 /** Information about pagination in a connection. */
 export interface PageInfo {
   /** When paginating forwards, the cursor to continue. */
@@ -247,16 +326,23 @@ export interface PageInfo {
   /** When paginating backwards, the cursor to continue. */
   start_cursor: string | null;
 }
+const PageInfo = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<PageInfo>;
+
 export interface ListMessageResponse {
   /** A list of nodes. */
   data: ListMessageResponseDataList;
   /** Information to aid in pagination. */
   page_info: PageInfo;
 }
+const ListMessageResponse = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<ListMessageResponse>;
+
 /** Input for an attachment */
 export type UpdateMessageRequestAttachmentsItem = CreateMessageRequestAttachmentsItem;
 /** A replacement list of file attachments for this message, such as images or videos. */
 export type UpdateMessageRequestAttachmentsList = Array<CreateMessageRequestAttachmentsItem>;
+const UpdateMessageRequestAttachmentsList =
+  CreateMessageRequestAttachmentsList as any as S.Schema<UpdateMessageRequestAttachmentsList>;
+
 export interface UpdateMessageRequest {
   /** The unique identifier of the message to update. */
   id: string;
@@ -267,6 +353,8 @@ export interface UpdateMessageRequest {
   /** Whether this message should be pinned to the top of the channel. */
   is_pinned?: boolean | null;
 }
+const UpdateMessageRequest = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<UpdateMessageRequest>;
+
 export type CreateMessageError =
   | BadRequest
   | Forbidden
@@ -280,8 +368,8 @@ export const createMessage: API.OperationMethod<
   CreateMessageError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5) as any as S.Schema<CreateMessageRequest>,
-  output: __S(15) as any as S.Schema<Message>,
+  input: CreateMessageRequest,
+  output: Message,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -300,8 +388,8 @@ export const deleteMessage: API.OperationMethod<
   DeleteMessageError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16) as any as S.Schema<DeleteMessageRequest>,
-  output: __S(17) as any as S.Schema<DeleteMessageResponse>,
+  input: DeleteMessageRequest,
+  output: DeleteMessageResponse,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -315,8 +403,8 @@ export const getMessage: API.OperationMethod<
   GetMessageError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18) as any as S.Schema<GetMessageRequest>,
-  output: __S(15) as any as S.Schema<Message>,
+  input: GetMessageRequest,
+  output: Message,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -337,8 +425,8 @@ export const listMessage: API.PaginatedOperationMethod<
   MessageListItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(19) as any as S.Schema<ListMessageRequest>,
-    output: __S(22) as any as S.Schema<ListMessageResponse>,
+    input: ListMessageRequest,
+    output: ListMessageResponse,
     errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
     protocol: WhopProtocol,
     retry: Retry.Retry,
@@ -367,8 +455,8 @@ export const updateMessage: API.OperationMethod<
   UpdateMessageError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23) as any as S.Schema<UpdateMessageRequest>,
-  output: __S(15) as any as S.Schema<Message>,
+  input: UpdateMessageRequest,
+  output: Message,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -386,7 +474,7 @@ function __c0(j: number): any {
         identifier: "CreateMessageRequestAttachmentsItem",
       });
     case 1:
-      return S.Array(__S(0));
+      return S.Array(CreateMessageRequestAttachmentsItem);
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -397,21 +485,21 @@ function __c0(j: number): any {
         identifier: "CreateMessageRequestPollOptionsItem",
       });
     case 3:
-      return S.Array(__S(2));
+      return S.Array(CreateMessageRequestPollOptionsItem);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          options: __S(3),
+          options: CreateMessageRequestPollOptionsList,
         }),
       ).annotate({ identifier: "CreateMessageRequestPoll" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          attachments: S.optional(S.NullOr(__S(1))),
+          attachments: S.optional(S.NullOr(CreateMessageRequestAttachmentsList)),
           auto_detect_links: S.optional(S.NullOr(S.Boolean)),
           channel_id: S.String,
           content: S.String,
-          poll: S.optional(S.NullOr(__S(4))),
+          poll: S.optional(S.NullOr(CreateMessageRequestPoll)),
           replying_to_message_id: S.optional(S.NullOr(S.String)),
         }).pipe(T.Http({ method: "POST", uri: "/messages", code: 200 })),
       ).annotate({ identifier: "CreateMessageRequest" });
@@ -429,11 +517,11 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(7));
+      return S.Array(MessagePollOptionsItem);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          options: S.NullOr(__S(8)),
+          options: S.NullOr(MessagePollOptionsList),
         }),
       ).annotate({ identifier: "MessagePoll" });
     case 2:
@@ -444,7 +532,7 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "MessagePollVotesItem" });
     case 3:
-      return S.Array(__S(10));
+      return S.Array(MessagePollVotesItem);
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -455,7 +543,7 @@ function __c1(j: number): any {
         identifier: "MessageReactionCountsItem",
       });
     case 5:
-      return S.Array(__S(12));
+      return S.Array(MessageReactionCountsItem);
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -472,15 +560,15 @@ function __c1(j: number): any {
           id: S.String,
           is_edited: S.Boolean,
           is_pinned: S.Boolean,
-          mentions: __S(6),
+          mentions: MessageMentionsList,
           mentions_everyone: S.Boolean,
-          message_type: S.String,
-          poll: S.NullOr(__S(9)),
-          poll_votes: __S(11),
-          reaction_counts: __S(13),
+          message_type: DmsPostTypes,
+          poll: S.NullOr(MessagePoll),
+          poll_votes: MessagePollVotesList,
+          reaction_counts: MessageReactionCountsList,
           replying_to_message_id: S.NullOr(S.String),
           updated_at: S.String,
-          user: __S(14),
+          user: MessageUser,
           view_count: S.NullOr(S.Number),
         }),
       ).annotate({ identifier: "Message" });
@@ -512,11 +600,11 @@ function __c2(j: number): any {
           first: S.optional(S.Number.pipe(T.Query())),
           last: S.optional(S.Number.pipe(T.Query())),
           channel_id: S.String.pipe(T.Query()),
-          direction: S.optional(S.String.pipe(T.Query())),
+          direction: S.optional(Direction.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/messages", code: 200 })),
       ).annotate({ identifier: "ListMessageRequest" });
     case 4:
-      return S.Array(__S(15));
+      return S.Array(MessageListItem);
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -529,33 +617,18 @@ function __c2(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          data: __S(20),
-          page_info: __S(21),
+          data: ListMessageResponseDataList,
+          page_info: PageInfo,
         }),
       ).annotate({ identifier: "ListMessageResponse" });
     case 7:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
-          attachments: S.optional(S.NullOr(__S(1))),
+          attachments: S.optional(S.NullOr(UpdateMessageRequestAttachmentsList)),
           content: S.optional(S.NullOr(S.String)),
           is_pinned: S.optional(S.NullOr(S.Boolean)),
         }).pipe(T.Http({ method: "PATCH", uri: "/messages/{id}", code: 200 })),
       ).annotate({ identifier: "UpdateMessageRequest" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
   }
 }

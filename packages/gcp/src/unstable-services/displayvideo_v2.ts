@@ -7,8 +7,6 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -66,6 +64,11 @@ export class NotFound
 
 /** Request message for ManualTriggerService.ActivateManualTrigger. */
 export interface ActivateManualTriggerRequest {}
+const ActivateManualTriggerRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<ActivateManualTriggerRequest>;
+
 export interface ActivateAdvertisersManualTriggersRequest {
   /** Required. The ID of the advertiser that the manual trigger belongs. */
   advertiserId: string;
@@ -74,7 +77,14 @@ export interface ActivateAdvertisersManualTriggersRequest {
   /** Request body */
   body?: ActivateManualTriggerRequest;
 }
+const ActivateAdvertisersManualTriggersRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<ActivateAdvertisersManualTriggersRequest>;
+
 export type ManualTriggerStateEnum = "STATE_UNSPECIFIED" | "INACTIVE" | "ACTIVE";
+const ManualTriggerStateEnum = S.String;
+
 /** A single manual trigger in Display & Video 360. **Warning:** Line Items using manual triggers no longer serve in Display & Video 360. This resource will sunset on August 1, 2023. Read our [feature deprecation announcement](/display-video/api/deprecations#features.manual_triggers) for more information. */
 export interface ManualTrigger {
   /** Output only. The state of the manual trigger. Will be set to the `INACTIVE` state upon creation. */
@@ -92,12 +102,19 @@ export interface ManualTrigger {
   /** Required. Immutable. The unique ID of the advertiser that the manual trigger belongs to. */
   advertiserId?: string;
 }
+const ManualTrigger = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<ManualTrigger>;
+
 export interface AuditAdvertisersRequest {
   /** Required. The ID of the advertiser to audit. */
   advertiserId: string;
   /** Optional. The specific fields to return. If no mask is specified, all fields in the response proto will be filled. Valid values are: * usedLineItemsCount * usedInsertionOrdersCount * usedCampaignsCount * channelsCount * negativelyTargetedChannelsCount * negativeKeywordListsCount * adGroupCriteriaCount * campaignCriteriaCount */
   readMask?: string;
 }
+const AuditAdvertisersRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<AuditAdvertisersRequest>;
+
 /** Response message for AdvertiserService.AuditAdvertiser. */
 export interface AuditAdvertiserResponse {
   /** The number of negatively targeted channels created under this advertiser. These negatively targeted channels count towards the limit of 5 negatively targeted channels per advertiser. */
@@ -117,7 +134,14 @@ export interface AuditAdvertiserResponse {
   /** The number of individual targeting options from the following targeting types that are assigned to a line item under this advertiser. These individual targeting options count towards the limit of 900000 campaign targeting options per advertiser. Qualifying Targeting types: * Position * Browser * Connection speed * Day and time * Device and operating system * Digital content label * Sensitive categories * Environment * Geography, including business chains and proximity * ISP * Language * Third-party verification */
   campaignCriteriaCount?: string;
 }
+const AuditAdvertiserResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<AuditAdvertiserResponse>;
+
 export type StringList = Array<string>;
+const StringList = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<StringList>;
+
 /** A single site. Sites are apps or websites belonging to a channel. */
 export interface Site {
   /** Required. The app ID or URL of the site. Must be UTF-8 encoded with a maximum length of 240 bytes. */
@@ -125,7 +149,11 @@ export interface Site {
   /** Output only. The resource name of the site. */
   name?: string;
 }
+const Site = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<Site>;
+
 export type SiteList = Array<Site>;
+const SiteList = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<SiteList>;
+
 /** Request message for SiteService.BulkEditSites. */
 export interface BulkEditSitesRequest {
   /** The sites to delete in batch, specified as a list of site url_or_app_ids. */
@@ -137,6 +165,8 @@ export interface BulkEditSitesRequest {
   /** The sites to create in batch, specified as a list of Sites. */
   createdSites?: SiteList;
 }
+const BulkEditSitesRequest = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<BulkEditSitesRequest>;
+
 export interface BulkEditAdvertisersChannelsSitesRequest {
   /** The ID of the advertiser that owns the parent channel. */
   advertiserId: string;
@@ -145,11 +175,21 @@ export interface BulkEditAdvertisersChannelsSitesRequest {
   /** Request body */
   body?: BulkEditSitesRequest;
 }
+const BulkEditAdvertisersChannelsSitesRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<BulkEditAdvertisersChannelsSitesRequest>;
+
 /** Response message for SiteService.BulkEditSites. */
 export interface BulkEditSitesResponse {
   /** The list of sites that have been successfully created. This list will be absent if empty. */
   sites?: SiteList;
 }
+const BulkEditSitesResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<BulkEditSitesResponse>;
+
 /** An assignment between a location list and a relevant targeting option. */
 export interface AssignedLocation {
   /** Output only. The resource name of the assigned location. */
@@ -159,7 +199,11 @@ export interface AssignedLocation {
   /** Output only. The unique ID of the assigned location. The ID is only unique within a location list. It may be reused in other contexts. */
   assignedLocationId?: string;
 }
+const AssignedLocation = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<AssignedLocation>;
+
 export type AssignedLocationList = Array<AssignedLocation>;
+const AssignedLocationList = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<AssignedLocationList>;
+
 /** Request message for AssignedLocationService.BulkEditAssignedLocations. */
 export interface BulkEditAssignedLocationsRequest {
   /** The IDs of the assigned locations to delete in bulk, specified as a list of assignedLocationId values. */
@@ -167,6 +211,11 @@ export interface BulkEditAssignedLocationsRequest {
   /** The assigned locations to create in bulk, specified as a list of AssignedLocation resources. */
   createdAssignedLocations?: AssignedLocationList;
 }
+const BulkEditAssignedLocationsRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<BulkEditAssignedLocationsRequest>;
+
 export interface BulkEditAdvertisersLocationListsAssignedLocationsRequest {
   /** Required. The ID of the location list to which these assignments are assigned. */
   locationListId: string;
@@ -175,10 +224,20 @@ export interface BulkEditAdvertisersLocationListsAssignedLocationsRequest {
   /** Request body */
   body?: BulkEditAssignedLocationsRequest;
 }
+const BulkEditAdvertisersLocationListsAssignedLocationsRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<BulkEditAdvertisersLocationListsAssignedLocationsRequest>;
+
 export interface BulkEditAssignedLocationsResponse {
   /** The list of assigned locations that have been successfully created. This list will be absent if empty. */
   assignedLocations?: AssignedLocationList;
 }
+const BulkEditAssignedLocationsResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<BulkEditAssignedLocationsResponse>;
+
 /** A negatively targeted keyword that belongs to a negative keyword list. */
 export interface NegativeKeyword {
   /** Required. Immutable. The negatively targeted keyword, for example `car insurance`. Must be UTF-8 encoded with a maximum size of 255 bytes. Maximum number of characters is 80. Maximum number of words is 10. Valid characters are restricted to ASCII characters only. The only URL-escaping permitted is for representing whitespace between words. Leading or trailing whitespace is ignored. */
@@ -186,7 +245,11 @@ export interface NegativeKeyword {
   /** Output only. The resource name of the negative keyword. */
   name?: string;
 }
+const NegativeKeyword = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<NegativeKeyword>;
+
 export type NegativeKeywordList_ = Array<NegativeKeyword>;
+const NegativeKeywordList_ = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<NegativeKeywordList_>;
+
 /** Request message for NegativeKeywordService.BulkEditNegativeKeywords. */
 export interface BulkEditNegativeKeywordsRequest {
   /** The negative keywords to create in batch, specified as a list of NegativeKeywords. */
@@ -194,6 +257,11 @@ export interface BulkEditNegativeKeywordsRequest {
   /** The negative keywords to delete in batch, specified as a list of keyword_values. */
   deletedNegativeKeywords?: StringList;
 }
+const BulkEditNegativeKeywordsRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<BulkEditNegativeKeywordsRequest>;
+
 export interface BulkEditAdvertisersNegativeKeywordListsNegativeKeywordsRequest {
   /** Required. The ID of the DV360 advertiser to which the parent negative keyword list belongs. */
   advertiserId: string;
@@ -202,11 +270,21 @@ export interface BulkEditAdvertisersNegativeKeywordListsNegativeKeywordsRequest 
   /** Request body */
   body?: BulkEditNegativeKeywordsRequest;
 }
+const BulkEditAdvertisersNegativeKeywordListsNegativeKeywordsRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<BulkEditAdvertisersNegativeKeywordListsNegativeKeywordsRequest>;
+
 /** Response message for NegativeKeywordService.BulkEditNegativeKeywords. */
 export interface BulkEditNegativeKeywordsResponse {
   /** The list of negative keywords that have been successfully created. This list will be absent if empty. */
   negativeKeywords?: NegativeKeywordList_;
 }
+const BulkEditNegativeKeywordsResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<BulkEditNegativeKeywordsResponse>;
+
 export type DeleteAssignedTargetingOptionsRequestTargetingTypeEnum =
   | "TARGETING_TYPE_UNSPECIFIED"
   | "TARGETING_TYPE_CHANNEL"
@@ -257,6 +335,8 @@ export type DeleteAssignedTargetingOptionsRequestTargetingTypeEnum =
   | "TARGETING_TYPE_YOUTUBE_CHANNEL"
   | "TARGETING_TYPE_SESSION_POSITION"
   | "TARGETING_TYPE_YOUTUBE_CHANNEL_PACK";
+const DeleteAssignedTargetingOptionsRequestTargetingTypeEnum = S.String;
+
 /** A request listing which assigned targeting options of a given targeting type should be deleted. */
 export interface DeleteAssignedTargetingOptionsRequest {
   /** Required. The assigned targeting option IDs to delete. */
@@ -264,8 +344,18 @@ export interface DeleteAssignedTargetingOptionsRequest {
   /** Required. Identifies the type of this assigned targeting option. */
   targetingType?: DeleteAssignedTargetingOptionsRequestTargetingTypeEnum | (string & {});
 }
+const DeleteAssignedTargetingOptionsRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<DeleteAssignedTargetingOptionsRequest>;
+
 export type DeleteAssignedTargetingOptionsRequestList =
   Array<DeleteAssignedTargetingOptionsRequest>;
+const DeleteAssignedTargetingOptionsRequestList = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<DeleteAssignedTargetingOptionsRequestList>;
+
 /** Targeting details for regional location list. This will be populated in the details field of an AssignedTargetingOption when targeting_type is `TARGETING_TYPE_REGIONAL_LOCATION_LIST`. */
 export interface RegionalLocationListAssignedTargetingOptionDetails {
   /** Required. ID of the regional location list. Should refer to the location_list_id field of a LocationList resource whose type is `TARGETING_LOCATION_TYPE_REGIONAL`. */
@@ -273,10 +363,17 @@ export interface RegionalLocationListAssignedTargetingOptionDetails {
   /** Indicates if this option is being negatively targeted. */
   negative?: boolean;
 }
+const RegionalLocationListAssignedTargetingOptionDetails = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<RegionalLocationListAssignedTargetingOptionDetails>;
+
 export type BusinessChainAssignedTargetingOptionDetailsProximityRadiusUnitEnum =
   | "DISTANCE_UNIT_UNSPECIFIED"
   | "DISTANCE_UNIT_MILES"
   | "DISTANCE_UNIT_KILOMETERS";
+const BusinessChainAssignedTargetingOptionDetailsProximityRadiusUnitEnum = S.String;
+
 /** Details for assigned Business chain targeting option. This will be populated in the details field of an AssignedTargetingOption when targeting_type is `TARGETING_TYPE_BUSINESS_CHAIN`. */
 export interface BusinessChainAssignedTargetingOptionDetails {
   /** Required. The unit of distance by which the targeting radius is measured. */
@@ -290,6 +387,11 @@ export interface BusinessChainAssignedTargetingOptionDetails {
   /** Output only. The display name of a business chain, e.g. "KFC", "Chase Bank". */
   displayName?: string;
 }
+const BusinessChainAssignedTargetingOptionDetails = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<BusinessChainAssignedTargetingOptionDetails>;
+
 export type GeoRegionAssignedTargetingOptionDetailsGeoRegionTypeEnum =
   | "GEO_REGION_TYPE_UNKNOWN"
   | "GEO_REGION_TYPE_OTHER"
@@ -331,6 +433,8 @@ export type GeoRegionAssignedTargetingOptionDetailsGeoRegionTypeEnum =
   | "GEO_REGION_TYPE_COLLOQUIAL_AREA"
   | "GEO_REGION_TYPE_POST_TOWN"
   | "GEO_REGION_TYPE_WARD";
+const GeoRegionAssignedTargetingOptionDetailsGeoRegionTypeEnum = S.String;
+
 /** Details for assigned geographic region targeting option. This will be populated in the details field of an AssignedTargetingOption when targeting_type is `TARGETING_TYPE_GEO_REGION`. */
 export interface GeoRegionAssignedTargetingOptionDetails {
   /** Output only. The type of geographic region targeting. */
@@ -342,18 +446,32 @@ export interface GeoRegionAssignedTargetingOptionDetails {
   /** Indicates if this option is being negatively targeted. */
   negative?: boolean;
 }
+const GeoRegionAssignedTargetingOptionDetails = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<GeoRegionAssignedTargetingOptionDetails>;
+
 export type OmidAssignedTargetingOptionDetailsOmidEnum =
   | "OMID_UNSPECIFIED"
   | "OMID_FOR_MOBILE_DISPLAY_ADS";
+const OmidAssignedTargetingOptionDetailsOmidEnum = S.String;
+
 /** Represents a targetable Open Measurement enabled inventory type. This will be populated in the details field of an AssignedTargetingOption when targeting_type is `TARGETING_TYPE_OMID`. */
 export interface OmidAssignedTargetingOptionDetails {
   /** Required. The type of Open Measurement enabled inventory. */
   omid?: OmidAssignedTargetingOptionDetailsOmidEnum | (string & {});
 }
+const OmidAssignedTargetingOptionDetails = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<OmidAssignedTargetingOptionDetails>;
+
 export type DayAndTimeAssignedTargetingOptionDetailsTimeZoneResolutionEnum =
   | "TIME_ZONE_RESOLUTION_UNSPECIFIED"
   | "TIME_ZONE_RESOLUTION_END_USER"
   | "TIME_ZONE_RESOLUTION_ADVERTISER";
+const DayAndTimeAssignedTargetingOptionDetailsTimeZoneResolutionEnum = S.String;
+
 export type DayAndTimeAssignedTargetingOptionDetailsDayOfWeekEnum =
   | "DAY_OF_WEEK_UNSPECIFIED"
   | "MONDAY"
@@ -363,6 +481,8 @@ export type DayAndTimeAssignedTargetingOptionDetailsDayOfWeekEnum =
   | "FRIDAY"
   | "SATURDAY"
   | "SUNDAY";
+const DayAndTimeAssignedTargetingOptionDetailsDayOfWeekEnum = S.String;
+
 /** Representation of a segment of time defined on a specific day of the week and with a start and end time. The time represented by `start_hour` must be before the time represented by `end_hour`. */
 export interface DayAndTimeAssignedTargetingOptionDetails {
   /** Required. The end hour for day and time targeting. Must be between 1 (1 hour after start of day) and 24 (end of day). */
@@ -376,6 +496,11 @@ export interface DayAndTimeAssignedTargetingOptionDetails {
   /** Required. The start hour for day and time targeting. Must be between 0 (start of day) and 23 (1 hour before end of day). */
   startHour?: number;
 }
+const DayAndTimeAssignedTargetingOptionDetails = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<DayAndTimeAssignedTargetingOptionDetails>;
+
 /** Assigned device make and model targeting option details. This will be populated in the device_make_model_details field when targeting_type is `TARGETING_TYPE_DEVICE_MAKE_MODEL`. */
 export interface DeviceMakeModelAssignedTargetingOptionDetails {
   /** Required. The targeting_option_id field when targeting_type is `TARGETING_TYPE_DEVICE_MAKE_MODEL`. */
@@ -385,6 +510,11 @@ export interface DeviceMakeModelAssignedTargetingOptionDetails {
   /** Indicates if this option is being negatively targeted. */
   negative?: boolean;
 }
+const DeviceMakeModelAssignedTargetingOptionDetails = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<DeviceMakeModelAssignedTargetingOptionDetails>;
+
 /** Details for assigned carrier and ISP targeting option. This will be populated in the details field of an AssignedTargetingOption when targeting_type is `TARGETING_TYPE_CARRIER_AND_ISP`. */
 export interface CarrierAndIspAssignedTargetingOptionDetails {
   /** Required. The targeting_option_id of a TargetingOption of type `TARGETING_TYPE_CARRIER_AND_ISP`. */
@@ -394,6 +524,11 @@ export interface CarrierAndIspAssignedTargetingOptionDetails {
   /** Output only. The display name of the carrier or ISP. */
   displayName?: string;
 }
+const CarrierAndIspAssignedTargetingOptionDetails = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<CarrierAndIspAssignedTargetingOptionDetails>;
+
 /** Details for YouTube channel pack assigned targeting option. This will be populated in the youtube_channel_pack_details field when targeting_type is `TARGETING_TYPE_YOUTUBE_CHANNEL_PACK`. */
 export interface YoutubeChannelPackAssignedTargetingOptionDetails {
   /** Optional. Indicates if this option is being negatively targeted. */
@@ -401,6 +536,11 @@ export interface YoutubeChannelPackAssignedTargetingOptionDetails {
   /** Required. The ID of the YouTube channel pack. */
   channelPackId?: string;
 }
+const YoutubeChannelPackAssignedTargetingOptionDetails = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<YoutubeChannelPackAssignedTargetingOptionDetails>;
+
 export type ContentOutstreamPositionAssignedTargetingOptionDetailsContentOutstreamPositionEnum =
   | "CONTENT_OUTSTREAM_POSITION_UNSPECIFIED"
   | "CONTENT_OUTSTREAM_POSITION_UNKNOWN"
@@ -408,11 +548,15 @@ export type ContentOutstreamPositionAssignedTargetingOptionDetailsContentOutstre
   | "CONTENT_OUTSTREAM_POSITION_IN_BANNER"
   | "CONTENT_OUTSTREAM_POSITION_IN_FEED"
   | "CONTENT_OUTSTREAM_POSITION_INTERSTITIAL";
+const ContentOutstreamPositionAssignedTargetingOptionDetailsContentOutstreamPositionEnum = S.String;
+
 export type ContentOutstreamPositionAssignedTargetingOptionDetailsAdTypeEnum =
   | "AD_TYPE_UNSPECIFIED"
   | "AD_TYPE_DISPLAY"
   | "AD_TYPE_VIDEO"
   | "AD_TYPE_AUDIO";
+const ContentOutstreamPositionAssignedTargetingOptionDetailsAdTypeEnum = S.String;
+
 /** Assigned content outstream position targeting option details. This will be populated in the content_outstream_position_details field when targeting_type is `TARGETING_TYPE_CONTENT_OUTSTREAM_POSITION`. */
 export interface ContentOutstreamPositionAssignedTargetingOptionDetails {
   /** Required. The content outstream position. */
@@ -422,6 +566,11 @@ export interface ContentOutstreamPositionAssignedTargetingOptionDetails {
   /** Output only. The ad type to target. Only applicable to insertion order targeting and new line items supporting the specified ad type will inherit this targeting option by default. Possible values are: * `AD_TYPE_DISPLAY`, the setting will be inherited by new line item when line_item_type is `LINE_ITEM_TYPE_DISPLAY_DEFAULT`. * `AD_TYPE_VIDEO`, the setting will be inherited by new line item when line_item_type is `LINE_ITEM_TYPE_VIDEO_DEFAULT`. */
   adType?: ContentOutstreamPositionAssignedTargetingOptionDetailsAdTypeEnum | (string & {});
 }
+const ContentOutstreamPositionAssignedTargetingOptionDetails = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<ContentOutstreamPositionAssignedTargetingOptionDetails>;
+
 /** Details for YouTube channel assigned targeting option. This will be populated in the youtube_channel_details field when targeting_type is `TARGETING_TYPE_YOUTUBE_CHANNEL`. */
 export interface YoutubeChannelAssignedTargetingOptionDetails {
   /** The YouTube uploader channel id or the channel code of a YouTube channel. */
@@ -429,6 +578,11 @@ export interface YoutubeChannelAssignedTargetingOptionDetails {
   /** Indicates if this option is being negatively targeted. */
   negative?: boolean;
 }
+const YoutubeChannelAssignedTargetingOptionDetails = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<YoutubeChannelAssignedTargetingOptionDetails>;
+
 export type HouseholdIncomeAssignedTargetingOptionDetailsHouseholdIncomeEnum =
   | "HOUSEHOLD_INCOME_UNSPECIFIED"
   | "HOUSEHOLD_INCOME_UNKNOWN"
@@ -438,6 +592,8 @@ export type HouseholdIncomeAssignedTargetingOptionDetailsHouseholdIncomeEnum =
   | "HOUSEHOLD_INCOME_TOP_21_TO_30_PERCENT"
   | "HOUSEHOLD_INCOME_TOP_11_TO_20_PERCENT"
   | "HOUSEHOLD_INCOME_TOP_10_PERCENT";
+const HouseholdIncomeAssignedTargetingOptionDetailsHouseholdIncomeEnum = S.String;
+
 /** Details for assigned household income targeting option. This will be populated in the details field of an AssignedTargetingOption when targeting_type is `TARGETING_TYPE_HOUSEHOLD_INCOME`. */
 export interface HouseholdIncomeAssignedTargetingOptionDetails {
   /** Required. The household income of the audience. */
@@ -445,10 +601,17 @@ export interface HouseholdIncomeAssignedTargetingOptionDetails {
     | HouseholdIncomeAssignedTargetingOptionDetailsHouseholdIncomeEnum
     | (string & {});
 }
+const HouseholdIncomeAssignedTargetingOptionDetails = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<HouseholdIncomeAssignedTargetingOptionDetails>;
+
 export type ContentStreamTypeAssignedTargetingOptionDetailsContentStreamTypeEnum =
   | "CONTENT_STREAM_TYPE_UNSPECIFIED"
   | "CONTENT_LIVE_STREAM"
   | "CONTENT_ON_DEMAND";
+const ContentStreamTypeAssignedTargetingOptionDetailsContentStreamTypeEnum = S.String;
+
 /** Details for content stream type assigned targeting option. This will be populated in the content_stream_type_details field when targeting_type is `TARGETING_TYPE_CONTENT_STREAM_TYPE`. Explicitly targeting all options is not supported. Remove all content stream type targeting options to achieve this effect. */
 export interface ContentStreamTypeAssignedTargetingOptionDetails {
   /** Required. The targeting_option_id field when targeting_type is `TARGETING_TYPE_CONTENT_STREAM_TYPE`. */
@@ -458,6 +621,11 @@ export interface ContentStreamTypeAssignedTargetingOptionDetails {
     | ContentStreamTypeAssignedTargetingOptionDetailsContentStreamTypeEnum
     | (string & {});
 }
+const ContentStreamTypeAssignedTargetingOptionDetails = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<ContentStreamTypeAssignedTargetingOptionDetails>;
+
 /** Assigned operating system targeting option details. This will be populated in the operating_system_details field when targeting_type is `TARGETING_TYPE_OPERATING_SYSTEM`. */
 export interface OperatingSystemAssignedTargetingOptionDetails {
   /** Output only. The display name of the operating system. */
@@ -467,9 +635,16 @@ export interface OperatingSystemAssignedTargetingOptionDetails {
   /** Indicates if this option is being negatively targeted. */
   negative?: boolean;
 }
+const OperatingSystemAssignedTargetingOptionDetails = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<OperatingSystemAssignedTargetingOptionDetails>;
+
 export type SessionPositionAssignedTargetingOptionDetailsSessionPositionEnum =
   | "SESSION_POSITION_UNSPECIFIED"
   | "SESSION_POSITION_FIRST_IMPRESSION";
+const SessionPositionAssignedTargetingOptionDetailsSessionPositionEnum = S.String;
+
 /** Details for session position assigned targeting option. This will be populated in the session_position_details field when targeting_type is `TARGETING_TYPE_SESSION_POSITION`. */
 export interface SessionPositionAssignedTargetingOptionDetails {
   /** The position where the ad will show in a session. */
@@ -477,6 +652,11 @@ export interface SessionPositionAssignedTargetingOptionDetails {
     | SessionPositionAssignedTargetingOptionDetailsSessionPositionEnum
     | (string & {});
 }
+const SessionPositionAssignedTargetingOptionDetails = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<SessionPositionAssignedTargetingOptionDetails>;
+
 export type AssignedTargetingOptionTargetingTypeEnum =
   | "TARGETING_TYPE_UNSPECIFIED"
   | "TARGETING_TYPE_CHANNEL"
@@ -527,6 +707,8 @@ export type AssignedTargetingOptionTargetingTypeEnum =
   | "TARGETING_TYPE_YOUTUBE_CHANNEL"
   | "TARGETING_TYPE_SESSION_POSITION"
   | "TARGETING_TYPE_YOUTUBE_CHANNEL_PACK";
+const AssignedTargetingOptionTargetingTypeEnum = S.String;
+
 /** Details for assigned language targeting option. This will be populated in the details field of an AssignedTargetingOption when targeting_type is `TARGETING_TYPE_LANGUAGE`. */
 export interface LanguageAssignedTargetingOptionDetails {
   /** Output only. The display name of the language (e.g., "French"). */
@@ -536,6 +718,11 @@ export interface LanguageAssignedTargetingOptionDetails {
   /** Required. The targeting_option_id of a TargetingOption of type `TARGETING_TYPE_LANGUAGE`. */
   targetingOptionId?: string;
 }
+const LanguageAssignedTargetingOptionDetails = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<LanguageAssignedTargetingOptionDetails>;
+
 /** Assigned category targeting option details. This will be populated in the category_details field when targeting_type is `TARGETING_TYPE_CATEGORY`. */
 export interface CategoryAssignedTargetingOptionDetails {
   /** Indicates if this option is being negatively targeted. */
@@ -545,6 +732,11 @@ export interface CategoryAssignedTargetingOptionDetails {
   /** Required. The targeting_option_id field when targeting_type is `TARGETING_TYPE_CATEGORY`. */
   targetingOptionId?: string;
 }
+const CategoryAssignedTargetingOptionDetails = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<CategoryAssignedTargetingOptionDetails>;
+
 export type NativeContentPositionAssignedTargetingOptionDetailsContentPositionEnum =
   | "NATIVE_CONTENT_POSITION_UNSPECIFIED"
   | "NATIVE_CONTENT_POSITION_UNKNOWN"
@@ -552,6 +744,8 @@ export type NativeContentPositionAssignedTargetingOptionDetailsContentPositionEn
   | "NATIVE_CONTENT_POSITION_IN_FEED"
   | "NATIVE_CONTENT_POSITION_PERIPHERAL"
   | "NATIVE_CONTENT_POSITION_RECOMMENDATION";
+const NativeContentPositionAssignedTargetingOptionDetailsContentPositionEnum = S.String;
+
 /** Details for native content position assigned targeting option. This will be populated in the native_content_position_details field when targeting_type is `TARGETING_TYPE_NATIVE_CONTENT_POSITION`. Explicitly targeting all options is not supported. Remove all native content position targeting options to achieve this effect. */
 export interface NativeContentPositionAssignedTargetingOptionDetails {
   /** Required. The content position. */
@@ -559,6 +753,11 @@ export interface NativeContentPositionAssignedTargetingOptionDetails {
     | NativeContentPositionAssignedTargetingOptionDetailsContentPositionEnum
     | (string & {});
 }
+const NativeContentPositionAssignedTargetingOptionDetails = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<NativeContentPositionAssignedTargetingOptionDetails>;
+
 export type DoubleVerifyAppStarRatingAvoidedStarRatingEnum =
   | "APP_STAR_RATE_UNSPECIFIED"
   | "APP_STAR_RATE_1_POINT_5_LESS"
@@ -568,6 +767,8 @@ export type DoubleVerifyAppStarRatingAvoidedStarRatingEnum =
   | "APP_STAR_RATE_3_POINT_5_LESS"
   | "APP_STAR_RATE_4_LESS"
   | "APP_STAR_RATE_4_POINT_5_LESS";
+const DoubleVerifyAppStarRatingAvoidedStarRatingEnum = S.String;
+
 /** Details of DoubleVerify star ratings settings. */
 export interface DoubleVerifyAppStarRating {
   /** Avoid bidding on apps with insufficient star ratings. */
@@ -575,11 +776,18 @@ export interface DoubleVerifyAppStarRating {
   /** Avoid bidding on apps with the star ratings. */
   avoidedStarRating?: DoubleVerifyAppStarRatingAvoidedStarRatingEnum | (string & {});
 }
+const DoubleVerifyAppStarRating = /*@__PURE__*/ __L.at(
+  __c5,
+  0,
+) as any as S.Schema<DoubleVerifyAppStarRating>;
+
 export type DoubleVerifyDisplayViewabilityViewableDuringEnum =
   | "AVERAGE_VIEW_DURATION_UNSPECIFIED"
   | "AVERAGE_VIEW_DURATION_5_SEC"
   | "AVERAGE_VIEW_DURATION_10_SEC"
   | "AVERAGE_VIEW_DURATION_15_SEC";
+const DoubleVerifyDisplayViewabilityViewableDuringEnum = S.String;
+
 export type DoubleVerifyDisplayViewabilityIabEnum =
   | "IAB_VIEWED_RATE_UNSPECIFIED"
   | "IAB_VIEWED_RATE_80_PERCENT_HIGHER"
@@ -591,6 +799,8 @@ export type DoubleVerifyDisplayViewabilityIabEnum =
   | "IAB_VIEWED_RATE_50_PERCENT_HIGHER"
   | "IAB_VIEWED_RATE_40_PERCENT_HIGHER"
   | "IAB_VIEWED_RATE_30_PERCENT_HIGHER";
+const DoubleVerifyDisplayViewabilityIabEnum = S.String;
+
 /** Details of DoubleVerify display viewability settings. */
 export interface DoubleVerifyDisplayViewability {
   /** Target web and app inventory to maximize 100% viewable duration. */
@@ -598,6 +808,11 @@ export interface DoubleVerifyDisplayViewability {
   /** Target web and app inventory to maximize IAB viewable rate. */
   iab?: DoubleVerifyDisplayViewabilityIabEnum | (string & {});
 }
+const DoubleVerifyDisplayViewability = /*@__PURE__*/ __L.at(
+  __c5,
+  1,
+) as any as S.Schema<DoubleVerifyDisplayViewability>;
+
 export type DoubleVerifyAvoidedAgeRatingsItemEnum =
   | "AGE_RATING_UNSPECIFIED"
   | "APP_AGE_RATE_UNKNOWN"
@@ -606,9 +821,16 @@ export type DoubleVerifyAvoidedAgeRatingsItemEnum =
   | "APP_AGE_RATE_12_PLUS"
   | "APP_AGE_RATE_17_PLUS"
   | "APP_AGE_RATE_18_PLUS";
+const DoubleVerifyAvoidedAgeRatingsItemEnum = S.String;
+
 export type DoubleVerifyAvoidedAgeRatingsItemEnumList = Array<
   DoubleVerifyAvoidedAgeRatingsItemEnum | (string & {})
 >;
+const DoubleVerifyAvoidedAgeRatingsItemEnumList = /*@__PURE__*/ __L.at(
+  __c5,
+  2,
+) as any as S.Schema<DoubleVerifyAvoidedAgeRatingsItemEnumList>;
+
 export type DoubleVerifyBrandSafetyCategoriesAvoidedHighSeverityCategoriesItemEnum =
   | "HIGHER_SEVERITY_UNSPECIFIED"
   | "ADULT_CONTENT_PORNOGRAPHY"
@@ -618,9 +840,17 @@ export type DoubleVerifyBrandSafetyCategoriesAvoidedHighSeverityCategoriesItemEn
   | "HATE_PROFANITY"
   | "CRIMINAL_SKILLS"
   | "NUISANCE_INCENTIVIZED_MALWARE_CLUTTER";
+const DoubleVerifyBrandSafetyCategoriesAvoidedHighSeverityCategoriesItemEnum = S.String;
+
 export type DoubleVerifyBrandSafetyCategoriesAvoidedHighSeverityCategoriesItemEnumList = Array<
   DoubleVerifyBrandSafetyCategoriesAvoidedHighSeverityCategoriesItemEnum | (string & {})
 >;
+const DoubleVerifyBrandSafetyCategoriesAvoidedHighSeverityCategoriesItemEnumList =
+  /*@__PURE__*/ __L.at(
+    __c5,
+    3,
+  ) as any as S.Schema<DoubleVerifyBrandSafetyCategoriesAvoidedHighSeverityCategoriesItemEnumList>;
+
 export type DoubleVerifyBrandSafetyCategoriesAvoidedMediumSeverityCategoriesItemEnum =
   | "MEDIUM_SEVERITY_UNSPECIFIED"
   | "AD_SERVERS"
@@ -646,6 +876,9 @@ export type DoubleVerifyBrandSafetyCategoriesAvoidedMediumSeverityCategoriesItem
 export type DoubleVerifyBrandSafetyCategoriesAvoidedMediumSeverityCategoriesItemEnumList = Array<
   DoubleVerifyBrandSafetyCategoriesAvoidedMediumSeverityCategoriesItemEnum | (string & {})
 >;
+const DoubleVerifyBrandSafetyCategoriesAvoidedMediumSeverityCategoriesItemEnumList =
+  DoubleVerifyBrandSafetyCategoriesAvoidedHighSeverityCategoriesItemEnumList as any as S.Schema<DoubleVerifyBrandSafetyCategoriesAvoidedMediumSeverityCategoriesItemEnumList>;
+
 /** Settings for brand safety controls. */
 export interface DoubleVerifyBrandSafetyCategories {
   /** Unknown or unrateable. */
@@ -655,6 +888,11 @@ export interface DoubleVerifyBrandSafetyCategories {
   /** Brand safety medium severity avoidance categories. */
   avoidedMediumSeverityCategories?: DoubleVerifyBrandSafetyCategoriesAvoidedMediumSeverityCategoriesItemEnumList;
 }
+const DoubleVerifyBrandSafetyCategories = /*@__PURE__*/ __L.at(
+  __c5,
+  4,
+) as any as S.Schema<DoubleVerifyBrandSafetyCategories>;
+
 export type DoubleVerifyVideoViewabilityVideoViewableRateEnum =
   | "VIDEO_VIEWABLE_RATE_UNSPECIFIED"
   | "VIEWED_PERFORMANCE_40_PERCENT_HIGHER"
@@ -663,12 +901,16 @@ export type DoubleVerifyVideoViewabilityVideoViewableRateEnum =
   | "VIEWED_PERFORMANCE_25_PERCENT_HIGHER"
   | "VIEWED_PERFORMANCE_20_PERCENT_HIGHER"
   | "VIEWED_PERFORMANCE_10_PERCENT_HIGHER";
+const DoubleVerifyVideoViewabilityVideoViewableRateEnum = S.String;
+
 export type DoubleVerifyVideoViewabilityPlayerImpressionRateEnum =
   | "PLAYER_SIZE_400X300_UNSPECIFIED"
   | "PLAYER_SIZE_400X300_95"
   | "PLAYER_SIZE_400X300_70"
   | "PLAYER_SIZE_400X300_25"
   | "PLAYER_SIZE_400X300_5";
+const DoubleVerifyVideoViewabilityPlayerImpressionRateEnum = S.String;
+
 export type DoubleVerifyVideoViewabilityVideoIabEnum =
   | "VIDEO_IAB_UNSPECIFIED"
   | "IAB_VIEWABILITY_80_PERCENT_HIGHER"
@@ -680,6 +922,8 @@ export type DoubleVerifyVideoViewabilityVideoIabEnum =
   | "IAB_VIEWABILITY_50_PERCENT_HIGHER"
   | "IAB_VIEWABILITY_40_PERCENT_HIHGER"
   | "IAB_VIEWABILITY_30_PERCENT_HIHGER";
+const DoubleVerifyVideoViewabilityVideoIabEnum = S.String;
+
 /** Details of DoubleVerify video viewability settings. */
 export interface DoubleVerifyVideoViewability {
   /** Target web inventory to maximize fully viewable rate. */
@@ -689,6 +933,11 @@ export interface DoubleVerifyVideoViewability {
   /** Target web inventory to maximize IAB viewable rate. */
   videoIab?: DoubleVerifyVideoViewabilityVideoIabEnum | (string & {});
 }
+const DoubleVerifyVideoViewability = /*@__PURE__*/ __L.at(
+  __c5,
+  5,
+) as any as S.Schema<DoubleVerifyVideoViewability>;
+
 export type DoubleVerifyFraudInvalidTrafficAvoidedFraudOptionEnum =
   | "FRAUD_UNSPECIFIED"
   | "AD_IMPRESSION_FRAUD_100"
@@ -699,6 +948,8 @@ export type DoubleVerifyFraudInvalidTrafficAvoidedFraudOptionEnum =
   | "AD_IMPRESSION_FRAUD_6"
   | "AD_IMPRESSION_FRAUD_4"
   | "AD_IMPRESSION_FRAUD_2";
+const DoubleVerifyFraudInvalidTrafficAvoidedFraudOptionEnum = S.String;
+
 /** DoubleVerify Fraud & Invalid Traffic settings. */
 export interface DoubleVerifyFraudInvalidTraffic {
   /** Insufficient Historical Fraud & IVT Stats. */
@@ -706,6 +957,11 @@ export interface DoubleVerifyFraudInvalidTraffic {
   /** Avoid Sites and Apps with historical Fraud & IVT. */
   avoidedFraudOption?: DoubleVerifyFraudInvalidTrafficAvoidedFraudOptionEnum | (string & {});
 }
+const DoubleVerifyFraudInvalidTraffic = /*@__PURE__*/ __L.at(
+  __c5,
+  6,
+) as any as S.Schema<DoubleVerifyFraudInvalidTraffic>;
+
 /** Details of DoubleVerify settings. */
 export interface DoubleVerify {
   /** Avoid bidding on apps with the star ratings. */
@@ -723,36 +979,52 @@ export interface DoubleVerify {
   /** Avoid Sites and Apps with historical Fraud & IVT Rates. */
   fraudInvalidTraffic?: DoubleVerifyFraudInvalidTraffic;
 }
+const DoubleVerify = /*@__PURE__*/ __L.at(__c5, 7) as any as S.Schema<DoubleVerify>;
+
 export type IntegralAdScienceDisplayViewabilityEnum =
   | "PERFORMANCE_VIEWABILITY_UNSPECIFIED"
   | "PERFORMANCE_VIEWABILITY_40"
   | "PERFORMANCE_VIEWABILITY_50"
   | "PERFORMANCE_VIEWABILITY_60"
   | "PERFORMANCE_VIEWABILITY_70";
+const IntegralAdScienceDisplayViewabilityEnum = S.String;
+
 export type IntegralAdScienceExcludedGamblingRiskEnum =
   | "GAMBLING_UNSPECIFIED"
   | "GAMBLING_HR"
   | "GAMBLING_HMR";
+const IntegralAdScienceExcludedGamblingRiskEnum = S.String;
+
 export type IntegralAdScienceExcludedViolenceRiskEnum =
   | "VIOLENCE_UNSPECIFIED"
   | "VIOLENCE_HR"
   | "VIOLENCE_HMR";
+const IntegralAdScienceExcludedViolenceRiskEnum = S.String;
+
 export type IntegralAdScienceExcludedDrugsRiskEnum = "DRUGS_UNSPECIFIED" | "DRUGS_HR" | "DRUGS_HMR";
+const IntegralAdScienceExcludedDrugsRiskEnum = S.String;
+
 export type IntegralAdScienceExcludedAdFraudRiskEnum =
   | "SUSPICIOUS_ACTIVITY_UNSPECIFIED"
   | "SUSPICIOUS_ACTIVITY_HR"
   | "SUSPICIOUS_ACTIVITY_HMR"
   | "SUSPICIOUS_ACTIVITY_FD";
+const IntegralAdScienceExcludedAdFraudRiskEnum = S.String;
+
 export type IntegralAdScienceExcludedAlcoholRiskEnum =
   | "ALCOHOL_UNSPECIFIED"
   | "ALCOHOL_HR"
   | "ALCOHOL_HMR";
+const IntegralAdScienceExcludedAlcoholRiskEnum = S.String;
+
 export type IntegralAdScienceVideoViewabilityEnum =
   | "VIDEO_VIEWABILITY_UNSPECIFIED"
   | "VIDEO_VIEWABILITY_40"
   | "VIDEO_VIEWABILITY_50"
   | "VIDEO_VIEWABILITY_60"
   | "VIDEO_VIEWABILITY_70";
+const IntegralAdScienceVideoViewabilityEnum = S.String;
+
 export type IntegralAdScienceTraqScoreOptionEnum =
   | "TRAQ_UNSPECIFIED"
   | "TRAQ_250"
@@ -762,19 +1034,29 @@ export type IntegralAdScienceTraqScoreOptionEnum =
   | "TRAQ_750"
   | "TRAQ_875"
   | "TRAQ_1000";
+const IntegralAdScienceTraqScoreOptionEnum = S.String;
+
 export type IntegralAdScienceExcludedAdultRiskEnum = "ADULT_UNSPECIFIED" | "ADULT_HR" | "ADULT_HMR";
+const IntegralAdScienceExcludedAdultRiskEnum = S.String;
+
 export type IntegralAdScienceExcludedHateSpeechRiskEnum =
   | "HATE_SPEECH_UNSPECIFIED"
   | "HATE_SPEECH_HR"
   | "HATE_SPEECH_HMR";
+const IntegralAdScienceExcludedHateSpeechRiskEnum = S.String;
+
 export type IntegralAdScienceExcludedOffensiveLanguageRiskEnum =
   | "OFFENSIVE_LANGUAGE_UNSPECIFIED"
   | "OFFENSIVE_LANGUAGE_HR"
   | "OFFENSIVE_LANGUAGE_HMR";
+const IntegralAdScienceExcludedOffensiveLanguageRiskEnum = S.String;
+
 export type IntegralAdScienceExcludedIllegalDownloadsRiskEnum =
   | "ILLEGAL_DOWNLOADS_UNSPECIFIED"
   | "ILLEGAL_DOWNLOADS_HR"
   | "ILLEGAL_DOWNLOADS_HMR";
+const IntegralAdScienceExcludedIllegalDownloadsRiskEnum = S.String;
+
 /** Details of Integral Ad Science settings. */
 export interface IntegralAdScience {
   /** Display Viewability section (applicable to display line items only). */
@@ -808,6 +1090,8 @@ export interface IntegralAdScience {
   /** Brand Safety - **Illegal downloads**. */
   excludedIllegalDownloadsRisk?: IntegralAdScienceExcludedIllegalDownloadsRiskEnum | (string & {});
 }
+const IntegralAdScience = /*@__PURE__*/ __L.at(__c6, 0) as any as S.Schema<IntegralAdScience>;
+
 export type AdlooxExcludedAdlooxCategoriesItemEnum =
   | "ADLOOX_UNSPECIFIED"
   | "ADULT_CONTENT_HARD"
@@ -821,11 +1105,16 @@ export type AdlooxExcludedAdlooxCategoriesItemEnum =
 export type AdlooxExcludedAdlooxCategoriesItemEnumList = Array<
   AdlooxExcludedAdlooxCategoriesItemEnum | (string & {})
 >;
+const AdlooxExcludedAdlooxCategoriesItemEnumList =
+  DoubleVerifyAvoidedAgeRatingsItemEnumList as any as S.Schema<AdlooxExcludedAdlooxCategoriesItemEnumList>;
+
 /** Details of Scope3 (previously known as Adloox) brand safety settings. */
 export interface Adloox {
   /** Scope3 categories to exclude. */
   excludedAdlooxCategories?: AdlooxExcludedAdlooxCategoriesItemEnumList;
 }
+const Adloox = /*@__PURE__*/ __L.at(__c6, 1) as any as S.Schema<Adloox>;
+
 /** Assigned third party verifier targeting option details. This will be populated in the details field of an AssignedTargetingOption when targeting_type is `TARGETING_TYPE_THIRD_PARTY_VERIFIER`. */
 export interface ThirdPartyVerifierAssignedTargetingOptionDetails {
   /** Third party brand verifier -- DoubleVerify. */
@@ -835,12 +1124,19 @@ export interface ThirdPartyVerifierAssignedTargetingOptionDetails {
   /** Third party brand verifier -- Scope3 (previously known as Adloox). */
   adloox?: Adloox;
 }
+const ThirdPartyVerifierAssignedTargetingOptionDetails = /*@__PURE__*/ __L.at(
+  __c6,
+  2,
+) as any as S.Schema<ThirdPartyVerifierAssignedTargetingOptionDetails>;
+
 export type VideoPlayerSizeAssignedTargetingOptionDetailsVideoPlayerSizeEnum =
   | "VIDEO_PLAYER_SIZE_UNSPECIFIED"
   | "VIDEO_PLAYER_SIZE_SMALL"
   | "VIDEO_PLAYER_SIZE_LARGE"
   | "VIDEO_PLAYER_SIZE_HD"
   | "VIDEO_PLAYER_SIZE_UNKNOWN";
+const VideoPlayerSizeAssignedTargetingOptionDetailsVideoPlayerSizeEnum = S.String;
+
 /** Video player size targeting option details. This will be populated in the video_player_size_details field when targeting_type is `TARGETING_TYPE_VIDEO_PLAYER_SIZE`. Explicitly targeting all options is not supported. Remove all video player size targeting options to achieve this effect. */
 export interface VideoPlayerSizeAssignedTargetingOptionDetails {
   /** Required. The video player size. */
@@ -848,6 +1144,11 @@ export interface VideoPlayerSizeAssignedTargetingOptionDetails {
     | VideoPlayerSizeAssignedTargetingOptionDetailsVideoPlayerSizeEnum
     | (string & {});
 }
+const VideoPlayerSizeAssignedTargetingOptionDetails = /*@__PURE__*/ __L.at(
+  __c6,
+  3,
+) as any as S.Schema<VideoPlayerSizeAssignedTargetingOptionDetails>;
+
 /** Details for assigned browser targeting option. This will be populated in the details field of an AssignedTargetingOption when targeting_type is `TARGETING_TYPE_BROWSER`. */
 export interface BrowserAssignedTargetingOptionDetails {
   /** Required. The targeting_option_id of a TargetingOption of type `TARGETING_TYPE_BROWSER`. */
@@ -857,11 +1158,19 @@ export interface BrowserAssignedTargetingOptionDetails {
   /** Indicates if this option is being negatively targeted. All assigned browser targeting options on the same resource must have the same value for this field. */
   negative?: boolean;
 }
+const BrowserAssignedTargetingOptionDetails =
+  DeviceMakeModelAssignedTargetingOptionDetails as any as S.Schema<BrowserAssignedTargetingOptionDetails>;
+
 /** Details for assigned sub-exchange targeting option. This will be populated in the details field of an AssignedTargetingOption when targeting_type is `TARGETING_TYPE_SUB_EXCHANGE`. */
 export interface SubExchangeAssignedTargetingOptionDetails {
   /** Required. The targeting_option_id of a TargetingOption of type `TARGETING_TYPE_SUB_EXCHANGE`. */
   targetingOptionId?: string;
 }
+const SubExchangeAssignedTargetingOptionDetails = /*@__PURE__*/ __L.at(
+  __c6,
+  4,
+) as any as S.Schema<SubExchangeAssignedTargetingOptionDetails>;
+
 export type ExchangeAssignedTargetingOptionDetailsExchangeEnum =
   | "EXCHANGE_UNSPECIFIED"
   | "EXCHANGE_GOOGLE_AD_MANAGER"
@@ -953,16 +1262,28 @@ export type ExchangeAssignedTargetingOptionDetailsExchangeEnum =
   | "EXCHANGE_SNAP"
   | "EXCHANGE_CADENT"
   | "EXCHANGE_EXTE";
+const ExchangeAssignedTargetingOptionDetailsExchangeEnum = S.String;
+
 /** Details for assigned exchange targeting option. This will be populated in the details field of an AssignedTargetingOption when targeting_type is `TARGETING_TYPE_EXCHANGE`. */
 export interface ExchangeAssignedTargetingOptionDetails {
   /** Required. The enum value for the exchange. */
   exchange?: ExchangeAssignedTargetingOptionDetailsExchangeEnum | (string & {});
 }
+const ExchangeAssignedTargetingOptionDetails = /*@__PURE__*/ __L.at(
+  __c6,
+  5,
+) as any as S.Schema<ExchangeAssignedTargetingOptionDetails>;
+
 /** Targeting details for inventory source group. This will be populated in the details field of an AssignedTargetingOption when targeting_type is `TARGETING_TYPE_INVENTORY_SOURCE_GROUP`. */
 export interface InventorySourceGroupAssignedTargetingOptionDetails {
   /** Required. ID of the inventory source group. Should refer to the inventory_source_group_id field of an InventorySourceGroup resource. */
   inventorySourceGroupId?: string;
 }
+const InventorySourceGroupAssignedTargetingOptionDetails = /*@__PURE__*/ __L.at(
+  __c6,
+  6,
+) as any as S.Schema<InventorySourceGroupAssignedTargetingOptionDetails>;
+
 export type SensitiveCategoryAssignedTargetingOptionDetailsExcludedSensitiveCategoryEnum =
   | "SENSITIVE_CATEGORY_UNSPECIFIED"
   | "SENSITIVE_CATEGORY_ADULT"
@@ -984,6 +1305,8 @@ export type SensitiveCategoryAssignedTargetingOptionDetailsExcludedSensitiveCate
   | "SENSITIVE_CATEGORY_SHOCKING"
   | "SENSITIVE_CATEGORY_EMBEDDED_VIDEO"
   | "SENSITIVE_CATEGORY_LIVE_STREAMING_VIDEO";
+const SensitiveCategoryAssignedTargetingOptionDetailsExcludedSensitiveCategoryEnum = S.String;
+
 /** Targeting details for sensitive category. This will be populated in the details field of an AssignedTargetingOption when targeting_type is `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION`. */
 export interface SensitiveCategoryAssignedTargetingOptionDetails {
   /** Required. An enum for the Display & Video 360 Sensitive category content classified to be EXCLUDED. This field only accepts the following values: * `SENSITIVE_CATEGORY_EMBEDDED_VIDEO` * `SENSITIVE_CATEGORY_LIVE_STREAMING_VIDEO` */
@@ -991,6 +1314,11 @@ export interface SensitiveCategoryAssignedTargetingOptionDetails {
     | SensitiveCategoryAssignedTargetingOptionDetailsExcludedSensitiveCategoryEnum
     | (string & {});
 }
+const SensitiveCategoryAssignedTargetingOptionDetails = /*@__PURE__*/ __L.at(
+  __c6,
+  7,
+) as any as S.Schema<SensitiveCategoryAssignedTargetingOptionDetails>;
+
 /** Details for YouTube video assigned targeting option. This will be populated in the youtube_video_details field when targeting_type is `TARGETING_TYPE_YOUTUBE_VIDEO`. */
 export interface YoutubeVideoAssignedTargetingOptionDetails {
   /** Indicates if this option is being negatively targeted. */
@@ -998,17 +1326,26 @@ export interface YoutubeVideoAssignedTargetingOptionDetails {
   /** YouTube video id as it appears on the YouTube watch page. */
   videoId?: string;
 }
+const YoutubeVideoAssignedTargetingOptionDetails = /*@__PURE__*/ __L.at(
+  __c7,
+  0,
+) as any as S.Schema<YoutubeVideoAssignedTargetingOptionDetails>;
+
 export type ContentInstreamPositionAssignedTargetingOptionDetailsContentInstreamPositionEnum =
   | "CONTENT_INSTREAM_POSITION_UNSPECIFIED"
   | "CONTENT_INSTREAM_POSITION_PRE_ROLL"
   | "CONTENT_INSTREAM_POSITION_MID_ROLL"
   | "CONTENT_INSTREAM_POSITION_POST_ROLL"
   | "CONTENT_INSTREAM_POSITION_UNKNOWN";
+const ContentInstreamPositionAssignedTargetingOptionDetailsContentInstreamPositionEnum = S.String;
+
 export type ContentInstreamPositionAssignedTargetingOptionDetailsAdTypeEnum =
   | "AD_TYPE_UNSPECIFIED"
   | "AD_TYPE_DISPLAY"
   | "AD_TYPE_VIDEO"
   | "AD_TYPE_AUDIO";
+const ContentInstreamPositionAssignedTargetingOptionDetailsAdTypeEnum = S.String;
+
 /** Assigned content instream position targeting option details. This will be populated in the content_instream_position_details field when targeting_type is `TARGETING_TYPE_CONTENT_INSTREAM_POSITION`. */
 export interface ContentInstreamPositionAssignedTargetingOptionDetails {
   /** Required. The content instream position for video or audio ads. */
@@ -1018,6 +1355,11 @@ export interface ContentInstreamPositionAssignedTargetingOptionDetails {
   /** Output only. The ad type to target. Only applicable to insertion order targeting and new line items supporting the specified ad type will inherit this targeting option by default. Possible values are: * `AD_TYPE_VIDEO`, the setting will be inherited by new line item when line_item_type is `LINE_ITEM_TYPE_VIDEO_DEFAULT`. * `AD_TYPE_AUDIO`, the setting will be inherited by new line item when line_item_type is `LINE_ITEM_TYPE_AUDIO_DEFAULT`. */
   adType?: ContentInstreamPositionAssignedTargetingOptionDetailsAdTypeEnum | (string & {});
 }
+const ContentInstreamPositionAssignedTargetingOptionDetails = /*@__PURE__*/ __L.at(
+  __c7,
+  1,
+) as any as S.Schema<ContentInstreamPositionAssignedTargetingOptionDetails>;
+
 /** Details for assigned keyword targeting option. This will be populated in the details field of an AssignedTargetingOption when targeting_type is `TARGETING_TYPE_KEYWORD`. */
 export interface KeywordAssignedTargetingOptionDetails {
   /** Indicates if this option is being negatively targeted. */
@@ -1027,10 +1369,17 @@ export interface KeywordAssignedTargetingOptionDetails {
   /** Required. The keyword, for example `car insurance`. Positive keyword cannot be offensive word. Must be UTF-8 encoded with a maximum size of 255 bytes. Maximum number of characters is 80. Maximum number of words is 10. */
   keyword?: string;
 }
+const KeywordAssignedTargetingOptionDetails = /*@__PURE__*/ __L.at(
+  __c7,
+  2,
+) as any as S.Schema<KeywordAssignedTargetingOptionDetails>;
+
 export type UserRewardedContentAssignedTargetingOptionDetailsUserRewardedContentEnum =
   | "USER_REWARDED_CONTENT_UNSPECIFIED"
   | "USER_REWARDED_CONTENT_USER_REWARDED"
   | "USER_REWARDED_CONTENT_NOT_USER_REWARDED";
+const UserRewardedContentAssignedTargetingOptionDetailsUserRewardedContentEnum = S.String;
+
 /** User rewarded content targeting option details. This will be populated in the user_rewarded_content_details field when targeting_type is `TARGETING_TYPE_USER_REWARDED_CONTENT`. */
 export interface UserRewardedContentAssignedTargetingOptionDetails {
   /** Required. The targeting_option_id field when targeting_type is `TARGETING_TYPE_USER_REWARDED_CONTENT`. */
@@ -1040,39 +1389,83 @@ export interface UserRewardedContentAssignedTargetingOptionDetails {
     | UserRewardedContentAssignedTargetingOptionDetailsUserRewardedContentEnum
     | (string & {});
 }
+const UserRewardedContentAssignedTargetingOptionDetails = /*@__PURE__*/ __L.at(
+  __c7,
+  3,
+) as any as S.Schema<UserRewardedContentAssignedTargetingOptionDetails>;
+
 /** Details of Google audience targeting setting. */
 export interface GoogleAudienceTargetingSetting {
   /** Required. Google audience id of the Google audience targeting setting. This id is google_audience_id. */
   googleAudienceId?: string;
 }
+const GoogleAudienceTargetingSetting = /*@__PURE__*/ __L.at(
+  __c7,
+  4,
+) as any as S.Schema<GoogleAudienceTargetingSetting>;
+
 export type GoogleAudienceTargetingSettingList = Array<GoogleAudienceTargetingSetting>;
+const GoogleAudienceTargetingSettingList = /*@__PURE__*/ __L.at(
+  __c7,
+  5,
+) as any as S.Schema<GoogleAudienceTargetingSettingList>;
+
 /** Details of Google audience group. All Google audience targeting settings are logically 'OR' of each other. */
 export interface GoogleAudienceGroup {
   /** Required. All Google audience targeting settings in Google audience group. Repeated settings with the same id will be ignored. */
   settings?: GoogleAudienceTargetingSettingList;
 }
+const GoogleAudienceGroup = /*@__PURE__*/ __L.at(__c7, 6) as any as S.Schema<GoogleAudienceGroup>;
+
 /** Details of custom list targeting setting. */
 export interface CustomListTargetingSetting {
   /** Required. Custom id of custom list targeting setting. This id is custom_list_id. */
   customListId?: string;
 }
+const CustomListTargetingSetting = /*@__PURE__*/ __L.at(
+  __c7,
+  7,
+) as any as S.Schema<CustomListTargetingSetting>;
+
 export type CustomListTargetingSettingList = Array<CustomListTargetingSetting>;
+const CustomListTargetingSettingList = /*@__PURE__*/ __L.at(
+  __c8,
+  0,
+) as any as S.Schema<CustomListTargetingSettingList>;
+
 /** Details of custom list group. All custom list targeting settings are logically 'OR' of each other. */
 export interface CustomListGroup {
   /** Required. All custom list targeting settings in custom list group. Repeated settings with the same id will be ignored. */
   settings?: CustomListTargetingSettingList;
 }
+const CustomListGroup = /*@__PURE__*/ __L.at(__c8, 1) as any as S.Schema<CustomListGroup>;
+
 /** Details of combined audience targeting setting. */
 export interface CombinedAudienceTargetingSetting {
   /** Required. Combined audience id of combined audience targeting setting. This id is combined_audience_id. */
   combinedAudienceId?: string;
 }
+const CombinedAudienceTargetingSetting = /*@__PURE__*/ __L.at(
+  __c8,
+  2,
+) as any as S.Schema<CombinedAudienceTargetingSetting>;
+
 export type CombinedAudienceTargetingSettingList = Array<CombinedAudienceTargetingSetting>;
+const CombinedAudienceTargetingSettingList = /*@__PURE__*/ __L.at(
+  __c8,
+  3,
+) as any as S.Schema<CombinedAudienceTargetingSettingList>;
+
 /** Details of combined audience group. All combined audience targeting settings are logically 'OR' of each other. */
 export interface CombinedAudienceGroup {
   /** Required. All combined audience targeting settings in combined audience group. Repeated settings with the same id will be ignored. The number of combined audience settings should be no more than five, error will be thrown otherwise. */
   settings?: CombinedAudienceTargetingSettingList;
 }
+const CombinedAudienceGroup = /*@__PURE__*/ __L.at(
+  __c8,
+  4,
+) as any as S.Schema<CombinedAudienceGroup>;
+
 /** Assigned audience group targeting option details. This will be populated in the details field of an AssignedTargetingOption when targeting_type is `TARGETING_TYPE_AUDIENCE_GROUP`. The relation between each group is UNION, except for excluded_first_and_third_party_audience_group and excluded_google_audience_group, of which COMPLEMENT is used as an INTERSECTION with other groups. */
 export interface AudienceGroupAssignedTargetingOptionDetails {
   /** Optional. The Google audience ids of the included Google audience group. Contains Google audience ids only. */
@@ -1084,6 +1477,11 @@ export interface AudienceGroupAssignedTargetingOptionDetails {
   /** Optional. The combined audience ids of the included combined audience group. Contains combined audience ids only. */
   includedCombinedAudienceGroup?: CombinedAudienceGroup;
 }
+const AudienceGroupAssignedTargetingOptionDetails = /*@__PURE__*/ __L.at(
+  __c8,
+  5,
+) as any as S.Schema<AudienceGroupAssignedTargetingOptionDetails>;
+
 /** Details for assigned channel targeting option. This will be populated in the details field of an AssignedTargetingOption when targeting_type is `TARGETING_TYPE_CHANNEL`. */
 export interface ChannelAssignedTargetingOptionDetails {
   /** Indicates if this option is being negatively targeted. For advertiser level assigned targeting option, this field must be true. */
@@ -1091,6 +1489,11 @@ export interface ChannelAssignedTargetingOptionDetails {
   /** Required. ID of the channel. Should refer to the channel ID field on a [Partner-owned channel](partners.channels#Channel.FIELDS.channel_id) or [advertiser-owned channel](advertisers.channels#Channel.FIELDS.channel_id) resource. */
   channelId?: string;
 }
+const ChannelAssignedTargetingOptionDetails = /*@__PURE__*/ __L.at(
+  __c8,
+  6,
+) as any as S.Schema<ChannelAssignedTargetingOptionDetails>;
+
 export type AgeRangeAssignedTargetingOptionDetailsAgeRangeEnum =
   | "AGE_RANGE_UNSPECIFIED"
   | "AGE_RANGE_18_24"
@@ -1110,11 +1513,18 @@ export type AgeRangeAssignedTargetingOptionDetailsAgeRangeEnum =
   | "AGE_RANGE_50_54"
   | "AGE_RANGE_55_59"
   | "AGE_RANGE_60_64";
+const AgeRangeAssignedTargetingOptionDetailsAgeRangeEnum = S.String;
+
 /** Represents a targetable age range. This will be populated in the details field of an AssignedTargetingOption when targeting_type is `TARGETING_TYPE_AGE_RANGE`. */
 export interface AgeRangeAssignedTargetingOptionDetails {
   /** Required. The age range of an audience. We only support targeting a continuous age range of an audience. Thus, the age range represented in this field can be 1) targeted solely, or, 2) part of a larger continuous age range. The reach of a continuous age range targeting can be expanded by also targeting an audience of an unknown age. */
   ageRange?: AgeRangeAssignedTargetingOptionDetailsAgeRangeEnum | (string & {});
 }
+const AgeRangeAssignedTargetingOptionDetails = /*@__PURE__*/ __L.at(
+  __c8,
+  7,
+) as any as S.Schema<AgeRangeAssignedTargetingOptionDetails>;
+
 export type DigitalContentLabelAssignedTargetingOptionDetailsExcludedContentRatingTierEnum =
   | "CONTENT_RATING_TIER_UNSPECIFIED"
   | "CONTENT_RATING_TIER_UNRATED"
@@ -1123,6 +1533,8 @@ export type DigitalContentLabelAssignedTargetingOptionDetailsExcludedContentRati
   | "CONTENT_RATING_TIER_TEENS"
   | "CONTENT_RATING_TIER_MATURE"
   | "CONTENT_RATING_TIER_FAMILIES";
+const DigitalContentLabelAssignedTargetingOptionDetailsExcludedContentRatingTierEnum = S.String;
+
 /** Targeting details for digital content label. This will be populated in the details field of an AssignedTargetingOption when targeting_type is `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION`. */
 export interface DigitalContentLabelAssignedTargetingOptionDetails {
   /** Required. The display name of the digital content label rating tier to be EXCLUDED. This field only accepts the value `CONTENT_RATING_TIER_UNRATED`. */
@@ -1130,10 +1542,17 @@ export interface DigitalContentLabelAssignedTargetingOptionDetails {
     | DigitalContentLabelAssignedTargetingOptionDetailsExcludedContentRatingTierEnum
     | (string & {});
 }
+const DigitalContentLabelAssignedTargetingOptionDetails = /*@__PURE__*/ __L.at(
+  __c9,
+  0,
+) as any as S.Schema<DigitalContentLabelAssignedTargetingOptionDetails>;
+
 export type PoiAssignedTargetingOptionDetailsProximityRadiusUnitEnum =
   | "DISTANCE_UNIT_UNSPECIFIED"
   | "DISTANCE_UNIT_MILES"
   | "DISTANCE_UNIT_KILOMETERS";
+const PoiAssignedTargetingOptionDetailsProximityRadiusUnitEnum = S.String;
+
 /** Details for assigned POI targeting option. This will be populated in the details field of an AssignedTargetingOption when targeting_type is `TARGETING_TYPE_POI`. */
 export interface PoiAssignedTargetingOptionDetails {
   /** Output only. Longitude of the POI rounding to 6th decimal place. */
@@ -1149,10 +1568,17 @@ export interface PoiAssignedTargetingOptionDetails {
   /** Required. The unit of distance by which the targeting radius is measured. */
   proximityRadiusUnit?: PoiAssignedTargetingOptionDetailsProximityRadiusUnitEnum | (string & {});
 }
+const PoiAssignedTargetingOptionDetails = /*@__PURE__*/ __L.at(
+  __c9,
+  1,
+) as any as S.Schema<PoiAssignedTargetingOptionDetails>;
+
 export type ProximityLocationListAssignedTargetingOptionDetailsProximityRadiusUnitEnum =
   | "PROXIMITY_RADIUS_UNIT_UNSPECIFIED"
   | "PROXIMITY_RADIUS_UNIT_MILES"
   | "PROXIMITY_RADIUS_UNIT_KILOMETERS";
+const ProximityLocationListAssignedTargetingOptionDetailsProximityRadiusUnitEnum = S.String;
+
 /** Targeting details for proximity location list. This will be populated in the details field of an AssignedTargetingOption when targeting_type is `TARGETING_TYPE_PROXIMITY_LOCATION_LIST`. */
 export interface ProximityLocationListAssignedTargetingOptionDetails {
   /** Required. ID of the proximity location list. Should refer to the location_list_id field of a LocationList resource whose type is `TARGETING_LOCATION_TYPE_PROXIMITY`. */
@@ -1164,6 +1590,11 @@ export interface ProximityLocationListAssignedTargetingOptionDetails {
     | ProximityLocationListAssignedTargetingOptionDetailsProximityRadiusUnitEnum
     | (string & {});
 }
+const ProximityLocationListAssignedTargetingOptionDetails = /*@__PURE__*/ __L.at(
+  __c9,
+  2,
+) as any as S.Schema<ProximityLocationListAssignedTargetingOptionDetails>;
+
 export type ContentDurationAssignedTargetingOptionDetailsContentDurationEnum =
   | "CONTENT_DURATION_UNSPECIFIED"
   | "CONTENT_DURATION_UNKNOWN"
@@ -1173,6 +1604,8 @@ export type ContentDurationAssignedTargetingOptionDetailsContentDurationEnum =
   | "CONTENT_DURATION_15_TO_30_MIN"
   | "CONTENT_DURATION_30_TO_60_MIN"
   | "CONTENT_DURATION_OVER_60_MIN";
+const ContentDurationAssignedTargetingOptionDetailsContentDurationEnum = S.String;
+
 /** Details for content duration assigned targeting option. This will be populated in the content_duration_details field when targeting_type is `TARGETING_TYPE_CONTENT_DURATION`. Explicitly targeting all options is not supported. Remove all content duration targeting options to achieve this effect. */
 export interface ContentDurationAssignedTargetingOptionDetails {
   /** Required. The targeting_option_id field when targeting_type is `TARGETING_TYPE_CONTENT_DURATION`. */
@@ -1182,11 +1615,21 @@ export interface ContentDurationAssignedTargetingOptionDetails {
     | ContentDurationAssignedTargetingOptionDetailsContentDurationEnum
     | (string & {});
 }
+const ContentDurationAssignedTargetingOptionDetails = /*@__PURE__*/ __L.at(
+  __c9,
+  3,
+) as any as S.Schema<ContentDurationAssignedTargetingOptionDetails>;
+
 /** Targeting details for negative keyword list. This will be populated in the details field of an AssignedTargetingOption when targeting_type is `TARGETING_TYPE_NEGATIVE_KEYWORD_LIST`. */
 export interface NegativeKeywordListAssignedTargetingOptionDetails {
   /** Required. ID of the negative keyword list. Should refer to the negative_keyword_list_id field of a NegativeKeywordList resource. */
   negativeKeywordListId?: string;
 }
+const NegativeKeywordListAssignedTargetingOptionDetails = /*@__PURE__*/ __L.at(
+  __c9,
+  4,
+) as any as S.Schema<NegativeKeywordListAssignedTargetingOptionDetails>;
+
 /** Details for assigned URL targeting option. This will be populated in the details field of an AssignedTargetingOption when targeting_type is `TARGETING_TYPE_URL`. */
 export interface UrlAssignedTargetingOptionDetails {
   /** Indicates if this option is being negatively targeted. */
@@ -1194,6 +1637,11 @@ export interface UrlAssignedTargetingOptionDetails {
   /** Required. The URL, for example `example.com`. DV360 supports two levels of subdirectory targeting, for example `www.example.com/one-subdirectory-level/second-level`, and five levels of subdomain targeting, for example `five.four.three.two.one.example.com`. */
   url?: string;
 }
+const UrlAssignedTargetingOptionDetails = /*@__PURE__*/ __L.at(
+  __c9,
+  5,
+) as any as S.Schema<UrlAssignedTargetingOptionDetails>;
+
 /** Details for content genre assigned targeting option. This will be populated in the content_genre_details field when targeting_type is `TARGETING_TYPE_CONTENT_GENRE`. Explicitly targeting all options is not supported. Remove all content genre targeting options to achieve this effect. */
 export interface ContentGenreAssignedTargetingOptionDetails {
   /** Indicates if this option is being negatively targeted. */
@@ -1203,6 +1651,9 @@ export interface ContentGenreAssignedTargetingOptionDetails {
   /** Required. The targeting_option_id field when targeting_type is `TARGETING_TYPE_CONTENT_GENRE`. */
   targetingOptionId?: string;
 }
+const ContentGenreAssignedTargetingOptionDetails =
+  CategoryAssignedTargetingOptionDetails as any as S.Schema<ContentGenreAssignedTargetingOptionDetails>;
+
 export type DeviceTypeAssignedTargetingOptionDetailsDeviceTypeEnum =
   | "DEVICE_TYPE_UNSPECIFIED"
   | "DEVICE_TYPE_COMPUTER"
@@ -1210,6 +1661,8 @@ export type DeviceTypeAssignedTargetingOptionDetailsDeviceTypeEnum =
   | "DEVICE_TYPE_SMART_PHONE"
   | "DEVICE_TYPE_TABLET"
   | "DEVICE_TYPE_CONNECTED_DEVICE";
+const DeviceTypeAssignedTargetingOptionDetailsDeviceTypeEnum = S.String;
+
 /** Targeting details for device type. This will be populated in the details field of an AssignedTargetingOption when targeting_type is `TARGETING_TYPE_DEVICE_TYPE`. */
 export interface DeviceTypeAssignedTargetingOptionDetails {
   /** Optional. Bid multiplier allows you to show your ads more or less frequently based on the device type. It will apply a multiplier on the original bid price. When this field is 0, it indicates this field is not applicable instead of multiplying 0 on the original bid price. For example, if the bid price without multiplier is $10.0 and the multiplier is 1.5 for Tablet, the resulting bid price for Tablet will be $15.0. Only applicable to YouTube and Partners line items. */
@@ -1217,11 +1670,21 @@ export interface DeviceTypeAssignedTargetingOptionDetails {
   /** Required. The display name of the device type. */
   deviceType?: DeviceTypeAssignedTargetingOptionDetailsDeviceTypeEnum | (string & {});
 }
+const DeviceTypeAssignedTargetingOptionDetails = /*@__PURE__*/ __L.at(
+  __c9,
+  6,
+) as any as S.Schema<DeviceTypeAssignedTargetingOptionDetails>;
+
 /** Targeting details for inventory source. This will be populated in the details field of an AssignedTargetingOption when targeting_type is one of `TARGETING_TYPE_INVENTORY_SOURCE` or `TARGETING_TYPE_INVENTORY_SOURCE_DEAL`. */
 export interface InventorySourceAssignedTargetingOptionDetails {
   /** Required. ID of the inventory source. Should refer to the inventory_source_id field of an InventorySource resource. */
   inventorySourceId?: string;
 }
+const InventorySourceAssignedTargetingOptionDetails = /*@__PURE__*/ __L.at(
+  __c9,
+  7,
+) as any as S.Schema<InventorySourceAssignedTargetingOptionDetails>;
+
 export type AudioContentTypeAssignedTargetingOptionDetailsAudioContentTypeEnum =
   | "AUDIO_CONTENT_TYPE_UNSPECIFIED"
   | "AUDIO_CONTENT_TYPE_UNKNOWN"
@@ -1232,6 +1695,8 @@ export type AudioContentTypeAssignedTargetingOptionDetailsAudioContentTypeEnum =
   | "AUDIO_CONTENT_TYPE_WEB_RADIO"
   | "AUDIO_CONTENT_TYPE_VIDEO_GAME"
   | "AUDIO_CONTENT_TYPE_TEXT_TO_SPEECH";
+const AudioContentTypeAssignedTargetingOptionDetailsAudioContentTypeEnum = S.String;
+
 /** Details for audio content type assigned targeting option. This will be populated in the audio_content_type_details field when targeting_type is `TARGETING_TYPE_AUDIO_CONTENT_TYPE`. Explicitly targeting all options is not supported. Remove all audio content type targeting options to achieve this effect. */
 export interface AudioContentTypeAssignedTargetingOptionDetails {
   /** Required. The audio content type. */
@@ -1239,6 +1704,11 @@ export interface AudioContentTypeAssignedTargetingOptionDetails {
     | AudioContentTypeAssignedTargetingOptionDetailsAudioContentTypeEnum
     | (string & {});
 }
+const AudioContentTypeAssignedTargetingOptionDetails = /*@__PURE__*/ __L.at(
+  __c10,
+  0,
+) as any as S.Schema<AudioContentTypeAssignedTargetingOptionDetails>;
+
 /** Details for assigned app category targeting option. This will be populated in the app_category_details field of an AssignedTargetingOption when targeting_type is `TARGETING_TYPE_APP_CATEGORY`. */
 export interface AppCategoryAssignedTargetingOptionDetails {
   /** Indicates if this option is being negatively targeted. */
@@ -1248,6 +1718,11 @@ export interface AppCategoryAssignedTargetingOptionDetails {
   /** Output only. The display name of the app category. */
   displayName?: string;
 }
+const AppCategoryAssignedTargetingOptionDetails = /*@__PURE__*/ __L.at(
+  __c10,
+  1,
+) as any as S.Schema<AppCategoryAssignedTargetingOptionDetails>;
+
 export type AppAssignedTargetingOptionDetailsAppPlatformEnum =
   | "APP_PLATFORM_UNSPECIFIED"
   | "APP_PLATFORM_IOS"
@@ -1263,6 +1738,8 @@ export type AppAssignedTargetingOptionDetailsAppPlatformEnum =
   | "APP_PLATFORM_LG_TV"
   | "APP_PLATFORM_VIZIO_TV"
   | "APP_PLATFORM_VIDAA";
+const AppAssignedTargetingOptionDetailsAppPlatformEnum = S.String;
+
 /** Details for assigned app targeting option. This will be populated in the details field of an AssignedTargetingOption when targeting_type is `TARGETING_TYPE_APP`. */
 export interface AppAssignedTargetingOptionDetails {
   /** Required. The ID of the app. Android's Play store app uses bundle ID, for example `com.google.android.gm`. Apple's App store app ID uses 9 digit string, for example `422689480`. */
@@ -1274,16 +1751,25 @@ export interface AppAssignedTargetingOptionDetails {
   /** Indicates the platform of the targeted app. If this field is not specified, the app platform will be assumed to be mobile (i.e., Android or iOS), and we will derive the appropriate mobile platform from the app ID. */
   appPlatform?: AppAssignedTargetingOptionDetailsAppPlatformEnum | (string & {});
 }
+const AppAssignedTargetingOptionDetails = /*@__PURE__*/ __L.at(
+  __c10,
+  2,
+) as any as S.Schema<AppAssignedTargetingOptionDetails>;
+
 export type OnScreenPositionAssignedTargetingOptionDetailsOnScreenPositionEnum =
   | "ON_SCREEN_POSITION_UNSPECIFIED"
   | "ON_SCREEN_POSITION_UNKNOWN"
   | "ON_SCREEN_POSITION_ABOVE_THE_FOLD"
   | "ON_SCREEN_POSITION_BELOW_THE_FOLD";
+const OnScreenPositionAssignedTargetingOptionDetailsOnScreenPositionEnum = S.String;
+
 export type OnScreenPositionAssignedTargetingOptionDetailsAdTypeEnum =
   | "AD_TYPE_UNSPECIFIED"
   | "AD_TYPE_DISPLAY"
   | "AD_TYPE_VIDEO"
   | "AD_TYPE_AUDIO";
+const OnScreenPositionAssignedTargetingOptionDetailsAdTypeEnum = S.String;
+
 /** On screen position targeting option details. This will be populated in the on_screen_position_details field when targeting_type is `TARGETING_TYPE_ON_SCREEN_POSITION`. */
 export interface OnScreenPositionAssignedTargetingOptionDetails {
   /** Required. The targeting_option_id field when targeting_type is `TARGETING_TYPE_ON_SCREEN_POSITION`. */
@@ -1295,6 +1781,11 @@ export interface OnScreenPositionAssignedTargetingOptionDetails {
   /** Output only. The ad type to target. Only applicable to insertion order targeting and new line items supporting the specified ad type will inherit this targeting option by default. Possible values are: * `AD_TYPE_DISPLAY`, the setting will be inherited by new line item when line_item_type is `LINE_ITEM_TYPE_DISPLAY_DEFAULT`. * `AD_TYPE_VIDEO`, the setting will be inherited by new line item when line_item_type is `LINE_ITEM_TYPE_VIDEO_DEFAULT`. */
   adType?: OnScreenPositionAssignedTargetingOptionDetailsAdTypeEnum | (string & {});
 }
+const OnScreenPositionAssignedTargetingOptionDetails = /*@__PURE__*/ __L.at(
+  __c10,
+  3,
+) as any as S.Schema<OnScreenPositionAssignedTargetingOptionDetails>;
+
 export type ViewabilityAssignedTargetingOptionDetailsViewabilityEnum =
   | "VIEWABILITY_UNSPECIFIED"
   | "VIEWABILITY_10_PERCENT_OR_MORE"
@@ -1306,35 +1797,58 @@ export type ViewabilityAssignedTargetingOptionDetailsViewabilityEnum =
   | "VIEWABILITY_70_PERCENT_OR_MORE"
   | "VIEWABILITY_80_PERCENT_OR_MORE"
   | "VIEWABILITY_90_PERCENT_OR_MORE";
+const ViewabilityAssignedTargetingOptionDetailsViewabilityEnum = S.String;
+
 /** Assigned viewability targeting option details. This will be populated in the viewability_details field of an AssignedTargetingOption when targeting_type is `TARGETING_TYPE_VIEWABILITY`. */
 export interface ViewabilityAssignedTargetingOptionDetails {
   /** Required. The predicted viewability percentage. */
   viewability?: ViewabilityAssignedTargetingOptionDetailsViewabilityEnum | (string & {});
 }
+const ViewabilityAssignedTargetingOptionDetails = /*@__PURE__*/ __L.at(
+  __c10,
+  4,
+) as any as S.Schema<ViewabilityAssignedTargetingOptionDetails>;
+
 export type EnvironmentAssignedTargetingOptionDetailsEnvironmentEnum =
   | "ENVIRONMENT_UNSPECIFIED"
   | "ENVIRONMENT_WEB_OPTIMIZED"
   | "ENVIRONMENT_WEB_NOT_OPTIMIZED"
   | "ENVIRONMENT_APP";
+const EnvironmentAssignedTargetingOptionDetailsEnvironmentEnum = S.String;
+
 /** Assigned environment targeting option details. This will be populated in the details field of an AssignedTargetingOption when targeting_type is `TARGETING_TYPE_ENVIRONMENT`. */
 export interface EnvironmentAssignedTargetingOptionDetails {
   /** Required. The serving environment. */
   environment?: EnvironmentAssignedTargetingOptionDetailsEnvironmentEnum | (string & {});
 }
+const EnvironmentAssignedTargetingOptionDetails = /*@__PURE__*/ __L.at(
+  __c10,
+  5,
+) as any as S.Schema<EnvironmentAssignedTargetingOptionDetails>;
+
 export type GenderAssignedTargetingOptionDetailsGenderEnum =
   | "GENDER_UNSPECIFIED"
   | "GENDER_MALE"
   | "GENDER_FEMALE"
   | "GENDER_UNKNOWN";
+const GenderAssignedTargetingOptionDetailsGenderEnum = S.String;
+
 /** Details for assigned gender targeting option. This will be populated in the details field of an AssignedTargetingOption when targeting_type is `TARGETING_TYPE_GENDER`. */
 export interface GenderAssignedTargetingOptionDetails {
   /** Required. The gender of the audience. */
   gender?: GenderAssignedTargetingOptionDetailsGenderEnum | (string & {});
 }
+const GenderAssignedTargetingOptionDetails = /*@__PURE__*/ __L.at(
+  __c10,
+  6,
+) as any as S.Schema<GenderAssignedTargetingOptionDetails>;
+
 export type AuthorizedSellerStatusAssignedTargetingOptionDetailsAuthorizedSellerStatusEnum =
   | "AUTHORIZED_SELLER_STATUS_UNSPECIFIED"
   | "AUTHORIZED_SELLER_STATUS_AUTHORIZED_DIRECT_SELLERS_ONLY"
   | "AUTHORIZED_SELLER_STATUS_AUTHORIZED_AND_NON_PARTICIPATING_PUBLISHERS";
+const AuthorizedSellerStatusAssignedTargetingOptionDetailsAuthorizedSellerStatusEnum = S.String;
+
 /** Represents an assigned authorized seller status. This will be populated in the details field of an AssignedTargetingOption when targeting_type is `TARGETING_TYPE_AUTHORIZED_SELLER_STATUS`. If a resource does not have an `TARGETING_TYPE_AUTHORIZED_SELLER_STATUS` assigned targeting option, it is using the "Authorized Direct Sellers and Resellers" option. */
 export interface AuthorizedSellerStatusAssignedTargetingOptionDetails {
   /** Required. The targeting_option_id of a TargetingOption of type `TARGETING_TYPE_AUTHORIZED_SELLER_STATUS`. */
@@ -1344,21 +1858,35 @@ export interface AuthorizedSellerStatusAssignedTargetingOptionDetails {
     | AuthorizedSellerStatusAssignedTargetingOptionDetailsAuthorizedSellerStatusEnum
     | (string & {});
 }
+const AuthorizedSellerStatusAssignedTargetingOptionDetails = /*@__PURE__*/ __L.at(
+  __c10,
+  7,
+) as any as S.Schema<AuthorizedSellerStatusAssignedTargetingOptionDetails>;
+
 export type ParentalStatusAssignedTargetingOptionDetailsParentalStatusEnum =
   | "PARENTAL_STATUS_UNSPECIFIED"
   | "PARENTAL_STATUS_PARENT"
   | "PARENTAL_STATUS_NOT_A_PARENT"
   | "PARENTAL_STATUS_UNKNOWN";
+const ParentalStatusAssignedTargetingOptionDetailsParentalStatusEnum = S.String;
+
 /** Details for assigned parental status targeting option. This will be populated in the details field of an AssignedTargetingOption when targeting_type is `TARGETING_TYPE_PARENTAL_STATUS`. */
 export interface ParentalStatusAssignedTargetingOptionDetails {
   /** Required. The parental status of the audience. */
   parentalStatus?: ParentalStatusAssignedTargetingOptionDetailsParentalStatusEnum | (string & {});
 }
+const ParentalStatusAssignedTargetingOptionDetails = /*@__PURE__*/ __L.at(
+  __c11,
+  0,
+) as any as S.Schema<ParentalStatusAssignedTargetingOptionDetails>;
+
 export type AssignedTargetingOptionInheritanceEnum =
   | "INHERITANCE_UNSPECIFIED"
   | "NOT_INHERITED"
   | "INHERITED_FROM_PARTNER"
   | "INHERITED_FROM_ADVERTISER";
+const AssignedTargetingOptionInheritanceEnum = S.String;
+
 /** A single assigned targeting option, which defines the state of a targeting option for an entity with targeting settings. */
 export interface AssignedTargetingOption {
   /** Regional location list details. This field will be populated when the targeting_type is `TARGETING_TYPE_REGIONAL_LOCATION_LIST`. */
@@ -1470,7 +1998,17 @@ export interface AssignedTargetingOption {
   /** Output only. The inheritance status of the assigned targeting option. */
   inheritance?: AssignedTargetingOptionInheritanceEnum | (string & {});
 }
+const AssignedTargetingOption = /*@__PURE__*/ __L.at(
+  __c11,
+  1,
+) as any as S.Schema<AssignedTargetingOption>;
+
 export type AssignedTargetingOptionList = Array<AssignedTargetingOption>;
+const AssignedTargetingOptionList = /*@__PURE__*/ __L.at(
+  __c11,
+  2,
+) as any as S.Schema<AssignedTargetingOptionList>;
+
 export type CreateAssignedTargetingOptionsRequestTargetingTypeEnum =
   | "TARGETING_TYPE_UNSPECIFIED"
   | "TARGETING_TYPE_CHANNEL"
@@ -1521,6 +2059,8 @@ export type CreateAssignedTargetingOptionsRequestTargetingTypeEnum =
   | "TARGETING_TYPE_YOUTUBE_CHANNEL"
   | "TARGETING_TYPE_SESSION_POSITION"
   | "TARGETING_TYPE_YOUTUBE_CHANNEL_PACK";
+const CreateAssignedTargetingOptionsRequestTargetingTypeEnum = S.String;
+
 /** A request listing which assigned targeting options of a given targeting type should be created and added. */
 export interface CreateAssignedTargetingOptionsRequest {
   /** Required. The assigned targeting options to create and add. */
@@ -1528,8 +2068,18 @@ export interface CreateAssignedTargetingOptionsRequest {
   /** Required. Identifies the type of this assigned targeting option. */
   targetingType?: CreateAssignedTargetingOptionsRequestTargetingTypeEnum | (string & {});
 }
+const CreateAssignedTargetingOptionsRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  3,
+) as any as S.Schema<CreateAssignedTargetingOptionsRequest>;
+
 export type CreateAssignedTargetingOptionsRequestList =
   Array<CreateAssignedTargetingOptionsRequest>;
+const CreateAssignedTargetingOptionsRequestList = /*@__PURE__*/ __L.at(
+  __c11,
+  4,
+) as any as S.Schema<CreateAssignedTargetingOptionsRequestList>;
+
 /** Request message for BulkEditLineItemsAssignedTargetingOptions. */
 export interface BulkEditAssignedTargetingOptionsRequest {
   /** The assigned targeting options to delete in batch, specified as a list of DeleteAssignedTargetingOptionsRequest. Supported targeting types include: * `TARGETING_TYPE_AGE_RANGE` * `TARGETING_TYPE_APP` * `TARGETING_TYPE_APP_CATEGORY` * `TARGETING_TYPE_AUDIENCE_GROUP` * `TARGETING_TYPE_AUDIO_CONTENT_TYPE` * `TARGETING_TYPE_AUTHORIZED_SELLER_STATUS` * `TARGETING_TYPE_BROWSER` * `TARGETING_TYPE_BUSINESS_CHAIN` * `TARGETING_TYPE_CARRIER_AND_ISP` * `TARGETING_TYPE_CATEGORY` * `TARGETING_TYPE_CHANNEL` * `TARGETING_TYPE_CONTENT_DURATION` * `TARGETING_TYPE_CONTENT_GENRE` * `TARGETING_TYPE_CONTENT_INSTREAM_POSITION` * `TARGETING_TYPE_CONTENT_OUTSTREAM_POSITION` * `TARGETING_TYPE_CONTENT_STREAM_TYPE` * `TARGETING_TYPE_DAY_AND_TIME` * `TARGETING_TYPE_DEVICE_MAKE_MODEL` * `TARGETING_TYPE_DEVICE_TYPE` * `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_ENVIRONMENT` * `TARGETING_TYPE_EXCHANGE` * `TARGETING_TYPE_GENDER` * `TARGETING_TYPE_GEO_REGION` * `TARGETING_TYPE_HOUSEHOLD_INCOME` * `TARGETING_TYPE_INVENTORY_SOURCE` * `TARGETING_TYPE_INVENTORY_SOURCE_GROUP` * `TARGETING_TYPE_KEYWORD` * `TARGETING_TYPE_LANGUAGE` * `TARGETING_TYPE_NATIVE_CONTENT_POSITION` * `TARGETING_TYPE_NEGATIVE_KEYWORD_LIST` * `TARGETING_TYPE_OMID` * `TARGETING_TYPE_ON_SCREEN_POSITION` * `TARGETING_TYPE_OPERATING_SYSTEM` * `TARGETING_TYPE_PARENTAL_STATUS` * `TARGETING_TYPE_POI` * `TARGETING_TYPE_PROXIMITY_LOCATION_LIST` * `TARGETING_TYPE_REGIONAL_LOCATION_LIST` * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_SUB_EXCHANGE` * `TARGETING_TYPE_THIRD_PARTY_VERIFIER` * `TARGETING_TYPE_URL` * `TARGETING_TYPE_USER_REWARDED_CONTENT` * `TARGETING_TYPE_VIDEO_PLAYER_SIZE` * `TARGETING_TYPE_VIEWABILITY` */
@@ -1539,14 +2089,28 @@ export interface BulkEditAssignedTargetingOptionsRequest {
   /** Required. The ID of the line items whose targeting is being updated. */
   lineItemIds?: StringList;
 }
+const BulkEditAssignedTargetingOptionsRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  5,
+) as any as S.Schema<BulkEditAssignedTargetingOptionsRequest>;
+
 export interface BulkEditAssignedTargetingOptionsAdvertisersLineItemsRequest {
   /** Required. The ID of the advertiser the line items belong to. */
   advertiserId: string;
   /** Request body */
   body?: BulkEditAssignedTargetingOptionsRequest;
 }
+const BulkEditAssignedTargetingOptionsAdvertisersLineItemsRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  6,
+) as any as S.Schema<BulkEditAssignedTargetingOptionsAdvertisersLineItemsRequest>;
+
 export type DocumentMap = { [key: string]: unknown | undefined };
+const DocumentMap = /*@__PURE__*/ __L.at(__c11, 7) as any as S.Schema<DocumentMap>;
+
 export type DocumentMapList = Array<DocumentMap>;
+const DocumentMapList = /*@__PURE__*/ __L.at(__c12, 0) as any as S.Schema<DocumentMapList>;
+
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
   /** The status code, which should be an enum value of google.rpc.Code. */
@@ -1556,7 +2120,11 @@ export interface Status {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
   message?: string;
 }
+const Status = /*@__PURE__*/ __L.at(__c12, 1) as any as S.Schema<Status>;
+
 export type StatusList = Array<Status>;
+const StatusList = /*@__PURE__*/ __L.at(__c12, 2) as any as S.Schema<StatusList>;
+
 export interface BulkEditAssignedTargetingOptionsResponse {
   /** The error information for each line item that failed to update. */
   errors?: StatusList;
@@ -1565,6 +2133,11 @@ export interface BulkEditAssignedTargetingOptionsResponse {
   /** Output only. The IDs of the line items which successfully updated. */
   updatedLineItemIds?: StringList;
 }
+const BulkEditAssignedTargetingOptionsResponse = /*@__PURE__*/ __L.at(
+  __c12,
+  3,
+) as any as S.Schema<BulkEditAssignedTargetingOptionsResponse>;
+
 export type AssignedUserRoleUserRoleEnum =
   | "USER_ROLE_UNSPECIFIED"
   | "ADMIN"
@@ -1578,6 +2151,8 @@ export type AssignedUserRoleUserRoleEnum =
   | "LIMITED_REPORTING_ONLY"
   | "CREATIVE"
   | "CREATIVE_ADMIN";
+const AssignedUserRoleUserRoleEnum = S.String;
+
 /** A single assigned user role, which defines a user's authorized interaction with a specified partner or advertiser. */
 export interface AssignedUserRole {
   /** Output only. The ID of the assigned user role. */
@@ -1589,7 +2164,14 @@ export interface AssignedUserRole {
   /** The ID of the advertiser that the assigend user role applies to. */
   advertiserId?: string;
 }
+const AssignedUserRole = /*@__PURE__*/ __L.at(__c12, 4) as any as S.Schema<AssignedUserRole>;
+
 export type AssignedUserRoleList = Array<AssignedUserRole>;
+const AssignedUserRoleList = /*@__PURE__*/ __L.at(
+  __c12,
+  5,
+) as any as S.Schema<AssignedUserRoleList>;
+
 /** Request message for BulkEditAssignedUserRoles. */
 export interface BulkEditAssignedUserRolesRequest {
   /** The assigned user roles to delete in batch, specified as a list of assigned_user_role_ids. The format of assigned_user_role_id is `entityType-entityid`, for example `partner-123`. */
@@ -1597,16 +2179,31 @@ export interface BulkEditAssignedUserRolesRequest {
   /** The assigned user roles to create in batch, specified as a list of AssignedUserRoles. */
   createdAssignedUserRoles?: AssignedUserRoleList;
 }
+const BulkEditAssignedUserRolesRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  6,
+) as any as S.Schema<BulkEditAssignedUserRolesRequest>;
+
 export interface BulkEditAssignedUserRolesUsersRequest {
   /** Required. The ID of the user to which the assigned user roles belong. */
   userId: string;
   /** Request body */
   body?: BulkEditAssignedUserRolesRequest;
 }
+const BulkEditAssignedUserRolesUsersRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  7,
+) as any as S.Schema<BulkEditAssignedUserRolesUsersRequest>;
+
 export interface BulkEditAssignedUserRolesResponse {
   /** The list of assigned user roles that have been successfully created. This list will be absent if empty. */
   createdAssignedUserRoles?: AssignedUserRoleList;
 }
+const BulkEditAssignedUserRolesResponse = /*@__PURE__*/ __L.at(
+  __c13,
+  0,
+) as any as S.Schema<BulkEditAssignedUserRolesResponse>;
+
 /** An assignment between a targetable inventory source and an inventory source group. */
 export interface AssignedInventorySource {
   /** Output only. The resource name of the assigned inventory source. */
@@ -1616,7 +2213,17 @@ export interface AssignedInventorySource {
   /** Output only. The unique ID of the assigned inventory source. The ID is only unique within a given inventory source group. It may be reused in other contexts. */
   assignedInventorySourceId?: string;
 }
+const AssignedInventorySource = /*@__PURE__*/ __L.at(
+  __c13,
+  1,
+) as any as S.Schema<AssignedInventorySource>;
+
 export type AssignedInventorySourceList = Array<AssignedInventorySource>;
+const AssignedInventorySourceList = /*@__PURE__*/ __L.at(
+  __c13,
+  2,
+) as any as S.Schema<AssignedInventorySourceList>;
+
 /** Request message for AssignedInventorySourceService.BulkEdit. */
 export interface BulkEditAssignedInventorySourcesRequest {
   /** The ID of the advertiser that owns the parent inventory source group. The parent partner does not have access to these assigned inventory sources. */
@@ -1628,17 +2235,32 @@ export interface BulkEditAssignedInventorySourcesRequest {
   /** The assigned inventory sources to create in bulk, specified as a list of AssignedInventorySources. */
   createdAssignedInventorySources?: AssignedInventorySourceList;
 }
+const BulkEditAssignedInventorySourcesRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  3,
+) as any as S.Schema<BulkEditAssignedInventorySourcesRequest>;
+
 export interface BulkEditInventorySourceGroupsAssignedInventorySourcesRequest {
   /** Required. The ID of the inventory source group to which the assignments are assigned. */
   inventorySourceGroupId: string;
   /** Request body */
   body?: BulkEditAssignedInventorySourcesRequest;
 }
+const BulkEditInventorySourceGroupsAssignedInventorySourcesRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  4,
+) as any as S.Schema<BulkEditInventorySourceGroupsAssignedInventorySourcesRequest>;
+
 /** Response message for AssignedInventorySourceService.BulkEdit. */
 export interface BulkEditAssignedInventorySourcesResponse {
   /** The list of assigned inventory sources that have been successfully created. This list will be absent if empty. */
   assignedInventorySources?: AssignedInventorySourceList;
 }
+const BulkEditAssignedInventorySourcesResponse = /*@__PURE__*/ __L.at(
+  __c13,
+  5,
+) as any as S.Schema<BulkEditAssignedInventorySourcesResponse>;
+
 export interface BulkEditPartnersChannelsSitesRequest {
   /** The ID of the partner that owns the parent channel. */
   partnerId: string;
@@ -1647,6 +2269,11 @@ export interface BulkEditPartnersChannelsSitesRequest {
   /** Request body */
   body?: BulkEditSitesRequest;
 }
+const BulkEditPartnersChannelsSitesRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  6,
+) as any as S.Schema<BulkEditPartnersChannelsSitesRequest>;
+
 export interface BulkListAdGroupAssignedTargetingOptionsAdvertisersYoutubeAdGroupsRequest {
   /** Optional. A token that lets the client fetch the next page of results. Typically, this is the value of next_page_token returned from the previous call to the `BulkListAdGroupAssignedTargetingOptions` method. If not specified, the first page of results will be returned. */
   pageToken?: string;
@@ -1661,6 +2288,12 @@ export interface BulkListAdGroupAssignedTargetingOptionsAdvertisersYoutubeAdGrou
   /** Required. The IDs of the youtube ad groups to list assigned targeting options for. */
   youtubeAdGroupIds?: StringList;
 }
+const BulkListAdGroupAssignedTargetingOptionsAdvertisersYoutubeAdGroupsRequest =
+  /*@__PURE__*/ __L.at(
+    __c13,
+    7,
+  ) as any as S.Schema<BulkListAdGroupAssignedTargetingOptionsAdvertisersYoutubeAdGroupsRequest>;
+
 /** Wrapper object associating an AssignedTargetingOption resource and the youtube ad group it is assigned to. */
 export interface YoutubeAdGroupAssignedTargetingOption {
   /** The ID of the youtube ad group the assigned targeting option is assigned to. */
@@ -1668,14 +2301,29 @@ export interface YoutubeAdGroupAssignedTargetingOption {
   /** The assigned targeting option resource. */
   assignedTargetingOption?: AssignedTargetingOption;
 }
+const YoutubeAdGroupAssignedTargetingOption = /*@__PURE__*/ __L.at(
+  __c14,
+  0,
+) as any as S.Schema<YoutubeAdGroupAssignedTargetingOption>;
+
 export type YoutubeAdGroupAssignedTargetingOptionList =
   Array<YoutubeAdGroupAssignedTargetingOption>;
+const YoutubeAdGroupAssignedTargetingOptionList = /*@__PURE__*/ __L.at(
+  __c14,
+  1,
+) as any as S.Schema<YoutubeAdGroupAssignedTargetingOptionList>;
+
 export interface BulkListAdGroupAssignedTargetingOptionsResponse {
   /** A token identifying the next page of results. This value should be specified as the pageToken in a subsequent call to `BulkListAdGroupAssignedTargetingOptions` to fetch the next page of results. This token will be absent if there are no more AdGroupAssignedTargetingOption resources to return. */
   nextPageToken?: string;
   /** The list of wrapper objects, each providing an assigned targeting option and the youtube ad group it is assigned to. This list will be absent if empty. */
   youtubeAdGroupAssignedTargetingOptions?: YoutubeAdGroupAssignedTargetingOptionList;
 }
+const BulkListAdGroupAssignedTargetingOptionsResponse = /*@__PURE__*/ __L.at(
+  __c14,
+  2,
+) as any as S.Schema<BulkListAdGroupAssignedTargetingOptionsResponse>;
+
 export interface BulkListAssignedTargetingOptionsAdvertisersLineItemsRequest {
   /** Field by which to sort the list. Acceptable values are: * `lineItemId` (default) * `assignedTargetingOption.targetingType` The default sorting order is ascending. To specify descending order for a field, a suffix "desc" should be added to the field name. Example: `targetingType desc`. */
   orderBy?: string;
@@ -1690,6 +2338,11 @@ export interface BulkListAssignedTargetingOptionsAdvertisersLineItemsRequest {
   /** Required. The ID of the advertiser the line items belongs to. */
   advertiserId: string;
 }
+const BulkListAssignedTargetingOptionsAdvertisersLineItemsRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  3,
+) as any as S.Schema<BulkListAssignedTargetingOptionsAdvertisersLineItemsRequest>;
+
 /** Wrapper object associating an assigned_targeting_option resource and the line item it is assigned to. */
 export interface LineItemAssignedTargetingOption {
   /** The ID of the line item the assigned targeting option is assigned to. */
@@ -1697,22 +2350,41 @@ export interface LineItemAssignedTargetingOption {
   /** The assigned targeting option resource. */
   assignedTargetingOption?: AssignedTargetingOption;
 }
+const LineItemAssignedTargetingOption = /*@__PURE__*/ __L.at(
+  __c14,
+  4,
+) as any as S.Schema<LineItemAssignedTargetingOption>;
+
 export type LineItemAssignedTargetingOptionList = Array<LineItemAssignedTargetingOption>;
+const LineItemAssignedTargetingOptionList = /*@__PURE__*/ __L.at(
+  __c14,
+  5,
+) as any as S.Schema<LineItemAssignedTargetingOptionList>;
+
 export interface BulkListAssignedTargetingOptionsResponse {
   /** A token identifying the next page of results. This value should be specified as the pageToken in a subsequent call to `BulkListAssignedTargetingOptions` to fetch the next page of results. This token will be absent if there are no more line_item_assigned_targeting_options to return. */
   nextPageToken?: string;
   /** The list of wrapper objects, each providing an assigned targeting option and the line item it is assigned to. This list will be absent if empty. */
   lineItemAssignedTargetingOptions?: LineItemAssignedTargetingOptionList;
 }
+const BulkListAssignedTargetingOptionsResponse = /*@__PURE__*/ __L.at(
+  __c14,
+  6,
+) as any as S.Schema<BulkListAssignedTargetingOptionsResponse>;
+
 export type LineItemBudgetBudgetUnitEnum =
   | "BUDGET_UNIT_UNSPECIFIED"
   | "BUDGET_UNIT_CURRENCY"
   | "BUDGET_UNIT_IMPRESSIONS";
+const LineItemBudgetBudgetUnitEnum = S.String;
+
 export type LineItemBudgetBudgetAllocationTypeEnum =
   | "LINE_ITEM_BUDGET_ALLOCATION_TYPE_UNSPECIFIED"
   | "LINE_ITEM_BUDGET_ALLOCATION_TYPE_AUTOMATIC"
   | "LINE_ITEM_BUDGET_ALLOCATION_TYPE_FIXED"
   | "LINE_ITEM_BUDGET_ALLOCATION_TYPE_UNLIMITED";
+const LineItemBudgetBudgetAllocationTypeEnum = S.String;
+
 /** Settings that control how budget is allocated. */
 export interface LineItemBudget {
   /** Output only. The budget unit specifies whether the budget is currency based or impression based. This value is inherited from the parent insertion order. */
@@ -1722,6 +2394,8 @@ export interface LineItemBudget {
   /** Required. The type of the budget allocation. `LINE_ITEM_BUDGET_ALLOCATION_TYPE_AUTOMATIC` is only applicable when automatic budget allocation is enabled for the parent insertion order. This field must be set to `LINE_ITEM_BUDGET_ALLOCATION_TYPE_FIXED` for Demand Gen line items. */
   budgetAllocationType?: LineItemBudgetBudgetAllocationTypeEnum | (string & {});
 }
+const LineItemBudget = /*@__PURE__*/ __L.at(__c14, 7) as any as S.Schema<LineItemBudget>;
+
 export type TargetingExpansionConfigTargetingExpansionLevelEnum =
   | "TARGETING_EXPANSION_LEVEL_UNSPECIFIED"
   | "NO_EXPANSION"
@@ -1730,6 +2404,8 @@ export type TargetingExpansionConfigTargetingExpansionLevelEnum =
   | "BALANCED_EXPANSION"
   | "MORE_EXPANSION"
   | "MOST_EXPANSION";
+const TargetingExpansionConfigTargetingExpansionLevelEnum = S.String;
+
 /** Settings that control the [optimized targeting](//support.google.com/displayvideo/answer/12060859) settings of the line item. */
 export interface TargetingExpansionConfig {
   /** Required. Whether optimized targeting is turned on. This field supports the following values: * `NO_EXPANSION`: optimized targeting is turned off * `LEAST_EXPANSION`: optimized targeting is turned on If this field is set to any other value, it will automatically be set to `LEAST_EXPANSION`. `NO_EXPANSION` will be the default value for the field and will be automatically assigned if you do not set the field. */
@@ -1739,6 +2415,11 @@ export interface TargetingExpansionConfig {
   /** Optional. Whether to exclude demographic expansion for Optimized Targeting. This field can only be set for Demand Gen ad groups. */
   excludeDemographicExpansion?: boolean;
 }
+const TargetingExpansionConfig = /*@__PURE__*/ __L.at(
+  __c15,
+  0,
+) as any as S.Schema<TargetingExpansionConfig>;
+
 export type LineItemWarningMessagesItemEnum =
   | "LINE_ITEM_WARNING_MESSAGE_UNSPECIFIED"
   | "INVALID_FLIGHT_DATES"
@@ -1755,10 +2436,15 @@ export type LineItemWarningMessagesItemEnum =
 export type LineItemWarningMessagesItemEnumList = Array<
   LineItemWarningMessagesItemEnum | (string & {})
 >;
+const LineItemWarningMessagesItemEnumList =
+  DoubleVerifyAvoidedAgeRatingsItemEnumList as any as S.Schema<LineItemWarningMessagesItemEnumList>;
+
 export type LineItemContainsEuPoliticalAdsEnum =
   | "EU_POLITICAL_ADVERTISING_STATUS_UNKNOWN"
   | "CONTAINS_EU_POLITICAL_ADVERTISING"
   | "DOES_NOT_CONTAIN_EU_POLITICAL_ADVERTISING";
+const LineItemContainsEuPoliticalAdsEnum = S.String;
+
 export type FrequencyCapTimeUnitEnum =
   | "TIME_UNIT_UNSPECIFIED"
   | "TIME_UNIT_LIFETIME"
@@ -1767,6 +2453,8 @@ export type FrequencyCapTimeUnitEnum =
   | "TIME_UNIT_DAYS"
   | "TIME_UNIT_HOURS"
   | "TIME_UNIT_MINUTES";
+const FrequencyCapTimeUnitEnum = S.String;
+
 /** Settings that control the number of times a user may be shown with the same ad during a given time period. */
 export interface FrequencyCap {
   /** Optional. The maximum number of times a user may click-through or fully view an ad during this period until it is no longer served to them. Must be greater than 0. Only applicable to YouTube and Partners resources. Required when unlimited is `false` and max_impressions is not set. */
@@ -1780,6 +2468,8 @@ export interface FrequencyCap {
   /** The time unit in which the frequency cap will be applied. Required when unlimited is `false`. */
   timeUnit?: FrequencyCapTimeUnitEnum | (string & {});
 }
+const FrequencyCap = /*@__PURE__*/ __L.at(__c15, 1) as any as S.Schema<FrequencyCap>;
+
 export type LineItemEntityStatusEnum =
   | "ENTITY_STATUS_UNSPECIFIED"
   | "ENTITY_STATUS_ACTIVE"
@@ -1787,6 +2477,8 @@ export type LineItemEntityStatusEnum =
   | "ENTITY_STATUS_DRAFT"
   | "ENTITY_STATUS_PAUSED"
   | "ENTITY_STATUS_SCHEDULED_FOR_DELETION";
+const LineItemEntityStatusEnum = S.String;
+
 /** Settings that control the behavior of a single Floodlight activity config. */
 export interface TrackingFloodlightActivityConfig {
   /** Required. The ID of the Floodlight activity. */
@@ -1796,7 +2488,17 @@ export interface TrackingFloodlightActivityConfig {
   /** Required. The number of days after an ad has been viewed in which a conversion may be counted. Must be between 0 and 90 inclusive. */
   postViewLookbackWindowDays?: number;
 }
+const TrackingFloodlightActivityConfig = /*@__PURE__*/ __L.at(
+  __c15,
+  2,
+) as any as S.Schema<TrackingFloodlightActivityConfig>;
+
 export type TrackingFloodlightActivityConfigList = Array<TrackingFloodlightActivityConfig>;
+const TrackingFloodlightActivityConfigList = /*@__PURE__*/ __L.at(
+  __c15,
+  3,
+) as any as S.Schema<TrackingFloodlightActivityConfigList>;
+
 /** Settings that control how conversions are counted. All post-click conversions will be counted. A percentage value can be set for post-view conversions counting. */
 export interface ConversionCountingConfig {
   /** The percentage of post-view conversions to count, in millis (1/1000 of a percent). Must be between 0 and 100000 inclusive. For example, to track 50% of the post-click conversions, set a value of 50000. */
@@ -1806,6 +2508,11 @@ export interface ConversionCountingConfig {
   /** The Floodlight activity configs used to track conversions. The number of conversions counted is the sum of all of the conversions counted by all of the Floodlight activity IDs specified in this field. This field can't be updated if a custom bidding algorithm is assigned to the line item. If you set this field and assign a custom bidding algorithm in the same request, the floodlight activities must match the ones used by the custom bidding algorithm. */
   floodlightActivityConfigs?: TrackingFloodlightActivityConfigList;
 }
+const ConversionCountingConfig = /*@__PURE__*/ __L.at(
+  __c15,
+  4,
+) as any as S.Schema<ConversionCountingConfig>;
+
 /** Integration details of an entry. */
 export interface IntegrationDetails {
   /** Additional details of the entry in string format. Must be UTF-8 encoded with a length of no more than 1000 characters. */
@@ -1813,11 +2520,15 @@ export interface IntegrationDetails {
   /** An external identifier to be associated with the entry. The integration code will show up together with the entry in many places in the system, for example, reporting. Must be UTF-8 encoded with a length of no more than 500 characters. */
   integrationCode?: string;
 }
+const IntegrationDetails = /*@__PURE__*/ __L.at(__c15, 5) as any as S.Schema<IntegrationDetails>;
+
 export type PartnerRevenueModelMarkupTypeEnum =
   | "PARTNER_REVENUE_MODEL_MARKUP_TYPE_UNSPECIFIED"
   | "PARTNER_REVENUE_MODEL_MARKUP_TYPE_CPM"
   | "PARTNER_REVENUE_MODEL_MARKUP_TYPE_MEDIA_COST_MARKUP"
   | "PARTNER_REVENUE_MODEL_MARKUP_TYPE_TOTAL_MEDIA_COST_MARKUP";
+const PartnerRevenueModelMarkupTypeEnum = S.String;
+
 /** Settings that control how partner revenue is calculated. */
 export interface PartnerRevenueModel {
   /** Required. The markup type of the partner revenue model. This field must be set to `PARTNER_REVENUE_MODEL_MARKUP_TYPE_TOTAL_MEDIA_COST_MARKUP` for Demand Gen line items. */
@@ -1825,6 +2536,8 @@ export interface PartnerRevenueModel {
   /** Required. The markup amount of the partner revenue model. Must be greater than or equal to 0. * When the markup_type is set to be `PARTNER_REVENUE_MODEL_MARKUP_TYPE_CPM`, this field represents the CPM markup in micros of advertiser's currency. For example, 1500000 represents 1.5 standard units of the currency. * When the markup_type is set to be `PARTNER_REVENUE_MODEL_MARKUP_TYPE_MEDIA_COST_MARKUP`, this field represents the media cost percent markup in millis. For example, 100 represents 0.1% (decimal 0.001). * When the markup_type is set to be `PARTNER_REVENUE_MODEL_MARKUP_TYPE_TOTAL_MEDIA_COST_MARKUP`, this field represents the total media cost percent markup in millis. For example, 100 represents 0.1% (decimal 0.001). */
   markupAmount?: string;
 }
+const PartnerRevenueModel = /*@__PURE__*/ __L.at(__c15, 6) as any as S.Schema<PartnerRevenueModel>;
+
 export type LineItemLineItemTypeEnum =
   | "LINE_ITEM_TYPE_UNSPECIFIED"
   | "LINE_ITEM_TYPE_DISPLAY_DEFAULT"
@@ -1849,7 +2562,11 @@ export type LineItemLineItemTypeEnum =
   | "LINE_ITEM_TYPE_DISPLAY_OUT_OF_HOME"
   | "LINE_ITEM_TYPE_VIDEO_OUT_OF_HOME"
   | "LINE_ITEM_TYPE_DEMAND_GEN";
+const LineItemLineItemTypeEnum = S.String;
+
 export type MobileAppPlatformEnum = "PLATFORM_UNSPECIFIED" | "IOS" | "ANDROID";
+const MobileAppPlatformEnum = S.String;
+
 /** A mobile app promoted by a mobile app install line item. */
 export interface MobileApp {
   /** Output only. The app platform. */
@@ -1861,10 +2578,14 @@ export interface MobileApp {
   /** Output only. The app name. */
   displayName?: string;
 }
+const MobileApp = /*@__PURE__*/ __L.at(__c15, 7) as any as S.Schema<MobileApp>;
+
 export type PartnerCostFeeTypeEnum =
   | "PARTNER_COST_FEE_TYPE_UNSPECIFIED"
   | "PARTNER_COST_FEE_TYPE_CPM_FEE"
   | "PARTNER_COST_FEE_TYPE_MEDIA_FEE";
+const PartnerCostFeeTypeEnum = S.String;
+
 export type PartnerCostCostTypeEnum =
   | "PARTNER_COST_TYPE_UNSPECIFIED"
   | "PARTNER_COST_TYPE_ADLOOX"
@@ -1896,10 +2617,14 @@ export type PartnerCostCostTypeEnum =
   | "PARTNER_COST_TYPE_CUSTOM_FEE_4"
   | "PARTNER_COST_TYPE_CUSTOM_FEE_5"
   | "PARTNER_COST_TYPE_SCIBIDS_FEE";
+const PartnerCostCostTypeEnum = S.String;
+
 export type PartnerCostInvoiceTypeEnum =
   | "PARTNER_COST_INVOICE_TYPE_UNSPECIFIED"
   | "PARTNER_COST_INVOICE_TYPE_DV360"
   | "PARTNER_COST_INVOICE_TYPE_PARTNER";
+const PartnerCostInvoiceTypeEnum = S.String;
+
 /** Settings that control a partner cost. A partner cost is any type of expense involved in running a campaign, other than the costs of purchasing impressions (which is called the media cost) and using third-party audience segment data (data fee). Some examples of partner costs include the fees for using DV360, a third-party ad server, or a third-party ad serving verification service. */
 export interface PartnerCost {
   /** Required. The fee type for this partner cost. */
@@ -1913,7 +2638,11 @@ export interface PartnerCost {
   /** The invoice type for this partner cost. * Required when cost_type is one of: - `PARTNER_COST_TYPE_ADLOOX` - `PARTNER_COST_TYPE_DOUBLE_VERIFY` - `PARTNER_COST_TYPE_INTEGRAL_AD_SCIENCE`. * Output only for other types. */
   invoiceType?: PartnerCostInvoiceTypeEnum | (string & {});
 }
+const PartnerCost = /*@__PURE__*/ __L.at(__c16, 0) as any as S.Schema<PartnerCost>;
+
 export type PartnerCostList = Array<PartnerCost>;
+const PartnerCostList = /*@__PURE__*/ __L.at(__c16, 1) as any as S.Schema<PartnerCostList>;
+
 export type LineItemReservationTypeEnum =
   | "RESERVATION_TYPE_UNSPECIFIED"
   | "RESERVATION_TYPE_NOT_GUARANTEED"
@@ -1921,6 +2650,8 @@ export type LineItemReservationTypeEnum =
   | "RESERVATION_TYPE_TAG_GUARANTEED"
   | "RESERVATION_TYPE_PETRA_VIRAL"
   | "RESERVATION_TYPE_INSTANT_RESERVE";
+const LineItemReservationTypeEnum = S.String;
+
 export type ThirdPartyVendorConfigVendorEnum =
   | "THIRD_PARTY_VENDOR_UNSPECIFIED"
   | "THIRD_PARTY_VENDOR_MOAT"
@@ -1944,6 +2675,8 @@ export type ThirdPartyVendorConfigVendorEnum =
   | "THIRD_PARTY_VENDOR_MACROMILL"
   | "THIRD_PARTY_VENDOR_VIDEO_RESEARCH"
   | "THIRD_PARTY_VENDOR_AQUILA";
+const ThirdPartyVendorConfigVendorEnum = S.String;
+
 /** Settings that control how third-party measurement vendors are configured. */
 export interface ThirdPartyVendorConfig {
   /** The ID used by the platform of the third-party vendor to identify the line item. */
@@ -1951,7 +2684,17 @@ export interface ThirdPartyVendorConfig {
   /** The third-party measurement vendor. */
   vendor?: ThirdPartyVendorConfigVendorEnum | (string & {});
 }
+const ThirdPartyVendorConfig = /*@__PURE__*/ __L.at(
+  __c16,
+  2,
+) as any as S.Schema<ThirdPartyVendorConfig>;
+
 export type ThirdPartyVendorConfigList = Array<ThirdPartyVendorConfig>;
+const ThirdPartyVendorConfigList = /*@__PURE__*/ __L.at(
+  __c16,
+  3,
+) as any as S.Schema<ThirdPartyVendorConfigList>;
+
 /** Settings that control what third-party vendors are measuring specific line item metrics. */
 export interface ThirdPartyMeasurementConfigs {
   /** Optional. The third-party vendors measuring reach. The following third-party vendors are applicable: * `THIRD_PARTY_VENDOR_NIELSEN` * `THIRD_PARTY_VENDOR_COMSCORE` * `THIRD_PARTY_VENDOR_KANTAR` * `THIRD_PARTY_VENDOR_VIDEO_RESEARCH` * `THIRD_PARTY_VENDOR_MEDIA_SCOPE` * `THIRD_PARTY_VENDOR_AUDIENCE_PROJECT` * `THIRD_PARTY_VENDOR_VIDEO_AMP` * `THIRD_PARTY_VENDOR_ISPOT_TV` * `THIRD_PARTY_VENDOR_GEMIUS` */
@@ -1963,6 +2706,11 @@ export interface ThirdPartyMeasurementConfigs {
   /** Optional. The third-party vendors measuring brand lift. The following third-party vendors are applicable: * `THIRD_PARTY_VENDOR_DYNATA` * `THIRD_PARTY_VENDOR_KANTAR` * `THIRD_PARTY_VENDOR_INTAGE` * `THIRD_PARTY_VENDOR_MACROMILL` */
   brandLiftVendorConfigs?: ThirdPartyVendorConfigList;
 }
+const ThirdPartyMeasurementConfigs = /*@__PURE__*/ __L.at(
+  __c16,
+  4,
+) as any as S.Schema<ThirdPartyMeasurementConfigs>;
+
 /** Settings for Demand Gen line items. */
 export interface DemandGenSettings {
   /** Optional. The third party measurement settings for the Demand Gen line item. */
@@ -1972,10 +2720,14 @@ export interface DemandGenSettings {
   /** Optional. The ID of the Merchant Center account used to provide a product feed. This Merchant Center account must already be linked to the advertiser. */
   linkedMerchantId?: string;
 }
+const DemandGenSettings = /*@__PURE__*/ __L.at(__c16, 5) as any as S.Schema<DemandGenSettings>;
+
 export type LineItemFlightFlightDateTypeEnum =
   | "LINE_ITEM_FLIGHT_DATE_TYPE_UNSPECIFIED"
   | "LINE_ITEM_FLIGHT_DATE_TYPE_INHERITED"
   | "LINE_ITEM_FLIGHT_DATE_TYPE_CUSTOM";
+const LineItemFlightFlightDateTypeEnum = S.String;
+
 /** Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: * A full date, with non-zero year, month, and day values. * A month and day, with a zero year (for example, an anniversary). * A year on its own, with a zero month and a zero day. * A year and month, with a zero day (for example, a credit card expiration date). Related types: * google.type.TimeOfDay * google.type.DateTime * google.protobuf.Timestamp */
 export interface Displayvideo_Date {
   /** Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year. */
@@ -1985,6 +2737,8 @@ export interface Displayvideo_Date {
   /** Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant. */
   day?: number;
 }
+const Displayvideo_Date = /*@__PURE__*/ __L.at(__c16, 6) as any as S.Schema<Displayvideo_Date>;
+
 /** A date range. */
 export interface DateRange {
   /** The upper bound of the date range, inclusive. Must specify a positive value for `year`, `month`, and `day`. */
@@ -1992,6 +2746,8 @@ export interface DateRange {
   /** The lower bound of the date range, inclusive. Must specify a positive value for `year`, `month`, and `day`. */
   startDate?: Displayvideo_Date;
 }
+const DateRange = /*@__PURE__*/ __L.at(__c16, 7) as any as S.Schema<DateRange>;
+
 /** Settings that control the active duration of a line item. */
 export interface LineItemFlight {
   /** Required. The type of the line item's flight dates. */
@@ -1999,15 +2755,21 @@ export interface LineItemFlight {
   /** The flight start and end dates of the line item. They are resolved relative to the parent advertiser's time zone. * Required when flight_date_type is `LINE_ITEM_FLIGHT_DATE_TYPE_CUSTOM`. Output only otherwise. * When creating a new flight, both `start_date` and `end_date` must be in the future. * An existing flight with a `start_date` in the past has a mutable `end_date` but an immutable `start_date`. * `end_date` must be the `start_date` or later, both before the year 2037. */
   dateRange?: DateRange;
 }
+const LineItemFlight = /*@__PURE__*/ __L.at(__c17, 0) as any as S.Schema<LineItemFlight>;
+
 export type PacingPacingTypeEnum =
   | "PACING_TYPE_UNSPECIFIED"
   | "PACING_TYPE_AHEAD"
   | "PACING_TYPE_ASAP"
   | "PACING_TYPE_EVEN";
+const PacingPacingTypeEnum = S.String;
+
 export type PacingPacingPeriodEnum =
   | "PACING_PERIOD_UNSPECIFIED"
   | "PACING_PERIOD_DAILY"
   | "PACING_PERIOD_FLIGHT";
+const PacingPacingPeriodEnum = S.String;
+
 /** Settings that control the rate at which a budget is spent. */
 export interface Pacing {
   /** Maximum currency amount to spend every day in micros of advertiser's currency. Applicable when the budget is currency based. Must be greater than 0. For example, for 1.5 standard unit of the currency, set this field to 1500000. The value assigned will be rounded to whole billable units for the relevant currency by the following rules: any positive value less than a single billable unit will be rounded up to one billable unit and any value larger than a single billable unit will be rounded down to the nearest billable value. For example, if the currency's billable unit is 0.01, and this field is set to 10257770, it will round down to 10250000, a value of 10.25. If set to 505, it will round up to 10000, a value of 0.01. */
@@ -2019,11 +2781,15 @@ export interface Pacing {
   /** Maximum number of impressions to serve every day. Applicable when the budget is impression based. Must be greater than 0. */
   dailyMaxImpressions?: string;
 }
+const Pacing = /*@__PURE__*/ __L.at(__c17, 1) as any as S.Schema<Pacing>;
+
 /** A strategy that uses a fixed bidding price. */
 export interface FixedBidStrategy {
   /** The fixed bid amount, in micros of the advertiser's currency. For insertion order entity, bid_amount_micros should be set as 0. For line item entity, bid_amount_micros must be greater than or equal to billable unit of the given currency and smaller than or equal to the upper limit 1000000000. For example, 1500000 represents 1.5 standard units of the currency. */
   bidAmountMicros?: string;
 }
+const FixedBidStrategy = /*@__PURE__*/ __L.at(__c17, 2) as any as S.Schema<FixedBidStrategy>;
+
 export type DemandGenBiddingStrategyTypeEnum =
   | "DEMAND_GEN_BIDDING_STRATEGY_TYPE_UNSPECIFIED"
   | "DEMAND_GEN_BIDDING_STRATEGY_TYPE_TARGET_CPA"
@@ -2032,10 +2798,14 @@ export type DemandGenBiddingStrategyTypeEnum =
   | "DEMAND_GEN_BIDDING_STRATEGY_TYPE_MAXIMIZE_CONVERSION_VALUE"
   | "DEMAND_GEN_BIDDING_STRATEGY_TYPE_MAXIMIZE_CLICKS"
   | "DEMAND_GEN_BIDDING_STRATEGY_TYPE_TARGET_CPC";
+const DemandGenBiddingStrategyTypeEnum = S.String;
+
 export type DemandGenBiddingStrategyEffectiveBiddingValueSourceEnum =
   | "BIDDING_SOURCE_UNSPECIFIED"
   | "BIDDING_SOURCE_LINE_ITEM"
   | "BIDDING_SOURCE_AD_GROUP";
+const DemandGenBiddingStrategyEffectiveBiddingValueSourceEnum = S.String;
+
 /** Settings that control the bid strategy for Demand Gen resources. */
 export interface DemandGenBiddingStrategy {
   /** Optional. The type of the bidding strategy. This can only be set when assigned to a line item. Ad groups will inherit this value from their line item. */
@@ -2049,6 +2819,11 @@ export interface DemandGenBiddingStrategy {
   /** Output only. The value effectively used by the bidding strategy. This field will be the same as value if set. If value is not set and the strategy is assigned to an ad group, this field will be inherited from the line item's bidding strategy. If type is not `DEMAND_GEN_BIDDING_STRATEGY_TYPE_TARGET_CPA` or `DEMAND_GEN_BIDDING_STRATEGY_TYPE_TARGET_ROAS`, this field will be 0. */
   effectiveBiddingValue?: string;
 }
+const DemandGenBiddingStrategy = /*@__PURE__*/ __L.at(
+  __c17,
+  3,
+) as any as S.Schema<DemandGenBiddingStrategy>;
+
 export type YoutubeAndPartnersBiddingStrategyTypeEnum =
   | "YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_UNSPECIFIED"
   | "YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_MANUAL_CPV"
@@ -2061,10 +2836,14 @@ export type YoutubeAndPartnersBiddingStrategyTypeEnum =
   | "YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_TARGET_CPV"
   | "YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_TARGET_ROAS"
   | "YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_MAXIMIZE_CONVERSION_VALUE";
+const YoutubeAndPartnersBiddingStrategyTypeEnum = S.String;
+
 export type YoutubeAndPartnersBiddingStrategyAdGroupEffectiveTargetCpaSourceEnum =
   | "BIDDING_SOURCE_UNSPECIFIED"
   | "BIDDING_SOURCE_LINE_ITEM"
   | "BIDDING_SOURCE_AD_GROUP";
+const YoutubeAndPartnersBiddingStrategyAdGroupEffectiveTargetCpaSourceEnum = S.String;
+
 /** Settings that control the bid strategy for YouTube and Partners resources. */
 export interface YoutubeAndPartnersBiddingStrategy {
   /** The type of the bidding strategy. */
@@ -2078,6 +2857,11 @@ export interface YoutubeAndPartnersBiddingStrategy {
   /** Output only. The effective target CPA for ad group, in micros of advertiser's currency. */
   adGroupEffectiveTargetCpaValue?: string;
 }
+const YoutubeAndPartnersBiddingStrategy = /*@__PURE__*/ __L.at(
+  __c17,
+  4,
+) as any as S.Schema<YoutubeAndPartnersBiddingStrategy>;
+
 export type MaximizeSpendBidStrategyPerformanceGoalTypeEnum =
   | "BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_UNSPECIFIED"
   | "BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CPA"
@@ -2087,6 +2871,8 @@ export type MaximizeSpendBidStrategyPerformanceGoalTypeEnum =
   | "BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CIVA"
   | "BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_IVO_TEN"
   | "BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_AV_VIEWED";
+const MaximizeSpendBidStrategyPerformanceGoalTypeEnum = S.String;
+
 /** A strategy that automatically adjusts the bid to optimize a specified performance goal while spending the full budget. */
 export interface MaximizeSpendBidStrategy {
   /** The maximum average CPM that may be bid, in micros of the advertiser's currency. Must be greater than or equal to a billable unit of the given currency. For example, 1500000 represents 1.5 standard units of the currency. */
@@ -2098,6 +2884,11 @@ export interface MaximizeSpendBidStrategy {
   /** Required. The type of the performance goal that the bidding strategy tries to minimize while spending the full budget. `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_VIEWABLE_CPM` is not supported for this strategy. */
   performanceGoalType?: MaximizeSpendBidStrategyPerformanceGoalTypeEnum | (string & {});
 }
+const MaximizeSpendBidStrategy = /*@__PURE__*/ __L.at(
+  __c17,
+  5,
+) as any as S.Schema<MaximizeSpendBidStrategy>;
+
 export type PerformanceGoalBidStrategyPerformanceGoalTypeEnum =
   | "BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_UNSPECIFIED"
   | "BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CPA"
@@ -2107,6 +2898,8 @@ export type PerformanceGoalBidStrategyPerformanceGoalTypeEnum =
   | "BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CIVA"
   | "BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_IVO_TEN"
   | "BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_AV_VIEWED";
+const PerformanceGoalBidStrategyPerformanceGoalTypeEnum = S.String;
+
 /** A strategy that automatically adjusts the bid to meet or beat a specified performance goal. */
 export interface PerformanceGoalBidStrategy {
   /** Required. The performance goal the bidding strategy will attempt to meet or beat, in micros of the advertiser's currency or in micro of the ROAS (Return On Advertising Spend) value which is also based on advertiser's currency. Must be greater than or equal to a billable unit of the given currency and smaller or equal to upper bounds. Each performance_goal_type has its upper bound: * when performance_goal_type is `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CPA`, upper bound is 10000.00 USD. * when performance_goal_type is `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CPC`, upper bound is 1000.00 USD. * when performance_goal_type is `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_VIEWABLE_CPM`, upper bound is 1000.00 USD. * when performance_goal_type is `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CUSTOM_ALGO`, upper bound is 1000.00 and lower bound is 0.01. Example: If set to `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_VIEWABLE_CPM`, the bid price will be based on the probability that each available impression will be viewable. For example, if viewable CPM target is $2 and an impression is 40% likely to be viewable, the bid price will be $0.80 CPM (40% of $2). For example, 1500000 represents 1.5 standard units of the currency or ROAS value. */
@@ -2118,6 +2911,11 @@ export interface PerformanceGoalBidStrategy {
   /** Required. The type of the performance goal that the bidding strategy will try to meet or beat. For line item level usage, the value must be one of: * `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CPA` * `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CPC` * `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_VIEWABLE_CPM` * `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CUSTOM_ALGO`. */
   performanceGoalType?: PerformanceGoalBidStrategyPerformanceGoalTypeEnum | (string & {});
 }
+const PerformanceGoalBidStrategy = /*@__PURE__*/ __L.at(
+  __c17,
+  6,
+) as any as S.Schema<PerformanceGoalBidStrategy>;
+
 /** Settings that control the bid strategy. Bid strategy determines the bid price. */
 export interface BiddingStrategy {
   /** A strategy that uses a fixed bid price. */
@@ -2131,17 +2929,23 @@ export interface BiddingStrategy {
   /** A strategy that automatically adjusts the bid to meet or beat a specified performance goal. It is to be used only for a line item entity. */
   performanceGoalAutoBid?: PerformanceGoalBidStrategy;
 }
+const BiddingStrategy = /*@__PURE__*/ __L.at(__c17, 7) as any as S.Schema<BiddingStrategy>;
+
 export type YoutubeAndPartnersSettingsEffectiveContentCategoryEnum =
   | "YOUTUBE_AND_PARTNERS_CONTENT_CATEGORY_UNSPECIFIED"
   | "YOUTUBE_AND_PARTNERS_CONTENT_CATEGORY_STANDARD"
   | "YOUTUBE_AND_PARTNERS_CONTENT_CATEGORY_EXPANDED"
   | "YOUTUBE_AND_PARTNERS_CONTENT_CATEGORY_LIMITED";
+const YoutubeAndPartnersSettingsEffectiveContentCategoryEnum = S.String;
+
 export type VideoAdSequenceStepInteractionTypeEnum =
   | "INTERACTION_TYPE_UNSPECIFIED"
   | "INTERACTION_TYPE_PAID_VIEW"
   | "INTERACTION_TYPE_SKIP"
   | "INTERACTION_TYPE_IMPRESSION"
   | "INTERACTION_TYPE_ENGAGED_IMPRESSION";
+const VideoAdSequenceStepInteractionTypeEnum = S.String;
+
 /** The detail of a single step in a VideoAdSequence. */
 export interface VideoAdSequenceStep {
   /** The ID of the corresponding ad group of the step. */
@@ -2153,11 +2957,20 @@ export interface VideoAdSequenceStep {
   /** The ID of the step. */
   stepId?: string;
 }
+const VideoAdSequenceStep = /*@__PURE__*/ __L.at(__c18, 0) as any as S.Schema<VideoAdSequenceStep>;
+
 export type VideoAdSequenceStepList = Array<VideoAdSequenceStep>;
+const VideoAdSequenceStepList = /*@__PURE__*/ __L.at(
+  __c18,
+  1,
+) as any as S.Schema<VideoAdSequenceStepList>;
+
 export type VideoAdSequenceSettingsMinimumDurationEnum =
   | "VIDEO_AD_SEQUENCE_MINIMUM_DURATION_UNSPECIFIED"
   | "VIDEO_AD_SEQUENCE_MINIMUM_DURATION_WEEK"
   | "VIDEO_AD_SEQUENCE_MINIMUM_DURATION_MONTH";
+const VideoAdSequenceSettingsMinimumDurationEnum = S.String;
+
 /** Settings related to VideoAdSequence. */
 export interface VideoAdSequenceSettings {
   /** The steps of which the sequence consists. */
@@ -2165,11 +2978,18 @@ export interface VideoAdSequenceSettings {
   /** The minimum time interval before the same user sees this sequence again. */
   minimumDuration?: VideoAdSequenceSettingsMinimumDurationEnum | (string & {});
 }
+const VideoAdSequenceSettings = /*@__PURE__*/ __L.at(
+  __c18,
+  2,
+) as any as S.Schema<VideoAdSequenceSettings>;
+
 export type YoutubeAndPartnersSettingsContentCategoryEnum =
   | "YOUTUBE_AND_PARTNERS_CONTENT_CATEGORY_UNSPECIFIED"
   | "YOUTUBE_AND_PARTNERS_CONTENT_CATEGORY_STANDARD"
   | "YOUTUBE_AND_PARTNERS_CONTENT_CATEGORY_EXPANDED"
   | "YOUTUBE_AND_PARTNERS_CONTENT_CATEGORY_LIMITED";
+const YoutubeAndPartnersSettingsContentCategoryEnum = S.String;
+
 /** The video ad inventory control used in certain YouTube line item types. */
 export interface VideoAdInventoryControl {
   /** Optional. Whether ads can serve as in-stream format. */
@@ -2181,6 +3001,11 @@ export interface VideoAdInventoryControl {
   /** Optional. Indicates whether ads can serve as non-skippable in-stream format. */
   allowNonSkippableInStream?: boolean;
 }
+const VideoAdInventoryControl = /*@__PURE__*/ __L.at(
+  __c18,
+  3,
+) as any as S.Schema<VideoAdInventoryControl>;
+
 /** Settings that control what YouTube related inventories the YouTube and Partners line item will target. */
 export interface YoutubeAndPartnersInventorySourceConfig {
   /** Whether to target inventory on the YouTube search results page. */
@@ -2192,6 +3017,11 @@ export interface YoutubeAndPartnersInventorySourceConfig {
   /** Whether to target inventory of channels and videos on YouTube and YouTube videos embedded on other sites. */
   includeYoutubeVideos?: boolean;
 }
+const YoutubeAndPartnersInventorySourceConfig = /*@__PURE__*/ __L.at(
+  __c18,
+  4,
+) as any as S.Schema<YoutubeAndPartnersInventorySourceConfig>;
+
 export type TargetFrequencyTimeUnitEnum =
   | "TIME_UNIT_UNSPECIFIED"
   | "TIME_UNIT_LIFETIME"
@@ -2200,6 +3030,8 @@ export type TargetFrequencyTimeUnitEnum =
   | "TIME_UNIT_DAYS"
   | "TIME_UNIT_HOURS"
   | "TIME_UNIT_MINUTES";
+const TargetFrequencyTimeUnitEnum = S.String;
+
 /** Setting that controls the average number of times the ads will show to the same person over a certain period of time. */
 export interface TargetFrequency {
   /** The number of time_unit the target frequency will last. The following restrictions apply based on the value of time_unit: * `TIME_UNIT_WEEKS` - must be 1 * `TIME_UNIT_MONTHS` - must be 1 */
@@ -2209,6 +3041,8 @@ export interface TargetFrequency {
   /** The unit of time in which the target frequency will be applied. The following time unit is applicable: * `TIME_UNIT_WEEKS` * `TIME_UNIT_MONTHS` */
   timeUnit?: TargetFrequencyTimeUnitEnum | (string & {});
 }
+const TargetFrequency = /*@__PURE__*/ __L.at(__c18, 5) as any as S.Schema<TargetFrequency>;
+
 /** Settings that control what third-party vendors are measuring specific line item metrics. */
 export interface YoutubeAndPartnersThirdPartyMeasurementSettings {
   /** The third-party vendors measuring brand lift. The following third-party vendors are applicable: * `THIRD_PARTY_VENDOR_DYNATA` * `THIRD_PARTY_VENDOR_KANTAR` */
@@ -2220,6 +3054,11 @@ export interface YoutubeAndPartnersThirdPartyMeasurementSettings {
   /** The third-party vendors measuring reach. The following third-party vendors are applicable: * `THIRD_PARTY_VENDOR_NIELSEN` * `THIRD_PARTY_VENDOR_COMSCORE` * `THIRD_PARTY_VENDOR_KANTAR` */
   reachVendorConfigs?: ThirdPartyVendorConfigList;
 }
+const YoutubeAndPartnersThirdPartyMeasurementSettings = /*@__PURE__*/ __L.at(
+  __c18,
+  6,
+) as any as S.Schema<YoutubeAndPartnersThirdPartyMeasurementSettings>;
+
 /** Settings for YouTube and Partners line items. */
 export interface YoutubeAndPartnersSettings {
   /** Output only. The content category which takes effect when serving the line item. When content category is set in both line item and advertiser, the stricter one will take effect when serving the line item. New line items will only inherit the advertiser level setting. */
@@ -2247,6 +3086,11 @@ export interface YoutubeAndPartnersSettings {
   /** Optional. The third-party measurement settings of the line item. */
   thirdPartyMeasurementSettings?: YoutubeAndPartnersThirdPartyMeasurementSettings;
 }
+const YoutubeAndPartnersSettings = /*@__PURE__*/ __L.at(
+  __c18,
+  7,
+) as any as S.Schema<YoutubeAndPartnersSettings>;
+
 /** A single line item. */
 export interface LineItem {
   /** Output only. The timestamp when the line item was last updated. Assigned by the system. */
@@ -2306,6 +3150,8 @@ export interface LineItem {
   /** Optional. Settings specific to YouTube and Partners line items. */
   youtubeAndPartnersSettings?: YoutubeAndPartnersSettings;
 }
+const LineItem = /*@__PURE__*/ __L.at(__c19, 0) as any as S.Schema<LineItem>;
+
 /** Request message for LineItemService.BulkUpdateLineItems. */
 export interface BulkUpdateLineItemsRequest {
   /** Required. A line item object containing the fields to be updated and the new values to assign to all line items specified in line_item_ids." */
@@ -2315,12 +3161,22 @@ export interface BulkUpdateLineItemsRequest {
   /** Required. A field mask identifying which fields to update. Only the following fields are currently supported: * entityStatus * containsEuPoliticalAds */
   updateMask?: string;
 }
+const BulkUpdateLineItemsRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  1,
+) as any as S.Schema<BulkUpdateLineItemsRequest>;
+
 export interface BulkUpdateAdvertisersLineItemsRequest {
   /** Required. The ID of the advertiser this line item belongs to. */
   advertiserId: string;
   /** Request body */
   body?: BulkUpdateLineItemsRequest;
 }
+const BulkUpdateAdvertisersLineItemsRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  2,
+) as any as S.Schema<BulkUpdateAdvertisersLineItemsRequest>;
+
 /** Response message for LineItemService.BulkUpdateLineItems. */
 export interface BulkUpdateLineItemsResponse {
   /** The IDs of line items that are skipped for updates. For example, unnecessary mutates that will result in effectively no changes to line items will be skipped and corresponding line item IDs can be tracked here. */
@@ -2332,11 +3188,21 @@ export interface BulkUpdateLineItemsResponse {
   /** The IDs of line items that failed to update. */
   failedLineItemIds?: StringList;
 }
+const BulkUpdateLineItemsResponse = /*@__PURE__*/ __L.at(
+  __c19,
+  3,
+) as any as S.Schema<BulkUpdateLineItemsResponse>;
+
 /** Targeting settings related to ad serving of an advertiser. */
 export interface AdvertiserTargetingConfig {
   /** Whether or not connected TV devices are exempt from viewability targeting for all video line items under the advertiser. */
   exemptTvFromViewabilityTargeting?: boolean;
 }
+const AdvertiserTargetingConfig = /*@__PURE__*/ __L.at(
+  __c19,
+  4,
+) as any as S.Schema<AdvertiserTargetingConfig>;
+
 /** Settings for advertisers that use both Campaign Manager 360 (CM360) and third-party ad servers. */
 export interface CmHybridConfig {
   /** Required. Immutable. Account ID of the CM360 Floodlight configuration linked with the DV360 advertiser. */
@@ -2354,11 +3220,18 @@ export interface CmHybridConfig {
   /** Whether or not to report DV360 cost to CM360. */
   dv360ToCmCostReportingEnabled?: boolean;
 }
+const CmHybridConfig = /*@__PURE__*/ __L.at(__c19, 5) as any as S.Schema<CmHybridConfig>;
+
 /** Settings for advertisers that use third-party ad servers only. */
 export interface ThirdPartyOnlyConfig {
   /** Whether or not order ID reporting for pixels is enabled. This value cannot be changed once set to `true`. */
   pixelOrderIdReportingEnabled?: boolean;
 }
+const ThirdPartyOnlyConfig = /*@__PURE__*/ __L.at(
+  __c19,
+  6,
+) as any as S.Schema<ThirdPartyOnlyConfig>;
+
 /** Ad server related settings of an advertiser. */
 export interface AdvertiserAdServerConfig {
   /** The configuration for advertisers that use both Campaign Manager 360 (CM360) and third-party ad servers. */
@@ -2366,6 +3239,11 @@ export interface AdvertiserAdServerConfig {
   /** The configuration for advertisers that use third-party ad servers only. */
   thirdPartyOnlyConfig?: ThirdPartyOnlyConfig;
 }
+const AdvertiserAdServerConfig = /*@__PURE__*/ __L.at(
+  __c19,
+  7,
+) as any as S.Schema<AdvertiserAdServerConfig>;
+
 /** Creatives related settings of an advertiser. */
 export interface AdvertiserCreativeConfig {
   /** Whether or not to disable Google's About this Ad feature that adds badging (to identify the content as an ad) and transparency information (on interaction with About this Ad) to your ads for Online Behavioral Advertising (OBA) and regulatory requirements. About this Ad gives users greater control over the ads they see and helps you explain why they're seeing your ad. [Learn more](//support.google.com/displayvideo/answer/14315795). If you choose to set this field to `true`, note that ads served through Display & Video 360 must comply to the following: * Be Online Behavioral Advertising (OBA) compliant, as per your contract with Google Marketing Platform. * In the European Economic Area (EEA), include transparency information and a mechanism for users to report illegal content in ads. If using an alternative ad badging, transparency, and reporting solution, you must ensure it includes the required transparency information and illegal content flagging mechanism and that you notify Google of any illegal content reports using the appropriate [form](//support.google.com/legal/troubleshooter/1114905?sjid=6787484030557261960-EU#ts=2981967%2C2982031%2C12980091). */
@@ -2377,10 +3255,17 @@ export interface AdvertiserCreativeConfig {
   /** Whether or not the advertiser is enabled for dynamic creatives. */
   dynamicCreativeEnabled?: boolean;
 }
+const AdvertiserCreativeConfig = /*@__PURE__*/ __L.at(
+  __c20,
+  0,
+) as any as S.Schema<AdvertiserCreativeConfig>;
+
 export type AdvertiserContainsEuPoliticalAdsEnum =
   | "EU_POLITICAL_ADVERTISING_STATUS_UNKNOWN"
   | "CONTAINS_EU_POLITICAL_ADVERTISING"
   | "DOES_NOT_CONTAIN_EU_POLITICAL_ADVERTISING";
+const AdvertiserContainsEuPoliticalAdsEnum = S.String;
+
 /** General settings of an advertiser. */
 export interface AdvertiserGeneralConfig {
   /** Required. Immutable. Advertiser's currency in ISO 4217 format. Accepted codes and the currencies they represent are: Currency Code : Currency Name * `ARS` : Argentine Peso * `AUD` : Australian Dollar * `BRL` : Brazilian Real * `CAD` : Canadian Dollar * `CHF` : Swiss Franc * `CLP` : Chilean Peso * `CNY` : Chinese Yuan * `COP` : Colombian Peso * `CZK` : Czech Koruna * `DKK` : Danish Krone * `EGP` : Egyption Pound * `EUR` : Euro * `GBP` : British Pound * `HKD` : Hong Kong Dollar * `HUF` : Hungarian Forint * `IDR` : Indonesian Rupiah * `ILS` : Israeli Shekel * `INR` : Indian Rupee * `JPY` : Japanese Yen * `KRW` : South Korean Won * `MXN` : Mexican Pesos * `MYR` : Malaysian Ringgit * `NGN` : Nigerian Naira * `NOK` : Norwegian Krone * `NZD` : New Zealand Dollar * `PEN` : Peruvian Nuevo Sol * `PLN` : Polish Zloty * `RON` : New Romanian Leu * `RUB` : Russian Ruble * `SEK` : Swedish Krona * `TRY` : Turkish Lira * `TWD` : New Taiwan Dollar * `USD` : US Dollar * `ZAR` : South African Rand */
@@ -2390,6 +3275,11 @@ export interface AdvertiserGeneralConfig {
   /** Output only. The standard TZ database name of the advertiser's time zone. For example, `America/New_York`. See more at: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones For CM360 hybrid advertisers, the time zone is the same as that of the associated CM360 account; for third-party only advertisers, the time zone is the same as that of the parent partner. */
   timeZone?: string;
 }
+const AdvertiserGeneralConfig = /*@__PURE__*/ __L.at(
+  __c20,
+  1,
+) as any as S.Schema<AdvertiserGeneralConfig>;
+
 export type SdfConfigVersionEnum =
   | "SDF_VERSION_UNSPECIFIED"
   | "SDF_VERSION_3_1"
@@ -2412,6 +3302,8 @@ export type SdfConfigVersionEnum =
   | "SDF_VERSION_9_2"
   | "SDF_VERSION_10"
   | "SDF_VERSION_10_1";
+const SdfConfigVersionEnum = S.String;
+
 /** Structured Data File (SDF) related settings. */
 export interface SdfConfig {
   /** Required. The version of SDF being used. */
@@ -2419,6 +3311,8 @@ export interface SdfConfig {
   /** An administrator email address to which the SDF processing status reports will be sent. */
   adminEmail?: string;
 }
+const SdfConfig = /*@__PURE__*/ __L.at(__c20, 2) as any as S.Schema<SdfConfig>;
+
 /** Structured Data Files (SDF) settings of an advertiser. */
 export interface AdvertiserSdfConfig {
   /** Whether or not this advertiser overrides the SDF configuration of its parent partner. By default, an advertiser inherits the SDF configuration from the parent partner. To override the partner configuration, set this field to `true` and provide the new configuration in sdfConfig. */
@@ -2426,11 +3320,18 @@ export interface AdvertiserSdfConfig {
   /** The SDF configuration for the advertiser. * Required when overridePartnerSdfConfig is `true`. * Output only when overridePartnerSdfConfig is `false`. */
   sdfConfig?: SdfConfig;
 }
+const AdvertiserSdfConfig = /*@__PURE__*/ __L.at(__c20, 3) as any as S.Schema<AdvertiserSdfConfig>;
+
 /** Settings that control how advertiser related data may be accessed. */
 export interface AdvertiserDataAccessConfig {
   /** Structured Data Files (SDF) settings for the advertiser. If not specified, the SDF settings of the parent partner are used. */
   sdfConfig?: AdvertiserSdfConfig;
 }
+const AdvertiserDataAccessConfig = /*@__PURE__*/ __L.at(
+  __c20,
+  4,
+) as any as S.Schema<AdvertiserDataAccessConfig>;
+
 export type AdvertiserEntityStatusEnum =
   | "ENTITY_STATUS_UNSPECIFIED"
   | "ENTITY_STATUS_ACTIVE"
@@ -2438,6 +3339,8 @@ export type AdvertiserEntityStatusEnum =
   | "ENTITY_STATUS_DRAFT"
   | "ENTITY_STATUS_PAUSED"
   | "ENTITY_STATUS_SCHEDULED_FOR_DELETION";
+const AdvertiserEntityStatusEnum = S.String;
+
 /** A single advertiser in Display & Video 360 (DV360). */
 export interface Advertiser {
   /** Required. The display name of the advertiser. Must be UTF-8 encoded with a maximum size of 240 bytes. */
@@ -2473,10 +3376,17 @@ export interface Advertiser {
   /** Required. Controls whether or not insertion orders and line items of the advertiser can spend their budgets and bid on inventory. * Accepted values are `ENTITY_STATUS_ACTIVE`, `ENTITY_STATUS_PAUSED` and `ENTITY_STATUS_SCHEDULED_FOR_DELETION`. * If set to `ENTITY_STATUS_SCHEDULED_FOR_DELETION`, the advertiser will be deleted 30 days from when it was first scheduled for deletion. */
   entityStatus?: AdvertiserEntityStatusEnum | (string & {});
 }
+const Advertiser = /*@__PURE__*/ __L.at(__c20, 5) as any as S.Schema<Advertiser>;
+
 export interface CreateAdvertisersRequest {
   /** Request body */
   body?: Advertiser;
 }
+const CreateAdvertisersRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  6,
+) as any as S.Schema<CreateAdvertisersRequest>;
+
 /** Settings that track the planned spend and duration of a campaign. */
 export interface CampaignFlight {
   /** Required. The dates that the campaign is expected to run. They are resolved relative to the parent advertiser's time zone. * The dates specified here will not affect serving. They are used to generate alerts and warnings. For example, if the flight date of any child insertion order is outside the range of these dates, the user interface will show a warning. * `start_date` is required and must be the current date or later. * `end_date` is optional. If specified, it must be the `start_date` or later. * Any specified date must be before the year 2037. */
@@ -2484,6 +3394,8 @@ export interface CampaignFlight {
   /** The amount the campaign is expected to spend for its given planned_dates. This will not limit serving, but will be used for tracking spend in the DV360 UI. The amount is in micros. Must be greater than or equal to 0. For example, 500000000 represents 500 standard units of the currency. */
   plannedSpendAmountMicros?: string;
 }
+const CampaignFlight = /*@__PURE__*/ __L.at(__c20, 7) as any as S.Schema<CampaignFlight>;
+
 export type PerformanceGoalPerformanceGoalTypeEnum =
   | "PERFORMANCE_GOAL_TYPE_UNSPECIFIED"
   | "PERFORMANCE_GOAL_TYPE_CPM"
@@ -2501,6 +3413,8 @@ export type PerformanceGoalPerformanceGoalTypeEnum =
   | "PERFORMANCE_GOAL_TYPE_AUDIO_COMPLETION_RATE"
   | "PERFORMANCE_GOAL_TYPE_VIDEO_COMPLETION_RATE"
   | "PERFORMANCE_GOAL_TYPE_OTHER";
+const PerformanceGoalPerformanceGoalTypeEnum = S.String;
+
 /** Settings that control the performance goal of a campaign. */
 export interface PerformanceGoal {
   /** The decimal representation of the goal percentage in micros. Applicable when performance_goal_type is one of: * `PERFORMANCE_GOAL_TYPE_CTR` * `PERFORMANCE_GOAL_TYPE_VIEWABILITY` * `PERFORMANCE_GOAL_TYPE_CLICK_CVR` * `PERFORMANCE_GOAL_TYPE_IMPRESSION_CVR` * `PERFORMANCE_GOAL_TYPE_VTR` * `PERFORMANCE_GOAL_TYPE_AUDIO_COMPLETION_RATE` * `PERFORMANCE_GOAL_TYPE_VIDEO_COMPLETION_RATE` For example, 70000 represents 7% (decimal 0.07). */
@@ -2512,12 +3426,16 @@ export interface PerformanceGoal {
   /** A key performance indicator (KPI) string, which can be empty. Must be UTF-8 encoded with a length of no more than 100 characters. Applicable when performance_goal_type is set to `PERFORMANCE_GOAL_TYPE_OTHER`. */
   performanceGoalString?: string;
 }
+const PerformanceGoal = /*@__PURE__*/ __L.at(__c21, 0) as any as S.Schema<PerformanceGoal>;
+
 export type CampaignGoalCampaignGoalTypeEnum =
   | "CAMPAIGN_GOAL_TYPE_UNSPECIFIED"
   | "CAMPAIGN_GOAL_TYPE_APP_INSTALL"
   | "CAMPAIGN_GOAL_TYPE_BRAND_AWARENESS"
   | "CAMPAIGN_GOAL_TYPE_OFFLINE_ACTION"
   | "CAMPAIGN_GOAL_TYPE_ONLINE_ACTION";
+const CampaignGoalCampaignGoalTypeEnum = S.String;
+
 /** Settings that control the goal of a campaign. */
 export interface CampaignGoal {
   /** Required. The performance goal of the campaign. Acceptable values for performance_goal_type are: * `PERFORMANCE_GOAL_TYPE_CPM` * `PERFORMANCE_GOAL_TYPE_CPC` * `PERFORMANCE_GOAL_TYPE_CPA` * `PERFORMANCE_GOAL_TYPE_CPIAVC` * `PERFORMANCE_GOAL_TYPE_CTR` * `PERFORMANCE_GOAL_TYPE_VIEWABILITY` * `PERFORMANCE_GOAL_TYPE_OTHER` */
@@ -2525,6 +3443,8 @@ export interface CampaignGoal {
   /** Required. The type of the campaign goal. */
   campaignGoalType?: CampaignGoalCampaignGoalTypeEnum | (string & {});
 }
+const CampaignGoal = /*@__PURE__*/ __L.at(__c21, 1) as any as S.Schema<CampaignGoal>;
+
 export type CampaignEntityStatusEnum =
   | "ENTITY_STATUS_UNSPECIFIED"
   | "ENTITY_STATUS_ACTIVE"
@@ -2532,14 +3452,20 @@ export type CampaignEntityStatusEnum =
   | "ENTITY_STATUS_DRAFT"
   | "ENTITY_STATUS_PAUSED"
   | "ENTITY_STATUS_SCHEDULED_FOR_DELETION";
+const CampaignEntityStatusEnum = S.String;
+
 export type CampaignBudgetBudgetUnitEnum =
   | "BUDGET_UNIT_UNSPECIFIED"
   | "BUDGET_UNIT_CURRENCY"
   | "BUDGET_UNIT_IMPRESSIONS";
+const CampaignBudgetBudgetUnitEnum = S.String;
+
 export type CampaignBudgetExternalBudgetSourceEnum =
   | "EXTERNAL_BUDGET_SOURCE_UNSPECIFIED"
   | "EXTERNAL_BUDGET_SOURCE_NONE"
   | "EXTERNAL_BUDGET_SOURCE_MEDIA_OCEAN";
+const CampaignBudgetExternalBudgetSourceEnum = S.String;
+
 export type PrismaConfigPrismaTypeEnum =
   | "PRISMA_TYPE_UNSPECIFIED"
   | "PRISMA_TYPE_DISPLAY"
@@ -2548,6 +3474,8 @@ export type PrismaConfigPrismaTypeEnum =
   | "PRISMA_TYPE_AUDIO"
   | "PRISMA_TYPE_SOCIAL"
   | "PRISMA_TYPE_FEE";
+const PrismaConfigPrismaTypeEnum = S.String;
+
 /** Google Payments Center supports searching and filtering on the component fields of this code. */
 export interface PrismaCpeCode {
   /** The Prisma estimate code. */
@@ -2557,6 +3485,8 @@ export interface PrismaCpeCode {
   /** The Prisma client code. */
   prismaClientCode?: string;
 }
+const PrismaCpeCode = /*@__PURE__*/ __L.at(__c21, 2) as any as S.Schema<PrismaCpeCode>;
+
 /** Settings specific to the Mediaocean Prisma tool. */
 export interface PrismaConfig {
   /** Required. The Prisma type. */
@@ -2566,6 +3496,8 @@ export interface PrismaConfig {
   /** Required. Relevant client, product, and estimate codes from the Mediaocean Prisma tool. */
   prismaCpeCode?: PrismaCpeCode;
 }
+const PrismaConfig = /*@__PURE__*/ __L.at(__c21, 3) as any as S.Schema<PrismaConfig>;
+
 /** Settings that control how the campaign budget is allocated. */
 export interface CampaignBudget {
   /** Immutable. The ID used to group budgets to be included the same invoice. If this field is set and the invoice level of the corresponding billing profile is set to "Budget invoice grouping ID", all external_budget_id sharing the same invoice_grouping_id will be grouped in the same invoice. */
@@ -2587,7 +3519,11 @@ export interface CampaignBudget {
   /** Additional metadata for use by the Mediaocean Prisma tool. Required for Mediaocean budgets. Only applicable to prisma_enabled advertisers. */
   prismaConfig?: PrismaConfig;
 }
+const CampaignBudget = /*@__PURE__*/ __L.at(__c21, 4) as any as S.Schema<CampaignBudget>;
+
 export type CampaignBudgetList = Array<CampaignBudget>;
+const CampaignBudgetList = /*@__PURE__*/ __L.at(__c21, 5) as any as S.Schema<CampaignBudgetList>;
+
 /** A single campaign. */
 export interface Campaign {
   /** Output only. The timestamp when the campaign was last updated. Assigned by the system. */
@@ -2611,12 +3547,19 @@ export interface Campaign {
   /** The list of budgets available to this campaign. If this field is not set, the campaign uses an unlimited budget. */
   campaignBudgets?: CampaignBudgetList;
 }
+const Campaign = /*@__PURE__*/ __L.at(__c21, 6) as any as S.Schema<Campaign>;
+
 export interface CreateAdvertisersCampaignsRequest {
   /** Output only. The unique ID of the advertiser the campaign belongs to. */
   advertiserId: string;
   /** Request body */
   body?: Campaign;
 }
+const CreateAdvertisersCampaignsRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  7,
+) as any as S.Schema<CreateAdvertisersCampaignsRequest>;
+
 /** A single channel. Channels are custom groups of related websites and apps. */
 export interface Channel {
   /** Output only. Number of line items that are directly targeting this channel negatively. */
@@ -2634,6 +3577,8 @@ export interface Channel {
   /** The ID of the partner that owns the channel. */
   partnerId?: string;
 }
+const Channel = /*@__PURE__*/ __L.at(__c22, 0) as any as S.Schema<Channel>;
+
 export interface CreateAdvertisersChannelsRequest {
   /** The ID of the partner that owns the created channel. */
   partnerId?: string;
@@ -2642,6 +3587,11 @@ export interface CreateAdvertisersChannelsRequest {
   /** Request body */
   body?: Channel;
 }
+const CreateAdvertisersChannelsRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  1,
+) as any as S.Schema<CreateAdvertisersChannelsRequest>;
+
 export interface CreateAdvertisersChannelsSitesRequest {
   /** The ID of the partner that owns the parent channel. */
   partnerId?: string;
@@ -2652,6 +3602,11 @@ export interface CreateAdvertisersChannelsSitesRequest {
   /** Request body */
   body?: Site;
 }
+const CreateAdvertisersChannelsSitesRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  2,
+) as any as S.Schema<CreateAdvertisersChannelsSitesRequest>;
+
 /** Timer event of the creative. */
 export interface TimerEvent {
   /** Required. The name used to identify this timer event in reports. */
@@ -2659,7 +3614,11 @@ export interface TimerEvent {
   /** Required. The name of the timer event. */
   name?: string;
 }
+const TimerEvent = /*@__PURE__*/ __L.at(__c22, 3) as any as S.Schema<TimerEvent>;
+
 export type TimerEventList = Array<TimerEvent>;
+const TimerEventList = /*@__PURE__*/ __L.at(__c22, 4) as any as S.Schema<TimerEventList>;
+
 export type CreativeEntityStatusEnum =
   | "ENTITY_STATUS_UNSPECIFIED"
   | "ENTITY_STATUS_ACTIVE"
@@ -2667,16 +3626,22 @@ export type CreativeEntityStatusEnum =
   | "ENTITY_STATUS_DRAFT"
   | "ENTITY_STATUS_PAUSED"
   | "ENTITY_STATUS_SCHEDULED_FOR_DELETION";
+const CreativeEntityStatusEnum = S.String;
+
 export type ReviewStatusInfoCreativeAndLandingPageReviewStatusEnum =
   | "REVIEW_STATUS_UNSPECIFIED"
   | "REVIEW_STATUS_APPROVED"
   | "REVIEW_STATUS_REJECTED"
   | "REVIEW_STATUS_PENDING";
+const ReviewStatusInfoCreativeAndLandingPageReviewStatusEnum = S.String;
+
 export type ReviewStatusInfoContentAndPolicyReviewStatusEnum =
   | "REVIEW_STATUS_UNSPECIFIED"
   | "REVIEW_STATUS_APPROVED"
   | "REVIEW_STATUS_REJECTED"
   | "REVIEW_STATUS_PENDING";
+const ReviewStatusInfoContentAndPolicyReviewStatusEnum = S.String;
+
 export type ExchangeReviewStatusExchangeEnum =
   | "EXCHANGE_UNSPECIFIED"
   | "EXCHANGE_GOOGLE_AD_MANAGER"
@@ -2768,11 +3733,15 @@ export type ExchangeReviewStatusExchangeEnum =
   | "EXCHANGE_SNAP"
   | "EXCHANGE_CADENT"
   | "EXCHANGE_EXTE";
+const ExchangeReviewStatusExchangeEnum = S.String;
+
 export type ExchangeReviewStatusStatusEnum =
   | "REVIEW_STATUS_UNSPECIFIED"
   | "REVIEW_STATUS_APPROVED"
   | "REVIEW_STATUS_REJECTED"
   | "REVIEW_STATUS_PENDING";
+const ExchangeReviewStatusStatusEnum = S.String;
+
 /** Exchange review status for the creative. */
 export interface ExchangeReviewStatus {
   /** The exchange reviewing the creative. */
@@ -2780,18 +3749,32 @@ export interface ExchangeReviewStatus {
   /** Status of the exchange review. */
   status?: ExchangeReviewStatusStatusEnum | (string & {});
 }
+const ExchangeReviewStatus = /*@__PURE__*/ __L.at(
+  __c22,
+  5,
+) as any as S.Schema<ExchangeReviewStatus>;
+
 export type ExchangeReviewStatusList = Array<ExchangeReviewStatus>;
+const ExchangeReviewStatusList = /*@__PURE__*/ __L.at(
+  __c22,
+  6,
+) as any as S.Schema<ExchangeReviewStatusList>;
+
 export type ReviewStatusInfoApprovalStatusEnum =
   | "APPROVAL_STATUS_UNSPECIFIED"
   | "APPROVAL_STATUS_PENDING_NOT_SERVABLE"
   | "APPROVAL_STATUS_PENDING_SERVABLE"
   | "APPROVAL_STATUS_APPROVED_SERVABLE"
   | "APPROVAL_STATUS_REJECTED_NOT_SERVABLE";
+const ReviewStatusInfoApprovalStatusEnum = S.String;
+
 export type PublisherReviewStatusStatusEnum =
   | "REVIEW_STATUS_UNSPECIFIED"
   | "REVIEW_STATUS_APPROVED"
   | "REVIEW_STATUS_REJECTED"
   | "REVIEW_STATUS_PENDING";
+const PublisherReviewStatusStatusEnum = S.String;
+
 /** Publisher review status for the creative. */
 export interface PublisherReviewStatus {
   /** Status of the publisher review. */
@@ -2799,7 +3782,17 @@ export interface PublisherReviewStatus {
   /** The publisher reviewing the creative. */
   publisherName?: string;
 }
+const PublisherReviewStatus = /*@__PURE__*/ __L.at(
+  __c22,
+  7,
+) as any as S.Schema<PublisherReviewStatus>;
+
 export type PublisherReviewStatusList = Array<PublisherReviewStatus>;
+const PublisherReviewStatusList = /*@__PURE__*/ __L.at(
+  __c23,
+  0,
+) as any as S.Schema<PublisherReviewStatusList>;
+
 /** Review statuses for the creative. */
 export interface ReviewStatusInfo {
   /** Creative and landing page review status for the creative. */
@@ -2815,6 +3808,8 @@ export interface ReviewStatusInfo {
   /** Publisher review statuses for the creative. */
   publisherReviewStatuses?: PublisherReviewStatusList;
 }
+const ReviewStatusInfo = /*@__PURE__*/ __L.at(__c23, 1) as any as S.Schema<ReviewStatusInfo>;
+
 export type CreativeExpandingDirectionEnum =
   | "EXPANDING_DIRECTION_UNSPECIFIED"
   | "EXPANDING_DIRECTION_NONE"
@@ -2829,6 +3824,8 @@ export type CreativeExpandingDirectionEnum =
   | "EXPANDING_DIRECTION_UP_OR_DOWN"
   | "EXPANDING_DIRECTION_LEFT_OR_RIGHT"
   | "EXPANDING_DIRECTION_ANY_DIAGONAL";
+const CreativeExpandingDirectionEnum = S.String;
+
 export type AssetAssociationRoleEnum =
   | "ASSET_ROLE_UNSPECIFIED"
   | "ASSET_ROLE_MAIN"
@@ -2852,6 +3849,8 @@ export type AssetAssociationRoleEnum =
   | "ASSET_ROLE_REQUIRE_LOGO"
   | "ASSET_ROLE_REQUIRE_IMAGE"
   | "ASSET_ROLE_ENABLE_ASSET_ENHANCEMENTS";
+const AssetAssociationRoleEnum = S.String;
+
 /** A single asset. */
 export interface Asset {
   /** The asset content. For uploaded assets, the content is the serving path. */
@@ -2859,6 +3858,8 @@ export interface Asset {
   /** Media ID of the uploaded asset. This is a unique identifier for the asset. This ID can be passed to other API calls, e.g. CreateCreative to associate the asset with a creative. The Media ID space updated on **April 5, 2023**. Update media IDs cached before **April 5, 2023** by retrieving the new media ID from associated creative resources or re-uploading the asset. */
   mediaId?: string;
 }
+const Asset = /*@__PURE__*/ __L.at(__c23, 2) as any as S.Schema<Asset>;
+
 /** Asset association for the creative. */
 export interface AssetAssociation {
   /** Optional. The role of this asset for the creative. */
@@ -2866,7 +3867,14 @@ export interface AssetAssociation {
   /** Optional. The associated asset. */
   asset?: Asset;
 }
+const AssetAssociation = /*@__PURE__*/ __L.at(__c23, 3) as any as S.Schema<AssetAssociation>;
+
 export type AssetAssociationList = Array<AssetAssociation>;
+const AssetAssociationList = /*@__PURE__*/ __L.at(
+  __c23,
+  4,
+) as any as S.Schema<AssetAssociationList>;
+
 /** Counter event of the creative. */
 export interface CounterEvent {
   /** Required. The name of the counter event. */
@@ -2874,17 +3882,25 @@ export interface CounterEvent {
   /** Required. The name used to identify this counter event in reports. */
   reportingName?: string;
 }
+const CounterEvent = /*@__PURE__*/ __L.at(__c23, 5) as any as S.Schema<CounterEvent>;
+
 export type CounterEventList = Array<CounterEvent>;
+const CounterEventList = /*@__PURE__*/ __L.at(__c23, 6) as any as S.Schema<CounterEventList>;
+
 export type CreativeSyntheticContentAttestationStatusEnum =
   | "SYNTHETIC_CONTENT_ATTESTATION_STATUS_UNSPECIFIED"
   | "NOT_SYNTHETIC"
   | "IS_SYNTHETIC";
+const CreativeSyntheticContentAttestationStatusEnum = S.String;
+
 export type CreativeHostingSourceEnum =
   | "HOSTING_SOURCE_UNSPECIFIED"
   | "HOSTING_SOURCE_CM"
   | "HOSTING_SOURCE_THIRD_PARTY"
   | "HOSTING_SOURCE_HOSTED"
   | "HOSTING_SOURCE_RICH_MEDIA";
+const CreativeHostingSourceEnum = S.String;
+
 /** The length an audio or a video has been played. */
 export interface AudioVideoOffset {
   /** Optional. The offset in seconds from the start of the audio or video. */
@@ -2892,6 +3908,8 @@ export interface AudioVideoOffset {
   /** Optional. The offset in percentage of the audio or video duration. */
   percentage?: string;
 }
+const AudioVideoOffset = /*@__PURE__*/ __L.at(__c23, 7) as any as S.Schema<AudioVideoOffset>;
+
 export type CreativeCreativeTypeEnum =
   | "CREATIVE_TYPE_UNSPECIFIED"
   | "CREATIVE_TYPE_STANDARD"
@@ -2909,6 +3927,8 @@ export type CreativeCreativeTypeEnum =
   | "CREATIVE_TYPE_NATIVE_VIDEO"
   | "CREATIVE_TYPE_TEMPLATED_APP_INSTALL_VIDEO"
   | "CREATIVE_TYPE_ASSET_BASED_CREATIVE";
+const CreativeCreativeTypeEnum = S.String;
+
 export type ThirdPartyUrlTypeEnum =
   | "THIRD_PARTY_URL_TYPE_UNSPECIFIED"
   | "THIRD_PARTY_URL_TYPE_IMPRESSION"
@@ -2926,6 +3946,8 @@ export type ThirdPartyUrlTypeEnum =
   | "THIRD_PARTY_URL_TYPE_AUDIO_VIDEO_CUSTOM"
   | "THIRD_PARTY_URL_TYPE_AUDIO_VIDEO_SKIP"
   | "THIRD_PARTY_URL_TYPE_AUDIO_VIDEO_PROGRESS";
+const ThirdPartyUrlTypeEnum = S.String;
+
 /** Tracking URLs from third parties to track interactions with an audio or a video creative. */
 export interface ThirdPartyUrl {
   /** Optional. Tracking URL used to track the interaction. Provide a URL with optional path or query string, beginning with `https:`. For example, `https://www.example.com/path` */
@@ -2933,7 +3955,11 @@ export interface ThirdPartyUrl {
   /** Optional. The type of interaction needs to be tracked by the tracking URL */
   type?: ThirdPartyUrlTypeEnum | (string & {});
 }
+const ThirdPartyUrl = /*@__PURE__*/ __L.at(__c24, 0) as any as S.Schema<ThirdPartyUrl>;
+
 export type ThirdPartyUrlList = Array<ThirdPartyUrl>;
+const ThirdPartyUrlList = /*@__PURE__*/ __L.at(__c24, 1) as any as S.Schema<ThirdPartyUrlList>;
+
 /** Dimensions. */
 export interface Dimensions {
   /** The height in pixels. */
@@ -2941,6 +3967,8 @@ export interface Dimensions {
   /** The width in pixels. */
   widthPixels?: number;
 }
+const Dimensions = /*@__PURE__*/ __L.at(__c24, 2) as any as S.Schema<Dimensions>;
+
 /** Represents information about the transcoded audio or video file. */
 export interface Transcode {
   /** Optional. The name of the transcoded file. */
@@ -2962,12 +3990,20 @@ export interface Transcode {
   /** Optional. The size of the transcoded file, in bytes. */
   fileSizeBytes?: string;
 }
+const Transcode = /*@__PURE__*/ __L.at(__c24, 3) as any as S.Schema<Transcode>;
+
 export type TranscodeList = Array<Transcode>;
+const TranscodeList = /*@__PURE__*/ __L.at(__c24, 4) as any as S.Schema<TranscodeList>;
+
 export type DimensionsList = Array<Dimensions>;
+const DimensionsList = /*@__PURE__*/ __L.at(__c24, 5) as any as S.Schema<DimensionsList>;
+
 export type ExitEventTypeEnum =
   | "EXIT_EVENT_TYPE_UNSPECIFIED"
   | "EXIT_EVENT_TYPE_DEFAULT"
   | "EXIT_EVENT_TYPE_BACKUP";
+const ExitEventTypeEnum = S.String;
+
 /** Exit event of the creative. */
 export interface ExitEvent {
   /** Required. The click through URL of the exit event. This is required when type is: * `EXIT_EVENT_TYPE_DEFAULT` * `EXIT_EVENT_TYPE_BACKUP` */
@@ -2979,7 +4015,11 @@ export interface ExitEvent {
   /** Optional. The name used to identify this event in reports. Leave it empty or unset for creatives containing image assets only. */
   reportingName?: string;
 }
+const ExitEvent = /*@__PURE__*/ __L.at(__c24, 6) as any as S.Schema<ExitEvent>;
+
 export type ExitEventList = Array<ExitEvent>;
+const ExitEventList = /*@__PURE__*/ __L.at(__c24, 7) as any as S.Schema<ExitEventList>;
+
 export type CreativeCreativeAttributesItemEnum =
   | "CREATIVE_ATTRIBUTE_UNSPECIFIED"
   | "CREATIVE_ATTRIBUTE_VAST"
@@ -2988,12 +4028,17 @@ export type CreativeCreativeAttributesItemEnum =
 export type CreativeCreativeAttributesItemEnumList = Array<
   CreativeCreativeAttributesItemEnum | (string & {})
 >;
+const CreativeCreativeAttributesItemEnumList =
+  DoubleVerifyAvoidedAgeRatingsItemEnumList as any as S.Schema<CreativeCreativeAttributesItemEnumList>;
+
 export type ObaIconPositionEnum =
   | "OBA_ICON_POSITION_UNSPECIFIED"
   | "OBA_ICON_POSITION_UPPER_RIGHT"
   | "OBA_ICON_POSITION_UPPER_LEFT"
   | "OBA_ICON_POSITION_LOWER_RIGHT"
   | "OBA_ICON_POSITION_LOWER_LEFT";
+const ObaIconPositionEnum = S.String;
+
 /** OBA Icon for a Creative */
 export interface ObaIcon {
   /** Required. The click tracking URL of the OBA icon. Only URLs of the following domains are allowed: * `https://info.evidon.com` * `https://l.betrad.com` */
@@ -3013,6 +4058,8 @@ export interface ObaIcon {
   /** Optional. The dimensions of the OBA icon. */
   dimensions?: Dimensions;
 }
+const ObaIcon = /*@__PURE__*/ __L.at(__c25, 0) as any as S.Schema<ObaIcon>;
+
 /** A Campaign Manager 360 tracking ad. */
 export interface CmTrackingAd {
   /** Optional. The ad ID of the campaign manager 360 tracking Ad. */
@@ -3022,6 +4069,8 @@ export interface CmTrackingAd {
   /** Optional. The creative ID of the campaign manager 360 tracking Ad. */
   cmCreativeId?: string;
 }
+const CmTrackingAd = /*@__PURE__*/ __L.at(__c25, 1) as any as S.Schema<CmTrackingAd>;
+
 export type UniversalAdIdRegistryEnum =
   | "UNIVERSAL_AD_REGISTRY_UNSPECIFIED"
   | "UNIVERSAL_AD_REGISTRY_OTHER"
@@ -3029,6 +4078,8 @@ export type UniversalAdIdRegistryEnum =
   | "UNIVERSAL_AD_REGISTRY_CLEARCAST"
   | "UNIVERSAL_AD_REGISTRY_DV360"
   | "UNIVERSAL_AD_REGISTRY_CM";
+const UniversalAdIdRegistryEnum = S.String;
+
 /** A creative identifier provided by a registry that is unique across all platforms. This is part of the VAST 4.0 standard. */
 export interface UniversalAdId {
   /** Optional. The unique creative identifier. */
@@ -3036,6 +4087,8 @@ export interface UniversalAdId {
   /** Optional. The registry provides unique creative identifiers. */
   registry?: UniversalAdIdRegistryEnum | (string & {});
 }
+const UniversalAdId = /*@__PURE__*/ __L.at(__c25, 2) as any as S.Schema<UniversalAdId>;
+
 /** A single Creative. */
 export interface Creative {
   /** Optional. The URL of the VAST tag for a third-party VAST tag creative. Required and only valid for third-party VAST tag creatives. Third-party VAST tag creatives are creatives with following hosting_source: * `HOSTING_SOURCE_THIRD_PARTY` combined with following creative_type: * `CREATIVE_TYPE_AUDIO` * `CREATIVE_TYPE_VIDEO` */
@@ -3135,12 +4188,19 @@ export interface Creative {
   /** Optional. An optional creative identifier provided by a registry that is unique across all platforms. Universal Ad ID is part of the VAST 4.0 standard. It can be modified after the creative is created. This field is only supported for the following creative_type: * `CREATIVE_TYPE_VIDEO` */
   universalAdId?: UniversalAdId;
 }
+const Creative = /*@__PURE__*/ __L.at(__c25, 3) as any as S.Schema<Creative>;
+
 export interface CreateAdvertisersCreativesRequest {
   /** Output only. The unique ID of the advertiser the creative belongs to. */
   advertiserId: string;
   /** Request body */
   body?: Creative;
 }
+const CreateAdvertisersCreativesRequest = /*@__PURE__*/ __L.at(
+  __c25,
+  4,
+) as any as S.Schema<CreateAdvertisersCreativesRequest>;
+
 export type InsertionOrderEntityStatusEnum =
   | "ENTITY_STATUS_UNSPECIFIED"
   | "ENTITY_STATUS_ACTIVE"
@@ -3148,15 +4208,21 @@ export type InsertionOrderEntityStatusEnum =
   | "ENTITY_STATUS_DRAFT"
   | "ENTITY_STATUS_PAUSED"
   | "ENTITY_STATUS_SCHEDULED_FOR_DELETION";
+const InsertionOrderEntityStatusEnum = S.String;
+
 export type InsertionOrderInsertionOrderTypeEnum =
   | "INSERTION_ORDER_TYPE_UNSPECIFIED"
   | "RTB"
   | "OVER_THE_TOP";
+const InsertionOrderInsertionOrderTypeEnum = S.String;
+
 export type InsertionOrderBillableOutcomeEnum =
   | "BILLABLE_OUTCOME_UNSPECIFIED"
   | "BILLABLE_OUTCOME_PAY_PER_IMPRESSION"
   | "BILLABLE_OUTCOME_PAY_PER_CLICK"
   | "BILLABLE_OUTCOME_PAY_PER_VIEWABLE_IMPRESSION";
+const InsertionOrderBillableOutcomeEnum = S.String;
+
 export type InsertionOrderReservationTypeEnum =
   | "RESERVATION_TYPE_UNSPECIFIED"
   | "RESERVATION_TYPE_NOT_GUARANTEED"
@@ -3164,10 +4230,14 @@ export type InsertionOrderReservationTypeEnum =
   | "RESERVATION_TYPE_TAG_GUARANTEED"
   | "RESERVATION_TYPE_PETRA_VIRAL"
   | "RESERVATION_TYPE_INSTANT_RESERVE";
+const InsertionOrderReservationTypeEnum = S.String;
+
 export type InsertionOrderBudgetBudgetUnitEnum =
   | "BUDGET_UNIT_UNSPECIFIED"
   | "BUDGET_UNIT_CURRENCY"
   | "BUDGET_UNIT_IMPRESSIONS";
+const InsertionOrderBudgetBudgetUnitEnum = S.String;
+
 /** Settings that control the budget of a single budget segment. */
 export interface InsertionOrderBudgetSegment {
   /** Required. The budget amount the insertion order will spend for the given date_range. The amount is in micros. Must be greater than 0. For example, 500000000 represents 500 standard units of the currency. */
@@ -3179,12 +4249,24 @@ export interface InsertionOrderBudgetSegment {
   /** Optional. The budget segment description. It can be used to enter Purchase Order information for each budget segment and have that information printed on the invoices. Must be UTF-8 encoded. */
   description?: string;
 }
+const InsertionOrderBudgetSegment = /*@__PURE__*/ __L.at(
+  __c25,
+  5,
+) as any as S.Schema<InsertionOrderBudgetSegment>;
+
 export type InsertionOrderBudgetSegmentList = Array<InsertionOrderBudgetSegment>;
+const InsertionOrderBudgetSegmentList = /*@__PURE__*/ __L.at(
+  __c25,
+  6,
+) as any as S.Schema<InsertionOrderBudgetSegmentList>;
+
 export type InsertionOrderBudgetAutomationTypeEnum =
   | "INSERTION_ORDER_AUTOMATION_TYPE_UNSPECIFIED"
   | "INSERTION_ORDER_AUTOMATION_TYPE_BUDGET"
   | "INSERTION_ORDER_AUTOMATION_TYPE_NONE"
   | "INSERTION_ORDER_AUTOMATION_TYPE_BID_BUDGET";
+const InsertionOrderBudgetAutomationTypeEnum = S.String;
+
 /** Settings that control how insertion order budget is allocated. */
 export interface InsertionOrderBudget {
   /** Required. Immutable. The budget unit specifies whether the budget is currency based or impression based. */
@@ -3194,6 +4276,11 @@ export interface InsertionOrderBudget {
   /** Optional. The type of automation used to manage bid and budget for the insertion order. If this field is unspecified in creation, the value defaults to `INSERTION_ORDER_AUTOMATION_TYPE_NONE`. */
   automationType?: InsertionOrderBudgetAutomationTypeEnum | (string & {});
 }
+const InsertionOrderBudget = /*@__PURE__*/ __L.at(
+  __c25,
+  7,
+) as any as S.Schema<InsertionOrderBudget>;
+
 /** A single insertion order. */
 export interface InsertionOrder {
   /** Output only. The timestamp when the insertion order was last updated. Assigned by the system. */
@@ -3231,18 +4318,30 @@ export interface InsertionOrder {
   /** Optional. The partner costs associated with the insertion order. If absent or empty in CreateInsertionOrder method, the newly created insertion order will inherit partner costs from the partner settings. */
   partnerCosts?: PartnerCostList;
 }
+const InsertionOrder = /*@__PURE__*/ __L.at(__c26, 0) as any as S.Schema<InsertionOrder>;
+
 export interface CreateAdvertisersInsertionOrdersRequest {
   /** Output only. The unique ID of the advertiser the insertion order belongs to. */
   advertiserId: string;
   /** Request body */
   body?: InsertionOrder;
 }
+const CreateAdvertisersInsertionOrdersRequest = /*@__PURE__*/ __L.at(
+  __c26,
+  1,
+) as any as S.Schema<CreateAdvertisersInsertionOrdersRequest>;
+
 export interface CreateAdvertisersLineItemsRequest {
   /** Output only. The unique ID of the advertiser the line item belongs to. */
   advertiserId: string;
   /** Request body */
   body?: LineItem;
 }
+const CreateAdvertisersLineItemsRequest = /*@__PURE__*/ __L.at(
+  __c26,
+  2,
+) as any as S.Schema<CreateAdvertisersLineItemsRequest>;
+
 export type CreateAdvertisersLineItemsTargetingTypesAssignedTargetingOptionsTargetingTypeEnum =
   | "TARGETING_TYPE_UNSPECIFIED"
   | "TARGETING_TYPE_CHANNEL"
@@ -3293,6 +4392,8 @@ export type CreateAdvertisersLineItemsTargetingTypesAssignedTargetingOptionsTarg
   | "TARGETING_TYPE_YOUTUBE_CHANNEL"
   | "TARGETING_TYPE_SESSION_POSITION"
   | "TARGETING_TYPE_YOUTUBE_CHANNEL_PACK";
+const CreateAdvertisersLineItemsTargetingTypesAssignedTargetingOptionsTargetingTypeEnum = S.String;
+
 export interface CreateAdvertisersLineItemsTargetingTypesAssignedTargetingOptionsRequest {
   /** Required. Identifies the type of this assigned targeting option. Supported targeting types include: * `TARGETING_TYPE_AGE_RANGE` * `TARGETING_TYPE_APP` * `TARGETING_TYPE_APP_CATEGORY` * `TARGETING_TYPE_AUDIENCE_GROUP` * `TARGETING_TYPE_AUDIO_CONTENT_TYPE` * `TARGETING_TYPE_AUTHORIZED_SELLER_STATUS` * `TARGETING_TYPE_BROWSER` * `TARGETING_TYPE_BUSINESS_CHAIN` * `TARGETING_TYPE_CARRIER_AND_ISP` * `TARGETING_TYPE_CATEGORY` * `TARGETING_TYPE_CHANNEL` * `TARGETING_TYPE_CONTENT_DURATION` * `TARGETING_TYPE_CONTENT_GENRE` * `TARGETING_TYPE_CONTENT_INSTREAM_POSITION` * `TARGETING_TYPE_CONTENT_OUTSTREAM_POSITION` * `TARGETING_TYPE_CONTENT_STREAM_TYPE` * `TARGETING_TYPE_DAY_AND_TIME` * `TARGETING_TYPE_DEVICE_MAKE_MODEL` * `TARGETING_TYPE_DEVICE_TYPE` * `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_ENVIRONMENT` * `TARGETING_TYPE_EXCHANGE` * `TARGETING_TYPE_GENDER` * `TARGETING_TYPE_GEO_REGION` * `TARGETING_TYPE_HOUSEHOLD_INCOME` * `TARGETING_TYPE_INVENTORY_SOURCE` * `TARGETING_TYPE_INVENTORY_SOURCE_GROUP` * `TARGETING_TYPE_KEYWORD` * `TARGETING_TYPE_LANGUAGE` * `TARGETING_TYPE_NATIVE_CONTENT_POSITION` * `TARGETING_TYPE_NEGATIVE_KEYWORD_LIST` * `TARGETING_TYPE_OMID` * `TARGETING_TYPE_ON_SCREEN_POSITION` * `TARGETING_TYPE_OPERATING_SYSTEM` * `TARGETING_TYPE_PARENTAL_STATUS` * `TARGETING_TYPE_POI` * `TARGETING_TYPE_PROXIMITY_LOCATION_LIST` * `TARGETING_TYPE_REGIONAL_LOCATION_LIST` * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_SUB_EXCHANGE` * `TARGETING_TYPE_THIRD_PARTY_VERIFIER` * `TARGETING_TYPE_URL` * `TARGETING_TYPE_USER_REWARDED_CONTENT` * `TARGETING_TYPE_VIDEO_PLAYER_SIZE` * `TARGETING_TYPE_VIEWABILITY` */
   targetingType:
@@ -3305,10 +4406,18 @@ export interface CreateAdvertisersLineItemsTargetingTypesAssignedTargetingOption
   /** Request body */
   body?: AssignedTargetingOption;
 }
+const CreateAdvertisersLineItemsTargetingTypesAssignedTargetingOptionsRequest =
+  /*@__PURE__*/ __L.at(
+    __c26,
+    3,
+  ) as any as S.Schema<CreateAdvertisersLineItemsTargetingTypesAssignedTargetingOptionsRequest>;
+
 export type LocationListLocationTypeEnum =
   | "TARGETING_LOCATION_TYPE_UNSPECIFIED"
   | "TARGETING_LOCATION_TYPE_PROXIMITY"
   | "TARGETING_LOCATION_TYPE_REGIONAL";
+const LocationListLocationTypeEnum = S.String;
+
 /** A list of locations used for targeting. */
 export interface LocationList {
   /** Output only. The resource name of the location list. */
@@ -3322,12 +4431,19 @@ export interface LocationList {
   /** Required. Immutable. The unique ID of the advertiser the location list belongs to. */
   advertiserId?: string;
 }
+const LocationList = /*@__PURE__*/ __L.at(__c26, 4) as any as S.Schema<LocationList>;
+
 export interface CreateAdvertisersLocationListsRequest {
   /** Required. The ID of the DV360 advertiser to which the location list belongs. */
   advertiserId: string;
   /** Request body */
   body?: LocationList;
 }
+const CreateAdvertisersLocationListsRequest = /*@__PURE__*/ __L.at(
+  __c26,
+  5,
+) as any as S.Schema<CreateAdvertisersLocationListsRequest>;
+
 export interface CreateAdvertisersLocationListsAssignedLocationsRequest {
   /** Required. The ID of the DV360 advertiser to which the location list belongs. */
   advertiserId: string;
@@ -3336,12 +4452,22 @@ export interface CreateAdvertisersLocationListsAssignedLocationsRequest {
   /** Request body */
   body?: AssignedLocation;
 }
+const CreateAdvertisersLocationListsAssignedLocationsRequest = /*@__PURE__*/ __L.at(
+  __c26,
+  6,
+) as any as S.Schema<CreateAdvertisersLocationListsAssignedLocationsRequest>;
+
 export interface CreateAdvertisersManualTriggersRequest {
   /** Required. Immutable. The unique ID of the advertiser that the manual trigger belongs to. */
   advertiserId: string;
   /** Request body */
   body?: ManualTrigger;
 }
+const CreateAdvertisersManualTriggersRequest = /*@__PURE__*/ __L.at(
+  __c26,
+  7,
+) as any as S.Schema<CreateAdvertisersManualTriggersRequest>;
+
 /** A list of negative keywords used for targeting. */
 export interface NegativeKeywordList {
   /** Required. The display name of the negative keyword list. Must be UTF-8 encoded with a maximum size of 255 bytes. */
@@ -3355,12 +4481,19 @@ export interface NegativeKeywordList {
   /** Output only. The unique ID of the negative keyword list. Assigned by the system. */
   negativeKeywordListId?: string;
 }
+const NegativeKeywordList = /*@__PURE__*/ __L.at(__c27, 0) as any as S.Schema<NegativeKeywordList>;
+
 export interface CreateAdvertisersNegativeKeywordListsRequest {
   /** Required. The ID of the DV360 advertiser to which the negative keyword list will belong. */
   advertiserId: string;
   /** Request body */
   body?: NegativeKeywordList;
 }
+const CreateAdvertisersNegativeKeywordListsRequest = /*@__PURE__*/ __L.at(
+  __c27,
+  1,
+) as any as S.Schema<CreateAdvertisersNegativeKeywordListsRequest>;
+
 export interface CreateAdvertisersNegativeKeywordListsNegativeKeywordsRequest {
   /** Required. The ID of the parent negative keyword list in which the negative keyword will be created. */
   negativeKeywordListId: string;
@@ -3369,6 +4502,11 @@ export interface CreateAdvertisersNegativeKeywordListsNegativeKeywordsRequest {
   /** Request body */
   body?: NegativeKeyword;
 }
+const CreateAdvertisersNegativeKeywordListsNegativeKeywordsRequest = /*@__PURE__*/ __L.at(
+  __c27,
+  2,
+) as any as S.Schema<CreateAdvertisersNegativeKeywordListsNegativeKeywordsRequest>;
+
 export type CreateAdvertisersTargetingTypesAssignedTargetingOptionsTargetingTypeEnum =
   | "TARGETING_TYPE_UNSPECIFIED"
   | "TARGETING_TYPE_CHANNEL"
@@ -3419,6 +4557,8 @@ export type CreateAdvertisersTargetingTypesAssignedTargetingOptionsTargetingType
   | "TARGETING_TYPE_YOUTUBE_CHANNEL"
   | "TARGETING_TYPE_SESSION_POSITION"
   | "TARGETING_TYPE_YOUTUBE_CHANNEL_PACK";
+const CreateAdvertisersTargetingTypesAssignedTargetingOptionsTargetingTypeEnum = S.String;
+
 export interface CreateAdvertisersTargetingTypesAssignedTargetingOptionsRequest {
   /** Required. Identifies the type of this assigned targeting option. Supported targeting types: * `TARGETING_TYPE_CHANNEL` * `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_OMID` * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_KEYWORD` */
   targetingType:
@@ -3429,6 +4569,11 @@ export interface CreateAdvertisersTargetingTypesAssignedTargetingOptionsRequest 
   /** Request body */
   body?: AssignedTargetingOption;
 }
+const CreateAdvertisersTargetingTypesAssignedTargetingOptionsRequest = /*@__PURE__*/ __L.at(
+  __c27,
+  3,
+) as any as S.Schema<CreateAdvertisersTargetingTypesAssignedTargetingOptionsRequest>;
+
 export type CustomBiddingAlgorithmEntityStatusEnum =
   | "ENTITY_STATUS_UNSPECIFIED"
   | "ENTITY_STATUS_ACTIVE"
@@ -3436,17 +4581,23 @@ export type CustomBiddingAlgorithmEntityStatusEnum =
   | "ENTITY_STATUS_DRAFT"
   | "ENTITY_STATUS_PAUSED"
   | "ENTITY_STATUS_SCHEDULED_FOR_DELETION";
+const CustomBiddingAlgorithmEntityStatusEnum = S.String;
+
 export type CustomBiddingModelDetailsSuspensionStateEnum =
   | "SUSPENSION_STATE_UNSPECIFIED"
   | "SUSPENSION_STATE_ENABLED"
   | "SUSPENSION_STATE_DORMANT"
   | "SUSPENSION_STATE_SUSPENDED";
+const CustomBiddingModelDetailsSuspensionStateEnum = S.String;
+
 export type CustomBiddingModelDetailsReadinessStateEnum =
   | "READINESS_STATE_UNSPECIFIED"
   | "READINESS_STATE_ACTIVE"
   | "READINESS_STATE_INSUFFICIENT_DATA"
   | "READINESS_STATE_TRAINING"
   | "READINESS_STATE_NO_VALID_SCRIPT";
+const CustomBiddingModelDetailsReadinessStateEnum = S.String;
+
 /** The details of a custom bidding algorithm model for a single shared advertiser. */
 export interface CustomBiddingModelDetails {
   /** The unique ID of the relevant advertiser. */
@@ -3456,10 +4607,22 @@ export interface CustomBiddingModelDetails {
   /** The readiness state of custom bidding model. */
   readinessState?: CustomBiddingModelDetailsReadinessStateEnum | (string & {});
 }
+const CustomBiddingModelDetails = /*@__PURE__*/ __L.at(
+  __c27,
+  4,
+) as any as S.Schema<CustomBiddingModelDetails>;
+
 export type CustomBiddingModelDetailsList = Array<CustomBiddingModelDetails>;
+const CustomBiddingModelDetailsList = /*@__PURE__*/ __L.at(
+  __c27,
+  5,
+) as any as S.Schema<CustomBiddingModelDetailsList>;
+
 export type CustomBiddingAlgorithmCustomBiddingAlgorithmTypeEnum =
   | "CUSTOM_BIDDING_ALGORITHM_TYPE_UNSPECIFIED"
   | "SCRIPT_BASED";
+const CustomBiddingAlgorithmCustomBiddingAlgorithmTypeEnum = S.String;
+
 /** A single custom bidding algorithm. */
 export interface CustomBiddingAlgorithm {
   /** The IDs of the advertisers who have access to this algorithm. If advertiser_id is set, this field will only consist of that value. This field will not be set if the algorithm [`owner`](/display-video/api/reference/rest/v1/customBiddingAlgorithms#CustomBiddingAlgorithm.FIELDS.oneof_owner) is a partner and is being retrieved using an advertiser [`accessor`](/display-video/api/reference/rest/v1/customBiddingAlgorithms/list#body.QUERY_PARAMETERS.oneof_accessor). */
@@ -3481,15 +4644,27 @@ export interface CustomBiddingAlgorithm {
   /** Required. Immutable. The type of custom bidding algorithm. */
   customBiddingAlgorithmType?: CustomBiddingAlgorithmCustomBiddingAlgorithmTypeEnum | (string & {});
 }
+const CustomBiddingAlgorithm = /*@__PURE__*/ __L.at(
+  __c27,
+  6,
+) as any as S.Schema<CustomBiddingAlgorithm>;
+
 export interface CreateCustomBiddingAlgorithmsRequest {
   /** Request body */
   body?: CustomBiddingAlgorithm;
 }
+const CreateCustomBiddingAlgorithmsRequest = /*@__PURE__*/ __L.at(
+  __c27,
+  7,
+) as any as S.Schema<CreateCustomBiddingAlgorithmsRequest>;
+
 export type ScriptErrorErrorCodeEnum =
   | "ERROR_CODE_UNSPECIFIED"
   | "SYNTAX_ERROR"
   | "DEPRECATED_SYNTAX"
   | "INTERNAL_ERROR";
+const ScriptErrorErrorCodeEnum = S.String;
+
 /** An error message for a custom bidding script. */
 export interface ScriptError {
   /** The type of error. */
@@ -3501,17 +4676,28 @@ export interface ScriptError {
   /** The line number in the script where the error was thrown. */
   line?: string;
 }
+const ScriptError = /*@__PURE__*/ __L.at(__c28, 0) as any as S.Schema<ScriptError>;
+
 export type ScriptErrorList = Array<ScriptError>;
+const ScriptErrorList = /*@__PURE__*/ __L.at(__c28, 1) as any as S.Schema<ScriptErrorList>;
+
 export type CustomBiddingScriptStateEnum =
   | "STATE_UNSPECIFIED"
   | "ACCEPTED"
   | "REJECTED"
   | "PENDING";
+const CustomBiddingScriptStateEnum = S.String;
+
 /** The reference to the uploaded custom bidding script file. */
 export interface CustomBiddingScriptRef {
   /** A resource name to be used in media.download to Download the script files. Or media.upload to Upload the script files. Resource names have the format `customBiddingAlgorithms/{custom_bidding_algorithm_id}/scriptRef/{ref_id}`. */
   resourceName?: string;
 }
+const CustomBiddingScriptRef = /*@__PURE__*/ __L.at(
+  __c28,
+  2,
+) as any as S.Schema<CustomBiddingScriptRef>;
+
 /** A single custom bidding script. */
 export interface CustomBiddingScript {
   /** Output only. The unique ID of the custom bidding algorithm the script belongs to. */
@@ -3531,6 +4717,8 @@ export interface CustomBiddingScript {
   /** Output only. The unique ID of the custom bidding script. */
   customBiddingScriptId?: string;
 }
+const CustomBiddingScript = /*@__PURE__*/ __L.at(__c28, 3) as any as S.Schema<CustomBiddingScript>;
+
 export interface CreateCustomBiddingAlgorithmsScriptsRequest {
   /** The ID of the partner that owns the parent custom bidding algorithm. Only this partner will have write access to this custom bidding script. */
   partnerId?: string;
@@ -3541,6 +4729,11 @@ export interface CreateCustomBiddingAlgorithmsScriptsRequest {
   /** Request body */
   body?: CustomBiddingScript;
 }
+const CreateCustomBiddingAlgorithmsScriptsRequest = /*@__PURE__*/ __L.at(
+  __c28,
+  4,
+) as any as S.Schema<CreateCustomBiddingAlgorithmsScriptsRequest>;
+
 export type GuaranteedOrderExchangeEnum =
   | "EXCHANGE_UNSPECIFIED"
   | "EXCHANGE_GOOGLE_AD_MANAGER"
@@ -3632,6 +4825,8 @@ export type GuaranteedOrderExchangeEnum =
   | "EXCHANGE_SNAP"
   | "EXCHANGE_CADENT"
   | "EXCHANGE_EXTE";
+const GuaranteedOrderExchangeEnum = S.String;
+
 export type GuaranteedOrderStatusEntityStatusEnum =
   | "ENTITY_STATUS_UNSPECIFIED"
   | "ENTITY_STATUS_ACTIVE"
@@ -3639,10 +4834,14 @@ export type GuaranteedOrderStatusEntityStatusEnum =
   | "ENTITY_STATUS_DRAFT"
   | "ENTITY_STATUS_PAUSED"
   | "ENTITY_STATUS_SCHEDULED_FOR_DELETION";
+const GuaranteedOrderStatusEntityStatusEnum = S.String;
+
 export type GuaranteedOrderStatusConfigStatusEnum =
   | "GUARANTEED_ORDER_CONFIG_STATUS_UNSPECIFIED"
   | "PENDING"
   | "COMPLETED";
+const GuaranteedOrderStatusConfigStatusEnum = S.String;
+
 /** The status settings of the guaranteed order. */
 export interface GuaranteedOrderStatus {
   /** Whether or not the guaranteed order is servable. Acceptable values are `ENTITY_STATUS_ACTIVE`, `ENTITY_STATUS_ARCHIVED`, and `ENTITY_STATUS_PAUSED`. Default value is `ENTITY_STATUS_ACTIVE`. */
@@ -3652,6 +4851,11 @@ export interface GuaranteedOrderStatus {
   /** The user-provided reason for pausing this guaranteed order. Must be UTF-8 encoded with a maximum length of 100 bytes. Only applicable when entity_status is set to `ENTITY_STATUS_PAUSED`. */
   entityPauseReason?: string;
 }
+const GuaranteedOrderStatus = /*@__PURE__*/ __L.at(
+  __c28,
+  5,
+) as any as S.Schema<GuaranteedOrderStatus>;
+
 /** A guaranteed order. Guaranteed orders are parent entity of guaranteed inventory sources. When creating a guaranteed inventory source, a guaranteed order ID must be assigned to the inventory source. */
 export interface GuaranteedOrder {
   /** Required. The display name of the guaranteed order. Must be UTF-8 encoded with a maximum size of 240 bytes. */
@@ -3683,6 +4887,8 @@ export interface GuaranteedOrder {
   /** The ID of the default campaign that is assigned to the guaranteed order. The default campaign must belong to the default advertiser. */
   defaultCampaignId?: string;
 }
+const GuaranteedOrder = /*@__PURE__*/ __L.at(__c28, 6) as any as S.Schema<GuaranteedOrder>;
+
 export interface CreateGuaranteedOrdersRequest {
   /** The ID of the advertiser that the request is being made within. */
   advertiserId?: string;
@@ -3691,6 +4897,11 @@ export interface CreateGuaranteedOrdersRequest {
   /** Request body */
   body?: GuaranteedOrder;
 }
+const CreateGuaranteedOrdersRequest = /*@__PURE__*/ __L.at(
+  __c28,
+  7,
+) as any as S.Schema<CreateGuaranteedOrdersRequest>;
+
 /** A collection of targetable inventory sources. */
 export interface InventorySourceGroup {
   /** Output only. The unique ID of the inventory source group. Assigned by the system. */
@@ -3700,6 +4911,11 @@ export interface InventorySourceGroup {
   /** Output only. The resource name of the inventory source group. */
   name?: string;
 }
+const InventorySourceGroup = /*@__PURE__*/ __L.at(
+  __c29,
+  0,
+) as any as S.Schema<InventorySourceGroup>;
+
 export interface CreateInventorySourceGroupsRequest {
   /** The ID of the partner that owns the inventory source group. Only this partner will have write access to this group. Only advertisers to which this group is explicitly shared will have read access to this group. */
   partnerId?: string;
@@ -3708,6 +4924,11 @@ export interface CreateInventorySourceGroupsRequest {
   /** Request body */
   body?: InventorySourceGroup;
 }
+const CreateInventorySourceGroupsRequest = /*@__PURE__*/ __L.at(
+  __c29,
+  1,
+) as any as S.Schema<CreateInventorySourceGroupsRequest>;
+
 export interface CreateInventorySourceGroupsAssignedInventorySourcesRequest {
   /** The ID of the advertiser that owns the parent inventory source group. The parent partner will not have access to this assigned inventory source. */
   advertiserId?: string;
@@ -3718,6 +4939,11 @@ export interface CreateInventorySourceGroupsAssignedInventorySourcesRequest {
   /** Request body */
   body?: AssignedInventorySource;
 }
+const CreateInventorySourceGroupsAssignedInventorySourcesRequest = /*@__PURE__*/ __L.at(
+  __c29,
+  2,
+) as any as S.Schema<CreateInventorySourceGroupsAssignedInventorySourcesRequest>;
+
 export interface CreatePartnersChannelsRequest {
   /** The ID of the partner that owns the created channel. */
   partnerId: string;
@@ -3726,6 +4952,11 @@ export interface CreatePartnersChannelsRequest {
   /** Request body */
   body?: Channel;
 }
+const CreatePartnersChannelsRequest = /*@__PURE__*/ __L.at(
+  __c29,
+  3,
+) as any as S.Schema<CreatePartnersChannelsRequest>;
+
 export interface CreatePartnersChannelsSitesRequest {
   /** The ID of the partner that owns the parent channel. */
   partnerId: string;
@@ -3736,6 +4967,11 @@ export interface CreatePartnersChannelsSitesRequest {
   /** Request body */
   body?: Site;
 }
+const CreatePartnersChannelsSitesRequest = /*@__PURE__*/ __L.at(
+  __c29,
+  4,
+) as any as S.Schema<CreatePartnersChannelsSitesRequest>;
+
 export type CreatePartnersTargetingTypesAssignedTargetingOptionsTargetingTypeEnum =
   | "TARGETING_TYPE_UNSPECIFIED"
   | "TARGETING_TYPE_CHANNEL"
@@ -3786,6 +5022,8 @@ export type CreatePartnersTargetingTypesAssignedTargetingOptionsTargetingTypeEnu
   | "TARGETING_TYPE_YOUTUBE_CHANNEL"
   | "TARGETING_TYPE_SESSION_POSITION"
   | "TARGETING_TYPE_YOUTUBE_CHANNEL_PACK";
+const CreatePartnersTargetingTypesAssignedTargetingOptionsTargetingTypeEnum = S.String;
+
 export interface CreatePartnersTargetingTypesAssignedTargetingOptionsRequest {
   /** Required. The ID of the partner. */
   partnerId: string;
@@ -3796,6 +5034,11 @@ export interface CreatePartnersTargetingTypesAssignedTargetingOptionsRequest {
   /** Request body */
   body?: AssignedTargetingOption;
 }
+const CreatePartnersTargetingTypesAssignedTargetingOptionsRequest = /*@__PURE__*/ __L.at(
+  __c29,
+  5,
+) as any as S.Schema<CreatePartnersTargetingTypesAssignedTargetingOptionsRequest>;
+
 export type ParentEntityFilterFileTypeItemEnum =
   | "FILE_TYPE_UNSPECIFIED"
   | "FILE_TYPE_CAMPAIGN"
@@ -3807,6 +5050,9 @@ export type ParentEntityFilterFileTypeItemEnum =
 export type ParentEntityFilterFileTypeItemEnumList = Array<
   ParentEntityFilterFileTypeItemEnum | (string & {})
 >;
+const ParentEntityFilterFileTypeItemEnumList =
+  DoubleVerifyAvoidedAgeRatingsItemEnumList as any as S.Schema<ParentEntityFilterFileTypeItemEnumList>;
+
 export type ParentEntityFilterFilterTypeEnum =
   | "FILTER_TYPE_UNSPECIFIED"
   | "FILTER_TYPE_NONE"
@@ -3815,6 +5061,8 @@ export type ParentEntityFilterFilterTypeEnum =
   | "FILTER_TYPE_MEDIA_PRODUCT_ID"
   | "FILTER_TYPE_INSERTION_ORDER_ID"
   | "FILTER_TYPE_LINE_ITEM_ID";
+const ParentEntityFilterFilterTypeEnum = S.String;
+
 /** A filtering option that filters on selected file types belonging to a chosen set of filter entities. */
 export interface ParentEntityFilter {
   /** Required. File types that will be returned. */
@@ -3824,11 +5072,18 @@ export interface ParentEntityFilter {
   /** Required. Filter type used to filter fetched entities. */
   filterType?: ParentEntityFilterFilterTypeEnum | (string & {});
 }
+const ParentEntityFilter = /*@__PURE__*/ __L.at(__c29, 6) as any as S.Schema<ParentEntityFilter>;
+
 /** A filtering option for filtering on Inventory Source entities. */
 export interface InventorySourceFilter {
   /** Inventory Sources to download by ID. All IDs must belong to the same Advertiser or Partner specified in CreateSdfDownloadTaskRequest. Leave empty to download all Inventory Sources for the selected Advertiser or Partner. */
   inventorySourceIds?: StringList;
 }
+const InventorySourceFilter = /*@__PURE__*/ __L.at(
+  __c29,
+  7,
+) as any as S.Schema<InventorySourceFilter>;
+
 /** A filtering option that filters entities by their entity IDs. */
 export interface IdFilter {
   /** Campaigns to download by ID. All IDs must belong to the same Advertiser or Partner specified in CreateSdfDownloadTaskRequest. */
@@ -3844,6 +5099,8 @@ export interface IdFilter {
   /** Insertion Orders to download by ID. All IDs must belong to the same Advertiser or Partner specified in CreateSdfDownloadTaskRequest. */
   insertionOrderIds?: StringList;
 }
+const IdFilter = /*@__PURE__*/ __L.at(__c30, 0) as any as S.Schema<IdFilter>;
+
 export type CreateSdfDownloadTaskRequestVersionEnum =
   | "SDF_VERSION_UNSPECIFIED"
   | "SDF_VERSION_3_1"
@@ -3866,6 +5123,8 @@ export type CreateSdfDownloadTaskRequestVersionEnum =
   | "SDF_VERSION_9_2"
   | "SDF_VERSION_10"
   | "SDF_VERSION_10_1";
+const CreateSdfDownloadTaskRequestVersionEnum = S.String;
+
 /** Request message for [SdfDownloadTaskService.CreateSdfDownloadTask]. */
 export interface CreateSdfDownloadTaskRequest {
   /** Filters on selected file types. The entities in each file are filtered by a chosen set of filter entities. The filter entities must be the same type as, or a parent type of, the selected file types. */
@@ -3881,10 +5140,20 @@ export interface CreateSdfDownloadTaskRequest {
   /** The ID of the advertiser to download SDF for. */
   advertiserId?: string;
 }
+const CreateSdfDownloadTaskRequest = /*@__PURE__*/ __L.at(
+  __c30,
+  1,
+) as any as S.Schema<CreateSdfDownloadTaskRequest>;
+
 export interface CreateSdfdownloadtasksRequest {
   /** Request body */
   body?: CreateSdfDownloadTaskRequest;
 }
+const CreateSdfdownloadtasksRequest = /*@__PURE__*/ __L.at(
+  __c30,
+  2,
+) as any as S.Schema<CreateSdfdownloadtasksRequest>;
+
 /** This resource represents a long-running operation that is the result of a network API call. */
 export interface Operation {
   /** If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available. */
@@ -3898,6 +5167,8 @@ export interface Operation {
   /** The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`. */
   response?: DocumentMap;
 }
+const Operation = /*@__PURE__*/ __L.at(__c30, 3) as any as S.Schema<Operation>;
+
 /** A single user in Display & Video 360. */
 export interface User {
   /** The assigned user roles. Required in CreateUser. Output only in UpdateUser. Can only be updated through BulkEditAssignedUserRoles. */
@@ -3913,10 +5184,14 @@ export interface User {
   /** Required. Immutable. The email address used to identify the user. */
   email?: string;
 }
+const User = /*@__PURE__*/ __L.at(__c30, 4) as any as S.Schema<User>;
+
 export interface CreateUsersRequest {
   /** Request body */
   body?: User;
 }
+const CreateUsersRequest = /*@__PURE__*/ __L.at(__c30, 5) as any as S.Schema<CreateUsersRequest>;
+
 /** Request message for ManualTriggerService.DeactivateManualTrigger. */
 export type DeactivateManualTriggerRequest = ActivateManualTriggerRequest;
 export interface DeactivateAdvertisersManualTriggersRequest {
@@ -3927,18 +5202,35 @@ export interface DeactivateAdvertisersManualTriggersRequest {
   /** Request body */
   body?: ActivateManualTriggerRequest;
 }
+const DeactivateAdvertisersManualTriggersRequest = /*@__PURE__*/ __L.at(
+  __c30,
+  6,
+) as any as S.Schema<DeactivateAdvertisersManualTriggersRequest>;
+
 export interface DeleteAdvertisersRequest {
   /** The ID of the advertiser we need to delete. */
   advertiserId: string;
 }
+const DeleteAdvertisersRequest = /*@__PURE__*/ __L.at(
+  __c30,
+  7,
+) as any as S.Schema<DeleteAdvertisersRequest>;
+
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
+const Empty = ActivateManualTriggerRequest as any as S.Schema<Empty>;
+
 export interface DeleteAdvertisersCampaignsRequest {
   /** The ID of the advertiser this campaign belongs to. */
   advertiserId: string;
   /** The ID of the campaign we need to delete. */
   campaignId: string;
 }
+const DeleteAdvertisersCampaignsRequest = /*@__PURE__*/ __L.at(
+  __c31,
+  0,
+) as any as S.Schema<DeleteAdvertisersCampaignsRequest>;
+
 export interface DeleteAdvertisersChannelsSitesRequest {
   /** The ID of the partner that owns the parent channel. */
   partnerId?: string;
@@ -3949,24 +5241,44 @@ export interface DeleteAdvertisersChannelsSitesRequest {
   /** The ID of the advertiser that owns the parent channel. */
   advertiserId: string;
 }
+const DeleteAdvertisersChannelsSitesRequest = /*@__PURE__*/ __L.at(
+  __c31,
+  1,
+) as any as S.Schema<DeleteAdvertisersChannelsSitesRequest>;
+
 export interface DeleteAdvertisersCreativesRequest {
   /** The ID of the advertiser this creative belongs to. */
   advertiserId: string;
   /** The ID of the creative to be deleted. */
   creativeId: string;
 }
+const DeleteAdvertisersCreativesRequest = /*@__PURE__*/ __L.at(
+  __c31,
+  2,
+) as any as S.Schema<DeleteAdvertisersCreativesRequest>;
+
 export interface DeleteAdvertisersInsertionOrdersRequest {
   /** The ID of the advertiser this insertion order belongs to. */
   advertiserId: string;
   /** The ID of the insertion order to delete. */
   insertionOrderId: string;
 }
+const DeleteAdvertisersInsertionOrdersRequest = /*@__PURE__*/ __L.at(
+  __c31,
+  3,
+) as any as S.Schema<DeleteAdvertisersInsertionOrdersRequest>;
+
 export interface DeleteAdvertisersLineItemsRequest {
   /** The ID of the advertiser this line item belongs to. */
   advertiserId: string;
   /** The ID of the line item to delete. */
   lineItemId: string;
 }
+const DeleteAdvertisersLineItemsRequest = /*@__PURE__*/ __L.at(
+  __c31,
+  4,
+) as any as S.Schema<DeleteAdvertisersLineItemsRequest>;
+
 export type DeleteAdvertisersLineItemsTargetingTypesAssignedTargetingOptionsTargetingTypeEnum =
   | "TARGETING_TYPE_UNSPECIFIED"
   | "TARGETING_TYPE_CHANNEL"
@@ -4017,6 +5329,8 @@ export type DeleteAdvertisersLineItemsTargetingTypesAssignedTargetingOptionsTarg
   | "TARGETING_TYPE_YOUTUBE_CHANNEL"
   | "TARGETING_TYPE_SESSION_POSITION"
   | "TARGETING_TYPE_YOUTUBE_CHANNEL_PACK";
+const DeleteAdvertisersLineItemsTargetingTypesAssignedTargetingOptionsTargetingTypeEnum = S.String;
+
 export interface DeleteAdvertisersLineItemsTargetingTypesAssignedTargetingOptionsRequest {
   /** Required. The ID of the assigned targeting option to delete. */
   assignedTargetingOptionId: string;
@@ -4029,6 +5343,12 @@ export interface DeleteAdvertisersLineItemsTargetingTypesAssignedTargetingOption
   /** Required. The ID of the advertiser the line item belongs to. */
   advertiserId: string;
 }
+const DeleteAdvertisersLineItemsTargetingTypesAssignedTargetingOptionsRequest =
+  /*@__PURE__*/ __L.at(
+    __c31,
+    5,
+  ) as any as S.Schema<DeleteAdvertisersLineItemsTargetingTypesAssignedTargetingOptionsRequest>;
+
 export interface DeleteAdvertisersLocationListsAssignedLocationsRequest {
   /** Required. The ID of the assigned location to delete. */
   assignedLocationId: string;
@@ -4037,12 +5357,22 @@ export interface DeleteAdvertisersLocationListsAssignedLocationsRequest {
   /** Required. The ID of the DV360 advertiser to which the location list belongs. */
   advertiserId: string;
 }
+const DeleteAdvertisersLocationListsAssignedLocationsRequest = /*@__PURE__*/ __L.at(
+  __c31,
+  6,
+) as any as S.Schema<DeleteAdvertisersLocationListsAssignedLocationsRequest>;
+
 export interface DeleteAdvertisersNegativeKeywordListsRequest {
   /** Required. The ID of the negative keyword list to delete. */
   negativeKeywordListId: string;
   /** Required. The ID of the DV360 advertiser to which the negative keyword list belongs. */
   advertiserId: string;
 }
+const DeleteAdvertisersNegativeKeywordListsRequest = /*@__PURE__*/ __L.at(
+  __c31,
+  7,
+) as any as S.Schema<DeleteAdvertisersNegativeKeywordListsRequest>;
+
 export interface DeleteAdvertisersNegativeKeywordListsNegativeKeywordsRequest {
   /** Required. The ID of the parent negative keyword list to which the negative keyword belongs. */
   negativeKeywordListId: string;
@@ -4051,6 +5381,11 @@ export interface DeleteAdvertisersNegativeKeywordListsNegativeKeywordsRequest {
   /** Required. The keyword value of the negative keyword to delete. */
   keywordValue: string;
 }
+const DeleteAdvertisersNegativeKeywordListsNegativeKeywordsRequest = /*@__PURE__*/ __L.at(
+  __c32,
+  0,
+) as any as S.Schema<DeleteAdvertisersNegativeKeywordListsNegativeKeywordsRequest>;
+
 export type DeleteAdvertisersTargetingTypesAssignedTargetingOptionsTargetingTypeEnum =
   | "TARGETING_TYPE_UNSPECIFIED"
   | "TARGETING_TYPE_CHANNEL"
@@ -4101,6 +5436,8 @@ export type DeleteAdvertisersTargetingTypesAssignedTargetingOptionsTargetingType
   | "TARGETING_TYPE_YOUTUBE_CHANNEL"
   | "TARGETING_TYPE_SESSION_POSITION"
   | "TARGETING_TYPE_YOUTUBE_CHANNEL_PACK";
+const DeleteAdvertisersTargetingTypesAssignedTargetingOptionsTargetingTypeEnum = S.String;
+
 export interface DeleteAdvertisersTargetingTypesAssignedTargetingOptionsRequest {
   /** Required. Identifies the type of this assigned targeting option. Supported targeting types: * `TARGETING_TYPE_CHANNEL` * `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_OMID` * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_KEYWORD` */
   targetingType:
@@ -4111,6 +5448,11 @@ export interface DeleteAdvertisersTargetingTypesAssignedTargetingOptionsRequest 
   /** Required. The ID of the assigned targeting option to delete. */
   assignedTargetingOptionId: string;
 }
+const DeleteAdvertisersTargetingTypesAssignedTargetingOptionsRequest = /*@__PURE__*/ __L.at(
+  __c32,
+  1,
+) as any as S.Schema<DeleteAdvertisersTargetingTypesAssignedTargetingOptionsRequest>;
+
 export interface DeleteInventorySourceGroupsRequest {
   /** The ID of the partner that owns the inventory source group. Only this partner has write access to this group. */
   partnerId?: string;
@@ -4119,6 +5461,11 @@ export interface DeleteInventorySourceGroupsRequest {
   /** The ID of the advertiser that owns the inventory source group. The parent partner does not have access to this group. */
   advertiserId?: string;
 }
+const DeleteInventorySourceGroupsRequest = /*@__PURE__*/ __L.at(
+  __c32,
+  2,
+) as any as S.Schema<DeleteInventorySourceGroupsRequest>;
+
 export interface DeleteInventorySourceGroupsAssignedInventorySourcesRequest {
   /** Required. The ID of the inventory source group to which this assignment is assigned. */
   inventorySourceGroupId: string;
@@ -4129,6 +5476,11 @@ export interface DeleteInventorySourceGroupsAssignedInventorySourcesRequest {
   /** Required. The ID of the assigned inventory source to delete. */
   assignedInventorySourceId: string;
 }
+const DeleteInventorySourceGroupsAssignedInventorySourcesRequest = /*@__PURE__*/ __L.at(
+  __c32,
+  3,
+) as any as S.Schema<DeleteInventorySourceGroupsAssignedInventorySourcesRequest>;
+
 export interface DeletePartnersChannelsSitesRequest {
   /** Required. The ID of the parent channel to which the site belongs. */
   channelId: string;
@@ -4139,6 +5491,11 @@ export interface DeletePartnersChannelsSitesRequest {
   /** The ID of the partner that owns the parent channel. */
   partnerId: string;
 }
+const DeletePartnersChannelsSitesRequest = /*@__PURE__*/ __L.at(
+  __c32,
+  4,
+) as any as S.Schema<DeletePartnersChannelsSitesRequest>;
+
 export type DeletePartnersTargetingTypesAssignedTargetingOptionsTargetingTypeEnum =
   | "TARGETING_TYPE_UNSPECIFIED"
   | "TARGETING_TYPE_CHANNEL"
@@ -4189,6 +5546,8 @@ export type DeletePartnersTargetingTypesAssignedTargetingOptionsTargetingTypeEnu
   | "TARGETING_TYPE_YOUTUBE_CHANNEL"
   | "TARGETING_TYPE_SESSION_POSITION"
   | "TARGETING_TYPE_YOUTUBE_CHANNEL_PACK";
+const DeletePartnersTargetingTypesAssignedTargetingOptionsTargetingTypeEnum = S.String;
+
 export interface DeletePartnersTargetingTypesAssignedTargetingOptionsRequest {
   /** Required. The ID of the partner. */
   partnerId: string;
@@ -4199,23 +5558,39 @@ export interface DeletePartnersTargetingTypesAssignedTargetingOptionsRequest {
     | DeletePartnersTargetingTypesAssignedTargetingOptionsTargetingTypeEnum
     | (string & {});
 }
+const DeletePartnersTargetingTypesAssignedTargetingOptionsRequest = /*@__PURE__*/ __L.at(
+  __c32,
+  5,
+) as any as S.Schema<DeletePartnersTargetingTypesAssignedTargetingOptionsRequest>;
+
 export interface DeleteUsersRequest {
   /** Required. The ID of the user to delete. */
   userId: string;
 }
+const DeleteUsersRequest = /*@__PURE__*/ __L.at(__c32, 6) as any as S.Schema<DeleteUsersRequest>;
+
 export interface DownloadMediaRequest {
   /** Name of the media that is being downloaded. See ReadRequest.resource_name. */
   resourceName: string;
 }
+const DownloadMediaRequest = /*@__PURE__*/ __L.at(
+  __c32,
+  7,
+) as any as S.Schema<DownloadMediaRequest>;
+
 /** Media resource. */
 export interface GoogleBytestreamMedia {
   /** Name of the media resource. */
   resourceName?: string;
 }
+const GoogleBytestreamMedia = CustomBiddingScriptRef as any as S.Schema<GoogleBytestreamMedia>;
+
 export type DuplicateLineItemRequestContainsEuPoliticalAdsEnum =
   | "EU_POLITICAL_ADVERTISING_STATUS_UNKNOWN"
   | "CONTAINS_EU_POLITICAL_ADVERTISING"
   | "DOES_NOT_CONTAIN_EU_POLITICAL_ADVERTISING";
+const DuplicateLineItemRequestContainsEuPoliticalAdsEnum = S.String;
+
 /** Request message for LineItemService.DuplicateLineItem. */
 export interface DuplicateLineItemRequest {
   /** The display name of the new line item. Must be UTF-8 encoded with a maximum size of 240 bytes. */
@@ -4223,6 +5598,11 @@ export interface DuplicateLineItemRequest {
   /** Whether this line item will serve European Union political ads. If contains_eu_political_ads has been set to `DOES_NOT_CONTAIN_EU_POLITICAL_ADVERTISING` in the parent advertiser, then this field will be assigned `DOES_NOT_CONTAIN_EU_POLITICAL_ADVERTISING` if not otherwise specified. This field can then be updated using the UI, API, or Structured Data Files. This field must be assigned when creating a new line item. Otherwise, **the `advertisers.lineItems.create` request will fail**. */
   containsEuPoliticalAds?: DuplicateLineItemRequestContainsEuPoliticalAdsEnum | (string & {});
 }
+const DuplicateLineItemRequest = /*@__PURE__*/ __L.at(
+  __c33,
+  0,
+) as any as S.Schema<DuplicateLineItemRequest>;
+
 export interface DuplicateAdvertisersLineItemsRequest {
   /** Required. The ID of the advertiser this line item belongs to. */
   advertiserId: string;
@@ -4231,10 +5611,20 @@ export interface DuplicateAdvertisersLineItemsRequest {
   /** Request body */
   body?: DuplicateLineItemRequest;
 }
+const DuplicateAdvertisersLineItemsRequest = /*@__PURE__*/ __L.at(
+  __c33,
+  1,
+) as any as S.Schema<DuplicateAdvertisersLineItemsRequest>;
+
 export interface DuplicateLineItemResponse {
   /** The ID of the created line item. */
   duplicateLineItemId?: string;
 }
+const DuplicateLineItemResponse = /*@__PURE__*/ __L.at(
+  __c33,
+  2,
+) as any as S.Schema<DuplicateLineItemResponse>;
+
 /** Request message for BulkEditAdvertiserAssignedTargetingOptions. */
 export interface BulkEditAdvertiserAssignedTargetingOptionsRequest {
   /** The assigned targeting options to delete in batch, specified as a list of `DeleteAssignedTargetingOptionsRequest`. Supported targeting types: * `TARGETING_TYPE_CHANNEL` * `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_OMID` * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_KEYWORD` */
@@ -4242,16 +5632,31 @@ export interface BulkEditAdvertiserAssignedTargetingOptionsRequest {
   /** The assigned targeting options to create in batch, specified as a list of `CreateAssignedTargetingOptionsRequest`. Supported targeting types: * `TARGETING_TYPE_CHANNEL` * `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_OMID` * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_KEYWORD` */
   createRequests?: CreateAssignedTargetingOptionsRequestList;
 }
+const BulkEditAdvertiserAssignedTargetingOptionsRequest = /*@__PURE__*/ __L.at(
+  __c33,
+  3,
+) as any as S.Schema<BulkEditAdvertiserAssignedTargetingOptionsRequest>;
+
 export interface EditAssignedTargetingOptionsAdvertisersRequest {
   /** Required. The ID of the advertiser. */
   advertiserId: string;
   /** Request body */
   body?: BulkEditAdvertiserAssignedTargetingOptionsRequest;
 }
+const EditAssignedTargetingOptionsAdvertisersRequest = /*@__PURE__*/ __L.at(
+  __c33,
+  4,
+) as any as S.Schema<EditAssignedTargetingOptionsAdvertisersRequest>;
+
 export interface BulkEditAdvertiserAssignedTargetingOptionsResponse {
   /** The list of assigned targeting options that have been successfully created. This list will be absent if empty. */
   createdAssignedTargetingOptions?: AssignedTargetingOptionList;
 }
+const BulkEditAdvertiserAssignedTargetingOptionsResponse = /*@__PURE__*/ __L.at(
+  __c33,
+  5,
+) as any as S.Schema<BulkEditAdvertiserAssignedTargetingOptionsResponse>;
+
 /** Request message for BulkEditPartnerAssignedTargetingOptions. */
 export interface BulkEditPartnerAssignedTargetingOptionsRequest {
   /** The assigned targeting options to delete in batch, specified as a list of `DeleteAssignedTargetingOptionsRequest`. Supported targeting types: * `TARGETING_TYPE_CHANNEL` */
@@ -4259,16 +5664,27 @@ export interface BulkEditPartnerAssignedTargetingOptionsRequest {
   /** The assigned targeting options to create in batch, specified as a list of `CreateAssignedTargetingOptionsRequest`. Supported targeting types: * `TARGETING_TYPE_CHANNEL` */
   createRequests?: CreateAssignedTargetingOptionsRequestList;
 }
+const BulkEditPartnerAssignedTargetingOptionsRequest =
+  BulkEditAdvertiserAssignedTargetingOptionsRequest as any as S.Schema<BulkEditPartnerAssignedTargetingOptionsRequest>;
+
 export interface EditAssignedTargetingOptionsPartnersRequest {
   /** Required. The ID of the partner. */
   partnerId: string;
   /** Request body */
   body?: BulkEditPartnerAssignedTargetingOptionsRequest;
 }
+const EditAssignedTargetingOptionsPartnersRequest = /*@__PURE__*/ __L.at(
+  __c33,
+  6,
+) as any as S.Schema<EditAssignedTargetingOptionsPartnersRequest>;
+
 export interface BulkEditPartnerAssignedTargetingOptionsResponse {
   /** The list of assigned targeting options that have been successfully created. This list will be absent if empty. */
   createdAssignedTargetingOptions?: AssignedTargetingOptionList;
 }
+const BulkEditPartnerAssignedTargetingOptionsResponse =
+  BulkEditAdvertiserAssignedTargetingOptionsResponse as any as S.Schema<BulkEditPartnerAssignedTargetingOptionsResponse>;
+
 /** Request message for GuaranteedOrderService.EditGuaranteedOrderReadAccessors. */
 export interface EditGuaranteedOrderReadAccessorsRequest {
   /** Whether to give all advertisers of the read/write accessor partner read access to the guaranteed order. Only applicable if read_write_partner_id is set in the guaranteed order. */
@@ -4280,28 +5696,53 @@ export interface EditGuaranteedOrderReadAccessorsRequest {
   /** The advertisers to add as read accessors to the guaranteed order. */
   addedAdvertisers?: StringList;
 }
+const EditGuaranteedOrderReadAccessorsRequest = /*@__PURE__*/ __L.at(
+  __c33,
+  7,
+) as any as S.Schema<EditGuaranteedOrderReadAccessorsRequest>;
+
 export interface EditGuaranteedOrderReadAccessorsGuaranteedOrdersRequest {
   /** Required. The ID of the guaranteed order to edit. The ID is of the format `{exchange}-{legacy_guaranteed_order_id}` */
   guaranteedOrderId: string;
   /** Request body */
   body?: EditGuaranteedOrderReadAccessorsRequest;
 }
+const EditGuaranteedOrderReadAccessorsGuaranteedOrdersRequest = /*@__PURE__*/ __L.at(
+  __c34,
+  0,
+) as any as S.Schema<EditGuaranteedOrderReadAccessorsGuaranteedOrdersRequest>;
+
 export interface EditGuaranteedOrderReadAccessorsResponse {
   /** Whether all advertisers of read_write_partner_id have read access to the guaranteed order. */
   readAccessInherited?: boolean;
   /** The IDs of advertisers with read access to the guaranteed order. */
   readAdvertiserIds?: StringList;
 }
+const EditGuaranteedOrderReadAccessorsResponse = /*@__PURE__*/ __L.at(
+  __c34,
+  1,
+) as any as S.Schema<EditGuaranteedOrderReadAccessorsResponse>;
+
 export interface GetAdvertisersRequest {
   /** Required. The ID of the advertiser to fetch. */
   advertiserId: string;
 }
+const GetAdvertisersRequest = /*@__PURE__*/ __L.at(
+  __c34,
+  2,
+) as any as S.Schema<GetAdvertisersRequest>;
+
 export interface GetAdvertisersCampaignsRequest {
   /** Required. The ID of the advertiser this campaign belongs to. */
   advertiserId: string;
   /** Required. The ID of the campaign to fetch. */
   campaignId: string;
 }
+const GetAdvertisersCampaignsRequest = /*@__PURE__*/ __L.at(
+  __c34,
+  3,
+) as any as S.Schema<GetAdvertisersCampaignsRequest>;
+
 export interface GetAdvertisersChannelsRequest {
   /** Required. The ID of the channel to fetch. */
   channelId: string;
@@ -4310,24 +5751,44 @@ export interface GetAdvertisersChannelsRequest {
   /** The ID of the partner that owns the fetched channel. */
   partnerId?: string;
 }
+const GetAdvertisersChannelsRequest = /*@__PURE__*/ __L.at(
+  __c34,
+  4,
+) as any as S.Schema<GetAdvertisersChannelsRequest>;
+
 export interface GetAdvertisersCreativesRequest {
   /** Required. The ID of the advertiser this creative belongs to. */
   advertiserId: string;
   /** Required. The ID of the creative to fetch. */
   creativeId: string;
 }
+const GetAdvertisersCreativesRequest = /*@__PURE__*/ __L.at(
+  __c34,
+  5,
+) as any as S.Schema<GetAdvertisersCreativesRequest>;
+
 export interface GetAdvertisersInsertionOrdersRequest {
   /** Required. The ID of the advertiser this insertion order belongs to. */
   advertiserId: string;
   /** Required. The ID of the insertion order to fetch. */
   insertionOrderId: string;
 }
+const GetAdvertisersInsertionOrdersRequest = /*@__PURE__*/ __L.at(
+  __c34,
+  6,
+) as any as S.Schema<GetAdvertisersInsertionOrdersRequest>;
+
 export interface GetAdvertisersLineItemsRequest {
   /** Required. The ID of the advertiser this line item belongs to. */
   advertiserId: string;
   /** Required. The ID of the line item to fetch. */
   lineItemId: string;
 }
+const GetAdvertisersLineItemsRequest = /*@__PURE__*/ __L.at(
+  __c34,
+  7,
+) as any as S.Schema<GetAdvertisersLineItemsRequest>;
+
 export type GetAdvertisersLineItemsTargetingTypesAssignedTargetingOptionsTargetingTypeEnum =
   | "TARGETING_TYPE_UNSPECIFIED"
   | "TARGETING_TYPE_CHANNEL"
@@ -4378,6 +5839,8 @@ export type GetAdvertisersLineItemsTargetingTypesAssignedTargetingOptionsTargeti
   | "TARGETING_TYPE_YOUTUBE_CHANNEL"
   | "TARGETING_TYPE_SESSION_POSITION"
   | "TARGETING_TYPE_YOUTUBE_CHANNEL_PACK";
+const GetAdvertisersLineItemsTargetingTypesAssignedTargetingOptionsTargetingTypeEnum = S.String;
+
 export interface GetAdvertisersLineItemsTargetingTypesAssignedTargetingOptionsRequest {
   /** Required. The ID of the line item the assigned targeting option belongs to. */
   lineItemId: string;
@@ -4390,24 +5853,44 @@ export interface GetAdvertisersLineItemsTargetingTypesAssignedTargetingOptionsRe
   /** Required. The ID of the advertiser the line item belongs to. */
   advertiserId: string;
 }
+const GetAdvertisersLineItemsTargetingTypesAssignedTargetingOptionsRequest = /*@__PURE__*/ __L.at(
+  __c35,
+  0,
+) as any as S.Schema<GetAdvertisersLineItemsTargetingTypesAssignedTargetingOptionsRequest>;
+
 export interface GetAdvertisersLocationListsRequest {
   /** Required. The ID of the location list to fetch. */
   locationListId: string;
   /** Required. The ID of the DV360 advertiser to which the fetched location list belongs. */
   advertiserId: string;
 }
+const GetAdvertisersLocationListsRequest = /*@__PURE__*/ __L.at(
+  __c35,
+  1,
+) as any as S.Schema<GetAdvertisersLocationListsRequest>;
+
 export interface GetAdvertisersManualTriggersRequest {
   /** Required. The ID of the advertiser this manual trigger belongs to. */
   advertiserId: string;
   /** Required. The ID of the manual trigger to fetch. */
   triggerId: string;
 }
+const GetAdvertisersManualTriggersRequest = /*@__PURE__*/ __L.at(
+  __c35,
+  2,
+) as any as S.Schema<GetAdvertisersManualTriggersRequest>;
+
 export interface GetAdvertisersNegativeKeywordListsRequest {
   /** Required. The ID of the negative keyword list to fetch. */
   negativeKeywordListId: string;
   /** Required. The ID of the DV360 advertiser to which the fetched negative keyword list belongs. */
   advertiserId: string;
 }
+const GetAdvertisersNegativeKeywordListsRequest = /*@__PURE__*/ __L.at(
+  __c35,
+  3,
+) as any as S.Schema<GetAdvertisersNegativeKeywordListsRequest>;
+
 export type GetAdvertisersTargetingTypesAssignedTargetingOptionsTargetingTypeEnum =
   | "TARGETING_TYPE_UNSPECIFIED"
   | "TARGETING_TYPE_CHANNEL"
@@ -4458,6 +5941,8 @@ export type GetAdvertisersTargetingTypesAssignedTargetingOptionsTargetingTypeEnu
   | "TARGETING_TYPE_YOUTUBE_CHANNEL"
   | "TARGETING_TYPE_SESSION_POSITION"
   | "TARGETING_TYPE_YOUTUBE_CHANNEL_PACK";
+const GetAdvertisersTargetingTypesAssignedTargetingOptionsTargetingTypeEnum = S.String;
+
 export interface GetAdvertisersTargetingTypesAssignedTargetingOptionsRequest {
   /** Required. The ID of the advertiser. */
   advertiserId: string;
@@ -4468,17 +5953,31 @@ export interface GetAdvertisersTargetingTypesAssignedTargetingOptionsRequest {
   /** Required. An identifier unique to the targeting type in this advertiser that identifies the assigned targeting option being requested. */
   assignedTargetingOptionId: string;
 }
+const GetAdvertisersTargetingTypesAssignedTargetingOptionsRequest = /*@__PURE__*/ __L.at(
+  __c35,
+  4,
+) as any as S.Schema<GetAdvertisersTargetingTypesAssignedTargetingOptionsRequest>;
+
 export interface GetAdvertisersYoutubeAdGroupAdsRequest {
   /** Required. The ID of the advertiser this ad group ad belongs to. */
   advertiserId: string;
   /** Required. The ID of the ad group ad to fetch. */
   youtubeAdGroupAdId: string;
 }
+const GetAdvertisersYoutubeAdGroupAdsRequest = /*@__PURE__*/ __L.at(
+  __c35,
+  5,
+) as any as S.Schema<GetAdvertisersYoutubeAdGroupAdsRequest>;
+
 export type StringMap = { [key: string]: string | undefined };
+const StringMap = /*@__PURE__*/ __L.at(__c35, 6) as any as S.Schema<StringMap>;
+
 export type YoutubeVideoDetailsUnavailableReasonEnum =
   | "VIDEO_UNAVAILABLE_REASON_UNSPECIFIED"
   | "VIDEO_UNAVAILABLE_REASON_PRIVATE"
   | "VIDEO_UNAVAILABLE_REASON_DELETED";
+const YoutubeVideoDetailsUnavailableReasonEnum = S.String;
+
 /** Details of a YouTube video. */
 export interface YoutubeVideoDetails {
   /** Output only. The YouTube video ID which can be searched on YouTube webpage. */
@@ -4488,6 +5987,8 @@ export interface YoutubeVideoDetails {
   /** Required. The YouTube video asset id. This is the adAssetId of an AdAsset resource. */
   videoAssetId?: string;
 }
+const YoutubeVideoDetails = /*@__PURE__*/ __L.at(__c35, 7) as any as S.Schema<YoutubeVideoDetails>;
+
 /** Meta data of an image asset. */
 export interface ImageAsset {
   /** Output only. MIME type of the image asset. */
@@ -4499,6 +6000,8 @@ export interface ImageAsset {
   /** Output only. Metadata for this image at its original size. */
   fullSize?: Dimensions;
 }
+const ImageAsset = /*@__PURE__*/ __L.at(__c36, 0) as any as S.Schema<ImageAsset>;
+
 /** Common attributes for in-stream, non-skippable and bumper ads. */
 export interface CommonInStreamAttribute {
   /** Required. Immutable. The YouTube video of the ad. */
@@ -4516,6 +6019,11 @@ export interface CommonInStreamAttribute {
   /** Optional. The text on the call-to-action button. */
   actionButtonLabel?: string;
 }
+const CommonInStreamAttribute = /*@__PURE__*/ __L.at(
+  __c36,
+  1,
+) as any as S.Schema<CommonInStreamAttribute>;
+
 /** Details for a non-skippable ad. */
 export interface NonSkippableAd {
   /** Optional. The custom parameters and accompanying values to add to the tracking URL. */
@@ -4523,12 +6031,16 @@ export interface NonSkippableAd {
   /** Required. Common ad attributes. */
   commonInStreamAttribute?: CommonInStreamAttribute;
 }
+const NonSkippableAd = /*@__PURE__*/ __L.at(__c36, 2) as any as S.Schema<NonSkippableAd>;
+
 export type AdUrlTypeEnum =
   | "AD_URL_TYPE_UNSPECIFIED"
   | "AD_URL_TYPE_BEACON_IMPRESSION"
   | "AD_URL_TYPE_BEACON_EXPANDABLE_DCM_IMPRESSION"
   | "AD_URL_TYPE_BEACON_CLICK"
   | "AD_URL_TYPE_BEACON_SKIP";
+const AdUrlTypeEnum = S.String;
+
 /** Additional URLs related to the ad, including beacons. */
 export interface AdUrl {
   /** The type of the Ad URL. */
@@ -4536,13 +6048,19 @@ export interface AdUrl {
   /** The URL string value. */
   url?: string;
 }
+const AdUrl = /*@__PURE__*/ __L.at(__c36, 3) as any as S.Schema<AdUrl>;
+
 export type AdUrlList = Array<AdUrl>;
+const AdUrlList = /*@__PURE__*/ __L.at(__c36, 4) as any as S.Schema<AdUrlList>;
+
 export type VideoDiscoveryAdThumbnailEnum =
   | "THUMBNAIL_UNSPECIFIED"
   | "THUMBNAIL_DEFAULT"
   | "THUMBNAIL_1"
   | "THUMBNAIL_2"
   | "THUMBNAIL_3";
+const VideoDiscoveryAdThumbnailEnum = S.String;
+
 /** Details for a video discovery ad. */
 export interface VideoDiscoveryAd {
   /** Thumbnail image used in the ad. */
@@ -4556,6 +6074,8 @@ export interface VideoDiscoveryAd {
   /** Second text line for the ad. */
   description2?: string;
 }
+const VideoDiscoveryAd = /*@__PURE__*/ __L.at(__c36, 5) as any as S.Schema<VideoDiscoveryAd>;
+
 export type YoutubeAdGroupAdEntityStatusEnum =
   | "ENTITY_STATUS_UNSPECIFIED"
   | "ENTITY_STATUS_ACTIVE"
@@ -4563,6 +6083,8 @@ export type YoutubeAdGroupAdEntityStatusEnum =
   | "ENTITY_STATUS_DRAFT"
   | "ENTITY_STATUS_PAUSED"
   | "ENTITY_STATUS_SCHEDULED_FOR_DELETION";
+const YoutubeAdGroupAdEntityStatusEnum = S.String;
+
 /** Details for an in-stream ad. */
 export interface InStreamAd {
   /** Required. Common ad attributes. */
@@ -4570,6 +6092,8 @@ export interface InStreamAd {
   /** Optional. The custom parameters and accompanying values to add to the tracking URL. */
   customParameters?: StringMap;
 }
+const InStreamAd = /*@__PURE__*/ __L.at(__c36, 6) as any as S.Schema<InStreamAd>;
+
 /** Details for an audio ad. */
 export interface AudioAd {
   /** The URL address of the webpage that people reach after they click the ad. */
@@ -4581,13 +6105,24 @@ export interface AudioAd {
   /** The webpage address that appears with the ad. */
   displayUrl?: string;
 }
+const AudioAd = /*@__PURE__*/ __L.at(__c36, 7) as any as S.Schema<AudioAd>;
+
 /** Details for a bumper ad. */
 export interface BumperAd {
   /** Required. Common ad attributes. */
   commonInStreamAttribute?: CommonInStreamAttribute;
 }
+const BumperAd = /*@__PURE__*/ __L.at(__c37, 0) as any as S.Schema<BumperAd>;
+
 export type ImageAssetList = Array<ImageAsset>;
+const ImageAssetList = /*@__PURE__*/ __L.at(__c37, 1) as any as S.Schema<ImageAssetList>;
+
 export type YoutubeVideoDetailsList = Array<YoutubeVideoDetails>;
+const YoutubeVideoDetailsList = /*@__PURE__*/ __L.at(
+  __c37,
+  2,
+) as any as S.Schema<YoutubeVideoDetailsList>;
+
 /** Details for a video performance ad. */
 export interface VideoPerformanceAd {
   /** Optional. The list of companion banners used by this ad. */
@@ -4615,10 +6150,14 @@ export interface VideoPerformanceAd {
   /** Output only. The domain of the display URL. */
   domain?: string;
 }
+const VideoPerformanceAd = /*@__PURE__*/ __L.at(__c37, 3) as any as S.Schema<VideoPerformanceAd>;
+
 export type MastheadAdVideoAspectRatioEnum =
   | "VIDEO_ASPECT_RATIO_UNSPECIFIED"
   | "VIDEO_ASPECT_RATIO_WIDESCREEN"
   | "VIDEO_ASPECT_RATIO_FIXED_16_9";
+const MastheadAdVideoAspectRatioEnum = S.String;
+
 /** Details for a Masthead Ad. */
 export interface MastheadAd {
   /** The amount of time in milliseconds after which the video will start to play. */
@@ -4644,11 +6183,18 @@ export interface MastheadAd {
   /** The duration of time the video will autoplay. */
   autoplayVideoDuration?: string;
 }
+const MastheadAd = /*@__PURE__*/ __L.at(__c37, 4) as any as S.Schema<MastheadAd>;
+
 /** The ad sourced from a DV360 creative. */
 export interface DisplayVideoSourceAd {
   /** The ID of the source creative. */
   creativeId?: string;
 }
+const DisplayVideoSourceAd = /*@__PURE__*/ __L.at(
+  __c37,
+  5,
+) as any as S.Schema<DisplayVideoSourceAd>;
+
 /** A single ad associated with a YouTube ad group. */
 export interface YoutubeAdGroupAd {
   /** Details of a [non-skippable short in-stream video ad](//support.google.com/displayvideo/answer/6274216), between 6 and 15 seconds, used for reach marketing objectives. */
@@ -4682,12 +6228,19 @@ export interface YoutubeAdGroupAd {
   /** Details of an ad sourced from a Display & Video 360 creative. */
   displayVideoSourceAd?: DisplayVideoSourceAd;
 }
+const YoutubeAdGroupAd = /*@__PURE__*/ __L.at(__c37, 6) as any as S.Schema<YoutubeAdGroupAd>;
+
 export interface GetAdvertisersYoutubeAdGroupsRequest {
   /** Required. The ID of the ad group to fetch. */
   youtubeAdGroupId: string;
   /** Required. The ID of the advertiser this ad group belongs to. */
   advertiserId: string;
 }
+const GetAdvertisersYoutubeAdGroupsRequest = /*@__PURE__*/ __L.at(
+  __c37,
+  7,
+) as any as S.Schema<GetAdvertisersYoutubeAdGroupsRequest>;
+
 export type YoutubeAdGroupEntityStatusEnum =
   | "ENTITY_STATUS_UNSPECIFIED"
   | "ENTITY_STATUS_ACTIVE"
@@ -4695,6 +6248,8 @@ export type YoutubeAdGroupEntityStatusEnum =
   | "ENTITY_STATUS_DRAFT"
   | "ENTITY_STATUS_PAUSED"
   | "ENTITY_STATUS_SCHEDULED_FOR_DELETION";
+const YoutubeAdGroupEntityStatusEnum = S.String;
+
 export type YoutubeAdGroupAdGroupFormatEnum =
   | "YOUTUBE_AND_PARTNERS_AD_GROUP_FORMAT_UNSPECIFIED"
   | "YOUTUBE_AND_PARTNERS_AD_GROUP_FORMAT_IN_STREAM"
@@ -4705,11 +6260,15 @@ export type YoutubeAdGroupAdGroupFormatEnum =
   | "YOUTUBE_AND_PARTNERS_AD_GROUP_FORMAT_ACTION"
   | "YOUTUBE_AND_PARTNERS_AD_GROUP_FORMAT_REACH"
   | "YOUTUBE_AND_PARTNERS_AD_GROUP_FORMAT_MASTHEAD";
+const YoutubeAdGroupAdGroupFormatEnum = S.String;
+
 export type ProductFeedDataProductMatchTypeEnum =
   | "PRODUCT_MATCH_TYPE_UNSPECIFIED"
   | "PRODUCT_MATCH_TYPE_ALL_PRODUCTS"
   | "PRODUCT_MATCH_TYPE_SPECIFIC_PRODUCTS"
   | "PRODUCT_MATCH_TYPE_CUSTOM_LABEL";
+const ProductFeedDataProductMatchTypeEnum = S.String;
+
 export type CustomLabelKeyEnum =
   | "CUSTOM_LABEL_KEY_UNSPECIFIED"
   | "CUSTOM_LABEL_KEY_0"
@@ -4717,6 +6276,8 @@ export type CustomLabelKeyEnum =
   | "CUSTOM_LABEL_KEY_2"
   | "CUSTOM_LABEL_KEY_3"
   | "CUSTOM_LABEL_KEY_4";
+const CustomLabelKeyEnum = S.String;
+
 /** The key and value of a custom label. */
 export interface CustomLabel {
   /** The key of the label. */
@@ -4724,6 +6285,8 @@ export interface CustomLabel {
   /** The value of the label. */
   value?: string;
 }
+const CustomLabel = /*@__PURE__*/ __L.at(__c38, 0) as any as S.Schema<CustomLabel>;
+
 /** A dimension used to match products. */
 export interface ProductMatchDimension {
   /** The custom label to match all the products with the label. */
@@ -4731,7 +6294,17 @@ export interface ProductMatchDimension {
   /** The ID of the product offer to match with a product with the same offer ID. */
   productOfferId?: string;
 }
+const ProductMatchDimension = /*@__PURE__*/ __L.at(
+  __c38,
+  1,
+) as any as S.Schema<ProductMatchDimension>;
+
 export type ProductMatchDimensionList = Array<ProductMatchDimension>;
+const ProductMatchDimensionList = /*@__PURE__*/ __L.at(
+  __c38,
+  2,
+) as any as S.Schema<ProductMatchDimensionList>;
+
 /** The details of product feed. */
 export interface ProductFeedData {
   /** How products are selected by the product feed. */
@@ -4741,6 +6314,8 @@ export interface ProductFeedData {
   /** Whether the product feed has opted-out of showing products. */
   isFeedDisabled?: boolean;
 }
+const ProductFeedData = /*@__PURE__*/ __L.at(__c38, 3) as any as S.Schema<ProductFeedData>;
+
 /** A single YouTube ad group associated with a YouTube and Partners line item. */
 export interface YoutubeAdGroup {
   /** Controls whether or not the ad group can spend its budget and bid on inventory. If the ad group's parent line item is not active, the ad group can't spend its budget even if its own status is `ENTITY_STATUS_ACTIVE`. */
@@ -4766,6 +6341,8 @@ export interface YoutubeAdGroup {
   /** The [targeting expansion](https://support.google.com/displayvideo/answer/10191558) settings of the ad group. This config is only applicable when eligible audience list targeting is assigned to the ad group. */
   targetingExpansion?: TargetingExpansionConfig;
 }
+const YoutubeAdGroup = /*@__PURE__*/ __L.at(__c38, 4) as any as S.Schema<YoutubeAdGroup>;
+
 export type GetAdvertisersYoutubeAdGroupsTargetingTypesAssignedTargetingOptionsTargetingTypeEnum =
   | "TARGETING_TYPE_UNSPECIFIED"
   | "TARGETING_TYPE_CHANNEL"
@@ -4816,6 +6393,9 @@ export type GetAdvertisersYoutubeAdGroupsTargetingTypesAssignedTargetingOptionsT
   | "TARGETING_TYPE_YOUTUBE_CHANNEL"
   | "TARGETING_TYPE_SESSION_POSITION"
   | "TARGETING_TYPE_YOUTUBE_CHANNEL_PACK";
+const GetAdvertisersYoutubeAdGroupsTargetingTypesAssignedTargetingOptionsTargetingTypeEnum =
+  S.String;
+
 export interface GetAdvertisersYoutubeAdGroupsTargetingTypesAssignedTargetingOptionsRequest {
   /** Required. Identifies the type of this assigned targeting option. Supported targeting types include: * `TARGETING_TYPE_AGE_RANGE` * `TARGETING_TYPE_APP` * `TARGETING_TYPE_APP_CATEGORY` * `TARGETING_TYPE_AUDIENCE_GROUP` * `TARGETING_TYPE_CATEGORY` * `TARGETING_TYPE_GENDER` * `TARGETING_TYPE_HOUSEHOLD_INCOME` * `TARGETING_TYPE_KEYWORD` * `TARGETING_TYPE_PARENTAL_STATUS` * `TARGETING_TYPE_SESSION_POSITION` * `TARGETING_TYPE_URL` * `TARGETING_TYPE_YOUTUBE_CHANNEL` * `TARGETING_TYPE_YOUTUBE_VIDEO` */
   targetingType:
@@ -4828,6 +6408,12 @@ export interface GetAdvertisersYoutubeAdGroupsTargetingTypesAssignedTargetingOpt
   /** Required. The ID of the ad group the assigned targeting option belongs to. */
   youtubeAdGroupId: string;
 }
+const GetAdvertisersYoutubeAdGroupsTargetingTypesAssignedTargetingOptionsRequest =
+  /*@__PURE__*/ __L.at(
+    __c38,
+    5,
+  ) as any as S.Schema<GetAdvertisersYoutubeAdGroupsTargetingTypesAssignedTargetingOptionsRequest>;
+
 export interface GetCombinedAudiencesRequest {
   /** The ID of the partner that has access to the fetched combined audience. */
   partnerId?: string;
@@ -4836,6 +6422,11 @@ export interface GetCombinedAudiencesRequest {
   /** Required. The ID of the combined audience to fetch. */
   combinedAudienceId: string;
 }
+const GetCombinedAudiencesRequest = /*@__PURE__*/ __L.at(
+  __c38,
+  6,
+) as any as S.Schema<GetCombinedAudiencesRequest>;
+
 /** Describes a combined audience resource. */
 export interface CombinedAudience {
   /** Output only. The resource name of the combined audience. */
@@ -4845,6 +6436,8 @@ export interface CombinedAudience {
   /** Output only. The display name of the combined audience. . */
   displayName?: string;
 }
+const CombinedAudience = /*@__PURE__*/ __L.at(__c38, 7) as any as S.Schema<CombinedAudience>;
+
 export interface GetCustomBiddingAlgorithmsRequest {
   /** The ID of the DV360 partner that has access to the custom bidding algorithm. */
   partnerId?: string;
@@ -4853,6 +6446,11 @@ export interface GetCustomBiddingAlgorithmsRequest {
   /** The ID of the DV360 partner that has access to the custom bidding algorithm. */
   advertiserId?: string;
 }
+const GetCustomBiddingAlgorithmsRequest = /*@__PURE__*/ __L.at(
+  __c39,
+  0,
+) as any as S.Schema<GetCustomBiddingAlgorithmsRequest>;
+
 export interface GetCustomBiddingAlgorithmsScriptsRequest {
   /** The ID of the advertiser that owns the parent custom bidding algorithm. */
   advertiserId?: string;
@@ -4863,12 +6461,22 @@ export interface GetCustomBiddingAlgorithmsScriptsRequest {
   /** Required. The ID of the custom bidding script to fetch. */
   customBiddingScriptId: string;
 }
+const GetCustomBiddingAlgorithmsScriptsRequest = /*@__PURE__*/ __L.at(
+  __c39,
+  1,
+) as any as S.Schema<GetCustomBiddingAlgorithmsScriptsRequest>;
+
 export interface GetCustomListsRequest {
   /** Required. The ID of the custom list to fetch. */
   customListId: string;
   /** The ID of the DV360 advertiser that has access to the fetched custom lists. */
   advertiserId?: string;
 }
+const GetCustomListsRequest = /*@__PURE__*/ __L.at(
+  __c39,
+  2,
+) as any as S.Schema<GetCustomListsRequest>;
+
 /** Describes a custom list entity, such as a custom affinity or custom intent audience list. */
 export interface CustomList {
   /** Output only. The resource name of the custom list. */
@@ -4878,17 +6486,26 @@ export interface CustomList {
   /** Output only. The display name of the custom list. . */
   displayName?: string;
 }
+const CustomList = /*@__PURE__*/ __L.at(__c39, 3) as any as S.Schema<CustomList>;
+
 export interface GetFloodlightGroupsRequest {
   /** Required. The ID of the Floodlight group to fetch. */
   floodlightGroupId: string;
   /** Required. The partner context by which the Floodlight group is being accessed. */
   partnerId?: string;
 }
+const GetFloodlightGroupsRequest = /*@__PURE__*/ __L.at(
+  __c39,
+  4,
+) as any as S.Schema<GetFloodlightGroupsRequest>;
+
 export type FloodlightGroupWebTagTypeEnum =
   | "WEB_TAG_TYPE_UNSPECIFIED"
   | "WEB_TAG_TYPE_NONE"
   | "WEB_TAG_TYPE_IMAGE"
   | "WEB_TAG_TYPE_DYNAMIC";
+const FloodlightGroupWebTagTypeEnum = S.String;
+
 /** Specifies how many days into the past to look when determining whether to record a conversion. */
 export interface LookbackWindow {
   /** Lookback window, in days, from the last time a given user clicked on one of your ads. */
@@ -4896,6 +6513,8 @@ export interface LookbackWindow {
   /** Lookback window, in days, from the last time a given user viewed one of your ads. */
   impressionDays?: number;
 }
+const LookbackWindow = /*@__PURE__*/ __L.at(__c39, 5) as any as S.Schema<LookbackWindow>;
+
 export type ActiveViewVideoViewabilityMetricConfigMinimumDurationEnum =
   | "VIDEO_DURATION_UNSPECIFIED"
   | "VIDEO_DURATION_SECONDS_NONE"
@@ -4918,6 +6537,8 @@ export type ActiveViewVideoViewabilityMetricConfigMinimumDurationEnum =
   | "VIDEO_DURATION_SECONDS_30"
   | "VIDEO_DURATION_SECONDS_45"
   | "VIDEO_DURATION_SECONDS_60";
+const ActiveViewVideoViewabilityMetricConfigMinimumDurationEnum = S.String;
+
 export type ActiveViewVideoViewabilityMetricConfigMinimumQuartileEnum =
   | "VIDEO_DURATION_QUARTILE_UNSPECIFIED"
   | "VIDEO_DURATION_QUARTILE_NONE"
@@ -4925,10 +6546,14 @@ export type ActiveViewVideoViewabilityMetricConfigMinimumQuartileEnum =
   | "VIDEO_DURATION_QUARTILE_SECOND"
   | "VIDEO_DURATION_QUARTILE_THIRD"
   | "VIDEO_DURATION_QUARTILE_FOURTH";
+const ActiveViewVideoViewabilityMetricConfigMinimumQuartileEnum = S.String;
+
 export type ActiveViewVideoViewabilityMetricConfigMinimumVolumeEnum =
   | "VIDEO_VOLUME_PERCENT_UNSPECIFIED"
   | "VIDEO_VOLUME_PERCENT_0"
   | "VIDEO_VOLUME_PERCENT_10";
+const ActiveViewVideoViewabilityMetricConfigMinimumVolumeEnum = S.String;
+
 export type ActiveViewVideoViewabilityMetricConfigMinimumViewabilityEnum =
   | "VIEWABILITY_PERCENT_UNSPECIFIED"
   | "VIEWABILITY_PERCENT_0"
@@ -4936,6 +6561,8 @@ export type ActiveViewVideoViewabilityMetricConfigMinimumViewabilityEnum =
   | "VIEWABILITY_PERCENT_50"
   | "VIEWABILITY_PERCENT_75"
   | "VIEWABILITY_PERCENT_100";
+const ActiveViewVideoViewabilityMetricConfigMinimumViewabilityEnum = S.String;
+
 /** Configuration for custom Active View video viewability metrics. */
 export interface ActiveViewVideoViewabilityMetricConfig {
   /** The minimum visible video duration required (in seconds) in order for an impression to be recorded. You must specify minimum_duration, minimum_quartile or both. If both are specified, an impression meets the metric criteria if either requirement is met (whichever happens first). */
@@ -4949,6 +6576,11 @@ export interface ActiveViewVideoViewabilityMetricConfig {
   /** Required. The minimum percentage of the video ad's pixels visible on the screen in order for an impression to be recorded. */
   minimumViewability?: ActiveViewVideoViewabilityMetricConfigMinimumViewabilityEnum | (string & {});
 }
+const ActiveViewVideoViewabilityMetricConfig = /*@__PURE__*/ __L.at(
+  __c39,
+  6,
+) as any as S.Schema<ActiveViewVideoViewabilityMetricConfig>;
+
 /** A single Floodlight group. */
 export interface FloodlightGroup {
   /** User-defined custom variables owned by the Floodlight group. Use custom Floodlight variables to create reporting data that is tailored to your unique business needs. Custom Floodlight variables use the keys `U1=`, `U2=`, and so on, and can take any values that you choose to pass to them. You can use them to track virtually any type of data that you collect about your customers, such as the genre of movie that a customer purchases, the country to which the item is shipped, and so on. Custom Floodlight variables may not be used to pass any data that could be used or recognized as personally identifiable information (PII). Example: `custom_variables { fields { "U1": value { number_value: 123.4 }, "U2": value { string_value: "MyVariable2" }, "U3": value { string_value: "MyVariable3" } } }` Acceptable values for keys are "U1" through "U100", inclusive. String values must be less than 64 characters long, and cannot contain the following characters: `"<>`. */
@@ -4966,6 +6598,8 @@ export interface FloodlightGroup {
   /** Required. The display name of the Floodlight group. */
   displayName?: string;
 }
+const FloodlightGroup = /*@__PURE__*/ __L.at(__c39, 7) as any as S.Schema<FloodlightGroup>;
+
 export interface GetFloodlightGroupsFloodlightActivitiesRequest {
   /** Required. The ID of the parent Floodlight group to which the requested Floodlight activity belongs. */
   floodlightGroupId: string;
@@ -4974,6 +6608,11 @@ export interface GetFloodlightGroupsFloodlightActivitiesRequest {
   /** Required. The ID of the partner through which the Floodlight activity is being accessed. */
   partnerId?: string;
 }
+const GetFloodlightGroupsFloodlightActivitiesRequest = /*@__PURE__*/ __L.at(
+  __c40,
+  0,
+) as any as S.Schema<GetFloodlightGroupsFloodlightActivitiesRequest>;
+
 /** Settings that control the whether remarketing is enabled for the given identified advertiser. */
 export interface RemarketingConfig {
   /** Output only. The ID of the advertiser. */
@@ -4981,11 +6620,20 @@ export interface RemarketingConfig {
   /** Output only. Whether the Floodlight activity remarketing user list is available to the identified advertiser. */
   remarketingEnabled?: boolean;
 }
+const RemarketingConfig = /*@__PURE__*/ __L.at(__c40, 1) as any as S.Schema<RemarketingConfig>;
+
 export type RemarketingConfigList = Array<RemarketingConfig>;
+const RemarketingConfigList = /*@__PURE__*/ __L.at(
+  __c40,
+  2,
+) as any as S.Schema<RemarketingConfigList>;
+
 export type FloodlightActivityServingStatusEnum =
   | "FLOODLIGHT_ACTIVITY_SERVING_STATUS_UNSPECIFIED"
   | "FLOODLIGHT_ACTIVITY_SERVING_STATUS_ENABLED"
   | "FLOODLIGHT_ACTIVITY_SERVING_STATUS_DISABLED";
+const FloodlightActivityServingStatusEnum = S.String;
+
 /** A single Floodlight activity. */
 export interface FloodlightActivity {
   /** Output only. IDs of the advertisers that have access to the parent Floodlight group. Only advertisers under the provided partner ID will be listed in this field. */
@@ -5005,6 +6653,8 @@ export interface FloodlightActivity {
   /** Output only. Whether tags are required to be compliant. */
   sslRequired?: boolean;
 }
+const FloodlightActivity = /*@__PURE__*/ __L.at(__c40, 3) as any as S.Schema<FloodlightActivity>;
+
 export interface GetGoogleAudiencesRequest {
   /** Required. The ID of the Google audience to fetch. */
   googleAudienceId: string;
@@ -5013,6 +6663,11 @@ export interface GetGoogleAudiencesRequest {
   /** The ID of the partner that has access to the fetched Google audience. */
   partnerId?: string;
 }
+const GetGoogleAudiencesRequest = /*@__PURE__*/ __L.at(
+  __c40,
+  4,
+) as any as S.Schema<GetGoogleAudiencesRequest>;
+
 export type GoogleAudienceGoogleAudienceTypeEnum =
   | "GOOGLE_AUDIENCE_TYPE_UNSPECIFIED"
   | "GOOGLE_AUDIENCE_TYPE_AFFINITY"
@@ -5021,6 +6676,8 @@ export type GoogleAudienceGoogleAudienceTypeEnum =
   | "GOOGLE_AUDIENCE_TYPE_NEW_MOBILE_DEVICES"
   | "GOOGLE_AUDIENCE_TYPE_LIFE_EVENT"
   | "GOOGLE_AUDIENCE_TYPE_EXTENDED_DEMOGRAPHIC";
+const GoogleAudienceGoogleAudienceTypeEnum = S.String;
+
 /** Describes a Google audience resource. Includes Google audience lists. */
 export interface GoogleAudience {
   /** Output only. The type of Google audience. . */
@@ -5032,6 +6689,8 @@ export interface GoogleAudience {
   /** Output only. The display name of the Google audience. . */
   displayName?: string;
 }
+const GoogleAudience = /*@__PURE__*/ __L.at(__c40, 5) as any as S.Schema<GoogleAudience>;
+
 export interface GetGuaranteedOrdersRequest {
   /** The ID of the partner that has access to the guaranteed order. */
   partnerId?: string;
@@ -5040,6 +6699,11 @@ export interface GetGuaranteedOrdersRequest {
   /** Required. The ID of the guaranteed order to fetch. The ID is of the format `{exchange}-{legacy_guaranteed_order_id}` */
   guaranteedOrderId: string;
 }
+const GetGuaranteedOrdersRequest = /*@__PURE__*/ __L.at(
+  __c40,
+  6,
+) as any as S.Schema<GetGuaranteedOrdersRequest>;
+
 export interface GetInventorySourceGroupsRequest {
   /** Required. The ID of the inventory source group to fetch. */
   inventorySourceGroupId: string;
@@ -5048,10 +6712,17 @@ export interface GetInventorySourceGroupsRequest {
   /** The ID of the partner that has access to the inventory source group. A partner cannot access an advertiser-owned inventory source group. */
   partnerId?: string;
 }
+const GetInventorySourceGroupsRequest = /*@__PURE__*/ __L.at(
+  __c40,
+  7,
+) as any as S.Schema<GetInventorySourceGroupsRequest>;
+
 export interface GetPartnersRequest {
   /** Required. The ID of the partner to fetch. */
   partnerId: string;
 }
+const GetPartnersRequest = /*@__PURE__*/ __L.at(__c41, 0) as any as S.Schema<GetPartnersRequest>;
+
 export type ExchangeConfigEnabledExchangeExchangeEnum =
   | "EXCHANGE_UNSPECIFIED"
   | "EXCHANGE_GOOGLE_AD_MANAGER"
@@ -5143,6 +6814,8 @@ export type ExchangeConfigEnabledExchangeExchangeEnum =
   | "EXCHANGE_SNAP"
   | "EXCHANGE_CADENT"
   | "EXCHANGE_EXTE";
+const ExchangeConfigEnabledExchangeExchangeEnum = S.String;
+
 /** An enabled exchange in the partner. */
 export interface ExchangeConfigEnabledExchange {
   /** The enabled exchange. */
@@ -5154,12 +6827,24 @@ export interface ExchangeConfigEnabledExchange {
   /** Output only. Agency ID of Google Ad Manager. The field is only relevant when Google Ad Manager is the enabled exchange. */
   googleAdManagerAgencyId?: string;
 }
+const ExchangeConfigEnabledExchange = /*@__PURE__*/ __L.at(
+  __c41,
+  1,
+) as any as S.Schema<ExchangeConfigEnabledExchange>;
+
 export type ExchangeConfigEnabledExchangeList = Array<ExchangeConfigEnabledExchange>;
+const ExchangeConfigEnabledExchangeList = /*@__PURE__*/ __L.at(
+  __c41,
+  2,
+) as any as S.Schema<ExchangeConfigEnabledExchangeList>;
+
 /** Settings that control which exchanges are enabled for a partner. */
 export interface ExchangeConfig {
   /** All enabled exchanges in the partner. Duplicate enabled exchanges will be ignored. */
   enabledExchanges?: ExchangeConfigEnabledExchangeList;
 }
+const ExchangeConfig = /*@__PURE__*/ __L.at(__c41, 3) as any as S.Schema<ExchangeConfig>;
+
 export type PartnerEntityStatusEnum =
   | "ENTITY_STATUS_UNSPECIFIED"
   | "ENTITY_STATUS_ACTIVE"
@@ -5167,6 +6852,8 @@ export type PartnerEntityStatusEnum =
   | "ENTITY_STATUS_DRAFT"
   | "ENTITY_STATUS_PAUSED"
   | "ENTITY_STATUS_SCHEDULED_FOR_DELETION";
+const PartnerEntityStatusEnum = S.String;
+
 /** Measurement settings of a partner. */
 export interface MeasurementConfig {
   /** Whether or not to report DV360 cost to CM360. */
@@ -5174,16 +6861,28 @@ export interface MeasurementConfig {
   /** Whether or not to include DV360 data in CM360 data transfer reports. */
   dv360ToCmDataSharingEnabled?: boolean;
 }
+const MeasurementConfig = /*@__PURE__*/ __L.at(__c41, 4) as any as S.Schema<MeasurementConfig>;
+
 /** Ad server related settings of a partner. */
 export interface PartnerAdServerConfig {
   /** Measurement settings of a partner. */
   measurementConfig?: MeasurementConfig;
 }
+const PartnerAdServerConfig = /*@__PURE__*/ __L.at(
+  __c41,
+  5,
+) as any as S.Schema<PartnerAdServerConfig>;
+
 /** Settings that control how partner related data may be accessed. */
 export interface PartnerDataAccessConfig {
   /** Structured Data Files (SDF) settings for the partner. The SDF configuration for the partner. */
   sdfConfig?: SdfConfig;
 }
+const PartnerDataAccessConfig = /*@__PURE__*/ __L.at(
+  __c41,
+  6,
+) as any as S.Schema<PartnerDataAccessConfig>;
+
 /** General settings of a partner. */
 export interface PartnerGeneralConfig {
   /** Immutable. The standard TZ database name of the partner's time zone. For example, `America/New_York`. See more at: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones */
@@ -5191,6 +6890,11 @@ export interface PartnerGeneralConfig {
   /** Immutable. Partner's currency in ISO 4217 format. */
   currencyCode?: string;
 }
+const PartnerGeneralConfig = /*@__PURE__*/ __L.at(
+  __c41,
+  7,
+) as any as S.Schema<PartnerGeneralConfig>;
+
 /** A single partner in Display & Video 360 (DV360). */
 export interface Partner {
   /** Settings that control which exchanges are enabled for the partner. */
@@ -5212,6 +6916,8 @@ export interface Partner {
   /** The display name of the partner. Must be UTF-8 encoded with a maximum size of 240 bytes. */
   displayName?: string;
 }
+const Partner = /*@__PURE__*/ __L.at(__c42, 0) as any as S.Schema<Partner>;
+
 export interface GetPartnersChannelsRequest {
   /** The ID of the advertiser that owns the fetched channel. */
   advertiserId?: string;
@@ -5220,6 +6926,11 @@ export interface GetPartnersChannelsRequest {
   /** The ID of the partner that owns the fetched channel. */
   partnerId: string;
 }
+const GetPartnersChannelsRequest = /*@__PURE__*/ __L.at(
+  __c42,
+  1,
+) as any as S.Schema<GetPartnersChannelsRequest>;
+
 export type GetPartnersTargetingTypesAssignedTargetingOptionsTargetingTypeEnum =
   | "TARGETING_TYPE_UNSPECIFIED"
   | "TARGETING_TYPE_CHANNEL"
@@ -5270,6 +6981,8 @@ export type GetPartnersTargetingTypesAssignedTargetingOptionsTargetingTypeEnum =
   | "TARGETING_TYPE_YOUTUBE_CHANNEL"
   | "TARGETING_TYPE_SESSION_POSITION"
   | "TARGETING_TYPE_YOUTUBE_CHANNEL_PACK";
+const GetPartnersTargetingTypesAssignedTargetingOptionsTargetingTypeEnum = S.String;
+
 export interface GetPartnersTargetingTypesAssignedTargetingOptionsRequest {
   /** Required. An identifier unique to the targeting type in this partner that identifies the assigned targeting option being requested. */
   assignedTargetingOptionId: string;
@@ -5278,10 +6991,20 @@ export interface GetPartnersTargetingTypesAssignedTargetingOptionsRequest {
   /** Required. Identifies the type of this assigned targeting option. Supported targeting types: * `TARGETING_TYPE_CHANNEL` */
   targetingType: GetPartnersTargetingTypesAssignedTargetingOptionsTargetingTypeEnum | (string & {});
 }
+const GetPartnersTargetingTypesAssignedTargetingOptionsRequest = /*@__PURE__*/ __L.at(
+  __c42,
+  2,
+) as any as S.Schema<GetPartnersTargetingTypesAssignedTargetingOptionsRequest>;
+
 export interface GetSdfdownloadtasksOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
+const GetSdfdownloadtasksOperationsRequest = /*@__PURE__*/ __L.at(
+  __c42,
+  3,
+) as any as S.Schema<GetSdfdownloadtasksOperationsRequest>;
+
 export type GetTargetingTypesTargetingOptionsTargetingTypeEnum =
   | "TARGETING_TYPE_UNSPECIFIED"
   | "TARGETING_TYPE_CHANNEL"
@@ -5332,6 +7055,8 @@ export type GetTargetingTypesTargetingOptionsTargetingTypeEnum =
   | "TARGETING_TYPE_YOUTUBE_CHANNEL"
   | "TARGETING_TYPE_SESSION_POSITION"
   | "TARGETING_TYPE_YOUTUBE_CHANNEL_PACK";
+const GetTargetingTypesTargetingOptionsTargetingTypeEnum = S.String;
+
 export interface GetTargetingTypesTargetingOptionsRequest {
   /** Required. The type of targeting option to retrieve. Accepted values are: * `TARGETING_TYPE_APP_CATEGORY` * `TARGETING_TYPE_AGE_RANGE` * `TARGETING_TYPE_GENDER` * `TARGETING_TYPE_VIDEO_PLAYER_SIZE` * `TARGETING_TYPE_USER_REWARDED_CONTENT` * `TARGETING_TYPE_PARENTAL_STATUS` * `TARGETING_TYPE_CONTENT_INSTREAM_POSITION` * `TARGETING_TYPE_CONTENT_OUTSTREAM_POSITION` * `TARGETING_TYPE_DEVICE_TYPE` * `TARGETING_TYPE_BROWSER` * `TARGETING_TYPE_HOUSEHOLD_INCOME` * `TARGETING_TYPE_ON_SCREEN_POSITION` * `TARGETING_TYPE_CARRIER_AND_ISP` * `TARGETING_TYPE_OPERATING_SYSTEM` * `TARGETING_TYPE_DEVICE_MAKE_MODEL` * `TARGETING_TYPE_ENVIRONMENT` * `TARGETING_TYPE_CATEGORY` * `TARGETING_TYPE_VIEWABILITY` * `TARGETING_TYPE_AUTHORIZED_SELLER_STATUS` * `TARGETING_TYPE_LANGUAGE` * `TARGETING_TYPE_GEO_REGION` * `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_EXCHANGE` * `TARGETING_TYPE_SUB_EXCHANGE` * `TARGETING_TYPE_NATIVE_CONTENT_POSITION` * `TARGETING_TYPE_OMID` */
   targetingType: GetTargetingTypesTargetingOptionsTargetingTypeEnum | (string & {});
@@ -5340,6 +7065,11 @@ export interface GetTargetingTypesTargetingOptionsRequest {
   /** Required. The ID of the of targeting option to retrieve. */
   targetingOptionId: string;
 }
+const GetTargetingTypesTargetingOptionsRequest = /*@__PURE__*/ __L.at(
+  __c42,
+  4,
+) as any as S.Schema<GetTargetingTypesTargetingOptionsRequest>;
+
 export type ContentOutstreamPositionTargetingOptionDetailsContentOutstreamPositionEnum =
   | "CONTENT_OUTSTREAM_POSITION_UNSPECIFIED"
   | "CONTENT_OUTSTREAM_POSITION_UNKNOWN"
@@ -5347,11 +7077,18 @@ export type ContentOutstreamPositionTargetingOptionDetailsContentOutstreamPositi
   | "CONTENT_OUTSTREAM_POSITION_IN_BANNER"
   | "CONTENT_OUTSTREAM_POSITION_IN_FEED"
   | "CONTENT_OUTSTREAM_POSITION_INTERSTITIAL";
+const ContentOutstreamPositionTargetingOptionDetailsContentOutstreamPositionEnum = S.String;
+
 /** Represents a targetable content outstream position, which could be used by display and video ads. This will be populated in the content_outstream_position_details field when targeting_type is `TARGETING_TYPE_CONTENT_OUTSTREAM_POSITION`. */
 export interface ContentOutstreamPositionTargetingOptionDetails {
   /** Output only. The content outstream position. */
   contentOutstreamPosition?: ContentOutstreamPositionTargetingOptionDetailsContentOutstreamPositionEnum;
 }
+const ContentOutstreamPositionTargetingOptionDetails = /*@__PURE__*/ __L.at(
+  __c42,
+  5,
+) as any as S.Schema<ContentOutstreamPositionTargetingOptionDetails>;
+
 export type AudioContentTypeTargetingOptionDetailsAudioContentTypeEnum =
   | "AUDIO_CONTENT_TYPE_UNSPECIFIED"
   | "AUDIO_CONTENT_TYPE_UNKNOWN"
@@ -5362,11 +7099,18 @@ export type AudioContentTypeTargetingOptionDetailsAudioContentTypeEnum =
   | "AUDIO_CONTENT_TYPE_WEB_RADIO"
   | "AUDIO_CONTENT_TYPE_VIDEO_GAME"
   | "AUDIO_CONTENT_TYPE_TEXT_TO_SPEECH";
+const AudioContentTypeTargetingOptionDetailsAudioContentTypeEnum = S.String;
+
 /** Represents a targetable audio content type. This will be populated in the audio_content_type_details field when targeting_type is `TARGETING_TYPE_AUDIO_CONTENT_TYPE`. */
 export interface AudioContentTypeTargetingOptionDetails {
   /** Output only. The audio content type. */
   audioContentType?: AudioContentTypeTargetingOptionDetailsAudioContentTypeEnum;
 }
+const AudioContentTypeTargetingOptionDetails = /*@__PURE__*/ __L.at(
+  __c42,
+  6,
+) as any as S.Schema<AudioContentTypeTargetingOptionDetails>;
+
 export type DeviceTypeTargetingOptionDetailsDeviceTypeEnum =
   | "DEVICE_TYPE_UNSPECIFIED"
   | "DEVICE_TYPE_COMPUTER"
@@ -5374,11 +7118,18 @@ export type DeviceTypeTargetingOptionDetailsDeviceTypeEnum =
   | "DEVICE_TYPE_SMART_PHONE"
   | "DEVICE_TYPE_TABLET"
   | "DEVICE_TYPE_CONNECTED_DEVICE";
+const DeviceTypeTargetingOptionDetailsDeviceTypeEnum = S.String;
+
 /** Represents a targetable device type. This will be populated in the device_type_details field of a TargetingOption when targeting_type is `TARGETING_TYPE_DEVICE_TYPE`. */
 export interface DeviceTypeTargetingOptionDetails {
   /** Output only. The device type that is used to be targeted. */
   deviceType?: DeviceTypeTargetingOptionDetailsDeviceTypeEnum;
 }
+const DeviceTypeTargetingOptionDetails = /*@__PURE__*/ __L.at(
+  __c42,
+  7,
+) as any as S.Schema<DeviceTypeTargetingOptionDetails>;
+
 export type BusinessChainTargetingOptionDetailsGeoRegionTypeEnum =
   | "GEO_REGION_TYPE_UNKNOWN"
   | "GEO_REGION_TYPE_OTHER"
@@ -5420,6 +7171,8 @@ export type BusinessChainTargetingOptionDetailsGeoRegionTypeEnum =
   | "GEO_REGION_TYPE_COLLOQUIAL_AREA"
   | "GEO_REGION_TYPE_POST_TOWN"
   | "GEO_REGION_TYPE_WARD";
+const BusinessChainTargetingOptionDetailsGeoRegionTypeEnum = S.String;
+
 /** Represents a targetable business chain within a geo region. This will be populated in the business_chain_details field when targeting_type is `TARGETING_TYPE_BUSINESS_CHAIN`. */
 export interface BusinessChainTargetingOptionDetails {
   /** Output only. The display name of the geographic region, e.g. "Ontario, Canada". */
@@ -5429,17 +7182,29 @@ export interface BusinessChainTargetingOptionDetails {
   /** Output only. The type of the geographic region. */
   geoRegionType?: BusinessChainTargetingOptionDetailsGeoRegionTypeEnum;
 }
+const BusinessChainTargetingOptionDetails = /*@__PURE__*/ __L.at(
+  __c43,
+  0,
+) as any as S.Schema<BusinessChainTargetingOptionDetails>;
+
 export type ContentInstreamPositionTargetingOptionDetailsContentInstreamPositionEnum =
   | "CONTENT_INSTREAM_POSITION_UNSPECIFIED"
   | "CONTENT_INSTREAM_POSITION_PRE_ROLL"
   | "CONTENT_INSTREAM_POSITION_MID_ROLL"
   | "CONTENT_INSTREAM_POSITION_POST_ROLL"
   | "CONTENT_INSTREAM_POSITION_UNKNOWN";
+const ContentInstreamPositionTargetingOptionDetailsContentInstreamPositionEnum = S.String;
+
 /** Represents a targetable content instream position, which could be used by video and audio ads. This will be populated in the content_instream_position_details field when targeting_type is `TARGETING_TYPE_CONTENT_INSTREAM_POSITION`. */
 export interface ContentInstreamPositionTargetingOptionDetails {
   /** Output only. The content instream position. */
   contentInstreamPosition?: ContentInstreamPositionTargetingOptionDetailsContentInstreamPositionEnum;
 }
+const ContentInstreamPositionTargetingOptionDetails = /*@__PURE__*/ __L.at(
+  __c43,
+  1,
+) as any as S.Schema<ContentInstreamPositionTargetingOptionDetails>;
+
 export type DigitalContentLabelTargetingOptionDetailsContentRatingTierEnum =
   | "CONTENT_RATING_TIER_UNSPECIFIED"
   | "CONTENT_RATING_TIER_UNRATED"
@@ -5448,21 +7213,35 @@ export type DigitalContentLabelTargetingOptionDetailsContentRatingTierEnum =
   | "CONTENT_RATING_TIER_TEENS"
   | "CONTENT_RATING_TIER_MATURE"
   | "CONTENT_RATING_TIER_FAMILIES";
+const DigitalContentLabelTargetingOptionDetailsContentRatingTierEnum = S.String;
+
 /** Represents a targetable digital content label rating tier. This will be populated in the digital_content_label_details field of the TargetingOption when targeting_type is `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION`. */
 export interface DigitalContentLabelTargetingOptionDetails {
   /** Output only. An enum for the content label brand safety tiers. */
   contentRatingTier?: DigitalContentLabelTargetingOptionDetailsContentRatingTierEnum;
 }
+const DigitalContentLabelTargetingOptionDetails = /*@__PURE__*/ __L.at(
+  __c43,
+  2,
+) as any as S.Schema<DigitalContentLabelTargetingOptionDetails>;
+
 export type OnScreenPositionTargetingOptionDetailsOnScreenPositionEnum =
   | "ON_SCREEN_POSITION_UNSPECIFIED"
   | "ON_SCREEN_POSITION_UNKNOWN"
   | "ON_SCREEN_POSITION_ABOVE_THE_FOLD"
   | "ON_SCREEN_POSITION_BELOW_THE_FOLD";
+const OnScreenPositionTargetingOptionDetailsOnScreenPositionEnum = S.String;
+
 /** Represents a targetable on screen position, which could be used by display and video ads. This will be populated in the on_screen_position_details field when targeting_type is `TARGETING_TYPE_ON_SCREEN_POSITION`. */
 export interface OnScreenPositionTargetingOptionDetails {
   /** Output only. The on screen position. */
   onScreenPosition?: OnScreenPositionTargetingOptionDetailsOnScreenPositionEnum;
 }
+const OnScreenPositionTargetingOptionDetails = /*@__PURE__*/ __L.at(
+  __c43,
+  3,
+) as any as S.Schema<OnScreenPositionTargetingOptionDetails>;
+
 export type VideoPlayerSizeTargetingOptionDetailsVideoPlayerSizeEnum =
   | "VIDEO_PLAYER_SIZE_UNSPECIFIED"
   | "VIDEO_PLAYER_SIZE_SMALL"
@@ -5474,6 +7253,9 @@ export interface VideoPlayerSizeTargetingOptionDetails {
   /** Output only. The video player size. */
   videoPlayerSize?: VideoPlayerSizeTargetingOptionDetailsVideoPlayerSizeEnum;
 }
+const VideoPlayerSizeTargetingOptionDetails =
+  VideoPlayerSizeAssignedTargetingOptionDetails as any as S.Schema<VideoPlayerSizeTargetingOptionDetails>;
+
 export type AgeRangeTargetingOptionDetailsAgeRangeEnum =
   | "AGE_RANGE_UNSPECIFIED"
   | "AGE_RANGE_18_24"
@@ -5498,11 +7280,19 @@ export interface AgeRangeTargetingOptionDetails {
   /** Output only. The age range of an audience. */
   ageRange?: AgeRangeTargetingOptionDetailsAgeRangeEnum;
 }
+const AgeRangeTargetingOptionDetails =
+  AgeRangeAssignedTargetingOptionDetails as any as S.Schema<AgeRangeTargetingOptionDetails>;
+
 /** Represents a targetable operating system. This will be populated in the operating_system_details field of a TargetingOption when targeting_type is `TARGETING_TYPE_OPERATING_SYSTEM`. */
 export interface OperatingSystemTargetingOptionDetails {
   /** Output only. The display name of the operating system. */
   displayName?: string;
 }
+const OperatingSystemTargetingOptionDetails = /*@__PURE__*/ __L.at(
+  __c43,
+  4,
+) as any as S.Schema<OperatingSystemTargetingOptionDetails>;
+
 export type HouseholdIncomeTargetingOptionDetailsHouseholdIncomeEnum =
   | "HOUSEHOLD_INCOME_UNSPECIFIED"
   | "HOUSEHOLD_INCOME_UNKNOWN"
@@ -5517,15 +7307,25 @@ export interface HouseholdIncomeTargetingOptionDetails {
   /** Output only. The household income of an audience. */
   householdIncome?: HouseholdIncomeTargetingOptionDetailsHouseholdIncomeEnum;
 }
+const HouseholdIncomeTargetingOptionDetails =
+  HouseholdIncomeAssignedTargetingOptionDetails as any as S.Schema<HouseholdIncomeTargetingOptionDetails>;
+
 export type AuthorizedSellerStatusTargetingOptionDetailsAuthorizedSellerStatusEnum =
   | "AUTHORIZED_SELLER_STATUS_UNSPECIFIED"
   | "AUTHORIZED_SELLER_STATUS_AUTHORIZED_DIRECT_SELLERS_ONLY"
   | "AUTHORIZED_SELLER_STATUS_AUTHORIZED_AND_NON_PARTICIPATING_PUBLISHERS";
+const AuthorizedSellerStatusTargetingOptionDetailsAuthorizedSellerStatusEnum = S.String;
+
 /** Represents a targetable authorized seller status. This will be populated in the authorized_seller_status_details field when targeting_type is `TARGETING_TYPE_AUTHORIZED_SELLER_STATUS`. */
 export interface AuthorizedSellerStatusTargetingOptionDetails {
   /** Output only. The authorized seller status. */
   authorizedSellerStatus?: AuthorizedSellerStatusTargetingOptionDetailsAuthorizedSellerStatusEnum;
 }
+const AuthorizedSellerStatusTargetingOptionDetails = /*@__PURE__*/ __L.at(
+  __c43,
+  5,
+) as any as S.Schema<AuthorizedSellerStatusTargetingOptionDetails>;
+
 export type ParentalStatusTargetingOptionDetailsParentalStatusEnum =
   | "PARENTAL_STATUS_UNSPECIFIED"
   | "PARENTAL_STATUS_PARENT"
@@ -5536,11 +7336,17 @@ export interface ParentalStatusTargetingOptionDetails {
   /** Output only. The parental status of an audience. */
   parentalStatus?: ParentalStatusTargetingOptionDetailsParentalStatusEnum;
 }
+const ParentalStatusTargetingOptionDetails =
+  ParentalStatusAssignedTargetingOptionDetails as any as S.Schema<ParentalStatusTargetingOptionDetails>;
+
 /** Represents a targetable content genre. This will be populated in the content_genre_details field when targeting_type is `TARGETING_TYPE_CONTENT_GENRE`. */
 export interface ContentGenreTargetingOptionDetails {
   /** Output only. The display name of the content genre */
   displayName?: string;
 }
+const ContentGenreTargetingOptionDetails =
+  OperatingSystemTargetingOptionDetails as any as S.Schema<ContentGenreTargetingOptionDetails>;
+
 export type NativeContentPositionTargetingOptionDetailsContentPositionEnum =
   | "NATIVE_CONTENT_POSITION_UNSPECIFIED"
   | "NATIVE_CONTENT_POSITION_UNKNOWN"
@@ -5548,16 +7354,26 @@ export type NativeContentPositionTargetingOptionDetailsContentPositionEnum =
   | "NATIVE_CONTENT_POSITION_IN_FEED"
   | "NATIVE_CONTENT_POSITION_PERIPHERAL"
   | "NATIVE_CONTENT_POSITION_RECOMMENDATION";
+const NativeContentPositionTargetingOptionDetailsContentPositionEnum = S.String;
+
 /** Represents a targetable native content position. This will be populated in the native_content_position_details field when targeting_type is `TARGETING_TYPE_NATIVE_CONTENT_POSITION`. */
 export interface NativeContentPositionTargetingOptionDetails {
   /** Output only. The content position. */
   contentPosition?: NativeContentPositionTargetingOptionDetailsContentPositionEnum;
 }
+const NativeContentPositionTargetingOptionDetails = /*@__PURE__*/ __L.at(
+  __c43,
+  6,
+) as any as S.Schema<NativeContentPositionTargetingOptionDetails>;
+
 /** Represents a targetable browser. This will be populated in the browser_details field when targeting_type is `TARGETING_TYPE_BROWSER`. */
 export interface BrowserTargetingOptionDetails {
   /** Output only. The display name of the browser. */
   displayName?: string;
 }
+const BrowserTargetingOptionDetails =
+  OperatingSystemTargetingOptionDetails as any as S.Schema<BrowserTargetingOptionDetails>;
+
 export type ExchangeTargetingOptionDetailsExchangeEnum =
   | "EXCHANGE_UNSPECIFIED"
   | "EXCHANGE_GOOGLE_AD_MANAGER"
@@ -5654,16 +7470,24 @@ export interface ExchangeTargetingOptionDetails {
   /** Output only. The type of exchange. */
   exchange?: ExchangeTargetingOptionDetailsExchangeEnum;
 }
+const ExchangeTargetingOptionDetails =
+  ExchangeAssignedTargetingOptionDetails as any as S.Schema<ExchangeTargetingOptionDetails>;
+
 export type OmidTargetingOptionDetailsOmidEnum = "OMID_UNSPECIFIED" | "OMID_FOR_MOBILE_DISPLAY_ADS";
 /** Represents a targetable Open Measurement enabled inventory type. This will be populated in the omid_details field when targeting_type is `TARGETING_TYPE_OMID`. */
 export interface OmidTargetingOptionDetails {
   /** Output only. The type of Open Measurement enabled inventory. */
   omid?: OmidTargetingOptionDetailsOmidEnum;
 }
+const OmidTargetingOptionDetails =
+  OmidAssignedTargetingOptionDetails as any as S.Schema<OmidTargetingOptionDetails>;
+
 export type CarrierAndIspTargetingOptionDetailsTypeEnum =
   | "CARRIER_AND_ISP_TYPE_UNSPECIFIED"
   | "CARRIER_AND_ISP_TYPE_ISP"
   | "CARRIER_AND_ISP_TYPE_CARRIER";
+const CarrierAndIspTargetingOptionDetailsTypeEnum = S.String;
+
 /** Represents a targetable carrier or ISP. This will be populated in the carrier_and_isp_details field of a TargetingOption when targeting_type is `TARGETING_TYPE_CARRIER_AND_ISP`. */
 export interface CarrierAndIspTargetingOptionDetails {
   /** Output only. The display name of the carrier or ISP. */
@@ -5671,11 +7495,19 @@ export interface CarrierAndIspTargetingOptionDetails {
   /** Output only. The type indicating if it's carrier or ISP. */
   type?: CarrierAndIspTargetingOptionDetailsTypeEnum;
 }
+const CarrierAndIspTargetingOptionDetails = /*@__PURE__*/ __L.at(
+  __c43,
+  7,
+) as any as S.Schema<CarrierAndIspTargetingOptionDetails>;
+
 /** Represents a targetable device make and model. This will be populated in the device_make_model_details field of a TargetingOption when targeting_type is `TARGETING_TYPE_DEVICE_MAKE_MODEL`. */
 export interface DeviceMakeModelTargetingOptionDetails {
   /** Output only. The display name of the device make and model. */
   displayName?: string;
 }
+const DeviceMakeModelTargetingOptionDetails =
+  OperatingSystemTargetingOptionDetails as any as S.Schema<DeviceMakeModelTargetingOptionDetails>;
+
 export type ViewabilityTargetingOptionDetailsViewabilityEnum =
   | "VIEWABILITY_UNSPECIFIED"
   | "VIEWABILITY_10_PERCENT_OR_MORE"
@@ -5692,6 +7524,9 @@ export interface ViewabilityTargetingOptionDetails {
   /** Output only. The predicted viewability percentage. */
   viewability?: ViewabilityTargetingOptionDetailsViewabilityEnum;
 }
+const ViewabilityTargetingOptionDetails =
+  ViewabilityAssignedTargetingOptionDetails as any as S.Schema<ViewabilityTargetingOptionDetails>;
+
 export type GeoRegionTargetingOptionDetailsGeoRegionTypeEnum =
   | "GEO_REGION_TYPE_UNKNOWN"
   | "GEO_REGION_TYPE_OTHER"
@@ -5733,6 +7568,8 @@ export type GeoRegionTargetingOptionDetailsGeoRegionTypeEnum =
   | "GEO_REGION_TYPE_COLLOQUIAL_AREA"
   | "GEO_REGION_TYPE_POST_TOWN"
   | "GEO_REGION_TYPE_WARD";
+const GeoRegionTargetingOptionDetailsGeoRegionTypeEnum = S.String;
+
 /** Represents a targetable geographic region. This will be populated in the geo_region_details field when targeting_type is `TARGETING_TYPE_GEO_REGION`. */
 export interface GeoRegionTargetingOptionDetails {
   /** Output only. The type of geographic region targeting. */
@@ -5740,6 +7577,11 @@ export interface GeoRegionTargetingOptionDetails {
   /** Output only. The display name of the geographic region (e.g., "Ontario, Canada"). */
   displayName?: string;
 }
+const GeoRegionTargetingOptionDetails = /*@__PURE__*/ __L.at(
+  __c44,
+  0,
+) as any as S.Schema<GeoRegionTargetingOptionDetails>;
+
 export type ContentDurationTargetingOptionDetailsContentDurationEnum =
   | "CONTENT_DURATION_UNSPECIFIED"
   | "CONTENT_DURATION_UNKNOWN"
@@ -5749,11 +7591,18 @@ export type ContentDurationTargetingOptionDetailsContentDurationEnum =
   | "CONTENT_DURATION_15_TO_30_MIN"
   | "CONTENT_DURATION_30_TO_60_MIN"
   | "CONTENT_DURATION_OVER_60_MIN";
+const ContentDurationTargetingOptionDetailsContentDurationEnum = S.String;
+
 /** Represents a targetable content duration. This will be populated in the content_duration_details field when targeting_type is `TARGETING_TYPE_CONTENT_DURATION`. */
 export interface ContentDurationTargetingOptionDetails {
   /** Output only. The content duration. */
   contentDuration?: ContentDurationTargetingOptionDetailsContentDurationEnum;
 }
+const ContentDurationTargetingOptionDetails = /*@__PURE__*/ __L.at(
+  __c44,
+  1,
+) as any as S.Schema<ContentDurationTargetingOptionDetails>;
+
 /** Represents a targetable point of interest(POI). This will be populated in the poi_details field when targeting_type is `TARGETING_TYPE_POI`. */
 export interface PoiTargetingOptionDetails {
   /** Output only. Latitude of the POI rounding to 6th decimal place. */
@@ -5763,11 +7612,19 @@ export interface PoiTargetingOptionDetails {
   /** Output only. The display name of a POI(e.g. "Times Square", "Space Needle"), followed by its full address if available. */
   displayName?: string;
 }
+const PoiTargetingOptionDetails = /*@__PURE__*/ __L.at(
+  __c44,
+  2,
+) as any as S.Schema<PoiTargetingOptionDetails>;
+
 /** Represents a targetable category. This will be populated in the category_details field of a TargetingOption when targeting_type is `TARGETING_TYPE_CATEGORY`. */
 export interface CategoryTargetingOptionDetails {
   /** Output only. The display name of the category. */
   displayName?: string;
 }
+const CategoryTargetingOptionDetails =
+  OperatingSystemTargetingOptionDetails as any as S.Schema<CategoryTargetingOptionDetails>;
+
 export type TargetingOptionTargetingTypeEnum =
   | "TARGETING_TYPE_UNSPECIFIED"
   | "TARGETING_TYPE_CHANNEL"
@@ -5818,16 +7675,24 @@ export type TargetingOptionTargetingTypeEnum =
   | "TARGETING_TYPE_YOUTUBE_CHANNEL"
   | "TARGETING_TYPE_SESSION_POSITION"
   | "TARGETING_TYPE_YOUTUBE_CHANNEL_PACK";
+const TargetingOptionTargetingTypeEnum = S.String;
+
 /** Represents a targetable language. This will be populated in the language_details field when targeting_type is `TARGETING_TYPE_LANGUAGE`. */
 export interface LanguageTargetingOptionDetails {
   /** Output only. The display name of the language (e.g., "French"). */
   displayName?: string;
 }
+const LanguageTargetingOptionDetails =
+  OperatingSystemTargetingOptionDetails as any as S.Schema<LanguageTargetingOptionDetails>;
+
 /** Represents a targetable collection of apps. A collection lets you target dynamic groups of related apps that are maintained by the platform, for example `All Apps/Google Play/Games`. This will be populated in the app_category_details field when targeting_type is `TARGETING_TYPE_APP_CATEGORY`. */
 export interface AppCategoryTargetingOptionDetails {
   /** Output only. The name of the app collection. */
   displayName?: string;
 }
+const AppCategoryTargetingOptionDetails =
+  OperatingSystemTargetingOptionDetails as any as S.Schema<AppCategoryTargetingOptionDetails>;
+
 export type GenderTargetingOptionDetailsGenderEnum =
   | "GENDER_UNSPECIFIED"
   | "GENDER_MALE"
@@ -5838,6 +7703,9 @@ export interface GenderTargetingOptionDetails {
   /** Output only. The gender of an audience. */
   gender?: GenderTargetingOptionDetailsGenderEnum;
 }
+const GenderTargetingOptionDetails =
+  GenderAssignedTargetingOptionDetails as any as S.Schema<GenderTargetingOptionDetails>;
+
 export type SensitiveCategoryTargetingOptionDetailsSensitiveCategoryEnum =
   | "SENSITIVE_CATEGORY_UNSPECIFIED"
   | "SENSITIVE_CATEGORY_ADULT"
@@ -5859,11 +7727,18 @@ export type SensitiveCategoryTargetingOptionDetailsSensitiveCategoryEnum =
   | "SENSITIVE_CATEGORY_SHOCKING"
   | "SENSITIVE_CATEGORY_EMBEDDED_VIDEO"
   | "SENSITIVE_CATEGORY_LIVE_STREAMING_VIDEO";
+const SensitiveCategoryTargetingOptionDetailsSensitiveCategoryEnum = S.String;
+
 /** Represents a targetable sensitive category. This will be populated in the sensitive_category_details field of the TargetingOption when targeting_type is `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION`. */
 export interface SensitiveCategoryTargetingOptionDetails {
   /** Output only. An enum for the Display & Video 360 Sensitive category content classifier. */
   sensitiveCategory?: SensitiveCategoryTargetingOptionDetailsSensitiveCategoryEnum;
 }
+const SensitiveCategoryTargetingOptionDetails = /*@__PURE__*/ __L.at(
+  __c44,
+  3,
+) as any as S.Schema<SensitiveCategoryTargetingOptionDetails>;
+
 export type EnvironmentTargetingOptionDetailsEnvironmentEnum =
   | "ENVIRONMENT_UNSPECIFIED"
   | "ENVIRONMENT_WEB_OPTIMIZED"
@@ -5874,29 +7749,49 @@ export interface EnvironmentTargetingOptionDetails {
   /** Output only. The serving environment. */
   environment?: EnvironmentTargetingOptionDetailsEnvironmentEnum;
 }
+const EnvironmentTargetingOptionDetails =
+  EnvironmentAssignedTargetingOptionDetails as any as S.Schema<EnvironmentTargetingOptionDetails>;
+
 export type UserRewardedContentTargetingOptionDetailsUserRewardedContentEnum =
   | "USER_REWARDED_CONTENT_UNSPECIFIED"
   | "USER_REWARDED_CONTENT_USER_REWARDED"
   | "USER_REWARDED_CONTENT_NOT_USER_REWARDED";
+const UserRewardedContentTargetingOptionDetailsUserRewardedContentEnum = S.String;
+
 /** Represents a targetable user rewarded content status for video ads only. This will be populated in the user_rewarded_content_details field when targeting_type is `TARGETING_TYPE_USER_REWARDED_CONTENT`. */
 export interface UserRewardedContentTargetingOptionDetails {
   /** Output only. User rewarded content status for video ads. */
   userRewardedContent?: UserRewardedContentTargetingOptionDetailsUserRewardedContentEnum;
 }
+const UserRewardedContentTargetingOptionDetails = /*@__PURE__*/ __L.at(
+  __c44,
+  4,
+) as any as S.Schema<UserRewardedContentTargetingOptionDetails>;
+
 /** Represents a targetable sub-exchange. This will be populated in the sub_exchange_details field of a TargetingOption when targeting_type is `TARGETING_TYPE_SUB_EXCHANGE`. */
 export interface SubExchangeTargetingOptionDetails {
   /** Output only. The display name of the sub-exchange. */
   displayName?: string;
 }
+const SubExchangeTargetingOptionDetails =
+  OperatingSystemTargetingOptionDetails as any as S.Schema<SubExchangeTargetingOptionDetails>;
+
 export type ContentStreamTypeTargetingOptionDetailsContentStreamTypeEnum =
   | "CONTENT_STREAM_TYPE_UNSPECIFIED"
   | "CONTENT_LIVE_STREAM"
   | "CONTENT_ON_DEMAND";
+const ContentStreamTypeTargetingOptionDetailsContentStreamTypeEnum = S.String;
+
 /** Represents a targetable content stream type. This will be populated in the content_stream_type_details field when targeting_type is `TARGETING_TYPE_CONTENT_STREAM_TYPE`. */
 export interface ContentStreamTypeTargetingOptionDetails {
   /** Output only. The content stream type. */
   contentStreamType?: ContentStreamTypeTargetingOptionDetailsContentStreamTypeEnum;
 }
+const ContentStreamTypeTargetingOptionDetails = /*@__PURE__*/ __L.at(
+  __c44,
+  5,
+) as any as S.Schema<ContentStreamTypeTargetingOptionDetails>;
+
 /** Represents a single targeting option, which is a targetable concept in DV360. */
 export interface TargetingOption {
   /** Content outstream position details. */
@@ -5972,10 +7867,14 @@ export interface TargetingOption {
   /** Content stream type resource details. */
   contentStreamTypeDetails?: ContentStreamTypeTargetingOptionDetails;
 }
+const TargetingOption = /*@__PURE__*/ __L.at(__c44, 6) as any as S.Schema<TargetingOption>;
+
 export interface GetUsersRequest {
   /** Required. The ID of the user to fetch. */
   userId: string;
 }
+const GetUsersRequest = /*@__PURE__*/ __L.at(__c44, 7) as any as S.Schema<GetUsersRequest>;
+
 export interface ListAdvertisersRequest {
   /** Allows filtering by advertiser fields. Supported syntax: * Filter expressions are made up of one or more restrictions. * Restrictions can be combined by `AND` or `OR` logical operators. * A restriction has the form of `{field} {operator} {value}`. * The `updateTime` field must use the `GREATER THAN OR EQUAL TO (>=)` or `LESS THAN OR EQUAL TO (<=)` operators. * All other fields must use the `EQUALS (=)` operator. Supported fields: * `advertiserId` * `displayName` * `entityStatus` * `updateTime` (input in ISO 8601 format, or `YYYY-MM-DDTHH:MM:SSZ`) Examples: * All active advertisers under a partner: `entityStatus="ENTITY_STATUS_ACTIVE"` * All advertisers with an update time less than or equal to 2020-11-04T18:54:47Z (format of ISO 8601): `updateTime<="2020-11-04T18:54:47Z"` * All advertisers with an update time greater than or equal to 2020-11-04T18:54:47Z (format of ISO 8601): `updateTime>="2020-11-04T18:54:47Z"` The length of this field should be no more than 500 characters. Reference our [filter `LIST` requests](/display-video/api/guides/how-tos/filters) guide for more information. */
   filter?: string;
@@ -5988,13 +7887,25 @@ export interface ListAdvertisersRequest {
   /** Requested page size. Must be between `1` and `200`. If unspecified will default to `100`. */
   pageSize?: number;
 }
+const ListAdvertisersRequest = /*@__PURE__*/ __L.at(
+  __c45,
+  0,
+) as any as S.Schema<ListAdvertisersRequest>;
+
 export type AdvertiserList = Array<Advertiser>;
+const AdvertiserList = /*@__PURE__*/ __L.at(__c45, 1) as any as S.Schema<AdvertiserList>;
+
 export interface ListAdvertisersResponse {
   /** The list of advertisers. This list will be absent if empty. */
   advertisers?: AdvertiserList;
   /** A token to retrieve the next page of results. Pass this value in the page_token field in the subsequent call to `ListAdvertisers` method to retrieve the next page of results. */
   nextPageToken?: string;
 }
+const ListAdvertisersResponse = /*@__PURE__*/ __L.at(
+  __c45,
+  2,
+) as any as S.Schema<ListAdvertisersResponse>;
+
 export interface ListAdvertisersCampaignsRequest {
   /** The ID of the advertiser to list campaigns for. */
   advertiserId: string;
@@ -6007,13 +7918,25 @@ export interface ListAdvertisersCampaignsRequest {
   /** Requested page size. Must be between `1` and `200`. If unspecified will default to `100`. */
   pageSize?: number;
 }
+const ListAdvertisersCampaignsRequest = /*@__PURE__*/ __L.at(
+  __c45,
+  3,
+) as any as S.Schema<ListAdvertisersCampaignsRequest>;
+
 export type CampaignList = Array<Campaign>;
+const CampaignList = /*@__PURE__*/ __L.at(__c45, 4) as any as S.Schema<CampaignList>;
+
 export interface ListCampaignsResponse {
   /** The list of campaigns. This list will be absent if empty. */
   campaigns?: CampaignList;
   /** A token to retrieve the next page of results. Pass this value in the page_token field in the subsequent call to `ListCampaigns` method to retrieve the next page of results. */
   nextPageToken?: string;
 }
+const ListCampaignsResponse = /*@__PURE__*/ __L.at(
+  __c45,
+  5,
+) as any as S.Schema<ListCampaignsResponse>;
+
 export interface ListAdvertisersChannelsRequest {
   /** Requested page size. Must be between `1` and `200`. If unspecified will default to `100`. Returns error code `INVALID_ARGUMENT` if an invalid value is specified. */
   pageSize?: number;
@@ -6028,13 +7951,25 @@ export interface ListAdvertisersChannelsRequest {
   /** Field by which to sort the list. Acceptable values are: * `displayName` (default) * `channelId` The default sorting order is ascending. To specify descending order for a field, a suffix " desc" should be added to the field name. Example: `displayName desc`. */
   orderBy?: string;
 }
+const ListAdvertisersChannelsRequest = /*@__PURE__*/ __L.at(
+  __c45,
+  6,
+) as any as S.Schema<ListAdvertisersChannelsRequest>;
+
 export type ChannelList = Array<Channel>;
+const ChannelList = /*@__PURE__*/ __L.at(__c45, 7) as any as S.Schema<ChannelList>;
+
 export interface ListChannelsResponse {
   /** The list of channels. This list will be absent if empty. */
   channels?: ChannelList;
   /** A token to retrieve the next page of results. Pass this value in the page_token field in the subsequent call to `ListChannels` method to retrieve the next page of results. */
   nextPageToken?: string;
 }
+const ListChannelsResponse = /*@__PURE__*/ __L.at(
+  __c46,
+  0,
+) as any as S.Schema<ListChannelsResponse>;
+
 export interface ListAdvertisersChannelsSitesRequest {
   /** The ID of the advertiser that owns the parent channel. */
   advertiserId: string;
@@ -6051,6 +7986,11 @@ export interface ListAdvertisersChannelsSitesRequest {
   /** The ID of the partner that owns the parent channel. */
   partnerId?: string;
 }
+const ListAdvertisersChannelsSitesRequest = /*@__PURE__*/ __L.at(
+  __c46,
+  1,
+) as any as S.Schema<ListAdvertisersChannelsSitesRequest>;
+
 /** Response message for SiteService.ListSites. */
 export interface ListSitesResponse {
   /** A token to retrieve the next page of results. Pass this value in the page_token field in the subsequent call to `ListSites` method to retrieve the next page of results. */
@@ -6058,6 +7998,8 @@ export interface ListSitesResponse {
   /** The list of sites. This list will be absent if empty. */
   sites?: SiteList;
 }
+const ListSitesResponse = /*@__PURE__*/ __L.at(__c46, 2) as any as S.Schema<ListSitesResponse>;
+
 export interface ListAdvertisersCreativesRequest {
   /** Allows filtering by creative fields. Supported syntax: * Filter expressions are made up of one or more restrictions. * Restrictions can be combined by `AND` or `OR` logical operators. A sequence of restrictions implicitly uses `AND`. * A restriction has the form of `{field} {operator} {value}`. * The `lineItemIds` field must use the `HAS (:)` operator. * The `updateTime` field must use the `GREATER THAN OR EQUAL TO (>=)` or `LESS THAN OR EQUAL TO (<=)` operators. * All other fields must use the `EQUALS (=)` operator. * For `entityStatus`, `minDuration`, `maxDuration`, `updateTime`, and `dynamic` fields, there may be at most one restriction. Supported Fields: * `approvalStatus` * `creativeId` * `creativeType` * `dimensions` (input in the form of `{width}x{height}`) * `dynamic` * `entityStatus` * `exchangeReviewStatus` (input in the form of `{exchange}-{reviewStatus}`) * `lineItemIds` * `maxDuration` (input in the form of `{duration}s`. Only seconds are supported) * `minDuration` (input in the form of `{duration}s`. Only seconds are supported) * `updateTime` (input in ISO 8601 format, or `YYYY-MM-DDTHH:MM:SSZ`) Notes: * For `updateTime`, a creative resource's field value reflects the last time that a creative has been updated, which includes updates made by the system (e.g. creative review updates). Examples: * All native creatives: `creativeType="CREATIVE_TYPE_NATIVE"` * All active creatives with 300x400 or 50x100 dimensions: `entityStatus="ENTITY_STATUS_ACTIVE" AND (dimensions="300x400" OR dimensions="50x100")` * All dynamic creatives that are approved by AdX or AppNexus, with a minimum duration of 5 seconds and 200ms: `dynamic="true" AND minDuration="5.2s" AND (exchangeReviewStatus="EXCHANGE_GOOGLE_AD_MANAGER-REVIEW_STATUS_APPROVED" OR exchangeReviewStatus="EXCHANGE_APPNEXUS-REVIEW_STATUS_APPROVED")` * All video creatives that are associated with line item ID 1 or 2: `creativeType="CREATIVE_TYPE_VIDEO" AND (lineItemIds:1 OR lineItemIds:2)` * Find creatives by multiple creative IDs: `creativeId=1 OR creativeId=2` * All creatives with an update time greater than or equal to 2020-11-04T18:54:47Z (format of ISO 8601): `updateTime>="2020-11-04T18:54:47Z"` The length of this field should be no more than 500 characters. Reference our [filter `LIST` requests](/display-video/api/guides/how-tos/filters) guide for more information. */
   filter?: string;
@@ -6070,13 +8012,25 @@ export interface ListAdvertisersCreativesRequest {
   /** Required. The ID of the advertiser to list creatives for. */
   advertiserId: string;
 }
+const ListAdvertisersCreativesRequest = /*@__PURE__*/ __L.at(
+  __c46,
+  3,
+) as any as S.Schema<ListAdvertisersCreativesRequest>;
+
 export type CreativeList = Array<Creative>;
+const CreativeList = /*@__PURE__*/ __L.at(__c46, 4) as any as S.Schema<CreativeList>;
+
 export interface ListCreativesResponse {
   /** The list of creatives. This list will be absent if empty. */
   creatives?: CreativeList;
   /** A token to retrieve the next page of results. Pass this value in the page_token field in the subsequent call to `ListCreativesRequest` method to retrieve the next page of results. If this field is null, it means this is the last page. */
   nextPageToken?: string;
 }
+const ListCreativesResponse = /*@__PURE__*/ __L.at(
+  __c46,
+  5,
+) as any as S.Schema<ListCreativesResponse>;
+
 export interface ListAdvertisersInsertionOrdersRequest {
   /** Field by which to sort the list. Acceptable values are: * "displayName" (default) * "entityStatus" * "updateTime" The default sorting order is ascending. To specify descending order for a field, a suffix "desc" should be added to the field name. Example: `displayName desc`. */
   orderBy?: string;
@@ -6089,17 +8043,31 @@ export interface ListAdvertisersInsertionOrdersRequest {
   /** Requested page size. Must be between `1` and `100`. If unspecified will default to `100`. Returns error code `INVALID_ARGUMENT` if an invalid value is specified. */
   pageSize?: number;
 }
+const ListAdvertisersInsertionOrdersRequest = /*@__PURE__*/ __L.at(
+  __c46,
+  6,
+) as any as S.Schema<ListAdvertisersInsertionOrdersRequest>;
+
 export type InsertionOrderList = Array<InsertionOrder>;
+const InsertionOrderList = /*@__PURE__*/ __L.at(__c46, 7) as any as S.Schema<InsertionOrderList>;
+
 export interface ListInsertionOrdersResponse {
   /** A token to retrieve the next page of results. Pass this value in the page_token field in the subsequent call to `ListInsertionOrders` method to retrieve the next page of results. */
   nextPageToken?: string;
   /** The list of insertion orders. This list will be absent if empty. */
   insertionOrders?: InsertionOrderList;
 }
+const ListInsertionOrdersResponse = /*@__PURE__*/ __L.at(
+  __c47,
+  0,
+) as any as S.Schema<ListInsertionOrdersResponse>;
+
 export type ListAdvertisersInvoicesLoiSapinInvoiceTypeEnum =
   | "LOI_SAPIN_INVOICE_TYPE_UNSPECIFIED"
   | "LOI_SAPIN_INVOICE_TYPE_MEDIA"
   | "LOI_SAPIN_INVOICE_TYPE_PLATFORM";
+const ListAdvertisersInvoicesLoiSapinInvoiceTypeEnum = S.String;
+
 export interface ListAdvertisersInvoicesRequest {
   /** Requested page size. Must be between `1` and `200`. If unspecified will default to `100`. Returns error code `INVALID_ARGUMENT` if an invalid value is specified. */
   pageSize?: number;
@@ -6112,6 +8080,11 @@ export interface ListAdvertisersInvoicesRequest {
   /** The month to list the invoices for. If not set, the request will retrieve invoices for the previous month. Must be in the format YYYYMM. */
   issueMonth?: string;
 }
+const ListAdvertisersInvoicesRequest = /*@__PURE__*/ __L.at(
+  __c47,
+  1,
+) as any as S.Schema<ListAdvertisersInvoicesRequest>;
+
 /** Summarized information of an individual campaign budget. */
 export interface BudgetSummary {
   /** Corresponds to the external_budget_id of a campaign budget. If the value is not set in the campaign budget, this field will be empty. */
@@ -6125,11 +8098,17 @@ export interface BudgetSummary {
   /** Relevant client, product, and estimate codes from the Mediaocean Prisma tool. Only applicable for campaign budgets with an external_budget_source of EXTERNAL_BUDGET_SOURCE_MEDIA_OCEAN. */
   prismaCpeCode?: PrismaCpeCode;
 }
+const BudgetSummary = /*@__PURE__*/ __L.at(__c47, 2) as any as S.Schema<BudgetSummary>;
+
 export type BudgetSummaryList = Array<BudgetSummary>;
+const BudgetSummaryList = /*@__PURE__*/ __L.at(__c47, 3) as any as S.Schema<BudgetSummaryList>;
+
 export type InvoiceInvoiceTypeEnum =
   | "INVOICE_TYPE_UNSPECIFIED"
   | "INVOICE_TYPE_CREDIT"
   | "INVOICE_TYPE_INVOICE";
+const InvoiceInvoiceTypeEnum = S.String;
+
 /** A single invoice. */
 export interface Invoice {
   /** The ID of the original invoice being adjusted by this invoice, if applicable. May appear on the invoice PDF as `Reference invoice number`. If replaced_invoice_ids is set, this field will be empty. */
@@ -6173,13 +8152,22 @@ export interface Invoice {
   /** The unique ID of the invoice. */
   invoiceId?: string;
 }
+const Invoice = /*@__PURE__*/ __L.at(__c47, 4) as any as S.Schema<Invoice>;
+
 export type InvoiceList = Array<Invoice>;
+const InvoiceList = /*@__PURE__*/ __L.at(__c47, 5) as any as S.Schema<InvoiceList>;
+
 export interface ListInvoicesResponse {
   /** The list of invoices. This list will be absent if empty. */
   invoices?: InvoiceList;
   /** A token to retrieve the next page of results. Pass this value in the page_token field in the subsequent call to `ListInvoices` method to retrieve the next page of results. This token will be absent if there are no more invoices to return. */
   nextPageToken?: string;
 }
+const ListInvoicesResponse = /*@__PURE__*/ __L.at(
+  __c47,
+  6,
+) as any as S.Schema<ListInvoicesResponse>;
+
 export interface ListAdvertisersLineItemsRequest {
   /** Field by which to sort the list. Acceptable values are: * `displayName` (default) * `entityStatus` * `updateTime` The default sorting order is ascending. To specify descending order for a field, a suffix "desc" should be added to the field name. Example: `displayName desc`. */
   orderBy?: string;
@@ -6192,13 +8180,25 @@ export interface ListAdvertisersLineItemsRequest {
   /** Required. The ID of the advertiser to list line items for. */
   advertiserId: string;
 }
+const ListAdvertisersLineItemsRequest = /*@__PURE__*/ __L.at(
+  __c47,
+  7,
+) as any as S.Schema<ListAdvertisersLineItemsRequest>;
+
 export type LineItemList = Array<LineItem>;
+const LineItemList = /*@__PURE__*/ __L.at(__c48, 0) as any as S.Schema<LineItemList>;
+
 export interface ListLineItemsResponse {
   /** The list of line items. This list will be absent if empty. */
   lineItems?: LineItemList;
   /** A token to retrieve the next page of results. Pass this value in the page_token field in the subsequent call to `ListLineItems` method to retrieve the next page of results. */
   nextPageToken?: string;
 }
+const ListLineItemsResponse = /*@__PURE__*/ __L.at(
+  __c48,
+  1,
+) as any as S.Schema<ListLineItemsResponse>;
+
 export type ListAdvertisersLineItemsTargetingTypesAssignedTargetingOptionsTargetingTypeEnum =
   | "TARGETING_TYPE_UNSPECIFIED"
   | "TARGETING_TYPE_CHANNEL"
@@ -6249,6 +8249,8 @@ export type ListAdvertisersLineItemsTargetingTypesAssignedTargetingOptionsTarget
   | "TARGETING_TYPE_YOUTUBE_CHANNEL"
   | "TARGETING_TYPE_SESSION_POSITION"
   | "TARGETING_TYPE_YOUTUBE_CHANNEL_PACK";
+const ListAdvertisersLineItemsTargetingTypesAssignedTargetingOptionsTargetingTypeEnum = S.String;
+
 export interface ListAdvertisersLineItemsTargetingTypesAssignedTargetingOptionsRequest {
   /** Required. Identifies the type of assigned targeting options to list. Supported targeting types include: * `TARGETING_TYPE_AGE_RANGE` * `TARGETING_TYPE_APP` * `TARGETING_TYPE_APP_CATEGORY` * `TARGETING_TYPE_AUDIENCE_GROUP` * `TARGETING_TYPE_AUDIO_CONTENT_TYPE` * `TARGETING_TYPE_AUTHORIZED_SELLER_STATUS` * `TARGETING_TYPE_BROWSER` * `TARGETING_TYPE_BUSINESS_CHAIN` * `TARGETING_TYPE_CARRIER_AND_ISP` * `TARGETING_TYPE_CATEGORY` * `TARGETING_TYPE_CHANNEL` * `TARGETING_TYPE_CONTENT_DURATION` * `TARGETING_TYPE_CONTENT_GENRE` * `TARGETING_TYPE_CONTENT_INSTREAM_POSITION` * `TARGETING_TYPE_CONTENT_OUTSTREAM_POSITION` * `TARGETING_TYPE_CONTENT_STREAM_TYPE` * `TARGETING_TYPE_DAY_AND_TIME` * `TARGETING_TYPE_DEVICE_MAKE_MODEL` * `TARGETING_TYPE_DEVICE_TYPE` * `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_ENVIRONMENT` * `TARGETING_TYPE_EXCHANGE` * `TARGETING_TYPE_GENDER` * `TARGETING_TYPE_GEO_REGION` * `TARGETING_TYPE_HOUSEHOLD_INCOME` * `TARGETING_TYPE_INVENTORY_SOURCE` * `TARGETING_TYPE_INVENTORY_SOURCE_GROUP` * `TARGETING_TYPE_KEYWORD` * `TARGETING_TYPE_LANGUAGE` * `TARGETING_TYPE_NATIVE_CONTENT_POSITION` * `TARGETING_TYPE_NEGATIVE_KEYWORD_LIST` * `TARGETING_TYPE_OMID` * `TARGETING_TYPE_ON_SCREEN_POSITION` * `TARGETING_TYPE_OPERATING_SYSTEM` * `TARGETING_TYPE_PARENTAL_STATUS` * `TARGETING_TYPE_POI` * `TARGETING_TYPE_PROXIMITY_LOCATION_LIST` * `TARGETING_TYPE_REGIONAL_LOCATION_LIST` * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_SUB_EXCHANGE` * `TARGETING_TYPE_THIRD_PARTY_VERIFIER` * `TARGETING_TYPE_URL` * `TARGETING_TYPE_USER_REWARDED_CONTENT` * `TARGETING_TYPE_VIDEO_PLAYER_SIZE` * `TARGETING_TYPE_VIEWABILITY` * `TARGETING_TYPE_YOUTUBE_CHANNEL` (only for `LINE_ITEM_TYPE_YOUTUBE_AND_PARTNERS_VIDEO_SEQUENCE` line items) * `TARGETING_TYPE_YOUTUBE_VIDEO` (only for `LINE_ITEM_TYPE_YOUTUBE_AND_PARTNERS_VIDEO_SEQUENCE` line items) */
   targetingType:
@@ -6267,6 +8269,11 @@ export interface ListAdvertisersLineItemsTargetingTypesAssignedTargetingOptionsR
   /** Required. The ID of the advertiser the line item belongs to. */
   advertiserId: string;
 }
+const ListAdvertisersLineItemsTargetingTypesAssignedTargetingOptionsRequest = /*@__PURE__*/ __L.at(
+  __c48,
+  2,
+) as any as S.Schema<ListAdvertisersLineItemsTargetingTypesAssignedTargetingOptionsRequest>;
+
 /** Response message for ListLineItemAssignedTargetingOptions. */
 export interface ListLineItemAssignedTargetingOptionsResponse {
   /** The list of assigned targeting options. This list will be absent if empty. */
@@ -6274,6 +8281,11 @@ export interface ListLineItemAssignedTargetingOptionsResponse {
   /** A token identifying the next page of results. This value should be specified as the pageToken in a subsequent ListLineItemAssignedTargetingOptionsRequest to fetch the next page of results. This token will be absent if there are no more assigned_targeting_options to return. */
   nextPageToken?: string;
 }
+const ListLineItemAssignedTargetingOptionsResponse = /*@__PURE__*/ __L.at(
+  __c48,
+  3,
+) as any as S.Schema<ListLineItemAssignedTargetingOptionsResponse>;
+
 export interface ListAdvertisersLocationListsRequest {
   /** Requested page size. Must be between `1` and `200`. Defaults to `100` if not set. Returns error code `INVALID_ARGUMENT` if an invalid value is specified. */
   pageSize?: number;
@@ -6286,13 +8298,25 @@ export interface ListAdvertisersLocationListsRequest {
   /** A token identifying a page of results the server should return. Typically, this is the value of next_page_token returned from the previous call to `ListLocationLists` method. If not specified, the first page of results will be returned. */
   pageToken?: string;
 }
+const ListAdvertisersLocationListsRequest = /*@__PURE__*/ __L.at(
+  __c48,
+  4,
+) as any as S.Schema<ListAdvertisersLocationListsRequest>;
+
 export type LocationListList = Array<LocationList>;
+const LocationListList = /*@__PURE__*/ __L.at(__c48, 5) as any as S.Schema<LocationListList>;
+
 export interface ListLocationListsResponse {
   /** The list of location lists. This list will be absent if empty. */
   locationLists?: LocationListList;
   /** A token to retrieve the next page of results. Pass this value in the page_token field in the subsequent call to `ListLocationLists` method to retrieve the next page of results. */
   nextPageToken?: string;
 }
+const ListLocationListsResponse = /*@__PURE__*/ __L.at(
+  __c48,
+  6,
+) as any as S.Schema<ListLocationListsResponse>;
+
 export interface ListAdvertisersLocationListsAssignedLocationsRequest {
   /** Required. The ID of the location list to which these assignments are assigned. */
   locationListId: string;
@@ -6307,6 +8331,11 @@ export interface ListAdvertisersLocationListsAssignedLocationsRequest {
   /** Requested page size. Must be between `1` and `200`. If unspecified will default to `100`. Returns error code `INVALID_ARGUMENT` if an invalid value is specified. */
   pageSize?: number;
 }
+const ListAdvertisersLocationListsAssignedLocationsRequest = /*@__PURE__*/ __L.at(
+  __c48,
+  7,
+) as any as S.Schema<ListAdvertisersLocationListsAssignedLocationsRequest>;
+
 /** Response message for AssignedLocationService.ListAssignedLocations. */
 export interface ListAssignedLocationsResponse {
   /** A token to retrieve the next page of results. Pass this value in the page_token field in the subsequent call to `ListAssignedLocations` method to retrieve the next page of results. */
@@ -6314,6 +8343,11 @@ export interface ListAssignedLocationsResponse {
   /** The list of assigned locations. This list will be absent if empty. */
   assignedLocations?: AssignedLocationList;
 }
+const ListAssignedLocationsResponse = /*@__PURE__*/ __L.at(
+  __c49,
+  0,
+) as any as S.Schema<ListAssignedLocationsResponse>;
+
 export interface ListAdvertisersManualTriggersRequest {
   /** A token identifying a page of results the server should return. Typically, this is the value of next_page_token returned from the previous call to `ListManualTriggers` method. If not specified, the first page of results will be returned. */
   pageToken?: string;
@@ -6326,13 +8360,25 @@ export interface ListAdvertisersManualTriggersRequest {
   /** Required. The ID of the advertiser that the fetched manual triggers belong to. */
   advertiserId: string;
 }
+const ListAdvertisersManualTriggersRequest = /*@__PURE__*/ __L.at(
+  __c49,
+  1,
+) as any as S.Schema<ListAdvertisersManualTriggersRequest>;
+
 export type ManualTriggerList = Array<ManualTrigger>;
+const ManualTriggerList = /*@__PURE__*/ __L.at(__c49, 2) as any as S.Schema<ManualTriggerList>;
+
 export interface ListManualTriggersResponse {
   /** The list of manual triggers. This list will be absent if empty. */
   manualTriggers?: ManualTriggerList;
   /** A token to retrieve the next page of results. Pass this value in the page_token field in the subsequent call to `ListManualTriggers` method to retrieve the next page of results. */
   nextPageToken?: string;
 }
+const ListManualTriggersResponse = /*@__PURE__*/ __L.at(
+  __c49,
+  3,
+) as any as S.Schema<ListManualTriggersResponse>;
+
 export interface ListAdvertisersNegativeKeywordListsRequest {
   /** A token identifying a page of results the server should return. Typically, this is the value of next_page_token returned from the previous call to `ListNegativeKeywordLists` method. If not specified, the first page of results will be returned. */
   pageToken?: string;
@@ -6341,7 +8387,17 @@ export interface ListAdvertisersNegativeKeywordListsRequest {
   /** Required. The ID of the DV360 advertiser to which the fetched negative keyword lists belong. */
   advertiserId: string;
 }
+const ListAdvertisersNegativeKeywordListsRequest = /*@__PURE__*/ __L.at(
+  __c49,
+  4,
+) as any as S.Schema<ListAdvertisersNegativeKeywordListsRequest>;
+
 export type NegativeKeywordListList = Array<NegativeKeywordList>;
+const NegativeKeywordListList = /*@__PURE__*/ __L.at(
+  __c49,
+  5,
+) as any as S.Schema<NegativeKeywordListList>;
+
 /** Response message for NegativeKeywordListService.ListNegativeKeywordLists. */
 export interface ListNegativeKeywordListsResponse {
   /** A token to retrieve the next page of results. Pass this value in the page_token field in the subsequent call to `ListNegativeKeywordLists` method to retrieve the next page of results. */
@@ -6349,6 +8405,11 @@ export interface ListNegativeKeywordListsResponse {
   /** The list of negative keyword lists. This list will be absent if empty. */
   negativeKeywordLists?: NegativeKeywordListList;
 }
+const ListNegativeKeywordListsResponse = /*@__PURE__*/ __L.at(
+  __c49,
+  6,
+) as any as S.Schema<ListNegativeKeywordListsResponse>;
+
 export interface ListAdvertisersNegativeKeywordListsNegativeKeywordsRequest {
   /** Allows filtering by negative keyword fields. Supported syntax: * Filter expressions for negative keywords can only contain at most one restriction. * A restriction has the form of `{field} {operator} {value}`. * All fields must use the `HAS (:)` operator. Supported fields: * `keywordValue` Examples: * All negative keywords for which the keyword value contains "google": `keywordValue : "google"` The length of this field should be no more than 500 characters. Reference our [filter `LIST` requests](/display-video/api/guides/how-tos/filters) guide for more information. */
   filter?: string;
@@ -6363,6 +8424,11 @@ export interface ListAdvertisersNegativeKeywordListsNegativeKeywordsRequest {
   /** A token identifying a page of results the server should return. Typically, this is the value of next_page_token returned from the previous call to `ListNegativeKeywords` method. If not specified, the first page of results will be returned. */
   pageToken?: string;
 }
+const ListAdvertisersNegativeKeywordListsNegativeKeywordsRequest = /*@__PURE__*/ __L.at(
+  __c49,
+  7,
+) as any as S.Schema<ListAdvertisersNegativeKeywordListsNegativeKeywordsRequest>;
+
 /** Response message for NegativeKeywordService.ListNegativeKeywords. */
 export interface ListNegativeKeywordsResponse {
   /** The list of negative keywords. This list will be absent if empty. */
@@ -6370,6 +8436,11 @@ export interface ListNegativeKeywordsResponse {
   /** A token to retrieve the next page of results. Pass this value in the page_token field in the subsequent call to `ListNegativeKeywords` method to retrieve the next page of results. */
   nextPageToken?: string;
 }
+const ListNegativeKeywordsResponse = /*@__PURE__*/ __L.at(
+  __c50,
+  0,
+) as any as S.Schema<ListNegativeKeywordsResponse>;
+
 export type ListAdvertisersTargetingTypesAssignedTargetingOptionsTargetingTypeEnum =
   | "TARGETING_TYPE_UNSPECIFIED"
   | "TARGETING_TYPE_CHANNEL"
@@ -6420,6 +8491,8 @@ export type ListAdvertisersTargetingTypesAssignedTargetingOptionsTargetingTypeEn
   | "TARGETING_TYPE_YOUTUBE_CHANNEL"
   | "TARGETING_TYPE_SESSION_POSITION"
   | "TARGETING_TYPE_YOUTUBE_CHANNEL_PACK";
+const ListAdvertisersTargetingTypesAssignedTargetingOptionsTargetingTypeEnum = S.String;
+
 export interface ListAdvertisersTargetingTypesAssignedTargetingOptionsRequest {
   /** Requested page size. Must be between `1` and `5000`. If unspecified will default to `100`. Returns error code `INVALID_ARGUMENT` if an invalid value is specified. */
   pageSize?: number;
@@ -6436,6 +8509,11 @@ export interface ListAdvertisersTargetingTypesAssignedTargetingOptionsRequest {
   /** Required. The ID of the advertiser. */
   advertiserId: string;
 }
+const ListAdvertisersTargetingTypesAssignedTargetingOptionsRequest = /*@__PURE__*/ __L.at(
+  __c50,
+  1,
+) as any as S.Schema<ListAdvertisersTargetingTypesAssignedTargetingOptionsRequest>;
+
 /** Response message for ListAdvertiserAssignedTargetingOptions. */
 export interface ListAdvertiserAssignedTargetingOptionsResponse {
   /** A token identifying the next page of results. This value should be specified as the pageToken in a subsequent ListAdvertiserAssignedTargetingOptionsRequest to fetch the next page of results. This token will be absent if there are no more assigned_targeting_options to return. */
@@ -6443,6 +8521,11 @@ export interface ListAdvertiserAssignedTargetingOptionsResponse {
   /** The list of assigned targeting options. This list will be absent if empty. */
   assignedTargetingOptions?: AssignedTargetingOptionList;
 }
+const ListAdvertiserAssignedTargetingOptionsResponse = /*@__PURE__*/ __L.at(
+  __c50,
+  2,
+) as any as S.Schema<ListAdvertiserAssignedTargetingOptionsResponse>;
+
 export interface ListAdvertisersYoutubeAdGroupAdsRequest {
   /** Requested page size. Must be between `1` and `100`. If unspecified will default to `100`. Returns error code `INVALID_ARGUMENT` if an invalid value is specified. */
   pageSize?: number;
@@ -6455,13 +8538,28 @@ export interface ListAdvertisersYoutubeAdGroupAdsRequest {
   /** Required. The ID of the advertiser the ad groups belongs to. */
   advertiserId: string;
 }
+const ListAdvertisersYoutubeAdGroupAdsRequest = /*@__PURE__*/ __L.at(
+  __c50,
+  3,
+) as any as S.Schema<ListAdvertisersYoutubeAdGroupAdsRequest>;
+
 export type YoutubeAdGroupAdList = Array<YoutubeAdGroupAd>;
+const YoutubeAdGroupAdList = /*@__PURE__*/ __L.at(
+  __c50,
+  4,
+) as any as S.Schema<YoutubeAdGroupAdList>;
+
 export interface ListYoutubeAdGroupAdsResponse {
   /** A token to retrieve the next page of results. Pass this value in the page_token field in the subsequent call to `ListYoutubeAdGroupAds` method to retrieve the next page of results. */
   nextPageToken?: string;
   /** The list of ad group ads. This list will be absent if empty. */
   youtubeAdGroupAds?: YoutubeAdGroupAdList;
 }
+const ListYoutubeAdGroupAdsResponse = /*@__PURE__*/ __L.at(
+  __c50,
+  5,
+) as any as S.Schema<ListYoutubeAdGroupAdsResponse>;
+
 export interface ListAdvertisersYoutubeAdGroupsRequest {
   /** A token identifying a page of results the server should return. Typically, this is the value of next_page_token returned from the previous call to `ListYoutubeAdGroups` method. If not specified, the first page of results will be returned. */
   pageToken?: string;
@@ -6474,13 +8572,25 @@ export interface ListAdvertisersYoutubeAdGroupsRequest {
   /** Allows filtering by custom YouTube ad group fields. Supported syntax: * Filter expressions are made up of one or more restrictions. * Restrictions can be combined by `AND` and `OR`. A sequence of restrictions implicitly uses `AND`. * A restriction has the form of `{field} {operator} {value}`. * All fields must use the `EQUALS (=)` operator. Supported properties: * `adGroupId` * `displayName` * `entityStatus` * `lineItemId` * `adGroupFormat` Examples: * All ad groups under an line item: `lineItemId="1234"` * All `ENTITY_STATUS_ACTIVE` or `ENTITY_STATUS_PAUSED` `YOUTUBE_AND_PARTNERS_AD_GROUP_FORMAT_IN_STREAM` ad groups under an advertiser: `(entityStatus="ENTITY_STATUS_ACTIVE" OR entityStatus="ENTITY_STATUS_PAUSED") AND adGroupFormat="YOUTUBE_AND_PARTNERS_AD_GROUP_FORMAT_IN_STREAM"` The length of this field should be no more than 500 characters. Reference our [filter `LIST` requests](/display-video/api/guides/how-tos/filters) guide for more information. */
   filter?: string;
 }
+const ListAdvertisersYoutubeAdGroupsRequest = /*@__PURE__*/ __L.at(
+  __c50,
+  6,
+) as any as S.Schema<ListAdvertisersYoutubeAdGroupsRequest>;
+
 export type YoutubeAdGroupList = Array<YoutubeAdGroup>;
+const YoutubeAdGroupList = /*@__PURE__*/ __L.at(__c50, 7) as any as S.Schema<YoutubeAdGroupList>;
+
 export interface ListYoutubeAdGroupsResponse {
   /** The list of ad groups. This list will be absent if empty. */
   youtubeAdGroups?: YoutubeAdGroupList;
   /** A token to retrieve the next page of results. Pass this value in the page_token field in the subsequent call to `ListYoutubeAdGroups` method to retrieve the next page of results. */
   nextPageToken?: string;
 }
+const ListYoutubeAdGroupsResponse = /*@__PURE__*/ __L.at(
+  __c51,
+  0,
+) as any as S.Schema<ListYoutubeAdGroupsResponse>;
+
 export type ListAdvertisersYoutubeAdGroupsTargetingTypesAssignedTargetingOptionsTargetingTypeEnum =
   | "TARGETING_TYPE_UNSPECIFIED"
   | "TARGETING_TYPE_CHANNEL"
@@ -6531,6 +8641,9 @@ export type ListAdvertisersYoutubeAdGroupsTargetingTypesAssignedTargetingOptions
   | "TARGETING_TYPE_YOUTUBE_CHANNEL"
   | "TARGETING_TYPE_SESSION_POSITION"
   | "TARGETING_TYPE_YOUTUBE_CHANNEL_PACK";
+const ListAdvertisersYoutubeAdGroupsTargetingTypesAssignedTargetingOptionsTargetingTypeEnum =
+  S.String;
+
 export interface ListAdvertisersYoutubeAdGroupsTargetingTypesAssignedTargetingOptionsRequest {
   /** Requested page size. Must be between `1` and `5000`. If unspecified will default to `100`. Returns error code `INVALID_ARGUMENT` if an invalid value is specified. */
   pageSize?: number;
@@ -6549,6 +8662,12 @@ export interface ListAdvertisersYoutubeAdGroupsTargetingTypesAssignedTargetingOp
   /** Field by which to sort the list. Acceptable values are: * `assignedTargetingOptionId` (default) The default sorting order is ascending. To specify descending order for a field, a suffix "desc" should be added to the field name. Example: `assignedTargetingOptionId desc`. */
   orderBy?: string;
 }
+const ListAdvertisersYoutubeAdGroupsTargetingTypesAssignedTargetingOptionsRequest =
+  /*@__PURE__*/ __L.at(
+    __c51,
+    1,
+  ) as any as S.Schema<ListAdvertisersYoutubeAdGroupsTargetingTypesAssignedTargetingOptionsRequest>;
+
 /** Response message for ListYoutubeAdGroupAssignedTargetingOptions. */
 export interface ListYoutubeAdGroupAssignedTargetingOptionsResponse {
   /** A token identifying the next page of results. This value should be specified as the pageToken in a subsequent ListYoutubeAdGroupAssignedTargetingOptionsRequest to fetch the next page of results. This token will be absent if there are no more assigned_targeting_options to return. */
@@ -6556,6 +8675,9 @@ export interface ListYoutubeAdGroupAssignedTargetingOptionsResponse {
   /** The list of assigned targeting options. This list will be absent if empty. */
   assignedTargetingOptions?: AssignedTargetingOptionList;
 }
+const ListYoutubeAdGroupAssignedTargetingOptionsResponse =
+  ListAdvertiserAssignedTargetingOptionsResponse as any as S.Schema<ListYoutubeAdGroupAssignedTargetingOptionsResponse>;
+
 export interface ListAssignedTargetingOptionsAdvertisersRequest {
   /** Field by which to sort the list. Acceptable values are: * `targetingType` (default) The default sorting order is ascending. To specify descending order for a field, a suffix "desc" should be added to the field name. Example: `targetingType desc`. */
   orderBy?: string;
@@ -6568,12 +8690,20 @@ export interface ListAssignedTargetingOptionsAdvertisersRequest {
   /** Allows filtering by assigned targeting option fields. Supported syntax: * Filter expressions are made up of one or more restrictions. * Restrictions can be combined by the `OR` logical operator. * A restriction has the form of `{field} {operator} {value}`. * All fields must use the `EQUALS (=) operator`. Supported fields: * `targetingType` Examples: * targetingType with value TARGETING_TYPE_CHANNEL `targetingType="TARGETING_TYPE_CHANNEL"` The length of this field should be no more than 500 characters. Reference our [filter `LIST` requests](/display-video/api/guides/how-tos/filters) guide for more information. */
   filter?: string;
 }
+const ListAssignedTargetingOptionsAdvertisersRequest = /*@__PURE__*/ __L.at(
+  __c51,
+  2,
+) as any as S.Schema<ListAssignedTargetingOptionsAdvertisersRequest>;
+
 export interface BulkListAdvertiserAssignedTargetingOptionsResponse {
   /** A token identifying the next page of results. This value should be specified as the pageToken in a subsequent BulkListAdvertiserAssignedTargetingOptionsRequest to fetch the next page of results. This token will be absent if there are no more assigned_targeting_options to return. */
   nextPageToken?: string;
   /** The list of assigned targeting options. This list will be absent if empty. */
   assignedTargetingOptions?: AssignedTargetingOptionList;
 }
+const BulkListAdvertiserAssignedTargetingOptionsResponse =
+  ListAdvertiserAssignedTargetingOptionsResponse as any as S.Schema<BulkListAdvertiserAssignedTargetingOptionsResponse>;
+
 export interface ListCombinedAudiencesRequest {
   /** The ID of the partner that has access to the fetched combined audiences. */
   partnerId?: string;
@@ -6588,13 +8718,28 @@ export interface ListCombinedAudiencesRequest {
   /** A token identifying a page of results the server should return. Typically, this is the value of next_page_token returned from the previous call to `ListCombinedAudiences` method. If not specified, the first page of results will be returned. */
   pageToken?: string;
 }
+const ListCombinedAudiencesRequest = /*@__PURE__*/ __L.at(
+  __c51,
+  3,
+) as any as S.Schema<ListCombinedAudiencesRequest>;
+
 export type CombinedAudienceList = Array<CombinedAudience>;
+const CombinedAudienceList = /*@__PURE__*/ __L.at(
+  __c51,
+  4,
+) as any as S.Schema<CombinedAudienceList>;
+
 export interface ListCombinedAudiencesResponse {
   /** The list of combined audiences. This list will be absent if empty. */
   combinedAudiences?: CombinedAudienceList;
   /** A token to retrieve the next page of results. Pass this value in the page_token field in the subsequent call to `ListCombinedAudiences` method to retrieve the next page of results. */
   nextPageToken?: string;
 }
+const ListCombinedAudiencesResponse = /*@__PURE__*/ __L.at(
+  __c51,
+  5,
+) as any as S.Schema<ListCombinedAudiencesResponse>;
+
 export interface ListCustomBiddingAlgorithmsRequest {
   /** Field by which to sort the list. Acceptable values are: * `displayName` (default) The default sorting order is ascending. To specify descending order for a field, a suffix "desc" should be added to the field name. Example: `displayName desc`. */
   orderBy?: string;
@@ -6609,13 +8754,28 @@ export interface ListCustomBiddingAlgorithmsRequest {
   /** Requested page size. Must be between `1` and `200`. If unspecified will default to `100`. Returns error code `INVALID_ARGUMENT` if an invalid value is specified. */
   pageSize?: number;
 }
+const ListCustomBiddingAlgorithmsRequest = /*@__PURE__*/ __L.at(
+  __c51,
+  6,
+) as any as S.Schema<ListCustomBiddingAlgorithmsRequest>;
+
 export type CustomBiddingAlgorithmList = Array<CustomBiddingAlgorithm>;
+const CustomBiddingAlgorithmList = /*@__PURE__*/ __L.at(
+  __c51,
+  7,
+) as any as S.Schema<CustomBiddingAlgorithmList>;
+
 export interface ListCustomBiddingAlgorithmsResponse {
   /** The list of custom bidding algorithms. This list will be absent if empty. */
   customBiddingAlgorithms?: CustomBiddingAlgorithmList;
   /** A token to retrieve the next page of results. Pass this value in the page_token field in the subsequent call to `ListCustomBiddingAlgorithmsRequest` method to retrieve the next page of results. If this field is null, it means this is the last page. */
   nextPageToken?: string;
 }
+const ListCustomBiddingAlgorithmsResponse = /*@__PURE__*/ __L.at(
+  __c52,
+  0,
+) as any as S.Schema<ListCustomBiddingAlgorithmsResponse>;
+
 export interface ListCustomBiddingAlgorithmsScriptsRequest {
   /** Required. The ID of the custom bidding algorithm owns the script. */
   customBiddingAlgorithmId: string;
@@ -6630,13 +8790,28 @@ export interface ListCustomBiddingAlgorithmsScriptsRequest {
   /** Field by which to sort the list. Acceptable values are: * `createTime desc` (default) The default sorting order is descending. To specify ascending order for a field, the suffix "desc" should be removed. Example: `createTime`. */
   orderBy?: string;
 }
+const ListCustomBiddingAlgorithmsScriptsRequest = /*@__PURE__*/ __L.at(
+  __c52,
+  1,
+) as any as S.Schema<ListCustomBiddingAlgorithmsScriptsRequest>;
+
 export type CustomBiddingScriptList = Array<CustomBiddingScript>;
+const CustomBiddingScriptList = /*@__PURE__*/ __L.at(
+  __c52,
+  2,
+) as any as S.Schema<CustomBiddingScriptList>;
+
 export interface ListCustomBiddingScriptsResponse {
   /** A token to retrieve the next page of results. Pass this value in the page_token field in the subsequent call to `ListCustomBiddingScriptsRequest` method to retrieve the next page of results. If this field is null, it means this is the last page. */
   nextPageToken?: string;
   /** The list of custom bidding scripts. This list will be absent if empty. */
   customBiddingScripts?: CustomBiddingScriptList;
 }
+const ListCustomBiddingScriptsResponse = /*@__PURE__*/ __L.at(
+  __c52,
+  3,
+) as any as S.Schema<ListCustomBiddingScriptsResponse>;
+
 export interface ListCustomListsRequest {
   /** The ID of the DV360 advertiser that has access to the fetched custom lists. */
   advertiserId?: string;
@@ -6649,13 +8824,25 @@ export interface ListCustomListsRequest {
   /** Requested page size. Must be between `1` and `200`. If unspecified will default to `100`. Returns error code `INVALID_ARGUMENT` if an invalid value is specified. */
   pageSize?: number;
 }
+const ListCustomListsRequest = /*@__PURE__*/ __L.at(
+  __c52,
+  4,
+) as any as S.Schema<ListCustomListsRequest>;
+
 export type CustomListList = Array<CustomList>;
+const CustomListList = /*@__PURE__*/ __L.at(__c52, 5) as any as S.Schema<CustomListList>;
+
 export interface ListCustomListsResponse {
   /** A token to retrieve the next page of results. Pass this value in the page_token field in the subsequent call to `ListCustomLists` method to retrieve the next page of results. */
   nextPageToken?: string;
   /** The list of custom lists. This list will be absent if empty. */
   customLists?: CustomListList;
 }
+const ListCustomListsResponse = /*@__PURE__*/ __L.at(
+  __c52,
+  6,
+) as any as S.Schema<ListCustomListsResponse>;
+
 export interface ListFloodlightGroupsFloodlightActivitiesRequest {
   /** Optional. Requested page size. Must be between `1` and `200`. If unspecified will default to `100`. Returns error code `INVALID_ARGUMENT` if an invalid value is specified. */
   pageSize?: number;
@@ -6668,13 +8855,28 @@ export interface ListFloodlightGroupsFloodlightActivitiesRequest {
   /** Optional. Field by which to sort the list. Acceptable values are: * `displayName` (default) * `floodlightActivityId` The default sorting order is ascending. To specify descending order for a field, a suffix "desc" should be added to the field name. Example: `displayName desc`. */
   orderBy?: string;
 }
+const ListFloodlightGroupsFloodlightActivitiesRequest = /*@__PURE__*/ __L.at(
+  __c52,
+  7,
+) as any as S.Schema<ListFloodlightGroupsFloodlightActivitiesRequest>;
+
 export type FloodlightActivityList = Array<FloodlightActivity>;
+const FloodlightActivityList = /*@__PURE__*/ __L.at(
+  __c53,
+  0,
+) as any as S.Schema<FloodlightActivityList>;
+
 export interface ListFloodlightActivitiesResponse {
   /** The list of Floodlight activities. This list will be absent if empty. */
   floodlightActivities?: FloodlightActivityList;
   /** A token to retrieve the next page of results. Pass this value in the page_token field in the subsequent call to `ListFloodlightActivities` method to retrieve the next page of results. */
   nextPageToken?: string;
 }
+const ListFloodlightActivitiesResponse = /*@__PURE__*/ __L.at(
+  __c53,
+  1,
+) as any as S.Schema<ListFloodlightActivitiesResponse>;
+
 export interface ListGoogleAudiencesRequest {
   /** Allows filtering by Google audience fields. Supported syntax: * Filter expressions for Google audiences can only contain at most one restriction. * A restriction has the form of `{field} {operator} {value}`. * All fields must use the `HAS (:)` operator. Supported fields: * `displayName` Examples: * All Google audiences for which the display name contains "Google": `displayName:"Google"`. The length of this field should be no more than 500 characters. Reference our [filter `LIST` requests](/display-video/api/guides/how-tos/filters) guide for more information. */
   filter?: string;
@@ -6689,13 +8891,25 @@ export interface ListGoogleAudiencesRequest {
   /** A token identifying a page of results the server should return. Typically, this is the value of next_page_token returned from the previous call to `ListGoogleAudiences` method. If not specified, the first page of results will be returned. */
   pageToken?: string;
 }
+const ListGoogleAudiencesRequest = /*@__PURE__*/ __L.at(
+  __c53,
+  2,
+) as any as S.Schema<ListGoogleAudiencesRequest>;
+
 export type GoogleAudienceList = Array<GoogleAudience>;
+const GoogleAudienceList = /*@__PURE__*/ __L.at(__c53, 3) as any as S.Schema<GoogleAudienceList>;
+
 export interface ListGoogleAudiencesResponse {
   /** The list of Google audiences. This list will be absent if empty. */
   googleAudiences?: GoogleAudienceList;
   /** A token to retrieve the next page of results. Pass this value in the page_token field in the subsequent call to `ListGoogleAudiences` method to retrieve the next page of results. */
   nextPageToken?: string;
 }
+const ListGoogleAudiencesResponse = /*@__PURE__*/ __L.at(
+  __c53,
+  4,
+) as any as S.Schema<ListGoogleAudiencesResponse>;
+
 export interface ListGuaranteedOrdersRequest {
   /** Requested page size. Must be between `1` and `200`. If unspecified will default to `100`. */
   pageSize?: number;
@@ -6710,13 +8924,25 @@ export interface ListGuaranteedOrdersRequest {
   /** The ID of the advertiser that has access to the guaranteed order. */
   advertiserId?: string;
 }
+const ListGuaranteedOrdersRequest = /*@__PURE__*/ __L.at(
+  __c53,
+  5,
+) as any as S.Schema<ListGuaranteedOrdersRequest>;
+
 export type GuaranteedOrderList = Array<GuaranteedOrder>;
+const GuaranteedOrderList = /*@__PURE__*/ __L.at(__c53, 6) as any as S.Schema<GuaranteedOrderList>;
+
 export interface ListGuaranteedOrdersResponse {
   /** A token to retrieve the next page of results. Pass this value in the page_token field in the subsequent call to `ListGuaranteedOrders` method to retrieve the next page of results. */
   nextPageToken?: string;
   /** The list of guaranteed orders. This list will be absent if empty. */
   guaranteedOrders?: GuaranteedOrderList;
 }
+const ListGuaranteedOrdersResponse = /*@__PURE__*/ __L.at(
+  __c53,
+  7,
+) as any as S.Schema<ListGuaranteedOrdersResponse>;
+
 export interface ListInventorySourceGroupsRequest {
   /** Requested page size. Must be between `1` and `200`. If unspecified will default to `100`. */
   pageSize?: number;
@@ -6731,7 +8957,17 @@ export interface ListInventorySourceGroupsRequest {
   /** Field by which to sort the list. Acceptable values are: * `displayName` (default) * `inventorySourceGroupId` The default sorting order is ascending. To specify descending order for a field, a suffix "desc" should be added to the field name. For example, `displayName desc`. */
   orderBy?: string;
 }
+const ListInventorySourceGroupsRequest = /*@__PURE__*/ __L.at(
+  __c54,
+  0,
+) as any as S.Schema<ListInventorySourceGroupsRequest>;
+
 export type InventorySourceGroupList = Array<InventorySourceGroup>;
+const InventorySourceGroupList = /*@__PURE__*/ __L.at(
+  __c54,
+  1,
+) as any as S.Schema<InventorySourceGroupList>;
+
 /** Response message for InventorySourceGroupService.ListInventorySourceGroups. */
 export interface ListInventorySourceGroupsResponse {
   /** A token to retrieve the next page of results. Pass this value in the page_token field in the subsequent call to `ListInventorySourceGroups` method to retrieve the next page of results. */
@@ -6739,6 +8975,11 @@ export interface ListInventorySourceGroupsResponse {
   /** The list of inventory source groups. This list will be absent if empty. */
   inventorySourceGroups?: InventorySourceGroupList;
 }
+const ListInventorySourceGroupsResponse = /*@__PURE__*/ __L.at(
+  __c54,
+  2,
+) as any as S.Schema<ListInventorySourceGroupsResponse>;
+
 export interface ListInventorySourceGroupsAssignedInventorySourcesRequest {
   /** Requested page size. Must be between `1` and `100`. If unspecified will default to `100`. Returns error code `INVALID_ARGUMENT` if an invalid value is specified. */
   pageSize?: number;
@@ -6755,6 +8996,11 @@ export interface ListInventorySourceGroupsAssignedInventorySourcesRequest {
   /** Field by which to sort the list. Acceptable values are: * `assignedInventorySourceId` (default) The default sorting order is ascending. To specify descending order for a field, a suffix " desc" should be added to the field name. Example: `assignedInventorySourceId desc`. */
   orderBy?: string;
 }
+const ListInventorySourceGroupsAssignedInventorySourcesRequest = /*@__PURE__*/ __L.at(
+  __c54,
+  3,
+) as any as S.Schema<ListInventorySourceGroupsAssignedInventorySourcesRequest>;
+
 /** Response message for AssignedInventorySourceService.ListAssignedInventorySources. */
 export interface ListAssignedInventorySourcesResponse {
   /** The list of assigned inventory sources. This list will be absent if empty. */
@@ -6762,6 +9008,11 @@ export interface ListAssignedInventorySourcesResponse {
   /** A token to retrieve the next page of results. Pass this value in the page_token field in the subsequent call to `ListAssignedInventorySources` method to retrieve the next page of results. */
   nextPageToken?: string;
 }
+const ListAssignedInventorySourcesResponse = /*@__PURE__*/ __L.at(
+  __c54,
+  4,
+) as any as S.Schema<ListAssignedInventorySourcesResponse>;
+
 export interface ListPartnersRequest {
   /** Allows filtering by partner fields. Supported syntax: * Filter expressions are made up of one or more restrictions. * Restrictions can be combined by `AND` or `OR` logical operators. A sequence of restrictions implicitly uses `AND`. * A restriction has the form of `{field} {operator} {value}`. * All fields must use the `EQUALS (=)` operator. Supported fields: * `entityStatus` Examples: * All active partners: `entityStatus="ENTITY_STATUS_ACTIVE"` The length of this field should be no more than 500 characters. Reference our [filter `LIST` requests](/display-video/api/guides/how-tos/filters) guide for more information. */
   filter?: string;
@@ -6772,13 +9023,22 @@ export interface ListPartnersRequest {
   /** Field by which to sort the list. Acceptable values are: * `displayName` The default sorting order is ascending. To specify descending order for a field, a suffix "desc" should be added to the field name. For example, `displayName desc`. */
   orderBy?: string;
 }
+const ListPartnersRequest = /*@__PURE__*/ __L.at(__c54, 5) as any as S.Schema<ListPartnersRequest>;
+
 export type PartnerList = Array<Partner>;
+const PartnerList = /*@__PURE__*/ __L.at(__c54, 6) as any as S.Schema<PartnerList>;
+
 export interface ListPartnersResponse {
   /** A token to retrieve the next page of results. Pass this value in the page_token field in the subsequent call to `ListPartners` method to retrieve the next page of results. */
   nextPageToken?: string;
   /** The list of partners. This list will be absent if empty. */
   partners?: PartnerList;
 }
+const ListPartnersResponse = /*@__PURE__*/ __L.at(
+  __c54,
+  7,
+) as any as S.Schema<ListPartnersResponse>;
+
 export interface ListPartnersChannelsRequest {
   /** A token identifying a page of results the server should return. Typically, this is the value of next_page_token returned from the previous call to `ListChannels` method. If not specified, the first page of results will be returned. */
   pageToken?: string;
@@ -6793,6 +9053,11 @@ export interface ListPartnersChannelsRequest {
   /** The ID of the partner that owns the channels. */
   partnerId: string;
 }
+const ListPartnersChannelsRequest = /*@__PURE__*/ __L.at(
+  __c55,
+  0,
+) as any as S.Schema<ListPartnersChannelsRequest>;
+
 export interface ListPartnersChannelsSitesRequest {
   /** A token identifying a page of results the server should return. Typically, this is the value of next_page_token returned from the previous call to `ListSites` method. If not specified, the first page of results will be returned. */
   pageToken?: string;
@@ -6809,6 +9074,11 @@ export interface ListPartnersChannelsSitesRequest {
   /** The ID of the partner that owns the parent channel. */
   partnerId: string;
 }
+const ListPartnersChannelsSitesRequest = /*@__PURE__*/ __L.at(
+  __c55,
+  1,
+) as any as S.Schema<ListPartnersChannelsSitesRequest>;
+
 export type ListPartnersTargetingTypesAssignedTargetingOptionsTargetingTypeEnum =
   | "TARGETING_TYPE_UNSPECIFIED"
   | "TARGETING_TYPE_CHANNEL"
@@ -6859,6 +9129,8 @@ export type ListPartnersTargetingTypesAssignedTargetingOptionsTargetingTypeEnum 
   | "TARGETING_TYPE_YOUTUBE_CHANNEL"
   | "TARGETING_TYPE_SESSION_POSITION"
   | "TARGETING_TYPE_YOUTUBE_CHANNEL_PACK";
+const ListPartnersTargetingTypesAssignedTargetingOptionsTargetingTypeEnum = S.String;
+
 export interface ListPartnersTargetingTypesAssignedTargetingOptionsRequest {
   /** Requested page size. Must be between `1` and `200`. If unspecified will default to `100`. Returns error code `INVALID_ARGUMENT` if an invalid value is specified. */
   pageSize?: number;
@@ -6875,12 +9147,20 @@ export interface ListPartnersTargetingTypesAssignedTargetingOptionsRequest {
   /** Allows filtering by assigned targeting option fields. Supported syntax: * Filter expressions are made up of one or more restrictions. * Restrictions can be combined by the logical operator `OR`. * A restriction has the form of `{field} {operator} {value}`. * All fields must use the `EQUALS (=)` operator. Supported fields: * `assignedTargetingOptionId` Examples: * `AssignedTargetingOption` resource with ID 123456: `assignedTargetingOptionId="123456"` The length of this field should be no more than 500 characters. Reference our [filter `LIST` requests](/display-video/api/guides/how-tos/filters) guide for more information. */
   filter?: string;
 }
+const ListPartnersTargetingTypesAssignedTargetingOptionsRequest = /*@__PURE__*/ __L.at(
+  __c55,
+  2,
+) as any as S.Schema<ListPartnersTargetingTypesAssignedTargetingOptionsRequest>;
+
 export interface ListPartnerAssignedTargetingOptionsResponse {
   /** The list of assigned targeting options. This list will be absent if empty. */
   assignedTargetingOptions?: AssignedTargetingOptionList;
   /** A token identifying the next page of results. This value should be specified as the pageToken in a subsequent ListPartnerAssignedTargetingOptionsRequest to fetch the next page of results. This token will be absent if there are no more assigned_targeting_options to return. */
   nextPageToken?: string;
 }
+const ListPartnerAssignedTargetingOptionsResponse =
+  ListLineItemAssignedTargetingOptionsResponse as any as S.Schema<ListPartnerAssignedTargetingOptionsResponse>;
+
 export type ListTargetingTypesTargetingOptionsTargetingTypeEnum =
   | "TARGETING_TYPE_UNSPECIFIED"
   | "TARGETING_TYPE_CHANNEL"
@@ -6931,6 +9211,8 @@ export type ListTargetingTypesTargetingOptionsTargetingTypeEnum =
   | "TARGETING_TYPE_YOUTUBE_CHANNEL"
   | "TARGETING_TYPE_SESSION_POSITION"
   | "TARGETING_TYPE_YOUTUBE_CHANNEL_PACK";
+const ListTargetingTypesTargetingOptionsTargetingTypeEnum = S.String;
+
 export interface ListTargetingTypesTargetingOptionsRequest {
   /** Required. The Advertiser this request is being made in the context of. */
   advertiserId?: string;
@@ -6945,7 +9227,14 @@ export interface ListTargetingTypesTargetingOptionsRequest {
   /** Allows filtering by targeting option fields. Supported syntax: * Filter expressions are made up of one or more restrictions. * Restrictions can be combined by `OR` logical operators. * A restriction has the form of `{field} {operator} {value}`. * All fields must use the `EQUALS (=)` operator. Supported fields: * `carrierAndIspDetails.type` * `geoRegionDetails.geoRegionType` * `targetingOptionId` Examples: * All `GEO REGION` targeting options that belong to sub type `GEO_REGION_TYPE_COUNTRY` or `GEO_REGION_TYPE_STATE`: `geoRegionDetails.geoRegionType="GEO_REGION_TYPE_COUNTRY" OR geoRegionDetails.geoRegionType="GEO_REGION_TYPE_STATE"` * All `CARRIER AND ISP` targeting options that belong to sub type `CARRIER_AND_ISP_TYPE_CARRIER`: `carrierAndIspDetails.type="CARRIER_AND_ISP_TYPE_CARRIER"` The length of this field should be no more than 500 characters. Reference our [filter `LIST` requests](/display-video/api/guides/how-tos/filters) guide for more information. */
   filter?: string;
 }
+const ListTargetingTypesTargetingOptionsRequest = /*@__PURE__*/ __L.at(
+  __c55,
+  3,
+) as any as S.Schema<ListTargetingTypesTargetingOptionsRequest>;
+
 export type TargetingOptionList = Array<TargetingOption>;
+const TargetingOptionList = /*@__PURE__*/ __L.at(__c55, 4) as any as S.Schema<TargetingOptionList>;
+
 /** Response message for ListTargetingOptions. */
 export interface ListTargetingOptionsResponse {
   /** A token to retrieve the next page of results. Pass this value in the page_token field in the subsequent call to `ListTargetingOptions` method to retrieve the next page of results. */
@@ -6953,6 +9242,11 @@ export interface ListTargetingOptionsResponse {
   /** The list of targeting options. This list will be absent if empty. */
   targetingOptions?: TargetingOptionList;
 }
+const ListTargetingOptionsResponse = /*@__PURE__*/ __L.at(
+  __c55,
+  5,
+) as any as S.Schema<ListTargetingOptionsResponse>;
+
 export interface ListUsersRequest {
   /** Allows filtering by user fields. Supported syntax: * Filter expressions are made up of one or more restrictions. * Restrictions can be combined by the logical operator `AND`. * A restriction has the form of `{field} {operator} {value}`. * The `displayName` and `email` fields must use the `HAS (:)` operator. * The `lastLoginTime` field must use either the `LESS THAN OR EQUAL TO (<=)` or `GREATER THAN OR EQUAL TO (>=)` operator. * All other fields must use the `EQUALS (=)` operator. Supported fields: * `assignedUserRole.advertiserId` * `assignedUserRole.entityType`: This is synthetic field of `AssignedUserRole` used for filtering. Identifies the type of entity to which the user role is assigned. Valid values are `Partner` and `Advertiser`. * `assignedUserRole.parentPartnerId`: This is a synthetic field of `AssignedUserRole` used for filtering. Identifies the parent partner of the entity to which the user role is assigned. * `assignedUserRole.partnerId` * `assignedUserRole.userRole` * `displayName` * `email` * `lastLoginTime` (input in ISO 8601 format, or `YYYY-MM-DDTHH:MM:SSZ`) Examples: * The user with `displayName` containing "foo": `displayName:"foo"` * The user with `email` containing "bar": `email:"bar"` * All users with standard user roles: `assignedUserRole.userRole="STANDARD"` * All users with user roles for partner 123: `assignedUserRole.partnerId="123"` * All users with user roles for advertiser 123: `assignedUserRole.advertiserId="123"` * All users with partner level user roles: `entityType="PARTNER"` * All users with user roles for partner 123 and advertisers under partner 123: `parentPartnerId="123"` * All users that last logged in on or after 2023-01-01T00:00:00Z (format of ISO 8601): `lastLoginTime>="2023-01-01T00:00:00Z"` The length of this field should be no more than 500 characters. Reference our [filter `LIST` requests](/display-video/api/guides/how-tos/filters) guide for more information. */
   filter?: string;
@@ -6963,23 +9257,39 @@ export interface ListUsersRequest {
   /** Requested page size. Must be between `1` and `200`. If unspecified will default to `100`. */
   pageSize?: number;
 }
+const ListUsersRequest = /*@__PURE__*/ __L.at(__c55, 6) as any as S.Schema<ListUsersRequest>;
+
 export type UserList = Array<User>;
+const UserList = /*@__PURE__*/ __L.at(__c55, 7) as any as S.Schema<UserList>;
+
 export interface ListUsersResponse {
   /** A token to retrieve the next page of results. Pass this value in the page_token field in the subsequent call to `ListUsers` method to retrieve the next page of results. This token will be absent if there are no more results to return. */
   nextPageToken?: string;
   /** The list of users. This list will be absent if empty. */
   users?: UserList;
 }
+const ListUsersResponse = /*@__PURE__*/ __L.at(__c56, 0) as any as S.Schema<ListUsersResponse>;
+
 export interface LookupInvoiceCurrencyAdvertisersInvoicesRequest {
   /** Month for which the currency is needed. If not set, the request will return existing currency settings for the advertiser. Must be in the format YYYYMM. */
   invoiceMonth?: string;
   /** Required. The ID of the advertiser to lookup currency for. */
   advertiserId: string;
 }
+const LookupInvoiceCurrencyAdvertisersInvoicesRequest = /*@__PURE__*/ __L.at(
+  __c56,
+  1,
+) as any as S.Schema<LookupInvoiceCurrencyAdvertisersInvoicesRequest>;
+
 export interface LookupInvoiceCurrencyResponse {
   /** Currency used by the advertiser in ISO 4217 format. */
   currencyCode?: string;
 }
+const LookupInvoiceCurrencyResponse = /*@__PURE__*/ __L.at(
+  __c56,
+  2,
+) as any as S.Schema<LookupInvoiceCurrencyResponse>;
+
 export interface PatchAdvertisersRequest {
   /** Output only. The unique ID of the advertiser. Assigned by the system. */
   advertiserId: string;
@@ -6988,6 +9298,11 @@ export interface PatchAdvertisersRequest {
   /** Request body */
   body?: Advertiser;
 }
+const PatchAdvertisersRequest = /*@__PURE__*/ __L.at(
+  __c56,
+  3,
+) as any as S.Schema<PatchAdvertisersRequest>;
+
 export interface PatchAdvertisersCampaignsRequest {
   /** Output only. The unique ID of the advertiser the campaign belongs to. */
   advertiserId: string;
@@ -6998,6 +9313,11 @@ export interface PatchAdvertisersCampaignsRequest {
   /** Request body */
   body?: Campaign;
 }
+const PatchAdvertisersCampaignsRequest = /*@__PURE__*/ __L.at(
+  __c56,
+  4,
+) as any as S.Schema<PatchAdvertisersCampaignsRequest>;
+
 export interface PatchAdvertisersChannelsRequest {
   /** The ID of the partner that owns the created channel. */
   partnerId?: string;
@@ -7010,6 +9330,11 @@ export interface PatchAdvertisersChannelsRequest {
   /** Request body */
   body?: Channel;
 }
+const PatchAdvertisersChannelsRequest = /*@__PURE__*/ __L.at(
+  __c56,
+  5,
+) as any as S.Schema<PatchAdvertisersChannelsRequest>;
+
 export interface PatchAdvertisersCreativesRequest {
   /** Output only. The unique ID of the creative. Assigned by the system. */
   creativeId: string;
@@ -7020,6 +9345,11 @@ export interface PatchAdvertisersCreativesRequest {
   /** Request body */
   body?: Creative;
 }
+const PatchAdvertisersCreativesRequest = /*@__PURE__*/ __L.at(
+  __c56,
+  6,
+) as any as S.Schema<PatchAdvertisersCreativesRequest>;
+
 export interface PatchAdvertisersInsertionOrdersRequest {
   /** Required. The mask to control which fields to update. */
   updateMask?: string;
@@ -7030,6 +9360,11 @@ export interface PatchAdvertisersInsertionOrdersRequest {
   /** Request body */
   body?: InsertionOrder;
 }
+const PatchAdvertisersInsertionOrdersRequest = /*@__PURE__*/ __L.at(
+  __c56,
+  7,
+) as any as S.Schema<PatchAdvertisersInsertionOrdersRequest>;
+
 export interface PatchAdvertisersLineItemsRequest {
   /** Output only. The unique ID of the line item. Assigned by the system. */
   lineItemId: string;
@@ -7040,6 +9375,11 @@ export interface PatchAdvertisersLineItemsRequest {
   /** Request body */
   body?: LineItem;
 }
+const PatchAdvertisersLineItemsRequest = /*@__PURE__*/ __L.at(
+  __c57,
+  0,
+) as any as S.Schema<PatchAdvertisersLineItemsRequest>;
+
 export interface PatchAdvertisersLocationListsRequest {
   /** Required. The mask to control which fields to update. */
   updateMask?: string;
@@ -7050,6 +9390,11 @@ export interface PatchAdvertisersLocationListsRequest {
   /** Request body */
   body?: LocationList;
 }
+const PatchAdvertisersLocationListsRequest = /*@__PURE__*/ __L.at(
+  __c57,
+  1,
+) as any as S.Schema<PatchAdvertisersLocationListsRequest>;
+
 export interface PatchAdvertisersManualTriggersRequest {
   /** Output only. The unique ID of the manual trigger. */
   triggerId: string;
@@ -7060,6 +9405,11 @@ export interface PatchAdvertisersManualTriggersRequest {
   /** Request body */
   body?: ManualTrigger;
 }
+const PatchAdvertisersManualTriggersRequest = /*@__PURE__*/ __L.at(
+  __c57,
+  2,
+) as any as S.Schema<PatchAdvertisersManualTriggersRequest>;
+
 export interface PatchAdvertisersNegativeKeywordListsRequest {
   /** Output only. The unique ID of the negative keyword list. Assigned by the system. */
   negativeKeywordListId: string;
@@ -7070,6 +9420,11 @@ export interface PatchAdvertisersNegativeKeywordListsRequest {
   /** Request body */
   body?: NegativeKeywordList;
 }
+const PatchAdvertisersNegativeKeywordListsRequest = /*@__PURE__*/ __L.at(
+  __c57,
+  3,
+) as any as S.Schema<PatchAdvertisersNegativeKeywordListsRequest>;
+
 export interface PatchCustomBiddingAlgorithmsRequest {
   /** Required. The mask to control which fields to update. */
   updateMask?: string;
@@ -7078,6 +9433,11 @@ export interface PatchCustomBiddingAlgorithmsRequest {
   /** Request body */
   body?: CustomBiddingAlgorithm;
 }
+const PatchCustomBiddingAlgorithmsRequest = /*@__PURE__*/ __L.at(
+  __c57,
+  4,
+) as any as S.Schema<PatchCustomBiddingAlgorithmsRequest>;
+
 export interface PatchFloodlightGroupsRequest {
   /** Required. The mask to control which fields to update. */
   updateMask?: string;
@@ -7088,6 +9448,11 @@ export interface PatchFloodlightGroupsRequest {
   /** Request body */
   body?: FloodlightGroup;
 }
+const PatchFloodlightGroupsRequest = /*@__PURE__*/ __L.at(
+  __c57,
+  5,
+) as any as S.Schema<PatchFloodlightGroupsRequest>;
+
 export interface PatchGuaranteedOrdersRequest {
   /** Output only. The unique identifier of the guaranteed order. The guaranteed order IDs have the format `{exchange}-{legacy_guaranteed_order_id}`. */
   guaranteedOrderId: string;
@@ -7100,6 +9465,11 @@ export interface PatchGuaranteedOrdersRequest {
   /** Request body */
   body?: GuaranteedOrder;
 }
+const PatchGuaranteedOrdersRequest = /*@__PURE__*/ __L.at(
+  __c57,
+  6,
+) as any as S.Schema<PatchGuaranteedOrdersRequest>;
+
 export interface PatchInventorySourceGroupsRequest {
   /** The ID of the advertiser that owns the inventory source group. The parent partner does not have access to this group. */
   advertiserId?: string;
@@ -7112,6 +9482,11 @@ export interface PatchInventorySourceGroupsRequest {
   /** Request body */
   body?: InventorySourceGroup;
 }
+const PatchInventorySourceGroupsRequest = /*@__PURE__*/ __L.at(
+  __c57,
+  7,
+) as any as S.Schema<PatchInventorySourceGroupsRequest>;
+
 export interface PatchPartnersChannelsRequest {
   /** Required. The mask to control which fields to update. */
   updateMask?: string;
@@ -7124,6 +9499,11 @@ export interface PatchPartnersChannelsRequest {
   /** Request body */
   body?: Channel;
 }
+const PatchPartnersChannelsRequest = /*@__PURE__*/ __L.at(
+  __c58,
+  0,
+) as any as S.Schema<PatchPartnersChannelsRequest>;
+
 export interface PatchUsersRequest {
   /** Output only. The unique ID of the user. Assigned by the system. */
   userId: string;
@@ -7132,6 +9512,8 @@ export interface PatchUsersRequest {
   /** Request body */
   body?: User;
 }
+const PatchUsersRequest = /*@__PURE__*/ __L.at(__c58, 1) as any as S.Schema<PatchUsersRequest>;
+
 /** Request message for SiteService.ReplaceSites. */
 export interface ReplaceSitesRequest {
   /** The sites that will replace the existing sites assigned to the channel, specified as a list of Sites. */
@@ -7141,6 +9523,8 @@ export interface ReplaceSitesRequest {
   /** The ID of the advertiser that owns the parent channel. */
   advertiserId?: string;
 }
+const ReplaceSitesRequest = /*@__PURE__*/ __L.at(__c58, 2) as any as S.Schema<ReplaceSitesRequest>;
+
 export interface ReplaceAdvertisersChannelsSitesRequest {
   /** The ID of the advertiser that owns the parent channel. */
   advertiserId: string;
@@ -7149,16 +9533,28 @@ export interface ReplaceAdvertisersChannelsSitesRequest {
   /** Request body */
   body?: ReplaceSitesRequest;
 }
+const ReplaceAdvertisersChannelsSitesRequest = /*@__PURE__*/ __L.at(
+  __c58,
+  3,
+) as any as S.Schema<ReplaceAdvertisersChannelsSitesRequest>;
+
 /** Response message for SiteService.ReplaceSites. */
 export interface ReplaceSitesResponse {
   /** The list of sites in the channel after replacing. */
   sites?: SiteList;
 }
+const ReplaceSitesResponse = BulkEditSitesResponse as any as S.Schema<ReplaceSitesResponse>;
+
 /** Request message for NegativeKeywordService.ReplaceNegativeKeywords. */
 export interface ReplaceNegativeKeywordsRequest {
   /** The negative keywords that will replace the existing keywords in the negative keyword list, specified as a list of NegativeKeywords. */
   newNegativeKeywords?: NegativeKeywordList_;
 }
+const ReplaceNegativeKeywordsRequest = /*@__PURE__*/ __L.at(
+  __c58,
+  4,
+) as any as S.Schema<ReplaceNegativeKeywordsRequest>;
+
 export interface ReplaceAdvertisersNegativeKeywordListsNegativeKeywordsRequest {
   /** Required. The ID of the DV360 advertiser to which the parent negative keyword list belongs. */
   advertiserId: string;
@@ -7167,11 +9563,19 @@ export interface ReplaceAdvertisersNegativeKeywordListsNegativeKeywordsRequest {
   /** Request body */
   body?: ReplaceNegativeKeywordsRequest;
 }
+const ReplaceAdvertisersNegativeKeywordListsNegativeKeywordsRequest = /*@__PURE__*/ __L.at(
+  __c58,
+  5,
+) as any as S.Schema<ReplaceAdvertisersNegativeKeywordListsNegativeKeywordsRequest>;
+
 /** Response message for NegativeKeywordService.ReplaceNegativeKeywords. */
 export interface ReplaceNegativeKeywordsResponse {
   /** The full list of negative keywords now present in the negative keyword list. */
   negativeKeywords?: NegativeKeywordList_;
 }
+const ReplaceNegativeKeywordsResponse =
+  BulkEditNegativeKeywordsResponse as any as S.Schema<ReplaceNegativeKeywordsResponse>;
+
 export interface ReplacePartnersChannelsSitesRequest {
   /** The ID of the partner that owns the parent channel. */
   partnerId: string;
@@ -7180,6 +9584,11 @@ export interface ReplacePartnersChannelsSitesRequest {
   /** Request body */
   body?: ReplaceSitesRequest;
 }
+const ReplacePartnersChannelsSitesRequest = /*@__PURE__*/ __L.at(
+  __c58,
+  6,
+) as any as S.Schema<ReplacePartnersChannelsSitesRequest>;
+
 export type SearchTargetingTypesTargetingOptionsTargetingTypeEnum =
   | "TARGETING_TYPE_UNSPECIFIED"
   | "TARGETING_TYPE_CHANNEL"
@@ -7230,16 +9639,25 @@ export type SearchTargetingTypesTargetingOptionsTargetingTypeEnum =
   | "TARGETING_TYPE_YOUTUBE_CHANNEL"
   | "TARGETING_TYPE_SESSION_POSITION"
   | "TARGETING_TYPE_YOUTUBE_CHANNEL_PACK";
+const SearchTargetingTypesTargetingOptionsTargetingTypeEnum = S.String;
+
 /** Search terms for geo region targeting options. */
 export interface GeoRegionSearchTerms {
   /** The search query for the desired geo region. The query can be a prefix, e.g. "New Yor", "Seattle", "USA", etc. */
   geoRegionQuery?: string;
 }
+const GeoRegionSearchTerms = /*@__PURE__*/ __L.at(
+  __c58,
+  7,
+) as any as S.Schema<GeoRegionSearchTerms>;
+
 /** Search terms for POI targeting options. */
 export interface PoiSearchTerms {
   /** The search query for the desired POI name, street address, or coordinate of the desired POI. The query can be a prefix, e.g. "Times squar", "40.7505045,-73.99562", "315 W 44th St", etc. */
   poiQuery?: string;
 }
+const PoiSearchTerms = /*@__PURE__*/ __L.at(__c59, 0) as any as S.Schema<PoiSearchTerms>;
+
 /** Search terms for Business Chain targeting options. At least one of the field should be populated. */
 export interface BusinessChainSearchTerms {
   /** The search query for the desired geo region, e.g. "Seattle", "United State". */
@@ -7247,6 +9665,11 @@ export interface BusinessChainSearchTerms {
   /** The search query for the desired business chain. The query must be the full name of the business, e.g. "KFC", "mercedes-benz". */
   businessChainQuery?: string;
 }
+const BusinessChainSearchTerms = /*@__PURE__*/ __L.at(
+  __c59,
+  1,
+) as any as S.Schema<BusinessChainSearchTerms>;
+
 /** Request message for SearchTargetingOptions. */
 export interface SearchTargetingOptionsRequest {
   /** Search terms for geo region targeting options. Can only be used when targeting_type is `TARGETING_TYPE_GEO_REGION`. */
@@ -7262,12 +9685,22 @@ export interface SearchTargetingOptionsRequest {
   /** Required. The Advertiser this request is being made in the context of. */
   advertiserId?: string;
 }
+const SearchTargetingOptionsRequest = /*@__PURE__*/ __L.at(
+  __c59,
+  2,
+) as any as S.Schema<SearchTargetingOptionsRequest>;
+
 export interface SearchTargetingTypesTargetingOptionsRequest {
   /** Required. The type of targeting options to retrieve. Accepted values are: * `TARGETING_TYPE_GEO_REGION` * `TARGETING_TYPE_POI` * `TARGETING_TYPE_BUSINESS_CHAIN` */
   targetingType: SearchTargetingTypesTargetingOptionsTargetingTypeEnum | (string & {});
   /** Request body */
   body?: SearchTargetingOptionsRequest;
 }
+const SearchTargetingTypesTargetingOptionsRequest = /*@__PURE__*/ __L.at(
+  __c59,
+  3,
+) as any as S.Schema<SearchTargetingTypesTargetingOptionsRequest>;
+
 /** Response message for SearchTargetingOptions. */
 export interface SearchTargetingOptionsResponse {
   /** The list of targeting options that match the search criteria. This list will be absent if empty. */
@@ -7275,28 +9708,44 @@ export interface SearchTargetingOptionsResponse {
   /** A token to retrieve the next page of results. Pass this value in the page_token field in the subsequent call to `SearchTargetingOptions` method to retrieve the next page of results. */
   nextPageToken?: string;
 }
+const SearchTargetingOptionsResponse = /*@__PURE__*/ __L.at(
+  __c59,
+  4,
+) as any as S.Schema<SearchTargetingOptionsResponse>;
+
 /** A request message for CreateAsset. */
 export interface CreateAssetRequest {
   /** Required. The filename of the asset, including the file extension. The filename must be UTF-8 encoded with a maximum size of 240 bytes. */
   filename?: string;
 }
+const CreateAssetRequest = /*@__PURE__*/ __L.at(__c59, 5) as any as S.Schema<CreateAssetRequest>;
+
 export interface UploadAdvertisersAssetsRequest {
   /** Required. The ID of the advertiser this asset belongs to. */
   advertiserId: string;
   /** Request body */
   body?: CreateAssetRequest;
 }
+const UploadAdvertisersAssetsRequest = /*@__PURE__*/ __L.at(
+  __c59,
+  6,
+) as any as S.Schema<UploadAdvertisersAssetsRequest>;
+
 /** A response message for CreateAsset. */
 export interface CreateAssetResponse {
   /** The uploaded asset, if successful. */
   asset?: Asset;
 }
+const CreateAssetResponse = /*@__PURE__*/ __L.at(__c59, 7) as any as S.Schema<CreateAssetResponse>;
+
 export interface UploadMediaRequest {
   /** Name of the media that is being downloaded. See ReadRequest.resource_name. */
   resourceName: string;
   /** Request body */
   body?: GoogleBytestreamMedia;
 }
+const UploadMediaRequest = /*@__PURE__*/ __L.at(__c60, 0) as any as S.Schema<UploadMediaRequest>;
+
 export interface UploadScriptCustomBiddingAlgorithmsRequest {
   /** The ID of the partner that owns the parent custom bidding algorithm. Only this partner will have write access to this custom bidding script. */
   partnerId?: string;
@@ -7305,6 +9754,11 @@ export interface UploadScriptCustomBiddingAlgorithmsRequest {
   /** Required. The ID of the custom bidding algorithm owns the script. */
   customBiddingAlgorithmId: string;
 }
+const UploadScriptCustomBiddingAlgorithmsRequest = /*@__PURE__*/ __L.at(
+  __c60,
+  1,
+) as any as S.Schema<UploadScriptCustomBiddingAlgorithmsRequest>;
+
 export type ActivateAdvertisersManualTriggersError =
   | NotFound
   | Forbidden
@@ -7318,8 +9772,8 @@ export const activateAdvertisersManualTriggers: API.OperationMethod<
   ActivateAdvertisersManualTriggersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1) as any as S.Schema<ActivateAdvertisersManualTriggersRequest>,
-  output: __S(2) as any as S.Schema<ManualTrigger>,
+  input: ActivateAdvertisersManualTriggersRequest,
+  output: ManualTrigger,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7333,8 +9787,8 @@ export const auditAdvertisers: API.OperationMethod<
   AuditAdvertisersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3) as any as S.Schema<AuditAdvertisersRequest>,
-  output: __S(4) as any as S.Schema<AuditAdvertiserResponse>,
+  input: AuditAdvertisersRequest,
+  output: AuditAdvertiserResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7353,8 +9807,8 @@ export const bulkEditAdvertisersChannelsSites: API.OperationMethod<
   BulkEditAdvertisersChannelsSitesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9) as any as S.Schema<BulkEditAdvertisersChannelsSitesRequest>,
-  output: __S(10) as any as S.Schema<BulkEditSitesResponse>,
+  input: BulkEditAdvertisersChannelsSitesRequest,
+  output: BulkEditSitesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7373,8 +9827,8 @@ export const bulkEditAdvertisersLocationListsAssignedLocations: API.OperationMet
   BulkEditAdvertisersLocationListsAssignedLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14) as any as S.Schema<BulkEditAdvertisersLocationListsAssignedLocationsRequest>,
-  output: __S(15) as any as S.Schema<BulkEditAssignedLocationsResponse>,
+  input: BulkEditAdvertisersLocationListsAssignedLocationsRequest,
+  output: BulkEditAssignedLocationsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7393,8 +9847,8 @@ export const bulkEditAdvertisersNegativeKeywordListsNegativeKeywords: API.Operat
   BulkEditAdvertisersNegativeKeywordListsNegativeKeywordsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19) as any as S.Schema<BulkEditAdvertisersNegativeKeywordListsNegativeKeywordsRequest>,
-  output: __S(20) as any as S.Schema<BulkEditNegativeKeywordsResponse>,
+  input: BulkEditAdvertisersNegativeKeywordListsNegativeKeywordsRequest,
+  output: BulkEditNegativeKeywordsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7413,8 +9867,8 @@ export const bulkEditAssignedTargetingOptionsAdvertisersLineItems: API.Operation
   BulkEditAssignedTargetingOptionsAdvertisersLineItemsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(94) as any as S.Schema<BulkEditAssignedTargetingOptionsAdvertisersLineItemsRequest>,
-  output: __S(99) as any as S.Schema<BulkEditAssignedTargetingOptionsResponse>,
+  input: BulkEditAssignedTargetingOptionsAdvertisersLineItemsRequest,
+  output: BulkEditAssignedTargetingOptionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7433,8 +9887,8 @@ export const bulkEditAssignedUserRolesUsers: API.OperationMethod<
   BulkEditAssignedUserRolesUsersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(103) as any as S.Schema<BulkEditAssignedUserRolesUsersRequest>,
-  output: __S(104) as any as S.Schema<BulkEditAssignedUserRolesResponse>,
+  input: BulkEditAssignedUserRolesUsersRequest,
+  output: BulkEditAssignedUserRolesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7453,8 +9907,8 @@ export const bulkEditInventorySourceGroupsAssignedInventorySources: API.Operatio
   BulkEditInventorySourceGroupsAssignedInventorySourcesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(108) as any as S.Schema<BulkEditInventorySourceGroupsAssignedInventorySourcesRequest>,
-  output: __S(109) as any as S.Schema<BulkEditAssignedInventorySourcesResponse>,
+  input: BulkEditInventorySourceGroupsAssignedInventorySourcesRequest,
+  output: BulkEditAssignedInventorySourcesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7473,8 +9927,8 @@ export const bulkEditPartnersChannelsSites: API.OperationMethod<
   BulkEditPartnersChannelsSitesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(110) as any as S.Schema<BulkEditPartnersChannelsSitesRequest>,
-  output: __S(10) as any as S.Schema<BulkEditSitesResponse>,
+  input: BulkEditPartnersChannelsSitesRequest,
+  output: BulkEditSitesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7492,10 +9946,8 @@ export const bulkListAdGroupAssignedTargetingOptionsAdvertisersYoutubeAdGroups: 
   GcpOpContext,
   BulkListAdGroupAssignedTargetingOptionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(
-    111,
-  ) as any as S.Schema<BulkListAdGroupAssignedTargetingOptionsAdvertisersYoutubeAdGroupsRequest>,
-  output: __S(114) as any as S.Schema<BulkListAdGroupAssignedTargetingOptionsResponse>,
+  input: BulkListAdGroupAssignedTargetingOptionsAdvertisersYoutubeAdGroupsRequest,
+  output: BulkListAdGroupAssignedTargetingOptionsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7514,8 +9966,8 @@ export const bulkListAssignedTargetingOptionsAdvertisersLineItems: API.Paginated
   GcpOpContext,
   BulkListAssignedTargetingOptionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(115) as any as S.Schema<BulkListAssignedTargetingOptionsAdvertisersLineItemsRequest>,
-  output: __S(118) as any as S.Schema<BulkListAssignedTargetingOptionsResponse>,
+  input: BulkListAssignedTargetingOptionsAdvertisersLineItemsRequest,
+  output: BulkListAssignedTargetingOptionsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7535,8 +9987,8 @@ export const bulkUpdateAdvertisersLineItems: API.OperationMethod<
   BulkUpdateAdvertisersLineItemsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(154) as any as S.Schema<BulkUpdateAdvertisersLineItemsRequest>,
-  output: __S(155) as any as S.Schema<BulkUpdateLineItemsResponse>,
+  input: BulkUpdateAdvertisersLineItemsRequest,
+  output: BulkUpdateLineItemsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7550,8 +10002,8 @@ export const createAdvertisers: API.OperationMethod<
   CreateAdvertisersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(166) as any as S.Schema<CreateAdvertisersRequest>,
-  output: __S(165) as any as S.Schema<Advertiser>,
+  input: CreateAdvertisersRequest,
+  output: Advertiser,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7570,8 +10022,8 @@ export const createAdvertisersCampaigns: API.OperationMethod<
   CreateAdvertisersCampaignsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(175) as any as S.Schema<CreateAdvertisersCampaignsRequest>,
-  output: __S(174) as any as S.Schema<Campaign>,
+  input: CreateAdvertisersCampaignsRequest,
+  output: Campaign,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7590,8 +10042,8 @@ export const createAdvertisersChannels: API.OperationMethod<
   CreateAdvertisersChannelsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(177) as any as S.Schema<CreateAdvertisersChannelsRequest>,
-  output: __S(176) as any as S.Schema<Channel>,
+  input: CreateAdvertisersChannelsRequest,
+  output: Channel,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7610,8 +10062,8 @@ export const createAdvertisersChannelsSites: API.OperationMethod<
   CreateAdvertisersChannelsSitesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(178) as any as S.Schema<CreateAdvertisersChannelsSitesRequest>,
-  output: __S(6) as any as S.Schema<Site>,
+  input: CreateAdvertisersChannelsSitesRequest,
+  output: Site,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7630,8 +10082,8 @@ export const createAdvertisersCreatives: API.OperationMethod<
   CreateAdvertisersCreativesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(204) as any as S.Schema<CreateAdvertisersCreativesRequest>,
-  output: __S(203) as any as S.Schema<Creative>,
+  input: CreateAdvertisersCreativesRequest,
+  output: Creative,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7650,8 +10102,8 @@ export const createAdvertisersInsertionOrders: API.OperationMethod<
   CreateAdvertisersInsertionOrdersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(209) as any as S.Schema<CreateAdvertisersInsertionOrdersRequest>,
-  output: __S(208) as any as S.Schema<InsertionOrder>,
+  input: CreateAdvertisersInsertionOrdersRequest,
+  output: InsertionOrder,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7670,8 +10122,8 @@ export const createAdvertisersLineItems: API.OperationMethod<
   CreateAdvertisersLineItemsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(210) as any as S.Schema<CreateAdvertisersLineItemsRequest>,
-  output: __S(152) as any as S.Schema<LineItem>,
+  input: CreateAdvertisersLineItemsRequest,
+  output: LineItem,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7690,10 +10142,8 @@ export const createAdvertisersLineItemsTargetingTypesAssignedTargetingOptions: A
   CreateAdvertisersLineItemsTargetingTypesAssignedTargetingOptionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(
-    211,
-  ) as any as S.Schema<CreateAdvertisersLineItemsTargetingTypesAssignedTargetingOptionsRequest>,
-  output: __S(89) as any as S.Schema<AssignedTargetingOption>,
+  input: CreateAdvertisersLineItemsTargetingTypesAssignedTargetingOptionsRequest,
+  output: AssignedTargetingOption,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7712,8 +10162,8 @@ export const createAdvertisersLocationLists: API.OperationMethod<
   CreateAdvertisersLocationListsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(213) as any as S.Schema<CreateAdvertisersLocationListsRequest>,
-  output: __S(212) as any as S.Schema<LocationList>,
+  input: CreateAdvertisersLocationListsRequest,
+  output: LocationList,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7732,8 +10182,8 @@ export const createAdvertisersLocationListsAssignedLocations: API.OperationMetho
   CreateAdvertisersLocationListsAssignedLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(214) as any as S.Schema<CreateAdvertisersLocationListsAssignedLocationsRequest>,
-  output: __S(11) as any as S.Schema<AssignedLocation>,
+  input: CreateAdvertisersLocationListsAssignedLocationsRequest,
+  output: AssignedLocation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7752,8 +10202,8 @@ export const createAdvertisersManualTriggers: API.OperationMethod<
   CreateAdvertisersManualTriggersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(215) as any as S.Schema<CreateAdvertisersManualTriggersRequest>,
-  output: __S(2) as any as S.Schema<ManualTrigger>,
+  input: CreateAdvertisersManualTriggersRequest,
+  output: ManualTrigger,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7772,8 +10222,8 @@ export const createAdvertisersNegativeKeywordLists: API.OperationMethod<
   CreateAdvertisersNegativeKeywordListsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(217) as any as S.Schema<CreateAdvertisersNegativeKeywordListsRequest>,
-  output: __S(216) as any as S.Schema<NegativeKeywordList>,
+  input: CreateAdvertisersNegativeKeywordListsRequest,
+  output: NegativeKeywordList,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7792,8 +10242,8 @@ export const createAdvertisersNegativeKeywordListsNegativeKeywords: API.Operatio
   CreateAdvertisersNegativeKeywordListsNegativeKeywordsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(218) as any as S.Schema<CreateAdvertisersNegativeKeywordListsNegativeKeywordsRequest>,
-  output: __S(16) as any as S.Schema<NegativeKeyword>,
+  input: CreateAdvertisersNegativeKeywordListsNegativeKeywordsRequest,
+  output: NegativeKeyword,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7812,10 +10262,8 @@ export const createAdvertisersTargetingTypesAssignedTargetingOptions: API.Operat
   CreateAdvertisersTargetingTypesAssignedTargetingOptionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(
-    219,
-  ) as any as S.Schema<CreateAdvertisersTargetingTypesAssignedTargetingOptionsRequest>,
-  output: __S(89) as any as S.Schema<AssignedTargetingOption>,
+  input: CreateAdvertisersTargetingTypesAssignedTargetingOptionsRequest,
+  output: AssignedTargetingOption,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7834,8 +10282,8 @@ export const createCustomBiddingAlgorithms: API.OperationMethod<
   CreateCustomBiddingAlgorithmsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(223) as any as S.Schema<CreateCustomBiddingAlgorithmsRequest>,
-  output: __S(222) as any as S.Schema<CustomBiddingAlgorithm>,
+  input: CreateCustomBiddingAlgorithmsRequest,
+  output: CustomBiddingAlgorithm,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7854,8 +10302,8 @@ export const createCustomBiddingAlgorithmsScripts: API.OperationMethod<
   CreateCustomBiddingAlgorithmsScriptsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(228) as any as S.Schema<CreateCustomBiddingAlgorithmsScriptsRequest>,
-  output: __S(227) as any as S.Schema<CustomBiddingScript>,
+  input: CreateCustomBiddingAlgorithmsScriptsRequest,
+  output: CustomBiddingScript,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7869,8 +10317,8 @@ export const createGuaranteedOrders: API.OperationMethod<
   CreateGuaranteedOrdersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(231) as any as S.Schema<CreateGuaranteedOrdersRequest>,
-  output: __S(230) as any as S.Schema<GuaranteedOrder>,
+  input: CreateGuaranteedOrdersRequest,
+  output: GuaranteedOrder,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7889,8 +10337,8 @@ export const createInventorySourceGroups: API.OperationMethod<
   CreateInventorySourceGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(233) as any as S.Schema<CreateInventorySourceGroupsRequest>,
-  output: __S(232) as any as S.Schema<InventorySourceGroup>,
+  input: CreateInventorySourceGroupsRequest,
+  output: InventorySourceGroup,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7909,8 +10357,8 @@ export const createInventorySourceGroupsAssignedInventorySources: API.OperationM
   CreateInventorySourceGroupsAssignedInventorySourcesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(234) as any as S.Schema<CreateInventorySourceGroupsAssignedInventorySourcesRequest>,
-  output: __S(105) as any as S.Schema<AssignedInventorySource>,
+  input: CreateInventorySourceGroupsAssignedInventorySourcesRequest,
+  output: AssignedInventorySource,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7924,8 +10372,8 @@ export const createPartnersChannels: API.OperationMethod<
   CreatePartnersChannelsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(235) as any as S.Schema<CreatePartnersChannelsRequest>,
-  output: __S(176) as any as S.Schema<Channel>,
+  input: CreatePartnersChannelsRequest,
+  output: Channel,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7944,8 +10392,8 @@ export const createPartnersChannelsSites: API.OperationMethod<
   CreatePartnersChannelsSitesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(236) as any as S.Schema<CreatePartnersChannelsSitesRequest>,
-  output: __S(6) as any as S.Schema<Site>,
+  input: CreatePartnersChannelsSitesRequest,
+  output: Site,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7964,8 +10412,8 @@ export const createPartnersTargetingTypesAssignedTargetingOptions: API.Operation
   CreatePartnersTargetingTypesAssignedTargetingOptionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(237) as any as S.Schema<CreatePartnersTargetingTypesAssignedTargetingOptionsRequest>,
-  output: __S(89) as any as S.Schema<AssignedTargetingOption>,
+  input: CreatePartnersTargetingTypesAssignedTargetingOptionsRequest,
+  output: AssignedTargetingOption,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7979,8 +10427,8 @@ export const createSdfdownloadtasks: API.OperationMethod<
   CreateSdfdownloadtasksError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(242) as any as S.Schema<CreateSdfdownloadtasksRequest>,
-  output: __S(243) as any as S.Schema<Operation>,
+  input: CreateSdfdownloadtasksRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7994,8 +10442,8 @@ export const createUsers: API.OperationMethod<
   CreateUsersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(245) as any as S.Schema<CreateUsersRequest>,
-  output: __S(244) as any as S.Schema<User>,
+  input: CreateUsersRequest,
+  output: User,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8014,8 +10462,8 @@ export const deactivateAdvertisersManualTriggers: API.OperationMethod<
   DeactivateAdvertisersManualTriggersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(246) as any as S.Schema<DeactivateAdvertisersManualTriggersRequest>,
-  output: __S(2) as any as S.Schema<ManualTrigger>,
+  input: DeactivateAdvertisersManualTriggersRequest,
+  output: ManualTrigger,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8029,8 +10477,8 @@ export const deleteAdvertisers: API.OperationMethod<
   DeleteAdvertisersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(247) as any as S.Schema<DeleteAdvertisersRequest>,
-  output: __S(0) as any as S.Schema<Empty>,
+  input: DeleteAdvertisersRequest,
+  output: Empty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8049,8 +10497,8 @@ export const deleteAdvertisersCampaigns: API.OperationMethod<
   DeleteAdvertisersCampaignsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(248) as any as S.Schema<DeleteAdvertisersCampaignsRequest>,
-  output: __S(0) as any as S.Schema<Empty>,
+  input: DeleteAdvertisersCampaignsRequest,
+  output: Empty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8069,8 +10517,8 @@ export const deleteAdvertisersChannelsSites: API.OperationMethod<
   DeleteAdvertisersChannelsSitesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(249) as any as S.Schema<DeleteAdvertisersChannelsSitesRequest>,
-  output: __S(0) as any as S.Schema<Empty>,
+  input: DeleteAdvertisersChannelsSitesRequest,
+  output: Empty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8089,8 +10537,8 @@ export const deleteAdvertisersCreatives: API.OperationMethod<
   DeleteAdvertisersCreativesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(250) as any as S.Schema<DeleteAdvertisersCreativesRequest>,
-  output: __S(0) as any as S.Schema<Empty>,
+  input: DeleteAdvertisersCreativesRequest,
+  output: Empty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8109,8 +10557,8 @@ export const deleteAdvertisersInsertionOrders: API.OperationMethod<
   DeleteAdvertisersInsertionOrdersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(251) as any as S.Schema<DeleteAdvertisersInsertionOrdersRequest>,
-  output: __S(0) as any as S.Schema<Empty>,
+  input: DeleteAdvertisersInsertionOrdersRequest,
+  output: Empty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8129,8 +10577,8 @@ export const deleteAdvertisersLineItems: API.OperationMethod<
   DeleteAdvertisersLineItemsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(252) as any as S.Schema<DeleteAdvertisersLineItemsRequest>,
-  output: __S(0) as any as S.Schema<Empty>,
+  input: DeleteAdvertisersLineItemsRequest,
+  output: Empty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8149,10 +10597,8 @@ export const deleteAdvertisersLineItemsTargetingTypesAssignedTargetingOptions: A
   DeleteAdvertisersLineItemsTargetingTypesAssignedTargetingOptionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(
-    253,
-  ) as any as S.Schema<DeleteAdvertisersLineItemsTargetingTypesAssignedTargetingOptionsRequest>,
-  output: __S(0) as any as S.Schema<Empty>,
+  input: DeleteAdvertisersLineItemsTargetingTypesAssignedTargetingOptionsRequest,
+  output: Empty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8171,8 +10617,8 @@ export const deleteAdvertisersLocationListsAssignedLocations: API.OperationMetho
   DeleteAdvertisersLocationListsAssignedLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(254) as any as S.Schema<DeleteAdvertisersLocationListsAssignedLocationsRequest>,
-  output: __S(0) as any as S.Schema<Empty>,
+  input: DeleteAdvertisersLocationListsAssignedLocationsRequest,
+  output: Empty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8191,8 +10637,8 @@ export const deleteAdvertisersNegativeKeywordLists: API.OperationMethod<
   DeleteAdvertisersNegativeKeywordListsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(255) as any as S.Schema<DeleteAdvertisersNegativeKeywordListsRequest>,
-  output: __S(0) as any as S.Schema<Empty>,
+  input: DeleteAdvertisersNegativeKeywordListsRequest,
+  output: Empty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8211,8 +10657,8 @@ export const deleteAdvertisersNegativeKeywordListsNegativeKeywords: API.Operatio
   DeleteAdvertisersNegativeKeywordListsNegativeKeywordsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(256) as any as S.Schema<DeleteAdvertisersNegativeKeywordListsNegativeKeywordsRequest>,
-  output: __S(0) as any as S.Schema<Empty>,
+  input: DeleteAdvertisersNegativeKeywordListsNegativeKeywordsRequest,
+  output: Empty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8231,10 +10677,8 @@ export const deleteAdvertisersTargetingTypesAssignedTargetingOptions: API.Operat
   DeleteAdvertisersTargetingTypesAssignedTargetingOptionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(
-    257,
-  ) as any as S.Schema<DeleteAdvertisersTargetingTypesAssignedTargetingOptionsRequest>,
-  output: __S(0) as any as S.Schema<Empty>,
+  input: DeleteAdvertisersTargetingTypesAssignedTargetingOptionsRequest,
+  output: Empty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8253,8 +10697,8 @@ export const deleteInventorySourceGroups: API.OperationMethod<
   DeleteInventorySourceGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(258) as any as S.Schema<DeleteInventorySourceGroupsRequest>,
-  output: __S(0) as any as S.Schema<Empty>,
+  input: DeleteInventorySourceGroupsRequest,
+  output: Empty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8273,8 +10717,8 @@ export const deleteInventorySourceGroupsAssignedInventorySources: API.OperationM
   DeleteInventorySourceGroupsAssignedInventorySourcesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(259) as any as S.Schema<DeleteInventorySourceGroupsAssignedInventorySourcesRequest>,
-  output: __S(0) as any as S.Schema<Empty>,
+  input: DeleteInventorySourceGroupsAssignedInventorySourcesRequest,
+  output: Empty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8293,8 +10737,8 @@ export const deletePartnersChannelsSites: API.OperationMethod<
   DeletePartnersChannelsSitesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(260) as any as S.Schema<DeletePartnersChannelsSitesRequest>,
-  output: __S(0) as any as S.Schema<Empty>,
+  input: DeletePartnersChannelsSitesRequest,
+  output: Empty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8313,8 +10757,8 @@ export const deletePartnersTargetingTypesAssignedTargetingOptions: API.Operation
   DeletePartnersTargetingTypesAssignedTargetingOptionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(261) as any as S.Schema<DeletePartnersTargetingTypesAssignedTargetingOptionsRequest>,
-  output: __S(0) as any as S.Schema<Empty>,
+  input: DeletePartnersTargetingTypesAssignedTargetingOptionsRequest,
+  output: Empty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8328,8 +10772,8 @@ export const deleteUsers: API.OperationMethod<
   DeleteUsersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(262) as any as S.Schema<DeleteUsersRequest>,
-  output: __S(0) as any as S.Schema<Empty>,
+  input: DeleteUsersRequest,
+  output: Empty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8343,8 +10787,8 @@ export const downloadMedia: API.OperationMethod<
   DownloadMediaError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(263) as any as S.Schema<DownloadMediaRequest>,
-  output: __S(226) as any as S.Schema<GoogleBytestreamMedia>,
+  input: DownloadMediaRequest,
+  output: GoogleBytestreamMedia,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8363,8 +10807,8 @@ export const duplicateAdvertisersLineItems: API.OperationMethod<
   DuplicateAdvertisersLineItemsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(265) as any as S.Schema<DuplicateAdvertisersLineItemsRequest>,
-  output: __S(266) as any as S.Schema<DuplicateLineItemResponse>,
+  input: DuplicateAdvertisersLineItemsRequest,
+  output: DuplicateLineItemResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8383,8 +10827,8 @@ export const editAssignedTargetingOptionsAdvertisers: API.OperationMethod<
   EditAssignedTargetingOptionsAdvertisersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(268) as any as S.Schema<EditAssignedTargetingOptionsAdvertisersRequest>,
-  output: __S(269) as any as S.Schema<BulkEditAdvertiserAssignedTargetingOptionsResponse>,
+  input: EditAssignedTargetingOptionsAdvertisersRequest,
+  output: BulkEditAdvertiserAssignedTargetingOptionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8403,8 +10847,8 @@ export const editAssignedTargetingOptionsPartners: API.OperationMethod<
   EditAssignedTargetingOptionsPartnersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(270) as any as S.Schema<EditAssignedTargetingOptionsPartnersRequest>,
-  output: __S(269) as any as S.Schema<BulkEditPartnerAssignedTargetingOptionsResponse>,
+  input: EditAssignedTargetingOptionsPartnersRequest,
+  output: BulkEditPartnerAssignedTargetingOptionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8423,8 +10867,8 @@ export const editGuaranteedOrderReadAccessorsGuaranteedOrders: API.OperationMeth
   EditGuaranteedOrderReadAccessorsGuaranteedOrdersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(272) as any as S.Schema<EditGuaranteedOrderReadAccessorsGuaranteedOrdersRequest>,
-  output: __S(273) as any as S.Schema<EditGuaranteedOrderReadAccessorsResponse>,
+  input: EditGuaranteedOrderReadAccessorsGuaranteedOrdersRequest,
+  output: EditGuaranteedOrderReadAccessorsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8438,8 +10882,8 @@ export const getAdvertisers: API.OperationMethod<
   GetAdvertisersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(274) as any as S.Schema<GetAdvertisersRequest>,
-  output: __S(165) as any as S.Schema<Advertiser>,
+  input: GetAdvertisersRequest,
+  output: Advertiser,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8453,8 +10897,8 @@ export const getAdvertisersCampaigns: API.OperationMethod<
   GetAdvertisersCampaignsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(275) as any as S.Schema<GetAdvertisersCampaignsRequest>,
-  output: __S(174) as any as S.Schema<Campaign>,
+  input: GetAdvertisersCampaignsRequest,
+  output: Campaign,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8468,8 +10912,8 @@ export const getAdvertisersChannels: API.OperationMethod<
   GetAdvertisersChannelsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(276) as any as S.Schema<GetAdvertisersChannelsRequest>,
-  output: __S(176) as any as S.Schema<Channel>,
+  input: GetAdvertisersChannelsRequest,
+  output: Channel,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8483,8 +10927,8 @@ export const getAdvertisersCreatives: API.OperationMethod<
   GetAdvertisersCreativesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(277) as any as S.Schema<GetAdvertisersCreativesRequest>,
-  output: __S(203) as any as S.Schema<Creative>,
+  input: GetAdvertisersCreativesRequest,
+  output: Creative,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8498,8 +10942,8 @@ export const getAdvertisersInsertionOrders: API.OperationMethod<
   GetAdvertisersInsertionOrdersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(278) as any as S.Schema<GetAdvertisersInsertionOrdersRequest>,
-  output: __S(208) as any as S.Schema<InsertionOrder>,
+  input: GetAdvertisersInsertionOrdersRequest,
+  output: InsertionOrder,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8513,8 +10957,8 @@ export const getAdvertisersLineItems: API.OperationMethod<
   GetAdvertisersLineItemsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(279) as any as S.Schema<GetAdvertisersLineItemsRequest>,
-  output: __S(152) as any as S.Schema<LineItem>,
+  input: GetAdvertisersLineItemsRequest,
+  output: LineItem,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8531,10 +10975,8 @@ export const getAdvertisersLineItemsTargetingTypesAssignedTargetingOptions: API.
   GetAdvertisersLineItemsTargetingTypesAssignedTargetingOptionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(
-    280,
-  ) as any as S.Schema<GetAdvertisersLineItemsTargetingTypesAssignedTargetingOptionsRequest>,
-  output: __S(89) as any as S.Schema<AssignedTargetingOption>,
+  input: GetAdvertisersLineItemsTargetingTypesAssignedTargetingOptionsRequest,
+  output: AssignedTargetingOption,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8548,8 +10990,8 @@ export const getAdvertisersLocationLists: API.OperationMethod<
   GetAdvertisersLocationListsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(281) as any as S.Schema<GetAdvertisersLocationListsRequest>,
-  output: __S(212) as any as S.Schema<LocationList>,
+  input: GetAdvertisersLocationListsRequest,
+  output: LocationList,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8563,8 +11005,8 @@ export const getAdvertisersManualTriggers: API.OperationMethod<
   GetAdvertisersManualTriggersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(282) as any as S.Schema<GetAdvertisersManualTriggersRequest>,
-  output: __S(2) as any as S.Schema<ManualTrigger>,
+  input: GetAdvertisersManualTriggersRequest,
+  output: ManualTrigger,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8578,8 +11020,8 @@ export const getAdvertisersNegativeKeywordLists: API.OperationMethod<
   GetAdvertisersNegativeKeywordListsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(283) as any as S.Schema<GetAdvertisersNegativeKeywordListsRequest>,
-  output: __S(216) as any as S.Schema<NegativeKeywordList>,
+  input: GetAdvertisersNegativeKeywordListsRequest,
+  output: NegativeKeywordList,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8596,8 +11038,8 @@ export const getAdvertisersTargetingTypesAssignedTargetingOptions: API.Operation
   GetAdvertisersTargetingTypesAssignedTargetingOptionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(284) as any as S.Schema<GetAdvertisersTargetingTypesAssignedTargetingOptionsRequest>,
-  output: __S(89) as any as S.Schema<AssignedTargetingOption>,
+  input: GetAdvertisersTargetingTypesAssignedTargetingOptionsRequest,
+  output: AssignedTargetingOption,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8611,8 +11053,8 @@ export const getAdvertisersYoutubeAdGroupAds: API.OperationMethod<
   GetAdvertisersYoutubeAdGroupAdsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(285) as any as S.Schema<GetAdvertisersYoutubeAdGroupAdsRequest>,
-  output: __S(302) as any as S.Schema<YoutubeAdGroupAd>,
+  input: GetAdvertisersYoutubeAdGroupAdsRequest,
+  output: YoutubeAdGroupAd,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8626,8 +11068,8 @@ export const getAdvertisersYoutubeAdGroups: API.OperationMethod<
   GetAdvertisersYoutubeAdGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(303) as any as S.Schema<GetAdvertisersYoutubeAdGroupsRequest>,
-  output: __S(308) as any as S.Schema<YoutubeAdGroup>,
+  input: GetAdvertisersYoutubeAdGroupsRequest,
+  output: YoutubeAdGroup,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8644,10 +11086,8 @@ export const getAdvertisersYoutubeAdGroupsTargetingTypesAssignedTargetingOptions
   GetAdvertisersYoutubeAdGroupsTargetingTypesAssignedTargetingOptionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(
-    309,
-  ) as any as S.Schema<GetAdvertisersYoutubeAdGroupsTargetingTypesAssignedTargetingOptionsRequest>,
-  output: __S(89) as any as S.Schema<AssignedTargetingOption>,
+  input: GetAdvertisersYoutubeAdGroupsTargetingTypesAssignedTargetingOptionsRequest,
+  output: AssignedTargetingOption,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8661,8 +11101,8 @@ export const getCombinedAudiences: API.OperationMethod<
   GetCombinedAudiencesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(310) as any as S.Schema<GetCombinedAudiencesRequest>,
-  output: __S(311) as any as S.Schema<CombinedAudience>,
+  input: GetCombinedAudiencesRequest,
+  output: CombinedAudience,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8676,8 +11116,8 @@ export const getCustomBiddingAlgorithms: API.OperationMethod<
   GetCustomBiddingAlgorithmsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(312) as any as S.Schema<GetCustomBiddingAlgorithmsRequest>,
-  output: __S(222) as any as S.Schema<CustomBiddingAlgorithm>,
+  input: GetCustomBiddingAlgorithmsRequest,
+  output: CustomBiddingAlgorithm,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8691,8 +11131,8 @@ export const getCustomBiddingAlgorithmsScripts: API.OperationMethod<
   GetCustomBiddingAlgorithmsScriptsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(313) as any as S.Schema<GetCustomBiddingAlgorithmsScriptsRequest>,
-  output: __S(227) as any as S.Schema<CustomBiddingScript>,
+  input: GetCustomBiddingAlgorithmsScriptsRequest,
+  output: CustomBiddingScript,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8706,8 +11146,8 @@ export const getCustomLists: API.OperationMethod<
   GetCustomListsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(314) as any as S.Schema<GetCustomListsRequest>,
-  output: __S(315) as any as S.Schema<CustomList>,
+  input: GetCustomListsRequest,
+  output: CustomList,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8721,8 +11161,8 @@ export const getFloodlightGroups: API.OperationMethod<
   GetFloodlightGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(316) as any as S.Schema<GetFloodlightGroupsRequest>,
-  output: __S(319) as any as S.Schema<FloodlightGroup>,
+  input: GetFloodlightGroupsRequest,
+  output: FloodlightGroup,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8736,8 +11176,8 @@ export const getFloodlightGroupsFloodlightActivities: API.OperationMethod<
   GetFloodlightGroupsFloodlightActivitiesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(320) as any as S.Schema<GetFloodlightGroupsFloodlightActivitiesRequest>,
-  output: __S(323) as any as S.Schema<FloodlightActivity>,
+  input: GetFloodlightGroupsFloodlightActivitiesRequest,
+  output: FloodlightActivity,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8751,8 +11191,8 @@ export const getGoogleAudiences: API.OperationMethod<
   GetGoogleAudiencesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(324) as any as S.Schema<GetGoogleAudiencesRequest>,
-  output: __S(325) as any as S.Schema<GoogleAudience>,
+  input: GetGoogleAudiencesRequest,
+  output: GoogleAudience,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8766,8 +11206,8 @@ export const getGuaranteedOrders: API.OperationMethod<
   GetGuaranteedOrdersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(326) as any as S.Schema<GetGuaranteedOrdersRequest>,
-  output: __S(230) as any as S.Schema<GuaranteedOrder>,
+  input: GetGuaranteedOrdersRequest,
+  output: GuaranteedOrder,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8781,8 +11221,8 @@ export const getInventorySourceGroups: API.OperationMethod<
   GetInventorySourceGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(327) as any as S.Schema<GetInventorySourceGroupsRequest>,
-  output: __S(232) as any as S.Schema<InventorySourceGroup>,
+  input: GetInventorySourceGroupsRequest,
+  output: InventorySourceGroup,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8796,8 +11236,8 @@ export const getPartners: API.OperationMethod<
   GetPartnersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(328) as any as S.Schema<GetPartnersRequest>,
-  output: __S(336) as any as S.Schema<Partner>,
+  input: GetPartnersRequest,
+  output: Partner,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8811,8 +11251,8 @@ export const getPartnersChannels: API.OperationMethod<
   GetPartnersChannelsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(337) as any as S.Schema<GetPartnersChannelsRequest>,
-  output: __S(176) as any as S.Schema<Channel>,
+  input: GetPartnersChannelsRequest,
+  output: Channel,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8829,8 +11269,8 @@ export const getPartnersTargetingTypesAssignedTargetingOptions: API.OperationMet
   GetPartnersTargetingTypesAssignedTargetingOptionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(338) as any as S.Schema<GetPartnersTargetingTypesAssignedTargetingOptionsRequest>,
-  output: __S(89) as any as S.Schema<AssignedTargetingOption>,
+  input: GetPartnersTargetingTypesAssignedTargetingOptionsRequest,
+  output: AssignedTargetingOption,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8844,8 +11284,8 @@ export const getSdfdownloadtasksOperations: API.OperationMethod<
   GetSdfdownloadtasksOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(339) as any as S.Schema<GetSdfdownloadtasksOperationsRequest>,
-  output: __S(243) as any as S.Schema<Operation>,
+  input: GetSdfdownloadtasksOperationsRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8859,8 +11299,8 @@ export const getTargetingTypesTargetingOptions: API.OperationMethod<
   GetTargetingTypesTargetingOptionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(340) as any as S.Schema<GetTargetingTypesTargetingOptionsRequest>,
-  output: __S(358) as any as S.Schema<TargetingOption>,
+  input: GetTargetingTypesTargetingOptionsRequest,
+  output: TargetingOption,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8870,8 +11310,8 @@ export type GetUsersError = NotFound | Forbidden | GcpOpError;
 /** Gets a user. This method has unique authentication requirements. Read the prerequisites in our [Managing Users guide](/display-video/api/guides/users/overview#prerequisites) before using this method. The "Try this method" feature does not work for this method. */
 export const getUsers: API.OperationMethod<GetUsersRequest, User, GetUsersError, GcpOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(359) as any as S.Schema<GetUsersRequest>,
-    output: __S(244) as any as S.Schema<User>,
+    input: GetUsersRequest,
+    output: User,
     errors: [NotFound, Forbidden, UnknownGCPError],
     protocol: GcpProtocol,
     retry: Retry.Retry,
@@ -8886,8 +11326,8 @@ export const listAdvertisers: API.PaginatedOperationMethod<
   GcpOpContext,
   ListAdvertisersResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(360) as any as S.Schema<ListAdvertisersRequest>,
-  output: __S(362) as any as S.Schema<ListAdvertisersResponse>,
+  input: ListAdvertisersRequest,
+  output: ListAdvertisersResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8903,8 +11343,8 @@ export const listAdvertisersCampaigns: API.PaginatedOperationMethod<
   GcpOpContext,
   ListCampaignsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(363) as any as S.Schema<ListAdvertisersCampaignsRequest>,
-  output: __S(365) as any as S.Schema<ListCampaignsResponse>,
+  input: ListAdvertisersCampaignsRequest,
+  output: ListCampaignsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8920,8 +11360,8 @@ export const listAdvertisersChannels: API.PaginatedOperationMethod<
   GcpOpContext,
   ListChannelsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(366) as any as S.Schema<ListAdvertisersChannelsRequest>,
-  output: __S(368) as any as S.Schema<ListChannelsResponse>,
+  input: ListAdvertisersChannelsRequest,
+  output: ListChannelsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8937,8 +11377,8 @@ export const listAdvertisersChannelsSites: API.PaginatedOperationMethod<
   GcpOpContext,
   ListSitesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(369) as any as S.Schema<ListAdvertisersChannelsSitesRequest>,
-  output: __S(370) as any as S.Schema<ListSitesResponse>,
+  input: ListAdvertisersChannelsSitesRequest,
+  output: ListSitesResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8954,8 +11394,8 @@ export const listAdvertisersCreatives: API.PaginatedOperationMethod<
   GcpOpContext,
   ListCreativesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(371) as any as S.Schema<ListAdvertisersCreativesRequest>,
-  output: __S(373) as any as S.Schema<ListCreativesResponse>,
+  input: ListAdvertisersCreativesRequest,
+  output: ListCreativesResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8971,8 +11411,8 @@ export const listAdvertisersInsertionOrders: API.PaginatedOperationMethod<
   GcpOpContext,
   ListInsertionOrdersResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(374) as any as S.Schema<ListAdvertisersInsertionOrdersRequest>,
-  output: __S(376) as any as S.Schema<ListInsertionOrdersResponse>,
+  input: ListAdvertisersInsertionOrdersRequest,
+  output: ListInsertionOrdersResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8988,8 +11428,8 @@ export const listAdvertisersInvoices: API.PaginatedOperationMethod<
   GcpOpContext,
   ListInvoicesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(377) as any as S.Schema<ListAdvertisersInvoicesRequest>,
-  output: __S(382) as any as S.Schema<ListInvoicesResponse>,
+  input: ListAdvertisersInvoicesRequest,
+  output: ListInvoicesResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9005,8 +11445,8 @@ export const listAdvertisersLineItems: API.PaginatedOperationMethod<
   GcpOpContext,
   ListLineItemsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(383) as any as S.Schema<ListAdvertisersLineItemsRequest>,
-  output: __S(385) as any as S.Schema<ListLineItemsResponse>,
+  input: ListAdvertisersLineItemsRequest,
+  output: ListLineItemsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9025,10 +11465,8 @@ export const listAdvertisersLineItemsTargetingTypesAssignedTargetingOptions: API
   GcpOpContext,
   ListLineItemAssignedTargetingOptionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(
-    386,
-  ) as any as S.Schema<ListAdvertisersLineItemsTargetingTypesAssignedTargetingOptionsRequest>,
-  output: __S(387) as any as S.Schema<ListLineItemAssignedTargetingOptionsResponse>,
+  input: ListAdvertisersLineItemsTargetingTypesAssignedTargetingOptionsRequest,
+  output: ListLineItemAssignedTargetingOptionsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9044,8 +11482,8 @@ export const listAdvertisersLocationLists: API.PaginatedOperationMethod<
   GcpOpContext,
   ListLocationListsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(388) as any as S.Schema<ListAdvertisersLocationListsRequest>,
-  output: __S(390) as any as S.Schema<ListLocationListsResponse>,
+  input: ListAdvertisersLocationListsRequest,
+  output: ListLocationListsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9061,8 +11499,8 @@ export const listAdvertisersLocationListsAssignedLocations: API.PaginatedOperati
   GcpOpContext,
   ListAssignedLocationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(391) as any as S.Schema<ListAdvertisersLocationListsAssignedLocationsRequest>,
-  output: __S(392) as any as S.Schema<ListAssignedLocationsResponse>,
+  input: ListAdvertisersLocationListsAssignedLocationsRequest,
+  output: ListAssignedLocationsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9078,8 +11516,8 @@ export const listAdvertisersManualTriggers: API.PaginatedOperationMethod<
   GcpOpContext,
   ListManualTriggersResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(393) as any as S.Schema<ListAdvertisersManualTriggersRequest>,
-  output: __S(395) as any as S.Schema<ListManualTriggersResponse>,
+  input: ListAdvertisersManualTriggersRequest,
+  output: ListManualTriggersResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9095,8 +11533,8 @@ export const listAdvertisersNegativeKeywordLists: API.PaginatedOperationMethod<
   GcpOpContext,
   ListNegativeKeywordListsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(396) as any as S.Schema<ListAdvertisersNegativeKeywordListsRequest>,
-  output: __S(398) as any as S.Schema<ListNegativeKeywordListsResponse>,
+  input: ListAdvertisersNegativeKeywordListsRequest,
+  output: ListNegativeKeywordListsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9115,8 +11553,8 @@ export const listAdvertisersNegativeKeywordListsNegativeKeywords: API.PaginatedO
   GcpOpContext,
   ListNegativeKeywordsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(399) as any as S.Schema<ListAdvertisersNegativeKeywordListsNegativeKeywordsRequest>,
-  output: __S(400) as any as S.Schema<ListNegativeKeywordsResponse>,
+  input: ListAdvertisersNegativeKeywordListsNegativeKeywordsRequest,
+  output: ListNegativeKeywordsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9135,8 +11573,8 @@ export const listAdvertisersTargetingTypesAssignedTargetingOptions: API.Paginate
   GcpOpContext,
   ListAdvertiserAssignedTargetingOptionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(401) as any as S.Schema<ListAdvertisersTargetingTypesAssignedTargetingOptionsRequest>,
-  output: __S(402) as any as S.Schema<ListAdvertiserAssignedTargetingOptionsResponse>,
+  input: ListAdvertisersTargetingTypesAssignedTargetingOptionsRequest,
+  output: ListAdvertiserAssignedTargetingOptionsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9152,8 +11590,8 @@ export const listAdvertisersYoutubeAdGroupAds: API.PaginatedOperationMethod<
   GcpOpContext,
   ListYoutubeAdGroupAdsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(403) as any as S.Schema<ListAdvertisersYoutubeAdGroupAdsRequest>,
-  output: __S(405) as any as S.Schema<ListYoutubeAdGroupAdsResponse>,
+  input: ListAdvertisersYoutubeAdGroupAdsRequest,
+  output: ListYoutubeAdGroupAdsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9169,8 +11607,8 @@ export const listAdvertisersYoutubeAdGroups: API.PaginatedOperationMethod<
   GcpOpContext,
   ListYoutubeAdGroupsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(406) as any as S.Schema<ListAdvertisersYoutubeAdGroupsRequest>,
-  output: __S(408) as any as S.Schema<ListYoutubeAdGroupsResponse>,
+  input: ListAdvertisersYoutubeAdGroupsRequest,
+  output: ListYoutubeAdGroupsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9189,10 +11627,8 @@ export const listAdvertisersYoutubeAdGroupsTargetingTypesAssignedTargetingOption
   GcpOpContext,
   ListYoutubeAdGroupAssignedTargetingOptionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(
-    409,
-  ) as any as S.Schema<ListAdvertisersYoutubeAdGroupsTargetingTypesAssignedTargetingOptionsRequest>,
-  output: __S(402) as any as S.Schema<ListYoutubeAdGroupAssignedTargetingOptionsResponse>,
+  input: ListAdvertisersYoutubeAdGroupsTargetingTypesAssignedTargetingOptionsRequest,
+  output: ListYoutubeAdGroupAssignedTargetingOptionsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9208,8 +11644,8 @@ export const listAssignedTargetingOptionsAdvertisers: API.PaginatedOperationMeth
   GcpOpContext,
   BulkListAdvertiserAssignedTargetingOptionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(410) as any as S.Schema<ListAssignedTargetingOptionsAdvertisersRequest>,
-  output: __S(402) as any as S.Schema<BulkListAdvertiserAssignedTargetingOptionsResponse>,
+  input: ListAssignedTargetingOptionsAdvertisersRequest,
+  output: BulkListAdvertiserAssignedTargetingOptionsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9225,8 +11661,8 @@ export const listCombinedAudiences: API.PaginatedOperationMethod<
   GcpOpContext,
   ListCombinedAudiencesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(411) as any as S.Schema<ListCombinedAudiencesRequest>,
-  output: __S(413) as any as S.Schema<ListCombinedAudiencesResponse>,
+  input: ListCombinedAudiencesRequest,
+  output: ListCombinedAudiencesResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9242,8 +11678,8 @@ export const listCustomBiddingAlgorithms: API.PaginatedOperationMethod<
   GcpOpContext,
   ListCustomBiddingAlgorithmsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(414) as any as S.Schema<ListCustomBiddingAlgorithmsRequest>,
-  output: __S(416) as any as S.Schema<ListCustomBiddingAlgorithmsResponse>,
+  input: ListCustomBiddingAlgorithmsRequest,
+  output: ListCustomBiddingAlgorithmsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9259,8 +11695,8 @@ export const listCustomBiddingAlgorithmsScripts: API.PaginatedOperationMethod<
   GcpOpContext,
   ListCustomBiddingScriptsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(417) as any as S.Schema<ListCustomBiddingAlgorithmsScriptsRequest>,
-  output: __S(419) as any as S.Schema<ListCustomBiddingScriptsResponse>,
+  input: ListCustomBiddingAlgorithmsScriptsRequest,
+  output: ListCustomBiddingScriptsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9276,8 +11712,8 @@ export const listCustomLists: API.PaginatedOperationMethod<
   GcpOpContext,
   ListCustomListsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(420) as any as S.Schema<ListCustomListsRequest>,
-  output: __S(422) as any as S.Schema<ListCustomListsResponse>,
+  input: ListCustomListsRequest,
+  output: ListCustomListsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9293,8 +11729,8 @@ export const listFloodlightGroupsFloodlightActivities: API.PaginatedOperationMet
   GcpOpContext,
   ListFloodlightActivitiesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(423) as any as S.Schema<ListFloodlightGroupsFloodlightActivitiesRequest>,
-  output: __S(425) as any as S.Schema<ListFloodlightActivitiesResponse>,
+  input: ListFloodlightGroupsFloodlightActivitiesRequest,
+  output: ListFloodlightActivitiesResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9310,8 +11746,8 @@ export const listGoogleAudiences: API.PaginatedOperationMethod<
   GcpOpContext,
   ListGoogleAudiencesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(426) as any as S.Schema<ListGoogleAudiencesRequest>,
-  output: __S(428) as any as S.Schema<ListGoogleAudiencesResponse>,
+  input: ListGoogleAudiencesRequest,
+  output: ListGoogleAudiencesResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9327,8 +11763,8 @@ export const listGuaranteedOrders: API.PaginatedOperationMethod<
   GcpOpContext,
   ListGuaranteedOrdersResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(429) as any as S.Schema<ListGuaranteedOrdersRequest>,
-  output: __S(431) as any as S.Schema<ListGuaranteedOrdersResponse>,
+  input: ListGuaranteedOrdersRequest,
+  output: ListGuaranteedOrdersResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9344,8 +11780,8 @@ export const listInventorySourceGroups: API.PaginatedOperationMethod<
   GcpOpContext,
   ListInventorySourceGroupsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(432) as any as S.Schema<ListInventorySourceGroupsRequest>,
-  output: __S(434) as any as S.Schema<ListInventorySourceGroupsResponse>,
+  input: ListInventorySourceGroupsRequest,
+  output: ListInventorySourceGroupsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9364,8 +11800,8 @@ export const listInventorySourceGroupsAssignedInventorySources: API.PaginatedOpe
   GcpOpContext,
   ListAssignedInventorySourcesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(435) as any as S.Schema<ListInventorySourceGroupsAssignedInventorySourcesRequest>,
-  output: __S(436) as any as S.Schema<ListAssignedInventorySourcesResponse>,
+  input: ListInventorySourceGroupsAssignedInventorySourcesRequest,
+  output: ListAssignedInventorySourcesResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9381,8 +11817,8 @@ export const listPartners: API.PaginatedOperationMethod<
   GcpOpContext,
   ListPartnersResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(437) as any as S.Schema<ListPartnersRequest>,
-  output: __S(439) as any as S.Schema<ListPartnersResponse>,
+  input: ListPartnersRequest,
+  output: ListPartnersResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9398,8 +11834,8 @@ export const listPartnersChannels: API.PaginatedOperationMethod<
   GcpOpContext,
   ListChannelsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(440) as any as S.Schema<ListPartnersChannelsRequest>,
-  output: __S(368) as any as S.Schema<ListChannelsResponse>,
+  input: ListPartnersChannelsRequest,
+  output: ListChannelsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9415,8 +11851,8 @@ export const listPartnersChannelsSites: API.PaginatedOperationMethod<
   GcpOpContext,
   ListSitesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(441) as any as S.Schema<ListPartnersChannelsSitesRequest>,
-  output: __S(370) as any as S.Schema<ListSitesResponse>,
+  input: ListPartnersChannelsSitesRequest,
+  output: ListSitesResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9435,8 +11871,8 @@ export const listPartnersTargetingTypesAssignedTargetingOptions: API.PaginatedOp
   GcpOpContext,
   ListPartnerAssignedTargetingOptionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(442) as any as S.Schema<ListPartnersTargetingTypesAssignedTargetingOptionsRequest>,
-  output: __S(387) as any as S.Schema<ListPartnerAssignedTargetingOptionsResponse>,
+  input: ListPartnersTargetingTypesAssignedTargetingOptionsRequest,
+  output: ListPartnerAssignedTargetingOptionsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9452,8 +11888,8 @@ export const listTargetingTypesTargetingOptions: API.PaginatedOperationMethod<
   GcpOpContext,
   ListTargetingOptionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(443) as any as S.Schema<ListTargetingTypesTargetingOptionsRequest>,
-  output: __S(445) as any as S.Schema<ListTargetingOptionsResponse>,
+  input: ListTargetingTypesTargetingOptionsRequest,
+  output: ListTargetingOptionsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9469,8 +11905,8 @@ export const listUsers: API.PaginatedOperationMethod<
   GcpOpContext,
   ListUsersResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(446) as any as S.Schema<ListUsersRequest>,
-  output: __S(448) as any as S.Schema<ListUsersResponse>,
+  input: ListUsersRequest,
+  output: ListUsersResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9485,8 +11921,8 @@ export const lookupInvoiceCurrencyAdvertisersInvoices: API.OperationMethod<
   LookupInvoiceCurrencyAdvertisersInvoicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(449) as any as S.Schema<LookupInvoiceCurrencyAdvertisersInvoicesRequest>,
-  output: __S(450) as any as S.Schema<LookupInvoiceCurrencyResponse>,
+  input: LookupInvoiceCurrencyAdvertisersInvoicesRequest,
+  output: LookupInvoiceCurrencyResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9500,8 +11936,8 @@ export const patchAdvertisers: API.OperationMethod<
   PatchAdvertisersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(451) as any as S.Schema<PatchAdvertisersRequest>,
-  output: __S(165) as any as S.Schema<Advertiser>,
+  input: PatchAdvertisersRequest,
+  output: Advertiser,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9520,8 +11956,8 @@ export const patchAdvertisersCampaigns: API.OperationMethod<
   PatchAdvertisersCampaignsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(452) as any as S.Schema<PatchAdvertisersCampaignsRequest>,
-  output: __S(174) as any as S.Schema<Campaign>,
+  input: PatchAdvertisersCampaignsRequest,
+  output: Campaign,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9540,8 +11976,8 @@ export const patchAdvertisersChannels: API.OperationMethod<
   PatchAdvertisersChannelsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(453) as any as S.Schema<PatchAdvertisersChannelsRequest>,
-  output: __S(176) as any as S.Schema<Channel>,
+  input: PatchAdvertisersChannelsRequest,
+  output: Channel,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9560,8 +11996,8 @@ export const patchAdvertisersCreatives: API.OperationMethod<
   PatchAdvertisersCreativesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(454) as any as S.Schema<PatchAdvertisersCreativesRequest>,
-  output: __S(203) as any as S.Schema<Creative>,
+  input: PatchAdvertisersCreativesRequest,
+  output: Creative,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9580,8 +12016,8 @@ export const patchAdvertisersInsertionOrders: API.OperationMethod<
   PatchAdvertisersInsertionOrdersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(455) as any as S.Schema<PatchAdvertisersInsertionOrdersRequest>,
-  output: __S(208) as any as S.Schema<InsertionOrder>,
+  input: PatchAdvertisersInsertionOrdersRequest,
+  output: InsertionOrder,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9600,8 +12036,8 @@ export const patchAdvertisersLineItems: API.OperationMethod<
   PatchAdvertisersLineItemsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(456) as any as S.Schema<PatchAdvertisersLineItemsRequest>,
-  output: __S(152) as any as S.Schema<LineItem>,
+  input: PatchAdvertisersLineItemsRequest,
+  output: LineItem,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9620,8 +12056,8 @@ export const patchAdvertisersLocationLists: API.OperationMethod<
   PatchAdvertisersLocationListsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(457) as any as S.Schema<PatchAdvertisersLocationListsRequest>,
-  output: __S(212) as any as S.Schema<LocationList>,
+  input: PatchAdvertisersLocationListsRequest,
+  output: LocationList,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9640,8 +12076,8 @@ export const patchAdvertisersManualTriggers: API.OperationMethod<
   PatchAdvertisersManualTriggersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(458) as any as S.Schema<PatchAdvertisersManualTriggersRequest>,
-  output: __S(2) as any as S.Schema<ManualTrigger>,
+  input: PatchAdvertisersManualTriggersRequest,
+  output: ManualTrigger,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9660,8 +12096,8 @@ export const patchAdvertisersNegativeKeywordLists: API.OperationMethod<
   PatchAdvertisersNegativeKeywordListsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(459) as any as S.Schema<PatchAdvertisersNegativeKeywordListsRequest>,
-  output: __S(216) as any as S.Schema<NegativeKeywordList>,
+  input: PatchAdvertisersNegativeKeywordListsRequest,
+  output: NegativeKeywordList,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9680,8 +12116,8 @@ export const patchCustomBiddingAlgorithms: API.OperationMethod<
   PatchCustomBiddingAlgorithmsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(460) as any as S.Schema<PatchCustomBiddingAlgorithmsRequest>,
-  output: __S(222) as any as S.Schema<CustomBiddingAlgorithm>,
+  input: PatchCustomBiddingAlgorithmsRequest,
+  output: CustomBiddingAlgorithm,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9695,8 +12131,8 @@ export const patchFloodlightGroups: API.OperationMethod<
   PatchFloodlightGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(461) as any as S.Schema<PatchFloodlightGroupsRequest>,
-  output: __S(319) as any as S.Schema<FloodlightGroup>,
+  input: PatchFloodlightGroupsRequest,
+  output: FloodlightGroup,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9710,8 +12146,8 @@ export const patchGuaranteedOrders: API.OperationMethod<
   PatchGuaranteedOrdersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(462) as any as S.Schema<PatchGuaranteedOrdersRequest>,
-  output: __S(230) as any as S.Schema<GuaranteedOrder>,
+  input: PatchGuaranteedOrdersRequest,
+  output: GuaranteedOrder,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9730,8 +12166,8 @@ export const patchInventorySourceGroups: API.OperationMethod<
   PatchInventorySourceGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(463) as any as S.Schema<PatchInventorySourceGroupsRequest>,
-  output: __S(232) as any as S.Schema<InventorySourceGroup>,
+  input: PatchInventorySourceGroupsRequest,
+  output: InventorySourceGroup,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9745,8 +12181,8 @@ export const patchPartnersChannels: API.OperationMethod<
   PatchPartnersChannelsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(464) as any as S.Schema<PatchPartnersChannelsRequest>,
-  output: __S(176) as any as S.Schema<Channel>,
+  input: PatchPartnersChannelsRequest,
+  output: Channel,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9760,8 +12196,8 @@ export const patchUsers: API.OperationMethod<
   PatchUsersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(465) as any as S.Schema<PatchUsersRequest>,
-  output: __S(244) as any as S.Schema<User>,
+  input: PatchUsersRequest,
+  output: User,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9780,8 +12216,8 @@ export const replaceAdvertisersChannelsSites: API.OperationMethod<
   ReplaceAdvertisersChannelsSitesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(467) as any as S.Schema<ReplaceAdvertisersChannelsSitesRequest>,
-  output: __S(10) as any as S.Schema<ReplaceSitesResponse>,
+  input: ReplaceAdvertisersChannelsSitesRequest,
+  output: ReplaceSitesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9800,8 +12236,8 @@ export const replaceAdvertisersNegativeKeywordListsNegativeKeywords: API.Operati
   ReplaceAdvertisersNegativeKeywordListsNegativeKeywordsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(469) as any as S.Schema<ReplaceAdvertisersNegativeKeywordListsNegativeKeywordsRequest>,
-  output: __S(20) as any as S.Schema<ReplaceNegativeKeywordsResponse>,
+  input: ReplaceAdvertisersNegativeKeywordListsNegativeKeywordsRequest,
+  output: ReplaceNegativeKeywordsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9820,8 +12256,8 @@ export const replacePartnersChannelsSites: API.OperationMethod<
   ReplacePartnersChannelsSitesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(470) as any as S.Schema<ReplacePartnersChannelsSitesRequest>,
-  output: __S(10) as any as S.Schema<ReplaceSitesResponse>,
+  input: ReplacePartnersChannelsSitesRequest,
+  output: ReplaceSitesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9840,8 +12276,8 @@ export const searchTargetingTypesTargetingOptions: API.OperationMethod<
   SearchTargetingTypesTargetingOptionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(475) as any as S.Schema<SearchTargetingTypesTargetingOptionsRequest>,
-  output: __S(476) as any as S.Schema<SearchTargetingOptionsResponse>,
+  input: SearchTargetingTypesTargetingOptionsRequest,
+  output: SearchTargetingOptionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9860,8 +12296,8 @@ export const uploadAdvertisersAssets: API.OperationMethod<
   UploadAdvertisersAssetsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(478) as any as S.Schema<UploadAdvertisersAssetsRequest>,
-  output: __S(479) as any as S.Schema<CreateAssetResponse>,
+  input: UploadAdvertisersAssetsRequest,
+  output: CreateAssetResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9875,8 +12311,8 @@ export const uploadMedia: API.OperationMethod<
   UploadMediaError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(480) as any as S.Schema<UploadMediaRequest>,
-  output: __S(226) as any as S.Schema<GoogleBytestreamMedia>,
+  input: UploadMediaRequest,
+  output: GoogleBytestreamMedia,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9890,8 +12326,8 @@ export const uploadScriptCustomBiddingAlgorithms: API.OperationMethod<
   UploadScriptCustomBiddingAlgorithmsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(481) as any as S.Schema<UploadScriptCustomBiddingAlgorithmsRequest>,
-  output: __S(226) as any as S.Schema<CustomBiddingScriptRef>,
+  input: UploadScriptCustomBiddingAlgorithmsRequest,
+  output: CustomBiddingScriptRef,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9909,7 +12345,7 @@ function __c0(j: number): any {
         S.Struct({
           advertiserId: S.String.pipe(T.Label()),
           triggerId: S.String.pipe(T.Label()),
-          body: S.optional(__S(0).pipe(T.HttpBody())),
+          body: S.optional(ActivateManualTriggerRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -9923,7 +12359,7 @@ function __c0(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          state: S.optional(S.String),
+          state: S.optional(ManualTriggerStateEnum),
           latestActivationTime: S.optional(S.String),
           activationDurationMinutes: S.optional(S.String),
           triggerId: S.optional(S.String),
@@ -9968,7 +12404,7 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "Site" });
     case 7:
-      return S.Array(__S(6));
+      return S.Array(Site);
   }
 }
 function __c1(j: number): any {
@@ -9976,10 +12412,10 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          deletedSites: S.optional(__S(5)),
+          deletedSites: S.optional(StringList),
           advertiserId: S.optional(S.String),
           partnerId: S.optional(S.String),
-          createdSites: S.optional(__S(7)),
+          createdSites: S.optional(SiteList),
         }),
       ).annotate({ identifier: "BulkEditSitesRequest" });
     case 1:
@@ -9987,7 +12423,7 @@ function __c1(j: number): any {
         S.Struct({
           advertiserId: S.String.pipe(T.Label()),
           channelId: S.String.pipe(T.Label()),
-          body: S.optional(__S(8).pipe(T.HttpBody())),
+          body: S.optional(BulkEditSitesRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -10001,7 +12437,7 @@ function __c1(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          sites: S.optional(__S(7)),
+          sites: S.optional(SiteList),
         }),
       ).annotate({ identifier: "BulkEditSitesResponse" });
     case 3:
@@ -10013,12 +12449,12 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "AssignedLocation" });
     case 4:
-      return S.Array(__S(11));
+      return S.Array(AssignedLocation);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          deletedAssignedLocations: S.optional(__S(5)),
-          createdAssignedLocations: S.optional(__S(12)),
+          deletedAssignedLocations: S.optional(StringList),
+          createdAssignedLocations: S.optional(AssignedLocationList),
         }),
       ).annotate({
         identifier: "BulkEditAssignedLocationsRequest",
@@ -10028,7 +12464,7 @@ function __c1(j: number): any {
         S.Struct({
           locationListId: S.String.pipe(T.Label()),
           advertiserId: S.String.pipe(T.Label()),
-          body: S.optional(__S(13).pipe(T.HttpBody())),
+          body: S.optional(BulkEditAssignedLocationsRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -10042,7 +12478,7 @@ function __c1(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          assignedLocations: S.optional(__S(12)),
+          assignedLocations: S.optional(AssignedLocationList),
         }),
       ).annotate({
         identifier: "BulkEditAssignedLocationsResponse",
@@ -10059,12 +12495,12 @@ function __c2(j: number): any {
         }),
       ).annotate({ identifier: "NegativeKeyword" });
     case 1:
-      return S.Array(__S(16));
+      return S.Array(NegativeKeyword);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          createdNegativeKeywords: S.optional(__S(17)),
-          deletedNegativeKeywords: S.optional(__S(5)),
+          createdNegativeKeywords: S.optional(NegativeKeywordList_),
+          deletedNegativeKeywords: S.optional(StringList),
         }),
       ).annotate({
         identifier: "BulkEditNegativeKeywordsRequest",
@@ -10074,7 +12510,7 @@ function __c2(j: number): any {
         S.Struct({
           advertiserId: S.String.pipe(T.Label()),
           negativeKeywordListId: S.String.pipe(T.Label()),
-          body: S.optional(__S(18).pipe(T.HttpBody())),
+          body: S.optional(BulkEditNegativeKeywordsRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -10088,7 +12524,7 @@ function __c2(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          negativeKeywords: S.optional(__S(17)),
+          negativeKeywords: S.optional(NegativeKeywordList_),
         }),
       ).annotate({
         identifier: "BulkEditNegativeKeywordsResponse",
@@ -10096,14 +12532,14 @@ function __c2(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          assignedTargetingOptionIds: S.optional(__S(5)),
-          targetingType: S.optional(S.String),
+          assignedTargetingOptionIds: S.optional(StringList),
+          targetingType: S.optional(DeleteAssignedTargetingOptionsRequestTargetingTypeEnum),
         }),
       ).annotate({
         identifier: "DeleteAssignedTargetingOptionsRequest",
       });
     case 6:
-      return S.Array(__S(21));
+      return S.Array(DeleteAssignedTargetingOptionsRequest);
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -10120,7 +12556,9 @@ function __c3(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          proximityRadiusUnit: S.optional(S.String),
+          proximityRadiusUnit: S.optional(
+            BusinessChainAssignedTargetingOptionDetailsProximityRadiusUnitEnum,
+          ),
           proximityRadiusAmount: S.optional(S.Number),
           targetingOptionId: S.optional(S.String),
           displayName: S.optional(S.String),
@@ -10131,7 +12569,7 @@ function __c3(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          geoRegionType: S.optional(S.String),
+          geoRegionType: S.optional(GeoRegionAssignedTargetingOptionDetailsGeoRegionTypeEnum),
           targetingOptionId: S.optional(S.String),
           displayName: S.optional(S.String),
           negative: S.optional(S.Boolean),
@@ -10142,7 +12580,7 @@ function __c3(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          omid: S.optional(S.String),
+          omid: S.optional(OmidAssignedTargetingOptionDetailsOmidEnum),
         }),
       ).annotate({
         identifier: "OmidAssignedTargetingOptionDetails",
@@ -10151,8 +12589,10 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           endHour: S.optional(S.Number),
-          timeZoneResolution: S.optional(S.String),
-          dayOfWeek: S.optional(S.String),
+          timeZoneResolution: S.optional(
+            DayAndTimeAssignedTargetingOptionDetailsTimeZoneResolutionEnum,
+          ),
+          dayOfWeek: S.optional(DayAndTimeAssignedTargetingOptionDetailsDayOfWeekEnum),
           startHour: S.optional(S.Number),
         }),
       ).annotate({
@@ -10190,8 +12630,10 @@ function __c3(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          contentOutstreamPosition: S.optional(S.String),
-          adType: S.optional(S.String),
+          contentOutstreamPosition: S.optional(
+            ContentOutstreamPositionAssignedTargetingOptionDetailsContentOutstreamPositionEnum,
+          ),
+          adType: S.optional(ContentOutstreamPositionAssignedTargetingOptionDetailsAdTypeEnum),
         }),
       ).annotate({
         identifier: "ContentOutstreamPositionAssignedTargetingOptionDetails",
@@ -10212,7 +12654,9 @@ function __c4(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          householdIncome: S.optional(S.String),
+          householdIncome: S.optional(
+            HouseholdIncomeAssignedTargetingOptionDetailsHouseholdIncomeEnum,
+          ),
         }),
       ).annotate({
         identifier: "HouseholdIncomeAssignedTargetingOptionDetails",
@@ -10221,7 +12665,9 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           targetingOptionId: S.optional(S.String),
-          contentStreamType: S.optional(S.String),
+          contentStreamType: S.optional(
+            ContentStreamTypeAssignedTargetingOptionDetailsContentStreamTypeEnum,
+          ),
         }),
       ).annotate({
         identifier: "ContentStreamTypeAssignedTargetingOptionDetails",
@@ -10239,7 +12685,9 @@ function __c4(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          sessionPosition: S.optional(S.String),
+          sessionPosition: S.optional(
+            SessionPositionAssignedTargetingOptionDetailsSessionPositionEnum,
+          ),
         }),
       ).annotate({
         identifier: "SessionPositionAssignedTargetingOptionDetails",
@@ -10267,7 +12715,9 @@ function __c4(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          contentPosition: S.optional(S.String),
+          contentPosition: S.optional(
+            NativeContentPositionAssignedTargetingOptionDetailsContentPositionEnum,
+          ),
         }),
       ).annotate({
         identifier: "NativeContentPositionAssignedTargetingOptionDetails",
@@ -10280,7 +12730,7 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           avoidInsufficientStarRating: S.optional(S.Boolean),
-          avoidedStarRating: S.optional(S.String),
+          avoidedStarRating: S.optional(DoubleVerifyAppStarRatingAvoidedStarRatingEnum),
         }),
       ).annotate({
         identifier: "DoubleVerifyAppStarRating",
@@ -10288,22 +12738,26 @@ function __c5(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          viewableDuring: S.optional(S.String),
-          iab: S.optional(S.String),
+          viewableDuring: S.optional(DoubleVerifyDisplayViewabilityViewableDuringEnum),
+          iab: S.optional(DoubleVerifyDisplayViewabilityIabEnum),
         }),
       ).annotate({
         identifier: "DoubleVerifyDisplayViewability",
       });
     case 2:
-      return S.Array(S.String);
+      return S.Array(DoubleVerifyAvoidedAgeRatingsItemEnum);
     case 3:
-      return S.Array(S.String);
+      return S.Array(DoubleVerifyBrandSafetyCategoriesAvoidedHighSeverityCategoriesItemEnum);
     case 4:
       return S.suspend(() =>
         S.Struct({
           avoidUnknownBrandSafetyCategory: S.optional(S.Boolean),
-          avoidedHighSeverityCategories: S.optional(__S(43)),
-          avoidedMediumSeverityCategories: S.optional(__S(43)),
+          avoidedHighSeverityCategories: S.optional(
+            DoubleVerifyBrandSafetyCategoriesAvoidedHighSeverityCategoriesItemEnumList,
+          ),
+          avoidedMediumSeverityCategories: S.optional(
+            DoubleVerifyBrandSafetyCategoriesAvoidedMediumSeverityCategoriesItemEnumList,
+          ),
         }),
       ).annotate({
         identifier: "DoubleVerifyBrandSafetyCategories",
@@ -10311,9 +12765,9 @@ function __c5(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          videoViewableRate: S.optional(S.String),
-          playerImpressionRate: S.optional(S.String),
-          videoIab: S.optional(S.String),
+          videoViewableRate: S.optional(DoubleVerifyVideoViewabilityVideoViewableRateEnum),
+          playerImpressionRate: S.optional(DoubleVerifyVideoViewabilityPlayerImpressionRateEnum),
+          videoIab: S.optional(DoubleVerifyVideoViewabilityVideoIabEnum),
         }),
       ).annotate({
         identifier: "DoubleVerifyVideoViewability",
@@ -10322,7 +12776,7 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           avoidInsufficientOption: S.optional(S.Boolean),
-          avoidedFraudOption: S.optional(S.String),
+          avoidedFraudOption: S.optional(DoubleVerifyFraudInvalidTrafficAvoidedFraudOptionEnum),
         }),
       ).annotate({
         identifier: "DoubleVerifyFraudInvalidTraffic",
@@ -10330,13 +12784,13 @@ function __c5(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          appStarRating: S.optional(__S(40)),
-          displayViewability: S.optional(__S(41)),
-          avoidedAgeRatings: S.optional(__S(42)),
-          brandSafetyCategories: S.optional(__S(44)),
-          videoViewability: S.optional(__S(45)),
+          appStarRating: S.optional(DoubleVerifyAppStarRating),
+          displayViewability: S.optional(DoubleVerifyDisplayViewability),
+          avoidedAgeRatings: S.optional(DoubleVerifyAvoidedAgeRatingsItemEnumList),
+          brandSafetyCategories: S.optional(DoubleVerifyBrandSafetyCategories),
+          videoViewability: S.optional(DoubleVerifyVideoViewability),
           customSegmentId: S.optional(S.String),
-          fraudInvalidTraffic: S.optional(__S(46)),
+          fraudInvalidTraffic: S.optional(DoubleVerifyFraudInvalidTraffic),
         }),
       ).annotate({ identifier: "DoubleVerify" });
   }
@@ -10346,34 +12800,38 @@ function __c6(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          displayViewability: S.optional(S.String),
-          excludedGamblingRisk: S.optional(S.String),
-          excludedViolenceRisk: S.optional(S.String),
-          customSegmentId: S.optional(__S(5)),
-          excludedDrugsRisk: S.optional(S.String),
-          excludedAdFraudRisk: S.optional(S.String),
+          displayViewability: S.optional(IntegralAdScienceDisplayViewabilityEnum),
+          excludedGamblingRisk: S.optional(IntegralAdScienceExcludedGamblingRiskEnum),
+          excludedViolenceRisk: S.optional(IntegralAdScienceExcludedViolenceRiskEnum),
+          customSegmentId: S.optional(StringList),
+          excludedDrugsRisk: S.optional(IntegralAdScienceExcludedDrugsRiskEnum),
+          excludedAdFraudRisk: S.optional(IntegralAdScienceExcludedAdFraudRiskEnum),
           excludeUnrateable: S.optional(S.Boolean),
-          excludedAlcoholRisk: S.optional(S.String),
-          videoViewability: S.optional(S.String),
-          traqScoreOption: S.optional(S.String),
-          excludedAdultRisk: S.optional(S.String),
-          excludedHateSpeechRisk: S.optional(S.String),
-          excludedOffensiveLanguageRisk: S.optional(S.String),
-          excludedIllegalDownloadsRisk: S.optional(S.String),
+          excludedAlcoholRisk: S.optional(IntegralAdScienceExcludedAlcoholRiskEnum),
+          videoViewability: S.optional(IntegralAdScienceVideoViewabilityEnum),
+          traqScoreOption: S.optional(IntegralAdScienceTraqScoreOptionEnum),
+          excludedAdultRisk: S.optional(IntegralAdScienceExcludedAdultRiskEnum),
+          excludedHateSpeechRisk: S.optional(IntegralAdScienceExcludedHateSpeechRiskEnum),
+          excludedOffensiveLanguageRisk: S.optional(
+            IntegralAdScienceExcludedOffensiveLanguageRiskEnum,
+          ),
+          excludedIllegalDownloadsRisk: S.optional(
+            IntegralAdScienceExcludedIllegalDownloadsRiskEnum,
+          ),
         }),
       ).annotate({ identifier: "IntegralAdScience" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          excludedAdlooxCategories: S.optional(__S(42)),
+          excludedAdlooxCategories: S.optional(AdlooxExcludedAdlooxCategoriesItemEnumList),
         }),
       ).annotate({ identifier: "Adloox" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          doubleVerify: S.optional(__S(47)),
-          integralAdScience: S.optional(__S(48)),
-          adloox: S.optional(__S(49)),
+          doubleVerify: S.optional(DoubleVerify),
+          integralAdScience: S.optional(IntegralAdScience),
+          adloox: S.optional(Adloox),
         }),
       ).annotate({
         identifier: "ThirdPartyVerifierAssignedTargetingOptionDetails",
@@ -10381,7 +12839,9 @@ function __c6(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          videoPlayerSize: S.optional(S.String),
+          videoPlayerSize: S.optional(
+            VideoPlayerSizeAssignedTargetingOptionDetailsVideoPlayerSizeEnum,
+          ),
         }),
       ).annotate({
         identifier: "VideoPlayerSizeAssignedTargetingOptionDetails",
@@ -10397,7 +12857,7 @@ function __c6(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          exchange: S.optional(S.String),
+          exchange: S.optional(ExchangeAssignedTargetingOptionDetailsExchangeEnum),
         }),
       ).annotate({
         identifier: "ExchangeAssignedTargetingOptionDetails",
@@ -10413,7 +12873,9 @@ function __c6(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          excludedSensitiveCategory: S.optional(S.String),
+          excludedSensitiveCategory: S.optional(
+            SensitiveCategoryAssignedTargetingOptionDetailsExcludedSensitiveCategoryEnum,
+          ),
         }),
       ).annotate({
         identifier: "SensitiveCategoryAssignedTargetingOptionDetails",
@@ -10434,8 +12896,10 @@ function __c7(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          contentInstreamPosition: S.optional(S.String),
-          adType: S.optional(S.String),
+          contentInstreamPosition: S.optional(
+            ContentInstreamPositionAssignedTargetingOptionDetailsContentInstreamPositionEnum,
+          ),
+          adType: S.optional(ContentInstreamPositionAssignedTargetingOptionDetailsAdTypeEnum),
         }),
       ).annotate({
         identifier: "ContentInstreamPositionAssignedTargetingOptionDetails",
@@ -10444,7 +12908,7 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           negative: S.optional(S.Boolean),
-          exemptedPolicyNames: S.optional(__S(5)),
+          exemptedPolicyNames: S.optional(StringList),
           keyword: S.optional(S.String),
         }),
       ).annotate({
@@ -10454,7 +12918,9 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           targetingOptionId: S.optional(S.String),
-          userRewardedContent: S.optional(S.String),
+          userRewardedContent: S.optional(
+            UserRewardedContentAssignedTargetingOptionDetailsUserRewardedContentEnum,
+          ),
         }),
       ).annotate({
         identifier: "UserRewardedContentAssignedTargetingOptionDetails",
@@ -10468,11 +12934,11 @@ function __c7(j: number): any {
         identifier: "GoogleAudienceTargetingSetting",
       });
     case 5:
-      return S.Array(__S(60));
+      return S.Array(GoogleAudienceTargetingSetting);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          settings: S.optional(__S(61)),
+          settings: S.optional(GoogleAudienceTargetingSettingList),
         }),
       ).annotate({ identifier: "GoogleAudienceGroup" });
     case 7:
@@ -10488,11 +12954,11 @@ function __c7(j: number): any {
 function __c8(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(63));
+      return S.Array(CustomListTargetingSetting);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          settings: S.optional(__S(64)),
+          settings: S.optional(CustomListTargetingSettingList),
         }),
       ).annotate({ identifier: "CustomListGroup" });
     case 2:
@@ -10504,20 +12970,20 @@ function __c8(j: number): any {
         identifier: "CombinedAudienceTargetingSetting",
       });
     case 3:
-      return S.Array(__S(66));
+      return S.Array(CombinedAudienceTargetingSetting);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          settings: S.optional(__S(67)),
+          settings: S.optional(CombinedAudienceTargetingSettingList),
         }),
       ).annotate({ identifier: "CombinedAudienceGroup" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          includedGoogleAudienceGroup: S.optional(__S(62)),
-          excludedGoogleAudienceGroup: S.optional(__S(62)),
-          includedCustomListGroup: S.optional(__S(65)),
-          includedCombinedAudienceGroup: S.optional(__S(68)),
+          includedGoogleAudienceGroup: S.optional(GoogleAudienceGroup),
+          excludedGoogleAudienceGroup: S.optional(GoogleAudienceGroup),
+          includedCustomListGroup: S.optional(CustomListGroup),
+          includedCombinedAudienceGroup: S.optional(CombinedAudienceGroup),
         }),
       ).annotate({
         identifier: "AudienceGroupAssignedTargetingOptionDetails",
@@ -10534,7 +13000,7 @@ function __c8(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          ageRange: S.optional(S.String),
+          ageRange: S.optional(AgeRangeAssignedTargetingOptionDetailsAgeRangeEnum),
         }),
       ).annotate({
         identifier: "AgeRangeAssignedTargetingOptionDetails",
@@ -10546,7 +13012,9 @@ function __c9(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          excludedContentRatingTier: S.optional(S.String),
+          excludedContentRatingTier: S.optional(
+            DigitalContentLabelAssignedTargetingOptionDetailsExcludedContentRatingTierEnum,
+          ),
         }),
       ).annotate({
         identifier: "DigitalContentLabelAssignedTargetingOptionDetails",
@@ -10559,7 +13027,7 @@ function __c9(j: number): any {
           targetingOptionId: S.optional(S.String),
           proximityRadiusAmount: S.optional(S.Number),
           displayName: S.optional(S.String),
-          proximityRadiusUnit: S.optional(S.String),
+          proximityRadiusUnit: S.optional(PoiAssignedTargetingOptionDetailsProximityRadiusUnitEnum),
         }),
       ).annotate({
         identifier: "PoiAssignedTargetingOptionDetails",
@@ -10569,7 +13037,9 @@ function __c9(j: number): any {
         S.Struct({
           proximityLocationListId: S.optional(S.String),
           proximityRadius: S.optional(S.Number),
-          proximityRadiusUnit: S.optional(S.String),
+          proximityRadiusUnit: S.optional(
+            ProximityLocationListAssignedTargetingOptionDetailsProximityRadiusUnitEnum,
+          ),
         }),
       ).annotate({
         identifier: "ProximityLocationListAssignedTargetingOptionDetails",
@@ -10578,7 +13048,9 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           targetingOptionId: S.optional(S.String),
-          contentDuration: S.optional(S.String),
+          contentDuration: S.optional(
+            ContentDurationAssignedTargetingOptionDetailsContentDurationEnum,
+          ),
         }),
       ).annotate({
         identifier: "ContentDurationAssignedTargetingOptionDetails",
@@ -10604,7 +13076,7 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           youtubeAndPartnersBidMultiplier: S.optional(S.Number),
-          deviceType: S.optional(S.String),
+          deviceType: S.optional(DeviceTypeAssignedTargetingOptionDetailsDeviceTypeEnum),
         }),
       ).annotate({
         identifier: "DeviceTypeAssignedTargetingOptionDetails",
@@ -10624,7 +13096,9 @@ function __c10(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          audioContentType: S.optional(S.String),
+          audioContentType: S.optional(
+            AudioContentTypeAssignedTargetingOptionDetailsAudioContentTypeEnum,
+          ),
         }),
       ).annotate({
         identifier: "AudioContentTypeAssignedTargetingOptionDetails",
@@ -10645,7 +13119,7 @@ function __c10(j: number): any {
           appId: S.optional(S.String),
           displayName: S.optional(S.String),
           negative: S.optional(S.Boolean),
-          appPlatform: S.optional(S.String),
+          appPlatform: S.optional(AppAssignedTargetingOptionDetailsAppPlatformEnum),
         }),
       ).annotate({
         identifier: "AppAssignedTargetingOptionDetails",
@@ -10654,8 +13128,10 @@ function __c10(j: number): any {
       return S.suspend(() =>
         S.Struct({
           targetingOptionId: S.optional(S.String),
-          onScreenPosition: S.optional(S.String),
-          adType: S.optional(S.String),
+          onScreenPosition: S.optional(
+            OnScreenPositionAssignedTargetingOptionDetailsOnScreenPositionEnum,
+          ),
+          adType: S.optional(OnScreenPositionAssignedTargetingOptionDetailsAdTypeEnum),
         }),
       ).annotate({
         identifier: "OnScreenPositionAssignedTargetingOptionDetails",
@@ -10663,7 +13139,7 @@ function __c10(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          viewability: S.optional(S.String),
+          viewability: S.optional(ViewabilityAssignedTargetingOptionDetailsViewabilityEnum),
         }),
       ).annotate({
         identifier: "ViewabilityAssignedTargetingOptionDetails",
@@ -10671,7 +13147,7 @@ function __c10(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          environment: S.optional(S.String),
+          environment: S.optional(EnvironmentAssignedTargetingOptionDetailsEnvironmentEnum),
         }),
       ).annotate({
         identifier: "EnvironmentAssignedTargetingOptionDetails",
@@ -10679,7 +13155,7 @@ function __c10(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          gender: S.optional(S.String),
+          gender: S.optional(GenderAssignedTargetingOptionDetailsGenderEnum),
         }),
       ).annotate({
         identifier: "GenderAssignedTargetingOptionDetails",
@@ -10688,7 +13164,9 @@ function __c10(j: number): any {
       return S.suspend(() =>
         S.Struct({
           targetingOptionId: S.optional(S.String),
-          authorizedSellerStatus: S.optional(S.String),
+          authorizedSellerStatus: S.optional(
+            AuthorizedSellerStatusAssignedTargetingOptionDetailsAuthorizedSellerStatusEnum,
+          ),
         }),
       ).annotate({
         identifier: "AuthorizedSellerStatusAssignedTargetingOptionDetails",
@@ -10700,7 +13178,9 @@ function __c11(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          parentalStatus: S.optional(S.String),
+          parentalStatus: S.optional(
+            ParentalStatusAssignedTargetingOptionDetailsParentalStatusEnum,
+          ),
         }),
       ).annotate({
         identifier: "ParentalStatusAssignedTargetingOptionDetails",
@@ -10708,81 +13188,99 @@ function __c11(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          regionalLocationListDetails: S.optional(__S(23)),
-          businessChainDetails: S.optional(__S(24)),
-          geoRegionDetails: S.optional(__S(25)),
-          omidDetails: S.optional(__S(26)),
-          dayAndTimeDetails: S.optional(__S(27)),
-          deviceMakeModelDetails: S.optional(__S(28)),
-          carrierAndIspDetails: S.optional(__S(29)),
-          youtubeChannelPackDetails: S.optional(__S(30)),
-          contentOutstreamPositionDetails: S.optional(__S(31)),
-          youtubeChannelDetails: S.optional(__S(32)),
-          householdIncomeDetails: S.optional(__S(33)),
-          contentStreamTypeDetails: S.optional(__S(34)),
-          operatingSystemDetails: S.optional(__S(35)),
-          sessionPositionDetails: S.optional(__S(36)),
-          targetingType: S.optional(S.String),
-          languageDetails: S.optional(__S(37)),
-          categoryDetails: S.optional(__S(38)),
-          nativeContentPositionDetails: S.optional(__S(39)),
-          thirdPartyVerifierDetails: S.optional(__S(50)),
-          videoPlayerSizeDetails: S.optional(__S(51)),
-          browserDetails: S.optional(__S(28)),
-          subExchangeDetails: S.optional(__S(52)),
-          exchangeDetails: S.optional(__S(53)),
-          inventorySourceGroupDetails: S.optional(__S(54)),
-          sensitiveCategoryExclusionDetails: S.optional(__S(55)),
-          youtubeVideoDetails: S.optional(__S(56)),
-          contentInstreamPositionDetails: S.optional(__S(57)),
-          keywordDetails: S.optional(__S(58)),
-          userRewardedContentDetails: S.optional(__S(59)),
-          audienceGroupDetails: S.optional(__S(69)),
-          channelDetails: S.optional(__S(70)),
-          ageRangeDetails: S.optional(__S(71)),
-          digitalContentLabelExclusionDetails: S.optional(__S(72)),
+          regionalLocationListDetails: S.optional(
+            RegionalLocationListAssignedTargetingOptionDetails,
+          ),
+          businessChainDetails: S.optional(BusinessChainAssignedTargetingOptionDetails),
+          geoRegionDetails: S.optional(GeoRegionAssignedTargetingOptionDetails),
+          omidDetails: S.optional(OmidAssignedTargetingOptionDetails),
+          dayAndTimeDetails: S.optional(DayAndTimeAssignedTargetingOptionDetails),
+          deviceMakeModelDetails: S.optional(DeviceMakeModelAssignedTargetingOptionDetails),
+          carrierAndIspDetails: S.optional(CarrierAndIspAssignedTargetingOptionDetails),
+          youtubeChannelPackDetails: S.optional(YoutubeChannelPackAssignedTargetingOptionDetails),
+          contentOutstreamPositionDetails: S.optional(
+            ContentOutstreamPositionAssignedTargetingOptionDetails,
+          ),
+          youtubeChannelDetails: S.optional(YoutubeChannelAssignedTargetingOptionDetails),
+          householdIncomeDetails: S.optional(HouseholdIncomeAssignedTargetingOptionDetails),
+          contentStreamTypeDetails: S.optional(ContentStreamTypeAssignedTargetingOptionDetails),
+          operatingSystemDetails: S.optional(OperatingSystemAssignedTargetingOptionDetails),
+          sessionPositionDetails: S.optional(SessionPositionAssignedTargetingOptionDetails),
+          targetingType: S.optional(AssignedTargetingOptionTargetingTypeEnum),
+          languageDetails: S.optional(LanguageAssignedTargetingOptionDetails),
+          categoryDetails: S.optional(CategoryAssignedTargetingOptionDetails),
+          nativeContentPositionDetails: S.optional(
+            NativeContentPositionAssignedTargetingOptionDetails,
+          ),
+          thirdPartyVerifierDetails: S.optional(ThirdPartyVerifierAssignedTargetingOptionDetails),
+          videoPlayerSizeDetails: S.optional(VideoPlayerSizeAssignedTargetingOptionDetails),
+          browserDetails: S.optional(BrowserAssignedTargetingOptionDetails),
+          subExchangeDetails: S.optional(SubExchangeAssignedTargetingOptionDetails),
+          exchangeDetails: S.optional(ExchangeAssignedTargetingOptionDetails),
+          inventorySourceGroupDetails: S.optional(
+            InventorySourceGroupAssignedTargetingOptionDetails,
+          ),
+          sensitiveCategoryExclusionDetails: S.optional(
+            SensitiveCategoryAssignedTargetingOptionDetails,
+          ),
+          youtubeVideoDetails: S.optional(YoutubeVideoAssignedTargetingOptionDetails),
+          contentInstreamPositionDetails: S.optional(
+            ContentInstreamPositionAssignedTargetingOptionDetails,
+          ),
+          keywordDetails: S.optional(KeywordAssignedTargetingOptionDetails),
+          userRewardedContentDetails: S.optional(UserRewardedContentAssignedTargetingOptionDetails),
+          audienceGroupDetails: S.optional(AudienceGroupAssignedTargetingOptionDetails),
+          channelDetails: S.optional(ChannelAssignedTargetingOptionDetails),
+          ageRangeDetails: S.optional(AgeRangeAssignedTargetingOptionDetails),
+          digitalContentLabelExclusionDetails: S.optional(
+            DigitalContentLabelAssignedTargetingOptionDetails,
+          ),
           assignedTargetingOptionId: S.optional(S.String),
-          poiDetails: S.optional(__S(73)),
-          proximityLocationListDetails: S.optional(__S(74)),
-          contentDurationDetails: S.optional(__S(75)),
-          negativeKeywordListDetails: S.optional(__S(76)),
-          urlDetails: S.optional(__S(77)),
-          contentGenreDetails: S.optional(__S(38)),
-          deviceTypeDetails: S.optional(__S(78)),
-          inventorySourceDetails: S.optional(__S(79)),
+          poiDetails: S.optional(PoiAssignedTargetingOptionDetails),
+          proximityLocationListDetails: S.optional(
+            ProximityLocationListAssignedTargetingOptionDetails,
+          ),
+          contentDurationDetails: S.optional(ContentDurationAssignedTargetingOptionDetails),
+          negativeKeywordListDetails: S.optional(NegativeKeywordListAssignedTargetingOptionDetails),
+          urlDetails: S.optional(UrlAssignedTargetingOptionDetails),
+          contentGenreDetails: S.optional(ContentGenreAssignedTargetingOptionDetails),
+          deviceTypeDetails: S.optional(DeviceTypeAssignedTargetingOptionDetails),
+          inventorySourceDetails: S.optional(InventorySourceAssignedTargetingOptionDetails),
           assignedTargetingOptionIdAlias: S.optional(S.String),
-          audioContentTypeDetails: S.optional(__S(80)),
-          appCategoryDetails: S.optional(__S(81)),
-          appDetails: S.optional(__S(82)),
-          onScreenPositionDetails: S.optional(__S(83)),
-          viewabilityDetails: S.optional(__S(84)),
+          audioContentTypeDetails: S.optional(AudioContentTypeAssignedTargetingOptionDetails),
+          appCategoryDetails: S.optional(AppCategoryAssignedTargetingOptionDetails),
+          appDetails: S.optional(AppAssignedTargetingOptionDetails),
+          onScreenPositionDetails: S.optional(OnScreenPositionAssignedTargetingOptionDetails),
+          viewabilityDetails: S.optional(ViewabilityAssignedTargetingOptionDetails),
           name: S.optional(S.String),
-          environmentDetails: S.optional(__S(85)),
-          genderDetails: S.optional(__S(86)),
-          authorizedSellerStatusDetails: S.optional(__S(87)),
-          parentalStatusDetails: S.optional(__S(88)),
-          inheritance: S.optional(S.String),
+          environmentDetails: S.optional(EnvironmentAssignedTargetingOptionDetails),
+          genderDetails: S.optional(GenderAssignedTargetingOptionDetails),
+          authorizedSellerStatusDetails: S.optional(
+            AuthorizedSellerStatusAssignedTargetingOptionDetails,
+          ),
+          parentalStatusDetails: S.optional(ParentalStatusAssignedTargetingOptionDetails),
+          inheritance: S.optional(AssignedTargetingOptionInheritanceEnum),
         }),
       ).annotate({ identifier: "AssignedTargetingOption" });
     case 2:
-      return S.Array(__S(89));
+      return S.Array(AssignedTargetingOption);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          assignedTargetingOptions: S.optional(__S(90)),
-          targetingType: S.optional(S.String),
+          assignedTargetingOptions: S.optional(AssignedTargetingOptionList),
+          targetingType: S.optional(CreateAssignedTargetingOptionsRequestTargetingTypeEnum),
         }),
       ).annotate({
         identifier: "CreateAssignedTargetingOptionsRequest",
       });
     case 4:
-      return S.Array(__S(91));
+      return S.Array(CreateAssignedTargetingOptionsRequest);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          deleteRequests: S.optional(__S(22)),
-          createRequests: S.optional(__S(92)),
-          lineItemIds: S.optional(__S(5)),
+          deleteRequests: S.optional(DeleteAssignedTargetingOptionsRequestList),
+          createRequests: S.optional(CreateAssignedTargetingOptionsRequestList),
+          lineItemIds: S.optional(StringList),
         }),
       ).annotate({
         identifier: "BulkEditAssignedTargetingOptionsRequest",
@@ -10791,7 +13289,7 @@ function __c11(j: number): any {
       return S.suspend(() =>
         S.Struct({
           advertiserId: S.String.pipe(T.Label()),
-          body: S.optional(__S(93).pipe(T.HttpBody())),
+          body: S.optional(BulkEditAssignedTargetingOptionsRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -10809,23 +13307,23 @@ function __c11(j: number): any {
 function __c12(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(95));
+      return S.Array(DocumentMap);
     case 1:
       return S.suspend(() =>
         S.Struct({
           code: S.optional(S.Number),
-          details: S.optional(__S(96)),
+          details: S.optional(DocumentMapList),
           message: S.optional(S.String),
         }),
       ).annotate({ identifier: "Status" });
     case 2:
-      return S.Array(__S(97));
+      return S.Array(Status);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          errors: S.optional(__S(98)),
-          failedLineItemIds: S.optional(__S(5)),
-          updatedLineItemIds: S.optional(__S(5)),
+          errors: S.optional(StatusList),
+          failedLineItemIds: S.optional(StringList),
+          updatedLineItemIds: S.optional(StringList),
         }),
       ).annotate({
         identifier: "BulkEditAssignedTargetingOptionsResponse",
@@ -10834,18 +13332,18 @@ function __c12(j: number): any {
       return S.suspend(() =>
         S.Struct({
           assignedUserRoleId: S.optional(S.String),
-          userRole: S.optional(S.String),
+          userRole: S.optional(AssignedUserRoleUserRoleEnum),
           partnerId: S.optional(S.String),
           advertiserId: S.optional(S.String),
         }),
       ).annotate({ identifier: "AssignedUserRole" });
     case 5:
-      return S.Array(__S(100));
+      return S.Array(AssignedUserRole);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          deletedAssignedUserRoles: S.optional(__S(5)),
-          createdAssignedUserRoles: S.optional(__S(101)),
+          deletedAssignedUserRoles: S.optional(StringList),
+          createdAssignedUserRoles: S.optional(AssignedUserRoleList),
         }),
       ).annotate({
         identifier: "BulkEditAssignedUserRolesRequest",
@@ -10854,7 +13352,7 @@ function __c12(j: number): any {
       return S.suspend(() =>
         S.Struct({
           userId: S.String.pipe(T.Label()),
-          body: S.optional(__S(102).pipe(T.HttpBody())),
+          body: S.optional(BulkEditAssignedUserRolesRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -10872,7 +13370,7 @@ function __c13(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          createdAssignedUserRoles: S.optional(__S(101)),
+          createdAssignedUserRoles: S.optional(AssignedUserRoleList),
         }),
       ).annotate({
         identifier: "BulkEditAssignedUserRolesResponse",
@@ -10886,14 +13384,14 @@ function __c13(j: number): any {
         }),
       ).annotate({ identifier: "AssignedInventorySource" });
     case 2:
-      return S.Array(__S(105));
+      return S.Array(AssignedInventorySource);
     case 3:
       return S.suspend(() =>
         S.Struct({
           advertiserId: S.optional(S.String),
           partnerId: S.optional(S.String),
-          deletedAssignedInventorySources: S.optional(__S(5)),
-          createdAssignedInventorySources: S.optional(__S(106)),
+          deletedAssignedInventorySources: S.optional(StringList),
+          createdAssignedInventorySources: S.optional(AssignedInventorySourceList),
         }),
       ).annotate({
         identifier: "BulkEditAssignedInventorySourcesRequest",
@@ -10902,7 +13400,7 @@ function __c13(j: number): any {
       return S.suspend(() =>
         S.Struct({
           inventorySourceGroupId: S.String.pipe(T.Label()),
-          body: S.optional(__S(107).pipe(T.HttpBody())),
+          body: S.optional(BulkEditAssignedInventorySourcesRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -10916,7 +13414,7 @@ function __c13(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          assignedInventorySources: S.optional(__S(106)),
+          assignedInventorySources: S.optional(AssignedInventorySourceList),
         }),
       ).annotate({
         identifier: "BulkEditAssignedInventorySourcesResponse",
@@ -10926,7 +13424,7 @@ function __c13(j: number): any {
         S.Struct({
           partnerId: S.String.pipe(T.Label()),
           channelId: S.String.pipe(T.Label()),
-          body: S.optional(__S(8).pipe(T.HttpBody())),
+          body: S.optional(BulkEditSitesRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -10945,7 +13443,7 @@ function __c13(j: number): any {
           orderBy: S.optional(S.String.pipe(T.Query())),
           pageSize: S.optional(S.Number.pipe(T.Query())),
           advertiserId: S.String.pipe(T.Label()),
-          youtubeAdGroupIds: S.optional(__S(5).pipe(T.Query())),
+          youtubeAdGroupIds: S.optional(StringList.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -10964,18 +13462,20 @@ function __c14(j: number): any {
       return S.suspend(() =>
         S.Struct({
           youtubeAdGroupId: S.optional(S.String),
-          assignedTargetingOption: S.optional(__S(89)),
+          assignedTargetingOption: S.optional(AssignedTargetingOption),
         }),
       ).annotate({
         identifier: "YoutubeAdGroupAssignedTargetingOption",
       });
     case 1:
-      return S.Array(__S(112));
+      return S.Array(YoutubeAdGroupAssignedTargetingOption);
     case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          youtubeAdGroupAssignedTargetingOptions: S.optional(__S(113)),
+          youtubeAdGroupAssignedTargetingOptions: S.optional(
+            YoutubeAdGroupAssignedTargetingOptionList,
+          ),
         }),
       ).annotate({
         identifier: "BulkListAdGroupAssignedTargetingOptionsResponse",
@@ -10985,7 +13485,7 @@ function __c14(j: number): any {
         S.Struct({
           orderBy: S.optional(S.String.pipe(T.Query())),
           pageSize: S.optional(S.Number.pipe(T.Query())),
-          lineItemIds: S.optional(__S(5).pipe(T.Query())),
+          lineItemIds: S.optional(StringList.pipe(T.Query())),
           pageToken: S.optional(S.String.pipe(T.Query())),
           filter: S.optional(S.String.pipe(T.Query())),
           advertiserId: S.String.pipe(T.Label()),
@@ -11003,18 +13503,18 @@ function __c14(j: number): any {
       return S.suspend(() =>
         S.Struct({
           lineItemId: S.optional(S.String),
-          assignedTargetingOption: S.optional(__S(89)),
+          assignedTargetingOption: S.optional(AssignedTargetingOption),
         }),
       ).annotate({
         identifier: "LineItemAssignedTargetingOption",
       });
     case 5:
-      return S.Array(__S(116));
+      return S.Array(LineItemAssignedTargetingOption);
     case 6:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          lineItemAssignedTargetingOptions: S.optional(__S(117)),
+          lineItemAssignedTargetingOptions: S.optional(LineItemAssignedTargetingOptionList),
         }),
       ).annotate({
         identifier: "BulkListAssignedTargetingOptionsResponse",
@@ -11022,9 +13522,9 @@ function __c14(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          budgetUnit: S.optional(S.String),
+          budgetUnit: S.optional(LineItemBudgetBudgetUnitEnum),
           maxAmount: S.optional(S.String),
-          budgetAllocationType: S.optional(S.String),
+          budgetAllocationType: S.optional(LineItemBudgetBudgetAllocationTypeEnum),
         }),
       ).annotate({ identifier: "LineItemBudget" });
   }
@@ -11034,7 +13534,7 @@ function __c15(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          targetingExpansionLevel: S.optional(S.String),
+          targetingExpansionLevel: S.optional(TargetingExpansionConfigTargetingExpansionLevelEnum),
           excludeFirstPartyAudience: S.optional(S.Boolean),
           excludeDemographicExpansion: S.optional(S.Boolean),
         }),
@@ -11046,7 +13546,7 @@ function __c15(j: number): any {
           maxImpressions: S.optional(S.Number),
           unlimited: S.optional(S.Boolean),
           timeUnitCount: S.optional(S.Number),
-          timeUnit: S.optional(S.String),
+          timeUnit: S.optional(FrequencyCapTimeUnitEnum),
         }),
       ).annotate({ identifier: "FrequencyCap" });
     case 2:
@@ -11060,13 +13560,13 @@ function __c15(j: number): any {
         identifier: "TrackingFloodlightActivityConfig",
       });
     case 3:
-      return S.Array(__S(122));
+      return S.Array(TrackingFloodlightActivityConfig);
     case 4:
       return S.suspend(() =>
         S.Struct({
           postViewCountPercentageMillis: S.optional(S.String),
           primaryAttributionModelId: S.optional(S.String),
-          floodlightActivityConfigs: S.optional(__S(123)),
+          floodlightActivityConfigs: S.optional(TrackingFloodlightActivityConfigList),
         }),
       ).annotate({ identifier: "ConversionCountingConfig" });
     case 5:
@@ -11079,14 +13579,14 @@ function __c15(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          markupType: S.optional(S.String),
+          markupType: S.optional(PartnerRevenueModelMarkupTypeEnum),
           markupAmount: S.optional(S.String),
         }),
       ).annotate({ identifier: "PartnerRevenueModel" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          platform: S.optional(S.String),
+          platform: S.optional(MobileAppPlatformEnum),
           appId: S.optional(S.String),
           publisher: S.optional(S.String),
           displayName: S.optional(S.String),
@@ -11099,31 +13599,31 @@ function __c16(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          feeType: S.optional(S.String),
-          costType: S.optional(S.String),
+          feeType: S.optional(PartnerCostFeeTypeEnum),
+          costType: S.optional(PartnerCostCostTypeEnum),
           feeAmount: S.optional(S.String),
           feePercentageMillis: S.optional(S.String),
-          invoiceType: S.optional(S.String),
+          invoiceType: S.optional(PartnerCostInvoiceTypeEnum),
         }),
       ).annotate({ identifier: "PartnerCost" });
     case 1:
-      return S.Array(__S(128));
+      return S.Array(PartnerCost);
     case 2:
       return S.suspend(() =>
         S.Struct({
           placementId: S.optional(S.String),
-          vendor: S.optional(S.String),
+          vendor: S.optional(ThirdPartyVendorConfigVendorEnum),
         }),
       ).annotate({ identifier: "ThirdPartyVendorConfig" });
     case 3:
-      return S.Array(__S(130));
+      return S.Array(ThirdPartyVendorConfig);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          reachVendorConfigs: S.optional(__S(131)),
-          brandSafetyVendorConfigs: S.optional(__S(131)),
-          viewabilityVendorConfigs: S.optional(__S(131)),
-          brandLiftVendorConfigs: S.optional(__S(131)),
+          reachVendorConfigs: S.optional(ThirdPartyVendorConfigList),
+          brandSafetyVendorConfigs: S.optional(ThirdPartyVendorConfigList),
+          viewabilityVendorConfigs: S.optional(ThirdPartyVendorConfigList),
+          brandLiftVendorConfigs: S.optional(ThirdPartyVendorConfigList),
         }),
       ).annotate({
         identifier: "ThirdPartyMeasurementConfigs",
@@ -11131,7 +13631,7 @@ function __c16(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          thirdPartyMeasurementConfigs: S.optional(__S(132)),
+          thirdPartyMeasurementConfigs: S.optional(ThirdPartyMeasurementConfigs),
           geoLanguageTargetingEnabled: S.optional(S.Boolean),
           linkedMerchantId: S.optional(S.String),
         }),
@@ -11147,8 +13647,8 @@ function __c16(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          endDate: S.optional(__S(134)),
-          startDate: S.optional(__S(134)),
+          endDate: S.optional(Displayvideo_Date),
+          startDate: S.optional(Displayvideo_Date),
         }),
       ).annotate({ identifier: "DateRange" });
   }
@@ -11158,16 +13658,16 @@ function __c17(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          flightDateType: S.optional(S.String),
-          dateRange: S.optional(__S(135)),
+          flightDateType: S.optional(LineItemFlightFlightDateTypeEnum),
+          dateRange: S.optional(DateRange),
         }),
       ).annotate({ identifier: "LineItemFlight" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           dailyMaxMicros: S.optional(S.String),
-          pacingType: S.optional(S.String),
-          pacingPeriod: S.optional(S.String),
+          pacingType: S.optional(PacingPacingTypeEnum),
+          pacingPeriod: S.optional(PacingPacingPeriodEnum),
           dailyMaxImpressions: S.optional(S.String),
         }),
       ).annotate({ identifier: "Pacing" });
@@ -11180,8 +13680,10 @@ function __c17(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(S.String),
-          effectiveBiddingValueSource: S.optional(S.String),
+          type: S.optional(DemandGenBiddingStrategyTypeEnum),
+          effectiveBiddingValueSource: S.optional(
+            DemandGenBiddingStrategyEffectiveBiddingValueSourceEnum,
+          ),
           value: S.optional(S.String),
           effectiveBiddingValue: S.optional(S.String),
         }),
@@ -11189,8 +13691,10 @@ function __c17(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(S.String),
-          adGroupEffectiveTargetCpaSource: S.optional(S.String),
+          type: S.optional(YoutubeAndPartnersBiddingStrategyTypeEnum),
+          adGroupEffectiveTargetCpaSource: S.optional(
+            YoutubeAndPartnersBiddingStrategyAdGroupEffectiveTargetCpaSourceEnum,
+          ),
           value: S.optional(S.String),
           adGroupEffectiveTargetCpaValue: S.optional(S.String),
         }),
@@ -11203,7 +13707,7 @@ function __c17(j: number): any {
           maxAverageCpmBidAmountMicros: S.optional(S.String),
           raiseBidForDeals: S.optional(S.Boolean),
           customBiddingAlgorithmId: S.optional(S.String),
-          performanceGoalType: S.optional(S.String),
+          performanceGoalType: S.optional(MaximizeSpendBidStrategyPerformanceGoalTypeEnum),
         }),
       ).annotate({ identifier: "MaximizeSpendBidStrategy" });
     case 6:
@@ -11212,7 +13716,7 @@ function __c17(j: number): any {
           performanceGoalAmountMicros: S.optional(S.String),
           maxAverageCpmBidAmountMicros: S.optional(S.String),
           customBiddingAlgorithmId: S.optional(S.String),
-          performanceGoalType: S.optional(S.String),
+          performanceGoalType: S.optional(PerformanceGoalBidStrategyPerformanceGoalTypeEnum),
         }),
       ).annotate({
         identifier: "PerformanceGoalBidStrategy",
@@ -11220,11 +13724,11 @@ function __c17(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          fixedBid: S.optional(__S(138)),
-          demandGenBid: S.optional(__S(139)),
-          youtubeAndPartnersBid: S.optional(__S(140)),
-          maximizeSpendAutoBid: S.optional(__S(141)),
-          performanceGoalAutoBid: S.optional(__S(142)),
+          fixedBid: S.optional(FixedBidStrategy),
+          demandGenBid: S.optional(DemandGenBiddingStrategy),
+          youtubeAndPartnersBid: S.optional(YoutubeAndPartnersBiddingStrategy),
+          maximizeSpendAutoBid: S.optional(MaximizeSpendBidStrategy),
+          performanceGoalAutoBid: S.optional(PerformanceGoalBidStrategy),
         }),
       ).annotate({ identifier: "BiddingStrategy" });
   }
@@ -11236,17 +13740,17 @@ function __c18(j: number): any {
         S.Struct({
           adGroupId: S.optional(S.String),
           previousStepId: S.optional(S.String),
-          interactionType: S.optional(S.String),
+          interactionType: S.optional(VideoAdSequenceStepInteractionTypeEnum),
           stepId: S.optional(S.String),
         }),
       ).annotate({ identifier: "VideoAdSequenceStep" });
     case 1:
-      return S.Array(__S(144));
+      return S.Array(VideoAdSequenceStep);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          steps: S.optional(__S(145)),
-          minimumDuration: S.optional(S.String),
+          steps: S.optional(VideoAdSequenceStepList),
+          minimumDuration: S.optional(VideoAdSequenceSettingsMinimumDurationEnum),
         }),
       ).annotate({ identifier: "VideoAdSequenceSettings" });
     case 3:
@@ -11274,16 +13778,16 @@ function __c18(j: number): any {
         S.Struct({
           timeUnitCount: S.optional(S.Number),
           targetCount: S.optional(S.String),
-          timeUnit: S.optional(S.String),
+          timeUnit: S.optional(TargetFrequencyTimeUnitEnum),
         }),
       ).annotate({ identifier: "TargetFrequency" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          brandLiftVendorConfigs: S.optional(__S(131)),
-          brandSafetyVendorConfigs: S.optional(__S(131)),
-          viewabilityVendorConfigs: S.optional(__S(131)),
-          reachVendorConfigs: S.optional(__S(131)),
+          brandLiftVendorConfigs: S.optional(ThirdPartyVendorConfigList),
+          brandSafetyVendorConfigs: S.optional(ThirdPartyVendorConfigList),
+          viewabilityVendorConfigs: S.optional(ThirdPartyVendorConfigList),
+          reachVendorConfigs: S.optional(ThirdPartyVendorConfigList),
         }),
       ).annotate({
         identifier: "YoutubeAndPartnersThirdPartyMeasurementSettings",
@@ -11291,18 +13795,22 @@ function __c18(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          effectiveContentCategory: S.optional(S.String),
-          viewFrequencyCap: S.optional(__S(121)),
-          videoAdSequenceSettings: S.optional(__S(146)),
+          effectiveContentCategory: S.optional(
+            YoutubeAndPartnersSettingsEffectiveContentCategoryEnum,
+          ),
+          viewFrequencyCap: S.optional(FrequencyCap),
+          videoAdSequenceSettings: S.optional(VideoAdSequenceSettings),
           linkedMerchantId: S.optional(S.String),
-          contentCategory: S.optional(S.String),
-          videoAdInventoryControl: S.optional(__S(147)),
-          biddingStrategy: S.optional(__S(140)),
-          relatedVideoIds: S.optional(__S(5)),
-          inventorySourceSettings: S.optional(__S(148)),
+          contentCategory: S.optional(YoutubeAndPartnersSettingsContentCategoryEnum),
+          videoAdInventoryControl: S.optional(VideoAdInventoryControl),
+          biddingStrategy: S.optional(YoutubeAndPartnersBiddingStrategy),
+          relatedVideoIds: S.optional(StringList),
+          inventorySourceSettings: S.optional(YoutubeAndPartnersInventorySourceConfig),
           leadFormId: S.optional(S.String),
-          targetFrequency: S.optional(__S(149)),
-          thirdPartyMeasurementSettings: S.optional(__S(150)),
+          targetFrequency: S.optional(TargetFrequency),
+          thirdPartyMeasurementSettings: S.optional(
+            YoutubeAndPartnersThirdPartyMeasurementSettings,
+          ),
         }),
       ).annotate({
         identifier: "YoutubeAndPartnersSettings",
@@ -11317,38 +13825,38 @@ function __c19(j: number): any {
           updateTime: S.optional(S.String),
           excludeNewExchanges: S.optional(S.Boolean),
           lineItemId: S.optional(S.String),
-          budget: S.optional(__S(119)),
-          targetingExpansion: S.optional(__S(120)),
-          warningMessages: S.optional(__S(42)),
+          budget: S.optional(LineItemBudget),
+          targetingExpansion: S.optional(TargetingExpansionConfig),
+          warningMessages: S.optional(LineItemWarningMessagesItemEnumList),
           name: S.optional(S.String),
-          containsEuPoliticalAds: S.optional(S.String),
-          frequencyCap: S.optional(__S(121)),
-          entityStatus: S.optional(S.String),
+          containsEuPoliticalAds: S.optional(LineItemContainsEuPoliticalAdsEnum),
+          frequencyCap: S.optional(FrequencyCap),
+          entityStatus: S.optional(LineItemEntityStatusEnum),
           campaignId: S.optional(S.String),
           advertiserId: S.optional(S.String),
-          conversionCounting: S.optional(__S(124)),
-          integrationDetails: S.optional(__S(125)),
-          partnerRevenueModel: S.optional(__S(126)),
-          lineItemType: S.optional(S.String),
-          mobileApp: S.optional(__S(127)),
-          creativeIds: S.optional(__S(5)),
-          partnerCosts: S.optional(__S(129)),
+          conversionCounting: S.optional(ConversionCountingConfig),
+          integrationDetails: S.optional(IntegrationDetails),
+          partnerRevenueModel: S.optional(PartnerRevenueModel),
+          lineItemType: S.optional(LineItemLineItemTypeEnum),
+          mobileApp: S.optional(MobileApp),
+          creativeIds: S.optional(StringList),
+          partnerCosts: S.optional(PartnerCostList),
           insertionOrderId: S.optional(S.String),
-          reservationType: S.optional(S.String),
-          demandGenSettings: S.optional(__S(133)),
-          flight: S.optional(__S(136)),
-          pacing: S.optional(__S(137)),
-          bidStrategy: S.optional(__S(143)),
+          reservationType: S.optional(LineItemReservationTypeEnum),
+          demandGenSettings: S.optional(DemandGenSettings),
+          flight: S.optional(LineItemFlight),
+          pacing: S.optional(Pacing),
+          bidStrategy: S.optional(BiddingStrategy),
           optimizeFixedBidding: S.optional(S.Boolean),
           displayName: S.optional(S.String),
-          youtubeAndPartnersSettings: S.optional(__S(151)),
+          youtubeAndPartnersSettings: S.optional(YoutubeAndPartnersSettings),
         }),
       ).annotate({ identifier: "LineItem" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          targetLineItem: S.optional(__S(152)),
-          lineItemIds: S.optional(__S(5)),
+          targetLineItem: S.optional(LineItem),
+          lineItemIds: S.optional(StringList),
           updateMask: S.optional(S.String),
         }),
       ).annotate({
@@ -11358,7 +13866,7 @@ function __c19(j: number): any {
       return S.suspend(() =>
         S.Struct({
           advertiserId: S.String.pipe(T.Label()),
-          body: S.optional(__S(153).pipe(T.HttpBody())),
+          body: S.optional(BulkUpdateLineItemsRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -11372,10 +13880,10 @@ function __c19(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          skippedLineItemIds: S.optional(__S(5)),
-          errors: S.optional(__S(98)),
-          updatedLineItemIds: S.optional(__S(5)),
-          failedLineItemIds: S.optional(__S(5)),
+          skippedLineItemIds: S.optional(StringList),
+          errors: S.optional(StatusList),
+          updatedLineItemIds: S.optional(StringList),
+          failedLineItemIds: S.optional(StringList),
         }),
       ).annotate({
         identifier: "BulkUpdateLineItemsResponse",
@@ -11394,9 +13902,9 @@ function __c19(j: number): any {
           cmAccountId: S.optional(S.String),
           dv360ToCmDataSharingEnabled: S.optional(S.Boolean),
           cmFloodlightConfigId: S.optional(S.String),
-          cmAdvertiserIds: S.optional(__S(5)),
+          cmAdvertiserIds: S.optional(StringList),
           cmFloodlightLinkingAuthorized: S.optional(S.Boolean),
-          cmSyncableSiteIds: S.optional(__S(5)),
+          cmSyncableSiteIds: S.optional(StringList),
           dv360ToCmCostReportingEnabled: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "CmHybridConfig" });
@@ -11409,8 +13917,8 @@ function __c19(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          cmHybridConfig: S.optional(__S(157)),
-          thirdPartyOnlyConfig: S.optional(__S(158)),
+          cmHybridConfig: S.optional(CmHybridConfig),
+          thirdPartyOnlyConfig: S.optional(ThirdPartyOnlyConfig),
         }),
       ).annotate({ identifier: "AdvertiserAdServerConfig" });
   }
@@ -11437,7 +13945,7 @@ function __c20(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          version: S.optional(S.String),
+          version: S.optional(SdfConfigVersionEnum),
           adminEmail: S.optional(S.String),
         }),
       ).annotate({ identifier: "SdfConfig" });
@@ -11445,13 +13953,13 @@ function __c20(j: number): any {
       return S.suspend(() =>
         S.Struct({
           overridePartnerSdfConfig: S.optional(S.Boolean),
-          sdfConfig: S.optional(__S(162)),
+          sdfConfig: S.optional(SdfConfig),
         }),
       ).annotate({ identifier: "AdvertiserSdfConfig" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          sdfConfig: S.optional(__S(163)),
+          sdfConfig: S.optional(AdvertiserSdfConfig),
         }),
       ).annotate({
         identifier: "AdvertiserDataAccessConfig",
@@ -11460,27 +13968,27 @@ function __c20(j: number): any {
       return S.suspend(() =>
         S.Struct({
           displayName: S.optional(S.String),
-          servingConfig: S.optional(__S(156)),
-          adServerConfig: S.optional(__S(159)),
+          servingConfig: S.optional(AdvertiserTargetingConfig),
+          adServerConfig: S.optional(AdvertiserAdServerConfig),
           defaultLogoAssetId: S.optional(S.String),
-          creativeConfig: S.optional(__S(160)),
+          creativeConfig: S.optional(AdvertiserCreativeConfig),
           name: S.optional(S.String),
-          containsEuPoliticalAds: S.optional(S.String),
-          integrationDetails: S.optional(__S(125)),
-          generalConfig: S.optional(__S(161)),
+          containsEuPoliticalAds: S.optional(AdvertiserContainsEuPoliticalAdsEnum),
+          integrationDetails: S.optional(IntegrationDetails),
+          generalConfig: S.optional(AdvertiserGeneralConfig),
           defaultBusinessName: S.optional(S.String),
           advertiserId: S.optional(S.String),
           partnerId: S.optional(S.String),
           prismaEnabled: S.optional(S.Boolean),
           updateTime: S.optional(S.String),
-          dataAccessConfig: S.optional(__S(164)),
-          entityStatus: S.optional(S.String),
+          dataAccessConfig: S.optional(AdvertiserDataAccessConfig),
+          entityStatus: S.optional(AdvertiserEntityStatusEnum),
         }),
       ).annotate({ identifier: "Advertiser" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(__S(165).pipe(T.HttpBody())),
+          body: S.optional(Advertiser.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -11492,7 +14000,7 @@ function __c20(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          plannedDates: S.optional(__S(135)),
+          plannedDates: S.optional(DateRange),
           plannedSpendAmountMicros: S.optional(S.String),
         }),
       ).annotate({ identifier: "CampaignFlight" });
@@ -11505,15 +14013,15 @@ function __c21(j: number): any {
         S.Struct({
           performanceGoalPercentageMicros: S.optional(S.String),
           performanceGoalAmountMicros: S.optional(S.String),
-          performanceGoalType: S.optional(S.String),
+          performanceGoalType: S.optional(PerformanceGoalPerformanceGoalTypeEnum),
           performanceGoalString: S.optional(S.String),
         }),
       ).annotate({ identifier: "PerformanceGoal" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          performanceGoal: S.optional(__S(168)),
-          campaignGoalType: S.optional(S.String),
+          performanceGoal: S.optional(PerformanceGoal),
+          campaignGoalType: S.optional(CampaignGoalCampaignGoalTypeEnum),
         }),
       ).annotate({ identifier: "CampaignGoal" });
     case 2:
@@ -11527,9 +14035,9 @@ function __c21(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          prismaType: S.optional(S.String),
+          prismaType: S.optional(PrismaConfigPrismaTypeEnum),
           supplier: S.optional(S.String),
-          prismaCpeCode: S.optional(__S(170)),
+          prismaCpeCode: S.optional(PrismaCpeCode),
         }),
       ).annotate({ identifier: "PrismaConfig" });
     case 4:
@@ -11537,17 +14045,17 @@ function __c21(j: number): any {
         S.Struct({
           invoiceGroupingId: S.optional(S.String),
           externalBudgetId: S.optional(S.String),
-          budgetUnit: S.optional(S.String),
-          externalBudgetSource: S.optional(S.String),
+          budgetUnit: S.optional(CampaignBudgetBudgetUnitEnum),
+          externalBudgetSource: S.optional(CampaignBudgetExternalBudgetSourceEnum),
           budgetId: S.optional(S.String),
           budgetAmountMicros: S.optional(S.String),
           displayName: S.optional(S.String),
-          dateRange: S.optional(__S(135)),
-          prismaConfig: S.optional(__S(171)),
+          dateRange: S.optional(DateRange),
+          prismaConfig: S.optional(PrismaConfig),
         }),
       ).annotate({ identifier: "CampaignBudget" });
     case 5:
-      return S.Array(__S(172));
+      return S.Array(CampaignBudget);
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -11555,19 +14063,19 @@ function __c21(j: number): any {
           displayName: S.optional(S.String),
           advertiserId: S.optional(S.String),
           name: S.optional(S.String),
-          campaignFlight: S.optional(__S(167)),
-          campaignGoal: S.optional(__S(169)),
-          frequencyCap: S.optional(__S(121)),
-          entityStatus: S.optional(S.String),
+          campaignFlight: S.optional(CampaignFlight),
+          campaignGoal: S.optional(CampaignGoal),
+          frequencyCap: S.optional(FrequencyCap),
+          entityStatus: S.optional(CampaignEntityStatusEnum),
           campaignId: S.optional(S.String),
-          campaignBudgets: S.optional(__S(173)),
+          campaignBudgets: S.optional(CampaignBudgetList),
         }),
       ).annotate({ identifier: "Campaign" });
     case 7:
       return S.suspend(() =>
         S.Struct({
           advertiserId: S.String.pipe(T.Label()),
-          body: S.optional(__S(174).pipe(T.HttpBody())),
+          body: S.optional(Campaign.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -11599,7 +14107,7 @@ function __c22(j: number): any {
         S.Struct({
           partnerId: S.optional(S.String.pipe(T.Query())),
           advertiserId: S.String.pipe(T.Label()),
-          body: S.optional(__S(176).pipe(T.HttpBody())),
+          body: S.optional(Channel.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -11616,7 +14124,7 @@ function __c22(j: number): any {
           partnerId: S.optional(S.String.pipe(T.Query())),
           advertiserId: S.String.pipe(T.Label()),
           channelId: S.String.pipe(T.Label()),
-          body: S.optional(__S(6).pipe(T.HttpBody())),
+          body: S.optional(Site.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -11635,20 +14143,20 @@ function __c22(j: number): any {
         }),
       ).annotate({ identifier: "TimerEvent" });
     case 4:
-      return S.Array(__S(179));
+      return S.Array(TimerEvent);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          exchange: S.optional(S.String),
-          status: S.optional(S.String),
+          exchange: S.optional(ExchangeReviewStatusExchangeEnum),
+          status: S.optional(ExchangeReviewStatusStatusEnum),
         }),
       ).annotate({ identifier: "ExchangeReviewStatus" });
     case 6:
-      return S.Array(__S(181));
+      return S.Array(ExchangeReviewStatus);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(S.String),
+          status: S.optional(PublisherReviewStatusStatusEnum),
           publisherName: S.optional(S.String),
         }),
       ).annotate({ identifier: "PublisherReviewStatus" });
@@ -11657,15 +14165,19 @@ function __c22(j: number): any {
 function __c23(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(183));
+      return S.Array(PublisherReviewStatus);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          creativeAndLandingPageReviewStatus: S.optional(S.String),
-          contentAndPolicyReviewStatus: S.optional(S.String),
-          exchangeReviewStatuses: S.optional(__S(182)),
-          approvalStatus: S.optional(S.String),
-          publisherReviewStatuses: S.optional(__S(184)),
+          creativeAndLandingPageReviewStatus: S.optional(
+            ReviewStatusInfoCreativeAndLandingPageReviewStatusEnum,
+          ),
+          contentAndPolicyReviewStatus: S.optional(
+            ReviewStatusInfoContentAndPolicyReviewStatusEnum,
+          ),
+          exchangeReviewStatuses: S.optional(ExchangeReviewStatusList),
+          approvalStatus: S.optional(ReviewStatusInfoApprovalStatusEnum),
+          publisherReviewStatuses: S.optional(PublisherReviewStatusList),
         }),
       ).annotate({ identifier: "ReviewStatusInfo" });
     case 2:
@@ -11678,12 +14190,12 @@ function __c23(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          role: S.optional(S.String),
-          asset: S.optional(__S(186)),
+          role: S.optional(AssetAssociationRoleEnum),
+          asset: S.optional(Asset),
         }),
       ).annotate({ identifier: "AssetAssociation" });
     case 4:
-      return S.Array(__S(187));
+      return S.Array(AssetAssociation);
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -11692,7 +14204,7 @@ function __c23(j: number): any {
         }),
       ).annotate({ identifier: "CounterEvent" });
     case 6:
-      return S.Array(__S(189));
+      return S.Array(CounterEvent);
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -11708,11 +14220,11 @@ function __c24(j: number): any {
       return S.suspend(() =>
         S.Struct({
           url: S.optional(S.String),
-          type: S.optional(S.String),
+          type: S.optional(ThirdPartyUrlTypeEnum),
         }),
       ).annotate({ identifier: "ThirdPartyUrl" });
     case 1:
-      return S.Array(__S(192));
+      return S.Array(ThirdPartyUrl);
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -11724,7 +14236,7 @@ function __c24(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          dimensions: S.optional(__S(194)),
+          dimensions: S.optional(Dimensions),
           audioSampleRateHz: S.optional(S.String),
           mimeType: S.optional(S.String),
           frameRate: S.optional(S.Number),
@@ -11735,20 +14247,20 @@ function __c24(j: number): any {
         }),
       ).annotate({ identifier: "Transcode" });
     case 4:
-      return S.Array(__S(195));
+      return S.Array(Transcode);
     case 5:
-      return S.Array(__S(194));
+      return S.Array(Dimensions);
     case 6:
       return S.suspend(() =>
         S.Struct({
           url: S.optional(S.String),
-          type: S.optional(S.String),
+          type: S.optional(ExitEventTypeEnum),
           name: S.optional(S.String),
           reportingName: S.optional(S.String),
         }),
       ).annotate({ identifier: "ExitEvent" });
     case 7:
-      return S.Array(__S(198));
+      return S.Array(ExitEvent);
   }
 }
 function __c25(j: number): any {
@@ -11762,8 +14274,8 @@ function __c25(j: number): any {
           resourceMimeType: S.optional(S.String),
           resourceUrl: S.optional(S.String),
           landingPageUrl: S.optional(S.String),
-          position: S.optional(S.String),
-          dimensions: S.optional(__S(194)),
+          position: S.optional(ObaIconPositionEnum),
+          dimensions: S.optional(Dimensions),
         }),
       ).annotate({ identifier: "ObaIcon" });
     case 1:
@@ -11778,7 +14290,7 @@ function __c25(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
-          registry: S.optional(S.String),
+          registry: S.optional(UniversalAdIdRegistryEnum),
         }),
       ).annotate({ identifier: "UniversalAdId" });
     case 3:
@@ -11787,58 +14299,60 @@ function __c25(j: number): any {
           vastTagUrl: S.optional(S.String),
           html5Video: S.optional(S.Boolean),
           jsTrackerUrl: S.optional(S.String),
-          timerEvents: S.optional(__S(180)),
+          timerEvents: S.optional(TimerEventList),
           integrationCode: S.optional(S.String),
-          entityStatus: S.optional(S.String),
+          entityStatus: S.optional(CreativeEntityStatusEnum),
           vpaid: S.optional(S.Boolean),
           advertiserId: S.optional(S.String),
           creativeId: S.optional(S.String),
-          reviewStatus: S.optional(__S(185)),
-          expandingDirection: S.optional(S.String),
+          reviewStatus: S.optional(ReviewStatusInfo),
+          expandingDirection: S.optional(CreativeExpandingDirectionEnum),
           expandOnHover: S.optional(S.Boolean),
           appendedTag: S.optional(S.String),
-          assets: S.optional(__S(188)),
-          counterEvents: S.optional(__S(190)),
+          assets: S.optional(AssetAssociationList),
+          counterEvents: S.optional(CounterEventList),
           cmPlacementId: S.optional(S.String),
-          syntheticContentAttestationStatus: S.optional(S.String),
-          trackerUrls: S.optional(__S(5)),
+          syntheticContentAttestationStatus: S.optional(
+            CreativeSyntheticContentAttestationStatusEnum,
+          ),
+          trackerUrls: S.optional(StringList),
           createTime: S.optional(S.String),
           requireHtml5: S.optional(S.Boolean),
-          hostingSource: S.optional(S.String),
-          skipOffset: S.optional(__S(191)),
+          hostingSource: S.optional(CreativeHostingSourceEnum),
+          skipOffset: S.optional(AudioVideoOffset),
           skippable: S.optional(S.Boolean),
-          creativeType: S.optional(S.String),
+          creativeType: S.optional(CreativeCreativeTypeEnum),
           name: S.optional(S.String),
           mediaDuration: S.optional(S.String),
-          thirdPartyUrls: S.optional(__S(193)),
+          thirdPartyUrls: S.optional(ThirdPartyUrlList),
           requireMraid: S.optional(S.Boolean),
           updateTime: S.optional(S.String),
           displayName: S.optional(S.String),
           oggAudio: S.optional(S.Boolean),
-          companionCreativeIds: S.optional(__S(5)),
+          companionCreativeIds: S.optional(StringList),
           requirePingForAttribution: S.optional(S.Boolean),
           notes: S.optional(S.String),
           iasCampaignMonitoring: S.optional(S.Boolean),
-          transcodes: S.optional(__S(196)),
+          transcodes: S.optional(TranscodeList),
           dynamic: S.optional(S.Boolean),
-          lineItemIds: S.optional(__S(5)),
-          additionalDimensions: S.optional(__S(197)),
-          exitEvents: S.optional(__S(199)),
+          lineItemIds: S.optional(StringList),
+          additionalDimensions: S.optional(DimensionsList),
+          exitEvents: S.optional(ExitEventList),
           mp3Audio: S.optional(S.Boolean),
-          progressOffset: S.optional(__S(191)),
-          creativeAttributes: S.optional(__S(42)),
+          progressOffset: S.optional(AudioVideoOffset),
+          creativeAttributes: S.optional(CreativeCreativeAttributesItemEnumList),
           thirdPartyTag: S.optional(S.String),
-          obaIcon: S.optional(__S(200)),
-          dimensions: S.optional(__S(194)),
-          cmTrackingAd: S.optional(__S(201)),
-          universalAdId: S.optional(__S(202)),
+          obaIcon: S.optional(ObaIcon),
+          dimensions: S.optional(Dimensions),
+          cmTrackingAd: S.optional(CmTrackingAd),
+          universalAdId: S.optional(UniversalAdId),
         }),
       ).annotate({ identifier: "Creative" });
     case 4:
       return S.suspend(() =>
         S.Struct({
           advertiserId: S.String.pipe(T.Label()),
-          body: S.optional(__S(203).pipe(T.HttpBody())),
+          body: S.optional(Creative.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -11854,20 +14368,20 @@ function __c25(j: number): any {
         S.Struct({
           budgetAmountMicros: S.optional(S.String),
           campaignBudgetId: S.optional(S.String),
-          dateRange: S.optional(__S(135)),
+          dateRange: S.optional(DateRange),
           description: S.optional(S.String),
         }),
       ).annotate({
         identifier: "InsertionOrderBudgetSegment",
       });
     case 6:
-      return S.Array(__S(205));
+      return S.Array(InsertionOrderBudgetSegment);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          budgetUnit: S.optional(S.String),
-          budgetSegments: S.optional(__S(206)),
-          automationType: S.optional(S.String),
+          budgetUnit: S.optional(InsertionOrderBudgetBudgetUnitEnum),
+          budgetSegments: S.optional(InsertionOrderBudgetSegmentList),
+          automationType: S.optional(InsertionOrderBudgetAutomationTypeEnum),
         }),
       ).annotate({ identifier: "InsertionOrderBudget" });
   }
@@ -11878,29 +14392,29 @@ function __c26(j: number): any {
       return S.suspend(() =>
         S.Struct({
           updateTime: S.optional(S.String),
-          entityStatus: S.optional(S.String),
-          insertionOrderType: S.optional(S.String),
-          billableOutcome: S.optional(S.String),
-          reservationType: S.optional(S.String),
-          budget: S.optional(__S(207)),
-          frequencyCap: S.optional(__S(121)),
+          entityStatus: S.optional(InsertionOrderEntityStatusEnum),
+          insertionOrderType: S.optional(InsertionOrderInsertionOrderTypeEnum),
+          billableOutcome: S.optional(InsertionOrderBillableOutcomeEnum),
+          reservationType: S.optional(InsertionOrderReservationTypeEnum),
+          budget: S.optional(InsertionOrderBudget),
+          frequencyCap: S.optional(FrequencyCap),
           advertiserId: S.optional(S.String),
-          integrationDetails: S.optional(__S(125)),
-          pacing: S.optional(__S(137)),
+          integrationDetails: S.optional(IntegrationDetails),
+          pacing: S.optional(Pacing),
           name: S.optional(S.String),
-          bidStrategy: S.optional(__S(143)),
-          performanceGoal: S.optional(__S(168)),
+          bidStrategy: S.optional(BiddingStrategy),
+          performanceGoal: S.optional(PerformanceGoal),
           displayName: S.optional(S.String),
           insertionOrderId: S.optional(S.String),
           campaignId: S.optional(S.String),
-          partnerCosts: S.optional(__S(129)),
+          partnerCosts: S.optional(PartnerCostList),
         }),
       ).annotate({ identifier: "InsertionOrder" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           advertiserId: S.String.pipe(T.Label()),
-          body: S.optional(__S(208).pipe(T.HttpBody())),
+          body: S.optional(InsertionOrder.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -11915,7 +14429,7 @@ function __c26(j: number): any {
       return S.suspend(() =>
         S.Struct({
           advertiserId: S.String.pipe(T.Label()),
-          body: S.optional(__S(152).pipe(T.HttpBody())),
+          body: S.optional(LineItem.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -11929,10 +14443,13 @@ function __c26(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          targetingType: S.String.pipe(T.Label()),
+          targetingType:
+            CreateAdvertisersLineItemsTargetingTypesAssignedTargetingOptionsTargetingTypeEnum.pipe(
+              T.Label(),
+            ),
           lineItemId: S.String.pipe(T.Label()),
           advertiserId: S.String.pipe(T.Label()),
-          body: S.optional(__S(89).pipe(T.HttpBody())),
+          body: S.optional(AssignedTargetingOption.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -11949,7 +14466,7 @@ function __c26(j: number): any {
           name: S.optional(S.String),
           locationListId: S.optional(S.String),
           displayName: S.optional(S.String),
-          locationType: S.optional(S.String),
+          locationType: S.optional(LocationListLocationTypeEnum),
           advertiserId: S.optional(S.String),
         }),
       ).annotate({ identifier: "LocationList" });
@@ -11957,7 +14474,7 @@ function __c26(j: number): any {
       return S.suspend(() =>
         S.Struct({
           advertiserId: S.String.pipe(T.Label()),
-          body: S.optional(__S(212).pipe(T.HttpBody())),
+          body: S.optional(LocationList.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -11973,7 +14490,7 @@ function __c26(j: number): any {
         S.Struct({
           advertiserId: S.String.pipe(T.Label()),
           locationListId: S.String.pipe(T.Label()),
-          body: S.optional(__S(11).pipe(T.HttpBody())),
+          body: S.optional(AssignedLocation.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -11988,7 +14505,7 @@ function __c26(j: number): any {
       return S.suspend(() =>
         S.Struct({
           advertiserId: S.String.pipe(T.Label()),
-          body: S.optional(__S(2).pipe(T.HttpBody())),
+          body: S.optional(ManualTrigger.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -12017,7 +14534,7 @@ function __c27(j: number): any {
       return S.suspend(() =>
         S.Struct({
           advertiserId: S.String.pipe(T.Label()),
-          body: S.optional(__S(216).pipe(T.HttpBody())),
+          body: S.optional(NegativeKeywordList.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -12033,7 +14550,7 @@ function __c27(j: number): any {
         S.Struct({
           negativeKeywordListId: S.String.pipe(T.Label()),
           advertiserId: S.String.pipe(T.Label()),
-          body: S.optional(__S(16).pipe(T.HttpBody())),
+          body: S.optional(NegativeKeyword.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -12047,9 +14564,12 @@ function __c27(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          targetingType: S.String.pipe(T.Label()),
+          targetingType:
+            CreateAdvertisersTargetingTypesAssignedTargetingOptionsTargetingTypeEnum.pipe(
+              T.Label(),
+            ),
           advertiserId: S.String.pipe(T.Label()),
-          body: S.optional(__S(89).pipe(T.HttpBody())),
+          body: S.optional(AssignedTargetingOption.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -12064,32 +14584,34 @@ function __c27(j: number): any {
       return S.suspend(() =>
         S.Struct({
           advertiserId: S.optional(S.String),
-          suspensionState: S.optional(S.String),
-          readinessState: S.optional(S.String),
+          suspensionState: S.optional(CustomBiddingModelDetailsSuspensionStateEnum),
+          readinessState: S.optional(CustomBiddingModelDetailsReadinessStateEnum),
         }),
       ).annotate({
         identifier: "CustomBiddingModelDetails",
       });
     case 5:
-      return S.Array(__S(220));
+      return S.Array(CustomBiddingModelDetails);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          sharedAdvertiserIds: S.optional(__S(5)),
+          sharedAdvertiserIds: S.optional(StringList),
           name: S.optional(S.String),
           displayName: S.optional(S.String),
-          entityStatus: S.optional(S.String),
-          modelDetails: S.optional(__S(221)),
+          entityStatus: S.optional(CustomBiddingAlgorithmEntityStatusEnum),
+          modelDetails: S.optional(CustomBiddingModelDetailsList),
           advertiserId: S.optional(S.String),
           customBiddingAlgorithmId: S.optional(S.String),
           partnerId: S.optional(S.String),
-          customBiddingAlgorithmType: S.optional(S.String),
+          customBiddingAlgorithmType: S.optional(
+            CustomBiddingAlgorithmCustomBiddingAlgorithmTypeEnum,
+          ),
         }),
       ).annotate({ identifier: "CustomBiddingAlgorithm" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(__S(222).pipe(T.HttpBody())),
+          body: S.optional(CustomBiddingAlgorithm.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -12107,14 +14629,14 @@ function __c28(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          errorCode: S.optional(S.String),
+          errorCode: S.optional(ScriptErrorErrorCodeEnum),
           errorMessage: S.optional(S.String),
           column: S.optional(S.String),
           line: S.optional(S.String),
         }),
       ).annotate({ identifier: "ScriptError" });
     case 1:
-      return S.Array(__S(224));
+      return S.Array(ScriptError);
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -12125,12 +14647,12 @@ function __c28(j: number): any {
       return S.suspend(() =>
         S.Struct({
           customBiddingAlgorithmId: S.optional(S.String),
-          errors: S.optional(__S(225)),
+          errors: S.optional(ScriptErrorList),
           createTime: S.optional(S.String),
-          state: S.optional(S.String),
+          state: S.optional(CustomBiddingScriptStateEnum),
           name: S.optional(S.String),
           active: S.optional(S.Boolean),
-          script: S.optional(__S(226)),
+          script: S.optional(CustomBiddingScriptRef),
           customBiddingScriptId: S.optional(S.String),
         }),
       ).annotate({ identifier: "CustomBiddingScript" });
@@ -12140,7 +14662,7 @@ function __c28(j: number): any {
           partnerId: S.optional(S.String.pipe(T.Query())),
           advertiserId: S.optional(S.String.pipe(T.Query())),
           customBiddingAlgorithmId: S.String.pipe(T.Label()),
-          body: S.optional(__S(227).pipe(T.HttpBody())),
+          body: S.optional(CustomBiddingScript.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -12154,8 +14676,8 @@ function __c28(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          entityStatus: S.optional(S.String),
-          configStatus: S.optional(S.String),
+          entityStatus: S.optional(GuaranteedOrderStatusEntityStatusEnum),
+          configStatus: S.optional(GuaranteedOrderStatusConfigStatusEnum),
           entityPauseReason: S.optional(S.String),
         }),
       ).annotate({ identifier: "GuaranteedOrderStatus" });
@@ -12166,12 +14688,12 @@ function __c28(j: number): any {
           name: S.optional(S.String),
           updateTime: S.optional(S.String),
           guaranteedOrderId: S.optional(S.String),
-          exchange: S.optional(S.String),
+          exchange: S.optional(GuaranteedOrderExchangeEnum),
           readAccessInherited: S.optional(S.Boolean),
           publisherName: S.optional(S.String),
           readWriteAdvertiserId: S.optional(S.String),
-          readAdvertiserIds: S.optional(__S(5)),
-          status: S.optional(__S(229)),
+          readAdvertiserIds: S.optional(StringList),
+          status: S.optional(GuaranteedOrderStatus),
           legacyGuaranteedOrderId: S.optional(S.String),
           defaultAdvertiserId: S.optional(S.String),
           readWritePartnerId: S.optional(S.String),
@@ -12183,7 +14705,7 @@ function __c28(j: number): any {
         S.Struct({
           advertiserId: S.optional(S.String.pipe(T.Query())),
           partnerId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(230).pipe(T.HttpBody())),
+          body: S.optional(GuaranteedOrder.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -12211,7 +14733,7 @@ function __c29(j: number): any {
         S.Struct({
           partnerId: S.optional(S.String.pipe(T.Query())),
           advertiserId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(232).pipe(T.HttpBody())),
+          body: S.optional(InventorySourceGroup.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -12228,7 +14750,7 @@ function __c29(j: number): any {
           advertiserId: S.optional(S.String.pipe(T.Query())),
           inventorySourceGroupId: S.String.pipe(T.Label()),
           partnerId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(105).pipe(T.HttpBody())),
+          body: S.optional(AssignedInventorySource.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -12244,7 +14766,7 @@ function __c29(j: number): any {
         S.Struct({
           partnerId: S.String.pipe(T.Label()),
           advertiserId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(176).pipe(T.HttpBody())),
+          body: S.optional(Channel.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -12261,7 +14783,7 @@ function __c29(j: number): any {
           partnerId: S.String.pipe(T.Label()),
           channelId: S.String.pipe(T.Label()),
           advertiserId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(6).pipe(T.HttpBody())),
+          body: S.optional(Site.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -12276,8 +14798,10 @@ function __c29(j: number): any {
       return S.suspend(() =>
         S.Struct({
           partnerId: S.String.pipe(T.Label()),
-          targetingType: S.String.pipe(T.Label()),
-          body: S.optional(__S(89).pipe(T.HttpBody())),
+          targetingType: CreatePartnersTargetingTypesAssignedTargetingOptionsTargetingTypeEnum.pipe(
+            T.Label(),
+          ),
+          body: S.optional(AssignedTargetingOption.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -12291,15 +14815,15 @@ function __c29(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          fileType: S.optional(__S(42)),
-          filterIds: S.optional(__S(5)),
-          filterType: S.optional(S.String),
+          fileType: S.optional(ParentEntityFilterFileTypeItemEnumList),
+          filterIds: S.optional(StringList),
+          filterType: S.optional(ParentEntityFilterFilterTypeEnum),
         }),
       ).annotate({ identifier: "ParentEntityFilter" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          inventorySourceIds: S.optional(__S(5)),
+          inventorySourceIds: S.optional(StringList),
         }),
       ).annotate({ identifier: "InventorySourceFilter" });
   }
@@ -12309,22 +14833,22 @@ function __c30(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          campaignIds: S.optional(__S(5)),
-          lineItemIds: S.optional(__S(5)),
-          mediaProductIds: S.optional(__S(5)),
-          adGroupAdIds: S.optional(__S(5)),
-          adGroupIds: S.optional(__S(5)),
-          insertionOrderIds: S.optional(__S(5)),
+          campaignIds: S.optional(StringList),
+          lineItemIds: S.optional(StringList),
+          mediaProductIds: S.optional(StringList),
+          adGroupAdIds: S.optional(StringList),
+          adGroupIds: S.optional(StringList),
+          insertionOrderIds: S.optional(StringList),
         }),
       ).annotate({ identifier: "IdFilter" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          parentEntityFilter: S.optional(__S(238)),
-          inventorySourceFilter: S.optional(__S(239)),
-          idFilter: S.optional(__S(240)),
+          parentEntityFilter: S.optional(ParentEntityFilter),
+          inventorySourceFilter: S.optional(InventorySourceFilter),
+          idFilter: S.optional(IdFilter),
           partnerId: S.optional(S.String),
-          version: S.optional(S.String),
+          version: S.optional(CreateSdfDownloadTaskRequestVersionEnum),
           advertiserId: S.optional(S.String),
         }),
       ).annotate({
@@ -12333,7 +14857,7 @@ function __c30(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(__S(241).pipe(T.HttpBody())),
+          body: S.optional(CreateSdfDownloadTaskRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -12348,16 +14872,16 @@ function __c30(j: number): any {
       return S.suspend(() =>
         S.Struct({
           done: S.optional(S.Boolean),
-          error: S.optional(__S(97)),
-          metadata: S.optional(__S(95)),
+          error: S.optional(Status),
+          metadata: S.optional(DocumentMap),
           name: S.optional(S.String),
-          response: S.optional(__S(95)),
+          response: S.optional(DocumentMap),
         }),
       ).annotate({ identifier: "Operation" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          assignedUserRoles: S.optional(__S(101)),
+          assignedUserRoles: S.optional(AssignedUserRoleList),
           displayName: S.optional(S.String),
           userId: S.optional(S.String),
           name: S.optional(S.String),
@@ -12368,7 +14892,7 @@ function __c30(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(__S(244).pipe(T.HttpBody())),
+          body: S.optional(User.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -12382,7 +14906,7 @@ function __c30(j: number): any {
         S.Struct({
           triggerId: S.String.pipe(T.Label()),
           advertiserId: S.String.pipe(T.Label()),
-          body: S.optional(__S(0).pipe(T.HttpBody())),
+          body: S.optional(ActivateManualTriggerRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -12490,7 +15014,10 @@ function __c31(j: number): any {
       return S.suspend(() =>
         S.Struct({
           assignedTargetingOptionId: S.String.pipe(T.Label()),
-          targetingType: S.String.pipe(T.Label()),
+          targetingType:
+            DeleteAdvertisersLineItemsTargetingTypesAssignedTargetingOptionsTargetingTypeEnum.pipe(
+              T.Label(),
+            ),
           lineItemId: S.String.pipe(T.Label()),
           advertiserId: S.String.pipe(T.Label()),
         }).pipe(
@@ -12557,7 +15084,10 @@ function __c32(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          targetingType: S.String.pipe(T.Label()),
+          targetingType:
+            DeleteAdvertisersTargetingTypesAssignedTargetingOptionsTargetingTypeEnum.pipe(
+              T.Label(),
+            ),
           advertiserId: S.String.pipe(T.Label()),
           assignedTargetingOptionId: S.String.pipe(T.Label()),
         }).pipe(
@@ -12625,7 +15155,9 @@ function __c32(j: number): any {
         S.Struct({
           partnerId: S.String.pipe(T.Label()),
           assignedTargetingOptionId: S.String.pipe(T.Label()),
-          targetingType: S.String.pipe(T.Label()),
+          targetingType: DeletePartnersTargetingTypesAssignedTargetingOptionsTargetingTypeEnum.pipe(
+            T.Label(),
+          ),
         }).pipe(
           T.Http({
             method: "DELETE",
@@ -12668,7 +15200,7 @@ function __c33(j: number): any {
       return S.suspend(() =>
         S.Struct({
           targetDisplayName: S.optional(S.String),
-          containsEuPoliticalAds: S.optional(S.String),
+          containsEuPoliticalAds: S.optional(DuplicateLineItemRequestContainsEuPoliticalAdsEnum),
         }),
       ).annotate({ identifier: "DuplicateLineItemRequest" });
     case 1:
@@ -12676,7 +15208,7 @@ function __c33(j: number): any {
         S.Struct({
           advertiserId: S.String.pipe(T.Label()),
           lineItemId: S.String.pipe(T.Label()),
-          body: S.optional(__S(264).pipe(T.HttpBody())),
+          body: S.optional(DuplicateLineItemRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -12698,8 +15230,8 @@ function __c33(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          deleteRequests: S.optional(__S(22)),
-          createRequests: S.optional(__S(92)),
+          deleteRequests: S.optional(DeleteAssignedTargetingOptionsRequestList),
+          createRequests: S.optional(CreateAssignedTargetingOptionsRequestList),
         }),
       ).annotate({
         identifier: "BulkEditAdvertiserAssignedTargetingOptionsRequest",
@@ -12708,7 +15240,7 @@ function __c33(j: number): any {
       return S.suspend(() =>
         S.Struct({
           advertiserId: S.String.pipe(T.Label()),
-          body: S.optional(__S(267).pipe(T.HttpBody())),
+          body: S.optional(BulkEditAdvertiserAssignedTargetingOptionsRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -12722,7 +15254,7 @@ function __c33(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          createdAssignedTargetingOptions: S.optional(__S(90)),
+          createdAssignedTargetingOptions: S.optional(AssignedTargetingOptionList),
         }),
       ).annotate({
         identifier: "BulkEditAdvertiserAssignedTargetingOptionsResponse",
@@ -12731,7 +15263,7 @@ function __c33(j: number): any {
       return S.suspend(() =>
         S.Struct({
           partnerId: S.String.pipe(T.Label()),
-          body: S.optional(__S(267).pipe(T.HttpBody())),
+          body: S.optional(BulkEditPartnerAssignedTargetingOptionsRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -12747,8 +15279,8 @@ function __c33(j: number): any {
         S.Struct({
           readAccessInherited: S.optional(S.Boolean),
           partnerId: S.optional(S.String),
-          removedAdvertisers: S.optional(__S(5)),
-          addedAdvertisers: S.optional(__S(5)),
+          removedAdvertisers: S.optional(StringList),
+          addedAdvertisers: S.optional(StringList),
         }),
       ).annotate({
         identifier: "EditGuaranteedOrderReadAccessorsRequest",
@@ -12761,7 +15293,7 @@ function __c34(j: number): any {
       return S.suspend(() =>
         S.Struct({
           guaranteedOrderId: S.String.pipe(T.Label()),
-          body: S.optional(__S(271).pipe(T.HttpBody())),
+          body: S.optional(EditGuaranteedOrderReadAccessorsRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -12776,7 +15308,7 @@ function __c34(j: number): any {
       return S.suspend(() =>
         S.Struct({
           readAccessInherited: S.optional(S.Boolean),
-          readAdvertiserIds: S.optional(__S(5)),
+          readAdvertiserIds: S.optional(StringList),
         }),
       ).annotate({
         identifier: "EditGuaranteedOrderReadAccessorsResponse",
@@ -12877,7 +15409,10 @@ function __c35(j: number): any {
       return S.suspend(() =>
         S.Struct({
           lineItemId: S.String.pipe(T.Label()),
-          targetingType: S.String.pipe(T.Label()),
+          targetingType:
+            GetAdvertisersLineItemsTargetingTypesAssignedTargetingOptionsTargetingTypeEnum.pipe(
+              T.Label(),
+            ),
           assignedTargetingOptionId: S.String.pipe(T.Label()),
           advertiserId: S.String.pipe(T.Label()),
         }).pipe(
@@ -12939,7 +15474,9 @@ function __c35(j: number): any {
       return S.suspend(() =>
         S.Struct({
           advertiserId: S.String.pipe(T.Label()),
-          targetingType: S.String.pipe(T.Label()),
+          targetingType: GetAdvertisersTargetingTypesAssignedTargetingOptionsTargetingTypeEnum.pipe(
+            T.Label(),
+          ),
           assignedTargetingOptionId: S.String.pipe(T.Label()),
         }).pipe(
           T.Http({
@@ -12972,7 +15509,7 @@ function __c35(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
-          unavailableReason: S.optional(S.String),
+          unavailableReason: S.optional(YoutubeVideoDetailsUnavailableReasonEnum),
           videoAssetId: S.optional(S.String),
         }),
       ).annotate({ identifier: "YoutubeVideoDetails" });
@@ -12986,16 +15523,16 @@ function __c36(j: number): any {
           mimeType: S.optional(S.String),
           fileSize: S.optional(S.String),
           assetId: S.optional(S.String),
-          fullSize: S.optional(__S(194)),
+          fullSize: S.optional(Dimensions),
         }),
       ).annotate({ identifier: "ImageAsset" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          video: S.optional(__S(287)),
+          video: S.optional(YoutubeVideoDetails),
           trackingUrl: S.optional(S.String),
           actionHeadline: S.optional(S.String),
-          companionBanner: S.optional(__S(288)),
+          companionBanner: S.optional(ImageAsset),
           finalUrl: S.optional(S.String),
           displayUrl: S.optional(S.String),
           actionButtonLabel: S.optional(S.String),
@@ -13004,24 +15541,24 @@ function __c36(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          customParameters: S.optional(__S(286)),
-          commonInStreamAttribute: S.optional(__S(289)),
+          customParameters: S.optional(StringMap),
+          commonInStreamAttribute: S.optional(CommonInStreamAttribute),
         }),
       ).annotate({ identifier: "NonSkippableAd" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(S.String),
+          type: S.optional(AdUrlTypeEnum),
           url: S.optional(S.String),
         }),
       ).annotate({ identifier: "AdUrl" });
     case 4:
-      return S.Array(__S(291));
+      return S.Array(AdUrl);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          thumbnail: S.optional(S.String),
-          video: S.optional(__S(287)),
+          thumbnail: S.optional(VideoDiscoveryAdThumbnailEnum),
+          video: S.optional(YoutubeVideoDetails),
           headline: S.optional(S.String),
           description1: S.optional(S.String),
           description2: S.optional(S.String),
@@ -13030,8 +15567,8 @@ function __c36(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          commonInStreamAttribute: S.optional(__S(289)),
-          customParameters: S.optional(__S(286)),
+          commonInStreamAttribute: S.optional(CommonInStreamAttribute),
+          customParameters: S.optional(StringMap),
         }),
       ).annotate({ identifier: "InStreamAd" });
     case 7:
@@ -13039,7 +15576,7 @@ function __c36(j: number): any {
         S.Struct({
           finalUrl: S.optional(S.String),
           trackingUrl: S.optional(S.String),
-          video: S.optional(__S(287)),
+          video: S.optional(YoutubeVideoDetails),
           displayUrl: S.optional(S.String),
         }),
       ).annotate({ identifier: "AudioAd" });
@@ -13050,27 +15587,27 @@ function __c37(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          commonInStreamAttribute: S.optional(__S(289)),
+          commonInStreamAttribute: S.optional(CommonInStreamAttribute),
         }),
       ).annotate({ identifier: "BumperAd" });
     case 1:
-      return S.Array(__S(288));
+      return S.Array(ImageAsset);
     case 2:
-      return S.Array(__S(287));
+      return S.Array(YoutubeVideoDetails);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          companionBanners: S.optional(__S(297)),
-          descriptions: S.optional(__S(5)),
+          companionBanners: S.optional(ImageAssetList),
+          descriptions: S.optional(StringList),
           displayUrlBreadcrumb2: S.optional(S.String),
-          videos: S.optional(__S(298)),
+          videos: S.optional(YoutubeVideoDetailsList),
           displayUrlBreadcrumb1: S.optional(S.String),
           trackingUrl: S.optional(S.String),
-          longHeadlines: S.optional(__S(5)),
+          longHeadlines: S.optional(StringList),
           finalUrl: S.optional(S.String),
-          headlines: S.optional(__S(5)),
-          actionButtonLabels: S.optional(__S(5)),
-          customParameters: S.optional(__S(286)),
+          headlines: S.optional(StringList),
+          actionButtonLabels: S.optional(StringList),
+          customParameters: S.optional(StringMap),
           domain: S.optional(S.String),
         }),
       ).annotate({ identifier: "VideoPerformanceAd" });
@@ -13079,13 +15616,13 @@ function __c37(j: number): any {
         S.Struct({
           autoplayVideoStartMillisecond: S.optional(S.String),
           callToActionTrackingUrl: S.optional(S.String),
-          companionYoutubeVideos: S.optional(__S(298)),
-          videoAspectRatio: S.optional(S.String),
+          companionYoutubeVideos: S.optional(YoutubeVideoDetailsList),
+          videoAspectRatio: S.optional(MastheadAdVideoAspectRatioEnum),
           showChannelArt: S.optional(S.Boolean),
           callToActionFinalUrl: S.optional(S.String),
           description: S.optional(S.String),
           headline: S.optional(S.String),
-          video: S.optional(__S(287)),
+          video: S.optional(YoutubeVideoDetails),
           callToActionButtonLabel: S.optional(S.String),
           autoplayVideoDuration: S.optional(S.String),
         }),
@@ -13099,21 +15636,21 @@ function __c37(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          nonSkippableAd: S.optional(__S(290)),
+          nonSkippableAd: S.optional(NonSkippableAd),
           displayName: S.optional(S.String),
           adGroupId: S.optional(S.String),
           advertiserId: S.optional(S.String),
-          adUrls: S.optional(__S(292)),
+          adUrls: S.optional(AdUrlList),
           name: S.optional(S.String),
-          videoDiscoverAd: S.optional(__S(293)),
-          entityStatus: S.optional(S.String),
-          inStreamAd: S.optional(__S(294)),
+          videoDiscoverAd: S.optional(VideoDiscoveryAd),
+          entityStatus: S.optional(YoutubeAdGroupAdEntityStatusEnum),
+          inStreamAd: S.optional(InStreamAd),
           adGroupAdId: S.optional(S.String),
-          audioAd: S.optional(__S(295)),
-          bumperAd: S.optional(__S(296)),
-          videoPerformanceAd: S.optional(__S(299)),
-          mastheadAd: S.optional(__S(300)),
-          displayVideoSourceAd: S.optional(__S(301)),
+          audioAd: S.optional(AudioAd),
+          bumperAd: S.optional(BumperAd),
+          videoPerformanceAd: S.optional(VideoPerformanceAd),
+          mastheadAd: S.optional(MastheadAd),
+          displayVideoSourceAd: S.optional(DisplayVideoSourceAd),
         }),
       ).annotate({ identifier: "YoutubeAdGroupAd" });
     case 7:
@@ -13138,47 +15675,50 @@ function __c38(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          key: S.optional(S.String),
+          key: S.optional(CustomLabelKeyEnum),
           value: S.optional(S.String),
         }),
       ).annotate({ identifier: "CustomLabel" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          customLabel: S.optional(__S(304)),
+          customLabel: S.optional(CustomLabel),
           productOfferId: S.optional(S.String),
         }),
       ).annotate({ identifier: "ProductMatchDimension" });
     case 2:
-      return S.Array(__S(305));
+      return S.Array(ProductMatchDimension);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          productMatchType: S.optional(S.String),
-          productMatchDimensions: S.optional(__S(306)),
+          productMatchType: S.optional(ProductFeedDataProductMatchTypeEnum),
+          productMatchDimensions: S.optional(ProductMatchDimensionList),
           isFeedDisabled: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "ProductFeedData" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          entityStatus: S.optional(S.String),
-          youtubeAdIds: S.optional(__S(5)),
-          adGroupFormat: S.optional(S.String),
+          entityStatus: S.optional(YoutubeAdGroupEntityStatusEnum),
+          youtubeAdIds: S.optional(StringList),
+          adGroupFormat: S.optional(YoutubeAdGroupAdGroupFormatEnum),
           adGroupId: S.optional(S.String),
           name: S.optional(S.String),
           advertiserId: S.optional(S.String),
           displayName: S.optional(S.String),
-          biddingStrategy: S.optional(__S(140)),
+          biddingStrategy: S.optional(YoutubeAndPartnersBiddingStrategy),
           lineItemId: S.optional(S.String),
-          productFeedData: S.optional(__S(307)),
-          targetingExpansion: S.optional(__S(120)),
+          productFeedData: S.optional(ProductFeedData),
+          targetingExpansion: S.optional(TargetingExpansionConfig),
         }),
       ).annotate({ identifier: "YoutubeAdGroup" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          targetingType: S.String.pipe(T.Label()),
+          targetingType:
+            GetAdvertisersYoutubeAdGroupsTargetingTypesAssignedTargetingOptionsTargetingTypeEnum.pipe(
+              T.Label(),
+            ),
           advertiserId: S.String.pipe(T.Label()),
           assignedTargetingOptionId: S.String.pipe(T.Label()),
           youtubeAdGroupId: S.String.pipe(T.Label()),
@@ -13299,11 +15839,13 @@ function __c39(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          minimumDuration: S.optional(S.String),
-          minimumQuartile: S.optional(S.String),
-          minimumVolume: S.optional(S.String),
+          minimumDuration: S.optional(ActiveViewVideoViewabilityMetricConfigMinimumDurationEnum),
+          minimumQuartile: S.optional(ActiveViewVideoViewabilityMetricConfigMinimumQuartileEnum),
+          minimumVolume: S.optional(ActiveViewVideoViewabilityMetricConfigMinimumVolumeEnum),
           displayName: S.optional(S.String),
-          minimumViewability: S.optional(S.String),
+          minimumViewability: S.optional(
+            ActiveViewVideoViewabilityMetricConfigMinimumViewabilityEnum,
+          ),
         }),
       ).annotate({
         identifier: "ActiveViewVideoViewabilityMetricConfig",
@@ -13311,12 +15853,12 @@ function __c39(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          customVariables: S.optional(__S(95)),
+          customVariables: S.optional(DocumentMap),
           name: S.optional(S.String),
           floodlightGroupId: S.optional(S.String),
-          webTagType: S.optional(S.String),
-          lookbackWindow: S.optional(__S(317)),
-          activeViewConfig: S.optional(__S(318)),
+          webTagType: S.optional(FloodlightGroupWebTagTypeEnum),
+          lookbackWindow: S.optional(LookbackWindow),
+          activeViewConfig: S.optional(ActiveViewVideoViewabilityMetricConfig),
           displayName: S.optional(S.String),
         }),
       ).annotate({ identifier: "FloodlightGroup" });
@@ -13348,17 +15890,17 @@ function __c40(j: number): any {
         }),
       ).annotate({ identifier: "RemarketingConfig" });
     case 2:
-      return S.Array(__S(321));
+      return S.Array(RemarketingConfig);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          advertiserIds: S.optional(__S(5)),
+          advertiserIds: S.optional(StringList),
           floodlightGroupId: S.optional(S.String),
-          remarketingConfigs: S.optional(__S(322)),
+          remarketingConfigs: S.optional(RemarketingConfigList),
           displayName: S.optional(S.String),
           floodlightActivityId: S.optional(S.String),
           name: S.optional(S.String),
-          servingStatus: S.optional(S.String),
+          servingStatus: S.optional(FloodlightActivityServingStatusEnum),
           sslRequired: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "FloodlightActivity" });
@@ -13381,7 +15923,7 @@ function __c40(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          googleAudienceType: S.optional(S.String),
+          googleAudienceType: S.optional(GoogleAudienceGoogleAudienceTypeEnum),
           googleAudienceId: S.optional(S.String),
           name: S.optional(S.String),
           displayName: S.optional(S.String),
@@ -13438,7 +15980,7 @@ function __c41(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          exchange: S.optional(S.String),
+          exchange: S.optional(ExchangeConfigEnabledExchangeExchangeEnum),
           googleAdManagerBuyerNetworkId: S.optional(S.String),
           seatId: S.optional(S.String),
           googleAdManagerAgencyId: S.optional(S.String),
@@ -13447,11 +15989,11 @@ function __c41(j: number): any {
         identifier: "ExchangeConfigEnabledExchange",
       });
     case 2:
-      return S.Array(__S(329));
+      return S.Array(ExchangeConfigEnabledExchange);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          enabledExchanges: S.optional(__S(330)),
+          enabledExchanges: S.optional(ExchangeConfigEnabledExchangeList),
         }),
       ).annotate({ identifier: "ExchangeConfig" });
     case 4:
@@ -13464,13 +16006,13 @@ function __c41(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          measurementConfig: S.optional(__S(332)),
+          measurementConfig: S.optional(MeasurementConfig),
         }),
       ).annotate({ identifier: "PartnerAdServerConfig" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          sdfConfig: S.optional(__S(162)),
+          sdfConfig: S.optional(SdfConfig),
         }),
       ).annotate({ identifier: "PartnerDataAccessConfig" });
     case 7:
@@ -13487,14 +16029,14 @@ function __c42(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          exchangeConfig: S.optional(__S(331)),
+          exchangeConfig: S.optional(ExchangeConfig),
           name: S.optional(S.String),
-          entityStatus: S.optional(S.String),
-          adServerConfig: S.optional(__S(333)),
+          entityStatus: S.optional(PartnerEntityStatusEnum),
+          adServerConfig: S.optional(PartnerAdServerConfig),
           partnerId: S.optional(S.String),
           updateTime: S.optional(S.String),
-          dataAccessConfig: S.optional(__S(334)),
-          generalConfig: S.optional(__S(335)),
+          dataAccessConfig: S.optional(PartnerDataAccessConfig),
+          generalConfig: S.optional(PartnerGeneralConfig),
           displayName: S.optional(S.String),
         }),
       ).annotate({ identifier: "Partner" });
@@ -13519,7 +16061,9 @@ function __c42(j: number): any {
         S.Struct({
           assignedTargetingOptionId: S.String.pipe(T.Label()),
           partnerId: S.String.pipe(T.Label()),
-          targetingType: S.String.pipe(T.Label()),
+          targetingType: GetPartnersTargetingTypesAssignedTargetingOptionsTargetingTypeEnum.pipe(
+            T.Label(),
+          ),
         }).pipe(
           T.Http({
             method: "GET",
@@ -13547,7 +16091,7 @@ function __c42(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          targetingType: S.String.pipe(T.Label()),
+          targetingType: GetTargetingTypesTargetingOptionsTargetingTypeEnum.pipe(T.Label()),
           advertiserId: S.optional(S.String.pipe(T.Query())),
           targetingOptionId: S.String.pipe(T.Label()),
         }).pipe(
@@ -13563,7 +16107,9 @@ function __c42(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          contentOutstreamPosition: S.optional(S.String),
+          contentOutstreamPosition: S.optional(
+            ContentOutstreamPositionTargetingOptionDetailsContentOutstreamPositionEnum,
+          ),
         }),
       ).annotate({
         identifier: "ContentOutstreamPositionTargetingOptionDetails",
@@ -13571,7 +16117,7 @@ function __c42(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          audioContentType: S.optional(S.String),
+          audioContentType: S.optional(AudioContentTypeTargetingOptionDetailsAudioContentTypeEnum),
         }),
       ).annotate({
         identifier: "AudioContentTypeTargetingOptionDetails",
@@ -13579,7 +16125,7 @@ function __c42(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          deviceType: S.optional(S.String),
+          deviceType: S.optional(DeviceTypeTargetingOptionDetailsDeviceTypeEnum),
         }),
       ).annotate({
         identifier: "DeviceTypeTargetingOptionDetails",
@@ -13593,7 +16139,7 @@ function __c43(j: number): any {
         S.Struct({
           geoRegion: S.optional(S.String),
           businessChain: S.optional(S.String),
-          geoRegionType: S.optional(S.String),
+          geoRegionType: S.optional(BusinessChainTargetingOptionDetailsGeoRegionTypeEnum),
         }),
       ).annotate({
         identifier: "BusinessChainTargetingOptionDetails",
@@ -13601,7 +16147,9 @@ function __c43(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          contentInstreamPosition: S.optional(S.String),
+          contentInstreamPosition: S.optional(
+            ContentInstreamPositionTargetingOptionDetailsContentInstreamPositionEnum,
+          ),
         }),
       ).annotate({
         identifier: "ContentInstreamPositionTargetingOptionDetails",
@@ -13609,7 +16157,9 @@ function __c43(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          contentRatingTier: S.optional(S.String),
+          contentRatingTier: S.optional(
+            DigitalContentLabelTargetingOptionDetailsContentRatingTierEnum,
+          ),
         }),
       ).annotate({
         identifier: "DigitalContentLabelTargetingOptionDetails",
@@ -13617,7 +16167,7 @@ function __c43(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          onScreenPosition: S.optional(S.String),
+          onScreenPosition: S.optional(OnScreenPositionTargetingOptionDetailsOnScreenPositionEnum),
         }),
       ).annotate({
         identifier: "OnScreenPositionTargetingOptionDetails",
@@ -13633,7 +16183,9 @@ function __c43(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          authorizedSellerStatus: S.optional(S.String),
+          authorizedSellerStatus: S.optional(
+            AuthorizedSellerStatusTargetingOptionDetailsAuthorizedSellerStatusEnum,
+          ),
         }),
       ).annotate({
         identifier: "AuthorizedSellerStatusTargetingOptionDetails",
@@ -13641,7 +16193,9 @@ function __c43(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          contentPosition: S.optional(S.String),
+          contentPosition: S.optional(
+            NativeContentPositionTargetingOptionDetailsContentPositionEnum,
+          ),
         }),
       ).annotate({
         identifier: "NativeContentPositionTargetingOptionDetails",
@@ -13650,7 +16204,7 @@ function __c43(j: number): any {
       return S.suspend(() =>
         S.Struct({
           displayName: S.optional(S.String),
-          type: S.optional(S.String),
+          type: S.optional(CarrierAndIspTargetingOptionDetailsTypeEnum),
         }),
       ).annotate({
         identifier: "CarrierAndIspTargetingOptionDetails",
@@ -13662,7 +16216,7 @@ function __c44(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          geoRegionType: S.optional(S.String),
+          geoRegionType: S.optional(GeoRegionTargetingOptionDetailsGeoRegionTypeEnum),
           displayName: S.optional(S.String),
         }),
       ).annotate({
@@ -13671,7 +16225,7 @@ function __c44(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          contentDuration: S.optional(S.String),
+          contentDuration: S.optional(ContentDurationTargetingOptionDetailsContentDurationEnum),
         }),
       ).annotate({
         identifier: "ContentDurationTargetingOptionDetails",
@@ -13689,7 +16243,9 @@ function __c44(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          sensitiveCategory: S.optional(S.String),
+          sensitiveCategory: S.optional(
+            SensitiveCategoryTargetingOptionDetailsSensitiveCategoryEnum,
+          ),
         }),
       ).annotate({
         identifier: "SensitiveCategoryTargetingOptionDetails",
@@ -13697,7 +16253,9 @@ function __c44(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          userRewardedContent: S.optional(S.String),
+          userRewardedContent: S.optional(
+            UserRewardedContentTargetingOptionDetailsUserRewardedContentEnum,
+          ),
         }),
       ).annotate({
         identifier: "UserRewardedContentTargetingOptionDetails",
@@ -13705,7 +16263,9 @@ function __c44(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          contentStreamType: S.optional(S.String),
+          contentStreamType: S.optional(
+            ContentStreamTypeTargetingOptionDetailsContentStreamTypeEnum,
+          ),
         }),
       ).annotate({
         identifier: "ContentStreamTypeTargetingOptionDetails",
@@ -13713,42 +16273,44 @@ function __c44(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          contentOutstreamPositionDetails: S.optional(__S(341)),
+          contentOutstreamPositionDetails: S.optional(
+            ContentOutstreamPositionTargetingOptionDetails,
+          ),
           targetingOptionId: S.optional(S.String),
-          audioContentTypeDetails: S.optional(__S(342)),
-          deviceTypeDetails: S.optional(__S(343)),
-          businessChainDetails: S.optional(__S(344)),
-          contentInstreamPositionDetails: S.optional(__S(345)),
-          digitalContentLabelDetails: S.optional(__S(346)),
-          onScreenPositionDetails: S.optional(__S(347)),
-          videoPlayerSizeDetails: S.optional(__S(51)),
-          ageRangeDetails: S.optional(__S(71)),
-          operatingSystemDetails: S.optional(__S(348)),
-          householdIncomeDetails: S.optional(__S(33)),
-          authorizedSellerStatusDetails: S.optional(__S(349)),
-          parentalStatusDetails: S.optional(__S(88)),
+          audioContentTypeDetails: S.optional(AudioContentTypeTargetingOptionDetails),
+          deviceTypeDetails: S.optional(DeviceTypeTargetingOptionDetails),
+          businessChainDetails: S.optional(BusinessChainTargetingOptionDetails),
+          contentInstreamPositionDetails: S.optional(ContentInstreamPositionTargetingOptionDetails),
+          digitalContentLabelDetails: S.optional(DigitalContentLabelTargetingOptionDetails),
+          onScreenPositionDetails: S.optional(OnScreenPositionTargetingOptionDetails),
+          videoPlayerSizeDetails: S.optional(VideoPlayerSizeTargetingOptionDetails),
+          ageRangeDetails: S.optional(AgeRangeTargetingOptionDetails),
+          operatingSystemDetails: S.optional(OperatingSystemTargetingOptionDetails),
+          householdIncomeDetails: S.optional(HouseholdIncomeTargetingOptionDetails),
+          authorizedSellerStatusDetails: S.optional(AuthorizedSellerStatusTargetingOptionDetails),
+          parentalStatusDetails: S.optional(ParentalStatusTargetingOptionDetails),
           name: S.optional(S.String),
-          contentGenreDetails: S.optional(__S(348)),
-          nativeContentPositionDetails: S.optional(__S(350)),
-          browserDetails: S.optional(__S(348)),
-          exchangeDetails: S.optional(__S(53)),
-          omidDetails: S.optional(__S(26)),
-          carrierAndIspDetails: S.optional(__S(351)),
-          deviceMakeModelDetails: S.optional(__S(348)),
-          viewabilityDetails: S.optional(__S(84)),
-          geoRegionDetails: S.optional(__S(352)),
-          contentDurationDetails: S.optional(__S(353)),
-          poiDetails: S.optional(__S(354)),
-          categoryDetails: S.optional(__S(348)),
-          targetingType: S.optional(S.String),
-          languageDetails: S.optional(__S(348)),
-          appCategoryDetails: S.optional(__S(348)),
-          genderDetails: S.optional(__S(86)),
-          sensitiveCategoryDetails: S.optional(__S(355)),
-          environmentDetails: S.optional(__S(85)),
-          userRewardedContentDetails: S.optional(__S(356)),
-          subExchangeDetails: S.optional(__S(348)),
-          contentStreamTypeDetails: S.optional(__S(357)),
+          contentGenreDetails: S.optional(ContentGenreTargetingOptionDetails),
+          nativeContentPositionDetails: S.optional(NativeContentPositionTargetingOptionDetails),
+          browserDetails: S.optional(BrowserTargetingOptionDetails),
+          exchangeDetails: S.optional(ExchangeTargetingOptionDetails),
+          omidDetails: S.optional(OmidTargetingOptionDetails),
+          carrierAndIspDetails: S.optional(CarrierAndIspTargetingOptionDetails),
+          deviceMakeModelDetails: S.optional(DeviceMakeModelTargetingOptionDetails),
+          viewabilityDetails: S.optional(ViewabilityTargetingOptionDetails),
+          geoRegionDetails: S.optional(GeoRegionTargetingOptionDetails),
+          contentDurationDetails: S.optional(ContentDurationTargetingOptionDetails),
+          poiDetails: S.optional(PoiTargetingOptionDetails),
+          categoryDetails: S.optional(CategoryTargetingOptionDetails),
+          targetingType: S.optional(TargetingOptionTargetingTypeEnum),
+          languageDetails: S.optional(LanguageTargetingOptionDetails),
+          appCategoryDetails: S.optional(AppCategoryTargetingOptionDetails),
+          genderDetails: S.optional(GenderTargetingOptionDetails),
+          sensitiveCategoryDetails: S.optional(SensitiveCategoryTargetingOptionDetails),
+          environmentDetails: S.optional(EnvironmentTargetingOptionDetails),
+          userRewardedContentDetails: S.optional(UserRewardedContentTargetingOptionDetails),
+          subExchangeDetails: S.optional(SubExchangeTargetingOptionDetails),
+          contentStreamTypeDetails: S.optional(ContentStreamTypeTargetingOptionDetails),
         }),
       ).annotate({ identifier: "TargetingOption" });
     case 7:
@@ -13784,11 +16346,11 @@ function __c45(j: number): any {
         ),
       ).annotate({ identifier: "ListAdvertisersRequest" });
     case 1:
-      return S.Array(__S(165));
+      return S.Array(Advertiser);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          advertisers: S.optional(__S(361)),
+          advertisers: S.optional(AdvertiserList),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListAdvertisersResponse" });
@@ -13811,11 +16373,11 @@ function __c45(j: number): any {
         identifier: "ListAdvertisersCampaignsRequest",
       });
     case 4:
-      return S.Array(__S(174));
+      return S.Array(Campaign);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          campaigns: S.optional(__S(364)),
+          campaigns: S.optional(CampaignList),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListCampaignsResponse" });
@@ -13839,7 +16401,7 @@ function __c45(j: number): any {
         identifier: "ListAdvertisersChannelsRequest",
       });
     case 7:
-      return S.Array(__S(176));
+      return S.Array(Channel);
   }
 }
 function __c46(j: number): any {
@@ -13847,7 +16409,7 @@ function __c46(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          channels: S.optional(__S(367)),
+          channels: S.optional(ChannelList),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListChannelsResponse" });
@@ -13875,7 +16437,7 @@ function __c46(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          sites: S.optional(__S(7)),
+          sites: S.optional(SiteList),
         }),
       ).annotate({ identifier: "ListSitesResponse" });
     case 3:
@@ -13897,11 +16459,11 @@ function __c46(j: number): any {
         identifier: "ListAdvertisersCreativesRequest",
       });
     case 4:
-      return S.Array(__S(203));
+      return S.Array(Creative);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          creatives: S.optional(__S(372)),
+          creatives: S.optional(CreativeList),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListCreativesResponse" });
@@ -13924,7 +16486,7 @@ function __c46(j: number): any {
         identifier: "ListAdvertisersInsertionOrdersRequest",
       });
     case 7:
-      return S.Array(__S(208));
+      return S.Array(InsertionOrder);
   }
 }
 function __c47(j: number): any {
@@ -13933,7 +16495,7 @@ function __c47(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          insertionOrders: S.optional(__S(375)),
+          insertionOrders: S.optional(InsertionOrderList),
         }),
       ).annotate({
         identifier: "ListInsertionOrdersResponse",
@@ -13943,7 +16505,9 @@ function __c47(j: number): any {
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
           pageToken: S.optional(S.String.pipe(T.Query())),
-          loiSapinInvoiceType: S.optional(S.String.pipe(T.Query())),
+          loiSapinInvoiceType: S.optional(
+            ListAdvertisersInvoicesLoiSapinInvoiceTypeEnum.pipe(T.Query()),
+          ),
           advertiserId: S.String.pipe(T.Label()),
           issueMonth: S.optional(S.String.pipe(T.Query())),
         }).pipe(
@@ -13963,28 +16527,28 @@ function __c47(j: number): any {
           taxAmountMicros: S.optional(S.String),
           preTaxAmountMicros: S.optional(S.String),
           totalAmountMicros: S.optional(S.String),
-          prismaCpeCode: S.optional(__S(170)),
+          prismaCpeCode: S.optional(PrismaCpeCode),
         }),
       ).annotate({ identifier: "BudgetSummary" });
     case 3:
-      return S.Array(__S(378));
+      return S.Array(BudgetSummary);
     case 4:
       return S.suspend(() =>
         S.Struct({
           correctedInvoiceId: S.optional(S.String),
           nonBudgetMicros: S.optional(S.String),
           name: S.optional(S.String),
-          budgetSummaries: S.optional(__S(379)),
+          budgetSummaries: S.optional(BudgetSummaryList),
           totalAmountMicros: S.optional(S.String),
           paymentsAccountId: S.optional(S.String),
           purchaseOrderNumber: S.optional(S.String),
-          dueDate: S.optional(__S(134)),
-          serviceDateRange: S.optional(__S(135)),
-          invoiceType: S.optional(S.String),
+          dueDate: S.optional(Displayvideo_Date),
+          serviceDateRange: S.optional(DateRange),
+          invoiceType: S.optional(InvoiceInvoiceTypeEnum),
           currencyCode: S.optional(S.String),
           subtotalAmountMicros: S.optional(S.String),
-          issueDate: S.optional(__S(134)),
-          replacedInvoiceIds: S.optional(__S(5)),
+          issueDate: S.optional(Displayvideo_Date),
+          replacedInvoiceIds: S.optional(StringList),
           pdfUrl: S.optional(S.String),
           budgetInvoiceGroupingId: S.optional(S.String),
           paymentsProfileId: S.optional(S.String),
@@ -13994,11 +16558,11 @@ function __c47(j: number): any {
         }),
       ).annotate({ identifier: "Invoice" });
     case 5:
-      return S.Array(__S(380));
+      return S.Array(Invoice);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          invoices: S.optional(__S(381)),
+          invoices: S.optional(InvoiceList),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListInvoicesResponse" });
@@ -14025,18 +16589,21 @@ function __c47(j: number): any {
 function __c48(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(152));
+      return S.Array(LineItem);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          lineItems: S.optional(__S(384)),
+          lineItems: S.optional(LineItemList),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListLineItemsResponse" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          targetingType: S.String.pipe(T.Label()),
+          targetingType:
+            ListAdvertisersLineItemsTargetingTypesAssignedTargetingOptionsTargetingTypeEnum.pipe(
+              T.Label(),
+            ),
           orderBy: S.optional(S.String.pipe(T.Query())),
           lineItemId: S.String.pipe(T.Label()),
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -14056,7 +16623,7 @@ function __c48(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          assignedTargetingOptions: S.optional(__S(90)),
+          assignedTargetingOptions: S.optional(AssignedTargetingOptionList),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -14081,11 +16648,11 @@ function __c48(j: number): any {
         identifier: "ListAdvertisersLocationListsRequest",
       });
     case 5:
-      return S.Array(__S(212));
+      return S.Array(LocationList);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          locationLists: S.optional(__S(389)),
+          locationLists: S.optional(LocationListList),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -14118,7 +16685,7 @@ function __c49(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          assignedLocations: S.optional(__S(12)),
+          assignedLocations: S.optional(AssignedLocationList),
         }),
       ).annotate({
         identifier: "ListAssignedLocationsResponse",
@@ -14142,11 +16709,11 @@ function __c49(j: number): any {
         identifier: "ListAdvertisersManualTriggersRequest",
       });
     case 2:
-      return S.Array(__S(2));
+      return S.Array(ManualTrigger);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          manualTriggers: S.optional(__S(394)),
+          manualTriggers: S.optional(ManualTriggerList),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -14169,12 +16736,12 @@ function __c49(j: number): any {
         identifier: "ListAdvertisersNegativeKeywordListsRequest",
       });
     case 5:
-      return S.Array(__S(216));
+      return S.Array(NegativeKeywordList);
     case 6:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          negativeKeywordLists: S.optional(__S(397)),
+          negativeKeywordLists: S.optional(NegativeKeywordListList),
         }),
       ).annotate({
         identifier: "ListNegativeKeywordListsResponse",
@@ -14205,7 +16772,7 @@ function __c50(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          negativeKeywords: S.optional(__S(17)),
+          negativeKeywords: S.optional(NegativeKeywordList_),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -14215,7 +16782,8 @@ function __c50(j: number): any {
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
-          targetingType: S.String.pipe(T.Label()),
+          targetingType:
+            ListAdvertisersTargetingTypesAssignedTargetingOptionsTargetingTypeEnum.pipe(T.Label()),
           pageToken: S.optional(S.String.pipe(T.Query())),
           orderBy: S.optional(S.String.pipe(T.Query())),
           filter: S.optional(S.String.pipe(T.Query())),
@@ -14234,7 +16802,7 @@ function __c50(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          assignedTargetingOptions: S.optional(__S(90)),
+          assignedTargetingOptions: S.optional(AssignedTargetingOptionList),
         }),
       ).annotate({
         identifier: "ListAdvertiserAssignedTargetingOptionsResponse",
@@ -14258,12 +16826,12 @@ function __c50(j: number): any {
         identifier: "ListAdvertisersYoutubeAdGroupAdsRequest",
       });
     case 4:
-      return S.Array(__S(302));
+      return S.Array(YoutubeAdGroupAd);
     case 5:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          youtubeAdGroupAds: S.optional(__S(404)),
+          youtubeAdGroupAds: S.optional(YoutubeAdGroupAdList),
         }),
       ).annotate({
         identifier: "ListYoutubeAdGroupAdsResponse",
@@ -14287,7 +16855,7 @@ function __c50(j: number): any {
         identifier: "ListAdvertisersYoutubeAdGroupsRequest",
       });
     case 7:
-      return S.Array(__S(308));
+      return S.Array(YoutubeAdGroup);
   }
 }
 function __c51(j: number): any {
@@ -14295,7 +16863,7 @@ function __c51(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          youtubeAdGroups: S.optional(__S(407)),
+          youtubeAdGroups: S.optional(YoutubeAdGroupList),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -14306,7 +16874,10 @@ function __c51(j: number): any {
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
           advertiserId: S.String.pipe(T.Label()),
-          targetingType: S.String.pipe(T.Label()),
+          targetingType:
+            ListAdvertisersYoutubeAdGroupsTargetingTypesAssignedTargetingOptionsTargetingTypeEnum.pipe(
+              T.Label(),
+            ),
           youtubeAdGroupId: S.String.pipe(T.Label()),
           pageToken: S.optional(S.String.pipe(T.Query())),
           filter: S.optional(S.String.pipe(T.Query())),
@@ -14359,11 +16930,11 @@ function __c51(j: number): any {
         identifier: "ListCombinedAudiencesRequest",
       });
     case 4:
-      return S.Array(__S(311));
+      return S.Array(CombinedAudience);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          combinedAudiences: S.optional(__S(412)),
+          combinedAudiences: S.optional(CombinedAudienceList),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -14389,7 +16960,7 @@ function __c51(j: number): any {
         identifier: "ListCustomBiddingAlgorithmsRequest",
       });
     case 7:
-      return S.Array(__S(222));
+      return S.Array(CustomBiddingAlgorithm);
   }
 }
 function __c52(j: number): any {
@@ -14397,7 +16968,7 @@ function __c52(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          customBiddingAlgorithms: S.optional(__S(415)),
+          customBiddingAlgorithms: S.optional(CustomBiddingAlgorithmList),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -14423,12 +16994,12 @@ function __c52(j: number): any {
         identifier: "ListCustomBiddingAlgorithmsScriptsRequest",
       });
     case 2:
-      return S.Array(__S(227));
+      return S.Array(CustomBiddingScript);
     case 3:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          customBiddingScripts: S.optional(__S(418)),
+          customBiddingScripts: S.optional(CustomBiddingScriptList),
         }),
       ).annotate({
         identifier: "ListCustomBiddingScriptsResponse",
@@ -14450,12 +17021,12 @@ function __c52(j: number): any {
         ),
       ).annotate({ identifier: "ListCustomListsRequest" });
     case 5:
-      return S.Array(__S(315));
+      return S.Array(CustomList);
     case 6:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          customLists: S.optional(__S(421)),
+          customLists: S.optional(CustomListList),
         }),
       ).annotate({ identifier: "ListCustomListsResponse" });
     case 7:
@@ -14481,11 +17052,11 @@ function __c52(j: number): any {
 function __c53(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(323));
+      return S.Array(FloodlightActivity);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          floodlightActivities: S.optional(__S(424)),
+          floodlightActivities: S.optional(FloodlightActivityList),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -14511,11 +17082,11 @@ function __c53(j: number): any {
         identifier: "ListGoogleAudiencesRequest",
       });
     case 3:
-      return S.Array(__S(325));
+      return S.Array(GoogleAudience);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          googleAudiences: S.optional(__S(427)),
+          googleAudiences: S.optional(GoogleAudienceList),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -14541,12 +17112,12 @@ function __c53(j: number): any {
         identifier: "ListGuaranteedOrdersRequest",
       });
     case 6:
-      return S.Array(__S(230));
+      return S.Array(GuaranteedOrder);
     case 7:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          guaranteedOrders: S.optional(__S(430)),
+          guaranteedOrders: S.optional(GuaranteedOrderList),
         }),
       ).annotate({
         identifier: "ListGuaranteedOrdersResponse",
@@ -14575,12 +17146,12 @@ function __c54(j: number): any {
         identifier: "ListInventorySourceGroupsRequest",
       });
     case 1:
-      return S.Array(__S(232));
+      return S.Array(InventorySourceGroup);
     case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          inventorySourceGroups: S.optional(__S(433)),
+          inventorySourceGroups: S.optional(InventorySourceGroupList),
         }),
       ).annotate({
         identifier: "ListInventorySourceGroupsResponse",
@@ -14608,7 +17179,7 @@ function __c54(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          assignedInventorySources: S.optional(__S(106)),
+          assignedInventorySources: S.optional(AssignedInventorySourceList),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -14630,12 +17201,12 @@ function __c54(j: number): any {
         ),
       ).annotate({ identifier: "ListPartnersRequest" });
     case 6:
-      return S.Array(__S(336));
+      return S.Array(Partner);
     case 7:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          partners: S.optional(__S(438)),
+          partners: S.optional(PartnerList),
         }),
       ).annotate({ identifier: "ListPartnersResponse" });
   }
@@ -14686,7 +17257,9 @@ function __c55(j: number): any {
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
           pageToken: S.optional(S.String.pipe(T.Query())),
-          targetingType: S.String.pipe(T.Label()),
+          targetingType: ListPartnersTargetingTypesAssignedTargetingOptionsTargetingTypeEnum.pipe(
+            T.Label(),
+          ),
           orderBy: S.optional(S.String.pipe(T.Query())),
           partnerId: S.String.pipe(T.Label()),
           filter: S.optional(S.String.pipe(T.Query())),
@@ -14706,7 +17279,7 @@ function __c55(j: number): any {
           advertiserId: S.optional(S.String.pipe(T.Query())),
           pageSize: S.optional(S.Number.pipe(T.Query())),
           orderBy: S.optional(S.String.pipe(T.Query())),
-          targetingType: S.String.pipe(T.Label()),
+          targetingType: ListTargetingTypesTargetingOptionsTargetingTypeEnum.pipe(T.Label()),
           pageToken: S.optional(S.String.pipe(T.Query())),
           filter: S.optional(S.String.pipe(T.Query())),
         }).pipe(
@@ -14720,12 +17293,12 @@ function __c55(j: number): any {
         identifier: "ListTargetingTypesTargetingOptionsRequest",
       });
     case 4:
-      return S.Array(__S(358));
+      return S.Array(TargetingOption);
     case 5:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          targetingOptions: S.optional(__S(444)),
+          targetingOptions: S.optional(TargetingOptionList),
         }),
       ).annotate({
         identifier: "ListTargetingOptionsResponse",
@@ -14746,7 +17319,7 @@ function __c55(j: number): any {
         ),
       ).annotate({ identifier: "ListUsersRequest" });
     case 7:
-      return S.Array(__S(244));
+      return S.Array(User);
   }
 }
 function __c56(j: number): any {
@@ -14755,7 +17328,7 @@ function __c56(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          users: S.optional(__S(447)),
+          users: S.optional(UserList),
         }),
       ).annotate({ identifier: "ListUsersResponse" });
     case 1:
@@ -14786,7 +17359,7 @@ function __c56(j: number): any {
         S.Struct({
           advertiserId: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(165).pipe(T.HttpBody())),
+          body: S.optional(Advertiser.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -14801,7 +17374,7 @@ function __c56(j: number): any {
           advertiserId: S.String.pipe(T.Label()),
           campaignId: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(174).pipe(T.HttpBody())),
+          body: S.optional(Campaign.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -14819,7 +17392,7 @@ function __c56(j: number): any {
           advertiserId: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
           channelId: S.String.pipe(T.Label()),
-          body: S.optional(__S(176).pipe(T.HttpBody())),
+          body: S.optional(Channel.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -14836,7 +17409,7 @@ function __c56(j: number): any {
           creativeId: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
           advertiserId: S.String.pipe(T.Label()),
-          body: S.optional(__S(203).pipe(T.HttpBody())),
+          body: S.optional(Creative.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -14853,7 +17426,7 @@ function __c56(j: number): any {
           updateMask: S.optional(S.String.pipe(T.Query())),
           advertiserId: S.String.pipe(T.Label()),
           insertionOrderId: S.String.pipe(T.Label()),
-          body: S.optional(__S(208).pipe(T.HttpBody())),
+          body: S.optional(InsertionOrder.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -14874,7 +17447,7 @@ function __c57(j: number): any {
           lineItemId: S.String.pipe(T.Label()),
           advertiserId: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(152).pipe(T.HttpBody())),
+          body: S.optional(LineItem.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -14891,7 +17464,7 @@ function __c57(j: number): any {
           updateMask: S.optional(S.String.pipe(T.Query())),
           advertiserId: S.String.pipe(T.Label()),
           locationListId: S.String.pipe(T.Label()),
-          body: S.optional(__S(212).pipe(T.HttpBody())),
+          body: S.optional(LocationList.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -14908,7 +17481,7 @@ function __c57(j: number): any {
           triggerId: S.String.pipe(T.Label()),
           advertiserId: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(2).pipe(T.HttpBody())),
+          body: S.optional(ManualTrigger.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -14925,7 +17498,7 @@ function __c57(j: number): any {
           negativeKeywordListId: S.String.pipe(T.Label()),
           advertiserId: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(216).pipe(T.HttpBody())),
+          body: S.optional(NegativeKeywordList.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -14941,7 +17514,7 @@ function __c57(j: number): any {
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           customBiddingAlgorithmId: S.String.pipe(T.Label()),
-          body: S.optional(__S(222).pipe(T.HttpBody())),
+          body: S.optional(CustomBiddingAlgorithm.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -14958,7 +17531,7 @@ function __c57(j: number): any {
           updateMask: S.optional(S.String.pipe(T.Query())),
           floodlightGroupId: S.String.pipe(T.Label()),
           partnerId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(319).pipe(T.HttpBody())),
+          body: S.optional(FloodlightGroup.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -14976,7 +17549,7 @@ function __c57(j: number): any {
           advertiserId: S.optional(S.String.pipe(T.Query())),
           partnerId: S.optional(S.String.pipe(T.Query())),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(230).pipe(T.HttpBody())),
+          body: S.optional(GuaranteedOrder.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -14994,7 +17567,7 @@ function __c57(j: number): any {
           partnerId: S.optional(S.String.pipe(T.Query())),
           updateMask: S.optional(S.String.pipe(T.Query())),
           inventorySourceGroupId: S.String.pipe(T.Label()),
-          body: S.optional(__S(232).pipe(T.HttpBody())),
+          body: S.optional(InventorySourceGroup.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -15016,7 +17589,7 @@ function __c58(j: number): any {
           partnerId: S.String.pipe(T.Label()),
           channelId: S.String.pipe(T.Label()),
           advertiserId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(176).pipe(T.HttpBody())),
+          body: S.optional(Channel.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -15032,7 +17605,7 @@ function __c58(j: number): any {
         S.Struct({
           userId: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(244).pipe(T.HttpBody())),
+          body: S.optional(User.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -15044,7 +17617,7 @@ function __c58(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          newSites: S.optional(__S(7)),
+          newSites: S.optional(SiteList),
           partnerId: S.optional(S.String),
           advertiserId: S.optional(S.String),
         }),
@@ -15054,7 +17627,7 @@ function __c58(j: number): any {
         S.Struct({
           advertiserId: S.String.pipe(T.Label()),
           channelId: S.String.pipe(T.Label()),
-          body: S.optional(__S(466).pipe(T.HttpBody())),
+          body: S.optional(ReplaceSitesRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -15068,7 +17641,7 @@ function __c58(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          newNegativeKeywords: S.optional(__S(17)),
+          newNegativeKeywords: S.optional(NegativeKeywordList_),
         }),
       ).annotate({
         identifier: "ReplaceNegativeKeywordsRequest",
@@ -15078,7 +17651,7 @@ function __c58(j: number): any {
         S.Struct({
           advertiserId: S.String.pipe(T.Label()),
           negativeKeywordListId: S.String.pipe(T.Label()),
-          body: S.optional(__S(468).pipe(T.HttpBody())),
+          body: S.optional(ReplaceNegativeKeywordsRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -15094,7 +17667,7 @@ function __c58(j: number): any {
         S.Struct({
           partnerId: S.String.pipe(T.Label()),
           channelId: S.String.pipe(T.Label()),
-          body: S.optional(__S(466).pipe(T.HttpBody())),
+          body: S.optional(ReplaceSitesRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -15131,11 +17704,11 @@ function __c59(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          geoRegionSearchTerms: S.optional(__S(471)),
-          poiSearchTerms: S.optional(__S(472)),
+          geoRegionSearchTerms: S.optional(GeoRegionSearchTerms),
+          poiSearchTerms: S.optional(PoiSearchTerms),
           pageSize: S.optional(S.Number),
           pageToken: S.optional(S.String),
-          businessChainSearchTerms: S.optional(__S(473)),
+          businessChainSearchTerms: S.optional(BusinessChainSearchTerms),
           advertiserId: S.optional(S.String),
         }),
       ).annotate({
@@ -15144,8 +17717,8 @@ function __c59(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          targetingType: S.String.pipe(T.Label()),
-          body: S.optional(__S(474).pipe(T.HttpBody())),
+          targetingType: SearchTargetingTypesTargetingOptionsTargetingTypeEnum.pipe(T.Label()),
+          body: S.optional(SearchTargetingOptionsRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -15159,7 +17732,7 @@ function __c59(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          targetingOptions: S.optional(__S(444)),
+          targetingOptions: S.optional(TargetingOptionList),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -15175,7 +17748,7 @@ function __c59(j: number): any {
       return S.suspend(() =>
         S.Struct({
           advertiserId: S.String.pipe(T.Label()),
-          body: S.optional(__S(477).pipe(T.HttpBody())),
+          body: S.optional(CreateAssetRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -15189,7 +17762,7 @@ function __c59(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          asset: S.optional(__S(186)),
+          asset: S.optional(Asset),
         }),
       ).annotate({ identifier: "CreateAssetResponse" });
   }
@@ -15200,7 +17773,7 @@ function __c60(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resourceName: S.String.pipe(T.Label()),
-          body: S.optional(__S(226).pipe(T.HttpBody())),
+          body: S.optional(GoogleBytestreamMedia.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -15225,136 +17798,5 @@ function __c60(j: number): any {
       ).annotate({
         identifier: "UploadScriptCustomBiddingAlgorithmsRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
-    case 9:
-      return __c9(i & 7);
-    case 10:
-      return __c10(i & 7);
-    case 11:
-      return __c11(i & 7);
-    case 12:
-      return __c12(i & 7);
-    case 13:
-      return __c13(i & 7);
-    case 14:
-      return __c14(i & 7);
-    case 15:
-      return __c15(i & 7);
-    case 16:
-      return __c16(i & 7);
-    case 17:
-      return __c17(i & 7);
-    case 18:
-      return __c18(i & 7);
-    case 19:
-      return __c19(i & 7);
-    case 20:
-      return __c20(i & 7);
-    case 21:
-      return __c21(i & 7);
-    case 22:
-      return __c22(i & 7);
-    case 23:
-      return __c23(i & 7);
-    case 24:
-      return __c24(i & 7);
-    case 25:
-      return __c25(i & 7);
-    case 26:
-      return __c26(i & 7);
-    case 27:
-      return __c27(i & 7);
-    case 28:
-      return __c28(i & 7);
-    case 29:
-      return __c29(i & 7);
-    case 30:
-      return __c30(i & 7);
-    case 31:
-      return __c31(i & 7);
-    case 32:
-      return __c32(i & 7);
-    case 33:
-      return __c33(i & 7);
-    case 34:
-      return __c34(i & 7);
-    case 35:
-      return __c35(i & 7);
-    case 36:
-      return __c36(i & 7);
-    case 37:
-      return __c37(i & 7);
-    case 38:
-      return __c38(i & 7);
-    case 39:
-      return __c39(i & 7);
-    case 40:
-      return __c40(i & 7);
-    case 41:
-      return __c41(i & 7);
-    case 42:
-      return __c42(i & 7);
-    case 43:
-      return __c43(i & 7);
-    case 44:
-      return __c44(i & 7);
-    case 45:
-      return __c45(i & 7);
-    case 46:
-      return __c46(i & 7);
-    case 47:
-      return __c47(i & 7);
-    case 48:
-      return __c48(i & 7);
-    case 49:
-      return __c49(i & 7);
-    case 50:
-      return __c50(i & 7);
-    case 51:
-      return __c51(i & 7);
-    case 52:
-      return __c52(i & 7);
-    case 53:
-      return __c53(i & 7);
-    case 54:
-      return __c54(i & 7);
-    case 55:
-      return __c55(i & 7);
-    case 56:
-      return __c56(i & 7);
-    case 57:
-      return __c57(i & 7);
-    case 58:
-      return __c58(i & 7);
-    case 59:
-      return __c59(i & 7);
-    case 60:
-      return __c60(i & 7);
   }
 }

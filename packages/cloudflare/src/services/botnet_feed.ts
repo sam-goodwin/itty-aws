@@ -10,8 +10,6 @@ import {
 } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { CloudflareOpError, CloudflareOpContext };
 
@@ -26,40 +24,62 @@ export interface DayReportAsnRequest {
   asnId: number;
   date?: string;
 }
+const DayReportAsnRequest = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<DayReportAsnRequest>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DayReportAsnResponse {
   cidr?: string | null;
   date?: string | null;
   offenseCount?: number | null;
 }
+const DayReportAsnResponse = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<DayReportAsnResponse>;
+
 export interface DeleteConfigAsnRequest {
   /** Identifier. */
   accountId: string;
   asnId: number;
 }
+const DeleteConfigAsnRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<DeleteConfigAsnRequest>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DeleteConfigAsnResponse {
   asn?: number | null;
 }
+const DeleteConfigAsnResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<DeleteConfigAsnResponse>;
+
 export interface FullReportAsnRequest {
   /** Identifier. */
   accountId: string;
   asnId: number;
 }
+const FullReportAsnRequest = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<FullReportAsnRequest>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface FullReportAsnResponse {
   cidr?: string | null;
   date?: string | null;
   offenseCount?: number | null;
 }
+const FullReportAsnResponse = DayReportAsnResponse as any as S.Schema<FullReportAsnResponse>;
+
 export interface GetConfigAsnRequest {
   /** Identifier. */
   accountId: string;
 }
+const GetConfigAsnRequest = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<GetConfigAsnRequest>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetConfigAsnResponse {
   asn?: number | null;
 }
+const GetConfigAsnResponse = DeleteConfigAsnResponse as any as S.Schema<GetConfigAsnResponse>;
+
 export type DayReportAsnError = CloudflareOpError;
 /** Gets all the data the botnet tracking database has for a given ASN registered to user account for given date. If no date is given, it will return results for the previous day. */
 export const dayReportAsn: API.OperationMethod<
@@ -68,8 +88,8 @@ export const dayReportAsn: API.OperationMethod<
   DayReportAsnError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<DayReportAsnRequest>,
-  output: __S(1) as any as S.Schema<DayReportAsnResponse>,
+  input: DayReportAsnRequest,
+  output: DayReportAsnResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -83,8 +103,8 @@ export const deleteConfigAsn: API.OperationMethod<
   DeleteConfigAsnError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2) as any as S.Schema<DeleteConfigAsnRequest>,
-  output: __S(3) as any as S.Schema<DeleteConfigAsnResponse>,
+  input: DeleteConfigAsnRequest,
+  output: DeleteConfigAsnResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -98,8 +118,8 @@ export const fullReportAsn: API.OperationMethod<
   FullReportAsnError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4) as any as S.Schema<FullReportAsnRequest>,
-  output: __S(1) as any as S.Schema<FullReportAsnResponse>,
+  input: FullReportAsnRequest,
+  output: FullReportAsnResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -113,8 +133,8 @@ export const getConfigAsn: API.OperationMethod<
   GetConfigAsnError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5) as any as S.Schema<GetConfigAsnRequest>,
-  output: __S(3) as any as S.Schema<GetConfigAsnResponse>,
+  input: GetConfigAsnRequest,
+  output: GetConfigAsnResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -197,16 +217,5 @@ function __c0(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetConfigAsnRequest" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
   }
 }

@@ -6,8 +6,6 @@ import { SlackError, SlackRateLimited } from "../errors.ts";
 import { SlackProtocol, type SlackOpError, type SlackOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { SlackOpError, SlackOpContext };
 
@@ -17,10 +15,17 @@ export interface ConnectRtmRequest {
   /** Only deliver presence events when requested by subscription. See [presence subscriptions](/apis/web-api/user-presence-and-status#subscriptions). */
   presence_sub?: boolean;
 }
+const ConnectRtmRequest = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<ConnectRtmRequest>;
+
 export interface ConnectRtmResponseSelf {
   id: string;
   name: string;
 }
+const ConnectRtmResponseSelf = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<ConnectRtmResponseSelf>;
+
 export interface ConnectRtmResponseTeam {
   domain: string;
   id: string;
@@ -28,6 +33,11 @@ export interface ConnectRtmResponseTeam {
   enterprise_id?: string;
   enterprise_name?: string;
 }
+const ConnectRtmResponseTeam = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<ConnectRtmResponseTeam>;
+
 export interface ConnectRtmResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
@@ -35,6 +45,8 @@ export interface ConnectRtmResponse {
   self: ConnectRtmResponseSelf;
   team: ConnectRtmResponseTeam;
 }
+const ConnectRtmResponse = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<ConnectRtmResponse>;
+
 export interface StartRtmRequest {
   /** Return timestamp only for latest message object of each channel (improves performance). */
   simple_latest?: boolean;
@@ -51,6 +63,8 @@ export interface StartRtmRequest {
   /** Set this to `true` to receive the locale for users and channels. Defaults to `false` */
   include_locale?: boolean;
 }
+const StartRtmRequest = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<StartRtmRequest>;
+
 export type StartRtmResponseSelf = ConnectRtmResponseSelf;
 export type StartRtmResponseTeam = ConnectRtmResponseTeam;
 export interface StartRtmResponse {
@@ -60,6 +74,8 @@ export interface StartRtmResponse {
   self: ConnectRtmResponseSelf;
   team: ConnectRtmResponseTeam;
 }
+const StartRtmResponse = ConnectRtmResponse as any as S.Schema<StartRtmResponse>;
+
 export type ConnectRtmError = SlackOpError;
 /** Starts a Real Time Messaging session. Rate limit tier: 1 Method-specific errors (the `error` slug on the SlackError): - `migration_in_progress` -- Team is being migrated between servers. See [the `team_migration_started` event documentation](/reference/events/team_migration_started) for details. See https://docs.slack.dev/reference/methods/rtm.connect */
 export const connectRtm: API.OperationMethod<
@@ -68,8 +84,8 @@ export const connectRtm: API.OperationMethod<
   ConnectRtmError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<ConnectRtmRequest>,
-  output: __S(3) as any as S.Schema<ConnectRtmResponse>,
+  input: ConnectRtmRequest,
+  output: ConnectRtmResponse,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -83,8 +99,8 @@ export const startRtm: API.OperationMethod<
   StartRtmError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4) as any as S.Schema<StartRtmRequest>,
-  output: __S(3) as any as S.Schema<StartRtmResponse>,
+  input: StartRtmRequest,
+  output: StartRtmResponse,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -122,8 +138,8 @@ function __c0(j: number): any {
         S.Struct({
           ok: S.Boolean,
           url: S.String,
-          self: __S(1),
-          team: __S(2),
+          self: ConnectRtmResponseSelf,
+          team: ConnectRtmResponseTeam,
         }),
       ).annotate({ identifier: "ConnectRtmResponse" });
     case 4:
@@ -138,16 +154,5 @@ function __c0(j: number): any {
           include_locale: S.optional(S.Boolean.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/rtm.start", code: 200 })),
       ).annotate({ identifier: "StartRtmRequest" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
   }
 }

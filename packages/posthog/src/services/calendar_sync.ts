@@ -5,8 +5,6 @@ import * as S from "@distilled.cloud/core/schema";
 import { PosthogProtocol, type PosthogOpError, type PosthogOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { PosthogOpError, PosthogOpContext };
 
@@ -20,13 +18,25 @@ export interface CreateCalendarSyncBackfillRequest {
   /** Final UTC date to include. Cannot be after today. */
   end_date: string;
 }
+const CreateCalendarSyncBackfillRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<CreateCalendarSyncBackfillRequest>;
+
 /** * `started` - started * `already_running` - already_running */
 export type CalendarSyncTriggerResponseStatusEnum = "started" | "already_running";
+const CalendarSyncTriggerResponseStatusEnum = S.String;
+
 /** Response of the calendar sync-now trigger. */
 export interface CalendarSyncTriggerResponse {
   /** 'started' (a sync run began) or 'already_running' (a sync for this calendar was already in flight, so this was a no-op). * `started` - started * `already_running` - already_running */
   status: CalendarSyncTriggerResponseStatusEnum;
 }
+const CalendarSyncTriggerResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<CalendarSyncTriggerResponse>;
+
 export interface CreateCalendarSyncIntervalRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -35,22 +45,39 @@ export interface CreateCalendarSyncIntervalRequest {
   /** Minutes between scheduled syncs: 5, 15, 30, or 60. */
   sync_interval_minutes: number;
 }
+const CreateCalendarSyncIntervalRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<CreateCalendarSyncIntervalRequest>;
+
 export interface CalendarSyncInterval {
   /** Id of the connected Google account. */
   integration_id: number;
   /** Minutes between scheduled syncs: 5, 15, 30, or 60. */
   sync_interval_minutes: number;
 }
+const CalendarSyncInterval = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<CalendarSyncInterval>;
+
 export interface CreateCalendarSyncSyncNowRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** Id of the google-calendar integration to sync. */
   integration_id: number;
 }
+const CreateCalendarSyncSyncNowRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<CreateCalendarSyncSyncNowRequest>;
+
 export interface ListCalendarSyncRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
+const ListCalendarSyncRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<ListCalendarSyncRequest>;
+
 /** Sync state of one connected calendar (read-only). */
 export interface CalendarSyncStatus {
   /** Id of the google-calendar integration. */
@@ -62,8 +89,20 @@ export interface CalendarSyncStatus {
   /** Minutes between scheduled syncs. */
   sync_interval_minutes: number;
 }
+const CalendarSyncStatus = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<CalendarSyncStatus>;
+
 export type ListCalendarSyncResponseBodyList = Array<CalendarSyncStatus>;
+const ListCalendarSyncResponseBodyList = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<ListCalendarSyncResponseBodyList>;
+
 export type ListCalendarSyncResponse = ListCalendarSyncResponseBodyList;
+const ListCalendarSyncResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<ListCalendarSyncResponse>;
+
 export type CreateCalendarSyncBackfillError = PosthogOpError;
 /** Backfill a connected Google account Start an admin-only Gmail and Google Calendar backfill for an inclusive UTC date range. */
 export const createCalendarSyncBackfill: API.OperationMethod<
@@ -72,8 +111,8 @@ export const createCalendarSyncBackfill: API.OperationMethod<
   CreateCalendarSyncBackfillError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<CreateCalendarSyncBackfillRequest>,
-  output: __S(1) as any as S.Schema<CalendarSyncTriggerResponse>,
+  input: CreateCalendarSyncBackfillRequest,
+  output: CalendarSyncTriggerResponse,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -87,8 +126,8 @@ export const createCalendarSyncInterval: API.OperationMethod<
   CreateCalendarSyncIntervalError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2) as any as S.Schema<CreateCalendarSyncIntervalRequest>,
-  output: __S(3) as any as S.Schema<CalendarSyncInterval>,
+  input: CreateCalendarSyncIntervalRequest,
+  output: CalendarSyncInterval,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -102,8 +141,8 @@ export const createCalendarSyncSyncNow: API.OperationMethod<
   CreateCalendarSyncSyncNowError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4) as any as S.Schema<CreateCalendarSyncSyncNowRequest>,
-  output: __S(1) as any as S.Schema<CalendarSyncTriggerResponse>,
+  input: CreateCalendarSyncSyncNowRequest,
+  output: CalendarSyncTriggerResponse,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -117,8 +156,8 @@ export const listCalendarSync: API.OperationMethod<
   ListCalendarSyncError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5) as any as S.Schema<ListCalendarSyncRequest>,
-  output: __S(8) as any as S.Schema<ListCalendarSyncResponse>,
+  input: ListCalendarSyncRequest,
+  output: ListCalendarSyncResponse,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -147,7 +186,7 @@ function __c0(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          status: S.String,
+          status: CalendarSyncTriggerResponseStatusEnum,
         }),
       ).annotate({
         identifier: "CalendarSyncTriggerResponse",
@@ -208,27 +247,14 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "CalendarSyncStatus" });
     case 7:
-      return S.Array(__S(6));
+      return S.Array(CalendarSyncStatus);
   }
 }
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => __S(7).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => ListCalendarSyncResponseBodyList.pipe(T.RawResponseRoot())).annotate({
         identifier: "ListCalendarSyncResponse",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
   }
 }

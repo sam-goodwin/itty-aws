@@ -10,8 +10,6 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 const ns = /*@__PURE__*/ T.XmlNamespace("http://cognito-identity.amazonaws.com/doc/2014-06-30/");
 const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "Cognito Identity",
@@ -164,9 +162,11 @@ export type ClassicFlow = boolean;
 export type IdentityProviderName = string;
 export type IdentityProviderId = string;
 export type IdentityProviders = { [key: string]: string | undefined };
+const IdentityProviders = /*@__PURE__*/ __L.at(__c0, 0);
 export type DeveloperProviderName = string;
 export type ARNString = string;
 export type OIDCProviderList = string[];
+const OIDCProviderList = /*@__PURE__*/ __L.at(__c0, 1);
 export type CognitoIdentityProviderName = string;
 export type CognitoIdentityProviderClientId = string;
 export type CognitoIdentityProviderTokenCheck = boolean;
@@ -175,11 +175,18 @@ export interface CognitoIdentityProvider {
   ClientId?: string;
   ServerSideTokenCheck?: boolean;
 }
+const CognitoIdentityProvider = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<CognitoIdentityProvider>;
 export type CognitoIdentityProviderList = CognitoIdentityProvider[];
+const CognitoIdentityProviderList = /*@__PURE__*/ __L.at(__c0, 3);
 export type SAMLProviderList = string[];
+const SAMLProviderList = OIDCProviderList as any as S.Schema<SAMLProviderList>;
 export type TagKeysType = string;
 export type TagValueType = string;
 export type IdentityPoolTagsType = { [key: string]: string | undefined };
+const IdentityPoolTagsType = IdentityProviders as any as S.Schema<IdentityPoolTagsType>;
 export interface CreateIdentityPoolInput {
   IdentityPoolName: string;
   AllowUnauthenticatedIdentities: boolean;
@@ -191,6 +198,10 @@ export interface CreateIdentityPoolInput {
   SamlProviderARNs?: string[];
   IdentityPoolTags?: { [key: string]: string | undefined };
 }
+const CreateIdentityPoolInput = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<CreateIdentityPoolInput>;
 export type IdentityPoolId = string;
 export interface IdentityPool {
   IdentityPoolId: string;
@@ -204,44 +215,84 @@ export interface IdentityPool {
   SamlProviderARNs?: string[];
   IdentityPoolTags?: { [key: string]: string | undefined };
 }
+const IdentityPool = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<IdentityPool>;
 export type IdentityId = string;
 export type IdentityIdList = string[];
+const IdentityIdList = OIDCProviderList as any as S.Schema<IdentityIdList>;
 export interface DeleteIdentitiesInput {
   IdentityIdsToDelete: string[];
 }
+const DeleteIdentitiesInput = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<DeleteIdentitiesInput>;
 export type ErrorCode = "AccessDenied" | "InternalServerError" | (string & {});
+const ErrorCode = S.String;
+
 export interface UnprocessedIdentityId {
   IdentityId?: string;
   ErrorCode?: ErrorCode;
 }
+const UnprocessedIdentityId = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<UnprocessedIdentityId>;
 export type UnprocessedIdentityIdList = UnprocessedIdentityId[];
+const UnprocessedIdentityIdList = /*@__PURE__*/ __L.at(__c1, 0);
 export interface DeleteIdentitiesResponse {
   UnprocessedIdentityIds?: UnprocessedIdentityId[];
 }
+const DeleteIdentitiesResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<DeleteIdentitiesResponse>;
 export interface DeleteIdentityPoolInput {
   IdentityPoolId: string;
 }
+const DeleteIdentityPoolInput = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<DeleteIdentityPoolInput>;
 export interface DeleteIdentityPoolResponse {}
+const DeleteIdentityPoolResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<DeleteIdentityPoolResponse>;
 export interface DescribeIdentityInput {
   IdentityId: string;
 }
+const DescribeIdentityInput = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<DescribeIdentityInput>;
 export type LoginsList = string[];
+const LoginsList = OIDCProviderList as any as S.Schema<LoginsList>;
 export interface IdentityDescription {
   IdentityId?: string;
   Logins?: string[];
   CreationDate?: Date;
   LastModifiedDate?: Date;
 }
+const IdentityDescription = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<IdentityDescription>;
 export interface DescribeIdentityPoolInput {
   IdentityPoolId: string;
 }
+const DescribeIdentityPoolInput = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<DescribeIdentityPoolInput>;
 export type IdentityProviderToken = string | redacted.Redacted<string>;
 export type LoginsMap = { [key: string]: string | redacted.Redacted<string> | undefined };
+const LoginsMap = /*@__PURE__*/ __L.at(__c1, 7);
 export interface GetCredentialsForIdentityInput {
   IdentityId: string;
   Logins?: { [key: string]: string | redacted.Redacted<string> | undefined };
   CustomRoleArn?: string;
 }
+const GetCredentialsForIdentityInput = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<GetCredentialsForIdentityInput>;
 export type AccessKeyString = string;
 export type SecretKeyString = string | redacted.Redacted<string>;
 export type SessionTokenString = string;
@@ -251,26 +302,42 @@ export interface Credentials {
   SessionToken?: string | redacted.Redacted<string>;
   Expiration?: Date;
 }
+const Credentials = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<Credentials>;
 export interface GetCredentialsForIdentityResponse {
   IdentityId?: string;
   Credentials?: Credentials;
 }
+const GetCredentialsForIdentityResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<GetCredentialsForIdentityResponse>;
 export type AccountId = string;
 export interface GetIdInput {
   AccountId?: string;
   IdentityPoolId: string;
   Logins?: { [key: string]: string | redacted.Redacted<string> | undefined };
 }
+const GetIdInput = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<GetIdInput>;
 export interface GetIdResponse {
   IdentityId?: string;
 }
+const GetIdResponse = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<GetIdResponse>;
 export interface GetIdentityPoolRolesInput {
   IdentityPoolId: string;
 }
+const GetIdentityPoolRolesInput = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<GetIdentityPoolRolesInput>;
 export type RoleType = string;
 export type RolesMap = { [key: string]: string | undefined };
+const RolesMap = /*@__PURE__*/ __L.at(__c2, 6);
 export type RoleMappingType = "Token" | "Rules" | (string & {});
+const RoleMappingType = S.String;
+
 export type AmbiguousRoleResolutionType = "AuthenticatedRole" | "Deny" | (string & {});
+const AmbiguousRoleResolutionType = S.String;
+
 export type ClaimName = string;
 export type MappingRuleMatchType =
   | "Equals"
@@ -278,6 +345,8 @@ export type MappingRuleMatchType =
   | "StartsWith"
   | "NotEqual"
   | (string & {});
+const MappingRuleMatchType = S.String;
+
 export type ClaimValue = string;
 export interface MappingRule {
   Claim: string;
@@ -285,33 +354,51 @@ export interface MappingRule {
   Value: string;
   RoleARN: string;
 }
+const MappingRule = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<MappingRule>;
 export type MappingRulesList = MappingRule[];
+const MappingRulesList = /*@__PURE__*/ __L.at(__c3, 0);
 export interface RulesConfigurationType {
   Rules: MappingRule[];
 }
+const RulesConfigurationType = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<RulesConfigurationType>;
 export interface RoleMapping {
   Type: RoleMappingType;
   AmbiguousRoleResolution?: AmbiguousRoleResolutionType;
   RulesConfiguration?: RulesConfigurationType;
 }
+const RoleMapping = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<RoleMapping>;
 export type RoleMappingMap = { [key: string]: RoleMapping | undefined };
+const RoleMappingMap = /*@__PURE__*/ __L.at(__c3, 3);
 export interface GetIdentityPoolRolesResponse {
   IdentityPoolId?: string;
   Roles?: { [key: string]: string | undefined };
   RoleMappings?: { [key: string]: RoleMapping | undefined };
 }
+const GetIdentityPoolRolesResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<GetIdentityPoolRolesResponse>;
 export interface GetOpenIdTokenInput {
   IdentityId: string;
   Logins?: { [key: string]: string | redacted.Redacted<string> | undefined };
 }
+const GetOpenIdTokenInput = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<GetOpenIdTokenInput>;
 export type OIDCToken = string | redacted.Redacted<string>;
 export interface GetOpenIdTokenResponse {
   IdentityId?: string;
   Token?: string | redacted.Redacted<string>;
 }
+const GetOpenIdTokenResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<GetOpenIdTokenResponse>;
 export type PrincipalTagID = string;
 export type PrincipalTagValue = string;
 export type PrincipalTags = { [key: string]: string | undefined };
+const PrincipalTags = IdentityProviders as any as S.Schema<PrincipalTags>;
 export type TokenDuration = number;
 export interface GetOpenIdTokenForDeveloperIdentityInput {
   IdentityPoolId: string;
@@ -320,14 +407,26 @@ export interface GetOpenIdTokenForDeveloperIdentityInput {
   PrincipalTags?: { [key: string]: string | undefined };
   TokenDuration?: number;
 }
+const GetOpenIdTokenForDeveloperIdentityInput = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<GetOpenIdTokenForDeveloperIdentityInput>;
 export interface GetOpenIdTokenForDeveloperIdentityResponse {
   IdentityId?: string;
   Token?: string | redacted.Redacted<string>;
 }
+const GetOpenIdTokenForDeveloperIdentityResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<GetOpenIdTokenForDeveloperIdentityResponse>;
 export interface GetPrincipalTagAttributeMapInput {
   IdentityPoolId: string;
   IdentityProviderName: string;
 }
+const GetPrincipalTagAttributeMapInput = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<GetPrincipalTagAttributeMapInput>;
 export type UseDefaults = boolean;
 export interface GetPrincipalTagAttributeMapResponse {
   IdentityPoolId?: string;
@@ -335,6 +434,10 @@ export interface GetPrincipalTagAttributeMapResponse {
   UseDefaults?: boolean;
   PrincipalTags?: { [key: string]: string | undefined };
 }
+const GetPrincipalTagAttributeMapResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<GetPrincipalTagAttributeMapResponse>;
 export type QueryLimit = number;
 export type PaginationKey = string;
 export type HideDisabled = boolean;
@@ -344,31 +447,58 @@ export interface ListIdentitiesInput {
   NextToken?: string;
   HideDisabled?: boolean;
 }
+const ListIdentitiesInput = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<ListIdentitiesInput>;
 export type IdentitiesList = IdentityDescription[];
+const IdentitiesList = /*@__PURE__*/ __L.at(__c4, 4);
 export interface ListIdentitiesResponse {
   IdentityPoolId?: string;
   Identities?: IdentityDescription[];
   NextToken?: string;
 }
+const ListIdentitiesResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<ListIdentitiesResponse>;
 export interface ListIdentityPoolsInput {
   MaxResults: number;
   NextToken?: string;
 }
+const ListIdentityPoolsInput = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<ListIdentityPoolsInput>;
 export interface IdentityPoolShortDescription {
   IdentityPoolId?: string;
   IdentityPoolName?: string;
 }
+const IdentityPoolShortDescription = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<IdentityPoolShortDescription>;
 export type IdentityPoolsList = IdentityPoolShortDescription[];
+const IdentityPoolsList = /*@__PURE__*/ __L.at(__c5, 0);
 export interface ListIdentityPoolsResponse {
   IdentityPools?: IdentityPoolShortDescription[];
   NextToken?: string;
 }
+const ListIdentityPoolsResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  1,
+) as any as S.Schema<ListIdentityPoolsResponse>;
 export interface ListTagsForResourceInput {
   ResourceArn: string;
 }
+const ListTagsForResourceInput = /*@__PURE__*/ __L.at(
+  __c5,
+  2,
+) as any as S.Schema<ListTagsForResourceInput>;
 export interface ListTagsForResourceResponse {
   Tags?: { [key: string]: string | undefined };
 }
+const ListTagsForResourceResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<ListTagsForResourceResponse>;
 export type DeveloperUserIdentifier = string;
 export interface LookupDeveloperIdentityInput {
   IdentityPoolId: string;
@@ -377,63 +507,109 @@ export interface LookupDeveloperIdentityInput {
   MaxResults?: number;
   NextToken?: string;
 }
+const LookupDeveloperIdentityInput = /*@__PURE__*/ __L.at(
+  __c5,
+  4,
+) as any as S.Schema<LookupDeveloperIdentityInput>;
 export type DeveloperUserIdentifierList = string[];
+const DeveloperUserIdentifierList =
+  OIDCProviderList as any as S.Schema<DeveloperUserIdentifierList>;
 export interface LookupDeveloperIdentityResponse {
   IdentityId?: string;
   DeveloperUserIdentifierList?: string[];
   NextToken?: string;
 }
+const LookupDeveloperIdentityResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  5,
+) as any as S.Schema<LookupDeveloperIdentityResponse>;
 export interface MergeDeveloperIdentitiesInput {
   SourceUserIdentifier: string;
   DestinationUserIdentifier: string;
   DeveloperProviderName: string;
   IdentityPoolId: string;
 }
+const MergeDeveloperIdentitiesInput = /*@__PURE__*/ __L.at(
+  __c5,
+  6,
+) as any as S.Schema<MergeDeveloperIdentitiesInput>;
 export interface MergeDeveloperIdentitiesResponse {
   IdentityId?: string;
 }
+const MergeDeveloperIdentitiesResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  7,
+) as any as S.Schema<MergeDeveloperIdentitiesResponse>;
 export interface SetIdentityPoolRolesInput {
   IdentityPoolId: string;
   Roles: { [key: string]: string | undefined };
   RoleMappings?: { [key: string]: RoleMapping | undefined };
 }
+const SetIdentityPoolRolesInput = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<SetIdentityPoolRolesInput>;
 export interface SetIdentityPoolRolesResponse {}
+const SetIdentityPoolRolesResponse =
+  DeleteIdentityPoolResponse as any as S.Schema<SetIdentityPoolRolesResponse>;
 export interface SetPrincipalTagAttributeMapInput {
   IdentityPoolId: string;
   IdentityProviderName: string;
   UseDefaults?: boolean;
   PrincipalTags?: { [key: string]: string | undefined };
 }
+const SetPrincipalTagAttributeMapInput = /*@__PURE__*/ __L.at(
+  __c6,
+  1,
+) as any as S.Schema<SetPrincipalTagAttributeMapInput>;
 export interface SetPrincipalTagAttributeMapResponse {
   IdentityPoolId?: string;
   IdentityProviderName?: string;
   UseDefaults?: boolean;
   PrincipalTags?: { [key: string]: string | undefined };
 }
+const SetPrincipalTagAttributeMapResponse =
+  GetPrincipalTagAttributeMapResponse as any as S.Schema<SetPrincipalTagAttributeMapResponse>;
 export interface TagResourceInput {
   ResourceArn: string;
   Tags: { [key: string]: string | undefined };
 }
+const TagResourceInput = /*@__PURE__*/ __L.at(__c6, 2) as any as S.Schema<TagResourceInput>;
 export interface TagResourceResponse {}
+const TagResourceResponse = /*@__PURE__*/ __L.at(__c6, 3) as any as S.Schema<TagResourceResponse>;
 export interface UnlinkDeveloperIdentityInput {
   IdentityId: string;
   IdentityPoolId: string;
   DeveloperProviderName: string;
   DeveloperUserIdentifier: string;
 }
+const UnlinkDeveloperIdentityInput = /*@__PURE__*/ __L.at(
+  __c6,
+  4,
+) as any as S.Schema<UnlinkDeveloperIdentityInput>;
 export interface UnlinkDeveloperIdentityResponse {}
+const UnlinkDeveloperIdentityResponse =
+  DeleteIdentityPoolResponse as any as S.Schema<UnlinkDeveloperIdentityResponse>;
 export interface UnlinkIdentityInput {
   IdentityId: string;
   Logins: { [key: string]: string | redacted.Redacted<string> | undefined };
   LoginsToRemove: string[];
 }
+const UnlinkIdentityInput = /*@__PURE__*/ __L.at(__c6, 5) as any as S.Schema<UnlinkIdentityInput>;
 export interface UnlinkIdentityResponse {}
+const UnlinkIdentityResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  6,
+) as any as S.Schema<UnlinkIdentityResponse>;
 export type IdentityPoolTagsListType = string[];
+const IdentityPoolTagsListType = OIDCProviderList as any as S.Schema<IdentityPoolTagsListType>;
 export interface UntagResourceInput {
   ResourceArn: string;
   TagKeys: string[];
 }
+const UntagResourceInput = /*@__PURE__*/ __L.at(__c6, 7) as any as S.Schema<UntagResourceInput>;
 export interface UntagResourceResponse {}
+const UntagResourceResponse = TagResourceResponse as any as S.Schema<UntagResourceResponse>;
 export type CreateIdentityPoolError =
   | InternalErrorException
   | InvalidParameterException
@@ -470,8 +646,8 @@ export const createIdentityPool: API.OperationMethod<
   CreateIdentityPoolError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4) as any as S.Schema<CreateIdentityPoolInput>,
-  output: __S(5) as any as S.Schema<IdentityPool>,
+  input: CreateIdentityPoolInput,
+  output: IdentityPool,
   errors: [
     InternalErrorException,
     InvalidParameterException,
@@ -503,8 +679,8 @@ export const deleteIdentities: API.OperationMethod<
   DeleteIdentitiesError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6) as any as S.Schema<DeleteIdentitiesInput>,
-  output: __S(9) as any as S.Schema<DeleteIdentitiesResponse>,
+  input: DeleteIdentitiesInput,
+  output: DeleteIdentitiesResponse,
   errors: [InternalErrorException, InvalidParameterException, TooManyRequestsException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -531,8 +707,8 @@ export const deleteIdentityPool: API.OperationMethod<
   DeleteIdentityPoolError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10) as any as S.Schema<DeleteIdentityPoolInput>,
-  output: __S(11) as any as S.Schema<DeleteIdentityPoolResponse>,
+  input: DeleteIdentityPoolInput,
+  output: DeleteIdentityPoolResponse,
   errors: [
     InternalErrorException,
     InvalidParameterException,
@@ -565,8 +741,8 @@ export const describeIdentity: API.OperationMethod<
   DescribeIdentityError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12) as any as S.Schema<DescribeIdentityInput>,
-  output: __S(13) as any as S.Schema<IdentityDescription>,
+  input: DescribeIdentityInput,
+  output: IdentityDescription,
   errors: [
     InternalErrorException,
     InvalidParameterException,
@@ -599,8 +775,8 @@ export const describeIdentityPool: API.OperationMethod<
   DescribeIdentityPoolError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14) as any as S.Schema<DescribeIdentityPoolInput>,
-  output: __S(5) as any as S.Schema<IdentityPool>,
+  input: DescribeIdentityPoolInput,
+  output: IdentityPool,
   errors: [
     InternalErrorException,
     InvalidParameterException,
@@ -636,8 +812,8 @@ export const getCredentialsForIdentity: API.OperationMethod<
   GetCredentialsForIdentityError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16) as any as S.Schema<GetCredentialsForIdentityInput>,
-  output: __S(18) as any as S.Schema<GetCredentialsForIdentityResponse>,
+  input: GetCredentialsForIdentityInput,
+  output: GetCredentialsForIdentityResponse,
   errors: [
     ExternalServiceException,
     InternalErrorException,
@@ -675,8 +851,8 @@ export const getId: API.OperationMethod<
   GetIdError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19) as any as S.Schema<GetIdInput>,
-  output: __S(20) as any as S.Schema<GetIdResponse>,
+  input: GetIdInput,
+  output: GetIdResponse,
   errors: [
     ExternalServiceException,
     InternalErrorException,
@@ -712,8 +888,8 @@ export const getIdentityPoolRoles: API.OperationMethod<
   GetIdentityPoolRolesError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21) as any as S.Schema<GetIdentityPoolRolesInput>,
-  output: __S(28) as any as S.Schema<GetIdentityPoolRolesResponse>,
+  input: GetIdentityPoolRolesInput,
+  output: GetIdentityPoolRolesResponse,
   errors: [
     InternalErrorException,
     InvalidParameterException,
@@ -751,8 +927,8 @@ export const getOpenIdToken: API.OperationMethod<
   GetOpenIdTokenError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29) as any as S.Schema<GetOpenIdTokenInput>,
-  output: __S(30) as any as S.Schema<GetOpenIdTokenResponse>,
+  input: GetOpenIdTokenInput,
+  output: GetOpenIdTokenResponse,
   errors: [
     ExternalServiceException,
     InternalErrorException,
@@ -800,8 +976,8 @@ export const getOpenIdTokenForDeveloperIdentity: API.OperationMethod<
   GetOpenIdTokenForDeveloperIdentityError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31) as any as S.Schema<GetOpenIdTokenForDeveloperIdentityInput>,
-  output: __S(32) as any as S.Schema<GetOpenIdTokenForDeveloperIdentityResponse>,
+  input: GetOpenIdTokenForDeveloperIdentityInput,
+  output: GetOpenIdTokenForDeveloperIdentityResponse,
   errors: [
     DeveloperUserAlreadyRegisteredException,
     InternalErrorException,
@@ -833,8 +1009,8 @@ export const getPrincipalTagAttributeMap: API.OperationMethod<
   GetPrincipalTagAttributeMapError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33) as any as S.Schema<GetPrincipalTagAttributeMapInput>,
-  output: __S(34) as any as S.Schema<GetPrincipalTagAttributeMapResponse>,
+  input: GetPrincipalTagAttributeMapInput,
+  output: GetPrincipalTagAttributeMapResponse,
   errors: [
     InternalErrorException,
     InvalidParameterException,
@@ -866,8 +1042,8 @@ export const listIdentities: API.OperationMethod<
   ListIdentitiesError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35) as any as S.Schema<ListIdentitiesInput>,
-  output: __S(37) as any as S.Schema<ListIdentitiesResponse>,
+  input: ListIdentitiesInput,
+  output: ListIdentitiesResponse,
   errors: [
     InternalErrorException,
     InvalidParameterException,
@@ -900,8 +1076,8 @@ export const listIdentityPools: API.PaginatedOperationMethod<
   Creds | HttpClient.HttpClient,
   IdentityPoolShortDescription
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(38) as any as S.Schema<ListIdentityPoolsInput>,
-  output: __S(41) as any as S.Schema<ListIdentityPoolsResponse>,
+  input: ListIdentityPoolsInput,
+  output: ListIdentityPoolsResponse,
   errors: [
     InternalErrorException,
     InvalidParameterException,
@@ -941,8 +1117,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42) as any as S.Schema<ListTagsForResourceInput>,
-  output: __S(43) as any as S.Schema<ListTagsForResourceResponse>,
+  input: ListTagsForResourceInput,
+  output: ListTagsForResourceResponse,
   errors: [
     InternalErrorException,
     InvalidParameterException,
@@ -990,8 +1166,8 @@ export const lookupDeveloperIdentity: API.OperationMethod<
   LookupDeveloperIdentityError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44) as any as S.Schema<LookupDeveloperIdentityInput>,
-  output: __S(45) as any as S.Schema<LookupDeveloperIdentityResponse>,
+  input: LookupDeveloperIdentityInput,
+  output: LookupDeveloperIdentityResponse,
   errors: [
     InternalErrorException,
     InvalidParameterException,
@@ -1037,8 +1213,8 @@ export const mergeDeveloperIdentities: API.OperationMethod<
   MergeDeveloperIdentitiesError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(46) as any as S.Schema<MergeDeveloperIdentitiesInput>,
-  output: __S(47) as any as S.Schema<MergeDeveloperIdentitiesResponse>,
+  input: MergeDeveloperIdentitiesInput,
+  output: MergeDeveloperIdentitiesResponse,
   errors: [
     InternalErrorException,
     InvalidParameterException,
@@ -1073,8 +1249,8 @@ export const setIdentityPoolRoles: API.OperationMethod<
   SetIdentityPoolRolesError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48) as any as S.Schema<SetIdentityPoolRolesInput>,
-  output: __S(11) as any as S.Schema<SetIdentityPoolRolesResponse>,
+  input: SetIdentityPoolRolesInput,
+  output: SetIdentityPoolRolesResponse,
   errors: [
     ConcurrentModificationException,
     InternalErrorException,
@@ -1106,8 +1282,8 @@ export const setPrincipalTagAttributeMap: API.OperationMethod<
   SetPrincipalTagAttributeMapError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49) as any as S.Schema<SetPrincipalTagAttributeMapInput>,
-  output: __S(34) as any as S.Schema<SetPrincipalTagAttributeMapResponse>,
+  input: SetPrincipalTagAttributeMapInput,
+  output: SetPrincipalTagAttributeMapResponse,
   errors: [
     InternalErrorException,
     InvalidParameterException,
@@ -1153,8 +1329,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(50) as any as S.Schema<TagResourceInput>,
-  output: __S(51) as any as S.Schema<TagResourceResponse>,
+  input: TagResourceInput,
+  output: TagResourceResponse,
   errors: [
     InternalErrorException,
     InvalidParameterException,
@@ -1190,8 +1366,8 @@ export const unlinkDeveloperIdentity: API.OperationMethod<
   UnlinkDeveloperIdentityError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(52) as any as S.Schema<UnlinkDeveloperIdentityInput>,
-  output: __S(11) as any as S.Schema<UnlinkDeveloperIdentityResponse>,
+  input: UnlinkDeveloperIdentityInput,
+  output: UnlinkDeveloperIdentityResponse,
   errors: [
     InternalErrorException,
     InvalidParameterException,
@@ -1227,8 +1403,8 @@ export const unlinkIdentity: API.OperationMethod<
   UnlinkIdentityError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(53) as any as S.Schema<UnlinkIdentityInput>,
-  output: __S(54) as any as S.Schema<UnlinkIdentityResponse>,
+  input: UnlinkIdentityInput,
+  output: UnlinkIdentityResponse,
   errors: [
     ExternalServiceException,
     InternalErrorException,
@@ -1260,8 +1436,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(55) as any as S.Schema<UntagResourceInput>,
-  output: __S(51) as any as S.Schema<UntagResourceResponse>,
+  input: UntagResourceInput,
+  output: UntagResourceResponse,
   errors: [
     InternalErrorException,
     InvalidParameterException,
@@ -1298,8 +1474,8 @@ export const updateIdentityPool: API.OperationMethod<
   UpdateIdentityPoolError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5) as any as S.Schema<IdentityPool>,
-  output: __S(5) as any as S.Schema<IdentityPool>,
+  input: IdentityPool,
+  output: IdentityPool,
   errors: [
     ConcurrentModificationException,
     InternalErrorException,
@@ -1331,19 +1507,19 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "CognitoIdentityProvider" });
     case 3:
-      return S.Array(__S(2));
+      return S.Array(CognitoIdentityProvider);
     case 4:
       return S.suspend(() =>
         S.Struct({
           IdentityPoolName: S.String,
           AllowUnauthenticatedIdentities: S.Boolean,
           AllowClassicFlow: S.optional(S.Boolean),
-          SupportedLoginProviders: S.optional(__S(0)),
+          SupportedLoginProviders: S.optional(IdentityProviders),
           DeveloperProviderName: S.optional(S.String),
-          OpenIdConnectProviderARNs: S.optional(__S(1)),
-          CognitoIdentityProviders: S.optional(__S(3)),
-          SamlProviderARNs: S.optional(__S(1)),
-          IdentityPoolTags: S.optional(__S(0)),
+          OpenIdConnectProviderARNs: S.optional(OIDCProviderList),
+          CognitoIdentityProviders: S.optional(CognitoIdentityProviderList),
+          SamlProviderARNs: S.optional(SAMLProviderList),
+          IdentityPoolTags: S.optional(IdentityPoolTagsType),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateIdentityPoolInput" });
     case 5:
@@ -1353,33 +1529,33 @@ function __c0(j: number): any {
           IdentityPoolName: S.String,
           AllowUnauthenticatedIdentities: S.Boolean,
           AllowClassicFlow: S.optional(S.Boolean),
-          SupportedLoginProviders: S.optional(__S(0)),
+          SupportedLoginProviders: S.optional(IdentityProviders),
           DeveloperProviderName: S.optional(S.String),
-          OpenIdConnectProviderARNs: S.optional(__S(1)),
-          CognitoIdentityProviders: S.optional(__S(3)),
-          SamlProviderARNs: S.optional(__S(1)),
-          IdentityPoolTags: S.optional(__S(0)),
+          OpenIdConnectProviderARNs: S.optional(OIDCProviderList),
+          CognitoIdentityProviders: S.optional(CognitoIdentityProviderList),
+          SamlProviderARNs: S.optional(SAMLProviderList),
+          IdentityPoolTags: S.optional(IdentityPoolTagsType),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "IdentityPool" });
     case 6:
       return S.suspend(() =>
-        S.Struct({ IdentityIdsToDelete: __S(1) }).pipe(
+        S.Struct({ IdentityIdsToDelete: IdentityIdList }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "DeleteIdentitiesInput" });
     case 7:
       return S.suspend(() =>
-        S.Struct({ IdentityId: S.optional(S.String), ErrorCode: S.optional(S.String) }),
+        S.Struct({ IdentityId: S.optional(S.String), ErrorCode: S.optional(ErrorCode) }),
       ).annotate({ identifier: "UnprocessedIdentityId" });
   }
 }
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(7));
+      return S.Array(UnprocessedIdentityId);
     case 1:
       return S.suspend(() =>
-        S.Struct({ UnprocessedIdentityIds: S.optional(__S(8)) }).pipe(ns),
+        S.Struct({ UnprocessedIdentityIds: S.optional(UnprocessedIdentityIdList) }).pipe(ns),
       ).annotate({ identifier: "DeleteIdentitiesResponse" });
     case 2:
       return S.suspend(() =>
@@ -1401,7 +1577,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           IdentityId: S.optional(S.String),
-          Logins: S.optional(__S(1)),
+          Logins: S.optional(LoginsList),
           CreationDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           LastModifiedDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }).pipe(ns),
@@ -1424,7 +1600,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           IdentityId: S.String,
-          Logins: S.optional(__S(15)),
+          Logins: S.optional(LoginsMap),
           CustomRoleArn: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
@@ -1441,7 +1617,9 @@ function __c2(j: number): any {
       ).annotate({ identifier: "Credentials" });
     case 2:
       return S.suspend(() =>
-        S.Struct({ IdentityId: S.optional(S.String), Credentials: S.optional(__S(17)) }).pipe(ns),
+        S.Struct({ IdentityId: S.optional(S.String), Credentials: S.optional(Credentials) }).pipe(
+          ns,
+        ),
       ).annotate({
         identifier: "GetCredentialsForIdentityResponse",
       });
@@ -1450,7 +1628,7 @@ function __c2(j: number): any {
         S.Struct({
           AccountId: S.optional(S.String),
           IdentityPoolId: S.String,
-          Logins: S.optional(__S(15)),
+          Logins: S.optional(LoginsMap),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "GetIdInput" });
     case 4:
@@ -1471,7 +1649,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Claim: S.String,
-          MatchType: S.String,
+          MatchType: MappingRuleMatchType,
           Value: S.String,
           RoleARN: S.String,
         }),
@@ -1481,34 +1659,34 @@ function __c2(j: number): any {
 function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(23));
+      return S.Array(MappingRule);
     case 1:
-      return S.suspend(() => S.Struct({ Rules: __S(24) })).annotate({
+      return S.suspend(() => S.Struct({ Rules: MappingRulesList })).annotate({
         identifier: "RulesConfigurationType",
       });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          Type: S.String,
-          AmbiguousRoleResolution: S.optional(S.String),
-          RulesConfiguration: S.optional(__S(25)),
+          Type: RoleMappingType,
+          AmbiguousRoleResolution: S.optional(AmbiguousRoleResolutionType),
+          RulesConfiguration: S.optional(RulesConfigurationType),
         }),
       ).annotate({ identifier: "RoleMapping" });
     case 3:
-      return S.Record(S.String, /*@__PURE__*/ __S(26).pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ RoleMapping.pipe(S.optional));
     case 4:
       return S.suspend(() =>
         S.Struct({
           IdentityPoolId: S.optional(S.String),
-          Roles: S.optional(__S(22)),
-          RoleMappings: S.optional(__S(27)),
+          Roles: S.optional(RolesMap),
+          RoleMappings: S.optional(RoleMappingMap),
         }).pipe(ns),
       ).annotate({
         identifier: "GetIdentityPoolRolesResponse",
       });
     case 5:
       return S.suspend(() =>
-        S.Struct({ IdentityId: S.String, Logins: S.optional(__S(15)) }).pipe(
+        S.Struct({ IdentityId: S.String, Logins: S.optional(LoginsMap) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "GetOpenIdTokenInput" });
@@ -1521,8 +1699,8 @@ function __c3(j: number): any {
         S.Struct({
           IdentityPoolId: S.String,
           IdentityId: S.optional(S.String),
-          Logins: __S(15),
-          PrincipalTags: S.optional(__S(0)),
+          Logins: LoginsMap,
+          PrincipalTags: S.optional(PrincipalTags),
           TokenDuration: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
@@ -1552,7 +1730,7 @@ function __c4(j: number): any {
           IdentityPoolId: S.optional(S.String),
           IdentityProviderName: S.optional(S.String),
           UseDefaults: S.optional(S.Boolean),
-          PrincipalTags: S.optional(__S(0)),
+          PrincipalTags: S.optional(PrincipalTags),
         }).pipe(ns),
       ).annotate({
         identifier: "GetPrincipalTagAttributeMapResponse",
@@ -1567,12 +1745,12 @@ function __c4(j: number): any {
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListIdentitiesInput" });
     case 4:
-      return S.Array(__S(13));
+      return S.Array(IdentityDescription);
     case 5:
       return S.suspend(() =>
         S.Struct({
           IdentityPoolId: S.optional(S.String),
-          Identities: S.optional(__S(36)),
+          Identities: S.optional(IdentitiesList),
           NextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({ identifier: "ListIdentitiesResponse" });
@@ -1593,11 +1771,11 @@ function __c4(j: number): any {
 function __c5(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(39));
+      return S.Array(IdentityPoolShortDescription);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          IdentityPools: S.optional(__S(40)),
+          IdentityPools: S.optional(IdentityPoolsList),
           NextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
@@ -1610,7 +1788,9 @@ function __c5(j: number): any {
         ),
       ).annotate({ identifier: "ListTagsForResourceInput" });
     case 3:
-      return S.suspend(() => S.Struct({ Tags: S.optional(__S(0)) }).pipe(ns)).annotate({
+      return S.suspend(() =>
+        S.Struct({ Tags: S.optional(IdentityPoolTagsType) }).pipe(ns),
+      ).annotate({
         identifier: "ListTagsForResourceResponse",
       });
     case 4:
@@ -1629,7 +1809,7 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           IdentityId: S.optional(S.String),
-          DeveloperUserIdentifierList: S.optional(__S(1)),
+          DeveloperUserIdentifierList: S.optional(DeveloperUserIdentifierList),
           NextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
@@ -1658,8 +1838,8 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           IdentityPoolId: S.String,
-          Roles: __S(22),
-          RoleMappings: S.optional(__S(27)),
+          Roles: RolesMap,
+          RoleMappings: S.optional(RoleMappingMap),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "SetIdentityPoolRolesInput",
@@ -1670,14 +1850,14 @@ function __c6(j: number): any {
           IdentityPoolId: S.String,
           IdentityProviderName: S.String,
           UseDefaults: S.optional(S.Boolean),
-          PrincipalTags: S.optional(__S(0)),
+          PrincipalTags: S.optional(PrincipalTags),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "SetPrincipalTagAttributeMapInput",
       });
     case 2:
       return S.suspend(() =>
-        S.Struct({ ResourceArn: S.String, Tags: __S(0) }).pipe(
+        S.Struct({ ResourceArn: S.String, Tags: IdentityPoolTagsType }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "TagResourceInput" });
@@ -1698,7 +1878,7 @@ function __c6(j: number): any {
       });
     case 5:
       return S.suspend(() =>
-        S.Struct({ IdentityId: S.String, Logins: __S(15), LoginsToRemove: __S(1) }).pipe(
+        S.Struct({ IdentityId: S.String, Logins: LoginsMap, LoginsToRemove: LoginsList }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "UnlinkIdentityInput" });
@@ -1708,32 +1888,9 @@ function __c6(j: number): any {
       });
     case 7:
       return S.suspend(() =>
-        S.Struct({ ResourceArn: S.String, TagKeys: __S(1) }).pipe(
+        S.Struct({ ResourceArn: S.String, TagKeys: IdentityPoolTagsListType }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "UntagResourceInput" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
   }
 }

@@ -8,8 +8,6 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "SagemakerJobRuntime",
   serviceShapeName: "AgenticRFTRuntimeService",
@@ -111,39 +109,62 @@ export class ValidationException
 export type JobArn = string;
 export type TrajectoryId = string;
 export type CompletionStatus = "ready" | "failed" | (string & {});
+const CompletionStatus = S.String;
+
 export interface CompleteRolloutRequest {
   JobArn: string;
   TrajectoryId: string;
   Status?: CompletionStatus;
   ClientToken?: string;
 }
+const CompleteRolloutRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<CompleteRolloutRequest>;
 export interface CompleteRolloutResponse {}
+const CompleteRolloutResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<CompleteRolloutResponse>;
 export interface SampleRequest {
   JobArn: string;
   TrajectoryId: string;
   Body: T.StreamingInputBody;
 }
+const SampleRequest = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<SampleRequest>;
 export interface SampleResponse {
   ContentType?: string;
   Body: T.StreamingOutputBody;
 }
+const SampleResponse = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<SampleResponse>;
 export interface SampleWithResponseStreamRequest {
   JobArn: string;
   TrajectoryId: string;
   Body: T.StreamingInputBody;
 }
+const SampleWithResponseStreamRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<SampleWithResponseStreamRequest>;
 export interface SampleWithResponseStreamResponse {
   ContentType?: string;
   Body: T.StreamingOutputBody;
 }
+const SampleWithResponseStreamResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<SampleWithResponseStreamResponse>;
 export type DoubleList = number[];
+const DoubleList = /*@__PURE__*/ __L.at(__c0, 6);
 export interface UpdateRewardRequest {
   JobArn: string;
   TrajectoryId: string;
   Rewards: number[];
   ClientToken?: string;
 }
+const UpdateRewardRequest = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<UpdateRewardRequest>;
 export interface UpdateRewardResponse {}
+const UpdateRewardResponse = CompleteRolloutResponse as any as S.Schema<UpdateRewardResponse>;
 export type FailureReason = string;
 export type CompleteRolloutError =
   | AccessDeniedException
@@ -165,8 +186,8 @@ export const completeRollout: API.OperationMethod<
   CompleteRolloutError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<CompleteRolloutRequest>,
-  output: __S(1) as any as S.Schema<CompleteRolloutResponse>,
+  input: CompleteRolloutRequest,
+  output: CompleteRolloutResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -200,8 +221,8 @@ export const sample: API.OperationMethod<
   SampleError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2) as any as S.Schema<SampleRequest>,
-  output: __S(3) as any as S.Schema<SampleResponse>,
+  input: SampleRequest,
+  output: SampleResponse,
   errors: [
     AccessDeniedException,
     InternalServiceError,
@@ -234,8 +255,8 @@ export const sampleWithResponseStream: API.OperationMethod<
   SampleWithResponseStreamError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4) as any as S.Schema<SampleWithResponseStreamRequest>,
-  output: __S(5) as any as S.Schema<SampleWithResponseStreamResponse>,
+  input: SampleWithResponseStreamRequest,
+  output: SampleWithResponseStreamResponse,
   errors: [
     AccessDeniedException,
     InternalServiceError,
@@ -269,8 +290,8 @@ export const updateReward: API.OperationMethod<
   UpdateRewardError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7) as any as S.Schema<UpdateRewardRequest>,
-  output: __S(1) as any as S.Schema<UpdateRewardResponse>,
+  input: UpdateRewardRequest,
+  output: UpdateRewardResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -293,7 +314,7 @@ function __c0(j: number): any {
         S.Struct({
           JobArn: S.String.pipe(T.HttpHeader("X-Amzn-SageMaker-Job-Arn")),
           TrajectoryId: S.String,
-          Status: S.optional(S.String),
+          Status: S.optional(CompletionStatus),
           ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/complete-rollout" }), svc, auth, proto, ver, rules),
@@ -353,22 +374,11 @@ function __c0(j: number): any {
         S.Struct({
           JobArn: S.String.pipe(T.HttpHeader("X-Amzn-SageMaker-Job-Arn")),
           TrajectoryId: S.String,
-          Rewards: __S(6),
+          Rewards: DoubleList,
           ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/update-reward" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "UpdateRewardRequest" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
   }
 }

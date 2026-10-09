@@ -6,8 +6,6 @@ import * as S from "@distilled.cloud/core/schema";
 import { GithubProtocol, type GithubOpError, type GithubOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { GithubOpError, GithubOpContext };
 
@@ -21,12 +19,16 @@ export class NotFound
   ) {}
 
 export interface GetRequest {}
+const GetRequest = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<GetRequest>;
+
 export interface RateLimit2 {
   limit: number;
   remaining: number;
   reset: number;
   used: number;
 }
+const RateLimit2 = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<RateLimit2>;
+
 export interface RateLimitOverviewResources {
   core: RateLimit2;
   graphql?: RateLimit2;
@@ -41,17 +43,24 @@ export interface RateLimitOverviewResources {
   code_scanning_autofix?: RateLimit2;
   copilot_usage_records?: RateLimit2;
 }
+const RateLimitOverviewResources = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<RateLimitOverviewResources>;
+
 /** Rate Limit Overview */
 export interface RateLimitOverview {
   resources: RateLimitOverviewResources;
   rate: RateLimit2;
 }
+const RateLimitOverview = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<RateLimitOverview>;
+
 export type GetError = NotFound | GithubOpError;
 /** Get rate limit status for the authenticated user > [!NOTE] > Accessing this endpoint does not count against your REST API rate limit. Some categories of endpoints have custom rate limits that are separate from the rate limit governing the other REST API endpoints. For this reason, the API response categorizes your rate limit. Under `resources`, you'll see objects relating to different categories: * The `core` object provides your rate limit status for all non-search-related resources in the REST API. * The `search` object provides your rate limit status for the REST API for searching (excluding code searches). For more information, see "[Search](https://docs.github.com/rest/search/search)." * The `code_search` object provides your rate limit status for the REST API for searching code. For more information, see "[Search code](https://docs.github.com/rest/search/search#search-code)." * The `graphql` object provides your rate limit status for the GraphQL API. For more information, see "[Resource limitations](https://docs.github.com/graphql/overview/resource-limitations#rate-limit)." * The `integration_manifest` object provides your rate limit status for the `POST /app-manifests/{code}/conversions` operation. For more information, see "[Creating a GitHub App from a manifest](https://docs.github.com/apps/creating-github-apps/setting-up-a-github-app/creating-a-github-app-from-a-manifest#3-you-exchange-the-temporary-code-to-retrieve-the-app-configuration)." * The `dependency_snapshots` object provides your rate limit status for submitting snapshots to the dependency graph. For more information, see "[Dependency graph](https://docs.github.com/rest/dependency-graph)." * The `dependency_sbom` object provides your rate limit status for requesting SBOMs from the dependency graph. For more information, see "[Dependency graph](https://docs.github.com/rest/dependency-graph)." * The `actions_runner_registration` object provides your rate limit status for registering self-hosted runners in GitHub Actions. For more information, see "[Self-hosted runners](https://docs.github.com/rest/actions/self-hosted-runners)." * The `source_import` object is no longer in use for any API endpoints, and it will be removed in the next API version. For more information about API versions, see "[API Versions](https://docs.github.com/rest/about-the-rest-api/api-versions)." > [!NOTE] > The `rate` object is closing down. If you're writing new API client code or updating existing code, you should use the `core` object instead of the `rate` object. The `core` object contains the same information that is present in the `rate` object. */
 export const get: API.OperationMethod<GetRequest, RateLimitOverview, GetError, GithubOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(0) as any as S.Schema<GetRequest>,
-    output: __S(3) as any as S.Schema<RateLimitOverview>,
+    input: GetRequest,
+    output: RateLimitOverview,
     errors: [NotFound],
     protocol: GithubProtocol,
     retry: Retry.Retry,
@@ -76,18 +85,18 @@ function __c0(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          core: __S(1),
-          graphql: S.optional(__S(1)),
-          search: __S(1),
-          code_search: S.optional(__S(1)),
-          source_import: S.optional(__S(1)),
-          integration_manifest: S.optional(__S(1)),
-          actions_runner_registration: S.optional(__S(1)),
-          scim: S.optional(__S(1)),
-          dependency_snapshots: S.optional(__S(1)),
-          dependency_sbom: S.optional(__S(1)),
-          code_scanning_autofix: S.optional(__S(1)),
-          copilot_usage_records: S.optional(__S(1)),
+          core: RateLimit2,
+          graphql: S.optional(RateLimit2),
+          search: RateLimit2,
+          code_search: S.optional(RateLimit2),
+          source_import: S.optional(RateLimit2),
+          integration_manifest: S.optional(RateLimit2),
+          actions_runner_registration: S.optional(RateLimit2),
+          scim: S.optional(RateLimit2),
+          dependency_snapshots: S.optional(RateLimit2),
+          dependency_sbom: S.optional(RateLimit2),
+          code_scanning_autofix: S.optional(RateLimit2),
+          copilot_usage_records: S.optional(RateLimit2),
         }),
       ).annotate({
         identifier: "RateLimitOverviewResources",
@@ -95,20 +104,9 @@ function __c0(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          resources: __S(2),
-          rate: __S(1),
+          resources: RateLimitOverviewResources,
+          rate: RateLimit2,
         }),
       ).annotate({ identifier: "RateLimitOverview" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 2) {
-    case 0:
-      return __c0(i & 3);
   }
 }

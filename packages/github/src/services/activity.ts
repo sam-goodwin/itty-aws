@@ -6,8 +6,6 @@ import * as S from "@distilled.cloud/core/schema";
 import { GithubProtocol, type GithubOpError, type GithubOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { GithubOpError, GithubOpContext };
 
@@ -44,27 +42,69 @@ export interface CheckRepoIsStarredByAuthenticatedUserRequest {
   /** The name of the repository without the `.git` extension. The name is not case sensitive. */
   repo: string;
 }
+const CheckRepoIsStarredByAuthenticatedUserRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<CheckRepoIsStarredByAuthenticatedUserRequest>;
+
 export interface CheckRepoIsStarredByAuthenticatedUserResponse {}
+const CheckRepoIsStarredByAuthenticatedUserResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<CheckRepoIsStarredByAuthenticatedUserResponse>;
+
 export interface DeleteRepoSubscriptionRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
   /** The name of the repository without the `.git` extension. The name is not case sensitive. */
   repo: string;
 }
+const DeleteRepoSubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<DeleteRepoSubscriptionRequest>;
+
 export interface DeleteRepoSubscriptionResponse {}
+const DeleteRepoSubscriptionResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<DeleteRepoSubscriptionResponse>;
+
 export interface DeleteThreadSubscriptionRequest {
   /** The unique identifier of the notification thread. This corresponds to the value returned in the `id` field when you retrieve notifications (for example with the [`GET /notifications` operation](https://docs.github.com/rest/activity/notifications#list-notifications-for-the-authenticated-user)). */
   thread_id: number;
 }
+const DeleteThreadSubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<DeleteThreadSubscriptionRequest>;
+
 export interface DeleteThreadSubscriptionResponse {}
+const DeleteThreadSubscriptionResponse =
+  CheckRepoIsStarredByAuthenticatedUserResponse as any as S.Schema<DeleteThreadSubscriptionResponse>;
+
 export interface GetFeedsRequest {}
+const GetFeedsRequest = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<GetFeedsRequest>;
+
 export type FeedCurrentUserOrganizationUrlsList = Array<string>;
+const FeedCurrentUserOrganizationUrlsList = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<FeedCurrentUserOrganizationUrlsList>;
+
 /** Hypermedia Link with Type */
 export interface LinkWithType {
   href: string;
   type: string;
 }
+const LinkWithType = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<LinkWithType>;
+
 export type FeedLinksCurrentUserOrganizationsList = Array<LinkWithType>;
+const FeedLinksCurrentUserOrganizationsList = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<FeedLinksCurrentUserOrganizationsList>;
+
 export interface FeedLinks {
   timeline: LinkWithType;
   user: LinkWithType;
@@ -77,6 +117,8 @@ export interface FeedLinks {
   repository_discussions?: LinkWithType;
   repository_discussions_category?: LinkWithType;
 }
+const FeedLinks = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<FeedLinks>;
+
 /** Feed */
 export interface Feed {
   timeline_url: string;
@@ -93,12 +135,19 @@ export interface Feed {
   repository_discussions_category_url?: string;
   _links: FeedLinks;
 }
+const Feed = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<Feed>;
+
 export interface GetRepoSubscriptionRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
   /** The name of the repository without the `.git` extension. The name is not case sensitive. */
   repo: string;
 }
+const GetRepoSubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<GetRepoSubscriptionRequest>;
+
 /** Repository invitations let you manage who you collaborate with. */
 export interface RepositorySubscription {
   /** Determines if notifications should be received from this repository. */
@@ -110,15 +159,30 @@ export interface RepositorySubscription {
   url: string;
   repository_url: string;
 }
+const RepositorySubscription = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<RepositorySubscription>;
+
 export interface GetStargazerCountForRepoRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
   /** The name of the repository without the `.git` extension. The name is not case sensitive. */
   repo: string;
 }
+const GetStargazerCountForRepoRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<GetStargazerCountForRepoRequest>;
+
 export interface GetStargazerCountForRepoResponse {
   count: number;
 }
+const GetStargazerCountForRepoResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<GetStargazerCountForRepoResponse>;
+
 export interface GetStargazerHistoryForRepoRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -129,8 +193,18 @@ export interface GetStargazerHistoryForRepoRequest {
   /** The page number of the results to fetch (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
+const GetStargazerHistoryForRepoRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<GetStargazerHistoryForRepoRequest>;
+
 /** The number of stars created on each day of the week, starting on Sunday. */
 export type StargazerHistoryDaysList = Array<number>;
+const StargazerHistoryDaysList = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<StargazerHistoryDaysList>;
+
 /** Stargazer History */
 export interface StargazerHistory {
   /** The number of stars created on each day of the week, starting on Sunday. */
@@ -140,12 +214,26 @@ export interface StargazerHistory {
   /** The start of the week, given as a Unix timestamp. */
   week: number;
 }
+const StargazerHistory = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<StargazerHistory>;
+
 export type GetStargazerHistoryForRepoResponseBodyList = Array<StargazerHistory>;
+const GetStargazerHistoryForRepoResponseBodyList = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<GetStargazerHistoryForRepoResponseBodyList>;
+
 export type GetStargazerHistoryForRepoResponse = GetStargazerHistoryForRepoResponseBodyList;
+const GetStargazerHistoryForRepoResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<GetStargazerHistoryForRepoResponse>;
+
 export interface GetThreadRequest {
   /** The unique identifier of the notification thread. This corresponds to the value returned in the `id` field when you retrieve notifications (for example with the [`GET /notifications` operation](https://docs.github.com/rest/activity/notifications#list-notifications-for-the-authenticated-user)). */
   thread_id: number;
 }
+const GetThreadRequest = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<GetThreadRequest>;
+
 /** A GitHub user. */
 export interface SimpleUser {
   name?: string | null;
@@ -171,9 +259,16 @@ export interface SimpleUser {
   starred_at?: string;
   user_view_type?: string;
 }
+const SimpleUser = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<SimpleUser>;
+
 export type MinimalRepositoryTopicsList = Array<string>;
+const MinimalRepositoryTopicsList =
+  FeedCurrentUserOrganizationUrlsList as any as S.Schema<MinimalRepositoryTopicsList>;
+
 /** The policy controlling who can create pull requests: all or collaborators_only. */
 export type MinimalRepositoryPullRequestCreationPolicy = "all" | "collaborators_only";
+const MinimalRepositoryPullRequestCreationPolicy = S.String;
+
 export interface MinimalRepositoryPermissions {
   admin?: boolean;
   maintain?: boolean;
@@ -181,6 +276,11 @@ export interface MinimalRepositoryPermissions {
   triage?: boolean;
   pull?: boolean;
 }
+const MinimalRepositoryPermissions = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<MinimalRepositoryPermissions>;
+
 /** Code Of Conduct */
 export interface CodeOfConduct {
   key: string;
@@ -189,6 +289,8 @@ export interface CodeOfConduct {
   body?: string;
   html_url: string | null;
 }
+const CodeOfConduct = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<CodeOfConduct>;
+
 export interface MinimalRepositoryLicense {
   key?: string;
   name?: string;
@@ -196,15 +298,30 @@ export interface MinimalRepositoryLicense {
   url?: string | null;
   node_id?: string;
 }
+const MinimalRepositoryLicense = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<MinimalRepositoryLicense>;
+
 export type SecurityAndAnalysisAdvancedSecurityStatus = "enabled" | "disabled";
+const SecurityAndAnalysisAdvancedSecurityStatus = S.String;
+
 /** Enable or disable GitHub Advanced Security for the repository. For standalone Code Scanning or Secret Protection products, this parameter cannot be used. */
 export interface SecurityAndAnalysisAdvancedSecurity {
   status?: SecurityAndAnalysisAdvancedSecurityStatus;
 }
+const SecurityAndAnalysisAdvancedSecurity = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<SecurityAndAnalysisAdvancedSecurity>;
+
 export type SecurityAndAnalysisCodeSecurityStatus = "enabled" | "disabled";
 export interface SecurityAndAnalysisCodeSecurity {
   status?: SecurityAndAnalysisCodeSecurityStatus;
 }
+const SecurityAndAnalysisCodeSecurity =
+  SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisCodeSecurity>;
+
 /** The enablement status of Dependabot security updates for the repository. */
 export type SecurityAndAnalysisDependabotSecurityUpdatesStatus = "enabled" | "disabled";
 /** Enable or disable Dependabot security updates for the repository. */
@@ -212,38 +329,67 @@ export interface SecurityAndAnalysisDependabotSecurityUpdates {
   /** The enablement status of Dependabot security updates for the repository. */
   status?: SecurityAndAnalysisDependabotSecurityUpdatesStatus;
 }
+const SecurityAndAnalysisDependabotSecurityUpdates =
+  SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisDependabotSecurityUpdates>;
+
 export type SecurityAndAnalysisSecretScanningStatus = "enabled" | "disabled";
 export interface SecurityAndAnalysisSecretScanning {
   status?: SecurityAndAnalysisSecretScanningStatus;
 }
+const SecurityAndAnalysisSecretScanning =
+  SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisSecretScanning>;
+
 export type SecurityAndAnalysisSecretScanningPushProtectionStatus = "enabled" | "disabled";
 export interface SecurityAndAnalysisSecretScanningPushProtection {
   status?: SecurityAndAnalysisSecretScanningPushProtectionStatus;
 }
+const SecurityAndAnalysisSecretScanningPushProtection =
+  SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisSecretScanningPushProtection>;
+
 export type SecurityAndAnalysisSecretScanningNonProviderPatternsStatus = "enabled" | "disabled";
 export interface SecurityAndAnalysisSecretScanningNonProviderPatterns {
   status?: SecurityAndAnalysisSecretScanningNonProviderPatternsStatus;
 }
+const SecurityAndAnalysisSecretScanningNonProviderPatterns =
+  SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisSecretScanningNonProviderPatterns>;
+
 export type SecurityAndAnalysisSecretScanningAiDetectionStatus = "enabled" | "disabled";
 export interface SecurityAndAnalysisSecretScanningAiDetection {
   status?: SecurityAndAnalysisSecretScanningAiDetectionStatus;
 }
+const SecurityAndAnalysisSecretScanningAiDetection =
+  SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisSecretScanningAiDetection>;
+
 export type SecurityAndAnalysisSecretScanningDelegatedAlertDismissalStatus = "enabled" | "disabled";
+const SecurityAndAnalysisSecretScanningDelegatedAlertDismissalStatus = S.String;
+
 export interface SecurityAndAnalysisSecretScanningDelegatedAlertDismissal {
   status?: SecurityAndAnalysisSecretScanningDelegatedAlertDismissalStatus;
 }
+const SecurityAndAnalysisSecretScanningDelegatedAlertDismissal = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<SecurityAndAnalysisSecretScanningDelegatedAlertDismissal>;
+
 export type SecurityAndAnalysisSecretScanningDelegatedBypassStatus = "enabled" | "disabled";
 export interface SecurityAndAnalysisSecretScanningDelegatedBypass {
   status?: SecurityAndAnalysisSecretScanningDelegatedBypassStatus;
 }
+const SecurityAndAnalysisSecretScanningDelegatedBypass =
+  SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisSecretScanningDelegatedBypass>;
+
 /** The type of the bypass reviewer */
 export type SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemReviewerType =
   | "TEAM"
   | "ROLE";
+const SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemReviewerType = S.String;
+
 /** The bypass mode for the reviewer */
 export type SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemMode =
   | "ALWAYS"
   | "EXEMPT";
+const SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemMode = S.String;
+
 export interface SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItem {
   /** The ID of the team or role selected as a bypass reviewer */
   reviewer_id: number;
@@ -252,13 +398,28 @@ export interface SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewer
   /** The bypass mode for the reviewer */
   mode?: SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemMode;
 }
+const SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItem = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItem>;
+
 /** The bypass reviewers for secret scanning delegated bypass */
 export type SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersList =
   Array<SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItem>;
+const SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersList = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersList>;
+
 export interface SecurityAndAnalysisSecretScanningDelegatedBypassOptions {
   /** The bypass reviewers for secret scanning delegated bypass */
   reviewers?: SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersList;
 }
+const SecurityAndAnalysisSecretScanningDelegatedBypassOptions = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<SecurityAndAnalysisSecretScanningDelegatedBypassOptions>;
+
 export interface SecurityAndAnalysis {
   /** Enable or disable GitHub Advanced Security for the repository. For standalone Code Scanning or Secret Protection products, this parameter cannot be used. */
   advanced_security?: SecurityAndAnalysisAdvancedSecurity;
@@ -273,8 +434,15 @@ export interface SecurityAndAnalysis {
   secret_scanning_delegated_bypass?: SecurityAndAnalysisSecretScanningDelegatedBypass;
   secret_scanning_delegated_bypass_options?: SecurityAndAnalysisSecretScanningDelegatedBypassOptions;
 }
+const SecurityAndAnalysis = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<SecurityAndAnalysis>;
+
 /** The custom properties that were defined for the repository. The keys are the custom property names, and the values are the corresponding custom property values. */
 export type MinimalRepositoryCustomPropertiesMap = { [key: string]: unknown | undefined };
+const MinimalRepositoryCustomPropertiesMap = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<MinimalRepositoryCustomPropertiesMap>;
+
 /** Minimal Repository */
 export interface MinimalRepository {
   id: number;
@@ -371,12 +539,16 @@ export interface MinimalRepository {
   /** The custom properties that were defined for the repository. The keys are the custom property names, and the values are the corresponding custom property values. */
   custom_properties?: MinimalRepositoryCustomPropertiesMap;
 }
+const MinimalRepository = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<MinimalRepository>;
+
 export interface ThreadSubject {
   title: string;
   url: string;
   latest_comment_url: string;
   type: string;
 }
+const ThreadSubject = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<ThreadSubject>;
+
 /** Thread */
 export interface Thread {
   id: string;
@@ -389,10 +561,17 @@ export interface Thread {
   url: string;
   subscription_url: string;
 }
+const Thread = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<Thread>;
+
 export interface GetThreadSubscriptionForAuthenticatedUserRequest {
   /** The unique identifier of the notification thread. This corresponds to the value returned in the `id` field when you retrieve notifications (for example with the [`GET /notifications` operation](https://docs.github.com/rest/activity/notifications#list-notifications-for-the-authenticated-user)). */
   thread_id: number;
 }
+const GetThreadSubscriptionForAuthenticatedUserRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<GetThreadSubscriptionForAuthenticatedUserRequest>;
+
 /** Thread Subscription */
 export interface ThreadSubscription {
   subscribed: boolean;
@@ -403,6 +582,8 @@ export interface ThreadSubscription {
   thread_url?: string;
   repository_url?: string;
 }
+const ThreadSubscription = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<ThreadSubscription>;
+
 export interface ListEventsForAuthenticatedUserRequest {
   /** The handle for the GitHub user account. */
   username: string;
@@ -411,6 +592,11 @@ export interface ListEventsForAuthenticatedUserRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
+const ListEventsForAuthenticatedUserRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<ListEventsForAuthenticatedUserRequest>;
+
 /** Actor */
 export interface Actor {
   id: number;
@@ -420,11 +606,15 @@ export interface Actor {
   url: string;
   avatar_url: string;
 }
+const Actor = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<Actor>;
+
 export interface EventRepo {
   id: number;
   name: string;
   url: string;
 }
+const EventRepo = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<EventRepo>;
+
 export interface CreateEvent {
   ref: string;
   ref_type: string;
@@ -600,6 +790,8 @@ export type IssueLabelsItem = string | IssueLabelsItemCase1;
 /** Labels to associate with this issue; pass one or more label names to replace the set of labels on this issue; send an empty array to clear all labels from the issue; note that the labels are silently dropped for users without push access to the repository */
 export type IssueLabelsList = Array<IssueLabelsItem>;
 export type IssueAssigneesList = Array<SimpleUser>;
+const IssueAssigneesList = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<IssueAssigneesList>;
+
 /** The state of the milestone. */
 export type NullableMilestoneState = "open" | "closed";
 /** A collection of related issues and pull requests. */
@@ -669,6 +861,11 @@ export interface NullableLicenseSimple {
   node_id: string;
   html_url?: string;
 }
+const NullableLicenseSimple = /*@__PURE__*/ __L.at(
+  __c5,
+  1,
+) as any as S.Schema<NullableLicenseSimple>;
+
 export interface RepositoryPermissions {
   admin: boolean;
   pull: boolean;
@@ -676,22 +873,45 @@ export interface RepositoryPermissions {
   push: boolean;
   maintain?: boolean;
 }
+const RepositoryPermissions = /*@__PURE__*/ __L.at(
+  __c5,
+  2,
+) as any as S.Schema<RepositoryPermissions>;
+
 export type RepositoryTopicsList = Array<string>;
+const RepositoryTopicsList =
+  FeedCurrentUserOrganizationUrlsList as any as S.Schema<RepositoryTopicsList>;
+
 /** The policy controlling who can create pull requests: all or collaborators_only. */
 export type RepositoryPullRequestCreationPolicy = "all" | "collaborators_only";
+const RepositoryPullRequestCreationPolicy = S.String;
+
 /** The default value for a squash merge commit title: - `PR_TITLE` - default to the pull request's title. - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit). */
 export type RepositorySquashMergeCommitTitle = "PR_TITLE" | "COMMIT_OR_PR_TITLE";
+const RepositorySquashMergeCommitTitle = S.String;
+
 /** The default value for a squash merge commit message: - `PR_BODY` - default to the pull request's body. - `COMMIT_MESSAGES` - default to the branch's commit messages. - `BLANK` - default to a blank commit message. */
 export type RepositorySquashMergeCommitMessage = "PR_BODY" | "COMMIT_MESSAGES" | "BLANK";
+const RepositorySquashMergeCommitMessage = S.String;
+
 /** The default value for a merge commit title. - `PR_TITLE` - default to the pull request's title. - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name). */
 export type RepositoryMergeCommitTitle = "PR_TITLE" | "MERGE_MESSAGE";
+const RepositoryMergeCommitTitle = S.String;
+
 /** The default value for a merge commit message. - `PR_TITLE` - default to the pull request's title. - `PR_BODY` - default to the pull request's body. - `BLANK` - default to a blank commit message. */
 export type RepositoryMergeCommitMessage = "PR_BODY" | "PR_TITLE" | "BLANK";
+const RepositoryMergeCommitMessage = S.String;
+
 /** The status of the code search index for this repository */
 export interface RepositoryCodeSearchIndexStatus {
   lexical_search_ok?: boolean;
   lexical_commit_sha?: string;
 }
+const RepositoryCodeSearchIndexStatus = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<RepositoryCodeSearchIndexStatus>;
+
 /** A repository on GitHub. */
 export interface Repository {
   /** Unique identifier of the repository */
@@ -824,6 +1044,8 @@ export interface Repository {
   /** The status of the code search index for this repository */
   code_search_index_status?: RepositoryCodeSearchIndexStatus;
 }
+const Repository = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<Repository>;
+
 /** An enterprise on GitHub. */
 export interface Enterprise {
   /** A short description of the enterprise. */
@@ -1388,6 +1610,8 @@ export type EventPayload =
   | CommitCommentEvent
   | ReleaseEvent
   | WatchEvent;
+const EventPayload = S.Unknown as any as S.Schema<EventPayload>;
+
 /** Event */
 export interface Event {
   id: string;
@@ -1399,8 +1623,20 @@ export interface Event {
   public: boolean;
   created_at: string | null;
 }
+const Event = /*@__PURE__*/ __L.at(__c5, 5) as any as S.Schema<Event>;
+
 export type ListEventsForAuthenticatedUserResponseBodyList = Array<Event>;
+const ListEventsForAuthenticatedUserResponseBodyList = /*@__PURE__*/ __L.at(
+  __c5,
+  6,
+) as any as S.Schema<ListEventsForAuthenticatedUserResponseBodyList>;
+
 export type ListEventsForAuthenticatedUserResponse = ListEventsForAuthenticatedUserResponseBodyList;
+const ListEventsForAuthenticatedUserResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  7,
+) as any as S.Schema<ListEventsForAuthenticatedUserResponse>;
+
 export interface ListNotificationsForAuthenticatedUserRequest {
   /** If `true`, show notifications marked as read. */
   all?: boolean;
@@ -1415,9 +1651,24 @@ export interface ListNotificationsForAuthenticatedUserRequest {
   /** The number of results per page (max 50). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   per_page?: number;
 }
+const ListNotificationsForAuthenticatedUserRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<ListNotificationsForAuthenticatedUserRequest>;
+
 export type ListNotificationsForAuthenticatedUserResponseBodyList = Array<Thread>;
+const ListNotificationsForAuthenticatedUserResponseBodyList = /*@__PURE__*/ __L.at(
+  __c6,
+  1,
+) as any as S.Schema<ListNotificationsForAuthenticatedUserResponseBodyList>;
+
 export type ListNotificationsForAuthenticatedUserResponse =
   ListNotificationsForAuthenticatedUserResponseBodyList;
+const ListNotificationsForAuthenticatedUserResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  2,
+) as any as S.Schema<ListNotificationsForAuthenticatedUserResponse>;
+
 export interface ListOrgEventsForAuthenticatedUserRequest {
   /** The handle for the GitHub user account. */
   username: string;
@@ -1428,17 +1679,38 @@ export interface ListOrgEventsForAuthenticatedUserRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
+const ListOrgEventsForAuthenticatedUserRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  3,
+) as any as S.Schema<ListOrgEventsForAuthenticatedUserRequest>;
+
 export type ListOrgEventsForAuthenticatedUserResponseBodyList = Array<Event>;
 export type ListOrgEventsForAuthenticatedUserResponse =
   ListOrgEventsForAuthenticatedUserResponseBodyList;
+const ListOrgEventsForAuthenticatedUserResponse =
+  ListEventsForAuthenticatedUserResponse as any as S.Schema<ListOrgEventsForAuthenticatedUserResponse>;
+
 export interface ListPublicEventsRequest {
   /** The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   per_page?: number;
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
+const ListPublicEventsRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  4,
+) as any as S.Schema<ListPublicEventsRequest>;
+
 export type ListPublicEventsResponseBodyList = Array<Event>;
+const ListPublicEventsResponseBodyList =
+  ListEventsForAuthenticatedUserResponseBodyList as any as S.Schema<ListPublicEventsResponseBodyList>;
+
 export type ListPublicEventsResponse = ListPublicEventsResponseBodyList;
+const ListPublicEventsResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  5,
+) as any as S.Schema<ListPublicEventsResponse>;
+
 export interface ListPublicEventsForRepoNetworkRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -1449,8 +1721,16 @@ export interface ListPublicEventsForRepoNetworkRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
+const ListPublicEventsForRepoNetworkRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  6,
+) as any as S.Schema<ListPublicEventsForRepoNetworkRequest>;
+
 export type ListPublicEventsForRepoNetworkResponseBodyList = Array<Event>;
 export type ListPublicEventsForRepoNetworkResponse = ListPublicEventsForRepoNetworkResponseBodyList;
+const ListPublicEventsForRepoNetworkResponse =
+  ListEventsForAuthenticatedUserResponse as any as S.Schema<ListPublicEventsForRepoNetworkResponse>;
+
 export interface ListPublicEventsForUserRequest {
   /** The handle for the GitHub user account. */
   username: string;
@@ -1459,8 +1739,16 @@ export interface ListPublicEventsForUserRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
+const ListPublicEventsForUserRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  7,
+) as any as S.Schema<ListPublicEventsForUserRequest>;
+
 export type ListPublicEventsForUserResponseBodyList = Array<Event>;
 export type ListPublicEventsForUserResponse = ListPublicEventsForUserResponseBodyList;
+const ListPublicEventsForUserResponse =
+  ListEventsForAuthenticatedUserResponse as any as S.Schema<ListPublicEventsForUserResponse>;
+
 export interface ListPublicOrgEventsRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -1469,8 +1757,16 @@ export interface ListPublicOrgEventsRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
+const ListPublicOrgEventsRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  0,
+) as any as S.Schema<ListPublicOrgEventsRequest>;
+
 export type ListPublicOrgEventsResponseBodyList = Array<Event>;
 export type ListPublicOrgEventsResponse = ListPublicOrgEventsResponseBodyList;
+const ListPublicOrgEventsResponse =
+  ListEventsForAuthenticatedUserResponse as any as S.Schema<ListPublicOrgEventsResponse>;
+
 export interface ListReceivedEventsForUserRequest {
   /** The handle for the GitHub user account. */
   username: string;
@@ -1479,8 +1775,16 @@ export interface ListReceivedEventsForUserRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
+const ListReceivedEventsForUserRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  1,
+) as any as S.Schema<ListReceivedEventsForUserRequest>;
+
 export type ListReceivedEventsForUserResponseBodyList = Array<Event>;
 export type ListReceivedEventsForUserResponse = ListReceivedEventsForUserResponseBodyList;
+const ListReceivedEventsForUserResponse =
+  ListEventsForAuthenticatedUserResponse as any as S.Schema<ListReceivedEventsForUserResponse>;
+
 export interface ListReceivedPublicEventsForUserRequest {
   /** The handle for the GitHub user account. */
   username: string;
@@ -1489,9 +1793,17 @@ export interface ListReceivedPublicEventsForUserRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
+const ListReceivedPublicEventsForUserRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  2,
+) as any as S.Schema<ListReceivedPublicEventsForUserRequest>;
+
 export type ListReceivedPublicEventsForUserResponseBodyList = Array<Event>;
 export type ListReceivedPublicEventsForUserResponse =
   ListReceivedPublicEventsForUserResponseBodyList;
+const ListReceivedPublicEventsForUserResponse =
+  ListEventsForAuthenticatedUserResponse as any as S.Schema<ListReceivedPublicEventsForUserResponse>;
+
 export interface ListRepoEventsRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -1502,8 +1814,15 @@ export interface ListRepoEventsRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
+const ListRepoEventsRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  3,
+) as any as S.Schema<ListRepoEventsRequest>;
+
 export type ListRepoEventsResponseBodyList = Array<Event>;
 export type ListRepoEventsResponse = ListRepoEventsResponseBodyList;
+const ListRepoEventsResponse = ListPublicEventsResponse as any as S.Schema<ListRepoEventsResponse>;
+
 export interface ListRepoNotificationsForAuthenticatedUserRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -1522,11 +1841,23 @@ export interface ListRepoNotificationsForAuthenticatedUserRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
+const ListRepoNotificationsForAuthenticatedUserRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  4,
+) as any as S.Schema<ListRepoNotificationsForAuthenticatedUserRequest>;
+
 export type ListRepoNotificationsForAuthenticatedUserResponseBodyList = Array<Thread>;
 export type ListRepoNotificationsForAuthenticatedUserResponse =
   ListRepoNotificationsForAuthenticatedUserResponseBodyList;
+const ListRepoNotificationsForAuthenticatedUserResponse =
+  ListNotificationsForAuthenticatedUserResponse as any as S.Schema<ListRepoNotificationsForAuthenticatedUserResponse>;
+
 export type ListReposStarredByAuthenticatedUserRequestSort = "created" | "updated";
+const ListReposStarredByAuthenticatedUserRequestSort = S.String;
+
 export type ListReposStarredByAuthenticatedUserRequestDirection = "asc" | "desc";
+const ListReposStarredByAuthenticatedUserRequestDirection = S.String;
+
 export interface ListReposStarredByAuthenticatedUserRequest {
   /** The property to sort the results by. `created` means when the repository was starred. `updated` means when the repository was last pushed to. */
   sort?: ListReposStarredByAuthenticatedUserRequestSort | (string & {});
@@ -1537,11 +1868,30 @@ export interface ListReposStarredByAuthenticatedUserRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
+const ListReposStarredByAuthenticatedUserRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  5,
+) as any as S.Schema<ListReposStarredByAuthenticatedUserRequest>;
+
 export type ListReposStarredByAuthenticatedUserResponseBodyList = Array<Repository>;
+const ListReposStarredByAuthenticatedUserResponseBodyList = /*@__PURE__*/ __L.at(
+  __c7,
+  6,
+) as any as S.Schema<ListReposStarredByAuthenticatedUserResponseBodyList>;
+
 export type ListReposStarredByAuthenticatedUserResponse =
   ListReposStarredByAuthenticatedUserResponseBodyList;
+const ListReposStarredByAuthenticatedUserResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  7,
+) as any as S.Schema<ListReposStarredByAuthenticatedUserResponse>;
+
 export type ListReposStarredByUserRequestSort = "created" | "updated";
+const ListReposStarredByUserRequestSort = S.String;
+
 export type ListReposStarredByUserRequestDirection = "asc" | "desc";
+const ListReposStarredByUserRequestDirection = S.String;
+
 export interface ListReposStarredByUserRequest {
   /** The handle for the GitHub user account. */
   username: string;
@@ -1554,6 +1904,11 @@ export interface ListReposStarredByUserRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
+const ListReposStarredByUserRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  0,
+) as any as S.Schema<ListReposStarredByUserRequest>;
+
 /** Starred Repository */
 export interface StarredRepository {
   starred_at: string;
@@ -1564,7 +1919,15 @@ export type ListReposStarredByUserResponseBodyCase1List = Array<Repository>;
 export type ListReposStarredByUserResponseBody =
   | ListReposStarredByUserResponseBodyCase0List
   | ListReposStarredByUserResponseBodyCase1List;
+const ListReposStarredByUserResponseBody =
+  S.Unknown as any as S.Schema<ListReposStarredByUserResponseBody>;
+
 export type ListReposStarredByUserResponse = ListReposStarredByUserResponseBody;
+const ListReposStarredByUserResponse = /*@__PURE__*/ __L.at(
+  __c8,
+  1,
+) as any as S.Schema<ListReposStarredByUserResponse>;
+
 export interface ListReposWatchedByUserRequest {
   /** The handle for the GitHub user account. */
   username: string;
@@ -1573,8 +1936,23 @@ export interface ListReposWatchedByUserRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
+const ListReposWatchedByUserRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  2,
+) as any as S.Schema<ListReposWatchedByUserRequest>;
+
 export type ListReposWatchedByUserResponseBodyList = Array<MinimalRepository>;
+const ListReposWatchedByUserResponseBodyList = /*@__PURE__*/ __L.at(
+  __c8,
+  3,
+) as any as S.Schema<ListReposWatchedByUserResponseBodyList>;
+
 export type ListReposWatchedByUserResponse = ListReposWatchedByUserResponseBodyList;
+const ListReposWatchedByUserResponse = /*@__PURE__*/ __L.at(
+  __c8,
+  4,
+) as any as S.Schema<ListReposWatchedByUserResponse>;
+
 export interface ListStargazersForRepoRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -1585,6 +1963,11 @@ export interface ListStargazersForRepoRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
+const ListStargazersForRepoRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  5,
+) as any as S.Schema<ListStargazersForRepoRequest>;
+
 export type ListStargazersForRepoResponseBodyCase0List = Array<SimpleUser>;
 /** Stargazer */
 export interface Stargazer {
@@ -1595,16 +1978,32 @@ export type ListStargazersForRepoResponseBodyCase1List = Array<Stargazer>;
 export type ListStargazersForRepoResponseBody =
   | ListStargazersForRepoResponseBodyCase0List
   | ListStargazersForRepoResponseBodyCase1List;
+const ListStargazersForRepoResponseBody =
+  S.Unknown as any as S.Schema<ListStargazersForRepoResponseBody>;
+
 export type ListStargazersForRepoResponse = ListStargazersForRepoResponseBody;
+const ListStargazersForRepoResponse = /*@__PURE__*/ __L.at(
+  __c8,
+  6,
+) as any as S.Schema<ListStargazersForRepoResponse>;
+
 export interface ListWatchedReposForAuthenticatedUserRequest {
   /** The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   per_page?: number;
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
+const ListWatchedReposForAuthenticatedUserRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  7,
+) as any as S.Schema<ListWatchedReposForAuthenticatedUserRequest>;
+
 export type ListWatchedReposForAuthenticatedUserResponseBodyList = Array<MinimalRepository>;
 export type ListWatchedReposForAuthenticatedUserResponse =
   ListWatchedReposForAuthenticatedUserResponseBodyList;
+const ListWatchedReposForAuthenticatedUserResponse =
+  ListReposWatchedByUserResponse as any as S.Schema<ListWatchedReposForAuthenticatedUserResponse>;
+
 export interface ListWatchersForRepoRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -1615,20 +2014,51 @@ export interface ListWatchersForRepoRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
+const ListWatchersForRepoRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  0,
+) as any as S.Schema<ListWatchersForRepoRequest>;
+
 export type ListWatchersForRepoResponseBodyList = Array<SimpleUser>;
+const ListWatchersForRepoResponseBodyList =
+  IssueAssigneesList as any as S.Schema<ListWatchersForRepoResponseBodyList>;
+
 export type ListWatchersForRepoResponse = ListWatchersForRepoResponseBodyList;
+const ListWatchersForRepoResponse = /*@__PURE__*/ __L.at(
+  __c9,
+  1,
+) as any as S.Schema<ListWatchersForRepoResponse>;
+
 export interface MarkThreadAsDoneRequest {
   /** The unique identifier of the notification thread. This corresponds to the value returned in the `id` field when you retrieve notifications (for example with the [`GET /notifications` operation](https://docs.github.com/rest/activity/notifications#list-notifications-for-the-authenticated-user)). */
   thread_id: number;
 }
+const MarkThreadAsDoneRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  2,
+) as any as S.Schema<MarkThreadAsDoneRequest>;
+
 export interface MarkThreadAsDoneResponse {}
+const MarkThreadAsDoneResponse =
+  DeleteRepoSubscriptionResponse as any as S.Schema<MarkThreadAsDoneResponse>;
+
 export interface ReadMarkNotificationsAsRequest {
   /** Describes the last point that notifications were checked. Anything updated since this time will not be marked as read. If you omit this parameter, all notifications are marked as read. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`. Default: The current timestamp. */
   last_read_at?: string;
   /** Whether the notification has been read. */
   read?: boolean;
 }
+const ReadMarkNotificationsAsRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  3,
+) as any as S.Schema<ReadMarkNotificationsAsRequest>;
+
 export interface ReadMarkNotificationsAsResponse {}
+const ReadMarkNotificationsAsResponse = /*@__PURE__*/ __L.at(
+  __c9,
+  4,
+) as any as S.Schema<ReadMarkNotificationsAsResponse>;
+
 export interface ReadMarkRepoNotificationsAsRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -1637,12 +2067,28 @@ export interface ReadMarkRepoNotificationsAsRequest {
   /** Describes the last point that notifications were checked. Anything updated since this time will not be marked as read. If you omit this parameter, all notifications are marked as read. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`. Default: The current timestamp. */
   last_read_at?: string;
 }
+const ReadMarkRepoNotificationsAsRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  5,
+) as any as S.Schema<ReadMarkRepoNotificationsAsRequest>;
+
 export interface ReadMarkRepoNotificationsAsResponse {}
+const ReadMarkRepoNotificationsAsResponse =
+  CheckRepoIsStarredByAuthenticatedUserResponse as any as S.Schema<ReadMarkRepoNotificationsAsResponse>;
+
 export interface ReadMarkThreadAsRequest {
   /** The unique identifier of the notification thread. This corresponds to the value returned in the `id` field when you retrieve notifications (for example with the [`GET /notifications` operation](https://docs.github.com/rest/activity/notifications#list-notifications-for-the-authenticated-user)). */
   thread_id: number;
 }
+const ReadMarkThreadAsRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  6,
+) as any as S.Schema<ReadMarkThreadAsRequest>;
+
 export interface ReadMarkThreadAsResponse {}
+const ReadMarkThreadAsResponse =
+  DeleteRepoSubscriptionResponse as any as S.Schema<ReadMarkThreadAsResponse>;
+
 export interface SetRepoSubscriptionRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -1653,26 +2099,52 @@ export interface SetRepoSubscriptionRequest {
   /** Determines if all notifications should be blocked from this repository. */
   ignored?: boolean;
 }
+const SetRepoSubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  7,
+) as any as S.Schema<SetRepoSubscriptionRequest>;
+
 export interface SetThreadSubscriptionRequest {
   /** The unique identifier of the notification thread. This corresponds to the value returned in the `id` field when you retrieve notifications (for example with the [`GET /notifications` operation](https://docs.github.com/rest/activity/notifications#list-notifications-for-the-authenticated-user)). */
   thread_id: number;
   /** Whether to block all notifications from a thread. */
   ignored?: boolean;
 }
+const SetThreadSubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  0,
+) as any as S.Schema<SetThreadSubscriptionRequest>;
+
 export interface StarRepoForAuthenticatedUserRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
   /** The name of the repository without the `.git` extension. The name is not case sensitive. */
   repo: string;
 }
+const StarRepoForAuthenticatedUserRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  1,
+) as any as S.Schema<StarRepoForAuthenticatedUserRequest>;
+
 export interface StarRepoForAuthenticatedUserResponse {}
+const StarRepoForAuthenticatedUserResponse =
+  CheckRepoIsStarredByAuthenticatedUserResponse as any as S.Schema<StarRepoForAuthenticatedUserResponse>;
+
 export interface UnstarRepoForAuthenticatedUserRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
   /** The name of the repository without the `.git` extension. The name is not case sensitive. */
   repo: string;
 }
+const UnstarRepoForAuthenticatedUserRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  2,
+) as any as S.Schema<UnstarRepoForAuthenticatedUserRequest>;
+
 export interface UnstarRepoForAuthenticatedUserResponse {}
+const UnstarRepoForAuthenticatedUserResponse =
+  CheckRepoIsStarredByAuthenticatedUserResponse as any as S.Schema<UnstarRepoForAuthenticatedUserResponse>;
+
 export type CheckRepoIsStarredByAuthenticatedUserError = Forbidden | NotFound | GithubOpError;
 /** Check if a repository is starred by the authenticated user Whether the authenticated user has starred the repository. */
 export const checkRepoIsStarredByAuthenticatedUser: API.OperationMethod<
@@ -1681,8 +2153,8 @@ export const checkRepoIsStarredByAuthenticatedUser: API.OperationMethod<
   CheckRepoIsStarredByAuthenticatedUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<CheckRepoIsStarredByAuthenticatedUserRequest>,
-  output: __S(1) as any as S.Schema<CheckRepoIsStarredByAuthenticatedUserResponse>,
+  input: CheckRepoIsStarredByAuthenticatedUserRequest,
+  output: CheckRepoIsStarredByAuthenticatedUserResponse,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1696,8 +2168,8 @@ export const deleteRepoSubscription: API.OperationMethod<
   DeleteRepoSubscriptionError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2) as any as S.Schema<DeleteRepoSubscriptionRequest>,
-  output: __S(3) as any as S.Schema<DeleteRepoSubscriptionResponse>,
+  input: DeleteRepoSubscriptionRequest,
+  output: DeleteRepoSubscriptionResponse,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1711,8 +2183,8 @@ export const deleteThreadSubscription: API.OperationMethod<
   DeleteThreadSubscriptionError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4) as any as S.Schema<DeleteThreadSubscriptionRequest>,
-  output: __S(1) as any as S.Schema<DeleteThreadSubscriptionResponse>,
+  input: DeleteThreadSubscriptionRequest,
+  output: DeleteThreadSubscriptionResponse,
   errors: [Forbidden],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1722,8 +2194,8 @@ export type GetFeedsError = GithubOpError;
 /** Get feeds Lists the feeds available to the authenticated user. The response provides a URL for each feed. You can then get a specific feed by sending a request to one of the feed URLs. * **Timeline**: The GitHub global public timeline * **User**: The public timeline for any user, using `uri_template`. For more information, see "[Hypermedia](https://docs.github.com/rest/using-the-rest-api/getting-started-with-the-rest-api#hypermedia)." * **Current user public**: The public timeline for the authenticated user * **Current user**: The private timeline for the authenticated user * **Current user actor**: The private timeline for activity created by the authenticated user * **Current user organizations**: The private timeline for the organizations the authenticated user is a member of. * **Security advisories**: A collection of public announcements that provide information about security-related vulnerabilities in software on GitHub. By default, timeline resources are returned in JSON. You can specify the `application/atom+xml` type in the `Accept` header to return timeline resources in Atom format. For more information, see "[Media types](https://docs.github.com/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)." > [!NOTE] > Private feeds are only returned when [authenticating via Basic Auth](https://docs.github.com/rest/authentication/authenticating-to-the-rest-api#using-basic-authentication) since current feed URIs use the older, non revocable auth tokens. */
 export const getFeeds: API.OperationMethod<GetFeedsRequest, Feed, GetFeedsError, GithubOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(5) as any as S.Schema<GetFeedsRequest>,
-    output: __S(10) as any as S.Schema<Feed>,
+    input: GetFeedsRequest,
+    output: Feed,
     errors: [],
     protocol: GithubProtocol,
     retry: Retry.Retry,
@@ -1737,8 +2209,8 @@ export const getRepoSubscription: API.OperationMethod<
   GetRepoSubscriptionError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11) as any as S.Schema<GetRepoSubscriptionRequest>,
-  output: __S(12) as any as S.Schema<RepositorySubscription>,
+  input: GetRepoSubscriptionRequest,
+  output: RepositorySubscription,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1752,8 +2224,8 @@ export const getStargazerCountForRepo: API.OperationMethod<
   GetStargazerCountForRepoError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13) as any as S.Schema<GetStargazerCountForRepoRequest>,
-  output: __S(14) as any as S.Schema<GetStargazerCountForRepoResponse>,
+  input: GetStargazerCountForRepoRequest,
+  output: GetStargazerCountForRepoResponse,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1767,8 +2239,8 @@ export const getStargazerHistoryForRepo: API.OperationMethod<
   GetStargazerHistoryForRepoError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15) as any as S.Schema<GetStargazerHistoryForRepoRequest>,
-  output: __S(19) as any as S.Schema<GetStargazerHistoryForRepoResponse>,
+  input: GetStargazerHistoryForRepoRequest,
+  output: GetStargazerHistoryForRepoResponse,
   errors: [UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1782,8 +2254,8 @@ export const getThread: API.OperationMethod<
   GetThreadError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20) as any as S.Schema<GetThreadRequest>,
-  output: __S(34) as any as S.Schema<Thread>,
+  input: GetThreadRequest,
+  output: Thread,
   errors: [Forbidden],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1797,8 +2269,8 @@ export const getThreadSubscriptionForAuthenticatedUser: API.OperationMethod<
   GetThreadSubscriptionForAuthenticatedUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35) as any as S.Schema<GetThreadSubscriptionForAuthenticatedUserRequest>,
-  output: __S(36) as any as S.Schema<ThreadSubscription>,
+  input: GetThreadSubscriptionForAuthenticatedUserRequest,
+  output: ThreadSubscription,
   errors: [Forbidden],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1812,8 +2284,8 @@ export const listEventsForAuthenticatedUser: API.OperationMethod<
   ListEventsForAuthenticatedUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37) as any as S.Schema<ListEventsForAuthenticatedUserRequest>,
-  output: __S(47) as any as S.Schema<ListEventsForAuthenticatedUserResponse>,
+  input: ListEventsForAuthenticatedUserRequest,
+  output: ListEventsForAuthenticatedUserResponse,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1830,8 +2302,8 @@ export const listNotificationsForAuthenticatedUser: API.OperationMethod<
   ListNotificationsForAuthenticatedUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48) as any as S.Schema<ListNotificationsForAuthenticatedUserRequest>,
-  output: __S(50) as any as S.Schema<ListNotificationsForAuthenticatedUserResponse>,
+  input: ListNotificationsForAuthenticatedUserRequest,
+  output: ListNotificationsForAuthenticatedUserResponse,
   errors: [Forbidden, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1845,8 +2317,8 @@ export const listOrgEventsForAuthenticatedUser: API.OperationMethod<
   ListOrgEventsForAuthenticatedUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(51) as any as S.Schema<ListOrgEventsForAuthenticatedUserRequest>,
-  output: __S(47) as any as S.Schema<ListOrgEventsForAuthenticatedUserResponse>,
+  input: ListOrgEventsForAuthenticatedUserRequest,
+  output: ListOrgEventsForAuthenticatedUserResponse,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1860,8 +2332,8 @@ export const listPublicEvents: API.OperationMethod<
   ListPublicEventsError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(52) as any as S.Schema<ListPublicEventsRequest>,
-  output: __S(53) as any as S.Schema<ListPublicEventsResponse>,
+  input: ListPublicEventsRequest,
+  output: ListPublicEventsResponse,
   errors: [Forbidden],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1875,8 +2347,8 @@ export const listPublicEventsForRepoNetwork: API.OperationMethod<
   ListPublicEventsForRepoNetworkError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(54) as any as S.Schema<ListPublicEventsForRepoNetworkRequest>,
-  output: __S(47) as any as S.Schema<ListPublicEventsForRepoNetworkResponse>,
+  input: ListPublicEventsForRepoNetworkRequest,
+  output: ListPublicEventsForRepoNetworkResponse,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1890,8 +2362,8 @@ export const listPublicEventsForUser: API.OperationMethod<
   ListPublicEventsForUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(55) as any as S.Schema<ListPublicEventsForUserRequest>,
-  output: __S(47) as any as S.Schema<ListPublicEventsForUserResponse>,
+  input: ListPublicEventsForUserRequest,
+  output: ListPublicEventsForUserResponse,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1905,8 +2377,8 @@ export const listPublicOrgEvents: API.OperationMethod<
   ListPublicOrgEventsError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56) as any as S.Schema<ListPublicOrgEventsRequest>,
-  output: __S(47) as any as S.Schema<ListPublicOrgEventsResponse>,
+  input: ListPublicOrgEventsRequest,
+  output: ListPublicOrgEventsResponse,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1920,8 +2392,8 @@ export const listReceivedEventsForUser: API.OperationMethod<
   ListReceivedEventsForUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57) as any as S.Schema<ListReceivedEventsForUserRequest>,
-  output: __S(47) as any as S.Schema<ListReceivedEventsForUserResponse>,
+  input: ListReceivedEventsForUserRequest,
+  output: ListReceivedEventsForUserResponse,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1935,8 +2407,8 @@ export const listReceivedPublicEventsForUser: API.OperationMethod<
   ListReceivedPublicEventsForUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(58) as any as S.Schema<ListReceivedPublicEventsForUserRequest>,
-  output: __S(47) as any as S.Schema<ListReceivedPublicEventsForUserResponse>,
+  input: ListReceivedPublicEventsForUserRequest,
+  output: ListReceivedPublicEventsForUserResponse,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1950,8 +2422,8 @@ export const listRepoEvents: API.OperationMethod<
   ListRepoEventsError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(59) as any as S.Schema<ListRepoEventsRequest>,
-  output: __S(53) as any as S.Schema<ListRepoEventsResponse>,
+  input: ListRepoEventsRequest,
+  output: ListRepoEventsResponse,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1965,8 +2437,8 @@ export const listRepoNotificationsForAuthenticatedUser: API.OperationMethod<
   ListRepoNotificationsForAuthenticatedUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60) as any as S.Schema<ListRepoNotificationsForAuthenticatedUserRequest>,
-  output: __S(50) as any as S.Schema<ListRepoNotificationsForAuthenticatedUserResponse>,
+  input: ListRepoNotificationsForAuthenticatedUserRequest,
+  output: ListRepoNotificationsForAuthenticatedUserResponse,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1980,8 +2452,8 @@ export const listReposStarredByAuthenticatedUser: API.OperationMethod<
   ListReposStarredByAuthenticatedUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(61) as any as S.Schema<ListReposStarredByAuthenticatedUserRequest>,
-  output: __S(63) as any as S.Schema<ListReposStarredByAuthenticatedUserResponse>,
+  input: ListReposStarredByAuthenticatedUserRequest,
+  output: ListReposStarredByAuthenticatedUserResponse,
   errors: [Forbidden],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1995,8 +2467,8 @@ export const listReposStarredByUser: API.OperationMethod<
   ListReposStarredByUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(64) as any as S.Schema<ListReposStarredByUserRequest>,
-  output: __S(65) as any as S.Schema<ListReposStarredByUserResponse>,
+  input: ListReposStarredByUserRequest,
+  output: ListReposStarredByUserResponse,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -2010,8 +2482,8 @@ export const listReposWatchedByUser: API.OperationMethod<
   ListReposWatchedByUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(66) as any as S.Schema<ListReposWatchedByUserRequest>,
-  output: __S(68) as any as S.Schema<ListReposWatchedByUserResponse>,
+  input: ListReposWatchedByUserRequest,
+  output: ListReposWatchedByUserResponse,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -2025,8 +2497,8 @@ export const listStargazersForRepo: API.OperationMethod<
   ListStargazersForRepoError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(69) as any as S.Schema<ListStargazersForRepoRequest>,
-  output: __S(70) as any as S.Schema<ListStargazersForRepoResponse>,
+  input: ListStargazersForRepoRequest,
+  output: ListStargazersForRepoResponse,
   errors: [UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -2040,8 +2512,8 @@ export const listWatchedReposForAuthenticatedUser: API.OperationMethod<
   ListWatchedReposForAuthenticatedUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(71) as any as S.Schema<ListWatchedReposForAuthenticatedUserRequest>,
-  output: __S(68) as any as S.Schema<ListWatchedReposForAuthenticatedUserResponse>,
+  input: ListWatchedReposForAuthenticatedUserRequest,
+  output: ListWatchedReposForAuthenticatedUserResponse,
   errors: [Forbidden],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -2055,8 +2527,8 @@ export const listWatchersForRepo: API.OperationMethod<
   ListWatchersForRepoError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(72) as any as S.Schema<ListWatchersForRepoRequest>,
-  output: __S(73) as any as S.Schema<ListWatchersForRepoResponse>,
+  input: ListWatchersForRepoRequest,
+  output: ListWatchersForRepoResponse,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -2070,8 +2542,8 @@ export const markThreadAsDone: API.OperationMethod<
   MarkThreadAsDoneError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(74) as any as S.Schema<MarkThreadAsDoneRequest>,
-  output: __S(3) as any as S.Schema<MarkThreadAsDoneResponse>,
+  input: MarkThreadAsDoneRequest,
+  output: MarkThreadAsDoneResponse,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -2085,8 +2557,8 @@ export const readMarkNotificationsAs: API.OperationMethod<
   ReadMarkNotificationsAsError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(75) as any as S.Schema<ReadMarkNotificationsAsRequest>,
-  output: __S(76) as any as S.Schema<ReadMarkNotificationsAsResponse>,
+  input: ReadMarkNotificationsAsRequest,
+  output: ReadMarkNotificationsAsResponse,
   errors: [Forbidden],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -2100,8 +2572,8 @@ export const readMarkRepoNotificationsAs: API.OperationMethod<
   ReadMarkRepoNotificationsAsError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(77) as any as S.Schema<ReadMarkRepoNotificationsAsRequest>,
-  output: __S(1) as any as S.Schema<ReadMarkRepoNotificationsAsResponse>,
+  input: ReadMarkRepoNotificationsAsRequest,
+  output: ReadMarkRepoNotificationsAsResponse,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -2115,8 +2587,8 @@ export const readMarkThreadAs: API.OperationMethod<
   ReadMarkThreadAsError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(78) as any as S.Schema<ReadMarkThreadAsRequest>,
-  output: __S(3) as any as S.Schema<ReadMarkThreadAsResponse>,
+  input: ReadMarkThreadAsRequest,
+  output: ReadMarkThreadAsResponse,
   errors: [Forbidden],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -2130,8 +2602,8 @@ export const setRepoSubscription: API.OperationMethod<
   SetRepoSubscriptionError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(79) as any as S.Schema<SetRepoSubscriptionRequest>,
-  output: __S(12) as any as S.Schema<RepositorySubscription>,
+  input: SetRepoSubscriptionRequest,
+  output: RepositorySubscription,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -2145,8 +2617,8 @@ export const setThreadSubscription: API.OperationMethod<
   SetThreadSubscriptionError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(80) as any as S.Schema<SetThreadSubscriptionRequest>,
-  output: __S(36) as any as S.Schema<ThreadSubscription>,
+  input: SetThreadSubscriptionRequest,
+  output: ThreadSubscription,
   errors: [Forbidden],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -2160,8 +2632,8 @@ export const starRepoForAuthenticatedUser: API.OperationMethod<
   StarRepoForAuthenticatedUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(81) as any as S.Schema<StarRepoForAuthenticatedUserRequest>,
-  output: __S(1) as any as S.Schema<StarRepoForAuthenticatedUserResponse>,
+  input: StarRepoForAuthenticatedUserRequest,
+  output: StarRepoForAuthenticatedUserResponse,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -2175,8 +2647,8 @@ export const unstarRepoForAuthenticatedUser: API.OperationMethod<
   UnstarRepoForAuthenticatedUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(82) as any as S.Schema<UnstarRepoForAuthenticatedUserRequest>,
-  output: __S(1) as any as S.Schema<UnstarRepoForAuthenticatedUserResponse>,
+  input: UnstarRepoForAuthenticatedUserRequest,
+  output: UnstarRepoForAuthenticatedUserResponse,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -2243,20 +2715,20 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(7));
+      return S.Array(LinkWithType);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          timeline: __S(7),
-          user: __S(7),
-          security_advisories: S.optional(__S(7)),
-          current_user: S.optional(__S(7)),
-          current_user_public: S.optional(__S(7)),
-          current_user_actor: S.optional(__S(7)),
-          current_user_organization: S.optional(__S(7)),
-          current_user_organizations: S.optional(__S(8)),
-          repository_discussions: S.optional(__S(7)),
-          repository_discussions_category: S.optional(__S(7)),
+          timeline: LinkWithType,
+          user: LinkWithType,
+          security_advisories: S.optional(LinkWithType),
+          current_user: S.optional(LinkWithType),
+          current_user_public: S.optional(LinkWithType),
+          current_user_actor: S.optional(LinkWithType),
+          current_user_organization: S.optional(LinkWithType),
+          current_user_organizations: S.optional(FeedLinksCurrentUserOrganizationsList),
+          repository_discussions: S.optional(LinkWithType),
+          repository_discussions_category: S.optional(LinkWithType),
         }),
       ).annotate({ identifier: "FeedLinks" });
     case 2:
@@ -2268,11 +2740,11 @@ function __c1(j: number): any {
           current_user_url: S.optional(S.String),
           current_user_actor_url: S.optional(S.String),
           current_user_organization_url: S.optional(S.String),
-          current_user_organization_urls: S.optional(__S(6)),
+          current_user_organization_urls: S.optional(FeedCurrentUserOrganizationUrlsList),
           security_advisories_url: S.optional(S.String),
           repository_discussions_url: S.optional(S.String),
           repository_discussions_category_url: S.optional(S.String),
-          _links: __S(9),
+          _links: FeedLinks,
         }),
       ).annotate({ identifier: "Feed" });
     case 3:
@@ -2336,15 +2808,17 @@ function __c2(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          days: __S(16),
+          days: StargazerHistoryDaysList,
           total: S.Number,
           week: S.Number,
         }),
       ).annotate({ identifier: "StargazerHistory" });
     case 2:
-      return S.Array(__S(17));
+      return S.Array(StargazerHistory);
     case 3:
-      return S.suspend(() => __S(18).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        GetStargazerHistoryForRepoResponseBodyList.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "GetStargazerHistoryForRepoResponse",
       });
     case 4:
@@ -2419,7 +2893,7 @@ function __c3(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(S.String),
+          status: S.optional(SecurityAndAnalysisAdvancedSecurityStatus),
         }),
       ).annotate({
         identifier: "SecurityAndAnalysisAdvancedSecurity",
@@ -2427,7 +2901,7 @@ function __c3(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(S.String),
+          status: S.optional(SecurityAndAnalysisSecretScanningDelegatedAlertDismissalStatus),
         }),
       ).annotate({
         identifier: "SecurityAndAnalysisSecretScanningDelegatedAlertDismissal",
@@ -2436,18 +2910,23 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           reviewer_id: S.Number,
-          reviewer_type: S.String,
-          mode: S.optional(S.String),
+          reviewer_type:
+            SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemReviewerType,
+          mode: S.optional(
+            SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemMode,
+          ),
         }),
       ).annotate({
         identifier: "SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItem",
       });
     case 4:
-      return S.Array(__S(27));
+      return S.Array(SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItem);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          reviewers: S.optional(__S(28)),
+          reviewers: S.optional(
+            SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersList,
+          ),
         }),
       ).annotate({
         identifier: "SecurityAndAnalysisSecretScanningDelegatedBypassOptions",
@@ -2455,16 +2934,26 @@ function __c3(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          advanced_security: S.optional(__S(25)),
-          code_security: S.optional(__S(25)),
-          dependabot_security_updates: S.optional(__S(25)),
-          secret_scanning: S.optional(__S(25)),
-          secret_scanning_push_protection: S.optional(__S(25)),
-          secret_scanning_non_provider_patterns: S.optional(__S(25)),
-          secret_scanning_ai_detection: S.optional(__S(25)),
-          secret_scanning_delegated_alert_dismissal: S.optional(__S(26)),
-          secret_scanning_delegated_bypass: S.optional(__S(25)),
-          secret_scanning_delegated_bypass_options: S.optional(__S(29)),
+          advanced_security: S.optional(SecurityAndAnalysisAdvancedSecurity),
+          code_security: S.optional(SecurityAndAnalysisCodeSecurity),
+          dependabot_security_updates: S.optional(SecurityAndAnalysisDependabotSecurityUpdates),
+          secret_scanning: S.optional(SecurityAndAnalysisSecretScanning),
+          secret_scanning_push_protection: S.optional(
+            SecurityAndAnalysisSecretScanningPushProtection,
+          ),
+          secret_scanning_non_provider_patterns: S.optional(
+            SecurityAndAnalysisSecretScanningNonProviderPatterns,
+          ),
+          secret_scanning_ai_detection: S.optional(SecurityAndAnalysisSecretScanningAiDetection),
+          secret_scanning_delegated_alert_dismissal: S.optional(
+            SecurityAndAnalysisSecretScanningDelegatedAlertDismissal,
+          ),
+          secret_scanning_delegated_bypass: S.optional(
+            SecurityAndAnalysisSecretScanningDelegatedBypass,
+          ),
+          secret_scanning_delegated_bypass_options: S.optional(
+            SecurityAndAnalysisSecretScanningDelegatedBypassOptions,
+          ),
         }),
       ).annotate({ identifier: "SecurityAndAnalysis" });
     case 7:
@@ -2480,7 +2969,7 @@ function __c4(j: number): any {
           node_id: S.String,
           name: S.String,
           full_name: S.String,
-          owner: __S(21),
+          owner: SimpleUser,
           private: S.Boolean,
           html_url: S.String,
           description: S.NullOr(S.String),
@@ -2536,7 +3025,7 @@ function __c4(j: number): any {
           default_branch: S.optional(S.String),
           open_issues_count: S.optional(S.Number),
           is_template: S.optional(S.Boolean),
-          topics: S.optional(__S(6)),
+          topics: S.optional(MinimalRepositoryTopicsList),
           has_issues: S.optional(S.Boolean),
           has_projects: S.optional(S.Boolean),
           has_wiki: S.optional(S.Boolean),
@@ -2544,28 +3033,28 @@ function __c4(j: number): any {
           has_downloads: S.optional(S.Boolean),
           has_discussions: S.optional(S.Boolean),
           has_pull_requests: S.optional(S.Boolean),
-          pull_request_creation_policy: S.optional(S.String),
+          pull_request_creation_policy: S.optional(MinimalRepositoryPullRequestCreationPolicy),
           archived: S.optional(S.Boolean),
           disabled: S.optional(S.Boolean),
           visibility: S.optional(S.String),
           pushed_at: S.optional(S.NullOr(S.String)),
           created_at: S.optional(S.NullOr(S.String)),
           updated_at: S.optional(S.NullOr(S.String)),
-          permissions: S.optional(__S(22)),
+          permissions: S.optional(MinimalRepositoryPermissions),
           role_name: S.optional(S.String),
           temp_clone_token: S.optional(S.String),
           delete_branch_on_merge: S.optional(S.Boolean),
           subscribers_count: S.optional(S.Number),
           network_count: S.optional(S.Number),
-          code_of_conduct: S.optional(__S(23)),
-          license: S.optional(S.NullOr(__S(24))),
+          code_of_conduct: S.optional(CodeOfConduct),
+          license: S.optional(S.NullOr(MinimalRepositoryLicense)),
           forks: S.optional(S.Number),
           open_issues: S.optional(S.Number),
           watchers: S.optional(S.Number),
           allow_forking: S.optional(S.Boolean),
           web_commit_signoff_required: S.optional(S.Boolean),
-          security_and_analysis: S.optional(S.NullOr(__S(30))),
-          custom_properties: S.optional(__S(31)),
+          security_and_analysis: S.optional(S.NullOr(SecurityAndAnalysis)),
+          custom_properties: S.optional(MinimalRepositoryCustomPropertiesMap),
         }),
       ).annotate({ identifier: "MinimalRepository" });
     case 1:
@@ -2581,8 +3070,8 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          repository: __S(32),
-          subject: __S(33),
+          repository: MinimalRepository,
+          subject: ThreadSubject,
           reason: S.String,
           unread: S.Boolean,
           updated_at: S.String,
@@ -2651,7 +3140,7 @@ function __c4(j: number): any {
 function __c5(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(21));
+      return S.Array(SimpleUser);
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2689,10 +3178,10 @@ function __c5(j: number): any {
           node_id: S.String,
           name: S.String,
           full_name: S.String,
-          license: S.NullOr(__S(41)),
+          license: S.NullOr(NullableLicenseSimple),
           forks: S.Number,
-          permissions: S.optional(__S(42)),
-          owner: __S(21),
+          permissions: S.optional(RepositoryPermissions),
+          owner: SimpleUser,
           private: S.Boolean,
           html_url: S.String,
           description: S.NullOr(S.String),
@@ -2748,7 +3237,7 @@ function __c5(j: number): any {
           default_branch: S.String,
           open_issues_count: S.Number,
           is_template: S.optional(S.Boolean),
-          topics: S.optional(__S(6)),
+          topics: S.optional(RepositoryTopicsList),
           has_issues: S.Boolean,
           has_projects: S.Boolean,
           has_wiki: S.Boolean,
@@ -2756,7 +3245,7 @@ function __c5(j: number): any {
           has_downloads: S.Boolean,
           has_discussions: S.optional(S.Boolean),
           has_pull_requests: S.optional(S.Boolean),
-          pull_request_creation_policy: S.optional(S.String),
+          pull_request_creation_policy: S.optional(RepositoryPullRequestCreationPolicy),
           archived: S.Boolean,
           disabled: S.Boolean,
           visibility: S.optional(S.String),
@@ -2770,10 +3259,10 @@ function __c5(j: number): any {
           delete_branch_on_merge: S.optional(S.Boolean),
           allow_update_branch: S.optional(S.Boolean),
           use_squash_pr_title_as_default: S.optional(S.Boolean),
-          squash_merge_commit_title: S.optional(S.String),
-          squash_merge_commit_message: S.optional(S.String),
-          merge_commit_title: S.optional(S.String),
-          merge_commit_message: S.optional(S.String),
+          squash_merge_commit_title: S.optional(RepositorySquashMergeCommitTitle),
+          squash_merge_commit_message: S.optional(RepositorySquashMergeCommitMessage),
+          merge_commit_title: S.optional(RepositoryMergeCommitTitle),
+          merge_commit_message: S.optional(RepositoryMergeCommitMessage),
           allow_merge_commit: S.optional(S.Boolean),
           allow_forking: S.optional(S.Boolean),
           web_commit_signoff_required: S.optional(S.Boolean),
@@ -2782,7 +3271,7 @@ function __c5(j: number): any {
           master_branch: S.optional(S.String),
           starred_at: S.optional(S.String),
           anonymous_access_enabled: S.optional(S.Boolean),
-          code_search_index_status: S.optional(__S(43)),
+          code_search_index_status: S.optional(RepositoryCodeSearchIndexStatus),
         }),
       ).annotate({ identifier: "Repository" });
     case 5:
@@ -2790,18 +3279,20 @@ function __c5(j: number): any {
         S.Struct({
           id: S.String,
           type: S.NullOr(S.String),
-          actor: __S(38),
-          repo: __S(39),
-          org: S.optional(__S(38)),
-          payload: S.Unknown,
+          actor: Actor,
+          repo: EventRepo,
+          org: S.optional(Actor),
+          payload: EventPayload,
           public: S.Boolean,
           created_at: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "Event" });
     case 6:
-      return S.Array(__S(45));
+      return S.Array(Event);
     case 7:
-      return S.suspend(() => __S(46).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        ListEventsForAuthenticatedUserResponseBodyList.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "ListEventsForAuthenticatedUserResponse",
       });
   }
@@ -2822,9 +3313,11 @@ function __c6(j: number): any {
         identifier: "ListNotificationsForAuthenticatedUserRequest",
       });
     case 1:
-      return S.Array(__S(34));
+      return S.Array(Thread);
     case 2:
-      return S.suspend(() => __S(49).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        ListNotificationsForAuthenticatedUserResponseBodyList.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "ListNotificationsForAuthenticatedUserResponse",
       });
     case 3:
@@ -2846,7 +3339,7 @@ function __c6(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/events", code: 200 })),
       ).annotate({ identifier: "ListPublicEventsRequest" });
     case 5:
-      return S.suspend(() => __S(46).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => ListPublicEventsResponseBodyList.pipe(T.RawResponseRoot())).annotate({
         identifier: "ListPublicEventsResponse",
       });
     case 6:
@@ -2933,8 +3426,10 @@ function __c7(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          sort: S.optional(S.String.pipe(T.Query())),
-          direction: S.optional(S.String.pipe(T.Query())),
+          sort: S.optional(ListReposStarredByAuthenticatedUserRequestSort.pipe(T.Query())),
+          direction: S.optional(
+            ListReposStarredByAuthenticatedUserRequestDirection.pipe(T.Query()),
+          ),
           per_page: S.optional(S.Number.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/user/starred", code: 200 })),
@@ -2942,9 +3437,11 @@ function __c7(j: number): any {
         identifier: "ListReposStarredByAuthenticatedUserRequest",
       });
     case 6:
-      return S.Array(__S(44));
+      return S.Array(Repository);
     case 7:
-      return S.suspend(() => __S(62).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        ListReposStarredByAuthenticatedUserResponseBodyList.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "ListReposStarredByAuthenticatedUserResponse",
       });
   }
@@ -2955,8 +3452,8 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           username: S.String.pipe(T.Label()),
-          sort: S.optional(S.String.pipe(T.Query())),
-          direction: S.optional(S.String.pipe(T.Query())),
+          sort: S.optional(ListReposStarredByUserRequestSort.pipe(T.Query())),
+          direction: S.optional(ListReposStarredByUserRequestDirection.pipe(T.Query())),
           per_page: S.optional(S.Number.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/users/{username}/starred", code: 200 })),
@@ -2964,9 +3461,11 @@ function __c8(j: number): any {
         identifier: "ListReposStarredByUserRequest",
       });
     case 1:
-      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListReposStarredByUserResponse",
-      });
+      return S.suspend(() => ListReposStarredByUserResponseBody.pipe(T.RawResponseRoot())).annotate(
+        {
+          identifier: "ListReposStarredByUserResponse",
+        },
+      );
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -2978,9 +3477,11 @@ function __c8(j: number): any {
         identifier: "ListReposWatchedByUserRequest",
       });
     case 3:
-      return S.Array(__S(32));
+      return S.Array(MinimalRepository);
     case 4:
-      return S.suspend(() => __S(67).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        ListReposWatchedByUserResponseBodyList.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "ListReposWatchedByUserResponse",
       });
     case 5:
@@ -2995,7 +3496,7 @@ function __c8(j: number): any {
         identifier: "ListStargazersForRepoRequest",
       });
     case 6:
-      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => ListStargazersForRepoResponseBody.pipe(T.RawResponseRoot())).annotate({
         identifier: "ListStargazersForRepoResponse",
       });
     case 7:
@@ -3023,7 +3524,9 @@ function __c9(j: number): any {
         identifier: "ListWatchersForRepoRequest",
       });
     case 1:
-      return S.suspend(() => __S(40).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        ListWatchersForRepoResponseBodyList.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "ListWatchersForRepoResponse",
       });
     case 2:
@@ -3109,36 +3612,5 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "UnstarRepoForAuthenticatedUserRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
-    case 9:
-      return __c9(i & 7);
-    case 10:
-      return __c10(i & 7);
   }
 }

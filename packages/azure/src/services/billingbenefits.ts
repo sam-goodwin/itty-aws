@@ -6,8 +6,6 @@ import { UnknownAzureError } from "../errors.ts";
 import { AzureProtocol, type AzureOpError, type AzureOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { AzureOpError, AzureOpContext };
 
@@ -19,10 +17,19 @@ export interface CancelConditionalCreditRequest {
   /** Name of the conditional credit */
   conditionalCreditName: string;
 }
+const CancelConditionalCreditRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<CancelConditionalCreditRequest>;
+
 /** The type of identity that created the resource. */
 export type SystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
+const SystemDataCreatedByType = S.String;
+
 /** The type of identity that last modified the resource. */
 export type SystemDataLastModifiedByType = "User" | "Application" | "ManagedIdentity" | "Key";
+const SystemDataLastModifiedByType = S.String;
+
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface SystemData {
   /** The identity that created the resource. */
@@ -38,12 +45,23 @@ export interface SystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const SystemData = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<SystemData>;
+
 /** Resource tags. */
 export type CancelConditionalCreditResponseTagsMap = { [key: string]: string | undefined };
+const CancelConditionalCreditResponseTagsMap = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<CancelConditionalCreditResponseTagsMap>;
+
 /** Type of conditional credit entity */
 export type ConditionalCreditEntityType = "Primary" | "Contributor";
+const ConditionalCreditEntityType = S.String;
+
 /** Provisioning state for billing benefit resources. Includes the standard terminal states (Succeeded, Failed, Canceled) plus benefit-specific transition states. */
 export type BenefitProvisioningState = "Succeeded" | "Failed" | "Canceled" | "Pending";
+const BenefitProvisioningState = S.String;
+
 /** The status of the conditional credit */
 export type ConditionalCreditStatus =
   | "Unknown"
@@ -55,6 +73,8 @@ export type ConditionalCreditStatus =
   | "Completed"
   | "Stopped"
   | "PendingSettlement";
+const ConditionalCreditStatus = S.String;
+
 /** Common product detail properties shared across all benefit resources */
 export interface ProductDetailsBase {
   /** SKU title of the product */
@@ -64,13 +84,19 @@ export interface ProductDetailsBase {
   /** The type of the product. */
   productType?: string;
 }
+const ProductDetailsBase = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<ProductDetailsBase>;
+
 /** List of applied scope types supported for benefit resources. */
 export type BenefitAppliedScopeType = "BillingAccount" | "BillingProfile" | "Customer";
+const BenefitAppliedScopeType = S.String;
+
 export interface Price {
   /** The ISO 4217 3-letter currency code for the currency used by this purchase record. */
   currencyCode?: string;
   amount?: number;
 }
+const Price = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<Price>;
+
 /** Properties belonging to conditional credits. */
 export interface ConditionalCreditProperties {
   /** Type of conditional credit entity */
@@ -102,12 +128,19 @@ export interface ConditionalCreditProperties {
   /** Amount of benefit that has been consumed */
   consumed?: Price;
 }
+const ConditionalCreditProperties = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<ConditionalCreditProperties>;
+
 /** Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed). */
 export type ManagedServiceIdentityType =
   | "None"
   | "SystemAssigned"
   | "UserAssigned"
   | "SystemAssigned,UserAssigned";
+const ManagedServiceIdentityType = S.String;
+
 /** User assigned identity properties */
 export interface UserAssignedIdentity {
   /** The principal ID of the assigned identity. */
@@ -115,10 +148,17 @@ export interface UserAssignedIdentity {
   /** The client ID of the assigned identity. */
   clientId?: string;
 }
+const UserAssignedIdentity = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<UserAssignedIdentity>;
+
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type CancelConditionalCreditResponseIdentityUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentity | null | undefined;
 };
+const CancelConditionalCreditResponseIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<CancelConditionalCreditResponseIdentityUserAssignedIdentitiesMap>;
+
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface CancelConditionalCreditResponseIdentity {
   /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
@@ -129,8 +169,15 @@ export interface CancelConditionalCreditResponseIdentity {
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: CancelConditionalCreditResponseIdentityUserAssignedIdentitiesMap;
 }
+const CancelConditionalCreditResponseIdentity = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<CancelConditionalCreditResponseIdentity>;
+
 /** This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT. */
 export type SkuTier = "Free" | "Basic" | "Standard" | "Premium";
+const SkuTier = S.String;
+
 /** The resource model definition representing SKU */
 export interface Sku {
   /** The name of the SKU. E.g. P3. It is typically a letter+number code */
@@ -144,6 +191,8 @@ export interface Sku {
   /** If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted. */
   capacity?: number;
 }
+const Sku = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<Sku>;
+
 /** Plan for the resource. */
 export interface Plan {
   /** A user defined name of the 3rd Party Artifact that is being procured. */
@@ -157,6 +206,8 @@ export interface Plan {
   /** The version of the desired product/artifact. */
   version?: string;
 }
+const Plan = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<Plan>;
+
 export interface CancelConditionalCreditResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -185,6 +236,11 @@ export interface CancelConditionalCreditResponse {
   /** Plan for the resource. */
   plan?: Plan;
 }
+const CancelConditionalCreditResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<CancelConditionalCreditResponse>;
+
 export interface CancelCreditRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -193,8 +249,13 @@ export interface CancelCreditRequest {
   /** Name of the credit */
   creditName: string;
 }
+const CancelCreditRequest = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<CancelCreditRequest>;
+
 /** Resource tags. */
 export type CancelCreditResponseTagsMap = { [key: string]: string | undefined };
+const CancelCreditResponseTagsMap =
+  CancelConditionalCreditResponseTagsMap as any as S.Schema<CancelCreditResponseTagsMap>;
+
 /** Status of the credit */
 export type CreditStatus =
   | "Unknown"
@@ -206,6 +267,8 @@ export type CreditStatus =
   | "Expired"
   | "Exhausted"
   | "NotStarted";
+const CreditStatus = S.String;
+
 /** The reason for the credit. Not required if not applicable. */
 export interface CreditReason {
   /** The reason code for credit. */
@@ -213,8 +276,12 @@ export interface CreditReason {
   /** The free string description of the credit. */
   description?: string;
 }
+const CreditReason = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<CreditReason>;
+
 /** Grain. */
 export type CommitmentGrain = "Hourly" | "FullTerm" | "Unknown";
+const CommitmentGrain = S.String;
+
 /** Commitment towards the benefit. */
 export interface Commitment {
   /** The ISO 4217 3-letter currency code for the currency used by this purchase record. */
@@ -223,10 +290,16 @@ export interface Commitment {
   /** The grain of the commitment. */
   grain?: CommitmentGrain | (string & {});
 }
+const Commitment = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<Commitment>;
+
 /** Redemption policy of the Credit */
 export type CreditRedemptionPolicy = "NotApplicable" | "AutoRedeem" | "ManualRedeem";
+const CreditRedemptionPolicy = S.String;
+
 /** Expiration policy of the Credit */
 export type CreditExpirationPolicy = "None" | "SuspendBillingProfile";
+const CreditExpirationPolicy = S.String;
+
 /** Credit breakdown item representing a milestone, line-item, or no-charge service */
 export interface CreditPolicies {
   /** Redemption policy of the Credit */
@@ -234,6 +307,8 @@ export interface CreditPolicies {
   /** Expiration policy of the Credit */
   expiration?: CreditExpirationPolicy | (string & {});
 }
+const CreditPolicies = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<CreditPolicies>;
+
 /** Key-value pair for additional credit parameters and metadata */
 export interface CreditDimension {
   /** The dimension key (e.g., productFamily, description, creditType) */
@@ -241,8 +316,15 @@ export interface CreditDimension {
   /** The dimension value */
   value: string;
 }
+const CreditDimension = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<CreditDimension>;
+
 /** Key-value pairs for additional parameters and metadata */
 export type CreditBreakdownItemDimensionsList = Array<CreditDimension>;
+const CreditBreakdownItemDimensionsList = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<CreditBreakdownItemDimensionsList>;
+
 /** Credit breakdown item representing a milestone, line-item, or no-charge service */
 export interface CreditBreakdownItem {
   /** Allocation details including currency and amount for this breakdown item */
@@ -254,12 +336,26 @@ export interface CreditBreakdownItem {
   /** Key-value pairs for additional parameters and metadata */
   dimensions?: CreditBreakdownItemDimensionsList;
 }
+const CreditBreakdownItem = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<CreditBreakdownItem>;
+
 /** Credit line-items/milestones/no-charge services breakdown */
 export type CreditPropertiesBreakdownList = Array<CreditBreakdownItem>;
+const CreditPropertiesBreakdownList = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<CreditPropertiesBreakdownList>;
+
 /** Indicates where the credit benefit is applied */
 export type AppliedOn = "Consumption" | "Invoice" | "External";
+const AppliedOn = S.String;
+
 /** Indicates where the credit benefit is applied (e.g., consume, invoice, or external application). */
 export type CreditProductDetailsAppliedOnList = Array<AppliedOn>;
+const CreditProductDetailsAppliedOnList = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<CreditProductDetailsAppliedOnList>;
+
 /** Product details for a credit */
 export interface CreditProductDetails {
   /** SKU title of the product */
@@ -273,6 +369,8 @@ export interface CreditProductDetails {
   /** Specifies which price point is used when applying the credit. Known values include "MarketPrice", "UnitPrice", and "BenefitGroupPrice:<groupId>" where <groupId> identifies the benefit group. */
   appliedPrice?: string;
 }
+const CreditProductDetails = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<CreditProductDetails>;
+
 /** Properties of a credit */
 export interface CreditProperties {
   /** Status of the credit */
@@ -318,10 +416,17 @@ export interface CreditProperties {
   /** Type of the applied scope for the credit. */
   appliedScopeType?: BenefitAppliedScopeType;
 }
+const CreditProperties = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<CreditProperties>;
+
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type CancelCreditResponseIdentityUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentity | null | undefined;
 };
+const CancelCreditResponseIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<CancelCreditResponseIdentityUserAssignedIdentitiesMap>;
+
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface CancelCreditResponseIdentity {
   /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
@@ -332,6 +437,11 @@ export interface CancelCreditResponseIdentity {
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: CancelCreditResponseIdentityUserAssignedIdentitiesMap;
 }
+const CancelCreditResponseIdentity = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<CancelCreditResponseIdentity>;
+
 export interface CancelCreditResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -360,6 +470,8 @@ export interface CancelCreditResponse {
   /** Plan for the resource. */
   plan?: Plan;
 }
+const CancelCreditResponse = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<CancelCreditResponse>;
+
 export interface CancelDiscountRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -368,12 +480,24 @@ export interface CancelDiscountRequest {
   /** Name of the discount */
   discountName: string;
 }
+const CancelDiscountRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<CancelDiscountRequest>;
+
 /** Resource tags. */
 export type CancelDiscountResponseTagsMap = { [key: string]: string | undefined };
+const CancelDiscountResponseTagsMap =
+  CancelConditionalCreditResponseTagsMap as any as S.Schema<CancelDiscountResponseTagsMap>;
+
 /** This defines whether the entity being created is primary or affiliate. Supported values: primary, affiliate. Validation: Required, must match one of the 2 values. */
 export type DiscountEntityType = "Primary" | "Affiliate";
+const DiscountEntityType = S.String;
+
 /** Represents the current status of the discount. */
 export type DiscountStatus = "Active" | "Pending" | "Failed" | "Canceled" | "Expired";
+const DiscountStatus = S.String;
+
 /** Properties belonging to discounts. */
 export interface DiscountProperties {
   /** This defines whether the entity being created is primary or affiliate. Supported values: primary, affiliate. Validation: Required, must match one of the 2 values. */
@@ -407,12 +531,19 @@ export interface DiscountProperties {
   /** Product details including SKU title, product family, and product type. */
   productDetails?: ProductDetailsBase;
 }
+const DiscountProperties = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<DiscountProperties>;
+
 /** User assigned identity properties */
 export type ManagedServiceIdentityUserAssignedIdentitiesValue = UserAssignedIdentity;
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type ManagedServiceIdentityUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentity | undefined;
 };
+const ManagedServiceIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<ManagedServiceIdentityUserAssignedIdentitiesMap>;
+
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface ManagedServiceIdentity {
   /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
@@ -424,6 +555,11 @@ export interface ManagedServiceIdentity {
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: ManagedServiceIdentityUserAssignedIdentitiesMap;
 }
+const ManagedServiceIdentity = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<ManagedServiceIdentity>;
+
 export interface CancelDiscountResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -452,6 +588,11 @@ export interface CancelDiscountResponse {
   /** Plan for the resource. */
   plan?: Plan;
 }
+const CancelDiscountResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<CancelDiscountResponse>;
+
 export interface CancelMaccRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -460,8 +601,13 @@ export interface CancelMaccRequest {
   /** Name of primary MACC. */
   maccName: string;
 }
+const CancelMaccRequest = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<CancelMaccRequest>;
+
 /** Resource tags. */
 export type CancelMaccResponseTagsMap = { [key: string]: string | undefined };
+const CancelMaccResponseTagsMap =
+  CancelConditionalCreditResponseTagsMap as any as S.Schema<CancelMaccResponseTagsMap>;
+
 /** Represents the current status of the MACC. */
 export type MaccStatus =
   | "Unknown"
@@ -475,10 +621,16 @@ export type MaccStatus =
   | "PendingSettlement"
   | "ShortfallCharged"
   | "ShortfallWaived";
+const MaccStatus = S.String;
+
 /** Represents type of the object being operated on. Possible values are primary or contributor. */
 export type MaccEntityType = "Primary" | "Contributor";
+const MaccEntityType = S.String;
+
 /** Represents the enablement status of a feature or settings. */
 export type EnablementMode = "Unknown" | "Enabled" | "Disabled";
+const EnablementMode = S.String;
+
 /** Optional field to record suppression reason for automatic shortfall. */
 export interface AutomaticShortfallSuppressReason {
   /** Code for the suppression reason. */
@@ -486,6 +638,11 @@ export interface AutomaticShortfallSuppressReason {
   /** Message for suppression reason. */
   message?: string;
 }
+const AutomaticShortfallSuppressReason = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<AutomaticShortfallSuppressReason>;
+
 /** MACC shortfall */
 export interface Shortfall {
   /** Represents catalog UPN. */
@@ -503,6 +660,8 @@ export interface Shortfall {
   /** This is an identifier of the shortfall which will not change for its lifetime. */
   systemId?: string;
 }
+const Shortfall = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<Shortfall>;
+
 /** Represents the current status of the Milestone. */
 export type MaccMilestoneStatus =
   | "Unknown"
@@ -516,6 +675,8 @@ export type MaccMilestoneStatus =
   | "PendingSettlement"
   | "ShortfallCharged"
   | "ShortfallWaived";
+const MaccMilestoneStatus = S.String;
+
 /** MACC milestone represents interim targets within the period of MACC. */
 export interface MaccMilestone {
   /** Globally unique identifier for the milestone. Format: {guid} */
@@ -533,8 +694,15 @@ export interface MaccMilestone {
   /** Details of the shortfall associated with this milestone. */
   shortfall?: Shortfall;
 }
+const MaccMilestone = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<MaccMilestone>;
+
 /** List of milestones associated with this MACC. */
 export type MaccModelPropertiesMilestonesList = Array<MaccMilestone>;
+const MaccModelPropertiesMilestonesList = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<MaccModelPropertiesMilestonesList>;
+
 /** MACC properties */
 export interface MaccModelProperties {
   /** Provisioning state of MACC as assigned by RPaaS. This indicates the last operation's status. For all practical purposes, this can be ignored. For current status of MACC resource, refer to MaccStatus. */
@@ -582,6 +750,8 @@ export interface MaccModelProperties {
   /** Amount of benefit that has been consumed */
   consumed?: Price;
 }
+const MaccModelProperties = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<MaccModelProperties>;
+
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type CancelMaccResponseIdentityUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentity | null | undefined;
@@ -596,6 +766,9 @@ export interface CancelMaccResponseIdentity {
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: CancelMaccResponseIdentityUserAssignedIdentitiesMap;
 }
+const CancelMaccResponseIdentity =
+  CancelCreditResponseIdentity as any as S.Schema<CancelMaccResponseIdentity>;
+
 export interface CancelMaccResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -624,8 +797,13 @@ export interface CancelMaccResponse {
   /** Plan for the resource. */
   plan?: Plan;
 }
+const CancelMaccResponse = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<CancelMaccResponse>;
+
 /** Resource tags. */
 export type ConditionalCreditsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
+const ConditionalCreditsCreateOrUpdateRequestTagsMap =
+  CancelConditionalCreditResponseTagsMap as any as S.Schema<ConditionalCreditsCreateOrUpdateRequestTagsMap>;
+
 /** Properties belonging to conditional credits. */
 export interface ConditionalCreditPropertiesInput {
   /** Type of conditional credit entity */
@@ -649,18 +827,39 @@ export interface ConditionalCreditPropertiesInput {
   /** Invitation identifier */
   invitationId?: string;
 }
+const ConditionalCreditPropertiesInput = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<ConditionalCreditPropertiesInput>;
+
 /** User assigned identity properties */
 export interface UserAssignedIdentityInput {}
+const UserAssignedIdentityInput = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<UserAssignedIdentityInput>;
+
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type ConditionalCreditsCreateOrUpdateRequestIdentityUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentityInput | null | undefined;
 };
+const ConditionalCreditsCreateOrUpdateRequestIdentityUserAssignedIdentitiesMap =
+  /*@__PURE__*/ __L.at(
+    __c5,
+    0,
+  ) as any as S.Schema<ConditionalCreditsCreateOrUpdateRequestIdentityUserAssignedIdentitiesMap>;
+
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface ConditionalCreditsCreateOrUpdateRequestIdentity {
   type: ManagedServiceIdentityType | (string & {});
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: ConditionalCreditsCreateOrUpdateRequestIdentityUserAssignedIdentitiesMap;
 }
+const ConditionalCreditsCreateOrUpdateRequestIdentity = /*@__PURE__*/ __L.at(
+  __c5,
+  1,
+) as any as S.Schema<ConditionalCreditsCreateOrUpdateRequestIdentity>;
+
 export interface ConditionalCreditsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -685,6 +884,11 @@ export interface ConditionalCreditsCreateOrUpdateRequest {
   /** Plan for the resource. */
   plan?: Plan;
 }
+const ConditionalCreditsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  2,
+) as any as S.Schema<ConditionalCreditsCreateOrUpdateRequest>;
+
 /** Resource tags. */
 export type ConditionalCreditsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
@@ -729,10 +933,19 @@ export interface ConditionalCreditsCreateOrUpdateResponse {
   /** Plan for the resource. */
   plan?: Plan;
 }
+const ConditionalCreditsCreateOrUpdateResponse =
+  CancelConditionalCreditResponse as any as S.Schema<ConditionalCreditsCreateOrUpdateResponse>;
+
 /** Resource tags. */
 export type CreateCreditRequestTagsMap = { [key: string]: string | undefined };
+const CreateCreditRequestTagsMap =
+  CancelConditionalCreditResponseTagsMap as any as S.Schema<CreateCreditRequestTagsMap>;
+
 /** Credit line-items/milestones/no-charge services breakdown */
 export type CreditPropertiesInputBreakdownList = Array<CreditBreakdownItem>;
+const CreditPropertiesInputBreakdownList =
+  CreditPropertiesBreakdownList as any as S.Schema<CreditPropertiesInputBreakdownList>;
+
 /** Properties of a credit */
 export interface CreditPropertiesInput {
   /** Product UPN for the credit type */
@@ -764,16 +977,31 @@ export interface CreditPropertiesInput {
   /** Type of the applied scope for the credit. */
   appliedScopeType?: BenefitAppliedScopeType | (string & {});
 }
+const CreditPropertiesInput = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<CreditPropertiesInput>;
+
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type CreateCreditRequestIdentityUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentityInput | null | undefined;
 };
+const CreateCreditRequestIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ __L.at(
+  __c5,
+  4,
+) as any as S.Schema<CreateCreditRequestIdentityUserAssignedIdentitiesMap>;
+
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface CreateCreditRequestIdentity {
   type: ManagedServiceIdentityType | (string & {});
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: CreateCreditRequestIdentityUserAssignedIdentitiesMap;
 }
+const CreateCreditRequestIdentity = /*@__PURE__*/ __L.at(
+  __c5,
+  5,
+) as any as S.Schema<CreateCreditRequestIdentity>;
+
 export interface CreateCreditRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -798,6 +1026,8 @@ export interface CreateCreditRequest {
   /** Plan for the resource. */
   plan?: Plan;
 }
+const CreateCreditRequest = /*@__PURE__*/ __L.at(__c5, 6) as any as S.Schema<CreateCreditRequest>;
+
 /** Resource tags. */
 export type CreateCreditResponseTagsMap = { [key: string]: string | undefined };
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
@@ -842,8 +1072,13 @@ export interface CreateCreditResponse {
   /** Plan for the resource. */
   plan?: Plan;
 }
+const CreateCreditResponse = CancelCreditResponse as any as S.Schema<CreateCreditResponse>;
+
 /** Resource tags. */
 export type CreateDiscountRequestTagsMap = { [key: string]: string | undefined };
+const CreateDiscountRequestTagsMap =
+  CancelConditionalCreditResponseTagsMap as any as S.Schema<CreateDiscountRequestTagsMap>;
+
 /** Properties belonging to discounts. */
 export interface DiscountPropertiesInput {
   /** This defines whether the entity being created is primary or affiliate. Supported values: primary, affiliate. Validation: Required, must match one of the 2 values. */
@@ -863,12 +1098,22 @@ export interface DiscountPropertiesInput {
   /** List of applied scopes supported for discounts. */
   appliedScopeType?: BenefitAppliedScopeType | (string & {});
 }
+const DiscountPropertiesInput = /*@__PURE__*/ __L.at(
+  __c5,
+  7,
+) as any as S.Schema<DiscountPropertiesInput>;
+
 /** User assigned identity properties */
 export type ManagedServiceIdentityInputUserAssignedIdentitiesValue = UserAssignedIdentityInput;
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type ManagedServiceIdentityInputUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentityInput | undefined;
 };
+const ManagedServiceIdentityInputUserAssignedIdentitiesMap = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<ManagedServiceIdentityInputUserAssignedIdentitiesMap>;
+
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface ManagedServiceIdentityInput {
   /** Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed). */
@@ -876,6 +1121,11 @@ export interface ManagedServiceIdentityInput {
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: ManagedServiceIdentityInputUserAssignedIdentitiesMap;
 }
+const ManagedServiceIdentityInput = /*@__PURE__*/ __L.at(
+  __c6,
+  1,
+) as any as S.Schema<ManagedServiceIdentityInput>;
+
 export interface CreateDiscountRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -900,6 +1150,11 @@ export interface CreateDiscountRequest {
   /** Plan for the resource. */
   plan?: Plan;
 }
+const CreateDiscountRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  2,
+) as any as S.Schema<CreateDiscountRequest>;
+
 /** Resource tags. */
 export type CreateDiscountResponseTagsMap = { [key: string]: string | undefined };
 export interface CreateDiscountResponse {
@@ -930,10 +1185,17 @@ export interface CreateDiscountResponse {
   /** Plan for the resource. */
   plan?: Plan;
 }
+const CreateDiscountResponse = CancelDiscountResponse as any as S.Schema<CreateDiscountResponse>;
+
 /** Resource tags. */
 export type CreateFreeServiceRequestTagsMap = { [key: string]: string | undefined };
+const CreateFreeServiceRequestTagsMap =
+  CancelConditionalCreditResponseTagsMap as any as S.Schema<CreateFreeServiceRequestTagsMap>;
+
 /** Status of the free services */
 export type FreeServicesStatus = "Unknown" | "Pending" | "Active" | "Canceled" | "Completed";
+const FreeServicesStatus = S.String;
+
 /** Properties of free services */
 export interface FreeServicesPropertiesInput {
   /** This is the catalog UPN for the product. */
@@ -951,6 +1213,11 @@ export interface FreeServicesPropertiesInput {
   /** This is the globally unique identifier of the free services which will not change for its lifetime. Generated by the benefit publisher. */
   systemId?: string;
 }
+const FreeServicesPropertiesInput = /*@__PURE__*/ __L.at(
+  __c6,
+  3,
+) as any as S.Schema<FreeServicesPropertiesInput>;
+
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type CreateFreeServiceRequestIdentityUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentityInput | null | undefined;
@@ -961,6 +1228,9 @@ export interface CreateFreeServiceRequestIdentity {
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: CreateFreeServiceRequestIdentityUserAssignedIdentitiesMap;
 }
+const CreateFreeServiceRequestIdentity =
+  CreateCreditRequestIdentity as any as S.Schema<CreateFreeServiceRequestIdentity>;
+
 export interface CreateFreeServiceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -985,8 +1255,16 @@ export interface CreateFreeServiceRequest {
   /** Plan for the resource. */
   plan?: Plan;
 }
+const CreateFreeServiceRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  4,
+) as any as S.Schema<CreateFreeServiceRequest>;
+
 /** Resource tags. */
 export type CreateFreeServiceResponseTagsMap = { [key: string]: string | undefined };
+const CreateFreeServiceResponseTagsMap =
+  CancelConditionalCreditResponseTagsMap as any as S.Schema<CreateFreeServiceResponseTagsMap>;
+
 /** Properties of free services */
 export interface FreeServicesProperties {
   /** This is the catalog UPN for the product. */
@@ -1014,6 +1292,11 @@ export interface FreeServicesProperties {
   /** Product details including SKU title, product family, and product type. */
   productDetails?: ProductDetailsBase;
 }
+const FreeServicesProperties = /*@__PURE__*/ __L.at(
+  __c6,
+  5,
+) as any as S.Schema<FreeServicesProperties>;
+
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type CreateFreeServiceResponseIdentityUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentity | null | undefined;
@@ -1028,6 +1311,9 @@ export interface CreateFreeServiceResponseIdentity {
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: CreateFreeServiceResponseIdentityUserAssignedIdentitiesMap;
 }
+const CreateFreeServiceResponseIdentity =
+  CancelCreditResponseIdentity as any as S.Schema<CreateFreeServiceResponseIdentity>;
+
 export interface CreateFreeServiceResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1056,10 +1342,21 @@ export interface CreateFreeServiceResponse {
   /** Plan for the resource. */
   plan?: Plan;
 }
+const CreateFreeServiceResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  6,
+) as any as S.Schema<CreateFreeServiceResponse>;
+
 /** Resource tags. */
 export type CreateMaccRequestTagsMap = { [key: string]: string | undefined };
+const CreateMaccRequestTagsMap =
+  CancelConditionalCreditResponseTagsMap as any as S.Schema<CreateMaccRequestTagsMap>;
+
 /** List of milestones associated with this MACC. */
 export type MaccModelPropertiesInputMilestonesList = Array<MaccMilestone>;
+const MaccModelPropertiesInputMilestonesList =
+  MaccModelPropertiesMilestonesList as any as S.Schema<MaccModelPropertiesInputMilestonesList>;
+
 /** MACC properties */
 export interface MaccModelPropertiesInput {
   /** Represents the current status of the MACC. */
@@ -1101,6 +1398,11 @@ export interface MaccModelPropertiesInput {
   /** Invitation identifier */
   invitationId?: string;
 }
+const MaccModelPropertiesInput = /*@__PURE__*/ __L.at(
+  __c6,
+  7,
+) as any as S.Schema<MaccModelPropertiesInput>;
+
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type CreateMaccRequestIdentityUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentityInput | null | undefined;
@@ -1111,6 +1413,9 @@ export interface CreateMaccRequestIdentity {
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: CreateMaccRequestIdentityUserAssignedIdentitiesMap;
 }
+const CreateMaccRequestIdentity =
+  CreateCreditRequestIdentity as any as S.Schema<CreateMaccRequestIdentity>;
+
 export interface CreateMaccRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1135,6 +1440,8 @@ export interface CreateMaccRequest {
   /** Plan for the resource. */
   plan?: Plan;
 }
+const CreateMaccRequest = /*@__PURE__*/ __L.at(__c7, 0) as any as S.Schema<CreateMaccRequest>;
+
 /** Resource tags. */
 export type CreateMaccResponseTagsMap = { [key: string]: string | undefined };
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
@@ -1179,15 +1486,25 @@ export interface CreateMaccResponse {
   /** Plan for the resource. */
   plan?: Plan;
 }
+const CreateMaccResponse = CancelMaccResponse as any as S.Schema<CreateMaccResponse>;
+
 export interface ResourceSku {
   name?: string;
 }
+const ResourceSku = /*@__PURE__*/ __L.at(__c7, 1) as any as S.Schema<ResourceSku>;
+
 /** Represent benefit term in ISO 8601 format. */
 export type Term = "P1M" | "P1Y" | "P3Y" | "P5Y";
+const Term = S.String;
+
 /** Represents the billing plan in ISO 8601 format. Required only for monthly billing plans. */
 export type BillingPlan = "P1M";
+const BillingPlan = S.String;
+
 /** Type of the Applied Scope. */
 export type AppliedScopeType = "Single" | "Shared" | "ManagementGroup";
+const AppliedScopeType = S.String;
+
 /** Properties specific to applied scope type. Not required if not applicable. */
 export interface AppliedScopeProperties {
   /** Tenant ID where the benefit is applied. */
@@ -1203,8 +1520,15 @@ export interface AppliedScopeProperties {
   /** A filter string passed to downstream services to categorize and apply usage benefits to specific resource models. Expected format: "key/value" (e.g., "contractId/2025 H2CPU"). The value is not validated by BillingBenefits and is forwarded as-is. */
   benefitFilter?: string;
 }
+const AppliedScopeProperties = /*@__PURE__*/ __L.at(
+  __c7,
+  2,
+) as any as S.Schema<AppliedScopeProperties>;
+
 /** Represents the renewal action for a reservation to be a new purchase or existing renewal. */
 export type RenewAction = "CreateNew" | "RenewExisting";
+const RenewAction = S.String;
+
 /** The type of the resource that is being reserved. */
 export type ReservedResourceType =
   | "VirtualMachines"
@@ -1233,13 +1557,22 @@ export type ReservedResourceType =
   | "AzureFiles"
   | "SqlEdge"
   | "VirtualMachineSoftware";
+const ReservedResourceType = S.String;
+
 /** Turning this on will apply the reservation discount to other VMs in the same VM size group. */
 export type InstanceFlexibility = "On" | "Off";
+const InstanceFlexibility = S.String;
+
 /** Properties specific to each reserved resource type. Not required if not applicable. */
 export interface ReservationOrderAliasRequestPropertiesReservedResourceProperties {
   /** Turning this on will apply the reservation discount to other VMs in the same VM size group. */
   instanceFlexibility?: InstanceFlexibility | (string & {});
 }
+const ReservationOrderAliasRequestPropertiesReservedResourceProperties = /*@__PURE__*/ __L.at(
+  __c7,
+  3,
+) as any as S.Schema<ReservationOrderAliasRequestPropertiesReservedResourceProperties>;
+
 /** Reservation properties */
 export interface ReservationOrderAliasRequestProperties {
   /** Display name */
@@ -1269,6 +1602,11 @@ export interface ReservationOrderAliasRequestProperties {
   /** Properties specific to each reserved resource type. Not required if not applicable. */
   reservedResourceProperties?: ReservationOrderAliasRequestPropertiesReservedResourceProperties;
 }
+const ReservationOrderAliasRequestProperties = /*@__PURE__*/ __L.at(
+  __c7,
+  4,
+) as any as S.Schema<ReservationOrderAliasRequestProperties>;
+
 export interface CreateReservationOrderAliasRequest {
   /** Name of the reservation order alias */
   reservationOrderAliasName: string;
@@ -1279,6 +1617,11 @@ export interface CreateReservationOrderAliasRequest {
   /** Reservation order alias request properties */
   properties?: ReservationOrderAliasRequestProperties;
 }
+const CreateReservationOrderAliasRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  5,
+) as any as S.Schema<CreateReservationOrderAliasRequest>;
+
 /** Provisioning state */
 export type ProvisioningState =
   | "Creating"
@@ -1289,11 +1632,16 @@ export type ProvisioningState =
   | "Cancelled"
   | "Expired"
   | "Failed";
+const ProvisioningState = S.String;
+
 /** Properties specific to each reserved resource type. Not required if not applicable. */
 export interface ReservationOrderAliasResponsePropertiesReservedResourceProperties {
   /** Turning this on will apply the reservation discount to other VMs in the same VM size group. */
   instanceFlexibility?: InstanceFlexibility;
 }
+const ReservationOrderAliasResponsePropertiesReservedResourceProperties =
+  ReservationOrderAliasRequestPropertiesReservedResourceProperties as any as S.Schema<ReservationOrderAliasResponsePropertiesReservedResourceProperties>;
+
 /** Reservation properties */
 export interface ReservationOrderAliasResponseProperties {
   /** Display name */
@@ -1329,6 +1677,11 @@ export interface ReservationOrderAliasResponseProperties {
   /** Properties specific to each reserved resource type. Not required if not applicable. */
   reservedResourceProperties?: ReservationOrderAliasResponsePropertiesReservedResourceProperties;
 }
+const ReservationOrderAliasResponseProperties = /*@__PURE__*/ __L.at(
+  __c7,
+  6,
+) as any as S.Schema<ReservationOrderAliasResponseProperties>;
+
 export interface CreateReservationOrderAliasResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1345,6 +1698,11 @@ export interface CreateReservationOrderAliasResponse {
   /** The Azure Region where the reserved resource lives. */
   location?: string;
 }
+const CreateReservationOrderAliasResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  7,
+) as any as S.Schema<CreateReservationOrderAliasResponse>;
+
 /** Savings plan properties */
 export interface SavingsPlanOrderAliasPropertiesInput {
   /** Display name */
@@ -1364,6 +1722,11 @@ export interface SavingsPlanOrderAliasPropertiesInput {
   /** Setting this to true will automatically purchase a new benefit on the expiration date time. */
   renew?: boolean;
 }
+const SavingsPlanOrderAliasPropertiesInput = /*@__PURE__*/ __L.at(
+  __c8,
+  0,
+) as any as S.Schema<SavingsPlanOrderAliasPropertiesInput>;
+
 export interface CreateSavingsPlanOrderAliasRequest {
   /** Name of the savings plan order alias */
   savingsPlanOrderAliasName: string;
@@ -1374,6 +1737,11 @@ export interface CreateSavingsPlanOrderAliasRequest {
   /** Resource provider kind */
   kind?: string;
 }
+const CreateSavingsPlanOrderAliasRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  1,
+) as any as S.Schema<CreateSavingsPlanOrderAliasRequest>;
+
 /** Savings plan properties */
 export interface SavingsPlanOrderAliasProperties {
   /** Display name */
@@ -1397,6 +1765,11 @@ export interface SavingsPlanOrderAliasProperties {
   /** Setting this to true will automatically purchase a new benefit on the expiration date time. */
   renew?: boolean;
 }
+const SavingsPlanOrderAliasProperties = /*@__PURE__*/ __L.at(
+  __c8,
+  2,
+) as any as S.Schema<SavingsPlanOrderAliasProperties>;
+
 export interface CreateSavingsPlanOrderAliasResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1413,8 +1786,16 @@ export interface CreateSavingsPlanOrderAliasResponse {
   /** Resource provider kind */
   kind?: string;
 }
+const CreateSavingsPlanOrderAliasResponse = /*@__PURE__*/ __L.at(
+  __c8,
+  3,
+) as any as S.Schema<CreateSavingsPlanOrderAliasResponse>;
+
 /** Resource tags. */
 export type CreateSourceRequestTagsMap = { [key: string]: string | undefined };
+const CreateSourceRequestTagsMap =
+  CancelConditionalCreditResponseTagsMap as any as S.Schema<CreateSourceRequestTagsMap>;
+
 /** Properties of a credit source */
 export interface CreditSourcePropertiesInput {
   /** The uri of the resource impacted which lead to the grant of the credit. */
@@ -1424,6 +1805,11 @@ export interface CreditSourcePropertiesInput {
   /** Commitment towards the benefit. */
   credit?: Commitment;
 }
+const CreditSourcePropertiesInput = /*@__PURE__*/ __L.at(
+  __c8,
+  4,
+) as any as S.Schema<CreditSourcePropertiesInput>;
+
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type CreateSourceRequestIdentityUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentityInput | null | undefined;
@@ -1434,6 +1820,9 @@ export interface CreateSourceRequestIdentity {
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: CreateSourceRequestIdentityUserAssignedIdentitiesMap;
 }
+const CreateSourceRequestIdentity =
+  CreateCreditRequestIdentity as any as S.Schema<CreateSourceRequestIdentity>;
+
 export interface CreateSourceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1460,8 +1849,13 @@ export interface CreateSourceRequest {
   /** Plan for the resource. */
   plan?: Plan;
 }
+const CreateSourceRequest = /*@__PURE__*/ __L.at(__c8, 5) as any as S.Schema<CreateSourceRequest>;
+
 /** Resource tags. */
 export type CreateSourceResponseTagsMap = { [key: string]: string | undefined };
+const CreateSourceResponseTagsMap =
+  CancelConditionalCreditResponseTagsMap as any as S.Schema<CreateSourceResponseTagsMap>;
+
 /** Properties of a credit source */
 export interface CreditSourceProperties {
   /** Status of the credit */
@@ -1473,6 +1867,11 @@ export interface CreditSourceProperties {
   /** Commitment towards the benefit. */
   credit?: Commitment;
 }
+const CreditSourceProperties = /*@__PURE__*/ __L.at(
+  __c8,
+  6,
+) as any as S.Schema<CreditSourceProperties>;
+
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type CreateSourceResponseIdentityUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentity | null | undefined;
@@ -1487,6 +1886,9 @@ export interface CreateSourceResponseIdentity {
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: CreateSourceResponseIdentityUserAssignedIdentitiesMap;
 }
+const CreateSourceResponseIdentity =
+  CancelCreditResponseIdentity as any as S.Schema<CreateSourceResponseIdentity>;
+
 export interface CreateSourceResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1515,6 +1917,8 @@ export interface CreateSourceResponse {
   /** Plan for the resource. */
   plan?: Plan;
 }
+const CreateSourceResponse = /*@__PURE__*/ __L.at(__c8, 7) as any as S.Schema<CreateSourceResponse>;
+
 export interface CreditsChangeSponsorRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1525,7 +1929,15 @@ export interface CreditsChangeSponsorRequest {
   /** Financial code identifying the new sponsor. This is an alphanumeric identifier assigned by the billing system, for example P20567384. */
   sponsorId?: string;
 }
+const CreditsChangeSponsorRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  0,
+) as any as S.Schema<CreditsChangeSponsorRequest>;
+
 export interface CreditsChangeSponsorResponse {}
+const CreditsChangeSponsorResponse =
+  UserAssignedIdentityInput as any as S.Schema<CreditsChangeSponsorResponse>;
+
 export interface DeleteConditionalCreditRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1534,7 +1946,17 @@ export interface DeleteConditionalCreditRequest {
   /** Name of the conditional credit */
   conditionalCreditName: string;
 }
+const DeleteConditionalCreditRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  1,
+) as any as S.Schema<DeleteConditionalCreditRequest>;
+
 export interface DeleteConditionalCreditResponse {}
+const DeleteConditionalCreditResponse = /*@__PURE__*/ __L.at(
+  __c9,
+  2,
+) as any as S.Schema<DeleteConditionalCreditResponse>;
+
 export interface DeleteCreditRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1543,7 +1965,11 @@ export interface DeleteCreditRequest {
   /** Name of the credit */
   creditName: string;
 }
+const DeleteCreditRequest = /*@__PURE__*/ __L.at(__c9, 3) as any as S.Schema<DeleteCreditRequest>;
+
 export interface DeleteCreditResponse {}
+const DeleteCreditResponse = UserAssignedIdentityInput as any as S.Schema<DeleteCreditResponse>;
+
 export interface DeleteDiscountRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1552,7 +1978,14 @@ export interface DeleteDiscountRequest {
   /** Name of the discount */
   discountName: string;
 }
+const DeleteDiscountRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  4,
+) as any as S.Schema<DeleteDiscountRequest>;
+
 export interface DeleteDiscountResponse {}
+const DeleteDiscountResponse = UserAssignedIdentityInput as any as S.Schema<DeleteDiscountResponse>;
+
 export interface DeleteFreeServiceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1561,7 +1994,15 @@ export interface DeleteFreeServiceRequest {
   /** Name of the free service */
   freeServiceName: string;
 }
+const DeleteFreeServiceRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  5,
+) as any as S.Schema<DeleteFreeServiceRequest>;
+
 export interface DeleteFreeServiceResponse {}
+const DeleteFreeServiceResponse =
+  UserAssignedIdentityInput as any as S.Schema<DeleteFreeServiceResponse>;
+
 export interface DeleteMaccRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1570,7 +2011,11 @@ export interface DeleteMaccRequest {
   /** Name of primary MACC. */
   maccName: string;
 }
+const DeleteMaccRequest = /*@__PURE__*/ __L.at(__c9, 6) as any as S.Schema<DeleteMaccRequest>;
+
 export interface DeleteMaccResponse {}
+const DeleteMaccResponse = UserAssignedIdentityInput as any as S.Schema<DeleteMaccResponse>;
+
 export interface DeleteSourceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1581,13 +2026,22 @@ export interface DeleteSourceRequest {
   /** Name of the credit source */
   sourceName: string;
 }
+const DeleteSourceRequest = /*@__PURE__*/ __L.at(__c9, 7) as any as S.Schema<DeleteSourceRequest>;
+
 export interface DeleteSourceResponse {}
+const DeleteSourceResponse = UserAssignedIdentityInput as any as S.Schema<DeleteSourceResponse>;
+
 export interface GetBillingAccountCatalogGroupsOpsRequest {
   /** The name of the billing account. */
   billingAccountName: string;
   /** The name of the CatalogGroup */
   catalogGroupName: string;
 }
+const GetBillingAccountCatalogGroupsOpsRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  0,
+) as any as S.Schema<GetBillingAccountCatalogGroupsOpsRequest>;
+
 /** The top-level ARM resource type for a billing benefit (e.g., maccs, credits, savingsPlans, reservations). */
 export type ResourceType =
   | "Maccs"
@@ -1597,8 +2051,15 @@ export type ResourceType =
   | "FreeServices"
   | "SavingsPlans"
   | "Reservations";
+const ResourceType = S.String;
+
 /** Manifest-sourced array of search terms for this catalog group. Omitted when empty. */
 export type CatalogGroupPropertiesKeywordsList = Array<string>;
+const CatalogGroupPropertiesKeywordsList = /*@__PURE__*/ __L.at(
+  __c10,
+  1,
+) as any as S.Schema<CatalogGroupPropertiesKeywordsList>;
+
 /** A key-value pair representing a capability of the catalog group (for example, exchange or renewal support). */
 export interface CatalogGroupCapability {
   /** The capability name (e.g., SelfServiceExchange, Renewability). */
@@ -1606,10 +2067,23 @@ export interface CatalogGroupCapability {
   /** The capability value (e.g., Supported, Not Supported). */
   value: string;
 }
+const CatalogGroupCapability = /*@__PURE__*/ __L.at(
+  __c10,
+  2,
+) as any as S.Schema<CatalogGroupCapability>;
+
 /** Capabilities of the catalog group as key-value pairs. Omitted when a benefit type has no defined capabilities. */
 export type CatalogGroupPropertiesCapabilitiesList = Array<CatalogGroupCapability>;
+const CatalogGroupPropertiesCapabilitiesList = /*@__PURE__*/ __L.at(
+  __c10,
+  3,
+) as any as S.Schema<CatalogGroupPropertiesCapabilitiesList>;
+
 /** Optional disclaimers (legal or eligibility caveats) for the catalog group. Included only when caveats apply. */
 export type CatalogGroupPropertiesDisclaimersList = Array<string>;
+const CatalogGroupPropertiesDisclaimersList =
+  CatalogGroupPropertiesKeywordsList as any as S.Schema<CatalogGroupPropertiesDisclaimersList>;
+
 /** Properties of a catalog group. */
 export interface CatalogGroupProperties {
   /** The top-level benefit resource type (e.g., maccs, credits, conditionalCredits, discounts, savingsPlans, reservations). */
@@ -1631,6 +2105,11 @@ export interface CatalogGroupProperties {
   /** Optional disclaimers (legal or eligibility caveats) for the catalog group. Included only when caveats apply. */
   disclaimers?: CatalogGroupPropertiesDisclaimersList;
 }
+const CatalogGroupProperties = /*@__PURE__*/ __L.at(
+  __c10,
+  4,
+) as any as S.Schema<CatalogGroupProperties>;
+
 export interface GetBillingAccountCatalogGroupsOpsResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1643,6 +2122,11 @@ export interface GetBillingAccountCatalogGroupsOpsResponse {
   /** The resource-specific properties for this resource. */
   properties?: CatalogGroupProperties;
 }
+const GetBillingAccountCatalogGroupsOpsResponse = /*@__PURE__*/ __L.at(
+  __c10,
+  5,
+) as any as S.Schema<GetBillingAccountCatalogGroupsOpsResponse>;
+
 export interface GetBillingProfileCatalogGroupsOpsRequest {
   /** The name of the billing account. */
   billingAccountName: string;
@@ -1651,6 +2135,11 @@ export interface GetBillingProfileCatalogGroupsOpsRequest {
   /** The name of the CatalogGroup */
   catalogGroupName: string;
 }
+const GetBillingProfileCatalogGroupsOpsRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  6,
+) as any as S.Schema<GetBillingProfileCatalogGroupsOpsRequest>;
+
 export interface GetBillingProfileCatalogGroupsOpsResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1663,6 +2152,9 @@ export interface GetBillingProfileCatalogGroupsOpsResponse {
   /** The resource-specific properties for this resource. */
   properties?: CatalogGroupProperties;
 }
+const GetBillingProfileCatalogGroupsOpsResponse =
+  GetBillingAccountCatalogGroupsOpsResponse as any as S.Schema<GetBillingProfileCatalogGroupsOpsResponse>;
+
 export interface GetConditionalCreditRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1671,12 +2163,23 @@ export interface GetConditionalCreditRequest {
   /** Name of the conditional credit */
   conditionalCreditName: string;
 }
+const GetConditionalCreditRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  7,
+) as any as S.Schema<GetConditionalCreditRequest>;
+
 /** Resource tags. */
 export type GetConditionalCreditResponseTagsMap = { [key: string]: string | undefined };
+const GetConditionalCreditResponseTagsMap =
+  CancelConditionalCreditResponseTagsMap as any as S.Schema<GetConditionalCreditResponseTagsMap>;
+
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type GetConditionalCreditResponseIdentityUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentity | null | undefined;
 };
+const GetConditionalCreditResponseIdentityUserAssignedIdentitiesMap =
+  CancelCreditResponseIdentityUserAssignedIdentitiesMap as any as S.Schema<GetConditionalCreditResponseIdentityUserAssignedIdentitiesMap>;
+
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface GetConditionalCreditResponseIdentity {
   /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
@@ -1687,6 +2190,11 @@ export interface GetConditionalCreditResponseIdentity {
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: GetConditionalCreditResponseIdentityUserAssignedIdentitiesMap;
 }
+const GetConditionalCreditResponseIdentity = /*@__PURE__*/ __L.at(
+  __c11,
+  0,
+) as any as S.Schema<GetConditionalCreditResponseIdentity>;
+
 export interface GetConditionalCreditResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1715,6 +2223,11 @@ export interface GetConditionalCreditResponse {
   /** Plan for the resource. */
   plan?: Plan;
 }
+const GetConditionalCreditResponse = /*@__PURE__*/ __L.at(
+  __c11,
+  1,
+) as any as S.Schema<GetConditionalCreditResponse>;
+
 export interface GetConditionalCreditContributorFromPrimaryRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1725,6 +2238,11 @@ export interface GetConditionalCreditContributorFromPrimaryRequest {
   /** Unique name of contributor in the format {contributorCloudSubId}_{resourceGroupName}_{nameInContributorTenant}. */
   contributorName: string;
 }
+const GetConditionalCreditContributorFromPrimaryRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  2,
+) as any as S.Schema<GetConditionalCreditContributorFromPrimaryRequest>;
+
 /** Current status of the milestone */
 export type MilestoneStatus =
   | "Unknown"
@@ -1737,6 +2255,8 @@ export type MilestoneStatus =
   | "Removed"
   | "PendingSettlement"
   | "Missed";
+const MilestoneStatus = S.String;
+
 /** Award details for milestone completion */
 export interface Award {
   /** Credit amount to be awarded */
@@ -1754,6 +2274,8 @@ export interface Award {
   /** Duration for which the benefit is active. Will be in format P{int}M or P{int}Y. Any values representing up to 12 years are valid. Upper limit examples: P144M, P12Y. */
   duration?: Term;
 }
+const Award = /*@__PURE__*/ __L.at(__c11, 3) as any as S.Schema<Award>;
+
 /** Base milestone definition for conditional credits */
 export interface ConditionalCreditMilestoneBase {
   /** Unique identifier for the milestone */
@@ -1769,9 +2291,19 @@ export interface ConditionalCreditMilestoneBase {
   /** Award details for this milestone (only present for primary conditional credits) */
   award?: Award;
 }
+const ConditionalCreditMilestoneBase = /*@__PURE__*/ __L.at(
+  __c11,
+  4,
+) as any as S.Schema<ConditionalCreditMilestoneBase>;
+
 /** List of milestones copied from primary conditional credit (excludes award details) */
 export type ContributorConditionalCreditPropertiesMilestonesList =
   Array<ConditionalCreditMilestoneBase>;
+const ContributorConditionalCreditPropertiesMilestonesList = /*@__PURE__*/ __L.at(
+  __c11,
+  5,
+) as any as S.Schema<ContributorConditionalCreditPropertiesMilestonesList>;
+
 /** Properties for contributor conditional credit. */
 export interface ContributorConditionalCreditProperties {
   /** Type of conditional credit entity */
@@ -1811,6 +2343,11 @@ export interface ContributorConditionalCreditProperties {
   /** Fully-qualified billing account resource identifier of the primary CACO. Format must be Azure Resource ID: /providers/Microsoft.Billing/billingAccounts/{acctId:orgId}. */
   primaryBillingAccountResourceId?: string;
 }
+const ContributorConditionalCreditProperties = /*@__PURE__*/ __L.at(
+  __c11,
+  6,
+) as any as S.Schema<ContributorConditionalCreditProperties>;
+
 export interface GetConditionalCreditContributorFromPrimaryResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1823,6 +2360,11 @@ export interface GetConditionalCreditContributorFromPrimaryResponse {
   /** Conditional credit contributor properties */
   properties?: ContributorConditionalCreditProperties;
 }
+const GetConditionalCreditContributorFromPrimaryResponse = /*@__PURE__*/ __L.at(
+  __c11,
+  7,
+) as any as S.Schema<GetConditionalCreditContributorFromPrimaryResponse>;
+
 export interface GetConditionalCreditTransactionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1833,10 +2375,19 @@ export interface GetConditionalCreditTransactionRequest {
   /** Name of the transaction */
   transactionName: string;
 }
+const GetConditionalCreditTransactionRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  0,
+) as any as S.Schema<GetConditionalCreditTransactionRequest>;
+
 /** The type of charge for a transaction. */
 export type TransactionChargeType = "Usage" | "Purchase" | "Refund";
+const TransactionChargeType = S.String;
+
 /** Billing lifecycle status of a transaction. */
 export type TransactionBillingStatus = "Open" | "Closed";
+const TransactionBillingStatus = S.String;
+
 /** Product details for a transaction */
 export interface TransactionProductDetails {
   /** SKU title of the product */
@@ -1850,6 +2401,11 @@ export interface TransactionProductDetails {
   /** The publisher type of the product, for example "Microsoft" for first-party or a third-party publisher name. Additional values may be introduced in the future. */
   publisherType?: string;
 }
+const TransactionProductDetails = /*@__PURE__*/ __L.at(
+  __c12,
+  1,
+) as any as S.Schema<TransactionProductDetails>;
+
 /** Properties of a transaction */
 export interface TransactionProperties {
   /** Provisioning state of the transaction as assigned by RPaaS. This indicates the last operation's status. */
@@ -1871,6 +2427,11 @@ export interface TransactionProperties {
   /** Product details including SKU title, SKU properties, product family, type, and publisher type. */
   productDetails?: TransactionProductDetails;
 }
+const TransactionProperties = /*@__PURE__*/ __L.at(
+  __c12,
+  2,
+) as any as S.Schema<TransactionProperties>;
+
 export interface GetConditionalCreditTransactionResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1883,6 +2444,11 @@ export interface GetConditionalCreditTransactionResponse {
   /** Transaction properties */
   properties?: TransactionProperties;
 }
+const GetConditionalCreditTransactionResponse = /*@__PURE__*/ __L.at(
+  __c12,
+  3,
+) as any as S.Schema<GetConditionalCreditTransactionResponse>;
+
 export interface GetContributorFromPrimaryRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1893,6 +2459,11 @@ export interface GetContributorFromPrimaryRequest {
   /** Unique name of contributor in the format {contributorCloudSubId}_{resourceGroupName}_{nameInContributorTenant}. */
   contributorName: string;
 }
+const GetContributorFromPrimaryRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  4,
+) as any as S.Schema<GetContributorFromPrimaryRequest>;
+
 export interface GetContributorFromPrimaryResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1905,6 +2476,11 @@ export interface GetContributorFromPrimaryResponse {
   /** MACC contributor properties */
   properties?: MaccModelProperties;
 }
+const GetContributorFromPrimaryResponse = /*@__PURE__*/ __L.at(
+  __c12,
+  5,
+) as any as S.Schema<GetContributorFromPrimaryResponse>;
+
 export interface GetCreditRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1913,6 +2489,8 @@ export interface GetCreditRequest {
   /** Name of the credit */
   creditName: string;
 }
+const GetCreditRequest = /*@__PURE__*/ __L.at(__c12, 6) as any as S.Schema<GetCreditRequest>;
+
 /** Resource tags. */
 export type GetCreditResponseTagsMap = { [key: string]: string | undefined };
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
@@ -1957,6 +2535,8 @@ export interface GetCreditResponse {
   /** Plan for the resource. */
   plan?: Plan;
 }
+const GetCreditResponse = CancelCreditResponse as any as S.Schema<GetCreditResponse>;
+
 export interface GetCreditTransactionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1967,6 +2547,11 @@ export interface GetCreditTransactionRequest {
   /** Name of the transaction */
   transactionName: string;
 }
+const GetCreditTransactionRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  7,
+) as any as S.Schema<GetCreditTransactionRequest>;
+
 export interface GetCreditTransactionResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1979,6 +2564,9 @@ export interface GetCreditTransactionResponse {
   /** Transaction properties */
   properties?: TransactionProperties;
 }
+const GetCreditTransactionResponse =
+  GetConditionalCreditTransactionResponse as any as S.Schema<GetCreditTransactionResponse>;
+
 export interface GetDiscountRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1987,6 +2575,8 @@ export interface GetDiscountRequest {
   /** Name of the discount */
   discountName: string;
 }
+const GetDiscountRequest = /*@__PURE__*/ __L.at(__c13, 0) as any as S.Schema<GetDiscountRequest>;
+
 /** Resource tags. */
 export type GetDiscountResponseTagsMap = { [key: string]: string | undefined };
 export interface GetDiscountResponse {
@@ -2017,6 +2607,8 @@ export interface GetDiscountResponse {
   /** Plan for the resource. */
   plan?: Plan;
 }
+const GetDiscountResponse = CancelDiscountResponse as any as S.Schema<GetDiscountResponse>;
+
 export interface GetFreeServiceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2025,8 +2617,16 @@ export interface GetFreeServiceRequest {
   /** Name of the free service */
   freeServiceName: string;
 }
+const GetFreeServiceRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  1,
+) as any as S.Schema<GetFreeServiceRequest>;
+
 /** Resource tags. */
 export type GetFreeServiceResponseTagsMap = { [key: string]: string | undefined };
+const GetFreeServiceResponseTagsMap =
+  CancelConditionalCreditResponseTagsMap as any as S.Schema<GetFreeServiceResponseTagsMap>;
+
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type GetFreeServiceResponseIdentityUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentity | null | undefined;
@@ -2041,6 +2641,9 @@ export interface GetFreeServiceResponseIdentity {
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: GetFreeServiceResponseIdentityUserAssignedIdentitiesMap;
 }
+const GetFreeServiceResponseIdentity =
+  CancelCreditResponseIdentity as any as S.Schema<GetFreeServiceResponseIdentity>;
+
 export interface GetFreeServiceResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2069,6 +2672,11 @@ export interface GetFreeServiceResponse {
   /** Plan for the resource. */
   plan?: Plan;
 }
+const GetFreeServiceResponse = /*@__PURE__*/ __L.at(
+  __c13,
+  2,
+) as any as S.Schema<GetFreeServiceResponse>;
+
 export interface GetMaccRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2077,12 +2685,20 @@ export interface GetMaccRequest {
   /** Name of primary MACC. */
   maccName: string;
 }
+const GetMaccRequest = /*@__PURE__*/ __L.at(__c13, 3) as any as S.Schema<GetMaccRequest>;
+
 /** Resource tags. */
 export type GetMaccResponseTagsMap = { [key: string]: string | undefined };
+const GetMaccResponseTagsMap =
+  CancelConditionalCreditResponseTagsMap as any as S.Schema<GetMaccResponseTagsMap>;
+
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type GetMaccResponseIdentityUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentity | null | undefined;
 };
+const GetMaccResponseIdentityUserAssignedIdentitiesMap =
+  CancelCreditResponseIdentityUserAssignedIdentitiesMap as any as S.Schema<GetMaccResponseIdentityUserAssignedIdentitiesMap>;
+
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface GetMaccResponseIdentity {
   /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
@@ -2093,6 +2709,11 @@ export interface GetMaccResponseIdentity {
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: GetMaccResponseIdentityUserAssignedIdentitiesMap;
 }
+const GetMaccResponseIdentity = /*@__PURE__*/ __L.at(
+  __c13,
+  4,
+) as any as S.Schema<GetMaccResponseIdentity>;
+
 export interface GetMaccResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2121,6 +2742,8 @@ export interface GetMaccResponse {
   /** Plan for the resource. */
   plan?: Plan;
 }
+const GetMaccResponse = /*@__PURE__*/ __L.at(__c13, 5) as any as S.Schema<GetMaccResponse>;
+
 export interface GetMaccTransactionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2131,6 +2754,11 @@ export interface GetMaccTransactionRequest {
   /** Name of the transaction */
   transactionName: string;
 }
+const GetMaccTransactionRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  6,
+) as any as S.Schema<GetMaccTransactionRequest>;
+
 export interface GetMaccTransactionResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2143,10 +2771,18 @@ export interface GetMaccTransactionResponse {
   /** Transaction properties */
   properties?: TransactionProperties;
 }
+const GetMaccTransactionResponse =
+  GetConditionalCreditTransactionResponse as any as S.Schema<GetMaccTransactionResponse>;
+
 export interface GetReservationOrderAliasRequest {
   /** Name of the reservation order alias */
   reservationOrderAliasName: string;
 }
+const GetReservationOrderAliasRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  7,
+) as any as S.Schema<GetReservationOrderAliasRequest>;
+
 export interface GetReservationOrderAliasResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2163,6 +2799,9 @@ export interface GetReservationOrderAliasResponse {
   /** The Azure Region where the reserved resource lives. */
   location?: string;
 }
+const GetReservationOrderAliasResponse =
+  CreateReservationOrderAliasResponse as any as S.Schema<GetReservationOrderAliasResponse>;
+
 export interface GetSavingsPlanRequest {
   /** Order ID of the savings plan */
   savingsPlanOrderId: string;
@@ -2171,12 +2810,19 @@ export interface GetSavingsPlanRequest {
   /** May be used to expand the detail information of some properties. */
   _expand?: string;
 }
+const GetSavingsPlanRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  0,
+) as any as S.Schema<GetSavingsPlanRequest>;
+
 export interface ExtendedStatusInfo {
   /** Status code providing additional information. */
   statusCode?: string;
   /** The message giving detailed information about the status code. */
   message?: string;
 }
+const ExtendedStatusInfo = /*@__PURE__*/ __L.at(__c14, 1) as any as S.Schema<ExtendedStatusInfo>;
+
 /** The aggregate values of savings plan utilization */
 export interface UtilizationAggregates {
   /** The grain of the aggregate */
@@ -2188,8 +2834,18 @@ export interface UtilizationAggregates {
   /** The aggregate value unit */
   valueUnit?: string;
 }
+const UtilizationAggregates = /*@__PURE__*/ __L.at(
+  __c14,
+  2,
+) as any as S.Schema<UtilizationAggregates>;
+
 /** The array of aggregates of a savings plan's utilization */
 export type UtilizationAggregatesList = Array<UtilizationAggregates>;
+const UtilizationAggregatesList = /*@__PURE__*/ __L.at(
+  __c14,
+  3,
+) as any as S.Schema<UtilizationAggregatesList>;
+
 /** Savings plan utilization */
 export interface Utilization {
   /** The number of days trend for a savings plan */
@@ -2197,6 +2853,8 @@ export interface Utilization {
   /** The array of aggregates of a savings plan's utilization */
   aggregates?: UtilizationAggregatesList;
 }
+const Utilization = /*@__PURE__*/ __L.at(__c14, 4) as any as S.Schema<Utilization>;
+
 export interface PurchaseRequestProperties {
   /** Friendly name of the savings plan */
   displayName?: string;
@@ -2219,14 +2877,23 @@ export interface PurchaseRequestProperties {
   /** Properties specific to applied scope type. Not required if not applicable. */
   appliedScopeProperties?: AppliedScopeProperties;
 }
+const PurchaseRequestProperties = /*@__PURE__*/ __L.at(
+  __c14,
+  5,
+) as any as S.Schema<PurchaseRequestProperties>;
+
 export interface PurchaseRequest {
   /** The SKU to be applied for this resource */
   sku?: ResourceSku;
   properties?: PurchaseRequestProperties;
 }
+const PurchaseRequest = /*@__PURE__*/ __L.at(__c14, 6) as any as S.Schema<PurchaseRequest>;
+
 export interface RenewProperties {
   purchaseProperties?: PurchaseRequest;
 }
+const RenewProperties = /*@__PURE__*/ __L.at(__c14, 7) as any as S.Schema<RenewProperties>;
+
 /** Savings plan properties */
 export interface SavingsPlanModelProperties {
   /** Display name */
@@ -2274,6 +2941,11 @@ export interface SavingsPlanModelProperties {
   renewDestination?: string;
   renewProperties?: RenewProperties;
 }
+const SavingsPlanModelProperties = /*@__PURE__*/ __L.at(
+  __c15,
+  0,
+) as any as S.Schema<SavingsPlanModelProperties>;
+
 export interface GetSavingsPlanResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2288,14 +2960,26 @@ export interface GetSavingsPlanResponse {
   /** Savings plan SKU */
   sku: ResourceSku;
 }
+const GetSavingsPlanResponse = /*@__PURE__*/ __L.at(
+  __c15,
+  1,
+) as any as S.Schema<GetSavingsPlanResponse>;
+
 export interface GetSavingsPlanOrderRequest {
   /** Order ID of the savings plan */
   savingsPlanOrderId: string;
   /** May be used to expand the detail information of some properties. */
   _expand?: string;
 }
+const GetSavingsPlanOrderRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  2,
+) as any as S.Schema<GetSavingsPlanOrderRequest>;
+
 /** Describes whether the payment is completed, failed, cancelled or scheduled in the future. */
 export type PaymentStatus = "Succeeded" | "Failed" | "Scheduled" | "Cancelled";
+const PaymentStatus = S.String;
+
 /** Information about payment related to a savings plan order. */
 export interface PaymentDetail {
   /** Date when the payment needs to be done. */
@@ -2312,7 +2996,14 @@ export interface PaymentDetail {
   /** Billing account */
   billingAccount?: string;
 }
+const PaymentDetail = /*@__PURE__*/ __L.at(__c15, 3) as any as S.Schema<PaymentDetail>;
+
 export type BillingPlanInformationTransactionsList = Array<PaymentDetail>;
+const BillingPlanInformationTransactionsList = /*@__PURE__*/ __L.at(
+  __c15,
+  4,
+) as any as S.Schema<BillingPlanInformationTransactionsList>;
+
 /** Information describing the type of billing plan for this savings plan. */
 export interface BillingPlanInformation {
   /** Amount of money to be paid for the Order. Tax is not included. */
@@ -2323,7 +3014,15 @@ export interface BillingPlanInformation {
   nextPaymentDueDate?: string;
   transactions?: BillingPlanInformationTransactionsList;
 }
+const BillingPlanInformation = /*@__PURE__*/ __L.at(
+  __c15,
+  5,
+) as any as S.Schema<BillingPlanInformation>;
+
 export type SavingsPlanOrderModelPropertiesSavingsPlansList = Array<string>;
+const SavingsPlanOrderModelPropertiesSavingsPlansList =
+  CatalogGroupPropertiesKeywordsList as any as S.Schema<SavingsPlanOrderModelPropertiesSavingsPlansList>;
+
 /** Savings plan order properties */
 export interface SavingsPlanOrderModelProperties {
   /** Display name */
@@ -2351,6 +3050,11 @@ export interface SavingsPlanOrderModelProperties {
   savingsPlans?: SavingsPlanOrderModelPropertiesSavingsPlansList;
   extendedStatusInfo?: ExtendedStatusInfo;
 }
+const SavingsPlanOrderModelProperties = /*@__PURE__*/ __L.at(
+  __c15,
+  6,
+) as any as S.Schema<SavingsPlanOrderModelProperties>;
+
 export interface GetSavingsPlanOrderResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2365,10 +3069,20 @@ export interface GetSavingsPlanOrderResponse {
   /** Savings plan SKU */
   sku: ResourceSku;
 }
+const GetSavingsPlanOrderResponse = /*@__PURE__*/ __L.at(
+  __c15,
+  7,
+) as any as S.Schema<GetSavingsPlanOrderResponse>;
+
 export interface GetSavingsPlanOrderAliasRequest {
   /** Name of the savings plan order alias */
   savingsPlanOrderAliasName: string;
 }
+const GetSavingsPlanOrderAliasRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  0,
+) as any as S.Schema<GetSavingsPlanOrderAliasRequest>;
+
 export interface GetSavingsPlanOrderAliasResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2385,6 +3099,9 @@ export interface GetSavingsPlanOrderAliasResponse {
   /** Resource provider kind */
   kind?: string;
 }
+const GetSavingsPlanOrderAliasResponse =
+  CreateSavingsPlanOrderAliasResponse as any as S.Schema<GetSavingsPlanOrderAliasResponse>;
+
 export interface GetSourceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2395,6 +3112,8 @@ export interface GetSourceRequest {
   /** Name of the credit source */
   sourceName: string;
 }
+const GetSourceRequest = /*@__PURE__*/ __L.at(__c16, 1) as any as S.Schema<GetSourceRequest>;
+
 /** Resource tags. */
 export type GetSourceResponseTagsMap = { [key: string]: string | undefined };
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
@@ -2439,12 +3158,19 @@ export interface GetSourceResponse {
   /** Plan for the resource. */
   plan?: Plan;
 }
+const GetSourceResponse = CreateSourceResponse as any as S.Schema<GetSourceResponse>;
+
 export interface GetSubscriptionCatalogGroupsOpsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the CatalogGroup */
   catalogGroupName: string;
 }
+const GetSubscriptionCatalogGroupsOpsRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  2,
+) as any as S.Schema<GetSubscriptionCatalogGroupsOpsRequest>;
+
 export interface GetSubscriptionCatalogGroupsOpsResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2457,10 +3183,18 @@ export interface GetSubscriptionCatalogGroupsOpsResponse {
   /** The resource-specific properties for this resource. */
   properties?: CatalogGroupProperties;
 }
+const GetSubscriptionCatalogGroupsOpsResponse =
+  GetBillingAccountCatalogGroupsOpsResponse as any as S.Schema<GetSubscriptionCatalogGroupsOpsResponse>;
+
 export interface ListApplicableMaccsRequest {
   /** The billing account Id at which the benefits are listed. Accepted format is: {rootId:orgId}. */
   billingAccountId: string;
 }
+const ListApplicableMaccsRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  3,
+) as any as S.Schema<ListApplicableMaccsRequest>;
+
 /** Applicable MACC. */
 export interface ApplicableMacc {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -2474,8 +3208,15 @@ export interface ApplicableMacc {
   /** Applicable MACC properties */
   properties?: MaccModelProperties;
 }
+const ApplicableMacc = /*@__PURE__*/ __L.at(__c16, 4) as any as S.Schema<ApplicableMacc>;
+
 /** List Applicable MACCs. */
 export type ApplicableMaccListValueList = Array<ApplicableMacc>;
+const ApplicableMaccListValueList = /*@__PURE__*/ __L.at(
+  __c16,
+  5,
+) as any as S.Schema<ApplicableMaccListValueList>;
+
 /** Applicable MACC list */
 export interface ApplicableMaccList {
   /** List Applicable MACCs. */
@@ -2483,12 +3224,19 @@ export interface ApplicableMaccList {
   /** Url to get the next page. */
   nextLink?: string;
 }
+const ApplicableMaccList = /*@__PURE__*/ __L.at(__c16, 6) as any as S.Schema<ApplicableMaccList>;
+
 export interface ListBillingAccountCatalogGroupsOpsRequest {
   /** The name of the billing account. */
   billingAccountName: string;
   /** OData filter expression to narrow the list of catalog groups. */
   _filter?: string;
 }
+const ListBillingAccountCatalogGroupsOpsRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  7,
+) as any as S.Schema<ListBillingAccountCatalogGroupsOpsRequest>;
+
 /** A catalog group represents a BenefitResourceType + Namespace grouping used for benefit SKU discovery. */
 export interface CatalogGroup {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -2502,8 +3250,15 @@ export interface CatalogGroup {
   /** The resource-specific properties for this resource. */
   properties?: CatalogGroupProperties;
 }
+const CatalogGroup = /*@__PURE__*/ __L.at(__c17, 0) as any as S.Schema<CatalogGroup>;
+
 /** The CatalogGroup items on this page */
 export type CatalogGroupListResultValueList = Array<CatalogGroup>;
+const CatalogGroupListResultValueList = /*@__PURE__*/ __L.at(
+  __c17,
+  1,
+) as any as S.Schema<CatalogGroupListResultValueList>;
+
 /** The response of a CatalogGroup list operation. */
 export interface CatalogGroupListResult {
   /** The CatalogGroup items on this page */
@@ -2511,6 +3266,11 @@ export interface CatalogGroupListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const CatalogGroupListResult = /*@__PURE__*/ __L.at(
+  __c17,
+  2,
+) as any as S.Schema<CatalogGroupListResult>;
+
 export interface ListBillingProfileCatalogGroupsOpsRequest {
   /** The name of the billing account. */
   billingAccountName: string;
@@ -2519,14 +3279,27 @@ export interface ListBillingProfileCatalogGroupsOpsRequest {
   /** OData filter expression to narrow the list of catalog groups. */
   _filter?: string;
 }
+const ListBillingProfileCatalogGroupsOpsRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  3,
+) as any as S.Schema<ListBillingProfileCatalogGroupsOpsRequest>;
+
 export interface ListConditionalCreditByResourceGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
+const ListConditionalCreditByResourceGroupRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  4,
+) as any as S.Schema<ListConditionalCreditByResourceGroupRequest>;
+
 /** Resource tags. */
 export type ConditionalCreditTagsMap = { [key: string]: string | undefined };
+const ConditionalCreditTagsMap =
+  CancelConditionalCreditResponseTagsMap as any as S.Schema<ConditionalCreditTagsMap>;
+
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type ConditionalCreditIdentityUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentity | null | undefined;
@@ -2541,6 +3314,9 @@ export interface ConditionalCreditIdentity {
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: ConditionalCreditIdentityUserAssignedIdentitiesMap;
 }
+const ConditionalCreditIdentity =
+  CancelCreditResponseIdentity as any as S.Schema<ConditionalCreditIdentity>;
+
 /** Resource definition for Conditional Credits. */
 export interface ConditionalCredit {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -2570,8 +3346,15 @@ export interface ConditionalCredit {
   /** Plan for the resource. */
   plan?: Plan;
 }
+const ConditionalCredit = /*@__PURE__*/ __L.at(__c17, 5) as any as S.Schema<ConditionalCredit>;
+
 /** The ConditionalCredit items on this page */
 export type ConditionalCreditListValueList = Array<ConditionalCredit>;
+const ConditionalCreditListValueList = /*@__PURE__*/ __L.at(
+  __c17,
+  6,
+) as any as S.Schema<ConditionalCreditListValueList>;
+
 /** List of applicable conditional credits */
 export interface ConditionalCreditList {
   /** The ConditionalCredit items on this page */
@@ -2579,16 +3362,31 @@ export interface ConditionalCreditList {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const ConditionalCreditList = /*@__PURE__*/ __L.at(
+  __c17,
+  7,
+) as any as S.Schema<ConditionalCreditList>;
+
 export interface ListConditionalCreditBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
+const ListConditionalCreditBySubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  0,
+) as any as S.Schema<ListConditionalCreditBySubscriptionRequest>;
+
 export interface ListConditionalCreditContributorFromApplicableConditionalCreditRequest {
   /** The billing account Id at which the benefits are listed. Accepted format is: {rootId:orgId}. */
   billingAccountId: string;
   /** System ID of the primary MACC. */
   systemId: string;
 }
+const ListConditionalCreditContributorFromApplicableConditionalCreditRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  1,
+) as any as S.Schema<ListConditionalCreditContributorFromApplicableConditionalCreditRequest>;
+
 /** Conditional credit contributor */
 export interface ConditionalCreditContributor {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -2602,8 +3400,16 @@ export interface ConditionalCreditContributor {
   /** Conditional credit contributor properties */
   properties?: ContributorConditionalCreditProperties;
 }
+const ConditionalCreditContributor =
+  GetConditionalCreditContributorFromPrimaryResponse as any as S.Schema<ConditionalCreditContributor>;
+
 /** The ConditionalCreditContributor items on this page */
 export type ConditionalCreditContributorListValueList = Array<ConditionalCreditContributor>;
+const ConditionalCreditContributorListValueList = /*@__PURE__*/ __L.at(
+  __c18,
+  2,
+) as any as S.Schema<ConditionalCreditContributorListValueList>;
+
 /** Conditional credit contributor list */
 export interface ConditionalCreditContributorList {
   /** The ConditionalCreditContributor items on this page */
@@ -2611,6 +3417,11 @@ export interface ConditionalCreditContributorList {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const ConditionalCreditContributorList = /*@__PURE__*/ __L.at(
+  __c18,
+  3,
+) as any as S.Schema<ConditionalCreditContributorList>;
+
 export interface ListConditionalCreditContributorFromPrimaryRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2619,10 +3430,20 @@ export interface ListConditionalCreditContributorFromPrimaryRequest {
   /** Name of the conditional credit */
   conditionalCreditName: string;
 }
+const ListConditionalCreditContributorFromPrimaryRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  4,
+) as any as S.Schema<ListConditionalCreditContributorFromPrimaryRequest>;
+
 export interface ListConditionalCreditsScopeRequest {
   /** The scope at which the benefits are listed. */
   scope: string;
 }
+const ListConditionalCreditsScopeRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  5,
+) as any as S.Schema<ListConditionalCreditsScopeRequest>;
+
 export interface ListConditionalCreditTransactionByParentRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2631,6 +3452,11 @@ export interface ListConditionalCreditTransactionByParentRequest {
   /** Name of the conditional credit */
   conditionalCreditName: string;
 }
+const ListConditionalCreditTransactionByParentRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  6,
+) as any as S.Schema<ListConditionalCreditTransactionByParentRequest>;
+
 /** Transaction resource definition for ConditionalCredits */
 export interface ConditionalCreditTransaction {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -2644,8 +3470,16 @@ export interface ConditionalCreditTransaction {
   /** Transaction properties */
   properties?: TransactionProperties;
 }
+const ConditionalCreditTransaction =
+  GetConditionalCreditTransactionResponse as any as S.Schema<ConditionalCreditTransaction>;
+
 /** The ConditionalCreditTransaction items on this page */
 export type ConditionalCreditTransactionsListValueList = Array<ConditionalCreditTransaction>;
+const ConditionalCreditTransactionsListValueList = /*@__PURE__*/ __L.at(
+  __c18,
+  7,
+) as any as S.Schema<ConditionalCreditTransactionsListValueList>;
+
 /** List of conditional credit transactions */
 export interface ConditionalCreditTransactionsList {
   /** The ConditionalCreditTransaction items on this page */
@@ -2653,12 +3487,22 @@ export interface ConditionalCreditTransactionsList {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const ConditionalCreditTransactionsList = /*@__PURE__*/ __L.at(
+  __c19,
+  0,
+) as any as S.Schema<ConditionalCreditTransactionsList>;
+
 export interface ListContributorFromApplicableMaccRequest {
   /** The billing account Id at which the benefits are listed. Accepted format is: {rootId:orgId}. */
   billingAccountId: string;
   /** System ID of the primary MACC. */
   systemId: string;
 }
+const ListContributorFromApplicableMaccRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  1,
+) as any as S.Schema<ListContributorFromApplicableMaccRequest>;
+
 /** MACC contributor */
 export interface Contributor {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -2674,6 +3518,9 @@ export interface Contributor {
 }
 /** The Contributor items on this page */
 export type ContributorListValueList = Array<Contributor>;
+const ContributorListValueList =
+  ApplicableMaccListValueList as any as S.Schema<ContributorListValueList>;
+
 /** Contributor list */
 export interface ContributorList {
   /** The Contributor items on this page */
@@ -2681,6 +3528,8 @@ export interface ContributorList {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const ContributorList = /*@__PURE__*/ __L.at(__c19, 2) as any as S.Schema<ContributorList>;
+
 export interface ListContributorFromPrimaryRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2689,12 +3538,24 @@ export interface ListContributorFromPrimaryRequest {
   /** Name of primary MACC. */
   maccName: string;
 }
+const ListContributorFromPrimaryRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  3,
+) as any as S.Schema<ListContributorFromPrimaryRequest>;
+
 export interface ListCreditApplicableRequest {
   /** The scope at which the benefits are listed. */
   scope: string;
 }
+const ListCreditApplicableRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  4,
+) as any as S.Schema<ListCreditApplicableRequest>;
+
 /** Resource tags. */
 export type CreditTagsMap = { [key: string]: string | undefined };
+const CreditTagsMap = CancelConditionalCreditResponseTagsMap as any as S.Schema<CreditTagsMap>;
+
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type CreditIdentityUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentity | null | undefined;
@@ -2709,6 +3570,8 @@ export interface CreditIdentity {
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: CreditIdentityUserAssignedIdentitiesMap;
 }
+const CreditIdentity = GetMaccResponseIdentity as any as S.Schema<CreditIdentity>;
+
 /** Credit resource definition */
 export interface Credit {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -2738,8 +3601,15 @@ export interface Credit {
   /** Plan for the resource. */
   plan?: Plan;
 }
+const Credit = /*@__PURE__*/ __L.at(__c19, 5) as any as S.Schema<Credit>;
+
 /** The Credit items on this page */
 export type CreditsListValueList = Array<Credit>;
+const CreditsListValueList = /*@__PURE__*/ __L.at(
+  __c19,
+  6,
+) as any as S.Schema<CreditsListValueList>;
+
 /** List of credits */
 export interface CreditsList {
   /** The Credit items on this page */
@@ -2747,16 +3617,28 @@ export interface CreditsList {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const CreditsList = /*@__PURE__*/ __L.at(__c19, 7) as any as S.Schema<CreditsList>;
+
 export interface ListCreditByResourceGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
+const ListCreditByResourceGroupRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  0,
+) as any as S.Schema<ListCreditByResourceGroupRequest>;
+
 export interface ListCreditBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
+const ListCreditBySubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  1,
+) as any as S.Schema<ListCreditBySubscriptionRequest>;
+
 export interface ListCreditTransactionByParentRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2765,10 +3647,18 @@ export interface ListCreditTransactionByParentRequest {
   /** Name of the credit */
   creditName: string;
 }
+const ListCreditTransactionByParentRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  2,
+) as any as S.Schema<ListCreditTransactionByParentRequest>;
+
 /** Transaction resource definition for Credits */
 export type CreditTransaction = ConditionalCreditTransaction;
 /** The CreditTransaction items on this page */
 export type TransactionsListValueList = Array<ConditionalCreditTransaction>;
+const TransactionsListValueList =
+  ConditionalCreditTransactionsListValueList as any as S.Schema<TransactionsListValueList>;
+
 /** List of transactions */
 export interface TransactionsList {
   /** The CreditTransaction items on this page */
@@ -2776,12 +3666,19 @@ export interface TransactionsList {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const TransactionsList = /*@__PURE__*/ __L.at(__c20, 3) as any as S.Schema<TransactionsList>;
+
 export interface ListDiscountsResourceGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
+const ListDiscountsResourceGroupRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  4,
+) as any as S.Schema<ListDiscountsResourceGroupRequest>;
+
 /** Resource tags. */
 export type DiscountTagsMap = { [key: string]: string | undefined };
 /** Resource definition for Discounts. */
@@ -2813,8 +3710,15 @@ export interface Discount {
   /** Plan for the resource. */
   plan?: Plan;
 }
+const Discount = CancelDiscountResponse as any as S.Schema<Discount>;
+
 /** The Discount items on this page */
 export type DiscountListValueList = Array<Discount>;
+const DiscountListValueList = /*@__PURE__*/ __L.at(
+  __c20,
+  5,
+) as any as S.Schema<DiscountListValueList>;
+
 /** Discount list */
 export interface DiscountList {
   /** The Discount items on this page */
@@ -2822,22 +3726,42 @@ export interface DiscountList {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const DiscountList = /*@__PURE__*/ __L.at(__c20, 6) as any as S.Schema<DiscountList>;
+
 export interface ListDiscountsScopeRequest {
   /** The scope at which the benefits are listed. */
   scope: string;
 }
+const ListDiscountsScopeRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  7,
+) as any as S.Schema<ListDiscountsScopeRequest>;
+
 export interface ListDiscountsSubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
+const ListDiscountsSubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  0,
+) as any as S.Schema<ListDiscountsSubscriptionRequest>;
+
 export interface ListFreeServiceByResourceGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
+const ListFreeServiceByResourceGroupRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  1,
+) as any as S.Schema<ListFreeServiceByResourceGroupRequest>;
+
 /** Resource tags. */
 export type FreeServicesTagsMap = { [key: string]: string | undefined };
+const FreeServicesTagsMap =
+  CancelConditionalCreditResponseTagsMap as any as S.Schema<FreeServicesTagsMap>;
+
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type FreeServicesIdentityUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentity | null | undefined;
@@ -2852,6 +3776,8 @@ export interface FreeServicesIdentity {
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: FreeServicesIdentityUserAssignedIdentitiesMap;
 }
+const FreeServicesIdentity = GetMaccResponseIdentity as any as S.Schema<FreeServicesIdentity>;
+
 /** Free Services resource definition */
 export interface FreeServices {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -2881,8 +3807,15 @@ export interface FreeServices {
   /** Plan for the resource. */
   plan?: Plan;
 }
+const FreeServices = /*@__PURE__*/ __L.at(__c21, 2) as any as S.Schema<FreeServices>;
+
 /** The list of free services */
 export type FreeServicesListValueList = Array<FreeServices>;
+const FreeServicesListValueList = /*@__PURE__*/ __L.at(
+  __c21,
+  3,
+) as any as S.Schema<FreeServicesListValueList>;
+
 /** This operation lists the free services that are available under the specified subscription. */
 export interface FreeServicesList {
   /** The list of free services */
@@ -2890,16 +3823,28 @@ export interface FreeServicesList {
   /** The URL to get the next set of results */
   nextLink?: string;
 }
+const FreeServicesList = /*@__PURE__*/ __L.at(__c21, 4) as any as S.Schema<FreeServicesList>;
+
 export interface ListFreeServiceBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
+const ListFreeServiceBySubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  5,
+) as any as S.Schema<ListFreeServiceBySubscriptionRequest>;
+
 export interface ListMaccByResourceGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
+const ListMaccByResourceGroupRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  6,
+) as any as S.Schema<ListMaccByResourceGroupRequest>;
+
 /** Resource tags. */
 export type MaccTagsMap = { [key: string]: string | undefined };
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
@@ -2945,8 +3890,12 @@ export interface Macc {
   /** Plan for the resource. */
   plan?: Plan;
 }
+const Macc = GetMaccResponse as any as S.Schema<Macc>;
+
 /** The Macc items on this page */
 export type MaccListValueList = Array<Macc>;
+const MaccListValueList = /*@__PURE__*/ __L.at(__c21, 7) as any as S.Schema<MaccListValueList>;
+
 /** MACC list */
 export interface MaccList {
   /** The Macc items on this page */
@@ -2954,10 +3903,17 @@ export interface MaccList {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const MaccList = /*@__PURE__*/ __L.at(__c22, 0) as any as S.Schema<MaccList>;
+
 export interface ListMaccBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
+const ListMaccBySubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  1,
+) as any as S.Schema<ListMaccBySubscriptionRequest>;
+
 export interface ListMaccTransactionByParentRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2966,6 +3922,11 @@ export interface ListMaccTransactionByParentRequest {
   /** Name of primary MACC. */
   maccName: string;
 }
+const ListMaccTransactionByParentRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  2,
+) as any as S.Schema<ListMaccTransactionByParentRequest>;
+
 /** Transaction resource definition for Maccs */
 export type MaccTransaction = ConditionalCreditTransaction;
 /** The MaccTransaction items on this page */
@@ -2977,7 +3938,14 @@ export interface MaccTransactionsList {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const MaccTransactionsList = TransactionsList as any as S.Schema<MaccTransactionsList>;
+
 export interface ListOperationsRequest {}
+const ListOperationsRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  3,
+) as any as S.Schema<ListOperationsRequest>;
+
 /** Localized display information for this particular operation. */
 export interface OperationDisplay {
   /** The localized friendly form of the resource provider name, e.g. "Microsoft Monitoring Insights" or "Microsoft Compute". */
@@ -2989,10 +3957,16 @@ export interface OperationDisplay {
   /** The short, localized friendly description of the operation; suitable for tool tips and detailed views. */
   description?: string;
 }
+const OperationDisplay = /*@__PURE__*/ __L.at(__c22, 4) as any as S.Schema<OperationDisplay>;
+
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
 export type OperationOrigin = "user" | "system" | "user,system";
+const OperationOrigin = S.String;
+
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
 export type OperationActionType = "Internal";
+const OperationActionType = S.String;
+
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
 export interface Operation {
   /** The name of the operation, as per Resource-Based Access Control (RBAC). Examples: "Microsoft.Compute/virtualMachines/write", "Microsoft.Compute/virtualMachines/capture/action" */
@@ -3006,18 +3980,35 @@ export interface Operation {
   /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
   actionType?: OperationActionType;
 }
+const Operation = /*@__PURE__*/ __L.at(__c22, 5) as any as S.Schema<Operation>;
+
 /** List of operations supported by the resource provider */
 export type ListOperationsResponseValueList = Array<Operation>;
+const ListOperationsResponseValueList = /*@__PURE__*/ __L.at(
+  __c22,
+  6,
+) as any as S.Schema<ListOperationsResponseValueList>;
+
 export interface ListOperationsResponse {
   /** List of operations supported by the resource provider */
   value?: ListOperationsResponseValueList;
   /** URL to get the next set of operation list results (if there are any). */
   nextLink?: string;
 }
+const ListOperationsResponse = /*@__PURE__*/ __L.at(
+  __c22,
+  7,
+) as any as S.Schema<ListOperationsResponse>;
+
 export interface ListSavingsPlanRequest {
   /** Order ID of the savings plan */
   savingsPlanOrderId: string;
 }
+const ListSavingsPlanRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  0,
+) as any as S.Schema<ListSavingsPlanRequest>;
+
 /** Savings plan */
 export interface SavingsPlanModel {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -3033,8 +4024,15 @@ export interface SavingsPlanModel {
   /** Savings plan SKU */
   sku: ResourceSku;
 }
+const SavingsPlanModel = GetSavingsPlanResponse as any as S.Schema<SavingsPlanModel>;
+
 /** The SavingsPlanModel items on this page */
 export type SavingsPlanModelListValueList = Array<SavingsPlanModel>;
+const SavingsPlanModelListValueList = /*@__PURE__*/ __L.at(
+  __c23,
+  1,
+) as any as S.Schema<SavingsPlanModelListValueList>;
+
 /** Paged collection of SavingsPlanModel items */
 export interface SavingsPlanModelList {
   /** The SavingsPlanModel items on this page */
@@ -3042,6 +4040,11 @@ export interface SavingsPlanModelList {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const SavingsPlanModelList = /*@__PURE__*/ __L.at(
+  __c23,
+  2,
+) as any as S.Schema<SavingsPlanModelList>;
+
 export interface ListSavingsPlanAllRequest {
   /** May be used to filter by reservation properties. The filter supports 'eq', 'or', and 'and'. It does not currently support 'ne', 'gt', 'le', 'ge', or 'not'. Reservation properties include sku/name, properties/{appliedScopeType, archived, displayName, displayProvisioningState, effectiveDateTime, expiryDate, provisioningState, quantity, renew, reservedResourceType, term, userFriendlyAppliedScopeType, userFriendlyRenewState} */
   _filter?: string;
@@ -3056,8 +4059,16 @@ export interface ListSavingsPlanAllRequest {
   /** To number of savings plans to return */
   take?: number;
 }
+const ListSavingsPlanAllRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  3,
+) as any as S.Schema<ListSavingsPlanAllRequest>;
+
 /** The list of savings plans. */
 export type SavingsPlanModelListResultValueList = Array<SavingsPlanModel>;
+const SavingsPlanModelListResultValueList =
+  SavingsPlanModelListValueList as any as S.Schema<SavingsPlanModelListResultValueList>;
+
 /** The roll up count summary of savings plans in each state */
 export interface SavingsPlanSummaryCount {
   /** The number of savings plans in Succeeded state */
@@ -3079,6 +4090,11 @@ export interface SavingsPlanSummaryCount {
   /** The number of savings plans in Warning state */
   warningCount?: number;
 }
+const SavingsPlanSummaryCount = /*@__PURE__*/ __L.at(
+  __c23,
+  4,
+) as any as S.Schema<SavingsPlanSummaryCount>;
+
 /** Savings plans list summary */
 export interface SavingsPlanSummary {
   /** This property has value 'summary' */
@@ -3086,8 +4102,15 @@ export interface SavingsPlanSummary {
   /** The roll up count summary of savings plans in each state */
   value?: SavingsPlanSummaryCount;
 }
+const SavingsPlanSummary = /*@__PURE__*/ __L.at(__c23, 5) as any as S.Schema<SavingsPlanSummary>;
+
 /** The roll out count summary of the savings plans */
 export type SavingsPlanModelListResultAdditionalPropertiesList = Array<SavingsPlanSummary>;
+const SavingsPlanModelListResultAdditionalPropertiesList = /*@__PURE__*/ __L.at(
+  __c23,
+  6,
+) as any as S.Schema<SavingsPlanModelListResultAdditionalPropertiesList>;
+
 /** Represents the result of listing savings plan models */
 export interface SavingsPlanModelListResult {
   /** The list of savings plans. */
@@ -3097,7 +4120,17 @@ export interface SavingsPlanModelListResult {
   /** The roll out count summary of the savings plans */
   additionalProperties?: SavingsPlanModelListResultAdditionalPropertiesList;
 }
+const SavingsPlanModelListResult = /*@__PURE__*/ __L.at(
+  __c23,
+  7,
+) as any as S.Schema<SavingsPlanModelListResult>;
+
 export interface ListSavingsPlanOrderRequest {}
+const ListSavingsPlanOrderRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  0,
+) as any as S.Schema<ListSavingsPlanOrderRequest>;
+
 /** Savings plan order */
 export interface SavingsPlanOrderModel {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -3113,8 +4146,18 @@ export interface SavingsPlanOrderModel {
   /** Savings plan SKU */
   sku: ResourceSku;
 }
+const SavingsPlanOrderModel = /*@__PURE__*/ __L.at(
+  __c24,
+  1,
+) as any as S.Schema<SavingsPlanOrderModel>;
+
 /** The SavingsPlanOrderModel items on this page */
 export type SavingsPlanOrderModelListValueList = Array<SavingsPlanOrderModel>;
+const SavingsPlanOrderModelListValueList = /*@__PURE__*/ __L.at(
+  __c24,
+  2,
+) as any as S.Schema<SavingsPlanOrderModelListValueList>;
+
 /** Paged collection of SavingsPlanOrderModel items */
 export interface SavingsPlanOrderModelList {
   /** The SavingsPlanOrderModel items on this page */
@@ -3122,6 +4165,11 @@ export interface SavingsPlanOrderModelList {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const SavingsPlanOrderModelList = /*@__PURE__*/ __L.at(
+  __c24,
+  3,
+) as any as S.Schema<SavingsPlanOrderModelList>;
+
 /** Request properties to list maccs under a billing account */
 export interface SellerResourceListRequestProperties {
   /** Fully-qualified billing account resource identifier where the benefit is applied. Present only for Enterprise Agreement customers. */
@@ -3135,12 +4183,32 @@ export interface SellerResourceListRequestProperties {
   /** Fully-qualified resource identifier of the primary MACC. Format: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BillingBenefits/maccs/{maccName}. */
   primaryResourceId?: string;
 }
+const SellerResourceListRequestProperties = /*@__PURE__*/ __L.at(
+  __c24,
+  4,
+) as any as S.Schema<SellerResourceListRequestProperties>;
+
 export interface ListSellerResourceRequest {
   /** Request properties to list maccs under a billing account */
   properties?: SellerResourceListRequestProperties;
 }
+const ListSellerResourceRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  5,
+) as any as S.Schema<ListSellerResourceRequest>;
+
 export type ListSellerResourceResponseBodyList = Array<Macc>;
+const ListSellerResourceResponseBodyList = /*@__PURE__*/ __L.at(
+  __c24,
+  6,
+) as any as S.Schema<ListSellerResourceResponseBodyList>;
+
 export type ListSellerResourceResponse = ListSellerResourceResponseBodyList;
+const ListSellerResourceResponse = /*@__PURE__*/ __L.at(
+  __c24,
+  7,
+) as any as S.Schema<ListSellerResourceResponse>;
+
 export interface ListSourceByCreditRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3149,8 +4217,16 @@ export interface ListSourceByCreditRequest {
   /** Name of the credit */
   creditName: string;
 }
+const ListSourceByCreditRequest = /*@__PURE__*/ __L.at(
+  __c25,
+  0,
+) as any as S.Schema<ListSourceByCreditRequest>;
+
 /** Resource tags. */
 export type CreditSourceTagsMap = { [key: string]: string | undefined };
+const CreditSourceTagsMap =
+  CancelConditionalCreditResponseTagsMap as any as S.Schema<CreditSourceTagsMap>;
+
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type CreditSourceIdentityUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentity | null | undefined;
@@ -3165,6 +4241,8 @@ export interface CreditSourceIdentity {
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: CreditSourceIdentityUserAssignedIdentitiesMap;
 }
+const CreditSourceIdentity = GetMaccResponseIdentity as any as S.Schema<CreditSourceIdentity>;
+
 /** Credit source resource definition */
 export interface CreditSource {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -3194,8 +4272,15 @@ export interface CreditSource {
   /** Plan for the resource. */
   plan?: Plan;
 }
+const CreditSource = /*@__PURE__*/ __L.at(__c25, 1) as any as S.Schema<CreditSource>;
+
 /** The CreditSource items on this page */
 export type CreditSourcesListValueList = Array<CreditSource>;
+const CreditSourcesListValueList = /*@__PURE__*/ __L.at(
+  __c25,
+  2,
+) as any as S.Schema<CreditSourcesListValueList>;
+
 /** List of credit sources */
 export interface CreditSourcesList {
   /** The CreditSource items on this page */
@@ -3203,12 +4288,19 @@ export interface CreditSourcesList {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const CreditSourcesList = /*@__PURE__*/ __L.at(__c25, 3) as any as S.Schema<CreditSourcesList>;
+
 export interface ListSubscriptionCatalogGroupsOpsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** OData filter expression to narrow the list of catalog groups. */
   _filter?: string;
 }
+const ListSubscriptionCatalogGroupsOpsRequest = /*@__PURE__*/ __L.at(
+  __c25,
+  4,
+) as any as S.Schema<ListSubscriptionCatalogGroupsOpsRequest>;
+
 export interface MaccsChargeShortfallRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3219,8 +4311,16 @@ export interface MaccsChargeShortfallRequest {
   /** Charge shortfall request properties */
   properties?: Shortfall;
 }
+const MaccsChargeShortfallRequest = /*@__PURE__*/ __L.at(
+  __c25,
+  5,
+) as any as S.Schema<MaccsChargeShortfallRequest>;
+
 /** Resource tags. */
 export type MaccsChargeShortfallResponseTagsMap = { [key: string]: string | undefined };
+const MaccsChargeShortfallResponseTagsMap =
+  CancelConditionalCreditResponseTagsMap as any as S.Schema<MaccsChargeShortfallResponseTagsMap>;
+
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type MaccsChargeShortfallResponseIdentityUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentity | null | undefined;
@@ -3235,6 +4335,9 @@ export interface MaccsChargeShortfallResponseIdentity {
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: MaccsChargeShortfallResponseIdentityUserAssignedIdentitiesMap;
 }
+const MaccsChargeShortfallResponseIdentity =
+  GetConditionalCreditResponseIdentity as any as S.Schema<MaccsChargeShortfallResponseIdentity>;
+
 export interface MaccsChargeShortfallResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -3263,6 +4366,11 @@ export interface MaccsChargeShortfallResponse {
   /** Plan for the resource. */
   plan?: Plan;
 }
+const MaccsChargeShortfallResponse = /*@__PURE__*/ __L.at(
+  __c25,
+  6,
+) as any as S.Schema<MaccsChargeShortfallResponse>;
+
 export interface MaccsWriteOffRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3271,6 +4379,11 @@ export interface MaccsWriteOffRequest {
   /** Name of primary MACC. */
   maccName: string;
 }
+const MaccsWriteOffRequest = /*@__PURE__*/ __L.at(
+  __c25,
+  7,
+) as any as S.Schema<MaccsWriteOffRequest>;
+
 /** Resource tags. */
 export type MaccsWriteOffResponseTagsMap = { [key: string]: string | undefined };
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
@@ -3315,10 +4428,17 @@ export interface MaccsWriteOffResponse {
   /** Plan for the resource. */
   plan?: Plan;
 }
+const MaccsWriteOffResponse = CancelMaccResponse as any as S.Schema<MaccsWriteOffResponse>;
+
 export interface SavingsPlanOrderElevateRequest {
   /** Order ID of the savings plan */
   savingsPlanOrderId: string;
 }
+const SavingsPlanOrderElevateRequest = /*@__PURE__*/ __L.at(
+  __c26,
+  0,
+) as any as S.Schema<SavingsPlanOrderElevateRequest>;
+
 /** Role assignment entity properties */
 export interface RoleAssignmentEntityProperties {
   /** Principal Id */
@@ -3328,6 +4448,11 @@ export interface RoleAssignmentEntityProperties {
   /** Scope of the role assignment entity */
   scope?: string;
 }
+const RoleAssignmentEntityProperties = /*@__PURE__*/ __L.at(
+  __c26,
+  1,
+) as any as S.Schema<RoleAssignmentEntityProperties>;
+
 /** Role assignment entity */
 export interface RoleAssignmentEntity {
   /** Role assignment entity id */
@@ -3337,6 +4462,11 @@ export interface RoleAssignmentEntity {
   /** Role assignment entity properties */
   properties?: RoleAssignmentEntityProperties;
 }
+const RoleAssignmentEntity = /*@__PURE__*/ __L.at(
+  __c26,
+  2,
+) as any as S.Schema<RoleAssignmentEntity>;
+
 export interface PurchaseRequestPropertiesInput {
   /** Friendly name of the savings plan */
   displayName?: string;
@@ -3357,14 +4487,29 @@ export interface PurchaseRequestPropertiesInput {
   /** Properties specific to applied scope type. Not required if not applicable. */
   appliedScopeProperties?: AppliedScopeProperties;
 }
+const PurchaseRequestPropertiesInput = /*@__PURE__*/ __L.at(
+  __c26,
+  3,
+) as any as S.Schema<PurchaseRequestPropertiesInput>;
+
 export interface PurchaseRequestInput {
   /** The SKU to be applied for this resource */
   sku?: ResourceSku;
   properties?: PurchaseRequestPropertiesInput;
 }
+const PurchaseRequestInput = /*@__PURE__*/ __L.at(
+  __c26,
+  4,
+) as any as S.Schema<PurchaseRequestInput>;
+
 export interface RenewPropertiesInput {
   purchaseProperties?: PurchaseRequestInput;
 }
+const RenewPropertiesInput = /*@__PURE__*/ __L.at(
+  __c26,
+  5,
+) as any as S.Schema<RenewPropertiesInput>;
+
 /** Savings plan patch request */
 export interface SavingsPlanUpdateRequestPropertiesInput {
   /** Display name */
@@ -3377,8 +4522,18 @@ export interface SavingsPlanUpdateRequestPropertiesInput {
   renew?: boolean;
   renewProperties?: RenewPropertiesInput;
 }
+const SavingsPlanUpdateRequestPropertiesInput = /*@__PURE__*/ __L.at(
+  __c26,
+  6,
+) as any as S.Schema<SavingsPlanUpdateRequestPropertiesInput>;
+
 export type SavingsPlanValidateUpdateRequestBenefitsList =
   Array<SavingsPlanUpdateRequestPropertiesInput>;
+const SavingsPlanValidateUpdateRequestBenefitsList = /*@__PURE__*/ __L.at(
+  __c26,
+  7,
+) as any as S.Schema<SavingsPlanValidateUpdateRequestBenefitsList>;
+
 export interface SavingsPlanValidateUpdateRequest {
   /** Order ID of the savings plan */
   savingsPlanOrderId: string;
@@ -3386,6 +4541,11 @@ export interface SavingsPlanValidateUpdateRequest {
   savingsPlanId: string;
   benefits?: SavingsPlanValidateUpdateRequestBenefitsList;
 }
+const SavingsPlanValidateUpdateRequest = /*@__PURE__*/ __L.at(
+  __c27,
+  0,
+) as any as S.Schema<SavingsPlanValidateUpdateRequest>;
+
 /** Benefit scope response property */
 export interface SavingsPlanValidResponseProperty {
   /** Indicates if the provided input was valid */
@@ -3395,12 +4555,27 @@ export interface SavingsPlanValidResponseProperty {
   /** Failure reason if the provided input was invalid */
   reason?: string;
 }
+const SavingsPlanValidResponseProperty = /*@__PURE__*/ __L.at(
+  __c27,
+  1,
+) as any as S.Schema<SavingsPlanValidResponseProperty>;
+
 export type SavingsPlanValidateResponseBenefitsList = Array<SavingsPlanValidResponseProperty>;
+const SavingsPlanValidateResponseBenefitsList = /*@__PURE__*/ __L.at(
+  __c27,
+  2,
+) as any as S.Schema<SavingsPlanValidateResponseBenefitsList>;
+
 export interface SavingsPlanValidateResponse {
   benefits?: SavingsPlanValidateResponseBenefitsList;
   /** Url to get the next page. */
   nextLink?: string;
 }
+const SavingsPlanValidateResponse = /*@__PURE__*/ __L.at(
+  __c27,
+  3,
+) as any as S.Schema<SavingsPlanValidateResponse>;
+
 /** Award details for milestone completion */
 export interface AwardInput {
   /** Credit amount to be awarded */
@@ -3412,6 +4587,8 @@ export interface AwardInput {
   /** Duration for which the benefit is active. Will be in format P{int}M or P{int}Y. Any values representing up to 12 years are valid. Upper limit examples: P144M, P12Y. */
   duration?: Term | (string & {});
 }
+const AwardInput = /*@__PURE__*/ __L.at(__c27, 4) as any as S.Schema<AwardInput>;
+
 /** Milestone definition within a conditional credit */
 export interface ConditionalCreditMilestoneInput {
   /** Unique identifier for the milestone */
@@ -3427,9 +4604,19 @@ export interface ConditionalCreditMilestoneInput {
   /** Award details for this milestone (only present for primary conditional credits) */
   award?: AwardInput;
 }
+const ConditionalCreditMilestoneInput = /*@__PURE__*/ __L.at(
+  __c27,
+  5,
+) as any as S.Schema<ConditionalCreditMilestoneInput>;
+
 /** Updated milestones list (only applicable for primary conditional credits) */
 export type ConditionalCreditPatchRequestPropertiesInputMilestonesList =
   Array<ConditionalCreditMilestoneInput>;
+const ConditionalCreditPatchRequestPropertiesInputMilestonesList = /*@__PURE__*/ __L.at(
+  __c27,
+  6,
+) as any as S.Schema<ConditionalCreditPatchRequestPropertiesInputMilestonesList>;
+
 /** Conditional credit patch request properties */
 export interface ConditionalCreditPatchRequestPropertiesInput {
   /** Display name for the conditional credit */
@@ -3441,8 +4628,16 @@ export interface ConditionalCreditPatchRequestPropertiesInput {
   /** Updated milestones list (only applicable for primary conditional credits) */
   milestones?: ConditionalCreditPatchRequestPropertiesInputMilestonesList;
 }
+const ConditionalCreditPatchRequestPropertiesInput = /*@__PURE__*/ __L.at(
+  __c27,
+  7,
+) as any as S.Schema<ConditionalCreditPatchRequestPropertiesInput>;
+
 /** Resource tags. */
 export type UpdateConditionalCreditRequestTagsMap = { [key: string]: string | undefined };
+const UpdateConditionalCreditRequestTagsMap =
+  CancelConditionalCreditResponseTagsMap as any as S.Schema<UpdateConditionalCreditRequestTagsMap>;
+
 export interface UpdateConditionalCreditRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3455,6 +4650,11 @@ export interface UpdateConditionalCreditRequest {
   /** Resource tags. */
   tags?: UpdateConditionalCreditRequestTagsMap;
 }
+const UpdateConditionalCreditRequest = /*@__PURE__*/ __L.at(
+  __c28,
+  0,
+) as any as S.Schema<UpdateConditionalCreditRequest>;
+
 /** Resource tags. */
 export type UpdateConditionalCreditResponseTagsMap = { [key: string]: string | undefined };
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
@@ -3499,10 +4699,19 @@ export interface UpdateConditionalCreditResponse {
   /** Plan for the resource. */
   plan?: Plan;
 }
+const UpdateConditionalCreditResponse =
+  CancelConditionalCreditResponse as any as S.Schema<UpdateConditionalCreditResponse>;
+
 /** Resource tags */
 export type UpdateCreditRequestTagsMap = { [key: string]: string | undefined };
+const UpdateCreditRequestTagsMap =
+  CancelConditionalCreditResponseTagsMap as any as S.Schema<UpdateCreditRequestTagsMap>;
+
 /** Credit line-items/milestones/no-charge services breakdown. Entire breakdown will be replaced in a PATCH operation. */
 export type CreditPatchPropertiesBreakdownList = Array<CreditBreakdownItem>;
+const CreditPatchPropertiesBreakdownList =
+  CreditPropertiesBreakdownList as any as S.Schema<CreditPatchPropertiesBreakdownList>;
+
 /** Credit patch properties */
 export interface CreditPatchProperties {
   /** The entire investment amount for the credit contract, including currency and amount. Only amount can be modified. */
@@ -3512,6 +4721,11 @@ export interface CreditPatchProperties {
   /** Credit line-items/milestones/no-charge services breakdown. Entire breakdown will be replaced in a PATCH operation. */
   breakdown?: CreditPatchPropertiesBreakdownList;
 }
+const CreditPatchProperties = /*@__PURE__*/ __L.at(
+  __c28,
+  1,
+) as any as S.Schema<CreditPatchProperties>;
+
 export interface UpdateCreditRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3524,6 +4738,8 @@ export interface UpdateCreditRequest {
   /** Credit patch properties */
   properties?: CreditPatchProperties;
 }
+const UpdateCreditRequest = /*@__PURE__*/ __L.at(__c28, 2) as any as S.Schema<UpdateCreditRequest>;
+
 /** Resource tags. */
 export type UpdateCreditResponseTagsMap = { [key: string]: string | undefined };
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
@@ -3568,6 +4784,8 @@ export interface UpdateCreditResponse {
   /** Plan for the resource. */
   plan?: Plan;
 }
+const UpdateCreditResponse = CancelCreditResponse as any as S.Schema<UpdateCreditResponse>;
+
 /** Discounts patch request properties */
 export interface DiscountPatchRequestProperties {
   /** Display name */
@@ -3575,8 +4793,16 @@ export interface DiscountPatchRequestProperties {
   /** End date of the discount. No duration will be supported. Allowed value is any date greater than or equal to startDate. */
   endAt?: string;
 }
+const DiscountPatchRequestProperties = /*@__PURE__*/ __L.at(
+  __c28,
+  3,
+) as any as S.Schema<DiscountPatchRequestProperties>;
+
 /** Resource tags. */
 export type UpdateDiscountRequestTagsMap = { [key: string]: string | undefined };
+const UpdateDiscountRequestTagsMap =
+  CancelConditionalCreditResponseTagsMap as any as S.Schema<UpdateDiscountRequestTagsMap>;
+
 export interface UpdateDiscountRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3589,6 +4815,11 @@ export interface UpdateDiscountRequest {
   /** Resource tags. */
   tags?: UpdateDiscountRequestTagsMap;
 }
+const UpdateDiscountRequest = /*@__PURE__*/ __L.at(
+  __c28,
+  4,
+) as any as S.Schema<UpdateDiscountRequest>;
+
 /** Resource tags. */
 export type UpdateDiscountResponseTagsMap = { [key: string]: string | undefined };
 export interface UpdateDiscountResponse {
@@ -3619,13 +4850,23 @@ export interface UpdateDiscountResponse {
   /** Plan for the resource. */
   plan?: Plan;
 }
+const UpdateDiscountResponse = CancelDiscountResponse as any as S.Schema<UpdateDiscountResponse>;
+
 /** Free services patch request properties */
 export interface FreeServicesPatchRequestProperties {
   /** Updated expiration date and time of the free services */
   endAt?: string;
 }
+const FreeServicesPatchRequestProperties = /*@__PURE__*/ __L.at(
+  __c28,
+  5,
+) as any as S.Schema<FreeServicesPatchRequestProperties>;
+
 /** Resource tags. */
 export type UpdateFreeServiceRequestTagsMap = { [key: string]: string | undefined };
+const UpdateFreeServiceRequestTagsMap =
+  CancelConditionalCreditResponseTagsMap as any as S.Schema<UpdateFreeServiceRequestTagsMap>;
+
 export interface UpdateFreeServiceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3638,6 +4879,11 @@ export interface UpdateFreeServiceRequest {
   /** Resource tags. */
   tags?: UpdateFreeServiceRequestTagsMap;
 }
+const UpdateFreeServiceRequest = /*@__PURE__*/ __L.at(
+  __c28,
+  6,
+) as any as S.Schema<UpdateFreeServiceRequest>;
+
 /** Resource tags. */
 export type UpdateFreeServiceResponseTagsMap = { [key: string]: string | undefined };
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
@@ -3682,8 +4928,14 @@ export interface UpdateFreeServiceResponse {
   /** Plan for the resource. */
   plan?: Plan;
 }
+const UpdateFreeServiceResponse =
+  CreateFreeServiceResponse as any as S.Schema<UpdateFreeServiceResponse>;
+
 /** List of milestones to update or add. */
 export type MaccPatchRequestPropertiesMilestonesList = Array<MaccMilestone>;
+const MaccPatchRequestPropertiesMilestonesList =
+  MaccModelPropertiesMilestonesList as any as S.Schema<MaccPatchRequestPropertiesMilestonesList>;
+
 /** Macc patch request properties */
 export interface MaccPatchRequestProperties {
   /** Commitment towards the benefit. */
@@ -3707,8 +4959,16 @@ export interface MaccPatchRequestProperties {
   /** Fully-qualified billing account resource identifier of the primary MACC. Format must be Azure Resource ID: /providers/Microsoft.Billing/billingAccounts/{acctId:orgId}. */
   primaryBillingAccountResourceId?: string;
 }
+const MaccPatchRequestProperties = /*@__PURE__*/ __L.at(
+  __c28,
+  7,
+) as any as S.Schema<MaccPatchRequestProperties>;
+
 /** Resource tags. */
 export type UpdateMaccRequestTagsMap = { [key: string]: string | undefined };
+const UpdateMaccRequestTagsMap =
+  CancelConditionalCreditResponseTagsMap as any as S.Schema<UpdateMaccRequestTagsMap>;
+
 export interface UpdateMaccRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3721,6 +4981,8 @@ export interface UpdateMaccRequest {
   /** Resource tags. */
   tags?: UpdateMaccRequestTagsMap;
 }
+const UpdateMaccRequest = /*@__PURE__*/ __L.at(__c29, 0) as any as S.Schema<UpdateMaccRequest>;
+
 /** Resource tags. */
 export type UpdateMaccResponseTagsMap = { [key: string]: string | undefined };
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
@@ -3765,6 +5027,8 @@ export interface UpdateMaccResponse {
   /** Plan for the resource. */
   plan?: Plan;
 }
+const UpdateMaccResponse = CancelMaccResponse as any as S.Schema<UpdateMaccResponse>;
+
 export interface UpdateSavingsPlanRequest {
   /** Order ID of the savings plan */
   savingsPlanOrderId: string;
@@ -3773,6 +5037,11 @@ export interface UpdateSavingsPlanRequest {
   /** Savings plan patch request */
   properties?: SavingsPlanUpdateRequestPropertiesInput;
 }
+const UpdateSavingsPlanRequest = /*@__PURE__*/ __L.at(
+  __c29,
+  1,
+) as any as S.Schema<UpdateSavingsPlanRequest>;
+
 export interface UpdateSavingsPlanResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -3787,8 +5056,16 @@ export interface UpdateSavingsPlanResponse {
   /** Savings plan SKU */
   sku: ResourceSku;
 }
+const UpdateSavingsPlanResponse = /*@__PURE__*/ __L.at(
+  __c29,
+  2,
+) as any as S.Schema<UpdateSavingsPlanResponse>;
+
 /** Resource Tags */
 export type UpdateSourceRequestTagsMap = { [key: string]: string | undefined };
+const UpdateSourceRequestTagsMap =
+  CancelConditionalCreditResponseTagsMap as any as S.Schema<UpdateSourceRequestTagsMap>;
+
 export interface UpdateSourceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3801,6 +5078,8 @@ export interface UpdateSourceRequest {
   /** Resource Tags */
   tags?: UpdateSourceRequestTagsMap;
 }
+const UpdateSourceRequest = /*@__PURE__*/ __L.at(__c29, 3) as any as S.Schema<UpdateSourceRequest>;
+
 /** Resource tags. */
 export type UpdateSourceResponseTagsMap = { [key: string]: string | undefined };
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
@@ -3845,6 +5124,8 @@ export interface UpdateSourceResponse {
   /** Plan for the resource. */
   plan?: Plan;
 }
+const UpdateSourceResponse = CreateSourceResponse as any as S.Schema<UpdateSourceResponse>;
+
 /** Represents benefit model type for validation. Includes all resource types plus legacy singular-form values used by the validate API. */
 export type BenefitType =
   | "Maccs"
@@ -3856,17 +5137,34 @@ export type BenefitType =
   | "Reservations"
   | "SavingsPlan"
   | "MACC";
+const BenefitType = S.String;
+
 /** Abstract benefit model to validate. */
 export interface BenefitValidateModel {
   /** Type of benefit to validate. This is used to determine the model type for validation. */
   benefitType: BenefitType | (string & {});
 }
+const BenefitValidateModel = /*@__PURE__*/ __L.at(
+  __c29,
+  4,
+) as any as S.Schema<BenefitValidateModel>;
+
 /** Defines benefits for validation. */
 export type ValidateBenefitRequestBenefitsList = Array<BenefitValidateModel>;
+const ValidateBenefitRequestBenefitsList = /*@__PURE__*/ __L.at(
+  __c29,
+  5,
+) as any as S.Schema<ValidateBenefitRequestBenefitsList>;
+
 export interface ValidateBenefitRequest {
   /** Defines benefits for validation. */
   benefits?: ValidateBenefitRequestBenefitsList;
 }
+const ValidateBenefitRequest = /*@__PURE__*/ __L.at(
+  __c29,
+  6,
+) as any as S.Schema<ValidateBenefitRequest>;
+
 /** Benefit validate response property */
 export interface BenefitValidateResponseProperty {
   /** Indicates if the provided input was valid */
@@ -3878,8 +5176,18 @@ export interface BenefitValidateResponseProperty {
   /** Resource identifier of the benefit that was validated. */
   resourceId?: string;
 }
+const BenefitValidateResponseProperty = /*@__PURE__*/ __L.at(
+  __c29,
+  7,
+) as any as S.Schema<BenefitValidateResponseProperty>;
+
 /** Defines benefit validation response for benefits. */
 export type BenefitValidateResponseBenefitsList = Array<BenefitValidateResponseProperty>;
+const BenefitValidateResponseBenefitsList = /*@__PURE__*/ __L.at(
+  __c30,
+  0,
+) as any as S.Schema<BenefitValidateResponseBenefitsList>;
+
 /** Benefit validate response. */
 export interface BenefitValidateResponse {
   /** Defines benefit validation response for benefits. */
@@ -3887,6 +5195,11 @@ export interface BenefitValidateResponse {
   /** Url to get the next page. */
   nextLink?: string;
 }
+const BenefitValidateResponse = /*@__PURE__*/ __L.at(
+  __c30,
+  1,
+) as any as S.Schema<BenefitValidateResponse>;
+
 export type CancelConditionalCreditError = AzureOpError;
 /** Cancel conditional credit. Stops applying the benefit. */
 export const CancelConditionalCredit: API.OperationMethod<
@@ -3895,8 +5208,8 @@ export const CancelConditionalCredit: API.OperationMethod<
   CancelConditionalCreditError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<CancelConditionalCreditRequest>,
-  output: __S(11) as any as S.Schema<CancelConditionalCreditResponse>,
+  input: CancelConditionalCreditRequest,
+  output: CancelConditionalCreditResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3910,8 +5223,8 @@ export const CancelCredit: API.OperationMethod<
   CancelCreditError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12) as any as S.Schema<CancelCreditRequest>,
-  output: __S(25) as any as S.Schema<CancelCreditResponse>,
+  input: CancelCreditRequest,
+  output: CancelCreditResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3925,8 +5238,8 @@ export const CancelDiscount: API.OperationMethod<
   CancelDiscountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26) as any as S.Schema<CancelDiscountRequest>,
-  output: __S(30) as any as S.Schema<CancelDiscountResponse>,
+  input: CancelDiscountRequest,
+  output: CancelDiscountResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3940,8 +5253,8 @@ export const CancelMacc: API.OperationMethod<
   CancelMaccError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31) as any as S.Schema<CancelMaccRequest>,
-  output: __S(37) as any as S.Schema<CancelMaccResponse>,
+  input: CancelMaccRequest,
+  output: CancelMaccResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3955,8 +5268,8 @@ export const ConditionalCreditsCreateOrUpdate: API.OperationMethod<
   ConditionalCreditsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42) as any as S.Schema<ConditionalCreditsCreateOrUpdateRequest>,
-  output: __S(11) as any as S.Schema<ConditionalCreditsCreateOrUpdateResponse>,
+  input: ConditionalCreditsCreateOrUpdateRequest,
+  output: ConditionalCreditsCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3970,8 +5283,8 @@ export const CreateCredit: API.OperationMethod<
   CreateCreditError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(46) as any as S.Schema<CreateCreditRequest>,
-  output: __S(25) as any as S.Schema<CreateCreditResponse>,
+  input: CreateCreditRequest,
+  output: CreateCreditResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3985,8 +5298,8 @@ export const CreateDiscount: API.OperationMethod<
   CreateDiscountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(50) as any as S.Schema<CreateDiscountRequest>,
-  output: __S(30) as any as S.Schema<CreateDiscountResponse>,
+  input: CreateDiscountRequest,
+  output: CreateDiscountResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4000,8 +5313,8 @@ export const CreateFreeService: API.OperationMethod<
   CreateFreeServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(52) as any as S.Schema<CreateFreeServiceRequest>,
-  output: __S(54) as any as S.Schema<CreateFreeServiceResponse>,
+  input: CreateFreeServiceRequest,
+  output: CreateFreeServiceResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4015,8 +5328,8 @@ export const CreateMacc: API.OperationMethod<
   CreateMaccError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56) as any as S.Schema<CreateMaccRequest>,
-  output: __S(37) as any as S.Schema<CreateMaccResponse>,
+  input: CreateMaccRequest,
+  output: CreateMaccResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4030,8 +5343,8 @@ export const CreateReservationOrderAlias: API.OperationMethod<
   CreateReservationOrderAliasError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(61) as any as S.Schema<CreateReservationOrderAliasRequest>,
-  output: __S(63) as any as S.Schema<CreateReservationOrderAliasResponse>,
+  input: CreateReservationOrderAliasRequest,
+  output: CreateReservationOrderAliasResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4045,8 +5358,8 @@ export const CreateSavingsPlanOrderAlias: API.OperationMethod<
   CreateSavingsPlanOrderAliasError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65) as any as S.Schema<CreateSavingsPlanOrderAliasRequest>,
-  output: __S(67) as any as S.Schema<CreateSavingsPlanOrderAliasResponse>,
+  input: CreateSavingsPlanOrderAliasRequest,
+  output: CreateSavingsPlanOrderAliasResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4060,8 +5373,8 @@ export const CreateSource: API.OperationMethod<
   CreateSourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(69) as any as S.Schema<CreateSourceRequest>,
-  output: __S(71) as any as S.Schema<CreateSourceResponse>,
+  input: CreateSourceRequest,
+  output: CreateSourceResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4075,8 +5388,8 @@ export const CreditsChangeSponsor: API.OperationMethod<
   CreditsChangeSponsorError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(72) as any as S.Schema<CreditsChangeSponsorRequest>,
-  output: __S(39) as any as S.Schema<CreditsChangeSponsorResponse>,
+  input: CreditsChangeSponsorRequest,
+  output: CreditsChangeSponsorResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4090,8 +5403,8 @@ export const DeleteConditionalCredit: API.OperationMethod<
   DeleteConditionalCreditError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(73) as any as S.Schema<DeleteConditionalCreditRequest>,
-  output: __S(74) as any as S.Schema<DeleteConditionalCreditResponse>,
+  input: DeleteConditionalCreditRequest,
+  output: DeleteConditionalCreditResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4105,8 +5418,8 @@ export const DeleteCredit: API.OperationMethod<
   DeleteCreditError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(75) as any as S.Schema<DeleteCreditRequest>,
-  output: __S(39) as any as S.Schema<DeleteCreditResponse>,
+  input: DeleteCreditRequest,
+  output: DeleteCreditResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4120,8 +5433,8 @@ export const DeleteDiscount: API.OperationMethod<
   DeleteDiscountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(76) as any as S.Schema<DeleteDiscountRequest>,
-  output: __S(39) as any as S.Schema<DeleteDiscountResponse>,
+  input: DeleteDiscountRequest,
+  output: DeleteDiscountResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4135,8 +5448,8 @@ export const DeleteFreeService: API.OperationMethod<
   DeleteFreeServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(77) as any as S.Schema<DeleteFreeServiceRequest>,
-  output: __S(39) as any as S.Schema<DeleteFreeServiceResponse>,
+  input: DeleteFreeServiceRequest,
+  output: DeleteFreeServiceResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4150,8 +5463,8 @@ export const DeleteMacc: API.OperationMethod<
   DeleteMaccError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(78) as any as S.Schema<DeleteMaccRequest>,
-  output: __S(39) as any as S.Schema<DeleteMaccResponse>,
+  input: DeleteMaccRequest,
+  output: DeleteMaccResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4165,8 +5478,8 @@ export const DeleteSource: API.OperationMethod<
   DeleteSourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(79) as any as S.Schema<DeleteSourceRequest>,
-  output: __S(39) as any as S.Schema<DeleteSourceResponse>,
+  input: DeleteSourceRequest,
+  output: DeleteSourceResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4180,8 +5493,8 @@ export const GetBillingAccountCatalogGroupsOps: API.OperationMethod<
   GetBillingAccountCatalogGroupsOpsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(80) as any as S.Schema<GetBillingAccountCatalogGroupsOpsRequest>,
-  output: __S(85) as any as S.Schema<GetBillingAccountCatalogGroupsOpsResponse>,
+  input: GetBillingAccountCatalogGroupsOpsRequest,
+  output: GetBillingAccountCatalogGroupsOpsResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4195,8 +5508,8 @@ export const GetBillingProfileCatalogGroupsOps: API.OperationMethod<
   GetBillingProfileCatalogGroupsOpsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(86) as any as S.Schema<GetBillingProfileCatalogGroupsOpsRequest>,
-  output: __S(85) as any as S.Schema<GetBillingProfileCatalogGroupsOpsResponse>,
+  input: GetBillingProfileCatalogGroupsOpsRequest,
+  output: GetBillingProfileCatalogGroupsOpsResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4210,8 +5523,8 @@ export const GetConditionalCredit: API.OperationMethod<
   GetConditionalCreditError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(87) as any as S.Schema<GetConditionalCreditRequest>,
-  output: __S(89) as any as S.Schema<GetConditionalCreditResponse>,
+  input: GetConditionalCreditRequest,
+  output: GetConditionalCreditResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4225,8 +5538,8 @@ export const GetConditionalCreditContributorFromPrimary: API.OperationMethod<
   GetConditionalCreditContributorFromPrimaryError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(90) as any as S.Schema<GetConditionalCreditContributorFromPrimaryRequest>,
-  output: __S(95) as any as S.Schema<GetConditionalCreditContributorFromPrimaryResponse>,
+  input: GetConditionalCreditContributorFromPrimaryRequest,
+  output: GetConditionalCreditContributorFromPrimaryResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4240,8 +5553,8 @@ export const GetConditionalCreditTransaction: API.OperationMethod<
   GetConditionalCreditTransactionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(96) as any as S.Schema<GetConditionalCreditTransactionRequest>,
-  output: __S(99) as any as S.Schema<GetConditionalCreditTransactionResponse>,
+  input: GetConditionalCreditTransactionRequest,
+  output: GetConditionalCreditTransactionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4255,8 +5568,8 @@ export const GetContributorFromPrimary: API.OperationMethod<
   GetContributorFromPrimaryError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(100) as any as S.Schema<GetContributorFromPrimaryRequest>,
-  output: __S(101) as any as S.Schema<GetContributorFromPrimaryResponse>,
+  input: GetContributorFromPrimaryRequest,
+  output: GetContributorFromPrimaryResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4270,8 +5583,8 @@ export const GetCredit: API.OperationMethod<
   GetCreditError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(102) as any as S.Schema<GetCreditRequest>,
-  output: __S(25) as any as S.Schema<GetCreditResponse>,
+  input: GetCreditRequest,
+  output: GetCreditResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4285,8 +5598,8 @@ export const GetCreditTransaction: API.OperationMethod<
   GetCreditTransactionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(103) as any as S.Schema<GetCreditTransactionRequest>,
-  output: __S(99) as any as S.Schema<GetCreditTransactionResponse>,
+  input: GetCreditTransactionRequest,
+  output: GetCreditTransactionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4300,8 +5613,8 @@ export const GetDiscount: API.OperationMethod<
   GetDiscountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(104) as any as S.Schema<GetDiscountRequest>,
-  output: __S(30) as any as S.Schema<GetDiscountResponse>,
+  input: GetDiscountRequest,
+  output: GetDiscountResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4315,8 +5628,8 @@ export const GetFreeService: API.OperationMethod<
   GetFreeServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(105) as any as S.Schema<GetFreeServiceRequest>,
-  output: __S(106) as any as S.Schema<GetFreeServiceResponse>,
+  input: GetFreeServiceRequest,
+  output: GetFreeServiceResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4330,8 +5643,8 @@ export const GetMacc: API.OperationMethod<
   GetMaccError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(107) as any as S.Schema<GetMaccRequest>,
-  output: __S(109) as any as S.Schema<GetMaccResponse>,
+  input: GetMaccRequest,
+  output: GetMaccResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4345,8 +5658,8 @@ export const GetMaccTransaction: API.OperationMethod<
   GetMaccTransactionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(110) as any as S.Schema<GetMaccTransactionRequest>,
-  output: __S(99) as any as S.Schema<GetMaccTransactionResponse>,
+  input: GetMaccTransactionRequest,
+  output: GetMaccTransactionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4360,8 +5673,8 @@ export const GetReservationOrderAlias: API.OperationMethod<
   GetReservationOrderAliasError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(111) as any as S.Schema<GetReservationOrderAliasRequest>,
-  output: __S(63) as any as S.Schema<GetReservationOrderAliasResponse>,
+  input: GetReservationOrderAliasRequest,
+  output: GetReservationOrderAliasResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4375,8 +5688,8 @@ export const GetSavingsPlan: API.OperationMethod<
   GetSavingsPlanError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(112) as any as S.Schema<GetSavingsPlanRequest>,
-  output: __S(121) as any as S.Schema<GetSavingsPlanResponse>,
+  input: GetSavingsPlanRequest,
+  output: GetSavingsPlanResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4390,8 +5703,8 @@ export const GetSavingsPlanOrder: API.OperationMethod<
   GetSavingsPlanOrderError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(122) as any as S.Schema<GetSavingsPlanOrderRequest>,
-  output: __S(127) as any as S.Schema<GetSavingsPlanOrderResponse>,
+  input: GetSavingsPlanOrderRequest,
+  output: GetSavingsPlanOrderResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4405,8 +5718,8 @@ export const GetSavingsPlanOrderAlias: API.OperationMethod<
   GetSavingsPlanOrderAliasError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(128) as any as S.Schema<GetSavingsPlanOrderAliasRequest>,
-  output: __S(67) as any as S.Schema<GetSavingsPlanOrderAliasResponse>,
+  input: GetSavingsPlanOrderAliasRequest,
+  output: GetSavingsPlanOrderAliasResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4420,8 +5733,8 @@ export const GetSource: API.OperationMethod<
   GetSourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(129) as any as S.Schema<GetSourceRequest>,
-  output: __S(71) as any as S.Schema<GetSourceResponse>,
+  input: GetSourceRequest,
+  output: GetSourceResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4435,8 +5748,8 @@ export const GetSubscriptionCatalogGroupsOps: API.OperationMethod<
   GetSubscriptionCatalogGroupsOpsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(130) as any as S.Schema<GetSubscriptionCatalogGroupsOpsRequest>,
-  output: __S(85) as any as S.Schema<GetSubscriptionCatalogGroupsOpsResponse>,
+  input: GetSubscriptionCatalogGroupsOpsRequest,
+  output: GetSubscriptionCatalogGroupsOpsResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4450,8 +5763,8 @@ export const ListApplicableMaccs: API.OperationMethod<
   ListApplicableMaccsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(131) as any as S.Schema<ListApplicableMaccsRequest>,
-  output: __S(134) as any as S.Schema<ApplicableMaccList>,
+  input: ListApplicableMaccsRequest,
+  output: ApplicableMaccList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4465,8 +5778,8 @@ export const ListBillingAccountCatalogGroupsOps: API.OperationMethod<
   ListBillingAccountCatalogGroupsOpsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(135) as any as S.Schema<ListBillingAccountCatalogGroupsOpsRequest>,
-  output: __S(138) as any as S.Schema<CatalogGroupListResult>,
+  input: ListBillingAccountCatalogGroupsOpsRequest,
+  output: CatalogGroupListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4480,8 +5793,8 @@ export const ListBillingProfileCatalogGroupsOps: API.OperationMethod<
   ListBillingProfileCatalogGroupsOpsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(139) as any as S.Schema<ListBillingProfileCatalogGroupsOpsRequest>,
-  output: __S(138) as any as S.Schema<CatalogGroupListResult>,
+  input: ListBillingProfileCatalogGroupsOpsRequest,
+  output: CatalogGroupListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4495,8 +5808,8 @@ export const ListConditionalCreditByResourceGroup: API.OperationMethod<
   ListConditionalCreditByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(140) as any as S.Schema<ListConditionalCreditByResourceGroupRequest>,
-  output: __S(143) as any as S.Schema<ConditionalCreditList>,
+  input: ListConditionalCreditByResourceGroupRequest,
+  output: ConditionalCreditList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4510,8 +5823,8 @@ export const ListConditionalCreditBySubscription: API.OperationMethod<
   ListConditionalCreditBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(144) as any as S.Schema<ListConditionalCreditBySubscriptionRequest>,
-  output: __S(143) as any as S.Schema<ConditionalCreditList>,
+  input: ListConditionalCreditBySubscriptionRequest,
+  output: ConditionalCreditList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4525,10 +5838,8 @@ export const ListConditionalCreditContributorFromApplicableConditionalCredit: AP
   ListConditionalCreditContributorFromApplicableConditionalCreditError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(
-    145,
-  ) as any as S.Schema<ListConditionalCreditContributorFromApplicableConditionalCreditRequest>,
-  output: __S(147) as any as S.Schema<ConditionalCreditContributorList>,
+  input: ListConditionalCreditContributorFromApplicableConditionalCreditRequest,
+  output: ConditionalCreditContributorList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4542,8 +5853,8 @@ export const ListConditionalCreditContributorFromPrimary: API.OperationMethod<
   ListConditionalCreditContributorFromPrimaryError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(148) as any as S.Schema<ListConditionalCreditContributorFromPrimaryRequest>,
-  output: __S(147) as any as S.Schema<ConditionalCreditContributorList>,
+  input: ListConditionalCreditContributorFromPrimaryRequest,
+  output: ConditionalCreditContributorList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4557,8 +5868,8 @@ export const ListConditionalCreditsScope: API.OperationMethod<
   ListConditionalCreditsScopeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(149) as any as S.Schema<ListConditionalCreditsScopeRequest>,
-  output: __S(143) as any as S.Schema<ConditionalCreditList>,
+  input: ListConditionalCreditsScopeRequest,
+  output: ConditionalCreditList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4572,8 +5883,8 @@ export const ListConditionalCreditTransactionByParent: API.OperationMethod<
   ListConditionalCreditTransactionByParentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(150) as any as S.Schema<ListConditionalCreditTransactionByParentRequest>,
-  output: __S(152) as any as S.Schema<ConditionalCreditTransactionsList>,
+  input: ListConditionalCreditTransactionByParentRequest,
+  output: ConditionalCreditTransactionsList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4587,8 +5898,8 @@ export const ListContributorFromApplicableMacc: API.OperationMethod<
   ListContributorFromApplicableMaccError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(153) as any as S.Schema<ListContributorFromApplicableMaccRequest>,
-  output: __S(154) as any as S.Schema<ContributorList>,
+  input: ListContributorFromApplicableMaccRequest,
+  output: ContributorList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4602,8 +5913,8 @@ export const ListContributorFromPrimary: API.OperationMethod<
   ListContributorFromPrimaryError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(155) as any as S.Schema<ListContributorFromPrimaryRequest>,
-  output: __S(154) as any as S.Schema<ContributorList>,
+  input: ListContributorFromPrimaryRequest,
+  output: ContributorList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4617,8 +5928,8 @@ export const ListCreditApplicable: API.OperationMethod<
   ListCreditApplicableError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(156) as any as S.Schema<ListCreditApplicableRequest>,
-  output: __S(159) as any as S.Schema<CreditsList>,
+  input: ListCreditApplicableRequest,
+  output: CreditsList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4632,8 +5943,8 @@ export const ListCreditByResourceGroup: API.OperationMethod<
   ListCreditByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(160) as any as S.Schema<ListCreditByResourceGroupRequest>,
-  output: __S(159) as any as S.Schema<CreditsList>,
+  input: ListCreditByResourceGroupRequest,
+  output: CreditsList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4647,8 +5958,8 @@ export const ListCreditBySubscription: API.OperationMethod<
   ListCreditBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(161) as any as S.Schema<ListCreditBySubscriptionRequest>,
-  output: __S(159) as any as S.Schema<CreditsList>,
+  input: ListCreditBySubscriptionRequest,
+  output: CreditsList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4662,8 +5973,8 @@ export const ListCreditTransactionByParent: API.OperationMethod<
   ListCreditTransactionByParentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(162) as any as S.Schema<ListCreditTransactionByParentRequest>,
-  output: __S(163) as any as S.Schema<TransactionsList>,
+  input: ListCreditTransactionByParentRequest,
+  output: TransactionsList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4677,8 +5988,8 @@ export const ListDiscountsResourceGroup: API.OperationMethod<
   ListDiscountsResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(164) as any as S.Schema<ListDiscountsResourceGroupRequest>,
-  output: __S(166) as any as S.Schema<DiscountList>,
+  input: ListDiscountsResourceGroupRequest,
+  output: DiscountList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4692,8 +6003,8 @@ export const ListDiscountsScope: API.OperationMethod<
   ListDiscountsScopeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(167) as any as S.Schema<ListDiscountsScopeRequest>,
-  output: __S(166) as any as S.Schema<DiscountList>,
+  input: ListDiscountsScopeRequest,
+  output: DiscountList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4707,8 +6018,8 @@ export const ListDiscountsSubscription: API.OperationMethod<
   ListDiscountsSubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(168) as any as S.Schema<ListDiscountsSubscriptionRequest>,
-  output: __S(166) as any as S.Schema<DiscountList>,
+  input: ListDiscountsSubscriptionRequest,
+  output: DiscountList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4722,8 +6033,8 @@ export const ListFreeServiceByResourceGroup: API.OperationMethod<
   ListFreeServiceByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(169) as any as S.Schema<ListFreeServiceByResourceGroupRequest>,
-  output: __S(172) as any as S.Schema<FreeServicesList>,
+  input: ListFreeServiceByResourceGroupRequest,
+  output: FreeServicesList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4737,8 +6048,8 @@ export const ListFreeServiceBySubscription: API.OperationMethod<
   ListFreeServiceBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(173) as any as S.Schema<ListFreeServiceBySubscriptionRequest>,
-  output: __S(172) as any as S.Schema<FreeServicesList>,
+  input: ListFreeServiceBySubscriptionRequest,
+  output: FreeServicesList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4752,8 +6063,8 @@ export const ListMaccByResourceGroup: API.OperationMethod<
   ListMaccByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(174) as any as S.Schema<ListMaccByResourceGroupRequest>,
-  output: __S(176) as any as S.Schema<MaccList>,
+  input: ListMaccByResourceGroupRequest,
+  output: MaccList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4767,8 +6078,8 @@ export const ListMaccBySubscription: API.OperationMethod<
   ListMaccBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(177) as any as S.Schema<ListMaccBySubscriptionRequest>,
-  output: __S(176) as any as S.Schema<MaccList>,
+  input: ListMaccBySubscriptionRequest,
+  output: MaccList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4782,8 +6093,8 @@ export const ListMaccTransactionByParent: API.OperationMethod<
   ListMaccTransactionByParentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(178) as any as S.Schema<ListMaccTransactionByParentRequest>,
-  output: __S(163) as any as S.Schema<MaccTransactionsList>,
+  input: ListMaccTransactionByParentRequest,
+  output: MaccTransactionsList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4797,8 +6108,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(179) as any as S.Schema<ListOperationsRequest>,
-  output: __S(183) as any as S.Schema<ListOperationsResponse>,
+  input: ListOperationsRequest,
+  output: ListOperationsResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4812,8 +6123,8 @@ export const ListSavingsPlan: API.OperationMethod<
   ListSavingsPlanError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(184) as any as S.Schema<ListSavingsPlanRequest>,
-  output: __S(186) as any as S.Schema<SavingsPlanModelList>,
+  input: ListSavingsPlanRequest,
+  output: SavingsPlanModelList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4827,8 +6138,8 @@ export const ListSavingsPlanAll: API.OperationMethod<
   ListSavingsPlanAllError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(187) as any as S.Schema<ListSavingsPlanAllRequest>,
-  output: __S(191) as any as S.Schema<SavingsPlanModelListResult>,
+  input: ListSavingsPlanAllRequest,
+  output: SavingsPlanModelListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4842,8 +6153,8 @@ export const ListSavingsPlanOrder: API.OperationMethod<
   ListSavingsPlanOrderError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(192) as any as S.Schema<ListSavingsPlanOrderRequest>,
-  output: __S(195) as any as S.Schema<SavingsPlanOrderModelList>,
+  input: ListSavingsPlanOrderRequest,
+  output: SavingsPlanOrderModelList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4857,8 +6168,8 @@ export const ListSellerResource: API.OperationMethod<
   ListSellerResourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(197) as any as S.Schema<ListSellerResourceRequest>,
-  output: __S(199) as any as S.Schema<ListSellerResourceResponse>,
+  input: ListSellerResourceRequest,
+  output: ListSellerResourceResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4872,8 +6183,8 @@ export const ListSourceByCredit: API.OperationMethod<
   ListSourceByCreditError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(200) as any as S.Schema<ListSourceByCreditRequest>,
-  output: __S(203) as any as S.Schema<CreditSourcesList>,
+  input: ListSourceByCreditRequest,
+  output: CreditSourcesList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4887,8 +6198,8 @@ export const ListSubscriptionCatalogGroupsOps: API.OperationMethod<
   ListSubscriptionCatalogGroupsOpsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(204) as any as S.Schema<ListSubscriptionCatalogGroupsOpsRequest>,
-  output: __S(138) as any as S.Schema<CatalogGroupListResult>,
+  input: ListSubscriptionCatalogGroupsOpsRequest,
+  output: CatalogGroupListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4902,8 +6213,8 @@ export const MaccsChargeShortfall: API.OperationMethod<
   MaccsChargeShortfallError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(205) as any as S.Schema<MaccsChargeShortfallRequest>,
-  output: __S(206) as any as S.Schema<MaccsChargeShortfallResponse>,
+  input: MaccsChargeShortfallRequest,
+  output: MaccsChargeShortfallResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4917,8 +6228,8 @@ export const MaccsWriteOff: API.OperationMethod<
   MaccsWriteOffError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(207) as any as S.Schema<MaccsWriteOffRequest>,
-  output: __S(37) as any as S.Schema<MaccsWriteOffResponse>,
+  input: MaccsWriteOffRequest,
+  output: MaccsWriteOffResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4932,8 +6243,8 @@ export const SavingsPlanOrderElevate: API.OperationMethod<
   SavingsPlanOrderElevateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(208) as any as S.Schema<SavingsPlanOrderElevateRequest>,
-  output: __S(210) as any as S.Schema<RoleAssignmentEntity>,
+  input: SavingsPlanOrderElevateRequest,
+  output: RoleAssignmentEntity,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4947,8 +6258,8 @@ export const SavingsPlanValidateUpdate: API.OperationMethod<
   SavingsPlanValidateUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(216) as any as S.Schema<SavingsPlanValidateUpdateRequest>,
-  output: __S(219) as any as S.Schema<SavingsPlanValidateResponse>,
+  input: SavingsPlanValidateUpdateRequest,
+  output: SavingsPlanValidateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4962,8 +6273,8 @@ export const UpdateConditionalCredit: API.OperationMethod<
   UpdateConditionalCreditError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(224) as any as S.Schema<UpdateConditionalCreditRequest>,
-  output: __S(11) as any as S.Schema<UpdateConditionalCreditResponse>,
+  input: UpdateConditionalCreditRequest,
+  output: UpdateConditionalCreditResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4977,8 +6288,8 @@ export const UpdateCredit: API.OperationMethod<
   UpdateCreditError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(226) as any as S.Schema<UpdateCreditRequest>,
-  output: __S(25) as any as S.Schema<UpdateCreditResponse>,
+  input: UpdateCreditRequest,
+  output: UpdateCreditResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4992,8 +6303,8 @@ export const UpdateDiscount: API.OperationMethod<
   UpdateDiscountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(228) as any as S.Schema<UpdateDiscountRequest>,
-  output: __S(30) as any as S.Schema<UpdateDiscountResponse>,
+  input: UpdateDiscountRequest,
+  output: UpdateDiscountResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5007,8 +6318,8 @@ export const UpdateFreeService: API.OperationMethod<
   UpdateFreeServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(230) as any as S.Schema<UpdateFreeServiceRequest>,
-  output: __S(54) as any as S.Schema<UpdateFreeServiceResponse>,
+  input: UpdateFreeServiceRequest,
+  output: UpdateFreeServiceResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5022,8 +6333,8 @@ export const UpdateMacc: API.OperationMethod<
   UpdateMaccError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(232) as any as S.Schema<UpdateMaccRequest>,
-  output: __S(37) as any as S.Schema<UpdateMaccResponse>,
+  input: UpdateMaccRequest,
+  output: UpdateMaccResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5037,8 +6348,8 @@ export const UpdateSavingsPlan: API.OperationMethod<
   UpdateSavingsPlanError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(233) as any as S.Schema<UpdateSavingsPlanRequest>,
-  output: __S(234) as any as S.Schema<UpdateSavingsPlanResponse>,
+  input: UpdateSavingsPlanRequest,
+  output: UpdateSavingsPlanResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5052,8 +6363,8 @@ export const UpdateSource: API.OperationMethod<
   UpdateSourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(235) as any as S.Schema<UpdateSourceRequest>,
-  output: __S(71) as any as S.Schema<UpdateSourceResponse>,
+  input: UpdateSourceRequest,
+  output: UpdateSourceResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5067,8 +6378,8 @@ export const ValidateBenefit: API.OperationMethod<
   ValidateBenefitError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(238) as any as S.Schema<ValidateBenefitRequest>,
-  output: __S(241) as any as S.Schema<BenefitValidateResponse>,
+  input: ValidateBenefitRequest,
+  output: BenefitValidateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5098,10 +6409,10 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
-          createdByType: S.optional(S.String),
+          createdByType: S.optional(SystemDataCreatedByType),
           createdAt: S.optional(S.String),
           lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(S.String),
+          lastModifiedByType: S.optional(SystemDataLastModifiedByType),
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "SystemData" });
@@ -5125,20 +6436,20 @@ function __c0(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          entityType: S.String,
+          entityType: ConditionalCreditEntityType,
           displayName: S.optional(S.String),
           billingAccountResourceId: S.optional(S.String),
-          provisioningState: S.optional(S.String),
-          status: S.optional(S.String),
+          provisioningState: S.optional(BenefitProvisioningState),
+          status: S.optional(ConditionalCreditStatus),
           startAt: S.optional(S.String),
           endAt: S.optional(S.String),
           productCode: S.optional(S.String),
           benefitResourceId: S.optional(S.String),
           resourceId: S.optional(S.String),
-          productDetails: S.optional(__S(3)),
-          appliedScopeType: S.optional(S.String),
+          productDetails: S.optional(ProductDetailsBase),
+          appliedScopeType: S.optional(BenefitAppliedScopeType),
           invitationId: S.optional(S.String),
-          consumed: S.optional(__S(4)),
+          consumed: S.optional(Price),
         }),
       ).annotate({
         identifier: "ConditionalCreditProperties",
@@ -5151,7 +6462,7 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "UserAssignedIdentity" });
     case 7:
-      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(6)));
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(UserAssignedIdentity));
   }
 }
 function __c1(j: number): any {
@@ -5161,8 +6472,10 @@ function __c1(j: number): any {
         S.Struct({
           principalId: S.optional(S.String),
           tenantId: S.optional(S.String),
-          type: S.String,
-          userAssignedIdentities: S.optional(__S(7)),
+          type: ManagedServiceIdentityType,
+          userAssignedIdentities: S.optional(
+            CancelConditionalCreditResponseIdentityUserAssignedIdentitiesMap,
+          ),
         }),
       ).annotate({
         identifier: "CancelConditionalCreditResponseIdentity",
@@ -5171,7 +6484,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          tier: S.optional(S.String),
+          tier: S.optional(SkuTier),
           size: S.optional(S.String),
           family: S.optional(S.String),
           capacity: S.optional(S.Number),
@@ -5193,16 +6506,16 @@ function __c1(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(1)),
-          tags: S.optional(__S(2)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(CancelConditionalCreditResponseTagsMap),
           location: S.String,
-          properties: S.optional(__S(5)),
+          properties: S.optional(ConditionalCreditProperties),
           managedBy: S.optional(S.String),
           kind: S.optional(S.String),
           etag: S.optional(S.String),
-          identity: S.optional(__S(8)),
-          sku: S.optional(__S(9)),
-          plan: S.optional(__S(10)),
+          identity: S.optional(CancelConditionalCreditResponseIdentity),
+          sku: S.optional(Sku),
+          plan: S.optional(Plan),
         }),
       ).annotate({
         identifier: "CancelConditionalCreditResponse",
@@ -5234,14 +6547,14 @@ function __c1(j: number): any {
         S.Struct({
           currencyCode: S.optional(S.String),
           amount: S.optional(S.Number),
-          grain: S.optional(S.String),
+          grain: S.optional(CommitmentGrain),
         }),
       ).annotate({ identifier: "Commitment" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          redemption: S.optional(S.String),
-          expiration: S.optional(S.String),
+          redemption: S.optional(CreditRedemptionPolicy),
+          expiration: S.optional(CreditExpirationPolicy),
         }),
       ).annotate({ identifier: "CreditPolicies" });
   }
@@ -5256,58 +6569,58 @@ function __c2(j: number): any {
         }),
       ).annotate({ identifier: "CreditDimension" });
     case 1:
-      return S.Array(__S(16));
+      return S.Array(CreditDimension);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          allocation: S.optional(__S(14)),
+          allocation: S.optional(Commitment),
           startAt: S.optional(S.String),
           endAt: S.optional(S.String),
-          dimensions: S.optional(__S(17)),
+          dimensions: S.optional(CreditBreakdownItemDimensionsList),
         }),
       ).annotate({ identifier: "CreditBreakdownItem" });
     case 3:
-      return S.Array(__S(18));
+      return S.Array(CreditBreakdownItem);
     case 4:
-      return S.Array(S.String);
+      return S.Array(AppliedOn);
     case 5:
       return S.suspend(() =>
         S.Struct({
           skuTitle: S.optional(S.String),
           productFamily: S.optional(S.String),
           productType: S.optional(S.String),
-          appliedOn: S.optional(__S(20)),
+          appliedOn: S.optional(CreditProductDetailsAppliedOnList),
           appliedPrice: S.optional(S.String),
         }),
       ).annotate({ identifier: "CreditProductDetails" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(S.String),
+          status: S.optional(CreditStatus),
           productCode: S.optional(S.String),
           displayName: S.optional(S.String),
-          reason: S.optional(__S(13)),
-          credit: S.optional(__S(14)),
+          reason: S.optional(CreditReason),
+          credit: S.optional(Commitment),
           startAt: S.optional(S.String),
           endAt: S.optional(S.String),
-          policies: S.optional(__S(15)),
+          policies: S.optional(CreditPolicies),
           billingAccountResourceId: S.optional(S.String),
           billingProfileResourceId: S.optional(S.String),
           customerResourceId: S.optional(S.String),
-          breakdown: S.optional(__S(19)),
-          provisioningState: S.optional(S.String),
+          breakdown: S.optional(CreditPropertiesBreakdownList),
+          provisioningState: S.optional(BenefitProvisioningState),
           systemId: S.optional(S.String),
           orderId: S.optional(S.String),
           fundingSystemId: S.optional(S.String),
           resourceId: S.optional(S.String),
           invitationId: S.optional(S.String),
-          consumed: S.optional(__S(4)),
-          productDetails: S.optional(__S(21)),
-          appliedScopeType: S.optional(S.String),
+          consumed: S.optional(Price),
+          productDetails: S.optional(CreditProductDetails),
+          appliedScopeType: S.optional(BenefitAppliedScopeType),
         }),
       ).annotate({ identifier: "CreditProperties" });
     case 7:
-      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(6)));
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(UserAssignedIdentity));
   }
 }
 function __c3(j: number): any {
@@ -5317,8 +6630,8 @@ function __c3(j: number): any {
         S.Struct({
           principalId: S.optional(S.String),
           tenantId: S.optional(S.String),
-          type: S.String,
-          userAssignedIdentities: S.optional(__S(23)),
+          type: ManagedServiceIdentityType,
+          userAssignedIdentities: S.optional(CancelCreditResponseIdentityUserAssignedIdentitiesMap),
         }),
       ).annotate({
         identifier: "CancelCreditResponseIdentity",
@@ -5329,16 +6642,16 @@ function __c3(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(1)),
-          tags: S.optional(__S(2)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(CancelCreditResponseTagsMap),
           location: S.String,
-          properties: S.optional(__S(22)),
+          properties: S.optional(CreditProperties),
           managedBy: S.optional(S.String),
           kind: S.optional(S.String),
           etag: S.optional(S.String),
-          identity: S.optional(__S(24)),
-          sku: S.optional(__S(9)),
-          plan: S.optional(__S(10)),
+          identity: S.optional(CancelCreditResponseIdentity),
+          sku: S.optional(Sku),
+          plan: S.optional(Plan),
         }),
       ).annotate({ identifier: "CancelCreditResponse" });
     case 2:
@@ -5359,32 +6672,32 @@ function __c3(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          entityType: S.String,
+          entityType: DiscountEntityType,
           productCode: S.String,
           startAt: S.String,
           endAt: S.optional(S.String),
           systemId: S.optional(S.String),
-          provisioningState: S.optional(S.String),
+          provisioningState: S.optional(BenefitProvisioningState),
           billingAccountResourceId: S.optional(S.String),
           billingProfileResourceId: S.optional(S.String),
           customerResourceId: S.optional(S.String),
           invitationId: S.optional(S.String),
           displayName: S.optional(S.String),
-          status: S.optional(S.String),
+          status: S.optional(DiscountStatus),
           benefitResourceId: S.optional(S.String),
-          appliedScopeType: S.optional(S.String),
-          productDetails: S.optional(__S(3)),
+          appliedScopeType: S.optional(BenefitAppliedScopeType),
+          productDetails: S.optional(ProductDetailsBase),
         }),
       ).annotate({ identifier: "DiscountProperties" });
     case 4:
-      return S.Record(S.String, __S(6));
+      return S.Record(S.String, UserAssignedIdentity);
     case 5:
       return S.suspend(() =>
         S.Struct({
           principalId: S.optional(S.String),
           tenantId: S.optional(S.String),
-          type: S.String,
-          userAssignedIdentities: S.optional(__S(28)),
+          type: ManagedServiceIdentityType,
+          userAssignedIdentities: S.optional(ManagedServiceIdentityUserAssignedIdentitiesMap),
         }),
       ).annotate({ identifier: "ManagedServiceIdentity" });
     case 6:
@@ -5393,16 +6706,16 @@ function __c3(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(1)),
-          tags: S.optional(__S(2)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(CancelDiscountResponseTagsMap),
           location: S.String,
-          properties: S.optional(__S(27)),
+          properties: S.optional(DiscountProperties),
           managedBy: S.optional(S.String),
           kind: S.optional(S.String),
           etag: S.optional(S.String),
-          identity: S.optional(__S(29)),
-          sku: S.optional(__S(9)),
-          plan: S.optional(__S(10)),
+          identity: S.optional(ManagedServiceIdentity),
+          sku: S.optional(Sku),
+          plan: S.optional(Plan),
         }),
       ).annotate({ identifier: "CancelDiscountResponse" });
     case 7:
@@ -5437,7 +6750,7 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           productCode: S.optional(S.String),
-          charge: S.optional(__S(14)),
+          charge: S.optional(Commitment),
           startAt: S.optional(S.String),
           endAt: S.optional(S.String),
           resourceId: S.optional(S.String),
@@ -5449,41 +6762,41 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           milestoneId: S.optional(S.String),
-          commitment: S.optional(__S(4)),
+          commitment: S.optional(Price),
           endAt: S.optional(S.String),
-          automaticShortfall: S.optional(S.String),
-          automaticShortfallSuppressReason: S.optional(__S(32)),
-          status: S.optional(S.String),
-          shortfall: S.optional(__S(33)),
+          automaticShortfall: S.optional(EnablementMode),
+          automaticShortfallSuppressReason: S.optional(AutomaticShortfallSuppressReason),
+          status: S.optional(MaccMilestoneStatus),
+          shortfall: S.optional(Shortfall),
         }),
       ).annotate({ identifier: "MaccMilestone" });
     case 3:
-      return S.Array(__S(34));
+      return S.Array(MaccMilestone);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          provisioningState: S.optional(S.String),
-          status: S.optional(S.String),
-          entityType: S.String,
+          provisioningState: S.optional(BenefitProvisioningState),
+          status: S.optional(MaccStatus),
+          entityType: MaccEntityType,
           displayName: S.optional(S.String),
           productCode: S.optional(S.String),
           billingAccountResourceId: S.optional(S.String),
-          commitment: S.optional(__S(14)),
+          commitment: S.optional(Commitment),
           startAt: S.optional(S.String),
           endAt: S.optional(S.String),
           systemId: S.optional(S.String),
-          automaticShortfall: S.optional(S.String),
-          automaticShortfallSuppressReason: S.optional(__S(32)),
-          shortfall: S.optional(__S(33)),
-          milestones: S.optional(__S(35)),
+          automaticShortfall: S.optional(EnablementMode),
+          automaticShortfallSuppressReason: S.optional(AutomaticShortfallSuppressReason),
+          shortfall: S.optional(Shortfall),
+          milestones: S.optional(MaccModelPropertiesMilestonesList),
           resourceId: S.optional(S.String),
           allowContributors: S.optional(S.Boolean),
           primaryResourceId: S.optional(S.String),
           primaryBillingAccountResourceId: S.optional(S.String),
-          productDetails: S.optional(__S(3)),
-          appliedScopeType: S.optional(S.String),
+          productDetails: S.optional(ProductDetailsBase),
+          appliedScopeType: S.optional(BenefitAppliedScopeType),
           invitationId: S.optional(S.String),
-          consumed: S.optional(__S(4)),
+          consumed: S.optional(Price),
         }),
       ).annotate({ identifier: "MaccModelProperties" });
     case 5:
@@ -5492,30 +6805,30 @@ function __c4(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(1)),
-          tags: S.optional(__S(2)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(CancelMaccResponseTagsMap),
           location: S.String,
-          properties: S.optional(__S(36)),
+          properties: S.optional(MaccModelProperties),
           managedBy: S.optional(S.String),
           kind: S.optional(S.String),
           etag: S.optional(S.String),
-          identity: S.optional(__S(24)),
-          sku: S.optional(__S(9)),
-          plan: S.optional(__S(10)),
+          identity: S.optional(CancelMaccResponseIdentity),
+          sku: S.optional(Sku),
+          plan: S.optional(Plan),
         }),
       ).annotate({ identifier: "CancelMaccResponse" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          entityType: S.String,
+          entityType: ConditionalCreditEntityType,
           displayName: S.optional(S.String),
           billingAccountResourceId: S.optional(S.String),
-          status: S.optional(S.String),
+          status: S.optional(ConditionalCreditStatus),
           startAt: S.optional(S.String),
           endAt: S.optional(S.String),
           productCode: S.optional(S.String),
           resourceId: S.optional(S.String),
-          appliedScopeType: S.optional(S.String),
+          appliedScopeType: S.optional(BenefitAppliedScopeType),
           invitationId: S.optional(S.String),
         }),
       ).annotate({
@@ -5530,12 +6843,14 @@ function __c4(j: number): any {
 function __c5(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(39)));
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(UserAssignedIdentityInput));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          type: S.String,
-          userAssignedIdentities: S.optional(__S(40)),
+          type: ManagedServiceIdentityType,
+          userAssignedIdentities: S.optional(
+            ConditionalCreditsCreateOrUpdateRequestIdentityUserAssignedIdentitiesMap,
+          ),
         }),
       ).annotate({
         identifier: "ConditionalCreditsCreateOrUpdateRequestIdentity",
@@ -5546,14 +6861,14 @@ function __c5(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           conditionalCreditName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(2)),
+          tags: S.optional(ConditionalCreditsCreateOrUpdateRequestTagsMap),
           location: S.String,
-          properties: S.optional(__S(38)),
+          properties: S.optional(ConditionalCreditPropertiesInput),
           managedBy: S.optional(S.String),
           kind: S.optional(S.String),
-          identity: S.optional(__S(41)),
-          sku: S.optional(__S(9)),
-          plan: S.optional(__S(10)),
+          identity: S.optional(ConditionalCreditsCreateOrUpdateRequestIdentity),
+          sku: S.optional(Sku),
+          plan: S.optional(Plan),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -5570,27 +6885,27 @@ function __c5(j: number): any {
         S.Struct({
           productCode: S.optional(S.String),
           displayName: S.optional(S.String),
-          reason: S.optional(__S(13)),
-          credit: S.optional(__S(14)),
+          reason: S.optional(CreditReason),
+          credit: S.optional(Commitment),
           startAt: S.optional(S.String),
           endAt: S.optional(S.String),
-          policies: S.optional(__S(15)),
+          policies: S.optional(CreditPolicies),
           billingAccountResourceId: S.optional(S.String),
-          breakdown: S.optional(__S(19)),
+          breakdown: S.optional(CreditPropertiesInputBreakdownList),
           systemId: S.optional(S.String),
           fundingSystemId: S.optional(S.String),
           resourceId: S.optional(S.String),
           invitationId: S.optional(S.String),
-          appliedScopeType: S.optional(S.String),
+          appliedScopeType: S.optional(BenefitAppliedScopeType),
         }),
       ).annotate({ identifier: "CreditPropertiesInput" });
     case 4:
-      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(39)));
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(UserAssignedIdentityInput));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          type: S.String,
-          userAssignedIdentities: S.optional(__S(44)),
+          type: ManagedServiceIdentityType,
+          userAssignedIdentities: S.optional(CreateCreditRequestIdentityUserAssignedIdentitiesMap),
         }),
       ).annotate({
         identifier: "CreateCreditRequestIdentity",
@@ -5601,14 +6916,14 @@ function __c5(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           creditName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(2)),
+          tags: S.optional(CreateCreditRequestTagsMap),
           location: S.String,
-          properties: S.optional(__S(43)),
+          properties: S.optional(CreditPropertiesInput),
           managedBy: S.optional(S.String),
           kind: S.optional(S.String),
-          identity: S.optional(__S(45)),
-          sku: S.optional(__S(9)),
-          plan: S.optional(__S(10)),
+          identity: S.optional(CreateCreditRequestIdentity),
+          sku: S.optional(Sku),
+          plan: S.optional(Plan),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -5621,14 +6936,14 @@ function __c5(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          entityType: S.String,
+          entityType: DiscountEntityType,
           productCode: S.String,
           startAt: S.String,
           endAt: S.optional(S.String),
           systemId: S.optional(S.String),
           invitationId: S.optional(S.String),
           displayName: S.optional(S.String),
-          appliedScopeType: S.optional(S.String),
+          appliedScopeType: S.optional(BenefitAppliedScopeType),
         }),
       ).annotate({ identifier: "DiscountPropertiesInput" });
   }
@@ -5636,12 +6951,12 @@ function __c5(j: number): any {
 function __c6(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, __S(39));
+      return S.Record(S.String, UserAssignedIdentityInput);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          type: S.String,
-          userAssignedIdentities: S.optional(__S(48)),
+          type: ManagedServiceIdentityType,
+          userAssignedIdentities: S.optional(ManagedServiceIdentityInputUserAssignedIdentitiesMap),
         }),
       ).annotate({
         identifier: "ManagedServiceIdentityInput",
@@ -5652,14 +6967,14 @@ function __c6(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           discountName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(2)),
+          tags: S.optional(CreateDiscountRequestTagsMap),
           location: S.String,
-          properties: S.optional(__S(47)),
+          properties: S.optional(DiscountPropertiesInput),
           managedBy: S.optional(S.String),
           kind: S.optional(S.String),
-          identity: S.optional(__S(49)),
-          sku: S.optional(__S(9)),
-          plan: S.optional(__S(10)),
+          identity: S.optional(ManagedServiceIdentityInput),
+          sku: S.optional(Sku),
+          plan: S.optional(Plan),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -5674,7 +6989,7 @@ function __c6(j: number): any {
         S.Struct({
           productCode: S.optional(S.String),
           displayName: S.optional(S.String),
-          status: S.optional(S.String),
+          status: S.optional(FreeServicesStatus),
           startAt: S.optional(S.String),
           endAt: S.optional(S.String),
           invitationId: S.optional(S.String),
@@ -5689,14 +7004,14 @@ function __c6(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           freeServiceName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(2)),
+          tags: S.optional(CreateFreeServiceRequestTagsMap),
           location: S.String,
-          properties: S.optional(__S(51)),
+          properties: S.optional(FreeServicesPropertiesInput),
           managedBy: S.optional(S.String),
           kind: S.optional(S.String),
-          identity: S.optional(__S(45)),
-          sku: S.optional(__S(9)),
-          plan: S.optional(__S(10)),
+          identity: S.optional(CreateFreeServiceRequestIdentity),
+          sku: S.optional(Sku),
+          plan: S.optional(Plan),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -5711,16 +7026,16 @@ function __c6(j: number): any {
         S.Struct({
           productCode: S.optional(S.String),
           displayName: S.optional(S.String),
-          status: S.optional(S.String),
+          status: S.optional(FreeServicesStatus),
           startAt: S.optional(S.String),
           endAt: S.optional(S.String),
-          provisioningState: S.optional(S.String),
+          provisioningState: S.optional(BenefitProvisioningState),
           billingAccountResourceId: S.optional(S.String),
           billingProfileResourceId: S.optional(S.String),
           customerResourceId: S.optional(S.String),
           invitationId: S.optional(S.String),
           systemId: S.optional(S.String),
-          productDetails: S.optional(__S(3)),
+          productDetails: S.optional(ProductDetailsBase),
         }),
       ).annotate({ identifier: "FreeServicesProperties" });
     case 6:
@@ -5729,16 +7044,16 @@ function __c6(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(1)),
-          tags: S.optional(__S(2)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(CreateFreeServiceResponseTagsMap),
           location: S.String,
-          properties: S.optional(__S(53)),
+          properties: S.optional(FreeServicesProperties),
           managedBy: S.optional(S.String),
           kind: S.optional(S.String),
           etag: S.optional(S.String),
-          identity: S.optional(__S(24)),
-          sku: S.optional(__S(9)),
-          plan: S.optional(__S(10)),
+          identity: S.optional(CreateFreeServiceResponseIdentity),
+          sku: S.optional(Sku),
+          plan: S.optional(Plan),
         }),
       ).annotate({
         identifier: "CreateFreeServiceResponse",
@@ -5746,24 +7061,24 @@ function __c6(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(S.String),
-          entityType: S.String,
+          status: S.optional(MaccStatus),
+          entityType: MaccEntityType,
           displayName: S.optional(S.String),
           productCode: S.optional(S.String),
           billingAccountResourceId: S.optional(S.String),
-          commitment: S.optional(__S(14)),
+          commitment: S.optional(Commitment),
           startAt: S.optional(S.String),
           endAt: S.optional(S.String),
           systemId: S.optional(S.String),
-          automaticShortfall: S.optional(S.String),
-          automaticShortfallSuppressReason: S.optional(__S(32)),
-          shortfall: S.optional(__S(33)),
-          milestones: S.optional(__S(35)),
+          automaticShortfall: S.optional(EnablementMode),
+          automaticShortfallSuppressReason: S.optional(AutomaticShortfallSuppressReason),
+          shortfall: S.optional(Shortfall),
+          milestones: S.optional(MaccModelPropertiesInputMilestonesList),
           resourceId: S.optional(S.String),
           allowContributors: S.optional(S.Boolean),
           primaryResourceId: S.optional(S.String),
           primaryBillingAccountResourceId: S.optional(S.String),
-          appliedScopeType: S.optional(S.String),
+          appliedScopeType: S.optional(BenefitAppliedScopeType),
           invitationId: S.optional(S.String),
         }),
       ).annotate({ identifier: "MaccModelPropertiesInput" });
@@ -5777,14 +7092,14 @@ function __c7(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           maccName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(2)),
+          tags: S.optional(CreateMaccRequestTagsMap),
           location: S.String,
-          properties: S.optional(__S(55)),
+          properties: S.optional(MaccModelPropertiesInput),
           managedBy: S.optional(S.String),
           kind: S.optional(S.String),
-          identity: S.optional(__S(45)),
-          sku: S.optional(__S(9)),
-          plan: S.optional(__S(10)),
+          identity: S.optional(CreateMaccRequestIdentity),
+          sku: S.optional(Sku),
+          plan: S.optional(Plan),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -5814,7 +7129,7 @@ function __c7(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          instanceFlexibility: S.optional(S.String),
+          instanceFlexibility: S.optional(InstanceFlexibility),
         }),
       ).annotate({
         identifier: "ReservationOrderAliasRequestPropertiesReservedResourceProperties",
@@ -5824,17 +7139,19 @@ function __c7(j: number): any {
         S.Struct({
           displayName: S.optional(S.String),
           billingScopeId: S.optional(S.String),
-          term: S.optional(S.String),
-          billingPlan: S.optional(S.String),
-          appliedScopeType: S.optional(S.String),
-          appliedScopeProperties: S.optional(__S(58)),
+          term: S.optional(Term),
+          billingPlan: S.optional(BillingPlan),
+          appliedScopeType: S.optional(AppliedScopeType),
+          appliedScopeProperties: S.optional(AppliedScopeProperties),
           quantity: S.optional(S.Number),
           renew: S.optional(S.Boolean),
-          renewAction: S.optional(S.String),
-          reservedResourceType: S.optional(S.String),
+          renewAction: S.optional(RenewAction),
+          reservedResourceType: S.optional(ReservedResourceType),
           reviewDateTime: S.optional(S.String),
           benefitStartTime: S.optional(S.String),
-          reservedResourceProperties: S.optional(__S(59)),
+          reservedResourceProperties: S.optional(
+            ReservationOrderAliasRequestPropertiesReservedResourceProperties,
+          ),
         }),
       ).annotate({
         identifier: "ReservationOrderAliasRequestProperties",
@@ -5843,9 +7160,9 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           reservationOrderAliasName: S.String.pipe(T.Label()),
-          sku: __S(57),
+          sku: ResourceSku,
           location: S.optional(S.String),
-          properties: S.optional(__S(60)),
+          properties: S.optional(ReservationOrderAliasRequestProperties),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -5862,20 +7179,22 @@ function __c7(j: number): any {
         S.Struct({
           displayName: S.optional(S.String),
           reservationOrderId: S.optional(S.String),
-          provisioningState: S.optional(S.String),
+          provisioningState: S.optional(ProvisioningState),
           billingScopeId: S.optional(S.String),
-          term: S.optional(S.String),
-          billingPlan: S.optional(S.String),
-          appliedScopeType: S.optional(S.String),
-          appliedScopeProperties: S.optional(__S(58)),
+          term: S.optional(Term),
+          billingPlan: S.optional(BillingPlan),
+          appliedScopeType: S.optional(AppliedScopeType),
+          appliedScopeProperties: S.optional(AppliedScopeProperties),
           quantity: S.optional(S.Number),
           renew: S.optional(S.Boolean),
-          renewAction: S.optional(S.String),
+          renewAction: S.optional(RenewAction),
           renewalPurchaseDateTime: S.optional(S.String),
-          reservedResourceType: S.optional(S.String),
+          reservedResourceType: S.optional(ReservedResourceType),
           reviewDateTime: S.optional(S.String),
           benefitStartTime: S.optional(S.String),
-          reservedResourceProperties: S.optional(__S(59)),
+          reservedResourceProperties: S.optional(
+            ReservationOrderAliasResponsePropertiesReservedResourceProperties,
+          ),
         }),
       ).annotate({
         identifier: "ReservationOrderAliasResponseProperties",
@@ -5886,9 +7205,9 @@ function __c7(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(1)),
-          properties: S.optional(__S(62)),
-          sku: __S(57),
+          systemData: S.optional(SystemData),
+          properties: S.optional(ReservationOrderAliasResponseProperties),
+          sku: ResourceSku,
           location: S.optional(S.String),
         }),
       ).annotate({
@@ -5903,11 +7222,11 @@ function __c8(j: number): any {
         S.Struct({
           displayName: S.optional(S.String),
           billingScopeId: S.optional(S.String),
-          term: S.optional(S.String),
-          billingPlan: S.optional(S.String),
-          appliedScopeType: S.optional(S.String),
-          appliedScopeProperties: S.optional(__S(58)),
-          commitment: S.optional(__S(14)),
+          term: S.optional(Term),
+          billingPlan: S.optional(BillingPlan),
+          appliedScopeType: S.optional(AppliedScopeType),
+          appliedScopeProperties: S.optional(AppliedScopeProperties),
+          commitment: S.optional(Commitment),
           renew: S.optional(S.Boolean),
         }),
       ).annotate({
@@ -5917,8 +7236,8 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           savingsPlanOrderAliasName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(64)),
-          sku: __S(57),
+          properties: S.optional(SavingsPlanOrderAliasPropertiesInput),
+          sku: ResourceSku,
           kind: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -5936,13 +7255,13 @@ function __c8(j: number): any {
         S.Struct({
           displayName: S.optional(S.String),
           savingsPlanOrderId: S.optional(S.String),
-          provisioningState: S.optional(S.String),
+          provisioningState: S.optional(ProvisioningState),
           billingScopeId: S.optional(S.String),
-          term: S.optional(S.String),
-          billingPlan: S.optional(S.String),
-          appliedScopeType: S.optional(S.String),
-          appliedScopeProperties: S.optional(__S(58)),
-          commitment: S.optional(__S(14)),
+          term: S.optional(Term),
+          billingPlan: S.optional(BillingPlan),
+          appliedScopeType: S.optional(AppliedScopeType),
+          appliedScopeProperties: S.optional(AppliedScopeProperties),
+          commitment: S.optional(Commitment),
           renew: S.optional(S.Boolean),
         }),
       ).annotate({
@@ -5954,9 +7273,9 @@ function __c8(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(1)),
-          properties: S.optional(__S(66)),
-          sku: __S(57),
+          systemData: S.optional(SystemData),
+          properties: S.optional(SavingsPlanOrderAliasProperties),
+          sku: ResourceSku,
           kind: S.optional(S.String),
         }),
       ).annotate({
@@ -5967,7 +7286,7 @@ function __c8(j: number): any {
         S.Struct({
           sourceResourceId: S.optional(S.String),
           impactedBillingPeriod: S.optional(S.String),
-          credit: S.optional(__S(14)),
+          credit: S.optional(Commitment),
         }),
       ).annotate({
         identifier: "CreditSourcePropertiesInput",
@@ -5979,14 +7298,14 @@ function __c8(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           creditName: S.String.pipe(T.Label()),
           sourceName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(2)),
+          tags: S.optional(CreateSourceRequestTagsMap),
           location: S.String,
-          properties: S.optional(__S(68)),
+          properties: S.optional(CreditSourcePropertiesInput),
           managedBy: S.optional(S.String),
           kind: S.optional(S.String),
-          identity: S.optional(__S(45)),
-          sku: S.optional(__S(9)),
-          plan: S.optional(__S(10)),
+          identity: S.optional(CreateSourceRequestIdentity),
+          sku: S.optional(Sku),
+          plan: S.optional(Plan),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -5999,10 +7318,10 @@ function __c8(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(S.String),
+          status: S.optional(CreditStatus),
           sourceResourceId: S.optional(S.String),
           impactedBillingPeriod: S.optional(S.String),
-          credit: S.optional(__S(14)),
+          credit: S.optional(Commitment),
         }),
       ).annotate({ identifier: "CreditSourceProperties" });
     case 7:
@@ -6011,16 +7330,16 @@ function __c8(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(1)),
-          tags: S.optional(__S(2)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(CreateSourceResponseTagsMap),
           location: S.String,
-          properties: S.optional(__S(70)),
+          properties: S.optional(CreditSourceProperties),
           managedBy: S.optional(S.String),
           kind: S.optional(S.String),
           etag: S.optional(S.String),
-          identity: S.optional(__S(24)),
-          sku: S.optional(__S(9)),
-          plan: S.optional(__S(10)),
+          identity: S.optional(CreateSourceResponseIdentity),
+          sku: S.optional(Sku),
+          plan: S.optional(Plan),
         }),
       ).annotate({ identifier: "CreateSourceResponse" });
   }
@@ -6172,19 +7491,19 @@ function __c10(j: number): any {
         }),
       ).annotate({ identifier: "CatalogGroupCapability" });
     case 3:
-      return S.Array(__S(82));
+      return S.Array(CatalogGroupCapability);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          benefitResourceType: S.String,
+          benefitResourceType: ResourceType,
           displayName: S.optional(S.String),
           shortDescription: S.optional(S.String),
           longDescription: S.optional(S.String),
           learnMoreLink: S.optional(S.String),
-          keywords: S.optional(__S(81)),
+          keywords: S.optional(CatalogGroupPropertiesKeywordsList),
           icon: S.optional(S.String),
-          capabilities: S.optional(__S(83)),
-          disclaimers: S.optional(__S(81)),
+          capabilities: S.optional(CatalogGroupPropertiesCapabilitiesList),
+          disclaimers: S.optional(CatalogGroupPropertiesDisclaimersList),
         }),
       ).annotate({ identifier: "CatalogGroupProperties" });
     case 5:
@@ -6193,8 +7512,8 @@ function __c10(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(1)),
-          properties: S.optional(__S(84)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(CatalogGroupProperties),
         }),
       ).annotate({
         identifier: "GetBillingAccountCatalogGroupsOpsResponse",
@@ -6242,8 +7561,10 @@ function __c11(j: number): any {
         S.Struct({
           principalId: S.optional(S.String),
           tenantId: S.optional(S.String),
-          type: S.String,
-          userAssignedIdentities: S.optional(__S(23)),
+          type: ManagedServiceIdentityType,
+          userAssignedIdentities: S.optional(
+            GetConditionalCreditResponseIdentityUserAssignedIdentitiesMap,
+          ),
         }),
       ).annotate({
         identifier: "GetConditionalCreditResponseIdentity",
@@ -6254,16 +7575,16 @@ function __c11(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(1)),
-          tags: S.optional(__S(2)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(GetConditionalCreditResponseTagsMap),
           location: S.String,
-          properties: S.optional(__S(5)),
+          properties: S.optional(ConditionalCreditProperties),
           managedBy: S.optional(S.String),
           kind: S.optional(S.String),
           etag: S.optional(S.String),
-          identity: S.optional(__S(88)),
-          sku: S.optional(__S(9)),
-          plan: S.optional(__S(10)),
+          identity: S.optional(GetConditionalCreditResponseIdentity),
+          sku: S.optional(Sku),
+          plan: S.optional(Plan),
         }),
       ).annotate({
         identifier: "GetConditionalCreditResponse",
@@ -6289,13 +7610,13 @@ function __c11(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          credit: S.optional(__S(14)),
+          credit: S.optional(Commitment),
           startAt: S.optional(S.String),
           endAt: S.optional(S.String),
           resourceId: S.optional(S.String),
           systemId: S.optional(S.String),
           balanceVersion: S.optional(S.Number),
-          duration: S.optional(S.String),
+          duration: S.optional(Term),
         }),
       ).annotate({ identifier: "Award" });
     case 4:
@@ -6303,36 +7624,36 @@ function __c11(j: number): any {
         S.Struct({
           milestoneId: S.optional(S.String),
           name: S.optional(S.String),
-          status: S.optional(S.String),
+          status: S.optional(MilestoneStatus),
           endAt: S.optional(S.String),
-          spendTarget: S.optional(__S(4)),
-          award: S.optional(__S(91)),
+          spendTarget: S.optional(Price),
+          award: S.optional(Award),
         }),
       ).annotate({
         identifier: "ConditionalCreditMilestoneBase",
       });
     case 5:
-      return S.Array(__S(92));
+      return S.Array(ConditionalCreditMilestoneBase);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          entityType: S.String,
+          entityType: ConditionalCreditEntityType,
           displayName: S.optional(S.String),
           billingAccountResourceId: S.optional(S.String),
-          provisioningState: S.optional(S.String),
-          status: S.optional(S.String),
+          provisioningState: S.optional(BenefitProvisioningState),
+          status: S.optional(ConditionalCreditStatus),
           startAt: S.optional(S.String),
           endAt: S.optional(S.String),
           productCode: S.optional(S.String),
           benefitResourceId: S.optional(S.String),
           resourceId: S.optional(S.String),
-          productDetails: S.optional(__S(3)),
-          appliedScopeType: S.optional(S.String),
+          productDetails: S.optional(ProductDetailsBase),
+          appliedScopeType: S.optional(BenefitAppliedScopeType),
           invitationId: S.optional(S.String),
-          consumed: S.optional(__S(4)),
+          consumed: S.optional(Price),
           primaryResourceId: S.optional(S.String),
           systemId: S.optional(S.String),
-          milestones: S.optional(__S(93)),
+          milestones: S.optional(ContributorConditionalCreditPropertiesMilestonesList),
           primaryBillingAccountResourceId: S.optional(S.String),
         }),
       ).annotate({
@@ -6344,8 +7665,8 @@ function __c11(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(1)),
-          properties: S.optional(__S(94)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(ContributorConditionalCreditProperties),
         }),
       ).annotate({
         identifier: "GetConditionalCreditContributorFromPrimaryResponse",
@@ -6387,15 +7708,15 @@ function __c12(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          provisioningState: S.optional(S.String),
+          provisioningState: S.optional(BenefitProvisioningState),
           date: S.optional(S.String),
-          chargeType: S.optional(S.String),
-          billingStatus: S.optional(S.String),
+          chargeType: S.optional(TransactionChargeType),
+          billingStatus: S.optional(TransactionBillingStatus),
           invoiceResourceId: S.optional(S.String),
-          amountInBillingCurrency: S.optional(__S(4)),
-          amountInPricingCurrency: S.optional(__S(4)),
+          amountInBillingCurrency: S.optional(Price),
+          amountInPricingCurrency: S.optional(Price),
           productCode: S.optional(S.String),
-          productDetails: S.optional(__S(97)),
+          productDetails: S.optional(TransactionProductDetails),
         }),
       ).annotate({ identifier: "TransactionProperties" });
     case 3:
@@ -6404,8 +7725,8 @@ function __c12(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(1)),
-          properties: S.optional(__S(98)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(TransactionProperties),
         }),
       ).annotate({
         identifier: "GetConditionalCreditTransactionResponse",
@@ -6434,8 +7755,8 @@ function __c12(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(1)),
-          properties: S.optional(__S(36)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(MaccModelProperties),
         }),
       ).annotate({
         identifier: "GetContributorFromPrimaryResponse",
@@ -6513,16 +7834,16 @@ function __c13(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(1)),
-          tags: S.optional(__S(2)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(GetFreeServiceResponseTagsMap),
           location: S.String,
-          properties: S.optional(__S(53)),
+          properties: S.optional(FreeServicesProperties),
           managedBy: S.optional(S.String),
           kind: S.optional(S.String),
           etag: S.optional(S.String),
-          identity: S.optional(__S(24)),
-          sku: S.optional(__S(9)),
-          plan: S.optional(__S(10)),
+          identity: S.optional(GetFreeServiceResponseIdentity),
+          sku: S.optional(Sku),
+          plan: S.optional(Plan),
         }),
       ).annotate({ identifier: "GetFreeServiceResponse" });
     case 3:
@@ -6545,8 +7866,8 @@ function __c13(j: number): any {
         S.Struct({
           principalId: S.optional(S.String),
           tenantId: S.optional(S.String),
-          type: S.String,
-          userAssignedIdentities: S.optional(__S(23)),
+          type: ManagedServiceIdentityType,
+          userAssignedIdentities: S.optional(GetMaccResponseIdentityUserAssignedIdentitiesMap),
         }),
       ).annotate({ identifier: "GetMaccResponseIdentity" });
     case 5:
@@ -6555,16 +7876,16 @@ function __c13(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(1)),
-          tags: S.optional(__S(2)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(GetMaccResponseTagsMap),
           location: S.String,
-          properties: S.optional(__S(36)),
+          properties: S.optional(MaccModelProperties),
           managedBy: S.optional(S.String),
           kind: S.optional(S.String),
           etag: S.optional(S.String),
-          identity: S.optional(__S(108)),
-          sku: S.optional(__S(9)),
-          plan: S.optional(__S(10)),
+          identity: S.optional(GetMaccResponseIdentity),
+          sku: S.optional(Sku),
+          plan: S.optional(Plan),
         }),
       ).annotate({ identifier: "GetMaccResponse" });
     case 6:
@@ -6636,12 +7957,12 @@ function __c14(j: number): any {
         }),
       ).annotate({ identifier: "UtilizationAggregates" });
     case 3:
-      return S.Array(__S(114));
+      return S.Array(UtilizationAggregates);
     case 4:
       return S.suspend(() =>
         S.Struct({
           trend: S.optional(S.String),
-          aggregates: S.optional(__S(115)),
+          aggregates: S.optional(UtilizationAggregatesList),
         }),
       ).annotate({ identifier: "Utilization" });
     case 5:
@@ -6649,14 +7970,14 @@ function __c14(j: number): any {
         S.Struct({
           displayName: S.optional(S.String),
           billingScopeId: S.optional(S.String),
-          term: S.optional(S.String),
-          billingPlan: S.optional(S.String),
-          appliedScopeType: S.optional(S.String),
-          commitment: S.optional(__S(14)),
+          term: S.optional(Term),
+          billingPlan: S.optional(BillingPlan),
+          appliedScopeType: S.optional(AppliedScopeType),
+          commitment: S.optional(Commitment),
           effectiveDateTime: S.optional(S.String),
           renew: S.optional(S.Boolean),
-          renewAction: S.optional(S.String),
-          appliedScopeProperties: S.optional(__S(58)),
+          renewAction: S.optional(RenewAction),
+          appliedScopeProperties: S.optional(AppliedScopeProperties),
         }),
       ).annotate({
         identifier: "PurchaseRequestProperties",
@@ -6664,14 +7985,14 @@ function __c14(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          sku: S.optional(__S(57)),
-          properties: S.optional(__S(117)),
+          sku: S.optional(ResourceSku),
+          properties: S.optional(PurchaseRequestProperties),
         }),
       ).annotate({ identifier: "PurchaseRequest" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          purchaseProperties: S.optional(__S(118)),
+          purchaseProperties: S.optional(PurchaseRequest),
         }),
       ).annotate({ identifier: "RenewProperties" });
   }
@@ -6682,28 +8003,28 @@ function __c15(j: number): any {
       return S.suspend(() =>
         S.Struct({
           displayName: S.optional(S.String),
-          provisioningState: S.optional(S.String),
+          provisioningState: S.optional(ProvisioningState),
           displayProvisioningState: S.optional(S.String),
           billingScopeId: S.optional(S.String),
           billingProfileId: S.optional(S.String),
           customerId: S.optional(S.String),
           billingAccountId: S.optional(S.String),
-          term: S.optional(S.String),
-          billingPlan: S.optional(S.String),
-          appliedScopeType: S.optional(S.String),
+          term: S.optional(Term),
+          billingPlan: S.optional(BillingPlan),
+          appliedScopeType: S.optional(AppliedScopeType),
           userFriendlyAppliedScopeType: S.optional(S.String),
-          appliedScopeProperties: S.optional(__S(58)),
-          commitment: S.optional(__S(14)),
+          appliedScopeProperties: S.optional(AppliedScopeProperties),
+          commitment: S.optional(Commitment),
           effectiveDateTime: S.optional(S.String),
           expiryDateTime: S.optional(S.String),
           purchaseDateTime: S.optional(S.String),
           benefitStartTime: S.optional(S.String),
-          extendedStatusInfo: S.optional(__S(113)),
+          extendedStatusInfo: S.optional(ExtendedStatusInfo),
           renew: S.optional(S.Boolean),
-          utilization: S.optional(__S(116)),
+          utilization: S.optional(Utilization),
           renewSource: S.optional(S.String),
           renewDestination: S.optional(S.String),
-          renewProperties: S.optional(__S(119)),
+          renewProperties: S.optional(RenewProperties),
         }),
       ).annotate({
         identifier: "SavingsPlanModelProperties",
@@ -6714,9 +8035,9 @@ function __c15(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(1)),
-          properties: S.optional(__S(120)),
-          sku: __S(57),
+          systemData: S.optional(SystemData),
+          properties: S.optional(SavingsPlanModelProperties),
+          sku: ResourceSku,
         }),
       ).annotate({ identifier: "GetSavingsPlanResponse" });
     case 2:
@@ -6740,40 +8061,40 @@ function __c15(j: number): any {
         S.Struct({
           dueDate: S.optional(S.String),
           paymentDate: S.optional(S.String),
-          pricingCurrencyTotal: S.optional(__S(4)),
-          billingCurrencyTotal: S.optional(__S(4)),
-          status: S.optional(S.String),
-          extendedStatusInfo: S.optional(__S(113)),
+          pricingCurrencyTotal: S.optional(Price),
+          billingCurrencyTotal: S.optional(Price),
+          status: S.optional(PaymentStatus),
+          extendedStatusInfo: S.optional(ExtendedStatusInfo),
           billingAccount: S.optional(S.String),
         }),
       ).annotate({ identifier: "PaymentDetail" });
     case 4:
-      return S.Array(__S(123));
+      return S.Array(PaymentDetail);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          pricingCurrencyTotal: S.optional(__S(4)),
+          pricingCurrencyTotal: S.optional(Price),
           startDate: S.optional(S.String),
           nextPaymentDueDate: S.optional(S.String),
-          transactions: S.optional(__S(124)),
+          transactions: S.optional(BillingPlanInformationTransactionsList),
         }),
       ).annotate({ identifier: "BillingPlanInformation" });
     case 6:
       return S.suspend(() =>
         S.Struct({
           displayName: S.optional(S.String),
-          provisioningState: S.optional(S.String),
+          provisioningState: S.optional(ProvisioningState),
           billingScopeId: S.optional(S.String),
           billingProfileId: S.optional(S.String),
           customerId: S.optional(S.String),
           billingAccountId: S.optional(S.String),
-          term: S.optional(S.String),
-          billingPlan: S.optional(S.String),
+          term: S.optional(Term),
+          billingPlan: S.optional(BillingPlan),
           expiryDateTime: S.optional(S.String),
           benefitStartTime: S.optional(S.String),
-          planInformation: S.optional(__S(125)),
-          savingsPlans: S.optional(__S(81)),
-          extendedStatusInfo: S.optional(__S(113)),
+          planInformation: S.optional(BillingPlanInformation),
+          savingsPlans: S.optional(SavingsPlanOrderModelPropertiesSavingsPlansList),
+          extendedStatusInfo: S.optional(ExtendedStatusInfo),
         }),
       ).annotate({
         identifier: "SavingsPlanOrderModelProperties",
@@ -6784,9 +8105,9 @@ function __c15(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(1)),
-          properties: S.optional(__S(126)),
-          sku: __S(57),
+          systemData: S.optional(SystemData),
+          properties: S.optional(SavingsPlanOrderModelProperties),
+          sku: ResourceSku,
         }),
       ).annotate({
         identifier: "GetSavingsPlanOrderResponse",
@@ -6863,16 +8184,16 @@ function __c16(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(1)),
-          properties: S.optional(__S(36)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(MaccModelProperties),
         }),
       ).annotate({ identifier: "ApplicableMacc" });
     case 5:
-      return S.Array(__S(132));
+      return S.Array(ApplicableMacc);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(133)),
+          value: S.optional(ApplicableMaccListValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ApplicableMaccList" });
@@ -6902,16 +8223,16 @@ function __c17(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(1)),
-          properties: S.optional(__S(84)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(CatalogGroupProperties),
         }),
       ).annotate({ identifier: "CatalogGroup" });
     case 1:
-      return S.Array(__S(136));
+      return S.Array(CatalogGroup);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(137),
+          value: CatalogGroupListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "CatalogGroupListResult" });
@@ -6954,24 +8275,24 @@ function __c17(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(1)),
-          tags: S.optional(__S(2)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(ConditionalCreditTagsMap),
           location: S.String,
-          properties: S.optional(__S(5)),
+          properties: S.optional(ConditionalCreditProperties),
           managedBy: S.optional(S.String),
           kind: S.optional(S.String),
           etag: S.optional(S.String),
-          identity: S.optional(__S(24)),
-          sku: S.optional(__S(9)),
-          plan: S.optional(__S(10)),
+          identity: S.optional(ConditionalCreditIdentity),
+          sku: S.optional(Sku),
+          plan: S.optional(Plan),
         }),
       ).annotate({ identifier: "ConditionalCredit" });
     case 6:
-      return S.Array(__S(141));
+      return S.Array(ConditionalCredit);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          value: __S(142),
+          value: ConditionalCreditListValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ConditionalCreditList" });
@@ -7011,11 +8332,11 @@ function __c18(j: number): any {
         identifier: "ListConditionalCreditContributorFromApplicableConditionalCreditRequest",
       });
     case 2:
-      return S.Array(__S(95));
+      return S.Array(ConditionalCreditContributor);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: __S(146),
+          value: ConditionalCreditContributorListValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -7071,7 +8392,7 @@ function __c18(j: number): any {
         identifier: "ListConditionalCreditTransactionByParentRequest",
       });
     case 7:
-      return S.Array(__S(99));
+      return S.Array(ConditionalCreditTransaction);
   }
 }
 function __c19(j: number): any {
@@ -7079,7 +8400,7 @@ function __c19(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          value: __S(151),
+          value: ConditionalCreditTransactionsListValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -7104,7 +8425,7 @@ function __c19(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(133),
+          value: ContributorListValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ContributorList" });
@@ -7146,24 +8467,24 @@ function __c19(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(1)),
-          tags: S.optional(__S(2)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(CreditTagsMap),
           location: S.String,
-          properties: S.optional(__S(22)),
+          properties: S.optional(CreditProperties),
           managedBy: S.optional(S.String),
           kind: S.optional(S.String),
           etag: S.optional(S.String),
-          identity: S.optional(__S(108)),
-          sku: S.optional(__S(9)),
-          plan: S.optional(__S(10)),
+          identity: S.optional(CreditIdentity),
+          sku: S.optional(Sku),
+          plan: S.optional(Plan),
         }),
       ).annotate({ identifier: "Credit" });
     case 6:
-      return S.Array(__S(157));
+      return S.Array(Credit);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          value: __S(158),
+          value: CreditsListValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "CreditsList" });
@@ -7222,7 +8543,7 @@ function __c20(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: __S(151),
+          value: TransactionsListValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "TransactionsList" });
@@ -7243,11 +8564,11 @@ function __c20(j: number): any {
         identifier: "ListDiscountsResourceGroupRequest",
       });
     case 5:
-      return S.Array(__S(30));
+      return S.Array(Discount);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          value: __S(165),
+          value: DiscountListValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "DiscountList" });
@@ -7307,24 +8628,24 @@ function __c21(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(1)),
-          tags: S.optional(__S(2)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(FreeServicesTagsMap),
           location: S.String,
-          properties: S.optional(__S(53)),
+          properties: S.optional(FreeServicesProperties),
           managedBy: S.optional(S.String),
           kind: S.optional(S.String),
           etag: S.optional(S.String),
-          identity: S.optional(__S(108)),
-          sku: S.optional(__S(9)),
-          plan: S.optional(__S(10)),
+          identity: S.optional(FreeServicesIdentity),
+          sku: S.optional(Sku),
+          plan: S.optional(Plan),
         }),
       ).annotate({ identifier: "FreeServices" });
     case 3:
-      return S.Array(__S(170));
+      return S.Array(FreeServices);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(171)),
+          value: S.optional(FreeServicesListValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "FreeServicesList" });
@@ -7360,7 +8681,7 @@ function __c21(j: number): any {
         identifier: "ListMaccByResourceGroupRequest",
       });
     case 7:
-      return S.Array(__S(109));
+      return S.Array(Macc);
   }
 }
 function __c22(j: number): any {
@@ -7368,7 +8689,7 @@ function __c22(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          value: __S(175),
+          value: MaccListValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "MaccList" });
@@ -7429,17 +8750,17 @@ function __c22(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           isDataAction: S.optional(S.Boolean),
-          display: S.optional(__S(180)),
-          origin: S.optional(S.String),
-          actionType: S.optional(S.String),
+          display: S.optional(OperationDisplay),
+          origin: S.optional(OperationOrigin),
+          actionType: S.optional(OperationActionType),
         }),
       ).annotate({ identifier: "Operation" });
     case 6:
-      return S.Array(__S(181));
+      return S.Array(Operation);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(182)),
+          value: S.optional(ListOperationsResponseValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
@@ -7461,11 +8782,11 @@ function __c23(j: number): any {
         ),
       ).annotate({ identifier: "ListSavingsPlanRequest" });
     case 1:
-      return S.Array(__S(121));
+      return S.Array(SavingsPlanModel);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(185),
+          value: SavingsPlanModelListValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "SavingsPlanModelList" });
@@ -7507,17 +8828,17 @@ function __c23(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          value: S.optional(__S(188)),
+          value: S.optional(SavingsPlanSummaryCount),
         }),
       ).annotate({ identifier: "SavingsPlanSummary" });
     case 6:
-      return S.Array(__S(189));
+      return S.Array(SavingsPlanSummary);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(185)),
+          value: S.optional(SavingsPlanModelListResultValueList),
           nextLink: S.optional(S.String),
-          additionalProperties: S.optional(__S(190)),
+          additionalProperties: S.optional(SavingsPlanModelListResultAdditionalPropertiesList),
         }),
       ).annotate({
         identifier: "SavingsPlanModelListResult",
@@ -7545,17 +8866,17 @@ function __c24(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(1)),
-          properties: S.optional(__S(126)),
-          sku: __S(57),
+          systemData: S.optional(SystemData),
+          properties: S.optional(SavingsPlanOrderModelProperties),
+          sku: ResourceSku,
         }),
       ).annotate({ identifier: "SavingsPlanOrderModel" });
     case 2:
-      return S.Array(__S(193));
+      return S.Array(SavingsPlanOrderModel);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: __S(194),
+          value: SavingsPlanOrderModelListValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -7576,7 +8897,7 @@ function __c24(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          properties: S.optional(__S(196)),
+          properties: S.optional(SellerResourceListRequestProperties),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7589,11 +8910,13 @@ function __c24(j: number): any {
         identifier: "ListSellerResourceRequest",
       });
     case 6:
-      return S.Array(__S(109));
+      return S.Array(Macc);
     case 7:
-      return S.suspend(() => __S(198).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListSellerResourceResponse",
-      });
+      return S.suspend(() => ListSellerResourceResponseBodyList.pipe(T.RawResponseRoot())).annotate(
+        {
+          identifier: "ListSellerResourceResponse",
+        },
+      );
   }
 }
 function __c25(j: number): any {
@@ -7621,24 +8944,24 @@ function __c25(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(1)),
-          tags: S.optional(__S(2)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(CreditSourceTagsMap),
           location: S.String,
-          properties: S.optional(__S(70)),
+          properties: S.optional(CreditSourceProperties),
           managedBy: S.optional(S.String),
           kind: S.optional(S.String),
           etag: S.optional(S.String),
-          identity: S.optional(__S(108)),
-          sku: S.optional(__S(9)),
-          plan: S.optional(__S(10)),
+          identity: S.optional(CreditSourceIdentity),
+          sku: S.optional(Sku),
+          plan: S.optional(Plan),
         }),
       ).annotate({ identifier: "CreditSource" });
     case 2:
-      return S.Array(__S(201));
+      return S.Array(CreditSource);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: __S(202),
+          value: CreditSourcesListValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "CreditSourcesList" });
@@ -7664,7 +8987,7 @@ function __c25(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           maccName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(33)),
+          properties: S.optional(Shortfall),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7682,16 +9005,16 @@ function __c25(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(1)),
-          tags: S.optional(__S(2)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(MaccsChargeShortfallResponseTagsMap),
           location: S.String,
-          properties: S.optional(__S(36)),
+          properties: S.optional(MaccModelProperties),
           managedBy: S.optional(S.String),
           kind: S.optional(S.String),
           etag: S.optional(S.String),
-          identity: S.optional(__S(88)),
-          sku: S.optional(__S(9)),
-          plan: S.optional(__S(10)),
+          identity: S.optional(MaccsChargeShortfallResponseIdentity),
+          sku: S.optional(Sku),
+          plan: S.optional(Plan),
         }),
       ).annotate({
         identifier: "MaccsChargeShortfallResponse",
@@ -7745,7 +9068,7 @@ function __c26(j: number): any {
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
-          properties: S.optional(__S(209)),
+          properties: S.optional(RoleAssignmentEntityProperties),
         }),
       ).annotate({ identifier: "RoleAssignmentEntity" });
     case 3:
@@ -7753,13 +9076,13 @@ function __c26(j: number): any {
         S.Struct({
           displayName: S.optional(S.String),
           billingScopeId: S.optional(S.String),
-          term: S.optional(S.String),
-          billingPlan: S.optional(S.String),
-          appliedScopeType: S.optional(S.String),
-          commitment: S.optional(__S(14)),
+          term: S.optional(Term),
+          billingPlan: S.optional(BillingPlan),
+          appliedScopeType: S.optional(AppliedScopeType),
+          commitment: S.optional(Commitment),
           renew: S.optional(S.Boolean),
-          renewAction: S.optional(S.String),
-          appliedScopeProperties: S.optional(__S(58)),
+          renewAction: S.optional(RenewAction),
+          appliedScopeProperties: S.optional(AppliedScopeProperties),
         }),
       ).annotate({
         identifier: "PurchaseRequestPropertiesInput",
@@ -7767,30 +9090,30 @@ function __c26(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          sku: S.optional(__S(57)),
-          properties: S.optional(__S(211)),
+          sku: S.optional(ResourceSku),
+          properties: S.optional(PurchaseRequestPropertiesInput),
         }),
       ).annotate({ identifier: "PurchaseRequestInput" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          purchaseProperties: S.optional(__S(212)),
+          purchaseProperties: S.optional(PurchaseRequestInput),
         }),
       ).annotate({ identifier: "RenewPropertiesInput" });
     case 6:
       return S.suspend(() =>
         S.Struct({
           displayName: S.optional(S.String),
-          appliedScopeType: S.optional(S.String),
-          appliedScopeProperties: S.optional(__S(58)),
+          appliedScopeType: S.optional(AppliedScopeType),
+          appliedScopeProperties: S.optional(AppliedScopeProperties),
           renew: S.optional(S.Boolean),
-          renewProperties: S.optional(__S(213)),
+          renewProperties: S.optional(RenewPropertiesInput),
         }),
       ).annotate({
         identifier: "SavingsPlanUpdateRequestPropertiesInput",
       });
     case 7:
-      return S.Array(__S(214));
+      return S.Array(SavingsPlanUpdateRequestPropertiesInput);
   }
 }
 function __c27(j: number): any {
@@ -7800,7 +9123,7 @@ function __c27(j: number): any {
         S.Struct({
           savingsPlanOrderId: S.String.pipe(T.Label()),
           savingsPlanId: S.String.pipe(T.Label()),
-          benefits: S.optional(__S(215)),
+          benefits: S.optional(SavingsPlanValidateUpdateRequestBenefitsList),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7823,11 +9146,11 @@ function __c27(j: number): any {
         identifier: "SavingsPlanValidResponseProperty",
       });
     case 2:
-      return S.Array(__S(217));
+      return S.Array(SavingsPlanValidResponseProperty);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          benefits: S.optional(__S(218)),
+          benefits: S.optional(SavingsPlanValidateResponseBenefitsList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -7836,10 +9159,10 @@ function __c27(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          credit: S.optional(__S(14)),
+          credit: S.optional(Commitment),
           startAt: S.optional(S.String),
           endAt: S.optional(S.String),
-          duration: S.optional(S.String),
+          duration: S.optional(Term),
         }),
       ).annotate({ identifier: "AwardInput" });
     case 5:
@@ -7847,23 +9170,23 @@ function __c27(j: number): any {
         S.Struct({
           milestoneId: S.optional(S.String),
           name: S.optional(S.String),
-          status: S.optional(S.String),
+          status: S.optional(MilestoneStatus),
           endAt: S.optional(S.String),
-          spendTarget: S.optional(__S(4)),
-          award: S.optional(__S(220)),
+          spendTarget: S.optional(Price),
+          award: S.optional(AwardInput),
         }),
       ).annotate({
         identifier: "ConditionalCreditMilestoneInput",
       });
     case 6:
-      return S.Array(__S(221));
+      return S.Array(ConditionalCreditMilestoneInput);
     case 7:
       return S.suspend(() =>
         S.Struct({
           displayName: S.optional(S.String),
           endAt: S.optional(S.String),
-          allowContributors: S.optional(S.String),
-          milestones: S.optional(__S(222)),
+          allowContributors: S.optional(EnablementMode),
+          milestones: S.optional(ConditionalCreditPatchRequestPropertiesInputMilestonesList),
         }),
       ).annotate({
         identifier: "ConditionalCreditPatchRequestPropertiesInput",
@@ -7878,8 +9201,8 @@ function __c28(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           conditionalCreditName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(223)),
-          tags: S.optional(__S(2)),
+          properties: S.optional(ConditionalCreditPatchRequestPropertiesInput),
+          tags: S.optional(UpdateConditionalCreditRequestTagsMap),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -7894,9 +9217,9 @@ function __c28(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          credit: S.optional(__S(14)),
+          credit: S.optional(Commitment),
           endAt: S.optional(S.String),
-          breakdown: S.optional(__S(19)),
+          breakdown: S.optional(CreditPatchPropertiesBreakdownList),
         }),
       ).annotate({ identifier: "CreditPatchProperties" });
     case 2:
@@ -7905,8 +9228,8 @@ function __c28(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           creditName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(2)),
-          properties: S.optional(__S(225)),
+          tags: S.optional(UpdateCreditRequestTagsMap),
+          properties: S.optional(CreditPatchProperties),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -7931,8 +9254,8 @@ function __c28(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           discountName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(227)),
-          tags: S.optional(__S(2)),
+          properties: S.optional(DiscountPatchRequestProperties),
+          tags: S.optional(UpdateDiscountRequestTagsMap),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -7956,8 +9279,8 @@ function __c28(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           freeServiceName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(229)),
-          tags: S.optional(__S(2)),
+          properties: S.optional(FreeServicesPatchRequestProperties),
+          tags: S.optional(UpdateFreeServiceRequestTagsMap),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -7970,14 +9293,14 @@ function __c28(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          commitment: S.optional(__S(14)),
+          commitment: S.optional(Commitment),
           endAt: S.optional(S.String),
           allowContributors: S.optional(S.Boolean),
-          automaticShortfall: S.optional(S.String),
-          automaticShortfallSuppressReason: S.optional(__S(32)),
+          automaticShortfall: S.optional(EnablementMode),
+          automaticShortfallSuppressReason: S.optional(AutomaticShortfallSuppressReason),
           displayName: S.optional(S.String),
-          status: S.optional(S.String),
-          milestones: S.optional(__S(35)),
+          status: S.optional(MaccMilestoneStatus),
+          milestones: S.optional(MaccPatchRequestPropertiesMilestonesList),
           primaryResourceId: S.optional(S.String),
           primaryBillingAccountResourceId: S.optional(S.String),
         }),
@@ -7994,8 +9317,8 @@ function __c29(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           maccName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(231)),
-          tags: S.optional(__S(2)),
+          properties: S.optional(MaccPatchRequestProperties),
+          tags: S.optional(UpdateMaccRequestTagsMap),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -8010,7 +9333,7 @@ function __c29(j: number): any {
         S.Struct({
           savingsPlanOrderId: S.String.pipe(T.Label()),
           savingsPlanId: S.String.pipe(T.Label()),
-          properties: S.optional(__S(214)),
+          properties: S.optional(SavingsPlanUpdateRequestPropertiesInput),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -8026,9 +9349,9 @@ function __c29(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(1)),
-          properties: S.optional(__S(120)),
-          sku: __S(57),
+          systemData: S.optional(SystemData),
+          properties: S.optional(SavingsPlanModelProperties),
+          sku: ResourceSku,
         }),
       ).annotate({
         identifier: "UpdateSavingsPlanResponse",
@@ -8040,7 +9363,7 @@ function __c29(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           creditName: S.String.pipe(T.Label()),
           sourceName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(2)),
+          tags: S.optional(UpdateSourceRequestTagsMap),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -8053,15 +9376,15 @@ function __c29(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          benefitType: S.String,
+          benefitType: BenefitType,
         }),
       ).annotate({ identifier: "BenefitValidateModel" });
     case 5:
-      return S.Array(__S(236));
+      return S.Array(BenefitValidateModel);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          benefits: S.optional(__S(237)),
+          benefits: S.optional(ValidateBenefitRequestBenefitsList),
         }).pipe(
           T.Http({
             method: "POST",
@@ -8087,84 +9410,13 @@ function __c29(j: number): any {
 function __c30(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(239));
+      return S.Array(BenefitValidateResponseProperty);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          benefits: S.optional(__S(240)),
+          benefits: S.optional(BenefitValidateResponseBenefitsList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "BenefitValidateResponse" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
-    case 9:
-      return __c9(i & 7);
-    case 10:
-      return __c10(i & 7);
-    case 11:
-      return __c11(i & 7);
-    case 12:
-      return __c12(i & 7);
-    case 13:
-      return __c13(i & 7);
-    case 14:
-      return __c14(i & 7);
-    case 15:
-      return __c15(i & 7);
-    case 16:
-      return __c16(i & 7);
-    case 17:
-      return __c17(i & 7);
-    case 18:
-      return __c18(i & 7);
-    case 19:
-      return __c19(i & 7);
-    case 20:
-      return __c20(i & 7);
-    case 21:
-      return __c21(i & 7);
-    case 22:
-      return __c22(i & 7);
-    case 23:
-      return __c23(i & 7);
-    case 24:
-      return __c24(i & 7);
-    case 25:
-      return __c25(i & 7);
-    case 26:
-      return __c26(i & 7);
-    case 27:
-      return __c27(i & 7);
-    case 28:
-      return __c28(i & 7);
-    case 29:
-      return __c29(i & 7);
-    case 30:
-      return __c30(i & 7);
   }
 }

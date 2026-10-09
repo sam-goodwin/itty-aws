@@ -6,8 +6,6 @@ import * as S from "@distilled.cloud/core/schema";
 import { VercelProtocol, type VercelOpError, type VercelOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { VercelOpError, VercelOpContext };
 
@@ -57,6 +55,11 @@ export class PaymentRequired
   ) {}
 
 export type CreateEdgeConfigRequestItemsMap = { [key: string]: unknown | undefined };
+const CreateEdgeConfigRequestItemsMap = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<CreateEdgeConfigRequestItemsMap>;
+
 export interface CreateEdgeConfigRequest {
   /** The Team identifier to perform the request on behalf of. */
   teamId?: string;
@@ -64,6 +67,11 @@ export interface CreateEdgeConfigRequest {
   slug?: string;
   items?: CreateEdgeConfigRequestItemsMap;
 }
+const CreateEdgeConfigRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<CreateEdgeConfigRequest>;
+
 export interface CreateEdgeConfigResponse {
   createdAt: number;
   /** The ID of the user who created the Global Config, optional because it is not always set. */
@@ -77,6 +85,11 @@ export interface CreateEdgeConfigResponse {
   slug: string;
   updatedAt: number;
 }
+const CreateEdgeConfigResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<CreateEdgeConfigResponse>;
+
 export interface CreateEdgeConfigTokenRequest {
   edgeConfigId: string;
   /** The Team identifier to perform the request on behalf of. */
@@ -85,10 +98,20 @@ export interface CreateEdgeConfigTokenRequest {
   slug?: string;
   label: string;
 }
+const CreateEdgeConfigTokenRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<CreateEdgeConfigTokenRequest>;
+
 export interface CreateEdgeConfigTokenResponse {
   id: string;
   token: string;
 }
+const CreateEdgeConfigTokenResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<CreateEdgeConfigTokenResponse>;
+
 export interface DeleteEdgeConfigRequest {
   edgeConfigId: string;
   /** The Team identifier to perform the request on behalf of. */
@@ -96,7 +119,17 @@ export interface DeleteEdgeConfigRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
+const DeleteEdgeConfigRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<DeleteEdgeConfigRequest>;
+
 export interface DeleteEdgeConfigResponse {}
+const DeleteEdgeConfigResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<DeleteEdgeConfigResponse>;
+
 export interface DeleteEdgeConfigSchemaRequest {
   edgeConfigId: string;
   /** The Team identifier to perform the request on behalf of. */
@@ -104,9 +137,25 @@ export interface DeleteEdgeConfigSchemaRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
+const DeleteEdgeConfigSchemaRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<DeleteEdgeConfigSchemaRequest>;
+
 export interface DeleteEdgeConfigSchemaResponse {}
+const DeleteEdgeConfigSchemaResponse =
+  DeleteEdgeConfigResponse as any as S.Schema<DeleteEdgeConfigSchemaResponse>;
+
 export type DeleteEdgeConfigTokensRequestTokensList = Array<string>;
+const DeleteEdgeConfigTokensRequestTokensList = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<DeleteEdgeConfigTokensRequestTokensList>;
+
 export type DeleteEdgeConfigTokensRequestIdsList = Array<string>;
+const DeleteEdgeConfigTokensRequestIdsList =
+  DeleteEdgeConfigTokensRequestTokensList as any as S.Schema<DeleteEdgeConfigTokensRequestIdsList>;
+
 export interface DeleteEdgeConfigTokensRequest {
   edgeConfigId: string;
   /** The Team identifier to perform the request on behalf of. */
@@ -116,7 +165,15 @@ export interface DeleteEdgeConfigTokensRequest {
   tokens?: DeleteEdgeConfigTokensRequestTokensList;
   ids?: DeleteEdgeConfigTokensRequestIdsList;
 }
+const DeleteEdgeConfigTokensRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<DeleteEdgeConfigTokensRequest>;
+
 export interface DeleteEdgeConfigTokensResponse {}
+const DeleteEdgeConfigTokensResponse =
+  DeleteEdgeConfigResponse as any as S.Schema<DeleteEdgeConfigTokensResponse>;
+
 export interface GetEdgeConfigRequest {
   edgeConfigId: string;
   /** The Team identifier to perform the request on behalf of. */
@@ -124,6 +181,8 @@ export interface GetEdgeConfigRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
+const GetEdgeConfigRequest = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<GetEdgeConfigRequest>;
+
 export interface GetEdgeConfigResponse {
   createdAt: number;
   /** The ID of the user who created the Global Config, optional because it is not always set. */
@@ -137,6 +196,8 @@ export interface GetEdgeConfigResponse {
   slug: string;
   updatedAt: number;
 }
+const GetEdgeConfigResponse = CreateEdgeConfigResponse as any as S.Schema<GetEdgeConfigResponse>;
+
 export interface GetEdgeConfigBackupRequest {
   edgeConfigId: string;
   edgeConfigBackupVersionId: string;
@@ -145,6 +206,11 @@ export interface GetEdgeConfigBackupRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
+const GetEdgeConfigBackupRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<GetEdgeConfigBackupRequest>;
+
 export type GlobalConfigItemValueCase2Map = { [key: string]: GlobalConfigItemValue | undefined };
 export type GlobalConfigItemValueCase3List = Array<GlobalConfigItemValue>;
 export type GlobalConfigItemValue =
@@ -153,6 +219,8 @@ export type GlobalConfigItemValue =
   | GlobalConfigItemValueCase2Map
   | GlobalConfigItemValueCase3List
   | boolean;
+const GlobalConfigItemValue = S.Unknown as any as S.Schema<GlobalConfigItemValue>;
+
 export interface GetEdgeConfigBackupResponseBodyCase0BackupItemsValue {
   createdAt: number;
   description?: string;
@@ -175,6 +243,11 @@ export interface GetEdgeConfigBackupResponseBodyCase0Metadata {
   updatedAt?: string;
   updatedBy?: string;
 }
+const GetEdgeConfigBackupResponseBodyCase0Metadata = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<GetEdgeConfigBackupResponseBodyCase0Metadata>;
+
 export interface GetEdgeConfigBackupResponseBodyCase0User {
   avatar?: string;
   email: string;
@@ -215,7 +288,15 @@ export interface GetEdgeConfigBackupResponseBodyCase1 {
 export type GetEdgeConfigBackupResponseBody =
   | GetEdgeConfigBackupResponseBodyCase0
   | GetEdgeConfigBackupResponseBodyCase1;
+const GetEdgeConfigBackupResponseBody =
+  S.Unknown as any as S.Schema<GetEdgeConfigBackupResponseBody>;
+
 export type GetEdgeConfigBackupResponse = GetEdgeConfigBackupResponseBody;
+const GetEdgeConfigBackupResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<GetEdgeConfigBackupResponse>;
+
 export interface GetEdgeConfigBackupsRequest {
   edgeConfigId: string;
   next?: string;
@@ -226,6 +307,11 @@ export interface GetEdgeConfigBackupsRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
+const GetEdgeConfigBackupsRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<GetEdgeConfigBackupsRequest>;
+
 export type GetEdgeConfigBackupsResponseBackupsItemMetadata =
   GetEdgeConfigBackupResponseBodyCase0Metadata;
 export interface GetEdgeConfigBackupsResponseBackupsItem {
@@ -233,16 +319,36 @@ export interface GetEdgeConfigBackupsResponseBackupsItem {
   id: string;
   lastModified: number;
 }
+const GetEdgeConfigBackupsResponseBackupsItem = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<GetEdgeConfigBackupsResponseBackupsItem>;
+
 export type GetEdgeConfigBackupsResponseBackupsList =
   Array<GetEdgeConfigBackupsResponseBackupsItem>;
+const GetEdgeConfigBackupsResponseBackupsList = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<GetEdgeConfigBackupsResponseBackupsList>;
+
 export interface GetEdgeConfigBackupsResponsePagination {
   hasNext: boolean;
   next?: string;
 }
+const GetEdgeConfigBackupsResponsePagination = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<GetEdgeConfigBackupsResponsePagination>;
+
 export interface GetEdgeConfigBackupsResponse {
   backups: GetEdgeConfigBackupsResponseBackupsList;
   pagination: GetEdgeConfigBackupsResponsePagination;
 }
+const GetEdgeConfigBackupsResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<GetEdgeConfigBackupsResponse>;
+
 export interface GetEdgeConfigItemRequest {
   edgeConfigId: string;
   edgeConfigItemKey: string;
@@ -251,6 +357,11 @@ export interface GetEdgeConfigItemRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
+const GetEdgeConfigItemRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<GetEdgeConfigItemRequest>;
+
 /** The Global Config. */
 export interface GlobalConfigItem {
   createdAt: number;
@@ -260,6 +371,8 @@ export interface GlobalConfigItem {
   updatedAt: number;
   value: GlobalConfigItemValue | null;
 }
+const GlobalConfigItem = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<GlobalConfigItem>;
+
 export interface GetEdgeConfigItemsRequest {
   edgeConfigId: string;
   /** The Team identifier to perform the request on behalf of. */
@@ -267,14 +380,34 @@ export interface GetEdgeConfigItemsRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
+const GetEdgeConfigItemsRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<GetEdgeConfigItemsRequest>;
+
 export type GetEdgeConfigItemsResponseBodyList = Array<GlobalConfigItem>;
+const GetEdgeConfigItemsResponseBodyList = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<GetEdgeConfigItemsResponseBodyList>;
+
 export type GetEdgeConfigItemsResponse = GetEdgeConfigItemsResponseBodyList;
+const GetEdgeConfigItemsResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<GetEdgeConfigItemsResponse>;
+
 export interface GetEdgeConfigsRequest {
   /** The Team identifier to perform the request on behalf of. */
   teamId?: string;
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
+const GetEdgeConfigsRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<GetEdgeConfigsRequest>;
+
 /** A Global Config */
 export interface GetEdgeConfigsResponseBodyItem {
   createdAt: number;
@@ -289,8 +422,23 @@ export interface GetEdgeConfigsResponseBodyItem {
   slug: string;
   updatedAt: number;
 }
+const GetEdgeConfigsResponseBodyItem = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<GetEdgeConfigsResponseBodyItem>;
+
 export type GetEdgeConfigsResponseBodyList = Array<GetEdgeConfigsResponseBodyItem>;
+const GetEdgeConfigsResponseBodyList = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<GetEdgeConfigsResponseBodyList>;
+
 export type GetEdgeConfigsResponse = GetEdgeConfigsResponseBodyList;
+const GetEdgeConfigsResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<GetEdgeConfigsResponse>;
+
 export interface GetEdgeConfigSchemaRequest {
   edgeConfigId: string;
   /** The Team identifier to perform the request on behalf of. */
@@ -298,7 +446,17 @@ export interface GetEdgeConfigSchemaRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
+const GetEdgeConfigSchemaRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<GetEdgeConfigSchemaRequest>;
+
 export type GetEdgeConfigSchemaResponse = unknown;
+const GetEdgeConfigSchemaResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<GetEdgeConfigSchemaResponse>;
+
 export interface GetEdgeConfigTokenRequest {
   edgeConfigId: string;
   token: string;
@@ -307,6 +465,11 @@ export interface GetEdgeConfigTokenRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
+const GetEdgeConfigTokenRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<GetEdgeConfigTokenRequest>;
+
 /** The Global Config. */
 export interface GlobalConfigToken {
   createdAt: number;
@@ -319,6 +482,8 @@ export interface GlobalConfigToken {
   /** Deprecated: the full, plaintext token. - Returned once by `POST /v1/edge-config/:edgeConfigId/token` (create). - Still returned by `GET /v1/edge-config/:edgeConfigId/token/:token` (detail) for backwards compatibility, but scheduled for removal. - **Not** returned by `GET /v1/edge-config/:edgeConfigId/tokens` (list); use `partialToken` for display and `id` to reference tokens. Do not rely on this field being present on read operations. Prefer `partialToken` for display and `id` for references. */
   token?: string;
 }
+const GlobalConfigToken = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<GlobalConfigToken>;
+
 export interface GetEdgeConfigTokensRequest {
   edgeConfigId: string;
   /** The Team identifier to perform the request on behalf of. */
@@ -326,8 +491,23 @@ export interface GetEdgeConfigTokensRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
+const GetEdgeConfigTokensRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<GetEdgeConfigTokensRequest>;
+
 export type GetEdgeConfigTokensResponseBodyList = Array<GlobalConfigToken>;
+const GetEdgeConfigTokensResponseBodyList = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<GetEdgeConfigTokensResponseBodyList>;
+
 export type GetEdgeConfigTokensResponse = GetEdgeConfigTokensResponseBodyList;
+const GetEdgeConfigTokensResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<GetEdgeConfigTokensResponse>;
+
 export type PatchEdgeConfigItemsRequestItemsItemCase0Operation = "create";
 export interface PatchEdgeConfigItemsRequestItemsItemCase0 {
   operation: PatchEdgeConfigItemsRequestItemsItemCase0Operation;
@@ -349,7 +529,15 @@ export type PatchEdgeConfigItemsRequestItemsItem =
   | PatchEdgeConfigItemsRequestItemsItemCase1
   | PatchEdgeConfigItemsRequestItemsItemCase2
   | PatchEdgeConfigItemsRequestItemsItemCase3;
+const PatchEdgeConfigItemsRequestItemsItem =
+  S.Unknown as any as S.Schema<PatchEdgeConfigItemsRequestItemsItem>;
+
 export type PatchEdgeConfigItemsRequestItemsList = Array<PatchEdgeConfigItemsRequestItemsItem>;
+const PatchEdgeConfigItemsRequestItemsList = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<PatchEdgeConfigItemsRequestItemsList>;
+
 export interface PatchEdgeConfigItemsRequest {
   edgeConfigId: string;
   /** The Team identifier to perform the request on behalf of. */
@@ -358,9 +546,19 @@ export interface PatchEdgeConfigItemsRequest {
   slug?: string;
   items: PatchEdgeConfigItemsRequestItemsList;
 }
+const PatchEdgeConfigItemsRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<PatchEdgeConfigItemsRequest>;
+
 export interface PatchEdgeConfigItemsResponse {
   status: string;
 }
+const PatchEdgeConfigItemsResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<PatchEdgeConfigItemsResponse>;
+
 export interface PatchEdgeConfigSchemaRequest {
   edgeConfigId: string;
   dryRun?: string;
@@ -370,7 +568,15 @@ export interface PatchEdgeConfigSchemaRequest {
   slug?: string;
   definition: unknown;
 }
+const PatchEdgeConfigSchemaRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<PatchEdgeConfigSchemaRequest>;
+
 export type PatchEdgeConfigSchemaResponse = unknown;
+const PatchEdgeConfigSchemaResponse =
+  GetEdgeConfigSchemaResponse as any as S.Schema<PatchEdgeConfigSchemaResponse>;
+
 export interface RestoreEdgeConfigBackupRequest {
   edgeConfigId: string;
   edgeConfigBackupVersionId: string;
@@ -379,13 +585,25 @@ export interface RestoreEdgeConfigBackupRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
+const RestoreEdgeConfigBackupRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<RestoreEdgeConfigBackupRequest>;
+
 export type RestoreEdgeConfigBackupResponseStatus = "ok";
+const RestoreEdgeConfigBackupResponseStatus = S.String;
+
 export interface RestoreEdgeConfigBackupResponse {
   digest: string;
   previousDigest: string;
   restoredFrom: string;
   status: RestoreEdgeConfigBackupResponseStatus;
 }
+const RestoreEdgeConfigBackupResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  0,
+) as any as S.Schema<RestoreEdgeConfigBackupResponse>;
+
 export interface UpdateEdgeConfigRequest {
   edgeConfigId: string;
   /** The Team identifier to perform the request on behalf of. */
@@ -393,6 +611,11 @@ export interface UpdateEdgeConfigRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
+const UpdateEdgeConfigRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  1,
+) as any as S.Schema<UpdateEdgeConfigRequest>;
+
 export interface UpdateEdgeConfigResponse {
   createdAt: number;
   /** The ID of the user who created the Global Config, optional because it is not always set. */
@@ -406,6 +629,9 @@ export interface UpdateEdgeConfigResponse {
   slug: string;
   updatedAt: number;
 }
+const UpdateEdgeConfigResponse =
+  CreateEdgeConfigResponse as any as S.Schema<UpdateEdgeConfigResponse>;
+
 export type CreateEdgeConfigError =
   | BadRequest
   | PaymentRequired
@@ -419,8 +645,8 @@ export const createEdgeConfig: API.OperationMethod<
   CreateEdgeConfigError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1) as any as S.Schema<CreateEdgeConfigRequest>,
-  output: __S(2) as any as S.Schema<CreateEdgeConfigResponse>,
+  input: CreateEdgeConfigRequest,
+  output: CreateEdgeConfigResponse,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -440,8 +666,8 @@ export const createEdgeConfigToken: API.OperationMethod<
   CreateEdgeConfigTokenError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3) as any as S.Schema<CreateEdgeConfigTokenRequest>,
-  output: __S(4) as any as S.Schema<CreateEdgeConfigTokenResponse>,
+  input: CreateEdgeConfigTokenRequest,
+  output: CreateEdgeConfigTokenResponse,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound, Conflict],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -455,8 +681,8 @@ export const deleteEdgeConfig: API.OperationMethod<
   DeleteEdgeConfigError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5) as any as S.Schema<DeleteEdgeConfigRequest>,
-  output: __S(6) as any as S.Schema<DeleteEdgeConfigResponse>,
+  input: DeleteEdgeConfigRequest,
+  output: DeleteEdgeConfigResponse,
   errors: [BadRequest, Forbidden, NotFound, Conflict],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -476,8 +702,8 @@ export const deleteEdgeConfigSchema: API.OperationMethod<
   DeleteEdgeConfigSchemaError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7) as any as S.Schema<DeleteEdgeConfigSchemaRequest>,
-  output: __S(6) as any as S.Schema<DeleteEdgeConfigSchemaResponse>,
+  input: DeleteEdgeConfigSchemaRequest,
+  output: DeleteEdgeConfigSchemaResponse,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound, Conflict],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -497,8 +723,8 @@ export const deleteEdgeConfigTokens: API.OperationMethod<
   DeleteEdgeConfigTokensError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9) as any as S.Schema<DeleteEdgeConfigTokensRequest>,
-  output: __S(6) as any as S.Schema<DeleteEdgeConfigTokensResponse>,
+  input: DeleteEdgeConfigTokensRequest,
+  output: DeleteEdgeConfigTokensResponse,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound, Conflict],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -512,8 +738,8 @@ export const getEdgeConfig: API.OperationMethod<
   GetEdgeConfigError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10) as any as S.Schema<GetEdgeConfigRequest>,
-  output: __S(2) as any as S.Schema<GetEdgeConfigResponse>,
+  input: GetEdgeConfigRequest,
+  output: GetEdgeConfigResponse,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -527,8 +753,8 @@ export const getEdgeConfigBackup: API.OperationMethod<
   GetEdgeConfigBackupError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11) as any as S.Schema<GetEdgeConfigBackupRequest>,
-  output: __S(13) as any as S.Schema<GetEdgeConfigBackupResponse>,
+  input: GetEdgeConfigBackupRequest,
+  output: GetEdgeConfigBackupResponse,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -542,8 +768,8 @@ export const getEdgeConfigBackups: API.OperationMethod<
   GetEdgeConfigBackupsError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14) as any as S.Schema<GetEdgeConfigBackupsRequest>,
-  output: __S(18) as any as S.Schema<GetEdgeConfigBackupsResponse>,
+  input: GetEdgeConfigBackupsRequest,
+  output: GetEdgeConfigBackupsResponse,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -557,8 +783,8 @@ export const getEdgeConfigItem: API.OperationMethod<
   GetEdgeConfigItemError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19) as any as S.Schema<GetEdgeConfigItemRequest>,
-  output: __S(20) as any as S.Schema<GlobalConfigItem>,
+  input: GetEdgeConfigItemRequest,
+  output: GlobalConfigItem,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -572,8 +798,8 @@ export const getEdgeConfigItems: API.OperationMethod<
   GetEdgeConfigItemsError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21) as any as S.Schema<GetEdgeConfigItemsRequest>,
-  output: __S(23) as any as S.Schema<GetEdgeConfigItemsResponse>,
+  input: GetEdgeConfigItemsRequest,
+  output: GetEdgeConfigItemsResponse,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -587,8 +813,8 @@ export const getEdgeConfigs: API.OperationMethod<
   GetEdgeConfigsError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24) as any as S.Schema<GetEdgeConfigsRequest>,
-  output: __S(27) as any as S.Schema<GetEdgeConfigsResponse>,
+  input: GetEdgeConfigsRequest,
+  output: GetEdgeConfigsResponse,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -602,8 +828,8 @@ export const getEdgeConfigSchema: API.OperationMethod<
   GetEdgeConfigSchemaError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28) as any as S.Schema<GetEdgeConfigSchemaRequest>,
-  output: __S(29) as any as S.Schema<GetEdgeConfigSchemaResponse>,
+  input: GetEdgeConfigSchemaRequest,
+  output: GetEdgeConfigSchemaResponse,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -617,8 +843,8 @@ export const getEdgeConfigToken: API.OperationMethod<
   GetEdgeConfigTokenError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30) as any as S.Schema<GetEdgeConfigTokenRequest>,
-  output: __S(31) as any as S.Schema<GlobalConfigToken>,
+  input: GetEdgeConfigTokenRequest,
+  output: GlobalConfigToken,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -632,8 +858,8 @@ export const getEdgeConfigTokens: API.OperationMethod<
   GetEdgeConfigTokensError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32) as any as S.Schema<GetEdgeConfigTokensRequest>,
-  output: __S(34) as any as S.Schema<GetEdgeConfigTokensResponse>,
+  input: GetEdgeConfigTokensRequest,
+  output: GetEdgeConfigTokensResponse,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -653,8 +879,8 @@ export const patchEdgeConfigItems: API.OperationMethod<
   PatchEdgeConfigItemsError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36) as any as S.Schema<PatchEdgeConfigItemsRequest>,
-  output: __S(37) as any as S.Schema<PatchEdgeConfigItemsResponse>,
+  input: PatchEdgeConfigItemsRequest,
+  output: PatchEdgeConfigItemsResponse,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound, Conflict],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -674,8 +900,8 @@ export const patchEdgeConfigSchema: API.OperationMethod<
   PatchEdgeConfigSchemaError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38) as any as S.Schema<PatchEdgeConfigSchemaRequest>,
-  output: __S(29) as any as S.Schema<PatchEdgeConfigSchemaResponse>,
+  input: PatchEdgeConfigSchemaRequest,
+  output: PatchEdgeConfigSchemaResponse,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound, Conflict],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -695,8 +921,8 @@ export const restoreEdgeConfigBackup: API.OperationMethod<
   RestoreEdgeConfigBackupError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39) as any as S.Schema<RestoreEdgeConfigBackupRequest>,
-  output: __S(40) as any as S.Schema<RestoreEdgeConfigBackupResponse>,
+  input: RestoreEdgeConfigBackupRequest,
+  output: RestoreEdgeConfigBackupResponse,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound, Conflict],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -716,8 +942,8 @@ export const updateEdgeConfig: API.OperationMethod<
   UpdateEdgeConfigError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41) as any as S.Schema<UpdateEdgeConfigRequest>,
-  output: __S(2) as any as S.Schema<UpdateEdgeConfigResponse>,
+  input: UpdateEdgeConfigRequest,
+  output: UpdateEdgeConfigResponse,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound, Conflict],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -733,7 +959,7 @@ function __c0(j: number): any {
         S.Struct({
           teamId: S.optional(S.String.pipe(T.Query())),
           slug: S.optional(S.String.pipe(T.Query())),
-          items: S.optional(__S(0)),
+          items: S.optional(CreateEdgeConfigRequestItemsMap),
         }).pipe(T.Http({ method: "POST", uri: "/v1/global-config", code: 200 })),
       ).annotate({ identifier: "CreateEdgeConfigRequest" });
     case 2:
@@ -808,8 +1034,8 @@ function __c1(j: number): any {
           edgeConfigId: S.String.pipe(T.Label()),
           teamId: S.optional(S.String.pipe(T.Query())),
           slug: S.optional(S.String.pipe(T.Query())),
-          tokens: S.optional(__S(8)),
-          ids: S.optional(__S(8)),
+          tokens: S.optional(DeleteEdgeConfigTokensRequestTokensList),
+          ids: S.optional(DeleteEdgeConfigTokensRequestIdsList),
         }).pipe(
           T.Http({ method: "DELETE", uri: "/v1/global-config/{edgeConfigId}/tokens", code: 200 }),
         ),
@@ -853,7 +1079,7 @@ function __c1(j: number): any {
         identifier: "GetEdgeConfigBackupResponseBodyCase0Metadata",
       });
     case 5:
-      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => GetEdgeConfigBackupResponseBody.pipe(T.RawResponseRoot())).annotate({
         identifier: "GetEdgeConfigBackupResponse",
       });
     case 6:
@@ -874,7 +1100,7 @@ function __c1(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          metadata: S.optional(__S(12)),
+          metadata: S.optional(GetEdgeConfigBackupResponseBodyCase0Metadata),
           id: S.String,
           lastModified: S.Number,
         }),
@@ -886,7 +1112,7 @@ function __c1(j: number): any {
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(15));
+      return S.Array(GetEdgeConfigBackupsResponseBackupsItem);
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -899,8 +1125,8 @@ function __c2(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          backups: __S(16),
-          pagination: __S(17),
+          backups: GetEdgeConfigBackupsResponseBackupsList,
+          pagination: GetEdgeConfigBackupsResponsePagination,
         }),
       ).annotate({
         identifier: "GetEdgeConfigBackupsResponse",
@@ -928,7 +1154,7 @@ function __c2(j: number): any {
           edgeConfigId: S.String,
           key: S.String,
           updatedAt: S.Number,
-          value: S.NullOr(S.Unknown),
+          value: S.NullOr(GlobalConfigItemValue),
         }),
       ).annotate({ identifier: "GlobalConfigItem" });
     case 5:
@@ -944,11 +1170,13 @@ function __c2(j: number): any {
         identifier: "GetEdgeConfigItemsRequest",
       });
     case 6:
-      return S.Array(__S(20));
+      return S.Array(GlobalConfigItem);
     case 7:
-      return S.suspend(() => __S(22).pipe(T.RawResponseRoot())).annotate({
-        identifier: "GetEdgeConfigItemsResponse",
-      });
+      return S.suspend(() => GetEdgeConfigItemsResponseBodyList.pipe(T.RawResponseRoot())).annotate(
+        {
+          identifier: "GetEdgeConfigItemsResponse",
+        },
+      );
   }
 }
 function __c3(j: number): any {
@@ -977,9 +1205,9 @@ function __c3(j: number): any {
         identifier: "GetEdgeConfigsResponseBodyItem",
       });
     case 2:
-      return S.Array(__S(25));
+      return S.Array(GetEdgeConfigsResponseBodyItem);
     case 3:
-      return S.suspend(() => __S(26).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => GetEdgeConfigsResponseBodyList.pipe(T.RawResponseRoot())).annotate({
         identifier: "GetEdgeConfigsResponse",
       });
     case 4:
@@ -1043,20 +1271,22 @@ function __c4(j: number): any {
         identifier: "GetEdgeConfigTokensRequest",
       });
     case 1:
-      return S.Array(__S(31));
+      return S.Array(GlobalConfigToken);
     case 2:
-      return S.suspend(() => __S(33).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        GetEdgeConfigTokensResponseBodyList.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "GetEdgeConfigTokensResponse",
       });
     case 3:
-      return S.Array(S.Unknown);
+      return S.Array(PatchEdgeConfigItemsRequestItemsItem);
     case 4:
       return S.suspend(() =>
         S.Struct({
           edgeConfigId: S.String.pipe(T.Label()),
           teamId: S.optional(S.String.pipe(T.Query())),
           slug: S.optional(S.String.pipe(T.Query())),
-          items: __S(35),
+          items: PatchEdgeConfigItemsRequestItemsList,
         }).pipe(
           T.Http({ method: "PATCH", uri: "/v1/global-config/{edgeConfigId}/items", code: 200 }),
         ),
@@ -1112,7 +1342,7 @@ function __c5(j: number): any {
           digest: S.String,
           previousDigest: S.String,
           restoredFrom: S.String,
-          status: S.String,
+          status: RestoreEdgeConfigBackupResponseStatus,
         }),
       ).annotate({
         identifier: "RestoreEdgeConfigBackupResponse",
@@ -1125,26 +1355,5 @@ function __c5(j: number): any {
           slug: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "PUT", uri: "/v1/global-config/{edgeConfigId}", code: 200 })),
       ).annotate({ identifier: "UpdateEdgeConfigRequest" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
   }
 }

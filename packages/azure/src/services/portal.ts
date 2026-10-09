@@ -6,8 +6,6 @@ import { UnknownAzureError } from "../errors.ts";
 import { AzureProtocol, type AzureOpError, type AzureOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { AzureOpError, AzureOpContext };
 
@@ -16,16 +14,30 @@ export interface ConfigurationPropertiesInput {
   /** When flag is set to true Markdown tile will require external storage configuration (URI). The inline content configuration will be prohibited. */
   enforcePrivateMarkdownStorage?: boolean;
 }
+const ConfigurationPropertiesInput = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<ConfigurationPropertiesInput>;
+
 export interface CreateTenantConfigurationRequest {
   /** The name of the Configuration */
   configurationName: string;
   /** The resource-specific properties for this resource. */
   properties?: ConfigurationPropertiesInput;
 }
+const CreateTenantConfigurationRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<CreateTenantConfigurationRequest>;
+
 /** The type of identity that created the resource. */
 export type SystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
+const SystemDataCreatedByType = S.String;
+
 /** The type of identity that last modified the resource. */
 export type SystemDataLastModifiedByType = "User" | "Application" | "ManagedIdentity" | "Key";
+const SystemDataLastModifiedByType = S.String;
+
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface SystemData {
   /** The identity that created the resource. */
@@ -41,8 +53,12 @@ export interface SystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const SystemData = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<SystemData>;
+
 /** The provisioning state of a resource type. */
 export type AzureResourceManagerResourceProvisioningState = "Succeeded" | "Failed" | "Canceled";
+const AzureResourceManagerResourceProvisioningState = S.String;
+
 /** Tenant Configuration Properties with Provisioning state */
 export interface ConfigurationProperties {
   /** When flag is set to true Markdown tile will require external storage configuration (URI). The inline content configuration will be prohibited. */
@@ -50,6 +66,11 @@ export interface ConfigurationProperties {
   /** The status of the last operation. */
   provisioningState?: AzureResourceManagerResourceProvisioningState;
 }
+const ConfigurationProperties = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<ConfigurationProperties>;
+
 export interface CreateTenantConfigurationResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -62,8 +83,18 @@ export interface CreateTenantConfigurationResponse {
   /** The resource-specific properties for this resource. */
   properties?: ConfigurationProperties;
 }
+const CreateTenantConfigurationResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<CreateTenantConfigurationResponse>;
+
 /** Resource tags. */
 export type DashboardsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
+const DashboardsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<DashboardsCreateOrUpdateRequestTagsMap>;
+
 /** The dashboard's part position. */
 export interface DashboardPartsPosition {
   /** The dashboard's part x coordinate. */
@@ -77,6 +108,11 @@ export interface DashboardPartsPosition {
   /** The dashboard part's metadata. */
   metadata?: unknown;
 }
+const DashboardPartsPosition = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<DashboardPartsPosition>;
+
 /** A dashboard part. */
 export interface DashboardParts {
   /** The dashboard's part position. */
@@ -84,8 +120,15 @@ export interface DashboardParts {
   /** The dashboard part's metadata. */
   metadata?: unknown;
 }
+const DashboardParts = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<DashboardParts>;
+
 /** The dashboard parts. */
 export type DashboardLensPartsList = Array<DashboardParts>;
+const DashboardLensPartsList = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<DashboardLensPartsList>;
+
 /** A dashboard lens. */
 export interface DashboardLens {
   /** The lens order. */
@@ -95,8 +138,15 @@ export interface DashboardLens {
   /** The dashboard len's metadata. */
   metadata?: unknown;
 }
+const DashboardLens = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<DashboardLens>;
+
 /** The dashboard lenses. */
 export type DashboardPropertiesWithProvisioningStateInputLensesList = Array<DashboardLens>;
+const DashboardPropertiesWithProvisioningStateInputLensesList = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<DashboardPropertiesWithProvisioningStateInputLensesList>;
+
 /** Dashboard Properties with Provisioning state */
 export interface DashboardPropertiesWithProvisioningStateInput {
   /** The dashboard lenses. */
@@ -104,6 +154,11 @@ export interface DashboardPropertiesWithProvisioningStateInput {
   /** The dashboard metadata. */
   metadata?: unknown;
 }
+const DashboardPropertiesWithProvisioningStateInput = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<DashboardPropertiesWithProvisioningStateInput>;
+
 export interface DashboardsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -118,10 +173,21 @@ export interface DashboardsCreateOrUpdateRequest {
   /** The resource-specific properties for this resource. */
   properties?: DashboardPropertiesWithProvisioningStateInput;
 }
+const DashboardsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<DashboardsCreateOrUpdateRequest>;
+
 /** Resource tags. */
 export type DashboardsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
+const DashboardsCreateOrUpdateResponseTagsMap =
+  DashboardsCreateOrUpdateRequestTagsMap as any as S.Schema<DashboardsCreateOrUpdateResponseTagsMap>;
+
 /** The dashboard lenses. */
 export type DashboardPropertiesWithProvisioningStateLensesList = Array<DashboardLens>;
+const DashboardPropertiesWithProvisioningStateLensesList =
+  DashboardPropertiesWithProvisioningStateInputLensesList as any as S.Schema<DashboardPropertiesWithProvisioningStateLensesList>;
+
 /** Dashboard Properties with Provisioning state */
 export interface DashboardPropertiesWithProvisioningState {
   /** The dashboard lenses. */
@@ -131,6 +197,11 @@ export interface DashboardPropertiesWithProvisioningState {
   /** The status of the last operation. */
   provisioningState?: AzureResourceManagerResourceProvisioningState;
 }
+const DashboardPropertiesWithProvisioningState = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<DashboardPropertiesWithProvisioningState>;
+
 export interface DashboardsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -147,6 +218,11 @@ export interface DashboardsCreateOrUpdateResponse {
   /** The resource-specific properties for this resource. */
   properties?: DashboardPropertiesWithProvisioningState;
 }
+const DashboardsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<DashboardsCreateOrUpdateResponse>;
+
 export interface DeleteDashboardRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -155,12 +231,32 @@ export interface DeleteDashboardRequest {
   /** The name of the dashboard. */
   dashboardName: string;
 }
+const DeleteDashboardRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<DeleteDashboardRequest>;
+
 export interface DeleteDashboardResponse {}
+const DeleteDashboardResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<DeleteDashboardResponse>;
+
 export interface DeleteTenantConfigurationRequest {
   /** The name of the Configuration */
   configurationName: string;
 }
+const DeleteTenantConfigurationRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<DeleteTenantConfigurationRequest>;
+
 export interface DeleteTenantConfigurationResponse {}
+const DeleteTenantConfigurationResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<DeleteTenantConfigurationResponse>;
+
 export interface GetDashboardRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -169,8 +265,13 @@ export interface GetDashboardRequest {
   /** The name of the dashboard. */
   dashboardName: string;
 }
+const GetDashboardRequest = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<GetDashboardRequest>;
+
 /** Resource tags. */
 export type GetDashboardResponseTagsMap = { [key: string]: string | undefined };
+const GetDashboardResponseTagsMap =
+  DashboardsCreateOrUpdateRequestTagsMap as any as S.Schema<GetDashboardResponseTagsMap>;
+
 export interface GetDashboardResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -187,10 +288,17 @@ export interface GetDashboardResponse {
   /** The resource-specific properties for this resource. */
   properties?: DashboardPropertiesWithProvisioningState;
 }
+const GetDashboardResponse = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<GetDashboardResponse>;
+
 export interface GetTenantConfigurationRequest {
   /** The name of the Configuration */
   configurationName: string;
 }
+const GetTenantConfigurationRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<GetTenantConfigurationRequest>;
+
 export interface GetTenantConfigurationResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -203,12 +311,20 @@ export interface GetTenantConfigurationResponse {
   /** The resource-specific properties for this resource. */
   properties?: ConfigurationProperties;
 }
+const GetTenantConfigurationResponse =
+  CreateTenantConfigurationResponse as any as S.Schema<GetTenantConfigurationResponse>;
+
 export interface ListDashboardByResourceGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
+const ListDashboardByResourceGroupRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<ListDashboardByResourceGroupRequest>;
+
 /** Resource tags. */
 export type DashboardTagsMap = { [key: string]: string | undefined };
 /** The shared dashboard resource definition. */
@@ -228,18 +344,35 @@ export interface Dashboard {
   /** The resource-specific properties for this resource. */
   properties?: DashboardPropertiesWithProvisioningState;
 }
+const Dashboard = GetDashboardResponse as any as S.Schema<Dashboard>;
+
 /** The Dashboard items on this page */
 export type ListDashboardByResourceGroupResponseValueList = Array<Dashboard>;
+const ListDashboardByResourceGroupResponseValueList = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<ListDashboardByResourceGroupResponseValueList>;
+
 export interface ListDashboardByResourceGroupResponse {
   /** The Dashboard items on this page */
   value: ListDashboardByResourceGroupResponseValueList;
   /** The link to the next page of items */
   nextLink?: string;
 }
+const ListDashboardByResourceGroupResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<ListDashboardByResourceGroupResponse>;
+
 export interface ListDashboardBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
+const ListDashboardBySubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<ListDashboardBySubscriptionRequest>;
+
 /** The Dashboard items on this page */
 export type ListDashboardBySubscriptionResponseValueList = Array<Dashboard>;
 export interface ListDashboardBySubscriptionResponse {
@@ -248,7 +381,15 @@ export interface ListDashboardBySubscriptionResponse {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const ListDashboardBySubscriptionResponse =
+  ListDashboardByResourceGroupResponse as any as S.Schema<ListDashboardBySubscriptionResponse>;
+
 export interface ListListTenantConfigurationViolationsRequest {}
+const ListListTenantConfigurationViolationsRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<ListListTenantConfigurationViolationsRequest>;
+
 /** Violation information. */
 export interface Violation {
   /** Id of the item that violates tenant configuration. */
@@ -258,15 +399,32 @@ export interface Violation {
   /** Error message. */
   errorMessage?: string;
 }
+const Violation = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<Violation>;
+
 /** The Violation items on this page */
 export type ListListTenantConfigurationViolationsResponseValueList = Array<Violation>;
+const ListListTenantConfigurationViolationsResponseValueList = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<ListListTenantConfigurationViolationsResponseValueList>;
+
 export interface ListListTenantConfigurationViolationsResponse {
   /** The Violation items on this page */
   value: ListListTenantConfigurationViolationsResponseValueList;
   /** The link to the next page of items */
   nextLink?: string;
 }
+const ListListTenantConfigurationViolationsResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<ListListTenantConfigurationViolationsResponse>;
+
 export interface ListOperationsRequest {}
+const ListOperationsRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<ListOperationsRequest>;
+
 /** Localized display information for this particular operation. */
 export interface OperationDisplay {
   /** The localized friendly form of the resource provider name, e.g. "Microsoft Monitoring Insights" or "Microsoft Compute". */
@@ -278,10 +436,16 @@ export interface OperationDisplay {
   /** The short, localized friendly description of the operation; suitable for tool tips and detailed views. */
   description?: string;
 }
+const OperationDisplay = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<OperationDisplay>;
+
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
 export type OperationOrigin = "user" | "system" | "user,system";
+const OperationOrigin = S.String;
+
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
 export type OperationActionType = "Internal";
+const OperationActionType = S.String;
+
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
 export interface Operation {
   /** The name of the operation, as per Resource-Based Access Control (RBAC). Examples: "Microsoft.Compute/virtualMachines/write", "Microsoft.Compute/virtualMachines/capture/action" */
@@ -295,15 +459,32 @@ export interface Operation {
   /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
   actionType?: OperationActionType;
 }
+const Operation = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<Operation>;
+
 /** List of operations supported by the resource provider */
 export type ListOperationsResponseValueList = Array<Operation>;
+const ListOperationsResponseValueList = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<ListOperationsResponseValueList>;
+
 export interface ListOperationsResponse {
   /** List of operations supported by the resource provider */
   value?: ListOperationsResponseValueList;
   /** URL to get the next set of operation list results (if there are any). */
   nextLink?: string;
 }
+const ListOperationsResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<ListOperationsResponse>;
+
 export interface ListTenantConfigurationsRequest {}
+const ListTenantConfigurationsRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<ListTenantConfigurationsRequest>;
+
 /** The tenant configuration resource definition. */
 export interface Configuration {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -317,16 +498,31 @@ export interface Configuration {
   /** The resource-specific properties for this resource. */
   properties?: ConfigurationProperties;
 }
+const Configuration = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<Configuration>;
+
 /** The Configuration items on this page */
 export type ListTenantConfigurationsResponseValueList = Array<Configuration>;
+const ListTenantConfigurationsResponseValueList = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<ListTenantConfigurationsResponseValueList>;
+
 export interface ListTenantConfigurationsResponse {
   /** The Configuration items on this page */
   value: ListTenantConfigurationsResponseValueList;
   /** The link to the next page of items */
   nextLink?: string;
 }
+const ListTenantConfigurationsResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<ListTenantConfigurationsResponse>;
+
 /** The dashboard lenses. */
 export type DashboardPropertiesLensesList = Array<DashboardLens>;
+const DashboardPropertiesLensesList =
+  DashboardPropertiesWithProvisioningStateInputLensesList as any as S.Schema<DashboardPropertiesLensesList>;
+
 /** The shared dashboard properties. */
 export interface DashboardProperties {
   /** The dashboard lenses. */
@@ -334,8 +530,13 @@ export interface DashboardProperties {
   /** The dashboard metadata. */
   metadata?: unknown;
 }
+const DashboardProperties = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<DashboardProperties>;
+
 /** Resource tags */
 export type UpdateDashboardRequestTagsMap = { [key: string]: string | undefined };
+const UpdateDashboardRequestTagsMap =
+  DashboardsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateDashboardRequestTagsMap>;
+
 export interface UpdateDashboardRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -348,6 +549,11 @@ export interface UpdateDashboardRequest {
   /** Resource tags */
   tags?: UpdateDashboardRequestTagsMap;
 }
+const UpdateDashboardRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  0,
+) as any as S.Schema<UpdateDashboardRequest>;
+
 /** Resource tags. */
 export type UpdateDashboardResponseTagsMap = { [key: string]: string | undefined };
 export interface UpdateDashboardResponse {
@@ -366,6 +572,8 @@ export interface UpdateDashboardResponse {
   /** The resource-specific properties for this resource. */
   properties?: DashboardPropertiesWithProvisioningState;
 }
+const UpdateDashboardResponse = GetDashboardResponse as any as S.Schema<UpdateDashboardResponse>;
+
 export type CreateTenantConfigurationError = AzureOpError;
 /** Create the tenant configuration. If configuration already exists - update it. User has to be a Tenant Admin for this operation. */
 export const CreateTenantConfiguration: API.OperationMethod<
@@ -374,8 +582,8 @@ export const CreateTenantConfiguration: API.OperationMethod<
   CreateTenantConfigurationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1) as any as S.Schema<CreateTenantConfigurationRequest>,
-  output: __S(4) as any as S.Schema<CreateTenantConfigurationResponse>,
+  input: CreateTenantConfigurationRequest,
+  output: CreateTenantConfigurationResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -389,8 +597,8 @@ export const DashboardsCreateOrUpdate: API.OperationMethod<
   DashboardsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12) as any as S.Schema<DashboardsCreateOrUpdateRequest>,
-  output: __S(14) as any as S.Schema<DashboardsCreateOrUpdateResponse>,
+  input: DashboardsCreateOrUpdateRequest,
+  output: DashboardsCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -404,8 +612,8 @@ export const DeleteDashboard: API.OperationMethod<
   DeleteDashboardError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15) as any as S.Schema<DeleteDashboardRequest>,
-  output: __S(16) as any as S.Schema<DeleteDashboardResponse>,
+  input: DeleteDashboardRequest,
+  output: DeleteDashboardResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -419,8 +627,8 @@ export const DeleteTenantConfiguration: API.OperationMethod<
   DeleteTenantConfigurationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17) as any as S.Schema<DeleteTenantConfigurationRequest>,
-  output: __S(18) as any as S.Schema<DeleteTenantConfigurationResponse>,
+  input: DeleteTenantConfigurationRequest,
+  output: DeleteTenantConfigurationResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -434,8 +642,8 @@ export const GetDashboard: API.OperationMethod<
   GetDashboardError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19) as any as S.Schema<GetDashboardRequest>,
-  output: __S(20) as any as S.Schema<GetDashboardResponse>,
+  input: GetDashboardRequest,
+  output: GetDashboardResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -449,8 +657,8 @@ export const GetTenantConfiguration: API.OperationMethod<
   GetTenantConfigurationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21) as any as S.Schema<GetTenantConfigurationRequest>,
-  output: __S(4) as any as S.Schema<GetTenantConfigurationResponse>,
+  input: GetTenantConfigurationRequest,
+  output: GetTenantConfigurationResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -464,8 +672,8 @@ export const ListDashboardByResourceGroup: API.OperationMethod<
   ListDashboardByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22) as any as S.Schema<ListDashboardByResourceGroupRequest>,
-  output: __S(24) as any as S.Schema<ListDashboardByResourceGroupResponse>,
+  input: ListDashboardByResourceGroupRequest,
+  output: ListDashboardByResourceGroupResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -479,8 +687,8 @@ export const ListDashboardBySubscription: API.OperationMethod<
   ListDashboardBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25) as any as S.Schema<ListDashboardBySubscriptionRequest>,
-  output: __S(24) as any as S.Schema<ListDashboardBySubscriptionResponse>,
+  input: ListDashboardBySubscriptionRequest,
+  output: ListDashboardBySubscriptionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -494,8 +702,8 @@ export const ListListTenantConfigurationViolations: API.OperationMethod<
   ListListTenantConfigurationViolationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26) as any as S.Schema<ListListTenantConfigurationViolationsRequest>,
-  output: __S(29) as any as S.Schema<ListListTenantConfigurationViolationsResponse>,
+  input: ListListTenantConfigurationViolationsRequest,
+  output: ListListTenantConfigurationViolationsResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -509,8 +717,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30) as any as S.Schema<ListOperationsRequest>,
-  output: __S(34) as any as S.Schema<ListOperationsResponse>,
+  input: ListOperationsRequest,
+  output: ListOperationsResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -524,8 +732,8 @@ export const ListTenantConfigurations: API.OperationMethod<
   ListTenantConfigurationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35) as any as S.Schema<ListTenantConfigurationsRequest>,
-  output: __S(38) as any as S.Schema<ListTenantConfigurationsResponse>,
+  input: ListTenantConfigurationsRequest,
+  output: ListTenantConfigurationsResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -539,8 +747,8 @@ export const UpdateDashboard: API.OperationMethod<
   UpdateDashboardError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40) as any as S.Schema<UpdateDashboardRequest>,
-  output: __S(20) as any as S.Schema<UpdateDashboardResponse>,
+  input: UpdateDashboardRequest,
+  output: UpdateDashboardResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -561,7 +769,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           configurationName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(0)),
+          properties: S.optional(ConfigurationPropertiesInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -577,10 +785,10 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
-          createdByType: S.optional(S.String),
+          createdByType: S.optional(SystemDataCreatedByType),
           createdAt: S.optional(S.String),
           lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(S.String),
+          lastModifiedByType: S.optional(SystemDataLastModifiedByType),
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "SystemData" });
@@ -588,7 +796,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           enforcePrivateMarkdownStorage: S.optional(S.Boolean),
-          provisioningState: S.optional(S.String),
+          provisioningState: S.optional(AzureResourceManagerResourceProvisioningState),
         }),
       ).annotate({ identifier: "ConfigurationProperties" });
     case 4:
@@ -597,8 +805,8 @@ function __c0(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(3)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(ConfigurationProperties),
         }),
       ).annotate({
         identifier: "CreateTenantConfigurationResponse",
@@ -618,7 +826,7 @@ function __c0(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          position: __S(6),
+          position: DashboardPartsPosition,
           metadata: S.optional(S.Unknown),
         }),
       ).annotate({ identifier: "DashboardParts" });
@@ -627,21 +835,21 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(7));
+      return S.Array(DashboardParts);
     case 1:
       return S.suspend(() =>
         S.Struct({
           order: S.Number,
-          parts: __S(8),
+          parts: DashboardLensPartsList,
           metadata: S.optional(S.Unknown),
         }),
       ).annotate({ identifier: "DashboardLens" });
     case 2:
-      return S.Array(__S(9));
+      return S.Array(DashboardLens);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          lenses: S.optional(__S(10)),
+          lenses: S.optional(DashboardPropertiesWithProvisioningStateInputLensesList),
           metadata: S.optional(S.Unknown),
         }),
       ).annotate({
@@ -653,9 +861,9 @@ function __c1(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           dashboardName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(5)),
+          tags: S.optional(DashboardsCreateOrUpdateRequestTagsMap),
           location: S.String,
-          properties: S.optional(__S(11)),
+          properties: S.optional(DashboardPropertiesWithProvisioningStateInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -670,9 +878,9 @@ function __c1(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          lenses: S.optional(__S(10)),
+          lenses: S.optional(DashboardPropertiesWithProvisioningStateLensesList),
           metadata: S.optional(S.Unknown),
-          provisioningState: S.optional(S.String),
+          provisioningState: S.optional(AzureResourceManagerResourceProvisioningState),
         }),
       ).annotate({
         identifier: "DashboardPropertiesWithProvisioningState",
@@ -683,10 +891,10 @@ function __c1(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          tags: S.optional(__S(5)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(DashboardsCreateOrUpdateResponseTagsMap),
           location: S.String,
-          properties: S.optional(__S(13)),
+          properties: S.optional(DashboardPropertiesWithProvisioningState),
         }),
       ).annotate({
         identifier: "DashboardsCreateOrUpdateResponse",
@@ -754,10 +962,10 @@ function __c2(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          tags: S.optional(__S(5)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(GetDashboardResponseTagsMap),
           location: S.String,
-          properties: S.optional(__S(13)),
+          properties: S.optional(DashboardPropertiesWithProvisioningState),
         }),
       ).annotate({ identifier: "GetDashboardResponse" });
     case 5:
@@ -792,7 +1000,7 @@ function __c2(j: number): any {
         identifier: "ListDashboardByResourceGroupRequest",
       });
     case 7:
-      return S.Array(__S(20));
+      return S.Array(Dashboard);
   }
 }
 function __c3(j: number): any {
@@ -800,7 +1008,7 @@ function __c3(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          value: __S(23),
+          value: ListDashboardByResourceGroupResponseValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -843,11 +1051,11 @@ function __c3(j: number): any {
         }),
       ).annotate({ identifier: "Violation" });
     case 4:
-      return S.Array(__S(27));
+      return S.Array(Violation);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          value: __S(28),
+          value: ListListTenantConfigurationViolationsResponseValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -882,17 +1090,17 @@ function __c4(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           isDataAction: S.optional(S.Boolean),
-          display: S.optional(__S(31)),
-          origin: S.optional(S.String),
-          actionType: S.optional(S.String),
+          display: S.optional(OperationDisplay),
+          origin: S.optional(OperationOrigin),
+          actionType: S.optional(OperationActionType),
         }),
       ).annotate({ identifier: "Operation" });
     case 1:
-      return S.Array(__S(32));
+      return S.Array(Operation);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(33)),
+          value: S.optional(ListOperationsResponseValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
@@ -915,16 +1123,16 @@ function __c4(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(3)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(ConfigurationProperties),
         }),
       ).annotate({ identifier: "Configuration" });
     case 5:
-      return S.Array(__S(36));
+      return S.Array(Configuration);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          value: __S(37),
+          value: ListTenantConfigurationsResponseValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -933,7 +1141,7 @@ function __c4(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          lenses: S.optional(__S(10)),
+          lenses: S.optional(DashboardPropertiesLensesList),
           metadata: S.optional(S.Unknown),
         }),
       ).annotate({ identifier: "DashboardProperties" });
@@ -947,8 +1155,8 @@ function __c5(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           dashboardName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(39)),
-          tags: S.optional(__S(5)),
+          properties: S.optional(DashboardProperties),
+          tags: S.optional(UpdateDashboardRequestTagsMap),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -958,26 +1166,5 @@ function __c5(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateDashboardRequest" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
   }
 }

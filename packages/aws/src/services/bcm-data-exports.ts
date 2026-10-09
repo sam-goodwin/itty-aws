@@ -8,8 +8,6 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "BCM Data Exports",
   serviceShapeName: "AWSBillingAndCostManagementDataExports",
@@ -136,12 +134,12 @@ export class ValidationException
     {
       message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
       Reason: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => S.String).annotate({
+        /*@__PURE__*/ S.suspend(() => ValidationExceptionReason).annotate({
           identifier: "ValidationExceptionReason",
         }),
       ),
       Fields: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => __S(45)).annotate({
+        /*@__PURE__*/ S.suspend(() => ValidationExceptionFieldList).annotate({
           identifier: "ValidationExceptionFieldList",
         }),
       ),
@@ -155,24 +153,39 @@ export type TableName = string;
 export type TableProperty = string;
 export type TablePropertyGenericString = string;
 export type TableProperties = { [key: string]: string | undefined };
+const TableProperties = /*@__PURE__*/ __L.at(__c0, 0);
 export type TableConfigurations = {
   [key: string]: { [key: string]: string | undefined } | undefined;
 };
+const TableConfigurations = /*@__PURE__*/ __L.at(__c0, 1);
 export interface DataQuery {
   QueryStatement: string;
   TableConfigurations?: { [key: string]: { [key: string]: string | undefined } | undefined };
 }
+const DataQuery = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<DataQuery>;
 export type AccountId = string;
 export type S3OutputType = "CUSTOM" | "ATHENA" | "REDSHIFT" | (string & {});
+const S3OutputType = S.String;
+
 export type FormatOption = "TEXT_OR_CSV" | "PARQUET" | (string & {});
+const FormatOption = S.String;
+
 export type CompressionOption = "GZIP" | "PARQUET" | "ZIP" | (string & {});
+const CompressionOption = S.String;
+
 export type OverwriteOption = "CREATE_NEW_REPORT" | "OVERWRITE_REPORT" | (string & {});
+const OverwriteOption = S.String;
+
 export interface S3OutputConfigurations {
   OutputType: S3OutputType;
   Format: FormatOption;
   Compression: CompressionOption;
   Overwrite: OverwriteOption;
 }
+const S3OutputConfigurations = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<S3OutputConfigurations>;
 export interface S3Destination {
   S3Bucket: string;
   S3BucketOwner?: string;
@@ -180,13 +193,21 @@ export interface S3Destination {
   S3Region: string;
   S3OutputConfigurations: S3OutputConfigurations;
 }
+const S3Destination = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<S3Destination>;
 export interface DestinationConfigurations {
   S3Destination: S3Destination;
 }
+const DestinationConfigurations = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<DestinationConfigurations>;
 export type FrequencyOption = "SYNCHRONOUS" | (string & {});
+const FrequencyOption = S.String;
+
 export interface RefreshCadence {
   Frequency: FrequencyOption;
 }
+const RefreshCadence = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<RefreshCadence>;
 export interface Export {
   ExportArn?: string;
   Name: string;
@@ -195,30 +216,38 @@ export interface Export {
   DestinationConfigurations: DestinationConfigurations;
   RefreshCadence: RefreshCadence;
 }
+const Export = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<Export>;
 export type ResourceTagKey = string;
 export type ResourceTagValue = string;
 export interface ResourceTag {
   Key: string;
   Value: string;
 }
+const ResourceTag = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<ResourceTag>;
 export type ResourceTagList = ResourceTag[];
+const ResourceTagList = /*@__PURE__*/ __L.at(__c1, 1);
 export interface CreateExportRequest {
   Export: Export;
   ResourceTags?: ResourceTag[];
 }
+const CreateExportRequest = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<CreateExportRequest>;
 export interface CreateExportResponse {
   ExportArn?: string;
 }
+const CreateExportResponse = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<CreateExportResponse>;
 export interface DeleteExportRequest {
   ExportArn: string;
 }
+const DeleteExportRequest = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<DeleteExportRequest>;
 export interface DeleteExportResponse {
   ExportArn?: string;
 }
+const DeleteExportResponse = CreateExportResponse as any as S.Schema<DeleteExportResponse>;
 export interface GetExecutionRequest {
   ExportArn: string;
   ExecutionId: string;
 }
+const GetExecutionRequest = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<GetExecutionRequest>;
 export type ExecutionStatusCode =
   | "INITIATION_IN_PROCESS"
   | "QUERY_QUEUED"
@@ -228,12 +257,16 @@ export type ExecutionStatusCode =
   | "DELIVERY_SUCCESS"
   | "DELIVERY_FAILURE"
   | (string & {});
+const ExecutionStatusCode = S.String;
+
 export type ExecutionStatusReason =
   | "INSUFFICIENT_PERMISSION"
   | "BILL_OWNER_CHANGED"
   | "INTERNAL_FAILURE"
   | "DEPRECATED"
   | (string & {});
+const ExecutionStatusReason = S.String;
+
 export interface ExecutionStatus {
   StatusCode?: ExecutionStatusCode;
   StatusReason?: ExecutionStatusReason;
@@ -241,15 +274,20 @@ export interface ExecutionStatus {
   CompletedAt?: Date;
   LastUpdatedAt?: Date;
 }
+const ExecutionStatus = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<ExecutionStatus>;
 export interface GetExecutionResponse {
   ExecutionId?: string;
   Export?: Export;
   ExecutionStatus?: ExecutionStatus;
 }
+const GetExecutionResponse = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<GetExecutionResponse>;
 export interface GetExportRequest {
   ExportArn: string;
 }
+const GetExportRequest = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<GetExportRequest>;
 export type ExportStatusCode = "HEALTHY" | "UNHEALTHY" | (string & {});
+const ExportStatusCode = S.String;
+
 export interface ExportStatus {
   StatusCode?: ExportStatusCode;
   StatusReason?: ExecutionStatusReason;
@@ -257,26 +295,32 @@ export interface ExportStatus {
   LastUpdatedAt?: Date;
   LastRefreshedAt?: Date;
 }
+const ExportStatus = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<ExportStatus>;
 export interface GetExportResponse {
   Export?: Export;
   ExportStatus?: ExportStatus;
 }
+const GetExportResponse = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<GetExportResponse>;
 export interface GetTableRequest {
   TableName: string;
   TableProperties?: { [key: string]: string | undefined };
 }
+const GetTableRequest = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<GetTableRequest>;
 export interface Column {
   Name?: string;
   Type?: string;
   Description?: string;
 }
+const Column = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<Column>;
 export type ColumnList = Column[];
+const ColumnList = /*@__PURE__*/ __L.at(__c2, 5);
 export interface GetTableResponse {
   TableName?: string;
   Description?: string;
   TableProperties?: { [key: string]: string | undefined };
   Schema?: Column[];
 }
+const GetTableResponse = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<GetTableResponse>;
 export type MaxResults = number;
 export type NextPageToken = string;
 export interface ListExecutionsRequest {
@@ -284,89 +328,135 @@ export interface ListExecutionsRequest {
   MaxResults?: number;
   NextToken?: string;
 }
+const ListExecutionsRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<ListExecutionsRequest>;
 export interface ExecutionReference {
   ExecutionId: string;
   ExecutionStatus: ExecutionStatus;
 }
+const ExecutionReference = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<ExecutionReference>;
 export type ExecutionReferenceList = ExecutionReference[];
+const ExecutionReferenceList = /*@__PURE__*/ __L.at(__c3, 1);
 export interface ListExecutionsResponse {
   Executions?: ExecutionReference[];
   NextToken?: string;
 }
+const ListExecutionsResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<ListExecutionsResponse>;
 export interface ListExportsRequest {
   MaxResults?: number;
   NextToken?: string;
 }
+const ListExportsRequest = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<ListExportsRequest>;
 export interface ExportReference {
   ExportArn: string;
   ExportName: string;
   ExportStatus: ExportStatus;
 }
+const ExportReference = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<ExportReference>;
 export type ExportReferenceList = ExportReference[];
+const ExportReferenceList = /*@__PURE__*/ __L.at(__c3, 5);
 export interface ListExportsResponse {
   Exports?: ExportReference[];
   NextToken?: string;
 }
+const ListExportsResponse = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<ListExportsResponse>;
 export interface ListTablesRequest {
   NextToken?: string;
   MaxResults?: number;
 }
+const ListTablesRequest = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<ListTablesRequest>;
 export type GenericStringList = string[];
+const GenericStringList = /*@__PURE__*/ __L.at(__c4, 0);
 export interface TablePropertyDescription {
   Name?: string;
   ValidValues?: string[];
   DefaultValue?: string;
   Description?: string;
 }
+const TablePropertyDescription = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<TablePropertyDescription>;
 export type TablePropertyDescriptionList = TablePropertyDescription[];
+const TablePropertyDescriptionList = /*@__PURE__*/ __L.at(__c4, 2);
 export interface Table {
   TableName?: string;
   Description?: string;
   TableProperties?: TablePropertyDescription[];
 }
+const Table = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<Table>;
 export type TableList = Table[];
+const TableList = /*@__PURE__*/ __L.at(__c4, 4);
 export interface ListTablesResponse {
   Tables?: Table[];
   NextToken?: string;
 }
+const ListTablesResponse = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<ListTablesResponse>;
 export interface ListTagsForResourceRequest {
   ResourceArn: string;
   MaxResults?: number;
   NextToken?: string;
 }
+const ListTagsForResourceRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<ListTagsForResourceRequest>;
 export interface ListTagsForResourceResponse {
   ResourceTags?: ResourceTag[];
   NextToken?: string;
 }
+const ListTagsForResourceResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<ListTagsForResourceResponse>;
 export interface TagResourceRequest {
   ResourceArn: string;
   ResourceTags: ResourceTag[];
 }
+const TagResourceRequest = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
+const TagResourceResponse = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<TagResourceResponse>;
 export type ResourceTagKeyList = string[];
+const ResourceTagKeyList = GenericStringList as any as S.Schema<ResourceTagKeyList>;
 export interface UntagResourceRequest {
   ResourceArn: string;
   ResourceTagKeys: string[];
 }
+const UntagResourceRequest = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
+const UntagResourceResponse = TagResourceResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateExportRequest {
   ExportArn: string;
   Export: Export;
 }
+const UpdateExportRequest = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<UpdateExportRequest>;
 export interface UpdateExportResponse {
   ExportArn?: string;
 }
+const UpdateExportResponse = CreateExportResponse as any as S.Schema<UpdateExportResponse>;
 export type ValidationExceptionReason =
   | "unknownOperation"
   | "cannotParse"
   | "fieldValidationFailed"
   | "other"
   | (string & {});
+const ValidationExceptionReason = S.String;
+
 export interface ValidationExceptionField {
   Name: string;
   Message: string;
 }
+const ValidationExceptionField = /*@__PURE__*/ __L.at(
+  __c5,
+  4,
+) as any as S.Schema<ValidationExceptionField>;
 export type ValidationExceptionFieldList = ValidationExceptionField[];
+const ValidationExceptionFieldList = /*@__PURE__*/ __L.at(__c5, 5);
 export type CreateExportError =
   | AccessDeniedException
   | InternalServerException
@@ -389,8 +479,8 @@ export const createExport: API.OperationMethod<
   CreateExportError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10) as any as S.Schema<CreateExportRequest>,
-  output: __S(11) as any as S.Schema<CreateExportResponse>,
+  input: CreateExportRequest,
+  output: CreateExportResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -418,8 +508,8 @@ export const deleteExport: API.OperationMethod<
   DeleteExportError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12) as any as S.Schema<DeleteExportRequest>,
-  output: __S(11) as any as S.Schema<DeleteExportResponse>,
+  input: DeleteExportRequest,
+  output: DeleteExportResponse,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -446,8 +536,8 @@ export const getExecution: API.OperationMethod<
   GetExecutionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13) as any as S.Schema<GetExecutionRequest>,
-  output: __S(15) as any as S.Schema<GetExecutionResponse>,
+  input: GetExecutionRequest,
+  output: GetExecutionResponse,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -474,8 +564,8 @@ export const getExport: API.OperationMethod<
   GetExportError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16) as any as S.Schema<GetExportRequest>,
-  output: __S(18) as any as S.Schema<GetExportResponse>,
+  input: GetExportRequest,
+  output: GetExportResponse,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -501,8 +591,8 @@ export const getTable: API.OperationMethod<
   GetTableError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19) as any as S.Schema<GetTableRequest>,
-  output: __S(22) as any as S.Schema<GetTableResponse>,
+  input: GetTableRequest,
+  output: GetTableResponse,
   errors: [InternalServerException, ThrottlingException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -525,8 +615,8 @@ export const listExecutions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ExecutionReference
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(23) as any as S.Schema<ListExecutionsRequest>,
-  output: __S(26) as any as S.Schema<ListExecutionsResponse>,
+  input: ListExecutionsRequest,
+  output: ListExecutionsResponse,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -559,8 +649,8 @@ export const listExports: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ExportReference
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(27) as any as S.Schema<ListExportsRequest>,
-  output: __S(30) as any as S.Schema<ListExportsResponse>,
+  input: ListExportsRequest,
+  output: ListExportsResponse,
   errors: [InternalServerException, ThrottlingException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -588,8 +678,8 @@ export const listTables: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Table
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(31) as any as S.Schema<ListTablesRequest>,
-  output: __S(37) as any as S.Schema<ListTablesResponse>,
+  input: ListTablesRequest,
+  output: ListTablesResponse,
   errors: [InternalServerException, ThrottlingException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -618,8 +708,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38) as any as S.Schema<ListTagsForResourceRequest>,
-  output: __S(39) as any as S.Schema<ListTagsForResourceResponse>,
+  input: ListTagsForResourceRequest,
+  output: ListTagsForResourceResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -648,8 +738,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40) as any as S.Schema<TagResourceRequest>,
-  output: __S(41) as any as S.Schema<TagResourceResponse>,
+  input: TagResourceRequest,
+  output: TagResourceResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -678,8 +768,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42) as any as S.Schema<UntagResourceRequest>,
-  output: __S(41) as any as S.Schema<UntagResourceResponse>,
+  input: UntagResourceRequest,
+  output: UntagResourceResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -707,8 +797,8 @@ export const updateExport: API.OperationMethod<
   UpdateExportError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43) as any as S.Schema<UpdateExportRequest>,
-  output: __S(11) as any as S.Schema<UpdateExportResponse>,
+  input: UpdateExportRequest,
+  output: UpdateExportResponse,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -726,21 +816,21 @@ function __c0(j: number): any {
     case 0:
       return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
     case 1:
-      return S.Record(S.String, /*@__PURE__*/ __S(0).pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ TableProperties.pipe(S.optional));
     case 2:
       return S.suspend(() =>
         S.Struct({
           QueryStatement: S.String,
-          TableConfigurations: S.optional(__S(1)),
+          TableConfigurations: S.optional(TableConfigurations),
         }),
       ).annotate({ identifier: "DataQuery" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          OutputType: S.String,
-          Format: S.String,
-          Compression: S.String,
-          Overwrite: S.String,
+          OutputType: S3OutputType,
+          Format: FormatOption,
+          Compression: CompressionOption,
+          Overwrite: OverwriteOption,
         }),
       ).annotate({ identifier: "S3OutputConfigurations" });
     case 4:
@@ -750,15 +840,15 @@ function __c0(j: number): any {
           S3BucketOwner: S.optional(S.String),
           S3Prefix: S.String,
           S3Region: S.String,
-          S3OutputConfigurations: __S(3),
+          S3OutputConfigurations: S3OutputConfigurations,
         }),
       ).annotate({ identifier: "S3Destination" });
     case 5:
-      return S.suspend(() => S.Struct({ S3Destination: __S(4) })).annotate({
+      return S.suspend(() => S.Struct({ S3Destination: S3Destination })).annotate({
         identifier: "DestinationConfigurations",
       });
     case 6:
-      return S.suspend(() => S.Struct({ Frequency: S.String })).annotate({
+      return S.suspend(() => S.Struct({ Frequency: FrequencyOption })).annotate({
         identifier: "RefreshCadence",
       });
     case 7:
@@ -767,9 +857,9 @@ function __c0(j: number): any {
           ExportArn: S.optional(S.String),
           Name: S.String,
           Description: S.optional(S.String),
-          DataQuery: __S(2),
-          DestinationConfigurations: __S(5),
-          RefreshCadence: __S(6),
+          DataQuery: DataQuery,
+          DestinationConfigurations: DestinationConfigurations,
+          RefreshCadence: RefreshCadence,
         }),
       ).annotate({ identifier: "Export" });
   }
@@ -781,10 +871,10 @@ function __c1(j: number): any {
         identifier: "ResourceTag",
       });
     case 1:
-      return S.Array(__S(8));
+      return S.Array(ResourceTag);
     case 2:
       return S.suspend(() =>
-        S.Struct({ Export: __S(7), ResourceTags: S.optional(__S(9)) }).pipe(
+        S.Struct({ Export: Export, ResourceTags: S.optional(ResourceTagList) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "CreateExportRequest" });
@@ -807,8 +897,8 @@ function __c1(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          StatusCode: S.optional(S.String),
-          StatusReason: S.optional(S.String),
+          StatusCode: S.optional(ExecutionStatusCode),
+          StatusReason: S.optional(ExecutionStatusReason),
           CreatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           CompletedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           LastUpdatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
@@ -818,8 +908,8 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ExecutionId: S.optional(S.String),
-          Export: S.optional(__S(7)),
-          ExecutionStatus: S.optional(__S(14)),
+          Export: S.optional(Export),
+          ExecutionStatus: S.optional(ExecutionStatus),
         }),
       ).annotate({ identifier: "GetExecutionResponse" });
   }
@@ -835,8 +925,8 @@ function __c2(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          StatusCode: S.optional(S.String),
-          StatusReason: S.optional(S.String),
+          StatusCode: S.optional(ExportStatusCode),
+          StatusReason: S.optional(ExecutionStatusReason),
           CreatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           LastUpdatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           LastRefreshedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
@@ -844,11 +934,11 @@ function __c2(j: number): any {
       ).annotate({ identifier: "ExportStatus" });
     case 2:
       return S.suspend(() =>
-        S.Struct({ Export: S.optional(__S(7)), ExportStatus: S.optional(__S(17)) }),
+        S.Struct({ Export: S.optional(Export), ExportStatus: S.optional(ExportStatus) }),
       ).annotate({ identifier: "GetExportResponse" });
     case 3:
       return S.suspend(() =>
-        S.Struct({ TableName: S.String, TableProperties: S.optional(__S(0)) }).pipe(
+        S.Struct({ TableName: S.String, TableProperties: S.optional(TableProperties) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "GetTableRequest" });
@@ -861,14 +951,14 @@ function __c2(j: number): any {
         }),
       ).annotate({ identifier: "Column" });
     case 5:
-      return S.Array(__S(20));
+      return S.Array(Column);
     case 6:
       return S.suspend(() =>
         S.Struct({
           TableName: S.optional(S.String),
           Description: S.optional(S.String),
-          TableProperties: S.optional(__S(0)),
-          Schema: S.optional(__S(21)),
+          TableProperties: S.optional(TableProperties),
+          Schema: S.optional(ColumnList),
         }),
       ).annotate({ identifier: "GetTableResponse" });
     case 7:
@@ -885,14 +975,14 @@ function __c3(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ ExecutionId: S.String, ExecutionStatus: __S(14) }),
+        S.Struct({ ExecutionId: S.String, ExecutionStatus: ExecutionStatus }),
       ).annotate({ identifier: "ExecutionReference" });
     case 1:
-      return S.Array(__S(24));
+      return S.Array(ExecutionReference);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          Executions: S.optional(__S(25)),
+          Executions: S.optional(ExecutionReferenceList),
           NextToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListExecutionsResponse" });
@@ -904,13 +994,13 @@ function __c3(j: number): any {
       ).annotate({ identifier: "ListExportsRequest" });
     case 4:
       return S.suspend(() =>
-        S.Struct({ ExportArn: S.String, ExportName: S.String, ExportStatus: __S(17) }),
+        S.Struct({ ExportArn: S.String, ExportName: S.String, ExportStatus: ExportStatus }),
       ).annotate({ identifier: "ExportReference" });
     case 5:
-      return S.Array(__S(28));
+      return S.Array(ExportReference);
     case 6:
       return S.suspend(() =>
-        S.Struct({ Exports: S.optional(__S(29)), NextToken: S.optional(S.String) }),
+        S.Struct({ Exports: S.optional(ExportReferenceList), NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListExportsResponse" });
     case 7:
       return S.suspend(() =>
@@ -928,26 +1018,26 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Name: S.optional(S.String),
-          ValidValues: S.optional(__S(32)),
+          ValidValues: S.optional(GenericStringList),
           DefaultValue: S.optional(S.String),
           Description: S.optional(S.String),
         }),
       ).annotate({ identifier: "TablePropertyDescription" });
     case 2:
-      return S.Array(__S(33));
+      return S.Array(TablePropertyDescription);
     case 3:
       return S.suspend(() =>
         S.Struct({
           TableName: S.optional(S.String),
           Description: S.optional(S.String),
-          TableProperties: S.optional(__S(34)),
+          TableProperties: S.optional(TablePropertyDescriptionList),
         }),
       ).annotate({ identifier: "Table" });
     case 4:
-      return S.Array(__S(35));
+      return S.Array(Table);
     case 5:
       return S.suspend(() =>
-        S.Struct({ Tables: S.optional(__S(36)), NextToken: S.optional(S.String) }),
+        S.Struct({ Tables: S.optional(TableList), NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListTablesResponse" });
     case 6:
       return S.suspend(() =>
@@ -961,7 +1051,7 @@ function __c4(j: number): any {
       });
     case 7:
       return S.suspend(() =>
-        S.Struct({ ResourceTags: S.optional(__S(9)), NextToken: S.optional(S.String) }),
+        S.Struct({ ResourceTags: S.optional(ResourceTagList), NextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListTagsForResourceResponse",
       });
@@ -971,7 +1061,7 @@ function __c5(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ ResourceArn: S.String, ResourceTags: __S(9) }).pipe(
+        S.Struct({ ResourceArn: S.String, ResourceTags: ResourceTagList }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "TagResourceRequest" });
@@ -981,13 +1071,13 @@ function __c5(j: number): any {
       });
     case 2:
       return S.suspend(() =>
-        S.Struct({ ResourceArn: S.String, ResourceTagKeys: __S(32) }).pipe(
+        S.Struct({ ResourceArn: S.String, ResourceTagKeys: ResourceTagKeyList }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "UntagResourceRequest" });
     case 3:
       return S.suspend(() =>
-        S.Struct({ ExportArn: S.String, Export: __S(7) }).pipe(
+        S.Struct({ ExportArn: S.String, Export: Export }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "UpdateExportRequest" });
@@ -996,27 +1086,6 @@ function __c5(j: number): any {
         identifier: "ValidationExceptionField",
       });
     case 5:
-      return S.Array(__S(44));
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
+      return S.Array(ValidationExceptionField);
   }
 }

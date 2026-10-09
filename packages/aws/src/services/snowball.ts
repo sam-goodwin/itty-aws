@@ -10,8 +10,6 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "Snowball",
   serviceShapeName: "AWSIESnowballJobManagementService",
@@ -130,14 +128,20 @@ export type ClusterId = string;
 export interface CancelClusterRequest {
   ClusterId: string;
 }
+const CancelClusterRequest = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<CancelClusterRequest>;
 export interface CancelClusterResult {}
+const CancelClusterResult = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<CancelClusterResult>;
 export type JobId = string;
 export interface CancelJobRequest {
   JobId: string;
 }
+const CancelJobRequest = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<CancelJobRequest>;
 export interface CancelJobResult {}
+const CancelJobResult = CancelClusterResult as any as S.Schema<CancelJobResult>;
 export type AddressId = string;
 export type AddressType = "CUST_PICKUP" | "AWS_SHIP" | (string & {});
+const AddressType = S.String;
+
 export interface Address {
   AddressId?: string;
   Name?: string;
@@ -155,65 +159,104 @@ export interface Address {
   IsRestricted?: boolean;
   Type?: AddressType;
 }
+const Address = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<Address>;
 export interface CreateAddressRequest {
   Address: Address;
 }
+const CreateAddressRequest = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<CreateAddressRequest>;
 export interface CreateAddressResult {
   AddressId?: string;
 }
+const CreateAddressResult = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<CreateAddressResult>;
 export type JobType = "IMPORT" | "EXPORT" | "LOCAL_USE" | (string & {});
+const JobType = S.String;
+
 export type ResourceARN = string;
 export interface KeyRange {
   BeginMarker?: string;
   EndMarker?: string;
 }
+const KeyRange = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<KeyRange>;
 export type DeviceServiceName = "NFS_ON_DEVICE_SERVICE" | "S3_ON_DEVICE_SERVICE" | (string & {});
+const DeviceServiceName = S.String;
+
 export type TransferOption = "IMPORT" | "EXPORT" | "LOCAL_USE" | (string & {});
+const TransferOption = S.String;
+
 export interface TargetOnDeviceService {
   ServiceName?: DeviceServiceName;
   TransferOption?: TransferOption;
 }
+const TargetOnDeviceService = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<TargetOnDeviceService>;
 export type TargetOnDeviceServiceList = TargetOnDeviceService[];
+const TargetOnDeviceServiceList = /*@__PURE__*/ __L.at(__c1, 0);
 export interface S3Resource {
   BucketArn?: string;
   KeyRange?: KeyRange;
   TargetOnDeviceServices?: TargetOnDeviceService[];
 }
+const S3Resource = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<S3Resource>;
 export type S3ResourceList = S3Resource[];
+const S3ResourceList = /*@__PURE__*/ __L.at(__c1, 2);
 export interface EventTriggerDefinition {
   EventResourceARN?: string;
 }
+const EventTriggerDefinition = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<EventTriggerDefinition>;
 export type EventTriggerDefinitionList = EventTriggerDefinition[];
+const EventTriggerDefinitionList = /*@__PURE__*/ __L.at(__c1, 4);
 export interface LambdaResource {
   LambdaArn?: string;
   EventTriggers?: EventTriggerDefinition[];
 }
+const LambdaResource = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<LambdaResource>;
 export type LambdaResourceList = LambdaResource[];
+const LambdaResourceList = /*@__PURE__*/ __L.at(__c1, 6);
 export type AmiId = string;
 export interface Ec2AmiResource {
   AmiId: string;
   SnowballAmiId?: string;
 }
+const Ec2AmiResource = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<Ec2AmiResource>;
 export type Ec2AmiResourceList = Ec2AmiResource[];
+const Ec2AmiResourceList = /*@__PURE__*/ __L.at(__c2, 0);
 export interface JobResource {
   S3Resources?: S3Resource[];
   LambdaResources?: LambdaResource[];
   Ec2AmiResources?: Ec2AmiResource[];
 }
+const JobResource = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<JobResource>;
 export type StorageLimit = number;
 export type StorageUnit = "TB" | (string & {});
+const StorageUnit = S.String;
+
 export interface NFSOnDeviceServiceConfiguration {
   StorageLimit?: number;
   StorageUnit?: StorageUnit;
 }
+const NFSOnDeviceServiceConfiguration = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<NFSOnDeviceServiceConfiguration>;
 export interface TGWOnDeviceServiceConfiguration {
   StorageLimit?: number;
   StorageUnit?: StorageUnit;
 }
+const TGWOnDeviceServiceConfiguration =
+  NFSOnDeviceServiceConfiguration as any as S.Schema<TGWOnDeviceServiceConfiguration>;
 export interface EKSOnDeviceServiceConfiguration {
   KubernetesVersion?: string;
   EKSAnywhereVersion?: string;
 }
+const EKSOnDeviceServiceConfiguration = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<EKSOnDeviceServiceConfiguration>;
 export type S3StorageLimit = number;
 export type ServiceSize = number;
 export type NodeFaultTolerance = number;
@@ -223,12 +266,20 @@ export interface S3OnDeviceServiceConfiguration {
   ServiceSize?: number;
   FaultTolerance?: number;
 }
+const S3OnDeviceServiceConfiguration = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<S3OnDeviceServiceConfiguration>;
 export interface OnDeviceServiceConfiguration {
   NFSOnDeviceService?: NFSOnDeviceServiceConfiguration;
   TGWOnDeviceService?: TGWOnDeviceServiceConfiguration;
   EKSOnDeviceService?: EKSOnDeviceServiceConfiguration;
   S3OnDeviceService?: S3OnDeviceServiceConfiguration;
 }
+const OnDeviceServiceConfiguration = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<OnDeviceServiceConfiguration>;
 export type KmsKeyARN = string;
 export type RoleARN = string;
 export type SnowballType =
@@ -243,7 +294,11 @@ export type SnowballType =
   | "V3_5S"
   | "RACK_5U_C"
   | (string & {});
+const SnowballType = S.String;
+
 export type ShippingOption = "SECOND_DAY" | "NEXT_DAY" | "EXPRESS" | "STANDARD" | (string & {});
+const ShippingOption = S.String;
+
 export type SnsTopicARN = string;
 export type JobState =
   | "New"
@@ -260,28 +315,37 @@ export type JobState =
   | "Listing"
   | "Pending"
   | (string & {});
+const JobState = S.String;
+
 export type JobStateList = JobState[];
+const JobStateList = /*@__PURE__*/ __L.at(__c2, 6);
 export interface Notification {
   SnsTopicARN?: string;
   JobStatesToNotify?: JobState[];
   NotifyAll?: boolean;
   DevicePickupSnsTopicARN?: string;
 }
+const Notification = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<Notification>;
 export type GSTIN = string;
 export interface INDTaxDocuments {
   GSTIN?: string;
 }
+const INDTaxDocuments = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<INDTaxDocuments>;
 export interface TaxDocuments {
   IND?: INDTaxDocuments;
 }
+const TaxDocuments = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<TaxDocuments>;
 export type RemoteManagement =
   | "INSTALLED_ONLY"
   | "INSTALLED_AUTOSTART"
   | "NOT_INSTALLED"
   | (string & {});
+const RemoteManagement = S.String;
+
 export type InitialClusterSize = number;
 export type LongTermPricingId = string;
 export type LongTermPricingIdList = string[];
+const LongTermPricingIdList = /*@__PURE__*/ __L.at(__c3, 2);
 export type SnowballCapacity =
   | "T50"
   | "T80"
@@ -295,6 +359,8 @@ export type SnowballCapacity =
   | "T240"
   | "T13"
   | (string & {});
+const SnowballCapacity = S.String;
+
 export interface CreateClusterRequest {
   JobType: JobType;
   Resources?: JobResource;
@@ -314,6 +380,7 @@ export interface CreateClusterRequest {
   LongTermPricingIds?: string[];
   SnowballCapacityPreference?: SnowballCapacity;
 }
+const CreateClusterRequest = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<CreateClusterRequest>;
 export interface JobListEntry {
   JobId?: string;
   JobState?: JobState;
@@ -323,21 +390,32 @@ export interface JobListEntry {
   CreationDate?: Date;
   Description?: string;
 }
+const JobListEntry = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<JobListEntry>;
 export type JobListEntryList = JobListEntry[];
+const JobListEntryList = /*@__PURE__*/ __L.at(__c3, 5);
 export interface CreateClusterResult {
   ClusterId?: string;
   JobListEntries?: JobListEntry[];
 }
+const CreateClusterResult = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<CreateClusterResult>;
 export interface WirelessConnection {
   IsWifiEnabled?: boolean;
 }
+const WirelessConnection = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<WirelessConnection>;
 export interface SnowconeDeviceConfiguration {
   WirelessConnection?: WirelessConnection;
 }
+const SnowconeDeviceConfiguration = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<SnowconeDeviceConfiguration>;
 export interface DeviceConfiguration {
   SnowconeDeviceConfiguration?: SnowconeDeviceConfiguration;
 }
+const DeviceConfiguration = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<DeviceConfiguration>;
 export type ImpactLevel = "IL2" | "IL4" | "IL5" | "IL6" | "IL99" | (string & {});
+const ImpactLevel = S.String;
+
 export type PhoneNumber = string | redacted.Redacted<string>;
 export type Email = string | redacted.Redacted<string>;
 export type DevicePickupId = string;
@@ -350,6 +428,7 @@ export interface PickupDetails {
   IdentificationIssuingOrg?: string;
   DevicePickupId?: string;
 }
+const PickupDetails = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<PickupDetails>;
 export interface CreateJobRequest {
   JobType?: JobType;
   Resources?: JobResource;
@@ -371,51 +450,94 @@ export interface CreateJobRequest {
   ImpactLevel?: ImpactLevel;
   PickupDetails?: PickupDetails;
 }
+const CreateJobRequest = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<CreateJobRequest>;
 export interface CreateJobResult {
   JobId?: string;
 }
+const CreateJobResult = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<CreateJobResult>;
 export type LongTermPricingType = "OneYear" | "ThreeYear" | "OneMonth" | (string & {});
+const LongTermPricingType = S.String;
+
 export type JavaBoolean = boolean;
 export interface CreateLongTermPricingRequest {
   LongTermPricingType: LongTermPricingType;
   IsLongTermPricingAutoRenew?: boolean;
   SnowballType: SnowballType;
 }
+const CreateLongTermPricingRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<CreateLongTermPricingRequest>;
 export interface CreateLongTermPricingResult {
   LongTermPricingId?: string;
 }
+const CreateLongTermPricingResult = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<CreateLongTermPricingResult>;
 export interface CreateReturnShippingLabelRequest {
   JobId: string;
   ShippingOption?: ShippingOption;
 }
+const CreateReturnShippingLabelRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<CreateReturnShippingLabelRequest>;
 export type ShippingLabelStatus =
   | "InProgress"
   | "TimedOut"
   | "Succeeded"
   | "Failed"
   | (string & {});
+const ShippingLabelStatus = S.String;
+
 export interface CreateReturnShippingLabelResult {
   Status?: ShippingLabelStatus;
 }
+const CreateReturnShippingLabelResult = /*@__PURE__*/ __L.at(
+  __c5,
+  0,
+) as any as S.Schema<CreateReturnShippingLabelResult>;
 export interface DescribeAddressRequest {
   AddressId: string;
 }
+const DescribeAddressRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  1,
+) as any as S.Schema<DescribeAddressRequest>;
 export interface DescribeAddressResult {
   Address?: Address;
 }
+const DescribeAddressResult = /*@__PURE__*/ __L.at(
+  __c5,
+  2,
+) as any as S.Schema<DescribeAddressResult>;
 export type ListLimit = number;
 export interface DescribeAddressesRequest {
   MaxResults?: number;
   NextToken?: string;
 }
+const DescribeAddressesRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<DescribeAddressesRequest>;
 export type AddressList = Address[];
+const AddressList = /*@__PURE__*/ __L.at(__c5, 4);
 export interface DescribeAddressesResult {
   Addresses?: Address[];
   NextToken?: string;
 }
+const DescribeAddressesResult = /*@__PURE__*/ __L.at(
+  __c5,
+  5,
+) as any as S.Schema<DescribeAddressesResult>;
 export interface DescribeClusterRequest {
   ClusterId: string;
 }
+const DescribeClusterRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  6,
+) as any as S.Schema<DescribeClusterRequest>;
 export type ClusterState =
   | "AwaitingQuorum"
   | "Pending"
@@ -423,6 +545,8 @@ export type ClusterState =
   | "Complete"
   | "Cancelled"
   | (string & {});
+const ClusterState = S.String;
+
 export interface ClusterMetadata {
   ClusterId?: string;
   Description?: string;
@@ -440,32 +564,42 @@ export interface ClusterMetadata {
   TaxDocuments?: TaxDocuments;
   OnDeviceServiceConfiguration?: OnDeviceServiceConfiguration;
 }
+const ClusterMetadata = /*@__PURE__*/ __L.at(__c5, 7) as any as S.Schema<ClusterMetadata>;
 export interface DescribeClusterResult {
   ClusterMetadata?: ClusterMetadata;
 }
+const DescribeClusterResult = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<DescribeClusterResult>;
 export interface DescribeJobRequest {
   JobId: string;
 }
+const DescribeJobRequest = /*@__PURE__*/ __L.at(__c6, 1) as any as S.Schema<DescribeJobRequest>;
 export interface Shipment {
   Status?: string;
   TrackingNumber?: string;
 }
+const Shipment = /*@__PURE__*/ __L.at(__c6, 2) as any as S.Schema<Shipment>;
 export interface ShippingDetails {
   ShippingOption?: ShippingOption;
   InboundShipment?: Shipment;
   OutboundShipment?: Shipment;
 }
+const ShippingDetails = /*@__PURE__*/ __L.at(__c6, 3) as any as S.Schema<ShippingDetails>;
 export interface DataTransfer {
   BytesTransferred?: number;
   ObjectsTransferred?: number;
   TotalBytes?: number;
   TotalObjects?: number;
 }
+const DataTransfer = /*@__PURE__*/ __L.at(__c6, 4) as any as S.Schema<DataTransfer>;
 export interface JobLogs {
   JobCompletionReportURI?: string;
   JobSuccessLogURI?: string;
   JobFailureLogURI?: string;
 }
+const JobLogs = /*@__PURE__*/ __L.at(__c6, 5) as any as S.Schema<JobLogs>;
 export interface JobMetadata {
   JobId?: string;
   JobState?: JobState;
@@ -493,92 +627,162 @@ export interface JobMetadata {
   PickupDetails?: PickupDetails;
   SnowballId?: string;
 }
+const JobMetadata = /*@__PURE__*/ __L.at(__c6, 6) as any as S.Schema<JobMetadata>;
 export type JobMetadataList = JobMetadata[];
+const JobMetadataList = /*@__PURE__*/ __L.at(__c6, 7);
 export interface DescribeJobResult {
   JobMetadata?: JobMetadata;
   SubJobMetadata?: JobMetadata[];
 }
+const DescribeJobResult = /*@__PURE__*/ __L.at(__c7, 0) as any as S.Schema<DescribeJobResult>;
 export interface DescribeReturnShippingLabelRequest {
   JobId: string;
 }
+const DescribeReturnShippingLabelRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  1,
+) as any as S.Schema<DescribeReturnShippingLabelRequest>;
 export interface DescribeReturnShippingLabelResult {
   Status?: ShippingLabelStatus;
   ExpirationDate?: Date;
   ReturnShippingLabelURI?: string;
 }
+const DescribeReturnShippingLabelResult = /*@__PURE__*/ __L.at(
+  __c7,
+  2,
+) as any as S.Schema<DescribeReturnShippingLabelResult>;
 export interface GetJobManifestRequest {
   JobId: string;
 }
+const GetJobManifestRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  3,
+) as any as S.Schema<GetJobManifestRequest>;
 export interface GetJobManifestResult {
   ManifestURI?: string;
 }
+const GetJobManifestResult = /*@__PURE__*/ __L.at(__c7, 4) as any as S.Schema<GetJobManifestResult>;
 export interface GetJobUnlockCodeRequest {
   JobId: string;
 }
+const GetJobUnlockCodeRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  5,
+) as any as S.Schema<GetJobUnlockCodeRequest>;
 export interface GetJobUnlockCodeResult {
   UnlockCode?: string;
 }
+const GetJobUnlockCodeResult = /*@__PURE__*/ __L.at(
+  __c7,
+  6,
+) as any as S.Schema<GetJobUnlockCodeResult>;
 export interface GetSnowballUsageRequest {}
+const GetSnowballUsageRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  7,
+) as any as S.Schema<GetSnowballUsageRequest>;
 export interface GetSnowballUsageResult {
   SnowballLimit?: number;
   SnowballsInUse?: number;
 }
+const GetSnowballUsageResult = /*@__PURE__*/ __L.at(
+  __c8,
+  0,
+) as any as S.Schema<GetSnowballUsageResult>;
 export interface GetSoftwareUpdatesRequest {
   JobId: string;
 }
+const GetSoftwareUpdatesRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  1,
+) as any as S.Schema<GetSoftwareUpdatesRequest>;
 export interface GetSoftwareUpdatesResult {
   UpdatesURI?: string;
 }
+const GetSoftwareUpdatesResult = /*@__PURE__*/ __L.at(
+  __c8,
+  2,
+) as any as S.Schema<GetSoftwareUpdatesResult>;
 export interface ListClusterJobsRequest {
   ClusterId: string;
   MaxResults?: number;
   NextToken?: string;
 }
+const ListClusterJobsRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  3,
+) as any as S.Schema<ListClusterJobsRequest>;
 export interface ListClusterJobsResult {
   JobListEntries?: JobListEntry[];
   NextToken?: string;
 }
+const ListClusterJobsResult = /*@__PURE__*/ __L.at(
+  __c8,
+  4,
+) as any as S.Schema<ListClusterJobsResult>;
 export interface ListClustersRequest {
   MaxResults?: number;
   NextToken?: string;
 }
+const ListClustersRequest = /*@__PURE__*/ __L.at(__c8, 5) as any as S.Schema<ListClustersRequest>;
 export interface ClusterListEntry {
   ClusterId?: string;
   ClusterState?: ClusterState;
   CreationDate?: Date;
   Description?: string;
 }
+const ClusterListEntry = /*@__PURE__*/ __L.at(__c8, 6) as any as S.Schema<ClusterListEntry>;
 export type ClusterListEntryList = ClusterListEntry[];
+const ClusterListEntryList = /*@__PURE__*/ __L.at(__c8, 7);
 export interface ListClustersResult {
   ClusterListEntries?: ClusterListEntry[];
   NextToken?: string;
 }
+const ListClustersResult = /*@__PURE__*/ __L.at(__c9, 0) as any as S.Schema<ListClustersResult>;
 export interface ListCompatibleImagesRequest {
   MaxResults?: number;
   NextToken?: string;
 }
+const ListCompatibleImagesRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  1,
+) as any as S.Schema<ListCompatibleImagesRequest>;
 export interface CompatibleImage {
   AmiId?: string;
   Name?: string;
 }
+const CompatibleImage = /*@__PURE__*/ __L.at(__c9, 2) as any as S.Schema<CompatibleImage>;
 export type CompatibleImageList = CompatibleImage[];
+const CompatibleImageList = /*@__PURE__*/ __L.at(__c9, 3);
 export interface ListCompatibleImagesResult {
   CompatibleImages?: CompatibleImage[];
   NextToken?: string;
 }
+const ListCompatibleImagesResult = /*@__PURE__*/ __L.at(
+  __c9,
+  4,
+) as any as S.Schema<ListCompatibleImagesResult>;
 export interface ListJobsRequest {
   MaxResults?: number;
   NextToken?: string;
 }
+const ListJobsRequest = /*@__PURE__*/ __L.at(__c9, 5) as any as S.Schema<ListJobsRequest>;
 export interface ListJobsResult {
   JobListEntries?: JobListEntry[];
   NextToken?: string;
 }
+const ListJobsResult = ListClusterJobsResult as any as S.Schema<ListJobsResult>;
 export interface ListLongTermPricingRequest {
   MaxResults?: number;
   NextToken?: string;
 }
+const ListLongTermPricingRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  6,
+) as any as S.Schema<ListLongTermPricingRequest>;
 export type LongTermPricingAssociatedJobIdList = string[];
+const LongTermPricingAssociatedJobIdList =
+  LongTermPricingIdList as any as S.Schema<LongTermPricingAssociatedJobIdList>;
 export interface LongTermPricingListEntry {
   LongTermPricingId?: string;
   LongTermPricingEndDate?: Date;
@@ -591,41 +795,72 @@ export interface LongTermPricingListEntry {
   SnowballType?: SnowballType;
   JobIds?: string[];
 }
+const LongTermPricingListEntry = /*@__PURE__*/ __L.at(
+  __c9,
+  7,
+) as any as S.Schema<LongTermPricingListEntry>;
 export type LongTermPricingEntryList = LongTermPricingListEntry[];
+const LongTermPricingEntryList = /*@__PURE__*/ __L.at(__c10, 0);
 export interface ListLongTermPricingResult {
   LongTermPricingEntries?: LongTermPricingListEntry[];
   NextToken?: string;
 }
+const ListLongTermPricingResult = /*@__PURE__*/ __L.at(
+  __c10,
+  1,
+) as any as S.Schema<ListLongTermPricingResult>;
 export interface ListPickupLocationsRequest {
   MaxResults?: number;
   NextToken?: string;
 }
+const ListPickupLocationsRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  2,
+) as any as S.Schema<ListPickupLocationsRequest>;
 export interface ListPickupLocationsResult {
   Addresses?: Address[];
   NextToken?: string;
 }
+const ListPickupLocationsResult = /*@__PURE__*/ __L.at(
+  __c10,
+  3,
+) as any as S.Schema<ListPickupLocationsResult>;
 export type ServiceName = "KUBERNETES" | "EKS_ANYWHERE" | (string & {});
+const ServiceName = S.String;
+
 export interface ServiceVersion {
   Version?: string;
 }
+const ServiceVersion = /*@__PURE__*/ __L.at(__c10, 4) as any as S.Schema<ServiceVersion>;
 export interface DependentService {
   ServiceName?: ServiceName;
   ServiceVersion?: ServiceVersion;
 }
+const DependentService = /*@__PURE__*/ __L.at(__c10, 5) as any as S.Schema<DependentService>;
 export type DependentServiceList = DependentService[];
+const DependentServiceList = /*@__PURE__*/ __L.at(__c10, 6);
 export interface ListServiceVersionsRequest {
   ServiceName: ServiceName;
   DependentServices?: DependentService[];
   MaxResults?: number;
   NextToken?: string;
 }
+const ListServiceVersionsRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  7,
+) as any as S.Schema<ListServiceVersionsRequest>;
 export type ServiceVersionList = ServiceVersion[];
+const ServiceVersionList = /*@__PURE__*/ __L.at(__c11, 0);
 export interface ListServiceVersionsResult {
   ServiceVersions: ServiceVersion[];
   ServiceName: ServiceName;
   DependentServices?: DependentService[];
   NextToken?: string;
 }
+const ListServiceVersionsResult = /*@__PURE__*/ __L.at(
+  __c11,
+  1,
+) as any as S.Schema<ListServiceVersionsResult>;
 export interface UpdateClusterRequest {
   ClusterId: string;
   RoleARN?: string;
@@ -637,7 +872,12 @@ export interface UpdateClusterRequest {
   Notification?: Notification;
   ForwardingAddressId?: string;
 }
+const UpdateClusterRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  2,
+) as any as S.Schema<UpdateClusterRequest>;
 export interface UpdateClusterResult {}
+const UpdateClusterResult = CancelClusterResult as any as S.Schema<UpdateClusterResult>;
 export interface UpdateJobRequest {
   JobId: string;
   RoleARN?: string;
@@ -651,19 +891,35 @@ export interface UpdateJobRequest {
   ForwardingAddressId?: string;
   PickupDetails?: PickupDetails;
 }
+const UpdateJobRequest = /*@__PURE__*/ __L.at(__c11, 3) as any as S.Schema<UpdateJobRequest>;
 export interface UpdateJobResult {}
+const UpdateJobResult = CancelClusterResult as any as S.Schema<UpdateJobResult>;
 export type ShipmentState = "RECEIVED" | "RETURNED" | (string & {});
+const ShipmentState = S.String;
+
 export interface UpdateJobShipmentStateRequest {
   JobId: string;
   ShipmentState: ShipmentState;
 }
+const UpdateJobShipmentStateRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  4,
+) as any as S.Schema<UpdateJobShipmentStateRequest>;
 export interface UpdateJobShipmentStateResult {}
+const UpdateJobShipmentStateResult =
+  CancelClusterResult as any as S.Schema<UpdateJobShipmentStateResult>;
 export interface UpdateLongTermPricingRequest {
   LongTermPricingId: string;
   ReplacementJob?: string;
   IsLongTermPricingAutoRenew?: boolean;
 }
+const UpdateLongTermPricingRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  5,
+) as any as S.Schema<UpdateLongTermPricingRequest>;
 export interface UpdateLongTermPricingResult {}
+const UpdateLongTermPricingResult =
+  CancelClusterResult as any as S.Schema<UpdateLongTermPricingResult>;
 export type CancelClusterError =
   | InvalidJobStateException
   | InvalidResourceException
@@ -680,8 +936,8 @@ export const cancelCluster: API.OperationMethod<
   CancelClusterError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<CancelClusterRequest>,
-  output: __S(1) as any as S.Schema<CancelClusterResult>,
+  input: CancelClusterRequest,
+  output: CancelClusterResult,
   errors: [InvalidJobStateException, InvalidResourceException, KMSRequestFailedException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -705,8 +961,8 @@ export const cancelJob: API.OperationMethod<
   CancelJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2) as any as S.Schema<CancelJobRequest>,
-  output: __S(1) as any as S.Schema<CancelJobResult>,
+  input: CancelJobRequest,
+  output: CancelJobResult,
   errors: [InvalidJobStateException, InvalidResourceException, KMSRequestFailedException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -729,8 +985,8 @@ export const createAddress: API.OperationMethod<
   CreateAddressError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4) as any as S.Schema<CreateAddressRequest>,
-  output: __S(5) as any as S.Schema<CreateAddressResult>,
+  input: CreateAddressRequest,
+  output: CreateAddressResult,
   errors: [InvalidAddressException, UnsupportedAddressException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -753,8 +1009,8 @@ export const createCluster: API.OperationMethod<
   CreateClusterError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27) as any as S.Schema<CreateClusterRequest>,
-  output: __S(30) as any as S.Schema<CreateClusterResult>,
+  input: CreateClusterRequest,
+  output: CreateClusterResult,
   errors: [
     Ec2RequestFailedException,
     InvalidInputCombinationException,
@@ -861,8 +1117,8 @@ export const createJob: API.OperationMethod<
   CreateJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35) as any as S.Schema<CreateJobRequest>,
-  output: __S(36) as any as S.Schema<CreateJobResult>,
+  input: CreateJobRequest,
+  output: CreateJobResult,
   errors: [
     ClusterLimitExceededException,
     Ec2RequestFailedException,
@@ -886,8 +1142,8 @@ export const createLongTermPricing: API.OperationMethod<
   CreateLongTermPricingError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37) as any as S.Schema<CreateLongTermPricingRequest>,
-  output: __S(38) as any as S.Schema<CreateLongTermPricingResult>,
+  input: CreateLongTermPricingRequest,
+  output: CreateLongTermPricingResult,
   errors: [InvalidResourceException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -910,8 +1166,8 @@ export const createReturnShippingLabel: API.OperationMethod<
   CreateReturnShippingLabelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39) as any as S.Schema<CreateReturnShippingLabelRequest>,
-  output: __S(40) as any as S.Schema<CreateReturnShippingLabelResult>,
+  input: CreateReturnShippingLabelRequest,
+  output: CreateReturnShippingLabelResult,
   errors: [
     ConflictException,
     InvalidInputCombinationException,
@@ -935,8 +1191,8 @@ export const describeAddress: API.OperationMethod<
   DescribeAddressError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41) as any as S.Schema<DescribeAddressRequest>,
-  output: __S(42) as any as S.Schema<DescribeAddressResult>,
+  input: DescribeAddressRequest,
+  output: DescribeAddressResult,
   errors: [InvalidResourceException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -959,8 +1215,8 @@ export const describeAddresses: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Address
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(43) as any as S.Schema<DescribeAddressesRequest>,
-  output: __S(45) as any as S.Schema<DescribeAddressesResult>,
+  input: DescribeAddressesRequest,
+  output: DescribeAddressesResult,
   errors: [InvalidNextTokenException, InvalidResourceException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -984,8 +1240,8 @@ export const describeCluster: API.OperationMethod<
   DescribeClusterError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(46) as any as S.Schema<DescribeClusterRequest>,
-  output: __S(48) as any as S.Schema<DescribeClusterResult>,
+  input: DescribeClusterRequest,
+  output: DescribeClusterResult,
   errors: [InvalidResourceException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1003,8 +1259,8 @@ export const describeJob: API.OperationMethod<
   DescribeJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49) as any as S.Schema<DescribeJobRequest>,
-  output: __S(56) as any as S.Schema<DescribeJobResult>,
+  input: DescribeJobRequest,
+  output: DescribeJobResult,
   errors: [InvalidResourceException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1025,8 +1281,8 @@ export const describeReturnShippingLabel: API.OperationMethod<
   DescribeReturnShippingLabelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57) as any as S.Schema<DescribeReturnShippingLabelRequest>,
-  output: __S(58) as any as S.Schema<DescribeReturnShippingLabelResult>,
+  input: DescribeReturnShippingLabelRequest,
+  output: DescribeReturnShippingLabelResult,
   errors: [ConflictException, InvalidJobStateException, InvalidResourceException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1064,8 +1320,8 @@ export const getJobManifest: API.OperationMethod<
   GetJobManifestError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(59) as any as S.Schema<GetJobManifestRequest>,
-  output: __S(60) as any as S.Schema<GetJobManifestResult>,
+  input: GetJobManifestRequest,
+  output: GetJobManifestResult,
   errors: [InvalidJobStateException, InvalidResourceException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1099,8 +1355,8 @@ export const getJobUnlockCode: API.OperationMethod<
   GetJobUnlockCodeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(61) as any as S.Schema<GetJobUnlockCodeRequest>,
-  output: __S(62) as any as S.Schema<GetJobUnlockCodeResult>,
+  input: GetJobUnlockCodeRequest,
+  output: GetJobUnlockCodeResult,
   errors: [InvalidJobStateException, InvalidResourceException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1121,8 +1377,8 @@ export const getSnowballUsage: API.OperationMethod<
   GetSnowballUsageError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(63) as any as S.Schema<GetSnowballUsageRequest>,
-  output: __S(64) as any as S.Schema<GetSnowballUsageResult>,
+  input: GetSnowballUsageRequest,
+  output: GetSnowballUsageResult,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1143,8 +1399,8 @@ export const getSoftwareUpdates: API.OperationMethod<
   GetSoftwareUpdatesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65) as any as S.Schema<GetSoftwareUpdatesRequest>,
-  output: __S(66) as any as S.Schema<GetSoftwareUpdatesResult>,
+  input: GetSoftwareUpdatesRequest,
+  output: GetSoftwareUpdatesResult,
   errors: [InvalidJobStateException, InvalidResourceException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1167,8 +1423,8 @@ export const listClusterJobs: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   JobListEntry
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(67) as any as S.Schema<ListClusterJobsRequest>,
-  output: __S(68) as any as S.Schema<ListClusterJobsResult>,
+  input: ListClusterJobsRequest,
+  output: ListClusterJobsResult,
   errors: [InvalidNextTokenException, InvalidResourceException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1194,8 +1450,8 @@ export const listClusters: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ClusterListEntry
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(69) as any as S.Schema<ListClustersRequest>,
-  output: __S(72) as any as S.Schema<ListClustersResult>,
+  input: ListClustersRequest,
+  output: ListClustersResult,
   errors: [InvalidNextTokenException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1225,8 +1481,8 @@ export const listCompatibleImages: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   CompatibleImage
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(73) as any as S.Schema<ListCompatibleImagesRequest>,
-  output: __S(76) as any as S.Schema<ListCompatibleImagesResult>,
+  input: ListCompatibleImagesRequest,
+  output: ListCompatibleImagesResult,
   errors: [Ec2RequestFailedException, InvalidNextTokenException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1254,8 +1510,8 @@ export const listJobs: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   JobListEntry
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(77) as any as S.Schema<ListJobsRequest>,
-  output: __S(68) as any as S.Schema<ListJobsResult>,
+  input: ListJobsRequest,
+  output: ListJobsResult,
   errors: [InvalidNextTokenException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1282,8 +1538,8 @@ export const listLongTermPricing: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   LongTermPricingListEntry
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(78) as any as S.Schema<ListLongTermPricingRequest>,
-  output: __S(81) as any as S.Schema<ListLongTermPricingResult>,
+  input: ListLongTermPricingRequest,
+  output: ListLongTermPricingResult,
   errors: [InvalidNextTokenException, InvalidResourceException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1307,8 +1563,8 @@ export const listPickupLocations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(82) as any as S.Schema<ListPickupLocationsRequest>,
-  output: __S(83) as any as S.Schema<ListPickupLocationsResult>,
+  input: ListPickupLocationsRequest,
+  output: ListPickupLocationsResult,
   errors: [InvalidResourceException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1334,8 +1590,8 @@ export const listServiceVersions: API.OperationMethod<
   ListServiceVersionsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(87) as any as S.Schema<ListServiceVersionsRequest>,
-  output: __S(89) as any as S.Schema<ListServiceVersionsResult>,
+  input: ListServiceVersionsRequest,
+  output: ListServiceVersionsResult,
   errors: [InvalidNextTokenException, InvalidResourceException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1361,8 +1617,8 @@ export const updateCluster: API.OperationMethod<
   UpdateClusterError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(90) as any as S.Schema<UpdateClusterRequest>,
-  output: __S(1) as any as S.Schema<UpdateClusterResult>,
+  input: UpdateClusterRequest,
+  output: UpdateClusterResult,
   errors: [
     Ec2RequestFailedException,
     InvalidInputCombinationException,
@@ -1394,8 +1650,8 @@ export const updateJob: API.OperationMethod<
   UpdateJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(91) as any as S.Schema<UpdateJobRequest>,
-  output: __S(1) as any as S.Schema<UpdateJobResult>,
+  input: UpdateJobRequest,
+  output: UpdateJobResult,
   errors: [
     ClusterLimitExceededException,
     Ec2RequestFailedException,
@@ -1422,8 +1678,8 @@ export const updateJobShipmentState: API.OperationMethod<
   UpdateJobShipmentStateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(92) as any as S.Schema<UpdateJobShipmentStateRequest>,
-  output: __S(1) as any as S.Schema<UpdateJobShipmentStateResult>,
+  input: UpdateJobShipmentStateRequest,
+  output: UpdateJobShipmentStateResult,
   errors: [InvalidJobStateException, InvalidResourceException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1440,8 +1696,8 @@ export const updateLongTermPricing: API.OperationMethod<
   UpdateLongTermPricingError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(93) as any as S.Schema<UpdateLongTermPricingRequest>,
-  output: __S(1) as any as S.Schema<UpdateLongTermPricingResult>,
+  input: UpdateLongTermPricingRequest,
+  output: UpdateLongTermPricingResult,
   errors: [InvalidResourceException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1484,12 +1740,12 @@ function __c0(j: number): any {
           PostalCode: S.optional(S.String),
           PhoneNumber: S.optional(S.String),
           IsRestricted: S.optional(S.Boolean),
-          Type: S.optional(S.String),
+          Type: S.optional(AddressType),
         }),
       ).annotate({ identifier: "Address" });
     case 4:
       return S.suspend(() =>
-        S.Struct({ Address: __S(3) }).pipe(
+        S.Struct({ Address: Address }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "CreateAddressRequest" });
@@ -1504,8 +1760,8 @@ function __c0(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          ServiceName: S.optional(S.String),
-          TransferOption: S.optional(S.String),
+          ServiceName: S.optional(DeviceServiceName),
+          TransferOption: S.optional(TransferOption),
         }),
       ).annotate({ identifier: "TargetOnDeviceService" });
   }
@@ -1513,32 +1769,32 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(7));
+      return S.Array(TargetOnDeviceService);
     case 1:
       return S.suspend(() =>
         S.Struct({
           BucketArn: S.optional(S.String),
-          KeyRange: S.optional(__S(6)),
-          TargetOnDeviceServices: S.optional(__S(8)),
+          KeyRange: S.optional(KeyRange),
+          TargetOnDeviceServices: S.optional(TargetOnDeviceServiceList),
         }),
       ).annotate({ identifier: "S3Resource" });
     case 2:
-      return S.Array(__S(9));
+      return S.Array(S3Resource);
     case 3:
       return S.suspend(() => S.Struct({ EventResourceARN: S.optional(S.String) })).annotate({
         identifier: "EventTriggerDefinition",
       });
     case 4:
-      return S.Array(__S(11));
+      return S.Array(EventTriggerDefinition);
     case 5:
       return S.suspend(() =>
         S.Struct({
           LambdaArn: S.optional(S.String),
-          EventTriggers: S.optional(__S(12)),
+          EventTriggers: S.optional(EventTriggerDefinitionList),
         }),
       ).annotate({ identifier: "LambdaResource" });
     case 6:
-      return S.Array(__S(13));
+      return S.Array(LambdaResource);
     case 7:
       return S.suspend(() =>
         S.Struct({ AmiId: S.String, SnowballAmiId: S.optional(S.String) }),
@@ -1548,18 +1804,18 @@ function __c1(j: number): any {
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(15));
+      return S.Array(Ec2AmiResource);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          S3Resources: S.optional(__S(10)),
-          LambdaResources: S.optional(__S(14)),
-          Ec2AmiResources: S.optional(__S(16)),
+          S3Resources: S.optional(S3ResourceList),
+          LambdaResources: S.optional(LambdaResourceList),
+          Ec2AmiResources: S.optional(Ec2AmiResourceList),
         }),
       ).annotate({ identifier: "JobResource" });
     case 2:
       return S.suspend(() =>
-        S.Struct({ StorageLimit: S.optional(S.Number), StorageUnit: S.optional(S.String) }),
+        S.Struct({ StorageLimit: S.optional(S.Number), StorageUnit: S.optional(StorageUnit) }),
       ).annotate({
         identifier: "NFSOnDeviceServiceConfiguration",
       });
@@ -1576,7 +1832,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           StorageLimit: S.optional(S.Number),
-          StorageUnit: S.optional(S.String),
+          StorageUnit: S.optional(StorageUnit),
           ServiceSize: S.optional(S.Number),
           FaultTolerance: S.optional(S.Number),
         }),
@@ -1586,21 +1842,21 @@ function __c2(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          NFSOnDeviceService: S.optional(__S(18)),
-          TGWOnDeviceService: S.optional(__S(18)),
-          EKSOnDeviceService: S.optional(__S(19)),
-          S3OnDeviceService: S.optional(__S(20)),
+          NFSOnDeviceService: S.optional(NFSOnDeviceServiceConfiguration),
+          TGWOnDeviceService: S.optional(TGWOnDeviceServiceConfiguration),
+          EKSOnDeviceService: S.optional(EKSOnDeviceServiceConfiguration),
+          S3OnDeviceService: S.optional(S3OnDeviceServiceConfiguration),
         }),
       ).annotate({
         identifier: "OnDeviceServiceConfiguration",
       });
     case 6:
-      return S.Array(S.String);
+      return S.Array(JobState);
     case 7:
       return S.suspend(() =>
         S.Struct({
           SnsTopicARN: S.optional(S.String),
-          JobStatesToNotify: S.optional(__S(22)),
+          JobStatesToNotify: S.optional(JobStateList),
           NotifyAll: S.optional(S.Boolean),
           DevicePickupSnsTopicARN: S.optional(S.String),
         }),
@@ -1614,7 +1870,7 @@ function __c3(j: number): any {
         identifier: "INDTaxDocuments",
       });
     case 1:
-      return S.suspend(() => S.Struct({ IND: S.optional(__S(24)) })).annotate({
+      return S.suspend(() => S.Struct({ IND: S.optional(INDTaxDocuments) })).annotate({
         identifier: "TaxDocuments",
       });
     case 2:
@@ -1622,42 +1878,42 @@ function __c3(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          JobType: S.String,
-          Resources: S.optional(__S(17)),
-          OnDeviceServiceConfiguration: S.optional(__S(21)),
+          JobType: JobType,
+          Resources: S.optional(JobResource),
+          OnDeviceServiceConfiguration: S.optional(OnDeviceServiceConfiguration),
           Description: S.optional(S.String),
           AddressId: S.String,
           KmsKeyARN: S.optional(S.String),
           RoleARN: S.optional(S.String),
-          SnowballType: S.String,
-          ShippingOption: S.String,
-          Notification: S.optional(__S(23)),
+          SnowballType: SnowballType,
+          ShippingOption: ShippingOption,
+          Notification: S.optional(Notification),
           ForwardingAddressId: S.optional(S.String),
-          TaxDocuments: S.optional(__S(25)),
-          RemoteManagement: S.optional(S.String),
+          TaxDocuments: S.optional(TaxDocuments),
+          RemoteManagement: S.optional(RemoteManagement),
           InitialClusterSize: S.optional(S.Number),
           ForceCreateJobs: S.optional(S.Boolean),
-          LongTermPricingIds: S.optional(__S(26)),
-          SnowballCapacityPreference: S.optional(S.String),
+          LongTermPricingIds: S.optional(LongTermPricingIdList),
+          SnowballCapacityPreference: S.optional(SnowballCapacity),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateClusterRequest" });
     case 4:
       return S.suspend(() =>
         S.Struct({
           JobId: S.optional(S.String),
-          JobState: S.optional(S.String),
+          JobState: S.optional(JobState),
           IsMaster: S.optional(S.Boolean),
-          JobType: S.optional(S.String),
-          SnowballType: S.optional(S.String),
+          JobType: S.optional(JobType),
+          SnowballType: S.optional(SnowballType),
           CreationDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           Description: S.optional(S.String),
         }),
       ).annotate({ identifier: "JobListEntry" });
     case 5:
-      return S.Array(__S(28));
+      return S.Array(JobListEntry);
     case 6:
       return S.suspend(() =>
-        S.Struct({ ClusterId: S.optional(S.String), JobListEntries: S.optional(__S(29)) }),
+        S.Struct({ ClusterId: S.optional(S.String), JobListEntries: S.optional(JobListEntryList) }),
       ).annotate({ identifier: "CreateClusterResult" });
     case 7:
       return S.suspend(() => S.Struct({ IsWifiEnabled: S.optional(S.Boolean) })).annotate({
@@ -1668,12 +1924,14 @@ function __c3(j: number): any {
 function __c4(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ WirelessConnection: S.optional(__S(31)) })).annotate({
+      return S.suspend(() =>
+        S.Struct({ WirelessConnection: S.optional(WirelessConnection) }),
+      ).annotate({
         identifier: "SnowconeDeviceConfiguration",
       });
     case 1:
       return S.suspend(() =>
-        S.Struct({ SnowconeDeviceConfiguration: S.optional(__S(32)) }),
+        S.Struct({ SnowconeDeviceConfiguration: S.optional(SnowconeDeviceConfiguration) }),
       ).annotate({ identifier: "DeviceConfiguration" });
     case 2:
       return S.suspend(() =>
@@ -1690,25 +1948,25 @@ function __c4(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          JobType: S.optional(S.String),
-          Resources: S.optional(__S(17)),
-          OnDeviceServiceConfiguration: S.optional(__S(21)),
+          JobType: S.optional(JobType),
+          Resources: S.optional(JobResource),
+          OnDeviceServiceConfiguration: S.optional(OnDeviceServiceConfiguration),
           Description: S.optional(S.String),
           AddressId: S.optional(S.String),
           KmsKeyARN: S.optional(S.String),
           RoleARN: S.optional(S.String),
-          SnowballCapacityPreference: S.optional(S.String),
-          ShippingOption: S.optional(S.String),
-          Notification: S.optional(__S(23)),
+          SnowballCapacityPreference: S.optional(SnowballCapacity),
+          ShippingOption: S.optional(ShippingOption),
+          Notification: S.optional(Notification),
           ClusterId: S.optional(S.String),
-          SnowballType: S.optional(S.String),
+          SnowballType: S.optional(SnowballType),
           ForwardingAddressId: S.optional(S.String),
-          TaxDocuments: S.optional(__S(25)),
-          DeviceConfiguration: S.optional(__S(33)),
-          RemoteManagement: S.optional(S.String),
+          TaxDocuments: S.optional(TaxDocuments),
+          DeviceConfiguration: S.optional(DeviceConfiguration),
+          RemoteManagement: S.optional(RemoteManagement),
           LongTermPricingId: S.optional(S.String),
-          ImpactLevel: S.optional(S.String),
-          PickupDetails: S.optional(__S(34)),
+          ImpactLevel: S.optional(ImpactLevel),
+          PickupDetails: S.optional(PickupDetails),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateJobRequest" });
     case 4:
@@ -1718,9 +1976,9 @@ function __c4(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          LongTermPricingType: S.String,
+          LongTermPricingType: LongTermPricingType,
           IsLongTermPricingAutoRenew: S.optional(S.Boolean),
-          SnowballType: S.String,
+          SnowballType: SnowballType,
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "CreateLongTermPricingRequest",
@@ -1731,7 +1989,7 @@ function __c4(j: number): any {
       });
     case 7:
       return S.suspend(() =>
-        S.Struct({ JobId: S.String, ShippingOption: S.optional(S.String) }).pipe(
+        S.Struct({ JobId: S.String, ShippingOption: S.optional(ShippingOption) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
@@ -1742,7 +2000,7 @@ function __c4(j: number): any {
 function __c5(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ Status: S.optional(S.String) })).annotate({
+      return S.suspend(() => S.Struct({ Status: S.optional(ShippingLabelStatus) })).annotate({
         identifier: "CreateReturnShippingLabelResult",
       });
     case 1:
@@ -1752,7 +2010,7 @@ function __c5(j: number): any {
         ),
       ).annotate({ identifier: "DescribeAddressRequest" });
     case 2:
-      return S.suspend(() => S.Struct({ Address: S.optional(__S(3)) })).annotate({
+      return S.suspend(() => S.Struct({ Address: S.optional(Address) })).annotate({
         identifier: "DescribeAddressResult",
       });
     case 3:
@@ -1762,10 +2020,10 @@ function __c5(j: number): any {
         ),
       ).annotate({ identifier: "DescribeAddressesRequest" });
     case 4:
-      return S.Array(__S(3));
+      return S.Array(Address);
     case 5:
       return S.suspend(() =>
-        S.Struct({ Addresses: S.optional(__S(44)), NextToken: S.optional(S.String) }),
+        S.Struct({ Addresses: S.optional(AddressList), NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "DescribeAddressesResult" });
     case 6:
       return S.suspend(() =>
@@ -1780,17 +2038,17 @@ function __c5(j: number): any {
           Description: S.optional(S.String),
           KmsKeyARN: S.optional(S.String),
           RoleARN: S.optional(S.String),
-          ClusterState: S.optional(S.String),
-          JobType: S.optional(S.String),
-          SnowballType: S.optional(S.String),
+          ClusterState: S.optional(ClusterState),
+          JobType: S.optional(JobType),
+          SnowballType: S.optional(SnowballType),
           CreationDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          Resources: S.optional(__S(17)),
+          Resources: S.optional(JobResource),
           AddressId: S.optional(S.String),
-          ShippingOption: S.optional(S.String),
-          Notification: S.optional(__S(23)),
+          ShippingOption: S.optional(ShippingOption),
+          Notification: S.optional(Notification),
           ForwardingAddressId: S.optional(S.String),
-          TaxDocuments: S.optional(__S(25)),
-          OnDeviceServiceConfiguration: S.optional(__S(21)),
+          TaxDocuments: S.optional(TaxDocuments),
+          OnDeviceServiceConfiguration: S.optional(OnDeviceServiceConfiguration),
         }),
       ).annotate({ identifier: "ClusterMetadata" });
   }
@@ -1798,7 +2056,7 @@ function __c5(j: number): any {
 function __c6(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ ClusterMetadata: S.optional(__S(47)) })).annotate({
+      return S.suspend(() => S.Struct({ ClusterMetadata: S.optional(ClusterMetadata) })).annotate({
         identifier: "DescribeClusterResult",
       });
     case 1:
@@ -1814,9 +2072,9 @@ function __c6(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          ShippingOption: S.optional(S.String),
-          InboundShipment: S.optional(__S(50)),
-          OutboundShipment: S.optional(__S(50)),
+          ShippingOption: S.optional(ShippingOption),
+          InboundShipment: S.optional(Shipment),
+          OutboundShipment: S.optional(Shipment),
         }),
       ).annotate({ identifier: "ShippingDetails" });
     case 4:
@@ -1840,34 +2098,34 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           JobId: S.optional(S.String),
-          JobState: S.optional(S.String),
-          JobType: S.optional(S.String),
-          SnowballType: S.optional(S.String),
+          JobState: S.optional(JobState),
+          JobType: S.optional(JobType),
+          SnowballType: S.optional(SnowballType),
           CreationDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          Resources: S.optional(__S(17)),
+          Resources: S.optional(JobResource),
           Description: S.optional(S.String),
           KmsKeyARN: S.optional(S.String),
           RoleARN: S.optional(S.String),
           AddressId: S.optional(S.String),
-          ShippingDetails: S.optional(__S(51)),
-          SnowballCapacityPreference: S.optional(S.String),
-          Notification: S.optional(__S(23)),
-          DataTransferProgress: S.optional(__S(52)),
-          JobLogInfo: S.optional(__S(53)),
+          ShippingDetails: S.optional(ShippingDetails),
+          SnowballCapacityPreference: S.optional(SnowballCapacity),
+          Notification: S.optional(Notification),
+          DataTransferProgress: S.optional(DataTransfer),
+          JobLogInfo: S.optional(JobLogs),
           ClusterId: S.optional(S.String),
           ForwardingAddressId: S.optional(S.String),
-          TaxDocuments: S.optional(__S(25)),
-          DeviceConfiguration: S.optional(__S(33)),
-          RemoteManagement: S.optional(S.String),
+          TaxDocuments: S.optional(TaxDocuments),
+          DeviceConfiguration: S.optional(DeviceConfiguration),
+          RemoteManagement: S.optional(RemoteManagement),
           LongTermPricingId: S.optional(S.String),
-          OnDeviceServiceConfiguration: S.optional(__S(21)),
-          ImpactLevel: S.optional(S.String),
-          PickupDetails: S.optional(__S(34)),
+          OnDeviceServiceConfiguration: S.optional(OnDeviceServiceConfiguration),
+          ImpactLevel: S.optional(ImpactLevel),
+          PickupDetails: S.optional(PickupDetails),
           SnowballId: S.optional(S.String),
         }),
       ).annotate({ identifier: "JobMetadata" });
     case 7:
-      return S.Array(__S(54));
+      return S.Array(JobMetadata);
   }
 }
 function __c7(j: number): any {
@@ -1875,8 +2133,8 @@ function __c7(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          JobMetadata: S.optional(__S(54)),
-          SubJobMetadata: S.optional(__S(55)),
+          JobMetadata: S.optional(JobMetadata),
+          SubJobMetadata: S.optional(JobMetadataList),
         }),
       ).annotate({ identifier: "DescribeJobResult" });
     case 1:
@@ -1890,7 +2148,7 @@ function __c7(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          Status: S.optional(S.String),
+          Status: S.optional(ShippingLabelStatus),
           ExpirationDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           ReturnShippingLabelURI: S.optional(S.String),
         }),
@@ -1953,7 +2211,7 @@ function __c8(j: number): any {
       ).annotate({ identifier: "ListClusterJobsRequest" });
     case 4:
       return S.suspend(() =>
-        S.Struct({ JobListEntries: S.optional(__S(29)), NextToken: S.optional(S.String) }),
+        S.Struct({ JobListEntries: S.optional(JobListEntryList), NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListClusterJobsResult" });
     case 5:
       return S.suspend(() =>
@@ -1965,13 +2223,13 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ClusterId: S.optional(S.String),
-          ClusterState: S.optional(S.String),
+          ClusterState: S.optional(ClusterState),
           CreationDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           Description: S.optional(S.String),
         }),
       ).annotate({ identifier: "ClusterListEntry" });
     case 7:
-      return S.Array(__S(70));
+      return S.Array(ClusterListEntry);
   }
 }
 function __c9(j: number): any {
@@ -1979,7 +2237,7 @@ function __c9(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          ClusterListEntries: S.optional(__S(71)),
+          ClusterListEntries: S.optional(ClusterListEntryList),
           NextToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListClustersResult" });
@@ -1996,11 +2254,11 @@ function __c9(j: number): any {
         S.Struct({ AmiId: S.optional(S.String), Name: S.optional(S.String) }),
       ).annotate({ identifier: "CompatibleImage" });
     case 3:
-      return S.Array(__S(74));
+      return S.Array(CompatibleImage);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          CompatibleImages: S.optional(__S(75)),
+          CompatibleImages: S.optional(CompatibleImageList),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -2026,13 +2284,13 @@ function __c9(j: number): any {
           LongTermPricingId: S.optional(S.String),
           LongTermPricingEndDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           LongTermPricingStartDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          LongTermPricingType: S.optional(S.String),
+          LongTermPricingType: S.optional(LongTermPricingType),
           CurrentActiveJob: S.optional(S.String),
           ReplacementJob: S.optional(S.String),
           IsLongTermPricingAutoRenew: S.optional(S.Boolean),
           LongTermPricingStatus: S.optional(S.String),
-          SnowballType: S.optional(S.String),
-          JobIds: S.optional(__S(26)),
+          SnowballType: S.optional(SnowballType),
+          JobIds: S.optional(LongTermPricingAssociatedJobIdList),
         }),
       ).annotate({ identifier: "LongTermPricingListEntry" });
   }
@@ -2040,11 +2298,11 @@ function __c9(j: number): any {
 function __c10(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(79));
+      return S.Array(LongTermPricingListEntry);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          LongTermPricingEntries: S.optional(__S(80)),
+          LongTermPricingEntries: S.optional(LongTermPricingEntryList),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -2060,7 +2318,7 @@ function __c10(j: number): any {
       });
     case 3:
       return S.suspend(() =>
-        S.Struct({ Addresses: S.optional(__S(44)), NextToken: S.optional(S.String) }),
+        S.Struct({ Addresses: S.optional(AddressList), NextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListPickupLocationsResult",
       });
@@ -2071,17 +2329,17 @@ function __c10(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          ServiceName: S.optional(S.String),
-          ServiceVersion: S.optional(__S(84)),
+          ServiceName: S.optional(ServiceName),
+          ServiceVersion: S.optional(ServiceVersion),
         }),
       ).annotate({ identifier: "DependentService" });
     case 6:
-      return S.Array(__S(85));
+      return S.Array(DependentService);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          ServiceName: S.String,
-          DependentServices: S.optional(__S(86)),
+          ServiceName: ServiceName,
+          DependentServices: S.optional(DependentServiceList),
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -2093,13 +2351,13 @@ function __c10(j: number): any {
 function __c11(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(84));
+      return S.Array(ServiceVersion);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          ServiceVersions: __S(88),
-          ServiceName: S.String,
-          DependentServices: S.optional(__S(86)),
+          ServiceVersions: ServiceVersionList,
+          ServiceName: ServiceName,
+          DependentServices: S.optional(DependentServiceList),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -2111,11 +2369,11 @@ function __c11(j: number): any {
           ClusterId: S.String,
           RoleARN: S.optional(S.String),
           Description: S.optional(S.String),
-          Resources: S.optional(__S(17)),
-          OnDeviceServiceConfiguration: S.optional(__S(21)),
+          Resources: S.optional(JobResource),
+          OnDeviceServiceConfiguration: S.optional(OnDeviceServiceConfiguration),
           AddressId: S.optional(S.String),
-          ShippingOption: S.optional(S.String),
-          Notification: S.optional(__S(23)),
+          ShippingOption: S.optional(ShippingOption),
+          Notification: S.optional(Notification),
           ForwardingAddressId: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "UpdateClusterRequest" });
@@ -2124,20 +2382,20 @@ function __c11(j: number): any {
         S.Struct({
           JobId: S.String,
           RoleARN: S.optional(S.String),
-          Notification: S.optional(__S(23)),
-          Resources: S.optional(__S(17)),
-          OnDeviceServiceConfiguration: S.optional(__S(21)),
+          Notification: S.optional(Notification),
+          Resources: S.optional(JobResource),
+          OnDeviceServiceConfiguration: S.optional(OnDeviceServiceConfiguration),
           AddressId: S.optional(S.String),
-          ShippingOption: S.optional(S.String),
+          ShippingOption: S.optional(ShippingOption),
           Description: S.optional(S.String),
-          SnowballCapacityPreference: S.optional(S.String),
+          SnowballCapacityPreference: S.optional(SnowballCapacity),
           ForwardingAddressId: S.optional(S.String),
-          PickupDetails: S.optional(__S(34)),
+          PickupDetails: S.optional(PickupDetails),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "UpdateJobRequest" });
     case 4:
       return S.suspend(() =>
-        S.Struct({ JobId: S.String, ShipmentState: S.String }).pipe(
+        S.Struct({ JobId: S.String, ShipmentState: ShipmentState }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
@@ -2153,38 +2411,5 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "UpdateLongTermPricingRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
-    case 9:
-      return __c9(i & 7);
-    case 10:
-      return __c10(i & 7);
-    case 11:
-      return __c11(i & 7);
   }
 }

@@ -6,8 +6,6 @@ import { UnknownAzureError } from "../errors.ts";
 import { AzureProtocol, type AzureOpError, type AzureOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { AzureOpError, AzureOpContext };
 
@@ -15,32 +13,69 @@ export interface DeleteConsoleRequest {
   /** The name of the console */
   consoleName: string;
 }
+const DeleteConsoleRequest = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<DeleteConsoleRequest>;
+
 export interface DeleteConsoleResponse {}
+const DeleteConsoleResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<DeleteConsoleResponse>;
+
 export interface DeleteConsoleWithLocationRequest {
   /** The provider location */
   location: string;
   /** The name of the console */
   consoleName: string;
 }
+const DeleteConsoleWithLocationRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<DeleteConsoleWithLocationRequest>;
+
 export interface DeleteConsoleWithLocationResponse {}
+const DeleteConsoleWithLocationResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<DeleteConsoleWithLocationResponse>;
+
 export interface DeleteUserSettingsRequest {
   /** The name of the user settings */
   userSettingsName: string;
 }
+const DeleteUserSettingsRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<DeleteUserSettingsRequest>;
+
 export interface DeleteUserSettingsResponse {}
+const DeleteUserSettingsResponse =
+  DeleteConsoleResponse as any as S.Schema<DeleteUserSettingsResponse>;
+
 export interface DeleteUserSettingsWithLocationRequest {
   /** The provider location */
   location: string;
   /** The name of the user settings */
   userSettingsName: string;
 }
+const DeleteUserSettingsWithLocationRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<DeleteUserSettingsWithLocationRequest>;
+
 export interface DeleteUserSettingsWithLocationResponse {}
+const DeleteUserSettingsWithLocationResponse =
+  DeleteConsoleWithLocationResponse as any as S.Schema<DeleteUserSettingsWithLocationResponse>;
+
 export interface GetConsoleRequest {
   /** The name of the console */
   consoleName: string;
 }
+const GetConsoleRequest = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<GetConsoleRequest>;
+
 /** The operating system type of the cloud shell. */
 export type ConsolePropertiesOsType = "Linux" | "Windows";
+const ConsolePropertiesOsType = S.String;
+
 /** Provisioning state of the console. */
 export type ConsolePropertiesProvisioningState =
   | "NotSpecified"
@@ -52,6 +87,8 @@ export type ConsolePropertiesProvisioningState =
   | "Failed"
   | "Canceled"
   | "Succeeded";
+const ConsolePropertiesProvisioningState = S.String;
+
 /** Cloud shell console properties. */
 export interface ConsoleProperties {
   /** The operating system type of the cloud shell. */
@@ -61,24 +98,45 @@ export interface ConsoleProperties {
   /** Uri of the console. */
   uri: string;
 }
+const ConsoleProperties = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<ConsoleProperties>;
+
 export interface GetConsoleResponse {
   properties: ConsoleProperties;
 }
+const GetConsoleResponse = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<GetConsoleResponse>;
+
 export interface GetConsoleWithLocationRequest {
   /** The provider location */
   location: string;
   /** The name of the console */
   consoleName: string;
 }
+const GetConsoleWithLocationRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<GetConsoleWithLocationRequest>;
+
 export interface GetConsoleWithLocationResponse {
   properties: ConsoleProperties;
 }
+const GetConsoleWithLocationResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<GetConsoleWithLocationResponse>;
+
 export interface GetUserSettingsRequest {
   /** The name of the user settings */
   userSettingsName: string;
 }
+const GetUserSettingsRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<GetUserSettingsRequest>;
+
 /** The operating system type of the cloud shell. Deprecated, use preferredShellType. */
 export type UserPropertiesPreferredOsType = "Windows" | "Linux";
+const UserPropertiesPreferredOsType = S.String;
+
 /** The storage profile of the user settings. */
 export interface StorageProfile {
   /** Full resource ID of storage account. */
@@ -88,10 +146,16 @@ export interface StorageProfile {
   /** Size of file share */
   diskSizeInGB?: number;
 }
+const StorageProfile = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<StorageProfile>;
+
 /** Size of terminal font. */
 export type TerminalSettingsFontSize = "NotSpecified" | "Small" | "Medium" | "Large";
+const TerminalSettingsFontSize = S.String;
+
 /** Style of terminal font. */
 export type TerminalSettingsFontStyle = "NotSpecified" | "Monospace" | "Courier";
+const TerminalSettingsFontStyle = S.String;
+
 /** Settings for terminal appearance. */
 export interface TerminalSettings {
   /** Size of terminal font. */
@@ -99,8 +163,12 @@ export interface TerminalSettings {
   /** Style of terminal font. */
   fontStyle?: TerminalSettingsFontStyle | (string & {});
 }
+const TerminalSettings = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<TerminalSettings>;
+
 /** The shell type of the cloud shell. */
 export type UserPropertiesPreferredShellType = "bash" | "pwsh" | "powershell";
+const UserPropertiesPreferredShellType = S.String;
+
 /** The cloud shell user settings properties. */
 export interface UserProperties {
   /** The operating system type of the cloud shell. Deprecated, use preferredShellType. */
@@ -112,38 +180,75 @@ export interface UserProperties {
   /** The shell type of the cloud shell. */
   preferredShellType: UserPropertiesPreferredShellType | (string & {});
 }
+const UserProperties = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<UserProperties>;
+
 export interface GetUserSettingsResponse {
   properties: UserProperties;
 }
+const GetUserSettingsResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<GetUserSettingsResponse>;
+
 export interface GetUserSettingsWithLocationRequest {
   /** The provider location */
   location: string;
   /** The name of the user settings */
   userSettingsName: string;
 }
+const GetUserSettingsWithLocationRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<GetUserSettingsWithLocationRequest>;
+
 export interface GetUserSettingsWithLocationResponse {
   properties: UserProperties;
 }
+const GetUserSettingsWithLocationResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<GetUserSettingsWithLocationResponse>;
+
 export interface KeepAliveRequest {
   /** The name of the console */
   consoleName: string;
 }
+const KeepAliveRequest = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<KeepAliveRequest>;
+
 export interface KeepAliveResponse {}
+const KeepAliveResponse = DeleteConsoleResponse as any as S.Schema<KeepAliveResponse>;
+
 export interface KeepAliveWithLocationRequest {
   /** The provider location */
   location: string;
   /** The name of the console */
   consoleName: string;
 }
+const KeepAliveWithLocationRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<KeepAliveWithLocationRequest>;
+
 export interface KeepAliveWithLocationResponse {}
+const KeepAliveWithLocationResponse =
+  DeleteConsoleResponse as any as S.Schema<KeepAliveWithLocationResponse>;
+
 export interface PatchUserSettingsRequest {
   /** The name of the user settings */
   userSettingsName: string;
   properties?: UserProperties;
 }
+const PatchUserSettingsRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<PatchUserSettingsRequest>;
+
 export interface PatchUserSettingsResponse {
   properties: UserProperties;
 }
+const PatchUserSettingsResponse =
+  GetUserSettingsWithLocationResponse as any as S.Schema<PatchUserSettingsResponse>;
+
 export interface PatchUserSettingsWithLocationRequest {
   /** The provider location */
   location: string;
@@ -151,11 +256,21 @@ export interface PatchUserSettingsWithLocationRequest {
   userSettingsName: string;
   properties?: UserProperties;
 }
+const PatchUserSettingsWithLocationRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<PatchUserSettingsWithLocationRequest>;
+
 export interface PatchUserSettingsWithLocationResponse {
   properties: UserProperties;
 }
+const PatchUserSettingsWithLocationResponse =
+  GetUserSettingsWithLocationResponse as any as S.Schema<PatchUserSettingsWithLocationResponse>;
+
 /** The operating system type of the cloud shell. */
 export type ConsoleCreatePropertiesOsType = "Linux" | "Windows";
+const ConsoleCreatePropertiesOsType = S.String;
+
 /** Provisioning state of the console. */
 export type ConsoleCreatePropertiesProvisioningState =
   | "NotSpecified"
@@ -167,6 +282,8 @@ export type ConsoleCreatePropertiesProvisioningState =
   | "Failed"
   | "Canceled"
   | "Succeeded";
+const ConsoleCreatePropertiesProvisioningState = S.String;
+
 /** Cloud shell properties for creating a console. */
 export interface ConsoleCreateProperties {
   /** The operating system type of the cloud shell. */
@@ -176,31 +293,55 @@ export interface ConsoleCreateProperties {
   /** Uri of the console. */
   uri?: string;
 }
+const ConsoleCreateProperties = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<ConsoleCreateProperties>;
+
 export interface PutConsoleRequest {
   /** The name of the console */
   consoleName: string;
   properties: ConsoleCreateProperties;
 }
+const PutConsoleRequest = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<PutConsoleRequest>;
+
 export interface PutConsoleResponse {
   properties: ConsoleProperties;
 }
+const PutConsoleResponse = GetConsoleResponse as any as S.Schema<PutConsoleResponse>;
+
 export interface PutConsoleWithLocationRequest {
   /** The provider location */
   location: string;
   /** The name of the console */
   consoleName: string;
 }
+const PutConsoleWithLocationRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<PutConsoleWithLocationRequest>;
+
 export interface PutConsoleWithLocationResponse {
   properties: ConsoleProperties;
 }
+const PutConsoleWithLocationResponse =
+  GetConsoleWithLocationResponse as any as S.Schema<PutConsoleWithLocationResponse>;
+
 export interface PutUserSettingsRequest {
   /** The name of the user settings */
   userSettingsName: string;
   properties: UserProperties;
 }
+const PutUserSettingsRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<PutUserSettingsRequest>;
+
 export interface PutUserSettingsResponse {
   properties: UserProperties;
 }
+const PutUserSettingsResponse = GetUserSettingsResponse as any as S.Schema<PutUserSettingsResponse>;
+
 export interface PutUserSettingsWithLocationRequest {
   /** The provider location */
   location: string;
@@ -208,9 +349,17 @@ export interface PutUserSettingsWithLocationRequest {
   userSettingsName: string;
   properties: UserProperties;
 }
+const PutUserSettingsWithLocationRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<PutUserSettingsWithLocationRequest>;
+
 export interface PutUserSettingsWithLocationResponse {
   properties: UserProperties;
 }
+const PutUserSettingsWithLocationResponse =
+  GetUserSettingsWithLocationResponse as any as S.Schema<PutUserSettingsWithLocationResponse>;
+
 export type DeleteConsoleError = AzureOpError;
 /** Delete console Deletes the console */
 export const DeleteConsole: API.OperationMethod<
@@ -219,8 +368,8 @@ export const DeleteConsole: API.OperationMethod<
   DeleteConsoleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<DeleteConsoleRequest>,
-  output: __S(1) as any as S.Schema<DeleteConsoleResponse>,
+  input: DeleteConsoleRequest,
+  output: DeleteConsoleResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -234,8 +383,8 @@ export const DeleteConsoleWithLocation: API.OperationMethod<
   DeleteConsoleWithLocationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2) as any as S.Schema<DeleteConsoleWithLocationRequest>,
-  output: __S(3) as any as S.Schema<DeleteConsoleWithLocationResponse>,
+  input: DeleteConsoleWithLocationRequest,
+  output: DeleteConsoleWithLocationResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -249,8 +398,8 @@ export const DeleteUserSettings: API.OperationMethod<
   DeleteUserSettingsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4) as any as S.Schema<DeleteUserSettingsRequest>,
-  output: __S(1) as any as S.Schema<DeleteUserSettingsResponse>,
+  input: DeleteUserSettingsRequest,
+  output: DeleteUserSettingsResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -264,8 +413,8 @@ export const DeleteUserSettingsWithLocation: API.OperationMethod<
   DeleteUserSettingsWithLocationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5) as any as S.Schema<DeleteUserSettingsWithLocationRequest>,
-  output: __S(3) as any as S.Schema<DeleteUserSettingsWithLocationResponse>,
+  input: DeleteUserSettingsWithLocationRequest,
+  output: DeleteUserSettingsWithLocationResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -279,8 +428,8 @@ export const GetConsole: API.OperationMethod<
   GetConsoleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6) as any as S.Schema<GetConsoleRequest>,
-  output: __S(8) as any as S.Schema<GetConsoleResponse>,
+  input: GetConsoleRequest,
+  output: GetConsoleResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -294,8 +443,8 @@ export const GetConsoleWithLocation: API.OperationMethod<
   GetConsoleWithLocationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9) as any as S.Schema<GetConsoleWithLocationRequest>,
-  output: __S(10) as any as S.Schema<GetConsoleWithLocationResponse>,
+  input: GetConsoleWithLocationRequest,
+  output: GetConsoleWithLocationResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -309,8 +458,8 @@ export const GetUserSettings: API.OperationMethod<
   GetUserSettingsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11) as any as S.Schema<GetUserSettingsRequest>,
-  output: __S(15) as any as S.Schema<GetUserSettingsResponse>,
+  input: GetUserSettingsRequest,
+  output: GetUserSettingsResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -324,8 +473,8 @@ export const GetUserSettingsWithLocation: API.OperationMethod<
   GetUserSettingsWithLocationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16) as any as S.Schema<GetUserSettingsWithLocationRequest>,
-  output: __S(17) as any as S.Schema<GetUserSettingsWithLocationResponse>,
+  input: GetUserSettingsWithLocationRequest,
+  output: GetUserSettingsWithLocationResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -339,8 +488,8 @@ export const KeepAlive: API.OperationMethod<
   KeepAliveError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18) as any as S.Schema<KeepAliveRequest>,
-  output: __S(1) as any as S.Schema<KeepAliveResponse>,
+  input: KeepAliveRequest,
+  output: KeepAliveResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -354,8 +503,8 @@ export const KeepAliveWithLocation: API.OperationMethod<
   KeepAliveWithLocationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19) as any as S.Schema<KeepAliveWithLocationRequest>,
-  output: __S(1) as any as S.Schema<KeepAliveWithLocationResponse>,
+  input: KeepAliveWithLocationRequest,
+  output: KeepAliveWithLocationResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -369,8 +518,8 @@ export const PatchUserSettings: API.OperationMethod<
   PatchUserSettingsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20) as any as S.Schema<PatchUserSettingsRequest>,
-  output: __S(17) as any as S.Schema<PatchUserSettingsResponse>,
+  input: PatchUserSettingsRequest,
+  output: PatchUserSettingsResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -384,8 +533,8 @@ export const PatchUserSettingsWithLocation: API.OperationMethod<
   PatchUserSettingsWithLocationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21) as any as S.Schema<PatchUserSettingsWithLocationRequest>,
-  output: __S(17) as any as S.Schema<PatchUserSettingsWithLocationResponse>,
+  input: PatchUserSettingsWithLocationRequest,
+  output: PatchUserSettingsWithLocationResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -399,8 +548,8 @@ export const PutConsole: API.OperationMethod<
   PutConsoleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23) as any as S.Schema<PutConsoleRequest>,
-  output: __S(8) as any as S.Schema<PutConsoleResponse>,
+  input: PutConsoleRequest,
+  output: PutConsoleResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -414,8 +563,8 @@ export const PutConsoleWithLocation: API.OperationMethod<
   PutConsoleWithLocationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24) as any as S.Schema<PutConsoleWithLocationRequest>,
-  output: __S(10) as any as S.Schema<PutConsoleWithLocationResponse>,
+  input: PutConsoleWithLocationRequest,
+  output: PutConsoleWithLocationResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -429,8 +578,8 @@ export const PutUserSettings: API.OperationMethod<
   PutUserSettingsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25) as any as S.Schema<PutUserSettingsRequest>,
-  output: __S(15) as any as S.Schema<PutUserSettingsResponse>,
+  input: PutUserSettingsRequest,
+  output: PutUserSettingsResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -444,8 +593,8 @@ export const PutUserSettingsWithLocation: API.OperationMethod<
   PutUserSettingsWithLocationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26) as any as S.Schema<PutUserSettingsWithLocationRequest>,
-  output: __S(17) as any as S.Schema<PutUserSettingsWithLocationResponse>,
+  input: PutUserSettingsWithLocationRequest,
+  output: PutUserSettingsWithLocationResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -538,8 +687,8 @@ function __c0(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          osType: S.String,
-          provisioningState: S.String,
+          osType: ConsolePropertiesOsType,
+          provisioningState: ConsolePropertiesProvisioningState,
           uri: S.String,
         }),
       ).annotate({ identifier: "ConsoleProperties" });
@@ -550,7 +699,7 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          properties: __S(7),
+          properties: ConsoleProperties,
         }),
       ).annotate({ identifier: "GetConsoleResponse" });
     case 1:
@@ -572,7 +721,7 @@ function __c1(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          properties: __S(7),
+          properties: ConsoleProperties,
         }),
       ).annotate({
         identifier: "GetConsoleWithLocationResponse",
@@ -601,24 +750,24 @@ function __c1(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          fontSize: S.optional(S.String),
-          fontStyle: S.optional(S.String),
+          fontSize: S.optional(TerminalSettingsFontSize),
+          fontStyle: S.optional(TerminalSettingsFontStyle),
         }),
       ).annotate({ identifier: "TerminalSettings" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          preferredOsType: S.String,
+          preferredOsType: UserPropertiesPreferredOsType,
           preferredLocation: S.String,
-          storageProfile: __S(12),
-          terminalSettings: __S(13),
-          preferredShellType: S.String,
+          storageProfile: StorageProfile,
+          terminalSettings: TerminalSettings,
+          preferredShellType: UserPropertiesPreferredShellType,
         }),
       ).annotate({ identifier: "UserProperties" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          properties: __S(14),
+          properties: UserProperties,
         }),
       ).annotate({ identifier: "GetUserSettingsResponse" });
   }
@@ -644,7 +793,7 @@ function __c2(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          properties: __S(14),
+          properties: UserProperties,
         }),
       ).annotate({
         identifier: "GetUserSettingsWithLocationResponse",
@@ -682,7 +831,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           userSettingsName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(14)),
+          properties: S.optional(UserProperties),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -697,7 +846,7 @@ function __c2(j: number): any {
         S.Struct({
           location: S.String.pipe(T.Label()),
           userSettingsName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(14)),
+          properties: S.optional(UserProperties),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -712,8 +861,8 @@ function __c2(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          osType: S.String,
-          provisioningState: S.optional(S.String),
+          osType: ConsoleCreatePropertiesOsType,
+          provisioningState: S.optional(ConsoleCreatePropertiesProvisioningState),
           uri: S.optional(S.String),
         }),
       ).annotate({ identifier: "ConsoleCreateProperties" });
@@ -721,7 +870,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           consoleName: S.String.pipe(T.Label()),
-          properties: __S(22),
+          properties: ConsoleCreateProperties,
         }).pipe(
           T.Http({
             method: "PUT",
@@ -755,7 +904,7 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           userSettingsName: S.String.pipe(T.Label()),
-          properties: __S(14),
+          properties: UserProperties,
         }).pipe(
           T.Http({
             method: "PUT",
@@ -770,7 +919,7 @@ function __c3(j: number): any {
         S.Struct({
           location: S.String.pipe(T.Label()),
           userSettingsName: S.String.pipe(T.Label()),
-          properties: __S(14),
+          properties: UserProperties,
         }).pipe(
           T.Http({
             method: "PUT",
@@ -782,22 +931,5 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "PutUserSettingsWithLocationRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
   }
 }

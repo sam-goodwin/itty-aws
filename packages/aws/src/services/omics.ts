@@ -8,8 +8,6 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 const svc = /*@__PURE__*/ T.AwsApiService({ sdkId: "Omics", serviceShapeName: "Omics" });
 const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "omics" });
 const ver = /*@__PURE__*/ T.ServiceVersion("2022-11-28");
@@ -142,89 +140,153 @@ export interface AbortMultipartReadSetUploadRequest {
   sequenceStoreId: string;
   uploadId: string;
 }
+const AbortMultipartReadSetUploadRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<AbortMultipartReadSetUploadRequest>;
 export interface AbortMultipartReadSetUploadResponse {}
+const AbortMultipartReadSetUploadResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<AbortMultipartReadSetUploadResponse>;
 export interface AcceptShareRequest {
   shareId: string;
 }
+const AcceptShareRequest = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<AcceptShareRequest>;
 export type ShareStatus = string;
 export interface AcceptShareResponse {
   status?: string;
 }
+const AcceptShareResponse = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<AcceptShareResponse>;
 export type ReadSetId = string;
 export type ReadSetIdList = string[];
+const ReadSetIdList = /*@__PURE__*/ __L.at(__c0, 4);
 export interface BatchDeleteReadSetRequest {
   ids: string[];
   sequenceStoreId: string;
 }
+const BatchDeleteReadSetRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<BatchDeleteReadSetRequest>;
 export interface ReadSetBatchError {
   id: string;
   code: string;
   message: string;
 }
+const ReadSetBatchError = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<ReadSetBatchError>;
 export type ReadSetBatchErrorList = ReadSetBatchError[];
+const ReadSetBatchErrorList = /*@__PURE__*/ __L.at(__c0, 7);
 export interface BatchDeleteReadSetResponse {
   errors?: ReadSetBatchError[];
 }
+const BatchDeleteReadSetResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<BatchDeleteReadSetResponse>;
 export type ResourceId = string;
 export interface CancelAnnotationImportRequest {
   jobId: string;
 }
+const CancelAnnotationImportRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<CancelAnnotationImportRequest>;
 export interface CancelAnnotationImportResponse {}
+const CancelAnnotationImportResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<CancelAnnotationImportResponse>;
 export type RunId = string;
 export interface CancelRunRequest {
   id: string;
 }
+const CancelRunRequest = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<CancelRunRequest>;
 export interface CancelRunResponse {}
+const CancelRunResponse = CancelAnnotationImportResponse as any as S.Schema<CancelRunResponse>;
 export type BatchId = string;
 export interface CancelRunBatchRequest {
   batchId: string;
 }
+const CancelRunBatchRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<CancelRunBatchRequest>;
 export interface CancelRunBatchResponse {}
+const CancelRunBatchResponse =
+  CancelAnnotationImportResponse as any as S.Schema<CancelRunBatchResponse>;
 export interface CancelVariantImportRequest {
   jobId: string;
 }
+const CancelVariantImportRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<CancelVariantImportRequest>;
 export interface CancelVariantImportResponse {}
+const CancelVariantImportResponse =
+  CancelAnnotationImportResponse as any as S.Schema<CancelVariantImportResponse>;
 export type ReadSetPartSource = string;
 export interface CompleteReadSetUploadPartListItem {
   partNumber: number;
   partSource: string;
   checksum: string;
 }
+const CompleteReadSetUploadPartListItem = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<CompleteReadSetUploadPartListItem>;
 export type CompleteReadSetUploadPartList = CompleteReadSetUploadPartListItem[];
+const CompleteReadSetUploadPartList = /*@__PURE__*/ __L.at(__c1, 7);
 export interface CompleteMultipartReadSetUploadRequest {
   sequenceStoreId: string;
   uploadId: string;
   parts: CompleteReadSetUploadPartListItem[];
 }
+const CompleteMultipartReadSetUploadRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<CompleteMultipartReadSetUploadRequest>;
 export interface CompleteMultipartReadSetUploadResponse {
   readSetId: string;
 }
+const CompleteMultipartReadSetUploadResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<CompleteMultipartReadSetUploadResponse>;
 export type ReferenceArn = string;
 export type ReferenceItem = { referenceArn: string };
+const ReferenceItem = /*@__PURE__*/ __L.at(__c2, 2);
 export type StoreName = string;
 export type Description = string;
 export type TagKey = string;
 export type TagValue = string;
 export type TagMap = { [key: string]: string | undefined };
+const TagMap = /*@__PURE__*/ __L.at(__c2, 3);
 export type VersionName = string;
 export type EncryptionType = string;
 export interface SseConfig {
   type: string;
   keyArn?: string;
 }
+const SseConfig = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<SseConfig>;
 export type StoreFormat = string;
 export type AnnotationType = string;
 export type FormatToHeaderKey = string;
 export type FormatToHeader = { [key: string]: string | undefined };
+const FormatToHeader = /*@__PURE__*/ __L.at(__c2, 5);
 export type SchemaValueType = string;
 export type SchemaItem = { [key: string]: string | undefined };
+const SchemaItem = TagMap as any as S.Schema<SchemaItem>;
 export type Schema = { [key: string]: string | undefined }[];
+const Schema = /*@__PURE__*/ __L.at(__c2, 6);
 export interface TsvStoreOptions {
   annotationType?: string;
   formatToHeader?: { [key: string]: string | undefined };
   schema?: { [key: string]: string | undefined }[];
 }
+const TsvStoreOptions = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<TsvStoreOptions>;
 export type StoreOptions = { tsvStoreOptions: TsvStoreOptions };
+const StoreOptions = /*@__PURE__*/ __L.at(__c3, 0);
 export interface CreateAnnotationStoreRequest {
   reference?: ReferenceItem;
   name?: string;
@@ -235,6 +297,10 @@ export interface CreateAnnotationStoreRequest {
   storeFormat: string;
   storeOptions?: StoreOptions;
 }
+const CreateAnnotationStoreRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<CreateAnnotationStoreRequest>;
 export type StoreStatus = string;
 export type CreationTime = Date;
 export interface CreateAnnotationStoreResponse {
@@ -247,12 +313,18 @@ export interface CreateAnnotationStoreResponse {
   versionName: string;
   creationTime: Date;
 }
+const CreateAnnotationStoreResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<CreateAnnotationStoreResponse>;
 export interface TsvVersionOptions {
   annotationType?: string;
   formatToHeader?: { [key: string]: string | undefined };
   schema?: { [key: string]: string | undefined }[];
 }
+const TsvVersionOptions = TsvStoreOptions as any as S.Schema<TsvVersionOptions>;
 export type VersionOptions = { tsvVersionOptions: TsvVersionOptions };
+const VersionOptions = /*@__PURE__*/ __L.at(__c3, 3);
 export interface CreateAnnotationStoreVersionRequest {
   name: string;
   versionName: string;
@@ -260,6 +332,10 @@ export interface CreateAnnotationStoreVersionRequest {
   versionOptions?: VersionOptions;
   tags?: { [key: string]: string | undefined };
 }
+const CreateAnnotationStoreVersionRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<CreateAnnotationStoreVersionRequest>;
 export type VersionStatus = string;
 export interface CreateAnnotationStoreVersionResponse {
   id: string;
@@ -270,19 +346,27 @@ export interface CreateAnnotationStoreVersionResponse {
   status: string;
   creationTime: Date;
 }
+const CreateAnnotationStoreVersionResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<CreateAnnotationStoreVersionResponse>;
 export type ConfigurationName = string;
 export type ConfigurationDescription = string;
 export type SecurityGroupId = string;
 export type SecurityGroupIds = string[];
+const SecurityGroupIds = ReadSetIdList as any as S.Schema<SecurityGroupIds>;
 export type SubnetId = string;
 export type SubnetIds = string[];
+const SubnetIds = ReadSetIdList as any as S.Schema<SubnetIds>;
 export interface VpcConfig {
   securityGroupIds?: string[];
   subnetIds?: string[];
 }
+const VpcConfig = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<VpcConfig>;
 export interface RunConfigurations {
   vpcConfig?: VpcConfig;
 }
+const RunConfigurations = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<RunConfigurations>;
 export type ConfigurationRequestId = string;
 export interface CreateConfigurationRequest {
   name: string;
@@ -291,6 +375,10 @@ export interface CreateConfigurationRequest {
   tags?: { [key: string]: string | undefined };
   requestId: string;
 }
+const CreateConfigurationRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<CreateConfigurationRequest>;
 export type ConfigurationArn = string;
 export type ConfigurationUuid = string;
 export type VpcId = string;
@@ -299,9 +387,14 @@ export interface VpcConfigResponse {
   subnetIds?: string[];
   vpcId?: string;
 }
+const VpcConfigResponse = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<VpcConfigResponse>;
 export interface RunConfigurationsResponse {
   vpcConfig?: VpcConfigResponse;
 }
+const RunConfigurationsResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<RunConfigurationsResponse>;
 export type ConfigurationStatus = string;
 export type ConfigurationTimestamp = Date;
 export interface CreateConfigurationResponse {
@@ -314,6 +407,10 @@ export interface CreateConfigurationResponse {
   creationTime?: Date;
   tags?: { [key: string]: string | undefined };
 }
+const CreateConfigurationResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<CreateConfigurationResponse>;
 export type ClientToken = string;
 export type FileType = string;
 export type SubjectId = string;
@@ -333,6 +430,10 @@ export interface CreateMultipartReadSetUploadRequest {
   description?: string;
   tags?: { [key: string]: string | undefined };
 }
+const CreateMultipartReadSetUploadRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<CreateMultipartReadSetUploadRequest>;
 export interface CreateMultipartReadSetUploadResponse {
   sequenceStoreId: string;
   uploadId: string;
@@ -346,6 +447,10 @@ export interface CreateMultipartReadSetUploadResponse {
   tags?: { [key: string]: string | undefined };
   creationTime: Date;
 }
+const CreateMultipartReadSetUploadResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<CreateMultipartReadSetUploadResponse>;
 export type ReferenceStoreName = string;
 export type ReferenceStoreDescription = string;
 export interface CreateReferenceStoreRequest {
@@ -355,6 +460,10 @@ export interface CreateReferenceStoreRequest {
   tags?: { [key: string]: string | undefined };
   clientToken?: string;
 }
+const CreateReferenceStoreRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<CreateReferenceStoreRequest>;
 export type ReferenceStoreId = string;
 export type ReferenceStoreArn = string;
 export interface CreateReferenceStoreResponse {
@@ -365,6 +474,10 @@ export interface CreateReferenceStoreResponse {
   sseConfig?: SseConfig;
   creationTime: Date;
 }
+const CreateReferenceStoreResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<CreateReferenceStoreResponse>;
 export type CacheBehavior = string;
 export type S3UriForBucketOrObject = string;
 export type UserCustomDescription = string;
@@ -380,6 +493,10 @@ export interface CreateRunCacheRequest {
   tags?: { [key: string]: string | undefined };
   cacheBucketOwnerId?: string;
 }
+const CreateRunCacheRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  0,
+) as any as S.Schema<CreateRunCacheRequest>;
 export type RunCacheArn = string;
 export type RunCacheId = string;
 export type RunCacheStatus = string;
@@ -389,6 +506,10 @@ export interface CreateRunCacheResponse {
   status?: string;
   tags?: { [key: string]: string | undefined };
 }
+const CreateRunCacheResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  1,
+) as any as S.Schema<CreateRunCacheResponse>;
 export type RunGroupName = string;
 export type RunGroupRequestId = string;
 export interface CreateRunGroupRequest {
@@ -400,6 +521,10 @@ export interface CreateRunGroupRequest {
   requestId: string;
   maxGpus?: number;
 }
+const CreateRunGroupRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  2,
+) as any as S.Schema<CreateRunGroupRequest>;
 export type RunGroupArn = string;
 export type RunGroupId = string;
 export interface CreateRunGroupResponse {
@@ -407,15 +532,21 @@ export interface CreateRunGroupResponse {
   id?: string;
   tags?: { [key: string]: string | undefined };
 }
+const CreateRunGroupResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<CreateRunGroupResponse>;
 export type SequenceStoreName = string;
 export type SequenceStoreDescription = string;
 export type FallbackLocation = string;
 export type ETagAlgorithmFamily = string;
 export type PropagatedSetLevelTags = string[];
+const PropagatedSetLevelTags = ReadSetIdList as any as S.Schema<PropagatedSetLevelTags>;
 export type AccessLogLocation = string;
 export interface S3AccessConfig {
   accessLogLocation?: string;
 }
+const S3AccessConfig = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<S3AccessConfig>;
 export interface CreateSequenceStoreRequest {
   name: string;
   description?: string;
@@ -427,6 +558,10 @@ export interface CreateSequenceStoreRequest {
   propagatedSetLevelTags?: string[];
   s3AccessConfig?: S3AccessConfig;
 }
+const CreateSequenceStoreRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  5,
+) as any as S.Schema<CreateSequenceStoreRequest>;
 export type SequenceStoreArn = string;
 export type SequenceStoreStatus = string;
 export type SequenceStoreStatusMessage = string;
@@ -437,6 +572,10 @@ export interface SequenceStoreS3Access {
   s3AccessPointArn?: string;
   accessLogLocation?: string;
 }
+const SequenceStoreS3Access = /*@__PURE__*/ __L.at(
+  __c5,
+  6,
+) as any as S.Schema<SequenceStoreS3Access>;
 export interface CreateSequenceStoreResponse {
   id: string;
   arn: string;
@@ -451,17 +590,23 @@ export interface CreateSequenceStoreResponse {
   propagatedSetLevelTags?: string[];
   s3Access?: SequenceStoreS3Access;
 }
+const CreateSequenceStoreResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  7,
+) as any as S.Schema<CreateSequenceStoreResponse>;
 export type ShareName = string;
 export interface CreateShareRequest {
   resourceArn: string;
   principalSubscriber: string;
   shareName?: string;
 }
+const CreateShareRequest = /*@__PURE__*/ __L.at(__c6, 0) as any as S.Schema<CreateShareRequest>;
 export interface CreateShareResponse {
   shareId?: string;
   status?: string;
   shareName?: string;
 }
+const CreateShareResponse = /*@__PURE__*/ __L.at(__c6, 1) as any as S.Schema<CreateShareResponse>;
 export interface CreateVariantStoreRequest {
   reference: ReferenceItem;
   name?: string;
@@ -469,6 +614,10 @@ export interface CreateVariantStoreRequest {
   tags?: { [key: string]: string | undefined };
   sseConfig?: SseConfig;
 }
+const CreateVariantStoreRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  2,
+) as any as S.Schema<CreateVariantStoreRequest>;
 export interface CreateVariantStoreResponse {
   id: string;
   reference?: ReferenceItem;
@@ -476,6 +625,10 @@ export interface CreateVariantStoreResponse {
   name: string;
   creationTime: Date;
 }
+const CreateVariantStoreResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  3,
+) as any as S.Schema<CreateVariantStoreResponse>;
 export type WorkflowName = string;
 export type WorkflowDescription = string;
 export type WorkflowEngine = string;
@@ -487,7 +640,9 @@ export interface WorkflowParameter {
   description?: string;
   optional?: boolean;
 }
+const WorkflowParameter = /*@__PURE__*/ __L.at(__c6, 4) as any as S.Schema<WorkflowParameter>;
 export type WorkflowParameterTemplate = { [key: string]: WorkflowParameter | undefined };
+const WorkflowParameterTemplate = /*@__PURE__*/ __L.at(__c6, 5);
 export type WorkflowRequestId = string;
 export type Accelerators = string;
 export type StorageType = string;
@@ -500,16 +655,21 @@ export interface RegistryMapping {
   upstreamRepositoryPrefix?: string;
   ecrAccountId?: string;
 }
+const RegistryMapping = /*@__PURE__*/ __L.at(__c6, 6) as any as S.Schema<RegistryMapping>;
 export type RegistryMappingsList = RegistryMapping[];
+const RegistryMappingsList = /*@__PURE__*/ __L.at(__c6, 7);
 export interface ImageMapping {
   sourceImage?: string;
   destinationImage?: string;
 }
+const ImageMapping = /*@__PURE__*/ __L.at(__c7, 0) as any as S.Schema<ImageMapping>;
 export type ImageMappingsList = ImageMapping[];
+const ImageMappingsList = /*@__PURE__*/ __L.at(__c7, 1);
 export interface ContainerRegistryMap {
   registryMappings?: RegistryMapping[];
   imageMappings?: ImageMapping[];
 }
+const ContainerRegistryMap = /*@__PURE__*/ __L.at(__c7, 2) as any as S.Schema<ContainerRegistryMap>;
 export type ReadmeMarkdown = string;
 export type ParameterTemplatePath = string;
 export type ReadmePath = string;
@@ -521,13 +681,16 @@ export interface SourceReference {
   type: string;
   value: string;
 }
+const SourceReference = /*@__PURE__*/ __L.at(__c7, 3) as any as S.Schema<SourceReference>;
 export type ExcludeFilePatternList = string[];
+const ExcludeFilePatternList = ReadSetIdList as any as S.Schema<ExcludeFilePatternList>;
 export interface DefinitionRepository {
   connectionArn: string;
   fullRepositoryId: string;
   sourceReference?: SourceReference;
   excludeFilePatterns?: string[];
 }
+const DefinitionRepository = /*@__PURE__*/ __L.at(__c7, 4) as any as S.Schema<DefinitionRepository>;
 export type WorkflowBucketOwnerId = string;
 export type S3UriForObject = string;
 export interface CreateWorkflowRequest {
@@ -552,6 +715,10 @@ export interface CreateWorkflowRequest {
   workflowBucketOwnerId?: string;
   readmeUri?: string;
 }
+const CreateWorkflowRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  5,
+) as any as S.Schema<CreateWorkflowRequest>;
 export type WorkflowArn = string;
 export type WorkflowId = string;
 export type WorkflowStatus = string;
@@ -563,6 +730,10 @@ export interface CreateWorkflowResponse {
   tags?: { [key: string]: string | undefined };
   uuid?: string;
 }
+const CreateWorkflowResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  6,
+) as any as S.Schema<CreateWorkflowResponse>;
 export type WorkflowVersionName = string;
 export type WorkflowVersionDescription = string;
 export interface CreateWorkflowVersionRequest {
@@ -588,6 +759,10 @@ export interface CreateWorkflowVersionRequest {
   definitionRepository?: DefinitionRepository;
   readmeUri?: string;
 }
+const CreateWorkflowVersionRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  7,
+) as any as S.Schema<CreateWorkflowVersionRequest>;
 export type WorkflowVersionArn = string;
 export interface CreateWorkflowVersionResponse {
   arn?: string;
@@ -597,94 +772,193 @@ export interface CreateWorkflowVersionResponse {
   tags?: { [key: string]: string | undefined };
   uuid?: string;
 }
+const CreateWorkflowVersionResponse = /*@__PURE__*/ __L.at(
+  __c8,
+  0,
+) as any as S.Schema<CreateWorkflowVersionResponse>;
 export interface DeleteAnnotationStoreRequest {
   name: string;
   force?: boolean;
 }
+const DeleteAnnotationStoreRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  1,
+) as any as S.Schema<DeleteAnnotationStoreRequest>;
 export interface DeleteAnnotationStoreResponse {
   status: string;
 }
+const DeleteAnnotationStoreResponse = /*@__PURE__*/ __L.at(
+  __c8,
+  2,
+) as any as S.Schema<DeleteAnnotationStoreResponse>;
 export type VersionList = string[];
+const VersionList = ReadSetIdList as any as S.Schema<VersionList>;
 export interface DeleteAnnotationStoreVersionsRequest {
   name: string;
   versions: string[];
   force?: boolean;
 }
+const DeleteAnnotationStoreVersionsRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  3,
+) as any as S.Schema<DeleteAnnotationStoreVersionsRequest>;
 export interface VersionDeleteError {
   versionName: string;
   message: string;
 }
+const VersionDeleteError = /*@__PURE__*/ __L.at(__c8, 4) as any as S.Schema<VersionDeleteError>;
 export type VersionDeleteErrorList = VersionDeleteError[];
+const VersionDeleteErrorList = /*@__PURE__*/ __L.at(__c8, 5);
 export interface DeleteAnnotationStoreVersionsResponse {
   errors?: VersionDeleteError[];
 }
+const DeleteAnnotationStoreVersionsResponse = /*@__PURE__*/ __L.at(
+  __c8,
+  6,
+) as any as S.Schema<DeleteAnnotationStoreVersionsResponse>;
 export interface DeleteBatchRequest {
   batchId: string;
 }
+const DeleteBatchRequest = /*@__PURE__*/ __L.at(__c8, 7) as any as S.Schema<DeleteBatchRequest>;
 export interface DeleteBatchResponse {}
+const DeleteBatchResponse = CancelAnnotationImportResponse as any as S.Schema<DeleteBatchResponse>;
 export interface DeleteConfigurationRequest {
   name: string;
 }
+const DeleteConfigurationRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  0,
+) as any as S.Schema<DeleteConfigurationRequest>;
 export interface DeleteConfigurationResponse {}
+const DeleteConfigurationResponse =
+  CancelAnnotationImportResponse as any as S.Schema<DeleteConfigurationResponse>;
 export type ReferenceId = string;
 export interface DeleteReferenceRequest {
   id: string;
   referenceStoreId: string;
 }
+const DeleteReferenceRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  1,
+) as any as S.Schema<DeleteReferenceRequest>;
 export interface DeleteReferenceResponse {}
+const DeleteReferenceResponse =
+  CancelAnnotationImportResponse as any as S.Schema<DeleteReferenceResponse>;
 export interface DeleteReferenceStoreRequest {
   id: string;
 }
+const DeleteReferenceStoreRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  2,
+) as any as S.Schema<DeleteReferenceStoreRequest>;
 export interface DeleteReferenceStoreResponse {}
+const DeleteReferenceStoreResponse =
+  CancelAnnotationImportResponse as any as S.Schema<DeleteReferenceStoreResponse>;
 export interface DeleteRunRequest {
   id: string;
 }
+const DeleteRunRequest = /*@__PURE__*/ __L.at(__c9, 3) as any as S.Schema<DeleteRunRequest>;
 export interface DeleteRunResponse {}
+const DeleteRunResponse = CancelAnnotationImportResponse as any as S.Schema<DeleteRunResponse>;
 export interface DeleteRunBatchRequest {
   batchId: string;
 }
+const DeleteRunBatchRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  4,
+) as any as S.Schema<DeleteRunBatchRequest>;
 export interface DeleteRunBatchResponse {}
+const DeleteRunBatchResponse =
+  CancelAnnotationImportResponse as any as S.Schema<DeleteRunBatchResponse>;
 export interface DeleteRunCacheRequest {
   id: string;
 }
+const DeleteRunCacheRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  5,
+) as any as S.Schema<DeleteRunCacheRequest>;
 export interface DeleteRunCacheResponse {}
+const DeleteRunCacheResponse =
+  CancelAnnotationImportResponse as any as S.Schema<DeleteRunCacheResponse>;
 export interface DeleteRunGroupRequest {
   id: string;
 }
+const DeleteRunGroupRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  6,
+) as any as S.Schema<DeleteRunGroupRequest>;
 export interface DeleteRunGroupResponse {}
+const DeleteRunGroupResponse =
+  CancelAnnotationImportResponse as any as S.Schema<DeleteRunGroupResponse>;
 export interface DeleteS3AccessPolicyRequest {
   s3AccessPointArn: string;
 }
+const DeleteS3AccessPolicyRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  7,
+) as any as S.Schema<DeleteS3AccessPolicyRequest>;
 export interface DeleteS3AccessPolicyResponse {}
+const DeleteS3AccessPolicyResponse =
+  CancelAnnotationImportResponse as any as S.Schema<DeleteS3AccessPolicyResponse>;
 export interface DeleteSequenceStoreRequest {
   id: string;
 }
+const DeleteSequenceStoreRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  0,
+) as any as S.Schema<DeleteSequenceStoreRequest>;
 export interface DeleteSequenceStoreResponse {}
+const DeleteSequenceStoreResponse =
+  CancelAnnotationImportResponse as any as S.Schema<DeleteSequenceStoreResponse>;
 export interface DeleteShareRequest {
   shareId: string;
 }
+const DeleteShareRequest = /*@__PURE__*/ __L.at(__c10, 1) as any as S.Schema<DeleteShareRequest>;
 export interface DeleteShareResponse {
   status?: string;
 }
+const DeleteShareResponse = AcceptShareResponse as any as S.Schema<DeleteShareResponse>;
 export interface DeleteVariantStoreRequest {
   name: string;
   force?: boolean;
 }
+const DeleteVariantStoreRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  2,
+) as any as S.Schema<DeleteVariantStoreRequest>;
 export interface DeleteVariantStoreResponse {
   status: string;
 }
+const DeleteVariantStoreResponse =
+  DeleteAnnotationStoreResponse as any as S.Schema<DeleteVariantStoreResponse>;
 export interface DeleteWorkflowRequest {
   id: string;
 }
+const DeleteWorkflowRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  3,
+) as any as S.Schema<DeleteWorkflowRequest>;
 export interface DeleteWorkflowResponse {}
+const DeleteWorkflowResponse =
+  CancelAnnotationImportResponse as any as S.Schema<DeleteWorkflowResponse>;
 export interface DeleteWorkflowVersionRequest {
   workflowId: string;
   versionName: string;
 }
+const DeleteWorkflowVersionRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  4,
+) as any as S.Schema<DeleteWorkflowVersionRequest>;
 export interface DeleteWorkflowVersionResponse {}
+const DeleteWorkflowVersionResponse =
+  CancelAnnotationImportResponse as any as S.Schema<DeleteWorkflowVersionResponse>;
 export interface GetAnnotationImportRequest {
   jobId: string;
 }
+const GetAnnotationImportRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  5,
+) as any as S.Schema<GetAnnotationImportRequest>;
 export type Arn = string;
 export type JobStatus = string;
 export type JobStatusMsg = string;
@@ -694,7 +968,12 @@ export interface AnnotationImportItemDetail {
   source: string;
   jobStatus: string;
 }
+const AnnotationImportItemDetail = /*@__PURE__*/ __L.at(
+  __c10,
+  6,
+) as any as S.Schema<AnnotationImportItemDetail>;
 export type AnnotationImportItemDetails = AnnotationImportItemDetail[];
+const AnnotationImportItemDetails = /*@__PURE__*/ __L.at(__c10, 7);
 export type RunLeftNormalization = boolean;
 export type Separator = string;
 export type Encoding = string;
@@ -716,17 +995,22 @@ export interface ReadOptions {
   header?: boolean;
   lineSep?: string;
 }
+const ReadOptions = /*@__PURE__*/ __L.at(__c11, 0) as any as S.Schema<ReadOptions>;
 export interface TsvOptions {
   readOptions?: ReadOptions;
 }
+const TsvOptions = /*@__PURE__*/ __L.at(__c11, 1) as any as S.Schema<TsvOptions>;
 export interface VcfOptions {
   ignoreQualField?: boolean;
   ignoreFilterField?: boolean;
 }
+const VcfOptions = /*@__PURE__*/ __L.at(__c11, 2) as any as S.Schema<VcfOptions>;
 export type FormatOptions =
   | { tsvOptions: TsvOptions; vcfOptions?: never }
   | { tsvOptions?: never; vcfOptions: VcfOptions };
+const FormatOptions = /*@__PURE__*/ __L.at(__c11, 3);
 export type AnnotationFieldMap = { [key: string]: string | undefined };
+const AnnotationFieldMap = FormatToHeader as any as S.Schema<AnnotationFieldMap>;
 export interface GetAnnotationImportResponse {
   id: string;
   destinationName: string;
@@ -742,9 +1026,17 @@ export interface GetAnnotationImportResponse {
   formatOptions: FormatOptions;
   annotationFields?: { [key: string]: string | undefined };
 }
+const GetAnnotationImportResponse = /*@__PURE__*/ __L.at(
+  __c11,
+  4,
+) as any as S.Schema<GetAnnotationImportResponse>;
 export interface GetAnnotationStoreRequest {
   name: string;
 }
+const GetAnnotationStoreRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  5,
+) as any as S.Schema<GetAnnotationStoreRequest>;
 export type StatusMessage = string;
 export interface GetAnnotationStoreResponse {
   id: string;
@@ -763,10 +1055,18 @@ export interface GetAnnotationStoreResponse {
   storeSizeBytes: number;
   numVersions: number;
 }
+const GetAnnotationStoreResponse = /*@__PURE__*/ __L.at(
+  __c11,
+  6,
+) as any as S.Schema<GetAnnotationStoreResponse>;
 export interface GetAnnotationStoreVersionRequest {
   name: string;
   versionName: string;
 }
+const GetAnnotationStoreVersionRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  7,
+) as any as S.Schema<GetAnnotationStoreVersionRequest>;
 export interface GetAnnotationStoreVersionResponse {
   storeId: string;
   id: string;
@@ -782,9 +1082,14 @@ export interface GetAnnotationStoreVersionResponse {
   statusMessage: string;
   versionSizeBytes: number;
 }
+const GetAnnotationStoreVersionResponse = /*@__PURE__*/ __L.at(
+  __c12,
+  0,
+) as any as S.Schema<GetAnnotationStoreVersionResponse>;
 export interface GetBatchRequest {
   batchId: string;
 }
+const GetBatchRequest = /*@__PURE__*/ __L.at(__c12, 1) as any as S.Schema<GetBatchRequest>;
 export type BatchArn = string;
 export type BatchUuid = string;
 export type BatchName = string;
@@ -827,6 +1132,7 @@ export interface DefaultRunSetting {
   engineSettings?: any;
   scratchStorageMode?: string;
 }
+const DefaultRunSetting = /*@__PURE__*/ __L.at(__c12, 2) as any as S.Schema<DefaultRunSetting>;
 export interface SubmissionSummary {
   successfulStartSubmissionCount?: number;
   failedStartSubmissionCount?: number;
@@ -836,6 +1142,7 @@ export interface SubmissionSummary {
   successfulDeleteSubmissionCount?: number;
   failedDeleteSubmissionCount?: number;
 }
+const SubmissionSummary = /*@__PURE__*/ __L.at(__c12, 3) as any as S.Schema<SubmissionSummary>;
 export interface RunSummary {
   pendingRunCount?: number;
   startingRunCount?: number;
@@ -846,6 +1153,7 @@ export interface RunSummary {
   failedRunCount?: number;
   cancelledRunCount?: number;
 }
+const RunSummary = /*@__PURE__*/ __L.at(__c12, 4) as any as S.Schema<RunSummary>;
 export type BatchTimestamp = Date;
 export interface GetBatchResponse {
   id?: string;
@@ -864,9 +1172,14 @@ export interface GetBatchResponse {
   failedTime?: Date;
   failureReason?: string;
 }
+const GetBatchResponse = /*@__PURE__*/ __L.at(__c12, 5) as any as S.Schema<GetBatchResponse>;
 export interface GetConfigurationRequest {
   name: string;
 }
+const GetConfigurationRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  6,
+) as any as S.Schema<GetConfigurationRequest>;
 export interface GetConfigurationResponse {
   arn?: string;
   uuid?: string;
@@ -877,6 +1190,10 @@ export interface GetConfigurationResponse {
   creationTime?: Date;
   tags?: { [key: string]: string | undefined };
 }
+const GetConfigurationResponse = /*@__PURE__*/ __L.at(
+  __c12,
+  7,
+) as any as S.Schema<GetConfigurationResponse>;
 export type ReadSetFile = string;
 export interface GetReadSetRequest {
   id: string;
@@ -884,14 +1201,20 @@ export interface GetReadSetRequest {
   file?: string;
   partNumber: number;
 }
+const GetReadSetRequest = /*@__PURE__*/ __L.at(__c13, 0) as any as S.Schema<GetReadSetRequest>;
 export interface GetReadSetResponse {
   payload?: T.StreamingOutputBody;
 }
+const GetReadSetResponse = /*@__PURE__*/ __L.at(__c13, 1) as any as S.Schema<GetReadSetResponse>;
 export type ActivationJobId = string;
 export interface GetReadSetActivationJobRequest {
   id: string;
   sequenceStoreId: string;
 }
+const GetReadSetActivationJobRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  2,
+) as any as S.Schema<GetReadSetActivationJobRequest>;
 export type ReadSetActivationJobStatus = string;
 export type JobStatusMessage = string;
 export type ReadSetActivationJobItemStatus = string;
@@ -900,7 +1223,12 @@ export interface ActivateReadSetSourceItem {
   status: string;
   statusMessage?: string;
 }
+const ActivateReadSetSourceItem = /*@__PURE__*/ __L.at(
+  __c13,
+  3,
+) as any as S.Schema<ActivateReadSetSourceItem>;
 export type ActivateReadSetSourceList = ActivateReadSetSourceItem[];
+const ActivateReadSetSourceList = /*@__PURE__*/ __L.at(__c13, 4);
 export interface GetReadSetActivationJobResponse {
   id: string;
   sequenceStoreId: string;
@@ -910,11 +1238,19 @@ export interface GetReadSetActivationJobResponse {
   completionTime?: Date;
   sources?: ActivateReadSetSourceItem[];
 }
+const GetReadSetActivationJobResponse = /*@__PURE__*/ __L.at(
+  __c13,
+  5,
+) as any as S.Schema<GetReadSetActivationJobResponse>;
 export type ExportJobId = string;
 export interface GetReadSetExportJobRequest {
   sequenceStoreId: string;
   id: string;
 }
+const GetReadSetExportJobRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  6,
+) as any as S.Schema<GetReadSetExportJobRequest>;
 export type S3Destination = string;
 export type ReadSetExportJobStatus = string;
 export type ReadSetExportJobItemStatus = string;
@@ -923,7 +1259,9 @@ export interface ExportReadSetDetail {
   status: string;
   statusMessage?: string;
 }
+const ExportReadSetDetail = /*@__PURE__*/ __L.at(__c13, 7) as any as S.Schema<ExportReadSetDetail>;
 export type ExportReadSetDetailList = ExportReadSetDetail[];
+const ExportReadSetDetailList = /*@__PURE__*/ __L.at(__c14, 0);
 export interface GetReadSetExportJobResponse {
   id: string;
   sequenceStoreId: string;
@@ -934,17 +1272,26 @@ export interface GetReadSetExportJobResponse {
   completionTime?: Date;
   readSets?: ExportReadSetDetail[];
 }
+const GetReadSetExportJobResponse = /*@__PURE__*/ __L.at(
+  __c14,
+  1,
+) as any as S.Schema<GetReadSetExportJobResponse>;
 export type ImportJobId = string;
 export interface GetReadSetImportJobRequest {
   id: string;
   sequenceStoreId: string;
 }
+const GetReadSetImportJobRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  2,
+) as any as S.Schema<GetReadSetImportJobRequest>;
 export type RoleArn = string;
 export type ReadSetImportJobStatus = string;
 export interface SourceFiles {
   source1: string;
   source2?: string;
 }
+const SourceFiles = /*@__PURE__*/ __L.at(__c14, 3) as any as S.Schema<SourceFiles>;
 export type ReadSetImportJobItemStatus = string;
 export interface ImportReadSetSourceItem {
   sourceFiles: SourceFiles;
@@ -960,7 +1307,12 @@ export interface ImportReadSetSourceItem {
   tags?: { [key: string]: string | undefined };
   readSetId?: string;
 }
+const ImportReadSetSourceItem = /*@__PURE__*/ __L.at(
+  __c14,
+  4,
+) as any as S.Schema<ImportReadSetSourceItem>;
 export type ImportReadSetSourceList = ImportReadSetSourceItem[];
+const ImportReadSetSourceList = /*@__PURE__*/ __L.at(__c14, 5);
 export interface GetReadSetImportJobResponse {
   id: string;
   sequenceStoreId: string;
@@ -971,10 +1323,18 @@ export interface GetReadSetImportJobResponse {
   completionTime?: Date;
   sources: ImportReadSetSourceItem[];
 }
+const GetReadSetImportJobResponse = /*@__PURE__*/ __L.at(
+  __c14,
+  6,
+) as any as S.Schema<GetReadSetImportJobResponse>;
 export interface GetReadSetMetadataRequest {
   id: string;
   sequenceStoreId: string;
 }
+const GetReadSetMetadataRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  7,
+) as any as S.Schema<GetReadSetMetadataRequest>;
 export type ReadSetArn = string;
 export type ReadSetStatus = string;
 export interface SequenceInformation {
@@ -983,20 +1343,24 @@ export interface SequenceInformation {
   generatedFrom?: string;
   alignment?: string;
 }
+const SequenceInformation = /*@__PURE__*/ __L.at(__c15, 0) as any as S.Schema<SequenceInformation>;
 export interface ReadSetS3Access {
   s3Uri?: string;
 }
+const ReadSetS3Access = /*@__PURE__*/ __L.at(__c15, 1) as any as S.Schema<ReadSetS3Access>;
 export interface FileInformation {
   totalParts?: number;
   partSize?: number;
   contentLength?: number;
   s3Access?: ReadSetS3Access;
 }
+const FileInformation = /*@__PURE__*/ __L.at(__c15, 2) as any as S.Schema<FileInformation>;
 export interface ReadSetFiles {
   source1?: FileInformation;
   source2?: FileInformation;
   index?: FileInformation;
 }
+const ReadSetFiles = /*@__PURE__*/ __L.at(__c15, 3) as any as S.Schema<ReadSetFiles>;
 export type ReadSetStatusMessage = string;
 export type CreationType = string;
 export type ETagAlgorithm = string;
@@ -1005,6 +1369,7 @@ export interface ETag {
   source1?: string;
   source2?: string;
 }
+const ETag = /*@__PURE__*/ __L.at(__c15, 4) as any as S.Schema<ETag>;
 export type CreationJobId = string;
 export interface GetReadSetMetadataResponse {
   id: string;
@@ -1025,6 +1390,10 @@ export interface GetReadSetMetadataResponse {
   etag?: ETag;
   creationJobId?: string;
 }
+const GetReadSetMetadataResponse = /*@__PURE__*/ __L.at(
+  __c15,
+  5,
+) as any as S.Schema<GetReadSetMetadataResponse>;
 export type Range = string;
 export type ReferenceFile = string;
 export interface GetReferenceRequest {
@@ -1034,13 +1403,19 @@ export interface GetReferenceRequest {
   partNumber: number;
   file?: string;
 }
+const GetReferenceRequest = /*@__PURE__*/ __L.at(__c15, 6) as any as S.Schema<GetReferenceRequest>;
 export interface GetReferenceResponse {
   payload?: T.StreamingOutputBody;
 }
+const GetReferenceResponse = GetReadSetResponse as any as S.Schema<GetReferenceResponse>;
 export interface GetReferenceImportJobRequest {
   id: string;
   referenceStoreId: string;
 }
+const GetReferenceImportJobRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  7,
+) as any as S.Schema<GetReferenceImportJobRequest>;
 export type ReferenceImportJobStatus = string;
 export type ReferenceImportJobItemStatus = string;
 export type ReferenceName = string;
@@ -1054,7 +1429,12 @@ export interface ImportReferenceSourceItem {
   tags?: { [key: string]: string | undefined };
   referenceId?: string;
 }
+const ImportReferenceSourceItem = /*@__PURE__*/ __L.at(
+  __c16,
+  0,
+) as any as S.Schema<ImportReferenceSourceItem>;
 export type ImportReferenceSourceList = ImportReferenceSourceItem[];
+const ImportReferenceSourceList = /*@__PURE__*/ __L.at(__c16, 1);
 export interface GetReferenceImportJobResponse {
   id: string;
   referenceStoreId: string;
@@ -1065,16 +1445,25 @@ export interface GetReferenceImportJobResponse {
   completionTime?: Date;
   sources: ImportReferenceSourceItem[];
 }
+const GetReferenceImportJobResponse = /*@__PURE__*/ __L.at(
+  __c16,
+  2,
+) as any as S.Schema<GetReferenceImportJobResponse>;
 export interface GetReferenceMetadataRequest {
   id: string;
   referenceStoreId: string;
 }
+const GetReferenceMetadataRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  3,
+) as any as S.Schema<GetReferenceMetadataRequest>;
 export type Md5 = string;
 export type ReferenceStatus = string;
 export interface ReferenceFiles {
   source?: FileInformation;
   index?: FileInformation;
 }
+const ReferenceFiles = /*@__PURE__*/ __L.at(__c16, 4) as any as S.Schema<ReferenceFiles>;
 export type ReferenceCreationType = string;
 export interface GetReferenceMetadataResponse {
   id: string;
@@ -1090,9 +1479,17 @@ export interface GetReferenceMetadataResponse {
   creationType?: string;
   creationJobId?: string;
 }
+const GetReferenceMetadataResponse = /*@__PURE__*/ __L.at(
+  __c16,
+  5,
+) as any as S.Schema<GetReferenceMetadataResponse>;
 export interface GetReferenceStoreRequest {
   id: string;
 }
+const GetReferenceStoreRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  6,
+) as any as S.Schema<GetReferenceStoreRequest>;
 export interface GetReferenceStoreResponse {
   id: string;
   arn: string;
@@ -1101,12 +1498,16 @@ export interface GetReferenceStoreResponse {
   sseConfig?: SseConfig;
   creationTime: Date;
 }
+const GetReferenceStoreResponse =
+  CreateReferenceStoreResponse as any as S.Schema<GetReferenceStoreResponse>;
 export type RunExport = string;
 export type RunExportList = string[];
+const RunExportList = ReadSetIdList as any as S.Schema<RunExportList>;
 export interface GetRunRequest {
   id: string;
   export?: string[];
 }
+const GetRunRequest = /*@__PURE__*/ __L.at(__c16, 7) as any as S.Schema<GetRunRequest>;
 export type RunArn = string;
 export type EngineVersion = string;
 export type RunStatus = string;
@@ -1114,6 +1515,7 @@ export type WorkflowDigest = string;
 export type RunResourceDigestKey = string;
 export type RunResourceDigest = string;
 export type RunResourceDigests = { [key: string]: string | undefined };
+const RunResourceDigests = FormatToHeader as any as S.Schema<RunResourceDigests>;
 export type RunStartedBy = string;
 export type RunTimestamp = Date;
 export type RunStatusMessage = string;
@@ -1124,12 +1526,17 @@ export interface RunLogLocation {
   engineLogStream?: string;
   runLogStream?: string;
 }
+const RunLogLocation = /*@__PURE__*/ __L.at(__c17, 0) as any as S.Schema<RunLogLocation>;
 export type RunUuid = string;
 export interface ConfigurationDetails {
   name?: string;
   arn?: string;
   uuid?: string;
 }
+const ConfigurationDetails = /*@__PURE__*/ __L.at(
+  __c17,
+  1,
+) as any as S.Schema<ConfigurationDetails>;
 export interface GetRunResponse {
   arn?: string;
   id?: string;
@@ -1175,9 +1582,11 @@ export interface GetRunResponse {
   engineSettings?: any;
   sessionPolicy?: string;
 }
+const GetRunResponse = /*@__PURE__*/ __L.at(__c17, 2) as any as S.Schema<GetRunResponse>;
 export interface GetRunCacheRequest {
   id: string;
 }
+const GetRunCacheRequest = /*@__PURE__*/ __L.at(__c17, 3) as any as S.Schema<GetRunCacheRequest>;
 export type RunCacheTimestamp = Date;
 export interface GetRunCacheResponse {
   arn?: string;
@@ -1191,9 +1600,11 @@ export interface GetRunCacheResponse {
   status?: string;
   tags?: { [key: string]: string | undefined };
 }
+const GetRunCacheResponse = /*@__PURE__*/ __L.at(__c17, 4) as any as S.Schema<GetRunCacheResponse>;
 export interface GetRunGroupRequest {
   id: string;
 }
+const GetRunGroupRequest = /*@__PURE__*/ __L.at(__c17, 5) as any as S.Schema<GetRunGroupRequest>;
 export type RunGroupTimestamp = Date;
 export interface GetRunGroupResponse {
   arn?: string;
@@ -1206,11 +1617,13 @@ export interface GetRunGroupResponse {
   tags?: { [key: string]: string | undefined };
   maxGpus?: number;
 }
+const GetRunGroupResponse = /*@__PURE__*/ __L.at(__c17, 6) as any as S.Schema<GetRunGroupResponse>;
 export type TaskId = string;
 export interface GetRunTaskRequest {
   id: string;
   taskId: string;
 }
+const GetRunTaskRequest = /*@__PURE__*/ __L.at(__c17, 7) as any as S.Schema<GetRunTaskRequest>;
 export type TaskStatus = string;
 export type TaskName = string;
 export type TaskTimestamp = Date;
@@ -1224,6 +1637,7 @@ export interface ImageDetails {
   imageDigest?: string;
   sourceImage?: string;
 }
+const ImageDetails = /*@__PURE__*/ __L.at(__c18, 0) as any as S.Schema<ImageDetails>;
 export type TaskUuid = string;
 export interface GetRunTaskResponse {
   taskId?: string;
@@ -1244,11 +1658,18 @@ export interface GetRunTaskResponse {
   imageDetails?: ImageDetails;
   uuid?: string;
 }
+const GetRunTaskResponse = /*@__PURE__*/ __L.at(__c18, 1) as any as S.Schema<GetRunTaskResponse>;
 export interface GetS3AccessPolicyRequest {
   s3AccessPointArn: string;
 }
+const GetS3AccessPolicyRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  2,
+) as any as S.Schema<GetS3AccessPolicyRequest>;
 export type StoreId = string;
 export type StoreType = "SEQUENCE_STORE" | "REFERENCE_STORE" | (string & {});
+const StoreType = S.String;
+
 export type S3AccessPolicy = string;
 export interface GetS3AccessPolicyResponse {
   s3AccessPointArn?: string;
@@ -1257,9 +1678,17 @@ export interface GetS3AccessPolicyResponse {
   updateTime?: Date;
   s3AccessPolicy: string;
 }
+const GetS3AccessPolicyResponse = /*@__PURE__*/ __L.at(
+  __c18,
+  3,
+) as any as S.Schema<GetS3AccessPolicyResponse>;
 export interface GetSequenceStoreRequest {
   id: string;
 }
+const GetSequenceStoreRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  4,
+) as any as S.Schema<GetSequenceStoreRequest>;
 export interface GetSequenceStoreResponse {
   id: string;
   arn: string;
@@ -1275,9 +1704,14 @@ export interface GetSequenceStoreResponse {
   propagatedSetLevelTags?: string[];
   updateTime?: Date;
 }
+const GetSequenceStoreResponse = /*@__PURE__*/ __L.at(
+  __c18,
+  5,
+) as any as S.Schema<GetSequenceStoreResponse>;
 export interface GetShareRequest {
   shareId: string;
 }
+const GetShareRequest = /*@__PURE__*/ __L.at(__c18, 6) as any as S.Schema<GetShareRequest>;
 export interface ShareDetails {
   shareId?: string;
   resourceArn?: string;
@@ -1290,18 +1724,29 @@ export interface ShareDetails {
   creationTime?: Date;
   updateTime?: Date;
 }
+const ShareDetails = /*@__PURE__*/ __L.at(__c18, 7) as any as S.Schema<ShareDetails>;
 export interface GetShareResponse {
   share?: ShareDetails;
 }
+const GetShareResponse = /*@__PURE__*/ __L.at(__c19, 0) as any as S.Schema<GetShareResponse>;
 export interface GetVariantImportRequest {
   jobId: string;
 }
+const GetVariantImportRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  1,
+) as any as S.Schema<GetVariantImportRequest>;
 export interface VariantImportItemDetail {
   source: string;
   jobStatus: string;
   statusMessage?: string;
 }
+const VariantImportItemDetail = /*@__PURE__*/ __L.at(
+  __c19,
+  2,
+) as any as S.Schema<VariantImportItemDetail>;
 export type VariantImportItemDetails = VariantImportItemDetail[];
+const VariantImportItemDetails = /*@__PURE__*/ __L.at(__c19, 3);
 export interface GetVariantImportResponse {
   id: string;
   destinationName: string;
@@ -1315,9 +1760,17 @@ export interface GetVariantImportResponse {
   runLeftNormalization: boolean;
   annotationFields?: { [key: string]: string | undefined };
 }
+const GetVariantImportResponse = /*@__PURE__*/ __L.at(
+  __c19,
+  4,
+) as any as S.Schema<GetVariantImportResponse>;
 export interface GetVariantStoreRequest {
   name: string;
 }
+const GetVariantStoreRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  5,
+) as any as S.Schema<GetVariantStoreRequest>;
 export interface GetVariantStoreResponse {
   id: string;
   reference: ReferenceItem;
@@ -1332,19 +1785,26 @@ export interface GetVariantStoreResponse {
   statusMessage: string;
   storeSizeBytes: number;
 }
+const GetVariantStoreResponse = /*@__PURE__*/ __L.at(
+  __c19,
+  6,
+) as any as S.Schema<GetVariantStoreResponse>;
 export type WorkflowExport = string;
 export type WorkflowExportList = string[];
+const WorkflowExportList = ReadSetIdList as any as S.Schema<WorkflowExportList>;
 export interface GetWorkflowRequest {
   id: string;
   type?: string;
   export?: string[];
   workflowOwnerId?: string;
 }
+const GetWorkflowRequest = /*@__PURE__*/ __L.at(__c19, 7) as any as S.Schema<GetWorkflowRequest>;
 export type WorkflowTimestamp = Date;
 export type WorkflowStatusMessage = string;
 export type WorkflowMetadataKey = string;
 export type WorkflowMetadataValue = string;
 export type WorkflowMetadata = { [key: string]: string | undefined };
+const WorkflowMetadata = FormatToHeader as any as S.Schema<WorkflowMetadata>;
 export type ReadmeS3PresignedUrl = string;
 export interface DefinitionRepositoryDetails {
   connectionArn?: string;
@@ -1353,11 +1813,17 @@ export interface DefinitionRepositoryDetails {
   providerType?: string;
   providerEndpoint?: string;
 }
+const DefinitionRepositoryDetails = /*@__PURE__*/ __L.at(
+  __c20,
+  0,
+) as any as S.Schema<DefinitionRepositoryDetails>;
 export type WorkflowProfileName = string;
 export type WorkflowProfileList = string[];
+const WorkflowProfileList = ReadSetIdList as any as S.Schema<WorkflowProfileList>;
 export type WorkflowProfileParameterTemplates = {
   [key: string]: { [key: string]: WorkflowParameter | undefined } | undefined;
 };
+const WorkflowProfileParameterTemplates = /*@__PURE__*/ __L.at(__c20, 1);
 export interface GetWorkflowResponse {
   arn?: string;
   id?: string;
@@ -1387,6 +1853,7 @@ export interface GetWorkflowResponse {
     [key: string]: { [key: string]: WorkflowParameter | undefined } | undefined;
   };
 }
+const GetWorkflowResponse = /*@__PURE__*/ __L.at(__c20, 2) as any as S.Schema<GetWorkflowResponse>;
 export interface GetWorkflowVersionRequest {
   workflowId: string;
   versionName: string;
@@ -1394,6 +1861,10 @@ export interface GetWorkflowVersionRequest {
   export?: string[];
   workflowOwnerId?: string;
 }
+const GetWorkflowVersionRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  3,
+) as any as S.Schema<GetWorkflowVersionRequest>;
 export interface GetWorkflowVersionResponse {
   arn?: string;
   workflowId?: string;
@@ -1424,18 +1895,31 @@ export interface GetWorkflowVersionResponse {
     [key: string]: { [key: string]: WorkflowParameter | undefined } | undefined;
   };
 }
+const GetWorkflowVersionResponse = /*@__PURE__*/ __L.at(
+  __c20,
+  4,
+) as any as S.Schema<GetWorkflowVersionResponse>;
 export type ResourceIdentifier = string;
 export type IdList = string[];
+const IdList = ReadSetIdList as any as S.Schema<IdList>;
 export interface ListAnnotationImportJobsFilter {
   status?: string;
   storeName?: string;
 }
+const ListAnnotationImportJobsFilter = /*@__PURE__*/ __L.at(
+  __c20,
+  5,
+) as any as S.Schema<ListAnnotationImportJobsFilter>;
 export interface ListAnnotationImportJobsRequest {
   maxResults?: number;
   ids?: string[];
   nextToken?: string;
   filter?: ListAnnotationImportJobsFilter;
 }
+const ListAnnotationImportJobsRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  6,
+) as any as S.Schema<ListAnnotationImportJobsRequest>;
 export interface AnnotationImportJobItem {
   id: string;
   destinationName: string;
@@ -1448,20 +1932,37 @@ export interface AnnotationImportJobItem {
   runLeftNormalization?: boolean;
   annotationFields?: { [key: string]: string | undefined };
 }
+const AnnotationImportJobItem = /*@__PURE__*/ __L.at(
+  __c20,
+  7,
+) as any as S.Schema<AnnotationImportJobItem>;
 export type AnnotationImportJobItems = AnnotationImportJobItem[];
+const AnnotationImportJobItems = /*@__PURE__*/ __L.at(__c21, 0);
 export interface ListAnnotationImportJobsResponse {
   annotationImportJobs?: AnnotationImportJobItem[];
   nextToken?: string;
 }
+const ListAnnotationImportJobsResponse = /*@__PURE__*/ __L.at(
+  __c21,
+  1,
+) as any as S.Schema<ListAnnotationImportJobsResponse>;
 export interface ListAnnotationStoresFilter {
   status?: string;
 }
+const ListAnnotationStoresFilter = /*@__PURE__*/ __L.at(
+  __c21,
+  2,
+) as any as S.Schema<ListAnnotationStoresFilter>;
 export interface ListAnnotationStoresRequest {
   ids?: string[];
   maxResults?: number;
   nextToken?: string;
   filter?: ListAnnotationStoresFilter;
 }
+const ListAnnotationStoresRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  3,
+) as any as S.Schema<ListAnnotationStoresRequest>;
 export interface AnnotationStoreItem {
   id: string;
   reference: ReferenceItem;
@@ -1476,20 +1977,32 @@ export interface AnnotationStoreItem {
   statusMessage: string;
   storeSizeBytes: number;
 }
+const AnnotationStoreItem = /*@__PURE__*/ __L.at(__c21, 4) as any as S.Schema<AnnotationStoreItem>;
 export type AnnotationStoreItems = AnnotationStoreItem[];
+const AnnotationStoreItems = /*@__PURE__*/ __L.at(__c21, 5);
 export interface ListAnnotationStoresResponse {
   annotationStores?: AnnotationStoreItem[];
   nextToken?: string;
 }
+const ListAnnotationStoresResponse = /*@__PURE__*/ __L.at(
+  __c21,
+  6,
+) as any as S.Schema<ListAnnotationStoresResponse>;
 export interface ListAnnotationStoreVersionsFilter {
   status?: string;
 }
+const ListAnnotationStoreVersionsFilter =
+  ListAnnotationStoresFilter as any as S.Schema<ListAnnotationStoreVersionsFilter>;
 export interface ListAnnotationStoreVersionsRequest {
   name: string;
   maxResults?: number;
   nextToken?: string;
   filter?: ListAnnotationStoreVersionsFilter;
 }
+const ListAnnotationStoreVersionsRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  7,
+) as any as S.Schema<ListAnnotationStoreVersionsRequest>;
 export interface AnnotationStoreVersionItem {
   storeId: string;
   id: string;
@@ -1503,11 +2016,20 @@ export interface AnnotationStoreVersionItem {
   statusMessage: string;
   versionSizeBytes: number;
 }
+const AnnotationStoreVersionItem = /*@__PURE__*/ __L.at(
+  __c22,
+  0,
+) as any as S.Schema<AnnotationStoreVersionItem>;
 export type AnnotationStoreVersionItems = AnnotationStoreVersionItem[];
+const AnnotationStoreVersionItems = /*@__PURE__*/ __L.at(__c22, 1);
 export interface ListAnnotationStoreVersionsResponse {
   annotationStoreVersions?: AnnotationStoreVersionItem[];
   nextToken?: string;
 }
+const ListAnnotationStoreVersionsResponse = /*@__PURE__*/ __L.at(
+  __c22,
+  2,
+) as any as S.Schema<ListAnnotationStoreVersionsResponse>;
 export type ListToken = string;
 export interface ListBatchRequest {
   maxItems?: number;
@@ -1516,6 +2038,7 @@ export interface ListBatchRequest {
   name?: string;
   runGroupId?: string;
 }
+const ListBatchRequest = /*@__PURE__*/ __L.at(__c22, 3) as any as S.Schema<ListBatchRequest>;
 export interface BatchListItem {
   id?: string;
   name?: string;
@@ -1524,16 +2047,23 @@ export interface BatchListItem {
   totalRuns?: number;
   workflowId?: string;
 }
+const BatchListItem = /*@__PURE__*/ __L.at(__c22, 4) as any as S.Schema<BatchListItem>;
 export type BatchList = BatchListItem[];
+const BatchList = /*@__PURE__*/ __L.at(__c22, 5);
 export interface ListBatchResponse {
   items?: BatchListItem[];
   nextToken?: string;
 }
+const ListBatchResponse = /*@__PURE__*/ __L.at(__c22, 6) as any as S.Schema<ListBatchResponse>;
 export type ConfigurationListToken = string;
 export interface ListConfigurationsRequest {
   maxResults?: number;
   startingToken?: string;
 }
+const ListConfigurationsRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  7,
+) as any as S.Schema<ListConfigurationsRequest>;
 export interface ConfigurationListItem {
   arn?: string;
   name?: string;
@@ -1541,17 +2071,30 @@ export interface ConfigurationListItem {
   status?: string;
   creationTime?: Date;
 }
+const ConfigurationListItem = /*@__PURE__*/ __L.at(
+  __c23,
+  0,
+) as any as S.Schema<ConfigurationListItem>;
 export type ConfigurationList = ConfigurationListItem[];
+const ConfigurationList = /*@__PURE__*/ __L.at(__c23, 1);
 export interface ListConfigurationsResponse {
   items?: ConfigurationListItem[];
   nextToken?: string;
 }
+const ListConfigurationsResponse = /*@__PURE__*/ __L.at(
+  __c23,
+  2,
+) as any as S.Schema<ListConfigurationsResponse>;
 export type NextToken = string;
 export interface ListMultipartReadSetUploadsRequest {
   sequenceStoreId: string;
   maxResults?: number;
   nextToken?: string;
 }
+const ListMultipartReadSetUploadsRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  3,
+) as any as S.Schema<ListMultipartReadSetUploadsRequest>;
 export interface MultipartReadSetUploadListItem {
   sequenceStoreId: string;
   uploadId: string;
@@ -1565,22 +2108,39 @@ export interface MultipartReadSetUploadListItem {
   tags?: { [key: string]: string | undefined };
   creationTime: Date;
 }
+const MultipartReadSetUploadListItem = /*@__PURE__*/ __L.at(
+  __c23,
+  4,
+) as any as S.Schema<MultipartReadSetUploadListItem>;
 export type MultipartReadSetUploadList = MultipartReadSetUploadListItem[];
+const MultipartReadSetUploadList = /*@__PURE__*/ __L.at(__c23, 5);
 export interface ListMultipartReadSetUploadsResponse {
   nextToken?: string;
   uploads?: MultipartReadSetUploadListItem[];
 }
+const ListMultipartReadSetUploadsResponse = /*@__PURE__*/ __L.at(
+  __c23,
+  6,
+) as any as S.Schema<ListMultipartReadSetUploadsResponse>;
 export interface ActivateReadSetFilter {
   status?: string;
   createdAfter?: Date;
   createdBefore?: Date;
 }
+const ActivateReadSetFilter = /*@__PURE__*/ __L.at(
+  __c23,
+  7,
+) as any as S.Schema<ActivateReadSetFilter>;
 export interface ListReadSetActivationJobsRequest {
   sequenceStoreId: string;
   maxResults?: number;
   nextToken?: string;
   filter?: ActivateReadSetFilter;
 }
+const ListReadSetActivationJobsRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  0,
+) as any as S.Schema<ListReadSetActivationJobsRequest>;
 export interface ActivateReadSetJobItem {
   id: string;
   sequenceStoreId: string;
@@ -1588,22 +2148,36 @@ export interface ActivateReadSetJobItem {
   creationTime: Date;
   completionTime?: Date;
 }
+const ActivateReadSetJobItem = /*@__PURE__*/ __L.at(
+  __c24,
+  1,
+) as any as S.Schema<ActivateReadSetJobItem>;
 export type ActivateReadSetJobList = ActivateReadSetJobItem[];
+const ActivateReadSetJobList = /*@__PURE__*/ __L.at(__c24, 2);
 export interface ListReadSetActivationJobsResponse {
   nextToken?: string;
   activationJobs?: ActivateReadSetJobItem[];
 }
+const ListReadSetActivationJobsResponse = /*@__PURE__*/ __L.at(
+  __c24,
+  3,
+) as any as S.Schema<ListReadSetActivationJobsResponse>;
 export interface ExportReadSetFilter {
   status?: string;
   createdAfter?: Date;
   createdBefore?: Date;
 }
+const ExportReadSetFilter = ActivateReadSetFilter as any as S.Schema<ExportReadSetFilter>;
 export interface ListReadSetExportJobsRequest {
   sequenceStoreId: string;
   maxResults?: number;
   nextToken?: string;
   filter?: ExportReadSetFilter;
 }
+const ListReadSetExportJobsRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  4,
+) as any as S.Schema<ListReadSetExportJobsRequest>;
 export interface ExportReadSetJobDetail {
   id: string;
   sequenceStoreId: string;
@@ -1612,22 +2186,36 @@ export interface ExportReadSetJobDetail {
   creationTime: Date;
   completionTime?: Date;
 }
+const ExportReadSetJobDetail = /*@__PURE__*/ __L.at(
+  __c24,
+  5,
+) as any as S.Schema<ExportReadSetJobDetail>;
 export type ExportReadSetJobDetailList = ExportReadSetJobDetail[];
+const ExportReadSetJobDetailList = /*@__PURE__*/ __L.at(__c24, 6);
 export interface ListReadSetExportJobsResponse {
   nextToken?: string;
   exportJobs?: ExportReadSetJobDetail[];
 }
+const ListReadSetExportJobsResponse = /*@__PURE__*/ __L.at(
+  __c24,
+  7,
+) as any as S.Schema<ListReadSetExportJobsResponse>;
 export interface ImportReadSetFilter {
   status?: string;
   createdAfter?: Date;
   createdBefore?: Date;
 }
+const ImportReadSetFilter = ActivateReadSetFilter as any as S.Schema<ImportReadSetFilter>;
 export interface ListReadSetImportJobsRequest {
   maxResults?: number;
   nextToken?: string;
   sequenceStoreId: string;
   filter?: ImportReadSetFilter;
 }
+const ListReadSetImportJobsRequest = /*@__PURE__*/ __L.at(
+  __c25,
+  0,
+) as any as S.Schema<ListReadSetImportJobsRequest>;
 export interface ImportReadSetJobItem {
   id: string;
   sequenceStoreId: string;
@@ -1636,11 +2224,20 @@ export interface ImportReadSetJobItem {
   creationTime: Date;
   completionTime?: Date;
 }
+const ImportReadSetJobItem = /*@__PURE__*/ __L.at(
+  __c25,
+  1,
+) as any as S.Schema<ImportReadSetJobItem>;
 export type ImportReadSetJobList = ImportReadSetJobItem[];
+const ImportReadSetJobList = /*@__PURE__*/ __L.at(__c25, 2);
 export interface ListReadSetImportJobsResponse {
   nextToken?: string;
   importJobs?: ImportReadSetJobItem[];
 }
+const ListReadSetImportJobsResponse = /*@__PURE__*/ __L.at(
+  __c25,
+  3,
+) as any as S.Schema<ListReadSetImportJobsResponse>;
 export type ReferenceArnFilter = string;
 export interface ReadSetFilter {
   name?: string;
@@ -1653,12 +2250,14 @@ export interface ReadSetFilter {
   generatedFrom?: string;
   creationType?: string;
 }
+const ReadSetFilter = /*@__PURE__*/ __L.at(__c25, 4) as any as S.Schema<ReadSetFilter>;
 export interface ListReadSetsRequest {
   sequenceStoreId: string;
   maxResults?: number;
   nextToken?: string;
   filter?: ReadSetFilter;
 }
+const ListReadSetsRequest = /*@__PURE__*/ __L.at(__c25, 5) as any as S.Schema<ListReadSetsRequest>;
 export interface ReadSetListItem {
   id: string;
   arn: string;
@@ -1676,15 +2275,25 @@ export interface ReadSetListItem {
   creationType?: string;
   etag?: ETag;
 }
+const ReadSetListItem = /*@__PURE__*/ __L.at(__c25, 6) as any as S.Schema<ReadSetListItem>;
 export type ReadSetList = ReadSetListItem[];
+const ReadSetList = /*@__PURE__*/ __L.at(__c25, 7);
 export interface ListReadSetsResponse {
   nextToken?: string;
   readSets: ReadSetListItem[];
 }
+const ListReadSetsResponse = /*@__PURE__*/ __L.at(
+  __c26,
+  0,
+) as any as S.Schema<ListReadSetsResponse>;
 export interface ReadSetUploadPartListFilter {
   createdAfter?: Date;
   createdBefore?: Date;
 }
+const ReadSetUploadPartListFilter = /*@__PURE__*/ __L.at(
+  __c26,
+  1,
+) as any as S.Schema<ReadSetUploadPartListFilter>;
 export interface ListReadSetUploadPartsRequest {
   sequenceStoreId: string;
   uploadId: string;
@@ -1693,6 +2302,10 @@ export interface ListReadSetUploadPartsRequest {
   nextToken?: string;
   filter?: ReadSetUploadPartListFilter;
 }
+const ListReadSetUploadPartsRequest = /*@__PURE__*/ __L.at(
+  __c26,
+  2,
+) as any as S.Schema<ListReadSetUploadPartsRequest>;
 export interface ReadSetUploadPartListItem {
   partNumber: number;
   partSize: number;
@@ -1701,22 +2314,36 @@ export interface ReadSetUploadPartListItem {
   creationTime?: Date;
   lastUpdatedTime?: Date;
 }
+const ReadSetUploadPartListItem = /*@__PURE__*/ __L.at(
+  __c26,
+  3,
+) as any as S.Schema<ReadSetUploadPartListItem>;
 export type ReadSetUploadPartList = ReadSetUploadPartListItem[];
+const ReadSetUploadPartList = /*@__PURE__*/ __L.at(__c26, 4);
 export interface ListReadSetUploadPartsResponse {
   nextToken?: string;
   parts?: ReadSetUploadPartListItem[];
 }
+const ListReadSetUploadPartsResponse = /*@__PURE__*/ __L.at(
+  __c26,
+  5,
+) as any as S.Schema<ListReadSetUploadPartsResponse>;
 export interface ImportReferenceFilter {
   status?: string;
   createdAfter?: Date;
   createdBefore?: Date;
 }
+const ImportReferenceFilter = ActivateReadSetFilter as any as S.Schema<ImportReferenceFilter>;
 export interface ListReferenceImportJobsRequest {
   maxResults?: number;
   nextToken?: string;
   referenceStoreId: string;
   filter?: ImportReferenceFilter;
 }
+const ListReferenceImportJobsRequest = /*@__PURE__*/ __L.at(
+  __c26,
+  6,
+) as any as S.Schema<ListReferenceImportJobsRequest>;
 export interface ImportReferenceJobItem {
   id: string;
   referenceStoreId: string;
@@ -1725,23 +2352,37 @@ export interface ImportReferenceJobItem {
   creationTime: Date;
   completionTime?: Date;
 }
+const ImportReferenceJobItem = /*@__PURE__*/ __L.at(
+  __c26,
+  7,
+) as any as S.Schema<ImportReferenceJobItem>;
 export type ImportReferenceJobList = ImportReferenceJobItem[];
+const ImportReferenceJobList = /*@__PURE__*/ __L.at(__c27, 0);
 export interface ListReferenceImportJobsResponse {
   nextToken?: string;
   importJobs?: ImportReferenceJobItem[];
 }
+const ListReferenceImportJobsResponse = /*@__PURE__*/ __L.at(
+  __c27,
+  1,
+) as any as S.Schema<ListReferenceImportJobsResponse>;
 export interface ReferenceFilter {
   name?: string;
   md5?: string;
   createdAfter?: Date;
   createdBefore?: Date;
 }
+const ReferenceFilter = /*@__PURE__*/ __L.at(__c27, 2) as any as S.Schema<ReferenceFilter>;
 export interface ListReferencesRequest {
   referenceStoreId: string;
   maxResults?: number;
   nextToken?: string;
   filter?: ReferenceFilter;
 }
+const ListReferencesRequest = /*@__PURE__*/ __L.at(
+  __c27,
+  3,
+) as any as S.Schema<ListReferencesRequest>;
 export interface ReferenceListItem {
   id: string;
   arn: string;
@@ -1753,21 +2394,35 @@ export interface ReferenceListItem {
   creationTime: Date;
   updateTime: Date;
 }
+const ReferenceListItem = /*@__PURE__*/ __L.at(__c27, 4) as any as S.Schema<ReferenceListItem>;
 export type ReferenceList = ReferenceListItem[];
+const ReferenceList = /*@__PURE__*/ __L.at(__c27, 5);
 export interface ListReferencesResponse {
   nextToken?: string;
   references: ReferenceListItem[];
 }
+const ListReferencesResponse = /*@__PURE__*/ __L.at(
+  __c27,
+  6,
+) as any as S.Schema<ListReferencesResponse>;
 export interface ReferenceStoreFilter {
   name?: string;
   createdAfter?: Date;
   createdBefore?: Date;
 }
+const ReferenceStoreFilter = /*@__PURE__*/ __L.at(
+  __c27,
+  7,
+) as any as S.Schema<ReferenceStoreFilter>;
 export interface ListReferenceStoresRequest {
   maxResults?: number;
   nextToken?: string;
   filter?: ReferenceStoreFilter;
 }
+const ListReferenceStoresRequest = /*@__PURE__*/ __L.at(
+  __c28,
+  0,
+) as any as S.Schema<ListReferenceStoresRequest>;
 export interface ReferenceStoreDetail {
   arn: string;
   id: string;
@@ -1776,15 +2431,28 @@ export interface ReferenceStoreDetail {
   sseConfig?: SseConfig;
   creationTime: Date;
 }
+const ReferenceStoreDetail = /*@__PURE__*/ __L.at(
+  __c28,
+  1,
+) as any as S.Schema<ReferenceStoreDetail>;
 export type ReferenceStoreDetailList = ReferenceStoreDetail[];
+const ReferenceStoreDetailList = /*@__PURE__*/ __L.at(__c28, 2);
 export interface ListReferenceStoresResponse {
   nextToken?: string;
   referenceStores: ReferenceStoreDetail[];
 }
+const ListReferenceStoresResponse = /*@__PURE__*/ __L.at(
+  __c28,
+  3,
+) as any as S.Schema<ListReferenceStoresResponse>;
 export interface ListRunCachesRequest {
   maxResults?: number;
   startingToken?: string;
 }
+const ListRunCachesRequest = /*@__PURE__*/ __L.at(
+  __c28,
+  4,
+) as any as S.Schema<ListRunCachesRequest>;
 export interface RunCacheListItem {
   arn?: string;
   cacheBehavior?: string;
@@ -1794,17 +2462,27 @@ export interface RunCacheListItem {
   name?: string;
   status?: string;
 }
+const RunCacheListItem = /*@__PURE__*/ __L.at(__c28, 5) as any as S.Schema<RunCacheListItem>;
 export type RunCacheList = RunCacheListItem[];
+const RunCacheList = /*@__PURE__*/ __L.at(__c28, 6);
 export interface ListRunCachesResponse {
   items?: RunCacheListItem[];
   nextToken?: string;
 }
+const ListRunCachesResponse = /*@__PURE__*/ __L.at(
+  __c28,
+  7,
+) as any as S.Schema<ListRunCachesResponse>;
 export type RunGroupListToken = string;
 export interface ListRunGroupsRequest {
   name?: string;
   startingToken?: string;
   maxResults?: number;
 }
+const ListRunGroupsRequest = /*@__PURE__*/ __L.at(
+  __c29,
+  0,
+) as any as S.Schema<ListRunGroupsRequest>;
 export interface RunGroupListItem {
   arn?: string;
   id?: string;
@@ -1815,11 +2493,17 @@ export interface RunGroupListItem {
   creationTime?: Date;
   maxGpus?: number;
 }
+const RunGroupListItem = /*@__PURE__*/ __L.at(__c29, 1) as any as S.Schema<RunGroupListItem>;
 export type RunGroupList = RunGroupListItem[];
+const RunGroupList = /*@__PURE__*/ __L.at(__c29, 2);
 export interface ListRunGroupsResponse {
   items?: RunGroupListItem[];
   nextToken?: string;
 }
+const ListRunGroupsResponse = /*@__PURE__*/ __L.at(
+  __c29,
+  3,
+) as any as S.Schema<ListRunGroupsResponse>;
 export type RunListToken = string;
 export interface ListRunsRequest {
   name?: string;
@@ -1829,6 +2513,7 @@ export interface ListRunsRequest {
   maxResults?: number;
   status?: string;
 }
+const ListRunsRequest = /*@__PURE__*/ __L.at(__c29, 4) as any as S.Schema<ListRunsRequest>;
 export interface RunListItem {
   arn?: string;
   id?: string;
@@ -1845,11 +2530,14 @@ export interface RunListItem {
   workflowVersionName?: string;
   workflowName?: string;
 }
+const RunListItem = /*@__PURE__*/ __L.at(__c29, 5) as any as S.Schema<RunListItem>;
 export type RunList = RunListItem[];
+const RunList = /*@__PURE__*/ __L.at(__c29, 6);
 export interface ListRunsResponse {
   items?: RunListItem[];
   nextToken?: string;
 }
+const ListRunsResponse = /*@__PURE__*/ __L.at(__c29, 7) as any as S.Schema<ListRunsResponse>;
 export type SubmissionStatus = string;
 export interface ListRunsInBatchRequest {
   batchId: string;
@@ -1859,6 +2547,10 @@ export interface ListRunsInBatchRequest {
   runSettingId?: string;
   runId?: string;
 }
+const ListRunsInBatchRequest = /*@__PURE__*/ __L.at(
+  __c30,
+  0,
+) as any as S.Schema<ListRunsInBatchRequest>;
 export type RunSettingId = string;
 export type SubmissionFailureReason = string;
 export type SubmissionFailureMessage = string;
@@ -1871,11 +2563,17 @@ export interface RunBatchListItem {
   submissionFailureReason?: string;
   submissionFailureMessage?: string;
 }
+const RunBatchListItem = /*@__PURE__*/ __L.at(__c30, 1) as any as S.Schema<RunBatchListItem>;
 export type RunBatchList = RunBatchListItem[];
+const RunBatchList = /*@__PURE__*/ __L.at(__c30, 2);
 export interface ListRunsInBatchResponse {
   runs?: RunBatchListItem[];
   nextToken?: string;
 }
+const ListRunsInBatchResponse = /*@__PURE__*/ __L.at(
+  __c30,
+  3,
+) as any as S.Schema<ListRunsInBatchResponse>;
 export type TaskListToken = string;
 export interface ListRunTasksRequest {
   id: string;
@@ -1883,6 +2581,7 @@ export interface ListRunTasksRequest {
   startingToken?: string;
   maxResults?: number;
 }
+const ListRunTasksRequest = /*@__PURE__*/ __L.at(__c30, 4) as any as S.Schema<ListRunTasksRequest>;
 export interface TaskListItem {
   taskId?: string;
   status?: string;
@@ -1898,11 +2597,17 @@ export interface TaskListItem {
   instanceType?: string;
   uuid?: string;
 }
+const TaskListItem = /*@__PURE__*/ __L.at(__c30, 5) as any as S.Schema<TaskListItem>;
 export type TaskList = TaskListItem[];
+const TaskList = /*@__PURE__*/ __L.at(__c30, 6);
 export interface ListRunTasksResponse {
   items?: TaskListItem[];
   nextToken?: string;
 }
+const ListRunTasksResponse = /*@__PURE__*/ __L.at(
+  __c30,
+  7,
+) as any as S.Schema<ListRunTasksResponse>;
 export interface SequenceStoreFilter {
   name?: string;
   createdAfter?: Date;
@@ -1911,11 +2616,16 @@ export interface SequenceStoreFilter {
   updatedAfter?: Date;
   updatedBefore?: Date;
 }
+const SequenceStoreFilter = /*@__PURE__*/ __L.at(__c31, 0) as any as S.Schema<SequenceStoreFilter>;
 export interface ListSequenceStoresRequest {
   maxResults?: number;
   nextToken?: string;
   filter?: SequenceStoreFilter;
 }
+const ListSequenceStoresRequest = /*@__PURE__*/ __L.at(
+  __c31,
+  1,
+) as any as S.Schema<ListSequenceStoresRequest>;
 export interface SequenceStoreDetail {
   arn: string;
   id: string;
@@ -1929,49 +2639,76 @@ export interface SequenceStoreDetail {
   statusMessage?: string;
   updateTime?: Date;
 }
+const SequenceStoreDetail = /*@__PURE__*/ __L.at(__c31, 2) as any as S.Schema<SequenceStoreDetail>;
 export type SequenceStoreDetailList = SequenceStoreDetail[];
+const SequenceStoreDetailList = /*@__PURE__*/ __L.at(__c31, 3);
 export interface ListSequenceStoresResponse {
   nextToken?: string;
   sequenceStores: SequenceStoreDetail[];
 }
+const ListSequenceStoresResponse = /*@__PURE__*/ __L.at(
+  __c31,
+  4,
+) as any as S.Schema<ListSequenceStoresResponse>;
 export type ResourceOwner = string;
 export type ArnList = string[];
+const ArnList = ReadSetIdList as any as S.Schema<ArnList>;
 export type StatusList = string[];
+const StatusList = ReadSetIdList as any as S.Schema<StatusList>;
 export type ShareResourceType = string;
 export type TypeList = string[];
+const TypeList = ReadSetIdList as any as S.Schema<TypeList>;
 export interface Filter {
   resourceArns?: string[];
   status?: string[];
   type?: string[];
 }
+const Filter = /*@__PURE__*/ __L.at(__c31, 5) as any as S.Schema<Filter>;
 export interface ListSharesRequest {
   resourceOwner: string;
   filter?: Filter;
   nextToken?: string;
   maxResults?: number;
 }
+const ListSharesRequest = /*@__PURE__*/ __L.at(__c31, 6) as any as S.Schema<ListSharesRequest>;
 export type ShareDetailsList = ShareDetails[];
+const ShareDetailsList = /*@__PURE__*/ __L.at(__c31, 7);
 export interface ListSharesResponse {
   shares: ShareDetails[];
   nextToken?: string;
 }
+const ListSharesResponse = /*@__PURE__*/ __L.at(__c32, 0) as any as S.Schema<ListSharesResponse>;
 export type TagArn = string;
 export interface ListTagsForResourceRequest {
   resourceArn: string;
 }
+const ListTagsForResourceRequest = /*@__PURE__*/ __L.at(
+  __c32,
+  1,
+) as any as S.Schema<ListTagsForResourceRequest>;
 export interface ListTagsForResourceResponse {
   tags: { [key: string]: string | undefined };
 }
+const ListTagsForResourceResponse = /*@__PURE__*/ __L.at(
+  __c32,
+  2,
+) as any as S.Schema<ListTagsForResourceResponse>;
 export interface ListVariantImportJobsFilter {
   status?: string;
   storeName?: string;
 }
+const ListVariantImportJobsFilter =
+  ListAnnotationImportJobsFilter as any as S.Schema<ListVariantImportJobsFilter>;
 export interface ListVariantImportJobsRequest {
   maxResults?: number;
   ids?: string[];
   nextToken?: string;
   filter?: ListVariantImportJobsFilter;
 }
+const ListVariantImportJobsRequest = /*@__PURE__*/ __L.at(
+  __c32,
+  3,
+) as any as S.Schema<ListVariantImportJobsRequest>;
 export interface VariantImportJobItem {
   id: string;
   destinationName: string;
@@ -1983,20 +2720,34 @@ export interface VariantImportJobItem {
   runLeftNormalization?: boolean;
   annotationFields?: { [key: string]: string | undefined };
 }
+const VariantImportJobItem = /*@__PURE__*/ __L.at(
+  __c32,
+  4,
+) as any as S.Schema<VariantImportJobItem>;
 export type VariantImportJobItems = VariantImportJobItem[];
+const VariantImportJobItems = /*@__PURE__*/ __L.at(__c32, 5);
 export interface ListVariantImportJobsResponse {
   variantImportJobs?: VariantImportJobItem[];
   nextToken?: string;
 }
+const ListVariantImportJobsResponse = /*@__PURE__*/ __L.at(
+  __c32,
+  6,
+) as any as S.Schema<ListVariantImportJobsResponse>;
 export interface ListVariantStoresFilter {
   status?: string;
 }
+const ListVariantStoresFilter = AcceptShareResponse as any as S.Schema<ListVariantStoresFilter>;
 export interface ListVariantStoresRequest {
   maxResults?: number;
   ids?: string[];
   nextToken?: string;
   filter?: ListVariantStoresFilter;
 }
+const ListVariantStoresRequest = /*@__PURE__*/ __L.at(
+  __c32,
+  7,
+) as any as S.Schema<ListVariantStoresRequest>;
 export interface VariantStoreItem {
   id: string;
   reference: ReferenceItem;
@@ -2010,11 +2761,17 @@ export interface VariantStoreItem {
   statusMessage: string;
   storeSizeBytes: number;
 }
+const VariantStoreItem = /*@__PURE__*/ __L.at(__c33, 0) as any as S.Schema<VariantStoreItem>;
 export type VariantStoreItems = VariantStoreItem[];
+const VariantStoreItems = /*@__PURE__*/ __L.at(__c33, 1);
 export interface ListVariantStoresResponse {
   variantStores?: VariantStoreItem[];
   nextToken?: string;
 }
+const ListVariantStoresResponse = /*@__PURE__*/ __L.at(
+  __c33,
+  2,
+) as any as S.Schema<ListVariantStoresResponse>;
 export type WorkflowListToken = string;
 export interface ListWorkflowsRequest {
   type?: string;
@@ -2022,6 +2779,10 @@ export interface ListWorkflowsRequest {
   startingToken?: string;
   maxResults?: number;
 }
+const ListWorkflowsRequest = /*@__PURE__*/ __L.at(
+  __c33,
+  3,
+) as any as S.Schema<ListWorkflowsRequest>;
 export interface WorkflowListItem {
   arn?: string;
   id?: string;
@@ -2032,11 +2793,17 @@ export interface WorkflowListItem {
   creationTime?: Date;
   metadata?: { [key: string]: string | undefined };
 }
+const WorkflowListItem = /*@__PURE__*/ __L.at(__c33, 4) as any as S.Schema<WorkflowListItem>;
 export type WorkflowList = WorkflowListItem[];
+const WorkflowList = /*@__PURE__*/ __L.at(__c33, 5);
 export interface ListWorkflowsResponse {
   items?: WorkflowListItem[];
   nextToken?: string;
 }
+const ListWorkflowsResponse = /*@__PURE__*/ __L.at(
+  __c33,
+  6,
+) as any as S.Schema<ListWorkflowsResponse>;
 export type WorkflowVersionListToken = string;
 export interface ListWorkflowVersionsRequest {
   workflowId: string;
@@ -2045,6 +2812,10 @@ export interface ListWorkflowVersionsRequest {
   startingToken?: string;
   maxResults?: number;
 }
+const ListWorkflowVersionsRequest = /*@__PURE__*/ __L.at(
+  __c33,
+  7,
+) as any as S.Schema<ListWorkflowVersionsRequest>;
 export interface WorkflowVersionListItem {
   arn?: string;
   workflowId?: string;
@@ -2056,24 +2827,46 @@ export interface WorkflowVersionListItem {
   creationTime?: Date;
   metadata?: { [key: string]: string | undefined };
 }
+const WorkflowVersionListItem = /*@__PURE__*/ __L.at(
+  __c34,
+  0,
+) as any as S.Schema<WorkflowVersionListItem>;
 export type WorkflowVersionList = WorkflowVersionListItem[];
+const WorkflowVersionList = /*@__PURE__*/ __L.at(__c34, 1);
 export interface ListWorkflowVersionsResponse {
   items?: WorkflowVersionListItem[];
   nextToken?: string;
 }
+const ListWorkflowVersionsResponse = /*@__PURE__*/ __L.at(
+  __c34,
+  2,
+) as any as S.Schema<ListWorkflowVersionsResponse>;
 export interface PutS3AccessPolicyRequest {
   s3AccessPointArn: string;
   s3AccessPolicy: string;
 }
+const PutS3AccessPolicyRequest = /*@__PURE__*/ __L.at(
+  __c34,
+  3,
+) as any as S.Schema<PutS3AccessPolicyRequest>;
 export interface PutS3AccessPolicyResponse {
   s3AccessPointArn?: string;
   storeId?: string;
   storeType?: StoreType;
 }
+const PutS3AccessPolicyResponse = /*@__PURE__*/ __L.at(
+  __c34,
+  4,
+) as any as S.Schema<PutS3AccessPolicyResponse>;
 export interface AnnotationImportItemSource {
   source: string;
 }
+const AnnotationImportItemSource = /*@__PURE__*/ __L.at(
+  __c34,
+  5,
+) as any as S.Schema<AnnotationImportItemSource>;
 export type AnnotationImportItemSources = AnnotationImportItemSource[];
+const AnnotationImportItemSources = /*@__PURE__*/ __L.at(__c34, 6);
 export interface StartAnnotationImportRequest {
   destinationName: string;
   roleArn: string;
@@ -2083,28 +2876,49 @@ export interface StartAnnotationImportRequest {
   runLeftNormalization?: boolean;
   annotationFields?: { [key: string]: string | undefined };
 }
+const StartAnnotationImportRequest = /*@__PURE__*/ __L.at(
+  __c34,
+  7,
+) as any as S.Schema<StartAnnotationImportRequest>;
 export interface StartAnnotationImportResponse {
   jobId: string;
 }
+const StartAnnotationImportResponse = /*@__PURE__*/ __L.at(
+  __c35,
+  0,
+) as any as S.Schema<StartAnnotationImportResponse>;
 export interface StartReadSetActivationJobSourceItem {
   readSetId: string;
 }
+const StartReadSetActivationJobSourceItem =
+  CompleteMultipartReadSetUploadResponse as any as S.Schema<StartReadSetActivationJobSourceItem>;
 export type StartReadSetActivationJobSourceList = StartReadSetActivationJobSourceItem[];
+const StartReadSetActivationJobSourceList = /*@__PURE__*/ __L.at(__c35, 1);
 export interface StartReadSetActivationJobRequest {
   sequenceStoreId: string;
   clientToken?: string;
   sources: StartReadSetActivationJobSourceItem[];
 }
+const StartReadSetActivationJobRequest = /*@__PURE__*/ __L.at(
+  __c35,
+  2,
+) as any as S.Schema<StartReadSetActivationJobRequest>;
 export interface StartReadSetActivationJobResponse {
   id: string;
   sequenceStoreId: string;
   status: string;
   creationTime: Date;
 }
+const StartReadSetActivationJobResponse = /*@__PURE__*/ __L.at(
+  __c35,
+  3,
+) as any as S.Schema<StartReadSetActivationJobResponse>;
 export interface ExportReadSet {
   readSetId: string;
 }
+const ExportReadSet = /*@__PURE__*/ __L.at(__c35, 4) as any as S.Schema<ExportReadSet>;
 export type ExportReadSetList = ExportReadSet[];
+const ExportReadSetList = /*@__PURE__*/ __L.at(__c35, 5);
 export interface StartReadSetExportJobRequest {
   sequenceStoreId: string;
   destination: string;
@@ -2112,6 +2926,10 @@ export interface StartReadSetExportJobRequest {
   clientToken?: string;
   sources: ExportReadSet[];
 }
+const StartReadSetExportJobRequest = /*@__PURE__*/ __L.at(
+  __c35,
+  6,
+) as any as S.Schema<StartReadSetExportJobRequest>;
 export interface StartReadSetExportJobResponse {
   id: string;
   sequenceStoreId: string;
@@ -2119,6 +2937,10 @@ export interface StartReadSetExportJobResponse {
   status: string;
   creationTime: Date;
 }
+const StartReadSetExportJobResponse = /*@__PURE__*/ __L.at(
+  __c35,
+  7,
+) as any as S.Schema<StartReadSetExportJobResponse>;
 export interface StartReadSetImportJobSourceItem {
   sourceFiles: SourceFiles;
   sourceFileType: string;
@@ -2130,13 +2952,22 @@ export interface StartReadSetImportJobSourceItem {
   description?: string;
   tags?: { [key: string]: string | undefined };
 }
+const StartReadSetImportJobSourceItem = /*@__PURE__*/ __L.at(
+  __c36,
+  0,
+) as any as S.Schema<StartReadSetImportJobSourceItem>;
 export type StartReadSetImportJobSourceList = StartReadSetImportJobSourceItem[];
+const StartReadSetImportJobSourceList = /*@__PURE__*/ __L.at(__c36, 1);
 export interface StartReadSetImportJobRequest {
   sequenceStoreId: string;
   roleArn: string;
   clientToken?: string;
   sources: StartReadSetImportJobSourceItem[];
 }
+const StartReadSetImportJobRequest = /*@__PURE__*/ __L.at(
+  __c36,
+  2,
+) as any as S.Schema<StartReadSetImportJobRequest>;
 export interface StartReadSetImportJobResponse {
   id: string;
   sequenceStoreId: string;
@@ -2144,19 +2975,32 @@ export interface StartReadSetImportJobResponse {
   status: string;
   creationTime: Date;
 }
+const StartReadSetImportJobResponse = /*@__PURE__*/ __L.at(
+  __c36,
+  3,
+) as any as S.Schema<StartReadSetImportJobResponse>;
 export interface StartReferenceImportJobSourceItem {
   sourceFile: string;
   name: string;
   description?: string;
   tags?: { [key: string]: string | undefined };
 }
+const StartReferenceImportJobSourceItem = /*@__PURE__*/ __L.at(
+  __c36,
+  4,
+) as any as S.Schema<StartReferenceImportJobSourceItem>;
 export type StartReferenceImportJobSourceList = StartReferenceImportJobSourceItem[];
+const StartReferenceImportJobSourceList = /*@__PURE__*/ __L.at(__c36, 5);
 export interface StartReferenceImportJobRequest {
   referenceStoreId: string;
   roleArn: string;
   clientToken?: string;
   sources: StartReferenceImportJobSourceItem[];
 }
+const StartReferenceImportJobRequest = /*@__PURE__*/ __L.at(
+  __c36,
+  6,
+) as any as S.Schema<StartReferenceImportJobRequest>;
 export interface StartReferenceImportJobResponse {
   id: string;
   referenceStoreId: string;
@@ -2164,6 +3008,10 @@ export interface StartReferenceImportJobResponse {
   status: string;
   creationTime: Date;
 }
+const StartReferenceImportJobResponse = /*@__PURE__*/ __L.at(
+  __c36,
+  7,
+) as any as S.Schema<StartReferenceImportJobResponse>;
 export type RunRequestId = string;
 export interface StartRunRequest {
   workflowId?: string;
@@ -2191,6 +3039,7 @@ export interface StartRunRequest {
   sessionPolicy?: string;
   engineSettings?: any;
 }
+const StartRunRequest = /*@__PURE__*/ __L.at(__c37, 0) as any as S.Schema<StartRunRequest>;
 export interface StartRunResponse {
   arn?: string;
   id?: string;
@@ -2201,6 +3050,7 @@ export interface StartRunResponse {
   configuration?: ConfigurationDetails;
   networkingMode?: string;
 }
+const StartRunResponse = /*@__PURE__*/ __L.at(__c37, 1) as any as S.Schema<StartRunResponse>;
 export type BatchRequestId = string;
 export interface InlineSetting {
   runSettingId: string;
@@ -2212,11 +3062,14 @@ export interface InlineSetting {
   runTags?: { [key: string]: string | undefined };
   engineSettings?: any;
 }
+const InlineSetting = /*@__PURE__*/ __L.at(__c37, 2) as any as S.Schema<InlineSetting>;
 export type InlineSettings = InlineSetting[];
+const InlineSettings = /*@__PURE__*/ __L.at(__c37, 3);
 export type S3UriSettings = string;
 export type BatchRunSettings =
   | { inlineSettings: InlineSetting[]; s3UriSettings?: never }
   | { inlineSettings?: never; s3UriSettings: string };
+const BatchRunSettings = /*@__PURE__*/ __L.at(__c37, 4);
 export interface StartRunBatchRequest {
   batchName?: string;
   requestId: string;
@@ -2224,6 +3077,10 @@ export interface StartRunBatchRequest {
   defaultRunSetting: DefaultRunSetting;
   batchRunSettings: BatchRunSettings;
 }
+const StartRunBatchRequest = /*@__PURE__*/ __L.at(
+  __c37,
+  5,
+) as any as S.Schema<StartRunBatchRequest>;
 export interface StartRunBatchResponse {
   id?: string;
   arn?: string;
@@ -2231,10 +3088,19 @@ export interface StartRunBatchResponse {
   uuid?: string;
   tags?: { [key: string]: string | undefined };
 }
+const StartRunBatchResponse = /*@__PURE__*/ __L.at(
+  __c37,
+  6,
+) as any as S.Schema<StartRunBatchResponse>;
 export interface VariantImportItemSource {
   source: string;
 }
+const VariantImportItemSource = /*@__PURE__*/ __L.at(
+  __c37,
+  7,
+) as any as S.Schema<VariantImportItemSource>;
 export type VariantImportItemSources = VariantImportItemSource[];
+const VariantImportItemSources = /*@__PURE__*/ __L.at(__c38, 0);
 export interface StartVariantImportRequest {
   destinationName: string;
   roleArn: string;
@@ -2242,24 +3108,43 @@ export interface StartVariantImportRequest {
   runLeftNormalization?: boolean;
   annotationFields?: { [key: string]: string | undefined };
 }
+const StartVariantImportRequest = /*@__PURE__*/ __L.at(
+  __c38,
+  1,
+) as any as S.Schema<StartVariantImportRequest>;
 export interface StartVariantImportResponse {
   jobId: string;
 }
+const StartVariantImportResponse =
+  StartAnnotationImportResponse as any as S.Schema<StartVariantImportResponse>;
 export interface TagResourceRequest {
   resourceArn: string;
   tags: { [key: string]: string | undefined };
 }
+const TagResourceRequest = /*@__PURE__*/ __L.at(__c38, 2) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
+const TagResourceResponse = CancelAnnotationImportResponse as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
+const TagKeyList = ReadSetIdList as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   resourceArn: string;
   tagKeys: string[];
 }
+const UntagResourceRequest = /*@__PURE__*/ __L.at(
+  __c38,
+  3,
+) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
+const UntagResourceResponse =
+  CancelAnnotationImportResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateAnnotationStoreRequest {
   name: string;
   description?: string;
 }
+const UpdateAnnotationStoreRequest = /*@__PURE__*/ __L.at(
+  __c38,
+  4,
+) as any as S.Schema<UpdateAnnotationStoreRequest>;
 export interface UpdateAnnotationStoreResponse {
   id: string;
   reference: ReferenceItem;
@@ -2271,11 +3156,19 @@ export interface UpdateAnnotationStoreResponse {
   storeOptions?: StoreOptions;
   storeFormat?: string;
 }
+const UpdateAnnotationStoreResponse = /*@__PURE__*/ __L.at(
+  __c38,
+  5,
+) as any as S.Schema<UpdateAnnotationStoreResponse>;
 export interface UpdateAnnotationStoreVersionRequest {
   name: string;
   versionName: string;
   description?: string;
 }
+const UpdateAnnotationStoreVersionRequest = /*@__PURE__*/ __L.at(
+  __c38,
+  6,
+) as any as S.Schema<UpdateAnnotationStoreVersionRequest>;
 export interface UpdateAnnotationStoreVersionResponse {
   storeId: string;
   id: string;
@@ -2286,13 +3179,23 @@ export interface UpdateAnnotationStoreVersionResponse {
   creationTime: Date;
   updateTime: Date;
 }
+const UpdateAnnotationStoreVersionResponse = /*@__PURE__*/ __L.at(
+  __c38,
+  7,
+) as any as S.Schema<UpdateAnnotationStoreVersionResponse>;
 export interface UpdateRunCacheRequest {
   cacheBehavior?: string;
   description?: string;
   id: string;
   name?: string;
 }
+const UpdateRunCacheRequest = /*@__PURE__*/ __L.at(
+  __c39,
+  0,
+) as any as S.Schema<UpdateRunCacheRequest>;
 export interface UpdateRunCacheResponse {}
+const UpdateRunCacheResponse =
+  CancelAnnotationImportResponse as any as S.Schema<UpdateRunCacheResponse>;
 export interface UpdateRunGroupRequest {
   id: string;
   name?: string;
@@ -2301,7 +3204,13 @@ export interface UpdateRunGroupRequest {
   maxDuration?: number;
   maxGpus?: number;
 }
+const UpdateRunGroupRequest = /*@__PURE__*/ __L.at(
+  __c39,
+  1,
+) as any as S.Schema<UpdateRunGroupRequest>;
 export interface UpdateRunGroupResponse {}
+const UpdateRunGroupResponse =
+  CancelAnnotationImportResponse as any as S.Schema<UpdateRunGroupResponse>;
 export interface UpdateSequenceStoreRequest {
   id: string;
   name?: string;
@@ -2311,6 +3220,10 @@ export interface UpdateSequenceStoreRequest {
   propagatedSetLevelTags?: string[];
   s3AccessConfig?: S3AccessConfig;
 }
+const UpdateSequenceStoreRequest = /*@__PURE__*/ __L.at(
+  __c39,
+  2,
+) as any as S.Schema<UpdateSequenceStoreRequest>;
 export interface UpdateSequenceStoreResponse {
   id: string;
   arn: string;
@@ -2326,10 +3239,18 @@ export interface UpdateSequenceStoreResponse {
   s3Access?: SequenceStoreS3Access;
   eTagAlgorithmFamily?: string;
 }
+const UpdateSequenceStoreResponse = /*@__PURE__*/ __L.at(
+  __c39,
+  3,
+) as any as S.Schema<UpdateSequenceStoreResponse>;
 export interface UpdateVariantStoreRequest {
   name: string;
   description?: string;
 }
+const UpdateVariantStoreRequest = /*@__PURE__*/ __L.at(
+  __c39,
+  4,
+) as any as S.Schema<UpdateVariantStoreRequest>;
 export interface UpdateVariantStoreResponse {
   id: string;
   reference: ReferenceItem;
@@ -2339,6 +3260,10 @@ export interface UpdateVariantStoreResponse {
   creationTime: Date;
   updateTime: Date;
 }
+const UpdateVariantStoreResponse = /*@__PURE__*/ __L.at(
+  __c39,
+  5,
+) as any as S.Schema<UpdateVariantStoreResponse>;
 export interface UpdateWorkflowRequest {
   id: string;
   name?: string;
@@ -2347,7 +3272,13 @@ export interface UpdateWorkflowRequest {
   storageCapacity?: number;
   readmeMarkdown?: string;
 }
+const UpdateWorkflowRequest = /*@__PURE__*/ __L.at(
+  __c39,
+  6,
+) as any as S.Schema<UpdateWorkflowRequest>;
 export interface UpdateWorkflowResponse {}
+const UpdateWorkflowResponse =
+  CancelAnnotationImportResponse as any as S.Schema<UpdateWorkflowResponse>;
 export interface UpdateWorkflowVersionRequest {
   workflowId: string;
   versionName: string;
@@ -2356,7 +3287,13 @@ export interface UpdateWorkflowVersionRequest {
   storageCapacity?: number;
   readmeMarkdown?: string;
 }
+const UpdateWorkflowVersionRequest = /*@__PURE__*/ __L.at(
+  __c39,
+  7,
+) as any as S.Schema<UpdateWorkflowVersionRequest>;
 export interface UpdateWorkflowVersionResponse {}
+const UpdateWorkflowVersionResponse =
+  CancelAnnotationImportResponse as any as S.Schema<UpdateWorkflowVersionResponse>;
 export interface UploadReadSetPartRequest {
   sequenceStoreId: string;
   uploadId: string;
@@ -2364,9 +3301,17 @@ export interface UploadReadSetPartRequest {
   partNumber: number;
   payload: T.StreamingInputBody;
 }
+const UploadReadSetPartRequest = /*@__PURE__*/ __L.at(
+  __c40,
+  0,
+) as any as S.Schema<UploadReadSetPartRequest>;
 export interface UploadReadSetPartResponse {
   checksum: string;
 }
+const UploadReadSetPartResponse = /*@__PURE__*/ __L.at(
+  __c40,
+  1,
+) as any as S.Schema<UploadReadSetPartResponse>;
 export type AbortMultipartReadSetUploadError =
   | AccessDeniedException
   | InternalServerException
@@ -2386,8 +3331,8 @@ export const abortMultipartReadSetUpload: API.OperationMethod<
   AbortMultipartReadSetUploadError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<AbortMultipartReadSetUploadRequest>,
-  output: __S(1) as any as S.Schema<AbortMultipartReadSetUploadResponse>,
+  input: AbortMultipartReadSetUploadRequest,
+  output: AbortMultipartReadSetUploadResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2422,8 +3367,8 @@ export const acceptShare: API.OperationMethod<
   AcceptShareError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2) as any as S.Schema<AcceptShareRequest>,
-  output: __S(3) as any as S.Schema<AcceptShareResponse>,
+  input: AcceptShareRequest,
+  output: AcceptShareResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2456,8 +3401,8 @@ export const batchDeleteReadSet: API.OperationMethod<
   BatchDeleteReadSetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5) as any as S.Schema<BatchDeleteReadSetRequest>,
-  output: __S(8) as any as S.Schema<BatchDeleteReadSetResponse>,
+  input: BatchDeleteReadSetRequest,
+  output: BatchDeleteReadSetResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2490,8 +3435,8 @@ export const cancelAnnotationImportJob: API.OperationMethod<
   CancelAnnotationImportJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9) as any as S.Schema<CancelAnnotationImportRequest>,
-  output: __S(10) as any as S.Schema<CancelAnnotationImportResponse>,
+  input: CancelAnnotationImportRequest,
+  output: CancelAnnotationImportResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2524,8 +3469,8 @@ export const cancelRun: API.OperationMethod<
   CancelRunError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11) as any as S.Schema<CancelRunRequest>,
-  output: __S(10) as any as S.Schema<CancelRunResponse>,
+  input: CancelRunRequest,
+  output: CancelRunResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2563,8 +3508,8 @@ export const cancelRunBatch: API.OperationMethod<
   CancelRunBatchError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12) as any as S.Schema<CancelRunBatchRequest>,
-  output: __S(10) as any as S.Schema<CancelRunBatchResponse>,
+  input: CancelRunBatchRequest,
+  output: CancelRunBatchResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2599,8 +3544,8 @@ export const cancelVariantImportJob: API.OperationMethod<
   CancelVariantImportJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13) as any as S.Schema<CancelVariantImportRequest>,
-  output: __S(10) as any as S.Schema<CancelVariantImportResponse>,
+  input: CancelVariantImportRequest,
+  output: CancelVariantImportResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2635,8 +3580,8 @@ export const completeMultipartReadSetUpload: API.OperationMethod<
   CompleteMultipartReadSetUploadError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16) as any as S.Schema<CompleteMultipartReadSetUploadRequest>,
-  output: __S(17) as any as S.Schema<CompleteMultipartReadSetUploadResponse>,
+  input: CompleteMultipartReadSetUploadRequest,
+  output: CompleteMultipartReadSetUploadResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2673,8 +3618,8 @@ export const createAnnotationStore: API.OperationMethod<
   CreateAnnotationStoreError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25) as any as S.Schema<CreateAnnotationStoreRequest>,
-  output: __S(26) as any as S.Schema<CreateAnnotationStoreResponse>,
+  input: CreateAnnotationStoreRequest,
+  output: CreateAnnotationStoreResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2708,8 +3653,8 @@ export const createAnnotationStoreVersion: API.OperationMethod<
   CreateAnnotationStoreVersionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28) as any as S.Schema<CreateAnnotationStoreVersionRequest>,
-  output: __S(29) as any as S.Schema<CreateAnnotationStoreVersionResponse>,
+  input: CreateAnnotationStoreVersionRequest,
+  output: CreateAnnotationStoreVersionResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2744,8 +3689,8 @@ export const createConfiguration: API.OperationMethod<
   CreateConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32) as any as S.Schema<CreateConfigurationRequest>,
-  output: __S(35) as any as S.Schema<CreateConfigurationResponse>,
+  input: CreateConfigurationRequest,
+  output: CreateConfigurationResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2791,8 +3736,8 @@ export const createMultipartReadSetUpload: API.OperationMethod<
   CreateMultipartReadSetUploadError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36) as any as S.Schema<CreateMultipartReadSetUploadRequest>,
-  output: __S(37) as any as S.Schema<CreateMultipartReadSetUploadResponse>,
+  input: CreateMultipartReadSetUploadRequest,
+  output: CreateMultipartReadSetUploadResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2828,8 +3773,8 @@ export const createReferenceStore: API.OperationMethod<
   CreateReferenceStoreError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38) as any as S.Schema<CreateReferenceStoreRequest>,
-  output: __S(39) as any as S.Schema<CreateReferenceStoreResponse>,
+  input: CreateReferenceStoreRequest,
+  output: CreateReferenceStoreResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2865,8 +3810,8 @@ export const createRunCache: API.OperationMethod<
   CreateRunCacheError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40) as any as S.Schema<CreateRunCacheRequest>,
-  output: __S(41) as any as S.Schema<CreateRunCacheResponse>,
+  input: CreateRunCacheRequest,
+  output: CreateRunCacheResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2902,8 +3847,8 @@ export const createRunGroup: API.OperationMethod<
   CreateRunGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42) as any as S.Schema<CreateRunGroupRequest>,
-  output: __S(43) as any as S.Schema<CreateRunGroupResponse>,
+  input: CreateRunGroupRequest,
+  output: CreateRunGroupResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2951,8 +3896,8 @@ export const createSequenceStore: API.OperationMethod<
   CreateSequenceStoreError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45) as any as S.Schema<CreateSequenceStoreRequest>,
-  output: __S(47) as any as S.Schema<CreateSequenceStoreResponse>,
+  input: CreateSequenceStoreRequest,
+  output: CreateSequenceStoreResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2993,8 +3938,8 @@ export const createShare: API.OperationMethod<
   CreateShareError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48) as any as S.Schema<CreateShareRequest>,
-  output: __S(49) as any as S.Schema<CreateShareResponse>,
+  input: CreateShareRequest,
+  output: CreateShareResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3030,8 +3975,8 @@ export const createVariantStore: API.OperationMethod<
   CreateVariantStoreError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(50) as any as S.Schema<CreateVariantStoreRequest>,
-  output: __S(51) as any as S.Schema<CreateVariantStoreResponse>,
+  input: CreateVariantStoreRequest,
+  output: CreateVariantStoreResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3078,8 +4023,8 @@ export const createWorkflow: API.OperationMethod<
   CreateWorkflowError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(61) as any as S.Schema<CreateWorkflowRequest>,
-  output: __S(62) as any as S.Schema<CreateWorkflowResponse>,
+  input: CreateWorkflowRequest,
+  output: CreateWorkflowResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3123,8 +4068,8 @@ export const createWorkflowVersion: API.OperationMethod<
   CreateWorkflowVersionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(63) as any as S.Schema<CreateWorkflowVersionRequest>,
-  output: __S(64) as any as S.Schema<CreateWorkflowVersionResponse>,
+  input: CreateWorkflowVersionRequest,
+  output: CreateWorkflowVersionResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3160,8 +4105,8 @@ export const deleteAnnotationStore: API.OperationMethod<
   DeleteAnnotationStoreError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65) as any as S.Schema<DeleteAnnotationStoreRequest>,
-  output: __S(66) as any as S.Schema<DeleteAnnotationStoreResponse>,
+  input: DeleteAnnotationStoreRequest,
+  output: DeleteAnnotationStoreResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3193,8 +4138,8 @@ export const deleteAnnotationStoreVersions: API.OperationMethod<
   DeleteAnnotationStoreVersionsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(67) as any as S.Schema<DeleteAnnotationStoreVersionsRequest>,
-  output: __S(70) as any as S.Schema<DeleteAnnotationStoreVersionsResponse>,
+  input: DeleteAnnotationStoreVersionsRequest,
+  output: DeleteAnnotationStoreVersionsResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3230,8 +4175,8 @@ export const deleteBatch: API.OperationMethod<
   DeleteBatchError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(71) as any as S.Schema<DeleteBatchRequest>,
-  output: __S(10) as any as S.Schema<DeleteBatchResponse>,
+  input: DeleteBatchRequest,
+  output: DeleteBatchResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3267,8 +4212,8 @@ export const deleteConfiguration: API.OperationMethod<
   DeleteConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(72) as any as S.Schema<DeleteConfigurationRequest>,
-  output: __S(10) as any as S.Schema<DeleteConfigurationResponse>,
+  input: DeleteConfigurationRequest,
+  output: DeleteConfigurationResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3305,8 +4250,8 @@ export const deleteReference: API.OperationMethod<
   DeleteReferenceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(73) as any as S.Schema<DeleteReferenceRequest>,
-  output: __S(10) as any as S.Schema<DeleteReferenceResponse>,
+  input: DeleteReferenceRequest,
+  output: DeleteReferenceResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3342,8 +4287,8 @@ export const deleteReferenceStore: API.OperationMethod<
   DeleteReferenceStoreError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(74) as any as S.Schema<DeleteReferenceStoreRequest>,
-  output: __S(10) as any as S.Schema<DeleteReferenceStoreResponse>,
+  input: DeleteReferenceStoreRequest,
+  output: DeleteReferenceStoreResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3384,8 +4329,8 @@ export const deleteRun: API.OperationMethod<
   DeleteRunError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(75) as any as S.Schema<DeleteRunRequest>,
-  output: __S(10) as any as S.Schema<DeleteRunResponse>,
+  input: DeleteRunRequest,
+  output: DeleteRunResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3423,8 +4368,8 @@ export const deleteRunBatch: API.OperationMethod<
   DeleteRunBatchError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(76) as any as S.Schema<DeleteRunBatchRequest>,
-  output: __S(10) as any as S.Schema<DeleteRunBatchResponse>,
+  input: DeleteRunBatchRequest,
+  output: DeleteRunBatchResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3462,8 +4407,8 @@ export const deleteRunCache: API.OperationMethod<
   DeleteRunCacheError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(77) as any as S.Schema<DeleteRunCacheRequest>,
-  output: __S(10) as any as S.Schema<DeleteRunCacheResponse>,
+  input: DeleteRunCacheRequest,
+  output: DeleteRunCacheResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3505,8 +4450,8 @@ export const deleteRunGroup: API.OperationMethod<
   DeleteRunGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(78) as any as S.Schema<DeleteRunGroupRequest>,
-  output: __S(10) as any as S.Schema<DeleteRunGroupResponse>,
+  input: DeleteRunGroupRequest,
+  output: DeleteRunGroupResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3541,8 +4486,8 @@ export const deleteS3AccessPolicy: API.OperationMethod<
   DeleteS3AccessPolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(79) as any as S.Schema<DeleteS3AccessPolicyRequest>,
-  output: __S(10) as any as S.Schema<DeleteS3AccessPolicyResponse>,
+  input: DeleteS3AccessPolicyRequest,
+  output: DeleteS3AccessPolicyResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3580,8 +4525,8 @@ export const deleteSequenceStore: API.OperationMethod<
   DeleteSequenceStoreError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(80) as any as S.Schema<DeleteSequenceStoreRequest>,
-  output: __S(10) as any as S.Schema<DeleteSequenceStoreResponse>,
+  input: DeleteSequenceStoreRequest,
+  output: DeleteSequenceStoreResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3615,8 +4560,8 @@ export const deleteShare: API.OperationMethod<
   DeleteShareError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(81) as any as S.Schema<DeleteShareRequest>,
-  output: __S(3) as any as S.Schema<DeleteShareResponse>,
+  input: DeleteShareRequest,
+  output: DeleteShareResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3651,8 +4596,8 @@ export const deleteVariantStore: API.OperationMethod<
   DeleteVariantStoreError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(82) as any as S.Schema<DeleteVariantStoreRequest>,
-  output: __S(66) as any as S.Schema<DeleteVariantStoreResponse>,
+  input: DeleteVariantStoreRequest,
+  output: DeleteVariantStoreResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3692,8 +4637,8 @@ export const deleteWorkflow: API.OperationMethod<
   DeleteWorkflowError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(83) as any as S.Schema<DeleteWorkflowRequest>,
-  output: __S(10) as any as S.Schema<DeleteWorkflowResponse>,
+  input: DeleteWorkflowRequest,
+  output: DeleteWorkflowResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3731,8 +4676,8 @@ export const deleteWorkflowVersion: API.OperationMethod<
   DeleteWorkflowVersionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(84) as any as S.Schema<DeleteWorkflowVersionRequest>,
-  output: __S(10) as any as S.Schema<DeleteWorkflowVersionResponse>,
+  input: DeleteWorkflowVersionRequest,
+  output: DeleteWorkflowVersionResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3767,8 +4712,8 @@ export const getAnnotationImportJob: API.OperationMethod<
   GetAnnotationImportJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(85) as any as S.Schema<GetAnnotationImportRequest>,
-  output: __S(92) as any as S.Schema<GetAnnotationImportResponse>,
+  input: GetAnnotationImportRequest,
+  output: GetAnnotationImportResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3800,8 +4745,8 @@ export const getAnnotationStore: API.OperationMethod<
   GetAnnotationStoreError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(93) as any as S.Schema<GetAnnotationStoreRequest>,
-  output: __S(94) as any as S.Schema<GetAnnotationStoreResponse>,
+  input: GetAnnotationStoreRequest,
+  output: GetAnnotationStoreResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3831,8 +4776,8 @@ export const getAnnotationStoreVersion: API.OperationMethod<
   GetAnnotationStoreVersionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(95) as any as S.Schema<GetAnnotationStoreVersionRequest>,
-  output: __S(96) as any as S.Schema<GetAnnotationStoreVersionResponse>,
+  input: GetAnnotationStoreVersionRequest,
+  output: GetAnnotationStoreVersionResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3863,8 +4808,8 @@ export const getBatch: API.OperationMethod<
   GetBatchError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(97) as any as S.Schema<GetBatchRequest>,
-  output: __S(101) as any as S.Schema<GetBatchResponse>,
+  input: GetBatchRequest,
+  output: GetBatchResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3898,8 +4843,8 @@ export const getConfiguration: API.OperationMethod<
   GetConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(102) as any as S.Schema<GetConfigurationRequest>,
-  output: __S(103) as any as S.Schema<GetConfigurationResponse>,
+  input: GetConfigurationRequest,
+  output: GetConfigurationResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3935,8 +4880,8 @@ export const getReadSet: API.OperationMethod<
   GetReadSetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(104) as any as S.Schema<GetReadSetRequest>,
-  output: __S(105) as any as S.Schema<GetReadSetResponse>,
+  input: GetReadSetRequest,
+  output: GetReadSetResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3970,8 +4915,8 @@ export const getReadSetActivationJob: API.OperationMethod<
   GetReadSetActivationJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(106) as any as S.Schema<GetReadSetActivationJobRequest>,
-  output: __S(109) as any as S.Schema<GetReadSetActivationJobResponse>,
+  input: GetReadSetActivationJobRequest,
+  output: GetReadSetActivationJobResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4003,8 +4948,8 @@ export const getReadSetExportJob: API.OperationMethod<
   GetReadSetExportJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(110) as any as S.Schema<GetReadSetExportJobRequest>,
-  output: __S(113) as any as S.Schema<GetReadSetExportJobResponse>,
+  input: GetReadSetExportJobRequest,
+  output: GetReadSetExportJobResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4036,8 +4981,8 @@ export const getReadSetImportJob: API.OperationMethod<
   GetReadSetImportJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(114) as any as S.Schema<GetReadSetImportJobRequest>,
-  output: __S(118) as any as S.Schema<GetReadSetImportJobResponse>,
+  input: GetReadSetImportJobRequest,
+  output: GetReadSetImportJobResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4069,8 +5014,8 @@ export const getReadSetMetadata: API.OperationMethod<
   GetReadSetMetadataError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(119) as any as S.Schema<GetReadSetMetadataRequest>,
-  output: __S(125) as any as S.Schema<GetReadSetMetadataResponse>,
+  input: GetReadSetMetadataRequest,
+  output: GetReadSetMetadataResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4105,8 +5050,8 @@ export const getReference: API.OperationMethod<
   GetReferenceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(126) as any as S.Schema<GetReferenceRequest>,
-  output: __S(105) as any as S.Schema<GetReferenceResponse>,
+  input: GetReferenceRequest,
+  output: GetReferenceResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4139,8 +5084,8 @@ export const getReferenceImportJob: API.OperationMethod<
   GetReferenceImportJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(127) as any as S.Schema<GetReferenceImportJobRequest>,
-  output: __S(130) as any as S.Schema<GetReferenceImportJobResponse>,
+  input: GetReferenceImportJobRequest,
+  output: GetReferenceImportJobResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4172,8 +5117,8 @@ export const getReferenceMetadata: API.OperationMethod<
   GetReferenceMetadataError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(131) as any as S.Schema<GetReferenceMetadataRequest>,
-  output: __S(133) as any as S.Schema<GetReferenceMetadataResponse>,
+  input: GetReferenceMetadataRequest,
+  output: GetReferenceMetadataResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4205,8 +5150,8 @@ export const getReferenceStore: API.OperationMethod<
   GetReferenceStoreError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(134) as any as S.Schema<GetReferenceStoreRequest>,
-  output: __S(39) as any as S.Schema<GetReferenceStoreResponse>,
+  input: GetReferenceStoreRequest,
+  output: GetReferenceStoreResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4242,8 +5187,8 @@ export const getRun: API.OperationMethod<
   GetRunError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(135) as any as S.Schema<GetRunRequest>,
-  output: __S(138) as any as S.Schema<GetRunResponse>,
+  input: GetRunRequest,
+  output: GetRunResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -4281,8 +5226,8 @@ export const getRunCache: API.OperationMethod<
   GetRunCacheError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(139) as any as S.Schema<GetRunCacheRequest>,
-  output: __S(140) as any as S.Schema<GetRunCacheResponse>,
+  input: GetRunCacheRequest,
+  output: GetRunCacheResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -4318,8 +5263,8 @@ export const getRunGroup: API.OperationMethod<
   GetRunGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(141) as any as S.Schema<GetRunGroupRequest>,
-  output: __S(142) as any as S.Schema<GetRunGroupResponse>,
+  input: GetRunGroupRequest,
+  output: GetRunGroupResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -4355,8 +5300,8 @@ export const getRunTask: API.OperationMethod<
   GetRunTaskError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(143) as any as S.Schema<GetRunTaskRequest>,
-  output: __S(145) as any as S.Schema<GetRunTaskResponse>,
+  input: GetRunTaskRequest,
+  output: GetRunTaskResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -4392,8 +5337,8 @@ export const getS3AccessPolicy: API.OperationMethod<
   GetS3AccessPolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(146) as any as S.Schema<GetS3AccessPolicyRequest>,
-  output: __S(147) as any as S.Schema<GetS3AccessPolicyResponse>,
+  input: GetS3AccessPolicyRequest,
+  output: GetS3AccessPolicyResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4427,8 +5372,8 @@ export const getSequenceStore: API.OperationMethod<
   GetSequenceStoreError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(148) as any as S.Schema<GetSequenceStoreRequest>,
-  output: __S(149) as any as S.Schema<GetSequenceStoreResponse>,
+  input: GetSequenceStoreRequest,
+  output: GetSequenceStoreResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4461,8 +5406,8 @@ export const getShare: API.OperationMethod<
   GetShareError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(150) as any as S.Schema<GetShareRequest>,
-  output: __S(152) as any as S.Schema<GetShareResponse>,
+  input: GetShareRequest,
+  output: GetShareResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -4496,8 +5441,8 @@ export const getVariantImportJob: API.OperationMethod<
   GetVariantImportJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(153) as any as S.Schema<GetVariantImportRequest>,
-  output: __S(156) as any as S.Schema<GetVariantImportResponse>,
+  input: GetVariantImportRequest,
+  output: GetVariantImportResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4530,8 +5475,8 @@ export const getVariantStore: API.OperationMethod<
   GetVariantStoreError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(157) as any as S.Schema<GetVariantStoreRequest>,
-  output: __S(158) as any as S.Schema<GetVariantStoreResponse>,
+  input: GetVariantStoreRequest,
+  output: GetVariantStoreResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4569,8 +5514,8 @@ export const getWorkflow: API.OperationMethod<
   GetWorkflowError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(159) as any as S.Schema<GetWorkflowRequest>,
-  output: __S(162) as any as S.Schema<GetWorkflowResponse>,
+  input: GetWorkflowRequest,
+  output: GetWorkflowResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -4606,8 +5551,8 @@ export const getWorkflowVersion: API.OperationMethod<
   GetWorkflowVersionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(163) as any as S.Schema<GetWorkflowVersionRequest>,
-  output: __S(164) as any as S.Schema<GetWorkflowVersionResponse>,
+  input: GetWorkflowVersionRequest,
+  output: GetWorkflowVersionResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -4643,8 +5588,8 @@ export const listAnnotationImportJobs: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   AnnotationImportJobItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(166) as any as S.Schema<ListAnnotationImportJobsRequest>,
-  output: __S(169) as any as S.Schema<ListAnnotationImportJobsResponse>,
+  input: ListAnnotationImportJobsRequest,
+  output: ListAnnotationImportJobsResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4683,8 +5628,8 @@ export const listAnnotationStores: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   AnnotationStoreItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(171) as any as S.Schema<ListAnnotationStoresRequest>,
-  output: __S(174) as any as S.Schema<ListAnnotationStoresResponse>,
+  input: ListAnnotationStoresRequest,
+  output: ListAnnotationStoresResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4721,8 +5666,8 @@ export const listAnnotationStoreVersions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   AnnotationStoreVersionItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(175) as any as S.Schema<ListAnnotationStoreVersionsRequest>,
-  output: __S(178) as any as S.Schema<ListAnnotationStoreVersionsResponse>,
+  input: ListAnnotationStoreVersionsRequest,
+  output: ListAnnotationStoreVersionsResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4759,8 +5704,8 @@ export const listBatch: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   BatchListItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(179) as any as S.Schema<ListBatchRequest>,
-  output: __S(182) as any as S.Schema<ListBatchResponse>,
+  input: ListBatchRequest,
+  output: ListBatchResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4800,8 +5745,8 @@ export const listConfigurations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ConfigurationListItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(183) as any as S.Schema<ListConfigurationsRequest>,
-  output: __S(186) as any as S.Schema<ListConfigurationsResponse>,
+  input: ListConfigurationsRequest,
+  output: ListConfigurationsResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -4844,8 +5789,8 @@ export const listMultipartReadSetUploads: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   MultipartReadSetUploadListItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(187) as any as S.Schema<ListMultipartReadSetUploadsRequest>,
-  output: __S(190) as any as S.Schema<ListMultipartReadSetUploadsResponse>,
+  input: ListMultipartReadSetUploadsRequest,
+  output: ListMultipartReadSetUploadsResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4886,8 +5831,8 @@ export const listReadSetActivationJobs: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ActivateReadSetJobItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(192) as any as S.Schema<ListReadSetActivationJobsRequest>,
-  output: __S(195) as any as S.Schema<ListReadSetActivationJobsResponse>,
+  input: ListReadSetActivationJobsRequest,
+  output: ListReadSetActivationJobsResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4926,8 +5871,8 @@ export const listReadSetExportJobs: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ExportReadSetJobDetail
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(196) as any as S.Schema<ListReadSetExportJobsRequest>,
-  output: __S(199) as any as S.Schema<ListReadSetExportJobsResponse>,
+  input: ListReadSetExportJobsRequest,
+  output: ListReadSetExportJobsResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4966,8 +5911,8 @@ export const listReadSetImportJobs: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ImportReadSetJobItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(200) as any as S.Schema<ListReadSetImportJobsRequest>,
-  output: __S(203) as any as S.Schema<ListReadSetImportJobsResponse>,
+  input: ListReadSetImportJobsRequest,
+  output: ListReadSetImportJobsResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -5006,8 +5951,8 @@ export const listReadSets: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ReadSetListItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(205) as any as S.Schema<ListReadSetsRequest>,
-  output: __S(208) as any as S.Schema<ListReadSetsResponse>,
+  input: ListReadSetsRequest,
+  output: ListReadSetsResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -5048,8 +5993,8 @@ export const listReadSetUploadParts: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ReadSetUploadPartListItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(210) as any as S.Schema<ListReadSetUploadPartsRequest>,
-  output: __S(213) as any as S.Schema<ListReadSetUploadPartsResponse>,
+  input: ListReadSetUploadPartsRequest,
+  output: ListReadSetUploadPartsResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -5090,8 +6035,8 @@ export const listReferenceImportJobs: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ImportReferenceJobItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(214) as any as S.Schema<ListReferenceImportJobsRequest>,
-  output: __S(217) as any as S.Schema<ListReferenceImportJobsResponse>,
+  input: ListReferenceImportJobsRequest,
+  output: ListReferenceImportJobsResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -5132,8 +6077,8 @@ export const listReferences: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ReferenceListItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(219) as any as S.Schema<ListReferencesRequest>,
-  output: __S(222) as any as S.Schema<ListReferencesResponse>,
+  input: ListReferencesRequest,
+  output: ListReferencesResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -5173,8 +6118,8 @@ export const listReferenceStores: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ReferenceStoreDetail
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(224) as any as S.Schema<ListReferenceStoresRequest>,
-  output: __S(227) as any as S.Schema<ListReferenceStoresResponse>,
+  input: ListReferenceStoresRequest,
+  output: ListReferenceStoresResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -5214,8 +6159,8 @@ export const listRunCaches: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   RunCacheListItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(228) as any as S.Schema<ListRunCachesRequest>,
-  output: __S(231) as any as S.Schema<ListRunCachesResponse>,
+  input: ListRunCachesRequest,
+  output: ListRunCachesResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -5258,8 +6203,8 @@ export const listRunGroups: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   RunGroupListItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(232) as any as S.Schema<ListRunGroupsRequest>,
-  output: __S(235) as any as S.Schema<ListRunGroupsResponse>,
+  input: ListRunGroupsRequest,
+  output: ListRunGroupsResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -5304,8 +6249,8 @@ export const listRuns: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   RunListItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(236) as any as S.Schema<ListRunsRequest>,
-  output: __S(239) as any as S.Schema<ListRunsResponse>,
+  input: ListRunsRequest,
+  output: ListRunsResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -5348,8 +6293,8 @@ export const listRunsInBatch: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   RunBatchListItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(240) as any as S.Schema<ListRunsInBatchRequest>,
-  output: __S(243) as any as S.Schema<ListRunsInBatchResponse>,
+  input: ListRunsInBatchRequest,
+  output: ListRunsInBatchResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -5392,8 +6337,8 @@ export const listRunTasks: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   TaskListItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(244) as any as S.Schema<ListRunTasksRequest>,
-  output: __S(247) as any as S.Schema<ListRunTasksResponse>,
+  input: ListRunTasksRequest,
+  output: ListRunTasksResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -5435,8 +6380,8 @@ export const listSequenceStores: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   SequenceStoreDetail
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(249) as any as S.Schema<ListSequenceStoresRequest>,
-  output: __S(252) as any as S.Schema<ListSequenceStoresResponse>,
+  input: ListSequenceStoresRequest,
+  output: ListSequenceStoresResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -5475,8 +6420,8 @@ export const listShares: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ShareDetails
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(254) as any as S.Schema<ListSharesRequest>,
-  output: __S(256) as any as S.Schema<ListSharesResponse>,
+  input: ListSharesRequest,
+  output: ListSharesResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -5517,8 +6462,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(257) as any as S.Schema<ListTagsForResourceRequest>,
-  output: __S(258) as any as S.Schema<ListTagsForResourceResponse>,
+  input: ListTagsForResourceRequest,
+  output: ListTagsForResourceResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -5554,8 +6499,8 @@ export const listVariantImportJobs: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   VariantImportJobItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(259) as any as S.Schema<ListVariantImportJobsRequest>,
-  output: __S(262) as any as S.Schema<ListVariantImportJobsResponse>,
+  input: ListVariantImportJobsRequest,
+  output: ListVariantImportJobsResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -5594,8 +6539,8 @@ export const listVariantStores: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   VariantStoreItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(263) as any as S.Schema<ListVariantStoresRequest>,
-  output: __S(266) as any as S.Schema<ListVariantStoresResponse>,
+  input: ListVariantStoresRequest,
+  output: ListVariantStoresResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -5635,8 +6580,8 @@ export const listWorkflows: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   WorkflowListItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(267) as any as S.Schema<ListWorkflowsRequest>,
-  output: __S(270) as any as S.Schema<ListWorkflowsResponse>,
+  input: ListWorkflowsRequest,
+  output: ListWorkflowsResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -5679,8 +6624,8 @@ export const listWorkflowVersions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   WorkflowVersionListItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(271) as any as S.Schema<ListWorkflowVersionsRequest>,
-  output: __S(274) as any as S.Schema<ListWorkflowVersionsResponse>,
+  input: ListWorkflowVersionsRequest,
+  output: ListWorkflowVersionsResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -5721,8 +6666,8 @@ export const putS3AccessPolicy: API.OperationMethod<
   PutS3AccessPolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(275) as any as S.Schema<PutS3AccessPolicyRequest>,
-  output: __S(276) as any as S.Schema<PutS3AccessPolicyResponse>,
+  input: PutS3AccessPolicyRequest,
+  output: PutS3AccessPolicyResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -5757,8 +6702,8 @@ export const startAnnotationImportJob: API.OperationMethod<
   StartAnnotationImportJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(279) as any as S.Schema<StartAnnotationImportRequest>,
-  output: __S(280) as any as S.Schema<StartAnnotationImportResponse>,
+  input: StartAnnotationImportRequest,
+  output: StartAnnotationImportResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -5793,8 +6738,8 @@ export const startReadSetActivationJob: API.OperationMethod<
   StartReadSetActivationJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(282) as any as S.Schema<StartReadSetActivationJobRequest>,
-  output: __S(283) as any as S.Schema<StartReadSetActivationJobResponse>,
+  input: StartReadSetActivationJobRequest,
+  output: StartReadSetActivationJobResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -5830,8 +6775,8 @@ export const startReadSetExportJob: API.OperationMethod<
   StartReadSetExportJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(286) as any as S.Schema<StartReadSetExportJobRequest>,
-  output: __S(287) as any as S.Schema<StartReadSetExportJobResponse>,
+  input: StartReadSetExportJobRequest,
+  output: StartReadSetExportJobResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -5865,8 +6810,8 @@ export const startReadSetImportJob: API.OperationMethod<
   StartReadSetImportJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(290) as any as S.Schema<StartReadSetImportJobRequest>,
-  output: __S(291) as any as S.Schema<StartReadSetImportJobResponse>,
+  input: StartReadSetImportJobRequest,
+  output: StartReadSetImportJobResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -5900,8 +6845,8 @@ export const startReferenceImportJob: API.OperationMethod<
   StartReferenceImportJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(294) as any as S.Schema<StartReferenceImportJobRequest>,
-  output: __S(295) as any as S.Schema<StartReferenceImportJobResponse>,
+  input: StartReferenceImportJobRequest,
+  output: StartReferenceImportJobResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -5968,8 +6913,8 @@ export const startRun: API.OperationMethod<
   StartRunError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(296) as any as S.Schema<StartRunRequest>,
-  output: __S(297) as any as S.Schema<StartRunResponse>,
+  input: StartRunRequest,
+  output: StartRunResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -6007,8 +6952,8 @@ export const startRunBatch: API.OperationMethod<
   StartRunBatchError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(301) as any as S.Schema<StartRunBatchRequest>,
-  output: __S(302) as any as S.Schema<StartRunBatchResponse>,
+  input: StartRunBatchRequest,
+  output: StartRunBatchResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -6044,8 +6989,8 @@ export const startVariantImportJob: API.OperationMethod<
   StartVariantImportJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(305) as any as S.Schema<StartVariantImportRequest>,
-  output: __S(280) as any as S.Schema<StartVariantImportResponse>,
+  input: StartVariantImportRequest,
+  output: StartVariantImportResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -6079,8 +7024,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(306) as any as S.Schema<TagResourceRequest>,
-  output: __S(10) as any as S.Schema<TagResourceResponse>,
+  input: TagResourceRequest,
+  output: TagResourceResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -6116,8 +7061,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(307) as any as S.Schema<UntagResourceRequest>,
-  output: __S(10) as any as S.Schema<UntagResourceResponse>,
+  input: UntagResourceRequest,
+  output: UntagResourceResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -6152,8 +7097,8 @@ export const updateAnnotationStore: API.OperationMethod<
   UpdateAnnotationStoreError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(308) as any as S.Schema<UpdateAnnotationStoreRequest>,
-  output: __S(309) as any as S.Schema<UpdateAnnotationStoreResponse>,
+  input: UpdateAnnotationStoreRequest,
+  output: UpdateAnnotationStoreResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -6183,8 +7128,8 @@ export const updateAnnotationStoreVersion: API.OperationMethod<
   UpdateAnnotationStoreVersionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(310) as any as S.Schema<UpdateAnnotationStoreVersionRequest>,
-  output: __S(311) as any as S.Schema<UpdateAnnotationStoreVersionResponse>,
+  input: UpdateAnnotationStoreVersionRequest,
+  output: UpdateAnnotationStoreVersionResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -6219,8 +7164,8 @@ export const updateRunCache: API.OperationMethod<
   UpdateRunCacheError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(312) as any as S.Schema<UpdateRunCacheRequest>,
-  output: __S(10) as any as S.Schema<UpdateRunCacheResponse>,
+  input: UpdateRunCacheRequest,
+  output: UpdateRunCacheResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -6270,8 +7215,8 @@ export const updateRunGroup: API.OperationMethod<
   UpdateRunGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(313) as any as S.Schema<UpdateRunGroupRequest>,
-  output: __S(10) as any as S.Schema<UpdateRunGroupResponse>,
+  input: UpdateRunGroupRequest,
+  output: UpdateRunGroupResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -6306,8 +7251,8 @@ export const updateSequenceStore: API.OperationMethod<
   UpdateSequenceStoreError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(314) as any as S.Schema<UpdateSequenceStoreRequest>,
-  output: __S(315) as any as S.Schema<UpdateSequenceStoreResponse>,
+  input: UpdateSequenceStoreRequest,
+  output: UpdateSequenceStoreResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -6341,8 +7286,8 @@ export const updateVariantStore: API.OperationMethod<
   UpdateVariantStoreError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(316) as any as S.Schema<UpdateVariantStoreRequest>,
-  output: __S(317) as any as S.Schema<UpdateVariantStoreResponse>,
+  input: UpdateVariantStoreRequest,
+  output: UpdateVariantStoreResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -6389,8 +7334,8 @@ export const updateWorkflow: API.OperationMethod<
   UpdateWorkflowError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(318) as any as S.Schema<UpdateWorkflowRequest>,
-  output: __S(10) as any as S.Schema<UpdateWorkflowResponse>,
+  input: UpdateWorkflowRequest,
+  output: UpdateWorkflowResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -6426,8 +7371,8 @@ export const updateWorkflowVersion: API.OperationMethod<
   UpdateWorkflowVersionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(319) as any as S.Schema<UpdateWorkflowVersionRequest>,
-  output: __S(10) as any as S.Schema<UpdateWorkflowVersionResponse>,
+  input: UpdateWorkflowVersionRequest,
+  output: UpdateWorkflowVersionResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -6465,8 +7410,8 @@ export const uploadReadSetPart: API.OperationMethod<
   UploadReadSetPartError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(320) as any as S.Schema<UploadReadSetPartRequest>,
-  output: __S(321) as any as S.Schema<UploadReadSetPartResponse>,
+  input: UploadReadSetPartRequest,
+  output: UploadReadSetPartResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -6526,7 +7471,7 @@ function __c0(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          ids: __S(4),
+          ids: ReadSetIdList,
           sequenceStoreId: S.String.pipe(T.HttpLabel("sequenceStoreId")),
         }).pipe(
           T.all(
@@ -6549,13 +7494,13 @@ function __c0(j: number): any {
         S.Struct({ id: S.String, code: S.String, message: S.String }),
       ).annotate({ identifier: "ReadSetBatchError" });
     case 7:
-      return S.Array(__S(6));
+      return S.Array(ReadSetBatchError);
   }
 }
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ errors: S.optional(__S(7)) })).annotate({
+      return S.suspend(() => S.Struct({ errors: S.optional(ReadSetBatchErrorList) })).annotate({
         identifier: "BatchDeleteReadSetResponse",
       });
     case 1:
@@ -6611,7 +7556,7 @@ function __c1(j: number): any {
         identifier: "CompleteReadSetUploadPartListItem",
       });
     case 7:
-      return S.Array(__S(14));
+      return S.Array(CompleteReadSetUploadPartListItem);
   }
 }
 function __c2(j: number): any {
@@ -6621,7 +7566,7 @@ function __c2(j: number): any {
         S.Struct({
           sequenceStoreId: S.String.pipe(T.HttpLabel("sequenceStoreId")),
           uploadId: S.String.pipe(T.HttpLabel("uploadId")),
-          parts: __S(15),
+          parts: CompleteReadSetUploadPartList,
         }).pipe(
           T.all(
             T.Http({
@@ -6653,13 +7598,13 @@ function __c2(j: number): any {
     case 5:
       return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
     case 6:
-      return S.Array(__S(19));
+      return S.Array(SchemaItem);
     case 7:
       return S.suspend(() =>
         S.Struct({
           annotationType: S.optional(S.String),
-          formatToHeader: S.optional(__S(21)),
-          schema: S.optional(__S(22)),
+          formatToHeader: S.optional(FormatToHeader),
+          schema: S.optional(Schema),
         }),
       ).annotate({ identifier: "TsvStoreOptions" });
   }
@@ -6667,18 +7612,18 @@ function __c2(j: number): any {
 function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.Union([/*@__PURE__*/ S.Struct({ tsvStoreOptions: __S(23) })]);
+      return S.Union([/*@__PURE__*/ S.Struct({ tsvStoreOptions: TsvStoreOptions })]);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          reference: S.optional(__S(18)),
+          reference: S.optional(ReferenceItem),
           name: S.optional(S.String),
           description: S.optional(S.String),
-          tags: S.optional(__S(19)),
+          tags: S.optional(TagMap),
           versionName: S.optional(S.String),
-          sseConfig: S.optional(__S(20)),
+          sseConfig: S.optional(SseConfig),
           storeFormat: S.String,
-          storeOptions: S.optional(__S(24)),
+          storeOptions: S.optional(StoreOptions),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/annotationStore" }), svc, auth, proto, ver, rules),
         ),
@@ -6689,9 +7634,9 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          reference: S.optional(__S(18)),
+          reference: S.optional(ReferenceItem),
           storeFormat: S.optional(S.String),
-          storeOptions: S.optional(__S(24)),
+          storeOptions: S.optional(StoreOptions),
           status: S.String,
           name: S.String,
           versionName: S.String,
@@ -6701,15 +7646,15 @@ function __c3(j: number): any {
         identifier: "CreateAnnotationStoreResponse",
       });
     case 3:
-      return S.Union([/*@__PURE__*/ S.Struct({ tsvVersionOptions: __S(23) })]);
+      return S.Union([/*@__PURE__*/ S.Struct({ tsvVersionOptions: TsvVersionOptions })]);
     case 4:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.HttpLabel("name")),
           versionName: S.String,
           description: S.optional(S.String),
-          versionOptions: S.optional(__S(27)),
-          tags: S.optional(__S(19)),
+          versionOptions: S.optional(VersionOptions),
+          tags: S.optional(TagMap),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/annotationStore/{name}/version" }),
@@ -6729,7 +7674,7 @@ function __c3(j: number): any {
           id: S.String,
           versionName: S.String,
           storeId: S.String,
-          versionOptions: S.optional(__S(27)),
+          versionOptions: S.optional(VersionOptions),
           name: S.String,
           status: S.String,
           creationTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
@@ -6740,12 +7685,12 @@ function __c3(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          securityGroupIds: S.optional(__S(4)),
-          subnetIds: S.optional(__S(4)),
+          securityGroupIds: S.optional(SecurityGroupIds),
+          subnetIds: S.optional(SubnetIds),
         }),
       ).annotate({ identifier: "VpcConfig" });
     case 7:
-      return S.suspend(() => S.Struct({ vpcConfig: S.optional(__S(30)) })).annotate({
+      return S.suspend(() => S.Struct({ vpcConfig: S.optional(VpcConfig) })).annotate({
         identifier: "RunConfigurations",
       });
   }
@@ -6757,8 +7702,8 @@ function __c4(j: number): any {
         S.Struct({
           name: S.String,
           description: S.optional(S.String),
-          runConfigurations: __S(31),
-          tags: S.optional(__S(19)),
+          runConfigurations: RunConfigurations,
+          tags: S.optional(TagMap),
           requestId: S.String.pipe(T.IdempotencyToken()),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/configuration" }), svc, auth, proto, ver, rules),
@@ -6769,13 +7714,13 @@ function __c4(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          securityGroupIds: S.optional(__S(4)),
-          subnetIds: S.optional(__S(4)),
+          securityGroupIds: S.optional(SecurityGroupIds),
+          subnetIds: S.optional(SubnetIds),
           vpcId: S.optional(S.String),
         }),
       ).annotate({ identifier: "VpcConfigResponse" });
     case 2:
-      return S.suspend(() => S.Struct({ vpcConfig: S.optional(__S(33)) })).annotate({
+      return S.suspend(() => S.Struct({ vpcConfig: S.optional(VpcConfigResponse) })).annotate({
         identifier: "RunConfigurationsResponse",
       });
     case 3:
@@ -6785,10 +7730,10 @@ function __c4(j: number): any {
           uuid: S.optional(S.String),
           name: S.optional(S.String),
           description: S.optional(S.String),
-          runConfigurations: S.optional(__S(34)),
+          runConfigurations: S.optional(RunConfigurationsResponse),
           status: S.optional(S.String),
           creationTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          tags: S.optional(__S(19)),
+          tags: S.optional(TagMap),
         }),
       ).annotate({
         identifier: "CreateConfigurationResponse",
@@ -6805,7 +7750,7 @@ function __c4(j: number): any {
           referenceArn: S.optional(S.String),
           name: S.String,
           description: S.optional(S.String),
-          tags: S.optional(__S(19)),
+          tags: S.optional(TagMap),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/sequencestore/{sequenceStoreId}/upload" }),
@@ -6831,7 +7776,7 @@ function __c4(j: number): any {
           referenceArn: S.String,
           name: S.optional(S.String),
           description: S.optional(S.String),
-          tags: S.optional(__S(19)),
+          tags: S.optional(TagMap),
           creationTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
         }),
       ).annotate({
@@ -6842,8 +7787,8 @@ function __c4(j: number): any {
         S.Struct({
           name: S.String,
           description: S.optional(S.String),
-          sseConfig: S.optional(__S(20)),
-          tags: S.optional(__S(19)),
+          sseConfig: S.optional(SseConfig),
+          tags: S.optional(TagMap),
           clientToken: S.optional(S.String),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/referencestore" }), svc, auth, proto, ver, rules),
@@ -6858,7 +7803,7 @@ function __c4(j: number): any {
           arn: S.String,
           name: S.optional(S.String),
           description: S.optional(S.String),
-          sseConfig: S.optional(__S(20)),
+          sseConfig: S.optional(SseConfig),
           creationTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
         }),
       ).annotate({
@@ -6876,7 +7821,7 @@ function __c5(j: number): any {
           description: S.optional(S.String),
           name: S.optional(S.String),
           requestId: S.String.pipe(T.IdempotencyToken()),
-          tags: S.optional(__S(19)),
+          tags: S.optional(TagMap),
           cacheBucketOwnerId: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/runCache" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateRunCacheRequest" });
@@ -6886,7 +7831,7 @@ function __c5(j: number): any {
           arn: S.optional(S.String),
           id: S.optional(S.String),
           status: S.optional(S.String),
-          tags: S.optional(__S(19)),
+          tags: S.optional(TagMap),
         }),
       ).annotate({ identifier: "CreateRunCacheResponse" });
     case 2:
@@ -6896,18 +7841,14 @@ function __c5(j: number): any {
           maxCpus: S.optional(S.Number),
           maxRuns: S.optional(S.Number),
           maxDuration: S.optional(S.Number),
-          tags: S.optional(__S(19)),
+          tags: S.optional(TagMap),
           requestId: S.String.pipe(T.IdempotencyToken()),
           maxGpus: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/runGroup" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateRunGroupRequest" });
     case 3:
       return S.suspend(() =>
-        S.Struct({
-          arn: S.optional(S.String),
-          id: S.optional(S.String),
-          tags: S.optional(__S(19)),
-        }),
+        S.Struct({ arn: S.optional(S.String), id: S.optional(S.String), tags: S.optional(TagMap) }),
       ).annotate({ identifier: "CreateRunGroupResponse" });
     case 4:
       return S.suspend(() => S.Struct({ accessLogLocation: S.optional(S.String) })).annotate({
@@ -6918,13 +7859,13 @@ function __c5(j: number): any {
         S.Struct({
           name: S.String,
           description: S.optional(S.String),
-          sseConfig: S.optional(__S(20)),
-          tags: S.optional(__S(19)),
+          sseConfig: S.optional(SseConfig),
+          tags: S.optional(TagMap),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
           fallbackLocation: S.optional(S.String),
           eTagAlgorithmFamily: S.optional(S.String),
-          propagatedSetLevelTags: S.optional(__S(4)),
-          s3AccessConfig: S.optional(__S(44)),
+          propagatedSetLevelTags: S.optional(PropagatedSetLevelTags),
+          s3AccessConfig: S.optional(S3AccessConfig),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/sequencestore" }), svc, auth, proto, ver, rules),
         ),
@@ -6946,14 +7887,14 @@ function __c5(j: number): any {
           arn: S.String,
           name: S.optional(S.String),
           description: S.optional(S.String),
-          sseConfig: S.optional(__S(20)),
+          sseConfig: S.optional(SseConfig),
           creationTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           fallbackLocation: S.optional(S.String),
           eTagAlgorithmFamily: S.optional(S.String),
           status: S.optional(S.String),
           statusMessage: S.optional(S.String),
-          propagatedSetLevelTags: S.optional(__S(4)),
-          s3Access: S.optional(__S(46)),
+          propagatedSetLevelTags: S.optional(PropagatedSetLevelTags),
+          s3Access: S.optional(SequenceStoreS3Access),
         }),
       ).annotate({
         identifier: "CreateSequenceStoreResponse",
@@ -6981,11 +7922,11 @@ function __c6(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          reference: __S(18),
+          reference: ReferenceItem,
           name: S.optional(S.String),
           description: S.optional(S.String),
-          tags: S.optional(__S(19)),
-          sseConfig: S.optional(__S(20)),
+          tags: S.optional(TagMap),
+          sseConfig: S.optional(SseConfig),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/variantStore" }), svc, auth, proto, ver, rules),
         ),
@@ -6996,7 +7937,7 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          reference: S.optional(__S(18)),
+          reference: S.optional(ReferenceItem),
           status: S.String,
           name: S.String,
           creationTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
@@ -7009,7 +7950,7 @@ function __c6(j: number): any {
         S.Struct({ description: S.optional(S.String), optional: S.optional(S.Boolean) }),
       ).annotate({ identifier: "WorkflowParameter" });
     case 5:
-      return S.Record(S.String, /*@__PURE__*/ __S(52).pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ WorkflowParameter.pipe(S.optional));
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -7020,7 +7961,7 @@ function __c6(j: number): any {
         }),
       ).annotate({ identifier: "RegistryMapping" });
     case 7:
-      return S.Array(__S(54));
+      return S.Array(RegistryMapping);
   }
 }
 function __c7(j: number): any {
@@ -7030,12 +7971,12 @@ function __c7(j: number): any {
         S.Struct({ sourceImage: S.optional(S.String), destinationImage: S.optional(S.String) }),
       ).annotate({ identifier: "ImageMapping" });
     case 1:
-      return S.Array(__S(56));
+      return S.Array(ImageMapping);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          registryMappings: S.optional(__S(55)),
-          imageMappings: S.optional(__S(57)),
+          registryMappings: S.optional(RegistryMappingsList),
+          imageMappings: S.optional(ImageMappingsList),
         }),
       ).annotate({ identifier: "ContainerRegistryMap" });
     case 3:
@@ -7047,8 +7988,8 @@ function __c7(j: number): any {
         S.Struct({
           connectionArn: S.String,
           fullRepositoryId: S.String,
-          sourceReference: S.optional(__S(59)),
-          excludeFilePatterns: S.optional(__S(4)),
+          sourceReference: S.optional(SourceReference),
+          excludeFilePatterns: S.optional(ExcludeFilePatternList),
         }),
       ).annotate({ identifier: "DefinitionRepository" });
     case 5:
@@ -7060,18 +8001,18 @@ function __c7(j: number): any {
           definitionZip: S.optional(T.Blob),
           definitionUri: S.optional(S.String),
           main: S.optional(S.String),
-          parameterTemplate: S.optional(__S(53)),
+          parameterTemplate: S.optional(WorkflowParameterTemplate),
           storageCapacity: S.optional(S.Number),
-          tags: S.optional(__S(19)),
+          tags: S.optional(TagMap),
           requestId: S.String.pipe(T.IdempotencyToken()),
           accelerators: S.optional(S.String),
           storageType: S.optional(S.String),
-          containerRegistryMap: S.optional(__S(58)),
+          containerRegistryMap: S.optional(ContainerRegistryMap),
           containerRegistryMapUri: S.optional(S.String),
           readmeMarkdown: S.optional(S.String),
           parameterTemplatePath: S.optional(S.String),
           readmePath: S.optional(S.String),
-          definitionRepository: S.optional(__S(60)),
+          definitionRepository: S.optional(DefinitionRepository),
           workflowBucketOwnerId: S.optional(S.String),
           readmeUri: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/workflow" }), svc, auth, proto, ver, rules)),
@@ -7082,7 +8023,7 @@ function __c7(j: number): any {
           arn: S.optional(S.String),
           id: S.optional(S.String),
           status: S.optional(S.String),
-          tags: S.optional(__S(19)),
+          tags: S.optional(TagMap),
           uuid: S.optional(S.String),
         }),
       ).annotate({ identifier: "CreateWorkflowResponse" });
@@ -7097,18 +8038,18 @@ function __c7(j: number): any {
           description: S.optional(S.String),
           engine: S.optional(S.String),
           main: S.optional(S.String),
-          parameterTemplate: S.optional(__S(53)),
+          parameterTemplate: S.optional(WorkflowParameterTemplate),
           requestId: S.String.pipe(T.IdempotencyToken()),
           storageType: S.optional(S.String),
           storageCapacity: S.optional(S.Number),
-          tags: S.optional(__S(19)),
+          tags: S.optional(TagMap),
           workflowBucketOwnerId: S.optional(S.String),
-          containerRegistryMap: S.optional(__S(58)),
+          containerRegistryMap: S.optional(ContainerRegistryMap),
           containerRegistryMapUri: S.optional(S.String),
           readmeMarkdown: S.optional(S.String),
           parameterTemplatePath: S.optional(S.String),
           readmePath: S.optional(S.String),
-          definitionRepository: S.optional(__S(60)),
+          definitionRepository: S.optional(DefinitionRepository),
           readmeUri: S.optional(S.String),
         }).pipe(
           T.all(
@@ -7134,7 +8075,7 @@ function __c8(j: number): any {
           workflowId: S.optional(S.String),
           versionName: S.optional(S.String),
           status: S.optional(S.String),
-          tags: S.optional(__S(19)),
+          tags: S.optional(TagMap),
           uuid: S.optional(S.String),
         }),
       ).annotate({
@@ -7166,7 +8107,7 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.HttpLabel("name")),
-          versions: __S(4),
+          versions: VersionList,
           force: S.optional(S.Boolean).pipe(T.HttpQuery("force")),
         }).pipe(
           T.all(
@@ -7186,9 +8127,9 @@ function __c8(j: number): any {
         identifier: "VersionDeleteError",
       });
     case 5:
-      return S.Array(__S(68));
+      return S.Array(VersionDeleteError);
     case 6:
-      return S.suspend(() => S.Struct({ errors: S.optional(__S(69)) })).annotate({
+      return S.suspend(() => S.Struct({ errors: S.optional(VersionDeleteErrorList) })).annotate({
         identifier: "DeleteAnnotationStoreVersionsResponse",
       });
     case 7:
@@ -7387,7 +8328,7 @@ function __c10(j: number): any {
         identifier: "AnnotationImportItemDetail",
       });
     case 7:
-      return S.Array(__S(86));
+      return S.Array(AnnotationImportItemDetail);
   }
 }
 function __c11(j: number): any {
@@ -7407,7 +8348,7 @@ function __c11(j: number): any {
         }),
       ).annotate({ identifier: "ReadOptions" });
     case 1:
-      return S.suspend(() => S.Struct({ readOptions: S.optional(__S(88)) })).annotate({
+      return S.suspend(() => S.Struct({ readOptions: S.optional(ReadOptions) })).annotate({
         identifier: "TsvOptions",
       });
     case 2:
@@ -7419,8 +8360,8 @@ function __c11(j: number): any {
       ).annotate({ identifier: "VcfOptions" });
     case 3:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ tsvOptions: __S(89) }),
-        /*@__PURE__*/ S.Struct({ vcfOptions: __S(90) }),
+        /*@__PURE__*/ S.Struct({ tsvOptions: TsvOptions }),
+        /*@__PURE__*/ S.Struct({ vcfOptions: VcfOptions }),
       ]);
     case 4:
       return S.suspend(() =>
@@ -7434,10 +8375,10 @@ function __c11(j: number): any {
           creationTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           updateTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           completionTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-          items: __S(87),
+          items: AnnotationImportItemDetails,
           runLeftNormalization: S.Boolean,
-          formatOptions: __S(91),
-          annotationFields: S.optional(__S(21)),
+          formatOptions: FormatOptions,
+          annotationFields: S.optional(AnnotationFieldMap),
         }),
       ).annotate({
         identifier: "GetAnnotationImportResponse",
@@ -7461,16 +8402,16 @@ function __c11(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          reference: __S(18),
+          reference: ReferenceItem,
           status: S.String,
           storeArn: S.String,
           name: S.String,
           description: S.String,
-          sseConfig: __S(20),
+          sseConfig: SseConfig,
           creationTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           updateTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-          tags: __S(19),
-          storeOptions: S.optional(__S(24)),
+          tags: TagMap,
+          storeOptions: S.optional(StoreOptions),
           storeFormat: S.optional(S.String),
           statusMessage: S.String,
           storeSizeBytes: S.Number,
@@ -7513,8 +8454,8 @@ function __c12(j: number): any {
           description: S.String,
           creationTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           updateTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-          tags: __S(19),
-          versionOptions: S.optional(__S(27)),
+          tags: TagMap,
+          versionOptions: S.optional(VersionOptions),
           statusMessage: S.String,
           versionSizeBytes: S.Number,
         }),
@@ -7549,7 +8490,7 @@ function __c12(j: number): any {
           storageCapacity: S.optional(S.Number),
           outputUri: S.optional(S.String),
           logLevel: S.optional(S.String),
-          runTags: S.optional(__S(19)),
+          runTags: S.optional(TagMap),
           retentionMode: S.optional(S.String),
           storageType: S.optional(S.String),
           workflowOwnerId: S.optional(S.String),
@@ -7595,11 +8536,11 @@ function __c12(j: number): any {
           uuid: S.optional(S.String),
           name: S.optional(S.String),
           status: S.optional(S.String),
-          tags: S.optional(__S(19)),
+          tags: S.optional(TagMap),
           totalRuns: S.optional(S.Number),
-          defaultRunSetting: S.optional(__S(98)),
-          submissionSummary: S.optional(__S(99)),
-          runSummary: S.optional(__S(100)),
+          defaultRunSetting: S.optional(DefaultRunSetting),
+          submissionSummary: S.optional(SubmissionSummary),
+          runSummary: S.optional(RunSummary),
           creationTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           submittedTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           processedTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
@@ -7627,10 +8568,10 @@ function __c12(j: number): any {
           uuid: S.optional(S.String),
           name: S.optional(S.String),
           description: S.optional(S.String),
-          runConfigurations: S.optional(__S(34)),
+          runConfigurations: S.optional(RunConfigurationsResponse),
           status: S.optional(S.String),
           creationTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          tags: S.optional(__S(19)),
+          tags: S.optional(TagMap),
         }),
       ).annotate({ identifier: "GetConfigurationResponse" });
   }
@@ -7684,7 +8625,7 @@ function __c13(j: number): any {
         identifier: "ActivateReadSetSourceItem",
       });
     case 4:
-      return S.Array(__S(107));
+      return S.Array(ActivateReadSetSourceItem);
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -7694,7 +8635,7 @@ function __c13(j: number): any {
           statusMessage: S.optional(S.String),
           creationTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           completionTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          sources: S.optional(__S(108)),
+          sources: S.optional(ActivateReadSetSourceList),
         }),
       ).annotate({
         identifier: "GetReadSetActivationJobResponse",
@@ -7726,7 +8667,7 @@ function __c13(j: number): any {
 function __c14(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(111));
+      return S.Array(ExportReadSetDetail);
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -7737,7 +8678,7 @@ function __c14(j: number): any {
           statusMessage: S.optional(S.String),
           creationTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           completionTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          readSets: S.optional(__S(112)),
+          readSets: S.optional(ExportReadSetDetailList),
         }),
       ).annotate({
         identifier: "GetReadSetExportJobResponse",
@@ -7767,7 +8708,7 @@ function __c14(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          sourceFiles: __S(115),
+          sourceFiles: SourceFiles,
           sourceFileType: S.String,
           status: S.String,
           statusMessage: S.optional(S.String),
@@ -7777,12 +8718,12 @@ function __c14(j: number): any {
           referenceArn: S.optional(S.String),
           name: S.optional(S.String),
           description: S.optional(S.String),
-          tags: S.optional(__S(19)),
+          tags: S.optional(TagMap),
           readSetId: S.optional(S.String),
         }),
       ).annotate({ identifier: "ImportReadSetSourceItem" });
     case 5:
-      return S.Array(__S(116));
+      return S.Array(ImportReadSetSourceItem);
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -7793,7 +8734,7 @@ function __c14(j: number): any {
           statusMessage: S.optional(S.String),
           creationTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           completionTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          sources: __S(117),
+          sources: ImportReadSetSourceList,
         }),
       ).annotate({
         identifier: "GetReadSetImportJobResponse",
@@ -7842,15 +8783,15 @@ function __c15(j: number): any {
           totalParts: S.optional(S.Number),
           partSize: S.optional(S.Number),
           contentLength: S.optional(S.Number),
-          s3Access: S.optional(__S(121)),
+          s3Access: S.optional(ReadSetS3Access),
         }),
       ).annotate({ identifier: "FileInformation" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          source1: S.optional(__S(122)),
-          source2: S.optional(__S(122)),
-          index: S.optional(__S(122)),
+          source1: S.optional(FileInformation),
+          source2: S.optional(FileInformation),
+          index: S.optional(FileInformation),
         }),
       ).annotate({ identifier: "ReadSetFiles" });
     case 4:
@@ -7874,12 +8815,12 @@ function __c15(j: number): any {
           description: S.optional(S.String),
           fileType: S.String,
           creationTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-          sequenceInformation: S.optional(__S(120)),
+          sequenceInformation: S.optional(SequenceInformation),
           referenceArn: S.optional(S.String),
-          files: S.optional(__S(123)),
+          files: S.optional(ReadSetFiles),
           statusMessage: S.optional(S.String),
           creationType: S.optional(S.String),
-          etag: S.optional(__S(124)),
+          etag: S.optional(ETag),
           creationJobId: S.optional(S.String),
         }),
       ).annotate({
@@ -7934,14 +8875,14 @@ function __c16(j: number): any {
           statusMessage: S.optional(S.String),
           name: S.optional(S.String),
           description: S.optional(S.String),
-          tags: S.optional(__S(19)),
+          tags: S.optional(TagMap),
           referenceId: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ImportReferenceSourceItem",
       });
     case 1:
-      return S.Array(__S(128));
+      return S.Array(ImportReferenceSourceItem);
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -7952,7 +8893,7 @@ function __c16(j: number): any {
           statusMessage: S.optional(S.String),
           creationTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           completionTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          sources: __S(129),
+          sources: ImportReferenceSourceList,
         }),
       ).annotate({
         identifier: "GetReferenceImportJobResponse",
@@ -7980,7 +8921,7 @@ function __c16(j: number): any {
       });
     case 4:
       return S.suspend(() =>
-        S.Struct({ source: S.optional(__S(122)), index: S.optional(__S(122)) }),
+        S.Struct({ source: S.optional(FileInformation), index: S.optional(FileInformation) }),
       ).annotate({ identifier: "ReferenceFiles" });
     case 5:
       return S.suspend(() =>
@@ -7994,7 +8935,7 @@ function __c16(j: number): any {
           description: S.optional(S.String),
           creationTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           updateTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-          files: S.optional(__S(132)),
+          files: S.optional(ReferenceFiles),
           creationType: S.optional(S.String),
           creationJobId: S.optional(S.String),
         }),
@@ -8018,7 +8959,7 @@ function __c16(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.HttpLabel("id")),
-          export: S.optional(__S(4)).pipe(T.HttpQuery("export")),
+          export: S.optional(RunExportList).pipe(T.HttpQuery("export")),
         }).pipe(T.all(T.Http({ method: "GET", uri: "/run/{id}" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "GetRunRequest" });
   }
@@ -8060,17 +9001,17 @@ function __c17(j: number): any {
           storageCapacity: S.optional(S.Number),
           outputUri: S.optional(S.String),
           logLevel: S.optional(S.String),
-          resourceDigests: S.optional(__S(21)),
+          resourceDigests: S.optional(RunResourceDigests),
           startedBy: S.optional(S.String),
           creationTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           startTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           stopTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           statusMessage: S.optional(S.String),
-          tags: S.optional(__S(19)),
+          tags: S.optional(TagMap),
           accelerators: S.optional(S.String),
           retentionMode: S.optional(S.String),
           failureReason: S.optional(S.String),
-          logLocation: S.optional(__S(136)),
+          logLocation: S.optional(RunLogLocation),
           uuid: S.optional(S.String),
           runOutputUri: S.optional(S.String),
           storageType: S.optional(S.String),
@@ -8079,8 +9020,8 @@ function __c17(j: number): any {
           workflowUuid: S.optional(S.String),
           networkingMode: S.optional(S.String),
           scratchStorageMode: S.optional(S.String),
-          configuration: S.optional(__S(137)),
-          vpcConfig: S.optional(__S(33)),
+          configuration: S.optional(ConfigurationDetails),
+          vpcConfig: S.optional(VpcConfigResponse),
           engineSettings: S.optional(S.Any),
           sessionPolicy: S.optional(S.String),
         }),
@@ -8103,7 +9044,7 @@ function __c17(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           status: S.optional(S.String),
-          tags: S.optional(__S(19)),
+          tags: S.optional(TagMap),
         }),
       ).annotate({ identifier: "GetRunCacheResponse" });
     case 5:
@@ -8122,7 +9063,7 @@ function __c17(j: number): any {
           maxRuns: S.optional(S.Number),
           maxDuration: S.optional(S.Number),
           creationTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          tags: S.optional(__S(19)),
+          tags: S.optional(TagMap),
           maxGpus: S.optional(S.Number),
         }),
       ).annotate({ identifier: "GetRunGroupResponse" });
@@ -8172,7 +9113,7 @@ function __c18(j: number): any {
           gpus: S.optional(S.Number),
           instanceType: S.optional(S.String),
           failureReason: S.optional(S.String),
-          imageDetails: S.optional(__S(144)),
+          imageDetails: S.optional(ImageDetails),
           uuid: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetRunTaskResponse" });
@@ -8194,7 +9135,7 @@ function __c18(j: number): any {
         S.Struct({
           s3AccessPointArn: S.optional(S.String),
           storeId: S.optional(S.String),
-          storeType: S.optional(S.String),
+          storeType: S.optional(StoreType),
           updateTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           s3AccessPolicy: S.String,
         }),
@@ -8221,14 +9162,14 @@ function __c18(j: number): any {
           arn: S.String,
           name: S.optional(S.String),
           description: S.optional(S.String),
-          sseConfig: S.optional(__S(20)),
+          sseConfig: S.optional(SseConfig),
           creationTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           fallbackLocation: S.optional(S.String),
-          s3Access: S.optional(__S(46)),
+          s3Access: S.optional(SequenceStoreS3Access),
           eTagAlgorithmFamily: S.optional(S.String),
           status: S.optional(S.String),
           statusMessage: S.optional(S.String),
-          propagatedSetLevelTags: S.optional(__S(4)),
+          propagatedSetLevelTags: S.optional(PropagatedSetLevelTags),
           updateTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
         }),
       ).annotate({ identifier: "GetSequenceStoreResponse" });
@@ -8258,7 +9199,7 @@ function __c18(j: number): any {
 function __c19(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ share: S.optional(__S(151)) })).annotate({
+      return S.suspend(() => S.Struct({ share: S.optional(ShareDetails) })).annotate({
         identifier: "GetShareResponse",
       });
     case 1:
@@ -8279,7 +9220,7 @@ function __c19(j: number): any {
         S.Struct({ source: S.String, jobStatus: S.String, statusMessage: S.optional(S.String) }),
       ).annotate({ identifier: "VariantImportItemDetail" });
     case 3:
-      return S.Array(__S(154));
+      return S.Array(VariantImportItemDetail);
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -8291,9 +9232,9 @@ function __c19(j: number): any {
           creationTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           updateTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           completionTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          items: __S(155),
+          items: VariantImportItemDetails,
           runLeftNormalization: S.Boolean,
-          annotationFields: S.optional(__S(21)),
+          annotationFields: S.optional(AnnotationFieldMap),
         }),
       ).annotate({ identifier: "GetVariantImportResponse" });
     case 5:
@@ -8313,15 +9254,15 @@ function __c19(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          reference: __S(18),
+          reference: ReferenceItem,
           status: S.String,
           storeArn: S.String,
           name: S.String,
           description: S.String,
-          sseConfig: __S(20),
+          sseConfig: SseConfig,
           creationTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           updateTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-          tags: __S(19),
+          tags: TagMap,
           statusMessage: S.String,
           storeSizeBytes: S.Number,
         }),
@@ -8331,7 +9272,7 @@ function __c19(j: number): any {
         S.Struct({
           id: S.String.pipe(T.HttpLabel("id")),
           type: S.optional(S.String).pipe(T.HttpQuery("type")),
-          export: S.optional(__S(4)).pipe(T.HttpQuery("export")),
+          export: S.optional(WorkflowExportList).pipe(T.HttpQuery("export")),
           workflowOwnerId: S.optional(S.String).pipe(T.HttpQuery("workflowOwnerId")),
         }).pipe(
           T.all(T.Http({ method: "GET", uri: "/workflow/{id}" }), svc, auth, proto, ver, rules),
@@ -8346,7 +9287,7 @@ function __c20(j: number): any {
         S.Struct({
           connectionArn: S.optional(S.String),
           fullRepositoryId: S.optional(S.String),
-          sourceReference: S.optional(__S(59)),
+          sourceReference: S.optional(SourceReference),
           providerType: S.optional(S.String),
           providerEndpoint: S.optional(S.String),
         }),
@@ -8354,7 +9295,7 @@ function __c20(j: number): any {
         identifier: "DefinitionRepositoryDetails",
       });
     case 1:
-      return S.Record(S.String, /*@__PURE__*/ __S(53).pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ WorkflowParameterTemplate.pipe(S.optional));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -8368,21 +9309,21 @@ function __c20(j: number): any {
           definition: S.optional(S.String),
           main: S.optional(S.String),
           digest: S.optional(S.String),
-          parameterTemplate: S.optional(__S(53)),
+          parameterTemplate: S.optional(WorkflowParameterTemplate),
           storageCapacity: S.optional(S.Number),
           creationTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           statusMessage: S.optional(S.String),
-          tags: S.optional(__S(19)),
-          metadata: S.optional(__S(21)),
+          tags: S.optional(TagMap),
+          metadata: S.optional(WorkflowMetadata),
           accelerators: S.optional(S.String),
           storageType: S.optional(S.String),
           uuid: S.optional(S.String),
-          containerRegistryMap: S.optional(__S(58)),
+          containerRegistryMap: S.optional(ContainerRegistryMap),
           readme: S.optional(S.String),
-          definitionRepositoryDetails: S.optional(__S(160)),
+          definitionRepositoryDetails: S.optional(DefinitionRepositoryDetails),
           readmePath: S.optional(S.String),
-          profiles: S.optional(__S(4)),
-          profileParameterTemplates: S.optional(__S(161)),
+          profiles: S.optional(WorkflowProfileList),
+          profileParameterTemplates: S.optional(WorkflowProfileParameterTemplates),
         }),
       ).annotate({ identifier: "GetWorkflowResponse" });
     case 3:
@@ -8391,7 +9332,7 @@ function __c20(j: number): any {
           workflowId: S.String.pipe(T.HttpLabel("workflowId")),
           versionName: S.String.pipe(T.HttpLabel("versionName")),
           type: S.optional(S.String).pipe(T.HttpQuery("type")),
-          export: S.optional(__S(4)).pipe(T.HttpQuery("export")),
+          export: S.optional(WorkflowExportList).pipe(T.HttpQuery("export")),
           workflowOwnerId: S.optional(S.String).pipe(T.HttpQuery("workflowOwnerId")),
         }).pipe(
           T.all(
@@ -8419,22 +9360,22 @@ function __c20(j: number): any {
           digest: S.optional(S.String),
           engine: S.optional(S.String),
           main: S.optional(S.String),
-          metadata: S.optional(__S(21)),
-          parameterTemplate: S.optional(__S(53)),
+          metadata: S.optional(WorkflowMetadata),
+          parameterTemplate: S.optional(WorkflowParameterTemplate),
           status: S.optional(S.String),
           statusMessage: S.optional(S.String),
           storageType: S.optional(S.String),
           storageCapacity: S.optional(S.Number),
           type: S.optional(S.String),
-          tags: S.optional(__S(19)),
+          tags: S.optional(TagMap),
           uuid: S.optional(S.String),
           workflowBucketOwnerId: S.optional(S.String),
-          containerRegistryMap: S.optional(__S(58)),
+          containerRegistryMap: S.optional(ContainerRegistryMap),
           readme: S.optional(S.String),
-          definitionRepositoryDetails: S.optional(__S(160)),
+          definitionRepositoryDetails: S.optional(DefinitionRepositoryDetails),
           readmePath: S.optional(S.String),
-          profiles: S.optional(__S(4)),
-          profileParameterTemplates: S.optional(__S(161)),
+          profiles: S.optional(WorkflowProfileList),
+          profileParameterTemplates: S.optional(WorkflowProfileParameterTemplates),
         }),
       ).annotate({
         identifier: "GetWorkflowVersionResponse",
@@ -8449,9 +9390,9 @@ function __c20(j: number): any {
       return S.suspend(() =>
         S.Struct({
           maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-          ids: S.optional(__S(4)),
+          ids: S.optional(IdList),
           nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-          filter: S.optional(__S(165)),
+          filter: S.optional(ListAnnotationImportJobsFilter),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/import/annotations" }),
@@ -8477,7 +9418,7 @@ function __c20(j: number): any {
           updateTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           completionTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           runLeftNormalization: S.optional(S.Boolean),
-          annotationFields: S.optional(__S(21)),
+          annotationFields: S.optional(AnnotationFieldMap),
         }),
       ).annotate({ identifier: "AnnotationImportJobItem" });
   }
@@ -8485,11 +9426,11 @@ function __c20(j: number): any {
 function __c21(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(167));
+      return S.Array(AnnotationImportJobItem);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          annotationImportJobs: S.optional(__S(168)),
+          annotationImportJobs: S.optional(AnnotationImportJobItems),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -8502,10 +9443,10 @@ function __c21(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          ids: S.optional(__S(4)),
+          ids: S.optional(IdList),
           maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
           nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-          filter: S.optional(__S(170)),
+          filter: S.optional(ListAnnotationStoresFilter),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/annotationStores" }), svc, auth, proto, ver, rules),
         ),
@@ -8516,13 +9457,13 @@ function __c21(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          reference: __S(18),
+          reference: ReferenceItem,
           status: S.String,
           storeArn: S.String,
           name: S.String,
           storeFormat: S.String,
           description: S.String,
-          sseConfig: __S(20),
+          sseConfig: SseConfig,
           creationTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           updateTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           statusMessage: S.String,
@@ -8530,11 +9471,11 @@ function __c21(j: number): any {
         }),
       ).annotate({ identifier: "AnnotationStoreItem" });
     case 5:
-      return S.Array(__S(172));
+      return S.Array(AnnotationStoreItem);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          annotationStores: S.optional(__S(173)),
+          annotationStores: S.optional(AnnotationStoreItems),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -8546,7 +9487,7 @@ function __c21(j: number): any {
           name: S.String.pipe(T.HttpLabel("name")),
           maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
           nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-          filter: S.optional(__S(170)),
+          filter: S.optional(ListAnnotationStoreVersionsFilter),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/annotationStore/{name}/versions" }),
@@ -8583,11 +9524,11 @@ function __c22(j: number): any {
         identifier: "AnnotationStoreVersionItem",
       });
     case 1:
-      return S.Array(__S(176));
+      return S.Array(AnnotationStoreVersionItem);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          annotationStoreVersions: S.optional(__S(177)),
+          annotationStoreVersions: S.optional(AnnotationStoreVersionItems),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -8615,10 +9556,10 @@ function __c22(j: number): any {
         }),
       ).annotate({ identifier: "BatchListItem" });
     case 5:
-      return S.Array(__S(180));
+      return S.Array(BatchListItem);
     case 6:
       return S.suspend(() =>
-        S.Struct({ items: S.optional(__S(181)), nextToken: S.optional(S.String) }),
+        S.Struct({ items: S.optional(BatchList), nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListBatchResponse" });
     case 7:
       return S.suspend(() =>
@@ -8646,10 +9587,10 @@ function __c23(j: number): any {
         }),
       ).annotate({ identifier: "ConfigurationListItem" });
     case 1:
-      return S.Array(__S(184));
+      return S.Array(ConfigurationListItem);
     case 2:
       return S.suspend(() =>
-        S.Struct({ items: S.optional(__S(185)), nextToken: S.optional(S.String) }),
+        S.Struct({ items: S.optional(ConfigurationList), nextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListConfigurationsResponse",
       });
@@ -8684,19 +9625,19 @@ function __c23(j: number): any {
           referenceArn: S.String,
           name: S.optional(S.String),
           description: S.optional(S.String),
-          tags: S.optional(__S(19)),
+          tags: S.optional(TagMap),
           creationTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
         }),
       ).annotate({
         identifier: "MultipartReadSetUploadListItem",
       });
     case 5:
-      return S.Array(__S(188));
+      return S.Array(MultipartReadSetUploadListItem);
     case 6:
       return S.suspend(() =>
         S.Struct({
           nextToken: S.optional(S.String),
-          uploads: S.optional(__S(189)),
+          uploads: S.optional(MultipartReadSetUploadList),
         }),
       ).annotate({
         identifier: "ListMultipartReadSetUploadsResponse",
@@ -8719,7 +9660,7 @@ function __c24(j: number): any {
           sequenceStoreId: S.String.pipe(T.HttpLabel("sequenceStoreId")),
           maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
           nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-          filter: S.optional(__S(191)),
+          filter: S.optional(ActivateReadSetFilter),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/sequencestore/{sequenceStoreId}/activationjobs" }),
@@ -8744,12 +9685,12 @@ function __c24(j: number): any {
         }),
       ).annotate({ identifier: "ActivateReadSetJobItem" });
     case 2:
-      return S.Array(__S(193));
+      return S.Array(ActivateReadSetJobItem);
     case 3:
       return S.suspend(() =>
         S.Struct({
           nextToken: S.optional(S.String),
-          activationJobs: S.optional(__S(194)),
+          activationJobs: S.optional(ActivateReadSetJobList),
         }),
       ).annotate({
         identifier: "ListReadSetActivationJobsResponse",
@@ -8760,7 +9701,7 @@ function __c24(j: number): any {
           sequenceStoreId: S.String.pipe(T.HttpLabel("sequenceStoreId")),
           maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
           nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-          filter: S.optional(__S(191)),
+          filter: S.optional(ExportReadSetFilter),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/sequencestore/{sequenceStoreId}/exportjobs" }),
@@ -8786,12 +9727,12 @@ function __c24(j: number): any {
         }),
       ).annotate({ identifier: "ExportReadSetJobDetail" });
     case 6:
-      return S.Array(__S(197));
+      return S.Array(ExportReadSetJobDetail);
     case 7:
       return S.suspend(() =>
         S.Struct({
           nextToken: S.optional(S.String),
-          exportJobs: S.optional(__S(198)),
+          exportJobs: S.optional(ExportReadSetJobDetailList),
         }),
       ).annotate({
         identifier: "ListReadSetExportJobsResponse",
@@ -8806,7 +9747,7 @@ function __c25(j: number): any {
           maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
           nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
           sequenceStoreId: S.String.pipe(T.HttpLabel("sequenceStoreId")),
-          filter: S.optional(__S(191)),
+          filter: S.optional(ImportReadSetFilter),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/sequencestore/{sequenceStoreId}/importjobs" }),
@@ -8832,10 +9773,10 @@ function __c25(j: number): any {
         }),
       ).annotate({ identifier: "ImportReadSetJobItem" });
     case 2:
-      return S.Array(__S(201));
+      return S.Array(ImportReadSetJobItem);
     case 3:
       return S.suspend(() =>
-        S.Struct({ nextToken: S.optional(S.String), importJobs: S.optional(__S(202)) }),
+        S.Struct({ nextToken: S.optional(S.String), importJobs: S.optional(ImportReadSetJobList) }),
       ).annotate({
         identifier: "ListReadSetImportJobsResponse",
       });
@@ -8859,7 +9800,7 @@ function __c25(j: number): any {
           sequenceStoreId: S.String.pipe(T.HttpLabel("sequenceStoreId")),
           maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
           nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-          filter: S.optional(__S(204)),
+          filter: S.optional(ReadSetFilter),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/sequencestore/{sequenceStoreId}/readsets" }),
@@ -8884,22 +9825,22 @@ function __c25(j: number): any {
           description: S.optional(S.String),
           referenceArn: S.optional(S.String),
           fileType: S.String,
-          sequenceInformation: S.optional(__S(120)),
+          sequenceInformation: S.optional(SequenceInformation),
           creationTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           statusMessage: S.optional(S.String),
           creationType: S.optional(S.String),
-          etag: S.optional(__S(124)),
+          etag: S.optional(ETag),
         }),
       ).annotate({ identifier: "ReadSetListItem" });
     case 7:
-      return S.Array(__S(206));
+      return S.Array(ReadSetListItem);
   }
 }
 function __c26(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ nextToken: S.optional(S.String), readSets: __S(207) }),
+        S.Struct({ nextToken: S.optional(S.String), readSets: ReadSetList }),
       ).annotate({ identifier: "ListReadSetsResponse" });
     case 1:
       return S.suspend(() =>
@@ -8918,7 +9859,7 @@ function __c26(j: number): any {
           partSource: S.String,
           maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
           nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-          filter: S.optional(__S(209)),
+          filter: S.optional(ReadSetUploadPartListFilter),
         }).pipe(
           T.all(
             T.Http({
@@ -8949,10 +9890,10 @@ function __c26(j: number): any {
         identifier: "ReadSetUploadPartListItem",
       });
     case 4:
-      return S.Array(__S(211));
+      return S.Array(ReadSetUploadPartListItem);
     case 5:
       return S.suspend(() =>
-        S.Struct({ nextToken: S.optional(S.String), parts: S.optional(__S(212)) }),
+        S.Struct({ nextToken: S.optional(S.String), parts: S.optional(ReadSetUploadPartList) }),
       ).annotate({
         identifier: "ListReadSetUploadPartsResponse",
       });
@@ -8962,7 +9903,7 @@ function __c26(j: number): any {
           maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
           nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
           referenceStoreId: S.String.pipe(T.HttpLabel("referenceStoreId")),
-          filter: S.optional(__S(191)),
+          filter: S.optional(ImportReferenceFilter),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/referencestore/{referenceStoreId}/importjobs" }),
@@ -8992,12 +9933,12 @@ function __c26(j: number): any {
 function __c27(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(215));
+      return S.Array(ImportReferenceJobItem);
     case 1:
       return S.suspend(() =>
         S.Struct({
           nextToken: S.optional(S.String),
-          importJobs: S.optional(__S(216)),
+          importJobs: S.optional(ImportReferenceJobList),
         }),
       ).annotate({
         identifier: "ListReferenceImportJobsResponse",
@@ -9017,7 +9958,7 @@ function __c27(j: number): any {
           referenceStoreId: S.String.pipe(T.HttpLabel("referenceStoreId")),
           maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
           nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-          filter: S.optional(__S(218)),
+          filter: S.optional(ReferenceFilter),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/referencestore/{referenceStoreId}/references" }),
@@ -9044,10 +9985,10 @@ function __c27(j: number): any {
         }),
       ).annotate({ identifier: "ReferenceListItem" });
     case 5:
-      return S.Array(__S(220));
+      return S.Array(ReferenceListItem);
     case 6:
       return S.suspend(() =>
-        S.Struct({ nextToken: S.optional(S.String), references: __S(221) }),
+        S.Struct({ nextToken: S.optional(S.String), references: ReferenceList }),
       ).annotate({ identifier: "ListReferencesResponse" });
     case 7:
       return S.suspend(() =>
@@ -9066,7 +10007,7 @@ function __c28(j: number): any {
         S.Struct({
           maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
           nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-          filter: S.optional(__S(223)),
+          filter: S.optional(ReferenceStoreFilter),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/referencestores" }), svc, auth, proto, ver, rules),
         ),
@@ -9080,15 +10021,15 @@ function __c28(j: number): any {
           id: S.String,
           name: S.optional(S.String),
           description: S.optional(S.String),
-          sseConfig: S.optional(__S(20)),
+          sseConfig: S.optional(SseConfig),
           creationTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
         }),
       ).annotate({ identifier: "ReferenceStoreDetail" });
     case 2:
-      return S.Array(__S(225));
+      return S.Array(ReferenceStoreDetail);
     case 3:
       return S.suspend(() =>
-        S.Struct({ nextToken: S.optional(S.String), referenceStores: __S(226) }),
+        S.Struct({ nextToken: S.optional(S.String), referenceStores: ReferenceStoreDetailList }),
       ).annotate({
         identifier: "ListReferenceStoresResponse",
       });
@@ -9112,10 +10053,10 @@ function __c28(j: number): any {
         }),
       ).annotate({ identifier: "RunCacheListItem" });
     case 6:
-      return S.Array(__S(229));
+      return S.Array(RunCacheListItem);
     case 7:
       return S.suspend(() =>
-        S.Struct({ items: S.optional(__S(230)), nextToken: S.optional(S.String) }),
+        S.Struct({ items: S.optional(RunCacheList), nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListRunCachesResponse" });
   }
 }
@@ -9143,10 +10084,10 @@ function __c29(j: number): any {
         }),
       ).annotate({ identifier: "RunGroupListItem" });
     case 2:
-      return S.Array(__S(233));
+      return S.Array(RunGroupListItem);
     case 3:
       return S.suspend(() =>
-        S.Struct({ items: S.optional(__S(234)), nextToken: S.optional(S.String) }),
+        S.Struct({ items: S.optional(RunGroupList), nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListRunGroupsResponse" });
     case 4:
       return S.suspend(() =>
@@ -9179,10 +10120,10 @@ function __c29(j: number): any {
         }),
       ).annotate({ identifier: "RunListItem" });
     case 6:
-      return S.Array(__S(237));
+      return S.Array(RunListItem);
     case 7:
       return S.suspend(() =>
-        S.Struct({ items: S.optional(__S(238)), nextToken: S.optional(S.String) }),
+        S.Struct({ items: S.optional(RunList), nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListRunsResponse" });
   }
 }
@@ -9221,10 +10162,10 @@ function __c30(j: number): any {
         }),
       ).annotate({ identifier: "RunBatchListItem" });
     case 2:
-      return S.Array(__S(241));
+      return S.Array(RunBatchListItem);
     case 3:
       return S.suspend(() =>
-        S.Struct({ runs: S.optional(__S(242)), nextToken: S.optional(S.String) }),
+        S.Struct({ runs: S.optional(RunBatchList), nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListRunsInBatchResponse" });
     case 4:
       return S.suspend(() =>
@@ -9256,10 +10197,10 @@ function __c30(j: number): any {
         }),
       ).annotate({ identifier: "TaskListItem" });
     case 6:
-      return S.Array(__S(245));
+      return S.Array(TaskListItem);
     case 7:
       return S.suspend(() =>
-        S.Struct({ items: S.optional(__S(246)), nextToken: S.optional(S.String) }),
+        S.Struct({ items: S.optional(TaskList), nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListRunTasksResponse" });
   }
 }
@@ -9281,7 +10222,7 @@ function __c31(j: number): any {
         S.Struct({
           maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
           nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-          filter: S.optional(__S(248)),
+          filter: S.optional(SequenceStoreFilter),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/sequencestores" }), svc, auth, proto, ver, rules),
         ),
@@ -9295,7 +10236,7 @@ function __c31(j: number): any {
           id: S.String,
           name: S.optional(S.String),
           description: S.optional(S.String),
-          sseConfig: S.optional(__S(20)),
+          sseConfig: S.optional(SseConfig),
           creationTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           fallbackLocation: S.optional(S.String),
           eTagAlgorithmFamily: S.optional(S.String),
@@ -9305,39 +10246,39 @@ function __c31(j: number): any {
         }),
       ).annotate({ identifier: "SequenceStoreDetail" });
     case 3:
-      return S.Array(__S(250));
+      return S.Array(SequenceStoreDetail);
     case 4:
       return S.suspend(() =>
-        S.Struct({ nextToken: S.optional(S.String), sequenceStores: __S(251) }),
+        S.Struct({ nextToken: S.optional(S.String), sequenceStores: SequenceStoreDetailList }),
       ).annotate({
         identifier: "ListSequenceStoresResponse",
       });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          resourceArns: S.optional(__S(4)),
-          status: S.optional(__S(4)),
-          type: S.optional(__S(4)),
+          resourceArns: S.optional(ArnList),
+          status: S.optional(StatusList),
+          type: S.optional(TypeList),
         }),
       ).annotate({ identifier: "Filter" });
     case 6:
       return S.suspend(() =>
         S.Struct({
           resourceOwner: S.String,
-          filter: S.optional(__S(253)),
+          filter: S.optional(Filter),
           nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
           maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/shares" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListSharesRequest" });
     case 7:
-      return S.Array(__S(151));
+      return S.Array(ShareDetails);
   }
 }
 function __c32(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ shares: __S(255), nextToken: S.optional(S.String) }),
+        S.Struct({ shares: ShareDetailsList, nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListSharesResponse" });
     case 1:
       return S.suspend(() =>
@@ -9355,16 +10296,16 @@ function __c32(j: number): any {
         identifier: "ListTagsForResourceRequest",
       });
     case 2:
-      return S.suspend(() => S.Struct({ tags: __S(19) })).annotate({
+      return S.suspend(() => S.Struct({ tags: TagMap })).annotate({
         identifier: "ListTagsForResourceResponse",
       });
     case 3:
       return S.suspend(() =>
         S.Struct({
           maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-          ids: S.optional(__S(4)),
+          ids: S.optional(IdList),
           nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-          filter: S.optional(__S(165)),
+          filter: S.optional(ListVariantImportJobsFilter),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/import/variants" }), svc, auth, proto, ver, rules),
         ),
@@ -9382,15 +10323,15 @@ function __c32(j: number): any {
           updateTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           completionTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           runLeftNormalization: S.optional(S.Boolean),
-          annotationFields: S.optional(__S(21)),
+          annotationFields: S.optional(AnnotationFieldMap),
         }),
       ).annotate({ identifier: "VariantImportJobItem" });
     case 5:
-      return S.Array(__S(260));
+      return S.Array(VariantImportJobItem);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          variantImportJobs: S.optional(__S(261)),
+          variantImportJobs: S.optional(VariantImportJobItems),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -9400,9 +10341,9 @@ function __c32(j: number): any {
       return S.suspend(() =>
         S.Struct({
           maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-          ids: S.optional(__S(4)),
+          ids: S.optional(IdList),
           nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-          filter: S.optional(__S(3)),
+          filter: S.optional(ListVariantStoresFilter),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/variantStores" }), svc, auth, proto, ver, rules),
         ),
@@ -9415,12 +10356,12 @@ function __c33(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          reference: __S(18),
+          reference: ReferenceItem,
           status: S.String,
           storeArn: S.String,
           name: S.String,
           description: S.String,
-          sseConfig: __S(20),
+          sseConfig: SseConfig,
           creationTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           updateTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           statusMessage: S.String,
@@ -9428,10 +10369,10 @@ function __c33(j: number): any {
         }),
       ).annotate({ identifier: "VariantStoreItem" });
     case 1:
-      return S.Array(__S(264));
+      return S.Array(VariantStoreItem);
     case 2:
       return S.suspend(() =>
-        S.Struct({ variantStores: S.optional(__S(265)), nextToken: S.optional(S.String) }),
+        S.Struct({ variantStores: S.optional(VariantStoreItems), nextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListVariantStoresResponse",
       });
@@ -9454,14 +10395,14 @@ function __c33(j: number): any {
           type: S.optional(S.String),
           digest: S.optional(S.String),
           creationTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          metadata: S.optional(__S(21)),
+          metadata: S.optional(WorkflowMetadata),
         }),
       ).annotate({ identifier: "WorkflowListItem" });
     case 5:
-      return S.Array(__S(268));
+      return S.Array(WorkflowListItem);
     case 6:
       return S.suspend(() =>
-        S.Struct({ items: S.optional(__S(269)), nextToken: S.optional(S.String) }),
+        S.Struct({ items: S.optional(WorkflowList), nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListWorkflowsResponse" });
     case 7:
       return S.suspend(() =>
@@ -9499,14 +10440,14 @@ function __c34(j: number): any {
           type: S.optional(S.String),
           digest: S.optional(S.String),
           creationTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          metadata: S.optional(__S(21)),
+          metadata: S.optional(WorkflowMetadata),
         }),
       ).annotate({ identifier: "WorkflowVersionListItem" });
     case 1:
-      return S.Array(__S(272));
+      return S.Array(WorkflowVersionListItem);
     case 2:
       return S.suspend(() =>
-        S.Struct({ items: S.optional(__S(273)), nextToken: S.optional(S.String) }),
+        S.Struct({ items: S.optional(WorkflowVersionList), nextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListWorkflowVersionsResponse",
       });
@@ -9531,7 +10472,7 @@ function __c34(j: number): any {
         S.Struct({
           s3AccessPointArn: S.optional(S.String),
           storeId: S.optional(S.String),
-          storeType: S.optional(S.String),
+          storeType: S.optional(StoreType),
         }),
       ).annotate({
         identifier: "PutS3AccessPolicyResponse",
@@ -9541,17 +10482,17 @@ function __c34(j: number): any {
         identifier: "AnnotationImportItemSource",
       });
     case 6:
-      return S.Array(__S(277));
+      return S.Array(AnnotationImportItemSource);
     case 7:
       return S.suspend(() =>
         S.Struct({
           destinationName: S.String,
           roleArn: S.String,
-          items: __S(278),
+          items: AnnotationImportItemSources,
           versionName: S.optional(S.String),
-          formatOptions: S.optional(__S(91)),
+          formatOptions: S.optional(FormatOptions),
           runLeftNormalization: S.optional(S.Boolean),
-          annotationFields: S.optional(__S(21)),
+          annotationFields: S.optional(AnnotationFieldMap),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/import/annotation" }),
@@ -9574,13 +10515,13 @@ function __c35(j: number): any {
         identifier: "StartAnnotationImportResponse",
       });
     case 1:
-      return S.Array(__S(17));
+      return S.Array(StartReadSetActivationJobSourceItem);
     case 2:
       return S.suspend(() =>
         S.Struct({
           sequenceStoreId: S.String.pipe(T.HttpLabel("sequenceStoreId")),
           clientToken: S.optional(S.String),
-          sources: __S(281),
+          sources: StartReadSetActivationJobSourceList,
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/sequencestore/{sequenceStoreId}/activationjob" }),
@@ -9610,7 +10551,7 @@ function __c35(j: number): any {
         identifier: "ExportReadSet",
       });
     case 5:
-      return S.Array(__S(284));
+      return S.Array(ExportReadSet);
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -9618,7 +10559,7 @@ function __c35(j: number): any {
           destination: S.String,
           roleArn: S.String,
           clientToken: S.optional(S.String),
-          sources: __S(285),
+          sources: ExportReadSetList,
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/sequencestore/{sequenceStoreId}/exportjob" }),
@@ -9651,7 +10592,7 @@ function __c36(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          sourceFiles: __S(115),
+          sourceFiles: SourceFiles,
           sourceFileType: S.String,
           subjectId: S.String,
           sampleId: S.String,
@@ -9659,20 +10600,20 @@ function __c36(j: number): any {
           referenceArn: S.optional(S.String),
           name: S.optional(S.String),
           description: S.optional(S.String),
-          tags: S.optional(__S(19)),
+          tags: S.optional(TagMap),
         }),
       ).annotate({
         identifier: "StartReadSetImportJobSourceItem",
       });
     case 1:
-      return S.Array(__S(288));
+      return S.Array(StartReadSetImportJobSourceItem);
     case 2:
       return S.suspend(() =>
         S.Struct({
           sequenceStoreId: S.String.pipe(T.HttpLabel("sequenceStoreId")),
           roleArn: S.String,
           clientToken: S.optional(S.String),
-          sources: __S(289),
+          sources: StartReadSetImportJobSourceList,
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/sequencestore/{sequenceStoreId}/importjob" }),
@@ -9704,20 +10645,20 @@ function __c36(j: number): any {
           sourceFile: S.String,
           name: S.String,
           description: S.optional(S.String),
-          tags: S.optional(__S(19)),
+          tags: S.optional(TagMap),
         }),
       ).annotate({
         identifier: "StartReferenceImportJobSourceItem",
       });
     case 5:
-      return S.Array(__S(292));
+      return S.Array(StartReferenceImportJobSourceItem);
     case 6:
       return S.suspend(() =>
         S.Struct({
           referenceStoreId: S.String.pipe(T.HttpLabel("referenceStoreId")),
           roleArn: S.String,
           clientToken: S.optional(S.String),
-          sources: __S(293),
+          sources: StartReferenceImportJobSourceList,
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/referencestore/{referenceStoreId}/importjob" }),
@@ -9763,7 +10704,7 @@ function __c37(j: number): any {
           storageCapacity: S.optional(S.Number),
           outputUri: S.String,
           logLevel: S.optional(S.String),
-          tags: S.optional(__S(19)),
+          tags: S.optional(TagMap),
           requestId: S.String.pipe(T.IdempotencyToken()),
           retentionMode: S.optional(S.String),
           storageType: S.optional(S.String),
@@ -9782,10 +10723,10 @@ function __c37(j: number): any {
           arn: S.optional(S.String),
           id: S.optional(S.String),
           status: S.optional(S.String),
-          tags: S.optional(__S(19)),
+          tags: S.optional(TagMap),
           uuid: S.optional(S.String),
           runOutputUri: S.optional(S.String),
-          configuration: S.optional(__S(137)),
+          configuration: S.optional(ConfigurationDetails),
           networkingMode: S.optional(S.String),
         }),
       ).annotate({ identifier: "StartRunResponse" });
@@ -9798,15 +10739,15 @@ function __c37(j: number): any {
           priority: S.optional(S.Number),
           parameters: S.optional(S.Any),
           outputBucketOwnerId: S.optional(S.String),
-          runTags: S.optional(__S(19)),
+          runTags: S.optional(TagMap),
           engineSettings: S.optional(S.Any),
         }),
       ).annotate({ identifier: "InlineSetting" });
     case 3:
-      return S.Array(__S(298));
+      return S.Array(InlineSetting);
     case 4:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ inlineSettings: __S(299) }),
+        /*@__PURE__*/ S.Struct({ inlineSettings: InlineSettings }),
         /*@__PURE__*/ S.Struct({ s3UriSettings: S.String }),
       ]);
     case 5:
@@ -9814,9 +10755,9 @@ function __c37(j: number): any {
         S.Struct({
           batchName: S.optional(S.String),
           requestId: S.String.pipe(T.IdempotencyToken()),
-          tags: S.optional(__S(19)),
-          defaultRunSetting: __S(98),
-          batchRunSettings: __S(300),
+          tags: S.optional(TagMap),
+          defaultRunSetting: DefaultRunSetting,
+          batchRunSettings: BatchRunSettings,
         }).pipe(T.all(T.Http({ method: "POST", uri: "/runBatch" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "StartRunBatchRequest" });
     case 6:
@@ -9826,7 +10767,7 @@ function __c37(j: number): any {
           arn: S.optional(S.String),
           status: S.optional(S.String),
           uuid: S.optional(S.String),
-          tags: S.optional(__S(19)),
+          tags: S.optional(TagMap),
         }),
       ).annotate({ identifier: "StartRunBatchResponse" });
     case 7:
@@ -9838,15 +10779,15 @@ function __c37(j: number): any {
 function __c38(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(303));
+      return S.Array(VariantImportItemSource);
     case 1:
       return S.suspend(() =>
         S.Struct({
           destinationName: S.String,
           roleArn: S.String,
-          items: __S(304),
+          items: VariantImportItemSources,
           runLeftNormalization: S.optional(S.Boolean),
-          annotationFields: S.optional(__S(21)),
+          annotationFields: S.optional(AnnotationFieldMap),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/import/variant" }), svc, auth, proto, ver, rules),
         ),
@@ -9855,7 +10796,7 @@ function __c38(j: number): any {
       });
     case 2:
       return S.suspend(() =>
-        S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")), tags: __S(19) }).pipe(
+        S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")), tags: TagMap }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/tags/{resourceArn}" }),
             svc,
@@ -9870,7 +10811,7 @@ function __c38(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
-          tagKeys: __S(4).pipe(T.HttpQuery("tagKeys")),
+          tagKeys: TagKeyList.pipe(T.HttpQuery("tagKeys")),
         }).pipe(
           T.all(
             T.Http({ method: "DELETE", uri: "/tags/{resourceArn}" }),
@@ -9904,13 +10845,13 @@ function __c38(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          reference: __S(18),
+          reference: ReferenceItem,
           status: S.String,
           name: S.String,
           description: S.String,
           creationTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           updateTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-          storeOptions: S.optional(__S(24)),
+          storeOptions: S.optional(StoreOptions),
           storeFormat: S.optional(S.String),
         }),
       ).annotate({
@@ -9986,8 +10927,8 @@ function __c39(j: number): any {
           description: S.optional(S.String),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
           fallbackLocation: S.optional(S.String),
-          propagatedSetLevelTags: S.optional(__S(4)),
-          s3AccessConfig: S.optional(__S(44)),
+          propagatedSetLevelTags: S.optional(PropagatedSetLevelTags),
+          s3AccessConfig: S.optional(S3AccessConfig),
         }).pipe(
           T.all(
             T.Http({ method: "PATCH", uri: "/sequencestore/{id}" }),
@@ -10008,14 +10949,14 @@ function __c39(j: number): any {
           arn: S.String,
           name: S.optional(S.String),
           description: S.optional(S.String),
-          sseConfig: S.optional(__S(20)),
+          sseConfig: S.optional(SseConfig),
           creationTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           updateTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          propagatedSetLevelTags: S.optional(__S(4)),
+          propagatedSetLevelTags: S.optional(PropagatedSetLevelTags),
           status: S.optional(S.String),
           statusMessage: S.optional(S.String),
           fallbackLocation: S.optional(S.String),
-          s3Access: S.optional(__S(46)),
+          s3Access: S.optional(SequenceStoreS3Access),
           eTagAlgorithmFamily: S.optional(S.String),
         }),
       ).annotate({
@@ -10043,7 +10984,7 @@ function __c39(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          reference: __S(18),
+          reference: ReferenceItem,
           status: S.String,
           name: S.String,
           description: S.String,
@@ -10118,96 +11059,5 @@ function __c40(j: number): any {
       return S.suspend(() => S.Struct({ checksum: S.String })).annotate({
         identifier: "UploadReadSetPartResponse",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
-    case 9:
-      return __c9(i & 7);
-    case 10:
-      return __c10(i & 7);
-    case 11:
-      return __c11(i & 7);
-    case 12:
-      return __c12(i & 7);
-    case 13:
-      return __c13(i & 7);
-    case 14:
-      return __c14(i & 7);
-    case 15:
-      return __c15(i & 7);
-    case 16:
-      return __c16(i & 7);
-    case 17:
-      return __c17(i & 7);
-    case 18:
-      return __c18(i & 7);
-    case 19:
-      return __c19(i & 7);
-    case 20:
-      return __c20(i & 7);
-    case 21:
-      return __c21(i & 7);
-    case 22:
-      return __c22(i & 7);
-    case 23:
-      return __c23(i & 7);
-    case 24:
-      return __c24(i & 7);
-    case 25:
-      return __c25(i & 7);
-    case 26:
-      return __c26(i & 7);
-    case 27:
-      return __c27(i & 7);
-    case 28:
-      return __c28(i & 7);
-    case 29:
-      return __c29(i & 7);
-    case 30:
-      return __c30(i & 7);
-    case 31:
-      return __c31(i & 7);
-    case 32:
-      return __c32(i & 7);
-    case 33:
-      return __c33(i & 7);
-    case 34:
-      return __c34(i & 7);
-    case 35:
-      return __c35(i & 7);
-    case 36:
-      return __c36(i & 7);
-    case 37:
-      return __c37(i & 7);
-    case 38:
-      return __c38(i & 7);
-    case 39:
-      return __c39(i & 7);
-    case 40:
-      return __c40(i & 7);
   }
 }

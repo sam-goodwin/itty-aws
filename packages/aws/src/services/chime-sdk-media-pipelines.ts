@@ -10,8 +10,6 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "Chime SDK Media Pipelines",
   serviceShapeName: "ChimeSDKMediaPipelinesService",
@@ -85,7 +83,7 @@ export class BadRequestException
     "BadRequestException",
     {
       Code: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => S.String).annotate({ identifier: "ErrorCode" }),
+        /*@__PURE__*/ S.suspend(() => ErrorCode).annotate({ identifier: "ErrorCode" }),
       ),
       message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
       RequestId: /*@__PURE__*/ S.optional(S.String),
@@ -97,7 +95,7 @@ export class ConflictException
     "ConflictException",
     {
       Code: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => S.String).annotate({ identifier: "ErrorCode" }),
+        /*@__PURE__*/ S.suspend(() => ErrorCode).annotate({ identifier: "ErrorCode" }),
       ),
       message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
       RequestId: /*@__PURE__*/ S.optional(S.String),
@@ -109,7 +107,7 @@ export class ForbiddenException
     "ForbiddenException",
     {
       Code: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => S.String).annotate({ identifier: "ErrorCode" }),
+        /*@__PURE__*/ S.suspend(() => ErrorCode).annotate({ identifier: "ErrorCode" }),
       ),
       message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
       RequestId: /*@__PURE__*/ S.optional(S.String),
@@ -121,7 +119,7 @@ export class NotFoundException
     "NotFoundException",
     {
       Code: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => S.String).annotate({ identifier: "ErrorCode" }),
+        /*@__PURE__*/ S.suspend(() => ErrorCode).annotate({ identifier: "ErrorCode" }),
       ),
       message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
       RequestId: /*@__PURE__*/ S.optional(S.String),
@@ -133,7 +131,7 @@ export class ResourceLimitExceededException
     "ResourceLimitExceededException",
     {
       Code: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => S.String).annotate({ identifier: "ErrorCode" }),
+        /*@__PURE__*/ S.suspend(() => ErrorCode).annotate({ identifier: "ErrorCode" }),
       ),
       message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
       RequestId: /*@__PURE__*/ S.optional(S.String),
@@ -145,7 +143,7 @@ export class ServiceFailureException
     "ServiceFailureException",
     {
       Code: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => S.String).annotate({ identifier: "ErrorCode" }),
+        /*@__PURE__*/ S.suspend(() => ErrorCode).annotate({ identifier: "ErrorCode" }),
       ),
       message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
       RequestId: /*@__PURE__*/ S.optional(S.String),
@@ -157,7 +155,7 @@ export class ServiceUnavailableException
     "ServiceUnavailableException",
     {
       Code: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => S.String).annotate({ identifier: "ErrorCode" }),
+        /*@__PURE__*/ S.suspend(() => ErrorCode).annotate({ identifier: "ErrorCode" }),
       ),
       message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
       RequestId: /*@__PURE__*/ S.optional(S.String),
@@ -169,7 +167,7 @@ export class ThrottledClientException
     "ThrottledClientException",
     {
       Code: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => S.String).annotate({ identifier: "ErrorCode" }),
+        /*@__PURE__*/ S.suspend(() => ErrorCode).annotate({ identifier: "ErrorCode" }),
       ),
       message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
       RequestId: /*@__PURE__*/ S.optional(S.String),
@@ -181,7 +179,7 @@ export class UnauthorizedClientException
     "UnauthorizedClientException",
     {
       Code: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => S.String).annotate({ identifier: "ErrorCode" }),
+        /*@__PURE__*/ S.suspend(() => ErrorCode).annotate({ identifier: "ErrorCode" }),
       ),
       message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
       RequestId: /*@__PURE__*/ S.optional(S.String),
@@ -189,67 +187,113 @@ export class UnauthorizedClientException
     /*@__PURE__*/ T.HttpError(401),
   ).pipe(C.withAuthError) {}
 export type MediaPipelineSourceType = "ChimeSdkMeeting" | (string & {});
+const MediaPipelineSourceType = S.String;
+
 export type Arn = string | redacted.Redacted<string>;
 export type MediaPipelineSinkType = "S3Bucket" | (string & {});
+const MediaPipelineSinkType = S.String;
+
 export type ClientRequestToken = string | redacted.Redacted<string>;
 export type GuidString = string;
 export type AttendeeIdList = string[];
+const AttendeeIdList = /*@__PURE__*/ __L.at(__c0, 0);
 export type ExternalUserIdType = string | redacted.Redacted<string>;
 export type ExternalUserIdList = (string | redacted.Redacted<string>)[];
+const ExternalUserIdList = /*@__PURE__*/ __L.at(__c0, 1);
 export interface SelectedVideoStreams {
   AttendeeIds?: string[];
   ExternalUserIds?: (string | redacted.Redacted<string>)[];
 }
+const SelectedVideoStreams = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<SelectedVideoStreams>;
 export interface SourceConfiguration {
   SelectedVideoStreams?: SelectedVideoStreams;
 }
+const SourceConfiguration = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<SourceConfiguration>;
 export type AudioMuxType =
   | "AudioOnly"
   | "AudioWithActiveSpeakerVideo"
   | "AudioWithCompositedVideo"
   | (string & {});
+const AudioMuxType = S.String;
+
 export interface AudioArtifactsConfiguration {
   MuxType: AudioMuxType;
 }
+const AudioArtifactsConfiguration = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<AudioArtifactsConfiguration>;
 export type ArtifactsState = "Enabled" | "Disabled" | (string & {});
+const ArtifactsState = S.String;
+
 export type VideoMuxType = "VideoOnly" | (string & {});
+const VideoMuxType = S.String;
+
 export interface VideoArtifactsConfiguration {
   State: ArtifactsState;
   MuxType?: VideoMuxType;
 }
+const VideoArtifactsConfiguration = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<VideoArtifactsConfiguration>;
 export type ContentMuxType = "ContentOnly" | (string & {});
 export interface ContentArtifactsConfiguration {
   State: ArtifactsState;
   MuxType?: ContentMuxType;
 }
+const ContentArtifactsConfiguration =
+  VideoArtifactsConfiguration as any as S.Schema<ContentArtifactsConfiguration>;
 export type LayoutOption = "GridView" | (string & {});
+const LayoutOption = S.String;
+
 export type ResolutionOption = "HD" | "FHD" | (string & {});
+const ResolutionOption = S.String;
+
 export type ContentShareLayoutOption =
   | "PresenterOnly"
   | "Horizontal"
   | "Vertical"
   | "ActiveSpeakerOnly"
   | (string & {});
+const ContentShareLayoutOption = S.String;
+
 export type PresenterPosition =
   | "TopLeft"
   | "TopRight"
   | "BottomLeft"
   | "BottomRight"
   | (string & {});
+const PresenterPosition = S.String;
+
 export interface PresenterOnlyConfiguration {
   PresenterPosition?: PresenterPosition;
 }
+const PresenterOnlyConfiguration = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<PresenterOnlyConfiguration>;
 export type ActiveSpeakerPosition =
   | "TopLeft"
   | "TopRight"
   | "BottomLeft"
   | "BottomRight"
   | (string & {});
+const ActiveSpeakerPosition = S.String;
+
 export interface ActiveSpeakerOnlyConfiguration {
   ActiveSpeakerPosition?: ActiveSpeakerPosition;
 }
+const ActiveSpeakerOnlyConfiguration = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<ActiveSpeakerOnlyConfiguration>;
 export type TileOrder = "JoinSequence" | "SpeakerSequence" | (string & {});
+const TileOrder = S.String;
+
 export type HorizontalTilePosition = "Top" | "Bottom" | (string & {});
+const HorizontalTilePosition = S.String;
+
 export type TileCount = number;
 export type TileAspectRatio = string;
 export interface HorizontalLayoutConfiguration {
@@ -258,6 +302,10 @@ export interface HorizontalLayoutConfiguration {
   TileCount?: number;
   TileAspectRatio?: string;
 }
+const HorizontalLayoutConfiguration = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<HorizontalLayoutConfiguration>;
 export type VerticalTilePosition = "Left" | "Right" | (string & {});
 export interface VerticalLayoutConfiguration {
   TileOrder?: TileOrder;
@@ -265,8 +313,12 @@ export interface VerticalLayoutConfiguration {
   TileCount?: number;
   TileAspectRatio?: string;
 }
+const VerticalLayoutConfiguration =
+  HorizontalLayoutConfiguration as any as S.Schema<VerticalLayoutConfiguration>;
 export type CornerRadius = number;
 export type BorderColor = "Black" | "Blue" | "Red" | "Green" | "White" | "Yellow" | (string & {});
+const BorderColor = S.String;
+
 export type HighlightColor =
   | "Black"
   | "Blue"
@@ -275,6 +327,8 @@ export type HighlightColor =
   | "White"
   | "Yellow"
   | (string & {});
+const HighlightColor = S.String;
+
 export type BorderThickness = number;
 export interface VideoAttribute {
   CornerRadius?: number;
@@ -282,7 +336,10 @@ export interface VideoAttribute {
   HighlightColor?: HighlightColor;
   BorderThickness?: number;
 }
+const VideoAttribute = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<VideoAttribute>;
 export type CanvasOrientation = "Landscape" | "Portrait" | (string & {});
+const CanvasOrientation = S.String;
+
 export interface GridViewConfiguration {
   ContentShareLayout: ContentShareLayoutOption;
   PresenterOnlyConfiguration?: PresenterOnlyConfiguration;
@@ -292,32 +349,54 @@ export interface GridViewConfiguration {
   VideoAttribute?: VideoAttribute;
   CanvasOrientation?: CanvasOrientation;
 }
+const GridViewConfiguration = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<GridViewConfiguration>;
 export interface CompositedVideoArtifactsConfiguration {
   Layout?: LayoutOption;
   Resolution?: ResolutionOption;
   GridViewConfiguration: GridViewConfiguration;
 }
+const CompositedVideoArtifactsConfiguration = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<CompositedVideoArtifactsConfiguration>;
 export interface ArtifactsConfiguration {
   Audio: AudioArtifactsConfiguration;
   Video: VideoArtifactsConfiguration;
   Content: ContentArtifactsConfiguration;
   CompositedVideo?: CompositedVideoArtifactsConfiguration;
 }
+const ArtifactsConfiguration = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<ArtifactsConfiguration>;
 export interface ChimeSdkMeetingConfiguration {
   SourceConfiguration?: SourceConfiguration;
   ArtifactsConfiguration?: ArtifactsConfiguration;
 }
+const ChimeSdkMeetingConfiguration = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<ChimeSdkMeetingConfiguration>;
 export interface SseAwsKeyManagementParams {
   AwsKmsKeyId: string;
   AwsKmsEncryptionContext?: string;
 }
+const SseAwsKeyManagementParams = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<SseAwsKeyManagementParams>;
 export type TagKey = string;
 export type TagValue = string;
 export interface Tag {
   Key: string;
   Value: string;
 }
+const Tag = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<Tag>;
 export type TagList = Tag[];
+const TagList = /*@__PURE__*/ __L.at(__c2, 0);
 export interface CreateMediaCapturePipelineRequest {
   SourceType: MediaPipelineSourceType;
   SourceArn: string | redacted.Redacted<string>;
@@ -329,6 +408,10 @@ export interface CreateMediaCapturePipelineRequest {
   SinkIamRoleArn?: string | redacted.Redacted<string>;
   Tags?: Tag[];
 }
+const CreateMediaCapturePipelineRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<CreateMediaCapturePipelineRequest>;
 export type AmazonResourceName = string;
 export type MediaPipelineStatus =
   | "Initializing"
@@ -339,6 +422,8 @@ export type MediaPipelineStatus =
   | "Paused"
   | "NotStarted"
   | (string & {});
+const MediaPipelineStatus = S.String;
+
 export type Iso8601Timestamp = Date;
 export interface MediaCapturePipeline {
   MediaPipelineId?: string;
@@ -354,33 +439,58 @@ export interface MediaCapturePipeline {
   SseAwsKeyManagementParams?: SseAwsKeyManagementParams;
   SinkIamRoleArn?: string | redacted.Redacted<string>;
 }
+const MediaCapturePipeline = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<MediaCapturePipeline>;
 export interface CreateMediaCapturePipelineResponse {
   MediaCapturePipeline?: MediaCapturePipeline;
 }
+const CreateMediaCapturePipelineResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<CreateMediaCapturePipelineResponse>;
 export type ConcatenationSourceType = "MediaCapturePipeline" | (string & {});
+const ConcatenationSourceType = S.String;
+
 export type AudioArtifactsConcatenationState = "Enabled" | (string & {});
+const AudioArtifactsConcatenationState = S.String;
+
 export interface AudioConcatenationConfiguration {
   State: AudioArtifactsConcatenationState;
 }
+const AudioConcatenationConfiguration = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<AudioConcatenationConfiguration>;
 export type ArtifactsConcatenationState = "Enabled" | "Disabled" | (string & {});
 export interface VideoConcatenationConfiguration {
   State: ArtifactsConcatenationState;
 }
+const VideoConcatenationConfiguration =
+  AudioConcatenationConfiguration as any as S.Schema<VideoConcatenationConfiguration>;
 export interface ContentConcatenationConfiguration {
   State: ArtifactsConcatenationState;
 }
+const ContentConcatenationConfiguration =
+  VideoConcatenationConfiguration as any as S.Schema<ContentConcatenationConfiguration>;
 export interface DataChannelConcatenationConfiguration {
   State: ArtifactsConcatenationState;
 }
+const DataChannelConcatenationConfiguration =
+  VideoConcatenationConfiguration as any as S.Schema<DataChannelConcatenationConfiguration>;
 export interface TranscriptionMessagesConcatenationConfiguration {
   State: ArtifactsConcatenationState;
 }
+const TranscriptionMessagesConcatenationConfiguration =
+  VideoConcatenationConfiguration as any as S.Schema<TranscriptionMessagesConcatenationConfiguration>;
 export interface MeetingEventsConcatenationConfiguration {
   State: ArtifactsConcatenationState;
 }
+const MeetingEventsConcatenationConfiguration =
+  VideoConcatenationConfiguration as any as S.Schema<MeetingEventsConcatenationConfiguration>;
 export interface CompositedVideoConcatenationConfiguration {
   State: ArtifactsConcatenationState;
 }
+const CompositedVideoConcatenationConfiguration =
+  VideoConcatenationConfiguration as any as S.Schema<CompositedVideoConcatenationConfiguration>;
 export interface ArtifactsConcatenationConfiguration {
   Audio: AudioConcatenationConfiguration;
   Video: VideoConcatenationConfiguration;
@@ -390,33 +500,59 @@ export interface ArtifactsConcatenationConfiguration {
   MeetingEvents: MeetingEventsConcatenationConfiguration;
   CompositedVideo: CompositedVideoConcatenationConfiguration;
 }
+const ArtifactsConcatenationConfiguration = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<ArtifactsConcatenationConfiguration>;
 export interface ChimeSdkMeetingConcatenationConfiguration {
   ArtifactsConfiguration: ArtifactsConcatenationConfiguration;
 }
+const ChimeSdkMeetingConcatenationConfiguration = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<ChimeSdkMeetingConcatenationConfiguration>;
 export interface MediaCapturePipelineSourceConfiguration {
   MediaPipelineArn: string | redacted.Redacted<string>;
   ChimeSdkMeetingConfiguration: ChimeSdkMeetingConcatenationConfiguration;
 }
+const MediaCapturePipelineSourceConfiguration = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<MediaCapturePipelineSourceConfiguration>;
 export interface ConcatenationSource {
   Type: ConcatenationSourceType;
   MediaCapturePipelineSourceConfiguration: MediaCapturePipelineSourceConfiguration;
 }
+const ConcatenationSource = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<ConcatenationSource>;
 export type ConcatenationSourceList = ConcatenationSource[];
+const ConcatenationSourceList = /*@__PURE__*/ __L.at(__c3, 1);
 export type ConcatenationSinkType = "S3Bucket" | (string & {});
+const ConcatenationSinkType = S.String;
+
 export interface S3BucketSinkConfiguration {
   Destination: string | redacted.Redacted<string>;
 }
+const S3BucketSinkConfiguration = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<S3BucketSinkConfiguration>;
 export interface ConcatenationSink {
   Type: ConcatenationSinkType;
   S3BucketSinkConfiguration: S3BucketSinkConfiguration;
 }
+const ConcatenationSink = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<ConcatenationSink>;
 export type ConcatenationSinkList = ConcatenationSink[];
+const ConcatenationSinkList = /*@__PURE__*/ __L.at(__c3, 4);
 export interface CreateMediaConcatenationPipelineRequest {
   Sources: ConcatenationSource[];
   Sinks: ConcatenationSink[];
   ClientRequestToken?: string | redacted.Redacted<string>;
   Tags?: Tag[];
 }
+const CreateMediaConcatenationPipelineRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<CreateMediaConcatenationPipelineRequest>;
 export interface MediaConcatenationPipeline {
   MediaPipelineId?: string;
   MediaPipelineArn?: string;
@@ -426,60 +562,104 @@ export interface MediaConcatenationPipeline {
   CreatedTimestamp?: Date;
   UpdatedTimestamp?: Date;
 }
+const MediaConcatenationPipeline = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<MediaConcatenationPipeline>;
 export interface CreateMediaConcatenationPipelineResponse {
   MediaConcatenationPipeline?: MediaConcatenationPipeline;
 }
+const CreateMediaConcatenationPipelineResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<CreateMediaConcatenationPipelineResponse>;
 export type KinesisVideoStreamArn = string;
 export type FragmentNumberString = string;
 export type NumberOfChannels = number;
 export type ChannelId = number;
 export type ParticipantRole = "AGENT" | "CUSTOMER" | (string & {});
+const ParticipantRole = S.String;
+
 export interface ChannelDefinition {
   ChannelId: number;
   ParticipantRole?: ParticipantRole;
 }
+const ChannelDefinition = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<ChannelDefinition>;
 export type ChannelDefinitions = ChannelDefinition[];
+const ChannelDefinitions = /*@__PURE__*/ __L.at(__c4, 1);
 export interface StreamChannelDefinition {
   NumberOfChannels: number;
   ChannelDefinitions?: ChannelDefinition[];
 }
+const StreamChannelDefinition = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<StreamChannelDefinition>;
 export interface StreamConfiguration {
   StreamArn: string;
   FragmentNumber?: string;
   StreamChannelDefinition: StreamChannelDefinition;
 }
+const StreamConfiguration = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<StreamConfiguration>;
 export type Streams = StreamConfiguration[];
+const Streams = /*@__PURE__*/ __L.at(__c4, 4);
 export type MediaEncoding = "pcm" | (string & {});
+const MediaEncoding = S.String;
+
 export type MediaSampleRateHertz = number;
 export interface KinesisVideoStreamSourceRuntimeConfiguration {
   Streams: StreamConfiguration[];
   MediaEncoding: MediaEncoding;
   MediaSampleRate: number;
 }
+const KinesisVideoStreamSourceRuntimeConfiguration = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<KinesisVideoStreamSourceRuntimeConfiguration>;
 export type NonEmptyString = string;
 export type MediaInsightsRuntimeMetadata = { [key: string]: string | undefined };
+const MediaInsightsRuntimeMetadata = /*@__PURE__*/ __L.at(__c4, 6);
 export interface RecordingStreamConfiguration {
   StreamArn?: string;
 }
+const RecordingStreamConfiguration = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<RecordingStreamConfiguration>;
 export type RecordingStreamList = RecordingStreamConfiguration[];
+const RecordingStreamList = /*@__PURE__*/ __L.at(__c5, 0);
 export type FragmentSelectorType = "ProducerTimestamp" | "ServerTimestamp" | (string & {});
+const FragmentSelectorType = S.String;
+
 export interface TimestampRange {
   StartTimestamp: Date;
   EndTimestamp: Date;
 }
+const TimestampRange = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<TimestampRange>;
 export interface FragmentSelector {
   FragmentSelectorType: FragmentSelectorType;
   TimestampRange: TimestampRange;
 }
+const FragmentSelector = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<FragmentSelector>;
 export interface KinesisVideoStreamRecordingSourceRuntimeConfiguration {
   Streams: RecordingStreamConfiguration[];
   FragmentSelector: FragmentSelector;
 }
+const KinesisVideoStreamRecordingSourceRuntimeConfiguration = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<KinesisVideoStreamRecordingSourceRuntimeConfiguration>;
 export type RecordingFileFormat = "Wav" | "Opus" | (string & {});
+const RecordingFileFormat = S.String;
+
 export interface S3RecordingSinkRuntimeConfiguration {
   Destination: string | redacted.Redacted<string>;
   RecordingFileFormat: RecordingFileFormat;
 }
+const S3RecordingSinkRuntimeConfiguration = /*@__PURE__*/ __L.at(
+  __c5,
+  4,
+) as any as S.Schema<S3RecordingSinkRuntimeConfiguration>;
 export interface CreateMediaInsightsPipelineRequest {
   MediaInsightsPipelineConfigurationArn: string | redacted.Redacted<string>;
   KinesisVideoStreamSourceRuntimeConfiguration?: KinesisVideoStreamSourceRuntimeConfiguration;
@@ -489,6 +669,10 @@ export interface CreateMediaInsightsPipelineRequest {
   Tags?: Tag[];
   ClientRequestToken?: string | redacted.Redacted<string>;
 }
+const CreateMediaInsightsPipelineRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  5,
+) as any as S.Schema<CreateMediaInsightsPipelineRequest>;
 export type MediaInsightsPipelineConfigurationElementType =
   | "AmazonTranscribeCallAnalyticsProcessor"
   | "VoiceAnalyticsProcessor"
@@ -500,6 +684,8 @@ export type MediaInsightsPipelineConfigurationElementType =
   | "S3RecordingSink"
   | "VoiceEnhancementSink"
   | (string & {});
+const MediaInsightsPipelineConfigurationElementType = S.String;
+
 export type MediaPipelineElementStatus =
   | "NotStarted"
   | "NotSupported"
@@ -510,11 +696,18 @@ export type MediaPipelineElementStatus =
   | "Stopped"
   | "Paused"
   | (string & {});
+const MediaPipelineElementStatus = S.String;
+
 export interface MediaInsightsPipelineElementStatus {
   Type?: MediaInsightsPipelineConfigurationElementType;
   Status?: MediaPipelineElementStatus;
 }
+const MediaInsightsPipelineElementStatus = /*@__PURE__*/ __L.at(
+  __c5,
+  6,
+) as any as S.Schema<MediaInsightsPipelineElementStatus>;
 export type MediaInsightsPipelineElementStatuses = MediaInsightsPipelineElementStatus[];
+const MediaInsightsPipelineElementStatuses = /*@__PURE__*/ __L.at(__c5, 7);
 export interface MediaInsightsPipeline {
   MediaPipelineId?: string;
   MediaPipelineArn?: string | redacted.Redacted<string>;
@@ -527,40 +720,71 @@ export interface MediaInsightsPipeline {
   CreatedTimestamp?: Date;
   ElementStatuses?: MediaInsightsPipelineElementStatus[];
 }
+const MediaInsightsPipeline = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<MediaInsightsPipeline>;
 export interface CreateMediaInsightsPipelineResponse {
   MediaInsightsPipeline: MediaInsightsPipeline;
 }
+const CreateMediaInsightsPipelineResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  1,
+) as any as S.Schema<CreateMediaInsightsPipelineResponse>;
 export type MediaInsightsPipelineConfigurationNameString = string;
 export type RealTimeAlertRuleType = "KeywordMatch" | "Sentiment" | "IssueDetection" | (string & {});
+const RealTimeAlertRuleType = S.String;
+
 export type RuleName = string;
 export type Keyword = string;
 export type KeywordMatchWordList = string[];
+const KeywordMatchWordList = AttendeeIdList as any as S.Schema<KeywordMatchWordList>;
 export interface KeywordMatchConfiguration {
   RuleName: string;
   Keywords: string[];
   Negate?: boolean;
 }
+const KeywordMatchConfiguration = /*@__PURE__*/ __L.at(
+  __c6,
+  2,
+) as any as S.Schema<KeywordMatchConfiguration>;
 export type SentimentType = "NEGATIVE" | (string & {});
+const SentimentType = S.String;
+
 export type SentimentTimePeriodInSeconds = number;
 export interface SentimentConfiguration {
   RuleName: string;
   SentimentType: SentimentType;
   TimePeriod: number;
 }
+const SentimentConfiguration = /*@__PURE__*/ __L.at(
+  __c6,
+  3,
+) as any as S.Schema<SentimentConfiguration>;
 export interface IssueDetectionConfiguration {
   RuleName: string;
 }
+const IssueDetectionConfiguration = /*@__PURE__*/ __L.at(
+  __c6,
+  4,
+) as any as S.Schema<IssueDetectionConfiguration>;
 export interface RealTimeAlertRule {
   Type: RealTimeAlertRuleType;
   KeywordMatchConfiguration?: KeywordMatchConfiguration;
   SentimentConfiguration?: SentimentConfiguration;
   IssueDetectionConfiguration?: IssueDetectionConfiguration;
 }
+const RealTimeAlertRule = /*@__PURE__*/ __L.at(__c6, 5) as any as S.Schema<RealTimeAlertRule>;
 export type RealTimeAlertRuleList = RealTimeAlertRule[];
+const RealTimeAlertRuleList = /*@__PURE__*/ __L.at(__c6, 6);
 export interface RealTimeAlertConfiguration {
   Disabled?: boolean;
   Rules?: RealTimeAlertRule[];
 }
+const RealTimeAlertConfiguration = /*@__PURE__*/ __L.at(
+  __c6,
+  7,
+) as any as S.Schema<RealTimeAlertConfiguration>;
 export type CallAnalyticsLanguageCode =
   | "en-US"
   | "en-GB"
@@ -572,22 +796,37 @@ export type CallAnalyticsLanguageCode =
   | "de-DE"
   | "pt-BR"
   | (string & {});
+const CallAnalyticsLanguageCode = S.String;
+
 export type VocabularyName = string;
 export type VocabularyFilterName = string;
 export type VocabularyFilterMethod = "remove" | "mask" | "tag" | (string & {});
+const VocabularyFilterMethod = S.String;
+
 export type ModelName = string;
 export type PartialResultsStability = "high" | "medium" | "low" | (string & {});
+const PartialResultsStability = S.String;
+
 export type ContentType = "PII" | (string & {});
+const ContentType = S.String;
+
 export type PiiEntityTypes = string;
 export type ContentRedactionOutput = "redacted" | "redacted_and_unredacted" | (string & {});
+const ContentRedactionOutput = S.String;
+
 export interface PostCallAnalyticsSettings {
   OutputLocation: string;
   DataAccessRoleArn: string;
   ContentRedactionOutput?: ContentRedactionOutput;
   OutputEncryptionKMSKeyId?: string;
 }
+const PostCallAnalyticsSettings = /*@__PURE__*/ __L.at(
+  __c7,
+  0,
+) as any as S.Schema<PostCallAnalyticsSettings>;
 export type CategoryName = string;
 export type CategoryNameList = string[];
+const CategoryNameList = AttendeeIdList as any as S.Schema<CategoryNameList>;
 export interface AmazonTranscribeCallAnalyticsProcessorConfiguration {
   LanguageCode: CallAnalyticsLanguageCode;
   VocabularyName?: string;
@@ -603,6 +842,10 @@ export interface AmazonTranscribeCallAnalyticsProcessorConfiguration {
   PostCallAnalyticsSettings?: PostCallAnalyticsSettings;
   CallAnalyticsStreamCategories?: string[];
 }
+const AmazonTranscribeCallAnalyticsProcessorConfiguration = /*@__PURE__*/ __L.at(
+  __c7,
+  1,
+) as any as S.Schema<AmazonTranscribeCallAnalyticsProcessorConfiguration>;
 export type LanguageOptions = string;
 export type VocabularyNames = string;
 export type VocabularyFilterNames = string;
@@ -626,30 +869,58 @@ export interface AmazonTranscribeProcessorConfiguration {
   VocabularyNames?: string;
   VocabularyFilterNames?: string;
 }
+const AmazonTranscribeProcessorConfiguration = /*@__PURE__*/ __L.at(
+  __c7,
+  2,
+) as any as S.Schema<AmazonTranscribeProcessorConfiguration>;
 export interface KinesisDataStreamSinkConfiguration {
   InsightsTarget?: string | redacted.Redacted<string>;
 }
+const KinesisDataStreamSinkConfiguration = /*@__PURE__*/ __L.at(
+  __c7,
+  3,
+) as any as S.Schema<KinesisDataStreamSinkConfiguration>;
 export interface S3RecordingSinkConfiguration {
   Destination?: string | redacted.Redacted<string>;
   RecordingFileFormat?: RecordingFileFormat;
 }
+const S3RecordingSinkConfiguration = /*@__PURE__*/ __L.at(
+  __c7,
+  4,
+) as any as S.Schema<S3RecordingSinkConfiguration>;
 export type VoiceAnalyticsConfigurationStatus = "Enabled" | "Disabled" | (string & {});
+const VoiceAnalyticsConfigurationStatus = S.String;
+
 export interface VoiceAnalyticsProcessorConfiguration {
   SpeakerSearchStatus?: VoiceAnalyticsConfigurationStatus;
   VoiceToneAnalysisStatus?: VoiceAnalyticsConfigurationStatus;
 }
+const VoiceAnalyticsProcessorConfiguration = /*@__PURE__*/ __L.at(
+  __c7,
+  5,
+) as any as S.Schema<VoiceAnalyticsProcessorConfiguration>;
 export interface LambdaFunctionSinkConfiguration {
   InsightsTarget?: string | redacted.Redacted<string>;
 }
+const LambdaFunctionSinkConfiguration =
+  KinesisDataStreamSinkConfiguration as any as S.Schema<LambdaFunctionSinkConfiguration>;
 export interface SqsQueueSinkConfiguration {
   InsightsTarget?: string | redacted.Redacted<string>;
 }
+const SqsQueueSinkConfiguration =
+  KinesisDataStreamSinkConfiguration as any as S.Schema<SqsQueueSinkConfiguration>;
 export interface SnsTopicSinkConfiguration {
   InsightsTarget?: string | redacted.Redacted<string>;
 }
+const SnsTopicSinkConfiguration =
+  KinesisDataStreamSinkConfiguration as any as S.Schema<SnsTopicSinkConfiguration>;
 export interface VoiceEnhancementSinkConfiguration {
   Disabled?: boolean;
 }
+const VoiceEnhancementSinkConfiguration = /*@__PURE__*/ __L.at(
+  __c7,
+  6,
+) as any as S.Schema<VoiceEnhancementSinkConfiguration>;
 export interface MediaInsightsPipelineConfigurationElement {
   Type: MediaInsightsPipelineConfigurationElementType;
   AmazonTranscribeCallAnalyticsProcessorConfiguration?: AmazonTranscribeCallAnalyticsProcessorConfiguration;
@@ -662,8 +933,13 @@ export interface MediaInsightsPipelineConfigurationElement {
   SnsTopicSinkConfiguration?: SnsTopicSinkConfiguration;
   VoiceEnhancementSinkConfiguration?: VoiceEnhancementSinkConfiguration;
 }
+const MediaInsightsPipelineConfigurationElement = /*@__PURE__*/ __L.at(
+  __c7,
+  7,
+) as any as S.Schema<MediaInsightsPipelineConfigurationElement>;
 export type MediaInsightsPipelineConfigurationElements =
   MediaInsightsPipelineConfigurationElement[];
+const MediaInsightsPipelineConfigurationElements = /*@__PURE__*/ __L.at(__c8, 0);
 export interface CreateMediaInsightsPipelineConfigurationRequest {
   MediaInsightsPipelineConfigurationName: string;
   ResourceAccessRoleArn: string | redacted.Redacted<string>;
@@ -672,6 +948,10 @@ export interface CreateMediaInsightsPipelineConfigurationRequest {
   Tags?: Tag[];
   ClientRequestToken?: string | redacted.Redacted<string>;
 }
+const CreateMediaInsightsPipelineConfigurationRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  1,
+) as any as S.Schema<CreateMediaInsightsPipelineConfigurationRequest>;
 export interface MediaInsightsPipelineConfiguration {
   MediaInsightsPipelineConfigurationName?: string;
   MediaInsightsPipelineConfigurationArn?: string | redacted.Redacted<string>;
@@ -682,45 +962,83 @@ export interface MediaInsightsPipelineConfiguration {
   CreatedTimestamp?: Date;
   UpdatedTimestamp?: Date;
 }
+const MediaInsightsPipelineConfiguration = /*@__PURE__*/ __L.at(
+  __c8,
+  2,
+) as any as S.Schema<MediaInsightsPipelineConfiguration>;
 export interface CreateMediaInsightsPipelineConfigurationResponse {
   MediaInsightsPipelineConfiguration?: MediaInsightsPipelineConfiguration;
 }
+const CreateMediaInsightsPipelineConfigurationResponse = /*@__PURE__*/ __L.at(
+  __c8,
+  3,
+) as any as S.Schema<CreateMediaInsightsPipelineConfigurationResponse>;
 export type LiveConnectorSourceType = "ChimeSdkMeeting" | (string & {});
+const LiveConnectorSourceType = S.String;
+
 export type LiveConnectorMuxType =
   | "AudioWithCompositedVideo"
   | "AudioWithActiveSpeakerVideo"
   | (string & {});
+const LiveConnectorMuxType = S.String;
+
 export interface ChimeSdkMeetingLiveConnectorConfiguration {
   Arn: string | redacted.Redacted<string>;
   MuxType: LiveConnectorMuxType;
   CompositedVideo?: CompositedVideoArtifactsConfiguration;
   SourceConfiguration?: SourceConfiguration;
 }
+const ChimeSdkMeetingLiveConnectorConfiguration = /*@__PURE__*/ __L.at(
+  __c8,
+  4,
+) as any as S.Schema<ChimeSdkMeetingLiveConnectorConfiguration>;
 export interface LiveConnectorSourceConfiguration {
   SourceType: LiveConnectorSourceType;
   ChimeSdkMeetingLiveConnectorConfiguration: ChimeSdkMeetingLiveConnectorConfiguration;
 }
+const LiveConnectorSourceConfiguration = /*@__PURE__*/ __L.at(
+  __c8,
+  5,
+) as any as S.Schema<LiveConnectorSourceConfiguration>;
 export type LiveConnectorSourceList = LiveConnectorSourceConfiguration[];
+const LiveConnectorSourceList = /*@__PURE__*/ __L.at(__c8, 6);
 export type LiveConnectorSinkType = "RTMP" | (string & {});
+const LiveConnectorSinkType = S.String;
+
 export type SensitiveString = string | redacted.Redacted<string>;
 export type AudioChannelsOption = "Stereo" | "Mono" | (string & {});
+const AudioChannelsOption = S.String;
+
 export type AudioSampleRateOption = string;
 export interface LiveConnectorRTMPConfiguration {
   Url: string | redacted.Redacted<string>;
   AudioChannels?: AudioChannelsOption;
   AudioSampleRate?: string;
 }
+const LiveConnectorRTMPConfiguration = /*@__PURE__*/ __L.at(
+  __c8,
+  7,
+) as any as S.Schema<LiveConnectorRTMPConfiguration>;
 export interface LiveConnectorSinkConfiguration {
   SinkType: LiveConnectorSinkType;
   RTMPConfiguration: LiveConnectorRTMPConfiguration;
 }
+const LiveConnectorSinkConfiguration = /*@__PURE__*/ __L.at(
+  __c9,
+  0,
+) as any as S.Schema<LiveConnectorSinkConfiguration>;
 export type LiveConnectorSinkList = LiveConnectorSinkConfiguration[];
+const LiveConnectorSinkList = /*@__PURE__*/ __L.at(__c9, 1);
 export interface CreateMediaLiveConnectorPipelineRequest {
   Sources: LiveConnectorSourceConfiguration[];
   Sinks: LiveConnectorSinkConfiguration[];
   ClientRequestToken?: string | redacted.Redacted<string>;
   Tags?: Tag[];
 }
+const CreateMediaLiveConnectorPipelineRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  2,
+) as any as S.Schema<CreateMediaLiveConnectorPipelineRequest>;
 export interface MediaLiveConnectorPipeline {
   Sources?: LiveConnectorSourceConfiguration[];
   Sinks?: LiveConnectorSinkConfiguration[];
@@ -730,15 +1048,27 @@ export interface MediaLiveConnectorPipeline {
   CreatedTimestamp?: Date;
   UpdatedTimestamp?: Date;
 }
+const MediaLiveConnectorPipeline = /*@__PURE__*/ __L.at(
+  __c9,
+  3,
+) as any as S.Schema<MediaLiveConnectorPipeline>;
 export interface CreateMediaLiveConnectorPipelineResponse {
   MediaLiveConnectorPipeline?: MediaLiveConnectorPipeline;
 }
+const CreateMediaLiveConnectorPipelineResponse = /*@__PURE__*/ __L.at(
+  __c9,
+  4,
+) as any as S.Schema<CreateMediaLiveConnectorPipelineResponse>;
 export type AwsRegion = string;
 export type DataRetentionInHours = number;
 export interface KinesisVideoStreamConfiguration {
   Region: string;
   DataRetentionInHours?: number;
 }
+const KinesisVideoStreamConfiguration = /*@__PURE__*/ __L.at(
+  __c9,
+  5,
+) as any as S.Schema<KinesisVideoStreamConfiguration>;
 export type KinesisVideoStreamPoolName = string;
 export interface CreateMediaPipelineKinesisVideoStreamPoolRequest {
   StreamConfiguration: KinesisVideoStreamConfiguration;
@@ -746,6 +1076,10 @@ export interface CreateMediaPipelineKinesisVideoStreamPoolRequest {
   ClientRequestToken?: string | redacted.Redacted<string>;
   Tags?: Tag[];
 }
+const CreateMediaPipelineKinesisVideoStreamPoolRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  6,
+) as any as S.Schema<CreateMediaPipelineKinesisVideoStreamPoolRequest>;
 export type KinesisVideoStreamPoolId = string;
 export type KinesisVideoStreamPoolStatus =
   | "CREATING"
@@ -754,6 +1088,8 @@ export type KinesisVideoStreamPoolStatus =
   | "DELETING"
   | "FAILED"
   | (string & {});
+const KinesisVideoStreamPoolStatus = S.String;
+
 export type KinesisVideoStreamPoolSize = number;
 export interface KinesisVideoStreamPoolConfiguration {
   PoolArn?: string | redacted.Redacted<string>;
@@ -765,30 +1101,50 @@ export interface KinesisVideoStreamPoolConfiguration {
   CreatedTimestamp?: Date;
   UpdatedTimestamp?: Date;
 }
+const KinesisVideoStreamPoolConfiguration = /*@__PURE__*/ __L.at(
+  __c9,
+  7,
+) as any as S.Schema<KinesisVideoStreamPoolConfiguration>;
 export interface CreateMediaPipelineKinesisVideoStreamPoolResponse {
   KinesisVideoStreamPoolConfiguration?: KinesisVideoStreamPoolConfiguration;
 }
+const CreateMediaPipelineKinesisVideoStreamPoolResponse = /*@__PURE__*/ __L.at(
+  __c10,
+  0,
+) as any as S.Schema<CreateMediaPipelineKinesisVideoStreamPoolResponse>;
 export interface MediaStreamSource {
   SourceType: MediaPipelineSourceType;
   SourceArn: string | redacted.Redacted<string>;
 }
+const MediaStreamSource = /*@__PURE__*/ __L.at(__c10, 1) as any as S.Schema<MediaStreamSource>;
 export type MediaStreamSourceList = MediaStreamSource[];
+const MediaStreamSourceList = /*@__PURE__*/ __L.at(__c10, 2);
 export type MediaStreamPipelineSinkType = "KinesisVideoStreamPool" | (string & {});
+const MediaStreamPipelineSinkType = S.String;
+
 export type ReservedStreamCapacity = number;
 export type MediaStreamType = "MixedAudio" | "IndividualAudio" | (string & {});
+const MediaStreamType = S.String;
+
 export interface MediaStreamSink {
   SinkArn: string | redacted.Redacted<string>;
   SinkType: MediaStreamPipelineSinkType;
   ReservedStreamCapacity: number;
   MediaStreamType: MediaStreamType;
 }
+const MediaStreamSink = /*@__PURE__*/ __L.at(__c10, 3) as any as S.Schema<MediaStreamSink>;
 export type MediaStreamSinkList = MediaStreamSink[];
+const MediaStreamSinkList = /*@__PURE__*/ __L.at(__c10, 4);
 export interface CreateMediaStreamPipelineRequest {
   Sources: MediaStreamSource[];
   Sinks: MediaStreamSink[];
   ClientRequestToken?: string | redacted.Redacted<string>;
   Tags?: Tag[];
 }
+const CreateMediaStreamPipelineRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  5,
+) as any as S.Schema<CreateMediaStreamPipelineRequest>;
 export interface MediaStreamPipeline {
   MediaPipelineId?: string;
   MediaPipelineArn?: string;
@@ -798,40 +1154,89 @@ export interface MediaStreamPipeline {
   Sources?: MediaStreamSource[];
   Sinks?: MediaStreamSink[];
 }
+const MediaStreamPipeline = /*@__PURE__*/ __L.at(__c10, 6) as any as S.Schema<MediaStreamPipeline>;
 export interface CreateMediaStreamPipelineResponse {
   MediaStreamPipeline?: MediaStreamPipeline;
 }
+const CreateMediaStreamPipelineResponse = /*@__PURE__*/ __L.at(
+  __c10,
+  7,
+) as any as S.Schema<CreateMediaStreamPipelineResponse>;
 export interface DeleteMediaCapturePipelineRequest {
   MediaPipelineId: string;
 }
+const DeleteMediaCapturePipelineRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  0,
+) as any as S.Schema<DeleteMediaCapturePipelineRequest>;
 export interface DeleteMediaCapturePipelineResponse {}
+const DeleteMediaCapturePipelineResponse = /*@__PURE__*/ __L.at(
+  __c11,
+  1,
+) as any as S.Schema<DeleteMediaCapturePipelineResponse>;
 export interface DeleteMediaInsightsPipelineConfigurationRequest {
   Identifier: string;
 }
+const DeleteMediaInsightsPipelineConfigurationRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  2,
+) as any as S.Schema<DeleteMediaInsightsPipelineConfigurationRequest>;
 export interface DeleteMediaInsightsPipelineConfigurationResponse {}
+const DeleteMediaInsightsPipelineConfigurationResponse =
+  DeleteMediaCapturePipelineResponse as any as S.Schema<DeleteMediaInsightsPipelineConfigurationResponse>;
 export interface DeleteMediaPipelineRequest {
   MediaPipelineId: string;
 }
+const DeleteMediaPipelineRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  3,
+) as any as S.Schema<DeleteMediaPipelineRequest>;
 export interface DeleteMediaPipelineResponse {}
+const DeleteMediaPipelineResponse = /*@__PURE__*/ __L.at(
+  __c11,
+  4,
+) as any as S.Schema<DeleteMediaPipelineResponse>;
 export interface DeleteMediaPipelineKinesisVideoStreamPoolRequest {
   Identifier: string;
 }
+const DeleteMediaPipelineKinesisVideoStreamPoolRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  5,
+) as any as S.Schema<DeleteMediaPipelineKinesisVideoStreamPoolRequest>;
 export interface DeleteMediaPipelineKinesisVideoStreamPoolResponse {}
+const DeleteMediaPipelineKinesisVideoStreamPoolResponse =
+  DeleteMediaCapturePipelineResponse as any as S.Schema<DeleteMediaPipelineKinesisVideoStreamPoolResponse>;
 export interface GetMediaCapturePipelineRequest {
   MediaPipelineId: string;
 }
+const GetMediaCapturePipelineRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  6,
+) as any as S.Schema<GetMediaCapturePipelineRequest>;
 export interface GetMediaCapturePipelineResponse {
   MediaCapturePipeline?: MediaCapturePipeline;
 }
+const GetMediaCapturePipelineResponse =
+  CreateMediaCapturePipelineResponse as any as S.Schema<GetMediaCapturePipelineResponse>;
 export interface GetMediaInsightsPipelineConfigurationRequest {
   Identifier: string;
 }
+const GetMediaInsightsPipelineConfigurationRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  7,
+) as any as S.Schema<GetMediaInsightsPipelineConfigurationRequest>;
 export interface GetMediaInsightsPipelineConfigurationResponse {
   MediaInsightsPipelineConfiguration?: MediaInsightsPipelineConfiguration;
 }
+const GetMediaInsightsPipelineConfigurationResponse =
+  CreateMediaInsightsPipelineConfigurationResponse as any as S.Schema<GetMediaInsightsPipelineConfigurationResponse>;
 export interface GetMediaPipelineRequest {
   MediaPipelineId: string;
 }
+const GetMediaPipelineRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  0,
+) as any as S.Schema<GetMediaPipelineRequest>;
 export interface MediaPipeline {
   MediaCapturePipeline?: MediaCapturePipeline;
   MediaLiveConnectorPipeline?: MediaLiveConnectorPipeline;
@@ -839,19 +1244,34 @@ export interface MediaPipeline {
   MediaInsightsPipeline?: MediaInsightsPipeline;
   MediaStreamPipeline?: MediaStreamPipeline;
 }
+const MediaPipeline = /*@__PURE__*/ __L.at(__c12, 1) as any as S.Schema<MediaPipeline>;
 export interface GetMediaPipelineResponse {
   MediaPipeline?: MediaPipeline;
 }
+const GetMediaPipelineResponse = /*@__PURE__*/ __L.at(
+  __c12,
+  2,
+) as any as S.Schema<GetMediaPipelineResponse>;
 export interface GetMediaPipelineKinesisVideoStreamPoolRequest {
   Identifier: string;
 }
+const GetMediaPipelineKinesisVideoStreamPoolRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  3,
+) as any as S.Schema<GetMediaPipelineKinesisVideoStreamPoolRequest>;
 export interface GetMediaPipelineKinesisVideoStreamPoolResponse {
   KinesisVideoStreamPoolConfiguration?: KinesisVideoStreamPoolConfiguration;
 }
+const GetMediaPipelineKinesisVideoStreamPoolResponse =
+  CreateMediaPipelineKinesisVideoStreamPoolResponse as any as S.Schema<GetMediaPipelineKinesisVideoStreamPoolResponse>;
 export interface GetSpeakerSearchTaskRequest {
   Identifier: string;
   SpeakerSearchTaskId: string;
 }
+const GetSpeakerSearchTaskRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  4,
+) as any as S.Schema<GetSpeakerSearchTaskRequest>;
 export type MediaPipelineTaskStatus =
   | "NotStarted"
   | "Initializing"
@@ -860,161 +1280,302 @@ export type MediaPipelineTaskStatus =
   | "Stopping"
   | "Stopped"
   | (string & {});
+const MediaPipelineTaskStatus = S.String;
+
 export interface SpeakerSearchTask {
   SpeakerSearchTaskId?: string;
   SpeakerSearchTaskStatus?: MediaPipelineTaskStatus;
   CreatedTimestamp?: Date;
   UpdatedTimestamp?: Date;
 }
+const SpeakerSearchTask = /*@__PURE__*/ __L.at(__c12, 5) as any as S.Schema<SpeakerSearchTask>;
 export interface GetSpeakerSearchTaskResponse {
   SpeakerSearchTask?: SpeakerSearchTask;
 }
+const GetSpeakerSearchTaskResponse = /*@__PURE__*/ __L.at(
+  __c12,
+  6,
+) as any as S.Schema<GetSpeakerSearchTaskResponse>;
 export interface GetVoiceToneAnalysisTaskRequest {
   Identifier: string;
   VoiceToneAnalysisTaskId: string;
 }
+const GetVoiceToneAnalysisTaskRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  7,
+) as any as S.Schema<GetVoiceToneAnalysisTaskRequest>;
 export interface VoiceToneAnalysisTask {
   VoiceToneAnalysisTaskId?: string;
   VoiceToneAnalysisTaskStatus?: MediaPipelineTaskStatus;
   CreatedTimestamp?: Date;
   UpdatedTimestamp?: Date;
 }
+const VoiceToneAnalysisTask = /*@__PURE__*/ __L.at(
+  __c13,
+  0,
+) as any as S.Schema<VoiceToneAnalysisTask>;
 export interface GetVoiceToneAnalysisTaskResponse {
   VoiceToneAnalysisTask?: VoiceToneAnalysisTask;
 }
+const GetVoiceToneAnalysisTaskResponse = /*@__PURE__*/ __L.at(
+  __c13,
+  1,
+) as any as S.Schema<GetVoiceToneAnalysisTaskResponse>;
 export type ResultMax = number;
 export interface ListMediaCapturePipelinesRequest {
   NextToken?: string;
   MaxResults?: number;
 }
+const ListMediaCapturePipelinesRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  2,
+) as any as S.Schema<ListMediaCapturePipelinesRequest>;
 export interface MediaCapturePipelineSummary {
   MediaPipelineId?: string;
   MediaPipelineArn?: string;
 }
+const MediaCapturePipelineSummary = /*@__PURE__*/ __L.at(
+  __c13,
+  3,
+) as any as S.Schema<MediaCapturePipelineSummary>;
 export type MediaCapturePipelineSummaryList = MediaCapturePipelineSummary[];
+const MediaCapturePipelineSummaryList = /*@__PURE__*/ __L.at(__c13, 4);
 export interface ListMediaCapturePipelinesResponse {
   MediaCapturePipelines?: MediaCapturePipelineSummary[];
   NextToken?: string;
 }
+const ListMediaCapturePipelinesResponse = /*@__PURE__*/ __L.at(
+  __c13,
+  5,
+) as any as S.Schema<ListMediaCapturePipelinesResponse>;
 export interface ListMediaInsightsPipelineConfigurationsRequest {
   NextToken?: string;
   MaxResults?: number;
 }
+const ListMediaInsightsPipelineConfigurationsRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  6,
+) as any as S.Schema<ListMediaInsightsPipelineConfigurationsRequest>;
 export interface MediaInsightsPipelineConfigurationSummary {
   MediaInsightsPipelineConfigurationName?: string;
   MediaInsightsPipelineConfigurationId?: string;
   MediaInsightsPipelineConfigurationArn?: string | redacted.Redacted<string>;
 }
+const MediaInsightsPipelineConfigurationSummary = /*@__PURE__*/ __L.at(
+  __c13,
+  7,
+) as any as S.Schema<MediaInsightsPipelineConfigurationSummary>;
 export type MediaInsightsPipelineConfigurationSummaryList =
   MediaInsightsPipelineConfigurationSummary[];
+const MediaInsightsPipelineConfigurationSummaryList = /*@__PURE__*/ __L.at(__c14, 0);
 export interface ListMediaInsightsPipelineConfigurationsResponse {
   MediaInsightsPipelineConfigurations?: MediaInsightsPipelineConfigurationSummary[];
   NextToken?: string;
 }
+const ListMediaInsightsPipelineConfigurationsResponse = /*@__PURE__*/ __L.at(
+  __c14,
+  1,
+) as any as S.Schema<ListMediaInsightsPipelineConfigurationsResponse>;
 export interface ListMediaPipelineKinesisVideoStreamPoolsRequest {
   NextToken?: string;
   MaxResults?: number;
 }
+const ListMediaPipelineKinesisVideoStreamPoolsRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  2,
+) as any as S.Schema<ListMediaPipelineKinesisVideoStreamPoolsRequest>;
 export interface KinesisVideoStreamPoolSummary {
   PoolName?: string;
   PoolId?: string;
   PoolArn?: string | redacted.Redacted<string>;
 }
+const KinesisVideoStreamPoolSummary = /*@__PURE__*/ __L.at(
+  __c14,
+  3,
+) as any as S.Schema<KinesisVideoStreamPoolSummary>;
 export type KinesisVideoStreamPoolSummaryList = KinesisVideoStreamPoolSummary[];
+const KinesisVideoStreamPoolSummaryList = /*@__PURE__*/ __L.at(__c14, 4);
 export interface ListMediaPipelineKinesisVideoStreamPoolsResponse {
   KinesisVideoStreamPools?: KinesisVideoStreamPoolSummary[];
   NextToken?: string;
 }
+const ListMediaPipelineKinesisVideoStreamPoolsResponse = /*@__PURE__*/ __L.at(
+  __c14,
+  5,
+) as any as S.Schema<ListMediaPipelineKinesisVideoStreamPoolsResponse>;
 export interface ListMediaPipelinesRequest {
   NextToken?: string;
   MaxResults?: number;
 }
+const ListMediaPipelinesRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  6,
+) as any as S.Schema<ListMediaPipelinesRequest>;
 export interface MediaPipelineSummary {
   MediaPipelineId?: string;
   MediaPipelineArn?: string;
 }
+const MediaPipelineSummary = /*@__PURE__*/ __L.at(
+  __c14,
+  7,
+) as any as S.Schema<MediaPipelineSummary>;
 export type MediaPipelineList = MediaPipelineSummary[];
+const MediaPipelineList = /*@__PURE__*/ __L.at(__c15, 0);
 export interface ListMediaPipelinesResponse {
   MediaPipelines?: MediaPipelineSummary[];
   NextToken?: string;
 }
+const ListMediaPipelinesResponse = /*@__PURE__*/ __L.at(
+  __c15,
+  1,
+) as any as S.Schema<ListMediaPipelinesResponse>;
 export interface ListTagsForResourceRequest {
   ResourceARN: string;
 }
+const ListTagsForResourceRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  2,
+) as any as S.Schema<ListTagsForResourceRequest>;
 export interface ListTagsForResourceResponse {
   Tags?: Tag[];
 }
+const ListTagsForResourceResponse = /*@__PURE__*/ __L.at(
+  __c15,
+  3,
+) as any as S.Schema<ListTagsForResourceResponse>;
 export interface KinesisVideoStreamSourceTaskConfiguration {
   StreamArn: string;
   ChannelId: number;
   FragmentNumber?: string;
 }
+const KinesisVideoStreamSourceTaskConfiguration = /*@__PURE__*/ __L.at(
+  __c15,
+  4,
+) as any as S.Schema<KinesisVideoStreamSourceTaskConfiguration>;
 export interface StartSpeakerSearchTaskRequest {
   Identifier: string;
   VoiceProfileDomainArn: string | redacted.Redacted<string>;
   KinesisVideoStreamSourceTaskConfiguration?: KinesisVideoStreamSourceTaskConfiguration;
   ClientRequestToken?: string | redacted.Redacted<string>;
 }
+const StartSpeakerSearchTaskRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  5,
+) as any as S.Schema<StartSpeakerSearchTaskRequest>;
 export interface StartSpeakerSearchTaskResponse {
   SpeakerSearchTask?: SpeakerSearchTask;
 }
+const StartSpeakerSearchTaskResponse =
+  GetSpeakerSearchTaskResponse as any as S.Schema<StartSpeakerSearchTaskResponse>;
 export type VoiceAnalyticsLanguageCode = "en-US" | (string & {});
+const VoiceAnalyticsLanguageCode = S.String;
+
 export interface StartVoiceToneAnalysisTaskRequest {
   Identifier: string;
   LanguageCode: VoiceAnalyticsLanguageCode;
   KinesisVideoStreamSourceTaskConfiguration?: KinesisVideoStreamSourceTaskConfiguration;
   ClientRequestToken?: string | redacted.Redacted<string>;
 }
+const StartVoiceToneAnalysisTaskRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  6,
+) as any as S.Schema<StartVoiceToneAnalysisTaskRequest>;
 export interface StartVoiceToneAnalysisTaskResponse {
   VoiceToneAnalysisTask?: VoiceToneAnalysisTask;
 }
+const StartVoiceToneAnalysisTaskResponse =
+  GetVoiceToneAnalysisTaskResponse as any as S.Schema<StartVoiceToneAnalysisTaskResponse>;
 export interface StopSpeakerSearchTaskRequest {
   Identifier: string;
   SpeakerSearchTaskId: string;
 }
+const StopSpeakerSearchTaskRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  7,
+) as any as S.Schema<StopSpeakerSearchTaskRequest>;
 export interface StopSpeakerSearchTaskResponse {}
+const StopSpeakerSearchTaskResponse =
+  DeleteMediaPipelineResponse as any as S.Schema<StopSpeakerSearchTaskResponse>;
 export interface StopVoiceToneAnalysisTaskRequest {
   Identifier: string;
   VoiceToneAnalysisTaskId: string;
 }
+const StopVoiceToneAnalysisTaskRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  0,
+) as any as S.Schema<StopVoiceToneAnalysisTaskRequest>;
 export interface StopVoiceToneAnalysisTaskResponse {}
+const StopVoiceToneAnalysisTaskResponse =
+  DeleteMediaCapturePipelineResponse as any as S.Schema<StopVoiceToneAnalysisTaskResponse>;
 export interface TagResourceRequest {
   ResourceARN: string;
   Tags: Tag[];
 }
+const TagResourceRequest = /*@__PURE__*/ __L.at(__c16, 1) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
+const TagResourceResponse = DeleteMediaPipelineResponse as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
+const TagKeyList = AttendeeIdList as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   ResourceARN: string;
   TagKeys: string[];
 }
+const UntagResourceRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  2,
+) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
+const UntagResourceResponse = DeleteMediaPipelineResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateMediaInsightsPipelineConfigurationRequest {
   Identifier: string;
   ResourceAccessRoleArn: string | redacted.Redacted<string>;
   RealTimeAlertConfiguration?: RealTimeAlertConfiguration;
   Elements: MediaInsightsPipelineConfigurationElement[];
 }
+const UpdateMediaInsightsPipelineConfigurationRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  3,
+) as any as S.Schema<UpdateMediaInsightsPipelineConfigurationRequest>;
 export interface UpdateMediaInsightsPipelineConfigurationResponse {
   MediaInsightsPipelineConfiguration?: MediaInsightsPipelineConfiguration;
 }
+const UpdateMediaInsightsPipelineConfigurationResponse =
+  CreateMediaInsightsPipelineConfigurationResponse as any as S.Schema<UpdateMediaInsightsPipelineConfigurationResponse>;
 export type MediaPipelineStatusUpdate = "Pause" | "Resume" | (string & {});
+const MediaPipelineStatusUpdate = S.String;
+
 export interface UpdateMediaInsightsPipelineStatusRequest {
   Identifier: string;
   UpdateStatus: MediaPipelineStatusUpdate;
 }
+const UpdateMediaInsightsPipelineStatusRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  4,
+) as any as S.Schema<UpdateMediaInsightsPipelineStatusRequest>;
 export interface UpdateMediaInsightsPipelineStatusResponse {}
+const UpdateMediaInsightsPipelineStatusResponse =
+  DeleteMediaCapturePipelineResponse as any as S.Schema<UpdateMediaInsightsPipelineStatusResponse>;
 export type DataRetentionChangeInHours = number;
 export interface KinesisVideoStreamConfigurationUpdate {
   DataRetentionInHours?: number;
 }
+const KinesisVideoStreamConfigurationUpdate = /*@__PURE__*/ __L.at(
+  __c16,
+  5,
+) as any as S.Schema<KinesisVideoStreamConfigurationUpdate>;
 export interface UpdateMediaPipelineKinesisVideoStreamPoolRequest {
   Identifier: string;
   StreamConfiguration?: KinesisVideoStreamConfigurationUpdate;
 }
+const UpdateMediaPipelineKinesisVideoStreamPoolRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  6,
+) as any as S.Schema<UpdateMediaPipelineKinesisVideoStreamPoolRequest>;
 export interface UpdateMediaPipelineKinesisVideoStreamPoolResponse {
   KinesisVideoStreamPoolConfiguration?: KinesisVideoStreamPoolConfiguration;
 }
+const UpdateMediaPipelineKinesisVideoStreamPoolResponse =
+  CreateMediaPipelineKinesisVideoStreamPoolResponse as any as S.Schema<UpdateMediaPipelineKinesisVideoStreamPoolResponse>;
 export type ErrorCode =
   | "BadRequest"
   | "Forbidden"
@@ -1024,6 +1585,8 @@ export type ErrorCode =
   | "ServiceUnavailable"
   | "Throttling"
   | (string & {});
+const ErrorCode = S.String;
+
 export type CreateMediaCapturePipelineError =
   | BadRequestException
   | ForbiddenException
@@ -1042,8 +1605,8 @@ export const createMediaCapturePipeline: API.OperationMethod<
   CreateMediaCapturePipelineError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17) as any as S.Schema<CreateMediaCapturePipelineRequest>,
-  output: __S(19) as any as S.Schema<CreateMediaCapturePipelineResponse>,
+  input: CreateMediaCapturePipelineRequest,
+  output: CreateMediaCapturePipelineResponse,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -1076,8 +1639,8 @@ export const createMediaConcatenationPipeline: API.OperationMethod<
   CreateMediaConcatenationPipelineError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29) as any as S.Schema<CreateMediaConcatenationPipelineRequest>,
-  output: __S(31) as any as S.Schema<CreateMediaConcatenationPipelineResponse>,
+  input: CreateMediaConcatenationPipelineRequest,
+  output: CreateMediaConcatenationPipelineResponse,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -1111,8 +1674,8 @@ export const createMediaInsightsPipeline: API.OperationMethod<
   CreateMediaInsightsPipelineError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45) as any as S.Schema<CreateMediaInsightsPipelineRequest>,
-  output: __S(49) as any as S.Schema<CreateMediaInsightsPipelineResponse>,
+  input: CreateMediaInsightsPipelineRequest,
+  output: CreateMediaInsightsPipelineResponse,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -1148,8 +1711,8 @@ export const createMediaInsightsPipelineConfiguration: API.OperationMethod<
   CreateMediaInsightsPipelineConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65) as any as S.Schema<CreateMediaInsightsPipelineConfigurationRequest>,
-  output: __S(67) as any as S.Schema<CreateMediaInsightsPipelineConfigurationResponse>,
+  input: CreateMediaInsightsPipelineConfigurationRequest,
+  output: CreateMediaInsightsPipelineConfigurationResponse,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -1183,8 +1746,8 @@ export const createMediaLiveConnectorPipeline: API.OperationMethod<
   CreateMediaLiveConnectorPipelineError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(74) as any as S.Schema<CreateMediaLiveConnectorPipelineRequest>,
-  output: __S(76) as any as S.Schema<CreateMediaLiveConnectorPipelineResponse>,
+  input: CreateMediaLiveConnectorPipelineRequest,
+  output: CreateMediaLiveConnectorPipelineResponse,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -1234,8 +1797,8 @@ export const createMediaPipelineKinesisVideoStreamPool: API.OperationMethod<
   CreateMediaPipelineKinesisVideoStreamPoolError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(78) as any as S.Schema<CreateMediaPipelineKinesisVideoStreamPoolRequest>,
-  output: __S(80) as any as S.Schema<CreateMediaPipelineKinesisVideoStreamPoolResponse>,
+  input: CreateMediaPipelineKinesisVideoStreamPoolRequest,
+  output: CreateMediaPipelineKinesisVideoStreamPoolResponse,
   errors: [
     BadRequestException,
     ConflictException,
@@ -1270,8 +1833,8 @@ export const createMediaStreamPipeline: API.OperationMethod<
   CreateMediaStreamPipelineError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(85) as any as S.Schema<CreateMediaStreamPipelineRequest>,
-  output: __S(87) as any as S.Schema<CreateMediaStreamPipelineResponse>,
+  input: CreateMediaStreamPipelineRequest,
+  output: CreateMediaStreamPipelineResponse,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -1305,8 +1868,8 @@ export const deleteMediaCapturePipeline: API.OperationMethod<
   DeleteMediaCapturePipelineError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(88) as any as S.Schema<DeleteMediaCapturePipelineRequest>,
-  output: __S(89) as any as S.Schema<DeleteMediaCapturePipelineResponse>,
+  input: DeleteMediaCapturePipelineRequest,
+  output: DeleteMediaCapturePipelineResponse,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -1340,8 +1903,8 @@ export const deleteMediaInsightsPipelineConfiguration: API.OperationMethod<
   DeleteMediaInsightsPipelineConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(90) as any as S.Schema<DeleteMediaInsightsPipelineConfigurationRequest>,
-  output: __S(89) as any as S.Schema<DeleteMediaInsightsPipelineConfigurationResponse>,
+  input: DeleteMediaInsightsPipelineConfigurationRequest,
+  output: DeleteMediaInsightsPipelineConfigurationResponse,
   errors: [
     BadRequestException,
     ConflictException,
@@ -1376,8 +1939,8 @@ export const deleteMediaPipeline: API.OperationMethod<
   DeleteMediaPipelineError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(91) as any as S.Schema<DeleteMediaPipelineRequest>,
-  output: __S(92) as any as S.Schema<DeleteMediaPipelineResponse>,
+  input: DeleteMediaPipelineRequest,
+  output: DeleteMediaPipelineResponse,
   errors: [
     BadRequestException,
     ConflictException,
@@ -1412,8 +1975,8 @@ export const deleteMediaPipelineKinesisVideoStreamPool: API.OperationMethod<
   DeleteMediaPipelineKinesisVideoStreamPoolError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(93) as any as S.Schema<DeleteMediaPipelineKinesisVideoStreamPoolRequest>,
-  output: __S(89) as any as S.Schema<DeleteMediaPipelineKinesisVideoStreamPoolResponse>,
+  input: DeleteMediaPipelineKinesisVideoStreamPoolRequest,
+  output: DeleteMediaPipelineKinesisVideoStreamPoolResponse,
   errors: [
     BadRequestException,
     ConflictException,
@@ -1447,8 +2010,8 @@ export const getMediaCapturePipeline: API.OperationMethod<
   GetMediaCapturePipelineError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(94) as any as S.Schema<GetMediaCapturePipelineRequest>,
-  output: __S(19) as any as S.Schema<GetMediaCapturePipelineResponse>,
+  input: GetMediaCapturePipelineRequest,
+  output: GetMediaCapturePipelineResponse,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -1481,8 +2044,8 @@ export const getMediaInsightsPipelineConfiguration: API.OperationMethod<
   GetMediaInsightsPipelineConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(95) as any as S.Schema<GetMediaInsightsPipelineConfigurationRequest>,
-  output: __S(67) as any as S.Schema<GetMediaInsightsPipelineConfigurationResponse>,
+  input: GetMediaInsightsPipelineConfigurationRequest,
+  output: GetMediaInsightsPipelineConfigurationResponse,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -1515,8 +2078,8 @@ export const getMediaPipeline: API.OperationMethod<
   GetMediaPipelineError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(96) as any as S.Schema<GetMediaPipelineRequest>,
-  output: __S(98) as any as S.Schema<GetMediaPipelineResponse>,
+  input: GetMediaPipelineRequest,
+  output: GetMediaPipelineResponse,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -1549,8 +2112,8 @@ export const getMediaPipelineKinesisVideoStreamPool: API.OperationMethod<
   GetMediaPipelineKinesisVideoStreamPoolError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(99) as any as S.Schema<GetMediaPipelineKinesisVideoStreamPoolRequest>,
-  output: __S(80) as any as S.Schema<GetMediaPipelineKinesisVideoStreamPoolResponse>,
+  input: GetMediaPipelineKinesisVideoStreamPoolRequest,
+  output: GetMediaPipelineKinesisVideoStreamPoolResponse,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -1583,8 +2146,8 @@ export const getSpeakerSearchTask: API.OperationMethod<
   GetSpeakerSearchTaskError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(100) as any as S.Schema<GetSpeakerSearchTaskRequest>,
-  output: __S(102) as any as S.Schema<GetSpeakerSearchTaskResponse>,
+  input: GetSpeakerSearchTaskRequest,
+  output: GetSpeakerSearchTaskResponse,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -1617,8 +2180,8 @@ export const getVoiceToneAnalysisTask: API.OperationMethod<
   GetVoiceToneAnalysisTaskError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(103) as any as S.Schema<GetVoiceToneAnalysisTaskRequest>,
-  output: __S(105) as any as S.Schema<GetVoiceToneAnalysisTaskResponse>,
+  input: GetVoiceToneAnalysisTaskRequest,
+  output: GetVoiceToneAnalysisTaskResponse,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -1652,8 +2215,8 @@ export const listMediaCapturePipelines: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(106) as any as S.Schema<ListMediaCapturePipelinesRequest>,
-  output: __S(109) as any as S.Schema<ListMediaCapturePipelinesResponse>,
+  input: ListMediaCapturePipelinesRequest,
+  output: ListMediaCapturePipelinesResponse,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -1692,8 +2255,8 @@ export const listMediaInsightsPipelineConfigurations: API.PaginatedOperationMeth
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(110) as any as S.Schema<ListMediaInsightsPipelineConfigurationsRequest>,
-  output: __S(113) as any as S.Schema<ListMediaInsightsPipelineConfigurationsResponse>,
+  input: ListMediaInsightsPipelineConfigurationsRequest,
+  output: ListMediaInsightsPipelineConfigurationsResponse,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -1732,8 +2295,8 @@ export const listMediaPipelineKinesisVideoStreamPools: API.PaginatedOperationMet
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(114) as any as S.Schema<ListMediaPipelineKinesisVideoStreamPoolsRequest>,
-  output: __S(117) as any as S.Schema<ListMediaPipelineKinesisVideoStreamPoolsResponse>,
+  input: ListMediaPipelineKinesisVideoStreamPoolsRequest,
+  output: ListMediaPipelineKinesisVideoStreamPoolsResponse,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -1772,8 +2335,8 @@ export const listMediaPipelines: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(118) as any as S.Schema<ListMediaPipelinesRequest>,
-  output: __S(121) as any as S.Schema<ListMediaPipelinesResponse>,
+  input: ListMediaPipelinesRequest,
+  output: ListMediaPipelinesResponse,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -1811,8 +2374,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(122) as any as S.Schema<ListTagsForResourceRequest>,
-  output: __S(123) as any as S.Schema<ListTagsForResourceResponse>,
+  input: ListTagsForResourceRequest,
+  output: ListTagsForResourceResponse,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -1849,8 +2412,8 @@ export const startSpeakerSearchTask: API.OperationMethod<
   StartSpeakerSearchTaskError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(125) as any as S.Schema<StartSpeakerSearchTaskRequest>,
-  output: __S(102) as any as S.Schema<StartSpeakerSearchTaskResponse>,
+  input: StartSpeakerSearchTaskRequest,
+  output: StartSpeakerSearchTaskResponse,
   errors: [
     BadRequestException,
     ConflictException,
@@ -1890,8 +2453,8 @@ export const startVoiceToneAnalysisTask: API.OperationMethod<
   StartVoiceToneAnalysisTaskError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(126) as any as S.Schema<StartVoiceToneAnalysisTaskRequest>,
-  output: __S(105) as any as S.Schema<StartVoiceToneAnalysisTaskResponse>,
+  input: StartVoiceToneAnalysisTaskRequest,
+  output: StartVoiceToneAnalysisTaskResponse,
   errors: [
     BadRequestException,
     ConflictException,
@@ -1926,8 +2489,8 @@ export const stopSpeakerSearchTask: API.OperationMethod<
   StopSpeakerSearchTaskError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(127) as any as S.Schema<StopSpeakerSearchTaskRequest>,
-  output: __S(92) as any as S.Schema<StopSpeakerSearchTaskResponse>,
+  input: StopSpeakerSearchTaskRequest,
+  output: StopSpeakerSearchTaskResponse,
   errors: [
     BadRequestException,
     ConflictException,
@@ -1962,8 +2525,8 @@ export const stopVoiceToneAnalysisTask: API.OperationMethod<
   StopVoiceToneAnalysisTaskError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(128) as any as S.Schema<StopVoiceToneAnalysisTaskRequest>,
-  output: __S(89) as any as S.Schema<StopVoiceToneAnalysisTaskResponse>,
+  input: StopVoiceToneAnalysisTaskRequest,
+  output: StopVoiceToneAnalysisTaskResponse,
   errors: [
     BadRequestException,
     ConflictException,
@@ -1997,8 +2560,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(129) as any as S.Schema<TagResourceRequest>,
-  output: __S(92) as any as S.Schema<TagResourceResponse>,
+  input: TagResourceRequest,
+  output: TagResourceResponse,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -2031,8 +2594,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(130) as any as S.Schema<UntagResourceRequest>,
-  output: __S(92) as any as S.Schema<UntagResourceResponse>,
+  input: UntagResourceRequest,
+  output: UntagResourceResponse,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -2066,8 +2629,8 @@ export const updateMediaInsightsPipelineConfiguration: API.OperationMethod<
   UpdateMediaInsightsPipelineConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(131) as any as S.Schema<UpdateMediaInsightsPipelineConfigurationRequest>,
-  output: __S(67) as any as S.Schema<UpdateMediaInsightsPipelineConfigurationResponse>,
+  input: UpdateMediaInsightsPipelineConfigurationRequest,
+  output: UpdateMediaInsightsPipelineConfigurationResponse,
   errors: [
     BadRequestException,
     ConflictException,
@@ -2102,8 +2665,8 @@ export const updateMediaInsightsPipelineStatus: API.OperationMethod<
   UpdateMediaInsightsPipelineStatusError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(132) as any as S.Schema<UpdateMediaInsightsPipelineStatusRequest>,
-  output: __S(89) as any as S.Schema<UpdateMediaInsightsPipelineStatusResponse>,
+  input: UpdateMediaInsightsPipelineStatusRequest,
+  output: UpdateMediaInsightsPipelineStatusResponse,
   errors: [
     BadRequestException,
     ConflictException,
@@ -2138,8 +2701,8 @@ export const updateMediaPipelineKinesisVideoStreamPool: API.OperationMethod<
   UpdateMediaPipelineKinesisVideoStreamPoolError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(134) as any as S.Schema<UpdateMediaPipelineKinesisVideoStreamPoolRequest>,
-  output: __S(80) as any as S.Schema<UpdateMediaPipelineKinesisVideoStreamPoolResponse>,
+  input: UpdateMediaPipelineKinesisVideoStreamPoolRequest,
+  output: UpdateMediaPipelineKinesisVideoStreamPoolResponse,
   errors: [
     BadRequestException,
     ConflictException,
@@ -2165,30 +2728,34 @@ function __c0(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          AttendeeIds: S.optional(__S(0)),
-          ExternalUserIds: S.optional(__S(1)),
+          AttendeeIds: S.optional(AttendeeIdList),
+          ExternalUserIds: S.optional(ExternalUserIdList),
         }),
       ).annotate({ identifier: "SelectedVideoStreams" });
     case 3:
-      return S.suspend(() => S.Struct({ SelectedVideoStreams: S.optional(__S(2)) })).annotate({
-        identifier: "SourceConfiguration",
-      });
+      return S.suspend(() =>
+        S.Struct({ SelectedVideoStreams: S.optional(SelectedVideoStreams) }),
+      ).annotate({ identifier: "SourceConfiguration" });
     case 4:
-      return S.suspend(() => S.Struct({ MuxType: S.String })).annotate({
+      return S.suspend(() => S.Struct({ MuxType: AudioMuxType })).annotate({
         identifier: "AudioArtifactsConfiguration",
       });
     case 5:
-      return S.suspend(() => S.Struct({ State: S.String, MuxType: S.optional(S.String) })).annotate(
-        {
-          identifier: "VideoArtifactsConfiguration",
-        },
-      );
+      return S.suspend(() =>
+        S.Struct({ State: ArtifactsState, MuxType: S.optional(VideoMuxType) }),
+      ).annotate({
+        identifier: "VideoArtifactsConfiguration",
+      });
     case 6:
-      return S.suspend(() => S.Struct({ PresenterPosition: S.optional(S.String) })).annotate({
+      return S.suspend(() =>
+        S.Struct({ PresenterPosition: S.optional(PresenterPosition) }),
+      ).annotate({
         identifier: "PresenterOnlyConfiguration",
       });
     case 7:
-      return S.suspend(() => S.Struct({ ActiveSpeakerPosition: S.optional(S.String) })).annotate({
+      return S.suspend(() =>
+        S.Struct({ ActiveSpeakerPosition: S.optional(ActiveSpeakerPosition) }),
+      ).annotate({
         identifier: "ActiveSpeakerOnlyConfiguration",
       });
   }
@@ -2198,8 +2765,8 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          TileOrder: S.optional(S.String),
-          TilePosition: S.optional(S.String),
+          TileOrder: S.optional(TileOrder),
+          TilePosition: S.optional(HorizontalTilePosition),
           TileCount: S.optional(S.Number),
           TileAspectRatio: S.optional(S.String),
         }),
@@ -2210,29 +2777,29 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           CornerRadius: S.optional(S.Number),
-          BorderColor: S.optional(S.String),
-          HighlightColor: S.optional(S.String),
+          BorderColor: S.optional(BorderColor),
+          HighlightColor: S.optional(HighlightColor),
           BorderThickness: S.optional(S.Number),
         }),
       ).annotate({ identifier: "VideoAttribute" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          ContentShareLayout: S.String,
-          PresenterOnlyConfiguration: S.optional(__S(6)),
-          ActiveSpeakerOnlyConfiguration: S.optional(__S(7)),
-          HorizontalLayoutConfiguration: S.optional(__S(8)),
-          VerticalLayoutConfiguration: S.optional(__S(8)),
-          VideoAttribute: S.optional(__S(9)),
-          CanvasOrientation: S.optional(S.String),
+          ContentShareLayout: ContentShareLayoutOption,
+          PresenterOnlyConfiguration: S.optional(PresenterOnlyConfiguration),
+          ActiveSpeakerOnlyConfiguration: S.optional(ActiveSpeakerOnlyConfiguration),
+          HorizontalLayoutConfiguration: S.optional(HorizontalLayoutConfiguration),
+          VerticalLayoutConfiguration: S.optional(VerticalLayoutConfiguration),
+          VideoAttribute: S.optional(VideoAttribute),
+          CanvasOrientation: S.optional(CanvasOrientation),
         }),
       ).annotate({ identifier: "GridViewConfiguration" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          Layout: S.optional(S.String),
-          Resolution: S.optional(S.String),
-          GridViewConfiguration: __S(10),
+          Layout: S.optional(LayoutOption),
+          Resolution: S.optional(ResolutionOption),
+          GridViewConfiguration: GridViewConfiguration,
         }),
       ).annotate({
         identifier: "CompositedVideoArtifactsConfiguration",
@@ -2240,17 +2807,17 @@ function __c1(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          Audio: __S(4),
-          Video: __S(5),
-          Content: __S(5),
-          CompositedVideo: S.optional(__S(11)),
+          Audio: AudioArtifactsConfiguration,
+          Video: VideoArtifactsConfiguration,
+          Content: ContentArtifactsConfiguration,
+          CompositedVideo: S.optional(CompositedVideoArtifactsConfiguration),
         }),
       ).annotate({ identifier: "ArtifactsConfiguration" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          SourceConfiguration: S.optional(__S(3)),
-          ArtifactsConfiguration: S.optional(__S(12)),
+          SourceConfiguration: S.optional(SourceConfiguration),
+          ArtifactsConfiguration: S.optional(ArtifactsConfiguration),
         }),
       ).annotate({
         identifier: "ChimeSdkMeetingConfiguration",
@@ -2270,19 +2837,19 @@ function __c1(j: number): any {
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(15));
+      return S.Array(Tag);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          SourceType: S.String,
+          SourceType: MediaPipelineSourceType,
           SourceArn: SensitiveString,
-          SinkType: S.String,
+          SinkType: MediaPipelineSinkType,
           SinkArn: SensitiveString,
           ClientRequestToken: S.optional(SensitiveString).pipe(T.IdempotencyToken()),
-          ChimeSdkMeetingConfiguration: S.optional(__S(13)),
-          SseAwsKeyManagementParams: S.optional(__S(14)),
+          ChimeSdkMeetingConfiguration: S.optional(ChimeSdkMeetingConfiguration),
+          SseAwsKeyManagementParams: S.optional(SseAwsKeyManagementParams),
           SinkIamRoleArn: S.optional(SensitiveString),
-          Tags: S.optional(__S(16)),
+          Tags: S.optional(TagList),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/sdk-media-capture-pipelines" }),
@@ -2301,49 +2868,53 @@ function __c2(j: number): any {
         S.Struct({
           MediaPipelineId: S.optional(S.String),
           MediaPipelineArn: S.optional(S.String),
-          SourceType: S.optional(S.String),
+          SourceType: S.optional(MediaPipelineSourceType),
           SourceArn: S.optional(SensitiveString),
-          Status: S.optional(S.String),
-          SinkType: S.optional(S.String),
+          Status: S.optional(MediaPipelineStatus),
+          SinkType: S.optional(MediaPipelineSinkType),
           SinkArn: S.optional(SensitiveString),
           CreatedTimestamp: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           UpdatedTimestamp: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          ChimeSdkMeetingConfiguration: S.optional(__S(13)),
-          SseAwsKeyManagementParams: S.optional(__S(14)),
+          ChimeSdkMeetingConfiguration: S.optional(ChimeSdkMeetingConfiguration),
+          SseAwsKeyManagementParams: S.optional(SseAwsKeyManagementParams),
           SinkIamRoleArn: S.optional(SensitiveString),
         }),
       ).annotate({ identifier: "MediaCapturePipeline" });
     case 3:
-      return S.suspend(() => S.Struct({ MediaCapturePipeline: S.optional(__S(18)) })).annotate({
+      return S.suspend(() =>
+        S.Struct({ MediaCapturePipeline: S.optional(MediaCapturePipeline) }),
+      ).annotate({
         identifier: "CreateMediaCapturePipelineResponse",
       });
     case 4:
-      return S.suspend(() => S.Struct({ State: S.String })).annotate({
+      return S.suspend(() => S.Struct({ State: AudioArtifactsConcatenationState })).annotate({
         identifier: "AudioConcatenationConfiguration",
       });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          Audio: __S(20),
-          Video: __S(20),
-          Content: __S(20),
-          DataChannel: __S(20),
-          TranscriptionMessages: __S(20),
-          MeetingEvents: __S(20),
-          CompositedVideo: __S(20),
+          Audio: AudioConcatenationConfiguration,
+          Video: VideoConcatenationConfiguration,
+          Content: ContentConcatenationConfiguration,
+          DataChannel: DataChannelConcatenationConfiguration,
+          TranscriptionMessages: TranscriptionMessagesConcatenationConfiguration,
+          MeetingEvents: MeetingEventsConcatenationConfiguration,
+          CompositedVideo: CompositedVideoConcatenationConfiguration,
         }),
       ).annotate({
         identifier: "ArtifactsConcatenationConfiguration",
       });
     case 6:
-      return S.suspend(() => S.Struct({ ArtifactsConfiguration: __S(21) })).annotate({
+      return S.suspend(() =>
+        S.Struct({ ArtifactsConfiguration: ArtifactsConcatenationConfiguration }),
+      ).annotate({
         identifier: "ChimeSdkMeetingConcatenationConfiguration",
       });
     case 7:
       return S.suspend(() =>
         S.Struct({
           MediaPipelineArn: SensitiveString,
-          ChimeSdkMeetingConfiguration: __S(22),
+          ChimeSdkMeetingConfiguration: ChimeSdkMeetingConcatenationConfiguration,
         }),
       ).annotate({
         identifier: "MediaCapturePipelineSourceConfiguration",
@@ -2355,12 +2926,12 @@ function __c3(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          Type: S.String,
-          MediaCapturePipelineSourceConfiguration: __S(23),
+          Type: ConcatenationSourceType,
+          MediaCapturePipelineSourceConfiguration: MediaCapturePipelineSourceConfiguration,
         }),
       ).annotate({ identifier: "ConcatenationSource" });
     case 1:
-      return S.Array(__S(24));
+      return S.Array(ConcatenationSource);
     case 2:
       return S.suspend(() => S.Struct({ Destination: SensitiveString })).annotate({
         identifier: "S3BucketSinkConfiguration",
@@ -2368,19 +2939,19 @@ function __c3(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          Type: S.String,
-          S3BucketSinkConfiguration: __S(26),
+          Type: ConcatenationSinkType,
+          S3BucketSinkConfiguration: S3BucketSinkConfiguration,
         }),
       ).annotate({ identifier: "ConcatenationSink" });
     case 4:
-      return S.Array(__S(27));
+      return S.Array(ConcatenationSink);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          Sources: __S(25),
-          Sinks: __S(28),
+          Sources: ConcatenationSourceList,
+          Sinks: ConcatenationSinkList,
           ClientRequestToken: S.optional(SensitiveString).pipe(T.IdempotencyToken()),
-          Tags: S.optional(__S(16)),
+          Tags: S.optional(TagList),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/sdk-media-concatenation-pipelines" }),
@@ -2399,9 +2970,9 @@ function __c3(j: number): any {
         S.Struct({
           MediaPipelineId: S.optional(S.String),
           MediaPipelineArn: S.optional(S.String),
-          Sources: S.optional(__S(25)),
-          Sinks: S.optional(__S(28)),
-          Status: S.optional(S.String),
+          Sources: S.optional(ConcatenationSourceList),
+          Sinks: S.optional(ConcatenationSinkList),
+          Status: S.optional(MediaPipelineStatus),
           CreatedTimestamp: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           UpdatedTimestamp: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
         }),
@@ -2410,7 +2981,7 @@ function __c3(j: number): any {
       });
     case 7:
       return S.suspend(() =>
-        S.Struct({ MediaConcatenationPipeline: S.optional(__S(30)) }),
+        S.Struct({ MediaConcatenationPipeline: S.optional(MediaConcatenationPipeline) }),
       ).annotate({
         identifier: "CreateMediaConcatenationPipelineResponse",
       });
@@ -2420,15 +2991,15 @@ function __c4(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ ChannelId: S.Number, ParticipantRole: S.optional(S.String) }),
+        S.Struct({ ChannelId: S.Number, ParticipantRole: S.optional(ParticipantRole) }),
       ).annotate({ identifier: "ChannelDefinition" });
     case 1:
-      return S.Array(__S(32));
+      return S.Array(ChannelDefinition);
     case 2:
       return S.suspend(() =>
         S.Struct({
           NumberOfChannels: S.Number,
-          ChannelDefinitions: S.optional(__S(33)),
+          ChannelDefinitions: S.optional(ChannelDefinitions),
         }),
       ).annotate({ identifier: "StreamChannelDefinition" });
     case 3:
@@ -2436,14 +3007,14 @@ function __c4(j: number): any {
         S.Struct({
           StreamArn: S.String,
           FragmentNumber: S.optional(S.String),
-          StreamChannelDefinition: __S(34),
+          StreamChannelDefinition: StreamChannelDefinition,
         }),
       ).annotate({ identifier: "StreamConfiguration" });
     case 4:
-      return S.Array(__S(35));
+      return S.Array(StreamConfiguration);
     case 5:
       return S.suspend(() =>
-        S.Struct({ Streams: __S(36), MediaEncoding: S.String, MediaSampleRate: S.Number }),
+        S.Struct({ Streams: Streams, MediaEncoding: MediaEncoding, MediaSampleRate: S.Number }),
       ).annotate({
         identifier: "KinesisVideoStreamSourceRuntimeConfiguration",
       });
@@ -2458,7 +3029,7 @@ function __c4(j: number): any {
 function __c5(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(39));
+      return S.Array(RecordingStreamConfiguration);
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2468,15 +3039,17 @@ function __c5(j: number): any {
       ).annotate({ identifier: "TimestampRange" });
     case 2:
       return S.suspend(() =>
-        S.Struct({ FragmentSelectorType: S.String, TimestampRange: __S(41) }),
+        S.Struct({ FragmentSelectorType: FragmentSelectorType, TimestampRange: TimestampRange }),
       ).annotate({ identifier: "FragmentSelector" });
     case 3:
-      return S.suspend(() => S.Struct({ Streams: __S(40), FragmentSelector: __S(42) })).annotate({
+      return S.suspend(() =>
+        S.Struct({ Streams: RecordingStreamList, FragmentSelector: FragmentSelector }),
+      ).annotate({
         identifier: "KinesisVideoStreamRecordingSourceRuntimeConfiguration",
       });
     case 4:
       return S.suspend(() =>
-        S.Struct({ Destination: SensitiveString, RecordingFileFormat: S.String }),
+        S.Struct({ Destination: SensitiveString, RecordingFileFormat: RecordingFileFormat }),
       ).annotate({
         identifier: "S3RecordingSinkRuntimeConfiguration",
       });
@@ -2484,11 +3057,15 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           MediaInsightsPipelineConfigurationArn: SensitiveString,
-          KinesisVideoStreamSourceRuntimeConfiguration: S.optional(__S(37)),
-          MediaInsightsRuntimeMetadata: S.optional(__S(38)),
-          KinesisVideoStreamRecordingSourceRuntimeConfiguration: S.optional(__S(43)),
-          S3RecordingSinkRuntimeConfiguration: S.optional(__S(44)),
-          Tags: S.optional(__S(16)),
+          KinesisVideoStreamSourceRuntimeConfiguration: S.optional(
+            KinesisVideoStreamSourceRuntimeConfiguration,
+          ),
+          MediaInsightsRuntimeMetadata: S.optional(MediaInsightsRuntimeMetadata),
+          KinesisVideoStreamRecordingSourceRuntimeConfiguration: S.optional(
+            KinesisVideoStreamRecordingSourceRuntimeConfiguration,
+          ),
+          S3RecordingSinkRuntimeConfiguration: S.optional(S3RecordingSinkRuntimeConfiguration),
+          Tags: S.optional(TagList),
           ClientRequestToken: S.optional(SensitiveString).pipe(T.IdempotencyToken()),
         }).pipe(
           T.all(
@@ -2506,14 +3083,14 @@ function __c5(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          Type: S.optional(S.String),
-          Status: S.optional(S.String),
+          Type: S.optional(MediaInsightsPipelineConfigurationElementType),
+          Status: S.optional(MediaPipelineElementStatus),
         }),
       ).annotate({
         identifier: "MediaInsightsPipelineElementStatus",
       });
     case 7:
-      return S.Array(__S(46));
+      return S.Array(MediaInsightsPipelineElementStatus);
   }
 }
 function __c6(j: number): any {
@@ -2524,24 +3101,28 @@ function __c6(j: number): any {
           MediaPipelineId: S.optional(S.String),
           MediaPipelineArn: S.optional(SensitiveString),
           MediaInsightsPipelineConfigurationArn: S.optional(SensitiveString),
-          Status: S.optional(S.String),
-          KinesisVideoStreamSourceRuntimeConfiguration: S.optional(__S(37)),
-          MediaInsightsRuntimeMetadata: S.optional(__S(38)),
-          KinesisVideoStreamRecordingSourceRuntimeConfiguration: S.optional(__S(43)),
-          S3RecordingSinkRuntimeConfiguration: S.optional(__S(44)),
+          Status: S.optional(MediaPipelineStatus),
+          KinesisVideoStreamSourceRuntimeConfiguration: S.optional(
+            KinesisVideoStreamSourceRuntimeConfiguration,
+          ),
+          MediaInsightsRuntimeMetadata: S.optional(MediaInsightsRuntimeMetadata),
+          KinesisVideoStreamRecordingSourceRuntimeConfiguration: S.optional(
+            KinesisVideoStreamRecordingSourceRuntimeConfiguration,
+          ),
+          S3RecordingSinkRuntimeConfiguration: S.optional(S3RecordingSinkRuntimeConfiguration),
           CreatedTimestamp: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          ElementStatuses: S.optional(__S(47)),
+          ElementStatuses: S.optional(MediaInsightsPipelineElementStatuses),
         }),
       ).annotate({ identifier: "MediaInsightsPipeline" });
     case 1:
-      return S.suspend(() => S.Struct({ MediaInsightsPipeline: __S(48) })).annotate({
+      return S.suspend(() => S.Struct({ MediaInsightsPipeline: MediaInsightsPipeline })).annotate({
         identifier: "CreateMediaInsightsPipelineResponse",
       });
     case 2:
       return S.suspend(() =>
         S.Struct({
           RuleName: S.String,
-          Keywords: __S(0),
+          Keywords: KeywordMatchWordList,
           Negate: S.optional(S.Boolean),
         }),
       ).annotate({
@@ -2549,7 +3130,7 @@ function __c6(j: number): any {
       });
     case 3:
       return S.suspend(() =>
-        S.Struct({ RuleName: S.String, SentimentType: S.String, TimePeriod: S.Number }),
+        S.Struct({ RuleName: S.String, SentimentType: SentimentType, TimePeriod: S.Number }),
       ).annotate({ identifier: "SentimentConfiguration" });
     case 4:
       return S.suspend(() => S.Struct({ RuleName: S.String })).annotate({
@@ -2558,17 +3139,17 @@ function __c6(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          Type: S.String,
-          KeywordMatchConfiguration: S.optional(__S(50)),
-          SentimentConfiguration: S.optional(__S(51)),
-          IssueDetectionConfiguration: S.optional(__S(52)),
+          Type: RealTimeAlertRuleType,
+          KeywordMatchConfiguration: S.optional(KeywordMatchConfiguration),
+          SentimentConfiguration: S.optional(SentimentConfiguration),
+          IssueDetectionConfiguration: S.optional(IssueDetectionConfiguration),
         }),
       ).annotate({ identifier: "RealTimeAlertRule" });
     case 6:
-      return S.Array(__S(53));
+      return S.Array(RealTimeAlertRule);
     case 7:
       return S.suspend(() =>
-        S.Struct({ Disabled: S.optional(S.Boolean), Rules: S.optional(__S(54)) }),
+        S.Struct({ Disabled: S.optional(S.Boolean), Rules: S.optional(RealTimeAlertRuleList) }),
       ).annotate({
         identifier: "RealTimeAlertConfiguration",
       });
@@ -2581,7 +3162,7 @@ function __c7(j: number): any {
         S.Struct({
           OutputLocation: S.String,
           DataAccessRoleArn: S.String,
-          ContentRedactionOutput: S.optional(S.String),
+          ContentRedactionOutput: S.optional(ContentRedactionOutput),
           OutputEncryptionKMSKeyId: S.optional(S.String),
         }),
       ).annotate({
@@ -2590,19 +3171,19 @@ function __c7(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          LanguageCode: S.String,
+          LanguageCode: CallAnalyticsLanguageCode,
           VocabularyName: S.optional(S.String),
           VocabularyFilterName: S.optional(S.String),
-          VocabularyFilterMethod: S.optional(S.String),
+          VocabularyFilterMethod: S.optional(VocabularyFilterMethod),
           LanguageModelName: S.optional(S.String),
           EnablePartialResultsStabilization: S.optional(S.Boolean),
-          PartialResultsStability: S.optional(S.String),
-          ContentIdentificationType: S.optional(S.String),
-          ContentRedactionType: S.optional(S.String),
+          PartialResultsStability: S.optional(PartialResultsStability),
+          ContentIdentificationType: S.optional(ContentType),
+          ContentRedactionType: S.optional(ContentType),
           PiiEntityTypes: S.optional(S.String),
           FilterPartialResults: S.optional(S.Boolean),
-          PostCallAnalyticsSettings: S.optional(__S(56)),
-          CallAnalyticsStreamCategories: S.optional(__S(0)),
+          PostCallAnalyticsSettings: S.optional(PostCallAnalyticsSettings),
+          CallAnalyticsStreamCategories: S.optional(CategoryNameList),
         }),
       ).annotate({
         identifier: "AmazonTranscribeCallAnalyticsProcessorConfiguration",
@@ -2610,22 +3191,22 @@ function __c7(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          LanguageCode: S.optional(S.String),
+          LanguageCode: S.optional(CallAnalyticsLanguageCode),
           VocabularyName: S.optional(S.String),
           VocabularyFilterName: S.optional(S.String),
-          VocabularyFilterMethod: S.optional(S.String),
+          VocabularyFilterMethod: S.optional(VocabularyFilterMethod),
           ShowSpeakerLabel: S.optional(S.Boolean),
           EnablePartialResultsStabilization: S.optional(S.Boolean),
-          PartialResultsStability: S.optional(S.String),
-          ContentIdentificationType: S.optional(S.String),
-          ContentRedactionType: S.optional(S.String),
+          PartialResultsStability: S.optional(PartialResultsStability),
+          ContentIdentificationType: S.optional(ContentType),
+          ContentRedactionType: S.optional(ContentType),
           PiiEntityTypes: S.optional(S.String),
           LanguageModelName: S.optional(S.String),
           FilterPartialResults: S.optional(S.Boolean),
           IdentifyLanguage: S.optional(S.Boolean),
           IdentifyMultipleLanguages: S.optional(S.Boolean),
           LanguageOptions: S.optional(S.String),
-          PreferredLanguage: S.optional(S.String),
+          PreferredLanguage: S.optional(CallAnalyticsLanguageCode),
           VocabularyNames: S.optional(S.String),
           VocabularyFilterNames: S.optional(S.String),
         }),
@@ -2640,7 +3221,7 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Destination: S.optional(SensitiveString),
-          RecordingFileFormat: S.optional(S.String),
+          RecordingFileFormat: S.optional(RecordingFileFormat),
         }),
       ).annotate({
         identifier: "S3RecordingSinkConfiguration",
@@ -2648,8 +3229,8 @@ function __c7(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          SpeakerSearchStatus: S.optional(S.String),
-          VoiceToneAnalysisStatus: S.optional(S.String),
+          SpeakerSearchStatus: S.optional(VoiceAnalyticsConfigurationStatus),
+          VoiceToneAnalysisStatus: S.optional(VoiceAnalyticsConfigurationStatus),
         }),
       ).annotate({
         identifier: "VoiceAnalyticsProcessorConfiguration",
@@ -2661,16 +3242,20 @@ function __c7(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          Type: S.String,
-          AmazonTranscribeCallAnalyticsProcessorConfiguration: S.optional(__S(57)),
-          AmazonTranscribeProcessorConfiguration: S.optional(__S(58)),
-          KinesisDataStreamSinkConfiguration: S.optional(__S(59)),
-          S3RecordingSinkConfiguration: S.optional(__S(60)),
-          VoiceAnalyticsProcessorConfiguration: S.optional(__S(61)),
-          LambdaFunctionSinkConfiguration: S.optional(__S(59)),
-          SqsQueueSinkConfiguration: S.optional(__S(59)),
-          SnsTopicSinkConfiguration: S.optional(__S(59)),
-          VoiceEnhancementSinkConfiguration: S.optional(__S(62)),
+          Type: MediaInsightsPipelineConfigurationElementType,
+          AmazonTranscribeCallAnalyticsProcessorConfiguration: S.optional(
+            AmazonTranscribeCallAnalyticsProcessorConfiguration,
+          ),
+          AmazonTranscribeProcessorConfiguration: S.optional(
+            AmazonTranscribeProcessorConfiguration,
+          ),
+          KinesisDataStreamSinkConfiguration: S.optional(KinesisDataStreamSinkConfiguration),
+          S3RecordingSinkConfiguration: S.optional(S3RecordingSinkConfiguration),
+          VoiceAnalyticsProcessorConfiguration: S.optional(VoiceAnalyticsProcessorConfiguration),
+          LambdaFunctionSinkConfiguration: S.optional(LambdaFunctionSinkConfiguration),
+          SqsQueueSinkConfiguration: S.optional(SqsQueueSinkConfiguration),
+          SnsTopicSinkConfiguration: S.optional(SnsTopicSinkConfiguration),
+          VoiceEnhancementSinkConfiguration: S.optional(VoiceEnhancementSinkConfiguration),
         }),
       ).annotate({
         identifier: "MediaInsightsPipelineConfigurationElement",
@@ -2680,15 +3265,15 @@ function __c7(j: number): any {
 function __c8(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(63));
+      return S.Array(MediaInsightsPipelineConfigurationElement);
     case 1:
       return S.suspend(() =>
         S.Struct({
           MediaInsightsPipelineConfigurationName: S.String,
           ResourceAccessRoleArn: SensitiveString,
-          RealTimeAlertConfiguration: S.optional(__S(55)),
-          Elements: __S(64),
-          Tags: S.optional(__S(16)),
+          RealTimeAlertConfiguration: S.optional(RealTimeAlertConfiguration),
+          Elements: MediaInsightsPipelineConfigurationElements,
+          Tags: S.optional(TagList),
           ClientRequestToken: S.optional(SensitiveString).pipe(T.IdempotencyToken()),
         }).pipe(
           T.all(
@@ -2709,8 +3294,8 @@ function __c8(j: number): any {
           MediaInsightsPipelineConfigurationName: S.optional(S.String),
           MediaInsightsPipelineConfigurationArn: S.optional(SensitiveString),
           ResourceAccessRoleArn: S.optional(SensitiveString),
-          RealTimeAlertConfiguration: S.optional(__S(55)),
-          Elements: S.optional(__S(64)),
+          RealTimeAlertConfiguration: S.optional(RealTimeAlertConfiguration),
+          Elements: S.optional(MediaInsightsPipelineConfigurationElements),
           MediaInsightsPipelineConfigurationId: S.optional(S.String),
           CreatedTimestamp: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           UpdatedTimestamp: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
@@ -2721,7 +3306,7 @@ function __c8(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          MediaInsightsPipelineConfiguration: S.optional(__S(66)),
+          MediaInsightsPipelineConfiguration: S.optional(MediaInsightsPipelineConfiguration),
         }),
       ).annotate({
         identifier: "CreateMediaInsightsPipelineConfigurationResponse",
@@ -2730,9 +3315,9 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Arn: SensitiveString,
-          MuxType: S.String,
-          CompositedVideo: S.optional(__S(11)),
-          SourceConfiguration: S.optional(__S(3)),
+          MuxType: LiveConnectorMuxType,
+          CompositedVideo: S.optional(CompositedVideoArtifactsConfiguration),
+          SourceConfiguration: S.optional(SourceConfiguration),
         }),
       ).annotate({
         identifier: "ChimeSdkMeetingLiveConnectorConfiguration",
@@ -2740,19 +3325,19 @@ function __c8(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          SourceType: S.String,
-          ChimeSdkMeetingLiveConnectorConfiguration: __S(68),
+          SourceType: LiveConnectorSourceType,
+          ChimeSdkMeetingLiveConnectorConfiguration: ChimeSdkMeetingLiveConnectorConfiguration,
         }),
       ).annotate({
         identifier: "LiveConnectorSourceConfiguration",
       });
     case 6:
-      return S.Array(__S(69));
+      return S.Array(LiveConnectorSourceConfiguration);
     case 7:
       return S.suspend(() =>
         S.Struct({
           Url: SensitiveString,
-          AudioChannels: S.optional(S.String),
+          AudioChannels: S.optional(AudioChannelsOption),
           AudioSampleRate: S.optional(S.String),
         }),
       ).annotate({
@@ -2765,21 +3350,21 @@ function __c9(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          SinkType: S.String,
-          RTMPConfiguration: __S(71),
+          SinkType: LiveConnectorSinkType,
+          RTMPConfiguration: LiveConnectorRTMPConfiguration,
         }),
       ).annotate({
         identifier: "LiveConnectorSinkConfiguration",
       });
     case 1:
-      return S.Array(__S(72));
+      return S.Array(LiveConnectorSinkConfiguration);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          Sources: __S(70),
-          Sinks: __S(73),
+          Sources: LiveConnectorSourceList,
+          Sinks: LiveConnectorSinkList,
           ClientRequestToken: S.optional(SensitiveString).pipe(T.IdempotencyToken()),
-          Tags: S.optional(__S(16)),
+          Tags: S.optional(TagList),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/sdk-media-live-connector-pipelines" }),
@@ -2796,11 +3381,11 @@ function __c9(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          Sources: S.optional(__S(70)),
-          Sinks: S.optional(__S(73)),
+          Sources: S.optional(LiveConnectorSourceList),
+          Sinks: S.optional(LiveConnectorSinkList),
           MediaPipelineId: S.optional(S.String),
           MediaPipelineArn: S.optional(S.String),
-          Status: S.optional(S.String),
+          Status: S.optional(MediaPipelineStatus),
           CreatedTimestamp: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           UpdatedTimestamp: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
         }),
@@ -2809,7 +3394,7 @@ function __c9(j: number): any {
       });
     case 4:
       return S.suspend(() =>
-        S.Struct({ MediaLiveConnectorPipeline: S.optional(__S(75)) }),
+        S.Struct({ MediaLiveConnectorPipeline: S.optional(MediaLiveConnectorPipeline) }),
       ).annotate({
         identifier: "CreateMediaLiveConnectorPipelineResponse",
       });
@@ -2822,10 +3407,10 @@ function __c9(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          StreamConfiguration: __S(77),
+          StreamConfiguration: KinesisVideoStreamConfiguration,
           PoolName: S.String,
           ClientRequestToken: S.optional(SensitiveString).pipe(T.IdempotencyToken()),
-          Tags: S.optional(__S(16)),
+          Tags: S.optional(TagList),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/media-pipeline-kinesis-video-stream-pools" }),
@@ -2845,9 +3430,9 @@ function __c9(j: number): any {
           PoolArn: S.optional(SensitiveString),
           PoolName: S.optional(S.String),
           PoolId: S.optional(S.String),
-          PoolStatus: S.optional(S.String),
+          PoolStatus: S.optional(KinesisVideoStreamPoolStatus),
           PoolSize: S.optional(S.Number),
-          StreamConfiguration: S.optional(__S(77)),
+          StreamConfiguration: S.optional(KinesisVideoStreamConfiguration),
           CreatedTimestamp: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           UpdatedTimestamp: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
         }),
@@ -2861,35 +3446,35 @@ function __c10(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          KinesisVideoStreamPoolConfiguration: S.optional(__S(79)),
+          KinesisVideoStreamPoolConfiguration: S.optional(KinesisVideoStreamPoolConfiguration),
         }),
       ).annotate({
         identifier: "CreateMediaPipelineKinesisVideoStreamPoolResponse",
       });
     case 1:
       return S.suspend(() =>
-        S.Struct({ SourceType: S.String, SourceArn: SensitiveString }),
+        S.Struct({ SourceType: MediaPipelineSourceType, SourceArn: SensitiveString }),
       ).annotate({ identifier: "MediaStreamSource" });
     case 2:
-      return S.Array(__S(81));
+      return S.Array(MediaStreamSource);
     case 3:
       return S.suspend(() =>
         S.Struct({
           SinkArn: SensitiveString,
-          SinkType: S.String,
+          SinkType: MediaStreamPipelineSinkType,
           ReservedStreamCapacity: S.Number,
-          MediaStreamType: S.String,
+          MediaStreamType: MediaStreamType,
         }),
       ).annotate({ identifier: "MediaStreamSink" });
     case 4:
-      return S.Array(__S(83));
+      return S.Array(MediaStreamSink);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          Sources: __S(82),
-          Sinks: __S(84),
+          Sources: MediaStreamSourceList,
+          Sinks: MediaStreamSinkList,
           ClientRequestToken: S.optional(SensitiveString).pipe(T.IdempotencyToken()),
-          Tags: S.optional(__S(16)),
+          Tags: S.optional(TagList),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/sdk-media-stream-pipelines" }),
@@ -2910,13 +3495,15 @@ function __c10(j: number): any {
           MediaPipelineArn: S.optional(S.String),
           CreatedTimestamp: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           UpdatedTimestamp: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          Status: S.optional(S.String),
-          Sources: S.optional(__S(82)),
-          Sinks: S.optional(__S(84)),
+          Status: S.optional(MediaPipelineStatus),
+          Sources: S.optional(MediaStreamSourceList),
+          Sinks: S.optional(MediaStreamSinkList),
         }),
       ).annotate({ identifier: "MediaStreamPipeline" });
     case 7:
-      return S.suspend(() => S.Struct({ MediaStreamPipeline: S.optional(__S(86)) })).annotate({
+      return S.suspend(() =>
+        S.Struct({ MediaStreamPipeline: S.optional(MediaStreamPipeline) }),
+      ).annotate({
         identifier: "CreateMediaStreamPipelineResponse",
       });
   }
@@ -3047,15 +3634,15 @@ function __c12(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          MediaCapturePipeline: S.optional(__S(18)),
-          MediaLiveConnectorPipeline: S.optional(__S(75)),
-          MediaConcatenationPipeline: S.optional(__S(30)),
-          MediaInsightsPipeline: S.optional(__S(48)),
-          MediaStreamPipeline: S.optional(__S(86)),
+          MediaCapturePipeline: S.optional(MediaCapturePipeline),
+          MediaLiveConnectorPipeline: S.optional(MediaLiveConnectorPipeline),
+          MediaConcatenationPipeline: S.optional(MediaConcatenationPipeline),
+          MediaInsightsPipeline: S.optional(MediaInsightsPipeline),
+          MediaStreamPipeline: S.optional(MediaStreamPipeline),
         }),
       ).annotate({ identifier: "MediaPipeline" });
     case 2:
-      return S.suspend(() => S.Struct({ MediaPipeline: S.optional(__S(97)) })).annotate({
+      return S.suspend(() => S.Struct({ MediaPipeline: S.optional(MediaPipeline) })).annotate({
         identifier: "GetMediaPipelineResponse",
       });
     case 3:
@@ -3101,13 +3688,15 @@ function __c12(j: number): any {
       return S.suspend(() =>
         S.Struct({
           SpeakerSearchTaskId: S.optional(S.String),
-          SpeakerSearchTaskStatus: S.optional(S.String),
+          SpeakerSearchTaskStatus: S.optional(MediaPipelineTaskStatus),
           CreatedTimestamp: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           UpdatedTimestamp: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
         }),
       ).annotate({ identifier: "SpeakerSearchTask" });
     case 6:
-      return S.suspend(() => S.Struct({ SpeakerSearchTask: S.optional(__S(101)) })).annotate({
+      return S.suspend(() =>
+        S.Struct({ SpeakerSearchTask: S.optional(SpeakerSearchTask) }),
+      ).annotate({
         identifier: "GetSpeakerSearchTaskResponse",
       });
     case 7:
@@ -3139,13 +3728,15 @@ function __c13(j: number): any {
       return S.suspend(() =>
         S.Struct({
           VoiceToneAnalysisTaskId: S.optional(S.String),
-          VoiceToneAnalysisTaskStatus: S.optional(S.String),
+          VoiceToneAnalysisTaskStatus: S.optional(MediaPipelineTaskStatus),
           CreatedTimestamp: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           UpdatedTimestamp: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
         }),
       ).annotate({ identifier: "VoiceToneAnalysisTask" });
     case 1:
-      return S.suspend(() => S.Struct({ VoiceToneAnalysisTask: S.optional(__S(104)) })).annotate({
+      return S.suspend(() =>
+        S.Struct({ VoiceToneAnalysisTask: S.optional(VoiceToneAnalysisTask) }),
+      ).annotate({
         identifier: "GetVoiceToneAnalysisTaskResponse",
       });
     case 2:
@@ -3173,11 +3764,11 @@ function __c13(j: number): any {
         identifier: "MediaCapturePipelineSummary",
       });
     case 4:
-      return S.Array(__S(107));
+      return S.Array(MediaCapturePipelineSummary);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          MediaCapturePipelines: S.optional(__S(108)),
+          MediaCapturePipelines: S.optional(MediaCapturePipelineSummaryList),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -3216,11 +3807,13 @@ function __c13(j: number): any {
 function __c14(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(111));
+      return S.Array(MediaInsightsPipelineConfigurationSummary);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          MediaInsightsPipelineConfigurations: S.optional(__S(112)),
+          MediaInsightsPipelineConfigurations: S.optional(
+            MediaInsightsPipelineConfigurationSummaryList,
+          ),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -3255,11 +3848,11 @@ function __c14(j: number): any {
         identifier: "KinesisVideoStreamPoolSummary",
       });
     case 4:
-      return S.Array(__S(115));
+      return S.Array(KinesisVideoStreamPoolSummary);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          KinesisVideoStreamPools: S.optional(__S(116)),
+          KinesisVideoStreamPools: S.optional(KinesisVideoStreamPoolSummaryList),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -3292,11 +3885,11 @@ function __c14(j: number): any {
 function __c15(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(119));
+      return S.Array(MediaPipelineSummary);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          MediaPipelines: S.optional(__S(120)),
+          MediaPipelines: S.optional(MediaPipelineList),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -3311,7 +3904,7 @@ function __c15(j: number): any {
         identifier: "ListTagsForResourceRequest",
       });
     case 3:
-      return S.suspend(() => S.Struct({ Tags: S.optional(__S(16)) })).annotate({
+      return S.suspend(() => S.Struct({ Tags: S.optional(TagList) })).annotate({
         identifier: "ListTagsForResourceResponse",
       });
     case 4:
@@ -3329,7 +3922,9 @@ function __c15(j: number): any {
         S.Struct({
           Identifier: S.String.pipe(T.HttpLabel("Identifier")),
           VoiceProfileDomainArn: SensitiveString,
-          KinesisVideoStreamSourceTaskConfiguration: S.optional(__S(124)),
+          KinesisVideoStreamSourceTaskConfiguration: S.optional(
+            KinesisVideoStreamSourceTaskConfiguration,
+          ),
           ClientRequestToken: S.optional(SensitiveString).pipe(T.IdempotencyToken()),
         }).pipe(
           T.all(
@@ -3351,8 +3946,10 @@ function __c15(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Identifier: S.String.pipe(T.HttpLabel("Identifier")),
-          LanguageCode: S.String,
-          KinesisVideoStreamSourceTaskConfiguration: S.optional(__S(124)),
+          LanguageCode: VoiceAnalyticsLanguageCode,
+          KinesisVideoStreamSourceTaskConfiguration: S.optional(
+            KinesisVideoStreamSourceTaskConfiguration,
+          ),
           ClientRequestToken: S.optional(SensitiveString).pipe(T.IdempotencyToken()),
         }).pipe(
           T.all(
@@ -3418,7 +4015,7 @@ function __c16(j: number): any {
       });
     case 1:
       return S.suspend(() =>
-        S.Struct({ ResourceARN: S.String, Tags: __S(16) }).pipe(
+        S.Struct({ ResourceARN: S.String, Tags: TagList }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/tags?operation=tag-resource" }),
             svc,
@@ -3431,7 +4028,7 @@ function __c16(j: number): any {
       ).annotate({ identifier: "TagResourceRequest" });
     case 2:
       return S.suspend(() =>
-        S.Struct({ ResourceARN: S.String, TagKeys: __S(0) }).pipe(
+        S.Struct({ ResourceARN: S.String, TagKeys: TagKeyList }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/tags?operation=untag-resource" }),
             svc,
@@ -3447,8 +4044,8 @@ function __c16(j: number): any {
         S.Struct({
           Identifier: S.String.pipe(T.HttpLabel("Identifier")),
           ResourceAccessRoleArn: SensitiveString,
-          RealTimeAlertConfiguration: S.optional(__S(55)),
-          Elements: __S(64),
+          RealTimeAlertConfiguration: S.optional(RealTimeAlertConfiguration),
+          Elements: MediaInsightsPipelineConfigurationElements,
         }).pipe(
           T.all(
             T.Http({ method: "PUT", uri: "/media-insights-pipeline-configurations/{Identifier}" }),
@@ -3466,7 +4063,7 @@ function __c16(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Identifier: S.String.pipe(T.HttpLabel("Identifier")),
-          UpdateStatus: S.String,
+          UpdateStatus: MediaPipelineStatusUpdate,
         }).pipe(
           T.all(
             T.Http({ method: "PUT", uri: "/media-insights-pipeline-status/{Identifier}" }),
@@ -3488,7 +4085,7 @@ function __c16(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Identifier: S.String.pipe(T.HttpLabel("Identifier")),
-          StreamConfiguration: S.optional(__S(133)),
+          StreamConfiguration: S.optional(KinesisVideoStreamConfigurationUpdate),
         }).pipe(
           T.all(
             T.Http({
@@ -3505,48 +4102,5 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "UpdateMediaPipelineKinesisVideoStreamPoolRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
-    case 9:
-      return __c9(i & 7);
-    case 10:
-      return __c10(i & 7);
-    case 11:
-      return __c11(i & 7);
-    case 12:
-      return __c12(i & 7);
-    case 13:
-      return __c13(i & 7);
-    case 14:
-      return __c14(i & 7);
-    case 15:
-      return __c15(i & 7);
-    case 16:
-      return __c16(i & 7);
   }
 }

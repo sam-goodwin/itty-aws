@@ -7,8 +7,6 @@ import * as Redacted from "effect/Redacted";
 import { PosthogProtocol, type PosthogOpError, type PosthogOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { PosthogOpError, PosthogOpContext };
 
@@ -1405,14 +1403,30 @@ export type ExternalDataSourceTypeEnum =
   | "ExactOnline"
   | "LettrLabs"
   | "GrafanaIRM";
+const ExternalDataSourceTypeEnum = S.String;
+
 /** Connection credentials. Keys depend on source_type. Add a 'schemas' array to pick which tables sync; omit it and every discovered table syncs with default settings. */
 export type CreateExternalDataSourceRequestPayloadMap = { [key: string]: unknown | undefined };
+const CreateExternalDataSourceRequestPayloadMap = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<CreateExternalDataSourceRequestPayloadMap>;
+
 /** * `warehouse` - warehouse * `direct` - direct */
 export type ExternalDataSourceAccessMethodEnum = "warehouse" | "direct";
+const ExternalDataSourceAccessMethodEnum = S.String;
+
 /** * `web` - web * `api` - api * `mcp` - mcp */
 export type ExternalDataSourceCreateCreatedViaEnum = "web" | "api" | "mcp";
+const ExternalDataSourceCreateCreatedViaEnum = S.String;
+
 /** Destinations every table on this source writes to. Set here rather than afterwards, so the opening sync already carries them. Omit to write to the PostHog warehouse only. */
 export type CreateExternalDataSourceRequestDestinationIdsList = Array<string>;
+const CreateExternalDataSourceRequestDestinationIdsList = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<CreateExternalDataSourceRequestDestinationIdsList>;
+
 export interface CreateExternalDataSourceRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -1433,27 +1447,58 @@ export interface CreateExternalDataSourceRequest {
   /** Destinations every table on this source writes to. Set here rather than afterwards, so the opening sync already carries them. Omit to write to the PostHog warehouse only. */
   destination_ids?: CreateExternalDataSourceRequestDestinationIdsList;
 }
+const CreateExternalDataSourceRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<CreateExternalDataSourceRequest>;
+
 export interface ExternalDataSourceCreateResponse {
   /** ID of the created external data source. */
   id: string;
 }
+const ExternalDataSourceCreateResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<ExternalDataSourceCreateResponse>;
+
 export interface CreateExternalDataSourcesCheckCdcPrerequisiteRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
+const CreateExternalDataSourcesCheckCdcPrerequisiteRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<CreateExternalDataSourcesCheckCdcPrerequisiteRequest>;
+
 /** Unmet prerequisites, empty when valid is true. */
 export type CdcPrerequisitesResponseErrorsList = Array<string>;
+const CdcPrerequisitesResponseErrorsList =
+  CreateExternalDataSourceRequestDestinationIdsList as any as S.Schema<CdcPrerequisitesResponseErrorsList>;
+
 export interface CdcPrerequisitesResponse {
   /** Whether the source satisfies every CDC prerequisite. */
   valid: boolean;
   /** Unmet prerequisites, empty when valid is true. */
   errors: CdcPrerequisitesResponseErrorsList;
 }
+const CdcPrerequisitesResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<CdcPrerequisitesResponse>;
+
 /** * `web` - web * `api` - api * `mcp` - mcp * `wizard` - wizard * `self_driving` - self_driving */
 export type ExternalDataSourceCreatedViaEnum = "web" | "api" | "mcp" | "wizard" | "self_driving";
+const ExternalDataSourceCreatedViaEnum = S.String;
+
 /** Optional fnmatch-style globs (`*` and `?` wildcards) restricting which newly discovered schema names auto-sync, matched case-insensitively against both the qualified and bare table name. Null or empty means every new schema qualifies. Only used when `auto_sync_new_schemas` is true. */
 export type CreateExternalDataSourcesCheckCdcPrerequisitesForSourceRequestAutoSyncSchemaPatternsList =
   Array<string>;
+const CreateExternalDataSourcesCheckCdcPrerequisitesForSourceRequestAutoSyncSchemaPatternsList =
+  /*@__PURE__*/ __L.at(
+    __c0,
+    6,
+  ) as any as S.Schema<CreateExternalDataSourcesCheckCdcPrerequisitesForSourceRequestAutoSyncSchemaPatternsList>;
+
 export interface CreateExternalDataSourcesCheckCdcPrerequisitesForSourceRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -1473,11 +1518,26 @@ export interface CreateExternalDataSourcesCheckCdcPrerequisitesForSourceRequest 
   auto_sync_schema_patterns?: CreateExternalDataSourcesCheckCdcPrerequisitesForSourceRequestAutoSyncSchemaPatternsList | null;
   job_inputs?: unknown;
 }
+const CreateExternalDataSourcesCheckCdcPrerequisitesForSourceRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<CreateExternalDataSourcesCheckCdcPrerequisitesForSourceRequest>;
+
 export interface CreateExternalDataSourcesCheckCdcPrerequisitesForSourceResponse {}
+const CreateExternalDataSourcesCheckCdcPrerequisitesForSourceResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<CreateExternalDataSourcesCheckCdcPrerequisitesForSourceResponse>;
+
 /** Values of the sibling fields named by the picker's `credentialFields`. Any other key is rejected. */
 export type CreateExternalDataSourcesCredentialAccountRequestCredentialsMap = {
   [key: string]: string | undefined;
 };
+const CreateExternalDataSourcesCredentialAccountRequestCredentialsMap = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<CreateExternalDataSourcesCredentialAccountRequestCredentialsMap>;
+
 export interface CreateExternalDataSourcesCredentialAccountRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -1488,8 +1548,16 @@ export interface CreateExternalDataSourcesCredentialAccountRequest {
   /** Vendor API version the source is pinned to. Defaults to the source's current default. */
   api_version?: string | null;
 }
+const CreateExternalDataSourcesCredentialAccountRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<CreateExternalDataSourcesCredentialAccountRequest>;
+
 /** Short status chips for the account, e.g. ['Active'] or ['Pause']. */
 export type IntegrationAccountBadgesList = Array<string>;
+const IntegrationAccountBadgesList =
+  CreateExternalDataSourceRequestDestinationIdsList as any as S.Schema<IntegrationAccountBadgesList>;
+
 /** A selectable account/resource exposed by an OAuth integration, in the shared shape every ad platform produces (see ``IntegrationAccount`` in the data-imports common module). One serializer and one frontend selector work across all platforms. */
 export interface IntegrationAccount {
   /** The identifier stored in the source config and used for API calls (numeric account id as a string, a site url, etc.). */
@@ -1505,19 +1573,41 @@ export interface IntegrationAccount {
   /** Extra identifier shown in parentheses and searchable, e.g. the alphanumeric account number. */
   secondary_text: string | null;
 }
+const IntegrationAccount = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<IntegrationAccount>;
+
 /** All accounts the connected integration can access. */
 export type IntegrationAccountsResponseAccountsList = Array<IntegrationAccount>;
+const IntegrationAccountsResponseAccountsList = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<IntegrationAccountsResponseAccountsList>;
+
 export interface IntegrationAccountsResponse {
   /** All accounts the connected integration can access. */
   accounts: IntegrationAccountsResponseAccountsList;
 }
+const IntegrationAccountsResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<IntegrationAccountsResponse>;
+
 export interface CreateExternalDataSourcesDatabaseSchemaRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** The source type to validate against. * `Ashby` - Ashby * `Supabase` - Supabase * `CustomerIO` - CustomerIO * `Github` - Github * `Stripe` - Stripe * `Hubspot` - Hubspot * `Postgres` - Postgres * `Zendesk` - Zendesk * `Snowflake` - Snowflake * `Salesforce` - Salesforce * `MySQL` - MySQL * `MongoDB` - MongoDB * `MSSQL` - MSSQL * `Vitally` - Vitally * `BigQuery` - BigQuery * `Chargebee` - Chargebee * `Clerk` - Clerk * `GoogleAds` - GoogleAds * `GoogleSearchConsole` - GoogleSearchConsole * `TemporalIO` - TemporalIO * `DoIt` - DoIt * `GoogleSheets` - GoogleSheets * `MetaAds` - MetaAds * `Klaviyo` - Klaviyo * `Mailchimp` - Mailchimp * `Braze` - Braze * `Mailjet` - Mailjet * `Redshift` - Redshift * `Polar` - Polar * `RevenueCat` - RevenueCat * `LinkedinAds` - LinkedinAds * `RedditAds` - RedditAds * `TikTokAds` - TikTokAds * `BingAds` - BingAds * `Shopify` - Shopify * `Attio` - Attio * `SnapchatAds` - SnapchatAds * `Linear` - Linear * `Intercom` - Intercom * `Amplitude` - Amplitude * `Mixpanel` - Mixpanel * `Jira` - Jira * `ActiveCampaign` - ActiveCampaign * `Marketo` - Marketo * `Adjust` - Adjust * `AppsFlyer` - AppsFlyer * `Freshdesk` - Freshdesk * `GoogleAnalytics` - GoogleAnalytics * `Pipedrive` - Pipedrive * `SendGrid` - SendGrid * `Slack` - Slack * `PagerDuty` - PagerDuty * `Asana` - Asana * `Notion` - Notion * `Airtable` - Airtable * `Greenhouse` - Greenhouse * `BambooHR` - BambooHR * `Lever` - Lever * `GitLab` - GitLab * `Datadog` - Datadog * `Sentry` - Sentry * `Pendo` - Pendo * `FullStory` - FullStory * `AmazonAds` - AmazonAds * `PinterestAds` - PinterestAds * `AppleSearchAds` - AppleSearchAds * `QuickBooks` - QuickBooks * `Xero` - Xero * `NetSuite` - NetSuite * `WooCommerce` - WooCommerce * `BigCommerce` - BigCommerce * `PayPal` - PayPal * `Square` - Square * `Zoom` - Zoom * `Trello` - Trello * `Monday` - Monday * `ClickUp` - ClickUp * `Confluence` - Confluence * `Recurly` - Recurly * `SalesLoft` - SalesLoft * `Outreach` - Outreach * `Gong` - Gong * `Calendly` - Calendly * `Typeform` - Typeform * `Iterable` - Iterable * `ZohoCRM` - ZohoCRM * `Close` - Close * `Oracle` - Oracle * `DynamoDB` - DynamoDB * `Elasticsearch` - Elasticsearch * `Kafka` - Kafka * `LaunchDarkly` - LaunchDarkly * `Braintree` - Braintree * `Recharge` - Recharge * `HelpScout` - HelpScout * `Gorgias` - Gorgias * `Instagram` - Instagram * `YouTubeAnalytics` - YouTubeAnalytics * `FacebookPages` - FacebookPages * `TwitterAds` - TwitterAds * `Workday` - Workday * `ServiceNow` - ServiceNow * `Pardot` - Pardot * `Copper` - Copper * `Front` - Front * `ChartMogul` - ChartMogul * `Zuora` - Zuora * `Paddle` - Paddle * `CircleCI` - CircleCI * `CockroachDB` - CockroachDB * `Firebase` - Firebase * `AzureBlob` - AzureBlob * `GoogleDrive` - GoogleDrive * `OneDrive` - OneDrive * `SharePoint` - SharePoint * `Box` - Box * `SFTP` - SFTP * `MicrosoftTeams` - MicrosoftTeams * `Aircall` - Aircall * `Webflow` - Webflow * `Okta` - Okta * `Auth0` - Auth0 * `Productboard` - Productboard * `Smartsheet` - Smartsheet * `Wrike` - Wrike * `Plaid` - Plaid * `SurveyMonkey` - SurveyMonkey * `Eventbrite` - Eventbrite * `RingCentral` - RingCentral * `Twilio` - Twilio * `Freshsales` - Freshsales * `Shortcut` - Shortcut * `ConvertKit` - ConvertKit * `Drip` - Drip * `CampaignMonitor` - CampaignMonitor * `MailerLite` - MailerLite * `Omnisend` - Omnisend * `Brevo` - Brevo * `Postmark` - Postmark * `Granola` - Granola * `BuildBetter` - BuildBetter * `Convex` - Convex * `ClickHouse` - ClickHouse * `Plain` - Plain * `Resend` - Resend * `PgAnalyze` - PgAnalyze * `WorkOS` - WorkOS * `AmazonS3` - AmazonS3 * `GoogleCloudStorage` - GoogleCloudStorage * `Databricks` - Databricks * `Dynamics365` - Dynamics365 * `SalesforceMarketingCloud` - SalesforceMarketingCloud * `Db2` - Db2 * `Heap` - Heap * `AdobeAnalytics` - AdobeAnalytics * `Matomo` - Matomo * `Optimizely` - Optimizely * `Adyen` - Adyen * `GoCardless` - GoCardless * `Mollie` - Mollie * `CheckoutCom` - CheckoutCom * `Branch` - Branch * `Criteo` - Criteo * `Outbrain` - Outbrain * `Taboola` - Taboola * `AdRoll` - AdRoll * `DisplayVideo360` - DisplayVideo360 * `GoogleAdManager` - GoogleAdManager * `CampaignManager360` - CampaignManager360 * `SearchAds360` - SearchAds360 * `AdobeCommerce` - AdobeCommerce * `AmazonSellingPartner` - AmazonSellingPartner * `Ebay` - Ebay * `Commercetools` - Commercetools * `LightspeedRetail` - LightspeedRetail * `Shipmail` - Shipmail * `ShipStation` - ShipStation * `ConstantContact` - ConstantContact * `Mailgun` - Mailgun * `Eloqua` - Eloqua * `Sailthru` - Sailthru * `Ortto` - Ortto * `Attentive` - Attentive * `Kustomer` - Kustomer * `Dixa` - Dixa * `Gladly` - Gladly * `Qualtrics` - Qualtrics * `AzureDevOps` - AzureDevOps * `RoktAds` - RoktAds * `Rollbar` - Rollbar * `Opsgenie` - Opsgenie * `IncidentIo` - IncidentIo * `Pingdom` - Pingdom * `Cloudflare` - Cloudflare * `CosmosDB` - CosmosDB * `PlanetScaleMySQL` - PlanetScaleMySQL * `PlanetScalePostgres` - PlanetScalePostgres * `SapHana` - SapHana * `Rippling` - Rippling * `HiBob` - HiBob * `Personio` - Personio * `Deel` - Deel * `AdpWorkforceNow` - AdpWorkforceNow * `Paylocity` - Paylocity * `Gusto` - Gusto * `CultureAmp` - CultureAmp * `Lattice` - Lattice * `SageIntacct` - SageIntacct * `FreshBooks` - FreshBooks * `Expensify` - Expensify * `Ramp` - Ramp * `Brex` - Brex * `Coupa` - Coupa * `SapConcur` - SapConcur * `Apollo` - Apollo * `Crunchbase` - Crunchbase * `ZoomInfo` - ZoomInfo * `Clari` - Clari * `Chorus` - Chorus * `Coda` - Coda * `Guru` - Guru * `Dropbox` - Dropbox * `Docusign` - Docusign * `PandaDoc` - PandaDoc * `SapErp` - SapErp * `SapSuccessFactors` - SapSuccessFactors * `OracleEbs` - OracleEbs * `OracleFusion` - OracleFusion * `AmazonSNS` - AmazonSNS * `AmazonEventBridge` - AmazonEventBridge * `AmazonSQS` - AmazonSQS * `AmazonKinesis` - AmazonKinesis * `AmazonCloudWatch` - AmazonCloudWatch * `OpenAIAds` - OpenAIAds * `OneHundredMs` - OneHundredMs * `SevenShifts` - SevenShifts * `AcuityScheduling` - AcuityScheduling * `AgileCRM` - AgileCRM * `Aha` - Aha * `Airbyte` - Airbyte * `Akeneo` - Akeneo * `Algolia` - Algolia * `AlpacaBrokerAPI` - AlpacaBrokerAPI * `ApifyDataset` - ApifyDataset * `Appcues` - Appcues * `Appfigures` - Appfigures * `Appfollow` - Appfollow * `Apptivo` - Apptivo * `AssemblyAI` - AssemblyAI * `Awin` - Awin * `AwsCloudTrail` - AwsCloudTrail * `AzureTableStorage` - AzureTableStorage * `Babelforce` - Babelforce * `Basecamp` - Basecamp * `Beamer` - Beamer * `BigMailer` - BigMailer * `Bluetally` - Bluetally * `BoldSign` - BoldSign * `BreezyHR` - BreezyHR * `Bugsnag` - Bugsnag * `Buildkite` - Buildkite * `Bunny` - Bunny * `Buzzsprout` - Buzzsprout * `CalCom` - CalCom * `CallRail` - CallRail * `Campayn` - Campayn * `Canny` - Canny * `CapsuleCRM` - CapsuleCRM * `CaptainData` - CaptainData * `CartCom` - CartCom * `CastorEDC` - CastorEDC * `Chameleon` - Chameleon * `Chargedesk` - Chargedesk * `Chargify` - Chargify * `Chift` - Chift * `Churnkey` - Churnkey * `Cin7` - Cin7 * `CiscoMeraki` - CiscoMeraki * `Clazar` - Clazar * `Clockify` - Clockify * `Clockodo` - Clockodo * `Cloudbeds` - Cloudbeds * `Coassemble` - Coassemble * `Codefresh` - Codefresh * `Concord` - Concord * `ConfigCat` - ConfigCat * `Couchbase` - Couchbase * `Curve` - Curve * `Customerly` - Customerly * `Datascope` - Datascope * `Dbt` - Dbt * `Demodesk` - Demodesk * `Deputy` - Deputy * `DevinAI` - DevinAI * `Docuseal` - Docuseal * `Dolibarr` - Dolibarr * `Dremio` - Dremio * `DropboxSign` - DropboxSign * `Dwolla` - Dwolla * `EConomic` - EConomic * `Easypost` - Easypost * `Easypromos` - Easypromos * `Elasticemail` - Elasticemail * `EmailOctopus` - EmailOctopus * `EmploymentHero` - EmploymentHero * `Encharge` - Encharge * `Eventee` - Eventee * `Eventzilla` - Eventzilla * `Everhour` - Everhour * `EZOfficeInventory` - EZOfficeInventory * `Factorial` - Factorial * `Fastbill` - Fastbill * `Fastly` - Fastly * `Fauna` - Fauna * `Feishu` - Feishu * `Fillout` - Fillout * `Finage` - Finage * `Firebolt` - Firebolt * `FireHydrant` - FireHydrant * `Fleetio` - Fleetio * `Flexmail` - Flexmail * `Flexport` - Flexport * `FloatApp` - FloatApp * `Flowlu` - Flowlu * `Formbricks` - Formbricks * `Framer` - Framer * `FreeAgent` - FreeAgent * `Freightview` - Freightview * `Freshcaller` - Freshcaller * `Freshchat` - Freshchat * `Freshservice` - Freshservice * `Fulcrum` - Fulcrum * `GainsightCs` - GainsightCs * `GainsightPx` - GainsightPx * `GitBook` - GitBook * `Glassfrog` - Glassfrog * `Goldcast` - Goldcast * `GoLogin` - GoLogin * `Grafana` - Grafana * `GreytHr` - GreytHr * `Gridly` - Gridly * `Harness` - Harness * `Height` - Height * `Hellobaton` - Hellobaton * `HighLevel` - HighLevel * `HoorayHR` - HoorayHR * `Hubplanner` - Hubplanner * `Humanitix` - Humanitix * `Huntr` - Huntr * `Inflowinventory` - Inflowinventory * `InforNexus` - InforNexus * `Insightful` - Insightful * `Insightly` - Insightly * `Instantly` - Instantly * `Instatus` - Instatus * `Intruder` - Intruder * `Invoiced` - Invoiced * `Invoiceninja` - Invoiceninja * `JamfPro` - JamfPro * `JobNimbus` - JobNimbus * `Jotform` - Jotform * `JudgeMeReviews` - JudgeMeReviews * `JustCall` - JustCall * `JustSift` - JustSift * `K6Cloud` - K6Cloud * `Katana` - Katana * `Keka` - Keka * `Kisi` - Kisi * `Kissmetrics` - Kissmetrics * `Klarna` - Klarna * `Klaus` - Klaus * `Lago` - Lago * `Leadfeeder` - Leadfeeder * `Lemlist` - Lemlist * `LessAnnoyingCRM` - LessAnnoyingCRM * `LinkedinPages` - LinkedinPages * `Linkrunner` - Linkrunner * `Linnworks` - Linnworks * `Lob` - Lob * `Lokalise` - Lokalise * `Looker` - Looker * `Luma` - Luma * `MailerSend` - MailerSend * `Mailosaur` - Mailosaur * `Mailtrap` - Mailtrap * `Mantle` - Mantle * `Mention` - Mention * `MercadoAds` - MercadoAds * `Merge` - Merge * `Metabase` - Metabase * `Metricool` - Metricool * `MicrosoftDataverse` - MicrosoftDataverse * `MicrosoftEntraId` - MicrosoftEntraId * `MicrosoftLists` - MicrosoftLists * `Miro` - Miro * `Missive` - Missive * `MixMax` - MixMax * `Mode` - Mode * `Mux` - Mux * `MyHours` - MyHours * `N8n` - N8n * `Navan` - Navan * `NebiusAI` - NebiusAI * `Nexiopay` - Nexiopay * `NinjaOneRMM` - NinjaOneRMM * `NoCRM` - NoCRM * `NorthpassLMS` - NorthpassLMS * `Nutshell` - Nutshell * `Nylas` - Nylas * `Oncehub` - Oncehub * `Onepagecrm` - Onepagecrm * `OneSignal` - OneSignal * `Onfleet` - Onfleet * `OpinionStage` - OpinionStage * `OPUSWatch` - OPUSWatch * `Orb` - Orb * `Orbit` - Orbit * `Oura` - Oura * `Oveit` - Oveit * `PabblySubscriptionsBilling` - PabblySubscriptionsBilling * `Paperform` - Paperform * `Papersign` - Papersign * `Partnerize` - Partnerize * `PartnerStack` - PartnerStack * `PayFit` - PayFit * `Paystack` - Paystack * `Pennylane` - Pennylane * `Perk` - Perk * `PersistIq` - PersistIq * `Persona` - Persona * `Phyllo` - Phyllo * `Picqer` - Picqer * `Pipeliner` - Pipeliner * `PivotalTracker` - PivotalTracker * `Piwik` - Piwik * `Planhat` - Planhat * `Plausible` - Plausible * `Poplar` - Poplar * `PrestaShop` - PrestaShop * `Pretix` - Pretix * `Primetric` - Primetric * `Printavo` - Printavo * `Printify` - Printify * `Productive` - Productive * `Pylon` - Pylon * `Qonto` - Qonto * `Qualaroo` - Qualaroo * `Railz` - Railz * `RDStationMarketing` - RDStationMarketing * `Recruitee` - Recruitee * `Reddit` - Reddit * `ReferralHero` - ReferralHero * `RentCast` - RentCast * `Repairshopr` - Repairshopr * `ReplyIo` - ReplyIo * `RetailExpress` - RetailExpress * `Retently` - Retently * `RevolutMerchant` - RevolutMerchant * `RocketChat` - RocketChat * `Rocketlane` - Rocketlane * `Rootly` - Rootly * `Ruddr` - Ruddr * `SafetyCulture` - SafetyCulture * `SageHR` - SageHR * `Salesflare` - Salesflare * `SAPFieldglass` - SAPFieldglass * `SavvyCal` - SavvyCal * `Secoda` - Secoda * `Segment` - Segment * `Sendowl` - Sendowl * `SendPulse` - SendPulse * `Senseforce` - Senseforce * `Serpstat` - Serpstat * `Sharetribe` - Sharetribe * `Shippo` - Shippo * `ShopWired` - ShopWired * `Shortio` - Shortio * `Shutterstock` - Shutterstock * `SigmaComputing` - SigmaComputing * `SignNow` - SignNow * `SimpleCast` - SimpleCast * `Simplesat` - Simplesat * `Smaily` - Smaily * `SmartEngage` - SmartEngage * `Smartreach` - Smartreach * `Smartwaiver` - Smartwaiver * `SolarwindsServiceDesk` - SolarwindsServiceDesk * `SonarCloud` - SonarCloud * `SparkPost` - SparkPost * `SplitIo` - SplitIo * `SpotifyAds` - SpotifyAds * `SpotlerCRM` - SpotlerCRM * `Squarespace` - Squarespace * `Statsig` - Statsig * `Statuspage` - Statuspage * `Stigg` - Stigg * `Strava` - Strava * `SurveySparrow` - SurveySparrow * `Survicate` - Survicate * `Svix` - Svix * `Systeme` - Systeme * `Tavus` - Tavus * `Teamtailor` - Teamtailor * `Teamwork` - Teamwork * `Tempo` - Tempo * `Testrail` - Testrail * `Thinkific` - Thinkific * `ThinkificCourses` - ThinkificCourses * `ThriveLearning` - ThriveLearning * `Ticketmaster` - Ticketmaster * `TicketTailor` - TicketTailor * `TickTick` - TickTick * `Timely` - Timely * `Tinyemail` - Tinyemail * `Todoist` - Todoist * `Toggl` - Toggl * `TrackPMS` - TrackPMS * `Tremendous` - Tremendous * `TrustPilot` - TrustPilot * `Twitter` - Twitter * `TyntecSMS` - TyntecSMS * `Unleash` - Unleash * `UpPromote` - UpPromote * `Uptick` - Uptick * `Uservoice` - Uservoice * `Vantage` - Vantage * `Veeqo` - Veeqo * `Vercel` - Vercel * `VismaEconomic` - VismaEconomic * `VWO` - VWO * `Waiteraid` - Waiteraid * `Wasabi` - Wasabi * `WhenIWork` - WhenIWork * `Wordpress` - Wordpress * `Workable` - Workable * `Workflowmax` - Workflowmax * `Workramp` - Workramp * `Wufoo` - Wufoo * `Xsolla` - Xsolla * `YandexMetrica` - YandexMetrica * `Yotpo` - Yotpo * `Ynab` - Ynab * `Younium` - Younium * `YouSign` - YouSign * `YoutubeData` - YoutubeData * `ZapierSupportedStorage` - ZapierSupportedStorage * `ZapSign` - ZapSign * `ZendeskSell` - ZendeskSell * `ZendeskSunshine` - ZendeskSunshine * `Zenefits` - Zenefits * `Zenloop` - Zenloop * `ZohoAnalytics` - ZohoAnalytics * `ZohoBigin` - ZohoBigin * `ZohoBilling` - ZohoBilling * `ZohoBooks` - ZohoBooks * `ZohoCampaign` - ZohoCampaign * `ZohoDesk` - ZohoDesk * `ZohoExpense` - ZohoExpense * `ZohoInventory` - ZohoInventory * `ZohoInvoice` - ZohoInvoice * `ZonkaFeedback` - ZonkaFeedback * `AlphaVantage` - AlphaVantage * `Aviationstack` - Aviationstack * `Bitly` - Bitly * `Blogger` - Blogger * `Breezometer` - Breezometer * `CareQualityCommission` - CareQualityCommission * `Cimis` - Cimis * `CoinApi` - CoinApi * `CoinGecko` - CoinGecko * `CoinMarketCap` - CoinMarketCap * `DingConnect` - DingConnect * `Dockerhub` - Dockerhub * `ExchangeRatesApi` - ExchangeRatesApi * `FinancialModelling` - FinancialModelling * `Finnhub` - Finnhub * `Finnworlds` - Finnworlds * `Giphy` - Giphy * `Gmail` - Gmail * `GNews` - GNews * `GoogleCalendar` - GoogleCalendar * `GoogleClassroom` - GoogleClassroom * `GoogleDirectory` - GoogleDirectory * `GoogleForms` - GoogleForms * `GooglePageSpeedInsights` - GooglePageSpeedInsights * `GoogleTasks` - GoogleTasks * `GoogleWebfonts` - GoogleWebfonts * `GoogleWorkspaceAdminReports` - GoogleWorkspaceAdminReports * `HuggingFace` - HuggingFace * `IlluminaBasespace` - IlluminaBasespace * `Imagga` - Imagga * `Interzoid` - Interzoid * `IP2Whois` - IP2Whois * `KYVE` - KYVE * `Marketstack` - Marketstack * `Mendeley` - Mendeley * `Nasa` - Nasa * `NewYorkTimes` - NewYorkTimes * `NewsApi` - NewsApi * `NewsData` - NewsData * `OpenDataDc` - OpenDataDc * `OpenExchangeRates` - OpenExchangeRates * `OpenAQ` - OpenAQ * `OpenFDA` - OpenFDA * `OpenWeather` - OpenWeather * `Outlook` - Outlook * `Perigon` - Perigon * `Pexels` - Pexels * `Pocket` - Pocket * `Polygon` - Polygon * `PyPI` - PyPI * `Recreation` - Recreation * `RKICovid` - RKICovid * `Rss` - Rss * `SimFin` - SimFin * `StockData` - StockData * `Guardian` - Guardian * `TMDb` - TMDb * `TVMaze` - TVMaze * `TwelveData` - TwelveData * `Ubidots` - Ubidots * `USCensus` - USCensus * `Watchmode` - Watchmode * `WikipediaPageviews` - WikipediaPageviews * `YahooFinance` - YahooFinance * `Clarifai` - Clarifai * `Adapty` - Adapty * `Braintrust` - Braintrust * `StreamElements` - StreamElements * `Streamlabs` - Streamlabs * `Datorama` - Datorama * `Ahrefs` - Ahrefs * `Lightfield` - Lightfield * `Appstack` - Appstack * `Razorpay` - Razorpay * `Neon` - Neon * `NewRelic` - NewRelic * `Custom` - Custom * `Tile38` - Tile38 * `Chatwoot` - Chatwoot * `Sanity` - Sanity * `Metronome` - Metronome * `Jobber` - Jobber * `Knock` - Knock * `Leexi` - Leexi * `RB2B` - RB2B * `Superwall` - Superwall * `Liana` - Liana * `TawkTo` - TawkTo * `Hightouch` - Hightouch * `LemonSqueezy` - LemonSqueezy * `Ikas` - Ikas * `Talkwalker` - Talkwalker * `NextdoorAds` - NextdoorAds * `AppLovin` - AppLovin * `Baserow` - Baserow * `Plunk` - Plunk * `Dub` - Dub * `AirOps` - AirOps * `Podium` - Podium * `Loops` - Loops * `Redis` - Redis * `Mercury` - Mercury * `Gojiberry` - Gojiberry * `Teachable` - Teachable * `PeecAI` - PeecAI * `Healthchecks` - Healthchecks * `Impact` - Impact * `AikidoSecurity` - AikidoSecurity * `Alguna` - Alguna * `Anthropic` - Anthropic * `Appwrite` - Appwrite * `BlandAI` - BlandAI * `BrowseAI` - BrowseAI * `BrowserUse` - BrowserUse * `ChartHop` - ChartHop * `Cody` - Cody * `Cursor` - Cursor * `Decagon` - Decagon * `Deepgram` - Deepgram * `ElevenLabs` - ElevenLabs * `Harvey` - Harvey * `Hyperspell` - Hyperspell * `Langfuse` - Langfuse * `LingoDev` - LingoDev * `M3ter` - M3ter * `Maxio` - Maxio * `Metorial` - Metorial * `OpenRouter` - OpenRouter * `TogetherAI` - TogetherAI * `Vapi` - Vapi * `Vespa` - Vespa * `Writesonic` - Writesonic * `Aiven` - Aiven * `Aviator` - Aviator * `Backblaze` - Backblaze * `Baseten` - Baseten * `Browserbase` - Browserbase * `Cohere` - Cohere * `DenoDeploy` - DenoDeploy * `DigitalOcean` - DigitalOcean * `E2B` - E2B * `Fintoc` - Fintoc * `Firecrawl` - Firecrawl * `FireworksAI` - FireworksAI * `FlyIo` - FlyIo * `Groq` - Groq * `GrowthBook` - GrowthBook * `Gumloop` - Gumloop * `Hatchet` - Hatchet * `Helicone` - Helicone * `Heroku` - Heroku * `Hetzner` - Hetzner * `HeyGen` - HeyGen * `Infisical` - Infisical * `Inngest` - Inngest * `KapaAI` - KapaAI * `Kernel` - Kernel * `Koyeb` - Koyeb * `LambdaLabs` - LambdaLabs * `LangSmith` - LangSmith * `Linode` - Linode * `LlamaCloud` - LlamaCloud * `Mem0` - Mem0 * `Metriport` - Metriport * `Mintlify` - Mintlify * `MistralAI` - MistralAI * `Mono` - Mono * `Netlify` - Netlify * `Northflank` - Northflank * `OpenAI` - OpenAI * `Pinecone` - Pinecone * `PlatformSh` - PlatformSh * `PromptingCompany` - PromptingCompany * `Qdrant` - Qdrant * `Render` - Render * `Replicate` - Replicate * `RetellAI` - RetellAI * `Roark` - Roark * `RunPod` - RunPod * `ScaleAI` - ScaleAI * `Scaleway` - Scaleway * `SigNoz` - SigNoz * `Sim` - Sim * `Skyvern` - Skyvern * `Slash` - Slash * `Synthesia` - Synthesia * `Telli` - Telli * `TerraApi` - TerraApi * `TriggerDev` - TriggerDev * `Turso` - Turso * `Singular` - Singular * `Swonkie` - Swonkie * `TwelveLabs` - TwelveLabs * `Twenty` - Twenty * `Unstructured` - Unstructured * `Upstash` - Upstash * `Vellum` - Vellum * `Vultr` - Vultr * `Windmill` - Windmill * `Zep` - Zep * `Hex` - Hex * `Sumsub` - Sumsub * `GoogleChat` - GoogleChat * `Kickscale` - Kickscale * `Zellify` - Zellify * `RudderStack` - RudderStack * `DodoPayments` - DodoPayments * `Salestrics` - Salestrics * `Doppler` - Doppler * `Usersnap` - Usersnap * `Asknicely` - Asknicely * `Featurebase` - Featurebase * `Frill` - Frill * `Bettermode` - Bettermode * `Dynatrace` - Dynatrace * `Honeycomb` - Honeycomb * `SumoLogic` - SumoLogic * `LogzIO` - LogzIO * `Coralogix` - Coralogix * `BetterStack` - BetterStack * `Raygun` - Raygun * `Honeybadger` - Honeybadger * `Airbrake` - Airbrake * `Appsignal` - Appsignal * `Appdynamics` - Appdynamics * `Instana` - Instana * `SplunkObservabilityCloud` - SplunkObservabilityCloud * `Uptimerobot` - Uptimerobot * `Statuscake` - Statuscake * `Tailscale` - Tailscale * `Flagsmith` - Flagsmith * `Xmatters` - Xmatters * `Squadcast` - Squadcast * `Zenduty` - Zenduty * `Cronitor` - Cronitor * `Jenkins` - Jenkins * `Bitbucket` - Bitbucket * `Gitea` - Gitea * `Teamcity` - Teamcity * `TravisCI` - TravisCI * `Semaphore` - Semaphore * `CircleciInsights` - CircleciInsights * `OctopusDeploy` - OctopusDeploy * `Sourcegraph` - Sourcegraph * `Bitrise` - Bitrise * `Gerrit` - Gerrit * `TerraformCloud` - TerraformCloud * `PulumiCloud` - PulumiCloud * `Spacelift` - Spacelift * `Railway` - Railway * `Argocd` - Argocd * `PrefectCloud` - PrefectCloud * `DagsterCloud` - DagsterCloud * `Env0` - Env0 * `Kubecost` - Kubecost * `Snyk` - Snyk * `Semgrep` - Semgrep * `Veracode` - Veracode * `Checkmarx` - Checkmarx * `Gitguardian` - Gitguardian * `QualysVmdr` - QualysVmdr * `Rapid7Insightvm` - Rapid7Insightvm * `TenableVulnerabilityManagement` - TenableVulnerabilityManagement * `Sentinelone` - Sentinelone * `Lacework` - Lacework * `OrcaSecurity` - OrcaSecurity * `Drata` - Drata * `Secureframe` - Secureframe * `CiscoDuo` - CiscoDuo * `Jumpcloud` - Jumpcloud * `OnePassword` - OnePassword * `Stytch` - Stytch * `Sonarqube` - Sonarqube * `Codecov` - Codecov * `Coveralls` - Coveralls * `Codacy` - Codacy * `Deepsource` - Deepsource * `Linearb` - Linearb * `Jellyfish` - Jellyfish * `Swarmia` - Swarmia * `Packagist` - Packagist * `Nuget` - Nuget * `CratesIO` - CratesIO * `SonatypeNexus` - SonatypeNexus * `JfrogArtifactory` - JfrogArtifactory * `Snowplow` - Snowplow * `WeightsAndBiases` - WeightsAndBiases * `MonteCarlo` - MonteCarlo * `Metaplane` - Metaplane * `Datahub` - Datahub * `ClickhouseCloud` - ClickhouseCloud * `ConfluentCloud` - ConfluentCloud * `KongKonnect` - KongKonnect * `Kandji` - Kandji * `Automox` - Automox * `Autumn` - Autumn * `GetStream` - GetStream * `Octolens` - Octolens * `Kajabi` - Kajabi * `Shopware` - Shopware * `Dubsado` - Dubsado * `Campfire` - Campfire * `PromptWatch` - PromptWatch * `Crisp` - Crisp * `Kommo` - Kommo * `Axiom` - Axiom * `Plivo` - Plivo * `DataForSEO` - DataForSEO * `Sleekplan` - Sleekplan * `AbTasty` - AbTasty * `Ably` - Ably * `AbnormalSecurity` - AbnormalSecurity * `Acast` - Acast * `Acculynx` - Acculynx * `Actionstep` - Actionstep * `Aftership` - Aftership * `AhaIdeas` - AhaIdeas * `AkamaiReporting` - AkamaiReporting * `Alation` - Alation * `Alegra` - Alegra * `Allegro` - Allegro * `AnodotCost` - AnodotCost * `Anomalo` - Anomalo * `Apaleo` - Apaleo * `Apitally` - Apitally * `AppStoreConnect` - AppStoreConnect * `Appdirect` - Appdirect * `Appfolio` - Appfolio * `Arxiv` - Arxiv * `Asaas` - Asaas * `Astronomer` - Astronomer * `Athenahealth` - Athenahealth * `Atlan` - Atlan * `AutodeskConstructionCloud` - AutodeskConstructionCloud * `Avalara` - Avalara * `AwsAthena` - AwsAthena * `AwsBatch` - AwsBatch * `AwsBudgets` - AwsBudgets * `AwsCloudformation` - AwsCloudformation * `AwsComputeOptimizer` - AwsComputeOptimizer * `AwsConfig` - AwsConfig * `AwsConnect` - AwsConnect * `AwsCostAndUsageReport` - AwsCostAndUsageReport * `AwsCostAnomalyDetection` - AwsCostAnomalyDetection * `AwsCostExplorer` - AwsCostExplorer * `AwsGlueDataCatalog` - AwsGlueDataCatalog * `AwsGuardduty` - AwsGuardduty * `AwsHealth` - AwsHealth * `AwsIamAccessAnalyzer` - AwsIamAccessAnalyzer * `AwsInspector` - AwsInspector * `AwsMacie` - AwsMacie * `AwsOrganizations` - AwsOrganizations * `AwsRdsPerformanceInsights` - AwsRdsPerformanceInsights * `AwsSagemaker` - AwsSagemaker * `AwsSavingsPlans` - AwsSavingsPlans * `AwsSecurityHub` - AwsSecurityHub * `AwsSes` - AwsSes * `AwsStepFunctions` - AwsStepFunctions * `AwsSupport` - AwsSupport * `AwsSystemsManager` - AwsSystemsManager * `AwsTrustedAdvisor` - AwsTrustedAdvisor * `AwsWaf` - AwsWaf * `AwsXray` - AwsXray * `AzureActivityLog` - AzureActivityLog * `AzureAdvisor` - AzureAdvisor * `AzureApiManagement` - AzureApiManagement * `AzureApplicationInsights` - AzureApplicationInsights * `AzureCostManagement` - AzureCostManagement * `AzureDataExplorer` - AzureDataExplorer * `AzureDataFactory` - AzureDataFactory * `AzureLogAnalytics` - AzureLogAnalytics * `AzureMonitorAlerts` - AzureMonitorAlerts * `AzureMonitorMetrics` - AzureMonitorMetrics * `AzureOpenaiUsage` - AzureOpenaiUsage * `AzurePolicyInsights` - AzurePolicyInsights * `AzureReservations` - AzureReservations * `AzureResourceGraph` - AzureResourceGraph * `AzureResourceHealth` - AzureResourceHealth * `AzureServiceHealth` - AzureServiceHealth * `AzureSynapse` - AzureSynapse * `BackMarket` - BackMarket * `Beehiiv` - Beehiiv * `Bigeye` - Bigeye * `BillCom` - BillCom * `Billomat` - Billomat * `BingWebmasterTools` - BingWebmasterTools * `Bitwarden` - Bitwarden * `BlackbaudRaisersEdgeNxt` - BlackbaudRaisersEdgeNxt * `BlackboardLearn` - BlackboardLearn * `Bling` - Bling * `Bloomerang` - Bloomerang * `Bluesky` - Bluesky * `BolRetailer` - BolRetailer * `Boulevard` - Boulevard * `Buffer` - Buffer * `Bugherd` - Bugherd * `Buildium` - Buildium * `Buttondown` - Buttondown * `BuyMeACoffee` - BuyMeACoffee * `Calendarific` - Calendarific * `Calibre` - Calibre * `CanvasLms` - CanvasLms * `Captivate` - Captivate * `Cashfree` - Cashfree * `CastAi` - CastAi * `Catchpoint` - Catchpoint * `CdcOpenData` - CdcOpenData * `Census` - Census * `Checkly` - Checkly * `CircleSo` - CircleSo * `Classy` - Classy * `Cleartax` - Cleartax * `Clever` - Clever * `Clevertap` - Clevertap * `Cliniko` - Cliniko * `Clio` - Clio * `Clip` - Clip * `Cloudability` - Cloudability * `Cloudsmith` - Cloudsmith * `Cloudzero` - Cloudzero * `Clover` - Clover * `Codemagic` - Codemagic * `Codescene` - Codescene * `Collibra` - Collibra * `Companycam` - Companycam * `Conekta` - Conekta * `ContaAzul` - ContaAzul * `Contentsquare` - Contentsquare * `Cortex` - Cortex * `Courier` - Courier * `Crossref` - Crossref * `CrowdstrikeFalcon` - CrowdstrikeFalcon * `CubeCloud` - CubeCloud * `D2lBrightspace` - D2lBrightspace * `Dayforce` - Dayforce * `Debugbear` - Debugbear * `Descope` - Descope * `Develocity` - Develocity * `Dialpad` - Dialpad * `Discord` - Discord * `Discourse` - Discourse * `Donorbox` - Donorbox * `Doorloop` - Doorloop * `Dovetail` - Dovetail * `Dragonboat` - Dragonboat * `Drchrono` - Drchrono * `Dynamics365BusinessCentral` - Dynamics365BusinessCentral * `EcbDataPortal` - EcbDataPortal * `Emarsys` - Emarsys * `Embrace` - Embrace * `Entsoe` - Entsoe * `Eppo` - Eppo * `Etsy` - Etsy * `Eurostat` - Eurostat * `Faire` - Faire * `FarosAi` - FarosAi * `Fieldpulse` - Fieldpulse * `Fieldwire` - Fieldwire * `Filevine` - Filevine * `Finout` - Finout * `Five9` - Five9 * `FlexeraCloudCost` - FlexeraCloudCost * `Flutterwave` - Flutterwave * `Fortnox` - Fortnox * `Fourthwall` - Fourthwall * `Fred` - Fred * `Frontegg` - Frontegg * `FusionAuth` - FusionAuth * `G2` - G2 * `Gcore` - Gcore * `GcpApigee` - GcpApigee * `GcpArtifactRegistry` - GcpArtifactRegistry * `GcpBigtable` - GcpBigtable * `GcpChronicle` - GcpChronicle * `GcpCloudAssetInventory` - GcpCloudAssetInventory * `GcpCloudBilling` - GcpCloudBilling * `GcpCloudBuild` - GcpCloudBuild * `GcpCloudDeploy` - GcpCloudDeploy * `GcpCloudDns` - GcpCloudDns * `GcpCloudFunctions` - GcpCloudFunctions * `GcpCloudLogging` - GcpCloudLogging * `GcpCloudMonitoring` - GcpCloudMonitoring * `GcpCloudRun` - GcpCloudRun * `GcpCloudSpanner` - GcpCloudSpanner * `GcpCloudSql` - GcpCloudSql * `GcpCloudTrace` - GcpCloudTrace * `GcpCloudWorkflows` - GcpCloudWorkflows * `GcpComputeEngine` - GcpComputeEngine * `GcpContainerAnalysis` - GcpContainerAnalysis * `GcpDataflow` - GcpDataflow * `GcpDataplex` - GcpDataplex * `GcpDataproc` - GcpDataproc * `GcpErrorReporting` - GcpErrorReporting * `GcpGke` - GcpGke * `GcpPubsub` - GcpPubsub * `GcpRecaptchaEnterprise` - GcpRecaptchaEnterprise * `GcpRecommender` - GcpRecommender * `GcpSecurityCommandCenter` - GcpSecurityCommandCenter * `Gdelt` - Gdelt * `GenesysCloud` - GenesysCloud * `Getdx` - Getdx * `Ghost` - Ghost * `Givebutter` - Givebutter * `Gleif` - Gleif * `GooglePlayConsole` - GooglePlayConsole * `Guesty` - Guesty * `Gumroad` - Gumroad * `HarnessCcm` - HarnessCcm * `HarnessSei` - HarnessSei * `Harvest` - Harvest * `Healthie` - Healthie * `Hitpay` - Hitpay * `Hivebrite` - Hivebrite * `Holded` - Holded * `Hostaway` - Hostaway * `HousecallPro` - HousecallPro * `Humanitec` - Humanitec * `ImfData` - ImfData * `Imperva` - Imperva * `InfluxdbCloud` - InfluxdbCloud * `Iyzico` - Iyzico * `Jobtread` - Jobtread * `Kameleoon` - Kameleoon * `KauflandMarketplace` - KauflandMarketplace * `Kestra` - Kestra * `Kick` - Kick * `Kinde` - Kinde * `Kion` - Kion * `Knowbe4` - Knowbe4 * `Komodor` - Komodor * `Labelbox` - Labelbox * `Lawmatics` - Lawmatics * `Learnworlds` - Learnworlds * `LexwareOffice` - LexwareOffice * `Lightdash` - Lightdash * `Lodgify` - Lodgify * `Logicmonitor` - Logicmonitor * `Logrocket` - Logrocket * `LoopReturns` - LoopReturns * `Mastodon` - Mastodon * `Meetup` - Meetup * `Memberful` - Memberful * `MercadoPago` - MercadoPago * `Meteostat` - Meteostat * `Mews` - Mews * `Mezmo` - Mezmo * `Microsoft365UsageReports` - Microsoft365UsageReports * `MicrosoftAdvertising` - MicrosoftAdvertising * `MicrosoftClarity` - MicrosoftClarity * `MicrosoftDefenderCloudApps` - MicrosoftDefenderCloudApps * `MicrosoftDefenderEndpoint` - MicrosoftDefenderEndpoint * `MicrosoftDefenderForCloud` - MicrosoftDefenderForCloud * `MicrosoftIntune` - MicrosoftIntune * `MicrosoftPurview` - MicrosoftPurview * `MicrosoftPurviewAudit` - MicrosoftPurviewAudit * `MicrosoftSentinel` - MicrosoftSentinel * `MicrosoftTeamsCallRecords` - MicrosoftTeamsCallRecords * `Midtrans` - Midtrans * `MightyNetworks` - MightyNetworks * `Mindbody` - Mindbody * `Mirakl` - Mirakl * `Moesif` - Moesif * `Moneybird` - Moneybird * `Moodle` - Moodle * `Motherduck` - Motherduck * `Mycase` - Mycase * `NagerDate` - NagerDate * `NeonCrm` - NeonCrm * `Nexhealth` - Nexhealth * `NoaaCdo` - NoaaCdo * `Nobl9` - Nobl9 * `Nolt` - Nolt * `Nops` - Nops * `NpmRegistry` - NpmRegistry * `Oecd` - Oecd * `Okendo` - Okendo * `Omni` - Omni * `Onelogin` - Onelogin * `OpenDental` - OpenDental * `OpenMeteo` - OpenMeteo * `Openalex` - Openalex * `Opencorporates` - Opencorporates * `Openfec` - Openfec * `OpnPayments` - OpnPayments * `Opslevel` - Opslevel * `OttoMarket` - OttoMarket * `Ownerrez` - Ownerrez * `Pagbank` - Pagbank * `Patreon` - Patreon * `Pax8` - Pax8 * `Paychex` - Paychex * `Paymob` - Paymob * `Paymongo` - Paymongo * `Phonepe` - Phonepe * `Pike13` - Pike13 * `Pingone` - Pingone * `PinterestOrganic` - PinterestOrganic * `PlanningCenter` - PlanningCenter * `PluralsightFlow` - PluralsightFlow * `Podbean` - Podbean * `Postscript` - Postscript * `PowerBiAdmin` - PowerBiAdmin * `Practicepanther` - Practicepanther * `Preset` - Preset * `Procore` - Procore * `Productiv` - Productiv * `ProofpointTap` - ProofpointTap * `Propertyware` - Propertyware * `Pubnub` - Pubnub * `Quay` - Quay * `Raken` - Raken * `RedpandaCloud` - RedpandaCloud * `RentManager` - RentManager * `Reverb` - Reverb * `RocketMatter` - RocketMatter * `Rubygems` - Rubygems * `Scalr` - Scalr * `SecEdgar` - SecEdgar * `SelectStar` - SelectStar * `SemanticScholar` - SemanticScholar * `Semrush` - Semrush * `ServiceFusion` - ServiceFusion * `Servicem8` - Servicem8 * `Servicetitan` - Servicetitan * `Servicetrade` - Servicetrade * `Sevdesk` - Sevdesk * `Similarweb` - Similarweb * `Simpro` - Simpro * `Sinch` - Sinch * `Singlestore` - Singlestore * `Site24x7` - Site24x7 * `Sleuth` - Sleuth * `Smartlook` - Smartlook * `Smartrecruiters` - Smartrecruiters * `Smokeball` - Smokeball * `SodaCloud` - SodaCloud * `Speedcurve` - Speedcurve * `SpotIo` - SpotIo * `Sprig` - Sprig * `Sprinklr` - Sprinklr * `SproutSocial` - SproutSocial * `StackOverflowForTeams` - StackOverflowForTeams * `Stockx` - Stockx * `TackleIo` - TackleIo * `Talkdesk` - Talkdesk * `TeamupFitness` - TeamupFitness * `Tebra` - Tebra * `Telnyx` - Telnyx * `Ternary` - Ternary * `Thoughtspot` - Thoughtspot * `Thousandeyes` - Thousandeyes * `Threads` - Threads * `TiktokShop` - TiktokShop * `TinyErp` - TinyErp * `Tinybird` - Tinybird * `Tipalti` - Tipalti * `Toast` - Toast * `Torii` - Torii * `Transistor` - Transistor * `TrunkIo` - TrunkIo * `Trustradius` - Trustradius * `Twitch` - Twitch * `TwoC2p` - TwoC2p * `UkCompaniesHouse` - UkCompaniesHouse * `UkOns` - UkOns * `UnComtrade` - UnComtrade * `UsBea` - UsBea * `UsBls` - UsBls * `UsEia` - UsEia * `UsTreasuryFiscalData` - UsTreasuryFiscalData * `Vanta` - Vanta * `Vendr` - Vendr * `Virtuous` - Virtuous * `Vonage` - Vonage * `WalmartMarketplace` - WalmartMarketplace * `Waydev` - Waydev * `Wayfair` - Wayfair * `WhatsappBusinessManagement` - WhatsappBusinessManagement * `WhoGho` - WhoGho * `Whop` - Whop * `Wiz` - Wiz * `Wompi` - Wompi * `Workiz` - Workiz * `WorldBank` - WorldBank * `Xendit` - Xendit * `Yoco` - Yoco * `ZalandoZdirect` - ZalandoZdirect * `Zluri` - Zluri * `Zylo` - Zylo * `Tally` - Tally * `Nuntly` - Nuntly * `Vturb` - Vturb * `Meltwater` - Meltwater * `UserCom` - UserCom * `Latitude` - Latitude * `Workato` - Workato * `SideShift` - SideShift * `DuckLake` - DuckLake * `Starburst` - Starburst * `Trino` - Trino * `Easybill` - Easybill * `Bexio` - Bexio * `Umami` - Umami * `Manychat` - Manychat * `Kickstarter` - Kickstarter * `Typesense` - Typesense * `FirstPromoter` - FirstPromoter * `Zero` - Zero * `Inth` - Inth * `BCMS` - BCMS * `Convonite` - Convonite * `Hookdeck` - Hookdeck * `Billit` - Billit * `Moxie` - Moxie * `TripleWhale` - TripleWhale * `Directus` - Directus * `Clay` - Clay * `TradableBits` - TradableBits * `Swan` - Swan * `Hyros` - Hyros * `Odoo` - Odoo * `Airbridge` - Airbridge * `Snovio` - Snovio * `GoogleMerchantCenter` - GoogleMerchantCenter * `Raisely` - Raisely * `RakutenAdvertising` - RakutenAdvertising * `Zitadel` - Zitadel * `DeelFlows` - DeelFlows * `WindsorAi` - WindsorAi * `Wix` - Wix * `Sevalla` - Sevalla * `Motion` - Motion * `ImpactPartner` - ImpactPartner * `Cloudinary` - Cloudinary * `Uploadcare` - Uploadcare * `WHMCS` - WHMCS * `MSG91` - MSG91 * `Depot` - Depot * `Schematic` - Schematic * `Dokploy` - Dokploy * `Hootsuite` - Hootsuite * `WisprFlow` - WisprFlow * `SamCart` - SamCart * `IronSourceAds` - IronSourceAds * `MicrosoftExcel` - MicrosoftExcel * `Profound` - Profound * `Airwallex` - Airwallex * `Polymarket` - Polymarket * `Kalshi` - Kalshi * `Capterra` - Capterra * `GooglePostmasterTools` - GooglePostmasterTools * `Growi` - Growi * `Clarify` - Clarify * `DatoCMS` - DatoCMS * `WPSOffice` - WPSOffice * `TeraBox` - TeraBox * `SimonData` - SimonData * `CommissionJunction` - CommissionJunction * `Liveblocks` - Liveblocks * `NationBuilder` - NationBuilder * `Tana` - Tana * `Zenchef` - Zenchef * `Lovable` - Lovable * `Anvil` - Anvil * `Coolify` - Coolify * `SocialPilot` - SocialPilot * `Strato` - Strato * `Medusa` - Medusa * `Membrain` - Membrain * `RecallAI` - RecallAI * `Tenjin` - Tenjin * `Folk` - Folk * `Cybersource` - Cybersource * `GoogleAdSense` - GoogleAdSense * `Sequenzy` - Sequenzy * `Skio` - Skio * `Smartlead` - Smartlead * `Substack` - Substack * `ElectricityMaps` - ElectricityMaps * `Amplemarket` - Amplemarket * `Quo` - Quo * `HeyReach` - HeyReach * `MoEngage` - MoEngage * `Monaco` - Monaco * `Oneleet` - Oneleet * `Expo` - Expo * `PostNord` - PostNord * `Commslayer` - Commslayer * `Sprinto` - Sprinto * `Gem` - Gem * `AudioGO` - AudioGO * `ExactOnline` - ExactOnline * `LettrLabs` - LettrLabs * `GrafanaIRM` - GrafanaIRM */
   source_type?: ExternalDataSourceTypeEnum | (string & {});
 }
+const CreateExternalDataSourcesDatabaseSchemaRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<CreateExternalDataSourcesDatabaseSchemaRequest>;
+
 export interface CreateExternalDataSourcesDatabaseSchemaResponse {}
+const CreateExternalDataSourcesDatabaseSchemaResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<CreateExternalDataSourcesDatabaseSchemaResponse>;
+
 export interface CreateExternalDataSourcesDraftCustomManifestRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -1528,10 +1618,20 @@ export interface CreateExternalDataSourcesDraftCustomManifestRequest {
   /** Raw API documentation or an OpenAPI/Swagger spec, pasted directly. Provide this or docs_url. */
   docs_text?: string;
 }
+const CreateExternalDataSourcesDraftCustomManifestRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<CreateExternalDataSourcesDraftCustomManifestRequest>;
+
 /** * `ok` - ok * `invalid` - invalid * `model_error` - model_error */
 export type DraftStatusEnum = "ok" | "invalid" | "model_error";
+const DraftStatusEnum = S.String;
+
 /** Names of the resources (tables) the validated manifest exposes. Empty unless draft_status is 'ok'. */
 export type DraftCustomManifestResponseResourceNamesList = Array<string>;
+const DraftCustomManifestResponseResourceNamesList =
+  CreateExternalDataSourceRequestDestinationIdsList as any as S.Schema<DraftCustomManifestResponseResourceNamesList>;
+
 export interface DraftCustomManifestResponse {
   /** 'ok' = a manifest validated; 'invalid' = a manifest was drafted but never validated within the budget (see error; manifest_json holds the last attempt to fix by hand); 'model_error' = the model returned no usable JSON. * `ok` - ok * `invalid` - invalid * `model_error` - model_error */
   draft_status: DraftStatusEnum;
@@ -1544,10 +1644,18 @@ export interface DraftCustomManifestResponse {
   /** The last validation error when draft_status is not 'ok'; null on success. */
   error: string | null;
 }
+const DraftCustomManifestResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<DraftCustomManifestResponse>;
+
 /** Source config as flat keys. For source_type 'Custom': 'manifest_json' (a stringified RESTAPIConfig describing client.base_url, auth, and resources) plus the credential for the manifest's declared auth type -- 'auth_token' (bearer), 'auth_api_key' (api_key), or 'auth_password' (http_basic). Secrets stay in these auth_* keys, never inline in the manifest. */
 export type CreateExternalDataSourcesPreviewResourceRequestPayloadMap = {
   [key: string]: unknown | undefined;
 };
+const CreateExternalDataSourcesPreviewResourceRequestPayloadMap =
+  CreateExternalDataSourceRequestPayloadMap as any as S.Schema<CreateExternalDataSourcesPreviewResourceRequestPayloadMap>;
+
 export interface CreateExternalDataSourcesPreviewResourceRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -1560,17 +1668,37 @@ export interface CreateExternalDataSourcesPreviewResourceRequest {
   /** Maximum sample rows to return (1-50). Defaults to 10. */
   limit?: number;
 }
+const CreateExternalDataSourcesPreviewResourceRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<CreateExternalDataSourcesPreviewResourceRequest>;
+
 export type SourcePreviewResponseRowsItemMap = { [key: string]: unknown | undefined };
+const SourcePreviewResponseRowsItemMap =
+  CreateExternalDataSourceRequestPayloadMap as any as S.Schema<SourcePreviewResponseRowsItemMap>;
+
 /** Up to `limit` sample rows, after data_selector extraction -- the raw records the sync would ingest. */
 export type SourcePreviewResponseRowsList = Array<SourcePreviewResponseRowsItemMap>;
+const SourcePreviewResponseRowsList = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<SourcePreviewResponseRowsList>;
+
 export interface SourcePreviewColumn {
   /** Column name as it appears in the previewed rows. */
   name: string;
   /** JSON type inferred from the first non-null value: string, integer, number, boolean, object, array, or null. */
   type: string;
 }
+const SourcePreviewColumn = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<SourcePreviewColumn>;
+
 /** Columns observed across the sample rows, each with an inferred JSON type. */
 export type SourcePreviewResponseColumnsList = Array<SourcePreviewColumn>;
+const SourcePreviewResponseColumnsList = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<SourcePreviewResponseColumnsList>;
+
 export interface SourcePreviewResponse {
   /** Up to `limit` sample rows, after data_selector extraction -- the raw records the sync would ingest. */
   rows: SourcePreviewResponseRowsList;
@@ -1581,8 +1709,16 @@ export interface SourcePreviewResponse {
   /** Set when the live read failed (e.g. the host was unreachable or returned an auth error); rows is then empty. Manifest, validation, and SSRF problems return HTTP 400 instead of populating this field. */
   error: string | null;
 }
+const SourcePreviewResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<SourcePreviewResponse>;
+
 /** Optional fnmatch-style globs (`*` and `?` wildcards) restricting which newly discovered schema names auto-sync, matched case-insensitively against both the qualified and bare table name. Null or empty means every new schema qualifies. Only used when `auto_sync_new_schemas` is true. */
 export type CreateExternalDataSourcesReloadRequestAutoSyncSchemaPatternsList = Array<string>;
+const CreateExternalDataSourcesReloadRequestAutoSyncSchemaPatternsList =
+  CreateExternalDataSourcesCheckCdcPrerequisitesForSourceRequestAutoSyncSchemaPatternsList as any as S.Schema<CreateExternalDataSourcesReloadRequestAutoSyncSchemaPatternsList>;
+
 export interface CreateExternalDataSourcesReloadRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -1602,21 +1738,42 @@ export interface CreateExternalDataSourcesReloadRequest {
   auto_sync_schema_patterns?: CreateExternalDataSourcesReloadRequestAutoSyncSchemaPatternsList | null;
   job_inputs?: unknown;
 }
+const CreateExternalDataSourcesReloadRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<CreateExternalDataSourcesReloadRequest>;
+
 export interface CreateExternalDataSourcesReloadResponse {}
+const CreateExternalDataSourcesReloadResponse =
+  CreateExternalDataSourcesDatabaseSchemaResponse as any as S.Schema<CreateExternalDataSourcesReloadResponse>;
+
 export interface CreateExternalDataSourcesRepairCdcRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A UUID string identifying this external data source. */
   id: string;
 }
+const CreateExternalDataSourcesRepairCdcRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<CreateExternalDataSourcesRepairCdcRequest>;
+
 export interface CreateExternalDataSourcesRepairCdcResponse {
   success?: boolean;
   schemas_reset?: number;
 }
+const CreateExternalDataSourcesRepairCdcResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<CreateExternalDataSourcesRepairCdcResponse>;
+
 /** Connection details as flat keys for the source_type (discover required fields with the wizard tool). Prefer references over raw secrets: pass {'credential_id': <id>} referencing the connection details the user stored via the connect-link page (discover ids with the stored_credentials endpoint) -- they are merged in server-side and deleted once consumed. An already-connected OAuth integration can be passed via its id key instead (e.g. {'hubspot_integration_id': 123}). For source_type 'Custom' (a user-defined REST API) the keys are 'manifest_json' (a stringified RESTAPIConfig describing client.base_url, auth, and resources) plus the credential for the auth type the manifest declares -- 'auth_token' (bearer), 'auth_api_key' (api_key), or 'auth_password' (http_basic); keep secrets in these auth_* keys, never inline in the manifest. A 'schemas' array is NOT required -- all discovered tables are enabled automatically with sensible sync defaults. */
 export type CreateExternalDataSourcesSetupRequestPayloadMap = {
   [key: string]: unknown | undefined;
 };
+const CreateExternalDataSourcesSetupRequestPayloadMap =
+  CreateExternalDataSourceRequestPayloadMap as any as S.Schema<CreateExternalDataSourcesSetupRequestPayloadMap>;
+
 export interface CreateExternalDataSourcesSetupRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -1631,8 +1788,16 @@ export interface CreateExternalDataSourcesSetupRequest {
   /** Whether a synced source should also be live-queryable via direct connection. Defaults to false; ignored for pure direct-query sources. */
   direct_query_enabled?: boolean;
 }
+const CreateExternalDataSourcesSetupRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<CreateExternalDataSourcesSetupRequest>;
+
 /** Webhook input names the user still needs to provide (e.g. a signing secret the external API did not return on create). Submit them via the update_webhook_inputs endpoint. */
 export type SourceSetupWebhookPendingInputsList = Array<string>;
+const SourceSetupWebhookPendingInputsList =
+  CreateExternalDataSourceRequestDestinationIdsList as any as S.Schema<SourceSetupWebhookPendingInputsList>;
+
 export interface SourceSetupWebhook {
   /** Whether the webhook was registered with the external service. When true, webhook-capable tables (including webhook-only ones) sync via real-time webhooks; when false, tables fall back to the polling sync defaults and webhook-only tables stay disabled. */
   success: boolean;
@@ -1643,14 +1808,21 @@ export interface SourceSetupWebhook {
   /** Webhook input names the user still needs to provide (e.g. a signing secret the external API did not return on create). Submit them via the update_webhook_inputs endpoint. */
   pending_inputs: SourceSetupWebhookPendingInputsList;
 }
+const SourceSetupWebhook = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<SourceSetupWebhook>;
+
 export interface SourceSetupResponse {
   /** ID of the created external data source. */
   id: string;
   /** Outcome of automatic webhook registration. Only present for sources that support webhooks (e.g. Stripe) and have webhook-capable tables. */
   webhook?: SourceSetupWebhook;
 }
+const SourceSetupResponse = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<SourceSetupResponse>;
+
 /** Optional fnmatch-style globs (`*` and `?` wildcards) restricting which newly discovered schema names auto-sync, matched case-insensitively against both the qualified and bare table name. Null or empty means every new schema qualifies. Only used when `auto_sync_new_schemas` is true. */
 export type CreateExternalDataSourcesSourcePrefixRequestAutoSyncSchemaPatternsList = Array<string>;
+const CreateExternalDataSourcesSourcePrefixRequestAutoSyncSchemaPatternsList =
+  CreateExternalDataSourcesCheckCdcPrerequisitesForSourceRequestAutoSyncSchemaPatternsList as any as S.Schema<CreateExternalDataSourcesSourcePrefixRequestAutoSyncSchemaPatternsList>;
+
 export interface CreateExternalDataSourcesSourcePrefixRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -1668,11 +1840,22 @@ export interface CreateExternalDataSourcesSourcePrefixRequest {
   auto_sync_schema_patterns?: CreateExternalDataSourcesSourcePrefixRequestAutoSyncSchemaPatternsList | null;
   job_inputs?: unknown;
 }
+const CreateExternalDataSourcesSourcePrefixRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<CreateExternalDataSourcesSourcePrefixRequest>;
+
 export interface CreateExternalDataSourcesSourcePrefixResponse {}
+const CreateExternalDataSourcesSourcePrefixResponse =
+  CreateExternalDataSourcesDatabaseSchemaResponse as any as S.Schema<CreateExternalDataSourcesSourcePrefixResponse>;
+
 /** Connection details as flat keys for the source_type -- the same fields the create flow accepts (host, port, password, API key, ...). Checked against a live connection before being stored. */
 export type CreateExternalDataSourcesStoreCredentialsRequestPayloadMap = {
   [key: string]: unknown | undefined;
 };
+const CreateExternalDataSourcesStoreCredentialsRequestPayloadMap =
+  CreateExternalDataSourceRequestPayloadMap as any as S.Schema<CreateExternalDataSourcesStoreCredentialsRequestPayloadMap>;
+
 export interface CreateExternalDataSourcesStoreCredentialsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -1681,6 +1864,11 @@ export interface CreateExternalDataSourcesStoreCredentialsRequest {
   /** Connection details as flat keys for the source_type -- the same fields the create flow accepts (host, port, password, API key, ...). Checked against a live connection before being stored. */
   payload: CreateExternalDataSourcesStoreCredentialsRequestPayloadMap;
 }
+const CreateExternalDataSourcesStoreCredentialsRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<CreateExternalDataSourcesStoreCredentialsRequest>;
+
 export interface SourceCredential {
   /** Stored credential id. Pass to the setup endpoint as {'credential_id': <id>} to create the source. */
   credential_id: string;
@@ -1691,6 +1879,8 @@ export interface SourceCredential {
   /** When the stored credentials expire. Unconsumed credentials are unusable past this time. */
   expires_at: string;
 }
+const SourceCredential = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<SourceCredential>;
+
 /** * `full_refresh` - full_refresh * `incremental` - incremental * `append` - append * `webhook` - webhook * `cdc` - cdc * `xmin` - xmin */
 export type ExternalDataSchemaSyncTypeEnum =
   | "full_refresh"
@@ -1699,12 +1889,22 @@ export type ExternalDataSchemaSyncTypeEnum =
   | "webhook"
   | "cdc"
   | "xmin";
+const ExternalDataSchemaSyncTypeEnum = S.String;
+
 /** Column names for primary key deduplication. */
 export type ExternalDataSourceBulkUpdateSchemaPrimaryKeyColumnsList = Array<string>;
+const ExternalDataSourceBulkUpdateSchemaPrimaryKeyColumnsList =
+  CreateExternalDataSourceRequestDestinationIdsList as any as S.Schema<ExternalDataSourceBulkUpdateSchemaPrimaryKeyColumnsList>;
+
 /** * `consolidated` - consolidated * `cdc_only` - cdc_only * `both` - both */
 export type CdcTableModeEnum = "consolidated" | "cdc_only" | "both";
+const CdcTableModeEnum = S.String;
+
 /** Columns to sync. Null means sync all columns. */
 export type ExternalDataSourceBulkUpdateSchemaEnabledColumnsList = Array<string>;
+const ExternalDataSourceBulkUpdateSchemaEnabledColumnsList =
+  CreateExternalDataSourceRequestDestinationIdsList as any as S.Schema<ExternalDataSourceBulkUpdateSchemaEnabledColumnsList>;
+
 export interface ExternalDataSourceBulkUpdateSchemaRowFiltersItem {
   column: string;
   /** One of: > >= < <= = != IN "NOT IN". */
@@ -1712,9 +1912,19 @@ export interface ExternalDataSourceBulkUpdateSchemaRowFiltersItem {
   /** Comparison value; must match the column's type. For `IN` / `NOT IN`, a comma-separated list (e.g. `1, 2, 3` or `'a','b'`). */
   value: unknown;
 }
+const ExternalDataSourceBulkUpdateSchemaRowFiltersItem = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<ExternalDataSourceBulkUpdateSchemaRowFiltersItem>;
+
 /** Row-filter predicates ANDed onto the source query. Null/empty means sync all rows. */
 export type ExternalDataSourceBulkUpdateSchemaRowFiltersList =
   Array<ExternalDataSourceBulkUpdateSchemaRowFiltersItem>;
+const ExternalDataSourceBulkUpdateSchemaRowFiltersList = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<ExternalDataSourceBulkUpdateSchemaRowFiltersList>;
+
 export interface ExternalDataSourceBulkUpdateSchema {
   /** Schema identifier to update. */
   id?: string;
@@ -1745,9 +1955,19 @@ export interface ExternalDataSourceBulkUpdateSchema {
   /** When true and the schema has no sync method configured yet (and this update does not set one), discover the table on the source and fill in default sync settings: incremental sync with an auto-selected tracking column where supported, otherwise append, otherwise full refresh. Ignored for schemas that already have a sync method. */
   apply_sync_defaults?: boolean;
 }
+const ExternalDataSourceBulkUpdateSchema = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<ExternalDataSourceBulkUpdateSchema>;
+
 /** Schema updates to apply in a single batch. */
 export type ExternalDataSourcesBulkUpdateSchemasPartialUpdateRequestSchemasList =
   Array<ExternalDataSourceBulkUpdateSchema>;
+const ExternalDataSourcesBulkUpdateSchemasPartialUpdateRequestSchemasList = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<ExternalDataSourcesBulkUpdateSchemasPartialUpdateRequestSchemasList>;
+
 export interface ExternalDataSourcesBulkUpdateSchemasPartialUpdateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -1756,7 +1976,15 @@ export interface ExternalDataSourcesBulkUpdateSchemasPartialUpdateRequest {
   /** Schema updates to apply in a single batch. */
   schemas: ExternalDataSourcesBulkUpdateSchemasPartialUpdateRequestSchemasList;
 }
+const ExternalDataSourcesBulkUpdateSchemasPartialUpdateRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<ExternalDataSourcesBulkUpdateSchemasPartialUpdateRequest>;
+
 export type ExternalDataSchemaTableMap = { [key: string]: unknown | undefined };
+const ExternalDataSchemaTableMap =
+  CreateExternalDataSourceRequestPayloadMap as any as S.Schema<ExternalDataSchemaTableMap>;
+
 /** * `integer` - integer * `numeric` - numeric * `datetime` - datetime * `date` - date * `timestamp` - timestamp * `objectid` - objectid * `xid` - xid */
 export type IncrementalFieldTypeEnum =
   | "integer"
@@ -1766,6 +1994,8 @@ export type IncrementalFieldTypeEnum =
   | "timestamp"
   | "objectid"
   | "xid";
+const IncrementalFieldTypeEnum = S.String;
+
 /** * `never` - never * `5min` - 5min * `15min` - 15min * `30min` - 30min * `1hour` - 1hour * `6hour` - 6hour * `12hour` - 12hour * `24hour` - 24hour * `7day` - 7day * `30day` - 30day */
 export type ExternalDataSchemaSyncFrequencyEnum =
   | "never"
@@ -1778,24 +2008,50 @@ export type ExternalDataSchemaSyncFrequencyEnum =
   | "24hour"
   | "7day"
   | "30day";
+const ExternalDataSchemaSyncFrequencyEnum = S.String;
+
 /** Column names for primary key deduplication. */
 export type ExternalDataSchemaPrimaryKeyColumnsList = Array<string>;
+const ExternalDataSchemaPrimaryKeyColumnsList =
+  CreateExternalDataSourceRequestDestinationIdsList as any as S.Schema<ExternalDataSchemaPrimaryKeyColumnsList>;
+
 /** * `missing_primary_key` - Missing primary key * `duplicate_primary_key` - Duplicate primary key */
 export type IncrementalSyncBlockedReasonEnum = "missing_primary_key" | "duplicate_primary_key";
+const IncrementalSyncBlockedReasonEnum = S.String;
+
 /** Names of source columns to sync. `null` (default) syncs all columns. Primary-key columns and the active incremental field are always retained, even if not listed here. */
 export type ExternalDataSchemaEnabledColumnsList = Array<string>;
+const ExternalDataSchemaEnabledColumnsList =
+  CreateExternalDataSourceRequestDestinationIdsList as any as S.Schema<ExternalDataSchemaEnabledColumnsList>;
+
 export type ExternalDataSchemaRowFiltersItem = ExternalDataSourceBulkUpdateSchemaRowFiltersItem;
 /** Predicates ANDed onto the source query so only matching rows sync. Each is `{column, operator, value}`; `null`/empty (default) syncs all rows. The operator must be one of `> >= < <= = != IN "NOT IN"` and the value must match the column's type (for `IN`/`NOT IN`, a comma-separated list like `1, 2, 3` or `'a','b'`). Applied on the next sync -- not retroactive to already-synced rows. */
 export type ExternalDataSchemaRowFiltersList =
   Array<ExternalDataSourceBulkUpdateSchemaRowFiltersItem>;
+const ExternalDataSchemaRowFiltersList =
+  ExternalDataSourceBulkUpdateSchemaRowFiltersList as any as S.Schema<ExternalDataSchemaRowFiltersList>;
+
 export interface ExternalDataSchemaAvailableColumnsItem {
   name: string;
   data_type?: string;
   is_nullable?: boolean;
 }
+const ExternalDataSchemaAvailableColumnsItem = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<ExternalDataSchemaAvailableColumnsItem>;
+
 /** Column metadata (name, data type, nullable) for this schema. For SQL sources this is the source-side schema discovered via `refresh_schemas`; for other sources (and once synced) it falls back to the synced table's columns. Empty only before the first successful sync/refresh. */
 export type ExternalDataSchemaAvailableColumnsList = Array<ExternalDataSchemaAvailableColumnsItem>;
+const ExternalDataSchemaAvailableColumnsList = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<ExternalDataSchemaAvailableColumnsList>;
+
 export type ExternalDataSchemaSourceSupportedApiVersionsList = Array<string>;
+const ExternalDataSchemaSourceSupportedApiVersionsList =
+  CreateExternalDataSourceRequestDestinationIdsList as any as S.Schema<ExternalDataSchemaSourceSupportedApiVersionsList>;
+
 /** Lightweight parent-source summary (id, source_type, access_method, column-selection support, the requesting user's access level). Only populated on the single-schema retrieve endpoint -- `null` elsewhere -- so read-only views can render without fetching the full source and all its schemas. */
 export interface ExternalDataSchemaSource {
   id?: string;
@@ -1808,6 +2064,11 @@ export interface ExternalDataSchemaSource {
   api_version?: string | null;
   supported_api_versions?: ExternalDataSchemaSourceSupportedApiVersionsList;
 }
+const ExternalDataSchemaSource = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<ExternalDataSchemaSource>;
+
 export interface ExternalDataSourceApiVersionDeprecation {
   /** The deprecated vendor API version this source is pinned to. */
   version: string;
@@ -1816,6 +2077,11 @@ export interface ExternalDataSourceApiVersionDeprecation {
   /** The source's current default vendor API version -- the migration target. */
   default_version: string;
 }
+const ExternalDataSourceApiVersionDeprecation = /*@__PURE__*/ __L.at(
+  __c5,
+  0,
+) as any as S.Schema<ExternalDataSourceApiVersionDeprecation>;
+
 /** A schema of an external data source: its sync configuration and the warehouse table it syncs into. */
 export interface ExternalDataSchema {
   id?: string;
@@ -1870,18 +2136,37 @@ export interface ExternalDataSchema {
   /** The effective access level the user has for this object */
   user_access_level?: string | null;
 }
+const ExternalDataSchema = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<ExternalDataSchema>;
+
 export type ExternalDataSourcesBulkUpdateSchemasPartialUpdateResponseBodyList =
   Array<ExternalDataSchema>;
+const ExternalDataSourcesBulkUpdateSchemasPartialUpdateResponseBodyList = /*@__PURE__*/ __L.at(
+  __c5,
+  2,
+) as any as S.Schema<ExternalDataSourcesBulkUpdateSchemasPartialUpdateResponseBodyList>;
+
 export type ExternalDataSourcesBulkUpdateSchemasPartialUpdateResponse =
   ExternalDataSourcesBulkUpdateSchemasPartialUpdateResponseBodyList;
+const ExternalDataSourcesBulkUpdateSchemasPartialUpdateResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<ExternalDataSourcesBulkUpdateSchemasPartialUpdateResponse>;
+
 export interface ExternalDataSourcesConnectLinkRetrieveRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** The source type to generate a connect link for (e.g. 'Stripe', 'Postgres', 'Hubspot'). */
   source_type: string;
 }
+const ExternalDataSourcesConnectLinkRetrieveRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  4,
+) as any as S.Schema<ExternalDataSourcesConnectLinkRetrieveRequest>;
+
 /** * `oauth` - oauth * `credentials` - credentials */
 export type AuthMethodEnum = "oauth" | "credentials";
+const AuthMethodEnum = S.String;
+
 export interface SourceConnectLink {
   /** The source type the link is for. */
   source_type: string;
@@ -1892,8 +2177,13 @@ export interface SourceConnectLink {
   /** Next steps for the agent to relay to the user. */
   instructions: string;
 }
+const SourceConnectLink = /*@__PURE__*/ __L.at(__c5, 5) as any as S.Schema<SourceConnectLink>;
+
 /** Optional fnmatch-style globs (`*` and `?` wildcards) restricting which newly discovered schema names auto-sync, matched case-insensitively against both the qualified and bare table name. Null or empty means every new schema qualifies. Only used when `auto_sync_new_schemas` is true. */
 export type ExternalDataSourcesCreateWebhookCreateRequestAutoSyncSchemaPatternsList = Array<string>;
+const ExternalDataSourcesCreateWebhookCreateRequestAutoSyncSchemaPatternsList =
+  CreateExternalDataSourcesCheckCdcPrerequisitesForSourceRequestAutoSyncSchemaPatternsList as any as S.Schema<ExternalDataSourcesCreateWebhookCreateRequestAutoSyncSchemaPatternsList>;
+
 export interface ExternalDataSourcesCreateWebhookCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -1913,6 +2203,11 @@ export interface ExternalDataSourcesCreateWebhookCreateRequest {
   auto_sync_schema_patterns?: ExternalDataSourcesCreateWebhookCreateRequestAutoSyncSchemaPatternsList | null;
   job_inputs?: unknown;
 }
+const ExternalDataSourcesCreateWebhookCreateRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  6,
+) as any as S.Schema<ExternalDataSourcesCreateWebhookCreateRequest>;
+
 /** Inputs the external service needs before delivery works. Submit via update_webhook_inputs. */
 export type CreateWebhookResponsePendingInputsList = Array<string>;
 export interface CreateWebhookResponse {
@@ -1925,8 +2220,13 @@ export interface CreateWebhookResponse {
   /** Inputs the external service needs before delivery works. Submit via update_webhook_inputs. */
   pending_inputs: CreateWebhookResponsePendingInputsList;
 }
+const CreateWebhookResponse = SourceSetupWebhook as any as S.Schema<CreateWebhookResponse>;
+
 /** Optional fnmatch-style globs (`*` and `?` wildcards) restricting which newly discovered schema names auto-sync, matched case-insensitively against both the qualified and bare table name. Null or empty means every new schema qualifies. Only used when `auto_sync_new_schemas` is true. */
 export type ExternalDataSourcesDeleteWebhookCreateRequestAutoSyncSchemaPatternsList = Array<string>;
+const ExternalDataSourcesDeleteWebhookCreateRequestAutoSyncSchemaPatternsList =
+  CreateExternalDataSourcesCheckCdcPrerequisitesForSourceRequestAutoSyncSchemaPatternsList as any as S.Schema<ExternalDataSourcesDeleteWebhookCreateRequestAutoSyncSchemaPatternsList>;
+
 export interface ExternalDataSourcesDeleteWebhookCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -1946,6 +2246,11 @@ export interface ExternalDataSourcesDeleteWebhookCreateRequest {
   auto_sync_schema_patterns?: ExternalDataSourcesDeleteWebhookCreateRequestAutoSyncSchemaPatternsList | null;
   job_inputs?: unknown;
 }
+const ExternalDataSourcesDeleteWebhookCreateRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  7,
+) as any as S.Schema<ExternalDataSourcesDeleteWebhookCreateRequest>;
+
 export interface DeleteWebhookResponse {
   /** Whether the webhook delivery function was deleted. */
   success: boolean;
@@ -1954,15 +2259,31 @@ export interface DeleteWebhookResponse {
   /** Why the external deletion failed, when external_deleted is false. */
   error: string | null;
 }
+const DeleteWebhookResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<DeleteWebhookResponse>;
+
 export interface ExternalDataSourcesDestroyRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A UUID string identifying this external data source. */
   id: string;
 }
+const ExternalDataSourcesDestroyRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  1,
+) as any as S.Schema<ExternalDataSourcesDestroyRequest>;
+
 export interface ExternalDataSourcesDestroyResponse {}
+const ExternalDataSourcesDestroyResponse =
+  CreateExternalDataSourcesDatabaseSchemaResponse as any as S.Schema<ExternalDataSourcesDestroyResponse>;
+
 /** Optional fnmatch-style globs (`*` and `?` wildcards) restricting which newly discovered schema names auto-sync, matched case-insensitively against both the qualified and bare table name. Null or empty means every new schema qualifies. Only used when `auto_sync_new_schemas` is true. */
 export type ExternalDataSourcesDisableCdcCreateRequestAutoSyncSchemaPatternsList = Array<string>;
+const ExternalDataSourcesDisableCdcCreateRequestAutoSyncSchemaPatternsList =
+  CreateExternalDataSourcesCheckCdcPrerequisitesForSourceRequestAutoSyncSchemaPatternsList as any as S.Schema<ExternalDataSourcesDisableCdcCreateRequestAutoSyncSchemaPatternsList>;
+
 export interface ExternalDataSourcesDisableCdcCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -1982,9 +2303,20 @@ export interface ExternalDataSourcesDisableCdcCreateRequest {
   auto_sync_schema_patterns?: ExternalDataSourcesDisableCdcCreateRequestAutoSyncSchemaPatternsList | null;
   job_inputs?: unknown;
 }
+const ExternalDataSourcesDisableCdcCreateRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  2,
+) as any as S.Schema<ExternalDataSourcesDisableCdcCreateRequest>;
+
 export interface ExternalDataSourcesDisableCdcCreateResponse {}
+const ExternalDataSourcesDisableCdcCreateResponse =
+  CreateExternalDataSourcesDatabaseSchemaResponse as any as S.Schema<ExternalDataSourcesDisableCdcCreateResponse>;
+
 /** Optional fnmatch-style globs (`*` and `?` wildcards) restricting which newly discovered schema names auto-sync, matched case-insensitively against both the qualified and bare table name. Null or empty means every new schema qualifies. Only used when `auto_sync_new_schemas` is true. */
 export type ExternalDataSourcesEnableCdcCreateRequestAutoSyncSchemaPatternsList = Array<string>;
+const ExternalDataSourcesEnableCdcCreateRequestAutoSyncSchemaPatternsList =
+  CreateExternalDataSourcesCheckCdcPrerequisitesForSourceRequestAutoSyncSchemaPatternsList as any as S.Schema<ExternalDataSourcesEnableCdcCreateRequestAutoSyncSchemaPatternsList>;
+
 export interface ExternalDataSourcesEnableCdcCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -2004,15 +2336,25 @@ export interface ExternalDataSourcesEnableCdcCreateRequest {
   auto_sync_schema_patterns?: ExternalDataSourcesEnableCdcCreateRequestAutoSyncSchemaPatternsList | null;
   job_inputs?: unknown;
 }
+const ExternalDataSourcesEnableCdcCreateRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  3,
+) as any as S.Schema<ExternalDataSourcesEnableCdcCreateRequest>;
+
 export interface CdcEnableResponse {
   /** Whether CDC was enabled on the source. */
   success: boolean;
   /** Whether the extraction and cleanup schedules could be created. False means CDC is enabled but scheduling failed; the schedule self-heals on the first CDC schema toggle. */
   schedules_ready: boolean;
 }
+const CdcEnableResponse = /*@__PURE__*/ __L.at(__c6, 4) as any as S.Schema<CdcEnableResponse>;
+
 /** Optional fnmatch-style globs (`*` and `?` wildcards) restricting which newly discovered schema names auto-sync, matched case-insensitively against both the qualified and bare table name. Null or empty means every new schema qualifies. Only used when `auto_sync_new_schemas` is true. */
 export type ExternalDataSourcesRefreshSchemasCreateRequestAutoSyncSchemaPatternsList =
   Array<string>;
+const ExternalDataSourcesRefreshSchemasCreateRequestAutoSyncSchemaPatternsList =
+  CreateExternalDataSourcesCheckCdcPrerequisitesForSourceRequestAutoSyncSchemaPatternsList as any as S.Schema<ExternalDataSourcesRefreshSchemasCreateRequestAutoSyncSchemaPatternsList>;
+
 export interface ExternalDataSourcesRefreshSchemasCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -2032,19 +2374,40 @@ export interface ExternalDataSourcesRefreshSchemasCreateRequest {
   auto_sync_schema_patterns?: ExternalDataSourcesRefreshSchemasCreateRequestAutoSyncSchemaPatternsList | null;
   job_inputs?: unknown;
 }
+const ExternalDataSourcesRefreshSchemasCreateRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  5,
+) as any as S.Schema<ExternalDataSourcesRefreshSchemasCreateRequest>;
+
 export interface ExternalDataSourcesRefreshSchemasCreateResponse {}
+const ExternalDataSourcesRefreshSchemasCreateResponse =
+  CreateExternalDataSourcesDatabaseSchemaResponse as any as S.Schema<ExternalDataSourcesRefreshSchemasCreateResponse>;
+
 export interface ExternalDataSourcesResumeCdcCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A UUID string identifying this external data source. */
   id: string;
 }
+const ExternalDataSourcesResumeCdcCreateRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  6,
+) as any as S.Schema<ExternalDataSourcesResumeCdcCreateRequest>;
+
 export interface ExternalDataSourcesResumeCdcCreateResponse {
   success?: boolean;
 }
+const ExternalDataSourcesResumeCdcCreateResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  7,
+) as any as S.Schema<ExternalDataSourcesResumeCdcCreateResponse>;
+
 /** Optional fnmatch-style globs (`*` and `?` wildcards) restricting which newly discovered schema names auto-sync, matched case-insensitively against both the qualified and bare table name. Null or empty means every new schema qualifies. Only used when `auto_sync_new_schemas` is true. */
 export type ExternalDataSourcesUpdateCdcSettingsCreateRequestAutoSyncSchemaPatternsList =
   Array<string>;
+const ExternalDataSourcesUpdateCdcSettingsCreateRequestAutoSyncSchemaPatternsList =
+  CreateExternalDataSourcesCheckCdcPrerequisitesForSourceRequestAutoSyncSchemaPatternsList as any as S.Schema<ExternalDataSourcesUpdateCdcSettingsCreateRequestAutoSyncSchemaPatternsList>;
+
 export interface ExternalDataSourcesUpdateCdcSettingsCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -2064,10 +2427,21 @@ export interface ExternalDataSourcesUpdateCdcSettingsCreateRequest {
   auto_sync_schema_patterns?: ExternalDataSourcesUpdateCdcSettingsCreateRequestAutoSyncSchemaPatternsList | null;
   job_inputs?: unknown;
 }
+const ExternalDataSourcesUpdateCdcSettingsCreateRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  0,
+) as any as S.Schema<ExternalDataSourcesUpdateCdcSettingsCreateRequest>;
+
 export interface ExternalDataSourcesUpdateCdcSettingsCreateResponse {}
+const ExternalDataSourcesUpdateCdcSettingsCreateResponse =
+  CreateExternalDataSourcesDatabaseSchemaResponse as any as S.Schema<ExternalDataSourcesUpdateCdcSettingsCreateResponse>;
+
 /** Optional fnmatch-style globs (`*` and `?` wildcards) restricting which newly discovered schema names auto-sync, matched case-insensitively against both the qualified and bare table name. Null or empty means every new schema qualifies. Only used when `auto_sync_new_schemas` is true. */
 export type ExternalDataSourcesUpdateWebhookInputsCreateRequestAutoSyncSchemaPatternsList =
   Array<string>;
+const ExternalDataSourcesUpdateWebhookInputsCreateRequestAutoSyncSchemaPatternsList =
+  CreateExternalDataSourcesCheckCdcPrerequisitesForSourceRequestAutoSyncSchemaPatternsList as any as S.Schema<ExternalDataSourcesUpdateWebhookInputsCreateRequestAutoSyncSchemaPatternsList>;
+
 export interface ExternalDataSourcesUpdateWebhookInputsCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -2087,18 +2461,36 @@ export interface ExternalDataSourcesUpdateWebhookInputsCreateRequest {
   auto_sync_schema_patterns?: ExternalDataSourcesUpdateWebhookInputsCreateRequestAutoSyncSchemaPatternsList | null;
   job_inputs?: unknown;
 }
+const ExternalDataSourcesUpdateWebhookInputsCreateRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  1,
+) as any as S.Schema<ExternalDataSourcesUpdateWebhookInputsCreateRequest>;
+
 export interface UpdateWebhookInputsResponse {
   /** Whether the inputs were saved and pushed to the external service. */
   success: boolean;
 }
+const UpdateWebhookInputsResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  2,
+) as any as S.Schema<UpdateWebhookInputsResponse>;
+
 export interface GetExternalDataSourceRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A UUID string identifying this external data source. */
   id: string;
 }
+const GetExternalDataSourceRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  3,
+) as any as S.Schema<GetExternalDataSourceRequest>;
+
 /** Optional fnmatch-style globs (`*` and `?` wildcards) restricting which newly discovered schema names auto-sync, matched case-insensitively against both the qualified and bare table name. Null or empty means every new schema qualifies. Only used when `auto_sync_new_schemas` is true. */
 export type ExternalDataSourceSerializersOutputAutoSyncSchemaPatternsList = Array<string>;
+const ExternalDataSourceSerializersOutputAutoSyncSchemaPatternsList =
+  CreateExternalDataSourceRequestDestinationIdsList as any as S.Schema<ExternalDataSourceSerializersOutputAutoSyncSchemaPatternsList>;
+
 /** * `duckdb` - duckdb * `postgres` - postgres * `mysql` - mysql * `snowflake` - snowflake * `redshift` - redshift * `clickhouse` - clickhouse * `motherduck` - motherduck * `trino` - trino */
 export type EngineEnum =
   | "duckdb"
@@ -2109,15 +2501,25 @@ export type EngineEnum =
   | "clickhouse"
   | "motherduck"
   | "trino";
+const EngineEnum = S.String;
+
 export type ExternalDataSourceSerializersOutputSchemasItemMap = {
   [key: string]: unknown | undefined;
 };
 export type ExternalDataSourceSerializersOutputSchemasList =
   Array<ExternalDataSourceSerializersOutputSchemasItemMap>;
+const ExternalDataSourceSerializersOutputSchemasList =
+  SourcePreviewResponseRowsList as any as S.Schema<ExternalDataSourceSerializersOutputSchemasList>;
+
 export interface ExternalDataSourceRevenueAnalyticsConfig {
   enabled?: boolean;
   include_invoiceless_charges?: boolean;
 }
+const ExternalDataSourceRevenueAnalyticsConfig = /*@__PURE__*/ __L.at(
+  __c7,
+  4,
+) as any as S.Schema<ExternalDataSourceRevenueAnalyticsConfig>;
+
 /** Mixin for serializers to add user access control fields */
 export interface ExternalDataSourceSerializersOutput {
   id?: string;
@@ -2153,16 +2555,31 @@ export interface ExternalDataSourceSerializersOutput {
   /** Set when the vendor has deprecated the API version this source is pinned to; null otherwise. Drives the in-product deprecation warning. */
   api_version_deprecation?: ExternalDataSourceApiVersionDeprecation | null;
 }
+const ExternalDataSourceSerializersOutput = /*@__PURE__*/ __L.at(
+  __c7,
+  5,
+) as any as S.Schema<ExternalDataSourceSerializersOutput>;
+
 export interface GetExternalDataSourcesCdcStatusRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A UUID string identifying this external data source. */
   id: string;
 }
+const GetExternalDataSourcesCdcStatusRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  6,
+) as any as S.Schema<GetExternalDataSourcesCdcStatusRequest>;
+
 /** * `posthog` - posthog * `self_managed` - self_managed */
 export type ManagementModeEnum = "posthog" | "self_managed";
+const ManagementModeEnum = S.String;
+
 /** Tables in the publication, when the source was reachable and a publication exists. */
 export type CdcStatusPublishedTablesList = Array<string>;
+const CdcStatusPublishedTablesList =
+  CreateExternalDataSourceRequestDestinationIdsList as any as S.Schema<CdcStatusPublishedTablesList>;
+
 export interface CdcStatus {
   /** Whether CDC is enabled on this source. */
   enabled: boolean;
@@ -2187,19 +2604,31 @@ export interface CdcStatus {
   /** Tables in the publication, when the source was reachable and a publication exists. */
   published_tables?: CdcStatusPublishedTablesList;
 }
+const CdcStatus = /*@__PURE__*/ __L.at(__c7, 7) as any as S.Schema<CdcStatus>;
+
 export interface GetExternalDataSourcesDestinationRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A UUID string identifying this external data source. */
   id: string;
 }
+const GetExternalDataSourcesDestinationRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  0,
+) as any as S.Schema<GetExternalDataSourcesDestinationRequest>;
+
 /** Destinations every table on this source syncs to. */
 export type SourceDestinationsDestinationIdsList = Array<string>;
+const SourceDestinationsDestinationIdsList =
+  CreateExternalDataSourceRequestDestinationIdsList as any as S.Schema<SourceDestinationsDestinationIdsList>;
+
 /** Response shape for a source's destination set. */
 export interface SourceDestinations {
   /** Destinations every table on this source syncs to. */
   destination_ids: SourceDestinationsDestinationIdsList;
 }
+const SourceDestinations = /*@__PURE__*/ __L.at(__c8, 1) as any as S.Schema<SourceDestinations>;
+
 export interface GetExternalDataSourcesOauthAccountRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -2210,14 +2639,27 @@ export interface GetExternalDataSourcesOauthAccountRequest {
   /** The data warehouse source type (e.g. 'BingAds', 'GoogleSearchConsole'). */
   source_type: string;
 }
+const GetExternalDataSourcesOauthAccountRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  2,
+) as any as S.Schema<GetExternalDataSourcesOauthAccountRequest>;
+
 export interface GetExternalDataSourcesWebhookInfoRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A UUID string identifying this external data source. */
   id: string;
 }
+const GetExternalDataSourcesWebhookInfoRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  3,
+) as any as S.Schema<GetExternalDataSourcesWebhookInfoRequest>;
+
 /** Delivery health reported by the pipeline: `state` and `tokens` counters. */
 export type WebhookHogFunctionStatusMap = { [key: string]: unknown | undefined };
+const WebhookHogFunctionStatusMap =
+  CreateExternalDataSourceRequestPayloadMap as any as S.Schema<WebhookHogFunctionStatusMap>;
+
 export interface WebhookHogFunction {
   /** ID of the webhook delivery hog function. */
   id: string;
@@ -2230,11 +2672,25 @@ export interface WebhookHogFunction {
   /** Delivery health reported by the pipeline: `state` and `tokens` counters. */
   status: WebhookHogFunctionStatusMap;
 }
+const WebhookHogFunction = /*@__PURE__*/ __L.at(__c8, 4) as any as S.Schema<WebhookHogFunction>;
+
 /** Resource name to external schema id, as configured on the webhook function. */
 export type WebhookInfoResponseSchemaMappingMap = { [key: string]: string | undefined };
+const WebhookInfoResponseSchemaMappingMap = /*@__PURE__*/ __L.at(
+  __c8,
+  5,
+) as any as S.Schema<WebhookInfoResponseSchemaMappingMap>;
+
 /** * `hog` - hog * `liquid` - liquid */
 export type HogFunctionTemplatingEnum = "hog" | "liquid";
+const HogFunctionTemplatingEnum = S.String;
+
 export type InputsItemBytecodeList = Array<unknown>;
+const InputsItemBytecodeList = /*@__PURE__*/ __L.at(
+  __c8,
+  6,
+) as any as S.Schema<InputsItemBytecodeList>;
+
 export interface InputsItem {
   value?: unknown;
   templating?: HogFunctionTemplatingEnum;
@@ -2243,10 +2699,20 @@ export interface InputsItem {
   order?: number;
   transpiled?: unknown;
 }
+const InputsItem = /*@__PURE__*/ __L.at(__c8, 7) as any as S.Schema<InputsItem>;
+
 /** Current webhook function inputs keyed by the source's declared webhook field names. */
 export type WebhookInfoResponseInputsMap = { [key: string]: InputsItem | undefined };
+const WebhookInfoResponseInputsMap = /*@__PURE__*/ __L.at(
+  __c9,
+  0,
+) as any as S.Schema<WebhookInfoResponseInputsMap>;
+
 /** Events the external webhook is subscribed to. */
 export type WebhookExternalStatusEnabledEventsList = Array<string>;
+const WebhookExternalStatusEnabledEventsList =
+  CreateExternalDataSourceRequestDestinationIdsList as any as S.Schema<WebhookExternalStatusEnabledEventsList>;
+
 export interface WebhookExternalStatus {
   /** Whether the webhook exists on the external service. */
   exists: boolean;
@@ -2265,10 +2731,21 @@ export interface WebhookExternalStatus {
   /** Read error the external service returned, if any. */
   error: string | null;
 }
+const WebhookExternalStatus = /*@__PURE__*/ __L.at(
+  __c9,
+  1,
+) as any as S.Schema<WebhookExternalStatus>;
+
 /** Desired provider events not yet on the webhook (manual setup, or created before a new table). */
 export type WebhookInfoResponseMissingEventsList = Array<string>;
+const WebhookInfoResponseMissingEventsList =
+  CreateExternalDataSourceRequestDestinationIdsList as any as S.Schema<WebhookInfoResponseMissingEventsList>;
+
 /** Required webhook field names with no value yet. Deliveries are dropped while any is missing. */
 export type WebhookInfoResponseMissingInputsList = Array<string>;
+const WebhookInfoResponseMissingInputsList =
+  CreateExternalDataSourceRequestDestinationIdsList as any as S.Schema<WebhookInfoResponseMissingInputsList>;
+
 export interface WebhookInfoResponse {
   /** Whether the source type supports webhooks at all. When false, the other fields are absent. */
   supports_webhooks: boolean;
@@ -2291,12 +2768,19 @@ export interface WebhookInfoResponse {
   /** Required webhook field names with no value yet. Deliveries are dropped while any is missing. */
   missing_inputs?: WebhookInfoResponseMissingInputsList;
 }
+const WebhookInfoResponse = /*@__PURE__*/ __L.at(__c9, 2) as any as S.Schema<WebhookInfoResponse>;
+
 export interface GetExternalDataSourcesWizardRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** Comma-separated source type(s) to return config for, e.g. 'Postgres' or 'Postgres,Stripe'. Strongly recommended: the unfiltered response describes every supported source and is very large. Omit only to enumerate the available types. */
   source_type?: string;
 }
+const GetExternalDataSourcesWizardRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  3,
+) as any as S.Schema<GetExternalDataSourcesWizardRequest>;
+
 export type DataWarehouseSourceCategory =
   | "Databases"
   | "File storage"
@@ -2313,6 +2797,8 @@ export type DataWarehouseSourceCategory =
   | "HR & recruiting"
   | "Communication"
   | "E-commerce";
+const DataWarehouseSourceCategory = S.String;
+
 export type SourceFieldInputConfigTypeEnum =
   | "text"
   | "email"
@@ -2447,14 +2933,33 @@ export type SourceConfigResponseFieldsItem =
   | SourceFieldCredentialAccountSelectConfig
   | SourceFieldFileUploadConfig
   | SourceFieldSSHTunnelConfig;
+const SourceConfigResponseFieldsItem = S.Unknown as any as S.Schema<SourceConfigResponseFieldsItem>;
+
 export type SourceConfigResponseFieldsList = Array<SourceConfigResponseFieldsItem>;
+const SourceConfigResponseFieldsList = /*@__PURE__*/ __L.at(
+  __c9,
+  4,
+) as any as S.Schema<SourceConfigResponseFieldsList>;
+
 export type SourceConfigResponseKeywordsList = Array<string>;
+const SourceConfigResponseKeywordsList =
+  CreateExternalDataSourceRequestDestinationIdsList as any as S.Schema<SourceConfigResponseKeywordsList>;
+
 export type ReleaseStatus = "alpha" | "beta" | "ga";
+const ReleaseStatus = S.String;
+
 export interface SuggestedTable {
   table: string;
   tooltip?: string | null;
 }
+const SuggestedTable = /*@__PURE__*/ __L.at(__c9, 5) as any as S.Schema<SuggestedTable>;
+
 export type SourceConfigResponseSuggestedTablesList = Array<SuggestedTable>;
+const SourceConfigResponseSuggestedTablesList = /*@__PURE__*/ __L.at(
+  __c9,
+  6,
+) as any as S.Schema<SourceConfigResponseSuggestedTablesList>;
+
 export type SourceConfigResponseWebhookFieldsItem =
   | SourceFieldInputConfig
   | SourceFieldSwitchGroupConfig
@@ -2464,18 +2969,48 @@ export type SourceConfigResponseWebhookFieldsItem =
   | SourceFieldCredentialAccountSelectConfig
   | SourceFieldFileUploadConfig
   | SourceFieldSSHTunnelConfig;
+const SourceConfigResponseWebhookFieldsItem =
+  S.Unknown as any as S.Schema<SourceConfigResponseWebhookFieldsItem>;
+
 export type SourceConfigResponseWebhookFieldsList = Array<SourceConfigResponseWebhookFieldsItem>;
+const SourceConfigResponseWebhookFieldsList = /*@__PURE__*/ __L.at(
+  __c9,
+  7,
+) as any as S.Schema<SourceConfigResponseWebhookFieldsList>;
+
 /** Vendor API version labels this source supports. */
 export type SourceConfigResponseVersionsList = Array<string>;
+const SourceConfigResponseVersionsList =
+  CreateExternalDataSourceRequestDestinationIdsList as any as S.Schema<SourceConfigResponseVersionsList>;
+
 export interface SourceVersionDeprecation {
   version: string;
   /** ISO date the vendor stops serving this version, or null when no date is announced. */
   sunsetAt?: string | null;
 }
+const SourceVersionDeprecation = /*@__PURE__*/ __L.at(
+  __c10,
+  0,
+) as any as S.Schema<SourceVersionDeprecation>;
+
 export type SourceConfigResponseDeprecatedVersionsList = Array<SourceVersionDeprecation>;
+const SourceConfigResponseDeprecatedVersionsList = /*@__PURE__*/ __L.at(
+  __c10,
+  1,
+) as any as S.Schema<SourceConfigResponseDeprecatedVersionsList>;
+
 export type SourceDocumentedTableSyncMethodsList = Array<string>;
+const SourceDocumentedTableSyncMethodsList =
+  CreateExternalDataSourceRequestDestinationIdsList as any as S.Schema<SourceDocumentedTableSyncMethodsList>;
+
 export type SourceDocumentedTableIncrementalFieldsList = Array<string>;
+const SourceDocumentedTableIncrementalFieldsList =
+  CreateExternalDataSourceRequestDestinationIdsList as any as S.Schema<SourceDocumentedTableIncrementalFieldsList>;
+
 export type SourceDocumentedTablePrimaryKeysList = Array<string>;
+const SourceDocumentedTablePrimaryKeysList =
+  CreateExternalDataSourceRequestDestinationIdsList as any as S.Schema<SourceDocumentedTablePrimaryKeysList>;
+
 export interface SourceDocumentedTable {
   name: string;
   label: string;
@@ -2484,7 +3019,17 @@ export interface SourceDocumentedTable {
   incremental_fields: SourceDocumentedTableIncrementalFieldsList;
   primary_keys: SourceDocumentedTablePrimaryKeysList;
 }
+const SourceDocumentedTable = /*@__PURE__*/ __L.at(
+  __c10,
+  2,
+) as any as S.Schema<SourceDocumentedTable>;
+
 export type SourceConfigResponseTablesList = Array<SourceDocumentedTable>;
+const SourceConfigResponseTablesList = /*@__PURE__*/ __L.at(
+  __c10,
+  3,
+) as any as S.Schema<SourceConfigResponseTablesList>;
+
 /** A `SourceConfig` plus the runtime metadata the two catalog endpoints add per source. */
 export interface SourceConfigResponse {
   caption?: string | null;
@@ -2524,9 +3069,24 @@ export interface SourceConfigResponse {
   /** Credential-free documented table catalog, empty for SQL and file sources with user-defined schemas. The public endpoint sets it; the wizard omits it to keep its payload small. */
   tables?: SourceConfigResponseTablesList | null;
 }
+const SourceConfigResponse = /*@__PURE__*/ __L.at(
+  __c10,
+  4,
+) as any as S.Schema<SourceConfigResponse>;
+
 /** Map of source type identifier to its config, as both catalog endpoints return it. */
 export type SourceConfigMapResponse = { [key: string]: SourceConfigResponse | undefined };
+const SourceConfigMapResponse = /*@__PURE__*/ __L.at(
+  __c10,
+  5,
+) as any as S.Schema<SourceConfigMapResponse>;
+
 export type GetExternalDataSourcesWizardResponse = SourceConfigMapResponse;
+const GetExternalDataSourcesWizardResponse = /*@__PURE__*/ __L.at(
+  __c10,
+  6,
+) as any as S.Schema<GetExternalDataSourcesWizardResponse>;
+
 export interface ListExternalDataSourcesRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -2537,18 +3097,38 @@ export interface ListExternalDataSourcesRequest {
   /** A search term. */
   search?: string;
 }
+const ListExternalDataSourcesRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  7,
+) as any as S.Schema<ListExternalDataSourcesRequest>;
+
 export type PaginatedExternalDataSourceSerializersListOutputResultsList =
   Array<ExternalDataSourceSerializersOutput>;
+const PaginatedExternalDataSourceSerializersListOutputResultsList = /*@__PURE__*/ __L.at(
+  __c11,
+  0,
+) as any as S.Schema<PaginatedExternalDataSourceSerializersListOutputResultsList>;
+
 export interface PaginatedExternalDataSourceSerializersListOutput {
   count?: number;
   next?: string | null;
   previous?: string | null;
   results?: PaginatedExternalDataSourceSerializersListOutputResultsList;
 }
+const PaginatedExternalDataSourceSerializersListOutput = /*@__PURE__*/ __L.at(
+  __c11,
+  1,
+) as any as S.Schema<PaginatedExternalDataSourceSerializersListOutput>;
+
 export interface ListExternalDataSourcesConnectionsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
+const ListExternalDataSourcesConnectionsRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  2,
+) as any as S.Schema<ListExternalDataSourcesConnectionsRequest>;
+
 export interface ExternalDataSourceConnectionOption {
   id?: string;
   /** Default database schema used to group tables in the SQL editor. */
@@ -2567,14 +3147,34 @@ export interface ExternalDataSourceConnectionOption {
   /** User-set description of the source, shown as its display name in the connection picker when set. */
   description?: string | null;
 }
+const ExternalDataSourceConnectionOption = /*@__PURE__*/ __L.at(
+  __c11,
+  3,
+) as any as S.Schema<ExternalDataSourceConnectionOption>;
+
 export type ListExternalDataSourcesConnectionsResponseBodyList =
   Array<ExternalDataSourceConnectionOption>;
+const ListExternalDataSourcesConnectionsResponseBodyList = /*@__PURE__*/ __L.at(
+  __c11,
+  4,
+) as any as S.Schema<ListExternalDataSourcesConnectionsResponseBodyList>;
+
 export type ListExternalDataSourcesConnectionsResponse =
   ListExternalDataSourcesConnectionsResponseBodyList;
+const ListExternalDataSourcesConnectionsResponse = /*@__PURE__*/ __L.at(
+  __c11,
+  5,
+) as any as S.Schema<ListExternalDataSourcesConnectionsResponse>;
+
 export interface ListExternalDataSourcesDirectConnectionOptionsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
+const ListExternalDataSourcesDirectConnectionOptionsRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  6,
+) as any as S.Schema<ListExternalDataSourcesDirectConnectionOptionsRequest>;
+
 /** A source type that can be added as a direct (live-query) connection, with display metadata. */
 export interface DirectConnectionSourceOption {
   /** The source type to start a direct-connection setup for (e.g. 'Postgres', 'ClickHouse'). * `Ashby` - Ashby * `Supabase` - Supabase * `CustomerIO` - CustomerIO * `Github` - Github * `Stripe` - Stripe * `Hubspot` - Hubspot * `Postgres` - Postgres * `Zendesk` - Zendesk * `Snowflake` - Snowflake * `Salesforce` - Salesforce * `MySQL` - MySQL * `MongoDB` - MongoDB * `MSSQL` - MSSQL * `Vitally` - Vitally * `BigQuery` - BigQuery * `Chargebee` - Chargebee * `Clerk` - Clerk * `GoogleAds` - GoogleAds * `GoogleSearchConsole` - GoogleSearchConsole * `TemporalIO` - TemporalIO * `DoIt` - DoIt * `GoogleSheets` - GoogleSheets * `MetaAds` - MetaAds * `Klaviyo` - Klaviyo * `Mailchimp` - Mailchimp * `Braze` - Braze * `Mailjet` - Mailjet * `Redshift` - Redshift * `Polar` - Polar * `RevenueCat` - RevenueCat * `LinkedinAds` - LinkedinAds * `RedditAds` - RedditAds * `TikTokAds` - TikTokAds * `BingAds` - BingAds * `Shopify` - Shopify * `Attio` - Attio * `SnapchatAds` - SnapchatAds * `Linear` - Linear * `Intercom` - Intercom * `Amplitude` - Amplitude * `Mixpanel` - Mixpanel * `Jira` - Jira * `ActiveCampaign` - ActiveCampaign * `Marketo` - Marketo * `Adjust` - Adjust * `AppsFlyer` - AppsFlyer * `Freshdesk` - Freshdesk * `GoogleAnalytics` - GoogleAnalytics * `Pipedrive` - Pipedrive * `SendGrid` - SendGrid * `Slack` - Slack * `PagerDuty` - PagerDuty * `Asana` - Asana * `Notion` - Notion * `Airtable` - Airtable * `Greenhouse` - Greenhouse * `BambooHR` - BambooHR * `Lever` - Lever * `GitLab` - GitLab * `Datadog` - Datadog * `Sentry` - Sentry * `Pendo` - Pendo * `FullStory` - FullStory * `AmazonAds` - AmazonAds * `PinterestAds` - PinterestAds * `AppleSearchAds` - AppleSearchAds * `QuickBooks` - QuickBooks * `Xero` - Xero * `NetSuite` - NetSuite * `WooCommerce` - WooCommerce * `BigCommerce` - BigCommerce * `PayPal` - PayPal * `Square` - Square * `Zoom` - Zoom * `Trello` - Trello * `Monday` - Monday * `ClickUp` - ClickUp * `Confluence` - Confluence * `Recurly` - Recurly * `SalesLoft` - SalesLoft * `Outreach` - Outreach * `Gong` - Gong * `Calendly` - Calendly * `Typeform` - Typeform * `Iterable` - Iterable * `ZohoCRM` - ZohoCRM * `Close` - Close * `Oracle` - Oracle * `DynamoDB` - DynamoDB * `Elasticsearch` - Elasticsearch * `Kafka` - Kafka * `LaunchDarkly` - LaunchDarkly * `Braintree` - Braintree * `Recharge` - Recharge * `HelpScout` - HelpScout * `Gorgias` - Gorgias * `Instagram` - Instagram * `YouTubeAnalytics` - YouTubeAnalytics * `FacebookPages` - FacebookPages * `TwitterAds` - TwitterAds * `Workday` - Workday * `ServiceNow` - ServiceNow * `Pardot` - Pardot * `Copper` - Copper * `Front` - Front * `ChartMogul` - ChartMogul * `Zuora` - Zuora * `Paddle` - Paddle * `CircleCI` - CircleCI * `CockroachDB` - CockroachDB * `Firebase` - Firebase * `AzureBlob` - AzureBlob * `GoogleDrive` - GoogleDrive * `OneDrive` - OneDrive * `SharePoint` - SharePoint * `Box` - Box * `SFTP` - SFTP * `MicrosoftTeams` - MicrosoftTeams * `Aircall` - Aircall * `Webflow` - Webflow * `Okta` - Okta * `Auth0` - Auth0 * `Productboard` - Productboard * `Smartsheet` - Smartsheet * `Wrike` - Wrike * `Plaid` - Plaid * `SurveyMonkey` - SurveyMonkey * `Eventbrite` - Eventbrite * `RingCentral` - RingCentral * `Twilio` - Twilio * `Freshsales` - Freshsales * `Shortcut` - Shortcut * `ConvertKit` - ConvertKit * `Drip` - Drip * `CampaignMonitor` - CampaignMonitor * `MailerLite` - MailerLite * `Omnisend` - Omnisend * `Brevo` - Brevo * `Postmark` - Postmark * `Granola` - Granola * `BuildBetter` - BuildBetter * `Convex` - Convex * `ClickHouse` - ClickHouse * `Plain` - Plain * `Resend` - Resend * `PgAnalyze` - PgAnalyze * `WorkOS` - WorkOS * `AmazonS3` - AmazonS3 * `GoogleCloudStorage` - GoogleCloudStorage * `Databricks` - Databricks * `Dynamics365` - Dynamics365 * `SalesforceMarketingCloud` - SalesforceMarketingCloud * `Db2` - Db2 * `Heap` - Heap * `AdobeAnalytics` - AdobeAnalytics * `Matomo` - Matomo * `Optimizely` - Optimizely * `Adyen` - Adyen * `GoCardless` - GoCardless * `Mollie` - Mollie * `CheckoutCom` - CheckoutCom * `Branch` - Branch * `Criteo` - Criteo * `Outbrain` - Outbrain * `Taboola` - Taboola * `AdRoll` - AdRoll * `DisplayVideo360` - DisplayVideo360 * `GoogleAdManager` - GoogleAdManager * `CampaignManager360` - CampaignManager360 * `SearchAds360` - SearchAds360 * `AdobeCommerce` - AdobeCommerce * `AmazonSellingPartner` - AmazonSellingPartner * `Ebay` - Ebay * `Commercetools` - Commercetools * `LightspeedRetail` - LightspeedRetail * `Shipmail` - Shipmail * `ShipStation` - ShipStation * `ConstantContact` - ConstantContact * `Mailgun` - Mailgun * `Eloqua` - Eloqua * `Sailthru` - Sailthru * `Ortto` - Ortto * `Attentive` - Attentive * `Kustomer` - Kustomer * `Dixa` - Dixa * `Gladly` - Gladly * `Qualtrics` - Qualtrics * `AzureDevOps` - AzureDevOps * `RoktAds` - RoktAds * `Rollbar` - Rollbar * `Opsgenie` - Opsgenie * `IncidentIo` - IncidentIo * `Pingdom` - Pingdom * `Cloudflare` - Cloudflare * `CosmosDB` - CosmosDB * `PlanetScaleMySQL` - PlanetScaleMySQL * `PlanetScalePostgres` - PlanetScalePostgres * `SapHana` - SapHana * `Rippling` - Rippling * `HiBob` - HiBob * `Personio` - Personio * `Deel` - Deel * `AdpWorkforceNow` - AdpWorkforceNow * `Paylocity` - Paylocity * `Gusto` - Gusto * `CultureAmp` - CultureAmp * `Lattice` - Lattice * `SageIntacct` - SageIntacct * `FreshBooks` - FreshBooks * `Expensify` - Expensify * `Ramp` - Ramp * `Brex` - Brex * `Coupa` - Coupa * `SapConcur` - SapConcur * `Apollo` - Apollo * `Crunchbase` - Crunchbase * `ZoomInfo` - ZoomInfo * `Clari` - Clari * `Chorus` - Chorus * `Coda` - Coda * `Guru` - Guru * `Dropbox` - Dropbox * `Docusign` - Docusign * `PandaDoc` - PandaDoc * `SapErp` - SapErp * `SapSuccessFactors` - SapSuccessFactors * `OracleEbs` - OracleEbs * `OracleFusion` - OracleFusion * `AmazonSNS` - AmazonSNS * `AmazonEventBridge` - AmazonEventBridge * `AmazonSQS` - AmazonSQS * `AmazonKinesis` - AmazonKinesis * `AmazonCloudWatch` - AmazonCloudWatch * `OpenAIAds` - OpenAIAds * `OneHundredMs` - OneHundredMs * `SevenShifts` - SevenShifts * `AcuityScheduling` - AcuityScheduling * `AgileCRM` - AgileCRM * `Aha` - Aha * `Airbyte` - Airbyte * `Akeneo` - Akeneo * `Algolia` - Algolia * `AlpacaBrokerAPI` - AlpacaBrokerAPI * `ApifyDataset` - ApifyDataset * `Appcues` - Appcues * `Appfigures` - Appfigures * `Appfollow` - Appfollow * `Apptivo` - Apptivo * `AssemblyAI` - AssemblyAI * `Awin` - Awin * `AwsCloudTrail` - AwsCloudTrail * `AzureTableStorage` - AzureTableStorage * `Babelforce` - Babelforce * `Basecamp` - Basecamp * `Beamer` - Beamer * `BigMailer` - BigMailer * `Bluetally` - Bluetally * `BoldSign` - BoldSign * `BreezyHR` - BreezyHR * `Bugsnag` - Bugsnag * `Buildkite` - Buildkite * `Bunny` - Bunny * `Buzzsprout` - Buzzsprout * `CalCom` - CalCom * `CallRail` - CallRail * `Campayn` - Campayn * `Canny` - Canny * `CapsuleCRM` - CapsuleCRM * `CaptainData` - CaptainData * `CartCom` - CartCom * `CastorEDC` - CastorEDC * `Chameleon` - Chameleon * `Chargedesk` - Chargedesk * `Chargify` - Chargify * `Chift` - Chift * `Churnkey` - Churnkey * `Cin7` - Cin7 * `CiscoMeraki` - CiscoMeraki * `Clazar` - Clazar * `Clockify` - Clockify * `Clockodo` - Clockodo * `Cloudbeds` - Cloudbeds * `Coassemble` - Coassemble * `Codefresh` - Codefresh * `Concord` - Concord * `ConfigCat` - ConfigCat * `Couchbase` - Couchbase * `Curve` - Curve * `Customerly` - Customerly * `Datascope` - Datascope * `Dbt` - Dbt * `Demodesk` - Demodesk * `Deputy` - Deputy * `DevinAI` - DevinAI * `Docuseal` - Docuseal * `Dolibarr` - Dolibarr * `Dremio` - Dremio * `DropboxSign` - DropboxSign * `Dwolla` - Dwolla * `EConomic` - EConomic * `Easypost` - Easypost * `Easypromos` - Easypromos * `Elasticemail` - Elasticemail * `EmailOctopus` - EmailOctopus * `EmploymentHero` - EmploymentHero * `Encharge` - Encharge * `Eventee` - Eventee * `Eventzilla` - Eventzilla * `Everhour` - Everhour * `EZOfficeInventory` - EZOfficeInventory * `Factorial` - Factorial * `Fastbill` - Fastbill * `Fastly` - Fastly * `Fauna` - Fauna * `Feishu` - Feishu * `Fillout` - Fillout * `Finage` - Finage * `Firebolt` - Firebolt * `FireHydrant` - FireHydrant * `Fleetio` - Fleetio * `Flexmail` - Flexmail * `Flexport` - Flexport * `FloatApp` - FloatApp * `Flowlu` - Flowlu * `Formbricks` - Formbricks * `Framer` - Framer * `FreeAgent` - FreeAgent * `Freightview` - Freightview * `Freshcaller` - Freshcaller * `Freshchat` - Freshchat * `Freshservice` - Freshservice * `Fulcrum` - Fulcrum * `GainsightCs` - GainsightCs * `GainsightPx` - GainsightPx * `GitBook` - GitBook * `Glassfrog` - Glassfrog * `Goldcast` - Goldcast * `GoLogin` - GoLogin * `Grafana` - Grafana * `GreytHr` - GreytHr * `Gridly` - Gridly * `Harness` - Harness * `Height` - Height * `Hellobaton` - Hellobaton * `HighLevel` - HighLevel * `HoorayHR` - HoorayHR * `Hubplanner` - Hubplanner * `Humanitix` - Humanitix * `Huntr` - Huntr * `Inflowinventory` - Inflowinventory * `InforNexus` - InforNexus * `Insightful` - Insightful * `Insightly` - Insightly * `Instantly` - Instantly * `Instatus` - Instatus * `Intruder` - Intruder * `Invoiced` - Invoiced * `Invoiceninja` - Invoiceninja * `JamfPro` - JamfPro * `JobNimbus` - JobNimbus * `Jotform` - Jotform * `JudgeMeReviews` - JudgeMeReviews * `JustCall` - JustCall * `JustSift` - JustSift * `K6Cloud` - K6Cloud * `Katana` - Katana * `Keka` - Keka * `Kisi` - Kisi * `Kissmetrics` - Kissmetrics * `Klarna` - Klarna * `Klaus` - Klaus * `Lago` - Lago * `Leadfeeder` - Leadfeeder * `Lemlist` - Lemlist * `LessAnnoyingCRM` - LessAnnoyingCRM * `LinkedinPages` - LinkedinPages * `Linkrunner` - Linkrunner * `Linnworks` - Linnworks * `Lob` - Lob * `Lokalise` - Lokalise * `Looker` - Looker * `Luma` - Luma * `MailerSend` - MailerSend * `Mailosaur` - Mailosaur * `Mailtrap` - Mailtrap * `Mantle` - Mantle * `Mention` - Mention * `MercadoAds` - MercadoAds * `Merge` - Merge * `Metabase` - Metabase * `Metricool` - Metricool * `MicrosoftDataverse` - MicrosoftDataverse * `MicrosoftEntraId` - MicrosoftEntraId * `MicrosoftLists` - MicrosoftLists * `Miro` - Miro * `Missive` - Missive * `MixMax` - MixMax * `Mode` - Mode * `Mux` - Mux * `MyHours` - MyHours * `N8n` - N8n * `Navan` - Navan * `NebiusAI` - NebiusAI * `Nexiopay` - Nexiopay * `NinjaOneRMM` - NinjaOneRMM * `NoCRM` - NoCRM * `NorthpassLMS` - NorthpassLMS * `Nutshell` - Nutshell * `Nylas` - Nylas * `Oncehub` - Oncehub * `Onepagecrm` - Onepagecrm * `OneSignal` - OneSignal * `Onfleet` - Onfleet * `OpinionStage` - OpinionStage * `OPUSWatch` - OPUSWatch * `Orb` - Orb * `Orbit` - Orbit * `Oura` - Oura * `Oveit` - Oveit * `PabblySubscriptionsBilling` - PabblySubscriptionsBilling * `Paperform` - Paperform * `Papersign` - Papersign * `Partnerize` - Partnerize * `PartnerStack` - PartnerStack * `PayFit` - PayFit * `Paystack` - Paystack * `Pennylane` - Pennylane * `Perk` - Perk * `PersistIq` - PersistIq * `Persona` - Persona * `Phyllo` - Phyllo * `Picqer` - Picqer * `Pipeliner` - Pipeliner * `PivotalTracker` - PivotalTracker * `Piwik` - Piwik * `Planhat` - Planhat * `Plausible` - Plausible * `Poplar` - Poplar * `PrestaShop` - PrestaShop * `Pretix` - Pretix * `Primetric` - Primetric * `Printavo` - Printavo * `Printify` - Printify * `Productive` - Productive * `Pylon` - Pylon * `Qonto` - Qonto * `Qualaroo` - Qualaroo * `Railz` - Railz * `RDStationMarketing` - RDStationMarketing * `Recruitee` - Recruitee * `Reddit` - Reddit * `ReferralHero` - ReferralHero * `RentCast` - RentCast * `Repairshopr` - Repairshopr * `ReplyIo` - ReplyIo * `RetailExpress` - RetailExpress * `Retently` - Retently * `RevolutMerchant` - RevolutMerchant * `RocketChat` - RocketChat * `Rocketlane` - Rocketlane * `Rootly` - Rootly * `Ruddr` - Ruddr * `SafetyCulture` - SafetyCulture * `SageHR` - SageHR * `Salesflare` - Salesflare * `SAPFieldglass` - SAPFieldglass * `SavvyCal` - SavvyCal * `Secoda` - Secoda * `Segment` - Segment * `Sendowl` - Sendowl * `SendPulse` - SendPulse * `Senseforce` - Senseforce * `Serpstat` - Serpstat * `Sharetribe` - Sharetribe * `Shippo` - Shippo * `ShopWired` - ShopWired * `Shortio` - Shortio * `Shutterstock` - Shutterstock * `SigmaComputing` - SigmaComputing * `SignNow` - SignNow * `SimpleCast` - SimpleCast * `Simplesat` - Simplesat * `Smaily` - Smaily * `SmartEngage` - SmartEngage * `Smartreach` - Smartreach * `Smartwaiver` - Smartwaiver * `SolarwindsServiceDesk` - SolarwindsServiceDesk * `SonarCloud` - SonarCloud * `SparkPost` - SparkPost * `SplitIo` - SplitIo * `SpotifyAds` - SpotifyAds * `SpotlerCRM` - SpotlerCRM * `Squarespace` - Squarespace * `Statsig` - Statsig * `Statuspage` - Statuspage * `Stigg` - Stigg * `Strava` - Strava * `SurveySparrow` - SurveySparrow * `Survicate` - Survicate * `Svix` - Svix * `Systeme` - Systeme * `Tavus` - Tavus * `Teamtailor` - Teamtailor * `Teamwork` - Teamwork * `Tempo` - Tempo * `Testrail` - Testrail * `Thinkific` - Thinkific * `ThinkificCourses` - ThinkificCourses * `ThriveLearning` - ThriveLearning * `Ticketmaster` - Ticketmaster * `TicketTailor` - TicketTailor * `TickTick` - TickTick * `Timely` - Timely * `Tinyemail` - Tinyemail * `Todoist` - Todoist * `Toggl` - Toggl * `TrackPMS` - TrackPMS * `Tremendous` - Tremendous * `TrustPilot` - TrustPilot * `Twitter` - Twitter * `TyntecSMS` - TyntecSMS * `Unleash` - Unleash * `UpPromote` - UpPromote * `Uptick` - Uptick * `Uservoice` - Uservoice * `Vantage` - Vantage * `Veeqo` - Veeqo * `Vercel` - Vercel * `VismaEconomic` - VismaEconomic * `VWO` - VWO * `Waiteraid` - Waiteraid * `Wasabi` - Wasabi * `WhenIWork` - WhenIWork * `Wordpress` - Wordpress * `Workable` - Workable * `Workflowmax` - Workflowmax * `Workramp` - Workramp * `Wufoo` - Wufoo * `Xsolla` - Xsolla * `YandexMetrica` - YandexMetrica * `Yotpo` - Yotpo * `Ynab` - Ynab * `Younium` - Younium * `YouSign` - YouSign * `YoutubeData` - YoutubeData * `ZapierSupportedStorage` - ZapierSupportedStorage * `ZapSign` - ZapSign * `ZendeskSell` - ZendeskSell * `ZendeskSunshine` - ZendeskSunshine * `Zenefits` - Zenefits * `Zenloop` - Zenloop * `ZohoAnalytics` - ZohoAnalytics * `ZohoBigin` - ZohoBigin * `ZohoBilling` - ZohoBilling * `ZohoBooks` - ZohoBooks * `ZohoCampaign` - ZohoCampaign * `ZohoDesk` - ZohoDesk * `ZohoExpense` - ZohoExpense * `ZohoInventory` - ZohoInventory * `ZohoInvoice` - ZohoInvoice * `ZonkaFeedback` - ZonkaFeedback * `AlphaVantage` - AlphaVantage * `Aviationstack` - Aviationstack * `Bitly` - Bitly * `Blogger` - Blogger * `Breezometer` - Breezometer * `CareQualityCommission` - CareQualityCommission * `Cimis` - Cimis * `CoinApi` - CoinApi * `CoinGecko` - CoinGecko * `CoinMarketCap` - CoinMarketCap * `DingConnect` - DingConnect * `Dockerhub` - Dockerhub * `ExchangeRatesApi` - ExchangeRatesApi * `FinancialModelling` - FinancialModelling * `Finnhub` - Finnhub * `Finnworlds` - Finnworlds * `Giphy` - Giphy * `Gmail` - Gmail * `GNews` - GNews * `GoogleCalendar` - GoogleCalendar * `GoogleClassroom` - GoogleClassroom * `GoogleDirectory` - GoogleDirectory * `GoogleForms` - GoogleForms * `GooglePageSpeedInsights` - GooglePageSpeedInsights * `GoogleTasks` - GoogleTasks * `GoogleWebfonts` - GoogleWebfonts * `GoogleWorkspaceAdminReports` - GoogleWorkspaceAdminReports * `HuggingFace` - HuggingFace * `IlluminaBasespace` - IlluminaBasespace * `Imagga` - Imagga * `Interzoid` - Interzoid * `IP2Whois` - IP2Whois * `KYVE` - KYVE * `Marketstack` - Marketstack * `Mendeley` - Mendeley * `Nasa` - Nasa * `NewYorkTimes` - NewYorkTimes * `NewsApi` - NewsApi * `NewsData` - NewsData * `OpenDataDc` - OpenDataDc * `OpenExchangeRates` - OpenExchangeRates * `OpenAQ` - OpenAQ * `OpenFDA` - OpenFDA * `OpenWeather` - OpenWeather * `Outlook` - Outlook * `Perigon` - Perigon * `Pexels` - Pexels * `Pocket` - Pocket * `Polygon` - Polygon * `PyPI` - PyPI * `Recreation` - Recreation * `RKICovid` - RKICovid * `Rss` - Rss * `SimFin` - SimFin * `StockData` - StockData * `Guardian` - Guardian * `TMDb` - TMDb * `TVMaze` - TVMaze * `TwelveData` - TwelveData * `Ubidots` - Ubidots * `USCensus` - USCensus * `Watchmode` - Watchmode * `WikipediaPageviews` - WikipediaPageviews * `YahooFinance` - YahooFinance * `Clarifai` - Clarifai * `Adapty` - Adapty * `Braintrust` - Braintrust * `StreamElements` - StreamElements * `Streamlabs` - Streamlabs * `Datorama` - Datorama * `Ahrefs` - Ahrefs * `Lightfield` - Lightfield * `Appstack` - Appstack * `Razorpay` - Razorpay * `Neon` - Neon * `NewRelic` - NewRelic * `Custom` - Custom * `Tile38` - Tile38 * `Chatwoot` - Chatwoot * `Sanity` - Sanity * `Metronome` - Metronome * `Jobber` - Jobber * `Knock` - Knock * `Leexi` - Leexi * `RB2B` - RB2B * `Superwall` - Superwall * `Liana` - Liana * `TawkTo` - TawkTo * `Hightouch` - Hightouch * `LemonSqueezy` - LemonSqueezy * `Ikas` - Ikas * `Talkwalker` - Talkwalker * `NextdoorAds` - NextdoorAds * `AppLovin` - AppLovin * `Baserow` - Baserow * `Plunk` - Plunk * `Dub` - Dub * `AirOps` - AirOps * `Podium` - Podium * `Loops` - Loops * `Redis` - Redis * `Mercury` - Mercury * `Gojiberry` - Gojiberry * `Teachable` - Teachable * `PeecAI` - PeecAI * `Healthchecks` - Healthchecks * `Impact` - Impact * `AikidoSecurity` - AikidoSecurity * `Alguna` - Alguna * `Anthropic` - Anthropic * `Appwrite` - Appwrite * `BlandAI` - BlandAI * `BrowseAI` - BrowseAI * `BrowserUse` - BrowserUse * `ChartHop` - ChartHop * `Cody` - Cody * `Cursor` - Cursor * `Decagon` - Decagon * `Deepgram` - Deepgram * `ElevenLabs` - ElevenLabs * `Harvey` - Harvey * `Hyperspell` - Hyperspell * `Langfuse` - Langfuse * `LingoDev` - LingoDev * `M3ter` - M3ter * `Maxio` - Maxio * `Metorial` - Metorial * `OpenRouter` - OpenRouter * `TogetherAI` - TogetherAI * `Vapi` - Vapi * `Vespa` - Vespa * `Writesonic` - Writesonic * `Aiven` - Aiven * `Aviator` - Aviator * `Backblaze` - Backblaze * `Baseten` - Baseten * `Browserbase` - Browserbase * `Cohere` - Cohere * `DenoDeploy` - DenoDeploy * `DigitalOcean` - DigitalOcean * `E2B` - E2B * `Fintoc` - Fintoc * `Firecrawl` - Firecrawl * `FireworksAI` - FireworksAI * `FlyIo` - FlyIo * `Groq` - Groq * `GrowthBook` - GrowthBook * `Gumloop` - Gumloop * `Hatchet` - Hatchet * `Helicone` - Helicone * `Heroku` - Heroku * `Hetzner` - Hetzner * `HeyGen` - HeyGen * `Infisical` - Infisical * `Inngest` - Inngest * `KapaAI` - KapaAI * `Kernel` - Kernel * `Koyeb` - Koyeb * `LambdaLabs` - LambdaLabs * `LangSmith` - LangSmith * `Linode` - Linode * `LlamaCloud` - LlamaCloud * `Mem0` - Mem0 * `Metriport` - Metriport * `Mintlify` - Mintlify * `MistralAI` - MistralAI * `Mono` - Mono * `Netlify` - Netlify * `Northflank` - Northflank * `OpenAI` - OpenAI * `Pinecone` - Pinecone * `PlatformSh` - PlatformSh * `PromptingCompany` - PromptingCompany * `Qdrant` - Qdrant * `Render` - Render * `Replicate` - Replicate * `RetellAI` - RetellAI * `Roark` - Roark * `RunPod` - RunPod * `ScaleAI` - ScaleAI * `Scaleway` - Scaleway * `SigNoz` - SigNoz * `Sim` - Sim * `Skyvern` - Skyvern * `Slash` - Slash * `Synthesia` - Synthesia * `Telli` - Telli * `TerraApi` - TerraApi * `TriggerDev` - TriggerDev * `Turso` - Turso * `Singular` - Singular * `Swonkie` - Swonkie * `TwelveLabs` - TwelveLabs * `Twenty` - Twenty * `Unstructured` - Unstructured * `Upstash` - Upstash * `Vellum` - Vellum * `Vultr` - Vultr * `Windmill` - Windmill * `Zep` - Zep * `Hex` - Hex * `Sumsub` - Sumsub * `GoogleChat` - GoogleChat * `Kickscale` - Kickscale * `Zellify` - Zellify * `RudderStack` - RudderStack * `DodoPayments` - DodoPayments * `Salestrics` - Salestrics * `Doppler` - Doppler * `Usersnap` - Usersnap * `Asknicely` - Asknicely * `Featurebase` - Featurebase * `Frill` - Frill * `Bettermode` - Bettermode * `Dynatrace` - Dynatrace * `Honeycomb` - Honeycomb * `SumoLogic` - SumoLogic * `LogzIO` - LogzIO * `Coralogix` - Coralogix * `BetterStack` - BetterStack * `Raygun` - Raygun * `Honeybadger` - Honeybadger * `Airbrake` - Airbrake * `Appsignal` - Appsignal * `Appdynamics` - Appdynamics * `Instana` - Instana * `SplunkObservabilityCloud` - SplunkObservabilityCloud * `Uptimerobot` - Uptimerobot * `Statuscake` - Statuscake * `Tailscale` - Tailscale * `Flagsmith` - Flagsmith * `Xmatters` - Xmatters * `Squadcast` - Squadcast * `Zenduty` - Zenduty * `Cronitor` - Cronitor * `Jenkins` - Jenkins * `Bitbucket` - Bitbucket * `Gitea` - Gitea * `Teamcity` - Teamcity * `TravisCI` - TravisCI * `Semaphore` - Semaphore * `CircleciInsights` - CircleciInsights * `OctopusDeploy` - OctopusDeploy * `Sourcegraph` - Sourcegraph * `Bitrise` - Bitrise * `Gerrit` - Gerrit * `TerraformCloud` - TerraformCloud * `PulumiCloud` - PulumiCloud * `Spacelift` - Spacelift * `Railway` - Railway * `Argocd` - Argocd * `PrefectCloud` - PrefectCloud * `DagsterCloud` - DagsterCloud * `Env0` - Env0 * `Kubecost` - Kubecost * `Snyk` - Snyk * `Semgrep` - Semgrep * `Veracode` - Veracode * `Checkmarx` - Checkmarx * `Gitguardian` - Gitguardian * `QualysVmdr` - QualysVmdr * `Rapid7Insightvm` - Rapid7Insightvm * `TenableVulnerabilityManagement` - TenableVulnerabilityManagement * `Sentinelone` - Sentinelone * `Lacework` - Lacework * `OrcaSecurity` - OrcaSecurity * `Drata` - Drata * `Secureframe` - Secureframe * `CiscoDuo` - CiscoDuo * `Jumpcloud` - Jumpcloud * `OnePassword` - OnePassword * `Stytch` - Stytch * `Sonarqube` - Sonarqube * `Codecov` - Codecov * `Coveralls` - Coveralls * `Codacy` - Codacy * `Deepsource` - Deepsource * `Linearb` - Linearb * `Jellyfish` - Jellyfish * `Swarmia` - Swarmia * `Packagist` - Packagist * `Nuget` - Nuget * `CratesIO` - CratesIO * `SonatypeNexus` - SonatypeNexus * `JfrogArtifactory` - JfrogArtifactory * `Snowplow` - Snowplow * `WeightsAndBiases` - WeightsAndBiases * `MonteCarlo` - MonteCarlo * `Metaplane` - Metaplane * `Datahub` - Datahub * `ClickhouseCloud` - ClickhouseCloud * `ConfluentCloud` - ConfluentCloud * `KongKonnect` - KongKonnect * `Kandji` - Kandji * `Automox` - Automox * `Autumn` - Autumn * `GetStream` - GetStream * `Octolens` - Octolens * `Kajabi` - Kajabi * `Shopware` - Shopware * `Dubsado` - Dubsado * `Campfire` - Campfire * `PromptWatch` - PromptWatch * `Crisp` - Crisp * `Kommo` - Kommo * `Axiom` - Axiom * `Plivo` - Plivo * `DataForSEO` - DataForSEO * `Sleekplan` - Sleekplan * `AbTasty` - AbTasty * `Ably` - Ably * `AbnormalSecurity` - AbnormalSecurity * `Acast` - Acast * `Acculynx` - Acculynx * `Actionstep` - Actionstep * `Aftership` - Aftership * `AhaIdeas` - AhaIdeas * `AkamaiReporting` - AkamaiReporting * `Alation` - Alation * `Alegra` - Alegra * `Allegro` - Allegro * `AnodotCost` - AnodotCost * `Anomalo` - Anomalo * `Apaleo` - Apaleo * `Apitally` - Apitally * `AppStoreConnect` - AppStoreConnect * `Appdirect` - Appdirect * `Appfolio` - Appfolio * `Arxiv` - Arxiv * `Asaas` - Asaas * `Astronomer` - Astronomer * `Athenahealth` - Athenahealth * `Atlan` - Atlan * `AutodeskConstructionCloud` - AutodeskConstructionCloud * `Avalara` - Avalara * `AwsAthena` - AwsAthena * `AwsBatch` - AwsBatch * `AwsBudgets` - AwsBudgets * `AwsCloudformation` - AwsCloudformation * `AwsComputeOptimizer` - AwsComputeOptimizer * `AwsConfig` - AwsConfig * `AwsConnect` - AwsConnect * `AwsCostAndUsageReport` - AwsCostAndUsageReport * `AwsCostAnomalyDetection` - AwsCostAnomalyDetection * `AwsCostExplorer` - AwsCostExplorer * `AwsGlueDataCatalog` - AwsGlueDataCatalog * `AwsGuardduty` - AwsGuardduty * `AwsHealth` - AwsHealth * `AwsIamAccessAnalyzer` - AwsIamAccessAnalyzer * `AwsInspector` - AwsInspector * `AwsMacie` - AwsMacie * `AwsOrganizations` - AwsOrganizations * `AwsRdsPerformanceInsights` - AwsRdsPerformanceInsights * `AwsSagemaker` - AwsSagemaker * `AwsSavingsPlans` - AwsSavingsPlans * `AwsSecurityHub` - AwsSecurityHub * `AwsSes` - AwsSes * `AwsStepFunctions` - AwsStepFunctions * `AwsSupport` - AwsSupport * `AwsSystemsManager` - AwsSystemsManager * `AwsTrustedAdvisor` - AwsTrustedAdvisor * `AwsWaf` - AwsWaf * `AwsXray` - AwsXray * `AzureActivityLog` - AzureActivityLog * `AzureAdvisor` - AzureAdvisor * `AzureApiManagement` - AzureApiManagement * `AzureApplicationInsights` - AzureApplicationInsights * `AzureCostManagement` - AzureCostManagement * `AzureDataExplorer` - AzureDataExplorer * `AzureDataFactory` - AzureDataFactory * `AzureLogAnalytics` - AzureLogAnalytics * `AzureMonitorAlerts` - AzureMonitorAlerts * `AzureMonitorMetrics` - AzureMonitorMetrics * `AzureOpenaiUsage` - AzureOpenaiUsage * `AzurePolicyInsights` - AzurePolicyInsights * `AzureReservations` - AzureReservations * `AzureResourceGraph` - AzureResourceGraph * `AzureResourceHealth` - AzureResourceHealth * `AzureServiceHealth` - AzureServiceHealth * `AzureSynapse` - AzureSynapse * `BackMarket` - BackMarket * `Beehiiv` - Beehiiv * `Bigeye` - Bigeye * `BillCom` - BillCom * `Billomat` - Billomat * `BingWebmasterTools` - BingWebmasterTools * `Bitwarden` - Bitwarden * `BlackbaudRaisersEdgeNxt` - BlackbaudRaisersEdgeNxt * `BlackboardLearn` - BlackboardLearn * `Bling` - Bling * `Bloomerang` - Bloomerang * `Bluesky` - Bluesky * `BolRetailer` - BolRetailer * `Boulevard` - Boulevard * `Buffer` - Buffer * `Bugherd` - Bugherd * `Buildium` - Buildium * `Buttondown` - Buttondown * `BuyMeACoffee` - BuyMeACoffee * `Calendarific` - Calendarific * `Calibre` - Calibre * `CanvasLms` - CanvasLms * `Captivate` - Captivate * `Cashfree` - Cashfree * `CastAi` - CastAi * `Catchpoint` - Catchpoint * `CdcOpenData` - CdcOpenData * `Census` - Census * `Checkly` - Checkly * `CircleSo` - CircleSo * `Classy` - Classy * `Cleartax` - Cleartax * `Clever` - Clever * `Clevertap` - Clevertap * `Cliniko` - Cliniko * `Clio` - Clio * `Clip` - Clip * `Cloudability` - Cloudability * `Cloudsmith` - Cloudsmith * `Cloudzero` - Cloudzero * `Clover` - Clover * `Codemagic` - Codemagic * `Codescene` - Codescene * `Collibra` - Collibra * `Companycam` - Companycam * `Conekta` - Conekta * `ContaAzul` - ContaAzul * `Contentsquare` - Contentsquare * `Cortex` - Cortex * `Courier` - Courier * `Crossref` - Crossref * `CrowdstrikeFalcon` - CrowdstrikeFalcon * `CubeCloud` - CubeCloud * `D2lBrightspace` - D2lBrightspace * `Dayforce` - Dayforce * `Debugbear` - Debugbear * `Descope` - Descope * `Develocity` - Develocity * `Dialpad` - Dialpad * `Discord` - Discord * `Discourse` - Discourse * `Donorbox` - Donorbox * `Doorloop` - Doorloop * `Dovetail` - Dovetail * `Dragonboat` - Dragonboat * `Drchrono` - Drchrono * `Dynamics365BusinessCentral` - Dynamics365BusinessCentral * `EcbDataPortal` - EcbDataPortal * `Emarsys` - Emarsys * `Embrace` - Embrace * `Entsoe` - Entsoe * `Eppo` - Eppo * `Etsy` - Etsy * `Eurostat` - Eurostat * `Faire` - Faire * `FarosAi` - FarosAi * `Fieldpulse` - Fieldpulse * `Fieldwire` - Fieldwire * `Filevine` - Filevine * `Finout` - Finout * `Five9` - Five9 * `FlexeraCloudCost` - FlexeraCloudCost * `Flutterwave` - Flutterwave * `Fortnox` - Fortnox * `Fourthwall` - Fourthwall * `Fred` - Fred * `Frontegg` - Frontegg * `FusionAuth` - FusionAuth * `G2` - G2 * `Gcore` - Gcore * `GcpApigee` - GcpApigee * `GcpArtifactRegistry` - GcpArtifactRegistry * `GcpBigtable` - GcpBigtable * `GcpChronicle` - GcpChronicle * `GcpCloudAssetInventory` - GcpCloudAssetInventory * `GcpCloudBilling` - GcpCloudBilling * `GcpCloudBuild` - GcpCloudBuild * `GcpCloudDeploy` - GcpCloudDeploy * `GcpCloudDns` - GcpCloudDns * `GcpCloudFunctions` - GcpCloudFunctions * `GcpCloudLogging` - GcpCloudLogging * `GcpCloudMonitoring` - GcpCloudMonitoring * `GcpCloudRun` - GcpCloudRun * `GcpCloudSpanner` - GcpCloudSpanner * `GcpCloudSql` - GcpCloudSql * `GcpCloudTrace` - GcpCloudTrace * `GcpCloudWorkflows` - GcpCloudWorkflows * `GcpComputeEngine` - GcpComputeEngine * `GcpContainerAnalysis` - GcpContainerAnalysis * `GcpDataflow` - GcpDataflow * `GcpDataplex` - GcpDataplex * `GcpDataproc` - GcpDataproc * `GcpErrorReporting` - GcpErrorReporting * `GcpGke` - GcpGke * `GcpPubsub` - GcpPubsub * `GcpRecaptchaEnterprise` - GcpRecaptchaEnterprise * `GcpRecommender` - GcpRecommender * `GcpSecurityCommandCenter` - GcpSecurityCommandCenter * `Gdelt` - Gdelt * `GenesysCloud` - GenesysCloud * `Getdx` - Getdx * `Ghost` - Ghost * `Givebutter` - Givebutter * `Gleif` - Gleif * `GooglePlayConsole` - GooglePlayConsole * `Guesty` - Guesty * `Gumroad` - Gumroad * `HarnessCcm` - HarnessCcm * `HarnessSei` - HarnessSei * `Harvest` - Harvest * `Healthie` - Healthie * `Hitpay` - Hitpay * `Hivebrite` - Hivebrite * `Holded` - Holded * `Hostaway` - Hostaway * `HousecallPro` - HousecallPro * `Humanitec` - Humanitec * `ImfData` - ImfData * `Imperva` - Imperva * `InfluxdbCloud` - InfluxdbCloud * `Iyzico` - Iyzico * `Jobtread` - Jobtread * `Kameleoon` - Kameleoon * `KauflandMarketplace` - KauflandMarketplace * `Kestra` - Kestra * `Kick` - Kick * `Kinde` - Kinde * `Kion` - Kion * `Knowbe4` - Knowbe4 * `Komodor` - Komodor * `Labelbox` - Labelbox * `Lawmatics` - Lawmatics * `Learnworlds` - Learnworlds * `LexwareOffice` - LexwareOffice * `Lightdash` - Lightdash * `Lodgify` - Lodgify * `Logicmonitor` - Logicmonitor * `Logrocket` - Logrocket * `LoopReturns` - LoopReturns * `Mastodon` - Mastodon * `Meetup` - Meetup * `Memberful` - Memberful * `MercadoPago` - MercadoPago * `Meteostat` - Meteostat * `Mews` - Mews * `Mezmo` - Mezmo * `Microsoft365UsageReports` - Microsoft365UsageReports * `MicrosoftAdvertising` - MicrosoftAdvertising * `MicrosoftClarity` - MicrosoftClarity * `MicrosoftDefenderCloudApps` - MicrosoftDefenderCloudApps * `MicrosoftDefenderEndpoint` - MicrosoftDefenderEndpoint * `MicrosoftDefenderForCloud` - MicrosoftDefenderForCloud * `MicrosoftIntune` - MicrosoftIntune * `MicrosoftPurview` - MicrosoftPurview * `MicrosoftPurviewAudit` - MicrosoftPurviewAudit * `MicrosoftSentinel` - MicrosoftSentinel * `MicrosoftTeamsCallRecords` - MicrosoftTeamsCallRecords * `Midtrans` - Midtrans * `MightyNetworks` - MightyNetworks * `Mindbody` - Mindbody * `Mirakl` - Mirakl * `Moesif` - Moesif * `Moneybird` - Moneybird * `Moodle` - Moodle * `Motherduck` - Motherduck * `Mycase` - Mycase * `NagerDate` - NagerDate * `NeonCrm` - NeonCrm * `Nexhealth` - Nexhealth * `NoaaCdo` - NoaaCdo * `Nobl9` - Nobl9 * `Nolt` - Nolt * `Nops` - Nops * `NpmRegistry` - NpmRegistry * `Oecd` - Oecd * `Okendo` - Okendo * `Omni` - Omni * `Onelogin` - Onelogin * `OpenDental` - OpenDental * `OpenMeteo` - OpenMeteo * `Openalex` - Openalex * `Opencorporates` - Opencorporates * `Openfec` - Openfec * `OpnPayments` - OpnPayments * `Opslevel` - Opslevel * `OttoMarket` - OttoMarket * `Ownerrez` - Ownerrez * `Pagbank` - Pagbank * `Patreon` - Patreon * `Pax8` - Pax8 * `Paychex` - Paychex * `Paymob` - Paymob * `Paymongo` - Paymongo * `Phonepe` - Phonepe * `Pike13` - Pike13 * `Pingone` - Pingone * `PinterestOrganic` - PinterestOrganic * `PlanningCenter` - PlanningCenter * `PluralsightFlow` - PluralsightFlow * `Podbean` - Podbean * `Postscript` - Postscript * `PowerBiAdmin` - PowerBiAdmin * `Practicepanther` - Practicepanther * `Preset` - Preset * `Procore` - Procore * `Productiv` - Productiv * `ProofpointTap` - ProofpointTap * `Propertyware` - Propertyware * `Pubnub` - Pubnub * `Quay` - Quay * `Raken` - Raken * `RedpandaCloud` - RedpandaCloud * `RentManager` - RentManager * `Reverb` - Reverb * `RocketMatter` - RocketMatter * `Rubygems` - Rubygems * `Scalr` - Scalr * `SecEdgar` - SecEdgar * `SelectStar` - SelectStar * `SemanticScholar` - SemanticScholar * `Semrush` - Semrush * `ServiceFusion` - ServiceFusion * `Servicem8` - Servicem8 * `Servicetitan` - Servicetitan * `Servicetrade` - Servicetrade * `Sevdesk` - Sevdesk * `Similarweb` - Similarweb * `Simpro` - Simpro * `Sinch` - Sinch * `Singlestore` - Singlestore * `Site24x7` - Site24x7 * `Sleuth` - Sleuth * `Smartlook` - Smartlook * `Smartrecruiters` - Smartrecruiters * `Smokeball` - Smokeball * `SodaCloud` - SodaCloud * `Speedcurve` - Speedcurve * `SpotIo` - SpotIo * `Sprig` - Sprig * `Sprinklr` - Sprinklr * `SproutSocial` - SproutSocial * `StackOverflowForTeams` - StackOverflowForTeams * `Stockx` - Stockx * `TackleIo` - TackleIo * `Talkdesk` - Talkdesk * `TeamupFitness` - TeamupFitness * `Tebra` - Tebra * `Telnyx` - Telnyx * `Ternary` - Ternary * `Thoughtspot` - Thoughtspot * `Thousandeyes` - Thousandeyes * `Threads` - Threads * `TiktokShop` - TiktokShop * `TinyErp` - TinyErp * `Tinybird` - Tinybird * `Tipalti` - Tipalti * `Toast` - Toast * `Torii` - Torii * `Transistor` - Transistor * `TrunkIo` - TrunkIo * `Trustradius` - Trustradius * `Twitch` - Twitch * `TwoC2p` - TwoC2p * `UkCompaniesHouse` - UkCompaniesHouse * `UkOns` - UkOns * `UnComtrade` - UnComtrade * `UsBea` - UsBea * `UsBls` - UsBls * `UsEia` - UsEia * `UsTreasuryFiscalData` - UsTreasuryFiscalData * `Vanta` - Vanta * `Vendr` - Vendr * `Virtuous` - Virtuous * `Vonage` - Vonage * `WalmartMarketplace` - WalmartMarketplace * `Waydev` - Waydev * `Wayfair` - Wayfair * `WhatsappBusinessManagement` - WhatsappBusinessManagement * `WhoGho` - WhoGho * `Whop` - Whop * `Wiz` - Wiz * `Wompi` - Wompi * `Workiz` - Workiz * `WorldBank` - WorldBank * `Xendit` - Xendit * `Yoco` - Yoco * `ZalandoZdirect` - ZalandoZdirect * `Zluri` - Zluri * `Zylo` - Zylo * `Tally` - Tally * `Nuntly` - Nuntly * `Vturb` - Vturb * `Meltwater` - Meltwater * `UserCom` - UserCom * `Latitude` - Latitude * `Workato` - Workato * `SideShift` - SideShift * `DuckLake` - DuckLake * `Starburst` - Starburst * `Trino` - Trino * `Easybill` - Easybill * `Bexio` - Bexio * `Umami` - Umami * `Manychat` - Manychat * `Kickstarter` - Kickstarter * `Typesense` - Typesense * `FirstPromoter` - FirstPromoter * `Zero` - Zero * `Inth` - Inth * `BCMS` - BCMS * `Convonite` - Convonite * `Hookdeck` - Hookdeck * `Billit` - Billit * `Moxie` - Moxie * `TripleWhale` - TripleWhale * `Directus` - Directus * `Clay` - Clay * `TradableBits` - TradableBits * `Swan` - Swan * `Hyros` - Hyros * `Odoo` - Odoo * `Airbridge` - Airbridge * `Snovio` - Snovio * `GoogleMerchantCenter` - GoogleMerchantCenter * `Raisely` - Raisely * `RakutenAdvertising` - RakutenAdvertising * `Zitadel` - Zitadel * `DeelFlows` - DeelFlows * `WindsorAi` - WindsorAi * `Wix` - Wix * `Sevalla` - Sevalla * `Motion` - Motion * `ImpactPartner` - ImpactPartner * `Cloudinary` - Cloudinary * `Uploadcare` - Uploadcare * `WHMCS` - WHMCS * `MSG91` - MSG91 * `Depot` - Depot * `Schematic` - Schematic * `Dokploy` - Dokploy * `Hootsuite` - Hootsuite * `WisprFlow` - WisprFlow * `SamCart` - SamCart * `IronSourceAds` - IronSourceAds * `MicrosoftExcel` - MicrosoftExcel * `Profound` - Profound * `Airwallex` - Airwallex * `Polymarket` - Polymarket * `Kalshi` - Kalshi * `Capterra` - Capterra * `GooglePostmasterTools` - GooglePostmasterTools * `Growi` - Growi * `Clarify` - Clarify * `DatoCMS` - DatoCMS * `WPSOffice` - WPSOffice * `TeraBox` - TeraBox * `SimonData` - SimonData * `CommissionJunction` - CommissionJunction * `Liveblocks` - Liveblocks * `NationBuilder` - NationBuilder * `Tana` - Tana * `Zenchef` - Zenchef * `Lovable` - Lovable * `Anvil` - Anvil * `Coolify` - Coolify * `SocialPilot` - SocialPilot * `Strato` - Strato * `Medusa` - Medusa * `Membrain` - Membrain * `RecallAI` - RecallAI * `Tenjin` - Tenjin * `Folk` - Folk * `Cybersource` - Cybersource * `GoogleAdSense` - GoogleAdSense * `Sequenzy` - Sequenzy * `Skio` - Skio * `Smartlead` - Smartlead * `Substack` - Substack * `ElectricityMaps` - ElectricityMaps * `Amplemarket` - Amplemarket * `Quo` - Quo * `HeyReach` - HeyReach * `MoEngage` - MoEngage * `Monaco` - Monaco * `Oneleet` - Oneleet * `Expo` - Expo * `PostNord` - PostNord * `Commslayer` - Commslayer * `Sprinto` - Sprinto * `Gem` - Gem * `AudioGO` - AudioGO * `ExactOnline` - ExactOnline * `LettrLabs` - LettrLabs * `GrafanaIRM` - GrafanaIRM */
@@ -2584,11 +3184,29 @@ export interface DirectConnectionSourceOption {
   /** Path to the source's icon asset, or null when the source ships no icon. */
   icon_path: string | null;
 }
+const DirectConnectionSourceOption = /*@__PURE__*/ __L.at(
+  __c11,
+  7,
+) as any as S.Schema<DirectConnectionSourceOption>;
+
 export type ListExternalDataSourcesDirectConnectionOptionsResponseBodyList =
   Array<DirectConnectionSourceOption>;
+const ListExternalDataSourcesDirectConnectionOptionsResponseBodyList = /*@__PURE__*/ __L.at(
+  __c12,
+  0,
+) as any as S.Schema<ListExternalDataSourcesDirectConnectionOptionsResponseBodyList>;
+
 export type ListExternalDataSourcesDirectConnectionOptionsResponse =
   ListExternalDataSourcesDirectConnectionOptionsResponseBodyList;
+const ListExternalDataSourcesDirectConnectionOptionsResponse = /*@__PURE__*/ __L.at(
+  __c12,
+  1,
+) as any as S.Schema<ListExternalDataSourcesDirectConnectionOptionsResponse>;
+
 export type ListExternalDataSourcesJobsRequestSchemasList = Array<string>;
+const ListExternalDataSourcesJobsRequestSchemasList =
+  CreateExternalDataSourceRequestDestinationIdsList as any as S.Schema<ListExternalDataSourcesJobsRequestSchemasList>;
+
 export interface ListExternalDataSourcesJobsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -2603,8 +3221,16 @@ export interface ListExternalDataSourcesJobsRequest {
   /** A search term. */
   search?: string;
 }
+const ListExternalDataSourcesJobsRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  2,
+) as any as S.Schema<ListExternalDataSourcesJobsRequest>;
+
 export type BlankEnum = "";
 export type SimpleExternalDataSchemaSyncType = ExternalDataSchemaSyncTypeEnum | BlankEnum;
+const SimpleExternalDataSchemaSyncType =
+  S.Unknown as any as S.Schema<SimpleExternalDataSchemaSyncType>;
+
 export interface SimpleExternalDataSchema {
   id: string;
   name: string;
@@ -2613,8 +3239,16 @@ export interface SimpleExternalDataSchema {
   last_synced_at?: string | null;
   sync_type?: SimpleExternalDataSchemaSyncType | null;
 }
+const SimpleExternalDataSchema = /*@__PURE__*/ __L.at(
+  __c12,
+  3,
+) as any as S.Schema<SimpleExternalDataSchema>;
+
 /** Destinations this run delivered to, snapshotted when it started. Empty on runs that predate destinations, which wrote to the PostHog warehouse alone. `rows_synced` counts the rows read from the source once, not once per destination. */
 export type ExternalDataJobSerializersDestinationIdsList = Array<string>;
+const ExternalDataJobSerializersDestinationIdsList =
+  CreateExternalDataSourceRequestDestinationIdsList as any as S.Schema<ExternalDataJobSerializersDestinationIdsList>;
+
 export interface ExternalDataJobSerializers {
   id: string;
   created_at: string;
@@ -2633,8 +3267,23 @@ export interface ExternalDataJobSerializers {
   /** Destinations this run delivered to, snapshotted when it started. Empty on runs that predate destinations, which wrote to the PostHog warehouse alone. `rows_synced` counts the rows read from the source once, not once per destination. */
   destination_ids: ExternalDataJobSerializersDestinationIdsList;
 }
+const ExternalDataJobSerializers = /*@__PURE__*/ __L.at(
+  __c12,
+  4,
+) as any as S.Schema<ExternalDataJobSerializers>;
+
 export type ListExternalDataSourcesJobsResponseBodyList = Array<ExternalDataJobSerializers>;
+const ListExternalDataSourcesJobsResponseBodyList = /*@__PURE__*/ __L.at(
+  __c12,
+  5,
+) as any as S.Schema<ListExternalDataSourcesJobsResponseBodyList>;
+
 export type ListExternalDataSourcesJobsResponse = ListExternalDataSourcesJobsResponseBodyList;
+const ListExternalDataSourcesJobsResponse = /*@__PURE__*/ __L.at(
+  __c12,
+  6,
+) as any as S.Schema<ListExternalDataSourcesJobsResponse>;
+
 export interface ListExternalDataSourcesStoredCredentialsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -2643,11 +3292,29 @@ export interface ListExternalDataSourcesStoredCredentialsRequest {
   /** Only return stored credentials for this source type (e.g. 'Stripe', 'Postgres'). */
   source_type?: string;
 }
+const ListExternalDataSourcesStoredCredentialsRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  7,
+) as any as S.Schema<ListExternalDataSourcesStoredCredentialsRequest>;
+
 export type ListExternalDataSourcesStoredCredentialsResponseBodyList = Array<SourceCredential>;
+const ListExternalDataSourcesStoredCredentialsResponseBodyList = /*@__PURE__*/ __L.at(
+  __c13,
+  0,
+) as any as S.Schema<ListExternalDataSourcesStoredCredentialsResponseBodyList>;
+
 export type ListExternalDataSourcesStoredCredentialsResponse =
   ListExternalDataSourcesStoredCredentialsResponseBodyList;
+const ListExternalDataSourcesStoredCredentialsResponse = /*@__PURE__*/ __L.at(
+  __c13,
+  1,
+) as any as S.Schema<ListExternalDataSourcesStoredCredentialsResponse>;
+
 /** Optional fnmatch-style globs (`*` and `?` wildcards) restricting which newly discovered schema names auto-sync, matched case-insensitively against both the qualified and bare table name. Null or empty means every new schema qualifies. Only used when `auto_sync_new_schemas` is true. */
 export type UpdateExternalDataSourceRequestAutoSyncSchemaPatternsList = Array<string>;
+const UpdateExternalDataSourceRequestAutoSyncSchemaPatternsList =
+  CreateExternalDataSourceRequestDestinationIdsList as any as S.Schema<UpdateExternalDataSourceRequestAutoSyncSchemaPatternsList>;
+
 export interface UpdateExternalDataSourceRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -2667,8 +3334,16 @@ export interface UpdateExternalDataSourceRequest {
   auto_sync_schema_patterns?: UpdateExternalDataSourceRequestAutoSyncSchemaPatternsList | null;
   job_inputs?: unknown;
 }
+const UpdateExternalDataSourceRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  2,
+) as any as S.Schema<UpdateExternalDataSourceRequest>;
+
 /** Destinations to sync to. On a table, null clears the override so the table follows its source again. */
 export type UpdateExternalDataSourcesDestinationsPartialRequestDestinationIdsList = Array<string>;
+const UpdateExternalDataSourcesDestinationsPartialRequestDestinationIdsList =
+  CreateExternalDataSourcesCheckCdcPrerequisitesForSourceRequestAutoSyncSchemaPatternsList as any as S.Schema<UpdateExternalDataSourcesDestinationsPartialRequestDestinationIdsList>;
+
 export interface UpdateExternalDataSourcesDestinationsPartialRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -2677,8 +3352,16 @@ export interface UpdateExternalDataSourcesDestinationsPartialRequest {
   /** Destinations to sync to. On a table, null clears the override so the table follows its source again. */
   destination_ids?: UpdateExternalDataSourcesDestinationsPartialRequestDestinationIdsList | null;
 }
+const UpdateExternalDataSourcesDestinationsPartialRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  3,
+) as any as S.Schema<UpdateExternalDataSourcesDestinationsPartialRequest>;
+
 /** Optional fnmatch-style globs (`*` and `?` wildcards) restricting which newly discovered schema names auto-sync, matched case-insensitively against both the qualified and bare table name. Null or empty means every new schema qualifies. Only used when `auto_sync_new_schemas` is true. */
 export type UpdateExternalDataSourcesPartialRequestAutoSyncSchemaPatternsList = Array<string>;
+const UpdateExternalDataSourcesPartialRequestAutoSyncSchemaPatternsList =
+  CreateExternalDataSourcesCheckCdcPrerequisitesForSourceRequestAutoSyncSchemaPatternsList as any as S.Schema<UpdateExternalDataSourcesPartialRequestAutoSyncSchemaPatternsList>;
+
 export interface UpdateExternalDataSourcesPartialRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -2698,9 +3381,17 @@ export interface UpdateExternalDataSourcesPartialRequest {
   auto_sync_schema_patterns?: UpdateExternalDataSourcesPartialRequestAutoSyncSchemaPatternsList | null;
   job_inputs?: unknown;
 }
+const UpdateExternalDataSourcesPartialRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  4,
+) as any as S.Schema<UpdateExternalDataSourcesPartialRequest>;
+
 /** Optional fnmatch-style globs (`*` and `?` wildcards) restricting which newly discovered schema names auto-sync, matched case-insensitively against both the qualified and bare table name. Null or empty means every new schema qualifies. Only used when `auto_sync_new_schemas` is true. */
 export type UpdateExternalDataSourcesRevenueAnalyticsConfigPartialRequestAutoSyncSchemaPatternsList =
   Array<string>;
+const UpdateExternalDataSourcesRevenueAnalyticsConfigPartialRequestAutoSyncSchemaPatternsList =
+  CreateExternalDataSourcesCheckCdcPrerequisitesForSourceRequestAutoSyncSchemaPatternsList as any as S.Schema<UpdateExternalDataSourcesRevenueAnalyticsConfigPartialRequestAutoSyncSchemaPatternsList>;
+
 export interface UpdateExternalDataSourcesRevenueAnalyticsConfigPartialRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -2720,7 +3411,15 @@ export interface UpdateExternalDataSourcesRevenueAnalyticsConfigPartialRequest {
   auto_sync_schema_patterns?: UpdateExternalDataSourcesRevenueAnalyticsConfigPartialRequestAutoSyncSchemaPatternsList | null;
   job_inputs?: unknown;
 }
+const UpdateExternalDataSourcesRevenueAnalyticsConfigPartialRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  5,
+) as any as S.Schema<UpdateExternalDataSourcesRevenueAnalyticsConfigPartialRequest>;
+
 export interface UpdateExternalDataSourcesRevenueAnalyticsConfigPartialResponse {}
+const UpdateExternalDataSourcesRevenueAnalyticsConfigPartialResponse =
+  CreateExternalDataSourcesCheckCdcPrerequisitesForSourceResponse as any as S.Schema<UpdateExternalDataSourcesRevenueAnalyticsConfigPartialResponse>;
+
 export type CreateExternalDataSourceError = BadRequest | Forbidden | NotFound | PosthogOpError;
 /** Create, Read, Update and Delete External data Sources. */
 export const createExternalDataSource: API.OperationMethod<
@@ -2729,8 +3428,8 @@ export const createExternalDataSource: API.OperationMethod<
   CreateExternalDataSourceError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2) as any as S.Schema<CreateExternalDataSourceRequest>,
-  output: __S(3) as any as S.Schema<ExternalDataSourceCreateResponse>,
+  input: CreateExternalDataSourceRequest,
+  output: ExternalDataSourceCreateResponse,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2748,8 +3447,8 @@ export const createExternalDataSourcesCheckCdcPrerequisite: API.OperationMethod<
   CreateExternalDataSourcesCheckCdcPrerequisiteError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4) as any as S.Schema<CreateExternalDataSourcesCheckCdcPrerequisiteRequest>,
-  output: __S(5) as any as S.Schema<CdcPrerequisitesResponse>,
+  input: CreateExternalDataSourcesCheckCdcPrerequisiteRequest,
+  output: CdcPrerequisitesResponse,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2763,10 +3462,8 @@ export const createExternalDataSourcesCheckCdcPrerequisitesForSource: API.Operat
   CreateExternalDataSourcesCheckCdcPrerequisitesForSourceError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7) as any as S.Schema<CreateExternalDataSourcesCheckCdcPrerequisitesForSourceRequest>,
-  output: __S(
-    8,
-  ) as any as S.Schema<CreateExternalDataSourcesCheckCdcPrerequisitesForSourceResponse>,
+  input: CreateExternalDataSourcesCheckCdcPrerequisitesForSourceRequest,
+  output: CreateExternalDataSourcesCheckCdcPrerequisitesForSourceResponse,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2780,8 +3477,8 @@ export const createExternalDataSourcesCredentialAccount: API.OperationMethod<
   CreateExternalDataSourcesCredentialAccountError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10) as any as S.Schema<CreateExternalDataSourcesCredentialAccountRequest>,
-  output: __S(13) as any as S.Schema<IntegrationAccountsResponse>,
+  input: CreateExternalDataSourcesCredentialAccountRequest,
+  output: IntegrationAccountsResponse,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2799,8 +3496,8 @@ export const createExternalDataSourcesDatabaseSchema: API.OperationMethod<
   CreateExternalDataSourcesDatabaseSchemaError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14) as any as S.Schema<CreateExternalDataSourcesDatabaseSchemaRequest>,
-  output: __S(15) as any as S.Schema<CreateExternalDataSourcesDatabaseSchemaResponse>,
+  input: CreateExternalDataSourcesDatabaseSchemaRequest,
+  output: CreateExternalDataSourcesDatabaseSchemaResponse,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2814,8 +3511,8 @@ export const createExternalDataSourcesDraftCustomManifest: API.OperationMethod<
   CreateExternalDataSourcesDraftCustomManifestError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16) as any as S.Schema<CreateExternalDataSourcesDraftCustomManifestRequest>,
-  output: __S(17) as any as S.Schema<DraftCustomManifestResponse>,
+  input: CreateExternalDataSourcesDraftCustomManifestRequest,
+  output: DraftCustomManifestResponse,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2829,8 +3526,8 @@ export const createExternalDataSourcesPreviewResource: API.OperationMethod<
   CreateExternalDataSourcesPreviewResourceError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18) as any as S.Schema<CreateExternalDataSourcesPreviewResourceRequest>,
-  output: __S(22) as any as S.Schema<SourcePreviewResponse>,
+  input: CreateExternalDataSourcesPreviewResourceRequest,
+  output: SourcePreviewResponse,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2848,8 +3545,8 @@ export const createExternalDataSourcesReload: API.OperationMethod<
   CreateExternalDataSourcesReloadError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23) as any as S.Schema<CreateExternalDataSourcesReloadRequest>,
-  output: __S(15) as any as S.Schema<CreateExternalDataSourcesReloadResponse>,
+  input: CreateExternalDataSourcesReloadRequest,
+  output: CreateExternalDataSourcesReloadResponse,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2863,8 +3560,8 @@ export const createExternalDataSourcesRepairCdc: API.OperationMethod<
   CreateExternalDataSourcesRepairCdcError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24) as any as S.Schema<CreateExternalDataSourcesRepairCdcRequest>,
-  output: __S(25) as any as S.Schema<CreateExternalDataSourcesRepairCdcResponse>,
+  input: CreateExternalDataSourcesRepairCdcRequest,
+  output: CreateExternalDataSourcesRepairCdcResponse,
   errors: [BadRequest, Conflict],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2878,8 +3575,8 @@ export const createExternalDataSourcesSetup: API.OperationMethod<
   CreateExternalDataSourcesSetupError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26) as any as S.Schema<CreateExternalDataSourcesSetupRequest>,
-  output: __S(28) as any as S.Schema<SourceSetupResponse>,
+  input: CreateExternalDataSourcesSetupRequest,
+  output: SourceSetupResponse,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2897,8 +3594,8 @@ export const createExternalDataSourcesSourcePrefix: API.OperationMethod<
   CreateExternalDataSourcesSourcePrefixError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29) as any as S.Schema<CreateExternalDataSourcesSourcePrefixRequest>,
-  output: __S(15) as any as S.Schema<CreateExternalDataSourcesSourcePrefixResponse>,
+  input: CreateExternalDataSourcesSourcePrefixRequest,
+  output: CreateExternalDataSourcesSourcePrefixResponse,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2912,8 +3609,8 @@ export const createExternalDataSourcesStoreCredentials: API.OperationMethod<
   CreateExternalDataSourcesStoreCredentialsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30) as any as S.Schema<CreateExternalDataSourcesStoreCredentialsRequest>,
-  output: __S(31) as any as S.Schema<SourceCredential>,
+  input: CreateExternalDataSourcesStoreCredentialsRequest,
+  output: SourceCredential,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2931,8 +3628,8 @@ export const externalDataSourcesBulkUpdateSchemasPartialUpdate: API.OperationMet
   ExternalDataSourcesBulkUpdateSchemasPartialUpdateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36) as any as S.Schema<ExternalDataSourcesBulkUpdateSchemasPartialUpdateRequest>,
-  output: __S(43) as any as S.Schema<ExternalDataSourcesBulkUpdateSchemasPartialUpdateResponse>,
+  input: ExternalDataSourcesBulkUpdateSchemasPartialUpdateRequest,
+  output: ExternalDataSourcesBulkUpdateSchemasPartialUpdateResponse,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2946,8 +3643,8 @@ export const externalDataSourcesConnectLinkRetrieve: API.OperationMethod<
   ExternalDataSourcesConnectLinkRetrieveError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44) as any as S.Schema<ExternalDataSourcesConnectLinkRetrieveRequest>,
-  output: __S(45) as any as S.Schema<SourceConnectLink>,
+  input: ExternalDataSourcesConnectLinkRetrieveRequest,
+  output: SourceConnectLink,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2965,8 +3662,8 @@ export const externalDataSourcesCreateWebhookCreate: API.OperationMethod<
   ExternalDataSourcesCreateWebhookCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(46) as any as S.Schema<ExternalDataSourcesCreateWebhookCreateRequest>,
-  output: __S(27) as any as S.Schema<CreateWebhookResponse>,
+  input: ExternalDataSourcesCreateWebhookCreateRequest,
+  output: CreateWebhookResponse,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2984,8 +3681,8 @@ export const externalDataSourcesDeleteWebhookCreate: API.OperationMethod<
   ExternalDataSourcesDeleteWebhookCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47) as any as S.Schema<ExternalDataSourcesDeleteWebhookCreateRequest>,
-  output: __S(48) as any as S.Schema<DeleteWebhookResponse>,
+  input: ExternalDataSourcesDeleteWebhookCreateRequest,
+  output: DeleteWebhookResponse,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2999,8 +3696,8 @@ export const externalDataSourcesDestroy: API.OperationMethod<
   ExternalDataSourcesDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49) as any as S.Schema<ExternalDataSourcesDestroyRequest>,
-  output: __S(15) as any as S.Schema<ExternalDataSourcesDestroyResponse>,
+  input: ExternalDataSourcesDestroyRequest,
+  output: ExternalDataSourcesDestroyResponse,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3014,8 +3711,8 @@ export const externalDataSourcesDisableCdcCreate: API.OperationMethod<
   ExternalDataSourcesDisableCdcCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(50) as any as S.Schema<ExternalDataSourcesDisableCdcCreateRequest>,
-  output: __S(15) as any as S.Schema<ExternalDataSourcesDisableCdcCreateResponse>,
+  input: ExternalDataSourcesDisableCdcCreateRequest,
+  output: ExternalDataSourcesDisableCdcCreateResponse,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3029,8 +3726,8 @@ export const externalDataSourcesEnableCdcCreate: API.OperationMethod<
   ExternalDataSourcesEnableCdcCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(51) as any as S.Schema<ExternalDataSourcesEnableCdcCreateRequest>,
-  output: __S(52) as any as S.Schema<CdcEnableResponse>,
+  input: ExternalDataSourcesEnableCdcCreateRequest,
+  output: CdcEnableResponse,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3048,8 +3745,8 @@ export const externalDataSourcesRefreshSchemasCreate: API.OperationMethod<
   ExternalDataSourcesRefreshSchemasCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(53) as any as S.Schema<ExternalDataSourcesRefreshSchemasCreateRequest>,
-  output: __S(15) as any as S.Schema<ExternalDataSourcesRefreshSchemasCreateResponse>,
+  input: ExternalDataSourcesRefreshSchemasCreateRequest,
+  output: ExternalDataSourcesRefreshSchemasCreateResponse,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3063,8 +3760,8 @@ export const externalDataSourcesResumeCdcCreate: API.OperationMethod<
   ExternalDataSourcesResumeCdcCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(54) as any as S.Schema<ExternalDataSourcesResumeCdcCreateRequest>,
-  output: __S(55) as any as S.Schema<ExternalDataSourcesResumeCdcCreateResponse>,
+  input: ExternalDataSourcesResumeCdcCreateRequest,
+  output: ExternalDataSourcesResumeCdcCreateResponse,
   errors: [BadRequest],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3078,8 +3775,8 @@ export const externalDataSourcesUpdateCdcSettingsCreate: API.OperationMethod<
   ExternalDataSourcesUpdateCdcSettingsCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56) as any as S.Schema<ExternalDataSourcesUpdateCdcSettingsCreateRequest>,
-  output: __S(15) as any as S.Schema<ExternalDataSourcesUpdateCdcSettingsCreateResponse>,
+  input: ExternalDataSourcesUpdateCdcSettingsCreateRequest,
+  output: ExternalDataSourcesUpdateCdcSettingsCreateResponse,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3097,8 +3794,8 @@ export const externalDataSourcesUpdateWebhookInputsCreate: API.OperationMethod<
   ExternalDataSourcesUpdateWebhookInputsCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57) as any as S.Schema<ExternalDataSourcesUpdateWebhookInputsCreateRequest>,
-  output: __S(58) as any as S.Schema<UpdateWebhookInputsResponse>,
+  input: ExternalDataSourcesUpdateWebhookInputsCreateRequest,
+  output: UpdateWebhookInputsResponse,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3112,8 +3809,8 @@ export const getExternalDataSource: API.OperationMethod<
   GetExternalDataSourceError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(59) as any as S.Schema<GetExternalDataSourceRequest>,
-  output: __S(61) as any as S.Schema<ExternalDataSourceSerializersOutput>,
+  input: GetExternalDataSourceRequest,
+  output: ExternalDataSourceSerializersOutput,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3127,8 +3824,8 @@ export const getExternalDataSourcesCdcStatus: API.OperationMethod<
   GetExternalDataSourcesCdcStatusError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(62) as any as S.Schema<GetExternalDataSourcesCdcStatusRequest>,
-  output: __S(63) as any as S.Schema<CdcStatus>,
+  input: GetExternalDataSourcesCdcStatusRequest,
+  output: CdcStatus,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3142,8 +3839,8 @@ export const getExternalDataSourcesDestination: API.OperationMethod<
   GetExternalDataSourcesDestinationError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(64) as any as S.Schema<GetExternalDataSourcesDestinationRequest>,
-  output: __S(65) as any as S.Schema<SourceDestinations>,
+  input: GetExternalDataSourcesDestinationRequest,
+  output: SourceDestinations,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3157,8 +3854,8 @@ export const getExternalDataSourcesOauthAccount: API.OperationMethod<
   GetExternalDataSourcesOauthAccountError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(66) as any as S.Schema<GetExternalDataSourcesOauthAccountRequest>,
-  output: __S(13) as any as S.Schema<IntegrationAccountsResponse>,
+  input: GetExternalDataSourcesOauthAccountRequest,
+  output: IntegrationAccountsResponse,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3172,8 +3869,8 @@ export const getExternalDataSourcesWebhookInfo: API.OperationMethod<
   GetExternalDataSourcesWebhookInfoError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(67) as any as S.Schema<GetExternalDataSourcesWebhookInfoRequest>,
-  output: __S(74) as any as S.Schema<WebhookInfoResponse>,
+  input: GetExternalDataSourcesWebhookInfoRequest,
+  output: WebhookInfoResponse,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3187,8 +3884,8 @@ export const getExternalDataSourcesWizard: API.OperationMethod<
   GetExternalDataSourcesWizardError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(75) as any as S.Schema<GetExternalDataSourcesWizardRequest>,
-  output: __S(86) as any as S.Schema<GetExternalDataSourcesWizardResponse>,
+  input: GetExternalDataSourcesWizardRequest,
+  output: GetExternalDataSourcesWizardResponse,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3202,8 +3899,8 @@ export const listExternalDataSources: API.OperationMethod<
   ListExternalDataSourcesError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(87) as any as S.Schema<ListExternalDataSourcesRequest>,
-  output: __S(89) as any as S.Schema<PaginatedExternalDataSourceSerializersListOutput>,
+  input: ListExternalDataSourcesRequest,
+  output: PaginatedExternalDataSourceSerializersListOutput,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3221,8 +3918,8 @@ export const listExternalDataSourcesConnections: API.OperationMethod<
   ListExternalDataSourcesConnectionsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(90) as any as S.Schema<ListExternalDataSourcesConnectionsRequest>,
-  output: __S(93) as any as S.Schema<ListExternalDataSourcesConnectionsResponse>,
+  input: ListExternalDataSourcesConnectionsRequest,
+  output: ListExternalDataSourcesConnectionsResponse,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3236,8 +3933,8 @@ export const listExternalDataSourcesDirectConnectionOptions: API.OperationMethod
   ListExternalDataSourcesDirectConnectionOptionsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(94) as any as S.Schema<ListExternalDataSourcesDirectConnectionOptionsRequest>,
-  output: __S(97) as any as S.Schema<ListExternalDataSourcesDirectConnectionOptionsResponse>,
+  input: ListExternalDataSourcesDirectConnectionOptionsRequest,
+  output: ListExternalDataSourcesDirectConnectionOptionsResponse,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3251,8 +3948,8 @@ export const listExternalDataSourcesJobs: API.OperationMethod<
   ListExternalDataSourcesJobsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(98) as any as S.Schema<ListExternalDataSourcesJobsRequest>,
-  output: __S(102) as any as S.Schema<ListExternalDataSourcesJobsResponse>,
+  input: ListExternalDataSourcesJobsRequest,
+  output: ListExternalDataSourcesJobsResponse,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3266,8 +3963,8 @@ export const listExternalDataSourcesStoredCredentials: API.OperationMethod<
   ListExternalDataSourcesStoredCredentialsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(103) as any as S.Schema<ListExternalDataSourcesStoredCredentialsRequest>,
-  output: __S(105) as any as S.Schema<ListExternalDataSourcesStoredCredentialsResponse>,
+  input: ListExternalDataSourcesStoredCredentialsRequest,
+  output: ListExternalDataSourcesStoredCredentialsResponse,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3281,8 +3978,8 @@ export const updateExternalDataSource: API.OperationMethod<
   UpdateExternalDataSourceError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(106) as any as S.Schema<UpdateExternalDataSourceRequest>,
-  output: __S(61) as any as S.Schema<ExternalDataSourceSerializersOutput>,
+  input: UpdateExternalDataSourceRequest,
+  output: ExternalDataSourceSerializersOutput,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3296,8 +3993,8 @@ export const updateExternalDataSourcesDestinationsPartial: API.OperationMethod<
   UpdateExternalDataSourcesDestinationsPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(107) as any as S.Schema<UpdateExternalDataSourcesDestinationsPartialRequest>,
-  output: __S(65) as any as S.Schema<SourceDestinations>,
+  input: UpdateExternalDataSourcesDestinationsPartialRequest,
+  output: SourceDestinations,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3315,8 +4012,8 @@ export const updateExternalDataSourcesPartial: API.OperationMethod<
   UpdateExternalDataSourcesPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(108) as any as S.Schema<UpdateExternalDataSourcesPartialRequest>,
-  output: __S(61) as any as S.Schema<ExternalDataSourceSerializersOutput>,
+  input: UpdateExternalDataSourcesPartialRequest,
+  output: ExternalDataSourceSerializersOutput,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3334,8 +4031,8 @@ export const updateExternalDataSourcesRevenueAnalyticsConfigPartial: API.Operati
   UpdateExternalDataSourcesRevenueAnalyticsConfigPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(109) as any as S.Schema<UpdateExternalDataSourcesRevenueAnalyticsConfigPartialRequest>,
-  output: __S(8) as any as S.Schema<UpdateExternalDataSourcesRevenueAnalyticsConfigPartialResponse>,
+  input: UpdateExternalDataSourcesRevenueAnalyticsConfigPartialRequest,
+  output: UpdateExternalDataSourcesRevenueAnalyticsConfigPartialResponse,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3352,14 +4049,14 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
-          source_type: S.optional(S.String),
-          payload: S.optional(__S(0)),
+          source_type: S.optional(ExternalDataSourceTypeEnum),
+          payload: S.optional(CreateExternalDataSourceRequestPayloadMap),
           prefix: S.optional(S.NullOr(S.String)),
           description: S.optional(S.NullOr(S.String)),
-          access_method: S.optional(S.String),
-          created_via: S.optional(S.String),
+          access_method: S.optional(ExternalDataSourceAccessMethodEnum),
+          created_via: S.optional(ExternalDataSourceCreateCreatedViaEnum),
           direct_query_enabled: S.optional(S.Boolean),
-          destination_ids: S.optional(__S(1)),
+          destination_ids: S.optional(CreateExternalDataSourceRequestDestinationIdsList),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3396,7 +4093,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           valid: S.Boolean,
-          errors: __S(1),
+          errors: CdcPrerequisitesResponseErrorsList,
         }),
       ).annotate({ identifier: "CdcPrerequisitesResponse" });
     case 6:
@@ -3406,14 +4103,18 @@ function __c0(j: number): any {
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
-          created_via: S.optional(S.NullOr(S.String)),
+          created_via: S.optional(S.NullOr(ExternalDataSourceCreatedViaEnum)),
           client_secret: S.optional(S.String.pipe(T.SensitiveValue({}))),
           account_id: S.optional(S.String),
           prefix: S.optional(S.NullOr(S.String)),
           description: S.optional(S.NullOr(S.String)),
           direct_query_enabled: S.optional(S.Boolean),
           auto_sync_new_schemas: S.optional(S.Boolean),
-          auto_sync_schema_patterns: S.optional(S.NullOr(__S(6))),
+          auto_sync_schema_patterns: S.optional(
+            S.NullOr(
+              CreateExternalDataSourcesCheckCdcPrerequisitesForSourceRequestAutoSyncSchemaPatternsList,
+            ),
+          ),
           job_inputs: S.optional(S.Unknown),
         }).pipe(
           T.Http({
@@ -3440,7 +4141,7 @@ function __c1(j: number): any {
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           source_type: S.String,
-          credentials: __S(9),
+          credentials: CreateExternalDataSourcesCredentialAccountRequestCredentialsMap,
           api_version: S.optional(S.NullOr(S.String)),
         }).pipe(
           T.Http({
@@ -3458,17 +4159,17 @@ function __c1(j: number): any {
           value: S.String,
           display_name: S.String,
           is_primary: S.Boolean,
-          badges: __S(1),
+          badges: IntegrationAccountBadgesList,
           group: S.NullOr(S.String),
           secondary_text: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "IntegrationAccount" });
     case 4:
-      return S.Array(__S(11));
+      return S.Array(IntegrationAccount);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          accounts: __S(12),
+          accounts: IntegrationAccountsResponseAccountsList,
         }),
       ).annotate({
         identifier: "IntegrationAccountsResponse",
@@ -3477,7 +4178,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
-          source_type: S.optional(S.String),
+          source_type: S.optional(ExternalDataSourceTypeEnum),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3516,9 +4217,9 @@ function __c2(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          draft_status: S.String,
+          draft_status: DraftStatusEnum,
           manifest_json: S.NullOr(S.String),
-          resource_names: __S(1),
+          resource_names: DraftCustomManifestResponseResourceNamesList,
           attempts: S.Number,
           error: S.NullOr(S.String),
         }),
@@ -3529,8 +4230,8 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
-          source_type: S.String,
-          payload: S.optional(__S(0)),
+          source_type: ExternalDataSourceTypeEnum,
+          payload: S.optional(CreateExternalDataSourcesPreviewResourceRequestPayloadMap),
           resource_name: S.String,
           limit: S.optional(S.Number),
         }).pipe(
@@ -3544,7 +4245,7 @@ function __c2(j: number): any {
         identifier: "CreateExternalDataSourcesPreviewResourceRequest",
       });
     case 3:
-      return S.Array(__S(0));
+      return S.Array(SourcePreviewResponseRowsItemMap);
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -3553,13 +4254,13 @@ function __c2(j: number): any {
         }),
       ).annotate({ identifier: "SourcePreviewColumn" });
     case 5:
-      return S.Array(__S(20));
+      return S.Array(SourcePreviewColumn);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          rows: __S(19),
+          rows: SourcePreviewResponseRowsList,
           row_count: S.Number,
-          columns: __S(21),
+          columns: SourcePreviewResponseColumnsList,
           error: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "SourcePreviewResponse" });
@@ -3568,14 +4269,16 @@ function __c2(j: number): any {
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
-          created_via: S.optional(S.NullOr(S.String)),
+          created_via: S.optional(S.NullOr(ExternalDataSourceCreatedViaEnum)),
           client_secret: S.optional(S.String.pipe(T.SensitiveValue({}))),
           account_id: S.optional(S.String),
           prefix: S.optional(S.NullOr(S.String)),
           description: S.optional(S.NullOr(S.String)),
           direct_query_enabled: S.optional(S.Boolean),
           auto_sync_new_schemas: S.optional(S.Boolean),
-          auto_sync_schema_patterns: S.optional(S.NullOr(__S(6))),
+          auto_sync_schema_patterns: S.optional(
+            S.NullOr(CreateExternalDataSourcesReloadRequestAutoSyncSchemaPatternsList),
+          ),
           job_inputs: S.optional(S.Unknown),
         }).pipe(
           T.Http({
@@ -3619,8 +4322,8 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
-          source_type: S.String,
-          payload: S.optional(__S(0)),
+          source_type: ExternalDataSourceTypeEnum,
+          payload: S.optional(CreateExternalDataSourcesSetupRequestPayloadMap),
           prefix: S.optional(S.NullOr(S.String)),
           description: S.optional(S.NullOr(S.String)),
           direct_query_enabled: S.optional(S.Boolean),
@@ -3640,28 +4343,30 @@ function __c3(j: number): any {
           success: S.Boolean,
           webhook_url: S.NullOr(S.String),
           error: S.NullOr(S.String),
-          pending_inputs: __S(1),
+          pending_inputs: SourceSetupWebhookPendingInputsList,
         }),
       ).annotate({ identifier: "SourceSetupWebhook" });
     case 4:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          webhook: S.optional(__S(27)),
+          webhook: S.optional(SourceSetupWebhook),
         }),
       ).annotate({ identifier: "SourceSetupResponse" });
     case 5:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
-          created_via: S.optional(S.NullOr(S.String)),
+          created_via: S.optional(S.NullOr(ExternalDataSourceCreatedViaEnum)),
           client_secret: S.optional(S.String.pipe(T.SensitiveValue({}))),
           account_id: S.optional(S.String),
           prefix: S.optional(S.NullOr(S.String)),
           description: S.optional(S.NullOr(S.String)),
           direct_query_enabled: S.optional(S.Boolean),
           auto_sync_new_schemas: S.optional(S.Boolean),
-          auto_sync_schema_patterns: S.optional(S.NullOr(__S(6))),
+          auto_sync_schema_patterns: S.optional(
+            S.NullOr(CreateExternalDataSourcesSourcePrefixRequestAutoSyncSchemaPatternsList),
+          ),
           job_inputs: S.optional(S.Unknown),
         }).pipe(
           T.Http({
@@ -3677,8 +4382,8 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
-          source_type: S.String,
-          payload: __S(0),
+          source_type: ExternalDataSourceTypeEnum,
+          payload: CreateExternalDataSourcesStoreCredentialsRequestPayloadMap,
         }).pipe(
           T.Http({
             method: "POST",
@@ -3713,36 +4418,40 @@ function __c4(j: number): any {
         identifier: "ExternalDataSourceBulkUpdateSchemaRowFiltersItem",
       });
     case 1:
-      return S.Array(__S(32));
+      return S.Array(ExternalDataSourceBulkUpdateSchemaRowFiltersItem);
     case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           should_sync: S.optional(S.Boolean),
-          sync_type: S.optional(S.NullOr(S.String)),
+          sync_type: S.optional(S.NullOr(ExternalDataSchemaSyncTypeEnum)),
           incremental_field: S.optional(S.NullOr(S.String)),
           incremental_field_type: S.optional(S.NullOr(S.String)),
           sync_frequency: S.optional(S.NullOr(S.String)),
           sync_time_of_day: S.optional(S.NullOr(S.String)),
           full_refresh_interval_days: S.optional(S.NullOr(S.Number)),
           full_refresh_time_of_day: S.optional(S.NullOr(S.String)),
-          primary_key_columns: S.optional(S.NullOr(__S(1))),
-          cdc_table_mode: S.optional(S.NullOr(S.String)),
-          enabled_columns: S.optional(S.NullOr(__S(1))),
-          row_filters: S.optional(S.NullOr(__S(33))),
+          primary_key_columns: S.optional(
+            S.NullOr(ExternalDataSourceBulkUpdateSchemaPrimaryKeyColumnsList),
+          ),
+          cdc_table_mode: S.optional(S.NullOr(CdcTableModeEnum)),
+          enabled_columns: S.optional(
+            S.NullOr(ExternalDataSourceBulkUpdateSchemaEnabledColumnsList),
+          ),
+          row_filters: S.optional(S.NullOr(ExternalDataSourceBulkUpdateSchemaRowFiltersList)),
           apply_sync_defaults: S.optional(S.Boolean),
         }),
       ).annotate({
         identifier: "ExternalDataSourceBulkUpdateSchema",
       });
     case 3:
-      return S.Array(__S(34));
+      return S.Array(ExternalDataSourceBulkUpdateSchema);
     case 4:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
-          schemas: __S(35),
+          schemas: ExternalDataSourcesBulkUpdateSchemasPartialUpdateRequestSchemasList,
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3764,7 +4473,7 @@ function __c4(j: number): any {
         identifier: "ExternalDataSchemaAvailableColumnsItem",
       });
     case 6:
-      return S.Array(__S(37));
+      return S.Array(ExternalDataSchemaAvailableColumnsItem);
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -3776,7 +4485,7 @@ function __c4(j: number): any {
           requires_exact_column_metadata: S.optional(S.Boolean),
           user_access_level: S.optional(S.NullOr(S.String)),
           api_version: S.optional(S.NullOr(S.String)),
-          supported_api_versions: S.optional(__S(1)),
+          supported_api_versions: S.optional(ExternalDataSchemaSourceSupportedApiVersionsList),
         }),
       ).annotate({ identifier: "ExternalDataSchemaSource" });
   }
@@ -3799,39 +4508,41 @@ function __c5(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           label: S.optional(S.NullOr(S.String)),
-          table: S.optional(S.NullOr(__S(0))),
+          table: S.optional(S.NullOr(ExternalDataSchemaTableMap)),
           should_sync: S.optional(S.Boolean),
           last_synced_at: S.optional(S.NullOr(S.String)),
           latest_error: S.optional(S.NullOr(S.String)),
           incremental: S.optional(S.Boolean),
           status: S.optional(S.NullOr(S.String)),
-          sync_type: S.optional(S.NullOr(S.String)),
+          sync_type: S.optional(S.NullOr(ExternalDataSchemaSyncTypeEnum)),
           incremental_field: S.optional(S.NullOr(S.String)),
-          incremental_field_type: S.optional(S.NullOr(S.String)),
+          incremental_field_type: S.optional(S.NullOr(IncrementalFieldTypeEnum)),
           incremental_field_lookback_seconds: S.optional(S.NullOr(S.Number)),
-          sync_frequency: S.optional(S.NullOr(S.String)),
+          sync_frequency: S.optional(S.NullOr(ExternalDataSchemaSyncFrequencyEnum)),
           sync_time_of_day: S.optional(S.NullOr(S.String)),
           full_refresh_interval_days: S.optional(S.NullOr(S.Number)),
           full_refresh_time_of_day: S.optional(S.NullOr(S.String)),
           next_full_refresh_at: S.optional(S.NullOr(S.String)),
           description: S.optional(S.NullOr(S.String)),
-          primary_key_columns: S.optional(S.NullOr(__S(1))),
-          cdc_table_mode: S.optional(S.NullOr(S.String)),
-          incremental_sync_blocked: S.optional(S.NullOr(S.String)),
-          enabled_columns: S.optional(S.NullOr(__S(1))),
-          row_filters: S.optional(S.NullOr(__S(33))),
-          available_columns: S.optional(__S(38)),
+          primary_key_columns: S.optional(S.NullOr(ExternalDataSchemaPrimaryKeyColumnsList)),
+          cdc_table_mode: S.optional(S.NullOr(CdcTableModeEnum)),
+          incremental_sync_blocked: S.optional(S.NullOr(IncrementalSyncBlockedReasonEnum)),
+          enabled_columns: S.optional(S.NullOr(ExternalDataSchemaEnabledColumnsList)),
+          row_filters: S.optional(S.NullOr(ExternalDataSchemaRowFiltersList)),
+          available_columns: S.optional(ExternalDataSchemaAvailableColumnsList),
           source_column_metadata_available: S.optional(S.Boolean),
-          source: S.optional(S.NullOr(__S(39))),
+          source: S.optional(S.NullOr(ExternalDataSchemaSource)),
           api_version: S.optional(S.NullOr(S.String)),
-          api_version_deprecation: S.optional(S.NullOr(__S(40))),
+          api_version_deprecation: S.optional(S.NullOr(ExternalDataSourceApiVersionDeprecation)),
           user_access_level: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "ExternalDataSchema" });
     case 2:
-      return S.Array(__S(41));
+      return S.Array(ExternalDataSchema);
     case 3:
-      return S.suspend(() => __S(42).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        ExternalDataSourcesBulkUpdateSchemasPartialUpdateResponseBodyList.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "ExternalDataSourcesBulkUpdateSchemasPartialUpdateResponse",
       });
     case 4:
@@ -3853,7 +4564,7 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           source_type: S.String,
-          auth_method: S.String,
+          auth_method: AuthMethodEnum,
           connect_url: S.String,
           instructions: S.String,
         }),
@@ -3863,14 +4574,16 @@ function __c5(j: number): any {
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
-          created_via: S.optional(S.NullOr(S.String)),
+          created_via: S.optional(S.NullOr(ExternalDataSourceCreatedViaEnum)),
           client_secret: S.optional(S.String.pipe(T.SensitiveValue({}))),
           account_id: S.optional(S.String),
           prefix: S.optional(S.NullOr(S.String)),
           description: S.optional(S.NullOr(S.String)),
           direct_query_enabled: S.optional(S.Boolean),
           auto_sync_new_schemas: S.optional(S.Boolean),
-          auto_sync_schema_patterns: S.optional(S.NullOr(__S(6))),
+          auto_sync_schema_patterns: S.optional(
+            S.NullOr(ExternalDataSourcesCreateWebhookCreateRequestAutoSyncSchemaPatternsList),
+          ),
           job_inputs: S.optional(S.Unknown),
         }).pipe(
           T.Http({
@@ -3887,14 +4600,16 @@ function __c5(j: number): any {
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
-          created_via: S.optional(S.NullOr(S.String)),
+          created_via: S.optional(S.NullOr(ExternalDataSourceCreatedViaEnum)),
           client_secret: S.optional(S.String.pipe(T.SensitiveValue({}))),
           account_id: S.optional(S.String),
           prefix: S.optional(S.NullOr(S.String)),
           description: S.optional(S.NullOr(S.String)),
           direct_query_enabled: S.optional(S.Boolean),
           auto_sync_new_schemas: S.optional(S.Boolean),
-          auto_sync_schema_patterns: S.optional(S.NullOr(__S(6))),
+          auto_sync_schema_patterns: S.optional(
+            S.NullOr(ExternalDataSourcesDeleteWebhookCreateRequestAutoSyncSchemaPatternsList),
+          ),
           job_inputs: S.optional(S.Unknown),
         }).pipe(
           T.Http({
@@ -3938,14 +4653,16 @@ function __c6(j: number): any {
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
-          created_via: S.optional(S.NullOr(S.String)),
+          created_via: S.optional(S.NullOr(ExternalDataSourceCreatedViaEnum)),
           client_secret: S.optional(S.String.pipe(T.SensitiveValue({}))),
           account_id: S.optional(S.String),
           prefix: S.optional(S.NullOr(S.String)),
           description: S.optional(S.NullOr(S.String)),
           direct_query_enabled: S.optional(S.Boolean),
           auto_sync_new_schemas: S.optional(S.Boolean),
-          auto_sync_schema_patterns: S.optional(S.NullOr(__S(6))),
+          auto_sync_schema_patterns: S.optional(
+            S.NullOr(ExternalDataSourcesDisableCdcCreateRequestAutoSyncSchemaPatternsList),
+          ),
           job_inputs: S.optional(S.Unknown),
         }).pipe(
           T.Http({
@@ -3962,14 +4679,16 @@ function __c6(j: number): any {
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
-          created_via: S.optional(S.NullOr(S.String)),
+          created_via: S.optional(S.NullOr(ExternalDataSourceCreatedViaEnum)),
           client_secret: S.optional(S.String.pipe(T.SensitiveValue({}))),
           account_id: S.optional(S.String),
           prefix: S.optional(S.NullOr(S.String)),
           description: S.optional(S.NullOr(S.String)),
           direct_query_enabled: S.optional(S.Boolean),
           auto_sync_new_schemas: S.optional(S.Boolean),
-          auto_sync_schema_patterns: S.optional(S.NullOr(__S(6))),
+          auto_sync_schema_patterns: S.optional(
+            S.NullOr(ExternalDataSourcesEnableCdcCreateRequestAutoSyncSchemaPatternsList),
+          ),
           job_inputs: S.optional(S.Unknown),
         }).pipe(
           T.Http({
@@ -3993,14 +4712,16 @@ function __c6(j: number): any {
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
-          created_via: S.optional(S.NullOr(S.String)),
+          created_via: S.optional(S.NullOr(ExternalDataSourceCreatedViaEnum)),
           client_secret: S.optional(S.String.pipe(T.SensitiveValue({}))),
           account_id: S.optional(S.String),
           prefix: S.optional(S.NullOr(S.String)),
           description: S.optional(S.NullOr(S.String)),
           direct_query_enabled: S.optional(S.Boolean),
           auto_sync_new_schemas: S.optional(S.Boolean),
-          auto_sync_schema_patterns: S.optional(S.NullOr(__S(6))),
+          auto_sync_schema_patterns: S.optional(
+            S.NullOr(ExternalDataSourcesRefreshSchemasCreateRequestAutoSyncSchemaPatternsList),
+          ),
           job_inputs: S.optional(S.Unknown),
         }).pipe(
           T.Http({
@@ -4044,14 +4765,16 @@ function __c7(j: number): any {
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
-          created_via: S.optional(S.NullOr(S.String)),
+          created_via: S.optional(S.NullOr(ExternalDataSourceCreatedViaEnum)),
           client_secret: S.optional(S.String.pipe(T.SensitiveValue({}))),
           account_id: S.optional(S.String),
           prefix: S.optional(S.NullOr(S.String)),
           description: S.optional(S.NullOr(S.String)),
           direct_query_enabled: S.optional(S.Boolean),
           auto_sync_new_schemas: S.optional(S.Boolean),
-          auto_sync_schema_patterns: S.optional(S.NullOr(__S(6))),
+          auto_sync_schema_patterns: S.optional(
+            S.NullOr(ExternalDataSourcesUpdateCdcSettingsCreateRequestAutoSyncSchemaPatternsList),
+          ),
           job_inputs: S.optional(S.Unknown),
         }).pipe(
           T.Http({
@@ -4068,14 +4791,16 @@ function __c7(j: number): any {
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
-          created_via: S.optional(S.NullOr(S.String)),
+          created_via: S.optional(S.NullOr(ExternalDataSourceCreatedViaEnum)),
           client_secret: S.optional(S.String.pipe(T.SensitiveValue({}))),
           account_id: S.optional(S.String),
           prefix: S.optional(S.NullOr(S.String)),
           description: S.optional(S.NullOr(S.String)),
           direct_query_enabled: S.optional(S.Boolean),
           auto_sync_new_schemas: S.optional(S.Boolean),
-          auto_sync_schema_patterns: S.optional(S.NullOr(__S(6))),
+          auto_sync_schema_patterns: S.optional(
+            S.NullOr(ExternalDataSourcesUpdateWebhookInputsCreateRequestAutoSyncSchemaPatternsList),
+          ),
           job_inputs: S.optional(S.Unknown),
         }).pipe(
           T.Http({
@@ -4125,26 +4850,28 @@ function __c7(j: number): any {
           id: S.optional(S.String),
           created_at: S.optional(S.String),
           created_by: S.optional(S.NullOr(S.String)),
-          created_via: S.optional(S.NullOr(S.String)),
+          created_via: S.optional(S.NullOr(ExternalDataSourceCreatedViaEnum)),
           status: S.optional(S.String),
-          source_type: S.optional(S.String),
+          source_type: S.optional(ExternalDataSourceTypeEnum),
           latest_error: S.optional(S.NullOr(S.String)),
           prefix: S.optional(S.NullOr(S.String)),
           description: S.optional(S.NullOr(S.String)),
-          access_method: S.optional(S.String),
+          access_method: S.optional(ExternalDataSourceAccessMethodEnum),
           direct_query_enabled: S.optional(S.Boolean),
           auto_sync_new_schemas: S.optional(S.Boolean),
-          auto_sync_schema_patterns: S.optional(S.NullOr(__S(1))),
-          engine: S.optional(S.NullOr(S.String)),
+          auto_sync_schema_patterns: S.optional(
+            S.NullOr(ExternalDataSourceSerializersOutputAutoSyncSchemaPatternsList),
+          ),
+          engine: S.optional(S.NullOr(EngineEnum)),
           last_run_at: S.optional(S.NullOr(S.String)),
-          schemas: S.optional(__S(19)),
+          schemas: S.optional(ExternalDataSourceSerializersOutputSchemasList),
           job_inputs: S.optional(S.Unknown),
-          revenue_analytics_config: S.optional(__S(60)),
+          revenue_analytics_config: S.optional(ExternalDataSourceRevenueAnalyticsConfig),
           user_access_level: S.optional(S.NullOr(S.String)),
           supports_webhooks: S.optional(S.Boolean),
           supports_column_selection: S.optional(S.Boolean),
           api_version: S.optional(S.NullOr(S.String)),
-          api_version_deprecation: S.optional(S.NullOr(__S(40))),
+          api_version_deprecation: S.optional(S.NullOr(ExternalDataSourceApiVersionDeprecation)),
         }),
       ).annotate({
         identifier: "ExternalDataSourceSerializersOutput",
@@ -4168,7 +4895,7 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           enabled: S.Boolean,
-          management_mode: S.optional(S.String),
+          management_mode: S.optional(ManagementModeEnum),
           slot_name: S.optional(S.String),
           publication_name: S.optional(S.String),
           lag_warning_threshold_mb: S.optional(S.Number),
@@ -4177,7 +4904,7 @@ function __c7(j: number): any {
           slot_exists: S.optional(S.Boolean),
           publication_exists: S.optional(S.Boolean),
           lag_bytes: S.optional(S.NullOr(S.Number)),
-          published_tables: S.optional(__S(1)),
+          published_tables: S.optional(CdcStatusPublishedTablesList),
         }),
       ).annotate({ identifier: "CdcStatus" });
   }
@@ -4202,7 +4929,7 @@ function __c8(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          destination_ids: __S(1),
+          destination_ids: SourceDestinationsDestinationIdsList,
         }),
       ).annotate({ identifier: "SourceDestinations" });
     case 2:
@@ -4244,7 +4971,7 @@ function __c8(j: number): any {
           name: S.String,
           enabled: S.Boolean,
           created_at: S.String,
-          status: __S(0),
+          status: WebhookHogFunctionStatusMap,
         }),
       ).annotate({ identifier: "WebhookHogFunction" });
     case 5:
@@ -4255,8 +4982,8 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           value: S.optional(S.Unknown),
-          templating: S.optional(S.String),
-          bytecode: S.optional(__S(70)),
+          templating: S.optional(HogFunctionTemplatingEnum),
+          bytecode: S.optional(InputsItemBytecodeList),
           bytecode_contract: S.optional(S.String),
           order: S.optional(S.Number),
           transpiled: S.optional(S.Unknown),
@@ -4267,13 +4994,13 @@ function __c8(j: number): any {
 function __c9(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, __S(71));
+      return S.Record(S.String, InputsItem);
     case 1:
       return S.suspend(() =>
         S.Struct({
           exists: S.Boolean,
           url: S.NullOr(S.String),
-          enabled_events: S.NullOr(__S(1)),
+          enabled_events: S.NullOr(WebhookExternalStatusEnabledEventsList),
           status: S.NullOr(S.String),
           description: S.NullOr(S.String),
           created_at: S.NullOr(S.String),
@@ -4287,13 +5014,13 @@ function __c9(j: number): any {
           supports_webhooks: S.Boolean,
           exists: S.Boolean,
           auto_creation_blocked_reason: S.NullOr(S.String),
-          hog_function: S.NullOr(__S(68)),
+          hog_function: S.NullOr(WebhookHogFunction),
           webhook_url: S.NullOr(S.String),
-          schema_mapping: __S(69),
-          inputs: S.optional(__S(72)),
-          external_status: S.NullOr(__S(73)),
-          missing_events: S.optional(__S(1)),
-          missing_inputs: S.optional(__S(1)),
+          schema_mapping: WebhookInfoResponseSchemaMappingMap,
+          inputs: S.optional(WebhookInfoResponseInputsMap),
+          external_status: S.NullOr(WebhookExternalStatus),
+          missing_events: S.optional(WebhookInfoResponseMissingEventsList),
+          missing_inputs: S.optional(WebhookInfoResponseMissingInputsList),
         }),
       ).annotate({ identifier: "WebhookInfoResponse" });
     case 3:
@@ -4312,7 +5039,7 @@ function __c9(j: number): any {
         identifier: "GetExternalDataSourcesWizardRequest",
       });
     case 4:
-      return S.Array(S.Unknown);
+      return S.Array(SourceConfigResponseFieldsItem);
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -4321,9 +5048,9 @@ function __c9(j: number): any {
         }),
       ).annotate({ identifier: "SuggestedTable" });
     case 6:
-      return S.Array(__S(77));
+      return S.Array(SuggestedTable);
     case 7:
-      return S.Array(S.Unknown);
+      return S.Array(SourceConfigResponseWebhookFieldsItem);
   }
 }
 function __c10(j: number): any {
@@ -4336,55 +5063,55 @@ function __c10(j: number): any {
         }),
       ).annotate({ identifier: "SourceVersionDeprecation" });
     case 1:
-      return S.Array(__S(80));
+      return S.Array(SourceVersionDeprecation);
     case 2:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
           label: S.String,
           description: S.optional(S.NullOr(S.String)),
-          sync_methods: __S(1),
-          incremental_fields: __S(1),
-          primary_keys: __S(1),
+          sync_methods: SourceDocumentedTableSyncMethodsList,
+          incremental_fields: SourceDocumentedTableIncrementalFieldsList,
+          primary_keys: SourceDocumentedTablePrimaryKeysList,
         }),
       ).annotate({ identifier: "SourceDocumentedTable" });
     case 3:
-      return S.Array(__S(82));
+      return S.Array(SourceDocumentedTable);
     case 4:
       return S.suspend(() =>
         S.Struct({
           caption: S.optional(S.NullOr(S.String)),
-          category: S.optional(S.NullOr(S.String)),
+          category: S.optional(S.NullOr(DataWarehouseSourceCategory)),
           disabledReason: S.optional(S.NullOr(S.String)),
           docsUrl: S.optional(S.NullOr(S.String)),
           existingSource: S.optional(S.NullOr(S.Boolean)),
           featureFlag: S.optional(S.NullOr(S.String)),
           featured: S.optional(S.NullOr(S.Boolean)),
-          fields: __S(76),
+          fields: SourceConfigResponseFieldsList,
           iconClassName: S.optional(S.NullOr(S.String)),
           iconPath: S.String,
-          keywords: S.optional(S.NullOr(__S(1))),
+          keywords: S.optional(S.NullOr(SourceConfigResponseKeywordsList)),
           label: S.optional(S.NullOr(S.String)),
-          name: S.String,
+          name: ExternalDataSourceTypeEnum,
           permissionsCaption: S.optional(S.NullOr(S.String)),
-          releaseStatus: S.optional(S.NullOr(S.String)),
-          suggestedTables: S.optional(S.NullOr(__S(78))),
+          releaseStatus: S.optional(S.NullOr(ReleaseStatus)),
+          suggestedTables: S.optional(S.NullOr(SourceConfigResponseSuggestedTablesList)),
           supportsColumnSelection: S.Boolean,
           unreleasedSource: S.optional(S.NullOr(S.Boolean)),
-          webhookFields: S.optional(S.NullOr(__S(79))),
+          webhookFields: S.optional(S.NullOr(SourceConfigResponseWebhookFieldsList)),
           webhookManualOnly: S.optional(S.NullOr(S.Boolean)),
           webhookSetupCaption: S.optional(S.NullOr(S.String)),
-          versions: __S(1),
+          versions: SourceConfigResponseVersionsList,
           defaultVersion: S.String,
           apiDocsUrl: S.optional(S.NullOr(S.String)),
-          deprecatedVersions: __S(81),
-          tables: S.optional(S.NullOr(__S(83))),
+          deprecatedVersions: SourceConfigResponseDeprecatedVersionsList,
+          tables: S.optional(S.NullOr(SourceConfigResponseTablesList)),
         }),
       ).annotate({ identifier: "SourceConfigResponse" });
     case 5:
-      return S.Record(S.String, __S(84));
+      return S.Record(S.String, SourceConfigResponse);
     case 6:
-      return S.suspend(() => __S(85).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => SourceConfigMapResponse.pipe(T.RawResponseRoot())).annotate({
         identifier: "GetExternalDataSourcesWizardResponse",
       });
     case 7:
@@ -4409,14 +5136,14 @@ function __c10(j: number): any {
 function __c11(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(61));
+      return S.Array(ExternalDataSourceSerializersOutput);
     case 1:
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.Number),
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: S.optional(__S(88)),
+          results: S.optional(PaginatedExternalDataSourceSerializersListOutputResultsList),
         }),
       ).annotate({
         identifier: "PaginatedExternalDataSourceSerializersListOutput",
@@ -4441,9 +5168,9 @@ function __c11(j: number): any {
           id: S.optional(S.String),
           schema_name: S.optional(S.NullOr(S.String)),
           prefix: S.optional(S.NullOr(S.String)),
-          engine: S.optional(S.NullOr(S.String)),
-          source_type: S.optional(S.String),
-          access_method: S.optional(S.String),
+          engine: S.optional(S.NullOr(EngineEnum)),
+          source_type: S.optional(ExternalDataSourceTypeEnum),
+          access_method: S.optional(ExternalDataSourceAccessMethodEnum),
           supports_hogql: S.optional(S.Boolean),
           is_builtin_managed_warehouse: S.optional(S.Boolean),
           description: S.optional(S.NullOr(S.String)),
@@ -4452,9 +5179,11 @@ function __c11(j: number): any {
         identifier: "ExternalDataSourceConnectionOption",
       });
     case 4:
-      return S.Array(__S(91));
+      return S.Array(ExternalDataSourceConnectionOption);
     case 5:
-      return S.suspend(() => __S(92).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        ListExternalDataSourcesConnectionsResponseBodyList.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "ListExternalDataSourcesConnectionsResponse",
       });
     case 6:
@@ -4474,7 +5203,7 @@ function __c11(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          source_type: S.String,
+          source_type: ExternalDataSourceTypeEnum,
           label: S.String,
           icon_path: S.NullOr(S.String),
         }),
@@ -4486,9 +5215,11 @@ function __c11(j: number): any {
 function __c12(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(95));
+      return S.Array(DirectConnectionSourceOption);
     case 1:
-      return S.suspend(() => __S(96).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        ListExternalDataSourcesDirectConnectionOptionsResponseBodyList.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "ListExternalDataSourcesDirectConnectionOptionsResponse",
       });
     case 2:
@@ -4498,7 +5229,7 @@ function __c12(j: number): any {
           id: S.String.pipe(T.Label()),
           after: S.optional(S.String.pipe(T.Query())),
           before: S.optional(S.String.pipe(T.Query())),
-          schemas: S.optional(__S(1).pipe(T.Query())),
+          schemas: S.optional(ListExternalDataSourcesJobsRequestSchemasList.pipe(T.Query())),
           search: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
@@ -4518,7 +5249,7 @@ function __c12(j: number): any {
           label: S.optional(S.NullOr(S.String)),
           should_sync: S.optional(S.Boolean),
           last_synced_at: S.optional(S.NullOr(S.String)),
-          sync_type: S.optional(S.NullOr(S.Unknown)),
+          sync_type: S.optional(S.NullOr(SimpleExternalDataSchemaSyncType)),
         }),
       ).annotate({ identifier: "SimpleExternalDataSchema" });
     case 4:
@@ -4529,21 +5260,23 @@ function __c12(j: number): any {
           created_by: S.NullOr(S.Number),
           finished_at: S.NullOr(S.String),
           status: S.String,
-          schema: __S(99),
+          schema: SimpleExternalDataSchema,
           rows_synced: S.NullOr(S.Number),
           latest_error: S.NullOr(S.String),
           workflow_run_id: S.NullOr(S.String),
           cdc_write_mode: S.NullOr(S.String),
           billable: S.NullOr(S.Boolean),
-          destination_ids: __S(1),
+          destination_ids: ExternalDataJobSerializersDestinationIdsList,
         }),
       ).annotate({
         identifier: "ExternalDataJobSerializers",
       });
     case 5:
-      return S.Array(__S(100));
+      return S.Array(ExternalDataJobSerializers);
     case 6:
-      return S.suspend(() => __S(101).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        ListExternalDataSourcesJobsResponseBodyList.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "ListExternalDataSourcesJobsResponse",
       });
     case 7:
@@ -4567,9 +5300,11 @@ function __c12(j: number): any {
 function __c13(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(31));
+      return S.Array(SourceCredential);
     case 1:
-      return S.suspend(() => __S(104).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        ListExternalDataSourcesStoredCredentialsResponseBodyList.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "ListExternalDataSourcesStoredCredentialsResponse",
       });
     case 2:
@@ -4577,14 +5312,16 @@ function __c13(j: number): any {
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
-          created_via: S.optional(S.NullOr(S.String)),
+          created_via: S.optional(S.NullOr(ExternalDataSourceCreatedViaEnum)),
           client_secret: S.optional(S.String.pipe(T.SensitiveValue({}))),
           account_id: S.optional(S.String),
           prefix: S.optional(S.NullOr(S.String)),
           description: S.optional(S.NullOr(S.String)),
           direct_query_enabled: S.optional(S.Boolean),
           auto_sync_new_schemas: S.optional(S.Boolean),
-          auto_sync_schema_patterns: S.optional(S.NullOr(__S(1))),
+          auto_sync_schema_patterns: S.optional(
+            S.NullOr(UpdateExternalDataSourceRequestAutoSyncSchemaPatternsList),
+          ),
           job_inputs: S.optional(S.Unknown),
         }).pipe(
           T.Http({
@@ -4601,7 +5338,9 @@ function __c13(j: number): any {
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
-          destination_ids: S.optional(S.NullOr(__S(6))),
+          destination_ids: S.optional(
+            S.NullOr(UpdateExternalDataSourcesDestinationsPartialRequestDestinationIdsList),
+          ),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -4617,14 +5356,16 @@ function __c13(j: number): any {
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
-          created_via: S.optional(S.NullOr(S.String)),
+          created_via: S.optional(S.NullOr(ExternalDataSourceCreatedViaEnum)),
           client_secret: S.optional(S.String.pipe(T.SensitiveValue({}))),
           account_id: S.optional(S.String),
           prefix: S.optional(S.NullOr(S.String)),
           description: S.optional(S.NullOr(S.String)),
           direct_query_enabled: S.optional(S.Boolean),
           auto_sync_new_schemas: S.optional(S.Boolean),
-          auto_sync_schema_patterns: S.optional(S.NullOr(__S(6))),
+          auto_sync_schema_patterns: S.optional(
+            S.NullOr(UpdateExternalDataSourcesPartialRequestAutoSyncSchemaPatternsList),
+          ),
           job_inputs: S.optional(S.Unknown),
         }).pipe(
           T.Http({
@@ -4641,14 +5382,18 @@ function __c13(j: number): any {
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
-          created_via: S.optional(S.NullOr(S.String)),
+          created_via: S.optional(S.NullOr(ExternalDataSourceCreatedViaEnum)),
           client_secret: S.optional(S.String.pipe(T.SensitiveValue({}))),
           account_id: S.optional(S.String),
           prefix: S.optional(S.NullOr(S.String)),
           description: S.optional(S.NullOr(S.String)),
           direct_query_enabled: S.optional(S.Boolean),
           auto_sync_new_schemas: S.optional(S.Boolean),
-          auto_sync_schema_patterns: S.optional(S.NullOr(__S(6))),
+          auto_sync_schema_patterns: S.optional(
+            S.NullOr(
+              UpdateExternalDataSourcesRevenueAnalyticsConfigPartialRequestAutoSyncSchemaPatternsList,
+            ),
+          ),
           job_inputs: S.optional(S.Unknown),
         }).pipe(
           T.Http({
@@ -4660,42 +5405,5 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "UpdateExternalDataSourcesRevenueAnalyticsConfigPartialRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
-    case 9:
-      return __c9(i & 7);
-    case 10:
-      return __c10(i & 7);
-    case 11:
-      return __c11(i & 7);
-    case 12:
-      return __c12(i & 7);
-    case 13:
-      return __c13(i & 7);
   }
 }

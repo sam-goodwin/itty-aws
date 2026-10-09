@@ -6,8 +6,6 @@ import * as S from "@distilled.cloud/core/schema";
 import { WhopProtocol, type WhopOpError, type WhopOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { WhopOpError, WhopOpContext };
 
@@ -35,6 +33,11 @@ export interface GetRecommendedActionRequest {
   /** Account ID, prefixed `biz_`. Defaults to the API key's own account. */
   account_id?: string;
 }
+const GetRecommendedActionRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<GetRecommendedActionRequest>;
+
 /** Where the run step currently stands, or `null` when the chain has not been run */
 export type AccountRecommendedActionChainStepStatus =
   | "pending"
@@ -42,6 +45,8 @@ export type AccountRecommendedActionChainStepStatus =
   | "running"
   | "succeeded"
   | "failed";
+const AccountRecommendedActionChainStepStatus = S.String;
+
 export interface AccountRecommendedActionChainStep {
   /** The action definition key this step runs; new values may be added, so handle unknown actions gracefully */
   action: string;
@@ -66,7 +71,17 @@ export interface AccountRecommendedActionChainStep {
   /** Headline for the step */
   title: string;
 }
+const AccountRecommendedActionChainStep = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<AccountRecommendedActionChainStep>;
+
 export type AccountRecommendedActionChainActionsList = Array<AccountRecommendedActionChainStep>;
+const AccountRecommendedActionChainActionsList = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<AccountRecommendedActionChainActionsList>;
+
 export interface AccountRecommendedActionChain {
   actions: AccountRecommendedActionChainActionsList;
   /** What running the chain accomplishes */
@@ -78,12 +93,22 @@ export interface AccountRecommendedActionChain {
   /** Headline for the chain */
   title: string;
 }
+const AccountRecommendedActionChain = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<AccountRecommendedActionChain>;
+
 export interface ListRecommendedActionExecutionsRequest {
   /** Chain ID from the list endpoint. */
   id: string;
   /** Account ID, prefixed `biz_`. Defaults to the API key's own account. */
   account_id?: string;
 }
+const ListRecommendedActionExecutionsRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<ListRecommendedActionExecutionsRequest>;
+
 /** Where the step currently stands */
 export type RecommendedActionExecutionStatus =
   | "pending"
@@ -91,6 +116,8 @@ export type RecommendedActionExecutionStatus =
   | "running"
   | "succeeded"
   | "failed";
+const RecommendedActionExecutionStatus = S.String;
+
 export interface RecommendedActionExecution {
   /** The action definition key the step ran */
   action: string;
@@ -107,23 +134,53 @@ export interface RecommendedActionExecution {
   /** Where the step currently stands */
   status: RecommendedActionExecutionStatus;
 }
+const RecommendedActionExecution = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<RecommendedActionExecution>;
+
 /** One entry per run step, in position order. */
 export type ListRecommendedActionExecutionsResponseExecutionsList =
   Array<RecommendedActionExecution>;
+const ListRecommendedActionExecutionsResponseExecutionsList = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<ListRecommendedActionExecutionsResponseExecutionsList>;
+
 export interface ListRecommendedActionExecutionsResponse {
   /** The chain these executions belong to. */
   chain_id: string;
   /** One entry per run step, in position order. */
   executions: ListRecommendedActionExecutionsResponseExecutionsList;
 }
+const ListRecommendedActionExecutionsResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<ListRecommendedActionExecutionsResponse>;
+
 export interface ListRecommendedActionsRequest {
   /** Account ID, prefixed `biz_`. Defaults to the API key's own account. */
   account_id?: string;
 }
+const ListRecommendedActionsRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<ListRecommendedActionsRequest>;
+
 export type ListRecommendedActionsResponseDataList = Array<AccountRecommendedActionChain>;
+const ListRecommendedActionsResponseDataList = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<ListRecommendedActionsResponseDataList>;
+
 export interface ListRecommendedActionsResponse {
   data: ListRecommendedActionsResponseDataList;
 }
+const ListRecommendedActionsResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<ListRecommendedActionsResponse>;
+
 export interface RunRecommendedActionRequest {
   /** Chain ID from the list endpoint, e.g. `rac_seed_start_selling_9f2c1a7b04`. */
   id: string;
@@ -132,11 +189,23 @@ export interface RunRecommendedActionRequest {
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
+const RunRecommendedActionRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<RunRecommendedActionRequest>;
+
 export type RunRecommendedActionResponseExecution = "redirect" | "executed";
+const RunRecommendedActionResponseExecution = S.String;
+
 export interface RunRecommendedActionResponse {
   chain_id: string;
   execution: RunRecommendedActionResponseExecution;
 }
+const RunRecommendedActionResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<RunRecommendedActionResponse>;
+
 export type GetRecommendedActionError = NotFound | WhopOpError;
 /** Retrieve Action Chain Retrieves a recommended action chain by id, including chains that have already been run. Seeded chains are reconstructed from their hard-coded chain; generated chains are read from the account's stored chain, with each step's filled-in input. */
 export const getRecommendedAction: API.OperationMethod<
@@ -145,8 +214,8 @@ export const getRecommendedAction: API.OperationMethod<
   GetRecommendedActionError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<GetRecommendedActionRequest>,
-  output: __S(3) as any as S.Schema<AccountRecommendedActionChain>,
+  input: GetRecommendedActionRequest,
+  output: AccountRecommendedActionChain,
   errors: [NotFound],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -160,8 +229,8 @@ export const listRecommendedActionExecutions: API.OperationMethod<
   ListRecommendedActionExecutionsError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4) as any as S.Schema<ListRecommendedActionExecutionsRequest>,
-  output: __S(7) as any as S.Schema<ListRecommendedActionExecutionsResponse>,
+  input: ListRecommendedActionExecutionsRequest,
+  output: ListRecommendedActionExecutionsResponse,
   errors: [NotFound],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -175,8 +244,8 @@ export const listRecommendedActions: API.OperationMethod<
   ListRecommendedActionsError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8) as any as S.Schema<ListRecommendedActionsRequest>,
-  output: __S(10) as any as S.Schema<ListRecommendedActionsResponse>,
+  input: ListRecommendedActionsRequest,
+  output: ListRecommendedActionsResponse,
   errors: [NotFound],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -190,8 +259,8 @@ export const runRecommendedAction: API.OperationMethod<
   RunRecommendedActionError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11) as any as S.Schema<RunRecommendedActionRequest>,
-  output: __S(12) as any as S.Schema<RunRecommendedActionResponse>,
+  input: RunRecommendedActionRequest,
+  output: RunRecommendedActionResponse,
   errors: [NotFound, Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -221,18 +290,18 @@ function __c0(j: number): any {
           output: S.NullOr(S.Unknown),
           position: S.Number,
           reasoning: S.NullOr(S.Unknown),
-          status: S.NullOr(S.String),
+          status: S.NullOr(AccountRecommendedActionChainStepStatus),
           title: S.String,
         }),
       ).annotate({
         identifier: "AccountRecommendedActionChainStep",
       });
     case 2:
-      return S.Array(__S(1));
+      return S.Array(AccountRecommendedActionChainStep);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          actions: __S(2),
+          actions: AccountRecommendedActionChainActionsList,
           description: S.String,
           id: S.String,
           reasoning: S.NullOr(S.Unknown),
@@ -259,18 +328,18 @@ function __c0(j: number): any {
           id: S.String,
           output: S.NullOr(S.Unknown),
           position: S.Number,
-          status: S.String,
+          status: RecommendedActionExecutionStatus,
         }),
       ).annotate({
         identifier: "RecommendedActionExecution",
       });
     case 6:
-      return S.Array(__S(5));
+      return S.Array(RecommendedActionExecution);
     case 7:
       return S.suspend(() =>
         S.Struct({
           chain_id: S.String,
-          executions: __S(6),
+          executions: ListRecommendedActionExecutionsResponseExecutionsList,
         }),
       ).annotate({
         identifier: "ListRecommendedActionExecutionsResponse",
@@ -288,11 +357,11 @@ function __c1(j: number): any {
         identifier: "ListRecommendedActionsRequest",
       });
     case 1:
-      return S.Array(__S(3));
+      return S.Array(AccountRecommendedActionChain);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          data: __S(9),
+          data: ListRecommendedActionsResponseDataList,
         }),
       ).annotate({
         identifier: "ListRecommendedActionsResponse",
@@ -311,23 +380,10 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           chain_id: S.String,
-          execution: S.String,
+          execution: RunRecommendedActionResponseExecution,
         }),
       ).annotate({
         identifier: "RunRecommendedActionResponse",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
   }
 }

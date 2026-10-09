@@ -5,8 +5,6 @@ import * as S from "@distilled.cloud/core/schema";
 import { PosthogProtocol, type PosthogOpError, type PosthogOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { PosthogOpError, PosthogOpContext };
 
@@ -18,8 +16,15 @@ export interface GetMessagingSuppressionsSuppressionRequest {
   /** Case-insensitive substring match on the recipient email address. */
   search?: string;
 }
+const GetMessagingSuppressionsSuppressionRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<GetMessagingSuppressionsSuppressionRequest>;
+
 /** * `BOUNCE` - Bounce * `MANUAL` - Manual * `COMPLAINT` - Complaint */
 export type SuppressionSourceEnum = "BOUNCE" | "MANUAL" | "COMPLAINT";
+const SuppressionSourceEnum = S.String;
+
 export interface MessageSuppression {
   /** Server-assigned UUID for this suppression entry. */
   id: string;
@@ -44,7 +49,14 @@ export interface MessageSuppression {
   /** When the row was last touched by any write. */
   updated_at: string;
 }
+const MessageSuppression = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<MessageSuppression>;
+
 export type PaginatedMessageSuppressionResultsList = Array<MessageSuppression>;
+const PaginatedMessageSuppressionResultsList = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<PaginatedMessageSuppressionResultsList>;
+
 /** OpenAPI shape for the paginated suppressions response. Declared so drf-spectacular emits the {count, next, previous, results} envelope on the generated client, rather than a bare array -- which the frontend actually receives at runtime. */
 export interface PaginatedMessageSuppression {
   /** Total number of suppressed recipients for the team. */
@@ -55,19 +67,39 @@ export interface PaginatedMessageSuppression {
   previous: string | null;
   results: PaginatedMessageSuppressionResultsList;
 }
+const PaginatedMessageSuppression = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<PaginatedMessageSuppression>;
+
 export interface MessagingSuppressionsAddSuppressionCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** The email address to suppress. Will not receive any messages until removed. */
   identifier: string;
 }
+const MessagingSuppressionsAddSuppressionCreateRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<MessagingSuppressionsAddSuppressionCreateRequest>;
+
 export interface MessagingSuppressionsRemoveSuppressionCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** The email address to suppress. Will not receive any messages until removed. */
   identifier: string;
 }
+const MessagingSuppressionsRemoveSuppressionCreateRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<MessagingSuppressionsRemoveSuppressionCreateRequest>;
+
 export interface MessagingSuppressionsRemoveSuppressionCreateResponse {}
+const MessagingSuppressionsRemoveSuppressionCreateResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<MessagingSuppressionsRemoveSuppressionCreateResponse>;
+
 export type GetMessagingSuppressionsSuppressionError = PosthogOpError;
 /** List suppressed email addresses for the team List suppressed recipients for the team, most recently updated first. */
 export const getMessagingSuppressionsSuppression: API.OperationMethod<
@@ -76,8 +108,8 @@ export const getMessagingSuppressionsSuppression: API.OperationMethod<
   GetMessagingSuppressionsSuppressionError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<GetMessagingSuppressionsSuppressionRequest>,
-  output: __S(3) as any as S.Schema<PaginatedMessageSuppression>,
+  input: GetMessagingSuppressionsSuppressionRequest,
+  output: PaginatedMessageSuppression,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -91,8 +123,8 @@ export const messagingSuppressionsAddSuppressionCreate: API.OperationMethod<
   MessagingSuppressionsAddSuppressionCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4) as any as S.Schema<MessagingSuppressionsAddSuppressionCreateRequest>,
-  output: __S(1) as any as S.Schema<MessageSuppression>,
+  input: MessagingSuppressionsAddSuppressionCreateRequest,
+  output: MessageSuppression,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -106,8 +138,8 @@ export const messagingSuppressionsRemoveSuppressionCreate: API.OperationMethod<
   MessagingSuppressionsRemoveSuppressionCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5) as any as S.Schema<MessagingSuppressionsRemoveSuppressionCreateRequest>,
-  output: __S(6) as any as S.Schema<MessagingSuppressionsRemoveSuppressionCreateResponse>,
+  input: MessagingSuppressionsRemoveSuppressionCreateRequest,
+  output: MessagingSuppressionsRemoveSuppressionCreateResponse,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -138,7 +170,7 @@ function __c0(j: number): any {
         S.Struct({
           id: S.String,
           identifier: S.String,
-          source: S.String,
+          source: SuppressionSourceEnum,
           reason: S.NullOr(S.String),
           transient_bounce_count: S.Number,
           last_bounce_at: S.NullOr(S.String),
@@ -150,14 +182,14 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "MessageSuppression" });
     case 2:
-      return S.Array(__S(1));
+      return S.Array(MessageSuppression);
     case 3:
       return S.suspend(() =>
         S.Struct({
           count: S.Number,
           next: S.NullOr(S.String),
           previous: S.NullOr(S.String),
-          results: __S(2),
+          results: PaginatedMessageSuppressionResultsList,
         }),
       ).annotate({
         identifier: "PaginatedMessageSuppression",
@@ -196,16 +228,5 @@ function __c0(j: number): any {
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "MessagingSuppressionsRemoveSuppressionCreateResponse",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
   }
 }

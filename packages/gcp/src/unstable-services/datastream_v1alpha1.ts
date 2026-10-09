@@ -7,8 +7,6 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -66,15 +64,29 @@ export class NotFound
 
 /** The request message for Operations.CancelOperation. */
 export interface CancelOperationRequest {}
+const CancelOperationRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<CancelOperationRequest>;
+
 export interface CancelProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be cancelled. */
   name: string;
   /** Request body */
   body?: CancelOperationRequest;
 }
+const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<CancelProjectsLocationsOperationsRequest>;
+
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
+const Empty = CancelOperationRequest as any as S.Schema<Empty>;
+
 export type StringMap = { [key: string]: string | undefined };
+const StringMap = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<StringMap>;
+
 /** Oracle database profile. */
 export interface OracleProfile {
   /** Port for the Oracle connection, default value is 1521. */
@@ -90,10 +102,14 @@ export interface OracleProfile {
   /** Required. Hostname for the Oracle connection. */
   hostname?: string;
 }
+const OracleProfile = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<OracleProfile>;
+
 /** Private Connectivity */
 export interface PrivateConnectivity {
   privateConnectionName?: string;
 }
+const PrivateConnectivity = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<PrivateConnectivity>;
+
 /** Static IP address connectivity. */
 export type StaticServiceIpConnectivity = CancelOperationRequest;
 /** Cloud Storage bucket profile. */
@@ -103,6 +119,8 @@ export interface GcsProfile {
   /** Required. The full project and resource path for Cloud Storage bucket including the name. */
   bucketName?: string;
 }
+const GcsProfile = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<GcsProfile>;
+
 /** Forward SSH Tunnel connectivity. */
 export interface ForwardSshTunnelConnectivity {
   /** Required. Username for the SSH tunnel. */
@@ -116,6 +134,11 @@ export interface ForwardSshTunnelConnectivity {
   /** Input only. SSH password. */
   password?: string;
 }
+const ForwardSshTunnelConnectivity = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<ForwardSshTunnelConnectivity>;
+
 /** No connectivity settings. */
 export type NoConnectivitySettings = CancelOperationRequest;
 /** MySQL SSL configuration information. */
@@ -133,6 +156,8 @@ export interface MysqlSslConfig {
   /** Input only. PEM-encoded certificate that will be used by the replica to authenticate against the source database server. If this field is used then the 'client_key' and the 'ca_certificate' fields are mandatory. */
   clientCertificate?: string;
 }
+const MysqlSslConfig = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<MysqlSslConfig>;
+
 /** MySQL database profile. */
 export interface MysqlProfile {
   /** Required. Input only. Password for the MySQL connection. */
@@ -146,6 +171,8 @@ export interface MysqlProfile {
   /** Required. Username for the MySQL connection. */
   username?: string;
 }
+const MysqlProfile = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<MysqlProfile>;
+
 export interface ConnectionProfile {
   /** Output only. The create time of the resource. */
   createTime?: string;
@@ -172,6 +199,8 @@ export interface ConnectionProfile {
   /** MySQL ConnectionProfile configuration. */
   mysqlProfile?: MysqlProfile;
 }
+const ConnectionProfile = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<ConnectionProfile>;
+
 export interface CreateProjectsLocationsConnectionProfilesRequest {
   /** Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
@@ -182,8 +211,17 @@ export interface CreateProjectsLocationsConnectionProfilesRequest {
   /** Request body */
   body?: ConnectionProfile;
 }
+const CreateProjectsLocationsConnectionProfilesRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<CreateProjectsLocationsConnectionProfilesRequest>;
+
 export type DocumentMap = { [key: string]: unknown | undefined };
+const DocumentMap = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<DocumentMap>;
+
 export type DocumentMapList = Array<DocumentMap>;
+const DocumentMapList = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<DocumentMapList>;
+
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
@@ -193,6 +231,8 @@ export interface Status {
   /** The status code, which should be an enum value of google.rpc.Code. */
   code?: number;
 }
+const Status = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<Status>;
+
 /** This resource represents a long-running operation that is the result of a network API call. */
 export interface Operation {
   /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
@@ -206,6 +246,8 @@ export interface Operation {
   /** Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any. */
   metadata?: DocumentMap;
 }
+const Operation = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<Operation>;
+
 /** The VPC Peering configuration is used to create VPC peering between Datastream and the consumer's VPC. */
 export interface VpcPeeringConfig {
   /** Required. fully qualified name of the VPC Datastream will peer to. */
@@ -213,6 +255,8 @@ export interface VpcPeeringConfig {
   /** Required. A free subnet for peering. (CIDR of /29) */
   subnet?: string;
 }
+const VpcPeeringConfig = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<VpcPeeringConfig>;
+
 export type PrivateConnectionStateEnum =
   | "STATE_UNSPECIFIED"
   | "CREATING"
@@ -220,6 +264,8 @@ export type PrivateConnectionStateEnum =
   | "FAILED"
   | "DELETING"
   | "FAILED_TO_DELETE";
+const PrivateConnectionStateEnum = S.String;
+
 /** Represent a user-facing Error. */
 export interface Datastream_Error {
   /** A unique identifier for this specific error, allowing it to be traced throughout the system in logs and API responses. */
@@ -233,6 +279,8 @@ export interface Datastream_Error {
   /** Additional information about the error. */
   details?: StringMap;
 }
+const Datastream_Error = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<Datastream_Error>;
+
 /** The PrivateConnection resource is used to establish private connectivity between Datastream and a customer's network. */
 export interface PrivateConnection {
   /** Labels. */
@@ -252,6 +300,8 @@ export interface PrivateConnection {
   /** Output only. The create time of the resource. */
   createTime?: string;
 }
+const PrivateConnection = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<PrivateConnection>;
+
 export interface CreateProjectsLocationsPrivateConnectionsRequest {
   /** Required. The private connectivity identifier. */
   privateConnectionId?: string;
@@ -262,6 +312,11 @@ export interface CreateProjectsLocationsPrivateConnectionsRequest {
   /** Request body */
   body?: PrivateConnection;
 }
+const CreateProjectsLocationsPrivateConnectionsRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<CreateProjectsLocationsPrivateConnectionsRequest>;
+
 /** The Route resource is the child of the PrivateConnection resource. It used to define a route for a PrivateConnection setup. */
 export interface Route {
   /** Required. Display name. */
@@ -279,6 +334,8 @@ export interface Route {
   /** Required. Destination address for connection */
   destinationAddress?: string;
 }
+const Route = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<Route>;
+
 export interface CreateProjectsLocationsPrivateConnectionsRoutesRequest {
   /** Required. The parent that owns the collection of Routes. */
   parent: string;
@@ -289,6 +346,11 @@ export interface CreateProjectsLocationsPrivateConnectionsRoutesRequest {
   /** Request body */
   body?: Route;
 }
+const CreateProjectsLocationsPrivateConnectionsRoutesRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<CreateProjectsLocationsPrivateConnectionsRoutesRequest>;
+
 /** Configuration to drop large object values. */
 export type DropLargeObjects = CancelOperationRequest;
 /** Oracle Column. */
@@ -312,7 +374,11 @@ export interface OracleColumn {
   /** Column encoding. */
   encoding?: string;
 }
+const OracleColumn = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<OracleColumn>;
+
 export type OracleColumnList = Array<OracleColumn>;
+const OracleColumnList = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<OracleColumnList>;
+
 /** Oracle table. */
 export interface OracleTable {
   /** Table name. */
@@ -320,7 +386,11 @@ export interface OracleTable {
   /** Oracle columns in the schema. When unspecified as part of inclue/exclude lists, includes/excludes everything. */
   oracleColumns?: OracleColumnList;
 }
+const OracleTable = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<OracleTable>;
+
 export type OracleTableList = Array<OracleTable>;
+const OracleTableList = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<OracleTableList>;
+
 /** Oracle schema. */
 export interface OracleSchema {
   /** Schema name. */
@@ -328,12 +398,18 @@ export interface OracleSchema {
   /** Tables in the schema. */
   oracleTables?: OracleTableList;
 }
+const OracleSchema = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<OracleSchema>;
+
 export type OracleSchemaList = Array<OracleSchema>;
+const OracleSchemaList = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<OracleSchemaList>;
+
 /** Oracle database structure. */
 export interface OracleRdbms {
   /** Oracle schemas/databases in the database server. */
   oracleSchemas?: OracleSchemaList;
 }
+const OracleRdbms = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<OracleRdbms>;
+
 /** Oracle data source configuration */
 export interface OracleSourceConfig {
   /** Drop large object values. */
@@ -343,6 +419,8 @@ export interface OracleSourceConfig {
   /** Oracle objects to include in the stream. */
   allowlist?: OracleRdbms;
 }
+const OracleSourceConfig = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<OracleSourceConfig>;
+
 /** MySQL Column. */
 export interface MysqlColumn {
   /** The MySQL data type. Full data types list can be found here: https://dev.mysql.com/doc/refman/8.0/en/data-types.html */
@@ -360,7 +438,11 @@ export interface MysqlColumn {
   /** Whether or not the column represents a primary key. */
   primaryKey?: boolean;
 }
+const MysqlColumn = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<MysqlColumn>;
+
 export type MysqlColumnList = Array<MysqlColumn>;
+const MysqlColumnList = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<MysqlColumnList>;
+
 /** MySQL table. */
 export interface MysqlTable {
   /** MySQL columns in the database. When unspecified as part of include/exclude lists, includes/excludes everything. */
@@ -368,7 +450,11 @@ export interface MysqlTable {
   /** Table name. */
   tableName?: string;
 }
+const MysqlTable = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<MysqlTable>;
+
 export type MysqlTableList = Array<MysqlTable>;
+const MysqlTableList = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<MysqlTableList>;
+
 /** MySQL database. */
 export interface MysqlDatabase {
   /** Tables in the database. */
@@ -376,12 +462,18 @@ export interface MysqlDatabase {
   /** Database name. */
   databaseName?: string;
 }
+const MysqlDatabase = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<MysqlDatabase>;
+
 export type MysqlDatabaseList = Array<MysqlDatabase>;
+const MysqlDatabaseList = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<MysqlDatabaseList>;
+
 /** MySQL database structure */
 export interface MysqlRdbms {
   /** Mysql databases on the server */
   mysqlDatabases?: MysqlDatabaseList;
 }
+const MysqlRdbms = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<MysqlRdbms>;
+
 /** MySQL source configuration */
 export interface MysqlSourceConfig {
   /** MySQL objects to retrieve from the source. */
@@ -389,6 +481,8 @@ export interface MysqlSourceConfig {
   /** MySQL objects to exclude from the stream. */
   rejectlist?: MysqlRdbms;
 }
+const MysqlSourceConfig = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<MysqlSourceConfig>;
+
 /** The configuration of the stream source. */
 export interface SourceConfig {
   /** Oracle data source configuration */
@@ -398,7 +492,11 @@ export interface SourceConfig {
   /** Required. Source connection profile identifier. */
   sourceConnectionProfileName?: string;
 }
+const SourceConfig = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<SourceConfig>;
+
 export type Datastream_ErrorList = Array<Datastream_Error>;
+const Datastream_ErrorList = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<Datastream_ErrorList>;
+
 export type StreamStateEnum =
   | "STATE_UNSPECIFIED"
   | "CREATED"
@@ -409,6 +507,8 @@ export type StreamStateEnum =
   | "FAILED_PERMANENTLY"
   | "STARTING"
   | "DRAINING";
+const StreamStateEnum = S.String;
+
 /** Backfill strategy to disable automatic backfill for the Stream's objects. */
 export type BackfillNoneStrategy = CancelOperationRequest;
 /** Backfill strategy to automatically backfill the Stream's objects. Specific objects can be excluded. */
@@ -418,14 +518,20 @@ export interface BackfillAllStrategy {
   /** MySQL data source objects to avoid backfilling. */
   mysqlExcludedObjects?: MysqlRdbms;
 }
+const BackfillAllStrategy = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<BackfillAllStrategy>;
+
 export type JsonFileFormatSchemaFileFormatEnum =
   | "SCHEMA_FILE_FORMAT_UNSPECIFIED"
   | "NO_SCHEMA_FILE"
   | "AVRO_SCHEMA_FILE";
+const JsonFileFormatSchemaFileFormatEnum = S.String;
+
 export type JsonFileFormatCompressionEnum =
   | "JSON_COMPRESSION_UNSPECIFIED"
   | "NO_COMPRESSION"
   | "GZIP";
+const JsonFileFormatCompressionEnum = S.String;
+
 /** JSON file format configuration. */
 export interface JsonFileFormat {
   /** The schema file format along JSON data files. */
@@ -433,7 +539,11 @@ export interface JsonFileFormat {
   /** Compression of the loaded JSON file. */
   compression?: JsonFileFormatCompressionEnum | (string & {});
 }
+const JsonFileFormat = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<JsonFileFormat>;
+
 export type GcsDestinationConfigGcsFileFormatEnum = "GCS_FILE_FORMAT_UNSPECIFIED" | "AVRO";
+const GcsDestinationConfigGcsFileFormatEnum = S.String;
+
 /** AVRO file format configuration. */
 export type AvroFileFormat = CancelOperationRequest;
 /** Google Cloud Storage destination configuration */
@@ -451,6 +561,8 @@ export interface GcsDestinationConfig {
   /** AVRO file format configuration. */
   avroFileFormat?: CancelOperationRequest;
 }
+const GcsDestinationConfig = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<GcsDestinationConfig>;
+
 /** The configuration of the stream destination. */
 export interface DestinationConfig {
   /** GCS destination configuration. */
@@ -458,6 +570,8 @@ export interface DestinationConfig {
   /** Required. Destination connection profile identifier. */
   destinationConnectionProfileName?: string;
 }
+const DestinationConfig = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<DestinationConfig>;
+
 export interface Stream {
   /** Required. Source connection profile configuration. */
   sourceConfig?: SourceConfig;
@@ -484,6 +598,8 @@ export interface Stream {
   /** Labels. */
   labels?: StringMap;
 }
+const Stream = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<Stream>;
+
 export interface CreateProjectsLocationsStreamsRequest {
   /** Optional. Only validate the stream, but do not create any resources. The default is false. */
   validateOnly?: boolean;
@@ -498,16 +614,31 @@ export interface CreateProjectsLocationsStreamsRequest {
   /** Request body */
   body?: Stream;
 }
+const CreateProjectsLocationsStreamsRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  4,
+) as any as S.Schema<CreateProjectsLocationsStreamsRequest>;
+
 export interface DeleteProjectsLocationsConnectionProfilesRequest {
   /** Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
   /** Required. The name of the connection profile resource to delete. */
   name: string;
 }
+const DeleteProjectsLocationsConnectionProfilesRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  5,
+) as any as S.Schema<DeleteProjectsLocationsConnectionProfilesRequest>;
+
 export interface DeleteProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
+const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  6,
+) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>;
+
 export interface DeleteProjectsLocationsPrivateConnectionsRequest {
   /** Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
@@ -516,18 +647,33 @@ export interface DeleteProjectsLocationsPrivateConnectionsRequest {
   /** Optional. If set to true, any child routes that belong to this PrivateConnection will also be deleted. */
   force?: boolean;
 }
+const DeleteProjectsLocationsPrivateConnectionsRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  7,
+) as any as S.Schema<DeleteProjectsLocationsPrivateConnectionsRequest>;
+
 export interface DeleteProjectsLocationsPrivateConnectionsRoutesRequest {
   /** Required. The name of the Route resource to delete. */
   name: string;
   /** Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
 }
+const DeleteProjectsLocationsPrivateConnectionsRoutesRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<DeleteProjectsLocationsPrivateConnectionsRoutesRequest>;
+
 export interface DeleteProjectsLocationsStreamsRequest {
   /** Required. The name of the stream resource to delete. */
   name: string;
   /** Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
 }
+const DeleteProjectsLocationsStreamsRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  1,
+) as any as S.Schema<DeleteProjectsLocationsStreamsRequest>;
+
 /** Request message for 'discover' ConnectionProfile request. */
 export interface DiscoverConnectionProfileRequest {
   /** MySQL RDBMS to enrich with child data objects and metadata. */
@@ -543,18 +689,33 @@ export interface DiscoverConnectionProfileRequest {
   /** The number of hierarchy levels below the current level to be retrieved. */
   recursionDepth?: number;
 }
+const DiscoverConnectionProfileRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  2,
+) as any as S.Schema<DiscoverConnectionProfileRequest>;
+
 export interface DiscoverProjectsLocationsConnectionProfilesRequest {
   /** Required. The parent resource of the ConnectionProfile type. Must be in the format `projects/*\/locations/*`. */
   parent: string;
   /** Request body */
   body?: DiscoverConnectionProfileRequest;
 }
+const DiscoverProjectsLocationsConnectionProfilesRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  3,
+) as any as S.Schema<DiscoverProjectsLocationsConnectionProfilesRequest>;
+
 export interface DiscoverConnectionProfileResponse {
   /** Enriched MySQL RDBMS object. */
   mysqlRdbms?: MysqlRdbms;
   /** Enriched Oracle RDBMS object. */
   oracleRdbms?: OracleRdbms;
 }
+const DiscoverConnectionProfileResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  4,
+) as any as S.Schema<DiscoverConnectionProfileResponse>;
+
 /** Request message for 'FetchErrors' request. */
 export type FetchErrorsRequest = CancelOperationRequest;
 export interface FetchErrorsProjectsLocationsStreamsRequest {
@@ -563,6 +724,11 @@ export interface FetchErrorsProjectsLocationsStreamsRequest {
   /** Request body */
   body?: CancelOperationRequest;
 }
+const FetchErrorsProjectsLocationsStreamsRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  5,
+) as any as S.Schema<FetchErrorsProjectsLocationsStreamsRequest>;
+
 export interface FetchStaticIpsProjectsLocationsRequest {
   /** Maximum number of Ips to return, will likely not be specified. */
   pageSize?: number;
@@ -571,7 +737,14 @@ export interface FetchStaticIpsProjectsLocationsRequest {
   /** A page token, received from a previous `ListStaticIps` call. will likely not be specified. */
   pageToken?: string;
 }
+const FetchStaticIpsProjectsLocationsRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  6,
+) as any as S.Schema<FetchStaticIpsProjectsLocationsRequest>;
+
 export type StringList = Array<string>;
+const StringList = /*@__PURE__*/ __L.at(__c6, 7) as any as S.Schema<StringList>;
+
 /** Response message for a 'FetchStaticIps' response. */
 export interface FetchStaticIpsResponse {
   /** A token that can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
@@ -579,10 +752,20 @@ export interface FetchStaticIpsResponse {
   /** list of static ips by account */
   staticIps?: StringList;
 }
+const FetchStaticIpsResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  0,
+) as any as S.Schema<FetchStaticIpsResponse>;
+
 export interface GetProjectsLocationsRequest {
   /** Resource name for the location. */
   name: string;
 }
+const GetProjectsLocationsRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  1,
+) as any as S.Schema<GetProjectsLocationsRequest>;
+
 /** A resource that represents a Google Cloud location. */
 export interface Location {
   /** Service-specific metadata. For example the available capacity at the given location. */
@@ -596,30 +779,62 @@ export interface Location {
   /** Cross-service attributes for the location. For example {"cloud.googleapis.com/region": "us-east1"} */
   labels?: StringMap;
 }
+const Location = /*@__PURE__*/ __L.at(__c7, 2) as any as S.Schema<Location>;
+
 export interface GetProjectsLocationsConnectionProfilesRequest {
   /** Required. The name of the connection profile resource to get. */
   name: string;
 }
+const GetProjectsLocationsConnectionProfilesRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  3,
+) as any as S.Schema<GetProjectsLocationsConnectionProfilesRequest>;
+
 export interface GetProjectsLocationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
+const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  4,
+) as any as S.Schema<GetProjectsLocationsOperationsRequest>;
+
 export interface GetProjectsLocationsPrivateConnectionsRequest {
   /** Required. The name of the private connectivity configuration to get. */
   name: string;
 }
+const GetProjectsLocationsPrivateConnectionsRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  5,
+) as any as S.Schema<GetProjectsLocationsPrivateConnectionsRequest>;
+
 export interface GetProjectsLocationsPrivateConnectionsRoutesRequest {
   /** Required. The name of the Route resource to get. */
   name: string;
 }
+const GetProjectsLocationsPrivateConnectionsRoutesRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  6,
+) as any as S.Schema<GetProjectsLocationsPrivateConnectionsRoutesRequest>;
+
 export interface GetProjectsLocationsStreamsRequest {
   /** Required. The name of the stream resource to get. */
   name: string;
 }
+const GetProjectsLocationsStreamsRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  7,
+) as any as S.Schema<GetProjectsLocationsStreamsRequest>;
+
 export interface GetProjectsLocationsStreamsObjectsRequest {
   /** Required. The name of the stream object resource to get. */
   name: string;
 }
+const GetProjectsLocationsStreamsObjectsRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  0,
+) as any as S.Schema<GetProjectsLocationsStreamsObjectsRequest>;
+
 /** Mysql data source object identifier. */
 export interface MysqlObjectIdentifier {
   /** Required. The database name. */
@@ -627,6 +842,11 @@ export interface MysqlObjectIdentifier {
   /** Required. The table name. */
   table?: string;
 }
+const MysqlObjectIdentifier = /*@__PURE__*/ __L.at(
+  __c8,
+  1,
+) as any as S.Schema<MysqlObjectIdentifier>;
+
 /** Oracle data source object identifier. */
 export interface OracleObjectIdentifier {
   /** Required. The table name. */
@@ -634,6 +854,11 @@ export interface OracleObjectIdentifier {
   /** Required. The schema name. */
   schema?: string;
 }
+const OracleObjectIdentifier = /*@__PURE__*/ __L.at(
+  __c8,
+  2,
+) as any as S.Schema<OracleObjectIdentifier>;
+
 /** Represents an identifier of an object in the data source. */
 export interface SourceObjectIdentifier {
   /** Mysql data source object identifier. */
@@ -641,6 +866,11 @@ export interface SourceObjectIdentifier {
   /** Oracle data source object identifier. */
   oracleIdentifier?: OracleObjectIdentifier;
 }
+const SourceObjectIdentifier = /*@__PURE__*/ __L.at(
+  __c8,
+  3,
+) as any as S.Schema<SourceObjectIdentifier>;
+
 export type BackfillJobStateEnum =
   | "STATE_UNSPECIFIED"
   | "NOT_STARTED"
@@ -650,7 +880,11 @@ export type BackfillJobStateEnum =
   | "FAILED"
   | "COMPLETED"
   | "UNSUPPORTED";
+const BackfillJobStateEnum = S.String;
+
 export type BackfillJobTriggerEnum = "TRIGGER_UNSPECIFIED" | "AUTOMATIC" | "MANUAL";
+const BackfillJobTriggerEnum = S.String;
+
 /** Represents a backfill job on a specific stream object. */
 export interface BackfillJob {
   /** Output only. Backfill job's start time. */
@@ -664,6 +898,8 @@ export interface BackfillJob {
   /** Output only. Backfill job's end time. */
   lastEndTime?: string;
 }
+const BackfillJob = /*@__PURE__*/ __L.at(__c8, 4) as any as S.Schema<BackfillJob>;
+
 /** A specific stream object (e.g a specific DB table). */
 export interface StreamObject {
   /** Required. Display name. */
@@ -681,6 +917,8 @@ export interface StreamObject {
   /** Output only. The last update time of the object. */
   updateTime?: string;
 }
+const StreamObject = /*@__PURE__*/ __L.at(__c8, 5) as any as S.Schema<StreamObject>;
+
 export interface ListProjectsLocationsRequest {
   /** A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. */
   pageToken?: string;
@@ -693,7 +931,14 @@ export interface ListProjectsLocationsRequest {
   /** The resource that owns the locations collection, if applicable. */
   name: string;
 }
+const ListProjectsLocationsRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  6,
+) as any as S.Schema<ListProjectsLocationsRequest>;
+
 export type LocationList = Array<Location>;
+const LocationList = /*@__PURE__*/ __L.at(__c8, 7) as any as S.Schema<LocationList>;
+
 /** The response message for Locations.ListLocations. */
 export interface ListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
@@ -701,6 +946,11 @@ export interface ListLocationsResponse {
   /** The standard List next-page token. */
   nextPageToken?: string;
 }
+const ListLocationsResponse = /*@__PURE__*/ __L.at(
+  __c9,
+  0,
+) as any as S.Schema<ListLocationsResponse>;
+
 export interface ListProjectsLocationsConnectionProfilesRequest {
   /** Filter request. */
   filter?: string;
@@ -713,7 +963,17 @@ export interface ListProjectsLocationsConnectionProfilesRequest {
   /** Order by fields for the result. */
   orderBy?: string;
 }
+const ListProjectsLocationsConnectionProfilesRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  1,
+) as any as S.Schema<ListProjectsLocationsConnectionProfilesRequest>;
+
 export type ConnectionProfileList = Array<ConnectionProfile>;
+const ConnectionProfileList = /*@__PURE__*/ __L.at(
+  __c9,
+  2,
+) as any as S.Schema<ConnectionProfileList>;
+
 export interface ListConnectionProfilesResponse {
   /** List of connection profiles. */
   connectionProfiles?: ConnectionProfileList;
@@ -722,6 +982,11 @@ export interface ListConnectionProfilesResponse {
   /** Locations that could not be reached. */
   unreachable?: StringList;
 }
+const ListConnectionProfilesResponse = /*@__PURE__*/ __L.at(
+  __c9,
+  3,
+) as any as S.Schema<ListConnectionProfilesResponse>;
+
 export interface ListProjectsLocationsOperationsRequest {
   /** When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. */
   returnPartialSuccess?: boolean;
@@ -734,7 +999,14 @@ export interface ListProjectsLocationsOperationsRequest {
   /** The standard list page token. */
   pageToken?: string;
 }
+const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  4,
+) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
+
 export type OperationList = Array<Operation>;
+const OperationList = /*@__PURE__*/ __L.at(__c9, 5) as any as S.Schema<OperationList>;
+
 /** The response message for Operations.ListOperations. */
 export interface ListOperationsResponse {
   /** A list of operations that matches the specified filter in the request. */
@@ -744,6 +1016,11 @@ export interface ListOperationsResponse {
   /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
   unreachable?: StringList;
 }
+const ListOperationsResponse = /*@__PURE__*/ __L.at(
+  __c9,
+  6,
+) as any as S.Schema<ListOperationsResponse>;
+
 export interface ListProjectsLocationsPrivateConnectionsRequest {
   /** Filter request. */
   filter?: string;
@@ -756,7 +1033,17 @@ export interface ListProjectsLocationsPrivateConnectionsRequest {
   /** Maximum number of private connectivity configurations to return. If unspecified, at most 50 private connectivity configurations that will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. */
   pageSize?: number;
 }
+const ListProjectsLocationsPrivateConnectionsRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  7,
+) as any as S.Schema<ListProjectsLocationsPrivateConnectionsRequest>;
+
 export type PrivateConnectionList = Array<PrivateConnection>;
+const PrivateConnectionList = /*@__PURE__*/ __L.at(
+  __c10,
+  0,
+) as any as S.Schema<PrivateConnectionList>;
+
 export interface ListPrivateConnectionsResponse {
   /** Locations that could not be reached. */
   unreachable?: StringList;
@@ -765,6 +1052,11 @@ export interface ListPrivateConnectionsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
+const ListPrivateConnectionsResponse = /*@__PURE__*/ __L.at(
+  __c10,
+  1,
+) as any as S.Schema<ListPrivateConnectionsResponse>;
+
 export interface ListProjectsLocationsPrivateConnectionsRoutesRequest {
   /** Required. The parent that owns the collection of Routess. */
   parent: string;
@@ -777,7 +1069,14 @@ export interface ListProjectsLocationsPrivateConnectionsRoutesRequest {
   /** Filter request. */
   filter?: string;
 }
+const ListProjectsLocationsPrivateConnectionsRoutesRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  2,
+) as any as S.Schema<ListProjectsLocationsPrivateConnectionsRoutesRequest>;
+
 export type RouteList = Array<Route>;
+const RouteList = /*@__PURE__*/ __L.at(__c10, 3) as any as S.Schema<RouteList>;
+
 /** route list response */
 export interface ListRoutesResponse {
   /** Locations that could not be reached. */
@@ -787,6 +1086,8 @@ export interface ListRoutesResponse {
   /** List of Routes. */
   routes?: RouteList;
 }
+const ListRoutesResponse = /*@__PURE__*/ __L.at(__c10, 4) as any as S.Schema<ListRoutesResponse>;
+
 export interface ListProjectsLocationsStreamsRequest {
   /** Required. The parent that owns the collection of streams. */
   parent: string;
@@ -799,7 +1100,14 @@ export interface ListProjectsLocationsStreamsRequest {
   /** Page token received from a previous `ListStreams` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListStreams` must match the call that provided the page token. */
   pageToken?: string;
 }
+const ListProjectsLocationsStreamsRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  5,
+) as any as S.Schema<ListProjectsLocationsStreamsRequest>;
+
 export type StreamList = Array<Stream>;
+const StreamList = /*@__PURE__*/ __L.at(__c10, 6) as any as S.Schema<StreamList>;
+
 export interface ListStreamsResponse {
   /** Locations that could not be reached. */
   unreachable?: StringList;
@@ -808,6 +1116,8 @@ export interface ListStreamsResponse {
   /** List of streams */
   streams?: StreamList;
 }
+const ListStreamsResponse = /*@__PURE__*/ __L.at(__c10, 7) as any as S.Schema<ListStreamsResponse>;
+
 export interface ListProjectsLocationsStreamsObjectsRequest {
   /** Page token received from a previous `ListStreamObjectsRequest` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListStreamObjectsRequest` must match the call that provided the page token. */
   pageToken?: string;
@@ -816,7 +1126,14 @@ export interface ListProjectsLocationsStreamsObjectsRequest {
   /** Maximum number of objects to return. Default is 50. The maximum value is 1000; values above 1000 will be coerced to 1000. */
   pageSize?: number;
 }
+const ListProjectsLocationsStreamsObjectsRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  0,
+) as any as S.Schema<ListProjectsLocationsStreamsObjectsRequest>;
+
 export type StreamObjectList = Array<StreamObject>;
+const StreamObjectList = /*@__PURE__*/ __L.at(__c11, 1) as any as S.Schema<StreamObjectList>;
+
 /** Response containing the objects for a stream. */
 export interface ListStreamObjectsResponse {
   /** List of stream objects. */
@@ -824,6 +1141,11 @@ export interface ListStreamObjectsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. */
   nextPageToken?: string;
 }
+const ListStreamObjectsResponse = /*@__PURE__*/ __L.at(
+  __c11,
+  2,
+) as any as S.Schema<ListStreamObjectsResponse>;
+
 export interface PatchProjectsLocationsConnectionProfilesRequest {
   /** Optional. Only validate the connection profile, but do not update any resources. The default is false. */
   validateOnly?: boolean;
@@ -836,6 +1158,11 @@ export interface PatchProjectsLocationsConnectionProfilesRequest {
   /** Request body */
   body?: ConnectionProfile;
 }
+const PatchProjectsLocationsConnectionProfilesRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  3,
+) as any as S.Schema<PatchProjectsLocationsConnectionProfilesRequest>;
+
 export interface PatchProjectsLocationsStreamsRequest {
   /** Optional. Execute the update without validating it. */
   force?: boolean;
@@ -850,24 +1177,47 @@ export interface PatchProjectsLocationsStreamsRequest {
   /** Request body */
   body?: Stream;
 }
+const PatchProjectsLocationsStreamsRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  4,
+) as any as S.Schema<PatchProjectsLocationsStreamsRequest>;
+
 export interface StartBackfillJobProjectsLocationsStreamsObjectsRequest {
   /** Required. The name of the stream object resource to start a backfill job for. */
   object: string;
 }
+const StartBackfillJobProjectsLocationsStreamsObjectsRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  5,
+) as any as S.Schema<StartBackfillJobProjectsLocationsStreamsObjectsRequest>;
+
 /** Response for manually initiating a backfill job for a specific stream object. */
 export interface StartBackfillJobResponse {
   /** The stream object resource a backfill job was started for. */
   object?: StreamObject;
 }
+const StartBackfillJobResponse = /*@__PURE__*/ __L.at(
+  __c11,
+  6,
+) as any as S.Schema<StartBackfillJobResponse>;
+
 export interface StopBackfillJobProjectsLocationsStreamsObjectsRequest {
   /** Required. The name of the stream object resource to stop the backfill job for. */
   object: string;
 }
+const StopBackfillJobProjectsLocationsStreamsObjectsRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  7,
+) as any as S.Schema<StopBackfillJobProjectsLocationsStreamsObjectsRequest>;
+
 /** Response for manually stop a backfill job for a specific stream object. */
 export interface StopBackfillJobResponse {
   /** The stream object resource the backfill job was stopped for. */
   object?: StreamObject;
 }
+const StopBackfillJobResponse =
+  StartBackfillJobResponse as any as S.Schema<StopBackfillJobResponse>;
+
 export type CancelProjectsLocationsOperationsError =
   | NotFound
   | Forbidden
@@ -881,8 +1231,8 @@ export const cancelProjectsLocationsOperations: API.OperationMethod<
   CancelProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1) as any as S.Schema<CancelProjectsLocationsOperationsRequest>,
-  output: __S(0) as any as S.Schema<Empty>,
+  input: CancelProjectsLocationsOperationsRequest,
+  output: Empty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -901,8 +1251,8 @@ export const createProjectsLocationsConnectionProfiles: API.OperationMethod<
   CreateProjectsLocationsConnectionProfilesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10) as any as S.Schema<CreateProjectsLocationsConnectionProfilesRequest>,
-  output: __S(14) as any as S.Schema<Operation>,
+  input: CreateProjectsLocationsConnectionProfilesRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -921,8 +1271,8 @@ export const createProjectsLocationsPrivateConnections: API.OperationMethod<
   CreateProjectsLocationsPrivateConnectionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18) as any as S.Schema<CreateProjectsLocationsPrivateConnectionsRequest>,
-  output: __S(14) as any as S.Schema<Operation>,
+  input: CreateProjectsLocationsPrivateConnectionsRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -941,8 +1291,8 @@ export const createProjectsLocationsPrivateConnectionsRoutes: API.OperationMetho
   CreateProjectsLocationsPrivateConnectionsRoutesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20) as any as S.Schema<CreateProjectsLocationsPrivateConnectionsRoutesRequest>,
-  output: __S(14) as any as S.Schema<Operation>,
+  input: CreateProjectsLocationsPrivateConnectionsRoutesRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -961,8 +1311,8 @@ export const createProjectsLocationsStreams: API.OperationMethod<
   CreateProjectsLocationsStreamsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44) as any as S.Schema<CreateProjectsLocationsStreamsRequest>,
-  output: __S(14) as any as S.Schema<Operation>,
+  input: CreateProjectsLocationsStreamsRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -981,8 +1331,8 @@ export const deleteProjectsLocationsConnectionProfiles: API.OperationMethod<
   DeleteProjectsLocationsConnectionProfilesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45) as any as S.Schema<DeleteProjectsLocationsConnectionProfilesRequest>,
-  output: __S(14) as any as S.Schema<Operation>,
+  input: DeleteProjectsLocationsConnectionProfilesRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1001,8 +1351,8 @@ export const deleteProjectsLocationsOperations: API.OperationMethod<
   DeleteProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(46) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>,
-  output: __S(0) as any as S.Schema<Empty>,
+  input: DeleteProjectsLocationsOperationsRequest,
+  output: Empty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1021,8 +1371,8 @@ export const deleteProjectsLocationsPrivateConnections: API.OperationMethod<
   DeleteProjectsLocationsPrivateConnectionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47) as any as S.Schema<DeleteProjectsLocationsPrivateConnectionsRequest>,
-  output: __S(14) as any as S.Schema<Operation>,
+  input: DeleteProjectsLocationsPrivateConnectionsRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1041,8 +1391,8 @@ export const deleteProjectsLocationsPrivateConnectionsRoutes: API.OperationMetho
   DeleteProjectsLocationsPrivateConnectionsRoutesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48) as any as S.Schema<DeleteProjectsLocationsPrivateConnectionsRoutesRequest>,
-  output: __S(14) as any as S.Schema<Operation>,
+  input: DeleteProjectsLocationsPrivateConnectionsRoutesRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1061,8 +1411,8 @@ export const deleteProjectsLocationsStreams: API.OperationMethod<
   DeleteProjectsLocationsStreamsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49) as any as S.Schema<DeleteProjectsLocationsStreamsRequest>,
-  output: __S(14) as any as S.Schema<Operation>,
+  input: DeleteProjectsLocationsStreamsRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1081,8 +1431,8 @@ export const discoverProjectsLocationsConnectionProfiles: API.OperationMethod<
   DiscoverProjectsLocationsConnectionProfilesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(51) as any as S.Schema<DiscoverProjectsLocationsConnectionProfilesRequest>,
-  output: __S(52) as any as S.Schema<DiscoverConnectionProfileResponse>,
+  input: DiscoverProjectsLocationsConnectionProfilesRequest,
+  output: DiscoverConnectionProfileResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1101,8 +1451,8 @@ export const fetchErrorsProjectsLocationsStreams: API.OperationMethod<
   FetchErrorsProjectsLocationsStreamsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(53) as any as S.Schema<FetchErrorsProjectsLocationsStreamsRequest>,
-  output: __S(14) as any as S.Schema<Operation>,
+  input: FetchErrorsProjectsLocationsStreamsRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1117,8 +1467,8 @@ export const fetchStaticIpsProjectsLocations: API.PaginatedOperationMethod<
   GcpOpContext,
   FetchStaticIpsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(54) as any as S.Schema<FetchStaticIpsProjectsLocationsRequest>,
-  output: __S(56) as any as S.Schema<FetchStaticIpsResponse>,
+  input: FetchStaticIpsProjectsLocationsRequest,
+  output: FetchStaticIpsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1133,8 +1483,8 @@ export const getProjectsLocations: API.OperationMethod<
   GetProjectsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57) as any as S.Schema<GetProjectsLocationsRequest>,
-  output: __S(58) as any as S.Schema<Location>,
+  input: GetProjectsLocationsRequest,
+  output: Location,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1148,8 +1498,8 @@ export const getProjectsLocationsConnectionProfiles: API.OperationMethod<
   GetProjectsLocationsConnectionProfilesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(59) as any as S.Schema<GetProjectsLocationsConnectionProfilesRequest>,
-  output: __S(9) as any as S.Schema<ConnectionProfile>,
+  input: GetProjectsLocationsConnectionProfilesRequest,
+  output: ConnectionProfile,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1163,8 +1513,8 @@ export const getProjectsLocationsOperations: API.OperationMethod<
   GetProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60) as any as S.Schema<GetProjectsLocationsOperationsRequest>,
-  output: __S(14) as any as S.Schema<Operation>,
+  input: GetProjectsLocationsOperationsRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1178,8 +1528,8 @@ export const getProjectsLocationsPrivateConnections: API.OperationMethod<
   GetProjectsLocationsPrivateConnectionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(61) as any as S.Schema<GetProjectsLocationsPrivateConnectionsRequest>,
-  output: __S(17) as any as S.Schema<PrivateConnection>,
+  input: GetProjectsLocationsPrivateConnectionsRequest,
+  output: PrivateConnection,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1193,8 +1543,8 @@ export const getProjectsLocationsPrivateConnectionsRoutes: API.OperationMethod<
   GetProjectsLocationsPrivateConnectionsRoutesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(62) as any as S.Schema<GetProjectsLocationsPrivateConnectionsRoutesRequest>,
-  output: __S(19) as any as S.Schema<Route>,
+  input: GetProjectsLocationsPrivateConnectionsRoutesRequest,
+  output: Route,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1208,8 +1558,8 @@ export const getProjectsLocationsStreams: API.OperationMethod<
   GetProjectsLocationsStreamsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(63) as any as S.Schema<GetProjectsLocationsStreamsRequest>,
-  output: __S(43) as any as S.Schema<Stream>,
+  input: GetProjectsLocationsStreamsRequest,
+  output: Stream,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1223,8 +1573,8 @@ export const getProjectsLocationsStreamsObjects: API.OperationMethod<
   GetProjectsLocationsStreamsObjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(64) as any as S.Schema<GetProjectsLocationsStreamsObjectsRequest>,
-  output: __S(69) as any as S.Schema<StreamObject>,
+  input: GetProjectsLocationsStreamsObjectsRequest,
+  output: StreamObject,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1239,8 +1589,8 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListLocationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(70) as any as S.Schema<ListProjectsLocationsRequest>,
-  output: __S(72) as any as S.Schema<ListLocationsResponse>,
+  input: ListProjectsLocationsRequest,
+  output: ListLocationsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1256,8 +1606,8 @@ export const listProjectsLocationsConnectionProfiles: API.PaginatedOperationMeth
   GcpOpContext,
   ListConnectionProfilesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(73) as any as S.Schema<ListProjectsLocationsConnectionProfilesRequest>,
-  output: __S(75) as any as S.Schema<ListConnectionProfilesResponse>,
+  input: ListProjectsLocationsConnectionProfilesRequest,
+  output: ListConnectionProfilesResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1273,8 +1623,8 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(76) as any as S.Schema<ListProjectsLocationsOperationsRequest>,
-  output: __S(78) as any as S.Schema<ListOperationsResponse>,
+  input: ListProjectsLocationsOperationsRequest,
+  output: ListOperationsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1290,8 +1640,8 @@ export const listProjectsLocationsPrivateConnections: API.PaginatedOperationMeth
   GcpOpContext,
   ListPrivateConnectionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(79) as any as S.Schema<ListProjectsLocationsPrivateConnectionsRequest>,
-  output: __S(81) as any as S.Schema<ListPrivateConnectionsResponse>,
+  input: ListProjectsLocationsPrivateConnectionsRequest,
+  output: ListPrivateConnectionsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1307,8 +1657,8 @@ export const listProjectsLocationsPrivateConnectionsRoutes: API.PaginatedOperati
   GcpOpContext,
   ListRoutesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(82) as any as S.Schema<ListProjectsLocationsPrivateConnectionsRoutesRequest>,
-  output: __S(84) as any as S.Schema<ListRoutesResponse>,
+  input: ListProjectsLocationsPrivateConnectionsRoutesRequest,
+  output: ListRoutesResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1324,8 +1674,8 @@ export const listProjectsLocationsStreams: API.PaginatedOperationMethod<
   GcpOpContext,
   ListStreamsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(85) as any as S.Schema<ListProjectsLocationsStreamsRequest>,
-  output: __S(87) as any as S.Schema<ListStreamsResponse>,
+  input: ListProjectsLocationsStreamsRequest,
+  output: ListStreamsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1341,8 +1691,8 @@ export const listProjectsLocationsStreamsObjects: API.PaginatedOperationMethod<
   GcpOpContext,
   ListStreamObjectsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(88) as any as S.Schema<ListProjectsLocationsStreamsObjectsRequest>,
-  output: __S(90) as any as S.Schema<ListStreamObjectsResponse>,
+  input: ListProjectsLocationsStreamsObjectsRequest,
+  output: ListStreamObjectsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1362,8 +1712,8 @@ export const patchProjectsLocationsConnectionProfiles: API.OperationMethod<
   PatchProjectsLocationsConnectionProfilesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(91) as any as S.Schema<PatchProjectsLocationsConnectionProfilesRequest>,
-  output: __S(14) as any as S.Schema<Operation>,
+  input: PatchProjectsLocationsConnectionProfilesRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1382,8 +1732,8 @@ export const patchProjectsLocationsStreams: API.OperationMethod<
   PatchProjectsLocationsStreamsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(92) as any as S.Schema<PatchProjectsLocationsStreamsRequest>,
-  output: __S(14) as any as S.Schema<Operation>,
+  input: PatchProjectsLocationsStreamsRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1402,8 +1752,8 @@ export const startBackfillJobProjectsLocationsStreamsObjects: API.OperationMetho
   StartBackfillJobProjectsLocationsStreamsObjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(93) as any as S.Schema<StartBackfillJobProjectsLocationsStreamsObjectsRequest>,
-  output: __S(94) as any as S.Schema<StartBackfillJobResponse>,
+  input: StartBackfillJobProjectsLocationsStreamsObjectsRequest,
+  output: StartBackfillJobResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1422,8 +1772,8 @@ export const stopBackfillJobProjectsLocationsStreamsObjects: API.OperationMethod
   StopBackfillJobProjectsLocationsStreamsObjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(95) as any as S.Schema<StopBackfillJobProjectsLocationsStreamsObjectsRequest>,
-  output: __S(94) as any as S.Schema<StopBackfillJobResponse>,
+  input: StopBackfillJobProjectsLocationsStreamsObjectsRequest,
+  output: StopBackfillJobResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1440,7 +1790,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(0).pipe(T.HttpBody())),
+          body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1460,7 +1810,7 @@ function __c0(j: number): any {
           password: S.optional(S.String),
           username: S.optional(S.String),
           databaseService: S.optional(S.String),
-          connectionAttributes: S.optional(__S(2)),
+          connectionAttributes: S.optional(StringMap),
           hostname: S.optional(S.String),
         }),
       ).annotate({ identifier: "OracleProfile" });
@@ -1508,7 +1858,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           password: S.optional(S.String),
-          sslConfig: S.optional(__S(7)),
+          sslConfig: S.optional(MysqlSslConfig),
           hostname: S.optional(S.String),
           port: S.optional(S.Number),
           username: S.optional(S.String),
@@ -1520,15 +1870,15 @@ function __c1(j: number): any {
           createTime: S.optional(S.String),
           displayName: S.optional(S.String),
           updateTime: S.optional(S.String),
-          oracleProfile: S.optional(__S(3)),
-          privateConnectivity: S.optional(__S(4)),
+          oracleProfile: S.optional(OracleProfile),
+          privateConnectivity: S.optional(PrivateConnectivity),
           name: S.optional(S.String),
-          staticServiceIpConnectivity: S.optional(__S(0)),
-          gcsProfile: S.optional(__S(5)),
-          forwardSshConnectivity: S.optional(__S(6)),
-          labels: S.optional(__S(2)),
-          noConnectivity: S.optional(__S(0)),
-          mysqlProfile: S.optional(__S(8)),
+          staticServiceIpConnectivity: S.optional(CancelOperationRequest),
+          gcsProfile: S.optional(GcsProfile),
+          forwardSshConnectivity: S.optional(ForwardSshTunnelConnectivity),
+          labels: S.optional(StringMap),
+          noConnectivity: S.optional(CancelOperationRequest),
+          mysqlProfile: S.optional(MysqlProfile),
         }),
       ).annotate({ identifier: "ConnectionProfile" });
     case 2:
@@ -1537,7 +1887,7 @@ function __c1(j: number): any {
           requestId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
           connectionProfileId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(9).pipe(T.HttpBody())),
+          body: S.optional(ConnectionProfile.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1551,11 +1901,11 @@ function __c1(j: number): any {
     case 3:
       return S.Record(S.String, S.Unknown);
     case 4:
-      return S.Array(__S(11));
+      return S.Array(DocumentMap);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          details: S.optional(__S(12)),
+          details: S.optional(DocumentMapList),
           message: S.optional(S.String),
           code: S.optional(S.Number),
         }),
@@ -1565,9 +1915,9 @@ function __c1(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           done: S.optional(S.Boolean),
-          response: S.optional(__S(11)),
-          error: S.optional(__S(13)),
-          metadata: S.optional(__S(11)),
+          response: S.optional(DocumentMap),
+          error: S.optional(Status),
+          metadata: S.optional(DocumentMap),
         }),
       ).annotate({ identifier: "Operation" });
     case 7:
@@ -1588,17 +1938,17 @@ function __c2(j: number): any {
           reason: S.optional(S.String),
           message: S.optional(S.String),
           errorTime: S.optional(S.String),
-          details: S.optional(__S(2)),
+          details: S.optional(StringMap),
         }),
       ).annotate({ identifier: "Datastream_Error" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          labels: S.optional(__S(2)),
-          vpcPeeringConfig: S.optional(__S(15)),
-          state: S.optional(S.String),
+          labels: S.optional(StringMap),
+          vpcPeeringConfig: S.optional(VpcPeeringConfig),
+          state: S.optional(PrivateConnectionStateEnum),
           displayName: S.optional(S.String),
-          error: S.optional(__S(16)),
+          error: S.optional(Datastream_Error),
           updateTime: S.optional(S.String),
           name: S.optional(S.String),
           createTime: S.optional(S.String),
@@ -1610,7 +1960,7 @@ function __c2(j: number): any {
           privateConnectionId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
           requestId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(17).pipe(T.HttpBody())),
+          body: S.optional(PrivateConnection.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1628,7 +1978,7 @@ function __c2(j: number): any {
           destinationPort: S.optional(S.Number),
           createTime: S.optional(S.String),
           name: S.optional(S.String),
-          labels: S.optional(__S(2)),
+          labels: S.optional(StringMap),
           updateTime: S.optional(S.String),
           destinationAddress: S.optional(S.String),
         }),
@@ -1639,7 +1989,7 @@ function __c2(j: number): any {
           parent: S.String.pipe(T.Label()),
           requestId: S.optional(S.String.pipe(T.Query())),
           routeId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(19).pipe(T.HttpBody())),
+          body: S.optional(Route.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1665,12 +2015,12 @@ function __c2(j: number): any {
         }),
       ).annotate({ identifier: "OracleColumn" });
     case 6:
-      return S.Array(__S(21));
+      return S.Array(OracleColumn);
     case 7:
       return S.suspend(() =>
         S.Struct({
           tableName: S.optional(S.String),
-          oracleColumns: S.optional(__S(22)),
+          oracleColumns: S.optional(OracleColumnList),
         }),
       ).annotate({ identifier: "OracleTable" });
   }
@@ -1678,28 +2028,28 @@ function __c2(j: number): any {
 function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(23));
+      return S.Array(OracleTable);
     case 1:
       return S.suspend(() =>
         S.Struct({
           schemaName: S.optional(S.String),
-          oracleTables: S.optional(__S(24)),
+          oracleTables: S.optional(OracleTableList),
         }),
       ).annotate({ identifier: "OracleSchema" });
     case 2:
-      return S.Array(__S(25));
+      return S.Array(OracleSchema);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          oracleSchemas: S.optional(__S(26)),
+          oracleSchemas: S.optional(OracleSchemaList),
         }),
       ).annotate({ identifier: "OracleRdbms" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          dropLargeObjects: S.optional(__S(0)),
-          rejectlist: S.optional(__S(27)),
-          allowlist: S.optional(__S(27)),
+          dropLargeObjects: S.optional(CancelOperationRequest),
+          rejectlist: S.optional(OracleRdbms),
+          allowlist: S.optional(OracleRdbms),
         }),
       ).annotate({ identifier: "OracleSourceConfig" });
     case 5:
@@ -1715,11 +2065,11 @@ function __c3(j: number): any {
         }),
       ).annotate({ identifier: "MysqlColumn" });
     case 6:
-      return S.Array(__S(29));
+      return S.Array(MysqlColumn);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          mysqlColumns: S.optional(__S(30)),
+          mysqlColumns: S.optional(MysqlColumnList),
           tableName: S.optional(S.String),
         }),
       ).annotate({ identifier: "MysqlTable" });
@@ -1728,44 +2078,44 @@ function __c3(j: number): any {
 function __c4(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(31));
+      return S.Array(MysqlTable);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          mysqlTables: S.optional(__S(32)),
+          mysqlTables: S.optional(MysqlTableList),
           databaseName: S.optional(S.String),
         }),
       ).annotate({ identifier: "MysqlDatabase" });
     case 2:
-      return S.Array(__S(33));
+      return S.Array(MysqlDatabase);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          mysqlDatabases: S.optional(__S(34)),
+          mysqlDatabases: S.optional(MysqlDatabaseList),
         }),
       ).annotate({ identifier: "MysqlRdbms" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          allowlist: S.optional(__S(35)),
-          rejectlist: S.optional(__S(35)),
+          allowlist: S.optional(MysqlRdbms),
+          rejectlist: S.optional(MysqlRdbms),
         }),
       ).annotate({ identifier: "MysqlSourceConfig" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          oracleSourceConfig: S.optional(__S(28)),
-          mysqlSourceConfig: S.optional(__S(36)),
+          oracleSourceConfig: S.optional(OracleSourceConfig),
+          mysqlSourceConfig: S.optional(MysqlSourceConfig),
           sourceConnectionProfileName: S.optional(S.String),
         }),
       ).annotate({ identifier: "SourceConfig" });
     case 6:
-      return S.Array(__S(16));
+      return S.Array(Datastream_Error);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          oracleExcludedObjects: S.optional(__S(27)),
-          mysqlExcludedObjects: S.optional(__S(35)),
+          oracleExcludedObjects: S.optional(OracleRdbms),
+          mysqlExcludedObjects: S.optional(MysqlRdbms),
         }),
       ).annotate({ identifier: "BackfillAllStrategy" });
   }
@@ -1775,43 +2125,43 @@ function __c5(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          schemaFileFormat: S.optional(S.String),
-          compression: S.optional(S.String),
+          schemaFileFormat: S.optional(JsonFileFormatSchemaFileFormatEnum),
+          compression: S.optional(JsonFileFormatCompressionEnum),
         }),
       ).annotate({ identifier: "JsonFileFormat" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          jsonFileFormat: S.optional(__S(40)),
+          jsonFileFormat: S.optional(JsonFileFormat),
           path: S.optional(S.String),
           fileRotationMb: S.optional(S.Number),
-          gcsFileFormat: S.optional(S.String),
+          gcsFileFormat: S.optional(GcsDestinationConfigGcsFileFormatEnum),
           fileRotationInterval: S.optional(S.String),
-          avroFileFormat: S.optional(__S(0)),
+          avroFileFormat: S.optional(CancelOperationRequest),
         }),
       ).annotate({ identifier: "GcsDestinationConfig" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          gcsDestinationConfig: S.optional(__S(41)),
+          gcsDestinationConfig: S.optional(GcsDestinationConfig),
           destinationConnectionProfileName: S.optional(S.String),
         }),
       ).annotate({ identifier: "DestinationConfig" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          sourceConfig: S.optional(__S(37)),
+          sourceConfig: S.optional(SourceConfig),
           updateTime: S.optional(S.String),
           displayName: S.optional(S.String),
-          errors: S.optional(__S(38)),
+          errors: S.optional(Datastream_ErrorList),
           createTime: S.optional(S.String),
-          state: S.optional(S.String),
-          backfillNone: S.optional(__S(0)),
+          state: S.optional(StreamStateEnum),
+          backfillNone: S.optional(CancelOperationRequest),
           name: S.optional(S.String),
-          backfillAll: S.optional(__S(39)),
-          destinationConfig: S.optional(__S(42)),
+          backfillAll: S.optional(BackfillAllStrategy),
+          destinationConfig: S.optional(DestinationConfig),
           customerManagedEncryptionKey: S.optional(S.String),
-          labels: S.optional(__S(2)),
+          labels: S.optional(StringMap),
         }),
       ).annotate({ identifier: "Stream" });
     case 4:
@@ -1822,7 +2172,7 @@ function __c5(j: number): any {
           parent: S.String.pipe(T.Label()),
           streamId: S.optional(S.String.pipe(T.Query())),
           force: S.optional(S.Boolean.pipe(T.Query())),
-          body: S.optional(__S(43).pipe(T.HttpBody())),
+          body: S.optional(Stream.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1915,10 +2265,10 @@ function __c6(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          mysqlRdbms: S.optional(__S(35)),
+          mysqlRdbms: S.optional(MysqlRdbms),
           connectionProfileName: S.optional(S.String),
-          oracleRdbms: S.optional(__S(27)),
-          connectionProfile: S.optional(__S(9)),
+          oracleRdbms: S.optional(OracleRdbms),
+          connectionProfile: S.optional(ConnectionProfile),
           recursive: S.optional(S.Boolean),
           recursionDepth: S.optional(S.Number),
         }),
@@ -1929,7 +2279,7 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(50).pipe(T.HttpBody())),
+          body: S.optional(DiscoverConnectionProfileRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1943,8 +2293,8 @@ function __c6(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          mysqlRdbms: S.optional(__S(35)),
-          oracleRdbms: S.optional(__S(27)),
+          mysqlRdbms: S.optional(MysqlRdbms),
+          oracleRdbms: S.optional(OracleRdbms),
         }),
       ).annotate({
         identifier: "DiscoverConnectionProfileResponse",
@@ -1953,7 +2303,7 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           stream: S.String.pipe(T.Label()),
-          body: S.optional(__S(0).pipe(T.HttpBody())),
+          body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1990,7 +2340,7 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          staticIps: S.optional(__S(55)),
+          staticIps: S.optional(StringList),
         }),
       ).annotate({ identifier: "FetchStaticIpsResponse" });
     case 1:
@@ -2010,11 +2360,11 @@ function __c7(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          metadata: S.optional(__S(11)),
+          metadata: S.optional(DocumentMap),
           displayName: S.optional(S.String),
           locationId: S.optional(S.String),
           name: S.optional(S.String),
-          labels: S.optional(__S(2)),
+          labels: S.optional(StringMap),
         }),
       ).annotate({ identifier: "Location" });
     case 3:
@@ -2122,17 +2472,17 @@ function __c8(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          mysqlIdentifier: S.optional(__S(65)),
-          oracleIdentifier: S.optional(__S(66)),
+          mysqlIdentifier: S.optional(MysqlObjectIdentifier),
+          oracleIdentifier: S.optional(OracleObjectIdentifier),
         }),
       ).annotate({ identifier: "SourceObjectIdentifier" });
     case 4:
       return S.suspend(() =>
         S.Struct({
           lastStartTime: S.optional(S.String),
-          state: S.optional(S.String),
-          trigger: S.optional(S.String),
-          errors: S.optional(__S(38)),
+          state: S.optional(BackfillJobStateEnum),
+          trigger: S.optional(BackfillJobTriggerEnum),
+          errors: S.optional(Datastream_ErrorList),
           lastEndTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "BackfillJob" });
@@ -2140,10 +2490,10 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           displayName: S.optional(S.String),
-          sourceObject: S.optional(__S(67)),
-          backfillJob: S.optional(__S(68)),
+          sourceObject: S.optional(SourceObjectIdentifier),
+          backfillJob: S.optional(BackfillJob),
           createTime: S.optional(S.String),
-          errors: S.optional(__S(38)),
+          errors: S.optional(Datastream_ErrorList),
           name: S.optional(S.String),
           updateTime: S.optional(S.String),
         }),
@@ -2152,7 +2502,7 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
-          extraLocationTypes: S.optional(__S(55).pipe(T.Query())),
+          extraLocationTypes: S.optional(StringList.pipe(T.Query())),
           filter: S.optional(S.String.pipe(T.Query())),
           pageSize: S.optional(S.Number.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
@@ -2167,7 +2517,7 @@ function __c8(j: number): any {
         identifier: "ListProjectsLocationsRequest",
       });
     case 7:
-      return S.Array(__S(58));
+      return S.Array(Location);
   }
 }
 function __c9(j: number): any {
@@ -2175,7 +2525,7 @@ function __c9(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          locations: S.optional(__S(71)),
+          locations: S.optional(LocationList),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListLocationsResponse" });
@@ -2198,13 +2548,13 @@ function __c9(j: number): any {
         identifier: "ListProjectsLocationsConnectionProfilesRequest",
       });
     case 2:
-      return S.Array(__S(9));
+      return S.Array(ConnectionProfile);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          connectionProfiles: S.optional(__S(74)),
+          connectionProfiles: S.optional(ConnectionProfileList),
           nextPageToken: S.optional(S.String),
-          unreachable: S.optional(__S(55)),
+          unreachable: S.optional(StringList),
         }),
       ).annotate({
         identifier: "ListConnectionProfilesResponse",
@@ -2228,13 +2578,13 @@ function __c9(j: number): any {
         identifier: "ListProjectsLocationsOperationsRequest",
       });
     case 5:
-      return S.Array(__S(14));
+      return S.Array(Operation);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          operations: S.optional(__S(77)),
+          operations: S.optional(OperationList),
           nextPageToken: S.optional(S.String),
-          unreachable: S.optional(__S(55)),
+          unreachable: S.optional(StringList),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
     case 7:
@@ -2260,12 +2610,12 @@ function __c9(j: number): any {
 function __c10(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(17));
+      return S.Array(PrivateConnection);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          unreachable: S.optional(__S(55)),
-          privateConnections: S.optional(__S(80)),
+          unreachable: S.optional(StringList),
+          privateConnections: S.optional(PrivateConnectionList),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -2290,13 +2640,13 @@ function __c10(j: number): any {
         identifier: "ListProjectsLocationsPrivateConnectionsRoutesRequest",
       });
     case 3:
-      return S.Array(__S(19));
+      return S.Array(Route);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          unreachable: S.optional(__S(55)),
+          unreachable: S.optional(StringList),
           nextPageToken: S.optional(S.String),
-          routes: S.optional(__S(83)),
+          routes: S.optional(RouteList),
         }),
       ).annotate({ identifier: "ListRoutesResponse" });
     case 5:
@@ -2318,13 +2668,13 @@ function __c10(j: number): any {
         identifier: "ListProjectsLocationsStreamsRequest",
       });
     case 6:
-      return S.Array(__S(43));
+      return S.Array(Stream);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          unreachable: S.optional(__S(55)),
+          unreachable: S.optional(StringList),
           nextPageToken: S.optional(S.String),
-          streams: S.optional(__S(86)),
+          streams: S.optional(StreamList),
         }),
       ).annotate({ identifier: "ListStreamsResponse" });
   }
@@ -2348,11 +2698,11 @@ function __c11(j: number): any {
         identifier: "ListProjectsLocationsStreamsObjectsRequest",
       });
     case 1:
-      return S.Array(__S(69));
+      return S.Array(StreamObject);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          streamObjects: S.optional(__S(89)),
+          streamObjects: S.optional(StreamObjectList),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -2365,7 +2715,7 @@ function __c11(j: number): any {
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
           requestId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(9).pipe(T.HttpBody())),
+          body: S.optional(ConnectionProfile.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2384,7 +2734,7 @@ function __c11(j: number): any {
           updateMask: S.optional(S.String.pipe(T.Query())),
           validateOnly: S.optional(S.Boolean.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(43).pipe(T.HttpBody())),
+          body: S.optional(Stream.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2412,7 +2762,7 @@ function __c11(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          object: S.optional(__S(69)),
+          object: S.optional(StreamObject),
         }),
       ).annotate({ identifier: "StartBackfillJobResponse" });
     case 7:
@@ -2429,38 +2779,5 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "StopBackfillJobProjectsLocationsStreamsObjectsRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
-    case 9:
-      return __c9(i & 7);
-    case 10:
-      return __c10(i & 7);
-    case 11:
-      return __c11(i & 7);
   }
 }

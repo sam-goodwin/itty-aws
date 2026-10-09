@@ -6,8 +6,6 @@ import { UnknownAzureError } from "../errors.ts";
 import { AzureProtocol, type AzureOpError, type AzureOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { AzureOpError, AzureOpContext };
 
@@ -19,7 +17,17 @@ export interface DeletePrivateZoneRequest {
   /** The name of the Private DNS zone (without a terminating dot). */
   privateZoneName: string;
 }
+const DeletePrivateZoneRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<DeletePrivateZoneRequest>;
+
 export interface DeletePrivateZoneResponse {}
+const DeletePrivateZoneResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<DeletePrivateZoneResponse>;
+
 export type DeleteRecordSetRequestRecordType =
   | "A"
   | "AAAA"
@@ -29,6 +37,8 @@ export type DeleteRecordSetRequestRecordType =
   | "SOA"
   | "SRV"
   | "TXT";
+const DeleteRecordSetRequestRecordType = S.String;
+
 export interface DeleteRecordSetRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -41,7 +51,15 @@ export interface DeleteRecordSetRequest {
   /** The name of the record set, relative to the name of the zone. */
   relativeRecordSetName: string;
 }
+const DeleteRecordSetRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<DeleteRecordSetRequest>;
+
 export interface DeleteRecordSetResponse {}
+const DeleteRecordSetResponse =
+  DeletePrivateZoneResponse as any as S.Schema<DeleteRecordSetResponse>;
+
 export interface DeleteVirtualNetworkLinkRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -52,7 +70,17 @@ export interface DeleteVirtualNetworkLinkRequest {
   /** The name of the virtual network link. */
   virtualNetworkLinkName: string;
 }
+const DeleteVirtualNetworkLinkRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<DeleteVirtualNetworkLinkRequest>;
+
 export interface DeleteVirtualNetworkLinkResponse {}
+const DeleteVirtualNetworkLinkResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<DeleteVirtualNetworkLinkResponse>;
+
 export interface GetPrivateZoneRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -61,10 +89,19 @@ export interface GetPrivateZoneRequest {
   /** The name of the Private DNS zone (without a terminating dot). */
   privateZoneName: string;
 }
+const GetPrivateZoneRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<GetPrivateZoneRequest>;
+
 /** The type of identity that created the resource. */
 export type SystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
+const SystemDataCreatedByType = S.String;
+
 /** The type of identity that last modified the resource. */
 export type SystemDataLastModifiedByType = "User" | "Application" | "ManagedIdentity" | "Key";
+const SystemDataLastModifiedByType = S.String;
+
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface SystemData {
   /** The identity that created the resource. */
@@ -80,6 +117,8 @@ export interface SystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const SystemData = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<SystemData>;
+
 /** The provisioning state of the resource. This is a read-only property and any attempt to set this value will be ignored. */
 export type ProvisioningState =
   | "Creating"
@@ -88,6 +127,8 @@ export type ProvisioningState =
   | "Succeeded"
   | "Failed"
   | "Canceled";
+const ProvisioningState = S.String;
+
 /** Represents the properties of the Private DNS zone. */
 export interface PrivateZoneProperties {
   /** The maximum number of record sets that can be created in this Private DNS zone. This is a read-only property and any attempt to set this value will be ignored. */
@@ -107,8 +148,18 @@ export interface PrivateZoneProperties {
   /** Private zone internal Id */
   internalId?: string;
 }
+const PrivateZoneProperties = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<PrivateZoneProperties>;
+
 /** Resource tags. */
 export type GetPrivateZoneResponseTagsMap = { [key: string]: string | undefined };
+const GetPrivateZoneResponseTagsMap = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<GetPrivateZoneResponseTagsMap>;
+
 export interface GetPrivateZoneResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -127,6 +178,11 @@ export interface GetPrivateZoneResponse {
   /** The ETag of the zone. */
   etag?: string;
 }
+const GetPrivateZoneResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<GetPrivateZoneResponse>;
+
 export type GetRecordSetRequestRecordType =
   | "A"
   | "AAAA"
@@ -136,6 +192,8 @@ export type GetRecordSetRequestRecordType =
   | "SOA"
   | "SRV"
   | "TXT";
+const GetRecordSetRequestRecordType = S.String;
+
 export interface GetRecordSetRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -148,27 +206,48 @@ export interface GetRecordSetRequest {
   /** The name of the record set, relative to the name of the zone. */
   relativeRecordSetName: string;
 }
+const GetRecordSetRequest = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<GetRecordSetRequest>;
+
 /** The metadata attached to the record set. */
 export type RecordSetPropertiesMetadataMap = { [key: string]: string | undefined };
+const RecordSetPropertiesMetadataMap =
+  GetPrivateZoneResponseTagsMap as any as S.Schema<RecordSetPropertiesMetadataMap>;
+
 /** An A record. */
 export interface ARecord {
   /** The IPv4 address of this A record. */
   ipv4Address?: string;
 }
+const ARecord = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<ARecord>;
+
 /** The list of A records in the record set. */
 export type RecordSetPropertiesARecordsList = Array<ARecord>;
+const RecordSetPropertiesARecordsList = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<RecordSetPropertiesARecordsList>;
+
 /** An AAAA record. */
 export interface AaaaRecord {
   /** The IPv6 address of this AAAA record. */
   ipv6Address?: string;
 }
+const AaaaRecord = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<AaaaRecord>;
+
 /** The list of AAAA records in the record set. */
 export type RecordSetPropertiesAaaaRecordsList = Array<AaaaRecord>;
+const RecordSetPropertiesAaaaRecordsList = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<RecordSetPropertiesAaaaRecordsList>;
+
 /** A CNAME record. */
 export interface CnameRecord {
   /** The canonical name for this CNAME record. */
   cname?: string;
 }
+const CnameRecord = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<CnameRecord>;
+
 /** An MX record. */
 export interface MxRecord {
   /** The preference value for this MX record. */
@@ -176,15 +255,29 @@ export interface MxRecord {
   /** The domain name of the mail host for this MX record. */
   exchange?: string;
 }
+const MxRecord = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<MxRecord>;
+
 /** The list of MX records in the record set. */
 export type RecordSetPropertiesMxRecordsList = Array<MxRecord>;
+const RecordSetPropertiesMxRecordsList = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<RecordSetPropertiesMxRecordsList>;
+
 /** A PTR record. */
 export interface PtrRecord {
   /** The PTR target domain name for this PTR record. */
   ptrdname?: string;
 }
+const PtrRecord = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<PtrRecord>;
+
 /** The list of PTR records in the record set. */
 export type RecordSetPropertiesPtrRecordsList = Array<PtrRecord>;
+const RecordSetPropertiesPtrRecordsList = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<RecordSetPropertiesPtrRecordsList>;
+
 /** An SOA record. */
 export interface SoaRecord {
   /** The domain name of the authoritative name server for this SOA record. */
@@ -202,6 +295,8 @@ export interface SoaRecord {
   /** The minimum value for this SOA record. By convention this is used to determine the negative caching duration. */
   minimumTtl?: number;
 }
+const SoaRecord = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<SoaRecord>;
+
 /** An SRV record. */
 export interface SrvRecord {
   /** The priority value for this SRV record. */
@@ -213,17 +308,33 @@ export interface SrvRecord {
   /** The target domain name for this SRV record. */
   target?: string;
 }
+const SrvRecord = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<SrvRecord>;
+
 /** The list of SRV records in the record set. */
 export type RecordSetPropertiesSrvRecordsList = Array<SrvRecord>;
+const RecordSetPropertiesSrvRecordsList = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<RecordSetPropertiesSrvRecordsList>;
+
 /** The text value of this TXT record. */
 export type TxtRecordValueList = Array<string>;
+const TxtRecordValueList = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<TxtRecordValueList>;
+
 /** A TXT record. */
 export interface TxtRecord {
   /** The text value of this TXT record. */
   value?: TxtRecordValueList;
 }
+const TxtRecord = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<TxtRecord>;
+
 /** The list of TXT records in the record set. */
 export type RecordSetPropertiesTxtRecordsList = Array<TxtRecord>;
+const RecordSetPropertiesTxtRecordsList = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<RecordSetPropertiesTxtRecordsList>;
+
 /** Represents the properties of the records in the record set. */
 export interface RecordSetProperties {
   /** The metadata attached to the record set. */
@@ -251,6 +362,8 @@ export interface RecordSetProperties {
   /** The list of TXT records in the record set. */
   txtRecords?: RecordSetPropertiesTxtRecordsList;
 }
+const RecordSetProperties = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<RecordSetProperties>;
+
 export interface GetRecordSetResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -265,6 +378,8 @@ export interface GetRecordSetResponse {
   /** The ETag of the record set. */
   etag?: string;
 }
+const GetRecordSetResponse = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<GetRecordSetResponse>;
+
 export interface GetVirtualNetworkLinkRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -275,15 +390,26 @@ export interface GetVirtualNetworkLinkRequest {
   /** The name of the virtual network link. */
   virtualNetworkLinkName: string;
 }
+const GetVirtualNetworkLinkRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<GetVirtualNetworkLinkRequest>;
+
 /** Reference to another subresource. */
 export interface SubResource {
   /** Resource ID. */
   id?: string;
 }
+const SubResource = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<SubResource>;
+
 /** The resolution policy on the virtual network link. Only applicable for virtual network links to privatelink zones, and for A,AAAA,CNAME queries. When set to 'NxDomainRedirect', Azure DNS resolver falls back to public resolution if private dns query resolution results in non-existent domain response. */
 export type ResolutionPolicy = "Default" | "NxDomainRedirect";
+const ResolutionPolicy = S.String;
+
 /** The status of the virtual network link to the Private DNS zone. Possible values are 'InProgress' and 'Done'. This is a read-only property and any attempt to set this value will be ignored. */
 export type VirtualNetworkLinkState = "InProgress" | "Completed";
+const VirtualNetworkLinkState = S.String;
+
 /** Represents the properties of the Private DNS zone. */
 export interface VirtualNetworkLinkProperties {
   /** The reference of the virtual network. */
@@ -297,8 +423,16 @@ export interface VirtualNetworkLinkProperties {
   /** The provisioning state of the resource. This is a read-only property and any attempt to set this value will be ignored. */
   provisioningState?: ProvisioningState;
 }
+const VirtualNetworkLinkProperties = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<VirtualNetworkLinkProperties>;
+
 /** Resource tags. */
 export type GetVirtualNetworkLinkResponseTagsMap = { [key: string]: string | undefined };
+const GetVirtualNetworkLinkResponseTagsMap =
+  GetPrivateZoneResponseTagsMap as any as S.Schema<GetVirtualNetworkLinkResponseTagsMap>;
+
 export interface GetVirtualNetworkLinkResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -317,6 +451,11 @@ export interface GetVirtualNetworkLinkResponse {
   /** The ETag of the virtual network link. */
   etag?: string;
 }
+const GetVirtualNetworkLinkResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<GetVirtualNetworkLinkResponse>;
+
 export interface ListPrivateZoneByResourceGroupRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -325,6 +464,11 @@ export interface ListPrivateZoneByResourceGroupRequest {
   /** The maximum number of record sets to return. If not specified, returns up to 100 record sets. */
   _top?: number;
 }
+const ListPrivateZoneByResourceGroupRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<ListPrivateZoneByResourceGroupRequest>;
+
 /** Resource tags. */
 export type PrivateZoneTagsMap = { [key: string]: string | undefined };
 /** Describes a Private DNS zone. */
@@ -346,8 +490,15 @@ export interface PrivateZone {
   /** The ETag of the zone. */
   etag?: string;
 }
+const PrivateZone = GetPrivateZoneResponse as any as S.Schema<PrivateZone>;
+
 /** The PrivateZone items on this page */
 export type PrivateZoneListResultValueList = Array<PrivateZone>;
+const PrivateZoneListResultValueList = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<PrivateZoneListResultValueList>;
+
 /** The response of a PrivateZone list operation. */
 export interface PrivateZoneListResult {
   /** The PrivateZone items on this page */
@@ -355,12 +506,22 @@ export interface PrivateZoneListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const PrivateZoneListResult = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<PrivateZoneListResult>;
+
 export interface ListPrivateZonesRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** The maximum number of Private DNS zones to return. If not specified, returns up to 100 zones. */
   _top?: number;
 }
+const ListPrivateZonesRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<ListPrivateZonesRequest>;
+
 export type ListRecordSetByTypeRequestRecordType =
   | "A"
   | "AAAA"
@@ -370,6 +531,8 @@ export type ListRecordSetByTypeRequestRecordType =
   | "SOA"
   | "SRV"
   | "TXT";
+const ListRecordSetByTypeRequestRecordType = S.String;
+
 export interface ListRecordSetByTypeRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -384,6 +547,11 @@ export interface ListRecordSetByTypeRequest {
   /** The suffix label of the record set name to be used to filter the record set enumeration. If this parameter is specified, the returned enumeration will only contain records that end with ".<recordsetnamesuffix>". */
   _recordsetnamesuffix?: string;
 }
+const ListRecordSetByTypeRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<ListRecordSetByTypeRequest>;
+
 /** Describes a DNS record set (a collection of DNS records with the same name and type) in a Private DNS zone. */
 export interface RecordSet {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -399,8 +567,15 @@ export interface RecordSet {
   /** The ETag of the record set. */
   etag?: string;
 }
+const RecordSet = GetRecordSetResponse as any as S.Schema<RecordSet>;
+
 /** The RecordSet items on this page */
 export type RecordSetListResultValueList = Array<RecordSet>;
+const RecordSetListResultValueList = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<RecordSetListResultValueList>;
+
 /** The response of a RecordSet list operation. */
 export interface RecordSetListResult {
   /** The RecordSet items on this page */
@@ -408,6 +583,8 @@ export interface RecordSetListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const RecordSetListResult = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<RecordSetListResult>;
+
 export interface ListRecordSetsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -420,6 +597,11 @@ export interface ListRecordSetsRequest {
   /** The suffix label of the record set name to be used to filter the record set enumeration. If this parameter is specified, the returned enumeration will only contain records that end with ".<recordsetnamesuffix>". */
   _recordsetnamesuffix?: string;
 }
+const ListRecordSetsRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<ListRecordSetsRequest>;
+
 export interface ListVirtualNetworkLinksRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -430,8 +612,16 @@ export interface ListVirtualNetworkLinksRequest {
   /** The maximum number of virtual network links to return. If not specified, returns up to 100 virtual network links. */
   _top?: number;
 }
+const ListVirtualNetworkLinksRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  0,
+) as any as S.Schema<ListVirtualNetworkLinksRequest>;
+
 /** Resource tags. */
 export type VirtualNetworkLinkTagsMap = { [key: string]: string | undefined };
+const VirtualNetworkLinkTagsMap =
+  GetPrivateZoneResponseTagsMap as any as S.Schema<VirtualNetworkLinkTagsMap>;
+
 /** Describes a link to virtual network for a Private DNS zone. */
 export interface VirtualNetworkLink {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -451,8 +641,15 @@ export interface VirtualNetworkLink {
   /** The ETag of the virtual network link. */
   etag?: string;
 }
+const VirtualNetworkLink = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<VirtualNetworkLink>;
+
 /** The VirtualNetworkLink items on this page */
 export type VirtualNetworkLinkListResultValueList = Array<VirtualNetworkLink>;
+const VirtualNetworkLinkListResultValueList = /*@__PURE__*/ __L.at(
+  __c5,
+  2,
+) as any as S.Schema<VirtualNetworkLinkListResultValueList>;
+
 /** The response of a VirtualNetworkLink list operation. */
 export interface VirtualNetworkLinkListResult {
   /** The VirtualNetworkLink items on this page */
@@ -460,10 +657,21 @@ export interface VirtualNetworkLinkListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const VirtualNetworkLinkListResult = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<VirtualNetworkLinkListResult>;
+
 /** Represents the properties of the Private DNS zone. */
 export interface PrivateZonePropertiesInput {}
+const PrivateZonePropertiesInput =
+  DeletePrivateZoneResponse as any as S.Schema<PrivateZonePropertiesInput>;
+
 /** Resource tags. */
 export type PrivateZonesCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
+const PrivateZonesCreateOrUpdateRequestTagsMap =
+  GetPrivateZoneResponseTagsMap as any as S.Schema<PrivateZonesCreateOrUpdateRequestTagsMap>;
+
 export interface PrivateZonesCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -480,8 +688,16 @@ export interface PrivateZonesCreateOrUpdateRequest {
   /** The ETag of the zone. */
   etag?: string;
 }
+const PrivateZonesCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  4,
+) as any as S.Schema<PrivateZonesCreateOrUpdateRequest>;
+
 /** Resource tags. */
 export type PrivateZonesCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
+const PrivateZonesCreateOrUpdateResponseTagsMap =
+  GetPrivateZoneResponseTagsMap as any as S.Schema<PrivateZonesCreateOrUpdateResponseTagsMap>;
+
 export interface PrivateZonesCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -500,6 +716,11 @@ export interface PrivateZonesCreateOrUpdateResponse {
   /** The ETag of the zone. */
   etag?: string;
 }
+const PrivateZonesCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  5,
+) as any as S.Schema<PrivateZonesCreateOrUpdateResponse>;
+
 export type RecordSetsCreateOrUpdateRequestRecordType =
   | "A"
   | "AAAA"
@@ -509,20 +730,43 @@ export type RecordSetsCreateOrUpdateRequestRecordType =
   | "SOA"
   | "SRV"
   | "TXT";
+const RecordSetsCreateOrUpdateRequestRecordType = S.String;
+
 /** The metadata attached to the record set. */
 export type RecordSetPropertiesInputMetadataMap = { [key: string]: string | undefined };
+const RecordSetPropertiesInputMetadataMap =
+  GetPrivateZoneResponseTagsMap as any as S.Schema<RecordSetPropertiesInputMetadataMap>;
+
 /** The list of A records in the record set. */
 export type RecordSetPropertiesInputARecordsList = Array<ARecord>;
+const RecordSetPropertiesInputARecordsList =
+  RecordSetPropertiesARecordsList as any as S.Schema<RecordSetPropertiesInputARecordsList>;
+
 /** The list of AAAA records in the record set. */
 export type RecordSetPropertiesInputAaaaRecordsList = Array<AaaaRecord>;
+const RecordSetPropertiesInputAaaaRecordsList =
+  RecordSetPropertiesAaaaRecordsList as any as S.Schema<RecordSetPropertiesInputAaaaRecordsList>;
+
 /** The list of MX records in the record set. */
 export type RecordSetPropertiesInputMxRecordsList = Array<MxRecord>;
+const RecordSetPropertiesInputMxRecordsList =
+  RecordSetPropertiesMxRecordsList as any as S.Schema<RecordSetPropertiesInputMxRecordsList>;
+
 /** The list of PTR records in the record set. */
 export type RecordSetPropertiesInputPtrRecordsList = Array<PtrRecord>;
+const RecordSetPropertiesInputPtrRecordsList =
+  RecordSetPropertiesPtrRecordsList as any as S.Schema<RecordSetPropertiesInputPtrRecordsList>;
+
 /** The list of SRV records in the record set. */
 export type RecordSetPropertiesInputSrvRecordsList = Array<SrvRecord>;
+const RecordSetPropertiesInputSrvRecordsList =
+  RecordSetPropertiesSrvRecordsList as any as S.Schema<RecordSetPropertiesInputSrvRecordsList>;
+
 /** The list of TXT records in the record set. */
 export type RecordSetPropertiesInputTxtRecordsList = Array<TxtRecord>;
+const RecordSetPropertiesInputTxtRecordsList =
+  RecordSetPropertiesTxtRecordsList as any as S.Schema<RecordSetPropertiesInputTxtRecordsList>;
+
 /** Represents the properties of the records in the record set. */
 export interface RecordSetPropertiesInput {
   /** The metadata attached to the record set. */
@@ -546,6 +790,11 @@ export interface RecordSetPropertiesInput {
   /** The list of TXT records in the record set. */
   txtRecords?: RecordSetPropertiesInputTxtRecordsList;
 }
+const RecordSetPropertiesInput = /*@__PURE__*/ __L.at(
+  __c5,
+  6,
+) as any as S.Schema<RecordSetPropertiesInput>;
+
 export interface RecordSetsCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -562,6 +811,11 @@ export interface RecordSetsCreateOrUpdateRequest {
   /** The ETag of the record set. */
   etag?: string;
 }
+const RecordSetsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  7,
+) as any as S.Schema<RecordSetsCreateOrUpdateRequest>;
+
 export interface RecordSetsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -576,8 +830,16 @@ export interface RecordSetsCreateOrUpdateResponse {
   /** The ETag of the record set. */
   etag?: string;
 }
+const RecordSetsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<RecordSetsCreateOrUpdateResponse>;
+
 /** Resource tags. */
 export type UpdatePrivateZoneRequestTagsMap = { [key: string]: string | undefined };
+const UpdatePrivateZoneRequestTagsMap =
+  GetPrivateZoneResponseTagsMap as any as S.Schema<UpdatePrivateZoneRequestTagsMap>;
+
 export interface UpdatePrivateZoneRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -594,6 +856,11 @@ export interface UpdatePrivateZoneRequest {
   /** The ETag of the zone. */
   etag?: string;
 }
+const UpdatePrivateZoneRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  1,
+) as any as S.Schema<UpdatePrivateZoneRequest>;
+
 /** Resource tags. */
 export type UpdatePrivateZoneResponseTagsMap = { [key: string]: string | undefined };
 export interface UpdatePrivateZoneResponse {
@@ -614,6 +881,9 @@ export interface UpdatePrivateZoneResponse {
   /** The ETag of the zone. */
   etag?: string;
 }
+const UpdatePrivateZoneResponse =
+  PrivateZonesCreateOrUpdateResponse as any as S.Schema<UpdatePrivateZoneResponse>;
+
 export type UpdateRecordSetRequestRecordType =
   | "A"
   | "AAAA"
@@ -623,6 +893,8 @@ export type UpdateRecordSetRequestRecordType =
   | "SOA"
   | "SRV"
   | "TXT";
+const UpdateRecordSetRequestRecordType = S.String;
+
 export interface UpdateRecordSetRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -639,6 +911,11 @@ export interface UpdateRecordSetRequest {
   /** The ETag of the record set. */
   etag?: string;
 }
+const UpdateRecordSetRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  2,
+) as any as S.Schema<UpdateRecordSetRequest>;
+
 export interface UpdateRecordSetResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -653,6 +930,8 @@ export interface UpdateRecordSetResponse {
   /** The ETag of the record set. */
   etag?: string;
 }
+const UpdateRecordSetResponse = GetRecordSetResponse as any as S.Schema<UpdateRecordSetResponse>;
+
 /** Represents the properties of the Private DNS zone. */
 export interface VirtualNetworkLinkPropertiesInput {
   /** The reference of the virtual network. */
@@ -662,8 +941,16 @@ export interface VirtualNetworkLinkPropertiesInput {
   /** The resolution policy on the virtual network link. Only applicable for virtual network links to privatelink zones, and for A,AAAA,CNAME queries. When set to 'NxDomainRedirect', Azure DNS resolver falls back to public resolution if private dns query resolution results in non-existent domain response. */
   resolutionPolicy?: ResolutionPolicy | (string & {});
 }
+const VirtualNetworkLinkPropertiesInput = /*@__PURE__*/ __L.at(
+  __c6,
+  3,
+) as any as S.Schema<VirtualNetworkLinkPropertiesInput>;
+
 /** Resource tags. */
 export type UpdateVirtualNetworkLinkRequestTagsMap = { [key: string]: string | undefined };
+const UpdateVirtualNetworkLinkRequestTagsMap =
+  GetPrivateZoneResponseTagsMap as any as S.Schema<UpdateVirtualNetworkLinkRequestTagsMap>;
+
 export interface UpdateVirtualNetworkLinkRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -682,6 +969,11 @@ export interface UpdateVirtualNetworkLinkRequest {
   /** The ETag of the virtual network link. */
   etag?: string;
 }
+const UpdateVirtualNetworkLinkRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  4,
+) as any as S.Schema<UpdateVirtualNetworkLinkRequest>;
+
 /** Resource tags. */
 export type UpdateVirtualNetworkLinkResponseTagsMap = { [key: string]: string | undefined };
 export interface UpdateVirtualNetworkLinkResponse {
@@ -702,8 +994,14 @@ export interface UpdateVirtualNetworkLinkResponse {
   /** The ETag of the virtual network link. */
   etag?: string;
 }
+const UpdateVirtualNetworkLinkResponse =
+  GetVirtualNetworkLinkResponse as any as S.Schema<UpdateVirtualNetworkLinkResponse>;
+
 /** Resource tags. */
 export type VirtualNetworkLinksCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
+const VirtualNetworkLinksCreateOrUpdateRequestTagsMap =
+  GetPrivateZoneResponseTagsMap as any as S.Schema<VirtualNetworkLinksCreateOrUpdateRequestTagsMap>;
+
 export interface VirtualNetworkLinksCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -722,6 +1020,11 @@ export interface VirtualNetworkLinksCreateOrUpdateRequest {
   /** The ETag of the virtual network link. */
   etag?: string;
 }
+const VirtualNetworkLinksCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  5,
+) as any as S.Schema<VirtualNetworkLinksCreateOrUpdateRequest>;
+
 /** Resource tags. */
 export type VirtualNetworkLinksCreateOrUpdateResponseTagsMap = {
   [key: string]: string | undefined;
@@ -744,6 +1047,9 @@ export interface VirtualNetworkLinksCreateOrUpdateResponse {
   /** The ETag of the virtual network link. */
   etag?: string;
 }
+const VirtualNetworkLinksCreateOrUpdateResponse =
+  GetVirtualNetworkLinkResponse as any as S.Schema<VirtualNetworkLinksCreateOrUpdateResponse>;
+
 export type DeletePrivateZoneError = AzureOpError;
 /** Deletes a Private DNS zone. WARNING: All DNS records in the zone will also be deleted. This operation cannot be undone. Private DNS zone cannot be deleted unless all virtual network links to it are removed. */
 export const DeletePrivateZone: API.OperationMethod<
@@ -752,8 +1058,8 @@ export const DeletePrivateZone: API.OperationMethod<
   DeletePrivateZoneError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<DeletePrivateZoneRequest>,
-  output: __S(1) as any as S.Schema<DeletePrivateZoneResponse>,
+  input: DeletePrivateZoneRequest,
+  output: DeletePrivateZoneResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -767,8 +1073,8 @@ export const DeleteRecordSet: API.OperationMethod<
   DeleteRecordSetError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2) as any as S.Schema<DeleteRecordSetRequest>,
-  output: __S(1) as any as S.Schema<DeleteRecordSetResponse>,
+  input: DeleteRecordSetRequest,
+  output: DeleteRecordSetResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -782,8 +1088,8 @@ export const DeleteVirtualNetworkLink: API.OperationMethod<
   DeleteVirtualNetworkLinkError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3) as any as S.Schema<DeleteVirtualNetworkLinkRequest>,
-  output: __S(4) as any as S.Schema<DeleteVirtualNetworkLinkResponse>,
+  input: DeleteVirtualNetworkLinkRequest,
+  output: DeleteVirtualNetworkLinkResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -797,8 +1103,8 @@ export const GetPrivateZone: API.OperationMethod<
   GetPrivateZoneError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5) as any as S.Schema<GetPrivateZoneRequest>,
-  output: __S(9) as any as S.Schema<GetPrivateZoneResponse>,
+  input: GetPrivateZoneRequest,
+  output: GetPrivateZoneResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -812,8 +1118,8 @@ export const GetRecordSet: API.OperationMethod<
   GetRecordSetError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10) as any as S.Schema<GetRecordSetRequest>,
-  output: __S(27) as any as S.Schema<GetRecordSetResponse>,
+  input: GetRecordSetRequest,
+  output: GetRecordSetResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -827,8 +1133,8 @@ export const GetVirtualNetworkLink: API.OperationMethod<
   GetVirtualNetworkLinkError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28) as any as S.Schema<GetVirtualNetworkLinkRequest>,
-  output: __S(31) as any as S.Schema<GetVirtualNetworkLinkResponse>,
+  input: GetVirtualNetworkLinkRequest,
+  output: GetVirtualNetworkLinkResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -842,8 +1148,8 @@ export const ListPrivateZoneByResourceGroup: API.OperationMethod<
   ListPrivateZoneByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32) as any as S.Schema<ListPrivateZoneByResourceGroupRequest>,
-  output: __S(34) as any as S.Schema<PrivateZoneListResult>,
+  input: ListPrivateZoneByResourceGroupRequest,
+  output: PrivateZoneListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -857,8 +1163,8 @@ export const ListPrivateZones: API.OperationMethod<
   ListPrivateZonesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35) as any as S.Schema<ListPrivateZonesRequest>,
-  output: __S(34) as any as S.Schema<PrivateZoneListResult>,
+  input: ListPrivateZonesRequest,
+  output: PrivateZoneListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -872,8 +1178,8 @@ export const ListRecordSetByType: API.OperationMethod<
   ListRecordSetByTypeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36) as any as S.Schema<ListRecordSetByTypeRequest>,
-  output: __S(38) as any as S.Schema<RecordSetListResult>,
+  input: ListRecordSetByTypeRequest,
+  output: RecordSetListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -887,8 +1193,8 @@ export const ListRecordSets: API.OperationMethod<
   ListRecordSetsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39) as any as S.Schema<ListRecordSetsRequest>,
-  output: __S(38) as any as S.Schema<RecordSetListResult>,
+  input: ListRecordSetsRequest,
+  output: RecordSetListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -902,8 +1208,8 @@ export const ListVirtualNetworkLinks: API.OperationMethod<
   ListVirtualNetworkLinksError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40) as any as S.Schema<ListVirtualNetworkLinksRequest>,
-  output: __S(43) as any as S.Schema<VirtualNetworkLinkListResult>,
+  input: ListVirtualNetworkLinksRequest,
+  output: VirtualNetworkLinkListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -917,8 +1223,8 @@ export const PrivateZonesCreateOrUpdate: API.OperationMethod<
   PrivateZonesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44) as any as S.Schema<PrivateZonesCreateOrUpdateRequest>,
-  output: __S(45) as any as S.Schema<PrivateZonesCreateOrUpdateResponse>,
+  input: PrivateZonesCreateOrUpdateRequest,
+  output: PrivateZonesCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -932,8 +1238,8 @@ export const RecordSetsCreateOrUpdate: API.OperationMethod<
   RecordSetsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47) as any as S.Schema<RecordSetsCreateOrUpdateRequest>,
-  output: __S(48) as any as S.Schema<RecordSetsCreateOrUpdateResponse>,
+  input: RecordSetsCreateOrUpdateRequest,
+  output: RecordSetsCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -947,8 +1253,8 @@ export const UpdatePrivateZone: API.OperationMethod<
   UpdatePrivateZoneError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49) as any as S.Schema<UpdatePrivateZoneRequest>,
-  output: __S(45) as any as S.Schema<UpdatePrivateZoneResponse>,
+  input: UpdatePrivateZoneRequest,
+  output: UpdatePrivateZoneResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -962,8 +1268,8 @@ export const UpdateRecordSet: API.OperationMethod<
   UpdateRecordSetError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(50) as any as S.Schema<UpdateRecordSetRequest>,
-  output: __S(27) as any as S.Schema<UpdateRecordSetResponse>,
+  input: UpdateRecordSetRequest,
+  output: UpdateRecordSetResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -977,8 +1283,8 @@ export const UpdateVirtualNetworkLink: API.OperationMethod<
   UpdateVirtualNetworkLinkError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(52) as any as S.Schema<UpdateVirtualNetworkLinkRequest>,
-  output: __S(31) as any as S.Schema<UpdateVirtualNetworkLinkResponse>,
+  input: UpdateVirtualNetworkLinkRequest,
+  output: UpdateVirtualNetworkLinkResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -992,8 +1298,8 @@ export const VirtualNetworkLinksCreateOrUpdate: API.OperationMethod<
   VirtualNetworkLinksCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(53) as any as S.Schema<VirtualNetworkLinksCreateOrUpdateRequest>,
-  output: __S(31) as any as S.Schema<VirtualNetworkLinksCreateOrUpdateResponse>,
+  input: VirtualNetworkLinksCreateOrUpdateRequest,
+  output: VirtualNetworkLinksCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1027,7 +1333,7 @@ function __c0(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           privateZoneName: S.String.pipe(T.Label()),
-          recordType: S.String.pipe(T.Label()),
+          recordType: DeleteRecordSetRequestRecordType.pipe(T.Label()),
           relativeRecordSetName: S.String.pipe(T.Label()),
         }).pipe(
           T.Http({
@@ -1079,10 +1385,10 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
-          createdByType: S.optional(S.String),
+          createdByType: S.optional(SystemDataCreatedByType),
           createdAt: S.optional(S.String),
           lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(S.String),
+          lastModifiedByType: S.optional(SystemDataLastModifiedByType),
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "SystemData" });
@@ -1095,7 +1401,7 @@ function __c0(j: number): any {
           numberOfVirtualNetworkLinks: S.optional(S.Number),
           maxNumberOfVirtualNetworkLinksWithRegistration: S.optional(S.Number),
           numberOfVirtualNetworkLinksWithRegistration: S.optional(S.Number),
-          provisioningState: S.optional(S.String),
+          provisioningState: S.optional(ProvisioningState),
           internalId: S.optional(S.String),
         }),
       ).annotate({ identifier: "PrivateZoneProperties" });
@@ -1111,9 +1417,9 @@ function __c1(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(6)),
-          properties: S.optional(__S(7)),
-          tags: S.optional(__S(8)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(PrivateZoneProperties),
+          tags: S.optional(GetPrivateZoneResponseTagsMap),
           location: S.optional(S.String),
           etag: S.optional(S.String),
         }),
@@ -1124,7 +1430,7 @@ function __c1(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           privateZoneName: S.String.pipe(T.Label()),
-          recordType: S.String.pipe(T.Label()),
+          recordType: GetRecordSetRequestRecordType.pipe(T.Label()),
           relativeRecordSetName: S.String.pipe(T.Label()),
         }).pipe(
           T.Http({
@@ -1142,7 +1448,7 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "ARecord" });
     case 4:
-      return S.Array(__S(11));
+      return S.Array(ARecord);
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -1150,7 +1456,7 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "AaaaRecord" });
     case 6:
-      return S.Array(__S(13));
+      return S.Array(AaaaRecord);
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -1169,7 +1475,7 @@ function __c2(j: number): any {
         }),
       ).annotate({ identifier: "MxRecord" });
     case 1:
-      return S.Array(__S(16));
+      return S.Array(MxRecord);
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -1177,7 +1483,7 @@ function __c2(j: number): any {
         }),
       ).annotate({ identifier: "PtrRecord" });
     case 3:
-      return S.Array(__S(18));
+      return S.Array(PtrRecord);
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -1200,7 +1506,7 @@ function __c2(j: number): any {
         }),
       ).annotate({ identifier: "SrvRecord" });
     case 6:
-      return S.Array(__S(21));
+      return S.Array(SrvRecord);
     case 7:
       return S.Array(S.String);
   }
@@ -1210,26 +1516,26 @@ function __c3(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(23)),
+          value: S.optional(TxtRecordValueList),
         }),
       ).annotate({ identifier: "TxtRecord" });
     case 1:
-      return S.Array(__S(24));
+      return S.Array(TxtRecord);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          metadata: S.optional(__S(8)),
+          metadata: S.optional(RecordSetPropertiesMetadataMap),
           ttl: S.optional(S.Number),
           fqdn: S.optional(S.String),
           isAutoRegistered: S.optional(S.Boolean),
-          aRecords: S.optional(__S(12)),
-          aaaaRecords: S.optional(__S(14)),
-          cnameRecord: S.optional(__S(15)),
-          mxRecords: S.optional(__S(17)),
-          ptrRecords: S.optional(__S(19)),
-          soaRecord: S.optional(__S(20)),
-          srvRecords: S.optional(__S(22)),
-          txtRecords: S.optional(__S(25)),
+          aRecords: S.optional(RecordSetPropertiesARecordsList),
+          aaaaRecords: S.optional(RecordSetPropertiesAaaaRecordsList),
+          cnameRecord: S.optional(CnameRecord),
+          mxRecords: S.optional(RecordSetPropertiesMxRecordsList),
+          ptrRecords: S.optional(RecordSetPropertiesPtrRecordsList),
+          soaRecord: S.optional(SoaRecord),
+          srvRecords: S.optional(RecordSetPropertiesSrvRecordsList),
+          txtRecords: S.optional(RecordSetPropertiesTxtRecordsList),
         }),
       ).annotate({ identifier: "RecordSetProperties" });
     case 3:
@@ -1238,8 +1544,8 @@ function __c3(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(6)),
-          properties: S.optional(__S(26)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(RecordSetProperties),
           etag: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetRecordSetResponse" });
@@ -1270,11 +1576,11 @@ function __c3(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          virtualNetwork: S.optional(__S(29)),
+          virtualNetwork: S.optional(SubResource),
           registrationEnabled: S.optional(S.Boolean),
-          resolutionPolicy: S.optional(S.String),
-          virtualNetworkLinkState: S.optional(S.String),
-          provisioningState: S.optional(S.String),
+          resolutionPolicy: S.optional(ResolutionPolicy),
+          virtualNetworkLinkState: S.optional(VirtualNetworkLinkState),
+          provisioningState: S.optional(ProvisioningState),
         }),
       ).annotate({
         identifier: "VirtualNetworkLinkProperties",
@@ -1285,9 +1591,9 @@ function __c3(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(6)),
-          properties: S.optional(__S(30)),
-          tags: S.optional(__S(8)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(VirtualNetworkLinkProperties),
+          tags: S.optional(GetVirtualNetworkLinkResponseTagsMap),
           location: S.optional(S.String),
           etag: S.optional(S.String),
         }),
@@ -1316,11 +1622,11 @@ function __c4(j: number): any {
         identifier: "ListPrivateZoneByResourceGroupRequest",
       });
     case 1:
-      return S.Array(__S(9));
+      return S.Array(PrivateZone);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(33),
+          value: PrivateZoneListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "PrivateZoneListResult" });
@@ -1344,7 +1650,7 @@ function __c4(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           privateZoneName: S.String.pipe(T.Label()),
-          recordType: S.String.pipe(T.Label()),
+          recordType: ListRecordSetByTypeRequestRecordType.pipe(T.Label()),
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
           _recordsetnamesuffix: S.optional(S.String.pipe(T.Query("$recordsetnamesuffix"))),
         }).pipe(
@@ -1359,11 +1665,11 @@ function __c4(j: number): any {
         identifier: "ListRecordSetByTypeRequest",
       });
     case 5:
-      return S.Array(__S(27));
+      return S.Array(RecordSet);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          value: __S(37),
+          value: RecordSetListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "RecordSetListResult" });
@@ -1412,19 +1718,19 @@ function __c5(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(6)),
-          properties: S.optional(__S(30)),
-          tags: S.optional(__S(8)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(VirtualNetworkLinkProperties),
+          tags: S.optional(VirtualNetworkLinkTagsMap),
           location: S.optional(S.String),
           etag: S.optional(S.String),
         }),
       ).annotate({ identifier: "VirtualNetworkLink" });
     case 2:
-      return S.Array(__S(41));
+      return S.Array(VirtualNetworkLink);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: __S(42),
+          value: VirtualNetworkLinkListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -1436,8 +1742,8 @@ function __c5(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           privateZoneName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(1)),
-          tags: S.optional(__S(8)),
+          properties: S.optional(PrivateZonePropertiesInput),
+          tags: S.optional(PrivateZonesCreateOrUpdateRequestTagsMap),
           location: S.optional(S.String),
           etag: S.optional(S.String),
         }).pipe(
@@ -1457,9 +1763,9 @@ function __c5(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(6)),
-          properties: S.optional(__S(7)),
-          tags: S.optional(__S(8)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(PrivateZoneProperties),
+          tags: S.optional(PrivateZonesCreateOrUpdateResponseTagsMap),
           location: S.optional(S.String),
           etag: S.optional(S.String),
         }),
@@ -1469,16 +1775,16 @@ function __c5(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          metadata: S.optional(__S(8)),
+          metadata: S.optional(RecordSetPropertiesInputMetadataMap),
           ttl: S.optional(S.Number),
-          aRecords: S.optional(__S(12)),
-          aaaaRecords: S.optional(__S(14)),
-          cnameRecord: S.optional(__S(15)),
-          mxRecords: S.optional(__S(17)),
-          ptrRecords: S.optional(__S(19)),
-          soaRecord: S.optional(__S(20)),
-          srvRecords: S.optional(__S(22)),
-          txtRecords: S.optional(__S(25)),
+          aRecords: S.optional(RecordSetPropertiesInputARecordsList),
+          aaaaRecords: S.optional(RecordSetPropertiesInputAaaaRecordsList),
+          cnameRecord: S.optional(CnameRecord),
+          mxRecords: S.optional(RecordSetPropertiesInputMxRecordsList),
+          ptrRecords: S.optional(RecordSetPropertiesInputPtrRecordsList),
+          soaRecord: S.optional(SoaRecord),
+          srvRecords: S.optional(RecordSetPropertiesInputSrvRecordsList),
+          txtRecords: S.optional(RecordSetPropertiesInputTxtRecordsList),
         }),
       ).annotate({ identifier: "RecordSetPropertiesInput" });
     case 7:
@@ -1487,9 +1793,9 @@ function __c5(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           privateZoneName: S.String.pipe(T.Label()),
-          recordType: S.String.pipe(T.Label()),
+          recordType: RecordSetsCreateOrUpdateRequestRecordType.pipe(T.Label()),
           relativeRecordSetName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(46)),
+          properties: S.optional(RecordSetPropertiesInput),
           etag: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -1512,8 +1818,8 @@ function __c6(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(6)),
-          properties: S.optional(__S(26)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(RecordSetProperties),
           etag: S.optional(S.String),
         }),
       ).annotate({
@@ -1525,8 +1831,8 @@ function __c6(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           privateZoneName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(1)),
-          tags: S.optional(__S(8)),
+          properties: S.optional(PrivateZonePropertiesInput),
+          tags: S.optional(UpdatePrivateZoneRequestTagsMap),
           location: S.optional(S.String),
           etag: S.optional(S.String),
         }).pipe(
@@ -1544,9 +1850,9 @@ function __c6(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           privateZoneName: S.String.pipe(T.Label()),
-          recordType: S.String.pipe(T.Label()),
+          recordType: UpdateRecordSetRequestRecordType.pipe(T.Label()),
           relativeRecordSetName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(46)),
+          properties: S.optional(RecordSetPropertiesInput),
           etag: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -1560,9 +1866,9 @@ function __c6(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          virtualNetwork: S.optional(__S(29)),
+          virtualNetwork: S.optional(SubResource),
           registrationEnabled: S.optional(S.Boolean),
-          resolutionPolicy: S.optional(S.String),
+          resolutionPolicy: S.optional(ResolutionPolicy),
         }),
       ).annotate({
         identifier: "VirtualNetworkLinkPropertiesInput",
@@ -1574,8 +1880,8 @@ function __c6(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           privateZoneName: S.String.pipe(T.Label()),
           virtualNetworkLinkName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(51)),
-          tags: S.optional(__S(8)),
+          properties: S.optional(VirtualNetworkLinkPropertiesInput),
+          tags: S.optional(UpdateVirtualNetworkLinkRequestTagsMap),
           location: S.optional(S.String),
           etag: S.optional(S.String),
         }).pipe(
@@ -1596,8 +1902,8 @@ function __c6(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           privateZoneName: S.String.pipe(T.Label()),
           virtualNetworkLinkName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(51)),
-          tags: S.optional(__S(8)),
+          properties: S.optional(VirtualNetworkLinkPropertiesInput),
+          tags: S.optional(VirtualNetworkLinksCreateOrUpdateRequestTagsMap),
           location: S.optional(S.String),
           etag: S.optional(S.String),
         }).pipe(
@@ -1611,28 +1917,5 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "VirtualNetworkLinksCreateOrUpdateRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
   }
 }

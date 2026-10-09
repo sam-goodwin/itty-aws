@@ -7,8 +7,6 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -80,42 +78,70 @@ export class ServiceDisabled
 
 /** The request message for Operations.CancelOperation. */
 export interface CancelOperationRequest {}
+const CancelOperationRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<CancelOperationRequest>;
+
 export interface CancelProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be cancelled. */
   name: string;
   /** Request body */
   body?: CancelOperationRequest;
 }
+const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<CancelProjectsLocationsOperationsRequest>;
+
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
+const Empty = CancelOperationRequest as any as S.Schema<Empty>;
+
 /** In order to align with the Infra Manager dependency, we create the same TerraformVariable message to represent a Terraform input variable, by following Infra Manager's API documentation: https://cloud.google.com/infrastructure-manager/docs/reference/rest. A Terraform input variable. */
 export interface TerraformVariable {
   /** Optional. Input variable value. */
   inputValue?: unknown;
 }
+const TerraformVariable = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<TerraformVariable>;
+
 export type TerraformVariableMap = { [key: string]: TerraformVariable | undefined };
+const TerraformVariableMap = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<TerraformVariableMap>;
+
 export type SapSystemS4ConfigScalingMethodEnum =
   | "SCALE_METHOD_UNSPECIFIED"
   | "SCALE_UP"
   | "SCALE_OUT";
+const SapSystemS4ConfigScalingMethodEnum = S.String;
+
 export type SapSystemS4ConfigDeploymentModelEnum =
   | "DEPLOYMENT_MODEL_UNSPECIFIED"
   | "DISTRIBUTED"
   | "DISTRIBUTED_HA";
+const SapSystemS4ConfigDeploymentModelEnum = S.String;
+
 export type SapSystemS4ConfigEnvironmentTypeEnum =
   | "ENVIRONMENT_TYPE_UNSPECIFIED"
   | "NON_PRODUCTION"
   | "PRODUCTION";
+const SapSystemS4ConfigEnvironmentTypeEnum = S.String;
+
 export type SapSystemS4ConfigVersionEnum =
   | "VERSION_UNSPECIFIED"
   | "S4_HANA_2021"
   | "S4_HANA_2022"
   | "S4_HANA_2023";
+const SapSystemS4ConfigVersionEnum = S.String;
+
 export type StringList = Array<string>;
+const StringList = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<StringList>;
+
 export type LocationDetailsInternetAccessEnum =
   | "INTERNETACCESS_UNSPECIFIED"
   | "ALLOW_EXTERNAL_IP"
   | "CONFIGURE_NAT";
+const LocationDetailsInternetAccessEnum = S.String;
+
 /** Message for SAP instance details. */
 export interface LocationDetails {
   /** Optional. Network project. */
@@ -142,6 +168,8 @@ export interface LocationDetails {
   createCommsFirewall?: boolean;
   internetAccess?: LocationDetailsInternetAccessEnum | (string & {});
 }
+const LocationDetails = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<LocationDetails>;
+
 /** Message for SAP instance details. */
 export interface DatabaseDetails {
   /** Optional. Primary DB VM name. */
@@ -163,6 +191,8 @@ export interface DatabaseDetails {
   /** Required. Secret Manager secret. */
   secretManagerSecret?: string;
 }
+const DatabaseDetails = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<DatabaseDetails>;
+
 /** Message for SAP instance details. */
 export interface AppDetails {
   /** Required. Image for the app server and ASCS server. */
@@ -198,6 +228,8 @@ export interface AppDetails {
   /** Required. Machine type. */
   machineType?: string;
 }
+const AppDetails = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<AppDetails>;
+
 /** Message for SAP system workload. */
 export interface SapSystemS4Config {
   /** VM prefix. */
@@ -226,6 +258,8 @@ export interface SapSystemS4Config {
   /** Instance details. */
   app?: AppDetails;
 }
+const SapSystemS4Config = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<SapSystemS4Config>;
+
 export type DeploymentStateEnum =
   | "STATE_UNSPECIFIED"
   | "CREATING"
@@ -233,21 +267,29 @@ export type DeploymentStateEnum =
   | "UPDATING"
   | "DELETING"
   | "FAILED";
+const DeploymentStateEnum = S.String;
+
 export type DeploymentWorkloadTypeEnum =
   | "WORKLOAD_TYPE_UNSPECIFIED"
   | "SAP_S4"
   | "SQL_SERVER"
   | "ORACLE";
+const DeploymentWorkloadTypeEnum = S.String;
+
 export type SqlServerWorkloadOsImageTypeEnum =
   | "OS_IMAGE_TYPE_UNSPECIFIED"
   | "PUBLIC_IMAGE"
   | "CUSTOM_IMAGE";
+const SqlServerWorkloadOsImageTypeEnum = S.String;
+
 export type SqlServerWorkloadSqlServerEditionEnum =
   | "SQL_SERVER_EDITION_TYPE_UNSPECIFIED"
   | "SQL_SERVER_EDITION_TYPE_DEVELOPER"
   | "SQL_SERVER_EDITION_TYPE_ENTERPRISE"
   | "SQL_SERVER_EDITION_TYPE_STANDARD"
   | "SQL_SERVER_EDITION_TYPE_WEB";
+const SqlServerWorkloadSqlServerEditionEnum = S.String;
+
 /** Pacemaker configuration. */
 export interface Pacemaker {
   /** Required. Pacemaker cluster username. */
@@ -263,10 +305,14 @@ export interface Pacemaker {
   /** Required. SQL Pacemaker secret name. */
   sqlPacemakerSecret?: string;
 }
+const Pacemaker = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<Pacemaker>;
+
 export type SqlLocationDetailsInternetAccessEnum =
   | "INTERNET_ACCESS_UNSPECIFIED"
   | "ALLOW_EXTERNAL_IP"
   | "CONFIGURE_NAT";
+const SqlLocationDetailsInternetAccessEnum = S.String;
+
 /** Location and networking details for configuring SQL server workload. */
 export interface SqlLocationDetails {
   /** Optional. Create a new DNS zone when the field is empty. Only shown for `Using an existing DNS`. List of existing DNS zones. Terraform variable name: existing_dns_zone_name. */
@@ -288,7 +334,11 @@ export interface SqlLocationDetails {
   /** Required. Network name. */
   network?: string;
 }
+const SqlLocationDetails = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<SqlLocationDetails>;
+
 export type DatabaseTenancyModelEnum = "TENANCY_MODEL_UNSPECIFIED" | "SHARED" | "SOLE_TENANT";
+const DatabaseTenancyModelEnum = S.String;
+
 /** Database details. */
 export interface Database {
   /** Required. Secret Manager secret. */
@@ -314,27 +364,41 @@ export interface Database {
   /** Required. SHARED or SOLE_TENANT. */
   tenancyModel?: DatabaseTenancyModelEnum | (string & {});
 }
+const Database = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<Database>;
+
 export type SqlServerWorkloadHaTypeEnum = "HA_TYPE_UNSPECIFIED" | "AOAG" | "FCI";
+const SqlServerWorkloadHaTypeEnum = S.String;
+
 export type SqlServerWorkloadOperatingSystemTypeEnum =
   | "OPERATING_SYSTEM_TYPE_UNSPECIFIED"
   | "WINDOWS"
   | "UBUNTU"
   | "RED_HAT_ENTERPRISE_LINUX"
   | "SUSE";
+const SqlServerWorkloadOperatingSystemTypeEnum = S.String;
+
 export type SqlServerWorkloadEnvironmentTypeEnum =
   | "ENVIRONMENT_TYPE_UNSPECIFIED"
   | "NON_PRODUCTION"
   | "PRODUCTION";
+const SqlServerWorkloadEnvironmentTypeEnum = S.String;
+
 export type SqlServerWorkloadFciTypeEnum = "FCI_TYPE_UNSPECIFIED" | "SHARED_DISK" | "S2D";
+const SqlServerWorkloadFciTypeEnum = S.String;
+
 export type SqlServerWorkloadSqlServerVersionEnum =
   | "SQL_SERVER_VERSION_TYPE_UNSPECIFIED"
   | "SQL_SERVER_VERSION_TYPE_2017"
   | "SQL_SERVER_VERSION_TYPE_2019"
   | "SQL_SERVER_VERSION_TYPE_2022";
+const SqlServerWorkloadSqlServerVersionEnum = S.String;
+
 export type ActiveDirectoryTypeEnum =
   | "ACTIVE_DIRECTORY_TYPE_UNSPECIFIED"
   | "GCP_MANAGED"
   | "SELF_MANAGED";
+const ActiveDirectoryTypeEnum = S.String;
+
 /** Active Directory details. */
 export interface ActiveDirectory {
   /** Optional. Domain username. */
@@ -348,10 +412,14 @@ export interface ActiveDirectory {
   /** Optional. DNS IP address. */
   dnsAddress?: string;
 }
+const ActiveDirectory = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<ActiveDirectory>;
+
 export type SqlServerWorkloadDeploymentModelEnum =
   | "DEPLOYMENT_MODEL_UNSPECIFIED"
   | "HIGH_AVAILABILITY"
   | "SINGLE_INSTANCE";
+const SqlServerWorkloadDeploymentModelEnum = S.String;
+
 /** Message for MS SQL workload. */
 export interface SqlServerWorkload {
   /** Optional. OS image type. It's used to create boot disks for VM instances. When either Windows licensing type or SQL licensing type is BYOL, this option is disabled and defaults to a custom image. */
@@ -389,6 +457,8 @@ export interface SqlServerWorkload {
   /** Required. HIGH_AVAILABILITY or SINGLE_INSTANCE. */
   deploymentModel?: SqlServerWorkloadDeploymentModelEnum | (string & {});
 }
+const SqlServerWorkload = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<SqlServerWorkload>;
+
 /** The Deployment object represents user intent for deploying a specific type of workload. */
 export interface Deployment {
   /** Output only. Update time stamp. */
@@ -414,6 +484,8 @@ export interface Deployment {
   /** MS SQL workload input. */
   sqlServerWorkload?: SqlServerWorkload;
 }
+const Deployment = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<Deployment>;
+
 export interface CreateProjectsLocationsDeploymentsRequest {
   /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
@@ -424,8 +496,17 @@ export interface CreateProjectsLocationsDeploymentsRequest {
   /** Request body */
   body?: Deployment;
 }
+const CreateProjectsLocationsDeploymentsRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<CreateProjectsLocationsDeploymentsRequest>;
+
 export type DocumentMap = { [key: string]: unknown | undefined };
+const DocumentMap = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<DocumentMap>;
+
 export type DocumentMapList = Array<DocumentMap>;
+const DocumentMapList = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<DocumentMapList>;
+
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
   /** The status code, which should be an enum value of google.rpc.Code. */
@@ -435,6 +516,8 @@ export interface Status {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
   message?: string;
 }
+const Status = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<Status>;
+
 /** This resource represents a long-running operation that is the result of a network API call. */
 export interface Operation {
   /** If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available. */
@@ -448,6 +531,8 @@ export interface Operation {
   /** Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any. */
   metadata?: DocumentMap;
 }
+const Operation = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<Operation>;
+
 /** Message for output of deployment resource. */
 export interface DeploymentOutput {
   /** Type of the resource. */
@@ -455,7 +540,11 @@ export interface DeploymentOutput {
   /** Name of the resource. */
   name?: string;
 }
+const DeploymentOutput = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<DeploymentOutput>;
+
 export type DeploymentOutputList = Array<DeploymentOutput>;
+const DeploymentOutputList = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<DeploymentOutputList>;
+
 export type ActuationStateEnum =
   | "STATE_UNSPECIFIED"
   | "INFRA_CREATING"
@@ -464,6 +553,8 @@ export type ActuationStateEnum =
   | "POST_INFRA_CONFIGURING"
   | "INFRA_DESTROYING"
   | "TIMEOUT";
+const ActuationStateEnum = S.String;
+
 export type ActuationOutputErrorCodeEnum =
   | "ERROR_CODE_UNSPECIFIED"
   | "TERRAFORM_FAILED"
@@ -478,6 +569,8 @@ export type ActuationOutputErrorCodeEnum =
   | "TERRAFORM_DELETION_FAILED"
   | "RESOURCE_IN_USE_IN_TERRAFORM_DELETION"
   | "ANSIBLE_START_FAILED";
+const ActuationOutputErrorCodeEnum = S.String;
+
 /** Message for output of actuation. */
 export interface ActuationOutput {
   /** Output only. Failed task name returned from Ansible. */
@@ -501,6 +594,8 @@ export interface ActuationOutput {
   /** A link to the actuation Cloud Build log. */
   errorLogs?: string;
 }
+const ActuationOutput = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<ActuationOutput>;
+
 /** The Actuation object represents the bootstrap state and output results of deployed infrastructure and software. */
 export interface Actuation {
   /** Output only. Deployment output. */
@@ -516,6 +611,8 @@ export interface Actuation {
   /** Output only. Actuation output. */
   actuationOutput?: ActuationOutput;
 }
+const Actuation = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<Actuation>;
+
 export interface CreateProjectsLocationsDeploymentsActuationsRequest {
   /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
@@ -524,23 +621,38 @@ export interface CreateProjectsLocationsDeploymentsActuationsRequest {
   /** Request body */
   body?: Actuation;
 }
+const CreateProjectsLocationsDeploymentsActuationsRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<CreateProjectsLocationsDeploymentsActuationsRequest>;
+
 export type EvaluationEvaluationTypeEnum =
   | "EVALUATION_TYPE_UNSPECIFIED"
   | "SAP"
   | "SQL_SERVER"
   | "OTHER";
+const EvaluationEvaluationTypeEnum = S.String;
+
 export type ResourceStatusStateEnum = "STATE_UNSPECIFIED" | "CREATING" | "ACTIVE" | "DELETING";
+const ResourceStatusStateEnum = S.String;
+
 /** The lifecycle status of an Evaluation resource. */
 export interface ResourceStatus {
   /** State of the Evaluation resource. */
   state?: ResourceStatusStateEnum | (string & {});
 }
+const ResourceStatus = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<ResourceStatus>;
+
 export type StringMap = { [key: string]: string | undefined };
+const StringMap = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<StringMap>;
+
 /** A filter for matching Compute Engine instances. */
 export interface GceInstanceFilter {
   /** If non-empty, only Compute Engine instances associated with at least one of the provided service accounts will be included in the evaluation. */
   serviceAccounts?: StringList;
 }
+const GceInstanceFilter = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<GceInstanceFilter>;
+
 /** Resource filter for an evaluation defining the scope of resources to be evaluated. */
 export interface ResourceFilter {
   /** Labels to filter resources by. Each key-value pair in the map must exist on the resource for it to be included (e.g. VM instance labels). For example, specifying `{ "env": "prod", "database": "nosql" }` will only include resources that have labels `env=prod` and `database=nosql`. */
@@ -552,6 +664,8 @@ export interface ResourceFilter {
   /** The pattern to filter resources by their id For example, a pattern of ".*prod-cluster.*" will match all resources that contain "prod-cluster" in their ID. */
   resourceIdPatterns?: StringList;
 }
+const ResourceFilter = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<ResourceFilter>;
+
 /** BigQuery destination for evaluation results. */
 export interface BigQueryDestination {
   /** Optional. Determines if a new results table will be created when an Execution is created. */
@@ -559,6 +673,8 @@ export interface BigQueryDestination {
   /** Optional. Destination dataset to save evaluation results. */
   destinationDataset?: string;
 }
+const BigQueryDestination = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<BigQueryDestination>;
+
 /** Represents a Workload Manager Evaluation configuration. An Evaluation defines a set of rules to be validated against a scope of Cloud resources. */
 export interface Evaluation {
   /** Name of resource that has the form `projects/{project_id}/locations/{location_id}/evaluations/{evaluation_id}`. */
@@ -588,6 +704,8 @@ export interface Evaluation {
   /** Output only. [Output only] Update time stamp. */
   updateTime?: string;
 }
+const Evaluation = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<Evaluation>;
+
 export interface CreateProjectsLocationsEvaluationsRequest {
   /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
@@ -598,16 +716,31 @@ export interface CreateProjectsLocationsEvaluationsRequest {
   /** Request body */
   body?: Evaluation;
 }
+const CreateProjectsLocationsEvaluationsRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<CreateProjectsLocationsEvaluationsRequest>;
+
 export interface DeleteProjectsLocationsDeploymentsRequest {
   /** Required. Name of the resource. */
   name: string;
   /** Optional. If set to true, any actuation will also be deleted. Follows the best practice from https://aip.dev/135#cascading-delete. */
   force?: boolean;
 }
+const DeleteProjectsLocationsDeploymentsRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<DeleteProjectsLocationsDeploymentsRequest>;
+
 export interface DeleteProjectsLocationsDeploymentsActuationsRequest {
   /** Required. The name of the actuation to delete. projects/{project}/locations/{location}/deployments/{deployment}/actuations/{actuation}. */
   name: string;
 }
+const DeleteProjectsLocationsDeploymentsActuationsRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<DeleteProjectsLocationsDeploymentsActuationsRequest>;
+
 export interface DeleteProjectsLocationsEvaluationsRequest {
   /** Required. Name of the resource. */
   name: string;
@@ -616,26 +749,51 @@ export interface DeleteProjectsLocationsEvaluationsRequest {
   /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
 }
+const DeleteProjectsLocationsEvaluationsRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<DeleteProjectsLocationsEvaluationsRequest>;
+
 export interface DeleteProjectsLocationsEvaluationsExecutionsRequest {
   /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
   /** Required. Name of the resource. */
   name: string;
 }
+const DeleteProjectsLocationsEvaluationsExecutionsRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<DeleteProjectsLocationsEvaluationsExecutionsRequest>;
+
 export interface DeleteProjectsLocationsInsightsRequest {
   /** Required. The system id of the SAP system resource to delete. Formatted as projects/{project}/locations/{location}/sapSystems/{sap_system_id} */
   name: string;
   /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
 }
+const DeleteProjectsLocationsInsightsRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<DeleteProjectsLocationsInsightsRequest>;
+
 export interface DeleteProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
+const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>;
+
 export interface GetProjectsLocationsRequest {
   /** Resource name for the location. */
   name: string;
 }
+const GetProjectsLocationsRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<GetProjectsLocationsRequest>;
+
 /** A resource that represents a Google Cloud location. */
 export interface Location {
   /** Cross-service attributes for the location. For example {"cloud.googleapis.com/region": "us-east1"} */
@@ -649,27 +807,50 @@ export interface Location {
   /** The friendly name for this location, typically a nearby city name. For example, "Tokyo". */
   displayName?: string;
 }
+const Location = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<Location>;
+
 export interface GetProjectsLocationsDeploymentsRequest {
   /** Required. Name of the resource. The format is 'projects/{project_id}/locations/{location_id}/deployments/{deployment_id}'. */
   name: string;
 }
+const GetProjectsLocationsDeploymentsRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  0,
+) as any as S.Schema<GetProjectsLocationsDeploymentsRequest>;
+
 export interface GetProjectsLocationsDeploymentsActuationsRequest {
   /** Required. Name of the resource. */
   name: string;
 }
+const GetProjectsLocationsDeploymentsActuationsRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  1,
+) as any as S.Schema<GetProjectsLocationsDeploymentsActuationsRequest>;
+
 export interface GetProjectsLocationsDiscoveredprofilesRequest {
   /** Required. Name of the resource */
   name: string;
 }
+const GetProjectsLocationsDiscoveredprofilesRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  2,
+) as any as S.Schema<GetProjectsLocationsDiscoveredprofilesRequest>;
+
 export type WorkloadProfileWorkloadTypeEnum = "WORKLOAD_TYPE_UNSPECIFIED" | "S4_HANA";
+const WorkloadProfileWorkloadTypeEnum = S.String;
+
 export type SapComponentTopologyTypeEnum =
   | "TOPOLOGY_TYPE_UNSPECIFIED"
   | "TOPOLOGY_SCALE_UP"
   | "TOPOLOGY_SCALE_OUT";
+const SapComponentTopologyTypeEnum = S.String;
+
 export type BackupPropertiesLatestBackupStatusEnum =
   | "BACKUP_STATE_UNSPECIFIED"
   | "BACKUP_STATE_SUCCESS"
   | "BACKUP_STATE_FAILURE";
+const BackupPropertiesLatestBackupStatusEnum = S.String;
+
 /** Backup properties. */
 export interface BackupProperties {
   /** The time when the latest backup was performed. */
@@ -677,6 +858,8 @@ export interface BackupProperties {
   /** Output only. The state of the latest backup. */
   latestBackupStatus?: BackupPropertiesLatestBackupStatusEnum;
 }
+const BackupProperties = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<BackupProperties>;
+
 export type DatabasePropertiesDatabaseTypeEnum =
   | "DATABASE_TYPE_UNSPECIFIED"
   | "HANA"
@@ -685,6 +868,8 @@ export type DatabasePropertiesDatabaseTypeEnum =
   | "ORACLE"
   | "SQLSERVER"
   | "ASE";
+const DatabasePropertiesDatabaseTypeEnum = S.String;
+
 /** Database Properties. */
 export interface DatabaseProperties {
   /** Output only. Backup properties. */
@@ -692,6 +877,8 @@ export interface DatabaseProperties {
   /** Output only. Type of the database. `HANA`, `DB2`, etc. */
   databaseType?: DatabasePropertiesDatabaseTypeEnum;
 }
+const DatabaseProperties = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<DatabaseProperties>;
+
 export type InstancePropertiesRolesItemEnum =
   | "INSTANCE_ROLE_UNSPECIFIED"
   | "INSTANCE_ROLE_ASCS"
@@ -699,7 +886,14 @@ export type InstancePropertiesRolesItemEnum =
   | "INSTANCE_ROLE_APP_SERVER"
   | "INSTANCE_ROLE_HANA_PRIMARY"
   | "INSTANCE_ROLE_HANA_SECONDARY";
+const InstancePropertiesRolesItemEnum = S.String;
+
 export type InstancePropertiesRolesItemEnumList = Array<InstancePropertiesRolesItemEnum>;
+const InstancePropertiesRolesItemEnumList = /*@__PURE__*/ __L.at(
+  __c5,
+  5,
+) as any as S.Schema<InstancePropertiesRolesItemEnumList>;
+
 /** Maintenance Event */
 export interface UpcomingMaintenanceEvent {
   /** Optional. Start time */
@@ -713,6 +907,11 @@ export interface UpcomingMaintenanceEvent {
   /** Optional. End time */
   endTime?: string;
 }
+const UpcomingMaintenanceEvent = /*@__PURE__*/ __L.at(
+  __c5,
+  6,
+) as any as S.Schema<UpcomingMaintenanceEvent>;
+
 export type ServiceStatesStateEnum =
   | "STATE_UNSPECIFIED"
   | "CONFIG_FAILURE"
@@ -720,6 +919,8 @@ export type ServiceStatesStateEnum =
   | "FUNCTIONALITY_FAILURE"
   | "ENABLED"
   | "DISABLED";
+const ServiceStatesStateEnum = S.String;
+
 /** The IAM permission status. */
 export interface IAMPermission {
   /** Output only. The name of the permission. */
@@ -727,7 +928,11 @@ export interface IAMPermission {
   /** Output only. Whether the permission is granted. */
   granted?: boolean;
 }
+const IAMPermission = /*@__PURE__*/ __L.at(__c5, 7) as any as S.Schema<IAMPermission>;
+
 export type IAMPermissionList = Array<IAMPermission>;
+const IAMPermissionList = /*@__PURE__*/ __L.at(__c6, 0) as any as S.Schema<IAMPermissionList>;
+
 /** The state of the service. */
 export interface ServiceStates {
   /** Output only. The overall state of the service. */
@@ -735,6 +940,8 @@ export interface ServiceStates {
   /** Optional. Output only. The IAM permissions for the service. */
   iamPermissions?: IAMPermissionList;
 }
+const ServiceStates = /*@__PURE__*/ __L.at(__c6, 1) as any as S.Schema<ServiceStates>;
+
 /** Agent status. */
 export interface AgentStates {
   /** Optional. The available version of the agent in artifact registry. */
@@ -750,6 +957,8 @@ export interface AgentStates {
   /** Optional. The installed version of the agent on the host. */
   installedVersion?: string;
 }
+const AgentStates = /*@__PURE__*/ __L.at(__c6, 2) as any as S.Schema<AgentStates>;
+
 /** SAP instance properties. */
 export interface SapInstanceProperties {
   /** Optional. Sap Instance Agent status. */
@@ -757,6 +966,11 @@ export interface SapInstanceProperties {
   /** Optional. SAP Instance numbers. They are from '00' to '99'. */
   numbers?: StringList;
 }
+const SapInstanceProperties = /*@__PURE__*/ __L.at(
+  __c6,
+  3,
+) as any as S.Schema<SapInstanceProperties>;
+
 /** Instance Properties. */
 export interface InstanceProperties {
   /** Optional. Instance number. */
@@ -772,6 +986,8 @@ export interface InstanceProperties {
   /** Optional. SAP Instance properties. */
   sapInstanceProperties?: SapInstanceProperties;
 }
+const InstanceProperties = /*@__PURE__*/ __L.at(__c6, 4) as any as S.Schema<InstanceProperties>;
+
 export type CloudResourceKindEnum =
   | "RESOURCE_KIND_UNSPECIFIED"
   | "RESOURCE_KIND_INSTANCE"
@@ -785,6 +1001,8 @@ export type CloudResourceKindEnum =
   | "RESOURCE_KIND_NETWORK"
   | "RESOURCE_KIND_PUBLIC_ADDRESS"
   | "RESOURCE_KIND_INSTANCE_GROUP";
+const CloudResourceKindEnum = S.String;
+
 /** The resource on GCP */
 export interface CloudResource {
   /** Output only. resource name Example: compute.googleapis.com/projects/wlm-obs-dev/zones/us-central1-a/instances/sap-pri */
@@ -794,7 +1012,11 @@ export interface CloudResource {
   /** Output only. */
   kind?: CloudResourceKindEnum;
 }
+const CloudResource = /*@__PURE__*/ __L.at(__c6, 5) as any as S.Schema<CloudResource>;
+
 export type CloudResourceList = Array<CloudResource>;
+const CloudResourceList = /*@__PURE__*/ __L.at(__c6, 6) as any as S.Schema<CloudResourceList>;
+
 /** The component of sap workload */
 export interface SapComponent {
   /** Output only. sid is the sap component identificator */
@@ -808,6 +1030,8 @@ export interface SapComponent {
   /** Output only. resources in the component */
   resources?: CloudResourceList;
 }
+const SapComponent = /*@__PURE__*/ __L.at(__c6, 7) as any as S.Schema<SapComponent>;
+
 export type SapWorkloadArchitectureEnum =
   | "ARCHITECTURE_UNSPECIFIED"
   | "INVALID"
@@ -816,6 +1040,8 @@ export type SapWorkloadArchitectureEnum =
   | "DISTRIBUTED_HA"
   | "STANDALONE_DATABASE"
   | "STANDALONE_DATABASE_HA";
+const SapWorkloadArchitectureEnum = S.String;
+
 /** Contains the details of a product. */
 export interface Product {
   /** Optional. Version of the product. */
@@ -823,7 +1049,11 @@ export interface Product {
   /** Optional. Name of the product. */
   name?: string;
 }
+const Product = /*@__PURE__*/ __L.at(__c7, 0) as any as S.Schema<Product>;
+
 export type ProductList = Array<Product>;
+const ProductList = /*@__PURE__*/ __L.at(__c7, 1) as any as S.Schema<ProductList>;
+
 /** The body of sap workload */
 export interface SapWorkload {
   /** Output only. database component */
@@ -837,6 +1067,8 @@ export interface SapWorkload {
   /** Output only. The products on this workload. */
   products?: ProductList;
 }
+const SapWorkload = /*@__PURE__*/ __L.at(__c7, 2) as any as S.Schema<SapWorkload>;
+
 /** Workload resource. */
 export interface WorkloadProfile {
   /** Identifier. name of resource names have the form 'projects/{project_id}/locations/{location}/workloadProfiles/{workload_id}' */
@@ -850,10 +1082,17 @@ export interface WorkloadProfile {
   /** Required. time when the workload data was refreshed */
   refreshedTime?: string;
 }
+const WorkloadProfile = /*@__PURE__*/ __L.at(__c7, 3) as any as S.Schema<WorkloadProfile>;
+
 export interface GetProjectsLocationsDiscoveredprofilesHealthRequest {
   /** Required. The resource name */
   name: string;
 }
+const GetProjectsLocationsDiscoveredprofilesHealthRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  4,
+) as any as S.Schema<GetProjectsLocationsDiscoveredprofilesHealthRequest>;
+
 export type HealthCheckStateEnum =
   | "STATE_UNSPECIFIED"
   | "PASSED"
@@ -861,6 +1100,8 @@ export type HealthCheckStateEnum =
   | "DEGRADED"
   | "SKIPPED"
   | "UNSUPPORTED";
+const HealthCheckStateEnum = S.String;
+
 /** HealthCheck contains the detailed health check of a component based on asource. */
 export interface HealthCheck {
   /** Output only. The source of the health check. */
@@ -874,18 +1115,26 @@ export interface HealthCheck {
   /** Output only. The state of the health check. */
   state?: HealthCheckStateEnum;
 }
+const HealthCheck = /*@__PURE__*/ __L.at(__c7, 5) as any as S.Schema<HealthCheck>;
+
 export type HealthCheckList = Array<HealthCheck>;
+const HealthCheckList = /*@__PURE__*/ __L.at(__c7, 6) as any as S.Schema<HealthCheckList>;
+
 export type ComponentHealthComponentHealthTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "TYPE_REQUIRED"
   | "TYPE_OPTIONAL"
   | "TYPE_SPECIAL";
+const ComponentHealthComponentHealthTypeEnum = S.String;
+
 export type ComponentHealthStateEnum =
   | "HEALTH_STATE_UNSPECIFIED"
   | "HEALTHY"
   | "UNHEALTHY"
   | "CRITICAL"
   | "UNSUPPORTED";
+const ComponentHealthStateEnum = S.String;
+
 /** HealthCondition contains the detailed health check of each component. */
 export interface ComponentHealth {
   /** The detailed health checks of the component. */
@@ -899,13 +1148,19 @@ export interface ComponentHealth {
   /** Output only. The health state of the component. */
   state?: ComponentHealthStateEnum;
 }
+const ComponentHealth = /*@__PURE__*/ __L.at(__c7, 7) as any as S.Schema<ComponentHealth>;
+
 export type ComponentHealthList = Array<ComponentHealth>;
+const ComponentHealthList = /*@__PURE__*/ __L.at(__c8, 0) as any as S.Schema<ComponentHealthList>;
+
 export type WorkloadProfileHealthStateEnum =
   | "HEALTH_STATE_UNSPECIFIED"
   | "HEALTHY"
   | "UNHEALTHY"
   | "CRITICAL"
   | "UNSUPPORTED";
+const WorkloadProfileHealthStateEnum = S.String;
+
 /** WorkloadProfileHealth contains the detailed health check of workload. */
 export interface WorkloadProfileHealth {
   /** The time when the health check was performed. */
@@ -915,22 +1170,45 @@ export interface WorkloadProfileHealth {
   /** Output only. The health state of the workload. */
   state?: WorkloadProfileHealthStateEnum;
 }
+const WorkloadProfileHealth = /*@__PURE__*/ __L.at(
+  __c8,
+  1,
+) as any as S.Schema<WorkloadProfileHealth>;
+
 export interface GetProjectsLocationsEvaluationsRequest {
   /** Required. Name of the resource. */
   name: string;
 }
+const GetProjectsLocationsEvaluationsRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  2,
+) as any as S.Schema<GetProjectsLocationsEvaluationsRequest>;
+
 export interface GetProjectsLocationsEvaluationsExecutionsRequest {
   /** Required. Name of the resource. */
   name: string;
 }
+const GetProjectsLocationsEvaluationsExecutionsRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  3,
+) as any as S.Schema<GetProjectsLocationsEvaluationsExecutionsRequest>;
+
 export type ExecutionRunTypeEnum = "TYPE_UNSPECIFIED" | "ONE_TIME" | "SCHEDULED";
+const ExecutionRunTypeEnum = S.String;
+
 export type ExecutionStateEnum = "STATE_UNSPECIFIED" | "RUNNING" | "SUCCEEDED" | "FAILED";
+const ExecutionStateEnum = S.String;
+
 /** Additional information generated by an execution. */
 export interface Notice {
   /** Output only. Message of the notice. */
   message?: string;
 }
+const Notice = /*@__PURE__*/ __L.at(__c8, 4) as any as S.Schema<Notice>;
+
 export type NoticeList = Array<Notice>;
+const NoticeList = /*@__PURE__*/ __L.at(__c8, 5) as any as S.Schema<NoticeList>;
+
 /** Execution summary. */
 export interface Summary {
   /** Output only. Number of new failures compared to the previous execution. */
@@ -940,11 +1218,15 @@ export interface Summary {
   /** Output only. Number of failures. */
   failures?: string;
 }
+const Summary = /*@__PURE__*/ __L.at(__c8, 6) as any as S.Schema<Summary>;
+
 export type RuleExecutionResultStateEnum =
   | "STATE_UNSPECIFIED"
   | "STATE_SUCCESS"
   | "STATE_FAILURE"
   | "STATE_SKIPPED";
+const RuleExecutionResultStateEnum = S.String;
+
 /** Execution result summary per rule. */
 export interface RuleExecutionResult {
   /** Rule name as plain text like `sap-hana-configured`. */
@@ -958,9 +1240,20 @@ export interface RuleExecutionResult {
   /** Number of total scanned resources. */
   scannedResourceCount?: string;
 }
+const RuleExecutionResult = /*@__PURE__*/ __L.at(__c8, 7) as any as S.Schema<RuleExecutionResult>;
+
 export type RuleExecutionResultList = Array<RuleExecutionResult>;
+const RuleExecutionResultList = /*@__PURE__*/ __L.at(
+  __c9,
+  0,
+) as any as S.Schema<RuleExecutionResultList>;
+
 export type ExecutionEngineEnum = "ENGINE_UNSPECIFIED" | "ENGINE_SCANNER" | "V2";
+const ExecutionEngineEnum = S.String;
+
 export type ExternalDataSourcesTypeEnum = "TYPE_UNSPECIFIED" | "BIG_QUERY_TABLE";
+const ExternalDataSourcesTypeEnum = S.String;
+
 /** External data sources for an execution. */
 export interface ExternalDataSources {
   /** Required. Type of external data source. */
@@ -972,7 +1265,14 @@ export interface ExternalDataSources {
   /** Required. The asset type of the external data source. This can be a supported Cloud Asset Inventory asset type (see https://cloud.google.com/asset-inventory/docs/supported-asset-types) to override the default asset type, or it can be a custom type defined by the user. */
   assetType?: string;
 }
+const ExternalDataSources = /*@__PURE__*/ __L.at(__c9, 1) as any as S.Schema<ExternalDataSources>;
+
 export type ExternalDataSourcesList = Array<ExternalDataSources>;
+const ExternalDataSourcesList = /*@__PURE__*/ __L.at(
+  __c9,
+  2,
+) as any as S.Schema<ExternalDataSourcesList>;
+
 /** Execution that represents a single run of an Evaluation. */
 export interface Execution {
   /** Output only. [Output only] Inventory time stamp. */
@@ -1002,10 +1302,17 @@ export interface Execution {
   /** Optional. External data sources. */
   externalDataSources?: ExternalDataSourcesList;
 }
+const Execution = /*@__PURE__*/ __L.at(__c9, 3) as any as S.Schema<Execution>;
+
 export interface GetProjectsLocationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
+const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  4,
+) as any as S.Schema<GetProjectsLocationsOperationsRequest>;
+
 export interface ListProjectsLocationsRequest {
   /** The maximum number of results to return. If not set, the service selects a default. */
   pageSize?: number;
@@ -1018,7 +1325,14 @@ export interface ListProjectsLocationsRequest {
   /** The resource that owns the locations collection, if applicable. */
   name: string;
 }
+const ListProjectsLocationsRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  5,
+) as any as S.Schema<ListProjectsLocationsRequest>;
+
 export type LocationList = Array<Location>;
+const LocationList = /*@__PURE__*/ __L.at(__c9, 6) as any as S.Schema<LocationList>;
+
 /** The response message for Locations.ListLocations. */
 export interface ListLocationsResponse {
   /** The standard List next-page token. */
@@ -1026,6 +1340,11 @@ export interface ListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
   locations?: LocationList;
 }
+const ListLocationsResponse = /*@__PURE__*/ __L.at(
+  __c9,
+  7,
+) as any as S.Schema<ListLocationsResponse>;
+
 export interface ListProjectsLocationsDeploymentsRequest {
   /** Required. The resource prefix of the Deployment using the form: `projects/{project_id}/locations/{location_id}` */
   parent: string;
@@ -1038,7 +1357,14 @@ export interface ListProjectsLocationsDeploymentsRequest {
   /** Optional. Field to sort by. See https://google.aip.dev/132#ordering for more details. */
   orderBy?: string;
 }
+const ListProjectsLocationsDeploymentsRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  0,
+) as any as S.Schema<ListProjectsLocationsDeploymentsRequest>;
+
 export type DeploymentList = Array<Deployment>;
+const DeploymentList = /*@__PURE__*/ __L.at(__c10, 1) as any as S.Schema<DeploymentList>;
+
 /** Message for response to listing deployments. */
 export interface ListDeploymentsResponse {
   /** A token identifying a page of results the server should return. */
@@ -1048,6 +1374,11 @@ export interface ListDeploymentsResponse {
   /** The list of deployments. */
   deployments?: DeploymentList;
 }
+const ListDeploymentsResponse = /*@__PURE__*/ __L.at(
+  __c10,
+  2,
+) as any as S.Schema<ListDeploymentsResponse>;
+
 export interface ListProjectsLocationsDeploymentsActuationsRequest {
   /** Optional. A token identifying a page of results the server should return. */
   pageToken?: string;
@@ -1060,7 +1391,14 @@ export interface ListProjectsLocationsDeploymentsActuationsRequest {
   /** Optional. Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default. */
   pageSize?: number;
 }
+const ListProjectsLocationsDeploymentsActuationsRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  3,
+) as any as S.Schema<ListProjectsLocationsDeploymentsActuationsRequest>;
+
 export type ActuationList = Array<Actuation>;
+const ActuationList = /*@__PURE__*/ __L.at(__c10, 4) as any as S.Schema<ActuationList>;
+
 /** The response object from `ListActuations`. */
 export interface ListActuationsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
@@ -1070,6 +1408,11 @@ export interface ListActuationsResponse {
   /** The list of actuations. */
   actuations?: ActuationList;
 }
+const ListActuationsResponse = /*@__PURE__*/ __L.at(
+  __c10,
+  5,
+) as any as S.Schema<ListActuationsResponse>;
+
 export interface ListProjectsLocationsDiscoveredprofilesRequest {
   /** Optional. A token identifying a page of results the server should return. */
   pageToken?: string;
@@ -1080,7 +1423,14 @@ export interface ListProjectsLocationsDiscoveredprofilesRequest {
   /** Optional. Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default. */
   pageSize?: number;
 }
+const ListProjectsLocationsDiscoveredprofilesRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  6,
+) as any as S.Schema<ListProjectsLocationsDiscoveredprofilesRequest>;
+
 export type WorkloadProfileList = Array<WorkloadProfile>;
+const WorkloadProfileList = /*@__PURE__*/ __L.at(__c10, 7) as any as S.Schema<WorkloadProfileList>;
+
 /** List discovered profile Response returns discovered profiles from agents */
 export interface ListDiscoveredProfilesResponse {
   /** Output only. The list of workload profiles */
@@ -1090,6 +1440,11 @@ export interface ListDiscoveredProfilesResponse {
   /** Locations that could not be reached. */
   unreachable?: StringList;
 }
+const ListDiscoveredProfilesResponse = /*@__PURE__*/ __L.at(
+  __c11,
+  0,
+) as any as S.Schema<ListDiscoveredProfilesResponse>;
+
 export interface ListProjectsLocationsEvaluationsRequest {
   /** A token identifying a page of results the server should return. */
   pageToken?: string;
@@ -1102,7 +1457,14 @@ export interface ListProjectsLocationsEvaluationsRequest {
   /** Filter to be applied when listing the evaluation results. */
   filter?: string;
 }
+const ListProjectsLocationsEvaluationsRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  1,
+) as any as S.Schema<ListProjectsLocationsEvaluationsRequest>;
+
 export type EvaluationList = Array<Evaluation>;
+const EvaluationList = /*@__PURE__*/ __L.at(__c11, 2) as any as S.Schema<EvaluationList>;
+
 /** Response message for the ListEvaluations RPC. */
 export interface ListEvaluationsResponse {
   /** A token identifying a page of results the server should return. */
@@ -1112,6 +1474,11 @@ export interface ListEvaluationsResponse {
   /** The list of evaluations. */
   evaluations?: EvaluationList;
 }
+const ListEvaluationsResponse = /*@__PURE__*/ __L.at(
+  __c11,
+  3,
+) as any as S.Schema<ListEvaluationsResponse>;
+
 export interface ListProjectsLocationsEvaluationsExecutionsRequest {
   /** Required. The resource prefix of the Execution using the form: `projects/{project}/locations/{location}/evaluations/{evaluation}`. */
   parent: string;
@@ -1124,7 +1491,14 @@ export interface ListProjectsLocationsEvaluationsExecutionsRequest {
   /** Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default. */
   pageSize?: number;
 }
+const ListProjectsLocationsEvaluationsExecutionsRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  4,
+) as any as S.Schema<ListProjectsLocationsEvaluationsExecutionsRequest>;
+
 export type ExecutionList = Array<Execution>;
+const ExecutionList = /*@__PURE__*/ __L.at(__c11, 5) as any as S.Schema<ExecutionList>;
+
 /** Response message for the ListExecutions RPC. */
 export interface ListExecutionsResponse {
   /** A token identifying a page of results the server should return. */
@@ -1134,6 +1508,11 @@ export interface ListExecutionsResponse {
   /** Locations that could not be reached. */
   unreachable?: StringList;
 }
+const ListExecutionsResponse = /*@__PURE__*/ __L.at(
+  __c11,
+  6,
+) as any as S.Schema<ListExecutionsResponse>;
+
 export interface ListProjectsLocationsEvaluationsExecutionsResultsRequest {
   /** A token identifying a page of results the server should return. */
   pageToken?: string;
@@ -1144,6 +1523,11 @@ export interface ListProjectsLocationsEvaluationsExecutionsResultsRequest {
   /** Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default. */
   pageSize?: number;
 }
+const ListProjectsLocationsEvaluationsExecutionsResultsRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  7,
+) as any as S.Schema<ListProjectsLocationsEvaluationsExecutionsResultsRequest>;
+
 /** A ShellCommand is invoked via the agent's command line executor. */
 export interface ShellCommand {
   /** Optional. If not specified, the default timeout is 60 seconds. */
@@ -1153,6 +1537,8 @@ export interface ShellCommand {
   /** The name of the command to be executed. */
   command?: string;
 }
+const ShellCommand = /*@__PURE__*/ __L.at(__c12, 0) as any as S.Schema<ShellCommand>;
+
 /** An AgentCommand specifies a one-time executable program for the agent to run. */
 export interface AgentCommand {
   /** A map of key/value pairs that can be used to specify additional one-time executable settings. */
@@ -1160,6 +1546,8 @@ export interface AgentCommand {
   /** The name of the agent one-time executable that will be invoked. */
   command?: string;
 }
+const AgentCommand = /*@__PURE__*/ __L.at(__c12, 1) as any as S.Schema<AgentCommand>;
+
 /** Command specifies the type of command to execute. */
 export interface Command {
   /** ShellCommand is invoked via the agent's command line executor. */
@@ -1167,8 +1555,14 @@ export interface Command {
   /** AgentCommand specifies a one-time executable program for the agent to run. */
   agentCommand?: AgentCommand;
 }
+const Command = /*@__PURE__*/ __L.at(__c12, 2) as any as S.Schema<Command>;
+
 export type CommandList = Array<Command>;
+const CommandList = /*@__PURE__*/ __L.at(__c12, 3) as any as S.Schema<CommandList>;
+
 export type ExecutionResultTypeEnum = "TYPE_UNSPECIFIED" | "TYPE_PASSED" | "TYPE_VIOLATED";
+const ExecutionResultTypeEnum = S.String;
+
 /** The rule output of the violation. */
 export interface RuleOutput {
   /** Output only. The message generated by rule. */
@@ -1176,7 +1570,11 @@ export interface RuleOutput {
   /** Output only. Violation details generated by rule. */
   details?: StringMap;
 }
+const RuleOutput = /*@__PURE__*/ __L.at(__c12, 4) as any as S.Schema<RuleOutput>;
+
 export type RuleOutputList = Array<RuleOutput>;
+const RuleOutputList = /*@__PURE__*/ __L.at(__c12, 5) as any as S.Schema<RuleOutputList>;
+
 /** The violation in an evaluation result. */
 export interface ViolationDetails {
   /** Output only. The rule output of the violation. */
@@ -1188,6 +1586,8 @@ export interface ViolationDetails {
   /** The service account associated with the resource. */
   serviceAccount?: string;
 }
+const ViolationDetails = /*@__PURE__*/ __L.at(__c12, 6) as any as S.Schema<ViolationDetails>;
+
 /** Resource in execution result. */
 export interface Resource {
   /** The name of the resource. */
@@ -1197,6 +1597,8 @@ export interface Resource {
   /** The service account associated with the resource. */
   serviceAccount?: string;
 }
+const Resource = /*@__PURE__*/ __L.at(__c12, 7) as any as S.Schema<Resource>;
+
 /** The result of an execution. */
 export interface ExecutionResult {
   /** The URL for the documentation of the rule. */
@@ -1216,7 +1618,11 @@ export interface ExecutionResult {
   /** The violation message of an execution. */
   violationMessage?: string;
 }
+const ExecutionResult = /*@__PURE__*/ __L.at(__c13, 0) as any as S.Schema<ExecutionResult>;
+
 export type ExecutionResultList = Array<ExecutionResult>;
+const ExecutionResultList = /*@__PURE__*/ __L.at(__c13, 1) as any as S.Schema<ExecutionResultList>;
+
 /** Response message for the ListExecutionResults RPC. */
 export interface ListExecutionResultsResponse {
   /** The versions from the specified publisher. */
@@ -1224,6 +1630,11 @@ export interface ListExecutionResultsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
+const ListExecutionResultsResponse = /*@__PURE__*/ __L.at(
+  __c13,
+  2,
+) as any as S.Schema<ListExecutionResultsResponse>;
+
 export interface ListProjectsLocationsEvaluationsExecutionsScannedResourcesRequest {
   /** Rule name. */
   rule?: string;
@@ -1238,6 +1649,11 @@ export interface ListProjectsLocationsEvaluationsExecutionsScannedResourcesReque
   /** Field to sort by. See https://google.aip.dev/132#ordering for more details. */
   orderBy?: string;
 }
+const ListProjectsLocationsEvaluationsExecutionsScannedResourcesRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  3,
+) as any as S.Schema<ListProjectsLocationsEvaluationsExecutionsScannedResourcesRequest>;
+
 /** A scanned resource. */
 export interface ScannedResource {
   /** Resource type. */
@@ -1245,7 +1661,11 @@ export interface ScannedResource {
   /** Resource name. */
   resource?: string;
 }
+const ScannedResource = /*@__PURE__*/ __L.at(__c13, 4) as any as S.Schema<ScannedResource>;
+
 export type ScannedResourceList = Array<ScannedResource>;
+const ScannedResourceList = /*@__PURE__*/ __L.at(__c13, 5) as any as S.Schema<ScannedResourceList>;
+
 /** Response message for the ListScannedResources RPC. */
 export interface ListScannedResourcesResponse {
   /** All scanned resources in response. */
@@ -1253,6 +1673,11 @@ export interface ListScannedResourcesResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
+const ListScannedResourcesResponse = /*@__PURE__*/ __L.at(
+  __c13,
+  6,
+) as any as S.Schema<ListScannedResourcesResponse>;
+
 export interface ListProjectsLocationsOperationsRequest {
   /** The standard list page size. */
   pageSize?: number;
@@ -1265,7 +1690,14 @@ export interface ListProjectsLocationsOperationsRequest {
   /** When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. */
   returnPartialSuccess?: boolean;
 }
+const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  7,
+) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
+
 export type OperationList = Array<Operation>;
+const OperationList = /*@__PURE__*/ __L.at(__c14, 0) as any as S.Schema<OperationList>;
+
 /** The response message for Operations.ListOperations. */
 export interface ListOperationsResponse {
   /** The standard List next-page token. */
@@ -1275,11 +1707,18 @@ export interface ListOperationsResponse {
   /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
   unreachable?: StringList;
 }
+const ListOperationsResponse = /*@__PURE__*/ __L.at(
+  __c14,
+  1,
+) as any as S.Schema<ListOperationsResponse>;
+
 export type ListProjectsLocationsRulesEvaluationTypeEnum =
   | "EVALUATION_TYPE_UNSPECIFIED"
   | "SAP"
   | "SQL_SERVER"
   | "OTHER";
+const ListProjectsLocationsRulesEvaluationTypeEnum = S.String;
+
 export interface ListProjectsLocationsRulesRequest {
   /** Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default. */
   pageSize?: number;
@@ -1294,7 +1733,14 @@ export interface ListProjectsLocationsRulesRequest {
   /** Optional. The evaluation type of the rules will be applied to. The Cloud Storage bucket name for custom rules. */
   evaluationType?: ListProjectsLocationsRulesEvaluationTypeEnum | (string & {});
 }
+const ListProjectsLocationsRulesRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  2,
+) as any as S.Schema<ListProjectsLocationsRulesRequest>;
+
 export type RuleRuleTypeEnum = "RULE_TYPE_UNSPECIFIED" | "BASELINE" | "CUSTOM";
+const RuleRuleTypeEnum = S.String;
+
 /** A rule to be evaluated. */
 export interface Rule {
   /** The name display in UI. */
@@ -1324,12 +1770,18 @@ export interface Rule {
   /** Output only. The version of the rule. */
   revisionId?: string;
 }
+const Rule = /*@__PURE__*/ __L.at(__c14, 3) as any as S.Schema<Rule>;
+
 export type RuleList = Array<Rule>;
+const RuleList = /*@__PURE__*/ __L.at(__c14, 4) as any as S.Schema<RuleList>;
+
 /** Response message for the ListRules RPC. */
 export interface ListRulesResponse {
   /** All rules in response. */
   rules?: RuleList;
 }
+const ListRulesResponse = /*@__PURE__*/ __L.at(__c14, 5) as any as S.Schema<ListRulesResponse>;
+
 export interface PatchProjectsLocationsEvaluationsRequest {
   /** Name of resource that has the form `projects/{project_id}/locations/{location_id}/evaluations/{evaluation_id}`. */
   name: string;
@@ -1340,6 +1792,11 @@ export interface PatchProjectsLocationsEvaluationsRequest {
   /** Request body */
   body?: Evaluation;
 }
+const PatchProjectsLocationsEvaluationsRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  6,
+) as any as S.Schema<PatchProjectsLocationsEvaluationsRequest>;
+
 /** Request message for the RunEvaluation RPC. */
 export interface RunEvaluationRequest {
   /** Required. ID of the execution which will be created. */
@@ -1349,12 +1806,22 @@ export interface RunEvaluationRequest {
   /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
 }
+const RunEvaluationRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  7,
+) as any as S.Schema<RunEvaluationRequest>;
+
 export interface RunProjectsLocationsEvaluationsExecutionsRequest {
   /** Required. The resource name of the Evaluation using the form: `projects/{project}/locations/{location}/evaluations/{evaluation}`. */
   name: string;
   /** Request body */
   body?: RunEvaluationRequest;
 }
+const RunProjectsLocationsEvaluationsExecutionsRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  0,
+) as any as S.Schema<RunProjectsLocationsEvaluationsExecutionsRequest>;
+
 /** Message describing SAP discovery system metadata */
 export interface SapDiscoveryMetadata {
   /** Optional. Customer defined, something like "E-commerce pre prod" */
@@ -1366,6 +1833,11 @@ export interface SapDiscoveryMetadata {
   /** Optional. This SAP product name */
   sapProduct?: string;
 }
+const SapDiscoveryMetadata = /*@__PURE__*/ __L.at(
+  __c15,
+  1,
+) as any as S.Schema<SapDiscoveryMetadata>;
+
 /** A SAP software component name, version, and type. */
 export interface SapDiscoveryWorkloadPropertiesSoftwareComponentProperties {
   /** Optional. The component's major version. */
@@ -1377,8 +1849,18 @@ export interface SapDiscoveryWorkloadPropertiesSoftwareComponentProperties {
   /** Optional. The component's type. */
   type?: string;
 }
+const SapDiscoveryWorkloadPropertiesSoftwareComponentProperties = /*@__PURE__*/ __L.at(
+  __c15,
+  2,
+) as any as S.Schema<SapDiscoveryWorkloadPropertiesSoftwareComponentProperties>;
+
 export type SapDiscoveryWorkloadPropertiesSoftwareComponentPropertiesList =
   Array<SapDiscoveryWorkloadPropertiesSoftwareComponentProperties>;
+const SapDiscoveryWorkloadPropertiesSoftwareComponentPropertiesList = /*@__PURE__*/ __L.at(
+  __c15,
+  3,
+) as any as S.Schema<SapDiscoveryWorkloadPropertiesSoftwareComponentPropertiesList>;
+
 /** A product name and version. */
 export interface SapDiscoveryWorkloadPropertiesProductVersion {
   /** Optional. Name of the product. */
@@ -1386,8 +1868,18 @@ export interface SapDiscoveryWorkloadPropertiesProductVersion {
   /** Optional. Version of the product. */
   version?: string;
 }
+const SapDiscoveryWorkloadPropertiesProductVersion = /*@__PURE__*/ __L.at(
+  __c15,
+  4,
+) as any as S.Schema<SapDiscoveryWorkloadPropertiesProductVersion>;
+
 export type SapDiscoveryWorkloadPropertiesProductVersionList =
   Array<SapDiscoveryWorkloadPropertiesProductVersion>;
+const SapDiscoveryWorkloadPropertiesProductVersionList = /*@__PURE__*/ __L.at(
+  __c15,
+  5,
+) as any as S.Schema<SapDiscoveryWorkloadPropertiesProductVersionList>;
+
 /** A set of properties describing an SAP workload. */
 export interface SapDiscoveryWorkloadProperties {
   /** Optional. A list of SAP software components and their versions running on the system. */
@@ -1395,6 +1887,11 @@ export interface SapDiscoveryWorkloadProperties {
   /** Optional. List of SAP Products and their versions running on the system. */
   productVersions?: SapDiscoveryWorkloadPropertiesProductVersionList;
 }
+const SapDiscoveryWorkloadProperties = /*@__PURE__*/ __L.at(
+  __c15,
+  6,
+) as any as S.Schema<SapDiscoveryWorkloadProperties>;
+
 export type SapDiscoveryComponentDatabasePropertiesDatabaseTypeEnum =
   | "DATABASE_TYPE_UNSPECIFIED"
   | "HANA"
@@ -1403,6 +1900,8 @@ export type SapDiscoveryComponentDatabasePropertiesDatabaseTypeEnum =
   | "ORACLE"
   | "SQLSERVER"
   | "ASE";
+const SapDiscoveryComponentDatabasePropertiesDatabaseTypeEnum = S.String;
+
 /** A set of properties describing an SAP Database layer. */
 export interface SapDiscoveryComponentDatabaseProperties {
   /** Optional. Instance number of the SAP instance. */
@@ -1420,15 +1919,24 @@ export interface SapDiscoveryComponentDatabaseProperties {
   /** Required. Type of the database. HANA, DB2, etc. */
   databaseType?: SapDiscoveryComponentDatabasePropertiesDatabaseTypeEnum | (string & {});
 }
+const SapDiscoveryComponentDatabaseProperties = /*@__PURE__*/ __L.at(
+  __c15,
+  7,
+) as any as S.Schema<SapDiscoveryComponentDatabaseProperties>;
+
 export type SapDiscoveryComponentTopologyTypeEnum =
   | "TOPOLOGY_TYPE_UNSPECIFIED"
   | "TOPOLOGY_SCALE_UP"
   | "TOPOLOGY_SCALE_OUT";
+const SapDiscoveryComponentTopologyTypeEnum = S.String;
+
 export type SapDiscoveryComponentApplicationPropertiesApplicationTypeEnum =
   | "APPLICATION_TYPE_UNSPECIFIED"
   | "NETWEAVER"
   | "NETWEAVER_ABAP"
   | "NETWEAVER_JAVA";
+const SapDiscoveryComponentApplicationPropertiesApplicationTypeEnum = S.String;
+
 /** A set of properties describing an SAP Application layer. */
 export interface SapDiscoveryComponentApplicationProperties {
   /** Optional. Kernel version for Netweaver running in the system. */
@@ -1448,6 +1956,11 @@ export interface SapDiscoveryComponentApplicationProperties {
   /** Optional. Deprecated: ApplicationType now tells you whether this is ABAP or Java. */
   abap?: boolean;
 }
+const SapDiscoveryComponentApplicationProperties = /*@__PURE__*/ __L.at(
+  __c16,
+  0,
+) as any as S.Schema<SapDiscoveryComponentApplicationProperties>;
+
 export type SapDiscoveryResourceInstancePropertiesInstanceRoleEnum =
   | "INSTANCE_ROLE_UNSPECIFIED"
   | "INSTANCE_ROLE_ASCS"
@@ -1465,6 +1978,8 @@ export type SapDiscoveryResourceInstancePropertiesInstanceRoleEnum =
   | "INSTANCE_ROLE_ASCS_APP_SERVER_DATABASE"
   | "INSTANCE_ROLE_ERS_APP_SERVER_DATABASE"
   | "INSTANCE_ROLE_ASCS_ERS_APP_SERVER_DATABASE";
+const SapDiscoveryResourceInstancePropertiesInstanceRoleEnum = S.String;
+
 /** Disk mount on the instance. */
 export interface SapDiscoveryResourceInstancePropertiesDiskMount {
   /** Optional. Name of the disk. */
@@ -1474,8 +1989,18 @@ export interface SapDiscoveryResourceInstancePropertiesDiskMount {
   /** Optional. Filesystem mount point. */
   mountPoint?: string;
 }
+const SapDiscoveryResourceInstancePropertiesDiskMount = /*@__PURE__*/ __L.at(
+  __c16,
+  1,
+) as any as S.Schema<SapDiscoveryResourceInstancePropertiesDiskMount>;
+
 export type SapDiscoveryResourceInstancePropertiesDiskMountList =
   Array<SapDiscoveryResourceInstancePropertiesDiskMount>;
+const SapDiscoveryResourceInstancePropertiesDiskMountList = /*@__PURE__*/ __L.at(
+  __c16,
+  2,
+) as any as S.Schema<SapDiscoveryResourceInstancePropertiesDiskMountList>;
+
 /** Fields to describe an SAP application server instance. */
 export interface SapDiscoveryResourceInstancePropertiesAppInstance {
   /** Optional. Instance number of the SAP application instance. */
@@ -1483,8 +2008,18 @@ export interface SapDiscoveryResourceInstancePropertiesAppInstance {
   /** Optional. Instance name of the SAP application instance. */
   name?: string;
 }
+const SapDiscoveryResourceInstancePropertiesAppInstance = /*@__PURE__*/ __L.at(
+  __c16,
+  3,
+) as any as S.Schema<SapDiscoveryResourceInstancePropertiesAppInstance>;
+
 export type SapDiscoveryResourceInstancePropertiesAppInstanceList =
   Array<SapDiscoveryResourceInstancePropertiesAppInstance>;
+const SapDiscoveryResourceInstancePropertiesAppInstanceList = /*@__PURE__*/ __L.at(
+  __c16,
+  4,
+) as any as S.Schema<SapDiscoveryResourceInstancePropertiesAppInstanceList>;
+
 /** Version is reported as Major.Minor.Build.Patch. */
 export interface SapDiscoveryResourceInstancePropertiesKernelVersionVersion {
   /** Optional. The build version number. */
@@ -1498,6 +2033,11 @@ export interface SapDiscoveryResourceInstancePropertiesKernelVersionVersion {
   /** Optional. A catch-all for any unparsed version components. This is in case the number of points in the version string exceeds the expected count of 4. */
   remainder?: string;
 }
+const SapDiscoveryResourceInstancePropertiesKernelVersionVersion = /*@__PURE__*/ __L.at(
+  __c16,
+  5,
+) as any as S.Schema<SapDiscoveryResourceInstancePropertiesKernelVersionVersion>;
+
 /** KernelVersion encapsulates the kernel version data for the system. */
 export interface SapDiscoveryResourceInstancePropertiesKernelVersion {
   /** Optional. Raw string of the kernel version. */
@@ -1507,6 +2047,11 @@ export interface SapDiscoveryResourceInstancePropertiesKernelVersion {
   /** Optional. Captures the distro-specific kernel version, the portion of the string following the first dash. */
   distroKernel?: SapDiscoveryResourceInstancePropertiesKernelVersionVersion;
 }
+const SapDiscoveryResourceInstancePropertiesKernelVersion = /*@__PURE__*/ __L.at(
+  __c16,
+  6,
+) as any as S.Schema<SapDiscoveryResourceInstancePropertiesKernelVersion>;
+
 /** A set of properties only present for an instance type resource */
 export interface SapDiscoveryResourceInstanceProperties {
   /** Optional. Bitmask of instance role, a resource may have multiple roles at once. */
@@ -1526,11 +2071,18 @@ export interface SapDiscoveryResourceInstanceProperties {
   /** Optional. The kernel version of the instance. */
   osKernelVersion?: SapDiscoveryResourceInstancePropertiesKernelVersion;
 }
+const SapDiscoveryResourceInstanceProperties = /*@__PURE__*/ __L.at(
+  __c16,
+  7,
+) as any as S.Schema<SapDiscoveryResourceInstanceProperties>;
+
 export type SapDiscoveryResourceResourceTypeEnum =
   | "RESOURCE_TYPE_UNSPECIFIED"
   | "RESOURCE_TYPE_COMPUTE"
   | "RESOURCE_TYPE_STORAGE"
   | "RESOURCE_TYPE_NETWORK";
+const SapDiscoveryResourceResourceTypeEnum = S.String;
+
 export type SapDiscoveryResourceResourceKindEnum =
   | "RESOURCE_KIND_UNSPECIFIED"
   | "RESOURCE_KIND_INSTANCE"
@@ -1544,6 +2096,8 @@ export type SapDiscoveryResourceResourceKindEnum =
   | "RESOURCE_KIND_NETWORK"
   | "RESOURCE_KIND_PUBLIC_ADDRESS"
   | "RESOURCE_KIND_INSTANCE_GROUP";
+const SapDiscoveryResourceResourceKindEnum = S.String;
+
 /** Message describing a resource. */
 export interface SapDiscoveryResource {
   /** Optional. A set of properties only applying to instance type resources. */
@@ -1559,7 +2113,17 @@ export interface SapDiscoveryResource {
   /** Optional. A list of resource URIs related to this resource. */
   relatedResources?: StringList;
 }
+const SapDiscoveryResource = /*@__PURE__*/ __L.at(
+  __c17,
+  0,
+) as any as S.Schema<SapDiscoveryResource>;
+
 export type SapDiscoveryResourceList = Array<SapDiscoveryResource>;
+const SapDiscoveryResourceList = /*@__PURE__*/ __L.at(
+  __c17,
+  1,
+) as any as S.Schema<SapDiscoveryResourceList>;
+
 /** A replication site used in Disaster Recovery (DR) configurations. */
 export interface SapDiscoveryComponentReplicationSite {
   /** Optional. The system component for the site. */
@@ -1567,7 +2131,17 @@ export interface SapDiscoveryComponentReplicationSite {
   /** Optional. The name of the source site from which this one replicates. */
   sourceSite?: string;
 }
+const SapDiscoveryComponentReplicationSite = /*@__PURE__*/ __L.at(
+  __c17,
+  2,
+) as any as S.Schema<SapDiscoveryComponentReplicationSite>;
+
 export type SapDiscoveryComponentReplicationSiteList = Array<SapDiscoveryComponentReplicationSite>;
+const SapDiscoveryComponentReplicationSiteList = /*@__PURE__*/ __L.at(
+  __c17,
+  3,
+) as any as S.Schema<SapDiscoveryComponentReplicationSiteList>;
+
 /** Message describing the system component. */
 export interface SapDiscoveryComponent {
   /** Required. Pantheon Project in which the resources reside. */
@@ -1589,6 +2163,11 @@ export interface SapDiscoveryComponent {
   /** Optional. A list of replication sites used in Disaster Recovery (DR) configurations. */
   replicationSites?: SapDiscoveryComponentReplicationSiteList;
 }
+const SapDiscoveryComponent = /*@__PURE__*/ __L.at(
+  __c17,
+  4,
+) as any as S.Schema<SapDiscoveryComponent>;
+
 /** The schema of SAP system discovery data. */
 export interface SapDiscovery {
   /** Required. Unix timestamp this system has been updated last. */
@@ -1608,21 +2187,29 @@ export interface SapDiscovery {
   /** Required. An SAP System must have a database. */
   databaseLayer?: SapDiscoveryComponent;
 }
+const SapDiscovery = /*@__PURE__*/ __L.at(__c17, 5) as any as S.Schema<SapDiscovery>;
+
 export type AgentStatusSystemdServiceRunningEnum =
   | "UNSPECIFIED_STATE"
   | "SUCCESS_STATE"
   | "FAILURE_STATE"
   | "ERROR_STATE";
+const AgentStatusSystemdServiceRunningEnum = S.String;
+
 export type AgentStatusSystemdServiceEnabledEnum =
   | "UNSPECIFIED_STATE"
   | "SUCCESS_STATE"
   | "FAILURE_STATE"
   | "ERROR_STATE";
+const AgentStatusSystemdServiceEnabledEnum = S.String;
+
 export type AgentStatusServiceStatusStateEnum =
   | "UNSPECIFIED_STATE"
   | "SUCCESS_STATE"
   | "FAILURE_STATE"
   | "ERROR_STATE";
+const AgentStatusServiceStatusStateEnum = S.String;
+
 /** The configuration value. */
 export interface AgentStatusConfigValue {
   /** Output only. The name of the configuration value. */
@@ -1632,17 +2219,31 @@ export interface AgentStatusConfigValue {
   /** Output only. Whether the configuration value is the default value or overridden. */
   isDefault?: boolean;
 }
+const AgentStatusConfigValue = /*@__PURE__*/ __L.at(
+  __c17,
+  6,
+) as any as S.Schema<AgentStatusConfigValue>;
+
 export type AgentStatusConfigValueList = Array<AgentStatusConfigValue>;
+const AgentStatusConfigValueList = /*@__PURE__*/ __L.at(
+  __c17,
+  7,
+) as any as S.Schema<AgentStatusConfigValueList>;
+
 export type AgentStatusServiceStatusFullyFunctionalEnum =
   | "UNSPECIFIED_STATE"
   | "SUCCESS_STATE"
   | "FAILURE_STATE"
   | "ERROR_STATE";
+const AgentStatusServiceStatusFullyFunctionalEnum = S.String;
+
 export type AgentStatusIAMPermissionGrantedEnum =
   | "UNSPECIFIED_STATE"
   | "SUCCESS_STATE"
   | "FAILURE_STATE"
   | "ERROR_STATE";
+const AgentStatusIAMPermissionGrantedEnum = S.String;
+
 /** The IAM permission status. */
 export interface AgentStatusIAMPermission {
   /** Output only. The name of the permission. */
@@ -1650,7 +2251,17 @@ export interface AgentStatusIAMPermission {
   /** Output only. Whether the permission is granted. */
   granted?: AgentStatusIAMPermissionGrantedEnum | (string & {});
 }
+const AgentStatusIAMPermission = /*@__PURE__*/ __L.at(
+  __c18,
+  0,
+) as any as S.Schema<AgentStatusIAMPermission>;
+
 export type AgentStatusIAMPermissionList = Array<AgentStatusIAMPermission>;
+const AgentStatusIAMPermissionList = /*@__PURE__*/ __L.at(
+  __c18,
+  1,
+) as any as S.Schema<AgentStatusIAMPermissionList>;
+
 /** The status of a service (process metrics, host metrics, etc.). */
 export interface AgentStatusServiceStatus {
   /** Output only. The state of the service (enabled or disabled in the configuration). */
@@ -1668,7 +2279,17 @@ export interface AgentStatusServiceStatus {
   /** Output only. The permissions required for the service. */
   iamPermissions?: AgentStatusIAMPermissionList;
 }
+const AgentStatusServiceStatus = /*@__PURE__*/ __L.at(
+  __c18,
+  2,
+) as any as S.Schema<AgentStatusServiceStatus>;
+
 export type AgentStatusServiceStatusList = Array<AgentStatusServiceStatus>;
+const AgentStatusServiceStatusList = /*@__PURE__*/ __L.at(
+  __c18,
+  3,
+) as any as S.Schema<AgentStatusServiceStatusList>;
+
 /** The reference to public documentation. */
 export interface AgentStatusReference {
   /** Output only. The name of the reference. */
@@ -1676,17 +2297,31 @@ export interface AgentStatusReference {
   /** Output only. The URL of the reference. */
   url?: string;
 }
+const AgentStatusReference = /*@__PURE__*/ __L.at(
+  __c18,
+  4,
+) as any as S.Schema<AgentStatusReference>;
+
 export type AgentStatusReferenceList = Array<AgentStatusReference>;
+const AgentStatusReferenceList = /*@__PURE__*/ __L.at(
+  __c18,
+  5,
+) as any as S.Schema<AgentStatusReferenceList>;
+
 export type AgentStatusCloudApiAccessFullScopesGrantedEnum =
   | "UNSPECIFIED_STATE"
   | "SUCCESS_STATE"
   | "FAILURE_STATE"
   | "ERROR_STATE";
+const AgentStatusCloudApiAccessFullScopesGrantedEnum = S.String;
+
 export type AgentStatusConfigurationValidEnum =
   | "UNSPECIFIED_STATE"
   | "SUCCESS_STATE"
   | "FAILURE_STATE"
   | "ERROR_STATE";
+const AgentStatusConfigurationValidEnum = S.String;
+
 /** The schema of agent status data. */
 export interface AgentStatus {
   /** Output only. Whether the agent service is running in systemd. */
@@ -1716,6 +2351,8 @@ export interface AgentStatus {
   /** Output only. Whether the agent configuration is valid. */
   configurationValid?: AgentStatusConfigurationValidEnum | (string & {});
 }
+const AgentStatus = /*@__PURE__*/ __L.at(__c18, 6) as any as S.Schema<AgentStatus>;
+
 export type SapValidationValidationDetailSapValidationTypeEnum =
   | "SAP_VALIDATION_TYPE_UNSPECIFIED"
   | "SYSTEM"
@@ -1725,6 +2362,8 @@ export type SapValidationValidationDetailSapValidationTypeEnum =
   | "NETWEAVER"
   | "HANA_SECURITY"
   | "CUSTOM";
+const SapValidationValidationDetailSapValidationTypeEnum = S.String;
+
 /** Message describing the SAP validation metrics. */
 export interface SapValidationValidationDetail {
   /** Optional. The SAP system that the validation data is from. */
@@ -1734,7 +2373,17 @@ export interface SapValidationValidationDetail {
   /** Optional. The pairs of metrics data: field name & field value. */
   details?: StringMap;
 }
+const SapValidationValidationDetail = /*@__PURE__*/ __L.at(
+  __c18,
+  7,
+) as any as S.Schema<SapValidationValidationDetail>;
+
 export type SapValidationValidationDetailList = Array<SapValidationValidationDetail>;
+const SapValidationValidationDetailList = /*@__PURE__*/ __L.at(
+  __c19,
+  0,
+) as any as S.Schema<SapValidationValidationDetailList>;
+
 /** A presentation of SAP workload insight. The schema of SAP workloads validation related data. */
 export interface SapValidation {
   /** Optional. The zone of the instance that the Insight data comes from. */
@@ -1744,6 +2393,8 @@ export interface SapValidation {
   /** Optional. A list of SAP validation metrics data. */
   validationDetails?: SapValidationValidationDetailList;
 }
+const SapValidation = /*@__PURE__*/ __L.at(__c19, 1) as any as S.Schema<SapValidation>;
+
 /** A presentation of OpenShift workload insight. The schema of OpenShift workloads validation related data. */
 export interface OpenShiftValidation {
   /** Required. The OpenShift cluster ID (e.g. 8371bb05-7cac-4d38-82c0-0f58c4f6f936). */
@@ -1751,11 +2402,15 @@ export interface OpenShiftValidation {
   /** Required. The validation details of the OpenShift cluster in JSON format. */
   validationDetails?: DocumentMap;
 }
+const OpenShiftValidation = /*@__PURE__*/ __L.at(__c19, 2) as any as S.Schema<OpenShiftValidation>;
+
 export type TorsoValidationWorkloadTypeEnum =
   | "WORKLOAD_TYPE_UNSPECIFIED"
   | "MYSQL"
   | "ORACLE"
   | "REDIS";
+const TorsoValidationWorkloadTypeEnum = S.String;
+
 /** The schema of torso workload validation data. */
 export interface TorsoValidation {
   /** Required. agent_version lists the version of the agent that collected this data. */
@@ -1769,6 +2424,8 @@ export interface TorsoValidation {
   /** Required. project_id lists the human readable cloud project that the data comes from. */
   projectId?: string;
 }
+const TorsoValidation = /*@__PURE__*/ __L.at(__c19, 3) as any as S.Schema<TorsoValidation>;
+
 export type SqlserverValidationValidationDetailTypeEnum =
   | "SQLSERVER_VALIDATION_TYPE_UNSPECIFIED"
   | "OS"
@@ -1783,12 +2440,24 @@ export type SqlserverValidationValidationDetailTypeEnum =
   | "DB_INDEX_FRAGMENTATION"
   | "DB_TABLE_INDEX_COMPRESSION"
   | "DB_BACKUP_POLICY";
+const SqlserverValidationValidationDetailTypeEnum = S.String;
+
 /** Message containing collected data names and values. */
 export interface SqlserverValidationDetails {
   /** Required. Collected data is in format. */
   fields?: StringMap;
 }
+const SqlserverValidationDetails = /*@__PURE__*/ __L.at(
+  __c19,
+  4,
+) as any as S.Schema<SqlserverValidationDetails>;
+
 export type SqlserverValidationDetailsList = Array<SqlserverValidationDetails>;
+const SqlserverValidationDetailsList = /*@__PURE__*/ __L.at(
+  __c19,
+  5,
+) as any as S.Schema<SqlserverValidationDetailsList>;
+
 /** Message describing the Sqlserver validation metrics. */
 export interface SqlserverValidationValidationDetail {
   /** Optional. The Sqlserver system that the validation data is from. */
@@ -1796,7 +2465,17 @@ export interface SqlserverValidationValidationDetail {
   /** Required. Details wraps map that represents collected data names and values. */
   details?: SqlserverValidationDetailsList;
 }
+const SqlserverValidationValidationDetail = /*@__PURE__*/ __L.at(
+  __c19,
+  6,
+) as any as S.Schema<SqlserverValidationValidationDetail>;
+
 export type SqlserverValidationValidationDetailList = Array<SqlserverValidationValidationDetail>;
+const SqlserverValidationValidationDetailList = /*@__PURE__*/ __L.at(
+  __c19,
+  7,
+) as any as S.Schema<SqlserverValidationValidationDetailList>;
+
 /** A presentation of SQLServer workload insight. The schema of SqlServer workloads validation related data. */
 export interface SqlserverValidation {
   /** Required. The project_id of the cloud project that the Insight data comes from. */
@@ -1808,6 +2487,8 @@ export interface SqlserverValidation {
   /** Optional. A list of SqlServer validation metrics data. */
   validationDetails?: SqlserverValidationValidationDetailList;
 }
+const SqlserverValidation = /*@__PURE__*/ __L.at(__c20, 0) as any as S.Schema<SqlserverValidation>;
+
 /** A presentation of host resource usage where the workload runs. */
 export interface Insight {
   /** The insights data for SAP system discovery. This is a copy of SAP System proto and should get updated whenever that one changes. */
@@ -1827,6 +2508,8 @@ export interface Insight {
   /** The insights data for the sqlserver workload validation. */
   sqlserverValidation?: SqlserverValidation;
 }
+const Insight = /*@__PURE__*/ __L.at(__c20, 1) as any as S.Schema<Insight>;
+
 /** Request for sending the data insights. */
 export interface WriteInsightRequest {
   /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
@@ -1836,14 +2519,23 @@ export interface WriteInsightRequest {
   /** Optional. The agent version collected this data point. */
   agentVersion?: string;
 }
+const WriteInsightRequest = /*@__PURE__*/ __L.at(__c20, 2) as any as S.Schema<WriteInsightRequest>;
+
 export interface WriteInsightProjectsLocationsInsightsRequest {
   /** Required. The GCP location. The format is: projects/{project}/locations/{location}. */
   location: string;
   /** Request body */
   body?: WriteInsightRequest;
 }
+const WriteInsightProjectsLocationsInsightsRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  3,
+) as any as S.Schema<WriteInsightProjectsLocationsInsightsRequest>;
+
 /** The response for write insights request. */
 export interface WriteInsightResponse {}
+const WriteInsightResponse = CancelOperationRequest as any as S.Schema<WriteInsightResponse>;
+
 export type CancelProjectsLocationsOperationsError =
   | NotFound
   | Forbidden
@@ -1858,8 +2550,8 @@ export const cancelProjectsLocationsOperations: API.OperationMethod<
   CancelProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1) as any as S.Schema<CancelProjectsLocationsOperationsRequest>,
-  output: __S(0) as any as S.Schema<Empty>,
+  input: CancelProjectsLocationsOperationsRequest,
+  output: Empty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1879,8 +2571,8 @@ export const createProjectsLocationsDeployments: API.OperationMethod<
   CreateProjectsLocationsDeploymentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15) as any as S.Schema<CreateProjectsLocationsDeploymentsRequest>,
-  output: __S(19) as any as S.Schema<Operation>,
+  input: CreateProjectsLocationsDeploymentsRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1900,8 +2592,8 @@ export const createProjectsLocationsDeploymentsActuations: API.OperationMethod<
   CreateProjectsLocationsDeploymentsActuationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24) as any as S.Schema<CreateProjectsLocationsDeploymentsActuationsRequest>,
-  output: __S(19) as any as S.Schema<Operation>,
+  input: CreateProjectsLocationsDeploymentsActuationsRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1921,8 +2613,8 @@ export const createProjectsLocationsEvaluations: API.OperationMethod<
   CreateProjectsLocationsEvaluationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31) as any as S.Schema<CreateProjectsLocationsEvaluationsRequest>,
-  output: __S(19) as any as S.Schema<Operation>,
+  input: CreateProjectsLocationsEvaluationsRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1942,8 +2634,8 @@ export const deleteProjectsLocationsDeployments: API.OperationMethod<
   DeleteProjectsLocationsDeploymentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32) as any as S.Schema<DeleteProjectsLocationsDeploymentsRequest>,
-  output: __S(19) as any as S.Schema<Operation>,
+  input: DeleteProjectsLocationsDeploymentsRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1963,8 +2655,8 @@ export const deleteProjectsLocationsDeploymentsActuations: API.OperationMethod<
   DeleteProjectsLocationsDeploymentsActuationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33) as any as S.Schema<DeleteProjectsLocationsDeploymentsActuationsRequest>,
-  output: __S(19) as any as S.Schema<Operation>,
+  input: DeleteProjectsLocationsDeploymentsActuationsRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1984,8 +2676,8 @@ export const deleteProjectsLocationsEvaluations: API.OperationMethod<
   DeleteProjectsLocationsEvaluationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34) as any as S.Schema<DeleteProjectsLocationsEvaluationsRequest>,
-  output: __S(19) as any as S.Schema<Operation>,
+  input: DeleteProjectsLocationsEvaluationsRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2005,8 +2697,8 @@ export const deleteProjectsLocationsEvaluationsExecutions: API.OperationMethod<
   DeleteProjectsLocationsEvaluationsExecutionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35) as any as S.Schema<DeleteProjectsLocationsEvaluationsExecutionsRequest>,
-  output: __S(19) as any as S.Schema<Operation>,
+  input: DeleteProjectsLocationsEvaluationsExecutionsRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2026,8 +2718,8 @@ export const deleteProjectsLocationsInsights: API.OperationMethod<
   DeleteProjectsLocationsInsightsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36) as any as S.Schema<DeleteProjectsLocationsInsightsRequest>,
-  output: __S(0) as any as S.Schema<Empty>,
+  input: DeleteProjectsLocationsInsightsRequest,
+  output: Empty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2047,8 +2739,8 @@ export const deleteProjectsLocationsOperations: API.OperationMethod<
   DeleteProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>,
-  output: __S(0) as any as S.Schema<Empty>,
+  input: DeleteProjectsLocationsOperationsRequest,
+  output: Empty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2062,8 +2754,8 @@ export const getProjectsLocations: API.OperationMethod<
   GetProjectsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38) as any as S.Schema<GetProjectsLocationsRequest>,
-  output: __S(39) as any as S.Schema<Location>,
+  input: GetProjectsLocationsRequest,
+  output: Location,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2081,8 +2773,8 @@ export const getProjectsLocationsDeployments: API.OperationMethod<
   GetProjectsLocationsDeploymentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40) as any as S.Schema<GetProjectsLocationsDeploymentsRequest>,
-  output: __S(14) as any as S.Schema<Deployment>,
+  input: GetProjectsLocationsDeploymentsRequest,
+  output: Deployment,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2100,8 +2792,8 @@ export const getProjectsLocationsDeploymentsActuations: API.OperationMethod<
   GetProjectsLocationsDeploymentsActuationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41) as any as S.Schema<GetProjectsLocationsDeploymentsActuationsRequest>,
-  output: __S(23) as any as S.Schema<Actuation>,
+  input: GetProjectsLocationsDeploymentsActuationsRequest,
+  output: Actuation,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2119,8 +2811,8 @@ export const getProjectsLocationsDiscoveredprofiles: API.OperationMethod<
   GetProjectsLocationsDiscoveredprofilesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42) as any as S.Schema<GetProjectsLocationsDiscoveredprofilesRequest>,
-  output: __S(59) as any as S.Schema<WorkloadProfile>,
+  input: GetProjectsLocationsDiscoveredprofilesRequest,
+  output: WorkloadProfile,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2138,8 +2830,8 @@ export const getProjectsLocationsDiscoveredprofilesHealth: API.OperationMethod<
   GetProjectsLocationsDiscoveredprofilesHealthError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60) as any as S.Schema<GetProjectsLocationsDiscoveredprofilesHealthRequest>,
-  output: __S(65) as any as S.Schema<WorkloadProfileHealth>,
+  input: GetProjectsLocationsDiscoveredprofilesHealthRequest,
+  output: WorkloadProfileHealth,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2157,8 +2849,8 @@ export const getProjectsLocationsEvaluations: API.OperationMethod<
   GetProjectsLocationsEvaluationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(66) as any as S.Schema<GetProjectsLocationsEvaluationsRequest>,
-  output: __S(30) as any as S.Schema<Evaluation>,
+  input: GetProjectsLocationsEvaluationsRequest,
+  output: Evaluation,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2176,8 +2868,8 @@ export const getProjectsLocationsEvaluationsExecutions: API.OperationMethod<
   GetProjectsLocationsEvaluationsExecutionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(67) as any as S.Schema<GetProjectsLocationsEvaluationsExecutionsRequest>,
-  output: __S(75) as any as S.Schema<Execution>,
+  input: GetProjectsLocationsEvaluationsExecutionsRequest,
+  output: Execution,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2195,8 +2887,8 @@ export const getProjectsLocationsOperations: API.OperationMethod<
   GetProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(76) as any as S.Schema<GetProjectsLocationsOperationsRequest>,
-  output: __S(19) as any as S.Schema<Operation>,
+  input: GetProjectsLocationsOperationsRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2211,8 +2903,8 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListLocationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(77) as any as S.Schema<ListProjectsLocationsRequest>,
-  output: __S(79) as any as S.Schema<ListLocationsResponse>,
+  input: ListProjectsLocationsRequest,
+  output: ListLocationsResponse,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2232,8 +2924,8 @@ export const listProjectsLocationsDeployments: API.PaginatedOperationMethod<
   GcpOpContext,
   ListDeploymentsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(80) as any as S.Schema<ListProjectsLocationsDeploymentsRequest>,
-  output: __S(82) as any as S.Schema<ListDeploymentsResponse>,
+  input: ListProjectsLocationsDeploymentsRequest,
+  output: ListDeploymentsResponse,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2253,8 +2945,8 @@ export const listProjectsLocationsDeploymentsActuations: API.PaginatedOperationM
   GcpOpContext,
   ListActuationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(83) as any as S.Schema<ListProjectsLocationsDeploymentsActuationsRequest>,
-  output: __S(85) as any as S.Schema<ListActuationsResponse>,
+  input: ListProjectsLocationsDeploymentsActuationsRequest,
+  output: ListActuationsResponse,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2274,8 +2966,8 @@ export const listProjectsLocationsDiscoveredprofiles: API.PaginatedOperationMeth
   GcpOpContext,
   ListDiscoveredProfilesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(86) as any as S.Schema<ListProjectsLocationsDiscoveredprofilesRequest>,
-  output: __S(88) as any as S.Schema<ListDiscoveredProfilesResponse>,
+  input: ListProjectsLocationsDiscoveredprofilesRequest,
+  output: ListDiscoveredProfilesResponse,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2295,8 +2987,8 @@ export const listProjectsLocationsEvaluations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListEvaluationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(89) as any as S.Schema<ListProjectsLocationsEvaluationsRequest>,
-  output: __S(91) as any as S.Schema<ListEvaluationsResponse>,
+  input: ListProjectsLocationsEvaluationsRequest,
+  output: ListEvaluationsResponse,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2316,8 +3008,8 @@ export const listProjectsLocationsEvaluationsExecutions: API.PaginatedOperationM
   GcpOpContext,
   ListExecutionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(92) as any as S.Schema<ListProjectsLocationsEvaluationsExecutionsRequest>,
-  output: __S(94) as any as S.Schema<ListExecutionsResponse>,
+  input: ListProjectsLocationsEvaluationsExecutionsRequest,
+  output: ListExecutionsResponse,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2337,8 +3029,8 @@ export const listProjectsLocationsEvaluationsExecutionsResults: API.PaginatedOpe
   GcpOpContext,
   ListExecutionResultsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(95) as any as S.Schema<ListProjectsLocationsEvaluationsExecutionsResultsRequest>,
-  output: __S(106) as any as S.Schema<ListExecutionResultsResponse>,
+  input: ListProjectsLocationsEvaluationsExecutionsResultsRequest,
+  output: ListExecutionResultsResponse,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2358,10 +3050,8 @@ export const listProjectsLocationsEvaluationsExecutionsScannedResources: API.Pag
   GcpOpContext,
   ListScannedResourcesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(
-    107,
-  ) as any as S.Schema<ListProjectsLocationsEvaluationsExecutionsScannedResourcesRequest>,
-  output: __S(110) as any as S.Schema<ListScannedResourcesResponse>,
+  input: ListProjectsLocationsEvaluationsExecutionsScannedResourcesRequest,
+  output: ListScannedResourcesResponse,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2381,8 +3071,8 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(111) as any as S.Schema<ListProjectsLocationsOperationsRequest>,
-  output: __S(113) as any as S.Schema<ListOperationsResponse>,
+  input: ListProjectsLocationsOperationsRequest,
+  output: ListOperationsResponse,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2397,8 +3087,8 @@ export const listProjectsLocationsRules: API.OperationMethod<
   ListProjectsLocationsRulesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(114) as any as S.Schema<ListProjectsLocationsRulesRequest>,
-  output: __S(117) as any as S.Schema<ListRulesResponse>,
+  input: ListProjectsLocationsRulesRequest,
+  output: ListRulesResponse,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2418,8 +3108,8 @@ export const patchProjectsLocationsEvaluations: API.OperationMethod<
   PatchProjectsLocationsEvaluationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(118) as any as S.Schema<PatchProjectsLocationsEvaluationsRequest>,
-  output: __S(19) as any as S.Schema<Operation>,
+  input: PatchProjectsLocationsEvaluationsRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2439,8 +3129,8 @@ export const runProjectsLocationsEvaluationsExecutions: API.OperationMethod<
   RunProjectsLocationsEvaluationsExecutionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(120) as any as S.Schema<RunProjectsLocationsEvaluationsExecutionsRequest>,
-  output: __S(19) as any as S.Schema<Operation>,
+  input: RunProjectsLocationsEvaluationsExecutionsRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2460,8 +3150,8 @@ export const writeInsightProjectsLocationsInsights: API.OperationMethod<
   WriteInsightProjectsLocationsInsightsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(163) as any as S.Schema<WriteInsightProjectsLocationsInsightsRequest>,
-  output: __S(0) as any as S.Schema<WriteInsightResponse>,
+  input: WriteInsightProjectsLocationsInsightsRequest,
+  output: WriteInsightResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2478,7 +3168,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(0).pipe(T.HttpBody())),
+          body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2496,7 +3186,7 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "TerraformVariable" });
     case 3:
-      return S.Record(S.String, __S(2));
+      return S.Record(S.String, TerraformVariable);
     case 4:
       return S.Array(S.String);
     case 5:
@@ -2505,7 +3195,7 @@ function __c0(j: number): any {
           networkProject: S.optional(S.String),
           vpcName: S.optional(S.String),
           regionName: S.optional(S.String),
-          customTags: S.optional(__S(4)),
+          customTags: S.optional(StringList),
           deploymentDnsEnabled: S.optional(S.Boolean),
           dnsZone: S.optional(S.String),
           dnsZoneNameSuffix: S.optional(S.String),
@@ -2513,7 +3203,7 @@ function __c0(j: number): any {
           zone2Name: S.optional(S.String),
           zone1Name: S.optional(S.String),
           createCommsFirewall: S.optional(S.Boolean),
-          internetAccess: S.optional(S.String),
+          internetAccess: S.optional(LocationDetailsInternetAccessEnum),
         }),
       ).annotate({ identifier: "LocationDetails" });
     case 6:
@@ -2541,7 +3231,7 @@ function __c0(j: number): any {
           ersVm: S.optional(S.String),
           ascsServiceAccount: S.optional(S.String),
           sharedStorage: S.optional(S.String),
-          appVmNames: S.optional(__S(4)),
+          appVmNames: S.optional(StringList),
           ascsImage: S.optional(S.String),
           vmsMultiplier: S.optional(S.Number),
           ascsMachineType: S.optional(S.String),
@@ -2559,18 +3249,18 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           vmPrefix: S.optional(S.String),
-          scalingMethod: S.optional(S.String),
-          deploymentModel: S.optional(S.String),
+          scalingMethod: S.optional(SapSystemS4ConfigScalingMethodEnum),
+          deploymentModel: S.optional(SapSystemS4ConfigDeploymentModelEnum),
           gcpProjectId: S.optional(S.String),
           ansibleRunnerServiceAccount: S.optional(S.String),
           allowStoppingForUpdate: S.optional(S.Boolean),
-          environmentType: S.optional(S.String),
+          environmentType: S.optional(SapSystemS4ConfigEnvironmentTypeEnum),
           sapBootDiskImage: S.optional(S.String),
           mediaBucketName: S.optional(S.String),
-          version: S.optional(S.String),
-          location: S.optional(__S(5)),
-          database: S.optional(__S(6)),
-          app: S.optional(__S(7)),
+          version: S.optional(SapSystemS4ConfigVersionEnum),
+          location: S.optional(LocationDetails),
+          database: S.optional(DatabaseDetails),
+          app: S.optional(AppDetails),
         }),
       ).annotate({ identifier: "SapSystemS4Config" });
     case 1:
@@ -2592,7 +3282,7 @@ function __c1(j: number): any {
           region: S.optional(S.String),
           secondaryZone: S.optional(S.String),
           subnetwork: S.optional(S.String),
-          internetAccess: S.optional(S.String),
+          internetAccess: S.optional(SqlLocationDetailsInternetAccessEnum),
           primaryZone: S.optional(S.String),
           tertiaryZone: S.optional(S.String),
           network: S.optional(S.String),
@@ -2611,14 +3301,14 @@ function __c1(j: number): any {
           diskType: S.optional(S.String),
           soleTenantNode: S.optional(S.String),
           floatingIpAddress: S.optional(S.String),
-          tenancyModel: S.optional(S.String),
+          tenancyModel: S.optional(DatabaseTenancyModelEnum),
         }),
       ).annotate({ identifier: "Database" });
     case 4:
       return S.suspend(() =>
         S.Struct({
           domainUsername: S.optional(S.String),
-          type: S.optional(S.String),
+          type: S.optional(ActiveDirectoryTypeEnum),
           domain: S.optional(S.String),
           secretManagerSecret: S.optional(S.String),
           dnsAddress: S.optional(S.String),
@@ -2627,39 +3317,39 @@ function __c1(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          osImageType: S.optional(S.String),
-          sqlServerEdition: S.optional(S.String),
+          osImageType: S.optional(SqlServerWorkloadOsImageTypeEnum),
+          sqlServerEdition: S.optional(SqlServerWorkloadSqlServerEditionEnum),
           mediaBucket: S.optional(S.String),
-          pacemaker: S.optional(__S(9)),
-          location: S.optional(__S(10)),
+          pacemaker: S.optional(Pacemaker),
+          location: S.optional(SqlLocationDetails),
           computeEngineServiceAccount: S.optional(S.String),
-          database: S.optional(__S(11)),
-          haType: S.optional(S.String),
-          operatingSystemType: S.optional(S.String),
-          environmentType: S.optional(S.String),
-          fciType: S.optional(S.String),
-          sqlServerVersion: S.optional(S.String),
+          database: S.optional(Database),
+          haType: S.optional(SqlServerWorkloadHaTypeEnum),
+          operatingSystemType: S.optional(SqlServerWorkloadOperatingSystemTypeEnum),
+          environmentType: S.optional(SqlServerWorkloadEnvironmentTypeEnum),
+          fciType: S.optional(SqlServerWorkloadFciTypeEnum),
+          sqlServerVersion: S.optional(SqlServerWorkloadSqlServerVersionEnum),
           vmPrefix: S.optional(S.String),
           osImage: S.optional(S.String),
-          activeDirectory: S.optional(__S(12)),
+          activeDirectory: S.optional(ActiveDirectory),
           isSqlPayg: S.optional(S.Boolean),
-          deploymentModel: S.optional(S.String),
+          deploymentModel: S.optional(SqlServerWorkloadDeploymentModelEnum),
         }),
       ).annotate({ identifier: "SqlServerWorkload" });
     case 6:
       return S.suspend(() =>
         S.Struct({
           updateTime: S.optional(S.String),
-          terraformVariables: S.optional(__S(3)),
+          terraformVariables: S.optional(TerraformVariableMap),
           createTime: S.optional(S.String),
-          sapSystemS4Config: S.optional(__S(8)),
-          state: S.optional(S.String),
-          workloadType: S.optional(S.String),
+          sapSystemS4Config: S.optional(SapSystemS4Config),
+          state: S.optional(DeploymentStateEnum),
+          workloadType: S.optional(DeploymentWorkloadTypeEnum),
           workerPool: S.optional(S.String),
           description: S.optional(S.String),
           serviceAccount: S.optional(S.String),
           name: S.optional(S.String),
-          sqlServerWorkload: S.optional(__S(13)),
+          sqlServerWorkload: S.optional(SqlServerWorkload),
         }),
       ).annotate({ identifier: "Deployment" });
     case 7:
@@ -2668,7 +3358,7 @@ function __c1(j: number): any {
           requestId: S.optional(S.String.pipe(T.Query())),
           deploymentId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(14).pipe(T.HttpBody())),
+          body: S.optional(Deployment.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2686,12 +3376,12 @@ function __c2(j: number): any {
     case 0:
       return S.Record(S.String, S.Unknown);
     case 1:
-      return S.Array(__S(16));
+      return S.Array(DocumentMap);
     case 2:
       return S.suspend(() =>
         S.Struct({
           code: S.optional(S.Number),
-          details: S.optional(__S(17)),
+          details: S.optional(DocumentMapList),
           message: S.optional(S.String),
         }),
       ).annotate({ identifier: "Status" });
@@ -2699,10 +3389,10 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           done: S.optional(S.Boolean),
-          error: S.optional(__S(18)),
-          response: S.optional(__S(16)),
+          error: S.optional(Status),
+          response: S.optional(DocumentMap),
           name: S.optional(S.String),
-          metadata: S.optional(__S(16)),
+          metadata: S.optional(DocumentMap),
         }),
       ).annotate({ identifier: "Operation" });
     case 4:
@@ -2713,18 +3403,18 @@ function __c2(j: number): any {
         }),
       ).annotate({ identifier: "DeploymentOutput" });
     case 5:
-      return S.Array(__S(20));
+      return S.Array(DeploymentOutput);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          ansibleFailedTask: S.optional(__S(4)),
+          ansibleFailedTask: S.optional(StringList),
           terraformError: S.optional(S.String),
           terraformTemplate: S.optional(S.String),
           ansibleError: S.optional(S.String),
           hasUserFacingErrorMsg: S.optional(S.Boolean),
           blueprintId: S.optional(S.String),
           actuateLogs: S.optional(S.String),
-          errorCode: S.optional(S.String),
+          errorCode: S.optional(ActuationOutputErrorCodeEnum),
           cloudbuildId: S.optional(S.String),
           errorLogs: S.optional(S.String),
         }),
@@ -2732,12 +3422,12 @@ function __c2(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          deploymentOutput: S.optional(__S(21)),
+          deploymentOutput: S.optional(DeploymentOutputList),
           name: S.optional(S.String),
           endTime: S.optional(S.String),
-          state: S.optional(S.String),
+          state: S.optional(ActuationStateEnum),
           startTime: S.optional(S.String),
-          actuationOutput: S.optional(__S(22)),
+          actuationOutput: S.optional(ActuationOutput),
         }),
       ).annotate({ identifier: "Actuation" });
   }
@@ -2749,7 +3439,7 @@ function __c3(j: number): any {
         S.Struct({
           requestId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(23).pipe(T.HttpBody())),
+          body: S.optional(Actuation.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2763,7 +3453,7 @@ function __c3(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          state: S.optional(S.String),
+          state: S.optional(ResourceStatusStateEnum),
         }),
       ).annotate({ identifier: "ResourceStatus" });
     case 2:
@@ -2771,16 +3461,16 @@ function __c3(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          serviceAccounts: S.optional(__S(4)),
+          serviceAccounts: S.optional(StringList),
         }),
       ).annotate({ identifier: "GceInstanceFilter" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          inclusionLabels: S.optional(__S(26)),
-          gceInstanceFilter: S.optional(__S(27)),
-          scopes: S.optional(__S(4)),
-          resourceIdPatterns: S.optional(__S(4)),
+          inclusionLabels: S.optional(StringMap),
+          gceInstanceFilter: S.optional(GceInstanceFilter),
+          scopes: S.optional(StringList),
+          resourceIdPatterns: S.optional(StringList),
         }),
       ).annotate({ identifier: "ResourceFilter" });
     case 5:
@@ -2794,17 +3484,17 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          evaluationType: S.optional(S.String),
+          evaluationType: S.optional(EvaluationEvaluationTypeEnum),
           kmsKey: S.optional(S.String),
-          resourceStatus: S.optional(__S(25)),
+          resourceStatus: S.optional(ResourceStatus),
           customRulesBucket: S.optional(S.String),
-          resourceFilter: S.optional(__S(28)),
+          resourceFilter: S.optional(ResourceFilter),
           description: S.optional(S.String),
           createTime: S.optional(S.String),
-          labels: S.optional(__S(26)),
-          ruleNames: S.optional(__S(4)),
+          labels: S.optional(StringMap),
+          ruleNames: S.optional(StringList),
           schedule: S.optional(S.String),
-          bigQueryDestination: S.optional(__S(29)),
+          bigQueryDestination: S.optional(BigQueryDestination),
           updateTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "Evaluation" });
@@ -2814,7 +3504,7 @@ function __c3(j: number): any {
           requestId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
           evaluationId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(30).pipe(T.HttpBody())),
+          body: S.optional(Evaluation.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2935,9 +3625,9 @@ function __c4(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          labels: S.optional(__S(26)),
+          labels: S.optional(StringMap),
           name: S.optional(S.String),
-          metadata: S.optional(__S(16)),
+          metadata: S.optional(DocumentMap),
           locationId: S.optional(S.String),
           displayName: S.optional(S.String),
         }),
@@ -2992,18 +3682,18 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           latestBackupTime: S.optional(S.String),
-          latestBackupStatus: S.optional(S.String),
+          latestBackupStatus: S.optional(BackupPropertiesLatestBackupStatusEnum),
         }),
       ).annotate({ identifier: "BackupProperties" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          backupProperties: S.optional(__S(43)),
-          databaseType: S.optional(S.String),
+          backupProperties: S.optional(BackupProperties),
+          databaseType: S.optional(DatabasePropertiesDatabaseTypeEnum),
         }),
       ).annotate({ identifier: "DatabaseProperties" });
     case 5:
-      return S.Array(S.String);
+      return S.Array(InstancePropertiesRolesItemEnum);
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -3026,12 +3716,12 @@ function __c5(j: number): any {
 function __c6(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(47));
+      return S.Array(IAMPermission);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          state: S.optional(S.String),
-          iamPermissions: S.optional(__S(48)),
+          state: S.optional(ServiceStatesStateEnum),
+          iamPermissions: S.optional(IAMPermissionList),
         }),
       ).annotate({ identifier: "ServiceStates" });
     case 2:
@@ -3039,17 +3729,17 @@ function __c6(j: number): any {
         S.Struct({
           availableVersion: S.optional(S.String),
           isFullyEnabled: S.optional(S.Boolean),
-          processMetrics: S.optional(__S(49)),
-          hanaMonitoring: S.optional(__S(49)),
-          systemDiscovery: S.optional(__S(49)),
+          processMetrics: S.optional(ServiceStates),
+          hanaMonitoring: S.optional(ServiceStates),
+          systemDiscovery: S.optional(ServiceStates),
           installedVersion: S.optional(S.String),
         }),
       ).annotate({ identifier: "AgentStates" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          agentStates: S.optional(__S(50)),
-          numbers: S.optional(__S(4)),
+          agentStates: S.optional(AgentStates),
+          numbers: S.optional(StringList),
         }),
       ).annotate({ identifier: "SapInstanceProperties" });
     case 4:
@@ -3058,29 +3748,29 @@ function __c6(j: number): any {
           instanceNumber: S.optional(S.String),
           machineType: S.optional(S.String),
           status: S.optional(S.String),
-          roles: S.optional(__S(45)),
-          upcomingMaintenanceEvent: S.optional(__S(46)),
-          sapInstanceProperties: S.optional(__S(51)),
+          roles: S.optional(InstancePropertiesRolesItemEnumList),
+          upcomingMaintenanceEvent: S.optional(UpcomingMaintenanceEvent),
+          sapInstanceProperties: S.optional(SapInstanceProperties),
         }),
       ).annotate({ identifier: "InstanceProperties" });
     case 5:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          instanceProperties: S.optional(__S(52)),
-          kind: S.optional(S.String),
+          instanceProperties: S.optional(InstanceProperties),
+          kind: S.optional(CloudResourceKindEnum),
         }),
       ).annotate({ identifier: "CloudResource" });
     case 6:
-      return S.Array(__S(53));
+      return S.Array(CloudResource);
     case 7:
       return S.suspend(() =>
         S.Struct({
           sid: S.optional(S.String),
-          topologyType: S.optional(S.String),
-          databaseProperties: S.optional(__S(44)),
-          haHosts: S.optional(__S(4)),
-          resources: S.optional(__S(54)),
+          topologyType: S.optional(SapComponentTopologyTypeEnum),
+          databaseProperties: S.optional(DatabaseProperties),
+          haHosts: S.optional(StringList),
+          resources: S.optional(CloudResourceList),
         }),
       ).annotate({ identifier: "SapComponent" });
   }
@@ -3095,24 +3785,24 @@ function __c7(j: number): any {
         }),
       ).annotate({ identifier: "Product" });
     case 1:
-      return S.Array(__S(56));
+      return S.Array(Product);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          database: S.optional(__S(55)),
-          architecture: S.optional(S.String),
-          application: S.optional(__S(55)),
-          metadata: S.optional(__S(26)),
-          products: S.optional(__S(57)),
+          database: S.optional(SapComponent),
+          architecture: S.optional(SapWorkloadArchitectureEnum),
+          application: S.optional(SapComponent),
+          metadata: S.optional(StringMap),
+          products: S.optional(ProductList),
         }),
       ).annotate({ identifier: "SapWorkload" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          labels: S.optional(__S(26)),
-          workloadType: S.optional(S.String),
-          sapWorkload: S.optional(__S(58)),
+          labels: S.optional(StringMap),
+          workloadType: S.optional(WorkloadProfileWorkloadTypeEnum),
+          sapWorkload: S.optional(SapWorkload),
           refreshedTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "WorkloadProfile" });
@@ -3136,20 +3826,20 @@ function __c7(j: number): any {
           source: S.optional(S.String),
           message: S.optional(S.String),
           metric: S.optional(S.String),
-          resource: S.optional(__S(53)),
-          state: S.optional(S.String),
+          resource: S.optional(CloudResource),
+          state: S.optional(HealthCheckStateEnum),
         }),
       ).annotate({ identifier: "HealthCheck" });
     case 6:
-      return S.Array(__S(61));
+      return S.Array(HealthCheck);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          componentHealthChecks: S.optional(__S(62)),
-          subComponentsHealth: S.optional(S.suspend(() => __S(64))),
-          componentHealthType: S.optional(S.String),
+          componentHealthChecks: S.optional(HealthCheckList),
+          subComponentsHealth: S.optional(S.suspend(() => ComponentHealthList)),
+          componentHealthType: S.optional(ComponentHealthComponentHealthTypeEnum),
           component: S.optional(S.String),
-          state: S.optional(S.String),
+          state: S.optional(ComponentHealthStateEnum),
         }),
       ).annotate({ identifier: "ComponentHealth" });
   }
@@ -3157,13 +3847,13 @@ function __c7(j: number): any {
 function __c8(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(63));
+      return S.Array(ComponentHealth);
     case 1:
       return S.suspend(() =>
         S.Struct({
           checkTime: S.optional(S.String),
-          componentsHealth: S.optional(__S(64)),
-          state: S.optional(S.String),
+          componentsHealth: S.optional(ComponentHealthList),
+          state: S.optional(WorkloadProfileHealthStateEnum),
         }),
       ).annotate({ identifier: "WorkloadProfileHealth" });
     case 2:
@@ -3201,7 +3891,7 @@ function __c8(j: number): any {
         }),
       ).annotate({ identifier: "Notice" });
     case 5:
-      return S.Array(__S(68));
+      return S.Array(Notice);
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -3216,7 +3906,7 @@ function __c8(j: number): any {
           rule: S.optional(S.String),
           resultCount: S.optional(S.String),
           message: S.optional(S.String),
-          state: S.optional(S.String),
+          state: S.optional(RuleExecutionResultStateEnum),
           scannedResourceCount: S.optional(S.String),
         }),
       ).annotate({ identifier: "RuleExecutionResult" });
@@ -3225,34 +3915,34 @@ function __c8(j: number): any {
 function __c9(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(71));
+      return S.Array(RuleExecutionResult);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(S.String),
+          type: S.optional(ExternalDataSourcesTypeEnum),
           name: S.optional(S.String),
           uri: S.optional(S.String),
           assetType: S.optional(S.String),
         }),
       ).annotate({ identifier: "ExternalDataSources" });
     case 2:
-      return S.Array(__S(73));
+      return S.Array(ExternalDataSources);
     case 3:
       return S.suspend(() =>
         S.Struct({
           inventoryTime: S.optional(S.String),
           name: S.optional(S.String),
-          runType: S.optional(S.String),
-          state: S.optional(S.String),
-          notices: S.optional(__S(69)),
+          runType: S.optional(ExecutionRunTypeEnum),
+          state: S.optional(ExecutionStateEnum),
+          notices: S.optional(NoticeList),
           evaluationId: S.optional(S.String),
           startTime: S.optional(S.String),
-          resultSummary: S.optional(__S(70)),
+          resultSummary: S.optional(Summary),
           endTime: S.optional(S.String),
-          ruleResults: S.optional(__S(72)),
-          engine: S.optional(S.String),
-          labels: S.optional(__S(26)),
-          externalDataSources: S.optional(__S(74)),
+          ruleResults: S.optional(RuleExecutionResultList),
+          engine: S.optional(ExecutionEngineEnum),
+          labels: S.optional(StringMap),
+          externalDataSources: S.optional(ExternalDataSourcesList),
         }),
       ).annotate({ identifier: "Execution" });
     case 4:
@@ -3273,7 +3963,7 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
-          extraLocationTypes: S.optional(__S(4).pipe(T.Query())),
+          extraLocationTypes: S.optional(StringList.pipe(T.Query())),
           filter: S.optional(S.String.pipe(T.Query())),
           pageToken: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
@@ -3288,12 +3978,12 @@ function __c9(j: number): any {
         identifier: "ListProjectsLocationsRequest",
       });
     case 6:
-      return S.Array(__S(39));
+      return S.Array(Location);
     case 7:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          locations: S.optional(__S(78)),
+          locations: S.optional(LocationList),
         }),
       ).annotate({ identifier: "ListLocationsResponse" });
   }
@@ -3319,13 +4009,13 @@ function __c10(j: number): any {
         identifier: "ListProjectsLocationsDeploymentsRequest",
       });
     case 1:
-      return S.Array(__S(14));
+      return S.Array(Deployment);
     case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          unreachable: S.optional(__S(4)),
-          deployments: S.optional(__S(81)),
+          unreachable: S.optional(StringList),
+          deployments: S.optional(DeploymentList),
         }),
       ).annotate({ identifier: "ListDeploymentsResponse" });
     case 3:
@@ -3347,13 +4037,13 @@ function __c10(j: number): any {
         identifier: "ListProjectsLocationsDeploymentsActuationsRequest",
       });
     case 4:
-      return S.Array(__S(23));
+      return S.Array(Actuation);
     case 5:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          unreachable: S.optional(__S(4)),
-          actuations: S.optional(__S(84)),
+          unreachable: S.optional(StringList),
+          actuations: S.optional(ActuationList),
         }),
       ).annotate({ identifier: "ListActuationsResponse" });
     case 6:
@@ -3374,7 +4064,7 @@ function __c10(j: number): any {
         identifier: "ListProjectsLocationsDiscoveredprofilesRequest",
       });
     case 7:
-      return S.Array(__S(59));
+      return S.Array(WorkloadProfile);
   }
 }
 function __c11(j: number): any {
@@ -3382,9 +4072,9 @@ function __c11(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          workloadProfiles: S.optional(__S(87)),
+          workloadProfiles: S.optional(WorkloadProfileList),
           nextPageToken: S.optional(S.String),
-          unreachable: S.optional(__S(4)),
+          unreachable: S.optional(StringList),
         }),
       ).annotate({
         identifier: "ListDiscoveredProfilesResponse",
@@ -3408,13 +4098,13 @@ function __c11(j: number): any {
         identifier: "ListProjectsLocationsEvaluationsRequest",
       });
     case 2:
-      return S.Array(__S(30));
+      return S.Array(Evaluation);
     case 3:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          unreachable: S.optional(__S(4)),
-          evaluations: S.optional(__S(90)),
+          unreachable: S.optional(StringList),
+          evaluations: S.optional(EvaluationList),
         }),
       ).annotate({ identifier: "ListEvaluationsResponse" });
     case 4:
@@ -3436,13 +4126,13 @@ function __c11(j: number): any {
         identifier: "ListProjectsLocationsEvaluationsExecutionsRequest",
       });
     case 5:
-      return S.Array(__S(75));
+      return S.Array(Execution);
     case 6:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          executions: S.optional(__S(93)),
-          unreachable: S.optional(__S(4)),
+          executions: S.optional(ExecutionList),
+          unreachable: S.optional(StringList),
         }),
       ).annotate({ identifier: "ListExecutionsResponse" });
     case 7:
@@ -3477,33 +4167,33 @@ function __c12(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          parameters: S.optional(__S(26)),
+          parameters: S.optional(StringMap),
           command: S.optional(S.String),
         }),
       ).annotate({ identifier: "AgentCommand" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          shellCommand: S.optional(__S(96)),
-          agentCommand: S.optional(__S(97)),
+          shellCommand: S.optional(ShellCommand),
+          agentCommand: S.optional(AgentCommand),
         }),
       ).annotate({ identifier: "Command" });
     case 3:
-      return S.Array(__S(98));
+      return S.Array(Command);
     case 4:
       return S.suspend(() =>
         S.Struct({
           message: S.optional(S.String),
-          details: S.optional(__S(26)),
+          details: S.optional(StringMap),
         }),
       ).annotate({ identifier: "RuleOutput" });
     case 5:
-      return S.Array(__S(100));
+      return S.Array(RuleOutput);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          ruleOutput: S.optional(__S(101)),
-          observed: S.optional(__S(26)),
+          ruleOutput: S.optional(RuleOutputList),
+          observed: S.optional(StringMap),
           asset: S.optional(S.String),
           serviceAccount: S.optional(S.String),
         }),
@@ -3524,21 +4214,21 @@ function __c13(j: number): any {
       return S.suspend(() =>
         S.Struct({
           documentationUrl: S.optional(S.String),
-          commands: S.optional(__S(99)),
+          commands: S.optional(CommandList),
           rule: S.optional(S.String),
-          type: S.optional(S.String),
+          type: S.optional(ExecutionResultTypeEnum),
           severity: S.optional(S.String),
-          violationDetails: S.optional(__S(102)),
-          resource: S.optional(__S(103)),
+          violationDetails: S.optional(ViolationDetails),
+          resource: S.optional(Resource),
           violationMessage: S.optional(S.String),
         }),
       ).annotate({ identifier: "ExecutionResult" });
     case 1:
-      return S.Array(__S(104));
+      return S.Array(ExecutionResult);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          executionResults: S.optional(__S(105)),
+          executionResults: S.optional(ExecutionResultList),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -3571,11 +4261,11 @@ function __c13(j: number): any {
         }),
       ).annotate({ identifier: "ScannedResource" });
     case 5:
-      return S.Array(__S(108));
+      return S.Array(ScannedResource);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          scannedResources: S.optional(__S(109)),
+          scannedResources: S.optional(ScannedResourceList),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -3604,13 +4294,13 @@ function __c13(j: number): any {
 function __c14(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(19));
+      return S.Array(Operation);
     case 1:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          operations: S.optional(__S(112)),
-          unreachable: S.optional(__S(4)),
+          operations: S.optional(OperationList),
+          unreachable: S.optional(StringList),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
     case 2:
@@ -3621,7 +4311,7 @@ function __c14(j: number): any {
           customRulesBucket: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
           filter: S.optional(S.String.pipe(T.Query())),
-          evaluationType: S.optional(S.String.pipe(T.Query())),
+          evaluationType: S.optional(ListProjectsLocationsRulesEvaluationTypeEnum.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -3638,10 +4328,10 @@ function __c14(j: number): any {
           displayName: S.optional(S.String),
           secondaryCategory: S.optional(S.String),
           uri: S.optional(S.String),
-          tags: S.optional(__S(4)),
+          tags: S.optional(StringList),
           primaryCategory: S.optional(S.String),
           errorMessage: S.optional(S.String),
-          ruleType: S.optional(S.String),
+          ruleType: S.optional(RuleRuleTypeEnum),
           remediation: S.optional(S.String),
           severity: S.optional(S.String),
           description: S.optional(S.String),
@@ -3651,11 +4341,11 @@ function __c14(j: number): any {
         }),
       ).annotate({ identifier: "Rule" });
     case 4:
-      return S.Array(__S(115));
+      return S.Array(Rule);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          rules: S.optional(__S(116)),
+          rules: S.optional(RuleList),
         }),
       ).annotate({ identifier: "ListRulesResponse" });
     case 6:
@@ -3664,7 +4354,7 @@ function __c14(j: number): any {
           name: S.String.pipe(T.Label()),
           requestId: S.optional(S.String.pipe(T.Query())),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(30).pipe(T.HttpBody())),
+          body: S.optional(Evaluation.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3679,7 +4369,7 @@ function __c14(j: number): any {
       return S.suspend(() =>
         S.Struct({
           executionId: S.optional(S.String),
-          execution: S.optional(__S(75)),
+          execution: S.optional(Execution),
           requestId: S.optional(S.String),
         }),
       ).annotate({ identifier: "RunEvaluationRequest" });
@@ -3691,7 +4381,7 @@ function __c15(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(119).pipe(T.HttpBody())),
+          body: S.optional(RunEvaluationRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3723,7 +4413,7 @@ function __c15(j: number): any {
         identifier: "SapDiscoveryWorkloadPropertiesSoftwareComponentProperties",
       });
     case 3:
-      return S.Array(__S(122));
+      return S.Array(SapDiscoveryWorkloadPropertiesSoftwareComponentProperties);
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -3734,12 +4424,14 @@ function __c15(j: number): any {
         identifier: "SapDiscoveryWorkloadPropertiesProductVersion",
       });
     case 5:
-      return S.Array(__S(124));
+      return S.Array(SapDiscoveryWorkloadPropertiesProductVersion);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          softwareComponentVersions: S.optional(__S(123)),
-          productVersions: S.optional(__S(125)),
+          softwareComponentVersions: S.optional(
+            SapDiscoveryWorkloadPropertiesSoftwareComponentPropertiesList,
+          ),
+          productVersions: S.optional(SapDiscoveryWorkloadPropertiesProductVersionList),
         }),
       ).annotate({
         identifier: "SapDiscoveryWorkloadProperties",
@@ -3753,7 +4445,7 @@ function __c15(j: number): any {
           sharedNfsUri: S.optional(S.String),
           landscapeId: S.optional(S.String),
           primaryInstanceUri: S.optional(S.String),
-          databaseType: S.optional(S.String),
+          databaseType: S.optional(SapDiscoveryComponentDatabasePropertiesDatabaseTypeEnum),
         }),
       ).annotate({
         identifier: "SapDiscoveryComponentDatabaseProperties",
@@ -3767,7 +4459,9 @@ function __c16(j: number): any {
         S.Struct({
           kernelVersion: S.optional(S.String),
           ascsUri: S.optional(S.String),
-          applicationType: S.optional(S.String),
+          applicationType: S.optional(
+            SapDiscoveryComponentApplicationPropertiesApplicationTypeEnum,
+          ),
           appInstanceNumber: S.optional(S.String),
           nfsUri: S.optional(S.String),
           ersInstanceNumber: S.optional(S.String),
@@ -3781,14 +4475,14 @@ function __c16(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          diskNames: S.optional(__S(4)),
+          diskNames: S.optional(StringList),
           mountPoint: S.optional(S.String),
         }),
       ).annotate({
         identifier: "SapDiscoveryResourceInstancePropertiesDiskMount",
       });
     case 2:
-      return S.Array(__S(129));
+      return S.Array(SapDiscoveryResourceInstancePropertiesDiskMount);
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -3799,7 +4493,7 @@ function __c16(j: number): any {
         identifier: "SapDiscoveryResourceInstancePropertiesAppInstance",
       });
     case 4:
-      return S.Array(__S(131));
+      return S.Array(SapDiscoveryResourceInstancePropertiesAppInstance);
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -3816,8 +4510,8 @@ function __c16(j: number): any {
       return S.suspend(() =>
         S.Struct({
           rawString: S.optional(S.String),
-          osKernel: S.optional(__S(133)),
-          distroKernel: S.optional(__S(133)),
+          osKernel: S.optional(SapDiscoveryResourceInstancePropertiesKernelVersionVersion),
+          distroKernel: S.optional(SapDiscoveryResourceInstancePropertiesKernelVersionVersion),
         }),
       ).annotate({
         identifier: "SapDiscoveryResourceInstancePropertiesKernelVersion",
@@ -3825,14 +4519,14 @@ function __c16(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          instanceRole: S.optional(S.String),
+          instanceRole: S.optional(SapDiscoveryResourceInstancePropertiesInstanceRoleEnum),
           instanceNumber: S.optional(S.String),
-          diskMounts: S.optional(__S(130)),
-          appInstances: S.optional(__S(132)),
+          diskMounts: S.optional(SapDiscoveryResourceInstancePropertiesDiskMountList),
+          appInstances: S.optional(SapDiscoveryResourceInstancePropertiesAppInstanceList),
           virtualHostname: S.optional(S.String),
-          clusterInstances: S.optional(__S(4)),
+          clusterInstances: S.optional(StringList),
           isDrSite: S.optional(S.Boolean),
-          osKernelVersion: S.optional(__S(134)),
+          osKernelVersion: S.optional(SapDiscoveryResourceInstancePropertiesKernelVersion),
         }),
       ).annotate({
         identifier: "SapDiscoveryResourceInstanceProperties",
@@ -3844,39 +4538,39 @@ function __c17(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          instanceProperties: S.optional(__S(135)),
-          resourceType: S.optional(S.String),
-          resourceKind: S.optional(S.String),
+          instanceProperties: S.optional(SapDiscoveryResourceInstanceProperties),
+          resourceType: S.optional(SapDiscoveryResourceResourceTypeEnum),
+          resourceKind: S.optional(SapDiscoveryResourceResourceKindEnum),
           resourceUri: S.optional(S.String),
           updateTime: S.optional(S.String),
-          relatedResources: S.optional(__S(4)),
+          relatedResources: S.optional(StringList),
         }),
       ).annotate({ identifier: "SapDiscoveryResource" });
     case 1:
-      return S.Array(__S(136));
+      return S.Array(SapDiscoveryResource);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          component: S.optional(S.suspend(() => __S(140))),
+          component: S.optional(S.suspend(() => SapDiscoveryComponent)),
           sourceSite: S.optional(S.String),
         }),
       ).annotate({
         identifier: "SapDiscoveryComponentReplicationSite",
       });
     case 3:
-      return S.Array(__S(138));
+      return S.Array(SapDiscoveryComponentReplicationSite);
     case 4:
       return S.suspend(() =>
         S.Struct({
           hostProject: S.optional(S.String),
-          databaseProperties: S.optional(__S(127)),
-          topologyType: S.optional(S.String),
-          applicationProperties: S.optional(__S(128)),
-          haHosts: S.optional(__S(4)),
+          databaseProperties: S.optional(SapDiscoveryComponentDatabaseProperties),
+          topologyType: S.optional(SapDiscoveryComponentTopologyTypeEnum),
+          applicationProperties: S.optional(SapDiscoveryComponentApplicationProperties),
+          haHosts: S.optional(StringList),
           sid: S.optional(S.String),
           region: S.optional(S.String),
-          resources: S.optional(__S(137)),
-          replicationSites: S.optional(__S(139)),
+          resources: S.optional(SapDiscoveryResourceList),
+          replicationSites: S.optional(SapDiscoveryComponentReplicationSiteList),
         }),
       ).annotate({ identifier: "SapDiscoveryComponent" });
     case 5:
@@ -3885,11 +4579,11 @@ function __c17(j: number): any {
           updateTime: S.optional(S.String),
           projectNumber: S.optional(S.String),
           systemId: S.optional(S.String),
-          metadata: S.optional(__S(121)),
+          metadata: S.optional(SapDiscoveryMetadata),
           useDrReconciliation: S.optional(S.Boolean),
-          workloadProperties: S.optional(__S(126)),
-          applicationLayer: S.optional(__S(140)),
-          databaseLayer: S.optional(__S(140)),
+          workloadProperties: S.optional(SapDiscoveryWorkloadProperties),
+          applicationLayer: S.optional(SapDiscoveryComponent),
+          databaseLayer: S.optional(SapDiscoveryComponent),
         }),
       ).annotate({ identifier: "SapDiscovery" });
     case 6:
@@ -3901,7 +4595,7 @@ function __c17(j: number): any {
         }),
       ).annotate({ identifier: "AgentStatusConfigValue" });
     case 7:
-      return S.Array(__S(142));
+      return S.Array(AgentStatusConfigValue);
   }
 }
 function __c18(j: number): any {
@@ -3910,25 +4604,25 @@ function __c18(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          granted: S.optional(S.String),
+          granted: S.optional(AgentStatusIAMPermissionGrantedEnum),
         }),
       ).annotate({ identifier: "AgentStatusIAMPermission" });
     case 1:
-      return S.Array(__S(144));
+      return S.Array(AgentStatusIAMPermission);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          state: S.optional(S.String),
+          state: S.optional(AgentStatusServiceStatusStateEnum),
           errorMessage: S.optional(S.String),
-          configValues: S.optional(__S(143)),
+          configValues: S.optional(AgentStatusConfigValueList),
           name: S.optional(S.String),
           unspecifiedStateMessage: S.optional(S.String),
-          fullyFunctional: S.optional(S.String),
-          iamPermissions: S.optional(__S(145)),
+          fullyFunctional: S.optional(AgentStatusServiceStatusFullyFunctionalEnum),
+          iamPermissions: S.optional(AgentStatusIAMPermissionList),
         }),
       ).annotate({ identifier: "AgentStatusServiceStatus" });
     case 3:
-      return S.Array(__S(146));
+      return S.Array(AgentStatusServiceStatus);
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -3937,31 +4631,33 @@ function __c18(j: number): any {
         }),
       ).annotate({ identifier: "AgentStatusReference" });
     case 5:
-      return S.Array(__S(148));
+      return S.Array(AgentStatusReference);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          systemdServiceRunning: S.optional(S.String),
+          systemdServiceRunning: S.optional(AgentStatusSystemdServiceRunningEnum),
           instanceUri: S.optional(S.String),
-          kernelVersion: S.optional(__S(134)),
-          systemdServiceEnabled: S.optional(S.String),
-          services: S.optional(__S(147)),
+          kernelVersion: S.optional(SapDiscoveryResourceInstancePropertiesKernelVersion),
+          systemdServiceEnabled: S.optional(AgentStatusSystemdServiceEnabledEnum),
+          services: S.optional(AgentStatusServiceStatusList),
           configurationErrorMessage: S.optional(S.String),
           installedVersion: S.optional(S.String),
           availableVersion: S.optional(S.String),
-          references: S.optional(__S(149)),
+          references: S.optional(AgentStatusReferenceList),
           agentName: S.optional(S.String),
-          cloudApiAccessFullScopesGranted: S.optional(S.String),
+          cloudApiAccessFullScopesGranted: S.optional(
+            AgentStatusCloudApiAccessFullScopesGrantedEnum,
+          ),
           configurationFilePath: S.optional(S.String),
-          configurationValid: S.optional(S.String),
+          configurationValid: S.optional(AgentStatusConfigurationValidEnum),
         }),
       ).annotate({ identifier: "AgentStatus" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          sapValidationType: S.optional(S.String),
+          sapValidationType: S.optional(SapValidationValidationDetailSapValidationTypeEnum),
           isPresent: S.optional(S.Boolean),
-          details: S.optional(__S(26)),
+          details: S.optional(StringMap),
         }),
       ).annotate({
         identifier: "SapValidationValidationDetail",
@@ -3971,20 +4667,20 @@ function __c18(j: number): any {
 function __c19(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(151));
+      return S.Array(SapValidationValidationDetail);
     case 1:
       return S.suspend(() =>
         S.Struct({
           zone: S.optional(S.String),
           projectId: S.optional(S.String),
-          validationDetails: S.optional(__S(152)),
+          validationDetails: S.optional(SapValidationValidationDetailList),
         }),
       ).annotate({ identifier: "SapValidation" });
     case 2:
       return S.suspend(() =>
         S.Struct({
           clusterId: S.optional(S.String),
-          validationDetails: S.optional(__S(16)),
+          validationDetails: S.optional(DocumentMap),
         }),
       ).annotate({ identifier: "OpenShiftValidation" });
     case 3:
@@ -3992,32 +4688,32 @@ function __c19(j: number): any {
         S.Struct({
           agentVersion: S.optional(S.String),
           instanceName: S.optional(S.String),
-          workloadType: S.optional(S.String),
-          validationDetails: S.optional(__S(26)),
+          workloadType: S.optional(TorsoValidationWorkloadTypeEnum),
+          validationDetails: S.optional(StringMap),
           projectId: S.optional(S.String),
         }),
       ).annotate({ identifier: "TorsoValidation" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          fields: S.optional(__S(26)),
+          fields: S.optional(StringMap),
         }),
       ).annotate({
         identifier: "SqlserverValidationDetails",
       });
     case 5:
-      return S.Array(__S(156));
+      return S.Array(SqlserverValidationDetails);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(S.String),
-          details: S.optional(__S(157)),
+          type: S.optional(SqlserverValidationValidationDetailTypeEnum),
+          details: S.optional(SqlserverValidationDetailsList),
         }),
       ).annotate({
         identifier: "SqlserverValidationValidationDetail",
       });
     case 7:
-      return S.Array(__S(158));
+      return S.Array(SqlserverValidationValidationDetail);
   }
 }
 function __c20(j: number): any {
@@ -4028,27 +4724,27 @@ function __c20(j: number): any {
           projectId: S.optional(S.String),
           agentVersion: S.optional(S.String),
           instance: S.optional(S.String),
-          validationDetails: S.optional(__S(159)),
+          validationDetails: S.optional(SqlserverValidationValidationDetailList),
         }),
       ).annotate({ identifier: "SqlserverValidation" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          sapDiscovery: S.optional(__S(141)),
-          agentStatus: S.optional(__S(150)),
-          sapValidation: S.optional(__S(153)),
-          openShiftValidation: S.optional(__S(154)),
+          sapDiscovery: S.optional(SapDiscovery),
+          agentStatus: S.optional(AgentStatus),
+          sapValidation: S.optional(SapValidation),
+          openShiftValidation: S.optional(OpenShiftValidation),
           sentTime: S.optional(S.String),
           instanceId: S.optional(S.String),
-          torsoValidation: S.optional(__S(155)),
-          sqlserverValidation: S.optional(__S(160)),
+          torsoValidation: S.optional(TorsoValidation),
+          sqlserverValidation: S.optional(SqlserverValidation),
         }),
       ).annotate({ identifier: "Insight" });
     case 2:
       return S.suspend(() =>
         S.Struct({
           requestId: S.optional(S.String),
-          insight: S.optional(__S(161)),
+          insight: S.optional(Insight),
           agentVersion: S.optional(S.String),
         }),
       ).annotate({ identifier: "WriteInsightRequest" });
@@ -4056,7 +4752,7 @@ function __c20(j: number): any {
       return S.suspend(() =>
         S.Struct({
           location: S.String.pipe(T.Label()),
-          body: S.optional(__S(162).pipe(T.HttpBody())),
+          body: S.optional(WriteInsightRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4067,56 +4763,5 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "WriteInsightProjectsLocationsInsightsRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
-    case 9:
-      return __c9(i & 7);
-    case 10:
-      return __c10(i & 7);
-    case 11:
-      return __c11(i & 7);
-    case 12:
-      return __c12(i & 7);
-    case 13:
-      return __c13(i & 7);
-    case 14:
-      return __c14(i & 7);
-    case 15:
-      return __c15(i & 7);
-    case 16:
-      return __c16(i & 7);
-    case 17:
-      return __c17(i & 7);
-    case 18:
-      return __c18(i & 7);
-    case 19:
-      return __c19(i & 7);
-    case 20:
-      return __c20(i & 7);
   }
 }

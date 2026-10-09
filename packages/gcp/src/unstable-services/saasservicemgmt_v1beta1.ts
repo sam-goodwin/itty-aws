@@ -7,8 +7,6 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -70,13 +68,19 @@ export type FlagAttributeValueTypeEnum =
   | "INTEGER"
   | "STRING"
   | "DOUBLE";
+const FlagAttributeValueTypeEnum = S.String;
+
 export type StringMap = { [key: string]: string | undefined };
+const StringMap = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<StringMap>;
+
 export type FlagAttributeAttributeValueTypeEnum =
   | "FLAG_ATTRIBUTE_VALUE_TYPE_UNSPECIFIED"
   | "FLAG_ATTRIBUTE_VALUE_TYPE_BOOLEAN"
   | "FLAG_ATTRIBUTE_VALUE_TYPE_INTEGER"
   | "FLAG_ATTRIBUTE_VALUE_TYPE_STRING"
   | "FLAG_ATTRIBUTE_VALUE_TYPE_DOUBLE";
+const FlagAttributeAttributeValueTypeEnum = S.String;
+
 /** FlagAttribute defines a custom property in the evaluation context. */
 export interface FlagAttribute {
   /** Identifier. The resource name (full URI of the resource) following the standard naming scheme: "projects/{project}/locations/{location}/flagAttributes/{flag_attribute_id}" */
@@ -100,6 +104,8 @@ export interface FlagAttribute {
   /** Output only. The timestamp when the resource was last updated. Any change to the resource made by users must refresh this value. Changes to a resource made by the service should refresh this value. */
   updateTime?: string;
 }
+const FlagAttribute = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<FlagAttribute>;
+
 export interface CreateProjectsLocationsFlagAttributesRequest {
   /** An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
@@ -112,22 +118,35 @@ export interface CreateProjectsLocationsFlagAttributesRequest {
   /** Request body */
   body?: FlagAttribute;
 }
+const CreateProjectsLocationsFlagAttributesRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<CreateProjectsLocationsFlagAttributesRequest>;
+
 export type StringList = Array<string>;
+const StringList = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<StringList>;
+
 /** Wrapper for a list of flag sets. */
 export interface FlagSetList {
   /** Required. Flag sets to be rolled out. */
   sets?: StringList;
 }
+const FlagSetList = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<FlagSetList>;
+
 /** Wrapper for a list of flags. */
 export interface FlagNameList {
   /** Required. Flags to be rolled out. */
   flags?: StringList;
 }
+const FlagNameList = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<FlagNameList>;
+
 /** Wrapper for a list of flag revisions. */
 export interface FlagRevisionList {
   /** Required. FlagRevisions to be rolled out. */
   revisions?: StringList;
 }
+const FlagRevisionList = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<FlagRevisionList>;
+
 /** A collection of FlagRevisions. */
 export interface FlagRelease {
   /** Output only. An OUTPUT_ONLY field that contains FlagRevisions to be rolled out. This is the ultimate source of truth of what a Rollout or a UnitOperation carries. */
@@ -165,6 +184,8 @@ export interface FlagRelease {
   /** Optional. Immutable. Deprecated: Use the 'state' field in the 'Flag' resource to manage the cleanup of flag lifecycles including removal from UnitKind and Units. Flags to be removed from given UnitKind and all related Units. If Flag is provided here, its FlagRevisions will be removed from UnitKind and Units. */
   obsoleteFlags?: StringList;
 }
+const FlagRelease = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<FlagRelease>;
+
 export interface CreateProjectsLocationsFlagReleasesRequest {
   /** Required. The parent of the flag release. */
   parent: string;
@@ -177,6 +198,11 @@ export interface CreateProjectsLocationsFlagReleasesRequest {
   /** Request body */
   body?: FlagRelease;
 }
+const CreateProjectsLocationsFlagReleasesRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<CreateProjectsLocationsFlagReleasesRequest>;
+
 /** Variant is an identifier for a value (name assigned to a value). DEPRECATED: Use Flag.Variants instead. */
 export interface Variant {
   /** Optional. Double flag value. */
@@ -190,7 +216,11 @@ export interface Variant {
   /** Optional. Boolean flag value. */
   boolValue?: boolean;
 }
+const Variant = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<Variant>;
+
 export type VariantList = Array<Variant>;
+const VariantList = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<VariantList>;
+
 /** EvaluationRule defines a single rule for evaluating a feature flag. A rule consists of a condition that, if met, assigns a specific variant or allocation to the user. */
 export interface EvaluationRule {
   /** Optional. Deprecated: Use `rule_target` instead. The target variant or allocation to apply if the condition is met. This should match the name of a defined variant or allocation's ID. */
@@ -204,7 +234,11 @@ export interface EvaluationRule {
   /** Required. Evaluation rule ID. Max length: 128 bytes. */
   id?: string;
 }
+const EvaluationRule = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<EvaluationRule>;
+
 export type EvaluationRuleList = Array<EvaluationRule>;
+const EvaluationRuleList = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<EvaluationRuleList>;
+
 /** AllocationSlot specifies a variant and the proportion of traffic allocated to it. */
 export interface AllocationSlot {
   /** Required. Variant of the allocation slot. */
@@ -212,7 +246,11 @@ export interface AllocationSlot {
   /** Required. Weight defines the proportion of traffic to allocate to the variant, relative to other slots in the same allocation. */
   weight?: number;
 }
+const AllocationSlot = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<AllocationSlot>;
+
 export type AllocationSlotList = Array<AllocationSlot>;
+const AllocationSlotList = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<AllocationSlotList>;
+
 /** Allocation defines a set of weighted flag variants, specifying how traffic is split based on the randomization unit. */
 export interface Allocation {
   /** Required. Allocation ID. Max length: 128 bytes. */
@@ -224,7 +262,11 @@ export interface Allocation {
   /** Optional. Description of the allocation. Max length: 500 bytes. */
   description?: string;
 }
+const Allocation = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<Allocation>;
+
 export type AllocationList = Array<Allocation>;
+const AllocationList = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<AllocationList>;
+
 /** EvaluationSpec holds rules for evaluating the value of a flag. */
 export interface EvaluationSpec {
   /** Optional. A list of variants. */
@@ -238,6 +280,8 @@ export interface EvaluationSpec {
   /** Optional. Names of the context attributes that are used in the evaluation rules and allocations. */
   attributes?: StringList;
 }
+const EvaluationSpec = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<EvaluationSpec>;
+
 /** Variant is an identifier for a value (name assigned to a value). */
 export interface FlagVariant {
   /** Optional. String variant value. */
@@ -255,25 +299,35 @@ export interface FlagVariant {
   /** Optional. Integer variant value. */
   integerValue?: string;
 }
+const FlagVariant = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<FlagVariant>;
+
 export type FlagVariantList = Array<FlagVariant>;
+const FlagVariantList = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<FlagVariantList>;
+
 export type FlagFlagValueTypeEnum =
   | "FLAG_VALUE_TYPE_UNSPECIFIED"
   | "FLAG_VALUE_TYPE_BOOLEAN"
   | "FLAG_VALUE_TYPE_INTEGER"
   | "FLAG_VALUE_TYPE_STRING"
   | "FLAG_VALUE_TYPE_DOUBLE";
+const FlagFlagValueTypeEnum = S.String;
+
 export type FlagValueTypeEnum =
   | "FLAG_VALUE_TYPE_UNSPECIFIED"
   | "FLAG_VALUE_TYPE_BOOL"
   | "FLAG_VALUE_TYPE_INT"
   | "FLAG_VALUE_TYPE_STRING"
   | "FLAG_VALUE_TYPE_DOUBLE";
+const FlagValueTypeEnum = S.String;
+
 export type FlagStateEnum =
   | "FLAG_STATE_UNSPECIFIED"
   | "FLAG_STATE_IN_DEVELOPMENT"
   | "FLAG_STATE_ACTIVE"
   | "FLAG_STATE_SUNSETTING"
   | "FLAG_STATE_CLEANUP";
+const FlagStateEnum = S.String;
+
 /** Represents a single Flag. */
 export interface Flag {
   /** Optional. Description of the flag. Max length: 500 bytes. */
@@ -309,6 +363,8 @@ export interface Flag {
   /** Output only. The unique identifier of the resource. UID is unique in the time and space for this resource within the scope of the service. It is typically generated by the server on successful creation of a resource and must not be changed. UID is used to uniquely identify resources with resource name reuses. This should be a UUID4. */
   uid?: string;
 }
+const Flag = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<Flag>;
+
 /** A snapshot of the EvaluationSpec for the Flag. */
 export interface FlagRevision {
   /** Output only. The timestamp when the resource was created. */
@@ -332,6 +388,8 @@ export interface FlagRevision {
   /** Output only. An opaque value that uniquely identifies a version or generation of a resource. It can be used to confirm that the client and server agree on the ordering of a resource being written. */
   etag?: string;
 }
+const FlagRevision = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<FlagRevision>;
+
 export interface CreateProjectsLocationsFlagRevisionsRequest {
   /** If "validate_only" is set to true, the service will try to validate that this request would succeed, but will not actually make changes. */
   validateOnly?: boolean;
@@ -344,6 +402,11 @@ export interface CreateProjectsLocationsFlagRevisionsRequest {
   /** Request body */
   body?: FlagRevision;
 }
+const CreateProjectsLocationsFlagRevisionsRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<CreateProjectsLocationsFlagRevisionsRequest>;
+
 export interface CreateProjectsLocationsFlagsRequest {
   /** If "validate_only" is set to true, the service will try to validate that this request would succeed, but will not actually make changes. */
   validateOnly?: boolean;
@@ -356,6 +419,11 @@ export interface CreateProjectsLocationsFlagsRequest {
   /** Request body */
   body?: Flag;
 }
+const CreateProjectsLocationsFlagsRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<CreateProjectsLocationsFlagsRequest>;
+
 export type UnitVariableTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "STRING"
@@ -363,6 +431,8 @@ export type UnitVariableTypeEnum =
   | "BOOL"
   | "STRUCT"
   | "LIST";
+const UnitVariableTypeEnum = S.String;
+
 /** UnitVariable describes a parameter for a Unit. */
 export interface UnitVariable {
   /** Optional. Immutable. Name of a supported variable type. Supported types are string, int, bool. */
@@ -372,12 +442,18 @@ export interface UnitVariable {
   /** Optional. String encoded value for the variable. */
   value?: string;
 }
+const UnitVariable = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<UnitVariable>;
+
 export type UnitVariableList = Array<UnitVariable>;
+const UnitVariableList = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<UnitVariableList>;
+
 /** Set of requirements to be fulfilled on the Unit when using this Release. */
 export interface ReleaseRequirements {
   /** Optional. A list of releases from which a unit can be upgraded to this one (optional). If left empty no constraints will be applied. When provided, unit upgrade requests to this release will check and enforce this constraint. */
   upgradeableFromReleases?: StringList;
 }
+const ReleaseRequirements = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<ReleaseRequirements>;
+
 /** Blueprints are OCI Images that contain all of the artifacts needed to provision a unit. Metadata such as, type of the engine used to actuate the blueprint (Terraform, for example) and version will come from the image manifest. If the hostname is omitted, it will be assumed to be the regional path to Artifact Registry (eg. us-east1-docker.pkg.dev). */
 export interface Blueprint {
   /** Optional. Immutable. URI to a blueprint used by the Unit (required unless unitKind or release is set). */
@@ -387,6 +463,8 @@ export interface Blueprint {
   /** Output only. Version metadata if present on the blueprint. */
   version?: string;
 }
+const Blueprint = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<Blueprint>;
+
 /** CompositeRef represents a reference to a composite resource. */
 export interface CompositeRef {
   /** Optional. Revision of the ApplicationTemplate to use. Changes to revision will trigger manual resynchronization. If empty, ApplicationTemplate will be ignored. */
@@ -396,6 +474,8 @@ export interface CompositeRef {
   /** Required. Reference to the ApplicationTemplate resource. */
   applicationTemplate?: string;
 }
+const CompositeRef = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<CompositeRef>;
+
 /** ComponentRef represents a reference to a component resource. */
 export interface ComponentRef {
   /** Optional. Name of the component in composite.Components */
@@ -405,6 +485,8 @@ export interface ComponentRef {
   /** Reference to the Composite ApplicationTemplate. */
   compositeRef?: CompositeRef;
 }
+const ComponentRef = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<ComponentRef>;
+
 /** A new version to be propagated and deployed to units. This includes pointers to packaged blueprints for actuation via Artifact Registry. */
 export interface Release {
   /** Optional. Output only. List of output variables declared on the blueprint and can be present with their values on the unit status */
@@ -436,6 +518,8 @@ export interface Release {
   /** Optional. The labels on the resource, which can be used for categorization. similar to Kubernetes resource labels. */
   labels?: StringMap;
 }
+const Release = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<Release>;
+
 export interface CreateProjectsLocationsReleasesRequest {
   /** Required. The ID value for the new release. */
   releaseId?: string;
@@ -448,6 +532,11 @@ export interface CreateProjectsLocationsReleasesRequest {
   /** Request body */
   body?: Release;
 }
+const CreateProjectsLocationsReleasesRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<CreateProjectsLocationsReleasesRequest>;
+
 /** The configuration for error budget. If the number of failed units exceeds max(allowed_count, allowed_ratio * total_units), the rollout will be paused. */
 export interface ErrorBudget {
   /** Optional. The maximum percentage of units allowed to fail (0, 100] within a location without pausing the rollout. */
@@ -455,11 +544,15 @@ export interface ErrorBudget {
   /** Optional. The maximum number of failed units allowed in a location without pausing the rollout. */
   allowedCount?: number;
 }
+const ErrorBudget = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<ErrorBudget>;
+
 /** A representation of a decimal value, such as 2.5. Clients may convert values into language-native decimal formats, such as Java's [BigDecimal](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/math/BigDecimal.html) or Python's [decimal.Decimal](https://docs.python.org/3/library/decimal.html). */
 export interface Decimal {
   /** The decimal value, as a string. The string representation consists of an optional sign, `+` (`U+002B`) or `-` (`U+002D`), followed by a sequence of zero or more decimal digits ("the integer"), optionally followed by a fraction, optionally followed by an exponent. An empty string **should** be interpreted as `0`. The fraction consists of a decimal point followed by zero or more decimal digits. The string must contain at least one digit in either the integer or the fraction. The number formed by the sign, the integer and the fraction is referred to as the significand. The exponent consists of the character `e` (`U+0065`) or `E` (`U+0045`) followed by one or more decimal digits. Services **should** normalize decimal values before storing them by: - Removing an explicitly-provided `+` sign (`+2.5` -> `2.5`). - Replacing a zero-length integer value with `0` (`.5` -> `0.5`). - Coercing the exponent character to upper-case, with explicit sign (`2.5e8` -> `2.5E+8`). - Removing an explicitly-provided zero exponent (`2.5E0` -> `2.5`). Services **may** perform additional normalization based on its own needs and the internal decimal implementation selected, such as shifting the decimal point and exponent value together (example: `2.5E-1` <-> `0.25`). Additionally, services **may** preserve trailing zeroes in the fraction to indicate increased precision, but are not required to do so. Note that only the `.` character is supported to divide the integer and the fraction; `,` **should not** be supported regardless of locale. Additionally, thousand separators **should not** be supported. If a service does support them, values **must** be normalized. The ENBF grammar is: DecimalString = '' | [Sign] Significand [Exponent]; Sign = '+' | '-'; Significand = Digits '.' | [Digits] '.' Digits; Exponent = ('e' | 'E') [Sign] Digits; Digits = { '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' }; Services **should** clearly document the range of supported values, the maximum supported precision (total number of digits), and, if applicable, the scale (number of digits after the decimal point), as well as how it behaves when receiving out-of-bounds values. Services **may** choose to accept values passed as input even when the value has a higher precision or scale than the service supports, and **should** round the value to fit the supported scale. Alternatively, the service **may** error with `400 Bad Request` (`INVALID_ARGUMENT` in gRPC) if precision would be lost. Services **should** error with `400 Bad Request` (`INVALID_ARGUMENT` in gRPC) if the service receives a value outside of the supported range. */
   value?: string;
 }
+const Decimal = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<Decimal>;
+
 /** UnitUpdatePacing defines the policy for the maximum number of unit operations that can run for a rollout in parallel in a single region. */
 export interface UnitUpdatePacing {
   /** Optional. The maximum percentage of total units in the scope that can be in-flight. Example: 10.5 for 10.5%. If both percent and count are provided, the system uses the MINIMUM (most restrictive). */
@@ -467,10 +560,14 @@ export interface UnitUpdatePacing {
   /** Optional. An absolute cap on concurrent units operations. If both percent and count are provided, the system uses the MINIMUM (most restrictive). */
   maxConcurrentOperationsCount?: number;
 }
+const UnitUpdatePacing = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<UnitUpdatePacing>;
+
 export type RolloutKindUpdateUnitKindStrategyEnum =
   | "UPDATE_UNIT_KIND_STRATEGY_UNSPECIFIED"
   | "UPDATE_UNIT_KIND_STRATEGY_ON_START"
   | "UPDATE_UNIT_KIND_STRATEGY_NEVER";
+const RolloutKindUpdateUnitKindStrategyEnum = S.String;
+
 /** An object that describes various settings of Rollout execution. Includes built-in and customizable policies. */
 export interface RolloutKind {
   /** Output only. The unique identifier of the resource. UID is unique in the time and space for this resource within the scope of the service. It is typically generated by the server on successful creation of a resource and must not be changed. UID is used to uniquely identify resources with resource name reuses. This should be a UUID4. */
@@ -500,6 +597,8 @@ export interface RolloutKind {
   /** Optional. Annotations is an unstructured key-value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. More info: https://kubernetes.io/docs/user-guide/annotations */
   annotations?: StringMap;
 }
+const RolloutKind = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<RolloutKind>;
+
 export interface CreateProjectsLocationsRolloutKindsRequest {
   /** Required. The ID value for the new rollout kind. */
   rolloutKindId?: string;
@@ -512,6 +611,11 @@ export interface CreateProjectsLocationsRolloutKindsRequest {
   /** Request body */
   body?: RolloutKind;
 }
+const CreateProjectsLocationsRolloutKindsRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<CreateProjectsLocationsRolloutKindsRequest>;
+
 /** Represents the aggregation of a set of population of like records by a certain group. For example, a collection of unit counts can be aggregated and grouped by their state. */
 export interface Aggregate {
   /** Required. Group by which to aggregate. */
@@ -519,7 +623,11 @@ export interface Aggregate {
   /** Required. Number of records in the group. */
   count?: number;
 }
+const Aggregate = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<Aggregate>;
+
 export type AggregateList = Array<Aggregate>;
+const AggregateList = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<AggregateList>;
+
 /** RolloutStats contains information about the progress of a rollout. */
 export interface RolloutStats {
   /** Optional. Output only. Unordered list. A breakdown of the progress of operations triggered by the rollout. Provides a count of Operations by their state. This can be used to determine the number of units which have been updated, or are scheduled to be updated. There will be at most one entry per group. Possible values for operation groups are: - "SCHEDULED" - "PENDING" - "RUNNING" - "SUCCEEDED" - "FAILED" - "CANCELLED" */
@@ -527,6 +635,8 @@ export interface RolloutStats {
   /** Optional. Output only. Estimated number of units based. The estimation is computed upon creation of the rollout. */
   estimatedTotalUnitCount?: string;
 }
+const RolloutStats = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<RolloutStats>;
+
 export type RolloutStateEnum =
   | "ROLLOUT_STATE_UNSPECIFIED"
   | "ROLLOUT_STATE_RUNNING"
@@ -539,16 +649,25 @@ export type RolloutStateEnum =
   | "ROLLOUT_STATE_RESUMING"
   | "ROLLOUT_STATE_PAUSING"
   | "ROLLOUT_STATE_AWAITING_APPROVAL";
+const RolloutStateEnum = S.String;
+
 /** Parameters for the RUN action controlling the behavior of the rollout when it is resumed from a PAUSED state. */
 export interface RunRolloutActionParams {
   /** Required. If true, the rollout will retry failed operations when resumed. This is applicable only the current state of the Rollout is PAUSED and the requested action is RUN. */
   retryFailedOperations?: boolean;
 }
+const RunRolloutActionParams = /*@__PURE__*/ __L.at(
+  __c5,
+  0,
+) as any as S.Schema<RunRolloutActionParams>;
+
 export type RolloutControlActionEnum =
   | "ROLLOUT_ACTION_UNSPECIFIED"
   | "ROLLOUT_ACTION_RUN"
   | "ROLLOUT_ACTION_PAUSE"
   | "ROLLOUT_ACTION_CANCEL";
+const RolloutControlActionEnum = S.String;
+
 /** RolloutControl provides a way to request a change to the execution of a Rollout by pausing or canceling it. */
 export interface RolloutControl {
   /** Optional. Parameters for the RUN action. It is an error to specify this if the RolloutAction is not set to RUN. By default, the rollout will retry failed operations when resumed. */
@@ -556,6 +675,8 @@ export interface RolloutControl {
   /** Required. Action to be performed on the Rollout. The default behavior is to run the rollout until it naturally reaches a terminal state. */
   action?: RolloutControlActionEnum | (string & {});
 }
+const RolloutControl = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<RolloutControl>;
+
 /** Represents a single rollout execution and its results */
 export interface Rollout {
   /** Optional. CEL(https://github.com/google/cel-spec) formatted filter string against Unit. The filter will be applied to determine the eligible unit population. This filter can only reduce, but not expand the scope of the rollout. If not provided, the unit_filter from the RolloutKind will be used. */
@@ -605,6 +726,8 @@ export interface Rollout {
   /** Optional. Output only. The time when the rollout started executing. Will be empty if the rollout hasn't started yet. */
   startTime?: string;
 }
+const Rollout = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<Rollout>;
+
 export interface CreateProjectsLocationsRolloutsRequest {
   /** An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
@@ -617,8 +740,17 @@ export interface CreateProjectsLocationsRolloutsRequest {
   /** Request body */
   body?: Rollout;
 }
+const CreateProjectsLocationsRolloutsRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<CreateProjectsLocationsRolloutsRequest>;
+
 export type DocumentMap = { [key: string]: unknown | undefined };
+const DocumentMap = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<DocumentMap>;
+
 export type DocumentMapList = Array<DocumentMap>;
+const DocumentMapList = /*@__PURE__*/ __L.at(__c5, 5) as any as S.Schema<DocumentMapList>;
+
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
   /** The status code, which should be an enum value of google.rpc.Code. */
@@ -628,12 +760,18 @@ export interface Status {
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
   details?: DocumentMapList;
 }
+const Status = /*@__PURE__*/ __L.at(__c5, 6) as any as S.Schema<Status>;
+
 export type SaasConditionTypeEnum = "TYPE_UNSPECIFIED" | "TYPE_READY" | "TYPE_SYNCHRONIZED";
+const SaasConditionTypeEnum = S.String;
+
 export type SaasConditionStatusEnum =
   | "STATUS_UNSPECIFIED"
   | "STATUS_UNKNOWN"
   | "STATUS_TRUE"
   | "STATUS_FALSE";
+const SaasConditionStatusEnum = S.String;
+
 /** SaasCondition describes the status of a Saas. */
 export interface SaasCondition {
   /** Required. Human readable message indicating details about the last transition. */
@@ -647,19 +785,29 @@ export interface SaasCondition {
   /** Required. Status of the condition. */
   status?: SaasConditionStatusEnum | (string & {});
 }
+const SaasCondition = /*@__PURE__*/ __L.at(__c5, 7) as any as S.Schema<SaasCondition>;
+
 export type SaasConditionList = Array<SaasCondition>;
+const SaasConditionList = /*@__PURE__*/ __L.at(__c6, 0) as any as S.Schema<SaasConditionList>;
+
 export type SaasStateEnum =
   | "STATE_UNSPECIFIED"
   | "STATE_TYPE_UNSPECIFIED"
   | "STATE_ACTIVE"
   | "STATE_RUNNING"
   | "STATE_FAILED";
+const SaasStateEnum = S.String;
+
 /** Location information that the service is available in. */
 export interface Location {
   /** Optional. Name of location. */
   name?: string;
 }
+const Location = /*@__PURE__*/ __L.at(__c6, 1) as any as S.Schema<Location>;
+
 export type LocationList = Array<Location>;
+const LocationList = /*@__PURE__*/ __L.at(__c6, 2) as any as S.Schema<LocationList>;
+
 /** Saas is a representation of a SaaS service managed by the Producer. */
 export interface Saas {
   /** Output only. The timestamp when the resource was last updated. Any change to the resource made by users must refresh this value. Changes to a resource made by the service should refresh this value. */
@@ -689,6 +837,8 @@ export interface Saas {
   /** Optional. List of locations that the service is available in. Rollout refers to the list to generate a rollout plan. */
   locations?: LocationList;
 }
+const Saas = /*@__PURE__*/ __L.at(__c6, 3) as any as S.Schema<Saas>;
+
 export interface CreateProjectsLocationsSaasRequest {
   /** If "validate_only" is set to true, the service will try to validate that this request would succeed, but will not actually make changes. */
   validateOnly?: boolean;
@@ -701,6 +851,11 @@ export interface CreateProjectsLocationsSaasRequest {
   /** Request body */
   body?: Saas;
 }
+const CreateProjectsLocationsSaasRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  4,
+) as any as S.Schema<CreateProjectsLocationsSaasRequest>;
+
 /** SaasRelease is a collection of Releases that are assigned to a UnitGroup. It allows provisioning and updates of UnitGroup, which contains multiple Units of different UnitKinds. */
 export interface SaasRelease {
   /** Optional. Annotations is an unstructured key-value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. More info: https://kubernetes.io/docs/user-guide/annotations */
@@ -718,6 +873,8 @@ export interface SaasRelease {
   /** Output only. The timestamp when the resource was last updated. Any change to the resource made by users must refresh this value. Changes to a resource made by the service should refresh this value. */
   updateTime?: string;
 }
+const SaasRelease = /*@__PURE__*/ __L.at(__c6, 5) as any as S.Schema<SaasRelease>;
+
 export interface CreateProjectsLocationsSaasReleasesRequest {
   /** If "validate_only" is set to true, the service will try to validate that this request would succeed, but will not actually make changes. */
   validateOnly?: boolean;
@@ -730,6 +887,11 @@ export interface CreateProjectsLocationsSaasReleasesRequest {
   /** Request body */
   body?: SaasRelease;
 }
+const CreateProjectsLocationsSaasReleasesRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  6,
+) as any as S.Schema<CreateProjectsLocationsSaasReleasesRequest>;
+
 /** Tenant represents the service producer side of an instance of the service created based on a request from a consumer. In a typical scenario a Tenant has a one-to-one mapping with a resource given out to a service consumer. Example: tenant: name: "projects/svc1/locations/loc/tenants/inst-068afff8" consumer_resource: "projects/gshoe/locations/loc/shoes/black-shoe" */
 export interface Tenant {
   /** Output only. An opaque value that uniquely identifies a version or generation of a resource. It can be used to confirm that the client and server agree on the ordering of a resource being written. */
@@ -751,6 +913,8 @@ export interface Tenant {
   /** Required. Immutable. A reference to the Saas that defines the product (managed service) that the producer wants to manage with App Lifecycle Manager. Part of the App Lifecycle Manager common data model. */
   saas?: string;
 }
+const Tenant = /*@__PURE__*/ __L.at(__c6, 7) as any as S.Schema<Tenant>;
+
 export interface CreateProjectsLocationsTenantsRequest {
   /** Required. The parent of the tenant. */
   parent: string;
@@ -763,6 +927,11 @@ export interface CreateProjectsLocationsTenantsRequest {
   /** Request body */
   body?: Tenant;
 }
+const CreateProjectsLocationsTenantsRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  0,
+) as any as S.Schema<CreateProjectsLocationsTenantsRequest>;
+
 /** UnitGroupOperation represents an operation on a UnitGroup. */
 export interface UnitGroupOperation {
   /** Optional. Annotations is an unstructured key-value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. More info: https://kubernetes.io/docs/user-guide/annotations */
@@ -782,6 +951,8 @@ export interface UnitGroupOperation {
   /** Output only. The timestamp when the resource was last updated. Any change to the resource made by users must refresh this value. Changes to a resource made by the service should refresh this value. */
   updateTime?: string;
 }
+const UnitGroupOperation = /*@__PURE__*/ __L.at(__c7, 1) as any as S.Schema<UnitGroupOperation>;
+
 export interface CreateProjectsLocationsUnitGroupOperationsRequest {
   /** Required. The parent of the unit group operation. */
   parent: string;
@@ -794,6 +965,11 @@ export interface CreateProjectsLocationsUnitGroupOperationsRequest {
   /** Request body */
   body?: UnitGroupOperation;
 }
+const CreateProjectsLocationsUnitGroupOperationsRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  2,
+) as any as S.Schema<CreateProjectsLocationsUnitGroupOperationsRequest>;
+
 /** UnitGroup represents a set of Units to be used by a Tenant. In pooling scenarios, the UnitGroup may be created and provisioned before the Tenant is created. */
 export interface UnitGroup {
   /** Output only. The timestamp when the resource was created. */
@@ -811,6 +987,8 @@ export interface UnitGroup {
   /** Output only. An opaque value that uniquely identifies a version or generation of a resource. It can be used to confirm that the client and server agree on the ordering of a resource being written. */
   etag?: string;
 }
+const UnitGroup = /*@__PURE__*/ __L.at(__c7, 3) as any as S.Schema<UnitGroup>;
+
 export interface CreateProjectsLocationsUnitGroupsRequest {
   /** An optional request ID to identify requests. */
   requestId?: string;
@@ -823,12 +1001,21 @@ export interface CreateProjectsLocationsUnitGroupsRequest {
   /** Request body */
   body?: UnitGroup;
 }
+const CreateProjectsLocationsUnitGroupsRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  4,
+) as any as S.Schema<CreateProjectsLocationsUnitGroupsRequest>;
+
 export type ScopeTypeEnum = "TYPE_UNSPECIFIED" | "TYPE_REGIONAL" | "TYPE_GLOBAL";
+const ScopeTypeEnum = S.String;
+
 /** Scope of an application. */
 export interface Scope {
   /** Required. Scope Type. */
   type?: ScopeTypeEnum | (string & {});
 }
+const Scope = /*@__PURE__*/ __L.at(__c7, 5) as any as S.Schema<Scope>;
+
 /** AppParams contains the parameters for creating an AppHub Application. */
 export interface AppParams {
   /** Optional. Corresponds to the scope in the ADC composite ApplicationTemplate. Defaults to TYPE_REGIONAL. */
@@ -836,6 +1023,8 @@ export interface AppParams {
   /** Optional. Grouping used to construct the name of the AppHub Application. Multiple UnitKinds can specify the same group to use the same Application across their respective units. Corresponds to the app_boundary_id in the ADC composite ApplicationTemplate. Defaults to UnitKind.name */
   group?: string;
 }
+const AppParams = /*@__PURE__*/ __L.at(__c7, 6) as any as S.Schema<AppParams>;
+
 /** Dependency represent a single dependency with another unit kind by alias. */
 export interface Dependency {
   /** Required. Immutable. The unit kind of the dependency. */
@@ -843,7 +1032,11 @@ export interface Dependency {
   /** Required. An alias for the dependency. Used for input variable mapping. */
   alias?: string;
 }
+const Dependency = /*@__PURE__*/ __L.at(__c7, 7) as any as S.Schema<Dependency>;
+
 export type DependencyList = Array<Dependency>;
+const DependencyList = /*@__PURE__*/ __L.at(__c8, 0) as any as S.Schema<DependencyList>;
+
 /** Input variables whose values will be passed on to dependencies */
 export interface ToMapping {
   /** Required. Name of the inputVariable on the dependency */
@@ -853,6 +1046,8 @@ export interface ToMapping {
   /** Required. Alias of the dependency that the inputVariable will pass its value to */
   dependency?: string;
 }
+const ToMapping = /*@__PURE__*/ __L.at(__c8, 1) as any as S.Schema<ToMapping>;
+
 /** Output variables whose values will be passed on to dependencies */
 export interface FromMapping {
   /** Required. Alias of the dependency that the outputVariable will pass its value to */
@@ -860,6 +1055,8 @@ export interface FromMapping {
   /** Required. Name of the outputVariable on the dependency */
   outputVariable?: string;
 }
+const FromMapping = /*@__PURE__*/ __L.at(__c8, 2) as any as S.Schema<FromMapping>;
+
 /** Mapping of input variables to their respective output variable for depedenencies */
 export interface VariableMapping {
   /** Optional. Input variables whose values will be passed on to dependencies. */
@@ -869,11 +1066,17 @@ export interface VariableMapping {
   /** Optional. Output variables which will get their values from dependencies */
   from?: FromMapping;
 }
+const VariableMapping = /*@__PURE__*/ __L.at(__c8, 3) as any as S.Schema<VariableMapping>;
+
 export type VariableMappingList = Array<VariableMapping>;
+const VariableMappingList = /*@__PURE__*/ __L.at(__c8, 4) as any as S.Schema<VariableMappingList>;
+
 export type UnitKindBoundaryTypeEnum =
   | "BOUNDARY_TYPE_UNSPECIFIED"
   | "BOUNDARY_TYPE_TENANT_PROJECT"
   | "BOUNDARY_TYPE_MANAGED_PROJECT";
+const UnitKindBoundaryTypeEnum = S.String;
+
 /** Definition of a Unit. Units belonging to the same UnitKind are managed together; for example they follow the same release model (blueprints, versions etc.) and are typically rolled out together. */
 export interface UnitKind {
   /** Required. Immutable. A reference to the Saas that defines the product (managed service) that the producer wants to manage with App Lifecycle Manager. Part of the App Lifecycle Manager common data model. Immutable once set. */
@@ -911,6 +1114,8 @@ export interface UnitKind {
   /** Optional. List of outputVariables for this unit kind will be passed to this unit's outputVariables. Maximum 100. */
   outputVariableMappings?: VariableMappingList;
 }
+const UnitKind = /*@__PURE__*/ __L.at(__c8, 5) as any as S.Schema<UnitKind>;
+
 export interface CreateProjectsLocationsUnitKindsRequest {
   /** Required. The ID value for the new unit kind. */
   unitKindId?: string;
@@ -923,16 +1128,25 @@ export interface CreateProjectsLocationsUnitKindsRequest {
   /** Request body */
   body?: UnitKind;
 }
+const CreateProjectsLocationsUnitKindsRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  6,
+) as any as S.Schema<CreateProjectsLocationsUnitKindsRequest>;
+
 /** A time specification to schedule the maintenance. */
 export interface Schedule {
   /** Optional. Start of operation. If not set, will be set to the start of the next window. (optional) */
   startTime?: string;
 }
+const Schedule = /*@__PURE__*/ __L.at(__c8, 7) as any as S.Schema<Schedule>;
+
 /** FlagUpdate is a UnitOperation that pushes new flag values to Units. */
 export interface FlagUpdate {
   /** Required. Flag release being applied by UnitOperation. */
   flagRelease?: string;
 }
+const FlagUpdate = /*@__PURE__*/ __L.at(__c9, 0) as any as S.Schema<FlagUpdate>;
+
 /** Provision is the unit operation that provision the underlying resources represented by a Unit. Can only execute if the Unit is not currently provisioned. */
 export interface Provision {
   /** Optional. Set of input variables. Maximum 100. (optional) */
@@ -940,6 +1154,8 @@ export interface Provision {
   /** Optional. Reference to the Release object to use for the Unit. (optional). */
   release?: string;
 }
+const Provision = /*@__PURE__*/ __L.at(__c9, 1) as any as S.Schema<Provision>;
+
 export type UnitOperationErrorCategoryEnum =
   | "UNIT_OPERATION_ERROR_CATEGORY_UNSPECIFIED"
   | "NOT_APPLICABLE"
@@ -947,6 +1163,8 @@ export type UnitOperationErrorCategoryEnum =
   | "RETRIABLE"
   | "IGNORABLE"
   | "STANDARD";
+const UnitOperationErrorCategoryEnum = S.String;
+
 export type UnitOperationConditionTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "TYPE_SCHEDULED"
@@ -956,11 +1174,15 @@ export type UnitOperationConditionTypeEnum =
   | "TYPE_APP_CREATED"
   | "TYPE_APP_COMPONENTS_REGISTERED"
   | "TYPE_WORKLOAD_SUCCEEDED";
+const UnitOperationConditionTypeEnum = S.String;
+
 export type UnitOperationConditionStatusEnum =
   | "STATUS_UNSPECIFIED"
   | "STATUS_UNKNOWN"
   | "STATUS_TRUE"
   | "STATUS_FALSE";
+const UnitOperationConditionStatusEnum = S.String;
+
 /** UnitOperationCondition describes the status of an Unit Operation. UnitOperationCondition is individual components that contribute to an overall state. */
 export interface UnitOperationCondition {
   /** Required. Type of the condition. */
@@ -974,11 +1196,23 @@ export interface UnitOperationCondition {
   /** Required. Last time the condition transited from one status to another. */
   lastTransitionTime?: string;
 }
+const UnitOperationCondition = /*@__PURE__*/ __L.at(
+  __c9,
+  2,
+) as any as S.Schema<UnitOperationCondition>;
+
 export type UnitOperationConditionList = Array<UnitOperationCondition>;
+const UnitOperationConditionList = /*@__PURE__*/ __L.at(
+  __c9,
+  3,
+) as any as S.Schema<UnitOperationConditionList>;
+
 /** Upgrade is the unit operation that upgrades a provisioned unit, which may also include the underlying resources represented by a Unit. Can only execute if the Unit is currently provisioned. */
 export type Upgrade = Provision;
 /** Deprovision is the unit operation that deprovision the underlying resources represented by a Unit. Can only execute if the Unit is currently provisioned. */
 export interface Deprovision {}
+const Deprovision = /*@__PURE__*/ __L.at(__c9, 4) as any as S.Schema<Deprovision>;
+
 export type UnitOperationStateEnum =
   | "UNIT_OPERATION_STATE_UNKNOWN"
   | "UNIT_OPERATION_STATE_PENDING"
@@ -987,6 +1221,8 @@ export type UnitOperationStateEnum =
   | "UNIT_OPERATION_STATE_SUCCEEDED"
   | "UNIT_OPERATION_STATE_FAILED"
   | "UNIT_OPERATION_STATE_CANCELLED";
+const UnitOperationStateEnum = S.String;
+
 /** UnitOperation encapsulates the intent of changing/interacting with the service component represented by the specific Unit. Multiple UnitOperations can be created (requested) and scheduled in the future, however only one will be allowed to execute at a time (that can change in the future for non-mutating operations). UnitOperations allow different actors interacting with the same unit to focus only on the change they have requested. This is a base object that contains the common fields in all unit operations. Next: 22 */
 export interface UnitOperation {
   /** Identifier. The resource name (full URI of the resource) following the standard naming scheme: "projects/{project}/locations/{location}/unitOperations/{unitOperation}" */
@@ -1032,6 +1268,8 @@ export interface UnitOperation {
   /** Optional. Reference to parent resource: UnitOperation. If an operation needs to create other operations as part of its workflow, each of the child operations should have this field set to the parent. This can be used for tracing. (Optional) */
   parentUnitOperation?: string;
 }
+const UnitOperation = /*@__PURE__*/ __L.at(__c9, 5) as any as S.Schema<UnitOperation>;
+
 export interface CreateProjectsLocationsUnitOperationsRequest {
   /** Required. The ID value for the new unit operation. */
   unitOperationId?: string;
@@ -1044,15 +1282,24 @@ export interface CreateProjectsLocationsUnitOperationsRequest {
   /** Request body */
   body?: UnitOperation;
 }
+const CreateProjectsLocationsUnitOperationsRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  6,
+) as any as S.Schema<CreateProjectsLocationsUnitOperationsRequest>;
+
 /** Captures requested directives for performing future maintenance on the unit. This includes a request for the unit to skip maintenance for a period of time and remain pinned to its current release as well as controls for postponing maintenance scheduled in future. */
 export interface MaintenanceSettings {
   /** Optional. If present, it fixes the release on the unit until the given time; i.e. changes to the release field will be rejected. Rollouts should and will also respect this by not requesting an upgrade in the first place. */
   pinnedUntilTime?: string;
 }
+const MaintenanceSettings = /*@__PURE__*/ __L.at(__c9, 7) as any as S.Schema<MaintenanceSettings>;
+
 export type UnitManagementModeEnum =
   | "MANAGEMENT_MODE_UNSPECIFIED"
   | "MANAGEMENT_MODE_USER"
   | "MANAGEMENT_MODE_SYSTEM";
+const UnitManagementModeEnum = S.String;
+
 /** Set of dependencies for this unit. Maximum 10. */
 export interface UnitDependency {
   /** Output only. Alias for the name of the dependency. */
@@ -1060,12 +1307,18 @@ export interface UnitDependency {
   /** Output only. A reference to the Unit object. */
   unit?: string;
 }
+const UnitDependency = /*@__PURE__*/ __L.at(__c10, 0) as any as S.Schema<UnitDependency>;
+
 export type UnitDependencyList = Array<UnitDependency>;
+const UnitDependencyList = /*@__PURE__*/ __L.at(__c10, 1) as any as S.Schema<UnitDependencyList>;
+
 export type UnitConditionStatusEnum =
   | "STATUS_UNSPECIFIED"
   | "STATUS_UNKNOWN"
   | "STATUS_TRUE"
   | "STATUS_FALSE";
+const UnitConditionStatusEnum = S.String;
+
 export type UnitConditionTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "TYPE_READY"
@@ -1075,6 +1328,8 @@ export type UnitConditionTypeEnum =
   | "TYPE_FLAGS_CONFIG_INITIALIZED"
   | "TYPE_APP_CREATED_OR_ALREADY_EXISTS"
   | "TYPE_APP_COMPONENTS_REGISTERED";
+const UnitConditionTypeEnum = S.String;
+
 /** UnitCondition describes the status of an Unit. UnitCondition is individual components that contribute to an overall state. */
 export interface UnitCondition {
   /** Required. Brief reason for the condition's last transition. */
@@ -1088,7 +1343,11 @@ export interface UnitCondition {
   /** Required. Last time the condition transited from one status to another. */
   lastTransitionTime?: string;
 }
+const UnitCondition = /*@__PURE__*/ __L.at(__c10, 2) as any as S.Schema<UnitCondition>;
+
 export type UnitConditionList = Array<UnitCondition>;
+const UnitConditionList = /*@__PURE__*/ __L.at(__c10, 3) as any as S.Schema<UnitConditionList>;
+
 export type UnitStateEnum =
   | "UNIT_STATE_UNSPECIFIED"
   | "UNIT_STATE_NOT_PROVISIONED"
@@ -1097,11 +1356,15 @@ export type UnitStateEnum =
   | "UNIT_STATE_DEPROVISIONING"
   | "UNIT_STATE_READY"
   | "UNIT_STATE_ERROR";
+const UnitStateEnum = S.String;
+
 export type UnitSystemManagedStateEnum =
   | "SYSTEM_MANAGED_STATE_UNSPECIFIED"
   | "SYSTEM_MANAGED_STATE_ACTIVE"
   | "SYSTEM_MANAGED_STATE_INACTIVE"
   | "SYSTEM_MANAGED_STATE_DECOMMISSIONED";
+const UnitSystemManagedStateEnum = S.String;
+
 /** A unit of deployment that has its lifecycle via a CRUD API using an actuation engine under the hood (e.g. based on Terraform, or a custom implementation provided by a service producer). A building block of a SaaS Tenant. */
 export interface Unit {
   /** Optional. Output only. Set of key/value pairs corresponding to output variables from execution of actuation templates. The variables are declared in actuation configs (in Terraform for example) and the values are fetched and returned by the actuation engine upon completion of execution. */
@@ -1163,6 +1426,8 @@ export interface Unit {
   /** Output only. Indicates whether the resource location satisfies Zone Separation constraints. This is false by default. */
   satisfiesPzs?: boolean;
 }
+const Unit = /*@__PURE__*/ __L.at(__c10, 4) as any as S.Schema<Unit>;
+
 export interface CreateProjectsLocationsUnitsRequest {
   /** Required. The parent of the unit. */
   parent: string;
@@ -1175,6 +1440,11 @@ export interface CreateProjectsLocationsUnitsRequest {
   /** Request body */
   body?: Unit;
 }
+const CreateProjectsLocationsUnitsRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  5,
+) as any as S.Schema<CreateProjectsLocationsUnitsRequest>;
+
 export interface DeleteProjectsLocationsFlagAttributesRequest {
   /** If "validate_only" is set to true, the service will try to validate that this request would succeed, but will not actually make changes. */
   validateOnly?: boolean;
@@ -1185,8 +1455,15 @@ export interface DeleteProjectsLocationsFlagAttributesRequest {
   /** An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
 }
+const DeleteProjectsLocationsFlagAttributesRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  6,
+) as any as S.Schema<DeleteProjectsLocationsFlagAttributesRequest>;
+
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
+const Empty = Deprovision as any as S.Schema<Empty>;
+
 export interface DeleteProjectsLocationsFlagReleasesRequest {
   /** If "validate_only" is set to true, the service will try to validate that this request would succeed, but will not actually make changes. */
   validateOnly?: boolean;
@@ -1197,6 +1474,11 @@ export interface DeleteProjectsLocationsFlagReleasesRequest {
   /** An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
 }
+const DeleteProjectsLocationsFlagReleasesRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  7,
+) as any as S.Schema<DeleteProjectsLocationsFlagReleasesRequest>;
+
 export interface DeleteProjectsLocationsFlagRevisionsRequest {
   /** Required. The resource name of the resource within a service. */
   name: string;
@@ -1207,6 +1489,11 @@ export interface DeleteProjectsLocationsFlagRevisionsRequest {
   /** An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
 }
+const DeleteProjectsLocationsFlagRevisionsRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  0,
+) as any as S.Schema<DeleteProjectsLocationsFlagRevisionsRequest>;
+
 export interface DeleteProjectsLocationsFlagsRequest {
   /** Required. The resource name of the resource within a service. */
   name: string;
@@ -1217,6 +1504,11 @@ export interface DeleteProjectsLocationsFlagsRequest {
   /** If "validate_only" is set to true, the service will try to validate that this request would succeed, but will not actually make changes. */
   validateOnly?: boolean;
 }
+const DeleteProjectsLocationsFlagsRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  1,
+) as any as S.Schema<DeleteProjectsLocationsFlagsRequest>;
+
 export interface DeleteProjectsLocationsReleasesRequest {
   /** An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
@@ -1227,6 +1519,11 @@ export interface DeleteProjectsLocationsReleasesRequest {
   /** The etag known to the client for the expected state of the release. This is used with state-changing methods to prevent accidental overwrites when multiple user agents might be acting in parallel on the same resource. An etag wildcard provide optimistic concurrency based on the expected existence of the release. The Any wildcard (`*`) requires that the resource must already exists, and the Not Any wildcard (`!*`) requires that it must not. */
   etag?: string;
 }
+const DeleteProjectsLocationsReleasesRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  2,
+) as any as S.Schema<DeleteProjectsLocationsReleasesRequest>;
+
 export interface DeleteProjectsLocationsRolloutKindsRequest {
   /** If "validate_only" is set to true, the service will try to validate that this request would succeed, but will not actually make changes. */
   validateOnly?: boolean;
@@ -1237,6 +1534,11 @@ export interface DeleteProjectsLocationsRolloutKindsRequest {
   /** The etag known to the client for the expected state of the rollout kind. This is used with state-changing methods to prevent accidental overwrites when multiple user agents might be acting in parallel on the same resource. An etag wildcard provide optimistic concurrency based on the expected existence of the rollout kind. The Any wildcard (`*`) requires that the resource must already exists, and the Not Any wildcard (`!*`) requires that it must not. */
   etag?: string;
 }
+const DeleteProjectsLocationsRolloutKindsRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  3,
+) as any as S.Schema<DeleteProjectsLocationsRolloutKindsRequest>;
+
 export interface DeleteProjectsLocationsRolloutsRequest {
   /** If "validate_only" is set to true, the service will try to validate that this request would succeed, but will not actually make changes. */
   validateOnly?: boolean;
@@ -1247,6 +1549,11 @@ export interface DeleteProjectsLocationsRolloutsRequest {
   /** An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
 }
+const DeleteProjectsLocationsRolloutsRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  4,
+) as any as S.Schema<DeleteProjectsLocationsRolloutsRequest>;
+
 export interface DeleteProjectsLocationsSaasRequest {
   /** Required. The resource name of the resource within a service. */
   name: string;
@@ -1257,6 +1564,11 @@ export interface DeleteProjectsLocationsSaasRequest {
   /** If "validate_only" is set to true, the service will try to validate that this request would succeed, but will not actually make changes. */
   validateOnly?: boolean;
 }
+const DeleteProjectsLocationsSaasRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  5,
+) as any as S.Schema<DeleteProjectsLocationsSaasRequest>;
+
 export interface DeleteProjectsLocationsSaasReleasesRequest {
   /** Required. The resource name of the resource within a service. */
   name: string;
@@ -1267,6 +1579,11 @@ export interface DeleteProjectsLocationsSaasReleasesRequest {
   /** If "validate_only" is set to true, the service will try to validate that this request would succeed, but will not actually make changes. */
   validateOnly?: boolean;
 }
+const DeleteProjectsLocationsSaasReleasesRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  6,
+) as any as S.Schema<DeleteProjectsLocationsSaasReleasesRequest>;
+
 export interface DeleteProjectsLocationsTenantsRequest {
   /** Required. The resource name of the resource within a service. */
   name: string;
@@ -1277,6 +1594,11 @@ export interface DeleteProjectsLocationsTenantsRequest {
   /** An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
 }
+const DeleteProjectsLocationsTenantsRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  7,
+) as any as S.Schema<DeleteProjectsLocationsTenantsRequest>;
+
 export interface DeleteProjectsLocationsUnitGroupOperationsRequest {
   /** Optional. If "validate_only" is set to true, the service will try to validate that this request would succeed, but will not actually make changes. */
   validateOnly?: boolean;
@@ -1287,6 +1609,11 @@ export interface DeleteProjectsLocationsUnitGroupOperationsRequest {
   /** Optional. The etag known to the client for the expected state of the unit group operation. This is used with state-changing methods to prevent accidental overwrites when multiple user agents might be acting in parallel on the same resource. An etag wildcard provide optimistic concurrency based on the expected existence of the unit group operation. The Any wildcard (`*`) requires that the resource must already exists, and the Not Any wildcard (`!*`) requires that it must not. */
   etag?: string;
 }
+const DeleteProjectsLocationsUnitGroupOperationsRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  0,
+) as any as S.Schema<DeleteProjectsLocationsUnitGroupOperationsRequest>;
+
 export interface DeleteProjectsLocationsUnitGroupsRequest {
   /** Required. The resource name of the resource within a service. */
   name: string;
@@ -1297,6 +1624,11 @@ export interface DeleteProjectsLocationsUnitGroupsRequest {
   /** An optional request ID to identify requests. */
   requestId?: string;
 }
+const DeleteProjectsLocationsUnitGroupsRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  1,
+) as any as S.Schema<DeleteProjectsLocationsUnitGroupsRequest>;
+
 export interface DeleteProjectsLocationsUnitKindsRequest {
   /** Required. The resource name of the resource within a service. */
   name: string;
@@ -1307,6 +1639,11 @@ export interface DeleteProjectsLocationsUnitKindsRequest {
   /** If "validate_only" is set to true, the service will try to validate that this request would succeed, but will not actually make changes. */
   validateOnly?: boolean;
 }
+const DeleteProjectsLocationsUnitKindsRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  2,
+) as any as S.Schema<DeleteProjectsLocationsUnitKindsRequest>;
+
 export interface DeleteProjectsLocationsUnitOperationsRequest {
   /** An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
@@ -1317,6 +1654,11 @@ export interface DeleteProjectsLocationsUnitOperationsRequest {
   /** If "validate_only" is set to true, the service will try to validate that this request would succeed, but will not actually make changes. */
   validateOnly?: boolean;
 }
+const DeleteProjectsLocationsUnitOperationsRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  3,
+) as any as S.Schema<DeleteProjectsLocationsUnitOperationsRequest>;
+
 export interface DeleteProjectsLocationsUnitsRequest {
   /** Required. The resource name of the resource within a service. */
   name: string;
@@ -1327,10 +1669,20 @@ export interface DeleteProjectsLocationsUnitsRequest {
   /** An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
 }
+const DeleteProjectsLocationsUnitsRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  4,
+) as any as S.Schema<DeleteProjectsLocationsUnitsRequest>;
+
 export interface GetProjectsLocationsRequest {
   /** Resource name for the location. */
   name: string;
 }
+const GetProjectsLocationsRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  5,
+) as any as S.Schema<GetProjectsLocationsRequest>;
+
 /** A resource that represents a Google Cloud location. */
 export interface GoogleCloudLocationLocation {
   /** Resource name for the location, which may vary between implementations. For example: `"projects/example-project/locations/us-east1"` */
@@ -1344,66 +1696,146 @@ export interface GoogleCloudLocationLocation {
   /** The canonical id for this location. For example: `"us-east1"`. */
   locationId?: string;
 }
+const GoogleCloudLocationLocation = /*@__PURE__*/ __L.at(
+  __c12,
+  6,
+) as any as S.Schema<GoogleCloudLocationLocation>;
+
 export interface GetProjectsLocationsFlagAttributesRequest {
   /** Required. The resource name of the resource within a service. */
   name: string;
 }
+const GetProjectsLocationsFlagAttributesRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  7,
+) as any as S.Schema<GetProjectsLocationsFlagAttributesRequest>;
+
 export interface GetProjectsLocationsFlagReleasesRequest {
   /** Required. The resource name of the resource within a service. */
   name: string;
 }
+const GetProjectsLocationsFlagReleasesRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  0,
+) as any as S.Schema<GetProjectsLocationsFlagReleasesRequest>;
+
 export interface GetProjectsLocationsFlagRevisionsRequest {
   /** Required. The resource name of the resource within a service. */
   name: string;
 }
+const GetProjectsLocationsFlagRevisionsRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  1,
+) as any as S.Schema<GetProjectsLocationsFlagRevisionsRequest>;
+
 export interface GetProjectsLocationsFlagsRequest {
   /** Required. The resource name of the resource within a service. */
   name: string;
 }
+const GetProjectsLocationsFlagsRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  2,
+) as any as S.Schema<GetProjectsLocationsFlagsRequest>;
+
 export interface GetProjectsLocationsReleasesRequest {
   /** Required. The resource name of the resource within a service. */
   name: string;
 }
+const GetProjectsLocationsReleasesRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  3,
+) as any as S.Schema<GetProjectsLocationsReleasesRequest>;
+
 export interface GetProjectsLocationsRolloutKindsRequest {
   /** Required. The resource name of the resource within a service. */
   name: string;
 }
+const GetProjectsLocationsRolloutKindsRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  4,
+) as any as S.Schema<GetProjectsLocationsRolloutKindsRequest>;
+
 export interface GetProjectsLocationsRolloutsRequest {
   /** Required. The resource name of the resource within a service. */
   name: string;
 }
+const GetProjectsLocationsRolloutsRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  5,
+) as any as S.Schema<GetProjectsLocationsRolloutsRequest>;
+
 export interface GetProjectsLocationsSaasRequest {
   /** Required. The resource name of the resource within a service. */
   name: string;
 }
+const GetProjectsLocationsSaasRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  6,
+) as any as S.Schema<GetProjectsLocationsSaasRequest>;
+
 export interface GetProjectsLocationsSaasReleasesRequest {
   /** Required. The resource name of the resource within a service. */
   name: string;
 }
+const GetProjectsLocationsSaasReleasesRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  7,
+) as any as S.Schema<GetProjectsLocationsSaasReleasesRequest>;
+
 export interface GetProjectsLocationsTenantsRequest {
   /** Required. The resource name of the resource within a service. */
   name: string;
 }
+const GetProjectsLocationsTenantsRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  0,
+) as any as S.Schema<GetProjectsLocationsTenantsRequest>;
+
 export interface GetProjectsLocationsUnitGroupOperationsRequest {
   /** Required. The resource name of the resource within a service. */
   name: string;
 }
+const GetProjectsLocationsUnitGroupOperationsRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  1,
+) as any as S.Schema<GetProjectsLocationsUnitGroupOperationsRequest>;
+
 export interface GetProjectsLocationsUnitGroupsRequest {
   /** Required. The resource name of the resource within a service. */
   name: string;
 }
+const GetProjectsLocationsUnitGroupsRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  2,
+) as any as S.Schema<GetProjectsLocationsUnitGroupsRequest>;
+
 export interface GetProjectsLocationsUnitKindsRequest {
   /** Required. The resource name of the resource within a service. */
   name: string;
 }
+const GetProjectsLocationsUnitKindsRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  3,
+) as any as S.Schema<GetProjectsLocationsUnitKindsRequest>;
+
 export interface GetProjectsLocationsUnitOperationsRequest {
   /** Required. The resource name of the resource within a service. */
   name: string;
 }
+const GetProjectsLocationsUnitOperationsRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  4,
+) as any as S.Schema<GetProjectsLocationsUnitOperationsRequest>;
+
 export interface GetProjectsLocationsUnitsRequest {
   /** Required. The resource name of the resource within a service. */
   name: string;
 }
+const GetProjectsLocationsUnitsRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  5,
+) as any as S.Schema<GetProjectsLocationsUnitsRequest>;
+
 export interface ListProjectsLocationsRequest {
   /** Optional. Do not use this field unless explicitly documented otherwise. This is primarily for internal usage. */
   extraLocationTypes?: StringList;
@@ -1416,7 +1848,17 @@ export interface ListProjectsLocationsRequest {
   /** The maximum number of results to return. If not set, the service selects a default. */
   pageSize?: number;
 }
+const ListProjectsLocationsRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  6,
+) as any as S.Schema<ListProjectsLocationsRequest>;
+
 export type GoogleCloudLocationLocationList = Array<GoogleCloudLocationLocation>;
+const GoogleCloudLocationLocationList = /*@__PURE__*/ __L.at(
+  __c14,
+  7,
+) as any as S.Schema<GoogleCloudLocationLocationList>;
+
 /** The response message for Locations.ListLocations. */
 export interface ListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
@@ -1424,6 +1866,11 @@ export interface ListLocationsResponse {
   /** The standard List next-page token. */
   nextPageToken?: string;
 }
+const ListLocationsResponse = /*@__PURE__*/ __L.at(
+  __c15,
+  0,
+) as any as S.Schema<ListLocationsResponse>;
+
 export interface ListProjectsLocationsFlagAttributesRequest {
   /** Filter the list as specified in https://google.aip.dev/160. */
   filter?: string;
@@ -1436,7 +1883,14 @@ export interface ListProjectsLocationsFlagAttributesRequest {
   /** The maximum number of flag attributes to send per page. */
   pageSize?: number;
 }
+const ListProjectsLocationsFlagAttributesRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  1,
+) as any as S.Schema<ListProjectsLocationsFlagAttributesRequest>;
+
 export type FlagAttributeList = Array<FlagAttribute>;
+const FlagAttributeList = /*@__PURE__*/ __L.at(__c15, 2) as any as S.Schema<FlagAttributeList>;
+
 /** The response structure for the ListFlagAttributes method. */
 export interface ListFlagAttributesResponse {
   /** If present, the next page token can be provided to a subsequent ListFlagAttributes call to list the next page. If empty, there are no more pages. */
@@ -1446,6 +1900,11 @@ export interface ListFlagAttributesResponse {
   /** The resulting flag attributes. */
   flagAttributes?: FlagAttributeList;
 }
+const ListFlagAttributesResponse = /*@__PURE__*/ __L.at(
+  __c15,
+  3,
+) as any as S.Schema<ListFlagAttributesResponse>;
+
 export interface ListProjectsLocationsFlagReleasesRequest {
   /** Order results as specified in https://google.aip.dev/132. */
   orderBy?: string;
@@ -1458,7 +1917,14 @@ export interface ListProjectsLocationsFlagReleasesRequest {
   /** Required. The parent of the flag release. */
   parent: string;
 }
+const ListProjectsLocationsFlagReleasesRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  4,
+) as any as S.Schema<ListProjectsLocationsFlagReleasesRequest>;
+
 export type FlagReleaseList = Array<FlagRelease>;
+const FlagReleaseList = /*@__PURE__*/ __L.at(__c15, 5) as any as S.Schema<FlagReleaseList>;
+
 /** The response structure for the ListFlagReleases method. */
 export interface ListFlagReleasesResponse {
   /** If present, the next page token can be provided to a subsequent ListFlagReleases call to list the next page. If empty, there are no more pages. */
@@ -1468,6 +1934,11 @@ export interface ListFlagReleasesResponse {
   /** The resulting flag releases. */
   flagReleases?: FlagReleaseList;
 }
+const ListFlagReleasesResponse = /*@__PURE__*/ __L.at(
+  __c15,
+  6,
+) as any as S.Schema<ListFlagReleasesResponse>;
+
 export interface ListProjectsLocationsFlagRevisionsRequest {
   /** The maximum number of flag revisions to send per page. */
   pageSize?: number;
@@ -1480,7 +1951,14 @@ export interface ListProjectsLocationsFlagRevisionsRequest {
   /** Required. The parent of the flag revision. */
   parent: string;
 }
+const ListProjectsLocationsFlagRevisionsRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  7,
+) as any as S.Schema<ListProjectsLocationsFlagRevisionsRequest>;
+
 export type FlagRevisionList_ = Array<FlagRevision>;
+const FlagRevisionList_ = /*@__PURE__*/ __L.at(__c16, 0) as any as S.Schema<FlagRevisionList_>;
+
 /** The response structure for the ListFlagRevisions method. */
 export interface ListFlagRevisionsResponse {
   /** If present, the next page token can be provided to a subsequent ListFlagRevisions call to list the next page. If empty, there are no more pages. */
@@ -1490,6 +1968,11 @@ export interface ListFlagRevisionsResponse {
   /** Locations that could not be reached. */
   unreachable?: StringList;
 }
+const ListFlagRevisionsResponse = /*@__PURE__*/ __L.at(
+  __c16,
+  1,
+) as any as S.Schema<ListFlagRevisionsResponse>;
+
 export interface ListProjectsLocationsFlagsRequest {
   /** The page token: If the next_page_token from a previous response is provided, this request will send the subsequent page. */
   pageToken?: string;
@@ -1502,7 +1985,14 @@ export interface ListProjectsLocationsFlagsRequest {
   /** Filter the list as specified in https://google.aip.dev/160. */
   filter?: string;
 }
+const ListProjectsLocationsFlagsRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  2,
+) as any as S.Schema<ListProjectsLocationsFlagsRequest>;
+
 export type FlagList = Array<Flag>;
+const FlagList = /*@__PURE__*/ __L.at(__c16, 3) as any as S.Schema<FlagList>;
+
 /** The response structure for the ListFlags method. */
 export interface ListFlagsResponse {
   /** Locations that could not be reached. */
@@ -1512,6 +2002,8 @@ export interface ListFlagsResponse {
   /** If present, the next page token can be provided to a subsequent ListFlags call to list the next page. If empty, there are no more pages. */
   nextPageToken?: string;
 }
+const ListFlagsResponse = /*@__PURE__*/ __L.at(__c16, 4) as any as S.Schema<ListFlagsResponse>;
+
 export interface ListProjectsLocationsReleasesRequest {
   /** Order results as specified in https://google.aip.dev/132. */
   orderBy?: string;
@@ -1524,7 +2016,14 @@ export interface ListProjectsLocationsReleasesRequest {
   /** The page token: If the next_page_token from a previous response is provided, this request will send the subsequent page. */
   pageToken?: string;
 }
+const ListProjectsLocationsReleasesRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  5,
+) as any as S.Schema<ListProjectsLocationsReleasesRequest>;
+
 export type ReleaseList = Array<Release>;
+const ReleaseList = /*@__PURE__*/ __L.at(__c16, 6) as any as S.Schema<ReleaseList>;
+
 /** The response structure for the ListReleases method. */
 export interface ListReleasesResponse {
   /** Locations that could not be reached. */
@@ -1534,6 +2033,11 @@ export interface ListReleasesResponse {
   /** The resulting releases. */
   releases?: ReleaseList;
 }
+const ListReleasesResponse = /*@__PURE__*/ __L.at(
+  __c16,
+  7,
+) as any as S.Schema<ListReleasesResponse>;
+
 export interface ListProjectsLocationsRolloutKindsRequest {
   /** Order results as specified in https://google.aip.dev/132. */
   orderBy?: string;
@@ -1546,7 +2050,14 @@ export interface ListProjectsLocationsRolloutKindsRequest {
   /** Required. The parent of the rollout kind. */
   parent: string;
 }
+const ListProjectsLocationsRolloutKindsRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  0,
+) as any as S.Schema<ListProjectsLocationsRolloutKindsRequest>;
+
 export type RolloutKindList = Array<RolloutKind>;
+const RolloutKindList = /*@__PURE__*/ __L.at(__c17, 1) as any as S.Schema<RolloutKindList>;
+
 /** The response structure for the ListRolloutKinds method. */
 export interface ListRolloutKindsResponse {
   /** If present, the next page token can be provided to a subsequent ListRolloutKinds call to list the next page. If empty, there are no more pages. */
@@ -1556,6 +2067,11 @@ export interface ListRolloutKindsResponse {
   /** Locations that could not be reached. */
   unreachable?: StringList;
 }
+const ListRolloutKindsResponse = /*@__PURE__*/ __L.at(
+  __c17,
+  2,
+) as any as S.Schema<ListRolloutKindsResponse>;
+
 export interface ListProjectsLocationsRolloutsRequest {
   /** Filter the list as specified in https://google.aip.dev/160. */
   filter?: string;
@@ -1568,7 +2084,14 @@ export interface ListProjectsLocationsRolloutsRequest {
   /** Required. The parent of the rollout. */
   parent: string;
 }
+const ListProjectsLocationsRolloutsRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  3,
+) as any as S.Schema<ListProjectsLocationsRolloutsRequest>;
+
 export type RolloutList = Array<Rollout>;
+const RolloutList = /*@__PURE__*/ __L.at(__c17, 4) as any as S.Schema<RolloutList>;
+
 /** The response structure for the ListRollouts method. */
 export interface ListRolloutsResponse {
   /** Locations that could not be reached. */
@@ -1578,6 +2101,11 @@ export interface ListRolloutsResponse {
   /** The resulting rollouts. */
   rollouts?: RolloutList;
 }
+const ListRolloutsResponse = /*@__PURE__*/ __L.at(
+  __c17,
+  5,
+) as any as S.Schema<ListRolloutsResponse>;
+
 export interface ListProjectsLocationsSaasRequest {
   /** Filter the list as specified in https://google.aip.dev/160. */
   filter?: string;
@@ -1590,7 +2118,14 @@ export interface ListProjectsLocationsSaasRequest {
   /** The maximum number of saas to send per page. */
   pageSize?: number;
 }
+const ListProjectsLocationsSaasRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  6,
+) as any as S.Schema<ListProjectsLocationsSaasRequest>;
+
 export type SaasList = Array<Saas>;
+const SaasList = /*@__PURE__*/ __L.at(__c17, 7) as any as S.Schema<SaasList>;
+
 /** The response structure for the ListSaas method. */
 export interface ListSaasResponse {
   /** The resulting saas. */
@@ -1600,6 +2135,8 @@ export interface ListSaasResponse {
   /** Locations that could not be reached. */
   unreachable?: StringList;
 }
+const ListSaasResponse = /*@__PURE__*/ __L.at(__c18, 0) as any as S.Schema<ListSaasResponse>;
+
 export interface ListProjectsLocationsSaasReleasesRequest {
   /** Required. The parent of the saas releases. */
   parent: string;
@@ -1612,7 +2149,14 @@ export interface ListProjectsLocationsSaasReleasesRequest {
   /** Order results as specified in https://google.aip.dev/132. */
   orderBy?: string;
 }
+const ListProjectsLocationsSaasReleasesRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  1,
+) as any as S.Schema<ListProjectsLocationsSaasReleasesRequest>;
+
 export type SaasReleaseList = Array<SaasRelease>;
+const SaasReleaseList = /*@__PURE__*/ __L.at(__c18, 2) as any as S.Schema<SaasReleaseList>;
+
 /** The response structure for the ListSaasReleases method. */
 export interface ListSaasReleasesResponse {
   /** If present, the next page token can be provided to a subsequent ListSaasReleases call to list the next page. If empty, there are no more pages. */
@@ -1622,6 +2166,11 @@ export interface ListSaasReleasesResponse {
   /** Locations that could not be reached. */
   unreachable?: StringList;
 }
+const ListSaasReleasesResponse = /*@__PURE__*/ __L.at(
+  __c18,
+  3,
+) as any as S.Schema<ListSaasReleasesResponse>;
+
 export interface ListProjectsLocationsTenantsRequest {
   /** Required. The parent of the tenant. */
   parent: string;
@@ -1634,7 +2183,14 @@ export interface ListProjectsLocationsTenantsRequest {
   /** Filter the list as specified in https://google.aip.dev/160. */
   filter?: string;
 }
+const ListProjectsLocationsTenantsRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  4,
+) as any as S.Schema<ListProjectsLocationsTenantsRequest>;
+
 export type TenantList = Array<Tenant>;
+const TenantList = /*@__PURE__*/ __L.at(__c18, 5) as any as S.Schema<TenantList>;
+
 /** The response structure for the ListTenants method. */
 export interface ListTenantsResponse {
   /** The resulting tenants. */
@@ -1644,6 +2200,8 @@ export interface ListTenantsResponse {
   /** If present, the next page token can be provided to a subsequent ListTenants call to list the next page. If empty, there are no more pages. */
   nextPageToken?: string;
 }
+const ListTenantsResponse = /*@__PURE__*/ __L.at(__c18, 6) as any as S.Schema<ListTenantsResponse>;
+
 export interface ListProjectsLocationsUnitGroupOperationsRequest {
   /** Filter the list as specified in https://google.aip.dev/160. */
   filter?: string;
@@ -1656,7 +2214,17 @@ export interface ListProjectsLocationsUnitGroupOperationsRequest {
   /** The maximum number of unit group operations to send per page. */
   pageSize?: number;
 }
+const ListProjectsLocationsUnitGroupOperationsRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  7,
+) as any as S.Schema<ListProjectsLocationsUnitGroupOperationsRequest>;
+
 export type UnitGroupOperationList = Array<UnitGroupOperation>;
+const UnitGroupOperationList = /*@__PURE__*/ __L.at(
+  __c19,
+  0,
+) as any as S.Schema<UnitGroupOperationList>;
+
 /** The response structure for the ListUnitGroupOperations method. */
 export interface ListUnitGroupOperationsResponse {
   /** Locations that could not be reached. */
@@ -1666,6 +2234,11 @@ export interface ListUnitGroupOperationsResponse {
   /** The resulting unit group operations. */
   unitGroupOperations?: UnitGroupOperationList;
 }
+const ListUnitGroupOperationsResponse = /*@__PURE__*/ __L.at(
+  __c19,
+  1,
+) as any as S.Schema<ListUnitGroupOperationsResponse>;
+
 export interface ListProjectsLocationsUnitGroupsRequest {
   /** Order results as specified in https://google.aip.dev/132. */
   orderBy?: string;
@@ -1678,7 +2251,14 @@ export interface ListProjectsLocationsUnitGroupsRequest {
   /** Required. The parent of the unit group. */
   parent: string;
 }
+const ListProjectsLocationsUnitGroupsRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  2,
+) as any as S.Schema<ListProjectsLocationsUnitGroupsRequest>;
+
 export type UnitGroupList = Array<UnitGroup>;
+const UnitGroupList = /*@__PURE__*/ __L.at(__c19, 3) as any as S.Schema<UnitGroupList>;
+
 /** The response structure for the ListUnitGroups method. */
 export interface ListUnitGroupsResponse {
   /** The resulting unit groups. */
@@ -1688,6 +2268,11 @@ export interface ListUnitGroupsResponse {
   /** If present, the next page token can be provided to a subsequent ListUnitGroups call to list the next page. If empty, there are no more pages. */
   nextPageToken?: string;
 }
+const ListUnitGroupsResponse = /*@__PURE__*/ __L.at(
+  __c19,
+  4,
+) as any as S.Schema<ListUnitGroupsResponse>;
+
 export interface ListProjectsLocationsUnitKindsRequest {
   /** Order results as specified in https://google.aip.dev/132. */
   orderBy?: string;
@@ -1700,7 +2285,14 @@ export interface ListProjectsLocationsUnitKindsRequest {
   /** Required. The parent of the unit kind. */
   parent: string;
 }
+const ListProjectsLocationsUnitKindsRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  5,
+) as any as S.Schema<ListProjectsLocationsUnitKindsRequest>;
+
 export type UnitKindList = Array<UnitKind>;
+const UnitKindList = /*@__PURE__*/ __L.at(__c19, 6) as any as S.Schema<UnitKindList>;
+
 /** The response structure for the ListUnitKinds method. */
 export interface ListUnitKindsResponse {
   /** Locations that could not be reached. */
@@ -1710,6 +2302,11 @@ export interface ListUnitKindsResponse {
   /** If present, the next page token can be provided to a subsequent ListUnitKinds call to list the next page. If empty, there are no more pages. */
   nextPageToken?: string;
 }
+const ListUnitKindsResponse = /*@__PURE__*/ __L.at(
+  __c19,
+  7,
+) as any as S.Schema<ListUnitKindsResponse>;
+
 export interface ListProjectsLocationsUnitOperationsRequest {
   /** The maximum number of unit operations to send per page. */
   pageSize?: number;
@@ -1722,7 +2319,14 @@ export interface ListProjectsLocationsUnitOperationsRequest {
   /** The page token: If the next_page_token from a previous response is provided, this request will send the subsequent page. */
   pageToken?: string;
 }
+const ListProjectsLocationsUnitOperationsRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  0,
+) as any as S.Schema<ListProjectsLocationsUnitOperationsRequest>;
+
 export type UnitOperationList = Array<UnitOperation>;
+const UnitOperationList = /*@__PURE__*/ __L.at(__c20, 1) as any as S.Schema<UnitOperationList>;
+
 /** The response structure for the ListUnitOperations method. */
 export interface ListUnitOperationsResponse {
   /** Locations that could not be reached. */
@@ -1732,6 +2336,11 @@ export interface ListUnitOperationsResponse {
   /** If present, the next page token can be provided to a subsequent ListUnitOperations call to list the next page. If empty, there are no more pages. */
   nextPageToken?: string;
 }
+const ListUnitOperationsResponse = /*@__PURE__*/ __L.at(
+  __c20,
+  2,
+) as any as S.Schema<ListUnitOperationsResponse>;
+
 export interface ListProjectsLocationsUnitsRequest {
   /** Required. The parent of the unit. */
   parent: string;
@@ -1744,7 +2353,14 @@ export interface ListProjectsLocationsUnitsRequest {
   /** Order results as specified in https://google.aip.dev/132. */
   orderBy?: string;
 }
+const ListProjectsLocationsUnitsRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  3,
+) as any as S.Schema<ListProjectsLocationsUnitsRequest>;
+
 export type UnitList = Array<Unit>;
+const UnitList = /*@__PURE__*/ __L.at(__c20, 4) as any as S.Schema<UnitList>;
+
 /** The response structure for the ListUnits method. */
 export interface ListUnitsResponse {
   /** If present, the next page token can be provided to a subsequent ListUnits call to list the next page. If empty, there are no more pages. */
@@ -1754,6 +2370,8 @@ export interface ListUnitsResponse {
   /** Locations that could not be reached. */
   unreachable?: StringList;
 }
+const ListUnitsResponse = /*@__PURE__*/ __L.at(__c20, 5) as any as S.Schema<ListUnitsResponse>;
+
 export interface PatchProjectsLocationsFlagAttributesRequest {
   /** Identifier. The resource name (full URI of the resource) following the standard naming scheme: "projects/{project}/locations/{location}/flagAttributes/{flag_attribute_id}" */
   name: string;
@@ -1766,6 +2384,11 @@ export interface PatchProjectsLocationsFlagAttributesRequest {
   /** Request body */
   body?: FlagAttribute;
 }
+const PatchProjectsLocationsFlagAttributesRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  6,
+) as any as S.Schema<PatchProjectsLocationsFlagAttributesRequest>;
+
 export interface PatchProjectsLocationsFlagReleasesRequest {
   /** An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
@@ -1778,6 +2401,11 @@ export interface PatchProjectsLocationsFlagReleasesRequest {
   /** Request body */
   body?: FlagRelease;
 }
+const PatchProjectsLocationsFlagReleasesRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  7,
+) as any as S.Schema<PatchProjectsLocationsFlagReleasesRequest>;
+
 export interface PatchProjectsLocationsFlagRevisionsRequest {
   /** An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
@@ -1790,6 +2418,11 @@ export interface PatchProjectsLocationsFlagRevisionsRequest {
   /** Request body */
   body?: FlagRevision;
 }
+const PatchProjectsLocationsFlagRevisionsRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  0,
+) as any as S.Schema<PatchProjectsLocationsFlagRevisionsRequest>;
+
 export interface PatchProjectsLocationsFlagsRequest {
   /** Field mask is used to specify the fields to be overwritten in the Flag resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all fields in the Flag will be overwritten. */
   updateMask?: string;
@@ -1802,6 +2435,11 @@ export interface PatchProjectsLocationsFlagsRequest {
   /** Request body */
   body?: Flag;
 }
+const PatchProjectsLocationsFlagsRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  1,
+) as any as S.Schema<PatchProjectsLocationsFlagsRequest>;
+
 export interface PatchProjectsLocationsReleasesRequest {
   /** Identifier. The resource name (full URI of the resource) following the standard naming scheme: "projects/{project}/locations/{location}/releases/{release}" */
   name: string;
@@ -1814,6 +2452,11 @@ export interface PatchProjectsLocationsReleasesRequest {
   /** Request body */
   body?: Release;
 }
+const PatchProjectsLocationsReleasesRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  2,
+) as any as S.Schema<PatchProjectsLocationsReleasesRequest>;
+
 export interface PatchProjectsLocationsRolloutKindsRequest {
   /** If "validate_only" is set to true, the service will try to validate that this request would succeed, but will not actually make changes. */
   validateOnly?: boolean;
@@ -1826,6 +2469,11 @@ export interface PatchProjectsLocationsRolloutKindsRequest {
   /** Request body */
   body?: RolloutKind;
 }
+const PatchProjectsLocationsRolloutKindsRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  3,
+) as any as S.Schema<PatchProjectsLocationsRolloutKindsRequest>;
+
 export interface PatchProjectsLocationsRolloutsRequest {
   /** Identifier. The resource name (full URI of the resource) following the standard naming scheme: "projects/{project}/locations/{location}/rollout/{rollout_id}" */
   name: string;
@@ -1838,6 +2486,11 @@ export interface PatchProjectsLocationsRolloutsRequest {
   /** Request body */
   body?: Rollout;
 }
+const PatchProjectsLocationsRolloutsRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  4,
+) as any as S.Schema<PatchProjectsLocationsRolloutsRequest>;
+
 export interface PatchProjectsLocationsSaasRequest {
   /** If "validate_only" is set to true, the service will try to validate that this request would succeed, but will not actually make changes. */
   validateOnly?: boolean;
@@ -1850,6 +2503,11 @@ export interface PatchProjectsLocationsSaasRequest {
   /** Request body */
   body?: Saas;
 }
+const PatchProjectsLocationsSaasRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  5,
+) as any as S.Schema<PatchProjectsLocationsSaasRequest>;
+
 export interface PatchProjectsLocationsSaasReleasesRequest {
   /** Identifier. The resource name (full URI of the resource) following the standard naming scheme: "projects/{project}/locations/{location}/saasReleases/{saasRelease}" */
   name: string;
@@ -1862,6 +2520,11 @@ export interface PatchProjectsLocationsSaasReleasesRequest {
   /** Request body */
   body?: SaasRelease;
 }
+const PatchProjectsLocationsSaasReleasesRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  6,
+) as any as S.Schema<PatchProjectsLocationsSaasReleasesRequest>;
+
 export interface PatchProjectsLocationsTenantsRequest {
   /** An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
@@ -1874,6 +2537,11 @@ export interface PatchProjectsLocationsTenantsRequest {
   /** Request body */
   body?: Tenant;
 }
+const PatchProjectsLocationsTenantsRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  7,
+) as any as S.Schema<PatchProjectsLocationsTenantsRequest>;
+
 export interface PatchProjectsLocationsUnitGroupOperationsRequest {
   /** Optional. If "validate_only" is set to true, the service will try to validate that this request would succeed, but will not actually make changes. */
   validateOnly?: boolean;
@@ -1886,6 +2554,11 @@ export interface PatchProjectsLocationsUnitGroupOperationsRequest {
   /** Request body */
   body?: UnitGroupOperation;
 }
+const PatchProjectsLocationsUnitGroupOperationsRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  0,
+) as any as S.Schema<PatchProjectsLocationsUnitGroupOperationsRequest>;
+
 export interface PatchProjectsLocationsUnitGroupsRequest {
   /** Field mask is used to specify the fields to be overwritten. */
   updateMask?: string;
@@ -1898,6 +2571,11 @@ export interface PatchProjectsLocationsUnitGroupsRequest {
   /** Request body */
   body?: UnitGroup;
 }
+const PatchProjectsLocationsUnitGroupsRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  1,
+) as any as S.Schema<PatchProjectsLocationsUnitGroupsRequest>;
+
 export interface PatchProjectsLocationsUnitKindsRequest {
   /** An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
@@ -1910,6 +2588,11 @@ export interface PatchProjectsLocationsUnitKindsRequest {
   /** Request body */
   body?: UnitKind;
 }
+const PatchProjectsLocationsUnitKindsRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  2,
+) as any as S.Schema<PatchProjectsLocationsUnitKindsRequest>;
+
 export interface PatchProjectsLocationsUnitOperationsRequest {
   /** Identifier. The resource name (full URI of the resource) following the standard naming scheme: "projects/{project}/locations/{location}/unitOperations/{unitOperation}" */
   name: string;
@@ -1922,6 +2605,11 @@ export interface PatchProjectsLocationsUnitOperationsRequest {
   /** Request body */
   body?: UnitOperation;
 }
+const PatchProjectsLocationsUnitOperationsRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  3,
+) as any as S.Schema<PatchProjectsLocationsUnitOperationsRequest>;
+
 export interface PatchProjectsLocationsUnitsRequest {
   /** If "validate_only" is set to true, the service will try to validate that this request would succeed, but will not actually make changes. */
   validateOnly?: boolean;
@@ -1934,6 +2622,11 @@ export interface PatchProjectsLocationsUnitsRequest {
   /** Request body */
   body?: Unit;
 }
+const PatchProjectsLocationsUnitsRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  4,
+) as any as S.Schema<PatchProjectsLocationsUnitsRequest>;
+
 export type CreateProjectsLocationsFlagAttributesError =
   | NotFound
   | Forbidden
@@ -1947,8 +2640,8 @@ export const createProjectsLocationsFlagAttributes: API.OperationMethod<
   CreateProjectsLocationsFlagAttributesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2) as any as S.Schema<CreateProjectsLocationsFlagAttributesRequest>,
-  output: __S(1) as any as S.Schema<FlagAttribute>,
+  input: CreateProjectsLocationsFlagAttributesRequest,
+  output: FlagAttribute,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1967,8 +2660,8 @@ export const createProjectsLocationsFlagReleases: API.OperationMethod<
   CreateProjectsLocationsFlagReleasesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8) as any as S.Schema<CreateProjectsLocationsFlagReleasesRequest>,
-  output: __S(7) as any as S.Schema<FlagRelease>,
+  input: CreateProjectsLocationsFlagReleasesRequest,
+  output: FlagRelease,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1987,8 +2680,8 @@ export const createProjectsLocationsFlagRevisions: API.OperationMethod<
   CreateProjectsLocationsFlagRevisionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22) as any as S.Schema<CreateProjectsLocationsFlagRevisionsRequest>,
-  output: __S(21) as any as S.Schema<FlagRevision>,
+  input: CreateProjectsLocationsFlagRevisionsRequest,
+  output: FlagRevision,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2007,8 +2700,8 @@ export const createProjectsLocationsFlags: API.OperationMethod<
   CreateProjectsLocationsFlagsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23) as any as S.Schema<CreateProjectsLocationsFlagsRequest>,
-  output: __S(20) as any as S.Schema<Flag>,
+  input: CreateProjectsLocationsFlagsRequest,
+  output: Flag,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2027,8 +2720,8 @@ export const createProjectsLocationsReleases: API.OperationMethod<
   CreateProjectsLocationsReleasesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31) as any as S.Schema<CreateProjectsLocationsReleasesRequest>,
-  output: __S(30) as any as S.Schema<Release>,
+  input: CreateProjectsLocationsReleasesRequest,
+  output: Release,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2047,8 +2740,8 @@ export const createProjectsLocationsRolloutKinds: API.OperationMethod<
   CreateProjectsLocationsRolloutKindsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36) as any as S.Schema<CreateProjectsLocationsRolloutKindsRequest>,
-  output: __S(35) as any as S.Schema<RolloutKind>,
+  input: CreateProjectsLocationsRolloutKindsRequest,
+  output: RolloutKind,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2067,8 +2760,8 @@ export const createProjectsLocationsRollouts: API.OperationMethod<
   CreateProjectsLocationsRolloutsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43) as any as S.Schema<CreateProjectsLocationsRolloutsRequest>,
-  output: __S(42) as any as S.Schema<Rollout>,
+  input: CreateProjectsLocationsRolloutsRequest,
+  output: Rollout,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2087,8 +2780,8 @@ export const createProjectsLocationsSaas: API.OperationMethod<
   CreateProjectsLocationsSaasError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(52) as any as S.Schema<CreateProjectsLocationsSaasRequest>,
-  output: __S(51) as any as S.Schema<Saas>,
+  input: CreateProjectsLocationsSaasRequest,
+  output: Saas,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2107,8 +2800,8 @@ export const createProjectsLocationsSaasReleases: API.OperationMethod<
   CreateProjectsLocationsSaasReleasesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(54) as any as S.Schema<CreateProjectsLocationsSaasReleasesRequest>,
-  output: __S(53) as any as S.Schema<SaasRelease>,
+  input: CreateProjectsLocationsSaasReleasesRequest,
+  output: SaasRelease,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2127,8 +2820,8 @@ export const createProjectsLocationsTenants: API.OperationMethod<
   CreateProjectsLocationsTenantsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56) as any as S.Schema<CreateProjectsLocationsTenantsRequest>,
-  output: __S(55) as any as S.Schema<Tenant>,
+  input: CreateProjectsLocationsTenantsRequest,
+  output: Tenant,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2147,8 +2840,8 @@ export const createProjectsLocationsUnitGroupOperations: API.OperationMethod<
   CreateProjectsLocationsUnitGroupOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(58) as any as S.Schema<CreateProjectsLocationsUnitGroupOperationsRequest>,
-  output: __S(57) as any as S.Schema<UnitGroupOperation>,
+  input: CreateProjectsLocationsUnitGroupOperationsRequest,
+  output: UnitGroupOperation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2167,8 +2860,8 @@ export const createProjectsLocationsUnitGroups: API.OperationMethod<
   CreateProjectsLocationsUnitGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60) as any as S.Schema<CreateProjectsLocationsUnitGroupsRequest>,
-  output: __S(59) as any as S.Schema<UnitGroup>,
+  input: CreateProjectsLocationsUnitGroupsRequest,
+  output: UnitGroup,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2187,8 +2880,8 @@ export const createProjectsLocationsUnitKinds: API.OperationMethod<
   CreateProjectsLocationsUnitKindsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(70) as any as S.Schema<CreateProjectsLocationsUnitKindsRequest>,
-  output: __S(69) as any as S.Schema<UnitKind>,
+  input: CreateProjectsLocationsUnitKindsRequest,
+  output: UnitKind,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2207,8 +2900,8 @@ export const createProjectsLocationsUnitOperations: API.OperationMethod<
   CreateProjectsLocationsUnitOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(78) as any as S.Schema<CreateProjectsLocationsUnitOperationsRequest>,
-  output: __S(77) as any as S.Schema<UnitOperation>,
+  input: CreateProjectsLocationsUnitOperationsRequest,
+  output: UnitOperation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2227,8 +2920,8 @@ export const createProjectsLocationsUnits: API.OperationMethod<
   CreateProjectsLocationsUnitsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(85) as any as S.Schema<CreateProjectsLocationsUnitsRequest>,
-  output: __S(84) as any as S.Schema<Unit>,
+  input: CreateProjectsLocationsUnitsRequest,
+  output: Unit,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2247,8 +2940,8 @@ export const deleteProjectsLocationsFlagAttributes: API.OperationMethod<
   DeleteProjectsLocationsFlagAttributesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(86) as any as S.Schema<DeleteProjectsLocationsFlagAttributesRequest>,
-  output: __S(76) as any as S.Schema<Empty>,
+  input: DeleteProjectsLocationsFlagAttributesRequest,
+  output: Empty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2267,8 +2960,8 @@ export const deleteProjectsLocationsFlagReleases: API.OperationMethod<
   DeleteProjectsLocationsFlagReleasesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(87) as any as S.Schema<DeleteProjectsLocationsFlagReleasesRequest>,
-  output: __S(76) as any as S.Schema<Empty>,
+  input: DeleteProjectsLocationsFlagReleasesRequest,
+  output: Empty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2287,8 +2980,8 @@ export const deleteProjectsLocationsFlagRevisions: API.OperationMethod<
   DeleteProjectsLocationsFlagRevisionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(88) as any as S.Schema<DeleteProjectsLocationsFlagRevisionsRequest>,
-  output: __S(76) as any as S.Schema<Empty>,
+  input: DeleteProjectsLocationsFlagRevisionsRequest,
+  output: Empty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2307,8 +3000,8 @@ export const deleteProjectsLocationsFlags: API.OperationMethod<
   DeleteProjectsLocationsFlagsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(89) as any as S.Schema<DeleteProjectsLocationsFlagsRequest>,
-  output: __S(76) as any as S.Schema<Empty>,
+  input: DeleteProjectsLocationsFlagsRequest,
+  output: Empty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2327,8 +3020,8 @@ export const deleteProjectsLocationsReleases: API.OperationMethod<
   DeleteProjectsLocationsReleasesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(90) as any as S.Schema<DeleteProjectsLocationsReleasesRequest>,
-  output: __S(76) as any as S.Schema<Empty>,
+  input: DeleteProjectsLocationsReleasesRequest,
+  output: Empty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2347,8 +3040,8 @@ export const deleteProjectsLocationsRolloutKinds: API.OperationMethod<
   DeleteProjectsLocationsRolloutKindsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(91) as any as S.Schema<DeleteProjectsLocationsRolloutKindsRequest>,
-  output: __S(76) as any as S.Schema<Empty>,
+  input: DeleteProjectsLocationsRolloutKindsRequest,
+  output: Empty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2367,8 +3060,8 @@ export const deleteProjectsLocationsRollouts: API.OperationMethod<
   DeleteProjectsLocationsRolloutsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(92) as any as S.Schema<DeleteProjectsLocationsRolloutsRequest>,
-  output: __S(76) as any as S.Schema<Empty>,
+  input: DeleteProjectsLocationsRolloutsRequest,
+  output: Empty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2387,8 +3080,8 @@ export const deleteProjectsLocationsSaas: API.OperationMethod<
   DeleteProjectsLocationsSaasError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(93) as any as S.Schema<DeleteProjectsLocationsSaasRequest>,
-  output: __S(76) as any as S.Schema<Empty>,
+  input: DeleteProjectsLocationsSaasRequest,
+  output: Empty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2407,8 +3100,8 @@ export const deleteProjectsLocationsSaasReleases: API.OperationMethod<
   DeleteProjectsLocationsSaasReleasesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(94) as any as S.Schema<DeleteProjectsLocationsSaasReleasesRequest>,
-  output: __S(76) as any as S.Schema<Empty>,
+  input: DeleteProjectsLocationsSaasReleasesRequest,
+  output: Empty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2427,8 +3120,8 @@ export const deleteProjectsLocationsTenants: API.OperationMethod<
   DeleteProjectsLocationsTenantsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(95) as any as S.Schema<DeleteProjectsLocationsTenantsRequest>,
-  output: __S(76) as any as S.Schema<Empty>,
+  input: DeleteProjectsLocationsTenantsRequest,
+  output: Empty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2447,8 +3140,8 @@ export const deleteProjectsLocationsUnitGroupOperations: API.OperationMethod<
   DeleteProjectsLocationsUnitGroupOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(96) as any as S.Schema<DeleteProjectsLocationsUnitGroupOperationsRequest>,
-  output: __S(76) as any as S.Schema<Empty>,
+  input: DeleteProjectsLocationsUnitGroupOperationsRequest,
+  output: Empty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2467,8 +3160,8 @@ export const deleteProjectsLocationsUnitGroups: API.OperationMethod<
   DeleteProjectsLocationsUnitGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(97) as any as S.Schema<DeleteProjectsLocationsUnitGroupsRequest>,
-  output: __S(76) as any as S.Schema<Empty>,
+  input: DeleteProjectsLocationsUnitGroupsRequest,
+  output: Empty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2487,8 +3180,8 @@ export const deleteProjectsLocationsUnitKinds: API.OperationMethod<
   DeleteProjectsLocationsUnitKindsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(98) as any as S.Schema<DeleteProjectsLocationsUnitKindsRequest>,
-  output: __S(76) as any as S.Schema<Empty>,
+  input: DeleteProjectsLocationsUnitKindsRequest,
+  output: Empty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2507,8 +3200,8 @@ export const deleteProjectsLocationsUnitOperations: API.OperationMethod<
   DeleteProjectsLocationsUnitOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(99) as any as S.Schema<DeleteProjectsLocationsUnitOperationsRequest>,
-  output: __S(76) as any as S.Schema<Empty>,
+  input: DeleteProjectsLocationsUnitOperationsRequest,
+  output: Empty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2527,8 +3220,8 @@ export const deleteProjectsLocationsUnits: API.OperationMethod<
   DeleteProjectsLocationsUnitsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(100) as any as S.Schema<DeleteProjectsLocationsUnitsRequest>,
-  output: __S(76) as any as S.Schema<Empty>,
+  input: DeleteProjectsLocationsUnitsRequest,
+  output: Empty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2542,8 +3235,8 @@ export const getProjectsLocations: API.OperationMethod<
   GetProjectsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(101) as any as S.Schema<GetProjectsLocationsRequest>,
-  output: __S(102) as any as S.Schema<GoogleCloudLocationLocation>,
+  input: GetProjectsLocationsRequest,
+  output: GoogleCloudLocationLocation,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2557,8 +3250,8 @@ export const getProjectsLocationsFlagAttributes: API.OperationMethod<
   GetProjectsLocationsFlagAttributesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(103) as any as S.Schema<GetProjectsLocationsFlagAttributesRequest>,
-  output: __S(1) as any as S.Schema<FlagAttribute>,
+  input: GetProjectsLocationsFlagAttributesRequest,
+  output: FlagAttribute,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2572,8 +3265,8 @@ export const getProjectsLocationsFlagReleases: API.OperationMethod<
   GetProjectsLocationsFlagReleasesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(104) as any as S.Schema<GetProjectsLocationsFlagReleasesRequest>,
-  output: __S(7) as any as S.Schema<FlagRelease>,
+  input: GetProjectsLocationsFlagReleasesRequest,
+  output: FlagRelease,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2587,8 +3280,8 @@ export const getProjectsLocationsFlagRevisions: API.OperationMethod<
   GetProjectsLocationsFlagRevisionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(105) as any as S.Schema<GetProjectsLocationsFlagRevisionsRequest>,
-  output: __S(21) as any as S.Schema<FlagRevision>,
+  input: GetProjectsLocationsFlagRevisionsRequest,
+  output: FlagRevision,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2602,8 +3295,8 @@ export const getProjectsLocationsFlags: API.OperationMethod<
   GetProjectsLocationsFlagsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(106) as any as S.Schema<GetProjectsLocationsFlagsRequest>,
-  output: __S(20) as any as S.Schema<Flag>,
+  input: GetProjectsLocationsFlagsRequest,
+  output: Flag,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2617,8 +3310,8 @@ export const getProjectsLocationsReleases: API.OperationMethod<
   GetProjectsLocationsReleasesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(107) as any as S.Schema<GetProjectsLocationsReleasesRequest>,
-  output: __S(30) as any as S.Schema<Release>,
+  input: GetProjectsLocationsReleasesRequest,
+  output: Release,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2632,8 +3325,8 @@ export const getProjectsLocationsRolloutKinds: API.OperationMethod<
   GetProjectsLocationsRolloutKindsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(108) as any as S.Schema<GetProjectsLocationsRolloutKindsRequest>,
-  output: __S(35) as any as S.Schema<RolloutKind>,
+  input: GetProjectsLocationsRolloutKindsRequest,
+  output: RolloutKind,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2647,8 +3340,8 @@ export const getProjectsLocationsRollouts: API.OperationMethod<
   GetProjectsLocationsRolloutsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(109) as any as S.Schema<GetProjectsLocationsRolloutsRequest>,
-  output: __S(42) as any as S.Schema<Rollout>,
+  input: GetProjectsLocationsRolloutsRequest,
+  output: Rollout,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2662,8 +3355,8 @@ export const getProjectsLocationsSaas: API.OperationMethod<
   GetProjectsLocationsSaasError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(110) as any as S.Schema<GetProjectsLocationsSaasRequest>,
-  output: __S(51) as any as S.Schema<Saas>,
+  input: GetProjectsLocationsSaasRequest,
+  output: Saas,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2677,8 +3370,8 @@ export const getProjectsLocationsSaasReleases: API.OperationMethod<
   GetProjectsLocationsSaasReleasesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(111) as any as S.Schema<GetProjectsLocationsSaasReleasesRequest>,
-  output: __S(53) as any as S.Schema<SaasRelease>,
+  input: GetProjectsLocationsSaasReleasesRequest,
+  output: SaasRelease,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2692,8 +3385,8 @@ export const getProjectsLocationsTenants: API.OperationMethod<
   GetProjectsLocationsTenantsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(112) as any as S.Schema<GetProjectsLocationsTenantsRequest>,
-  output: __S(55) as any as S.Schema<Tenant>,
+  input: GetProjectsLocationsTenantsRequest,
+  output: Tenant,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2707,8 +3400,8 @@ export const getProjectsLocationsUnitGroupOperations: API.OperationMethod<
   GetProjectsLocationsUnitGroupOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(113) as any as S.Schema<GetProjectsLocationsUnitGroupOperationsRequest>,
-  output: __S(57) as any as S.Schema<UnitGroupOperation>,
+  input: GetProjectsLocationsUnitGroupOperationsRequest,
+  output: UnitGroupOperation,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2722,8 +3415,8 @@ export const getProjectsLocationsUnitGroups: API.OperationMethod<
   GetProjectsLocationsUnitGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(114) as any as S.Schema<GetProjectsLocationsUnitGroupsRequest>,
-  output: __S(59) as any as S.Schema<UnitGroup>,
+  input: GetProjectsLocationsUnitGroupsRequest,
+  output: UnitGroup,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2737,8 +3430,8 @@ export const getProjectsLocationsUnitKinds: API.OperationMethod<
   GetProjectsLocationsUnitKindsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(115) as any as S.Schema<GetProjectsLocationsUnitKindsRequest>,
-  output: __S(69) as any as S.Schema<UnitKind>,
+  input: GetProjectsLocationsUnitKindsRequest,
+  output: UnitKind,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2752,8 +3445,8 @@ export const getProjectsLocationsUnitOperations: API.OperationMethod<
   GetProjectsLocationsUnitOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(116) as any as S.Schema<GetProjectsLocationsUnitOperationsRequest>,
-  output: __S(77) as any as S.Schema<UnitOperation>,
+  input: GetProjectsLocationsUnitOperationsRequest,
+  output: UnitOperation,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2767,8 +3460,8 @@ export const getProjectsLocationsUnits: API.OperationMethod<
   GetProjectsLocationsUnitsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(117) as any as S.Schema<GetProjectsLocationsUnitsRequest>,
-  output: __S(84) as any as S.Schema<Unit>,
+  input: GetProjectsLocationsUnitsRequest,
+  output: Unit,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2783,8 +3476,8 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListLocationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(118) as any as S.Schema<ListProjectsLocationsRequest>,
-  output: __S(120) as any as S.Schema<ListLocationsResponse>,
+  input: ListProjectsLocationsRequest,
+  output: ListLocationsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2800,8 +3493,8 @@ export const listProjectsLocationsFlagAttributes: API.PaginatedOperationMethod<
   GcpOpContext,
   ListFlagAttributesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(121) as any as S.Schema<ListProjectsLocationsFlagAttributesRequest>,
-  output: __S(123) as any as S.Schema<ListFlagAttributesResponse>,
+  input: ListProjectsLocationsFlagAttributesRequest,
+  output: ListFlagAttributesResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2817,8 +3510,8 @@ export const listProjectsLocationsFlagReleases: API.PaginatedOperationMethod<
   GcpOpContext,
   ListFlagReleasesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(124) as any as S.Schema<ListProjectsLocationsFlagReleasesRequest>,
-  output: __S(126) as any as S.Schema<ListFlagReleasesResponse>,
+  input: ListProjectsLocationsFlagReleasesRequest,
+  output: ListFlagReleasesResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2834,8 +3527,8 @@ export const listProjectsLocationsFlagRevisions: API.PaginatedOperationMethod<
   GcpOpContext,
   ListFlagRevisionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(127) as any as S.Schema<ListProjectsLocationsFlagRevisionsRequest>,
-  output: __S(129) as any as S.Schema<ListFlagRevisionsResponse>,
+  input: ListProjectsLocationsFlagRevisionsRequest,
+  output: ListFlagRevisionsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2851,8 +3544,8 @@ export const listProjectsLocationsFlags: API.PaginatedOperationMethod<
   GcpOpContext,
   ListFlagsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(130) as any as S.Schema<ListProjectsLocationsFlagsRequest>,
-  output: __S(132) as any as S.Schema<ListFlagsResponse>,
+  input: ListProjectsLocationsFlagsRequest,
+  output: ListFlagsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2868,8 +3561,8 @@ export const listProjectsLocationsReleases: API.PaginatedOperationMethod<
   GcpOpContext,
   ListReleasesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(133) as any as S.Schema<ListProjectsLocationsReleasesRequest>,
-  output: __S(135) as any as S.Schema<ListReleasesResponse>,
+  input: ListProjectsLocationsReleasesRequest,
+  output: ListReleasesResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2885,8 +3578,8 @@ export const listProjectsLocationsRolloutKinds: API.PaginatedOperationMethod<
   GcpOpContext,
   ListRolloutKindsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(136) as any as S.Schema<ListProjectsLocationsRolloutKindsRequest>,
-  output: __S(138) as any as S.Schema<ListRolloutKindsResponse>,
+  input: ListProjectsLocationsRolloutKindsRequest,
+  output: ListRolloutKindsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2902,8 +3595,8 @@ export const listProjectsLocationsRollouts: API.PaginatedOperationMethod<
   GcpOpContext,
   ListRolloutsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(139) as any as S.Schema<ListProjectsLocationsRolloutsRequest>,
-  output: __S(141) as any as S.Schema<ListRolloutsResponse>,
+  input: ListProjectsLocationsRolloutsRequest,
+  output: ListRolloutsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2919,8 +3612,8 @@ export const listProjectsLocationsSaas: API.PaginatedOperationMethod<
   GcpOpContext,
   ListSaasResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(142) as any as S.Schema<ListProjectsLocationsSaasRequest>,
-  output: __S(144) as any as S.Schema<ListSaasResponse>,
+  input: ListProjectsLocationsSaasRequest,
+  output: ListSaasResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2936,8 +3629,8 @@ export const listProjectsLocationsSaasReleases: API.PaginatedOperationMethod<
   GcpOpContext,
   ListSaasReleasesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(145) as any as S.Schema<ListProjectsLocationsSaasReleasesRequest>,
-  output: __S(147) as any as S.Schema<ListSaasReleasesResponse>,
+  input: ListProjectsLocationsSaasReleasesRequest,
+  output: ListSaasReleasesResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2953,8 +3646,8 @@ export const listProjectsLocationsTenants: API.PaginatedOperationMethod<
   GcpOpContext,
   ListTenantsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(148) as any as S.Schema<ListProjectsLocationsTenantsRequest>,
-  output: __S(150) as any as S.Schema<ListTenantsResponse>,
+  input: ListProjectsLocationsTenantsRequest,
+  output: ListTenantsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2970,8 +3663,8 @@ export const listProjectsLocationsUnitGroupOperations: API.PaginatedOperationMet
   GcpOpContext,
   ListUnitGroupOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(151) as any as S.Schema<ListProjectsLocationsUnitGroupOperationsRequest>,
-  output: __S(153) as any as S.Schema<ListUnitGroupOperationsResponse>,
+  input: ListProjectsLocationsUnitGroupOperationsRequest,
+  output: ListUnitGroupOperationsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2987,8 +3680,8 @@ export const listProjectsLocationsUnitGroups: API.PaginatedOperationMethod<
   GcpOpContext,
   ListUnitGroupsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(154) as any as S.Schema<ListProjectsLocationsUnitGroupsRequest>,
-  output: __S(156) as any as S.Schema<ListUnitGroupsResponse>,
+  input: ListProjectsLocationsUnitGroupsRequest,
+  output: ListUnitGroupsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3004,8 +3697,8 @@ export const listProjectsLocationsUnitKinds: API.PaginatedOperationMethod<
   GcpOpContext,
   ListUnitKindsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(157) as any as S.Schema<ListProjectsLocationsUnitKindsRequest>,
-  output: __S(159) as any as S.Schema<ListUnitKindsResponse>,
+  input: ListProjectsLocationsUnitKindsRequest,
+  output: ListUnitKindsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3021,8 +3714,8 @@ export const listProjectsLocationsUnitOperations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListUnitOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(160) as any as S.Schema<ListProjectsLocationsUnitOperationsRequest>,
-  output: __S(162) as any as S.Schema<ListUnitOperationsResponse>,
+  input: ListProjectsLocationsUnitOperationsRequest,
+  output: ListUnitOperationsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3038,8 +3731,8 @@ export const listProjectsLocationsUnits: API.PaginatedOperationMethod<
   GcpOpContext,
   ListUnitsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(163) as any as S.Schema<ListProjectsLocationsUnitsRequest>,
-  output: __S(165) as any as S.Schema<ListUnitsResponse>,
+  input: ListProjectsLocationsUnitsRequest,
+  output: ListUnitsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3059,8 +3752,8 @@ export const patchProjectsLocationsFlagAttributes: API.OperationMethod<
   PatchProjectsLocationsFlagAttributesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(166) as any as S.Schema<PatchProjectsLocationsFlagAttributesRequest>,
-  output: __S(1) as any as S.Schema<FlagAttribute>,
+  input: PatchProjectsLocationsFlagAttributesRequest,
+  output: FlagAttribute,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3079,8 +3772,8 @@ export const patchProjectsLocationsFlagReleases: API.OperationMethod<
   PatchProjectsLocationsFlagReleasesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(167) as any as S.Schema<PatchProjectsLocationsFlagReleasesRequest>,
-  output: __S(7) as any as S.Schema<FlagRelease>,
+  input: PatchProjectsLocationsFlagReleasesRequest,
+  output: FlagRelease,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3099,8 +3792,8 @@ export const patchProjectsLocationsFlagRevisions: API.OperationMethod<
   PatchProjectsLocationsFlagRevisionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(168) as any as S.Schema<PatchProjectsLocationsFlagRevisionsRequest>,
-  output: __S(21) as any as S.Schema<FlagRevision>,
+  input: PatchProjectsLocationsFlagRevisionsRequest,
+  output: FlagRevision,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3119,8 +3812,8 @@ export const patchProjectsLocationsFlags: API.OperationMethod<
   PatchProjectsLocationsFlagsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(169) as any as S.Schema<PatchProjectsLocationsFlagsRequest>,
-  output: __S(20) as any as S.Schema<Flag>,
+  input: PatchProjectsLocationsFlagsRequest,
+  output: Flag,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3139,8 +3832,8 @@ export const patchProjectsLocationsReleases: API.OperationMethod<
   PatchProjectsLocationsReleasesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(170) as any as S.Schema<PatchProjectsLocationsReleasesRequest>,
-  output: __S(30) as any as S.Schema<Release>,
+  input: PatchProjectsLocationsReleasesRequest,
+  output: Release,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3159,8 +3852,8 @@ export const patchProjectsLocationsRolloutKinds: API.OperationMethod<
   PatchProjectsLocationsRolloutKindsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(171) as any as S.Schema<PatchProjectsLocationsRolloutKindsRequest>,
-  output: __S(35) as any as S.Schema<RolloutKind>,
+  input: PatchProjectsLocationsRolloutKindsRequest,
+  output: RolloutKind,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3179,8 +3872,8 @@ export const patchProjectsLocationsRollouts: API.OperationMethod<
   PatchProjectsLocationsRolloutsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(172) as any as S.Schema<PatchProjectsLocationsRolloutsRequest>,
-  output: __S(42) as any as S.Schema<Rollout>,
+  input: PatchProjectsLocationsRolloutsRequest,
+  output: Rollout,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3199,8 +3892,8 @@ export const patchProjectsLocationsSaas: API.OperationMethod<
   PatchProjectsLocationsSaasError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(173) as any as S.Schema<PatchProjectsLocationsSaasRequest>,
-  output: __S(51) as any as S.Schema<Saas>,
+  input: PatchProjectsLocationsSaasRequest,
+  output: Saas,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3219,8 +3912,8 @@ export const patchProjectsLocationsSaasReleases: API.OperationMethod<
   PatchProjectsLocationsSaasReleasesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(174) as any as S.Schema<PatchProjectsLocationsSaasReleasesRequest>,
-  output: __S(53) as any as S.Schema<SaasRelease>,
+  input: PatchProjectsLocationsSaasReleasesRequest,
+  output: SaasRelease,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3239,8 +3932,8 @@ export const patchProjectsLocationsTenants: API.OperationMethod<
   PatchProjectsLocationsTenantsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(175) as any as S.Schema<PatchProjectsLocationsTenantsRequest>,
-  output: __S(55) as any as S.Schema<Tenant>,
+  input: PatchProjectsLocationsTenantsRequest,
+  output: Tenant,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3259,8 +3952,8 @@ export const patchProjectsLocationsUnitGroupOperations: API.OperationMethod<
   PatchProjectsLocationsUnitGroupOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(176) as any as S.Schema<PatchProjectsLocationsUnitGroupOperationsRequest>,
-  output: __S(57) as any as S.Schema<UnitGroupOperation>,
+  input: PatchProjectsLocationsUnitGroupOperationsRequest,
+  output: UnitGroupOperation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3279,8 +3972,8 @@ export const patchProjectsLocationsUnitGroups: API.OperationMethod<
   PatchProjectsLocationsUnitGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(177) as any as S.Schema<PatchProjectsLocationsUnitGroupsRequest>,
-  output: __S(59) as any as S.Schema<UnitGroup>,
+  input: PatchProjectsLocationsUnitGroupsRequest,
+  output: UnitGroup,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3299,8 +3992,8 @@ export const patchProjectsLocationsUnitKinds: API.OperationMethod<
   PatchProjectsLocationsUnitKindsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(178) as any as S.Schema<PatchProjectsLocationsUnitKindsRequest>,
-  output: __S(69) as any as S.Schema<UnitKind>,
+  input: PatchProjectsLocationsUnitKindsRequest,
+  output: UnitKind,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3319,8 +4012,8 @@ export const patchProjectsLocationsUnitOperations: API.OperationMethod<
   PatchProjectsLocationsUnitOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(179) as any as S.Schema<PatchProjectsLocationsUnitOperationsRequest>,
-  output: __S(77) as any as S.Schema<UnitOperation>,
+  input: PatchProjectsLocationsUnitOperationsRequest,
+  output: UnitOperation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3339,8 +4032,8 @@ export const patchProjectsLocationsUnits: API.OperationMethod<
   PatchProjectsLocationsUnitsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(180) as any as S.Schema<PatchProjectsLocationsUnitsRequest>,
-  output: __S(84) as any as S.Schema<Unit>,
+  input: PatchProjectsLocationsUnitsRequest,
+  output: Unit,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3356,13 +4049,13 @@ function __c0(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           etag: S.optional(S.String),
-          valueType: S.optional(S.String),
+          valueType: S.optional(FlagAttributeValueTypeEnum),
           createTime: S.optional(S.String),
-          labels: S.optional(__S(0)),
-          attributeValueType: S.optional(S.String),
+          labels: S.optional(StringMap),
+          attributeValueType: S.optional(FlagAttributeAttributeValueTypeEnum),
           key: S.optional(S.String),
           uid: S.optional(S.String),
-          annotations: S.optional(__S(0)),
+          annotations: S.optional(StringMap),
           updateTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "FlagAttribute" });
@@ -3373,7 +4066,7 @@ function __c0(j: number): any {
           parent: S.String.pipe(T.Label()),
           flagAttributeId: S.optional(S.String.pipe(T.Query())),
           validateOnly: S.optional(S.Boolean.pipe(T.Query())),
-          body: S.optional(__S(1).pipe(T.HttpBody())),
+          body: S.optional(FlagAttribute.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3389,41 +4082,41 @@ function __c0(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          sets: S.optional(__S(3)),
+          sets: S.optional(StringList),
         }),
       ).annotate({ identifier: "FlagSetList" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          flags: S.optional(__S(3)),
+          flags: S.optional(StringList),
         }),
       ).annotate({ identifier: "FlagNameList" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          revisions: S.optional(__S(3)),
+          revisions: S.optional(StringList),
         }),
       ).annotate({ identifier: "FlagRevisionList" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          effectiveFlagRevisions: S.optional(__S(3)),
-          labels: S.optional(__S(0)),
+          effectiveFlagRevisions: S.optional(StringList),
+          labels: S.optional(StringMap),
           updateTime: S.optional(S.String),
           unitKind: S.optional(S.String),
           name: S.optional(S.String),
-          annotations: S.optional(__S(0)),
+          annotations: S.optional(StringMap),
           etag: S.optional(S.String),
-          flagSetsRelease: S.optional(__S(4)),
+          flagSetsRelease: S.optional(FlagSetList),
           createTime: S.optional(S.String),
-          flagSets: S.optional(__S(3)),
-          flagRevisions: S.optional(__S(3)),
+          flagSets: S.optional(StringList),
+          flagRevisions: S.optional(StringList),
           allFlags: S.optional(S.Boolean),
-          flagNamesRelease: S.optional(__S(5)),
+          flagNamesRelease: S.optional(FlagNameList),
           allFlagsRelease: S.optional(S.Boolean),
           uid: S.optional(S.String),
-          flagRevisionsRelease: S.optional(__S(6)),
-          obsoleteFlags: S.optional(__S(3)),
+          flagRevisionsRelease: S.optional(FlagRevisionList),
+          obsoleteFlags: S.optional(StringList),
         }),
       ).annotate({ identifier: "FlagRelease" });
   }
@@ -3437,7 +4130,7 @@ function __c1(j: number): any {
           requestId: S.optional(S.String.pipe(T.Query())),
           validateOnly: S.optional(S.Boolean.pipe(T.Query())),
           flagReleaseId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(7).pipe(T.HttpBody())),
+          body: S.optional(FlagRelease.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3459,7 +4152,7 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "Variant" });
     case 2:
-      return S.Array(__S(9));
+      return S.Array(Variant);
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -3471,7 +4164,7 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "EvaluationRule" });
     case 4:
-      return S.Array(__S(11));
+      return S.Array(EvaluationRule);
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -3480,12 +4173,12 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "AllocationSlot" });
     case 6:
-      return S.Array(__S(13));
+      return S.Array(AllocationSlot);
     case 7:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
-          slots: S.optional(__S(14)),
+          slots: S.optional(AllocationSlotList),
           randomizedOn: S.optional(S.String),
           description: S.optional(S.String),
         }),
@@ -3495,15 +4188,15 @@ function __c1(j: number): any {
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(15));
+      return S.Array(Allocation);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          variants: S.optional(__S(10)),
-          rules: S.optional(__S(12)),
+          variants: S.optional(VariantList),
+          rules: S.optional(EvaluationRuleList),
           defaultTarget: S.optional(S.String),
-          allocations: S.optional(__S(16)),
-          attributes: S.optional(__S(3)),
+          allocations: S.optional(AllocationList),
+          attributes: S.optional(StringList),
         }),
       ).annotate({ identifier: "EvaluationSpec" });
     case 2:
@@ -3519,22 +4212,22 @@ function __c2(j: number): any {
         }),
       ).annotate({ identifier: "FlagVariant" });
     case 3:
-      return S.Array(__S(18));
+      return S.Array(FlagVariant);
     case 4:
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
-          variants: S.optional(__S(19)),
-          labels: S.optional(__S(0)),
-          annotations: S.optional(__S(0)),
-          flagValueType: S.optional(S.String),
-          evaluationSpec: S.optional(__S(17)),
+          variants: S.optional(FlagVariantList),
+          labels: S.optional(StringMap),
+          annotations: S.optional(StringMap),
+          flagValueType: S.optional(FlagFlagValueTypeEnum),
+          evaluationSpec: S.optional(EvaluationSpec),
           name: S.optional(S.String),
           etag: S.optional(S.String),
           createTime: S.optional(S.String),
-          valueType: S.optional(S.String),
+          valueType: S.optional(FlagValueTypeEnum),
           flagSet: S.optional(S.String),
-          state: S.optional(S.String),
+          state: S.optional(FlagStateEnum),
           unitKind: S.optional(S.String),
           updateTime: S.optional(S.String),
           key: S.optional(S.String),
@@ -3545,14 +4238,14 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           createTime: S.optional(S.String),
-          annotations: S.optional(__S(0)),
-          evaluationSpec: S.optional(__S(17)),
+          annotations: S.optional(StringMap),
+          evaluationSpec: S.optional(EvaluationSpec),
           uid: S.optional(S.String),
           flag: S.optional(S.String),
           updateTime: S.optional(S.String),
           name: S.optional(S.String),
-          labels: S.optional(__S(0)),
-          snapshot: S.optional(__S(20)),
+          labels: S.optional(StringMap),
+          snapshot: S.optional(Flag),
           etag: S.optional(S.String),
         }),
       ).annotate({ identifier: "FlagRevision" });
@@ -3563,7 +4256,7 @@ function __c2(j: number): any {
           requestId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
           flagRevisionId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(21).pipe(T.HttpBody())),
+          body: S.optional(FlagRevision.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3581,7 +4274,7 @@ function __c2(j: number): any {
           parent: S.String.pipe(T.Label()),
           requestId: S.optional(S.String.pipe(T.Query())),
           flagId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(20).pipe(T.HttpBody())),
+          body: S.optional(Flag.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3599,17 +4292,17 @@ function __c3(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(S.String),
+          type: S.optional(UnitVariableTypeEnum),
           variable: S.optional(S.String),
           value: S.optional(S.String),
         }),
       ).annotate({ identifier: "UnitVariable" });
     case 1:
-      return S.Array(__S(24));
+      return S.Array(UnitVariable);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          upgradeableFromReleases: S.optional(__S(3)),
+          upgradeableFromReleases: S.optional(StringList),
         }),
       ).annotate({ identifier: "ReleaseRequirements" });
     case 3:
@@ -3633,26 +4326,26 @@ function __c3(j: number): any {
         S.Struct({
           component: S.optional(S.String),
           revision: S.optional(S.String),
-          compositeRef: S.optional(__S(28)),
+          compositeRef: S.optional(CompositeRef),
         }),
       ).annotate({ identifier: "ComponentRef" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          outputVariables: S.optional(__S(25)),
-          annotations: S.optional(__S(0)),
+          outputVariables: S.optional(UnitVariableList),
+          annotations: S.optional(StringMap),
           createTime: S.optional(S.String),
-          releaseRequirements: S.optional(__S(26)),
-          inputVariableDefaults: S.optional(__S(25)),
+          releaseRequirements: S.optional(ReleaseRequirements),
+          inputVariableDefaults: S.optional(UnitVariableList),
           updateTime: S.optional(S.String),
-          blueprint: S.optional(__S(27)),
+          blueprint: S.optional(Blueprint),
           unitKind: S.optional(S.String),
-          inputVariables: S.optional(__S(25)),
+          inputVariables: S.optional(UnitVariableList),
           etag: S.optional(S.String),
-          applicationTemplateComponent: S.optional(__S(29)),
+          applicationTemplateComponent: S.optional(ComponentRef),
           name: S.optional(S.String),
           uid: S.optional(S.String),
-          labels: S.optional(__S(0)),
+          labels: S.optional(StringMap),
         }),
       ).annotate({ identifier: "Release" });
     case 7:
@@ -3662,7 +4355,7 @@ function __c3(j: number): any {
           validateOnly: S.optional(S.Boolean.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
           requestId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(30).pipe(T.HttpBody())),
+          body: S.optional(Release.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3693,7 +4386,7 @@ function __c4(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          maxConcurrentOperationsPercent: S.optional(__S(33)),
+          maxConcurrentOperationsPercent: S.optional(Decimal),
           maxConcurrentOperationsCount: S.optional(S.Number),
         }),
       ).annotate({ identifier: "UnitUpdatePacing" });
@@ -3704,15 +4397,15 @@ function __c4(j: number): any {
           updateTime: S.optional(S.String),
           etag: S.optional(S.String),
           name: S.optional(S.String),
-          labels: S.optional(__S(0)),
+          labels: S.optional(StringMap),
           createTime: S.optional(S.String),
           rolloutOrchestrationStrategy: S.optional(S.String),
           unitKind: S.optional(S.String),
-          errorBudget: S.optional(__S(32)),
-          unitUpdatePacing: S.optional(__S(34)),
-          updateUnitKindStrategy: S.optional(S.String),
+          errorBudget: S.optional(ErrorBudget),
+          unitUpdatePacing: S.optional(UnitUpdatePacing),
+          updateUnitKindStrategy: S.optional(RolloutKindUpdateUnitKindStrategyEnum),
           unitFilter: S.optional(S.String),
-          annotations: S.optional(__S(0)),
+          annotations: S.optional(StringMap),
         }),
       ).annotate({ identifier: "RolloutKind" });
     case 4:
@@ -3722,7 +4415,7 @@ function __c4(j: number): any {
           requestId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
           validateOnly: S.optional(S.Boolean.pipe(T.Query())),
-          body: S.optional(__S(35).pipe(T.HttpBody())),
+          body: S.optional(RolloutKind.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3741,11 +4434,11 @@ function __c4(j: number): any {
         }),
       ).annotate({ identifier: "Aggregate" });
     case 6:
-      return S.Array(__S(37));
+      return S.Array(Aggregate);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          operationsByState: S.optional(__S(38)),
+          operationsByState: S.optional(AggregateList),
           estimatedTotalUnitCount: S.optional(S.String),
         }),
       ).annotate({ identifier: "RolloutStats" });
@@ -3762,8 +4455,8 @@ function __c5(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          runParams: S.optional(__S(40)),
-          action: S.optional(S.String),
+          runParams: S.optional(RunRolloutActionParams),
+          action: S.optional(RolloutControlActionEnum),
         }),
       ).annotate({ identifier: "RolloutControl" });
     case 2:
@@ -3771,7 +4464,7 @@ function __c5(j: number): any {
         S.Struct({
           unitFilter: S.optional(S.String),
           flagRelease: S.optional(S.String),
-          stats: S.optional(__S(39)),
+          stats: S.optional(RolloutStats),
           endTime: S.optional(S.String),
           etag: S.optional(S.String),
           stateTransitionTime: S.optional(S.String),
@@ -3780,15 +4473,15 @@ function __c5(j: number): any {
           effectiveUnitFilter: S.optional(S.String),
           rolloutOrchestrationStrategy: S.optional(S.String),
           createTime: S.optional(S.String),
-          state: S.optional(S.String),
+          state: S.optional(RolloutStateEnum),
           rootRollout: S.optional(S.String),
           release: S.optional(S.String),
           uid: S.optional(S.String),
-          labels: S.optional(__S(0)),
-          control: S.optional(__S(41)),
+          labels: S.optional(StringMap),
+          control: S.optional(RolloutControl),
           stateMessage: S.optional(S.String),
           updateTime: S.optional(S.String),
-          annotations: S.optional(__S(0)),
+          annotations: S.optional(StringMap),
           parentRollout: S.optional(S.String),
           deleteTime: S.optional(S.String),
           startTime: S.optional(S.String),
@@ -3801,7 +4494,7 @@ function __c5(j: number): any {
           parent: S.String.pipe(T.Label()),
           validateOnly: S.optional(S.Boolean.pipe(T.Query())),
           rolloutId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(42).pipe(T.HttpBody())),
+          body: S.optional(Rollout.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3815,23 +4508,23 @@ function __c5(j: number): any {
     case 4:
       return S.Record(S.String, S.Unknown);
     case 5:
-      return S.Array(__S(44));
+      return S.Array(DocumentMap);
     case 6:
       return S.suspend(() =>
         S.Struct({
           code: S.optional(S.Number),
           message: S.optional(S.String),
-          details: S.optional(__S(45)),
+          details: S.optional(DocumentMapList),
         }),
       ).annotate({ identifier: "Status" });
     case 7:
       return S.suspend(() =>
         S.Struct({
           message: S.optional(S.String),
-          type: S.optional(S.String),
+          type: S.optional(SaasConditionTypeEnum),
           reason: S.optional(S.String),
           lastTransitionTime: S.optional(S.String),
-          status: S.optional(S.String),
+          status: S.optional(SaasConditionStatusEnum),
         }),
       ).annotate({ identifier: "SaasCondition" });
   }
@@ -3839,7 +4532,7 @@ function __c5(j: number): any {
 function __c6(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(47));
+      return S.Array(SaasCondition);
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -3847,7 +4540,7 @@ function __c6(j: number): any {
         }),
       ).annotate({ identifier: "Location" });
     case 2:
-      return S.Array(__S(49));
+      return S.Array(Location);
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -3856,14 +4549,14 @@ function __c6(j: number): any {
           etag: S.optional(S.String),
           createTime: S.optional(S.String),
           name: S.optional(S.String),
-          error: S.optional(__S(46)),
-          applicationTemplate: S.optional(__S(28)),
-          conditions: S.optional(__S(48)),
+          error: S.optional(Status),
+          applicationTemplate: S.optional(CompositeRef),
+          conditions: S.optional(SaasConditionList),
           uid: S.optional(S.String),
-          annotations: S.optional(__S(0)),
-          state: S.optional(S.String),
-          labels: S.optional(__S(0)),
-          locations: S.optional(__S(50)),
+          annotations: S.optional(StringMap),
+          state: S.optional(SaasStateEnum),
+          labels: S.optional(StringMap),
+          locations: S.optional(LocationList),
         }),
       ).annotate({ identifier: "Saas" });
     case 4:
@@ -3873,7 +4566,7 @@ function __c6(j: number): any {
           saasId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
           requestId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(51).pipe(T.HttpBody())),
+          body: S.optional(Saas.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3887,9 +4580,9 @@ function __c6(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          annotations: S.optional(__S(0)),
+          annotations: S.optional(StringMap),
           etag: S.optional(S.String),
-          labels: S.optional(__S(0)),
+          labels: S.optional(StringMap),
           uid: S.optional(S.String),
           name: S.optional(S.String),
           createTime: S.optional(S.String),
@@ -3903,7 +4596,7 @@ function __c6(j: number): any {
           saasReleaseId: S.optional(S.String.pipe(T.Query())),
           requestId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(53).pipe(T.HttpBody())),
+          body: S.optional(SaasRelease.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3918,10 +4611,10 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           etag: S.optional(S.String),
-          annotations: S.optional(__S(0)),
+          annotations: S.optional(StringMap),
           name: S.optional(S.String),
           updateTime: S.optional(S.String),
-          labels: S.optional(__S(0)),
+          labels: S.optional(StringMap),
           uid: S.optional(S.String),
           consumerResource: S.optional(S.String),
           createTime: S.optional(S.String),
@@ -3939,7 +4632,7 @@ function __c7(j: number): any {
           tenantId: S.optional(S.String.pipe(T.Query())),
           validateOnly: S.optional(S.Boolean.pipe(T.Query())),
           requestId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(55).pipe(T.HttpBody())),
+          body: S.optional(Tenant.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3953,9 +4646,9 @@ function __c7(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          annotations: S.optional(__S(0)),
+          annotations: S.optional(StringMap),
           name: S.optional(S.String),
-          labels: S.optional(__S(0)),
+          labels: S.optional(StringMap),
           deleteTime: S.optional(S.String),
           uid: S.optional(S.String),
           etag: S.optional(S.String),
@@ -3970,7 +4663,7 @@ function __c7(j: number): any {
           unitGroupOperationId: S.optional(S.String.pipe(T.Query())),
           requestId: S.optional(S.String.pipe(T.Query())),
           validateOnly: S.optional(S.Boolean.pipe(T.Query())),
-          body: S.optional(__S(57).pipe(T.HttpBody())),
+          body: S.optional(UnitGroupOperation.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3988,8 +4681,8 @@ function __c7(j: number): any {
           updateTime: S.optional(S.String),
           name: S.optional(S.String),
           uid: S.optional(S.String),
-          annotations: S.optional(__S(0)),
-          labels: S.optional(__S(0)),
+          annotations: S.optional(StringMap),
+          labels: S.optional(StringMap),
           etag: S.optional(S.String),
         }),
       ).annotate({ identifier: "UnitGroup" });
@@ -4000,7 +4693,7 @@ function __c7(j: number): any {
           parent: S.String.pipe(T.Label()),
           validateOnly: S.optional(S.Boolean.pipe(T.Query())),
           unitGroupId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(59).pipe(T.HttpBody())),
+          body: S.optional(UnitGroup.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4014,13 +4707,13 @@ function __c7(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(S.String),
+          type: S.optional(ScopeTypeEnum),
         }),
       ).annotate({ identifier: "Scope" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          scope: S.optional(__S(61)),
+          scope: S.optional(Scope),
           group: S.optional(S.String),
         }),
       ).annotate({ identifier: "AppParams" });
@@ -4036,7 +4729,7 @@ function __c7(j: number): any {
 function __c8(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(63));
+      return S.Array(Dependency);
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -4055,33 +4748,33 @@ function __c8(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          to: S.optional(__S(65)),
+          to: S.optional(ToMapping),
           variable: S.optional(S.String),
-          from: S.optional(__S(66)),
+          from: S.optional(FromMapping),
         }),
       ).annotate({ identifier: "VariableMapping" });
     case 4:
-      return S.Array(__S(67));
+      return S.Array(VariableMapping);
     case 5:
       return S.suspend(() =>
         S.Struct({
           saas: S.optional(S.String),
           createTime: S.optional(S.String),
-          appParams: S.optional(__S(62)),
+          appParams: S.optional(AppParams),
           uid: S.optional(S.String),
-          labels: S.optional(__S(0)),
+          labels: S.optional(StringMap),
           updateTime: S.optional(S.String),
           name: S.optional(S.String),
           defaultRelease: S.optional(S.String),
-          dependencies: S.optional(__S(64)),
+          dependencies: S.optional(DependencyList),
           deleteTime: S.optional(S.String),
           etag: S.optional(S.String),
-          applicationTemplateComponent: S.optional(__S(29)),
-          defaultFlagRevisions: S.optional(__S(3)),
-          annotations: S.optional(__S(0)),
-          inputVariableMappings: S.optional(__S(68)),
-          boundaryType: S.optional(S.String),
-          outputVariableMappings: S.optional(__S(68)),
+          applicationTemplateComponent: S.optional(ComponentRef),
+          defaultFlagRevisions: S.optional(StringList),
+          annotations: S.optional(StringMap),
+          inputVariableMappings: S.optional(VariableMappingList),
+          boundaryType: S.optional(UnitKindBoundaryTypeEnum),
+          outputVariableMappings: S.optional(VariableMappingList),
         }),
       ).annotate({ identifier: "UnitKind" });
     case 6:
@@ -4091,7 +4784,7 @@ function __c8(j: number): any {
           validateOnly: S.optional(S.Boolean.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
           requestId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(69).pipe(T.HttpBody())),
+          body: S.optional(UnitKind.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4121,22 +4814,22 @@ function __c9(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          inputVariables: S.optional(__S(25)),
+          inputVariables: S.optional(UnitVariableList),
           release: S.optional(S.String),
         }),
       ).annotate({ identifier: "Provision" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(S.String),
+          type: S.optional(UnitOperationConditionTypeEnum),
           reason: S.optional(S.String),
-          status: S.optional(S.String),
+          status: S.optional(UnitOperationConditionStatusEnum),
           message: S.optional(S.String),
           lastTransitionTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "UnitOperationCondition" });
     case 3:
-      return S.Array(__S(74));
+      return S.Array(UnitOperationCondition);
     case 4:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "Deprovision",
@@ -4145,25 +4838,25 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          schedule: S.optional(__S(71)),
+          schedule: S.optional(Schedule),
           updateTime: S.optional(S.String),
           rollout: S.optional(S.String),
           etag: S.optional(S.String),
           unit: S.optional(S.String),
           deleteTime: S.optional(S.String),
-          flagUpdate: S.optional(__S(72)),
+          flagUpdate: S.optional(FlagUpdate),
           createTime: S.optional(S.String),
           engineState: S.optional(S.String),
-          provision: S.optional(__S(73)),
-          labels: S.optional(__S(0)),
-          errorCategory: S.optional(S.String),
+          provision: S.optional(Provision),
+          labels: S.optional(StringMap),
+          errorCategory: S.optional(UnitOperationErrorCategoryEnum),
           cancel: S.optional(S.Boolean),
-          conditions: S.optional(__S(75)),
-          upgrade: S.optional(__S(73)),
-          deprovision: S.optional(__S(76)),
-          annotations: S.optional(__S(0)),
+          conditions: S.optional(UnitOperationConditionList),
+          upgrade: S.optional(Provision),
+          deprovision: S.optional(Deprovision),
+          annotations: S.optional(StringMap),
           uid: S.optional(S.String),
-          state: S.optional(S.String),
+          state: S.optional(UnitOperationStateEnum),
           parentUnitOperation: S.optional(S.String),
         }),
       ).annotate({ identifier: "UnitOperation" });
@@ -4174,7 +4867,7 @@ function __c9(j: number): any {
           validateOnly: S.optional(S.Boolean.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
           requestId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(77).pipe(T.HttpBody())),
+          body: S.optional(UnitOperation.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4203,48 +4896,48 @@ function __c10(j: number): any {
         }),
       ).annotate({ identifier: "UnitDependency" });
     case 1:
-      return S.Array(__S(80));
+      return S.Array(UnitDependency);
     case 2:
       return S.suspend(() =>
         S.Struct({
           reason: S.optional(S.String),
-          status: S.optional(S.String),
-          type: S.optional(S.String),
+          status: S.optional(UnitConditionStatusEnum),
+          type: S.optional(UnitConditionTypeEnum),
           message: S.optional(S.String),
           lastTransitionTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "UnitCondition" });
     case 3:
-      return S.Array(__S(82));
+      return S.Array(UnitCondition);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          outputVariables: S.optional(__S(25)),
+          outputVariables: S.optional(UnitVariableList),
           createTime: S.optional(S.String),
-          annotations: S.optional(__S(0)),
+          annotations: S.optional(StringMap),
           systemCleanupAt: S.optional(S.String),
           etag: S.optional(S.String),
-          maintenance: S.optional(__S(79)),
+          maintenance: S.optional(MaintenanceSettings),
           flagConfigName: S.optional(S.String),
-          inputVariables: S.optional(__S(25)),
+          inputVariables: S.optional(UnitVariableList),
           unitGroup: S.optional(S.String),
-          managementMode: S.optional(S.String),
-          dependents: S.optional(__S(81)),
+          managementMode: S.optional(UnitManagementModeEnum),
+          dependents: S.optional(UnitDependencyList),
           tenant: S.optional(S.String),
-          conditions: S.optional(__S(83)),
-          ongoingOperations: S.optional(__S(3)),
+          conditions: S.optional(UnitConditionList),
+          ongoingOperations: S.optional(StringList),
           satisfiesPzi: S.optional(S.Boolean),
-          pendingOperations: S.optional(__S(3)),
-          state: S.optional(S.String),
-          scheduledOperations: S.optional(__S(3)),
+          pendingOperations: S.optional(StringList),
+          state: S.optional(UnitStateEnum),
+          scheduledOperations: S.optional(StringList),
           updateTime: S.optional(S.String),
           name: S.optional(S.String),
-          dependencies: S.optional(__S(81)),
+          dependencies: S.optional(UnitDependencyList),
           unitKind: S.optional(S.String),
-          flagRevisions: S.optional(__S(3)),
+          flagRevisions: S.optional(StringList),
           release: S.optional(S.String),
-          systemManagedState: S.optional(S.String),
-          labels: S.optional(__S(0)),
+          systemManagedState: S.optional(UnitSystemManagedStateEnum),
+          labels: S.optional(StringMap),
           application: S.optional(S.String),
           uid: S.optional(S.String),
           satisfiesPzs: S.optional(S.Boolean),
@@ -4257,7 +4950,7 @@ function __c10(j: number): any {
           unitId: S.optional(S.String.pipe(T.Query())),
           requestId: S.optional(S.String.pipe(T.Query())),
           validateOnly: S.optional(S.Boolean.pipe(T.Query())),
-          body: S.optional(__S(84).pipe(T.HttpBody())),
+          body: S.optional(Unit.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4549,9 +5242,9 @@ function __c12(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          metadata: S.optional(__S(44)),
+          metadata: S.optional(DocumentMap),
           displayName: S.optional(S.String),
-          labels: S.optional(__S(0)),
+          labels: S.optional(StringMap),
           locationId: S.optional(S.String),
         }),
       ).annotate({
@@ -4778,7 +5471,7 @@ function __c14(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          extraLocationTypes: S.optional(__S(3).pipe(T.Query())),
+          extraLocationTypes: S.optional(StringList.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
           pageToken: S.optional(S.String.pipe(T.Query())),
           filter: S.optional(S.String.pipe(T.Query())),
@@ -4794,7 +5487,7 @@ function __c14(j: number): any {
         identifier: "ListProjectsLocationsRequest",
       });
     case 7:
-      return S.Array(__S(102));
+      return S.Array(GoogleCloudLocationLocation);
   }
 }
 function __c15(j: number): any {
@@ -4802,7 +5495,7 @@ function __c15(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          locations: S.optional(__S(119)),
+          locations: S.optional(GoogleCloudLocationLocationList),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListLocationsResponse" });
@@ -4825,13 +5518,13 @@ function __c15(j: number): any {
         identifier: "ListProjectsLocationsFlagAttributesRequest",
       });
     case 2:
-      return S.Array(__S(1));
+      return S.Array(FlagAttribute);
     case 3:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          unreachable: S.optional(__S(3)),
-          flagAttributes: S.optional(__S(122)),
+          unreachable: S.optional(StringList),
+          flagAttributes: S.optional(FlagAttributeList),
         }),
       ).annotate({
         identifier: "ListFlagAttributesResponse",
@@ -4855,13 +5548,13 @@ function __c15(j: number): any {
         identifier: "ListProjectsLocationsFlagReleasesRequest",
       });
     case 5:
-      return S.Array(__S(7));
+      return S.Array(FlagRelease);
     case 6:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          unreachable: S.optional(__S(3)),
-          flagReleases: S.optional(__S(125)),
+          unreachable: S.optional(StringList),
+          flagReleases: S.optional(FlagReleaseList),
         }),
       ).annotate({ identifier: "ListFlagReleasesResponse" });
     case 7:
@@ -4887,13 +5580,13 @@ function __c15(j: number): any {
 function __c16(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(21));
+      return S.Array(FlagRevision);
     case 1:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          flagRevisions: S.optional(__S(128)),
-          unreachable: S.optional(__S(3)),
+          flagRevisions: S.optional(FlagRevisionList_),
+          unreachable: S.optional(StringList),
         }),
       ).annotate({
         identifier: "ListFlagRevisionsResponse",
@@ -4917,12 +5610,12 @@ function __c16(j: number): any {
         identifier: "ListProjectsLocationsFlagsRequest",
       });
     case 3:
-      return S.Array(__S(20));
+      return S.Array(Flag);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          unreachable: S.optional(__S(3)),
-          flags: S.optional(__S(131)),
+          unreachable: S.optional(StringList),
+          flags: S.optional(FlagList),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListFlagsResponse" });
@@ -4945,13 +5638,13 @@ function __c16(j: number): any {
         identifier: "ListProjectsLocationsReleasesRequest",
       });
     case 6:
-      return S.Array(__S(30));
+      return S.Array(Release);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          unreachable: S.optional(__S(3)),
+          unreachable: S.optional(StringList),
           nextPageToken: S.optional(S.String),
-          releases: S.optional(__S(134)),
+          releases: S.optional(ReleaseList),
         }),
       ).annotate({ identifier: "ListReleasesResponse" });
   }
@@ -4977,13 +5670,13 @@ function __c17(j: number): any {
         identifier: "ListProjectsLocationsRolloutKindsRequest",
       });
     case 1:
-      return S.Array(__S(35));
+      return S.Array(RolloutKind);
     case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          rolloutKinds: S.optional(__S(137)),
-          unreachable: S.optional(__S(3)),
+          rolloutKinds: S.optional(RolloutKindList),
+          unreachable: S.optional(StringList),
         }),
       ).annotate({ identifier: "ListRolloutKindsResponse" });
     case 3:
@@ -5005,13 +5698,13 @@ function __c17(j: number): any {
         identifier: "ListProjectsLocationsRolloutsRequest",
       });
     case 4:
-      return S.Array(__S(42));
+      return S.Array(Rollout);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          unreachable: S.optional(__S(3)),
+          unreachable: S.optional(StringList),
           nextPageToken: S.optional(S.String),
-          rollouts: S.optional(__S(140)),
+          rollouts: S.optional(RolloutList),
         }),
       ).annotate({ identifier: "ListRolloutsResponse" });
     case 6:
@@ -5033,7 +5726,7 @@ function __c17(j: number): any {
         identifier: "ListProjectsLocationsSaasRequest",
       });
     case 7:
-      return S.Array(__S(51));
+      return S.Array(Saas);
   }
 }
 function __c18(j: number): any {
@@ -5041,9 +5734,9 @@ function __c18(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          saas: S.optional(__S(143)),
+          saas: S.optional(SaasList),
           nextPageToken: S.optional(S.String),
-          unreachable: S.optional(__S(3)),
+          unreachable: S.optional(StringList),
         }),
       ).annotate({ identifier: "ListSaasResponse" });
     case 1:
@@ -5065,13 +5758,13 @@ function __c18(j: number): any {
         identifier: "ListProjectsLocationsSaasReleasesRequest",
       });
     case 2:
-      return S.Array(__S(53));
+      return S.Array(SaasRelease);
     case 3:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          saasReleases: S.optional(__S(146)),
-          unreachable: S.optional(__S(3)),
+          saasReleases: S.optional(SaasReleaseList),
+          unreachable: S.optional(StringList),
         }),
       ).annotate({ identifier: "ListSaasReleasesResponse" });
     case 4:
@@ -5093,12 +5786,12 @@ function __c18(j: number): any {
         identifier: "ListProjectsLocationsTenantsRequest",
       });
     case 5:
-      return S.Array(__S(55));
+      return S.Array(Tenant);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          tenants: S.optional(__S(149)),
-          unreachable: S.optional(__S(3)),
+          tenants: S.optional(TenantList),
+          unreachable: S.optional(StringList),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListTenantsResponse" });
@@ -5125,13 +5818,13 @@ function __c18(j: number): any {
 function __c19(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(57));
+      return S.Array(UnitGroupOperation);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          unreachable: S.optional(__S(3)),
+          unreachable: S.optional(StringList),
           nextPageToken: S.optional(S.String),
-          unitGroupOperations: S.optional(__S(152)),
+          unitGroupOperations: S.optional(UnitGroupOperationList),
         }),
       ).annotate({
         identifier: "ListUnitGroupOperationsResponse",
@@ -5155,12 +5848,12 @@ function __c19(j: number): any {
         identifier: "ListProjectsLocationsUnitGroupsRequest",
       });
     case 3:
-      return S.Array(__S(59));
+      return S.Array(UnitGroup);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          unitGroups: S.optional(__S(155)),
-          unreachable: S.optional(__S(3)),
+          unitGroups: S.optional(UnitGroupList),
+          unreachable: S.optional(StringList),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListUnitGroupsResponse" });
@@ -5183,12 +5876,12 @@ function __c19(j: number): any {
         identifier: "ListProjectsLocationsUnitKindsRequest",
       });
     case 6:
-      return S.Array(__S(69));
+      return S.Array(UnitKind);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          unreachable: S.optional(__S(3)),
-          unitKinds: S.optional(__S(158)),
+          unreachable: S.optional(StringList),
+          unitKinds: S.optional(UnitKindList),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListUnitKindsResponse" });
@@ -5215,12 +5908,12 @@ function __c20(j: number): any {
         identifier: "ListProjectsLocationsUnitOperationsRequest",
       });
     case 1:
-      return S.Array(__S(77));
+      return S.Array(UnitOperation);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          unreachable: S.optional(__S(3)),
-          unitOperations: S.optional(__S(161)),
+          unreachable: S.optional(StringList),
+          unitOperations: S.optional(UnitOperationList),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -5245,13 +5938,13 @@ function __c20(j: number): any {
         identifier: "ListProjectsLocationsUnitsRequest",
       });
     case 4:
-      return S.Array(__S(84));
+      return S.Array(Unit);
     case 5:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          units: S.optional(__S(164)),
-          unreachable: S.optional(__S(3)),
+          units: S.optional(UnitList),
+          unreachable: S.optional(StringList),
         }),
       ).annotate({ identifier: "ListUnitsResponse" });
     case 6:
@@ -5261,7 +5954,7 @@ function __c20(j: number): any {
           validateOnly: S.optional(S.Boolean.pipe(T.Query())),
           requestId: S.optional(S.String.pipe(T.Query())),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(1).pipe(T.HttpBody())),
+          body: S.optional(FlagAttribute.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -5279,7 +5972,7 @@ function __c20(j: number): any {
           validateOnly: S.optional(S.Boolean.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(7).pipe(T.HttpBody())),
+          body: S.optional(FlagRelease.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -5301,7 +5994,7 @@ function __c21(j: number): any {
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
           validateOnly: S.optional(S.Boolean.pipe(T.Query())),
-          body: S.optional(__S(21).pipe(T.HttpBody())),
+          body: S.optional(FlagRevision.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -5319,7 +6012,7 @@ function __c21(j: number): any {
           name: S.String.pipe(T.Label()),
           requestId: S.optional(S.String.pipe(T.Query())),
           validateOnly: S.optional(S.Boolean.pipe(T.Query())),
-          body: S.optional(__S(20).pipe(T.HttpBody())),
+          body: S.optional(Flag.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -5337,7 +6030,7 @@ function __c21(j: number): any {
           validateOnly: S.optional(S.Boolean.pipe(T.Query())),
           requestId: S.optional(S.String.pipe(T.Query())),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(30).pipe(T.HttpBody())),
+          body: S.optional(Release.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -5355,7 +6048,7 @@ function __c21(j: number): any {
           requestId: S.optional(S.String.pipe(T.Query())),
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(35).pipe(T.HttpBody())),
+          body: S.optional(RolloutKind.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -5373,7 +6066,7 @@ function __c21(j: number): any {
           updateMask: S.optional(S.String.pipe(T.Query())),
           validateOnly: S.optional(S.Boolean.pipe(T.Query())),
           requestId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(42).pipe(T.HttpBody())),
+          body: S.optional(Rollout.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -5391,7 +6084,7 @@ function __c21(j: number): any {
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
           requestId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(51).pipe(T.HttpBody())),
+          body: S.optional(Saas.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -5409,7 +6102,7 @@ function __c21(j: number): any {
           updateMask: S.optional(S.String.pipe(T.Query())),
           requestId: S.optional(S.String.pipe(T.Query())),
           validateOnly: S.optional(S.Boolean.pipe(T.Query())),
-          body: S.optional(__S(53).pipe(T.HttpBody())),
+          body: S.optional(SaasRelease.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -5427,7 +6120,7 @@ function __c21(j: number): any {
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
           validateOnly: S.optional(S.Boolean.pipe(T.Query())),
-          body: S.optional(__S(55).pipe(T.HttpBody())),
+          body: S.optional(Tenant.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -5449,7 +6142,7 @@ function __c22(j: number): any {
           name: S.String.pipe(T.Label()),
           requestId: S.optional(S.String.pipe(T.Query())),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(57).pipe(T.HttpBody())),
+          body: S.optional(UnitGroupOperation.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -5467,7 +6160,7 @@ function __c22(j: number): any {
           name: S.String.pipe(T.Label()),
           validateOnly: S.optional(S.Boolean.pipe(T.Query())),
           requestId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(59).pipe(T.HttpBody())),
+          body: S.optional(UnitGroup.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -5485,7 +6178,7 @@ function __c22(j: number): any {
           updateMask: S.optional(S.String.pipe(T.Query())),
           validateOnly: S.optional(S.Boolean.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(69).pipe(T.HttpBody())),
+          body: S.optional(UnitKind.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -5503,7 +6196,7 @@ function __c22(j: number): any {
           updateMask: S.optional(S.String.pipe(T.Query())),
           validateOnly: S.optional(S.Boolean.pipe(T.Query())),
           requestId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(77).pipe(T.HttpBody())),
+          body: S.optional(UnitOperation.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -5521,7 +6214,7 @@ function __c22(j: number): any {
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
           requestId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(84).pipe(T.HttpBody())),
+          body: S.optional(Unit.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -5532,60 +6225,5 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "PatchProjectsLocationsUnitsRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
-    case 9:
-      return __c9(i & 7);
-    case 10:
-      return __c10(i & 7);
-    case 11:
-      return __c11(i & 7);
-    case 12:
-      return __c12(i & 7);
-    case 13:
-      return __c13(i & 7);
-    case 14:
-      return __c14(i & 7);
-    case 15:
-      return __c15(i & 7);
-    case 16:
-      return __c16(i & 7);
-    case 17:
-      return __c17(i & 7);
-    case 18:
-      return __c18(i & 7);
-    case 19:
-      return __c19(i & 7);
-    case 20:
-      return __c20(i & 7);
-    case 21:
-      return __c21(i & 7);
-    case 22:
-      return __c22(i & 7);
   }
 }

@@ -12,8 +12,6 @@ import {
 } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { CloudflareOpError, CloudflareOpContext };
 
@@ -25,17 +23,36 @@ const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
 };
 
 export type BulkDeleteRequestIdList = Array<string>;
+const BulkDeleteRequestIdList = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<BulkDeleteRequestIdList>;
+
 export interface BulkDeleteFiltersRequest {
   /** Defines an identifier. */
   zoneId: string;
   id: BulkDeleteRequestIdList;
 }
+const BulkDeleteFiltersRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<BulkDeleteFiltersRequest>;
+
 export interface BulkDeleteResultItem {
   /** The unique identifier of the filter. */
   id?: string | null;
 }
+const BulkDeleteResultItem = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<BulkDeleteResultItem>;
+
 export type BulkDeleteResultList = Array<BulkDeleteResultItem>;
+const BulkDeleteResultList = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<BulkDeleteResultList>;
+
 export type BulkDeleteFiltersResponse = BulkDeleteResultList;
+const BulkDeleteFiltersResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<BulkDeleteFiltersResponse>;
+
 export interface BulkUpdateRequestBodyItem {
   /** The unique identifier of the filter. */
   id?: string;
@@ -48,12 +65,27 @@ export interface BulkUpdateRequestBodyItem {
   /** A short reference tag. Allows you to select related filters. */
   ref?: string;
 }
+const BulkUpdateRequestBodyItem = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<BulkUpdateRequestBodyItem>;
+
 export type BulkUpdateRequestBodyList = Array<BulkUpdateRequestBodyItem>;
+const BulkUpdateRequestBodyList = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<BulkUpdateRequestBodyList>;
+
 export interface BulkPutFiltersRequest {
   /** Defines an identifier. */
   zoneId: string;
   body: BulkUpdateRequestBodyList;
 }
+const BulkPutFiltersRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<BulkPutFiltersRequest>;
+
 export interface BulkUpdateResultItem {
   /** The unique identifier of the filter. */
   id?: string | null;
@@ -66,20 +98,33 @@ export interface BulkUpdateResultItem {
   /** A short reference tag. Allows you to select related filters. */
   ref?: string | null;
 }
+const BulkUpdateResultItem = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<BulkUpdateResultItem>;
+
 export type BulkUpdateResultList = Array<BulkUpdateResultItem>;
+const BulkUpdateResultList = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<BulkUpdateResultList>;
+
 export interface BulkPutFiltersResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result: BulkUpdateResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
+const BulkPutFiltersResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<BulkPutFiltersResponse>;
+
 export type CreateRequestBodyItem = BulkUpdateRequestBodyItem;
 export type CreateRequestBodyList = Array<BulkUpdateRequestBodyItem>;
+const CreateRequestBodyList = BulkUpdateRequestBodyList as any as S.Schema<CreateRequestBodyList>;
+
 export interface CreateFilterRequest {
   /** Defines an identifier. */
   zoneId: string;
   body: CreateRequestBodyList;
 }
+const CreateFilterRequest = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<CreateFilterRequest>;
+
 export type CreateResultItem = BulkUpdateResultItem;
 export type CreateResultList = Array<BulkUpdateResultItem>;
 export interface CreateFilterResponse {
@@ -88,23 +133,31 @@ export interface CreateFilterResponse {
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
+const CreateFilterResponse = BulkPutFiltersResponse as any as S.Schema<CreateFilterResponse>;
+
 export interface DeleteFilterRequest {
   /** Defines an identifier. */
   zoneId: string;
   /** The unique identifier of the filter. */
   filterId: string;
 }
+const DeleteFilterRequest = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<DeleteFilterRequest>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DeleteFilterResponse {
   /** The unique identifier of the filter. */
   id: string;
 }
+const DeleteFilterResponse = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<DeleteFilterResponse>;
+
 export interface GetFilterRequest {
   /** Defines an identifier. */
   zoneId: string;
   /** The unique identifier of the filter. */
   filterId: string;
 }
+const GetFilterRequest = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<GetFilterRequest>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetFilterResponse {
   /** The unique identifier of the filter. */
@@ -118,6 +171,8 @@ export interface GetFilterResponse {
   /** A short reference tag. Allows you to select related filters. */
   ref?: string | null;
 }
+const GetFilterResponse = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<GetFilterResponse>;
+
 export interface ListFiltersRequest {
   /** Defines an identifier. */
   zoneId: string;
@@ -136,6 +191,8 @@ export interface ListFiltersRequest {
   /** The filter ref (a short reference tag) to search for. Must be an exact match. */
   ref?: string;
 }
+const ListFiltersRequest = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<ListFiltersRequest>;
+
 export type ListResultItem = BulkUpdateResultItem;
 export type ListResultList = Array<BulkUpdateResultItem>;
 export interface ListFiltersResponse {
@@ -144,6 +201,8 @@ export interface ListFiltersResponse {
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
+const ListFiltersResponse = BulkPutFiltersResponse as any as S.Schema<ListFiltersResponse>;
+
 export interface UpdateFilterRequest {
   /** Defines an identifier. */
   zoneId: string;
@@ -158,6 +217,8 @@ export interface UpdateFilterRequest {
   /** A short reference tag. Allows you to select related filters. */
   ref?: string;
 }
+const UpdateFilterRequest = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<UpdateFilterRequest>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UpdateFilterResponse {
   /** The unique identifier of the filter. */
@@ -171,6 +232,8 @@ export interface UpdateFilterResponse {
   /** A short reference tag. Allows you to select related filters. */
   ref?: string | null;
 }
+const UpdateFilterResponse = GetFilterResponse as any as S.Schema<UpdateFilterResponse>;
+
 export type BulkDeleteFiltersError = CloudflareOpError;
 /** Deletes one or more existing filters. */
 export const bulkDeleteFilters: API.OperationMethod<
@@ -179,8 +242,8 @@ export const bulkDeleteFilters: API.OperationMethod<
   BulkDeleteFiltersError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1) as any as S.Schema<BulkDeleteFiltersRequest>,
-  output: __S(4) as any as S.Schema<BulkDeleteFiltersResponse>,
+  input: BulkDeleteFiltersRequest,
+  output: BulkDeleteFiltersResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -196,8 +259,8 @@ export const bulkPutFilters: API.PaginatedOperationMethod<
   BulkUpdateResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(7) as any as S.Schema<BulkPutFiltersRequest>,
-    output: __S(10) as any as S.Schema<BulkPutFiltersResponse>,
+    input: BulkPutFiltersRequest,
+    output: BulkPutFiltersResponse,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -216,8 +279,8 @@ export const createFilter: API.PaginatedOperationMethod<
   BulkUpdateResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(11) as any as S.Schema<CreateFilterRequest>,
-    output: __S(10) as any as S.Schema<CreateFilterResponse>,
+    input: CreateFilterRequest,
+    output: CreateFilterResponse,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -234,8 +297,8 @@ export const deleteFilter: API.OperationMethod<
   DeleteFilterError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12) as any as S.Schema<DeleteFilterRequest>,
-  output: __S(13) as any as S.Schema<DeleteFilterResponse>,
+  input: DeleteFilterRequest,
+  output: DeleteFilterResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -249,8 +312,8 @@ export const getFilter: API.OperationMethod<
   GetFilterError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14) as any as S.Schema<GetFilterRequest>,
-  output: __S(15) as any as S.Schema<GetFilterResponse>,
+  input: GetFilterRequest,
+  output: GetFilterResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -266,8 +329,8 @@ export const listFilters: API.PaginatedOperationMethod<
   BulkUpdateResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(16) as any as S.Schema<ListFiltersRequest>,
-    output: __S(10) as any as S.Schema<ListFiltersResponse>,
+    input: ListFiltersRequest,
+    output: ListFiltersResponse,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -290,8 +353,8 @@ export const updateFilter: API.OperationMethod<
   UpdateFilterError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17) as any as S.Schema<UpdateFilterRequest>,
-  output: __S(15) as any as S.Schema<UpdateFilterResponse>,
+  input: UpdateFilterRequest,
+  output: UpdateFilterResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -306,7 +369,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
-          id: __S(0).pipe(T.Query()),
+          id: BulkDeleteRequestIdList.pipe(T.Query()),
         })
           .pipe(T.Http({ method: "DELETE", uri: "/zones/{zone_id}/filters", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -318,10 +381,10 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "BulkDeleteResultItem" });
     case 3:
-      return S.Array(__S(2));
+      return S.Array(BulkDeleteResultItem);
     case 4:
       return S.suspend(() =>
-        __S(3).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
+        BulkDeleteResultList.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "BulkDeleteFiltersResponse",
       });
@@ -338,12 +401,12 @@ function __c0(j: number): any {
         identifier: "BulkUpdateRequestBodyItem",
       });
     case 6:
-      return S.Array(__S(5));
+      return S.Array(BulkUpdateRequestBodyItem);
     case 7:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
-          body: __S(6).pipe(T.HttpBody()),
+          body: BulkUpdateRequestBodyList.pipe(T.HttpBody()),
         })
           .pipe(T.Http({ method: "PUT", uri: "/zones/{zone_id}/filters", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -363,11 +426,11 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "BulkUpdateResultItem" });
     case 1:
-      return S.Array(__S(8));
+      return S.Array(BulkUpdateResultItem);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          result: __S(9).pipe(T.EnvelopePayload()),
+          result: BulkUpdateResultList.pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "BulkPutFiltersResponse" });
@@ -375,7 +438,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
-          body: __S(6).pipe(T.HttpBody()),
+          body: CreateRequestBodyList.pipe(T.HttpBody()),
         })
           .pipe(T.Http({ method: "POST", uri: "/zones/{zone_id}/filters", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -448,20 +511,5 @@ function __c2(j: number): any {
           .pipe(T.Http({ method: "PUT", uri: "/zones/{zone_id}/filters/{filter_id}", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "UpdateFilterRequest" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
   }
 }

@@ -6,8 +6,6 @@ import * as S from "@distilled.cloud/core/schema";
 import { PosthogProtocol, type PosthogOpError, type PosthogOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { PosthogOpError, PosthogOpContext };
 
@@ -39,6 +37,11 @@ export class NotFound
   ) {}
 
 export type CreateExperimentSavedMetricsRequestTagsList = Array<unknown>;
+const CreateExperimentSavedMetricsRequestTagsList = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<CreateExperimentSavedMetricsRequestTagsList>;
+
 export interface CreateExperimentSavedMetricsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -50,7 +53,17 @@ export interface CreateExperimentSavedMetricsRequest {
   query?: unknown;
   tags?: CreateExperimentSavedMetricsRequestTagsList;
 }
+const CreateExperimentSavedMetricsRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<CreateExperimentSavedMetricsRequest>;
+
 export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
+const UserBasicHedgehogConfigMap = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<UserBasicHedgehogConfigMap>;
+
 /** * `engineering` - Engineering * `data` - Data * `product` - Product Management * `founder` - Founder * `leadership` - Leadership * `marketing` - Marketing * `sales` - Sales / Success * `student` - Student * `other` - Other */
 export type RoleAtOrganizationEnum =
   | "engineering"
@@ -64,6 +77,8 @@ export type RoleAtOrganizationEnum =
   | "other";
 export type BlankEnum = "";
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
+const UserBasicRoleAtOrganization = S.Unknown as any as S.Schema<UserBasicRoleAtOrganization>;
+
 export interface UserBasic {
   id?: number;
   uuid?: string;
@@ -75,7 +90,12 @@ export interface UserBasic {
   hedgehog_config?: UserBasicHedgehogConfigMap | null;
   role_at_organization?: UserBasicRoleAtOrganization | null;
 }
+const UserBasic = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<UserBasic>;
+
 export type ExperimentSavedMetricTagsList = Array<unknown>;
+const ExperimentSavedMetricTagsList =
+  CreateExperimentSavedMetricsRequestTagsList as any as S.Schema<ExperimentSavedMetricTagsList>;
+
 export interface ExperimentSavedMetricLinkedExperiment {
   /** Experiment ID. */
   id: number;
@@ -84,9 +104,19 @@ export interface ExperimentSavedMetricLinkedExperiment {
   /** True when the experiment is launched and not yet stopped. */
   is_running: boolean;
 }
+const ExperimentSavedMetricLinkedExperiment = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<ExperimentSavedMetricLinkedExperiment>;
+
 /** Experiments using this shared metric (soft-deleted experiments excluded). Populated only on single-metric retrieve; always an empty list in list responses. */
 export type ExperimentSavedMetricLinkedExperimentsList =
   Array<ExperimentSavedMetricLinkedExperiment>;
+const ExperimentSavedMetricLinkedExperimentsList = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<ExperimentSavedMetricLinkedExperimentsList>;
+
 /** Mixin for serializers to add user access control fields */
 export interface ExperimentSavedMetric {
   id?: number;
@@ -105,19 +135,39 @@ export interface ExperimentSavedMetric {
   /** Experiments using this shared metric (soft-deleted experiments excluded). Populated only on single-metric retrieve; always an empty list in list responses. */
   linked_experiments?: ExperimentSavedMetricLinkedExperimentsList;
 }
+const ExperimentSavedMetric = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<ExperimentSavedMetric>;
+
 export interface ExperimentSavedMetricsDestroyRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A unique integer value identifying this experiment saved metric. */
   id: number;
 }
+const ExperimentSavedMetricsDestroyRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<ExperimentSavedMetricsDestroyRequest>;
+
 export interface ExperimentSavedMetricsDestroyResponse {}
+const ExperimentSavedMetricsDestroyResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<ExperimentSavedMetricsDestroyResponse>;
+
 export interface GetExperimentSavedMetricsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A unique integer value identifying this experiment saved metric. */
   id: number;
 }
+const GetExperimentSavedMetricsRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<GetExperimentSavedMetricsRequest>;
+
 export interface ListExperimentSavedMetricsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -130,14 +180,32 @@ export interface ListExperimentSavedMetricsRequest {
   /** A search term. */
   search?: string;
 }
+const ListExperimentSavedMetricsRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<ListExperimentSavedMetricsRequest>;
+
 export type PaginatedExperimentSavedMetricListResultsList = Array<ExperimentSavedMetric>;
+const PaginatedExperimentSavedMetricListResultsList = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<PaginatedExperimentSavedMetricListResultsList>;
+
 export interface PaginatedExperimentSavedMetricList {
   count?: number;
   next?: string | null;
   previous?: string | null;
   results?: PaginatedExperimentSavedMetricListResultsList;
 }
+const PaginatedExperimentSavedMetricList = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<PaginatedExperimentSavedMetricList>;
+
 export type UpdateExperimentSavedMetricsRequestTagsList = Array<unknown>;
+const UpdateExperimentSavedMetricsRequestTagsList =
+  CreateExperimentSavedMetricsRequestTagsList as any as S.Schema<UpdateExperimentSavedMetricsRequestTagsList>;
+
 export interface UpdateExperimentSavedMetricsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -151,7 +219,15 @@ export interface UpdateExperimentSavedMetricsRequest {
   query?: unknown;
   tags?: UpdateExperimentSavedMetricsRequestTagsList;
 }
+const UpdateExperimentSavedMetricsRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<UpdateExperimentSavedMetricsRequest>;
+
 export type UpdateExperimentSavedMetricsPartialRequestTagsList = Array<unknown>;
+const UpdateExperimentSavedMetricsPartialRequestTagsList =
+  CreateExperimentSavedMetricsRequestTagsList as any as S.Schema<UpdateExperimentSavedMetricsPartialRequestTagsList>;
+
 export interface UpdateExperimentSavedMetricsPartialRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -165,6 +241,11 @@ export interface UpdateExperimentSavedMetricsPartialRequest {
   query?: unknown;
   tags?: UpdateExperimentSavedMetricsPartialRequestTagsList;
 }
+const UpdateExperimentSavedMetricsPartialRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<UpdateExperimentSavedMetricsPartialRequest>;
+
 export type CreateExperimentSavedMetricsError = BadRequest | Forbidden | NotFound | PosthogOpError;
 export const createExperimentSavedMetrics: API.OperationMethod<
   CreateExperimentSavedMetricsRequest,
@@ -172,8 +253,8 @@ export const createExperimentSavedMetrics: API.OperationMethod<
   CreateExperimentSavedMetricsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1) as any as S.Schema<CreateExperimentSavedMetricsRequest>,
-  output: __S(6) as any as S.Schema<ExperimentSavedMetric>,
+  input: CreateExperimentSavedMetricsRequest,
+  output: ExperimentSavedMetric,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -186,8 +267,8 @@ export const experimentSavedMetricsDestroy: API.OperationMethod<
   ExperimentSavedMetricsDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7) as any as S.Schema<ExperimentSavedMetricsDestroyRequest>,
-  output: __S(8) as any as S.Schema<ExperimentSavedMetricsDestroyResponse>,
+  input: ExperimentSavedMetricsDestroyRequest,
+  output: ExperimentSavedMetricsDestroyResponse,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -200,8 +281,8 @@ export const getExperimentSavedMetrics: API.OperationMethod<
   GetExperimentSavedMetricsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9) as any as S.Schema<GetExperimentSavedMetricsRequest>,
-  output: __S(6) as any as S.Schema<ExperimentSavedMetric>,
+  input: GetExperimentSavedMetricsRequest,
+  output: ExperimentSavedMetric,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -214,8 +295,8 @@ export const listExperimentSavedMetrics: API.OperationMethod<
   ListExperimentSavedMetricsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10) as any as S.Schema<ListExperimentSavedMetricsRequest>,
-  output: __S(12) as any as S.Schema<PaginatedExperimentSavedMetricList>,
+  input: ListExperimentSavedMetricsRequest,
+  output: PaginatedExperimentSavedMetricList,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -228,8 +309,8 @@ export const updateExperimentSavedMetrics: API.OperationMethod<
   UpdateExperimentSavedMetricsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13) as any as S.Schema<UpdateExperimentSavedMetricsRequest>,
-  output: __S(6) as any as S.Schema<ExperimentSavedMetric>,
+  input: UpdateExperimentSavedMetricsRequest,
+  output: ExperimentSavedMetric,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -246,8 +327,8 @@ export const updateExperimentSavedMetricsPartial: API.OperationMethod<
   UpdateExperimentSavedMetricsPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14) as any as S.Schema<UpdateExperimentSavedMetricsPartialRequest>,
-  output: __S(6) as any as S.Schema<ExperimentSavedMetric>,
+  input: UpdateExperimentSavedMetricsPartialRequest,
+  output: ExperimentSavedMetric,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -265,7 +346,7 @@ function __c0(j: number): any {
           name: S.optional(S.String),
           description: S.optional(S.NullOr(S.String)),
           query: S.optional(S.Unknown),
-          tags: S.optional(__S(0)),
+          tags: S.optional(CreateExperimentSavedMetricsRequestTagsList),
         }).pipe(
           T.Http({
             method: "POST",
@@ -288,8 +369,8 @@ function __c0(j: number): any {
           last_name: S.optional(S.String),
           email: S.optional(S.String),
           is_email_verified: S.optional(S.NullOr(S.Boolean)),
-          hedgehog_config: S.optional(S.NullOr(__S(2))),
-          role_at_organization: S.optional(S.NullOr(S.Unknown)),
+          hedgehog_config: S.optional(S.NullOr(UserBasicHedgehogConfigMap)),
+          role_at_organization: S.optional(S.NullOr(UserBasicRoleAtOrganization)),
         }),
       ).annotate({ identifier: "UserBasic" });
     case 4:
@@ -303,7 +384,7 @@ function __c0(j: number): any {
         identifier: "ExperimentSavedMetricLinkedExperiment",
       });
     case 5:
-      return S.Array(__S(4));
+      return S.Array(ExperimentSavedMetricLinkedExperiment);
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -311,12 +392,12 @@ function __c0(j: number): any {
           name: S.optional(S.String),
           description: S.optional(S.NullOr(S.String)),
           query: S.optional(S.Unknown),
-          created_by: S.optional(S.NullOr(__S(3))),
+          created_by: S.optional(S.NullOr(UserBasic)),
           created_at: S.optional(S.String),
           updated_at: S.optional(S.String),
-          tags: S.optional(__S(0)),
+          tags: S.optional(ExperimentSavedMetricTagsList),
           user_access_level: S.optional(S.NullOr(S.String)),
-          linked_experiments: S.optional(__S(5)),
+          linked_experiments: S.optional(ExperimentSavedMetricLinkedExperimentsList),
         }),
       ).annotate({ identifier: "ExperimentSavedMetric" });
     case 7:
@@ -376,14 +457,14 @@ function __c1(j: number): any {
         identifier: "ListExperimentSavedMetricsRequest",
       });
     case 3:
-      return S.Array(__S(6));
+      return S.Array(ExperimentSavedMetric);
     case 4:
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.Number),
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: S.optional(__S(11)),
+          results: S.optional(PaginatedExperimentSavedMetricListResultsList),
         }),
       ).annotate({
         identifier: "PaginatedExperimentSavedMetricList",
@@ -396,7 +477,7 @@ function __c1(j: number): any {
           name: S.optional(S.String),
           description: S.optional(S.NullOr(S.String)),
           query: S.optional(S.Unknown),
-          tags: S.optional(__S(0)),
+          tags: S.optional(UpdateExperimentSavedMetricsRequestTagsList),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -415,7 +496,7 @@ function __c1(j: number): any {
           name: S.optional(S.String),
           description: S.optional(S.NullOr(S.String)),
           query: S.optional(S.Unknown),
-          tags: S.optional(__S(0)),
+          tags: S.optional(UpdateExperimentSavedMetricsPartialRequestTagsList),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -426,18 +507,5 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "UpdateExperimentSavedMetricsPartialRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
   }
 }

@@ -6,8 +6,6 @@ import { UnknownDaytonaError } from "../errors.ts";
 import { DaytonaProtocol, type DaytonaOpError, type DaytonaOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { DaytonaOpError, DaytonaOpContext };
 
@@ -21,7 +19,14 @@ export interface CreateWarmPoolRequest {
   /** Target region for the warm pool. Defaults to the organization default region. */
   target?: string;
 }
+const CreateWarmPoolRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<CreateWarmPoolRequest>;
+
 export type WarmPoolEnvMap = { [key: string]: string | undefined };
+const WarmPoolEnvMap = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<WarmPoolEnvMap>;
+
 export interface WarmPool {
   id: string;
   organizationId: string;
@@ -40,19 +45,43 @@ export interface WarmPool {
   createdAt: string;
   updatedAt: string;
 }
+const WarmPool = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<WarmPool>;
+
 export interface DeleteWarmPoolRequest {
   /** Warm pool ID */
   id: string;
   /** Use with JWT to specify the organization ID */
   xDaytonaOrganizationID?: string;
 }
+const DeleteWarmPoolRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<DeleteWarmPoolRequest>;
+
 export interface DeleteWarmPoolResponse {}
+const DeleteWarmPoolResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<DeleteWarmPoolResponse>;
+
 export interface ListWarmPoolsRequest {
   /** Use with JWT to specify the organization ID */
   xDaytonaOrganizationID?: string;
 }
+const ListWarmPoolsRequest = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<ListWarmPoolsRequest>;
+
 export type ListWarmPoolsResponseBodyList = Array<WarmPool>;
+const ListWarmPoolsResponseBodyList = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<ListWarmPoolsResponseBodyList>;
+
 export type ListWarmPoolsResponse = ListWarmPoolsResponseBodyList;
+const ListWarmPoolsResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<ListWarmPoolsResponse>;
+
 export interface UpdateWarmPoolRequest {
   /** Warm pool ID */
   id: string;
@@ -61,6 +90,11 @@ export interface UpdateWarmPoolRequest {
   /** New desired number of warm sandboxes (0 drains the pool) */
   pool: number;
 }
+const UpdateWarmPoolRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<UpdateWarmPoolRequest>;
+
 export type CreateWarmPoolError = DaytonaOpError;
 /** Create a warm pool */
 export const createWarmPool: API.OperationMethod<
@@ -69,8 +103,8 @@ export const createWarmPool: API.OperationMethod<
   CreateWarmPoolError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<CreateWarmPoolRequest>,
-  output: __S(2) as any as S.Schema<WarmPool>,
+  input: CreateWarmPoolRequest,
+  output: WarmPool,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -84,8 +118,8 @@ export const deleteWarmPool: API.OperationMethod<
   DeleteWarmPoolError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3) as any as S.Schema<DeleteWarmPoolRequest>,
-  output: __S(4) as any as S.Schema<DeleteWarmPoolResponse>,
+  input: DeleteWarmPoolRequest,
+  output: DeleteWarmPoolResponse,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -99,8 +133,8 @@ export const listWarmPools: API.OperationMethod<
   ListWarmPoolsError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5) as any as S.Schema<ListWarmPoolsRequest>,
-  output: __S(7) as any as S.Schema<ListWarmPoolsResponse>,
+  input: ListWarmPoolsRequest,
+  output: ListWarmPoolsResponse,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -114,8 +148,8 @@ export const updateWarmPool: API.OperationMethod<
   UpdateWarmPoolError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8) as any as S.Schema<UpdateWarmPoolRequest>,
-  output: __S(2) as any as S.Schema<WarmPool>,
+  input: UpdateWarmPoolRequest,
+  output: WarmPool,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -148,7 +182,7 @@ function __c0(j: number): any {
           mem: S.Number,
           disk: S.Number,
           osUser: S.String,
-          env: __S(1),
+          env: WarmPoolEnvMap,
           errorReason: S.optional(S.NullOr(S.String)),
           createdAt: S.String,
           updatedAt: S.String,
@@ -172,9 +206,9 @@ function __c0(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/warm-pools", code: 200 })),
       ).annotate({ identifier: "ListWarmPoolsRequest" });
     case 6:
-      return S.Array(__S(2));
+      return S.Array(WarmPool);
     case 7:
-      return S.suspend(() => __S(6).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => ListWarmPoolsResponseBodyList.pipe(T.RawResponseRoot())).annotate({
         identifier: "ListWarmPoolsResponse",
       });
   }
@@ -189,18 +223,5 @@ function __c1(j: number): any {
           pool: S.Number,
         }).pipe(T.Http({ method: "PATCH", uri: "/warm-pools/{id}", code: 200 })),
       ).annotate({ identifier: "UpdateWarmPoolRequest" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
   }
 }

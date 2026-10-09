@@ -7,8 +7,6 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -69,7 +67,11 @@ export interface PathSegment {
   /** If specified, use the key to retrieve the value in a Struct. */
   key?: string;
 }
+const PathSegment = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<PathSegment>;
+
 export type PathSegmentList = Array<PathSegment>;
+const PathSegmentList = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<PathSegmentList>;
+
 /** Specifies the double start and end of the range using half-open interval semantics [start, end). */
 export interface DoubleRange {
   /** start of the range (inclusive) */
@@ -77,6 +79,8 @@ export interface DoubleRange {
   /** end of the range (exclusive) */
   end?: number;
 }
+const DoubleRange = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<DoubleRange>;
+
 /** Specifies the way to match a double value. */
 export interface DoubleMatcher {
   /** If specified, the input double value must be equal to the value specified here. */
@@ -84,18 +88,26 @@ export interface DoubleMatcher {
   /** If specified, the input double value must be in the range specified here. Note: The range is using half-open interval semantics [start, end). */
   range?: DoubleRange;
 }
+const DoubleMatcher = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<DoubleMatcher>;
+
 /** NullMatch is an empty message to specify a null value. */
 export interface NullMatch {}
+const NullMatch = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<NullMatch>;
+
 /** Specifies the way to match a list value. */
 export interface ListMatcher {
   /** If specified, at least one of the values in the list must match the value specified. */
   oneOf?: ValueMatcher;
 }
+const ListMatcher = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<ListMatcher>;
+
 /** Google's `RE2 `_ regex engine. The regex string must adhere to the documented `syntax `_. The engine is designed to complete execution in linear time as well as limit the amount of memory used. Envoy supports program size checking via runtime. The runtime keys ``re2.max_program_size.error_level`` and ``re2.max_program_size.warn_level`` can be set to integers as the maximum program size or complexity that a compiled regex can have before an exception is thrown or a warning is logged, respectively. ``re2.max_program_size.error_level`` defaults to 100, and ``re2.max_program_size.warn_level`` has no default if unset (will not check/log a warning). Envoy emits two stats for tracking the program size of regexes: the histogram `re2.program_size`, which records the program size, and the counter `re2.exceeded_warn_level`, which is incremented each time the program size exceeds the warn level threshold. */
 export interface GoogleRE2 {
   /** This field controls the RE2 "program size" which is a rough estimate of how complex a compiled regex is to evaluate. A regex that has a program size greater than the configured value will fail to compile. In this case, the configured max program size can be increased or the regex can be simplified. If not specified, the default is 100. This field is deprecated; regexp validation should be performed on the management server instead of being done by each individual client. */
   maxProgramSize?: number;
 }
+const GoogleRE2 = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<GoogleRE2>;
+
 /** A regex matcher designed for safety when used with untrusted input. */
 export interface RegexMatcher {
   /** Google's RE2 regex engine. */
@@ -103,6 +115,8 @@ export interface RegexMatcher {
   /** The regex match string. The string must be supported by the configured engine. */
   regex?: string;
 }
+const RegexMatcher = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<RegexMatcher>;
+
 /** Specifies the way to match a string. [#next-free-field: 7] */
 export interface StringMatcher {
   /** The input string must match exactly the string specified here. Examples: * *abc* only matches the value *abc*. */
@@ -118,6 +132,8 @@ export interface StringMatcher {
   /** The input string must match the regular expression specified here. */
   safeRegex?: RegexMatcher;
 }
+const StringMatcher = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<StringMatcher>;
+
 /** Specifies the way to match a Protobuf::Value. Primitive values and ListValue are supported. StructValue is not supported and is always not matched. [#next-free-field: 7] */
 export interface ValueMatcher {
   /** If specified, a match occurs if and only if the target value is a double value and is matched to this field. */
@@ -133,6 +149,8 @@ export interface ValueMatcher {
   /** If specified, a match occurs if and only if the target value is a string value and is matched to this field. */
   stringMatch?: StringMatcher;
 }
+const ValueMatcher = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<ValueMatcher>;
+
 /** StructMatcher provides a general interface to check if a given value is matched in google.protobuf.Struct. It uses `path` to retrieve the value from the struct and then check if it's matched to the specified value. For example, for the following Struct: .. code-block:: yaml fields: a: struct_value: fields: b: struct_value: fields: c: string_value: pro t: list_value: values: - string_value: m - string_value: n The following MetadataMatcher is matched as the path [a, b, c] will retrieve a string value "pro" from the Metadata which is matched to the specified prefix match. .. code-block:: yaml path: - key: a - key: b - key: c value: string_match: prefix: pr The following StructMatcher is matched as the code will match one of the string values in the list at the path [a, t]. .. code-block:: yaml path: - key: a - key: t value: list_match: one_of: string_match: exact: m An example use of StructMatcher is to match metadata in envoy.v*.core.Node. */
 export interface StructMatcher {
   /** The path to retrieve the Value from the Struct. */
@@ -140,7 +158,11 @@ export interface StructMatcher {
   /** The StructMatcher is matched if the value retrieved by path is matched to this value. */
   value?: ValueMatcher;
 }
+const StructMatcher = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<StructMatcher>;
+
 export type StructMatcherList = Array<StructMatcher>;
+const StructMatcherList = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<StructMatcherList>;
+
 /** Specifies the way to match a Node. The match follows AND semantics. */
 export interface NodeMatcher {
   /** Specifies match criteria on the node metadata. */
@@ -148,17 +170,30 @@ export interface NodeMatcher {
   /** Specifies match criteria on the node id. */
   nodeId?: StringMatcher;
 }
+const NodeMatcher = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<NodeMatcher>;
+
 export type NodeMatcherList = Array<NodeMatcher>;
+const NodeMatcherList = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<NodeMatcherList>;
+
 /** Request for client status of clients identified by a list of NodeMatchers. */
 export interface ClientStatusRequest {
   /** Management server can use these match criteria to identify clients. The match follows OR semantics. */
   nodeMatchers?: NodeMatcherList;
 }
+const ClientStatusRequest = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<ClientStatusRequest>;
+
 export interface Client_statusDiscoveryRequest {
   /** Request body */
   body?: ClientStatusRequest;
 }
+const Client_statusDiscoveryRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<Client_statusDiscoveryRequest>;
+
 export type SocketAddressProtocolEnum = "TCP" | "UDP";
+const SocketAddressProtocolEnum = S.String;
+
 /** [#next-free-field: 7] */
 export interface SocketAddress {
   /** This is only valid if :ref:`resolver_name ` is specified below and the named resolver is capable of named port resolution. */
@@ -172,18 +207,26 @@ export interface SocketAddress {
   /** When binding to an IPv6 address above, this enables `IPv4 compatibility `_. Binding to ``::`` will allow both IPv4 and IPv6 connections, with peer IPv4 addresses mapped into IPv6 space as ``::FFFF:``. */
   ipv4Compat?: boolean;
 }
+const SocketAddress = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<SocketAddress>;
+
 export interface Pipe {
   /** The mode for the Pipe. Not applicable for abstract sockets. */
   mode?: number;
   /** Unix Domain Socket path. On Linux, paths starting with '@' will use the abstract namespace. The starting '@' is replaced by a null byte by Envoy. Paths starting with '@' will result in an error in environments other than Linux. */
   path?: string;
 }
+const Pipe = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<Pipe>;
+
 /** Addresses specify either a logical or physical address and port, which are used to tell Envoy where to bind/listen, connect to upstream and find management servers. */
 export interface Address {
   socketAddress?: SocketAddress;
   pipe?: Pipe;
 }
+const Address = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<Address>;
+
 export type AddressList = Array<Address>;
+const AddressList = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<AddressList>;
+
 /** Identifies location of where either Envoy runs or where upstream hosts run. */
 export interface Locality {
   /** When used for locality of upstream hosts, this field further splits zone into smaller chunks of sub-zones so they can be load balanced independently. */
@@ -193,14 +236,22 @@ export interface Locality {
   /** Region this :ref:`zone ` belongs to. */
   region?: string;
 }
+const Locality = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<Locality>;
+
 export type StringList = Array<string>;
+const StringList = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<StringList>;
+
 /** Envoy uses SemVer (https://semver.org/). Major/minor versions indicate expected behaviors and APIs, the patch version field is used only for security fixes and can be generally ignored. */
 export interface SemanticVersion {
   majorNumber?: number;
   minorNumber?: number;
   patch?: number;
 }
+const SemanticVersion = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<SemanticVersion>;
+
 export type DocumentMap = { [key: string]: unknown | undefined };
+const DocumentMap = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<DocumentMap>;
+
 /** BuildVersion combines SemVer version of extension with free-form build information (i.e. 'alpha', 'private-build') as a set of strings. */
 export interface BuildVersion {
   /** SemVer version of extension. */
@@ -208,6 +259,8 @@ export interface BuildVersion {
   /** Free-form build information. Envoy defines several well known keys in the source/common/version/version.h file */
   metadata?: DocumentMap;
 }
+const BuildVersion = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<BuildVersion>;
+
 /** Version and identification for an Envoy extension. [#next-free-field: 6] */
 export interface Extension {
   /** The version is a property of the extension and maintained independently of other extensions and the Envoy API. This field is not set when extension did not provide version information. */
@@ -221,7 +274,11 @@ export interface Extension {
   /** This is the name of the Envoy filter as specified in the Envoy configuration, e.g. envoy.filters.http.router, com.acme.widget. */
   name?: string;
 }
+const Extension = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<Extension>;
+
 export type ExtensionList = Array<Extension>;
+const ExtensionList = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<ExtensionList>;
+
 /** Identifies a specific Envoy instance. The node identifier is presented to the management server, which may use this identifier to distinguish per Envoy configuration for serving. [#next-free-field: 12] */
 export interface Node {
   /** Known listening ports on the node as a generic hint to the management server for filtering :ref:`listeners ` to be returned. For example, if there is a listener bound to port 80, the list can optionally contain the SocketAddress `(0.0.0.0,80)`. The field is optional and just a hint. */
@@ -247,7 +304,11 @@ export interface Node {
   /** Opaque metadata extending the node identifier. Envoy will pass this directly to the management server. */
   metadata?: DocumentMap;
 }
+const Node = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<Node>;
+
 export type PerXdsConfigStatusEnum = "UNKNOWN" | "SYNCED" | "NOT_SENT" | "STALE" | "ERROR";
+const PerXdsConfigStatusEnum = S.String;
+
 export interface DynamicRouteConfig {
   /** This is the per-resource version information. This version is currently taken from the :ref:`version_info ` field at the time that the route configuration was loaded. */
   versionInfo?: string;
@@ -256,14 +317,28 @@ export interface DynamicRouteConfig {
   /** The timestamp when the Route was last updated. */
   lastUpdated?: string;
 }
+const DynamicRouteConfig = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<DynamicRouteConfig>;
+
 export type DynamicRouteConfigList = Array<DynamicRouteConfig>;
+const DynamicRouteConfigList = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<DynamicRouteConfigList>;
+
 export interface StaticRouteConfig {
   /** The route config. */
   routeConfig?: DocumentMap;
   /** The timestamp when the Route was last updated. */
   lastUpdated?: string;
 }
+const StaticRouteConfig = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<StaticRouteConfig>;
+
 export type StaticRouteConfigList = Array<StaticRouteConfig>;
+const StaticRouteConfigList = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<StaticRouteConfigList>;
+
 /** Envoy's RDS implementation fills this message with all currently loaded routes, as described by their RouteConfiguration objects. Static routes that are either defined in the bootstrap configuration or defined inline while configuring listeners are separated from those configured dynamically via RDS. Route configuration information can be used to recreate an Envoy configuration by populating all routes as static routes or by returning them in RDS responses. */
 export interface RoutesConfigDump {
   /** The dynamically loaded route configs. */
@@ -271,6 +346,8 @@ export interface RoutesConfigDump {
   /** The statically loaded route configs. */
   staticRouteConfigs?: StaticRouteConfigList;
 }
+const RoutesConfigDump = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<RoutesConfigDump>;
+
 /** Describes a dynamically loaded cluster via the CDS API. */
 export interface DynamicCluster {
   /** This is the per-resource version information. This version is currently taken from the :ref:`version_info ` field at the time that the cluster was loaded. In the future, discrete per-cluster versions may be supported by the API. */
@@ -280,7 +357,11 @@ export interface DynamicCluster {
   /** The cluster config. */
   cluster?: DocumentMap;
 }
+const DynamicCluster = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<DynamicCluster>;
+
 export type DynamicClusterList = Array<DynamicCluster>;
+const DynamicClusterList = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<DynamicClusterList>;
+
 /** Describes a statically loaded cluster. */
 export interface StaticCluster {
   /** The timestamp when the Cluster was last updated. */
@@ -288,7 +369,11 @@ export interface StaticCluster {
   /** The cluster config. */
   cluster?: DocumentMap;
 }
+const StaticCluster = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<StaticCluster>;
+
 export type StaticClusterList = Array<StaticCluster>;
+const StaticClusterList = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<StaticClusterList>;
+
 /** Envoy's cluster manager fills this message with all currently known clusters. Cluster configuration information can be used to recreate an Envoy configuration by populating all clusters as static clusters or by returning them in a CDS response. */
 export interface ClustersConfigDump {
   /** This is the :ref:`version_info ` in the last processed CDS discovery response. If there are only static bootstrap clusters, this field will be "". */
@@ -300,6 +385,8 @@ export interface ClustersConfigDump {
   /** The dynamically loaded warming clusters. These are clusters that are currently undergoing warming in preparation to service data plane traffic. Note that if attempting to recreate an Envoy configuration from a configuration dump, the warming clusters should generally be discarded. */
   dynamicWarmingClusters?: DynamicClusterList;
 }
+const ClustersConfigDump = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<ClustersConfigDump>;
+
 /** Describes a statically loaded listener. */
 export interface StaticListener {
   /** The listener config. */
@@ -307,7 +394,11 @@ export interface StaticListener {
   /** The timestamp when the Listener was last successfully updated. */
   lastUpdated?: string;
 }
+const StaticListener = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<StaticListener>;
+
 export type StaticListenerList = Array<StaticListener>;
+const StaticListenerList = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<StaticListenerList>;
+
 export interface UpdateFailureState {
   /** What the component configuration would have been if the update had succeeded. */
   failedConfiguration?: DocumentMap;
@@ -316,6 +407,8 @@ export interface UpdateFailureState {
   /** Details about the last failed update attempt. */
   details?: string;
 }
+const UpdateFailureState = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<UpdateFailureState>;
+
 export interface DynamicListenerState {
   /** The listener config. */
   listener?: DocumentMap;
@@ -324,6 +417,8 @@ export interface DynamicListenerState {
   /** The timestamp when the Listener was last successfully updated. */
   lastUpdated?: string;
 }
+const DynamicListenerState = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<DynamicListenerState>;
+
 /** Describes a dynamically loaded listener via the LDS API. [#next-free-field: 6] */
 export interface DynamicListener {
   /** Set if the last update failed, cleared after the next successful update. */
@@ -337,7 +432,11 @@ export interface DynamicListener {
   /** The listener state for any draining listener by this name. These are listeners that are currently undergoing draining in preparation to stop servicing data plane traffic. Note that if attempting to recreate an Envoy configuration from a configuration dump, the draining listeners should generally be discarded. */
   drainingState?: DynamicListenerState;
 }
+const DynamicListener = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<DynamicListener>;
+
 export type DynamicListenerList = Array<DynamicListener>;
+const DynamicListenerList = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<DynamicListenerList>;
+
 /** Envoy's listener manager fills this message with all currently known listeners. Listener configuration information can be used to recreate an Envoy configuration by populating all listeners as static listeners or by returning them in a LDS response. */
 export interface ListenersConfigDump {
   /** The statically loaded listener configs. */
@@ -347,7 +446,11 @@ export interface ListenersConfigDump {
   /** This is the :ref:`version_info ` in the last processed LDS discovery response. If there are only static bootstrap listeners, this field will be "". */
   versionInfo?: string;
 }
+const ListenersConfigDump = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<ListenersConfigDump>;
+
 export type DocumentMapList = Array<DocumentMap>;
+const DocumentMapList = /*@__PURE__*/ __L.at(__c5, 5) as any as S.Schema<DocumentMapList>;
+
 export interface DynamicScopedRouteConfigs {
   /** The name assigned to the scoped route configurations. */
   name?: string;
@@ -358,7 +461,17 @@ export interface DynamicScopedRouteConfigs {
   /** The scoped route configurations. */
   scopedRouteConfigs?: DocumentMapList;
 }
+const DynamicScopedRouteConfigs = /*@__PURE__*/ __L.at(
+  __c5,
+  6,
+) as any as S.Schema<DynamicScopedRouteConfigs>;
+
 export type DynamicScopedRouteConfigsList = Array<DynamicScopedRouteConfigs>;
+const DynamicScopedRouteConfigsList = /*@__PURE__*/ __L.at(
+  __c5,
+  7,
+) as any as S.Schema<DynamicScopedRouteConfigsList>;
+
 export interface InlineScopedRouteConfigs {
   /** The scoped route configurations. */
   scopedRouteConfigs?: DocumentMapList;
@@ -367,7 +480,17 @@ export interface InlineScopedRouteConfigs {
   /** The name assigned to the scoped route configurations. */
   name?: string;
 }
+const InlineScopedRouteConfigs = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<InlineScopedRouteConfigs>;
+
 export type InlineScopedRouteConfigsList = Array<InlineScopedRouteConfigs>;
+const InlineScopedRouteConfigsList = /*@__PURE__*/ __L.at(
+  __c6,
+  1,
+) as any as S.Schema<InlineScopedRouteConfigsList>;
+
 /** Envoy's scoped RDS implementation fills this message with all currently loaded route configuration scopes (defined via ScopedRouteConfigurationsSet protos). This message lists both the scopes defined inline with the higher order object (i.e., the HttpConnectionManager) and the dynamically obtained scopes via the SRDS API. */
 export interface ScopedRoutesConfigDump {
   /** The dynamically loaded scoped route configs. */
@@ -375,6 +498,11 @@ export interface ScopedRoutesConfigDump {
   /** The statically loaded scoped route configs. */
   inlineScopedRouteConfigs?: InlineScopedRouteConfigsList;
 }
+const ScopedRoutesConfigDump = /*@__PURE__*/ __L.at(
+  __c6,
+  2,
+) as any as S.Schema<ScopedRoutesConfigDump>;
+
 /** Detailed config (per xDS) with status. [#next-free-field: 6] */
 export interface PerXdsConfig {
   status?: PerXdsConfigStatusEnum;
@@ -383,18 +511,28 @@ export interface PerXdsConfig {
   listenerConfig?: ListenersConfigDump;
   scopedRouteConfig?: ScopedRoutesConfigDump;
 }
+const PerXdsConfig = /*@__PURE__*/ __L.at(__c6, 3) as any as S.Schema<PerXdsConfig>;
+
 export type PerXdsConfigList = Array<PerXdsConfig>;
+const PerXdsConfigList = /*@__PURE__*/ __L.at(__c6, 4) as any as S.Schema<PerXdsConfigList>;
+
 /** All xds configs for a particular client. */
 export interface ClientConfig {
   /** Node for a particular client. */
   node?: Node;
   xdsConfig?: PerXdsConfigList;
 }
+const ClientConfig = /*@__PURE__*/ __L.at(__c6, 5) as any as S.Schema<ClientConfig>;
+
 export type ClientConfigList = Array<ClientConfig>;
+const ClientConfigList = /*@__PURE__*/ __L.at(__c6, 6) as any as S.Schema<ClientConfigList>;
+
 export interface ClientStatusResponse {
   /** Client configs for the clients specified in the ClientStatusRequest. */
   config?: ClientConfigList;
 }
+const ClientStatusResponse = /*@__PURE__*/ __L.at(__c6, 7) as any as S.Schema<ClientStatusResponse>;
+
 export type Client_statusDiscoveryError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 export const client_statusDiscovery: API.OperationMethod<
   Client_statusDiscoveryRequest,
@@ -402,8 +540,8 @@ export const client_statusDiscovery: API.OperationMethod<
   Client_statusDiscoveryError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15) as any as S.Schema<Client_statusDiscoveryRequest>,
-  output: __S(55) as any as S.Schema<ClientStatusResponse>,
+  input: Client_statusDiscoveryRequest,
+  output: ClientStatusResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -419,7 +557,7 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "PathSegment" });
     case 1:
-      return S.Array(__S(0));
+      return S.Array(PathSegment);
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -431,7 +569,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           exact: S.optional(S.Number),
-          range: S.optional(__S(2)),
+          range: S.optional(DoubleRange),
         }),
       ).annotate({ identifier: "DoubleMatcher" });
     case 4:
@@ -441,7 +579,7 @@ function __c0(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          oneOf: S.optional(S.suspend(() => __S(9))),
+          oneOf: S.optional(S.suspend(() => ValueMatcher)),
         }),
       ).annotate({ identifier: "ListMatcher" });
     case 6:
@@ -453,7 +591,7 @@ function __c0(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          googleRe2: S.optional(__S(6)),
+          googleRe2: S.optional(GoogleRE2),
           regex: S.optional(S.String),
         }),
       ).annotate({ identifier: "RegexMatcher" });
@@ -469,48 +607,48 @@ function __c1(j: number): any {
           prefix: S.optional(S.String),
           ignoreCase: S.optional(S.Boolean),
           suffix: S.optional(S.String),
-          safeRegex: S.optional(__S(7)),
+          safeRegex: S.optional(RegexMatcher),
         }),
       ).annotate({ identifier: "StringMatcher" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          doubleMatch: S.optional(__S(3)),
+          doubleMatch: S.optional(DoubleMatcher),
           presentMatch: S.optional(S.Boolean),
-          nullMatch: S.optional(__S(4)),
+          nullMatch: S.optional(NullMatch),
           boolMatch: S.optional(S.Boolean),
-          listMatch: S.optional(__S(5)),
-          stringMatch: S.optional(__S(8)),
+          listMatch: S.optional(ListMatcher),
+          stringMatch: S.optional(StringMatcher),
         }),
       ).annotate({ identifier: "ValueMatcher" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          path: S.optional(__S(1)),
-          value: S.optional(__S(9)),
+          path: S.optional(PathSegmentList),
+          value: S.optional(ValueMatcher),
         }),
       ).annotate({ identifier: "StructMatcher" });
     case 3:
-      return S.Array(__S(10));
+      return S.Array(StructMatcher);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          nodeMetadatas: S.optional(__S(11)),
-          nodeId: S.optional(__S(8)),
+          nodeMetadatas: S.optional(StructMatcherList),
+          nodeId: S.optional(StringMatcher),
         }),
       ).annotate({ identifier: "NodeMatcher" });
     case 5:
-      return S.Array(__S(12));
+      return S.Array(NodeMatcher);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          nodeMatchers: S.optional(__S(13)),
+          nodeMatchers: S.optional(NodeMatcherList),
         }),
       ).annotate({ identifier: "ClientStatusRequest" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(__S(14).pipe(T.HttpBody())),
+          body: S.optional(ClientStatusRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -532,7 +670,7 @@ function __c2(j: number): any {
           address: S.optional(S.String),
           portValue: S.optional(S.Number),
           resolverName: S.optional(S.String),
-          protocol: S.optional(S.String),
+          protocol: S.optional(SocketAddressProtocolEnum),
           ipv4Compat: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "SocketAddress" });
@@ -546,12 +684,12 @@ function __c2(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          socketAddress: S.optional(__S(16)),
-          pipe: S.optional(__S(17)),
+          socketAddress: S.optional(SocketAddress),
+          pipe: S.optional(Pipe),
         }),
       ).annotate({ identifier: "Address" });
     case 3:
-      return S.Array(__S(18));
+      return S.Array(Address);
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -579,14 +717,14 @@ function __c3(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          version: S.optional(__S(22)),
-          metadata: S.optional(__S(23)),
+          version: S.optional(SemanticVersion),
+          metadata: S.optional(DocumentMap),
         }),
       ).annotate({ identifier: "BuildVersion" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          version: S.optional(__S(24)),
+          version: S.optional(BuildVersion),
           category: S.optional(S.String),
           typeDescriptor: S.optional(S.String),
           disabled: S.optional(S.Boolean),
@@ -594,42 +732,42 @@ function __c3(j: number): any {
         }),
       ).annotate({ identifier: "Extension" });
     case 2:
-      return S.Array(__S(25));
+      return S.Array(Extension);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          listeningAddresses: S.optional(__S(19)),
+          listeningAddresses: S.optional(AddressList),
           userAgentVersion: S.optional(S.String),
           buildVersion: S.optional(S.String),
           userAgentName: S.optional(S.String),
-          locality: S.optional(__S(20)),
+          locality: S.optional(Locality),
           id: S.optional(S.String),
-          clientFeatures: S.optional(__S(21)),
+          clientFeatures: S.optional(StringList),
           cluster: S.optional(S.String),
-          extensions: S.optional(__S(26)),
-          userAgentBuildVersion: S.optional(__S(24)),
-          metadata: S.optional(__S(23)),
+          extensions: S.optional(ExtensionList),
+          userAgentBuildVersion: S.optional(BuildVersion),
+          metadata: S.optional(DocumentMap),
         }),
       ).annotate({ identifier: "Node" });
     case 4:
       return S.suspend(() =>
         S.Struct({
           versionInfo: S.optional(S.String),
-          routeConfig: S.optional(__S(23)),
+          routeConfig: S.optional(DocumentMap),
           lastUpdated: S.optional(S.String),
         }),
       ).annotate({ identifier: "DynamicRouteConfig" });
     case 5:
-      return S.Array(__S(28));
+      return S.Array(DynamicRouteConfig);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          routeConfig: S.optional(__S(23)),
+          routeConfig: S.optional(DocumentMap),
           lastUpdated: S.optional(S.String),
         }),
       ).annotate({ identifier: "StaticRouteConfig" });
     case 7:
-      return S.Array(__S(30));
+      return S.Array(StaticRouteConfig);
   }
 }
 function __c4(j: number): any {
@@ -637,8 +775,8 @@ function __c4(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          dynamicRouteConfigs: S.optional(__S(29)),
-          staticRouteConfigs: S.optional(__S(31)),
+          dynamicRouteConfigs: S.optional(DynamicRouteConfigList),
+          staticRouteConfigs: S.optional(StaticRouteConfigList),
         }),
       ).annotate({ identifier: "RoutesConfigDump" });
     case 1:
@@ -646,38 +784,38 @@ function __c4(j: number): any {
         S.Struct({
           versionInfo: S.optional(S.String),
           lastUpdated: S.optional(S.String),
-          cluster: S.optional(__S(23)),
+          cluster: S.optional(DocumentMap),
         }),
       ).annotate({ identifier: "DynamicCluster" });
     case 2:
-      return S.Array(__S(33));
+      return S.Array(DynamicCluster);
     case 3:
       return S.suspend(() =>
         S.Struct({
           lastUpdated: S.optional(S.String),
-          cluster: S.optional(__S(23)),
+          cluster: S.optional(DocumentMap),
         }),
       ).annotate({ identifier: "StaticCluster" });
     case 4:
-      return S.Array(__S(35));
+      return S.Array(StaticCluster);
     case 5:
       return S.suspend(() =>
         S.Struct({
           versionInfo: S.optional(S.String),
-          dynamicActiveClusters: S.optional(__S(34)),
-          staticClusters: S.optional(__S(36)),
-          dynamicWarmingClusters: S.optional(__S(34)),
+          dynamicActiveClusters: S.optional(DynamicClusterList),
+          staticClusters: S.optional(StaticClusterList),
+          dynamicWarmingClusters: S.optional(DynamicClusterList),
         }),
       ).annotate({ identifier: "ClustersConfigDump" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          listener: S.optional(__S(23)),
+          listener: S.optional(DocumentMap),
           lastUpdated: S.optional(S.String),
         }),
       ).annotate({ identifier: "StaticListener" });
     case 7:
-      return S.Array(__S(38));
+      return S.Array(StaticListener);
   }
 }
 function __c5(j: number): any {
@@ -685,7 +823,7 @@ function __c5(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          failedConfiguration: S.optional(__S(23)),
+          failedConfiguration: S.optional(DocumentMap),
           lastUpdateAttempt: S.optional(S.String),
           details: S.optional(S.String),
         }),
@@ -693,7 +831,7 @@ function __c5(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          listener: S.optional(__S(23)),
+          listener: S.optional(DocumentMap),
           versionInfo: S.optional(S.String),
           lastUpdated: S.optional(S.String),
         }),
@@ -701,38 +839,38 @@ function __c5(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          errorState: S.optional(__S(40)),
+          errorState: S.optional(UpdateFailureState),
           name: S.optional(S.String),
-          warmingState: S.optional(__S(41)),
-          activeState: S.optional(__S(41)),
-          drainingState: S.optional(__S(41)),
+          warmingState: S.optional(DynamicListenerState),
+          activeState: S.optional(DynamicListenerState),
+          drainingState: S.optional(DynamicListenerState),
         }),
       ).annotate({ identifier: "DynamicListener" });
     case 3:
-      return S.Array(__S(42));
+      return S.Array(DynamicListener);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          staticListeners: S.optional(__S(39)),
-          dynamicListeners: S.optional(__S(43)),
+          staticListeners: S.optional(StaticListenerList),
+          dynamicListeners: S.optional(DynamicListenerList),
           versionInfo: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListenersConfigDump" });
     case 5:
-      return S.Array(__S(23));
+      return S.Array(DocumentMap);
     case 6:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           versionInfo: S.optional(S.String),
           lastUpdated: S.optional(S.String),
-          scopedRouteConfigs: S.optional(__S(45)),
+          scopedRouteConfigs: S.optional(DocumentMapList),
         }),
       ).annotate({
         identifier: "DynamicScopedRouteConfigs",
       });
     case 7:
-      return S.Array(__S(46));
+      return S.Array(DynamicScopedRouteConfigs);
   }
 }
 function __c6(j: number): any {
@@ -740,69 +878,46 @@ function __c6(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          scopedRouteConfigs: S.optional(__S(45)),
+          scopedRouteConfigs: S.optional(DocumentMapList),
           lastUpdated: S.optional(S.String),
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "InlineScopedRouteConfigs" });
     case 1:
-      return S.Array(__S(48));
+      return S.Array(InlineScopedRouteConfigs);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          dynamicScopedRouteConfigs: S.optional(__S(47)),
-          inlineScopedRouteConfigs: S.optional(__S(49)),
+          dynamicScopedRouteConfigs: S.optional(DynamicScopedRouteConfigsList),
+          inlineScopedRouteConfigs: S.optional(InlineScopedRouteConfigsList),
         }),
       ).annotate({ identifier: "ScopedRoutesConfigDump" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(S.String),
-          routeConfig: S.optional(__S(32)),
-          clusterConfig: S.optional(__S(37)),
-          listenerConfig: S.optional(__S(44)),
-          scopedRouteConfig: S.optional(__S(50)),
+          status: S.optional(PerXdsConfigStatusEnum),
+          routeConfig: S.optional(RoutesConfigDump),
+          clusterConfig: S.optional(ClustersConfigDump),
+          listenerConfig: S.optional(ListenersConfigDump),
+          scopedRouteConfig: S.optional(ScopedRoutesConfigDump),
         }),
       ).annotate({ identifier: "PerXdsConfig" });
     case 4:
-      return S.Array(__S(51));
+      return S.Array(PerXdsConfig);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          node: S.optional(__S(27)),
-          xdsConfig: S.optional(__S(52)),
+          node: S.optional(Node),
+          xdsConfig: S.optional(PerXdsConfigList),
         }),
       ).annotate({ identifier: "ClientConfig" });
     case 6:
-      return S.Array(__S(53));
+      return S.Array(ClientConfig);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          config: S.optional(__S(54)),
+          config: S.optional(ClientConfigList),
         }),
       ).annotate({ identifier: "ClientStatusResponse" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
   }
 }

@@ -5,8 +5,6 @@ import * as S from "@distilled.cloud/core/schema";
 import { PosthogProtocol, type PosthogOpError, type PosthogOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { PosthogOpError, PosthogOpContext };
 
@@ -17,6 +15,8 @@ export type MCPAnalyticsSubmissionFeedbackCategoryEnum =
   | "bug"
   | "docs"
   | "other";
+const MCPAnalyticsSubmissionFeedbackCategoryEnum = S.String;
+
 export interface CreateMcpAnalyticsFeedbackRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -41,8 +41,15 @@ export interface CreateMcpAnalyticsFeedbackRequest {
   /** High-level category for the feedback. * `results` - Results * `usability` - Usability * `bug` - Bug * `docs` - Docs * `other` - Other */
   category?: MCPAnalyticsSubmissionFeedbackCategoryEnum | (string & {});
 }
+const CreateMcpAnalyticsFeedbackRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<CreateMcpAnalyticsFeedbackRequest>;
+
 /** * `feedback` - Feedback * `missing_capability` - Missing capability */
 export type MCPAnalyticsSubmissionKindEnum = "feedback" | "missing_capability";
+const MCPAnalyticsSubmissionKindEnum = S.String;
+
 export interface MCPAnalyticsSubmission {
   /** Unique identifier for this submission. */
   id: string;
@@ -75,6 +82,11 @@ export interface MCPAnalyticsSubmission {
   /** When this submission was last updated. */
   updated_at: string;
 }
+const MCPAnalyticsSubmission = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<MCPAnalyticsSubmission>;
+
 export interface CreateMcpAnalyticsMissingCapabilityRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -99,6 +111,11 @@ export interface CreateMcpAnalyticsMissingCapabilityRequest {
   /** Whether the missing capability blocked the user's progress. */
   blocked?: boolean;
 }
+const CreateMcpAnalyticsMissingCapabilityRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<CreateMcpAnalyticsMissingCapabilityRequest>;
+
 export interface GenerateMcpAnalyticsSessionIntentRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -107,20 +124,34 @@ export interface GenerateMcpAnalyticsSessionIntentRequest {
   /** Absolute ISO timestamp lower bound for the intent scan -- pass the session's start so older sessions resolve. Defaults to a 7-day lookback when omitted. */
   date_from?: string;
 }
+const GenerateMcpAnalyticsSessionIntentRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<GenerateMcpAnalyticsSessionIntentRequest>;
+
 export interface MCPSessionIntent {
   /** $mcp_session_id the intent summary was generated for. */
   session_id: string;
   /** LLM-generated summary (at most two sentences) of the agent's overall goal for the session. */
   intent: string;
 }
+const MCPSessionIntent = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<MCPSessionIntent>;
+
 export interface GetMcpAnalyticsIntentClusterRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** Narrow the response to one tool: its pivot entry, the clusters it serves or switches with, and the overlap pairs it belongs to. Coverage meta stays whole-snapshot. Use this for single-tool views so they don't download every cluster and pivot to render one row. An unknown tool returns empty sections, not a 404. */
   tool?: string;
 }
+const GetMcpAnalyticsIntentClusterRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<GetMcpAnalyticsIntentClusterRequest>;
+
 /** * `idle` - Idle * `computing` - Computing * `error` - Error */
 export type MCPIntentClusterSnapshotStatusEnum = "idle" | "computing" | "error";
+const MCPIntentClusterSnapshotStatusEnum = S.String;
+
 export interface MCPIntentClusterToolEntry {
   /** MCP tool name that received calls for this cluster. */
   tool: string;
@@ -133,14 +164,36 @@ export interface MCPIntentClusterToolEntry {
   /** Error rate for this tool within the cluster, 0-100. */
   error_rate_pct: number;
 }
+const MCPIntentClusterToolEntry = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<MCPIntentClusterToolEntry>;
+
 /** Per-tool breakdown of calls and errors within the cluster. */
 export type MCPIntentClusterToolDistributionList = Array<MCPIntentClusterToolEntry>;
+const MCPIntentClusterToolDistributionList = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<MCPIntentClusterToolDistributionList>;
+
 /** Up to three representative intent strings from the cluster, ordered by frequency desc. */
 export type MCPIntentClusterSampleIntentsList = Array<string>;
+const MCPIntentClusterSampleIntentsList = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<MCPIntentClusterSampleIntentsList>;
+
 /** Ordered tool names called during the path. Length is fixed; null entries indicate the session ended before this step. */
 export type MCPIntentClusterJourneyPathStepsList = Array<string | null>;
+const MCPIntentClusterJourneyPathStepsList = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<MCPIntentClusterJourneyPathStepsList>;
+
 /** * `completed` - Completed * `error` - Error */
 export type MCPIntentClusterJourneyPathOutcomeEnum = "completed" | "error";
+const MCPIntentClusterJourneyPathOutcomeEnum = S.String;
+
 export interface MCPIntentClusterJourneyPath {
   /** Ordered tool names called during the path. Length is fixed; null entries indicate the session ended before this step. */
   steps: MCPIntentClusterJourneyPathStepsList;
@@ -149,8 +202,18 @@ export interface MCPIntentClusterJourneyPath {
   /** Number of sessions in this cluster that followed this exact path. */
   count: number;
 }
+const MCPIntentClusterJourneyPath = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<MCPIntentClusterJourneyPath>;
+
 /** Top paths by session count, capped at MAX_JOURNEY_PATHS_PER_CLUSTER. */
 export type MCPIntentClusterJourneyPathsList = Array<MCPIntentClusterJourneyPath>;
+const MCPIntentClusterJourneyPathsList = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<MCPIntentClusterJourneyPathsList>;
+
 export interface MCPIntentClusterJourney {
   /** Top paths by session count, capped at MAX_JOURNEY_PATHS_PER_CLUSTER. */
   paths: MCPIntentClusterJourneyPathsList;
@@ -159,6 +222,11 @@ export interface MCPIntentClusterJourney {
   /** Highest-volume non-completed path. Null when every path completed successfully. */
   leak: MCPIntentClusterJourneyPath | null;
 }
+const MCPIntentClusterJourney = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<MCPIntentClusterJourney>;
+
 export interface MCPClusterSwitch {
   /** Tool whose errored call the agent abandoned. */
   from_tool: string;
@@ -167,16 +235,30 @@ export interface MCPClusterSwitch {
   /** How many times this exact error-then-switch happened within the cluster. */
   count: number;
 }
+const MCPClusterSwitch = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<MCPClusterSwitch>;
+
 /** Errored call immediately followed by a different tool for the same intent: the strongest evidence agents mix the tools up. Top 10 by count. */
 export type MCPIntentClusterSwitchesList = Array<MCPClusterSwitch>;
+const MCPIntentClusterSwitchesList = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<MCPIntentClusterSwitchesList>;
+
 export interface MCPClusterSelfRetry {
   /** Tool the agent retried immediately after its own error. */
   tool: string;
   /** Number of immediate same-tool retries after an error. */
   count: number;
 }
+const MCPClusterSelfRetry = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<MCPClusterSelfRetry>;
+
 /** Errored call immediately retried with the same tool. Top 5 by count. */
 export type MCPIntentClusterSelfRetriesList = Array<MCPClusterSelfRetry>;
+const MCPIntentClusterSelfRetriesList = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<MCPIntentClusterSelfRetriesList>;
+
 export interface MCPIntentCluster {
   /** Stable cluster identifier within this snapshot. */
   id: number;
@@ -205,14 +287,26 @@ export interface MCPIntentCluster {
   /** Errored call immediately retried with the same tool. Top 5 by count. */
   self_retries: MCPIntentClusterSelfRetriesList;
 }
+const MCPIntentCluster = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<MCPIntentCluster>;
+
 /** All clusters in the snapshot. */
 export type MCPIntentClusterSnapshotClustersList = Array<MCPIntentCluster>;
+const MCPIntentClusterSnapshotClustersList = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<MCPIntentClusterSnapshotClustersList>;
+
 export interface MCPToolPivotCompetitor {
   /** The other tool with the largest share of this cluster's calls. */
   tool: string;
   /** That competitor's share of the cluster's calls, 0-100. */
   pct: number;
 }
+const MCPToolPivotCompetitor = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<MCPToolPivotCompetitor>;
+
 export interface MCPToolPivotClusterEntry {
   /** Cluster this entry refers to, within the snapshot. The cluster's own label, totals, and entropy live on that cluster -- join on this id rather than expecting them here. */
   cluster_id: number;
@@ -227,8 +321,18 @@ export interface MCPToolPivotClusterEntry {
   /** The strongest other tool in this cluster. Null when this tool is the only one. */
   top_competitor: MCPToolPivotCompetitor | null;
 }
+const MCPToolPivotClusterEntry = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<MCPToolPivotClusterEntry>;
+
 /** Intent clusters this tool serves, by call volume desc, capped at 20 and limited to clusters the snapshot carries. Use n_clusters_served for the true count. */
 export type MCPToolPivotClustersList = Array<MCPToolPivotClusterEntry>;
+const MCPToolPivotClustersList = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<MCPToolPivotClustersList>;
+
 export interface MCPToolPivot {
   /** Effective MCP tool name. */
   tool: string;
@@ -253,8 +357,15 @@ export interface MCPToolPivot {
   /** Intent clusters this tool serves, by call volume desc, capped at 20 and limited to clusters the snapshot carries. Use n_clusters_served for the true count. */
   clusters: MCPToolPivotClustersList;
 }
+const MCPToolPivot = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<MCPToolPivot>;
+
 /** Tool-centric pivot of the clusters: per tool, the intents it serves, capture per cluster, contested score, discovery rate, and description fit. Empty on snapshots computed before the per-call pipeline; recompute to populate. */
 export type MCPIntentClusterSnapshotToolsList = Array<MCPToolPivot>;
+const MCPIntentClusterSnapshotToolsList = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<MCPIntentClusterSnapshotToolsList>;
+
 export interface MCPToolOverlap {
   /** First tool of the pair (lexicographic order). */
   tool_a: string;
@@ -269,8 +380,15 @@ export interface MCPToolOverlap {
   /** The cluster contributing the most contested calls for this pair. */
   top_cluster_id: number;
 }
+const MCPToolOverlap = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<MCPToolOverlap>;
+
 /** Tool pairs competing for the same intent clusters, by contested call volume desc, capped at 50. */
 export type MCPIntentClusterSnapshotToolOverlapsList = Array<MCPToolOverlap>;
+const MCPIntentClusterSnapshotToolOverlapsList = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<MCPIntentClusterSnapshotToolOverlapsList>;
+
 export interface MCPIntentClusterSnapshotMeta {
   /** Cosine distance threshold used by the clustering algorithm. */
   distance_threshold: number;
@@ -307,6 +425,11 @@ export interface MCPIntentClusterSnapshotMeta {
   /** Share of pivot tools with a captured description. Description fit is only available for those. */
   description_coverage_pct: number | null;
 }
+const MCPIntentClusterSnapshotMeta = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<MCPIntentClusterSnapshotMeta>;
+
 export interface MCPIntentClusterSnapshot {
   /** Whether a snapshot is current (idle), being recomputed (computing), or failed (error). * `idle` - Idle * `computing` - Computing * `error` - Error */
   status: MCPIntentClusterSnapshotStatusEnum;
@@ -325,8 +448,23 @@ export interface MCPIntentClusterSnapshot {
   /** Settings and coverage of the snapshot's corpus. Null when no snapshot has been computed yet. */
   computed_with: MCPIntentClusterSnapshotMeta | null;
 }
+const MCPIntentClusterSnapshot = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<MCPIntentClusterSnapshot>;
+
 export type GetMcpAnalyticsIntentClusterResponseBodyList = Array<MCPIntentClusterSnapshot>;
+const GetMcpAnalyticsIntentClusterResponseBodyList = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<GetMcpAnalyticsIntentClusterResponseBodyList>;
+
 export type GetMcpAnalyticsIntentClusterResponse = GetMcpAnalyticsIntentClusterResponseBodyList;
+const GetMcpAnalyticsIntentClusterResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<GetMcpAnalyticsIntentClusterResponse>;
+
 export interface ListMcpAnalyticsFeedbackRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -335,13 +473,28 @@ export interface ListMcpAnalyticsFeedbackRequest {
   /** The initial index from which to return the results. */
   offset?: number;
 }
+const ListMcpAnalyticsFeedbackRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<ListMcpAnalyticsFeedbackRequest>;
+
 export type PaginatedMCPAnalyticsSubmissionListResultsList = Array<MCPAnalyticsSubmission>;
+const PaginatedMCPAnalyticsSubmissionListResultsList = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<PaginatedMCPAnalyticsSubmissionListResultsList>;
+
 export interface PaginatedMCPAnalyticsSubmissionList {
   count: number;
   next?: string | null;
   previous?: string | null;
   results: PaginatedMCPAnalyticsSubmissionListResultsList;
 }
+const PaginatedMCPAnalyticsSubmissionList = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<PaginatedMCPAnalyticsSubmissionList>;
+
 export interface ListMcpAnalyticsMissingCapabilitiesRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -350,6 +503,11 @@ export interface ListMcpAnalyticsMissingCapabilitiesRequest {
   /** The initial index from which to return the results. */
   offset?: number;
 }
+const ListMcpAnalyticsMissingCapabilitiesRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<ListMcpAnalyticsMissingCapabilitiesRequest>;
+
 export interface ListMcpAnalyticsSessionsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -372,8 +530,16 @@ export interface ListMcpAnalyticsSessionsRequest {
   /** Case-insensitive substring filter matched against session_id, distinct_id, mcp_client_name, and tools_used. */
   search?: string;
 }
+const ListMcpAnalyticsSessionsRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<ListMcpAnalyticsSessionsRequest>;
+
 /** Distinct $mcp_tool_name values seen in the session. */
 export type MCPSessionToolsUsedList = Array<string>;
+const MCPSessionToolsUsedList =
+  MCPIntentClusterSampleIntentsList as any as S.Schema<MCPSessionToolsUsedList>;
+
 export interface MCPSession {
   /** $mcp_session_id grouping all $mcp_tool_call events in the session. */
   session_id: string;
@@ -400,17 +566,39 @@ export interface MCPSession {
   /** LLM-generated summary (at most two sentences) of the agent's overall goal for the session. Empty until generated on demand via the generate_intent endpoint. */
   intent: string;
 }
+const MCPSession = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<MCPSession>;
+
 export type PaginatedMCPSessionListResultsList = Array<MCPSession>;
+const PaginatedMCPSessionListResultsList = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<PaginatedMCPSessionListResultsList>;
+
 export interface PaginatedMCPSessionList {
   results: PaginatedMCPSessionListResultsList;
   /** Whether more results exist beyond this page; the client fetches the next page with a larger offset. */
   has_next: boolean;
 }
+const PaginatedMCPSessionList = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<PaginatedMCPSessionList>;
+
 export interface McpAnalyticsIntentClustersRecomputeRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
+const McpAnalyticsIntentClustersRecomputeRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<McpAnalyticsIntentClustersRecomputeRequest>;
+
 export interface McpAnalyticsIntentClustersRecomputeResponse {}
+const McpAnalyticsIntentClustersRecomputeResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<McpAnalyticsIntentClustersRecomputeResponse>;
+
 export interface McpAnalyticsSessionsActivityOverviewRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -419,6 +607,11 @@ export interface McpAnalyticsSessionsActivityOverviewRequest {
   /** Property filters that narrow the underlying $mcp_tool_call events, JSON-encoded. A list of event, person, or session property filters, each with key, value, operator, and type. Example: [{"key": "$mcp_tool_name", "value": ["query_run"], "operator": "exact", "type": "event"}] */
   properties?: string;
 }
+const McpAnalyticsSessionsActivityOverviewRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  0,
+) as any as S.Schema<McpAnalyticsSessionsActivityOverviewRequest>;
+
 export interface MCPActivityStats {
   /** $mcp_tool_call events captured in the last 30 days. */
   total_calls: number;
@@ -435,6 +628,8 @@ export interface MCPActivityStats {
   /** $mcp_missing_capability events captured in the window. */
   missing_capability_reports: number;
 }
+const MCPActivityStats = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<MCPActivityStats>;
+
 export interface MCPActivityToolRow {
   /** MCP tool name ($mcp_tool_name). */
   tool: string;
@@ -443,16 +638,30 @@ export interface MCPActivityToolRow {
   /** Of those calls, how many errored. */
   errors: number;
 }
+const MCPActivityToolRow = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<MCPActivityToolRow>;
+
 /** Most-called tools in the window, top 5 by call count. */
 export type MCPActivityOverviewTopToolsList = Array<MCPActivityToolRow>;
+const MCPActivityOverviewTopToolsList = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<MCPActivityOverviewTopToolsList>;
+
 export interface MCPActivityClientRow {
   /** Agent client name ($mcp_client_name). Empty when the SDK did not capture it. */
   client: string;
   /** Tool calls from this client in the window. */
   calls: number;
 }
+const MCPActivityClientRow = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<MCPActivityClientRow>;
+
 /** Agent clients in the window, top 6 by call count. */
 export type MCPActivityOverviewClientsList = Array<MCPActivityClientRow>;
+const MCPActivityOverviewClientsList = /*@__PURE__*/ __L.at(
+  __c5,
+  5,
+) as any as S.Schema<MCPActivityOverviewClientsList>;
+
 export interface MCPActivityRecentCall {
   /** When the tool call was captured. */
   timestamp: string;
@@ -469,8 +678,18 @@ export interface MCPActivityRecentCall {
   /** Agent client name ($mcp_client_name) when captured. */
   client_name: string | null;
 }
+const MCPActivityRecentCall = /*@__PURE__*/ __L.at(
+  __c5,
+  6,
+) as any as S.Schema<MCPActivityRecentCall>;
+
 /** The 20 most recent tool calls, newest first. */
 export type MCPActivityOverviewRecentCallsList = Array<MCPActivityRecentCall>;
+const MCPActivityOverviewRecentCallsList = /*@__PURE__*/ __L.at(
+  __c5,
+  7,
+) as any as S.Schema<MCPActivityOverviewRecentCallsList>;
+
 export interface MCPActivityOverview {
   /** Aggregate counters over the last 30 days. */
   stats: MCPActivityStats;
@@ -481,12 +700,22 @@ export interface MCPActivityOverview {
   /** The 20 most recent tool calls, newest first. */
   recent_calls: MCPActivityOverviewRecentCallsList;
 }
+const MCPActivityOverview = /*@__PURE__*/ __L.at(__c6, 0) as any as S.Schema<MCPActivityOverview>;
+
 export interface McpAnalyticsSessionsIntentDigestRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
+const McpAnalyticsSessionsIntentDigestRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  1,
+) as any as S.Schema<McpAnalyticsSessionsIntentDigestRequest>;
+
 /** The MCP tool names recorded alongside this theme's intents, sorted, taken from the corpus. */
 export type MCPIntentThemeToolsList = Array<string>;
+const MCPIntentThemeToolsList =
+  MCPIntentClusterSampleIntentsList as any as S.Schema<MCPIntentThemeToolsList>;
+
 export interface MCPIntentTheme {
   /** Short sentence-case name for this group of intents. */
   name: string;
@@ -499,8 +728,15 @@ export interface MCPIntentTheme {
   /** The MCP tool names recorded alongside this theme's intents, sorted, taken from the corpus. */
   tools: MCPIntentThemeToolsList;
 }
+const MCPIntentTheme = /*@__PURE__*/ __L.at(__c6, 2) as any as S.Schema<MCPIntentTheme>;
+
 /** Up to 5 semantic groupings of the analysed intents, largest first. May be empty when the digest is null, or when none of the LLM's groupings resolved to recorded intents. */
 export type MCPIntentDigestThemesList = Array<MCPIntentTheme>;
+const MCPIntentDigestThemesList = /*@__PURE__*/ __L.at(
+  __c6,
+  3,
+) as any as S.Schema<MCPIntentDigestThemesList>;
+
 export interface MCPIntentDigest {
   /** LLM-generated one-sentence summary of what agents are trying to do with this MCP server, derived from the most recent recorded $mcp_intents across all sessions. Null when the project has no recorded intents yet. */
   digest: string | null;
@@ -509,6 +745,8 @@ export interface MCPIntentDigest {
   /** Up to 5 semantic groupings of the analysed intents, largest first. May be empty when the digest is null, or when none of the LLM's groupings resolved to recorded intents. */
   themes: MCPIntentDigestThemesList;
 }
+const MCPIntentDigest = /*@__PURE__*/ __L.at(__c6, 4) as any as S.Schema<MCPIntentDigest>;
+
 export interface McpAnalyticsSessionsToolCallsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -525,6 +763,11 @@ export interface McpAnalyticsSessionsToolCallsRequest {
   /** Property filters that narrow the underlying $mcp_tool_call events, JSON-encoded. A list of event, person, or session property filters, each with key, value, operator, and type. Example: [{"key": "$mcp_tool_name", "value": ["query_run"], "operator": "exact", "type": "event"}] */
   properties?: string;
 }
+const McpAnalyticsSessionsToolCallsRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  5,
+) as any as S.Schema<McpAnalyticsSessionsToolCallsRequest>;
+
 export interface MCPToolCall {
   /** ClickHouse uuid of the $mcp_tool_call event. */
   event_id: string;
@@ -541,12 +784,24 @@ export interface MCPToolCall {
   /** Duration of the tool call in milliseconds when captured. */
   duration_ms: number | null;
 }
+const MCPToolCall = /*@__PURE__*/ __L.at(__c6, 6) as any as S.Schema<MCPToolCall>;
+
 export type PaginatedMCPToolCallListResultsList = Array<MCPToolCall>;
+const PaginatedMCPToolCallListResultsList = /*@__PURE__*/ __L.at(
+  __c6,
+  7,
+) as any as S.Schema<PaginatedMCPToolCallListResultsList>;
+
 export interface PaginatedMCPToolCallList {
   results: PaginatedMCPToolCallListResultsList;
   /** Whether more results exist beyond this page; the client fetches the next page with a larger offset. */
   has_next: boolean;
 }
+const PaginatedMCPToolCallList = /*@__PURE__*/ __L.at(
+  __c7,
+  0,
+) as any as S.Schema<PaginatedMCPToolCallList>;
+
 export type CreateMcpAnalyticsFeedbackError = PosthogOpError;
 /** Create a new MCP feedback submission for the current project. */
 export const createMcpAnalyticsFeedback: API.OperationMethod<
@@ -555,8 +810,8 @@ export const createMcpAnalyticsFeedback: API.OperationMethod<
   CreateMcpAnalyticsFeedbackError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<CreateMcpAnalyticsFeedbackRequest>,
-  output: __S(1) as any as S.Schema<MCPAnalyticsSubmission>,
+  input: CreateMcpAnalyticsFeedbackRequest,
+  output: MCPAnalyticsSubmission,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -570,8 +825,8 @@ export const createMcpAnalyticsMissingCapability: API.OperationMethod<
   CreateMcpAnalyticsMissingCapabilityError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2) as any as S.Schema<CreateMcpAnalyticsMissingCapabilityRequest>,
-  output: __S(1) as any as S.Schema<MCPAnalyticsSubmission>,
+  input: CreateMcpAnalyticsMissingCapabilityRequest,
+  output: MCPAnalyticsSubmission,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -585,8 +840,8 @@ export const generateMcpAnalyticsSessionIntent: API.OperationMethod<
   GenerateMcpAnalyticsSessionIntentError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3) as any as S.Schema<GenerateMcpAnalyticsSessionIntentRequest>,
-  output: __S(4) as any as S.Schema<MCPSessionIntent>,
+  input: GenerateMcpAnalyticsSessionIntentRequest,
+  output: MCPSessionIntent,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -600,8 +855,8 @@ export const getMcpAnalyticsIntentCluster: API.OperationMethod<
   GetMcpAnalyticsIntentClusterError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5) as any as S.Schema<GetMcpAnalyticsIntentClusterRequest>,
-  output: __S(29) as any as S.Schema<GetMcpAnalyticsIntentClusterResponse>,
+  input: GetMcpAnalyticsIntentClusterRequest,
+  output: GetMcpAnalyticsIntentClusterResponse,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -615,8 +870,8 @@ export const listMcpAnalyticsFeedback: API.OperationMethod<
   ListMcpAnalyticsFeedbackError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30) as any as S.Schema<ListMcpAnalyticsFeedbackRequest>,
-  output: __S(32) as any as S.Schema<PaginatedMCPAnalyticsSubmissionList>,
+  input: ListMcpAnalyticsFeedbackRequest,
+  output: PaginatedMCPAnalyticsSubmissionList,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -630,8 +885,8 @@ export const listMcpAnalyticsMissingCapabilities: API.OperationMethod<
   ListMcpAnalyticsMissingCapabilitiesError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33) as any as S.Schema<ListMcpAnalyticsMissingCapabilitiesRequest>,
-  output: __S(32) as any as S.Schema<PaginatedMCPAnalyticsSubmissionList>,
+  input: ListMcpAnalyticsMissingCapabilitiesRequest,
+  output: PaginatedMCPAnalyticsSubmissionList,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -645,8 +900,8 @@ export const listMcpAnalyticsSessions: API.OperationMethod<
   ListMcpAnalyticsSessionsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34) as any as S.Schema<ListMcpAnalyticsSessionsRequest>,
-  output: __S(37) as any as S.Schema<PaginatedMCPSessionList>,
+  input: ListMcpAnalyticsSessionsRequest,
+  output: PaginatedMCPSessionList,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -660,8 +915,8 @@ export const mcpAnalyticsIntentClustersRecompute: API.OperationMethod<
   McpAnalyticsIntentClustersRecomputeError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38) as any as S.Schema<McpAnalyticsIntentClustersRecomputeRequest>,
-  output: __S(39) as any as S.Schema<McpAnalyticsIntentClustersRecomputeResponse>,
+  input: McpAnalyticsIntentClustersRecomputeRequest,
+  output: McpAnalyticsIntentClustersRecomputeResponse,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -675,8 +930,8 @@ export const mcpAnalyticsSessionsActivityOverview: API.OperationMethod<
   McpAnalyticsSessionsActivityOverviewError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40) as any as S.Schema<McpAnalyticsSessionsActivityOverviewRequest>,
-  output: __S(48) as any as S.Schema<MCPActivityOverview>,
+  input: McpAnalyticsSessionsActivityOverviewRequest,
+  output: MCPActivityOverview,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -690,8 +945,8 @@ export const mcpAnalyticsSessionsIntentDigest: API.OperationMethod<
   McpAnalyticsSessionsIntentDigestError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49) as any as S.Schema<McpAnalyticsSessionsIntentDigestRequest>,
-  output: __S(52) as any as S.Schema<MCPIntentDigest>,
+  input: McpAnalyticsSessionsIntentDigestRequest,
+  output: MCPIntentDigest,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -705,8 +960,8 @@ export const mcpAnalyticsSessionsToolCalls: API.OperationMethod<
   McpAnalyticsSessionsToolCallsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(53) as any as S.Schema<McpAnalyticsSessionsToolCallsRequest>,
-  output: __S(56) as any as S.Schema<PaginatedMCPToolCallList>,
+  input: McpAnalyticsSessionsToolCallsRequest,
+  output: PaginatedMCPToolCallList,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -728,7 +983,7 @@ function __c0(j: number): any {
           mcp_trace_id: S.optional(S.String),
           goal: S.String,
           feedback: S.String,
-          category: S.optional(S.String),
+          category: S.optional(MCPAnalyticsSubmissionFeedbackCategoryEnum),
         }).pipe(
           T.Http({
             method: "POST",
@@ -743,7 +998,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          kind: S.String,
+          kind: MCPAnalyticsSubmissionKindEnum,
           goal: S.String,
           summary: S.String,
           category: S.String,
@@ -834,7 +1089,7 @@ function __c0(j: number): any {
         identifier: "MCPIntentClusterToolEntry",
       });
     case 7:
-      return S.Array(__S(6));
+      return S.Array(MCPIntentClusterToolEntry);
   }
 }
 function __c1(j: number): any {
@@ -846,21 +1101,21 @@ function __c1(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          steps: __S(9),
-          outcome: S.String,
+          steps: MCPIntentClusterJourneyPathStepsList,
+          outcome: MCPIntentClusterJourneyPathOutcomeEnum,
           count: S.Number,
         }),
       ).annotate({
         identifier: "MCPIntentClusterJourneyPath",
       });
     case 3:
-      return S.Array(__S(10));
+      return S.Array(MCPIntentClusterJourneyPath);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          paths: __S(11),
+          paths: MCPIntentClusterJourneyPathsList,
           total_sessions: S.Number,
-          leak: S.NullOr(__S(10)),
+          leak: S.NullOr(MCPIntentClusterJourneyPath),
         }),
       ).annotate({ identifier: "MCPIntentClusterJourney" });
     case 5:
@@ -872,7 +1127,7 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "MCPClusterSwitch" });
     case 6:
-      return S.Array(__S(13));
+      return S.Array(MCPClusterSwitch);
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -885,7 +1140,7 @@ function __c1(j: number): any {
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(15));
+      return S.Array(MCPClusterSelfRetry);
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -897,15 +1152,15 @@ function __c2(j: number): any {
           error_count: S.Number,
           error_rate_pct: S.Number,
           routing_entropy: S.Number,
-          tool_distribution: __S(7),
-          sample_intents: __S(8),
-          journey: S.NullOr(__S(12)),
-          switches: __S(14),
-          self_retries: __S(16),
+          tool_distribution: MCPIntentClusterToolDistributionList,
+          sample_intents: MCPIntentClusterSampleIntentsList,
+          journey: S.NullOr(MCPIntentClusterJourney),
+          switches: MCPIntentClusterSwitchesList,
+          self_retries: MCPIntentClusterSelfRetriesList,
         }),
       ).annotate({ identifier: "MCPIntentCluster" });
     case 2:
-      return S.Array(__S(17));
+      return S.Array(MCPIntentCluster);
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -921,11 +1176,11 @@ function __c2(j: number): any {
           capture_pct: S.Number,
           rank: S.Number,
           description_fit: S.NullOr(S.Number),
-          top_competitor: S.NullOr(__S(19)),
+          top_competitor: S.NullOr(MCPToolPivotCompetitor),
         }),
       ).annotate({ identifier: "MCPToolPivotClusterEntry" });
     case 5:
-      return S.Array(__S(20));
+      return S.Array(MCPToolPivotClusterEntry);
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -939,11 +1194,11 @@ function __c2(j: number): any {
           discovery_rate_pct: S.NullOr(S.Number),
           description: S.NullOr(S.String),
           n_clusters_served: S.Number,
-          clusters: __S(21),
+          clusters: MCPToolPivotClustersList,
         }),
       ).annotate({ identifier: "MCPToolPivot" });
     case 7:
-      return S.Array(__S(22));
+      return S.Array(MCPToolPivot);
   }
 }
 function __c3(j: number): any {
@@ -960,7 +1215,7 @@ function __c3(j: number): any {
         }),
       ).annotate({ identifier: "MCPToolOverlap" });
     case 1:
-      return S.Array(__S(24));
+      return S.Array(MCPToolOverlap);
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -988,20 +1243,22 @@ function __c3(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          status: S.String,
+          status: MCPIntentClusterSnapshotStatusEnum,
           error_message: S.String,
           last_computed_at: S.NullOr(S.String),
           last_computed_by_email: S.String,
-          clusters: __S(18),
-          tools: __S(23),
-          tool_overlaps: __S(25),
-          computed_with: S.NullOr(__S(26)),
+          clusters: MCPIntentClusterSnapshotClustersList,
+          tools: MCPIntentClusterSnapshotToolsList,
+          tool_overlaps: MCPIntentClusterSnapshotToolOverlapsList,
+          computed_with: S.NullOr(MCPIntentClusterSnapshotMeta),
         }),
       ).annotate({ identifier: "MCPIntentClusterSnapshot" });
     case 4:
-      return S.Array(__S(27));
+      return S.Array(MCPIntentClusterSnapshot);
     case 5:
-      return S.suspend(() => __S(28).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        GetMcpAnalyticsIntentClusterResponseBodyList.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "GetMcpAnalyticsIntentClusterResponse",
       });
     case 6:
@@ -1021,7 +1278,7 @@ function __c3(j: number): any {
         identifier: "ListMcpAnalyticsFeedbackRequest",
       });
     case 7:
-      return S.Array(__S(1));
+      return S.Array(MCPAnalyticsSubmission);
   }
 }
 function __c4(j: number): any {
@@ -1032,7 +1289,7 @@ function __c4(j: number): any {
           count: S.Number,
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: __S(31),
+          results: PaginatedMCPAnalyticsSubmissionListResultsList,
         }),
       ).annotate({
         identifier: "PaginatedMCPAnalyticsSubmissionList",
@@ -1085,7 +1342,7 @@ function __c4(j: number): any {
           session_start: S.String,
           session_end: S.String,
           distinct_id_count: S.Number,
-          tools_used: __S(8),
+          tools_used: MCPSessionToolsUsedList,
           mcp_client_name: S.String,
           distinct_id: S.String,
           person_email: S.String,
@@ -1094,11 +1351,11 @@ function __c4(j: number): any {
         }),
       ).annotate({ identifier: "MCPSession" });
     case 4:
-      return S.Array(__S(35));
+      return S.Array(MCPSession);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          results: __S(36),
+          results: PaginatedMCPSessionListResultsList,
           has_next: S.Boolean,
         }),
       ).annotate({ identifier: "PaginatedMCPSessionList" });
@@ -1161,7 +1418,7 @@ function __c5(j: number): any {
         }),
       ).annotate({ identifier: "MCPActivityToolRow" });
     case 3:
-      return S.Array(__S(42));
+      return S.Array(MCPActivityToolRow);
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -1170,7 +1427,7 @@ function __c5(j: number): any {
         }),
       ).annotate({ identifier: "MCPActivityClientRow" });
     case 5:
-      return S.Array(__S(44));
+      return S.Array(MCPActivityClientRow);
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -1184,7 +1441,7 @@ function __c5(j: number): any {
         }),
       ).annotate({ identifier: "MCPActivityRecentCall" });
     case 7:
-      return S.Array(__S(46));
+      return S.Array(MCPActivityRecentCall);
   }
 }
 function __c6(j: number): any {
@@ -1192,10 +1449,10 @@ function __c6(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          stats: __S(41),
-          top_tools: __S(43),
-          clients: __S(45),
-          recent_calls: __S(47),
+          stats: MCPActivityStats,
+          top_tools: MCPActivityOverviewTopToolsList,
+          clients: MCPActivityOverviewClientsList,
+          recent_calls: MCPActivityOverviewRecentCallsList,
         }),
       ).annotate({ identifier: "MCPActivityOverview" });
     case 1:
@@ -1219,17 +1476,17 @@ function __c6(j: number): any {
           description: S.String,
           intent_count: S.Number,
           example_intent: S.String,
-          tools: __S(8),
+          tools: MCPIntentThemeToolsList,
         }),
       ).annotate({ identifier: "MCPIntentTheme" });
     case 3:
-      return S.Array(__S(50));
+      return S.Array(MCPIntentTheme);
     case 4:
       return S.suspend(() =>
         S.Struct({
           digest: S.NullOr(S.String),
           intent_count: S.Number,
-          themes: __S(51),
+          themes: MCPIntentDigestThemesList,
         }),
       ).annotate({ identifier: "MCPIntentDigest" });
     case 5:
@@ -1265,7 +1522,7 @@ function __c6(j: number): any {
         }),
       ).annotate({ identifier: "MCPToolCall" });
     case 7:
-      return S.Array(__S(54));
+      return S.Array(MCPToolCall);
   }
 }
 function __c7(j: number): any {
@@ -1273,34 +1530,9 @@ function __c7(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          results: __S(55),
+          results: PaginatedMCPToolCallListResultsList,
           has_next: S.Boolean,
         }),
       ).annotate({ identifier: "PaginatedMCPToolCallList" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
   }
 }

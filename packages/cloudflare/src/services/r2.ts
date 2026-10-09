@@ -12,8 +12,6 @@ import {
 } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { CloudflareOpError, CloudflareOpContext };
 
@@ -224,20 +222,44 @@ export class SuperSlurperPreconnectivityFailed
 export interface AbortAllSuperSlurperJobRequest {
   accountId: string;
 }
+const AbortAllSuperSlurperJobRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<AbortAllSuperSlurperJobRequest>;
+
 export type AbortAllSuperSlurperJobResponse = string;
+const AbortAllSuperSlurperJobResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<AbortAllSuperSlurperJobResponse>;
+
 export interface AbortSuperSlurperJobRequest {
   accountId: string;
   jobId: string;
 }
+const AbortSuperSlurperJobRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<AbortSuperSlurperJobRequest>;
+
 export type AbortSuperSlurperJobResponse = string;
+const AbortSuperSlurperJobResponse =
+  AbortAllSuperSlurperJobResponse as any as S.Schema<AbortSuperSlurperJobResponse>;
+
 export type BucketsCreateRequestLocationHint = "apac" | "eeur" | "enam" | "weur" | "wnam" | "oc";
+const BucketsCreateRequestLocationHint = S.String;
+
 export type BucketsCreateRequestStorageClass = "Standard" | "InfrequentAccess";
+const BucketsCreateRequestStorageClass = S.String;
+
 export type BucketsCreateRequestCfR2Jurisdiction =
   | "default"
   | "eu"
   | "us"
   | "fedramp"
   | "fedramp-high";
+const BucketsCreateRequestCfR2Jurisdiction = S.String;
+
 export interface CreateBucketRequest {
   /** Cloudflare account ID that owns the R2 resource. */
   accountId: string;
@@ -249,14 +271,22 @@ export interface CreateBucketRequest {
   storageClass?: BucketsCreateRequestStorageClass | (string & {});
   jurisdiction?: BucketsCreateRequestCfR2Jurisdiction | (string & {});
 }
+const CreateBucketRequest = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<CreateBucketRequest>;
+
 export type BucketsCreateResponseJurisdiction =
   | "default"
   | "eu"
   | "us"
   | "fedramp"
   | "fedramp-high";
+const BucketsCreateResponseJurisdiction = S.String;
+
 export type BucketsCreateResponseLocation = "apac" | "eeur" | "enam" | "weur" | "wnam" | "oc";
+const BucketsCreateResponseLocation = S.String;
+
 export type BucketsCreateResponseStorageClass = "Standard" | "InfrequentAccess";
+const BucketsCreateResponseStorageClass = S.String;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateBucketResponse {
   /** Creation timestamp. */
@@ -270,14 +300,25 @@ export interface CreateBucketResponse {
   /** Storage class for newly uploaded objects, unless specified otherwise. */
   storageClass?: BucketsCreateResponseStorageClass | null;
 }
+const CreateBucketResponse = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<CreateBucketResponse>;
+
 export type BucketsDomainsCustomCreateRequestCiphersList = Array<string>;
+const BucketsDomainsCustomCreateRequestCiphersList = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<BucketsDomainsCustomCreateRequestCiphersList>;
+
 export type BucketsDomainsCustomCreateRequestMinTLS = "1.0" | "1.1" | "1.2" | "1.3";
+const BucketsDomainsCustomCreateRequestMinTLS = S.String;
+
 export type BucketsDomainsCustomCreateRequestCfR2Jurisdiction =
   | "default"
   | "eu"
   | "us"
   | "fedramp"
   | "fedramp-high";
+const BucketsDomainsCustomCreateRequestCfR2Jurisdiction = S.String;
+
 export interface CreateBucketDomainCustomRequest {
   /** Cloudflare account ID that owns the R2 resource. */
   accountId: string;
@@ -295,8 +336,18 @@ export interface CreateBucketDomainCustomRequest {
   minTLS?: BucketsDomainsCustomCreateRequestMinTLS | (string & {});
   jurisdiction?: BucketsDomainsCustomCreateRequestCfR2Jurisdiction | (string & {});
 }
+const CreateBucketDomainCustomRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<CreateBucketDomainCustomRequest>;
+
 export type BucketsDomainsCustomCreateResponseCiphersList = Array<string>;
+const BucketsDomainsCustomCreateResponseCiphersList =
+  BucketsDomainsCustomCreateRequestCiphersList as any as S.Schema<BucketsDomainsCustomCreateResponseCiphersList>;
+
 export type BucketsDomainsCustomCreateResponseMinTLS = "1.0" | "1.1" | "1.2" | "1.3";
+const BucketsDomainsCustomCreateResponseMinTLS = S.String;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateBucketDomainCustomResponse {
   /** Domain name of the affected custom domain. */
@@ -310,10 +361,20 @@ export interface CreateBucketDomainCustomResponse {
   /** Minimum TLS Version the custom domain will accept for incoming connections. If not set, defaults to 1.0. */
   minTLS?: BucketsDomainsCustomCreateResponseMinTLS | null;
 }
+const CreateBucketDomainCustomResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<CreateBucketDomainCustomResponse>;
+
 export interface SuperSlurperJobsCreateRequestSourceR2SlurperS3SourceSchemaSecret {
   accessKeyId: string;
   secretAccessKey: string;
 }
+const SuperSlurperJobsCreateRequestSourceR2SlurperS3SourceSchemaSecret = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<SuperSlurperJobsCreateRequestSourceR2SlurperS3SourceSchemaSecret>;
+
 export type SuperSlurperJobsCreateRequestSourceR2SlurperS3SourceSchemaVendor = "s3";
 export type SuperSlurperJobsCreateRequestSourceR2SlurperS3SourceSchemaKeysList = Array<string>;
 export interface SuperSlurperJobsCreateRequestSourceR2SlurperS3SourceSchema {
@@ -362,33 +423,62 @@ export type SuperSlurperJobsCreateRequestSource =
   | SuperSlurperJobsCreateRequestSourceR2SlurperS3SourceSchema
   | SuperSlurperJobsCreateRequestSourceR2SlurperGcsSourceSchema
   | SuperSlurperJobsCreateRequestSourceR2SlurperR2SourceSchema;
+const SuperSlurperJobsCreateRequestSource = /*@__PURE__*/ __L.at(__c1, 1);
+
 export type SuperSlurperJobsCreateRequestTargetSecret =
   SuperSlurperJobsCreateRequestSourceR2SlurperS3SourceSchemaSecret;
 export type SuperSlurperJobsCreateRequestTargetVendor = "r2";
+const SuperSlurperJobsCreateRequestTargetVendor = S.String;
+
 export type SuperSlurperJobsCreateRequestTargetJurisdiction = "default" | "eu" | "us" | "fedramp";
+const SuperSlurperJobsCreateRequestTargetJurisdiction = S.String;
+
 export interface SuperSlurperJobsCreateRequestTarget {
   bucket: string;
   secret: SuperSlurperJobsCreateRequestSourceR2SlurperS3SourceSchemaSecret;
   vendor: SuperSlurperJobsCreateRequestTargetVendor | (string & {});
   jurisdiction?: SuperSlurperJobsCreateRequestTargetJurisdiction | (string & {});
 }
+const SuperSlurperJobsCreateRequestTarget = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<SuperSlurperJobsCreateRequestTarget>;
+
 export interface CreateSuperSlurperJobRequest {
   accountId: string;
   overwrite?: boolean;
   source?: SuperSlurperJobsCreateRequestSource;
   target?: SuperSlurperJobsCreateRequestTarget;
 }
+const CreateSuperSlurperJobRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<CreateSuperSlurperJobRequest>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateSuperSlurperJobResponse {
   id?: string | null;
 }
+const CreateSuperSlurperJobResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<CreateSuperSlurperJobResponse>;
+
 export type TemporaryCredentialsCreateRequestPermission =
   | "admin-read-write"
   | "admin-read-only"
   | "object-read-write"
   | "object-read-only";
+const TemporaryCredentialsCreateRequestPermission = S.String;
+
 export type TemporaryCredentialsCreateRequestObjectsList = Array<string>;
+const TemporaryCredentialsCreateRequestObjectsList =
+  BucketsDomainsCustomCreateRequestCiphersList as any as S.Schema<TemporaryCredentialsCreateRequestObjectsList>;
+
 export type TemporaryCredentialsCreateRequestPrefixesList = Array<string>;
+const TemporaryCredentialsCreateRequestPrefixesList =
+  BucketsDomainsCustomCreateRequestCiphersList as any as S.Schema<TemporaryCredentialsCreateRequestPrefixesList>;
+
 export interface CreateTemporaryCredentialRequest {
   /** Cloudflare account ID that owns the R2 resource. */
   accountId: string;
@@ -405,6 +495,11 @@ export interface CreateTemporaryCredentialRequest {
   /** Optional prefix paths to scope the credentials to. */
   prefixes?: TemporaryCredentialsCreateRequestPrefixesList;
 }
+const CreateTemporaryCredentialRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<CreateTemporaryCredentialRequest>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateTemporaryCredentialResponse {
   /** ID for new access key. */
@@ -414,12 +509,19 @@ export interface CreateTemporaryCredentialResponse {
   /** Security token. */
   sessionToken?: string | null;
 }
+const CreateTemporaryCredentialResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<CreateTemporaryCredentialResponse>;
+
 export type BucketsDeleteRequestCfR2Jurisdiction =
   | "default"
   | "eu"
   | "us"
   | "fedramp"
   | "fedramp-high";
+const BucketsDeleteRequestCfR2Jurisdiction = S.String;
+
 export interface DeleteBucketRequest {
   /** Cloudflare account ID that owns the R2 resource. */
   accountId: string;
@@ -427,13 +529,19 @@ export interface DeleteBucketRequest {
   bucketName: string;
   jurisdiction?: BucketsDeleteRequestCfR2Jurisdiction | (string & {});
 }
+const DeleteBucketRequest = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<DeleteBucketRequest>;
+
 export type DeleteBucketResponse = unknown;
+const DeleteBucketResponse = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<DeleteBucketResponse>;
+
 export type BucketsCorsDeleteRequestCfR2Jurisdiction =
   | "default"
   | "eu"
   | "us"
   | "fedramp"
   | "fedramp-high";
+const BucketsCorsDeleteRequestCfR2Jurisdiction = S.String;
+
 export interface DeleteBucketCorsRequest {
   /** Cloudflare account ID that owns the R2 resource. */
   accountId: string;
@@ -441,13 +549,22 @@ export interface DeleteBucketCorsRequest {
   bucketName: string;
   jurisdiction?: BucketsCorsDeleteRequestCfR2Jurisdiction | (string & {});
 }
+const DeleteBucketCorsRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<DeleteBucketCorsRequest>;
+
 export type DeleteBucketCorsResponse = unknown;
+const DeleteBucketCorsResponse = DeleteBucketResponse as any as S.Schema<DeleteBucketCorsResponse>;
+
 export type BucketsDomainsCustomDeleteRequestCfR2Jurisdiction =
   | "default"
   | "eu"
   | "us"
   | "fedramp"
   | "fedramp-high";
+const BucketsDomainsCustomDeleteRequestCfR2Jurisdiction = S.String;
+
 export interface DeleteBucketDomainCustomRequest {
   /** Cloudflare account ID that owns the R2 resource. */
   accountId: string;
@@ -457,17 +574,29 @@ export interface DeleteBucketDomainCustomRequest {
   domain: string;
   jurisdiction?: BucketsDomainsCustomDeleteRequestCfR2Jurisdiction | (string & {});
 }
+const DeleteBucketDomainCustomRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<DeleteBucketDomainCustomRequest>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DeleteBucketDomainCustomResponse {
   /** Name of the removed custom domain. */
   domain: string;
 }
+const DeleteBucketDomainCustomResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<DeleteBucketDomainCustomResponse>;
+
 export type BucketsEventNotificationsDeleteRequestCfR2Jurisdiction =
   | "default"
   | "eu"
   | "us"
   | "fedramp"
   | "fedramp-high";
+const BucketsEventNotificationsDeleteRequestCfR2Jurisdiction = S.String;
+
 export interface DeleteBucketEventNotificationRequest {
   /** Cloudflare account ID that owns the R2 resource. */
   accountId: string;
@@ -477,13 +606,25 @@ export interface DeleteBucketEventNotificationRequest {
   queueId: string;
   jurisdiction?: BucketsEventNotificationsDeleteRequestCfR2Jurisdiction | (string & {});
 }
+const DeleteBucketEventNotificationRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<DeleteBucketEventNotificationRequest>;
+
 export type DeleteBucketEventNotificationResponse = unknown;
+const DeleteBucketEventNotificationResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<DeleteBucketEventNotificationResponse>;
+
 export type BucketsObjectsDeleteRequestCfR2Jurisdiction =
   | "default"
   | "eu"
   | "us"
   | "fedramp"
   | "fedramp-high";
+const BucketsObjectsDeleteRequestCfR2Jurisdiction = S.String;
+
 export interface DeleteBucketObjectRequest {
   /** Cloudflare account ID that owns the R2 resource. */
   accountId: string;
@@ -493,17 +634,29 @@ export interface DeleteBucketObjectRequest {
   /** The key (name) of the object to delete. May contain slashes for path-like keys. Slashes (`/`) within the key MUST be sent literally and MUST NOT be percent-encoded (i.e. `%2F`); other reserved characters should be percent-encoded as usual. */
   objectName: string;
 }
+const DeleteBucketObjectRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<DeleteBucketObjectRequest>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DeleteBucketObjectResponse {
   /** The key (name) of the deleted object. */
   key?: string | null;
 }
+const DeleteBucketObjectResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<DeleteBucketObjectResponse>;
+
 export type BucketsSippyDeleteRequestCfR2Jurisdiction =
   | "default"
   | "eu"
   | "us"
   | "fedramp"
   | "fedramp-high";
+const BucketsSippyDeleteRequestCfR2Jurisdiction = S.String;
+
 export interface DeleteBucketSippyRequest {
   /** Cloudflare account ID that owns the R2 resource. */
   accountId: string;
@@ -511,11 +664,24 @@ export interface DeleteBucketSippyRequest {
   bucketName: string;
   jurisdiction?: BucketsSippyDeleteRequestCfR2Jurisdiction | (string & {});
 }
+const DeleteBucketSippyRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<DeleteBucketSippyRequest>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DeleteBucketSippyResponse {
   enabled?: boolean | null;
 }
+const DeleteBucketSippyResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<DeleteBucketSippyResponse>;
+
 export type DeleteObjectsKeyList = Array<string>;
+const DeleteObjectsKeyList =
+  BucketsDomainsCustomCreateRequestCiphersList as any as S.Schema<DeleteObjectsKeyList>;
+
 export interface DeleteObjectsRequest {
   /** Account ID. */
   accountId: string;
@@ -525,13 +691,19 @@ export interface DeleteObjectsRequest {
   body?: DeleteObjectsKeyList;
   cfR2Jurisdiction?: string;
 }
+const DeleteObjectsRequest = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<DeleteObjectsRequest>;
+
 export type DeleteObjectsResponse = unknown;
+const DeleteObjectsResponse = DeleteBucketResponse as any as S.Schema<DeleteObjectsResponse>;
+
 export type BucketsGetRequestCfR2Jurisdiction =
   | "default"
   | "eu"
   | "us"
   | "fedramp"
   | "fedramp-high";
+const BucketsGetRequestCfR2Jurisdiction = S.String;
+
 export interface GetBucketRequest {
   /** Cloudflare account ID that owns the R2 resource. */
   accountId: string;
@@ -539,6 +711,8 @@ export interface GetBucketRequest {
   bucketName: string;
   jurisdiction?: BucketsGetRequestCfR2Jurisdiction | (string & {});
 }
+const GetBucketRequest = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<GetBucketRequest>;
+
 export type BucketsGetResponseJurisdiction = "default" | "eu" | "us" | "fedramp" | "fedramp-high";
 export type BucketsGetResponseLocation = "apac" | "eeur" | "enam" | "weur" | "wnam" | "oc";
 export type BucketsGetResponseStorageClass = "Standard" | "InfrequentAccess";
@@ -555,12 +729,16 @@ export interface GetBucketResponse {
   /** Storage class for newly uploaded objects, unless specified otherwise. */
   storageClass?: BucketsGetResponseStorageClass | null;
 }
+const GetBucketResponse = CreateBucketResponse as any as S.Schema<GetBucketResponse>;
+
 export type BucketsCorsGetRequestCfR2Jurisdiction =
   | "default"
   | "eu"
   | "us"
   | "fedramp"
   | "fedramp-high";
+const BucketsCorsGetRequestCfR2Jurisdiction = S.String;
+
 export interface GetBucketCorsRequest {
   /** Cloudflare account ID that owns the R2 resource. */
   accountId: string;
@@ -568,16 +746,31 @@ export interface GetBucketCorsRequest {
   bucketName: string;
   jurisdiction?: BucketsCorsGetRequestCfR2Jurisdiction | (string & {});
 }
+const GetBucketCorsRequest = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<GetBucketCorsRequest>;
+
 export type BucketsCorsGetResponseRulesItemAllowedMethodsItem =
   | "GET"
   | "PUT"
   | "POST"
   | "DELETE"
   | "HEAD";
+const BucketsCorsGetResponseRulesItemAllowedMethodsItem = S.String;
+
 export type BucketsCorsGetResponseRulesItemAllowedMethodsList =
   Array<BucketsCorsGetResponseRulesItemAllowedMethodsItem>;
+const BucketsCorsGetResponseRulesItemAllowedMethodsList = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<BucketsCorsGetResponseRulesItemAllowedMethodsList>;
+
 export type BucketsCorsGetResponseRulesItemAllowedOriginsList = Array<string>;
+const BucketsCorsGetResponseRulesItemAllowedOriginsList =
+  BucketsDomainsCustomCreateRequestCiphersList as any as S.Schema<BucketsCorsGetResponseRulesItemAllowedOriginsList>;
+
 export type BucketsCorsGetResponseRulesItemAllowedHeadersList = Array<string>;
+const BucketsCorsGetResponseRulesItemAllowedHeadersList =
+  BucketsDomainsCustomCreateRequestCiphersList as any as S.Schema<BucketsCorsGetResponseRulesItemAllowedHeadersList>;
+
 export interface BucketsCorsGetResponseRulesItemAllowed {
   /** Specifies the value for the Access-Control-Allow-Methods header R2 sets when requesting objects in a bucket from a browser. */
   methods: BucketsCorsGetResponseRulesItemAllowedMethodsList;
@@ -586,7 +779,15 @@ export interface BucketsCorsGetResponseRulesItemAllowed {
   /** Specifies the value for the Access-Control-Allow-Headers header R2 sets when requesting objects in this bucket from a browser. Cross-origin requests that include custom headers (e.g. x-user-id) should specify these headers as AllowedHeaders. */
   headers?: BucketsCorsGetResponseRulesItemAllowedHeadersList | null;
 }
+const BucketsCorsGetResponseRulesItemAllowed = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<BucketsCorsGetResponseRulesItemAllowed>;
+
 export type BucketsCorsGetResponseRulesItemExposeHeadersList = Array<string>;
+const BucketsCorsGetResponseRulesItemExposeHeadersList =
+  BucketsDomainsCustomCreateRequestCiphersList as any as S.Schema<BucketsCorsGetResponseRulesItemExposeHeadersList>;
+
 export interface BucketsCorsGetResponseRulesItem {
   /** Object specifying allowed origins, methods and headers for this CORS rule. */
   allowed: BucketsCorsGetResponseRulesItemAllowed;
@@ -597,17 +798,34 @@ export interface BucketsCorsGetResponseRulesItem {
   /** Specifies the amount of time (in seconds) browsers are allowed to cache CORS preflight responses. Browsers may limit this to 2 hours or less, even if the maximum value (86400) is specified. */
   maxAgeSeconds?: number | null;
 }
+const BucketsCorsGetResponseRulesItem = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<BucketsCorsGetResponseRulesItem>;
+
 export type BucketsCorsGetResponseRulesList = Array<BucketsCorsGetResponseRulesItem>;
+const BucketsCorsGetResponseRulesList = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<BucketsCorsGetResponseRulesList>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetBucketCorsResponse {
   rules?: BucketsCorsGetResponseRulesList | null;
 }
+const GetBucketCorsResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<GetBucketCorsResponse>;
+
 export type BucketsDomainsCustomGetRequestCfR2Jurisdiction =
   | "default"
   | "eu"
   | "us"
   | "fedramp"
   | "fedramp-high";
+const BucketsDomainsCustomGetRequestCfR2Jurisdiction = S.String;
+
 export interface GetBucketDomainCustomRequest {
   /** Cloudflare account ID that owns the R2 resource. */
   accountId: string;
@@ -617,6 +835,11 @@ export interface GetBucketDomainCustomRequest {
   domain: string;
   jurisdiction?: BucketsDomainsCustomGetRequestCfR2Jurisdiction | (string & {});
 }
+const GetBucketDomainCustomRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<GetBucketDomainCustomRequest>;
+
 export type BucketsDomainsCustomGetResponseStatusOwnership =
   | "pending"
   | "active"
@@ -624,6 +847,8 @@ export type BucketsDomainsCustomGetResponseStatusOwnership =
   | "blocked"
   | "error"
   | "unknown";
+const BucketsDomainsCustomGetResponseStatusOwnership = S.String;
+
 export type BucketsDomainsCustomGetResponseStatusSsl =
   | "initializing"
   | "pending"
@@ -631,14 +856,26 @@ export type BucketsDomainsCustomGetResponseStatusSsl =
   | "deactivated"
   | "error"
   | "unknown";
+const BucketsDomainsCustomGetResponseStatusSsl = S.String;
+
 export interface BucketsDomainsCustomGetResponseStatus {
   /** Ownership status of the domain. */
   ownership: BucketsDomainsCustomGetResponseStatusOwnership;
   /** SSL certificate status. */
   ssl: BucketsDomainsCustomGetResponseStatusSsl;
 }
+const BucketsDomainsCustomGetResponseStatus = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<BucketsDomainsCustomGetResponseStatus>;
+
 export type BucketsDomainsCustomGetResponseCiphersList = Array<string>;
+const BucketsDomainsCustomGetResponseCiphersList =
+  BucketsDomainsCustomCreateRequestCiphersList as any as S.Schema<BucketsDomainsCustomGetResponseCiphersList>;
+
 export type BucketsDomainsCustomGetResponseMinTLS = "1.0" | "1.1" | "1.2" | "1.3";
+const BucketsDomainsCustomGetResponseMinTLS = S.String;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetBucketDomainCustomResponse {
   /** Domain name of the custom domain to be added. */
@@ -655,12 +892,19 @@ export interface GetBucketDomainCustomResponse {
   /** Zone that the custom domain resides in. */
   zoneName?: string | null;
 }
+const GetBucketDomainCustomResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<GetBucketDomainCustomResponse>;
+
 export type BucketsEventNotificationsGetRequestCfR2Jurisdiction =
   | "default"
   | "eu"
   | "us"
   | "fedramp"
   | "fedramp-high";
+const BucketsEventNotificationsGetRequestCfR2Jurisdiction = S.String;
+
 export interface GetBucketEventNotificationRequest {
   /** Cloudflare account ID that owns the R2 resource. */
   accountId: string;
@@ -670,6 +914,11 @@ export interface GetBucketEventNotificationRequest {
   queueId: string;
   jurisdiction?: BucketsEventNotificationsGetRequestCfR2Jurisdiction | (string & {});
 }
+const GetBucketEventNotificationRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<GetBucketEventNotificationRequest>;
+
 export type BucketsEventNotificationsGetResponseRulesItemActionsItem =
   | "PutObject"
   | "CopyObject"
@@ -678,6 +927,9 @@ export type BucketsEventNotificationsGetResponseRulesItemActionsItem =
   | "LifecycleDeletion";
 export type BucketsEventNotificationsGetResponseRulesItemActionsList =
   Array<BucketsEventNotificationsGetResponseRulesItemActionsItem>;
+const BucketsEventNotificationsGetResponseRulesItemActionsList =
+  BucketsCorsGetResponseRulesItemAllowedMethodsList as any as S.Schema<BucketsEventNotificationsGetResponseRulesItemActionsList>;
+
 export interface BucketsEventNotificationsGetResponseRulesItem {
   /** Array of R2 object actions that will trigger notifications. */
   actions: BucketsEventNotificationsGetResponseRulesItemActionsList;
@@ -692,8 +944,18 @@ export interface BucketsEventNotificationsGetResponseRulesItem {
   /** Notifications will be sent only for objects with this suffix. */
   suffix?: string | null;
 }
+const BucketsEventNotificationsGetResponseRulesItem = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<BucketsEventNotificationsGetResponseRulesItem>;
+
 export type BucketsEventNotificationsGetResponseRulesList =
   Array<BucketsEventNotificationsGetResponseRulesItem>;
+const BucketsEventNotificationsGetResponseRulesList = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<BucketsEventNotificationsGetResponseRulesList>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetBucketEventNotificationResponse {
   /** Queue ID. */
@@ -702,12 +964,19 @@ export interface GetBucketEventNotificationResponse {
   queueName?: string | null;
   rules?: BucketsEventNotificationsGetResponseRulesList | null;
 }
+const GetBucketEventNotificationResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  0,
+) as any as S.Schema<GetBucketEventNotificationResponse>;
+
 export type BucketsLifecycleGetRequestCfR2Jurisdiction =
   | "default"
   | "eu"
   | "us"
   | "fedramp"
   | "fedramp-high";
+const BucketsLifecycleGetRequestCfR2Jurisdiction = S.String;
+
 export interface GetBucketLifecycleRequest {
   /** Cloudflare account ID that owns the R2 resource. */
   accountId: string;
@@ -715,20 +984,43 @@ export interface GetBucketLifecycleRequest {
   bucketName: string;
   jurisdiction?: BucketsLifecycleGetRequestCfR2Jurisdiction | (string & {});
 }
+const GetBucketLifecycleRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  1,
+) as any as S.Schema<GetBucketLifecycleRequest>;
+
 export interface BucketsLifecycleGetResponseRulesItemConditions {
   /** Transitions will only apply to objects/uploads in the bucket that start with the given prefix, an empty prefix can be provided to scope rule to all objects/uploads. */
   prefix: string;
 }
+const BucketsLifecycleGetResponseRulesItemConditions = /*@__PURE__*/ __L.at(
+  __c5,
+  2,
+) as any as S.Schema<BucketsLifecycleGetResponseRulesItemConditions>;
+
 export type BucketsLifecycleGetResponseRulesItemAbortMultipartUploadsTransitionConditionType =
   "Age";
+const BucketsLifecycleGetResponseRulesItemAbortMultipartUploadsTransitionConditionType = S.String;
+
 export interface BucketsLifecycleGetResponseRulesItemAbortMultipartUploadsTransitionCondition {
   maxAge: number;
   type: BucketsLifecycleGetResponseRulesItemAbortMultipartUploadsTransitionConditionType;
 }
+const BucketsLifecycleGetResponseRulesItemAbortMultipartUploadsTransitionCondition =
+  /*@__PURE__*/ __L.at(
+    __c5,
+    3,
+  ) as any as S.Schema<BucketsLifecycleGetResponseRulesItemAbortMultipartUploadsTransitionCondition>;
+
 export interface BucketsLifecycleGetResponseRulesItemAbortMultipartUploadsTransition {
   /** Condition for lifecycle transitions to apply after an object reaches an age in seconds. */
   condition?: BucketsLifecycleGetResponseRulesItemAbortMultipartUploadsTransitionCondition | null;
 }
+const BucketsLifecycleGetResponseRulesItemAbortMultipartUploadsTransition = /*@__PURE__*/ __L.at(
+  __c5,
+  4,
+) as any as S.Schema<BucketsLifecycleGetResponseRulesItemAbortMultipartUploadsTransition>;
+
 export type BucketsLifecycleGetResponseRulesItemDeleteObjectsTransitionConditionR2LifecycleAgeConditionType =
   "Age";
 export interface BucketsLifecycleGetResponseRulesItemDeleteObjectsTransitionConditionR2LifecycleAgeCondition {
@@ -744,10 +1036,20 @@ export interface BucketsLifecycleGetResponseRulesItemDeleteObjectsTransitionCond
 export type BucketsLifecycleGetResponseRulesItemDeleteObjectsTransitionCondition =
   | BucketsLifecycleGetResponseRulesItemDeleteObjectsTransitionConditionR2LifecycleAgeCondition
   | BucketsLifecycleGetResponseRulesItemDeleteObjectsTransitionConditionR2LifecycleDateCondition;
+const BucketsLifecycleGetResponseRulesItemDeleteObjectsTransitionCondition = /*@__PURE__*/ __L.at(
+  __c5,
+  5,
+);
+
 export interface BucketsLifecycleGetResponseRulesItemDeleteObjectsTransition {
   /** Condition for lifecycle transitions to apply after an object reaches an age in seconds. */
   condition?: BucketsLifecycleGetResponseRulesItemDeleteObjectsTransitionCondition | null;
 }
+const BucketsLifecycleGetResponseRulesItemDeleteObjectsTransition = /*@__PURE__*/ __L.at(
+  __c5,
+  6,
+) as any as S.Schema<BucketsLifecycleGetResponseRulesItemDeleteObjectsTransition>;
+
 export type BucketsLifecycleGetResponseRulesItemStorageClassTransitionsItemConditionR2LifecycleAgeConditionType =
   "Age";
 export interface BucketsLifecycleGetResponseRulesItemStorageClassTransitionsItemConditionR2LifecycleAgeCondition {
@@ -763,15 +1065,30 @@ export interface BucketsLifecycleGetResponseRulesItemStorageClassTransitionsItem
 export type BucketsLifecycleGetResponseRulesItemStorageClassTransitionsItemCondition =
   | BucketsLifecycleGetResponseRulesItemStorageClassTransitionsItemConditionR2LifecycleAgeCondition
   | BucketsLifecycleGetResponseRulesItemStorageClassTransitionsItemConditionR2LifecycleDateCondition;
+const BucketsLifecycleGetResponseRulesItemStorageClassTransitionsItemCondition =
+  /*@__PURE__*/ __L.at(__c5, 7);
+
 export type BucketsLifecycleGetResponseRulesItemStorageClassTransitionsItemStorageClass =
   "InfrequentAccess";
+const BucketsLifecycleGetResponseRulesItemStorageClassTransitionsItemStorageClass = S.String;
+
 export interface BucketsLifecycleGetResponseRulesItemStorageClassTransitionsItem {
   /** Condition for lifecycle transitions to apply after an object reaches an age in seconds. */
   condition: BucketsLifecycleGetResponseRulesItemStorageClassTransitionsItemCondition;
   storageClass: BucketsLifecycleGetResponseRulesItemStorageClassTransitionsItemStorageClass;
 }
+const BucketsLifecycleGetResponseRulesItemStorageClassTransitionsItem = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<BucketsLifecycleGetResponseRulesItemStorageClassTransitionsItem>;
+
 export type BucketsLifecycleGetResponseRulesItemStorageClassTransitionsList =
   Array<BucketsLifecycleGetResponseRulesItemStorageClassTransitionsItem>;
+const BucketsLifecycleGetResponseRulesItemStorageClassTransitionsList = /*@__PURE__*/ __L.at(
+  __c6,
+  1,
+) as any as S.Schema<BucketsLifecycleGetResponseRulesItemStorageClassTransitionsList>;
+
 export interface BucketsLifecycleGetResponseRulesItem {
   /** Unique identifier for this rule. */
   id: string;
@@ -786,17 +1103,34 @@ export interface BucketsLifecycleGetResponseRulesItem {
   /** Transitions to change the storage class of objects. */
   storageClassTransitions?: BucketsLifecycleGetResponseRulesItemStorageClassTransitionsList | null;
 }
+const BucketsLifecycleGetResponseRulesItem = /*@__PURE__*/ __L.at(
+  __c6,
+  2,
+) as any as S.Schema<BucketsLifecycleGetResponseRulesItem>;
+
 export type BucketsLifecycleGetResponseRulesList = Array<BucketsLifecycleGetResponseRulesItem>;
+const BucketsLifecycleGetResponseRulesList = /*@__PURE__*/ __L.at(
+  __c6,
+  3,
+) as any as S.Schema<BucketsLifecycleGetResponseRulesList>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetBucketLifecycleResponse {
   rules?: BucketsLifecycleGetResponseRulesList | null;
 }
+const GetBucketLifecycleResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  4,
+) as any as S.Schema<GetBucketLifecycleResponse>;
+
 export type BucketsLocksGetRequestCfR2Jurisdiction =
   | "default"
   | "eu"
   | "us"
   | "fedramp"
   | "fedramp-high";
+const BucketsLocksGetRequestCfR2Jurisdiction = S.String;
+
 export interface GetBucketLockRequest {
   /** Cloudflare account ID that owns the R2 resource. */
   accountId: string;
@@ -804,6 +1138,8 @@ export interface GetBucketLockRequest {
   bucketName: string;
   jurisdiction?: BucketsLocksGetRequestCfR2Jurisdiction | (string & {});
 }
+const GetBucketLockRequest = /*@__PURE__*/ __L.at(__c6, 5) as any as S.Schema<GetBucketLockRequest>;
+
 export type BucketsLocksGetResponseRulesItemConditionR2LockRuleAgeConditionType = "Age";
 export interface BucketsLocksGetResponseRulesItemConditionR2LockRuleAgeCondition {
   maxAgeSeconds: number;
@@ -823,6 +1159,8 @@ export type BucketsLocksGetResponseRulesItemCondition =
   | BucketsLocksGetResponseRulesItemConditionR2LockRuleAgeCondition
   | BucketsLocksGetResponseRulesItemConditionR2LockRuleDateCondition
   | BucketsLocksGetResponseRulesItemConditionR2LockRuleIndefiniteCondition;
+const BucketsLocksGetResponseRulesItemCondition = /*@__PURE__*/ __L.at(__c6, 6);
+
 export interface BucketsLocksGetResponseRulesItem {
   /** Unique identifier for this rule. */
   id: string;
@@ -833,17 +1171,34 @@ export interface BucketsLocksGetResponseRulesItem {
   /** Rule will only apply to objects/uploads in the bucket that start with the given prefix, an empty prefix can be provided to scope rule to all objects/uploads. */
   prefix?: string | null;
 }
+const BucketsLocksGetResponseRulesItem = /*@__PURE__*/ __L.at(
+  __c6,
+  7,
+) as any as S.Schema<BucketsLocksGetResponseRulesItem>;
+
 export type BucketsLocksGetResponseRulesList = Array<BucketsLocksGetResponseRulesItem>;
+const BucketsLocksGetResponseRulesList = /*@__PURE__*/ __L.at(
+  __c7,
+  0,
+) as any as S.Schema<BucketsLocksGetResponseRulesList>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetBucketLockResponse {
   rules?: BucketsLocksGetResponseRulesList | null;
 }
+const GetBucketLockResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  1,
+) as any as S.Schema<GetBucketLockResponse>;
+
 export type BucketsObjectsGetRequestCfR2Jurisdiction =
   | "default"
   | "eu"
   | "us"
   | "fedramp"
   | "fedramp-high";
+const BucketsObjectsGetRequestCfR2Jurisdiction = S.String;
+
 export interface GetBucketObjectRequest {
   /** Cloudflare account ID that owns the R2 resource. */
   accountId: string;
@@ -857,7 +1212,14 @@ export interface GetBucketObjectRequest {
   /** The key (name) of the object to retrieve. May contain slashes for path-like keys. Slashes (`/`) within the key MUST be sent literally and MUST NOT be percent-encoded (i.e. `%2F`); other reserved characters should be percent-encoded as usual. */
   objectName: string;
 }
+const GetBucketObjectRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  2,
+) as any as S.Schema<GetBucketObjectRequest>;
+
 export type GetBucketObjectResponseCfR2StorageClass = "Standard" | "InfrequentAccess";
+const GetBucketObjectResponseCfR2StorageClass = S.String;
+
 export interface GetBucketObjectResponse {
   /** Raw object body as an Effect Stream. */
   body: T.BinaryResponseBody;
@@ -884,12 +1246,19 @@ export interface GetBucketObjectResponse {
   /** Storage class of the object (`Standard` or `InfrequentAccess`). */
   cfR2StorageClass?: GetBucketObjectResponseCfR2StorageClass;
 }
+const GetBucketObjectResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  3,
+) as any as S.Schema<GetBucketObjectResponse>;
+
 export type BucketsSippyGetRequestCfR2Jurisdiction =
   | "default"
   | "eu"
   | "us"
   | "fedramp"
   | "fedramp-high";
+const BucketsSippyGetRequestCfR2Jurisdiction = S.String;
+
 export interface GetBucketSippyRequest {
   /** Cloudflare account ID that owns the R2 resource. */
   accountId: string;
@@ -897,7 +1266,14 @@ export interface GetBucketSippyRequest {
   bucketName: string;
   jurisdiction?: BucketsSippyGetRequestCfR2Jurisdiction | (string & {});
 }
+const GetBucketSippyRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  4,
+) as any as S.Schema<GetBucketSippyRequest>;
+
 export type BucketsSippyGetResponseDestinationProvider = "r2";
+const BucketsSippyGetResponseDestinationProvider = S.String;
+
 export interface BucketsSippyGetResponseDestination {
   /** ID of the Cloudflare API token used when writing objects to this bucket. */
   accessKeyId?: string | null;
@@ -906,7 +1282,14 @@ export interface BucketsSippyGetResponseDestination {
   bucket?: string | null;
   provider?: BucketsSippyGetResponseDestinationProvider | null;
 }
+const BucketsSippyGetResponseDestination = /*@__PURE__*/ __L.at(
+  __c7,
+  5,
+) as any as S.Schema<BucketsSippyGetResponseDestination>;
+
 export type BucketsSippyGetResponseSourceProvider = "aws" | "gcs" | "s3" | "azure";
+const BucketsSippyGetResponseSourceProvider = S.String;
+
 export interface BucketsSippyGetResponseSource {
   /** Name of the bucket on the provider (AWS, GCS only). */
   bucket?: string | null;
@@ -918,6 +1301,11 @@ export interface BucketsSippyGetResponseSource {
   /** Region where the bucket resides (AWS only). */
   region?: string | null;
 }
+const BucketsSippyGetResponseSource = /*@__PURE__*/ __L.at(
+  __c7,
+  6,
+) as any as S.Schema<BucketsSippyGetResponseSource>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetBucketSippyResponse {
   /** Details about the configured destination bucket. */
@@ -927,10 +1315,20 @@ export interface GetBucketSippyResponse {
   /** Details about the configured source bucket. */
   source?: BucketsSippyGetResponseSource | null;
 }
+const GetBucketSippyResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  7,
+) as any as S.Schema<GetBucketSippyResponse>;
+
 export interface GetSuperSlurperJobRequest {
   accountId: string;
   jobId: string;
 }
+const GetSuperSlurperJobRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  0,
+) as any as S.Schema<GetSuperSlurperJobRequest>;
+
 export type SuperSlurperJobsGetResponseSourceS3SourceResponseSchemaKeysList = Array<string>;
 export type SuperSlurperJobsGetResponseSourceS3SourceResponseSchemaVendor = "s3";
 export interface SuperSlurperJobsGetResponseSourceS3SourceResponseSchema {
@@ -966,14 +1364,27 @@ export type SuperSlurperJobsGetResponseSource =
   | SuperSlurperJobsGetResponseSourceS3SourceResponseSchema
   | SuperSlurperJobsGetResponseSourceGcsSourceResponseSchema
   | SuperSlurperJobsGetResponseSourceR2SourceResponseSchema;
+const SuperSlurperJobsGetResponseSource = /*@__PURE__*/ __L.at(__c8, 1);
+
 export type SuperSlurperJobsGetResponseStatus = "running" | "paused" | "aborted" | "completed";
+const SuperSlurperJobsGetResponseStatus = S.String;
+
 export type SuperSlurperJobsGetResponseTargetJurisdiction = "default" | "eu" | "us" | "fedramp";
+const SuperSlurperJobsGetResponseTargetJurisdiction = S.String;
+
 export type SuperSlurperJobsGetResponseTargetVendor = "r2";
+const SuperSlurperJobsGetResponseTargetVendor = S.String;
+
 export interface SuperSlurperJobsGetResponseTarget {
   bucket?: string | null;
   jurisdiction?: SuperSlurperJobsGetResponseTargetJurisdiction | null;
   vendor?: SuperSlurperJobsGetResponseTargetVendor | null;
 }
+const SuperSlurperJobsGetResponseTarget = /*@__PURE__*/ __L.at(
+  __c8,
+  2,
+) as any as S.Schema<SuperSlurperJobsGetResponseTarget>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetSuperSlurperJobResponse {
   id?: string | null;
@@ -984,12 +1395,19 @@ export interface GetSuperSlurperJobResponse {
   status?: SuperSlurperJobsGetResponseStatus | null;
   target?: SuperSlurperJobsGetResponseTarget | null;
 }
+const GetSuperSlurperJobResponse = /*@__PURE__*/ __L.at(
+  __c8,
+  3,
+) as any as S.Schema<GetSuperSlurperJobResponse>;
+
 export type BucketsDomainsCustomListRequestCfR2Jurisdiction =
   | "default"
   | "eu"
   | "us"
   | "fedramp"
   | "fedramp-high";
+const BucketsDomainsCustomListRequestCfR2Jurisdiction = S.String;
+
 export interface ListBucketDomainCustomsRequest {
   /** Cloudflare account ID that owns the R2 resource. */
   accountId: string;
@@ -997,6 +1415,11 @@ export interface ListBucketDomainCustomsRequest {
   bucketName: string;
   jurisdiction?: BucketsDomainsCustomListRequestCfR2Jurisdiction | (string & {});
 }
+const ListBucketDomainCustomsRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  4,
+) as any as S.Schema<ListBucketDomainCustomsRequest>;
+
 export type BucketsDomainsCustomListResponseDomainsItemStatusOwnership =
   | "pending"
   | "active"
@@ -1017,8 +1440,16 @@ export interface BucketsDomainsCustomListResponseDomainsItemStatus {
   /** SSL certificate status. */
   ssl: BucketsDomainsCustomListResponseDomainsItemStatusSsl;
 }
+const BucketsDomainsCustomListResponseDomainsItemStatus =
+  BucketsDomainsCustomGetResponseStatus as any as S.Schema<BucketsDomainsCustomListResponseDomainsItemStatus>;
+
 export type BucketsDomainsCustomListResponseDomainsItemCiphersList = Array<string>;
+const BucketsDomainsCustomListResponseDomainsItemCiphersList =
+  BucketsDomainsCustomCreateRequestCiphersList as any as S.Schema<BucketsDomainsCustomListResponseDomainsItemCiphersList>;
+
 export type BucketsDomainsCustomListResponseDomainsItemMinTLS = "1.0" | "1.1" | "1.2" | "1.3";
+const BucketsDomainsCustomListResponseDomainsItemMinTLS = S.String;
+
 export interface BucketsDomainsCustomListResponseDomainsItem {
   /** Domain name of the custom domain to be added. */
   domain: string;
@@ -1034,18 +1465,35 @@ export interface BucketsDomainsCustomListResponseDomainsItem {
   /** Zone that the custom domain resides in. */
   zoneName?: string | null;
 }
+const BucketsDomainsCustomListResponseDomainsItem = /*@__PURE__*/ __L.at(
+  __c8,
+  5,
+) as any as S.Schema<BucketsDomainsCustomListResponseDomainsItem>;
+
 export type BucketsDomainsCustomListResponseDomainsList =
   Array<BucketsDomainsCustomListResponseDomainsItem>;
+const BucketsDomainsCustomListResponseDomainsList = /*@__PURE__*/ __L.at(
+  __c8,
+  6,
+) as any as S.Schema<BucketsDomainsCustomListResponseDomainsList>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface ListBucketDomainCustomsResponse {
   domains: BucketsDomainsCustomListResponseDomainsList;
 }
+const ListBucketDomainCustomsResponse = /*@__PURE__*/ __L.at(
+  __c8,
+  7,
+) as any as S.Schema<ListBucketDomainCustomsResponse>;
+
 export type BucketsDomainsManagedListRequestCfR2Jurisdiction =
   | "default"
   | "eu"
   | "us"
   | "fedramp"
   | "fedramp-high";
+const BucketsDomainsManagedListRequestCfR2Jurisdiction = S.String;
+
 export interface ListBucketDomainManagedsRequest {
   /** Cloudflare account ID that owns the R2 resource. */
   accountId: string;
@@ -1053,6 +1501,11 @@ export interface ListBucketDomainManagedsRequest {
   bucketName: string;
   jurisdiction?: BucketsDomainsManagedListRequestCfR2Jurisdiction | (string & {});
 }
+const ListBucketDomainManagedsRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  0,
+) as any as S.Schema<ListBucketDomainManagedsRequest>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface ListBucketDomainManagedsResponse {
   /** Bucket ID. */
@@ -1062,12 +1515,19 @@ export interface ListBucketDomainManagedsResponse {
   /** Whether this bucket is publicly accessible at the r2.dev domain. */
   enabled: boolean;
 }
+const ListBucketDomainManagedsResponse = /*@__PURE__*/ __L.at(
+  __c9,
+  1,
+) as any as S.Schema<ListBucketDomainManagedsResponse>;
+
 export type BucketsEventNotificationsListRequestCfR2Jurisdiction =
   | "default"
   | "eu"
   | "us"
   | "fedramp"
   | "fedramp-high";
+const BucketsEventNotificationsListRequestCfR2Jurisdiction = S.String;
+
 export interface ListBucketEventNotificationsRequest {
   /** Cloudflare account ID that owns the R2 resource. */
   accountId: string;
@@ -1075,14 +1535,26 @@ export interface ListBucketEventNotificationsRequest {
   bucketName: string;
   jurisdiction?: BucketsEventNotificationsListRequestCfR2Jurisdiction | (string & {});
 }
+const ListBucketEventNotificationsRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  2,
+) as any as S.Schema<ListBucketEventNotificationsRequest>;
+
 export type BucketsEventNotificationsListResponseQueuesItemRulesItemActionsItem =
   | "PutObject"
   | "CopyObject"
   | "DeleteObject"
   | "CompleteMultipartUpload"
   | "LifecycleDeletion";
+const BucketsEventNotificationsListResponseQueuesItemRulesItemActionsItem = S.String;
+
 export type BucketsEventNotificationsListResponseQueuesItemRulesItemActionsList =
   Array<BucketsEventNotificationsListResponseQueuesItemRulesItemActionsItem>;
+const BucketsEventNotificationsListResponseQueuesItemRulesItemActionsList = /*@__PURE__*/ __L.at(
+  __c9,
+  3,
+) as any as S.Schema<BucketsEventNotificationsListResponseQueuesItemRulesItemActionsList>;
+
 export interface BucketsEventNotificationsListResponseQueuesItemRulesItem {
   /** Array of R2 object actions that will trigger notifications. */
   actions: BucketsEventNotificationsListResponseQueuesItemRulesItemActionsList;
@@ -1097,8 +1569,18 @@ export interface BucketsEventNotificationsListResponseQueuesItemRulesItem {
   /** Notifications will be sent only for objects with this suffix. */
   suffix?: string | null;
 }
+const BucketsEventNotificationsListResponseQueuesItemRulesItem = /*@__PURE__*/ __L.at(
+  __c9,
+  4,
+) as any as S.Schema<BucketsEventNotificationsListResponseQueuesItemRulesItem>;
+
 export type BucketsEventNotificationsListResponseQueuesItemRulesList =
   Array<BucketsEventNotificationsListResponseQueuesItemRulesItem>;
+const BucketsEventNotificationsListResponseQueuesItemRulesList = /*@__PURE__*/ __L.at(
+  __c9,
+  5,
+) as any as S.Schema<BucketsEventNotificationsListResponseQueuesItemRulesList>;
+
 export interface BucketsEventNotificationsListResponseQueuesItem {
   /** Queue ID. */
   queueId?: string | null;
@@ -1106,8 +1588,18 @@ export interface BucketsEventNotificationsListResponseQueuesItem {
   queueName?: string | null;
   rules?: BucketsEventNotificationsListResponseQueuesItemRulesList | null;
 }
+const BucketsEventNotificationsListResponseQueuesItem = /*@__PURE__*/ __L.at(
+  __c9,
+  6,
+) as any as S.Schema<BucketsEventNotificationsListResponseQueuesItem>;
+
 export type BucketsEventNotificationsListResponseQueuesList =
   Array<BucketsEventNotificationsListResponseQueuesItem>;
+const BucketsEventNotificationsListResponseQueuesList = /*@__PURE__*/ __L.at(
+  __c9,
+  7,
+) as any as S.Schema<BucketsEventNotificationsListResponseQueuesList>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface ListBucketEventNotificationsResponse {
   /** Name of the bucket. */
@@ -1115,10 +1607,20 @@ export interface ListBucketEventNotificationsResponse {
   /** List of queues associated with the bucket. */
   queues?: BucketsEventNotificationsListResponseQueuesList | null;
 }
+const ListBucketEventNotificationsResponse = /*@__PURE__*/ __L.at(
+  __c10,
+  0,
+) as any as S.Schema<ListBucketEventNotificationsResponse>;
+
 export interface ListBucketMetricsRequest {
   /** Cloudflare account ID that owns the R2 resource. */
   accountId: string;
 }
+const ListBucketMetricsRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  1,
+) as any as S.Schema<ListBucketMetricsRequest>;
+
 export interface BucketsMetricsListResponseInfrequentAccessPublished {
   /** Amount of. */
   metadataSize?: number | null;
@@ -1127,6 +1629,11 @@ export interface BucketsMetricsListResponseInfrequentAccessPublished {
   /** Amount of storage used by object data. */
   payloadSize?: number | null;
 }
+const BucketsMetricsListResponseInfrequentAccessPublished = /*@__PURE__*/ __L.at(
+  __c10,
+  2,
+) as any as S.Schema<BucketsMetricsListResponseInfrequentAccessPublished>;
+
 export type BucketsMetricsListResponseInfrequentAccessUploaded =
   BucketsMetricsListResponseInfrequentAccessPublished;
 export interface BucketsMetricsListResponseInfrequentAccess {
@@ -1135,6 +1642,11 @@ export interface BucketsMetricsListResponseInfrequentAccess {
   /** Metrics on number of objects/amount of storage used. */
   uploaded?: BucketsMetricsListResponseInfrequentAccessPublished | null;
 }
+const BucketsMetricsListResponseInfrequentAccess = /*@__PURE__*/ __L.at(
+  __c10,
+  3,
+) as any as S.Schema<BucketsMetricsListResponseInfrequentAccess>;
+
 export type BucketsMetricsListResponseStandardPublished =
   BucketsMetricsListResponseInfrequentAccessPublished;
 export type BucketsMetricsListResponseStandardUploaded =
@@ -1147,12 +1659,19 @@ export interface ListBucketMetricsResponse {
   /** Metrics based on what state they are in(uploaded or published). */
   standard?: BucketsMetricsListResponseInfrequentAccess | null;
 }
+const ListBucketMetricsResponse = /*@__PURE__*/ __L.at(
+  __c10,
+  4,
+) as any as S.Schema<ListBucketMetricsResponse>;
+
 export type BucketsObjectsListRequestCfR2Jurisdiction =
   | "default"
   | "eu"
   | "us"
   | "fedramp"
   | "fedramp-high";
+const BucketsObjectsListRequestCfR2Jurisdiction = S.String;
+
 export interface ListBucketObjectsRequest {
   /** Cloudflare account ID that owns the R2 resource. */
   accountId: string;
@@ -1170,7 +1689,17 @@ export interface ListBucketObjectsRequest {
   startAfter?: string;
   cfR2Jurisdiction?: BucketsObjectsListRequestCfR2Jurisdiction | (string & {});
 }
+const ListBucketObjectsRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  5,
+) as any as S.Schema<ListBucketObjectsRequest>;
+
 export type BucketsObjectsListResultItemCustomMetadataMap = { [key: string]: string | undefined };
+const BucketsObjectsListResultItemCustomMetadataMap = /*@__PURE__*/ __L.at(
+  __c10,
+  6,
+) as any as S.Schema<BucketsObjectsListResultItemCustomMetadataMap>;
+
 export interface BucketsObjectsListResultItemHttpMetadata {
   /** Specifies caching behavior for the object. */
   cacheControl?: string | null;
@@ -1185,7 +1714,14 @@ export interface BucketsObjectsListResultItemHttpMetadata {
   /** The MIME type of the object. */
   contentType?: string | null;
 }
+const BucketsObjectsListResultItemHttpMetadata = /*@__PURE__*/ __L.at(
+  __c10,
+  7,
+) as any as S.Schema<BucketsObjectsListResultItemHttpMetadata>;
+
 export type BucketsObjectsListResultItemStorageClass = "Standard" | "InfrequentAccess";
+const BucketsObjectsListResultItemStorageClass = S.String;
+
 export interface BucketsObjectsListResultItem {
   /** Custom metadata key-value pairs associated with the object. */
   customMetadata?: BucketsObjectsListResultItemCustomMetadataMap | null;
@@ -1204,21 +1740,42 @@ export interface BucketsObjectsListResultItem {
   /** Storage class for newly uploaded objects, unless specified otherwise. */
   storageClass?: BucketsObjectsListResultItemStorageClass | null;
 }
+const BucketsObjectsListResultItem = /*@__PURE__*/ __L.at(
+  __c11,
+  0,
+) as any as S.Schema<BucketsObjectsListResultItem>;
+
 export type BucketsObjectsListResultList = Array<BucketsObjectsListResultItem>;
+const BucketsObjectsListResultList = /*@__PURE__*/ __L.at(
+  __c11,
+  1,
+) as any as S.Schema<BucketsObjectsListResultList>;
+
 export interface ListBucketObjectsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result: BucketsObjectsListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
+const ListBucketObjectsResponse = /*@__PURE__*/ __L.at(
+  __c11,
+  2,
+) as any as S.Schema<ListBucketObjectsResponse>;
+
 export type BucketsListRequestDirection = "asc" | "desc";
+const BucketsListRequestDirection = S.String;
+
 export type BucketsListRequestOrder = "name";
+const BucketsListRequestOrder = S.String;
+
 export type BucketsListRequestCfR2Jurisdiction =
   | "default"
   | "eu"
   | "us"
   | "fedramp"
   | "fedramp-high";
+const BucketsListRequestCfR2Jurisdiction = S.String;
+
 export interface ListBucketsRequest {
   /** Cloudflare account ID that owns the R2 resource. */
   accountId: string;
@@ -1236,12 +1793,16 @@ export interface ListBucketsRequest {
   startAfter?: string;
   jurisdiction?: BucketsListRequestCfR2Jurisdiction | (string & {});
 }
+const ListBucketsRequest = /*@__PURE__*/ __L.at(__c11, 3) as any as S.Schema<ListBucketsRequest>;
+
 export type BucketsListResponseBucketsItemJurisdiction =
   | "default"
   | "eu"
   | "us"
   | "fedramp"
   | "fedramp-high";
+const BucketsListResponseBucketsItemJurisdiction = S.String;
+
 export type BucketsListResponseBucketsItemLocation =
   | "apac"
   | "eeur"
@@ -1249,7 +1810,11 @@ export type BucketsListResponseBucketsItemLocation =
   | "weur"
   | "wnam"
   | "oc";
+const BucketsListResponseBucketsItemLocation = S.String;
+
 export type BucketsListResponseBucketsItemStorageClass = "Standard" | "InfrequentAccess";
+const BucketsListResponseBucketsItemStorageClass = S.String;
+
 export interface BucketsListResponseBucketsItem {
   /** Creation timestamp. */
   creationDate?: string | null;
@@ -1262,17 +1827,34 @@ export interface BucketsListResponseBucketsItem {
   /** Storage class for newly uploaded objects, unless specified otherwise. */
   storageClass?: BucketsListResponseBucketsItemStorageClass | null;
 }
+const BucketsListResponseBucketsItem = /*@__PURE__*/ __L.at(
+  __c11,
+  4,
+) as any as S.Schema<BucketsListResponseBucketsItem>;
+
 export type BucketsListResponseBucketsList = Array<BucketsListResponseBucketsItem>;
+const BucketsListResponseBucketsList = /*@__PURE__*/ __L.at(
+  __c11,
+  5,
+) as any as S.Schema<BucketsListResponseBucketsList>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface ListBucketsResponse {
   buckets?: BucketsListResponseBucketsList | null;
 }
+const ListBucketsResponse = /*@__PURE__*/ __L.at(__c11, 6) as any as S.Schema<ListBucketsResponse>;
+
 export interface ListSuperSlurperJobLogsRequest {
   accountId: string;
   jobId: string;
   limit?: number;
   offset?: number;
 }
+const ListSuperSlurperJobLogsRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  7,
+) as any as S.Schema<ListSuperSlurperJobLogsRequest>;
+
 export type SuperSlurperJobsLogsListResultItemLogType =
   | "migrationStart"
   | "migrationComplete"
@@ -1289,6 +1871,8 @@ export type SuperSlurperJobsLogsListResultItemLogType =
   | "importSkippedExcludedContentType"
   | "importSkippedInvalidMedia"
   | "importSkippedRequiresRetrieval";
+const SuperSlurperJobsLogsListResultItemLogType = S.String;
+
 export interface SuperSlurperJobsLogsListResultItem {
   createdAt?: string | null;
   job?: string | null;
@@ -1296,18 +1880,38 @@ export interface SuperSlurperJobsLogsListResultItem {
   message?: string | null;
   objectKey?: string | null;
 }
+const SuperSlurperJobsLogsListResultItem = /*@__PURE__*/ __L.at(
+  __c12,
+  0,
+) as any as S.Schema<SuperSlurperJobsLogsListResultItem>;
+
 export type SuperSlurperJobsLogsListResultList = Array<SuperSlurperJobsLogsListResultItem>;
+const SuperSlurperJobsLogsListResultList = /*@__PURE__*/ __L.at(
+  __c12,
+  1,
+) as any as S.Schema<SuperSlurperJobsLogsListResultList>;
+
 export interface ListSuperSlurperJobLogsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result: SuperSlurperJobsLogsListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
+const ListSuperSlurperJobLogsResponse = /*@__PURE__*/ __L.at(
+  __c12,
+  2,
+) as any as S.Schema<ListSuperSlurperJobLogsResponse>;
+
 export interface ListSuperSlurperJobsRequest {
   accountId: string;
   limit?: number;
   offset?: number;
 }
+const ListSuperSlurperJobsRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  3,
+) as any as S.Schema<ListSuperSlurperJobsRequest>;
+
 export type SuperSlurperJobsListResultItemSourceS3SourceResponseSchemaKeysList = Array<string>;
 export type SuperSlurperJobsListResultItemSourceS3SourceResponseSchemaVendor = "s3";
 export interface SuperSlurperJobsListResultItemSourceS3SourceResponseSchema {
@@ -1343,7 +1947,11 @@ export type SuperSlurperJobsListResultItemSource =
   | SuperSlurperJobsListResultItemSourceS3SourceResponseSchema
   | SuperSlurperJobsListResultItemSourceGcsSourceResponseSchema
   | SuperSlurperJobsListResultItemSourceR2SourceResponseSchema;
+const SuperSlurperJobsListResultItemSource = /*@__PURE__*/ __L.at(__c12, 4);
+
 export type SuperSlurperJobsListResultItemStatus = "running" | "paused" | "aborted" | "completed";
+const SuperSlurperJobsListResultItemStatus = S.String;
+
 export type SuperSlurperJobsListResultItemTargetJurisdiction = "default" | "eu" | "us" | "fedramp";
 export type SuperSlurperJobsListResultItemTargetVendor = "r2";
 export interface SuperSlurperJobsListResultItemTarget {
@@ -1351,6 +1959,9 @@ export interface SuperSlurperJobsListResultItemTarget {
   jurisdiction?: SuperSlurperJobsListResultItemTargetJurisdiction | null;
   vendor?: SuperSlurperJobsListResultItemTargetVendor | null;
 }
+const SuperSlurperJobsListResultItemTarget =
+  SuperSlurperJobsGetResponseTarget as any as S.Schema<SuperSlurperJobsListResultItemTarget>;
+
 export interface SuperSlurperJobsListResultItem {
   id?: string | null;
   createdAt?: string | null;
@@ -1360,20 +1971,39 @@ export interface SuperSlurperJobsListResultItem {
   status?: SuperSlurperJobsListResultItemStatus | null;
   target?: SuperSlurperJobsListResultItemTarget | null;
 }
+const SuperSlurperJobsListResultItem = /*@__PURE__*/ __L.at(
+  __c12,
+  5,
+) as any as S.Schema<SuperSlurperJobsListResultItem>;
+
 export type SuperSlurperJobsListResultList = Array<SuperSlurperJobsListResultItem>;
+const SuperSlurperJobsListResultList = /*@__PURE__*/ __L.at(
+  __c12,
+  6,
+) as any as S.Schema<SuperSlurperJobsListResultList>;
+
 export interface ListSuperSlurperJobsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result: SuperSlurperJobsListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
+const ListSuperSlurperJobsResponse = /*@__PURE__*/ __L.at(
+  __c12,
+  7,
+) as any as S.Schema<ListSuperSlurperJobsResponse>;
+
 export type BucketsEditRequestCfR2StorageClass = "Standard" | "InfrequentAccess";
+const BucketsEditRequestCfR2StorageClass = S.String;
+
 export type BucketsEditRequestCfR2Jurisdiction =
   | "default"
   | "eu"
   | "us"
   | "fedramp"
   | "fedramp-high";
+const BucketsEditRequestCfR2Jurisdiction = S.String;
+
 export interface PatchBucketRequest {
   /** Cloudflare account ID that owns the R2 resource. */
   accountId: string;
@@ -1383,6 +2013,8 @@ export interface PatchBucketRequest {
   storageClass: BucketsEditRequestCfR2StorageClass | (string & {});
   jurisdiction?: BucketsEditRequestCfR2Jurisdiction | (string & {});
 }
+const PatchBucketRequest = /*@__PURE__*/ __L.at(__c13, 0) as any as S.Schema<PatchBucketRequest>;
+
 export type BucketsEditResponseJurisdiction = "default" | "eu" | "us" | "fedramp" | "fedramp-high";
 export type BucketsEditResponseLocation = "apac" | "eeur" | "enam" | "weur" | "wnam" | "oc";
 export type BucketsEditResponseStorageClass = "Standard" | "InfrequentAccess";
@@ -1399,16 +2031,33 @@ export interface PatchBucketResponse {
   /** Storage class for newly uploaded objects, unless specified otherwise. */
   storageClass?: BucketsEditResponseStorageClass | null;
 }
+const PatchBucketResponse = CreateBucketResponse as any as S.Schema<PatchBucketResponse>;
+
 export interface PauseSuperSlurperJobRequest {
   accountId: string;
   jobId: string;
 }
+const PauseSuperSlurperJobRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  1,
+) as any as S.Schema<PauseSuperSlurperJobRequest>;
+
 export type PauseSuperSlurperJobResponse = string;
+const PauseSuperSlurperJobResponse =
+  AbortAllSuperSlurperJobResponse as any as S.Schema<PauseSuperSlurperJobResponse>;
+
 export interface ProgressSuperSlurperJobRequest {
   accountId: string;
   jobId: string;
 }
+const ProgressSuperSlurperJobRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  2,
+) as any as S.Schema<ProgressSuperSlurperJobRequest>;
+
 export type SuperSlurperJobsProgressResponseStatus = "running" | "paused" | "aborted" | "completed";
+const SuperSlurperJobsProgressResponseStatus = S.String;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface ProgressSuperSlurperJobResponse {
   id?: string | null;
@@ -1419,6 +2068,11 @@ export interface ProgressSuperSlurperJobResponse {
   status?: SuperSlurperJobsProgressResponseStatus | null;
   transferredObjects?: number | null;
 }
+const ProgressSuperSlurperJobResponse = /*@__PURE__*/ __L.at(
+  __c13,
+  3,
+) as any as S.Schema<ProgressSuperSlurperJobResponse>;
+
 export type BucketsCorsUpdateRequestRulesItemAllowedMethodsItem =
   | "GET"
   | "PUT"
@@ -1428,8 +2082,17 @@ export type BucketsCorsUpdateRequestRulesItemAllowedMethodsItem =
 export type BucketsCorsUpdateRequestRulesItemAllowedMethodsList = Array<
   BucketsCorsUpdateRequestRulesItemAllowedMethodsItem | (string & {})
 >;
+const BucketsCorsUpdateRequestRulesItemAllowedMethodsList =
+  BucketsCorsGetResponseRulesItemAllowedMethodsList as any as S.Schema<BucketsCorsUpdateRequestRulesItemAllowedMethodsList>;
+
 export type BucketsCorsUpdateRequestRulesItemAllowedOriginsList = Array<string>;
+const BucketsCorsUpdateRequestRulesItemAllowedOriginsList =
+  BucketsDomainsCustomCreateRequestCiphersList as any as S.Schema<BucketsCorsUpdateRequestRulesItemAllowedOriginsList>;
+
 export type BucketsCorsUpdateRequestRulesItemAllowedHeadersList = Array<string>;
+const BucketsCorsUpdateRequestRulesItemAllowedHeadersList =
+  BucketsDomainsCustomCreateRequestCiphersList as any as S.Schema<BucketsCorsUpdateRequestRulesItemAllowedHeadersList>;
+
 export interface BucketsCorsUpdateRequestRulesItemAllowed {
   /** Specifies the value for the Access-Control-Allow-Methods header R2 sets when requesting objects in a bucket from a browser. */
   methods: BucketsCorsUpdateRequestRulesItemAllowedMethodsList;
@@ -1438,7 +2101,15 @@ export interface BucketsCorsUpdateRequestRulesItemAllowed {
   /** Specifies the value for the Access-Control-Allow-Headers header R2 sets when requesting objects in this bucket from a browser. Cross-origin requests that include custom headers (e.g. x-user-id) should specify these headers as AllowedHeaders. */
   headers?: BucketsCorsUpdateRequestRulesItemAllowedHeadersList;
 }
+const BucketsCorsUpdateRequestRulesItemAllowed = /*@__PURE__*/ __L.at(
+  __c13,
+  4,
+) as any as S.Schema<BucketsCorsUpdateRequestRulesItemAllowed>;
+
 export type BucketsCorsUpdateRequestRulesItemExposeHeadersList = Array<string>;
+const BucketsCorsUpdateRequestRulesItemExposeHeadersList =
+  BucketsDomainsCustomCreateRequestCiphersList as any as S.Schema<BucketsCorsUpdateRequestRulesItemExposeHeadersList>;
+
 export interface BucketsCorsUpdateRequestRulesItem {
   /** Object specifying allowed origins, methods and headers for this CORS rule. */
   allowed: BucketsCorsUpdateRequestRulesItemAllowed;
@@ -1449,13 +2120,25 @@ export interface BucketsCorsUpdateRequestRulesItem {
   /** Specifies the amount of time (in seconds) browsers are allowed to cache CORS preflight responses. Browsers may limit this to 2 hours or less, even if the maximum value (86400) is specified. */
   maxAgeSeconds?: number;
 }
+const BucketsCorsUpdateRequestRulesItem = /*@__PURE__*/ __L.at(
+  __c13,
+  5,
+) as any as S.Schema<BucketsCorsUpdateRequestRulesItem>;
+
 export type BucketsCorsUpdateRequestRulesList = Array<BucketsCorsUpdateRequestRulesItem>;
+const BucketsCorsUpdateRequestRulesList = /*@__PURE__*/ __L.at(
+  __c13,
+  6,
+) as any as S.Schema<BucketsCorsUpdateRequestRulesList>;
+
 export type BucketsCorsUpdateRequestCfR2Jurisdiction =
   | "default"
   | "eu"
   | "us"
   | "fedramp"
   | "fedramp-high";
+const BucketsCorsUpdateRequestCfR2Jurisdiction = S.String;
+
 export interface PutBucketCorsRequest {
   /** Cloudflare account ID that owns the R2 resource. */
   accountId: string;
@@ -1464,13 +2147,22 @@ export interface PutBucketCorsRequest {
   rules?: BucketsCorsUpdateRequestRulesList;
   jurisdiction?: BucketsCorsUpdateRequestCfR2Jurisdiction | (string & {});
 }
+const PutBucketCorsRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  7,
+) as any as S.Schema<PutBucketCorsRequest>;
+
 export type PutBucketCorsResponse = unknown;
+const PutBucketCorsResponse = DeleteBucketResponse as any as S.Schema<PutBucketCorsResponse>;
+
 export type BucketsDomainsManagedUpdateRequestCfR2Jurisdiction =
   | "default"
   | "eu"
   | "us"
   | "fedramp"
   | "fedramp-high";
+const BucketsDomainsManagedUpdateRequestCfR2Jurisdiction = S.String;
+
 export interface PutBucketDomainManagedRequest {
   /** Cloudflare account ID that owns the R2 resource. */
   accountId: string;
@@ -1480,6 +2172,11 @@ export interface PutBucketDomainManagedRequest {
   enabled: boolean;
   jurisdiction?: BucketsDomainsManagedUpdateRequestCfR2Jurisdiction | (string & {});
 }
+const PutBucketDomainManagedRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  0,
+) as any as S.Schema<PutBucketDomainManagedRequest>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PutBucketDomainManagedResponse {
   /** Bucket ID. */
@@ -1489,6 +2186,9 @@ export interface PutBucketDomainManagedResponse {
   /** Whether this bucket is publicly accessible at the r2.dev domain. */
   enabled: boolean;
 }
+const PutBucketDomainManagedResponse =
+  ListBucketDomainManagedsResponse as any as S.Schema<PutBucketDomainManagedResponse>;
+
 export type BucketsEventNotificationsUpdateRequestRulesItemActionsItem =
   | "PutObject"
   | "CopyObject"
@@ -1498,6 +2198,9 @@ export type BucketsEventNotificationsUpdateRequestRulesItemActionsItem =
 export type BucketsEventNotificationsUpdateRequestRulesItemActionsList = Array<
   BucketsEventNotificationsUpdateRequestRulesItemActionsItem | (string & {})
 >;
+const BucketsEventNotificationsUpdateRequestRulesItemActionsList =
+  BucketsCorsGetResponseRulesItemAllowedMethodsList as any as S.Schema<BucketsEventNotificationsUpdateRequestRulesItemActionsList>;
+
 export interface BucketsEventNotificationsUpdateRequestRulesItem {
   /** Array of R2 object actions that will trigger notifications. */
   actions: BucketsEventNotificationsUpdateRequestRulesItemActionsList;
@@ -1508,14 +2211,26 @@ export interface BucketsEventNotificationsUpdateRequestRulesItem {
   /** Notifications will be sent only for objects with this suffix. */
   suffix?: string;
 }
+const BucketsEventNotificationsUpdateRequestRulesItem = /*@__PURE__*/ __L.at(
+  __c14,
+  1,
+) as any as S.Schema<BucketsEventNotificationsUpdateRequestRulesItem>;
+
 export type BucketsEventNotificationsUpdateRequestRulesList =
   Array<BucketsEventNotificationsUpdateRequestRulesItem>;
+const BucketsEventNotificationsUpdateRequestRulesList = /*@__PURE__*/ __L.at(
+  __c14,
+  2,
+) as any as S.Schema<BucketsEventNotificationsUpdateRequestRulesList>;
+
 export type BucketsEventNotificationsUpdateRequestCfR2Jurisdiction =
   | "default"
   | "eu"
   | "us"
   | "fedramp"
   | "fedramp-high";
+const BucketsEventNotificationsUpdateRequestCfR2Jurisdiction = S.String;
+
 export interface PutBucketEventNotificationRequest {
   /** Cloudflare account ID that owns the R2 resource. */
   accountId: string;
@@ -1527,7 +2242,15 @@ export interface PutBucketEventNotificationRequest {
   rules: BucketsEventNotificationsUpdateRequestRulesList;
   jurisdiction?: BucketsEventNotificationsUpdateRequestCfR2Jurisdiction | (string & {});
 }
+const PutBucketEventNotificationRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  3,
+) as any as S.Schema<PutBucketEventNotificationRequest>;
+
 export type PutBucketEventNotificationResponse = unknown;
+const PutBucketEventNotificationResponse =
+  DeleteBucketEventNotificationResponse as any as S.Schema<PutBucketEventNotificationResponse>;
+
 export type BucketsLifecycleUpdateRequestRulesItemConditions =
   BucketsLifecycleGetResponseRulesItemConditions;
 export type BucketsLifecycleUpdateRequestRulesItemAbortMultipartUploadsTransitionConditionType =
@@ -1538,10 +2261,18 @@ export interface BucketsLifecycleUpdateRequestRulesItemAbortMultipartUploadsTran
     | BucketsLifecycleUpdateRequestRulesItemAbortMultipartUploadsTransitionConditionType
     | (string & {});
 }
+const BucketsLifecycleUpdateRequestRulesItemAbortMultipartUploadsTransitionCondition =
+  BucketsLifecycleGetResponseRulesItemAbortMultipartUploadsTransitionCondition as any as S.Schema<BucketsLifecycleUpdateRequestRulesItemAbortMultipartUploadsTransitionCondition>;
+
 export interface BucketsLifecycleUpdateRequestRulesItemAbortMultipartUploadsTransition {
   /** Condition for lifecycle transitions to apply after an object reaches an age in seconds. */
   condition?: BucketsLifecycleUpdateRequestRulesItemAbortMultipartUploadsTransitionCondition;
 }
+const BucketsLifecycleUpdateRequestRulesItemAbortMultipartUploadsTransition = /*@__PURE__*/ __L.at(
+  __c14,
+  4,
+) as any as S.Schema<BucketsLifecycleUpdateRequestRulesItemAbortMultipartUploadsTransition>;
+
 export type BucketsLifecycleUpdateRequestRulesItemDeleteObjectsTransitionConditionR2LifecycleAgeConditionType =
   "Age";
 export interface BucketsLifecycleUpdateRequestRulesItemDeleteObjectsTransitionConditionR2LifecycleAgeCondition {
@@ -1557,10 +2288,20 @@ export interface BucketsLifecycleUpdateRequestRulesItemDeleteObjectsTransitionCo
 export type BucketsLifecycleUpdateRequestRulesItemDeleteObjectsTransitionCondition =
   | BucketsLifecycleUpdateRequestRulesItemDeleteObjectsTransitionConditionR2LifecycleAgeCondition
   | BucketsLifecycleUpdateRequestRulesItemDeleteObjectsTransitionConditionR2LifecycleDateCondition;
+const BucketsLifecycleUpdateRequestRulesItemDeleteObjectsTransitionCondition = /*@__PURE__*/ __L.at(
+  __c14,
+  5,
+);
+
 export interface BucketsLifecycleUpdateRequestRulesItemDeleteObjectsTransition {
   /** Condition for lifecycle transitions to apply after an object reaches an age in seconds. */
   condition?: BucketsLifecycleUpdateRequestRulesItemDeleteObjectsTransitionCondition;
 }
+const BucketsLifecycleUpdateRequestRulesItemDeleteObjectsTransition = /*@__PURE__*/ __L.at(
+  __c14,
+  6,
+) as any as S.Schema<BucketsLifecycleUpdateRequestRulesItemDeleteObjectsTransition>;
+
 export type BucketsLifecycleUpdateRequestRulesItemStorageClassTransitionsItemConditionR2LifecycleAgeConditionType =
   "Age";
 export interface BucketsLifecycleUpdateRequestRulesItemStorageClassTransitionsItemConditionR2LifecycleAgeCondition {
@@ -1576,8 +2317,13 @@ export interface BucketsLifecycleUpdateRequestRulesItemStorageClassTransitionsIt
 export type BucketsLifecycleUpdateRequestRulesItemStorageClassTransitionsItemCondition =
   | BucketsLifecycleUpdateRequestRulesItemStorageClassTransitionsItemConditionR2LifecycleAgeCondition
   | BucketsLifecycleUpdateRequestRulesItemStorageClassTransitionsItemConditionR2LifecycleDateCondition;
+const BucketsLifecycleUpdateRequestRulesItemStorageClassTransitionsItemCondition =
+  /*@__PURE__*/ __L.at(__c14, 7);
+
 export type BucketsLifecycleUpdateRequestRulesItemStorageClassTransitionsItemStorageClass =
   "InfrequentAccess";
+const BucketsLifecycleUpdateRequestRulesItemStorageClassTransitionsItemStorageClass = S.String;
+
 export interface BucketsLifecycleUpdateRequestRulesItemStorageClassTransitionsItem {
   /** Condition for lifecycle transitions to apply after an object reaches an age in seconds. */
   condition: BucketsLifecycleUpdateRequestRulesItemStorageClassTransitionsItemCondition;
@@ -1585,8 +2331,18 @@ export interface BucketsLifecycleUpdateRequestRulesItemStorageClassTransitionsIt
     | BucketsLifecycleUpdateRequestRulesItemStorageClassTransitionsItemStorageClass
     | (string & {});
 }
+const BucketsLifecycleUpdateRequestRulesItemStorageClassTransitionsItem = /*@__PURE__*/ __L.at(
+  __c15,
+  0,
+) as any as S.Schema<BucketsLifecycleUpdateRequestRulesItemStorageClassTransitionsItem>;
+
 export type BucketsLifecycleUpdateRequestRulesItemStorageClassTransitionsList =
   Array<BucketsLifecycleUpdateRequestRulesItemStorageClassTransitionsItem>;
+const BucketsLifecycleUpdateRequestRulesItemStorageClassTransitionsList = /*@__PURE__*/ __L.at(
+  __c15,
+  1,
+) as any as S.Schema<BucketsLifecycleUpdateRequestRulesItemStorageClassTransitionsList>;
+
 export interface BucketsLifecycleUpdateRequestRulesItem {
   /** Unique identifier for this rule. */
   id: string;
@@ -1601,13 +2357,25 @@ export interface BucketsLifecycleUpdateRequestRulesItem {
   /** Transitions to change the storage class of objects. */
   storageClassTransitions?: BucketsLifecycleUpdateRequestRulesItemStorageClassTransitionsList;
 }
+const BucketsLifecycleUpdateRequestRulesItem = /*@__PURE__*/ __L.at(
+  __c15,
+  2,
+) as any as S.Schema<BucketsLifecycleUpdateRequestRulesItem>;
+
 export type BucketsLifecycleUpdateRequestRulesList = Array<BucketsLifecycleUpdateRequestRulesItem>;
+const BucketsLifecycleUpdateRequestRulesList = /*@__PURE__*/ __L.at(
+  __c15,
+  3,
+) as any as S.Schema<BucketsLifecycleUpdateRequestRulesList>;
+
 export type BucketsLifecycleUpdateRequestCfR2Jurisdiction =
   | "default"
   | "eu"
   | "us"
   | "fedramp"
   | "fedramp-high";
+const BucketsLifecycleUpdateRequestCfR2Jurisdiction = S.String;
+
 export interface PutBucketLifecycleRequest {
   /** Cloudflare account ID that owns the R2 resource. */
   accountId: string;
@@ -1616,7 +2384,15 @@ export interface PutBucketLifecycleRequest {
   rules?: BucketsLifecycleUpdateRequestRulesList;
   jurisdiction?: BucketsLifecycleUpdateRequestCfR2Jurisdiction | (string & {});
 }
+const PutBucketLifecycleRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  4,
+) as any as S.Schema<PutBucketLifecycleRequest>;
+
 export type PutBucketLifecycleResponse = unknown;
+const PutBucketLifecycleResponse =
+  DeleteBucketEventNotificationResponse as any as S.Schema<PutBucketLifecycleResponse>;
+
 export type BucketsLocksUpdateRequestRulesItemConditionR2LockRuleAgeConditionType = "Age";
 export interface BucketsLocksUpdateRequestRulesItemConditionR2LockRuleAgeCondition {
   maxAgeSeconds: number;
@@ -1636,6 +2412,8 @@ export type BucketsLocksUpdateRequestRulesItemCondition =
   | BucketsLocksUpdateRequestRulesItemConditionR2LockRuleAgeCondition
   | BucketsLocksUpdateRequestRulesItemConditionR2LockRuleDateCondition
   | BucketsLocksUpdateRequestRulesItemConditionR2LockRuleIndefiniteCondition;
+const BucketsLocksUpdateRequestRulesItemCondition = /*@__PURE__*/ __L.at(__c15, 5);
+
 export interface BucketsLocksUpdateRequestRulesItem {
   /** Unique identifier for this rule. */
   id: string;
@@ -1646,13 +2424,25 @@ export interface BucketsLocksUpdateRequestRulesItem {
   /** Rule will only apply to objects/uploads in the bucket that start with the given prefix, an empty prefix can be provided to scope rule to all objects/uploads. */
   prefix?: string;
 }
+const BucketsLocksUpdateRequestRulesItem = /*@__PURE__*/ __L.at(
+  __c15,
+  6,
+) as any as S.Schema<BucketsLocksUpdateRequestRulesItem>;
+
 export type BucketsLocksUpdateRequestRulesList = Array<BucketsLocksUpdateRequestRulesItem>;
+const BucketsLocksUpdateRequestRulesList = /*@__PURE__*/ __L.at(
+  __c15,
+  7,
+) as any as S.Schema<BucketsLocksUpdateRequestRulesList>;
+
 export type BucketsLocksUpdateRequestCfR2Jurisdiction =
   | "default"
   | "eu"
   | "us"
   | "fedramp"
   | "fedramp-high";
+const BucketsLocksUpdateRequestCfR2Jurisdiction = S.String;
+
 export interface PutBucketLockRequest {
   /** Cloudflare account ID that owns the R2 resource. */
   accountId: string;
@@ -1661,8 +2451,17 @@ export interface PutBucketLockRequest {
   rules?: BucketsLocksUpdateRequestRulesList;
   jurisdiction?: BucketsLocksUpdateRequestCfR2Jurisdiction | (string & {});
 }
+const PutBucketLockRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  0,
+) as any as S.Schema<PutBucketLockRequest>;
+
 export type PutBucketLockResponse = unknown;
+const PutBucketLockResponse = DeleteBucketResponse as any as S.Schema<PutBucketLockResponse>;
+
 export type BucketsSippyUpdateRequestDestinationProvider = "r2";
+const BucketsSippyUpdateRequestDestinationProvider = S.String;
+
 export interface BucketsSippyUpdateRequestDestination {
   /** ID of a Cloudflare API token. This is the value labelled "Access Key ID" when creating an API. token from the [R2 dashboard](https://dash.cloudflare.com/?to=/:account/r2/api-tokens). */
   accessKeyId?: string;
@@ -1670,6 +2469,11 @@ export interface BucketsSippyUpdateRequestDestination {
   /** Value of a Cloudflare API token. This is the value labelled "Secret Access Key" when creating an API. token from the [R2 dashboard](https://dash.cloudflare.com/?to=/:account/r2/api-tokens). */
   secretAccessKey?: string;
 }
+const BucketsSippyUpdateRequestDestination = /*@__PURE__*/ __L.at(
+  __c16,
+  1,
+) as any as S.Schema<BucketsSippyUpdateRequestDestination>;
+
 export type BucketsSippyUpdateRequestSourceR2EnableSippyAwsProvider = "aws";
 export interface BucketsSippyUpdateRequestSourceR2EnableSippyAws {
   /** Access Key ID of an IAM credential (ideally scoped to a single S3 bucket). */
@@ -1719,12 +2523,16 @@ export type BucketsSippyUpdateRequestSource =
   | BucketsSippyUpdateRequestSourceR2EnableSippyGcs
   | BucketsSippyUpdateRequestSourceR2EnableSippyS3
   | BucketsSippyUpdateRequestSourceR2EnableSippyAzure;
+const BucketsSippyUpdateRequestSource = /*@__PURE__*/ __L.at(__c16, 2);
+
 export type BucketsSippyUpdateRequestCfR2Jurisdiction =
   | "default"
   | "eu"
   | "us"
   | "fedramp"
   | "fedramp-high";
+const BucketsSippyUpdateRequestCfR2Jurisdiction = S.String;
+
 export interface PutBucketSippyRequest {
   /** Cloudflare account ID that owns the R2 resource. */
   accountId: string;
@@ -1736,6 +2544,11 @@ export interface PutBucketSippyRequest {
   source?: BucketsSippyUpdateRequestSource;
   jurisdiction?: BucketsSippyUpdateRequestCfR2Jurisdiction | (string & {});
 }
+const PutBucketSippyRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  3,
+) as any as S.Schema<PutBucketSippyRequest>;
+
 export type BucketsSippyUpdateResponseDestinationProvider = "r2";
 export interface BucketsSippyUpdateResponseDestination {
   /** ID of the Cloudflare API token used when writing objects to this bucket. */
@@ -1766,11 +2579,21 @@ export interface PutBucketSippyResponse {
   /** Details about the configured source bucket. */
   source?: BucketsSippyUpdateResponseSource | null;
 }
+const PutBucketSippyResponse = GetBucketSippyResponse as any as S.Schema<PutBucketSippyResponse>;
+
 export interface ResumeSuperSlurperJobRequest {
   accountId: string;
   jobId: string;
 }
+const ResumeSuperSlurperJobRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  4,
+) as any as S.Schema<ResumeSuperSlurperJobRequest>;
+
 export type ResumeSuperSlurperJobResponse = string;
+const ResumeSuperSlurperJobResponse =
+  AbortAllSuperSlurperJobResponse as any as S.Schema<ResumeSuperSlurperJobResponse>;
+
 export type SuperSlurperConnectivityPrecheckSourceRequestSecretR2SlurperS3SourceSchema =
   SuperSlurperJobsCreateRequestSourceR2SlurperS3SourceSchemaSecret;
 export type SuperSlurperConnectivityPrecheckSourceRequestSecretR2SlurperGcsSourceSchema =
@@ -1778,13 +2601,22 @@ export type SuperSlurperConnectivityPrecheckSourceRequestSecretR2SlurperGcsSourc
 export type SuperSlurperConnectivityPrecheckSourceRequestSecret =
   | SuperSlurperJobsCreateRequestSourceR2SlurperS3SourceSchemaSecret
   | SuperSlurperJobsCreateRequestSourceR2SlurperGcsSourceSchemaSecret;
+const SuperSlurperConnectivityPrecheckSourceRequestSecret = /*@__PURE__*/ __L.at(__c16, 5);
+
 export type SuperSlurperConnectivityPrecheckSourceRequestVendor = "s3" | "gcs" | "r2";
+const SuperSlurperConnectivityPrecheckSourceRequestVendor = S.String;
+
 export type SuperSlurperConnectivityPrecheckSourceRequestKeysList = Array<string>;
+const SuperSlurperConnectivityPrecheckSourceRequestKeysList =
+  BucketsDomainsCustomCreateRequestCiphersList as any as S.Schema<SuperSlurperConnectivityPrecheckSourceRequestKeysList>;
+
 export type SuperSlurperConnectivityPrecheckSourceRequestJurisdiction =
   | "default"
   | "eu"
   | "us"
   | "fedramp";
+const SuperSlurperConnectivityPrecheckSourceRequestJurisdiction = S.String;
+
 export interface SourceSuperSlurperConnectivityPrecheckRequest {
   accountId: string;
   bucket: string;
@@ -1797,19 +2629,35 @@ export interface SourceSuperSlurperConnectivityPrecheckRequest {
   region?: string;
   jurisdiction?: SuperSlurperConnectivityPrecheckSourceRequestJurisdiction | (string & {});
 }
+const SourceSuperSlurperConnectivityPrecheckRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  6,
+) as any as S.Schema<SourceSuperSlurperConnectivityPrecheckRequest>;
+
 export type SuperSlurperConnectivityPrecheckSourceResponseConnectivityStatus = "success" | "error";
+const SuperSlurperConnectivityPrecheckSourceResponseConnectivityStatus = S.String;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface SourceSuperSlurperConnectivityPrecheckResponse {
   connectivityStatus?: SuperSlurperConnectivityPrecheckSourceResponseConnectivityStatus | null;
 }
+const SourceSuperSlurperConnectivityPrecheckResponse = /*@__PURE__*/ __L.at(
+  __c16,
+  7,
+) as any as S.Schema<SourceSuperSlurperConnectivityPrecheckResponse>;
+
 export type SuperSlurperConnectivityPrecheckTargetRequestSecret =
   SuperSlurperJobsCreateRequestSourceR2SlurperS3SourceSchemaSecret;
 export type SuperSlurperConnectivityPrecheckTargetRequestVendor = "r2";
+const SuperSlurperConnectivityPrecheckTargetRequestVendor = S.String;
+
 export type SuperSlurperConnectivityPrecheckTargetRequestJurisdiction =
   | "default"
   | "eu"
   | "us"
   | "fedramp";
+const SuperSlurperConnectivityPrecheckTargetRequestJurisdiction = S.String;
+
 export interface TargetSuperSlurperConnectivityPrecheckRequest {
   accountId: string;
   bucket: string;
@@ -1817,19 +2665,34 @@ export interface TargetSuperSlurperConnectivityPrecheckRequest {
   vendor: SuperSlurperConnectivityPrecheckTargetRequestVendor | (string & {});
   jurisdiction?: SuperSlurperConnectivityPrecheckTargetRequestJurisdiction | (string & {});
 }
+const TargetSuperSlurperConnectivityPrecheckRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  0,
+) as any as S.Schema<TargetSuperSlurperConnectivityPrecheckRequest>;
+
 export type SuperSlurperConnectivityPrecheckTargetResponseConnectivityStatus = "success" | "error";
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface TargetSuperSlurperConnectivityPrecheckResponse {
   connectivityStatus?: SuperSlurperConnectivityPrecheckTargetResponseConnectivityStatus | null;
 }
+const TargetSuperSlurperConnectivityPrecheckResponse =
+  SourceSuperSlurperConnectivityPrecheckResponse as any as S.Schema<TargetSuperSlurperConnectivityPrecheckResponse>;
+
 export type BucketsDomainsCustomUpdateRequestCiphersList = Array<string>;
+const BucketsDomainsCustomUpdateRequestCiphersList =
+  BucketsDomainsCustomCreateRequestCiphersList as any as S.Schema<BucketsDomainsCustomUpdateRequestCiphersList>;
+
 export type BucketsDomainsCustomUpdateRequestMinTLS = "1.0" | "1.1" | "1.2" | "1.3";
+const BucketsDomainsCustomUpdateRequestMinTLS = S.String;
+
 export type BucketsDomainsCustomUpdateRequestCfR2Jurisdiction =
   | "default"
   | "eu"
   | "us"
   | "fedramp"
   | "fedramp-high";
+const BucketsDomainsCustomUpdateRequestCfR2Jurisdiction = S.String;
+
 export interface UpdateBucketDomainCustomRequest {
   /** Cloudflare account ID that owns the R2 resource. */
   accountId: string;
@@ -1845,8 +2708,18 @@ export interface UpdateBucketDomainCustomRequest {
   minTLS?: BucketsDomainsCustomUpdateRequestMinTLS | (string & {});
   jurisdiction?: BucketsDomainsCustomUpdateRequestCfR2Jurisdiction | (string & {});
 }
+const UpdateBucketDomainCustomRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  1,
+) as any as S.Schema<UpdateBucketDomainCustomRequest>;
+
 export type BucketsDomainsCustomUpdateResponseCiphersList = Array<string>;
+const BucketsDomainsCustomUpdateResponseCiphersList =
+  BucketsDomainsCustomCreateRequestCiphersList as any as S.Schema<BucketsDomainsCustomUpdateResponseCiphersList>;
+
 export type BucketsDomainsCustomUpdateResponseMinTLS = "1.0" | "1.1" | "1.2" | "1.3";
+const BucketsDomainsCustomUpdateResponseMinTLS = S.String;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UpdateBucketDomainCustomResponse {
   /** Domain name of the affected custom domain. */
@@ -1858,13 +2731,22 @@ export interface UpdateBucketDomainCustomResponse {
   /** Minimum TLS Version the custom domain will accept for incoming connections. If not set, defaults to 1.0. */
   minTLS?: BucketsDomainsCustomUpdateResponseMinTLS | null;
 }
+const UpdateBucketDomainCustomResponse = /*@__PURE__*/ __L.at(
+  __c17,
+  2,
+) as any as S.Schema<UpdateBucketDomainCustomResponse>;
+
 export type BucketsObjectsUploadRequestCfR2Jurisdiction =
   | "default"
   | "eu"
   | "us"
   | "fedramp"
   | "fedramp-high";
+const BucketsObjectsUploadRequestCfR2Jurisdiction = S.String;
+
 export type BucketsObjectsUploadRequestCfR2StorageClass = "Standard" | "InfrequentAccess";
+const BucketsObjectsUploadRequestCfR2StorageClass = S.String;
+
 export interface UploadBucketObjectRequest {
   /** Cloudflare account ID that owns the R2 resource. */
   accountId: string;
@@ -1892,7 +2774,14 @@ export interface UploadBucketObjectRequest {
   /** Expiration date of the object. */
   expires?: string;
 }
+const UploadBucketObjectRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  3,
+) as any as S.Schema<UploadBucketObjectRequest>;
+
 export type BucketsObjectsUploadResponseStorageClass = "Standard" | "InfrequentAccess";
+const BucketsObjectsUploadResponseStorageClass = S.String;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UploadBucketObjectResponse {
   /** The entity tag for the uploaded object. */
@@ -1908,6 +2797,11 @@ export interface UploadBucketObjectResponse {
   /** The version UUID of the uploaded object. */
   version?: string | null;
 }
+const UploadBucketObjectResponse = /*@__PURE__*/ __L.at(
+  __c17,
+  4,
+) as any as S.Schema<UploadBucketObjectResponse>;
+
 export type AbortAllSuperSlurperJobError = CloudflareOpError;
 /** Cancels all running R2 Super Slurper migration jobs for the account. Any objects in the middle of a transfer will finish, but no new objects will start transferring. */
 export const abortAllSuperSlurperJob: API.OperationMethod<
@@ -1916,8 +2810,8 @@ export const abortAllSuperSlurperJob: API.OperationMethod<
   AbortAllSuperSlurperJobError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<AbortAllSuperSlurperJobRequest>,
-  output: __S(1) as any as S.Schema<AbortAllSuperSlurperJobResponse>,
+  input: AbortAllSuperSlurperJobRequest,
+  output: AbortAllSuperSlurperJobResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1931,8 +2825,8 @@ export const abortSuperSlurperJob: API.OperationMethod<
   AbortSuperSlurperJobError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2) as any as S.Schema<AbortSuperSlurperJobRequest>,
-  output: __S(1) as any as S.Schema<AbortSuperSlurperJobResponse>,
+  input: AbortSuperSlurperJobRequest,
+  output: AbortSuperSlurperJobResponse,
   errors: [SuperSlurperJobOperationFailed, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1950,8 +2844,8 @@ export const createBucket: API.OperationMethod<
   CreateBucketError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3) as any as S.Schema<CreateBucketRequest>,
-  output: __S(4) as any as S.Schema<CreateBucketResponse>,
+  input: CreateBucketRequest,
+  output: CreateBucketResponse,
   errors: [
     InvalidBucketName,
     BucketAlreadyExists,
@@ -1975,8 +2869,8 @@ export const createBucketDomainCustom: API.OperationMethod<
   CreateBucketDomainCustomError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6) as any as S.Schema<CreateBucketDomainCustomRequest>,
-  output: __S(7) as any as S.Schema<CreateBucketDomainCustomResponse>,
+  input: CreateBucketDomainCustomRequest,
+  output: CreateBucketDomainCustomResponse,
   errors: [
     NoSuchBucket,
     InvalidBucketName,
@@ -1996,8 +2890,8 @@ export const createSuperSlurperJob: API.OperationMethod<
   CreateSuperSlurperJobError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11) as any as S.Schema<CreateSuperSlurperJobRequest>,
-  output: __S(12) as any as S.Schema<CreateSuperSlurperJobResponse>,
+  input: CreateSuperSlurperJobRequest,
+  output: CreateSuperSlurperJobResponse,
   errors: [SuperSlurperPreconnectivityFailed, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2011,8 +2905,8 @@ export const createTemporaryCredential: API.OperationMethod<
   CreateTemporaryCredentialError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13) as any as S.Schema<CreateTemporaryCredentialRequest>,
-  output: __S(14) as any as S.Schema<CreateTemporaryCredentialResponse>,
+  input: CreateTemporaryCredentialRequest,
+  output: CreateTemporaryCredentialResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2031,8 +2925,8 @@ export const deleteBucket: API.OperationMethod<
   DeleteBucketError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15) as any as S.Schema<DeleteBucketRequest>,
-  output: __S(16) as any as S.Schema<DeleteBucketResponse>,
+  input: DeleteBucketRequest,
+  output: DeleteBucketResponse,
   errors: [
     NoSuchBucket,
     BucketNotEmpty,
@@ -2053,8 +2947,8 @@ export const deleteBucketCors: API.OperationMethod<
   DeleteBucketCorsError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17) as any as S.Schema<DeleteBucketCorsRequest>,
-  output: __S(16) as any as S.Schema<DeleteBucketCorsResponse>,
+  input: DeleteBucketCorsRequest,
+  output: DeleteBucketCorsResponse,
   errors: [NoSuchBucket, InvalidRoute, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2068,8 +2962,8 @@ export const deleteBucketDomainCustom: API.OperationMethod<
   DeleteBucketDomainCustomError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18) as any as S.Schema<DeleteBucketDomainCustomRequest>,
-  output: __S(19) as any as S.Schema<DeleteBucketDomainCustomResponse>,
+  input: DeleteBucketDomainCustomRequest,
+  output: DeleteBucketDomainCustomResponse,
   errors: [DomainNotFound, NoSuchBucket, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2088,8 +2982,8 @@ export const deleteBucketEventNotification: API.OperationMethod<
   DeleteBucketEventNotificationError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20) as any as S.Schema<DeleteBucketEventNotificationRequest>,
-  output: __S(21) as any as S.Schema<DeleteBucketEventNotificationResponse>,
+  input: DeleteBucketEventNotificationRequest,
+  output: DeleteBucketEventNotificationResponse,
   errors: [
     BucketNotFound,
     EventNotificationConfigNotFound,
@@ -2110,8 +3004,8 @@ export const deleteBucketObject: API.OperationMethod<
   DeleteBucketObjectError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22) as any as S.Schema<DeleteBucketObjectRequest>,
-  output: __S(23) as any as S.Schema<DeleteBucketObjectResponse>,
+  input: DeleteBucketObjectRequest,
+  output: DeleteBucketObjectResponse,
   errors: [NoSuchBucket, NoSuchKey, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2125,8 +3019,8 @@ export const deleteBucketSippy: API.OperationMethod<
   DeleteBucketSippyError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24) as any as S.Schema<DeleteBucketSippyRequest>,
-  output: __S(25) as any as S.Schema<DeleteBucketSippyResponse>,
+  input: DeleteBucketSippyRequest,
+  output: DeleteBucketSippyResponse,
   errors: [NoSuchBucket, InvalidRoute, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2139,8 +3033,8 @@ export const deleteObjects: API.OperationMethod<
   DeleteObjectsError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26) as any as S.Schema<DeleteObjectsRequest>,
-  output: __S(16) as any as S.Schema<DeleteObjectsResponse>,
+  input: DeleteObjectsRequest,
+  output: DeleteObjectsResponse,
   errors: [NoSuchBucket, InvalidRoute, NoRoute, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2154,8 +3048,8 @@ export const getBucket: API.OperationMethod<
   GetBucketError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27) as any as S.Schema<GetBucketRequest>,
-  output: __S(4) as any as S.Schema<GetBucketResponse>,
+  input: GetBucketRequest,
+  output: GetBucketResponse,
   errors: [NoSuchBucket, InvalidRoute, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2173,8 +3067,8 @@ export const getBucketCors: API.OperationMethod<
   GetBucketCorsError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28) as any as S.Schema<GetBucketCorsRequest>,
-  output: __S(33) as any as S.Schema<GetBucketCorsResponse>,
+  input: GetBucketCorsRequest,
+  output: GetBucketCorsResponse,
   errors: [NoSuchBucket, InvalidRoute, NoCorsConfiguration, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2192,8 +3086,8 @@ export const getBucketDomainCustom: API.OperationMethod<
   GetBucketDomainCustomError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34) as any as S.Schema<GetBucketDomainCustomRequest>,
-  output: __S(36) as any as S.Schema<GetBucketDomainCustomResponse>,
+  input: GetBucketDomainCustomRequest,
+  output: GetBucketDomainCustomResponse,
   errors: [DomainNotFound, NoSuchBucket, InvalidRoute, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2214,8 +3108,8 @@ export const getBucketEventNotification: API.OperationMethod<
   GetBucketEventNotificationError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37) as any as S.Schema<GetBucketEventNotificationRequest>,
-  output: __S(40) as any as S.Schema<GetBucketEventNotificationResponse>,
+  input: GetBucketEventNotificationRequest,
+  output: GetBucketEventNotificationResponse,
   errors: [
     BucketNotFound,
     NoEventNotificationConfig,
@@ -2238,8 +3132,8 @@ export const getBucketLifecycle: API.OperationMethod<
   GetBucketLifecycleError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41) as any as S.Schema<GetBucketLifecycleRequest>,
-  output: __S(52) as any as S.Schema<GetBucketLifecycleResponse>,
+  input: GetBucketLifecycleRequest,
+  output: GetBucketLifecycleResponse,
   errors: [NoSuchBucket, InvalidRoute, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2253,8 +3147,8 @@ export const getBucketLock: API.OperationMethod<
   GetBucketLockError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(53) as any as S.Schema<GetBucketLockRequest>,
-  output: __S(57) as any as S.Schema<GetBucketLockResponse>,
+  input: GetBucketLockRequest,
+  output: GetBucketLockResponse,
   errors: [NoSuchBucket, InvalidRoute, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2268,8 +3162,8 @@ export const getBucketObject: API.OperationMethod<
   GetBucketObjectError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(58) as any as S.Schema<GetBucketObjectRequest>,
-  output: __S(59) as any as S.Schema<GetBucketObjectResponse>,
+  input: GetBucketObjectRequest,
+  output: GetBucketObjectResponse,
   errors: [NoSuchBucket, InvalidRoute, NoSuchKey, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2283,8 +3177,8 @@ export const getBucketSippy: API.OperationMethod<
   GetBucketSippyError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60) as any as S.Schema<GetBucketSippyRequest>,
-  output: __S(63) as any as S.Schema<GetBucketSippyResponse>,
+  input: GetBucketSippyRequest,
+  output: GetBucketSippyResponse,
   errors: [NoSuchBucket, InvalidRoute, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2298,8 +3192,8 @@ export const getSuperSlurperJob: API.OperationMethod<
   GetSuperSlurperJobError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(64) as any as S.Schema<GetSuperSlurperJobRequest>,
-  output: __S(67) as any as S.Schema<GetSuperSlurperJobResponse>,
+  input: GetSuperSlurperJobRequest,
+  output: GetSuperSlurperJobResponse,
   errors: [SuperSlurperJobOperationFailed, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2313,8 +3207,8 @@ export const listBucketDomainCustoms: API.OperationMethod<
   ListBucketDomainCustomsError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(68) as any as S.Schema<ListBucketDomainCustomsRequest>,
-  output: __S(71) as any as S.Schema<ListBucketDomainCustomsResponse>,
+  input: ListBucketDomainCustomsRequest,
+  output: ListBucketDomainCustomsResponse,
   errors: [NoSuchBucket, InvalidRoute, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2328,8 +3222,8 @@ export const listBucketDomainManageds: API.OperationMethod<
   ListBucketDomainManagedsError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(72) as any as S.Schema<ListBucketDomainManagedsRequest>,
-  output: __S(73) as any as S.Schema<ListBucketDomainManagedsResponse>,
+  input: ListBucketDomainManagedsRequest,
+  output: ListBucketDomainManagedsResponse,
   errors: [NoSuchBucket, InvalidRoute, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2348,8 +3242,8 @@ export const listBucketEventNotifications: API.OperationMethod<
   ListBucketEventNotificationsError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(74) as any as S.Schema<ListBucketEventNotificationsRequest>,
-  output: __S(80) as any as S.Schema<ListBucketEventNotificationsResponse>,
+  input: ListBucketEventNotificationsRequest,
+  output: ListBucketEventNotificationsResponse,
   errors: [
     NoSuchBucket,
     InvalidRoute,
@@ -2370,8 +3264,8 @@ export const listBucketMetrics: API.OperationMethod<
   ListBucketMetricsError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(81) as any as S.Schema<ListBucketMetricsRequest>,
-  output: __S(84) as any as S.Schema<ListBucketMetricsResponse>,
+  input: ListBucketMetricsRequest,
+  output: ListBucketMetricsResponse,
   errors: [InvalidRoute, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2387,8 +3281,8 @@ export const listBucketObjects: API.PaginatedOperationMethod<
   BucketsObjectsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(85) as any as S.Schema<ListBucketObjectsRequest>,
-    output: __S(90) as any as S.Schema<ListBucketObjectsResponse>,
+    input: ListBucketObjectsRequest,
+    output: ListBucketObjectsResponse,
     errors: [NoSuchBucket, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -2411,8 +3305,8 @@ export const listBuckets: API.OperationMethod<
   ListBucketsError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(91) as any as S.Schema<ListBucketsRequest>,
-  output: __S(94) as any as S.Schema<ListBucketsResponse>,
+  input: ListBucketsRequest,
+  output: ListBucketsResponse,
   errors: [InvalidRoute, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2428,8 +3322,8 @@ export const listSuperSlurperJobLogs: API.PaginatedOperationMethod<
   SuperSlurperJobsLogsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(95) as any as S.Schema<ListSuperSlurperJobLogsRequest>,
-    output: __S(98) as any as S.Schema<ListSuperSlurperJobLogsResponse>,
+    input: ListSuperSlurperJobLogsRequest,
+    output: ListSuperSlurperJobLogsResponse,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -2448,8 +3342,8 @@ export const listSuperSlurperJobs: API.PaginatedOperationMethod<
   SuperSlurperJobsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(99) as any as S.Schema<ListSuperSlurperJobsRequest>,
-    output: __S(103) as any as S.Schema<ListSuperSlurperJobsResponse>,
+    input: ListSuperSlurperJobsRequest,
+    output: ListSuperSlurperJobsResponse,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -2466,8 +3360,8 @@ export const patchBucket: API.OperationMethod<
   PatchBucketError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(104) as any as S.Schema<PatchBucketRequest>,
-  output: __S(4) as any as S.Schema<PatchBucketResponse>,
+  input: PatchBucketRequest,
+  output: PatchBucketResponse,
   errors: [NoSuchBucket, InvalidRoute, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2481,8 +3375,8 @@ export const pauseSuperSlurperJob: API.OperationMethod<
   PauseSuperSlurperJobError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(105) as any as S.Schema<PauseSuperSlurperJobRequest>,
-  output: __S(1) as any as S.Schema<PauseSuperSlurperJobResponse>,
+  input: PauseSuperSlurperJobRequest,
+  output: PauseSuperSlurperJobResponse,
   errors: [SuperSlurperJobOperationFailed, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2496,8 +3390,8 @@ export const progressSuperSlurperJob: API.OperationMethod<
   ProgressSuperSlurperJobError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(106) as any as S.Schema<ProgressSuperSlurperJobRequest>,
-  output: __S(107) as any as S.Schema<ProgressSuperSlurperJobResponse>,
+  input: ProgressSuperSlurperJobRequest,
+  output: ProgressSuperSlurperJobResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2511,8 +3405,8 @@ export const putBucketCors: API.OperationMethod<
   PutBucketCorsError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(111) as any as S.Schema<PutBucketCorsRequest>,
-  output: __S(16) as any as S.Schema<PutBucketCorsResponse>,
+  input: PutBucketCorsRequest,
+  output: PutBucketCorsResponse,
   errors: [NoSuchBucket, InvalidRoute, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2526,8 +3420,8 @@ export const putBucketDomainManaged: API.OperationMethod<
   PutBucketDomainManagedError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(112) as any as S.Schema<PutBucketDomainManagedRequest>,
-  output: __S(73) as any as S.Schema<PutBucketDomainManagedResponse>,
+  input: PutBucketDomainManagedRequest,
+  output: PutBucketDomainManagedResponse,
   errors: [NoSuchBucket, InvalidRoute, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2547,8 +3441,8 @@ export const putBucketEventNotification: API.OperationMethod<
   PutBucketEventNotificationError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(115) as any as S.Schema<PutBucketEventNotificationRequest>,
-  output: __S(21) as any as S.Schema<PutBucketEventNotificationResponse>,
+  input: PutBucketEventNotificationRequest,
+  output: PutBucketEventNotificationResponse,
   errors: [
     BucketNotFound,
     InvalidEventNotificationConfig,
@@ -2570,8 +3464,8 @@ export const putBucketLifecycle: API.OperationMethod<
   PutBucketLifecycleError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(124) as any as S.Schema<PutBucketLifecycleRequest>,
-  output: __S(21) as any as S.Schema<PutBucketLifecycleResponse>,
+  input: PutBucketLifecycleRequest,
+  output: PutBucketLifecycleResponse,
   errors: [NoSuchBucket, InvalidRoute, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2585,8 +3479,8 @@ export const putBucketLock: API.OperationMethod<
   PutBucketLockError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(128) as any as S.Schema<PutBucketLockRequest>,
-  output: __S(16) as any as S.Schema<PutBucketLockResponse>,
+  input: PutBucketLockRequest,
+  output: PutBucketLockResponse,
   errors: [NoSuchBucket, InvalidRoute, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2600,8 +3494,8 @@ export const putBucketSippy: API.OperationMethod<
   PutBucketSippyError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(131) as any as S.Schema<PutBucketSippyRequest>,
-  output: __S(63) as any as S.Schema<PutBucketSippyResponse>,
+  input: PutBucketSippyRequest,
+  output: PutBucketSippyResponse,
   errors: [InvalidUpstreamCredentials, InvalidRoute, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2615,8 +3509,8 @@ export const resumeSuperSlurperJob: API.OperationMethod<
   ResumeSuperSlurperJobError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(132) as any as S.Schema<ResumeSuperSlurperJobRequest>,
-  output: __S(1) as any as S.Schema<ResumeSuperSlurperJobResponse>,
+  input: ResumeSuperSlurperJobRequest,
+  output: ResumeSuperSlurperJobResponse,
   errors: [SuperSlurperJobOperationFailed, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2630,8 +3524,8 @@ export const sourceSuperSlurperConnectivityPrecheck: API.OperationMethod<
   SourceSuperSlurperConnectivityPrecheckError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(134) as any as S.Schema<SourceSuperSlurperConnectivityPrecheckRequest>,
-  output: __S(135) as any as S.Schema<SourceSuperSlurperConnectivityPrecheckResponse>,
+  input: SourceSuperSlurperConnectivityPrecheckRequest,
+  output: SourceSuperSlurperConnectivityPrecheckResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2645,8 +3539,8 @@ export const targetSuperSlurperConnectivityPrecheck: API.OperationMethod<
   TargetSuperSlurperConnectivityPrecheckError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(136) as any as S.Schema<TargetSuperSlurperConnectivityPrecheckRequest>,
-  output: __S(135) as any as S.Schema<TargetSuperSlurperConnectivityPrecheckResponse>,
+  input: TargetSuperSlurperConnectivityPrecheckRequest,
+  output: TargetSuperSlurperConnectivityPrecheckResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2660,8 +3554,8 @@ export const updateBucketDomainCustom: API.OperationMethod<
   UpdateBucketDomainCustomError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(137) as any as S.Schema<UpdateBucketDomainCustomRequest>,
-  output: __S(138) as any as S.Schema<UpdateBucketDomainCustomResponse>,
+  input: UpdateBucketDomainCustomRequest,
+  output: UpdateBucketDomainCustomResponse,
   errors: [NoSuchBucket, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2675,8 +3569,8 @@ export const uploadBucketObject: API.OperationMethod<
   UploadBucketObjectError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(139) as any as S.Schema<UploadBucketObjectRequest>,
-  output: __S(140) as any as S.Schema<UploadBucketObjectResponse>,
+  input: UploadBucketObjectRequest,
+  output: UploadBucketObjectResponse,
   errors: [NoSuchBucket, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2749,9 +3643,11 @@ function __c0(j: number): any {
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           name: S.String,
-          locationHint: S.optional(S.String),
-          storageClass: S.optional(S.String),
-          jurisdiction: S.optional(S.String.pipe(T.Header("cf-r2-jurisdiction"))),
+          locationHint: S.optional(BucketsCreateRequestLocationHint),
+          storageClass: S.optional(BucketsCreateRequestStorageClass),
+          jurisdiction: S.optional(
+            BucketsCreateRequestCfR2Jurisdiction.pipe(T.Header("cf-r2-jurisdiction")),
+          ),
         })
           .pipe(T.Http({ method: "POST", uri: "/accounts/{account_id}/r2/buckets", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -2760,10 +3656,12 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           creationDate: S.optional(S.NullOr(S.String).pipe(T.Body("creation_date"))),
-          jurisdiction: S.optional(S.NullOr(S.String)),
-          location: S.optional(S.NullOr(S.String)),
+          jurisdiction: S.optional(S.NullOr(BucketsCreateResponseJurisdiction)),
+          location: S.optional(S.NullOr(BucketsCreateResponseLocation)),
           name: S.optional(S.NullOr(S.String)),
-          storageClass: S.optional(S.NullOr(S.String).pipe(T.Body("storage_class"))),
+          storageClass: S.optional(
+            S.NullOr(BucketsCreateResponseStorageClass).pipe(T.Body("storage_class")),
+          ),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "CreateBucketResponse" });
     case 5:
@@ -2776,9 +3674,11 @@ function __c0(j: number): any {
           domain: S.String,
           enabled: S.Boolean,
           zoneId: S.String,
-          ciphers: S.optional(__S(5)),
-          minTLS: S.optional(S.String),
-          jurisdiction: S.optional(S.String.pipe(T.Header("cf-r2-jurisdiction"))),
+          ciphers: S.optional(BucketsDomainsCustomCreateRequestCiphersList),
+          minTLS: S.optional(BucketsDomainsCustomCreateRequestMinTLS),
+          jurisdiction: S.optional(
+            BucketsDomainsCustomCreateRequestCfR2Jurisdiction.pipe(T.Header("cf-r2-jurisdiction")),
+          ),
         })
           .pipe(
             T.Http({
@@ -2797,8 +3697,8 @@ function __c0(j: number): any {
           domain: S.String,
           enabled: S.Boolean,
           zoneId: S.String,
-          ciphers: S.optional(S.NullOr(__S(5))),
-          minTLS: S.optional(S.NullOr(S.String)),
+          ciphers: S.optional(S.NullOr(BucketsDomainsCustomCreateResponseCiphersList)),
+          minTLS: S.optional(S.NullOr(BucketsDomainsCustomCreateResponseMinTLS)),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "CreateBucketDomainCustomResponse",
@@ -2831,9 +3731,9 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           bucket: S.String,
-          secret: __S(8),
-          vendor: S.String,
-          jurisdiction: S.optional(S.String),
+          secret: SuperSlurperJobsCreateRequestSourceR2SlurperS3SourceSchemaSecret,
+          vendor: SuperSlurperJobsCreateRequestTargetVendor,
+          jurisdiction: S.optional(SuperSlurperJobsCreateRequestTargetJurisdiction),
         }),
       ).annotate({
         identifier: "SuperSlurperJobsCreateRequestTarget",
@@ -2843,8 +3743,8 @@ function __c1(j: number): any {
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           overwrite: S.optional(S.Boolean),
-          source: S.optional(__S(9)),
-          target: S.optional(__S(10)),
+          source: S.optional(SuperSlurperJobsCreateRequestSource),
+          target: S.optional(SuperSlurperJobsCreateRequestTarget),
         })
           .pipe(T.Http({ method: "POST", uri: "/accounts/{account_id}/slurper/jobs", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -2865,10 +3765,10 @@ function __c1(j: number): any {
           accountId: S.String.pipe(T.Label("account_id")),
           bucket: S.String,
           parentAccessKeyId: S.String,
-          permission: S.String,
+          permission: TemporaryCredentialsCreateRequestPermission,
           ttlSeconds: S.Number,
-          objects: S.optional(__S(5)),
-          prefixes: S.optional(__S(5)),
+          objects: S.optional(TemporaryCredentialsCreateRequestObjectsList),
+          prefixes: S.optional(TemporaryCredentialsCreateRequestPrefixesList),
         })
           .pipe(
             T.Http({
@@ -2896,7 +3796,9 @@ function __c1(j: number): any {
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           bucketName: S.String.pipe(T.Label("bucket_name")),
-          jurisdiction: S.optional(S.String.pipe(T.Header("cf-r2-jurisdiction"))),
+          jurisdiction: S.optional(
+            BucketsDeleteRequestCfR2Jurisdiction.pipe(T.Header("cf-r2-jurisdiction")),
+          ),
         })
           .pipe(
             T.Http({
@@ -2920,7 +3822,9 @@ function __c2(j: number): any {
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           bucketName: S.String.pipe(T.Label("bucket_name")),
-          jurisdiction: S.optional(S.String.pipe(T.Header("cf-r2-jurisdiction"))),
+          jurisdiction: S.optional(
+            BucketsCorsDeleteRequestCfR2Jurisdiction.pipe(T.Header("cf-r2-jurisdiction")),
+          ),
         })
           .pipe(
             T.Http({
@@ -2937,7 +3841,9 @@ function __c2(j: number): any {
           accountId: S.String.pipe(T.Label("account_id")),
           bucketName: S.String.pipe(T.Label("bucket_name")),
           domain: S.String.pipe(T.Label()),
-          jurisdiction: S.optional(S.String.pipe(T.Header("cf-r2-jurisdiction"))),
+          jurisdiction: S.optional(
+            BucketsDomainsCustomDeleteRequestCfR2Jurisdiction.pipe(T.Header("cf-r2-jurisdiction")),
+          ),
         })
           .pipe(
             T.Http({
@@ -2964,7 +3870,11 @@ function __c2(j: number): any {
           accountId: S.String.pipe(T.Label("account_id")),
           bucketName: S.String.pipe(T.Label("bucket_name")),
           queueId: S.String.pipe(T.Label("queue_id")),
-          jurisdiction: S.optional(S.String.pipe(T.Header("cf-r2-jurisdiction"))),
+          jurisdiction: S.optional(
+            BucketsEventNotificationsDeleteRequestCfR2Jurisdiction.pipe(
+              T.Header("cf-r2-jurisdiction"),
+            ),
+          ),
         })
           .pipe(
             T.Http({
@@ -2988,7 +3898,9 @@ function __c2(j: number): any {
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           bucketName: S.String.pipe(T.Label("bucket_name")),
-          cfR2Jurisdiction: S.optional(S.String.pipe(T.Header("cf-r2-jurisdiction"))),
+          cfR2Jurisdiction: S.optional(
+            BucketsObjectsDeleteRequestCfR2Jurisdiction.pipe(T.Header("cf-r2-jurisdiction")),
+          ),
           objectName: S.String.pipe(T.Label("object_name")),
         })
           .pipe(
@@ -3019,7 +3931,9 @@ function __c3(j: number): any {
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           bucketName: S.String.pipe(T.Label("bucket_name")),
-          jurisdiction: S.optional(S.String.pipe(T.Header("cf-r2-jurisdiction"))),
+          jurisdiction: S.optional(
+            BucketsSippyDeleteRequestCfR2Jurisdiction.pipe(T.Header("cf-r2-jurisdiction")),
+          ),
         })
           .pipe(
             T.Http({
@@ -3044,7 +3958,7 @@ function __c3(j: number): any {
           accountId: S.String.pipe(T.Label("account_id")),
           bucketName: S.String.pipe(T.Label("bucket_name")),
           prefix: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(5).pipe(T.HttpBody())),
+          body: S.optional(DeleteObjectsKeyList.pipe(T.HttpBody())),
           cfR2Jurisdiction: S.optional(S.String.pipe(T.Header("cf-r2-jurisdiction"))),
         })
           .pipe(
@@ -3061,7 +3975,9 @@ function __c3(j: number): any {
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           bucketName: S.String.pipe(T.Label("bucket_name")),
-          jurisdiction: S.optional(S.String.pipe(T.Header("cf-r2-jurisdiction"))),
+          jurisdiction: S.optional(
+            BucketsGetRequestCfR2Jurisdiction.pipe(T.Header("cf-r2-jurisdiction")),
+          ),
         })
           .pipe(
             T.Http({
@@ -3077,7 +3993,9 @@ function __c3(j: number): any {
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           bucketName: S.String.pipe(T.Label("bucket_name")),
-          jurisdiction: S.optional(S.String.pipe(T.Header("cf-r2-jurisdiction"))),
+          jurisdiction: S.optional(
+            BucketsCorsGetRequestCfR2Jurisdiction.pipe(T.Header("cf-r2-jurisdiction")),
+          ),
         })
           .pipe(
             T.Http({
@@ -3089,13 +4007,13 @@ function __c3(j: number): any {
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetBucketCorsRequest" });
     case 5:
-      return S.Array(S.String);
+      return S.Array(BucketsCorsGetResponseRulesItemAllowedMethodsItem);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          methods: __S(29),
-          origins: __S(5),
-          headers: S.optional(S.NullOr(__S(5))),
+          methods: BucketsCorsGetResponseRulesItemAllowedMethodsList,
+          origins: BucketsCorsGetResponseRulesItemAllowedOriginsList,
+          headers: S.optional(S.NullOr(BucketsCorsGetResponseRulesItemAllowedHeadersList)),
         }),
       ).annotate({
         identifier: "BucketsCorsGetResponseRulesItemAllowed",
@@ -3103,9 +4021,9 @@ function __c3(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          allowed: __S(30),
+          allowed: BucketsCorsGetResponseRulesItemAllowed,
           id: S.optional(S.NullOr(S.String)),
-          exposeHeaders: S.optional(S.NullOr(__S(5))),
+          exposeHeaders: S.optional(S.NullOr(BucketsCorsGetResponseRulesItemExposeHeadersList)),
           maxAgeSeconds: S.optional(S.NullOr(S.Number)),
         }),
       ).annotate({
@@ -3116,11 +4034,11 @@ function __c3(j: number): any {
 function __c4(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(31));
+      return S.Array(BucketsCorsGetResponseRulesItem);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          rules: S.optional(S.NullOr(__S(32))),
+          rules: S.optional(S.NullOr(BucketsCorsGetResponseRulesList)),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetBucketCorsResponse" });
     case 2:
@@ -3129,7 +4047,9 @@ function __c4(j: number): any {
           accountId: S.String.pipe(T.Label("account_id")),
           bucketName: S.String.pipe(T.Label("bucket_name")),
           domain: S.String.pipe(T.Label()),
-          jurisdiction: S.optional(S.String.pipe(T.Header("cf-r2-jurisdiction"))),
+          jurisdiction: S.optional(
+            BucketsDomainsCustomGetRequestCfR2Jurisdiction.pipe(T.Header("cf-r2-jurisdiction")),
+          ),
         })
           .pipe(
             T.Http({
@@ -3145,8 +4065,8 @@ function __c4(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          ownership: S.String,
-          ssl: S.String,
+          ownership: BucketsDomainsCustomGetResponseStatusOwnership,
+          ssl: BucketsDomainsCustomGetResponseStatusSsl,
         }),
       ).annotate({
         identifier: "BucketsDomainsCustomGetResponseStatus",
@@ -3156,9 +4076,9 @@ function __c4(j: number): any {
         S.Struct({
           domain: S.String,
           enabled: S.Boolean,
-          status: __S(35),
-          ciphers: S.optional(S.NullOr(__S(5))),
-          minTLS: S.optional(S.NullOr(S.String)),
+          status: BucketsDomainsCustomGetResponseStatus,
+          ciphers: S.optional(S.NullOr(BucketsDomainsCustomGetResponseCiphersList)),
+          minTLS: S.optional(S.NullOr(BucketsDomainsCustomGetResponseMinTLS)),
           zoneId: S.optional(S.NullOr(S.String)),
           zoneName: S.optional(S.NullOr(S.String)),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -3171,7 +4091,11 @@ function __c4(j: number): any {
           accountId: S.String.pipe(T.Label("account_id")),
           bucketName: S.String.pipe(T.Label("bucket_name")),
           queueId: S.String.pipe(T.Label("queue_id")),
-          jurisdiction: S.optional(S.String.pipe(T.Header("cf-r2-jurisdiction"))),
+          jurisdiction: S.optional(
+            BucketsEventNotificationsGetRequestCfR2Jurisdiction.pipe(
+              T.Header("cf-r2-jurisdiction"),
+            ),
+          ),
         })
           .pipe(
             T.Http({
@@ -3187,7 +4111,7 @@ function __c4(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          actions: __S(29),
+          actions: BucketsEventNotificationsGetResponseRulesItemActionsList,
           createdAt: S.optional(S.NullOr(S.String)),
           description: S.optional(S.NullOr(S.String)),
           prefix: S.optional(S.NullOr(S.String)),
@@ -3198,7 +4122,7 @@ function __c4(j: number): any {
         identifier: "BucketsEventNotificationsGetResponseRulesItem",
       });
     case 7:
-      return S.Array(__S(38));
+      return S.Array(BucketsEventNotificationsGetResponseRulesItem);
   }
 }
 function __c5(j: number): any {
@@ -3208,7 +4132,7 @@ function __c5(j: number): any {
         S.Struct({
           queueId: S.optional(S.NullOr(S.String)),
           queueName: S.optional(S.NullOr(S.String)),
-          rules: S.optional(S.NullOr(__S(39))),
+          rules: S.optional(S.NullOr(BucketsEventNotificationsGetResponseRulesList)),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "GetBucketEventNotificationResponse",
@@ -3218,7 +4142,9 @@ function __c5(j: number): any {
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           bucketName: S.String.pipe(T.Label("bucket_name")),
-          jurisdiction: S.optional(S.String.pipe(T.Header("cf-r2-jurisdiction"))),
+          jurisdiction: S.optional(
+            BucketsLifecycleGetRequestCfR2Jurisdiction.pipe(T.Header("cf-r2-jurisdiction")),
+          ),
         })
           .pipe(
             T.Http({
@@ -3243,7 +4169,7 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           maxAge: S.Number,
-          type: S.String,
+          type: BucketsLifecycleGetResponseRulesItemAbortMultipartUploadsTransitionConditionType,
         }),
       ).annotate({
         identifier: "BucketsLifecycleGetResponseRulesItemAbortMultipartUploadsTransitionCondition",
@@ -3251,7 +4177,9 @@ function __c5(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          condition: S.optional(S.NullOr(__S(43))),
+          condition: S.optional(
+            S.NullOr(BucketsLifecycleGetResponseRulesItemAbortMultipartUploadsTransitionCondition),
+          ),
         }),
       ).annotate({
         identifier: "BucketsLifecycleGetResponseRulesItemAbortMultipartUploadsTransition",
@@ -3269,7 +4197,9 @@ function __c5(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          condition: S.optional(S.NullOr(__S(45))),
+          condition: S.optional(
+            S.NullOr(BucketsLifecycleGetResponseRulesItemDeleteObjectsTransitionCondition),
+          ),
         }),
       ).annotate({
         identifier: "BucketsLifecycleGetResponseRulesItemDeleteObjectsTransition",
@@ -3291,33 +4221,39 @@ function __c6(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          condition: __S(47),
-          storageClass: S.String,
+          condition: BucketsLifecycleGetResponseRulesItemStorageClassTransitionsItemCondition,
+          storageClass: BucketsLifecycleGetResponseRulesItemStorageClassTransitionsItemStorageClass,
         }),
       ).annotate({
         identifier: "BucketsLifecycleGetResponseRulesItemStorageClassTransitionsItem",
       });
     case 1:
-      return S.Array(__S(48));
+      return S.Array(BucketsLifecycleGetResponseRulesItemStorageClassTransitionsItem);
     case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          conditions: __S(42),
+          conditions: BucketsLifecycleGetResponseRulesItemConditions,
           enabled: S.Boolean,
-          abortMultipartUploadsTransition: S.optional(S.NullOr(__S(44))),
-          deleteObjectsTransition: S.optional(S.NullOr(__S(46))),
-          storageClassTransitions: S.optional(S.NullOr(__S(49))),
+          abortMultipartUploadsTransition: S.optional(
+            S.NullOr(BucketsLifecycleGetResponseRulesItemAbortMultipartUploadsTransition),
+          ),
+          deleteObjectsTransition: S.optional(
+            S.NullOr(BucketsLifecycleGetResponseRulesItemDeleteObjectsTransition),
+          ),
+          storageClassTransitions: S.optional(
+            S.NullOr(BucketsLifecycleGetResponseRulesItemStorageClassTransitionsList),
+          ),
         }),
       ).annotate({
         identifier: "BucketsLifecycleGetResponseRulesItem",
       });
     case 3:
-      return S.Array(__S(50));
+      return S.Array(BucketsLifecycleGetResponseRulesItem);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          rules: S.optional(S.NullOr(__S(51))),
+          rules: S.optional(S.NullOr(BucketsLifecycleGetResponseRulesList)),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "GetBucketLifecycleResponse",
@@ -3327,7 +4263,9 @@ function __c6(j: number): any {
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           bucketName: S.String.pipe(T.Label("bucket_name")),
-          jurisdiction: S.optional(S.String.pipe(T.Header("cf-r2-jurisdiction"))),
+          jurisdiction: S.optional(
+            BucketsLocksGetRequestCfR2Jurisdiction.pipe(T.Header("cf-r2-jurisdiction")),
+          ),
         })
           .pipe(
             T.Http({
@@ -3349,7 +4287,7 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          condition: __S(54),
+          condition: BucketsLocksGetResponseRulesItemCondition,
           enabled: S.Boolean,
           prefix: S.optional(S.NullOr(S.String)),
         }),
@@ -3361,11 +4299,11 @@ function __c6(j: number): any {
 function __c7(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(55));
+      return S.Array(BucketsLocksGetResponseRulesItem);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          rules: S.optional(S.NullOr(__S(56))),
+          rules: S.optional(S.NullOr(BucketsLocksGetResponseRulesList)),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetBucketLockResponse" });
     case 2:
@@ -3373,7 +4311,9 @@ function __c7(j: number): any {
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           bucketName: S.String.pipe(T.Label("bucket_name")),
-          cfR2Jurisdiction: S.optional(S.String.pipe(T.Header("cf-r2-jurisdiction"))),
+          cfR2Jurisdiction: S.optional(
+            BucketsObjectsGetRequestCfR2Jurisdiction.pipe(T.Header("cf-r2-jurisdiction")),
+          ),
           ifModifiedSince: S.optional(S.String.pipe(T.Header("If-Modified-Since"))),
           ifNoneMatch: S.optional(S.String.pipe(T.Header("If-None-Match"))),
           objectName: S.String.pipe(T.Label("object_name")),
@@ -3401,7 +4341,9 @@ function __c7(j: number): any {
           cacheControl: S.optional(S.String.pipe(T.Header("cache-control"))),
           expires: S.optional(S.String.pipe(T.Header())),
           lastModified: S.optional(S.String.pipe(T.Header("last-modified"))),
-          cfR2StorageClass: S.optional(S.String.pipe(T.Header("cf-r2-storage-class"))),
+          cfR2StorageClass: S.optional(
+            GetBucketObjectResponseCfR2StorageClass.pipe(T.Header("cf-r2-storage-class")),
+          ),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetBucketObjectResponse" });
     case 4:
@@ -3409,7 +4351,9 @@ function __c7(j: number): any {
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           bucketName: S.String.pipe(T.Label("bucket_name")),
-          jurisdiction: S.optional(S.String.pipe(T.Header("cf-r2-jurisdiction"))),
+          jurisdiction: S.optional(
+            BucketsSippyGetRequestCfR2Jurisdiction.pipe(T.Header("cf-r2-jurisdiction")),
+          ),
         })
           .pipe(
             T.Http({
@@ -3426,7 +4370,7 @@ function __c7(j: number): any {
           accessKeyId: S.optional(S.NullOr(S.String)),
           account: S.optional(S.NullOr(S.String)),
           bucket: S.optional(S.NullOr(S.String)),
-          provider: S.optional(S.NullOr(S.String)),
+          provider: S.optional(S.NullOr(BucketsSippyGetResponseDestinationProvider)),
         }),
       ).annotate({
         identifier: "BucketsSippyGetResponseDestination",
@@ -3437,7 +4381,7 @@ function __c7(j: number): any {
           bucket: S.optional(S.NullOr(S.String)),
           bucketUrl: S.optional(S.NullOr(S.String)),
           container: S.optional(S.NullOr(S.String)),
-          provider: S.optional(S.NullOr(S.String)),
+          provider: S.optional(S.NullOr(BucketsSippyGetResponseSourceProvider)),
           region: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
@@ -3446,9 +4390,9 @@ function __c7(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          destination: S.optional(S.NullOr(__S(61))),
+          destination: S.optional(S.NullOr(BucketsSippyGetResponseDestination)),
           enabled: S.optional(S.NullOr(S.Boolean)),
-          source: S.optional(S.NullOr(__S(62))),
+          source: S.optional(S.NullOr(BucketsSippyGetResponseSource)),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetBucketSippyResponse" });
   }
@@ -3487,8 +4431,8 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           bucket: S.optional(S.NullOr(S.String)),
-          jurisdiction: S.optional(S.NullOr(S.String)),
-          vendor: S.optional(S.NullOr(S.String)),
+          jurisdiction: S.optional(S.NullOr(SuperSlurperJobsGetResponseTargetJurisdiction)),
+          vendor: S.optional(S.NullOr(SuperSlurperJobsGetResponseTargetVendor)),
         }),
       ).annotate({
         identifier: "SuperSlurperJobsGetResponseTarget",
@@ -3500,9 +4444,9 @@ function __c8(j: number): any {
           createdAt: S.optional(S.NullOr(S.String)),
           finishedAt: S.optional(S.NullOr(S.String)),
           overwrite: S.optional(S.NullOr(S.Boolean)),
-          source: S.optional(S.NullOr(__S(65))),
-          status: S.optional(S.NullOr(S.String)),
-          target: S.optional(S.NullOr(__S(66))),
+          source: S.optional(S.NullOr(SuperSlurperJobsGetResponseSource)),
+          status: S.optional(S.NullOr(SuperSlurperJobsGetResponseStatus)),
+          target: S.optional(S.NullOr(SuperSlurperJobsGetResponseTarget)),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "GetSuperSlurperJobResponse",
@@ -3512,7 +4456,9 @@ function __c8(j: number): any {
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           bucketName: S.String.pipe(T.Label("bucket_name")),
-          jurisdiction: S.optional(S.String.pipe(T.Header("cf-r2-jurisdiction"))),
+          jurisdiction: S.optional(
+            BucketsDomainsCustomListRequestCfR2Jurisdiction.pipe(T.Header("cf-r2-jurisdiction")),
+          ),
         })
           .pipe(
             T.Http({
@@ -3530,9 +4476,9 @@ function __c8(j: number): any {
         S.Struct({
           domain: S.String,
           enabled: S.Boolean,
-          status: __S(35),
-          ciphers: S.optional(S.NullOr(__S(5))),
-          minTLS: S.optional(S.NullOr(S.String)),
+          status: BucketsDomainsCustomListResponseDomainsItemStatus,
+          ciphers: S.optional(S.NullOr(BucketsDomainsCustomListResponseDomainsItemCiphersList)),
+          minTLS: S.optional(S.NullOr(BucketsDomainsCustomListResponseDomainsItemMinTLS)),
           zoneId: S.optional(S.NullOr(S.String)),
           zoneName: S.optional(S.NullOr(S.String)),
         }),
@@ -3540,11 +4486,11 @@ function __c8(j: number): any {
         identifier: "BucketsDomainsCustomListResponseDomainsItem",
       });
     case 6:
-      return S.Array(__S(69));
+      return S.Array(BucketsDomainsCustomListResponseDomainsItem);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          domains: __S(70),
+          domains: BucketsDomainsCustomListResponseDomainsList,
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "ListBucketDomainCustomsResponse",
@@ -3558,7 +4504,9 @@ function __c9(j: number): any {
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           bucketName: S.String.pipe(T.Label("bucket_name")),
-          jurisdiction: S.optional(S.String.pipe(T.Header("cf-r2-jurisdiction"))),
+          jurisdiction: S.optional(
+            BucketsDomainsManagedListRequestCfR2Jurisdiction.pipe(T.Header("cf-r2-jurisdiction")),
+          ),
         })
           .pipe(
             T.Http({
@@ -3586,7 +4534,11 @@ function __c9(j: number): any {
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           bucketName: S.String.pipe(T.Label("bucket_name")),
-          jurisdiction: S.optional(S.String.pipe(T.Header("cf-r2-jurisdiction"))),
+          jurisdiction: S.optional(
+            BucketsEventNotificationsListRequestCfR2Jurisdiction.pipe(
+              T.Header("cf-r2-jurisdiction"),
+            ),
+          ),
         })
           .pipe(
             T.Http({
@@ -3600,11 +4552,11 @@ function __c9(j: number): any {
         identifier: "ListBucketEventNotificationsRequest",
       });
     case 3:
-      return S.Array(S.String);
+      return S.Array(BucketsEventNotificationsListResponseQueuesItemRulesItemActionsItem);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          actions: __S(75),
+          actions: BucketsEventNotificationsListResponseQueuesItemRulesItemActionsList,
           createdAt: S.optional(S.NullOr(S.String)),
           description: S.optional(S.NullOr(S.String)),
           prefix: S.optional(S.NullOr(S.String)),
@@ -3615,19 +4567,19 @@ function __c9(j: number): any {
         identifier: "BucketsEventNotificationsListResponseQueuesItemRulesItem",
       });
     case 5:
-      return S.Array(__S(76));
+      return S.Array(BucketsEventNotificationsListResponseQueuesItemRulesItem);
     case 6:
       return S.suspend(() =>
         S.Struct({
           queueId: S.optional(S.NullOr(S.String)),
           queueName: S.optional(S.NullOr(S.String)),
-          rules: S.optional(S.NullOr(__S(77))),
+          rules: S.optional(S.NullOr(BucketsEventNotificationsListResponseQueuesItemRulesList)),
         }),
       ).annotate({
         identifier: "BucketsEventNotificationsListResponseQueuesItem",
       });
     case 7:
-      return S.Array(__S(78));
+      return S.Array(BucketsEventNotificationsListResponseQueuesItem);
   }
 }
 function __c10(j: number): any {
@@ -3636,7 +4588,7 @@ function __c10(j: number): any {
       return S.suspend(() =>
         S.Struct({
           bucketName: S.optional(S.NullOr(S.String)),
-          queues: S.optional(S.NullOr(__S(79))),
+          queues: S.optional(S.NullOr(BucketsEventNotificationsListResponseQueuesList)),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "ListBucketEventNotificationsResponse",
@@ -3662,8 +4614,8 @@ function __c10(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          published: S.optional(S.NullOr(__S(82))),
-          uploaded: S.optional(S.NullOr(__S(82))),
+          published: S.optional(S.NullOr(BucketsMetricsListResponseInfrequentAccessPublished)),
+          uploaded: S.optional(S.NullOr(BucketsMetricsListResponseInfrequentAccessPublished)),
         }),
       ).annotate({
         identifier: "BucketsMetricsListResponseInfrequentAccess",
@@ -3671,8 +4623,8 @@ function __c10(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          infrequentAccess: S.optional(S.NullOr(__S(83))),
-          standard: S.optional(S.NullOr(__S(83))),
+          infrequentAccess: S.optional(S.NullOr(BucketsMetricsListResponseInfrequentAccess)),
+          standard: S.optional(S.NullOr(BucketsMetricsListResponseInfrequentAccess)),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "ListBucketMetricsResponse",
@@ -3687,7 +4639,9 @@ function __c10(j: number): any {
           perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
           prefix: S.optional(S.String.pipe(T.Query())),
           startAfter: S.optional(S.String.pipe(T.Query("start_after"))),
-          cfR2Jurisdiction: S.optional(S.String.pipe(T.Header("cf-r2-jurisdiction"))),
+          cfR2Jurisdiction: S.optional(
+            BucketsObjectsListRequestCfR2Jurisdiction.pipe(T.Header("cf-r2-jurisdiction")),
+          ),
         })
           .pipe(
             T.Http({
@@ -3720,24 +4674,30 @@ function __c11(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          customMetadata: S.optional(S.NullOr(__S(86)).pipe(T.Body("custom_metadata"))),
+          customMetadata: S.optional(
+            S.NullOr(BucketsObjectsListResultItemCustomMetadataMap).pipe(T.Body("custom_metadata")),
+          ),
           etag: S.optional(S.NullOr(S.String)),
-          httpMetadata: S.optional(S.NullOr(__S(87)).pipe(T.Body("http_metadata"))),
+          httpMetadata: S.optional(
+            S.NullOr(BucketsObjectsListResultItemHttpMetadata).pipe(T.Body("http_metadata")),
+          ),
           key: S.optional(S.NullOr(S.String)),
           lastModified: S.optional(S.NullOr(S.String).pipe(T.Body("last_modified"))),
           size: S.optional(S.NullOr(S.Number)),
           ssec: S.optional(S.NullOr(S.Boolean)),
-          storageClass: S.optional(S.NullOr(S.String).pipe(T.Body("storage_class"))),
+          storageClass: S.optional(
+            S.NullOr(BucketsObjectsListResultItemStorageClass).pipe(T.Body("storage_class")),
+          ),
         }),
       ).annotate({
         identifier: "BucketsObjectsListResultItem",
       });
     case 1:
-      return S.Array(__S(88));
+      return S.Array(BucketsObjectsListResultItem);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          result: __S(89).pipe(T.EnvelopePayload()),
+          result: BucketsObjectsListResultList.pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
@@ -3748,12 +4708,14 @@ function __c11(j: number): any {
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           cursor: S.optional(S.String.pipe(T.Query())),
-          direction: S.optional(S.String.pipe(T.Query())),
+          direction: S.optional(BucketsListRequestDirection.pipe(T.Query())),
           nameContains: S.optional(S.String.pipe(T.Query("name_contains"))),
-          order: S.optional(S.String.pipe(T.Query())),
+          order: S.optional(BucketsListRequestOrder.pipe(T.Query())),
           perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
           startAfter: S.optional(S.String.pipe(T.Query("start_after"))),
-          jurisdiction: S.optional(S.String.pipe(T.Header("cf-r2-jurisdiction"))),
+          jurisdiction: S.optional(
+            BucketsListRequestCfR2Jurisdiction.pipe(T.Header("cf-r2-jurisdiction")),
+          ),
         })
           .pipe(T.Http({ method: "GET", uri: "/accounts/{account_id}/r2/buckets", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -3762,20 +4724,22 @@ function __c11(j: number): any {
       return S.suspend(() =>
         S.Struct({
           creationDate: S.optional(S.NullOr(S.String).pipe(T.Body("creation_date"))),
-          jurisdiction: S.optional(S.NullOr(S.String)),
-          location: S.optional(S.NullOr(S.String)),
+          jurisdiction: S.optional(S.NullOr(BucketsListResponseBucketsItemJurisdiction)),
+          location: S.optional(S.NullOr(BucketsListResponseBucketsItemLocation)),
           name: S.optional(S.NullOr(S.String)),
-          storageClass: S.optional(S.NullOr(S.String).pipe(T.Body("storage_class"))),
+          storageClass: S.optional(
+            S.NullOr(BucketsListResponseBucketsItemStorageClass).pipe(T.Body("storage_class")),
+          ),
         }),
       ).annotate({
         identifier: "BucketsListResponseBucketsItem",
       });
     case 5:
-      return S.Array(__S(92));
+      return S.Array(BucketsListResponseBucketsItem);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          buckets: S.optional(S.NullOr(__S(93))),
+          buckets: S.optional(S.NullOr(BucketsListResponseBucketsList)),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListBucketsResponse" });
     case 7:
@@ -3806,7 +4770,7 @@ function __c12(j: number): any {
         S.Struct({
           createdAt: S.optional(S.NullOr(S.String)),
           job: S.optional(S.NullOr(S.String)),
-          logType: S.optional(S.NullOr(S.String)),
+          logType: S.optional(S.NullOr(SuperSlurperJobsLogsListResultItemLogType)),
           message: S.optional(S.NullOr(S.String)),
           objectKey: S.optional(S.NullOr(S.String)),
         }),
@@ -3814,11 +4778,11 @@ function __c12(j: number): any {
         identifier: "SuperSlurperJobsLogsListResultItem",
       });
     case 1:
-      return S.Array(__S(96));
+      return S.Array(SuperSlurperJobsLogsListResultItem);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          result: __S(97).pipe(T.EnvelopePayload()),
+          result: SuperSlurperJobsLogsListResultList.pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
@@ -3854,19 +4818,19 @@ function __c12(j: number): any {
           createdAt: S.optional(S.NullOr(S.String)),
           finishedAt: S.optional(S.NullOr(S.String)),
           overwrite: S.optional(S.NullOr(S.Boolean)),
-          source: S.optional(S.NullOr(__S(100))),
-          status: S.optional(S.NullOr(S.String)),
-          target: S.optional(S.NullOr(__S(66))),
+          source: S.optional(S.NullOr(SuperSlurperJobsListResultItemSource)),
+          status: S.optional(S.NullOr(SuperSlurperJobsListResultItemStatus)),
+          target: S.optional(S.NullOr(SuperSlurperJobsListResultItemTarget)),
         }),
       ).annotate({
         identifier: "SuperSlurperJobsListResultItem",
       });
     case 6:
-      return S.Array(__S(101));
+      return S.Array(SuperSlurperJobsListResultItem);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          result: __S(102).pipe(T.EnvelopePayload()),
+          result: SuperSlurperJobsListResultList.pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
@@ -3881,8 +4845,10 @@ function __c13(j: number): any {
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           bucketName: S.String.pipe(T.Label("bucket_name")),
-          storageClass: S.String.pipe(T.Header("cf-r2-storage-class")),
-          jurisdiction: S.optional(S.String.pipe(T.Header("cf-r2-jurisdiction"))),
+          storageClass: BucketsEditRequestCfR2StorageClass.pipe(T.Header("cf-r2-storage-class")),
+          jurisdiction: S.optional(
+            BucketsEditRequestCfR2Jurisdiction.pipe(T.Header("cf-r2-jurisdiction")),
+          ),
         })
           .pipe(
             T.Http({
@@ -3935,7 +4901,7 @@ function __c13(j: number): any {
           failedObjects: S.optional(S.NullOr(S.Number)),
           objects: S.optional(S.NullOr(S.Number)),
           skippedObjects: S.optional(S.NullOr(S.Number)),
-          status: S.optional(S.NullOr(S.String)),
+          status: S.optional(S.NullOr(SuperSlurperJobsProgressResponseStatus)),
           transferredObjects: S.optional(S.NullOr(S.Number)),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
@@ -3944,9 +4910,9 @@ function __c13(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          methods: __S(29),
-          origins: __S(5),
-          headers: S.optional(__S(5)),
+          methods: BucketsCorsUpdateRequestRulesItemAllowedMethodsList,
+          origins: BucketsCorsUpdateRequestRulesItemAllowedOriginsList,
+          headers: S.optional(BucketsCorsUpdateRequestRulesItemAllowedHeadersList),
         }),
       ).annotate({
         identifier: "BucketsCorsUpdateRequestRulesItemAllowed",
@@ -3954,23 +4920,25 @@ function __c13(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          allowed: __S(108),
+          allowed: BucketsCorsUpdateRequestRulesItemAllowed,
           id: S.optional(S.String),
-          exposeHeaders: S.optional(__S(5)),
+          exposeHeaders: S.optional(BucketsCorsUpdateRequestRulesItemExposeHeadersList),
           maxAgeSeconds: S.optional(S.Number),
         }),
       ).annotate({
         identifier: "BucketsCorsUpdateRequestRulesItem",
       });
     case 6:
-      return S.Array(__S(109));
+      return S.Array(BucketsCorsUpdateRequestRulesItem);
     case 7:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           bucketName: S.String.pipe(T.Label("bucket_name")),
-          rules: S.optional(__S(110)),
-          jurisdiction: S.optional(S.String.pipe(T.Header("cf-r2-jurisdiction"))),
+          rules: S.optional(BucketsCorsUpdateRequestRulesList),
+          jurisdiction: S.optional(
+            BucketsCorsUpdateRequestCfR2Jurisdiction.pipe(T.Header("cf-r2-jurisdiction")),
+          ),
         })
           .pipe(
             T.Http({
@@ -3991,7 +4959,9 @@ function __c14(j: number): any {
           accountId: S.String.pipe(T.Label("account_id")),
           bucketName: S.String.pipe(T.Label("bucket_name")),
           enabled: S.Boolean,
-          jurisdiction: S.optional(S.String.pipe(T.Header("cf-r2-jurisdiction"))),
+          jurisdiction: S.optional(
+            BucketsDomainsManagedUpdateRequestCfR2Jurisdiction.pipe(T.Header("cf-r2-jurisdiction")),
+          ),
         })
           .pipe(
             T.Http({
@@ -4007,7 +4977,7 @@ function __c14(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          actions: __S(29),
+          actions: BucketsEventNotificationsUpdateRequestRulesItemActionsList,
           description: S.optional(S.String),
           prefix: S.optional(S.String),
           suffix: S.optional(S.String),
@@ -4016,15 +4986,19 @@ function __c14(j: number): any {
         identifier: "BucketsEventNotificationsUpdateRequestRulesItem",
       });
     case 2:
-      return S.Array(__S(113));
+      return S.Array(BucketsEventNotificationsUpdateRequestRulesItem);
     case 3:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           bucketName: S.String.pipe(T.Label("bucket_name")),
           queueId: S.String.pipe(T.Label("queue_id")),
-          rules: __S(114),
-          jurisdiction: S.optional(S.String.pipe(T.Header("cf-r2-jurisdiction"))),
+          rules: BucketsEventNotificationsUpdateRequestRulesList,
+          jurisdiction: S.optional(
+            BucketsEventNotificationsUpdateRequestCfR2Jurisdiction.pipe(
+              T.Header("cf-r2-jurisdiction"),
+            ),
+          ),
         })
           .pipe(
             T.Http({
@@ -4040,7 +5014,9 @@ function __c14(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          condition: S.optional(__S(43)),
+          condition: S.optional(
+            BucketsLifecycleUpdateRequestRulesItemAbortMultipartUploadsTransitionCondition,
+          ),
         }),
       ).annotate({
         identifier: "BucketsLifecycleUpdateRequestRulesItemAbortMultipartUploadsTransition",
@@ -4058,7 +5034,9 @@ function __c14(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          condition: S.optional(__S(117)),
+          condition: S.optional(
+            BucketsLifecycleUpdateRequestRulesItemDeleteObjectsTransitionCondition,
+          ),
         }),
       ).annotate({
         identifier: "BucketsLifecycleUpdateRequestRulesItemDeleteObjectsTransition",
@@ -4080,36 +5058,45 @@ function __c15(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          condition: __S(119),
-          storageClass: S.String,
+          condition: BucketsLifecycleUpdateRequestRulesItemStorageClassTransitionsItemCondition,
+          storageClass:
+            BucketsLifecycleUpdateRequestRulesItemStorageClassTransitionsItemStorageClass,
         }),
       ).annotate({
         identifier: "BucketsLifecycleUpdateRequestRulesItemStorageClassTransitionsItem",
       });
     case 1:
-      return S.Array(__S(120));
+      return S.Array(BucketsLifecycleUpdateRequestRulesItemStorageClassTransitionsItem);
     case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          conditions: __S(42),
+          conditions: BucketsLifecycleGetResponseRulesItemConditions,
           enabled: S.Boolean,
-          abortMultipartUploadsTransition: S.optional(__S(116)),
-          deleteObjectsTransition: S.optional(__S(118)),
-          storageClassTransitions: S.optional(__S(121)),
+          abortMultipartUploadsTransition: S.optional(
+            BucketsLifecycleUpdateRequestRulesItemAbortMultipartUploadsTransition,
+          ),
+          deleteObjectsTransition: S.optional(
+            BucketsLifecycleUpdateRequestRulesItemDeleteObjectsTransition,
+          ),
+          storageClassTransitions: S.optional(
+            BucketsLifecycleUpdateRequestRulesItemStorageClassTransitionsList,
+          ),
         }),
       ).annotate({
         identifier: "BucketsLifecycleUpdateRequestRulesItem",
       });
     case 3:
-      return S.Array(__S(122));
+      return S.Array(BucketsLifecycleUpdateRequestRulesItem);
     case 4:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           bucketName: S.String.pipe(T.Label("bucket_name")),
-          rules: S.optional(__S(123)),
-          jurisdiction: S.optional(S.String.pipe(T.Header("cf-r2-jurisdiction"))),
+          rules: S.optional(BucketsLifecycleUpdateRequestRulesList),
+          jurisdiction: S.optional(
+            BucketsLifecycleUpdateRequestCfR2Jurisdiction.pipe(T.Header("cf-r2-jurisdiction")),
+          ),
         })
           .pipe(
             T.Http({
@@ -4133,7 +5120,7 @@ function __c15(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          condition: __S(125),
+          condition: BucketsLocksUpdateRequestRulesItemCondition,
           enabled: S.Boolean,
           prefix: S.optional(S.String),
         }),
@@ -4141,7 +5128,7 @@ function __c15(j: number): any {
         identifier: "BucketsLocksUpdateRequestRulesItem",
       });
     case 7:
-      return S.Array(__S(126));
+      return S.Array(BucketsLocksUpdateRequestRulesItem);
   }
 }
 function __c16(j: number): any {
@@ -4151,8 +5138,10 @@ function __c16(j: number): any {
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           bucketName: S.String.pipe(T.Label("bucket_name")),
-          rules: S.optional(__S(127)),
-          jurisdiction: S.optional(S.String.pipe(T.Header("cf-r2-jurisdiction"))),
+          rules: S.optional(BucketsLocksUpdateRequestRulesList),
+          jurisdiction: S.optional(
+            BucketsLocksUpdateRequestCfR2Jurisdiction.pipe(T.Header("cf-r2-jurisdiction")),
+          ),
         })
           .pipe(
             T.Http({
@@ -4167,7 +5156,7 @@ function __c16(j: number): any {
       return S.suspend(() =>
         S.Struct({
           accessKeyId: S.optional(S.String),
-          provider: S.optional(S.String),
+          provider: S.optional(BucketsSippyUpdateRequestDestinationProvider),
           secretAccessKey: S.optional(S.String),
         }),
       ).annotate({
@@ -4190,9 +5179,11 @@ function __c16(j: number): any {
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           bucketName: S.String.pipe(T.Label("bucket_name")),
-          destination: S.optional(__S(129)),
-          source: S.optional(__S(130)),
-          jurisdiction: S.optional(S.String.pipe(T.Header("cf-r2-jurisdiction"))),
+          destination: S.optional(BucketsSippyUpdateRequestDestination),
+          source: S.optional(BucketsSippyUpdateRequestSource),
+          jurisdiction: S.optional(
+            BucketsSippyUpdateRequestCfR2Jurisdiction.pipe(T.Header("cf-r2-jurisdiction")),
+          ),
         })
           .pipe(
             T.Http({
@@ -4232,13 +5223,13 @@ function __c16(j: number): any {
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           bucket: S.String,
-          secret: __S(133),
-          vendor: S.String,
+          secret: SuperSlurperConnectivityPrecheckSourceRequestSecret,
+          vendor: SuperSlurperConnectivityPrecheckSourceRequestVendor,
           endpoint: S.optional(S.String),
-          keys: S.optional(__S(5)),
+          keys: S.optional(SuperSlurperConnectivityPrecheckSourceRequestKeysList),
           pathPrefix: S.optional(S.String),
           region: S.optional(S.String),
-          jurisdiction: S.optional(S.String),
+          jurisdiction: S.optional(SuperSlurperConnectivityPrecheckSourceRequestJurisdiction),
         })
           .pipe(
             T.Http({
@@ -4254,7 +5245,9 @@ function __c16(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          connectivityStatus: S.optional(S.NullOr(S.String)),
+          connectivityStatus: S.optional(
+            S.NullOr(SuperSlurperConnectivityPrecheckSourceResponseConnectivityStatus),
+          ),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "SourceSuperSlurperConnectivityPrecheckResponse",
@@ -4268,9 +5261,9 @@ function __c17(j: number): any {
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           bucket: S.String,
-          secret: __S(8),
-          vendor: S.String,
-          jurisdiction: S.optional(S.String),
+          secret: SuperSlurperJobsCreateRequestSourceR2SlurperS3SourceSchemaSecret,
+          vendor: SuperSlurperConnectivityPrecheckTargetRequestVendor,
+          jurisdiction: S.optional(SuperSlurperConnectivityPrecheckTargetRequestJurisdiction),
         })
           .pipe(
             T.Http({
@@ -4289,10 +5282,12 @@ function __c17(j: number): any {
           accountId: S.String.pipe(T.Label("account_id")),
           bucketName: S.String.pipe(T.Label("bucket_name")),
           domain: S.String.pipe(T.Label()),
-          ciphers: S.optional(__S(5)),
+          ciphers: S.optional(BucketsDomainsCustomUpdateRequestCiphersList),
           enabled: S.optional(S.Boolean),
-          minTLS: S.optional(S.String),
-          jurisdiction: S.optional(S.String.pipe(T.Header("cf-r2-jurisdiction"))),
+          minTLS: S.optional(BucketsDomainsCustomUpdateRequestMinTLS),
+          jurisdiction: S.optional(
+            BucketsDomainsCustomUpdateRequestCfR2Jurisdiction.pipe(T.Header("cf-r2-jurisdiction")),
+          ),
         })
           .pipe(
             T.Http({
@@ -4309,9 +5304,9 @@ function __c17(j: number): any {
       return S.suspend(() =>
         S.Struct({
           domain: S.String,
-          ciphers: S.optional(S.NullOr(__S(5))),
+          ciphers: S.optional(S.NullOr(BucketsDomainsCustomUpdateResponseCiphersList)),
           enabled: S.optional(S.NullOr(S.Boolean)),
-          minTLS: S.optional(S.NullOr(S.String)),
+          minTLS: S.optional(S.NullOr(BucketsDomainsCustomUpdateResponseMinTLS)),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "UpdateBucketDomainCustomResponse",
@@ -4321,8 +5316,12 @@ function __c17(j: number): any {
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           bucketName: S.String.pipe(T.Label("bucket_name")),
-          cfR2Jurisdiction: S.optional(S.String.pipe(T.Header("cf-r2-jurisdiction"))),
-          cfR2StorageClass: S.optional(S.String.pipe(T.Header("cf-r2-storage-class"))),
+          cfR2Jurisdiction: S.optional(
+            BucketsObjectsUploadRequestCfR2Jurisdiction.pipe(T.Header("cf-r2-jurisdiction")),
+          ),
+          cfR2StorageClass: S.optional(
+            BucketsObjectsUploadRequestCfR2StorageClass.pipe(T.Header("cf-r2-storage-class")),
+          ),
           objectName: S.String.pipe(T.Label("object_name")),
           body: S.optional(S.String.pipe(T.HttpBody())),
           contentType: S.optional(S.String.pipe(T.Header("Content-Type"))),
@@ -4351,57 +5350,14 @@ function __c17(j: number): any {
           etag: S.optional(S.NullOr(S.String)),
           key: S.optional(S.NullOr(S.String)),
           size: S.optional(S.NullOr(S.String)),
-          storageClass: S.optional(S.NullOr(S.String).pipe(T.Body("storage_class"))),
+          storageClass: S.optional(
+            S.NullOr(BucketsObjectsUploadResponseStorageClass).pipe(T.Body("storage_class")),
+          ),
           uploaded: S.optional(S.NullOr(S.String)),
           version: S.optional(S.NullOr(S.String)),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "UploadBucketObjectResponse",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
-    case 9:
-      return __c9(i & 7);
-    case 10:
-      return __c10(i & 7);
-    case 11:
-      return __c11(i & 7);
-    case 12:
-      return __c12(i & 7);
-    case 13:
-      return __c13(i & 7);
-    case 14:
-      return __c14(i & 7);
-    case 15:
-      return __c15(i & 7);
-    case 16:
-      return __c16(i & 7);
-    case 17:
-      return __c17(i & 7);
   }
 }

@@ -8,8 +8,6 @@ import { UnknownStackitError } from "../errors.ts";
 import { StackitProtocol, type StackitOpError, type StackitOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { StackitOpError, StackitOpContext };
 
@@ -56,9 +54,19 @@ export interface CreateAlertConfigReceiverRequestEmailConfigsItem {
   /** The email address to send notifications to. `Additional Validators:` * must be a syntactically valid email address */
   to?: string;
 }
+const CreateAlertConfigReceiverRequestEmailConfigsItem = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<CreateAlertConfigReceiverRequestEmailConfigsItem>;
+
 /** Email configurations */
 export type CreateAlertConfigReceiverRequestEmailConfigsList =
   Array<CreateAlertConfigReceiverRequestEmailConfigsItem>;
+const CreateAlertConfigReceiverRequestEmailConfigsList = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<CreateAlertConfigReceiverRequestEmailConfigsList>;
+
 export interface CreateAlertConfigReceiverRequestOpsgenieConfigsItem {
   /** The API key to use when talking to the OpsGenie API. `Additional Validators:` * should only include the characters: a-zA-Z0-9- */
   apiKey?: string | Redacted.Redacted<string>;
@@ -71,9 +79,19 @@ export interface CreateAlertConfigReceiverRequestOpsgenieConfigsItem {
   /** Comma separated list of tags attached to the notifications. */
   tags?: string;
 }
+const CreateAlertConfigReceiverRequestOpsgenieConfigsItem = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<CreateAlertConfigReceiverRequestOpsgenieConfigsItem>;
+
 /** Configuration for ops genie. */
 export type CreateAlertConfigReceiverRequestOpsgenieConfigsList =
   Array<CreateAlertConfigReceiverRequestOpsgenieConfigsItem>;
+const CreateAlertConfigReceiverRequestOpsgenieConfigsList = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<CreateAlertConfigReceiverRequestOpsgenieConfigsList>;
+
 export interface CreateAlertConfigReceiverRequestWebHookConfigsItem {
   /** Google Chat webhooks require special handling. If you set this property to true, it is treated as such. `Additional Validators:` * When set to true, msTeams must be false. */
   googleChat?: boolean;
@@ -84,8 +102,18 @@ export interface CreateAlertConfigReceiverRequestWebHookConfigsItem {
   /** The endpoint to send HTTP POST requests to. `Additional Validators:` * must be a syntactically valid url address */
   url?: string;
 }
+const CreateAlertConfigReceiverRequestWebHookConfigsItem = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<CreateAlertConfigReceiverRequestWebHookConfigsItem>;
+
 export type CreateAlertConfigReceiverRequestWebHookConfigsList =
   Array<CreateAlertConfigReceiverRequestWebHookConfigsItem>;
+const CreateAlertConfigReceiverRequestWebHookConfigsList = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<CreateAlertConfigReceiverRequestWebHookConfigsList>;
+
 export interface CreateAlertConfigReceiverRequest {
   projectId: string;
   instanceId: string;
@@ -97,6 +125,11 @@ export interface CreateAlertConfigReceiverRequest {
   opsgenieConfigs?: CreateAlertConfigReceiverRequestOpsgenieConfigsList;
   webHookConfigs?: CreateAlertConfigReceiverRequestWebHookConfigsList;
 }
+const CreateAlertConfigReceiverRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<CreateAlertConfigReceiverRequest>;
+
 export interface EmailConfig {
   authIdentity?: string;
   authPassword?: string | Redacted.Redacted<string>;
@@ -106,7 +139,14 @@ export interface EmailConfig {
   smarthost?: string;
   to: string;
 }
+const EmailConfig = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<EmailConfig>;
+
 export type ReceiversEmailConfigsList = Array<EmailConfig>;
+const ReceiversEmailConfigsList = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<ReceiversEmailConfigsList>;
+
 export interface OpsgenieConfig {
   apiKey?: string | Redacted.Redacted<string>;
   apiUrl?: string;
@@ -114,34 +154,79 @@ export interface OpsgenieConfig {
   sendResolved?: boolean;
   tags?: string;
 }
+const OpsgenieConfig = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<OpsgenieConfig>;
+
 export type ReceiversOpsgenieConfigsList = Array<OpsgenieConfig>;
+const ReceiversOpsgenieConfigsList = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<ReceiversOpsgenieConfigsList>;
+
 export interface WebHook {
   googleChat?: boolean;
   msTeams?: boolean;
   sendResolved?: boolean;
   url: string;
 }
+const WebHook = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<WebHook>;
+
 export type ReceiversWebHookConfigsList = Array<WebHook>;
+const ReceiversWebHookConfigsList = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<ReceiversWebHookConfigsList>;
+
 export interface Receivers {
   emailConfigs?: ReceiversEmailConfigsList;
   name: string;
   opsgenieConfigs?: ReceiversOpsgenieConfigsList;
   webHookConfigs?: ReceiversWebHookConfigsList;
 }
+const Receivers = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<Receivers>;
+
 export type AlertConfigReceiversResponseDataList = Array<Receivers>;
+const AlertConfigReceiversResponseDataList = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<AlertConfigReceiversResponseDataList>;
+
 export interface AlertConfigReceiversResponse {
   data: AlertConfigReceiversResponseDataList;
   message: string;
 }
+const AlertConfigReceiversResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<AlertConfigReceiversResponse>;
+
 /** The labels by which incoming alerts are grouped together. For example, multiple alerts coming in for cluster=A and alertname=LatencyHigh would be batched into a single group. To aggregate by all possible labels use the special value '...' as the sole label name, for example: group_by: ['...']. This effectively disables aggregation entirely, passing through all alerts as-is. This is unlikely to be what you want, unless you have a very low alert volume or your upstream notification system performs its own grouping. */
 export type CreateAlertConfigRouteRequestGroupByList = Array<string>;
+const CreateAlertConfigRouteRequestGroupByList = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<CreateAlertConfigRouteRequestGroupByList>;
+
 /** A list of matchers that an alert has to fulfill to match the node. A matcher is a string with a syntax inspired by PromQL and OpenMetrics. The syntax of a matcher consists of three tokens: * A valid Prometheus label name. * One of =, !=, =~, or !~. = means equals, != means that the strings are not equal, =~ is used for equality of regex expressions and !~ is used for un-equality of regex expressions. They have the same meaning as known from PromQL selectors. * A UTF-8 string, which may be enclosed in double quotes. Before or after each token, there may be any amount of whitespace. `Additional Validators:` * should not contain more than 5 keys * each key and value should not be longer than 200 characters */
 export type CreateAlertConfigRouteRequestMatchersList = Array<string>;
+const CreateAlertConfigRouteRequestMatchersList =
+  CreateAlertConfigRouteRequestGroupByList as any as S.Schema<CreateAlertConfigRouteRequestMatchersList>;
+
 export type CreateAlertConfigRouteRequestRoutesItemGroupByList = Array<string>;
+const CreateAlertConfigRouteRequestRoutesItemGroupByList =
+  CreateAlertConfigRouteRequestGroupByList as any as S.Schema<CreateAlertConfigRouteRequestRoutesItemGroupByList>;
+
 /** As in one level above */
 export type CreateAlertConfigRouteRequestRoutesItemMatchersList = Array<string>;
+const CreateAlertConfigRouteRequestRoutesItemMatchersList =
+  CreateAlertConfigRouteRequestGroupByList as any as S.Schema<CreateAlertConfigRouteRequestRoutesItemMatchersList>;
+
 /** Another child routes */
 export type CreateAlertConfigRouteRequestRoutesItemRoutesList = Array<unknown>;
+const CreateAlertConfigRouteRequestRoutesItemRoutesList = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<CreateAlertConfigRouteRequestRoutesItemRoutesList>;
+
 /** As in one level above */
 export interface CreateAlertConfigRouteRequestRoutesItem {
   /** Whether an alert should continue matching subsequent sibling nodes. */
@@ -164,9 +249,19 @@ export interface CreateAlertConfigRouteRequestRoutesItem {
   /** Another child routes */
   routes?: CreateAlertConfigRouteRequestRoutesItemRoutesList;
 }
+const CreateAlertConfigRouteRequestRoutesItem = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<CreateAlertConfigRouteRequestRoutesItem>;
+
 /** Zero or more child routes. */
 export type CreateAlertConfigRouteRequestRoutesList =
   Array<CreateAlertConfigRouteRequestRoutesItem>;
+const CreateAlertConfigRouteRequestRoutesList = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<CreateAlertConfigRouteRequestRoutesList>;
+
 export interface CreateAlertConfigRouteRequest {
   projectId: string;
   instanceId: string;
@@ -191,16 +286,51 @@ export interface CreateAlertConfigRouteRequest {
   /** Zero or more child routes. */
   routes?: CreateAlertConfigRouteRequestRoutesList;
 }
+const CreateAlertConfigRouteRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<CreateAlertConfigRouteRequest>;
+
 export type RouteGroupByList = Array<string>;
+const RouteGroupByList =
+  CreateAlertConfigRouteRequestGroupByList as any as S.Schema<RouteGroupByList>;
+
 export type RouteMatchMap = { [key: string]: string | undefined };
+const RouteMatchMap = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<RouteMatchMap>;
+
 export type RouteMatchReMap = { [key: string]: string | undefined };
+const RouteMatchReMap = RouteMatchMap as any as S.Schema<RouteMatchReMap>;
+
 export type RouteMatchersList = Array<string>;
+const RouteMatchersList =
+  CreateAlertConfigRouteRequestGroupByList as any as S.Schema<RouteMatchersList>;
+
 export type RouteSerializerGroupByList = Array<string>;
+const RouteSerializerGroupByList =
+  CreateAlertConfigRouteRequestGroupByList as any as S.Schema<RouteSerializerGroupByList>;
+
 export type RouteSerializerMatchMap = { [key: string]: string | undefined };
+const RouteSerializerMatchMap = RouteMatchMap as any as S.Schema<RouteSerializerMatchMap>;
+
 export type RouteSerializerMatchReMap = { [key: string]: string | undefined };
+const RouteSerializerMatchReMap = RouteMatchMap as any as S.Schema<RouteSerializerMatchReMap>;
+
 export type RouteSerializerMatchersList = Array<string>;
+const RouteSerializerMatchersList =
+  CreateAlertConfigRouteRequestGroupByList as any as S.Schema<RouteSerializerMatchersList>;
+
 export type RouteSerializerRoutesItemMap = { [key: string]: string | null | undefined };
+const RouteSerializerRoutesItemMap = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<RouteSerializerRoutesItemMap>;
+
 export type RouteSerializerRoutesList = Array<RouteSerializerRoutesItemMap>;
+const RouteSerializerRoutesList = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<RouteSerializerRoutesList>;
+
 export interface RouteSerializer {
   continue?: boolean;
   groupBy?: RouteSerializerGroupByList;
@@ -213,7 +343,11 @@ export interface RouteSerializer {
   repeatInterval?: string;
   routes?: RouteSerializerRoutesList;
 }
+const RouteSerializer = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<RouteSerializer>;
+
 export type RouteRoutesList = Array<RouteSerializer>;
+const RouteRoutesList = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<RouteRoutesList>;
+
 export interface Route {
   continue?: boolean;
   groupBy?: RouteGroupByList;
@@ -226,10 +360,17 @@ export interface Route {
   repeatInterval?: string;
   routes?: RouteRoutesList;
 }
+const Route = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<Route>;
+
 export interface AlertConfigRouteResponse {
   data: Route;
   message: string;
 }
+const AlertConfigRouteResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<AlertConfigRouteResponse>;
+
 /** Rule definition. Must be either an Alerting Rule (using 'alert') or a Recording Rule (using 'record'). `Additional Validators:` * total config (all alert groups/rules) should not be bigger than 500000 characters as string since this the limitation of prometheus. */
 export interface CreateAlertgroupsRequestRulesItem {
   /** The name of the alert. When this attribute is used, an Alerting Rule will be created. `Additional Validators:` * is the identifier and so unique in the group * should only include the characters: a-zA-Z0-9- * required when 'record' is not used in this rule, otherwise not allowed */
@@ -245,8 +386,18 @@ export interface CreateAlertgroupsRequestRulesItem {
   /** The name of the metric. When this attribute is used, an Recording Rule will be created. `Additional Validators:` * is the identifier and so unique in the group * should only include the characters: a-zA-Z0-9:_ * required when 'alert' is not used in this rule, otherwise not allowed */
   record?: string;
 }
+const CreateAlertgroupsRequestRulesItem = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<CreateAlertgroupsRequestRulesItem>;
+
 /** rules for the alert group */
 export type CreateAlertgroupsRequestRulesList = Array<CreateAlertgroupsRequestRulesItem>;
+const CreateAlertgroupsRequestRulesList = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<CreateAlertgroupsRequestRulesList>;
+
 export interface CreateAlertgroupsRequest {
   projectId: string;
   instanceId: string;
@@ -257,8 +408,18 @@ export interface CreateAlertgroupsRequest {
   /** rules for the alert group */
   rules: CreateAlertgroupsRequestRulesList;
 }
+const CreateAlertgroupsRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<CreateAlertgroupsRequest>;
+
 export type AlertRuleRecordAnnotationsMap = { [key: string]: string | undefined };
+const AlertRuleRecordAnnotationsMap =
+  RouteMatchMap as any as S.Schema<AlertRuleRecordAnnotationsMap>;
+
 export type AlertRuleRecordLabelsMap = { [key: string]: string | undefined };
+const AlertRuleRecordLabelsMap = RouteMatchMap as any as S.Schema<AlertRuleRecordLabelsMap>;
+
 export interface AlertRuleRecord {
   alert?: string;
   annotations?: AlertRuleRecordAnnotationsMap;
@@ -267,17 +428,30 @@ export interface AlertRuleRecord {
   labels?: AlertRuleRecordLabelsMap;
   record?: string;
 }
+const AlertRuleRecord = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<AlertRuleRecord>;
+
 export type AlertGroupRulesList = Array<AlertRuleRecord>;
+const AlertGroupRulesList = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<AlertGroupRulesList>;
+
 export interface AlertGroup {
   interval?: string;
   name: string;
   rules: AlertGroupRulesList;
 }
+const AlertGroup = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<AlertGroup>;
+
 export type AlertGroupsResponseDataList = Array<AlertGroup>;
+const AlertGroupsResponseDataList = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<AlertGroupsResponseDataList>;
+
 export interface AlertGroupsResponse {
   data: AlertGroupsResponseDataList;
   message: string;
 }
+const AlertGroupsResponse = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<AlertGroupsResponse>;
+
 export interface CreateAlertRecordRequest {
   projectId: string;
   instanceId: string;
@@ -289,17 +463,33 @@ export interface CreateAlertRecordRequest {
   /** The name of the record. `Additional Validators:` * is the identifier and so unique in the group */
   record: string;
 }
+const CreateAlertRecordRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<CreateAlertRecordRequest>;
+
 export type AlertRecordLabelsMap = { [key: string]: string | undefined };
+const AlertRecordLabelsMap = RouteMatchMap as any as S.Schema<AlertRecordLabelsMap>;
+
 export interface AlertRecord {
   expr: string;
   labels?: AlertRecordLabelsMap;
   record: string;
 }
+const AlertRecord = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<AlertRecord>;
+
 export type AlertRecordsResponseDataList = Array<AlertRecord>;
+const AlertRecordsResponseDataList = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<AlertRecordsResponseDataList>;
+
 export interface AlertRecordsResponse {
   data: AlertRecordsResponseDataList;
   message: string;
 }
+const AlertRecordsResponse = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<AlertRecordsResponse>;
+
 export interface CreateAlertrulesRequest {
   projectId: string;
   instanceId: string;
@@ -315,8 +505,17 @@ export interface CreateAlertrulesRequest {
   /** map of key:value. Labels to add or overwrite for each alert. `Additional Validators:` * should not contain more than 10 keys * each key and value should not be longer than 200 characters */
   labels?: unknown;
 }
+const CreateAlertrulesRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  0,
+) as any as S.Schema<CreateAlertrulesRequest>;
+
 export type AlertRuleAnnotationsMap = { [key: string]: string | undefined };
+const AlertRuleAnnotationsMap = RouteMatchMap as any as S.Schema<AlertRuleAnnotationsMap>;
+
 export type AlertRuleLabelsMap = { [key: string]: string | undefined };
+const AlertRuleLabelsMap = RouteMatchMap as any as S.Schema<AlertRuleLabelsMap>;
+
 export interface AlertRule {
   alert: string;
   annotations?: AlertRuleAnnotationsMap;
@@ -324,28 +523,48 @@ export interface AlertRule {
   for?: string;
   labels?: AlertRuleLabelsMap;
 }
+const AlertRule = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<AlertRule>;
+
 export type AlertRulesResponseDataList = Array<AlertRule>;
+const AlertRulesResponseDataList = /*@__PURE__*/ __L.at(
+  __c5,
+  2,
+) as any as S.Schema<AlertRulesResponseDataList>;
+
 export interface AlertRulesResponse {
   data: AlertRulesResponseDataList;
   message: string;
 }
+const AlertRulesResponse = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<AlertRulesResponse>;
+
 export type CreateBackupRequestBackupTargetItem =
   | "alertConfig"
   | "alertRules"
   | "scrapeConfig"
   | "grafana";
+const CreateBackupRequestBackupTargetItem = S.String;
+
 export type CreateBackupRequestBackupTargetList = Array<
   CreateBackupRequestBackupTargetItem | (string & {})
 >;
+const CreateBackupRequestBackupTargetList = /*@__PURE__*/ __L.at(
+  __c5,
+  4,
+) as any as S.Schema<CreateBackupRequestBackupTargetList>;
+
 export interface CreateBackupRequest {
   projectId: string;
   instanceId: string;
   /** List of backup targets */
   backupTarget?: CreateBackupRequestBackupTargetList;
 }
+const CreateBackupRequest = /*@__PURE__*/ __L.at(__c5, 5) as any as S.Schema<CreateBackupRequest>;
+
 export interface Message {
   message: string;
 }
+const Message = /*@__PURE__*/ __L.at(__c5, 6) as any as S.Schema<Message>;
+
 export type CreateBackupScheduleRequestBackupTargetItem =
   | "alertConfig"
   | "alertRules"
@@ -354,6 +573,9 @@ export type CreateBackupScheduleRequestBackupTargetItem =
 export type CreateBackupScheduleRequestBackupTargetList = Array<
   CreateBackupScheduleRequestBackupTargetItem | (string & {})
 >;
+const CreateBackupScheduleRequestBackupTargetList =
+  CreateBackupRequestBackupTargetList as any as S.Schema<CreateBackupScheduleRequestBackupTargetList>;
+
 export interface CreateBackupScheduleRequest {
   projectId: string;
   instanceId: string;
@@ -362,41 +584,80 @@ export interface CreateBackupScheduleRequest {
   /** The schedule for how often to create a backup. `Additional Validators:` * must be a valid cronjob format * must run less than hourly */
   schedule: string;
 }
+const CreateBackupScheduleRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  7,
+) as any as S.Schema<CreateBackupScheduleRequest>;
+
 export interface BackupSchedulePostResponse {
   message: string;
   schedule: string;
 }
+const BackupSchedulePostResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<BackupSchedulePostResponse>;
+
 export interface CreateCertCheckRequest {
   projectId: string;
   instanceId: string;
   /** cert to check */
   source: string;
 }
+const CreateCertCheckRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  1,
+) as any as S.Schema<CreateCertCheckRequest>;
+
 export interface CertCheckChildResponse {
   id: string;
   source: string;
 }
+const CertCheckChildResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  2,
+) as any as S.Schema<CertCheckChildResponse>;
+
 export type CertCheckResponseCertChecksList = Array<CertCheckChildResponse>;
+const CertCheckResponseCertChecksList = /*@__PURE__*/ __L.at(
+  __c6,
+  3,
+) as any as S.Schema<CertCheckResponseCertChecksList>;
+
 export interface CertCheckResponse {
   certCheck?: CertCheckChildResponse;
   certChecks: CertCheckResponseCertChecksList;
   message: string;
 }
+const CertCheckResponse = /*@__PURE__*/ __L.at(__c6, 4) as any as S.Schema<CertCheckResponse>;
+
 export interface CreateCredentialsRequest {
   projectId: string;
   instanceId: string;
   /** description */
   description?: string;
 }
+const CreateCredentialsRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  5,
+) as any as S.Schema<CreateCredentialsRequest>;
+
 export interface Credentials {
   description?: string;
   password: string | Redacted.Redacted<string>;
   username: string;
 }
+const Credentials = /*@__PURE__*/ __L.at(__c6, 6) as any as S.Schema<Credentials>;
+
 export interface CreateCredentialsResponse {
   credentials: Credentials;
   message: string;
 }
+const CreateCredentialsResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  7,
+) as any as S.Schema<CreateCredentialsResponse>;
+
 export interface CreateElasticsearchCheckRequest {
   projectId: string;
   instanceId: string;
@@ -407,35 +668,72 @@ export interface CreateElasticsearchCheckRequest {
   /** username */
   username?: string;
 }
+const CreateElasticsearchCheckRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  0,
+) as any as S.Schema<CreateElasticsearchCheckRequest>;
+
 export interface ElasticsearchCheckChildResponse {
   id: string;
   password?: string | Redacted.Redacted<string>;
   server: string;
   username?: string;
 }
+const ElasticsearchCheckChildResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  1,
+) as any as S.Schema<ElasticsearchCheckChildResponse>;
+
 export type ElasticsearchCheckResponseElasticsearchChecksList =
   Array<ElasticsearchCheckChildResponse>;
+const ElasticsearchCheckResponseElasticsearchChecksList = /*@__PURE__*/ __L.at(
+  __c7,
+  2,
+) as any as S.Schema<ElasticsearchCheckResponseElasticsearchChecksList>;
+
 export interface ElasticsearchCheckResponse {
   elasticsearchCheck?: ElasticsearchCheckChildResponse;
   elasticsearchChecks: ElasticsearchCheckResponseElasticsearchChecksList;
   message: string;
 }
+const ElasticsearchCheckResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  3,
+) as any as S.Schema<ElasticsearchCheckResponse>;
+
 export interface CreateHttpCheckRequest {
   projectId: string;
   instanceId: string;
   /** url to check */
   url: string;
 }
+const CreateHttpCheckRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  4,
+) as any as S.Schema<CreateHttpCheckRequest>;
+
 export interface HttpCheckChildResponse {
   id: string;
   url: string;
 }
+const HttpCheckChildResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  5,
+) as any as S.Schema<HttpCheckChildResponse>;
+
 export type HttpCheckResponseHttpChecksList = Array<HttpCheckChildResponse>;
+const HttpCheckResponseHttpChecksList = /*@__PURE__*/ __L.at(
+  __c7,
+  6,
+) as any as S.Schema<HttpCheckResponseHttpChecksList>;
+
 export interface HttpCheckResponse {
   httpCheck?: HttpCheckChildResponse;
   httpChecks: HttpCheckResponseHttpChecksList;
   message: string;
 }
+const HttpCheckResponse = /*@__PURE__*/ __L.at(__c7, 7) as any as S.Schema<HttpCheckResponse>;
+
 export interface CreateInstanceRequest {
   projectId: string;
   /** If true, a default Grafana server admin user is created. It's recommended to set this to false and use STACKIT SSO (`Owner` or `Observability Grafana Server Admin` role) instead. It is still possible to manually create a new Grafana admin user via the Grafana UI later. */
@@ -447,11 +745,21 @@ export interface CreateInstanceRequest {
   /** UUID of the plan to create/update */
   planId: string;
 }
+const CreateInstanceRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  0,
+) as any as S.Schema<CreateInstanceRequest>;
+
 export interface CreateInstanceResponse {
   dashboardUrl: string;
   instanceId: string;
   message: string;
 }
+const CreateInstanceResponse = /*@__PURE__*/ __L.at(
+  __c8,
+  1,
+) as any as S.Schema<CreateInstanceResponse>;
+
 /** Rule definition. Must be either an Alerting Rule (using 'alert') or a Recording Rule (using 'record'). `Additional Validators:` * total config (all alert groups/rules) should not be bigger than 500000 characters as string since this the limitation of prometheus. */
 export interface CreateLogsAlertgroupsRequestRulesItem {
   /** The name of the alert. When this attribute is used, an Alerting Rule will be created. `Additional Validators:` * is the identifier and so unique in the group * should only include the characters: a-zA-Z0-9- * required when 'record' is not used in this rule, otherwise not allowed */
@@ -469,6 +777,9 @@ export interface CreateLogsAlertgroupsRequestRulesItem {
 }
 /** rules for the alert group */
 export type CreateLogsAlertgroupsRequestRulesList = Array<CreateLogsAlertgroupsRequestRulesItem>;
+const CreateLogsAlertgroupsRequestRulesList =
+  CreateAlertgroupsRequestRulesList as any as S.Schema<CreateLogsAlertgroupsRequestRulesList>;
+
 export interface CreateLogsAlertgroupsRequest {
   projectId: string;
   instanceId: string;
@@ -479,77 +790,149 @@ export interface CreateLogsAlertgroupsRequest {
   /** rules for the alert group */
   rules: CreateLogsAlertgroupsRequestRulesList;
 }
+const CreateLogsAlertgroupsRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  2,
+) as any as S.Schema<CreateLogsAlertgroupsRequest>;
+
 export interface CreateMongodbCheckRequest {
   projectId: string;
   instanceId: string;
   /** url to check */
   server: string;
 }
+const CreateMongodbCheckRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  3,
+) as any as S.Schema<CreateMongodbCheckRequest>;
+
 export interface MongodbCheckChildResponse {
   id: string;
   server: string;
 }
+const MongodbCheckChildResponse = /*@__PURE__*/ __L.at(
+  __c8,
+  4,
+) as any as S.Schema<MongodbCheckChildResponse>;
+
 export type MongodbCheckResponseMongodbChecksList = Array<MongodbCheckChildResponse>;
+const MongodbCheckResponseMongodbChecksList = /*@__PURE__*/ __L.at(
+  __c8,
+  5,
+) as any as S.Schema<MongodbCheckResponseMongodbChecksList>;
+
 export interface MongodbCheckResponse {
   message: string;
   mongodbCheck?: MongodbCheckChildResponse;
   mongodbChecks: MongodbCheckResponseMongodbChecksList;
 }
+const MongodbCheckResponse = /*@__PURE__*/ __L.at(__c8, 6) as any as S.Schema<MongodbCheckResponse>;
+
 export interface CreateMysqlCheckRequest {
   projectId: string;
   instanceId: string;
   /** url to check */
   server: string;
 }
+const CreateMysqlCheckRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  7,
+) as any as S.Schema<CreateMysqlCheckRequest>;
+
 export type MysqlCheckChildResponse = MongodbCheckChildResponse;
 export type MysqlCheckResponseMysqlChecksList = Array<MongodbCheckChildResponse>;
+const MysqlCheckResponseMysqlChecksList =
+  MongodbCheckResponseMongodbChecksList as any as S.Schema<MysqlCheckResponseMysqlChecksList>;
+
 export interface MysqlCheckResponse {
   message: string;
   mysqlCheck?: MongodbCheckChildResponse;
   mysqlChecks: MysqlCheckResponseMysqlChecksList;
 }
+const MysqlCheckResponse = /*@__PURE__*/ __L.at(__c9, 0) as any as S.Schema<MysqlCheckResponse>;
+
 export interface CreateNetworkCheckRequest {
   projectId: string;
   instanceId: string;
   /** network to check */
   address: string;
 }
+const CreateNetworkCheckRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  1,
+) as any as S.Schema<CreateNetworkCheckRequest>;
+
 export interface NetworkCheckChildResponse {
   address: string;
   id: string;
 }
+const NetworkCheckChildResponse = /*@__PURE__*/ __L.at(
+  __c9,
+  2,
+) as any as S.Schema<NetworkCheckChildResponse>;
+
 export type NetworkCheckResponseNetworkChecksList = Array<NetworkCheckChildResponse>;
+const NetworkCheckResponseNetworkChecksList = /*@__PURE__*/ __L.at(
+  __c9,
+  3,
+) as any as S.Schema<NetworkCheckResponseNetworkChecksList>;
+
 export interface NetworkCheckResponse {
   message: string;
   networkCheck?: NetworkCheckChildResponse;
   networkChecks: NetworkCheckResponseNetworkChecksList;
 }
+const NetworkCheckResponse = /*@__PURE__*/ __L.at(__c9, 4) as any as S.Schema<NetworkCheckResponse>;
+
 export interface CreatePingCheckRequest {
   projectId: string;
   instanceId: string;
   /** domain to check */
   url: string;
 }
+const CreatePingCheckRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  5,
+) as any as S.Schema<CreatePingCheckRequest>;
+
 export type PingCheckChildResponse = HttpCheckChildResponse;
 export type PingCheckResponsePingChecksList = Array<HttpCheckChildResponse>;
+const PingCheckResponsePingChecksList =
+  HttpCheckResponseHttpChecksList as any as S.Schema<PingCheckResponsePingChecksList>;
+
 export interface PingCheckResponse {
   message: string;
   pingCheck?: HttpCheckChildResponse;
   pingChecks: PingCheckResponsePingChecksList;
 }
+const PingCheckResponse = /*@__PURE__*/ __L.at(__c9, 6) as any as S.Schema<PingCheckResponse>;
+
 export interface CreatePostgresqlCheckRequest {
   projectId: string;
   instanceId: string;
   /** url to check */
   address: string;
 }
+const CreatePostgresqlCheckRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  7,
+) as any as S.Schema<CreatePostgresqlCheckRequest>;
+
 export type PostgresqlCheckChildResponse = NetworkCheckChildResponse;
 export type PostgresqlCheckResponsePostgresqlChecksList = Array<NetworkCheckChildResponse>;
+const PostgresqlCheckResponsePostgresqlChecksList =
+  NetworkCheckResponseNetworkChecksList as any as S.Schema<PostgresqlCheckResponsePostgresqlChecksList>;
+
 export interface PostgresqlCheckResponse {
   message: string;
   postgresqlCheck?: NetworkCheckChildResponse;
   postgresqlChecks: PostgresqlCheckResponsePostgresqlChecksList;
 }
+const PostgresqlCheckResponse = /*@__PURE__*/ __L.at(
+  __c10,
+  0,
+) as any as S.Schema<PostgresqlCheckResponse>;
+
 export interface CreateRabbitmqCheckRequest {
   projectId: string;
   instanceId: string;
@@ -560,18 +943,38 @@ export interface CreateRabbitmqCheckRequest {
   /** username */
   username?: string;
 }
+const CreateRabbitmqCheckRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  1,
+) as any as S.Schema<CreateRabbitmqCheckRequest>;
+
 export interface RabbitMQCheckChildResponse {
   id: string;
   password?: string | Redacted.Redacted<string>;
   url: string;
   username?: string;
 }
+const RabbitMQCheckChildResponse = /*@__PURE__*/ __L.at(
+  __c10,
+  2,
+) as any as S.Schema<RabbitMQCheckChildResponse>;
+
 export type RabbitmqCheckResponseRabbitmqChecksList = Array<RabbitMQCheckChildResponse>;
+const RabbitmqCheckResponseRabbitmqChecksList = /*@__PURE__*/ __L.at(
+  __c10,
+  3,
+) as any as S.Schema<RabbitmqCheckResponseRabbitmqChecksList>;
+
 export interface RabbitmqCheckResponse {
   message: string;
   rabbitmqCheck?: RabbitMQCheckChildResponse;
   rabbitmqChecks: RabbitmqCheckResponseRabbitmqChecksList;
 }
+const RabbitmqCheckResponse = /*@__PURE__*/ __L.at(
+  __c10,
+  4,
+) as any as S.Schema<RabbitmqCheckResponse>;
+
 export interface CreateRedisCheckRequest {
   projectId: string;
   instanceId: string;
@@ -582,13 +985,23 @@ export interface CreateRedisCheckRequest {
   /** username */
   username?: string;
 }
+const CreateRedisCheckRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  5,
+) as any as S.Schema<CreateRedisCheckRequest>;
+
 export type RedisCheckChildResponse = ElasticsearchCheckChildResponse;
 export type RedisCheckResponseRedisChecksList = Array<ElasticsearchCheckChildResponse>;
+const RedisCheckResponseRedisChecksList =
+  ElasticsearchCheckResponseElasticsearchChecksList as any as S.Schema<RedisCheckResponseRedisChecksList>;
+
 export interface RedisCheckResponse {
   message: string;
   redisCheck?: ElasticsearchCheckChildResponse;
   redisChecks: RedisCheckResponseRedisChecksList;
 }
+const RedisCheckResponse = /*@__PURE__*/ __L.at(__c10, 6) as any as S.Schema<RedisCheckResponse>;
+
 /** Sets the 'Authorization' header on every scrape request with the configured username and password. `Additional Validators:` * if basicAuth is in the body no other authentication method should be in the body */
 export interface CreateScrapeConfigRequestBasicAuth {
   /** password */
@@ -596,16 +1009,29 @@ export interface CreateScrapeConfigRequestBasicAuth {
   /** username */
   username?: string;
 }
+const CreateScrapeConfigRequestBasicAuth = /*@__PURE__*/ __L.at(
+  __c10,
+  7,
+) as any as S.Schema<CreateScrapeConfigRequestBasicAuth>;
+
 /** Sets the 'Authorization' header on every scrape request with the configured username and password. `Additional Validators:` * if basicAuth is in the body no other authentication method should be in the body */
 export type CreateScrapeConfigRequestHttpSdConfigsItemBasicAuth =
   CreateScrapeConfigRequestBasicAuth;
 /** The URL to fetch the token from. */
 export type CreateScrapeConfigRequestHttpSdConfigsItemOauth2ScopesList = Array<string>;
+const CreateScrapeConfigRequestHttpSdConfigsItemOauth2ScopesList =
+  CreateAlertConfigRouteRequestGroupByList as any as S.Schema<CreateScrapeConfigRequestHttpSdConfigsItemOauth2ScopesList>;
+
 /** Configures the scrape request's TLS settings. */
 export interface CreateScrapeConfigRequestHttpSdConfigsItemOauth2TlsConfig {
   /** Disable validation of the server certificate. */
   insecureSkipVerify?: boolean;
 }
+const CreateScrapeConfigRequestHttpSdConfigsItemOauth2TlsConfig = /*@__PURE__*/ __L.at(
+  __c11,
+  0,
+) as any as S.Schema<CreateScrapeConfigRequestHttpSdConfigsItemOauth2TlsConfig>;
+
 /** OAuth 2.0 authentication using the client credentials grant type. Prometheus fetches an access token from the specified endpoint with the given client access and secret keys. `Additional Validators:` * if oauth2 is in the body no other authentication method should be in the body */
 export interface CreateScrapeConfigRequestHttpSdConfigsItemOauth2 {
   /** clientId */
@@ -619,6 +1045,11 @@ export interface CreateScrapeConfigRequestHttpSdConfigsItemOauth2 {
   /** The URL to fetch the token from. */
   tokenUrl: string;
 }
+const CreateScrapeConfigRequestHttpSdConfigsItemOauth2 = /*@__PURE__*/ __L.at(
+  __c11,
+  1,
+) as any as S.Schema<CreateScrapeConfigRequestHttpSdConfigsItemOauth2>;
+
 /** Configures the scrape request's TLS settings. */
 export type CreateScrapeConfigRequestHttpSdConfigsItemTlsConfig =
   CreateScrapeConfigRequestHttpSdConfigsItemOauth2TlsConfig;
@@ -634,9 +1065,19 @@ export interface CreateScrapeConfigRequestHttpSdConfigsItem {
   /** URL from which the targets are fetched. */
   url: string;
 }
+const CreateScrapeConfigRequestHttpSdConfigsItem = /*@__PURE__*/ __L.at(
+  __c11,
+  2,
+) as any as S.Schema<CreateScrapeConfigRequestHttpSdConfigsItem>;
+
 /** HTTP-based service discovery provides a more generic way to configure static targets and serves as an interface to plug in custom service discovery mechanisms. */
 export type CreateScrapeConfigRequestHttpSdConfigsList =
   Array<CreateScrapeConfigRequestHttpSdConfigsItem>;
+const CreateScrapeConfigRequestHttpSdConfigsList = /*@__PURE__*/ __L.at(
+  __c11,
+  3,
+) as any as S.Schema<CreateScrapeConfigRequestHttpSdConfigsList>;
+
 /** Action to perform based on regex matching. `Additional Validators:` * if action is replace, targetLabel needs to be in body */
 export type CreateScrapeConfigRequestMetricsRelabelConfigsItemAction =
   | "replace"
@@ -646,8 +1087,15 @@ export type CreateScrapeConfigRequestMetricsRelabelConfigsItemAction =
   | "labelmap"
   | "labeldrop"
   | "labelkeep";
+const CreateScrapeConfigRequestMetricsRelabelConfigsItemAction = S.String;
+
 /** The source labels select values from existing labels. Their content is concatenated using the configured separator and matched against the configured regular expression for the replace, keep, and drop actions. */
 export type CreateScrapeConfigRequestMetricsRelabelConfigsItemSourceLabelsList = Array<string>;
+const CreateScrapeConfigRequestMetricsRelabelConfigsItemSourceLabelsList = /*@__PURE__*/ __L.at(
+  __c11,
+  4,
+) as any as S.Schema<CreateScrapeConfigRequestMetricsRelabelConfigsItemSourceLabelsList>;
+
 export interface CreateScrapeConfigRequestMetricsRelabelConfigsItem {
   /** Action to perform based on regex matching. `Additional Validators:` * if action is replace, targetLabel needs to be in body */
   action?: CreateScrapeConfigRequestMetricsRelabelConfigsItemAction | (string & {});
@@ -664,9 +1112,19 @@ export interface CreateScrapeConfigRequestMetricsRelabelConfigsItem {
   /** Label to which the resulting value is written in a replace action. It is mandatory for replace actions. Regex capture groups are available. */
   targetLabel?: string;
 }
+const CreateScrapeConfigRequestMetricsRelabelConfigsItem = /*@__PURE__*/ __L.at(
+  __c11,
+  5,
+) as any as S.Schema<CreateScrapeConfigRequestMetricsRelabelConfigsItem>;
+
 /** List of metric relabel configurations */
 export type CreateScrapeConfigRequestMetricsRelabelConfigsList =
   Array<CreateScrapeConfigRequestMetricsRelabelConfigsItem>;
+const CreateScrapeConfigRequestMetricsRelabelConfigsList = /*@__PURE__*/ __L.at(
+  __c11,
+  6,
+) as any as S.Schema<CreateScrapeConfigRequestMetricsRelabelConfigsList>;
+
 /** The URL to fetch the token from. */
 export type CreateScrapeConfigRequestOauth2ScopesList = Array<string>;
 /** Configures the scrape request's TLS settings. */
@@ -685,19 +1143,37 @@ export interface CreateScrapeConfigRequestOauth2 {
   /** The URL to fetch the token from. */
   tokenUrl: string;
 }
+const CreateScrapeConfigRequestOauth2 =
+  CreateScrapeConfigRequestHttpSdConfigsItemOauth2 as any as S.Schema<CreateScrapeConfigRequestOauth2>;
+
 /** Configures the protocol scheme used for requests. https or http */
 export type CreateScrapeConfigRequestScheme = "http" | "https";
+const CreateScrapeConfigRequestScheme = S.String;
+
 /** The targets specified by the static config. */
 export type CreateScrapeConfigRequestStaticConfigsItemTargetsList = Array<string>;
+const CreateScrapeConfigRequestStaticConfigsItemTargetsList =
+  CreateAlertConfigRouteRequestGroupByList as any as S.Schema<CreateScrapeConfigRequestStaticConfigsItemTargetsList>;
+
 export interface CreateScrapeConfigRequestStaticConfigsItem {
   /** Labels assigned to all metrics scraped from the targets. `Additional Validators:` * should not contain more than 10 keys * each key and value should not be longer than 200 characters */
   labels?: unknown;
   /** The targets specified by the static config. */
   targets: CreateScrapeConfigRequestStaticConfigsItemTargetsList;
 }
+const CreateScrapeConfigRequestStaticConfigsItem = /*@__PURE__*/ __L.at(
+  __c11,
+  7,
+) as any as S.Schema<CreateScrapeConfigRequestStaticConfigsItem>;
+
 /** A list of scrape configurations. */
 export type CreateScrapeConfigRequestStaticConfigsList =
   Array<CreateScrapeConfigRequestStaticConfigsItem>;
+const CreateScrapeConfigRequestStaticConfigsList = /*@__PURE__*/ __L.at(
+  __c12,
+  0,
+) as any as S.Schema<CreateScrapeConfigRequestStaticConfigsList>;
+
 /** Configures the scrape request's TLS settings. */
 export type CreateScrapeConfigRequestTlsConfig =
   CreateScrapeConfigRequestHttpSdConfigsItemOauth2TlsConfig;
@@ -737,14 +1213,26 @@ export interface CreateScrapeConfigRequest {
   /** Configures the scrape request's TLS settings. */
   tlsConfig?: CreateScrapeConfigRequestHttpSdConfigsItemOauth2TlsConfig;
 }
+const CreateScrapeConfigRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  1,
+) as any as S.Schema<CreateScrapeConfigRequest>;
+
 export interface BasicAuth {
   password: string | Redacted.Redacted<string>;
   username: string;
 }
+const BasicAuth = /*@__PURE__*/ __L.at(__c12, 2) as any as S.Schema<BasicAuth>;
+
 export type OAuth2ScopesList = Array<string>;
+const OAuth2ScopesList =
+  CreateAlertConfigRouteRequestGroupByList as any as S.Schema<OAuth2ScopesList>;
+
 export interface TLSConfig {
   insecureSkipVerify?: boolean;
 }
+const TLSConfig = /*@__PURE__*/ __L.at(__c12, 3) as any as S.Schema<TLSConfig>;
+
 export interface OAuth2 {
   clientId: string;
   clientSecret: string | Redacted.Redacted<string>;
@@ -752,6 +1240,8 @@ export interface OAuth2 {
   tlsConfig?: TLSConfig;
   tokenUrl: string;
 }
+const OAuth2 = /*@__PURE__*/ __L.at(__c12, 4) as any as S.Schema<OAuth2>;
+
 export interface HTTPServiceSD {
   basicAuth?: BasicAuth;
   oauth2?: OAuth2;
@@ -759,7 +1249,14 @@ export interface HTTPServiceSD {
   tlsConfig?: TLSConfig;
   url: string;
 }
+const HTTPServiceSD = /*@__PURE__*/ __L.at(__c12, 5) as any as S.Schema<HTTPServiceSD>;
+
 export type JobHttpSdConfigsList = Array<HTTPServiceSD>;
+const JobHttpSdConfigsList = /*@__PURE__*/ __L.at(
+  __c12,
+  6,
+) as any as S.Schema<JobHttpSdConfigsList>;
+
 export type MetricsRelabelConfigAction =
   | "replace"
   | "keep"
@@ -768,7 +1265,12 @@ export type MetricsRelabelConfigAction =
   | "labelmap"
   | "labeldrop"
   | "labelkeep";
+const MetricsRelabelConfigAction = S.String;
+
 export type MetricsRelabelConfigSourceLabelsList = Array<string>;
+const MetricsRelabelConfigSourceLabelsList =
+  CreateAlertConfigRouteRequestGroupByList as any as S.Schema<MetricsRelabelConfigSourceLabelsList>;
+
 export interface MetricsRelabelConfig {
   action?: MetricsRelabelConfigAction;
   modulus?: number;
@@ -778,17 +1280,46 @@ export interface MetricsRelabelConfig {
   sourceLabels: MetricsRelabelConfigSourceLabelsList;
   targetLabel?: string;
 }
+const MetricsRelabelConfig = /*@__PURE__*/ __L.at(
+  __c12,
+  7,
+) as any as S.Schema<MetricsRelabelConfig>;
+
 export type JobMetricsRelabelConfigsList = Array<MetricsRelabelConfig>;
+const JobMetricsRelabelConfigsList = /*@__PURE__*/ __L.at(
+  __c13,
+  0,
+) as any as S.Schema<JobMetricsRelabelConfigsList>;
+
 export type JobParamsValueList = Array<string>;
+const JobParamsValueList =
+  CreateAlertConfigRouteRequestGroupByList as any as S.Schema<JobParamsValueList>;
+
 export type JobParamsMap = { [key: string]: JobParamsValueList | undefined };
+const JobParamsMap = /*@__PURE__*/ __L.at(__c13, 1) as any as S.Schema<JobParamsMap>;
+
 export type JobScheme = "http" | "https";
+const JobScheme = S.String;
+
 export type StaticConfigsLabelsMap = { [key: string]: string | undefined };
+const StaticConfigsLabelsMap = RouteMatchMap as any as S.Schema<StaticConfigsLabelsMap>;
+
 export type StaticConfigsTargetsList = Array<string>;
+const StaticConfigsTargetsList =
+  CreateAlertConfigRouteRequestGroupByList as any as S.Schema<StaticConfigsTargetsList>;
+
 export interface StaticConfigs {
   labels?: StaticConfigsLabelsMap;
   targets: StaticConfigsTargetsList;
 }
+const StaticConfigs = /*@__PURE__*/ __L.at(__c13, 2) as any as S.Schema<StaticConfigs>;
+
 export type JobStaticConfigsList = Array<StaticConfigs>;
+const JobStaticConfigsList = /*@__PURE__*/ __L.at(
+  __c13,
+  3,
+) as any as S.Schema<JobStaticConfigsList>;
+
 export interface Job {
   basicAuth?: BasicAuth;
   bearerToken?: string;
@@ -807,40 +1338,83 @@ export interface Job {
   staticConfigs: JobStaticConfigsList;
   tlsConfig?: TLSConfig;
 }
+const Job = /*@__PURE__*/ __L.at(__c13, 4) as any as S.Schema<Job>;
+
 export type ScrapeConfigsResponseDataList = Array<Job>;
+const ScrapeConfigsResponseDataList = /*@__PURE__*/ __L.at(
+  __c13,
+  5,
+) as any as S.Schema<ScrapeConfigsResponseDataList>;
+
 export interface ScrapeConfigsResponse {
   data: ScrapeConfigsResponseDataList;
   message: string;
 }
+const ScrapeConfigsResponse = /*@__PURE__*/ __L.at(
+  __c13,
+  6,
+) as any as S.Schema<ScrapeConfigsResponse>;
+
 export interface DeleteAlertConfigReceiverRequest {
   projectId: string;
   instanceId: string;
   receiver: string;
 }
+const DeleteAlertConfigReceiverRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  7,
+) as any as S.Schema<DeleteAlertConfigReceiverRequest>;
+
 export interface DeleteAlertConfigRouteRequest {
   projectId: string;
   instanceId: string;
   receiver: string;
 }
+const DeleteAlertConfigRouteRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  0,
+) as any as S.Schema<DeleteAlertConfigRouteRequest>;
+
 export interface DeleteAlertgroupRequest {
   projectId: string;
   instanceId: string;
   groupName: string;
 }
+const DeleteAlertgroupRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  1,
+) as any as S.Schema<DeleteAlertgroupRequest>;
+
 export type DeleteAlertgroupsRequestGroupNameList = Array<string>;
+const DeleteAlertgroupsRequestGroupNameList =
+  CreateAlertConfigRouteRequestGroupByList as any as S.Schema<DeleteAlertgroupsRequestGroupNameList>;
+
 export interface DeleteAlertgroupsRequest {
   projectId: string;
   instanceId: string;
   /** Name of the groups that should be deleted */
   groupName: DeleteAlertgroupsRequestGroupNameList;
 }
+const DeleteAlertgroupsRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  2,
+) as any as S.Schema<DeleteAlertgroupsRequest>;
+
 export interface DeleteAlertRecordRequest {
   projectId: string;
   instanceId: string;
   groupName: string;
   alertRecord: string;
 }
+const DeleteAlertRecordRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  3,
+) as any as S.Schema<DeleteAlertRecordRequest>;
+
 export type DeleteAlertRecordsRequestAlertRecordList = Array<string>;
+const DeleteAlertRecordsRequestAlertRecordList =
+  CreateAlertConfigRouteRequestGroupByList as any as S.Schema<DeleteAlertRecordsRequestAlertRecordList>;
+
 export interface DeleteAlertRecordsRequest {
   projectId: string;
   instanceId: string;
@@ -848,13 +1422,26 @@ export interface DeleteAlertRecordsRequest {
   /** Name of the records that should be deleted */
   alertRecord: DeleteAlertRecordsRequestAlertRecordList;
 }
+const DeleteAlertRecordsRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  4,
+) as any as S.Schema<DeleteAlertRecordsRequest>;
+
 export interface DeleteAlertruleRequest {
   projectId: string;
   instanceId: string;
   groupName: string;
   alertName: string;
 }
+const DeleteAlertruleRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  5,
+) as any as S.Schema<DeleteAlertruleRequest>;
+
 export type DeleteAlertrulesRequestAlertNameList = Array<string>;
+const DeleteAlertrulesRequestAlertNameList =
+  CreateAlertConfigRouteRequestGroupByList as any as S.Schema<DeleteAlertrulesRequestAlertNameList>;
+
 export interface DeleteAlertrulesRequest {
   projectId: string;
   instanceId: string;
@@ -862,117 +1449,237 @@ export interface DeleteAlertrulesRequest {
   /** Name of the alert rules that should be deleted */
   alertName: DeleteAlertrulesRequestAlertNameList;
 }
+const DeleteAlertrulesRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  6,
+) as any as S.Schema<DeleteAlertrulesRequest>;
+
 export interface DeleteCertCheckRequest {
   projectId: string;
   instanceId: string;
   id: string;
 }
+const DeleteCertCheckRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  7,
+) as any as S.Schema<DeleteCertCheckRequest>;
+
 export interface DeleteCredentialsRequest {
   projectId: string;
   instanceId: string;
   username: string;
 }
+const DeleteCredentialsRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  0,
+) as any as S.Schema<DeleteCredentialsRequest>;
+
 export interface DeleteCredentialsRemoteWriteConfigRequest {
   projectId: string;
   instanceId: string;
   username: string;
 }
+const DeleteCredentialsRemoteWriteConfigRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  1,
+) as any as S.Schema<DeleteCredentialsRemoteWriteConfigRequest>;
+
 export interface CredentialsRemoteWriteDeleteResponse {
   maxLimit: number;
   message: string;
 }
+const CredentialsRemoteWriteDeleteResponse = /*@__PURE__*/ __L.at(
+  __c15,
+  2,
+) as any as S.Schema<CredentialsRemoteWriteDeleteResponse>;
+
 export interface DeleteElasticsearchCheckRequest {
   projectId: string;
   instanceId: string;
   id: string;
 }
+const DeleteElasticsearchCheckRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  3,
+) as any as S.Schema<DeleteElasticsearchCheckRequest>;
+
 export interface DeleteHttpCheckRequest {
   projectId: string;
   instanceId: string;
   id: string;
 }
+const DeleteHttpCheckRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  4,
+) as any as S.Schema<DeleteHttpCheckRequest>;
+
 export interface DeleteInstanceRequest {
   projectId: string;
   instanceId: string;
 }
+const DeleteInstanceRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  5,
+) as any as S.Schema<DeleteInstanceRequest>;
+
 export interface InstanceResponse {
   message: string;
 }
+const InstanceResponse = Message as any as S.Schema<InstanceResponse>;
+
 export interface DeleteLogsAlertgroupRequest {
   projectId: string;
   instanceId: string;
   groupName: string;
 }
+const DeleteLogsAlertgroupRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  6,
+) as any as S.Schema<DeleteLogsAlertgroupRequest>;
+
 export interface DeleteMongodbCheckRequest {
   projectId: string;
   instanceId: string;
   id: string;
 }
+const DeleteMongodbCheckRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  7,
+) as any as S.Schema<DeleteMongodbCheckRequest>;
+
 export interface DeleteMysqlCheckRequest {
   projectId: string;
   instanceId: string;
   id: string;
 }
+const DeleteMysqlCheckRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  0,
+) as any as S.Schema<DeleteMysqlCheckRequest>;
+
 export interface DeleteNetworkCheckRequest {
   projectId: string;
   instanceId: string;
   id: string;
 }
+const DeleteNetworkCheckRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  1,
+) as any as S.Schema<DeleteNetworkCheckRequest>;
+
 export interface DeletePingCheckRequest {
   projectId: string;
   instanceId: string;
   id: string;
 }
+const DeletePingCheckRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  2,
+) as any as S.Schema<DeletePingCheckRequest>;
+
 export interface DeletePostgresqlCheckRequest {
   projectId: string;
   instanceId: string;
   id: string;
 }
+const DeletePostgresqlCheckRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  3,
+) as any as S.Schema<DeletePostgresqlCheckRequest>;
+
 export interface DeleteRabbitmqCheckRequest {
   projectId: string;
   instanceId: string;
   id: string;
 }
+const DeleteRabbitmqCheckRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  4,
+) as any as S.Schema<DeleteRabbitmqCheckRequest>;
+
 export interface DeleteRedisCheckRequest {
   projectId: string;
   instanceId: string;
   id: string;
 }
+const DeleteRedisCheckRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  5,
+) as any as S.Schema<DeleteRedisCheckRequest>;
+
 export interface DeleteScrapeConfigRequest {
   projectId: string;
   instanceId: string;
   jobName: string;
 }
+const DeleteScrapeConfigRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  6,
+) as any as S.Schema<DeleteScrapeConfigRequest>;
+
 export type DeleteScrapeConfigResponseDataList = Array<Job>;
+const DeleteScrapeConfigResponseDataList =
+  ScrapeConfigsResponseDataList as any as S.Schema<DeleteScrapeConfigResponseDataList>;
+
 export interface DeleteScrapeConfigResponse {
   data: DeleteScrapeConfigResponseDataList;
   message: string;
 }
+const DeleteScrapeConfigResponse = /*@__PURE__*/ __L.at(
+  __c16,
+  7,
+) as any as S.Schema<DeleteScrapeConfigResponse>;
+
 export type DeleteScrapeConfigsRequestJobNameList = Array<string>;
+const DeleteScrapeConfigsRequestJobNameList =
+  CreateAlertConfigRouteRequestGroupByList as any as S.Schema<DeleteScrapeConfigsRequestJobNameList>;
+
 export interface DeleteScrapeConfigsRequest {
   projectId: string;
   instanceId: string;
   /** Name of the jobs that should be deleted */
   jobName: DeleteScrapeConfigsRequestJobNameList;
 }
+const DeleteScrapeConfigsRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  0,
+) as any as S.Schema<DeleteScrapeConfigsRequest>;
+
 export interface GetAlertConfigReceiverRequest {
   projectId: string;
   instanceId: string;
   receiver: string;
 }
+const GetAlertConfigReceiverRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  1,
+) as any as S.Schema<GetAlertConfigReceiverRequest>;
+
 export interface Receiver {
   data: Receivers;
   message: string;
 }
+const Receiver = /*@__PURE__*/ __L.at(__c17, 2) as any as S.Schema<Receiver>;
+
 export interface GetAlertConfigRouteRequest {
   projectId: string;
   instanceId: string;
   receiver: string;
 }
+const GetAlertConfigRouteRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  3,
+) as any as S.Schema<GetAlertConfigRouteRequest>;
+
 export interface GetAlertConfigsRequest {
   projectId: string;
   instanceId: string;
 }
+const GetAlertConfigsRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  4,
+) as any as S.Schema<GetAlertConfigsRequest>;
+
 export interface Global {
   opsgenieApiKey?: string;
   opsgenieApiUrl?: string;
@@ -983,13 +1690,32 @@ export interface Global {
   smtpFrom?: string;
   smtpSmarthost?: string;
 }
+const Global = /*@__PURE__*/ __L.at(__c17, 5) as any as S.Schema<Global>;
+
 export type InhibitRulesEqualList = Array<string>;
+const InhibitRulesEqualList =
+  CreateAlertConfigRouteRequestGroupByList as any as S.Schema<InhibitRulesEqualList>;
+
 export type InhibitRulesSourceMatchMap = { [key: string]: string | undefined };
+const InhibitRulesSourceMatchMap = RouteMatchMap as any as S.Schema<InhibitRulesSourceMatchMap>;
+
 export type InhibitRulesSourceMatchReMap = { [key: string]: string | undefined };
+const InhibitRulesSourceMatchReMap = RouteMatchMap as any as S.Schema<InhibitRulesSourceMatchReMap>;
+
 export type InhibitRulesSourceMatchersList = Array<string>;
+const InhibitRulesSourceMatchersList =
+  CreateAlertConfigRouteRequestGroupByList as any as S.Schema<InhibitRulesSourceMatchersList>;
+
 export type InhibitRulesTargetMatchMap = { [key: string]: string | undefined };
+const InhibitRulesTargetMatchMap = RouteMatchMap as any as S.Schema<InhibitRulesTargetMatchMap>;
+
 export type InhibitRulesTargetMatchReMap = { [key: string]: string | undefined };
+const InhibitRulesTargetMatchReMap = RouteMatchMap as any as S.Schema<InhibitRulesTargetMatchReMap>;
+
 export type InhibitRulesTargetMatchersList = Array<string>;
+const InhibitRulesTargetMatchersList =
+  CreateAlertConfigRouteRequestGroupByList as any as S.Schema<InhibitRulesTargetMatchersList>;
+
 export interface InhibitRules {
   equal?: InhibitRulesEqualList;
   sourceMatch?: InhibitRulesSourceMatchMap;
@@ -999,73 +1725,136 @@ export interface InhibitRules {
   targetMatchRe?: InhibitRulesTargetMatchReMap;
   targetMatchers?: InhibitRulesTargetMatchersList;
 }
+const InhibitRules = /*@__PURE__*/ __L.at(__c17, 6) as any as S.Schema<InhibitRules>;
+
 export type AlertInhibitRulesList = Array<InhibitRules>;
+const AlertInhibitRulesList = /*@__PURE__*/ __L.at(
+  __c17,
+  7,
+) as any as S.Schema<AlertInhibitRulesList>;
+
 export type AlertReceiversList = Array<Receivers>;
+const AlertReceiversList =
+  AlertConfigReceiversResponseDataList as any as S.Schema<AlertReceiversList>;
+
 export interface Alert {
   global?: Global;
   inhibitRules?: AlertInhibitRulesList;
   receivers: AlertReceiversList;
   route: Route;
 }
+const Alert = /*@__PURE__*/ __L.at(__c18, 0) as any as S.Schema<Alert>;
+
 export interface GetAlertConfigsResponse {
   data: Alert;
   message: string;
 }
+const GetAlertConfigsResponse = /*@__PURE__*/ __L.at(
+  __c18,
+  1,
+) as any as S.Schema<GetAlertConfigsResponse>;
+
 export interface GetAlertgroupRequest {
   projectId: string;
   instanceId: string;
   groupName: string;
 }
+const GetAlertgroupRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  2,
+) as any as S.Schema<GetAlertgroupRequest>;
+
 export interface AlertGroupResponse {
   data: AlertGroup;
   message: string;
 }
+const AlertGroupResponse = /*@__PURE__*/ __L.at(__c18, 3) as any as S.Schema<AlertGroupResponse>;
+
 export interface GetAlertRecordRequest {
   projectId: string;
   instanceId: string;
   groupName: string;
   alertRecord: string;
 }
+const GetAlertRecordRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  4,
+) as any as S.Schema<GetAlertRecordRequest>;
+
 export interface AlertRecordResponse {
   data: AlertRecord;
   message: string;
 }
+const AlertRecordResponse = /*@__PURE__*/ __L.at(__c18, 5) as any as S.Schema<AlertRecordResponse>;
+
 export interface GetAlertruleRequest {
   projectId: string;
   instanceId: string;
   groupName: string;
   alertName: string;
 }
+const GetAlertruleRequest = /*@__PURE__*/ __L.at(__c18, 6) as any as S.Schema<GetAlertruleRequest>;
+
 export interface AlertRuleResponse {
   data: AlertRule;
   message: string;
 }
+const AlertRuleResponse = /*@__PURE__*/ __L.at(__c18, 7) as any as S.Schema<AlertRuleResponse>;
+
 export interface GetCredentialsRequest {
   projectId: string;
   instanceId: string;
   username: string;
 }
+const GetCredentialsRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  0,
+) as any as S.Schema<GetCredentialsRequest>;
+
 export type GetCredentialsResponseCredentialsInfoMap = { [key: string]: string | null | undefined };
+const GetCredentialsResponseCredentialsInfoMap =
+  RouteSerializerRoutesItemMap as any as S.Schema<GetCredentialsResponseCredentialsInfoMap>;
+
 export interface GetCredentialsResponse {
   credentialsInfo?: GetCredentialsResponseCredentialsInfoMap;
   id: string;
   message: string;
   name: string;
 }
+const GetCredentialsResponse = /*@__PURE__*/ __L.at(
+  __c19,
+  1,
+) as any as S.Schema<GetCredentialsResponse>;
+
 export interface GetCredentialsRemoteWriteConfigRequest {
   projectId: string;
   instanceId: string;
   username: string;
 }
+const GetCredentialsRemoteWriteConfigRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  2,
+) as any as S.Schema<GetCredentialsRemoteWriteConfigRequest>;
+
 export interface CredentialsRemoteWriteConfig {
   credentialsMaxLimit: number;
   maxLimit: number;
   message: string;
 }
+const CredentialsRemoteWriteConfig = /*@__PURE__*/ __L.at(
+  __c19,
+  3,
+) as any as S.Schema<CredentialsRemoteWriteConfig>;
+
 export interface GetGrafanaConfigsRequest {
   projectId: string;
   instanceId: string;
 }
+const GetGrafanaConfigsRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  4,
+) as any as S.Schema<GetGrafanaConfigsRequest>;
+
 export interface GrafanaOauth {
   allowAssignGrafanaAdmin?: boolean;
   apiUrl: string;
@@ -1080,16 +1869,22 @@ export interface GrafanaOauth {
   tokenUrl: string;
   usePkce?: boolean;
 }
+const GrafanaOauth = /*@__PURE__*/ __L.at(__c19, 5) as any as S.Schema<GrafanaOauth>;
+
 export interface GrafanaConfigs {
   genericOauth?: GrafanaOauth;
   message: string;
   publicReadAccess?: boolean;
   useStackitSso?: boolean;
 }
+const GrafanaConfigs = /*@__PURE__*/ __L.at(__c19, 6) as any as S.Schema<GrafanaConfigs>;
+
 export interface GetInstanceRequest {
   projectId: string;
   instanceId: string;
 }
+const GetInstanceRequest = /*@__PURE__*/ __L.at(__c19, 7) as any as S.Schema<GetInstanceRequest>;
+
 export interface PlanModel {
   alertMatchers: number;
   alertReceivers: number;
@@ -1111,6 +1906,8 @@ export interface PlanModel {
   totalMetricSamples: number;
   tracesStorage: number;
 }
+const PlanModel = /*@__PURE__*/ __L.at(__c20, 0) as any as S.Schema<PlanModel>;
+
 export interface InstanceSensitiveData {
   alertingUrl: string;
   cluster: string;
@@ -1142,7 +1939,15 @@ export interface InstanceSensitiveData {
   targetsUrl: string;
   zipkinSpansUrl: string;
 }
+const InstanceSensitiveData = /*@__PURE__*/ __L.at(
+  __c20,
+  1,
+) as any as S.Schema<InstanceSensitiveData>;
+
 export type GetInstanceResponseParametersMap = { [key: string]: string | null | undefined };
+const GetInstanceResponseParametersMap =
+  RouteSerializerRoutesItemMap as any as S.Schema<GetInstanceResponseParametersMap>;
+
 export type GetInstanceResponseStatus =
   | "CREATING"
   | "CREATE_SUCCEEDED"
@@ -1153,6 +1958,8 @@ export type GetInstanceResponseStatus =
   | "UPDATING"
   | "UPDATE_SUCCEEDED"
   | "UPDATE_FAILED";
+const GetInstanceResponseStatus = S.String;
+
 export interface GetInstanceResponse {
   dashboardUrl: string;
   error?: string | null;
@@ -1168,85 +1975,165 @@ export interface GetInstanceResponse {
   serviceName: string;
   status: GetInstanceResponseStatus;
 }
+const GetInstanceResponse = /*@__PURE__*/ __L.at(__c20, 2) as any as S.Schema<GetInstanceResponse>;
+
 export interface GetLogsAlertgroupRequest {
   projectId: string;
   instanceId: string;
   groupName: string;
 }
+const GetLogsAlertgroupRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  3,
+) as any as S.Schema<GetLogsAlertgroupRequest>;
+
 export interface GetLogsConfigsRequest {
   projectId: string;
   instanceId: string;
 }
+const GetLogsConfigsRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  4,
+) as any as S.Schema<GetLogsConfigsRequest>;
+
 export interface LogsConfig {
   retention: string;
 }
+const LogsConfig = /*@__PURE__*/ __L.at(__c20, 5) as any as S.Schema<LogsConfig>;
+
 export interface LogsConfigResponse {
   config: LogsConfig;
   message: string;
 }
+const LogsConfigResponse = /*@__PURE__*/ __L.at(__c20, 6) as any as S.Schema<LogsConfigResponse>;
+
 export interface GetMetricsStorageRetentionRequest {
   projectId: string;
   instanceId: string;
 }
+const GetMetricsStorageRetentionRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  7,
+) as any as S.Schema<GetMetricsStorageRetentionRequest>;
+
 export interface GetMetricsStorageRetentionResponse {
   message: string;
   metricsRetentionTime1h: string;
   metricsRetentionTime5m: string;
   metricsRetentionTimeRaw: string;
 }
+const GetMetricsStorageRetentionResponse = /*@__PURE__*/ __L.at(
+  __c21,
+  0,
+) as any as S.Schema<GetMetricsStorageRetentionResponse>;
+
 export interface GetScrapeConfigRequest {
   projectId: string;
   instanceId: string;
   jobName: string;
 }
+const GetScrapeConfigRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  1,
+) as any as S.Schema<GetScrapeConfigRequest>;
+
 export interface GetScrapeConfigResponse {
   data: Job;
   message: string;
 }
+const GetScrapeConfigResponse = /*@__PURE__*/ __L.at(
+  __c21,
+  2,
+) as any as S.Schema<GetScrapeConfigResponse>;
+
 export interface GetTracesConfigsRequest {
   projectId: string;
   instanceId: string;
 }
+const GetTracesConfigsRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  3,
+) as any as S.Schema<GetTracesConfigsRequest>;
+
 export type TraceConfig = LogsConfig;
 export interface TracesConfigResponse {
   config: LogsConfig;
   message: string;
 }
+const TracesConfigResponse = LogsConfigResponse as any as S.Schema<TracesConfigResponse>;
+
 export interface ListACLRequest {
   projectId: string;
   instanceId: string;
 }
+const ListACLRequest = /*@__PURE__*/ __L.at(__c21, 4) as any as S.Schema<ListACLRequest>;
+
 export type ListACLResponseAclList = Array<string>;
+const ListACLResponseAclList =
+  CreateAlertConfigRouteRequestGroupByList as any as S.Schema<ListACLResponseAclList>;
+
 export interface ListACLResponse {
   acl: ListACLResponseAclList;
   message: string;
 }
+const ListACLResponse = /*@__PURE__*/ __L.at(__c21, 5) as any as S.Schema<ListACLResponse>;
+
 export interface ListAlertConfigReceiversRequest {
   projectId: string;
   instanceId: string;
 }
+const ListAlertConfigReceiversRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  6,
+) as any as S.Schema<ListAlertConfigReceiversRequest>;
+
 export interface ListAlertConfigRoutesRequest {
   projectId: string;
   instanceId: string;
 }
+const ListAlertConfigRoutesRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  7,
+) as any as S.Schema<ListAlertConfigRoutesRequest>;
+
 export interface ListAlertgroupsRequest {
   projectId: string;
   instanceId: string;
 }
+const ListAlertgroupsRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  0,
+) as any as S.Schema<ListAlertgroupsRequest>;
+
 export interface ListAlertRecordsRequest {
   projectId: string;
   instanceId: string;
   groupName: string;
 }
+const ListAlertRecordsRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  1,
+) as any as S.Schema<ListAlertRecordsRequest>;
+
 export interface ListAlertrulesRequest {
   projectId: string;
   instanceId: string;
   groupName: string;
 }
+const ListAlertrulesRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  2,
+) as any as S.Schema<ListAlertrulesRequest>;
+
 export interface ListBackupRetentionsRequest {
   projectId: string;
   instanceId: string;
 }
+const ListBackupRetentionsRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  3,
+) as any as S.Schema<ListBackupRetentionsRequest>;
+
 export interface BackupRetentionResponse {
   alertConfigBackupRetention: string;
   alertRulesBackupRetention: string;
@@ -1254,6 +2141,11 @@ export interface BackupRetentionResponse {
   message: string;
   scrapeConfigBackupRetention: string;
 }
+const BackupRetentionResponse = /*@__PURE__*/ __L.at(
+  __c22,
+  4,
+) as any as S.Schema<BackupRetentionResponse>;
+
 export type ListBackupsRequestBackupTargetItem =
   | "alertConfig"
   | "alertRules"
@@ -1262,16 +2154,33 @@ export type ListBackupsRequestBackupTargetItem =
 export type ListBackupsRequestBackupTargetList = Array<
   ListBackupsRequestBackupTargetItem | (string & {})
 >;
+const ListBackupsRequestBackupTargetList =
+  CreateBackupRequestBackupTargetList as any as S.Schema<ListBackupsRequestBackupTargetList>;
+
 export interface ListBackupsRequest {
   projectId: string;
   instanceId: string;
   /** List of backup targets */
   backupTarget?: ListBackupsRequestBackupTargetList;
 }
+const ListBackupsRequest = /*@__PURE__*/ __L.at(__c22, 5) as any as S.Schema<ListBackupsRequest>;
+
 export type BackupResponseAlertConfigBackupsList = Array<string>;
+const BackupResponseAlertConfigBackupsList =
+  CreateAlertConfigRouteRequestGroupByList as any as S.Schema<BackupResponseAlertConfigBackupsList>;
+
 export type BackupResponseAlertRulesBackupsList = Array<string>;
+const BackupResponseAlertRulesBackupsList =
+  CreateAlertConfigRouteRequestGroupByList as any as S.Schema<BackupResponseAlertRulesBackupsList>;
+
 export type BackupResponseGrafanaBackupsList = Array<string>;
+const BackupResponseGrafanaBackupsList =
+  CreateAlertConfigRouteRequestGroupByList as any as S.Schema<BackupResponseGrafanaBackupsList>;
+
 export type BackupResponseScrapeConfigBackupsList = Array<string>;
+const BackupResponseScrapeConfigBackupsList =
+  CreateAlertConfigRouteRequestGroupByList as any as S.Schema<BackupResponseScrapeConfigBackupsList>;
+
 export interface BackupResponse {
   alertConfigBackups: BackupResponseAlertConfigBackupsList;
   alertRulesBackups: BackupResponseAlertRulesBackupsList;
@@ -1279,6 +2188,8 @@ export interface BackupResponse {
   message: string;
   scrapeConfigBackups: BackupResponseScrapeConfigBackupsList;
 }
+const BackupResponse = /*@__PURE__*/ __L.at(__c22, 6) as any as S.Schema<BackupResponse>;
+
 export type ListBackupSchedulesRequestBackupTargetItem =
   | "alertConfig"
   | "alertRules"
@@ -1287,20 +2198,44 @@ export type ListBackupSchedulesRequestBackupTargetItem =
 export type ListBackupSchedulesRequestBackupTargetList = Array<
   ListBackupSchedulesRequestBackupTargetItem | (string & {})
 >;
+const ListBackupSchedulesRequestBackupTargetList =
+  CreateBackupRequestBackupTargetList as any as S.Schema<ListBackupSchedulesRequestBackupTargetList>;
+
 export interface ListBackupSchedulesRequest {
   projectId: string;
   instanceId: string;
   /** List of backup targets */
   backupTarget?: ListBackupSchedulesRequestBackupTargetList;
 }
+const ListBackupSchedulesRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  7,
+) as any as S.Schema<ListBackupSchedulesRequest>;
+
 export interface BackupSchedule {
   schedule: string;
   scheduleId: string;
 }
+const BackupSchedule = /*@__PURE__*/ __L.at(__c23, 0) as any as S.Schema<BackupSchedule>;
+
 export type BackupScheduleResponseAlertConfigBackupSchedulesList = Array<BackupSchedule>;
+const BackupScheduleResponseAlertConfigBackupSchedulesList = /*@__PURE__*/ __L.at(
+  __c23,
+  1,
+) as any as S.Schema<BackupScheduleResponseAlertConfigBackupSchedulesList>;
+
 export type BackupScheduleResponseAlertRulesBackupSchedulesList = Array<BackupSchedule>;
+const BackupScheduleResponseAlertRulesBackupSchedulesList =
+  BackupScheduleResponseAlertConfigBackupSchedulesList as any as S.Schema<BackupScheduleResponseAlertRulesBackupSchedulesList>;
+
 export type BackupScheduleResponseGrafanaBackupSchedulesList = Array<BackupSchedule>;
+const BackupScheduleResponseGrafanaBackupSchedulesList =
+  BackupScheduleResponseAlertConfigBackupSchedulesList as any as S.Schema<BackupScheduleResponseGrafanaBackupSchedulesList>;
+
 export type BackupScheduleResponseScrapeConfigBackupSchedulesList = Array<BackupSchedule>;
+const BackupScheduleResponseScrapeConfigBackupSchedulesList =
+  BackupScheduleResponseAlertConfigBackupSchedulesList as any as S.Schema<BackupScheduleResponseScrapeConfigBackupSchedulesList>;
+
 export interface BackupScheduleResponse {
   alertConfigBackupSchedules?: BackupScheduleResponseAlertConfigBackupSchedulesList;
   alertRulesBackupSchedules?: BackupScheduleResponseAlertRulesBackupSchedulesList;
@@ -1308,37 +2243,82 @@ export interface BackupScheduleResponse {
   message: string;
   scrapeConfigBackupSchedules?: BackupScheduleResponseScrapeConfigBackupSchedulesList;
 }
+const BackupScheduleResponse = /*@__PURE__*/ __L.at(
+  __c23,
+  2,
+) as any as S.Schema<BackupScheduleResponse>;
+
 export interface ListCertChecksRequest {
   projectId: string;
   instanceId: string;
 }
+const ListCertChecksRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  3,
+) as any as S.Schema<ListCertChecksRequest>;
+
 export interface ListCredentialsRequest {
   projectId: string;
   instanceId: string;
 }
+const ListCredentialsRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  4,
+) as any as S.Schema<ListCredentialsRequest>;
+
 export type ServiceKeysListCredentialsInfoMap = { [key: string]: string | null | undefined };
+const ServiceKeysListCredentialsInfoMap =
+  RouteSerializerRoutesItemMap as any as S.Schema<ServiceKeysListCredentialsInfoMap>;
+
 export interface ServiceKeysList {
   credentialsInfo?: ServiceKeysListCredentialsInfoMap;
   description?: string;
   id: string;
   name: string;
 }
+const ServiceKeysList = /*@__PURE__*/ __L.at(__c23, 5) as any as S.Schema<ServiceKeysList>;
+
 export type ListCredentialsResponseCredentialsList = Array<ServiceKeysList>;
+const ListCredentialsResponseCredentialsList = /*@__PURE__*/ __L.at(
+  __c23,
+  6,
+) as any as S.Schema<ListCredentialsResponseCredentialsList>;
+
 export interface ListCredentialsResponse {
   credentials: ListCredentialsResponseCredentialsList;
   message: string;
 }
+const ListCredentialsResponse = /*@__PURE__*/ __L.at(
+  __c23,
+  7,
+) as any as S.Schema<ListCredentialsResponse>;
+
 export interface ListElasticsearchChecksRequest {
   projectId: string;
   instanceId: string;
 }
+const ListElasticsearchChecksRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  0,
+) as any as S.Schema<ListElasticsearchChecksRequest>;
+
 export interface ListHttpChecksRequest {
   projectId: string;
   instanceId: string;
 }
+const ListHttpChecksRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  1,
+) as any as S.Schema<ListHttpChecksRequest>;
+
 export interface ListInstancesRequest {
   projectId: string;
 }
+const ListInstancesRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  2,
+) as any as S.Schema<ListInstancesRequest>;
+
 export type ProjectInstanceFullStatus =
   | "CREATING"
   | "CREATE_SUCCEEDED"
@@ -1349,6 +2329,8 @@ export type ProjectInstanceFullStatus =
   | "UPDATING"
   | "UPDATE_SUCCEEDED"
   | "UPDATE_FAILED";
+const ProjectInstanceFullStatus = S.String;
+
 export interface ProjectInstanceFull {
   error?: string | null;
   id: string;
@@ -1358,30 +2340,67 @@ export interface ProjectInstanceFull {
   serviceName: string;
   status: ProjectInstanceFullStatus;
 }
+const ProjectInstanceFull = /*@__PURE__*/ __L.at(__c24, 3) as any as S.Schema<ProjectInstanceFull>;
+
 export type ListInstancesResponseInstancesList = Array<ProjectInstanceFull>;
+const ListInstancesResponseInstancesList = /*@__PURE__*/ __L.at(
+  __c24,
+  4,
+) as any as S.Schema<ListInstancesResponseInstancesList>;
+
 export interface ListInstancesResponse {
   instances: ListInstancesResponseInstancesList;
   message: string;
 }
+const ListInstancesResponse = /*@__PURE__*/ __L.at(
+  __c24,
+  5,
+) as any as S.Schema<ListInstancesResponse>;
+
 export interface ListLogsAlertgroupsRequest {
   projectId: string;
   instanceId: string;
 }
+const ListLogsAlertgroupsRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  6,
+) as any as S.Schema<ListLogsAlertgroupsRequest>;
+
 export interface ListMongodbChecksRequest {
   projectId: string;
   instanceId: string;
 }
+const ListMongodbChecksRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  7,
+) as any as S.Schema<ListMongodbChecksRequest>;
+
 export interface ListMysqlChecksRequest {
   projectId: string;
   instanceId: string;
 }
+const ListMysqlChecksRequest = /*@__PURE__*/ __L.at(
+  __c25,
+  0,
+) as any as S.Schema<ListMysqlChecksRequest>;
+
 export interface ListNetworkChecksRequest {
   projectId: string;
   instanceId: string;
 }
+const ListNetworkChecksRequest = /*@__PURE__*/ __L.at(
+  __c25,
+  1,
+) as any as S.Schema<ListNetworkChecksRequest>;
+
 export interface ListOfferingsRequest {
   projectId: string;
 }
+const ListOfferingsRequest = /*@__PURE__*/ __L.at(
+  __c25,
+  2,
+) as any as S.Schema<ListOfferingsRequest>;
+
 export interface Plan {
   alertMatchers: number;
   alertReceivers: number;
@@ -1406,8 +2425,15 @@ export interface Plan {
   totalMetricSamples: number;
   tracesStorage: number;
 }
+const Plan = /*@__PURE__*/ __L.at(__c25, 3) as any as S.Schema<Plan>;
+
 export type OfferingsPlansList = Array<Plan>;
+const OfferingsPlansList = /*@__PURE__*/ __L.at(__c25, 4) as any as S.Schema<OfferingsPlansList>;
+
 export type OfferingsTagsList = Array<string>;
+const OfferingsTagsList =
+  CreateAlertConfigRouteRequestGroupByList as any as S.Schema<OfferingsTagsList>;
+
 export interface Offerings {
   description: string;
   documentationUrl: string;
@@ -1416,44 +2442,83 @@ export interface Offerings {
   plans: OfferingsPlansList;
   tags: OfferingsTagsList;
 }
+const Offerings = /*@__PURE__*/ __L.at(__c25, 5) as any as S.Schema<Offerings>;
+
 export interface ListPingChecksRequest {
   projectId: string;
   instanceId: string;
 }
+const ListPingChecksRequest = /*@__PURE__*/ __L.at(
+  __c25,
+  6,
+) as any as S.Schema<ListPingChecksRequest>;
+
 export interface ListPlansRequest {
   projectId: string;
 }
+const ListPlansRequest = /*@__PURE__*/ __L.at(__c25, 7) as any as S.Schema<ListPlansRequest>;
+
 export type PlansResponsePlansList = Array<Plan>;
+const PlansResponsePlansList = OfferingsPlansList as any as S.Schema<PlansResponsePlansList>;
+
 export interface PlansResponse {
   message: string;
   plans: PlansResponsePlansList;
 }
+const PlansResponse = /*@__PURE__*/ __L.at(__c26, 0) as any as S.Schema<PlansResponse>;
+
 export interface ListPostgresqlChecksRequest {
   projectId: string;
   instanceId: string;
 }
+const ListPostgresqlChecksRequest = /*@__PURE__*/ __L.at(
+  __c26,
+  1,
+) as any as S.Schema<ListPostgresqlChecksRequest>;
+
 export interface ListRabbitmqChecksRequest {
   projectId: string;
   instanceId: string;
 }
+const ListRabbitmqChecksRequest = /*@__PURE__*/ __L.at(
+  __c26,
+  2,
+) as any as S.Schema<ListRabbitmqChecksRequest>;
+
 export interface ListRedisChecksRequest {
   projectId: string;
   instanceId: string;
 }
+const ListRedisChecksRequest = /*@__PURE__*/ __L.at(
+  __c26,
+  3,
+) as any as S.Schema<ListRedisChecksRequest>;
+
 export interface ListScrapeConfigsRequest {
   projectId: string;
   instanceId: string;
 }
+const ListScrapeConfigsRequest = /*@__PURE__*/ __L.at(
+  __c26,
+  4,
+) as any as S.Schema<ListScrapeConfigsRequest>;
+
 export type ListScrapeConfigsResponseDataList = Array<Job>;
 export interface ListScrapeConfigsResponse {
   data: ListScrapeConfigsResponseDataList;
   message: string;
 }
+const ListScrapeConfigsResponse =
+  DeleteScrapeConfigResponse as any as S.Schema<ListScrapeConfigsResponse>;
+
 /** Rule definition. Must be either an Alerting Rule (using 'alert') or a Recording Rule (using 'record'). `Additional Validators:` * total config (all alert groups/rules) should not be bigger than 500000 characters as string since this the limitation of prometheus. */
 export type PartialUpdateAlertgroupsRequestBodyItemRulesItem = CreateAlertgroupsRequestRulesItem;
 /** rules for the alert group */
 export type PartialUpdateAlertgroupsRequestBodyItemRulesList =
   Array<CreateAlertgroupsRequestRulesItem>;
+const PartialUpdateAlertgroupsRequestBodyItemRulesList =
+  CreateAlertgroupsRequestRulesList as any as S.Schema<PartialUpdateAlertgroupsRequestBodyItemRulesList>;
+
 /** Alert group that should be created or updated. `Additional Validators:` * total config should not be bigger than 500000 characters as string since this the limitation of prometheus. */
 export interface PartialUpdateAlertgroupsRequestBodyItem {
   /** How often rules in the group are evaluated. `Additional Validators:` * must be a valid time string * should be >=60s */
@@ -1463,14 +2528,29 @@ export interface PartialUpdateAlertgroupsRequestBodyItem {
   /** rules for the alert group */
   rules: PartialUpdateAlertgroupsRequestBodyItemRulesList;
 }
+const PartialUpdateAlertgroupsRequestBodyItem = /*@__PURE__*/ __L.at(
+  __c26,
+  5,
+) as any as S.Schema<PartialUpdateAlertgroupsRequestBodyItem>;
+
 /** Array of alert groups that should be created or updated */
 export type PartialUpdateAlertgroupsRequestBodyList =
   Array<PartialUpdateAlertgroupsRequestBodyItem>;
+const PartialUpdateAlertgroupsRequestBodyList = /*@__PURE__*/ __L.at(
+  __c26,
+  6,
+) as any as S.Schema<PartialUpdateAlertgroupsRequestBodyList>;
+
 export interface PartialUpdateAlertgroupsRequest {
   projectId: string;
   instanceId: string;
   body: PartialUpdateAlertgroupsRequestBodyList;
 }
+const PartialUpdateAlertgroupsRequest = /*@__PURE__*/ __L.at(
+  __c26,
+  7,
+) as any as S.Schema<PartialUpdateAlertgroupsRequest>;
+
 /** Record. `Additional Validators:` * total config (all alert groups/rules/records) should not be bigger than 500000 characters as string since this the limitation of prometheus. */
 export interface PartialUpdateAlertRecordsRequestBodyItem {
   /** The PromQL expression to evaluate. Every evaluation cycle this is evaluated at the current time, and all resultant time series become pending/firing alerts. */
@@ -1480,15 +2560,30 @@ export interface PartialUpdateAlertRecordsRequestBodyItem {
   /** The name of the record. `Additional Validators:` * is the identifier and so unique in the group */
   record: string;
 }
+const PartialUpdateAlertRecordsRequestBodyItem = /*@__PURE__*/ __L.at(
+  __c27,
+  0,
+) as any as S.Schema<PartialUpdateAlertRecordsRequestBodyItem>;
+
 /** Array of records that should be created or updated */
 export type PartialUpdateAlertRecordsRequestBodyList =
   Array<PartialUpdateAlertRecordsRequestBodyItem>;
+const PartialUpdateAlertRecordsRequestBodyList = /*@__PURE__*/ __L.at(
+  __c27,
+  1,
+) as any as S.Schema<PartialUpdateAlertRecordsRequestBodyList>;
+
 export interface PartialUpdateAlertRecordsRequest {
   projectId: string;
   instanceId: string;
   groupName: string;
   body: PartialUpdateAlertRecordsRequestBodyList;
 }
+const PartialUpdateAlertRecordsRequest = /*@__PURE__*/ __L.at(
+  __c27,
+  2,
+) as any as S.Schema<PartialUpdateAlertRecordsRequest>;
+
 /** Alert rule. `Additional Validators:` * total config (all alert groups/rules) should not be bigger than 500000 characters as string since this the limitation of prometheus. */
 export interface PartialUpdateAlertrulesRequestBodyItem {
   /** The name of the alert. `Additional Validators:` * is the identifier and so unique in the group * should only include the characters: a-zA-Z0-9- */
@@ -1502,14 +2597,29 @@ export interface PartialUpdateAlertrulesRequestBodyItem {
   /** map of key:value. Labels to add or overwrite for each alert. `Additional Validators:` * should not contain more than 10 keys * each key and value should not be longer than 200 characters */
   labels?: unknown;
 }
+const PartialUpdateAlertrulesRequestBodyItem = /*@__PURE__*/ __L.at(
+  __c27,
+  3,
+) as any as S.Schema<PartialUpdateAlertrulesRequestBodyItem>;
+
 /** Array of alert rules that should be created or updated */
 export type PartialUpdateAlertrulesRequestBodyList = Array<PartialUpdateAlertrulesRequestBodyItem>;
+const PartialUpdateAlertrulesRequestBodyList = /*@__PURE__*/ __L.at(
+  __c27,
+  4,
+) as any as S.Schema<PartialUpdateAlertrulesRequestBodyList>;
+
 export interface PartialUpdateAlertrulesRequest {
   projectId: string;
   instanceId: string;
   groupName: string;
   body: PartialUpdateAlertrulesRequestBodyList;
 }
+const PartialUpdateAlertrulesRequest = /*@__PURE__*/ __L.at(
+  __c27,
+  5,
+) as any as S.Schema<PartialUpdateAlertrulesRequest>;
+
 /** Sets the 'Authorization' header on every scrape request with the configured username and password. `Additional Validators:` * if basicAuth is in the body no other authentication method should be in the body */
 export type PartialUpdateScrapeConfigsRequestBodyItemBasicAuth = CreateScrapeConfigRequestBasicAuth;
 /** Sets the 'Authorization' header on every scrape request with the configured username and password. `Additional Validators:` * if basicAuth is in the body no other authentication method should be in the body */
@@ -1518,6 +2628,9 @@ export type PartialUpdateScrapeConfigsRequestBodyItemHttpSdConfigsItemBasicAuth 
 /** The URL to fetch the token from. */
 export type PartialUpdateScrapeConfigsRequestBodyItemHttpSdConfigsItemOauth2ScopesList =
   Array<string>;
+const PartialUpdateScrapeConfigsRequestBodyItemHttpSdConfigsItemOauth2ScopesList =
+  CreateScrapeConfigRequestMetricsRelabelConfigsItemSourceLabelsList as any as S.Schema<PartialUpdateScrapeConfigsRequestBodyItemHttpSdConfigsItemOauth2ScopesList>;
+
 /** Configures the scrape request's TLS settings. */
 export type PartialUpdateScrapeConfigsRequestBodyItemHttpSdConfigsItemOauth2TlsConfig =
   CreateScrapeConfigRequestHttpSdConfigsItemOauth2TlsConfig;
@@ -1534,6 +2647,11 @@ export interface PartialUpdateScrapeConfigsRequestBodyItemHttpSdConfigsItemOauth
   /** The URL to fetch the token from. */
   tokenUrl: string;
 }
+const PartialUpdateScrapeConfigsRequestBodyItemHttpSdConfigsItemOauth2 = /*@__PURE__*/ __L.at(
+  __c27,
+  6,
+) as any as S.Schema<PartialUpdateScrapeConfigsRequestBodyItemHttpSdConfigsItemOauth2>;
+
 /** Configures the scrape request's TLS settings. */
 export type PartialUpdateScrapeConfigsRequestBodyItemHttpSdConfigsItemTlsConfig =
   CreateScrapeConfigRequestHttpSdConfigsItemOauth2TlsConfig;
@@ -1549,9 +2667,19 @@ export interface PartialUpdateScrapeConfigsRequestBodyItemHttpSdConfigsItem {
   /** URL from which the targets are fetched. */
   url: string;
 }
+const PartialUpdateScrapeConfigsRequestBodyItemHttpSdConfigsItem = /*@__PURE__*/ __L.at(
+  __c27,
+  7,
+) as any as S.Schema<PartialUpdateScrapeConfigsRequestBodyItemHttpSdConfigsItem>;
+
 /** HTTP-based service discovery provides a more generic way to configure static targets and serves as an interface to plug in custom service discovery mechanisms. */
 export type PartialUpdateScrapeConfigsRequestBodyItemHttpSdConfigsList =
   Array<PartialUpdateScrapeConfigsRequestBodyItemHttpSdConfigsItem>;
+const PartialUpdateScrapeConfigsRequestBodyItemHttpSdConfigsList = /*@__PURE__*/ __L.at(
+  __c28,
+  0,
+) as any as S.Schema<PartialUpdateScrapeConfigsRequestBodyItemHttpSdConfigsList>;
+
 /** Action to perform based on regex matching. `Additional Validators:` * if action is replace, targetLabel needs to be in body */
 export type PartialUpdateScrapeConfigsRequestBodyItemMetricsRelabelConfigsItemAction =
   | "replace"
@@ -1561,9 +2689,14 @@ export type PartialUpdateScrapeConfigsRequestBodyItemMetricsRelabelConfigsItemAc
   | "labelmap"
   | "labeldrop"
   | "labelkeep";
+const PartialUpdateScrapeConfigsRequestBodyItemMetricsRelabelConfigsItemAction = S.String;
+
 /** The source labels select values from existing labels. Their content is concatenated using the configured separator and matched against the configured regular expression for the replace, keep, and drop actions. */
 export type PartialUpdateScrapeConfigsRequestBodyItemMetricsRelabelConfigsItemSourceLabelsList =
   Array<string>;
+const PartialUpdateScrapeConfigsRequestBodyItemMetricsRelabelConfigsItemSourceLabelsList =
+  CreateScrapeConfigRequestMetricsRelabelConfigsItemSourceLabelsList as any as S.Schema<PartialUpdateScrapeConfigsRequestBodyItemMetricsRelabelConfigsItemSourceLabelsList>;
+
 export interface PartialUpdateScrapeConfigsRequestBodyItemMetricsRelabelConfigsItem {
   /** Action to perform based on regex matching. `Additional Validators:` * if action is replace, targetLabel needs to be in body */
   action?: PartialUpdateScrapeConfigsRequestBodyItemMetricsRelabelConfigsItemAction | (string & {});
@@ -1580,9 +2713,19 @@ export interface PartialUpdateScrapeConfigsRequestBodyItemMetricsRelabelConfigsI
   /** Label to which the resulting value is written in a replace action. It is mandatory for replace actions. Regex capture groups are available. */
   targetLabel?: string;
 }
+const PartialUpdateScrapeConfigsRequestBodyItemMetricsRelabelConfigsItem = /*@__PURE__*/ __L.at(
+  __c28,
+  1,
+) as any as S.Schema<PartialUpdateScrapeConfigsRequestBodyItemMetricsRelabelConfigsItem>;
+
 /** List of metric relabel configurations */
 export type PartialUpdateScrapeConfigsRequestBodyItemMetricsRelabelConfigsList =
   Array<PartialUpdateScrapeConfigsRequestBodyItemMetricsRelabelConfigsItem>;
+const PartialUpdateScrapeConfigsRequestBodyItemMetricsRelabelConfigsList = /*@__PURE__*/ __L.at(
+  __c28,
+  2,
+) as any as S.Schema<PartialUpdateScrapeConfigsRequestBodyItemMetricsRelabelConfigsList>;
+
 /** The URL to fetch the token from. */
 export type PartialUpdateScrapeConfigsRequestBodyItemOauth2ScopesList = Array<string>;
 /** Configures the scrape request's TLS settings. */
@@ -1601,19 +2744,37 @@ export interface PartialUpdateScrapeConfigsRequestBodyItemOauth2 {
   /** The URL to fetch the token from. */
   tokenUrl: string;
 }
+const PartialUpdateScrapeConfigsRequestBodyItemOauth2 =
+  CreateScrapeConfigRequestHttpSdConfigsItemOauth2 as any as S.Schema<PartialUpdateScrapeConfigsRequestBodyItemOauth2>;
+
 /** Configures the protocol scheme used for requests. https or http */
 export type PartialUpdateScrapeConfigsRequestBodyItemScheme = "http" | "https";
+const PartialUpdateScrapeConfigsRequestBodyItemScheme = S.String;
+
 /** The targets specified by the static config. */
 export type PartialUpdateScrapeConfigsRequestBodyItemStaticConfigsItemTargetsList = Array<string>;
+const PartialUpdateScrapeConfigsRequestBodyItemStaticConfigsItemTargetsList =
+  CreateScrapeConfigRequestMetricsRelabelConfigsItemSourceLabelsList as any as S.Schema<PartialUpdateScrapeConfigsRequestBodyItemStaticConfigsItemTargetsList>;
+
 export interface PartialUpdateScrapeConfigsRequestBodyItemStaticConfigsItem {
   /** Labels assigned to all metrics scraped from the targets. `Additional Validators:` * should not contain more than 10 keys * each key and value should not be longer than 200 characters */
   labels?: unknown;
   /** The targets specified by the static config. */
   targets: PartialUpdateScrapeConfigsRequestBodyItemStaticConfigsItemTargetsList;
 }
+const PartialUpdateScrapeConfigsRequestBodyItemStaticConfigsItem = /*@__PURE__*/ __L.at(
+  __c28,
+  3,
+) as any as S.Schema<PartialUpdateScrapeConfigsRequestBodyItemStaticConfigsItem>;
+
 /** A list of scrape configurations. */
 export type PartialUpdateScrapeConfigsRequestBodyItemStaticConfigsList =
   Array<PartialUpdateScrapeConfigsRequestBodyItemStaticConfigsItem>;
+const PartialUpdateScrapeConfigsRequestBodyItemStaticConfigsList = /*@__PURE__*/ __L.at(
+  __c28,
+  4,
+) as any as S.Schema<PartialUpdateScrapeConfigsRequestBodyItemStaticConfigsList>;
+
 /** Configures the scrape request's TLS settings. */
 export type PartialUpdateScrapeConfigsRequestBodyItemTlsConfig =
   CreateScrapeConfigRequestHttpSdConfigsItemOauth2TlsConfig;
@@ -1651,19 +2812,36 @@ export interface PartialUpdateScrapeConfigsRequestBodyItem {
   /** Configures the scrape request's TLS settings. */
   tlsConfig?: CreateScrapeConfigRequestHttpSdConfigsItemOauth2TlsConfig;
 }
+const PartialUpdateScrapeConfigsRequestBodyItem = /*@__PURE__*/ __L.at(
+  __c28,
+  5,
+) as any as S.Schema<PartialUpdateScrapeConfigsRequestBodyItem>;
+
 /** Array of jobs that should be created or updated */
 export type PartialUpdateScrapeConfigsRequestBodyList =
   Array<PartialUpdateScrapeConfigsRequestBodyItem>;
+const PartialUpdateScrapeConfigsRequestBodyList = /*@__PURE__*/ __L.at(
+  __c28,
+  6,
+) as any as S.Schema<PartialUpdateScrapeConfigsRequestBodyList>;
+
 export interface PartialUpdateScrapeConfigsRequest {
   projectId: string;
   instanceId: string;
   body: PartialUpdateScrapeConfigsRequestBodyList;
 }
+const PartialUpdateScrapeConfigsRequest = /*@__PURE__*/ __L.at(
+  __c28,
+  7,
+) as any as S.Schema<PartialUpdateScrapeConfigsRequest>;
+
 export type RestoreBackupRequestRestoreTarget =
   | "alertConfig"
   | "alertRules"
   | "scrapeConfig"
   | "grafana";
+const RestoreBackupRequestRestoreTarget = S.String;
+
 export interface RestoreBackupRequest {
   projectId: string;
   instanceId: string;
@@ -1671,28 +2849,47 @@ export interface RestoreBackupRequest {
   /** List of restore targets */
   restoreTarget: RestoreBackupRequestRestoreTarget | (string & {});
 }
+const RestoreBackupRequest = /*@__PURE__*/ __L.at(
+  __c29,
+  0,
+) as any as S.Schema<RestoreBackupRequest>;
+
 /** list of cidr */
 export type UpdateACLRequestAclList = Array<string>;
+const UpdateACLRequestAclList =
+  CreateAlertConfigRouteRequestGroupByList as any as S.Schema<UpdateACLRequestAclList>;
+
 export interface UpdateACLRequest {
   projectId: string;
   instanceId: string;
   /** list of cidr */
   acl: UpdateACLRequestAclList;
 }
+const UpdateACLRequest = /*@__PURE__*/ __L.at(__c29, 1) as any as S.Schema<UpdateACLRequest>;
+
 export type UpdateAlertConfigReceiverRequestEmailConfigsItem =
   CreateAlertConfigReceiverRequestEmailConfigsItem;
 /** Email configurations */
 export type UpdateAlertConfigReceiverRequestEmailConfigsList =
   Array<CreateAlertConfigReceiverRequestEmailConfigsItem>;
+const UpdateAlertConfigReceiverRequestEmailConfigsList =
+  CreateAlertConfigReceiverRequestEmailConfigsList as any as S.Schema<UpdateAlertConfigReceiverRequestEmailConfigsList>;
+
 export type UpdateAlertConfigReceiverRequestOpsgenieConfigsItem =
   CreateAlertConfigReceiverRequestOpsgenieConfigsItem;
 /** Configuration for ops genie. */
 export type UpdateAlertConfigReceiverRequestOpsgenieConfigsList =
   Array<CreateAlertConfigReceiverRequestOpsgenieConfigsItem>;
+const UpdateAlertConfigReceiverRequestOpsgenieConfigsList =
+  CreateAlertConfigReceiverRequestOpsgenieConfigsList as any as S.Schema<UpdateAlertConfigReceiverRequestOpsgenieConfigsList>;
+
 export type UpdateAlertConfigReceiverRequestWebHookConfigsItem =
   CreateAlertConfigReceiverRequestWebHookConfigsItem;
 export type UpdateAlertConfigReceiverRequestWebHookConfigsList =
   Array<CreateAlertConfigReceiverRequestWebHookConfigsItem>;
+const UpdateAlertConfigReceiverRequestWebHookConfigsList =
+  CreateAlertConfigReceiverRequestWebHookConfigsList as any as S.Schema<UpdateAlertConfigReceiverRequestWebHookConfigsList>;
+
 export interface UpdateAlertConfigReceiverRequest {
   projectId: string;
   instanceId: string;
@@ -1705,10 +2902,21 @@ export interface UpdateAlertConfigReceiverRequest {
   opsgenieConfigs?: UpdateAlertConfigReceiverRequestOpsgenieConfigsList;
   webHookConfigs?: UpdateAlertConfigReceiverRequestWebHookConfigsList;
 }
+const UpdateAlertConfigReceiverRequest = /*@__PURE__*/ __L.at(
+  __c29,
+  2,
+) as any as S.Schema<UpdateAlertConfigReceiverRequest>;
+
 /** The labels by which incoming alerts are grouped together. For example, multiple alerts coming in for cluster=A and alertname=LatencyHigh would be batched into a single group. To aggregate by all possible labels use the special value '...' as the sole label name, for example: group_by: ['...']. This effectively disables aggregation entirely, passing through all alerts as-is. This is unlikely to be what you want, unless you have a very low alert volume or your upstream notification system performs its own grouping. */
 export type UpdateAlertConfigRouteRequestGroupByList = Array<string>;
+const UpdateAlertConfigRouteRequestGroupByList =
+  CreateAlertConfigRouteRequestGroupByList as any as S.Schema<UpdateAlertConfigRouteRequestGroupByList>;
+
 /** A list of matchers that an alert has to fulfill to match the node. A matcher is a string with a syntax inspired by PromQL and OpenMetrics. The syntax of a matcher consists of three tokens: * A valid Prometheus label name. * One of =, !=, =~, or !~. = means equals, != means that the strings are not equal, =~ is used for equality of regex expressions and !~ is used for un-equality of regex expressions. They have the same meaning as known from PromQL selectors. * A UTF-8 string, which may be enclosed in double quotes. Before or after each token, there may be any amount of whitespace. `Additional Validators:` * should not contain more than 5 keys * each key and value should not be longer than 200 characters */
 export type UpdateAlertConfigRouteRequestMatchersList = Array<string>;
+const UpdateAlertConfigRouteRequestMatchersList =
+  CreateAlertConfigRouteRequestGroupByList as any as S.Schema<UpdateAlertConfigRouteRequestMatchersList>;
+
 export type UpdateAlertConfigRouteRequestRoutesItemGroupByList = Array<string>;
 /** As in one level above */
 export type UpdateAlertConfigRouteRequestRoutesItemMatchersList = Array<string>;
@@ -1739,6 +2947,9 @@ export interface UpdateAlertConfigRouteRequestRoutesItem {
 /** Zero or more child routes. */
 export type UpdateAlertConfigRouteRequestRoutesList =
   Array<UpdateAlertConfigRouteRequestRoutesItem>;
+const UpdateAlertConfigRouteRequestRoutesList =
+  CreateAlertConfigRouteRequestRoutesList as any as S.Schema<UpdateAlertConfigRouteRequestRoutesList>;
+
 export interface UpdateAlertConfigRouteRequest {
   projectId: string;
   instanceId: string;
@@ -1762,6 +2973,11 @@ export interface UpdateAlertConfigRouteRequest {
   /** Zero or more child routes. */
   routes?: UpdateAlertConfigRouteRequestRoutesList;
 }
+const UpdateAlertConfigRouteRequest = /*@__PURE__*/ __L.at(
+  __c29,
+  3,
+) as any as S.Schema<UpdateAlertConfigRouteRequest>;
+
 /** Global config. If nothing passed the default argus config will be used. It is only possible to update the entire global part, not individual attributes. */
 export interface UpdateAlertConfigsRequestGlobal {
   /** Opsgenie api key `Additional Validators:` * should only include the characters: a-zA-Z0-9- */
@@ -1781,8 +2997,16 @@ export interface UpdateAlertConfigsRequestGlobal {
   /** The default SMTP smarthost used for sending emails, including port number. Port number usually is 25, or 587 for SMTP over TLS (sometimes referred to as STARTTLS). Example: smtp.example.org:587 `Additional Validators:` * should only include the characters: a-zA-Z0-9_./@&?:- */
   smtpSmarthost?: string;
 }
+const UpdateAlertConfigsRequestGlobal = /*@__PURE__*/ __L.at(
+  __c29,
+  4,
+) as any as S.Schema<UpdateAlertConfigsRequestGlobal>;
+
 /** Labels that must have an equal value in the source and target alert for the inhibition to take effect. `Additional Validators:` * should only include the characters: a-zA-Z0-9_./@&?:- */
 export type UpdateAlertConfigsRequestInhibitRulesEqualList = Array<string>;
+const UpdateAlertConfigsRequestInhibitRulesEqualList =
+  CreateAlertConfigRouteRequestGroupByList as any as S.Schema<UpdateAlertConfigsRequestInhibitRulesEqualList>;
+
 /** A list of inhibition rules. */
 export interface UpdateAlertConfigsRequestInhibitRules {
   /** Labels that must have an equal value in the source and target alert for the inhibition to take effect. `Additional Validators:` * should only include the characters: a-zA-Z0-9_./@&?:- */
@@ -1796,20 +3020,34 @@ export interface UpdateAlertConfigsRequestInhibitRules {
   /** map of key:value. Matchers that have to be fulfilled in the alerts to be muted. Regex. `Additional Validators:` * should not contain more than 5 keys * each key and value should not have more than 200 characters */
   targetMatchRe?: unknown;
 }
+const UpdateAlertConfigsRequestInhibitRules = /*@__PURE__*/ __L.at(
+  __c29,
+  5,
+) as any as S.Schema<UpdateAlertConfigsRequestInhibitRules>;
+
 export type UpdateAlertConfigsRequestReceiversItemEmailConfigsItem =
   CreateAlertConfigReceiverRequestEmailConfigsItem;
 /** Email configurations */
 export type UpdateAlertConfigsRequestReceiversItemEmailConfigsList =
   Array<CreateAlertConfigReceiverRequestEmailConfigsItem>;
+const UpdateAlertConfigsRequestReceiversItemEmailConfigsList =
+  CreateAlertConfigReceiverRequestEmailConfigsList as any as S.Schema<UpdateAlertConfigsRequestReceiversItemEmailConfigsList>;
+
 export type UpdateAlertConfigsRequestReceiversItemOpsgenieConfigsItem =
   CreateAlertConfigReceiverRequestOpsgenieConfigsItem;
 /** Configuration for ops genie. */
 export type UpdateAlertConfigsRequestReceiversItemOpsgenieConfigsList =
   Array<CreateAlertConfigReceiverRequestOpsgenieConfigsItem>;
+const UpdateAlertConfigsRequestReceiversItemOpsgenieConfigsList =
+  CreateAlertConfigReceiverRequestOpsgenieConfigsList as any as S.Schema<UpdateAlertConfigsRequestReceiversItemOpsgenieConfigsList>;
+
 export type UpdateAlertConfigsRequestReceiversItemWebHookConfigsItem =
   CreateAlertConfigReceiverRequestWebHookConfigsItem;
 export type UpdateAlertConfigsRequestReceiversItemWebHookConfigsList =
   Array<CreateAlertConfigReceiverRequestWebHookConfigsItem>;
+const UpdateAlertConfigsRequestReceiversItemWebHookConfigsList =
+  CreateAlertConfigReceiverRequestWebHookConfigsList as any as S.Schema<UpdateAlertConfigsRequestReceiversItemWebHookConfigsList>;
+
 /** Receivers */
 export interface UpdateAlertConfigsRequestReceiversItem {
   /** Email configurations */
@@ -1820,10 +3058,23 @@ export interface UpdateAlertConfigsRequestReceiversItem {
   opsgenieConfigs?: UpdateAlertConfigsRequestReceiversItemOpsgenieConfigsList;
   webHookConfigs?: UpdateAlertConfigsRequestReceiversItemWebHookConfigsList;
 }
+const UpdateAlertConfigsRequestReceiversItem = /*@__PURE__*/ __L.at(
+  __c29,
+  6,
+) as any as S.Schema<UpdateAlertConfigsRequestReceiversItem>;
+
 /** A list of notification receivers. */
 export type UpdateAlertConfigsRequestReceiversList = Array<UpdateAlertConfigsRequestReceiversItem>;
+const UpdateAlertConfigsRequestReceiversList = /*@__PURE__*/ __L.at(
+  __c29,
+  7,
+) as any as S.Schema<UpdateAlertConfigsRequestReceiversList>;
+
 /** The labels by which incoming alerts are grouped together. For example, multiple alerts coming in for cluster=A and alertname=LatencyHigh would be batched into a single group. To aggregate by all possible labels use the special value '...' as the sole label name, for example: group_by: ['...']. This effectively disables aggregation entirely, passing through all alerts as-is. This is unlikely to be what you want, unless you have a very low alert volume or your upstream notification system performs its own grouping. */
 export type UpdateAlertConfigsRequestRouteGroupByList = Array<string>;
+const UpdateAlertConfigsRequestRouteGroupByList =
+  CreateAlertConfigRouteRequestGroupByList as any as S.Schema<UpdateAlertConfigsRequestRouteGroupByList>;
+
 export type UpdateAlertConfigsRequestRouteRoutesItemGroupByList = Array<string>;
 /** A list of matchers that an alert has to fulfill to match the node. A matcher is a string with a syntax inspired by PromQL and OpenMetrics. The syntax of a matcher consists of three tokens: * A valid Prometheus label name. * One of =, !=, =~, or !~. = means equals, != means that the strings are not equal, =~ is used for equality of regex expressions and !~ is used for un-equality of regex expressions. They have the same meaning as known from PromQL selectors. * A UTF-8 string, which may be enclosed in double quotes. Before or after each token, there may be any amount of whitespace. `Additional Validators:` * should not contain more than 5 keys * each key and value should not be longer than 200 characters */
 export type UpdateAlertConfigsRequestRouteRoutesItemMatchersList = Array<string>;
@@ -1854,6 +3105,9 @@ export interface UpdateAlertConfigsRequestRouteRoutesItem {
 /** Zero or more child routes. */
 export type UpdateAlertConfigsRequestRouteRoutesList =
   Array<UpdateAlertConfigsRequestRouteRoutesItem>;
+const UpdateAlertConfigsRequestRouteRoutesList =
+  CreateAlertConfigRouteRequestRoutesList as any as S.Schema<UpdateAlertConfigsRequestRouteRoutesList>;
+
 /** The root node of the routing tree. */
 export interface UpdateAlertConfigsRequestRoute {
   /** The continue parameter cannot be set to true on the root route because there are no subsequent sibling nodes to match. It must always be false. */
@@ -1875,6 +3129,11 @@ export interface UpdateAlertConfigsRequestRoute {
   /** Zero or more child routes. */
   routes?: UpdateAlertConfigsRequestRouteRoutesList;
 }
+const UpdateAlertConfigsRequestRoute = /*@__PURE__*/ __L.at(
+  __c30,
+  0,
+) as any as S.Schema<UpdateAlertConfigsRequestRoute>;
+
 export interface UpdateAlertConfigsRequest {
   projectId: string;
   instanceId: string;
@@ -1887,14 +3146,27 @@ export interface UpdateAlertConfigsRequest {
   /** The root node of the routing tree. */
   route: UpdateAlertConfigsRequestRoute;
 }
+const UpdateAlertConfigsRequest = /*@__PURE__*/ __L.at(
+  __c30,
+  1,
+) as any as S.Schema<UpdateAlertConfigsRequest>;
+
 export interface UpdateAlertConfigsResponse {
   data: Alert;
   message: string;
 }
+const UpdateAlertConfigsResponse = /*@__PURE__*/ __L.at(
+  __c30,
+  2,
+) as any as S.Schema<UpdateAlertConfigsResponse>;
+
 /** Rule definition. Must be either an Alerting Rule (using 'alert') or a Recording Rule (using 'record'). `Additional Validators:` * total config (all alert groups/rules) should not be bigger than 500000 characters as string since this the limitation of prometheus. */
 export type UpdateAlertgroupRequestRulesItem = CreateAlertgroupsRequestRulesItem;
 /** rules for the alert group */
 export type UpdateAlertgroupRequestRulesList = Array<CreateAlertgroupsRequestRulesItem>;
+const UpdateAlertgroupRequestRulesList =
+  CreateAlertgroupsRequestRulesList as any as S.Schema<UpdateAlertgroupRequestRulesList>;
+
 export interface UpdateAlertgroupRequest {
   projectId: string;
   instanceId: string;
@@ -1904,6 +3176,11 @@ export interface UpdateAlertgroupRequest {
   /** rules for the alert group */
   rules: UpdateAlertgroupRequestRulesList;
 }
+const UpdateAlertgroupRequest = /*@__PURE__*/ __L.at(
+  __c30,
+  3,
+) as any as S.Schema<UpdateAlertgroupRequest>;
+
 /** Rule definition. Must be either an Alerting Rule (using 'alert') or a Recording Rule (using 'record'). `Additional Validators:` * total config (all alert groups/rules) should not be bigger than 500000 characters as string since this the limitation of prometheus. */
 export type UpdateAlertgroupsRequestBodyItemRulesItem = CreateAlertgroupsRequestRulesItem;
 /** rules for the alert group */
@@ -1919,11 +3196,19 @@ export interface UpdateAlertgroupsRequestBodyItem {
 }
 /** Array of alert groups that should be set. It will override all existing alert groups. */
 export type UpdateAlertgroupsRequestBodyList = Array<UpdateAlertgroupsRequestBodyItem>;
+const UpdateAlertgroupsRequestBodyList =
+  PartialUpdateAlertgroupsRequestBodyList as any as S.Schema<UpdateAlertgroupsRequestBodyList>;
+
 export interface UpdateAlertgroupsRequest {
   projectId: string;
   instanceId: string;
   body: UpdateAlertgroupsRequestBodyList;
 }
+const UpdateAlertgroupsRequest = /*@__PURE__*/ __L.at(
+  __c30,
+  4,
+) as any as S.Schema<UpdateAlertgroupsRequest>;
+
 export interface UpdateAlertRecordRequest {
   projectId: string;
   instanceId: string;
@@ -1934,6 +3219,11 @@ export interface UpdateAlertRecordRequest {
   /** map of key:value. Labels to add or overwrite for each alert. `Additional Validators:` * should not contain more than 5 keys * each key and value should not be longer than 200 characters */
   labels?: unknown;
 }
+const UpdateAlertRecordRequest = /*@__PURE__*/ __L.at(
+  __c30,
+  5,
+) as any as S.Schema<UpdateAlertRecordRequest>;
+
 export interface UpdateAlertruleRequest {
   projectId: string;
   instanceId: string;
@@ -1948,6 +3238,11 @@ export interface UpdateAlertruleRequest {
   /** map of key:value. Labels to add or overwrite for each alert. `Additional Validators:` * should not contain more than 5 keys * each key and value should not be longer than 200 characters */
   labels?: unknown;
 }
+const UpdateAlertruleRequest = /*@__PURE__*/ __L.at(
+  __c30,
+  6,
+) as any as S.Schema<UpdateAlertruleRequest>;
+
 export interface UpdateCredentialsRemoteWriteConfigRequest {
   projectId: string;
   instanceId: string;
@@ -1955,6 +3250,11 @@ export interface UpdateCredentialsRemoteWriteConfigRequest {
   /** Remote write metric sample limit for credential to push in a single minute. */
   maxLimit?: number;
 }
+const UpdateCredentialsRemoteWriteConfigRequest = /*@__PURE__*/ __L.at(
+  __c30,
+  7,
+) as any as S.Schema<UpdateCredentialsRemoteWriteConfigRequest>;
+
 export interface UpdateGrafanaConfigsRequestGenericOauth {
   /** Set to true to enable automatic sync of the Grafana server administrator role. If this option is set to true and the result of evaluating role_attribute_path for a user is GrafanaAdmin, Grafana grants the user the server administrator privileges and organization administrator role. If this option is set to false and the result of evaluating role_attribute_path for a user is GrafanaAdmin, Grafana grants the user only organization administrator role. */
   allowAssignGrafanaAdmin?: boolean;
@@ -1981,6 +3281,11 @@ export interface UpdateGrafanaConfigsRequestGenericOauth {
   /** Enable or disable Proof Key for Code Exchange */
   usePkce?: boolean;
 }
+const UpdateGrafanaConfigsRequestGenericOauth = /*@__PURE__*/ __L.at(
+  __c31,
+  0,
+) as any as S.Schema<UpdateGrafanaConfigsRequestGenericOauth>;
+
 export interface UpdateGrafanaConfigsRequest {
   projectId: string;
   instanceId: string;
@@ -1990,6 +3295,11 @@ export interface UpdateGrafanaConfigsRequest {
   /** If it's true, it overwrites the current genericOauth config and configures STACKIT SSO for this instance. */
   useStackitSso?: boolean;
 }
+const UpdateGrafanaConfigsRequest = /*@__PURE__*/ __L.at(
+  __c31,
+  1,
+) as any as S.Schema<UpdateGrafanaConfigsRequest>;
+
 export interface UpdateInstanceRequest {
   projectId: string;
   instanceId: string;
@@ -2002,10 +3312,18 @@ export interface UpdateInstanceRequest {
   /** UUID of the plan to update */
   planId?: string;
 }
+const UpdateInstanceRequest = /*@__PURE__*/ __L.at(
+  __c31,
+  2,
+) as any as S.Schema<UpdateInstanceRequest>;
+
 /** Rule definition. Must be either an Alerting Rule (using 'alert') or a Recording Rule (using 'record'). `Additional Validators:` * total config (all alert groups/rules) should not be bigger than 500000 characters as string since this the limitation of prometheus. */
 export type UpdateLogsAlertgroupRequestRulesItem = CreateLogsAlertgroupsRequestRulesItem;
 /** rules for the alert group */
 export type UpdateLogsAlertgroupRequestRulesList = Array<CreateLogsAlertgroupsRequestRulesItem>;
+const UpdateLogsAlertgroupRequestRulesList =
+  CreateAlertgroupsRequestRulesList as any as S.Schema<UpdateLogsAlertgroupRequestRulesList>;
+
 export interface UpdateLogsAlertgroupRequest {
   projectId: string;
   instanceId: string;
@@ -2015,12 +3333,22 @@ export interface UpdateLogsAlertgroupRequest {
   /** rules for the alert group */
   rules: UpdateLogsAlertgroupRequestRulesList;
 }
+const UpdateLogsAlertgroupRequest = /*@__PURE__*/ __L.at(
+  __c31,
+  3,
+) as any as S.Schema<UpdateLogsAlertgroupRequest>;
+
 export interface UpdateLogsConfigsRequest {
   projectId: string;
   instanceId: string;
   /** How long to keep the logs `Additional Validators:` * Should be a valid time string * Should not be longer than 30 days */
   retention: string;
 }
+const UpdateLogsConfigsRequest = /*@__PURE__*/ __L.at(
+  __c31,
+  4,
+) as any as S.Schema<UpdateLogsConfigsRequest>;
+
 export interface UpdateMetricsStorageRetentionRequest {
   projectId: string;
   instanceId: string;
@@ -2031,6 +3359,11 @@ export interface UpdateMetricsStorageRetentionRequest {
   /** Retention time of longtime storage of raw data. After that time the raw data will be deleted permanently. All raw resolution metrics that are older than 40 hours are downsampled at a 5m resolution. The default value is 90 days. `Additional Validators:` * Should be a valid time string (e.g. '90d'). * Should be between '2d' and '780d'. * Note: For compatibility reasons, values between '0d' and '792d' are also accepted. However, these will be automatically adjusted in the backend to the recommended range of '2d' to '780d'. */
   metricsRetentionTimeRaw: string;
 }
+const UpdateMetricsStorageRetentionRequest = /*@__PURE__*/ __L.at(
+  __c31,
+  5,
+) as any as S.Schema<UpdateMetricsStorageRetentionRequest>;
+
 /** Sets the 'Authorization' header on every scrape request with the configured username and password. `Additional Validators:` * if basicAuth is in the body no other authentication method should be in the body */
 export type UpdateScrapeConfigRequestBasicAuth = CreateScrapeConfigRequestBasicAuth;
 /** Action to perform based on regex matching. `Additional Validators:` * if action is replace, targetLabel needs to be in body */
@@ -2042,8 +3375,13 @@ export type UpdateScrapeConfigRequestMetricsRelabelConfigsItemAction =
   | "labelmap"
   | "labeldrop"
   | "labelkeep";
+const UpdateScrapeConfigRequestMetricsRelabelConfigsItemAction = S.String;
+
 /** The source labels select values from existing labels. Their content is concatenated using the configured separator and matched against the configured regular expression for the replace, keep, and drop actions. */
 export type UpdateScrapeConfigRequestMetricsRelabelConfigsItemSourceLabelsList = Array<string>;
+const UpdateScrapeConfigRequestMetricsRelabelConfigsItemSourceLabelsList =
+  CreateScrapeConfigRequestMetricsRelabelConfigsItemSourceLabelsList as any as S.Schema<UpdateScrapeConfigRequestMetricsRelabelConfigsItemSourceLabelsList>;
+
 export interface UpdateScrapeConfigRequestMetricsRelabelConfigsItem {
   /** Action to perform based on regex matching. `Additional Validators:` * if action is replace, targetLabel needs to be in body */
   action?: UpdateScrapeConfigRequestMetricsRelabelConfigsItemAction | (string & {});
@@ -2060,11 +3398,23 @@ export interface UpdateScrapeConfigRequestMetricsRelabelConfigsItem {
   /** Label to which the resulting value is written in a replace action. It is mandatory for replace actions. Regex capture groups are available. */
   targetLabel?: string;
 }
+const UpdateScrapeConfigRequestMetricsRelabelConfigsItem = /*@__PURE__*/ __L.at(
+  __c31,
+  6,
+) as any as S.Schema<UpdateScrapeConfigRequestMetricsRelabelConfigsItem>;
+
 /** List of metric relabel configurations */
 export type UpdateScrapeConfigRequestMetricsRelabelConfigsList =
   Array<UpdateScrapeConfigRequestMetricsRelabelConfigsItem>;
+const UpdateScrapeConfigRequestMetricsRelabelConfigsList = /*@__PURE__*/ __L.at(
+  __c31,
+  7,
+) as any as S.Schema<UpdateScrapeConfigRequestMetricsRelabelConfigsList>;
+
 /** Configures the protocol scheme used for requests. https or http */
 export type UpdateScrapeConfigRequestScheme = "http" | "https";
+const UpdateScrapeConfigRequestScheme = S.String;
+
 /** The targets specified by the static config. */
 export type UpdateScrapeConfigRequestStaticConfigsItemTargetsList = Array<string>;
 export interface UpdateScrapeConfigRequestStaticConfigsItem {
@@ -2076,6 +3426,9 @@ export interface UpdateScrapeConfigRequestStaticConfigsItem {
 /** A list of scrape configurations. */
 export type UpdateScrapeConfigRequestStaticConfigsList =
   Array<UpdateScrapeConfigRequestStaticConfigsItem>;
+const UpdateScrapeConfigRequestStaticConfigsList =
+  CreateScrapeConfigRequestStaticConfigsList as any as S.Schema<UpdateScrapeConfigRequestStaticConfigsList>;
+
 /** Configures the scrape request's TLS settings. */
 export type UpdateScrapeConfigRequestTlsConfig =
   CreateScrapeConfigRequestHttpSdConfigsItemOauth2TlsConfig;
@@ -2110,12 +3463,22 @@ export interface UpdateScrapeConfigRequest {
   /** Configures the scrape request's TLS settings. */
   tlsConfig?: CreateScrapeConfigRequestHttpSdConfigsItemOauth2TlsConfig;
 }
+const UpdateScrapeConfigRequest = /*@__PURE__*/ __L.at(
+  __c32,
+  0,
+) as any as S.Schema<UpdateScrapeConfigRequest>;
+
 export interface UpdateTracesConfigsRequest {
   projectId: string;
   instanceId: string;
   /** How long to keep the traces `Additional Validators:` * Should be a valid time string * Should not be bigger than 30 days */
   retention: string;
 }
+const UpdateTracesConfigsRequest = /*@__PURE__*/ __L.at(
+  __c32,
+  1,
+) as any as S.Schema<UpdateTracesConfigsRequest>;
+
 export type CreateAlertConfigReceiverError = BadRequest | Forbidden | StackitOpError;
 /** Create alert config receiver. */
 export const createAlertConfigReceiver: API.OperationMethod<
@@ -2124,8 +3487,8 @@ export const createAlertConfigReceiver: API.OperationMethod<
   CreateAlertConfigReceiverError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6) as any as S.Schema<CreateAlertConfigReceiverRequest>,
-  output: __S(15) as any as S.Schema<AlertConfigReceiversResponse>,
+  input: CreateAlertConfigReceiverRequest,
+  output: AlertConfigReceiversResponse,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -2139,8 +3502,8 @@ export const createAlertConfigRoute: API.OperationMethod<
   CreateAlertConfigRouteError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20) as any as S.Schema<CreateAlertConfigRouteRequest>,
-  output: __S(27) as any as S.Schema<AlertConfigRouteResponse>,
+  input: CreateAlertConfigRouteRequest,
+  output: AlertConfigRouteResponse,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -2154,8 +3517,8 @@ export const createAlertgroups: API.OperationMethod<
   CreateAlertgroupsError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30) as any as S.Schema<CreateAlertgroupsRequest>,
-  output: __S(35) as any as S.Schema<AlertGroupsResponse>,
+  input: CreateAlertgroupsRequest,
+  output: AlertGroupsResponse,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -2169,8 +3532,8 @@ export const createAlertRecord: API.OperationMethod<
   CreateAlertRecordError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36) as any as S.Schema<CreateAlertRecordRequest>,
-  output: __S(39) as any as S.Schema<AlertRecordsResponse>,
+  input: CreateAlertRecordRequest,
+  output: AlertRecordsResponse,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -2184,8 +3547,8 @@ export const createAlertrules: API.OperationMethod<
   CreateAlertrulesError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40) as any as S.Schema<CreateAlertrulesRequest>,
-  output: __S(43) as any as S.Schema<AlertRulesResponse>,
+  input: CreateAlertrulesRequest,
+  output: AlertRulesResponse,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -2199,8 +3562,8 @@ export const createBackup: API.OperationMethod<
   CreateBackupError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45) as any as S.Schema<CreateBackupRequest>,
-  output: __S(46) as any as S.Schema<Message>,
+  input: CreateBackupRequest,
+  output: Message,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -2214,8 +3577,8 @@ export const createBackupSchedule: API.OperationMethod<
   CreateBackupScheduleError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47) as any as S.Schema<CreateBackupScheduleRequest>,
-  output: __S(48) as any as S.Schema<BackupSchedulePostResponse>,
+  input: CreateBackupScheduleRequest,
+  output: BackupSchedulePostResponse,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -2229,8 +3592,8 @@ export const createCertCheck: API.OperationMethod<
   CreateCertCheckError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49) as any as S.Schema<CreateCertCheckRequest>,
-  output: __S(52) as any as S.Schema<CertCheckResponse>,
+  input: CreateCertCheckRequest,
+  output: CertCheckResponse,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -2244,8 +3607,8 @@ export const createCredentials: API.OperationMethod<
   CreateCredentialsError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(53) as any as S.Schema<CreateCredentialsRequest>,
-  output: __S(55) as any as S.Schema<CreateCredentialsResponse>,
+  input: CreateCredentialsRequest,
+  output: CreateCredentialsResponse,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -2259,8 +3622,8 @@ export const createElasticsearchCheck: API.OperationMethod<
   CreateElasticsearchCheckError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56) as any as S.Schema<CreateElasticsearchCheckRequest>,
-  output: __S(59) as any as S.Schema<ElasticsearchCheckResponse>,
+  input: CreateElasticsearchCheckRequest,
+  output: ElasticsearchCheckResponse,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -2274,8 +3637,8 @@ export const createHttpCheck: API.OperationMethod<
   CreateHttpCheckError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60) as any as S.Schema<CreateHttpCheckRequest>,
-  output: __S(63) as any as S.Schema<HttpCheckResponse>,
+  input: CreateHttpCheckRequest,
+  output: HttpCheckResponse,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -2289,8 +3652,8 @@ export const createInstance: API.OperationMethod<
   CreateInstanceError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(64) as any as S.Schema<CreateInstanceRequest>,
-  output: __S(65) as any as S.Schema<CreateInstanceResponse>,
+  input: CreateInstanceRequest,
+  output: CreateInstanceResponse,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -2304,8 +3667,8 @@ export const createLogsAlertgroups: API.OperationMethod<
   CreateLogsAlertgroupsError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(66) as any as S.Schema<CreateLogsAlertgroupsRequest>,
-  output: __S(35) as any as S.Schema<AlertGroupsResponse>,
+  input: CreateLogsAlertgroupsRequest,
+  output: AlertGroupsResponse,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -2319,8 +3682,8 @@ export const createMongodbCheck: API.OperationMethod<
   CreateMongodbCheckError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(67) as any as S.Schema<CreateMongodbCheckRequest>,
-  output: __S(70) as any as S.Schema<MongodbCheckResponse>,
+  input: CreateMongodbCheckRequest,
+  output: MongodbCheckResponse,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -2334,8 +3697,8 @@ export const createMysqlCheck: API.OperationMethod<
   CreateMysqlCheckError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(71) as any as S.Schema<CreateMysqlCheckRequest>,
-  output: __S(72) as any as S.Schema<MysqlCheckResponse>,
+  input: CreateMysqlCheckRequest,
+  output: MysqlCheckResponse,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -2349,8 +3712,8 @@ export const createNetworkCheck: API.OperationMethod<
   CreateNetworkCheckError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(73) as any as S.Schema<CreateNetworkCheckRequest>,
-  output: __S(76) as any as S.Schema<NetworkCheckResponse>,
+  input: CreateNetworkCheckRequest,
+  output: NetworkCheckResponse,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -2364,8 +3727,8 @@ export const createPingCheck: API.OperationMethod<
   CreatePingCheckError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(77) as any as S.Schema<CreatePingCheckRequest>,
-  output: __S(78) as any as S.Schema<PingCheckResponse>,
+  input: CreatePingCheckRequest,
+  output: PingCheckResponse,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -2379,8 +3742,8 @@ export const createPostgresqlCheck: API.OperationMethod<
   CreatePostgresqlCheckError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(79) as any as S.Schema<CreatePostgresqlCheckRequest>,
-  output: __S(80) as any as S.Schema<PostgresqlCheckResponse>,
+  input: CreatePostgresqlCheckRequest,
+  output: PostgresqlCheckResponse,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -2394,8 +3757,8 @@ export const createRabbitmqCheck: API.OperationMethod<
   CreateRabbitmqCheckError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(81) as any as S.Schema<CreateRabbitmqCheckRequest>,
-  output: __S(84) as any as S.Schema<RabbitmqCheckResponse>,
+  input: CreateRabbitmqCheckRequest,
+  output: RabbitmqCheckResponse,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -2409,8 +3772,8 @@ export const createRedisCheck: API.OperationMethod<
   CreateRedisCheckError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(85) as any as S.Schema<CreateRedisCheckRequest>,
-  output: __S(86) as any as S.Schema<RedisCheckResponse>,
+  input: CreateRedisCheckRequest,
+  output: RedisCheckResponse,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -2424,8 +3787,8 @@ export const createScrapeConfig: API.OperationMethod<
   CreateScrapeConfigError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(97) as any as S.Schema<CreateScrapeConfigRequest>,
-  output: __S(110) as any as S.Schema<ScrapeConfigsResponse>,
+  input: CreateScrapeConfigRequest,
+  output: ScrapeConfigsResponse,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -2439,8 +3802,8 @@ export const deleteAlertConfigReceiver: API.OperationMethod<
   DeleteAlertConfigReceiverError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(111) as any as S.Schema<DeleteAlertConfigReceiverRequest>,
-  output: __S(15) as any as S.Schema<AlertConfigReceiversResponse>,
+  input: DeleteAlertConfigReceiverRequest,
+  output: AlertConfigReceiversResponse,
   errors: [Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -2454,8 +3817,8 @@ export const deleteAlertConfigRoute: API.OperationMethod<
   DeleteAlertConfigRouteError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(112) as any as S.Schema<DeleteAlertConfigRouteRequest>,
-  output: __S(27) as any as S.Schema<AlertConfigRouteResponse>,
+  input: DeleteAlertConfigRouteRequest,
+  output: AlertConfigRouteResponse,
   errors: [Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -2469,8 +3832,8 @@ export const deleteAlertgroup: API.OperationMethod<
   DeleteAlertgroupError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(113) as any as S.Schema<DeleteAlertgroupRequest>,
-  output: __S(35) as any as S.Schema<AlertGroupsResponse>,
+  input: DeleteAlertgroupRequest,
+  output: AlertGroupsResponse,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -2484,8 +3847,8 @@ export const deleteAlertgroups: API.OperationMethod<
   DeleteAlertgroupsError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(114) as any as S.Schema<DeleteAlertgroupsRequest>,
-  output: __S(35) as any as S.Schema<AlertGroupsResponse>,
+  input: DeleteAlertgroupsRequest,
+  output: AlertGroupsResponse,
   errors: [Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -2499,8 +3862,8 @@ export const deleteAlertRecord: API.OperationMethod<
   DeleteAlertRecordError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(115) as any as S.Schema<DeleteAlertRecordRequest>,
-  output: __S(39) as any as S.Schema<AlertRecordsResponse>,
+  input: DeleteAlertRecordRequest,
+  output: AlertRecordsResponse,
   errors: [Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -2514,8 +3877,8 @@ export const deleteAlertRecords: API.OperationMethod<
   DeleteAlertRecordsError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(116) as any as S.Schema<DeleteAlertRecordsRequest>,
-  output: __S(39) as any as S.Schema<AlertRecordsResponse>,
+  input: DeleteAlertRecordsRequest,
+  output: AlertRecordsResponse,
   errors: [Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -2529,8 +3892,8 @@ export const deleteAlertrule: API.OperationMethod<
   DeleteAlertruleError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(117) as any as S.Schema<DeleteAlertruleRequest>,
-  output: __S(43) as any as S.Schema<AlertRulesResponse>,
+  input: DeleteAlertruleRequest,
+  output: AlertRulesResponse,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -2544,8 +3907,8 @@ export const deleteAlertrules: API.OperationMethod<
   DeleteAlertrulesError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(118) as any as S.Schema<DeleteAlertrulesRequest>,
-  output: __S(43) as any as S.Schema<AlertRulesResponse>,
+  input: DeleteAlertrulesRequest,
+  output: AlertRulesResponse,
   errors: [Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -2559,8 +3922,8 @@ export const deleteCertCheck: API.OperationMethod<
   DeleteCertCheckError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(119) as any as S.Schema<DeleteCertCheckRequest>,
-  output: __S(52) as any as S.Schema<CertCheckResponse>,
+  input: DeleteCertCheckRequest,
+  output: CertCheckResponse,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -2574,8 +3937,8 @@ export const deleteCredentials: API.OperationMethod<
   DeleteCredentialsError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(120) as any as S.Schema<DeleteCredentialsRequest>,
-  output: __S(46) as any as S.Schema<Message>,
+  input: DeleteCredentialsRequest,
+  output: Message,
   errors: [Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -2593,8 +3956,8 @@ export const deleteCredentialsRemoteWriteConfig: API.OperationMethod<
   DeleteCredentialsRemoteWriteConfigError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(121) as any as S.Schema<DeleteCredentialsRemoteWriteConfigRequest>,
-  output: __S(122) as any as S.Schema<CredentialsRemoteWriteDeleteResponse>,
+  input: DeleteCredentialsRemoteWriteConfigRequest,
+  output: CredentialsRemoteWriteDeleteResponse,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -2608,8 +3971,8 @@ export const deleteElasticsearchCheck: API.OperationMethod<
   DeleteElasticsearchCheckError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(123) as any as S.Schema<DeleteElasticsearchCheckRequest>,
-  output: __S(59) as any as S.Schema<ElasticsearchCheckResponse>,
+  input: DeleteElasticsearchCheckRequest,
+  output: ElasticsearchCheckResponse,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -2623,8 +3986,8 @@ export const deleteHttpCheck: API.OperationMethod<
   DeleteHttpCheckError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(124) as any as S.Schema<DeleteHttpCheckRequest>,
-  output: __S(63) as any as S.Schema<HttpCheckResponse>,
+  input: DeleteHttpCheckRequest,
+  output: HttpCheckResponse,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -2638,8 +4001,8 @@ export const deleteInstance: API.OperationMethod<
   DeleteInstanceError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(125) as any as S.Schema<DeleteInstanceRequest>,
-  output: __S(46) as any as S.Schema<InstanceResponse>,
+  input: DeleteInstanceRequest,
+  output: InstanceResponse,
   errors: [Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -2653,8 +4016,8 @@ export const deleteLogsAlertgroup: API.OperationMethod<
   DeleteLogsAlertgroupError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(126) as any as S.Schema<DeleteLogsAlertgroupRequest>,
-  output: __S(35) as any as S.Schema<AlertGroupsResponse>,
+  input: DeleteLogsAlertgroupRequest,
+  output: AlertGroupsResponse,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -2668,8 +4031,8 @@ export const deleteMongodbCheck: API.OperationMethod<
   DeleteMongodbCheckError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(127) as any as S.Schema<DeleteMongodbCheckRequest>,
-  output: __S(70) as any as S.Schema<MongodbCheckResponse>,
+  input: DeleteMongodbCheckRequest,
+  output: MongodbCheckResponse,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -2683,8 +4046,8 @@ export const deleteMysqlCheck: API.OperationMethod<
   DeleteMysqlCheckError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(128) as any as S.Schema<DeleteMysqlCheckRequest>,
-  output: __S(72) as any as S.Schema<MysqlCheckResponse>,
+  input: DeleteMysqlCheckRequest,
+  output: MysqlCheckResponse,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -2698,8 +4061,8 @@ export const deleteNetworkCheck: API.OperationMethod<
   DeleteNetworkCheckError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(129) as any as S.Schema<DeleteNetworkCheckRequest>,
-  output: __S(76) as any as S.Schema<NetworkCheckResponse>,
+  input: DeleteNetworkCheckRequest,
+  output: NetworkCheckResponse,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -2713,8 +4076,8 @@ export const deletePingCheck: API.OperationMethod<
   DeletePingCheckError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(130) as any as S.Schema<DeletePingCheckRequest>,
-  output: __S(78) as any as S.Schema<PingCheckResponse>,
+  input: DeletePingCheckRequest,
+  output: PingCheckResponse,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -2728,8 +4091,8 @@ export const deletePostgresqlCheck: API.OperationMethod<
   DeletePostgresqlCheckError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(131) as any as S.Schema<DeletePostgresqlCheckRequest>,
-  output: __S(80) as any as S.Schema<PostgresqlCheckResponse>,
+  input: DeletePostgresqlCheckRequest,
+  output: PostgresqlCheckResponse,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -2743,8 +4106,8 @@ export const deleteRabbitmqCheck: API.OperationMethod<
   DeleteRabbitmqCheckError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(132) as any as S.Schema<DeleteRabbitmqCheckRequest>,
-  output: __S(84) as any as S.Schema<RabbitmqCheckResponse>,
+  input: DeleteRabbitmqCheckRequest,
+  output: RabbitmqCheckResponse,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -2758,8 +4121,8 @@ export const deleteRedisCheck: API.OperationMethod<
   DeleteRedisCheckError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(133) as any as S.Schema<DeleteRedisCheckRequest>,
-  output: __S(86) as any as S.Schema<RedisCheckResponse>,
+  input: DeleteRedisCheckRequest,
+  output: RedisCheckResponse,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -2773,8 +4136,8 @@ export const deleteScrapeConfig: API.OperationMethod<
   DeleteScrapeConfigError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(134) as any as S.Schema<DeleteScrapeConfigRequest>,
-  output: __S(135) as any as S.Schema<DeleteScrapeConfigResponse>,
+  input: DeleteScrapeConfigRequest,
+  output: DeleteScrapeConfigResponse,
   errors: [Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -2788,8 +4151,8 @@ export const deleteScrapeConfigs: API.OperationMethod<
   DeleteScrapeConfigsError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(136) as any as S.Schema<DeleteScrapeConfigsRequest>,
-  output: __S(110) as any as S.Schema<ScrapeConfigsResponse>,
+  input: DeleteScrapeConfigsRequest,
+  output: ScrapeConfigsResponse,
   errors: [Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -2803,8 +4166,8 @@ export const getAlertConfigReceiver: API.OperationMethod<
   GetAlertConfigReceiverError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(137) as any as S.Schema<GetAlertConfigReceiverRequest>,
-  output: __S(138) as any as S.Schema<Receiver>,
+  input: GetAlertConfigReceiverRequest,
+  output: Receiver,
   errors: [Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -2818,8 +4181,8 @@ export const getAlertConfigRoute: API.OperationMethod<
   GetAlertConfigRouteError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(139) as any as S.Schema<GetAlertConfigRouteRequest>,
-  output: __S(27) as any as S.Schema<AlertConfigRouteResponse>,
+  input: GetAlertConfigRouteRequest,
+  output: AlertConfigRouteResponse,
   errors: [Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -2833,8 +4196,8 @@ export const getAlertConfigs: API.OperationMethod<
   GetAlertConfigsError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(140) as any as S.Schema<GetAlertConfigsRequest>,
-  output: __S(145) as any as S.Schema<GetAlertConfigsResponse>,
+  input: GetAlertConfigsRequest,
+  output: GetAlertConfigsResponse,
   errors: [Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -2848,8 +4211,8 @@ export const getAlertgroup: API.OperationMethod<
   GetAlertgroupError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(146) as any as S.Schema<GetAlertgroupRequest>,
-  output: __S(147) as any as S.Schema<AlertGroupResponse>,
+  input: GetAlertgroupRequest,
+  output: AlertGroupResponse,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -2863,8 +4226,8 @@ export const getAlertRecord: API.OperationMethod<
   GetAlertRecordError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(148) as any as S.Schema<GetAlertRecordRequest>,
-  output: __S(149) as any as S.Schema<AlertRecordResponse>,
+  input: GetAlertRecordRequest,
+  output: AlertRecordResponse,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -2878,8 +4241,8 @@ export const getAlertrule: API.OperationMethod<
   GetAlertruleError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(150) as any as S.Schema<GetAlertruleRequest>,
-  output: __S(151) as any as S.Schema<AlertRuleResponse>,
+  input: GetAlertruleRequest,
+  output: AlertRuleResponse,
   errors: [Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -2893,8 +4256,8 @@ export const getCredentials: API.OperationMethod<
   GetCredentialsError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(152) as any as S.Schema<GetCredentialsRequest>,
-  output: __S(153) as any as S.Schema<GetCredentialsResponse>,
+  input: GetCredentialsRequest,
+  output: GetCredentialsResponse,
   errors: [Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -2908,8 +4271,8 @@ export const getCredentialsRemoteWriteConfig: API.OperationMethod<
   GetCredentialsRemoteWriteConfigError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(154) as any as S.Schema<GetCredentialsRemoteWriteConfigRequest>,
-  output: __S(155) as any as S.Schema<CredentialsRemoteWriteConfig>,
+  input: GetCredentialsRemoteWriteConfigRequest,
+  output: CredentialsRemoteWriteConfig,
   errors: [Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -2923,8 +4286,8 @@ export const getGrafanaConfigs: API.OperationMethod<
   GetGrafanaConfigsError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(156) as any as S.Schema<GetGrafanaConfigsRequest>,
-  output: __S(158) as any as S.Schema<GrafanaConfigs>,
+  input: GetGrafanaConfigsRequest,
+  output: GrafanaConfigs,
   errors: [Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -2938,8 +4301,8 @@ export const getInstance: API.OperationMethod<
   GetInstanceError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(159) as any as S.Schema<GetInstanceRequest>,
-  output: __S(162) as any as S.Schema<GetInstanceResponse>,
+  input: GetInstanceRequest,
+  output: GetInstanceResponse,
   errors: [Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -2953,8 +4316,8 @@ export const getLogsAlertgroup: API.OperationMethod<
   GetLogsAlertgroupError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(163) as any as S.Schema<GetLogsAlertgroupRequest>,
-  output: __S(147) as any as S.Schema<AlertGroupResponse>,
+  input: GetLogsAlertgroupRequest,
+  output: AlertGroupResponse,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -2968,8 +4331,8 @@ export const getLogsConfigs: API.OperationMethod<
   GetLogsConfigsError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(164) as any as S.Schema<GetLogsConfigsRequest>,
-  output: __S(166) as any as S.Schema<LogsConfigResponse>,
+  input: GetLogsConfigsRequest,
+  output: LogsConfigResponse,
   errors: [Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -2983,8 +4346,8 @@ export const getMetricsStorageRetention: API.OperationMethod<
   GetMetricsStorageRetentionError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(167) as any as S.Schema<GetMetricsStorageRetentionRequest>,
-  output: __S(168) as any as S.Schema<GetMetricsStorageRetentionResponse>,
+  input: GetMetricsStorageRetentionRequest,
+  output: GetMetricsStorageRetentionResponse,
   errors: [Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -2998,8 +4361,8 @@ export const getScrapeConfig: API.OperationMethod<
   GetScrapeConfigError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(169) as any as S.Schema<GetScrapeConfigRequest>,
-  output: __S(170) as any as S.Schema<GetScrapeConfigResponse>,
+  input: GetScrapeConfigRequest,
+  output: GetScrapeConfigResponse,
   errors: [Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -3013,8 +4376,8 @@ export const getTracesConfigs: API.OperationMethod<
   GetTracesConfigsError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(171) as any as S.Schema<GetTracesConfigsRequest>,
-  output: __S(166) as any as S.Schema<TracesConfigResponse>,
+  input: GetTracesConfigsRequest,
+  output: TracesConfigResponse,
   errors: [Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -3028,8 +4391,8 @@ export const listACL: API.OperationMethod<
   ListACLError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(172) as any as S.Schema<ListACLRequest>,
-  output: __S(173) as any as S.Schema<ListACLResponse>,
+  input: ListACLRequest,
+  output: ListACLResponse,
   errors: [Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -3043,8 +4406,8 @@ export const listAlertConfigReceivers: API.OperationMethod<
   ListAlertConfigReceiversError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(174) as any as S.Schema<ListAlertConfigReceiversRequest>,
-  output: __S(15) as any as S.Schema<AlertConfigReceiversResponse>,
+  input: ListAlertConfigReceiversRequest,
+  output: AlertConfigReceiversResponse,
   errors: [Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -3058,8 +4421,8 @@ export const listAlertConfigRoutes: API.OperationMethod<
   ListAlertConfigRoutesError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(175) as any as S.Schema<ListAlertConfigRoutesRequest>,
-  output: __S(27) as any as S.Schema<AlertConfigRouteResponse>,
+  input: ListAlertConfigRoutesRequest,
+  output: AlertConfigRouteResponse,
   errors: [Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -3073,8 +4436,8 @@ export const listAlertgroups: API.OperationMethod<
   ListAlertgroupsError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(176) as any as S.Schema<ListAlertgroupsRequest>,
-  output: __S(35) as any as S.Schema<AlertGroupsResponse>,
+  input: ListAlertgroupsRequest,
+  output: AlertGroupsResponse,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -3088,8 +4451,8 @@ export const listAlertRecords: API.OperationMethod<
   ListAlertRecordsError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(177) as any as S.Schema<ListAlertRecordsRequest>,
-  output: __S(39) as any as S.Schema<AlertRecordsResponse>,
+  input: ListAlertRecordsRequest,
+  output: AlertRecordsResponse,
   errors: [Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -3103,8 +4466,8 @@ export const listAlertrules: API.OperationMethod<
   ListAlertrulesError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(178) as any as S.Schema<ListAlertrulesRequest>,
-  output: __S(43) as any as S.Schema<AlertRulesResponse>,
+  input: ListAlertrulesRequest,
+  output: AlertRulesResponse,
   errors: [Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -3118,8 +4481,8 @@ export const listBackupRetentions: API.OperationMethod<
   ListBackupRetentionsError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(179) as any as S.Schema<ListBackupRetentionsRequest>,
-  output: __S(180) as any as S.Schema<BackupRetentionResponse>,
+  input: ListBackupRetentionsRequest,
+  output: BackupRetentionResponse,
   errors: [Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -3133,8 +4496,8 @@ export const listBackups: API.OperationMethod<
   ListBackupsError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(181) as any as S.Schema<ListBackupsRequest>,
-  output: __S(182) as any as S.Schema<BackupResponse>,
+  input: ListBackupsRequest,
+  output: BackupResponse,
   errors: [Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -3148,8 +4511,8 @@ export const listBackupSchedules: API.OperationMethod<
   ListBackupSchedulesError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(183) as any as S.Schema<ListBackupSchedulesRequest>,
-  output: __S(186) as any as S.Schema<BackupScheduleResponse>,
+  input: ListBackupSchedulesRequest,
+  output: BackupScheduleResponse,
   errors: [Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -3163,8 +4526,8 @@ export const listCertChecks: API.OperationMethod<
   ListCertChecksError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(187) as any as S.Schema<ListCertChecksRequest>,
-  output: __S(52) as any as S.Schema<CertCheckResponse>,
+  input: ListCertChecksRequest,
+  output: CertCheckResponse,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -3178,8 +4541,8 @@ export const listCredentials: API.OperationMethod<
   ListCredentialsError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(188) as any as S.Schema<ListCredentialsRequest>,
-  output: __S(191) as any as S.Schema<ListCredentialsResponse>,
+  input: ListCredentialsRequest,
+  output: ListCredentialsResponse,
   errors: [Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -3193,8 +4556,8 @@ export const listElasticsearchChecks: API.OperationMethod<
   ListElasticsearchChecksError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(192) as any as S.Schema<ListElasticsearchChecksRequest>,
-  output: __S(59) as any as S.Schema<ElasticsearchCheckResponse>,
+  input: ListElasticsearchChecksRequest,
+  output: ElasticsearchCheckResponse,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -3208,8 +4571,8 @@ export const listHttpChecks: API.OperationMethod<
   ListHttpChecksError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(193) as any as S.Schema<ListHttpChecksRequest>,
-  output: __S(63) as any as S.Schema<HttpCheckResponse>,
+  input: ListHttpChecksRequest,
+  output: HttpCheckResponse,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -3223,8 +4586,8 @@ export const listInstances: API.OperationMethod<
   ListInstancesError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(194) as any as S.Schema<ListInstancesRequest>,
-  output: __S(197) as any as S.Schema<ListInstancesResponse>,
+  input: ListInstancesRequest,
+  output: ListInstancesResponse,
   errors: [Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -3238,8 +4601,8 @@ export const listLogsAlertgroups: API.OperationMethod<
   ListLogsAlertgroupsError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(198) as any as S.Schema<ListLogsAlertgroupsRequest>,
-  output: __S(35) as any as S.Schema<AlertGroupsResponse>,
+  input: ListLogsAlertgroupsRequest,
+  output: AlertGroupsResponse,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -3253,8 +4616,8 @@ export const listMongodbChecks: API.OperationMethod<
   ListMongodbChecksError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(199) as any as S.Schema<ListMongodbChecksRequest>,
-  output: __S(70) as any as S.Schema<MongodbCheckResponse>,
+  input: ListMongodbChecksRequest,
+  output: MongodbCheckResponse,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -3268,8 +4631,8 @@ export const listMysqlChecks: API.OperationMethod<
   ListMysqlChecksError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(200) as any as S.Schema<ListMysqlChecksRequest>,
-  output: __S(72) as any as S.Schema<MysqlCheckResponse>,
+  input: ListMysqlChecksRequest,
+  output: MysqlCheckResponse,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -3283,8 +4646,8 @@ export const listNetworkChecks: API.OperationMethod<
   ListNetworkChecksError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(201) as any as S.Schema<ListNetworkChecksRequest>,
-  output: __S(76) as any as S.Schema<NetworkCheckResponse>,
+  input: ListNetworkChecksRequest,
+  output: NetworkCheckResponse,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -3298,8 +4661,8 @@ export const listOfferings: API.OperationMethod<
   ListOfferingsError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(202) as any as S.Schema<ListOfferingsRequest>,
-  output: __S(205) as any as S.Schema<Offerings>,
+  input: ListOfferingsRequest,
+  output: Offerings,
   errors: [Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -3313,8 +4676,8 @@ export const listPingChecks: API.OperationMethod<
   ListPingChecksError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(206) as any as S.Schema<ListPingChecksRequest>,
-  output: __S(78) as any as S.Schema<PingCheckResponse>,
+  input: ListPingChecksRequest,
+  output: PingCheckResponse,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -3328,8 +4691,8 @@ export const listPlans: API.OperationMethod<
   ListPlansError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(207) as any as S.Schema<ListPlansRequest>,
-  output: __S(208) as any as S.Schema<PlansResponse>,
+  input: ListPlansRequest,
+  output: PlansResponse,
   errors: [Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -3343,8 +4706,8 @@ export const listPostgresqlChecks: API.OperationMethod<
   ListPostgresqlChecksError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(209) as any as S.Schema<ListPostgresqlChecksRequest>,
-  output: __S(80) as any as S.Schema<PostgresqlCheckResponse>,
+  input: ListPostgresqlChecksRequest,
+  output: PostgresqlCheckResponse,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -3358,8 +4721,8 @@ export const listRabbitmqChecks: API.OperationMethod<
   ListRabbitmqChecksError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(210) as any as S.Schema<ListRabbitmqChecksRequest>,
-  output: __S(84) as any as S.Schema<RabbitmqCheckResponse>,
+  input: ListRabbitmqChecksRequest,
+  output: RabbitmqCheckResponse,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -3373,8 +4736,8 @@ export const listRedisChecks: API.OperationMethod<
   ListRedisChecksError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(211) as any as S.Schema<ListRedisChecksRequest>,
-  output: __S(86) as any as S.Schema<RedisCheckResponse>,
+  input: ListRedisChecksRequest,
+  output: RedisCheckResponse,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -3388,8 +4751,8 @@ export const listScrapeConfigs: API.OperationMethod<
   ListScrapeConfigsError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(212) as any as S.Schema<ListScrapeConfigsRequest>,
-  output: __S(135) as any as S.Schema<ListScrapeConfigsResponse>,
+  input: ListScrapeConfigsRequest,
+  output: ListScrapeConfigsResponse,
   errors: [Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -3403,8 +4766,8 @@ export const partialUpdateAlertgroups: API.OperationMethod<
   PartialUpdateAlertgroupsError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(215) as any as S.Schema<PartialUpdateAlertgroupsRequest>,
-  output: __S(35) as any as S.Schema<AlertGroupsResponse>,
+  input: PartialUpdateAlertgroupsRequest,
+  output: AlertGroupsResponse,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -3418,8 +4781,8 @@ export const partialUpdateAlertRecords: API.OperationMethod<
   PartialUpdateAlertRecordsError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(218) as any as S.Schema<PartialUpdateAlertRecordsRequest>,
-  output: __S(39) as any as S.Schema<AlertRecordsResponse>,
+  input: PartialUpdateAlertRecordsRequest,
+  output: AlertRecordsResponse,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -3433,8 +4796,8 @@ export const partialUpdateAlertrules: API.OperationMethod<
   PartialUpdateAlertrulesError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(221) as any as S.Schema<PartialUpdateAlertrulesRequest>,
-  output: __S(43) as any as S.Schema<AlertRulesResponse>,
+  input: PartialUpdateAlertrulesRequest,
+  output: AlertRulesResponse,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -3448,8 +4811,8 @@ export const partialUpdateScrapeConfigs: API.OperationMethod<
   PartialUpdateScrapeConfigsError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(231) as any as S.Schema<PartialUpdateScrapeConfigsRequest>,
-  output: __S(110) as any as S.Schema<ScrapeConfigsResponse>,
+  input: PartialUpdateScrapeConfigsRequest,
+  output: ScrapeConfigsResponse,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -3463,8 +4826,8 @@ export const restoreBackup: API.OperationMethod<
   RestoreBackupError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(232) as any as S.Schema<RestoreBackupRequest>,
-  output: __S(46) as any as S.Schema<Message>,
+  input: RestoreBackupRequest,
+  output: Message,
   errors: [Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -3478,8 +4841,8 @@ export const updateACL: API.OperationMethod<
   UpdateACLError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(233) as any as S.Schema<UpdateACLRequest>,
-  output: __S(46) as any as S.Schema<Message>,
+  input: UpdateACLRequest,
+  output: Message,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -3493,8 +4856,8 @@ export const updateAlertConfigReceiver: API.OperationMethod<
   UpdateAlertConfigReceiverError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(234) as any as S.Schema<UpdateAlertConfigReceiverRequest>,
-  output: __S(15) as any as S.Schema<AlertConfigReceiversResponse>,
+  input: UpdateAlertConfigReceiverRequest,
+  output: AlertConfigReceiversResponse,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -3508,8 +4871,8 @@ export const updateAlertConfigRoute: API.OperationMethod<
   UpdateAlertConfigRouteError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(235) as any as S.Schema<UpdateAlertConfigRouteRequest>,
-  output: __S(27) as any as S.Schema<AlertConfigRouteResponse>,
+  input: UpdateAlertConfigRouteRequest,
+  output: AlertConfigRouteResponse,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -3523,8 +4886,8 @@ export const updateAlertConfigs: API.OperationMethod<
   UpdateAlertConfigsError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(241) as any as S.Schema<UpdateAlertConfigsRequest>,
-  output: __S(242) as any as S.Schema<UpdateAlertConfigsResponse>,
+  input: UpdateAlertConfigsRequest,
+  output: UpdateAlertConfigsResponse,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -3538,8 +4901,8 @@ export const updateAlertgroup: API.OperationMethod<
   UpdateAlertgroupError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(243) as any as S.Schema<UpdateAlertgroupRequest>,
-  output: __S(35) as any as S.Schema<AlertGroupsResponse>,
+  input: UpdateAlertgroupRequest,
+  output: AlertGroupsResponse,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -3553,8 +4916,8 @@ export const updateAlertgroups: API.OperationMethod<
   UpdateAlertgroupsError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(244) as any as S.Schema<UpdateAlertgroupsRequest>,
-  output: __S(35) as any as S.Schema<AlertGroupsResponse>,
+  input: UpdateAlertgroupsRequest,
+  output: AlertGroupsResponse,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -3568,8 +4931,8 @@ export const updateAlertRecord: API.OperationMethod<
   UpdateAlertRecordError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(245) as any as S.Schema<UpdateAlertRecordRequest>,
-  output: __S(39) as any as S.Schema<AlertRecordsResponse>,
+  input: UpdateAlertRecordRequest,
+  output: AlertRecordsResponse,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -3583,8 +4946,8 @@ export const updateAlertrule: API.OperationMethod<
   UpdateAlertruleError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(246) as any as S.Schema<UpdateAlertruleRequest>,
-  output: __S(43) as any as S.Schema<AlertRulesResponse>,
+  input: UpdateAlertruleRequest,
+  output: AlertRulesResponse,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -3602,8 +4965,8 @@ export const updateCredentialsRemoteWriteConfig: API.OperationMethod<
   UpdateCredentialsRemoteWriteConfigError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(247) as any as S.Schema<UpdateCredentialsRemoteWriteConfigRequest>,
-  output: __S(155) as any as S.Schema<CredentialsRemoteWriteConfig>,
+  input: UpdateCredentialsRemoteWriteConfigRequest,
+  output: CredentialsRemoteWriteConfig,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -3617,8 +4980,8 @@ export const updateGrafanaConfigs: API.OperationMethod<
   UpdateGrafanaConfigsError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(249) as any as S.Schema<UpdateGrafanaConfigsRequest>,
-  output: __S(46) as any as S.Schema<Message>,
+  input: UpdateGrafanaConfigsRequest,
+  output: Message,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -3632,8 +4995,8 @@ export const updateInstance: API.OperationMethod<
   UpdateInstanceError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(250) as any as S.Schema<UpdateInstanceRequest>,
-  output: __S(46) as any as S.Schema<InstanceResponse>,
+  input: UpdateInstanceRequest,
+  output: InstanceResponse,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -3647,8 +5010,8 @@ export const updateLogsAlertgroup: API.OperationMethod<
   UpdateLogsAlertgroupError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(251) as any as S.Schema<UpdateLogsAlertgroupRequest>,
-  output: __S(35) as any as S.Schema<AlertGroupsResponse>,
+  input: UpdateLogsAlertgroupRequest,
+  output: AlertGroupsResponse,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -3662,8 +5025,8 @@ export const updateLogsConfigs: API.OperationMethod<
   UpdateLogsConfigsError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(252) as any as S.Schema<UpdateLogsConfigsRequest>,
-  output: __S(46) as any as S.Schema<Message>,
+  input: UpdateLogsConfigsRequest,
+  output: Message,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -3677,8 +5040,8 @@ export const updateMetricsStorageRetention: API.OperationMethod<
   UpdateMetricsStorageRetentionError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(253) as any as S.Schema<UpdateMetricsStorageRetentionRequest>,
-  output: __S(46) as any as S.Schema<Message>,
+  input: UpdateMetricsStorageRetentionRequest,
+  output: Message,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -3692,8 +5055,8 @@ export const updateScrapeConfig: API.OperationMethod<
   UpdateScrapeConfigError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(256) as any as S.Schema<UpdateScrapeConfigRequest>,
-  output: __S(110) as any as S.Schema<ScrapeConfigsResponse>,
+  input: UpdateScrapeConfigRequest,
+  output: ScrapeConfigsResponse,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -3707,8 +5070,8 @@ export const updateTracesConfigs: API.OperationMethod<
   UpdateTracesConfigsError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(257) as any as S.Schema<UpdateTracesConfigsRequest>,
-  output: __S(46) as any as S.Schema<Message>,
+  input: UpdateTracesConfigsRequest,
+  output: Message,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -3732,7 +5095,7 @@ function __c0(j: number): any {
         identifier: "CreateAlertConfigReceiverRequestEmailConfigsItem",
       });
     case 1:
-      return S.Array(__S(0));
+      return S.Array(CreateAlertConfigReceiverRequestEmailConfigsItem);
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -3746,7 +5109,7 @@ function __c0(j: number): any {
         identifier: "CreateAlertConfigReceiverRequestOpsgenieConfigsItem",
       });
     case 3:
-      return S.Array(__S(2));
+      return S.Array(CreateAlertConfigReceiverRequestOpsgenieConfigsItem);
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -3759,16 +5122,16 @@ function __c0(j: number): any {
         identifier: "CreateAlertConfigReceiverRequestWebHookConfigsItem",
       });
     case 5:
-      return S.Array(__S(4));
+      return S.Array(CreateAlertConfigReceiverRequestWebHookConfigsItem);
     case 6:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
           instanceId: S.String.pipe(T.Label()),
-          emailConfigs: S.optional(__S(1)),
+          emailConfigs: S.optional(CreateAlertConfigReceiverRequestEmailConfigsList),
           name: S.String,
-          opsgenieConfigs: S.optional(__S(3)),
-          webHookConfigs: S.optional(__S(5)),
+          opsgenieConfigs: S.optional(CreateAlertConfigReceiverRequestOpsgenieConfigsList),
+          webHookConfigs: S.optional(CreateAlertConfigReceiverRequestWebHookConfigsList),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3797,7 +5160,7 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(7));
+      return S.Array(EmailConfig);
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -3809,7 +5172,7 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "OpsgenieConfig" });
     case 2:
-      return S.Array(__S(9));
+      return S.Array(OpsgenieConfig);
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -3820,22 +5183,22 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "WebHook" });
     case 4:
-      return S.Array(__S(11));
+      return S.Array(WebHook);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          emailConfigs: S.optional(__S(8)),
+          emailConfigs: S.optional(ReceiversEmailConfigsList),
           name: S.String,
-          opsgenieConfigs: S.optional(__S(10)),
-          webHookConfigs: S.optional(__S(12)),
+          opsgenieConfigs: S.optional(ReceiversOpsgenieConfigsList),
+          webHookConfigs: S.optional(ReceiversWebHookConfigsList),
         }),
       ).annotate({ identifier: "Receivers" });
     case 6:
-      return S.Array(__S(13));
+      return S.Array(Receivers);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          data: __S(14),
+          data: AlertConfigReceiversResponseDataList,
           message: S.String,
         }),
       ).annotate({
@@ -3853,36 +5216,36 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           continue: S.optional(S.Boolean),
-          groupBy: S.optional(__S(16)),
+          groupBy: S.optional(CreateAlertConfigRouteRequestRoutesItemGroupByList),
           groupInterval: S.optional(S.String),
           groupWait: S.optional(S.String),
           match: S.optional(S.Unknown),
           matchRe: S.optional(S.Unknown),
-          matchers: S.optional(__S(16)),
+          matchers: S.optional(CreateAlertConfigRouteRequestRoutesItemMatchersList),
           receiver: S.optional(S.String),
           repeatInterval: S.optional(S.String),
-          routes: S.optional(__S(17)),
+          routes: S.optional(CreateAlertConfigRouteRequestRoutesItemRoutesList),
         }),
       ).annotate({
         identifier: "CreateAlertConfigRouteRequestRoutesItem",
       });
     case 3:
-      return S.Array(__S(18));
+      return S.Array(CreateAlertConfigRouteRequestRoutesItem);
     case 4:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
           instanceId: S.String.pipe(T.Label()),
           continue: S.optional(S.Boolean),
-          groupBy: S.optional(__S(16)),
+          groupBy: S.optional(CreateAlertConfigRouteRequestGroupByList),
           groupInterval: S.optional(S.String),
           groupWait: S.optional(S.String),
           match: S.optional(S.Unknown),
           matchRe: S.optional(S.Unknown),
-          matchers: S.optional(__S(16)),
+          matchers: S.optional(CreateAlertConfigRouteRequestMatchersList),
           receiver: S.String,
           repeatInterval: S.optional(S.String),
-          routes: S.optional(__S(19)),
+          routes: S.optional(CreateAlertConfigRouteRequestRoutesList),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3899,7 +5262,7 @@ function __c2(j: number): any {
     case 6:
       return S.Record(S.String, /*@__PURE__*/ S.NullOr(S.String));
     case 7:
-      return S.Array(__S(22));
+      return S.Array(RouteSerializerRoutesItemMap);
   }
 }
 function __c3(j: number): any {
@@ -3908,38 +5271,38 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           continue: S.optional(S.Boolean),
-          groupBy: S.optional(__S(16)),
+          groupBy: S.optional(RouteSerializerGroupByList),
           groupInterval: S.optional(S.String),
           groupWait: S.optional(S.String),
-          match: S.optional(__S(21)),
-          matchRe: S.optional(__S(21)),
-          matchers: S.optional(__S(16)),
+          match: S.optional(RouteSerializerMatchMap),
+          matchRe: S.optional(RouteSerializerMatchReMap),
+          matchers: S.optional(RouteSerializerMatchersList),
           receiver: S.String,
           repeatInterval: S.optional(S.String),
-          routes: S.optional(__S(23)),
+          routes: S.optional(RouteSerializerRoutesList),
         }),
       ).annotate({ identifier: "RouteSerializer" });
     case 1:
-      return S.Array(__S(24));
+      return S.Array(RouteSerializer);
     case 2:
       return S.suspend(() =>
         S.Struct({
           continue: S.optional(S.Boolean),
-          groupBy: S.optional(__S(16)),
+          groupBy: S.optional(RouteGroupByList),
           groupInterval: S.optional(S.String),
           groupWait: S.optional(S.String),
-          match: S.optional(__S(21)),
-          matchRe: S.optional(__S(21)),
-          matchers: S.optional(__S(16)),
+          match: S.optional(RouteMatchMap),
+          matchRe: S.optional(RouteMatchReMap),
+          matchers: S.optional(RouteMatchersList),
           receiver: S.String,
           repeatInterval: S.optional(S.String),
-          routes: S.optional(__S(25)),
+          routes: S.optional(RouteRoutesList),
         }),
       ).annotate({ identifier: "Route" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          data: __S(26),
+          data: Route,
           message: S.String,
         }),
       ).annotate({ identifier: "AlertConfigRouteResponse" });
@@ -3957,7 +5320,7 @@ function __c3(j: number): any {
         identifier: "CreateAlertgroupsRequestRulesItem",
       });
     case 5:
-      return S.Array(__S(28));
+      return S.Array(CreateAlertgroupsRequestRulesItem);
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -3965,7 +5328,7 @@ function __c3(j: number): any {
           instanceId: S.String.pipe(T.Label()),
           interval: S.optional(S.String),
           name: S.String,
-          rules: __S(29),
+          rules: CreateAlertgroupsRequestRulesList,
         }).pipe(
           T.Http({
             method: "POST",
@@ -3979,10 +5342,10 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           alert: S.optional(S.String),
-          annotations: S.optional(__S(21)),
+          annotations: S.optional(AlertRuleRecordAnnotationsMap),
           expr: S.String,
           for: S.optional(S.String),
-          labels: S.optional(__S(21)),
+          labels: S.optional(AlertRuleRecordLabelsMap),
           record: S.optional(S.String),
         }),
       ).annotate({ identifier: "AlertRuleRecord" });
@@ -3991,21 +5354,21 @@ function __c3(j: number): any {
 function __c4(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(31));
+      return S.Array(AlertRuleRecord);
     case 1:
       return S.suspend(() =>
         S.Struct({
           interval: S.optional(S.String),
           name: S.String,
-          rules: __S(32),
+          rules: AlertGroupRulesList,
         }),
       ).annotate({ identifier: "AlertGroup" });
     case 2:
-      return S.Array(__S(33));
+      return S.Array(AlertGroup);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          data: __S(34),
+          data: AlertGroupsResponseDataList,
           message: S.String,
         }),
       ).annotate({ identifier: "AlertGroupsResponse" });
@@ -4031,16 +5394,16 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           expr: S.String,
-          labels: S.optional(__S(21)),
+          labels: S.optional(AlertRecordLabelsMap),
           record: S.String,
         }),
       ).annotate({ identifier: "AlertRecord" });
     case 6:
-      return S.Array(__S(37));
+      return S.Array(AlertRecord);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          data: __S(38),
+          data: AlertRecordsResponseDataList,
           message: S.String,
         }),
       ).annotate({ identifier: "AlertRecordsResponse" });
@@ -4072,29 +5435,29 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           alert: S.String,
-          annotations: S.optional(__S(21)),
+          annotations: S.optional(AlertRuleAnnotationsMap),
           expr: S.String,
           for: S.optional(S.String),
-          labels: S.optional(__S(21)),
+          labels: S.optional(AlertRuleLabelsMap),
         }),
       ).annotate({ identifier: "AlertRule" });
     case 2:
-      return S.Array(__S(41));
+      return S.Array(AlertRule);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          data: __S(42),
+          data: AlertRulesResponseDataList,
           message: S.String,
         }),
       ).annotate({ identifier: "AlertRulesResponse" });
     case 4:
-      return S.Array(S.String);
+      return S.Array(CreateBackupRequestBackupTargetItem);
     case 5:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
           instanceId: S.String.pipe(T.Label()),
-          backupTarget: S.optional(__S(44).pipe(T.Query())),
+          backupTarget: S.optional(CreateBackupRequestBackupTargetList.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4115,7 +5478,7 @@ function __c5(j: number): any {
         S.Struct({
           projectId: S.String.pipe(T.Label()),
           instanceId: S.String.pipe(T.Label()),
-          backupTarget: S.optional(__S(44).pipe(T.Query())),
+          backupTarget: S.optional(CreateBackupScheduleRequestBackupTargetList.pipe(T.Query())),
           schedule: S.String,
         }).pipe(
           T.Http({
@@ -4164,12 +5527,12 @@ function __c6(j: number): any {
         }),
       ).annotate({ identifier: "CertCheckChildResponse" });
     case 3:
-      return S.Array(__S(50));
+      return S.Array(CertCheckChildResponse);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          certCheck: S.optional(__S(50)),
-          certChecks: __S(51),
+          certCheck: S.optional(CertCheckChildResponse),
+          certChecks: CertCheckResponseCertChecksList,
           message: S.String,
         }),
       ).annotate({ identifier: "CertCheckResponse" });
@@ -4199,7 +5562,7 @@ function __c6(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          credentials: __S(54),
+          credentials: Credentials,
           message: S.String,
         }),
       ).annotate({
@@ -4240,12 +5603,12 @@ function __c7(j: number): any {
         identifier: "ElasticsearchCheckChildResponse",
       });
     case 2:
-      return S.Array(__S(57));
+      return S.Array(ElasticsearchCheckChildResponse);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          elasticsearchCheck: S.optional(__S(57)),
-          elasticsearchChecks: __S(58),
+          elasticsearchCheck: S.optional(ElasticsearchCheckChildResponse),
+          elasticsearchChecks: ElasticsearchCheckResponseElasticsearchChecksList,
           message: S.String,
         }),
       ).annotate({
@@ -4274,12 +5637,12 @@ function __c7(j: number): any {
         }),
       ).annotate({ identifier: "HttpCheckChildResponse" });
     case 6:
-      return S.Array(__S(61));
+      return S.Array(HttpCheckChildResponse);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          httpCheck: S.optional(__S(61)),
-          httpChecks: __S(62),
+          httpCheck: S.optional(HttpCheckChildResponse),
+          httpChecks: HttpCheckResponseHttpChecksList,
           message: S.String,
         }),
       ).annotate({ identifier: "HttpCheckResponse" });
@@ -4319,7 +5682,7 @@ function __c8(j: number): any {
           instanceId: S.String.pipe(T.Label()),
           interval: S.optional(S.String),
           name: S.String,
-          rules: __S(29),
+          rules: CreateLogsAlertgroupsRequestRulesList,
         }).pipe(
           T.Http({
             method: "POST",
@@ -4358,13 +5721,13 @@ function __c8(j: number): any {
         identifier: "MongodbCheckChildResponse",
       });
     case 5:
-      return S.Array(__S(68));
+      return S.Array(MongodbCheckChildResponse);
     case 6:
       return S.suspend(() =>
         S.Struct({
           message: S.String,
-          mongodbCheck: S.optional(__S(68)),
-          mongodbChecks: __S(69),
+          mongodbCheck: S.optional(MongodbCheckChildResponse),
+          mongodbChecks: MongodbCheckResponseMongodbChecksList,
         }),
       ).annotate({ identifier: "MongodbCheckResponse" });
     case 7:
@@ -4390,8 +5753,8 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           message: S.String,
-          mysqlCheck: S.optional(__S(68)),
-          mysqlChecks: __S(69),
+          mysqlCheck: S.optional(MongodbCheckChildResponse),
+          mysqlChecks: MysqlCheckResponseMysqlChecksList,
         }),
       ).annotate({ identifier: "MysqlCheckResponse" });
     case 1:
@@ -4421,13 +5784,13 @@ function __c9(j: number): any {
         identifier: "NetworkCheckChildResponse",
       });
     case 3:
-      return S.Array(__S(74));
+      return S.Array(NetworkCheckChildResponse);
     case 4:
       return S.suspend(() =>
         S.Struct({
           message: S.String,
-          networkCheck: S.optional(__S(74)),
-          networkChecks: __S(75),
+          networkCheck: S.optional(NetworkCheckChildResponse),
+          networkChecks: NetworkCheckResponseNetworkChecksList,
         }),
       ).annotate({ identifier: "NetworkCheckResponse" });
     case 5:
@@ -4449,8 +5812,8 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           message: S.String,
-          pingCheck: S.optional(__S(61)),
-          pingChecks: __S(62),
+          pingCheck: S.optional(HttpCheckChildResponse),
+          pingChecks: PingCheckResponsePingChecksList,
         }),
       ).annotate({ identifier: "PingCheckResponse" });
     case 7:
@@ -4478,8 +5841,8 @@ function __c10(j: number): any {
       return S.suspend(() =>
         S.Struct({
           message: S.String,
-          postgresqlCheck: S.optional(__S(74)),
-          postgresqlChecks: __S(75),
+          postgresqlCheck: S.optional(NetworkCheckChildResponse),
+          postgresqlChecks: PostgresqlCheckResponsePostgresqlChecksList,
         }),
       ).annotate({ identifier: "PostgresqlCheckResponse" });
     case 1:
@@ -4513,13 +5876,13 @@ function __c10(j: number): any {
         identifier: "RabbitMQCheckChildResponse",
       });
     case 3:
-      return S.Array(__S(82));
+      return S.Array(RabbitMQCheckChildResponse);
     case 4:
       return S.suspend(() =>
         S.Struct({
           message: S.String,
-          rabbitmqCheck: S.optional(__S(82)),
-          rabbitmqChecks: __S(83),
+          rabbitmqCheck: S.optional(RabbitMQCheckChildResponse),
+          rabbitmqChecks: RabbitmqCheckResponseRabbitmqChecksList,
         }),
       ).annotate({ identifier: "RabbitmqCheckResponse" });
     case 5:
@@ -4543,8 +5906,8 @@ function __c10(j: number): any {
       return S.suspend(() =>
         S.Struct({
           message: S.String,
-          redisCheck: S.optional(__S(57)),
-          redisChecks: __S(58),
+          redisCheck: S.optional(ElasticsearchCheckChildResponse),
+          redisChecks: RedisCheckResponseRedisChecksList,
         }),
       ).annotate({ identifier: "RedisCheckResponse" });
     case 7:
@@ -4573,8 +5936,8 @@ function __c11(j: number): any {
         S.Struct({
           clientId: S.String,
           clientSecret: S.String.pipe(T.SensitiveValue({})),
-          scopes: S.optional(__S(16)),
-          tlsConfig: S.optional(__S(88)),
+          scopes: S.optional(CreateScrapeConfigRequestHttpSdConfigsItemOauth2ScopesList),
+          tlsConfig: S.optional(CreateScrapeConfigRequestHttpSdConfigsItemOauth2TlsConfig),
           tokenUrl: S.String,
         }),
       ).annotate({
@@ -4583,40 +5946,42 @@ function __c11(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          basicAuth: S.optional(__S(87)),
-          oauth2: S.optional(__S(89)),
+          basicAuth: S.optional(CreateScrapeConfigRequestBasicAuth),
+          oauth2: S.optional(CreateScrapeConfigRequestHttpSdConfigsItemOauth2),
           refreshInterval: S.optional(S.String),
-          tlsConfig: S.optional(__S(88)),
+          tlsConfig: S.optional(CreateScrapeConfigRequestHttpSdConfigsItemOauth2TlsConfig),
           url: S.String,
         }),
       ).annotate({
         identifier: "CreateScrapeConfigRequestHttpSdConfigsItem",
       });
     case 3:
-      return S.Array(__S(90));
+      return S.Array(CreateScrapeConfigRequestHttpSdConfigsItem);
     case 4:
       return S.Array(S.String);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          action: S.optional(S.String),
+          action: S.optional(CreateScrapeConfigRequestMetricsRelabelConfigsItemAction),
           modulus: S.optional(S.Number),
           regex: S.optional(S.String),
           replacement: S.optional(S.String),
           separator: S.optional(S.String),
-          sourceLabels: S.optional(__S(92)),
+          sourceLabels: S.optional(
+            CreateScrapeConfigRequestMetricsRelabelConfigsItemSourceLabelsList,
+          ),
           targetLabel: S.optional(S.String),
         }),
       ).annotate({
         identifier: "CreateScrapeConfigRequestMetricsRelabelConfigsItem",
       });
     case 6:
-      return S.Array(__S(93));
+      return S.Array(CreateScrapeConfigRequestMetricsRelabelConfigsItem);
     case 7:
       return S.suspend(() =>
         S.Struct({
           labels: S.optional(S.Unknown),
-          targets: __S(16),
+          targets: CreateScrapeConfigRequestStaticConfigsItemTargetsList,
         }),
       ).annotate({
         identifier: "CreateScrapeConfigRequestStaticConfigsItem",
@@ -4626,28 +5991,28 @@ function __c11(j: number): any {
 function __c12(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(95));
+      return S.Array(CreateScrapeConfigRequestStaticConfigsItem);
     case 1:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
           instanceId: S.String.pipe(T.Label()),
-          basicAuth: S.optional(__S(87)),
+          basicAuth: S.optional(CreateScrapeConfigRequestBasicAuth),
           bearerToken: S.optional(S.String),
           honorLabels: S.optional(S.Boolean),
           honorTimeStamps: S.optional(S.Boolean),
-          httpSdConfigs: S.optional(__S(91)),
+          httpSdConfigs: S.optional(CreateScrapeConfigRequestHttpSdConfigsList),
           jobName: S.String,
           metricsPath: S.optional(S.String),
-          metricsRelabelConfigs: S.optional(__S(94)),
-          oauth2: S.optional(__S(89)),
+          metricsRelabelConfigs: S.optional(CreateScrapeConfigRequestMetricsRelabelConfigsList),
+          oauth2: S.optional(CreateScrapeConfigRequestOauth2),
           params: S.optional(S.Unknown),
           sampleLimit: S.optional(S.Number),
-          scheme: S.String,
+          scheme: CreateScrapeConfigRequestScheme,
           scrapeInterval: S.String,
           scrapeTimeout: S.String,
-          staticConfigs: __S(96),
-          tlsConfig: S.optional(__S(88)),
+          staticConfigs: CreateScrapeConfigRequestStaticConfigsList,
+          tlsConfig: S.optional(CreateScrapeConfigRequestHttpSdConfigsItemOauth2TlsConfig),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4677,32 +6042,32 @@ function __c12(j: number): any {
         S.Struct({
           clientId: S.String,
           clientSecret: S.String.pipe(T.SensitiveValue({})),
-          scopes: S.optional(__S(16)),
-          tlsConfig: S.optional(__S(99)),
+          scopes: S.optional(OAuth2ScopesList),
+          tlsConfig: S.optional(TLSConfig),
           tokenUrl: S.String,
         }),
       ).annotate({ identifier: "OAuth2" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          basicAuth: S.optional(__S(98)),
-          oauth2: S.optional(__S(100)),
+          basicAuth: S.optional(BasicAuth),
+          oauth2: S.optional(OAuth2),
           refreshInterval: S.optional(S.String),
-          tlsConfig: S.optional(__S(99)),
+          tlsConfig: S.optional(TLSConfig),
           url: S.String,
         }),
       ).annotate({ identifier: "HTTPServiceSD" });
     case 6:
-      return S.Array(__S(101));
+      return S.Array(HTTPServiceSD);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          action: S.optional(S.String),
+          action: S.optional(MetricsRelabelConfigAction),
           modulus: S.optional(S.Number),
           regex: S.optional(S.String),
           replacement: S.optional(S.String),
           separator: S.optional(S.String),
-          sourceLabels: __S(16),
+          sourceLabels: MetricsRelabelConfigSourceLabelsList,
           targetLabel: S.optional(S.String),
         }),
       ).annotate({ identifier: "MetricsRelabelConfig" });
@@ -4711,45 +6076,45 @@ function __c12(j: number): any {
 function __c13(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(103));
+      return S.Array(MetricsRelabelConfig);
     case 1:
-      return S.Record(S.String, __S(16));
+      return S.Record(S.String, JobParamsValueList);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          labels: S.optional(__S(21)),
-          targets: __S(16),
+          labels: S.optional(StaticConfigsLabelsMap),
+          targets: StaticConfigsTargetsList,
         }),
       ).annotate({ identifier: "StaticConfigs" });
     case 3:
-      return S.Array(__S(106));
+      return S.Array(StaticConfigs);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          basicAuth: S.optional(__S(98)),
+          basicAuth: S.optional(BasicAuth),
           bearerToken: S.optional(S.String),
           honorLabels: S.optional(S.Boolean),
           honorTimeStamps: S.optional(S.Boolean),
-          httpSdConfigs: S.optional(__S(102)),
+          httpSdConfigs: S.optional(JobHttpSdConfigsList),
           jobName: S.String,
           metricsPath: S.optional(S.String),
-          metricsRelabelConfigs: S.optional(__S(104)),
-          oauth2: S.optional(__S(100)),
-          params: S.optional(__S(105)),
+          metricsRelabelConfigs: S.optional(JobMetricsRelabelConfigsList),
+          oauth2: S.optional(OAuth2),
+          params: S.optional(JobParamsMap),
           sampleLimit: S.optional(S.Number),
-          scheme: S.optional(S.String),
+          scheme: S.optional(JobScheme),
           scrapeInterval: S.String,
           scrapeTimeout: S.String,
-          staticConfigs: __S(107),
-          tlsConfig: S.optional(__S(99)),
+          staticConfigs: JobStaticConfigsList,
+          tlsConfig: S.optional(TLSConfig),
         }),
       ).annotate({ identifier: "Job" });
     case 5:
-      return S.Array(__S(108));
+      return S.Array(Job);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          data: __S(109),
+          data: ScrapeConfigsResponseDataList,
           message: S.String,
         }),
       ).annotate({ identifier: "ScrapeConfigsResponse" });
@@ -4811,7 +6176,7 @@ function __c14(j: number): any {
         S.Struct({
           projectId: S.String.pipe(T.Label()),
           instanceId: S.String.pipe(T.Label()),
-          groupName: __S(16).pipe(T.Query()),
+          groupName: DeleteAlertgroupsRequestGroupNameList.pipe(T.Query()),
         }).pipe(
           T.Http({
             method: "DELETE",
@@ -4843,7 +6208,7 @@ function __c14(j: number): any {
           projectId: S.String.pipe(T.Label()),
           instanceId: S.String.pipe(T.Label()),
           groupName: S.String.pipe(T.Label()),
-          alertRecord: __S(16).pipe(T.Query()),
+          alertRecord: DeleteAlertRecordsRequestAlertRecordList.pipe(T.Query()),
         }).pipe(
           T.Http({
             method: "DELETE",
@@ -4877,7 +6242,7 @@ function __c14(j: number): any {
           projectId: S.String.pipe(T.Label()),
           instanceId: S.String.pipe(T.Label()),
           groupName: S.String.pipe(T.Label()),
-          alertName: __S(16).pipe(T.Query()),
+          alertName: DeleteAlertrulesRequestAlertNameList.pipe(T.Query()),
         }).pipe(
           T.Http({
             method: "DELETE",
@@ -5147,7 +6512,7 @@ function __c16(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          data: __S(109),
+          data: DeleteScrapeConfigResponseDataList,
           message: S.String,
         }),
       ).annotate({
@@ -5162,7 +6527,7 @@ function __c17(j: number): any {
         S.Struct({
           projectId: S.String.pipe(T.Label()),
           instanceId: S.String.pipe(T.Label()),
-          jobName: __S(16).pipe(T.Query()),
+          jobName: DeleteScrapeConfigsRequestJobNameList.pipe(T.Query()),
         }).pipe(
           T.Http({
             method: "DELETE",
@@ -5194,7 +6559,7 @@ function __c17(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          data: __S(13),
+          data: Receivers,
           message: S.String,
         }),
       ).annotate({ identifier: "Receiver" });
@@ -5245,17 +6610,17 @@ function __c17(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          equal: S.optional(__S(16)),
-          sourceMatch: S.optional(__S(21)),
-          sourceMatchRe: S.optional(__S(21)),
-          sourceMatchers: S.optional(__S(16)),
-          targetMatch: S.optional(__S(21)),
-          targetMatchRe: S.optional(__S(21)),
-          targetMatchers: S.optional(__S(16)),
+          equal: S.optional(InhibitRulesEqualList),
+          sourceMatch: S.optional(InhibitRulesSourceMatchMap),
+          sourceMatchRe: S.optional(InhibitRulesSourceMatchReMap),
+          sourceMatchers: S.optional(InhibitRulesSourceMatchersList),
+          targetMatch: S.optional(InhibitRulesTargetMatchMap),
+          targetMatchRe: S.optional(InhibitRulesTargetMatchReMap),
+          targetMatchers: S.optional(InhibitRulesTargetMatchersList),
         }),
       ).annotate({ identifier: "InhibitRules" });
     case 7:
-      return S.Array(__S(142));
+      return S.Array(InhibitRules);
   }
 }
 function __c18(j: number): any {
@@ -5263,16 +6628,16 @@ function __c18(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          global: S.optional(__S(141)),
-          inhibitRules: S.optional(__S(143)),
-          receivers: __S(14),
-          route: __S(26),
+          global: S.optional(Global),
+          inhibitRules: S.optional(AlertInhibitRulesList),
+          receivers: AlertReceiversList,
+          route: Route,
         }),
       ).annotate({ identifier: "Alert" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          data: __S(144),
+          data: Alert,
           message: S.String,
         }),
       ).annotate({ identifier: "GetAlertConfigsResponse" });
@@ -5294,7 +6659,7 @@ function __c18(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          data: __S(33),
+          data: AlertGroup,
           message: S.String,
         }),
       ).annotate({ identifier: "AlertGroupResponse" });
@@ -5317,7 +6682,7 @@ function __c18(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          data: __S(37),
+          data: AlertRecord,
           message: S.String,
         }),
       ).annotate({ identifier: "AlertRecordResponse" });
@@ -5340,7 +6705,7 @@ function __c18(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          data: __S(41),
+          data: AlertRule,
           message: S.String,
         }),
       ).annotate({ identifier: "AlertRuleResponse" });
@@ -5366,7 +6731,7 @@ function __c19(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          credentialsInfo: S.optional(__S(22)),
+          credentialsInfo: S.optional(GetCredentialsResponseCredentialsInfoMap),
           id: S.String,
           message: S.String,
           name: S.String,
@@ -5433,7 +6798,7 @@ function __c19(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          genericOauth: S.optional(__S(157)),
+          genericOauth: S.optional(GrafanaOauth),
           message: S.String,
           publicReadAccess: S.optional(S.Boolean),
           useStackitSso: S.optional(S.Boolean),
@@ -5509,7 +6874,7 @@ function __c20(j: number): any {
           otlpHttpLogsUrl: S.String,
           otlpHttpTracesUrl: S.String,
           otlpTracesUrl: S.String,
-          plan: __S(160),
+          plan: PlanModel,
           pushMetricsUrl: S.String,
           targetsUrl: S.String,
           zipkinSpansUrl: S.String,
@@ -5521,16 +6886,16 @@ function __c20(j: number): any {
           dashboardUrl: S.String,
           error: S.optional(S.NullOr(S.String)),
           id: S.String,
-          instance: __S(161),
+          instance: InstanceSensitiveData,
           isUpdatable: S.optional(S.Boolean),
           message: S.String,
           name: S.optional(S.String),
-          parameters: S.optional(__S(22)),
+          parameters: S.optional(GetInstanceResponseParametersMap),
           planId: S.String,
           planName: S.String,
           planSchema: S.optional(S.String),
           serviceName: S.String,
-          status: S.String,
+          status: GetInstanceResponseStatus,
         }),
       ).annotate({ identifier: "GetInstanceResponse" });
     case 3:
@@ -5571,7 +6936,7 @@ function __c20(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          config: __S(165),
+          config: LogsConfig,
           message: S.String,
         }),
       ).annotate({ identifier: "LogsConfigResponse" });
@@ -5624,7 +6989,7 @@ function __c21(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          data: __S(108),
+          data: Job,
           message: S.String,
         }),
       ).annotate({ identifier: "GetScrapeConfigResponse" });
@@ -5659,7 +7024,7 @@ function __c21(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          acl: __S(16),
+          acl: ListACLResponseAclList,
           message: S.String,
         }),
       ).annotate({ identifier: "ListACLResponse" });
@@ -5774,7 +7139,7 @@ function __c22(j: number): any {
         S.Struct({
           projectId: S.String.pipe(T.Label()),
           instanceId: S.String.pipe(T.Label()),
-          backupTarget: S.optional(__S(44).pipe(T.Query())),
+          backupTarget: S.optional(ListBackupsRequestBackupTargetList.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -5787,11 +7152,11 @@ function __c22(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          alertConfigBackups: __S(16),
-          alertRulesBackups: __S(16),
-          grafanaBackups: __S(16),
+          alertConfigBackups: BackupResponseAlertConfigBackupsList,
+          alertRulesBackups: BackupResponseAlertRulesBackupsList,
+          grafanaBackups: BackupResponseGrafanaBackupsList,
           message: S.String,
-          scrapeConfigBackups: __S(16),
+          scrapeConfigBackups: BackupResponseScrapeConfigBackupsList,
         }),
       ).annotate({ identifier: "BackupResponse" });
     case 7:
@@ -5799,7 +7164,7 @@ function __c22(j: number): any {
         S.Struct({
           projectId: S.String.pipe(T.Label()),
           instanceId: S.String.pipe(T.Label()),
-          backupTarget: S.optional(__S(44).pipe(T.Query())),
+          backupTarget: S.optional(ListBackupSchedulesRequestBackupTargetList.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -5823,15 +7188,21 @@ function __c23(j: number): any {
         }),
       ).annotate({ identifier: "BackupSchedule" });
     case 1:
-      return S.Array(__S(184));
+      return S.Array(BackupSchedule);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          alertConfigBackupSchedules: S.optional(__S(185)),
-          alertRulesBackupSchedules: S.optional(__S(185)),
-          grafanaBackupSchedules: S.optional(__S(185)),
+          alertConfigBackupSchedules: S.optional(
+            BackupScheduleResponseAlertConfigBackupSchedulesList,
+          ),
+          alertRulesBackupSchedules: S.optional(
+            BackupScheduleResponseAlertRulesBackupSchedulesList,
+          ),
+          grafanaBackupSchedules: S.optional(BackupScheduleResponseGrafanaBackupSchedulesList),
           message: S.String,
-          scrapeConfigBackupSchedules: S.optional(__S(185)),
+          scrapeConfigBackupSchedules: S.optional(
+            BackupScheduleResponseScrapeConfigBackupSchedulesList,
+          ),
         }),
       ).annotate({ identifier: "BackupScheduleResponse" });
     case 3:
@@ -5865,18 +7236,18 @@ function __c23(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          credentialsInfo: S.optional(__S(22)),
+          credentialsInfo: S.optional(ServiceKeysListCredentialsInfoMap),
           description: S.optional(S.String),
           id: S.String,
           name: S.String,
         }),
       ).annotate({ identifier: "ServiceKeysList" });
     case 6:
-      return S.Array(__S(189));
+      return S.Array(ServiceKeysList);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          credentials: __S(190),
+          credentials: ListCredentialsResponseCredentialsList,
           message: S.String,
         }),
       ).annotate({ identifier: "ListCredentialsResponse" });
@@ -5936,15 +7307,15 @@ function __c24(j: number): any {
           name: S.optional(S.String),
           planName: S.String,
           serviceName: S.String,
-          status: S.String,
+          status: ProjectInstanceFullStatus,
         }),
       ).annotate({ identifier: "ProjectInstanceFull" });
     case 4:
-      return S.Array(__S(195));
+      return S.Array(ProjectInstanceFull);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          instances: __S(196),
+          instances: ListInstancesResponseInstancesList,
           message: S.String,
         }),
       ).annotate({ identifier: "ListInstancesResponse" });
@@ -6051,7 +7422,7 @@ function __c25(j: number): any {
         }),
       ).annotate({ identifier: "Plan" });
     case 4:
-      return S.Array(__S(203));
+      return S.Array(Plan);
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -6059,8 +7430,8 @@ function __c25(j: number): any {
           documentationUrl: S.String,
           imageUrl: S.String,
           name: S.String,
-          plans: __S(204),
-          tags: __S(16),
+          plans: OfferingsPlansList,
+          tags: OfferingsTagsList,
         }),
       ).annotate({ identifier: "Offerings" });
     case 6:
@@ -6098,7 +7469,7 @@ function __c26(j: number): any {
       return S.suspend(() =>
         S.Struct({
           message: S.String,
-          plans: __S(204),
+          plans: PlansResponsePlansList,
         }),
       ).annotate({ identifier: "PlansResponse" });
     case 1:
@@ -6166,19 +7537,19 @@ function __c26(j: number): any {
         S.Struct({
           interval: S.optional(S.String),
           name: S.String,
-          rules: __S(29),
+          rules: PartialUpdateAlertgroupsRequestBodyItemRulesList,
         }),
       ).annotate({
         identifier: "PartialUpdateAlertgroupsRequestBodyItem",
       });
     case 6:
-      return S.Array(__S(213));
+      return S.Array(PartialUpdateAlertgroupsRequestBodyItem);
     case 7:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
           instanceId: S.String.pipe(T.Label()),
-          body: __S(214).pipe(T.HttpBody()),
+          body: PartialUpdateAlertgroupsRequestBodyList.pipe(T.HttpBody()),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -6205,14 +7576,14 @@ function __c27(j: number): any {
         identifier: "PartialUpdateAlertRecordsRequestBodyItem",
       });
     case 1:
-      return S.Array(__S(216));
+      return S.Array(PartialUpdateAlertRecordsRequestBodyItem);
     case 2:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
           instanceId: S.String.pipe(T.Label()),
           groupName: S.String.pipe(T.Label()),
-          body: __S(217).pipe(T.HttpBody()),
+          body: PartialUpdateAlertRecordsRequestBodyList.pipe(T.HttpBody()),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -6237,14 +7608,14 @@ function __c27(j: number): any {
         identifier: "PartialUpdateAlertrulesRequestBodyItem",
       });
     case 4:
-      return S.Array(__S(219));
+      return S.Array(PartialUpdateAlertrulesRequestBodyItem);
     case 5:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
           instanceId: S.String.pipe(T.Label()),
           groupName: S.String.pipe(T.Label()),
-          body: __S(220).pipe(T.HttpBody()),
+          body: PartialUpdateAlertrulesRequestBodyList.pipe(T.HttpBody()),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -6261,8 +7632,10 @@ function __c27(j: number): any {
         S.Struct({
           clientId: S.String,
           clientSecret: S.String.pipe(T.SensitiveValue({})),
-          scopes: S.optional(__S(92)),
-          tlsConfig: S.optional(__S(88)),
+          scopes: S.optional(
+            PartialUpdateScrapeConfigsRequestBodyItemHttpSdConfigsItemOauth2ScopesList,
+          ),
+          tlsConfig: S.optional(CreateScrapeConfigRequestHttpSdConfigsItemOauth2TlsConfig),
           tokenUrl: S.String,
         }),
       ).annotate({
@@ -6271,10 +7644,10 @@ function __c27(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          basicAuth: S.optional(__S(87)),
-          oauth2: S.optional(__S(222)),
+          basicAuth: S.optional(CreateScrapeConfigRequestBasicAuth),
+          oauth2: S.optional(PartialUpdateScrapeConfigsRequestBodyItemHttpSdConfigsItemOauth2),
           refreshInterval: S.optional(S.String),
-          tlsConfig: S.optional(__S(88)),
+          tlsConfig: S.optional(CreateScrapeConfigRequestHttpSdConfigsItemOauth2TlsConfig),
           url: S.String,
         }),
       ).annotate({
@@ -6285,65 +7658,71 @@ function __c27(j: number): any {
 function __c28(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(223));
+      return S.Array(PartialUpdateScrapeConfigsRequestBodyItemHttpSdConfigsItem);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          action: S.optional(S.String),
+          action: S.optional(
+            PartialUpdateScrapeConfigsRequestBodyItemMetricsRelabelConfigsItemAction,
+          ),
           modulus: S.optional(S.Number),
           regex: S.optional(S.String),
           replacement: S.optional(S.String),
           separator: S.optional(S.String),
-          sourceLabels: S.optional(__S(92)),
+          sourceLabels: S.optional(
+            PartialUpdateScrapeConfigsRequestBodyItemMetricsRelabelConfigsItemSourceLabelsList,
+          ),
           targetLabel: S.optional(S.String),
         }),
       ).annotate({
         identifier: "PartialUpdateScrapeConfigsRequestBodyItemMetricsRelabelConfigsItem",
       });
     case 2:
-      return S.Array(__S(225));
+      return S.Array(PartialUpdateScrapeConfigsRequestBodyItemMetricsRelabelConfigsItem);
     case 3:
       return S.suspend(() =>
         S.Struct({
           labels: S.optional(S.Unknown),
-          targets: __S(92),
+          targets: PartialUpdateScrapeConfigsRequestBodyItemStaticConfigsItemTargetsList,
         }),
       ).annotate({
         identifier: "PartialUpdateScrapeConfigsRequestBodyItemStaticConfigsItem",
       });
     case 4:
-      return S.Array(__S(227));
+      return S.Array(PartialUpdateScrapeConfigsRequestBodyItemStaticConfigsItem);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          basicAuth: S.optional(__S(87)),
+          basicAuth: S.optional(CreateScrapeConfigRequestBasicAuth),
           bearerToken: S.optional(S.String),
           honorLabels: S.optional(S.Boolean),
           honorTimeStamps: S.optional(S.Boolean),
-          httpSdConfigs: S.optional(__S(224)),
+          httpSdConfigs: S.optional(PartialUpdateScrapeConfigsRequestBodyItemHttpSdConfigsList),
           jobName: S.String,
           metricsPath: S.optional(S.String),
-          metricsRelabelConfigs: S.optional(__S(226)),
-          oauth2: S.optional(__S(89)),
+          metricsRelabelConfigs: S.optional(
+            PartialUpdateScrapeConfigsRequestBodyItemMetricsRelabelConfigsList,
+          ),
+          oauth2: S.optional(PartialUpdateScrapeConfigsRequestBodyItemOauth2),
           params: S.optional(S.Unknown),
           sampleLimit: S.optional(S.Number),
-          scheme: S.String,
+          scheme: PartialUpdateScrapeConfigsRequestBodyItemScheme,
           scrapeInterval: S.String,
           scrapeTimeout: S.String,
-          staticConfigs: __S(228),
-          tlsConfig: S.optional(__S(88)),
+          staticConfigs: PartialUpdateScrapeConfigsRequestBodyItemStaticConfigsList,
+          tlsConfig: S.optional(CreateScrapeConfigRequestHttpSdConfigsItemOauth2TlsConfig),
         }),
       ).annotate({
         identifier: "PartialUpdateScrapeConfigsRequestBodyItem",
       });
     case 6:
-      return S.Array(__S(229));
+      return S.Array(PartialUpdateScrapeConfigsRequestBodyItem);
     case 7:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
           instanceId: S.String.pipe(T.Label()),
-          body: __S(230).pipe(T.HttpBody()),
+          body: PartialUpdateScrapeConfigsRequestBodyList.pipe(T.HttpBody()),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -6365,7 +7744,7 @@ function __c29(j: number): any {
           projectId: S.String.pipe(T.Label()),
           instanceId: S.String.pipe(T.Label()),
           backupDate: S.String.pipe(T.Label()),
-          restoreTarget: S.String.pipe(T.Query()),
+          restoreTarget: RestoreBackupRequestRestoreTarget.pipe(T.Query()),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6380,7 +7759,7 @@ function __c29(j: number): any {
         S.Struct({
           projectId: S.String.pipe(T.Label()),
           instanceId: S.String.pipe(T.Label()),
-          acl: __S(16),
+          acl: UpdateACLRequestAclList,
         }).pipe(
           T.Http({
             method: "PUT",
@@ -6396,10 +7775,10 @@ function __c29(j: number): any {
           projectId: S.String.pipe(T.Label()),
           instanceId: S.String.pipe(T.Label()),
           receiver: S.String.pipe(T.Label()),
-          emailConfigs: S.optional(__S(1)),
+          emailConfigs: S.optional(UpdateAlertConfigReceiverRequestEmailConfigsList),
           name: S.String,
-          opsgenieConfigs: S.optional(__S(3)),
-          webHookConfigs: S.optional(__S(5)),
+          opsgenieConfigs: S.optional(UpdateAlertConfigReceiverRequestOpsgenieConfigsList),
+          webHookConfigs: S.optional(UpdateAlertConfigReceiverRequestWebHookConfigsList),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -6418,14 +7797,14 @@ function __c29(j: number): any {
           instanceId: S.String.pipe(T.Label()),
           receiver: S.String.pipe(T.Label()),
           continue: S.optional(S.Boolean),
-          groupBy: S.optional(__S(16)),
+          groupBy: S.optional(UpdateAlertConfigRouteRequestGroupByList),
           groupInterval: S.optional(S.String),
           groupWait: S.optional(S.String),
           match: S.optional(S.Unknown),
           matchRe: S.optional(S.Unknown),
-          matchers: S.optional(__S(16)),
+          matchers: S.optional(UpdateAlertConfigRouteRequestMatchersList),
           repeatInterval: S.optional(S.String),
-          routes: S.optional(__S(19)),
+          routes: S.optional(UpdateAlertConfigRouteRequestRoutesList),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -6455,7 +7834,7 @@ function __c29(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          equal: S.optional(__S(16)),
+          equal: S.optional(UpdateAlertConfigsRequestInhibitRulesEqualList),
           sourceMatch: S.optional(S.Unknown),
           sourceMatchRe: S.optional(S.Unknown),
           targetMatch: S.optional(S.Unknown),
@@ -6467,16 +7846,16 @@ function __c29(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          emailConfigs: S.optional(__S(1)),
+          emailConfigs: S.optional(UpdateAlertConfigsRequestReceiversItemEmailConfigsList),
           name: S.String,
-          opsgenieConfigs: S.optional(__S(3)),
-          webHookConfigs: S.optional(__S(5)),
+          opsgenieConfigs: S.optional(UpdateAlertConfigsRequestReceiversItemOpsgenieConfigsList),
+          webHookConfigs: S.optional(UpdateAlertConfigsRequestReceiversItemWebHookConfigsList),
         }),
       ).annotate({
         identifier: "UpdateAlertConfigsRequestReceiversItem",
       });
     case 7:
-      return S.Array(__S(238));
+      return S.Array(UpdateAlertConfigsRequestReceiversItem);
   }
 }
 function __c30(j: number): any {
@@ -6485,14 +7864,14 @@ function __c30(j: number): any {
       return S.suspend(() =>
         S.Struct({
           continue: S.optional(S.Boolean),
-          groupBy: S.optional(__S(16)),
+          groupBy: S.optional(UpdateAlertConfigsRequestRouteGroupByList),
           groupInterval: S.optional(S.String),
           groupWait: S.optional(S.String),
           match: S.optional(S.Unknown),
           matchRe: S.optional(S.Unknown),
           receiver: S.String,
           repeatInterval: S.optional(S.String),
-          routes: S.optional(__S(19)),
+          routes: S.optional(UpdateAlertConfigsRequestRouteRoutesList),
         }),
       ).annotate({
         identifier: "UpdateAlertConfigsRequestRoute",
@@ -6502,10 +7881,10 @@ function __c30(j: number): any {
         S.Struct({
           projectId: S.String.pipe(T.Label()),
           instanceId: S.String.pipe(T.Label()),
-          global: S.optional(__S(236)),
-          inhibitRules: S.optional(__S(237)),
-          receivers: __S(239),
-          route: __S(240),
+          global: S.optional(UpdateAlertConfigsRequestGlobal),
+          inhibitRules: S.optional(UpdateAlertConfigsRequestInhibitRules),
+          receivers: UpdateAlertConfigsRequestReceiversList,
+          route: UpdateAlertConfigsRequestRoute,
         }).pipe(
           T.Http({
             method: "PUT",
@@ -6520,7 +7899,7 @@ function __c30(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          data: __S(144),
+          data: Alert,
           message: S.String,
         }),
       ).annotate({
@@ -6533,7 +7912,7 @@ function __c30(j: number): any {
           instanceId: S.String.pipe(T.Label()),
           groupName: S.String.pipe(T.Label()),
           interval: S.optional(S.String),
-          rules: __S(29),
+          rules: UpdateAlertgroupRequestRulesList,
         }).pipe(
           T.Http({
             method: "PUT",
@@ -6548,7 +7927,7 @@ function __c30(j: number): any {
         S.Struct({
           projectId: S.String.pipe(T.Label()),
           instanceId: S.String.pipe(T.Label()),
-          body: __S(214).pipe(T.HttpBody()),
+          body: UpdateAlertgroupsRequestBodyList.pipe(T.HttpBody()),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -6642,7 +8021,7 @@ function __c31(j: number): any {
         S.Struct({
           projectId: S.String.pipe(T.Label()),
           instanceId: S.String.pipe(T.Label()),
-          genericOauth: S.optional(__S(248)),
+          genericOauth: S.optional(UpdateGrafanaConfigsRequestGenericOauth),
           publicReadAccess: S.optional(S.Boolean),
           useStackitSso: S.optional(S.Boolean),
         }).pipe(
@@ -6681,7 +8060,7 @@ function __c31(j: number): any {
           instanceId: S.String.pipe(T.Label()),
           groupName: S.String.pipe(T.Label()),
           interval: S.optional(S.String),
-          rules: __S(29),
+          rules: UpdateLogsAlertgroupRequestRulesList,
         }).pipe(
           T.Http({
             method: "PUT",
@@ -6730,19 +8109,21 @@ function __c31(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          action: S.optional(S.String),
+          action: S.optional(UpdateScrapeConfigRequestMetricsRelabelConfigsItemAction),
           modulus: S.optional(S.Number),
           regex: S.optional(S.String),
           replacement: S.optional(S.String),
           separator: S.optional(S.String),
-          sourceLabels: S.optional(__S(92)),
+          sourceLabels: S.optional(
+            UpdateScrapeConfigRequestMetricsRelabelConfigsItemSourceLabelsList,
+          ),
           targetLabel: S.optional(S.String),
         }),
       ).annotate({
         identifier: "UpdateScrapeConfigRequestMetricsRelabelConfigsItem",
       });
     case 7:
-      return S.Array(__S(254));
+      return S.Array(UpdateScrapeConfigRequestMetricsRelabelConfigsItem);
   }
 }
 function __c32(j: number): any {
@@ -6753,19 +8134,19 @@ function __c32(j: number): any {
           projectId: S.String.pipe(T.Label()),
           instanceId: S.String.pipe(T.Label()),
           jobName: S.String.pipe(T.Label()),
-          basicAuth: S.optional(__S(87)),
+          basicAuth: S.optional(CreateScrapeConfigRequestBasicAuth),
           bearerToken: S.optional(S.String),
           honorLabels: S.optional(S.Boolean),
           honorTimeStamps: S.optional(S.Boolean),
           metricsPath: S.String,
-          metricsRelabelConfigs: S.optional(__S(255)),
+          metricsRelabelConfigs: S.optional(UpdateScrapeConfigRequestMetricsRelabelConfigsList),
           params: S.optional(S.Unknown),
           sampleLimit: S.optional(S.Number),
-          scheme: S.String,
+          scheme: UpdateScrapeConfigRequestScheme,
           scrapeInterval: S.String,
           scrapeTimeout: S.String,
-          staticConfigs: __S(96),
-          tlsConfig: S.optional(__S(88)),
+          staticConfigs: UpdateScrapeConfigRequestStaticConfigsList,
+          tlsConfig: S.optional(CreateScrapeConfigRequestHttpSdConfigsItemOauth2TlsConfig),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -6794,80 +8175,5 @@ function __c32(j: number): any {
       ).annotate({
         identifier: "UpdateTracesConfigsRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
-    case 9:
-      return __c9(i & 7);
-    case 10:
-      return __c10(i & 7);
-    case 11:
-      return __c11(i & 7);
-    case 12:
-      return __c12(i & 7);
-    case 13:
-      return __c13(i & 7);
-    case 14:
-      return __c14(i & 7);
-    case 15:
-      return __c15(i & 7);
-    case 16:
-      return __c16(i & 7);
-    case 17:
-      return __c17(i & 7);
-    case 18:
-      return __c18(i & 7);
-    case 19:
-      return __c19(i & 7);
-    case 20:
-      return __c20(i & 7);
-    case 21:
-      return __c21(i & 7);
-    case 22:
-      return __c22(i & 7);
-    case 23:
-      return __c23(i & 7);
-    case 24:
-      return __c24(i & 7);
-    case 25:
-      return __c25(i & 7);
-    case 26:
-      return __c26(i & 7);
-    case 27:
-      return __c27(i & 7);
-    case 28:
-      return __c28(i & 7);
-    case 29:
-      return __c29(i & 7);
-    case 30:
-      return __c30(i & 7);
-    case 31:
-      return __c31(i & 7);
-    case 32:
-      return __c32(i & 7);
   }
 }

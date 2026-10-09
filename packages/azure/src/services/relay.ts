@@ -6,8 +6,6 @@ import { UnknownAzureError } from "../errors.ts";
 import { AzureProtocol, type AzureOpError, type AzureOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { AzureOpError, AzureOpContext };
 
@@ -17,6 +15,11 @@ export interface CheckNamespaceNameAvailabilityRequest {
   /** The namespace name to check for availability. The namespace name can contain only letters, numbers, and hyphens. The namespace must start with a letter, and it must end with a letter or number. */
   name: string;
 }
+const CheckNamespaceNameAvailabilityRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<CheckNamespaceNameAvailabilityRequest>;
+
 /** Specifies the reason for the unavailability of the service. */
 export type UnavailableReason =
   | "None"
@@ -25,6 +28,8 @@ export type UnavailableReason =
   | "NameInUse"
   | "NameInLockdown"
   | "TooManyNamespaceInCurrentSubscription";
+const UnavailableReason = S.String;
+
 /** Description of the check name availability request properties. */
 export interface CheckNameAvailabilityResult {
   /** The detailed info regarding the reason associated with the namespace. */
@@ -34,6 +39,11 @@ export interface CheckNameAvailabilityResult {
   /** The reason for unavailability of a namespace. */
   reason?: UnavailableReason;
 }
+const CheckNameAvailabilityResult = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<CheckNameAvailabilityResult>;
+
 export interface DeleteHybridConnectionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -44,7 +54,17 @@ export interface DeleteHybridConnectionRequest {
   /** The hybrid connection name. */
   hybridConnectionName: string;
 }
+const DeleteHybridConnectionRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<DeleteHybridConnectionRequest>;
+
 export interface DeleteHybridConnectionResponse {}
+const DeleteHybridConnectionResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<DeleteHybridConnectionResponse>;
+
 export interface DeleteHybridConnectionAuthorizationRuleRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -57,7 +77,17 @@ export interface DeleteHybridConnectionAuthorizationRuleRequest {
   /** The authorization rule name. */
   authorizationRuleName: string;
 }
+const DeleteHybridConnectionAuthorizationRuleRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<DeleteHybridConnectionAuthorizationRuleRequest>;
+
 export interface DeleteHybridConnectionAuthorizationRuleResponse {}
+const DeleteHybridConnectionAuthorizationRuleResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<DeleteHybridConnectionAuthorizationRuleResponse>;
+
 export interface DeleteNamespaceRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -66,7 +96,15 @@ export interface DeleteNamespaceRequest {
   /** The namespace name */
   namespaceName: string;
 }
+const DeleteNamespaceRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<DeleteNamespaceRequest>;
+
 export interface DeleteNamespaceResponse {}
+const DeleteNamespaceResponse =
+  DeleteHybridConnectionResponse as any as S.Schema<DeleteNamespaceResponse>;
+
 export interface DeleteNamespaceAuthorizationRuleRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -77,7 +115,15 @@ export interface DeleteNamespaceAuthorizationRuleRequest {
   /** The authorization rule name. */
   authorizationRuleName: string;
 }
+const DeleteNamespaceAuthorizationRuleRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<DeleteNamespaceAuthorizationRuleRequest>;
+
 export interface DeleteNamespaceAuthorizationRuleResponse {}
+const DeleteNamespaceAuthorizationRuleResponse =
+  DeleteHybridConnectionAuthorizationRuleResponse as any as S.Schema<DeleteNamespaceAuthorizationRuleResponse>;
+
 export interface DeletePrivateEndpointConnectionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -88,7 +134,15 @@ export interface DeletePrivateEndpointConnectionRequest {
   /** The PrivateEndpointConnection name */
   privateEndpointConnectionName: string;
 }
+const DeletePrivateEndpointConnectionRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<DeletePrivateEndpointConnectionRequest>;
+
 export interface DeletePrivateEndpointConnectionResponse {}
+const DeletePrivateEndpointConnectionResponse =
+  DeleteHybridConnectionAuthorizationRuleResponse as any as S.Schema<DeletePrivateEndpointConnectionResponse>;
+
 export interface DeleteWCFRelayRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -99,7 +153,15 @@ export interface DeleteWCFRelayRequest {
   /** The relay name. */
   relayName: string;
 }
+const DeleteWCFRelayRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<DeleteWCFRelayRequest>;
+
 export interface DeleteWCFRelayResponse {}
+const DeleteWCFRelayResponse =
+  DeleteHybridConnectionResponse as any as S.Schema<DeleteWCFRelayResponse>;
+
 export interface DeleteWCFRelayAuthorizationRuleRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -112,7 +174,15 @@ export interface DeleteWCFRelayAuthorizationRuleRequest {
   /** The authorization rule name. */
   authorizationRuleName: string;
 }
+const DeleteWCFRelayAuthorizationRuleRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<DeleteWCFRelayAuthorizationRuleRequest>;
+
 export interface DeleteWCFRelayAuthorizationRuleResponse {}
+const DeleteWCFRelayAuthorizationRuleResponse =
+  DeleteHybridConnectionAuthorizationRuleResponse as any as S.Schema<DeleteWCFRelayAuthorizationRuleResponse>;
+
 export interface GetHybridConnectionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -123,10 +193,19 @@ export interface GetHybridConnectionRequest {
   /** The hybrid connection name. */
   hybridConnectionName: string;
 }
+const GetHybridConnectionRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<GetHybridConnectionRequest>;
+
 /** The type of identity that created the resource. */
 export type SystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
+const SystemDataCreatedByType = S.String;
+
 /** The type of identity that last modified the resource. */
 export type SystemDataLastModifiedByType = "User" | "Application" | "ManagedIdentity" | "Key";
+const SystemDataLastModifiedByType = S.String;
+
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface SystemData {
   /** The identity that created the resource. */
@@ -142,6 +221,8 @@ export interface SystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const SystemData = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<SystemData>;
+
 /** Properties of the HybridConnection. */
 export interface HybridConnectionProperties {
   /** The time the hybrid connection was created. */
@@ -155,6 +236,11 @@ export interface HybridConnectionProperties {
   /** The usermetadata is a placeholder to store user-defined string data for the hybrid connection endpoint. For example, it can be used to store descriptive data, such as a list of teams and their contact information. Also, user-defined configuration settings can be stored. */
   userMetadata?: string;
 }
+const HybridConnectionProperties = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<HybridConnectionProperties>;
+
 export interface GetHybridConnectionResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -169,6 +255,11 @@ export interface GetHybridConnectionResponse {
   /** The geo-location where the resource lives */
   location?: string;
 }
+const GetHybridConnectionResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<GetHybridConnectionResponse>;
+
 export interface GetHybridConnectionAuthorizationRuleRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -181,14 +272,31 @@ export interface GetHybridConnectionAuthorizationRuleRequest {
   /** The authorization rule name. */
   authorizationRuleName: string;
 }
+const GetHybridConnectionAuthorizationRuleRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<GetHybridConnectionAuthorizationRuleRequest>;
+
 export type AccessRights = "Manage" | "Send" | "Listen";
+const AccessRights = S.String;
+
 /** The rights associated with the rule. */
 export type AuthorizationRulePropertiesRightsList = Array<AccessRights | (string & {})>;
+const AuthorizationRulePropertiesRightsList = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<AuthorizationRulePropertiesRightsList>;
+
 /** Properties supplied to create or update AuthorizationRule */
 export interface AuthorizationRuleProperties {
   /** The rights associated with the rule. */
   rights: AuthorizationRulePropertiesRightsList;
 }
+const AuthorizationRuleProperties = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<AuthorizationRuleProperties>;
+
 export interface GetHybridConnectionAuthorizationRuleResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -203,6 +311,11 @@ export interface GetHybridConnectionAuthorizationRuleResponse {
   /** The geo-location where the resource lives */
   location?: string;
 }
+const GetHybridConnectionAuthorizationRuleResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<GetHybridConnectionAuthorizationRuleResponse>;
+
 export interface GetNamespaceRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -211,15 +324,26 @@ export interface GetNamespaceRequest {
   /** The namespace name */
   namespaceName: string;
 }
+const GetNamespaceRequest = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<GetNamespaceRequest>;
+
 /** Resource tags. */
 export type GetNamespaceResponseTagsMap = { [key: string]: string | undefined };
+const GetNamespaceResponseTagsMap = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<GetNamespaceResponseTagsMap>;
+
 /** PrivateEndpoint information. */
 export interface PrivateEndpoint {
   /** The ARM identifier for Private Endpoint. */
   id?: string;
 }
+const PrivateEndpoint = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<PrivateEndpoint>;
+
 /** Status of the connection. */
 export type PrivateLinkConnectionStatus = "Pending" | "Approved" | "Rejected" | "Disconnected";
+const PrivateLinkConnectionStatus = S.String;
+
 /** ConnectionState information. */
 export interface ConnectionState {
   /** Status of the connection. */
@@ -227,6 +351,8 @@ export interface ConnectionState {
   /** Description of the connection state. */
   description?: string;
 }
+const ConnectionState = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<ConnectionState>;
+
 /** Provisioning state of the Private Endpoint Connection. */
 export type EndPointProvisioningState =
   | "Creating"
@@ -235,6 +361,8 @@ export type EndPointProvisioningState =
   | "Succeeded"
   | "Canceled"
   | "Failed";
+const EndPointProvisioningState = S.String;
+
 /** Properties of the private endpoint connection resource. */
 export interface PrivateEndpointConnectionProperties {
   /** The Private Endpoint resource for this Connection. */
@@ -244,6 +372,11 @@ export interface PrivateEndpointConnectionProperties {
   /** Provisioning state of the Private Endpoint Connection. */
   provisioningState?: EndPointProvisioningState | (string & {});
 }
+const PrivateEndpointConnectionProperties = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<PrivateEndpointConnectionProperties>;
+
 /** Properties of the PrivateEndpointConnection. */
 export interface PrivateEndpointConnection {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -259,16 +392,30 @@ export interface PrivateEndpointConnection {
   /** The geo-location where the resource lives */
   location?: string;
 }
+const PrivateEndpointConnection = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<PrivateEndpointConnection>;
+
 /** List of private endpoint connections. */
 export type RelayNamespacePropertiesPrivateEndpointConnectionsList =
   Array<PrivateEndpointConnection>;
+const RelayNamespacePropertiesPrivateEndpointConnectionsList = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<RelayNamespacePropertiesPrivateEndpointConnectionsList>;
+
 /** This determines if traffic is allowed over public network. By default it is enabled. */
 export type RelayNamespacePropertiesPublicNetworkAccess =
   | "Enabled"
   | "Disabled"
   | "SecuredByPerimeter";
+const RelayNamespacePropertiesPublicNetworkAccess = S.String;
+
 /** TLS versions supported by Relay namespaces. */
 export type TlsVersion = "1.2" | "1.3";
+const TlsVersion = S.String;
+
 /** Properties of the namespace. */
 export interface RelayNamespaceProperties {
   /** Provisioning state of the Namespace. */
@@ -290,10 +437,19 @@ export interface RelayNamespaceProperties {
   /** The minimum TLS version for the namespace. Supported values are 1.2 and 1.3. The service defaults to 1.2 when the property is omitted. Existing namespaces configured with TLS 1.0 or 1.1 are reported as TLS 1.2. */
   minimumTlsVersion?: TlsVersion;
 }
+const RelayNamespaceProperties = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<RelayNamespaceProperties>;
+
 /** Name of this SKU. */
 export type SkuName = "Standard";
+const SkuName = S.String;
+
 /** The tier of this SKU. */
 export type SkuTier = "Standard";
+const SkuTier = S.String;
+
 /** SKU of the namespace. */
 export interface Sku {
   /** Name of this SKU. */
@@ -301,6 +457,8 @@ export interface Sku {
   /** The tier of this SKU. */
   tier?: SkuTier | (string & {});
 }
+const Sku = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<Sku>;
+
 export interface GetNamespaceResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -319,6 +477,8 @@ export interface GetNamespaceResponse {
   /** SKU of the namespace. */
   sku?: Sku;
 }
+const GetNamespaceResponse = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<GetNamespaceResponse>;
+
 export interface GetNamespaceAuthorizationRuleRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -329,6 +489,11 @@ export interface GetNamespaceAuthorizationRuleRequest {
   /** The authorization rule name. */
   authorizationRuleName: string;
 }
+const GetNamespaceAuthorizationRuleRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<GetNamespaceAuthorizationRuleRequest>;
+
 export interface GetNamespaceAuthorizationRuleResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -343,6 +508,9 @@ export interface GetNamespaceAuthorizationRuleResponse {
   /** The geo-location where the resource lives */
   location?: string;
 }
+const GetNamespaceAuthorizationRuleResponse =
+  GetHybridConnectionAuthorizationRuleResponse as any as S.Schema<GetNamespaceAuthorizationRuleResponse>;
+
 export interface GetNamespaceNetworkRuleSetRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -351,12 +519,23 @@ export interface GetNamespaceNetworkRuleSetRequest {
   /** The namespace name */
   namespaceName: string;
 }
+const GetNamespaceNetworkRuleSetRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<GetNamespaceNetworkRuleSetRequest>;
+
 /** Default Action for Network Rule Set */
 export type DefaultAction = "Allow" | "Deny";
+const DefaultAction = S.String;
+
 /** This determines if traffic is allowed over public network. By default it is enabled. */
 export type PublicNetworkAccess = "Enabled" | "Disabled" | "SecuredByPerimeter";
+const PublicNetworkAccess = S.String;
+
 /** The IP Filter Action */
 export type NetworkRuleIPAction = "Allow";
+const NetworkRuleIPAction = S.String;
+
 /** The response from the List namespace operation. */
 export interface NWRuleSetIpRules {
   /** IP Mask */
@@ -364,8 +543,15 @@ export interface NWRuleSetIpRules {
   /** The IP Filter Action */
   action?: NetworkRuleIPAction | (string & {});
 }
+const NWRuleSetIpRules = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<NWRuleSetIpRules>;
+
 /** List of IpRules */
 export type NetworkRuleSetPropertiesIpRulesList = Array<NWRuleSetIpRules>;
+const NetworkRuleSetPropertiesIpRulesList = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<NetworkRuleSetPropertiesIpRulesList>;
+
 /** NetworkRuleSet properties */
 export interface NetworkRuleSetProperties {
   /** Value that indicates whether Trusted Service Access is Enabled or not. */
@@ -377,6 +563,11 @@ export interface NetworkRuleSetProperties {
   /** List of IpRules */
   ipRules?: NetworkRuleSetPropertiesIpRulesList;
 }
+const NetworkRuleSetProperties = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<NetworkRuleSetProperties>;
+
 export interface GetNamespaceNetworkRuleSetResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -389,6 +580,11 @@ export interface GetNamespaceNetworkRuleSetResponse {
   /** NetworkRuleSet properties */
   properties?: NetworkRuleSetProperties;
 }
+const GetNamespaceNetworkRuleSetResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<GetNamespaceNetworkRuleSetResponse>;
+
 export interface GetPrivateEndpointConnectionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -399,6 +595,11 @@ export interface GetPrivateEndpointConnectionRequest {
   /** The PrivateEndpointConnection name */
   privateEndpointConnectionName: string;
 }
+const GetPrivateEndpointConnectionRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<GetPrivateEndpointConnectionRequest>;
+
 export interface GetPrivateEndpointConnectionResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -413,6 +614,9 @@ export interface GetPrivateEndpointConnectionResponse {
   /** The geo-location where the resource lives */
   location?: string;
 }
+const GetPrivateEndpointConnectionResponse =
+  PrivateEndpointConnection as any as S.Schema<GetPrivateEndpointConnectionResponse>;
+
 export interface GetPrivateLinkResourceRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -423,10 +627,23 @@ export interface GetPrivateLinkResourceRequest {
   /** The name of the private link resource. */
   privateLinkResourceName: string;
 }
+const GetPrivateLinkResourceRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<GetPrivateLinkResourceRequest>;
+
 /** The private link resource required member names. */
 export type PrivateLinkResourcePropertiesRequiredMembersList = Array<string>;
+const PrivateLinkResourcePropertiesRequiredMembersList = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<PrivateLinkResourcePropertiesRequiredMembersList>;
+
 /** The private link resource Private link DNS zone name. */
 export type PrivateLinkResourcePropertiesRequiredZoneNamesList = Array<string>;
+const PrivateLinkResourcePropertiesRequiredZoneNamesList =
+  PrivateLinkResourcePropertiesRequiredMembersList as any as S.Schema<PrivateLinkResourcePropertiesRequiredZoneNamesList>;
+
 /** Properties of PrivateLinkResource */
 export interface PrivateLinkResourceProperties {
   /** The private link resource group id. */
@@ -436,6 +653,11 @@ export interface PrivateLinkResourceProperties {
   /** The private link resource Private link DNS zone name. */
   requiredZoneNames?: PrivateLinkResourcePropertiesRequiredZoneNamesList;
 }
+const PrivateLinkResourceProperties = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<PrivateLinkResourceProperties>;
+
 export interface GetPrivateLinkResourceResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -448,6 +670,11 @@ export interface GetPrivateLinkResourceResponse {
   /** A resource that supports private link capabilities. */
   properties?: PrivateLinkResourceProperties;
 }
+const GetPrivateLinkResourceResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<GetPrivateLinkResourceResponse>;
+
 export interface GetWCFRelayRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -458,8 +685,12 @@ export interface GetWCFRelayRequest {
   /** The relay name. */
   relayName: string;
 }
+const GetWCFRelayRequest = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<GetWCFRelayRequest>;
+
 /** WCF relay type. */
 export type Relaytype = "NetTcp" | "Http";
+const Relaytype = S.String;
+
 /** Properties of the WCF relay. */
 export interface WcfRelayProperties {
   /** Returns true if the relay is dynamic; otherwise, false. */
@@ -479,6 +710,8 @@ export interface WcfRelayProperties {
   /** The usermetadata is a placeholder to store user-defined string data for the WCF Relay endpoint. For example, it can be used to store descriptive data, such as list of teams and their contact information. Also, user-defined configuration settings can be stored. */
   userMetadata?: string;
 }
+const WcfRelayProperties = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<WcfRelayProperties>;
+
 export interface GetWCFRelayResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -493,6 +726,8 @@ export interface GetWCFRelayResponse {
   /** The geo-location where the resource lives */
   location?: string;
 }
+const GetWCFRelayResponse = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<GetWCFRelayResponse>;
+
 export interface GetWCFRelayAuthorizationRuleRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -505,6 +740,11 @@ export interface GetWCFRelayAuthorizationRuleRequest {
   /** The authorization rule name. */
   authorizationRuleName: string;
 }
+const GetWCFRelayAuthorizationRuleRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<GetWCFRelayAuthorizationRuleRequest>;
+
 export interface GetWCFRelayAuthorizationRuleResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -519,6 +759,9 @@ export interface GetWCFRelayAuthorizationRuleResponse {
   /** The geo-location where the resource lives */
   location?: string;
 }
+const GetWCFRelayAuthorizationRuleResponse =
+  GetHybridConnectionAuthorizationRuleResponse as any as S.Schema<GetWCFRelayAuthorizationRuleResponse>;
+
 /** Properties of the HybridConnection. */
 export interface HybridConnectionPropertiesInput {
   /** Returns true if client authorization is needed for this hybrid connection; otherwise, false. */
@@ -526,6 +769,11 @@ export interface HybridConnectionPropertiesInput {
   /** The usermetadata is a placeholder to store user-defined string data for the hybrid connection endpoint. For example, it can be used to store descriptive data, such as a list of teams and their contact information. Also, user-defined configuration settings can be stored. */
   userMetadata?: string;
 }
+const HybridConnectionPropertiesInput = /*@__PURE__*/ __L.at(
+  __c5,
+  4,
+) as any as S.Schema<HybridConnectionPropertiesInput>;
+
 export interface HybridConnectionsCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -538,6 +786,11 @@ export interface HybridConnectionsCreateOrUpdateRequest {
   /** Properties of the HybridConnection. */
   properties?: HybridConnectionPropertiesInput;
 }
+const HybridConnectionsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  5,
+) as any as S.Schema<HybridConnectionsCreateOrUpdateRequest>;
+
 export interface HybridConnectionsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -552,6 +805,9 @@ export interface HybridConnectionsCreateOrUpdateResponse {
   /** The geo-location where the resource lives */
   location?: string;
 }
+const HybridConnectionsCreateOrUpdateResponse =
+  GetHybridConnectionResponse as any as S.Schema<HybridConnectionsCreateOrUpdateResponse>;
+
 export interface HybridConnectionsCreateOrUpdateAuthorizationRuleRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -566,6 +822,11 @@ export interface HybridConnectionsCreateOrUpdateAuthorizationRuleRequest {
   /** Properties supplied to create or update AuthorizationRule */
   properties?: AuthorizationRuleProperties;
 }
+const HybridConnectionsCreateOrUpdateAuthorizationRuleRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  6,
+) as any as S.Schema<HybridConnectionsCreateOrUpdateAuthorizationRuleRequest>;
+
 export interface HybridConnectionsCreateOrUpdateAuthorizationRuleResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -580,6 +841,11 @@ export interface HybridConnectionsCreateOrUpdateAuthorizationRuleResponse {
   /** The geo-location where the resource lives */
   location?: string;
 }
+const HybridConnectionsCreateOrUpdateAuthorizationRuleResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  7,
+) as any as S.Schema<HybridConnectionsCreateOrUpdateAuthorizationRuleResponse>;
+
 export interface ListHybridConnectionAuthorizationRulesRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -590,6 +856,11 @@ export interface ListHybridConnectionAuthorizationRulesRequest {
   /** The hybrid connection name. */
   hybridConnectionName: string;
 }
+const ListHybridConnectionAuthorizationRulesRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<ListHybridConnectionAuthorizationRulesRequest>;
+
 /** Single item in a List or Get AuthorizationRule operation */
 export interface AuthorizationRule {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -605,8 +876,15 @@ export interface AuthorizationRule {
   /** The geo-location where the resource lives */
   location?: string;
 }
+const AuthorizationRule = /*@__PURE__*/ __L.at(__c6, 1) as any as S.Schema<AuthorizationRule>;
+
 /** The AuthorizationRule items on this page */
 export type AuthorizationRuleListResultValueList = Array<AuthorizationRule>;
+const AuthorizationRuleListResultValueList = /*@__PURE__*/ __L.at(
+  __c6,
+  2,
+) as any as S.Schema<AuthorizationRuleListResultValueList>;
+
 /** The response of a AuthorizationRule list operation. */
 export interface AuthorizationRuleListResult {
   /** The AuthorizationRule items on this page */
@@ -614,6 +892,11 @@ export interface AuthorizationRuleListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const AuthorizationRuleListResult = /*@__PURE__*/ __L.at(
+  __c6,
+  3,
+) as any as S.Schema<AuthorizationRuleListResult>;
+
 export interface ListHybridConnectionByNamespaceRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -622,6 +905,11 @@ export interface ListHybridConnectionByNamespaceRequest {
   /** The namespace name */
   namespaceName: string;
 }
+const ListHybridConnectionByNamespaceRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  4,
+) as any as S.Schema<ListHybridConnectionByNamespaceRequest>;
+
 /** Description of hybrid connection resource. */
 export interface HybridConnection {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -637,8 +925,15 @@ export interface HybridConnection {
   /** The geo-location where the resource lives */
   location?: string;
 }
+const HybridConnection = /*@__PURE__*/ __L.at(__c6, 5) as any as S.Schema<HybridConnection>;
+
 /** The HybridConnection items on this page */
 export type HybridConnectionListResultValueList = Array<HybridConnection>;
+const HybridConnectionListResultValueList = /*@__PURE__*/ __L.at(
+  __c6,
+  6,
+) as any as S.Schema<HybridConnectionListResultValueList>;
+
 /** The response of a HybridConnection list operation. */
 export interface HybridConnectionListResult {
   /** The HybridConnection items on this page */
@@ -646,6 +941,11 @@ export interface HybridConnectionListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const HybridConnectionListResult = /*@__PURE__*/ __L.at(
+  __c6,
+  7,
+) as any as S.Schema<HybridConnectionListResult>;
+
 export interface ListHybridConnectionKeysRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -658,6 +958,11 @@ export interface ListHybridConnectionKeysRequest {
   /** The authorization rule name. */
   authorizationRuleName: string;
 }
+const ListHybridConnectionKeysRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  0,
+) as any as S.Schema<ListHybridConnectionKeysRequest>;
+
 /** Namespace/Relay Connection String */
 export interface AccessKeys {
   /** Primary connection string of the created namespace authorization rule. */
@@ -671,6 +976,8 @@ export interface AccessKeys {
   /** A string that describes the authorization rule. */
   keyName?: string;
 }
+const AccessKeys = /*@__PURE__*/ __L.at(__c7, 1) as any as S.Schema<AccessKeys>;
+
 export interface ListNamespaceAuthorizationRulesRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -679,12 +986,22 @@ export interface ListNamespaceAuthorizationRulesRequest {
   /** The namespace name */
   namespaceName: string;
 }
+const ListNamespaceAuthorizationRulesRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  2,
+) as any as S.Schema<ListNamespaceAuthorizationRulesRequest>;
+
 export interface ListNamespaceByResourceGroupRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
+const ListNamespaceByResourceGroupRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  3,
+) as any as S.Schema<ListNamespaceByResourceGroupRequest>;
+
 /** Resource tags. */
 export type RelayNamespaceTagsMap = { [key: string]: string | undefined };
 /** Description of a namespace resource. */
@@ -706,8 +1023,15 @@ export interface RelayNamespace {
   /** SKU of the namespace. */
   sku?: Sku;
 }
+const RelayNamespace = GetNamespaceResponse as any as S.Schema<RelayNamespace>;
+
 /** The RelayNamespace items on this page */
 export type RelayNamespaceListResultValueList = Array<RelayNamespace>;
+const RelayNamespaceListResultValueList = /*@__PURE__*/ __L.at(
+  __c7,
+  4,
+) as any as S.Schema<RelayNamespaceListResultValueList>;
+
 /** The response of a RelayNamespace list operation. */
 export interface RelayNamespaceListResult {
   /** The RelayNamespace items on this page */
@@ -715,6 +1039,11 @@ export interface RelayNamespaceListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const RelayNamespaceListResult = /*@__PURE__*/ __L.at(
+  __c7,
+  5,
+) as any as S.Schema<RelayNamespaceListResult>;
+
 export interface ListNamespaceKeysRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -725,11 +1054,26 @@ export interface ListNamespaceKeysRequest {
   /** The authorization rule name. */
   authorizationRuleName: string;
 }
+const ListNamespaceKeysRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  6,
+) as any as S.Schema<ListNamespaceKeysRequest>;
+
 export interface ListNamespacesRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
 }
+const ListNamespacesRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  7,
+) as any as S.Schema<ListNamespacesRequest>;
+
 export interface ListOperationsRequest {}
+const ListOperationsRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  0,
+) as any as S.Schema<ListOperationsRequest>;
+
 /** Localized display information for this particular operation. */
 export interface OperationDisplay {
   /** The localized friendly form of the resource provider name, e.g. "Microsoft Monitoring Insights" or "Microsoft Compute". */
@@ -741,10 +1085,16 @@ export interface OperationDisplay {
   /** The short, localized friendly description of the operation; suitable for tool tips and detailed views. */
   description?: string;
 }
+const OperationDisplay = /*@__PURE__*/ __L.at(__c8, 1) as any as S.Schema<OperationDisplay>;
+
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
 export type OperationOrigin = "user" | "system" | "user,system";
+const OperationOrigin = S.String;
+
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
 export type OperationActionType = "Internal";
+const OperationActionType = S.String;
+
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
 export interface Operation {
   /** The name of the operation, as per Resource-Based Access Control (RBAC). Examples: "Microsoft.Compute/virtualMachines/write", "Microsoft.Compute/virtualMachines/capture/action" */
@@ -758,14 +1108,26 @@ export interface Operation {
   /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
   actionType?: OperationActionType;
 }
+const Operation = /*@__PURE__*/ __L.at(__c8, 2) as any as S.Schema<Operation>;
+
 /** List of operations supported by the resource provider */
 export type ListOperationsResponseValueList = Array<Operation>;
+const ListOperationsResponseValueList = /*@__PURE__*/ __L.at(
+  __c8,
+  3,
+) as any as S.Schema<ListOperationsResponseValueList>;
+
 export interface ListOperationsResponse {
   /** List of operations supported by the resource provider */
   value?: ListOperationsResponseValueList;
   /** URL to get the next set of operation list results (if there are any). */
   nextLink?: string;
 }
+const ListOperationsResponse = /*@__PURE__*/ __L.at(
+  __c8,
+  4,
+) as any as S.Schema<ListOperationsResponse>;
+
 export interface ListPrivateEndpointConnectionsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -774,8 +1136,16 @@ export interface ListPrivateEndpointConnectionsRequest {
   /** The namespace name */
   namespaceName: string;
 }
+const ListPrivateEndpointConnectionsRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  5,
+) as any as S.Schema<ListPrivateEndpointConnectionsRequest>;
+
 /** The PrivateEndpointConnection items on this page */
 export type PrivateEndpointConnectionListResultValueList = Array<PrivateEndpointConnection>;
+const PrivateEndpointConnectionListResultValueList =
+  RelayNamespacePropertiesPrivateEndpointConnectionsList as any as S.Schema<PrivateEndpointConnectionListResultValueList>;
+
 /** The response of a PrivateEndpointConnection list operation. */
 export interface PrivateEndpointConnectionListResult {
   /** The PrivateEndpointConnection items on this page */
@@ -783,6 +1153,11 @@ export interface PrivateEndpointConnectionListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const PrivateEndpointConnectionListResult = /*@__PURE__*/ __L.at(
+  __c8,
+  6,
+) as any as S.Schema<PrivateEndpointConnectionListResult>;
+
 export interface ListPrivateLinkResourcesRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -791,6 +1166,11 @@ export interface ListPrivateLinkResourcesRequest {
   /** The namespace name */
   namespaceName: string;
 }
+const ListPrivateLinkResourcesRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  7,
+) as any as S.Schema<ListPrivateLinkResourcesRequest>;
+
 /** A resource that supports private link capabilities. */
 export interface PrivateLinkResource {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -804,8 +1184,15 @@ export interface PrivateLinkResource {
   /** A resource that supports private link capabilities. */
   properties?: PrivateLinkResourceProperties;
 }
+const PrivateLinkResource = /*@__PURE__*/ __L.at(__c9, 0) as any as S.Schema<PrivateLinkResource>;
+
 /** A collection of private link resources */
 export type PrivateLinkResourcesListResultValueList = Array<PrivateLinkResource>;
+const PrivateLinkResourcesListResultValueList = /*@__PURE__*/ __L.at(
+  __c9,
+  1,
+) as any as S.Schema<PrivateLinkResourcesListResultValueList>;
+
 /** Result of the List private link resources operation. */
 export interface PrivateLinkResourcesListResult {
   /** A collection of private link resources */
@@ -813,6 +1200,11 @@ export interface PrivateLinkResourcesListResult {
   /** A link for the next page of private link resources. */
   nextLink?: string;
 }
+const PrivateLinkResourcesListResult = /*@__PURE__*/ __L.at(
+  __c9,
+  2,
+) as any as S.Schema<PrivateLinkResourcesListResult>;
+
 export interface ListWCFRelayAuthorizationRulesRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -823,6 +1215,11 @@ export interface ListWCFRelayAuthorizationRulesRequest {
   /** The relay name. */
   relayName: string;
 }
+const ListWCFRelayAuthorizationRulesRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  3,
+) as any as S.Schema<ListWCFRelayAuthorizationRulesRequest>;
+
 export interface ListWCFRelayByNamespaceRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -831,6 +1228,11 @@ export interface ListWCFRelayByNamespaceRequest {
   /** The namespace name */
   namespaceName: string;
 }
+const ListWCFRelayByNamespaceRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  4,
+) as any as S.Schema<ListWCFRelayByNamespaceRequest>;
+
 /** Description of the WCF relay resource. */
 export interface WcfRelay {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -846,8 +1248,15 @@ export interface WcfRelay {
   /** The geo-location where the resource lives */
   location?: string;
 }
+const WcfRelay = GetWCFRelayResponse as any as S.Schema<WcfRelay>;
+
 /** The WcfRelay items on this page */
 export type WcfRelaysListResultValueList = Array<WcfRelay>;
+const WcfRelaysListResultValueList = /*@__PURE__*/ __L.at(
+  __c9,
+  5,
+) as any as S.Schema<WcfRelaysListResultValueList>;
+
 /** The response of the list WCF relay operation. */
 export interface WcfRelaysListResult {
   /** The WcfRelay items on this page */
@@ -855,6 +1264,8 @@ export interface WcfRelaysListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const WcfRelaysListResult = /*@__PURE__*/ __L.at(__c9, 6) as any as S.Schema<WcfRelaysListResult>;
+
 export interface ListWCFRelayKeysRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -867,21 +1278,41 @@ export interface ListWCFRelayKeysRequest {
   /** The authorization rule name. */
   authorizationRuleName: string;
 }
+const ListWCFRelayKeysRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  7,
+) as any as S.Schema<ListWCFRelayKeysRequest>;
+
 /** Resource tags. */
 export type NamespacesCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
+const NamespacesCreateOrUpdateRequestTagsMap =
+  GetNamespaceResponseTagsMap as any as S.Schema<NamespacesCreateOrUpdateRequestTagsMap>;
+
 /** Properties of the PrivateEndpointConnection. */
 export interface PrivateEndpointConnectionInput {
   /** Properties of the PrivateEndpointConnection. */
   properties?: PrivateEndpointConnectionProperties;
 }
+const PrivateEndpointConnectionInput = /*@__PURE__*/ __L.at(
+  __c10,
+  0,
+) as any as S.Schema<PrivateEndpointConnectionInput>;
+
 /** List of private endpoint connections. */
 export type RelayNamespacePropertiesInputPrivateEndpointConnectionsList =
   Array<PrivateEndpointConnectionInput>;
+const RelayNamespacePropertiesInputPrivateEndpointConnectionsList = /*@__PURE__*/ __L.at(
+  __c10,
+  1,
+) as any as S.Schema<RelayNamespacePropertiesInputPrivateEndpointConnectionsList>;
+
 /** This determines if traffic is allowed over public network. By default it is enabled. */
 export type RelayNamespacePropertiesInputPublicNetworkAccess =
   | "Enabled"
   | "Disabled"
   | "SecuredByPerimeter";
+const RelayNamespacePropertiesInputPublicNetworkAccess = S.String;
+
 /** Properties of the namespace. */
 export interface RelayNamespacePropertiesInput {
   /** List of private endpoint connections. */
@@ -891,6 +1322,11 @@ export interface RelayNamespacePropertiesInput {
   /** The minimum TLS version for the namespace. Supported values are 1.2 and 1.3. The service defaults to 1.2 when the property is omitted. Existing namespaces configured with TLS 1.0 or 1.1 are reported as TLS 1.2. */
   minimumTlsVersion?: TlsVersion | (string & {});
 }
+const RelayNamespacePropertiesInput = /*@__PURE__*/ __L.at(
+  __c10,
+  2,
+) as any as S.Schema<RelayNamespacePropertiesInput>;
+
 export interface NamespacesCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -907,8 +1343,16 @@ export interface NamespacesCreateOrUpdateRequest {
   /** SKU of the namespace. */
   sku?: Sku;
 }
+const NamespacesCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  3,
+) as any as S.Schema<NamespacesCreateOrUpdateRequest>;
+
 /** Resource tags. */
 export type NamespacesCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
+const NamespacesCreateOrUpdateResponseTagsMap =
+  GetNamespaceResponseTagsMap as any as S.Schema<NamespacesCreateOrUpdateResponseTagsMap>;
+
 export interface NamespacesCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -927,6 +1371,11 @@ export interface NamespacesCreateOrUpdateResponse {
   /** SKU of the namespace. */
   sku?: Sku;
 }
+const NamespacesCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c10,
+  4,
+) as any as S.Schema<NamespacesCreateOrUpdateResponse>;
+
 export interface NamespacesCreateOrUpdateAuthorizationRuleRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -939,6 +1388,11 @@ export interface NamespacesCreateOrUpdateAuthorizationRuleRequest {
   /** Properties supplied to create or update AuthorizationRule */
   properties?: AuthorizationRuleProperties;
 }
+const NamespacesCreateOrUpdateAuthorizationRuleRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  5,
+) as any as S.Schema<NamespacesCreateOrUpdateAuthorizationRuleRequest>;
+
 export interface NamespacesCreateOrUpdateAuthorizationRuleResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -953,6 +1407,9 @@ export interface NamespacesCreateOrUpdateAuthorizationRuleResponse {
   /** The geo-location where the resource lives */
   location?: string;
 }
+const NamespacesCreateOrUpdateAuthorizationRuleResponse =
+  GetHybridConnectionAuthorizationRuleResponse as any as S.Schema<NamespacesCreateOrUpdateAuthorizationRuleResponse>;
+
 export interface NamespacesCreateOrUpdateNetworkRuleSetRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -963,6 +1420,11 @@ export interface NamespacesCreateOrUpdateNetworkRuleSetRequest {
   /** NetworkRuleSet properties */
   properties?: NetworkRuleSetProperties;
 }
+const NamespacesCreateOrUpdateNetworkRuleSetRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  6,
+) as any as S.Schema<NamespacesCreateOrUpdateNetworkRuleSetRequest>;
+
 export interface NamespacesCreateOrUpdateNetworkRuleSetResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -975,6 +1437,9 @@ export interface NamespacesCreateOrUpdateNetworkRuleSetResponse {
   /** NetworkRuleSet properties */
   properties?: NetworkRuleSetProperties;
 }
+const NamespacesCreateOrUpdateNetworkRuleSetResponse =
+  GetNamespaceNetworkRuleSetResponse as any as S.Schema<NamespacesCreateOrUpdateNetworkRuleSetResponse>;
+
 export interface PrivateEndpointConnectionsCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -987,6 +1452,11 @@ export interface PrivateEndpointConnectionsCreateOrUpdateRequest {
   /** Properties of the PrivateEndpointConnection. */
   properties?: PrivateEndpointConnectionProperties;
 }
+const PrivateEndpointConnectionsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  7,
+) as any as S.Schema<PrivateEndpointConnectionsCreateOrUpdateRequest>;
+
 export interface PrivateEndpointConnectionsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -1001,8 +1471,13 @@ export interface PrivateEndpointConnectionsCreateOrUpdateResponse {
   /** The geo-location where the resource lives */
   location?: string;
 }
+const PrivateEndpointConnectionsCreateOrUpdateResponse =
+  PrivateEndpointConnection as any as S.Schema<PrivateEndpointConnectionsCreateOrUpdateResponse>;
+
 /** The access key to regenerate. */
 export type KeyType = "PrimaryKey" | "SecondaryKey";
+const KeyType = S.String;
+
 export interface RegenerateHybridConnectionKeysRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1019,6 +1494,11 @@ export interface RegenerateHybridConnectionKeysRequest {
   /** Optional. If the key value is provided, this is set to key type, or autogenerated key value set for key type. */
   key?: string;
 }
+const RegenerateHybridConnectionKeysRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  0,
+) as any as S.Schema<RegenerateHybridConnectionKeysRequest>;
+
 export interface RegenerateNamespaceKeysRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1033,6 +1513,11 @@ export interface RegenerateNamespaceKeysRequest {
   /** Optional. If the key value is provided, this is set to key type, or autogenerated key value set for key type. */
   key?: string;
 }
+const RegenerateNamespaceKeysRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  1,
+) as any as S.Schema<RegenerateNamespaceKeysRequest>;
+
 export interface RegenerateWCFRelayKeysRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1049,8 +1534,16 @@ export interface RegenerateWCFRelayKeysRequest {
   /** Optional. If the key value is provided, this is set to key type, or autogenerated key value set for key type. */
   key?: string;
 }
+const RegenerateWCFRelayKeysRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  2,
+) as any as S.Schema<RegenerateWCFRelayKeysRequest>;
+
 /** Resource tags. */
 export type UpdateNamespaceRequestTagsMap = { [key: string]: string | undefined };
+const UpdateNamespaceRequestTagsMap =
+  GetNamespaceResponseTagsMap as any as S.Schema<UpdateNamespaceRequestTagsMap>;
+
 export interface UpdateNamespaceRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1065,6 +1558,11 @@ export interface UpdateNamespaceRequest {
   /** Description of Relay namespace. */
   properties?: RelayNamespacePropertiesInput;
 }
+const UpdateNamespaceRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  3,
+) as any as S.Schema<UpdateNamespaceRequest>;
+
 /** Resource tags. */
 export type UpdateNamespaceResponseTagsMap = { [key: string]: string | undefined };
 export interface UpdateNamespaceResponse {
@@ -1085,6 +1583,8 @@ export interface UpdateNamespaceResponse {
   /** SKU of the namespace. */
   sku?: Sku;
 }
+const UpdateNamespaceResponse = GetNamespaceResponse as any as S.Schema<UpdateNamespaceResponse>;
+
 /** Properties of the WCF relay. */
 export interface WcfRelayPropertiesInput {
   /** WCF relay type. */
@@ -1096,6 +1596,11 @@ export interface WcfRelayPropertiesInput {
   /** The usermetadata is a placeholder to store user-defined string data for the WCF Relay endpoint. For example, it can be used to store descriptive data, such as list of teams and their contact information. Also, user-defined configuration settings can be stored. */
   userMetadata?: string;
 }
+const WcfRelayPropertiesInput = /*@__PURE__*/ __L.at(
+  __c11,
+  4,
+) as any as S.Schema<WcfRelayPropertiesInput>;
+
 export interface WCFRelaysCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1108,6 +1613,11 @@ export interface WCFRelaysCreateOrUpdateRequest {
   /** Properties of the WCF relay. */
   properties?: WcfRelayPropertiesInput;
 }
+const WCFRelaysCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  5,
+) as any as S.Schema<WCFRelaysCreateOrUpdateRequest>;
+
 export interface WCFRelaysCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -1122,6 +1632,11 @@ export interface WCFRelaysCreateOrUpdateResponse {
   /** The geo-location where the resource lives */
   location?: string;
 }
+const WCFRelaysCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c11,
+  6,
+) as any as S.Schema<WCFRelaysCreateOrUpdateResponse>;
+
 export interface WCFRelaysCreateOrUpdateAuthorizationRuleRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1136,6 +1651,11 @@ export interface WCFRelaysCreateOrUpdateAuthorizationRuleRequest {
   /** Properties supplied to create or update AuthorizationRule */
   properties?: AuthorizationRuleProperties;
 }
+const WCFRelaysCreateOrUpdateAuthorizationRuleRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  7,
+) as any as S.Schema<WCFRelaysCreateOrUpdateAuthorizationRuleRequest>;
+
 export interface WCFRelaysCreateOrUpdateAuthorizationRuleResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -1150,6 +1670,9 @@ export interface WCFRelaysCreateOrUpdateAuthorizationRuleResponse {
   /** The geo-location where the resource lives */
   location?: string;
 }
+const WCFRelaysCreateOrUpdateAuthorizationRuleResponse =
+  GetHybridConnectionAuthorizationRuleResponse as any as S.Schema<WCFRelaysCreateOrUpdateAuthorizationRuleResponse>;
+
 export type CheckNamespaceNameAvailabilityError = AzureOpError;
 /** Check the specified namespace name availability. */
 export const CheckNamespaceNameAvailability: API.OperationMethod<
@@ -1158,8 +1681,8 @@ export const CheckNamespaceNameAvailability: API.OperationMethod<
   CheckNamespaceNameAvailabilityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<CheckNamespaceNameAvailabilityRequest>,
-  output: __S(1) as any as S.Schema<CheckNameAvailabilityResult>,
+  input: CheckNamespaceNameAvailabilityRequest,
+  output: CheckNameAvailabilityResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1173,8 +1696,8 @@ export const DeleteHybridConnection: API.OperationMethod<
   DeleteHybridConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2) as any as S.Schema<DeleteHybridConnectionRequest>,
-  output: __S(3) as any as S.Schema<DeleteHybridConnectionResponse>,
+  input: DeleteHybridConnectionRequest,
+  output: DeleteHybridConnectionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1188,8 +1711,8 @@ export const DeleteHybridConnectionAuthorizationRule: API.OperationMethod<
   DeleteHybridConnectionAuthorizationRuleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4) as any as S.Schema<DeleteHybridConnectionAuthorizationRuleRequest>,
-  output: __S(5) as any as S.Schema<DeleteHybridConnectionAuthorizationRuleResponse>,
+  input: DeleteHybridConnectionAuthorizationRuleRequest,
+  output: DeleteHybridConnectionAuthorizationRuleResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1203,8 +1726,8 @@ export const DeleteNamespace: API.OperationMethod<
   DeleteNamespaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6) as any as S.Schema<DeleteNamespaceRequest>,
-  output: __S(3) as any as S.Schema<DeleteNamespaceResponse>,
+  input: DeleteNamespaceRequest,
+  output: DeleteNamespaceResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1218,8 +1741,8 @@ export const DeleteNamespaceAuthorizationRule: API.OperationMethod<
   DeleteNamespaceAuthorizationRuleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7) as any as S.Schema<DeleteNamespaceAuthorizationRuleRequest>,
-  output: __S(5) as any as S.Schema<DeleteNamespaceAuthorizationRuleResponse>,
+  input: DeleteNamespaceAuthorizationRuleRequest,
+  output: DeleteNamespaceAuthorizationRuleResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1233,8 +1756,8 @@ export const DeletePrivateEndpointConnection: API.OperationMethod<
   DeletePrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8) as any as S.Schema<DeletePrivateEndpointConnectionRequest>,
-  output: __S(5) as any as S.Schema<DeletePrivateEndpointConnectionResponse>,
+  input: DeletePrivateEndpointConnectionRequest,
+  output: DeletePrivateEndpointConnectionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1248,8 +1771,8 @@ export const DeleteWCFRelay: API.OperationMethod<
   DeleteWCFRelayError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9) as any as S.Schema<DeleteWCFRelayRequest>,
-  output: __S(3) as any as S.Schema<DeleteWCFRelayResponse>,
+  input: DeleteWCFRelayRequest,
+  output: DeleteWCFRelayResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1263,8 +1786,8 @@ export const DeleteWCFRelayAuthorizationRule: API.OperationMethod<
   DeleteWCFRelayAuthorizationRuleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10) as any as S.Schema<DeleteWCFRelayAuthorizationRuleRequest>,
-  output: __S(5) as any as S.Schema<DeleteWCFRelayAuthorizationRuleResponse>,
+  input: DeleteWCFRelayAuthorizationRuleRequest,
+  output: DeleteWCFRelayAuthorizationRuleResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1278,8 +1801,8 @@ export const GetHybridConnection: API.OperationMethod<
   GetHybridConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11) as any as S.Schema<GetHybridConnectionRequest>,
-  output: __S(14) as any as S.Schema<GetHybridConnectionResponse>,
+  input: GetHybridConnectionRequest,
+  output: GetHybridConnectionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1293,8 +1816,8 @@ export const GetHybridConnectionAuthorizationRule: API.OperationMethod<
   GetHybridConnectionAuthorizationRuleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15) as any as S.Schema<GetHybridConnectionAuthorizationRuleRequest>,
-  output: __S(18) as any as S.Schema<GetHybridConnectionAuthorizationRuleResponse>,
+  input: GetHybridConnectionAuthorizationRuleRequest,
+  output: GetHybridConnectionAuthorizationRuleResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1308,8 +1831,8 @@ export const GetNamespace: API.OperationMethod<
   GetNamespaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19) as any as S.Schema<GetNamespaceRequest>,
-  output: __S(28) as any as S.Schema<GetNamespaceResponse>,
+  input: GetNamespaceRequest,
+  output: GetNamespaceResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1323,8 +1846,8 @@ export const GetNamespaceAuthorizationRule: API.OperationMethod<
   GetNamespaceAuthorizationRuleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29) as any as S.Schema<GetNamespaceAuthorizationRuleRequest>,
-  output: __S(18) as any as S.Schema<GetNamespaceAuthorizationRuleResponse>,
+  input: GetNamespaceAuthorizationRuleRequest,
+  output: GetNamespaceAuthorizationRuleResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1338,8 +1861,8 @@ export const GetNamespaceNetworkRuleSet: API.OperationMethod<
   GetNamespaceNetworkRuleSetError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30) as any as S.Schema<GetNamespaceNetworkRuleSetRequest>,
-  output: __S(34) as any as S.Schema<GetNamespaceNetworkRuleSetResponse>,
+  input: GetNamespaceNetworkRuleSetRequest,
+  output: GetNamespaceNetworkRuleSetResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1353,8 +1876,8 @@ export const GetPrivateEndpointConnection: API.OperationMethod<
   GetPrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35) as any as S.Schema<GetPrivateEndpointConnectionRequest>,
-  output: __S(24) as any as S.Schema<GetPrivateEndpointConnectionResponse>,
+  input: GetPrivateEndpointConnectionRequest,
+  output: GetPrivateEndpointConnectionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1368,8 +1891,8 @@ export const GetPrivateLinkResource: API.OperationMethod<
   GetPrivateLinkResourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36) as any as S.Schema<GetPrivateLinkResourceRequest>,
-  output: __S(39) as any as S.Schema<GetPrivateLinkResourceResponse>,
+  input: GetPrivateLinkResourceRequest,
+  output: GetPrivateLinkResourceResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1383,8 +1906,8 @@ export const GetWCFRelay: API.OperationMethod<
   GetWCFRelayError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40) as any as S.Schema<GetWCFRelayRequest>,
-  output: __S(42) as any as S.Schema<GetWCFRelayResponse>,
+  input: GetWCFRelayRequest,
+  output: GetWCFRelayResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1398,8 +1921,8 @@ export const GetWCFRelayAuthorizationRule: API.OperationMethod<
   GetWCFRelayAuthorizationRuleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43) as any as S.Schema<GetWCFRelayAuthorizationRuleRequest>,
-  output: __S(18) as any as S.Schema<GetWCFRelayAuthorizationRuleResponse>,
+  input: GetWCFRelayAuthorizationRuleRequest,
+  output: GetWCFRelayAuthorizationRuleResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1413,8 +1936,8 @@ export const HybridConnectionsCreateOrUpdate: API.OperationMethod<
   HybridConnectionsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45) as any as S.Schema<HybridConnectionsCreateOrUpdateRequest>,
-  output: __S(14) as any as S.Schema<HybridConnectionsCreateOrUpdateResponse>,
+  input: HybridConnectionsCreateOrUpdateRequest,
+  output: HybridConnectionsCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1428,8 +1951,8 @@ export const HybridConnectionsCreateOrUpdateAuthorizationRule: API.OperationMeth
   HybridConnectionsCreateOrUpdateAuthorizationRuleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(46) as any as S.Schema<HybridConnectionsCreateOrUpdateAuthorizationRuleRequest>,
-  output: __S(47) as any as S.Schema<HybridConnectionsCreateOrUpdateAuthorizationRuleResponse>,
+  input: HybridConnectionsCreateOrUpdateAuthorizationRuleRequest,
+  output: HybridConnectionsCreateOrUpdateAuthorizationRuleResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1443,8 +1966,8 @@ export const ListHybridConnectionAuthorizationRules: API.OperationMethod<
   ListHybridConnectionAuthorizationRulesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48) as any as S.Schema<ListHybridConnectionAuthorizationRulesRequest>,
-  output: __S(51) as any as S.Schema<AuthorizationRuleListResult>,
+  input: ListHybridConnectionAuthorizationRulesRequest,
+  output: AuthorizationRuleListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1458,8 +1981,8 @@ export const ListHybridConnectionByNamespace: API.OperationMethod<
   ListHybridConnectionByNamespaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(52) as any as S.Schema<ListHybridConnectionByNamespaceRequest>,
-  output: __S(55) as any as S.Schema<HybridConnectionListResult>,
+  input: ListHybridConnectionByNamespaceRequest,
+  output: HybridConnectionListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1473,8 +1996,8 @@ export const ListHybridConnectionKeys: API.OperationMethod<
   ListHybridConnectionKeysError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56) as any as S.Schema<ListHybridConnectionKeysRequest>,
-  output: __S(57) as any as S.Schema<AccessKeys>,
+  input: ListHybridConnectionKeysRequest,
+  output: AccessKeys,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1488,8 +2011,8 @@ export const ListNamespaceAuthorizationRules: API.OperationMethod<
   ListNamespaceAuthorizationRulesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(58) as any as S.Schema<ListNamespaceAuthorizationRulesRequest>,
-  output: __S(51) as any as S.Schema<AuthorizationRuleListResult>,
+  input: ListNamespaceAuthorizationRulesRequest,
+  output: AuthorizationRuleListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1503,8 +2026,8 @@ export const ListNamespaceByResourceGroup: API.OperationMethod<
   ListNamespaceByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(59) as any as S.Schema<ListNamespaceByResourceGroupRequest>,
-  output: __S(61) as any as S.Schema<RelayNamespaceListResult>,
+  input: ListNamespaceByResourceGroupRequest,
+  output: RelayNamespaceListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1518,8 +2041,8 @@ export const ListNamespaceKeys: API.OperationMethod<
   ListNamespaceKeysError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(62) as any as S.Schema<ListNamespaceKeysRequest>,
-  output: __S(57) as any as S.Schema<AccessKeys>,
+  input: ListNamespaceKeysRequest,
+  output: AccessKeys,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1533,8 +2056,8 @@ export const ListNamespaces: API.OperationMethod<
   ListNamespacesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(63) as any as S.Schema<ListNamespacesRequest>,
-  output: __S(61) as any as S.Schema<RelayNamespaceListResult>,
+  input: ListNamespacesRequest,
+  output: RelayNamespaceListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1548,8 +2071,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(64) as any as S.Schema<ListOperationsRequest>,
-  output: __S(68) as any as S.Schema<ListOperationsResponse>,
+  input: ListOperationsRequest,
+  output: ListOperationsResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1563,8 +2086,8 @@ export const ListPrivateEndpointConnections: API.OperationMethod<
   ListPrivateEndpointConnectionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(69) as any as S.Schema<ListPrivateEndpointConnectionsRequest>,
-  output: __S(70) as any as S.Schema<PrivateEndpointConnectionListResult>,
+  input: ListPrivateEndpointConnectionsRequest,
+  output: PrivateEndpointConnectionListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1578,8 +2101,8 @@ export const ListPrivateLinkResources: API.OperationMethod<
   ListPrivateLinkResourcesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(71) as any as S.Schema<ListPrivateLinkResourcesRequest>,
-  output: __S(74) as any as S.Schema<PrivateLinkResourcesListResult>,
+  input: ListPrivateLinkResourcesRequest,
+  output: PrivateLinkResourcesListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1593,8 +2116,8 @@ export const ListWCFRelayAuthorizationRules: API.OperationMethod<
   ListWCFRelayAuthorizationRulesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(75) as any as S.Schema<ListWCFRelayAuthorizationRulesRequest>,
-  output: __S(51) as any as S.Schema<AuthorizationRuleListResult>,
+  input: ListWCFRelayAuthorizationRulesRequest,
+  output: AuthorizationRuleListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1608,8 +2131,8 @@ export const ListWCFRelayByNamespace: API.OperationMethod<
   ListWCFRelayByNamespaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(76) as any as S.Schema<ListWCFRelayByNamespaceRequest>,
-  output: __S(78) as any as S.Schema<WcfRelaysListResult>,
+  input: ListWCFRelayByNamespaceRequest,
+  output: WcfRelaysListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1623,8 +2146,8 @@ export const ListWCFRelayKeys: API.OperationMethod<
   ListWCFRelayKeysError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(79) as any as S.Schema<ListWCFRelayKeysRequest>,
-  output: __S(57) as any as S.Schema<AccessKeys>,
+  input: ListWCFRelayKeysRequest,
+  output: AccessKeys,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1638,8 +2161,8 @@ export const NamespacesCreateOrUpdate: API.OperationMethod<
   NamespacesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(83) as any as S.Schema<NamespacesCreateOrUpdateRequest>,
-  output: __S(84) as any as S.Schema<NamespacesCreateOrUpdateResponse>,
+  input: NamespacesCreateOrUpdateRequest,
+  output: NamespacesCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1653,8 +2176,8 @@ export const NamespacesCreateOrUpdateAuthorizationRule: API.OperationMethod<
   NamespacesCreateOrUpdateAuthorizationRuleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(85) as any as S.Schema<NamespacesCreateOrUpdateAuthorizationRuleRequest>,
-  output: __S(18) as any as S.Schema<NamespacesCreateOrUpdateAuthorizationRuleResponse>,
+  input: NamespacesCreateOrUpdateAuthorizationRuleRequest,
+  output: NamespacesCreateOrUpdateAuthorizationRuleResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1668,8 +2191,8 @@ export const NamespacesCreateOrUpdateNetworkRuleSet: API.OperationMethod<
   NamespacesCreateOrUpdateNetworkRuleSetError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(86) as any as S.Schema<NamespacesCreateOrUpdateNetworkRuleSetRequest>,
-  output: __S(34) as any as S.Schema<NamespacesCreateOrUpdateNetworkRuleSetResponse>,
+  input: NamespacesCreateOrUpdateNetworkRuleSetRequest,
+  output: NamespacesCreateOrUpdateNetworkRuleSetResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1683,8 +2206,8 @@ export const PrivateEndpointConnectionsCreateOrUpdate: API.OperationMethod<
   PrivateEndpointConnectionsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(87) as any as S.Schema<PrivateEndpointConnectionsCreateOrUpdateRequest>,
-  output: __S(24) as any as S.Schema<PrivateEndpointConnectionsCreateOrUpdateResponse>,
+  input: PrivateEndpointConnectionsCreateOrUpdateRequest,
+  output: PrivateEndpointConnectionsCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1698,8 +2221,8 @@ export const RegenerateHybridConnectionKeys: API.OperationMethod<
   RegenerateHybridConnectionKeysError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(88) as any as S.Schema<RegenerateHybridConnectionKeysRequest>,
-  output: __S(57) as any as S.Schema<AccessKeys>,
+  input: RegenerateHybridConnectionKeysRequest,
+  output: AccessKeys,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1713,8 +2236,8 @@ export const RegenerateNamespaceKeys: API.OperationMethod<
   RegenerateNamespaceKeysError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(89) as any as S.Schema<RegenerateNamespaceKeysRequest>,
-  output: __S(57) as any as S.Schema<AccessKeys>,
+  input: RegenerateNamespaceKeysRequest,
+  output: AccessKeys,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1728,8 +2251,8 @@ export const RegenerateWCFRelayKeys: API.OperationMethod<
   RegenerateWCFRelayKeysError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(90) as any as S.Schema<RegenerateWCFRelayKeysRequest>,
-  output: __S(57) as any as S.Schema<AccessKeys>,
+  input: RegenerateWCFRelayKeysRequest,
+  output: AccessKeys,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1743,8 +2266,8 @@ export const UpdateNamespace: API.OperationMethod<
   UpdateNamespaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(91) as any as S.Schema<UpdateNamespaceRequest>,
-  output: __S(28) as any as S.Schema<UpdateNamespaceResponse>,
+  input: UpdateNamespaceRequest,
+  output: UpdateNamespaceResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1758,8 +2281,8 @@ export const WCFRelaysCreateOrUpdate: API.OperationMethod<
   WCFRelaysCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(93) as any as S.Schema<WCFRelaysCreateOrUpdateRequest>,
-  output: __S(94) as any as S.Schema<WCFRelaysCreateOrUpdateResponse>,
+  input: WCFRelaysCreateOrUpdateRequest,
+  output: WCFRelaysCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1773,8 +2296,8 @@ export const WCFRelaysCreateOrUpdateAuthorizationRule: API.OperationMethod<
   WCFRelaysCreateOrUpdateAuthorizationRuleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(95) as any as S.Schema<WCFRelaysCreateOrUpdateAuthorizationRuleRequest>,
-  output: __S(18) as any as S.Schema<WCFRelaysCreateOrUpdateAuthorizationRuleResponse>,
+  input: WCFRelaysCreateOrUpdateAuthorizationRuleRequest,
+  output: WCFRelaysCreateOrUpdateAuthorizationRuleResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1804,7 +2327,7 @@ function __c0(j: number): any {
         S.Struct({
           message: S.optional(S.String),
           nameAvailable: S.optional(S.Boolean),
-          reason: S.optional(S.String),
+          reason: S.optional(UnavailableReason),
         }),
       ).annotate({
         identifier: "CheckNameAvailabilityResult",
@@ -1966,10 +2489,10 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
-          createdByType: S.optional(S.String),
+          createdByType: S.optional(SystemDataCreatedByType),
           createdAt: S.optional(S.String),
           lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(S.String),
+          lastModifiedByType: S.optional(SystemDataLastModifiedByType),
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "SystemData" });
@@ -1991,8 +2514,8 @@ function __c1(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(12)),
-          properties: S.optional(__S(13)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(HybridConnectionProperties),
           location: S.optional(S.String),
         }),
       ).annotate({
@@ -2022,11 +2545,11 @@ function __c1(j: number): any {
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
+      return S.Array(AccessRights);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          rights: __S(16),
+          rights: AuthorizationRulePropertiesRightsList,
         }),
       ).annotate({
         identifier: "AuthorizationRuleProperties",
@@ -2037,8 +2560,8 @@ function __c2(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(12)),
-          properties: S.optional(__S(17)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(AuthorizationRuleProperties),
           location: S.optional(S.String),
         }),
       ).annotate({
@@ -2070,16 +2593,16 @@ function __c2(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(S.String),
+          status: S.optional(PrivateLinkConnectionStatus),
           description: S.optional(S.String),
         }),
       ).annotate({ identifier: "ConnectionState" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          privateEndpoint: S.optional(__S(21)),
-          privateLinkServiceConnectionState: S.optional(__S(22)),
-          provisioningState: S.optional(S.String),
+          privateEndpoint: S.optional(PrivateEndpoint),
+          privateLinkServiceConnectionState: S.optional(ConnectionState),
+          provisioningState: S.optional(EndPointProvisioningState),
         }),
       ).annotate({
         identifier: "PrivateEndpointConnectionProperties",
@@ -2094,15 +2617,15 @@ function __c3(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(12)),
-          properties: S.optional(__S(23)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(PrivateEndpointConnectionProperties),
           location: S.optional(S.String),
         }),
       ).annotate({
         identifier: "PrivateEndpointConnection",
       });
     case 1:
-      return S.Array(__S(24));
+      return S.Array(PrivateEndpointConnection);
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -2112,16 +2635,18 @@ function __c3(j: number): any {
           updatedAt: S.optional(S.String),
           serviceBusEndpoint: S.optional(S.String),
           metricId: S.optional(S.String),
-          privateEndpointConnections: S.optional(__S(25)),
-          publicNetworkAccess: S.optional(S.String),
-          minimumTlsVersion: S.optional(S.String),
+          privateEndpointConnections: S.optional(
+            RelayNamespacePropertiesPrivateEndpointConnectionsList,
+          ),
+          publicNetworkAccess: S.optional(RelayNamespacePropertiesPublicNetworkAccess),
+          minimumTlsVersion: S.optional(TlsVersion),
         }),
       ).annotate({ identifier: "RelayNamespaceProperties" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          name: S.String,
-          tier: S.optional(S.String),
+          name: SkuName,
+          tier: S.optional(SkuTier),
         }),
       ).annotate({ identifier: "Sku" });
     case 4:
@@ -2130,11 +2655,11 @@ function __c3(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(12)),
-          tags: S.optional(__S(20)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(GetNamespaceResponseTagsMap),
           location: S.String,
-          properties: S.optional(__S(26)),
-          sku: S.optional(__S(27)),
+          properties: S.optional(RelayNamespaceProperties),
+          sku: S.optional(Sku),
         }),
       ).annotate({ identifier: "GetNamespaceResponse" });
     case 5:
@@ -2176,7 +2701,7 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ipMask: S.optional(S.String),
-          action: S.optional(S.String),
+          action: S.optional(NetworkRuleIPAction),
         }),
       ).annotate({ identifier: "NWRuleSetIpRules" });
   }
@@ -2184,14 +2709,14 @@ function __c3(j: number): any {
 function __c4(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(31));
+      return S.Array(NWRuleSetIpRules);
     case 1:
       return S.suspend(() =>
         S.Struct({
           trustedServiceAccessEnabled: S.optional(S.Boolean),
-          defaultAction: S.optional(S.String),
-          publicNetworkAccess: S.optional(S.String),
-          ipRules: S.optional(__S(32)),
+          defaultAction: S.optional(DefaultAction),
+          publicNetworkAccess: S.optional(PublicNetworkAccess),
+          ipRules: S.optional(NetworkRuleSetPropertiesIpRulesList),
         }),
       ).annotate({ identifier: "NetworkRuleSetProperties" });
     case 2:
@@ -2200,8 +2725,8 @@ function __c4(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(12)),
-          properties: S.optional(__S(33)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(NetworkRuleSetProperties),
         }),
       ).annotate({
         identifier: "GetNamespaceNetworkRuleSetResponse",
@@ -2248,8 +2773,8 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           groupId: S.optional(S.String),
-          requiredMembers: S.optional(__S(37)),
-          requiredZoneNames: S.optional(__S(37)),
+          requiredMembers: S.optional(PrivateLinkResourcePropertiesRequiredMembersList),
+          requiredZoneNames: S.optional(PrivateLinkResourcePropertiesRequiredZoneNamesList),
         }),
       ).annotate({
         identifier: "PrivateLinkResourceProperties",
@@ -2260,8 +2785,8 @@ function __c4(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(12)),
-          properties: S.optional(__S(38)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(PrivateLinkResourceProperties),
         }),
       ).annotate({
         identifier: "GetPrivateLinkResourceResponse",
@@ -2293,7 +2818,7 @@ function __c5(j: number): any {
           createdAt: S.optional(S.String),
           updatedAt: S.optional(S.String),
           listenerCount: S.optional(S.Number),
-          relayType: S.optional(S.String),
+          relayType: S.optional(Relaytype),
           requiresClientAuthorization: S.optional(S.Boolean),
           requiresTransportSecurity: S.optional(S.Boolean),
           userMetadata: S.optional(S.String),
@@ -2305,8 +2830,8 @@ function __c5(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(12)),
-          properties: S.optional(__S(41)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(WcfRelayProperties),
           location: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetWCFRelayResponse" });
@@ -2345,7 +2870,7 @@ function __c5(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           namespaceName: S.String.pipe(T.Label()),
           hybridConnectionName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(44)),
+          properties: S.optional(HybridConnectionPropertiesInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2365,7 +2890,7 @@ function __c5(j: number): any {
           namespaceName: S.String.pipe(T.Label()),
           hybridConnectionName: S.String.pipe(T.Label()),
           authorizationRuleName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(17)),
+          properties: S.optional(AuthorizationRuleProperties),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2383,8 +2908,8 @@ function __c5(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(12)),
-          properties: S.optional(__S(17)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(AuthorizationRuleProperties),
           location: S.optional(S.String),
         }),
       ).annotate({
@@ -2418,17 +2943,17 @@ function __c6(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(12)),
-          properties: S.optional(__S(17)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(AuthorizationRuleProperties),
           location: S.optional(S.String),
         }),
       ).annotate({ identifier: "AuthorizationRule" });
     case 2:
-      return S.Array(__S(49));
+      return S.Array(AuthorizationRule);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: __S(50),
+          value: AuthorizationRuleListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -2457,17 +2982,17 @@ function __c6(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(12)),
-          properties: S.optional(__S(13)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(HybridConnectionProperties),
           location: S.optional(S.String),
         }),
       ).annotate({ identifier: "HybridConnection" });
     case 6:
-      return S.Array(__S(53));
+      return S.Array(HybridConnection);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          value: __S(54),
+          value: HybridConnectionListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -2540,11 +3065,11 @@ function __c7(j: number): any {
         identifier: "ListNamespaceByResourceGroupRequest",
       });
     case 4:
-      return S.Array(__S(28));
+      return S.Array(RelayNamespace);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          value: __S(60),
+          value: RelayNamespaceListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "RelayNamespaceListResult" });
@@ -2606,17 +3131,17 @@ function __c8(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           isDataAction: S.optional(S.Boolean),
-          display: S.optional(__S(65)),
-          origin: S.optional(S.String),
-          actionType: S.optional(S.String),
+          display: S.optional(OperationDisplay),
+          origin: S.optional(OperationOrigin),
+          actionType: S.optional(OperationActionType),
         }),
       ).annotate({ identifier: "Operation" });
     case 3:
-      return S.Array(__S(66));
+      return S.Array(Operation);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(67)),
+          value: S.optional(ListOperationsResponseValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
@@ -2640,7 +3165,7 @@ function __c8(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          value: __S(25),
+          value: PrivateEndpointConnectionListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -2673,16 +3198,16 @@ function __c9(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(12)),
-          properties: S.optional(__S(38)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(PrivateLinkResourceProperties),
         }),
       ).annotate({ identifier: "PrivateLinkResource" });
     case 1:
-      return S.Array(__S(72));
+      return S.Array(PrivateLinkResource);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(73),
+          value: PrivateLinkResourcesListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -2724,11 +3249,11 @@ function __c9(j: number): any {
         identifier: "ListWCFRelayByNamespaceRequest",
       });
     case 5:
-      return S.Array(__S(42));
+      return S.Array(WcfRelay);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          value: __S(77),
+          value: WcfRelaysListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "WcfRelaysListResult" });
@@ -2756,19 +3281,21 @@ function __c10(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          properties: S.optional(__S(23)),
+          properties: S.optional(PrivateEndpointConnectionProperties),
         }),
       ).annotate({
         identifier: "PrivateEndpointConnectionInput",
       });
     case 1:
-      return S.Array(__S(80));
+      return S.Array(PrivateEndpointConnectionInput);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          privateEndpointConnections: S.optional(__S(81)),
-          publicNetworkAccess: S.optional(S.String),
-          minimumTlsVersion: S.optional(S.String),
+          privateEndpointConnections: S.optional(
+            RelayNamespacePropertiesInputPrivateEndpointConnectionsList,
+          ),
+          publicNetworkAccess: S.optional(RelayNamespacePropertiesInputPublicNetworkAccess),
+          minimumTlsVersion: S.optional(TlsVersion),
         }),
       ).annotate({
         identifier: "RelayNamespacePropertiesInput",
@@ -2779,10 +3306,10 @@ function __c10(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           namespaceName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(20)),
+          tags: S.optional(NamespacesCreateOrUpdateRequestTagsMap),
           location: S.String,
-          properties: S.optional(__S(82)),
-          sku: S.optional(__S(27)),
+          properties: S.optional(RelayNamespacePropertiesInput),
+          sku: S.optional(Sku),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2800,11 +3327,11 @@ function __c10(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(12)),
-          tags: S.optional(__S(20)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(NamespacesCreateOrUpdateResponseTagsMap),
           location: S.String,
-          properties: S.optional(__S(26)),
-          sku: S.optional(__S(27)),
+          properties: S.optional(RelayNamespaceProperties),
+          sku: S.optional(Sku),
         }),
       ).annotate({
         identifier: "NamespacesCreateOrUpdateResponse",
@@ -2816,7 +3343,7 @@ function __c10(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           namespaceName: S.String.pipe(T.Label()),
           authorizationRuleName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(17)),
+          properties: S.optional(AuthorizationRuleProperties),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2834,7 +3361,7 @@ function __c10(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           namespaceName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(33)),
+          properties: S.optional(NetworkRuleSetProperties),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2853,7 +3380,7 @@ function __c10(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           namespaceName: S.String.pipe(T.Label()),
           privateEndpointConnectionName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(23)),
+          properties: S.optional(PrivateEndpointConnectionProperties),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2877,7 +3404,7 @@ function __c11(j: number): any {
           namespaceName: S.String.pipe(T.Label()),
           hybridConnectionName: S.String.pipe(T.Label()),
           authorizationRuleName: S.String.pipe(T.Label()),
-          keyType: S.String,
+          keyType: KeyType,
           key: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -2897,7 +3424,7 @@ function __c11(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           namespaceName: S.String.pipe(T.Label()),
           authorizationRuleName: S.String.pipe(T.Label()),
-          keyType: S.String,
+          keyType: KeyType,
           key: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -2918,7 +3445,7 @@ function __c11(j: number): any {
           namespaceName: S.String.pipe(T.Label()),
           relayName: S.String.pipe(T.Label()),
           authorizationRuleName: S.String.pipe(T.Label()),
-          keyType: S.String,
+          keyType: KeyType,
           key: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -2937,9 +3464,9 @@ function __c11(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           namespaceName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(20)),
-          sku: S.optional(__S(27)),
-          properties: S.optional(__S(82)),
+          tags: S.optional(UpdateNamespaceRequestTagsMap),
+          sku: S.optional(Sku),
+          properties: S.optional(RelayNamespacePropertiesInput),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2952,7 +3479,7 @@ function __c11(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          relayType: S.optional(S.String),
+          relayType: S.optional(Relaytype),
           requiresClientAuthorization: S.optional(S.Boolean),
           requiresTransportSecurity: S.optional(S.Boolean),
           userMetadata: S.optional(S.String),
@@ -2965,7 +3492,7 @@ function __c11(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           namespaceName: S.String.pipe(T.Label()),
           relayName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(92)),
+          properties: S.optional(WcfRelayPropertiesInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2983,8 +3510,8 @@ function __c11(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(12)),
-          properties: S.optional(__S(41)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(WcfRelayProperties),
           location: S.optional(S.String),
         }),
       ).annotate({
@@ -2998,7 +3525,7 @@ function __c11(j: number): any {
           namespaceName: S.String.pipe(T.Label()),
           relayName: S.String.pipe(T.Label()),
           authorizationRuleName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(17)),
+          properties: S.optional(AuthorizationRuleProperties),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -3010,38 +3537,5 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "WCFRelaysCreateOrUpdateAuthorizationRuleRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
-    case 9:
-      return __c9(i & 7);
-    case 10:
-      return __c10(i & 7);
-    case 11:
-      return __c11(i & 7);
   }
 }

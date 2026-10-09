@@ -6,8 +6,6 @@ import * as S from "@distilled.cloud/core/schema";
 import { PosthogProtocol, type PosthogOpError, type PosthogOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { PosthogOpError, PosthogOpContext };
 
@@ -64,12 +62,23 @@ export type TaskOriginProductEnum =
   | "workflow"
   | "space_setup"
   | "business_knowledge";
+const TaskOriginProductEnum = S.String;
+
 /** GitHub repositories available to this task, each in `organization/repo` format. */
 export type CreateTaskRequestRepositoriesList = Array<string>;
+const CreateTaskRequestRepositoriesList = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<CreateTaskRequestRepositoriesList>;
+
 /** * `claude` - claude * `codex` - codex */
 export type RuntimeAdapterEnum = "claude" | "codex";
+const RuntimeAdapterEnum = S.String;
+
 /** * `low` - low * `medium` - medium * `high` - high * `xhigh` - xhigh * `max` - max * `ultracode` - ultracode */
 export type ReasoningEffortEnum = "low" | "medium" | "high" | "xhigh" | "max" | "ultracode";
+const ReasoningEffortEnum = S.String;
+
 /** * `default` - default * `acceptEdits` - acceptEdits * `plan` - plan * `bypassPermissions` - bypassPermissions * `auto` - auto * `read-only` - read-only * `full-access` - full-access */
 export type TaskRunBootstrapCreateRequestInitialPermissionModeEnum =
   | "default"
@@ -79,10 +88,17 @@ export type TaskRunBootstrapCreateRequestInitialPermissionModeEnum =
   | "auto"
   | "read-only"
   | "full-access";
+const TaskRunBootstrapCreateRequestInitialPermissionModeEnum = S.String;
+
 /** Run artifact ids (already uploaded to the pre-warmed Run) to attach to the forwarded first message when creation reuses that warm Run, e.g. skill bundles or file attachments. If any id is missing from the warm Run's manifest, warm reuse is skipped and the task is created cold. Ignored when no warm Run is matched. Not supported when start_run is true. */
 export type CreateTaskRequestPendingUserArtifactIdsList = Array<string>;
+const CreateTaskRequestPendingUserArtifactIdsList =
+  CreateTaskRequestRepositoriesList as any as S.Schema<CreateTaskRequestPendingUserArtifactIdsList>;
+
 /** * `acp` - ACP * `pi` - Pi */
 export type TaskRuntimeEnum = "acp" | "pi";
+const TaskRuntimeEnum = S.String;
+
 export interface CreateTaskRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -148,10 +164,22 @@ export interface CreateTaskRequest {
   /** Agent protocol and harness used for this task's runs. Defaults to ACP when omitted. * `acp` - ACP * `pi` - Pi */
   runtime?: TaskRuntimeEnum | (string & {});
 }
+const CreateTaskRequest = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<CreateTaskRequest>;
+
 export type TaskCreateResponseDTORepositoriesList = Array<string>;
+const TaskCreateResponseDTORepositoriesList =
+  CreateTaskRequestRepositoriesList as any as S.Schema<TaskCreateResponseDTORepositoriesList>;
+
 export type TaskCreateResponseDTOJsonSchemaMap = { [key: string]: unknown | undefined };
+const TaskCreateResponseDTOJsonSchemaMap = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<TaskCreateResponseDTOJsonSchemaMap>;
+
 /** * `anthropic` - anthropic * `openai` - openai */
 export type TaskRunDetailDTOProviderEnum = "anthropic" | "openai";
+const TaskRunDetailDTOProviderEnum = S.String;
+
 /** * `off` - off * `minimal` - minimal * `low` - low * `medium` - medium * `high` - high * `xhigh` - xhigh * `max` - max * `ultracode` - ultracode */
 export type TaskRunReasoningEffortEnum =
   | "off"
@@ -162,14 +190,29 @@ export type TaskRunReasoningEffortEnum =
   | "xhigh"
   | "max"
   | "ultracode";
+const TaskRunReasoningEffortEnum = S.String;
+
 export type TaskRunDetailDTOOutputMap = { [key: string]: unknown | undefined };
+const TaskRunDetailDTOOutputMap =
+  TaskCreateResponseDTOJsonSchemaMap as any as S.Schema<TaskRunDetailDTOOutputMap>;
+
 /** Latest slug tags for this task, including tags inherited from an earlier run. */
 export type TaskRunDetailDTOTaskTagsList = Array<string>;
+const TaskRunDetailDTOTaskTagsList =
+  CreateTaskRequestRepositoriesList as any as S.Schema<TaskRunDetailDTOTaskTagsList>;
+
 export type TaskRunDetailDTOStateMap = { [key: string]: unknown | undefined };
+const TaskRunDetailDTOStateMap =
+  TaskCreateResponseDTOJsonSchemaMap as any as S.Schema<TaskRunDetailDTOStateMap>;
+
 /** * `user` - user * `repo` - repo * `marketplace` - marketplace * `codex` - codex */
 export type SkillSourceEnum = "user" | "repo" | "marketplace" | "codex";
+const SkillSourceEnum = S.String;
+
 /** * `zip` - zip */
 export type BundleFormatEnum = "zip";
+const BundleFormatEnum = S.String;
+
 export interface TaskRunSkillBundleMetadata {
   /** Name of the local skill included in a skill_bundle artifact. */
   skill_name: string;
@@ -182,6 +225,11 @@ export interface TaskRunSkillBundleMetadata {
   /** Version of the local skill bundle metadata schema. */
   schema_version: number;
 }
+const TaskRunSkillBundleMetadata = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<TaskRunSkillBundleMetadata>;
+
 /** * `posthog_object` - posthog_object */
 export type ReferenceTypeEnum = "posthog_object";
 /** * `insight` - insight * `hogql` - hogql * `dashboard` - dashboard * `error` - error * `replay` - replay * `flag` - flag * `experiment` - experiment * `survey` - survey * `ticket` - ticket * `report` - report * `trace` - trace * `eval` - eval * `event` - event * `cohort` - cohort * `action` - action * `person` - person */
@@ -217,8 +265,12 @@ export interface TaskRunPostHogReferenceMetadata {
   occurrence_count: number;
 }
 export type TaskRunArtifactMetadata = TaskRunSkillBundleMetadata | TaskRunPostHogReferenceMetadata;
+const TaskRunArtifactMetadata = S.Unknown as any as S.Schema<TaskRunArtifactMetadata>;
+
 /** * `agent` - agent * `user` - user */
 export type UploadedByEnum = "agent" | "user";
+const UploadedByEnum = S.String;
+
 export interface TaskRunArtifactResponse {
   /** Stable identifier for the artifact within this run */
   id?: string;
@@ -247,7 +299,17 @@ export interface TaskRunArtifactResponse {
   /** Stable download URL for the artifact. Populated on the finalize-upload response so the caller can link to the file; it redirects to a fresh presigned URL on each request and is not persisted on the manifest. */
   url?: string;
 }
+const TaskRunArtifactResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<TaskRunArtifactResponse>;
+
 export type TaskRunDetailDTOArtifactsList = Array<TaskRunArtifactResponse>;
+const TaskRunDetailDTOArtifactsList = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<TaskRunDetailDTOArtifactsList>;
+
 /** Detail response for a task run. Reads from a frozen ``TaskRunDetailDTO`` produced by the facade mapper (which computes the presigned ``log_url`` and parses ``runtime_adapter`` / ``provider`` / ``model`` / ``reasoning_effort`` off the run state). ``task`` is the parent task id. Reused as the nested ``latest_run`` shape by the task detail response. */
 export interface TaskRunDetailDTO {
   id: string;
@@ -283,7 +345,12 @@ export interface TaskRunDetailDTO {
   /** True when this run's sandbox serves a dev stack preview, so clients can offer the preview link. Open it through the run's `preview/` endpoint, which mints a fresh access token on every request. */
   preview_available?: boolean;
 }
+const TaskRunDetailDTO = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<TaskRunDetailDTO>;
+
 export type TaskUserBasicInfoHedgehogConfigMap = { [key: string]: unknown | undefined };
+const TaskUserBasicInfoHedgehogConfigMap =
+  TaskCreateResponseDTOJsonSchemaMap as any as S.Schema<TaskUserBasicInfoHedgehogConfigMap>;
+
 /** Response shape for a task creator, mirroring core ``UserBasicSerializer`` output. */
 export interface TaskUserBasicInfo {
   id: number;
@@ -296,12 +363,24 @@ export interface TaskUserBasicInfo {
   hedgehog_config?: TaskUserBasicInfoHedgehogConfigMap | null;
   role_at_organization?: string | null;
 }
+const TaskUserBasicInfo = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<TaskUserBasicInfo>;
+
 export interface SlackThreadReferenceDTO {
   url: string;
   channel: string;
   created_at?: string | null;
 }
+const SlackThreadReferenceDTO = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<SlackThreadReferenceDTO>;
+
 export type TaskCreateResponseDTOSlackThreadReferencesList = Array<SlackThreadReferenceDTO>;
+const TaskCreateResponseDTOSlackThreadReferencesList = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<TaskCreateResponseDTOSlackThreadReferencesList>;
+
 /** Detail response for a task. Reads from a frozen ``TaskDetailDTO`` produced by the facade. ``github_integration`` / ``github_user_integration`` are integration ids, ``signal_report`` is the report id, and ``latest_run`` nests the run-detail shape. ``created_by`` mirrors core ``UserBasicSerializer``. */
 export interface TaskCreateResponseDTO {
   id: string;
@@ -336,6 +415,11 @@ export interface TaskCreateResponseDTO {
   /** Error returned when the task was created but its first run could not start. */
   run_error?: string;
 }
+const TaskCreateResponseDTO = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<TaskCreateResponseDTO>;
+
 export interface CreateTasksConfigRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -348,6 +432,11 @@ export interface CreateTasksConfigRequest {
   /** Default reasoning effort for models that expose an effort control. A Pi default stores a Pi thinking level here, which also allows 'off' and 'minimal'. * `off` - off * `minimal` - minimal * `low` - low * `medium` - medium * `high` - high * `xhigh` - xhigh * `max` - max * `ultracode` - ultracode */
   reasoning_effort?: TaskRunReasoningEffortEnum | (string & {}) | null;
 }
+const CreateTasksConfigRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<CreateTasksConfigRequest>;
+
 /** The default AI run selection stored at team or user level. Write payload for the tasks config endpoints and the `ai_run_preferences` block of their responses. What a complete selection is depends on the harness: an ACP default sets `runtime_adapter` and `model` together, a Pi default sets `model` alone. Send every field as null to clear a stored preference. */
 export interface TasksAIRunPreferences {
   /** Harness the default runs on: 'acp' for the Claude and Codex adapters, 'pi' for the Pi harness. Defaults to 'acp' when omitted. * `acp` - ACP * `pi` - Pi */
@@ -359,6 +448,11 @@ export interface TasksAIRunPreferences {
   /** Default reasoning effort for models that expose an effort control. A Pi default stores a Pi thinking level here, which also allows 'off' and 'minimal'. * `off` - off * `minimal` - minimal * `low` - low * `medium` - medium * `high` - high * `xhigh` - xhigh * `max` - max * `ultracode` - ultracode */
   reasoning_effort?: TaskRunReasoningEffortEnum | null;
 }
+const TasksAIRunPreferences = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<TasksAIRunPreferences>;
+
 /** Team-level tasks configuration. */
 export interface TasksTeamConfigResponse {
   /** Project-wide default AI run triple; all fields null when unset. */
@@ -366,17 +460,32 @@ export interface TasksTeamConfigResponse {
   /** Project instructions that PostHog cloud agents read in every eligible Tasks run, including autonomous runs such as scouts and loops. Empty when unset. */
   agent_instructions: string;
 }
+const TasksTeamConfigResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<TasksTeamConfigResponse>;
+
 export interface CreateTasksConfigAgentInstructionRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** Markdown instructions that PostHog cloud agents read in every eligible Tasks run, the same way a local agent reads AGENTS.md. Send an empty string to clear. */
   agent_instructions: string;
 }
+const CreateTasksConfigAgentInstructionRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<CreateTasksConfigAgentInstructionRequest>;
+
 /** Markdown instructions that PostHog cloud agents load as their user-level AGENTS.md in Tasks runs. */
 export interface TasksAgentInstructions {
   /** Markdown instructions that PostHog cloud agents read in every eligible Tasks run, the same way a local agent reads AGENTS.md. Send an empty string to clear. */
   agent_instructions: string;
 }
+const TasksAgentInstructions = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<TasksAgentInstructions>;
+
 export interface CreateTasksHandoffRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -384,9 +493,23 @@ export interface CreateTasksHandoffRequest {
   /** ID of the user taking over the task. Must have access to this project and not be the task's current owner. */
   user: number;
 }
+const CreateTasksHandoffRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<CreateTasksHandoffRequest>;
+
 export type TaskDetailDTORepositoriesList = Array<string>;
+const TaskDetailDTORepositoriesList =
+  CreateTaskRequestRepositoriesList as any as S.Schema<TaskDetailDTORepositoriesList>;
+
 export type TaskDetailDTOJsonSchemaMap = { [key: string]: unknown | undefined };
+const TaskDetailDTOJsonSchemaMap =
+  TaskCreateResponseDTOJsonSchemaMap as any as S.Schema<TaskDetailDTOJsonSchemaMap>;
+
 export type TaskDetailDTOSlackThreadReferencesList = Array<SlackThreadReferenceDTO>;
+const TaskDetailDTOSlackThreadReferencesList =
+  TaskCreateResponseDTOSlackThreadReferencesList as any as S.Schema<TaskDetailDTOSlackThreadReferencesList>;
+
 /** Detail response for a task. Reads from a frozen ``TaskDetailDTO`` produced by the facade. ``github_integration`` / ``github_user_integration`` are integration ids, ``signal_report`` is the report id, and ``latest_run`` nests the run-detail shape. ``created_by`` mirrors core ``UserBasicSerializer``. */
 export interface TaskDetailDTO {
   id: string;
@@ -419,6 +542,8 @@ export interface TaskDetailDTO {
   /** Stable key of the server-side flow that created this task, e.g. `desktop_onboarding_session:<user_id>`. Null for tasks people create themselves. */
   origin_key?: string | null;
 }
+const TaskDetailDTO = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<TaskDetailDTO>;
+
 export interface CreateTasksMeConfigRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -431,8 +556,15 @@ export interface CreateTasksMeConfigRequest {
   /** Default reasoning effort for models that expose an effort control. A Pi default stores a Pi thinking level here, which also allows 'off' and 'minimal'. * `off` - off * `minimal` - minimal * `low` - low * `medium` - medium * `high` - high * `xhigh` - xhigh * `max` - max * `ultracode` - ultracode */
   reasoning_effort?: TaskRunReasoningEffortEnum | (string & {}) | null;
 }
+const CreateTasksMeConfigRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<CreateTasksMeConfigRequest>;
+
 /** * `user` - user * `team` - team * `none` - none */
 export type TasksResolvedAIRunDefaultsSourceEnum = "user" | "team" | "none";
+const TasksResolvedAIRunDefaultsSourceEnum = S.String;
+
 /** The AI run selection a new run will effectively use when the caller pins nothing, plus which preference level supplied it. */
 export interface TasksResolvedAIRunDefaults {
   /** Harness the effective default runs on: 'acp' or 'pi'. 'acp' when no preference is stored. */
@@ -446,6 +578,11 @@ export interface TasksResolvedAIRunDefaults {
   /** Preference level that supplied the default: the caller's own per-project preference ('user'), the project default ('team'), or 'none'. * `user` - user * `team` - team * `none` - none */
   source: TasksResolvedAIRunDefaultsSourceEnum;
 }
+const TasksResolvedAIRunDefaults = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<TasksResolvedAIRunDefaults>;
+
 /** The requesting user's per-project task defaults, shared by PostHog Desktop and the web app. */
 export interface TasksTaskDefaults {
   /** When true, new tasks start in plan mode: the agent makes a plan and waits for approval. Null when you never set it. */
@@ -453,6 +590,8 @@ export interface TasksTaskDefaults {
   /** When true, a cloud run that changes code always opens a draft pull request. Null when you never set it. */
   auto_publish_cloud_runs: boolean | null;
 }
+const TasksTaskDefaults = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<TasksTaskDefaults>;
+
 /** The requesting user's per-project tasks configuration. */
 export interface TasksUserConfigResponse {
   /** The requesting user's per-project default AI run triple; all fields null when unset. */
@@ -464,12 +603,22 @@ export interface TasksUserConfigResponse {
   /** Your per-project defaults for new tasks. Unset defaults are false. */
   task_defaults: TasksTaskDefaults;
 }
+const TasksUserConfigResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<TasksUserConfigResponse>;
+
 export interface CreateTasksMeConfigAgentInstructionRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** Markdown instructions that PostHog cloud agents read in every eligible Tasks run, the same way a local agent reads AGENTS.md. Send an empty string to clear. */
   agent_instructions: string;
 }
+const CreateTasksMeConfigAgentInstructionRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<CreateTasksMeConfigAgentInstructionRequest>;
+
 export interface CreateTasksMeConfigTaskDefaultRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -478,6 +627,11 @@ export interface CreateTasksMeConfigTaskDefaultRequest {
   /** When true, a cloud run that changes code always opens a draft pull request. Null when you never set it. */
   auto_publish_cloud_runs?: boolean;
 }
+const CreateTasksMeConfigTaskDefaultRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<CreateTasksMeConfigTaskDefaultRequest>;
+
 export interface CreateTasksPinRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -485,12 +639,19 @@ export interface CreateTasksPinRequest {
   /** Whether the task should be pinned for the requester. */
   pinned: boolean;
 }
+const CreateTasksPinRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<CreateTasksPinRequest>;
+
 export interface TaskPinResponse {
   /** Task whose pin state was updated. */
   task_id: string;
   /** Current pin state for the requester. */
   pinned: boolean;
 }
+const TaskPinResponse = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<TaskPinResponse>;
+
 export interface CreateTasksPresenceRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -498,21 +659,49 @@ export interface CreateTasksPresenceRequest {
   /** UUID of the caller's UserPushToken (returned by `/api/users/@me/push_tokens/` on register). */
   device_id: string;
 }
+const CreateTasksPresenceRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<CreateTasksPresenceRequest>;
+
 export interface CreateTasksPresenceResponse {}
+const CreateTasksPresenceResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<CreateTasksPresenceResponse>;
+
 /** Task IDs whose latest run's pull request titles to fetch (max 30). */
 export type CreateTasksPullRequestTitleRequestIdsList = Array<string>;
+const CreateTasksPullRequestTitleRequestIdsList =
+  CreateTaskRequestRepositoriesList as any as S.Schema<CreateTasksPullRequestTitleRequestIdsList>;
+
 export interface CreateTasksPullRequestTitleRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** Task IDs whose latest run's pull request titles to fetch (max 30). */
   ids: CreateTasksPullRequestTitleRequestIdsList;
 }
+const CreateTasksPullRequestTitleRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<CreateTasksPullRequestTitleRequest>;
+
 /** Pull request titles keyed by normalized GitHub URL. A pull request is missing when GitHub could not return its title. */
 export type TaskPullRequestTitlesTitlesMap = { [key: string]: string | undefined };
+const TaskPullRequestTitlesTitlesMap = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<TaskPullRequestTitlesTitlesMap>;
+
 export interface TaskPullRequestTitles {
   /** Pull request titles keyed by normalized GitHub URL. A pull request is missing when GitHub could not return its title. */
   titles: TaskPullRequestTitlesTitlesMap;
 }
+const TaskPullRequestTitles = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<TaskPullRequestTitles>;
+
 export interface CreateTasksRepoRoutingRuleRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -521,7 +710,15 @@ export interface CreateTasksRepoRoutingRuleRequest {
   /** Target repository as owner/repo, e.g. 'posthog/posthog.com'. */
   repository: string;
 }
+const CreateTasksRepoRoutingRuleRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<CreateTasksRepoRoutingRuleRequest>;
+
 export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
+const UserBasicHedgehogConfigMap =
+  TaskCreateResponseDTOJsonSchemaMap as any as S.Schema<UserBasicHedgehogConfigMap>;
+
 /** * `engineering` - Engineering * `data` - Data * `product` - Product Management * `founder` - Founder * `leadership` - Leadership * `marketing` - Marketing * `sales` - Sales / Success * `student` - Student * `other` - Other */
 export type RoleAtOrganizationEnum =
   | "engineering"
@@ -535,6 +732,8 @@ export type RoleAtOrganizationEnum =
   | "other";
 export type BlankEnum = "";
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
+const UserBasicRoleAtOrganization = S.Unknown as any as S.Schema<UserBasicRoleAtOrganization>;
+
 export interface UserBasic {
   id?: number;
   uuid?: string;
@@ -546,6 +745,8 @@ export interface UserBasic {
   hedgehog_config?: UserBasicHedgehogConfigMap | null;
   role_at_organization?: UserBasicRoleAtOrganization | null;
 }
+const UserBasic = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<UserBasic>;
+
 export interface RepoRoutingRule {
   id: string;
   /** Plain-text description of the requests that should route to the repository, e.g. 'anything about the internal dashboard'. At most 300 characters. */
@@ -558,6 +759,8 @@ export interface RepoRoutingRule {
   created_at: string;
   updated_at: string;
 }
+const RepoRoutingRule = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<RepoRoutingRule>;
+
 /** * `http` - http * `sse` - sse */
 export type ImportedMcpServerTypeEnum = "http" | "sse";
 export interface ImportedMcpServerHeader {
@@ -584,6 +787,8 @@ export type ClaudeTaskRunCreateSchemaRelayedMcpServersList = Array<RelayedMcpSer
 export type ModelAccessEnum = "posthog-gateway" | "own-subscription";
 /** * `interactive` - interactive * `background` - background */
 export type TaskExecutionModeEnum = "interactive" | "background";
+const TaskExecutionModeEnum = S.String;
+
 /** Identifiers for staged task artifacts that should be attached to the initial run prompt. */
 export type ClaudeTaskRunCreateSchemaPendingUserArtifactIdsList = Array<string>;
 /** * `user` - user * `bot` - bot */
@@ -751,15 +956,31 @@ export type TaskRunCreateRequestSchema =
   | ClaudeTaskRunCreateSchema
   | CodexTaskRunCreateSchema
   | TaskRunResumeRequestSchema;
+const TaskRunCreateRequestSchema = S.Unknown as any as S.Schema<TaskRunCreateRequestSchema>;
+
 export interface CreateTasksRunRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   id: string;
   body?: TaskRunCreateRequestSchema;
 }
+const CreateTasksRunRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<CreateTasksRunRequest>;
+
 export type TaskRunResponseRepositoriesList = Array<string>;
+const TaskRunResponseRepositoriesList =
+  CreateTaskRequestRepositoriesList as any as S.Schema<TaskRunResponseRepositoriesList>;
+
 export type TaskRunResponseJsonSchemaMap = { [key: string]: unknown | undefined };
+const TaskRunResponseJsonSchemaMap =
+  TaskCreateResponseDTOJsonSchemaMap as any as S.Schema<TaskRunResponseJsonSchemaMap>;
+
 export type TaskRunResponseSlackThreadReferencesList = Array<SlackThreadReferenceDTO>;
+const TaskRunResponseSlackThreadReferencesList =
+  TaskCreateResponseDTOSlackThreadReferencesList as any as S.Schema<TaskRunResponseSlackThreadReferencesList>;
+
 /** The task ``run`` action's response: the refreshed task detail plus the run this call made. ``run`` is the run the call created or activated -- the payload a caller reads run-scoped ids from, instead of inferring them from ``latest_run`` (or, worse, the top-level task ``id``). */
 export interface TaskRunResponse {
   id: string;
@@ -796,6 +1017,8 @@ export interface TaskRunResponse {
   /** The run this call created or activated. Read run-scoped ids from here -- `run.id` is the id the run's stream and command endpoints take, while the top-level `id` is the task's. Set on every 200; when `run_error` is also set, the run exists but its workflow did not start. */
   run?: TaskRunDetailDTO | null;
 }
+const TaskRunResponse = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<TaskRunResponse>;
+
 /** * `slack_message` - slack_message * `slack_canvas` - slack_canvas * `document` - document * `spreadsheet` - spreadsheet * `dashboard` - dashboard * `file` - file * `github_pr` - github_pr */
 export type ArtifactType2f0Enum =
   | "slack_message"
@@ -805,6 +1028,8 @@ export type ArtifactType2f0Enum =
   | "dashboard"
   | "file"
   | "github_pr";
+const ArtifactType2f0Enum = S.String;
+
 /** * `slack_message` - slack_message * `slack_canvas` - slack_canvas * `slack_file` - slack_file * `document_connector` - document_connector * `github_pr` - github_pr */
 export type AdapterEnum =
   | "slack_message"
@@ -812,10 +1037,15 @@ export type AdapterEnum =
   | "slack_file"
   | "document_connector"
   | "github_pr";
+const AdapterEnum = S.String;
+
 /** Optional metadata to persist with the living artifact. */
 export type CreateTasksRunsLivingArtifactRequestMetadataMap = {
   [key: string]: unknown | undefined;
 };
+const CreateTasksRunsLivingArtifactRequestMetadataMap =
+  TaskCreateResponseDTOJsonSchemaMap as any as S.Schema<CreateTasksRunsLivingArtifactRequestMetadataMap>;
+
 export interface CreateTasksRunsLivingArtifactRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -840,12 +1070,27 @@ export interface CreateTasksRunsLivingArtifactRequest {
   /** Optional metadata to persist with the living artifact. */
   metadata?: CreateTasksRunsLivingArtifactRequestMetadataMap;
 }
+const CreateTasksRunsLivingArtifactRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<CreateTasksRunsLivingArtifactRequest>;
+
 /** * `active` - active * `failed` - failed */
 export type TaskArtifactStatusEnum = "active" | "failed";
+const TaskArtifactStatusEnum = S.String;
+
 export type TaskRunLivingArtifactResponseVersionsItemMap = { [key: string]: unknown | undefined };
+const TaskRunLivingArtifactResponseVersionsItemMap =
+  TaskCreateResponseDTOJsonSchemaMap as any as S.Schema<TaskRunLivingArtifactResponseVersionsItemMap>;
+
 /** Chronological version records for this artifact. */
 export type TaskRunLivingArtifactResponseVersionsList =
   Array<TaskRunLivingArtifactResponseVersionsItemMap>;
+const TaskRunLivingArtifactResponseVersionsList = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<TaskRunLivingArtifactResponseVersionsList>;
+
 export interface TaskRunLivingArtifactResponse {
   /** Stable living artifact id. Use this id when editing the artifact. */
   id: string;
@@ -876,8 +1121,16 @@ export interface TaskRunLivingArtifactResponse {
   /** ISO timestamp when last updated. */
   updated_at?: string | null;
 }
+const TaskRunLivingArtifactResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<TaskRunLivingArtifactResponse>;
+
 /** Task IDs to fetch summaries for (max 5000). Response is paginated; follow the `next` cursor to retrieve all results. */
 export type CreateTasksSummaryRequestIdsList = Array<string>;
+const CreateTasksSummaryRequestIdsList =
+  CreateTaskRequestRepositoriesList as any as S.Schema<CreateTasksSummaryRequestIdsList>;
+
 export interface CreateTasksSummaryRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -888,6 +1141,11 @@ export interface CreateTasksSummaryRequest {
   /** Task IDs to fetch summaries for (max 5000). Response is paginated; follow the `next` cursor to retrieve all results. */
   ids: CreateTasksSummaryRequestIdsList;
 }
+const CreateTasksSummaryRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<CreateTasksSummaryRequest>;
+
 /** * `not_started` - Not Started * `queued` - Queued * `in_progress` - In Progress * `completed` - Completed * `failed` - Failed * `cancelled` - Cancelled */
 export type TaskRunStatusEnum =
   | "not_started"
@@ -896,10 +1154,16 @@ export type TaskRunStatusEnum =
   | "completed"
   | "failed"
   | "cancelled";
+const TaskRunStatusEnum = S.String;
+
 /** * `local` - Local * `cloud` - Cloud */
 export type TaskRunEnvironmentEnum = "local" | "cloud";
+const TaskRunEnvironmentEnum = S.String;
+
 /** * `open` - open * `draft` - draft * `merged` - merged * `closed` - closed * `unknown` - unknown */
 export type PrStateEnum = "open" | "draft" | "merged" | "closed" | "unknown";
+const PrStateEnum = S.String;
+
 export interface TaskRunSummary {
   /** ID of the latest run. */
   id: string;
@@ -914,6 +1178,8 @@ export interface TaskRunSummary {
   /** Latest summary for this task, including a summary inherited from an earlier run. */
   task_summary?: string | null;
 }
+const TaskRunSummary = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<TaskRunSummary>;
+
 /** Summary response for a task -- reads from a frozen ``TaskSummaryDTO``. */
 export interface TaskSummaryDTO {
   id: string;
@@ -926,13 +1192,25 @@ export interface TaskSummaryDTO {
   origin_product?: string;
   latest_run?: TaskRunSummary | null;
 }
+const TaskSummaryDTO = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<TaskSummaryDTO>;
+
 export type PaginatedTaskSummaryDTOListResultsList = Array<TaskSummaryDTO>;
+const PaginatedTaskSummaryDTOListResultsList = /*@__PURE__*/ __L.at(
+  __c5,
+  2,
+) as any as S.Schema<PaginatedTaskSummaryDTOListResultsList>;
+
 export interface PaginatedTaskSummaryDTOList {
   count: number;
   next?: string | null;
   previous?: string | null;
   results: PaginatedTaskSummaryDTOListResultsList;
 }
+const PaginatedTaskSummaryDTOList = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<PaginatedTaskSummaryDTOList>;
+
 export interface CreateTasksThreadMessageRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -940,7 +1218,15 @@ export interface CreateTasksThreadMessageRequest {
   /** Message text. */
   content: string;
 }
+const CreateTasksThreadMessageRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  4,
+) as any as S.Schema<CreateTasksThreadMessageRequest>;
+
 export type TaskThreadMessageDTOPayloadMap = { [key: string]: unknown | undefined };
+const TaskThreadMessageDTOPayloadMap =
+  TaskCreateResponseDTOJsonSchemaMap as any as S.Schema<TaskThreadMessageDTOPayloadMap>;
+
 /** Response shape for one message in a task's thread. */
 export interface TaskThreadMessageDTO {
   id: string;
@@ -954,10 +1240,17 @@ export interface TaskThreadMessageDTO {
   forwarded_to_agent_at?: string | null;
   forwarded_by?: TaskUserBasicInfo | null;
 }
+const TaskThreadMessageDTO = /*@__PURE__*/ __L.at(__c5, 5) as any as S.Schema<TaskThreadMessageDTO>;
+
 /** GitHub repositories to clone into the warm sandbox, each in `organization/repo` format. */
 export type CreateTasksWarmRequestRepositoriesList = Array<string>;
+const CreateTasksWarmRequestRepositoriesList =
+  CreateTaskRequestRepositoriesList as any as S.Schema<CreateTasksWarmRequestRepositoriesList>;
+
 /** * `user_created` - user_created * `posthog_ai` - posthog_ai * `signal_report` - signal_report */
 export type WarmTaskRequestOriginProductEnum = "user_created" | "posthog_ai" | "signal_report";
+const WarmTaskRequestOriginProductEnum = S.String;
+
 export interface CreateTasksWarmRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -989,6 +1282,11 @@ export interface CreateTasksWarmRequest {
   /** Inbox report the warm discussion is about. Required with origin_product `signal_report`, where the warm Run boots repo-less and the submit that creates the report's discussion task activates it. */
   signal_report?: string | null;
 }
+const CreateTasksWarmRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  6,
+) as any as S.Schema<CreateTasksWarmRequest>;
+
 /** Response for a successful warm request -- the draft Task + idling warm Run reused on submit. */
 export interface WarmTaskResponse {
   /** Id of the draft Task birthed for the warm Run. */
@@ -996,8 +1294,13 @@ export interface WarmTaskResponse {
   /** Id of the idling warm Run. The normal create+run path reuses and activates it on submit. */
   run_id: string;
 }
+const WarmTaskResponse = /*@__PURE__*/ __L.at(__c5, 7) as any as S.Schema<WarmTaskResponse>;
+
 /** Optional metadata to merge into the artifact registry record. */
 export type EditTasksRunsLivingArtifactRequestMetadataMap = { [key: string]: unknown | undefined };
+const EditTasksRunsLivingArtifactRequestMetadataMap =
+  TaskCreateResponseDTOJsonSchemaMap as any as S.Schema<EditTasksRunsLivingArtifactRequestMetadataMap>;
+
 export interface EditTasksRunsLivingArtifactRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -1019,34 +1322,68 @@ export interface EditTasksRunsLivingArtifactRequest {
   /** Optional metadata to merge into the artifact registry record. */
   metadata?: EditTasksRunsLivingArtifactRequestMetadataMap;
 }
+const EditTasksRunsLivingArtifactRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<EditTasksRunsLivingArtifactRequest>;
+
 export interface GetCodeInvitesCheckAccessRequest {}
+const GetCodeInvitesCheckAccessRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  1,
+) as any as S.Schema<GetCodeInvitesCheckAccessRequest>;
+
 export interface LegacyDesktopAccessResponse {
   /** Whether the current project can use PostHog Desktop. */
   has_access: boolean;
   /** Whether the independent Loops feature is enabled. */
   has_loops_access: boolean;
 }
+const LegacyDesktopAccessResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  2,
+) as any as S.Schema<LegacyDesktopAccessResponse>;
+
 export interface GetDesktopAccessRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
+const GetDesktopAccessRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  3,
+) as any as S.Schema<GetDesktopAccessRequest>;
+
 /** * `startup_plan` - startup_plan * `prepaid_credits` - prepaid_credits */
 export type DesktopAccessReasonEnum = "startup_plan" | "prepaid_credits";
+const DesktopAccessReasonEnum = S.String;
+
 export interface DesktopAccessResponse {
   /** Whether the selected project can use PostHog Desktop. */
   allowed: boolean;
   /** Why Desktop access is blocked, or null when access is allowed. * `startup_plan` - startup_plan * `prepaid_credits` - prepaid_credits */
   reason: DesktopAccessReasonEnum | null;
 }
+const DesktopAccessResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  4,
+) as any as S.Schema<DesktopAccessResponse>;
+
 export interface GetTaskRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   id: string;
 }
+const GetTaskRequest = /*@__PURE__*/ __L.at(__c6, 5) as any as S.Schema<GetTaskRequest>;
+
 export interface GetTasksActiveWizardRunRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
+const GetTasksActiveWizardRunRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  6,
+) as any as S.Schema<GetTasksActiveWizardRunRequest>;
+
 /** The team's active onboarding wizard cloud run, used to rehydrate the setup-progress FAB when the run was started server-side (drop flow). */
 export interface WizardCloudRunDTO {
   /** Id of the onboarding wizard task. */
@@ -1058,6 +1395,8 @@ export interface WizardCloudRunDTO {
   /** When the run was created, for the FAB's elapsed timer. */
   started_at?: string | null;
 }
+const WizardCloudRunDTO = /*@__PURE__*/ __L.at(__c6, 7) as any as S.Schema<WizardCloudRunDTO>;
+
 export interface GetTasksCommentRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -1072,6 +1411,11 @@ export interface GetTasksCommentRequest {
   /** Maximum number of comments in the thread to return. */
   limit?: number;
 }
+const GetTasksCommentRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  0,
+) as any as S.Schema<GetTasksCommentRequest>;
+
 export interface TaskCommentTarget {
   /** Stable target id. */
   id: string;
@@ -1080,6 +1424,8 @@ export interface TaskCommentTarget {
   /** Display name of the comment target. */
   name: string;
 }
+const TaskCommentTarget = /*@__PURE__*/ __L.at(__c7, 1) as any as S.Schema<TaskCommentTarget>;
+
 export interface TaskCommentAnchor {
   /** Anchor kind. */
   kind?: string;
@@ -1102,6 +1448,8 @@ export interface TaskCommentAnchor {
   /** Region height. */
   height?: number;
 }
+const TaskCommentAnchor = /*@__PURE__*/ __L.at(__c7, 2) as any as S.Schema<TaskCommentAnchor>;
+
 export interface TaskCommentEntry {
   /** Comment id. */
   id: string;
@@ -1120,8 +1468,15 @@ export interface TaskCommentEntry {
   /** Canvas version receiving the comment. */
   canvas_version_id: string | null;
 }
+const TaskCommentEntry = /*@__PURE__*/ __L.at(__c7, 3) as any as S.Schema<TaskCommentEntry>;
+
 /** Comments in this page, oldest first. */
 export type TaskCommentDetailCommentsList = Array<TaskCommentEntry>;
+const TaskCommentDetailCommentsList = /*@__PURE__*/ __L.at(
+  __c7,
+  4,
+) as any as S.Schema<TaskCommentDetailCommentsList>;
+
 export interface TaskCommentDetail {
   /** Root comment id. */
   id: string;
@@ -1134,12 +1489,21 @@ export interface TaskCommentDetail {
   /** Opaque cursor for the next page, or null. */
   next: string | null;
 }
+const TaskCommentDetail = /*@__PURE__*/ __L.at(__c7, 5) as any as S.Schema<TaskCommentDetail>;
+
 export interface GetTasksModelRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
+const GetTasksModelRequest = /*@__PURE__*/ __L.at(__c7, 6) as any as S.Schema<GetTasksModelRequest>;
+
 /** Reasoning efforts this model accepts, in ascending order. Empty for a model with no effort control. */
 export type ModelChoiceSupportedEffortsList = Array<ReasoningEffortEnum>;
+const ModelChoiceSupportedEffortsList = /*@__PURE__*/ __L.at(
+  __c7,
+  7,
+) as any as S.Schema<ModelChoiceSupportedEffortsList>;
+
 /** One model a run may use. Reads a `ModelChoice` straight off the catalogue facade. Both enums are declared with the same choices the run-detail response uses, so clients get the generated adapter/effort types here rather than bare strings. */
 export interface ModelChoice {
   /** Runtime that drives this model, such as 'claude' or 'codex'. * `claude` - claude * `codex` - codex */
@@ -1152,38 +1516,81 @@ export interface ModelChoice {
   /** Per-token cost against the catalogue baseline, ready to display, such as '2.5x' or '~0.55x'. Prefixed when the input and output rates diverge enough that one number flatters either. Null for a model the catalogue quotes no rate for. */
   cost_multiplier?: string | null;
 }
+const ModelChoice = /*@__PURE__*/ __L.at(__c8, 0) as any as S.Schema<ModelChoice>;
+
 /** Every model a run may use, newest catalogue from the LLM gateway. Empty when the gateway is unreachable. */
 export type ModelCatalogueResponseModelsList = Array<ModelChoice>;
+const ModelCatalogueResponseModelsList = /*@__PURE__*/ __L.at(
+  __c8,
+  1,
+) as any as S.Schema<ModelCatalogueResponseModelsList>;
+
 export interface ModelCatalogueResponse {
   /** Every model a run may use, newest catalogue from the LLM gateway. Empty when the gateway is unreachable. */
   models: ModelCatalogueResponseModelsList;
 }
+const ModelCatalogueResponse = /*@__PURE__*/ __L.at(
+  __c8,
+  2,
+) as any as S.Schema<ModelCatalogueResponse>;
+
 export interface GetTasksPinnedRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
+const GetTasksPinnedRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  3,
+) as any as S.Schema<GetTasksPinnedRequest>;
+
 /** Visible task IDs pinned by the requester, newest pin first. */
 export type PinnedTaskIdsResponseTaskIdsList = Array<string>;
+const PinnedTaskIdsResponseTaskIdsList =
+  CreateTaskRequestRepositoriesList as any as S.Schema<PinnedTaskIdsResponseTaskIdsList>;
+
 export interface PinnedTaskIdsResponse {
   /** Visible task IDs pinned by the requester, newest pin first. */
   task_ids: PinnedTaskIdsResponseTaskIdsList;
 }
+const PinnedTaskIdsResponse = /*@__PURE__*/ __L.at(
+  __c8,
+  4,
+) as any as S.Schema<PinnedTaskIdsResponse>;
+
 export interface GetTasksRepoRoutingRuleRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A UUID string identifying this repo routing rule. */
   id: string;
 }
+const GetTasksRepoRoutingRuleRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  5,
+) as any as S.Schema<GetTasksRepoRoutingRuleRequest>;
+
 export interface GetTasksRepositoryRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
+const GetTasksRepositoryRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  6,
+) as any as S.Schema<GetTasksRepositoryRequest>;
+
 /** Distinct repositories in use by non-deleted, non-internal tasks for the current team. */
 export type TaskRepositoriesResponseRepositoriesList = Array<string>;
+const TaskRepositoriesResponseRepositoriesList =
+  CreateTaskRequestRepositoriesList as any as S.Schema<TaskRepositoriesResponseRepositoriesList>;
+
 export interface TaskRepositoriesResponse {
   /** Distinct repositories in use by non-deleted, non-internal tasks for the current team. */
   repositories?: TaskRepositoriesResponseRepositoriesList;
 }
+const TaskRepositoriesResponse = /*@__PURE__*/ __L.at(
+  __c8,
+  7,
+) as any as S.Schema<TaskRepositoriesResponse>;
+
 export interface GetTasksRepositoryReadinessRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -1192,6 +1599,11 @@ export interface GetTasksRepositoryReadinessRequest {
   repository: string;
   window_days?: number;
 }
+const GetTasksRepositoryReadinessRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  0,
+) as any as S.Schema<GetTasksRepositoryReadinessRequest>;
+
 /** * `needs_setup` - needs_setup * `detected` - detected * `waiting_for_data` - waiting_for_data * `ready` - ready * `not_applicable` - not_applicable * `unknown` - unknown */
 export type CapabilityStateStateEnum =
   | "needs_setup"
@@ -1200,8 +1612,13 @@ export type CapabilityStateStateEnum =
   | "ready"
   | "not_applicable"
   | "unknown";
+const CapabilityStateStateEnum = S.String;
+
 /** Supporting evidence */
 export type CapabilityStateEvidenceMap = { [key: string]: unknown | undefined };
+const CapabilityStateEvidenceMap =
+  TaskCreateResponseDTOJsonSchemaMap as any as S.Schema<CapabilityStateEvidenceMap>;
+
 export interface CapabilityState {
   /** Current state of the capability * `needs_setup` - needs_setup * `detected` - detected * `waiting_for_data` - waiting_for_data * `ready` - ready * `not_applicable` - not_applicable * `unknown` - unknown */
   state?: CapabilityStateStateEnum;
@@ -1212,6 +1629,8 @@ export interface CapabilityState {
   /** Supporting evidence */
   evidence?: CapabilityStateEvidenceMap;
 }
+const CapabilityState = /*@__PURE__*/ __L.at(__c9, 1) as any as S.Schema<CapabilityState>;
+
 export interface ScanEvidence {
   /** Number of files scanned */
   filesScanned?: number;
@@ -1226,6 +1645,8 @@ export interface ScanEvidence {
   /** Whether error tracking signals were found in scanned files */
   foundErrorSignal?: boolean;
 }
+const ScanEvidence = /*@__PURE__*/ __L.at(__c9, 2) as any as S.Schema<ScanEvidence>;
+
 export interface RepositoryReadinessResponse {
   /** Normalized repository identifier */
   repository?: string;
@@ -1252,6 +1673,11 @@ export interface RepositoryReadinessResponse {
   /** Scan evidence details */
   scan?: ScanEvidence;
 }
+const RepositoryReadinessResponse = /*@__PURE__*/ __L.at(
+  __c9,
+  3,
+) as any as S.Schema<RepositoryReadinessResponse>;
+
 export interface GetTasksReviewRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -1259,6 +1685,11 @@ export interface GetTasksReviewRequest {
   /** Page of changed files. */
   page?: number;
 }
+const GetTasksReviewRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  4,
+) as any as S.Schema<GetTasksReviewRequest>;
+
 export interface TaskReviewFile {
   /** Repository-relative path. */
   filename: string;
@@ -1273,8 +1704,12 @@ export interface TaskReviewFile {
   /** Open GitHub to read the complete or binary change. */
   truncated: boolean;
 }
+const TaskReviewFile = /*@__PURE__*/ __L.at(__c9, 5) as any as S.Schema<TaskReviewFile>;
+
 /** Changed files on this page. */
 export type TaskReviewFilesList = Array<TaskReviewFile>;
+const TaskReviewFilesList = /*@__PURE__*/ __L.at(__c9, 6) as any as S.Schema<TaskReviewFilesList>;
+
 export interface TaskReview {
   /** GitHub pull request URL. */
   url: string;
@@ -1291,12 +1726,19 @@ export interface TaskReview {
   /** Whether another file page is available. */
   has_more: boolean;
 }
+const TaskReview = /*@__PURE__*/ __L.at(__c9, 7) as any as S.Schema<TaskReview>;
+
 export interface GetTasksSlackThreadContextRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** Full Slack permalink to any message in the thread (e.g. https://posthog.slack.com/archives/C.../p1779956938619299). Replies inside the thread are accepted too -- the `thread_ts` query param (when present) takes precedence over the in-path message ts. */
   url: string;
 }
+const GetTasksSlackThreadContextRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  0,
+) as any as S.Schema<GetTasksSlackThreadContextRequest>;
+
 /** Slack-side identifiers and the mapping metadata for a thread -> task lookup. */
 export interface SlackThreadContextThread {
   /** Echoed input URL. */
@@ -1316,6 +1758,11 @@ export interface SlackThreadContextThread {
   /** Absolute URL to the SlackThreadTaskMapping row in Django admin. Null when no mapping exists. */
   mapping_admin_url: string | null;
 }
+const SlackThreadContextThread = /*@__PURE__*/ __L.at(
+  __c10,
+  1,
+) as any as S.Schema<SlackThreadContextThread>;
+
 /** The PostHog Task linked to the Slack thread. */
 export interface SlackThreadContextTask {
   /** UUID of the Task row. */
@@ -1335,6 +1782,11 @@ export interface SlackThreadContextTask {
   /** Absolute URL to the Task row in Django admin. */
   admin_url: string;
 }
+const SlackThreadContextTask = /*@__PURE__*/ __L.at(
+  __c10,
+  2,
+) as any as S.Schema<SlackThreadContextTask>;
+
 /** The internal sandbox run the discovery agent used to pick this run's repo. Only present when the originating mention was ambiguous (multiple candidate repos, no explicit mention) -- that's the only path that spins up a research sandbox. Null otherwise. */
 export interface SlackThreadContextRepoResearch {
   /** UUID of the internal repo-research Task. */
@@ -1354,6 +1806,11 @@ export interface SlackThreadContextRepoResearch {
   /** Presigned S3 URL for the research run's JSONL log transcript (valid ~1 hour). */
   log_url: string | null;
 }
+const SlackThreadContextRepoResearch = /*@__PURE__*/ __L.at(
+  __c10,
+  3,
+) as any as S.Schema<SlackThreadContextRepoResearch>;
+
 /** One TaskRun and its associated Temporal workflow handles. */
 export interface SlackThreadContextRun {
   /** UUID of the TaskRun row. */
@@ -1387,8 +1844,18 @@ export interface SlackThreadContextRun {
   /** Absolute URL to the TaskRun row in Django admin (includes a log download action). */
   admin_url: string;
 }
+const SlackThreadContextRun = /*@__PURE__*/ __L.at(
+  __c10,
+  4,
+) as any as S.Schema<SlackThreadContextRun>;
+
 /** All runs on the task, oldest first. Empty when no mapping was found. */
 export type SlackThreadContextResponseRunsList = Array<SlackThreadContextRun>;
+const SlackThreadContextResponseRunsList = /*@__PURE__*/ __L.at(
+  __c10,
+  5,
+) as any as S.Schema<SlackThreadContextResponseRunsList>;
+
 /** Top-level response for the slack-thread debug endpoint. */
 export interface SlackThreadContextResponse {
   /** Slack-side identifiers and the mapping metadata. */
@@ -1398,11 +1865,21 @@ export interface SlackThreadContextResponse {
   /** All runs on the task, oldest first. Empty when no mapping was found. */
   runs: SlackThreadContextResponseRunsList;
 }
+const SlackThreadContextResponse = /*@__PURE__*/ __L.at(
+  __c10,
+  6,
+) as any as S.Schema<SlackThreadContextResponse>;
+
 export interface GetTasksUsageRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   id: string;
 }
+const GetTasksUsageRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  7,
+) as any as S.Schema<GetTasksUsageRequest>;
+
 export interface TaskUsageResponse {
   /** Estimated model cost attributed to this task in US dollars. */
   token_cost_usd: number;
@@ -1411,9 +1888,17 @@ export interface TaskUsageResponse {
   /** Estimated total cost attributed to this task in US dollars. */
   total_cost_usd: number;
 }
+const TaskUsageResponse = /*@__PURE__*/ __L.at(__c11, 0) as any as S.Schema<TaskUsageResponse>;
+
 export type ListTasksRequestArchived = "true" | "false" | "all";
+const ListTasksRequestArchived = S.String;
+
 export type ListTasksRequestCiStatus = "passing" | "failing" | "pending" | "none";
+const ListTasksRequestCiStatus = S.String;
+
 export type ListTasksRequestClientProvenance = "posthog_desktop";
+const ListTasksRequestClientProvenance = S.String;
+
 export type ListTasksRequestExcludeOriginProduct =
   | "onboarding"
   | "error_tracking"
@@ -1439,9 +1924,17 @@ export type ListTasksRequestExcludeOriginProduct =
   | "workflow"
   | "space_setup"
   | "business_knowledge";
+const ListTasksRequestExcludeOriginProduct = S.String;
+
 export type ListTasksRequestInternal = "true" | "false" | "all";
+const ListTasksRequestInternal = S.String;
+
 export type ListTasksRequestOrdering = "-created_at" | "-last_activity_at";
+const ListTasksRequestOrdering = S.String;
+
 export type ListTasksRequestPrState = "open" | "draft" | "merged" | "closed";
+const ListTasksRequestPrState = S.String;
+
 export type ListTasksRequestStatus =
   | "not_started"
   | "queued"
@@ -1449,6 +1942,8 @@ export type ListTasksRequestStatus =
   | "completed"
   | "failed"
   | "cancelled";
+const ListTasksRequestStatus = S.String;
+
 export interface ListTasksRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -1499,6 +1994,8 @@ export interface ListTasksRequest {
   /** Filter tasks by the status of their most recent run. * `not_started` - not_started * `queued` - queued * `in_progress` - in_progress * `completed` - completed * `failed` - failed * `cancelled` - cancelled */
   status?: ListTasksRequestStatus | (string & {});
 }
+const ListTasksRequest = /*@__PURE__*/ __L.at(__c11, 1) as any as S.Schema<ListTasksRequest>;
+
 export type TaskBasicRepositoriesList = Array<string>;
 export type TaskBasicJsonSchemaMap = { [key: string]: unknown | undefined };
 export type TaskBasicSlackThreadReferencesList = Array<SlackThreadReferenceDTO>;
@@ -1536,18 +2033,35 @@ export interface TaskBasic {
   description_preview: string;
 }
 export type TaskListItem = TaskDetailDTO | TaskBasic;
+const TaskListItem = S.Unknown as any as S.Schema<TaskListItem>;
+
 export type PaginatedTaskListItemListResultsList = Array<TaskListItem>;
+const PaginatedTaskListItemListResultsList = /*@__PURE__*/ __L.at(
+  __c11,
+  2,
+) as any as S.Schema<PaginatedTaskListItemListResultsList>;
+
 export interface PaginatedTaskListItemList {
   count: number;
   next?: string | null;
   previous?: string | null;
   results: PaginatedTaskListItemListResultsList;
 }
+const PaginatedTaskListItemList = /*@__PURE__*/ __L.at(
+  __c11,
+  3,
+) as any as S.Schema<PaginatedTaskListItemList>;
+
 export interface ListTasksArtifactsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   id: string;
 }
+const ListTasksArtifactsRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  4,
+) as any as S.Schema<ListTasksArtifactsRequest>;
+
 export interface TaskArtifact {
   /** Stable artifact id used to filter task comments. */
   id: string;
@@ -1556,12 +2070,24 @@ export interface TaskArtifact {
   /** Display name of the artifact. */
   name: string;
 }
+const TaskArtifact = TaskCommentTarget as any as S.Schema<TaskArtifact>;
+
 /** Artifacts and canvases linked to this task. */
 export type TaskArtifactsResponseArtifactsList = Array<TaskArtifact>;
+const TaskArtifactsResponseArtifactsList = /*@__PURE__*/ __L.at(
+  __c11,
+  5,
+) as any as S.Schema<TaskArtifactsResponseArtifactsList>;
+
 export interface TaskArtifactsResponse {
   /** Artifacts and canvases linked to this task. */
   artifacts: TaskArtifactsResponseArtifactsList;
 }
+const TaskArtifactsResponse = /*@__PURE__*/ __L.at(
+  __c11,
+  6,
+) as any as S.Schema<TaskArtifactsResponse>;
+
 export interface ListTasksCommentsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -1575,6 +2101,11 @@ export interface ListTasksCommentsRequest {
   /** Maximum number of root comments to return. */
   limit?: number;
 }
+const ListTasksCommentsRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  7,
+) as any as S.Schema<ListTasksCommentsRequest>;
+
 export interface TaskCommentSummary {
   /** Root comment id. */
   id: string;
@@ -1593,14 +2124,26 @@ export interface TaskCommentSummary {
   /** Whether the comment is resolved. */
   resolved: boolean;
 }
+const TaskCommentSummary = /*@__PURE__*/ __L.at(__c12, 0) as any as S.Schema<TaskCommentSummary>;
+
 /** Root comments, newest first. */
 export type TaskCommentsResponseCommentsList = Array<TaskCommentSummary>;
+const TaskCommentsResponseCommentsList = /*@__PURE__*/ __L.at(
+  __c12,
+  1,
+) as any as S.Schema<TaskCommentsResponseCommentsList>;
+
 export interface TaskCommentsResponse {
   /** Root comments, newest first. */
   comments: TaskCommentsResponseCommentsList;
   /** Opaque cursor for the next page, or null. */
   next: string | null;
 }
+const TaskCommentsResponse = /*@__PURE__*/ __L.at(
+  __c12,
+  2,
+) as any as S.Schema<TaskCommentsResponse>;
+
 export interface ListTasksConfigRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -1609,28 +2152,68 @@ export interface ListTasksConfigRequest {
   /** The initial index from which to return the results. */
   offset?: number;
 }
+const ListTasksConfigRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  3,
+) as any as S.Schema<ListTasksConfigRequest>;
+
 export interface ListTasksMeConfigRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
+const ListTasksMeConfigRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  4,
+) as any as S.Schema<ListTasksMeConfigRequest>;
+
 export interface ListTasksRepoRoutingRulesRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
+const ListTasksRepoRoutingRulesRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  5,
+) as any as S.Schema<ListTasksRepoRoutingRulesRequest>;
+
 export type ListTasksRepoRoutingRulesResponseBodyList = Array<RepoRoutingRule>;
+const ListTasksRepoRoutingRulesResponseBodyList = /*@__PURE__*/ __L.at(
+  __c12,
+  6,
+) as any as S.Schema<ListTasksRepoRoutingRulesResponseBodyList>;
+
 export type ListTasksRepoRoutingRulesResponse = ListTasksRepoRoutingRulesResponseBodyList;
+const ListTasksRepoRoutingRulesResponse = /*@__PURE__*/ __L.at(
+  __c12,
+  7,
+) as any as S.Schema<ListTasksRepoRoutingRulesResponse>;
+
 export interface ListTasksRunsLivingArtifactsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   task_id: string;
   run_id: string;
 }
+const ListTasksRunsLivingArtifactsRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  0,
+) as any as S.Schema<ListTasksRunsLivingArtifactsRequest>;
+
 /** Living artifacts for this task run. */
 export type TaskRunLivingArtifactsResponseArtifactsList = Array<TaskRunLivingArtifactResponse>;
+const TaskRunLivingArtifactsResponseArtifactsList = /*@__PURE__*/ __L.at(
+  __c13,
+  1,
+) as any as S.Schema<TaskRunLivingArtifactsResponseArtifactsList>;
+
 export interface TaskRunLivingArtifactsResponse {
   /** Living artifacts for this task run. */
   artifacts: TaskRunLivingArtifactsResponseArtifactsList;
 }
+const TaskRunLivingArtifactsResponse = /*@__PURE__*/ __L.at(
+  __c13,
+  2,
+) as any as S.Schema<TaskRunLivingArtifactsResponse>;
+
 export interface ListTasksThreadMessagesRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -1640,34 +2223,74 @@ export interface ListTasksThreadMessagesRequest {
   /** The initial index from which to return the results. */
   offset?: number;
 }
+const ListTasksThreadMessagesRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  3,
+) as any as S.Schema<ListTasksThreadMessagesRequest>;
+
 export type PaginatedTaskThreadMessageDTOListResultsList = Array<TaskThreadMessageDTO>;
+const PaginatedTaskThreadMessageDTOListResultsList = /*@__PURE__*/ __L.at(
+  __c13,
+  4,
+) as any as S.Schema<PaginatedTaskThreadMessageDTOListResultsList>;
+
 export interface PaginatedTaskThreadMessageDTOList {
   count: number;
   next?: string | null;
   previous?: string | null;
   results: PaginatedTaskThreadMessageDTOListResultsList;
 }
+const PaginatedTaskThreadMessageDTOList = /*@__PURE__*/ __L.at(
+  __c13,
+  5,
+) as any as S.Schema<PaginatedTaskThreadMessageDTOList>;
+
 export interface TasksDestroyRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   id: string;
 }
+const TasksDestroyRequest = /*@__PURE__*/ __L.at(__c13, 6) as any as S.Schema<TasksDestroyRequest>;
+
 export interface TasksDestroyResponse {}
+const TasksDestroyResponse = CreateTasksPresenceResponse as any as S.Schema<TasksDestroyResponse>;
+
 export interface TasksPresenceDestroyRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   id: string;
 }
+const TasksPresenceDestroyRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  7,
+) as any as S.Schema<TasksPresenceDestroyRequest>;
+
 export interface TasksPresenceDestroyResponse {}
+const TasksPresenceDestroyResponse =
+  CreateTasksPresenceResponse as any as S.Schema<TasksPresenceDestroyResponse>;
+
 export interface TasksRepoRoutingRulesDestroyRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A UUID string identifying this repo routing rule. */
   id: string;
 }
+const TasksRepoRoutingRulesDestroyRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  0,
+) as any as S.Schema<TasksRepoRoutingRulesDestroyRequest>;
+
 export interface TasksRepoRoutingRulesDestroyResponse {}
+const TasksRepoRoutingRulesDestroyResponse = /*@__PURE__*/ __L.at(
+  __c14,
+  1,
+) as any as S.Schema<TasksRepoRoutingRulesDestroyResponse>;
+
 /** Insight query JSON to render ad hoc, e.g. {"kind": "InsightVizNode", "source": {"kind": "TrendsQuery", ...}}. SQL queries (DataVisualizationNode, HogQLQuery) are not supported yet. Provide exactly one of query or insight_id. */
 export type TasksRunsLivingArtifactsChartRequestQueryMap = { [key: string]: unknown | undefined };
+const TasksRunsLivingArtifactsChartRequestQueryMap =
+  TaskCreateResponseDTOJsonSchemaMap as any as S.Schema<TasksRunsLivingArtifactsChartRequestQueryMap>;
+
 export interface TasksRunsLivingArtifactsChartRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -1680,6 +2303,11 @@ export interface TasksRunsLivingArtifactsChartRequest {
   /** Numeric id of a saved insight to render. Provide exactly one of query or insight_id. */
   insight_id?: number;
 }
+const TasksRunsLivingArtifactsChartRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  2,
+) as any as S.Schema<TasksRunsLivingArtifactsChartRequest>;
+
 export interface TaskRunLivingArtifactChartResponse {
   /** The living artifact registered for delivery. */
   artifact: TaskRunLivingArtifactResponse;
@@ -1688,6 +2316,11 @@ export interface TaskRunLivingArtifactChartResponse {
   /** Link to explore this chart interactively in PostHog. */
   url?: string | null;
 }
+const TaskRunLivingArtifactChartResponse = /*@__PURE__*/ __L.at(
+  __c14,
+  3,
+) as any as S.Schema<TaskRunLivingArtifactChartResponse>;
+
 export interface TasksRunsLivingArtifactsOpenRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -1695,12 +2328,20 @@ export interface TasksRunsLivingArtifactsOpenRequest {
   run_id: string;
   id: string;
 }
+const TasksRunsLivingArtifactsOpenRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  4,
+) as any as S.Schema<TasksRunsLivingArtifactsOpenRequest>;
+
 export type TaskRunLivingArtifactOpenResponseVersionsItemMap = {
   [key: string]: unknown | undefined;
 };
 /** Chronological version records for this artifact. */
 export type TaskRunLivingArtifactOpenResponseVersionsList =
   Array<TaskRunLivingArtifactOpenResponseVersionsItemMap>;
+const TaskRunLivingArtifactOpenResponseVersionsList =
+  TaskRunLivingArtifactResponseVersionsList as any as S.Schema<TaskRunLivingArtifactOpenResponseVersionsList>;
+
 export interface TaskRunLivingArtifactOpenResponse {
   /** Stable living artifact id. Use this id when editing the artifact. */
   id: string;
@@ -1733,6 +2374,11 @@ export interface TaskRunLivingArtifactOpenResponse {
   /** Current artifact content when the adapter can read it directly. */
   content?: string | null;
 }
+const TaskRunLivingArtifactOpenResponse = /*@__PURE__*/ __L.at(
+  __c14,
+  5,
+) as any as S.Schema<TaskRunLivingArtifactOpenResponse>;
+
 export interface TasksRunsLivingArtifactsVersionContentRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -1744,7 +2390,15 @@ export interface TasksRunsLivingArtifactsVersionContentRequest {
   /** Set to true to save the version. A stored file then redirects to a short-lived presigned URL, so a large file never passes through the app. Leave unset for an inline preview. */
   download?: boolean;
 }
+const TasksRunsLivingArtifactsVersionContentRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  6,
+) as any as S.Schema<TasksRunsLivingArtifactsVersionContentRequest>;
+
 export interface TasksRunsLivingArtifactsVersionContentResponse {}
+const TasksRunsLivingArtifactsVersionContentResponse =
+  TasksRepoRoutingRulesDestroyResponse as any as S.Schema<TasksRunsLivingArtifactsVersionContentResponse>;
+
 export interface TasksSearchRetrieveRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -1753,8 +2407,15 @@ export interface TasksSearchRetrieveRequest {
   /** Text or exact identifier to search for. */
   q: string;
 }
+const TasksSearchRetrieveRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  7,
+) as any as S.Schema<TasksSearchRetrieveRequest>;
+
 /** * `task` - task * `pull_request` - pull_request * `artifact` - artifact * `channel` - channel * `canvas` - canvas */
 export type TaskSearchResultKindEnum = "task" | "pull_request" | "artifact" | "channel" | "canvas";
+const TaskSearchResultKindEnum = S.String;
+
 export interface TaskSearchResult {
   /** Search document identifier. */
   id: string;
@@ -1781,8 +2442,20 @@ export interface TaskSearchResult {
   /** Resource-specific navigation metadata. */
   metadata: unknown;
 }
+const TaskSearchResult = /*@__PURE__*/ __L.at(__c15, 0) as any as S.Schema<TaskSearchResult>;
+
 export type TasksSearchRetrieveResponseBodyList = Array<TaskSearchResult>;
+const TasksSearchRetrieveResponseBodyList = /*@__PURE__*/ __L.at(
+  __c15,
+  1,
+) as any as S.Schema<TasksSearchRetrieveResponseBodyList>;
+
 export type TasksSearchRetrieveResponse = TasksSearchRetrieveResponseBodyList;
+const TasksSearchRetrieveResponse = /*@__PURE__*/ __L.at(
+  __c15,
+  2,
+) as any as S.Schema<TasksSearchRetrieveResponse>;
+
 /** * `plan` - plan * `context` - context * `reference` - reference * `output` - output * `artifact` - artifact * `tree_snapshot` - tree_snapshot * `user_attachment` - user_attachment * `skill_bundle` - skill_bundle */
 export type TaskRunArtifactTypeEnum =
   | "plan"
@@ -1793,6 +2466,8 @@ export type TaskRunArtifactTypeEnum =
   | "tree_snapshot"
   | "user_attachment"
   | "skill_bundle";
+const TaskRunArtifactTypeEnum = S.String;
+
 export interface TaskStagedArtifactFinalizeUpload {
   /** Stable identifier returned by the staged prepare upload endpoint */
   id?: string;
@@ -1809,9 +2484,19 @@ export interface TaskStagedArtifactFinalizeUpload {
   /** Skill bundle metadata, required when the artifact type is skill_bundle. */
   metadata?: TaskRunSkillBundleMetadata;
 }
+const TaskStagedArtifactFinalizeUpload = /*@__PURE__*/ __L.at(
+  __c15,
+  3,
+) as any as S.Schema<TaskStagedArtifactFinalizeUpload>;
+
 /** Array of staged artifacts to finalize after upload */
 export type TasksStagedArtifactsFinalizeUploadCreateRequestArtifactsList =
   Array<TaskStagedArtifactFinalizeUpload>;
+const TasksStagedArtifactsFinalizeUploadCreateRequestArtifactsList = /*@__PURE__*/ __L.at(
+  __c15,
+  4,
+) as any as S.Schema<TasksStagedArtifactsFinalizeUploadCreateRequestArtifactsList>;
+
 export interface TasksStagedArtifactsFinalizeUploadCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -1819,12 +2504,25 @@ export interface TasksStagedArtifactsFinalizeUploadCreateRequest {
   /** Array of staged artifacts to finalize after upload */
   artifacts?: TasksStagedArtifactsFinalizeUploadCreateRequestArtifactsList;
 }
+const TasksStagedArtifactsFinalizeUploadCreateRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  5,
+) as any as S.Schema<TasksStagedArtifactsFinalizeUploadCreateRequest>;
+
 /** Finalized staged artifacts available for attachment to a new run */
 export type TaskStagedArtifactsFinalizeUploadResponseArtifactsList = Array<TaskRunArtifactResponse>;
+const TaskStagedArtifactsFinalizeUploadResponseArtifactsList =
+  TaskRunDetailDTOArtifactsList as any as S.Schema<TaskStagedArtifactsFinalizeUploadResponseArtifactsList>;
+
 export interface TaskStagedArtifactsFinalizeUploadResponse {
   /** Finalized staged artifacts available for attachment to a new run */
   artifacts?: TaskStagedArtifactsFinalizeUploadResponseArtifactsList;
 }
+const TaskStagedArtifactsFinalizeUploadResponse = /*@__PURE__*/ __L.at(
+  __c15,
+  6,
+) as any as S.Schema<TaskStagedArtifactsFinalizeUploadResponse>;
+
 export interface TaskStagedArtifactPrepareUpload {
   /** File name to associate with the staged artifact */
   name?: string;
@@ -1839,9 +2537,19 @@ export interface TaskStagedArtifactPrepareUpload {
   /** Skill bundle metadata, required when the artifact type is skill_bundle. */
   metadata?: TaskRunSkillBundleMetadata;
 }
+const TaskStagedArtifactPrepareUpload = /*@__PURE__*/ __L.at(
+  __c15,
+  7,
+) as any as S.Schema<TaskStagedArtifactPrepareUpload>;
+
 /** Array of staged artifacts to prepare before creating a run */
 export type TasksStagedArtifactsPrepareUploadCreateRequestArtifactsList =
   Array<TaskStagedArtifactPrepareUpload>;
+const TasksStagedArtifactsPrepareUploadCreateRequestArtifactsList = /*@__PURE__*/ __L.at(
+  __c16,
+  0,
+) as any as S.Schema<TasksStagedArtifactsPrepareUploadCreateRequestArtifactsList>;
+
 export interface TasksStagedArtifactsPrepareUploadCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -1849,14 +2557,24 @@ export interface TasksStagedArtifactsPrepareUploadCreateRequest {
   /** Array of staged artifacts to prepare before creating a run */
   artifacts?: TasksStagedArtifactsPrepareUploadCreateRequestArtifactsList;
 }
+const TasksStagedArtifactsPrepareUploadCreateRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  1,
+) as any as S.Schema<TasksStagedArtifactsPrepareUploadCreateRequest>;
+
 /** Form fields that must be submitted verbatim with the file upload */
 export type S3PresignedPostFieldsMap = { [key: string]: string | undefined };
+const S3PresignedPostFieldsMap =
+  TaskPullRequestTitlesTitlesMap as any as S.Schema<S3PresignedPostFieldsMap>;
+
 export interface S3PresignedPost {
   /** Presigned S3 POST URL */
   url?: string;
   /** Form fields that must be submitted verbatim with the file upload */
   fields?: S3PresignedPostFieldsMap;
 }
+const S3PresignedPost = /*@__PURE__*/ __L.at(__c16, 2) as any as S.Schema<S3PresignedPost>;
+
 export interface TaskStagedArtifactPrepareUploadResponse {
   /** Stable identifier for the prepared staged artifact within this task */
   id?: string;
@@ -1879,23 +2597,49 @@ export interface TaskStagedArtifactPrepareUploadResponse {
   /** Presigned S3 POST configuration for uploading the file */
   presigned_post?: S3PresignedPost;
 }
+const TaskStagedArtifactPrepareUploadResponse = /*@__PURE__*/ __L.at(
+  __c16,
+  3,
+) as any as S.Schema<TaskStagedArtifactPrepareUploadResponse>;
+
 /** Prepared staged uploads for the requested artifacts */
 export type TaskStagedArtifactsPrepareUploadResponseArtifactsList =
   Array<TaskStagedArtifactPrepareUploadResponse>;
+const TaskStagedArtifactsPrepareUploadResponseArtifactsList = /*@__PURE__*/ __L.at(
+  __c16,
+  4,
+) as any as S.Schema<TaskStagedArtifactsPrepareUploadResponseArtifactsList>;
+
 export interface TaskStagedArtifactsPrepareUploadResponse {
   /** Prepared staged uploads for the requested artifacts */
   artifacts?: TaskStagedArtifactsPrepareUploadResponseArtifactsList;
 }
+const TaskStagedArtifactsPrepareUploadResponse = /*@__PURE__*/ __L.at(
+  __c16,
+  5,
+) as any as S.Schema<TaskStagedArtifactsPrepareUploadResponse>;
+
 export interface TasksThreadMessagesDestroyRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   task_id: string;
   id: string;
 }
+const TasksThreadMessagesDestroyRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  6,
+) as any as S.Schema<TasksThreadMessagesDestroyRequest>;
+
 export interface TasksThreadMessagesDestroyResponse {}
+const TasksThreadMessagesDestroyResponse =
+  TasksRepoRoutingRulesDestroyResponse as any as S.Schema<TasksThreadMessagesDestroyResponse>;
+
 export type TasksThreadMessagesSendToAgentCreateRequestPayloadMap = {
   [key: string]: unknown | undefined;
 };
+const TasksThreadMessagesSendToAgentCreateRequestPayloadMap =
+  TaskCreateResponseDTOJsonSchemaMap as any as S.Schema<TasksThreadMessagesSendToAgentCreateRequestPayloadMap>;
+
 export interface TasksThreadMessagesSendToAgentCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -1911,6 +2655,11 @@ export interface TasksThreadMessagesSendToAgentCreateRequest {
   forwarded_to_agent_at?: string | null;
   forwarded_by?: TaskUserBasicInfo | null;
 }
+const TasksThreadMessagesSendToAgentCreateRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  7,
+) as any as S.Schema<TasksThreadMessagesSendToAgentCreateRequest>;
+
 export interface TasksWarmResumeCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -1926,6 +2675,11 @@ export interface TasksWarmResumeCreateRequest {
   /** Initial permission mode for the warmed successor's agent session. * `default` - default * `acceptEdits` - acceptEdits * `plan` - plan * `bypassPermissions` - bypassPermissions * `auto` - auto * `read-only` - read-only * `full-access` - full-access */
   initial_permission_mode?: TaskRunBootstrapCreateRequestInitialPermissionModeEnum | (string & {});
 }
+const TasksWarmResumeCreateRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  0,
+) as any as S.Schema<TasksWarmResumeCreateRequest>;
+
 /** Response for a successfully warmed successor run on an existing task. */
 export interface WarmTaskResumeResponse {
   /** ID of the existing task being resumed. */
@@ -1933,10 +2687,18 @@ export interface WarmTaskResumeResponse {
   /** ID of the idling successor run that submit will activate. */
   run_id: string;
 }
+const WarmTaskResumeResponse = WarmTaskResponse as any as S.Schema<WarmTaskResumeResponse>;
+
 /** GitHub repositories available to this task, each in `organization/repo` format. */
 export type UpdateTaskRequestRepositoriesList = Array<string>;
+const UpdateTaskRequestRepositoriesList =
+  CreateTaskRequestRepositoriesList as any as S.Schema<UpdateTaskRequestRepositoriesList>;
+
 /** Run artifact ids (already uploaded to the pre-warmed Run) to attach to the forwarded first message when creation reuses that warm Run, e.g. skill bundles or file attachments. If any id is missing from the warm Run's manifest, warm reuse is skipped and the task is created cold. Ignored when no warm Run is matched. Not supported when start_run is true. */
 export type UpdateTaskRequestPendingUserArtifactIdsList = Array<string>;
+const UpdateTaskRequestPendingUserArtifactIdsList =
+  CreateTaskRequestRepositoriesList as any as S.Schema<UpdateTaskRequestPendingUserArtifactIdsList>;
+
 export interface UpdateTaskRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -1989,10 +2751,18 @@ export interface UpdateTaskRequest {
   /** Channel this task is owned by (the channel it was kicked off in). */
   channel?: string | null;
 }
+const UpdateTaskRequest = /*@__PURE__*/ __L.at(__c17, 1) as any as S.Schema<UpdateTaskRequest>;
+
 /** GitHub repositories available to this task, each in `organization/repo` format. */
 export type UpdateTasksPartialRequestRepositoriesList = Array<string>;
+const UpdateTasksPartialRequestRepositoriesList =
+  CreateTaskRequestRepositoriesList as any as S.Schema<UpdateTasksPartialRequestRepositoriesList>;
+
 /** Run artifact ids (already uploaded to the pre-warmed Run) to attach to the forwarded first message when creation reuses that warm Run, e.g. skill bundles or file attachments. If any id is missing from the warm Run's manifest, warm reuse is skipped and the task is created cold. Ignored when no warm Run is matched. Not supported when start_run is true. */
 export type UpdateTasksPartialRequestPendingUserArtifactIdsList = Array<string>;
+const UpdateTasksPartialRequestPendingUserArtifactIdsList =
+  CreateTaskRequestRepositoriesList as any as S.Schema<UpdateTasksPartialRequestPendingUserArtifactIdsList>;
+
 export interface UpdateTasksPartialRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -2045,6 +2815,11 @@ export interface UpdateTasksPartialRequest {
   /** Channel this task is owned by (the channel it was kicked off in). */
   channel?: string | null;
 }
+const UpdateTasksPartialRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  2,
+) as any as S.Schema<UpdateTasksPartialRequest>;
+
 export interface UpdateTasksRepoRoutingRuleRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -2055,6 +2830,11 @@ export interface UpdateTasksRepoRoutingRuleRequest {
   /** Target repository as owner/repo, e.g. 'posthog/posthog.com'. */
   repository: string;
 }
+const UpdateTasksRepoRoutingRuleRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  3,
+) as any as S.Schema<UpdateTasksRepoRoutingRuleRequest>;
+
 export interface UpdateTasksRepoRoutingRulesPartialRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -2065,6 +2845,11 @@ export interface UpdateTasksRepoRoutingRulesPartialRequest {
   /** Target repository as owner/repo, e.g. 'posthog/posthog.com'. */
   repository?: string;
 }
+const UpdateTasksRepoRoutingRulesPartialRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  4,
+) as any as S.Schema<UpdateTasksRepoRoutingRulesPartialRequest>;
+
 export type CreateTaskError = BadRequest | Forbidden | NotFound | PosthogOpError;
 /** API for managing tasks within a project. Tasks represent units of work to be performed by an agent. */
 export const createTask: API.OperationMethod<
@@ -2073,8 +2858,8 @@ export const createTask: API.OperationMethod<
   CreateTaskError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1) as any as S.Schema<CreateTaskRequest>,
-  output: __S(10) as any as S.Schema<TaskCreateResponseDTO>,
+  input: CreateTaskRequest,
+  output: TaskCreateResponseDTO,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2088,8 +2873,8 @@ export const createTasksConfig: API.OperationMethod<
   CreateTasksConfigError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11) as any as S.Schema<CreateTasksConfigRequest>,
-  output: __S(13) as any as S.Schema<TasksTeamConfigResponse>,
+  input: CreateTasksConfigRequest,
+  output: TasksTeamConfigResponse,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2103,8 +2888,8 @@ export const createTasksConfigAgentInstruction: API.OperationMethod<
   CreateTasksConfigAgentInstructionError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14) as any as S.Schema<CreateTasksConfigAgentInstructionRequest>,
-  output: __S(15) as any as S.Schema<TasksAgentInstructions>,
+  input: CreateTasksConfigAgentInstructionRequest,
+  output: TasksAgentInstructions,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2118,8 +2903,8 @@ export const createTasksHandoff: API.OperationMethod<
   CreateTasksHandoffError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16) as any as S.Schema<CreateTasksHandoffRequest>,
-  output: __S(17) as any as S.Schema<TaskDetailDTO>,
+  input: CreateTasksHandoffRequest,
+  output: TaskDetailDTO,
   errors: [Forbidden],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2133,8 +2918,8 @@ export const createTasksMeConfig: API.OperationMethod<
   CreateTasksMeConfigError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18) as any as S.Schema<CreateTasksMeConfigRequest>,
-  output: __S(21) as any as S.Schema<TasksUserConfigResponse>,
+  input: CreateTasksMeConfigRequest,
+  output: TasksUserConfigResponse,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2148,8 +2933,8 @@ export const createTasksMeConfigAgentInstruction: API.OperationMethod<
   CreateTasksMeConfigAgentInstructionError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22) as any as S.Schema<CreateTasksMeConfigAgentInstructionRequest>,
-  output: __S(15) as any as S.Schema<TasksAgentInstructions>,
+  input: CreateTasksMeConfigAgentInstructionRequest,
+  output: TasksAgentInstructions,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2163,8 +2948,8 @@ export const createTasksMeConfigTaskDefault: API.OperationMethod<
   CreateTasksMeConfigTaskDefaultError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23) as any as S.Schema<CreateTasksMeConfigTaskDefaultRequest>,
-  output: __S(20) as any as S.Schema<TasksTaskDefaults>,
+  input: CreateTasksMeConfigTaskDefaultRequest,
+  output: TasksTaskDefaults,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2178,8 +2963,8 @@ export const createTasksPin: API.OperationMethod<
   CreateTasksPinError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24) as any as S.Schema<CreateTasksPinRequest>,
-  output: __S(25) as any as S.Schema<TaskPinResponse>,
+  input: CreateTasksPinRequest,
+  output: TaskPinResponse,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2193,8 +2978,8 @@ export const createTasksPresence: API.OperationMethod<
   CreateTasksPresenceError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26) as any as S.Schema<CreateTasksPresenceRequest>,
-  output: __S(27) as any as S.Schema<CreateTasksPresenceResponse>,
+  input: CreateTasksPresenceRequest,
+  output: CreateTasksPresenceResponse,
   errors: [NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2208,8 +2993,8 @@ export const createTasksPullRequestTitle: API.OperationMethod<
   CreateTasksPullRequestTitleError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28) as any as S.Schema<CreateTasksPullRequestTitleRequest>,
-  output: __S(30) as any as S.Schema<TaskPullRequestTitles>,
+  input: CreateTasksPullRequestTitleRequest,
+  output: TaskPullRequestTitles,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2223,8 +3008,8 @@ export const createTasksRepoRoutingRule: API.OperationMethod<
   CreateTasksRepoRoutingRuleError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31) as any as S.Schema<CreateTasksRepoRoutingRuleRequest>,
-  output: __S(33) as any as S.Schema<RepoRoutingRule>,
+  input: CreateTasksRepoRoutingRuleRequest,
+  output: RepoRoutingRule,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2238,8 +3023,8 @@ export const createTasksRun: API.OperationMethod<
   CreateTasksRunError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34) as any as S.Schema<CreateTasksRunRequest>,
-  output: __S(35) as any as S.Schema<TaskRunResponse>,
+  input: CreateTasksRunRequest,
+  output: TaskRunResponse,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2253,8 +3038,8 @@ export const createTasksRunsLivingArtifact: API.OperationMethod<
   CreateTasksRunsLivingArtifactError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36) as any as S.Schema<CreateTasksRunsLivingArtifactRequest>,
-  output: __S(38) as any as S.Schema<TaskRunLivingArtifactResponse>,
+  input: CreateTasksRunsLivingArtifactRequest,
+  output: TaskRunLivingArtifactResponse,
   errors: [BadRequest, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2268,8 +3053,8 @@ export const createTasksSummary: API.OperationMethod<
   CreateTasksSummaryError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39) as any as S.Schema<CreateTasksSummaryRequest>,
-  output: __S(43) as any as S.Schema<PaginatedTaskSummaryDTOList>,
+  input: CreateTasksSummaryRequest,
+  output: PaginatedTaskSummaryDTOList,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2283,8 +3068,8 @@ export const createTasksThreadMessage: API.OperationMethod<
   CreateTasksThreadMessageError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44) as any as S.Schema<CreateTasksThreadMessageRequest>,
-  output: __S(45) as any as S.Schema<TaskThreadMessageDTO>,
+  input: CreateTasksThreadMessageRequest,
+  output: TaskThreadMessageDTO,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2298,8 +3083,8 @@ export const createTasksWarm: API.OperationMethod<
   CreateTasksWarmError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(46) as any as S.Schema<CreateTasksWarmRequest>,
-  output: __S(47) as any as S.Schema<WarmTaskResponse>,
+  input: CreateTasksWarmRequest,
+  output: WarmTaskResponse,
   errors: [Forbidden],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2313,8 +3098,8 @@ export const editTasksRunsLivingArtifact: API.OperationMethod<
   EditTasksRunsLivingArtifactError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48) as any as S.Schema<EditTasksRunsLivingArtifactRequest>,
-  output: __S(38) as any as S.Schema<TaskRunLivingArtifactResponse>,
+  input: EditTasksRunsLivingArtifactRequest,
+  output: TaskRunLivingArtifactResponse,
   errors: [BadRequest, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2328,8 +3113,8 @@ export const getCodeInvitesCheckAccess: API.OperationMethod<
   GetCodeInvitesCheckAccessError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49) as any as S.Schema<GetCodeInvitesCheckAccessRequest>,
-  output: __S(50) as any as S.Schema<LegacyDesktopAccessResponse>,
+  input: GetCodeInvitesCheckAccessRequest,
+  output: LegacyDesktopAccessResponse,
   errors: [Forbidden],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2343,8 +3128,8 @@ export const getDesktopAccess: API.OperationMethod<
   GetDesktopAccessError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(51) as any as S.Schema<GetDesktopAccessRequest>,
-  output: __S(52) as any as S.Schema<DesktopAccessResponse>,
+  input: GetDesktopAccessRequest,
+  output: DesktopAccessResponse,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2358,8 +3143,8 @@ export const getTask: API.OperationMethod<
   GetTaskError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(53) as any as S.Schema<GetTaskRequest>,
-  output: __S(17) as any as S.Schema<TaskDetailDTO>,
+  input: GetTaskRequest,
+  output: TaskDetailDTO,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2373,8 +3158,8 @@ export const getTasksActiveWizardRun: API.OperationMethod<
   GetTasksActiveWizardRunError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(54) as any as S.Schema<GetTasksActiveWizardRunRequest>,
-  output: __S(55) as any as S.Schema<WizardCloudRunDTO>,
+  input: GetTasksActiveWizardRunRequest,
+  output: WizardCloudRunDTO,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2388,8 +3173,8 @@ export const getTasksComment: API.OperationMethod<
   GetTasksCommentError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56) as any as S.Schema<GetTasksCommentRequest>,
-  output: __S(61) as any as S.Schema<TaskCommentDetail>,
+  input: GetTasksCommentRequest,
+  output: TaskCommentDetail,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2403,8 +3188,8 @@ export const getTasksModel: API.OperationMethod<
   GetTasksModelError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(62) as any as S.Schema<GetTasksModelRequest>,
-  output: __S(66) as any as S.Schema<ModelCatalogueResponse>,
+  input: GetTasksModelRequest,
+  output: ModelCatalogueResponse,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2418,8 +3203,8 @@ export const getTasksPinned: API.OperationMethod<
   GetTasksPinnedError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(67) as any as S.Schema<GetTasksPinnedRequest>,
-  output: __S(68) as any as S.Schema<PinnedTaskIdsResponse>,
+  input: GetTasksPinnedRequest,
+  output: PinnedTaskIdsResponse,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2433,8 +3218,8 @@ export const getTasksRepoRoutingRule: API.OperationMethod<
   GetTasksRepoRoutingRuleError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(69) as any as S.Schema<GetTasksRepoRoutingRuleRequest>,
-  output: __S(33) as any as S.Schema<RepoRoutingRule>,
+  input: GetTasksRepoRoutingRuleRequest,
+  output: RepoRoutingRule,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2448,8 +3233,8 @@ export const getTasksRepository: API.OperationMethod<
   GetTasksRepositoryError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(70) as any as S.Schema<GetTasksRepositoryRequest>,
-  output: __S(71) as any as S.Schema<TaskRepositoriesResponse>,
+  input: GetTasksRepositoryRequest,
+  output: TaskRepositoriesResponse,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2463,8 +3248,8 @@ export const getTasksRepositoryReadiness: API.OperationMethod<
   GetTasksRepositoryReadinessError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(72) as any as S.Schema<GetTasksRepositoryReadinessRequest>,
-  output: __S(75) as any as S.Schema<RepositoryReadinessResponse>,
+  input: GetTasksRepositoryReadinessRequest,
+  output: RepositoryReadinessResponse,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2478,8 +3263,8 @@ export const getTasksReview: API.OperationMethod<
   GetTasksReviewError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(76) as any as S.Schema<GetTasksReviewRequest>,
-  output: __S(79) as any as S.Schema<TaskReview>,
+  input: GetTasksReviewRequest,
+  output: TaskReview,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2493,8 +3278,8 @@ export const getTasksSlackThreadContext: API.OperationMethod<
   GetTasksSlackThreadContextError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(80) as any as S.Schema<GetTasksSlackThreadContextRequest>,
-  output: __S(86) as any as S.Schema<SlackThreadContextResponse>,
+  input: GetTasksSlackThreadContextRequest,
+  output: SlackThreadContextResponse,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2508,8 +3293,8 @@ export const getTasksUsage: API.OperationMethod<
   GetTasksUsageError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(87) as any as S.Schema<GetTasksUsageRequest>,
-  output: __S(88) as any as S.Schema<TaskUsageResponse>,
+  input: GetTasksUsageRequest,
+  output: TaskUsageResponse,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2523,8 +3308,8 @@ export const listTasks: API.OperationMethod<
   ListTasksError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(89) as any as S.Schema<ListTasksRequest>,
-  output: __S(91) as any as S.Schema<PaginatedTaskListItemList>,
+  input: ListTasksRequest,
+  output: PaginatedTaskListItemList,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2538,8 +3323,8 @@ export const listTasksArtifacts: API.OperationMethod<
   ListTasksArtifactsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(92) as any as S.Schema<ListTasksArtifactsRequest>,
-  output: __S(94) as any as S.Schema<TaskArtifactsResponse>,
+  input: ListTasksArtifactsRequest,
+  output: TaskArtifactsResponse,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2553,8 +3338,8 @@ export const listTasksComments: API.OperationMethod<
   ListTasksCommentsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(95) as any as S.Schema<ListTasksCommentsRequest>,
-  output: __S(98) as any as S.Schema<TaskCommentsResponse>,
+  input: ListTasksCommentsRequest,
+  output: TaskCommentsResponse,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2568,8 +3353,8 @@ export const listTasksConfig: API.OperationMethod<
   ListTasksConfigError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(99) as any as S.Schema<ListTasksConfigRequest>,
-  output: __S(13) as any as S.Schema<TasksTeamConfigResponse>,
+  input: ListTasksConfigRequest,
+  output: TasksTeamConfigResponse,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2583,8 +3368,8 @@ export const listTasksMeConfig: API.OperationMethod<
   ListTasksMeConfigError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(100) as any as S.Schema<ListTasksMeConfigRequest>,
-  output: __S(21) as any as S.Schema<TasksUserConfigResponse>,
+  input: ListTasksMeConfigRequest,
+  output: TasksUserConfigResponse,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2598,8 +3383,8 @@ export const listTasksRepoRoutingRules: API.OperationMethod<
   ListTasksRepoRoutingRulesError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(101) as any as S.Schema<ListTasksRepoRoutingRulesRequest>,
-  output: __S(103) as any as S.Schema<ListTasksRepoRoutingRulesResponse>,
+  input: ListTasksRepoRoutingRulesRequest,
+  output: ListTasksRepoRoutingRulesResponse,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2613,8 +3398,8 @@ export const listTasksRunsLivingArtifacts: API.OperationMethod<
   ListTasksRunsLivingArtifactsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(104) as any as S.Schema<ListTasksRunsLivingArtifactsRequest>,
-  output: __S(106) as any as S.Schema<TaskRunLivingArtifactsResponse>,
+  input: ListTasksRunsLivingArtifactsRequest,
+  output: TaskRunLivingArtifactsResponse,
   errors: [NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2628,8 +3413,8 @@ export const listTasksThreadMessages: API.OperationMethod<
   ListTasksThreadMessagesError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(107) as any as S.Schema<ListTasksThreadMessagesRequest>,
-  output: __S(109) as any as S.Schema<PaginatedTaskThreadMessageDTOList>,
+  input: ListTasksThreadMessagesRequest,
+  output: PaginatedTaskThreadMessageDTOList,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2643,8 +3428,8 @@ export const tasksDestroy: API.OperationMethod<
   TasksDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(110) as any as S.Schema<TasksDestroyRequest>,
-  output: __S(27) as any as S.Schema<TasksDestroyResponse>,
+  input: TasksDestroyRequest,
+  output: TasksDestroyResponse,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2658,8 +3443,8 @@ export const tasksPresenceDestroy: API.OperationMethod<
   TasksPresenceDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(111) as any as S.Schema<TasksPresenceDestroyRequest>,
-  output: __S(27) as any as S.Schema<TasksPresenceDestroyResponse>,
+  input: TasksPresenceDestroyRequest,
+  output: TasksPresenceDestroyResponse,
   errors: [NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2673,8 +3458,8 @@ export const tasksRepoRoutingRulesDestroy: API.OperationMethod<
   TasksRepoRoutingRulesDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(112) as any as S.Schema<TasksRepoRoutingRulesDestroyRequest>,
-  output: __S(113) as any as S.Schema<TasksRepoRoutingRulesDestroyResponse>,
+  input: TasksRepoRoutingRulesDestroyRequest,
+  output: TasksRepoRoutingRulesDestroyResponse,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2688,8 +3473,8 @@ export const tasksRunsLivingArtifactsChart: API.OperationMethod<
   TasksRunsLivingArtifactsChartError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(114) as any as S.Schema<TasksRunsLivingArtifactsChartRequest>,
-  output: __S(115) as any as S.Schema<TaskRunLivingArtifactChartResponse>,
+  input: TasksRunsLivingArtifactsChartRequest,
+  output: TaskRunLivingArtifactChartResponse,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2703,8 +3488,8 @@ export const tasksRunsLivingArtifactsOpen: API.OperationMethod<
   TasksRunsLivingArtifactsOpenError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(116) as any as S.Schema<TasksRunsLivingArtifactsOpenRequest>,
-  output: __S(117) as any as S.Schema<TaskRunLivingArtifactOpenResponse>,
+  input: TasksRunsLivingArtifactsOpenRequest,
+  output: TaskRunLivingArtifactOpenResponse,
   errors: [NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2718,8 +3503,8 @@ export const tasksRunsLivingArtifactsVersionContent: API.OperationMethod<
   TasksRunsLivingArtifactsVersionContentError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(118) as any as S.Schema<TasksRunsLivingArtifactsVersionContentRequest>,
-  output: __S(113) as any as S.Schema<TasksRunsLivingArtifactsVersionContentResponse>,
+  input: TasksRunsLivingArtifactsVersionContentRequest,
+  output: TasksRunsLivingArtifactsVersionContentResponse,
   errors: [BadRequest, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2733,8 +3518,8 @@ export const tasksSearchRetrieve: API.OperationMethod<
   TasksSearchRetrieveError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(119) as any as S.Schema<TasksSearchRetrieveRequest>,
-  output: __S(122) as any as S.Schema<TasksSearchRetrieveResponse>,
+  input: TasksSearchRetrieveRequest,
+  output: TasksSearchRetrieveResponse,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2752,8 +3537,8 @@ export const tasksStagedArtifactsFinalizeUploadCreate: API.OperationMethod<
   TasksStagedArtifactsFinalizeUploadCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(125) as any as S.Schema<TasksStagedArtifactsFinalizeUploadCreateRequest>,
-  output: __S(126) as any as S.Schema<TaskStagedArtifactsFinalizeUploadResponse>,
+  input: TasksStagedArtifactsFinalizeUploadCreateRequest,
+  output: TaskStagedArtifactsFinalizeUploadResponse,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2771,8 +3556,8 @@ export const tasksStagedArtifactsPrepareUploadCreate: API.OperationMethod<
   TasksStagedArtifactsPrepareUploadCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(129) as any as S.Schema<TasksStagedArtifactsPrepareUploadCreateRequest>,
-  output: __S(133) as any as S.Schema<TaskStagedArtifactsPrepareUploadResponse>,
+  input: TasksStagedArtifactsPrepareUploadCreateRequest,
+  output: TaskStagedArtifactsPrepareUploadResponse,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2786,8 +3571,8 @@ export const tasksThreadMessagesDestroy: API.OperationMethod<
   TasksThreadMessagesDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(134) as any as S.Schema<TasksThreadMessagesDestroyRequest>,
-  output: __S(113) as any as S.Schema<TasksThreadMessagesDestroyResponse>,
+  input: TasksThreadMessagesDestroyRequest,
+  output: TasksThreadMessagesDestroyResponse,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2801,8 +3586,8 @@ export const tasksThreadMessagesSendToAgentCreate: API.OperationMethod<
   TasksThreadMessagesSendToAgentCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(135) as any as S.Schema<TasksThreadMessagesSendToAgentCreateRequest>,
-  output: __S(45) as any as S.Schema<TaskThreadMessageDTO>,
+  input: TasksThreadMessagesSendToAgentCreateRequest,
+  output: TaskThreadMessageDTO,
   errors: [BadRequest],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2816,8 +3601,8 @@ export const tasksWarmResumeCreate: API.OperationMethod<
   TasksWarmResumeCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(136) as any as S.Schema<TasksWarmResumeCreateRequest>,
-  output: __S(47) as any as S.Schema<WarmTaskResumeResponse>,
+  input: TasksWarmResumeCreateRequest,
+  output: WarmTaskResumeResponse,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2831,8 +3616,8 @@ export const updateTask: API.OperationMethod<
   UpdateTaskError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(137) as any as S.Schema<UpdateTaskRequest>,
-  output: __S(17) as any as S.Schema<TaskDetailDTO>,
+  input: UpdateTaskRequest,
+  output: TaskDetailDTO,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2846,8 +3631,8 @@ export const updateTasksPartial: API.OperationMethod<
   UpdateTasksPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(138) as any as S.Schema<UpdateTasksPartialRequest>,
-  output: __S(17) as any as S.Schema<TaskDetailDTO>,
+  input: UpdateTasksPartialRequest,
+  output: TaskDetailDTO,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2861,8 +3646,8 @@ export const updateTasksRepoRoutingRule: API.OperationMethod<
   UpdateTasksRepoRoutingRuleError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(139) as any as S.Schema<UpdateTasksRepoRoutingRuleRequest>,
-  output: __S(33) as any as S.Schema<RepoRoutingRule>,
+  input: UpdateTasksRepoRoutingRuleRequest,
+  output: RepoRoutingRule,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2876,8 +3661,8 @@ export const updateTasksRepoRoutingRulesPartial: API.OperationMethod<
   UpdateTasksRepoRoutingRulesPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(140) as any as S.Schema<UpdateTasksRepoRoutingRulesPartialRequest>,
-  output: __S(33) as any as S.Schema<RepoRoutingRule>,
+  input: UpdateTasksRepoRoutingRulesPartialRequest,
+  output: RepoRoutingRule,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2895,9 +3680,9 @@ function __c0(j: number): any {
           title: S.optional(S.String),
           title_manually_set: S.optional(S.Boolean),
           description: S.optional(S.String),
-          origin_product: S.optional(S.String),
+          origin_product: S.optional(TaskOriginProductEnum),
           repository: S.optional(S.NullOr(S.String)),
-          repositories: S.optional(__S(0)),
+          repositories: S.optional(CreateTaskRequestRepositoriesList),
           github_integration: S.optional(S.NullOr(S.Number)),
           github_user_integration: S.optional(S.NullOr(S.String)),
           signal_report: S.optional(S.NullOr(S.String)),
@@ -2906,12 +3691,14 @@ function __c0(j: number): any {
           archived: S.optional(S.Boolean),
           ci_prompt: S.optional(S.NullOr(S.String)),
           branch: S.optional(S.NullOr(S.String)),
-          runtime_adapter: S.optional(S.NullOr(S.String)),
+          runtime_adapter: S.optional(S.NullOr(RuntimeAdapterEnum)),
           model: S.optional(S.NullOr(S.String)),
-          reasoning_effort: S.optional(S.NullOr(S.String)),
-          initial_permission_mode: S.optional(S.NullOr(S.String)),
+          reasoning_effort: S.optional(S.NullOr(ReasoningEffortEnum)),
+          initial_permission_mode: S.optional(
+            S.NullOr(TaskRunBootstrapCreateRequestInitialPermissionModeEnum),
+          ),
           pending_user_message: S.optional(S.NullOr(S.String)),
-          pending_user_artifact_ids: S.optional(__S(0)),
+          pending_user_artifact_ids: S.optional(CreateTaskRequestPendingUserArtifactIdsList),
           auto_publish: S.optional(S.NullOr(S.Boolean)),
           channel: S.optional(S.NullOr(S.String)),
           scheduled_at: S.optional(S.NullOr(S.String)),
@@ -2920,7 +3707,7 @@ function __c0(j: number): any {
           naming_source: S.optional(S.String),
           sandbox_environment_id: S.optional(S.NullOr(S.String)),
           custom_image_id: S.optional(S.NullOr(S.String)),
-          runtime: S.optional(S.String),
+          runtime: S.optional(TaskRuntimeEnum),
         }).pipe(T.Http({ method: "POST", uri: "/api/projects/{project_id}/tasks/", code: 200 })),
       ).annotate({ identifier: "CreateTaskRequest" });
     case 2:
@@ -2929,9 +3716,9 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           skill_name: S.String,
-          skill_source: S.String,
+          skill_source: SkillSourceEnum,
           content_sha256: S.String,
-          bundle_format: S.String,
+          bundle_format: BundleFormatEnum,
           schema_version: S.Number,
         }),
       ).annotate({
@@ -2946,17 +3733,17 @@ function __c0(j: number): any {
           source: S.optional(S.String),
           size: S.optional(S.Number),
           content_type: S.optional(S.String),
-          metadata: S.optional(S.Unknown),
+          metadata: S.optional(TaskRunArtifactMetadata),
           storage_path: S.optional(S.String),
           uploaded_at: S.optional(S.String),
-          uploaded_by: S.optional(S.String),
+          uploaded_by: S.optional(UploadedByEnum),
           uploaded_by_user_id: S.optional(S.Number),
           dismissed_at: S.optional(S.String),
           url: S.optional(S.String),
         }),
       ).annotate({ identifier: "TaskRunArtifactResponse" });
     case 5:
-      return S.Array(__S(4));
+      return S.Array(TaskRunArtifactResponse);
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -2966,17 +3753,17 @@ function __c0(j: number): any {
           branch: S.NullOr(S.String),
           status: S.String,
           environment: S.String,
-          runtime_adapter: S.optional(S.NullOr(S.String)),
-          provider: S.optional(S.NullOr(S.String)),
+          runtime_adapter: S.optional(S.NullOr(RuntimeAdapterEnum)),
+          provider: S.optional(S.NullOr(TaskRunDetailDTOProviderEnum)),
           model: S.optional(S.NullOr(S.String)),
-          reasoning_effort: S.optional(S.NullOr(S.String)),
+          reasoning_effort: S.optional(S.NullOr(TaskRunReasoningEffortEnum)),
           log_url: S.optional(S.NullOr(S.String)),
           error_message: S.NullOr(S.String),
-          output: S.NullOr(__S(2)),
+          output: S.NullOr(TaskRunDetailDTOOutputMap),
           task_summary: S.NullOr(S.String),
-          task_tags: __S(0),
-          state: __S(2),
-          artifacts: __S(5),
+          task_tags: TaskRunDetailDTOTaskTagsList,
+          state: TaskRunDetailDTOStateMap,
+          artifacts: TaskRunDetailDTOArtifactsList,
           created_at: S.optional(S.NullOr(S.String)),
           updated_at: S.optional(S.NullOr(S.String)),
           completed_at: S.optional(S.NullOr(S.String)),
@@ -2994,7 +3781,7 @@ function __c0(j: number): any {
           last_name: S.String,
           email: S.String,
           is_email_verified: S.optional(S.NullOr(S.Boolean)),
-          hedgehog_config: S.optional(S.NullOr(__S(2))),
+          hedgehog_config: S.optional(S.NullOr(TaskUserBasicInfoHedgehogConfigMap)),
           role_at_organization: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "TaskUserBasicInfo" });
@@ -3011,7 +3798,7 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "SlackThreadReferenceDTO" });
     case 1:
-      return S.Array(__S(8));
+      return S.Array(SlackThreadReferenceDTO);
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -3022,24 +3809,24 @@ function __c1(j: number): any {
           title_manually_set: S.Boolean,
           description: S.String,
           origin_product: S.String,
-          runtime: S.String,
+          runtime: TaskRuntimeEnum,
           repository: S.NullOr(S.String),
-          repositories: __S(0),
+          repositories: TaskCreateResponseDTORepositoriesList,
           github_integration: S.NullOr(S.Number),
           github_user_integration: S.NullOr(S.String),
           signal_report: S.NullOr(S.String),
-          json_schema: S.NullOr(__S(2)),
+          json_schema: S.NullOr(TaskCreateResponseDTOJsonSchemaMap),
           internal: S.Boolean,
           archived: S.Boolean,
           archived_at: S.NullOr(S.String),
-          latest_run: S.optional(S.NullOr(__S(6))),
+          latest_run: S.optional(S.NullOr(TaskRunDetailDTO)),
           created_at: S.optional(S.NullOr(S.String)),
           updated_at: S.optional(S.NullOr(S.String)),
           last_activity_at: S.optional(S.NullOr(S.String)),
-          created_by: S.optional(S.NullOr(__S(7))),
+          created_by: S.optional(S.NullOr(TaskUserBasicInfo)),
           ci_prompt: S.NullOr(S.String),
           channel: S.optional(S.NullOr(S.String)),
-          slack_thread_references: __S(9),
+          slack_thread_references: TaskCreateResponseDTOSlackThreadReferencesList,
           origin_key: S.optional(S.NullOr(S.String)),
           run_error: S.optional(S.String),
         }),
@@ -3048,10 +3835,10 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
-          runtime: S.optional(S.NullOr(S.String)),
-          runtime_adapter: S.optional(S.NullOr(S.String)),
+          runtime: S.optional(S.NullOr(TaskRuntimeEnum)),
+          runtime_adapter: S.optional(S.NullOr(RuntimeAdapterEnum)),
           model: S.optional(S.NullOr(S.String)),
-          reasoning_effort: S.optional(S.NullOr(S.String)),
+          reasoning_effort: S.optional(S.NullOr(TaskRunReasoningEffortEnum)),
         }).pipe(
           T.Http({ method: "POST", uri: "/api/projects/{project_id}/tasks/config/", code: 200 }),
         ),
@@ -3059,16 +3846,16 @@ function __c1(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          runtime: S.optional(S.NullOr(S.String)),
-          runtime_adapter: S.optional(S.NullOr(S.String)),
+          runtime: S.optional(S.NullOr(TaskRuntimeEnum)),
+          runtime_adapter: S.optional(S.NullOr(RuntimeAdapterEnum)),
           model: S.optional(S.NullOr(S.String)),
-          reasoning_effort: S.optional(S.NullOr(S.String)),
+          reasoning_effort: S.optional(S.NullOr(TaskRunReasoningEffortEnum)),
         }),
       ).annotate({ identifier: "TasksAIRunPreferences" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          ai_run_preferences: __S(12),
+          ai_run_preferences: TasksAIRunPreferences,
           agent_instructions: S.String,
         }),
       ).annotate({ identifier: "TasksTeamConfigResponse" });
@@ -3123,24 +3910,24 @@ function __c2(j: number): any {
           title_manually_set: S.Boolean,
           description: S.String,
           origin_product: S.String,
-          runtime: S.String,
+          runtime: TaskRuntimeEnum,
           repository: S.NullOr(S.String),
-          repositories: __S(0),
+          repositories: TaskDetailDTORepositoriesList,
           github_integration: S.NullOr(S.Number),
           github_user_integration: S.NullOr(S.String),
           signal_report: S.NullOr(S.String),
-          json_schema: S.NullOr(__S(2)),
+          json_schema: S.NullOr(TaskDetailDTOJsonSchemaMap),
           internal: S.Boolean,
           archived: S.Boolean,
           archived_at: S.NullOr(S.String),
-          latest_run: S.optional(S.NullOr(__S(6))),
+          latest_run: S.optional(S.NullOr(TaskRunDetailDTO)),
           created_at: S.optional(S.NullOr(S.String)),
           updated_at: S.optional(S.NullOr(S.String)),
           last_activity_at: S.optional(S.NullOr(S.String)),
-          created_by: S.optional(S.NullOr(__S(7))),
+          created_by: S.optional(S.NullOr(TaskUserBasicInfo)),
           ci_prompt: S.NullOr(S.String),
           channel: S.optional(S.NullOr(S.String)),
-          slack_thread_references: __S(9),
+          slack_thread_references: TaskDetailDTOSlackThreadReferencesList,
           origin_key: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "TaskDetailDTO" });
@@ -3148,10 +3935,10 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
-          runtime: S.optional(S.NullOr(S.String)),
-          runtime_adapter: S.optional(S.NullOr(S.String)),
+          runtime: S.optional(S.NullOr(TaskRuntimeEnum)),
+          runtime_adapter: S.optional(S.NullOr(RuntimeAdapterEnum)),
           model: S.optional(S.NullOr(S.String)),
-          reasoning_effort: S.optional(S.NullOr(S.String)),
+          reasoning_effort: S.optional(S.NullOr(TaskRunReasoningEffortEnum)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3169,7 +3956,7 @@ function __c2(j: number): any {
           runtime_adapter: S.NullOr(S.String),
           model: S.NullOr(S.String),
           reasoning_effort: S.NullOr(S.String),
-          source: S.String,
+          source: TasksResolvedAIRunDefaultsSourceEnum,
         }),
       ).annotate({
         identifier: "TasksResolvedAIRunDefaults",
@@ -3184,10 +3971,10 @@ function __c2(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          ai_run_preferences: __S(12),
-          resolved_ai_run_defaults: __S(19),
+          ai_run_preferences: TasksAIRunPreferences,
+          resolved_ai_run_defaults: TasksResolvedAIRunDefaults,
           agent_instructions: S.String,
-          task_defaults: __S(20),
+          task_defaults: TasksTaskDefaults,
         }),
       ).annotate({ identifier: "TasksUserConfigResponse" });
     case 6:
@@ -3266,7 +4053,7 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
-          ids: __S(0),
+          ids: CreateTasksPullRequestTitleRequestIdsList,
         }).pipe(
           T.Http({
             method: "POST",
@@ -3282,7 +4069,7 @@ function __c3(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          titles: __S(29),
+          titles: TaskPullRequestTitlesTitlesMap,
         }),
       ).annotate({ identifier: "TaskPullRequestTitles" });
     case 7:
@@ -3315,8 +4102,8 @@ function __c4(j: number): any {
           last_name: S.optional(S.String),
           email: S.optional(S.String),
           is_email_verified: S.optional(S.NullOr(S.Boolean)),
-          hedgehog_config: S.optional(S.NullOr(__S(2))),
-          role_at_organization: S.optional(S.NullOr(S.Unknown)),
+          hedgehog_config: S.optional(S.NullOr(UserBasicHedgehogConfigMap)),
+          role_at_organization: S.optional(S.NullOr(UserBasicRoleAtOrganization)),
         }),
       ).annotate({ identifier: "UserBasic" });
     case 1:
@@ -3326,7 +4113,7 @@ function __c4(j: number): any {
           rule_text: S.String,
           repository: S.String,
           priority: S.Number,
-          created_by: S.NullOr(__S(32)),
+          created_by: S.NullOr(UserBasic),
           created_at: S.String,
           updated_at: S.String,
         }),
@@ -3336,7 +4123,7 @@ function __c4(j: number): any {
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
-          body: S.optional(S.Unknown.pipe(T.HttpBody())),
+          body: S.optional(TaskRunCreateRequestSchema.pipe(T.HttpBody())),
         }).pipe(
           T.Http({ method: "POST", uri: "/api/projects/{project_id}/tasks/{id}/run/", code: 200 }),
         ),
@@ -3351,27 +4138,27 @@ function __c4(j: number): any {
           title_manually_set: S.Boolean,
           description: S.String,
           origin_product: S.String,
-          runtime: S.String,
+          runtime: TaskRuntimeEnum,
           repository: S.NullOr(S.String),
-          repositories: __S(0),
+          repositories: TaskRunResponseRepositoriesList,
           github_integration: S.NullOr(S.Number),
           github_user_integration: S.NullOr(S.String),
           signal_report: S.NullOr(S.String),
-          json_schema: S.NullOr(__S(2)),
+          json_schema: S.NullOr(TaskRunResponseJsonSchemaMap),
           internal: S.Boolean,
           archived: S.Boolean,
           archived_at: S.NullOr(S.String),
-          latest_run: S.optional(S.NullOr(__S(6))),
+          latest_run: S.optional(S.NullOr(TaskRunDetailDTO)),
           created_at: S.optional(S.NullOr(S.String)),
           updated_at: S.optional(S.NullOr(S.String)),
           last_activity_at: S.optional(S.NullOr(S.String)),
-          created_by: S.optional(S.NullOr(__S(7))),
+          created_by: S.optional(S.NullOr(TaskUserBasicInfo)),
           ci_prompt: S.NullOr(S.String),
           channel: S.optional(S.NullOr(S.String)),
-          slack_thread_references: __S(9),
+          slack_thread_references: TaskRunResponseSlackThreadReferencesList,
           origin_key: S.optional(S.NullOr(S.String)),
           run_error: S.optional(S.String),
-          run: S.optional(S.NullOr(__S(6))),
+          run: S.optional(S.NullOr(TaskRunDetailDTO)),
         }),
       ).annotate({ identifier: "TaskRunResponse" });
     case 4:
@@ -3381,14 +4168,14 @@ function __c4(j: number): any {
           task_id: S.String.pipe(T.Label()),
           run_id: S.String.pipe(T.Label()),
           name: S.String,
-          artifact_type: S.optional(S.String),
-          adapter: S.optional(S.String),
+          artifact_type: S.optional(ArtifactType2f0Enum),
+          adapter: S.optional(AdapterEnum),
           content: S.optional(S.String),
           content_base64: S.optional(S.String),
           content_type: S.optional(S.String),
           source_artifact_id: S.optional(S.String),
           source_storage_path: S.optional(S.String),
-          metadata: S.optional(__S(2)),
+          metadata: S.optional(CreateTasksRunsLivingArtifactRequestMetadataMap),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3400,7 +4187,7 @@ function __c4(j: number): any {
         identifier: "CreateTasksRunsLivingArtifactRequest",
       });
     case 5:
-      return S.Array(__S(2));
+      return S.Array(TaskRunLivingArtifactResponseVersionsItemMap);
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -3409,13 +4196,13 @@ function __c4(j: number): any {
           run_id: S.String,
           team_id: S.Number,
           name: S.String,
-          artifact_type: S.String,
-          adapter: S.String,
-          status: S.String,
+          artifact_type: ArtifactType2f0Enum,
+          adapter: AdapterEnum,
+          status: TaskArtifactStatusEnum,
           location: S.Unknown,
           metadata: S.Unknown,
           current_version: S.Number,
-          versions: __S(37),
+          versions: TaskRunLivingArtifactResponseVersionsList,
           created_at: S.optional(S.NullOr(S.String)),
           updated_at: S.optional(S.NullOr(S.String)),
         }),
@@ -3428,7 +4215,7 @@ function __c4(j: number): any {
           project_id: S.String.pipe(T.Label()),
           limit: S.optional(S.Number.pipe(T.Query())),
           offset: S.optional(S.Number.pipe(T.Query())),
-          ids: __S(0),
+          ids: CreateTasksSummaryRequestIdsList,
         }).pipe(
           T.Http({ method: "POST", uri: "/api/projects/{project_id}/tasks/summaries/", code: 200 }),
         ),
@@ -3443,11 +4230,11 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          status: S.NullOr(S.String),
-          environment: S.NullOr(S.String),
-          mode: S.String,
+          status: S.NullOr(TaskRunStatusEnum),
+          environment: S.NullOr(TaskRunEnvironmentEnum),
+          mode: TaskExecutionModeEnum,
           pr_url: S.NullOr(S.String),
-          pr_state: S.NullOr(S.String),
+          pr_state: S.NullOr(PrStateEnum),
           task_summary: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "TaskRunSummary" });
@@ -3461,18 +4248,18 @@ function __c5(j: number): any {
           created_at: S.String,
           updated_at: S.String,
           origin_product: S.optional(S.String),
-          latest_run: S.optional(S.NullOr(__S(40))),
+          latest_run: S.optional(S.NullOr(TaskRunSummary)),
         }),
       ).annotate({ identifier: "TaskSummaryDTO" });
     case 2:
-      return S.Array(__S(41));
+      return S.Array(TaskSummaryDTO);
     case 3:
       return S.suspend(() =>
         S.Struct({
           count: S.Number,
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: __S(42),
+          results: PaginatedTaskSummaryDTOListResultsList,
         }),
       ).annotate({
         identifier: "PaginatedTaskSummaryDTOList",
@@ -3500,12 +4287,12 @@ function __c5(j: number): any {
           task: S.String,
           author_kind: S.String,
           event: S.String,
-          payload: __S(2),
+          payload: TaskThreadMessageDTOPayloadMap,
           content: S.String,
           created_at: S.String,
-          author: S.optional(S.NullOr(__S(7))),
+          author: S.optional(S.NullOr(TaskUserBasicInfo)),
           forwarded_to_agent_at: S.optional(S.NullOr(S.String)),
-          forwarded_by: S.optional(S.NullOr(__S(7))),
+          forwarded_by: S.optional(S.NullOr(TaskUserBasicInfo)),
         }),
       ).annotate({ identifier: "TaskThreadMessageDTO" });
     case 6:
@@ -3513,16 +4300,18 @@ function __c5(j: number): any {
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           repository: S.optional(S.NullOr(S.String)),
-          repositories: S.optional(__S(0)),
+          repositories: S.optional(CreateTasksWarmRequestRepositoriesList),
           github_integration: S.optional(S.NullOr(S.Number)),
           branch: S.optional(S.NullOr(S.String)),
-          runtime_adapter: S.optional(S.NullOr(S.String)),
+          runtime_adapter: S.optional(S.NullOr(RuntimeAdapterEnum)),
           model: S.optional(S.NullOr(S.String)),
-          reasoning_effort: S.optional(S.NullOr(S.String)),
+          reasoning_effort: S.optional(S.NullOr(ReasoningEffortEnum)),
           sandbox_environment_id: S.optional(S.NullOr(S.String)),
           custom_image_id: S.optional(S.NullOr(S.String)),
-          origin_product: S.optional(S.String),
-          initial_permission_mode: S.optional(S.NullOr(S.String)),
+          origin_product: S.optional(WarmTaskRequestOriginProductEnum),
+          initial_permission_mode: S.optional(
+            S.NullOr(TaskRunBootstrapCreateRequestInitialPermissionModeEnum),
+          ),
           signal_report: S.optional(S.NullOr(S.String)),
         }).pipe(
           T.Http({ method: "POST", uri: "/api/projects/{project_id}/tasks/warm/", code: 200 }),
@@ -3552,7 +4341,7 @@ function __c6(j: number): any {
           content_type: S.optional(S.String),
           source_artifact_id: S.optional(S.String),
           source_storage_path: S.optional(S.String),
-          metadata: S.optional(__S(2)),
+          metadata: S.optional(EditTasksRunsLivingArtifactRequestMetadataMap),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3592,7 +4381,7 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           allowed: S.Boolean,
-          reason: S.NullOr(S.String),
+          reason: S.NullOr(DesktopAccessReasonEnum),
         }),
       ).annotate({ identifier: "DesktopAccessResponse" });
     case 5:
@@ -3681,19 +4470,19 @@ function __c7(j: number): any {
           content_next_offset: S.NullOr(S.Number),
           author: S.NullOr(S.String),
           created_at: S.String,
-          anchor: S.NullOr(__S(58)),
+          anchor: S.NullOr(TaskCommentAnchor),
           canvas_version_id: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "TaskCommentEntry" });
     case 4:
-      return S.Array(__S(59));
+      return S.Array(TaskCommentEntry);
     case 5:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          target: __S(57),
+          target: TaskCommentTarget,
           resolved: S.Boolean,
-          comments: __S(60),
+          comments: TaskCommentDetailCommentsList,
           next: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "TaskCommentDetail" });
@@ -3706,7 +4495,7 @@ function __c7(j: number): any {
         ),
       ).annotate({ identifier: "GetTasksModelRequest" });
     case 7:
-      return S.Array(S.String);
+      return S.Array(ReasoningEffortEnum);
   }
 }
 function __c8(j: number): any {
@@ -3714,19 +4503,19 @@ function __c8(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          runtime_adapter: S.String,
+          runtime_adapter: RuntimeAdapterEnum,
           model: S.String,
           display_name: S.String,
-          supported_efforts: __S(63),
+          supported_efforts: ModelChoiceSupportedEffortsList,
           cost_multiplier: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "ModelChoice" });
     case 1:
-      return S.Array(__S(64));
+      return S.Array(ModelChoice);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          models: __S(65),
+          models: ModelCatalogueResponseModelsList,
         }),
       ).annotate({ identifier: "ModelCatalogueResponse" });
     case 3:
@@ -3740,7 +4529,7 @@ function __c8(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          task_ids: __S(0),
+          task_ids: PinnedTaskIdsResponseTaskIdsList,
         }),
       ).annotate({ identifier: "PinnedTaskIdsResponse" });
     case 5:
@@ -3775,7 +4564,7 @@ function __c8(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          repositories: S.optional(__S(0)),
+          repositories: S.optional(TaskRepositoriesResponseRepositoriesList),
         }),
       ).annotate({ identifier: "TaskRepositoriesResponse" });
   }
@@ -3802,10 +4591,10 @@ function __c9(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          state: S.optional(S.String),
+          state: S.optional(CapabilityStateStateEnum),
           estimated: S.optional(S.Boolean),
           reason: S.optional(S.String),
-          evidence: S.optional(__S(2)),
+          evidence: S.optional(CapabilityStateEvidenceMap),
         }),
       ).annotate({ identifier: "CapabilityState" });
     case 2:
@@ -3825,15 +4614,15 @@ function __c9(j: number): any {
           repository: S.optional(S.String),
           classification: S.optional(S.String),
           excluded: S.optional(S.Boolean),
-          coreSuggestions: S.optional(__S(73)),
-          replayInsights: S.optional(__S(73)),
-          errorInsights: S.optional(__S(73)),
+          coreSuggestions: S.optional(CapabilityState),
+          replayInsights: S.optional(CapabilityState),
+          errorInsights: S.optional(CapabilityState),
           overall: S.optional(S.String),
           evidenceTaskCount: S.optional(S.Number),
           windowDays: S.optional(S.Number),
           generatedAt: S.optional(S.String),
           cacheAgeSeconds: S.optional(S.Number),
-          scan: S.optional(__S(74)),
+          scan: S.optional(ScanEvidence),
         }),
       ).annotate({
         identifier: "RepositoryReadinessResponse",
@@ -3864,7 +4653,7 @@ function __c9(j: number): any {
         }),
       ).annotate({ identifier: "TaskReviewFile" });
     case 6:
-      return S.Array(__S(77));
+      return S.Array(TaskReviewFile);
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -3873,7 +4662,7 @@ function __c9(j: number): any {
           state: S.String,
           ci_status: S.String,
           head_sha: S.String,
-          files: __S(78),
+          files: TaskReviewFilesList,
           has_more: S.Boolean,
         }),
       ).annotate({ identifier: "TaskReview" });
@@ -3953,18 +4742,18 @@ function __c10(j: number): any {
           mention_workflow_url: S.NullOr(S.String),
           task_view_url: S.String,
           log_url: S.NullOr(S.String),
-          repo_research: S.NullOr(__S(83)),
+          repo_research: S.NullOr(SlackThreadContextRepoResearch),
           admin_url: S.String,
         }),
       ).annotate({ identifier: "SlackThreadContextRun" });
     case 5:
-      return S.Array(__S(84));
+      return S.Array(SlackThreadContextRun);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          thread: __S(81),
-          task: S.NullOr(__S(82)),
-          runs: __S(85),
+          thread: SlackThreadContextThread,
+          task: S.NullOr(SlackThreadContextTask),
+          runs: SlackThreadContextResponseRunsList,
         }),
       ).annotate({
         identifier: "SlackThreadContextResponse",
@@ -3995,39 +4784,39 @@ function __c11(j: number): any {
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           all_team_tasks: S.optional(S.Boolean.pipe(T.Query())),
-          archived: S.optional(S.String.pipe(T.Query())),
+          archived: S.optional(ListTasksRequestArchived.pipe(T.Query())),
           basic: S.optional(S.Boolean.pipe(T.Query())),
           channel: S.optional(S.String.pipe(T.Query())),
-          ci_status: S.optional(S.String.pipe(T.Query())),
-          client_provenance: S.optional(S.String.pipe(T.Query())),
+          ci_status: S.optional(ListTasksRequestCiStatus.pipe(T.Query())),
+          client_provenance: S.optional(ListTasksRequestClientProvenance.pipe(T.Query())),
           commented_by: S.optional(S.Number.pipe(T.Query())),
           created_by: S.optional(S.Number.pipe(T.Query())),
-          exclude_origin_product: S.optional(S.String.pipe(T.Query())),
+          exclude_origin_product: S.optional(ListTasksRequestExcludeOriginProduct.pipe(T.Query())),
           hog_flow_id: S.optional(S.String.pipe(T.Query())),
-          internal: S.optional(S.String.pipe(T.Query())),
+          internal: S.optional(ListTasksRequestInternal.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
           mentions: S.optional(S.Number.pipe(T.Query())),
           offset: S.optional(S.Number.pipe(T.Query())),
-          ordering: S.optional(S.String.pipe(T.Query())),
+          ordering: S.optional(ListTasksRequestOrdering.pipe(T.Query())),
           organization: S.optional(S.String.pipe(T.Query())),
           origin_product: S.optional(S.String.pipe(T.Query())),
           pinned: S.optional(S.Boolean.pipe(T.Query())),
-          pr_state: S.optional(S.String.pipe(T.Query())),
+          pr_state: S.optional(ListTasksRequestPrState.pipe(T.Query())),
           repository: S.optional(S.String.pipe(T.Query())),
           search: S.optional(S.String.pipe(T.Query())),
           stage: S.optional(S.String.pipe(T.Query())),
-          status: S.optional(S.String.pipe(T.Query())),
+          status: S.optional(ListTasksRequestStatus.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/api/projects/{project_id}/tasks/", code: 200 })),
       ).annotate({ identifier: "ListTasksRequest" });
     case 2:
-      return S.Array(S.Unknown);
+      return S.Array(TaskListItem);
     case 3:
       return S.suspend(() =>
         S.Struct({
           count: S.Number,
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: __S(90),
+          results: PaginatedTaskListItemListResultsList,
         }),
       ).annotate({
         identifier: "PaginatedTaskListItemList",
@@ -4048,11 +4837,11 @@ function __c11(j: number): any {
         identifier: "ListTasksArtifactsRequest",
       });
     case 5:
-      return S.Array(__S(57));
+      return S.Array(TaskArtifact);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          artifacts: __S(93),
+          artifacts: TaskArtifactsResponseArtifactsList,
         }),
       ).annotate({ identifier: "TaskArtifactsResponse" });
     case 7:
@@ -4080,7 +4869,7 @@ function __c12(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          target: __S(57),
+          target: TaskCommentTarget,
           content: S.String,
           content_truncated: S.Boolean,
           selected_text: S.NullOr(S.String),
@@ -4090,11 +4879,11 @@ function __c12(j: number): any {
         }),
       ).annotate({ identifier: "TaskCommentSummary" });
     case 1:
-      return S.Array(__S(96));
+      return S.Array(TaskCommentSummary);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          comments: __S(97),
+          comments: TaskCommentsResponseCommentsList,
           next: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "TaskCommentsResponse" });
@@ -4131,9 +4920,11 @@ function __c12(j: number): any {
         identifier: "ListTasksRepoRoutingRulesRequest",
       });
     case 6:
-      return S.Array(__S(33));
+      return S.Array(RepoRoutingRule);
     case 7:
-      return S.suspend(() => __S(102).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        ListTasksRepoRoutingRulesResponseBodyList.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "ListTasksRepoRoutingRulesResponse",
       });
   }
@@ -4157,11 +4948,11 @@ function __c13(j: number): any {
         identifier: "ListTasksRunsLivingArtifactsRequest",
       });
     case 1:
-      return S.Array(__S(38));
+      return S.Array(TaskRunLivingArtifactResponse);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          artifacts: __S(105),
+          artifacts: TaskRunLivingArtifactsResponseArtifactsList,
         }),
       ).annotate({
         identifier: "TaskRunLivingArtifactsResponse",
@@ -4184,14 +4975,14 @@ function __c13(j: number): any {
         identifier: "ListTasksThreadMessagesRequest",
       });
     case 4:
-      return S.Array(__S(45));
+      return S.Array(TaskThreadMessageDTO);
     case 5:
       return S.suspend(() =>
         S.Struct({
           count: S.Number,
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: __S(108),
+          results: PaginatedTaskThreadMessageDTOListResultsList,
         }),
       ).annotate({
         identifier: "PaginatedTaskThreadMessageDTOList",
@@ -4250,7 +5041,7 @@ function __c14(j: number): any {
           task_id: S.String.pipe(T.Label()),
           run_id: S.String.pipe(T.Label()),
           name: S.String,
-          query: S.optional(__S(2)),
+          query: S.optional(TasksRunsLivingArtifactsChartRequestQueryMap),
           insight_id: S.optional(S.Number),
         }).pipe(
           T.Http({
@@ -4265,7 +5056,7 @@ function __c14(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          artifact: __S(38),
+          artifact: TaskRunLivingArtifactResponse,
           export_asset_id: S.Number,
           url: S.optional(S.NullOr(S.String)),
         }),
@@ -4297,13 +5088,13 @@ function __c14(j: number): any {
           run_id: S.String,
           team_id: S.Number,
           name: S.String,
-          artifact_type: S.String,
-          adapter: S.String,
-          status: S.String,
+          artifact_type: ArtifactType2f0Enum,
+          adapter: AdapterEnum,
+          status: TaskArtifactStatusEnum,
           location: S.Unknown,
           metadata: S.Unknown,
           current_version: S.Number,
-          versions: __S(37),
+          versions: TaskRunLivingArtifactOpenResponseVersionsList,
           created_at: S.optional(S.NullOr(S.String)),
           updated_at: S.optional(S.NullOr(S.String)),
           content: S.optional(S.NullOr(S.String)),
@@ -4350,23 +5141,25 @@ function __c15(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          kind: S.String,
+          kind: TaskSearchResultKindEnum,
           title: S.String,
           subtitle: S.String,
           task_id: S.NullOr(S.String),
           task_run_id: S.NullOr(S.String),
           channel_id: S.NullOr(S.String),
-          created_by: S.NullOr(__S(7)),
+          created_by: S.NullOr(TaskUserBasicInfo),
           origin_product: S.NullOr(S.String),
-          latest_run: S.NullOr(__S(40)),
+          latest_run: S.NullOr(TaskRunSummary),
           updated_at: S.String,
           metadata: S.Unknown,
         }),
       ).annotate({ identifier: "TaskSearchResult" });
     case 1:
-      return S.Array(__S(120));
+      return S.Array(TaskSearchResult);
     case 2:
-      return S.suspend(() => __S(121).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        TasksSearchRetrieveResponseBodyList.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "TasksSearchRetrieveResponse",
       });
     case 3:
@@ -4374,23 +5167,23 @@ function __c15(j: number): any {
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
-          type: S.optional(S.String),
+          type: S.optional(TaskRunArtifactTypeEnum),
           source: S.optional(S.String),
           storage_path: S.optional(S.String),
           content_type: S.optional(S.String),
-          metadata: S.optional(__S(3)),
+          metadata: S.optional(TaskRunSkillBundleMetadata),
         }),
       ).annotate({
         identifier: "TaskStagedArtifactFinalizeUpload",
       });
     case 4:
-      return S.Array(__S(123));
+      return S.Array(TaskStagedArtifactFinalizeUpload);
     case 5:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
-          artifacts: S.optional(__S(124)),
+          artifacts: S.optional(TasksStagedArtifactsFinalizeUploadCreateRequestArtifactsList),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4404,7 +5197,7 @@ function __c15(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          artifacts: S.optional(__S(5)),
+          artifacts: S.optional(TaskStagedArtifactsFinalizeUploadResponseArtifactsList),
         }),
       ).annotate({
         identifier: "TaskStagedArtifactsFinalizeUploadResponse",
@@ -4413,11 +5206,11 @@ function __c15(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          type: S.optional(S.String),
+          type: S.optional(TaskRunArtifactTypeEnum),
           source: S.optional(S.String),
           size: S.optional(S.Number),
           content_type: S.optional(S.String),
-          metadata: S.optional(__S(3)),
+          metadata: S.optional(TaskRunSkillBundleMetadata),
         }),
       ).annotate({
         identifier: "TaskStagedArtifactPrepareUpload",
@@ -4427,13 +5220,13 @@ function __c15(j: number): any {
 function __c16(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(127));
+      return S.Array(TaskStagedArtifactPrepareUpload);
     case 1:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
-          artifacts: S.optional(__S(128)),
+          artifacts: S.optional(TasksStagedArtifactsPrepareUploadCreateRequestArtifactsList),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4448,7 +5241,7 @@ function __c16(j: number): any {
       return S.suspend(() =>
         S.Struct({
           url: S.optional(S.String),
-          fields: S.optional(__S(29)),
+          fields: S.optional(S3PresignedPostFieldsMap),
         }),
       ).annotate({ identifier: "S3PresignedPost" });
     case 3:
@@ -4460,20 +5253,20 @@ function __c16(j: number): any {
           source: S.optional(S.String),
           size: S.optional(S.Number),
           content_type: S.optional(S.String),
-          metadata: S.optional(__S(3)),
+          metadata: S.optional(TaskRunSkillBundleMetadata),
           storage_path: S.optional(S.String),
           expires_in: S.optional(S.Number),
-          presigned_post: S.optional(__S(130)),
+          presigned_post: S.optional(S3PresignedPost),
         }),
       ).annotate({
         identifier: "TaskStagedArtifactPrepareUploadResponse",
       });
     case 4:
-      return S.Array(__S(131));
+      return S.Array(TaskStagedArtifactPrepareUploadResponse);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          artifacts: S.optional(__S(132)),
+          artifacts: S.optional(TaskStagedArtifactsPrepareUploadResponseArtifactsList),
         }),
       ).annotate({
         identifier: "TaskStagedArtifactsPrepareUploadResponse",
@@ -4503,12 +5296,12 @@ function __c16(j: number): any {
           task: S.String,
           author_kind: S.String,
           event: S.String,
-          payload: __S(2),
+          payload: TasksThreadMessagesSendToAgentCreateRequestPayloadMap,
           content: S.String,
           created_at: S.String,
-          author: S.optional(S.NullOr(__S(7))),
+          author: S.optional(S.NullOr(TaskUserBasicInfo)),
           forwarded_to_agent_at: S.optional(S.NullOr(S.String)),
-          forwarded_by: S.optional(S.NullOr(__S(7))),
+          forwarded_by: S.optional(S.NullOr(TaskUserBasicInfo)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4529,10 +5322,12 @@ function __c17(j: number): any {
           project_id: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
           resume_from_run_id: S.String,
-          runtime_adapter: S.optional(S.String),
+          runtime_adapter: S.optional(RuntimeAdapterEnum),
           model: S.optional(S.String),
-          reasoning_effort: S.optional(S.String),
-          initial_permission_mode: S.optional(S.String),
+          reasoning_effort: S.optional(ReasoningEffortEnum),
+          initial_permission_mode: S.optional(
+            TaskRunBootstrapCreateRequestInitialPermissionModeEnum,
+          ),
         }).pipe(
           T.Http({ method: "POST", uri: "/api/projects/{project_id}/tasks/{id}/warm/", code: 200 }),
         ),
@@ -4547,9 +5342,9 @@ function __c17(j: number): any {
           title: S.optional(S.String),
           title_manually_set: S.optional(S.Boolean),
           description: S.optional(S.String),
-          origin_product: S.optional(S.String),
+          origin_product: S.optional(TaskOriginProductEnum),
           repository: S.optional(S.NullOr(S.String)),
-          repositories: S.optional(__S(0)),
+          repositories: S.optional(UpdateTaskRequestRepositoriesList),
           github_integration: S.optional(S.NullOr(S.Number)),
           github_user_integration: S.optional(S.NullOr(S.String)),
           signal_report: S.optional(S.NullOr(S.String)),
@@ -4558,12 +5353,14 @@ function __c17(j: number): any {
           archived: S.optional(S.Boolean),
           ci_prompt: S.optional(S.NullOr(S.String)),
           branch: S.optional(S.NullOr(S.String)),
-          runtime_adapter: S.optional(S.NullOr(S.String)),
+          runtime_adapter: S.optional(S.NullOr(RuntimeAdapterEnum)),
           model: S.optional(S.NullOr(S.String)),
-          reasoning_effort: S.optional(S.NullOr(S.String)),
-          initial_permission_mode: S.optional(S.NullOr(S.String)),
+          reasoning_effort: S.optional(S.NullOr(ReasoningEffortEnum)),
+          initial_permission_mode: S.optional(
+            S.NullOr(TaskRunBootstrapCreateRequestInitialPermissionModeEnum),
+          ),
           pending_user_message: S.optional(S.NullOr(S.String)),
-          pending_user_artifact_ids: S.optional(__S(0)),
+          pending_user_artifact_ids: S.optional(UpdateTaskRequestPendingUserArtifactIdsList),
           auto_publish: S.optional(S.NullOr(S.Boolean)),
           channel: S.optional(S.NullOr(S.String)),
         }).pipe(
@@ -4578,9 +5375,9 @@ function __c17(j: number): any {
           title: S.optional(S.String),
           title_manually_set: S.optional(S.Boolean),
           description: S.optional(S.String),
-          origin_product: S.optional(S.String),
+          origin_product: S.optional(TaskOriginProductEnum),
           repository: S.optional(S.NullOr(S.String)),
-          repositories: S.optional(__S(0)),
+          repositories: S.optional(UpdateTasksPartialRequestRepositoriesList),
           github_integration: S.optional(S.NullOr(S.Number)),
           github_user_integration: S.optional(S.NullOr(S.String)),
           signal_report: S.optional(S.NullOr(S.String)),
@@ -4589,12 +5386,16 @@ function __c17(j: number): any {
           archived: S.optional(S.Boolean),
           ci_prompt: S.optional(S.NullOr(S.String)),
           branch: S.optional(S.NullOr(S.String)),
-          runtime_adapter: S.optional(S.NullOr(S.String)),
+          runtime_adapter: S.optional(S.NullOr(RuntimeAdapterEnum)),
           model: S.optional(S.NullOr(S.String)),
-          reasoning_effort: S.optional(S.NullOr(S.String)),
-          initial_permission_mode: S.optional(S.NullOr(S.String)),
+          reasoning_effort: S.optional(S.NullOr(ReasoningEffortEnum)),
+          initial_permission_mode: S.optional(
+            S.NullOr(TaskRunBootstrapCreateRequestInitialPermissionModeEnum),
+          ),
           pending_user_message: S.optional(S.NullOr(S.String)),
-          pending_user_artifact_ids: S.optional(__S(0)),
+          pending_user_artifact_ids: S.optional(
+            UpdateTasksPartialRequestPendingUserArtifactIdsList,
+          ),
           auto_publish: S.optional(S.NullOr(S.Boolean)),
           channel: S.optional(S.NullOr(S.String)),
         }).pipe(
@@ -4637,50 +5438,5 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "UpdateTasksRepoRoutingRulesPartialRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
-    case 9:
-      return __c9(i & 7);
-    case 10:
-      return __c10(i & 7);
-    case 11:
-      return __c11(i & 7);
-    case 12:
-      return __c12(i & 7);
-    case 13:
-      return __c13(i & 7);
-    case 14:
-      return __c14(i & 7);
-    case 15:
-      return __c15(i & 7);
-    case 16:
-      return __c16(i & 7);
-    case 17:
-      return __c17(i & 7);
   }
 }

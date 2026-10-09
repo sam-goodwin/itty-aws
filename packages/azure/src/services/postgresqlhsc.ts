@@ -7,13 +7,13 @@ import { UnknownAzureError } from "../errors.ts";
 import { AzureProtocol, type AzureOpError, type AzureOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { AzureOpError, AzureOpContext };
 
 /** Resource type used for verification. */
 export type CheckClusterNameAvailabilityRequestType = "Microsoft.DBforPostgreSQL/serverGroupsv2";
+const CheckClusterNameAvailabilityRequestType = S.String;
+
 export interface CheckClusterNameAvailabilityRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -22,6 +22,11 @@ export interface CheckClusterNameAvailabilityRequest {
   /** Resource type used for verification. */
   type: CheckClusterNameAvailabilityRequestType | (string & {});
 }
+const CheckClusterNameAvailabilityRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<CheckClusterNameAvailabilityRequest>;
+
 /** Represents cluster name availability. */
 export interface NameAvailability {
   /** Error message. */
@@ -33,6 +38,8 @@ export interface NameAvailability {
   /** Type of the cluster. */
   type?: string;
 }
+const NameAvailability = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<NameAvailability>;
+
 export interface ClustersPromoteReadReplicaRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -41,9 +48,24 @@ export interface ClustersPromoteReadReplicaRequest {
   /** The name of the cluster. */
   clusterName: string;
 }
+const ClustersPromoteReadReplicaRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<ClustersPromoteReadReplicaRequest>;
+
 export interface ClustersPromoteReadReplicaResponse {}
+const ClustersPromoteReadReplicaResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<ClustersPromoteReadReplicaResponse>;
+
 /** Resource tags. */
 export type CreateClusterRequestTagsMap = { [key: string]: string | undefined };
+const CreateClusterRequestTagsMap = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<CreateClusterRequestTagsMap>;
+
 /** Schedule settings for regular cluster updates. */
 export interface MaintenanceWindow {
   /** Indicates whether custom maintenance window is enabled or not. */
@@ -55,6 +77,8 @@ export interface MaintenanceWindow {
   /** Preferred day of the week for maintenance window. */
   dayOfWeek?: number;
 }
+const MaintenanceWindow = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<MaintenanceWindow>;
+
 /** Properties of the cluster. */
 export interface ClusterPropertiesInput {
   /** The password of the administrator login. Required for creation. */
@@ -96,6 +120,11 @@ export interface ClusterPropertiesInput {
   /** Date and time in UTC (ISO8601 format) for cluster restore. */
   pointInTimeUTC?: string;
 }
+const ClusterPropertiesInput = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<ClusterPropertiesInput>;
+
 export interface CreateClusterRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -110,10 +139,16 @@ export interface CreateClusterRequest {
   /** Properties of the cluster. */
   properties?: ClusterPropertiesInput;
 }
+const CreateClusterRequest = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<CreateClusterRequest>;
+
 /** The type of identity that created the resource. */
 export type SystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
+const SystemDataCreatedByType = S.String;
+
 /** The type of identity that last modified the resource. */
 export type SystemDataLastModifiedByType = "User" | "Application" | "ManagedIdentity" | "Key";
+const SystemDataLastModifiedByType = S.String;
+
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface SystemData {
   /** The identity that created the resource. */
@@ -129,8 +164,13 @@ export interface SystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const SystemData = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<SystemData>;
+
 /** Resource tags. */
 export type CreateClusterResponseTagsMap = { [key: string]: string | undefined };
+const CreateClusterResponseTagsMap =
+  CreateClusterRequestTagsMap as any as S.Schema<CreateClusterResponseTagsMap>;
+
 /** The name object for a server. */
 export interface ServerNameItem {
   /** The name of a server. */
@@ -138,19 +178,41 @@ export interface ServerNameItem {
   /** The fully qualified domain name of a server. */
   fullyQualifiedDomainName?: string;
 }
+const ServerNameItem = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<ServerNameItem>;
+
 /** The list of server names in the cluster */
 export type ClusterPropertiesServerNamesList = Array<ServerNameItem>;
+const ClusterPropertiesServerNamesList = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<ClusterPropertiesServerNamesList>;
+
 /** The array of read replica clusters. */
 export type ClusterPropertiesReadReplicasList = Array<string>;
+const ClusterPropertiesReadReplicasList = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<ClusterPropertiesReadReplicasList>;
+
 /** Property to represent resource id of the private endpoint. */
 export interface PrivateEndpointProperty {
   /** Resource id of the private endpoint. */
   id?: string;
 }
+const PrivateEndpointProperty = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<PrivateEndpointProperty>;
+
 /** Group ids of the private endpoint connection. */
 export type PrivateEndpointConnectionSimplePropertiesGroupIdsList = Array<string>;
+const PrivateEndpointConnectionSimplePropertiesGroupIdsList =
+  ClusterPropertiesReadReplicasList as any as S.Schema<PrivateEndpointConnectionSimplePropertiesGroupIdsList>;
+
 /** The private endpoint connection status. */
 export type PrivateEndpointServiceConnectionStatus = "Pending" | "Approved" | "Rejected";
+const PrivateEndpointServiceConnectionStatus = S.String;
+
 /** A collection of information about the state of the connection between service consumer and provider. */
 export interface PrivateEndpointConnectionSimplePropertiesPrivateLinkServiceConnectionState {
   /** Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service. */
@@ -160,6 +222,12 @@ export interface PrivateEndpointConnectionSimplePropertiesPrivateLinkServiceConn
   /** A message indicating if changes on the service provider require any updates on the consumer. */
   actionsRequired?: string;
 }
+const PrivateEndpointConnectionSimplePropertiesPrivateLinkServiceConnectionState =
+  /*@__PURE__*/ __L.at(
+    __c1,
+    5,
+  ) as any as S.Schema<PrivateEndpointConnectionSimplePropertiesPrivateLinkServiceConnectionState>;
+
 /** The properties in private endpoint connection */
 export interface PrivateEndpointConnectionSimpleProperties {
   /** Private endpoint which the connection belongs to. */
@@ -169,6 +237,11 @@ export interface PrivateEndpointConnectionSimpleProperties {
   /** A collection of information about the state of the connection between service consumer and provider. */
   privateLinkServiceConnectionState?: PrivateEndpointConnectionSimplePropertiesPrivateLinkServiceConnectionState;
 }
+const PrivateEndpointConnectionSimpleProperties = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<PrivateEndpointConnectionSimpleProperties>;
+
 /** A private endpoint connection. */
 export interface SimplePrivateEndpointConnection {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -182,9 +255,19 @@ export interface SimplePrivateEndpointConnection {
   /** Properties of the private endpoint connection. */
   properties?: PrivateEndpointConnectionSimpleProperties;
 }
+const SimplePrivateEndpointConnection = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<SimplePrivateEndpointConnection>;
+
 /** The private endpoint connections for a cluster. */
 export type ClusterPropertiesPrivateEndpointConnectionsList =
   Array<SimplePrivateEndpointConnection>;
+const ClusterPropertiesPrivateEndpointConnectionsList = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<ClusterPropertiesPrivateEndpointConnectionsList>;
+
 /** Properties of the cluster. */
 export interface ClusterProperties {
   /** The administrator's login name of the servers in the cluster. */
@@ -240,6 +323,8 @@ export interface ClusterProperties {
   /** The private endpoint connections for a cluster. */
   privateEndpointConnections?: ClusterPropertiesPrivateEndpointConnectionsList;
 }
+const ClusterProperties = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<ClusterProperties>;
+
 export interface CreateClusterResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -256,11 +341,18 @@ export interface CreateClusterResponse {
   /** Properties of the cluster. */
   properties?: ClusterProperties;
 }
+const CreateClusterResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<CreateClusterResponse>;
+
 /** The properties of a cluster role. */
 export interface RolePropertiesInput {
   /** The password of the cluster role. */
   password: string | Redacted.Redacted<string>;
 }
+const RolePropertiesInput = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<RolePropertiesInput>;
+
 export interface CreateRoleRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -273,8 +365,12 @@ export interface CreateRoleRequest {
   /** The properties of a role. */
   properties: RolePropertiesInput;
 }
+const CreateRoleRequest = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<CreateRoleRequest>;
+
 /** The current provisioning state. */
 export type ProvisioningState = "Succeeded" | "Canceled" | "InProgress" | "Failed";
+const ProvisioningState = S.String;
+
 /** The properties of a cluster role. */
 export interface RoleProperties {
   /** The password of the cluster role. */
@@ -282,6 +378,8 @@ export interface RoleProperties {
   /** Provisioning state of the role */
   provisioningState?: ProvisioningState;
 }
+const RoleProperties = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<RoleProperties>;
+
 export interface CreateRoleResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -294,6 +392,8 @@ export interface CreateRoleResponse {
   /** The properties of a role. */
   properties: RoleProperties;
 }
+const CreateRoleResponse = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<CreateRoleResponse>;
+
 export interface DeleteClusterRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -302,7 +402,14 @@ export interface DeleteClusterRequest {
   /** The name of the cluster. */
   clusterName: string;
 }
+const DeleteClusterRequest = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<DeleteClusterRequest>;
+
 export interface DeleteClusterResponse {}
+const DeleteClusterResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<DeleteClusterResponse>;
+
 export interface DeleteFirewallRuleRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -313,7 +420,15 @@ export interface DeleteFirewallRuleRequest {
   /** The name of the cluster firewall rule. */
   firewallRuleName: string;
 }
+const DeleteFirewallRuleRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<DeleteFirewallRuleRequest>;
+
 export interface DeleteFirewallRuleResponse {}
+const DeleteFirewallRuleResponse =
+  DeleteClusterResponse as any as S.Schema<DeleteFirewallRuleResponse>;
+
 export interface DeletePrivateEndpointConnectionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -324,7 +439,15 @@ export interface DeletePrivateEndpointConnectionRequest {
   /** The name of the private endpoint connection associated with the cluster. */
   privateEndpointConnectionName: string;
 }
+const DeletePrivateEndpointConnectionRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<DeletePrivateEndpointConnectionRequest>;
+
 export interface DeletePrivateEndpointConnectionResponse {}
+const DeletePrivateEndpointConnectionResponse =
+  ClustersPromoteReadReplicaResponse as any as S.Schema<DeletePrivateEndpointConnectionResponse>;
+
 export interface DeleteRoleRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -335,7 +458,11 @@ export interface DeleteRoleRequest {
   /** The name of the cluster role. */
   roleName: string;
 }
+const DeleteRoleRequest = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<DeleteRoleRequest>;
+
 export interface DeleteRoleResponse {}
+const DeleteRoleResponse = DeleteClusterResponse as any as S.Schema<DeleteRoleResponse>;
+
 /** The properties of a cluster firewall rule. */
 export interface FirewallRulePropertiesInput {
   /** The start IP address of the cluster firewall rule. Must be IPv4 format. */
@@ -343,6 +470,11 @@ export interface FirewallRulePropertiesInput {
   /** The end IP address of the cluster firewall rule. Must be IPv4 format. */
   endIpAddress: string;
 }
+const FirewallRulePropertiesInput = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<FirewallRulePropertiesInput>;
+
 export interface FirewallRulesCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -355,6 +487,11 @@ export interface FirewallRulesCreateOrUpdateRequest {
   /** The properties of a firewall rule. */
   properties: FirewallRulePropertiesInput;
 }
+const FirewallRulesCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<FirewallRulesCreateOrUpdateRequest>;
+
 /** The properties of a cluster firewall rule. */
 export interface FirewallRuleProperties {
   /** The start IP address of the cluster firewall rule. Must be IPv4 format. */
@@ -364,6 +501,11 @@ export interface FirewallRuleProperties {
   /** Provisioning state of the firewall rule. */
   provisioningState?: ProvisioningState;
 }
+const FirewallRuleProperties = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<FirewallRuleProperties>;
+
 export interface FirewallRulesCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -376,6 +518,11 @@ export interface FirewallRulesCreateOrUpdateResponse {
   /** The properties of a firewall rule. */
   properties: FirewallRuleProperties;
 }
+const FirewallRulesCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<FirewallRulesCreateOrUpdateResponse>;
+
 export interface GetClusterRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -384,6 +531,8 @@ export interface GetClusterRequest {
   /** The name of the cluster. */
   clusterName: string;
 }
+const GetClusterRequest = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<GetClusterRequest>;
+
 /** Resource tags. */
 export type GetClusterResponseTagsMap = { [key: string]: string | undefined };
 export interface GetClusterResponse {
@@ -402,6 +551,8 @@ export interface GetClusterResponse {
   /** Properties of the cluster. */
   properties?: ClusterProperties;
 }
+const GetClusterResponse = CreateClusterResponse as any as S.Schema<GetClusterResponse>;
+
 export interface GetConfigurationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -412,10 +563,19 @@ export interface GetConfigurationRequest {
   /** The name of the cluster configuration. */
   configurationName: string;
 }
+const GetConfigurationRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<GetConfigurationRequest>;
+
 /** Data type of the configuration. */
 export type ConfigurationPropertiesDataType = "Boolean" | "Numeric" | "Integer" | "Enumeration";
+const ConfigurationPropertiesDataType = S.String;
+
 /** The role of a server. */
 export type ServerRole = "Coordinator" | "Worker";
+const ServerRole = S.String;
+
 /** Represents server role group configuration value. */
 export interface ServerRoleGroupConfiguration {
   /** The role of servers in the server role group. */
@@ -427,9 +587,19 @@ export interface ServerRoleGroupConfiguration {
   /** Source of the configuration. */
   source?: string;
 }
+const ServerRoleGroupConfiguration = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<ServerRoleGroupConfiguration>;
+
 /** The list of server role group configuration values. */
 export type ConfigurationPropertiesServerRoleGroupConfigurationsList =
   Array<ServerRoleGroupConfiguration>;
+const ConfigurationPropertiesServerRoleGroupConfigurationsList = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<ConfigurationPropertiesServerRoleGroupConfigurationsList>;
+
 /** The properties of configuration. */
 export interface ConfigurationProperties {
   /** Description of the configuration. */
@@ -445,6 +615,11 @@ export interface ConfigurationProperties {
   /** Provisioning state of the configuration */
   provisioningState?: ProvisioningState;
 }
+const ConfigurationProperties = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<ConfigurationProperties>;
+
 export interface GetConfigurationResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -457,6 +632,11 @@ export interface GetConfigurationResponse {
   /** The properties of configuration. */
   properties?: ConfigurationProperties;
 }
+const GetConfigurationResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<GetConfigurationResponse>;
+
 export interface GetConfigurationCoordinatorRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -467,12 +647,19 @@ export interface GetConfigurationCoordinatorRequest {
   /** The name of the cluster configuration. */
   configurationName: string;
 }
+const GetConfigurationCoordinatorRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<GetConfigurationCoordinatorRequest>;
+
 /** Data type of the configuration. */
 export type ServerConfigurationPropertiesDataType =
   | "Boolean"
   | "Numeric"
   | "Integer"
   | "Enumeration";
+const ServerConfigurationPropertiesDataType = S.String;
+
 /** The properties of a configuration. */
 export interface ServerConfigurationProperties {
   /** Value of the configuration. */
@@ -492,6 +679,11 @@ export interface ServerConfigurationProperties {
   /** Provisioning state of the configuration. */
   provisioningState?: ProvisioningState;
 }
+const ServerConfigurationProperties = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<ServerConfigurationProperties>;
+
 export interface GetConfigurationCoordinatorResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -504,6 +696,11 @@ export interface GetConfigurationCoordinatorResponse {
   /** The properties of a configuration. */
   properties?: ServerConfigurationProperties;
 }
+const GetConfigurationCoordinatorResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  0,
+) as any as S.Schema<GetConfigurationCoordinatorResponse>;
+
 export interface GetConfigurationNodeRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -514,6 +711,11 @@ export interface GetConfigurationNodeRequest {
   /** The name of the cluster configuration. */
   configurationName: string;
 }
+const GetConfigurationNodeRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  1,
+) as any as S.Schema<GetConfigurationNodeRequest>;
+
 export interface GetConfigurationNodeResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -526,6 +728,9 @@ export interface GetConfigurationNodeResponse {
   /** The properties of a configuration. */
   properties?: ServerConfigurationProperties;
 }
+const GetConfigurationNodeResponse =
+  GetConfigurationCoordinatorResponse as any as S.Schema<GetConfigurationNodeResponse>;
+
 export interface GetFirewallRuleRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -536,6 +741,11 @@ export interface GetFirewallRuleRequest {
   /** The name of the cluster firewall rule. */
   firewallRuleName: string;
 }
+const GetFirewallRuleRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  2,
+) as any as S.Schema<GetFirewallRuleRequest>;
+
 export interface GetFirewallRuleResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -548,6 +758,11 @@ export interface GetFirewallRuleResponse {
   /** The properties of a firewall rule. */
   properties: FirewallRuleProperties;
 }
+const GetFirewallRuleResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<GetFirewallRuleResponse>;
+
 export interface GetPrivateEndpointConnectionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -558,13 +773,23 @@ export interface GetPrivateEndpointConnectionRequest {
   /** The name of the private endpoint connection associated with the cluster. */
   privateEndpointConnectionName: string;
 }
+const GetPrivateEndpointConnectionRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  4,
+) as any as S.Schema<GetPrivateEndpointConnectionRequest>;
+
 /** The group ids for the private endpoint resource. */
 export type PrivateEndpointConnectionPropertiesGroupIdsList = Array<string>;
+const PrivateEndpointConnectionPropertiesGroupIdsList =
+  ClusterPropertiesReadReplicasList as any as S.Schema<PrivateEndpointConnectionPropertiesGroupIdsList>;
+
 /** The private endpoint resource. */
 export interface PrivateEndpoint {
   /** The ARM identifier for private endpoint. */
   id?: string;
 }
+const PrivateEndpoint = PrivateEndpointProperty as any as S.Schema<PrivateEndpoint>;
+
 /** A collection of information about the state of the connection between service consumer and provider. */
 export interface PrivateLinkServiceConnectionState {
   /** Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service. */
@@ -574,12 +799,19 @@ export interface PrivateLinkServiceConnectionState {
   /** A message indicating if changes on the service provider require any updates on the consumer. */
   actionsRequired?: string;
 }
+const PrivateLinkServiceConnectionState = /*@__PURE__*/ __L.at(
+  __c5,
+  5,
+) as any as S.Schema<PrivateLinkServiceConnectionState>;
+
 /** The current provisioning state. */
 export type PrivateEndpointConnectionProvisioningState =
   | "Succeeded"
   | "Creating"
   | "Deleting"
   | "Failed";
+const PrivateEndpointConnectionProvisioningState = S.String;
+
 /** Properties of the private endpoint connection. */
 export interface PrivateEndpointConnectionProperties {
   /** The group ids for the private endpoint resource. */
@@ -591,6 +823,11 @@ export interface PrivateEndpointConnectionProperties {
   /** The provisioning state of the private endpoint connection resource. */
   provisioningState?: PrivateEndpointConnectionProvisioningState;
 }
+const PrivateEndpointConnectionProperties = /*@__PURE__*/ __L.at(
+  __c5,
+  6,
+) as any as S.Schema<PrivateEndpointConnectionProperties>;
+
 export interface GetPrivateEndpointConnectionResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -603,6 +840,11 @@ export interface GetPrivateEndpointConnectionResponse {
   /** Resource properties. */
   properties?: PrivateEndpointConnectionProperties;
 }
+const GetPrivateEndpointConnectionResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  7,
+) as any as S.Schema<GetPrivateEndpointConnectionResponse>;
+
 export interface GetPrivateLinkResourceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -613,10 +855,21 @@ export interface GetPrivateLinkResourceRequest {
   /** The name of the private link resource. */
   privateLinkResourceName: string;
 }
+const GetPrivateLinkResourceRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<GetPrivateLinkResourceRequest>;
+
 /** The private link resource required member names. */
 export type PrivateLinkResourcePropertiesRequiredMembersList = Array<string>;
+const PrivateLinkResourcePropertiesRequiredMembersList =
+  ClusterPropertiesReadReplicasList as any as S.Schema<PrivateLinkResourcePropertiesRequiredMembersList>;
+
 /** The private link resource private link DNS zone name. */
 export type PrivateLinkResourcePropertiesRequiredZoneNamesList = Array<string>;
+const PrivateLinkResourcePropertiesRequiredZoneNamesList =
+  ClusterPropertiesReadReplicasList as any as S.Schema<PrivateLinkResourcePropertiesRequiredZoneNamesList>;
+
 /** Properties of a private link resource. */
 export interface PrivateLinkResourceProperties {
   /** The private link resource group id. */
@@ -626,6 +879,11 @@ export interface PrivateLinkResourceProperties {
   /** The private link resource private link DNS zone name. */
   requiredZoneNames?: PrivateLinkResourcePropertiesRequiredZoneNamesList;
 }
+const PrivateLinkResourceProperties = /*@__PURE__*/ __L.at(
+  __c6,
+  1,
+) as any as S.Schema<PrivateLinkResourceProperties>;
+
 export interface GetPrivateLinkResourceResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -638,6 +896,11 @@ export interface GetPrivateLinkResourceResponse {
   /** Resource properties. */
   properties?: PrivateLinkResourceProperties;
 }
+const GetPrivateLinkResourceResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  2,
+) as any as S.Schema<GetPrivateLinkResourceResponse>;
+
 export interface GetRoleRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -648,6 +911,8 @@ export interface GetRoleRequest {
   /** The name of the cluster role. */
   roleName: string;
 }
+const GetRoleRequest = /*@__PURE__*/ __L.at(__c6, 3) as any as S.Schema<GetRoleRequest>;
+
 export interface GetRoleResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -660,6 +925,8 @@ export interface GetRoleResponse {
   /** The properties of a role. */
   properties: RoleProperties;
 }
+const GetRoleResponse = CreateRoleResponse as any as S.Schema<GetRoleResponse>;
+
 export interface GetServerRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -670,6 +937,8 @@ export interface GetServerRequest {
   /** The name of the server. */
   serverName: string;
 }
+const GetServerRequest = /*@__PURE__*/ __L.at(__c6, 4) as any as S.Schema<GetServerRequest>;
+
 /** The properties of a server in cluster. */
 export interface ClusterServerProperties {
   /** The edition of a server. */
@@ -701,6 +970,11 @@ export interface ClusterServerProperties {
   /** The Citus extension version of server. */
   citusVersion?: string;
 }
+const ClusterServerProperties = /*@__PURE__*/ __L.at(
+  __c6,
+  5,
+) as any as S.Schema<ClusterServerProperties>;
+
 export interface GetServerResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -713,12 +987,19 @@ export interface GetServerResponse {
   /** The properties of a server in a cluster. */
   properties?: ClusterServerProperties;
 }
+const GetServerResponse = /*@__PURE__*/ __L.at(__c6, 6) as any as S.Schema<GetServerResponse>;
+
 export interface ListClusterByResourceGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
+const ListClusterByResourceGroupRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  7,
+) as any as S.Schema<ListClusterByResourceGroupRequest>;
+
 /** Resource tags. */
 export type ClusterTagsMap = { [key: string]: string | undefined };
 /** Represents a cluster. */
@@ -738,8 +1019,15 @@ export interface Cluster {
   /** Properties of the cluster. */
   properties?: ClusterProperties;
 }
+const Cluster = CreateClusterResponse as any as S.Schema<Cluster>;
+
 /** The list of clusters */
 export type ClusterListResultValueList = Array<Cluster>;
+const ClusterListResultValueList = /*@__PURE__*/ __L.at(
+  __c7,
+  0,
+) as any as S.Schema<ClusterListResultValueList>;
+
 /** A list of clusters. */
 export interface ClusterListResult {
   /** The list of clusters */
@@ -747,10 +1035,14 @@ export interface ClusterListResult {
   /** The link used to get the next page of cluster list. */
   nextLink?: string;
 }
+const ClusterListResult = /*@__PURE__*/ __L.at(__c7, 1) as any as S.Schema<ClusterListResult>;
+
 export interface ListClustersRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
+const ListClustersRequest = /*@__PURE__*/ __L.at(__c7, 2) as any as S.Schema<ListClustersRequest>;
+
 export interface ListConfigurationByClusterRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -759,6 +1051,11 @@ export interface ListConfigurationByClusterRequest {
   /** The name of the cluster. */
   clusterName: string;
 }
+const ListConfigurationByClusterRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  3,
+) as any as S.Schema<ListConfigurationByClusterRequest>;
+
 /** Represents configuration details for coordinator and node. */
 export interface Configuration {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -772,8 +1069,15 @@ export interface Configuration {
   /** The properties of configuration. */
   properties?: ConfigurationProperties;
 }
+const Configuration = GetConfigurationResponse as any as S.Schema<Configuration>;
+
 /** The list of cluster configurations. */
 export type ClusterConfigurationListResultValueList = Array<Configuration>;
+const ClusterConfigurationListResultValueList = /*@__PURE__*/ __L.at(
+  __c7,
+  4,
+) as any as S.Schema<ClusterConfigurationListResultValueList>;
+
 /** A list of cluster configurations. */
 export interface ClusterConfigurationListResult {
   /** The list of cluster configurations. */
@@ -781,6 +1085,11 @@ export interface ClusterConfigurationListResult {
   /** Link to retrieve next page of results. */
   nextLink?: string;
 }
+const ClusterConfigurationListResult = /*@__PURE__*/ __L.at(
+  __c7,
+  5,
+) as any as S.Schema<ClusterConfigurationListResult>;
+
 export interface ListConfigurationByServerRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -791,6 +1100,11 @@ export interface ListConfigurationByServerRequest {
   /** The name of the server. */
   serverName: string;
 }
+const ListConfigurationByServerRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  6,
+) as any as S.Schema<ListConfigurationByServerRequest>;
+
 /** Represents a configuration. */
 export interface ServerConfiguration {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -804,8 +1118,15 @@ export interface ServerConfiguration {
   /** The properties of a configuration. */
   properties?: ServerConfigurationProperties;
 }
+const ServerConfiguration = /*@__PURE__*/ __L.at(__c7, 7) as any as S.Schema<ServerConfiguration>;
+
 /** The list of server configurations. */
 export type ServerConfigurationListResultValueList = Array<ServerConfiguration>;
+const ServerConfigurationListResultValueList = /*@__PURE__*/ __L.at(
+  __c8,
+  0,
+) as any as S.Schema<ServerConfigurationListResultValueList>;
+
 /** A list of server configurations. */
 export interface ServerConfigurationListResult {
   /** The list of server configurations. */
@@ -813,6 +1134,11 @@ export interface ServerConfigurationListResult {
   /** Link to retrieve next page of results. */
   nextLink?: string;
 }
+const ServerConfigurationListResult = /*@__PURE__*/ __L.at(
+  __c8,
+  1,
+) as any as S.Schema<ServerConfigurationListResult>;
+
 export interface ListFirewallRuleByClusterRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -821,6 +1147,11 @@ export interface ListFirewallRuleByClusterRequest {
   /** The name of the cluster. */
   clusterName: string;
 }
+const ListFirewallRuleByClusterRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  2,
+) as any as S.Schema<ListFirewallRuleByClusterRequest>;
+
 /** Represents a cluster firewall rule. */
 export interface FirewallRule {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -834,14 +1165,31 @@ export interface FirewallRule {
   /** The properties of a firewall rule. */
   properties: FirewallRuleProperties;
 }
+const FirewallRule = GetFirewallRuleResponse as any as S.Schema<FirewallRule>;
+
 /** The list of firewall rules in a cluster. */
 export type FirewallRuleListResultValueList = Array<FirewallRule>;
+const FirewallRuleListResultValueList = /*@__PURE__*/ __L.at(
+  __c8,
+  3,
+) as any as S.Schema<FirewallRuleListResultValueList>;
+
 /** A list of firewall rules. */
 export interface FirewallRuleListResult {
   /** The list of firewall rules in a cluster. */
   value?: FirewallRuleListResultValueList;
 }
+const FirewallRuleListResult = /*@__PURE__*/ __L.at(
+  __c8,
+  4,
+) as any as S.Schema<FirewallRuleListResult>;
+
 export interface ListOperationsRequest {}
+const ListOperationsRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  5,
+) as any as S.Schema<ListOperationsRequest>;
+
 /** Display metadata associated with the operation. */
 export interface OperationDisplay {
   /** Operation resource provider name. */
@@ -853,10 +1201,19 @@ export interface OperationDisplay {
   /** Operation description. */
   description?: string;
 }
+const OperationDisplay = /*@__PURE__*/ __L.at(__c8, 6) as any as S.Schema<OperationDisplay>;
+
 /** The intended executor of the operation. */
 export type OperationOrigin = "NotSpecified" | "user" | "system";
+const OperationOrigin = S.String;
+
 /** Additional descriptions for the operation. */
 export type OperationPropertiesMap = { [key: string]: unknown | undefined };
+const OperationPropertiesMap = /*@__PURE__*/ __L.at(
+  __c8,
+  7,
+) as any as S.Schema<OperationPropertiesMap>;
+
 /** REST API operation definition. */
 export interface Operation {
   /** The name of the operation being performed on this particular object. */
@@ -870,8 +1227,15 @@ export interface Operation {
   /** Additional descriptions for the operation. */
   properties?: OperationPropertiesMap;
 }
+const Operation = /*@__PURE__*/ __L.at(__c9, 0) as any as S.Schema<Operation>;
+
 /** Collection of available operation details. */
 export type OperationListResultValueList = Array<Operation>;
+const OperationListResultValueList = /*@__PURE__*/ __L.at(
+  __c9,
+  1,
+) as any as S.Schema<OperationListResultValueList>;
+
 /** A list of resource provider operations. */
 export interface OperationListResult {
   /** Collection of available operation details. */
@@ -879,6 +1243,8 @@ export interface OperationListResult {
   /** URL client should use to fetch the next page (per server side paging). It's null for now, added for future use. */
   nextLink?: string;
 }
+const OperationListResult = /*@__PURE__*/ __L.at(__c9, 2) as any as S.Schema<OperationListResult>;
+
 export interface ListPrivateEndpointConnectionByClusterRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -887,6 +1253,11 @@ export interface ListPrivateEndpointConnectionByClusterRequest {
   /** The name of the cluster. */
   clusterName: string;
 }
+const ListPrivateEndpointConnectionByClusterRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  3,
+) as any as S.Schema<ListPrivateEndpointConnectionByClusterRequest>;
+
 /** The private endpoint connection resource. */
 export interface PrivateEndpointConnectionListResultValueItem {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -900,14 +1271,27 @@ export interface PrivateEndpointConnectionListResultValueItem {
   /** Resource properties. */
   properties?: PrivateEndpointConnectionProperties;
 }
+const PrivateEndpointConnectionListResultValueItem =
+  GetPrivateEndpointConnectionResponse as any as S.Schema<PrivateEndpointConnectionListResultValueItem>;
+
 /** Array of private endpoint connections. */
 export type PrivateEndpointConnectionListResultValueList =
   Array<PrivateEndpointConnectionListResultValueItem>;
+const PrivateEndpointConnectionListResultValueList = /*@__PURE__*/ __L.at(
+  __c9,
+  4,
+) as any as S.Schema<PrivateEndpointConnectionListResultValueList>;
+
 /** List of private endpoint connections associated with the specified resource. */
 export interface PrivateEndpointConnectionListResult {
   /** Array of private endpoint connections. */
   value?: PrivateEndpointConnectionListResultValueList;
 }
+const PrivateEndpointConnectionListResult = /*@__PURE__*/ __L.at(
+  __c9,
+  5,
+) as any as S.Schema<PrivateEndpointConnectionListResult>;
+
 export interface ListPrivateLinkResourceByClusterRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -916,6 +1300,11 @@ export interface ListPrivateLinkResourceByClusterRequest {
   /** The name of the cluster. */
   clusterName: string;
 }
+const ListPrivateLinkResourceByClusterRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  6,
+) as any as S.Schema<ListPrivateLinkResourceByClusterRequest>;
+
 /** A private link resource. */
 export interface PrivateLinkResourceListResultValueItem {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -929,13 +1318,26 @@ export interface PrivateLinkResourceListResultValueItem {
   /** Resource properties. */
   properties?: PrivateLinkResourceProperties;
 }
+const PrivateLinkResourceListResultValueItem =
+  GetPrivateLinkResourceResponse as any as S.Schema<PrivateLinkResourceListResultValueItem>;
+
 /** Array of private link resources */
 export type PrivateLinkResourceListResultValueList = Array<PrivateLinkResourceListResultValueItem>;
+const PrivateLinkResourceListResultValueList = /*@__PURE__*/ __L.at(
+  __c9,
+  7,
+) as any as S.Schema<PrivateLinkResourceListResultValueList>;
+
 /** A list of private link resources. */
 export interface PrivateLinkResourceListResult {
   /** Array of private link resources */
   value?: PrivateLinkResourceListResultValueList;
 }
+const PrivateLinkResourceListResult = /*@__PURE__*/ __L.at(
+  __c10,
+  0,
+) as any as S.Schema<PrivateLinkResourceListResult>;
+
 export interface ListRoleByClusterRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -944,6 +1346,11 @@ export interface ListRoleByClusterRequest {
   /** The name of the cluster. */
   clusterName: string;
 }
+const ListRoleByClusterRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  1,
+) as any as S.Schema<ListRoleByClusterRequest>;
+
 /** Represents a cluster role. */
 export interface Role {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -957,13 +1364,22 @@ export interface Role {
   /** The properties of a role. */
   properties: RoleProperties;
 }
+const Role = CreateRoleResponse as any as S.Schema<Role>;
+
 /** The list of roles in a cluster. */
 export type RoleListResultValueList = Array<Role>;
+const RoleListResultValueList = /*@__PURE__*/ __L.at(
+  __c10,
+  2,
+) as any as S.Schema<RoleListResultValueList>;
+
 /** A list of roles. */
 export interface RoleListResult {
   /** The list of roles in a cluster. */
   value?: RoleListResultValueList;
 }
+const RoleListResult = /*@__PURE__*/ __L.at(__c10, 3) as any as S.Schema<RoleListResult>;
+
 export interface ListServerByClusterRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -972,6 +1388,11 @@ export interface ListServerByClusterRequest {
   /** The name of the cluster. */
   clusterName: string;
 }
+const ListServerByClusterRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  4,
+) as any as S.Schema<ListServerByClusterRequest>;
+
 /** Represents a server in a cluster. */
 export interface ClusterServer {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -985,15 +1406,29 @@ export interface ClusterServer {
   /** The properties of a server in a cluster. */
   properties?: ClusterServerProperties;
 }
+const ClusterServer = GetServerResponse as any as S.Schema<ClusterServer>;
+
 /** The list of servers in a cluster. */
 export type ClusterServerListResultValueList = Array<ClusterServer>;
+const ClusterServerListResultValueList = /*@__PURE__*/ __L.at(
+  __c10,
+  5,
+) as any as S.Schema<ClusterServerListResultValueList>;
+
 /** A list of servers in a cluster. */
 export interface ClusterServerListResult {
   /** The list of servers in a cluster. */
   value?: ClusterServerListResultValueList;
 }
+const ClusterServerListResult = /*@__PURE__*/ __L.at(
+  __c10,
+  6,
+) as any as S.Schema<ClusterServerListResult>;
+
 /** The private endpoint resource. */
 export interface PrivateEndpointInput {}
+const PrivateEndpointInput = DeleteClusterResponse as any as S.Schema<PrivateEndpointInput>;
+
 /** Properties of the private endpoint connection. */
 export interface PrivateEndpointConnectionPropertiesInput {
   /** The private endpoint resource. */
@@ -1001,6 +1436,11 @@ export interface PrivateEndpointConnectionPropertiesInput {
   /** A collection of information about the state of the connection between service consumer and provider. */
   privateLinkServiceConnectionState: PrivateLinkServiceConnectionState;
 }
+const PrivateEndpointConnectionPropertiesInput = /*@__PURE__*/ __L.at(
+  __c10,
+  7,
+) as any as S.Schema<PrivateEndpointConnectionPropertiesInput>;
+
 export interface PrivateEndpointConnectionsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1013,6 +1453,11 @@ export interface PrivateEndpointConnectionsCreateOrUpdateRequest {
   /** Resource properties. */
   properties?: PrivateEndpointConnectionPropertiesInput;
 }
+const PrivateEndpointConnectionsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  0,
+) as any as S.Schema<PrivateEndpointConnectionsCreateOrUpdateRequest>;
+
 export interface PrivateEndpointConnectionsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1025,6 +1470,9 @@ export interface PrivateEndpointConnectionsCreateOrUpdateResponse {
   /** Resource properties. */
   properties?: PrivateEndpointConnectionProperties;
 }
+const PrivateEndpointConnectionsCreateOrUpdateResponse =
+  GetPrivateEndpointConnectionResponse as any as S.Schema<PrivateEndpointConnectionsCreateOrUpdateResponse>;
+
 export interface RestartClusterRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1033,7 +1481,14 @@ export interface RestartClusterRequest {
   /** The name of the cluster. */
   clusterName: string;
 }
+const RestartClusterRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  1,
+) as any as S.Schema<RestartClusterRequest>;
+
 export interface RestartClusterResponse {}
+const RestartClusterResponse = DeleteClusterResponse as any as S.Schema<RestartClusterResponse>;
+
 export interface StartClusterRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1042,7 +1497,11 @@ export interface StartClusterRequest {
   /** The name of the cluster. */
   clusterName: string;
 }
+const StartClusterRequest = /*@__PURE__*/ __L.at(__c11, 2) as any as S.Schema<StartClusterRequest>;
+
 export interface StartClusterResponse {}
+const StartClusterResponse = DeleteClusterResponse as any as S.Schema<StartClusterResponse>;
+
 export interface StopClusterRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1051,7 +1510,11 @@ export interface StopClusterRequest {
   /** The name of the cluster. */
   clusterName: string;
 }
+const StopClusterRequest = /*@__PURE__*/ __L.at(__c11, 3) as any as S.Schema<StopClusterRequest>;
+
 export interface StopClusterResponse {}
+const StopClusterResponse = DeleteClusterResponse as any as S.Schema<StopClusterResponse>;
+
 /** The properties used to update a cluster. */
 export interface ClusterPropertiesForUpdateInput {
   /** The password of the administrator login. Each cluster is created with pre-defined administrative role called 'citus'. */
@@ -1085,8 +1548,16 @@ export interface ClusterPropertiesForUpdateInput {
   /** Maintenance window of a cluster. */
   maintenanceWindow?: MaintenanceWindow;
 }
+const ClusterPropertiesForUpdateInput = /*@__PURE__*/ __L.at(
+  __c11,
+  4,
+) as any as S.Schema<ClusterPropertiesForUpdateInput>;
+
 /** Application-specific metadata in the form of key-value pairs. */
 export type UpdateClusterRequestTagsMap = { [key: string]: string | undefined };
+const UpdateClusterRequestTagsMap =
+  CreateClusterRequestTagsMap as any as S.Schema<UpdateClusterRequestTagsMap>;
+
 export interface UpdateClusterRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1099,6 +1570,11 @@ export interface UpdateClusterRequest {
   /** Application-specific metadata in the form of key-value pairs. */
   tags?: UpdateClusterRequestTagsMap;
 }
+const UpdateClusterRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  5,
+) as any as S.Schema<UpdateClusterRequest>;
+
 /** Resource tags. */
 export type UpdateClusterResponseTagsMap = { [key: string]: string | undefined };
 export interface UpdateClusterResponse {
@@ -1117,11 +1593,18 @@ export interface UpdateClusterResponse {
   /** Properties of the cluster. */
   properties?: ClusterProperties;
 }
+const UpdateClusterResponse = CreateClusterResponse as any as S.Schema<UpdateClusterResponse>;
+
 /** The properties of a configuration. */
 export interface ServerConfigurationPropertiesInput {
   /** Value of the configuration. */
   value: string;
 }
+const ServerConfigurationPropertiesInput = /*@__PURE__*/ __L.at(
+  __c11,
+  6,
+) as any as S.Schema<ServerConfigurationPropertiesInput>;
+
 export interface UpdateConfigurationOnCoordinatorRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1134,6 +1617,11 @@ export interface UpdateConfigurationOnCoordinatorRequest {
   /** The properties of a configuration. */
   properties?: ServerConfigurationPropertiesInput;
 }
+const UpdateConfigurationOnCoordinatorRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  7,
+) as any as S.Schema<UpdateConfigurationOnCoordinatorRequest>;
+
 export interface UpdateConfigurationOnCoordinatorResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1146,6 +1634,9 @@ export interface UpdateConfigurationOnCoordinatorResponse {
   /** The properties of a configuration. */
   properties?: ServerConfigurationProperties;
 }
+const UpdateConfigurationOnCoordinatorResponse =
+  GetConfigurationCoordinatorResponse as any as S.Schema<UpdateConfigurationOnCoordinatorResponse>;
+
 export interface UpdateConfigurationOnNodeRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1158,6 +1649,11 @@ export interface UpdateConfigurationOnNodeRequest {
   /** The properties of a configuration. */
   properties?: ServerConfigurationPropertiesInput;
 }
+const UpdateConfigurationOnNodeRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  0,
+) as any as S.Schema<UpdateConfigurationOnNodeRequest>;
+
 export interface UpdateConfigurationOnNodeResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1170,6 +1666,9 @@ export interface UpdateConfigurationOnNodeResponse {
   /** The properties of a configuration. */
   properties?: ServerConfigurationProperties;
 }
+const UpdateConfigurationOnNodeResponse =
+  GetConfigurationCoordinatorResponse as any as S.Schema<UpdateConfigurationOnNodeResponse>;
+
 export type CheckClusterNameAvailabilityError = AzureOpError;
 /** Checks availability of a cluster name. Cluster names should be globally unique; at least 3 characters and at most 40 characters long; they must only contain lowercase letters, numbers, and hyphens; and must not start or end with a hyphen. */
 export const CheckClusterNameAvailability: API.OperationMethod<
@@ -1178,8 +1677,8 @@ export const CheckClusterNameAvailability: API.OperationMethod<
   CheckClusterNameAvailabilityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<CheckClusterNameAvailabilityRequest>,
-  output: __S(1) as any as S.Schema<NameAvailability>,
+  input: CheckClusterNameAvailabilityRequest,
+  output: NameAvailability,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1193,8 +1692,8 @@ export const ClustersPromoteReadReplica: API.OperationMethod<
   ClustersPromoteReadReplicaError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2) as any as S.Schema<ClustersPromoteReadReplicaRequest>,
-  output: __S(3) as any as S.Schema<ClustersPromoteReadReplicaResponse>,
+  input: ClustersPromoteReadReplicaRequest,
+  output: ClustersPromoteReadReplicaResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1208,8 +1707,8 @@ export const CreateCluster: API.OperationMethod<
   CreateClusterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7) as any as S.Schema<CreateClusterRequest>,
-  output: __S(18) as any as S.Schema<CreateClusterResponse>,
+  input: CreateClusterRequest,
+  output: CreateClusterResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1223,8 +1722,8 @@ export const CreateRole: API.OperationMethod<
   CreateRoleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20) as any as S.Schema<CreateRoleRequest>,
-  output: __S(22) as any as S.Schema<CreateRoleResponse>,
+  input: CreateRoleRequest,
+  output: CreateRoleResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1238,8 +1737,8 @@ export const DeleteCluster: API.OperationMethod<
   DeleteClusterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23) as any as S.Schema<DeleteClusterRequest>,
-  output: __S(24) as any as S.Schema<DeleteClusterResponse>,
+  input: DeleteClusterRequest,
+  output: DeleteClusterResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1253,8 +1752,8 @@ export const DeleteFirewallRule: API.OperationMethod<
   DeleteFirewallRuleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25) as any as S.Schema<DeleteFirewallRuleRequest>,
-  output: __S(24) as any as S.Schema<DeleteFirewallRuleResponse>,
+  input: DeleteFirewallRuleRequest,
+  output: DeleteFirewallRuleResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1268,8 +1767,8 @@ export const DeletePrivateEndpointConnection: API.OperationMethod<
   DeletePrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26) as any as S.Schema<DeletePrivateEndpointConnectionRequest>,
-  output: __S(3) as any as S.Schema<DeletePrivateEndpointConnectionResponse>,
+  input: DeletePrivateEndpointConnectionRequest,
+  output: DeletePrivateEndpointConnectionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1283,8 +1782,8 @@ export const DeleteRole: API.OperationMethod<
   DeleteRoleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27) as any as S.Schema<DeleteRoleRequest>,
-  output: __S(24) as any as S.Schema<DeleteRoleResponse>,
+  input: DeleteRoleRequest,
+  output: DeleteRoleResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1298,8 +1797,8 @@ export const FirewallRulesCreateOrUpdate: API.OperationMethod<
   FirewallRulesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29) as any as S.Schema<FirewallRulesCreateOrUpdateRequest>,
-  output: __S(31) as any as S.Schema<FirewallRulesCreateOrUpdateResponse>,
+  input: FirewallRulesCreateOrUpdateRequest,
+  output: FirewallRulesCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1313,8 +1812,8 @@ export const GetCluster: API.OperationMethod<
   GetClusterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32) as any as S.Schema<GetClusterRequest>,
-  output: __S(18) as any as S.Schema<GetClusterResponse>,
+  input: GetClusterRequest,
+  output: GetClusterResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1328,8 +1827,8 @@ export const GetConfiguration: API.OperationMethod<
   GetConfigurationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33) as any as S.Schema<GetConfigurationRequest>,
-  output: __S(37) as any as S.Schema<GetConfigurationResponse>,
+  input: GetConfigurationRequest,
+  output: GetConfigurationResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1343,8 +1842,8 @@ export const GetConfigurationCoordinator: API.OperationMethod<
   GetConfigurationCoordinatorError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38) as any as S.Schema<GetConfigurationCoordinatorRequest>,
-  output: __S(40) as any as S.Schema<GetConfigurationCoordinatorResponse>,
+  input: GetConfigurationCoordinatorRequest,
+  output: GetConfigurationCoordinatorResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1358,8 +1857,8 @@ export const GetConfigurationNode: API.OperationMethod<
   GetConfigurationNodeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41) as any as S.Schema<GetConfigurationNodeRequest>,
-  output: __S(40) as any as S.Schema<GetConfigurationNodeResponse>,
+  input: GetConfigurationNodeRequest,
+  output: GetConfigurationNodeResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1373,8 +1872,8 @@ export const GetFirewallRule: API.OperationMethod<
   GetFirewallRuleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42) as any as S.Schema<GetFirewallRuleRequest>,
-  output: __S(43) as any as S.Schema<GetFirewallRuleResponse>,
+  input: GetFirewallRuleRequest,
+  output: GetFirewallRuleResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1388,8 +1887,8 @@ export const GetPrivateEndpointConnection: API.OperationMethod<
   GetPrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44) as any as S.Schema<GetPrivateEndpointConnectionRequest>,
-  output: __S(47) as any as S.Schema<GetPrivateEndpointConnectionResponse>,
+  input: GetPrivateEndpointConnectionRequest,
+  output: GetPrivateEndpointConnectionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1403,8 +1902,8 @@ export const GetPrivateLinkResource: API.OperationMethod<
   GetPrivateLinkResourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48) as any as S.Schema<GetPrivateLinkResourceRequest>,
-  output: __S(50) as any as S.Schema<GetPrivateLinkResourceResponse>,
+  input: GetPrivateLinkResourceRequest,
+  output: GetPrivateLinkResourceResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1418,8 +1917,8 @@ export const GetRole: API.OperationMethod<
   GetRoleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(51) as any as S.Schema<GetRoleRequest>,
-  output: __S(22) as any as S.Schema<GetRoleResponse>,
+  input: GetRoleRequest,
+  output: GetRoleResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1433,8 +1932,8 @@ export const GetServer: API.OperationMethod<
   GetServerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(52) as any as S.Schema<GetServerRequest>,
-  output: __S(54) as any as S.Schema<GetServerResponse>,
+  input: GetServerRequest,
+  output: GetServerResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1448,8 +1947,8 @@ export const ListClusterByResourceGroup: API.OperationMethod<
   ListClusterByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(55) as any as S.Schema<ListClusterByResourceGroupRequest>,
-  output: __S(57) as any as S.Schema<ClusterListResult>,
+  input: ListClusterByResourceGroupRequest,
+  output: ClusterListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1463,8 +1962,8 @@ export const ListClusters: API.OperationMethod<
   ListClustersError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(58) as any as S.Schema<ListClustersRequest>,
-  output: __S(57) as any as S.Schema<ClusterListResult>,
+  input: ListClustersRequest,
+  output: ClusterListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1478,8 +1977,8 @@ export const ListConfigurationByCluster: API.OperationMethod<
   ListConfigurationByClusterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(59) as any as S.Schema<ListConfigurationByClusterRequest>,
-  output: __S(61) as any as S.Schema<ClusterConfigurationListResult>,
+  input: ListConfigurationByClusterRequest,
+  output: ClusterConfigurationListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1493,8 +1992,8 @@ export const ListConfigurationByServer: API.OperationMethod<
   ListConfigurationByServerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(62) as any as S.Schema<ListConfigurationByServerRequest>,
-  output: __S(65) as any as S.Schema<ServerConfigurationListResult>,
+  input: ListConfigurationByServerRequest,
+  output: ServerConfigurationListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1508,8 +2007,8 @@ export const ListFirewallRuleByCluster: API.OperationMethod<
   ListFirewallRuleByClusterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(66) as any as S.Schema<ListFirewallRuleByClusterRequest>,
-  output: __S(68) as any as S.Schema<FirewallRuleListResult>,
+  input: ListFirewallRuleByClusterRequest,
+  output: FirewallRuleListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1523,8 +2022,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(69) as any as S.Schema<ListOperationsRequest>,
-  output: __S(74) as any as S.Schema<OperationListResult>,
+  input: ListOperationsRequest,
+  output: OperationListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1538,8 +2037,8 @@ export const ListPrivateEndpointConnectionByCluster: API.OperationMethod<
   ListPrivateEndpointConnectionByClusterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(75) as any as S.Schema<ListPrivateEndpointConnectionByClusterRequest>,
-  output: __S(77) as any as S.Schema<PrivateEndpointConnectionListResult>,
+  input: ListPrivateEndpointConnectionByClusterRequest,
+  output: PrivateEndpointConnectionListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1553,8 +2052,8 @@ export const ListPrivateLinkResourceByCluster: API.OperationMethod<
   ListPrivateLinkResourceByClusterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(78) as any as S.Schema<ListPrivateLinkResourceByClusterRequest>,
-  output: __S(80) as any as S.Schema<PrivateLinkResourceListResult>,
+  input: ListPrivateLinkResourceByClusterRequest,
+  output: PrivateLinkResourceListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1568,8 +2067,8 @@ export const ListRoleByCluster: API.OperationMethod<
   ListRoleByClusterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(81) as any as S.Schema<ListRoleByClusterRequest>,
-  output: __S(83) as any as S.Schema<RoleListResult>,
+  input: ListRoleByClusterRequest,
+  output: RoleListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1583,8 +2082,8 @@ export const ListServerByCluster: API.OperationMethod<
   ListServerByClusterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(84) as any as S.Schema<ListServerByClusterRequest>,
-  output: __S(86) as any as S.Schema<ClusterServerListResult>,
+  input: ListServerByClusterRequest,
+  output: ClusterServerListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1598,8 +2097,8 @@ export const PrivateEndpointConnectionsCreateOrUpdate: API.OperationMethod<
   PrivateEndpointConnectionsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(88) as any as S.Schema<PrivateEndpointConnectionsCreateOrUpdateRequest>,
-  output: __S(47) as any as S.Schema<PrivateEndpointConnectionsCreateOrUpdateResponse>,
+  input: PrivateEndpointConnectionsCreateOrUpdateRequest,
+  output: PrivateEndpointConnectionsCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1613,8 +2112,8 @@ export const RestartCluster: API.OperationMethod<
   RestartClusterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(89) as any as S.Schema<RestartClusterRequest>,
-  output: __S(24) as any as S.Schema<RestartClusterResponse>,
+  input: RestartClusterRequest,
+  output: RestartClusterResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1628,8 +2127,8 @@ export const StartCluster: API.OperationMethod<
   StartClusterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(90) as any as S.Schema<StartClusterRequest>,
-  output: __S(24) as any as S.Schema<StartClusterResponse>,
+  input: StartClusterRequest,
+  output: StartClusterResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1643,8 +2142,8 @@ export const StopCluster: API.OperationMethod<
   StopClusterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(91) as any as S.Schema<StopClusterRequest>,
-  output: __S(24) as any as S.Schema<StopClusterResponse>,
+  input: StopClusterRequest,
+  output: StopClusterResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1658,8 +2157,8 @@ export const UpdateCluster: API.OperationMethod<
   UpdateClusterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(93) as any as S.Schema<UpdateClusterRequest>,
-  output: __S(18) as any as S.Schema<UpdateClusterResponse>,
+  input: UpdateClusterRequest,
+  output: UpdateClusterResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1673,8 +2172,8 @@ export const UpdateConfigurationOnCoordinator: API.OperationMethod<
   UpdateConfigurationOnCoordinatorError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(95) as any as S.Schema<UpdateConfigurationOnCoordinatorRequest>,
-  output: __S(40) as any as S.Schema<UpdateConfigurationOnCoordinatorResponse>,
+  input: UpdateConfigurationOnCoordinatorRequest,
+  output: UpdateConfigurationOnCoordinatorResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1688,8 +2187,8 @@ export const UpdateConfigurationOnNode: API.OperationMethod<
   UpdateConfigurationOnNodeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(96) as any as S.Schema<UpdateConfigurationOnNodeRequest>,
-  output: __S(40) as any as S.Schema<UpdateConfigurationOnNodeResponse>,
+  input: UpdateConfigurationOnNodeRequest,
+  output: UpdateConfigurationOnNodeResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1703,7 +2202,7 @@ function __c0(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           name: S.String,
-          type: S.String,
+          type: CheckClusterNameAvailabilityRequestType,
         }).pipe(
           T.Http({
             method: "POST",
@@ -1762,7 +2261,7 @@ function __c0(j: number): any {
           administratorLoginPassword: S.optional(S.String.pipe(T.SensitiveValue({}))),
           postgresqlVersion: S.optional(S.String),
           citusVersion: S.optional(S.String),
-          maintenanceWindow: S.optional(__S(5)),
+          maintenanceWindow: S.optional(MaintenanceWindow),
           preferredPrimaryZone: S.optional(S.String),
           enableShardsOnCoordinator: S.optional(S.Boolean),
           enableHa: S.optional(S.Boolean),
@@ -1786,9 +2285,9 @@ function __c0(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           clusterName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(4)),
+          tags: S.optional(CreateClusterRequestTagsMap),
           location: S.String,
-          properties: S.optional(__S(6)),
+          properties: S.optional(ClusterPropertiesInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -1806,10 +2305,10 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
-          createdByType: S.optional(S.String),
+          createdByType: S.optional(SystemDataCreatedByType),
           createdAt: S.optional(S.String),
           lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(S.String),
+          lastModifiedByType: S.optional(SystemDataLastModifiedByType),
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "SystemData" });
@@ -1821,7 +2320,7 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "ServerNameItem" });
     case 2:
-      return S.Array(__S(9));
+      return S.Array(ServerNameItem);
     case 3:
       return S.Array(S.String);
     case 4:
@@ -1833,7 +2332,7 @@ function __c1(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(S.String),
+          status: S.optional(PrivateEndpointServiceConnectionStatus),
           description: S.optional(S.String),
           actionsRequired: S.optional(S.String),
         }),
@@ -1843,9 +2342,11 @@ function __c1(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          privateEndpoint: S.optional(__S(12)),
-          groupIds: S.optional(__S(11)),
-          privateLinkServiceConnectionState: S.optional(__S(13)),
+          privateEndpoint: S.optional(PrivateEndpointProperty),
+          groupIds: S.optional(PrivateEndpointConnectionSimplePropertiesGroupIdsList),
+          privateLinkServiceConnectionState: S.optional(
+            PrivateEndpointConnectionSimplePropertiesPrivateLinkServiceConnectionState,
+          ),
         }),
       ).annotate({
         identifier: "PrivateEndpointConnectionSimpleProperties",
@@ -1856,8 +2357,8 @@ function __c1(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(8)),
-          properties: S.optional(__S(14)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(PrivateEndpointConnectionSimpleProperties),
         }),
       ).annotate({
         identifier: "SimplePrivateEndpointConnection",
@@ -1867,7 +2368,7 @@ function __c1(j: number): any {
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(15));
+      return S.Array(SimplePrivateEndpointConnection);
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1877,7 +2378,7 @@ function __c2(j: number): any {
           state: S.optional(S.String),
           postgresqlVersion: S.optional(S.String),
           citusVersion: S.optional(S.String),
-          maintenanceWindow: S.optional(__S(5)),
+          maintenanceWindow: S.optional(MaintenanceWindow),
           preferredPrimaryZone: S.optional(S.String),
           enableShardsOnCoordinator: S.optional(S.Boolean),
           enableHa: S.optional(S.Boolean),
@@ -1890,13 +2391,13 @@ function __c2(j: number): any {
           nodeStorageQuotaInMb: S.optional(S.Number),
           nodeVCores: S.optional(S.Number),
           nodeEnablePublicIpAccess: S.optional(S.Boolean),
-          serverNames: S.optional(__S(10)),
+          serverNames: S.optional(ClusterPropertiesServerNamesList),
           sourceResourceId: S.optional(S.String),
           sourceLocation: S.optional(S.String),
           pointInTimeUTC: S.optional(S.String),
-          readReplicas: S.optional(__S(11)),
+          readReplicas: S.optional(ClusterPropertiesReadReplicasList),
           earliestRestoreTime: S.optional(S.String),
-          privateEndpointConnections: S.optional(__S(16)),
+          privateEndpointConnections: S.optional(ClusterPropertiesPrivateEndpointConnectionsList),
         }),
       ).annotate({ identifier: "ClusterProperties" });
     case 2:
@@ -1905,10 +2406,10 @@ function __c2(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(8)),
-          tags: S.optional(__S(4)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(CreateClusterResponseTagsMap),
           location: S.String,
-          properties: S.optional(__S(17)),
+          properties: S.optional(ClusterProperties),
         }),
       ).annotate({ identifier: "CreateClusterResponse" });
     case 3:
@@ -1924,7 +2425,7 @@ function __c2(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           clusterName: S.String.pipe(T.Label()),
           roleName: S.String.pipe(T.Label()),
-          properties: __S(19),
+          properties: RolePropertiesInput,
         }).pipe(
           T.Http({
             method: "PUT",
@@ -1938,7 +2439,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           password: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          provisioningState: S.optional(S.String),
+          provisioningState: S.optional(ProvisioningState),
         }),
       ).annotate({ identifier: "RoleProperties" });
     case 6:
@@ -1947,8 +2448,8 @@ function __c2(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(8)),
-          properties: __S(21),
+          systemData: S.optional(SystemData),
+          properties: RoleProperties,
         }),
       ).annotate({ identifier: "CreateRoleResponse" });
     case 7:
@@ -2042,7 +2543,7 @@ function __c3(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           clusterName: S.String.pipe(T.Label()),
           firewallRuleName: S.String.pipe(T.Label()),
-          properties: __S(28),
+          properties: FirewallRulePropertiesInput,
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2059,7 +2560,7 @@ function __c3(j: number): any {
         S.Struct({
           startIpAddress: S.String,
           endIpAddress: S.String,
-          provisioningState: S.optional(S.String),
+          provisioningState: S.optional(ProvisioningState),
         }),
       ).annotate({ identifier: "FirewallRuleProperties" });
     case 7:
@@ -2068,8 +2569,8 @@ function __c3(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(8)),
-          properties: __S(30),
+          systemData: S.optional(SystemData),
+          properties: FirewallRuleProperties,
         }),
       ).annotate({
         identifier: "FirewallRulesCreateOrUpdateResponse",
@@ -2112,7 +2613,7 @@ function __c4(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          role: S.String,
+          role: ServerRole,
           value: S.String,
           defaultValue: S.optional(S.String),
           source: S.optional(S.String),
@@ -2121,16 +2622,16 @@ function __c4(j: number): any {
         identifier: "ServerRoleGroupConfiguration",
       });
     case 3:
-      return S.Array(__S(34));
+      return S.Array(ServerRoleGroupConfiguration);
     case 4:
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
-          dataType: S.optional(S.String),
+          dataType: S.optional(ConfigurationPropertiesDataType),
           allowedValues: S.optional(S.String),
           requiresRestart: S.optional(S.Boolean),
-          serverRoleGroupConfigurations: __S(35),
-          provisioningState: S.optional(S.String),
+          serverRoleGroupConfigurations: ConfigurationPropertiesServerRoleGroupConfigurationsList,
+          provisioningState: S.optional(ProvisioningState),
         }),
       ).annotate({ identifier: "ConfigurationProperties" });
     case 5:
@@ -2139,8 +2640,8 @@ function __c4(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(8)),
-          properties: S.optional(__S(36)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(ConfigurationProperties),
         }),
       ).annotate({ identifier: "GetConfigurationResponse" });
     case 6:
@@ -2168,10 +2669,10 @@ function __c4(j: number): any {
           source: S.optional(S.String),
           description: S.optional(S.String),
           defaultValue: S.optional(S.String),
-          dataType: S.optional(S.String),
+          dataType: S.optional(ServerConfigurationPropertiesDataType),
           allowedValues: S.optional(S.String),
           requiresRestart: S.optional(S.Boolean),
-          provisioningState: S.optional(S.String),
+          provisioningState: S.optional(ProvisioningState),
         }),
       ).annotate({
         identifier: "ServerConfigurationProperties",
@@ -2186,8 +2687,8 @@ function __c5(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(8)),
-          properties: S.optional(__S(39)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(ServerConfigurationProperties),
         }),
       ).annotate({
         identifier: "GetConfigurationCoordinatorResponse",
@@ -2232,8 +2733,8 @@ function __c5(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(8)),
-          properties: __S(30),
+          systemData: S.optional(SystemData),
+          properties: FirewallRuleProperties,
         }),
       ).annotate({ identifier: "GetFirewallRuleResponse" });
     case 4:
@@ -2257,7 +2758,7 @@ function __c5(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(S.String),
+          status: S.optional(PrivateEndpointServiceConnectionStatus),
           description: S.optional(S.String),
           actionsRequired: S.optional(S.String),
         }),
@@ -2267,10 +2768,10 @@ function __c5(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          groupIds: S.optional(__S(11)),
-          privateEndpoint: S.optional(__S(12)),
-          privateLinkServiceConnectionState: __S(45),
-          provisioningState: S.optional(S.String),
+          groupIds: S.optional(PrivateEndpointConnectionPropertiesGroupIdsList),
+          privateEndpoint: S.optional(PrivateEndpoint),
+          privateLinkServiceConnectionState: PrivateLinkServiceConnectionState,
+          provisioningState: S.optional(PrivateEndpointConnectionProvisioningState),
         }),
       ).annotate({
         identifier: "PrivateEndpointConnectionProperties",
@@ -2281,8 +2782,8 @@ function __c5(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(8)),
-          properties: S.optional(__S(46)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(PrivateEndpointConnectionProperties),
         }),
       ).annotate({
         identifier: "GetPrivateEndpointConnectionResponse",
@@ -2313,8 +2814,8 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           groupId: S.optional(S.String),
-          requiredMembers: S.optional(__S(11)),
-          requiredZoneNames: S.optional(__S(11)),
+          requiredMembers: S.optional(PrivateLinkResourcePropertiesRequiredMembersList),
+          requiredZoneNames: S.optional(PrivateLinkResourcePropertiesRequiredZoneNamesList),
         }),
       ).annotate({
         identifier: "PrivateLinkResourceProperties",
@@ -2325,8 +2826,8 @@ function __c6(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(8)),
-          properties: S.optional(__S(49)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(PrivateLinkResourceProperties),
         }),
       ).annotate({
         identifier: "GetPrivateLinkResourceResponse",
@@ -2374,7 +2875,7 @@ function __c6(j: number): any {
           isReadOnly: S.optional(S.Boolean),
           administratorLogin: S.optional(S.String),
           fullyQualifiedDomainName: S.optional(S.String),
-          role: S.optional(S.String),
+          role: S.optional(ServerRole),
           state: S.optional(S.String),
           haState: S.optional(S.String),
           availabilityZone: S.optional(S.String),
@@ -2388,8 +2889,8 @@ function __c6(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(8)),
-          properties: S.optional(__S(53)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(ClusterServerProperties),
         }),
       ).annotate({ identifier: "GetServerResponse" });
     case 7:
@@ -2413,11 +2914,11 @@ function __c6(j: number): any {
 function __c7(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(18));
+      return S.Array(Cluster);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(56)),
+          value: S.optional(ClusterListResultValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ClusterListResult" });
@@ -2452,11 +2953,11 @@ function __c7(j: number): any {
         identifier: "ListConfigurationByClusterRequest",
       });
     case 4:
-      return S.Array(__S(37));
+      return S.Array(Configuration);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(60)),
+          value: S.optional(ClusterConfigurationListResultValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -2486,8 +2987,8 @@ function __c7(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(8)),
-          properties: S.optional(__S(39)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(ServerConfigurationProperties),
         }),
       ).annotate({ identifier: "ServerConfiguration" });
   }
@@ -2495,11 +2996,11 @@ function __c7(j: number): any {
 function __c8(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(63));
+      return S.Array(ServerConfiguration);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(64)),
+          value: S.optional(ServerConfigurationListResultValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -2523,11 +3024,11 @@ function __c8(j: number): any {
         identifier: "ListFirewallRuleByClusterRequest",
       });
     case 3:
-      return S.Array(__S(43));
+      return S.Array(FirewallRule);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(67)),
+          value: S.optional(FirewallRuleListResultValueList),
         }),
       ).annotate({ identifier: "FirewallRuleListResult" });
     case 5:
@@ -2560,18 +3061,18 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          display: S.optional(__S(70)),
+          display: S.optional(OperationDisplay),
           isDataAction: S.optional(S.Boolean),
-          origin: S.optional(S.String),
-          properties: S.optional(__S(71)),
+          origin: S.optional(OperationOrigin),
+          properties: S.optional(OperationPropertiesMap),
         }),
       ).annotate({ identifier: "Operation" });
     case 1:
-      return S.Array(__S(72));
+      return S.Array(Operation);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(73)),
+          value: S.optional(OperationListResultValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationListResult" });
@@ -2593,11 +3094,11 @@ function __c9(j: number): any {
         identifier: "ListPrivateEndpointConnectionByClusterRequest",
       });
     case 4:
-      return S.Array(__S(47));
+      return S.Array(PrivateEndpointConnectionListResultValueItem);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(76)),
+          value: S.optional(PrivateEndpointConnectionListResultValueList),
         }),
       ).annotate({
         identifier: "PrivateEndpointConnectionListResult",
@@ -2620,7 +3121,7 @@ function __c9(j: number): any {
         identifier: "ListPrivateLinkResourceByClusterRequest",
       });
     case 7:
-      return S.Array(__S(50));
+      return S.Array(PrivateLinkResourceListResultValueItem);
   }
 }
 function __c10(j: number): any {
@@ -2628,7 +3129,7 @@ function __c10(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(79)),
+          value: S.optional(PrivateLinkResourceListResultValueList),
         }),
       ).annotate({
         identifier: "PrivateLinkResourceListResult",
@@ -2649,11 +3150,11 @@ function __c10(j: number): any {
         ),
       ).annotate({ identifier: "ListRoleByClusterRequest" });
     case 2:
-      return S.Array(__S(22));
+      return S.Array(Role);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(82)),
+          value: S.optional(RoleListResultValueList),
         }),
       ).annotate({ identifier: "RoleListResult" });
     case 4:
@@ -2674,18 +3175,18 @@ function __c10(j: number): any {
         identifier: "ListServerByClusterRequest",
       });
     case 5:
-      return S.Array(__S(54));
+      return S.Array(ClusterServer);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(85)),
+          value: S.optional(ClusterServerListResultValueList),
         }),
       ).annotate({ identifier: "ClusterServerListResult" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          privateEndpoint: S.optional(__S(24)),
-          privateLinkServiceConnectionState: __S(45),
+          privateEndpoint: S.optional(PrivateEndpointInput),
+          privateLinkServiceConnectionState: PrivateLinkServiceConnectionState,
         }),
       ).annotate({
         identifier: "PrivateEndpointConnectionPropertiesInput",
@@ -2701,7 +3202,7 @@ function __c11(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           clusterName: S.String.pipe(T.Label()),
           privateEndpointConnectionName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(87)),
+          properties: S.optional(PrivateEndpointConnectionPropertiesInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2775,7 +3276,7 @@ function __c11(j: number): any {
           nodeCount: S.optional(S.Number),
           nodeStorageQuotaInMb: S.optional(S.Number),
           nodeVCores: S.optional(S.Number),
-          maintenanceWindow: S.optional(__S(5)),
+          maintenanceWindow: S.optional(MaintenanceWindow),
         }),
       ).annotate({
         identifier: "ClusterPropertiesForUpdateInput",
@@ -2786,8 +3287,8 @@ function __c11(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           clusterName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(92)),
-          tags: S.optional(__S(4)),
+          properties: S.optional(ClusterPropertiesForUpdateInput),
+          tags: S.optional(UpdateClusterRequestTagsMap),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2812,7 +3313,7 @@ function __c11(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           clusterName: S.String.pipe(T.Label()),
           configurationName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(94)),
+          properties: S.optional(ServerConfigurationPropertiesInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2835,7 +3336,7 @@ function __c12(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           clusterName: S.String.pipe(T.Label()),
           configurationName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(94)),
+          properties: S.optional(ServerConfigurationPropertiesInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2847,40 +3348,5 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "UpdateConfigurationOnNodeRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
-    case 9:
-      return __c9(i & 7);
-    case 10:
-      return __c10(i & 7);
-    case 11:
-      return __c11(i & 7);
-    case 12:
-      return __c12(i & 7);
   }
 }

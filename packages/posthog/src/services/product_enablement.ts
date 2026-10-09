@@ -5,27 +5,47 @@ import * as S from "@distilled.cloud/core/schema";
 import { PosthogProtocol, type PosthogOpError, type PosthogOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { PosthogOpError, PosthogOpContext };
 
 /** * `conversations` - conversations * `error_tracking` - error_tracking * `session_replay` - session_replay */
 export type ProductsEnum = "conversations" | "error_tracking" | "session_replay";
+const ProductsEnum = S.String;
+
 /** Products to turn on for this project, each enabled with server-owned conservative defaults. */
 export type CreateProductEnablementRequestProductsList = Array<ProductsEnum | (string & {})>;
+const CreateProductEnablementRequestProductsList = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<CreateProductEnablementRequestProductsList>;
+
 export interface CreateProductEnablementRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** Products to turn on for this project, each enabled with server-owned conservative defaults. */
   products: CreateProductEnablementRequestProductsList;
 }
+const CreateProductEnablementRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<CreateProductEnablementRequest>;
+
 /** Per requested product: "enabled" (just turned on) or "already_enabled". */
 export type ProductEnablementResultResultsMap = { [key: string]: string | undefined };
+const ProductEnablementResultResultsMap = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<ProductEnablementResultResultsMap>;
+
 export interface ProductEnablementResult {
   /** Per requested product: "enabled" (just turned on) or "already_enabled". */
   results: ProductEnablementResultResultsMap;
 }
+const ProductEnablementResult = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<ProductEnablementResult>;
+
 export type CreateProductEnablementError = PosthogOpError;
 export const createProductEnablement: API.OperationMethod<
   CreateProductEnablementRequest,
@@ -33,8 +53,8 @@ export const createProductEnablement: API.OperationMethod<
   CreateProductEnablementError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1) as any as S.Schema<CreateProductEnablementRequest>,
-  output: __S(3) as any as S.Schema<ProductEnablementResult>,
+  input: CreateProductEnablementRequest,
+  output: ProductEnablementResult,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -44,12 +64,12 @@ export const createProductEnablement: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
+      return S.Array(ProductsEnum);
     case 1:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
-          products: __S(0),
+          products: CreateProductEnablementRequestProductsList,
         }).pipe(
           T.Http({
             method: "POST",
@@ -65,19 +85,8 @@ function __c0(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          results: __S(2),
+          results: ProductEnablementResultResultsMap,
         }),
       ).annotate({ identifier: "ProductEnablementResult" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 2) {
-    case 0:
-      return __c0(i & 3);
   }
 }

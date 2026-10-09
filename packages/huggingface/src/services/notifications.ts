@@ -9,12 +9,12 @@ import {
 } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { HuggingFaceOpError, HuggingFaceOpContext };
 
 export type ChangeReadStatusRequestReadStatus = "all" | "unread";
+const ChangeReadStatusRequestReadStatus = S.String;
+
 export type ChangeReadStatusRequestRepoType =
   | "dataset"
   | "model"
@@ -22,8 +22,17 @@ export type ChangeReadStatusRequestRepoType =
   | "bucket"
   | "kernel"
   | "container";
+const ChangeReadStatusRequestRepoType = S.String;
+
 export type ChangeReadStatusRequestMention = "all" | "participating" | "mentions";
+const ChangeReadStatusRequestMention = S.String;
+
 export type ChangeReadStatusRequestDiscussionIdsList = Array<string>;
+const ChangeReadStatusRequestDiscussionIdsList = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<ChangeReadStatusRequestDiscussionIdsList>;
+
 export interface ChangeReadStatusRequest {
   p?: number;
   readStatus?: ChangeReadStatusRequestReadStatus | (string & {});
@@ -38,8 +47,20 @@ export interface ChangeReadStatusRequest {
   discussionIds?: ChangeReadStatusRequestDiscussionIdsList;
   read?: boolean;
 }
+const ChangeReadStatusRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<ChangeReadStatusRequest>;
+
 export interface ChangeReadStatusResponse {}
+const ChangeReadStatusResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<ChangeReadStatusResponse>;
+
 export type DeleteNotificationsRequestReadStatus = "all" | "unread";
+const DeleteNotificationsRequestReadStatus = S.String;
+
 export type DeleteNotificationsRequestRepoType =
   | "dataset"
   | "model"
@@ -47,8 +68,15 @@ export type DeleteNotificationsRequestRepoType =
   | "bucket"
   | "kernel"
   | "container";
+const DeleteNotificationsRequestRepoType = S.String;
+
 export type DeleteNotificationsRequestMention = "all" | "participating" | "mentions";
+const DeleteNotificationsRequestMention = S.String;
+
 export type DeleteNotificationsRequestDiscussionIdsList = Array<string>;
+const DeleteNotificationsRequestDiscussionIdsList =
+  ChangeReadStatusRequestDiscussionIdsList as any as S.Schema<DeleteNotificationsRequestDiscussionIdsList>;
+
 export interface DeleteNotificationsRequest {
   p?: number;
   readStatus?: DeleteNotificationsRequestReadStatus | (string & {});
@@ -62,8 +90,18 @@ export interface DeleteNotificationsRequest {
   applyToAll?: string;
   discussionIds?: DeleteNotificationsRequestDiscussionIdsList;
 }
+const DeleteNotificationsRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<DeleteNotificationsRequest>;
+
 export interface DeleteNotificationsResponse {}
+const DeleteNotificationsResponse =
+  ChangeReadStatusResponse as any as S.Schema<DeleteNotificationsResponse>;
+
 export type ListNotificationsRequestReadStatus = "all" | "unread";
+const ListNotificationsRequestReadStatus = S.String;
+
 export type ListNotificationsRequestRepoType =
   | "dataset"
   | "model"
@@ -71,7 +109,11 @@ export type ListNotificationsRequestRepoType =
   | "bucket"
   | "kernel"
   | "container";
+const ListNotificationsRequestRepoType = S.String;
+
 export type ListNotificationsRequestMention = "all" | "participating" | "mentions";
+const ListNotificationsRequestMention = S.String;
+
 export interface ListNotificationsRequest {
   p?: number;
   readStatus?: ListNotificationsRequestReadStatus | (string & {});
@@ -83,6 +125,11 @@ export interface ListNotificationsRequest {
   mention?: ListNotificationsRequestMention | (string & {});
   lastUpdate?: string;
 }
+const ListNotificationsRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<ListNotificationsRequest>;
+
 export interface ListNotificationsResponseNotificationsItemCase0Paper {
   /** A hex string of 24 characters representing an ObjectId. */
   _id: string;
@@ -183,18 +230,36 @@ export type ListNotificationsResponseNotificationsItem =
   | ListNotificationsResponseNotificationsItemCase1
   | ListNotificationsResponseNotificationsItemCase2
   | ListNotificationsResponseNotificationsItemCase3;
+const ListNotificationsResponseNotificationsItem =
+  S.Unknown as any as S.Schema<ListNotificationsResponseNotificationsItem>;
+
 export type ListNotificationsResponseNotificationsList =
   Array<ListNotificationsResponseNotificationsItem>;
+const ListNotificationsResponseNotificationsList = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<ListNotificationsResponseNotificationsList>;
+
 export interface ListNotificationsResponseCount {
   view: number;
   unread: number;
   all: number;
 }
+const ListNotificationsResponseCount = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<ListNotificationsResponseCount>;
+
 export interface ListNotificationsResponse {
   notifications: ListNotificationsResponseNotificationsList;
   count: ListNotificationsResponseCount;
   start: number;
 }
+const ListNotificationsResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<ListNotificationsResponse>;
+
 export interface UpdateNotificationSettingsRequestNotifications {
   announcements?: boolean;
   arxiv_paper_activity?: boolean;
@@ -224,29 +289,67 @@ export interface UpdateNotificationSettingsRequestNotifications {
   locked_out?: boolean;
   repo_release?: boolean;
 }
+const UpdateNotificationSettingsRequestNotifications = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<UpdateNotificationSettingsRequestNotifications>;
+
 export interface UpdateNotificationSettingsRequest {
   notifications: UpdateNotificationSettingsRequestNotifications;
   /** To be provided when enabling launch_prepaid_credits */
   prepaidAmount?: string;
 }
+const UpdateNotificationSettingsRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<UpdateNotificationSettingsRequest>;
+
 export interface UpdateNotificationSettingsResponse {}
+const UpdateNotificationSettingsResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<UpdateNotificationSettingsResponse>;
+
 export type UpdateWatchSettingsRequestDeleteItemType = "org" | "user" | "repo";
+const UpdateWatchSettingsRequestDeleteItemType = S.String;
+
 export interface UpdateWatchSettingsRequestDeleteItem {
   id: string;
   type: UpdateWatchSettingsRequestDeleteItemType | (string & {});
 }
+const UpdateWatchSettingsRequestDeleteItem = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<UpdateWatchSettingsRequestDeleteItem>;
+
 export type UpdateWatchSettingsRequestDeleteList = Array<UpdateWatchSettingsRequestDeleteItem>;
+const UpdateWatchSettingsRequestDeleteList = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<UpdateWatchSettingsRequestDeleteList>;
+
 export type UpdateWatchSettingsRequestAddItemType = "org" | "user" | "repo";
 export interface UpdateWatchSettingsRequestAddItem {
   id: string;
   type: UpdateWatchSettingsRequestAddItemType | (string & {});
 }
 export type UpdateWatchSettingsRequestAddList = Array<UpdateWatchSettingsRequestAddItem>;
+const UpdateWatchSettingsRequestAddList =
+  UpdateWatchSettingsRequestDeleteList as any as S.Schema<UpdateWatchSettingsRequestAddList>;
+
 export interface UpdateWatchSettingsRequest {
   delete?: UpdateWatchSettingsRequestDeleteList;
   add?: UpdateWatchSettingsRequestAddList;
 }
+const UpdateWatchSettingsRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<UpdateWatchSettingsRequest>;
+
 export interface UpdateWatchSettingsResponse {}
+const UpdateWatchSettingsResponse =
+  ChangeReadStatusResponse as any as S.Schema<UpdateWatchSettingsResponse>;
+
 export type ChangeReadStatusError = HuggingFaceOpError;
 /** Change read status Mark discussions as read or unread. If `applyToAll` is true, all notifications for the user matching the search parameters will be marked as read or unread. */
 export const changeReadStatus: API.OperationMethod<
@@ -255,8 +358,8 @@ export const changeReadStatus: API.OperationMethod<
   ChangeReadStatusError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1) as any as S.Schema<ChangeReadStatusRequest>,
-  output: __S(2) as any as S.Schema<ChangeReadStatusResponse>,
+  input: ChangeReadStatusRequest,
+  output: ChangeReadStatusResponse,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -270,8 +373,8 @@ export const deleteNotifications: API.OperationMethod<
   DeleteNotificationsError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3) as any as S.Schema<DeleteNotificationsRequest>,
-  output: __S(2) as any as S.Schema<DeleteNotificationsResponse>,
+  input: DeleteNotificationsRequest,
+  output: DeleteNotificationsResponse,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -285,8 +388,8 @@ export const listNotifications: API.OperationMethod<
   ListNotificationsError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4) as any as S.Schema<ListNotificationsRequest>,
-  output: __S(7) as any as S.Schema<ListNotificationsResponse>,
+  input: ListNotificationsRequest,
+  output: ListNotificationsResponse,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -300,8 +403,8 @@ export const updateNotificationSettings: API.OperationMethod<
   UpdateNotificationSettingsError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9) as any as S.Schema<UpdateNotificationSettingsRequest>,
-  output: __S(10) as any as S.Schema<UpdateNotificationSettingsResponse>,
+  input: UpdateNotificationSettingsRequest,
+  output: UpdateNotificationSettingsResponse,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -315,8 +418,8 @@ export const updateWatchSettings: API.OperationMethod<
   UpdateWatchSettingsError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13) as any as S.Schema<UpdateWatchSettingsRequest>,
-  output: __S(2) as any as S.Schema<UpdateWatchSettingsResponse>,
+  input: UpdateWatchSettingsRequest,
+  output: UpdateWatchSettingsResponse,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -331,16 +434,16 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           p: S.optional(S.Number.pipe(T.Query())),
-          readStatus: S.optional(S.String.pipe(T.Query())),
-          repoType: S.optional(S.String.pipe(T.Query())),
+          readStatus: S.optional(ChangeReadStatusRequestReadStatus.pipe(T.Query())),
+          repoType: S.optional(ChangeReadStatusRequestRepoType.pipe(T.Query())),
           repoName: S.optional(S.String.pipe(T.Query())),
           postAuthor: S.optional(S.String.pipe(T.Query())),
           paperId: S.optional(S.String.pipe(T.Query())),
           articleId: S.optional(S.String.pipe(T.Query())),
-          mention: S.optional(S.String.pipe(T.Query())),
+          mention: S.optional(ChangeReadStatusRequestMention.pipe(T.Query())),
           lastUpdate: S.optional(S.String.pipe(T.Query())),
           applyToAll: S.optional(S.String.pipe(T.Query())),
-          discussionIds: S.optional(__S(0)),
+          discussionIds: S.optional(ChangeReadStatusRequestDiscussionIdsList),
           read: S.optional(S.Boolean),
         }).pipe(T.Http({ method: "POST", uri: "/api/notifications/mark-as-read", code: 200 })),
       ).annotate({ identifier: "ChangeReadStatusRequest" });
@@ -352,16 +455,16 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           p: S.optional(S.Number.pipe(T.Query())),
-          readStatus: S.optional(S.String.pipe(T.Query())),
-          repoType: S.optional(S.String.pipe(T.Query())),
+          readStatus: S.optional(DeleteNotificationsRequestReadStatus.pipe(T.Query())),
+          repoType: S.optional(DeleteNotificationsRequestRepoType.pipe(T.Query())),
           repoName: S.optional(S.String.pipe(T.Query())),
           postAuthor: S.optional(S.String.pipe(T.Query())),
           paperId: S.optional(S.String.pipe(T.Query())),
           articleId: S.optional(S.String.pipe(T.Query())),
-          mention: S.optional(S.String.pipe(T.Query())),
+          mention: S.optional(DeleteNotificationsRequestMention.pipe(T.Query())),
           lastUpdate: S.optional(S.String.pipe(T.Query())),
           applyToAll: S.optional(S.String.pipe(T.Query())),
-          discussionIds: S.optional(__S(0)),
+          discussionIds: S.optional(DeleteNotificationsRequestDiscussionIdsList),
         }).pipe(T.Http({ method: "DELETE", uri: "/api/notifications", code: 200 })),
       ).annotate({
         identifier: "DeleteNotificationsRequest",
@@ -370,18 +473,18 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           p: S.optional(S.Number.pipe(T.Query())),
-          readStatus: S.optional(S.String.pipe(T.Query())),
-          repoType: S.optional(S.String.pipe(T.Query())),
+          readStatus: S.optional(ListNotificationsRequestReadStatus.pipe(T.Query())),
+          repoType: S.optional(ListNotificationsRequestRepoType.pipe(T.Query())),
           repoName: S.optional(S.String.pipe(T.Query())),
           postAuthor: S.optional(S.String.pipe(T.Query())),
           paperId: S.optional(S.String.pipe(T.Query())),
           articleId: S.optional(S.String.pipe(T.Query())),
-          mention: S.optional(S.String.pipe(T.Query())),
+          mention: S.optional(ListNotificationsRequestMention.pipe(T.Query())),
           lastUpdate: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/api/notifications", code: 200 })),
       ).annotate({ identifier: "ListNotificationsRequest" });
     case 5:
-      return S.Array(S.Unknown);
+      return S.Array(ListNotificationsResponseNotificationsItem);
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -395,8 +498,8 @@ function __c0(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          notifications: __S(5),
-          count: __S(6),
+          notifications: ListNotificationsResponseNotificationsList,
+          count: ListNotificationsResponseCount,
           start: S.Number,
         }),
       ).annotate({
@@ -443,7 +546,7 @@ function __c1(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          notifications: __S(8),
+          notifications: UpdateNotificationSettingsRequestNotifications,
           prepaidAmount: S.optional(S.String),
         }).pipe(T.Http({ method: "PATCH", uri: "/api/settings/notifications", code: 200 })),
       ).annotate({
@@ -457,34 +560,21 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          type: S.String,
+          type: UpdateWatchSettingsRequestDeleteItemType,
         }),
       ).annotate({
         identifier: "UpdateWatchSettingsRequestDeleteItem",
       });
     case 4:
-      return S.Array(__S(11));
+      return S.Array(UpdateWatchSettingsRequestDeleteItem);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          delete: S.optional(__S(12)),
-          add: S.optional(__S(12)),
+          delete: S.optional(UpdateWatchSettingsRequestDeleteList),
+          add: S.optional(UpdateWatchSettingsRequestAddList),
         }).pipe(T.Http({ method: "PATCH", uri: "/api/settings/watch", code: 200 })),
       ).annotate({
         identifier: "UpdateWatchSettingsRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
   }
 }

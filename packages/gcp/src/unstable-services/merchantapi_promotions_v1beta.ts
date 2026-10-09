@@ -7,8 +7,6 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -68,6 +66,11 @@ export interface GetAccountsPromotionsRequest {
   /** Required. The name of the promotion to retrieve. Format: `accounts/{account}/promotions/{promotions}` */
   name: string;
 }
+const GetAccountsPromotionsRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<GetAccountsPromotionsRequest>;
+
 /** A message that represents custom attributes. Exactly one of `value` or `group_values` must not be empty. */
 export interface CustomAttribute {
   /** Subattributes within this attribute group. If `group_values` is not empty, `value` must be empty. */
@@ -77,14 +80,25 @@ export interface CustomAttribute {
   /** The name of the attribute. */
   name?: string;
 }
+const CustomAttribute = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<CustomAttribute>;
+
 export type CustomAttributeList = Array<CustomAttribute>;
+const CustomAttributeList = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<CustomAttributeList>;
+
 export type PromotionRedemptionChannelItemEnum =
   | "REDEMPTION_CHANNEL_UNSPECIFIED"
   | "IN_STORE"
   | "ONLINE";
+const PromotionRedemptionChannelItemEnum = S.String;
+
 export type PromotionRedemptionChannelItemEnumList = Array<
   PromotionRedemptionChannelItemEnum | (string & {})
 >;
+const PromotionRedemptionChannelItemEnumList = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<PromotionRedemptionChannelItemEnumList>;
+
 /** The price represented as a number and currency. */
 export interface Price {
   /** The price represented as a number in micros (1 million micros is an equivalent to one's currency standard unit, for example, 1 USD = 1000000 micros). */
@@ -92,12 +106,20 @@ export interface Price {
   /** The currency of the price using three-letter acronyms according to [ISO 4217](http://en.wikipedia.org/wiki/ISO_4217). */
   currencyCode?: string;
 }
+const Price = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<Price>;
+
 export type StringList = Array<string>;
+const StringList = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<StringList>;
+
 export type AttributesOfferTypeEnum = "OFFER_TYPE_UNSPECIFIED" | "NO_CODE" | "GENERIC_CODE";
+const AttributesOfferTypeEnum = S.String;
+
 export type AttributesStoreApplicabilityEnum =
   | "STORE_APPLICABILITY_UNSPECIFIED"
   | "ALL_STORES"
   | "SPECIFIC_STORES";
+const AttributesStoreApplicabilityEnum = S.String;
+
 export type AttributesRedemptionRestrictionEnum =
   | "REDEMPTION_RESTRICTION_UNSPECIFIED"
   | "SUBSCRIBE"
@@ -105,6 +127,8 @@ export type AttributesRedemptionRestrictionEnum =
   | "SIGNUP_FOR_EMAIL"
   | "SIGNUP_FOR_TEXT"
   | "CUSTOM";
+const AttributesRedemptionRestrictionEnum = S.String;
+
 export type AttributesPromotionDestinationsItemEnum =
   | "DESTINATION_ENUM_UNSPECIFIED"
   | "SHOPPING_ADS"
@@ -123,10 +147,15 @@ export type AttributesPromotionDestinationsItemEnum =
 export type AttributesPromotionDestinationsItemEnumList = Array<
   AttributesPromotionDestinationsItemEnum | (string & {})
 >;
+const AttributesPromotionDestinationsItemEnumList =
+  PromotionRedemptionChannelItemEnumList as any as S.Schema<AttributesPromotionDestinationsItemEnumList>;
+
 export type AttributesEventApplicabilityEnum =
   | "EVENT_APPLICABILITY_UNSPECIFIED"
   | "SITEWIDE"
   | "SPECIFIC_CATEGORIES";
+const AttributesEventApplicabilityEnum = S.String;
+
 /** Represents a time interval, encoded as a Timestamp start (inclusive) and a Timestamp end (exclusive). The start must be less than or equal to the end. When the start equals the end, the interval is empty (matches no time). When both start and end are unspecified, the interval matches any time. */
 export interface Interval {
   /** Optional. Exclusive end of the interval. If specified, a Timestamp matching this interval will have to be before the end. */
@@ -134,11 +163,17 @@ export interface Interval {
   /** Optional. Inclusive start of the interval. If specified, a Timestamp matching this interval will have to be the same or after the start. */
   startTime?: string;
 }
+const Interval = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<Interval>;
+
 export type AttributesProductApplicabilityEnum =
   | "PRODUCT_APPLICABILITY_UNSPECIFIED"
   | "ALL_PRODUCTS"
   | "SPECIFIC_PRODUCTS";
+const AttributesProductApplicabilityEnum = S.String;
+
 export type AttributesAudienceEnum = "AUDIENCE_UNSPECIFIED" | "NEW_CUSTOMERS" | "LOCATION";
+const AttributesAudienceEnum = S.String;
+
 export type AttributesCouponValueTypeEnum =
   | "COUPON_VALUE_TYPE_UNSPECIFIED"
   | "MONEY_OFF"
@@ -155,6 +190,8 @@ export type AttributesCouponValueTypeEnum =
   | "FREE_SHIPPING_TWO_DAY"
   | "MONEY_OFF_RANGE"
   | "PERCENT_OFF_RANGE";
+const AttributesCouponValueTypeEnum = S.String;
+
 /** Attributes. */
 export interface Attributes {
   /** Optional. [Free gift value](https://support.google.com/merchants/answer/13844477?ref_topic=13773355) for the promotion. */
@@ -239,6 +276,8 @@ export interface Attributes {
   /** Required. The [coupon value type] (https://support.google.com/merchants/answer/13861986?ref_topic=13773355) attribute to signal the type of promotion that you are running. Depending on type of the selected coupon value [some attributes are required](https://support.google.com/merchants/answer/6393006?ref_topic=7322920). */
   couponValueType?: AttributesCouponValueTypeEnum | (string & {});
 }
+const Attributes = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<Attributes>;
+
 export type DestinationStatusStatusEnum =
   | "STATE_UNSPECIFIED"
   | "IN_REVIEW"
@@ -247,6 +286,8 @@ export type DestinationStatusStatusEnum =
   | "STOPPED"
   | "EXPIRED"
   | "PENDING";
+const DestinationStatusStatusEnum = S.String;
+
 export type DestinationStatusReportingContextEnum =
   | "REPORTING_CONTEXT_ENUM_UNSPECIFIED"
   | "SHOPPING_ADS"
@@ -269,6 +310,8 @@ export type DestinationStatusReportingContextEnum =
   | "MERCHANT_REVIEWS"
   | "YOUTUBE_CHECKOUT"
   | "RENTAL_ADS";
+const DestinationStatusReportingContextEnum = S.String;
+
 /** The status for the specified destination. */
 export interface DestinationStatus {
   /** Output only. The status for the specified destination. */
@@ -276,12 +319,21 @@ export interface DestinationStatus {
   /** Output only. The name of the promotion destination. */
   reportingContext?: DestinationStatusReportingContextEnum | (string & {});
 }
+const DestinationStatus = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<DestinationStatus>;
+
 export type DestinationStatusList = Array<DestinationStatus>;
+const DestinationStatusList = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<DestinationStatusList>;
+
 export type ItemLevelIssueSeverityEnum =
   | "SEVERITY_UNSPECIFIED"
   | "NOT_IMPACTED"
   | "DEMOTED"
   | "DISAPPROVED";
+const ItemLevelIssueSeverityEnum = S.String;
+
 export type ItemLevelIssueReportingContextEnum =
   | "REPORTING_CONTEXT_ENUM_UNSPECIFIED"
   | "SHOPPING_ADS"
@@ -304,6 +356,8 @@ export type ItemLevelIssueReportingContextEnum =
   | "MERCHANT_REVIEWS"
   | "YOUTUBE_CHECKOUT"
   | "RENTAL_ADS";
+const ItemLevelIssueReportingContextEnum = S.String;
+
 /** The issue associated with the promotion. */
 export interface ItemLevelIssue {
   /** Output only. The attribute's name, if the issue is caused by a single attribute. */
@@ -325,7 +379,11 @@ export interface ItemLevelIssue {
   /** Output only. A short issue description in English. */
   description?: string;
 }
+const ItemLevelIssue = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<ItemLevelIssue>;
+
 export type ItemLevelIssueList = Array<ItemLevelIssue>;
+const ItemLevelIssueList = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<ItemLevelIssueList>;
+
 /** The status of the promotion. */
 export interface PromotionStatus {
   /** Output only. The intended destinations for the promotion. */
@@ -337,6 +395,8 @@ export interface PromotionStatus {
   /** Output only. Date on which the promotion status has been last updated in [ISO 8601](http://en.wikipedia.org/wiki/ISO_8601) format: Date, time, and offset, for example `2020-01-02T09:00:00+01:00` or `2020-01-02T09:00:00Z` */
   lastUpdateDate?: string;
 }
+const PromotionStatus = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<PromotionStatus>;
+
 /** Represents a promotion. See the following articles for more details. Required promotion input attributes to pass data validation checks are primarily defined below: * [Promotions data specification](https://support.google.com/merchants/answer/2906014) * [Local promotions data specification](https://support.google.com/merchants/answer/10146130) After inserting, updating a promotion input, it may take several minutes before the final promotion can be retrieved. */
 export interface Promotion {
   /** Optional. Represents the existing version (freshness) of the promotion, which can be used to preserve the right order when multiple updates are done at the same time. If set, the insertion is prevented when version number is lower than the current version number of the existing promotion. Re-insertion (for example, promotion refresh after 30 days) can be performed with the current `version_number`. If the operation is prevented, the aborted exception will be thrown. */
@@ -360,6 +420,8 @@ export interface Promotion {
   /** Output only. The [status of a promotion](https://support.google.com/merchants/answer/3398326?ref_topic=7322924&sjid=5155774230887277618-NC), data validation issues, that is, information about a promotion computed asynchronously. */
   promotionStatus?: PromotionStatus;
 }
+const Promotion = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<Promotion>;
+
 /** Request message for the `InsertPromotion` method. */
 export interface InsertPromotionRequest {
   /** Required. The promotion to insert. */
@@ -367,12 +429,22 @@ export interface InsertPromotionRequest {
   /** Required. The data source of the [promotion](https://support.google.com/merchants/answer/6396268?sjid=5155774230887277618-NC) Format: `accounts/{account}/dataSources/{datasource}`. */
   dataSource?: string;
 }
+const InsertPromotionRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<InsertPromotionRequest>;
+
 export interface InsertAccountsPromotionsRequest {
   /** Required. The account where the promotion will be inserted. Format: accounts/{account} */
   parent: string;
   /** Request body */
   body?: InsertPromotionRequest;
 }
+const InsertAccountsPromotionsRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<InsertAccountsPromotionsRequest>;
+
 export interface ListAccountsPromotionsRequest {
   /** Optional. The maximum number of promotions to return. The service may return fewer than this value. The maximum value is 250; values above 250 will be coerced to 250. If unspecified, the maximum number of promotions will be returned. */
   pageSize?: number;
@@ -381,7 +453,14 @@ export interface ListAccountsPromotionsRequest {
   /** Required. The account to list processed promotions for. Format: `accounts/{account}` */
   parent: string;
 }
+const ListAccountsPromotionsRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<ListAccountsPromotionsRequest>;
+
 export type PromotionList = Array<Promotion>;
+const PromotionList = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<PromotionList>;
+
 /** Response message for the `ListPromotions` method. */
 export interface ListPromotionsResponse {
   /** The processed promotions from the specified account. */
@@ -389,6 +468,11 @@ export interface ListPromotionsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
+const ListPromotionsResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<ListPromotionsResponse>;
+
 export type GetAccountsPromotionsError = NotFound | Forbidden | GcpOpError;
 /** Retrieves the promotion from your Merchant Center account. After inserting or updating a promotion input, it may take several minutes before the updated promotion can be retrieved. */
 export const getAccountsPromotions: API.OperationMethod<
@@ -397,8 +481,8 @@ export const getAccountsPromotions: API.OperationMethod<
   GetAccountsPromotionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<GetAccountsPromotionsRequest>,
-  output: __S(13) as any as S.Schema<Promotion>,
+  input: GetAccountsPromotionsRequest,
+  output: Promotion,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -417,8 +501,8 @@ export const insertAccountsPromotions: API.OperationMethod<
   InsertAccountsPromotionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15) as any as S.Schema<InsertAccountsPromotionsRequest>,
-  output: __S(13) as any as S.Schema<Promotion>,
+  input: InsertAccountsPromotionsRequest,
+  output: Promotion,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -433,8 +517,8 @@ export const listAccountsPromotions: API.PaginatedOperationMethod<
   GcpOpContext,
   ListPromotionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(16) as any as S.Schema<ListAccountsPromotionsRequest>,
-  output: __S(18) as any as S.Schema<ListPromotionsResponse>,
+  input: ListAccountsPromotionsRequest,
+  output: ListPromotionsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -461,15 +545,15 @@ function __c0(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          groupValues: S.optional(S.suspend(() => __S(2))),
+          groupValues: S.optional(S.suspend(() => CustomAttributeList)),
           value: S.optional(S.String),
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "CustomAttribute" });
     case 2:
-      return S.Array(__S(1));
+      return S.Array(CustomAttribute);
     case 3:
-      return S.Array(S.String);
+      return S.Array(PromotionRedemptionChannelItemEnum);
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -489,47 +573,47 @@ function __c0(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          freeGiftValue: S.optional(__S(4)),
-          productTypeExclusion: S.optional(__S(5)),
+          freeGiftValue: S.optional(Price),
+          productTypeExclusion: S.optional(StringList),
           minPercentOff: S.optional(S.String),
-          offerType: S.optional(S.String),
-          storeApplicability: S.optional(S.String),
-          minMoneyOffAmount: S.optional(__S(4)),
+          offerType: S.optional(AttributesOfferTypeEnum),
+          storeApplicability: S.optional(AttributesStoreApplicabilityEnum),
+          minMoneyOffAmount: S.optional(Price),
           freeGiftItemId: S.optional(S.String),
-          itemIdExclusion: S.optional(__S(5)),
-          redemptionRestriction: S.optional(S.String),
-          storeCodesExclusion: S.optional(__S(5)),
-          promotionDestinations: S.optional(__S(3)),
-          eventApplicability: S.optional(S.String),
-          storeCodesInclusion: S.optional(__S(5)),
-          itemIdInclusion: S.optional(__S(5)),
-          brandExclusion: S.optional(__S(5)),
+          itemIdExclusion: S.optional(StringList),
+          redemptionRestriction: S.optional(AttributesRedemptionRestrictionEnum),
+          storeCodesExclusion: S.optional(StringList),
+          promotionDestinations: S.optional(AttributesPromotionDestinationsItemEnumList),
+          eventApplicability: S.optional(AttributesEventApplicabilityEnum),
+          storeCodesInclusion: S.optional(StringList),
+          itemIdInclusion: S.optional(StringList),
+          brandExclusion: S.optional(StringList),
           maxPercentOff: S.optional(S.String),
           getThisQuantityDiscounted: S.optional(S.String),
-          itemGroupIdInclusion: S.optional(__S(5)),
-          promotionDisplayTimePeriod: S.optional(__S(6)),
-          googleProductCategories: S.optional(__S(5)),
+          itemGroupIdInclusion: S.optional(StringList),
+          promotionDisplayTimePeriod: S.optional(Interval),
+          googleProductCategories: S.optional(StringList),
           freeGiftDescription: S.optional(S.String),
-          brandInclusion: S.optional(__S(5)),
-          regionIdInclusion: S.optional(__S(5)),
+          brandInclusion: S.optional(StringList),
+          regionIdInclusion: S.optional(StringList),
           limitQuantity: S.optional(S.String),
           customRedemptionRestriction: S.optional(S.String),
-          maxDiscountAmount: S.optional(__S(4)),
-          limitValue: S.optional(__S(4)),
-          minimumPurchaseAmount: S.optional(__S(4)),
-          moneyOffAmount: S.optional(__S(4)),
+          maxDiscountAmount: S.optional(Price),
+          limitValue: S.optional(Price),
+          minimumPurchaseAmount: S.optional(Price),
+          moneyOffAmount: S.optional(Price),
           percentOff: S.optional(S.String),
           promotionUrl: S.optional(S.String),
-          productApplicability: S.optional(S.String),
-          promotionEffectiveTimePeriod: S.optional(__S(6)),
+          productApplicability: S.optional(AttributesProductApplicabilityEnum),
+          promotionEffectiveTimePeriod: S.optional(Interval),
           longTitle: S.optional(S.String),
-          productTypeInclusion: S.optional(__S(5)),
-          itemGroupIdExclusion: S.optional(__S(5)),
+          productTypeInclusion: S.optional(StringList),
+          itemGroupIdExclusion: S.optional(StringList),
           genericRedemptionCode: S.optional(S.String),
-          audience: S.optional(S.String),
-          maxMoneyOffAmount: S.optional(__S(4)),
+          audience: S.optional(AttributesAudienceEnum),
+          maxMoneyOffAmount: S.optional(Price),
           minimumPurchaseQuantity: S.optional(S.String),
-          couponValueType: S.optional(S.String),
+          couponValueType: S.optional(AttributesCouponValueTypeEnum),
         }),
       ).annotate({ identifier: "Attributes" });
   }
@@ -539,34 +623,34 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(S.String),
-          reportingContext: S.optional(S.String),
+          status: S.optional(DestinationStatusStatusEnum),
+          reportingContext: S.optional(DestinationStatusReportingContextEnum),
         }),
       ).annotate({ identifier: "DestinationStatus" });
     case 1:
-      return S.Array(__S(8));
+      return S.Array(DestinationStatus);
     case 2:
       return S.suspend(() =>
         S.Struct({
           attribute: S.optional(S.String),
-          applicableCountries: S.optional(__S(5)),
+          applicableCountries: S.optional(StringList),
           code: S.optional(S.String),
-          severity: S.optional(S.String),
+          severity: S.optional(ItemLevelIssueSeverityEnum),
           documentation: S.optional(S.String),
           resolution: S.optional(S.String),
-          reportingContext: S.optional(S.String),
+          reportingContext: S.optional(ItemLevelIssueReportingContextEnum),
           detail: S.optional(S.String),
           description: S.optional(S.String),
         }),
       ).annotate({ identifier: "ItemLevelIssue" });
     case 3:
-      return S.Array(__S(10));
+      return S.Array(ItemLevelIssue);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          destinationStatuses: S.optional(__S(9)),
+          destinationStatuses: S.optional(DestinationStatusList),
           creationDate: S.optional(S.String),
-          itemLevelIssues: S.optional(__S(11)),
+          itemLevelIssues: S.optional(ItemLevelIssueList),
           lastUpdateDate: S.optional(S.String),
         }),
       ).annotate({ identifier: "PromotionStatus" });
@@ -575,20 +659,20 @@ function __c1(j: number): any {
         S.Struct({
           versionNumber: S.optional(S.String),
           name: S.optional(S.String),
-          customAttributes: S.optional(__S(2)),
-          redemptionChannel: S.optional(__S(3)),
+          customAttributes: S.optional(CustomAttributeList),
+          redemptionChannel: S.optional(PromotionRedemptionChannelItemEnumList),
           dataSource: S.optional(S.String),
           promotionId: S.optional(S.String),
           targetCountry: S.optional(S.String),
-          attributes: S.optional(__S(7)),
+          attributes: S.optional(Attributes),
           contentLanguage: S.optional(S.String),
-          promotionStatus: S.optional(__S(12)),
+          promotionStatus: S.optional(PromotionStatus),
         }),
       ).annotate({ identifier: "Promotion" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          promotion: S.optional(__S(13)),
+          promotion: S.optional(Promotion),
           dataSource: S.optional(S.String),
         }),
       ).annotate({ identifier: "InsertPromotionRequest" });
@@ -596,7 +680,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(14).pipe(T.HttpBody())),
+          body: S.optional(InsertPromotionRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -628,28 +712,13 @@ function __c2(j: number): any {
         identifier: "ListAccountsPromotionsRequest",
       });
     case 1:
-      return S.Array(__S(13));
+      return S.Array(Promotion);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          promotions: S.optional(__S(17)),
+          promotions: S.optional(PromotionList),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListPromotionsResponse" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
   }
 }

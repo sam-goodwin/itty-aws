@@ -6,8 +6,6 @@ import * as S from "@distilled.cloud/core/schema";
 import { PosthogProtocol, type PosthogOpError, type PosthogOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { PosthogOpError, PosthogOpContext };
 
@@ -22,8 +20,15 @@ export class Conflict
 
 /** * `public` - public * `private` - private */
 export type TaskChannelWriteTypeEnum = "public" | "private";
+const TaskChannelWriteTypeEnum = S.String;
+
 /** User IDs to add to a private channel. The requester is always a member. The endpoint ignores this field for public channels and skips users without project access. */
 export type CreateTaskChannelRequestMemberIdsList = Array<number>;
+const CreateTaskChannelRequestMemberIdsList = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<CreateTaskChannelRequestMemberIdsList>;
+
 export interface CreateTaskChannelRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -36,8 +41,23 @@ export interface CreateTaskChannelRequest {
   /** Star a new channel for the requester. This field does not change stars on an existing channel. */
   star?: boolean;
 }
+const CreateTaskChannelRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<CreateTaskChannelRequest>;
+
 export type ChannelDTORepositoriesList = Array<string>;
+const ChannelDTORepositoriesList = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<ChannelDTORepositoriesList>;
+
 export type TaskUserBasicInfoHedgehogConfigMap = { [key: string]: unknown | undefined };
+const TaskUserBasicInfoHedgehogConfigMap = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<TaskUserBasicInfoHedgehogConfigMap>;
+
 /** Response shape for a task creator, mirroring core ``UserBasicSerializer`` output. */
 export interface TaskUserBasicInfo {
   id: number;
@@ -50,8 +70,12 @@ export interface TaskUserBasicInfo {
   hedgehog_config?: TaskUserBasicInfoHedgehogConfigMap | null;
   role_at_organization?: string | null;
 }
+const TaskUserBasicInfo = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<TaskUserBasicInfo>;
+
 /** * `personal` - Personal * `general` - General */
 export type ChannelSystemRoleEnum = "personal" | "general";
+const ChannelSystemRoleEnum = S.String;
+
 /** Response shape for a task channel, read from a frozen ``ChannelDTO``. */
 export interface ChannelDTO {
   id: string;
@@ -66,8 +90,12 @@ export interface ChannelDTO {
   /** Identifies this channel as one of the two system-provisioned spaces ('personal' for the user's own #me space, 'general' for the team's shared #general space). Null for an ordinary channel. * `personal` - Personal * `general` - General */
   system_role: ChannelSystemRoleEnum | null;
 }
+const ChannelDTO = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<ChannelDTO>;
+
 /** * `context_created` - context_created * `context_md_building` - context_md_building */
 export type EventEnum = "context_created" | "context_md_building";
+const EventEnum = S.String;
+
 export interface CreateTaskChannelsFeedRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -79,7 +107,15 @@ export interface CreateTaskChannelsFeedRequest {
   /** Optional explicit timestamp (within 10 minutes of now), so a client can order a burst of announcements. */
   created_at?: string;
 }
+const CreateTaskChannelsFeedRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<CreateTaskChannelsFeedRequest>;
+
 export type ChannelFeedMessageDTOPayloadMap = { [key: string]: unknown | undefined };
+const ChannelFeedMessageDTOPayloadMap =
+  TaskUserBasicInfoHedgehogConfigMap as any as S.Schema<ChannelFeedMessageDTOPayloadMap>;
+
 /** Response shape for one system announcement in a channel's feed. */
 export interface ChannelFeedMessageDTO {
   id: string;
@@ -91,21 +127,44 @@ export interface ChannelFeedMessageDTO {
   content: string;
   created_at: string;
 }
+const ChannelFeedMessageDTO = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<ChannelFeedMessageDTO>;
+
 export interface CreateTaskChannelsOnboardingSessionRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
+const CreateTaskChannelsOnboardingSessionRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<CreateTaskChannelsOnboardingSessionRequest>;
+
 /** The first-run session that was started for the requester. */
 export interface OnboardingSession {
   /** The agent session opened in the team's #general space. */
   task_id: string;
 }
+const OnboardingSession = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<OnboardingSession>;
+
 /** Display names of other Desktop users in the organization. */
 export type CreateTaskChannelsOnboardingSessionTestRequestOtherMembersList = Array<string>;
+const CreateTaskChannelsOnboardingSessionTestRequestOtherMembersList =
+  ChannelDTORepositoriesList as any as S.Schema<CreateTaskChannelsOnboardingSessionTestRequestOtherMembersList>;
+
 /** Signal sources that were already enabled. */
 export type CreateTaskChannelsOnboardingSessionTestRequestSourcesEnabledList = Array<string>;
+const CreateTaskChannelsOnboardingSessionTestRequestSourcesEnabledList = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<CreateTaskChannelsOnboardingSessionTestRequestSourcesEnabledList>;
+
 /** Signal sources the onboarding flow is watching. */
 export type CreateTaskChannelsOnboardingSessionTestRequestSourcesWatchingList = Array<string>;
+const CreateTaskChannelsOnboardingSessionTestRequestSourcesWatchingList =
+  CreateTaskChannelsOnboardingSessionTestRequestSourcesEnabledList as any as S.Schema<CreateTaskChannelsOnboardingSessionTestRequestSourcesWatchingList>;
+
 export interface CreateTaskChannelsOnboardingSessionTestRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -128,6 +187,11 @@ export interface CreateTaskChannelsOnboardingSessionTestRequest {
   /** Whether onboarding enabled any signal sources. */
   sources_newly_enabled?: boolean;
 }
+const CreateTaskChannelsOnboardingSessionTestRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<CreateTaskChannelsOnboardingSessionTestRequest>;
+
 /** The first-run session that was started for the requester. */
 export interface OnboardingSessionTestResponse {
   /** The agent session opened in the team's #general space. */
@@ -135,12 +199,27 @@ export interface OnboardingSessionTestResponse {
   /** The requester's personal space containing the session. */
   channel_id: string;
 }
+const OnboardingSessionTestResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<OnboardingSessionTestResponse>;
+
 export interface CreateTaskChannelsProvisionDefaultRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
+const CreateTaskChannelsProvisionDefaultRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<CreateTaskChannelsProvisionDefaultRequest>;
+
 /** The full channel list after provisioning, same shape as the list endpoint. */
 export type ProvisionedChannelsChannelsList = Array<ChannelDTO>;
+const ProvisionedChannelsChannelsList = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<ProvisionedChannelsChannelsList>;
+
 /** The requester's default channels, plus whether this call is what created them. */
 export interface ProvisionedChannels {
   /** The full channel list after provisioning, same shape as the list endpoint. */
@@ -150,12 +229,20 @@ export interface ProvisionedChannels {
   /** Whether this call created the team's shared #general channel. True only for the first user to provision it, so clients can branch first-user setup on it. */
   general_created: boolean;
 }
+const ProvisionedChannels = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<ProvisionedChannels>;
+
 /** * `goal` - Goal * `feature` - Feature */
 export type SpaceSetupKindEnum = "goal" | "feature";
+const SpaceSetupKindEnum = S.String;
+
 /** * `day` - Day * `week` - Week * `month` - Month */
 export type CalendarUnitEnum = "day" | "week" | "month";
+const CalendarUnitEnum = S.String;
+
 /** * `at_least` - At least * `at_most` - At most */
 export type SpaceGoalDirectionEnum = "at_least" | "at_most";
+const SpaceGoalDirectionEnum = S.String;
+
 /** The metric a goal space should move. */
 export interface SpaceGoalWrite {
   /** The goal in one or two sentences, e.g. 'Increase the weekly activation rate'. */
@@ -171,6 +258,8 @@ export interface SpaceGoalWrite {
   /** Short id of an existing insight that measures the goal, when there is one. */
   insight_short_id?: string | null;
 }
+const SpaceGoalWrite = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<SpaceGoalWrite>;
+
 /** The feature a feature space is set up around. */
 export interface SpaceFeatureWrite {
   /** Feature name as people call it. */
@@ -180,6 +269,8 @@ export interface SpaceFeatureWrite {
   /** Key of the feature flag that gates it, if any. */
   flag_key?: string | null;
 }
+const SpaceFeatureWrite = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<SpaceFeatureWrite>;
+
 export interface CreateTaskChannelsSetupRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -193,47 +284,96 @@ export interface CreateTaskChannelsSetupRequest {
   /** Repository the loops work in, as 'owner/name'. Defaults to the channel's first repository. */
   repository?: string | null;
 }
+const CreateTaskChannelsSetupRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<CreateTaskChannelsSetupRequest>;
+
 /** The setup task that was started for the channel. */
 export interface SpaceSetupStartedDTO {
   task_id: string;
 }
+const SpaceSetupStartedDTO = OnboardingSession as any as S.Schema<SpaceSetupStartedDTO>;
+
 export interface CreateTaskChannelsStarRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   id: string;
   starred: boolean;
 }
+const CreateTaskChannelsStarRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<CreateTaskChannelsStarRequest>;
+
 export interface CreateTaskChannelsStarResponse {}
+const CreateTaskChannelsStarResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<CreateTaskChannelsStarResponse>;
+
 export interface CreateTaskChannelsTeachingCanvasTestRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
+const CreateTaskChannelsTeachingCanvasTestRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<CreateTaskChannelsTeachingCanvasTestRequest>;
+
 export interface TeachingCanvas {
   /** The teaching canvas that was resolved or created. */
   canvas_id: string;
   /** The requester's personal space containing the canvas. */
   channel_id: string;
 }
+const TeachingCanvas = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<TeachingCanvas>;
+
 export interface GetTaskChannelRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   id: string;
 }
+const GetTaskChannelRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<GetTaskChannelRequest>;
+
 export interface GetTaskChannelsContextGenerationRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   id: string;
 }
+const GetTaskChannelsContextGenerationRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<GetTaskChannelsContextGenerationRequest>;
+
 /** The task currently generating this channel's CONTEXT.md, or null. */
 export interface ChannelContextGeneration {
   task_id: string | null;
 }
+const ChannelContextGeneration = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<ChannelContextGeneration>;
+
 export interface GetTaskChannelsContributorRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
+const GetTaskChannelsContributorRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<GetTaskChannelsContributorRequest>;
+
 /** Everyone who owns at least one task or canvas in the channel, most recently active first. Deleted tasks and canvases do not count. */
 export type ChannelContributorsDTOPeopleList = Array<TaskUserBasicInfo>;
+const ChannelContributorsDTOPeopleList = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<ChannelContributorsDTOPeopleList>;
+
 /** The people who own at least one task or canvas in a channel. */
 export interface ChannelContributorsDTO {
   /** The channel these people worked in. */
@@ -241,13 +381,33 @@ export interface ChannelContributorsDTO {
   /** Everyone who owns at least one task or canvas in the channel, most recently active first. Deleted tasks and canvases do not count. */
   people: ChannelContributorsDTOPeopleList;
 }
+const ChannelContributorsDTO = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<ChannelContributorsDTO>;
+
 export type GetTaskChannelsContributorResponseBodyList = Array<ChannelContributorsDTO>;
+const GetTaskChannelsContributorResponseBodyList = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<GetTaskChannelsContributorResponseBodyList>;
+
 export type GetTaskChannelsContributorResponse = GetTaskChannelsContributorResponseBodyList;
+const GetTaskChannelsContributorResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<GetTaskChannelsContributorResponse>;
+
 export interface GetTaskChannelsInstructionRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   id: string;
 }
+const GetTaskChannelsInstructionRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<GetTaskChannelsInstructionRequest>;
+
 /** Response shape for a channel's CONTEXT.md instructions version. */
 export interface ChannelInstructionsDTO {
   channel: string;
@@ -256,25 +416,58 @@ export interface ChannelInstructionsDTO {
   created_at?: string | null;
   created_by?: TaskUserBasicInfo | null;
 }
+const ChannelInstructionsDTO = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<ChannelInstructionsDTO>;
+
 export interface GetTaskChannelsInstructionsVersionRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   id: string;
 }
+const GetTaskChannelsInstructionsVersionRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<GetTaskChannelsInstructionsVersionRequest>;
+
 export type PaginatedChannelInstructionsDTOListResultsList = Array<ChannelInstructionsDTO>;
+const PaginatedChannelInstructionsDTOListResultsList = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<PaginatedChannelInstructionsDTOListResultsList>;
+
 export interface PaginatedChannelInstructionsDTOList {
   count: number;
   next?: string | null;
   previous?: string | null;
   results: PaginatedChannelInstructionsDTOListResultsList;
 }
+const PaginatedChannelInstructionsDTOList = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<PaginatedChannelInstructionsDTOList>;
+
 export interface GetTaskChannelsMemberRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   id: string;
 }
+const GetTaskChannelsMemberRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<GetTaskChannelsMemberRequest>;
+
 export type GetTaskChannelsMemberResponseBodyList = Array<TaskUserBasicInfo>;
+const GetTaskChannelsMemberResponseBodyList =
+  ChannelContributorsDTOPeopleList as any as S.Schema<GetTaskChannelsMemberResponseBodyList>;
+
 export type GetTaskChannelsMemberResponse = GetTaskChannelsMemberResponseBodyList;
+const GetTaskChannelsMemberResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<GetTaskChannelsMemberResponse>;
+
 export interface ListTaskChannelsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -283,13 +476,26 @@ export interface ListTaskChannelsRequest {
   /** The initial index from which to return the results. */
   offset?: number;
 }
+const ListTaskChannelsRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<ListTaskChannelsRequest>;
+
 export type PaginatedChannelDTOListResultsList = Array<ChannelDTO>;
+const PaginatedChannelDTOListResultsList =
+  ProvisionedChannelsChannelsList as any as S.Schema<PaginatedChannelDTOListResultsList>;
+
 export interface PaginatedChannelDTOList {
   count: number;
   next?: string | null;
   previous?: string | null;
   results: PaginatedChannelDTOListResultsList;
 }
+const PaginatedChannelDTOList = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<PaginatedChannelDTOList>;
+
 export interface ListTaskChannelsFeedRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -299,31 +505,69 @@ export interface ListTaskChannelsFeedRequest {
   /** The initial index from which to return the results. */
   offset?: number;
 }
+const ListTaskChannelsFeedRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  0,
+) as any as S.Schema<ListTaskChannelsFeedRequest>;
+
 export type PaginatedChannelFeedMessageDTOListResultsList = Array<ChannelFeedMessageDTO>;
+const PaginatedChannelFeedMessageDTOListResultsList = /*@__PURE__*/ __L.at(
+  __c5,
+  1,
+) as any as S.Schema<PaginatedChannelFeedMessageDTOListResultsList>;
+
 export interface PaginatedChannelFeedMessageDTOList {
   count: number;
   next?: string | null;
   previous?: string | null;
   results: PaginatedChannelFeedMessageDTOListResultsList;
 }
+const PaginatedChannelFeedMessageDTOList = /*@__PURE__*/ __L.at(
+  __c5,
+  2,
+) as any as S.Schema<PaginatedChannelFeedMessageDTOList>;
+
 export interface TaskChannelsDestroyRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   id: string;
 }
+const TaskChannelsDestroyRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<TaskChannelsDestroyRequest>;
+
 export interface TaskChannelsDestroyResponse {}
+const TaskChannelsDestroyResponse =
+  CreateTaskChannelsStarResponse as any as S.Schema<TaskChannelsDestroyResponse>;
+
 export interface TaskChannelsInstructionsDestroyRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   id: string;
 }
+const TaskChannelsInstructionsDestroyRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  4,
+) as any as S.Schema<TaskChannelsInstructionsDestroyRequest>;
+
 export interface TaskChannelsInstructionsDestroyResponse {}
+const TaskChannelsInstructionsDestroyResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  5,
+) as any as S.Schema<TaskChannelsInstructionsDestroyResponse>;
+
 export interface UpdateTaskChannelsContextGenerationRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   id: string;
   task_id: string | null;
 }
+const UpdateTaskChannelsContextGenerationRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  6,
+) as any as S.Schema<UpdateTaskChannelsContextGenerationRequest>;
+
 export interface UpdateTaskChannelsInstructionRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -333,6 +577,11 @@ export interface UpdateTaskChannelsInstructionRequest {
   /** Optimistic-concurrency guard: the version the edit is based on (0 for a channel with no instructions yet). A stale base is rejected with 409; omit to publish unguarded. */
   base_version?: number | null;
 }
+const UpdateTaskChannelsInstructionRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  7,
+) as any as S.Schema<UpdateTaskChannelsInstructionRequest>;
+
 export interface UpdateTaskChannelsInstructionsPartialRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -342,8 +591,16 @@ export interface UpdateTaskChannelsInstructionsPartialRequest {
   /** Optimistic-concurrency guard: the version the edit is based on (0 for a channel with no instructions yet). A stale base is rejected with 409; omit to publish unguarded. */
   base_version?: number | null;
 }
+const UpdateTaskChannelsInstructionsPartialRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<UpdateTaskChannelsInstructionsPartialRequest>;
+
 /** Required list of member user IDs. This list replaces the current members. The creator remains a member. Send an empty list to remove all other members. Each submitted user must have project access. */
 export type UpdateTaskChannelsMemberRequestUserIdsList = Array<number>;
+const UpdateTaskChannelsMemberRequestUserIdsList =
+  CreateTaskChannelRequestMemberIdsList as any as S.Schema<UpdateTaskChannelsMemberRequestUserIdsList>;
+
 export interface UpdateTaskChannelsMemberRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -351,10 +608,21 @@ export interface UpdateTaskChannelsMemberRequest {
   /** Required list of member user IDs. This list replaces the current members. The creator remains a member. Send an empty list to remove all other members. Each submitted user must have project access. */
   user_ids: UpdateTaskChannelsMemberRequestUserIdsList;
 }
+const UpdateTaskChannelsMemberRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  1,
+) as any as S.Schema<UpdateTaskChannelsMemberRequest>;
+
 export type UpdateTaskChannelsMemberResponseBodyList = Array<TaskUserBasicInfo>;
 export type UpdateTaskChannelsMemberResponse = UpdateTaskChannelsMemberResponseBodyList;
+const UpdateTaskChannelsMemberResponse =
+  GetTaskChannelsMemberResponse as any as S.Schema<UpdateTaskChannelsMemberResponse>;
+
 /** GitHub repositories inherited by new tasks in this channel. */
 export type UpdateTaskChannelsPartialRequestRepositoriesList = Array<string>;
+const UpdateTaskChannelsPartialRequestRepositoriesList =
+  ChannelDTORepositoriesList as any as S.Schema<UpdateTaskChannelsPartialRequestRepositoriesList>;
+
 export interface UpdateTaskChannelsPartialRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -370,6 +638,11 @@ export interface UpdateTaskChannelsPartialRequest {
   /** Switch a shared space between 'public' and 'private'. Making a space private keeps only the creator and the requester as members. Making it public removes its member list. Personal #me spaces cannot change. * `public` - public * `private` - private */
   channel_type?: TaskChannelWriteTypeEnum | (string & {});
 }
+const UpdateTaskChannelsPartialRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  2,
+) as any as S.Schema<UpdateTaskChannelsPartialRequest>;
+
 export type CreateTaskChannelError = PosthogOpError;
 /** Create a channel Create a channel. Public channels use lowercase names with hyphens. If a public channel has that name, return it. The name general returns the project's general space. Private channels always get a new ID, even if another channel has the same name. The requester and users in member_ids with project access become members. New channels are starred for the requester unless star is false. The names "me" and "personal" are reserved. */
 export const createTaskChannel: API.OperationMethod<
@@ -378,8 +651,8 @@ export const createTaskChannel: API.OperationMethod<
   CreateTaskChannelError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1) as any as S.Schema<CreateTaskChannelRequest>,
-  output: __S(5) as any as S.Schema<ChannelDTO>,
+  input: CreateTaskChannelRequest,
+  output: ChannelDTO,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -393,8 +666,8 @@ export const createTaskChannelsFeed: API.OperationMethod<
   CreateTaskChannelsFeedError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6) as any as S.Schema<CreateTaskChannelsFeedRequest>,
-  output: __S(7) as any as S.Schema<ChannelFeedMessageDTO>,
+  input: CreateTaskChannelsFeedRequest,
+  output: ChannelFeedMessageDTO,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -408,8 +681,8 @@ export const createTaskChannelsOnboardingSession: API.OperationMethod<
   CreateTaskChannelsOnboardingSessionError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8) as any as S.Schema<CreateTaskChannelsOnboardingSessionRequest>,
-  output: __S(9) as any as S.Schema<OnboardingSession>,
+  input: CreateTaskChannelsOnboardingSessionRequest,
+  output: OnboardingSession,
   errors: [Conflict],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -423,8 +696,8 @@ export const createTaskChannelsOnboardingSessionTest: API.OperationMethod<
   CreateTaskChannelsOnboardingSessionTestError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11) as any as S.Schema<CreateTaskChannelsOnboardingSessionTestRequest>,
-  output: __S(12) as any as S.Schema<OnboardingSessionTestResponse>,
+  input: CreateTaskChannelsOnboardingSessionTestRequest,
+  output: OnboardingSessionTestResponse,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -438,8 +711,8 @@ export const createTaskChannelsProvisionDefault: API.OperationMethod<
   CreateTaskChannelsProvisionDefaultError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13) as any as S.Schema<CreateTaskChannelsProvisionDefaultRequest>,
-  output: __S(15) as any as S.Schema<ProvisionedChannels>,
+  input: CreateTaskChannelsProvisionDefaultRequest,
+  output: ProvisionedChannels,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -453,8 +726,8 @@ export const createTaskChannelsSetup: API.OperationMethod<
   CreateTaskChannelsSetupError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18) as any as S.Schema<CreateTaskChannelsSetupRequest>,
-  output: __S(9) as any as S.Schema<SpaceSetupStartedDTO>,
+  input: CreateTaskChannelsSetupRequest,
+  output: SpaceSetupStartedDTO,
   errors: [Conflict],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -468,8 +741,8 @@ export const createTaskChannelsStar: API.OperationMethod<
   CreateTaskChannelsStarError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19) as any as S.Schema<CreateTaskChannelsStarRequest>,
-  output: __S(20) as any as S.Schema<CreateTaskChannelsStarResponse>,
+  input: CreateTaskChannelsStarRequest,
+  output: CreateTaskChannelsStarResponse,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -483,8 +756,8 @@ export const createTaskChannelsTeachingCanvasTest: API.OperationMethod<
   CreateTaskChannelsTeachingCanvasTestError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21) as any as S.Schema<CreateTaskChannelsTeachingCanvasTestRequest>,
-  output: __S(22) as any as S.Schema<TeachingCanvas>,
+  input: CreateTaskChannelsTeachingCanvasTestRequest,
+  output: TeachingCanvas,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -498,8 +771,8 @@ export const getTaskChannel: API.OperationMethod<
   GetTaskChannelError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23) as any as S.Schema<GetTaskChannelRequest>,
-  output: __S(5) as any as S.Schema<ChannelDTO>,
+  input: GetTaskChannelRequest,
+  output: ChannelDTO,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -513,8 +786,8 @@ export const getTaskChannelsContextGeneration: API.OperationMethod<
   GetTaskChannelsContextGenerationError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24) as any as S.Schema<GetTaskChannelsContextGenerationRequest>,
-  output: __S(25) as any as S.Schema<ChannelContextGeneration>,
+  input: GetTaskChannelsContextGenerationRequest,
+  output: ChannelContextGeneration,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -528,8 +801,8 @@ export const getTaskChannelsContributor: API.OperationMethod<
   GetTaskChannelsContributorError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26) as any as S.Schema<GetTaskChannelsContributorRequest>,
-  output: __S(30) as any as S.Schema<GetTaskChannelsContributorResponse>,
+  input: GetTaskChannelsContributorRequest,
+  output: GetTaskChannelsContributorResponse,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -543,8 +816,8 @@ export const getTaskChannelsInstruction: API.OperationMethod<
   GetTaskChannelsInstructionError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31) as any as S.Schema<GetTaskChannelsInstructionRequest>,
-  output: __S(32) as any as S.Schema<ChannelInstructionsDTO>,
+  input: GetTaskChannelsInstructionRequest,
+  output: ChannelInstructionsDTO,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -558,8 +831,8 @@ export const getTaskChannelsInstructionsVersion: API.OperationMethod<
   GetTaskChannelsInstructionsVersionError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33) as any as S.Schema<GetTaskChannelsInstructionsVersionRequest>,
-  output: __S(35) as any as S.Schema<PaginatedChannelInstructionsDTOList>,
+  input: GetTaskChannelsInstructionsVersionRequest,
+  output: PaginatedChannelInstructionsDTOList,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -573,8 +846,8 @@ export const getTaskChannelsMember: API.OperationMethod<
   GetTaskChannelsMemberError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36) as any as S.Schema<GetTaskChannelsMemberRequest>,
-  output: __S(37) as any as S.Schema<GetTaskChannelsMemberResponse>,
+  input: GetTaskChannelsMemberRequest,
+  output: GetTaskChannelsMemberResponse,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -588,8 +861,8 @@ export const listTaskChannels: API.OperationMethod<
   ListTaskChannelsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38) as any as S.Schema<ListTaskChannelsRequest>,
-  output: __S(39) as any as S.Schema<PaginatedChannelDTOList>,
+  input: ListTaskChannelsRequest,
+  output: PaginatedChannelDTOList,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -603,8 +876,8 @@ export const listTaskChannelsFeed: API.OperationMethod<
   ListTaskChannelsFeedError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40) as any as S.Schema<ListTaskChannelsFeedRequest>,
-  output: __S(42) as any as S.Schema<PaginatedChannelFeedMessageDTOList>,
+  input: ListTaskChannelsFeedRequest,
+  output: PaginatedChannelFeedMessageDTOList,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -618,8 +891,8 @@ export const taskChannelsDestroy: API.OperationMethod<
   TaskChannelsDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43) as any as S.Schema<TaskChannelsDestroyRequest>,
-  output: __S(20) as any as S.Schema<TaskChannelsDestroyResponse>,
+  input: TaskChannelsDestroyRequest,
+  output: TaskChannelsDestroyResponse,
   errors: [Conflict],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -633,8 +906,8 @@ export const taskChannelsInstructionsDestroy: API.OperationMethod<
   TaskChannelsInstructionsDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44) as any as S.Schema<TaskChannelsInstructionsDestroyRequest>,
-  output: __S(45) as any as S.Schema<TaskChannelsInstructionsDestroyResponse>,
+  input: TaskChannelsInstructionsDestroyRequest,
+  output: TaskChannelsInstructionsDestroyResponse,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -648,8 +921,8 @@ export const updateTaskChannelsContextGeneration: API.OperationMethod<
   UpdateTaskChannelsContextGenerationError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(46) as any as S.Schema<UpdateTaskChannelsContextGenerationRequest>,
-  output: __S(25) as any as S.Schema<ChannelContextGeneration>,
+  input: UpdateTaskChannelsContextGenerationRequest,
+  output: ChannelContextGeneration,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -663,8 +936,8 @@ export const updateTaskChannelsInstruction: API.OperationMethod<
   UpdateTaskChannelsInstructionError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47) as any as S.Schema<UpdateTaskChannelsInstructionRequest>,
-  output: __S(32) as any as S.Schema<ChannelInstructionsDTO>,
+  input: UpdateTaskChannelsInstructionRequest,
+  output: ChannelInstructionsDTO,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -678,8 +951,8 @@ export const updateTaskChannelsInstructionsPartial: API.OperationMethod<
   UpdateTaskChannelsInstructionsPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48) as any as S.Schema<UpdateTaskChannelsInstructionsPartialRequest>,
-  output: __S(32) as any as S.Schema<ChannelInstructionsDTO>,
+  input: UpdateTaskChannelsInstructionsPartialRequest,
+  output: ChannelInstructionsDTO,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -693,8 +966,8 @@ export const updateTaskChannelsMember: API.OperationMethod<
   UpdateTaskChannelsMemberError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49) as any as S.Schema<UpdateTaskChannelsMemberRequest>,
-  output: __S(37) as any as S.Schema<UpdateTaskChannelsMemberResponse>,
+  input: UpdateTaskChannelsMemberRequest,
+  output: UpdateTaskChannelsMemberResponse,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -708,8 +981,8 @@ export const updateTaskChannelsPartial: API.OperationMethod<
   UpdateTaskChannelsPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(50) as any as S.Schema<UpdateTaskChannelsPartialRequest>,
-  output: __S(5) as any as S.Schema<ChannelDTO>,
+  input: UpdateTaskChannelsPartialRequest,
+  output: ChannelDTO,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -725,8 +998,8 @@ function __c0(j: number): any {
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           name: S.String,
-          channel_type: S.optional(S.String),
-          member_ids: S.optional(__S(0)),
+          channel_type: S.optional(TaskChannelWriteTypeEnum),
+          member_ids: S.optional(CreateTaskChannelRequestMemberIdsList),
           star: S.optional(S.Boolean),
         }).pipe(
           T.Http({ method: "POST", uri: "/api/projects/{project_id}/task_channels/", code: 200 }),
@@ -746,7 +1019,7 @@ function __c0(j: number): any {
           last_name: S.String,
           email: S.String,
           is_email_verified: S.optional(S.NullOr(S.Boolean)),
-          hedgehog_config: S.optional(S.NullOr(__S(3))),
+          hedgehog_config: S.optional(S.NullOr(TaskUserBasicInfoHedgehogConfigMap)),
           role_at_organization: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "TaskUserBasicInfo" });
@@ -757,12 +1030,12 @@ function __c0(j: number): any {
           name: S.String,
           channel_type: S.String,
           github_integration: S.NullOr(S.Number),
-          repositories: __S(2),
+          repositories: ChannelDTORepositoriesList,
           auto_archive_after_days: S.NullOr(S.Number),
           created_at: S.String,
-          created_by: S.optional(S.NullOr(__S(4))),
+          created_by: S.optional(S.NullOr(TaskUserBasicInfo)),
           starred: S.optional(S.Boolean),
-          system_role: S.NullOr(S.String),
+          system_role: S.NullOr(ChannelSystemRoleEnum),
         }),
       ).annotate({ identifier: "ChannelDTO" });
     case 6:
@@ -770,7 +1043,7 @@ function __c0(j: number): any {
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           channel_id: S.String.pipe(T.Label()),
-          event: S.String,
+          event: EventEnum,
           payload: S.optional(S.Unknown),
           created_at: S.optional(S.String),
         }).pipe(
@@ -788,10 +1061,10 @@ function __c0(j: number): any {
         S.Struct({
           id: S.String,
           channel: S.String,
-          author: S.optional(S.NullOr(__S(4))),
+          author: S.optional(S.NullOr(TaskUserBasicInfo)),
           author_kind: S.String,
           event: S.String,
-          payload: __S(3),
+          payload: ChannelFeedMessageDTOPayloadMap,
           content: S.String,
           created_at: S.String,
         }),
@@ -831,9 +1104,13 @@ function __c1(j: number): any {
           joining_existing_organization: S.optional(S.Boolean),
           has_events: S.optional(S.Boolean),
           signal_reports_waiting: S.optional(S.Number),
-          other_members: S.optional(__S(2)),
-          sources_enabled: S.optional(__S(10)),
-          sources_watching: S.optional(__S(10)),
+          other_members: S.optional(CreateTaskChannelsOnboardingSessionTestRequestOtherMembersList),
+          sources_enabled: S.optional(
+            CreateTaskChannelsOnboardingSessionTestRequestSourcesEnabledList,
+          ),
+          sources_watching: S.optional(
+            CreateTaskChannelsOnboardingSessionTestRequestSourcesWatchingList,
+          ),
           sources_newly_enabled: S.optional(S.Boolean),
         }).pipe(
           T.Http({
@@ -869,11 +1146,11 @@ function __c1(j: number): any {
         identifier: "CreateTaskChannelsProvisionDefaultRequest",
       });
     case 6:
-      return S.Array(__S(5));
+      return S.Array(ChannelDTO);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          channels: __S(14),
+          channels: ProvisionedChannelsChannelsList,
           personal_created: S.Boolean,
           general_created: S.Boolean,
         }),
@@ -886,8 +1163,8 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           statement: S.String,
-          period: S.optional(S.String),
-          direction: S.optional(S.String),
+          period: S.optional(CalendarUnitEnum),
+          direction: S.optional(SpaceGoalDirectionEnum),
           target: S.optional(S.NullOr(S.String)),
           deadline: S.optional(S.NullOr(S.String)),
           insight_short_id: S.optional(S.NullOr(S.String)),
@@ -906,9 +1183,9 @@ function __c2(j: number): any {
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
-          kind: S.String,
-          goal: S.optional(__S(16)),
-          feature: S.optional(__S(17)),
+          kind: SpaceSetupKindEnum,
+          goal: S.optional(SpaceGoalWrite),
+          feature: S.optional(SpaceFeatureWrite),
           repository: S.optional(S.NullOr(S.String)),
         }).pipe(
           T.Http({
@@ -1014,18 +1291,20 @@ function __c3(j: number): any {
         identifier: "GetTaskChannelsContributorRequest",
       });
     case 3:
-      return S.Array(__S(4));
+      return S.Array(TaskUserBasicInfo);
     case 4:
       return S.suspend(() =>
         S.Struct({
           channel: S.String,
-          people: __S(27),
+          people: ChannelContributorsDTOPeopleList,
         }),
       ).annotate({ identifier: "ChannelContributorsDTO" });
     case 5:
-      return S.Array(__S(28));
+      return S.Array(ChannelContributorsDTO);
     case 6:
-      return S.suspend(() => __S(29).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        GetTaskChannelsContributorResponseBodyList.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "GetTaskChannelsContributorResponse",
       });
     case 7:
@@ -1054,7 +1333,7 @@ function __c4(j: number): any {
           content: S.String,
           version: S.Number,
           created_at: S.optional(S.NullOr(S.String)),
-          created_by: S.optional(S.NullOr(__S(4))),
+          created_by: S.optional(S.NullOr(TaskUserBasicInfo)),
         }),
       ).annotate({ identifier: "ChannelInstructionsDTO" });
     case 1:
@@ -1073,14 +1352,14 @@ function __c4(j: number): any {
         identifier: "GetTaskChannelsInstructionsVersionRequest",
       });
     case 2:
-      return S.Array(__S(32));
+      return S.Array(ChannelInstructionsDTO);
     case 3:
       return S.suspend(() =>
         S.Struct({
           count: S.Number,
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: __S(34),
+          results: PaginatedChannelInstructionsDTOListResultsList,
         }),
       ).annotate({
         identifier: "PaginatedChannelInstructionsDTOList",
@@ -1101,7 +1380,9 @@ function __c4(j: number): any {
         identifier: "GetTaskChannelsMemberRequest",
       });
     case 5:
-      return S.suspend(() => __S(27).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        GetTaskChannelsMemberResponseBodyList.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "GetTaskChannelsMemberResponse",
       });
     case 6:
@@ -1120,7 +1401,7 @@ function __c4(j: number): any {
           count: S.Number,
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: __S(14),
+          results: PaginatedChannelDTOListResultsList,
         }),
       ).annotate({ identifier: "PaginatedChannelDTOList" });
   }
@@ -1145,14 +1426,14 @@ function __c5(j: number): any {
         identifier: "ListTaskChannelsFeedRequest",
       });
     case 1:
-      return S.Array(__S(7));
+      return S.Array(ChannelFeedMessageDTO);
     case 2:
       return S.suspend(() =>
         S.Struct({
           count: S.Number,
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: __S(41),
+          results: PaginatedChannelFeedMessageDTOListResultsList,
         }),
       ).annotate({
         identifier: "PaginatedChannelFeedMessageDTOList",
@@ -1250,7 +1531,7 @@ function __c6(j: number): any {
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
-          user_ids: __S(0),
+          user_ids: UpdateTaskChannelsMemberRequestUserIdsList,
         }).pipe(
           T.Http({
             method: "PUT",
@@ -1268,9 +1549,9 @@ function __c6(j: number): any {
           id: S.String.pipe(T.Label()),
           name: S.optional(S.String),
           github_integration: S.optional(S.NullOr(S.Number)),
-          repositories: S.optional(__S(2)),
+          repositories: S.optional(UpdateTaskChannelsPartialRequestRepositoriesList),
           auto_archive_after_days: S.optional(S.NullOr(S.Number)),
-          channel_type: S.optional(S.String),
+          channel_type: S.optional(TaskChannelWriteTypeEnum),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1281,28 +1562,5 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "UpdateTaskChannelsPartialRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
   }
 }

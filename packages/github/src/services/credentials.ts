@@ -6,8 +6,6 @@ import * as S from "@distilled.cloud/core/schema";
 import { GithubProtocol, type GithubOpError, type GithubOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { GithubOpError, GithubOpContext };
 
@@ -22,11 +20,20 @@ export class UnprocessableEntity
 
 /** A list of credentials to be revoked, up to 1000 per request. */
 export type RevokeRequestCredentialsList = Array<string>;
+const RevokeRequestCredentialsList = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<RevokeRequestCredentialsList>;
+
 export interface RevokeRequest {
   /** A list of credentials to be revoked, up to 1000 per request. */
   credentials: RevokeRequestCredentialsList;
 }
+const RevokeRequest = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<RevokeRequest>;
+
 export interface RevokeResponse {}
+const RevokeResponse = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<RevokeResponse>;
+
 export type RevokeError = UnprocessableEntity | GithubOpError;
 /** Revoke a list of credentials Submit a list of credentials to be revoked. This endpoint is intended to revoke credentials the caller does not own and may have found exposed on GitHub.com or elsewhere. It can also be used for credentials associated with an old user account that you no longer have access to. Credential owners will be notified of the revocation. This endpoint currently accepts the following credential types: - Personal access tokens (classic) (`ghp_`) - Fine-grained personal access tokens (`github_pat_`) - OAuth app access tokens (`gho_`) - User-to-server tokens from GitHub Apps (`ghu_`) - Refresh tokens from GitHub Apps (`ghr_`) Revoked credentials may impact users on GitHub Free, Pro, & Team and GitHub Enterprise Cloud, and GitHub Enterprise Cloud with Enterprise Managed Users. GitHub cannot reactivate any credentials that have been revoked; new credentials will need to be generated. To prevent abuse, this API is limited to only 60 unauthenticated requests per hour and a max of 1000 tokens per API request. > [!NOTE] > Any authenticated requests will return a 403. */
 export const revoke: API.OperationMethod<
@@ -35,8 +42,8 @@ export const revoke: API.OperationMethod<
   RevokeError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1) as any as S.Schema<RevokeRequest>,
-  output: __S(2) as any as S.Schema<RevokeResponse>,
+  input: RevokeRequest,
+  output: RevokeResponse,
   errors: [UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -50,23 +57,12 @@ function __c0(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          credentials: __S(0),
+          credentials: RevokeRequestCredentialsList,
         }).pipe(T.Http({ method: "POST", uri: "/credentials/revoke", code: 200 })),
       ).annotate({ identifier: "RevokeRequest" });
     case 2:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "RevokeResponse",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 2) {
-    case 0:
-      return __c0(i & 3);
   }
 }

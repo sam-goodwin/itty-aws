@@ -7,8 +7,6 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -71,6 +69,8 @@ export interface TimeZone {
   /** Optional. IANA Time Zone Database version number. For example "2019a". */
   version?: string;
 }
+const TimeZone = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<TimeZone>;
+
 /** Represents civil time (or occasionally physical time). This type can represent a civil time in one of a few possible ways: * When utc_offset is set and time_zone is unset: a civil time on a calendar day with a particular offset from UTC. * When time_zone is set and utc_offset is unset: a civil time on a calendar day in a particular time zone. * When neither time_zone nor utc_offset is set: a civil time on a calendar day in local time. The date is relative to the Proleptic Gregorian Calendar. If year, month, or day are 0, the DateTime is considered not to have a specific year, month, or day respectively. This type may also be used to represent a physical time if all the date and time fields are set and either case of the `time_offset` oneof is set. Consider using `Timestamp` message for physical time instead. If your use case also would like to store the user's timezone, that can be done in another field. This type is more flexible than some applications may want. Make sure to document and validate your application's limitations. */
 export interface DateTime {
   /** Time zone. */
@@ -92,7 +92,11 @@ export interface DateTime {
   /** Optional. Hours of day in 24 hour format. Should be from 0 to 23, defaults to 0 (midnight). An API may choose to allow the value "24:00:00" for scenarios like business closing time. */
   hours?: number;
 }
+const DateTime = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<DateTime>;
+
 export type ShippingInfoShippingStatusEnum = "SHIPPING_STATE_UNSPECIFIED" | "SHIPPED" | "DELIVERED";
+const ShippingInfoShippingStatusEnum = S.String;
+
 /** The shipping information for the order. */
 export interface ShippingInfo {
   /** Optional. The earliest delivery promised time. Include the year and timezone string, if available. This field is required, if one of the following fields is absent: tracking_id or carrier_name. */
@@ -118,8 +122,14 @@ export interface ShippingInfo {
   /** Optional. The time when the shipment was shipped. Include the year and timezone string, if available. */
   shippedTime?: DateTime;
 }
+const ShippingInfo = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<ShippingInfo>;
+
 export type ShippingInfoList = Array<ShippingInfo>;
+const ShippingInfoList = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<ShippingInfoList>;
+
 export type StringList = Array<string>;
+const StringList = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<StringList>;
+
 /** The line items of the order. */
 export interface LineItemDetails {
   /** Required. The ID for this line item. */
@@ -137,7 +147,11 @@ export interface LineItemDetails {
   /** Optional. The manufacturer part number. */
   mpn?: string;
 }
+const LineItemDetails = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<LineItemDetails>;
+
 export type LineItemDetailsList = Array<LineItemDetails>;
+const LineItemDetailsList = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<LineItemDetailsList>;
+
 /** Represents how many items are in the shipment for the given shipment_id and line_item_id. */
 export interface ShipmentLineItemMapping {
   /** Required. The shipment ID. This field will be hashed in returned OrderTrackingSignal creation response. */
@@ -147,7 +161,17 @@ export interface ShipmentLineItemMapping {
   /** Required. The line item ID. */
   lineItemId?: string;
 }
+const ShipmentLineItemMapping = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<ShipmentLineItemMapping>;
+
 export type ShipmentLineItemMappingList = Array<ShipmentLineItemMapping>;
+const ShipmentLineItemMappingList = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<ShipmentLineItemMappingList>;
+
 /** The price represented as a number and currency. */
 export interface Price {
   /** The price represented as a number in micros (1 million micros is an equivalent to one's currency standard unit, for example, 1 USD = 1000000 micros). */
@@ -155,6 +179,8 @@ export interface Price {
   /** The currency of the price using three-letter acronyms according to [ISO 4217](http://en.wikipedia.org/wiki/ISO_4217). */
   currencyCode?: string;
 }
+const Price = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<Price>;
+
 /** Represents a business trade from which signals are extracted, such as shipping. */
 export interface OrderTrackingSignal {
   /** Optional. The [CLDR territory code] (http://www.unicode.org/repos/cldr/tags/latest/common/main/en.xml) for the shipping destination. */
@@ -178,6 +204,8 @@ export interface OrderTrackingSignal {
   /** Required. The ID of the order on the businesses side. This field will be hashed in returned OrderTrackingSignal creation response. */
   orderId?: string;
 }
+const OrderTrackingSignal = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<OrderTrackingSignal>;
+
 export interface CreateAccountsOrderTrackingSignalsRequest {
   /** Required. The account of the business for which the order signal is created. Format: accounts/{account} */
   parent: string;
@@ -186,6 +214,11 @@ export interface CreateAccountsOrderTrackingSignalsRequest {
   /** Request body */
   body?: OrderTrackingSignal;
 }
+const CreateAccountsOrderTrackingSignalsRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<CreateAccountsOrderTrackingSignalsRequest>;
+
 export type CreateAccountsOrderTrackingSignalsError =
   | NotFound
   | Forbidden
@@ -199,8 +232,8 @@ export const createAccountsOrderTrackingSignals: API.OperationMethod<
   CreateAccountsOrderTrackingSignalsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11) as any as S.Schema<CreateAccountsOrderTrackingSignalsRequest>,
-  output: __S(10) as any as S.Schema<OrderTrackingSignal>,
+  input: CreateAccountsOrderTrackingSignalsRequest,
+  output: OrderTrackingSignal,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -219,7 +252,7 @@ function __c0(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          timeZone: S.optional(__S(0)),
+          timeZone: S.optional(TimeZone),
           nanos: S.optional(S.Number),
           year: S.optional(S.Number),
           month: S.optional(S.Number),
@@ -233,28 +266,28 @@ function __c0(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          earliestDeliveryPromiseTime: S.optional(__S(1)),
+          earliestDeliveryPromiseTime: S.optional(DateTime),
           originRegionCode: S.optional(S.String),
           shipmentId: S.optional(S.String),
-          actualDeliveryTime: S.optional(__S(1)),
+          actualDeliveryTime: S.optional(DateTime),
           carrier: S.optional(S.String),
           trackingId: S.optional(S.String),
-          latestDeliveryPromiseTime: S.optional(__S(1)),
+          latestDeliveryPromiseTime: S.optional(DateTime),
           carrierService: S.optional(S.String),
           originPostalCode: S.optional(S.String),
-          shippingStatus: S.optional(S.String),
-          shippedTime: S.optional(__S(1)),
+          shippingStatus: S.optional(ShippingInfoShippingStatusEnum),
+          shippedTime: S.optional(DateTime),
         }),
       ).annotate({ identifier: "ShippingInfo" });
     case 3:
-      return S.Array(__S(2));
+      return S.Array(ShippingInfo);
     case 4:
       return S.Array(S.String);
     case 5:
       return S.suspend(() =>
         S.Struct({
           lineItemId: S.optional(S.String),
-          gtins: S.optional(__S(4)),
+          gtins: S.optional(StringList),
           productTitle: S.optional(S.String),
           brand: S.optional(S.String),
           quantity: S.optional(S.String),
@@ -263,7 +296,7 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "LineItemDetails" });
     case 6:
-      return S.Array(__S(5));
+      return S.Array(LineItemDetails);
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -277,7 +310,7 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(7));
+      return S.Array(ShipmentLineItemMapping);
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -289,12 +322,12 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           deliveryRegionCode: S.optional(S.String),
-          shippingInfo: S.optional(__S(3)),
+          shippingInfo: S.optional(ShippingInfoList),
           orderTrackingSignalId: S.optional(S.String),
-          lineItems: S.optional(__S(6)),
-          shipmentLineItemMapping: S.optional(__S(8)),
-          customerShippingFee: S.optional(__S(9)),
-          orderCreatedTime: S.optional(__S(1)),
+          lineItems: S.optional(LineItemDetailsList),
+          shipmentLineItemMapping: S.optional(ShipmentLineItemMappingList),
+          customerShippingFee: S.optional(Price),
+          orderCreatedTime: S.optional(DateTime),
           deliveryPostalCode: S.optional(S.String),
           merchantId: S.optional(S.String),
           orderId: S.optional(S.String),
@@ -305,7 +338,7 @@ function __c1(j: number): any {
         S.Struct({
           parent: S.String.pipe(T.Label()),
           orderTrackingSignalId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(10).pipe(T.HttpBody())),
+          body: S.optional(OrderTrackingSignal.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -316,18 +349,5 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "CreateAccountsOrderTrackingSignalsRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
   }
 }

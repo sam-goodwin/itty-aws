@@ -7,8 +7,6 @@ import { UnknownStackitError } from "../errors.ts";
 import { StackitProtocol, type StackitOpError, type StackitOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { StackitOpError, StackitOpContext };
 
@@ -51,6 +49,11 @@ export interface CreateInstanceRequest {
   /** Service Plan configures the size of the Instance. */
   planId: string;
 }
+const CreateInstanceRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<CreateInstanceRequest>;
+
 export interface IpAllowListEntry {
   /** ISO-8601 timestamp of when the entry was created. */
   createdAt?: string;
@@ -63,13 +66,21 @@ export interface IpAllowListEntry {
   /** The unique identifier for the ipAllowListEntry entry. This value is immutable, used to identify entries for updates, and cannot be changed after creation. */
   uuid: string;
 }
+const IpAllowListEntry = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<IpAllowListEntry>;
+
 export type AclIpAllowListList = Array<IpAllowListEntry>;
+const AclIpAllowListList = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<AclIpAllowListList>;
+
 /** The ACL config for the instances API. */
 export interface Acl {
   ipAllowList?: AclIpAllowListList;
 }
+const Acl = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<Acl>;
+
 /** The current status of the instance. */
 export type InstanceStatus = "error" | "reconciling" | "active" | "deleting";
+const InstanceStatus = S.String;
+
 export interface Instance {
   acl?: Acl;
   /** The date and time the creation of the instance was triggered. */
@@ -87,6 +98,8 @@ export interface Instance {
   /** The current status of the instance. */
   status: InstanceStatus;
 }
+const Instance = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<Instance>;
+
 export interface DeleteInstanceRequest {
   /** The STACKIT portal project UUID the instance is part of. */
   projectId: string;
@@ -95,7 +108,17 @@ export interface DeleteInstanceRequest {
   /** The full ID of the instance, <display_name>-<project_hash>. */
   instanceId: string;
 }
+const DeleteInstanceRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<DeleteInstanceRequest>;
+
 export interface DeleteInstanceResponse {}
+const DeleteInstanceResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<DeleteInstanceResponse>;
+
 export interface DeleteInstanceByNameRequest {
   /** The STACKIT portal project UUID the instance is part of. */
   projectId: string;
@@ -104,7 +127,15 @@ export interface DeleteInstanceByNameRequest {
   /** The instance display name. */
   displayName: string;
 }
+const DeleteInstanceByNameRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<DeleteInstanceByNameRequest>;
+
 export interface DeleteInstanceByNameResponse {}
+const DeleteInstanceByNameResponse =
+  DeleteInstanceResponse as any as S.Schema<DeleteInstanceByNameResponse>;
+
 export interface GetInstanceRequest {
   /** The STACKIT portal project UUID the instance is part of. */
   projectId: string;
@@ -113,6 +144,8 @@ export interface GetInstanceRequest {
   /** The full ID of the instance, <display_name>-<project_hash>. */
   instanceId: string;
 }
+const GetInstanceRequest = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<GetInstanceRequest>;
+
 export interface GetInstanceByNameRequest {
   /** The STACKIT portal project UUID the instance is part of. */
   projectId: string;
@@ -121,6 +154,11 @@ export interface GetInstanceByNameRequest {
   /** The instance display name. */
   displayName: string;
 }
+const GetInstanceByNameRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<GetInstanceByNameRequest>;
+
 export interface GetKubeconfigByInstanceIdRequest {
   /** The STACKIT portal project UUID the instance is part of. */
   projectId: string;
@@ -131,11 +169,20 @@ export interface GetKubeconfigByInstanceIdRequest {
   /** Expiration of the included token in seconds */
   expirationSeconds?: number;
 }
+const GetKubeconfigByInstanceIdRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<GetKubeconfigByInstanceIdRequest>;
+
 /** The kubeconfig for the instance. */
 export type KubeconfigRaw = { [key: string]: unknown | undefined };
+const KubeconfigRaw = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<KubeconfigRaw>;
+
 export interface Kubeconfig {
   kubeconfig: KubeconfigRaw;
 }
+const Kubeconfig = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<Kubeconfig>;
+
 export interface GetKubeconfigByInstanceNameRequest {
   /** The STACKIT portal project UUID the instance is part of. */
   projectId: string;
@@ -146,6 +193,11 @@ export interface GetKubeconfigByInstanceNameRequest {
   /** Expiration of the included token in seconds */
   expirationSeconds?: number;
 }
+const GetKubeconfigByInstanceNameRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<GetKubeconfigByInstanceNameRequest>;
+
 export interface GetTokenByInstanceIdRequest {
   /** The STACKIT portal project UUID the instance is part of. */
   projectId: string;
@@ -156,9 +208,16 @@ export interface GetTokenByInstanceIdRequest {
   /** Expiration of the token in seconds */
   expirationSeconds?: number;
 }
+const GetTokenByInstanceIdRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<GetTokenByInstanceIdRequest>;
+
 export interface Token {
   token: string;
 }
+const Token = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<Token>;
+
 export interface GetTokenByInstanceNameRequest {
   /** The STACKIT portal project UUID the instance is part of. */
   projectId: string;
@@ -169,31 +228,65 @@ export interface GetTokenByInstanceNameRequest {
   /** Expiration of the included token in seconds */
   expirationSeconds?: number;
 }
+const GetTokenByInstanceNameRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<GetTokenByInstanceNameRequest>;
+
 export interface ListCompatibleKubernetesReleasesRequest {
   /** The name of the Talos release. */
   talosVersion: string;
 }
+const ListCompatibleKubernetesReleasesRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<ListCompatibleKubernetesReleasesRequest>;
+
 /** Array of Kubernetes version strings. */
 export type KubernetesReleaseListK8sReleasesList = Array<string>;
+const KubernetesReleaseListK8sReleasesList = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<KubernetesReleaseListK8sReleasesList>;
+
 /** A list of compatible Kubernetes releases. */
 export interface KubernetesReleaseList {
   /** Array of Kubernetes version strings. */
   k8s_releases: KubernetesReleaseListK8sReleasesList;
 }
+const KubernetesReleaseList = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<KubernetesReleaseList>;
+
 export interface ListInstancesRequest {
   /** The STACKIT portal project UUID the instance is part of. */
   projectId: string;
   /** The STACKIT region the instance is part of. */
   regionId: string;
 }
+const ListInstancesRequest = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<ListInstancesRequest>;
+
 export type InstanceListInstancesList = Array<Instance>;
+const InstanceListInstancesList = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<InstanceListInstancesList>;
+
 export interface InstanceList {
   instances: InstanceListInstancesList;
 }
+const InstanceList = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<InstanceList>;
+
 export interface ListPlansProjectRequest {
   /** The STACKIT portal project UUID the plan is part of. */
   projectId: string;
 }
+const ListPlansProjectRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<ListPlansProjectRequest>;
+
 export interface Plan {
   /** Description */
   description?: string;
@@ -206,10 +299,19 @@ export interface Plan {
   /** Service Plan Name */
   name?: string;
 }
+const Plan = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<Plan>;
+
 export type PlanListValidPlansList = Array<Plan>;
+const PlanListValidPlansList = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<PlanListValidPlansList>;
+
 export interface PlanList {
   validPlans?: PlanListValidPlansList;
 }
+const PlanList = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<PlanList>;
+
 export interface UpdateInstanceRequest {
   /** The STACKIT portal project UUID the instance is part of. */
   projectId: string;
@@ -222,7 +324,14 @@ export interface UpdateInstanceRequest {
   /** Service Plan configures the size of the Instance. */
   planId?: string;
 }
+const UpdateInstanceRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<UpdateInstanceRequest>;
+
 export interface UpdateInstanceResponse {}
+const UpdateInstanceResponse = DeleteInstanceResponse as any as S.Schema<UpdateInstanceResponse>;
+
 export interface UpdateInstanceByNameRequest {
   /** The STACKIT portal project UUID the instance is part of. */
   projectId: string;
@@ -235,7 +344,15 @@ export interface UpdateInstanceByNameRequest {
   /** Service Plan configures the size of the Instance. */
   planId?: string;
 }
+const UpdateInstanceByNameRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<UpdateInstanceByNameRequest>;
+
 export interface UpdateInstanceByNameResponse {}
+const UpdateInstanceByNameResponse =
+  DeleteInstanceResponse as any as S.Schema<UpdateInstanceByNameResponse>;
+
 export type CreateInstanceError = BadRequest | Conflict | StackitOpError;
 /** Creates a new instance within the project. */
 export const createInstance: API.OperationMethod<
@@ -244,8 +361,8 @@ export const createInstance: API.OperationMethod<
   CreateInstanceError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<CreateInstanceRequest>,
-  output: __S(4) as any as S.Schema<Instance>,
+  input: CreateInstanceRequest,
+  output: Instance,
   errors: [BadRequest, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -259,8 +376,8 @@ export const deleteInstance: API.OperationMethod<
   DeleteInstanceError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5) as any as S.Schema<DeleteInstanceRequest>,
-  output: __S(6) as any as S.Schema<DeleteInstanceResponse>,
+  input: DeleteInstanceRequest,
+  output: DeleteInstanceResponse,
   errors: [BadRequest, NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -274,8 +391,8 @@ export const deleteInstanceByName: API.OperationMethod<
   DeleteInstanceByNameError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7) as any as S.Schema<DeleteInstanceByNameRequest>,
-  output: __S(6) as any as S.Schema<DeleteInstanceByNameResponse>,
+  input: DeleteInstanceByNameRequest,
+  output: DeleteInstanceByNameResponse,
   errors: [BadRequest, NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -289,8 +406,8 @@ export const getInstance: API.OperationMethod<
   GetInstanceError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8) as any as S.Schema<GetInstanceRequest>,
-  output: __S(4) as any as S.Schema<Instance>,
+  input: GetInstanceRequest,
+  output: Instance,
   errors: [BadRequest, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -304,8 +421,8 @@ export const getInstanceByName: API.OperationMethod<
   GetInstanceByNameError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9) as any as S.Schema<GetInstanceByNameRequest>,
-  output: __S(4) as any as S.Schema<Instance>,
+  input: GetInstanceByNameRequest,
+  output: Instance,
   errors: [BadRequest, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -319,8 +436,8 @@ export const getKubeconfigByInstanceId: API.OperationMethod<
   GetKubeconfigByInstanceIdError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10) as any as S.Schema<GetKubeconfigByInstanceIdRequest>,
-  output: __S(12) as any as S.Schema<Kubeconfig>,
+  input: GetKubeconfigByInstanceIdRequest,
+  output: Kubeconfig,
   errors: [BadRequest, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -334,8 +451,8 @@ export const getKubeconfigByInstanceName: API.OperationMethod<
   GetKubeconfigByInstanceNameError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13) as any as S.Schema<GetKubeconfigByInstanceNameRequest>,
-  output: __S(12) as any as S.Schema<Kubeconfig>,
+  input: GetKubeconfigByInstanceNameRequest,
+  output: Kubeconfig,
   errors: [BadRequest, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -349,8 +466,8 @@ export const getTokenByInstanceId: API.OperationMethod<
   GetTokenByInstanceIdError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14) as any as S.Schema<GetTokenByInstanceIdRequest>,
-  output: __S(15) as any as S.Schema<Token>,
+  input: GetTokenByInstanceIdRequest,
+  output: Token,
   errors: [BadRequest, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -364,8 +481,8 @@ export const getTokenByInstanceName: API.OperationMethod<
   GetTokenByInstanceNameError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16) as any as S.Schema<GetTokenByInstanceNameRequest>,
-  output: __S(15) as any as S.Schema<Token>,
+  input: GetTokenByInstanceNameRequest,
+  output: Token,
   errors: [BadRequest, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -378,8 +495,8 @@ export const listCompatibleKubernetesReleases: API.OperationMethod<
   ListCompatibleKubernetesReleasesError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17) as any as S.Schema<ListCompatibleKubernetesReleasesRequest>,
-  output: __S(19) as any as S.Schema<KubernetesReleaseList>,
+  input: ListCompatibleKubernetesReleasesRequest,
+  output: KubernetesReleaseList,
   errors: [BadRequest, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -393,8 +510,8 @@ export const listInstances: API.OperationMethod<
   ListInstancesError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20) as any as S.Schema<ListInstancesRequest>,
-  output: __S(22) as any as S.Schema<InstanceList>,
+  input: ListInstancesRequest,
+  output: InstanceList,
   errors: [BadRequest, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -408,8 +525,8 @@ export const listPlansProject: API.OperationMethod<
   ListPlansProjectError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23) as any as S.Schema<ListPlansProjectRequest>,
-  output: __S(26) as any as S.Schema<PlanList>,
+  input: ListPlansProjectRequest,
+  output: PlanList,
   errors: [BadRequest, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -423,8 +540,8 @@ export const updateInstance: API.OperationMethod<
   UpdateInstanceError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27) as any as S.Schema<UpdateInstanceRequest>,
-  output: __S(6) as any as S.Schema<UpdateInstanceResponse>,
+  input: UpdateInstanceRequest,
+  output: UpdateInstanceResponse,
   errors: [BadRequest, NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -438,8 +555,8 @@ export const updateInstanceByName: API.OperationMethod<
   UpdateInstanceByNameError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28) as any as S.Schema<UpdateInstanceByNameRequest>,
-  output: __S(6) as any as S.Schema<UpdateInstanceByNameResponse>,
+  input: UpdateInstanceByNameRequest,
+  output: UpdateInstanceByNameResponse,
   errors: [BadRequest, NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -476,24 +593,24 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "IpAllowListEntry" });
     case 2:
-      return S.Array(__S(1));
+      return S.Array(IpAllowListEntry);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          ipAllowList: S.optional(__S(2)),
+          ipAllowList: S.optional(AclIpAllowListList),
         }),
       ).annotate({ identifier: "Acl" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          acl: S.optional(__S(3)),
+          acl: S.optional(Acl),
           created: S.String,
           description: S.optional(S.String),
           displayName: S.String,
           frontendUrl: S.String,
           id: S.String,
           planId: S.String,
-          status: S.String,
+          status: InstanceStatus,
         }),
       ).annotate({ identifier: "Instance" });
     case 5:
@@ -589,7 +706,7 @@ function __c1(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          kubeconfig: __S(11),
+          kubeconfig: KubeconfigRaw,
         }),
       ).annotate({ identifier: "Kubeconfig" });
     case 5:
@@ -676,7 +793,7 @@ function __c2(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          k8s_releases: __S(18),
+          k8s_releases: KubernetesReleaseListK8sReleasesList,
         }),
       ).annotate({ identifier: "KubernetesReleaseList" });
     case 4:
@@ -694,11 +811,11 @@ function __c2(j: number): any {
         ),
       ).annotate({ identifier: "ListInstancesRequest" });
     case 5:
-      return S.Array(__S(4));
+      return S.Array(Instance);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          instances: __S(21),
+          instances: InstanceListInstancesList,
         }),
       ).annotate({ identifier: "InstanceList" });
     case 7:
@@ -729,11 +846,11 @@ function __c3(j: number): any {
         }),
       ).annotate({ identifier: "Plan" });
     case 1:
-      return S.Array(__S(24));
+      return S.Array(Plan);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          validPlans: S.optional(__S(25)),
+          validPlans: S.optional(PlanListValidPlansList),
         }),
       ).annotate({ identifier: "PlanList" });
     case 3:
@@ -772,22 +889,5 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "UpdateInstanceByNameRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
   }
 }

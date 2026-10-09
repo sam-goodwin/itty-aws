@@ -6,8 +6,6 @@ import * as S from "@distilled.cloud/core/schema";
 import { VercelProtocol, type VercelOpError, type VercelOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { VercelOpError, VercelOpContext };
 
@@ -40,6 +38,8 @@ export class NotFound
 
 /** The project role of the member that will be added. */
 export type AddProjectMemberRequestRole = "ADMIN" | "PROJECT_VIEWER" | "PROJECT_DEVELOPER";
+const AddProjectMemberRequestRole = S.String;
+
 export interface AddProjectMemberRequest {
   /** The ID or name of the Project. */
   idOrName: string;
@@ -56,9 +56,19 @@ export interface AddProjectMemberRequest {
   /** The project role of the member that will be added. */
   role: AddProjectMemberRequestRole | (string & {});
 }
+const AddProjectMemberRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<AddProjectMemberRequest>;
+
 export interface AddProjectMemberResponse {
   id: string;
 }
+const AddProjectMemberResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<AddProjectMemberResponse>;
+
 export interface GetProjectMembersRequest {
   /** The ID or name of the Project. */
   idOrName: string;
@@ -75,6 +85,11 @@ export interface GetProjectMembersRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
+const GetProjectMembersRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<GetProjectMembersRequest>;
+
 /** Role of this user in the project. */
 export type GetProjectMembersResponseBodyCase1MembersItemComputedProjectRole =
   | "ADMIN"
@@ -134,7 +149,14 @@ export interface GetProjectMembersResponseBodyCase1 {
   pagination: GetProjectMembersResponseBodyCase1Pagination;
 }
 export type GetProjectMembersResponseBody = unknown | GetProjectMembersResponseBodyCase1;
+const GetProjectMembersResponseBody = S.Unknown as any as S.Schema<GetProjectMembersResponseBody>;
+
 export type GetProjectMembersResponse = GetProjectMembersResponseBody;
+const GetProjectMembersResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<GetProjectMembersResponse>;
+
 export interface RemoveProjectMemberRequest {
   /** The ID or name of the Project. */
   idOrName: string;
@@ -145,9 +167,19 @@ export interface RemoveProjectMemberRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
+const RemoveProjectMemberRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<RemoveProjectMemberRequest>;
+
 export interface RemoveProjectMemberResponse {
   id: string;
 }
+const RemoveProjectMemberResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<RemoveProjectMemberResponse>;
+
 export type AddProjectMemberError = BadRequest | Forbidden | NotFound | VercelOpError;
 /** Adds a new member to a project. Adds a new member to the project. */
 export const addProjectMember: API.OperationMethod<
@@ -156,8 +188,8 @@ export const addProjectMember: API.OperationMethod<
   AddProjectMemberError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<AddProjectMemberRequest>,
-  output: __S(1) as any as S.Schema<AddProjectMemberResponse>,
+  input: AddProjectMemberRequest,
+  output: AddProjectMemberResponse,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -171,8 +203,8 @@ export const getProjectMembers: API.OperationMethod<
   GetProjectMembersError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2) as any as S.Schema<GetProjectMembersRequest>,
-  output: __S(3) as any as S.Schema<GetProjectMembersResponse>,
+  input: GetProjectMembersRequest,
+  output: GetProjectMembersResponse,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -186,8 +218,8 @@ export const removeProjectMember: API.OperationMethod<
   RemoveProjectMemberError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4) as any as S.Schema<RemoveProjectMemberRequest>,
-  output: __S(5) as any as S.Schema<RemoveProjectMemberResponse>,
+  input: RemoveProjectMemberRequest,
+  output: RemoveProjectMemberResponse,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -205,7 +237,7 @@ function __c0(j: number): any {
           uid: S.optional(S.String),
           username: S.optional(S.String),
           email: S.optional(S.String),
-          role: S.String,
+          role: AddProjectMemberRequestRole,
         }).pipe(T.Http({ method: "POST", uri: "/v1/projects/{idOrName}/members", code: 200 })),
       ).annotate({ identifier: "AddProjectMemberRequest" });
     case 1:
@@ -227,7 +259,7 @@ function __c0(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/v1/projects/{idOrName}/members", code: 200 })),
       ).annotate({ identifier: "GetProjectMembersRequest" });
     case 3:
-      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => GetProjectMembersResponseBody.pipe(T.RawResponseRoot())).annotate({
         identifier: "GetProjectMembersResponse",
       });
     case 4:
@@ -251,16 +283,5 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "RemoveProjectMemberResponse",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
   }
 }

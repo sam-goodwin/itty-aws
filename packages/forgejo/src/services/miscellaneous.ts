@@ -6,8 +6,6 @@ import * as S from "@distilled.cloud/core/schema";
 import { ForgejoProtocol, type ForgejoOpError, type ForgejoOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { ForgejoOpError, ForgejoOpContext };
 
@@ -30,6 +28,8 @@ export class UnprocessableEntity
   ) {}
 
 export interface GetActionsRunRequest {}
+const GetActionsRunRequest = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<GetActionsRunRequest>;
+
 /** ExternalTracker represents settings for external tracker */
 export interface ExternalTracker {
   /** External Issue Tracker URL Format. Use the placeholders {user}, {repo} and {index} for the username, repository name and issue index. */
@@ -41,11 +41,15 @@ export interface ExternalTracker {
   /** URL of external issue tracker. */
   external_tracker_url?: string;
 }
+const ExternalTracker = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<ExternalTracker>;
+
 /** ExternalWiki represents setting for external wiki */
 export interface ExternalWiki {
   /** URL of external wiki. */
   external_wiki_url?: string;
 }
+const ExternalWiki = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<ExternalWiki>;
+
 /** InternalTracker represents settings for internal tracker */
 export interface InternalTracker {
   /** Let only contributors track time (Built-in issue tracker) */
@@ -55,8 +59,12 @@ export interface InternalTracker {
   /** Enable time tracking (Built-in issue tracker) */
   enable_time_tracker?: boolean;
 }
+const InternalTracker = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<InternalTracker>;
+
 /** ObjectFormatName of the underlying git repository */
 export type RepositoryObjectFormatName = "sha1" | "sha256";
+const RepositoryObjectFormatName = S.String;
+
 /** User represents a user */
 export interface User {
   /** Is user active */
@@ -101,12 +109,16 @@ export interface User {
   /** the user's website */
   website?: string;
 }
+const User = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<User>;
+
 /** Permission represents a set of permissions */
 export interface Permission {
   admin?: boolean;
   pull?: boolean;
   push?: boolean;
 }
+const Permission = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<Permission>;
+
 /** Organization represents an organization */
 export interface Organization {
   avatar_url?: string;
@@ -123,9 +135,17 @@ export interface Organization {
   visibility?: string;
   website?: string;
 }
+const Organization = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<Organization>;
+
 export type TeamPermission = "none" | "read" | "write" | "admin" | "owner";
+const TeamPermission = S.String;
+
 export type TeamUnitsList = Array<string>;
+const TeamUnitsList = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<TeamUnitsList>;
+
 export type TeamUnitsMapMap = { [key: string]: string | undefined };
+const TeamUnitsMapMap = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<TeamUnitsMapMap>;
+
 /** Team represents a team in an organization */
 export interface Team {
   can_create_org_repo?: boolean;
@@ -138,14 +158,25 @@ export interface Team {
   units?: TeamUnitsList;
   units_map?: TeamUnitsMapMap;
 }
+const Team = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<Team>;
+
 export type RepoTransferTeamsList = Array<Team>;
+const RepoTransferTeamsList = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<RepoTransferTeamsList>;
+
 /** RepoTransfer represents a pending repo transfer */
 export interface RepoTransfer {
   doer?: User;
   recipient?: User;
   teams?: RepoTransferTeamsList;
 }
+const RepoTransfer = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<RepoTransfer>;
+
 export type RepositoryTopicsList = Array<string>;
+const RepositoryTopicsList = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<RepositoryTopicsList>;
+
 /** Repository represents a repository */
 export interface Repository {
   allow_fast_forward_only_merge?: boolean;
@@ -218,6 +249,8 @@ export interface Repository {
   wiki_clone_url?: string;
   wiki_ssh_url?: string;
 }
+const Repository = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<Repository>;
+
 /** ActionRun represents an action run */
 export interface ActionRun {
   /** the cron id for the schedule trigger */
@@ -264,19 +297,36 @@ export interface ActionRun {
   /** the name of workflow file */
   workflow_id?: string;
 }
+const ActionRun = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<ActionRun>;
+
 export interface GetGitignoreTemplateInfoRequest {
   /** name of the template */
   name: string;
 }
+const GetGitignoreTemplateInfoRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<GetGitignoreTemplateInfoRequest>;
+
 /** GitignoreTemplateInfo name and text of a gitignore template */
 export interface GitignoreTemplateInfo {
   name?: string;
   source?: string;
 }
+const GitignoreTemplateInfo = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<GitignoreTemplateInfo>;
+
 export interface GetLabelTemplateInfoRequest {
   /** name of the template */
   name: string;
 }
+const GetLabelTemplateInfoRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<GetLabelTemplateInfoRequest>;
+
 /** LabelTemplate info of a Label template */
 export interface LabelTemplate {
   color?: string;
@@ -284,12 +334,29 @@ export interface LabelTemplate {
   exclusive?: boolean;
   name?: string;
 }
+const LabelTemplate = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<LabelTemplate>;
+
 export type GetLabelTemplateInfoResponseBodyList = Array<LabelTemplate>;
+const GetLabelTemplateInfoResponseBodyList = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<GetLabelTemplateInfoResponseBodyList>;
+
 export type GetLabelTemplateInfoResponse = GetLabelTemplateInfoResponseBodyList;
+const GetLabelTemplateInfoResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<GetLabelTemplateInfoResponse>;
+
 export interface GetLicenseTemplateInfoRequest {
   /** name of the license */
   name: string;
 }
+const GetLicenseTemplateInfoRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<GetLicenseTemplateInfoRequest>;
+
 /** LicensesInfo contains information about a License */
 export interface LicenseTemplateInfo {
   body?: string;
@@ -298,15 +365,29 @@ export interface LicenseTemplateInfo {
   name?: string;
   url?: string;
 }
+const LicenseTemplateInfo = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<LicenseTemplateInfo>;
+
 export interface GetNodeInfoRequest {}
+const GetNodeInfoRequest = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<GetNodeInfoRequest>;
+
 export type NodeInfoProtocolsList = Array<string>;
+const NodeInfoProtocolsList = RepositoryTopicsList as any as S.Schema<NodeInfoProtocolsList>;
+
 export type NodeInfoServicesInboundList = Array<string>;
+const NodeInfoServicesInboundList =
+  RepositoryTopicsList as any as S.Schema<NodeInfoServicesInboundList>;
+
 export type NodeInfoServicesOutboundList = Array<string>;
+const NodeInfoServicesOutboundList =
+  RepositoryTopicsList as any as S.Schema<NodeInfoServicesOutboundList>;
+
 /** NodeInfoServices contains the third party sites this server can connect to via their application API */
 export interface NodeInfoServices {
   inbound?: NodeInfoServicesInboundList;
   outbound?: NodeInfoServicesOutboundList;
 }
+const NodeInfoServices = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<NodeInfoServices>;
+
 /** NodeInfoSoftware contains Metadata about server software in use */
 export interface NodeInfoSoftware {
   homepage?: string;
@@ -314,18 +395,24 @@ export interface NodeInfoSoftware {
   repository?: string;
   version?: string;
 }
+const NodeInfoSoftware = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<NodeInfoSoftware>;
+
 /** NodeInfoUsageUsers contains statistics about the users of this server */
 export interface NodeInfoUsageUsers {
   activeHalfyear?: number;
   activeMonth?: number;
   total?: number;
 }
+const NodeInfoUsageUsers = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<NodeInfoUsageUsers>;
+
 /** NodeInfoUsage contains usage statistics for this server */
 export interface NodeInfoUsage {
   localComments?: number;
   localPosts?: number;
   users?: NodeInfoUsageUsers;
 }
+const NodeInfoUsage = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<NodeInfoUsage>;
+
 /** NodeInfo contains standardized way of exposing metadata about a server running one of the distributed social networks */
 export interface NodeInfo {
   metadata?: unknown;
@@ -336,30 +423,91 @@ export interface NodeInfo {
   usage?: NodeInfoUsage;
   version?: string;
 }
+const NodeInfo = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<NodeInfo>;
+
 export interface GetSigningKeyRequest {}
+const GetSigningKeyRequest = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<GetSigningKeyRequest>;
+
 export type GetSigningKeyResponse = string;
+const GetSigningKeyResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<GetSigningKeyResponse>;
+
 export interface GetSSHSigningKeyRequest {}
+const GetSSHSigningKeyRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<GetSSHSigningKeyRequest>;
+
 export type GetSSHSigningKeyResponse = string;
+const GetSSHSigningKeyResponse = GetSigningKeyResponse as any as S.Schema<GetSSHSigningKeyResponse>;
+
 export interface GetVersionRequest {}
+const GetVersionRequest = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<GetVersionRequest>;
+
 /** ServerVersion wraps the version of the server */
 export interface ServerVersion {
   version?: string;
 }
+const ServerVersion = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<ServerVersion>;
+
 export interface ListGitignoresTemplatesRequest {}
+const ListGitignoresTemplatesRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<ListGitignoresTemplatesRequest>;
+
 export type ListGitignoresTemplatesResponseBodyList = Array<string>;
+const ListGitignoresTemplatesResponseBodyList =
+  RepositoryTopicsList as any as S.Schema<ListGitignoresTemplatesResponseBodyList>;
+
 export type ListGitignoresTemplatesResponse = ListGitignoresTemplatesResponseBodyList;
+const ListGitignoresTemplatesResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<ListGitignoresTemplatesResponse>;
+
 export interface ListLabelTemplatesRequest {}
+const ListLabelTemplatesRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<ListLabelTemplatesRequest>;
+
 export type ListLabelTemplatesResponseBodyList = Array<string>;
 export type ListLabelTemplatesResponse = ListLabelTemplatesResponseBodyList;
+const ListLabelTemplatesResponse =
+  ListGitignoresTemplatesResponse as any as S.Schema<ListLabelTemplatesResponse>;
+
 export interface ListLicenseTemplatesRequest {}
+const ListLicenseTemplatesRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<ListLicenseTemplatesRequest>;
+
 /** LicensesListEntry is used for the API */
 export interface LicensesTemplateListEntry {
   key?: string;
   name?: string;
   url?: string;
 }
+const LicensesTemplateListEntry = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<LicensesTemplateListEntry>;
+
 export type ListLicenseTemplatesResponseBodyList = Array<LicensesTemplateListEntry>;
+const ListLicenseTemplatesResponseBodyList = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<ListLicenseTemplatesResponseBodyList>;
+
 export type ListLicenseTemplatesResponse = ListLicenseTemplatesResponseBodyList;
+const ListLicenseTemplatesResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  0,
+) as any as S.Schema<ListLicenseTemplatesResponse>;
+
 export interface RenderMarkdownRequest {
   /** Context to render */
   Context?: string;
@@ -370,11 +518,28 @@ export interface RenderMarkdownRequest {
   /** Is it a wiki page ? */
   Wiki?: boolean;
 }
+const RenderMarkdownRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  1,
+) as any as S.Schema<RenderMarkdownRequest>;
+
 export type RenderMarkdownResponse = string;
+const RenderMarkdownResponse = GetSigningKeyResponse as any as S.Schema<RenderMarkdownResponse>;
+
 export interface RenderMarkdownRawRequest {
   body: string;
 }
+const RenderMarkdownRawRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  2,
+) as any as S.Schema<RenderMarkdownRawRequest>;
+
 export type RenderMarkdownRawResponse = string;
+const RenderMarkdownRawResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<RenderMarkdownRawResponse>;
+
 export interface RenderMarkupRequest {
   /** The current branch path where the form gets posted */
   BranchPath?: string;
@@ -389,7 +554,11 @@ export interface RenderMarkupRequest {
   /** Is it a wiki page ? */
   Wiki?: boolean;
 }
+const RenderMarkupRequest = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<RenderMarkupRequest>;
+
 export type RenderMarkupResponse = string;
+const RenderMarkupResponse = GetSigningKeyResponse as any as S.Schema<RenderMarkupResponse>;
+
 export type GetActionsRunError = ForgejoOpError;
 /** Get a workflow run associated with a token The automatic actions token must be used as the authentication mechanism (<code>Authorization: Bearer $&#x7b;&#x7b; forgejo.token &#x7d;&#x7d;</code>); other types of tokens cannot be used. The token is associated with the job, which must be still running for the request to this endpoint to succeed. */
 export const getActionsRun: API.OperationMethod<
@@ -398,8 +567,8 @@ export const getActionsRun: API.OperationMethod<
   GetActionsRunError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<GetActionsRunRequest>,
-  output: __S(14) as any as S.Schema<ActionRun>,
+  input: GetActionsRunRequest,
+  output: ActionRun,
   errors: [],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -413,8 +582,8 @@ export const getGitignoreTemplateInfo: API.OperationMethod<
   GetGitignoreTemplateInfoError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15) as any as S.Schema<GetGitignoreTemplateInfoRequest>,
-  output: __S(16) as any as S.Schema<GitignoreTemplateInfo>,
+  input: GetGitignoreTemplateInfoRequest,
+  output: GitignoreTemplateInfo,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -428,8 +597,8 @@ export const getLabelTemplateInfo: API.OperationMethod<
   GetLabelTemplateInfoError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17) as any as S.Schema<GetLabelTemplateInfoRequest>,
-  output: __S(20) as any as S.Schema<GetLabelTemplateInfoResponse>,
+  input: GetLabelTemplateInfoRequest,
+  output: GetLabelTemplateInfoResponse,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -443,8 +612,8 @@ export const getLicenseTemplateInfo: API.OperationMethod<
   GetLicenseTemplateInfoError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21) as any as S.Schema<GetLicenseTemplateInfoRequest>,
-  output: __S(22) as any as S.Schema<LicenseTemplateInfo>,
+  input: GetLicenseTemplateInfoRequest,
+  output: LicenseTemplateInfo,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -458,8 +627,8 @@ export const getNodeInfo: API.OperationMethod<
   GetNodeInfoError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23) as any as S.Schema<GetNodeInfoRequest>,
-  output: __S(28) as any as S.Schema<NodeInfo>,
+  input: GetNodeInfoRequest,
+  output: NodeInfo,
   errors: [],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -473,8 +642,8 @@ export const getSigningKey: API.OperationMethod<
   GetSigningKeyError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29) as any as S.Schema<GetSigningKeyRequest>,
-  output: __S(30) as any as S.Schema<GetSigningKeyResponse>,
+  input: GetSigningKeyRequest,
+  output: GetSigningKeyResponse,
   errors: [],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -488,8 +657,8 @@ export const getSSHSigningKey: API.OperationMethod<
   GetSSHSigningKeyError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31) as any as S.Schema<GetSSHSigningKeyRequest>,
-  output: __S(30) as any as S.Schema<GetSSHSigningKeyResponse>,
+  input: GetSSHSigningKeyRequest,
+  output: GetSSHSigningKeyResponse,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -503,8 +672,8 @@ export const getVersion: API.OperationMethod<
   GetVersionError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32) as any as S.Schema<GetVersionRequest>,
-  output: __S(33) as any as S.Schema<ServerVersion>,
+  input: GetVersionRequest,
+  output: ServerVersion,
   errors: [],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -518,8 +687,8 @@ export const listGitignoresTemplates: API.OperationMethod<
   ListGitignoresTemplatesError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34) as any as S.Schema<ListGitignoresTemplatesRequest>,
-  output: __S(35) as any as S.Schema<ListGitignoresTemplatesResponse>,
+  input: ListGitignoresTemplatesRequest,
+  output: ListGitignoresTemplatesResponse,
   errors: [],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -533,8 +702,8 @@ export const listLabelTemplates: API.OperationMethod<
   ListLabelTemplatesError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36) as any as S.Schema<ListLabelTemplatesRequest>,
-  output: __S(35) as any as S.Schema<ListLabelTemplatesResponse>,
+  input: ListLabelTemplatesRequest,
+  output: ListLabelTemplatesResponse,
   errors: [],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -548,8 +717,8 @@ export const listLicenseTemplates: API.OperationMethod<
   ListLicenseTemplatesError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37) as any as S.Schema<ListLicenseTemplatesRequest>,
-  output: __S(40) as any as S.Schema<ListLicenseTemplatesResponse>,
+  input: ListLicenseTemplatesRequest,
+  output: ListLicenseTemplatesResponse,
   errors: [],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -563,8 +732,8 @@ export const renderMarkdown: API.OperationMethod<
   RenderMarkdownError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41) as any as S.Schema<RenderMarkdownRequest>,
-  output: __S(30) as any as S.Schema<RenderMarkdownResponse>,
+  input: RenderMarkdownRequest,
+  output: RenderMarkdownResponse,
   errors: [UnprocessableEntity],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -578,8 +747,8 @@ export const renderMarkdownRaw: API.OperationMethod<
   RenderMarkdownRawError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42) as any as S.Schema<RenderMarkdownRawRequest>,
-  output: __S(43) as any as S.Schema<RenderMarkdownRawResponse>,
+  input: RenderMarkdownRawRequest,
+  output: RenderMarkdownRawResponse,
   errors: [UnprocessableEntity],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -593,8 +762,8 @@ export const renderMarkup: API.OperationMethod<
   RenderMarkupError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44) as any as S.Schema<RenderMarkupRequest>,
-  output: __S(30) as any as S.Schema<RenderMarkupResponse>,
+  input: RenderMarkupRequest,
+  output: RenderMarkupResponse,
   errors: [UnprocessableEntity],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -699,20 +868,20 @@ function __c1(j: number): any {
           id: S.Number,
           includes_all_repositories: S.optional(S.Boolean),
           name: S.String,
-          organization: S.optional(__S(6)),
-          permission: S.optional(S.String),
-          units: S.optional(__S(7)),
-          units_map: S.optional(__S(8)),
+          organization: S.optional(Organization),
+          permission: S.optional(TeamPermission),
+          units: S.optional(TeamUnitsList),
+          units_map: S.optional(TeamUnitsMapMap),
         }),
       ).annotate({ identifier: "Team" });
     case 2:
-      return S.Array(__S(9));
+      return S.Array(Team);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          doer: S.optional(__S(4)),
-          recipient: S.optional(__S(4)),
-          teams: S.optional(__S(10)),
+          doer: S.optional(User),
+          recipient: S.optional(User),
+          teams: S.optional(RepoTransferTeamsList),
         }),
       ).annotate({ identifier: "RepoTransfer" });
     case 4:
@@ -738,8 +907,8 @@ function __c1(j: number): any {
           default_update_style: S.optional(S.String),
           description: S.optional(S.String),
           empty: S.optional(S.Boolean),
-          external_tracker: S.optional(__S(1)),
-          external_wiki: S.optional(__S(2)),
+          external_tracker: S.optional(ExternalTracker),
+          external_wiki: S.optional(ExternalWiki),
           fork: S.optional(S.Boolean),
           forks_count: S.optional(S.Number),
           full_name: S.String,
@@ -756,7 +925,7 @@ function __c1(j: number): any {
           id: S.Number,
           ignore_whitespace_conflicts: S.optional(S.Boolean),
           internal: S.optional(S.Boolean),
-          internal_tracker: S.optional(__S(3)),
+          internal_tracker: S.optional(InternalTracker),
           language: S.optional(S.String),
           languages_url: S.optional(S.String),
           link: S.optional(S.String),
@@ -764,21 +933,21 @@ function __c1(j: number): any {
           mirror_interval: S.optional(S.String),
           mirror_updated: S.optional(S.String),
           name: S.String,
-          object_format_name: S.optional(S.String),
+          object_format_name: S.optional(RepositoryObjectFormatName),
           open_issues_count: S.optional(S.Number),
           open_pr_counter: S.optional(S.Number),
           original_url: S.optional(S.String),
-          owner: __S(4),
-          parent: S.optional(__S(13)),
-          permissions: S.optional(__S(5)),
+          owner: User,
+          parent: S.optional(Repository),
+          permissions: S.optional(Permission),
           private: S.optional(S.Boolean),
           release_counter: S.optional(S.Number),
-          repo_transfer: S.optional(__S(11)),
+          repo_transfer: S.optional(RepoTransfer),
           size: S.optional(S.Number),
           ssh_url: S.String,
           stars_count: S.optional(S.Number),
           template: S.optional(S.Boolean),
-          topics: S.optional(__S(12)),
+          topics: S.optional(RepositoryTopicsList),
           updated_at: S.String,
           url: S.optional(S.String),
           watchers_count: S.optional(S.Number),
@@ -805,13 +974,13 @@ function __c1(j: number): any {
           is_ref_deleted: S.optional(S.Boolean),
           need_approval: S.optional(S.Boolean),
           prettyref: S.optional(S.String),
-          repository: S.optional(__S(13)),
+          repository: S.optional(Repository),
           started: S.optional(S.String),
           status: S.optional(S.String),
           stopped: S.optional(S.String),
           title: S.optional(S.String),
           trigger_event: S.optional(S.String),
-          trigger_user: S.optional(__S(4)),
+          trigger_user: S.optional(User),
           updated: S.optional(S.String),
           workflow_id: S.optional(S.String),
         }),
@@ -853,9 +1022,11 @@ function __c2(j: number): any {
         }),
       ).annotate({ identifier: "LabelTemplate" });
     case 3:
-      return S.Array(__S(18));
+      return S.Array(LabelTemplate);
     case 4:
-      return S.suspend(() => __S(19).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        GetLabelTemplateInfoResponseBodyList.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "GetLabelTemplateInfoResponse",
       });
     case 5:
@@ -887,8 +1058,8 @@ function __c3(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          inbound: S.optional(__S(12)),
-          outbound: S.optional(__S(12)),
+          inbound: S.optional(NodeInfoServicesInboundList),
+          outbound: S.optional(NodeInfoServicesOutboundList),
         }),
       ).annotate({ identifier: "NodeInfoServices" });
     case 1:
@@ -913,7 +1084,7 @@ function __c3(j: number): any {
         S.Struct({
           localComments: S.optional(S.Number),
           localPosts: S.optional(S.Number),
-          users: S.optional(__S(26)),
+          users: S.optional(NodeInfoUsageUsers),
         }),
       ).annotate({ identifier: "NodeInfoUsage" });
     case 4:
@@ -921,10 +1092,10 @@ function __c3(j: number): any {
         S.Struct({
           metadata: S.optional(S.Unknown),
           openRegistrations: S.optional(S.Boolean),
-          protocols: S.optional(__S(12)),
-          services: S.optional(__S(24)),
-          software: S.optional(__S(25)),
-          usage: S.optional(__S(27)),
+          protocols: S.optional(NodeInfoProtocolsList),
+          services: S.optional(NodeInfoServices),
+          software: S.optional(NodeInfoSoftware),
+          usage: S.optional(NodeInfoUsage),
           version: S.optional(S.String),
         }),
       ).annotate({ identifier: "NodeInfo" });
@@ -961,7 +1132,9 @@ function __c4(j: number): any {
         identifier: "ListGitignoresTemplatesRequest",
       });
     case 3:
-      return S.suspend(() => __S(12).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        ListGitignoresTemplatesResponseBodyList.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "ListGitignoresTemplatesResponse",
       });
     case 4:
@@ -987,13 +1160,15 @@ function __c4(j: number): any {
         identifier: "LicensesTemplateListEntry",
       });
     case 7:
-      return S.Array(__S(38));
+      return S.Array(LicensesTemplateListEntry);
   }
 }
 function __c5(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => __S(39).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        ListLicenseTemplatesResponseBodyList.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "ListLicenseTemplatesResponse",
       });
     case 1:
@@ -1026,26 +1201,5 @@ function __c5(j: number): any {
           Wiki: S.optional(S.Boolean),
         }).pipe(T.Http({ method: "POST", uri: "/markup", code: 200 })),
       ).annotate({ identifier: "RenderMarkupRequest" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
   }
 }

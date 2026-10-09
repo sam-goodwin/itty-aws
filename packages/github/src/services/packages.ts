@@ -6,8 +6,6 @@ import * as S from "@distilled.cloud/core/schema";
 import { GithubProtocol, type GithubOpError, type GithubOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { GithubOpError, GithubOpContext };
 
@@ -45,13 +43,25 @@ export type DeletePackageForAuthenticatedUserRequestPackageType =
   | "docker"
   | "nuget"
   | "container";
+const DeletePackageForAuthenticatedUserRequestPackageType = S.String;
+
 export interface DeletePackageForAuthenticatedUserRequest {
   /** The type of supported package. Packages in GitHub's Gradle registry have the type `maven`. Docker images pushed to GitHub's Container registry (`ghcr.io`) have the type `container`. You can use the type `docker` to find images that were pushed to GitHub's Docker registry (`docker.pkg.github.com`), even if these have now been migrated to the Container registry. */
   package_type: DeletePackageForAuthenticatedUserRequestPackageType | (string & {});
   /** The name of the package. */
   package_name: string;
 }
+const DeletePackageForAuthenticatedUserRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<DeletePackageForAuthenticatedUserRequest>;
+
 export interface DeletePackageForAuthenticatedUserResponse {}
+const DeletePackageForAuthenticatedUserResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<DeletePackageForAuthenticatedUserResponse>;
+
 export type DeletePackageForOrgRequestPackageType =
   | "npm"
   | "maven"
@@ -59,6 +69,8 @@ export type DeletePackageForOrgRequestPackageType =
   | "docker"
   | "nuget"
   | "container";
+const DeletePackageForOrgRequestPackageType = S.String;
+
 export interface DeletePackageForOrgRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -67,7 +79,17 @@ export interface DeletePackageForOrgRequest {
   /** The name of the package. */
   package_name: string;
 }
+const DeletePackageForOrgRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<DeletePackageForOrgRequest>;
+
 export interface DeletePackageForOrgResponse {}
+const DeletePackageForOrgResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<DeletePackageForOrgResponse>;
+
 export type DeletePackageForUserRequestPackageType =
   | "npm"
   | "maven"
@@ -75,6 +97,8 @@ export type DeletePackageForUserRequestPackageType =
   | "docker"
   | "nuget"
   | "container";
+const DeletePackageForUserRequestPackageType = S.String;
+
 export interface DeletePackageForUserRequest {
   /** The handle for the GitHub user account. */
   username: string;
@@ -83,7 +107,15 @@ export interface DeletePackageForUserRequest {
   /** The name of the package. */
   package_name: string;
 }
+const DeletePackageForUserRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<DeletePackageForUserRequest>;
+
 export interface DeletePackageForUserResponse {}
+const DeletePackageForUserResponse =
+  DeletePackageForOrgResponse as any as S.Schema<DeletePackageForUserResponse>;
+
 export type DeletePackageVersionForAuthenticatedUserRequestPackageType =
   | "npm"
   | "maven"
@@ -91,6 +123,8 @@ export type DeletePackageVersionForAuthenticatedUserRequestPackageType =
   | "docker"
   | "nuget"
   | "container";
+const DeletePackageVersionForAuthenticatedUserRequestPackageType = S.String;
+
 export interface DeletePackageVersionForAuthenticatedUserRequest {
   /** The type of supported package. Packages in GitHub's Gradle registry have the type `maven`. Docker images pushed to GitHub's Container registry (`ghcr.io`) have the type `container`. You can use the type `docker` to find images that were pushed to GitHub's Docker registry (`docker.pkg.github.com`), even if these have now been migrated to the Container registry. */
   package_type: DeletePackageVersionForAuthenticatedUserRequestPackageType | (string & {});
@@ -99,7 +133,15 @@ export interface DeletePackageVersionForAuthenticatedUserRequest {
   /** Unique identifier of the package version. */
   package_version_id: number;
 }
+const DeletePackageVersionForAuthenticatedUserRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<DeletePackageVersionForAuthenticatedUserRequest>;
+
 export interface DeletePackageVersionForAuthenticatedUserResponse {}
+const DeletePackageVersionForAuthenticatedUserResponse =
+  DeletePackageForAuthenticatedUserResponse as any as S.Schema<DeletePackageVersionForAuthenticatedUserResponse>;
+
 export type DeletePackageVersionForOrgRequestPackageType =
   | "npm"
   | "maven"
@@ -107,6 +149,8 @@ export type DeletePackageVersionForOrgRequestPackageType =
   | "docker"
   | "nuget"
   | "container";
+const DeletePackageVersionForOrgRequestPackageType = S.String;
+
 export interface DeletePackageVersionForOrgRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -117,7 +161,15 @@ export interface DeletePackageVersionForOrgRequest {
   /** Unique identifier of the package version. */
   package_version_id: number;
 }
+const DeletePackageVersionForOrgRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<DeletePackageVersionForOrgRequest>;
+
 export interface DeletePackageVersionForOrgResponse {}
+const DeletePackageVersionForOrgResponse =
+  DeletePackageForAuthenticatedUserResponse as any as S.Schema<DeletePackageVersionForOrgResponse>;
+
 export type DeletePackageVersionForUserRequestPackageType =
   | "npm"
   | "maven"
@@ -125,6 +177,8 @@ export type DeletePackageVersionForUserRequestPackageType =
   | "docker"
   | "nuget"
   | "container";
+const DeletePackageVersionForUserRequestPackageType = S.String;
+
 export interface DeletePackageVersionForUserRequest {
   /** The handle for the GitHub user account. */
   username: string;
@@ -135,7 +189,15 @@ export interface DeletePackageVersionForUserRequest {
   /** Unique identifier of the package version. */
   package_version_id: number;
 }
+const DeletePackageVersionForUserRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<DeletePackageVersionForUserRequest>;
+
 export interface DeletePackageVersionForUserResponse {}
+const DeletePackageVersionForUserResponse =
+  DeletePackageForAuthenticatedUserResponse as any as S.Schema<DeletePackageVersionForUserResponse>;
+
 export type GetAllPackageVersionsForPackageOwnedByAuthenticatedUserRequestPackageType =
   | "npm"
   | "maven"
@@ -143,9 +205,13 @@ export type GetAllPackageVersionsForPackageOwnedByAuthenticatedUserRequestPackag
   | "docker"
   | "nuget"
   | "container";
+const GetAllPackageVersionsForPackageOwnedByAuthenticatedUserRequestPackageType = S.String;
+
 export type GetAllPackageVersionsForPackageOwnedByAuthenticatedUserRequestState =
   | "active"
   | "deleted";
+const GetAllPackageVersionsForPackageOwnedByAuthenticatedUserRequestState = S.String;
+
 export interface GetAllPackageVersionsForPackageOwnedByAuthenticatedUserRequest {
   /** The type of supported package. Packages in GitHub's Gradle registry have the type `maven`. Docker images pushed to GitHub's Container registry (`ghcr.io`) have the type `container`. You can use the type `docker` to find images that were pushed to GitHub's Docker registry (`docker.pkg.github.com`), even if these have now been migrated to the Container registry. */
   package_type:
@@ -160,6 +226,11 @@ export interface GetAllPackageVersionsForPackageOwnedByAuthenticatedUserRequest 
   /** The state of the package, either active or deleted. */
   state?: GetAllPackageVersionsForPackageOwnedByAuthenticatedUserRequestState | (string & {});
 }
+const GetAllPackageVersionsForPackageOwnedByAuthenticatedUserRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<GetAllPackageVersionsForPackageOwnedByAuthenticatedUserRequest>;
+
 export type PackageVersionMetadataPackageType =
   | "npm"
   | "maven"
@@ -167,19 +238,44 @@ export type PackageVersionMetadataPackageType =
   | "docker"
   | "nuget"
   | "container";
+const PackageVersionMetadataPackageType = S.String;
+
 export type PackageVersionMetadataContainerTagsList = Array<string>;
+const PackageVersionMetadataContainerTagsList = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<PackageVersionMetadataContainerTagsList>;
+
 export interface PackageVersionMetadataContainer {
   tags: PackageVersionMetadataContainerTagsList;
 }
+const PackageVersionMetadataContainer = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<PackageVersionMetadataContainer>;
+
 export type PackageVersionMetadataDockerTagList = Array<string>;
+const PackageVersionMetadataDockerTagList =
+  PackageVersionMetadataContainerTagsList as any as S.Schema<PackageVersionMetadataDockerTagList>;
+
 export interface PackageVersionMetadataDocker {
   tag?: PackageVersionMetadataDockerTagList;
 }
+const PackageVersionMetadataDocker = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<PackageVersionMetadataDocker>;
+
 export interface PackageVersionMetadata {
   package_type: PackageVersionMetadataPackageType;
   container?: PackageVersionMetadataContainer;
   docker?: PackageVersionMetadataDocker;
 }
+const PackageVersionMetadata = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<PackageVersionMetadata>;
+
 /** A version of a software package */
 export interface PackageVersion {
   /** Unique identifier of the package version. */
@@ -196,10 +292,23 @@ export interface PackageVersion {
   deleted_at?: string;
   metadata?: PackageVersionMetadata;
 }
+const PackageVersion = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<PackageVersion>;
+
 export type GetAllPackageVersionsForPackageOwnedByAuthenticatedUserResponseBodyList =
   Array<PackageVersion>;
+const GetAllPackageVersionsForPackageOwnedByAuthenticatedUserResponseBodyList =
+  /*@__PURE__*/ __L.at(
+    __c1,
+    6,
+  ) as any as S.Schema<GetAllPackageVersionsForPackageOwnedByAuthenticatedUserResponseBodyList>;
+
 export type GetAllPackageVersionsForPackageOwnedByAuthenticatedUserResponse =
   GetAllPackageVersionsForPackageOwnedByAuthenticatedUserResponseBodyList;
+const GetAllPackageVersionsForPackageOwnedByAuthenticatedUserResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<GetAllPackageVersionsForPackageOwnedByAuthenticatedUserResponse>;
+
 export type GetAllPackageVersionsForPackageOwnedByOrgRequestPackageType =
   | "npm"
   | "maven"
@@ -207,7 +316,11 @@ export type GetAllPackageVersionsForPackageOwnedByOrgRequestPackageType =
   | "docker"
   | "nuget"
   | "container";
+const GetAllPackageVersionsForPackageOwnedByOrgRequestPackageType = S.String;
+
 export type GetAllPackageVersionsForPackageOwnedByOrgRequestState = "active" | "deleted";
+const GetAllPackageVersionsForPackageOwnedByOrgRequestState = S.String;
+
 export interface GetAllPackageVersionsForPackageOwnedByOrgRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -222,9 +335,24 @@ export interface GetAllPackageVersionsForPackageOwnedByOrgRequest {
   /** The state of the package, either active or deleted. */
   state?: GetAllPackageVersionsForPackageOwnedByOrgRequestState | (string & {});
 }
+const GetAllPackageVersionsForPackageOwnedByOrgRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<GetAllPackageVersionsForPackageOwnedByOrgRequest>;
+
 export type GetAllPackageVersionsForPackageOwnedByOrgResponseBodyList = Array<PackageVersion>;
+const GetAllPackageVersionsForPackageOwnedByOrgResponseBodyList = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<GetAllPackageVersionsForPackageOwnedByOrgResponseBodyList>;
+
 export type GetAllPackageVersionsForPackageOwnedByOrgResponse =
   GetAllPackageVersionsForPackageOwnedByOrgResponseBodyList;
+const GetAllPackageVersionsForPackageOwnedByOrgResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<GetAllPackageVersionsForPackageOwnedByOrgResponse>;
+
 export type GetAllPackageVersionsForPackageOwnedByUserRequestPackageType =
   | "npm"
   | "maven"
@@ -232,6 +360,8 @@ export type GetAllPackageVersionsForPackageOwnedByUserRequestPackageType =
   | "docker"
   | "nuget"
   | "container";
+const GetAllPackageVersionsForPackageOwnedByUserRequestPackageType = S.String;
+
 export interface GetAllPackageVersionsForPackageOwnedByUserRequest {
   /** The handle for the GitHub user account. */
   username: string;
@@ -240,9 +370,17 @@ export interface GetAllPackageVersionsForPackageOwnedByUserRequest {
   /** The name of the package. */
   package_name: string;
 }
+const GetAllPackageVersionsForPackageOwnedByUserRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<GetAllPackageVersionsForPackageOwnedByUserRequest>;
+
 export type GetAllPackageVersionsForPackageOwnedByUserResponseBodyList = Array<PackageVersion>;
 export type GetAllPackageVersionsForPackageOwnedByUserResponse =
   GetAllPackageVersionsForPackageOwnedByUserResponseBodyList;
+const GetAllPackageVersionsForPackageOwnedByUserResponse =
+  GetAllPackageVersionsForPackageOwnedByOrgResponse as any as S.Schema<GetAllPackageVersionsForPackageOwnedByUserResponse>;
+
 export type GetPackageForAuthenticatedUserRequestPackageType =
   | "npm"
   | "maven"
@@ -250,14 +388,25 @@ export type GetPackageForAuthenticatedUserRequestPackageType =
   | "docker"
   | "nuget"
   | "container";
+const GetPackageForAuthenticatedUserRequestPackageType = S.String;
+
 export interface GetPackageForAuthenticatedUserRequest {
   /** The type of supported package. Packages in GitHub's Gradle registry have the type `maven`. Docker images pushed to GitHub's Container registry (`ghcr.io`) have the type `container`. You can use the type `docker` to find images that were pushed to GitHub's Docker registry (`docker.pkg.github.com`), even if these have now been migrated to the Container registry. */
   package_type: GetPackageForAuthenticatedUserRequestPackageType | (string & {});
   /** The name of the package. */
   package_name: string;
 }
+const GetPackageForAuthenticatedUserRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<GetPackageForAuthenticatedUserRequest>;
+
 export type PackagePackageType = "npm" | "maven" | "rubygems" | "docker" | "nuget" | "container";
+const PackagePackageType = S.String;
+
 export type PackageVisibility = "private" | "public";
+const PackageVisibility = S.String;
+
 /** A GitHub user. */
 export interface NullableSimpleUser {
   name?: string | null;
@@ -283,11 +432,18 @@ export interface NullableSimpleUser {
   starred_at?: string;
   user_view_type?: string;
 }
+const NullableSimpleUser = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<NullableSimpleUser>;
+
 /** A GitHub user. */
 export type SimpleUser = NullableSimpleUser;
 export type NullableMinimalRepositoryTopicsList = Array<string>;
+const NullableMinimalRepositoryTopicsList =
+  PackageVersionMetadataContainerTagsList as any as S.Schema<NullableMinimalRepositoryTopicsList>;
+
 /** The policy controlling who can create pull requests: all or collaborators_only. */
 export type NullableMinimalRepositoryPullRequestCreationPolicy = "all" | "collaborators_only";
+const NullableMinimalRepositoryPullRequestCreationPolicy = S.String;
+
 export interface NullableMinimalRepositoryPermissions {
   admin?: boolean;
   maintain?: boolean;
@@ -295,6 +451,11 @@ export interface NullableMinimalRepositoryPermissions {
   triage?: boolean;
   pull?: boolean;
 }
+const NullableMinimalRepositoryPermissions = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<NullableMinimalRepositoryPermissions>;
+
 /** Code Of Conduct */
 export interface CodeOfConduct {
   key: string;
@@ -303,6 +464,8 @@ export interface CodeOfConduct {
   body?: string;
   html_url: string | null;
 }
+const CodeOfConduct = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<CodeOfConduct>;
+
 export interface NullableMinimalRepositoryLicense {
   key?: string;
   name?: string;
@@ -310,15 +473,30 @@ export interface NullableMinimalRepositoryLicense {
   url?: string | null;
   node_id?: string;
 }
+const NullableMinimalRepositoryLicense = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<NullableMinimalRepositoryLicense>;
+
 export type SecurityAndAnalysisAdvancedSecurityStatus = "enabled" | "disabled";
+const SecurityAndAnalysisAdvancedSecurityStatus = S.String;
+
 /** Enable or disable GitHub Advanced Security for the repository. For standalone Code Scanning or Secret Protection products, this parameter cannot be used. */
 export interface SecurityAndAnalysisAdvancedSecurity {
   status?: SecurityAndAnalysisAdvancedSecurityStatus;
 }
+const SecurityAndAnalysisAdvancedSecurity = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<SecurityAndAnalysisAdvancedSecurity>;
+
 export type SecurityAndAnalysisCodeSecurityStatus = "enabled" | "disabled";
 export interface SecurityAndAnalysisCodeSecurity {
   status?: SecurityAndAnalysisCodeSecurityStatus;
 }
+const SecurityAndAnalysisCodeSecurity =
+  SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisCodeSecurity>;
+
 /** The enablement status of Dependabot security updates for the repository. */
 export type SecurityAndAnalysisDependabotSecurityUpdatesStatus = "enabled" | "disabled";
 /** Enable or disable Dependabot security updates for the repository. */
@@ -326,38 +504,67 @@ export interface SecurityAndAnalysisDependabotSecurityUpdates {
   /** The enablement status of Dependabot security updates for the repository. */
   status?: SecurityAndAnalysisDependabotSecurityUpdatesStatus;
 }
+const SecurityAndAnalysisDependabotSecurityUpdates =
+  SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisDependabotSecurityUpdates>;
+
 export type SecurityAndAnalysisSecretScanningStatus = "enabled" | "disabled";
 export interface SecurityAndAnalysisSecretScanning {
   status?: SecurityAndAnalysisSecretScanningStatus;
 }
+const SecurityAndAnalysisSecretScanning =
+  SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisSecretScanning>;
+
 export type SecurityAndAnalysisSecretScanningPushProtectionStatus = "enabled" | "disabled";
 export interface SecurityAndAnalysisSecretScanningPushProtection {
   status?: SecurityAndAnalysisSecretScanningPushProtectionStatus;
 }
+const SecurityAndAnalysisSecretScanningPushProtection =
+  SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisSecretScanningPushProtection>;
+
 export type SecurityAndAnalysisSecretScanningNonProviderPatternsStatus = "enabled" | "disabled";
 export interface SecurityAndAnalysisSecretScanningNonProviderPatterns {
   status?: SecurityAndAnalysisSecretScanningNonProviderPatternsStatus;
 }
+const SecurityAndAnalysisSecretScanningNonProviderPatterns =
+  SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisSecretScanningNonProviderPatterns>;
+
 export type SecurityAndAnalysisSecretScanningAiDetectionStatus = "enabled" | "disabled";
 export interface SecurityAndAnalysisSecretScanningAiDetection {
   status?: SecurityAndAnalysisSecretScanningAiDetectionStatus;
 }
+const SecurityAndAnalysisSecretScanningAiDetection =
+  SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisSecretScanningAiDetection>;
+
 export type SecurityAndAnalysisSecretScanningDelegatedAlertDismissalStatus = "enabled" | "disabled";
+const SecurityAndAnalysisSecretScanningDelegatedAlertDismissalStatus = S.String;
+
 export interface SecurityAndAnalysisSecretScanningDelegatedAlertDismissal {
   status?: SecurityAndAnalysisSecretScanningDelegatedAlertDismissalStatus;
 }
+const SecurityAndAnalysisSecretScanningDelegatedAlertDismissal = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<SecurityAndAnalysisSecretScanningDelegatedAlertDismissal>;
+
 export type SecurityAndAnalysisSecretScanningDelegatedBypassStatus = "enabled" | "disabled";
 export interface SecurityAndAnalysisSecretScanningDelegatedBypass {
   status?: SecurityAndAnalysisSecretScanningDelegatedBypassStatus;
 }
+const SecurityAndAnalysisSecretScanningDelegatedBypass =
+  SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisSecretScanningDelegatedBypass>;
+
 /** The type of the bypass reviewer */
 export type SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemReviewerType =
   | "TEAM"
   | "ROLE";
+const SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemReviewerType = S.String;
+
 /** The bypass mode for the reviewer */
 export type SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemMode =
   | "ALWAYS"
   | "EXEMPT";
+const SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemMode = S.String;
+
 export interface SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItem {
   /** The ID of the team or role selected as a bypass reviewer */
   reviewer_id: number;
@@ -366,13 +573,28 @@ export interface SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewer
   /** The bypass mode for the reviewer */
   mode?: SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemMode;
 }
+const SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItem = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItem>;
+
 /** The bypass reviewers for secret scanning delegated bypass */
 export type SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersList =
   Array<SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItem>;
+const SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersList = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersList>;
+
 export interface SecurityAndAnalysisSecretScanningDelegatedBypassOptions {
   /** The bypass reviewers for secret scanning delegated bypass */
   reviewers?: SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersList;
 }
+const SecurityAndAnalysisSecretScanningDelegatedBypassOptions = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<SecurityAndAnalysisSecretScanningDelegatedBypassOptions>;
+
 export interface SecurityAndAnalysis {
   /** Enable or disable GitHub Advanced Security for the repository. For standalone Code Scanning or Secret Protection products, this parameter cannot be used. */
   advanced_security?: SecurityAndAnalysisAdvancedSecurity;
@@ -387,8 +609,15 @@ export interface SecurityAndAnalysis {
   secret_scanning_delegated_bypass?: SecurityAndAnalysisSecretScanningDelegatedBypass;
   secret_scanning_delegated_bypass_options?: SecurityAndAnalysisSecretScanningDelegatedBypassOptions;
 }
+const SecurityAndAnalysis = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<SecurityAndAnalysis>;
+
 /** The custom properties that were defined for the repository. The keys are the custom property names, and the values are the corresponding custom property values. */
 export type NullableMinimalRepositoryCustomPropertiesMap = { [key: string]: unknown | undefined };
+const NullableMinimalRepositoryCustomPropertiesMap = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<NullableMinimalRepositoryCustomPropertiesMap>;
+
 /** Minimal Repository */
 export interface NullableMinimalRepository {
   id: number;
@@ -485,6 +714,11 @@ export interface NullableMinimalRepository {
   /** The custom properties that were defined for the repository. The keys are the custom property names, and the values are the corresponding custom property values. */
   custom_properties?: NullableMinimalRepositoryCustomPropertiesMap;
 }
+const NullableMinimalRepository = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<NullableMinimalRepository>;
+
 /** A software package */
 export interface Package {
   /** Unique identifier of the package. */
@@ -502,6 +736,8 @@ export interface Package {
   created_at: string;
   updated_at: string;
 }
+const Package = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<Package>;
+
 export type GetPackageForOrganizationRequestPackageType =
   | "npm"
   | "maven"
@@ -509,6 +745,8 @@ export type GetPackageForOrganizationRequestPackageType =
   | "docker"
   | "nuget"
   | "container";
+const GetPackageForOrganizationRequestPackageType = S.String;
+
 export interface GetPackageForOrganizationRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -517,6 +755,11 @@ export interface GetPackageForOrganizationRequest {
   /** The name of the package. */
   package_name: string;
 }
+const GetPackageForOrganizationRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<GetPackageForOrganizationRequest>;
+
 export type GetPackageForUserRequestPackageType =
   | "npm"
   | "maven"
@@ -524,6 +767,8 @@ export type GetPackageForUserRequestPackageType =
   | "docker"
   | "nuget"
   | "container";
+const GetPackageForUserRequestPackageType = S.String;
+
 export interface GetPackageForUserRequest {
   /** The handle for the GitHub user account. */
   username: string;
@@ -532,6 +777,11 @@ export interface GetPackageForUserRequest {
   /** The name of the package. */
   package_name: string;
 }
+const GetPackageForUserRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<GetPackageForUserRequest>;
+
 export type GetPackageVersionForAuthenticatedUserRequestPackageType =
   | "npm"
   | "maven"
@@ -539,6 +789,8 @@ export type GetPackageVersionForAuthenticatedUserRequestPackageType =
   | "docker"
   | "nuget"
   | "container";
+const GetPackageVersionForAuthenticatedUserRequestPackageType = S.String;
+
 export interface GetPackageVersionForAuthenticatedUserRequest {
   /** The type of supported package. Packages in GitHub's Gradle registry have the type `maven`. Docker images pushed to GitHub's Container registry (`ghcr.io`) have the type `container`. You can use the type `docker` to find images that were pushed to GitHub's Docker registry (`docker.pkg.github.com`), even if these have now been migrated to the Container registry. */
   package_type: GetPackageVersionForAuthenticatedUserRequestPackageType | (string & {});
@@ -547,6 +799,11 @@ export interface GetPackageVersionForAuthenticatedUserRequest {
   /** Unique identifier of the package version. */
   package_version_id: number;
 }
+const GetPackageVersionForAuthenticatedUserRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<GetPackageVersionForAuthenticatedUserRequest>;
+
 export type GetPackageVersionForOrganizationRequestPackageType =
   | "npm"
   | "maven"
@@ -554,6 +811,8 @@ export type GetPackageVersionForOrganizationRequestPackageType =
   | "docker"
   | "nuget"
   | "container";
+const GetPackageVersionForOrganizationRequestPackageType = S.String;
+
 export interface GetPackageVersionForOrganizationRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -564,6 +823,11 @@ export interface GetPackageVersionForOrganizationRequest {
   /** Unique identifier of the package version. */
   package_version_id: number;
 }
+const GetPackageVersionForOrganizationRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<GetPackageVersionForOrganizationRequest>;
+
 export type GetPackageVersionForUserRequestPackageType =
   | "npm"
   | "maven"
@@ -571,6 +835,8 @@ export type GetPackageVersionForUserRequestPackageType =
   | "docker"
   | "nuget"
   | "container";
+const GetPackageVersionForUserRequestPackageType = S.String;
+
 export interface GetPackageVersionForUserRequest {
   /** The handle for the GitHub user account. */
   username: string;
@@ -581,25 +847,74 @@ export interface GetPackageVersionForUserRequest {
   /** Unique identifier of the package version. */
   package_version_id: number;
 }
+const GetPackageVersionForUserRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<GetPackageVersionForUserRequest>;
+
 export interface ListDockerMigrationConflictingPackagesForAuthenticatedUserRequest {}
+const ListDockerMigrationConflictingPackagesForAuthenticatedUserRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<ListDockerMigrationConflictingPackagesForAuthenticatedUserRequest>;
+
 export type ListDockerMigrationConflictingPackagesForAuthenticatedUserResponseBodyList =
   Array<Package>;
+const ListDockerMigrationConflictingPackagesForAuthenticatedUserResponseBodyList =
+  /*@__PURE__*/ __L.at(
+    __c5,
+    0,
+  ) as any as S.Schema<ListDockerMigrationConflictingPackagesForAuthenticatedUserResponseBodyList>;
+
 export type ListDockerMigrationConflictingPackagesForAuthenticatedUserResponse =
   ListDockerMigrationConflictingPackagesForAuthenticatedUserResponseBodyList;
+const ListDockerMigrationConflictingPackagesForAuthenticatedUserResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  1,
+) as any as S.Schema<ListDockerMigrationConflictingPackagesForAuthenticatedUserResponse>;
+
 export interface ListDockerMigrationConflictingPackagesForOrganizationRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
 }
+const ListDockerMigrationConflictingPackagesForOrganizationRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  2,
+) as any as S.Schema<ListDockerMigrationConflictingPackagesForOrganizationRequest>;
+
 export type ListDockerMigrationConflictingPackagesForOrganizationResponseBodyList = Array<Package>;
+const ListDockerMigrationConflictingPackagesForOrganizationResponseBodyList =
+  ListDockerMigrationConflictingPackagesForAuthenticatedUserResponseBodyList as any as S.Schema<ListDockerMigrationConflictingPackagesForOrganizationResponseBodyList>;
+
 export type ListDockerMigrationConflictingPackagesForOrganizationResponse =
   ListDockerMigrationConflictingPackagesForOrganizationResponseBodyList;
+const ListDockerMigrationConflictingPackagesForOrganizationResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<ListDockerMigrationConflictingPackagesForOrganizationResponse>;
+
 export interface ListDockerMigrationConflictingPackagesForUserRequest {
   /** The handle for the GitHub user account. */
   username: string;
 }
+const ListDockerMigrationConflictingPackagesForUserRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  4,
+) as any as S.Schema<ListDockerMigrationConflictingPackagesForUserRequest>;
+
 export type ListDockerMigrationConflictingPackagesForUserResponseBodyList = Array<Package>;
+const ListDockerMigrationConflictingPackagesForUserResponseBodyList = /*@__PURE__*/ __L.at(
+  __c5,
+  5,
+) as any as S.Schema<ListDockerMigrationConflictingPackagesForUserResponseBodyList>;
+
 export type ListDockerMigrationConflictingPackagesForUserResponse =
   ListDockerMigrationConflictingPackagesForUserResponseBodyList;
+const ListDockerMigrationConflictingPackagesForUserResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  6,
+) as any as S.Schema<ListDockerMigrationConflictingPackagesForUserResponse>;
+
 export type ListPackagesForAuthenticatedUserRequestPackageType =
   | "npm"
   | "maven"
@@ -607,7 +922,11 @@ export type ListPackagesForAuthenticatedUserRequestPackageType =
   | "docker"
   | "nuget"
   | "container";
+const ListPackagesForAuthenticatedUserRequestPackageType = S.String;
+
 export type ListPackagesForAuthenticatedUserRequestVisibility = "public" | "private" | "internal";
+const ListPackagesForAuthenticatedUserRequestVisibility = S.String;
+
 export interface ListPackagesForAuthenticatedUserRequest {
   /** The type of supported package. Packages in GitHub's Gradle registry have the type `maven`. Docker images pushed to GitHub's Container registry (`ghcr.io`) have the type `container`. You can use the type `docker` to find images that were pushed to GitHub's Docker registry (`docker.pkg.github.com`), even if these have now been migrated to the Container registry. */
   package_type: ListPackagesForAuthenticatedUserRequestPackageType | (string & {});
@@ -618,9 +937,17 @@ export interface ListPackagesForAuthenticatedUserRequest {
   /** The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   per_page?: number;
 }
+const ListPackagesForAuthenticatedUserRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  7,
+) as any as S.Schema<ListPackagesForAuthenticatedUserRequest>;
+
 export type ListPackagesForAuthenticatedUserResponseBodyList = Array<Package>;
 export type ListPackagesForAuthenticatedUserResponse =
   ListPackagesForAuthenticatedUserResponseBodyList;
+const ListPackagesForAuthenticatedUserResponse =
+  ListDockerMigrationConflictingPackagesForUserResponse as any as S.Schema<ListPackagesForAuthenticatedUserResponse>;
+
 export type ListPackagesForOrganizationRequestPackageType =
   | "npm"
   | "maven"
@@ -628,7 +955,11 @@ export type ListPackagesForOrganizationRequestPackageType =
   | "docker"
   | "nuget"
   | "container";
+const ListPackagesForOrganizationRequestPackageType = S.String;
+
 export type ListPackagesForOrganizationRequestVisibility = "public" | "private" | "internal";
+const ListPackagesForOrganizationRequestVisibility = S.String;
+
 export interface ListPackagesForOrganizationRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -641,8 +972,16 @@ export interface ListPackagesForOrganizationRequest {
   /** The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   per_page?: number;
 }
+const ListPackagesForOrganizationRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<ListPackagesForOrganizationRequest>;
+
 export type ListPackagesForOrganizationResponseBodyList = Array<Package>;
 export type ListPackagesForOrganizationResponse = ListPackagesForOrganizationResponseBodyList;
+const ListPackagesForOrganizationResponse =
+  ListDockerMigrationConflictingPackagesForUserResponse as any as S.Schema<ListPackagesForOrganizationResponse>;
+
 export type ListPackagesForUserRequestPackageType =
   | "npm"
   | "maven"
@@ -650,7 +989,11 @@ export type ListPackagesForUserRequestPackageType =
   | "docker"
   | "nuget"
   | "container";
+const ListPackagesForUserRequestPackageType = S.String;
+
 export type ListPackagesForUserRequestVisibility = "public" | "private" | "internal";
+const ListPackagesForUserRequestVisibility = S.String;
+
 export interface ListPackagesForUserRequest {
   /** The handle for the GitHub user account. */
   username: string;
@@ -663,8 +1006,16 @@ export interface ListPackagesForUserRequest {
   /** The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   per_page?: number;
 }
+const ListPackagesForUserRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  1,
+) as any as S.Schema<ListPackagesForUserRequest>;
+
 export type ListPackagesForUserResponseBodyList = Array<Package>;
 export type ListPackagesForUserResponse = ListPackagesForUserResponseBodyList;
+const ListPackagesForUserResponse =
+  ListDockerMigrationConflictingPackagesForUserResponse as any as S.Schema<ListPackagesForUserResponse>;
+
 export type RestorePackageForAuthenticatedUserRequestPackageType =
   | "npm"
   | "maven"
@@ -672,6 +1023,8 @@ export type RestorePackageForAuthenticatedUserRequestPackageType =
   | "docker"
   | "nuget"
   | "container";
+const RestorePackageForAuthenticatedUserRequestPackageType = S.String;
+
 export interface RestorePackageForAuthenticatedUserRequest {
   /** The type of supported package. Packages in GitHub's Gradle registry have the type `maven`. Docker images pushed to GitHub's Container registry (`ghcr.io`) have the type `container`. You can use the type `docker` to find images that were pushed to GitHub's Docker registry (`docker.pkg.github.com`), even if these have now been migrated to the Container registry. */
   package_type: RestorePackageForAuthenticatedUserRequestPackageType | (string & {});
@@ -680,7 +1033,15 @@ export interface RestorePackageForAuthenticatedUserRequest {
   /** package token */
   token?: string;
 }
+const RestorePackageForAuthenticatedUserRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  2,
+) as any as S.Schema<RestorePackageForAuthenticatedUserRequest>;
+
 export interface RestorePackageForAuthenticatedUserResponse {}
+const RestorePackageForAuthenticatedUserResponse =
+  DeletePackageForAuthenticatedUserResponse as any as S.Schema<RestorePackageForAuthenticatedUserResponse>;
+
 export type RestorePackageForOrgRequestPackageType =
   | "npm"
   | "maven"
@@ -688,6 +1049,8 @@ export type RestorePackageForOrgRequestPackageType =
   | "docker"
   | "nuget"
   | "container";
+const RestorePackageForOrgRequestPackageType = S.String;
+
 export interface RestorePackageForOrgRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -698,7 +1061,15 @@ export interface RestorePackageForOrgRequest {
   /** package token */
   token?: string;
 }
+const RestorePackageForOrgRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  3,
+) as any as S.Schema<RestorePackageForOrgRequest>;
+
 export interface RestorePackageForOrgResponse {}
+const RestorePackageForOrgResponse =
+  DeletePackageForOrgResponse as any as S.Schema<RestorePackageForOrgResponse>;
+
 export type RestorePackageForUserRequestPackageType =
   | "npm"
   | "maven"
@@ -706,6 +1077,8 @@ export type RestorePackageForUserRequestPackageType =
   | "docker"
   | "nuget"
   | "container";
+const RestorePackageForUserRequestPackageType = S.String;
+
 export interface RestorePackageForUserRequest {
   /** The handle for the GitHub user account. */
   username: string;
@@ -716,7 +1089,15 @@ export interface RestorePackageForUserRequest {
   /** package token */
   token?: string;
 }
+const RestorePackageForUserRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  4,
+) as any as S.Schema<RestorePackageForUserRequest>;
+
 export interface RestorePackageForUserResponse {}
+const RestorePackageForUserResponse =
+  DeletePackageForOrgResponse as any as S.Schema<RestorePackageForUserResponse>;
+
 export type RestorePackageVersionForAuthenticatedUserRequestPackageType =
   | "npm"
   | "maven"
@@ -724,6 +1105,8 @@ export type RestorePackageVersionForAuthenticatedUserRequestPackageType =
   | "docker"
   | "nuget"
   | "container";
+const RestorePackageVersionForAuthenticatedUserRequestPackageType = S.String;
+
 export interface RestorePackageVersionForAuthenticatedUserRequest {
   /** The type of supported package. Packages in GitHub's Gradle registry have the type `maven`. Docker images pushed to GitHub's Container registry (`ghcr.io`) have the type `container`. You can use the type `docker` to find images that were pushed to GitHub's Docker registry (`docker.pkg.github.com`), even if these have now been migrated to the Container registry. */
   package_type: RestorePackageVersionForAuthenticatedUserRequestPackageType | (string & {});
@@ -732,7 +1115,15 @@ export interface RestorePackageVersionForAuthenticatedUserRequest {
   /** Unique identifier of the package version. */
   package_version_id: number;
 }
+const RestorePackageVersionForAuthenticatedUserRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  5,
+) as any as S.Schema<RestorePackageVersionForAuthenticatedUserRequest>;
+
 export interface RestorePackageVersionForAuthenticatedUserResponse {}
+const RestorePackageVersionForAuthenticatedUserResponse =
+  DeletePackageForAuthenticatedUserResponse as any as S.Schema<RestorePackageVersionForAuthenticatedUserResponse>;
+
 export type RestorePackageVersionForOrgRequestPackageType =
   | "npm"
   | "maven"
@@ -740,6 +1131,8 @@ export type RestorePackageVersionForOrgRequestPackageType =
   | "docker"
   | "nuget"
   | "container";
+const RestorePackageVersionForOrgRequestPackageType = S.String;
+
 export interface RestorePackageVersionForOrgRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -750,7 +1143,15 @@ export interface RestorePackageVersionForOrgRequest {
   /** Unique identifier of the package version. */
   package_version_id: number;
 }
+const RestorePackageVersionForOrgRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  6,
+) as any as S.Schema<RestorePackageVersionForOrgRequest>;
+
 export interface RestorePackageVersionForOrgResponse {}
+const RestorePackageVersionForOrgResponse =
+  DeletePackageForAuthenticatedUserResponse as any as S.Schema<RestorePackageVersionForOrgResponse>;
+
 export type RestorePackageVersionForUserRequestPackageType =
   | "npm"
   | "maven"
@@ -758,6 +1159,8 @@ export type RestorePackageVersionForUserRequestPackageType =
   | "docker"
   | "nuget"
   | "container";
+const RestorePackageVersionForUserRequestPackageType = S.String;
+
 export interface RestorePackageVersionForUserRequest {
   /** The handle for the GitHub user account. */
   username: string;
@@ -768,7 +1171,15 @@ export interface RestorePackageVersionForUserRequest {
   /** Unique identifier of the package version. */
   package_version_id: number;
 }
+const RestorePackageVersionForUserRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  7,
+) as any as S.Schema<RestorePackageVersionForUserRequest>;
+
 export interface RestorePackageVersionForUserResponse {}
+const RestorePackageVersionForUserResponse =
+  DeletePackageForAuthenticatedUserResponse as any as S.Schema<RestorePackageVersionForUserResponse>;
+
 export type DeletePackageForAuthenticatedUserError = Forbidden | NotFound | GithubOpError;
 /** Delete a package for the authenticated user Deletes a package owned by the authenticated user. You cannot delete a public package if any version of the package has more than 5,000 downloads. In this scenario, contact GitHub support for further assistance. OAuth app tokens and personal access tokens (classic) need the `read:packages` and `delete:packages` scopes to use this endpoint. For more information, see "[About permissions for GitHub Packages](https://docs.github.com/packages/learn-github-packages/about-permissions-for-github-packages#permissions-for-repository-scoped-packages)." */
 export const deletePackageForAuthenticatedUser: API.OperationMethod<
@@ -777,8 +1188,8 @@ export const deletePackageForAuthenticatedUser: API.OperationMethod<
   DeletePackageForAuthenticatedUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<DeletePackageForAuthenticatedUserRequest>,
-  output: __S(1) as any as S.Schema<DeletePackageForAuthenticatedUserResponse>,
+  input: DeletePackageForAuthenticatedUserRequest,
+  output: DeletePackageForAuthenticatedUserResponse,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -792,8 +1203,8 @@ export const deletePackageForOrg: API.OperationMethod<
   DeletePackageForOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2) as any as S.Schema<DeletePackageForOrgRequest>,
-  output: __S(3) as any as S.Schema<DeletePackageForOrgResponse>,
+  input: DeletePackageForOrgRequest,
+  output: DeletePackageForOrgResponse,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -807,8 +1218,8 @@ export const deletePackageForUser: API.OperationMethod<
   DeletePackageForUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4) as any as S.Schema<DeletePackageForUserRequest>,
-  output: __S(3) as any as S.Schema<DeletePackageForUserResponse>,
+  input: DeletePackageForUserRequest,
+  output: DeletePackageForUserResponse,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -822,8 +1233,8 @@ export const deletePackageVersionForAuthenticatedUser: API.OperationMethod<
   DeletePackageVersionForAuthenticatedUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5) as any as S.Schema<DeletePackageVersionForAuthenticatedUserRequest>,
-  output: __S(1) as any as S.Schema<DeletePackageVersionForAuthenticatedUserResponse>,
+  input: DeletePackageVersionForAuthenticatedUserRequest,
+  output: DeletePackageVersionForAuthenticatedUserResponse,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -837,8 +1248,8 @@ export const deletePackageVersionForOrg: API.OperationMethod<
   DeletePackageVersionForOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6) as any as S.Schema<DeletePackageVersionForOrgRequest>,
-  output: __S(1) as any as S.Schema<DeletePackageVersionForOrgResponse>,
+  input: DeletePackageVersionForOrgRequest,
+  output: DeletePackageVersionForOrgResponse,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -852,8 +1263,8 @@ export const deletePackageVersionForUser: API.OperationMethod<
   DeletePackageVersionForUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7) as any as S.Schema<DeletePackageVersionForUserRequest>,
-  output: __S(1) as any as S.Schema<DeletePackageVersionForUserResponse>,
+  input: DeletePackageVersionForUserRequest,
+  output: DeletePackageVersionForUserResponse,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -870,10 +1281,8 @@ export const getAllPackageVersionsForPackageOwnedByAuthenticatedUser: API.Operat
   GetAllPackageVersionsForPackageOwnedByAuthenticatedUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8) as any as S.Schema<GetAllPackageVersionsForPackageOwnedByAuthenticatedUserRequest>,
-  output: __S(
-    15,
-  ) as any as S.Schema<GetAllPackageVersionsForPackageOwnedByAuthenticatedUserResponse>,
+  input: GetAllPackageVersionsForPackageOwnedByAuthenticatedUserRequest,
+  output: GetAllPackageVersionsForPackageOwnedByAuthenticatedUserResponse,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -887,8 +1296,8 @@ export const getAllPackageVersionsForPackageOwnedByOrg: API.OperationMethod<
   GetAllPackageVersionsForPackageOwnedByOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16) as any as S.Schema<GetAllPackageVersionsForPackageOwnedByOrgRequest>,
-  output: __S(18) as any as S.Schema<GetAllPackageVersionsForPackageOwnedByOrgResponse>,
+  input: GetAllPackageVersionsForPackageOwnedByOrgRequest,
+  output: GetAllPackageVersionsForPackageOwnedByOrgResponse,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -902,8 +1311,8 @@ export const getAllPackageVersionsForPackageOwnedByUser: API.OperationMethod<
   GetAllPackageVersionsForPackageOwnedByUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19) as any as S.Schema<GetAllPackageVersionsForPackageOwnedByUserRequest>,
-  output: __S(18) as any as S.Schema<GetAllPackageVersionsForPackageOwnedByUserResponse>,
+  input: GetAllPackageVersionsForPackageOwnedByUserRequest,
+  output: GetAllPackageVersionsForPackageOwnedByUserResponse,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -917,8 +1326,8 @@ export const getPackageForAuthenticatedUser: API.OperationMethod<
   GetPackageForAuthenticatedUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20) as any as S.Schema<GetPackageForAuthenticatedUserRequest>,
-  output: __S(33) as any as S.Schema<Package>,
+  input: GetPackageForAuthenticatedUserRequest,
+  output: Package,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -932,8 +1341,8 @@ export const getPackageForOrganization: API.OperationMethod<
   GetPackageForOrganizationError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34) as any as S.Schema<GetPackageForOrganizationRequest>,
-  output: __S(33) as any as S.Schema<Package>,
+  input: GetPackageForOrganizationRequest,
+  output: Package,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -947,8 +1356,8 @@ export const getPackageForUser: API.OperationMethod<
   GetPackageForUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35) as any as S.Schema<GetPackageForUserRequest>,
-  output: __S(33) as any as S.Schema<Package>,
+  input: GetPackageForUserRequest,
+  output: Package,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -962,8 +1371,8 @@ export const getPackageVersionForAuthenticatedUser: API.OperationMethod<
   GetPackageVersionForAuthenticatedUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36) as any as S.Schema<GetPackageVersionForAuthenticatedUserRequest>,
-  output: __S(13) as any as S.Schema<PackageVersion>,
+  input: GetPackageVersionForAuthenticatedUserRequest,
+  output: PackageVersion,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -977,8 +1386,8 @@ export const getPackageVersionForOrganization: API.OperationMethod<
   GetPackageVersionForOrganizationError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37) as any as S.Schema<GetPackageVersionForOrganizationRequest>,
-  output: __S(13) as any as S.Schema<PackageVersion>,
+  input: GetPackageVersionForOrganizationRequest,
+  output: PackageVersion,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -992,8 +1401,8 @@ export const getPackageVersionForUser: API.OperationMethod<
   GetPackageVersionForUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38) as any as S.Schema<GetPackageVersionForUserRequest>,
-  output: __S(13) as any as S.Schema<PackageVersion>,
+  input: GetPackageVersionForUserRequest,
+  output: PackageVersion,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1007,12 +1416,8 @@ export const listDockerMigrationConflictingPackagesForAuthenticatedUser: API.Ope
   ListDockerMigrationConflictingPackagesForAuthenticatedUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(
-    39,
-  ) as any as S.Schema<ListDockerMigrationConflictingPackagesForAuthenticatedUserRequest>,
-  output: __S(
-    41,
-  ) as any as S.Schema<ListDockerMigrationConflictingPackagesForAuthenticatedUserResponse>,
+  input: ListDockerMigrationConflictingPackagesForAuthenticatedUserRequest,
+  output: ListDockerMigrationConflictingPackagesForAuthenticatedUserResponse,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1026,8 +1431,8 @@ export const listDockerMigrationConflictingPackagesForOrganization: API.Operatio
   ListDockerMigrationConflictingPackagesForOrganizationError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42) as any as S.Schema<ListDockerMigrationConflictingPackagesForOrganizationRequest>,
-  output: __S(43) as any as S.Schema<ListDockerMigrationConflictingPackagesForOrganizationResponse>,
+  input: ListDockerMigrationConflictingPackagesForOrganizationRequest,
+  output: ListDockerMigrationConflictingPackagesForOrganizationResponse,
   errors: [Forbidden],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1041,8 +1446,8 @@ export const listDockerMigrationConflictingPackagesForUser: API.OperationMethod<
   ListDockerMigrationConflictingPackagesForUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44) as any as S.Schema<ListDockerMigrationConflictingPackagesForUserRequest>,
-  output: __S(46) as any as S.Schema<ListDockerMigrationConflictingPackagesForUserResponse>,
+  input: ListDockerMigrationConflictingPackagesForUserRequest,
+  output: ListDockerMigrationConflictingPackagesForUserResponse,
   errors: [Forbidden],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1056,8 +1461,8 @@ export const listPackagesForAuthenticatedUser: API.OperationMethod<
   ListPackagesForAuthenticatedUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47) as any as S.Schema<ListPackagesForAuthenticatedUserRequest>,
-  output: __S(46) as any as S.Schema<ListPackagesForAuthenticatedUserResponse>,
+  input: ListPackagesForAuthenticatedUserRequest,
+  output: ListPackagesForAuthenticatedUserResponse,
   errors: [BadRequest],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1071,8 +1476,8 @@ export const listPackagesForOrganization: API.OperationMethod<
   ListPackagesForOrganizationError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48) as any as S.Schema<ListPackagesForOrganizationRequest>,
-  output: __S(46) as any as S.Schema<ListPackagesForOrganizationResponse>,
+  input: ListPackagesForOrganizationRequest,
+  output: ListPackagesForOrganizationResponse,
   errors: [BadRequest, Forbidden],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1086,8 +1491,8 @@ export const listPackagesForUser: API.OperationMethod<
   ListPackagesForUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49) as any as S.Schema<ListPackagesForUserRequest>,
-  output: __S(46) as any as S.Schema<ListPackagesForUserResponse>,
+  input: ListPackagesForUserRequest,
+  output: ListPackagesForUserResponse,
   errors: [BadRequest, Forbidden],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1101,8 +1506,8 @@ export const restorePackageForAuthenticatedUser: API.OperationMethod<
   RestorePackageForAuthenticatedUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(50) as any as S.Schema<RestorePackageForAuthenticatedUserRequest>,
-  output: __S(1) as any as S.Schema<RestorePackageForAuthenticatedUserResponse>,
+  input: RestorePackageForAuthenticatedUserRequest,
+  output: RestorePackageForAuthenticatedUserResponse,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1116,8 +1521,8 @@ export const restorePackageForOrg: API.OperationMethod<
   RestorePackageForOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(51) as any as S.Schema<RestorePackageForOrgRequest>,
-  output: __S(3) as any as S.Schema<RestorePackageForOrgResponse>,
+  input: RestorePackageForOrgRequest,
+  output: RestorePackageForOrgResponse,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1131,8 +1536,8 @@ export const restorePackageForUser: API.OperationMethod<
   RestorePackageForUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(52) as any as S.Schema<RestorePackageForUserRequest>,
-  output: __S(3) as any as S.Schema<RestorePackageForUserResponse>,
+  input: RestorePackageForUserRequest,
+  output: RestorePackageForUserResponse,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1146,8 +1551,8 @@ export const restorePackageVersionForAuthenticatedUser: API.OperationMethod<
   RestorePackageVersionForAuthenticatedUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(53) as any as S.Schema<RestorePackageVersionForAuthenticatedUserRequest>,
-  output: __S(1) as any as S.Schema<RestorePackageVersionForAuthenticatedUserResponse>,
+  input: RestorePackageVersionForAuthenticatedUserRequest,
+  output: RestorePackageVersionForAuthenticatedUserResponse,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1161,8 +1566,8 @@ export const restorePackageVersionForOrg: API.OperationMethod<
   RestorePackageVersionForOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(54) as any as S.Schema<RestorePackageVersionForOrgRequest>,
-  output: __S(1) as any as S.Schema<RestorePackageVersionForOrgResponse>,
+  input: RestorePackageVersionForOrgRequest,
+  output: RestorePackageVersionForOrgResponse,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1176,8 +1581,8 @@ export const restorePackageVersionForUser: API.OperationMethod<
   RestorePackageVersionForUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(55) as any as S.Schema<RestorePackageVersionForUserRequest>,
-  output: __S(1) as any as S.Schema<RestorePackageVersionForUserResponse>,
+  input: RestorePackageVersionForUserRequest,
+  output: RestorePackageVersionForUserResponse,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1189,7 +1594,7 @@ function __c0(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          package_type: S.String.pipe(T.Label()),
+          package_type: DeletePackageForAuthenticatedUserRequestPackageType.pipe(T.Label()),
           package_name: S.String.pipe(T.Label()),
         }).pipe(
           T.Http({
@@ -1209,7 +1614,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           org: S.String.pipe(T.Label()),
-          package_type: S.String.pipe(T.Label()),
+          package_type: DeletePackageForOrgRequestPackageType.pipe(T.Label()),
           package_name: S.String.pipe(T.Label()),
         }).pipe(
           T.Http({
@@ -1229,7 +1634,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           username: S.String.pipe(T.Label()),
-          package_type: S.String.pipe(T.Label()),
+          package_type: DeletePackageForUserRequestPackageType.pipe(T.Label()),
           package_name: S.String.pipe(T.Label()),
         }).pipe(
           T.Http({
@@ -1244,7 +1649,7 @@ function __c0(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          package_type: S.String.pipe(T.Label()),
+          package_type: DeletePackageVersionForAuthenticatedUserRequestPackageType.pipe(T.Label()),
           package_name: S.String.pipe(T.Label()),
           package_version_id: S.Number.pipe(T.Label()),
         }).pipe(
@@ -1261,7 +1666,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           org: S.String.pipe(T.Label()),
-          package_type: S.String.pipe(T.Label()),
+          package_type: DeletePackageVersionForOrgRequestPackageType.pipe(T.Label()),
           package_name: S.String.pipe(T.Label()),
           package_version_id: S.Number.pipe(T.Label()),
         }).pipe(
@@ -1278,7 +1683,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           username: S.String.pipe(T.Label()),
-          package_type: S.String.pipe(T.Label()),
+          package_type: DeletePackageVersionForUserRequestPackageType.pipe(T.Label()),
           package_name: S.String.pipe(T.Label()),
           package_version_id: S.Number.pipe(T.Label()),
         }).pipe(
@@ -1298,11 +1703,16 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          package_type: S.String.pipe(T.Label()),
+          package_type:
+            GetAllPackageVersionsForPackageOwnedByAuthenticatedUserRequestPackageType.pipe(
+              T.Label(),
+            ),
           package_name: S.String.pipe(T.Label()),
           page: S.optional(S.Number.pipe(T.Query())),
           per_page: S.optional(S.Number.pipe(T.Query())),
-          state: S.optional(S.String.pipe(T.Query())),
+          state: S.optional(
+            GetAllPackageVersionsForPackageOwnedByAuthenticatedUserRequestState.pipe(T.Query()),
+          ),
         }).pipe(
           T.Http({
             method: "GET",
@@ -1318,7 +1728,7 @@ function __c1(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          tags: __S(9),
+          tags: PackageVersionMetadataContainerTagsList,
         }),
       ).annotate({
         identifier: "PackageVersionMetadataContainer",
@@ -1326,7 +1736,7 @@ function __c1(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          tag: S.optional(__S(9)),
+          tag: S.optional(PackageVersionMetadataDockerTagList),
         }),
       ).annotate({
         identifier: "PackageVersionMetadataDocker",
@@ -1334,9 +1744,9 @@ function __c1(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          package_type: S.String,
-          container: S.optional(__S(10)),
-          docker: S.optional(__S(11)),
+          package_type: PackageVersionMetadataPackageType,
+          container: S.optional(PackageVersionMetadataContainer),
+          docker: S.optional(PackageVersionMetadataDocker),
         }),
       ).annotate({ identifier: "PackageVersionMetadata" });
     case 5:
@@ -1352,13 +1762,17 @@ function __c1(j: number): any {
           created_at: S.String,
           updated_at: S.String,
           deleted_at: S.optional(S.String),
-          metadata: S.optional(__S(12)),
+          metadata: S.optional(PackageVersionMetadata),
         }),
       ).annotate({ identifier: "PackageVersion" });
     case 6:
-      return S.Array(__S(13));
+      return S.Array(PackageVersion);
     case 7:
-      return S.suspend(() => __S(14).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        GetAllPackageVersionsForPackageOwnedByAuthenticatedUserResponseBodyList.pipe(
+          T.RawResponseRoot(),
+        ),
+      ).annotate({
         identifier: "GetAllPackageVersionsForPackageOwnedByAuthenticatedUserResponse",
       });
   }
@@ -1369,11 +1783,11 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           org: S.String.pipe(T.Label()),
-          package_type: S.String.pipe(T.Label()),
+          package_type: GetAllPackageVersionsForPackageOwnedByOrgRequestPackageType.pipe(T.Label()),
           package_name: S.String.pipe(T.Label()),
           page: S.optional(S.Number.pipe(T.Query())),
           per_page: S.optional(S.Number.pipe(T.Query())),
-          state: S.optional(S.String.pipe(T.Query())),
+          state: S.optional(GetAllPackageVersionsForPackageOwnedByOrgRequestState.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -1385,16 +1799,20 @@ function __c2(j: number): any {
         identifier: "GetAllPackageVersionsForPackageOwnedByOrgRequest",
       });
     case 1:
-      return S.Array(__S(13));
+      return S.Array(PackageVersion);
     case 2:
-      return S.suspend(() => __S(17).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        GetAllPackageVersionsForPackageOwnedByOrgResponseBodyList.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "GetAllPackageVersionsForPackageOwnedByOrgResponse",
       });
     case 3:
       return S.suspend(() =>
         S.Struct({
           username: S.String.pipe(T.Label()),
-          package_type: S.String.pipe(T.Label()),
+          package_type: GetAllPackageVersionsForPackageOwnedByUserRequestPackageType.pipe(
+            T.Label(),
+          ),
           package_name: S.String.pipe(T.Label()),
         }).pipe(
           T.Http({
@@ -1409,7 +1827,7 @@ function __c2(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          package_type: S.String.pipe(T.Label()),
+          package_type: GetPackageForAuthenticatedUserRequestPackageType.pipe(T.Label()),
           package_name: S.String.pipe(T.Label()),
         }).pipe(
           T.Http({ method: "GET", uri: "/user/packages/{package_type}/{package_name}", code: 200 }),
@@ -1485,7 +1903,7 @@ function __c3(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(S.String),
+          status: S.optional(SecurityAndAnalysisAdvancedSecurityStatus),
         }),
       ).annotate({
         identifier: "SecurityAndAnalysisAdvancedSecurity",
@@ -1493,7 +1911,7 @@ function __c3(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(S.String),
+          status: S.optional(SecurityAndAnalysisSecretScanningDelegatedAlertDismissalStatus),
         }),
       ).annotate({
         identifier: "SecurityAndAnalysisSecretScanningDelegatedAlertDismissal",
@@ -1502,18 +1920,23 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           reviewer_id: S.Number,
-          reviewer_type: S.String,
-          mode: S.optional(S.String),
+          reviewer_type:
+            SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemReviewerType,
+          mode: S.optional(
+            SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemMode,
+          ),
         }),
       ).annotate({
         identifier: "SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItem",
       });
     case 4:
-      return S.Array(__S(27));
+      return S.Array(SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItem);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          reviewers: S.optional(__S(28)),
+          reviewers: S.optional(
+            SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersList,
+          ),
         }),
       ).annotate({
         identifier: "SecurityAndAnalysisSecretScanningDelegatedBypassOptions",
@@ -1521,16 +1944,26 @@ function __c3(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          advanced_security: S.optional(__S(25)),
-          code_security: S.optional(__S(25)),
-          dependabot_security_updates: S.optional(__S(25)),
-          secret_scanning: S.optional(__S(25)),
-          secret_scanning_push_protection: S.optional(__S(25)),
-          secret_scanning_non_provider_patterns: S.optional(__S(25)),
-          secret_scanning_ai_detection: S.optional(__S(25)),
-          secret_scanning_delegated_alert_dismissal: S.optional(__S(26)),
-          secret_scanning_delegated_bypass: S.optional(__S(25)),
-          secret_scanning_delegated_bypass_options: S.optional(__S(29)),
+          advanced_security: S.optional(SecurityAndAnalysisAdvancedSecurity),
+          code_security: S.optional(SecurityAndAnalysisCodeSecurity),
+          dependabot_security_updates: S.optional(SecurityAndAnalysisDependabotSecurityUpdates),
+          secret_scanning: S.optional(SecurityAndAnalysisSecretScanning),
+          secret_scanning_push_protection: S.optional(
+            SecurityAndAnalysisSecretScanningPushProtection,
+          ),
+          secret_scanning_non_provider_patterns: S.optional(
+            SecurityAndAnalysisSecretScanningNonProviderPatterns,
+          ),
+          secret_scanning_ai_detection: S.optional(SecurityAndAnalysisSecretScanningAiDetection),
+          secret_scanning_delegated_alert_dismissal: S.optional(
+            SecurityAndAnalysisSecretScanningDelegatedAlertDismissal,
+          ),
+          secret_scanning_delegated_bypass: S.optional(
+            SecurityAndAnalysisSecretScanningDelegatedBypass,
+          ),
+          secret_scanning_delegated_bypass_options: S.optional(
+            SecurityAndAnalysisSecretScanningDelegatedBypassOptions,
+          ),
         }),
       ).annotate({ identifier: "SecurityAndAnalysis" });
     case 7:
@@ -1546,7 +1979,7 @@ function __c4(j: number): any {
           node_id: S.String,
           name: S.String,
           full_name: S.String,
-          owner: __S(21),
+          owner: NullableSimpleUser,
           private: S.Boolean,
           html_url: S.String,
           description: S.NullOr(S.String),
@@ -1602,7 +2035,7 @@ function __c4(j: number): any {
           default_branch: S.optional(S.String),
           open_issues_count: S.optional(S.Number),
           is_template: S.optional(S.Boolean),
-          topics: S.optional(__S(9)),
+          topics: S.optional(NullableMinimalRepositoryTopicsList),
           has_issues: S.optional(S.Boolean),
           has_projects: S.optional(S.Boolean),
           has_wiki: S.optional(S.Boolean),
@@ -1610,28 +2043,30 @@ function __c4(j: number): any {
           has_downloads: S.optional(S.Boolean),
           has_discussions: S.optional(S.Boolean),
           has_pull_requests: S.optional(S.Boolean),
-          pull_request_creation_policy: S.optional(S.String),
+          pull_request_creation_policy: S.optional(
+            NullableMinimalRepositoryPullRequestCreationPolicy,
+          ),
           archived: S.optional(S.Boolean),
           disabled: S.optional(S.Boolean),
           visibility: S.optional(S.String),
           pushed_at: S.optional(S.NullOr(S.String)),
           created_at: S.optional(S.NullOr(S.String)),
           updated_at: S.optional(S.NullOr(S.String)),
-          permissions: S.optional(__S(22)),
+          permissions: S.optional(NullableMinimalRepositoryPermissions),
           role_name: S.optional(S.String),
           temp_clone_token: S.optional(S.String),
           delete_branch_on_merge: S.optional(S.Boolean),
           subscribers_count: S.optional(S.Number),
           network_count: S.optional(S.Number),
-          code_of_conduct: S.optional(__S(23)),
-          license: S.optional(S.NullOr(__S(24))),
+          code_of_conduct: S.optional(CodeOfConduct),
+          license: S.optional(S.NullOr(NullableMinimalRepositoryLicense)),
           forks: S.optional(S.Number),
           open_issues: S.optional(S.Number),
           watchers: S.optional(S.Number),
           allow_forking: S.optional(S.Boolean),
           web_commit_signoff_required: S.optional(S.Boolean),
-          security_and_analysis: S.optional(S.NullOr(__S(30))),
-          custom_properties: S.optional(__S(31)),
+          security_and_analysis: S.optional(S.NullOr(SecurityAndAnalysis)),
+          custom_properties: S.optional(NullableMinimalRepositoryCustomPropertiesMap),
         }),
       ).annotate({
         identifier: "NullableMinimalRepository",
@@ -1641,13 +2076,13 @@ function __c4(j: number): any {
         S.Struct({
           id: S.Number,
           name: S.String,
-          package_type: S.String,
+          package_type: PackagePackageType,
           url: S.String,
           html_url: S.String,
           version_count: S.Number,
-          visibility: S.String,
-          owner: S.optional(S.NullOr(__S(21))),
-          repository: S.optional(S.NullOr(__S(32))),
+          visibility: PackageVisibility,
+          owner: S.optional(S.NullOr(NullableSimpleUser)),
+          repository: S.optional(S.NullOr(NullableMinimalRepository)),
           created_at: S.String,
           updated_at: S.String,
         }),
@@ -1656,7 +2091,7 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           org: S.String.pipe(T.Label()),
-          package_type: S.String.pipe(T.Label()),
+          package_type: GetPackageForOrganizationRequestPackageType.pipe(T.Label()),
           package_name: S.String.pipe(T.Label()),
         }).pipe(
           T.Http({
@@ -1672,7 +2107,7 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           username: S.String.pipe(T.Label()),
-          package_type: S.String.pipe(T.Label()),
+          package_type: GetPackageForUserRequestPackageType.pipe(T.Label()),
           package_name: S.String.pipe(T.Label()),
         }).pipe(
           T.Http({
@@ -1685,7 +2120,7 @@ function __c4(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          package_type: S.String.pipe(T.Label()),
+          package_type: GetPackageVersionForAuthenticatedUserRequestPackageType.pipe(T.Label()),
           package_name: S.String.pipe(T.Label()),
           package_version_id: S.Number.pipe(T.Label()),
         }).pipe(
@@ -1702,7 +2137,7 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           org: S.String.pipe(T.Label()),
-          package_type: S.String.pipe(T.Label()),
+          package_type: GetPackageVersionForOrganizationRequestPackageType.pipe(T.Label()),
           package_name: S.String.pipe(T.Label()),
           package_version_id: S.Number.pipe(T.Label()),
         }).pipe(
@@ -1719,7 +2154,7 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           username: S.String.pipe(T.Label()),
-          package_type: S.String.pipe(T.Label()),
+          package_type: GetPackageVersionForUserRequestPackageType.pipe(T.Label()),
           package_name: S.String.pipe(T.Label()),
           package_version_id: S.Number.pipe(T.Label()),
         }).pipe(
@@ -1743,9 +2178,13 @@ function __c4(j: number): any {
 function __c5(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(33));
+      return S.Array(Package);
     case 1:
-      return S.suspend(() => __S(40).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        ListDockerMigrationConflictingPackagesForAuthenticatedUserResponseBodyList.pipe(
+          T.RawResponseRoot(),
+        ),
+      ).annotate({
         identifier: "ListDockerMigrationConflictingPackagesForAuthenticatedUserResponse",
       });
     case 2:
@@ -1757,7 +2196,11 @@ function __c5(j: number): any {
         identifier: "ListDockerMigrationConflictingPackagesForOrganizationRequest",
       });
     case 3:
-      return S.suspend(() => __S(40).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        ListDockerMigrationConflictingPackagesForOrganizationResponseBodyList.pipe(
+          T.RawResponseRoot(),
+        ),
+      ).annotate({
         identifier: "ListDockerMigrationConflictingPackagesForOrganizationResponse",
       });
     case 4:
@@ -1769,16 +2212,18 @@ function __c5(j: number): any {
         identifier: "ListDockerMigrationConflictingPackagesForUserRequest",
       });
     case 5:
-      return S.Array(__S(33));
+      return S.Array(Package);
     case 6:
-      return S.suspend(() => __S(45).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        ListDockerMigrationConflictingPackagesForUserResponseBodyList.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "ListDockerMigrationConflictingPackagesForUserResponse",
       });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          package_type: S.String.pipe(T.Query()),
-          visibility: S.optional(S.String.pipe(T.Query())),
+          package_type: ListPackagesForAuthenticatedUserRequestPackageType.pipe(T.Query()),
+          visibility: S.optional(ListPackagesForAuthenticatedUserRequestVisibility.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
           per_page: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/user/packages", code: 200 })),
@@ -1793,8 +2238,8 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           org: S.String.pipe(T.Label()),
-          package_type: S.String.pipe(T.Query()),
-          visibility: S.optional(S.String.pipe(T.Query())),
+          package_type: ListPackagesForOrganizationRequestPackageType.pipe(T.Query()),
+          visibility: S.optional(ListPackagesForOrganizationRequestVisibility.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
           per_page: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/orgs/{org}/packages", code: 200 })),
@@ -1805,8 +2250,8 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           username: S.String.pipe(T.Label()),
-          package_type: S.String.pipe(T.Query()),
-          visibility: S.optional(S.String.pipe(T.Query())),
+          package_type: ListPackagesForUserRequestPackageType.pipe(T.Query()),
+          visibility: S.optional(ListPackagesForUserRequestVisibility.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
           per_page: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/users/{username}/packages", code: 200 })),
@@ -1816,7 +2261,7 @@ function __c6(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          package_type: S.String.pipe(T.Label()),
+          package_type: RestorePackageForAuthenticatedUserRequestPackageType.pipe(T.Label()),
           package_name: S.String.pipe(T.Label()),
           token: S.optional(S.String.pipe(T.Query())),
         }).pipe(
@@ -1833,7 +2278,7 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           org: S.String.pipe(T.Label()),
-          package_type: S.String.pipe(T.Label()),
+          package_type: RestorePackageForOrgRequestPackageType.pipe(T.Label()),
           package_name: S.String.pipe(T.Label()),
           token: S.optional(S.String.pipe(T.Query())),
         }).pipe(
@@ -1850,7 +2295,7 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           username: S.String.pipe(T.Label()),
-          package_type: S.String.pipe(T.Label()),
+          package_type: RestorePackageForUserRequestPackageType.pipe(T.Label()),
           package_name: S.String.pipe(T.Label()),
           token: S.optional(S.String.pipe(T.Query())),
         }).pipe(
@@ -1866,7 +2311,7 @@ function __c6(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          package_type: S.String.pipe(T.Label()),
+          package_type: RestorePackageVersionForAuthenticatedUserRequestPackageType.pipe(T.Label()),
           package_name: S.String.pipe(T.Label()),
           package_version_id: S.Number.pipe(T.Label()),
         }).pipe(
@@ -1883,7 +2328,7 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           org: S.String.pipe(T.Label()),
-          package_type: S.String.pipe(T.Label()),
+          package_type: RestorePackageVersionForOrgRequestPackageType.pipe(T.Label()),
           package_name: S.String.pipe(T.Label()),
           package_version_id: S.Number.pipe(T.Label()),
         }).pipe(
@@ -1900,7 +2345,7 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           username: S.String.pipe(T.Label()),
-          package_type: S.String.pipe(T.Label()),
+          package_type: RestorePackageVersionForUserRequestPackageType.pipe(T.Label()),
           package_name: S.String.pipe(T.Label()),
           package_version_id: S.Number.pipe(T.Label()),
         }).pipe(
@@ -1913,28 +2358,5 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "RestorePackageVersionForUserRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
   }
 }

@@ -5,13 +5,13 @@ import * as S from "@distilled.cloud/core/schema";
 import { PosthogProtocol, type PosthogOpError, type PosthogOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { PosthogOpError, PosthogOpContext };
 
 /** * `all` - all * `label` - label */
 export type ReviewModeEnum = "all" | "label";
+const ReviewModeEnum = S.String;
+
 export interface CreateStamphogRepoConfigRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -28,6 +28,11 @@ export interface CreateStamphogRepoConfigRequest {
   /** Pull request label that triggers a review when review_mode is 'label'. Defaults to 'stamphog'. */
   trigger_label?: string;
 }
+const CreateStamphogRepoConfigRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<CreateStamphogRepoConfigRequest>;
+
 export interface StamphogRepoConfig {
   id: string;
   /** SCM provider this config talks to. Defaults to 'github'. */
@@ -49,6 +54,8 @@ export interface StamphogRepoConfig {
   created_at: string;
   updated_at: string;
 }
+const StamphogRepoConfig = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<StamphogRepoConfig>;
+
 export interface CreateStamphogRepoConfigsSyncInstallationRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -59,10 +66,25 @@ export interface CreateStamphogRepoConfigsSyncInstallationRequest {
   /** Signed state token minted by install_info and round-tripped through GitHub's install redirect. Binds the callback to the team and user that started the flow, so a stolen installation_id + code can't be replayed against another team's session. */
   state: string;
 }
+const CreateStamphogRepoConfigsSyncInstallationRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<CreateStamphogRepoConfigsSyncInstallationRequest>;
+
 /** Repo configs this team already had for the installation's repositories, now bound to it. A sync creates no repo config: use add_repository to turn reviews on for a repository. */
 export type StamphogSyncInstallationResponseSyncedList = Array<StamphogRepoConfig>;
+const StamphogSyncInstallationResponseSyncedList = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<StamphogSyncInstallationResponseSyncedList>;
+
 /** Repository full names skipped because another team already owns them under this installation. */
 export type StamphogSyncInstallationResponseSkippedList = Array<string>;
+const StamphogSyncInstallationResponseSkippedList = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<StamphogSyncInstallationResponseSkippedList>;
+
 /** One installation of the App the authorizing user can reach, offered for an explicit pick. */
 export interface StamphogDiscoveredInstallation {
   /** GitHub installation id, as a string. */
@@ -70,9 +92,19 @@ export interface StamphogDiscoveredInstallation {
   /** Login of the org or user account the installation lives on. */
   account_login: string;
 }
+const StamphogDiscoveredInstallation = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<StamphogDiscoveredInstallation>;
+
 /** Populated only on the discovery path when the caller can reach MORE than one installation of this App: nothing was bound, and the user must pick which installation to connect. The frontend re-runs the authorize flow and calls back with the chosen installation_id, which the explicit path verifies. Empty whenever a bind happened (or nothing was found). */
 export type StamphogSyncInstallationResponseInstallationsList =
   Array<StamphogDiscoveredInstallation>;
+const StamphogSyncInstallationResponseInstallationsList = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<StamphogSyncInstallationResponseInstallationsList>;
+
 /** Result of syncing an installation: the team's rows bound to it, and what the team can add now. */
 export interface StamphogSyncInstallationResponse {
   /** Repo configs this team already had for the installation's repositories, now bound to it. A sync creates no repo config: use add_repository to turn reviews on for a repository. */
@@ -86,6 +118,11 @@ export interface StamphogSyncInstallationResponse {
   /** Populated only on the discovery path when the caller can reach MORE than one installation of this App: nothing was bound, and the user must pick which installation to connect. The frontend re-runs the authorize flow and calls back with the chosen installation_id, which the explicit path verifies. Empty whenever a bind happened (or nothing was found). */
   installations: StamphogSyncInstallationResponseInstallationsList;
 }
+const StamphogSyncInstallationResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<StamphogSyncInstallationResponse>;
+
 export interface CreateStamphogReviewRunRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -94,8 +131,15 @@ export interface CreateStamphogReviewRunRequest {
   /** Pull request number on GitHub. */
   pr_number: number;
 }
+const CreateStamphogReviewRunRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<CreateStamphogReviewRunRequest>;
+
 /** * `self_driving` - SELF_DRIVING * `manual` - MANUAL * `label` - LABEL * `all` - ALL */
 export type ReviewRunTriggerEnum = "self_driving" | "manual" | "label" | "all";
+const ReviewRunTriggerEnum = S.String;
+
 /** * `queued` - QUEUED * `gated` - GATED * `reviewing` - REVIEWING * `completed` - COMPLETED * `failed` - FAILED * `superseded` - SUPERSEDED */
 export type ReviewRunStatusEnum =
   | "queued"
@@ -104,8 +148,12 @@ export type ReviewRunStatusEnum =
   | "completed"
   | "failed"
   | "superseded";
+const ReviewRunStatusEnum = S.String;
+
 /** * `none` - NONE * `approved` - APPROVED * `refused` - REFUSED * `escalate` - ESCALATE * `wait` - WAIT * `error` - ERROR */
 export type ReviewRunVerdictEnum = "none" | "approved" | "refused" | "escalate" | "wait" | "error";
+const ReviewRunVerdictEnum = S.String;
+
 /** Allowlisted, content-free slice of ``ReviewRun.gate_result``. The raw gate blob nests ``gates``, ``classification``, and ``policy`` sub-objects that carry repository content -- changed-file paths (``safe_migration_files``, ``invalid_folder_files``), manifest gate messages, and declared ``policy.scopes`` -- which a project member without repo access must not read. Only the terminal decision is exposed. */
 export interface GateResultSummary {
   /** Whether the deterministic gates blocked auto-review before the reviewer ran. */
@@ -113,6 +161,8 @@ export interface GateResultSummary {
   /** The engine's raw final-verdict token, if the run reached a verdict. */
   final_verdict: string;
 }
+const GateResultSummary = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<GateResultSummary>;
+
 /** Allowlisted, non-sensitive slice of ``ReviewRun.output``. The raw ``output`` blob also holds the reviewer's stdout, the full PR payload, changed-file patches, and default-branch policy file contents, none of which the API returns. The reviewer's reasoning, the text stamphog posts on GitHub, is parsed out of the stdout and returned as ``reasoning``. */
 export interface ReviewOutputSummary {
   /** Version of the stamphog engine that produced this review, if it reported one. */
@@ -120,8 +170,13 @@ export interface ReviewOutputSummary {
   /** Exit code of the reviewer process in the sandbox, if the run reached the sandbox stage. */
   reviewer_exit_code: number;
 }
+const ReviewOutputSummary = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<ReviewOutputSummary>;
+
 /** Issues the reviewer found that block approval. */
 export type ReviewReasoningShowstoppersList = Array<string>;
+const ReviewReasoningShowstoppersList =
+  StamphogSyncInstallationResponseSkippedList as any as S.Schema<ReviewReasoningShowstoppersList>;
+
 /** The reviewer's reasoning for one run, the same text stamphog posts as its GitHub review. */
 export interface ReviewReasoning {
   /** The reviewer's explanation of its verdict. */
@@ -133,6 +188,8 @@ export interface ReviewReasoning {
   /** A plain-language summary of what the change does. */
   change_summary: string | null;
 }
+const ReviewReasoning = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<ReviewReasoning>;
+
 export interface ReviewRun {
   id: string;
   /** ID of the pull request this review run belongs to. */
@@ -180,6 +237,8 @@ export interface ReviewRun {
   /** When the review run reached a terminal state, if it has. */
   completed_at: string | null;
 }
+const ReviewRun = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<ReviewRun>;
+
 /** The review run a request points at. */
 export interface ReviewRequestResponse {
   /** The review run for the pull request's current head. Poll it by id until status is terminal (completed, gated, failed, or superseded). */
@@ -187,19 +246,33 @@ export interface ReviewRequestResponse {
   /** True when this request queued a new run. False when a queued, running, or finished run already covered the current head, which is returned instead. */
   created: boolean;
 }
+const ReviewRequestResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<ReviewRequestResponse>;
+
 export interface GetStamphogDigestRunRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   id: string;
 }
+const GetStamphogDigestRunRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<GetStamphogDigestRunRequest>;
+
 /** * `manual` - MANUAL * `slack_name_match` - SLACK_NAME_MATCH * `stamphog_config` - STAMPHOG_CONFIG * `owners_contact` - OWNERS_CONTACT */
 export type ResolutionSourceEnum =
   | "manual"
   | "slack_name_match"
   | "stamphog_config"
   | "owners_contact";
+const ResolutionSourceEnum = S.String;
+
 /** * `pending` - PENDING * `completed` - COMPLETED * `failed` - FAILED */
 export type DigestRunStatusEnum = "pending" | "completed" | "failed";
+const DigestRunStatusEnum = S.String;
+
 /** One merged pull request as the digest listed it. */
 export interface DigestSummaryPR {
   /** Pull request number on GitHub. */
@@ -215,8 +288,12 @@ export interface DigestSummaryPR {
   /** Repository full name, e.g. 'PostHog/posthog'. Blank on older runs. */
   repository: string;
 }
+const DigestSummaryPR = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<DigestSummaryPR>;
+
 /** The merged pull requests the digest listed, in the order it listed them. */
 export type DigestSummaryPrsList = Array<DigestSummaryPR>;
+const DigestSummaryPrsList = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<DigestSummaryPrsList>;
+
 /** What the digest posted to Slack: the headline and the pull requests it listed. */
 export interface DigestSummary {
   /** Prose about the merges with real consequence. Blank when the digest led with its first line. */
@@ -224,6 +301,8 @@ export interface DigestSummary {
   /** The merged pull requests the digest listed, in the order it listed them. */
   prs: DigestSummaryPrsList;
 }
+const DigestSummary = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<DigestSummary>;
+
 export interface DigestRun {
   id: string;
   /** Digest bucket this run drained, e.g. a team slug or 'repo:PostHog/posthog'. */
@@ -249,11 +328,18 @@ export interface DigestRun {
   /** When the digest was posted to Slack, if it was. */
   posted_at: string | null;
 }
+const DigestRun = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<DigestRun>;
+
 export interface GetStamphogPullRequestRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   id: string;
 }
+const GetStamphogPullRequestRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<GetStamphogPullRequestRequest>;
+
 export interface StamphogPullRequest {
   id: string;
   /** Full name of the repository this pull request belongs to. */
@@ -285,11 +371,18 @@ export interface StamphogPullRequest {
   /** When this pull request was last updated. */
   updated_at: string;
 }
+const StamphogPullRequest = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<StamphogPullRequest>;
+
 export interface GetStamphogRepoConfigRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   id: string;
 }
+const GetStamphogRepoConfigRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<GetStamphogRepoConfigRequest>;
+
 export interface GetStamphogRepoConfigsAvailableRepositoryRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -298,8 +391,16 @@ export interface GetStamphogRepoConfigsAvailableRepositoryRequest {
   /** Case-insensitive substring to match against the repository full name, e.g. 'posthog'. */
   search?: string;
 }
+const GetStamphogRepoConfigsAvailableRepositoryRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<GetStamphogRepoConfigsAvailableRepositoryRequest>;
+
 /** Repository full names the team can add, sorted by name and capped by limit. Only repositories a project member proved access to on GitHub are listed, and never one another project already holds under the same installation. */
 export type StamphogAvailableRepositoriesRepositoriesList = Array<string>;
+const StamphogAvailableRepositoriesRepositoriesList =
+  StamphogSyncInstallationResponseSkippedList as any as S.Schema<StamphogAvailableRepositoriesRepositoriesList>;
+
 /** Repositories from the team's connected GitHub installations that are not added to stamphog yet. */
 export interface StamphogAvailableRepositories {
   /** Repository full names the team can add, sorted by name and capped by limit. Only repositories a project member proved access to on GitHub are listed, and never one another project already holds under the same installation. */
@@ -309,11 +410,21 @@ export interface StamphogAvailableRepositories {
   /** Whether a project member connected a GitHub installation yet. False means GitHub must be connected before any repository can be added. True with a total_count of 0 and no search means no repository is left to add. */
   has_installation: boolean;
 }
+const StamphogAvailableRepositories = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<StamphogAvailableRepositories>;
+
 export interface GetStamphogReviewRunRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   id: string;
 }
+const GetStamphogReviewRunRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<GetStamphogReviewRunRequest>;
+
 export interface ListStamphogDigestRunsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -324,13 +435,28 @@ export interface ListStamphogDigestRunsRequest {
   /** Filter by the Slack channel the digest was posted to, e.g. 'C012AB3CD'. */
   slack_channel_id?: string;
 }
+const ListStamphogDigestRunsRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<ListStamphogDigestRunsRequest>;
+
 export type PaginatedDigestRunListResultsList = Array<DigestRun>;
+const PaginatedDigestRunListResultsList = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<PaginatedDigestRunListResultsList>;
+
 export interface PaginatedDigestRunList {
   count: number;
   next?: string | null;
   previous?: string | null;
   results: PaginatedDigestRunListResultsList;
 }
+const PaginatedDigestRunList = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<PaginatedDigestRunList>;
+
 export interface ListStamphogPullRequestsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -343,13 +469,28 @@ export interface ListStamphogPullRequestsRequest {
   /** Filter by pull request number. */
   pr_number?: number;
 }
+const ListStamphogPullRequestsRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<ListStamphogPullRequestsRequest>;
+
 export type PaginatedStamphogPullRequestListResultsList = Array<StamphogPullRequest>;
+const PaginatedStamphogPullRequestListResultsList = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<PaginatedStamphogPullRequestListResultsList>;
+
 export interface PaginatedStamphogPullRequestList {
   count: number;
   next?: string | null;
   previous?: string | null;
   results: PaginatedStamphogPullRequestListResultsList;
 }
+const PaginatedStamphogPullRequestList = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<PaginatedStamphogPullRequestList>;
+
 export interface ListStamphogRepoConfigsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -358,14 +499,29 @@ export interface ListStamphogRepoConfigsRequest {
   /** The initial index from which to return the results. */
   offset?: number;
 }
+const ListStamphogRepoConfigsRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<ListStamphogRepoConfigsRequest>;
+
 export type PaginatedStamphogRepoConfigListResultsList = Array<StamphogRepoConfig>;
+const PaginatedStamphogRepoConfigListResultsList =
+  StamphogSyncInstallationResponseSyncedList as any as S.Schema<PaginatedStamphogRepoConfigListResultsList>;
+
 export interface PaginatedStamphogRepoConfigList {
   count: number;
   next?: string | null;
   previous?: string | null;
   results: PaginatedStamphogRepoConfigListResultsList;
 }
+const PaginatedStamphogRepoConfigList = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<PaginatedStamphogRepoConfigList>;
+
 export type ListStamphogReviewRunsRequestTrigger = "all" | "label" | "manual" | "self_driving";
+const ListStamphogReviewRunsRequestTrigger = S.String;
+
 export interface ListStamphogReviewRunsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -382,29 +538,64 @@ export interface ListStamphogReviewRunsRequest {
   /** Filter by what caused the run. Leave it unset to include runs from every trigger. 'all' is not a wildcard: it matches only runs in repos that review every pull request event. The other values: 'label' (the repo's trigger label opted the PR in), 'manual' (someone requested the review through the API or MCP), and 'self_driving' (stamphog reviewed a bot-authored PR from the inbox). */
   trigger?: ListStamphogReviewRunsRequestTrigger | (string & {});
 }
+const ListStamphogReviewRunsRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<ListStamphogReviewRunsRequest>;
+
 export type PaginatedReviewRunListResultsList = Array<ReviewRun>;
+const PaginatedReviewRunListResultsList = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<PaginatedReviewRunListResultsList>;
+
 export interface PaginatedReviewRunList {
   count: number;
   next?: string | null;
   previous?: string | null;
   results: PaginatedReviewRunListResultsList;
 }
+const PaginatedReviewRunList = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<PaginatedReviewRunList>;
+
 export interface StamphogRepoConfigsAddRepositoryCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** Repository full name, e.g. 'PostHog/posthog'. It must be in one of the project's connected GitHub installations, as available_repositories lists them. A repository the project already has is turned back on. */
   repository: string;
 }
+const StamphogRepoConfigsAddRepositoryCreateRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<StamphogRepoConfigsAddRepositoryCreateRequest>;
+
 export interface StamphogRepoConfigsDestroyRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   id: string;
 }
+const StamphogRepoConfigsDestroyRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<StamphogRepoConfigsDestroyRequest>;
+
 export interface StamphogRepoConfigsDestroyResponse {}
+const StamphogRepoConfigsDestroyResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<StamphogRepoConfigsDestroyResponse>;
+
 export interface StamphogRepoConfigsInstallInfoRetrieveRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
+const StamphogRepoConfigsInstallInfoRetrieveRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<StamphogRepoConfigsInstallInfoRetrieveRequest>;
+
 /** Static info the frontend needs to render the 'Connect a repository' button. */
 export interface StamphogInstallInfo {
   /** URL-friendly slug of the dedicated Stamphog GitHub App, or blank if unconfigured. */
@@ -414,6 +605,8 @@ export interface StamphogInstallInfo {
   /** GitHub authorize URL (github.com/login/oauth/authorize). GitHub's redirect after configuring an existing installation carries no OAuth code, so the client passes through this URL once: an installed App redirects straight back with a code, which sync_installation uses to prove ownership. Blank if the App client id is unconfigured. */
   authorize_url: string;
 }
+const StamphogInstallInfo = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<StamphogInstallInfo>;
+
 export interface UpdateStamphogRepoConfigRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -431,6 +624,11 @@ export interface UpdateStamphogRepoConfigRequest {
   /** Pull request label that triggers a review when review_mode is 'label'. Defaults to 'stamphog'. */
   trigger_label?: string;
 }
+const UpdateStamphogRepoConfigRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  1,
+) as any as S.Schema<UpdateStamphogRepoConfigRequest>;
+
 export interface UpdateStamphogRepoConfigsPartialRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -448,6 +646,11 @@ export interface UpdateStamphogRepoConfigsPartialRequest {
   /** Pull request label that triggers a review when review_mode is 'label'. Defaults to 'stamphog'. */
   trigger_label?: string;
 }
+const UpdateStamphogRepoConfigsPartialRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  2,
+) as any as S.Schema<UpdateStamphogRepoConfigsPartialRequest>;
+
 export type CreateStamphogRepoConfigError = PosthogOpError;
 /** Per-repo stamphog settings -- enable/disable review, GitHub App installation, policy overrides. */
 export const createStamphogRepoConfig: API.OperationMethod<
@@ -456,8 +659,8 @@ export const createStamphogRepoConfig: API.OperationMethod<
   CreateStamphogRepoConfigError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<CreateStamphogRepoConfigRequest>,
-  output: __S(1) as any as S.Schema<StamphogRepoConfig>,
+  input: CreateStamphogRepoConfigRequest,
+  output: StamphogRepoConfig,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -471,8 +674,8 @@ export const createStamphogRepoConfigsSyncInstallation: API.OperationMethod<
   CreateStamphogRepoConfigsSyncInstallationError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2) as any as S.Schema<CreateStamphogRepoConfigsSyncInstallationRequest>,
-  output: __S(7) as any as S.Schema<StamphogSyncInstallationResponse>,
+  input: CreateStamphogRepoConfigsSyncInstallationRequest,
+  output: StamphogSyncInstallationResponse,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -486,8 +689,8 @@ export const createStamphogReviewRun: API.OperationMethod<
   CreateStamphogReviewRunError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8) as any as S.Schema<CreateStamphogReviewRunRequest>,
-  output: __S(13) as any as S.Schema<ReviewRequestResponse>,
+  input: CreateStamphogReviewRunRequest,
+  output: ReviewRequestResponse,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -501,8 +704,8 @@ export const getStamphogDigestRun: API.OperationMethod<
   GetStamphogDigestRunError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14) as any as S.Schema<GetStamphogDigestRunRequest>,
-  output: __S(18) as any as S.Schema<DigestRun>,
+  input: GetStamphogDigestRunRequest,
+  output: DigestRun,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -516,8 +719,8 @@ export const getStamphogPullRequest: API.OperationMethod<
   GetStamphogPullRequestError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19) as any as S.Schema<GetStamphogPullRequestRequest>,
-  output: __S(20) as any as S.Schema<StamphogPullRequest>,
+  input: GetStamphogPullRequestRequest,
+  output: StamphogPullRequest,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -531,8 +734,8 @@ export const getStamphogRepoConfig: API.OperationMethod<
   GetStamphogRepoConfigError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21) as any as S.Schema<GetStamphogRepoConfigRequest>,
-  output: __S(1) as any as S.Schema<StamphogRepoConfig>,
+  input: GetStamphogRepoConfigRequest,
+  output: StamphogRepoConfig,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -546,8 +749,8 @@ export const getStamphogRepoConfigsAvailableRepository: API.OperationMethod<
   GetStamphogRepoConfigsAvailableRepositoryError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22) as any as S.Schema<GetStamphogRepoConfigsAvailableRepositoryRequest>,
-  output: __S(23) as any as S.Schema<StamphogAvailableRepositories>,
+  input: GetStamphogRepoConfigsAvailableRepositoryRequest,
+  output: StamphogAvailableRepositories,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -561,8 +764,8 @@ export const getStamphogReviewRun: API.OperationMethod<
   GetStamphogReviewRunError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24) as any as S.Schema<GetStamphogReviewRunRequest>,
-  output: __S(12) as any as S.Schema<ReviewRun>,
+  input: GetStamphogReviewRunRequest,
+  output: ReviewRun,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -576,8 +779,8 @@ export const listStamphogDigestRuns: API.OperationMethod<
   ListStamphogDigestRunsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25) as any as S.Schema<ListStamphogDigestRunsRequest>,
-  output: __S(27) as any as S.Schema<PaginatedDigestRunList>,
+  input: ListStamphogDigestRunsRequest,
+  output: PaginatedDigestRunList,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -591,8 +794,8 @@ export const listStamphogPullRequests: API.OperationMethod<
   ListStamphogPullRequestsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28) as any as S.Schema<ListStamphogPullRequestsRequest>,
-  output: __S(30) as any as S.Schema<PaginatedStamphogPullRequestList>,
+  input: ListStamphogPullRequestsRequest,
+  output: PaginatedStamphogPullRequestList,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -606,8 +809,8 @@ export const listStamphogRepoConfigs: API.OperationMethod<
   ListStamphogRepoConfigsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31) as any as S.Schema<ListStamphogRepoConfigsRequest>,
-  output: __S(32) as any as S.Schema<PaginatedStamphogRepoConfigList>,
+  input: ListStamphogRepoConfigsRequest,
+  output: PaginatedStamphogRepoConfigList,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -621,8 +824,8 @@ export const listStamphogReviewRuns: API.OperationMethod<
   ListStamphogReviewRunsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33) as any as S.Schema<ListStamphogReviewRunsRequest>,
-  output: __S(35) as any as S.Schema<PaginatedReviewRunList>,
+  input: ListStamphogReviewRunsRequest,
+  output: PaginatedReviewRunList,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -636,8 +839,8 @@ export const stamphogRepoConfigsAddRepositoryCreate: API.OperationMethod<
   StamphogRepoConfigsAddRepositoryCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36) as any as S.Schema<StamphogRepoConfigsAddRepositoryCreateRequest>,
-  output: __S(1) as any as S.Schema<StamphogRepoConfig>,
+  input: StamphogRepoConfigsAddRepositoryCreateRequest,
+  output: StamphogRepoConfig,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -651,8 +854,8 @@ export const stamphogRepoConfigsDestroy: API.OperationMethod<
   StamphogRepoConfigsDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37) as any as S.Schema<StamphogRepoConfigsDestroyRequest>,
-  output: __S(38) as any as S.Schema<StamphogRepoConfigsDestroyResponse>,
+  input: StamphogRepoConfigsDestroyRequest,
+  output: StamphogRepoConfigsDestroyResponse,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -666,8 +869,8 @@ export const stamphogRepoConfigsInstallInfoRetrieve: API.OperationMethod<
   StamphogRepoConfigsInstallInfoRetrieveError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39) as any as S.Schema<StamphogRepoConfigsInstallInfoRetrieveRequest>,
-  output: __S(40) as any as S.Schema<StamphogInstallInfo>,
+  input: StamphogRepoConfigsInstallInfoRetrieveRequest,
+  output: StamphogInstallInfo,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -681,8 +884,8 @@ export const updateStamphogRepoConfig: API.OperationMethod<
   UpdateStamphogRepoConfigError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41) as any as S.Schema<UpdateStamphogRepoConfigRequest>,
-  output: __S(1) as any as S.Schema<StamphogRepoConfig>,
+  input: UpdateStamphogRepoConfigRequest,
+  output: StamphogRepoConfig,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -696,8 +899,8 @@ export const updateStamphogRepoConfigsPartial: API.OperationMethod<
   UpdateStamphogRepoConfigsPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42) as any as S.Schema<UpdateStamphogRepoConfigsPartialRequest>,
-  output: __S(1) as any as S.Schema<StamphogRepoConfig>,
+  input: UpdateStamphogRepoConfigsPartialRequest,
+  output: StamphogRepoConfig,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -714,7 +917,7 @@ function __c0(j: number): any {
           repository: S.String,
           enabled: S.optional(S.Boolean),
           digest_enabled: S.optional(S.Boolean),
-          review_mode: S.optional(S.String),
+          review_mode: S.optional(ReviewModeEnum),
           trigger_label: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -735,7 +938,7 @@ function __c0(j: number): any {
           enabled: S.Boolean,
           installation_id: S.String,
           digest_enabled: S.optional(S.Boolean),
-          review_mode: S.String,
+          review_mode: ReviewModeEnum,
           trigger_label: S.optional(S.String),
           user_access_level: S.NullOr(S.String),
           created_at: S.String,
@@ -760,7 +963,7 @@ function __c0(j: number): any {
         identifier: "CreateStamphogRepoConfigsSyncInstallationRequest",
       });
     case 3:
-      return S.Array(__S(1));
+      return S.Array(StamphogRepoConfig);
     case 4:
       return S.Array(S.String);
     case 5:
@@ -773,15 +976,15 @@ function __c0(j: number): any {
         identifier: "StamphogDiscoveredInstallation",
       });
     case 6:
-      return S.Array(__S(5));
+      return S.Array(StamphogDiscoveredInstallation);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          synced: __S(3),
-          skipped: __S(4),
+          synced: StamphogSyncInstallationResponseSyncedList,
+          skipped: StamphogSyncInstallationResponseSkippedList,
           available_count: S.Number,
           app_not_installed: S.Boolean,
-          installations: __S(6),
+          installations: StamphogSyncInstallationResponseInstallationsList,
         }),
       ).annotate({
         identifier: "StamphogSyncInstallationResponse",
@@ -824,7 +1027,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           reasoning: S.NullOr(S.String),
-          showstoppers: S.NullOr(__S(4)),
+          showstoppers: S.NullOr(ReviewReasoningShowstoppersList),
           review_body: S.NullOr(S.String),
           change_summary: S.NullOr(S.String),
         }),
@@ -842,12 +1045,12 @@ function __c1(j: number): any {
           head_sha: S.String,
           head_branch: S.String,
           delivery_id: S.NullOr(S.String),
-          trigger: S.String,
-          status: S.String,
-          verdict: S.String,
-          gate_result: __S(9),
-          output: __S(10) as any as S.Schema<ReviewOutputSummary>,
-          reasoning: S.NullOr(__S(11)),
+          trigger: ReviewRunTriggerEnum,
+          status: ReviewRunStatusEnum,
+          verdict: ReviewRunVerdictEnum,
+          gate_result: GateResultSummary,
+          output: ReviewOutputSummary,
+          reasoning: S.NullOr(ReviewReasoning),
           error: S.String,
           posted_review_id: S.NullOr(S.Number),
           verdict_posted_at: S.NullOr(S.String),
@@ -860,7 +1063,7 @@ function __c1(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          run: __S(12),
+          run: ReviewRun,
           created: S.Boolean,
         }),
       ).annotate({ identifier: "ReviewRequestResponse" });
@@ -895,12 +1098,12 @@ function __c1(j: number): any {
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(15));
+      return S.Array(DigestSummaryPR);
     case 1:
       return S.suspend(() =>
         S.Struct({
           headline: S.String,
-          prs: __S(16),
+          prs: DigestSummaryPrsList,
         }),
       ).annotate({ identifier: "DigestSummary" });
     case 2:
@@ -910,10 +1113,10 @@ function __c2(j: number): any {
           audience_key: S.String,
           slack_channel_id: S.String,
           slack_channel_name: S.String,
-          resolution_source: S.String,
-          status: S.String,
+          resolution_source: ResolutionSourceEnum,
+          status: DigestRunStatusEnum,
           pr_count: S.Number,
-          summary: __S(17),
+          summary: DigestSummary,
           slack_message_ts: S.String,
           error: S.String,
           created_at: S.String,
@@ -989,7 +1192,7 @@ function __c2(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          repositories: __S(4),
+          repositories: StamphogAvailableRepositoriesRepositoriesList,
           total_count: S.Number,
           has_installation: S.Boolean,
         }),
@@ -1033,14 +1236,14 @@ function __c3(j: number): any {
         identifier: "ListStamphogDigestRunsRequest",
       });
     case 2:
-      return S.Array(__S(18));
+      return S.Array(DigestRun);
     case 3:
       return S.suspend(() =>
         S.Struct({
           count: S.Number,
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: __S(26),
+          results: PaginatedDigestRunListResultsList,
         }),
       ).annotate({ identifier: "PaginatedDigestRunList" });
     case 4:
@@ -1062,14 +1265,14 @@ function __c3(j: number): any {
         identifier: "ListStamphogPullRequestsRequest",
       });
     case 5:
-      return S.Array(__S(20));
+      return S.Array(StamphogPullRequest);
     case 6:
       return S.suspend(() =>
         S.Struct({
           count: S.Number,
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: __S(29),
+          results: PaginatedStamphogPullRequestListResultsList,
         }),
       ).annotate({
         identifier: "PaginatedStamphogPullRequestList",
@@ -1100,7 +1303,7 @@ function __c4(j: number): any {
           count: S.Number,
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: __S(3),
+          results: PaginatedStamphogRepoConfigListResultsList,
         }),
       ).annotate({
         identifier: "PaginatedStamphogRepoConfigList",
@@ -1114,7 +1317,7 @@ function __c4(j: number): any {
           pr_number: S.optional(S.Number.pipe(T.Query())),
           repository: S.optional(S.String.pipe(T.Query())),
           status: S.optional(S.String.pipe(T.Query())),
-          trigger: S.optional(S.String.pipe(T.Query())),
+          trigger: S.optional(ListStamphogReviewRunsRequestTrigger.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -1126,14 +1329,14 @@ function __c4(j: number): any {
         identifier: "ListStamphogReviewRunsRequest",
       });
     case 2:
-      return S.Array(__S(12));
+      return S.Array(ReviewRun);
     case 3:
       return S.suspend(() =>
         S.Struct({
           count: S.Number,
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: __S(34),
+          results: PaginatedReviewRunListResultsList,
         }),
       ).annotate({ identifier: "PaginatedReviewRunList" });
     case 4:
@@ -1205,7 +1408,7 @@ function __c5(j: number): any {
           repository: S.String,
           enabled: S.optional(S.Boolean),
           digest_enabled: S.optional(S.Boolean),
-          review_mode: S.optional(S.String),
+          review_mode: S.optional(ReviewModeEnum),
           trigger_label: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -1226,7 +1429,7 @@ function __c5(j: number): any {
           repository: S.optional(S.String),
           enabled: S.optional(S.Boolean),
           digest_enabled: S.optional(S.Boolean),
-          review_mode: S.optional(S.String),
+          review_mode: S.optional(ReviewModeEnum),
           trigger_label: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -1238,26 +1441,5 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "UpdateStamphogRepoConfigsPartialRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
   }
 }

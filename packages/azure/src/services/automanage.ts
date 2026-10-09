@@ -6,8 +6,6 @@ import { UnknownAzureError } from "../errors.ts";
 import { AzureProtocol, type AzureOpError, type AzureOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { AzureOpError, AzureOpContext };
 
@@ -16,6 +14,11 @@ export interface ConfigurationProfileAssignmentPropertiesInput {
   /** The Automanage configurationProfile ARM Resource URI. */
   configurationProfile?: string;
 }
+const ConfigurationProfileAssignmentPropertiesInput = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<ConfigurationProfileAssignmentPropertiesInput>;
+
 export interface ConfigurationProfileAssignmentsCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -28,6 +31,11 @@ export interface ConfigurationProfileAssignmentsCreateOrUpdateRequest {
   /** Properties of the configuration profile assignment. */
   properties?: ConfigurationProfileAssignmentPropertiesInput;
 }
+const ConfigurationProfileAssignmentsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<ConfigurationProfileAssignmentsCreateOrUpdateRequest>;
+
 /** Automanage configuration profile assignment properties. */
 export interface ConfigurationProfileAssignmentProperties {
   /** The Automanage configurationProfile ARM Resource URI. */
@@ -37,18 +45,27 @@ export interface ConfigurationProfileAssignmentProperties {
   /** The status of onboarding, which only appears in the response. */
   status?: string;
 }
+const ConfigurationProfileAssignmentProperties = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<ConfigurationProfileAssignmentProperties>;
+
 /** The type of identity that created the resource. */
 export type ConfigurationProfileAssignmentsCreateOrUpdateResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
+const ConfigurationProfileAssignmentsCreateOrUpdateResponseSystemDataCreatedByType = S.String;
+
 /** The type of identity that last modified the resource. */
 export type ConfigurationProfileAssignmentsCreateOrUpdateResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
+const ConfigurationProfileAssignmentsCreateOrUpdateResponseSystemDataLastModifiedByType = S.String;
+
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface ConfigurationProfileAssignmentsCreateOrUpdateResponseSystemData {
   /** The identity that created the resource. */
@@ -64,6 +81,11 @@ export interface ConfigurationProfileAssignmentsCreateOrUpdateResponseSystemData
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const ConfigurationProfileAssignmentsCreateOrUpdateResponseSystemData = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<ConfigurationProfileAssignmentsCreateOrUpdateResponseSystemData>;
+
 export interface ConfigurationProfileAssignmentsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -78,6 +100,11 @@ export interface ConfigurationProfileAssignmentsCreateOrUpdateResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: ConfigurationProfileAssignmentsCreateOrUpdateResponseSystemData;
 }
+const ConfigurationProfileAssignmentsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<ConfigurationProfileAssignmentsCreateOrUpdateResponse>;
+
 export interface ConfigurationProfileHCIAssignmentsCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -90,6 +117,11 @@ export interface ConfigurationProfileHCIAssignmentsCreateOrUpdateRequest {
   /** Properties of the configuration profile assignment. */
   properties?: ConfigurationProfileAssignmentPropertiesInput;
 }
+const ConfigurationProfileHCIAssignmentsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<ConfigurationProfileHCIAssignmentsCreateOrUpdateRequest>;
+
 /** The type of identity that created the resource. */
 export type ConfigurationProfileHCIAssignmentsCreateOrUpdateResponseSystemDataCreatedByType =
   | "User"
@@ -117,6 +149,9 @@ export interface ConfigurationProfileHCIAssignmentsCreateOrUpdateResponseSystemD
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const ConfigurationProfileHCIAssignmentsCreateOrUpdateResponseSystemData =
+  ConfigurationProfileAssignmentsCreateOrUpdateResponseSystemData as any as S.Schema<ConfigurationProfileHCIAssignmentsCreateOrUpdateResponseSystemData>;
+
 export interface ConfigurationProfileHCIAssignmentsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -131,6 +166,11 @@ export interface ConfigurationProfileHCIAssignmentsCreateOrUpdateResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: ConfigurationProfileHCIAssignmentsCreateOrUpdateResponseSystemData;
 }
+const ConfigurationProfileHCIAssignmentsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<ConfigurationProfileHCIAssignmentsCreateOrUpdateResponse>;
+
 export interface ConfigurationProfileHCRPAssignmentsCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -143,6 +183,11 @@ export interface ConfigurationProfileHCRPAssignmentsCreateOrUpdateRequest {
   /** Properties of the configuration profile assignment. */
   properties?: ConfigurationProfileAssignmentPropertiesInput;
 }
+const ConfigurationProfileHCRPAssignmentsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<ConfigurationProfileHCRPAssignmentsCreateOrUpdateRequest>;
+
 /** The type of identity that created the resource. */
 export type ConfigurationProfileHCRPAssignmentsCreateOrUpdateResponseSystemDataCreatedByType =
   | "User"
@@ -184,15 +229,28 @@ export interface ConfigurationProfileHCRPAssignmentsCreateOrUpdateResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: ConfigurationProfileHCRPAssignmentsCreateOrUpdateResponseSystemData;
 }
+const ConfigurationProfileHCRPAssignmentsCreateOrUpdateResponse =
+  ConfigurationProfileHCIAssignmentsCreateOrUpdateResponse as any as S.Schema<ConfigurationProfileHCRPAssignmentsCreateOrUpdateResponse>;
+
 /** Resource tags. */
 export type ConfigurationProfilesCreateOrUpdateRequestTagsMap = {
   [key: string]: string | undefined;
 };
+const ConfigurationProfilesCreateOrUpdateRequestTagsMap = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<ConfigurationProfilesCreateOrUpdateRequestTagsMap>;
+
 /** Automanage configuration profile properties. */
 export interface ConfigurationProfileProperties {
   /** configuration dictionary of the configuration profile. */
   configuration?: unknown;
 }
+const ConfigurationProfileProperties = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<ConfigurationProfileProperties>;
+
 export interface ConfigurationProfilesCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -207,22 +265,34 @@ export interface ConfigurationProfilesCreateOrUpdateRequest {
   /** Properties of the configuration profile. */
   properties?: ConfigurationProfileProperties;
 }
+const ConfigurationProfilesCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<ConfigurationProfilesCreateOrUpdateRequest>;
+
 /** Resource tags. */
 export type ConfigurationProfilesCreateOrUpdateResponseTagsMap = {
   [key: string]: string | undefined;
 };
+const ConfigurationProfilesCreateOrUpdateResponseTagsMap =
+  ConfigurationProfilesCreateOrUpdateRequestTagsMap as any as S.Schema<ConfigurationProfilesCreateOrUpdateResponseTagsMap>;
+
 /** The type of identity that created the resource. */
 export type ConfigurationProfilesCreateOrUpdateResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
+const ConfigurationProfilesCreateOrUpdateResponseSystemDataCreatedByType = S.String;
+
 /** The type of identity that last modified the resource. */
 export type ConfigurationProfilesCreateOrUpdateResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
+const ConfigurationProfilesCreateOrUpdateResponseSystemDataLastModifiedByType = S.String;
+
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface ConfigurationProfilesCreateOrUpdateResponseSystemData {
   /** The identity that created the resource. */
@@ -238,6 +308,11 @@ export interface ConfigurationProfilesCreateOrUpdateResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const ConfigurationProfilesCreateOrUpdateResponseSystemData = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<ConfigurationProfilesCreateOrUpdateResponseSystemData>;
+
 export interface ConfigurationProfilesCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -254,10 +329,18 @@ export interface ConfigurationProfilesCreateOrUpdateResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: ConfigurationProfilesCreateOrUpdateResponseSystemData;
 }
+const ConfigurationProfilesCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<ConfigurationProfilesCreateOrUpdateResponse>;
+
 /** Resource tags. */
 export type ConfigurationProfilesVersionsCreateOrUpdateRequestTagsMap = {
   [key: string]: string | undefined;
 };
+const ConfigurationProfilesVersionsCreateOrUpdateRequestTagsMap =
+  ConfigurationProfilesCreateOrUpdateRequestTagsMap as any as S.Schema<ConfigurationProfilesVersionsCreateOrUpdateRequestTagsMap>;
+
 export interface ConfigurationProfilesVersionsCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -274,10 +357,18 @@ export interface ConfigurationProfilesVersionsCreateOrUpdateRequest {
   /** Properties of the configuration profile. */
   properties?: ConfigurationProfileProperties;
 }
+const ConfigurationProfilesVersionsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<ConfigurationProfilesVersionsCreateOrUpdateRequest>;
+
 /** Resource tags. */
 export type ConfigurationProfilesVersionsCreateOrUpdateResponseTagsMap = {
   [key: string]: string | undefined;
 };
+const ConfigurationProfilesVersionsCreateOrUpdateResponseTagsMap =
+  ConfigurationProfilesCreateOrUpdateRequestTagsMap as any as S.Schema<ConfigurationProfilesVersionsCreateOrUpdateResponseTagsMap>;
+
 /** The type of identity that created the resource. */
 export type ConfigurationProfilesVersionsCreateOrUpdateResponseSystemDataCreatedByType =
   | "User"
@@ -305,6 +396,9 @@ export interface ConfigurationProfilesVersionsCreateOrUpdateResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const ConfigurationProfilesVersionsCreateOrUpdateResponseSystemData =
+  ConfigurationProfileAssignmentsCreateOrUpdateResponseSystemData as any as S.Schema<ConfigurationProfilesVersionsCreateOrUpdateResponseSystemData>;
+
 export interface ConfigurationProfilesVersionsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -321,6 +415,11 @@ export interface ConfigurationProfilesVersionsCreateOrUpdateResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: ConfigurationProfilesVersionsCreateOrUpdateResponseSystemData;
 }
+const ConfigurationProfilesVersionsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<ConfigurationProfilesVersionsCreateOrUpdateResponse>;
+
 export interface DeleteConfigurationProfileRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -329,7 +428,17 @@ export interface DeleteConfigurationProfileRequest {
   /** Name of the configuration profile */
   configurationProfileName: string;
 }
+const DeleteConfigurationProfileRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<DeleteConfigurationProfileRequest>;
+
 export interface DeleteConfigurationProfileResponse {}
+const DeleteConfigurationProfileResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<DeleteConfigurationProfileResponse>;
+
 export interface DeleteConfigurationProfileAssignmentRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -340,7 +449,15 @@ export interface DeleteConfigurationProfileAssignmentRequest {
   /** Name of the configuration profile assignment */
   configurationProfileAssignmentName: string;
 }
+const DeleteConfigurationProfileAssignmentRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<DeleteConfigurationProfileAssignmentRequest>;
+
 export interface DeleteConfigurationProfileAssignmentResponse {}
+const DeleteConfigurationProfileAssignmentResponse =
+  DeleteConfigurationProfileResponse as any as S.Schema<DeleteConfigurationProfileAssignmentResponse>;
+
 export interface DeleteConfigurationProfileHCIAssignmentRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -351,7 +468,15 @@ export interface DeleteConfigurationProfileHCIAssignmentRequest {
   /** Name of the configuration profile assignment */
   configurationProfileAssignmentName: string;
 }
+const DeleteConfigurationProfileHCIAssignmentRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<DeleteConfigurationProfileHCIAssignmentRequest>;
+
 export interface DeleteConfigurationProfileHCIAssignmentResponse {}
+const DeleteConfigurationProfileHCIAssignmentResponse =
+  DeleteConfigurationProfileResponse as any as S.Schema<DeleteConfigurationProfileHCIAssignmentResponse>;
+
 export interface DeleteConfigurationProfileHCRPAssignmentRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -362,7 +487,15 @@ export interface DeleteConfigurationProfileHCRPAssignmentRequest {
   /** Name of the configuration profile assignment */
   configurationProfileAssignmentName: string;
 }
+const DeleteConfigurationProfileHCRPAssignmentRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<DeleteConfigurationProfileHCRPAssignmentRequest>;
+
 export interface DeleteConfigurationProfileHCRPAssignmentResponse {}
+const DeleteConfigurationProfileHCRPAssignmentResponse =
+  DeleteConfigurationProfileResponse as any as S.Schema<DeleteConfigurationProfileHCRPAssignmentResponse>;
+
 export interface DeleteConfigurationProfilesVersionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -373,23 +506,40 @@ export interface DeleteConfigurationProfilesVersionRequest {
   /** The configuration profile version name. */
   versionName: string;
 }
+const DeleteConfigurationProfilesVersionRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<DeleteConfigurationProfilesVersionRequest>;
+
 export interface DeleteConfigurationProfilesVersionResponse {}
+const DeleteConfigurationProfilesVersionResponse =
+  DeleteConfigurationProfileResponse as any as S.Schema<DeleteConfigurationProfilesVersionResponse>;
+
 export interface GetBestPracticeRequest {
   /** The Automanage best practice name. */
   bestPracticeName: string;
 }
+const GetBestPracticeRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<GetBestPracticeRequest>;
+
 /** The type of identity that created the resource. */
 export type BestPracticeSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
+const BestPracticeSystemDataCreatedByType = S.String;
+
 /** The type of identity that last modified the resource. */
 export type BestPracticeSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
+const BestPracticeSystemDataLastModifiedByType = S.String;
+
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface BestPracticeSystemData {
   /** The identity that created the resource. */
@@ -405,6 +555,11 @@ export interface BestPracticeSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const BestPracticeSystemData = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<BestPracticeSystemData>;
+
 /** Definition of the Automanage best practice. */
 export interface BestPractice {
   /** The fully qualified ID for the best practice. For example, /providers/Microsoft.Automanage/bestPractices/azureBestPracticesProduction */
@@ -418,12 +573,19 @@ export interface BestPractice {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: BestPracticeSystemData;
 }
+const BestPractice = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<BestPractice>;
+
 export interface GetBestPracticesVersionRequest {
   /** The Automanage best practice name. */
   bestPracticeName: string;
   /** The Automanage best practice version name. */
   versionName: string;
 }
+const GetBestPracticesVersionRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<GetBestPracticesVersionRequest>;
+
 export interface GetConfigurationProfileRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -432,20 +594,32 @@ export interface GetConfigurationProfileRequest {
   /** The configuration profile name. */
   configurationProfileName: string;
 }
+const GetConfigurationProfileRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<GetConfigurationProfileRequest>;
+
 /** Resource tags. */
 export type GetConfigurationProfileResponseTagsMap = { [key: string]: string | undefined };
+const GetConfigurationProfileResponseTagsMap =
+  ConfigurationProfilesCreateOrUpdateRequestTagsMap as any as S.Schema<GetConfigurationProfileResponseTagsMap>;
+
 /** The type of identity that created the resource. */
 export type GetConfigurationProfileResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
+const GetConfigurationProfileResponseSystemDataCreatedByType = S.String;
+
 /** The type of identity that last modified the resource. */
 export type GetConfigurationProfileResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
+const GetConfigurationProfileResponseSystemDataLastModifiedByType = S.String;
+
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface GetConfigurationProfileResponseSystemData {
   /** The identity that created the resource. */
@@ -461,6 +635,11 @@ export interface GetConfigurationProfileResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const GetConfigurationProfileResponseSystemData = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<GetConfigurationProfileResponseSystemData>;
+
 export interface GetConfigurationProfileResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -477,6 +656,11 @@ export interface GetConfigurationProfileResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: GetConfigurationProfileResponseSystemData;
 }
+const GetConfigurationProfileResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<GetConfigurationProfileResponse>;
+
 export interface GetConfigurationProfileAssignmentRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -487,6 +671,11 @@ export interface GetConfigurationProfileAssignmentRequest {
   /** The configuration profile assignment name. */
   configurationProfileAssignmentName: string;
 }
+const GetConfigurationProfileAssignmentRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<GetConfigurationProfileAssignmentRequest>;
+
 /** The type of identity that created the resource. */
 export type GetConfigurationProfileAssignmentResponseSystemDataCreatedByType =
   | "User"
@@ -514,6 +703,9 @@ export interface GetConfigurationProfileAssignmentResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const GetConfigurationProfileAssignmentResponseSystemData =
+  ConfigurationProfilesCreateOrUpdateResponseSystemData as any as S.Schema<GetConfigurationProfileAssignmentResponseSystemData>;
+
 export interface GetConfigurationProfileAssignmentResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -528,6 +720,11 @@ export interface GetConfigurationProfileAssignmentResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: GetConfigurationProfileAssignmentResponseSystemData;
 }
+const GetConfigurationProfileAssignmentResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<GetConfigurationProfileAssignmentResponse>;
+
 export interface GetConfigurationProfileHCIAssignmentRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -538,6 +735,11 @@ export interface GetConfigurationProfileHCIAssignmentRequest {
   /** The configuration profile assignment name. */
   configurationProfileAssignmentName: string;
 }
+const GetConfigurationProfileHCIAssignmentRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<GetConfigurationProfileHCIAssignmentRequest>;
+
 /** The type of identity that created the resource. */
 export type GetConfigurationProfileHCIAssignmentResponseSystemDataCreatedByType =
   | "User"
@@ -579,6 +781,9 @@ export interface GetConfigurationProfileHCIAssignmentResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: GetConfigurationProfileHCIAssignmentResponseSystemData;
 }
+const GetConfigurationProfileHCIAssignmentResponse =
+  GetConfigurationProfileAssignmentResponse as any as S.Schema<GetConfigurationProfileHCIAssignmentResponse>;
+
 export interface GetConfigurationProfileHCRPAssignmentRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -589,6 +794,11 @@ export interface GetConfigurationProfileHCRPAssignmentRequest {
   /** The configuration profile assignment name. */
   configurationProfileAssignmentName: string;
 }
+const GetConfigurationProfileHCRPAssignmentRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<GetConfigurationProfileHCRPAssignmentRequest>;
+
 /** The type of identity that created the resource. */
 export type GetConfigurationProfileHCRPAssignmentResponseSystemDataCreatedByType =
   | "User"
@@ -630,6 +840,9 @@ export interface GetConfigurationProfileHCRPAssignmentResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: GetConfigurationProfileHCRPAssignmentResponseSystemData;
 }
+const GetConfigurationProfileHCRPAssignmentResponse =
+  GetConfigurationProfileAssignmentResponse as any as S.Schema<GetConfigurationProfileHCRPAssignmentResponse>;
+
 export interface GetConfigurationProfilesVersionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -640,8 +853,16 @@ export interface GetConfigurationProfilesVersionRequest {
   /** The configuration profile version name. */
   versionName: string;
 }
+const GetConfigurationProfilesVersionRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<GetConfigurationProfilesVersionRequest>;
+
 /** Resource tags. */
 export type GetConfigurationProfilesVersionResponseTagsMap = { [key: string]: string | undefined };
+const GetConfigurationProfilesVersionResponseTagsMap =
+  ConfigurationProfilesCreateOrUpdateRequestTagsMap as any as S.Schema<GetConfigurationProfilesVersionResponseTagsMap>;
+
 /** The type of identity that created the resource. */
 export type GetConfigurationProfilesVersionResponseSystemDataCreatedByType =
   | "User"
@@ -669,6 +890,9 @@ export interface GetConfigurationProfilesVersionResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const GetConfigurationProfilesVersionResponseSystemData =
+  ConfigurationProfilesCreateOrUpdateResponseSystemData as any as S.Schema<GetConfigurationProfilesVersionResponseSystemData>;
+
 export interface GetConfigurationProfilesVersionResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -685,6 +909,11 @@ export interface GetConfigurationProfilesVersionResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: GetConfigurationProfilesVersionResponseSystemData;
 }
+const GetConfigurationProfilesVersionResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<GetConfigurationProfilesVersionResponse>;
+
 export interface GetHCIReportRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -697,8 +926,15 @@ export interface GetHCIReportRequest {
   /** The report name. */
   reportName: string;
 }
+const GetHCIReportRequest = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<GetHCIReportRequest>;
+
 /** The error details. */
 export type ErrorDetailDetailsList = Array<ErrorDetail>;
+const ErrorDetailDetailsList = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<ErrorDetailDetailsList>;
+
 /** The resource management error additional info. */
 export interface ErrorAdditionalInfo {
   /** The additional info type. */
@@ -706,8 +942,15 @@ export interface ErrorAdditionalInfo {
   /** The additional info. */
   info?: unknown;
 }
+const ErrorAdditionalInfo = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<ErrorAdditionalInfo>;
+
 /** The error additional info. */
 export type ErrorDetailAdditionalInfoList = Array<ErrorAdditionalInfo>;
+const ErrorDetailAdditionalInfoList = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<ErrorDetailAdditionalInfoList>;
+
 /** The error detail. */
 export interface ErrorDetail {
   /** The error code. */
@@ -721,10 +964,20 @@ export interface ErrorDetail {
   /** The error additional info. */
   additionalInfo?: ErrorDetailAdditionalInfoList;
 }
+const ErrorDetail = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<ErrorDetail>;
+
 /** The error details. */
 export type ReportResourceErrorDetailsList = Array<ErrorDetail>;
+const ReportResourceErrorDetailsList = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<ReportResourceErrorDetailsList>;
+
 /** The error additional info. */
 export type ReportResourceErrorAdditionalInfoList = Array<ErrorAdditionalInfo>;
+const ReportResourceErrorAdditionalInfoList =
+  ErrorDetailAdditionalInfoList as any as S.Schema<ReportResourceErrorAdditionalInfoList>;
+
 /** The error detail. */
 export interface ReportResourceError {
   /** The error code. */
@@ -738,6 +991,8 @@ export interface ReportResourceError {
   /** The error additional info. */
   additionalInfo?: ReportResourceErrorAdditionalInfoList;
 }
+const ReportResourceError = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<ReportResourceError>;
+
 /** Details about the resource processed by the configuration profile assignment */
 export interface ReportResource {
   /** Name of the resource. */
@@ -751,12 +1006,25 @@ export interface ReportResource {
   /** The error detail. */
   error?: ReportResourceError;
 }
+const ReportResource = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<ReportResource>;
+
 /** List of resources processed by the configuration profile assignment. */
 export type AssignmentReportPropertiesResourcesList = Array<ReportResource>;
+const AssignmentReportPropertiesResourcesList = /*@__PURE__*/ __L.at(
+  __c5,
+  2,
+) as any as S.Schema<AssignmentReportPropertiesResourcesList>;
+
 /** The error details. */
 export type AssignmentReportPropertiesErrorDetailsList = Array<ErrorDetail>;
+const AssignmentReportPropertiesErrorDetailsList =
+  ReportResourceErrorDetailsList as any as S.Schema<AssignmentReportPropertiesErrorDetailsList>;
+
 /** The error additional info. */
 export type AssignmentReportPropertiesErrorAdditionalInfoList = Array<ErrorAdditionalInfo>;
+const AssignmentReportPropertiesErrorAdditionalInfoList =
+  ErrorDetailAdditionalInfoList as any as S.Schema<AssignmentReportPropertiesErrorAdditionalInfoList>;
+
 /** The error detail. */
 export interface AssignmentReportPropertiesError {
   /** The error code. */
@@ -770,6 +1038,11 @@ export interface AssignmentReportPropertiesError {
   /** The error additional info. */
   additionalInfo?: AssignmentReportPropertiesErrorAdditionalInfoList;
 }
+const AssignmentReportPropertiesError = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<AssignmentReportPropertiesError>;
+
 /** Data related to the report detail. */
 export interface AssignmentReportProperties {
   /** Start time of the configuration profile assignment processing. */
@@ -793,6 +1066,11 @@ export interface AssignmentReportProperties {
   /** Version of the report format */
   reportFormatVersion?: string;
 }
+const AssignmentReportProperties = /*@__PURE__*/ __L.at(
+  __c5,
+  4,
+) as any as S.Schema<AssignmentReportProperties>;
+
 /** The type of identity that created the resource. */
 export type GetHCIReportResponseSystemDataCreatedByType =
   | "User"
@@ -820,6 +1098,9 @@ export interface GetHCIReportResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const GetHCIReportResponseSystemData =
+  GetConfigurationProfileResponseSystemData as any as S.Schema<GetHCIReportResponseSystemData>;
+
 export interface GetHCIReportResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -832,6 +1113,8 @@ export interface GetHCIReportResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: GetHCIReportResponseSystemData;
 }
+const GetHCIReportResponse = /*@__PURE__*/ __L.at(__c5, 5) as any as S.Schema<GetHCIReportResponse>;
+
 export interface GetHCRPReportRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -844,6 +1127,8 @@ export interface GetHCRPReportRequest {
   /** The report name. */
   reportName: string;
 }
+const GetHCRPReportRequest = /*@__PURE__*/ __L.at(__c5, 6) as any as S.Schema<GetHCRPReportRequest>;
+
 /** The type of identity that created the resource. */
 export type GetHCRPReportResponseSystemDataCreatedByType =
   | "User"
@@ -883,6 +1168,8 @@ export interface GetHCRPReportResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: GetHCRPReportResponseSystemData;
 }
+const GetHCRPReportResponse = GetHCIReportResponse as any as S.Schema<GetHCRPReportResponse>;
+
 export interface GetReportRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -895,6 +1182,8 @@ export interface GetReportRequest {
   /** The report name. */
   reportName: string;
 }
+const GetReportRequest = /*@__PURE__*/ __L.at(__c5, 7) as any as S.Schema<GetReportRequest>;
+
 /** The type of identity that created the resource. */
 export type GetReportResponseSystemDataCreatedByType =
   | "User"
@@ -934,10 +1223,17 @@ export interface GetReportResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: GetReportResponseSystemData;
 }
+const GetReportResponse = GetHCIReportResponse as any as S.Schema<GetReportResponse>;
+
 export interface GetServicePrincipalRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
 }
+const GetServicePrincipalRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<GetServicePrincipalRequest>;
+
 /** The Service Principal properties for the subscription. */
 export interface ServicePrincipalProperties {
   /** The Service Principal Id for the subscription. */
@@ -945,6 +1241,11 @@ export interface ServicePrincipalProperties {
   /** Returns the contributor RBAC Role exist or not for the Service Principal Id. */
   authorizationSet?: boolean;
 }
+const ServicePrincipalProperties = /*@__PURE__*/ __L.at(
+  __c6,
+  1,
+) as any as S.Schema<ServicePrincipalProperties>;
+
 /** The type of identity that created the resource. */
 export type GetServicePrincipalResponseSystemDataCreatedByType =
   | "User"
@@ -972,6 +1273,9 @@ export interface GetServicePrincipalResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const GetServicePrincipalResponseSystemData =
+  GetConfigurationProfileResponseSystemData as any as S.Schema<GetServicePrincipalResponseSystemData>;
+
 export interface GetServicePrincipalResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -984,18 +1288,40 @@ export interface GetServicePrincipalResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: GetServicePrincipalResponseSystemData;
 }
+const GetServicePrincipalResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  2,
+) as any as S.Schema<GetServicePrincipalResponse>;
+
 export interface ListBestPracticeByTenantRequest {}
+const ListBestPracticeByTenantRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  3,
+) as any as S.Schema<ListBestPracticeByTenantRequest>;
+
 /** Result of the list best practice operation. */
 export type BestPracticeListValueList = Array<BestPractice>;
+const BestPracticeListValueList = /*@__PURE__*/ __L.at(
+  __c6,
+  4,
+) as any as S.Schema<BestPracticeListValueList>;
+
 /** The response of the list best practice operation. */
 export interface BestPracticeList {
   /** Result of the list best practice operation. */
   value?: BestPracticeListValueList;
 }
+const BestPracticeList = /*@__PURE__*/ __L.at(__c6, 5) as any as S.Schema<BestPracticeList>;
+
 export interface ListBestPracticesVersionByTenantRequest {
   /** The Automanage best practice name. */
   bestPracticeName: string;
 }
+const ListBestPracticesVersionByTenantRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  6,
+) as any as S.Schema<ListBestPracticesVersionByTenantRequest>;
+
 export interface ListConfigurationProfileAssignmentByClusterNameRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1004,6 +1330,11 @@ export interface ListConfigurationProfileAssignmentByClusterNameRequest {
   /** The name of the Arc machine. */
   clusterName: string;
 }
+const ListConfigurationProfileAssignmentByClusterNameRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  7,
+) as any as S.Schema<ListConfigurationProfileAssignmentByClusterNameRequest>;
+
 /** The type of identity that created the resource. */
 export type ConfigurationProfileAssignmentSystemDataCreatedByType =
   | "User"
@@ -1031,6 +1362,9 @@ export interface ConfigurationProfileAssignmentSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const ConfigurationProfileAssignmentSystemData =
+  GetConfigurationProfileResponseSystemData as any as S.Schema<ConfigurationProfileAssignmentSystemData>;
+
 /** Configuration profile assignment is an association between a VM and automanage profile configuration. */
 export interface ConfigurationProfileAssignment {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -1046,13 +1380,28 @@ export interface ConfigurationProfileAssignment {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: ConfigurationProfileAssignmentSystemData;
 }
+const ConfigurationProfileAssignment = /*@__PURE__*/ __L.at(
+  __c7,
+  0,
+) as any as S.Schema<ConfigurationProfileAssignment>;
+
 /** Result of the list configuration profile assignment operation. */
 export type ConfigurationProfileAssignmentListValueList = Array<ConfigurationProfileAssignment>;
+const ConfigurationProfileAssignmentListValueList = /*@__PURE__*/ __L.at(
+  __c7,
+  1,
+) as any as S.Schema<ConfigurationProfileAssignmentListValueList>;
+
 /** The response of the list configuration profile assignment operation. */
 export interface ConfigurationProfileAssignmentList {
   /** Result of the list configuration profile assignment operation. */
   value?: ConfigurationProfileAssignmentListValueList;
 }
+const ConfigurationProfileAssignmentList = /*@__PURE__*/ __L.at(
+  __c7,
+  2,
+) as any as S.Schema<ConfigurationProfileAssignmentList>;
+
 export interface ListConfigurationProfileAssignmentByMachineNameRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1061,10 +1410,20 @@ export interface ListConfigurationProfileAssignmentByMachineNameRequest {
   /** The name of the Arc machine. */
   machineName: string;
 }
+const ListConfigurationProfileAssignmentByMachineNameRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  3,
+) as any as S.Schema<ListConfigurationProfileAssignmentByMachineNameRequest>;
+
 export interface ListConfigurationProfileAssignmentBySubscriptionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
 }
+const ListConfigurationProfileAssignmentBySubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  4,
+) as any as S.Schema<ListConfigurationProfileAssignmentBySubscriptionRequest>;
+
 export interface ListConfigurationProfileAssignmentByVirtualMachinesRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1073,20 +1432,38 @@ export interface ListConfigurationProfileAssignmentByVirtualMachinesRequest {
   /** The name of the virtual machine. */
   vmName: string;
 }
+const ListConfigurationProfileAssignmentByVirtualMachinesRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  5,
+) as any as S.Schema<ListConfigurationProfileAssignmentByVirtualMachinesRequest>;
+
 export interface ListConfigurationProfileAssignmentsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
+const ListConfigurationProfileAssignmentsRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  6,
+) as any as S.Schema<ListConfigurationProfileAssignmentsRequest>;
+
 export interface ListConfigurationProfileByResourceGroupRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
+const ListConfigurationProfileByResourceGroupRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  7,
+) as any as S.Schema<ListConfigurationProfileByResourceGroupRequest>;
+
 /** Resource tags. */
 export type ConfigurationProfileTagsMap = { [key: string]: string | undefined };
+const ConfigurationProfileTagsMap =
+  ConfigurationProfilesCreateOrUpdateRequestTagsMap as any as S.Schema<ConfigurationProfileTagsMap>;
+
 /** The type of identity that created the resource. */
 export type ConfigurationProfileSystemDataCreatedByType =
   | "User"
@@ -1114,6 +1491,9 @@ export interface ConfigurationProfileSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const ConfigurationProfileSystemData =
+  GetConfigurationProfileResponseSystemData as any as S.Schema<ConfigurationProfileSystemData>;
+
 /** Definition of the configuration profile. */
 export interface ConfigurationProfile {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -1131,17 +1511,34 @@ export interface ConfigurationProfile {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: ConfigurationProfileSystemData;
 }
+const ConfigurationProfile = /*@__PURE__*/ __L.at(__c8, 0) as any as S.Schema<ConfigurationProfile>;
+
 /** Result of the list ConfigurationProfile operation. */
 export type ConfigurationProfileListValueList = Array<ConfigurationProfile>;
+const ConfigurationProfileListValueList = /*@__PURE__*/ __L.at(
+  __c8,
+  1,
+) as any as S.Schema<ConfigurationProfileListValueList>;
+
 /** The response of the list configuration profile operation. */
 export interface ConfigurationProfileList {
   /** Result of the list ConfigurationProfile operation. */
   value?: ConfigurationProfileListValueList;
 }
+const ConfigurationProfileList = /*@__PURE__*/ __L.at(
+  __c8,
+  2,
+) as any as S.Schema<ConfigurationProfileList>;
+
 export interface ListConfigurationProfileBySubscriptionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
 }
+const ListConfigurationProfileBySubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  3,
+) as any as S.Schema<ListConfigurationProfileBySubscriptionRequest>;
+
 export interface ListConfigurationProfilesVersionChildResourcesRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1150,6 +1547,11 @@ export interface ListConfigurationProfilesVersionChildResourcesRequest {
   /** Name of the configuration profile. */
   configurationProfileName: string;
 }
+const ListConfigurationProfilesVersionChildResourcesRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  4,
+) as any as S.Schema<ListConfigurationProfilesVersionChildResourcesRequest>;
+
 export interface ListHCIReportByConfigurationProfileAssignmentsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1160,6 +1562,11 @@ export interface ListHCIReportByConfigurationProfileAssignmentsRequest {
   /** The configuration profile assignment name. */
   configurationProfileAssignmentName: string;
 }
+const ListHCIReportByConfigurationProfileAssignmentsRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  5,
+) as any as S.Schema<ListHCIReportByConfigurationProfileAssignmentsRequest>;
+
 /** The type of identity that created the resource. */
 export type ReportSystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
 /** The type of identity that last modified the resource. */
@@ -1179,6 +1586,8 @@ export interface ReportSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const ReportSystemData = BestPracticeSystemData as any as S.Schema<ReportSystemData>;
+
 /** Definition of the report. */
 export interface Report {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -1192,13 +1601,19 @@ export interface Report {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: ReportSystemData;
 }
+const Report = /*@__PURE__*/ __L.at(__c8, 6) as any as S.Schema<Report>;
+
 /** Result of the list report operation. */
 export type ReportListValueList = Array<Report>;
+const ReportListValueList = /*@__PURE__*/ __L.at(__c8, 7) as any as S.Schema<ReportListValueList>;
+
 /** The response of the list report operation. */
 export interface ReportList {
   /** Result of the list report operation. */
   value?: ReportListValueList;
 }
+const ReportList = /*@__PURE__*/ __L.at(__c9, 0) as any as S.Schema<ReportList>;
+
 export interface ListHCRPReportByConfigurationProfileAssignmentsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1209,7 +1624,17 @@ export interface ListHCRPReportByConfigurationProfileAssignmentsRequest {
   /** The configuration profile assignment name. */
   configurationProfileAssignmentName: string;
 }
+const ListHCRPReportByConfigurationProfileAssignmentsRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  1,
+) as any as S.Schema<ListHCRPReportByConfigurationProfileAssignmentsRequest>;
+
 export interface ListOperationsRequest {}
+const ListOperationsRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  2,
+) as any as S.Schema<ListOperationsRequest>;
+
 /** Localized display information for this particular operation. */
 export interface OperationDisplay {
   /** The localized friendly form of the resource provider name, e.g. "Microsoft Monitoring Insights" or "Microsoft Compute". */
@@ -1221,10 +1646,16 @@ export interface OperationDisplay {
   /** The short, localized friendly description of the operation; suitable for tool tips and detailed views. */
   description?: string;
 }
+const OperationDisplay = /*@__PURE__*/ __L.at(__c9, 3) as any as S.Schema<OperationDisplay>;
+
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
 export type OperationOrigin = "user" | "system" | "user,system";
+const OperationOrigin = S.String;
+
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
 export type OperationActionType = "Internal";
+const OperationActionType = S.String;
+
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
 export interface Operation {
   /** The name of the operation, as per Resource-Based Access Control (RBAC). Examples: "Microsoft.Compute/virtualMachines/write", "Microsoft.Compute/virtualMachines/capture/action" */
@@ -1238,14 +1669,26 @@ export interface Operation {
   /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
   actionType?: OperationActionType;
 }
+const Operation = /*@__PURE__*/ __L.at(__c9, 4) as any as S.Schema<Operation>;
+
 /** List of operations supported by the resource provider */
 export type ListOperationsResponseValueList = Array<Operation>;
+const ListOperationsResponseValueList = /*@__PURE__*/ __L.at(
+  __c9,
+  5,
+) as any as S.Schema<ListOperationsResponseValueList>;
+
 export interface ListOperationsResponse {
   /** List of operations supported by the resource provider */
   value?: ListOperationsResponseValueList;
   /** URL to get the next set of operation list results (if there are any). */
   nextLink?: string;
 }
+const ListOperationsResponse = /*@__PURE__*/ __L.at(
+  __c9,
+  6,
+) as any as S.Schema<ListOperationsResponse>;
+
 export interface ListReportByConfigurationProfileAssignmentsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1256,10 +1699,20 @@ export interface ListReportByConfigurationProfileAssignmentsRequest {
   /** The configuration profile assignment name. */
   configurationProfileAssignmentName: string;
 }
+const ListReportByConfigurationProfileAssignmentsRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  7,
+) as any as S.Schema<ListReportByConfigurationProfileAssignmentsRequest>;
+
 export interface ListServicePrincipalBySubscriptionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
 }
+const ListServicePrincipalBySubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  0,
+) as any as S.Schema<ListServicePrincipalBySubscriptionRequest>;
+
 /** The type of identity that created the resource. */
 export type ServicePrincipalSystemDataCreatedByType =
   | "User"
@@ -1287,6 +1740,9 @@ export interface ServicePrincipalSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const ServicePrincipalSystemData =
+  GetConfigurationProfileResponseSystemData as any as S.Schema<ServicePrincipalSystemData>;
+
 /** The Service Principal Id for the subscription. */
 export interface ServicePrincipal {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -1300,15 +1756,30 @@ export interface ServicePrincipal {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: ServicePrincipalSystemData;
 }
+const ServicePrincipal = /*@__PURE__*/ __L.at(__c10, 1) as any as S.Schema<ServicePrincipal>;
+
 /** The list of servicePrincipals. */
 export type ServicePrincipalListResultValueList = Array<ServicePrincipal>;
+const ServicePrincipalListResultValueList = /*@__PURE__*/ __L.at(
+  __c10,
+  2,
+) as any as S.Schema<ServicePrincipalListResultValueList>;
+
 /** The list of ServicePrincipals. */
 export interface ServicePrincipalListResult {
   /** The list of servicePrincipals. */
   value?: ServicePrincipalListResultValueList;
 }
+const ServicePrincipalListResult = /*@__PURE__*/ __L.at(
+  __c10,
+  3,
+) as any as S.Schema<ServicePrincipalListResult>;
+
 /** The tags of the resource. */
 export type UpdateConfigurationProfileRequestTagsMap = { [key: string]: string | undefined };
+const UpdateConfigurationProfileRequestTagsMap =
+  ConfigurationProfilesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateConfigurationProfileRequestTagsMap>;
+
 export interface UpdateConfigurationProfileRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1321,8 +1792,16 @@ export interface UpdateConfigurationProfileRequest {
   /** Properties of the configuration profile. */
   properties?: ConfigurationProfileProperties;
 }
+const UpdateConfigurationProfileRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  4,
+) as any as S.Schema<UpdateConfigurationProfileRequest>;
+
 /** Resource tags. */
 export type UpdateConfigurationProfileResponseTagsMap = { [key: string]: string | undefined };
+const UpdateConfigurationProfileResponseTagsMap =
+  ConfigurationProfilesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateConfigurationProfileResponseTagsMap>;
+
 /** The type of identity that created the resource. */
 export type UpdateConfigurationProfileResponseSystemDataCreatedByType =
   | "User"
@@ -1350,6 +1829,9 @@ export interface UpdateConfigurationProfileResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const UpdateConfigurationProfileResponseSystemData =
+  GetConfigurationProfileResponseSystemData as any as S.Schema<UpdateConfigurationProfileResponseSystemData>;
+
 export interface UpdateConfigurationProfileResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -1366,6 +1848,11 @@ export interface UpdateConfigurationProfileResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: UpdateConfigurationProfileResponseSystemData;
 }
+const UpdateConfigurationProfileResponse = /*@__PURE__*/ __L.at(
+  __c10,
+  5,
+) as any as S.Schema<UpdateConfigurationProfileResponse>;
+
 export type ConfigurationProfileAssignmentsCreateOrUpdateError = AzureOpError;
 /** Creates an association between a VM and Automanage configuration profile */
 export const ConfigurationProfileAssignmentsCreateOrUpdate: API.OperationMethod<
@@ -1374,8 +1861,8 @@ export const ConfigurationProfileAssignmentsCreateOrUpdate: API.OperationMethod<
   ConfigurationProfileAssignmentsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1) as any as S.Schema<ConfigurationProfileAssignmentsCreateOrUpdateRequest>,
-  output: __S(4) as any as S.Schema<ConfigurationProfileAssignmentsCreateOrUpdateResponse>,
+  input: ConfigurationProfileAssignmentsCreateOrUpdateRequest,
+  output: ConfigurationProfileAssignmentsCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1389,8 +1876,8 @@ export const ConfigurationProfileHCIAssignmentsCreateOrUpdate: API.OperationMeth
   ConfigurationProfileHCIAssignmentsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5) as any as S.Schema<ConfigurationProfileHCIAssignmentsCreateOrUpdateRequest>,
-  output: __S(6) as any as S.Schema<ConfigurationProfileHCIAssignmentsCreateOrUpdateResponse>,
+  input: ConfigurationProfileHCIAssignmentsCreateOrUpdateRequest,
+  output: ConfigurationProfileHCIAssignmentsCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1404,8 +1891,8 @@ export const ConfigurationProfileHCRPAssignmentsCreateOrUpdate: API.OperationMet
   ConfigurationProfileHCRPAssignmentsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7) as any as S.Schema<ConfigurationProfileHCRPAssignmentsCreateOrUpdateRequest>,
-  output: __S(6) as any as S.Schema<ConfigurationProfileHCRPAssignmentsCreateOrUpdateResponse>,
+  input: ConfigurationProfileHCRPAssignmentsCreateOrUpdateRequest,
+  output: ConfigurationProfileHCRPAssignmentsCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1419,8 +1906,8 @@ export const ConfigurationProfilesCreateOrUpdate: API.OperationMethod<
   ConfigurationProfilesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10) as any as S.Schema<ConfigurationProfilesCreateOrUpdateRequest>,
-  output: __S(12) as any as S.Schema<ConfigurationProfilesCreateOrUpdateResponse>,
+  input: ConfigurationProfilesCreateOrUpdateRequest,
+  output: ConfigurationProfilesCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1434,8 +1921,8 @@ export const ConfigurationProfilesVersionsCreateOrUpdate: API.OperationMethod<
   ConfigurationProfilesVersionsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13) as any as S.Schema<ConfigurationProfilesVersionsCreateOrUpdateRequest>,
-  output: __S(14) as any as S.Schema<ConfigurationProfilesVersionsCreateOrUpdateResponse>,
+  input: ConfigurationProfilesVersionsCreateOrUpdateRequest,
+  output: ConfigurationProfilesVersionsCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1449,8 +1936,8 @@ export const DeleteConfigurationProfile: API.OperationMethod<
   DeleteConfigurationProfileError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15) as any as S.Schema<DeleteConfigurationProfileRequest>,
-  output: __S(16) as any as S.Schema<DeleteConfigurationProfileResponse>,
+  input: DeleteConfigurationProfileRequest,
+  output: DeleteConfigurationProfileResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1464,8 +1951,8 @@ export const DeleteConfigurationProfileAssignment: API.OperationMethod<
   DeleteConfigurationProfileAssignmentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17) as any as S.Schema<DeleteConfigurationProfileAssignmentRequest>,
-  output: __S(16) as any as S.Schema<DeleteConfigurationProfileAssignmentResponse>,
+  input: DeleteConfigurationProfileAssignmentRequest,
+  output: DeleteConfigurationProfileAssignmentResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1479,8 +1966,8 @@ export const DeleteConfigurationProfileHCIAssignment: API.OperationMethod<
   DeleteConfigurationProfileHCIAssignmentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18) as any as S.Schema<DeleteConfigurationProfileHCIAssignmentRequest>,
-  output: __S(16) as any as S.Schema<DeleteConfigurationProfileHCIAssignmentResponse>,
+  input: DeleteConfigurationProfileHCIAssignmentRequest,
+  output: DeleteConfigurationProfileHCIAssignmentResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1494,8 +1981,8 @@ export const DeleteConfigurationProfileHCRPAssignment: API.OperationMethod<
   DeleteConfigurationProfileHCRPAssignmentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19) as any as S.Schema<DeleteConfigurationProfileHCRPAssignmentRequest>,
-  output: __S(16) as any as S.Schema<DeleteConfigurationProfileHCRPAssignmentResponse>,
+  input: DeleteConfigurationProfileHCRPAssignmentRequest,
+  output: DeleteConfigurationProfileHCRPAssignmentResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1509,8 +1996,8 @@ export const DeleteConfigurationProfilesVersion: API.OperationMethod<
   DeleteConfigurationProfilesVersionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20) as any as S.Schema<DeleteConfigurationProfilesVersionRequest>,
-  output: __S(16) as any as S.Schema<DeleteConfigurationProfilesVersionResponse>,
+  input: DeleteConfigurationProfilesVersionRequest,
+  output: DeleteConfigurationProfilesVersionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1524,8 +2011,8 @@ export const GetBestPractice: API.OperationMethod<
   GetBestPracticeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21) as any as S.Schema<GetBestPracticeRequest>,
-  output: __S(23) as any as S.Schema<BestPractice>,
+  input: GetBestPracticeRequest,
+  output: BestPractice,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1539,8 +2026,8 @@ export const GetBestPracticesVersion: API.OperationMethod<
   GetBestPracticesVersionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24) as any as S.Schema<GetBestPracticesVersionRequest>,
-  output: __S(23) as any as S.Schema<BestPractice>,
+  input: GetBestPracticesVersionRequest,
+  output: BestPractice,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1554,8 +2041,8 @@ export const GetConfigurationProfile: API.OperationMethod<
   GetConfigurationProfileError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25) as any as S.Schema<GetConfigurationProfileRequest>,
-  output: __S(27) as any as S.Schema<GetConfigurationProfileResponse>,
+  input: GetConfigurationProfileRequest,
+  output: GetConfigurationProfileResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1569,8 +2056,8 @@ export const GetConfigurationProfileAssignment: API.OperationMethod<
   GetConfigurationProfileAssignmentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28) as any as S.Schema<GetConfigurationProfileAssignmentRequest>,
-  output: __S(29) as any as S.Schema<GetConfigurationProfileAssignmentResponse>,
+  input: GetConfigurationProfileAssignmentRequest,
+  output: GetConfigurationProfileAssignmentResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1584,8 +2071,8 @@ export const GetConfigurationProfileHCIAssignment: API.OperationMethod<
   GetConfigurationProfileHCIAssignmentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30) as any as S.Schema<GetConfigurationProfileHCIAssignmentRequest>,
-  output: __S(29) as any as S.Schema<GetConfigurationProfileHCIAssignmentResponse>,
+  input: GetConfigurationProfileHCIAssignmentRequest,
+  output: GetConfigurationProfileHCIAssignmentResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1599,8 +2086,8 @@ export const GetConfigurationProfileHCRPAssignment: API.OperationMethod<
   GetConfigurationProfileHCRPAssignmentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31) as any as S.Schema<GetConfigurationProfileHCRPAssignmentRequest>,
-  output: __S(29) as any as S.Schema<GetConfigurationProfileHCRPAssignmentResponse>,
+  input: GetConfigurationProfileHCRPAssignmentRequest,
+  output: GetConfigurationProfileHCRPAssignmentResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1614,8 +2101,8 @@ export const GetConfigurationProfilesVersion: API.OperationMethod<
   GetConfigurationProfilesVersionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32) as any as S.Schema<GetConfigurationProfilesVersionRequest>,
-  output: __S(33) as any as S.Schema<GetConfigurationProfilesVersionResponse>,
+  input: GetConfigurationProfilesVersionRequest,
+  output: GetConfigurationProfilesVersionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1629,8 +2116,8 @@ export const GetHCIReport: API.OperationMethod<
   GetHCIReportError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34) as any as S.Schema<GetHCIReportRequest>,
-  output: __S(45) as any as S.Schema<GetHCIReportResponse>,
+  input: GetHCIReportRequest,
+  output: GetHCIReportResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1644,8 +2131,8 @@ export const GetHCRPReport: API.OperationMethod<
   GetHCRPReportError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(46) as any as S.Schema<GetHCRPReportRequest>,
-  output: __S(45) as any as S.Schema<GetHCRPReportResponse>,
+  input: GetHCRPReportRequest,
+  output: GetHCRPReportResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1659,8 +2146,8 @@ export const GetReport: API.OperationMethod<
   GetReportError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47) as any as S.Schema<GetReportRequest>,
-  output: __S(45) as any as S.Schema<GetReportResponse>,
+  input: GetReportRequest,
+  output: GetReportResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1674,8 +2161,8 @@ export const GetServicePrincipal: API.OperationMethod<
   GetServicePrincipalError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48) as any as S.Schema<GetServicePrincipalRequest>,
-  output: __S(50) as any as S.Schema<GetServicePrincipalResponse>,
+  input: GetServicePrincipalRequest,
+  output: GetServicePrincipalResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1689,8 +2176,8 @@ export const ListBestPracticeByTenant: API.OperationMethod<
   ListBestPracticeByTenantError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(51) as any as S.Schema<ListBestPracticeByTenantRequest>,
-  output: __S(53) as any as S.Schema<BestPracticeList>,
+  input: ListBestPracticeByTenantRequest,
+  output: BestPracticeList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1704,8 +2191,8 @@ export const ListBestPracticesVersionByTenant: API.OperationMethod<
   ListBestPracticesVersionByTenantError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(54) as any as S.Schema<ListBestPracticesVersionByTenantRequest>,
-  output: __S(53) as any as S.Schema<BestPracticeList>,
+  input: ListBestPracticesVersionByTenantRequest,
+  output: BestPracticeList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1719,8 +2206,8 @@ export const ListConfigurationProfileAssignmentByClusterName: API.OperationMetho
   ListConfigurationProfileAssignmentByClusterNameError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(55) as any as S.Schema<ListConfigurationProfileAssignmentByClusterNameRequest>,
-  output: __S(58) as any as S.Schema<ConfigurationProfileAssignmentList>,
+  input: ListConfigurationProfileAssignmentByClusterNameRequest,
+  output: ConfigurationProfileAssignmentList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1734,8 +2221,8 @@ export const ListConfigurationProfileAssignmentByMachineName: API.OperationMetho
   ListConfigurationProfileAssignmentByMachineNameError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(59) as any as S.Schema<ListConfigurationProfileAssignmentByMachineNameRequest>,
-  output: __S(58) as any as S.Schema<ConfigurationProfileAssignmentList>,
+  input: ListConfigurationProfileAssignmentByMachineNameRequest,
+  output: ConfigurationProfileAssignmentList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1749,8 +2236,8 @@ export const ListConfigurationProfileAssignmentBySubscription: API.OperationMeth
   ListConfigurationProfileAssignmentBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60) as any as S.Schema<ListConfigurationProfileAssignmentBySubscriptionRequest>,
-  output: __S(58) as any as S.Schema<ConfigurationProfileAssignmentList>,
+  input: ListConfigurationProfileAssignmentBySubscriptionRequest,
+  output: ConfigurationProfileAssignmentList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1764,8 +2251,8 @@ export const ListConfigurationProfileAssignmentByVirtualMachines: API.OperationM
   ListConfigurationProfileAssignmentByVirtualMachinesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(61) as any as S.Schema<ListConfigurationProfileAssignmentByVirtualMachinesRequest>,
-  output: __S(58) as any as S.Schema<ConfigurationProfileAssignmentList>,
+  input: ListConfigurationProfileAssignmentByVirtualMachinesRequest,
+  output: ConfigurationProfileAssignmentList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1779,8 +2266,8 @@ export const ListConfigurationProfileAssignments: API.OperationMethod<
   ListConfigurationProfileAssignmentsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(62) as any as S.Schema<ListConfigurationProfileAssignmentsRequest>,
-  output: __S(58) as any as S.Schema<ConfigurationProfileAssignmentList>,
+  input: ListConfigurationProfileAssignmentsRequest,
+  output: ConfigurationProfileAssignmentList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1794,8 +2281,8 @@ export const ListConfigurationProfileByResourceGroup: API.OperationMethod<
   ListConfigurationProfileByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(63) as any as S.Schema<ListConfigurationProfileByResourceGroupRequest>,
-  output: __S(66) as any as S.Schema<ConfigurationProfileList>,
+  input: ListConfigurationProfileByResourceGroupRequest,
+  output: ConfigurationProfileList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1809,8 +2296,8 @@ export const ListConfigurationProfileBySubscription: API.OperationMethod<
   ListConfigurationProfileBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(67) as any as S.Schema<ListConfigurationProfileBySubscriptionRequest>,
-  output: __S(66) as any as S.Schema<ConfigurationProfileList>,
+  input: ListConfigurationProfileBySubscriptionRequest,
+  output: ConfigurationProfileList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1824,8 +2311,8 @@ export const ListConfigurationProfilesVersionChildResources: API.OperationMethod
   ListConfigurationProfilesVersionChildResourcesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(68) as any as S.Schema<ListConfigurationProfilesVersionChildResourcesRequest>,
-  output: __S(66) as any as S.Schema<ConfigurationProfileList>,
+  input: ListConfigurationProfilesVersionChildResourcesRequest,
+  output: ConfigurationProfileList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1839,8 +2326,8 @@ export const ListHCIReportByConfigurationProfileAssignments: API.OperationMethod
   ListHCIReportByConfigurationProfileAssignmentsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(69) as any as S.Schema<ListHCIReportByConfigurationProfileAssignmentsRequest>,
-  output: __S(72) as any as S.Schema<ReportList>,
+  input: ListHCIReportByConfigurationProfileAssignmentsRequest,
+  output: ReportList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1854,8 +2341,8 @@ export const ListHCRPReportByConfigurationProfileAssignments: API.OperationMetho
   ListHCRPReportByConfigurationProfileAssignmentsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(73) as any as S.Schema<ListHCRPReportByConfigurationProfileAssignmentsRequest>,
-  output: __S(72) as any as S.Schema<ReportList>,
+  input: ListHCRPReportByConfigurationProfileAssignmentsRequest,
+  output: ReportList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1869,8 +2356,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(74) as any as S.Schema<ListOperationsRequest>,
-  output: __S(78) as any as S.Schema<ListOperationsResponse>,
+  input: ListOperationsRequest,
+  output: ListOperationsResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1884,8 +2371,8 @@ export const ListReportByConfigurationProfileAssignments: API.OperationMethod<
   ListReportByConfigurationProfileAssignmentsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(79) as any as S.Schema<ListReportByConfigurationProfileAssignmentsRequest>,
-  output: __S(72) as any as S.Schema<ReportList>,
+  input: ListReportByConfigurationProfileAssignmentsRequest,
+  output: ReportList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1899,8 +2386,8 @@ export const ListServicePrincipalBySubscription: API.OperationMethod<
   ListServicePrincipalBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(80) as any as S.Schema<ListServicePrincipalBySubscriptionRequest>,
-  output: __S(83) as any as S.Schema<ServicePrincipalListResult>,
+  input: ListServicePrincipalBySubscriptionRequest,
+  output: ServicePrincipalListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1914,8 +2401,8 @@ export const UpdateConfigurationProfile: API.OperationMethod<
   UpdateConfigurationProfileError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(84) as any as S.Schema<UpdateConfigurationProfileRequest>,
-  output: __S(85) as any as S.Schema<UpdateConfigurationProfileResponse>,
+  input: UpdateConfigurationProfileRequest,
+  output: UpdateConfigurationProfileResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1939,7 +2426,7 @@ function __c0(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           vmName: S.String.pipe(T.Label()),
           configurationProfileAssignmentName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(0)),
+          properties: S.optional(ConfigurationProfileAssignmentPropertiesInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -1965,10 +2452,14 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
-          createdByType: S.optional(S.String),
+          createdByType: S.optional(
+            ConfigurationProfileAssignmentsCreateOrUpdateResponseSystemDataCreatedByType,
+          ),
           createdAt: S.optional(S.String),
           lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(S.String),
+          lastModifiedByType: S.optional(
+            ConfigurationProfileAssignmentsCreateOrUpdateResponseSystemDataLastModifiedByType,
+          ),
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({
@@ -1980,9 +2471,9 @@ function __c0(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(__S(2)),
+          properties: S.optional(ConfigurationProfileAssignmentProperties),
           managedBy: S.optional(S.String),
-          systemData: S.optional(__S(3)),
+          systemData: S.optional(ConfigurationProfileAssignmentsCreateOrUpdateResponseSystemData),
         }),
       ).annotate({
         identifier: "ConfigurationProfileAssignmentsCreateOrUpdateResponse",
@@ -1994,7 +2485,7 @@ function __c0(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           clusterName: S.String.pipe(T.Label()),
           configurationProfileAssignmentName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(0)),
+          properties: S.optional(ConfigurationProfileAssignmentPropertiesInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2012,9 +2503,11 @@ function __c0(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(__S(2)),
+          properties: S.optional(ConfigurationProfileAssignmentProperties),
           managedBy: S.optional(S.String),
-          systemData: S.optional(__S(3)),
+          systemData: S.optional(
+            ConfigurationProfileHCIAssignmentsCreateOrUpdateResponseSystemData,
+          ),
         }),
       ).annotate({
         identifier: "ConfigurationProfileHCIAssignmentsCreateOrUpdateResponse",
@@ -2026,7 +2519,7 @@ function __c0(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           machineName: S.String.pipe(T.Label()),
           configurationProfileAssignmentName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(0)),
+          properties: S.optional(ConfigurationProfileAssignmentPropertiesInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2058,9 +2551,9 @@ function __c1(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           configurationProfileName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(8)),
+          tags: S.optional(ConfigurationProfilesCreateOrUpdateRequestTagsMap),
           location: S.String,
-          properties: S.optional(__S(9)),
+          properties: S.optional(ConfigurationProfileProperties),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2076,10 +2569,14 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
-          createdByType: S.optional(S.String),
+          createdByType: S.optional(
+            ConfigurationProfilesCreateOrUpdateResponseSystemDataCreatedByType,
+          ),
           createdAt: S.optional(S.String),
           lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(S.String),
+          lastModifiedByType: S.optional(
+            ConfigurationProfilesCreateOrUpdateResponseSystemDataLastModifiedByType,
+          ),
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({
@@ -2091,10 +2588,10 @@ function __c1(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          tags: S.optional(__S(8)),
+          tags: S.optional(ConfigurationProfilesCreateOrUpdateResponseTagsMap),
           location: S.String,
-          properties: S.optional(__S(9)),
-          systemData: S.optional(__S(11)),
+          properties: S.optional(ConfigurationProfileProperties),
+          systemData: S.optional(ConfigurationProfilesCreateOrUpdateResponseSystemData),
         }),
       ).annotate({
         identifier: "ConfigurationProfilesCreateOrUpdateResponse",
@@ -2106,9 +2603,9 @@ function __c1(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           configurationProfileName: S.String.pipe(T.Label()),
           versionName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(8)),
+          tags: S.optional(ConfigurationProfilesVersionsCreateOrUpdateRequestTagsMap),
           location: S.String,
-          properties: S.optional(__S(9)),
+          properties: S.optional(ConfigurationProfileProperties),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2126,10 +2623,10 @@ function __c1(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          tags: S.optional(__S(8)),
+          tags: S.optional(ConfigurationProfilesVersionsCreateOrUpdateResponseTagsMap),
           location: S.String,
-          properties: S.optional(__S(9)),
-          systemData: S.optional(__S(3)),
+          properties: S.optional(ConfigurationProfileProperties),
+          systemData: S.optional(ConfigurationProfilesVersionsCreateOrUpdateResponseSystemData),
         }),
       ).annotate({
         identifier: "ConfigurationProfilesVersionsCreateOrUpdateResponse",
@@ -2248,10 +2745,10 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
-          createdByType: S.optional(S.String),
+          createdByType: S.optional(BestPracticeSystemDataCreatedByType),
           createdAt: S.optional(S.String),
           lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(S.String),
+          lastModifiedByType: S.optional(BestPracticeSystemDataLastModifiedByType),
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "BestPracticeSystemData" });
@@ -2261,8 +2758,8 @@ function __c2(j: number): any {
           id: S.optional(S.String),
           type: S.optional(S.String),
           name: S.optional(S.String),
-          properties: S.optional(__S(9)),
-          systemData: S.optional(__S(22)),
+          properties: S.optional(ConfigurationProfileProperties),
+          systemData: S.optional(BestPracticeSystemData),
         }),
       ).annotate({ identifier: "BestPractice" });
   }
@@ -2306,10 +2803,12 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
-          createdByType: S.optional(S.String),
+          createdByType: S.optional(GetConfigurationProfileResponseSystemDataCreatedByType),
           createdAt: S.optional(S.String),
           lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(S.String),
+          lastModifiedByType: S.optional(
+            GetConfigurationProfileResponseSystemDataLastModifiedByType,
+          ),
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({
@@ -2321,10 +2820,10 @@ function __c3(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          tags: S.optional(__S(8)),
+          tags: S.optional(GetConfigurationProfileResponseTagsMap),
           location: S.String,
-          properties: S.optional(__S(9)),
-          systemData: S.optional(__S(26)),
+          properties: S.optional(ConfigurationProfileProperties),
+          systemData: S.optional(GetConfigurationProfileResponseSystemData),
         }),
       ).annotate({
         identifier: "GetConfigurationProfileResponse",
@@ -2353,9 +2852,9 @@ function __c3(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(__S(2)),
+          properties: S.optional(ConfigurationProfileAssignmentProperties),
           managedBy: S.optional(S.String),
-          systemData: S.optional(__S(11)),
+          systemData: S.optional(GetConfigurationProfileAssignmentResponseSystemData),
         }),
       ).annotate({
         identifier: "GetConfigurationProfileAssignmentResponse",
@@ -2424,10 +2923,10 @@ function __c4(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          tags: S.optional(__S(8)),
+          tags: S.optional(GetConfigurationProfilesVersionResponseTagsMap),
           location: S.String,
-          properties: S.optional(__S(9)),
-          systemData: S.optional(__S(11)),
+          properties: S.optional(ConfigurationProfileProperties),
+          systemData: S.optional(GetConfigurationProfilesVersionResponseSystemData),
         }),
       ).annotate({
         identifier: "GetConfigurationProfilesVersionResponse",
@@ -2450,7 +2949,7 @@ function __c4(j: number): any {
         ),
       ).annotate({ identifier: "GetHCIReportRequest" });
     case 3:
-      return S.Array(/*@__PURE__*/ S.suspend(() => __S(38)));
+      return S.Array(/*@__PURE__*/ S.suspend(() => ErrorDetail));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -2459,19 +2958,19 @@ function __c4(j: number): any {
         }),
       ).annotate({ identifier: "ErrorAdditionalInfo" });
     case 5:
-      return S.Array(__S(36));
+      return S.Array(ErrorAdditionalInfo);
     case 6:
       return S.suspend(() =>
         S.Struct({
           code: S.optional(S.String),
           message: S.optional(S.String),
           target: S.optional(S.String),
-          details: S.optional(__S(35)),
-          additionalInfo: S.optional(__S(37)),
+          details: S.optional(ErrorDetailDetailsList),
+          additionalInfo: S.optional(ErrorDetailAdditionalInfoList),
         }),
       ).annotate({ identifier: "ErrorDetail" });
     case 7:
-      return S.Array(__S(38));
+      return S.Array(ErrorDetail);
   }
 }
 function __c5(j: number): any {
@@ -2482,8 +2981,8 @@ function __c5(j: number): any {
           code: S.optional(S.String),
           message: S.optional(S.String),
           target: S.optional(S.String),
-          details: S.optional(__S(39)),
-          additionalInfo: S.optional(__S(37)),
+          details: S.optional(ReportResourceErrorDetailsList),
+          additionalInfo: S.optional(ReportResourceErrorAdditionalInfoList),
         }),
       ).annotate({ identifier: "ReportResourceError" });
     case 1:
@@ -2493,19 +2992,19 @@ function __c5(j: number): any {
           id: S.optional(S.String),
           type: S.optional(S.String),
           status: S.optional(S.String),
-          error: S.optional(__S(40)),
+          error: S.optional(ReportResourceError),
         }),
       ).annotate({ identifier: "ReportResource" });
     case 2:
-      return S.Array(__S(41));
+      return S.Array(ReportResource);
     case 3:
       return S.suspend(() =>
         S.Struct({
           code: S.optional(S.String),
           message: S.optional(S.String),
           target: S.optional(S.String),
-          details: S.optional(__S(39)),
-          additionalInfo: S.optional(__S(37)),
+          details: S.optional(AssignmentReportPropertiesErrorDetailsList),
+          additionalInfo: S.optional(AssignmentReportPropertiesErrorAdditionalInfoList),
         }),
       ).annotate({
         identifier: "AssignmentReportPropertiesError",
@@ -2520,8 +3019,8 @@ function __c5(j: number): any {
           type: S.optional(S.String),
           status: S.optional(S.String),
           configurationProfile: S.optional(S.String),
-          resources: S.optional(__S(42)),
-          error: S.optional(__S(43)),
+          resources: S.optional(AssignmentReportPropertiesResourcesList),
+          error: S.optional(AssignmentReportPropertiesError),
           reportFormatVersion: S.optional(S.String),
         }),
       ).annotate({
@@ -2533,8 +3032,8 @@ function __c5(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(__S(44)),
-          systemData: S.optional(__S(26)),
+          properties: S.optional(AssignmentReportProperties),
+          systemData: S.optional(GetHCIReportResponseSystemData),
         }),
       ).annotate({ identifier: "GetHCIReportResponse" });
     case 6:
@@ -2605,8 +3104,8 @@ function __c6(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(__S(49)),
-          systemData: S.optional(__S(26)),
+          properties: S.optional(ServicePrincipalProperties),
+          systemData: S.optional(GetServicePrincipalResponseSystemData),
         }),
       ).annotate({
         identifier: "GetServicePrincipalResponse",
@@ -2625,11 +3124,11 @@ function __c6(j: number): any {
         identifier: "ListBestPracticeByTenantRequest",
       });
     case 4:
-      return S.Array(__S(23));
+      return S.Array(BestPractice);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(52)),
+          value: S.optional(BestPracticeListValueList),
         }),
       ).annotate({ identifier: "BestPracticeList" });
     case 6:
@@ -2674,19 +3173,19 @@ function __c7(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(__S(2)),
+          properties: S.optional(ConfigurationProfileAssignmentProperties),
           managedBy: S.optional(S.String),
-          systemData: S.optional(__S(26)),
+          systemData: S.optional(ConfigurationProfileAssignmentSystemData),
         }),
       ).annotate({
         identifier: "ConfigurationProfileAssignment",
       });
     case 1:
-      return S.Array(__S(56));
+      return S.Array(ConfigurationProfileAssignment);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(57)),
+          value: S.optional(ConfigurationProfileAssignmentListValueList),
         }),
       ).annotate({
         identifier: "ConfigurationProfileAssignmentList",
@@ -2782,18 +3281,18 @@ function __c8(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          tags: S.optional(__S(8)),
+          tags: S.optional(ConfigurationProfileTagsMap),
           location: S.String,
-          properties: S.optional(__S(9)),
-          systemData: S.optional(__S(26)),
+          properties: S.optional(ConfigurationProfileProperties),
+          systemData: S.optional(ConfigurationProfileSystemData),
         }),
       ).annotate({ identifier: "ConfigurationProfile" });
     case 1:
-      return S.Array(__S(64));
+      return S.Array(ConfigurationProfile);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(65)),
+          value: S.optional(ConfigurationProfileListValueList),
         }),
       ).annotate({ identifier: "ConfigurationProfileList" });
     case 3:
@@ -2852,12 +3351,12 @@ function __c8(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(__S(44)),
-          systemData: S.optional(__S(22)),
+          properties: S.optional(AssignmentReportProperties),
+          systemData: S.optional(ReportSystemData),
         }),
       ).annotate({ identifier: "Report" });
     case 7:
-      return S.Array(__S(70));
+      return S.Array(Report);
   }
 }
 function __c9(j: number): any {
@@ -2865,7 +3364,7 @@ function __c9(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(71)),
+          value: S.optional(ReportListValueList),
         }),
       ).annotate({ identifier: "ReportList" });
     case 1:
@@ -2911,17 +3410,17 @@ function __c9(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           isDataAction: S.optional(S.Boolean),
-          display: S.optional(__S(75)),
-          origin: S.optional(S.String),
-          actionType: S.optional(S.String),
+          display: S.optional(OperationDisplay),
+          origin: S.optional(OperationOrigin),
+          actionType: S.optional(OperationActionType),
         }),
       ).annotate({ identifier: "Operation" });
     case 5:
-      return S.Array(__S(76));
+      return S.Array(Operation);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(77)),
+          value: S.optional(ListOperationsResponseValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
@@ -2968,16 +3467,16 @@ function __c10(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(__S(49)),
-          systemData: S.optional(__S(26)),
+          properties: S.optional(ServicePrincipalProperties),
+          systemData: S.optional(ServicePrincipalSystemData),
         }),
       ).annotate({ identifier: "ServicePrincipal" });
     case 2:
-      return S.Array(__S(81));
+      return S.Array(ServicePrincipal);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(82)),
+          value: S.optional(ServicePrincipalListResultValueList),
         }),
       ).annotate({
         identifier: "ServicePrincipalListResult",
@@ -2988,8 +3487,8 @@ function __c10(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           configurationProfileName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(8)),
-          properties: S.optional(__S(9)),
+          tags: S.optional(UpdateConfigurationProfileRequestTagsMap),
+          properties: S.optional(ConfigurationProfileProperties),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3007,44 +3506,13 @@ function __c10(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          tags: S.optional(__S(8)),
+          tags: S.optional(UpdateConfigurationProfileResponseTagsMap),
           location: S.String,
-          properties: S.optional(__S(9)),
-          systemData: S.optional(__S(26)),
+          properties: S.optional(ConfigurationProfileProperties),
+          systemData: S.optional(UpdateConfigurationProfileResponseSystemData),
         }),
       ).annotate({
         identifier: "UpdateConfigurationProfileResponse",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
-    case 9:
-      return __c9(i & 7);
-    case 10:
-      return __c10(i & 7);
   }
 }

@@ -6,8 +6,6 @@ import { UnknownAzureError } from "../errors.ts";
 import { AzureProtocol, type AzureOpError, type AzureOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { AzureOpError, AzureOpContext };
 
@@ -17,8 +15,15 @@ export interface CheckProviderActionNameAvailabilityRequest {
   /** The resource type. */
   type?: string;
 }
+const CheckProviderActionNameAvailabilityRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<CheckProviderActionNameAvailabilityRequest>;
+
 /** The reason why the given name is not available. */
 export type CheckProviderActionNameAvailabilityResponseReason = "Invalid" | "AlreadyExists";
+const CheckProviderActionNameAvailabilityResponseReason = S.String;
+
 export interface CheckProviderActionNameAvailabilityResponse {
   /** Indicates if the resource name is available. */
   nameAvailable?: boolean;
@@ -27,32 +32,65 @@ export interface CheckProviderActionNameAvailabilityResponse {
   /** Detailed reason why the given name is available. */
   message?: string;
 }
+const CheckProviderActionNameAvailabilityResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<CheckProviderActionNameAvailabilityResponse>;
+
 export interface DeleteEvidenceRequest {
   /** Report Name. */
   reportName: string;
   /** The evidence name. */
   evidenceName: string;
 }
+const DeleteEvidenceRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<DeleteEvidenceRequest>;
+
 export interface DeleteEvidenceResponse {}
+const DeleteEvidenceResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<DeleteEvidenceResponse>;
+
 export interface DeleteReportRequest {
   /** Report Name. */
   reportName: string;
 }
+const DeleteReportRequest = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<DeleteReportRequest>;
+
 export interface DeleteReportResponse {}
+const DeleteReportResponse = DeleteEvidenceResponse as any as S.Schema<DeleteReportResponse>;
+
 export interface DeleteScopingConfigurationRequest {
   /** Report Name. */
   reportName: string;
   /** The scoping configuration of the specific report. */
   scopingConfigurationName: string;
 }
+const DeleteScopingConfigurationRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<DeleteScopingConfigurationRequest>;
+
 export interface DeleteScopingConfigurationResponse {}
+const DeleteScopingConfigurationResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<DeleteScopingConfigurationResponse>;
+
 export interface DeleteWebhookRequest {
   /** Report Name. */
   reportName: string;
   /** Webhook Name. */
   webhookName: string;
 }
+const DeleteWebhookRequest = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<DeleteWebhookRequest>;
+
 export interface DeleteWebhookResponse {}
+const DeleteWebhookResponse = DeleteEvidenceResponse as any as S.Schema<DeleteWebhookResponse>;
+
 export interface DownloadEvidenceRequest {
   /** Report Name. */
   reportName: string;
@@ -63,22 +101,39 @@ export interface DownloadEvidenceRequest {
   /** The offerGuid which mapping to the reports. */
   offerGuid?: string;
 }
+const DownloadEvidenceRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<DownloadEvidenceRequest>;
+
 /** The uri of evidence file */
 export interface EvidenceFileDownloadResponseEvidenceFile {
   /** The url of evidence file */
   url?: string;
 }
+const EvidenceFileDownloadResponseEvidenceFile = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<EvidenceFileDownloadResponseEvidenceFile>;
+
 /** Object that includes all the possible response for the evidence file download operation. */
 export interface EvidenceFileDownloadResponse {
   /** The uri of evidence file */
   evidenceFile?: EvidenceFileDownloadResponseEvidenceFile;
 }
+const EvidenceFileDownloadResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<EvidenceFileDownloadResponse>;
+
 /** Indicates the download type. */
 export type DownloadType =
   | "ComplianceReport"
   | "CompliancePdfReport"
   | "ComplianceDetailedPdfReport"
   | "ResourceList";
+const DownloadType = S.String;
+
 export interface DownloadSnapshotRequest {
   /** Report Name. */
   reportName: string;
@@ -91,6 +146,11 @@ export interface DownloadSnapshotRequest {
   /** The offerGuid which mapping to the reports. */
   offerGuid?: string;
 }
+const DownloadSnapshotRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<DownloadSnapshotRequest>;
+
 /** Resource Id. */
 export interface ResourceItem {
   /** The subscription Id of this resource. */
@@ -102,14 +162,27 @@ export interface ResourceItem {
   /** The resource Id - e.g. "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.Compute/virtualMachines/vm1". */
   resourceId?: string;
 }
+const ResourceItem = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<ResourceItem>;
+
 /** Resource list of the report */
 export type DownloadResponseResourceListList = Array<ResourceItem>;
+const DownloadResponseResourceListList = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<DownloadResponseResourceListList>;
+
 /** Indicates the control status. */
 export type ControlStatus = "Passed" | "Failed" | "NotApplicable" | "PendingApproval";
+const ControlStatus = S.String;
+
 /** Resource Origin. */
 export type ResourceOrigin = "Azure" | "AWS" | "GCP";
+const ResourceOrigin = S.String;
+
 /** Indicates the resource status. */
 export type ResourceStatus = "Healthy" | "Unhealthy";
+const ResourceStatus = S.String;
+
 /** Object that includes all the content for single compliance result. */
 export interface ComplianceReportItem {
   /** The category name. */
@@ -137,18 +210,33 @@ export interface ComplianceReportItem {
   /** The status change date for the resource. */
   resourceStatusChangeDate?: string;
 }
+const ComplianceReportItem = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<ComplianceReportItem>;
+
 /** List of the compliance result */
 export type DownloadResponseComplianceReportList = Array<ComplianceReportItem>;
+const DownloadResponseComplianceReportList = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<DownloadResponseComplianceReportList>;
+
 /** Compliance pdf report */
 export interface DownloadResponseCompliancePdfReport {
   /** The uri of compliance pdf report */
   sasUri?: string;
 }
+const DownloadResponseCompliancePdfReport = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<DownloadResponseCompliancePdfReport>;
+
 /** The detailed compliance pdf report */
 export interface DownloadResponseComplianceDetailedPdfReport {
   /** The uri of detailed compliance pdf report */
   sasUri?: string;
 }
+const DownloadResponseComplianceDetailedPdfReport =
+  DownloadResponseCompliancePdfReport as any as S.Schema<DownloadResponseComplianceDetailedPdfReport>;
+
 /** Object that includes all the possible response for the download operation. */
 export interface DownloadResponse {
   /** Resource list of the report */
@@ -160,8 +248,12 @@ export interface DownloadResponse {
   /** The detailed compliance pdf report */
   complianceDetailedPdfReport?: DownloadResponseComplianceDetailedPdfReport;
 }
+const DownloadResponse = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<DownloadResponse>;
+
 /** Evidence type */
 export type EvidenceType = "File" | "AutoCollectedEvidence" | "Data";
+const EvidenceType = S.String;
+
 /** Evidence's properties. */
 export interface EvidencePropertiesInput {
   /** Evidence type. */
@@ -175,6 +267,11 @@ export interface EvidencePropertiesInput {
   /** Responsibility id. */
   responsibilityId?: string;
 }
+const EvidencePropertiesInput = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<EvidencePropertiesInput>;
+
 export interface EvidenceCreateOrUpdateRequest {
   /** Report Name. */
   reportName: string;
@@ -187,10 +284,19 @@ export interface EvidenceCreateOrUpdateRequest {
   /** Evidence property. */
   properties: EvidencePropertiesInput;
 }
+const EvidenceCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<EvidenceCreateOrUpdateRequest>;
+
 /** The type of identity that created the resource. */
 export type SystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
+const SystemDataCreatedByType = S.String;
+
 /** The type of identity that last modified the resource. */
 export type SystemDataLastModifiedByType = "User" | "Application" | "ManagedIdentity" | "Key";
+const SystemDataLastModifiedByType = S.String;
+
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface SystemData {
   /** The identity that created the resource. */
@@ -206,6 +312,8 @@ export interface SystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const SystemData = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<SystemData>;
+
 /** Resource provisioning states. */
 export type ProvisioningState =
   | "Succeeded"
@@ -216,6 +324,8 @@ export type ProvisioningState =
   | "Fixing"
   | "Verifying"
   | "Updating";
+const ProvisioningState = S.String;
+
 /** Evidence's properties. */
 export interface EvidenceProperties {
   /** Evidence type. */
@@ -231,6 +341,8 @@ export interface EvidenceProperties {
   /** Azure lifecycle management */
   provisioningState?: ProvisioningState;
 }
+const EvidenceProperties = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<EvidenceProperties>;
+
 export interface EvidenceCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -243,12 +355,19 @@ export interface EvidenceCreateOrUpdateResponse {
   /** Evidence property. */
   properties: EvidenceProperties;
 }
+const EvidenceCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<EvidenceCreateOrUpdateResponse>;
+
 export interface GetEvidenceRequest {
   /** Report Name. */
   reportName: string;
   /** The evidence name. */
   evidenceName: string;
 }
+const GetEvidenceRequest = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<GetEvidenceRequest>;
+
 export interface GetEvidenceResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -261,19 +380,36 @@ export interface GetEvidenceResponse {
   /** Evidence property. */
   properties: EvidenceProperties;
 }
+const GetEvidenceResponse = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<GetEvidenceResponse>;
+
 export interface GetProviderActionCollectionCountRequest {
   /** The resource type. */
   type?: string;
 }
+const GetProviderActionCollectionCountRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<GetProviderActionCollectionCountRequest>;
+
 /** The get collection count response. */
 export interface GetCollectionCountResponse {
   /** The count of the specified resource. */
   count?: number;
 }
+const GetCollectionCountResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<GetCollectionCountResponse>;
+
 export interface GetProviderActionOverviewStatusRequest {
   /** The resource type. */
   type?: string;
 }
+const GetProviderActionOverviewStatusRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<GetProviderActionOverviewStatusRequest>;
+
 /** Single status. */
 export interface StatusItem {
   /** Status name - e.g. "Active", "Failed". */
@@ -281,17 +417,31 @@ export interface StatusItem {
   /** Status value. e.g. "100", or "100%". */
   statusValue?: string;
 }
+const StatusItem = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<StatusItem>;
+
 /** List of different status items. */
 export type GetOverviewStatusResponseStatusListList = Array<StatusItem>;
+const GetOverviewStatusResponseStatusListList = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<GetOverviewStatusResponseStatusListList>;
+
 /** The get overview status response. */
 export interface GetOverviewStatusResponse {
   /** List of different status items. */
   statusList?: GetOverviewStatusResponseStatusListList;
 }
+const GetOverviewStatusResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<GetOverviewStatusResponse>;
+
 export interface GetReportRequest {
   /** Report Name. */
   reportName: string;
 }
+const GetReportRequest = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<GetReportRequest>;
+
 /** Single resource Id's metadata. */
 export interface ResourceMetadata {
   /** Resource Id - e.g. "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.Compute/virtualMachines/vm1". */
@@ -305,14 +455,31 @@ export interface ResourceMetadata {
   /** Account Id. For example - the AWS account id. */
   accountId?: string;
 }
+const ResourceMetadata = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<ResourceMetadata>;
+
 /** List of resource data. */
 export type ReportPropertiesResourcesList = Array<ResourceMetadata>;
+const ReportPropertiesResourcesList = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<ReportPropertiesResourcesList>;
+
 /** Report status. */
 export type ReportStatus = "Active" | "Failed" | "Reviewing" | "Disabled";
+const ReportStatus = S.String;
+
 /** List of report error codes. */
 export type ReportPropertiesErrorsList = Array<string>;
+const ReportPropertiesErrorsList = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<ReportPropertiesErrorsList>;
+
 /** List of subscription Ids. */
 export type ReportPropertiesSubscriptionsList = Array<string>;
+const ReportPropertiesSubscriptionsList =
+  ReportPropertiesErrorsList as any as S.Schema<ReportPropertiesSubscriptionsList>;
+
 /** The overview of the compliance result for one report. */
 export interface OverviewStatus {
   /** The count of all passed control. */
@@ -326,11 +493,18 @@ export interface OverviewStatus {
   /** The count of all pending for approval control. */
   pendingCount?: number;
 }
+const OverviewStatus = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<OverviewStatus>;
+
 /** A list which includes all the compliance result for one report. */
 export interface ReportComplianceStatus {
   /** The Microsoft 365 certification name. */
   m365?: OverviewStatus;
 }
+const ReportComplianceStatus = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<ReportComplianceStatus>;
+
 /** The information of 'bring your own storage' account binding to the report */
 export interface StorageInfo {
   /** The subscription id which 'bring your own storage' account belongs to */
@@ -342,6 +516,8 @@ export interface StorageInfo {
   /** The region of 'bring your own storage' account */
   location?: string;
 }
+const StorageInfo = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<StorageInfo>;
+
 /** A class represent the control record synchronized from app compliance. */
 export interface ControlSyncRecord {
   /** The Id of the control. e.g. "Operational_Security_10" */
@@ -349,8 +525,15 @@ export interface ControlSyncRecord {
   /** Control status synchronized from app compliance. */
   controlStatus?: string;
 }
+const ControlSyncRecord = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<ControlSyncRecord>;
+
 /** The control records list to be synchronized. */
 export type CertSyncRecordControlsList = Array<ControlSyncRecord>;
+const CertSyncRecordControlsList = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<CertSyncRecordControlsList>;
+
 /** A class represent the certification record synchronized from app compliance. */
 export interface CertSyncRecord {
   /** The offerGuid which mapping to the reports. */
@@ -362,8 +545,15 @@ export interface CertSyncRecord {
   /** The control records list to be synchronized. */
   controls?: CertSyncRecordControlsList;
 }
+const CertSyncRecord = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<CertSyncRecord>;
+
 /** List of synchronized certification records. */
 export type ReportPropertiesCertRecordsList = Array<CertSyncRecord>;
+const ReportPropertiesCertRecordsList = /*@__PURE__*/ __L.at(
+  __c5,
+  1,
+) as any as S.Schema<ReportPropertiesCertRecordsList>;
+
 /** Create Report's properties. */
 export interface ReportProperties {
   /** Report collection trigger time. */
@@ -395,6 +585,8 @@ export interface ReportProperties {
   /** Azure lifecycle management */
   provisioningState?: ProvisioningState;
 }
+const ReportProperties = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<ReportProperties>;
+
 export interface GetReportResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -407,10 +599,17 @@ export interface GetReportResponse {
   /** Report property. */
   properties: ReportProperties;
 }
+const GetReportResponse = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<GetReportResponse>;
+
 export interface GetReportScopingQuestionsRequest {
   /** Report Name. */
   reportName: string;
 }
+const GetReportScopingQuestionsRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  4,
+) as any as S.Schema<GetReportScopingQuestionsRequest>;
+
 /** Question input type. */
 export type InputType =
   | "None"
@@ -431,8 +630,13 @@ export type InputType =
   | "MultiSelectDropdownCustom"
   | "Group"
   | "Upload";
+const InputType = S.String;
+
 /** Option id list. */
 export type ScopingQuestionOptionIdsList = Array<string>;
+const ScopingQuestionOptionIdsList =
+  ReportPropertiesErrorsList as any as S.Schema<ScopingQuestionOptionIdsList>;
+
 /** Scoping question rule. */
 export type Rule =
   | "Required"
@@ -449,8 +653,15 @@ export type Rule =
   | "DynamicDropdown"
   | "PreventNonEnglishChar"
   | "ValidEmail";
+const Rule = S.String;
+
 /** The rule of the question. */
 export type ScopingQuestionRulesList = Array<Rule>;
+const ScopingQuestionRulesList = /*@__PURE__*/ __L.at(
+  __c5,
+  5,
+) as any as S.Schema<ScopingQuestionRulesList>;
+
 /** The definition of a scoping question. */
 export interface ScopingQuestion {
   /** Question id. */
@@ -466,21 +677,38 @@ export interface ScopingQuestion {
   /** The answer value to show the sub questions. */
   showSubQuestionsValue?: string;
 }
+const ScopingQuestion = /*@__PURE__*/ __L.at(__c5, 6) as any as S.Schema<ScopingQuestion>;
+
 /** List of scoping questions. */
 export type ScopingQuestionsQuestionsList = Array<ScopingQuestion>;
+const ScopingQuestionsQuestionsList = /*@__PURE__*/ __L.at(
+  __c5,
+  7,
+) as any as S.Schema<ScopingQuestionsQuestionsList>;
+
 /** Scoping question list. */
 export interface ScopingQuestions {
   /** List of scoping questions. */
   questions?: ScopingQuestionsQuestionsList;
 }
+const ScopingQuestions = /*@__PURE__*/ __L.at(__c6, 0) as any as S.Schema<ScopingQuestions>;
+
 export interface GetScopingConfigurationRequest {
   /** Report Name. */
   reportName: string;
   /** The scoping configuration of the specific report. */
   scopingConfigurationName: string;
 }
+const GetScopingConfigurationRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  1,
+) as any as S.Schema<GetScopingConfigurationRequest>;
+
 /** Question answer value list. */
 export type ScopingAnswerAnswersList = Array<string>;
+const ScopingAnswerAnswersList =
+  ReportPropertiesErrorsList as any as S.Schema<ScopingAnswerAnswersList>;
+
 /** Scoping answer. */
 export interface ScopingAnswer {
   /** Question id. */
@@ -488,8 +716,15 @@ export interface ScopingAnswer {
   /** Question answer value list. */
   answers: ScopingAnswerAnswersList;
 }
+const ScopingAnswer = /*@__PURE__*/ __L.at(__c6, 2) as any as S.Schema<ScopingAnswer>;
+
 /** List of scoping question answers. */
 export type ScopingConfigurationPropertiesAnswersList = Array<ScopingAnswer>;
+const ScopingConfigurationPropertiesAnswersList = /*@__PURE__*/ __L.at(
+  __c6,
+  3,
+) as any as S.Schema<ScopingConfigurationPropertiesAnswersList>;
+
 /** ScopingConfiguration's properties. */
 export interface ScopingConfigurationProperties {
   /** List of scoping question answers. */
@@ -497,6 +732,11 @@ export interface ScopingConfigurationProperties {
   /** Azure lifecycle management */
   provisioningState?: ProvisioningState;
 }
+const ScopingConfigurationProperties = /*@__PURE__*/ __L.at(
+  __c6,
+  4,
+) as any as S.Schema<ScopingConfigurationProperties>;
+
 export interface GetScopingConfigurationResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -509,24 +749,35 @@ export interface GetScopingConfigurationResponse {
   /** ScopingConfiguration property. */
   properties: ScopingConfigurationProperties;
 }
+const GetScopingConfigurationResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  5,
+) as any as S.Schema<GetScopingConfigurationResponse>;
+
 export interface GetSnapshotRequest {
   /** Report Name. */
   reportName: string;
   /** Snapshot Name. */
   snapshotName: string;
 }
+const GetSnapshotRequest = /*@__PURE__*/ __L.at(__c6, 6) as any as S.Schema<GetSnapshotRequest>;
+
 /** The type of identity that created the resource. */
 export type SnapshotPropertiesReportSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
+const SnapshotPropertiesReportSystemDataCreatedByType = S.String;
+
 /** The type of identity that last modified the resource. */
 export type SnapshotPropertiesReportSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
+const SnapshotPropertiesReportSystemDataLastModifiedByType = S.String;
+
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface SnapshotPropertiesReportSystemData {
   /** The identity that created the resource. */
@@ -542,20 +793,40 @@ export interface SnapshotPropertiesReportSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const SnapshotPropertiesReportSystemData = /*@__PURE__*/ __L.at(
+  __c6,
+  7,
+) as any as S.Schema<SnapshotPropertiesReportSystemData>;
+
 /** Indicates the category status. */
 export type CategoryStatus = "Passed" | "Failed" | "NotApplicable" | "PendingApproval";
+const CategoryStatus = S.String;
+
 /** Indicates the control family status. */
 export type ControlFamilyStatus = "Passed" | "Failed" | "NotApplicable" | "PendingApproval";
+const ControlFamilyStatus = S.String;
+
 /** Indicates the customer responsibility type. */
 export type ResponsibilityType = "Automated" | "ScopedManual" | "Manual";
+const ResponsibilityType = S.String;
+
 /** Indicates the customer responsibility severity. */
 export type ResponsibilitySeverity = "High" | "Medium" | "Low";
+const ResponsibilitySeverity = S.String;
+
 /** Indicates the customer responsibility status. */
 export type ResponsibilityStatus = "Passed" | "Failed" | "NotApplicable" | "PendingApproval";
+const ResponsibilityStatus = S.String;
+
 /** Indicates the customer responsibility supported cloud environment. */
 export type ResponsibilityEnvironment = "Azure" | "AWS" | "GCP" | "General";
+const ResponsibilityEnvironment = S.String;
+
 /** List of recommendation id. */
 export type ResponsibilityResourceRecommendationIdsList = Array<string>;
+const ResponsibilityResourceRecommendationIdsList =
+  ReportPropertiesErrorsList as any as S.Schema<ResponsibilityResourceRecommendationIdsList>;
+
 /** A class represent the resource. */
 export interface ResponsibilityResource {
   /** The Id of the resource. */
@@ -573,10 +844,22 @@ export interface ResponsibilityResource {
   /** List of recommendation id. */
   recommendationIds?: ResponsibilityResourceRecommendationIdsList;
 }
+const ResponsibilityResource = /*@__PURE__*/ __L.at(
+  __c7,
+  0,
+) as any as S.Schema<ResponsibilityResource>;
+
 /** List of resource. */
 export type ResponsibilityResourceListList = Array<ResponsibilityResource>;
+const ResponsibilityResourceListList = /*@__PURE__*/ __L.at(
+  __c7,
+  1,
+) as any as S.Schema<ResponsibilityResourceListList>;
+
 /** Indicates whether this solution is the recommended. */
 export type IsRecommendSolution = "true" | "false";
+const IsRecommendSolution = S.String;
+
 /** A class represent the recommendation solution. */
 export interface RecommendationSolution {
   /** The index of the recommendation solution. */
@@ -586,8 +869,18 @@ export interface RecommendationSolution {
   /** Indicates whether this solution is the recommended. */
   isRecommendSolution?: IsRecommendSolution;
 }
+const RecommendationSolution = /*@__PURE__*/ __L.at(
+  __c7,
+  2,
+) as any as S.Schema<RecommendationSolution>;
+
 /** List of recommendation solutions. */
 export type RecommendationRecommendationSolutionsList = Array<RecommendationSolution>;
+const RecommendationRecommendationSolutionsList = /*@__PURE__*/ __L.at(
+  __c7,
+  3,
+) as any as S.Schema<RecommendationRecommendationSolutionsList>;
+
 /** A class represent the recommendation. */
 export interface Recommendation {
   /** The Id of the recommendation. */
@@ -597,10 +890,20 @@ export interface Recommendation {
   /** List of recommendation solutions. */
   recommendationSolutions?: RecommendationRecommendationSolutionsList;
 }
+const Recommendation = /*@__PURE__*/ __L.at(__c7, 4) as any as S.Schema<Recommendation>;
+
 /** List of recommendation. */
 export type ResponsibilityRecommendationListList = Array<Recommendation>;
+const ResponsibilityRecommendationListList = /*@__PURE__*/ __L.at(
+  __c7,
+  5,
+) as any as S.Schema<ResponsibilityRecommendationListList>;
+
 /** List of evidence file url. */
 export type ResponsibilityEvidenceFilesList = Array<string>;
+const ResponsibilityEvidenceFilesList =
+  ReportPropertiesErrorsList as any as S.Schema<ResponsibilityEvidenceFilesList>;
+
 /** A class represent the customer responsibility. */
 export interface Responsibility {
   /** The id of the customer responsibility. */
@@ -632,8 +935,15 @@ export interface Responsibility {
   /** List of evidence file url. */
   evidenceFiles?: ResponsibilityEvidenceFilesList;
 }
+const Responsibility = /*@__PURE__*/ __L.at(__c7, 6) as any as S.Schema<Responsibility>;
+
 /** List of customer responsibility. */
 export type ControlResponsibilitiesList = Array<Responsibility>;
+const ControlResponsibilitiesList = /*@__PURE__*/ __L.at(
+  __c7,
+  7,
+) as any as S.Schema<ControlResponsibilitiesList>;
+
 /** A class represent the control. */
 export interface Control {
   /** The Id of the control. e.g. "Operational_Security_10" */
@@ -651,8 +961,15 @@ export interface Control {
   /** List of customer responsibility. */
   responsibilities?: ControlResponsibilitiesList;
 }
+const Control = /*@__PURE__*/ __L.at(__c8, 0) as any as S.Schema<Control>;
+
 /** List of controls. */
 export type ControlFamilyControlsList = Array<Control>;
+const ControlFamilyControlsList = /*@__PURE__*/ __L.at(
+  __c8,
+  1,
+) as any as S.Schema<ControlFamilyControlsList>;
+
 /** A class represent the control family. */
 export interface ControlFamily {
   /** The name of the control family. e.g. "Malware Protection - Anti-Virus" */
@@ -662,8 +979,15 @@ export interface ControlFamily {
   /** List of controls. */
   controls?: ControlFamilyControlsList;
 }
+const ControlFamily = /*@__PURE__*/ __L.at(__c8, 2) as any as S.Schema<ControlFamily>;
+
 /** List of control families. */
 export type CategoryControlFamiliesList = Array<ControlFamily>;
+const CategoryControlFamiliesList = /*@__PURE__*/ __L.at(
+  __c8,
+  3,
+) as any as S.Schema<CategoryControlFamiliesList>;
+
 /** A class represent the compliance category. */
 export interface Category {
   /** The name of the compliance category. e.g. "Operational Security" */
@@ -673,8 +997,15 @@ export interface Category {
   /** List of control families. */
   controlFamilies?: CategoryControlFamiliesList;
 }
+const Category = /*@__PURE__*/ __L.at(__c8, 4) as any as S.Schema<Category>;
+
 /** List of categories. */
 export type ComplianceResultCategoriesList = Array<Category>;
+const ComplianceResultCategoriesList = /*@__PURE__*/ __L.at(
+  __c8,
+  5,
+) as any as S.Schema<ComplianceResultCategoriesList>;
+
 /** A class represent the compliance result. */
 export interface ComplianceResult {
   /** The name of the compliance. e.g. "M365" */
@@ -682,8 +1013,15 @@ export interface ComplianceResult {
   /** List of categories. */
   categories?: ComplianceResultCategoriesList;
 }
+const ComplianceResult = /*@__PURE__*/ __L.at(__c8, 6) as any as S.Schema<ComplianceResult>;
+
 /** List of compliance results. */
 export type SnapshotPropertiesComplianceResultsList = Array<ComplianceResult>;
+const SnapshotPropertiesComplianceResultsList = /*@__PURE__*/ __L.at(
+  __c8,
+  7,
+) as any as S.Schema<SnapshotPropertiesComplianceResultsList>;
+
 /** Snapshot's properties. */
 export interface SnapshotProperties {
   /** Snapshot name. */
@@ -699,6 +1037,8 @@ export interface SnapshotProperties {
   /** List of compliance results. */
   complianceResults?: SnapshotPropertiesComplianceResultsList;
 }
+const SnapshotProperties = /*@__PURE__*/ __L.at(__c9, 0) as any as S.Schema<SnapshotProperties>;
+
 export interface GetSnapshotResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -711,16 +1051,24 @@ export interface GetSnapshotResponse {
   /** Snapshot's property. */
   properties?: SnapshotProperties;
 }
+const GetSnapshotResponse = /*@__PURE__*/ __L.at(__c9, 1) as any as S.Schema<GetSnapshotResponse>;
+
 export interface GetWebhookRequest {
   /** Report Name. */
   reportName: string;
   /** Webhook Name. */
   webhookName: string;
 }
+const GetWebhookRequest = /*@__PURE__*/ __L.at(__c9, 2) as any as S.Schema<GetWebhookRequest>;
+
 /** Webhook status. */
 export type WebhookStatus = "Enabled" | "Disabled";
+const WebhookStatus = S.String;
+
 /** whether to send notification under any event. */
 export type SendAllEvents = "true" | "false";
+const SendAllEvents = S.String;
+
 /** notification event. */
 export type NotificationEvent =
   | "generate_snapshot_success"
@@ -730,16 +1078,29 @@ export type NotificationEvent =
   | "report_deletion";
 /** under which event notification should be sent. */
 export type WebhookPropertiesEventsList = Array<NotificationEvent>;
+const WebhookPropertiesEventsList =
+  ScopingQuestionRulesList as any as S.Schema<WebhookPropertiesEventsList>;
+
 /** content type */
 export type ContentType = "application/json";
+const ContentType = S.String;
+
 /** whether to update webhookKey. */
 export type UpdateWebhookKey = "true" | "false";
+const UpdateWebhookKey = S.String;
+
 /** whether webhookKey is enabled. */
 export type WebhookKeyEnabled = "true" | "false";
+const WebhookKeyEnabled = S.String;
+
 /** whether to enable ssl verification */
 export type EnableSslVerification = "true" | "false";
+const EnableSslVerification = S.String;
+
 /** webhook deliveryStatus */
 export type DeliveryStatus = "Succeeded" | "Failed" | "NotStarted";
+const DeliveryStatus = S.String;
+
 /** Webhook properties. */
 export interface WebhookProperties {
   /** Webhook id in database. */
@@ -769,6 +1130,8 @@ export interface WebhookProperties {
   /** Azure Resource Provisioning State */
   provisioningState?: ProvisioningState;
 }
+const WebhookProperties = /*@__PURE__*/ __L.at(__c9, 3) as any as S.Schema<WebhookProperties>;
+
 export interface GetWebhookResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -781,6 +1144,8 @@ export interface GetWebhookResponse {
   /** Webhook property. */
   properties: WebhookProperties;
 }
+const GetWebhookResponse = /*@__PURE__*/ __L.at(__c9, 4) as any as S.Schema<GetWebhookResponse>;
+
 export interface ListEvidenceByReportRequest {
   /** Report Name. */
   reportName: string;
@@ -799,6 +1164,11 @@ export interface ListEvidenceByReportRequest {
   /** The tenant id of the report creator. */
   reportCreatorTenantId?: string;
 }
+const ListEvidenceByReportRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  5,
+) as any as S.Schema<ListEvidenceByReportRequest>;
+
 /** A class represent an AppComplianceAutomation evidence resource. */
 export interface EvidenceResource {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -812,8 +1182,15 @@ export interface EvidenceResource {
   /** Evidence property. */
   properties: EvidenceProperties;
 }
+const EvidenceResource = GetEvidenceResponse as any as S.Schema<EvidenceResource>;
+
 /** The EvidenceResource items on this page */
 export type EvidenceResourceListResultValueList = Array<EvidenceResource>;
+const EvidenceResourceListResultValueList = /*@__PURE__*/ __L.at(
+  __c9,
+  6,
+) as any as S.Schema<EvidenceResourceListResultValueList>;
+
 /** The response of a EvidenceResource list operation. */
 export interface EvidenceResourceListResult {
   /** The EvidenceResource items on this page */
@@ -821,7 +1198,17 @@ export interface EvidenceResourceListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const EvidenceResourceListResult = /*@__PURE__*/ __L.at(
+  __c9,
+  7,
+) as any as S.Schema<EvidenceResourceListResult>;
+
 export interface ListOperationsRequest {}
+const ListOperationsRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  0,
+) as any as S.Schema<ListOperationsRequest>;
+
 /** Localized display information for this particular operation. */
 export interface OperationDisplay {
   /** The localized friendly form of the resource provider name, e.g. "Microsoft Monitoring Insights" or "Microsoft Compute". */
@@ -833,10 +1220,16 @@ export interface OperationDisplay {
   /** The short, localized friendly description of the operation; suitable for tool tips and detailed views. */
   description?: string;
 }
+const OperationDisplay = /*@__PURE__*/ __L.at(__c10, 1) as any as S.Schema<OperationDisplay>;
+
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
 export type OperationOrigin = "user" | "system" | "user,system";
+const OperationOrigin = S.String;
+
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
 export type OperationActionType = "Internal";
+const OperationActionType = S.String;
+
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
 export interface Operation {
   /** The name of the operation, as per Resource-Based Access Control (RBAC). Examples: "Microsoft.Compute/virtualMachines/write", "Microsoft.Compute/virtualMachines/capture/action" */
@@ -850,27 +1243,59 @@ export interface Operation {
   /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
   actionType?: OperationActionType;
 }
+const Operation = /*@__PURE__*/ __L.at(__c10, 2) as any as S.Schema<Operation>;
+
 /** List of operations supported by the resource provider */
 export type ListOperationsResponseValueList = Array<Operation>;
+const ListOperationsResponseValueList = /*@__PURE__*/ __L.at(
+  __c10,
+  3,
+) as any as S.Schema<ListOperationsResponseValueList>;
+
 export interface ListOperationsResponse {
   /** List of operations supported by the resource provider */
   value?: ListOperationsResponseValueList;
   /** URL to get the next set of operation list results (if there are any). */
   nextLink?: string;
 }
+const ListOperationsResponse = /*@__PURE__*/ __L.at(
+  __c10,
+  4,
+) as any as S.Schema<ListOperationsResponse>;
+
 /** List of subscription ids to be query. If the list is null or empty, the API will query all the subscriptions of the user. */
 export type ListProviderActionInUseStorageAccountsRequestSubscriptionIdsList = Array<string>;
+const ListProviderActionInUseStorageAccountsRequestSubscriptionIdsList = /*@__PURE__*/ __L.at(
+  __c10,
+  5,
+) as any as S.Schema<ListProviderActionInUseStorageAccountsRequestSubscriptionIdsList>;
+
 export interface ListProviderActionInUseStorageAccountsRequest {
   /** List of subscription ids to be query. If the list is null or empty, the API will query all the subscriptions of the user. */
   subscriptionIds?: ListProviderActionInUseStorageAccountsRequestSubscriptionIdsList;
 }
+const ListProviderActionInUseStorageAccountsRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  6,
+) as any as S.Schema<ListProviderActionInUseStorageAccountsRequest>;
+
 /** The storage account list which in use in related reports. */
 export type ListInUseStorageAccountsResponseStorageAccountListList = Array<StorageInfo>;
+const ListInUseStorageAccountsResponseStorageAccountListList = /*@__PURE__*/ __L.at(
+  __c10,
+  7,
+) as any as S.Schema<ListInUseStorageAccountsResponseStorageAccountListList>;
+
 /** Parameters for listing in use storage accounts operation. If subscription list is null, it will check the user's all subscriptions. */
 export interface ListInUseStorageAccountsResponse {
   /** The storage account list which in use in related reports. */
   storageAccountList?: ListInUseStorageAccountsResponseStorageAccountListList;
 }
+const ListInUseStorageAccountsResponse = /*@__PURE__*/ __L.at(
+  __c11,
+  0,
+) as any as S.Schema<ListInUseStorageAccountsResponse>;
+
 export interface ListReportRequest {
   /** Skip over when retrieving results. */
   _skipToken?: string;
@@ -887,6 +1312,8 @@ export interface ListReportRequest {
   /** The tenant id of the report creator. */
   reportCreatorTenantId?: string;
 }
+const ListReportRequest = /*@__PURE__*/ __L.at(__c11, 1) as any as S.Schema<ListReportRequest>;
+
 /** A class represent an AppComplianceAutomation report resource. */
 export interface ReportResource {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -900,8 +1327,15 @@ export interface ReportResource {
   /** Report property. */
   properties: ReportProperties;
 }
+const ReportResource = GetReportResponse as any as S.Schema<ReportResource>;
+
 /** The ReportResource items on this page */
 export type ReportResourceListResultValueList = Array<ReportResource>;
+const ReportResourceListResultValueList = /*@__PURE__*/ __L.at(
+  __c11,
+  2,
+) as any as S.Schema<ReportResourceListResultValueList>;
+
 /** The response of a ReportResource list operation. */
 export interface ReportResourceListResult {
   /** The ReportResource items on this page */
@@ -909,10 +1343,20 @@ export interface ReportResourceListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const ReportResourceListResult = /*@__PURE__*/ __L.at(
+  __c11,
+  3,
+) as any as S.Schema<ReportResourceListResult>;
+
 export interface ListScopingConfigurationRequest {
   /** Report Name. */
   reportName: string;
 }
+const ListScopingConfigurationRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  4,
+) as any as S.Schema<ListScopingConfigurationRequest>;
+
 /** A class represent an AppComplianceAutomation scoping configuration resource. */
 export interface ScopingConfigurationResource {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -926,8 +1370,16 @@ export interface ScopingConfigurationResource {
   /** ScopingConfiguration property. */
   properties: ScopingConfigurationProperties;
 }
+const ScopingConfigurationResource =
+  GetScopingConfigurationResponse as any as S.Schema<ScopingConfigurationResource>;
+
 /** The ScopingConfigurationResource items on this page */
 export type ScopingConfigurationResourceListResultValueList = Array<ScopingConfigurationResource>;
+const ScopingConfigurationResourceListResultValueList = /*@__PURE__*/ __L.at(
+  __c11,
+  5,
+) as any as S.Schema<ScopingConfigurationResourceListResultValueList>;
+
 /** The response of a ScopingConfigurationResource list operation. */
 export interface ScopingConfigurationResourceListResult {
   /** The ScopingConfigurationResource items on this page */
@@ -935,6 +1387,11 @@ export interface ScopingConfigurationResourceListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const ScopingConfigurationResourceListResult = /*@__PURE__*/ __L.at(
+  __c11,
+  6,
+) as any as S.Schema<ScopingConfigurationResourceListResult>;
+
 export interface ListSnapshotRequest {
   /** Report Name. */
   reportName: string;
@@ -953,6 +1410,8 @@ export interface ListSnapshotRequest {
   /** The tenant id of the report creator. */
   reportCreatorTenantId?: string;
 }
+const ListSnapshotRequest = /*@__PURE__*/ __L.at(__c11, 7) as any as S.Schema<ListSnapshotRequest>;
+
 /** A class represent a AppComplianceAutomation snapshot resource. */
 export interface SnapshotResource {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -966,8 +1425,15 @@ export interface SnapshotResource {
   /** Snapshot's property. */
   properties?: SnapshotProperties;
 }
+const SnapshotResource = GetSnapshotResponse as any as S.Schema<SnapshotResource>;
+
 /** The SnapshotResource items on this page */
 export type SnapshotResourceListResultValueList = Array<SnapshotResource>;
+const SnapshotResourceListResultValueList = /*@__PURE__*/ __L.at(
+  __c12,
+  0,
+) as any as S.Schema<SnapshotResourceListResultValueList>;
+
 /** The response of a SnapshotResource list operation. */
 export interface SnapshotResourceListResult {
   /** The SnapshotResource items on this page */
@@ -975,6 +1441,11 @@ export interface SnapshotResourceListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const SnapshotResourceListResult = /*@__PURE__*/ __L.at(
+  __c12,
+  1,
+) as any as S.Schema<SnapshotResourceListResult>;
+
 export interface ListWebhookRequest {
   /** Report Name. */
   reportName: string;
@@ -993,6 +1464,8 @@ export interface ListWebhookRequest {
   /** The tenant id of the report creator. */
   reportCreatorTenantId?: string;
 }
+const ListWebhookRequest = /*@__PURE__*/ __L.at(__c12, 2) as any as S.Schema<ListWebhookRequest>;
+
 /** A class represent an AppComplianceAutomation webhook resource. */
 export interface WebhookResource {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -1006,8 +1479,15 @@ export interface WebhookResource {
   /** Webhook property. */
   properties: WebhookProperties;
 }
+const WebhookResource = GetWebhookResponse as any as S.Schema<WebhookResource>;
+
 /** The WebhookResource items on this page */
 export type WebhookResourceListResultValueList = Array<WebhookResource>;
+const WebhookResourceListResultValueList = /*@__PURE__*/ __L.at(
+  __c12,
+  3,
+) as any as S.Schema<WebhookResourceListResultValueList>;
+
 /** The response of a WebhookResource list operation. */
 export interface WebhookResourceListResult {
   /** The WebhookResource items on this page */
@@ -1015,21 +1495,42 @@ export interface WebhookResourceListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const WebhookResourceListResult = /*@__PURE__*/ __L.at(
+  __c12,
+  4,
+) as any as S.Schema<WebhookResourceListResult>;
+
 /** List of subscription ids to be onboarded */
 export type ProviderActionsOnboardRequestSubscriptionIdsList = Array<string>;
+const ProviderActionsOnboardRequestSubscriptionIdsList =
+  ReportPropertiesErrorsList as any as S.Schema<ProviderActionsOnboardRequestSubscriptionIdsList>;
+
 export interface ProviderActionsOnboardRequest {
   /** List of subscription ids to be onboarded */
   subscriptionIds: ProviderActionsOnboardRequestSubscriptionIdsList;
 }
+const ProviderActionsOnboardRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  5,
+) as any as S.Schema<ProviderActionsOnboardRequest>;
+
 /** List of subscription ids that are onboarded */
 export type OnboardResponseSubscriptionIdsList = Array<string>;
+const OnboardResponseSubscriptionIdsList =
+  ReportPropertiesErrorsList as any as S.Schema<OnboardResponseSubscriptionIdsList>;
+
 /** Success. The response indicates given subscriptions has been onboarded. */
 export interface OnboardResponse {
   /** List of subscription ids that are onboarded */
   subscriptionIds?: OnboardResponseSubscriptionIdsList;
 }
+const OnboardResponse = /*@__PURE__*/ __L.at(__c12, 6) as any as S.Schema<OnboardResponse>;
+
 /** List of resource data. */
 export type ReportPropertiesInputResourcesList = Array<ResourceMetadata>;
+const ReportPropertiesInputResourcesList =
+  ReportPropertiesResourcesList as any as S.Schema<ReportPropertiesInputResourcesList>;
+
 /** Create Report's properties. */
 export interface ReportPropertiesInput {
   /** Report collection trigger time. */
@@ -1043,12 +1544,22 @@ export interface ReportPropertiesInput {
   /** The information of 'bring your own storage' binding to the report */
   storageInfo?: StorageInfo;
 }
+const ReportPropertiesInput = /*@__PURE__*/ __L.at(
+  __c12,
+  7,
+) as any as S.Schema<ReportPropertiesInput>;
+
 export interface ReportCreateOrUpdateRequest {
   /** Report Name. */
   reportName: string;
   /** Report property. */
   properties: ReportPropertiesInput;
 }
+const ReportCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  0,
+) as any as S.Schema<ReportCreateOrUpdateRequest>;
+
 export interface ReportCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -1061,12 +1572,21 @@ export interface ReportCreateOrUpdateResponse {
   /** Report property. */
   properties: ReportProperties;
 }
+const ReportCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c13,
+  1,
+) as any as S.Schema<ReportCreateOrUpdateResponse>;
+
 export interface ReportFixRequest {
   /** Report Name. */
   reportName: string;
 }
+const ReportFixRequest = /*@__PURE__*/ __L.at(__c13, 2) as any as S.Schema<ReportFixRequest>;
+
 /** Indicates whether the fix action is Succeeded or Failed. */
 export type Result = "Succeeded" | "Failed";
+const Result = S.String;
+
 /** Report fix result. */
 export interface ReportFixResult {
   /** Indicates whether the fix action is Succeeded or Failed. */
@@ -1074,6 +1594,8 @@ export interface ReportFixResult {
   /** If the report fix action failed, to indicate the detailed failed reason. */
   reason?: string;
 }
+const ReportFixResult = /*@__PURE__*/ __L.at(__c13, 3) as any as S.Schema<ReportFixResult>;
+
 export interface ReportNestedResourceCheckNameAvailabilityRequest {
   /** Report Name. */
   reportName: string;
@@ -1082,6 +1604,11 @@ export interface ReportNestedResourceCheckNameAvailabilityRequest {
   /** The resource type. */
   type?: string;
 }
+const ReportNestedResourceCheckNameAvailabilityRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  4,
+) as any as S.Schema<ReportNestedResourceCheckNameAvailabilityRequest>;
+
 /** The reason why the given name is not available. */
 export type ReportNestedResourceCheckNameAvailabilityResponseReason = "Invalid" | "AlreadyExists";
 export interface ReportNestedResourceCheckNameAvailabilityResponse {
@@ -1092,13 +1619,24 @@ export interface ReportNestedResourceCheckNameAvailabilityResponse {
   /** Detailed reason why the given name is available. */
   message?: string;
 }
+const ReportNestedResourceCheckNameAvailabilityResponse =
+  CheckProviderActionNameAvailabilityResponse as any as S.Schema<ReportNestedResourceCheckNameAvailabilityResponse>;
+
 /** List of scoping question answers. */
 export type ScopingConfigurationPropertiesInputAnswersList = Array<ScopingAnswer>;
+const ScopingConfigurationPropertiesInputAnswersList =
+  ScopingConfigurationPropertiesAnswersList as any as S.Schema<ScopingConfigurationPropertiesInputAnswersList>;
+
 /** ScopingConfiguration's properties. */
 export interface ScopingConfigurationPropertiesInput {
   /** List of scoping question answers. */
   answers?: ScopingConfigurationPropertiesInputAnswersList;
 }
+const ScopingConfigurationPropertiesInput = /*@__PURE__*/ __L.at(
+  __c13,
+  5,
+) as any as S.Schema<ScopingConfigurationPropertiesInput>;
+
 export interface ScopingConfigurationCreateOrUpdateRequest {
   /** Report Name. */
   reportName: string;
@@ -1107,6 +1645,11 @@ export interface ScopingConfigurationCreateOrUpdateRequest {
   /** ScopingConfiguration property. */
   properties: ScopingConfigurationPropertiesInput;
 }
+const ScopingConfigurationCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  6,
+) as any as S.Schema<ScopingConfigurationCreateOrUpdateRequest>;
+
 export interface ScopingConfigurationCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -1119,25 +1662,49 @@ export interface ScopingConfigurationCreateOrUpdateResponse {
   /** ScopingConfiguration property. */
   properties: ScopingConfigurationProperties;
 }
+const ScopingConfigurationCreateOrUpdateResponse =
+  GetScopingConfigurationResponse as any as S.Schema<ScopingConfigurationCreateOrUpdateResponse>;
+
 export interface SyncReportCertRecordRequest {
   /** Report Name. */
   reportName: string;
   /** certification record to be synchronized. */
   certRecord: CertSyncRecord;
 }
+const SyncReportCertRecordRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  7,
+) as any as S.Schema<SyncReportCertRecordRequest>;
+
 /** Synchronize certification record response. */
 export interface SyncCertRecordResponse {
   /** certification record synchronized. */
   certRecord?: CertSyncRecord;
 }
+const SyncCertRecordResponse = /*@__PURE__*/ __L.at(
+  __c14,
+  0,
+) as any as S.Schema<SyncCertRecordResponse>;
+
 /** List of resource ids to be evaluated */
 export type TriggerProviderActionEvaluationRequestResourceIdsList = Array<string>;
+const TriggerProviderActionEvaluationRequestResourceIdsList =
+  ReportPropertiesErrorsList as any as S.Schema<TriggerProviderActionEvaluationRequestResourceIdsList>;
+
 export interface TriggerProviderActionEvaluationRequest {
   /** List of resource ids to be evaluated */
   resourceIds: TriggerProviderActionEvaluationRequestResourceIdsList;
 }
+const TriggerProviderActionEvaluationRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  1,
+) as any as S.Schema<TriggerProviderActionEvaluationRequest>;
+
 /** List of resource ids to be evaluated */
 export type TriggerEvaluationPropertyResourceIdsList = Array<string>;
+const TriggerEvaluationPropertyResourceIdsList =
+  ReportPropertiesErrorsList as any as S.Schema<TriggerEvaluationPropertyResourceIdsList>;
+
 /** A class represent the quick assessment. */
 export interface QuickAssessment {
   /** Resource id. */
@@ -1155,8 +1722,15 @@ export interface QuickAssessment {
   /** Link to remediation steps for this quick assessment. */
   remediationLink?: string;
 }
+const QuickAssessment = /*@__PURE__*/ __L.at(__c14, 2) as any as S.Schema<QuickAssessment>;
+
 /** List of quick assessments */
 export type TriggerEvaluationPropertyQuickAssessmentsList = Array<QuickAssessment>;
+const TriggerEvaluationPropertyQuickAssessmentsList = /*@__PURE__*/ __L.at(
+  __c14,
+  3,
+) as any as S.Schema<TriggerEvaluationPropertyQuickAssessmentsList>;
+
 /** Trigger evaluation response. */
 export interface TriggerEvaluationProperty {
   /** The time when the evaluation is triggered. */
@@ -1168,13 +1742,26 @@ export interface TriggerEvaluationProperty {
   /** List of quick assessments */
   quickAssessments?: TriggerEvaluationPropertyQuickAssessmentsList;
 }
+const TriggerEvaluationProperty = /*@__PURE__*/ __L.at(
+  __c14,
+  4,
+) as any as S.Schema<TriggerEvaluationProperty>;
+
 /** Trigger evaluation response. */
 export interface TriggerEvaluationResponse {
   /** trigger evaluation property. */
   properties?: TriggerEvaluationProperty;
 }
+const TriggerEvaluationResponse = /*@__PURE__*/ __L.at(
+  __c14,
+  5,
+) as any as S.Schema<TriggerEvaluationResponse>;
+
 /** List of resource data. */
 export type ReportPatchPropertiesInputResourcesList = Array<ResourceMetadata>;
+const ReportPatchPropertiesInputResourcesList =
+  ReportPropertiesResourcesList as any as S.Schema<ReportPatchPropertiesInputResourcesList>;
+
 /** Patch Report's properties. */
 export interface ReportPatchPropertiesInput {
   /** Report collection trigger time. */
@@ -1188,12 +1775,19 @@ export interface ReportPatchPropertiesInput {
   /** The information of 'bring your own storage' binding to the report */
   storageInfo?: StorageInfo;
 }
+const ReportPatchPropertiesInput = /*@__PURE__*/ __L.at(
+  __c14,
+  6,
+) as any as S.Schema<ReportPatchPropertiesInput>;
+
 export interface UpdateReportRequest {
   /** Report Name. */
   reportName: string;
   /** Report property. */
   properties?: ReportPatchPropertiesInput;
 }
+const UpdateReportRequest = /*@__PURE__*/ __L.at(__c14, 7) as any as S.Schema<UpdateReportRequest>;
+
 export interface UpdateReportResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -1206,8 +1800,13 @@ export interface UpdateReportResponse {
   /** Report property. */
   properties: ReportProperties;
 }
+const UpdateReportResponse = GetReportResponse as any as S.Schema<UpdateReportResponse>;
+
 /** under which event notification should be sent. */
 export type WebhookPropertiesInputEventsList = Array<NotificationEvent | (string & {})>;
+const WebhookPropertiesInputEventsList =
+  WebhookPropertiesEventsList as any as S.Schema<WebhookPropertiesInputEventsList>;
+
 /** Webhook properties. */
 export interface WebhookPropertiesInput {
   /** Webhook status. */
@@ -1227,6 +1826,11 @@ export interface WebhookPropertiesInput {
   /** whether to enable ssl verification */
   enableSslVerification?: boolean;
 }
+const WebhookPropertiesInput = /*@__PURE__*/ __L.at(
+  __c15,
+  0,
+) as any as S.Schema<WebhookPropertiesInput>;
+
 export interface UpdateWebhookRequest {
   /** Report Name. */
   reportName: string;
@@ -1235,6 +1839,11 @@ export interface UpdateWebhookRequest {
   /** Webhook property. */
   properties?: WebhookPropertiesInput;
 }
+const UpdateWebhookRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  1,
+) as any as S.Schema<UpdateWebhookRequest>;
+
 export interface UpdateWebhookResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -1247,10 +1856,14 @@ export interface UpdateWebhookResponse {
   /** Webhook property. */
   properties: WebhookProperties;
 }
+const UpdateWebhookResponse = GetWebhookResponse as any as S.Schema<UpdateWebhookResponse>;
+
 export interface VerifyReportRequest {
   /** Report Name. */
   reportName: string;
 }
+const VerifyReportRequest = /*@__PURE__*/ __L.at(__c15, 2) as any as S.Schema<VerifyReportRequest>;
+
 /** Report health status verification result. */
 export interface ReportVerificationResult {
   /** Indicates whether the report verification action is Succeeded or Failed. */
@@ -1258,6 +1871,8 @@ export interface ReportVerificationResult {
   /** If the report verification action failed, to indicate the detailed failed reason. */
   reason?: string;
 }
+const ReportVerificationResult = ReportFixResult as any as S.Schema<ReportVerificationResult>;
+
 export interface WebhookCreateOrUpdateRequest {
   /** Report Name. */
   reportName: string;
@@ -1266,6 +1881,11 @@ export interface WebhookCreateOrUpdateRequest {
   /** Webhook property. */
   properties: WebhookPropertiesInput;
 }
+const WebhookCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  3,
+) as any as S.Schema<WebhookCreateOrUpdateRequest>;
+
 export interface WebhookCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -1278,6 +1898,11 @@ export interface WebhookCreateOrUpdateResponse {
   /** Webhook property. */
   properties: WebhookProperties;
 }
+const WebhookCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c15,
+  4,
+) as any as S.Schema<WebhookCreateOrUpdateResponse>;
+
 export type CheckProviderActionNameAvailabilityError = AzureOpError;
 /** Check if the given name is available for a report. */
 export const CheckProviderActionNameAvailability: API.OperationMethod<
@@ -1286,8 +1911,8 @@ export const CheckProviderActionNameAvailability: API.OperationMethod<
   CheckProviderActionNameAvailabilityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<CheckProviderActionNameAvailabilityRequest>,
-  output: __S(1) as any as S.Schema<CheckProviderActionNameAvailabilityResponse>,
+  input: CheckProviderActionNameAvailabilityRequest,
+  output: CheckProviderActionNameAvailabilityResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1301,8 +1926,8 @@ export const DeleteEvidence: API.OperationMethod<
   DeleteEvidenceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2) as any as S.Schema<DeleteEvidenceRequest>,
-  output: __S(3) as any as S.Schema<DeleteEvidenceResponse>,
+  input: DeleteEvidenceRequest,
+  output: DeleteEvidenceResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1316,8 +1941,8 @@ export const DeleteReport: API.OperationMethod<
   DeleteReportError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4) as any as S.Schema<DeleteReportRequest>,
-  output: __S(3) as any as S.Schema<DeleteReportResponse>,
+  input: DeleteReportRequest,
+  output: DeleteReportResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1331,8 +1956,8 @@ export const DeleteScopingConfiguration: API.OperationMethod<
   DeleteScopingConfigurationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5) as any as S.Schema<DeleteScopingConfigurationRequest>,
-  output: __S(6) as any as S.Schema<DeleteScopingConfigurationResponse>,
+  input: DeleteScopingConfigurationRequest,
+  output: DeleteScopingConfigurationResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1346,8 +1971,8 @@ export const DeleteWebhook: API.OperationMethod<
   DeleteWebhookError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7) as any as S.Schema<DeleteWebhookRequest>,
-  output: __S(3) as any as S.Schema<DeleteWebhookResponse>,
+  input: DeleteWebhookRequest,
+  output: DeleteWebhookResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1361,8 +1986,8 @@ export const DownloadEvidence: API.OperationMethod<
   DownloadEvidenceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8) as any as S.Schema<DownloadEvidenceRequest>,
-  output: __S(10) as any as S.Schema<EvidenceFileDownloadResponse>,
+  input: DownloadEvidenceRequest,
+  output: EvidenceFileDownloadResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1376,8 +2001,8 @@ export const DownloadSnapshot: API.OperationMethod<
   DownloadSnapshotError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11) as any as S.Schema<DownloadSnapshotRequest>,
-  output: __S(17) as any as S.Schema<DownloadResponse>,
+  input: DownloadSnapshotRequest,
+  output: DownloadResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1391,8 +2016,8 @@ export const EvidenceCreateOrUpdate: API.OperationMethod<
   EvidenceCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19) as any as S.Schema<EvidenceCreateOrUpdateRequest>,
-  output: __S(22) as any as S.Schema<EvidenceCreateOrUpdateResponse>,
+  input: EvidenceCreateOrUpdateRequest,
+  output: EvidenceCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1406,8 +2031,8 @@ export const GetEvidence: API.OperationMethod<
   GetEvidenceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23) as any as S.Schema<GetEvidenceRequest>,
-  output: __S(24) as any as S.Schema<GetEvidenceResponse>,
+  input: GetEvidenceRequest,
+  output: GetEvidenceResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1421,8 +2046,8 @@ export const GetProviderActionCollectionCount: API.OperationMethod<
   GetProviderActionCollectionCountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25) as any as S.Schema<GetProviderActionCollectionCountRequest>,
-  output: __S(26) as any as S.Schema<GetCollectionCountResponse>,
+  input: GetProviderActionCollectionCountRequest,
+  output: GetCollectionCountResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1436,8 +2061,8 @@ export const GetProviderActionOverviewStatus: API.OperationMethod<
   GetProviderActionOverviewStatusError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27) as any as S.Schema<GetProviderActionOverviewStatusRequest>,
-  output: __S(30) as any as S.Schema<GetOverviewStatusResponse>,
+  input: GetProviderActionOverviewStatusRequest,
+  output: GetOverviewStatusResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1451,8 +2076,8 @@ export const GetReport: API.OperationMethod<
   GetReportError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31) as any as S.Schema<GetReportRequest>,
-  output: __S(43) as any as S.Schema<GetReportResponse>,
+  input: GetReportRequest,
+  output: GetReportResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1466,8 +2091,8 @@ export const GetReportScopingQuestions: API.OperationMethod<
   GetReportScopingQuestionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44) as any as S.Schema<GetReportScopingQuestionsRequest>,
-  output: __S(48) as any as S.Schema<ScopingQuestions>,
+  input: GetReportScopingQuestionsRequest,
+  output: ScopingQuestions,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1481,8 +2106,8 @@ export const GetScopingConfiguration: API.OperationMethod<
   GetScopingConfigurationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49) as any as S.Schema<GetScopingConfigurationRequest>,
-  output: __S(53) as any as S.Schema<GetScopingConfigurationResponse>,
+  input: GetScopingConfigurationRequest,
+  output: GetScopingConfigurationResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1496,8 +2121,8 @@ export const GetSnapshot: API.OperationMethod<
   GetSnapshotError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(54) as any as S.Schema<GetSnapshotRequest>,
-  output: __S(73) as any as S.Schema<GetSnapshotResponse>,
+  input: GetSnapshotRequest,
+  output: GetSnapshotResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1511,8 +2136,8 @@ export const GetWebhook: API.OperationMethod<
   GetWebhookError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(74) as any as S.Schema<GetWebhookRequest>,
-  output: __S(76) as any as S.Schema<GetWebhookResponse>,
+  input: GetWebhookRequest,
+  output: GetWebhookResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1526,8 +2151,8 @@ export const ListEvidenceByReport: API.OperationMethod<
   ListEvidenceByReportError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(77) as any as S.Schema<ListEvidenceByReportRequest>,
-  output: __S(79) as any as S.Schema<EvidenceResourceListResult>,
+  input: ListEvidenceByReportRequest,
+  output: EvidenceResourceListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1541,8 +2166,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(80) as any as S.Schema<ListOperationsRequest>,
-  output: __S(84) as any as S.Schema<ListOperationsResponse>,
+  input: ListOperationsRequest,
+  output: ListOperationsResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1556,8 +2181,8 @@ export const ListProviderActionInUseStorageAccounts: API.OperationMethod<
   ListProviderActionInUseStorageAccountsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(86) as any as S.Schema<ListProviderActionInUseStorageAccountsRequest>,
-  output: __S(88) as any as S.Schema<ListInUseStorageAccountsResponse>,
+  input: ListProviderActionInUseStorageAccountsRequest,
+  output: ListInUseStorageAccountsResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1571,8 +2196,8 @@ export const ListReport: API.OperationMethod<
   ListReportError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(89) as any as S.Schema<ListReportRequest>,
-  output: __S(91) as any as S.Schema<ReportResourceListResult>,
+  input: ListReportRequest,
+  output: ReportResourceListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1586,8 +2211,8 @@ export const ListScopingConfiguration: API.OperationMethod<
   ListScopingConfigurationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(92) as any as S.Schema<ListScopingConfigurationRequest>,
-  output: __S(94) as any as S.Schema<ScopingConfigurationResourceListResult>,
+  input: ListScopingConfigurationRequest,
+  output: ScopingConfigurationResourceListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1601,8 +2226,8 @@ export const ListSnapshot: API.OperationMethod<
   ListSnapshotError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(95) as any as S.Schema<ListSnapshotRequest>,
-  output: __S(97) as any as S.Schema<SnapshotResourceListResult>,
+  input: ListSnapshotRequest,
+  output: SnapshotResourceListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1616,8 +2241,8 @@ export const ListWebhook: API.OperationMethod<
   ListWebhookError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(98) as any as S.Schema<ListWebhookRequest>,
-  output: __S(100) as any as S.Schema<WebhookResourceListResult>,
+  input: ListWebhookRequest,
+  output: WebhookResourceListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1631,8 +2256,8 @@ export const ProviderActionsOnboard: API.OperationMethod<
   ProviderActionsOnboardError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(101) as any as S.Schema<ProviderActionsOnboardRequest>,
-  output: __S(102) as any as S.Schema<OnboardResponse>,
+  input: ProviderActionsOnboardRequest,
+  output: OnboardResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1646,8 +2271,8 @@ export const ReportCreateOrUpdate: API.OperationMethod<
   ReportCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(104) as any as S.Schema<ReportCreateOrUpdateRequest>,
-  output: __S(105) as any as S.Schema<ReportCreateOrUpdateResponse>,
+  input: ReportCreateOrUpdateRequest,
+  output: ReportCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1661,8 +2286,8 @@ export const ReportFix: API.OperationMethod<
   ReportFixError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(106) as any as S.Schema<ReportFixRequest>,
-  output: __S(107) as any as S.Schema<ReportFixResult>,
+  input: ReportFixRequest,
+  output: ReportFixResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1676,8 +2301,8 @@ export const ReportNestedResourceCheckNameAvailability: API.OperationMethod<
   ReportNestedResourceCheckNameAvailabilityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(108) as any as S.Schema<ReportNestedResourceCheckNameAvailabilityRequest>,
-  output: __S(1) as any as S.Schema<ReportNestedResourceCheckNameAvailabilityResponse>,
+  input: ReportNestedResourceCheckNameAvailabilityRequest,
+  output: ReportNestedResourceCheckNameAvailabilityResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1691,8 +2316,8 @@ export const ScopingConfigurationCreateOrUpdate: API.OperationMethod<
   ScopingConfigurationCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(110) as any as S.Schema<ScopingConfigurationCreateOrUpdateRequest>,
-  output: __S(53) as any as S.Schema<ScopingConfigurationCreateOrUpdateResponse>,
+  input: ScopingConfigurationCreateOrUpdateRequest,
+  output: ScopingConfigurationCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1706,8 +2331,8 @@ export const SyncReportCertRecord: API.OperationMethod<
   SyncReportCertRecordError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(111) as any as S.Schema<SyncReportCertRecordRequest>,
-  output: __S(112) as any as S.Schema<SyncCertRecordResponse>,
+  input: SyncReportCertRecordRequest,
+  output: SyncCertRecordResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1721,8 +2346,8 @@ export const TriggerProviderActionEvaluation: API.OperationMethod<
   TriggerProviderActionEvaluationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(113) as any as S.Schema<TriggerProviderActionEvaluationRequest>,
-  output: __S(117) as any as S.Schema<TriggerEvaluationResponse>,
+  input: TriggerProviderActionEvaluationRequest,
+  output: TriggerEvaluationResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1736,8 +2361,8 @@ export const UpdateReport: API.OperationMethod<
   UpdateReportError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(119) as any as S.Schema<UpdateReportRequest>,
-  output: __S(43) as any as S.Schema<UpdateReportResponse>,
+  input: UpdateReportRequest,
+  output: UpdateReportResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1751,8 +2376,8 @@ export const UpdateWebhook: API.OperationMethod<
   UpdateWebhookError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(121) as any as S.Schema<UpdateWebhookRequest>,
-  output: __S(76) as any as S.Schema<UpdateWebhookResponse>,
+  input: UpdateWebhookRequest,
+  output: UpdateWebhookResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1766,8 +2391,8 @@ export const VerifyReport: API.OperationMethod<
   VerifyReportError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(122) as any as S.Schema<VerifyReportRequest>,
-  output: __S(107) as any as S.Schema<ReportVerificationResult>,
+  input: VerifyReportRequest,
+  output: ReportVerificationResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1781,8 +2406,8 @@ export const WebhookCreateOrUpdate: API.OperationMethod<
   WebhookCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(123) as any as S.Schema<WebhookCreateOrUpdateRequest>,
-  output: __S(124) as any as S.Schema<WebhookCreateOrUpdateResponse>,
+  input: WebhookCreateOrUpdateRequest,
+  output: WebhookCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1811,7 +2436,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nameAvailable: S.optional(S.Boolean),
-          reason: S.optional(S.String),
+          reason: S.optional(CheckProviderActionNameAvailabilityResponseReason),
           message: S.optional(S.String),
         }),
       ).annotate({
@@ -1913,7 +2538,7 @@ function __c1(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          evidenceFile: S.optional(__S(9)),
+          evidenceFile: S.optional(EvidenceFileDownloadResponseEvidenceFile),
         }),
       ).annotate({
         identifier: "EvidenceFileDownloadResponse",
@@ -1924,7 +2549,7 @@ function __c1(j: number): any {
           reportName: S.String.pipe(T.Label()),
           snapshotName: S.String.pipe(T.Label()),
           reportCreatorTenantId: S.optional(S.String),
-          downloadType: S.String,
+          downloadType: DownloadType,
           offerGuid: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -1945,7 +2570,7 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "ResourceItem" });
     case 5:
-      return S.Array(__S(12));
+      return S.Array(ResourceItem);
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -1953,18 +2578,18 @@ function __c1(j: number): any {
           controlFamilyName: S.optional(S.String),
           controlId: S.optional(S.String),
           controlName: S.optional(S.String),
-          controlStatus: S.optional(S.String),
+          controlStatus: S.optional(ControlStatus),
           responsibilityTitle: S.optional(S.String),
           responsibilityDescription: S.optional(S.String),
           resourceId: S.optional(S.String),
           resourceType: S.optional(S.String),
-          resourceOrigin: S.optional(S.String),
-          resourceStatus: S.optional(S.String),
+          resourceOrigin: S.optional(ResourceOrigin),
+          resourceStatus: S.optional(ResourceStatus),
           resourceStatusChangeDate: S.optional(S.String),
         }),
       ).annotate({ identifier: "ComplianceReportItem" });
     case 7:
-      return S.Array(__S(14));
+      return S.Array(ComplianceReportItem);
   }
 }
 function __c2(j: number): any {
@@ -1980,16 +2605,16 @@ function __c2(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          resourceList: S.optional(__S(13)),
-          complianceReport: S.optional(__S(15)),
-          compliancePdfReport: S.optional(__S(16)),
-          complianceDetailedPdfReport: S.optional(__S(16)),
+          resourceList: S.optional(DownloadResponseResourceListList),
+          complianceReport: S.optional(DownloadResponseComplianceReportList),
+          compliancePdfReport: S.optional(DownloadResponseCompliancePdfReport),
+          complianceDetailedPdfReport: S.optional(DownloadResponseComplianceDetailedPdfReport),
         }),
       ).annotate({ identifier: "DownloadResponse" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          evidenceType: S.optional(S.String),
+          evidenceType: S.optional(EvidenceType),
           filePath: S.String,
           extraData: S.optional(S.String),
           controlId: S.optional(S.String),
@@ -2003,7 +2628,7 @@ function __c2(j: number): any {
           evidenceName: S.String.pipe(T.Label()),
           offerGuid: S.optional(S.String.pipe(T.Query())),
           reportCreatorTenantId: S.optional(S.String.pipe(T.Query())),
-          properties: __S(18),
+          properties: EvidencePropertiesInput,
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2019,22 +2644,22 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
-          createdByType: S.optional(S.String),
+          createdByType: S.optional(SystemDataCreatedByType),
           createdAt: S.optional(S.String),
           lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(S.String),
+          lastModifiedByType: S.optional(SystemDataLastModifiedByType),
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "SystemData" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          evidenceType: S.optional(S.String),
+          evidenceType: S.optional(EvidenceType),
           filePath: S.String,
           extraData: S.optional(S.String),
           controlId: S.optional(S.String),
           responsibilityId: S.optional(S.String),
-          provisioningState: S.optional(S.String),
+          provisioningState: S.optional(ProvisioningState),
         }),
       ).annotate({ identifier: "EvidenceProperties" });
     case 6:
@@ -2043,8 +2668,8 @@ function __c2(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(20)),
-          properties: __S(21),
+          systemData: S.optional(SystemData),
+          properties: EvidenceProperties,
         }),
       ).annotate({
         identifier: "EvidenceCreateOrUpdateResponse",
@@ -2073,8 +2698,8 @@ function __c3(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(20)),
-          properties: __S(21),
+          systemData: S.optional(SystemData),
+          properties: EvidenceProperties,
         }),
       ).annotate({ identifier: "GetEvidenceResponse" });
     case 1:
@@ -2123,11 +2748,11 @@ function __c3(j: number): any {
         }),
       ).annotate({ identifier: "StatusItem" });
     case 5:
-      return S.Array(__S(28));
+      return S.Array(StatusItem);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          statusList: S.optional(__S(29)),
+          statusList: S.optional(GetOverviewStatusResponseStatusListList),
         }),
       ).annotate({
         identifier: "GetOverviewStatusResponse",
@@ -2155,12 +2780,12 @@ function __c4(j: number): any {
           resourceId: S.String,
           resourceType: S.optional(S.String),
           resourceKind: S.optional(S.String),
-          resourceOrigin: S.optional(S.String),
+          resourceOrigin: S.optional(ResourceOrigin),
           accountId: S.optional(S.String),
         }),
       ).annotate({ identifier: "ResourceMetadata" });
     case 1:
-      return S.Array(__S(32));
+      return S.Array(ResourceMetadata);
     case 2:
       return S.Array(S.String);
     case 3:
@@ -2176,7 +2801,7 @@ function __c4(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          m365: S.optional(__S(35)),
+          m365: S.optional(OverviewStatus),
         }),
       ).annotate({ identifier: "ReportComplianceStatus" });
     case 5:
@@ -2196,7 +2821,7 @@ function __c4(j: number): any {
         }),
       ).annotate({ identifier: "ControlSyncRecord" });
     case 7:
-      return S.Array(__S(38));
+      return S.Array(ControlSyncRecord);
   }
 }
 function __c5(j: number): any {
@@ -2207,28 +2832,28 @@ function __c5(j: number): any {
           offerGuid: S.optional(S.String),
           certificationStatus: S.optional(S.String),
           ingestionStatus: S.optional(S.String),
-          controls: S.optional(__S(39)),
+          controls: S.optional(CertSyncRecordControlsList),
         }),
       ).annotate({ identifier: "CertSyncRecord" });
     case 1:
-      return S.Array(__S(40));
+      return S.Array(CertSyncRecord);
     case 2:
       return S.suspend(() =>
         S.Struct({
           triggerTime: S.String,
           timeZone: S.String,
-          resources: __S(33),
-          status: S.optional(S.String),
-          errors: S.optional(__S(34)),
+          resources: ReportPropertiesResourcesList,
+          status: S.optional(ReportStatus),
+          errors: S.optional(ReportPropertiesErrorsList),
           tenantId: S.optional(S.String),
           offerGuid: S.optional(S.String),
           nextTriggerTime: S.optional(S.String),
           lastTriggerTime: S.optional(S.String),
-          subscriptions: S.optional(__S(34)),
-          complianceStatus: S.optional(__S(36)),
-          storageInfo: S.optional(__S(37)),
-          certRecords: S.optional(__S(41)),
-          provisioningState: S.optional(S.String),
+          subscriptions: S.optional(ReportPropertiesSubscriptionsList),
+          complianceStatus: S.optional(ReportComplianceStatus),
+          storageInfo: S.optional(StorageInfo),
+          certRecords: S.optional(ReportPropertiesCertRecordsList),
+          provisioningState: S.optional(ProvisioningState),
         }),
       ).annotate({ identifier: "ReportProperties" });
     case 3:
@@ -2237,8 +2862,8 @@ function __c5(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(20)),
-          properties: __S(42),
+          systemData: S.optional(SystemData),
+          properties: ReportProperties,
         }),
       ).annotate({ identifier: "GetReportResponse" });
     case 4:
@@ -2257,20 +2882,20 @@ function __c5(j: number): any {
         identifier: "GetReportScopingQuestionsRequest",
       });
     case 5:
-      return S.Array(S.String);
+      return S.Array(Rule);
     case 6:
       return S.suspend(() =>
         S.Struct({
           questionId: S.String,
           superiorQuestionId: S.optional(S.String),
-          inputType: S.String,
-          optionIds: __S(34),
-          rules: __S(45),
+          inputType: InputType,
+          optionIds: ScopingQuestionOptionIdsList,
+          rules: ScopingQuestionRulesList,
           showSubQuestionsValue: S.optional(S.String),
         }),
       ).annotate({ identifier: "ScopingQuestion" });
     case 7:
-      return S.Array(__S(46));
+      return S.Array(ScopingQuestion);
   }
 }
 function __c6(j: number): any {
@@ -2278,7 +2903,7 @@ function __c6(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          questions: S.optional(__S(47)),
+          questions: S.optional(ScopingQuestionsQuestionsList),
         }),
       ).annotate({ identifier: "ScopingQuestions" });
     case 1:
@@ -2301,16 +2926,16 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           questionId: S.String,
-          answers: __S(34),
+          answers: ScopingAnswerAnswersList,
         }),
       ).annotate({ identifier: "ScopingAnswer" });
     case 3:
-      return S.Array(__S(50));
+      return S.Array(ScopingAnswer);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          answers: S.optional(__S(51)),
-          provisioningState: S.optional(S.String),
+          answers: S.optional(ScopingConfigurationPropertiesAnswersList),
+          provisioningState: S.optional(ProvisioningState),
         }),
       ).annotate({
         identifier: "ScopingConfigurationProperties",
@@ -2321,8 +2946,8 @@ function __c6(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(20)),
-          properties: __S(52),
+          systemData: S.optional(SystemData),
+          properties: ScopingConfigurationProperties,
         }),
       ).annotate({
         identifier: "GetScopingConfigurationResponse",
@@ -2345,10 +2970,10 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
-          createdByType: S.optional(S.String),
+          createdByType: S.optional(SnapshotPropertiesReportSystemDataCreatedByType),
           createdAt: S.optional(S.String),
           lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(S.String),
+          lastModifiedByType: S.optional(SnapshotPropertiesReportSystemDataLastModifiedByType),
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({
@@ -2364,55 +2989,55 @@ function __c7(j: number): any {
           resourceId: S.optional(S.String),
           accountId: S.optional(S.String),
           resourceType: S.optional(S.String),
-          resourceOrigin: S.optional(S.String),
-          resourceStatus: S.optional(S.String),
+          resourceOrigin: S.optional(ResourceOrigin),
+          resourceStatus: S.optional(ResourceStatus),
           resourceStatusChangeDate: S.optional(S.String),
-          recommendationIds: S.optional(__S(34)),
+          recommendationIds: S.optional(ResponsibilityResourceRecommendationIdsList),
         }),
       ).annotate({ identifier: "ResponsibilityResource" });
     case 1:
-      return S.Array(__S(56));
+      return S.Array(ResponsibilityResource);
     case 2:
       return S.suspend(() =>
         S.Struct({
           recommendationSolutionIndex: S.optional(S.String),
           recommendationSolutionContent: S.optional(S.String),
-          isRecommendSolution: S.optional(S.String),
+          isRecommendSolution: S.optional(IsRecommendSolution),
         }),
       ).annotate({ identifier: "RecommendationSolution" });
     case 3:
-      return S.Array(__S(58));
+      return S.Array(RecommendationSolution);
     case 4:
       return S.suspend(() =>
         S.Struct({
           recommendationId: S.optional(S.String),
           recommendationShortName: S.optional(S.String),
-          recommendationSolutions: S.optional(__S(59)),
+          recommendationSolutions: S.optional(RecommendationRecommendationSolutionsList),
         }),
       ).annotate({ identifier: "Recommendation" });
     case 5:
-      return S.Array(__S(60));
+      return S.Array(Recommendation);
     case 6:
       return S.suspend(() =>
         S.Struct({
           responsibilityId: S.optional(S.String),
           responsibilityTitle: S.optional(S.String),
           responsibilityDescription: S.optional(S.String),
-          responsibilityType: S.optional(S.String),
-          responsibilitySeverity: S.optional(S.String),
-          responsibilityStatus: S.optional(S.String),
-          responsibilityEnvironment: S.optional(S.String),
+          responsibilityType: S.optional(ResponsibilityType),
+          responsibilitySeverity: S.optional(ResponsibilitySeverity),
+          responsibilityStatus: S.optional(ResponsibilityStatus),
+          responsibilityEnvironment: S.optional(ResponsibilityEnvironment),
           failedResourceCount: S.optional(S.Number),
           totalResourceCount: S.optional(S.Number),
-          resourceList: S.optional(__S(57)),
-          recommendationList: S.optional(__S(61)),
+          resourceList: S.optional(ResponsibilityResourceListList),
+          recommendationList: S.optional(ResponsibilityRecommendationListList),
           guidance: S.optional(S.String),
           justification: S.optional(S.String),
-          evidenceFiles: S.optional(__S(34)),
+          evidenceFiles: S.optional(ResponsibilityEvidenceFilesList),
         }),
       ).annotate({ identifier: "Responsibility" });
     case 7:
-      return S.Array(__S(62));
+      return S.Array(Responsibility);
   }
 }
 function __c8(j: number): any {
@@ -2425,41 +3050,41 @@ function __c8(j: number): any {
           controlFullName: S.optional(S.String),
           controlDescription: S.optional(S.String),
           controlDescriptionHyperLink: S.optional(S.String),
-          controlStatus: S.optional(S.String),
-          responsibilities: S.optional(__S(63)),
+          controlStatus: S.optional(ControlStatus),
+          responsibilities: S.optional(ControlResponsibilitiesList),
         }),
       ).annotate({ identifier: "Control" });
     case 1:
-      return S.Array(__S(64));
+      return S.Array(Control);
     case 2:
       return S.suspend(() =>
         S.Struct({
           controlFamilyName: S.optional(S.String),
-          controlFamilyStatus: S.optional(S.String),
-          controls: S.optional(__S(65)),
+          controlFamilyStatus: S.optional(ControlFamilyStatus),
+          controls: S.optional(ControlFamilyControlsList),
         }),
       ).annotate({ identifier: "ControlFamily" });
     case 3:
-      return S.Array(__S(66));
+      return S.Array(ControlFamily);
     case 4:
       return S.suspend(() =>
         S.Struct({
           categoryName: S.optional(S.String),
-          categoryStatus: S.optional(S.String),
-          controlFamilies: S.optional(__S(67)),
+          categoryStatus: S.optional(CategoryStatus),
+          controlFamilies: S.optional(CategoryControlFamiliesList),
         }),
       ).annotate({ identifier: "Category" });
     case 5:
-      return S.Array(__S(68));
+      return S.Array(Category);
     case 6:
       return S.suspend(() =>
         S.Struct({
           complianceName: S.optional(S.String),
-          categories: S.optional(__S(69)),
+          categories: S.optional(ComplianceResultCategoriesList),
         }),
       ).annotate({ identifier: "ComplianceResult" });
     case 7:
-      return S.Array(__S(70));
+      return S.Array(ComplianceResult);
   }
 }
 function __c9(j: number): any {
@@ -2469,10 +3094,10 @@ function __c9(j: number): any {
         S.Struct({
           snapshotName: S.optional(S.String),
           createdAt: S.optional(S.String),
-          provisioningState: S.optional(S.String),
-          reportProperties: S.optional(__S(42)),
-          reportSystemData: S.optional(__S(55)),
-          complianceResults: S.optional(__S(71)),
+          provisioningState: S.optional(ProvisioningState),
+          reportProperties: S.optional(ReportProperties),
+          reportSystemData: S.optional(SnapshotPropertiesReportSystemData),
+          complianceResults: S.optional(SnapshotPropertiesComplianceResultsList),
         }),
       ).annotate({ identifier: "SnapshotProperties" });
     case 1:
@@ -2481,8 +3106,8 @@ function __c9(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(20)),
-          properties: S.optional(__S(72)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(SnapshotProperties),
         }),
       ).annotate({ identifier: "GetSnapshotResponse" });
     case 2:
@@ -2503,18 +3128,18 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           webhookId: S.optional(S.String),
-          status: S.optional(S.String),
+          status: S.optional(WebhookStatus),
           tenantId: S.optional(S.String),
-          sendAllEvents: S.optional(S.String),
-          events: S.optional(__S(45)),
+          sendAllEvents: S.optional(SendAllEvents),
+          events: S.optional(WebhookPropertiesEventsList),
           payloadUrl: S.optional(S.String),
-          contentType: S.optional(S.String),
+          contentType: S.optional(ContentType),
           webhookKey: S.optional(S.String),
-          updateWebhookKey: S.optional(S.String),
-          webhookKeyEnabled: S.optional(S.String),
-          enableSslVerification: S.optional(S.String),
-          deliveryStatus: S.optional(S.String),
-          provisioningState: S.optional(S.String),
+          updateWebhookKey: S.optional(UpdateWebhookKey),
+          webhookKeyEnabled: S.optional(WebhookKeyEnabled),
+          enableSslVerification: S.optional(EnableSslVerification),
+          deliveryStatus: S.optional(DeliveryStatus),
+          provisioningState: S.optional(ProvisioningState),
         }),
       ).annotate({ identifier: "WebhookProperties" });
     case 4:
@@ -2523,8 +3148,8 @@ function __c9(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(20)),
-          properties: __S(75),
+          systemData: S.optional(SystemData),
+          properties: WebhookProperties,
         }),
       ).annotate({ identifier: "GetWebhookResponse" });
     case 5:
@@ -2550,11 +3175,11 @@ function __c9(j: number): any {
         identifier: "ListEvidenceByReportRequest",
       });
     case 6:
-      return S.Array(__S(24));
+      return S.Array(EvidenceResource);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          value: __S(78),
+          value: EvidenceResourceListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -2589,17 +3214,17 @@ function __c10(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           isDataAction: S.optional(S.Boolean),
-          display: S.optional(__S(81)),
-          origin: S.optional(S.String),
-          actionType: S.optional(S.String),
+          display: S.optional(OperationDisplay),
+          origin: S.optional(OperationOrigin),
+          actionType: S.optional(OperationActionType),
         }),
       ).annotate({ identifier: "Operation" });
     case 3:
-      return S.Array(__S(82));
+      return S.Array(Operation);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(83)),
+          value: S.optional(ListOperationsResponseValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
@@ -2608,7 +3233,9 @@ function __c10(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          subscriptionIds: S.optional(__S(85)),
+          subscriptionIds: S.optional(
+            ListProviderActionInUseStorageAccountsRequestSubscriptionIdsList,
+          ),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2621,7 +3248,7 @@ function __c10(j: number): any {
         identifier: "ListProviderActionInUseStorageAccountsRequest",
       });
     case 7:
-      return S.Array(__S(37));
+      return S.Array(StorageInfo);
   }
 }
 function __c11(j: number): any {
@@ -2629,7 +3256,7 @@ function __c11(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          storageAccountList: S.optional(__S(87)),
+          storageAccountList: S.optional(ListInUseStorageAccountsResponseStorageAccountListList),
         }),
       ).annotate({
         identifier: "ListInUseStorageAccountsResponse",
@@ -2654,11 +3281,11 @@ function __c11(j: number): any {
         ),
       ).annotate({ identifier: "ListReportRequest" });
     case 2:
-      return S.Array(__S(43));
+      return S.Array(ReportResource);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: __S(90),
+          value: ReportResourceListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ReportResourceListResult" });
@@ -2678,11 +3305,11 @@ function __c11(j: number): any {
         identifier: "ListScopingConfigurationRequest",
       });
     case 5:
-      return S.Array(__S(53));
+      return S.Array(ScopingConfigurationResource);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          value: __S(93),
+          value: ScopingConfigurationResourceListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -2713,11 +3340,11 @@ function __c11(j: number): any {
 function __c12(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(73));
+      return S.Array(SnapshotResource);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(96),
+          value: SnapshotResourceListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -2744,11 +3371,11 @@ function __c12(j: number): any {
         ),
       ).annotate({ identifier: "ListWebhookRequest" });
     case 3:
-      return S.Array(__S(76));
+      return S.Array(WebhookResource);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: __S(99),
+          value: WebhookResourceListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -2757,7 +3384,7 @@ function __c12(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          subscriptionIds: __S(34),
+          subscriptionIds: ProviderActionsOnboardRequestSubscriptionIdsList,
         }).pipe(
           T.Http({
             method: "POST",
@@ -2772,7 +3399,7 @@ function __c12(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          subscriptionIds: S.optional(__S(34)),
+          subscriptionIds: S.optional(OnboardResponseSubscriptionIdsList),
         }),
       ).annotate({ identifier: "OnboardResponse" });
     case 7:
@@ -2780,9 +3407,9 @@ function __c12(j: number): any {
         S.Struct({
           triggerTime: S.String,
           timeZone: S.String,
-          resources: __S(33),
+          resources: ReportPropertiesInputResourcesList,
           offerGuid: S.optional(S.String),
-          storageInfo: S.optional(__S(37)),
+          storageInfo: S.optional(StorageInfo),
         }),
       ).annotate({ identifier: "ReportPropertiesInput" });
   }
@@ -2793,7 +3420,7 @@ function __c13(j: number): any {
       return S.suspend(() =>
         S.Struct({
           reportName: S.String.pipe(T.Label()),
-          properties: __S(103),
+          properties: ReportPropertiesInput,
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2811,8 +3438,8 @@ function __c13(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(20)),
-          properties: __S(42),
+          systemData: S.optional(SystemData),
+          properties: ReportProperties,
         }),
       ).annotate({
         identifier: "ReportCreateOrUpdateResponse",
@@ -2833,7 +3460,7 @@ function __c13(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          result: S.optional(S.String),
+          result: S.optional(Result),
           reason: S.optional(S.String),
         }),
       ).annotate({ identifier: "ReportFixResult" });
@@ -2857,7 +3484,7 @@ function __c13(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          answers: S.optional(__S(51)),
+          answers: S.optional(ScopingConfigurationPropertiesInputAnswersList),
         }),
       ).annotate({
         identifier: "ScopingConfigurationPropertiesInput",
@@ -2867,7 +3494,7 @@ function __c13(j: number): any {
         S.Struct({
           reportName: S.String.pipe(T.Label()),
           scopingConfigurationName: S.String.pipe(T.Label()),
-          properties: __S(109),
+          properties: ScopingConfigurationPropertiesInput,
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2883,7 +3510,7 @@ function __c13(j: number): any {
       return S.suspend(() =>
         S.Struct({
           reportName: S.String.pipe(T.Label()),
-          certRecord: __S(40),
+          certRecord: CertSyncRecord,
         }).pipe(
           T.Http({
             method: "POST",
@@ -2902,13 +3529,13 @@ function __c14(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          certRecord: S.optional(__S(40)),
+          certRecord: S.optional(CertSyncRecord),
         }),
       ).annotate({ identifier: "SyncCertRecordResponse" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          resourceIds: __S(34),
+          resourceIds: TriggerProviderActionEvaluationRequestResourceIdsList,
         }).pipe(
           T.Http({
             method: "POST",
@@ -2926,21 +3553,21 @@ function __c14(j: number): any {
           resourceId: S.optional(S.String),
           responsibilityId: S.optional(S.String),
           timestamp: S.optional(S.String),
-          resourceStatus: S.optional(S.String),
+          resourceStatus: S.optional(ResourceStatus),
           displayName: S.optional(S.String),
           description: S.optional(S.String),
           remediationLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "QuickAssessment" });
     case 3:
-      return S.Array(__S(114));
+      return S.Array(QuickAssessment);
     case 4:
       return S.suspend(() =>
         S.Struct({
           triggerTime: S.optional(S.String),
           evaluationEndTime: S.optional(S.String),
-          resourceIds: S.optional(__S(34)),
-          quickAssessments: S.optional(__S(115)),
+          resourceIds: S.optional(TriggerEvaluationPropertyResourceIdsList),
+          quickAssessments: S.optional(TriggerEvaluationPropertyQuickAssessmentsList),
         }),
       ).annotate({
         identifier: "TriggerEvaluationProperty",
@@ -2948,7 +3575,7 @@ function __c14(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          properties: S.optional(__S(116)),
+          properties: S.optional(TriggerEvaluationProperty),
         }),
       ).annotate({
         identifier: "TriggerEvaluationResponse",
@@ -2958,9 +3585,9 @@ function __c14(j: number): any {
         S.Struct({
           triggerTime: S.optional(S.String),
           timeZone: S.optional(S.String),
-          resources: S.optional(__S(33)),
+          resources: S.optional(ReportPatchPropertiesInputResourcesList),
           offerGuid: S.optional(S.String),
-          storageInfo: S.optional(__S(37)),
+          storageInfo: S.optional(StorageInfo),
         }),
       ).annotate({
         identifier: "ReportPatchPropertiesInput",
@@ -2969,7 +3596,7 @@ function __c14(j: number): any {
       return S.suspend(() =>
         S.Struct({
           reportName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(118)),
+          properties: S.optional(ReportPatchPropertiesInput),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2986,11 +3613,11 @@ function __c15(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(S.String),
+          status: S.optional(WebhookStatus),
           sendAllEvents: S.optional(S.Boolean.pipe(T.StringEncoded())),
-          events: S.optional(__S(45)),
+          events: S.optional(WebhookPropertiesInputEventsList),
           payloadUrl: S.optional(S.String),
-          contentType: S.optional(S.String),
+          contentType: S.optional(ContentType),
           webhookKey: S.optional(S.String),
           updateWebhookKey: S.optional(S.Boolean.pipe(T.StringEncoded())),
           enableSslVerification: S.optional(S.Boolean.pipe(T.StringEncoded())),
@@ -3001,7 +3628,7 @@ function __c15(j: number): any {
         S.Struct({
           reportName: S.String.pipe(T.Label()),
           webhookName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(120)),
+          properties: S.optional(WebhookPropertiesInput),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3029,7 +3656,7 @@ function __c15(j: number): any {
         S.Struct({
           reportName: S.String.pipe(T.Label()),
           webhookName: S.String.pipe(T.Label()),
-          properties: __S(120),
+          properties: WebhookPropertiesInput,
         }).pipe(
           T.Http({
             method: "PUT",
@@ -3047,52 +3674,11 @@ function __c15(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(20)),
-          properties: __S(75),
+          systemData: S.optional(SystemData),
+          properties: WebhookProperties,
         }),
       ).annotate({
         identifier: "WebhookCreateOrUpdateResponse",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
-    case 9:
-      return __c9(i & 7);
-    case 10:
-      return __c10(i & 7);
-    case 11:
-      return __c11(i & 7);
-    case 12:
-      return __c12(i & 7);
-    case 13:
-      return __c13(i & 7);
-    case 14:
-      return __c14(i & 7);
-    case 15:
-      return __c15(i & 7);
   }
 }

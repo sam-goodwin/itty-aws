@@ -7,8 +7,6 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -68,32 +66,52 @@ export interface DeleteAccountsLfpStoresRequest {
   /** Required. The name of the store to delete for the target merchant account. Format: `accounts/{account}/lfpStores/{target_merchant}~{store_code}` */
   name: string;
 }
+const DeleteAccountsLfpStoresRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<DeleteAccountsLfpStoresRequest>;
+
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
+const Empty = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<Empty>;
+
 export interface GetAccountsLfpMerchantStatesRequest {
   /** Required. The name of the state to retrieve. Format: `accounts/{account}/lfpMerchantStates/{target_merchant}`. For example, `accounts/123456/lfpMerchantStates/567890`. */
   name: string;
 }
+const GetAccountsLfpMerchantStatesRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<GetAccountsLfpMerchantStatesRequest>;
+
 export type CountrySettingsInstockServingVerificationStateEnum =
   | "VERIFICATION_STATE_UNSPECIFIED"
   | "VERIFICATION_STATE_NOT_APPROVED"
   | "VERIFICATION_STATE_IN_PROGRESS"
   | "VERIFICATION_STATE_APPROVED";
+const CountrySettingsInstockServingVerificationStateEnum = S.String;
+
 export type CountrySettingsPickupServingVerificationStateEnum =
   | "VERIFICATION_STATE_UNSPECIFIED"
   | "VERIFICATION_STATE_NOT_APPROVED"
   | "VERIFICATION_STATE_IN_PROGRESS"
   | "VERIFICATION_STATE_APPROVED";
+const CountrySettingsPickupServingVerificationStateEnum = S.String;
+
 export type CountrySettingsInventoryVerificationStateEnum =
   | "VERIFICATION_STATE_UNSPECIFIED"
   | "VERIFICATION_STATE_NOT_APPROVED"
   | "VERIFICATION_STATE_IN_PROGRESS"
   | "VERIFICATION_STATE_APPROVED";
+const CountrySettingsInventoryVerificationStateEnum = S.String;
+
 export type CountrySettingsProductPageTypeEnum =
   | "PRODUCT_PAGE_TYPE_UNSPECIFIED"
   | "GOOGLE_HOSTED"
   | "MERCHANT_HOSTED"
   | "MERCHANT_HOSTED_STORE_SPECIFIC";
+const CountrySettingsProductPageTypeEnum = S.String;
+
 /** Country-specific settings for the merchant. */
 export interface CountrySettings {
   /** Output only. The verification state of this merchant's instock serving feature. */
@@ -111,11 +129,17 @@ export interface CountrySettings {
   /** Output only. The product page type selected by this merchant. */
   productPageType?: CountrySettingsProductPageTypeEnum;
 }
+const CountrySettings = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<CountrySettings>;
+
 export type CountrySettingsList = Array<CountrySettings>;
+const CountrySettingsList = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<CountrySettingsList>;
+
 export type LfpStoreStateMatchingStateEnum =
   | "STORE_MATCHING_STATE_UNSPECIFIED"
   | "STORE_MATCHING_STATE_MATCHED"
   | "STORE_MATCHING_STATE_FAILED";
+const LfpStoreStateMatchingStateEnum = S.String;
+
 /** The state of a specific merchant's store. */
 export interface LfpStoreState {
   /** The hint of why the matching has failed (only set if matching_state is FAILED). */
@@ -125,7 +149,11 @@ export interface LfpStoreState {
   /** Required. Immutable. The identifier of this store. */
   storeCode?: string;
 }
+const LfpStoreState = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<LfpStoreState>;
+
 export type LfpStoreStateList = Array<LfpStoreState>;
+const LfpStoreStateList = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<LfpStoreStateList>;
+
 /** The inventory statistics for a merchant. */
 export interface InventoryStats {
   /** Number of products from provided inventories/sales that were created from matches to existing online products provided by the merchant or to the Google catalog. */
@@ -137,6 +165,8 @@ export interface InventoryStats {
   /** Number of entries (understanding entry as a pair of product and store) that were built based on provided inventories/sales and submitted to Google. */
   submittedEntries?: string;
 }
+const InventoryStats = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<InventoryStats>;
+
 /** The LFP state of a merchant. */
 export interface LfpMerchantState {
   /** Identifier. The name of the `LfpMerchantState` resource. Format: `accounts/{account}/lfpMerchantStates/{target_merchant}`. For example, `accounts/123456/lfpMerchantStates/567890`. */
@@ -150,15 +180,26 @@ export interface LfpMerchantState {
   /** The inventory statistics for the merchant. The field will be absent if the merchant has no inventory submitted through LFP. */
   inventoryStats?: InventoryStats;
 }
+const LfpMerchantState = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<LfpMerchantState>;
+
 export interface GetAccountsLfpStoresRequest {
   /** Required. The name of the store to retrieve. Format: `accounts/{account}/lfpStores/{target_merchant}~{store_code}` */
   name: string;
 }
+const GetAccountsLfpStoresRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<GetAccountsLfpStoresRequest>;
+
 export type StringList = Array<string>;
+const StringList = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<StringList>;
+
 export type LfpStoreMatchingStateEnum =
   | "STORE_MATCHING_STATE_UNSPECIFIED"
   | "STORE_MATCHING_STATE_MATCHED"
   | "STORE_MATCHING_STATE_FAILED";
+const LfpStoreMatchingStateEnum = S.String;
+
 /** A store for the merchant. This will be used to match to a store under the Google Business Profile of the target merchant. If a matching store can't be found, the inventories or sales submitted with the store code will not be used. */
 export interface LfpStore {
   /** Optional. [Google My Business category id](https://support.google.com/business/answer/7249669). */
@@ -184,6 +225,8 @@ export interface LfpStore {
   /** Optional. The [Google Place Id](https://developers.google.com/maps/documentation/places/web-service/place-id#id-overview) of the store location. */
   placeId?: string;
 }
+const LfpStore = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<LfpStore>;
+
 /** The price represented as a number and currency. */
 export interface Price {
   /** The price represented as a number in micros (1 million micros is an equivalent to one's currency standard unit, for example, 1 USD = 1000000 micros). */
@@ -191,6 +234,8 @@ export interface Price {
   /** The currency of the price using three-letter acronyms according to [ISO 4217](http://en.wikipedia.org/wiki/ISO_4217). */
   currencyCode?: string;
 }
+const Price = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<Price>;
+
 /** Local Inventory for the merchant. */
 export interface LfpInventory {
   /** Optional. Supported pickup method for this offer. Unless the value is "not supported", this field must be submitted together with `pickupSla`. For accepted attribute values, see the [local product inventory data specification](https://support.google.com/merchants/answer/3061342). */
@@ -222,12 +267,19 @@ export interface LfpInventory {
   /** Optional. The current price of the product. */
   price?: Price;
 }
+const LfpInventory = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<LfpInventory>;
+
 export interface InsertAccountsLfpInventoriesRequest {
   /** Required. The LFP provider account. Format: `accounts/{account}` */
   parent: string;
   /** Request body */
   body?: LfpInventory;
 }
+const InsertAccountsLfpInventoriesRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<InsertAccountsLfpInventoriesRequest>;
+
 /** A sale for the merchant. */
 export interface LfpSale {
   /** Required. The timestamp for the sale. */
@@ -255,18 +307,30 @@ export interface LfpSale {
   /** Required. A unique identifier for the product. If both inventories and sales are submitted for a merchant, this id should match for the same product. **Note**: if the merchant sells the same product new and used, they should have different IDs. */
   offerId?: string;
 }
+const LfpSale = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<LfpSale>;
+
 export interface InsertAccountsLfpSalesRequest {
   /** Required. The LFP provider account. Format: `accounts/{lfp_partner}` */
   parent: string;
   /** Request body */
   body?: LfpSale;
 }
+const InsertAccountsLfpSalesRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<InsertAccountsLfpSalesRequest>;
+
 export interface InsertAccountsLfpStoresRequest {
   /** Required. The LFP provider account Format: `accounts/{account}` */
   parent: string;
   /** Request body */
   body?: LfpStore;
 }
+const InsertAccountsLfpStoresRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<InsertAccountsLfpStoresRequest>;
+
 export interface ListAccountsLfpStoresRequest {
   /** Optional. A page token, received from a previous `ListLfpStoresRequest` call. Provide the page token to retrieve the subsequent page. When paginating, all other parameters provided to `ListLfpStoresRequest` must match the call that provided the page token. The token returned as nextPageToken in the response to the previous request. */
   pageToken?: string;
@@ -277,7 +341,14 @@ export interface ListAccountsLfpStoresRequest {
   /** Optional. The maximum number of `LfpStore` resources for the given account to return. The service returns fewer than this value if the number of stores for the given account is less than the `pageSize`. The default value is 250. The maximum value is 1000; If a value higher than the maximum is specified, then the `pageSize` will default to the maximum. */
   pageSize?: number;
 }
+const ListAccountsLfpStoresRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<ListAccountsLfpStoresRequest>;
+
 export type LfpStoreList = Array<LfpStore>;
+const LfpStoreList = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<LfpStoreList>;
+
 /** Response message for the ListLfpStores method. */
 export interface ListLfpStoresResponse {
   /** A token, which can be sent as `pageToken` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
@@ -285,6 +356,11 @@ export interface ListLfpStoresResponse {
   /** The stores from the specified merchant. */
   lfpStores?: LfpStoreList;
 }
+const ListLfpStoresResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<ListLfpStoresResponse>;
+
 export type DeleteAccountsLfpStoresError =
   | NotFound
   | Forbidden
@@ -298,8 +374,8 @@ export const deleteAccountsLfpStores: API.OperationMethod<
   DeleteAccountsLfpStoresError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<DeleteAccountsLfpStoresRequest>,
-  output: __S(1) as any as S.Schema<Empty>,
+  input: DeleteAccountsLfpStoresRequest,
+  output: Empty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -313,8 +389,8 @@ export const getAccountsLfpMerchantStates: API.OperationMethod<
   GetAccountsLfpMerchantStatesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2) as any as S.Schema<GetAccountsLfpMerchantStatesRequest>,
-  output: __S(8) as any as S.Schema<LfpMerchantState>,
+  input: GetAccountsLfpMerchantStatesRequest,
+  output: LfpMerchantState,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -328,8 +404,8 @@ export const getAccountsLfpStores: API.OperationMethod<
   GetAccountsLfpStoresError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9) as any as S.Schema<GetAccountsLfpStoresRequest>,
-  output: __S(11) as any as S.Schema<LfpStore>,
+  input: GetAccountsLfpStoresRequest,
+  output: LfpStore,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -348,8 +424,8 @@ export const insertAccountsLfpInventories: API.OperationMethod<
   InsertAccountsLfpInventoriesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14) as any as S.Schema<InsertAccountsLfpInventoriesRequest>,
-  output: __S(13) as any as S.Schema<LfpInventory>,
+  input: InsertAccountsLfpInventoriesRequest,
+  output: LfpInventory,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -363,8 +439,8 @@ export const insertAccountsLfpSales: API.OperationMethod<
   InsertAccountsLfpSalesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16) as any as S.Schema<InsertAccountsLfpSalesRequest>,
-  output: __S(15) as any as S.Schema<LfpSale>,
+  input: InsertAccountsLfpSalesRequest,
+  output: LfpSale,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -383,8 +459,8 @@ export const insertAccountsLfpStores: API.OperationMethod<
   InsertAccountsLfpStoresError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17) as any as S.Schema<InsertAccountsLfpStoresRequest>,
-  output: __S(11) as any as S.Schema<LfpStore>,
+  input: InsertAccountsLfpStoresRequest,
+  output: LfpStore,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -399,8 +475,8 @@ export const listAccountsLfpStores: API.PaginatedOperationMethod<
   GcpOpContext,
   ListLfpStoresResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(18) as any as S.Schema<ListAccountsLfpStoresRequest>,
-  output: __S(20) as any as S.Schema<ListLfpStoresResponse>,
+  input: ListAccountsLfpStoresRequest,
+  output: ListLfpStoresResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -445,27 +521,31 @@ function __c0(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          instockServingVerificationState: S.optional(S.String),
-          pickupServingVerificationState: S.optional(S.String),
+          instockServingVerificationState: S.optional(
+            CountrySettingsInstockServingVerificationStateEnum,
+          ),
+          pickupServingVerificationState: S.optional(
+            CountrySettingsPickupServingVerificationStateEnum,
+          ),
           freeLocalListingsEnabled: S.optional(S.Boolean),
           localInventoryAdsEnabled: S.optional(S.Boolean),
-          inventoryVerificationState: S.optional(S.String),
+          inventoryVerificationState: S.optional(CountrySettingsInventoryVerificationStateEnum),
           regionCode: S.optional(S.String),
-          productPageType: S.optional(S.String),
+          productPageType: S.optional(CountrySettingsProductPageTypeEnum),
         }),
       ).annotate({ identifier: "CountrySettings" });
     case 4:
-      return S.Array(__S(3));
+      return S.Array(CountrySettings);
     case 5:
       return S.suspend(() =>
         S.Struct({
           matchingStateHint: S.optional(S.String),
-          matchingState: S.optional(S.String),
+          matchingState: S.optional(LfpStoreStateMatchingStateEnum),
           storeCode: S.optional(S.String),
         }),
       ).annotate({ identifier: "LfpStoreState" });
     case 6:
-      return S.Array(__S(5));
+      return S.Array(LfpStoreState);
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -483,10 +563,10 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          countrySettings: S.optional(__S(4)),
+          countrySettings: S.optional(CountrySettingsList),
           linkedGbps: S.optional(S.String),
-          storeStates: S.optional(__S(6)),
-          inventoryStats: S.optional(__S(7)),
+          storeStates: S.optional(LfpStoreStateList),
+          inventoryStats: S.optional(InventoryStats),
         }),
       ).annotate({ identifier: "LfpMerchantState" });
     case 1:
@@ -508,10 +588,10 @@ function __c1(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          gcidCategory: S.optional(__S(10)),
+          gcidCategory: S.optional(StringList),
           phoneNumber: S.optional(S.String),
           targetAccount: S.optional(S.String),
-          matchingState: S.optional(S.String),
+          matchingState: S.optional(LfpStoreMatchingStateEnum),
           storeName: S.optional(S.String),
           storeCode: S.optional(S.String),
           storeAddress: S.optional(S.String),
@@ -544,14 +624,14 @@ function __c1(j: number): any {
           name: S.optional(S.String),
           offerId: S.optional(S.String),
           feedLabel: S.optional(S.String),
-          price: S.optional(__S(12)),
+          price: S.optional(Price),
         }),
       ).annotate({ identifier: "LfpInventory" });
     case 6:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(13).pipe(T.HttpBody())),
+          body: S.optional(LfpInventory.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -570,7 +650,7 @@ function __c1(j: number): any {
           regionCode: S.optional(S.String),
           name: S.optional(S.String),
           gtin: S.optional(S.String),
-          price: S.optional(__S(12)),
+          price: S.optional(Price),
           feedLabel: S.optional(S.String),
           quantity: S.optional(S.String),
           contentLanguage: S.optional(S.String),
@@ -587,7 +667,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(15).pipe(T.HttpBody())),
+          body: S.optional(LfpSale.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -602,7 +682,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(11).pipe(T.HttpBody())),
+          body: S.optional(LfpStore.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -631,28 +711,13 @@ function __c2(j: number): any {
         identifier: "ListAccountsLfpStoresRequest",
       });
     case 3:
-      return S.Array(__S(11));
+      return S.Array(LfpStore);
     case 4:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          lfpStores: S.optional(__S(19)),
+          lfpStores: S.optional(LfpStoreList),
         }),
       ).annotate({ identifier: "ListLfpStoresResponse" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
   }
 }

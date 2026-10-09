@@ -8,8 +8,6 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "Keyspaces",
   serviceShapeName: "KeyspacesService",
@@ -141,52 +139,76 @@ export interface Tag {
   key: string;
   value: string;
 }
+const Tag = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<Tag>;
 export type TagList = Tag[];
+const TagList = /*@__PURE__*/ __L.at(__c0, 1);
 export type Rs = string;
 export type Region = string;
 export type RegionList = string[];
+const RegionList = /*@__PURE__*/ __L.at(__c0, 2);
 export interface ReplicationSpecification {
   replicationStrategy: string;
   regionList?: string[];
 }
+const ReplicationSpecification = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<ReplicationSpecification>;
 export interface CreateKeyspaceRequest {
   keyspaceName: string;
   tags?: Tag[];
   replicationSpecification?: ReplicationSpecification;
 }
+const CreateKeyspaceRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<CreateKeyspaceRequest>;
 export type ARN = string;
 export interface CreateKeyspaceResponse {
   resourceArn: string;
 }
+const CreateKeyspaceResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<CreateKeyspaceResponse>;
 export type TableName = string;
 export interface ColumnDefinition {
   name: string;
   type: string;
 }
+const ColumnDefinition = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<ColumnDefinition>;
 export type ColumnDefinitionList = ColumnDefinition[];
+const ColumnDefinitionList = /*@__PURE__*/ __L.at(__c0, 7);
 export interface PartitionKey {
   name: string;
 }
+const PartitionKey = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<PartitionKey>;
 export type PartitionKeyList = PartitionKey[];
+const PartitionKeyList = /*@__PURE__*/ __L.at(__c1, 1);
 export type SortOrder = string;
 export interface ClusteringKey {
   name: string;
   orderBy: string;
 }
+const ClusteringKey = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<ClusteringKey>;
 export type ClusteringKeyList = ClusteringKey[];
+const ClusteringKeyList = /*@__PURE__*/ __L.at(__c1, 3);
 export interface StaticColumn {
   name: string;
 }
 export type StaticColumnList = StaticColumn[];
+const StaticColumnList = PartitionKeyList as any as S.Schema<StaticColumnList>;
 export interface SchemaDefinition {
   allColumns: ColumnDefinition[];
   partitionKeys: PartitionKey[];
   clusteringKeys?: ClusteringKey[];
   staticColumns?: StaticColumn[];
 }
+const SchemaDefinition = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<SchemaDefinition>;
 export interface Comment {
   message: string;
 }
+const Comment = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<Comment>;
 export type ThroughputMode = string;
 export type CapacityUnits = number;
 export interface CapacitySpecification {
@@ -194,25 +216,36 @@ export interface CapacitySpecification {
   readCapacityUnits?: number;
   writeCapacityUnits?: number;
 }
+const CapacitySpecification = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<CapacitySpecification>;
 export type EncryptionType = string;
 export type KmsKeyARN = string;
 export interface EncryptionSpecification {
   type: string;
   kmsKeyIdentifier?: string;
 }
+const EncryptionSpecification = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<EncryptionSpecification>;
 export type PointInTimeRecoveryStatus = string;
 export interface PointInTimeRecovery {
   status: string;
 }
+const PointInTimeRecovery = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<PointInTimeRecovery>;
 export type TimeToLiveStatus = string;
 export interface TimeToLive {
   status: string;
 }
+const TimeToLive = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<TimeToLive>;
 export type DefaultTimeToLive = number;
 export type ClientSideTimestampsStatus = string;
 export interface ClientSideTimestamps {
   status: string;
 }
+const ClientSideTimestamps = PointInTimeRecovery as any as S.Schema<ClientSideTimestamps>;
 export type IntegerObject = number;
 export type DoubleObject = number;
 export interface TargetTrackingScalingPolicyConfiguration {
@@ -221,25 +254,37 @@ export interface TargetTrackingScalingPolicyConfiguration {
   scaleOutCooldown?: number;
   targetValue: number;
 }
+const TargetTrackingScalingPolicyConfiguration = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<TargetTrackingScalingPolicyConfiguration>;
 export interface AutoScalingPolicy {
   targetTrackingScalingPolicyConfiguration?: TargetTrackingScalingPolicyConfiguration;
 }
+const AutoScalingPolicy = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<AutoScalingPolicy>;
 export interface AutoScalingSettings {
   autoScalingDisabled?: boolean;
   minimumUnits?: number;
   maximumUnits?: number;
   scalingPolicy?: AutoScalingPolicy;
 }
+const AutoScalingSettings = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<AutoScalingSettings>;
 export interface AutoScalingSpecification {
   writeCapacityAutoScaling?: AutoScalingSettings;
   readCapacityAutoScaling?: AutoScalingSettings;
 }
+const AutoScalingSpecification = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<AutoScalingSpecification>;
 export interface ReplicaSpecification {
   region: string;
   readCapacityUnits?: number;
   readCapacityAutoScaling?: AutoScalingSettings;
 }
+const ReplicaSpecification = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<ReplicaSpecification>;
 export type ReplicaSpecificationList = ReplicaSpecification[];
+const ReplicaSpecificationList = /*@__PURE__*/ __L.at(__c2, 7);
 export type CdcStatus = string;
 export type ViewType = string;
 export type CdcPropagateTags = string;
@@ -249,10 +294,15 @@ export interface CdcSpecification {
   tags?: Tag[];
   propagateTags?: string;
 }
+const CdcSpecification = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<CdcSpecification>;
 export interface WarmThroughputSpecification {
   readUnitsPerSecond?: number;
   writeUnitsPerSecond?: number;
 }
+const WarmThroughputSpecification = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<WarmThroughputSpecification>;
 export interface CreateTableRequest {
   keyspaceName: string;
   tableName: string;
@@ -270,44 +320,62 @@ export interface CreateTableRequest {
   cdcSpecification?: CdcSpecification;
   warmThroughputSpecification?: WarmThroughputSpecification;
 }
+const CreateTableRequest = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<CreateTableRequest>;
 export interface CreateTableResponse {
   resourceArn: string;
 }
+const CreateTableResponse = CreateKeyspaceResponse as any as S.Schema<CreateTableResponse>;
 export type TypeName = string;
 export interface FieldDefinition {
   name: string;
   type: string;
 }
 export type FieldList = FieldDefinition[];
+const FieldList = ColumnDefinitionList as any as S.Schema<FieldList>;
 export interface CreateTypeRequest {
   keyspaceName: string;
   typeName: string;
   fieldDefinitions: FieldDefinition[];
 }
+const CreateTypeRequest = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<CreateTypeRequest>;
 export interface CreateTypeResponse {
   keyspaceArn: string;
   typeName: string;
 }
+const CreateTypeResponse = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<CreateTypeResponse>;
 export interface DeleteKeyspaceRequest {
   keyspaceName: string;
 }
+const DeleteKeyspaceRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<DeleteKeyspaceRequest>;
 export interface DeleteKeyspaceResponse {}
+const DeleteKeyspaceResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<DeleteKeyspaceResponse>;
 export interface DeleteTableRequest {
   keyspaceName: string;
   tableName: string;
 }
+const DeleteTableRequest = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<DeleteTableRequest>;
 export interface DeleteTableResponse {}
+const DeleteTableResponse = DeleteKeyspaceResponse as any as S.Schema<DeleteTableResponse>;
 export interface DeleteTypeRequest {
   keyspaceName: string;
   typeName: string;
 }
+const DeleteTypeRequest = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<DeleteTypeRequest>;
 export interface DeleteTypeResponse {
   keyspaceArn: string;
   typeName: string;
 }
+const DeleteTypeResponse = CreateTypeResponse as any as S.Schema<DeleteTypeResponse>;
 export interface GetKeyspaceRequest {
   keyspaceName: string;
 }
+const GetKeyspaceRequest = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<GetKeyspaceRequest>;
 export type KeyspaceStatus = string;
 export type TablesReplicationProgress = string;
 export interface ReplicationGroupStatus {
@@ -315,7 +383,12 @@ export interface ReplicationGroupStatus {
   keyspaceStatus: string;
   tablesReplicationProgress?: string;
 }
+const ReplicationGroupStatus = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<ReplicationGroupStatus>;
 export type ReplicationGroupStatusList = ReplicationGroupStatus[];
+const ReplicationGroupStatusList = /*@__PURE__*/ __L.at(__c4, 3);
 export interface GetKeyspaceResponse {
   keyspaceName: string;
   resourceArn: string;
@@ -323,10 +396,12 @@ export interface GetKeyspaceResponse {
   replicationRegions?: string[];
   replicationGroupStatuses?: ReplicationGroupStatus[];
 }
+const GetKeyspaceResponse = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<GetKeyspaceResponse>;
 export interface GetTableRequest {
   keyspaceName: string;
   tableName: string;
 }
+const GetTableRequest = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<GetTableRequest>;
 export type TableStatus = string;
 export interface CapacitySpecificationSummary {
   throughputMode: string;
@@ -334,28 +409,49 @@ export interface CapacitySpecificationSummary {
   writeCapacityUnits?: number;
   lastUpdateToPayPerRequestTimestamp?: Date;
 }
+const CapacitySpecificationSummary = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<CapacitySpecificationSummary>;
 export interface PointInTimeRecoverySummary {
   status: string;
   earliestRestorableTimestamp?: Date;
 }
+const PointInTimeRecoverySummary = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<PointInTimeRecoverySummary>;
 export type WarmThroughputStatus = string;
 export interface WarmThroughputSpecificationSummary {
   readUnitsPerSecond: number;
   writeUnitsPerSecond: number;
   status: string;
 }
+const WarmThroughputSpecificationSummary = /*@__PURE__*/ __L.at(
+  __c5,
+  0,
+) as any as S.Schema<WarmThroughputSpecificationSummary>;
 export interface ReplicaSpecificationSummary {
   region?: string;
   status?: string;
   capacitySpecification?: CapacitySpecificationSummary;
   warmThroughputSpecification?: WarmThroughputSpecificationSummary;
 }
+const ReplicaSpecificationSummary = /*@__PURE__*/ __L.at(
+  __c5,
+  1,
+) as any as S.Schema<ReplicaSpecificationSummary>;
 export type ReplicaSpecificationSummaryList = ReplicaSpecificationSummary[];
+const ReplicaSpecificationSummaryList = /*@__PURE__*/ __L.at(__c5, 2);
 export type StreamArn = string;
 export interface CdcSpecificationSummary {
   status: string;
   viewType?: string;
 }
+const CdcSpecificationSummary = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<CdcSpecificationSummary>;
 export interface GetTableResponse {
   keyspaceName: string;
   tableName: string;
@@ -375,15 +471,25 @@ export interface GetTableResponse {
   cdcSpecification?: CdcSpecificationSummary;
   warmThroughputSpecification?: WarmThroughputSpecificationSummary;
 }
+const GetTableResponse = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<GetTableResponse>;
 export interface GetTableAutoScalingSettingsRequest {
   keyspaceName: string;
   tableName: string;
 }
+const GetTableAutoScalingSettingsRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  5,
+) as any as S.Schema<GetTableAutoScalingSettingsRequest>;
 export interface ReplicaAutoScalingSpecification {
   region?: string;
   autoScalingSpecification?: AutoScalingSpecification;
 }
+const ReplicaAutoScalingSpecification = /*@__PURE__*/ __L.at(
+  __c5,
+  6,
+) as any as S.Schema<ReplicaAutoScalingSpecification>;
 export type ReplicaAutoScalingSpecificationList = ReplicaAutoScalingSpecification[];
+const ReplicaAutoScalingSpecificationList = /*@__PURE__*/ __L.at(__c5, 7);
 export interface GetTableAutoScalingSettingsResponse {
   keyspaceName: string;
   tableName: string;
@@ -391,13 +497,20 @@ export interface GetTableAutoScalingSettingsResponse {
   autoScalingSpecification?: AutoScalingSpecification;
   replicaSpecifications?: ReplicaAutoScalingSpecification[];
 }
+const GetTableAutoScalingSettingsResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<GetTableAutoScalingSettingsResponse>;
 export interface GetTypeRequest {
   keyspaceName: string;
   typeName: string;
 }
+const GetTypeRequest = /*@__PURE__*/ __L.at(__c6, 1) as any as S.Schema<GetTypeRequest>;
 export type TypeStatus = string;
 export type TableNameList = string[];
+const TableNameList = RegionList as any as S.Schema<TableNameList>;
 export type TypeNameList = string[];
+const TypeNameList = RegionList as any as S.Schema<TypeNameList>;
 export type Depth = number;
 export interface GetTypeResponse {
   keyspaceName: string;
@@ -410,56 +523,78 @@ export interface GetTypeResponse {
   maxNestingDepth?: number;
   keyspaceArn: string;
 }
+const GetTypeResponse = /*@__PURE__*/ __L.at(__c6, 2) as any as S.Schema<GetTypeResponse>;
 export type NextToken = string;
 export type MaxResults = number;
 export interface ListKeyspacesRequest {
   nextToken?: string;
   maxResults?: number;
 }
+const ListKeyspacesRequest = /*@__PURE__*/ __L.at(__c6, 3) as any as S.Schema<ListKeyspacesRequest>;
 export interface KeyspaceSummary {
   keyspaceName: string;
   resourceArn: string;
   replicationStrategy: string;
   replicationRegions?: string[];
 }
+const KeyspaceSummary = /*@__PURE__*/ __L.at(__c6, 4) as any as S.Schema<KeyspaceSummary>;
 export type KeyspaceSummaryList = KeyspaceSummary[];
+const KeyspaceSummaryList = /*@__PURE__*/ __L.at(__c6, 5);
 export interface ListKeyspacesResponse {
   nextToken?: string;
   keyspaces: KeyspaceSummary[];
 }
+const ListKeyspacesResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  6,
+) as any as S.Schema<ListKeyspacesResponse>;
 export interface ListTablesRequest {
   nextToken?: string;
   maxResults?: number;
   keyspaceName: string;
 }
+const ListTablesRequest = /*@__PURE__*/ __L.at(__c6, 7) as any as S.Schema<ListTablesRequest>;
 export interface TableSummary {
   keyspaceName: string;
   tableName: string;
   resourceArn: string;
 }
+const TableSummary = /*@__PURE__*/ __L.at(__c7, 0) as any as S.Schema<TableSummary>;
 export type TableSummaryList = TableSummary[];
+const TableSummaryList = /*@__PURE__*/ __L.at(__c7, 1);
 export interface ListTablesResponse {
   nextToken?: string;
   tables?: TableSummary[];
 }
+const ListTablesResponse = /*@__PURE__*/ __L.at(__c7, 2) as any as S.Schema<ListTablesResponse>;
 export interface ListTagsForResourceRequest {
   resourceArn: string;
   nextToken?: string;
   maxResults?: number;
 }
+const ListTagsForResourceRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  3,
+) as any as S.Schema<ListTagsForResourceRequest>;
 export interface ListTagsForResourceResponse {
   nextToken?: string;
   tags?: Tag[];
 }
+const ListTagsForResourceResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  4,
+) as any as S.Schema<ListTagsForResourceResponse>;
 export interface ListTypesRequest {
   nextToken?: string;
   maxResults?: number;
   keyspaceName: string;
 }
+const ListTypesRequest = /*@__PURE__*/ __L.at(__c7, 5) as any as S.Schema<ListTypesRequest>;
 export interface ListTypesResponse {
   nextToken?: string;
   types: string[];
 }
+const ListTypesResponse = /*@__PURE__*/ __L.at(__c7, 6) as any as S.Schema<ListTypesResponse>;
 export interface RestoreTableRequest {
   sourceKeyspaceName: string;
   sourceTableName: string;
@@ -473,27 +608,38 @@ export interface RestoreTableRequest {
   autoScalingSpecification?: AutoScalingSpecification;
   replicaSpecifications?: ReplicaSpecification[];
 }
+const RestoreTableRequest = /*@__PURE__*/ __L.at(__c7, 7) as any as S.Schema<RestoreTableRequest>;
 export interface RestoreTableResponse {
   restoredTableARN: string;
 }
+const RestoreTableResponse = /*@__PURE__*/ __L.at(__c8, 0) as any as S.Schema<RestoreTableResponse>;
 export interface TagResourceRequest {
   resourceArn: string;
   tags: Tag[];
 }
+const TagResourceRequest = /*@__PURE__*/ __L.at(__c8, 1) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
+const TagResourceResponse = DeleteKeyspaceResponse as any as S.Schema<TagResourceResponse>;
 export interface UntagResourceRequest {
   resourceArn: string;
   tags: Tag[];
 }
+const UntagResourceRequest = /*@__PURE__*/ __L.at(__c8, 2) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
+const UntagResourceResponse = DeleteKeyspaceResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateKeyspaceRequest {
   keyspaceName: string;
   replicationSpecification: ReplicationSpecification;
   clientSideTimestamps?: ClientSideTimestamps;
 }
+const UpdateKeyspaceRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  3,
+) as any as S.Schema<UpdateKeyspaceRequest>;
 export interface UpdateKeyspaceResponse {
   resourceArn: string;
 }
+const UpdateKeyspaceResponse = CreateKeyspaceResponse as any as S.Schema<UpdateKeyspaceResponse>;
 export interface UpdateTableRequest {
   keyspaceName: string;
   tableName: string;
@@ -509,9 +655,11 @@ export interface UpdateTableRequest {
   cdcSpecification?: CdcSpecification;
   warmThroughputSpecification?: WarmThroughputSpecification;
 }
+const UpdateTableRequest = /*@__PURE__*/ __L.at(__c8, 4) as any as S.Schema<UpdateTableRequest>;
 export interface UpdateTableResponse {
   resourceArn: string;
 }
+const UpdateTableResponse = CreateKeyspaceResponse as any as S.Schema<UpdateTableResponse>;
 export type CreateKeyspaceError =
   | AccessDeniedException
   | ConflictException
@@ -532,8 +680,8 @@ export const createKeyspace: API.OperationMethod<
   CreateKeyspaceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4) as any as S.Schema<CreateKeyspaceRequest>,
-  output: __S(5) as any as S.Schema<CreateKeyspaceResponse>,
+  input: CreateKeyspaceRequest,
+  output: CreateKeyspaceResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -567,8 +715,8 @@ export const createTable: API.OperationMethod<
   CreateTableError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26) as any as S.Schema<CreateTableRequest>,
-  output: __S(5) as any as S.Schema<CreateTableResponse>,
+  input: CreateTableRequest,
+  output: CreateTableResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -603,8 +751,8 @@ export const createType: API.OperationMethod<
   CreateTypeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27) as any as S.Schema<CreateTypeRequest>,
-  output: __S(28) as any as S.Schema<CreateTypeResponse>,
+  input: CreateTypeRequest,
+  output: CreateTypeResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -635,8 +783,8 @@ export const deleteKeyspace: API.OperationMethod<
   DeleteKeyspaceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29) as any as S.Schema<DeleteKeyspaceRequest>,
-  output: __S(30) as any as S.Schema<DeleteKeyspaceResponse>,
+  input: DeleteKeyspaceRequest,
+  output: DeleteKeyspaceResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -667,8 +815,8 @@ export const deleteTable: API.OperationMethod<
   DeleteTableError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31) as any as S.Schema<DeleteTableRequest>,
-  output: __S(30) as any as S.Schema<DeleteTableResponse>,
+  input: DeleteTableRequest,
+  output: DeleteTableResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -701,8 +849,8 @@ export const deleteType: API.OperationMethod<
   DeleteTypeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32) as any as S.Schema<DeleteTypeRequest>,
-  output: __S(28) as any as S.Schema<DeleteTypeResponse>,
+  input: DeleteTypeRequest,
+  output: DeleteTypeResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -732,8 +880,8 @@ export const getKeyspace: API.OperationMethod<
   GetKeyspaceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33) as any as S.Schema<GetKeyspaceRequest>,
-  output: __S(36) as any as S.Schema<GetKeyspaceResponse>,
+  input: GetKeyspaceRequest,
+  output: GetKeyspaceResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -764,8 +912,8 @@ export const getTable: API.OperationMethod<
   GetTableError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37) as any as S.Schema<GetTableRequest>,
-  output: __S(44) as any as S.Schema<GetTableResponse>,
+  input: GetTableRequest,
+  output: GetTableResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -804,8 +952,8 @@ export const getTableAutoScalingSettings: API.OperationMethod<
   GetTableAutoScalingSettingsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45) as any as S.Schema<GetTableAutoScalingSettingsRequest>,
-  output: __S(48) as any as S.Schema<GetTableAutoScalingSettingsResponse>,
+  input: GetTableAutoScalingSettingsRequest,
+  output: GetTableAutoScalingSettingsResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -836,8 +984,8 @@ export const getType: API.OperationMethod<
   GetTypeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49) as any as S.Schema<GetTypeRequest>,
-  output: __S(50) as any as S.Schema<GetTypeResponse>,
+  input: GetTypeRequest,
+  output: GetTypeResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -867,8 +1015,8 @@ export const listKeyspaces: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   KeyspaceSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(51) as any as S.Schema<ListKeyspacesRequest>,
-  output: __S(54) as any as S.Schema<ListKeyspacesResponse>,
+  input: ListKeyspacesRequest,
+  output: ListKeyspacesResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -906,8 +1054,8 @@ export const listTables: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   TableSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(55) as any as S.Schema<ListTablesRequest>,
-  output: __S(58) as any as S.Schema<ListTablesResponse>,
+  input: ListTablesRequest,
+  output: ListTablesResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -945,8 +1093,8 @@ export const listTagsForResource: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Tag
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(59) as any as S.Schema<ListTagsForResourceRequest>,
-  output: __S(60) as any as S.Schema<ListTagsForResourceResponse>,
+  input: ListTagsForResourceRequest,
+  output: ListTagsForResourceResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -984,8 +1132,8 @@ export const listTypes: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   TypeName
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(61) as any as S.Schema<ListTypesRequest>,
-  output: __S(62) as any as S.Schema<ListTypesResponse>,
+  input: ListTypesRequest,
+  output: ListTypesResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1047,8 +1195,8 @@ export const restoreTable: API.OperationMethod<
   RestoreTableError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(63) as any as S.Schema<RestoreTableRequest>,
-  output: __S(64) as any as S.Schema<RestoreTableResponse>,
+  input: RestoreTableRequest,
+  output: RestoreTableResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1081,8 +1229,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65) as any as S.Schema<TagResourceRequest>,
-  output: __S(30) as any as S.Schema<TagResourceResponse>,
+  input: TagResourceRequest,
+  output: TagResourceResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1113,8 +1261,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(66) as any as S.Schema<UntagResourceRequest>,
-  output: __S(30) as any as S.Schema<UntagResourceResponse>,
+  input: UntagResourceRequest,
+  output: UntagResourceResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1185,8 +1333,8 @@ export const updateKeyspace: API.OperationMethod<
   UpdateKeyspaceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(67) as any as S.Schema<UpdateKeyspaceRequest>,
-  output: __S(5) as any as S.Schema<UpdateKeyspaceResponse>,
+  input: UpdateKeyspaceRequest,
+  output: UpdateKeyspaceResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1217,8 +1365,8 @@ export const updateTable: API.OperationMethod<
   UpdateTableError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(68) as any as S.Schema<UpdateTableRequest>,
-  output: __S(5) as any as S.Schema<UpdateTableResponse>,
+  input: UpdateTableRequest,
+  output: UpdateTableResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1240,19 +1388,19 @@ function __c0(j: number): any {
         identifier: "Tag",
       });
     case 1:
-      return S.Array(__S(0));
+      return S.Array(Tag);
     case 2:
       return S.Array(S.String);
     case 3:
       return S.suspend(() =>
-        S.Struct({ replicationStrategy: S.String, regionList: S.optional(__S(2)) }),
+        S.Struct({ replicationStrategy: S.String, regionList: S.optional(RegionList) }),
       ).annotate({ identifier: "ReplicationSpecification" });
     case 4:
       return S.suspend(() =>
         S.Struct({
           keyspaceName: S.String,
-          tags: S.optional(__S(1)),
-          replicationSpecification: S.optional(__S(3)),
+          tags: S.optional(TagList),
+          replicationSpecification: S.optional(ReplicationSpecification),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateKeyspaceRequest" });
     case 5:
@@ -1264,7 +1412,7 @@ function __c0(j: number): any {
         identifier: "ColumnDefinition",
       });
     case 7:
-      return S.Array(__S(6));
+      return S.Array(ColumnDefinition);
   }
 }
 function __c1(j: number): any {
@@ -1274,20 +1422,20 @@ function __c1(j: number): any {
         identifier: "PartitionKey",
       });
     case 1:
-      return S.Array(__S(8));
+      return S.Array(PartitionKey);
     case 2:
       return S.suspend(() => S.Struct({ name: S.String, orderBy: S.String })).annotate({
         identifier: "ClusteringKey",
       });
     case 3:
-      return S.Array(__S(10));
+      return S.Array(ClusteringKey);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          allColumns: __S(7),
-          partitionKeys: __S(9),
-          clusteringKeys: S.optional(__S(11)),
-          staticColumns: S.optional(__S(9)),
+          allColumns: ColumnDefinitionList,
+          partitionKeys: PartitionKeyList,
+          clusteringKeys: S.optional(ClusteringKeyList),
+          staticColumns: S.optional(StaticColumnList),
         }),
       ).annotate({ identifier: "SchemaDefinition" });
     case 5:
@@ -1332,7 +1480,9 @@ function __c2(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          targetTrackingScalingPolicyConfiguration: S.optional(__S(18)),
+          targetTrackingScalingPolicyConfiguration: S.optional(
+            TargetTrackingScalingPolicyConfiguration,
+          ),
         }),
       ).annotate({ identifier: "AutoScalingPolicy" });
     case 4:
@@ -1341,14 +1491,14 @@ function __c2(j: number): any {
           autoScalingDisabled: S.optional(S.Boolean),
           minimumUnits: S.optional(S.Number),
           maximumUnits: S.optional(S.Number),
-          scalingPolicy: S.optional(__S(19)),
+          scalingPolicy: S.optional(AutoScalingPolicy),
         }),
       ).annotate({ identifier: "AutoScalingSettings" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          writeCapacityAutoScaling: S.optional(__S(20)),
-          readCapacityAutoScaling: S.optional(__S(20)),
+          writeCapacityAutoScaling: S.optional(AutoScalingSettings),
+          readCapacityAutoScaling: S.optional(AutoScalingSettings),
         }),
       ).annotate({ identifier: "AutoScalingSpecification" });
     case 6:
@@ -1356,11 +1506,11 @@ function __c2(j: number): any {
         S.Struct({
           region: S.String,
           readCapacityUnits: S.optional(S.Number),
-          readCapacityAutoScaling: S.optional(__S(20)),
+          readCapacityAutoScaling: S.optional(AutoScalingSettings),
         }),
       ).annotate({ identifier: "ReplicaSpecification" });
     case 7:
-      return S.Array(__S(22));
+      return S.Array(ReplicaSpecification);
   }
 }
 function __c3(j: number): any {
@@ -1370,7 +1520,7 @@ function __c3(j: number): any {
         S.Struct({
           status: S.String,
           viewType: S.optional(S.String),
-          tags: S.optional(__S(1)),
+          tags: S.optional(TagList),
           propagateTags: S.optional(S.String),
         }),
       ).annotate({ identifier: "CdcSpecification" });
@@ -1388,24 +1538,24 @@ function __c3(j: number): any {
         S.Struct({
           keyspaceName: S.String,
           tableName: S.String,
-          schemaDefinition: __S(12),
-          comment: S.optional(__S(13)),
-          capacitySpecification: S.optional(__S(14)),
-          encryptionSpecification: S.optional(__S(15)),
-          pointInTimeRecovery: S.optional(__S(16)),
-          ttl: S.optional(__S(17)),
+          schemaDefinition: SchemaDefinition,
+          comment: S.optional(Comment),
+          capacitySpecification: S.optional(CapacitySpecification),
+          encryptionSpecification: S.optional(EncryptionSpecification),
+          pointInTimeRecovery: S.optional(PointInTimeRecovery),
+          ttl: S.optional(TimeToLive),
           defaultTimeToLive: S.optional(S.Number),
-          tags: S.optional(__S(1)),
-          clientSideTimestamps: S.optional(__S(16)),
-          autoScalingSpecification: S.optional(__S(21)),
-          replicaSpecifications: S.optional(__S(23)),
-          cdcSpecification: S.optional(__S(24)),
-          warmThroughputSpecification: S.optional(__S(25)),
+          tags: S.optional(TagList),
+          clientSideTimestamps: S.optional(ClientSideTimestamps),
+          autoScalingSpecification: S.optional(AutoScalingSpecification),
+          replicaSpecifications: S.optional(ReplicaSpecificationList),
+          cdcSpecification: S.optional(CdcSpecification),
+          warmThroughputSpecification: S.optional(WarmThroughputSpecification),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateTableRequest" });
     case 3:
       return S.suspend(() =>
-        S.Struct({ keyspaceName: S.String, typeName: S.String, fieldDefinitions: __S(7) }).pipe(
+        S.Struct({ keyspaceName: S.String, typeName: S.String, fieldDefinitions: FieldList }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "CreateTypeRequest" });
@@ -1454,15 +1604,15 @@ function __c4(j: number): any {
         }),
       ).annotate({ identifier: "ReplicationGroupStatus" });
     case 3:
-      return S.Array(__S(34));
+      return S.Array(ReplicationGroupStatus);
     case 4:
       return S.suspend(() =>
         S.Struct({
           keyspaceName: S.String,
           resourceArn: S.String,
           replicationStrategy: S.String,
-          replicationRegions: S.optional(__S(2)),
-          replicationGroupStatuses: S.optional(__S(35)),
+          replicationRegions: S.optional(RegionList),
+          replicationGroupStatuses: S.optional(ReplicationGroupStatusList),
         }),
       ).annotate({ identifier: "GetKeyspaceResponse" });
     case 5:
@@ -1508,14 +1658,14 @@ function __c5(j: number): any {
         S.Struct({
           region: S.optional(S.String),
           status: S.optional(S.String),
-          capacitySpecification: S.optional(__S(38)),
-          warmThroughputSpecification: S.optional(__S(40)),
+          capacitySpecification: S.optional(CapacitySpecificationSummary),
+          warmThroughputSpecification: S.optional(WarmThroughputSpecificationSummary),
         }),
       ).annotate({
         identifier: "ReplicaSpecificationSummary",
       });
     case 2:
-      return S.Array(__S(41));
+      return S.Array(ReplicaSpecificationSummary);
     case 3:
       return S.suspend(() =>
         S.Struct({ status: S.String, viewType: S.optional(S.String) }),
@@ -1528,18 +1678,18 @@ function __c5(j: number): any {
           resourceArn: S.String,
           creationTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           status: S.optional(S.String),
-          schemaDefinition: S.optional(__S(12)),
-          capacitySpecification: S.optional(__S(38)),
-          encryptionSpecification: S.optional(__S(15)),
-          pointInTimeRecovery: S.optional(__S(39)),
-          ttl: S.optional(__S(17)),
+          schemaDefinition: S.optional(SchemaDefinition),
+          capacitySpecification: S.optional(CapacitySpecificationSummary),
+          encryptionSpecification: S.optional(EncryptionSpecification),
+          pointInTimeRecovery: S.optional(PointInTimeRecoverySummary),
+          ttl: S.optional(TimeToLive),
           defaultTimeToLive: S.optional(S.Number),
-          comment: S.optional(__S(13)),
-          clientSideTimestamps: S.optional(__S(16)),
-          replicaSpecifications: S.optional(__S(42)),
+          comment: S.optional(Comment),
+          clientSideTimestamps: S.optional(ClientSideTimestamps),
+          replicaSpecifications: S.optional(ReplicaSpecificationSummaryList),
           latestStreamArn: S.optional(S.String),
-          cdcSpecification: S.optional(__S(43)),
-          warmThroughputSpecification: S.optional(__S(40)),
+          cdcSpecification: S.optional(CdcSpecificationSummary),
+          warmThroughputSpecification: S.optional(WarmThroughputSpecificationSummary),
         }),
       ).annotate({ identifier: "GetTableResponse" });
     case 5:
@@ -1554,13 +1704,13 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           region: S.optional(S.String),
-          autoScalingSpecification: S.optional(__S(21)),
+          autoScalingSpecification: S.optional(AutoScalingSpecification),
         }),
       ).annotate({
         identifier: "ReplicaAutoScalingSpecification",
       });
     case 7:
-      return S.Array(__S(46));
+      return S.Array(ReplicaAutoScalingSpecification);
   }
 }
 function __c6(j: number): any {
@@ -1571,8 +1721,8 @@ function __c6(j: number): any {
           keyspaceName: S.String,
           tableName: S.String,
           resourceArn: S.String,
-          autoScalingSpecification: S.optional(__S(21)),
-          replicaSpecifications: S.optional(__S(47)),
+          autoScalingSpecification: S.optional(AutoScalingSpecification),
+          replicaSpecifications: S.optional(ReplicaAutoScalingSpecificationList),
         }),
       ).annotate({
         identifier: "GetTableAutoScalingSettingsResponse",
@@ -1588,11 +1738,11 @@ function __c6(j: number): any {
         S.Struct({
           keyspaceName: S.String,
           typeName: S.String,
-          fieldDefinitions: S.optional(__S(7)),
+          fieldDefinitions: S.optional(FieldList),
           lastModifiedTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           status: S.optional(S.String),
-          directReferringTables: S.optional(__S(2)),
-          directParentTypes: S.optional(__S(2)),
+          directReferringTables: S.optional(TableNameList),
+          directParentTypes: S.optional(TypeNameList),
           maxNestingDepth: S.optional(S.Number),
           keyspaceArn: S.String,
         }),
@@ -1609,14 +1759,14 @@ function __c6(j: number): any {
           keyspaceName: S.String,
           resourceArn: S.String,
           replicationStrategy: S.String,
-          replicationRegions: S.optional(__S(2)),
+          replicationRegions: S.optional(RegionList),
         }),
       ).annotate({ identifier: "KeyspaceSummary" });
     case 5:
-      return S.Array(__S(52));
+      return S.Array(KeyspaceSummary);
     case 6:
       return S.suspend(() =>
-        S.Struct({ nextToken: S.optional(S.String), keyspaces: __S(53) }),
+        S.Struct({ nextToken: S.optional(S.String), keyspaces: KeyspaceSummaryList }),
       ).annotate({ identifier: "ListKeyspacesResponse" });
     case 7:
       return S.suspend(() =>
@@ -1635,10 +1785,10 @@ function __c7(j: number): any {
         S.Struct({ keyspaceName: S.String, tableName: S.String, resourceArn: S.String }),
       ).annotate({ identifier: "TableSummary" });
     case 1:
-      return S.Array(__S(56));
+      return S.Array(TableSummary);
     case 2:
       return S.suspend(() =>
-        S.Struct({ nextToken: S.optional(S.String), tables: S.optional(__S(57)) }),
+        S.Struct({ nextToken: S.optional(S.String), tables: S.optional(TableSummaryList) }),
       ).annotate({ identifier: "ListTablesResponse" });
     case 3:
       return S.suspend(() =>
@@ -1652,7 +1802,7 @@ function __c7(j: number): any {
       });
     case 4:
       return S.suspend(() =>
-        S.Struct({ nextToken: S.optional(S.String), tags: S.optional(__S(1)) }),
+        S.Struct({ nextToken: S.optional(S.String), tags: S.optional(TagList) }),
       ).annotate({
         identifier: "ListTagsForResourceResponse",
       });
@@ -1665,9 +1815,9 @@ function __c7(j: number): any {
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListTypesRequest" });
     case 6:
-      return S.suspend(() => S.Struct({ nextToken: S.optional(S.String), types: __S(2) })).annotate(
-        { identifier: "ListTypesResponse" },
-      );
+      return S.suspend(() =>
+        S.Struct({ nextToken: S.optional(S.String), types: TypeNameList }),
+      ).annotate({ identifier: "ListTypesResponse" });
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -1676,12 +1826,12 @@ function __c7(j: number): any {
           targetKeyspaceName: S.String,
           targetTableName: S.String,
           restoreTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          capacitySpecificationOverride: S.optional(__S(14)),
-          encryptionSpecificationOverride: S.optional(__S(15)),
-          pointInTimeRecoveryOverride: S.optional(__S(16)),
-          tagsOverride: S.optional(__S(1)),
-          autoScalingSpecification: S.optional(__S(21)),
-          replicaSpecifications: S.optional(__S(23)),
+          capacitySpecificationOverride: S.optional(CapacitySpecification),
+          encryptionSpecificationOverride: S.optional(EncryptionSpecification),
+          pointInTimeRecoveryOverride: S.optional(PointInTimeRecovery),
+          tagsOverride: S.optional(TagList),
+          autoScalingSpecification: S.optional(AutoScalingSpecification),
+          replicaSpecifications: S.optional(ReplicaSpecificationList),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "RestoreTableRequest" });
   }
@@ -1694,13 +1844,13 @@ function __c8(j: number): any {
       });
     case 1:
       return S.suspend(() =>
-        S.Struct({ resourceArn: S.String, tags: __S(1) }).pipe(
+        S.Struct({ resourceArn: S.String, tags: TagList }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "TagResourceRequest" });
     case 2:
       return S.suspend(() =>
-        S.Struct({ resourceArn: S.String, tags: __S(1) }).pipe(
+        S.Struct({ resourceArn: S.String, tags: TagList }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "UntagResourceRequest" });
@@ -1708,8 +1858,8 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           keyspaceName: S.String,
-          replicationSpecification: __S(3),
-          clientSideTimestamps: S.optional(__S(16)),
+          replicationSpecification: ReplicationSpecification,
+          clientSideTimestamps: S.optional(ClientSideTimestamps),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "UpdateKeyspaceRequest" });
     case 4:
@@ -1717,45 +1867,18 @@ function __c8(j: number): any {
         S.Struct({
           keyspaceName: S.String,
           tableName: S.String,
-          addColumns: S.optional(__S(7)),
-          capacitySpecification: S.optional(__S(14)),
-          encryptionSpecification: S.optional(__S(15)),
-          pointInTimeRecovery: S.optional(__S(16)),
-          ttl: S.optional(__S(17)),
+          addColumns: S.optional(ColumnDefinitionList),
+          capacitySpecification: S.optional(CapacitySpecification),
+          encryptionSpecification: S.optional(EncryptionSpecification),
+          pointInTimeRecovery: S.optional(PointInTimeRecovery),
+          ttl: S.optional(TimeToLive),
           defaultTimeToLive: S.optional(S.Number),
-          clientSideTimestamps: S.optional(__S(16)),
-          autoScalingSpecification: S.optional(__S(21)),
-          replicaSpecifications: S.optional(__S(23)),
-          cdcSpecification: S.optional(__S(24)),
-          warmThroughputSpecification: S.optional(__S(25)),
+          clientSideTimestamps: S.optional(ClientSideTimestamps),
+          autoScalingSpecification: S.optional(AutoScalingSpecification),
+          replicaSpecifications: S.optional(ReplicaSpecificationList),
+          cdcSpecification: S.optional(CdcSpecification),
+          warmThroughputSpecification: S.optional(WarmThroughputSpecification),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "UpdateTableRequest" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
   }
 }

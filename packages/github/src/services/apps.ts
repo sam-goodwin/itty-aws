@@ -7,8 +7,6 @@ import * as Redacted from "effect/Redacted";
 import { GithubProtocol, type GithubOpError, type GithubOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { GithubOpError, GithubOpContext };
 
@@ -54,20 +52,39 @@ export interface AddRepoToInstallationForAuthenticatedUserRequest {
   /** The unique identifier of the repository. */
   repository_id: number;
 }
+const AddRepoToInstallationForAuthenticatedUserRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<AddRepoToInstallationForAuthenticatedUserRequest>;
+
 export interface AddRepoToInstallationForAuthenticatedUserResponse {}
+const AddRepoToInstallationForAuthenticatedUserResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<AddRepoToInstallationForAuthenticatedUserResponse>;
+
 export interface CheckTokenRequest {
   /** The client ID of the GitHub app. */
   client_id: string;
   /** The access_token of the OAuth or GitHub application. */
   access_token: string | Redacted.Redacted<string>;
 }
+const CheckTokenRequest = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<CheckTokenRequest>;
+
 /** A list of scopes that this authorization is in. */
 export type AuthorizationScopesList = Array<string>;
+const AuthorizationScopesList = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<AuthorizationScopesList>;
+
 export interface AuthorizationApp {
   client_id: string;
   name: string;
   url: string;
 }
+const AuthorizationApp = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<AuthorizationApp>;
+
 /** A GitHub user. */
 export interface NullableSimpleUser {
   name?: string | null;
@@ -93,118 +110,232 @@ export interface NullableSimpleUser {
   starred_at?: string;
   user_view_type?: string;
 }
+const NullableSimpleUser = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<NullableSimpleUser>;
+
 /** The level of permission to grant the access token for GitHub Actions workflows, workflow runs, and artifacts. */
 export type AppPermissionsActions = "read" | "write";
+const AppPermissionsActions = S.String;
+
 /** The level of permission to grant the access token for repository creation, deletion, settings, teams, and collaborators creation. */
 export type AppPermissionsAdministration = "read" | "write";
+const AppPermissionsAdministration = S.String;
+
 /** The level of permission to grant the access token to create and retrieve build artifact metadata records. */
 export type AppPermissionsArtifactMetadata = "read" | "write";
+const AppPermissionsArtifactMetadata = S.String;
+
 /** The level of permission to create and retrieve the access token for repository attestations. */
 export type AppPermissionsAttestations = "read" | "write";
+const AppPermissionsAttestations = S.String;
+
 /** The level of permission to grant the access token for checks on code. */
 export type AppPermissionsChecks = "read" | "write";
+const AppPermissionsChecks = S.String;
+
 /** The level of permission to grant the access token to view and manage code quality data. */
 export type AppPermissionsCodeQuality = "read" | "write";
+const AppPermissionsCodeQuality = S.String;
+
 /** The level of permission to grant the access token to create, edit, delete, and list Codespaces. */
 export type AppPermissionsCodespaces = "read" | "write";
+const AppPermissionsCodespaces = S.String;
+
 /** The level of permission to grant the access token for repository contents, commits, branches, downloads, releases, and merges. */
 export type AppPermissionsContents = "read" | "write";
+const AppPermissionsContents = S.String;
+
 /** The level of permission to grant the access token to manage Dependabot secrets. */
 export type AppPermissionsDependabotSecrets = "read" | "write";
+const AppPermissionsDependabotSecrets = S.String;
+
 /** The level of permission to grant the access token for deployments and deployment statuses. */
 export type AppPermissionsDeployments = "read" | "write";
+const AppPermissionsDeployments = S.String;
+
 /** The level of permission to grant the access token for discussions and related comments and labels. */
 export type AppPermissionsDiscussions = "read" | "write";
+const AppPermissionsDiscussions = S.String;
+
 /** The level of permission to grant the access token for managing repository environments. */
 export type AppPermissionsEnvironments = "read" | "write";
+const AppPermissionsEnvironments = S.String;
+
 /** The level of permission to grant the access token for issues and related comments, assignees, labels, and milestones. */
 export type AppPermissionsIssues = "read" | "write";
+const AppPermissionsIssues = S.String;
+
 /** The level of permission to grant the access token to manage the merge queues for a repository. */
 export type AppPermissionsMergeQueues = "read" | "write";
+const AppPermissionsMergeQueues = S.String;
+
 /** The level of permission to grant the access token to search repositories, list collaborators, and access repository metadata. */
 export type AppPermissionsMetadata = "read" | "write";
+const AppPermissionsMetadata = S.String;
+
 /** The level of permission to grant the access token for packages published to GitHub Packages. */
 export type AppPermissionsPackages = "read" | "write";
+const AppPermissionsPackages = S.String;
+
 /** The level of permission to grant the access token to retrieve Pages statuses, configuration, and builds, as well as create new builds. */
 export type AppPermissionsPages = "read" | "write";
+const AppPermissionsPages = S.String;
+
 /** The level of permission to grant the access token for pull requests and related comments, assignees, labels, milestones, and merges. */
 export type AppPermissionsPullRequests = "read" | "write";
+const AppPermissionsPullRequests = S.String;
+
 /** The level of permission to grant the access token to view and edit custom properties for a repository, when allowed by the property. */
 export type AppPermissionsRepositoryCustomProperties = "read" | "write";
+const AppPermissionsRepositoryCustomProperties = S.String;
+
 /** The level of permission to grant the access token to manage the post-receive hooks for a repository. */
 export type AppPermissionsRepositoryHooks = "read" | "write";
+const AppPermissionsRepositoryHooks = S.String;
+
 /** The level of permission to grant the access token to manage repository projects, columns, and cards. */
 export type AppPermissionsRepositoryProjects = "read" | "write" | "admin";
+const AppPermissionsRepositoryProjects = S.String;
+
 /** The level of permission to grant the access token to view and manage secret scanning alerts. */
 export type AppPermissionsSecretScanningAlerts = "read" | "write";
+const AppPermissionsSecretScanningAlerts = S.String;
+
 /** The level of permission to grant the access token to manage repository secrets. */
 export type AppPermissionsSecrets = "read" | "write";
+const AppPermissionsSecrets = S.String;
+
 /** The level of permission to grant the access token to view and manage security events like code scanning alerts. */
 export type AppPermissionsSecurityEvents = "read" | "write";
+const AppPermissionsSecurityEvents = S.String;
+
 /** The level of permission to grant the access token to manage just a single file. */
 export type AppPermissionsSingleFile = "read" | "write";
+const AppPermissionsSingleFile = S.String;
+
 /** The level of permission to grant the access token for commit statuses. */
 export type AppPermissionsStatuses = "read" | "write";
+const AppPermissionsStatuses = S.String;
+
 /** The level of permission to grant the access token to manage Dependabot alerts. */
 export type AppPermissionsVulnerabilityAlerts = "read" | "write";
+const AppPermissionsVulnerabilityAlerts = S.String;
+
 /** The level of permission to grant the access token to update GitHub Actions workflow files. */
 export type AppPermissionsWorkflows = "write";
+const AppPermissionsWorkflows = S.String;
+
 /** The level of permission to grant the access token to view and edit custom properties for an organization, when allowed by the property. */
 export type AppPermissionsCustomPropertiesForOrganizations = "read" | "write";
+const AppPermissionsCustomPropertiesForOrganizations = S.String;
+
 /** The level of permission to grant the access token for organization teams and members. */
 export type AppPermissionsMembers = "read" | "write";
+const AppPermissionsMembers = S.String;
+
 /** The level of permission to grant the access token to manage access to an organization. */
 export type AppPermissionsOrganizationAdministration = "read" | "write";
+const AppPermissionsOrganizationAdministration = S.String;
+
 /** The level of permission to grant the access token for custom repository roles management. */
 export type AppPermissionsOrganizationCustomRoles = "read" | "write";
+const AppPermissionsOrganizationCustomRoles = S.String;
+
 /** The level of permission to grant the access token for custom organization roles management. */
 export type AppPermissionsOrganizationCustomOrgRoles = "read" | "write";
+const AppPermissionsOrganizationCustomOrgRoles = S.String;
+
 /** The level of permission to grant the access token for repository custom properties management at the organization level. */
 export type AppPermissionsOrganizationCustomProperties = "read" | "write" | "admin";
+const AppPermissionsOrganizationCustomProperties = S.String;
+
 /** The level of permission to grant the access token for managing access to GitHub Copilot for members of an organization with a Copilot Business subscription. This property is in public preview and is subject to change. */
 export type AppPermissionsOrganizationCopilotSeatManagement = "read" | "write";
+const AppPermissionsOrganizationCopilotSeatManagement = S.String;
+
 /** The level of permission to grant the access token to view and manage Copilot cloud agent settings for an organization. */
 export type AppPermissionsOrganizationCopilotAgentSettings = "read" | "write";
+const AppPermissionsOrganizationCopilotAgentSettings = S.String;
+
 /** The level of permission to grant the access token for managing external custom properties for repositories in an organization. */
 export type AppPermissionsOrganizationExternalPropertiesForRepos = "read" | "write" | "admin";
+const AppPermissionsOrganizationExternalPropertiesForRepos = S.String;
+
 /** The level of permission to grant the access token to view and manage announcement banners for an organization. */
 export type AppPermissionsOrganizationAnnouncementBanners = "read" | "write";
+const AppPermissionsOrganizationAnnouncementBanners = S.String;
+
 /** The level of permission to grant the access token to view events triggered by an activity in an organization. */
 export type AppPermissionsOrganizationEvents = "read";
+const AppPermissionsOrganizationEvents = S.String;
+
 /** The level of permission to grant the access token to manage the post-receive hooks for an organization. */
 export type AppPermissionsOrganizationHooks = "read" | "write";
+const AppPermissionsOrganizationHooks = S.String;
+
 /** The level of permission to grant the access token for viewing and managing fine-grained personal access token requests to an organization. */
 export type AppPermissionsOrganizationPersonalAccessTokens = "read" | "write";
+const AppPermissionsOrganizationPersonalAccessTokens = S.String;
+
 /** The level of permission to grant the access token for viewing and managing fine-grained personal access tokens that have been approved by an organization. */
 export type AppPermissionsOrganizationPersonalAccessTokenRequests = "read" | "write";
+const AppPermissionsOrganizationPersonalAccessTokenRequests = S.String;
+
 /** The level of permission to grant the access token for viewing an organization's plan. */
 export type AppPermissionsOrganizationPlan = "read";
+const AppPermissionsOrganizationPlan = S.String;
+
 /** The level of permission to grant the access token to manage organization projects and projects public preview (where available). */
 export type AppPermissionsOrganizationProjects = "read" | "write" | "admin";
+const AppPermissionsOrganizationProjects = S.String;
+
 /** The level of permission to grant the access token for organization packages published to GitHub Packages. */
 export type AppPermissionsOrganizationPackages = "read" | "write";
+const AppPermissionsOrganizationPackages = S.String;
+
 /** The level of permission to grant the access token to manage organization secrets. */
 export type AppPermissionsOrganizationSecrets = "read" | "write";
+const AppPermissionsOrganizationSecrets = S.String;
+
 /** The level of permission to grant the access token to view and manage GitHub Actions self-hosted runners available to an organization. */
 export type AppPermissionsOrganizationSelfHostedRunners = "read" | "write";
+const AppPermissionsOrganizationSelfHostedRunners = S.String;
+
 /** The level of permission to grant the access token to view and manage users blocked by the organization. */
 export type AppPermissionsOrganizationUserBlocking = "read" | "write";
+const AppPermissionsOrganizationUserBlocking = S.String;
+
 /** The level of permission to grant the access token to manage the email addresses belonging to a user. */
 export type AppPermissionsEmailAddresses = "read" | "write";
+const AppPermissionsEmailAddresses = S.String;
+
 /** The level of permission to grant the access token to manage the followers belonging to a user. */
 export type AppPermissionsFollowers = "read" | "write";
+const AppPermissionsFollowers = S.String;
+
 /** The level of permission to grant the access token to manage git SSH keys. */
 export type AppPermissionsGitSshKeys = "read" | "write";
+const AppPermissionsGitSshKeys = S.String;
+
 /** The level of permission to grant the access token to view and manage GPG keys belonging to a user. */
 export type AppPermissionsGpgKeys = "read" | "write";
+const AppPermissionsGpgKeys = S.String;
+
 /** The level of permission to grant the access token to view and manage interaction limits on a repository. */
 export type AppPermissionsInteractionLimits = "read" | "write";
+const AppPermissionsInteractionLimits = S.String;
+
 /** The level of permission to grant the access token to manage the profile settings belonging to a user. */
 export type AppPermissionsProfile = "write";
+const AppPermissionsProfile = S.String;
+
 /** The level of permission to grant the access token to list and manage repositories a user is starring. */
 export type AppPermissionsStarring = "read" | "write";
+const AppPermissionsStarring = S.String;
+
 /** The level of permission to grant the access token for organization custom properties management at the enterprise level. */
 export type AppPermissionsEnterpriseCustomPropertiesForOrganizations = "read" | "write" | "admin";
+const AppPermissionsEnterpriseCustomPropertiesForOrganizations = S.String;
+
 /** The permissions granted to the fine-grained access token. */
 export interface AppPermissions {
   /** The level of permission to grant the access token for GitHub Actions workflows, workflow runs, and artifacts. */
@@ -334,9 +465,16 @@ export interface AppPermissions {
     | AppPermissionsEnterpriseCustomPropertiesForOrganizations
     | (string & {});
 }
+const AppPermissions = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<AppPermissions>;
+
 /** Describe whether all repositories have been selected or there's a selection involved */
 export type NullableScopedInstallationRepositorySelection = "all" | "selected";
+const NullableScopedInstallationRepositorySelection = S.String;
+
 export type NullableScopedInstallationSingleFilePathsList = Array<string>;
+const NullableScopedInstallationSingleFilePathsList =
+  AuthorizationScopesList as any as S.Schema<NullableScopedInstallationSingleFilePathsList>;
+
 /** A GitHub user. */
 export type SimpleUser = NullableSimpleUser;
 export interface NullableScopedInstallation {
@@ -349,6 +487,11 @@ export interface NullableScopedInstallation {
   repositories_url: string;
   account: NullableSimpleUser;
 }
+const NullableScopedInstallation = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<NullableScopedInstallation>;
+
 /** The authorization for an OAuth app, GitHub App, or a Personal Access Token. */
 export interface Authorization {
   id: number;
@@ -368,9 +511,16 @@ export interface Authorization {
   installation?: NullableScopedInstallation | null;
   expires_at: string | null;
 }
+const Authorization = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<Authorization>;
+
 export interface CreateFromManifestRequest {
   code: string;
 }
+const CreateFromManifestRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<CreateFromManifestRequest>;
+
 /** An enterprise on GitHub. */
 export interface Enterprise {
   /** A short description of the enterprise. */
@@ -390,6 +540,9 @@ export interface Enterprise {
   avatar_url: string;
 }
 export type CreateFromManifestResponseOwner = NullableSimpleUser | Enterprise;
+const CreateFromManifestResponseOwner =
+  S.Unknown as any as S.Schema<CreateFromManifestResponseOwner>;
+
 /** The set of permissions for the GitHub app */
 export interface CreateFromManifestResponsePermissions {
   issues?: string;
@@ -398,8 +551,16 @@ export interface CreateFromManifestResponsePermissions {
   contents?: string;
   deployments?: string;
 }
+const CreateFromManifestResponsePermissions = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<CreateFromManifestResponsePermissions>;
+
 /** The list of events for the GitHub app. Note that the `installation_target`, `security_advisory`, and `meta` events are not included because they are global events and not specific to an installation. */
 export type CreateFromManifestResponseEventsList = Array<string>;
+const CreateFromManifestResponseEventsList =
+  AuthorizationScopesList as any as S.Schema<CreateFromManifestResponseEventsList>;
+
 export interface CreateFromManifestResponse {
   /** Unique identifier of the GitHub app */
   id: number;
@@ -425,10 +586,23 @@ export interface CreateFromManifestResponse {
   webhook_secret: string | Redacted.Redacted<string> | null;
   pem: string;
 }
+const CreateFromManifestResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<CreateFromManifestResponse>;
+
 /** List of repository names that the token should have access to */
 export type CreateInstallationAccessTokenRequestRepositoriesList = Array<string>;
+const CreateInstallationAccessTokenRequestRepositoriesList =
+  AuthorizationScopesList as any as S.Schema<CreateInstallationAccessTokenRequestRepositoriesList>;
+
 /** List of repository IDs that the token should have access to */
 export type CreateInstallationAccessTokenRequestRepositoryIdsList = Array<number>;
+const CreateInstallationAccessTokenRequestRepositoryIdsList = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<CreateInstallationAccessTokenRequestRepositoryIdsList>;
+
 export interface CreateInstallationAccessTokenRequest {
   /** The unique identifier of the installation. */
   installation_id: number;
@@ -438,7 +612,14 @@ export interface CreateInstallationAccessTokenRequest {
   repository_ids?: CreateInstallationAccessTokenRequestRepositoryIdsList;
   permissions?: AppPermissions;
 }
+const CreateInstallationAccessTokenRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<CreateInstallationAccessTokenRequest>;
+
 export type InstallationTokenRepositorySelection = "all" | "selected";
+const InstallationTokenRepositorySelection = S.String;
+
 /** License Simple */
 export interface NullableLicenseSimple {
   key: string;
@@ -448,6 +629,11 @@ export interface NullableLicenseSimple {
   node_id: string;
   html_url?: string;
 }
+const NullableLicenseSimple = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<NullableLicenseSimple>;
+
 export interface RepositoryPermissions {
   admin: boolean;
   pull: boolean;
@@ -455,22 +641,44 @@ export interface RepositoryPermissions {
   push: boolean;
   maintain?: boolean;
 }
+const RepositoryPermissions = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<RepositoryPermissions>;
+
 export type RepositoryTopicsList = Array<string>;
+const RepositoryTopicsList = AuthorizationScopesList as any as S.Schema<RepositoryTopicsList>;
+
 /** The policy controlling who can create pull requests: all or collaborators_only. */
 export type RepositoryPullRequestCreationPolicy = "all" | "collaborators_only";
+const RepositoryPullRequestCreationPolicy = S.String;
+
 /** The default value for a squash merge commit title: - `PR_TITLE` - default to the pull request's title. - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit). */
 export type RepositorySquashMergeCommitTitle = "PR_TITLE" | "COMMIT_OR_PR_TITLE";
+const RepositorySquashMergeCommitTitle = S.String;
+
 /** The default value for a squash merge commit message: - `PR_BODY` - default to the pull request's body. - `COMMIT_MESSAGES` - default to the branch's commit messages. - `BLANK` - default to a blank commit message. */
 export type RepositorySquashMergeCommitMessage = "PR_BODY" | "COMMIT_MESSAGES" | "BLANK";
+const RepositorySquashMergeCommitMessage = S.String;
+
 /** The default value for a merge commit title. - `PR_TITLE` - default to the pull request's title. - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name). */
 export type RepositoryMergeCommitTitle = "PR_TITLE" | "MERGE_MESSAGE";
+const RepositoryMergeCommitTitle = S.String;
+
 /** The default value for a merge commit message. - `PR_TITLE` - default to the pull request's title. - `PR_BODY` - default to the pull request's body. - `BLANK` - default to a blank commit message. */
 export type RepositoryMergeCommitMessage = "PR_BODY" | "PR_TITLE" | "BLANK";
+const RepositoryMergeCommitMessage = S.String;
+
 /** The status of the code search index for this repository */
 export interface RepositoryCodeSearchIndexStatus {
   lexical_search_ok?: boolean;
   lexical_commit_sha?: string;
 }
+const RepositoryCodeSearchIndexStatus = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<RepositoryCodeSearchIndexStatus>;
+
 /** A repository on GitHub. */
 export interface Repository {
   /** Unique identifier of the repository */
@@ -603,8 +811,18 @@ export interface Repository {
   /** The status of the code search index for this repository */
   code_search_index_status?: RepositoryCodeSearchIndexStatus;
 }
+const Repository = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<Repository>;
+
 export type InstallationTokenRepositoriesList = Array<Repository>;
+const InstallationTokenRepositoriesList = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<InstallationTokenRepositoriesList>;
+
 export type InstallationTokenSingleFilePathsList = Array<string>;
+const InstallationTokenSingleFilePathsList =
+  AuthorizationScopesList as any as S.Schema<InstallationTokenSingleFilePathsList>;
+
 /** Authentication token for a GitHub App installed on a user or org. */
 export interface InstallationToken {
   token: string;
@@ -616,31 +834,64 @@ export interface InstallationToken {
   has_multiple_single_files?: boolean;
   single_file_paths?: InstallationTokenSingleFilePathsList;
 }
+const InstallationToken = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<InstallationToken>;
+
 export interface DeleteAuthorizationRequest {
   /** The client ID of the GitHub app. */
   client_id: string;
   /** The OAuth access token used to authenticate to the GitHub API. */
   access_token: string | Redacted.Redacted<string>;
 }
+const DeleteAuthorizationRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<DeleteAuthorizationRequest>;
+
 export interface DeleteAuthorizationResponse {}
+const DeleteAuthorizationResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<DeleteAuthorizationResponse>;
+
 export interface DeleteInstallationRequest {
   /** The unique identifier of the installation. */
   installation_id: number;
 }
+const DeleteInstallationRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<DeleteInstallationRequest>;
+
 export interface DeleteInstallationResponse {}
+const DeleteInstallationResponse =
+  DeleteAuthorizationResponse as any as S.Schema<DeleteInstallationResponse>;
+
 export interface DeleteTokenRequest {
   /** The client ID of the GitHub app. */
   client_id: string;
   /** The OAuth access token used to authenticate to the GitHub API. */
   access_token: string | Redacted.Redacted<string>;
 }
+const DeleteTokenRequest = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<DeleteTokenRequest>;
+
 export interface DeleteTokenResponse {}
+const DeleteTokenResponse = DeleteAuthorizationResponse as any as S.Schema<DeleteTokenResponse>;
+
 export interface GetAuthenticatedRequest {}
+const GetAuthenticatedRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<GetAuthenticatedRequest>;
+
 export type IntegrationOwner = NullableSimpleUser | Enterprise;
+const IntegrationOwner = S.Unknown as any as S.Schema<IntegrationOwner>;
+
 /** The set of permissions for the GitHub app */
 export type IntegrationPermissions = CreateFromManifestResponsePermissions;
 /** The list of events for the GitHub app. Note that the `installation_target`, `security_advisory`, and `meta` events are not included because they are global events and not specific to an installation. */
 export type IntegrationEventsList = Array<string>;
+const IntegrationEventsList = AuthorizationScopesList as any as S.Schema<IntegrationEventsList>;
+
 /** GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub. */
 export interface Integration {
   /** Unique identifier of the GitHub app */
@@ -664,18 +915,36 @@ export interface Integration {
   /** The number of installations associated with the GitHub app. Only returned when the integration is requesting details about itself. */
   installations_count?: number;
 }
+const Integration = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<Integration>;
+
 export interface GetBySlugRequest {
   app_slug: string;
 }
+const GetBySlugRequest = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<GetBySlugRequest>;
+
 export interface GetInstallationRequest {
   /** The unique identifier of the installation. */
   installation_id: number;
 }
+const GetInstallationRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<GetInstallationRequest>;
+
 export type InstallationAccount = NullableSimpleUser | Enterprise;
+const InstallationAccount = S.Unknown as any as S.Schema<InstallationAccount>;
+
 /** Describe whether all repositories have been selected or there's a selection involved */
 export type InstallationRepositorySelection = "all" | "selected";
+const InstallationRepositorySelection = S.String;
+
 export type InstallationEventsList = Array<string>;
+const InstallationEventsList = AuthorizationScopesList as any as S.Schema<InstallationEventsList>;
+
 export type InstallationSingleFilePathsList = Array<string>;
+const InstallationSingleFilePathsList =
+  AuthorizationScopesList as any as S.Schema<InstallationSingleFilePathsList>;
+
 /** Installation */
 export interface Installation {
   /** The ID of the installation. */
@@ -703,22 +972,44 @@ export interface Installation {
   suspended_at: string | null;
   contact_email?: string | null;
 }
+const Installation = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<Installation>;
+
 export interface GetOrgInstallationRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
 }
+const GetOrgInstallationRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<GetOrgInstallationRequest>;
+
 export interface GetRepoInstallationRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
   /** The name of the repository without the `.git` extension. The name is not case sensitive. */
   repo: string;
 }
+const GetRepoInstallationRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<GetRepoInstallationRequest>;
+
 export interface GetSubscriptionPlanForAccountRequest {
   /** account_id parameter */
   account_id: number;
 }
+const GetSubscriptionPlanForAccountRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<GetSubscriptionPlanForAccountRequest>;
+
 export type MarketplaceListingPlanPriceModel = "FREE" | "FLAT_RATE" | "PER_UNIT";
+const MarketplaceListingPlanPriceModel = S.String;
+
 export type MarketplaceListingPlanBulletsList = Array<string>;
+const MarketplaceListingPlanBulletsList =
+  AuthorizationScopesList as any as S.Schema<MarketplaceListingPlanBulletsList>;
+
 /** Marketplace Listing Plan */
 export interface MarketplaceListingPlan {
   url: string;
@@ -735,6 +1026,11 @@ export interface MarketplaceListingPlan {
   state: string;
   bullets: MarketplaceListingPlanBulletsList;
 }
+const MarketplaceListingPlan = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<MarketplaceListingPlan>;
+
 export interface MarketplacePurchaseMarketplacePendingChange {
   is_installed?: boolean;
   effective_date?: string;
@@ -742,6 +1038,11 @@ export interface MarketplacePurchaseMarketplacePendingChange {
   id?: number;
   plan?: MarketplaceListingPlan;
 }
+const MarketplacePurchaseMarketplacePendingChange = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<MarketplacePurchaseMarketplacePendingChange>;
+
 export interface MarketplacePurchaseMarketplacePurchase {
   billing_cycle?: string;
   next_billing_date?: string | null;
@@ -752,6 +1053,11 @@ export interface MarketplacePurchaseMarketplacePurchase {
   updated_at?: string;
   plan?: MarketplaceListingPlan;
 }
+const MarketplacePurchaseMarketplacePurchase = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<MarketplacePurchaseMarketplacePurchase>;
+
 /** Marketplace Purchase */
 export interface MarketplacePurchase {
   url: string;
@@ -763,16 +1069,35 @@ export interface MarketplacePurchase {
   marketplace_pending_change?: MarketplacePurchaseMarketplacePendingChange | null;
   marketplace_purchase: MarketplacePurchaseMarketplacePurchase;
 }
+const MarketplacePurchase = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<MarketplacePurchase>;
+
 export interface GetSubscriptionPlanForAccountStubbedRequest {
   /** account_id parameter */
   account_id: number;
 }
+const GetSubscriptionPlanForAccountStubbedRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<GetSubscriptionPlanForAccountStubbedRequest>;
+
 export interface GetUserInstallationRequest {
   /** The handle for the GitHub user account. */
   username: string;
 }
+const GetUserInstallationRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<GetUserInstallationRequest>;
+
 export interface GetWebhookConfigForAppRequest {}
+const GetWebhookConfigForAppRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<GetWebhookConfigForAppRequest>;
+
 export type WebhookConfigInsecureSsl = string | number;
+const WebhookConfigInsecureSsl = S.Unknown as any as S.Schema<WebhookConfigInsecureSsl>;
+
 /** Configuration object of the webhook */
 export interface WebhookConfig {
   url?: string;
@@ -780,19 +1105,36 @@ export interface WebhookConfig {
   secret?: string | Redacted.Redacted<string>;
   insecure_ssl?: WebhookConfigInsecureSsl;
 }
+const WebhookConfig = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<WebhookConfig>;
+
 export interface GetWebhookDeliveryRequest {
   delivery_id: number;
 }
+const GetWebhookDeliveryRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  0,
+) as any as S.Schema<GetWebhookDeliveryRequest>;
+
 /** The request headers sent with the webhook delivery. */
 export type HookDeliveryRequestHeadersMap = { [key: string]: unknown | undefined };
+const HookDeliveryRequestHeadersMap = /*@__PURE__*/ __L.at(
+  __c5,
+  1,
+) as any as S.Schema<HookDeliveryRequestHeadersMap>;
+
 /** The webhook payload. */
 export type HookDeliveryRequestPayloadMap = { [key: string]: unknown | undefined };
+const HookDeliveryRequestPayloadMap =
+  HookDeliveryRequestHeadersMap as any as S.Schema<HookDeliveryRequestPayloadMap>;
+
 export interface HookDeliveryRequest {
   /** The request headers sent with the webhook delivery. */
   headers: HookDeliveryRequestHeadersMap | null;
   /** The webhook payload. */
   payload: HookDeliveryRequestPayloadMap | null;
 }
+const HookDeliveryRequest = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<HookDeliveryRequest>;
+
 /** The response headers received when the delivery was made. */
 export type HookDeliveryResponseHeadersMap = { [key: string]: unknown | undefined };
 /** The response payload received. */
@@ -803,6 +1145,8 @@ export interface HookDeliveryResponse {
   /** The response payload received. */
   payload: HookDeliveryResponsePayloadMap | null;
 }
+const HookDeliveryResponse = HookDeliveryRequest as any as S.Schema<HookDeliveryResponse>;
+
 /** Delivery made by a webhook. */
 export interface HookDelivery {
   /** Unique identifier of the delivery. */
@@ -834,8 +1178,14 @@ export interface HookDelivery {
   request: HookDeliveryRequest;
   response: HookDeliveryResponse;
 }
+const HookDelivery = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<HookDelivery>;
+
 export type ListAccountsForPlanRequestSort = "created" | "updated";
+const ListAccountsForPlanRequestSort = S.String;
+
 export type ListAccountsForPlanRequestDirection = "asc" | "desc";
+const ListAccountsForPlanRequestDirection = S.String;
+
 export interface ListAccountsForPlanRequest {
   /** The unique identifier of the plan. */
   plan_id: number;
@@ -848,10 +1198,29 @@ export interface ListAccountsForPlanRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
+const ListAccountsForPlanRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  4,
+) as any as S.Schema<ListAccountsForPlanRequest>;
+
 export type ListAccountsForPlanResponseBodyList = Array<MarketplacePurchase>;
+const ListAccountsForPlanResponseBodyList = /*@__PURE__*/ __L.at(
+  __c5,
+  5,
+) as any as S.Schema<ListAccountsForPlanResponseBodyList>;
+
 export type ListAccountsForPlanResponse = ListAccountsForPlanResponseBodyList;
+const ListAccountsForPlanResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  6,
+) as any as S.Schema<ListAccountsForPlanResponse>;
+
 export type ListAccountsForPlanStubbedRequestSort = "created" | "updated";
+const ListAccountsForPlanStubbedRequestSort = S.String;
+
 export type ListAccountsForPlanStubbedRequestDirection = "asc" | "desc";
+const ListAccountsForPlanStubbedRequestDirection = S.String;
+
 export interface ListAccountsForPlanStubbedRequest {
   /** The unique identifier of the plan. */
   plan_id: number;
@@ -864,8 +1233,16 @@ export interface ListAccountsForPlanStubbedRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
+const ListAccountsForPlanStubbedRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  7,
+) as any as S.Schema<ListAccountsForPlanStubbedRequest>;
+
 export type ListAccountsForPlanStubbedResponseBodyList = Array<MarketplacePurchase>;
 export type ListAccountsForPlanStubbedResponse = ListAccountsForPlanStubbedResponseBodyList;
+const ListAccountsForPlanStubbedResponse =
+  ListAccountsForPlanResponse as any as S.Schema<ListAccountsForPlanStubbedResponse>;
+
 export interface ListInstallationReposForAuthenticatedUserRequest {
   /** The unique identifier of the installation. */
   installation_id: number;
@@ -874,32 +1251,57 @@ export interface ListInstallationReposForAuthenticatedUserRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
+const ListInstallationReposForAuthenticatedUserRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<ListInstallationReposForAuthenticatedUserRequest>;
+
 export type ListInstallationReposForAuthenticatedUserResponseRepositoriesItemPermissions =
   RepositoryPermissions;
 export type ListInstallationReposForAuthenticatedUserResponseRepositoriesItemTopicsList =
   Array<string>;
+const ListInstallationReposForAuthenticatedUserResponseRepositoriesItemTopicsList =
+  /*@__PURE__*/ __L.at(
+    __c6,
+    1,
+  ) as any as S.Schema<ListInstallationReposForAuthenticatedUserResponseRepositoriesItemTopicsList>;
+
 /** The policy controlling who can create pull requests: all or collaborators_only. */
 export type ListInstallationReposForAuthenticatedUserResponseRepositoriesItemPullRequestCreationPolicy =
   | "all"
   | "collaborators_only";
+const ListInstallationReposForAuthenticatedUserResponseRepositoriesItemPullRequestCreationPolicy =
+  S.String;
+
 /** The default value for a squash merge commit title: - `PR_TITLE` - default to the pull request's title. - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit). */
 export type ListInstallationReposForAuthenticatedUserResponseRepositoriesItemSquashMergeCommitTitle =
   | "PR_TITLE"
   | "COMMIT_OR_PR_TITLE";
+const ListInstallationReposForAuthenticatedUserResponseRepositoriesItemSquashMergeCommitTitle =
+  S.String;
+
 /** The default value for a squash merge commit message: - `PR_BODY` - default to the pull request's body. - `COMMIT_MESSAGES` - default to the branch's commit messages. - `BLANK` - default to a blank commit message. */
 export type ListInstallationReposForAuthenticatedUserResponseRepositoriesItemSquashMergeCommitMessage =
   | "PR_BODY"
   | "COMMIT_MESSAGES"
   | "BLANK";
+const ListInstallationReposForAuthenticatedUserResponseRepositoriesItemSquashMergeCommitMessage =
+  S.String;
+
 /** The default value for a merge commit title. - `PR_TITLE` - default to the pull request's title. - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name). */
 export type ListInstallationReposForAuthenticatedUserResponseRepositoriesItemMergeCommitTitle =
   | "PR_TITLE"
   | "MERGE_MESSAGE";
+const ListInstallationReposForAuthenticatedUserResponseRepositoriesItemMergeCommitTitle = S.String;
+
 /** The default value for a merge commit message. - `PR_TITLE` - default to the pull request's title. - `PR_BODY` - default to the pull request's body. - `BLANK` - default to a blank commit message. */
 export type ListInstallationReposForAuthenticatedUserResponseRepositoriesItemMergeCommitMessage =
   | "PR_BODY"
   | "PR_TITLE"
   | "BLANK";
+const ListInstallationReposForAuthenticatedUserResponseRepositoriesItemMergeCommitMessage =
+  S.String;
+
 /** The status of the code search index for this repository */
 export type ListInstallationReposForAuthenticatedUserResponseRepositoriesItemCodeSearchIndexStatus =
   RepositoryCodeSearchIndexStatus;
@@ -907,6 +1309,12 @@ export type ListInstallationReposForAuthenticatedUserResponseRepositoriesItemCod
 export type ListInstallationReposForAuthenticatedUserResponseRepositoriesItemCustomPropertiesMap = {
   [key: string]: unknown | undefined;
 };
+const ListInstallationReposForAuthenticatedUserResponseRepositoriesItemCustomPropertiesMap =
+  /*@__PURE__*/ __L.at(
+    __c6,
+    2,
+  ) as any as S.Schema<ListInstallationReposForAuthenticatedUserResponseRepositoriesItemCustomPropertiesMap>;
+
 export interface ListInstallationReposForAuthenticatedUserResponseRepositoriesItem {
   /** Unique identifier of the repository */
   id: number;
@@ -1040,20 +1448,43 @@ export interface ListInstallationReposForAuthenticatedUserResponseRepositoriesIt
   /** The custom properties that were defined for the repository. The keys are the custom property names, and the values are the corresponding custom property values. Present for org repos only. */
   custom_properties?: ListInstallationReposForAuthenticatedUserResponseRepositoriesItemCustomPropertiesMap;
 }
+const ListInstallationReposForAuthenticatedUserResponseRepositoriesItem = /*@__PURE__*/ __L.at(
+  __c6,
+  3,
+) as any as S.Schema<ListInstallationReposForAuthenticatedUserResponseRepositoriesItem>;
+
 export type ListInstallationReposForAuthenticatedUserResponseRepositoriesList =
   Array<ListInstallationReposForAuthenticatedUserResponseRepositoriesItem>;
+const ListInstallationReposForAuthenticatedUserResponseRepositoriesList = /*@__PURE__*/ __L.at(
+  __c6,
+  4,
+) as any as S.Schema<ListInstallationReposForAuthenticatedUserResponseRepositoriesList>;
+
 export interface ListInstallationReposForAuthenticatedUserResponse {
   total_count: number;
   repository_selection?: string;
   repositories: ListInstallationReposForAuthenticatedUserResponseRepositoriesList;
 }
+const ListInstallationReposForAuthenticatedUserResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  5,
+) as any as S.Schema<ListInstallationReposForAuthenticatedUserResponse>;
+
 export interface ListInstallationRequestsForAuthenticatedAppRequest {
   /** The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   per_page?: number;
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
+const ListInstallationRequestsForAuthenticatedAppRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  6,
+) as any as S.Schema<ListInstallationRequestsForAuthenticatedAppRequest>;
+
 export type IntegrationInstallationRequestAccount = NullableSimpleUser | Enterprise;
+const IntegrationInstallationRequestAccount =
+  S.Unknown as any as S.Schema<IntegrationInstallationRequestAccount>;
+
 /** Request to install an integration on a target */
 export interface IntegrationInstallationRequest {
   /** Unique identifier of the request installation. */
@@ -1063,10 +1494,25 @@ export interface IntegrationInstallationRequest {
   requester: NullableSimpleUser;
   created_at: string;
 }
+const IntegrationInstallationRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  7,
+) as any as S.Schema<IntegrationInstallationRequest>;
+
 export type ListInstallationRequestsForAuthenticatedAppResponseBodyList =
   Array<IntegrationInstallationRequest>;
+const ListInstallationRequestsForAuthenticatedAppResponseBodyList = /*@__PURE__*/ __L.at(
+  __c7,
+  0,
+) as any as S.Schema<ListInstallationRequestsForAuthenticatedAppResponseBodyList>;
+
 export type ListInstallationRequestsForAuthenticatedAppResponse =
   ListInstallationRequestsForAuthenticatedAppResponseBodyList;
+const ListInstallationRequestsForAuthenticatedAppResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  1,
+) as any as S.Schema<ListInstallationRequestsForAuthenticatedAppResponse>;
+
 export interface ListInstallationsRequest {
   /** The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   per_page?: number;
@@ -1076,66 +1522,128 @@ export interface ListInstallationsRequest {
   since?: string;
   outdated?: string;
 }
+const ListInstallationsRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  2,
+) as any as S.Schema<ListInstallationsRequest>;
+
 export type ListInstallationsResponseBodyList = Array<Installation>;
+const ListInstallationsResponseBodyList = /*@__PURE__*/ __L.at(
+  __c7,
+  3,
+) as any as S.Schema<ListInstallationsResponseBodyList>;
+
 export type ListInstallationsResponse = ListInstallationsResponseBodyList;
+const ListInstallationsResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  4,
+) as any as S.Schema<ListInstallationsResponse>;
+
 export interface ListInstallationsForAuthenticatedUserRequest {
   /** The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   per_page?: number;
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
+const ListInstallationsForAuthenticatedUserRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  5,
+) as any as S.Schema<ListInstallationsForAuthenticatedUserRequest>;
+
 export type ListInstallationsForAuthenticatedUserResponseInstallationsList = Array<Installation>;
+const ListInstallationsForAuthenticatedUserResponseInstallationsList =
+  ListInstallationsResponseBodyList as any as S.Schema<ListInstallationsForAuthenticatedUserResponseInstallationsList>;
+
 export interface ListInstallationsForAuthenticatedUserResponse {
   total_count: number;
   installations: ListInstallationsForAuthenticatedUserResponseInstallationsList;
 }
+const ListInstallationsForAuthenticatedUserResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  6,
+) as any as S.Schema<ListInstallationsForAuthenticatedUserResponse>;
+
 export interface ListPlansRequest {
   /** The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   per_page?: number;
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
+const ListPlansRequest = /*@__PURE__*/ __L.at(__c7, 7) as any as S.Schema<ListPlansRequest>;
+
 export type ListPlansResponseBodyList = Array<MarketplaceListingPlan>;
+const ListPlansResponseBodyList = /*@__PURE__*/ __L.at(
+  __c8,
+  0,
+) as any as S.Schema<ListPlansResponseBodyList>;
+
 export type ListPlansResponse = ListPlansResponseBodyList;
+const ListPlansResponse = /*@__PURE__*/ __L.at(__c8, 1) as any as S.Schema<ListPlansResponse>;
+
 export interface ListPlansStubbedRequest {
   /** The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   per_page?: number;
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
+const ListPlansStubbedRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  2,
+) as any as S.Schema<ListPlansStubbedRequest>;
+
 export type ListPlansStubbedResponseBodyList = Array<MarketplaceListingPlan>;
 export type ListPlansStubbedResponse = ListPlansStubbedResponseBodyList;
+const ListPlansStubbedResponse = ListPlansResponse as any as S.Schema<ListPlansStubbedResponse>;
+
 export interface ListReposAccessibleToInstallationRequest {
   /** The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   per_page?: number;
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
+const ListReposAccessibleToInstallationRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  3,
+) as any as S.Schema<ListReposAccessibleToInstallationRequest>;
+
 export type ListReposAccessibleToInstallationResponseRepositoriesItemPermissions =
   RepositoryPermissions;
 export type ListReposAccessibleToInstallationResponseRepositoriesItemTopicsList = Array<string>;
+const ListReposAccessibleToInstallationResponseRepositoriesItemTopicsList =
+  ListInstallationReposForAuthenticatedUserResponseRepositoriesItemTopicsList as any as S.Schema<ListReposAccessibleToInstallationResponseRepositoriesItemTopicsList>;
+
 /** The policy controlling who can create pull requests: all or collaborators_only. */
 export type ListReposAccessibleToInstallationResponseRepositoriesItemPullRequestCreationPolicy =
   | "all"
   | "collaborators_only";
+const ListReposAccessibleToInstallationResponseRepositoriesItemPullRequestCreationPolicy = S.String;
+
 /** The default value for a squash merge commit title: - `PR_TITLE` - default to the pull request's title. - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit). */
 export type ListReposAccessibleToInstallationResponseRepositoriesItemSquashMergeCommitTitle =
   | "PR_TITLE"
   | "COMMIT_OR_PR_TITLE";
+const ListReposAccessibleToInstallationResponseRepositoriesItemSquashMergeCommitTitle = S.String;
+
 /** The default value for a squash merge commit message: - `PR_BODY` - default to the pull request's body. - `COMMIT_MESSAGES` - default to the branch's commit messages. - `BLANK` - default to a blank commit message. */
 export type ListReposAccessibleToInstallationResponseRepositoriesItemSquashMergeCommitMessage =
   | "PR_BODY"
   | "COMMIT_MESSAGES"
   | "BLANK";
+const ListReposAccessibleToInstallationResponseRepositoriesItemSquashMergeCommitMessage = S.String;
+
 /** The default value for a merge commit title. - `PR_TITLE` - default to the pull request's title. - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name). */
 export type ListReposAccessibleToInstallationResponseRepositoriesItemMergeCommitTitle =
   | "PR_TITLE"
   | "MERGE_MESSAGE";
+const ListReposAccessibleToInstallationResponseRepositoriesItemMergeCommitTitle = S.String;
+
 /** The default value for a merge commit message. - `PR_TITLE` - default to the pull request's title. - `PR_BODY` - default to the pull request's body. - `BLANK` - default to a blank commit message. */
 export type ListReposAccessibleToInstallationResponseRepositoriesItemMergeCommitMessage =
   | "PR_BODY"
   | "PR_TITLE"
   | "BLANK";
+const ListReposAccessibleToInstallationResponseRepositoriesItemMergeCommitMessage = S.String;
+
 /** The status of the code search index for this repository */
 export type ListReposAccessibleToInstallationResponseRepositoriesItemCodeSearchIndexStatus =
   RepositoryCodeSearchIndexStatus;
@@ -1143,6 +1651,9 @@ export type ListReposAccessibleToInstallationResponseRepositoriesItemCodeSearchI
 export type ListReposAccessibleToInstallationResponseRepositoriesItemCustomPropertiesMap = {
   [key: string]: unknown | undefined;
 };
+const ListReposAccessibleToInstallationResponseRepositoriesItemCustomPropertiesMap =
+  ListInstallationReposForAuthenticatedUserResponseRepositoriesItemCustomPropertiesMap as any as S.Schema<ListReposAccessibleToInstallationResponseRepositoriesItemCustomPropertiesMap>;
+
 export interface ListReposAccessibleToInstallationResponseRepositoriesItem {
   /** Unique identifier of the repository */
   id: number;
@@ -1276,19 +1787,39 @@ export interface ListReposAccessibleToInstallationResponseRepositoriesItem {
   /** The custom properties that were defined for the repository. The keys are the custom property names, and the values are the corresponding custom property values. Present for org repos only. */
   custom_properties?: ListReposAccessibleToInstallationResponseRepositoriesItemCustomPropertiesMap;
 }
+const ListReposAccessibleToInstallationResponseRepositoriesItem = /*@__PURE__*/ __L.at(
+  __c8,
+  4,
+) as any as S.Schema<ListReposAccessibleToInstallationResponseRepositoriesItem>;
+
 export type ListReposAccessibleToInstallationResponseRepositoriesList =
   Array<ListReposAccessibleToInstallationResponseRepositoriesItem>;
+const ListReposAccessibleToInstallationResponseRepositoriesList = /*@__PURE__*/ __L.at(
+  __c8,
+  5,
+) as any as S.Schema<ListReposAccessibleToInstallationResponseRepositoriesList>;
+
 export interface ListReposAccessibleToInstallationResponse {
   total_count: number;
   repositories: ListReposAccessibleToInstallationResponseRepositoriesList;
   repository_selection?: string;
 }
+const ListReposAccessibleToInstallationResponse = /*@__PURE__*/ __L.at(
+  __c8,
+  6,
+) as any as S.Schema<ListReposAccessibleToInstallationResponse>;
+
 export interface ListSubscriptionsForAuthenticatedUserRequest {
   /** The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   per_page?: number;
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
+const ListSubscriptionsForAuthenticatedUserRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  7,
+) as any as S.Schema<ListSubscriptionsForAuthenticatedUserRequest>;
+
 export interface MarketplaceAccount {
   url: string;
   id: number;
@@ -1298,6 +1829,8 @@ export interface MarketplaceAccount {
   email?: string | null;
   organization_billing_email?: string | null;
 }
+const MarketplaceAccount = /*@__PURE__*/ __L.at(__c9, 0) as any as S.Schema<MarketplaceAccount>;
+
 /** User Marketplace Purchase */
 export interface UserMarketplacePurchase {
   billing_cycle: string;
@@ -1309,20 +1842,45 @@ export interface UserMarketplacePurchase {
   account: MarketplaceAccount;
   plan: MarketplaceListingPlan;
 }
+const UserMarketplacePurchase = /*@__PURE__*/ __L.at(
+  __c9,
+  1,
+) as any as S.Schema<UserMarketplacePurchase>;
+
 export type ListSubscriptionsForAuthenticatedUserResponseBodyList = Array<UserMarketplacePurchase>;
+const ListSubscriptionsForAuthenticatedUserResponseBodyList = /*@__PURE__*/ __L.at(
+  __c9,
+  2,
+) as any as S.Schema<ListSubscriptionsForAuthenticatedUserResponseBodyList>;
+
 export type ListSubscriptionsForAuthenticatedUserResponse =
   ListSubscriptionsForAuthenticatedUserResponseBodyList;
+const ListSubscriptionsForAuthenticatedUserResponse = /*@__PURE__*/ __L.at(
+  __c9,
+  3,
+) as any as S.Schema<ListSubscriptionsForAuthenticatedUserResponse>;
+
 export interface ListSubscriptionsForAuthenticatedUserStubbedRequest {
   /** The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   per_page?: number;
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
+const ListSubscriptionsForAuthenticatedUserStubbedRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  4,
+) as any as S.Schema<ListSubscriptionsForAuthenticatedUserStubbedRequest>;
+
 export type ListSubscriptionsForAuthenticatedUserStubbedResponseBodyList =
   Array<UserMarketplacePurchase>;
 export type ListSubscriptionsForAuthenticatedUserStubbedResponse =
   ListSubscriptionsForAuthenticatedUserStubbedResponseBodyList;
+const ListSubscriptionsForAuthenticatedUserStubbedResponse =
+  ListSubscriptionsForAuthenticatedUserResponse as any as S.Schema<ListSubscriptionsForAuthenticatedUserStubbedResponse>;
+
 export type ListWebhookDeliveriesRequestStatus = "success" | "failure";
+const ListWebhookDeliveriesRequestStatus = S.String;
+
 export interface ListWebhookDeliveriesRequest {
   /** The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   per_page?: number;
@@ -1331,6 +1889,11 @@ export interface ListWebhookDeliveriesRequest {
   /** Returns webhook deliveries filtered by delivery outcome classification based on `status_code` range. A `status` of `success` returns deliveries with a `status_code` in the 200-399 range (inclusive). A `status` of `failure` returns deliveries with a `status_code` in the 400-599 range (inclusive). */
   status?: ListWebhookDeliveriesRequestStatus | (string & {});
 }
+const ListWebhookDeliveriesRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  5,
+) as any as S.Schema<ListWebhookDeliveriesRequest>;
+
 /** Delivery made by a webhook, without request and response information. */
 export interface HookDeliveryItem {
   /** Unique identifier of the webhook delivery. */
@@ -1358,31 +1921,75 @@ export interface HookDeliveryItem {
   /** Time when the webhook delivery was throttled. */
   throttled_at?: string | null;
 }
+const HookDeliveryItem = /*@__PURE__*/ __L.at(__c9, 6) as any as S.Schema<HookDeliveryItem>;
+
 export type ListWebhookDeliveriesResponseBodyList = Array<HookDeliveryItem>;
+const ListWebhookDeliveriesResponseBodyList = /*@__PURE__*/ __L.at(
+  __c9,
+  7,
+) as any as S.Schema<ListWebhookDeliveriesResponseBodyList>;
+
 export type ListWebhookDeliveriesResponse = ListWebhookDeliveriesResponseBodyList;
+const ListWebhookDeliveriesResponse = /*@__PURE__*/ __L.at(
+  __c10,
+  0,
+) as any as S.Schema<ListWebhookDeliveriesResponse>;
+
 export interface RedeliverWebhookDeliveryRequest {
   delivery_id: number;
 }
+const RedeliverWebhookDeliveryRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  1,
+) as any as S.Schema<RedeliverWebhookDeliveryRequest>;
+
 export interface RedeliverWebhookDeliveryResponse {}
+const RedeliverWebhookDeliveryResponse =
+  AddRepoToInstallationForAuthenticatedUserResponse as any as S.Schema<RedeliverWebhookDeliveryResponse>;
+
 export interface RemoveRepoFromInstallationForAuthenticatedUserRequest {
   /** The unique identifier of the installation. */
   installation_id: number;
   /** The unique identifier of the repository. */
   repository_id: number;
 }
+const RemoveRepoFromInstallationForAuthenticatedUserRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  2,
+) as any as S.Schema<RemoveRepoFromInstallationForAuthenticatedUserRequest>;
+
 export interface RemoveRepoFromInstallationForAuthenticatedUserResponse {}
+const RemoveRepoFromInstallationForAuthenticatedUserResponse =
+  AddRepoToInstallationForAuthenticatedUserResponse as any as S.Schema<RemoveRepoFromInstallationForAuthenticatedUserResponse>;
+
 export interface ResetTokenRequest {
   /** The client ID of the GitHub app. */
   client_id: string;
   /** The access_token of the OAuth or GitHub application. */
   access_token: string | Redacted.Redacted<string>;
 }
+const ResetTokenRequest = /*@__PURE__*/ __L.at(__c10, 3) as any as S.Schema<ResetTokenRequest>;
+
 export interface RevokeInstallationAccessTokenRequest {}
+const RevokeInstallationAccessTokenRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  4,
+) as any as S.Schema<RevokeInstallationAccessTokenRequest>;
+
 export interface RevokeInstallationAccessTokenResponse {}
+const RevokeInstallationAccessTokenResponse =
+  AddRepoToInstallationForAuthenticatedUserResponse as any as S.Schema<RevokeInstallationAccessTokenResponse>;
+
 /** The list of repository names to scope the user access token to. `repositories` may not be specified if `repository_ids` is specified. */
 export type ScopeTokenRequestRepositoriesList = Array<string>;
+const ScopeTokenRequestRepositoriesList =
+  AuthorizationScopesList as any as S.Schema<ScopeTokenRequestRepositoriesList>;
+
 /** The list of repository IDs to scope the user access token to. `repository_ids` may not be specified if `repositories` is specified. */
 export type ScopeTokenRequestRepositoryIdsList = Array<number>;
+const ScopeTokenRequestRepositoryIdsList =
+  CreateInstallationAccessTokenRequestRepositoryIdsList as any as S.Schema<ScopeTokenRequestRepositoryIdsList>;
+
 export interface ScopeTokenRequest {
   /** The client ID of the GitHub app. */
   client_id: string;
@@ -1398,22 +2005,45 @@ export interface ScopeTokenRequest {
   repository_ids?: ScopeTokenRequestRepositoryIdsList;
   permissions?: AppPermissions;
 }
+const ScopeTokenRequest = /*@__PURE__*/ __L.at(__c10, 5) as any as S.Schema<ScopeTokenRequest>;
+
 export interface SuspendInstallationRequest {
   /** The unique identifier of the installation. */
   installation_id: number;
 }
+const SuspendInstallationRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  6,
+) as any as S.Schema<SuspendInstallationRequest>;
+
 export interface SuspendInstallationResponse {}
+const SuspendInstallationResponse =
+  DeleteAuthorizationResponse as any as S.Schema<SuspendInstallationResponse>;
+
 export interface UnsuspendInstallationRequest {
   /** The unique identifier of the installation. */
   installation_id: number;
 }
+const UnsuspendInstallationRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  7,
+) as any as S.Schema<UnsuspendInstallationRequest>;
+
 export interface UnsuspendInstallationResponse {}
+const UnsuspendInstallationResponse =
+  DeleteAuthorizationResponse as any as S.Schema<UnsuspendInstallationResponse>;
+
 export interface UpdateWebhookConfigForAppRequest {
   url?: string;
   content_type?: string;
   secret?: string | Redacted.Redacted<string>;
   insecure_ssl?: WebhookConfigInsecureSsl;
 }
+const UpdateWebhookConfigForAppRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  0,
+) as any as S.Schema<UpdateWebhookConfigForAppRequest>;
+
 export type AddRepoToInstallationForAuthenticatedUserError = Forbidden | NotFound | GithubOpError;
 /** Add a repository to an app installation Add a single repository to an installation. The authenticated user must have admin access to the repository. */
 export const addRepoToInstallationForAuthenticatedUser: API.OperationMethod<
@@ -1422,8 +2052,8 @@ export const addRepoToInstallationForAuthenticatedUser: API.OperationMethod<
   AddRepoToInstallationForAuthenticatedUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<AddRepoToInstallationForAuthenticatedUserRequest>,
-  output: __S(1) as any as S.Schema<AddRepoToInstallationForAuthenticatedUserResponse>,
+  input: AddRepoToInstallationForAuthenticatedUserRequest,
+  output: AddRepoToInstallationForAuthenticatedUserResponse,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1437,8 +2067,8 @@ export const checkToken: API.OperationMethod<
   CheckTokenError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2) as any as S.Schema<CheckTokenRequest>,
-  output: __S(8) as any as S.Schema<Authorization>,
+  input: CheckTokenRequest,
+  output: Authorization,
   errors: [NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1452,8 +2082,8 @@ export const createFromManifest: API.OperationMethod<
   CreateFromManifestError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9) as any as S.Schema<CreateFromManifestRequest>,
-  output: __S(11) as any as S.Schema<CreateFromManifestResponse>,
+  input: CreateFromManifestRequest,
+  output: CreateFromManifestResponse,
   errors: [NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1471,8 +2101,8 @@ export const createInstallationAccessToken: API.OperationMethod<
   CreateInstallationAccessTokenError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13) as any as S.Schema<CreateInstallationAccessTokenRequest>,
-  output: __S(19) as any as S.Schema<InstallationToken>,
+  input: CreateInstallationAccessTokenRequest,
+  output: InstallationToken,
   errors: [Forbidden, NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1486,8 +2116,8 @@ export const deleteAuthorization: API.OperationMethod<
   DeleteAuthorizationError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20) as any as S.Schema<DeleteAuthorizationRequest>,
-  output: __S(21) as any as S.Schema<DeleteAuthorizationResponse>,
+  input: DeleteAuthorizationRequest,
+  output: DeleteAuthorizationResponse,
   errors: [UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1501,8 +2131,8 @@ export const deleteInstallation: API.OperationMethod<
   DeleteInstallationError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22) as any as S.Schema<DeleteInstallationRequest>,
-  output: __S(21) as any as S.Schema<DeleteInstallationResponse>,
+  input: DeleteInstallationRequest,
+  output: DeleteInstallationResponse,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1516,8 +2146,8 @@ export const deleteToken: API.OperationMethod<
   DeleteTokenError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23) as any as S.Schema<DeleteTokenRequest>,
-  output: __S(21) as any as S.Schema<DeleteTokenResponse>,
+  input: DeleteTokenRequest,
+  output: DeleteTokenResponse,
   errors: [UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1531,8 +2161,8 @@ export const getAuthenticated: API.OperationMethod<
   GetAuthenticatedError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24) as any as S.Schema<GetAuthenticatedRequest>,
-  output: __S(25) as any as S.Schema<Integration>,
+  input: GetAuthenticatedRequest,
+  output: Integration,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1546,8 +2176,8 @@ export const getBySlug: API.OperationMethod<
   GetBySlugError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26) as any as S.Schema<GetBySlugRequest>,
-  output: __S(25) as any as S.Schema<Integration>,
+  input: GetBySlugRequest,
+  output: Integration,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1561,8 +2191,8 @@ export const getInstallation: API.OperationMethod<
   GetInstallationError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27) as any as S.Schema<GetInstallationRequest>,
-  output: __S(28) as any as S.Schema<Installation>,
+  input: GetInstallationRequest,
+  output: Installation,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1576,8 +2206,8 @@ export const getOrgInstallation: API.OperationMethod<
   GetOrgInstallationError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29) as any as S.Schema<GetOrgInstallationRequest>,
-  output: __S(28) as any as S.Schema<Installation>,
+  input: GetOrgInstallationRequest,
+  output: Installation,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1591,8 +2221,8 @@ export const getRepoInstallation: API.OperationMethod<
   GetRepoInstallationError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30) as any as S.Schema<GetRepoInstallationRequest>,
-  output: __S(28) as any as S.Schema<Installation>,
+  input: GetRepoInstallationRequest,
+  output: Installation,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1606,8 +2236,8 @@ export const getSubscriptionPlanForAccount: API.OperationMethod<
   GetSubscriptionPlanForAccountError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31) as any as S.Schema<GetSubscriptionPlanForAccountRequest>,
-  output: __S(35) as any as S.Schema<MarketplacePurchase>,
+  input: GetSubscriptionPlanForAccountRequest,
+  output: MarketplacePurchase,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1621,8 +2251,8 @@ export const getSubscriptionPlanForAccountStubbed: API.OperationMethod<
   GetSubscriptionPlanForAccountStubbedError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36) as any as S.Schema<GetSubscriptionPlanForAccountStubbedRequest>,
-  output: __S(35) as any as S.Schema<MarketplacePurchase>,
+  input: GetSubscriptionPlanForAccountStubbedRequest,
+  output: MarketplacePurchase,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1636,8 +2266,8 @@ export const getUserInstallation: API.OperationMethod<
   GetUserInstallationError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37) as any as S.Schema<GetUserInstallationRequest>,
-  output: __S(28) as any as S.Schema<Installation>,
+  input: GetUserInstallationRequest,
+  output: Installation,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1651,8 +2281,8 @@ export const getWebhookConfigForApp: API.OperationMethod<
   GetWebhookConfigForAppError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38) as any as S.Schema<GetWebhookConfigForAppRequest>,
-  output: __S(39) as any as S.Schema<WebhookConfig>,
+  input: GetWebhookConfigForAppRequest,
+  output: WebhookConfig,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1666,8 +2296,8 @@ export const getWebhookDelivery: API.OperationMethod<
   GetWebhookDeliveryError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40) as any as S.Schema<GetWebhookDeliveryRequest>,
-  output: __S(43) as any as S.Schema<HookDelivery>,
+  input: GetWebhookDeliveryRequest,
+  output: HookDelivery,
   errors: [BadRequest, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1681,8 +2311,8 @@ export const listAccountsForPlan: API.OperationMethod<
   ListAccountsForPlanError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44) as any as S.Schema<ListAccountsForPlanRequest>,
-  output: __S(46) as any as S.Schema<ListAccountsForPlanResponse>,
+  input: ListAccountsForPlanRequest,
+  output: ListAccountsForPlanResponse,
   errors: [NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1696,8 +2326,8 @@ export const listAccountsForPlanStubbed: API.OperationMethod<
   ListAccountsForPlanStubbedError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47) as any as S.Schema<ListAccountsForPlanStubbedRequest>,
-  output: __S(46) as any as S.Schema<ListAccountsForPlanStubbedResponse>,
+  input: ListAccountsForPlanStubbedRequest,
+  output: ListAccountsForPlanStubbedResponse,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1711,8 +2341,8 @@ export const listInstallationReposForAuthenticatedUser: API.OperationMethod<
   ListInstallationReposForAuthenticatedUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48) as any as S.Schema<ListInstallationReposForAuthenticatedUserRequest>,
-  output: __S(53) as any as S.Schema<ListInstallationReposForAuthenticatedUserResponse>,
+  input: ListInstallationReposForAuthenticatedUserRequest,
+  output: ListInstallationReposForAuthenticatedUserResponse,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1726,8 +2356,8 @@ export const listInstallationRequestsForAuthenticatedApp: API.OperationMethod<
   ListInstallationRequestsForAuthenticatedAppError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(54) as any as S.Schema<ListInstallationRequestsForAuthenticatedAppRequest>,
-  output: __S(57) as any as S.Schema<ListInstallationRequestsForAuthenticatedAppResponse>,
+  input: ListInstallationRequestsForAuthenticatedAppRequest,
+  output: ListInstallationRequestsForAuthenticatedAppResponse,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1741,8 +2371,8 @@ export const listInstallations: API.OperationMethod<
   ListInstallationsError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(58) as any as S.Schema<ListInstallationsRequest>,
-  output: __S(60) as any as S.Schema<ListInstallationsResponse>,
+  input: ListInstallationsRequest,
+  output: ListInstallationsResponse,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1756,8 +2386,8 @@ export const listInstallationsForAuthenticatedUser: API.OperationMethod<
   ListInstallationsForAuthenticatedUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(61) as any as S.Schema<ListInstallationsForAuthenticatedUserRequest>,
-  output: __S(62) as any as S.Schema<ListInstallationsForAuthenticatedUserResponse>,
+  input: ListInstallationsForAuthenticatedUserRequest,
+  output: ListInstallationsForAuthenticatedUserResponse,
   errors: [Forbidden],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1771,8 +2401,8 @@ export const listPlans: API.OperationMethod<
   ListPlansError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(63) as any as S.Schema<ListPlansRequest>,
-  output: __S(65) as any as S.Schema<ListPlansResponse>,
+  input: ListPlansRequest,
+  output: ListPlansResponse,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1786,8 +2416,8 @@ export const listPlansStubbed: API.OperationMethod<
   ListPlansStubbedError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(66) as any as S.Schema<ListPlansStubbedRequest>,
-  output: __S(65) as any as S.Schema<ListPlansStubbedResponse>,
+  input: ListPlansStubbedRequest,
+  output: ListPlansStubbedResponse,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1801,8 +2431,8 @@ export const listReposAccessibleToInstallation: API.OperationMethod<
   ListReposAccessibleToInstallationError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(67) as any as S.Schema<ListReposAccessibleToInstallationRequest>,
-  output: __S(70) as any as S.Schema<ListReposAccessibleToInstallationResponse>,
+  input: ListReposAccessibleToInstallationRequest,
+  output: ListReposAccessibleToInstallationResponse,
   errors: [Forbidden],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1816,8 +2446,8 @@ export const listSubscriptionsForAuthenticatedUser: API.OperationMethod<
   ListSubscriptionsForAuthenticatedUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(71) as any as S.Schema<ListSubscriptionsForAuthenticatedUserRequest>,
-  output: __S(75) as any as S.Schema<ListSubscriptionsForAuthenticatedUserResponse>,
+  input: ListSubscriptionsForAuthenticatedUserRequest,
+  output: ListSubscriptionsForAuthenticatedUserResponse,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1831,8 +2461,8 @@ export const listSubscriptionsForAuthenticatedUserStubbed: API.OperationMethod<
   ListSubscriptionsForAuthenticatedUserStubbedError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(76) as any as S.Schema<ListSubscriptionsForAuthenticatedUserStubbedRequest>,
-  output: __S(75) as any as S.Schema<ListSubscriptionsForAuthenticatedUserStubbedResponse>,
+  input: ListSubscriptionsForAuthenticatedUserStubbedRequest,
+  output: ListSubscriptionsForAuthenticatedUserStubbedResponse,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1846,8 +2476,8 @@ export const listWebhookDeliveries: API.OperationMethod<
   ListWebhookDeliveriesError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(77) as any as S.Schema<ListWebhookDeliveriesRequest>,
-  output: __S(80) as any as S.Schema<ListWebhookDeliveriesResponse>,
+  input: ListWebhookDeliveriesRequest,
+  output: ListWebhookDeliveriesResponse,
   errors: [BadRequest, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1861,8 +2491,8 @@ export const redeliverWebhookDelivery: API.OperationMethod<
   RedeliverWebhookDeliveryError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(81) as any as S.Schema<RedeliverWebhookDeliveryRequest>,
-  output: __S(1) as any as S.Schema<RedeliverWebhookDeliveryResponse>,
+  input: RedeliverWebhookDeliveryRequest,
+  output: RedeliverWebhookDeliveryResponse,
   errors: [BadRequest, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1880,8 +2510,8 @@ export const removeRepoFromInstallationForAuthenticatedUser: API.OperationMethod
   RemoveRepoFromInstallationForAuthenticatedUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(82) as any as S.Schema<RemoveRepoFromInstallationForAuthenticatedUserRequest>,
-  output: __S(1) as any as S.Schema<RemoveRepoFromInstallationForAuthenticatedUserResponse>,
+  input: RemoveRepoFromInstallationForAuthenticatedUserRequest,
+  output: RemoveRepoFromInstallationForAuthenticatedUserResponse,
   errors: [Forbidden, NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1895,8 +2525,8 @@ export const resetToken: API.OperationMethod<
   ResetTokenError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(83) as any as S.Schema<ResetTokenRequest>,
-  output: __S(8) as any as S.Schema<Authorization>,
+  input: ResetTokenRequest,
+  output: Authorization,
   errors: [UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1910,8 +2540,8 @@ export const revokeInstallationAccessToken: API.OperationMethod<
   RevokeInstallationAccessTokenError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(84) as any as S.Schema<RevokeInstallationAccessTokenRequest>,
-  output: __S(1) as any as S.Schema<RevokeInstallationAccessTokenResponse>,
+  input: RevokeInstallationAccessTokenRequest,
+  output: RevokeInstallationAccessTokenResponse,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1925,8 +2555,8 @@ export const scopeToken: API.OperationMethod<
   ScopeTokenError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(85) as any as S.Schema<ScopeTokenRequest>,
-  output: __S(8) as any as S.Schema<Authorization>,
+  input: ScopeTokenRequest,
+  output: Authorization,
   errors: [Forbidden, NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1940,8 +2570,8 @@ export const suspendInstallation: API.OperationMethod<
   SuspendInstallationError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(86) as any as S.Schema<SuspendInstallationRequest>,
-  output: __S(21) as any as S.Schema<SuspendInstallationResponse>,
+  input: SuspendInstallationRequest,
+  output: SuspendInstallationResponse,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1955,8 +2585,8 @@ export const unsuspendInstallation: API.OperationMethod<
   UnsuspendInstallationError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(87) as any as S.Schema<UnsuspendInstallationRequest>,
-  output: __S(21) as any as S.Schema<UnsuspendInstallationResponse>,
+  input: UnsuspendInstallationRequest,
+  output: UnsuspendInstallationResponse,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1970,8 +2600,8 @@ export const updateWebhookConfigForApp: API.OperationMethod<
   UpdateWebhookConfigForAppError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(88) as any as S.Schema<UpdateWebhookConfigForAppRequest>,
-  output: __S(39) as any as S.Schema<WebhookConfig>,
+  input: UpdateWebhookConfigForAppRequest,
+  output: WebhookConfig,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -2046,74 +2676,90 @@ function __c0(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          actions: S.optional(S.String),
-          administration: S.optional(S.String),
-          artifact_metadata: S.optional(S.String),
-          attestations: S.optional(S.String),
-          checks: S.optional(S.String),
-          code_quality: S.optional(S.String),
-          codespaces: S.optional(S.String),
-          contents: S.optional(S.String),
-          dependabot_secrets: S.optional(S.String),
-          deployments: S.optional(S.String),
-          discussions: S.optional(S.String),
-          environments: S.optional(S.String),
-          issues: S.optional(S.String),
-          merge_queues: S.optional(S.String),
-          metadata: S.optional(S.String),
-          packages: S.optional(S.String),
-          pages: S.optional(S.String),
-          pull_requests: S.optional(S.String),
-          repository_custom_properties: S.optional(S.String),
-          repository_hooks: S.optional(S.String),
-          repository_projects: S.optional(S.String),
-          secret_scanning_alerts: S.optional(S.String),
-          secrets: S.optional(S.String),
-          security_events: S.optional(S.String),
-          single_file: S.optional(S.String),
-          statuses: S.optional(S.String),
-          vulnerability_alerts: S.optional(S.String),
-          workflows: S.optional(S.String),
-          custom_properties_for_organizations: S.optional(S.String),
-          members: S.optional(S.String),
-          organization_administration: S.optional(S.String),
-          organization_custom_roles: S.optional(S.String),
-          organization_custom_org_roles: S.optional(S.String),
-          organization_custom_properties: S.optional(S.String),
-          organization_copilot_seat_management: S.optional(S.String),
-          organization_copilot_agent_settings: S.optional(S.String),
-          organization_external_properties_for_repos: S.optional(S.String),
-          organization_announcement_banners: S.optional(S.String),
-          organization_events: S.optional(S.String),
-          organization_hooks: S.optional(S.String),
-          organization_personal_access_tokens: S.optional(S.String),
-          organization_personal_access_token_requests: S.optional(S.String),
-          organization_plan: S.optional(S.String),
-          organization_projects: S.optional(S.String),
-          organization_packages: S.optional(S.String),
-          organization_secrets: S.optional(S.String),
-          organization_self_hosted_runners: S.optional(S.String),
-          organization_user_blocking: S.optional(S.String),
-          email_addresses: S.optional(S.String),
-          followers: S.optional(S.String),
-          git_ssh_keys: S.optional(S.String),
-          gpg_keys: S.optional(S.String),
-          interaction_limits: S.optional(S.String),
-          profile: S.optional(S.String),
-          starring: S.optional(S.String),
-          enterprise_custom_properties_for_organizations: S.optional(S.String),
+          actions: S.optional(AppPermissionsActions),
+          administration: S.optional(AppPermissionsAdministration),
+          artifact_metadata: S.optional(AppPermissionsArtifactMetadata),
+          attestations: S.optional(AppPermissionsAttestations),
+          checks: S.optional(AppPermissionsChecks),
+          code_quality: S.optional(AppPermissionsCodeQuality),
+          codespaces: S.optional(AppPermissionsCodespaces),
+          contents: S.optional(AppPermissionsContents),
+          dependabot_secrets: S.optional(AppPermissionsDependabotSecrets),
+          deployments: S.optional(AppPermissionsDeployments),
+          discussions: S.optional(AppPermissionsDiscussions),
+          environments: S.optional(AppPermissionsEnvironments),
+          issues: S.optional(AppPermissionsIssues),
+          merge_queues: S.optional(AppPermissionsMergeQueues),
+          metadata: S.optional(AppPermissionsMetadata),
+          packages: S.optional(AppPermissionsPackages),
+          pages: S.optional(AppPermissionsPages),
+          pull_requests: S.optional(AppPermissionsPullRequests),
+          repository_custom_properties: S.optional(AppPermissionsRepositoryCustomProperties),
+          repository_hooks: S.optional(AppPermissionsRepositoryHooks),
+          repository_projects: S.optional(AppPermissionsRepositoryProjects),
+          secret_scanning_alerts: S.optional(AppPermissionsSecretScanningAlerts),
+          secrets: S.optional(AppPermissionsSecrets),
+          security_events: S.optional(AppPermissionsSecurityEvents),
+          single_file: S.optional(AppPermissionsSingleFile),
+          statuses: S.optional(AppPermissionsStatuses),
+          vulnerability_alerts: S.optional(AppPermissionsVulnerabilityAlerts),
+          workflows: S.optional(AppPermissionsWorkflows),
+          custom_properties_for_organizations: S.optional(
+            AppPermissionsCustomPropertiesForOrganizations,
+          ),
+          members: S.optional(AppPermissionsMembers),
+          organization_administration: S.optional(AppPermissionsOrganizationAdministration),
+          organization_custom_roles: S.optional(AppPermissionsOrganizationCustomRoles),
+          organization_custom_org_roles: S.optional(AppPermissionsOrganizationCustomOrgRoles),
+          organization_custom_properties: S.optional(AppPermissionsOrganizationCustomProperties),
+          organization_copilot_seat_management: S.optional(
+            AppPermissionsOrganizationCopilotSeatManagement,
+          ),
+          organization_copilot_agent_settings: S.optional(
+            AppPermissionsOrganizationCopilotAgentSettings,
+          ),
+          organization_external_properties_for_repos: S.optional(
+            AppPermissionsOrganizationExternalPropertiesForRepos,
+          ),
+          organization_announcement_banners: S.optional(
+            AppPermissionsOrganizationAnnouncementBanners,
+          ),
+          organization_events: S.optional(AppPermissionsOrganizationEvents),
+          organization_hooks: S.optional(AppPermissionsOrganizationHooks),
+          organization_personal_access_tokens: S.optional(
+            AppPermissionsOrganizationPersonalAccessTokens,
+          ),
+          organization_personal_access_token_requests: S.optional(
+            AppPermissionsOrganizationPersonalAccessTokenRequests,
+          ),
+          organization_plan: S.optional(AppPermissionsOrganizationPlan),
+          organization_projects: S.optional(AppPermissionsOrganizationProjects),
+          organization_packages: S.optional(AppPermissionsOrganizationPackages),
+          organization_secrets: S.optional(AppPermissionsOrganizationSecrets),
+          organization_self_hosted_runners: S.optional(AppPermissionsOrganizationSelfHostedRunners),
+          organization_user_blocking: S.optional(AppPermissionsOrganizationUserBlocking),
+          email_addresses: S.optional(AppPermissionsEmailAddresses),
+          followers: S.optional(AppPermissionsFollowers),
+          git_ssh_keys: S.optional(AppPermissionsGitSshKeys),
+          gpg_keys: S.optional(AppPermissionsGpgKeys),
+          interaction_limits: S.optional(AppPermissionsInteractionLimits),
+          profile: S.optional(AppPermissionsProfile),
+          starring: S.optional(AppPermissionsStarring),
+          enterprise_custom_properties_for_organizations: S.optional(
+            AppPermissionsEnterpriseCustomPropertiesForOrganizations,
+          ),
         }),
       ).annotate({ identifier: "AppPermissions" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          permissions: __S(6),
-          repository_selection: S.String,
+          permissions: AppPermissions,
+          repository_selection: NullableScopedInstallationRepositorySelection,
           single_file_name: S.NullOr(S.String),
           has_multiple_single_files: S.optional(S.Boolean),
-          single_file_paths: S.optional(__S(3)),
+          single_file_paths: S.optional(NullableScopedInstallationSingleFilePathsList),
           repositories_url: S.String,
-          account: __S(5),
+          account: NullableSimpleUser,
         }),
       ).annotate({
         identifier: "NullableScopedInstallation",
@@ -2127,18 +2773,18 @@ function __c1(j: number): any {
         S.Struct({
           id: S.Number,
           url: S.String,
-          scopes: S.NullOr(__S(3)),
+          scopes: S.NullOr(AuthorizationScopesList),
           token: S.String,
           token_last_eight: S.NullOr(S.String),
           hashed_token: S.NullOr(S.String),
-          app: __S(4),
+          app: AuthorizationApp,
           note: S.NullOr(S.String),
           note_url: S.NullOr(S.String),
           updated_at: S.String,
           created_at: S.String,
           fingerprint: S.NullOr(S.String),
-          user: S.optional(S.NullOr(__S(5))),
-          installation: S.optional(S.NullOr(__S(7))),
+          user: S.optional(S.NullOr(NullableSimpleUser)),
+          installation: S.optional(S.NullOr(NullableScopedInstallation)),
           expires_at: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "Authorization" });
@@ -2169,15 +2815,15 @@ function __c1(j: number): any {
           slug: S.optional(S.String),
           node_id: S.String,
           client_id: S.String,
-          owner: S.Unknown,
+          owner: CreateFromManifestResponseOwner,
           name: S.String,
           description: S.NullOr(S.String),
           external_url: S.String,
           html_url: S.String,
           created_at: S.String,
           updated_at: S.String,
-          permissions: __S(10),
-          events: __S(3),
+          permissions: CreateFromManifestResponsePermissions,
+          events: CreateFromManifestResponseEventsList,
           installations_count: S.optional(S.Number),
           client_secret: S.String.pipe(T.SensitiveValue({})),
           webhook_secret: S.NullOr(S.String).pipe(T.SensitiveValue({})),
@@ -2192,9 +2838,9 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           installation_id: S.Number.pipe(T.Label()),
-          repositories: S.optional(__S(3)),
-          repository_ids: S.optional(__S(12)),
-          permissions: S.optional(__S(6)),
+          repositories: S.optional(CreateInstallationAccessTokenRequestRepositoriesList),
+          repository_ids: S.optional(CreateInstallationAccessTokenRequestRepositoryIdsList),
+          permissions: S.optional(AppPermissions),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2246,10 +2892,10 @@ function __c2(j: number): any {
           node_id: S.String,
           name: S.String,
           full_name: S.String,
-          license: S.NullOr(__S(14)),
+          license: S.NullOr(NullableLicenseSimple),
           forks: S.Number,
-          permissions: S.optional(__S(15)),
-          owner: __S(5),
+          permissions: S.optional(RepositoryPermissions),
+          owner: NullableSimpleUser,
           private: S.Boolean,
           html_url: S.String,
           description: S.NullOr(S.String),
@@ -2305,7 +2951,7 @@ function __c2(j: number): any {
           default_branch: S.String,
           open_issues_count: S.Number,
           is_template: S.optional(S.Boolean),
-          topics: S.optional(__S(3)),
+          topics: S.optional(RepositoryTopicsList),
           has_issues: S.Boolean,
           has_projects: S.Boolean,
           has_wiki: S.Boolean,
@@ -2313,7 +2959,7 @@ function __c2(j: number): any {
           has_downloads: S.Boolean,
           has_discussions: S.optional(S.Boolean),
           has_pull_requests: S.optional(S.Boolean),
-          pull_request_creation_policy: S.optional(S.String),
+          pull_request_creation_policy: S.optional(RepositoryPullRequestCreationPolicy),
           archived: S.Boolean,
           disabled: S.Boolean,
           visibility: S.optional(S.String),
@@ -2327,10 +2973,10 @@ function __c2(j: number): any {
           delete_branch_on_merge: S.optional(S.Boolean),
           allow_update_branch: S.optional(S.Boolean),
           use_squash_pr_title_as_default: S.optional(S.Boolean),
-          squash_merge_commit_title: S.optional(S.String),
-          squash_merge_commit_message: S.optional(S.String),
-          merge_commit_title: S.optional(S.String),
-          merge_commit_message: S.optional(S.String),
+          squash_merge_commit_title: S.optional(RepositorySquashMergeCommitTitle),
+          squash_merge_commit_message: S.optional(RepositorySquashMergeCommitMessage),
+          merge_commit_title: S.optional(RepositoryMergeCommitTitle),
+          merge_commit_message: S.optional(RepositoryMergeCommitMessage),
           allow_merge_commit: S.optional(S.Boolean),
           allow_forking: S.optional(S.Boolean),
           web_commit_signoff_required: S.optional(S.Boolean),
@@ -2339,22 +2985,22 @@ function __c2(j: number): any {
           master_branch: S.optional(S.String),
           starred_at: S.optional(S.String),
           anonymous_access_enabled: S.optional(S.Boolean),
-          code_search_index_status: S.optional(__S(16)),
+          code_search_index_status: S.optional(RepositoryCodeSearchIndexStatus),
         }),
       ).annotate({ identifier: "Repository" });
     case 2:
-      return S.Array(__S(17));
+      return S.Array(Repository);
     case 3:
       return S.suspend(() =>
         S.Struct({
           token: S.String,
           expires_at: S.String,
-          permissions: S.optional(__S(6)),
-          repository_selection: S.optional(S.String),
-          repositories: S.optional(__S(18)),
+          permissions: S.optional(AppPermissions),
+          repository_selection: S.optional(InstallationTokenRepositorySelection),
+          repositories: S.optional(InstallationTokenRepositoriesList),
           single_file: S.optional(S.String),
           has_multiple_single_files: S.optional(S.Boolean),
-          single_file_paths: S.optional(__S(3)),
+          single_file_paths: S.optional(InstallationTokenSingleFilePathsList),
         }),
       ).annotate({ identifier: "InstallationToken" });
     case 4:
@@ -2402,15 +3048,15 @@ function __c3(j: number): any {
           slug: S.optional(S.String),
           node_id: S.String,
           client_id: S.optional(S.String),
-          owner: S.Unknown,
+          owner: IntegrationOwner,
           name: S.String,
           description: S.NullOr(S.String),
           external_url: S.String,
           html_url: S.String,
           created_at: S.String,
           updated_at: S.String,
-          permissions: __S(10),
-          events: __S(3),
+          permissions: CreateFromManifestResponsePermissions,
+          events: IntegrationEventsList,
           installations_count: S.optional(S.Number),
         }),
       ).annotate({ identifier: "Integration" });
@@ -2430,8 +3076,8 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.Number,
-          account: S.NullOr(S.Unknown),
-          repository_selection: S.String,
+          account: S.NullOr(InstallationAccount),
+          repository_selection: InstallationRepositorySelection,
           access_tokens_url: S.String,
           repositories_url: S.String,
           html_url: S.String,
@@ -2439,15 +3085,15 @@ function __c3(j: number): any {
           client_id: S.optional(S.String),
           target_id: S.Number,
           target_type: S.String,
-          permissions: __S(6),
-          events: __S(3),
+          permissions: AppPermissions,
+          events: InstallationEventsList,
           created_at: S.String,
           updated_at: S.String,
           single_file_name: S.NullOr(S.String),
           has_multiple_single_files: S.optional(S.Boolean),
-          single_file_paths: S.optional(__S(3)),
+          single_file_paths: S.optional(InstallationSingleFilePathsList),
           app_slug: S.String,
-          suspended_by: S.NullOr(__S(5)),
+          suspended_by: S.NullOr(NullableSimpleUser),
           suspended_at: S.NullOr(S.String),
           contact_email: S.optional(S.NullOr(S.String)),
         }),
@@ -2494,11 +3140,11 @@ function __c4(j: number): any {
           description: S.String,
           monthly_price_in_cents: S.Number,
           yearly_price_in_cents: S.Number,
-          price_model: S.String,
+          price_model: MarketplaceListingPlanPriceModel,
           has_free_trial: S.Boolean,
           unit_name: S.NullOr(S.String),
           state: S.String,
-          bullets: __S(3),
+          bullets: MarketplaceListingPlanBulletsList,
         }),
       ).annotate({ identifier: "MarketplaceListingPlan" });
     case 1:
@@ -2508,7 +3154,7 @@ function __c4(j: number): any {
           effective_date: S.optional(S.String),
           unit_count: S.optional(S.NullOr(S.Number)),
           id: S.optional(S.Number),
-          plan: S.optional(__S(32)),
+          plan: S.optional(MarketplaceListingPlan),
         }),
       ).annotate({
         identifier: "MarketplacePurchaseMarketplacePendingChange",
@@ -2523,7 +3169,7 @@ function __c4(j: number): any {
           on_free_trial: S.optional(S.Boolean),
           free_trial_ends_on: S.optional(S.NullOr(S.String)),
           updated_at: S.optional(S.String),
-          plan: S.optional(__S(32)),
+          plan: S.optional(MarketplaceListingPlan),
         }),
       ).annotate({
         identifier: "MarketplacePurchaseMarketplacePurchase",
@@ -2537,8 +3183,10 @@ function __c4(j: number): any {
           login: S.String,
           organization_billing_email: S.optional(S.String),
           email: S.optional(S.NullOr(S.String)),
-          marketplace_pending_change: S.optional(S.NullOr(__S(33))),
-          marketplace_purchase: __S(34),
+          marketplace_pending_change: S.optional(
+            S.NullOr(MarketplacePurchaseMarketplacePendingChange),
+          ),
+          marketplace_purchase: MarketplacePurchaseMarketplacePurchase,
         }),
       ).annotate({ identifier: "MarketplacePurchase" });
     case 4:
@@ -2575,7 +3223,7 @@ function __c4(j: number): any {
           url: S.optional(S.String),
           content_type: S.optional(S.String),
           secret: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          insecure_ssl: S.optional(S.Unknown),
+          insecure_ssl: S.optional(WebhookConfigInsecureSsl),
         }),
       ).annotate({ identifier: "WebhookConfig" });
   }
@@ -2595,8 +3243,8 @@ function __c5(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          headers: S.NullOr(__S(41)),
-          payload: S.NullOr(__S(41)),
+          headers: S.NullOr(HookDeliveryRequestHeadersMap),
+          payload: S.NullOr(HookDeliveryRequestPayloadMap),
         }),
       ).annotate({ identifier: "HookDeliveryRequest" });
     case 3:
@@ -2615,16 +3263,16 @@ function __c5(j: number): any {
           repository_id: S.NullOr(S.Number),
           throttled_at: S.optional(S.NullOr(S.String)),
           url: S.optional(S.String),
-          request: __S(42),
-          response: __S(42),
+          request: HookDeliveryRequest,
+          response: HookDeliveryResponse,
         }),
       ).annotate({ identifier: "HookDelivery" });
     case 4:
       return S.suspend(() =>
         S.Struct({
           plan_id: S.Number.pipe(T.Label()),
-          sort: S.optional(S.String.pipe(T.Query())),
-          direction: S.optional(S.String.pipe(T.Query())),
+          sort: S.optional(ListAccountsForPlanRequestSort.pipe(T.Query())),
+          direction: S.optional(ListAccountsForPlanRequestDirection.pipe(T.Query())),
           per_page: S.optional(S.Number.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
         }).pipe(
@@ -2638,17 +3286,19 @@ function __c5(j: number): any {
         identifier: "ListAccountsForPlanRequest",
       });
     case 5:
-      return S.Array(__S(35));
+      return S.Array(MarketplacePurchase);
     case 6:
-      return S.suspend(() => __S(45).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        ListAccountsForPlanResponseBodyList.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "ListAccountsForPlanResponse",
       });
     case 7:
       return S.suspend(() =>
         S.Struct({
           plan_id: S.Number.pipe(T.Label()),
-          sort: S.optional(S.String.pipe(T.Query())),
-          direction: S.optional(S.String.pipe(T.Query())),
+          sort: S.optional(ListAccountsForPlanStubbedRequestSort.pipe(T.Query())),
+          direction: S.optional(ListAccountsForPlanStubbedRequestDirection.pipe(T.Query())),
           per_page: S.optional(S.Number.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
         }).pipe(
@@ -2692,10 +3342,10 @@ function __c6(j: number): any {
           node_id: S.String,
           name: S.String,
           full_name: S.String,
-          license: S.NullOr(__S(14)),
+          license: S.NullOr(NullableLicenseSimple),
           forks: S.Number,
-          permissions: S.optional(__S(15)),
-          owner: __S(5),
+          permissions: S.optional(RepositoryPermissions),
+          owner: NullableSimpleUser,
           private: S.Boolean,
           html_url: S.String,
           description: S.NullOr(S.String),
@@ -2751,7 +3401,9 @@ function __c6(j: number): any {
           default_branch: S.String,
           open_issues_count: S.Number,
           is_template: S.optional(S.Boolean),
-          topics: S.optional(__S(49)),
+          topics: S.optional(
+            ListInstallationReposForAuthenticatedUserResponseRepositoriesItemTopicsList,
+          ),
           has_issues: S.Boolean,
           has_projects: S.Boolean,
           has_wiki: S.Boolean,
@@ -2759,7 +3411,9 @@ function __c6(j: number): any {
           has_downloads: S.Boolean,
           has_discussions: S.optional(S.Boolean),
           has_pull_requests: S.optional(S.Boolean),
-          pull_request_creation_policy: S.optional(S.String),
+          pull_request_creation_policy: S.optional(
+            ListInstallationReposForAuthenticatedUserResponseRepositoriesItemPullRequestCreationPolicy,
+          ),
           archived: S.Boolean,
           disabled: S.Boolean,
           visibility: S.optional(S.String),
@@ -2773,10 +3427,18 @@ function __c6(j: number): any {
           delete_branch_on_merge: S.optional(S.Boolean),
           allow_update_branch: S.optional(S.Boolean),
           use_squash_pr_title_as_default: S.optional(S.Boolean),
-          squash_merge_commit_title: S.optional(S.String),
-          squash_merge_commit_message: S.optional(S.String),
-          merge_commit_title: S.optional(S.String),
-          merge_commit_message: S.optional(S.String),
+          squash_merge_commit_title: S.optional(
+            ListInstallationReposForAuthenticatedUserResponseRepositoriesItemSquashMergeCommitTitle,
+          ),
+          squash_merge_commit_message: S.optional(
+            ListInstallationReposForAuthenticatedUserResponseRepositoriesItemSquashMergeCommitMessage,
+          ),
+          merge_commit_title: S.optional(
+            ListInstallationReposForAuthenticatedUserResponseRepositoriesItemMergeCommitTitle,
+          ),
+          merge_commit_message: S.optional(
+            ListInstallationReposForAuthenticatedUserResponseRepositoriesItemMergeCommitMessage,
+          ),
           allow_merge_commit: S.optional(S.Boolean),
           allow_forking: S.optional(S.Boolean),
           web_commit_signoff_required: S.optional(S.Boolean),
@@ -2785,20 +3447,22 @@ function __c6(j: number): any {
           master_branch: S.optional(S.String),
           starred_at: S.optional(S.String),
           anonymous_access_enabled: S.optional(S.Boolean),
-          code_search_index_status: S.optional(__S(16)),
-          custom_properties: S.optional(__S(50)),
+          code_search_index_status: S.optional(RepositoryCodeSearchIndexStatus),
+          custom_properties: S.optional(
+            ListInstallationReposForAuthenticatedUserResponseRepositoriesItemCustomPropertiesMap,
+          ),
         }),
       ).annotate({
         identifier: "ListInstallationReposForAuthenticatedUserResponseRepositoriesItem",
       });
     case 4:
-      return S.Array(__S(51));
+      return S.Array(ListInstallationReposForAuthenticatedUserResponseRepositoriesItem);
     case 5:
       return S.suspend(() =>
         S.Struct({
           total_count: S.Number,
           repository_selection: S.optional(S.String),
-          repositories: __S(52),
+          repositories: ListInstallationReposForAuthenticatedUserResponseRepositoriesList,
         }),
       ).annotate({
         identifier: "ListInstallationReposForAuthenticatedUserResponse",
@@ -2817,8 +3481,8 @@ function __c6(j: number): any {
         S.Struct({
           id: S.Number,
           node_id: S.optional(S.String),
-          account: S.Unknown,
-          requester: __S(5),
+          account: IntegrationInstallationRequestAccount,
+          requester: NullableSimpleUser,
           created_at: S.String,
         }),
       ).annotate({
@@ -2829,9 +3493,11 @@ function __c6(j: number): any {
 function __c7(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(55));
+      return S.Array(IntegrationInstallationRequest);
     case 1:
-      return S.suspend(() => __S(56).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        ListInstallationRequestsForAuthenticatedAppResponseBodyList.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "ListInstallationRequestsForAuthenticatedAppResponse",
       });
     case 2:
@@ -2844,9 +3510,9 @@ function __c7(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/app/installations", code: 200 })),
       ).annotate({ identifier: "ListInstallationsRequest" });
     case 3:
-      return S.Array(__S(28));
+      return S.Array(Installation);
     case 4:
-      return S.suspend(() => __S(59).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => ListInstallationsResponseBodyList.pipe(T.RawResponseRoot())).annotate({
         identifier: "ListInstallationsResponse",
       });
     case 5:
@@ -2862,7 +3528,7 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           total_count: S.Number,
-          installations: __S(59),
+          installations: ListInstallationsForAuthenticatedUserResponseInstallationsList,
         }),
       ).annotate({
         identifier: "ListInstallationsForAuthenticatedUserResponse",
@@ -2879,9 +3545,9 @@ function __c7(j: number): any {
 function __c8(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(32));
+      return S.Array(MarketplaceListingPlan);
     case 1:
-      return S.suspend(() => __S(64).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => ListPlansResponseBodyList.pipe(T.RawResponseRoot())).annotate({
         identifier: "ListPlansResponse",
       });
     case 2:
@@ -2907,10 +3573,10 @@ function __c8(j: number): any {
           node_id: S.String,
           name: S.String,
           full_name: S.String,
-          license: S.NullOr(__S(14)),
+          license: S.NullOr(NullableLicenseSimple),
           forks: S.Number,
-          permissions: S.optional(__S(15)),
-          owner: __S(5),
+          permissions: S.optional(RepositoryPermissions),
+          owner: NullableSimpleUser,
           private: S.Boolean,
           html_url: S.String,
           description: S.NullOr(S.String),
@@ -2966,7 +3632,7 @@ function __c8(j: number): any {
           default_branch: S.String,
           open_issues_count: S.Number,
           is_template: S.optional(S.Boolean),
-          topics: S.optional(__S(49)),
+          topics: S.optional(ListReposAccessibleToInstallationResponseRepositoriesItemTopicsList),
           has_issues: S.Boolean,
           has_projects: S.Boolean,
           has_wiki: S.Boolean,
@@ -2974,7 +3640,9 @@ function __c8(j: number): any {
           has_downloads: S.Boolean,
           has_discussions: S.optional(S.Boolean),
           has_pull_requests: S.optional(S.Boolean),
-          pull_request_creation_policy: S.optional(S.String),
+          pull_request_creation_policy: S.optional(
+            ListReposAccessibleToInstallationResponseRepositoriesItemPullRequestCreationPolicy,
+          ),
           archived: S.Boolean,
           disabled: S.Boolean,
           visibility: S.optional(S.String),
@@ -2988,10 +3656,18 @@ function __c8(j: number): any {
           delete_branch_on_merge: S.optional(S.Boolean),
           allow_update_branch: S.optional(S.Boolean),
           use_squash_pr_title_as_default: S.optional(S.Boolean),
-          squash_merge_commit_title: S.optional(S.String),
-          squash_merge_commit_message: S.optional(S.String),
-          merge_commit_title: S.optional(S.String),
-          merge_commit_message: S.optional(S.String),
+          squash_merge_commit_title: S.optional(
+            ListReposAccessibleToInstallationResponseRepositoriesItemSquashMergeCommitTitle,
+          ),
+          squash_merge_commit_message: S.optional(
+            ListReposAccessibleToInstallationResponseRepositoriesItemSquashMergeCommitMessage,
+          ),
+          merge_commit_title: S.optional(
+            ListReposAccessibleToInstallationResponseRepositoriesItemMergeCommitTitle,
+          ),
+          merge_commit_message: S.optional(
+            ListReposAccessibleToInstallationResponseRepositoriesItemMergeCommitMessage,
+          ),
           allow_merge_commit: S.optional(S.Boolean),
           allow_forking: S.optional(S.Boolean),
           web_commit_signoff_required: S.optional(S.Boolean),
@@ -3000,19 +3676,21 @@ function __c8(j: number): any {
           master_branch: S.optional(S.String),
           starred_at: S.optional(S.String),
           anonymous_access_enabled: S.optional(S.Boolean),
-          code_search_index_status: S.optional(__S(16)),
-          custom_properties: S.optional(__S(50)),
+          code_search_index_status: S.optional(RepositoryCodeSearchIndexStatus),
+          custom_properties: S.optional(
+            ListReposAccessibleToInstallationResponseRepositoriesItemCustomPropertiesMap,
+          ),
         }),
       ).annotate({
         identifier: "ListReposAccessibleToInstallationResponseRepositoriesItem",
       });
     case 5:
-      return S.Array(__S(68));
+      return S.Array(ListReposAccessibleToInstallationResponseRepositoriesItem);
     case 6:
       return S.suspend(() =>
         S.Struct({
           total_count: S.Number,
-          repositories: __S(69),
+          repositories: ListReposAccessibleToInstallationResponseRepositoriesList,
           repository_selection: S.optional(S.String),
         }),
       ).annotate({
@@ -3052,14 +3730,16 @@ function __c9(j: number): any {
           on_free_trial: S.Boolean,
           free_trial_ends_on: S.NullOr(S.String),
           updated_at: S.NullOr(S.String),
-          account: __S(72),
-          plan: __S(32),
+          account: MarketplaceAccount,
+          plan: MarketplaceListingPlan,
         }),
       ).annotate({ identifier: "UserMarketplacePurchase" });
     case 2:
-      return S.Array(__S(73));
+      return S.Array(UserMarketplacePurchase);
     case 3:
-      return S.suspend(() => __S(74).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        ListSubscriptionsForAuthenticatedUserResponseBodyList.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "ListSubscriptionsForAuthenticatedUserResponse",
       });
     case 4:
@@ -3076,7 +3756,7 @@ function __c9(j: number): any {
         S.Struct({
           per_page: S.optional(S.Number.pipe(T.Query())),
           cursor: S.optional(S.String.pipe(T.Query())),
-          status: S.optional(S.String.pipe(T.Query())),
+          status: S.optional(ListWebhookDeliveriesRequestStatus.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/app/hook/deliveries", code: 200 })),
       ).annotate({
         identifier: "ListWebhookDeliveriesRequest",
@@ -3099,13 +3779,15 @@ function __c9(j: number): any {
         }),
       ).annotate({ identifier: "HookDeliveryItem" });
     case 7:
-      return S.Array(__S(78));
+      return S.Array(HookDeliveryItem);
   }
 }
 function __c10(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => __S(79).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        ListWebhookDeliveriesResponseBodyList.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "ListWebhookDeliveriesResponse",
       });
     case 1:
@@ -3153,9 +3835,9 @@ function __c10(j: number): any {
           access_token: S.String.pipe(T.SensitiveValue({})),
           target: S.optional(S.String),
           target_id: S.optional(S.Number),
-          repositories: S.optional(__S(3)),
-          repository_ids: S.optional(__S(12)),
-          permissions: S.optional(__S(6)),
+          repositories: S.optional(ScopeTokenRequestRepositoriesList),
+          repository_ids: S.optional(ScopeTokenRequestRepositoryIdsList),
+          permissions: S.optional(AppPermissions),
         }).pipe(
           T.Http({ method: "POST", uri: "/applications/{client_id}/token/scoped", code: 200 }),
         ),
@@ -3198,43 +3880,10 @@ function __c11(j: number): any {
           url: S.optional(S.String),
           content_type: S.optional(S.String),
           secret: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          insecure_ssl: S.optional(S.Unknown),
+          insecure_ssl: S.optional(WebhookConfigInsecureSsl),
         }).pipe(T.Http({ method: "PATCH", uri: "/app/hook/config", code: 200 })),
       ).annotate({
         identifier: "UpdateWebhookConfigForAppRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
-    case 9:
-      return __c9(i & 7);
-    case 10:
-      return __c10(i & 7);
-    case 11:
-      return __c11(i & 7);
   }
 }

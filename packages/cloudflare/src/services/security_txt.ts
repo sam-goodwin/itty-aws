@@ -10,8 +10,6 @@ import {
 } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { CloudflareOpError, CloudflareOpContext };
 
@@ -43,17 +41,52 @@ export interface DeleteSecurityTxtRequest {
   /** Identifier. */
   zoneId: string;
 }
+const DeleteSecurityTxtRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<DeleteSecurityTxtRequest>;
+
 export interface DeleteSecurityTxtResponse {}
+const DeleteSecurityTxtResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<DeleteSecurityTxtResponse>;
+
 export interface GetSecurityTxtRequest {
   /** Identifier. */
   zoneId: string;
 }
+const GetSecurityTxtRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<GetSecurityTxtRequest>;
+
 export type GetResponseAcknowledgmentsList = Array<string>;
+const GetResponseAcknowledgmentsList = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<GetResponseAcknowledgmentsList>;
+
 export type GetResponseCanonicalList = Array<string>;
+const GetResponseCanonicalList =
+  GetResponseAcknowledgmentsList as any as S.Schema<GetResponseCanonicalList>;
+
 export type GetResponseContactList = Array<string>;
+const GetResponseContactList =
+  GetResponseAcknowledgmentsList as any as S.Schema<GetResponseContactList>;
+
 export type GetResponseEncryptionList = Array<string>;
+const GetResponseEncryptionList =
+  GetResponseAcknowledgmentsList as any as S.Schema<GetResponseEncryptionList>;
+
 export type GetResponseHiringList = Array<string>;
+const GetResponseHiringList =
+  GetResponseAcknowledgmentsList as any as S.Schema<GetResponseHiringList>;
+
 export type GetResponsePolicyList = Array<string>;
+const GetResponsePolicyList =
+  GetResponseAcknowledgmentsList as any as S.Schema<GetResponsePolicyList>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface SecurityTxtFile {
   acknowledgments?: GetResponseAcknowledgmentsList | null;
@@ -66,13 +99,38 @@ export interface SecurityTxtFile {
   policy?: GetResponsePolicyList | null;
   preferredLanguages?: string | null;
 }
+const SecurityTxtFile = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<SecurityTxtFile>;
+
 export type GetSecurityTxtResponse = SecurityTxtFile;
+const GetSecurityTxtResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<GetSecurityTxtResponse>;
+
 export type UpdateRequestAcknowledgmentsList = Array<string>;
+const UpdateRequestAcknowledgmentsList =
+  GetResponseAcknowledgmentsList as any as S.Schema<UpdateRequestAcknowledgmentsList>;
+
 export type UpdateRequestCanonicalList = Array<string>;
+const UpdateRequestCanonicalList =
+  GetResponseAcknowledgmentsList as any as S.Schema<UpdateRequestCanonicalList>;
+
 export type UpdateRequestContactList = Array<string>;
+const UpdateRequestContactList =
+  GetResponseAcknowledgmentsList as any as S.Schema<UpdateRequestContactList>;
+
 export type UpdateRequestEncryptionList = Array<string>;
+const UpdateRequestEncryptionList =
+  GetResponseAcknowledgmentsList as any as S.Schema<UpdateRequestEncryptionList>;
+
 export type UpdateRequestHiringList = Array<string>;
+const UpdateRequestHiringList =
+  GetResponseAcknowledgmentsList as any as S.Schema<UpdateRequestHiringList>;
+
 export type UpdateRequestPolicyList = Array<string>;
+const UpdateRequestPolicyList =
+  GetResponseAcknowledgmentsList as any as S.Schema<UpdateRequestPolicyList>;
+
 export interface PutSecurityTxtRequest {
   /** Identifier. */
   zoneId: string;
@@ -86,7 +144,17 @@ export interface PutSecurityTxtRequest {
   policy?: UpdateRequestPolicyList;
   preferredLanguages?: string;
 }
+const PutSecurityTxtRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<PutSecurityTxtRequest>;
+
 export interface PutSecurityTxtResponse {}
+const PutSecurityTxtResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<PutSecurityTxtResponse>;
+
 export type DeleteSecurityTxtError = Forbidden | CloudflareOpError;
 /** Removes the security.txt file configuration for a zone. The /.well-known/security.txt endpoint will no longer be served. */
 export const deleteSecurityTxt: API.OperationMethod<
@@ -95,8 +163,8 @@ export const deleteSecurityTxt: API.OperationMethod<
   DeleteSecurityTxtError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<DeleteSecurityTxtRequest>,
-  output: __S(1) as any as S.Schema<DeleteSecurityTxtResponse>,
+  input: DeleteSecurityTxtRequest,
+  output: DeleteSecurityTxtResponse,
   errors: [Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -110,8 +178,8 @@ export const getSecurityTxt: API.OperationMethod<
   GetSecurityTxtError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2) as any as S.Schema<GetSecurityTxtRequest>,
-  output: __S(5) as any as S.Schema<GetSecurityTxtResponse>,
+  input: GetSecurityTxtRequest,
+  output: GetSecurityTxtResponse,
   errors: [Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -125,8 +193,8 @@ export const putSecurityTxt: API.OperationMethod<
   PutSecurityTxtError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6) as any as S.Schema<PutSecurityTxtRequest>,
-  output: __S(7) as any as S.Schema<PutSecurityTxtResponse>,
+  input: PutSecurityTxtRequest,
+  output: PutSecurityTxtResponse,
   errors: [Forbidden, SecurityTxtInvalid, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -172,33 +240,33 @@ function __c0(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          acknowledgments: S.optional(S.NullOr(__S(3))),
-          canonical: S.optional(S.NullOr(__S(3))),
-          contact: S.optional(S.NullOr(__S(3))),
+          acknowledgments: S.optional(S.NullOr(GetResponseAcknowledgmentsList)),
+          canonical: S.optional(S.NullOr(GetResponseCanonicalList)),
+          contact: S.optional(S.NullOr(GetResponseContactList)),
           enabled: S.optional(S.NullOr(S.Boolean)),
-          encryption: S.optional(S.NullOr(__S(3))),
+          encryption: S.optional(S.NullOr(GetResponseEncryptionList)),
           expires: S.optional(S.NullOr(S.String)),
-          hiring: S.optional(S.NullOr(__S(3))),
-          policy: S.optional(S.NullOr(__S(3))),
+          hiring: S.optional(S.NullOr(GetResponseHiringList)),
+          policy: S.optional(S.NullOr(GetResponsePolicyList)),
           preferredLanguages: S.optional(S.NullOr(S.String).pipe(T.Body("preferred_languages"))),
         }),
       ).annotate({ identifier: "SecurityTxtFile" });
     case 5:
       return S.suspend(() =>
-        __S(4).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
+        SecurityTxtFile.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetSecurityTxtResponse" });
     case 6:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
-          acknowledgments: S.optional(__S(3)),
-          canonical: S.optional(__S(3)),
-          contact: S.optional(__S(3)),
+          acknowledgments: S.optional(UpdateRequestAcknowledgmentsList),
+          canonical: S.optional(UpdateRequestCanonicalList),
+          contact: S.optional(UpdateRequestContactList),
           enabled: S.optional(S.Boolean),
-          encryption: S.optional(__S(3)),
+          encryption: S.optional(UpdateRequestEncryptionList),
           expires: S.optional(S.String),
-          hiring: S.optional(__S(3)),
-          policy: S.optional(__S(3)),
+          hiring: S.optional(UpdateRequestHiringList),
+          policy: S.optional(UpdateRequestPolicyList),
           preferredLanguages: S.optional(S.String.pipe(T.Body("preferred_languages"))),
         })
           .pipe(
@@ -214,16 +282,5 @@ function __c0(j: number): any {
       return S.suspend(() => S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY))).annotate({
         identifier: "PutSecurityTxtResponse",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
   }
 }

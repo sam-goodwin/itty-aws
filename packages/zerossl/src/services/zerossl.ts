@@ -6,8 +6,6 @@ import * as S from "@distilled.cloud/core/schema";
 import { ZeroSslProtocol, type ZeroSslOpError, type ZeroSslOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { ZeroSslOpError, ZeroSslOpContext };
 
@@ -798,10 +796,20 @@ export interface CancelCertificateRequest {
   /** Use this parameter to specify your certificate ID (hash). */
   id: string;
 }
+const CancelCertificateRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<CancelCertificateRequest>;
+
 export interface CancelCertificateResponse {
   /** Returns `1` to indicate that your API request was successful. */
   success: number;
 }
+const CancelCertificateResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<CancelCertificateResponse>;
+
 export interface CreateCertificateRequest {
   /** Use this parameter to specify one or multiple comma-separated domains (or IP addresses) to be secured by your certificate. The first element of the list should be identical to the CN (common name) specified within your CSR. */
   certificate_domains: string;
@@ -814,12 +822,33 @@ export interface CreateCertificateRequest {
   /** Certificate hash of the certificate to be replaced. The certificate to be replaced must be in status `issued` or `expiring_soon`. You can only create one replacement certificate for an existing certificate. This parameter is entirely optional and not yet widely adapted. In the future it might be used in the UI. */
   replacement_for_certificate?: string;
 }
+const CreateCertificateRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<CreateCertificateRequest>;
+
 export type CreateCertificateResponseValidationEmailValidationValueList = Array<string>;
+const CreateCertificateResponseValidationEmailValidationValueList = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<CreateCertificateResponseValidationEmailValidationValueList>;
+
 export type CreateCertificateResponseValidationEmailValidationMap = {
   [key: string]: CreateCertificateResponseValidationEmailValidationValueList | undefined;
 };
+const CreateCertificateResponseValidationEmailValidationMap = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<CreateCertificateResponseValidationEmailValidationMap>;
+
 export type CreateCertificateResponseValidationOtherMethodsValueFileValidationContentList =
   Array<string>;
+const CreateCertificateResponseValidationOtherMethodsValueFileValidationContentList =
+  /*@__PURE__*/ __L.at(
+    __c0,
+    5,
+  ) as any as S.Schema<CreateCertificateResponseValidationOtherMethodsValueFileValidationContentList>;
+
 export interface CreateCertificateResponseValidationOtherMethodsValue {
   /** Returns the URL (http format) your verification file must be uploaded to as part of domain verification. */
   file_validation_url_http: string;
@@ -832,15 +861,30 @@ export interface CreateCertificateResponseValidationOtherMethodsValue {
   /** Returns the value-part (Point To) of the CNAME-record that must be created as part of domain verification. */
   cname_validation_p2: string;
 }
+const CreateCertificateResponseValidationOtherMethodsValue = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<CreateCertificateResponseValidationOtherMethodsValue>;
+
 export type CreateCertificateResponseValidationOtherMethodsMap = {
   [key: string]: CreateCertificateResponseValidationOtherMethodsValue | undefined;
 };
+const CreateCertificateResponseValidationOtherMethodsMap = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<CreateCertificateResponseValidationOtherMethodsMap>;
+
 export interface CreateCertificateResponseValidation {
   /** Returns an array of eligible domain verification emails. */
   email_validation: CreateCertificateResponseValidationEmailValidationMap;
   /** Returns a series of sub-objects (one for each domain in your certificate) containing alternative verification methods. */
   other_methods: CreateCertificateResponseValidationOtherMethodsMap;
 }
+const CreateCertificateResponseValidation = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<CreateCertificateResponseValidation>;
+
 export interface CreateCertificateResponse {
   /** Returns the internal certificate ID, also referred to as certificate hash. */
   id: string;
@@ -868,19 +912,39 @@ export interface CreateCertificateResponse {
   /** Returns a series of sub-objects related to domain verification. */
   validation: CreateCertificateResponseValidation;
 }
+const CreateCertificateResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<CreateCertificateResponse>;
+
 export interface DownloadCertificateInlineRequest {
   /** Use this parameter to specify your certificate ID / hash. */
   id: string;
   /** Set this parameter to `1` to include the cross signed certificate in the response [(further information)](https://help.zerossl.com/hc/en-us/articles/360060198034-Legacy-Client-Compatibility-Cross-Signed-Root-Certificates). */
   include_cross_signed?: string;
 }
+const DownloadCertificateInlineRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<DownloadCertificateInlineRequest>;
+
 export interface DownloadCertificateInlineResponse {
   /** Returns your primary certificate file. */
   "certificate.crt": string;
   /** Returns your certificate bundle file. */
   "ca_bundle.crt": string;
 }
+const DownloadCertificateInlineResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<DownloadCertificateInlineResponse>;
+
 export interface GenerateEabCredentialsRequest {}
+const GenerateEabCredentialsRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<GenerateEabCredentialsRequest>;
+
 export interface EabCredentials {
   /** Returns `1` to indicate that your API request was successful. */
   success: boolean;
@@ -889,10 +953,17 @@ export interface EabCredentials {
   /** Returns your EAB HMAC key value. */
   eab_hmac_key: import("effect/Redacted").Redacted<string>;
 }
+const EabCredentials = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<EabCredentials>;
+
 export interface GetCertificateRequest {
   /** Use this parameter to specify your certificate ID / hash. */
   id: string;
 }
+const GetCertificateRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<GetCertificateRequest>;
+
 export type GetCertificateResponseValidationEmailValidationValueList = Array<string>;
 export type GetCertificateResponseValidationEmailValidationMap = {
   [key: string]: GetCertificateResponseValidationEmailValidationValueList | undefined;
@@ -920,6 +991,9 @@ export interface GetCertificateResponseValidation {
   /** Returns a series of sub-objects (one for each domain in your certificate) containing alternative verification methods. */
   other_methods: GetCertificateResponseValidationOtherMethodsMap;
 }
+const GetCertificateResponseValidation =
+  CreateCertificateResponseValidation as any as S.Schema<GetCertificateResponseValidation>;
+
 export interface GetCertificateResponse {
   /** Returns the internal certificate ID, also referred to as certificate hash. */
   id: string;
@@ -950,35 +1024,76 @@ export interface GetCertificateResponse {
   /** Returns a series of sub-objects related to domain verification. */
   validation: GetCertificateResponseValidation;
 }
+const GetCertificateResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<GetCertificateResponse>;
+
 export interface GetVerificationStatusRequest {
   /** Use this parameter to specify your certificate ID / hash. */
   id: string;
 }
+const GetVerificationStatusRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<GetVerificationStatusRequest>;
+
 export interface GetVerificationStatusResponseDetailsValue {
   /** Returns the verification email selected for the given domain. */
   method: string;
   /** Returns the current verification status of the given domain. */
   status: string;
 }
+const GetVerificationStatusResponseDetailsValue = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<GetVerificationStatusResponseDetailsValue>;
+
 export type GetVerificationStatusResponseDetailsMap = {
   [key: string]: GetVerificationStatusResponseDetailsValue | undefined;
 };
+const GetVerificationStatusResponseDetailsMap = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<GetVerificationStatusResponseDetailsMap>;
+
 export interface GetVerificationStatusResponse {
   /** Returns `1` or `0` depending on whether domain verification has been completed. */
   validation_completed: number;
   /** Returns a sub-object for each domain (or a pair of www and non-www domains) containing verification information. */
   details: GetVerificationStatusResponseDetailsMap;
 }
+const GetVerificationStatusResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<GetVerificationStatusResponse>;
+
 export interface ListCertificatesRequest {
   /** Use this parameter to specify one or multiple comma-separated certificate status values. Possible values: `draft`, `pending_validation`, `issued`, `cancelled`, `revoked`, `expired`. You can also send the special status `expiring_soon`. In this case all issued certificates are included, which expire within the next 30 days and should be renewed (in paid ZeroSSL accounts those are not credited anymore). */
   certificate_status?: string;
 }
+const ListCertificatesRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<ListCertificatesRequest>;
+
 export type ListCertificatesResponseResultsItemValidationEmailValidationValueList = Array<string>;
+const ListCertificatesResponseResultsItemValidationEmailValidationValueList =
+  CreateCertificateResponseValidationOtherMethodsValueFileValidationContentList as any as S.Schema<ListCertificatesResponseResultsItemValidationEmailValidationValueList>;
+
 export type ListCertificatesResponseResultsItemValidationEmailValidationMap = {
   [key: string]: ListCertificatesResponseResultsItemValidationEmailValidationValueList | undefined;
 };
+const ListCertificatesResponseResultsItemValidationEmailValidationMap = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<ListCertificatesResponseResultsItemValidationEmailValidationMap>;
+
 export type ListCertificatesResponseResultsItemValidationOtherMethodsValueFileValidationContentList =
   Array<string>;
+const ListCertificatesResponseResultsItemValidationOtherMethodsValueFileValidationContentList =
+  CreateCertificateResponseValidationOtherMethodsValueFileValidationContentList as any as S.Schema<ListCertificatesResponseResultsItemValidationOtherMethodsValueFileValidationContentList>;
+
 export interface ListCertificatesResponseResultsItemValidationOtherMethodsValue {
   file_validation_url_http: string;
   file_validation_url_https: string;
@@ -986,13 +1101,28 @@ export interface ListCertificatesResponseResultsItemValidationOtherMethodsValue 
   cname_validation_p1: string;
   cname_validation_p2: string;
 }
+const ListCertificatesResponseResultsItemValidationOtherMethodsValue = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<ListCertificatesResponseResultsItemValidationOtherMethodsValue>;
+
 export type ListCertificatesResponseResultsItemValidationOtherMethodsMap = {
   [key: string]: ListCertificatesResponseResultsItemValidationOtherMethodsValue | undefined;
 };
+const ListCertificatesResponseResultsItemValidationOtherMethodsMap = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<ListCertificatesResponseResultsItemValidationOtherMethodsMap>;
+
 export interface ListCertificatesResponseResultsItemValidation {
   email_validation: ListCertificatesResponseResultsItemValidationEmailValidationMap;
   other_methods: ListCertificatesResponseResultsItemValidationOtherMethodsMap;
 }
+const ListCertificatesResponseResultsItemValidation = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<ListCertificatesResponseResultsItemValidation>;
+
 export interface ListCertificatesResponseResultsItem {
   id: string;
   type: string;
@@ -1009,7 +1139,17 @@ export interface ListCertificatesResponseResultsItem {
   signature_algorithm_properties: string;
   validation: ListCertificatesResponseResultsItemValidation;
 }
+const ListCertificatesResponseResultsItem = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<ListCertificatesResponseResultsItem>;
+
 export type ListCertificatesResponseResultsList = Array<ListCertificatesResponseResultsItem>;
+const ListCertificatesResponseResultsList = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<ListCertificatesResponseResultsList>;
+
 export interface ListCertificatesResponse {
   /** Returns the total number of results found for your query. */
   total_count: number;
@@ -1024,29 +1164,55 @@ export interface ListCertificatesResponse {
   /** Returns an array of certificates. For detailed information about certificate response objects, please refer to the [Get Certificate](/documentation/docs/api/get-certificate) section. */
   results: ListCertificatesResponseResultsList;
 }
+const ListCertificatesResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<ListCertificatesResponse>;
+
 export interface ResendVerificationRequest {
   /** Use this parameter to specify your certificate ID / hash. */
   id: string;
 }
+const ResendVerificationRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<ResendVerificationRequest>;
+
 export interface ResendVerificationResponse {
   /** Returns `1` to indicate that your API request was successful. */
   success: number;
 }
+const ResendVerificationResponse =
+  CancelCertificateResponse as any as S.Schema<ResendVerificationResponse>;
+
 export interface RevokeCertificateRequest {
   /** Use this parameter to specify the certificate ID (hash) of the certificate to be revoked. */
   id: string;
   /** One of: * `Unspecified`: Default * `keyCompromise`: Compromised private key * `affiliationChanged`: Subjects' name or identity information has changed * `Superseded`: Certificate has been replaced * `cessationOfOperation`: Authorized domain names are no longer owned */
   reason?: string;
 }
+const RevokeCertificateRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<RevokeCertificateRequest>;
+
 export interface RevokeCertificateResponse {
   /** Returns `1` to indicate that your API request was successful. */
   success: number;
 }
+const RevokeCertificateResponse =
+  CancelCertificateResponse as any as S.Schema<RevokeCertificateResponse>;
+
 export interface ValidateCsrRequest {
   /** The CSR you want to validate. */
   csr: string;
 }
+const ValidateCsrRequest = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<ValidateCsrRequest>;
+
 export type ValidateCsrResponseCsrResponseList = Array<string>;
+const ValidateCsrResponseCsrResponseList =
+  CreateCertificateResponseValidationEmailValidationValueList as any as S.Schema<ValidateCsrResponseCsrResponseList>;
+
 export interface ValidateCsrResponse {
   /** Returns `true` to indicate your CSR is valid, false otherwise. */
   valid: boolean;
@@ -1055,6 +1221,8 @@ export interface ValidateCsrResponse {
   /** Returns an array containing the key size and signature algorithm in case the CSR was successfully validated, `null` otherwise. */
   csrResponse: ValidateCsrResponseCsrResponseList;
 }
+const ValidateCsrResponse = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<ValidateCsrResponse>;
+
 export interface VerifyDomainsRequest {
   /** Use this parameter to specify your certificate ID / hash. */
   id: string;
@@ -1063,6 +1231,8 @@ export interface VerifyDomainsRequest {
   /** If your selected verification method is **email verification**, use this parameter to specify one or multiple comma-seperated verification email addresses. You need to specify one verification email address per domain. */
   validation_email?: string;
 }
+const VerifyDomainsRequest = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<VerifyDomainsRequest>;
+
 export interface VerifyDomainsResponseErrorDetailsValueValue {
   /** Returns `1` or `0` depending on whether your CNAME-record was found. */
   cname_found: number;
@@ -1075,12 +1245,27 @@ export interface VerifyDomainsResponseErrorDetailsValueValue {
   /** Returns the value-part of the CNAME record found for the given domain. */
   actual_record: string;
 }
+const VerifyDomainsResponseErrorDetailsValueValue = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<VerifyDomainsResponseErrorDetailsValueValue>;
+
 export type VerifyDomainsResponseErrorDetailsValueMap = {
   [key: string]: VerifyDomainsResponseErrorDetailsValueValue | undefined;
 };
+const VerifyDomainsResponseErrorDetailsValueMap = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<VerifyDomainsResponseErrorDetailsValueMap>;
+
 export type VerifyDomainsResponseErrorDetailsMap = {
   [key: string]: VerifyDomainsResponseErrorDetailsValueMap | undefined;
 };
+const VerifyDomainsResponseErrorDetailsMap = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<VerifyDomainsResponseErrorDetailsMap>;
+
 export interface VerifyDomainsResponseError {
   /** Returns a numeric error code uniquely associated with the specific error. */
   code: number;
@@ -1089,11 +1274,21 @@ export interface VerifyDomainsResponseError {
   /** Returns an object containing error details for each domain (or a pair of www and non-www domains). */
   details: VerifyDomainsResponseErrorDetailsMap;
 }
+const VerifyDomainsResponseError = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<VerifyDomainsResponseError>;
+
 export interface VerifyDomainsResponse {
   success: boolean;
   /** Returns a sub-object containing error details. */
   error: VerifyDomainsResponseError;
 }
+const VerifyDomainsResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<VerifyDomainsResponse>;
+
 export type CancelCertificateError =
   | InvalidAccessKey
   | InactiveUser
@@ -1119,8 +1314,8 @@ export const cancelCertificate: API.OperationMethod<
   CancelCertificateError,
   ZeroSslOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<CancelCertificateRequest>,
-  output: __S(1) as any as S.Schema<CancelCertificateResponse>,
+  input: CancelCertificateRequest,
+  output: CancelCertificateResponse,
   errors: [
     InvalidAccessKey,
     InactiveUser,
@@ -1190,8 +1385,8 @@ export const createCertificate: API.OperationMethod<
   CreateCertificateError,
   ZeroSslOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2) as any as S.Schema<CreateCertificateRequest>,
-  output: __S(9) as any as S.Schema<CreateCertificateResponse>,
+  input: CreateCertificateRequest,
+  output: CreateCertificateResponse,
   errors: [
     InvalidAccessKey,
     InactiveUser,
@@ -1261,8 +1456,8 @@ export const downloadCertificateInline: API.OperationMethod<
   DownloadCertificateInlineError,
   ZeroSslOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10) as any as S.Schema<DownloadCertificateInlineRequest>,
-  output: __S(11) as any as S.Schema<DownloadCertificateInlineResponse>,
+  input: DownloadCertificateInlineRequest,
+  output: DownloadCertificateInlineResponse,
   errors: [
     InvalidAccessKey,
     InactiveUser,
@@ -1301,8 +1496,8 @@ export const generateEabCredentials: API.OperationMethod<
   GenerateEabCredentialsError,
   ZeroSslOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12) as any as S.Schema<GenerateEabCredentialsRequest>,
-  output: __S(13) as any as S.Schema<EabCredentials>,
+  input: GenerateEabCredentialsRequest,
+  output: EabCredentials,
   errors: [
     InvalidAccessKey,
     FailedCreatingEabAccount,
@@ -1339,8 +1534,8 @@ export const getCertificate: API.OperationMethod<
   GetCertificateError,
   ZeroSslOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14) as any as S.Schema<GetCertificateRequest>,
-  output: __S(15) as any as S.Schema<GetCertificateResponse>,
+  input: GetCertificateRequest,
+  output: GetCertificateResponse,
   errors: [
     InvalidAccessKey,
     InactiveUser,
@@ -1385,8 +1580,8 @@ export const getVerificationStatus: API.OperationMethod<
   GetVerificationStatusError,
   ZeroSslOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16) as any as S.Schema<GetVerificationStatusRequest>,
-  output: __S(19) as any as S.Schema<GetVerificationStatusResponse>,
+  input: GetVerificationStatusRequest,
+  output: GetVerificationStatusResponse,
   errors: [
     InvalidAccessKey,
     InactiveUser,
@@ -1431,8 +1626,8 @@ export const listCertificates: API.OperationMethod<
   ListCertificatesError,
   ZeroSslOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20) as any as S.Schema<ListCertificatesRequest>,
-  output: __S(27) as any as S.Schema<ListCertificatesResponse>,
+  input: ListCertificatesRequest,
+  output: ListCertificatesResponse,
   errors: [
     InvalidAccessKey,
     InactiveUser,
@@ -1477,8 +1672,8 @@ export const resendVerification: API.OperationMethod<
   ResendVerificationError,
   ZeroSslOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28) as any as S.Schema<ResendVerificationRequest>,
-  output: __S(1) as any as S.Schema<ResendVerificationResponse>,
+  input: ResendVerificationRequest,
+  output: ResendVerificationResponse,
   errors: [
     InvalidAccessKey,
     InactiveUser,
@@ -1528,8 +1723,8 @@ export const revokeCertificate: API.OperationMethod<
   RevokeCertificateError,
   ZeroSslOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29) as any as S.Schema<RevokeCertificateRequest>,
-  output: __S(1) as any as S.Schema<RevokeCertificateResponse>,
+  input: RevokeCertificateRequest,
+  output: RevokeCertificateResponse,
   errors: [
     InvalidAccessKey,
     InactiveUser,
@@ -1578,8 +1773,8 @@ export const validateCsr: API.OperationMethod<
   ValidateCsrError,
   ZeroSslOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30) as any as S.Schema<ValidateCsrRequest>,
-  output: __S(31) as any as S.Schema<ValidateCsrResponse>,
+  input: ValidateCsrRequest,
+  output: ValidateCsrResponse,
   errors: [
     InvalidAccessKey,
     InactiveUser,
@@ -1640,8 +1835,8 @@ export const verifyDomains: API.OperationMethod<
   VerifyDomainsError,
   ZeroSslOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32) as any as S.Schema<VerifyDomainsRequest>,
-  output: __S(37) as any as S.Schema<VerifyDomainsResponse>,
+  input: VerifyDomainsRequest,
+  output: VerifyDomainsResponse,
   errors: [
     InvalidAccessKey,
     InactiveUser,
@@ -1709,7 +1904,7 @@ function __c0(j: number): any {
     case 3:
       return S.Array(S.String);
     case 4:
-      return S.Record(S.String, __S(3));
+      return S.Record(S.String, CreateCertificateResponseValidationEmailValidationValueList);
     case 5:
       return S.Array(S.String);
     case 6:
@@ -1717,7 +1912,8 @@ function __c0(j: number): any {
         S.Struct({
           file_validation_url_http: S.String,
           file_validation_url_https: S.String,
-          file_validation_content: __S(5),
+          file_validation_content:
+            CreateCertificateResponseValidationOtherMethodsValueFileValidationContentList,
           cname_validation_p1: S.String,
           cname_validation_p2: S.String,
         }),
@@ -1725,7 +1921,7 @@ function __c0(j: number): any {
         identifier: "CreateCertificateResponseValidationOtherMethodsValue",
       });
     case 7:
-      return S.Record(S.String, __S(6));
+      return S.Record(S.String, CreateCertificateResponseValidationOtherMethodsValue);
   }
 }
 function __c1(j: number): any {
@@ -1733,8 +1929,8 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          email_validation: __S(4),
-          other_methods: __S(7),
+          email_validation: CreateCertificateResponseValidationEmailValidationMap,
+          other_methods: CreateCertificateResponseValidationOtherMethodsMap,
         }),
       ).annotate({
         identifier: "CreateCertificateResponseValidation",
@@ -1755,7 +1951,7 @@ function __c1(j: number): any {
           fingerprint_sha1: S.optional(S.NullOr(S.String)),
           brand_validation: S.optional(S.NullOr(S.String)),
           signature_algorithm_properties: S.optional(S.NullOr(S.String)),
-          validation: __S(8),
+          validation: CreateCertificateResponseValidation,
         }),
       ).annotate({
         identifier: "CreateCertificateResponse",
@@ -1814,7 +2010,7 @@ function __c1(j: number): any {
           fingerprint_sha1: S.optional(S.NullOr(S.String)),
           brand_validation: S.optional(S.NullOr(S.String)),
           signature_algorithm_properties: S.String,
-          validation: __S(8),
+          validation: GetCertificateResponseValidation,
         }),
       ).annotate({ identifier: "GetCertificateResponse" });
   }
@@ -1839,12 +2035,12 @@ function __c2(j: number): any {
         identifier: "GetVerificationStatusResponseDetailsValue",
       });
     case 2:
-      return S.Record(S.String, __S(17));
+      return S.Record(S.String, GetVerificationStatusResponseDetailsValue);
     case 3:
       return S.suspend(() =>
         S.Struct({
           validation_completed: S.Number,
-          details: __S(18),
+          details: GetVerificationStatusResponseDetailsMap,
         }),
       ).annotate({
         identifier: "GetVerificationStatusResponse",
@@ -1856,13 +2052,17 @@ function __c2(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/certificates", code: 200 })),
       ).annotate({ identifier: "ListCertificatesRequest" });
     case 5:
-      return S.Record(S.String, __S(5));
+      return S.Record(
+        S.String,
+        ListCertificatesResponseResultsItemValidationEmailValidationValueList,
+      );
     case 6:
       return S.suspend(() =>
         S.Struct({
           file_validation_url_http: S.String,
           file_validation_url_https: S.String,
-          file_validation_content: __S(5),
+          file_validation_content:
+            ListCertificatesResponseResultsItemValidationOtherMethodsValueFileValidationContentList,
           cname_validation_p1: S.String,
           cname_validation_p2: S.String,
         }),
@@ -1870,7 +2070,7 @@ function __c2(j: number): any {
         identifier: "ListCertificatesResponseResultsItemValidationOtherMethodsValue",
       });
     case 7:
-      return S.Record(S.String, __S(22));
+      return S.Record(S.String, ListCertificatesResponseResultsItemValidationOtherMethodsValue);
   }
 }
 function __c3(j: number): any {
@@ -1878,8 +2078,8 @@ function __c3(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          email_validation: __S(21),
-          other_methods: __S(23),
+          email_validation: ListCertificatesResponseResultsItemValidationEmailValidationMap,
+          other_methods: ListCertificatesResponseResultsItemValidationOtherMethodsMap,
         }),
       ).annotate({
         identifier: "ListCertificatesResponseResultsItemValidation",
@@ -1900,13 +2100,13 @@ function __c3(j: number): any {
           fingerprint_sha1: S.optional(S.NullOr(S.String)),
           brand_validation: S.optional(S.NullOr(S.String)),
           signature_algorithm_properties: S.String,
-          validation: __S(24),
+          validation: ListCertificatesResponseResultsItemValidation,
         }),
       ).annotate({
         identifier: "ListCertificatesResponseResultsItem",
       });
     case 2:
-      return S.Array(__S(25));
+      return S.Array(ListCertificatesResponseResultsItem);
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -1916,7 +2116,7 @@ function __c3(j: number): any {
           limit: S.Number,
           acmeUsageLevel: S.String,
           isAcmeLocked: S.Boolean,
-          results: __S(26),
+          results: ListCertificatesResponseResultsList,
         }),
       ).annotate({ identifier: "ListCertificatesResponse" });
     case 4:
@@ -1945,7 +2145,7 @@ function __c3(j: number): any {
         S.Struct({
           valid: S.Boolean,
           error: S.optional(S.NullOr(S.String)),
-          csrResponse: __S(3),
+          csrResponse: ValidateCsrResponseCsrResponseList,
         }),
       ).annotate({ identifier: "ValidateCsrResponse" });
   }
@@ -1973,15 +2173,15 @@ function __c4(j: number): any {
         identifier: "VerifyDomainsResponseErrorDetailsValueValue",
       });
     case 2:
-      return S.Record(S.String, __S(33));
+      return S.Record(S.String, VerifyDomainsResponseErrorDetailsValueValue);
     case 3:
-      return S.Record(S.String, __S(34));
+      return S.Record(S.String, VerifyDomainsResponseErrorDetailsValueMap);
     case 4:
       return S.suspend(() =>
         S.Struct({
           code: S.Number,
           type: S.String,
-          details: __S(35),
+          details: VerifyDomainsResponseErrorDetailsMap,
         }),
       ).annotate({
         identifier: "VerifyDomainsResponseError",
@@ -1990,27 +2190,8 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           success: S.Boolean,
-          error: __S(36),
+          error: VerifyDomainsResponseError,
         }),
       ).annotate({ identifier: "VerifyDomainsResponse" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
   }
 }

@@ -6,8 +6,6 @@ import * as S from "@distilled.cloud/core/schema";
 import { GithubProtocol, type GithubOpError, type GithubOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { GithubOpError, GithubOpContext };
 
@@ -68,12 +66,19 @@ export interface CommitAutofixRequest {
   /** Commit message to be used. */
   message?: string;
 }
+const CommitAutofixRequest = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<CommitAutofixRequest>;
+
 export interface CodeScanningAutofixCommitsResponse {
   /** The Git reference of target branch for the commit. For more information, see "[Git References](https://git-scm.com/book/en/v2/Git-Internals-Git-References)" in the Git documentation. */
   target_ref?: string;
   /** SHA of commit with autofix. */
   sha?: string;
 }
+const CodeScanningAutofixCommitsResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<CodeScanningAutofixCommitsResponse>;
+
 export interface CreateAutofixRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -82,13 +87,19 @@ export interface CreateAutofixRequest {
   /** The number that identifies an alert. You can find this at the end of the URL for a code scanning alert within GitHub, and in the `number` field in the response from the `GET /repos/{owner}/{repo}/code-scanning/alerts` operation. */
   alert_number: number;
 }
+const CreateAutofixRequest = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<CreateAutofixRequest>;
+
 /** The status of an autofix. */
 export type CodeScanningAutofixStatus = "pending" | "error" | "success" | "outdated";
+const CodeScanningAutofixStatus = S.String;
+
 export interface CodeScanningAutofix {
   status: CodeScanningAutofixStatus;
   description: string | null;
   started_at: string;
 }
+const CodeScanningAutofix = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<CodeScanningAutofix>;
+
 /** The language targeted by the CodeQL query */
 export type CodeScanningVariantAnalysisLanguage =
   | "actions"
@@ -101,12 +112,25 @@ export type CodeScanningVariantAnalysisLanguage =
   | "ruby"
   | "rust"
   | "swift";
+const CodeScanningVariantAnalysisLanguage = S.String;
+
 /** List of repository names (in the form `owner/repo-name`) to run the query against. Precisely one property from `repositories`, `repository_lists` and `repository_owners` is required. */
 export type CreateVariantAnalysisRequestRepositoriesList = Array<string>;
+const CreateVariantAnalysisRequestRepositoriesList = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<CreateVariantAnalysisRequestRepositoriesList>;
+
 /** List of repository lists to run the query against. Precisely one property from `repositories`, `repository_lists` and `repository_owners` is required. */
 export type CreateVariantAnalysisRequestRepositoryListsList = Array<string>;
+const CreateVariantAnalysisRequestRepositoryListsList =
+  CreateVariantAnalysisRequestRepositoriesList as any as S.Schema<CreateVariantAnalysisRequestRepositoryListsList>;
+
 /** List of organization or user names whose repositories the query should be run against. Precisely one property from `repositories`, `repository_lists` and `repository_owners` is required. */
 export type CreateVariantAnalysisRequestRepositoryOwnersList = Array<string>;
+const CreateVariantAnalysisRequestRepositoryOwnersList =
+  CreateVariantAnalysisRequestRepositoriesList as any as S.Schema<CreateVariantAnalysisRequestRepositoryOwnersList>;
+
 export interface CreateVariantAnalysisRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -122,6 +146,11 @@ export interface CreateVariantAnalysisRequest {
   /** List of organization or user names whose repositories the query should be run against. Precisely one property from `repositories`, `repository_lists` and `repository_owners` is required. */
   repository_owners?: CreateVariantAnalysisRequestRepositoryOwnersList;
 }
+const CreateVariantAnalysisRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<CreateVariantAnalysisRequest>;
+
 /** A GitHub user. */
 export interface SimpleUser {
   name?: string | null;
@@ -147,6 +176,8 @@ export interface SimpleUser {
   starred_at?: string;
   user_view_type?: string;
 }
+const SimpleUser = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<SimpleUser>;
+
 /** A GitHub repository. */
 export interface SimpleRepository {
   /** A unique identifier of the repository. */
@@ -241,16 +272,22 @@ export interface SimpleRepository {
   /** The API URL to list the hooks on the repository. */
   hooks_url: string;
 }
+const SimpleRepository = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<SimpleRepository>;
+
 export type CodeScanningVariantAnalysisStatus =
   | "in_progress"
   | "succeeded"
   | "failed"
   | "cancelled";
+const CodeScanningVariantAnalysisStatus = S.String;
+
 /** The reason for a failure of the variant analysis. This is only available if the variant analysis has failed. */
 export type CodeScanningVariantAnalysisFailureReason =
   | "no_repos_queried"
   | "actions_workflow_run_failed"
   | "internal_error";
+const CodeScanningVariantAnalysisFailureReason = S.String;
+
 /** Repository Identifier */
 export interface CodeScanningVariantAnalysisRepository {
   /** A unique identifier of the repository. */
@@ -264,6 +301,11 @@ export interface CodeScanningVariantAnalysisRepository {
   stargazers_count: number;
   updated_at: string | null;
 }
+const CodeScanningVariantAnalysisRepository = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<CodeScanningVariantAnalysisRepository>;
+
 /** The new status of the CodeQL variant analysis repository task. */
 export type CodeScanningVariantAnalysisStatus2 =
   | "pending"
@@ -272,6 +314,8 @@ export type CodeScanningVariantAnalysisStatus2 =
   | "failed"
   | "canceled"
   | "timed_out";
+const CodeScanningVariantAnalysisStatus2 = S.String;
+
 export interface CodeScanningVariantAnalysisScannedRepositoriesItem {
   repository: CodeScanningVariantAnalysisRepository;
   analysis_status: CodeScanningVariantAnalysisStatus2;
@@ -282,26 +326,57 @@ export interface CodeScanningVariantAnalysisScannedRepositoriesItem {
   /** The reason of the failure of this repo task. This is only available if the repository task has failed. */
   failure_message?: string;
 }
+const CodeScanningVariantAnalysisScannedRepositoriesItem = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<CodeScanningVariantAnalysisScannedRepositoriesItem>;
+
 export type CodeScanningVariantAnalysisScannedRepositoriesList =
   Array<CodeScanningVariantAnalysisScannedRepositoriesItem>;
+const CodeScanningVariantAnalysisScannedRepositoriesList = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<CodeScanningVariantAnalysisScannedRepositoriesList>;
+
 /** A list of repositories that were skipped. This list may not include all repositories that were skipped. This is only available when the repository was found and the user has access to it. */
 export type CodeScanningVariantAnalysisSkippedRepoGroupRepositoriesList =
   Array<CodeScanningVariantAnalysisRepository>;
+const CodeScanningVariantAnalysisSkippedRepoGroupRepositoriesList = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<CodeScanningVariantAnalysisSkippedRepoGroupRepositoriesList>;
+
 export interface CodeScanningVariantAnalysisSkippedRepoGroup {
   /** The total number of repositories that were skipped for this reason. */
   repository_count: number;
   /** A list of repositories that were skipped. This list may not include all repositories that were skipped. This is only available when the repository was found and the user has access to it. */
   repositories: CodeScanningVariantAnalysisSkippedRepoGroupRepositoriesList;
 }
+const CodeScanningVariantAnalysisSkippedRepoGroup = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<CodeScanningVariantAnalysisSkippedRepoGroup>;
+
 /** A list of full repository names that were skipped. This list may not include all repositories that were skipped. */
 export type CodeScanningVariantAnalysisSkippedRepositoriesNotFoundReposRepositoryFullNamesList =
   Array<string>;
+const CodeScanningVariantAnalysisSkippedRepositoriesNotFoundReposRepositoryFullNamesList =
+  /*@__PURE__*/ __L.at(
+    __c1,
+    5,
+  ) as any as S.Schema<CodeScanningVariantAnalysisSkippedRepositoriesNotFoundReposRepositoryFullNamesList>;
+
 export interface CodeScanningVariantAnalysisSkippedRepositoriesNotFoundRepos {
   /** The total number of repositories that were skipped for this reason. */
   repository_count: number;
   /** A list of full repository names that were skipped. This list may not include all repositories that were skipped. */
   repository_full_names: CodeScanningVariantAnalysisSkippedRepositoriesNotFoundReposRepositoryFullNamesList;
 }
+const CodeScanningVariantAnalysisSkippedRepositoriesNotFoundRepos = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<CodeScanningVariantAnalysisSkippedRepositoriesNotFoundRepos>;
+
 /** Information about repositories that were skipped from processing. This information is only available to the user that initiated the variant analysis. */
 export interface CodeScanningVariantAnalysisSkippedRepositories {
   access_mismatch_repos: CodeScanningVariantAnalysisSkippedRepoGroup;
@@ -309,6 +384,11 @@ export interface CodeScanningVariantAnalysisSkippedRepositories {
   no_codeql_db_repos: CodeScanningVariantAnalysisSkippedRepoGroup;
   over_limit_repos: CodeScanningVariantAnalysisSkippedRepoGroup;
 }
+const CodeScanningVariantAnalysisSkippedRepositories = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<CodeScanningVariantAnalysisSkippedRepositories>;
+
 /** A run of a CodeQL query against one or more repositories. */
 export interface CodeScanningVariantAnalysis {
   /** The ID of the variant analysis. */
@@ -333,6 +413,11 @@ export interface CodeScanningVariantAnalysis {
   /** Information about repositories that were skipped from processing. This information is only available to the user that initiated the variant analysis. */
   skipped_repositories?: CodeScanningVariantAnalysisSkippedRepositories;
 }
+const CodeScanningVariantAnalysis = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<CodeScanningVariantAnalysis>;
+
 export interface DeleteAnalysisRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -343,6 +428,11 @@ export interface DeleteAnalysisRequest {
   /** Allow deletion if the specified analysis is the last in a set. If you attempt to delete the final analysis in a set without setting this parameter to `true`, you'll get a 400 response with the message: `Analysis is last of its type and deletion may result in the loss of historical alert data. Please specify confirm_delete.` */
   confirm_delete?: string;
 }
+const DeleteAnalysisRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<DeleteAnalysisRequest>;
+
 /** Successful deletion of a code scanning analysis */
 export interface CodeScanningAnalysisDeletion {
   /** Next deletable analysis in chain, without last analysis deletion confirmation */
@@ -350,6 +440,11 @@ export interface CodeScanningAnalysisDeletion {
   /** Next deletable analysis in chain, with last analysis deletion confirmation */
   confirm_delete_url: string | null;
 }
+const CodeScanningAnalysisDeletion = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<CodeScanningAnalysisDeletion>;
+
 export interface DeleteCodeqlDatabaseRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -358,24 +453,51 @@ export interface DeleteCodeqlDatabaseRequest {
   /** The language of the CodeQL database. */
   language: string;
 }
+const DeleteCodeqlDatabaseRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<DeleteCodeqlDatabaseRequest>;
+
 export interface DeleteCodeqlDatabaseResponse {}
+const DeleteCodeqlDatabaseResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<DeleteCodeqlDatabaseResponse>;
+
 export interface GetAiScanEnablementRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
   /** The name of the repository without the `.git` extension. The name is not case sensitive. */
   repo: string;
 }
+const GetAiScanEnablementRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<GetAiScanEnablementRequest>;
+
 /** Whether AI Scan is enabled for the repository. */
 export type CodeScanningAiScanEnablementPrScan = "enabled" | "disabled";
+const CodeScanningAiScanEnablementPrScan = S.String;
+
 /** AI Scan enablement for a repository. */
 export interface CodeScanningAiScanEnablement {
   /** Whether AI Scan is enabled for the repository. */
   pr_scan: CodeScanningAiScanEnablementPrScan;
 }
+const CodeScanningAiScanEnablement = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<CodeScanningAiScanEnablement>;
+
 export interface GetAiScanEnablementForOrgRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
 }
+const GetAiScanEnablementForOrgRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<GetAiScanEnablementForOrgRequest>;
+
 /** Whether AI Scan on pull requests is enabled for the organization. The organization setting respects enterprise policy, and repositories inherit it: when disabled, repositories cannot enable AI Scan; when enabled, repositories can still opt out. */
 export type CodeScanningAiScanOrgSettingsPrScan = "enabled" | "disabled";
 /** The AI Scan organization setting */
@@ -383,6 +505,9 @@ export interface CodeScanningAiScanOrgSettings {
   /** Whether AI Scan on pull requests is enabled for the organization. The organization setting respects enterprise policy, and repositories inherit it: when disabled, repositories cannot enable AI Scan; when enabled, repositories can still opt out. */
   pr_scan: CodeScanningAiScanOrgSettingsPrScan;
 }
+const CodeScanningAiScanOrgSettings =
+  CodeScanningAiScanEnablement as any as S.Schema<CodeScanningAiScanOrgSettings>;
+
 export interface GetAlertRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -391,8 +516,12 @@ export interface GetAlertRequest {
   /** The number that identifies an alert. You can find this at the end of the URL for a code scanning alert within GitHub, and in the `number` field in the response from the `GET /repos/{owner}/{repo}/code-scanning/alerts` operation. */
   alert_number: number;
 }
+const GetAlertRequest = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<GetAlertRequest>;
+
 /** State of a code scanning alert. */
 export type CodeScanningAlertState = "open" | "dismissed" | "fixed";
+const CodeScanningAlertState = S.String;
+
 /** A GitHub user. */
 export type NullableSimpleUser = SimpleUser;
 /** **Required when the state is dismissed.** The reason for dismissing or closing the alert. */
@@ -401,12 +530,21 @@ export type CodeScanningAlertDismissedReason =
   | "won't fix"
   | "used in tests"
   | "mitigated";
+const CodeScanningAlertDismissedReason = S.String;
+
 /** The severity of the alert. */
 export type CodeScanningAlertRuleSeverity = "none" | "note" | "warning" | "error";
+const CodeScanningAlertRuleSeverity = S.String;
+
 /** The security severity of the alert. */
 export type CodeScanningAlertRuleSecuritySeverityLevel = "low" | "medium" | "high" | "critical";
+const CodeScanningAlertRuleSecuritySeverityLevel = S.String;
+
 /** A set of tags applicable for the rule. */
 export type CodeScanningAlertRuleTagsList = Array<string>;
+const CodeScanningAlertRuleTagsList =
+  CreateVariantAnalysisRequestRepositoriesList as any as S.Schema<CodeScanningAlertRuleTagsList>;
+
 export interface CodeScanningAlertRule {
   /** A unique identifier for the rule used to detect the alert. */
   id?: string | null;
@@ -427,16 +565,31 @@ export interface CodeScanningAlertRule {
   /** A link to the documentation for the rule used to detect the alert. */
   help_uri?: string | null;
 }
+const CodeScanningAlertRule = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<CodeScanningAlertRule>;
+
 export interface CodeScanningAnalysisTool {
   name?: string;
   version?: string | null;
   guid?: string | null;
 }
+const CodeScanningAnalysisTool = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<CodeScanningAnalysisTool>;
+
 export interface CodeScanningAlertInstanceMessage {
   text?: string;
   /** The message text as GitHub-flavored Markdown, with placeholder links for related locations replaced by links to the relevant code. Only populated when related locations are available for the alert instance. */
   markdown?: string;
 }
+const CodeScanningAlertInstanceMessage = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<CodeScanningAlertInstanceMessage>;
+
 /** Describe a region within a file for the alert. */
 export interface CodeScanningAlertLocation {
   path?: string;
@@ -445,11 +598,23 @@ export interface CodeScanningAlertLocation {
   start_column?: number;
   end_column?: number;
 }
+const CodeScanningAlertLocation = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<CodeScanningAlertLocation>;
+
 /** A classification of the file. For example to identify it as generated. */
 export type CodeScanningAlertClassification = "source" | "generated" | "test" | "library";
+const CodeScanningAlertClassification = S.String;
+
 /** Classifications that have been applied to the file that triggered the alert. For example identifying it as documentation, or a generated file. */
 export type CodeScanningAlertInstanceClassificationsList =
   Array<CodeScanningAlertClassification | null>;
+const CodeScanningAlertInstanceClassificationsList = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<CodeScanningAlertInstanceClassificationsList>;
+
 export interface CodeScanningAlertInstance {
   ref?: string;
   analysis_key?: string;
@@ -463,7 +628,17 @@ export interface CodeScanningAlertInstance {
   /** Classifications that have been applied to the file that triggered the alert. For example identifying it as documentation, or a generated file. */
   classifications?: CodeScanningAlertInstanceClassificationsList;
 }
+const CodeScanningAlertInstance = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<CodeScanningAlertInstance>;
+
 export type CodeScanningAlertAssigneesList = Array<SimpleUser>;
+const CodeScanningAlertAssigneesList = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<CodeScanningAlertAssigneesList>;
+
 export interface PullRequestSimpleLabelsItem {
   id: number;
   node_id: string;
@@ -475,9 +650,21 @@ export interface PullRequestSimpleLabelsItem {
   /** The user who archived the label, or `null` if it has not been archived. */
   archived_by: SimpleUser | null;
 }
+const PullRequestSimpleLabelsItem = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<PullRequestSimpleLabelsItem>;
+
 export type PullRequestSimpleLabelsList = Array<PullRequestSimpleLabelsItem>;
+const PullRequestSimpleLabelsList = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<PullRequestSimpleLabelsList>;
+
 /** The state of the milestone. */
 export type NullableMilestoneState = "open" | "closed";
+const NullableMilestoneState = S.String;
+
 /** A collection of related issues and pull requests. */
 export interface NullableMilestone {
   url: string;
@@ -500,8 +687,16 @@ export interface NullableMilestone {
   closed_at: string | null;
   due_on: string | null;
 }
+const NullableMilestone = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<NullableMilestone>;
+
 export type PullRequestSimpleAssigneesList = Array<SimpleUser>;
+const PullRequestSimpleAssigneesList =
+  CodeScanningAlertAssigneesList as any as S.Schema<PullRequestSimpleAssigneesList>;
+
 export type PullRequestSimpleRequestedReviewersList = Array<SimpleUser>;
+const PullRequestSimpleRequestedReviewersList =
+  CodeScanningAlertAssigneesList as any as S.Schema<PullRequestSimpleRequestedReviewersList>;
+
 export interface TeamPermissions {
   pull: boolean;
   triage: boolean;
@@ -509,12 +704,20 @@ export interface TeamPermissions {
   maintain: boolean;
   admin: boolean;
 }
+const TeamPermissions = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<TeamPermissions>;
+
 /** The ownership type of the team */
 export type TeamType = "enterprise" | "organization";
+const TeamType = S.String;
+
 /** How the team's access to the repository was granted. This property is only present when the team is returned in a repository context, such as `GET /repos/{owner}/{repo}/teams`. */
 export type TeamAccessSource = "direct" | "organization" | "enterprise";
+const TeamAccessSource = S.String;
+
 /** The ownership type of the team */
 export type NullableTeamSimpleType = "enterprise" | "organization";
+const NullableTeamSimpleType = S.String;
+
 /** Groups of organization members that gives permissions on specified repositories. */
 export interface NullableTeamSimple {
   /** Unique identifier of the team */
@@ -545,6 +748,8 @@ export interface NullableTeamSimple {
   /** Unique identifier of the enterprise to which this team belongs */
   enterprise_id?: number;
 }
+const NullableTeamSimple = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<NullableTeamSimple>;
+
 /** Groups of organization members that gives permissions on specified repositories. */
 export interface Team {
   id: number;
@@ -570,7 +775,14 @@ export interface Team {
   enterprise_id?: number;
   parent: NullableTeamSimple | null;
 }
+const Team = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<Team>;
+
 export type PullRequestSimpleRequestedTeamsList = Array<Team>;
+const PullRequestSimpleRequestedTeamsList = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<PullRequestSimpleRequestedTeamsList>;
+
 /** License Simple */
 export interface NullableLicenseSimple {
   key: string;
@@ -580,6 +792,11 @@ export interface NullableLicenseSimple {
   node_id: string;
   html_url?: string;
 }
+const NullableLicenseSimple = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<NullableLicenseSimple>;
+
 export interface RepositoryPermissions {
   admin: boolean;
   pull: boolean;
@@ -587,22 +804,45 @@ export interface RepositoryPermissions {
   push: boolean;
   maintain?: boolean;
 }
+const RepositoryPermissions = /*@__PURE__*/ __L.at(
+  __c5,
+  0,
+) as any as S.Schema<RepositoryPermissions>;
+
 export type RepositoryTopicsList = Array<string>;
+const RepositoryTopicsList =
+  CreateVariantAnalysisRequestRepositoriesList as any as S.Schema<RepositoryTopicsList>;
+
 /** The policy controlling who can create pull requests: all or collaborators_only. */
 export type RepositoryPullRequestCreationPolicy = "all" | "collaborators_only";
+const RepositoryPullRequestCreationPolicy = S.String;
+
 /** The default value for a squash merge commit title: - `PR_TITLE` - default to the pull request's title. - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit). */
 export type RepositorySquashMergeCommitTitle = "PR_TITLE" | "COMMIT_OR_PR_TITLE";
+const RepositorySquashMergeCommitTitle = S.String;
+
 /** The default value for a squash merge commit message: - `PR_BODY` - default to the pull request's body. - `COMMIT_MESSAGES` - default to the branch's commit messages. - `BLANK` - default to a blank commit message. */
 export type RepositorySquashMergeCommitMessage = "PR_BODY" | "COMMIT_MESSAGES" | "BLANK";
+const RepositorySquashMergeCommitMessage = S.String;
+
 /** The default value for a merge commit title. - `PR_TITLE` - default to the pull request's title. - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name). */
 export type RepositoryMergeCommitTitle = "PR_TITLE" | "MERGE_MESSAGE";
+const RepositoryMergeCommitTitle = S.String;
+
 /** The default value for a merge commit message. - `PR_TITLE` - default to the pull request's title. - `PR_BODY` - default to the pull request's body. - `BLANK` - default to a blank commit message. */
 export type RepositoryMergeCommitMessage = "PR_BODY" | "PR_TITLE" | "BLANK";
+const RepositoryMergeCommitMessage = S.String;
+
 /** The status of the code search index for this repository */
 export interface RepositoryCodeSearchIndexStatus {
   lexical_search_ok?: boolean;
   lexical_commit_sha?: string;
 }
+const RepositoryCodeSearchIndexStatus = /*@__PURE__*/ __L.at(
+  __c5,
+  1,
+) as any as S.Schema<RepositoryCodeSearchIndexStatus>;
+
 /** A repository on GitHub. */
 export interface Repository {
   /** Unique identifier of the repository */
@@ -735,6 +975,8 @@ export interface Repository {
   /** The status of the code search index for this repository */
   code_search_index_status?: RepositoryCodeSearchIndexStatus;
 }
+const Repository = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<Repository>;
+
 export interface PullRequestSimpleHead {
   label: string;
   ref: string;
@@ -742,11 +984,18 @@ export interface PullRequestSimpleHead {
   sha: string;
   user: SimpleUser | null;
 }
+const PullRequestSimpleHead = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<PullRequestSimpleHead>;
+
 export type PullRequestSimpleBase = PullRequestSimpleHead;
 /** Hypermedia Link */
 export interface Link {
   href: string;
 }
+const Link = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<Link>;
+
 export interface PullRequestSimpleLinks {
   comments: Link;
   commits: Link;
@@ -757,6 +1006,11 @@ export interface PullRequestSimpleLinks {
   review_comment: Link;
   self: Link;
 }
+const PullRequestSimpleLinks = /*@__PURE__*/ __L.at(
+  __c5,
+  5,
+) as any as S.Schema<PullRequestSimpleLinks>;
+
 /** How the author is associated with the repository. */
 export type AuthorAssociation =
   | "COLLABORATOR"
@@ -767,8 +1021,12 @@ export type AuthorAssociation =
   | "MEMBER"
   | "NONE"
   | "OWNER";
+const AuthorAssociation = S.String;
+
 /** The merge method to use. */
 export type AutoMergeMergeMethod = "merge" | "squash" | "rebase";
+const AutoMergeMergeMethod = S.String;
+
 /** The status of auto merging a pull request. */
 export interface AutoMerge {
   enabled_by: SimpleUser;
@@ -779,12 +1037,16 @@ export interface AutoMerge {
   /** Commit message for the merge commit. */
   commit_message: string;
 }
+const AutoMerge = /*@__PURE__*/ __L.at(__c5, 6) as any as S.Schema<AutoMerge>;
+
 export interface PullRequestStackBase {
   /** The base ref of the stack this pull request belongs to. */
   ref: string;
   /** The base SHA of the stack this pull request belongs to. */
   sha: string;
 }
+const PullRequestStackBase = /*@__PURE__*/ __L.at(__c5, 7) as any as S.Schema<PullRequestStackBase>;
+
 /** The stack information associated with a pull request. */
 export interface PullRequestStack {
   base: PullRequestStackBase;
@@ -797,6 +1059,8 @@ export interface PullRequestStack {
   /** The number of the stack that this pull request belongs to. */
   number?: number;
 }
+const PullRequestStack = /*@__PURE__*/ __L.at(__c6, 0) as any as S.Schema<PullRequestStack>;
+
 /** Pull Request Simple */
 export interface PullRequestSimple {
   url: string;
@@ -838,8 +1102,15 @@ export interface PullRequestSimple {
   /** Indicates whether or not the pull request is a draft. */
   draft?: boolean;
 }
+const PullRequestSimple = /*@__PURE__*/ __L.at(__c6, 1) as any as S.Schema<PullRequestSimple>;
+
 /** Pull requests linked to this alert. */
 export type CodeScanningAlertLinkedPullRequestsList = Array<PullRequestSimple>;
+const CodeScanningAlertLinkedPullRequestsList = /*@__PURE__*/ __L.at(
+  __c6,
+  2,
+) as any as S.Schema<CodeScanningAlertLinkedPullRequestsList>;
+
 export interface CodeScanningAlert {
   number: number;
   created_at: string;
@@ -861,6 +1132,8 @@ export interface CodeScanningAlert {
   /** Pull requests linked to this alert. */
   linked_pull_requests?: CodeScanningAlertLinkedPullRequestsList;
 }
+const CodeScanningAlert = /*@__PURE__*/ __L.at(__c6, 3) as any as S.Schema<CodeScanningAlert>;
+
 export interface GetAnalysisRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -869,6 +1142,8 @@ export interface GetAnalysisRequest {
   /** The ID of the analysis, as returned from the `GET /repos/{owner}/{repo}/code-scanning/analyses` operation. */
   analysis_id: number;
 }
+const GetAnalysisRequest = /*@__PURE__*/ __L.at(__c6, 4) as any as S.Schema<GetAnalysisRequest>;
+
 export interface CodeScanningAnalysis {
   ref: string;
   commit_sha: string;
@@ -890,6 +1165,8 @@ export interface CodeScanningAnalysis {
   /** Warning generated when processing the analysis */
   warning: string;
 }
+const CodeScanningAnalysis = /*@__PURE__*/ __L.at(__c6, 5) as any as S.Schema<CodeScanningAnalysis>;
+
 export interface GetAutofixRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -898,6 +1175,8 @@ export interface GetAutofixRequest {
   /** The number that identifies an alert. You can find this at the end of the URL for a code scanning alert within GitHub, and in the `number` field in the response from the `GET /repos/{owner}/{repo}/code-scanning/alerts` operation. */
   alert_number: number;
 }
+const GetAutofixRequest = /*@__PURE__*/ __L.at(__c6, 6) as any as S.Schema<GetAutofixRequest>;
+
 export interface GetCodeqlDatabaseRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -906,6 +1185,11 @@ export interface GetCodeqlDatabaseRequest {
   /** The language of the CodeQL database. */
   language: string;
 }
+const GetCodeqlDatabaseRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  7,
+) as any as S.Schema<GetCodeqlDatabaseRequest>;
+
 /** A CodeQL database. */
 export interface CodeScanningCodeqlDatabase {
   /** The ID of the CodeQL database. */
@@ -928,14 +1212,26 @@ export interface CodeScanningCodeqlDatabase {
   /** The commit SHA of the repository at the time the CodeQL database was created. */
   commit_oid?: string | null;
 }
+const CodeScanningCodeqlDatabase = /*@__PURE__*/ __L.at(
+  __c7,
+  0,
+) as any as S.Schema<CodeScanningCodeqlDatabase>;
+
 export interface GetDefaultSetupRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
   /** The name of the repository without the `.git` extension. The name is not case sensitive. */
   repo: string;
 }
+const GetDefaultSetupRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  1,
+) as any as S.Schema<GetDefaultSetupRequest>;
+
 /** Code scanning default setup has been configured or not. */
 export type CodeScanningDefaultSetupState = "configured" | "not-configured";
+const CodeScanningDefaultSetupState = S.String;
+
 export type CodeScanningDefaultSetupLanguagesItem =
   | "actions"
   | "c-cpp"
@@ -948,16 +1244,31 @@ export type CodeScanningDefaultSetupLanguagesItem =
   | "ruby"
   | "typescript"
   | "swift";
+const CodeScanningDefaultSetupLanguagesItem = S.String;
+
 /** Languages to be analyzed. */
 export type CodeScanningDefaultSetupLanguagesList = Array<CodeScanningDefaultSetupLanguagesItem>;
+const CodeScanningDefaultSetupLanguagesList = /*@__PURE__*/ __L.at(
+  __c7,
+  2,
+) as any as S.Schema<CodeScanningDefaultSetupLanguagesList>;
+
 /** Runner type to be used. */
 export type CodeScanningDefaultSetupRunnerType = "standard" | "labeled";
+const CodeScanningDefaultSetupRunnerType = S.String;
+
 /** CodeQL query suite to be used. */
 export type CodeScanningDefaultSetupQuerySuite = "default" | "extended";
+const CodeScanningDefaultSetupQuerySuite = S.String;
+
 /** Threat model to be used for code scanning analysis. Use `remote` to analyze only network sources and `remote_and_local` to include local sources like filesystem access, command-line arguments, database reads, environment variable and standard input. */
 export type CodeScanningDefaultSetupThreatModel = "remote" | "remote_and_local";
+const CodeScanningDefaultSetupThreatModel = S.String;
+
 /** The frequency of the periodic analysis. */
 export type CodeScanningDefaultSetupSchedule = "weekly";
+const CodeScanningDefaultSetupSchedule = S.String;
+
 /** Configuration for code scanning default setup. */
 export interface CodeScanningDefaultSetup {
   /** Code scanning default setup has been configured or not. */
@@ -977,6 +1288,11 @@ export interface CodeScanningDefaultSetup {
   /** The frequency of the periodic analysis. */
   schedule?: CodeScanningDefaultSetupSchedule | null;
 }
+const CodeScanningDefaultSetup = /*@__PURE__*/ __L.at(
+  __c7,
+  3,
+) as any as S.Schema<CodeScanningDefaultSetup>;
+
 export interface GetSarifRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -985,10 +1301,17 @@ export interface GetSarifRequest {
   /** The SARIF ID obtained after uploading. */
   sarif_id: string;
 }
+const GetSarifRequest = /*@__PURE__*/ __L.at(__c7, 4) as any as S.Schema<GetSarifRequest>;
+
 /** `pending` files have not yet been processed, while `complete` means results from the SARIF have been stored. `failed` files have either not been processed at all, or could only be partially processed. */
 export type CodeScanningSarifsStatusProcessingStatus = "pending" | "complete" | "failed";
+const CodeScanningSarifsStatusProcessingStatus = S.String;
+
 /** Any errors that ocurred during processing of the delivery. */
 export type CodeScanningSarifsStatusErrorsList = Array<string>;
+const CodeScanningSarifsStatusErrorsList =
+  CreateVariantAnalysisRequestRepositoriesList as any as S.Schema<CodeScanningSarifsStatusErrorsList>;
+
 export interface CodeScanningSarifsStatus {
   /** `pending` files have not yet been processed, while `complete` means results from the SARIF have been stored. `failed` files have either not been processed at all, or could only be partially processed. */
   processing_status?: CodeScanningSarifsStatusProcessingStatus;
@@ -997,6 +1320,11 @@ export interface CodeScanningSarifsStatus {
   /** Any errors that ocurred during processing of the delivery. */
   errors?: CodeScanningSarifsStatusErrorsList | null;
 }
+const CodeScanningSarifsStatus = /*@__PURE__*/ __L.at(
+  __c7,
+  5,
+) as any as S.Schema<CodeScanningSarifsStatus>;
+
 export interface GetVariantAnalysisRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -1005,6 +1333,11 @@ export interface GetVariantAnalysisRequest {
   /** The unique identifier of the variant analysis. */
   codeql_variant_analysis_id: number;
 }
+const GetVariantAnalysisRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  6,
+) as any as S.Schema<GetVariantAnalysisRequest>;
+
 export interface GetVariantAnalysisRepoTaskRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -1017,6 +1350,11 @@ export interface GetVariantAnalysisRepoTaskRequest {
   /** The name of the variant analysis repository. */
   repo_name: string;
 }
+const GetVariantAnalysisRepoTaskRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  7,
+) as any as S.Schema<GetVariantAnalysisRepoTaskRequest>;
+
 export interface CodeScanningVariantAnalysisRepoTask {
   repository: SimpleRepository;
   analysis_status: CodeScanningVariantAnalysisStatus2;
@@ -1033,6 +1371,11 @@ export interface CodeScanningVariantAnalysisRepoTask {
   /** The URL of the artifact. This is only available for successful analyses. */
   artifact_url?: string;
 }
+const CodeScanningVariantAnalysisRepoTask = /*@__PURE__*/ __L.at(
+  __c8,
+  0,
+) as any as S.Schema<CodeScanningVariantAnalysisRepoTask>;
+
 export interface ListAlertInstancesRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -1049,14 +1392,29 @@ export interface ListAlertInstancesRequest {
   /** The number of the pull request for the results you want to list. */
   pr?: number;
 }
+const ListAlertInstancesRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  1,
+) as any as S.Schema<ListAlertInstancesRequest>;
+
 /** State of a code scanning alert instance. */
 export type CodeScanningAlertInstanceState = "open" | "fixed";
+const CodeScanningAlertInstanceState = S.String;
+
 export interface CodeScanningAlertInstanceListMessage {
   text?: string;
 }
+const CodeScanningAlertInstanceListMessage = /*@__PURE__*/ __L.at(
+  __c8,
+  2,
+) as any as S.Schema<CodeScanningAlertInstanceListMessage>;
+
 /** Classifications that have been applied to the file that triggered the alert. For example identifying it as documentation, or a generated file. */
 export type CodeScanningAlertInstanceListClassificationsList =
   Array<CodeScanningAlertClassification | null>;
+const CodeScanningAlertInstanceListClassificationsList =
+  CodeScanningAlertInstanceClassificationsList as any as S.Schema<CodeScanningAlertInstanceListClassificationsList>;
+
 export interface CodeScanningAlertInstanceList {
   ref?: string;
   analysis_key?: string;
@@ -1070,12 +1428,33 @@ export interface CodeScanningAlertInstanceList {
   /** Classifications that have been applied to the file that triggered the alert. For example identifying it as documentation, or a generated file. */
   classifications?: CodeScanningAlertInstanceListClassificationsList;
 }
+const CodeScanningAlertInstanceList = /*@__PURE__*/ __L.at(
+  __c8,
+  3,
+) as any as S.Schema<CodeScanningAlertInstanceList>;
+
 export type ListAlertInstancesResponseBodyList = Array<CodeScanningAlertInstanceList>;
+const ListAlertInstancesResponseBodyList = /*@__PURE__*/ __L.at(
+  __c8,
+  4,
+) as any as S.Schema<ListAlertInstancesResponseBodyList>;
+
 export type ListAlertInstancesResponse = ListAlertInstancesResponseBodyList;
+const ListAlertInstancesResponse = /*@__PURE__*/ __L.at(
+  __c8,
+  5,
+) as any as S.Schema<ListAlertInstancesResponse>;
+
 export type ListAlertsForOrgRequestDirection = "asc" | "desc";
+const ListAlertsForOrgRequestDirection = S.String;
+
 /** State of a code scanning alert. */
 export type CodeScanningAlertStateQuery = "open" | "closed" | "dismissed" | "fixed";
+const CodeScanningAlertStateQuery = S.String;
+
 export type ListAlertsForOrgRequestSort = "created" | "updated";
+const ListAlertsForOrgRequestSort = S.String;
+
 /** Severity of a code scanning alert. */
 export type CodeScanningAlertSeverity =
   | "critical"
@@ -1085,6 +1464,8 @@ export type CodeScanningAlertSeverity =
   | "warning"
   | "note"
   | "error";
+const CodeScanningAlertSeverity = S.String;
+
 export interface ListAlertsForOrgRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -1111,16 +1492,28 @@ export interface ListAlertsForOrgRequest {
   /** Filter alerts by assignees. Provide a comma-separated list of user handles (e.g., `octocat` or `octocat,hubot`). Use `*` to list alerts with at least one assignee or `none` to list alerts with no assignees. */
   assignees?: string;
 }
+const ListAlertsForOrgRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  6,
+) as any as S.Schema<ListAlertsForOrgRequest>;
+
 /** The severity of the alert. */
 export type CodeScanningAlertRuleSummarySeverity = "none" | "note" | "warning" | "error";
+const CodeScanningAlertRuleSummarySeverity = S.String;
+
 /** The security severity of the alert. */
 export type CodeScanningAlertRuleSummarySecuritySeverityLevel =
   | "low"
   | "medium"
   | "high"
   | "critical";
+const CodeScanningAlertRuleSummarySecuritySeverityLevel = S.String;
+
 /** A set of tags applicable for the rule. */
 export type CodeScanningAlertRuleSummaryTagsList = Array<string>;
+const CodeScanningAlertRuleSummaryTagsList =
+  CreateVariantAnalysisRequestRepositoriesList as any as S.Schema<CodeScanningAlertRuleSummaryTagsList>;
+
 export interface CodeScanningAlertRuleSummary {
   /** A unique identifier for the rule used to detect the alert. */
   id?: string | null;
@@ -1141,7 +1534,15 @@ export interface CodeScanningAlertRuleSummary {
   /** A link to the documentation for the rule used to detect the alert. */
   help_uri?: string | null;
 }
+const CodeScanningAlertRuleSummary = /*@__PURE__*/ __L.at(
+  __c8,
+  7,
+) as any as S.Schema<CodeScanningAlertRuleSummary>;
+
 export type CodeScanningOrganizationAlertItemsAssigneesList = Array<SimpleUser>;
+const CodeScanningOrganizationAlertItemsAssigneesList =
+  CodeScanningAlertAssigneesList as any as S.Schema<CodeScanningOrganizationAlertItemsAssigneesList>;
+
 export interface CodeScanningOrganizationAlertItems {
   number: number;
   created_at: string;
@@ -1162,10 +1563,29 @@ export interface CodeScanningOrganizationAlertItems {
   dismissal_approved_by?: SimpleUser | null;
   assignees?: CodeScanningOrganizationAlertItemsAssigneesList;
 }
+const CodeScanningOrganizationAlertItems = /*@__PURE__*/ __L.at(
+  __c9,
+  0,
+) as any as S.Schema<CodeScanningOrganizationAlertItems>;
+
 export type ListAlertsForOrgResponseBodyList = Array<CodeScanningOrganizationAlertItems>;
+const ListAlertsForOrgResponseBodyList = /*@__PURE__*/ __L.at(
+  __c9,
+  1,
+) as any as S.Schema<ListAlertsForOrgResponseBodyList>;
+
 export type ListAlertsForOrgResponse = ListAlertsForOrgResponseBodyList;
+const ListAlertsForOrgResponse = /*@__PURE__*/ __L.at(
+  __c9,
+  2,
+) as any as S.Schema<ListAlertsForOrgResponse>;
+
 export type ListAlertsForRepoRequestDirection = "asc" | "desc";
+const ListAlertsForRepoRequestDirection = S.String;
+
 export type ListAlertsForRepoRequestSort = "created" | "updated";
+const ListAlertsForRepoRequestSort = S.String;
+
 export interface ListAlertsForRepoRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -1198,7 +1618,15 @@ export interface ListAlertsForRepoRequest {
   /** Filter alerts by assignees. Provide a comma-separated list of user handles (e.g., `octocat` or `octocat,hubot`). Use `*` to list alerts with at least one assignee or `none` to list alerts with no assignees. */
   assignees?: string;
 }
+const ListAlertsForRepoRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  3,
+) as any as S.Schema<ListAlertsForRepoRequest>;
+
 export type CodeScanningAlertItemsAssigneesList = Array<SimpleUser>;
+const CodeScanningAlertItemsAssigneesList =
+  CodeScanningAlertAssigneesList as any as S.Schema<CodeScanningAlertItemsAssigneesList>;
+
 export interface CodeScanningAlertItems {
   number: number;
   created_at: string;
@@ -1218,18 +1646,52 @@ export interface CodeScanningAlertItems {
   dismissal_approved_by?: SimpleUser | null;
   assignees?: CodeScanningAlertItemsAssigneesList;
 }
+const CodeScanningAlertItems = /*@__PURE__*/ __L.at(
+  __c9,
+  4,
+) as any as S.Schema<CodeScanningAlertItems>;
+
 export type ListAlertsForRepoResponseBodyList = Array<CodeScanningAlertItems>;
+const ListAlertsForRepoResponseBodyList = /*@__PURE__*/ __L.at(
+  __c9,
+  5,
+) as any as S.Schema<ListAlertsForRepoResponseBodyList>;
+
 export type ListAlertsForRepoResponse = ListAlertsForRepoResponseBodyList;
+const ListAlertsForRepoResponse = /*@__PURE__*/ __L.at(
+  __c9,
+  6,
+) as any as S.Schema<ListAlertsForRepoResponse>;
+
 export interface ListCodeqlDatabasesRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
   /** The name of the repository without the `.git` extension. The name is not case sensitive. */
   repo: string;
 }
+const ListCodeqlDatabasesRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  7,
+) as any as S.Schema<ListCodeqlDatabasesRequest>;
+
 export type ListCodeqlDatabasesResponseBodyList = Array<CodeScanningCodeqlDatabase>;
+const ListCodeqlDatabasesResponseBodyList = /*@__PURE__*/ __L.at(
+  __c10,
+  0,
+) as any as S.Schema<ListCodeqlDatabasesResponseBodyList>;
+
 export type ListCodeqlDatabasesResponse = ListCodeqlDatabasesResponseBodyList;
+const ListCodeqlDatabasesResponse = /*@__PURE__*/ __L.at(
+  __c10,
+  1,
+) as any as S.Schema<ListCodeqlDatabasesResponse>;
+
 export type ListRecentAnalysesRequestDirection = "asc" | "desc";
+const ListRecentAnalysesRequestDirection = S.String;
+
 export type ListRecentAnalysesRequestSort = "created";
+const ListRecentAnalysesRequestSort = S.String;
+
 export interface ListRecentAnalysesRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -1254,10 +1716,27 @@ export interface ListRecentAnalysesRequest {
   /** The property by which to sort the results. */
   sort?: ListRecentAnalysesRequestSort | (string & {});
 }
+const ListRecentAnalysesRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  2,
+) as any as S.Schema<ListRecentAnalysesRequest>;
+
 export type ListRecentAnalysesResponseBodyList = Array<CodeScanningAnalysis>;
+const ListRecentAnalysesResponseBodyList = /*@__PURE__*/ __L.at(
+  __c10,
+  3,
+) as any as S.Schema<ListRecentAnalysesResponseBodyList>;
+
 export type ListRecentAnalysesResponse = ListRecentAnalysesResponseBodyList;
+const ListRecentAnalysesResponse = /*@__PURE__*/ __L.at(
+  __c10,
+  4,
+) as any as S.Schema<ListRecentAnalysesResponse>;
+
 /** Whether to enable or disable AI Scan for the repository. */
 export type UpdateAiScanEnablementRequestPrScan = "enabled" | "disabled";
+const UpdateAiScanEnablementRequestPrScan = S.String;
+
 export interface UpdateAiScanEnablementRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -1266,18 +1745,35 @@ export interface UpdateAiScanEnablementRequest {
   /** Whether to enable or disable AI Scan for the repository. */
   pr_scan?: UpdateAiScanEnablementRequestPrScan | (string & {});
 }
+const UpdateAiScanEnablementRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  5,
+) as any as S.Schema<UpdateAiScanEnablementRequest>;
+
 /** Whether AI Scan is enabled for the organization. Organization respects enterprise policy. Disabled organizations prevent repositories from enabling AI Scan. Enabled organizations enable AI Scan for their repositories, but individual repositories can opt out. */
 export type UpdateAiScanEnablementForOrgRequestPrScan = "enabled" | "disabled";
+const UpdateAiScanEnablementForOrgRequestPrScan = S.String;
+
 export interface UpdateAiScanEnablementForOrgRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
   /** Whether AI Scan is enabled for the organization. Organization respects enterprise policy. Disabled organizations prevent repositories from enabling AI Scan. Enabled organizations enable AI Scan for their repositories, but individual repositories can opt out. */
   pr_scan?: UpdateAiScanEnablementForOrgRequestPrScan | (string & {});
 }
+const UpdateAiScanEnablementForOrgRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  6,
+) as any as S.Schema<UpdateAiScanEnablementForOrgRequest>;
+
 /** Sets the state of the code scanning alert. You must provide `dismissed_reason` when you set the state to `dismissed`. */
 export type CodeScanningAlertSetState = "open" | "dismissed";
+const CodeScanningAlertSetState = S.String;
+
 /** The list of users to assign to the code scanning alert. An empty array unassigns all previous assignees from the alert. */
 export type CodeScanningAlertAssignees = Array<string>;
+const CodeScanningAlertAssignees =
+  CreateVariantAnalysisRequestRepositoriesList as any as S.Schema<CodeScanningAlertAssignees>;
+
 export interface UpdateAlertRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -1291,14 +1787,24 @@ export interface UpdateAlertRequest {
   create_request?: boolean;
   assignees?: CodeScanningAlertAssignees;
 }
+const UpdateAlertRequest = /*@__PURE__*/ __L.at(__c10, 7) as any as S.Schema<UpdateAlertRequest>;
+
 /** The desired state of code scanning default setup. */
 export type UpdateDefaultSetupRequestState = "configured" | "not-configured";
+const UpdateDefaultSetupRequestState = S.String;
+
 /** Runner type to be used. */
 export type UpdateDefaultSetupRequestRunnerType = "standard" | "labeled";
+const UpdateDefaultSetupRequestRunnerType = S.String;
+
 /** CodeQL query suite to be used. */
 export type UpdateDefaultSetupRequestQuerySuite = "default" | "extended";
+const UpdateDefaultSetupRequestQuerySuite = S.String;
+
 /** Threat model to be used for code scanning analysis. Use `remote` to analyze only network sources and `remote_and_local` to include local sources like filesystem access, command-line arguments, database reads, environment variable and standard input. */
 export type UpdateDefaultSetupRequestThreatModel = "remote" | "remote_and_local";
+const UpdateDefaultSetupRequestThreatModel = S.String;
+
 export type UpdateDefaultSetupRequestLanguagesItem =
   | "actions"
   | "c-cpp"
@@ -1313,6 +1819,9 @@ export type UpdateDefaultSetupRequestLanguagesItem =
 export type UpdateDefaultSetupRequestLanguagesList = Array<
   UpdateDefaultSetupRequestLanguagesItem | (string & {})
 >;
+const UpdateDefaultSetupRequestLanguagesList =
+  CodeScanningDefaultSetupLanguagesList as any as S.Schema<UpdateDefaultSetupRequestLanguagesList>;
+
 export interface UpdateDefaultSetupRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -1331,7 +1840,17 @@ export interface UpdateDefaultSetupRequest {
   /** CodeQL languages to be analyzed. */
   languages?: UpdateDefaultSetupRequestLanguagesList;
 }
+const UpdateDefaultSetupRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  0,
+) as any as S.Schema<UpdateDefaultSetupRequest>;
+
 export type UpdateDefaultSetupResponse = unknown;
+const UpdateDefaultSetupResponse = /*@__PURE__*/ __L.at(
+  __c11,
+  1,
+) as any as S.Schema<UpdateDefaultSetupResponse>;
+
 export interface UploadSarifRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -1349,7 +1868,11 @@ export interface UploadSarifRequest {
   /** Whether the SARIF file will be validated according to the code scanning specifications. This parameter is intended to help integrators ensure that the uploaded SARIF files are correctly rendered by code scanning. */
   validate?: boolean;
 }
+const UploadSarifRequest = /*@__PURE__*/ __L.at(__c11, 2) as any as S.Schema<UploadSarifRequest>;
+
 export interface UploadSarifResponse {}
+const UploadSarifResponse = DeleteCodeqlDatabaseResponse as any as S.Schema<UploadSarifResponse>;
+
 export type CommitAutofixError =
   | BadRequest
   | Forbidden
@@ -1363,8 +1886,8 @@ export const commitAutofix: API.OperationMethod<
   CommitAutofixError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<CommitAutofixRequest>,
-  output: __S(1) as any as S.Schema<CodeScanningAutofixCommitsResponse>,
+  input: CommitAutofixRequest,
+  output: CodeScanningAutofixCommitsResponse,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1383,8 +1906,8 @@ export const createAutofix: API.OperationMethod<
   CreateAutofixError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2) as any as S.Schema<CreateAutofixRequest>,
-  output: __S(3) as any as S.Schema<CodeScanningAutofix>,
+  input: CreateAutofixRequest,
+  output: CodeScanningAutofix,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1398,8 +1921,8 @@ export const createVariantAnalysis: API.OperationMethod<
   CreateVariantAnalysisError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5) as any as S.Schema<CreateVariantAnalysisRequest>,
-  output: __S(16) as any as S.Schema<CodeScanningVariantAnalysis>,
+  input: CreateVariantAnalysisRequest,
+  output: CodeScanningVariantAnalysis,
   errors: [NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1413,8 +1936,8 @@ export const deleteAnalysis: API.OperationMethod<
   DeleteAnalysisError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17) as any as S.Schema<DeleteAnalysisRequest>,
-  output: __S(18) as any as S.Schema<CodeScanningAnalysisDeletion>,
+  input: DeleteAnalysisRequest,
+  output: CodeScanningAnalysisDeletion,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1428,8 +1951,8 @@ export const deleteCodeqlDatabase: API.OperationMethod<
   DeleteCodeqlDatabaseError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19) as any as S.Schema<DeleteCodeqlDatabaseRequest>,
-  output: __S(20) as any as S.Schema<DeleteCodeqlDatabaseResponse>,
+  input: DeleteCodeqlDatabaseRequest,
+  output: DeleteCodeqlDatabaseResponse,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1443,8 +1966,8 @@ export const getAiScanEnablement: API.OperationMethod<
   GetAiScanEnablementError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21) as any as S.Schema<GetAiScanEnablementRequest>,
-  output: __S(22) as any as S.Schema<CodeScanningAiScanEnablement>,
+  input: GetAiScanEnablementRequest,
+  output: CodeScanningAiScanEnablement,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1458,8 +1981,8 @@ export const getAiScanEnablementForOrg: API.OperationMethod<
   GetAiScanEnablementForOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23) as any as S.Schema<GetAiScanEnablementForOrgRequest>,
-  output: __S(22) as any as S.Schema<CodeScanningAiScanOrgSettings>,
+  input: GetAiScanEnablementForOrgRequest,
+  output: CodeScanningAiScanOrgSettings,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1473,8 +1996,8 @@ export const getAlert: API.OperationMethod<
   GetAlertError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24) as any as S.Schema<GetAlertRequest>,
-  output: __S(51) as any as S.Schema<CodeScanningAlert>,
+  input: GetAlertRequest,
+  output: CodeScanningAlert,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1488,8 +2011,8 @@ export const getAnalysis: API.OperationMethod<
   GetAnalysisError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(52) as any as S.Schema<GetAnalysisRequest>,
-  output: __S(53) as any as S.Schema<CodeScanningAnalysis>,
+  input: GetAnalysisRequest,
+  output: CodeScanningAnalysis,
   errors: [Forbidden, NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1503,8 +2026,8 @@ export const getAutofix: API.OperationMethod<
   GetAutofixError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(54) as any as S.Schema<GetAutofixRequest>,
-  output: __S(3) as any as S.Schema<CodeScanningAutofix>,
+  input: GetAutofixRequest,
+  output: CodeScanningAutofix,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1518,8 +2041,8 @@ export const getCodeqlDatabase: API.OperationMethod<
   GetCodeqlDatabaseError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(55) as any as S.Schema<GetCodeqlDatabaseRequest>,
-  output: __S(56) as any as S.Schema<CodeScanningCodeqlDatabase>,
+  input: GetCodeqlDatabaseRequest,
+  output: CodeScanningCodeqlDatabase,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1533,8 +2056,8 @@ export const getDefaultSetup: API.OperationMethod<
   GetDefaultSetupError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57) as any as S.Schema<GetDefaultSetupRequest>,
-  output: __S(59) as any as S.Schema<CodeScanningDefaultSetup>,
+  input: GetDefaultSetupRequest,
+  output: CodeScanningDefaultSetup,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1548,8 +2071,8 @@ export const getSarif: API.OperationMethod<
   GetSarifError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60) as any as S.Schema<GetSarifRequest>,
-  output: __S(61) as any as S.Schema<CodeScanningSarifsStatus>,
+  input: GetSarifRequest,
+  output: CodeScanningSarifsStatus,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1563,8 +2086,8 @@ export const getVariantAnalysis: API.OperationMethod<
   GetVariantAnalysisError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(62) as any as S.Schema<GetVariantAnalysisRequest>,
-  output: __S(16) as any as S.Schema<CodeScanningVariantAnalysis>,
+  input: GetVariantAnalysisRequest,
+  output: CodeScanningVariantAnalysis,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1578,8 +2101,8 @@ export const getVariantAnalysisRepoTask: API.OperationMethod<
   GetVariantAnalysisRepoTaskError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(63) as any as S.Schema<GetVariantAnalysisRepoTaskRequest>,
-  output: __S(64) as any as S.Schema<CodeScanningVariantAnalysisRepoTask>,
+  input: GetVariantAnalysisRepoTaskRequest,
+  output: CodeScanningVariantAnalysisRepoTask,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1593,8 +2116,8 @@ export const listAlertInstances: API.OperationMethod<
   ListAlertInstancesError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65) as any as S.Schema<ListAlertInstancesRequest>,
-  output: __S(69) as any as S.Schema<ListAlertInstancesResponse>,
+  input: ListAlertInstancesRequest,
+  output: ListAlertInstancesResponse,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1608,8 +2131,8 @@ export const listAlertsForOrg: API.OperationMethod<
   ListAlertsForOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(70) as any as S.Schema<ListAlertsForOrgRequest>,
-  output: __S(74) as any as S.Schema<ListAlertsForOrgResponse>,
+  input: ListAlertsForOrgRequest,
+  output: ListAlertsForOrgResponse,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1623,8 +2146,8 @@ export const listAlertsForRepo: API.OperationMethod<
   ListAlertsForRepoError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(75) as any as S.Schema<ListAlertsForRepoRequest>,
-  output: __S(78) as any as S.Schema<ListAlertsForRepoResponse>,
+  input: ListAlertsForRepoRequest,
+  output: ListAlertsForRepoResponse,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1638,8 +2161,8 @@ export const listCodeqlDatabases: API.OperationMethod<
   ListCodeqlDatabasesError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(79) as any as S.Schema<ListCodeqlDatabasesRequest>,
-  output: __S(81) as any as S.Schema<ListCodeqlDatabasesResponse>,
+  input: ListCodeqlDatabasesRequest,
+  output: ListCodeqlDatabasesResponse,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1653,8 +2176,8 @@ export const listRecentAnalyses: API.OperationMethod<
   ListRecentAnalysesError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(82) as any as S.Schema<ListRecentAnalysesRequest>,
-  output: __S(84) as any as S.Schema<ListRecentAnalysesResponse>,
+  input: ListRecentAnalysesRequest,
+  output: ListRecentAnalysesResponse,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1672,8 +2195,8 @@ export const updateAiScanEnablement: API.OperationMethod<
   UpdateAiScanEnablementError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(85) as any as S.Schema<UpdateAiScanEnablementRequest>,
-  output: __S(22) as any as S.Schema<CodeScanningAiScanEnablement>,
+  input: UpdateAiScanEnablementRequest,
+  output: CodeScanningAiScanEnablement,
   errors: [Forbidden, NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1691,8 +2214,8 @@ export const updateAiScanEnablementForOrg: API.OperationMethod<
   UpdateAiScanEnablementForOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(86) as any as S.Schema<UpdateAiScanEnablementForOrgRequest>,
-  output: __S(22) as any as S.Schema<CodeScanningAiScanOrgSettings>,
+  input: UpdateAiScanEnablementForOrgRequest,
+  output: CodeScanningAiScanOrgSettings,
   errors: [Forbidden, NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1706,8 +2229,8 @@ export const updateAlert: API.OperationMethod<
   UpdateAlertError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(87) as any as S.Schema<UpdateAlertRequest>,
-  output: __S(51) as any as S.Schema<CodeScanningAlert>,
+  input: UpdateAlertRequest,
+  output: CodeScanningAlert,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1726,8 +2249,8 @@ export const updateDefaultSetup: API.OperationMethod<
   UpdateDefaultSetupError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(88) as any as S.Schema<UpdateDefaultSetupRequest>,
-  output: __S(89) as any as S.Schema<UpdateDefaultSetupResponse>,
+  input: UpdateDefaultSetupRequest,
+  output: UpdateDefaultSetupResponse,
   errors: [Forbidden, NotFound, Conflict, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1741,8 +2264,8 @@ export const uploadSarif: API.OperationMethod<
   UploadSarifError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(90) as any as S.Schema<UploadSarifRequest>,
-  output: __S(20) as any as S.Schema<UploadSarifResponse>,
+  input: UploadSarifRequest,
+  output: UploadSarifResponse,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1793,7 +2316,7 @@ function __c0(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          status: S.String,
+          status: CodeScanningAutofixStatus,
           description: S.NullOr(S.String),
           started_at: S.String,
         }),
@@ -1805,11 +2328,11 @@ function __c0(j: number): any {
         S.Struct({
           owner: S.String.pipe(T.Label()),
           repo: S.String.pipe(T.Label()),
-          language: S.String,
+          language: CodeScanningVariantAnalysisLanguage,
           query_pack: S.String,
-          repositories: S.optional(__S(4)),
-          repository_lists: S.optional(__S(4)),
-          repository_owners: S.optional(__S(4)),
+          repositories: S.optional(CreateVariantAnalysisRequestRepositoriesList),
+          repository_lists: S.optional(CreateVariantAnalysisRequestRepositoryListsList),
+          repository_owners: S.optional(CreateVariantAnalysisRequestRepositoryOwnersList),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1854,7 +2377,7 @@ function __c0(j: number): any {
           node_id: S.String,
           name: S.String,
           full_name: S.String,
-          owner: __S(6),
+          owner: SimpleUser,
           private: S.Boolean,
           html_url: S.String,
           description: S.NullOr(S.String),
@@ -1918,8 +2441,8 @@ function __c1(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          repository: __S(8),
-          analysis_status: S.String,
+          repository: CodeScanningVariantAnalysisRepository,
+          analysis_status: CodeScanningVariantAnalysisStatus2,
           result_count: S.optional(S.Number),
           artifact_size_in_bytes: S.optional(S.Number),
           failure_message: S.optional(S.String),
@@ -1928,14 +2451,14 @@ function __c1(j: number): any {
         identifier: "CodeScanningVariantAnalysisScannedRepositoriesItem",
       });
     case 2:
-      return S.Array(__S(9));
+      return S.Array(CodeScanningVariantAnalysisScannedRepositoriesItem);
     case 3:
-      return S.Array(__S(8));
+      return S.Array(CodeScanningVariantAnalysisRepository);
     case 4:
       return S.suspend(() =>
         S.Struct({
           repository_count: S.Number,
-          repositories: __S(11),
+          repositories: CodeScanningVariantAnalysisSkippedRepoGroupRepositoriesList,
         }),
       ).annotate({
         identifier: "CodeScanningVariantAnalysisSkippedRepoGroup",
@@ -1946,7 +2469,8 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           repository_count: S.Number,
-          repository_full_names: __S(13),
+          repository_full_names:
+            CodeScanningVariantAnalysisSkippedRepositoriesNotFoundReposRepositoryFullNamesList,
         }),
       ).annotate({
         identifier: "CodeScanningVariantAnalysisSkippedRepositoriesNotFoundRepos",
@@ -1954,10 +2478,10 @@ function __c1(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          access_mismatch_repos: __S(12),
-          not_found_repos: __S(14),
-          no_codeql_db_repos: __S(12),
-          over_limit_repos: __S(12),
+          access_mismatch_repos: CodeScanningVariantAnalysisSkippedRepoGroup,
+          not_found_repos: CodeScanningVariantAnalysisSkippedRepositoriesNotFoundRepos,
+          no_codeql_db_repos: CodeScanningVariantAnalysisSkippedRepoGroup,
+          over_limit_repos: CodeScanningVariantAnalysisSkippedRepoGroup,
         }),
       ).annotate({
         identifier: "CodeScanningVariantAnalysisSkippedRepositories",
@@ -1970,18 +2494,18 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.Number,
-          controller_repo: __S(7),
-          actor: __S(6),
-          query_language: S.String,
+          controller_repo: SimpleRepository,
+          actor: SimpleUser,
+          query_language: CodeScanningVariantAnalysisLanguage,
           query_pack_url: S.String,
           created_at: S.optional(S.String),
           updated_at: S.optional(S.String),
           completed_at: S.optional(S.NullOr(S.String)),
-          status: S.String,
+          status: CodeScanningVariantAnalysisStatus,
           actions_workflow_run_id: S.optional(S.Number),
-          failure_reason: S.optional(S.String),
-          scanned_repositories: S.optional(__S(10)),
-          skipped_repositories: S.optional(__S(15)),
+          failure_reason: S.optional(CodeScanningVariantAnalysisFailureReason),
+          scanned_repositories: S.optional(CodeScanningVariantAnalysisScannedRepositoriesList),
+          skipped_repositories: S.optional(CodeScanningVariantAnalysisSkippedRepositories),
         }),
       ).annotate({
         identifier: "CodeScanningVariantAnalysis",
@@ -2044,7 +2568,7 @@ function __c2(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          pr_scan: S.String,
+          pr_scan: CodeScanningAiScanEnablementPrScan,
         }),
       ).annotate({
         identifier: "CodeScanningAiScanEnablement",
@@ -2080,11 +2604,11 @@ function __c3(j: number): any {
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
           name: S.optional(S.String),
-          severity: S.optional(S.NullOr(S.String)),
-          security_severity_level: S.optional(S.NullOr(S.String)),
+          severity: S.optional(S.NullOr(CodeScanningAlertRuleSeverity)),
+          security_severity_level: S.optional(S.NullOr(CodeScanningAlertRuleSecuritySeverityLevel)),
           description: S.optional(S.String),
           full_description: S.optional(S.String),
-          tags: S.optional(S.NullOr(__S(4))),
+          tags: S.optional(S.NullOr(CodeScanningAlertRuleTagsList)),
           help: S.optional(S.NullOr(S.String)),
           help_uri: S.optional(S.NullOr(S.String)),
         }),
@@ -2119,7 +2643,7 @@ function __c3(j: number): any {
         identifier: "CodeScanningAlertLocation",
       });
     case 5:
-      return S.Array(/*@__PURE__*/ S.NullOr(S.String));
+      return S.Array(/*@__PURE__*/ S.NullOr(CodeScanningAlertClassification));
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -2127,18 +2651,18 @@ function __c3(j: number): any {
           analysis_key: S.optional(S.String),
           environment: S.optional(S.String),
           category: S.optional(S.String),
-          state: S.optional(S.NullOr(S.String)),
+          state: S.optional(S.NullOr(CodeScanningAlertState)),
           commit_sha: S.optional(S.String),
-          message: S.optional(__S(27)),
-          location: S.optional(__S(28)),
+          message: S.optional(CodeScanningAlertInstanceMessage),
+          location: S.optional(CodeScanningAlertLocation),
           html_url: S.optional(S.String),
-          classifications: S.optional(__S(29)),
+          classifications: S.optional(CodeScanningAlertInstanceClassificationsList),
         }),
       ).annotate({
         identifier: "CodeScanningAlertInstance",
       });
     case 7:
-      return S.Array(__S(6));
+      return S.Array(SimpleUser);
   }
 }
 function __c4(j: number): any {
@@ -2153,13 +2677,13 @@ function __c4(j: number): any {
           description: S.String,
           color: S.String,
           default: S.Boolean,
-          archived_by: S.NullOr(__S(6)),
+          archived_by: S.NullOr(SimpleUser),
         }),
       ).annotate({
         identifier: "PullRequestSimpleLabelsItem",
       });
     case 1:
-      return S.Array(__S(32));
+      return S.Array(PullRequestSimpleLabelsItem);
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -2169,10 +2693,10 @@ function __c4(j: number): any {
           id: S.Number,
           node_id: S.String,
           number: S.Number,
-          state: S.String,
+          state: NullableMilestoneState,
           title: S.String,
           description: S.NullOr(S.String),
-          creator: S.NullOr(__S(6)),
+          creator: S.NullOr(SimpleUser),
           open_issues: S.Number,
           closed_issues: S.Number,
           created_at: S.String,
@@ -2207,7 +2731,7 @@ function __c4(j: number): any {
           repositories_url: S.String,
           slug: S.String,
           ldap_dn: S.optional(S.String),
-          type: S.String,
+          type: NullableTeamSimpleType,
           organization_id: S.optional(S.Number),
           enterprise_id: S.optional(S.Number),
         }),
@@ -2223,20 +2747,20 @@ function __c4(j: number): any {
           privacy: S.optional(S.String),
           notification_setting: S.optional(S.String),
           permission: S.String,
-          permissions: S.optional(__S(35)),
+          permissions: S.optional(TeamPermissions),
           url: S.String,
           html_url: S.String,
           members_url: S.String,
           repositories_url: S.String,
-          type: S.String,
-          access_source: S.optional(S.String),
+          type: TeamType,
+          access_source: S.optional(TeamAccessSource),
           organization_id: S.optional(S.Number),
           enterprise_id: S.optional(S.Number),
-          parent: S.NullOr(__S(36)),
+          parent: S.NullOr(NullableTeamSimple),
         }),
       ).annotate({ identifier: "Team" });
     case 6:
-      return S.Array(__S(37));
+      return S.Array(Team);
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -2278,10 +2802,10 @@ function __c5(j: number): any {
           node_id: S.String,
           name: S.String,
           full_name: S.String,
-          license: S.NullOr(__S(39)),
+          license: S.NullOr(NullableLicenseSimple),
           forks: S.Number,
-          permissions: S.optional(__S(40)),
-          owner: __S(6),
+          permissions: S.optional(RepositoryPermissions),
+          owner: SimpleUser,
           private: S.Boolean,
           html_url: S.String,
           description: S.NullOr(S.String),
@@ -2337,7 +2861,7 @@ function __c5(j: number): any {
           default_branch: S.String,
           open_issues_count: S.Number,
           is_template: S.optional(S.Boolean),
-          topics: S.optional(__S(4)),
+          topics: S.optional(RepositoryTopicsList),
           has_issues: S.Boolean,
           has_projects: S.Boolean,
           has_wiki: S.Boolean,
@@ -2345,7 +2869,7 @@ function __c5(j: number): any {
           has_downloads: S.Boolean,
           has_discussions: S.optional(S.Boolean),
           has_pull_requests: S.optional(S.Boolean),
-          pull_request_creation_policy: S.optional(S.String),
+          pull_request_creation_policy: S.optional(RepositoryPullRequestCreationPolicy),
           archived: S.Boolean,
           disabled: S.Boolean,
           visibility: S.optional(S.String),
@@ -2359,10 +2883,10 @@ function __c5(j: number): any {
           delete_branch_on_merge: S.optional(S.Boolean),
           allow_update_branch: S.optional(S.Boolean),
           use_squash_pr_title_as_default: S.optional(S.Boolean),
-          squash_merge_commit_title: S.optional(S.String),
-          squash_merge_commit_message: S.optional(S.String),
-          merge_commit_title: S.optional(S.String),
-          merge_commit_message: S.optional(S.String),
+          squash_merge_commit_title: S.optional(RepositorySquashMergeCommitTitle),
+          squash_merge_commit_message: S.optional(RepositorySquashMergeCommitMessage),
+          merge_commit_title: S.optional(RepositoryMergeCommitTitle),
+          merge_commit_message: S.optional(RepositoryMergeCommitMessage),
           allow_merge_commit: S.optional(S.Boolean),
           allow_forking: S.optional(S.Boolean),
           web_commit_signoff_required: S.optional(S.Boolean),
@@ -2371,7 +2895,7 @@ function __c5(j: number): any {
           master_branch: S.optional(S.String),
           starred_at: S.optional(S.String),
           anonymous_access_enabled: S.optional(S.Boolean),
-          code_search_index_status: S.optional(__S(41)),
+          code_search_index_status: S.optional(RepositoryCodeSearchIndexStatus),
         }),
       ).annotate({ identifier: "Repository" });
     case 3:
@@ -2379,9 +2903,9 @@ function __c5(j: number): any {
         S.Struct({
           label: S.String,
           ref: S.String,
-          repo: __S(42),
+          repo: Repository,
           sha: S.String,
-          user: S.NullOr(__S(6)),
+          user: S.NullOr(SimpleUser),
         }),
       ).annotate({ identifier: "PullRequestSimpleHead" });
     case 4:
@@ -2393,21 +2917,21 @@ function __c5(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          comments: __S(44),
-          commits: __S(44),
-          statuses: __S(44),
-          html: __S(44),
-          issue: __S(44),
-          review_comments: __S(44),
-          review_comment: __S(44),
-          self: __S(44),
+          comments: Link,
+          commits: Link,
+          statuses: Link,
+          html: Link,
+          issue: Link,
+          review_comments: Link,
+          review_comment: Link,
+          self: Link,
         }),
       ).annotate({ identifier: "PullRequestSimpleLinks" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          enabled_by: __S(6),
-          merge_method: S.String,
+          enabled_by: SimpleUser,
+          merge_method: AutoMergeMergeMethod,
           commit_title: S.String,
           commit_message: S.String,
         }),
@@ -2426,7 +2950,7 @@ function __c6(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          base: __S(47),
+          base: PullRequestStackBase,
           size: S.optional(S.Number),
           position: S.optional(S.Number),
           id: S.optional(S.Number),
@@ -2452,31 +2976,31 @@ function __c6(j: number): any {
           state: S.String,
           locked: S.Boolean,
           title: S.String,
-          user: S.NullOr(__S(6)),
+          user: S.NullOr(SimpleUser),
           body: S.NullOr(S.String),
-          labels: __S(33),
-          milestone: S.NullOr(__S(34)),
+          labels: PullRequestSimpleLabelsList,
+          milestone: S.NullOr(NullableMilestone),
           active_lock_reason: S.optional(S.NullOr(S.String)),
           created_at: S.String,
           updated_at: S.String,
           closed_at: S.NullOr(S.String),
           merged_at: S.NullOr(S.String),
           merge_commit_sha: S.NullOr(S.String),
-          assignee: S.NullOr(__S(6)),
-          assignees: S.optional(__S(31)),
-          requested_reviewers: S.optional(__S(31)),
-          requested_teams: S.optional(__S(38)),
-          head: __S(43),
-          base: __S(43),
-          _links: __S(45),
-          author_association: S.String,
-          auto_merge: S.NullOr(__S(46)),
-          stack: S.optional(S.NullOr(__S(48))),
+          assignee: S.NullOr(SimpleUser),
+          assignees: S.optional(PullRequestSimpleAssigneesList),
+          requested_reviewers: S.optional(PullRequestSimpleRequestedReviewersList),
+          requested_teams: S.optional(PullRequestSimpleRequestedTeamsList),
+          head: PullRequestSimpleHead,
+          base: PullRequestSimpleHead,
+          _links: PullRequestSimpleLinks,
+          author_association: AuthorAssociation,
+          auto_merge: S.NullOr(AutoMerge),
+          stack: S.optional(S.NullOr(PullRequestStack)),
           draft: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "PullRequestSimple" });
     case 2:
-      return S.Array(__S(49));
+      return S.Array(PullRequestSimple);
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -2486,18 +3010,18 @@ function __c6(j: number): any {
           url: S.String,
           html_url: S.String,
           instances_url: S.String,
-          state: S.NullOr(S.String),
+          state: S.NullOr(CodeScanningAlertState),
           fixed_at: S.optional(S.NullOr(S.String)),
-          dismissed_by: S.NullOr(__S(6)),
+          dismissed_by: S.NullOr(SimpleUser),
           dismissed_at: S.NullOr(S.String),
-          dismissed_reason: S.NullOr(S.String),
+          dismissed_reason: S.NullOr(CodeScanningAlertDismissedReason),
           dismissed_comment: S.optional(S.NullOr(S.String)),
-          rule: __S(25),
-          tool: __S(26),
-          most_recent_instance: __S(30),
-          dismissal_approved_by: S.optional(S.NullOr(__S(6))),
-          assignees: S.optional(__S(31)),
-          linked_pull_requests: S.optional(__S(50)),
+          rule: CodeScanningAlertRule,
+          tool: CodeScanningAnalysisTool,
+          most_recent_instance: CodeScanningAlertInstance,
+          dismissal_approved_by: S.optional(S.NullOr(SimpleUser)),
+          assignees: S.optional(CodeScanningAlertAssigneesList),
+          linked_pull_requests: S.optional(CodeScanningAlertLinkedPullRequestsList),
         }),
       ).annotate({ identifier: "CodeScanningAlert" });
     case 4:
@@ -2529,7 +3053,7 @@ function __c6(j: number): any {
           id: S.Number,
           url: S.String,
           sarif_id: S.String,
-          tool: __S(26),
+          tool: CodeScanningAnalysisTool,
           deletable: S.Boolean,
           warning: S.String,
         }),
@@ -2572,7 +3096,7 @@ function __c7(j: number): any {
           id: S.Number,
           name: S.String,
           language: S.String,
-          uploader: __S(6),
+          uploader: SimpleUser,
           content_type: S.String,
           size: S.Number,
           created_at: S.String,
@@ -2597,18 +3121,18 @@ function __c7(j: number): any {
         ),
       ).annotate({ identifier: "GetDefaultSetupRequest" });
     case 2:
-      return S.Array(S.String);
+      return S.Array(CodeScanningDefaultSetupLanguagesItem);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          state: S.optional(S.String),
-          languages: S.optional(__S(58)),
-          runner_type: S.optional(S.NullOr(S.String)),
+          state: S.optional(CodeScanningDefaultSetupState),
+          languages: S.optional(CodeScanningDefaultSetupLanguagesList),
+          runner_type: S.optional(S.NullOr(CodeScanningDefaultSetupRunnerType)),
           runner_label: S.optional(S.NullOr(S.String)),
-          query_suite: S.optional(S.String),
-          threat_model: S.optional(S.String),
+          query_suite: S.optional(CodeScanningDefaultSetupQuerySuite),
+          threat_model: S.optional(CodeScanningDefaultSetupThreatModel),
           updated_at: S.optional(S.NullOr(S.String)),
-          schedule: S.optional(S.NullOr(S.String)),
+          schedule: S.optional(S.NullOr(CodeScanningDefaultSetupSchedule)),
         }),
       ).annotate({ identifier: "CodeScanningDefaultSetup" });
     case 4:
@@ -2628,9 +3152,9 @@ function __c7(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          processing_status: S.optional(S.String),
+          processing_status: S.optional(CodeScanningSarifsStatusProcessingStatus),
           analyses_url: S.optional(S.NullOr(S.String)),
-          errors: S.optional(S.NullOr(__S(4))),
+          errors: S.optional(S.NullOr(CodeScanningSarifsStatusErrorsList)),
         }),
       ).annotate({ identifier: "CodeScanningSarifsStatus" });
     case 6:
@@ -2674,8 +3198,8 @@ function __c8(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          repository: __S(7),
-          analysis_status: S.String,
+          repository: SimpleRepository,
+          analysis_status: CodeScanningVariantAnalysisStatus2,
           artifact_size_in_bytes: S.optional(S.Number),
           result_count: S.optional(S.Number),
           failure_message: S.optional(S.String),
@@ -2721,22 +3245,24 @@ function __c8(j: number): any {
           analysis_key: S.optional(S.String),
           environment: S.optional(S.String),
           category: S.optional(S.String),
-          state: S.optional(S.NullOr(S.String)),
+          state: S.optional(S.NullOr(CodeScanningAlertInstanceState)),
           commit_sha: S.optional(S.String),
-          message: S.optional(__S(66)),
-          location: S.optional(__S(28)),
+          message: S.optional(CodeScanningAlertInstanceListMessage),
+          location: S.optional(CodeScanningAlertLocation),
           html_url: S.optional(S.String),
-          classifications: S.optional(__S(29)),
+          classifications: S.optional(CodeScanningAlertInstanceListClassificationsList),
         }),
       ).annotate({
         identifier: "CodeScanningAlertInstanceList",
       });
     case 4:
-      return S.Array(__S(67));
+      return S.Array(CodeScanningAlertInstanceList);
     case 5:
-      return S.suspend(() => __S(68).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListAlertInstancesResponse",
-      });
+      return S.suspend(() => ListAlertInstancesResponseBodyList.pipe(T.RawResponseRoot())).annotate(
+        {
+          identifier: "ListAlertInstancesResponse",
+        },
+      );
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -2747,10 +3273,10 @@ function __c8(j: number): any {
           after: S.optional(S.String.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
           per_page: S.optional(S.Number.pipe(T.Query())),
-          direction: S.optional(S.String.pipe(T.Query())),
-          state: S.optional(S.String.pipe(T.Query())),
-          sort: S.optional(S.String.pipe(T.Query())),
-          severity: S.optional(S.String.pipe(T.Query())),
+          direction: S.optional(ListAlertsForOrgRequestDirection.pipe(T.Query())),
+          state: S.optional(CodeScanningAlertStateQuery.pipe(T.Query())),
+          sort: S.optional(ListAlertsForOrgRequestSort.pipe(T.Query())),
+          severity: S.optional(CodeScanningAlertSeverity.pipe(T.Query())),
           assignees: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/orgs/{org}/code-scanning/alerts", code: 200 })),
       ).annotate({ identifier: "ListAlertsForOrgRequest" });
@@ -2759,11 +3285,13 @@ function __c8(j: number): any {
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
           name: S.optional(S.String),
-          severity: S.optional(S.NullOr(S.String)),
-          security_severity_level: S.optional(S.NullOr(S.String)),
+          severity: S.optional(S.NullOr(CodeScanningAlertRuleSummarySeverity)),
+          security_severity_level: S.optional(
+            S.NullOr(CodeScanningAlertRuleSummarySecuritySeverityLevel),
+          ),
           description: S.optional(S.String),
           full_description: S.optional(S.String),
-          tags: S.optional(S.NullOr(__S(4))),
+          tags: S.optional(S.NullOr(CodeScanningAlertRuleSummaryTagsList)),
           help: S.optional(S.NullOr(S.String)),
           help_uri: S.optional(S.NullOr(S.String)),
         }),
@@ -2783,26 +3311,26 @@ function __c9(j: number): any {
           url: S.String,
           html_url: S.String,
           instances_url: S.String,
-          state: S.NullOr(S.String),
+          state: S.NullOr(CodeScanningAlertState),
           fixed_at: S.optional(S.NullOr(S.String)),
-          dismissed_by: S.NullOr(__S(6)),
+          dismissed_by: S.NullOr(SimpleUser),
           dismissed_at: S.NullOr(S.String),
-          dismissed_reason: S.NullOr(S.String),
+          dismissed_reason: S.NullOr(CodeScanningAlertDismissedReason),
           dismissed_comment: S.optional(S.NullOr(S.String)),
-          rule: __S(71),
-          tool: __S(26),
-          most_recent_instance: __S(30),
-          repository: __S(7),
-          dismissal_approved_by: S.optional(S.NullOr(__S(6))),
-          assignees: S.optional(__S(31)),
+          rule: CodeScanningAlertRuleSummary,
+          tool: CodeScanningAnalysisTool,
+          most_recent_instance: CodeScanningAlertInstance,
+          repository: SimpleRepository,
+          dismissal_approved_by: S.optional(S.NullOr(SimpleUser)),
+          assignees: S.optional(CodeScanningOrganizationAlertItemsAssigneesList),
         }),
       ).annotate({
         identifier: "CodeScanningOrganizationAlertItems",
       });
     case 1:
-      return S.Array(__S(72));
+      return S.Array(CodeScanningOrganizationAlertItems);
     case 2:
-      return S.suspend(() => __S(73).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => ListAlertsForOrgResponseBodyList.pipe(T.RawResponseRoot())).annotate({
         identifier: "ListAlertsForOrgResponse",
       });
     case 3:
@@ -2816,12 +3344,12 @@ function __c9(j: number): any {
           per_page: S.optional(S.Number.pipe(T.Query())),
           ref: S.optional(S.String.pipe(T.Query())),
           pr: S.optional(S.Number.pipe(T.Query())),
-          direction: S.optional(S.String.pipe(T.Query())),
+          direction: S.optional(ListAlertsForRepoRequestDirection.pipe(T.Query())),
           before: S.optional(S.String.pipe(T.Query())),
           after: S.optional(S.String.pipe(T.Query())),
-          sort: S.optional(S.String.pipe(T.Query())),
-          state: S.optional(S.String.pipe(T.Query())),
-          severity: S.optional(S.String.pipe(T.Query())),
+          sort: S.optional(ListAlertsForRepoRequestSort.pipe(T.Query())),
+          state: S.optional(CodeScanningAlertStateQuery.pipe(T.Query())),
+          severity: S.optional(CodeScanningAlertSeverity.pipe(T.Query())),
           assignees: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({ method: "GET", uri: "/repos/{owner}/{repo}/code-scanning/alerts", code: 200 }),
@@ -2836,23 +3364,23 @@ function __c9(j: number): any {
           url: S.String,
           html_url: S.String,
           instances_url: S.String,
-          state: S.NullOr(S.String),
+          state: S.NullOr(CodeScanningAlertState),
           fixed_at: S.optional(S.NullOr(S.String)),
-          dismissed_by: S.NullOr(__S(6)),
+          dismissed_by: S.NullOr(SimpleUser),
           dismissed_at: S.NullOr(S.String),
-          dismissed_reason: S.NullOr(S.String),
+          dismissed_reason: S.NullOr(CodeScanningAlertDismissedReason),
           dismissed_comment: S.optional(S.NullOr(S.String)),
-          rule: __S(71),
-          tool: __S(26),
-          most_recent_instance: __S(30),
-          dismissal_approved_by: S.optional(S.NullOr(__S(6))),
-          assignees: S.optional(__S(31)),
+          rule: CodeScanningAlertRuleSummary,
+          tool: CodeScanningAnalysisTool,
+          most_recent_instance: CodeScanningAlertInstance,
+          dismissal_approved_by: S.optional(S.NullOr(SimpleUser)),
+          assignees: S.optional(CodeScanningAlertItemsAssigneesList),
         }),
       ).annotate({ identifier: "CodeScanningAlertItems" });
     case 5:
-      return S.Array(__S(76));
+      return S.Array(CodeScanningAlertItems);
     case 6:
-      return S.suspend(() => __S(77).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => ListAlertsForRepoResponseBodyList.pipe(T.RawResponseRoot())).annotate({
         identifier: "ListAlertsForRepoResponse",
       });
     case 7:
@@ -2875,9 +3403,11 @@ function __c9(j: number): any {
 function __c10(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(56));
+      return S.Array(CodeScanningCodeqlDatabase);
     case 1:
-      return S.suspend(() => __S(80).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        ListCodeqlDatabasesResponseBodyList.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "ListCodeqlDatabasesResponse",
       });
     case 2:
@@ -2892,8 +3422,8 @@ function __c10(j: number): any {
           pr: S.optional(S.Number.pipe(T.Query())),
           ref: S.optional(S.String.pipe(T.Query())),
           sarif_id: S.optional(S.String.pipe(T.Query())),
-          direction: S.optional(S.String.pipe(T.Query())),
-          sort: S.optional(S.String.pipe(T.Query())),
+          direction: S.optional(ListRecentAnalysesRequestDirection.pipe(T.Query())),
+          sort: S.optional(ListRecentAnalysesRequestSort.pipe(T.Query())),
         }).pipe(
           T.Http({ method: "GET", uri: "/repos/{owner}/{repo}/code-scanning/analyses", code: 200 }),
         ),
@@ -2901,17 +3431,19 @@ function __c10(j: number): any {
         identifier: "ListRecentAnalysesRequest",
       });
     case 3:
-      return S.Array(__S(53));
+      return S.Array(CodeScanningAnalysis);
     case 4:
-      return S.suspend(() => __S(83).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListRecentAnalysesResponse",
-      });
+      return S.suspend(() => ListRecentAnalysesResponseBodyList.pipe(T.RawResponseRoot())).annotate(
+        {
+          identifier: "ListRecentAnalysesResponse",
+        },
+      );
     case 5:
       return S.suspend(() =>
         S.Struct({
           owner: S.String.pipe(T.Label()),
           repo: S.String.pipe(T.Label()),
-          pr_scan: S.optional(S.String),
+          pr_scan: S.optional(UpdateAiScanEnablementRequestPrScan),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2926,7 +3458,7 @@ function __c10(j: number): any {
       return S.suspend(() =>
         S.Struct({
           org: S.String.pipe(T.Label()),
-          pr_scan: S.optional(S.String),
+          pr_scan: S.optional(UpdateAiScanEnablementForOrgRequestPrScan),
         }).pipe(T.Http({ method: "PATCH", uri: "/orgs/{org}/code-scanning/ai-scan", code: 200 })),
       ).annotate({
         identifier: "UpdateAiScanEnablementForOrgRequest",
@@ -2937,11 +3469,11 @@ function __c10(j: number): any {
           owner: S.String.pipe(T.Label()),
           repo: S.String.pipe(T.Label()),
           alert_number: S.Number.pipe(T.Label()),
-          state: S.optional(S.String),
-          dismissed_reason: S.optional(S.NullOr(S.String)),
+          state: S.optional(CodeScanningAlertSetState),
+          dismissed_reason: S.optional(S.NullOr(CodeScanningAlertDismissedReason)),
           dismissed_comment: S.optional(S.NullOr(S.String)),
           create_request: S.optional(S.Boolean),
-          assignees: S.optional(__S(4)),
+          assignees: S.optional(CodeScanningAlertAssignees),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2959,12 +3491,12 @@ function __c11(j: number): any {
         S.Struct({
           owner: S.String.pipe(T.Label()),
           repo: S.String.pipe(T.Label()),
-          state: S.optional(S.String),
-          runner_type: S.optional(S.String),
+          state: S.optional(UpdateDefaultSetupRequestState),
+          runner_type: S.optional(UpdateDefaultSetupRequestRunnerType),
           runner_label: S.optional(S.NullOr(S.String)),
-          query_suite: S.optional(S.String),
-          threat_model: S.optional(S.String),
-          languages: S.optional(__S(58)),
+          query_suite: S.optional(UpdateDefaultSetupRequestQuerySuite),
+          threat_model: S.optional(UpdateDefaultSetupRequestThreatModel),
+          languages: S.optional(UpdateDefaultSetupRequestLanguagesList),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2995,38 +3527,5 @@ function __c11(j: number): any {
           T.Http({ method: "POST", uri: "/repos/{owner}/{repo}/code-scanning/sarifs", code: 200 }),
         ),
       ).annotate({ identifier: "UploadSarifRequest" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
-    case 9:
-      return __c9(i & 7);
-    case 10:
-      return __c10(i & 7);
-    case 11:
-      return __c11(i & 7);
   }
 }

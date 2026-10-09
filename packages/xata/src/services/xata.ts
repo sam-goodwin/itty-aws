@@ -8,8 +8,6 @@ import { UnknownXataError } from "../errors.ts";
 import { XataProtocol, type XataOpError, type XataOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { XataOpError, XataOpContext };
 
@@ -51,10 +49,16 @@ export class NotFound
 
 /** Log attribute to filter on. */
 export type LogFilterField = "instance" | "level" | "process" | "body";
+const LogFilterField = S.String;
+
 /** Match operator. */
 export type LogFilterOp = "in" | "contains" | "icontains" | "regex" | "iregex";
+const LogFilterOp = S.String;
+
 /** Used with `op: in`. */
 export type LogFilterValuesList = Array<string>;
+const LogFilterValuesList = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<LogFilterValuesList>;
+
 /** A single filter on log entries. */
 export interface LogFilter {
   /** Log attribute to filter on. */
@@ -66,8 +70,15 @@ export interface LogFilter {
   /** Used with the body operators. */
   value?: string;
 }
+const LogFilter = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<LogFilter>;
+
 /** Filters applied to log entries. Multiple filters are combined with AND. */
 export type BranchLogsRequestFiltersList = Array<LogFilter>;
+const BranchLogsRequestFiltersList = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<BranchLogsRequestFiltersList>;
+
 export interface BranchLogsRequest {
   organizationID: string;
   projectID: string;
@@ -82,8 +93,12 @@ export interface BranchLogsRequest {
   /** Pagination cursor from a previous response */
   cursor?: string;
 }
+const BranchLogsRequest = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<BranchLogsRequest>;
+
 /** Log level enumeration */
 export type LogLevel = "debug" | "info" | "warning" | "error";
+const LogLevel = S.String;
+
 export interface LogEntry {
   timestamp: string;
   instanceID: string;
@@ -92,7 +107,11 @@ export interface LogEntry {
   /** Name of the PostgreSQL process that emitted the log */
   process?: string;
 }
+const LogEntry = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<LogEntry>;
+
 export type BranchLogsLogsList = Array<LogEntry>;
+const BranchLogsLogsList = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<BranchLogsLogsList>;
+
 /** A collection of logs for each of the instances of a branch */
 export interface BranchLogs {
   start: string;
@@ -101,6 +120,8 @@ export interface BranchLogs {
   /** Pagination cursor for the next page */
   nextCursor: string | null;
 }
+const BranchLogs = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<BranchLogs>;
+
 /** Name of a branch metric exposed by the API. */
 export type BranchMetricName =
   | "cpu"
@@ -118,15 +139,28 @@ export type BranchMetricName =
   | "throughput_write"
   | "wal_sync_time"
   | "replication_lag_time";
+const BranchMetricName = S.String;
+
 /** List of metric names to query. */
 export type BranchMetricsRequestMetricsList = Array<BranchMetricName | (string & {})>;
+const BranchMetricsRequestMetricsList = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<BranchMetricsRequestMetricsList>;
+
 /** List of instance IDs to query */
 export type BranchMetricsRequestInstancesList = Array<string>;
+const BranchMetricsRequestInstancesList =
+  LogFilterValuesList as any as S.Schema<BranchMetricsRequestInstancesList>;
+
 export type BranchMetricsRequestAggregationsItem = "avg" | "max" | "min";
 /** List of aggregations to get, this is how the data-points within the interval are aggregated. Each one will generate a separate time-series per metric in the response. */
 export type BranchMetricsRequestAggregationsList = Array<
   BranchMetricsRequestAggregationsItem | (string & {})
 >;
+const BranchMetricsRequestAggregationsList =
+  BranchMetricsRequestMetricsList as any as S.Schema<BranchMetricsRequestAggregationsList>;
+
 export interface BranchMetricsRequest {
   organizationID: string;
   projectID: string;
@@ -142,13 +176,27 @@ export interface BranchMetricsRequest {
   /** List of aggregations to get, this is how the data-points within the interval are aggregated. Each one will generate a separate time-series per metric in the response. */
   aggregations: BranchMetricsRequestAggregationsList;
 }
+const BranchMetricsRequest = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<BranchMetricsRequest>;
+
 /** The aggregation used to generate this time-series */
 export type MetricSeriesAggregation = "avg" | "max" | "min";
+const MetricSeriesAggregation = S.String;
+
 export interface MetricSeriesValuesItem {
   timestamp: string;
   value: number;
 }
+const MetricSeriesValuesItem = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<MetricSeriesValuesItem>;
+
 export type MetricSeriesValuesList = Array<MetricSeriesValuesItem>;
+const MetricSeriesValuesList = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<MetricSeriesValuesList>;
+
 /** The metric series */
 export interface MetricSeries {
   /** ID of the instance */
@@ -157,7 +205,14 @@ export interface MetricSeries {
   aggregation: MetricSeriesAggregation;
   values: MetricSeriesValuesList;
 }
+const MetricSeries = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<MetricSeries>;
+
 export type BranchMetricResultSeriesList = Array<MetricSeries>;
+const BranchMetricResultSeriesList = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<BranchMetricResultSeriesList>;
+
 /** Time-series for a single metric. */
 export interface BranchMetricResult {
   /** Name of the queried metric. */
@@ -166,8 +221,15 @@ export interface BranchMetricResult {
   unit: string;
   series: BranchMetricResultSeriesList;
 }
+const BranchMetricResult = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<BranchMetricResult>;
+
 /** One entry per requested metric, in the order the metrics were requested. */
 export type BranchMetricsResultsList = Array<BranchMetricResult>;
+const BranchMetricsResultsList = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<BranchMetricsResultsList>;
+
 /** A collection of metrics (cpu, memory, disk,...) for each of the instances of a branch */
 export interface BranchMetrics {
   start: string;
@@ -175,12 +237,19 @@ export interface BranchMetrics {
   /** One entry per requested metric, in the order the metrics were requested. */
   results: BranchMetricsResultsList;
 }
+const BranchMetrics = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<BranchMetrics>;
+
 export interface ClaimOrganizationSSODomainRequest {
   /** Unique identifier for a specific organization */
   organizationID: string;
   /** Bare email domain to claim, for example acme.com. */
   domain: string;
 }
+const ClaimOrganizationSSODomainRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<ClaimOrganizationSSODomainRequest>;
+
 /** The DNS TXT record that proves an organization controls a domain */
 export interface OrganizationSSODomainVerification {
   /** Name to create the record at */
@@ -190,6 +259,11 @@ export interface OrganizationSSODomainVerification {
   /** Value the record must hold */
   record_value: string;
 }
+const OrganizationSSODomainVerification = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<OrganizationSSODomainVerification>;
+
 /** An email domain claimed by an organization for SSO */
 export interface OrganizationSSODomain {
   /** The claimed email domain */
@@ -205,22 +279,45 @@ export interface OrganizationSSODomain {
   /** When the domain stops being verified if the record is still missing. */
   revokes_at?: string | null;
 }
+const OrganizationSSODomain = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<OrganizationSSODomain>;
+
 export interface CreateBillingCheckoutSessionRequest {
   /** Unique identifier for a specific organization */
   organizationID: string;
 }
+const CreateBillingCheckoutSessionRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<CreateBillingCheckoutSessionRequest>;
+
 export interface BillingCheckoutSessionResponse {
   /** Stripe checkout session URL */
   url: string;
 }
+const BillingCheckoutSessionResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<BillingCheckoutSessionResponse>;
+
 export interface CreateBillingPaymentMethodSessionRequest {
   /** Unique identifier for a specific organization */
   organizationID: string;
 }
+const CreateBillingPaymentMethodSessionRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<CreateBillingPaymentMethodSessionRequest>;
+
 export interface BillingPaymentMethodSessionResponse {
   /** Stripe payment method session URL */
   url: string;
 }
+const BillingPaymentMethodSessionResponse =
+  BillingCheckoutSessionResponse as any as S.Schema<BillingPaymentMethodSessionResponse>;
+
 /** Configuration for scaling branches to zero when not in use */
 export interface ScaleToZeroConfiguration {
   /** Whether scale to zero is enabled */
@@ -228,6 +325,11 @@ export interface ScaleToZeroConfiguration {
   /** Duration in minutes after which branches will be hibernated if not accessed */
   inactivityPeriodMinutes: number;
 }
+const ScaleToZeroConfiguration = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<ScaleToZeroConfiguration>;
+
 /** Details about the branch continuous backup configuration */
 export interface BackupConfiguration {
   /** how long are we keeping the backups around for */
@@ -235,8 +337,12 @@ export interface BackupConfiguration {
   /** time of day/week when we are taking a full backup */
   backupTime?: string;
 }
+const BackupConfiguration = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<BackupConfiguration>;
+
 /** The mode used to discriminate between types of branches. */
 export type CreateBranchRequestMode = "inherit" | "custom";
+const CreateBranchRequestMode = S.String;
+
 export interface CreateBranchRequest {
   /** Unique identifier of the organization containing the project */
   organizationID: string;
@@ -251,6 +357,8 @@ export interface CreateBranchRequest {
   /** The mode used to discriminate between types of branches. */
   mode: CreateBranchRequestMode | (string & {});
 }
+const CreateBranchRequest = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<CreateBranchRequest>;
+
 /** Basic metadata about a branch, used in response to create/update operations */
 export interface BranchShortMetadata {
   /** Unique identifier for the branch */
@@ -272,12 +380,19 @@ export interface BranchShortMetadata {
   /** Whether the branch allows public access without authentication */
   publicAccess: boolean;
 }
+const BranchShortMetadata = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<BranchShortMetadata>;
+
 export interface CreateGithubAppInstallationRequest {
   /** Unique identifier of the organization */
   organizationID: string;
   /** GitHub App installation ID */
   installationId: number;
 }
+const CreateGithubAppInstallationRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<CreateGithubAppInstallationRequest>;
+
 /** A GitHub App installation associated with an organization */
 export interface GithubInstallation {
   /** Unique identifier of the installation record */
@@ -291,6 +406,8 @@ export interface GithubInstallation {
   /** Timestamp when the installation was last updated */
   updatedAt: string;
 }
+const GithubInstallation = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<GithubInstallation>;
+
 export interface CreateGithubRepositoryRequest {
   /** Unique identifier of the organization */
   organizationID: string;
@@ -301,6 +418,11 @@ export interface CreateGithubRepositoryRequest {
   /** GitHub repository ID */
   githubRepositoryID: number;
 }
+const CreateGithubRepositoryRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<CreateGithubRepositoryRequest>;
+
 /** A mapping between a GitHub repository and a Xata project */
 export interface GithubRepository {
   /** Unique identifier of the mapping record */
@@ -316,12 +438,21 @@ export interface GithubRepository {
   /** Timestamp when the mapping was last updated */
   updatedAt: string;
 }
+const GithubRepository = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<GithubRepository>;
+
 export interface CreateOrganizationRequest {
   /** Name for the new organization */
   name: string;
 }
+const CreateOrganizationRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<CreateOrganizationRequest>;
+
 /** Indicates whether the organization is active, it's computed as `!disabled_by_admin AND billing_status == 'ok'` */
 export type OrganizationStatusStatus = "enabled" | "disabled";
+const OrganizationStatusStatus = S.String;
+
 /** Indicates the status of the organization from a billing perspective */
 export type OrganizationStatusBillingStatus =
   | "ok"
@@ -329,8 +460,12 @@ export type OrganizationStatusBillingStatus =
   | "invoice_overdue"
   | "unknown"
   | "deletion_requested";
+const OrganizationStatusBillingStatus = S.String;
+
 /** Usage tier of the organization. t1 is the default for new organizations, t2 is assigned when a valid payment method is on file. */
 export type OrganizationStatusUsageTier = "t1" | "t2";
+const OrganizationStatusUsageTier = S.String;
+
 export interface OrganizationStatus {
   /** Indicates whether the organization is active, it's computed as `!disabled_by_admin AND billing_status == 'ok'` */
   status: OrganizationStatusStatus;
@@ -349,8 +484,12 @@ export interface OrganizationStatus {
   /** Timestamp when the organization was created */
   created_at?: string;
 }
+const OrganizationStatus = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<OrganizationStatus>;
+
 /** Marketplace provider associated with an organization. */
 export type OrganizationMarketplaceProvider = "aws";
+const OrganizationMarketplaceProvider = S.String;
+
 /** Organization details including ID and name */
 export interface Organization {
   /** Unique identifier for the organization */
@@ -362,12 +501,23 @@ export interface Organization {
   /** Marketplace provider for this organization (e.g. "aws"), if billed through a marketplace */
   marketplace?: OrganizationMarketplaceProvider | null;
 }
+const Organization = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<Organization>;
+
 /** Optional scopes assigned to the API key */
 export type CreateOrganizationAPIKeyRequestScopesList = Array<string>;
+const CreateOrganizationAPIKeyRequestScopesList =
+  LogFilterValuesList as any as S.Schema<CreateOrganizationAPIKeyRequestScopesList>;
+
 /** Limit access to these projects */
 export type CreateOrganizationAPIKeyRequestProjectsList = Array<string>;
+const CreateOrganizationAPIKeyRequestProjectsList =
+  LogFilterValuesList as any as S.Schema<CreateOrganizationAPIKeyRequestProjectsList>;
+
 /** Limit access to these branches */
 export type CreateOrganizationAPIKeyRequestBranchesList = Array<string>;
+const CreateOrganizationAPIKeyRequestBranchesList =
+  LogFilterValuesList as any as S.Schema<CreateOrganizationAPIKeyRequestBranchesList>;
+
 export interface CreateOrganizationAPIKeyRequest {
   /** Unique identifier for a specific organization */
   organizationID: string;
@@ -381,11 +531,22 @@ export interface CreateOrganizationAPIKeyRequest {
   /** Limit access to these branches */
   branches?: CreateOrganizationAPIKeyRequestBranchesList;
 }
+const CreateOrganizationAPIKeyRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<CreateOrganizationAPIKeyRequest>;
+
 export type FullAPIKeyScopesList = Array<string>;
+const FullAPIKeyScopesList = LogFilterValuesList as any as S.Schema<FullAPIKeyScopesList>;
+
 /** Projects this API key has access to */
 export type FullAPIKeyProjectsList = Array<string>;
+const FullAPIKeyProjectsList = LogFilterValuesList as any as S.Schema<FullAPIKeyProjectsList>;
+
 /** Branches this API key has access to */
 export type FullAPIKeyBranchesList = Array<string>;
+const FullAPIKeyBranchesList = LogFilterValuesList as any as S.Schema<FullAPIKeyBranchesList>;
+
 export interface FullAPIKey {
   id: string;
   name: string;
@@ -407,11 +568,20 @@ export interface FullAPIKey {
   /** ID of the API key that created this API key */
   created_by_key?: string | null;
 }
+const FullAPIKey = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<FullAPIKey>;
+
 export interface CreateOrganizationAPIKeyResponse {
   key: FullAPIKey;
 }
+const CreateOrganizationAPIKeyResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<CreateOrganizationAPIKeyResponse>;
+
 /** The roles a member of an organization can hold */
 export type OrganizationRoleName = "admin" | "editor";
+const OrganizationRoleName = S.String;
+
 export interface CreateOrganizationInvitationRequest {
   /** Unique identifier for a specific organization */
   organizationID: string;
@@ -420,9 +590,21 @@ export interface CreateOrganizationInvitationRequest {
   /** Role the user holds once they accept the invitation. Optional; when omitted, the least privileged role offered applies */
   role?: OrganizationRoleName | (string & {});
 }
+const CreateOrganizationInvitationRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<CreateOrganizationInvitationRequest>;
+
 export interface CreateOrganizationInvitationResponse {}
+const CreateOrganizationInvitationResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<CreateOrganizationInvitationResponse>;
+
 /** Which identity provider this is. `google` pins the login to a Google Workspace domain and `microsoft` to a single Entra tenant, taken from the issuer; `oidc` is the fallback for anything else that speaks OpenID Connect. */
 export type OrganizationSSOProviderType = "google" | "microsoft" | "oidc";
+const OrganizationSSOProviderType = S.String;
+
 export interface CreateOrganizationSSOProviderRequest {
   /** Unique identifier for a specific organization */
   organizationID: string;
@@ -436,6 +618,11 @@ export interface CreateOrganizationSSOProviderRequest {
   /** OAuth client secret. Write-only: it is stored in Keycloak and is never returned by this API. */
   client_secret: string | Redacted.Redacted<string>;
 }
+const CreateOrganizationSSOProviderRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<CreateOrganizationSSOProviderRequest>;
+
 /** An identity provider serving one of the organization's verified domains. The client secret is write-only and is never returned. */
 export interface OrganizationSSOProvider {
   /** Stable identifier for this provider, used in its own endpoints. */
@@ -452,29 +639,53 @@ export interface OrganizationSSOProvider {
   /** OAuth client ID the organization registered with the provider. */
   client_id: string;
 }
+const OrganizationSSOProvider = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<OrganizationSSOProvider>;
+
 /** Whether the project branches are configured to scale down to zero when not in use */
 export interface ProjectScaleToZeroConfiguration {
   baseBranches: ScaleToZeroConfiguration;
   childBranches: ScaleToZeroConfiguration;
 }
+const ProjectScaleToZeroConfiguration = /*@__PURE__*/ __L.at(
+  __c5,
+  0,
+) as any as S.Schema<ProjectScaleToZeroConfiguration>;
+
 export interface CidrEntry {
   /** IP address or CIDR block (e.g., "192.168.0.0/24") */
   cidr: string;
   /** Optional label for the CIDR entry */
   description?: string;
 }
+const CidrEntry = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<CidrEntry>;
+
 export type IPFilteringConfigurationCidrList = Array<CidrEntry>;
+const IPFilteringConfigurationCidrList = /*@__PURE__*/ __L.at(
+  __c5,
+  2,
+) as any as S.Schema<IPFilteringConfigurationCidrList>;
+
 /** Configuration for IP filtering on project branches */
 export interface IPFilteringConfiguration {
   /** Whether IP filtering is enabled */
   enabled: boolean;
   cidr: IPFilteringConfigurationCidrList;
 }
+const IPFilteringConfiguration = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<IPFilteringConfiguration>;
+
 /** Configuration details for a project, including its scale to zero settings */
 export interface ProjectConfiguration {
   scaleToZero: ProjectScaleToZeroConfiguration;
   ipFiltering?: IPFilteringConfiguration;
 }
+const ProjectConfiguration = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<ProjectConfiguration>;
+
 export interface CreateProjectRequest {
   /** Unique identifier of the organization to create the project in */
   organizationID: string;
@@ -482,6 +693,8 @@ export interface CreateProjectRequest {
   name: string;
   configuration?: ProjectConfiguration;
 }
+const CreateProjectRequest = /*@__PURE__*/ __L.at(__c5, 5) as any as S.Schema<CreateProjectRequest>;
+
 /** Details of a project including its ID, name, and creation/update timestamps */
 export interface Project {
   /** Unique identifier for the project */
@@ -494,12 +707,23 @@ export interface Project {
   updatedAt: string;
   configuration: ProjectConfiguration;
 }
+const Project = /*@__PURE__*/ __L.at(__c5, 6) as any as S.Schema<Project>;
+
 /** Optional scopes assigned to the API key */
 export type CreateUserAPIKeyRequestScopesList = Array<string>;
+const CreateUserAPIKeyRequestScopesList =
+  LogFilterValuesList as any as S.Schema<CreateUserAPIKeyRequestScopesList>;
+
 /** Limit access to these projects */
 export type CreateUserAPIKeyRequestProjectsList = Array<string>;
+const CreateUserAPIKeyRequestProjectsList =
+  LogFilterValuesList as any as S.Schema<CreateUserAPIKeyRequestProjectsList>;
+
 /** Limit access to these branches */
 export type CreateUserAPIKeyRequestBranchesList = Array<string>;
+const CreateUserAPIKeyRequestBranchesList =
+  LogFilterValuesList as any as S.Schema<CreateUserAPIKeyRequestBranchesList>;
+
 export interface CreateUserAPIKeyRequest {
   name: string;
   /** Expiration date for the API key, null for no expiry */
@@ -511,9 +735,19 @@ export interface CreateUserAPIKeyRequest {
   /** Limit access to these branches */
   branches?: CreateUserAPIKeyRequestBranchesList;
 }
+const CreateUserAPIKeyRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  7,
+) as any as S.Schema<CreateUserAPIKeyRequest>;
+
 export interface CreateUserAPIKeyResponse {
   key: FullAPIKey;
 }
+const CreateUserAPIKeyResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<CreateUserAPIKeyResponse>;
+
 export interface DeleteBranchRequest {
   /** Unique identifier of the organization containing the project */
   organizationID: string;
@@ -522,7 +756,11 @@ export interface DeleteBranchRequest {
   /** Unique identifier of the branch to delete */
   branchID: string;
 }
+const DeleteBranchRequest = /*@__PURE__*/ __L.at(__c6, 1) as any as S.Schema<DeleteBranchRequest>;
+
 export interface DeleteBranchResponse {}
+const DeleteBranchResponse = /*@__PURE__*/ __L.at(__c6, 2) as any as S.Schema<DeleteBranchResponse>;
+
 export interface DeleteGithubRepositoryRequest {
   /** Unique identifier of the organization */
   organizationID: string;
@@ -531,7 +769,15 @@ export interface DeleteGithubRepositoryRequest {
   /** Unique identifier of the branch */
   branchID: string;
 }
+const DeleteGithubRepositoryRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  3,
+) as any as S.Schema<DeleteGithubRepositoryRequest>;
+
 export interface DeleteGithubRepositoryResponse {}
+const DeleteGithubRepositoryResponse =
+  DeleteBranchResponse as any as S.Schema<DeleteGithubRepositoryResponse>;
+
 export interface DeleteInstallationRequest {
   /** Vercel installation id (icfg_...). */
   installationId: string;
@@ -540,63 +786,136 @@ export interface DeleteInstallationRequest {
   /** The reason for deleting the installation. */
   reason?: string;
 }
+const DeleteInstallationRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  4,
+) as any as S.Schema<DeleteInstallationRequest>;
+
 export interface DeleteInstallationResponse {}
+const DeleteInstallationResponse =
+  DeleteBranchResponse as any as S.Schema<DeleteInstallationResponse>;
+
 export interface DeleteOrganizationRequest {
   /** Unique identifier for a specific organization */
   organizationID: string;
 }
+const DeleteOrganizationRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  5,
+) as any as S.Schema<DeleteOrganizationRequest>;
+
 export interface DeleteOrganizationResponse {}
+const DeleteOrganizationResponse =
+  DeleteBranchResponse as any as S.Schema<DeleteOrganizationResponse>;
+
 /** Array of API key IDs to delete */
 export type DeleteOrganizationAPIKeysRequestIdsList = Array<string>;
+const DeleteOrganizationAPIKeysRequestIdsList =
+  LogFilterValuesList as any as S.Schema<DeleteOrganizationAPIKeysRequestIdsList>;
+
 export interface DeleteOrganizationAPIKeysRequest {
   /** Unique identifier for a specific organization */
   organizationID: string;
   /** Array of API key IDs to delete */
   ids: DeleteOrganizationAPIKeysRequestIdsList;
 }
+const DeleteOrganizationAPIKeysRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  6,
+) as any as S.Schema<DeleteOrganizationAPIKeysRequest>;
+
 export interface DeleteOrganizationAPIKeysResponse {}
+const DeleteOrganizationAPIKeysResponse =
+  CreateOrganizationInvitationResponse as any as S.Schema<DeleteOrganizationAPIKeysResponse>;
+
 export interface DeleteOrganizationInvitationRequest {
   /** Unique identifier for a specific organization */
   organizationID: string;
   /** Unique identifier for an invitation */
   invitationID: string;
 }
+const DeleteOrganizationInvitationRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  7,
+) as any as S.Schema<DeleteOrganizationInvitationRequest>;
+
 export interface DeleteOrganizationInvitationResponse {}
+const DeleteOrganizationInvitationResponse =
+  CreateOrganizationInvitationResponse as any as S.Schema<DeleteOrganizationInvitationResponse>;
+
 export interface DeleteOrganizationSSODomainRequest {
   /** Unique identifier for a specific organization */
   organizationID: string;
   /** Email domain claimed for SSO */
   domain: string;
 }
+const DeleteOrganizationSSODomainRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  0,
+) as any as S.Schema<DeleteOrganizationSSODomainRequest>;
+
 export interface DeleteOrganizationSSODomainResponse {}
+const DeleteOrganizationSSODomainResponse =
+  CreateOrganizationInvitationResponse as any as S.Schema<DeleteOrganizationSSODomainResponse>;
+
 export interface DeleteOrganizationSSOProviderRequest {
   /** Unique identifier for a specific organization */
   organizationID: string;
   /** Alias identifying one of the organization's SSO identity providers */
   providerAlias: string;
 }
+const DeleteOrganizationSSOProviderRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  1,
+) as any as S.Schema<DeleteOrganizationSSOProviderRequest>;
+
 export interface DeleteOrganizationSSOProviderResponse {}
+const DeleteOrganizationSSOProviderResponse =
+  CreateOrganizationInvitationResponse as any as S.Schema<DeleteOrganizationSSOProviderResponse>;
+
 export interface DeleteProjectRequest {
   /** Unique identifier of the organization containing the project */
   organizationID: string;
   /** Unique identifier of the project to delete */
   projectID: string;
 }
+const DeleteProjectRequest = /*@__PURE__*/ __L.at(__c7, 2) as any as S.Schema<DeleteProjectRequest>;
+
 export interface DeleteProjectResponse {}
+const DeleteProjectResponse = DeleteBranchResponse as any as S.Schema<DeleteProjectResponse>;
+
 export interface DeleteResourceRequest {
   /** Vercel installation id (icfg_...). */
   installationId: string;
   /** Vercel resource id. */
   resourceId: string;
 }
+const DeleteResourceRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  3,
+) as any as S.Schema<DeleteResourceRequest>;
+
 export interface DeleteResourceResponse {}
+const DeleteResourceResponse = DeleteBranchResponse as any as S.Schema<DeleteResourceResponse>;
+
 /** Array of API key IDs to delete (maximum 50 keys per request) */
 export type DeleteUserAPIKeysRequestIdsList = Array<string>;
+const DeleteUserAPIKeysRequestIdsList =
+  LogFilterValuesList as any as S.Schema<DeleteUserAPIKeysRequestIdsList>;
+
 export interface DeleteUserAPIKeysRequest {
   /** Array of API key IDs to delete (maximum 50 keys per request) */
   ids: DeleteUserAPIKeysRequestIdsList;
 }
+const DeleteUserAPIKeysRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  4,
+) as any as S.Schema<DeleteUserAPIKeysRequest>;
+
 export interface DeleteUserAPIKeysResponse {}
+const DeleteUserAPIKeysResponse =
+  DeleteBranchResponse as any as S.Schema<DeleteUserAPIKeysResponse>;
+
 export interface DescribeBranchRequest {
   /** Unique identifier of the organization containing the project */
   organizationID: string;
@@ -605,6 +924,11 @@ export interface DescribeBranchRequest {
   /** Unique identifier of the branch to retrieve details for */
   branchID: string;
 }
+const DescribeBranchRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  5,
+) as any as S.Schema<DescribeBranchRequest>;
+
 /** Type of status of the branch */
 export type BranchStatusStatusType =
   | "STATUS_TYPE_UNSPECIFIED"
@@ -612,8 +936,12 @@ export type BranchStatusStatusType =
   | "STATUS_TYPE_TRANSIENT"
   | "STATUS_TYPE_FAULT"
   | "STATUS_TYPE_HIBERNATED";
+const BranchStatusStatusType = S.String;
+
 /** Current operational state of the cluster (ready, creating, updating, etc.) */
 export type ClusterLifecycleState = "ready" | "creating" | "updating" | "upgrading" | "unknown";
+const ClusterLifecycleState = S.String;
+
 /** Information about the current lifecycle state of a database cluster */
 export interface ClusterLifecycle {
   /** Current operational state of the cluster (ready, creating, updating, etc.) */
@@ -623,6 +951,8 @@ export interface ClusterLifecycle {
   /** Current phase within the lifecycle process */
   phase: string;
 }
+const ClusterLifecycle = /*@__PURE__*/ __L.at(__c7, 6) as any as S.Schema<ClusterLifecycle>;
+
 /** Status information about an individual database instance within a cluster */
 export interface InstanceStatus {
   /** Unique identifier for the database instance */
@@ -634,8 +964,15 @@ export interface InstanceStatus {
   /** Indicates if this instance is the target primary during a failover operation */
   targetPrimary: boolean;
 }
+const InstanceStatus = /*@__PURE__*/ __L.at(__c7, 7) as any as S.Schema<InstanceStatus>;
+
 /** Details about each individual database instance in the cluster */
 export type BranchStatusInstancesList = Array<InstanceStatus>;
+const BranchStatusInstancesList = /*@__PURE__*/ __L.at(
+  __c8,
+  0,
+) as any as S.Schema<BranchStatusInstancesList>;
+
 /** Detailed status information about a branch and its underlying database cluster */
 export interface BranchStatus {
   /** Status indicator for the branch according to CNPG */
@@ -652,12 +989,22 @@ export interface BranchStatus {
   /** Details about each individual database instance in the cluster */
   instances: BranchStatusInstancesList;
 }
+const BranchStatus = /*@__PURE__*/ __L.at(__c8, 1) as any as S.Schema<BranchStatus>;
+
 /** Arbitrary PostgreSQL configuration parameters for the cluster */
 export type ClusterConfigurationPostgresConfigurationParametersMap = {
   [key: string]: string | undefined;
 };
+const ClusterConfigurationPostgresConfigurationParametersMap = /*@__PURE__*/ __L.at(
+  __c8,
+  2,
+) as any as S.Schema<ClusterConfigurationPostgresConfigurationParametersMap>;
+
 /** List of PostgreSQL extensions and libraries to preload */
 export type ClusterConfigurationPreloadLibrariesList = Array<string>;
+const ClusterConfigurationPreloadLibrariesList =
+  LogFilterValuesList as any as S.Schema<ClusterConfigurationPreloadLibrariesList>;
+
 /** Configuration details for a database cluster backing a branch */
 export interface ClusterConfiguration {
   /** Geographic region where the cluster will be deployed */
@@ -675,6 +1022,8 @@ export interface ClusterConfiguration {
   /** List of PostgreSQL extensions and libraries to preload */
   preloadLibraries?: ClusterConfigurationPreloadLibrariesList;
 }
+const ClusterConfiguration = /*@__PURE__*/ __L.at(__c8, 3) as any as S.Schema<ClusterConfiguration>;
+
 /** Detailed metadata about a branch, including its status and configuration */
 export interface BranchMetadata {
   /** Unique identifier for the branch */
@@ -702,6 +1051,8 @@ export interface BranchMetadata {
   configuration: ClusterConfiguration;
   backupConfiguration?: BackupConfiguration;
 }
+const BranchMetadata = /*@__PURE__*/ __L.at(__c8, 4) as any as S.Schema<BranchMetadata>;
+
 export interface GetBackupRequest {
   /** Unique identifier of the organization containing the project */
   organizationID: string;
@@ -710,6 +1061,8 @@ export interface GetBackupRequest {
   /** Unique identifier of the backup for the project */
   backupID: string;
 }
+const GetBackupRequest = /*@__PURE__*/ __L.at(__c8, 5) as any as S.Schema<GetBackupRequest>;
+
 /** metadata about a continuous backup */
 export interface BackupMetadata {
   /** unique identifier for the backup */
@@ -723,26 +1076,44 @@ export interface BackupMetadata {
   /** description of the backup */
   description: string;
 }
+const BackupMetadata = /*@__PURE__*/ __L.at(__c8, 6) as any as S.Schema<BackupMetadata>;
+
 export interface GetBillingCustomerRequest {
   /** Unique identifier for a specific organization */
   organizationID: string;
 }
+const GetBillingCustomerRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  7,
+) as any as S.Schema<GetBillingCustomerRequest>;
+
 /** How billing payment is collected for the organization. */
 export type BillingCollectionMethod =
   | "unknown"
   | "stripe_payment_method"
   | "marketplace"
   | "bank_transfer";
+const BillingCollectionMethod = S.String;
+
 export interface BillingPaymentMethodCard {
   brand: string;
   last4: string;
   expiry_month: number;
   expiry_year: number;
 }
+const BillingPaymentMethodCard = /*@__PURE__*/ __L.at(
+  __c9,
+  0,
+) as any as S.Schema<BillingPaymentMethodCard>;
+
 export interface BillingPaymentMethod {
   card: BillingPaymentMethodCard;
 }
+const BillingPaymentMethod = /*@__PURE__*/ __L.at(__c9, 1) as any as S.Schema<BillingPaymentMethod>;
+
 export type BillingCreditStatus = "active" | "pending_payment";
+const BillingCreditStatus = S.String;
+
 export interface BillingCredit {
   id: string;
   /** Remaining credit balance. */
@@ -755,9 +1126,19 @@ export interface BillingCredit {
   maximum_initial_balance: number;
   status: BillingCreditStatus;
 }
+const BillingCredit = /*@__PURE__*/ __L.at(__c9, 2) as any as S.Schema<BillingCredit>;
+
 export type BillingCustomerResponseCreditsList = Array<BillingCredit>;
+const BillingCustomerResponseCreditsList = /*@__PURE__*/ __L.at(
+  __c9,
+  3,
+) as any as S.Schema<BillingCustomerResponseCreditsList>;
+
 /** Credits with active status, a reached effective date, positive balance, and no past expiry. */
 export type BillingCreditDetailsActiveCreditsList = Array<BillingCredit>;
+const BillingCreditDetailsActiveCreditsList =
+  BillingCustomerResponseCreditsList as any as S.Schema<BillingCreditDetailsActiveCreditsList>;
+
 export interface BillingCreditDetails {
   total_lifetime_credits: number;
   last_expiry: string | null;
@@ -771,6 +1152,8 @@ export interface BillingCreditDetails {
   /** Days until the last positive-balance credit expiry, or null when there is no future positive-balance credit expiry. */
   days_until_last_expiry_with_balance: number | null;
 }
+const BillingCreditDetails = /*@__PURE__*/ __L.at(__c9, 4) as any as S.Schema<BillingCreditDetails>;
+
 export interface BillingCustomerResponse {
   billing_email: string;
   /** Marketplace provider for this organization (e.g. "aws"), if billed through a marketplace */
@@ -785,6 +1168,11 @@ export interface BillingCustomerResponse {
   credits: BillingCustomerResponseCreditsList;
   credit_details: BillingCreditDetails;
 }
+const BillingCustomerResponse = /*@__PURE__*/ __L.at(
+  __c9,
+  5,
+) as any as S.Schema<BillingCustomerResponse>;
+
 export interface GetBillingInvoicesRequest {
   /** Unique identifier for a specific organization */
   organizationID: string;
@@ -793,7 +1181,14 @@ export interface GetBillingInvoicesRequest {
   /** Number of invoices to fetch */
   limit?: number;
 }
+const GetBillingInvoicesRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  6,
+) as any as S.Schema<GetBillingInvoicesRequest>;
+
 export type BillingInvoiceStatus = "draft" | "issued" | "paid" | "void" | "synced";
+const BillingInvoiceStatus = S.String;
+
 export interface BillingInvoice {
   id: string;
   invoice_number: string;
@@ -804,19 +1199,38 @@ export interface BillingInvoice {
   status: BillingInvoiceStatus;
   invoice_pdf: string | null;
 }
+const BillingInvoice = /*@__PURE__*/ __L.at(__c9, 7) as any as S.Schema<BillingInvoice>;
+
 export type BillingInvoicesResponseDataList = Array<BillingInvoice>;
+const BillingInvoicesResponseDataList = /*@__PURE__*/ __L.at(
+  __c10,
+  0,
+) as any as S.Schema<BillingInvoicesResponseDataList>;
+
 export interface PaginationMetadata {
   has_more: boolean;
   next_cursor: string | null;
 }
+const PaginationMetadata = /*@__PURE__*/ __L.at(__c10, 1) as any as S.Schema<PaginationMetadata>;
+
 export interface BillingInvoicesResponse {
   data: BillingInvoicesResponseDataList;
   pagination_metadata: PaginationMetadata;
 }
+const BillingInvoicesResponse = /*@__PURE__*/ __L.at(
+  __c10,
+  2,
+) as any as S.Schema<BillingInvoicesResponse>;
+
 export interface GetBillingUpcomingInvoiceRequest {
   /** Unique identifier for a specific organization */
   organizationID: string;
 }
+const GetBillingUpcomingInvoiceRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  3,
+) as any as S.Schema<GetBillingUpcomingInvoiceRequest>;
+
 export interface BillingUpcomingInvoiceResponse {
   created_at: string;
   /** Decimal amount due. */
@@ -829,6 +1243,11 @@ export interface BillingUpcomingInvoiceResponse {
   total: number;
   hosted_invoice_url: string | null;
 }
+const BillingUpcomingInvoiceResponse = /*@__PURE__*/ __L.at(
+  __c10,
+  4,
+) as any as S.Schema<BillingUpcomingInvoiceResponse>;
+
 export interface GetBranchCredentialsRequest {
   organizationID: string;
   projectID: string;
@@ -836,6 +1255,11 @@ export interface GetBranchCredentialsRequest {
   /** Username that the credentials requested for, defaults to `xata` */
   username?: string;
 }
+const GetBranchCredentialsRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  5,
+) as any as S.Schema<GetBranchCredentialsRequest>;
+
 /** Credentials and connection details for accessing a branch */
 export interface BranchCredentials {
   /** Username for accessing the branch database */
@@ -851,6 +1275,8 @@ export interface BranchCredentials {
   /** Database connection string for accessing this branch. It carries no sslmode parameter, clients choose their own TLS settings. */
   connectionString: string | Redacted.Redacted<string>;
 }
+const BranchCredentials = /*@__PURE__*/ __L.at(__c10, 6) as any as S.Schema<BranchCredentials>;
+
 export interface GetBranchPostgresConfigRequest {
   /** Unique identifier of the organization containing the project */
   organizationID: string;
@@ -859,6 +1285,11 @@ export interface GetBranchPostgresConfigRequest {
   /** Unique identifier of the branch to retrieve PostgreSQL configuration for */
   branchID: string;
 }
+const GetBranchPostgresConfigRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  7,
+) as any as S.Schema<GetBranchPostgresConfigRequest>;
+
 /** The data type of the parameter */
 export type PostgresConfigParameterType =
   | "string"
@@ -868,8 +1299,13 @@ export type PostgresConfigParameterType =
   | "enum"
   | "duration"
   | "boolean";
+const PostgresConfigParameterType = S.String;
+
 /** List of allowed enum values (if applicable) */
 export type PostgresConfigParameterAcceptableRangeEnumValuesList = Array<string>;
+const PostgresConfigParameterAcceptableRangeEnumValuesList =
+  LogFilterValuesList as any as S.Schema<PostgresConfigParameterAcceptableRangeEnumValuesList>;
+
 /** Information about the acceptable range of values for this parameter */
 export interface PostgresConfigParameterAcceptableRange {
   /** Minimum allowed value (if applicable) */
@@ -879,8 +1315,15 @@ export interface PostgresConfigParameterAcceptableRange {
   /** List of allowed enum values (if applicable) */
   enumValues?: PostgresConfigParameterAcceptableRangeEnumValuesList;
 }
+const PostgresConfigParameterAcceptableRange = /*@__PURE__*/ __L.at(
+  __c11,
+  0,
+) as any as S.Schema<PostgresConfigParameterAcceptableRange>;
+
 /** The source of the default value */
 export type PostgresConfigParameterDefaultValueSource = "postgres" | "instance_type";
+const PostgresConfigParameterDefaultValueSource = S.String;
+
 /** Detailed information about a single PostgreSQL configuration parameter */
 export interface PostgresConfigParameter {
   /** The name of the PostgreSQL parameter */
@@ -906,13 +1349,28 @@ export interface PostgresConfigParameter {
   /** Whether a database restart is required for this parameter change to take effect */
   restartRequired?: boolean;
 }
+const PostgresConfigParameter = /*@__PURE__*/ __L.at(
+  __c11,
+  1,
+) as any as S.Schema<PostgresConfigParameter>;
+
 /** Array of PostgreSQL configuration parameters with detailed information */
 export type PostgresConfigDetailsParametersList = Array<PostgresConfigParameter>;
+const PostgresConfigDetailsParametersList = /*@__PURE__*/ __L.at(
+  __c11,
+  2,
+) as any as S.Schema<PostgresConfigDetailsParametersList>;
+
 /** Detailed information about PostgreSQL configuration parameters for a branch */
 export interface PostgresConfigDetails {
   /** Array of PostgreSQL configuration parameters with detailed information */
   parameters: PostgresConfigDetailsParametersList;
 }
+const PostgresConfigDetails = /*@__PURE__*/ __L.at(
+  __c11,
+  3,
+) as any as S.Schema<PostgresConfigDetails>;
+
 export interface GetGithubRepositoryRequest {
   /** Unique identifier of the organization */
   organizationID: string;
@@ -921,22 +1379,44 @@ export interface GetGithubRepositoryRequest {
   /** Unique identifier of the branch */
   branchID: string;
 }
+const GetGithubRepositoryRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  4,
+) as any as S.Schema<GetGithubRepositoryRequest>;
+
 export interface GetGithubRepositoryResponse {
   /** Repository mapping details, null if no mapping exists */
   mapping: GithubRepository | null;
 }
+const GetGithubRepositoryResponse = /*@__PURE__*/ __L.at(
+  __c11,
+  5,
+) as any as S.Schema<GetGithubRepositoryResponse>;
+
 export interface GetOrganizationRequest {
   /** Unique identifier for a specific organization */
   organizationID: string;
 }
+const GetOrganizationRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  6,
+) as any as S.Schema<GetOrganizationRequest>;
+
 export interface GetOrganizationInvitationRequest {
   /** Unique identifier for a specific organization */
   organizationID: string;
   /** Unique identifier for an invitation */
   invitationID: string;
 }
+const GetOrganizationInvitationRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  7,
+) as any as S.Schema<GetOrganizationInvitationRequest>;
+
 /** Current status of the invitation */
 export type OrganizationInvitationStatus = "pending" | "expired";
+const OrganizationInvitationStatus = S.String;
+
 export interface OrganizationInvitation {
   /** Unique identifier for the invitation */
   id: string;
@@ -957,10 +1437,20 @@ export interface OrganizationInvitation {
   /** Role the user holds once they accept the invitation */
   role: OrganizationRoleName;
 }
+const OrganizationInvitation = /*@__PURE__*/ __L.at(
+  __c12,
+  0,
+) as any as S.Schema<OrganizationInvitation>;
+
 export interface GetOrganizationLimitsRequest {
   /** Unique identifier of the organization */
   organizationID: string;
 }
+const GetOrganizationLimitsRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  1,
+) as any as S.Schema<GetOrganizationLimitsRequest>;
+
 export interface GetOrganizationLimitsResponse {
   /** Maximum character length allowed for branch descriptions */
   maxDescriptionLength: number;
@@ -983,10 +1473,20 @@ export interface GetOrganizationLimitsResponse {
   /** Maximum number of active branches allowed across all projects in the organization */
   maxBranchesPerOrg: number;
 }
+const GetOrganizationLimitsResponse = /*@__PURE__*/ __L.at(
+  __c12,
+  2,
+) as any as S.Schema<GetOrganizationLimitsResponse>;
+
 export interface GetOrganizationMembershipLimitsRequest {
   /** Unique identifier for a specific organization */
   organizationID: string;
 }
+const GetOrganizationMembershipLimitsRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  3,
+) as any as S.Schema<GetOrganizationMembershipLimitsRequest>;
+
 /** Membership limits for an organization */
 export interface OrganizationMembershipLimits {
   /** Maximum number of members allowed in the organization */
@@ -994,7 +1494,17 @@ export interface OrganizationMembershipLimits {
   /** Maximum number of pending invitations allowed at once */
   maxInvites: number;
 }
+const OrganizationMembershipLimits = /*@__PURE__*/ __L.at(
+  __c12,
+  4,
+) as any as S.Schema<OrganizationMembershipLimits>;
+
 export interface GetOrganizationsListRequest {}
+const GetOrganizationsListRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  5,
+) as any as S.Schema<GetOrganizationsListRequest>;
+
 export interface GetOrganizationsListResponseOrganizationsItem {
   /** Unique identifier for the organization */
   id: string;
@@ -1003,21 +1513,51 @@ export interface GetOrganizationsListResponseOrganizationsItem {
   /** Current status of the organization */
   status: OrganizationStatus;
 }
+const GetOrganizationsListResponseOrganizationsItem = /*@__PURE__*/ __L.at(
+  __c12,
+  6,
+) as any as S.Schema<GetOrganizationsListResponseOrganizationsItem>;
+
 /** List of organizations the user has access to */
 export type GetOrganizationsListResponseOrganizationsList =
   Array<GetOrganizationsListResponseOrganizationsItem>;
+const GetOrganizationsListResponseOrganizationsList = /*@__PURE__*/ __L.at(
+  __c12,
+  7,
+) as any as S.Schema<GetOrganizationsListResponseOrganizationsList>;
+
 export interface GetOrganizationsListResponse {
   /** List of organizations the user has access to */
   organizations: GetOrganizationsListResponseOrganizationsList;
 }
+const GetOrganizationsListResponse = /*@__PURE__*/ __L.at(
+  __c13,
+  0,
+) as any as S.Schema<GetOrganizationsListResponse>;
+
 export interface GetOrganizationSSORequest {
   /** Unique identifier for a specific organization */
   organizationID: string;
 }
+const GetOrganizationSSORequest = /*@__PURE__*/ __L.at(
+  __c13,
+  1,
+) as any as S.Schema<GetOrganizationSSORequest>;
+
 /** Identity providers registered for this organization, at most one per verified domain. */
 export type OrganizationSSOProvidersList = Array<OrganizationSSOProvider>;
+const OrganizationSSOProvidersList = /*@__PURE__*/ __L.at(
+  __c13,
+  2,
+) as any as S.Schema<OrganizationSSOProvidersList>;
+
 /** Email domains claimed for this organization, verified and pending. */
 export type OrganizationSSODomainsList = Array<OrganizationSSODomain>;
+const OrganizationSSODomainsList = /*@__PURE__*/ __L.at(
+  __c13,
+  3,
+) as any as S.Schema<OrganizationSSODomainsList>;
+
 /** An organization's single sign-on setup, as one identity provider per verified email domain. */
 export interface OrganizationSSO {
   /** Identity providers registered for this organization, at most one per verified domain. */
@@ -1025,18 +1565,27 @@ export interface OrganizationSSO {
   /** Email domains claimed for this organization, verified and pending. */
   domains: OrganizationSSODomainsList;
 }
+const OrganizationSSO = /*@__PURE__*/ __L.at(__c13, 4) as any as S.Schema<OrganizationSSO>;
+
 export interface GetProjectRequest {
   /** Unique identifier of the organization containing the project */
   organizationID: string;
   /** Unique identifier of the project to retrieve */
   projectID: string;
 }
+const GetProjectRequest = /*@__PURE__*/ __L.at(__c13, 5) as any as S.Schema<GetProjectRequest>;
+
 export interface GetProjectLimitsRequest {
   /** Unique identifier of the organization */
   organizationID: string;
   /** Unique identifier of the project to get limits for */
   projectID: string;
 }
+const GetProjectLimitsRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  6,
+) as any as S.Schema<GetProjectLimitsRequest>;
+
 /** Full set of resource limits applicable to a project and its branches */
 export interface EffectiveProjectLimits {
   /** Maximum character length allowed for branch descriptions */
@@ -1054,14 +1603,23 @@ export interface EffectiveProjectLimits {
   /** Maximum storage in GiB (gigabytes) allowed per branch; 0 means no limit */
   maxStorageGBPerBranch: number;
 }
+const EffectiveProjectLimits = /*@__PURE__*/ __L.at(
+  __c13,
+  7,
+) as any as S.Schema<EffectiveProjectLimits>;
+
 export interface GetResourceRequest {
   /** Vercel installation id (icfg_...). */
   installationId: string;
   /** Vercel resource id. */
   resourceId: string;
 }
+const GetResourceRequest = /*@__PURE__*/ __L.at(__c14, 0) as any as S.Schema<GetResourceRequest>;
+
 /** User-inputted metadata based on the registered metadata schema. */
 export type ResourceMetadataMap = { [key: string]: unknown | undefined };
+const ResourceMetadataMap = /*@__PURE__*/ __L.at(__c14, 1) as any as S.Schema<ResourceMetadataMap>;
+
 /** A provisioned Vercel Marketplace resource. Matches Vercel's Partner API "Get Resource" response. Secrets/connection info are returned by Provision Resource, not here. The optional billingPlan, protocolSettings, and notification fields are not yet populated. */
 export interface Resource {
   /** The partner-specific resource id. */
@@ -1075,41 +1633,84 @@ export interface Resource {
   /** Resource lifecycle status. One of Vercel's values: ready, pending, onboarding, suspended, resumed, uninstalled, error. */
   status: string;
 }
+const Resource = /*@__PURE__*/ __L.at(__c14, 2) as any as S.Schema<Resource>;
+
 /** GitHub webhook event payload */
 export type GithubWebhookRequestBodyMap = { [key: string]: unknown | undefined };
+const GithubWebhookRequestBodyMap =
+  ResourceMetadataMap as any as S.Schema<GithubWebhookRequestBodyMap>;
+
 export interface GithubWebhookRequest {
   body: GithubWebhookRequestBodyMap;
 }
+const GithubWebhookRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  3,
+) as any as S.Schema<GithubWebhookRequest>;
+
 export interface GithubWebhookResponse {}
+const GithubWebhookResponse = DeleteBranchResponse as any as S.Schema<GithubWebhookResponse>;
+
 export interface ListBackupsRequest {
   /** Unique identifier of the organization containing the project */
   organizationID: string;
   /** Unique identifier of the project to retrieve backups for */
   projectID: string;
 }
+const ListBackupsRequest = /*@__PURE__*/ __L.at(__c14, 4) as any as S.Schema<ListBackupsRequest>;
+
 /** list of backups within the project */
 export type ListBackupsResponseBackupsList = Array<BackupMetadata>;
+const ListBackupsResponseBackupsList = /*@__PURE__*/ __L.at(
+  __c14,
+  5,
+) as any as S.Schema<ListBackupsResponseBackupsList>;
+
 export interface ListBackupsResponse {
   /** list of backups within the project */
   backups: ListBackupsResponseBackupsList;
 }
+const ListBackupsResponse = /*@__PURE__*/ __L.at(__c14, 6) as any as S.Schema<ListBackupsResponse>;
+
 export interface ListBillingPlansForProductRequest {
   /** Vercel product slug (e.g. xata-postgres). */
   productSlug: string;
   /** Opaque metadata forwarded by Vercel. */
   metadata?: string;
 }
+const ListBillingPlansForProductRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  7,
+) as any as S.Schema<ListBillingPlansForProductRequest>;
+
 export interface PlanDetail {
   label: string;
   value?: string;
 }
+const PlanDetail = /*@__PURE__*/ __L.at(__c15, 0) as any as S.Schema<PlanDetail>;
+
 export type BillingPlanDetailsList = Array<PlanDetail>;
+const BillingPlanDetailsList = /*@__PURE__*/ __L.at(
+  __c15,
+  1,
+) as any as S.Schema<BillingPlanDetailsList>;
+
 export type BillingPlanHighlightedDetailsList = Array<PlanDetail>;
+const BillingPlanHighlightedDetailsList =
+  BillingPlanDetailsList as any as S.Schema<BillingPlanHighlightedDetailsList>;
+
 export interface PlanQuoteLine {
   line: string;
   amount: string;
 }
+const PlanQuoteLine = /*@__PURE__*/ __L.at(__c15, 2) as any as S.Schema<PlanQuoteLine>;
+
 export type BillingPlanQuoteList = Array<PlanQuoteLine>;
+const BillingPlanQuoteList = /*@__PURE__*/ __L.at(
+  __c15,
+  3,
+) as any as S.Schema<BillingPlanQuoteList>;
+
 /** A Vercel Marketplace billing plan. Billing SKU only; it does not change Xata entitlements. */
 export interface BillingPlan {
   /** Partner-provided billing plan id. */
@@ -1134,17 +1735,31 @@ export interface BillingPlan {
   effectiveDate?: string;
   disabled?: boolean;
 }
+const BillingPlan = /*@__PURE__*/ __L.at(__c15, 4) as any as S.Schema<BillingPlan>;
+
 export type ListBillingPlansResponsePlansList = Array<BillingPlan>;
+const ListBillingPlansResponsePlansList = /*@__PURE__*/ __L.at(
+  __c15,
+  5,
+) as any as S.Schema<ListBillingPlansResponsePlansList>;
+
 /** The billing plans available for a product. */
 export interface ListBillingPlansResponse {
   plans: ListBillingPlansResponsePlansList;
 }
+const ListBillingPlansResponse = /*@__PURE__*/ __L.at(
+  __c15,
+  6,
+) as any as S.Schema<ListBillingPlansResponse>;
+
 export interface ListBranchesRequest {
   /** Unique identifier of the organization containing the project */
   organizationID: string;
   /** Unique identifier of the project to list branches from */
   projectID: string;
 }
+const ListBranchesRequest = /*@__PURE__*/ __L.at(__c15, 7) as any as S.Schema<ListBranchesRequest>;
+
 /** Metadata about a branch used when listing branches in a project */
 export interface BranchListMetadata {
   /** Unique identifier for the branch */
@@ -1166,12 +1781,24 @@ export interface BranchListMetadata {
   /** Whether the branch is in a region that supports backups */
   backupsEnabled: boolean;
 }
+const BranchListMetadata = /*@__PURE__*/ __L.at(__c16, 0) as any as S.Schema<BranchListMetadata>;
+
 /** Array of branch objects with their metadata */
 export type ListBranchesResponseBranchesList = Array<BranchListMetadata>;
+const ListBranchesResponseBranchesList = /*@__PURE__*/ __L.at(
+  __c16,
+  1,
+) as any as S.Schema<ListBranchesResponseBranchesList>;
+
 export interface ListBranchesResponse {
   /** Array of branch objects with their metadata */
   branches: ListBranchesResponseBranchesList;
 }
+const ListBranchesResponse = /*@__PURE__*/ __L.at(
+  __c16,
+  2,
+) as any as S.Schema<ListBranchesResponse>;
+
 export interface ListExtensionsRequest {
   /** Unique identifier of the organization to check instance type availability for */
   organizationID: string;
@@ -1180,8 +1807,15 @@ export interface ListExtensionsRequest {
   /** Region to list extensions for image in */
   region?: string;
 }
+const ListExtensionsRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  3,
+) as any as S.Schema<ListExtensionsRequest>;
+
 /** type of installation */
 export type ExtensionType = "extension" | "plugin" | "module";
+const ExtensionType = S.String;
+
 /** Details of a postgres extension */
 export interface Extension {
   /** Extension name */
@@ -1197,30 +1831,61 @@ export interface Extension {
   /** type of installation */
   type: ExtensionType;
 }
+const Extension = /*@__PURE__*/ __L.at(__c16, 4) as any as S.Schema<Extension>;
+
 /** Array of available images with their properties */
 export type ListExtensionsResponseExtensionsList = Array<Extension>;
+const ListExtensionsResponseExtensionsList = /*@__PURE__*/ __L.at(
+  __c16,
+  5,
+) as any as S.Schema<ListExtensionsResponseExtensionsList>;
+
 export interface ListExtensionsResponse {
   /** Array of available images with their properties */
   extensions: ListExtensionsResponseExtensionsList;
 }
+const ListExtensionsResponse = /*@__PURE__*/ __L.at(
+  __c16,
+  6,
+) as any as S.Schema<ListExtensionsResponse>;
+
 export interface ListGithubAppInstallationsRequest {
   /** Unique identifier of the organization */
   organizationID: string;
 }
+const ListGithubAppInstallationsRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  7,
+) as any as S.Schema<ListGithubAppInstallationsRequest>;
+
 /** Array of GitHub App installations */
 export type ListGithubAppInstallationsResponseInstallationsList = Array<GithubInstallation>;
+const ListGithubAppInstallationsResponseInstallationsList = /*@__PURE__*/ __L.at(
+  __c17,
+  0,
+) as any as S.Schema<ListGithubAppInstallationsResponseInstallationsList>;
+
 export interface ListGithubAppInstallationsResponse {
   /** Array of GitHub App installations */
   installations: ListGithubAppInstallationsResponseInstallationsList;
 }
+const ListGithubAppInstallationsResponse = /*@__PURE__*/ __L.at(
+  __c17,
+  1,
+) as any as S.Schema<ListGithubAppInstallationsResponse>;
+
 export interface ListImagesRequest {
   /** Unique identifier of the organization to check image availability */
   organizationID: string;
   /** Region to check image availability for organization */
   region?: string;
 }
+const ListImagesRequest = /*@__PURE__*/ __L.at(__c17, 2) as any as S.Schema<ListImagesRequest>;
+
 /** region where this instance type is available */
 export type ImageRegionList = Array<string>;
+const ImageRegionList = /*@__PURE__*/ __L.at(__c17, 3) as any as S.Schema<ImageRegionList>;
+
 /** Details of a postgres image */
 export interface Image {
   /** Image name */
@@ -1232,18 +1897,32 @@ export interface Image {
   /** region where this instance type is available */
   region?: ImageRegionList;
 }
+const Image = /*@__PURE__*/ __L.at(__c17, 4) as any as S.Schema<Image>;
+
 /** Array of available images with their properties */
 export type ListImagesResponseImagesList = Array<Image>;
+const ListImagesResponseImagesList = /*@__PURE__*/ __L.at(
+  __c17,
+  5,
+) as any as S.Schema<ListImagesResponseImagesList>;
+
 export interface ListImagesResponse {
   /** Array of available images with their properties */
   images: ListImagesResponseImagesList;
 }
+const ListImagesResponse = /*@__PURE__*/ __L.at(__c17, 6) as any as S.Schema<ListImagesResponse>;
+
 export interface ListInstanceTypesRequest {
   /** Unique identifier of the organization to check instance type availability for */
   organizationID: string;
   /** Region to check instance type availability for */
   region: string;
 }
+const ListInstanceTypesRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  7,
+) as any as S.Schema<ListInstanceTypesRequest>;
+
 export interface ListInstanceTypesResponseInstanceTypesItem {
   /** Instance type name */
   name: string;
@@ -1258,22 +1937,48 @@ export interface ListInstanceTypesResponseInstanceTypesItem {
   /** region where this instance type is available */
   region: string;
 }
+const ListInstanceTypesResponseInstanceTypesItem = /*@__PURE__*/ __L.at(
+  __c18,
+  0,
+) as any as S.Schema<ListInstanceTypesResponseInstanceTypesItem>;
+
 /** Array of available instance types with their properties */
 export type ListInstanceTypesResponseInstanceTypesList =
   Array<ListInstanceTypesResponseInstanceTypesItem>;
+const ListInstanceTypesResponseInstanceTypesList = /*@__PURE__*/ __L.at(
+  __c18,
+  1,
+) as any as S.Schema<ListInstanceTypesResponseInstanceTypesList>;
+
 export interface ListInstanceTypesResponse {
   /** Array of available instance types with their properties */
   instanceTypes: ListInstanceTypesResponseInstanceTypesList;
 }
+const ListInstanceTypesResponse = /*@__PURE__*/ __L.at(
+  __c18,
+  2,
+) as any as S.Schema<ListInstanceTypesResponse>;
+
 export interface ListOrganizationAPIKeysRequest {
   /** Unique identifier for a specific organization */
   organizationID: string;
 }
+const ListOrganizationAPIKeysRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  3,
+) as any as S.Schema<ListOrganizationAPIKeysRequest>;
+
 export type APIKeyPreviewScopesList = Array<string>;
+const APIKeyPreviewScopesList = LogFilterValuesList as any as S.Schema<APIKeyPreviewScopesList>;
+
 /** Projects this API key has access to */
 export type APIKeyPreviewProjectsList = Array<string>;
+const APIKeyPreviewProjectsList = LogFilterValuesList as any as S.Schema<APIKeyPreviewProjectsList>;
+
 /** Branches this API key has access to */
 export type APIKeyPreviewBranchesList = Array<string>;
+const APIKeyPreviewBranchesList = LogFilterValuesList as any as S.Schema<APIKeyPreviewBranchesList>;
+
 export interface APIKeyPreview {
   id: string;
   name: string;
@@ -1293,13 +1998,27 @@ export interface APIKeyPreview {
   /** ID of the API key that created this API key */
   created_by_key?: string | null;
 }
+const APIKeyPreview = /*@__PURE__*/ __L.at(__c18, 4) as any as S.Schema<APIKeyPreview>;
+
 /** Array of API keys for the organization */
 export type ListOrganizationAPIKeysResponseKeysList = Array<APIKeyPreview>;
+const ListOrganizationAPIKeysResponseKeysList = /*@__PURE__*/ __L.at(
+  __c18,
+  5,
+) as any as S.Schema<ListOrganizationAPIKeysResponseKeysList>;
+
 export interface ListOrganizationAPIKeysResponse {
   /** Array of API keys for the organization */
   keys: ListOrganizationAPIKeysResponseKeysList;
 }
+const ListOrganizationAPIKeysResponse = /*@__PURE__*/ __L.at(
+  __c18,
+  6,
+) as any as S.Schema<ListOrganizationAPIKeysResponse>;
+
 export type ListOrganizationInvitationsRequestStatus = "pending" | "expired";
+const ListOrganizationInvitationsRequestStatus = S.String;
+
 export interface ListOrganizationInvitationsRequest {
   /** Unique identifier for a specific organization */
   organizationID: string;
@@ -1318,14 +2037,34 @@ export interface ListOrganizationInvitationsRequest {
   /** Maximum number of results to return */
   max?: number;
 }
+const ListOrganizationInvitationsRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  7,
+) as any as S.Schema<ListOrganizationInvitationsRequest>;
+
 export type ListOrganizationInvitationsResponseInvitationsList = Array<OrganizationInvitation>;
+const ListOrganizationInvitationsResponseInvitationsList = /*@__PURE__*/ __L.at(
+  __c19,
+  0,
+) as any as S.Schema<ListOrganizationInvitationsResponseInvitationsList>;
+
 export interface ListOrganizationInvitationsResponse {
   invitations: ListOrganizationInvitationsResponseInvitationsList;
 }
+const ListOrganizationInvitationsResponse = /*@__PURE__*/ __L.at(
+  __c19,
+  1,
+) as any as S.Schema<ListOrganizationInvitationsResponse>;
+
 export interface ListOrganizationMembersRequest {
   /** Unique identifier for a specific organization */
   organizationID: string;
 }
+const ListOrganizationMembersRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  2,
+) as any as S.Schema<ListOrganizationMembersRequest>;
+
 /** A member of an organization and the role they hold in it */
 export interface OrganizationMember {
   /** Email address associated with the user account */
@@ -1335,14 +2074,31 @@ export interface OrganizationMember {
   id: string;
   role: OrganizationRoleName;
 }
+const OrganizationMember = /*@__PURE__*/ __L.at(__c19, 3) as any as S.Schema<OrganizationMember>;
+
 export type ListOrganizationMembersResponseMembersList = Array<OrganizationMember>;
+const ListOrganizationMembersResponseMembersList = /*@__PURE__*/ __L.at(
+  __c19,
+  4,
+) as any as S.Schema<ListOrganizationMembersResponseMembersList>;
+
 export interface ListOrganizationMembersResponse {
   members: ListOrganizationMembersResponseMembersList;
 }
+const ListOrganizationMembersResponse = /*@__PURE__*/ __L.at(
+  __c19,
+  5,
+) as any as S.Schema<ListOrganizationMembersResponse>;
+
 export interface ListOrganizationRolesRequest {
   /** Unique identifier for a specific organization */
   organizationID: string;
 }
+const ListOrganizationRolesRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  6,
+) as any as S.Schema<ListOrganizationRolesRequest>;
+
 /** A role that can be held by a member of an organization */
 export interface OrganizationRole {
   /** Stable identifier for the role */
@@ -1352,26 +2108,54 @@ export interface OrganizationRole {
   /** What the role allows */
   description: string;
 }
+const OrganizationRole = /*@__PURE__*/ __L.at(__c19, 7) as any as S.Schema<OrganizationRole>;
+
 export type ListOrganizationRolesResponseRolesList = Array<OrganizationRole>;
+const ListOrganizationRolesResponseRolesList = /*@__PURE__*/ __L.at(
+  __c20,
+  0,
+) as any as S.Schema<ListOrganizationRolesResponseRolesList>;
+
 export interface ListOrganizationRolesResponse {
   roles: ListOrganizationRolesResponseRolesList;
 }
+const ListOrganizationRolesResponse = /*@__PURE__*/ __L.at(
+  __c20,
+  1,
+) as any as S.Schema<ListOrganizationRolesResponse>;
+
 export interface ListProjectsRequest {
   /** Unique identifier of the organization to list projects from */
   organizationID: string;
 }
+const ListProjectsRequest = /*@__PURE__*/ __L.at(__c20, 2) as any as S.Schema<ListProjectsRequest>;
+
 /** Array of project objects with their metadata */
 export type ListProjectsResponseProjectsList = Array<Project>;
+const ListProjectsResponseProjectsList = /*@__PURE__*/ __L.at(
+  __c20,
+  3,
+) as any as S.Schema<ListProjectsResponseProjectsList>;
+
 export interface ListProjectsResponse {
   /** Array of project objects with their metadata */
   projects: ListProjectsResponseProjectsList;
 }
+const ListProjectsResponse = /*@__PURE__*/ __L.at(
+  __c20,
+  4,
+) as any as S.Schema<ListProjectsResponse>;
+
 export interface ListRegionsRequest {
   /** Unique identifier of the organization to check region availability for */
   organizationID: string;
 }
+const ListRegionsRequest = /*@__PURE__*/ __L.at(__c20, 5) as any as S.Schema<ListRegionsRequest>;
+
 /** Cloud provider the region runs on */
 export type ListRegionsResponseRegionsItemProvider = "aws" | "gcp" | "azure" | "custom";
+const ListRegionsResponseRegionsItemProvider = S.String;
+
 export interface ListRegionsResponseRegionsItem {
   /** Unique identifier for the region */
   id: string;
@@ -1384,27 +2168,61 @@ export interface ListRegionsResponseRegionsItem {
   /** Organization that owns this region, if set the region is only available to this organization */
   organizationId: string | null;
 }
+const ListRegionsResponseRegionsItem = /*@__PURE__*/ __L.at(
+  __c20,
+  6,
+) as any as S.Schema<ListRegionsResponseRegionsItem>;
+
 /** Array of available regions with their properties */
 export type ListRegionsResponseRegionsList = Array<ListRegionsResponseRegionsItem>;
+const ListRegionsResponseRegionsList = /*@__PURE__*/ __L.at(
+  __c20,
+  7,
+) as any as S.Schema<ListRegionsResponseRegionsList>;
+
 export interface ListRegionsResponse {
   /** Array of available regions with their properties */
   regions: ListRegionsResponseRegionsList;
 }
+const ListRegionsResponse = /*@__PURE__*/ __L.at(__c21, 0) as any as S.Schema<ListRegionsResponse>;
+
 export interface ListUserAPIKeysRequest {}
+const ListUserAPIKeysRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  1,
+) as any as S.Schema<ListUserAPIKeysRequest>;
+
 /** Array of API keys for the user */
 export type ListUserAPIKeysResponseKeysList = Array<APIKeyPreview>;
+const ListUserAPIKeysResponseKeysList =
+  ListOrganizationAPIKeysResponseKeysList as any as S.Schema<ListUserAPIKeysResponseKeysList>;
+
 export interface ListUserAPIKeysResponse {
   /** Array of API keys for the user */
   keys: ListUserAPIKeysResponseKeysList;
 }
+const ListUserAPIKeysResponse = /*@__PURE__*/ __L.at(
+  __c21,
+  2,
+) as any as S.Schema<ListUserAPIKeysResponse>;
+
 /** Orb webhook event payload */
 export type OrbWebhookRequestBodyMap = { [key: string]: unknown | undefined };
+const OrbWebhookRequestBodyMap = ResourceMetadataMap as any as S.Schema<OrbWebhookRequestBodyMap>;
+
 export interface OrbWebhookRequest {
   body: OrbWebhookRequestBodyMap;
 }
+const OrbWebhookRequest = /*@__PURE__*/ __L.at(__c21, 3) as any as S.Schema<OrbWebhookRequest>;
+
 export interface OrbWebhookResponse {}
+const OrbWebhookResponse = DeleteBranchResponse as any as S.Schema<OrbWebhookResponse>;
+
 /** User-inputted metadata based on the registered metadata schema. */
 export type ProvisionResourceRequestMetadataMap = { [key: string]: unknown | undefined };
+const ProvisionResourceRequestMetadataMap =
+  ResourceMetadataMap as any as S.Schema<ProvisionResourceRequestMetadataMap>;
+
 export interface ProvisionResourceRequest {
   /** Vercel installation id (icfg_...). */
   installationId: string;
@@ -1419,14 +2237,27 @@ export interface ProvisionResourceRequest {
   /** Partner-provided identifier indicating the source of provisioning. */
   externalId?: string;
 }
+const ProvisionResourceRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  4,
+) as any as S.Schema<ProvisionResourceRequest>;
+
 /** User-inputted metadata based on the registered metadata schema. */
 export type ProvisionedResourceMetadataMap = { [key: string]: unknown | undefined };
+const ProvisionedResourceMetadataMap =
+  ResourceMetadataMap as any as S.Schema<ProvisionedResourceMetadataMap>;
+
 /** Per-environment values that override value for that Vercel environment. */
 export interface SecretEnvironmentOverrides {
   development?: string;
   preview?: string;
   production?: string;
 }
+const SecretEnvironmentOverrides = /*@__PURE__*/ __L.at(
+  __c21,
+  5,
+) as any as S.Schema<SecretEnvironmentOverrides>;
+
 /** A connection secret exposed as an environment variable on connected Vercel projects. */
 export interface Secret {
   /** Environment variable name. */
@@ -1436,8 +2267,15 @@ export interface Secret {
   /** Per-environment values that override value for that Vercel environment. */
   environmentOverrides?: SecretEnvironmentOverrides;
 }
+const Secret = /*@__PURE__*/ __L.at(__c21, 6) as any as S.Schema<Secret>;
+
 /** Connection secrets that become environment variables on connected projects. */
 export type ProvisionedResourceSecretsList = Array<Secret>;
+const ProvisionedResourceSecretsList = /*@__PURE__*/ __L.at(
+  __c21,
+  7,
+) as any as S.Schema<ProvisionedResourceSecretsList>;
+
 /** A newly provisioned resource: the Resource fields plus the connection secrets. Provision Resource is the only endpoint that returns secrets. */
 export interface ProvisionedResource {
   /** The partner-specific resource id. */
@@ -1453,10 +2291,19 @@ export interface ProvisionedResource {
   /** Connection secrets that become environment variables on connected projects. */
   secrets: ProvisionedResourceSecretsList;
 }
+const ProvisionedResource = /*@__PURE__*/ __L.at(__c22, 0) as any as S.Schema<ProvisionedResource>;
+
 /** Positional parameters for the query (`$1`, `$2`, ...). */
 export type QueryRequestParamsList = Array<unknown>;
+const QueryRequestParamsList = /*@__PURE__*/ __L.at(
+  __c22,
+  1,
+) as any as S.Schema<QueryRequestParamsList>;
+
 /** Positional parameters for the query. */
 export type QueryItemParamsList = Array<unknown>;
+const QueryItemParamsList = QueryRequestParamsList as any as S.Schema<QueryItemParamsList>;
+
 /** A single query within a batch request. */
 export interface QueryItem {
   /** SQL query to execute. */
@@ -1466,8 +2313,15 @@ export interface QueryItem {
   /** Override array mode for this individual query. */
   arrayMode?: boolean;
 }
+const QueryItem = /*@__PURE__*/ __L.at(__c22, 2) as any as S.Schema<QueryItem>;
+
 /** Array of queries for batch execution within a single transaction. */
 export type QueryRequestQueriesList = Array<QueryItem>;
+const QueryRequestQueriesList = /*@__PURE__*/ __L.at(
+  __c22,
+  3,
+) as any as S.Schema<QueryRequestQueriesList>;
+
 export interface QueryRequest {
   /** SQL query to execute (single query mode). */
   query?: string;
@@ -1478,6 +2332,8 @@ export interface QueryRequest {
   /** Override array mode for this query (single query mode only). */
   arrayMode?: boolean;
 }
+const QueryRequest = /*@__PURE__*/ __L.at(__c22, 4) as any as S.Schema<QueryRequest>;
+
 /** PostgreSQL column metadata from the row description message. */
 export interface FieldDefinition {
   /** Column name. */
@@ -1520,9 +2376,15 @@ export interface BatchResponse {
   results: BatchResponseResultsList;
 }
 export type QueryResponseBody = QueryResult | BatchResponse;
+const QueryResponseBody = S.Unknown as any as S.Schema<QueryResponseBody>;
+
 export type QueryResponse = QueryResponseBody;
+const QueryResponse = /*@__PURE__*/ __L.at(__c22, 5) as any as S.Schema<QueryResponse>;
+
 /** Marketplace provider accepted for registration. */
 export type MarketplaceRegistrationProvider = "aws";
+const MarketplaceRegistrationProvider = S.String;
+
 /** AWS-specific marketplace details */
 export interface RegisterMarketplaceRequestAws {
   /** AWS Marketplace customer ID */
@@ -1532,6 +2394,11 @@ export interface RegisterMarketplaceRequestAws {
   /** AWS account ID */
   account_id: string;
 }
+const RegisterMarketplaceRequestAws = /*@__PURE__*/ __L.at(
+  __c22,
+  6,
+) as any as S.Schema<RegisterMarketplaceRequestAws>;
+
 export interface RegisterMarketplaceRequest {
   /** The cloud marketplace provider */
   marketplace: MarketplaceRegistrationProvider | (string & {});
@@ -1540,26 +2407,58 @@ export interface RegisterMarketplaceRequest {
   /** AWS-specific marketplace details */
   aws: RegisterMarketplaceRequestAws;
 }
+const RegisterMarketplaceRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  7,
+) as any as S.Schema<RegisterMarketplaceRequest>;
+
 export interface RegisterMarketplaceResponse {}
+const RegisterMarketplaceResponse =
+  DeleteBranchResponse as any as S.Schema<RegisterMarketplaceResponse>;
+
 export interface RemoveOrganizationMemberRequest {
   /** Unique identifier for a specific organization */
   organizationID: string;
   /** Unique identifier for a specific user account */
   userID: string;
 }
+const RemoveOrganizationMemberRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  0,
+) as any as S.Schema<RemoveOrganizationMemberRequest>;
+
 export interface RemoveOrganizationMemberResponse {}
+const RemoveOrganizationMemberResponse =
+  CreateOrganizationInvitationResponse as any as S.Schema<RemoveOrganizationMemberResponse>;
+
 export interface RequestOrganizationDeletionRequest {
   /** Unique identifier for a specific organization */
   organizationID: string;
 }
+const RequestOrganizationDeletionRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  1,
+) as any as S.Schema<RequestOrganizationDeletionRequest>;
+
 export interface RequestOrganizationDeletionResponse {}
+const RequestOrganizationDeletionResponse =
+  CreateOrganizationInvitationResponse as any as S.Schema<RequestOrganizationDeletionResponse>;
+
 export interface ResendOrganizationInvitationRequest {
   /** Unique identifier for a specific organization */
   organizationID: string;
   /** Unique identifier for an invitation */
   invitationID: string;
 }
+const ResendOrganizationInvitationRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  2,
+) as any as S.Schema<ResendOrganizationInvitationRequest>;
+
 export interface ResendOrganizationInvitationResponse {}
+const ResendOrganizationInvitationResponse =
+  CreateOrganizationInvitationResponse as any as S.Schema<ResendOrganizationInvitationResponse>;
+
 export interface RestoreFromBackupRequest {
   /** Unique identifier of the organization containing the project */
   organizationID: string;
@@ -1575,6 +2474,11 @@ export interface RestoreFromBackupRequest {
   backupConfiguration?: BackupConfiguration;
   configuration?: ClusterConfiguration;
 }
+const RestoreFromBackupRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  3,
+) as any as S.Schema<RestoreFromBackupRequest>;
+
 export interface RotateBranchCredentialsRequest {
   organizationID: string;
   projectID: string;
@@ -1582,13 +2486,30 @@ export interface RotateBranchCredentialsRequest {
   /** Database username to rotate credentials for */
   username: string;
 }
+const RotateBranchCredentialsRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  4,
+) as any as S.Schema<RotateBranchCredentialsRequest>;
+
 export interface RotateBranchCredentialsResponse {}
+const RotateBranchCredentialsResponse = /*@__PURE__*/ __L.at(
+  __c23,
+  5,
+) as any as S.Schema<RotateBranchCredentialsResponse>;
+
 /** JSON-RPC protocol version. Always `2.0`. */
 export type SendMcpRequestRequestJsonrpc = "2.0";
+const SendMcpRequestRequestJsonrpc = S.String;
+
 /** Request identifier, echoed on the response. Omitted for notifications. */
 export type SendMcpRequestRequestId = string | number;
+const SendMcpRequestRequestId = S.Unknown as any as S.Schema<SendMcpRequestRequestId>;
+
 /** Method parameters as defined by the MCP specification. */
 export type SendMcpRequestRequestParamsMap = { [key: string]: unknown | undefined };
+const SendMcpRequestRequestParamsMap =
+  ResourceMetadataMap as any as S.Schema<SendMcpRequestRequestParamsMap>;
+
 export interface SendMcpRequestRequest {
   /** JSON-RPC protocol version. Always `2.0`. */
   jsonrpc: SendMcpRequestRequestJsonrpc | (string & {});
@@ -1599,12 +2520,23 @@ export interface SendMcpRequestRequest {
   /** Method parameters as defined by the MCP specification. */
   params?: SendMcpRequestRequestParamsMap;
 }
+const SendMcpRequestRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  6,
+) as any as S.Schema<SendMcpRequestRequest>;
+
 /** JSON-RPC protocol version. Always `2.0`. */
 export type JSONRPCResponseJsonrpc = "2.0";
+const JSONRPCResponseJsonrpc = S.String;
+
 /** Identifier of the request this responds to. */
 export type JSONRPCResponseId = string | number;
+const JSONRPCResponseId = S.Unknown as any as S.Schema<JSONRPCResponseId>;
+
 /** Method result as defined by the MCP specification. */
 export type JSONRPCResponseResultMap = { [key: string]: unknown | undefined };
+const JSONRPCResponseResultMap = ResourceMetadataMap as any as S.Schema<JSONRPCResponseResultMap>;
+
 /** A JSON-RPC 2.0 error. Failures inside a tool are reported in the tool result with `isError`, not here. */
 export interface JSONRPCError {
   /** JSON-RPC error code. */
@@ -1614,6 +2546,8 @@ export interface JSONRPCError {
   /** Additional error detail. */
   data?: unknown;
 }
+const JSONRPCError = /*@__PURE__*/ __L.at(__c23, 7) as any as S.Schema<JSONRPCError>;
+
 /** A JSON-RPC 2.0 response. Exactly one of `result` or `error` is present. */
 export interface JSONRPCResponse {
   /** JSON-RPC protocol version. Always `2.0`. */
@@ -1624,6 +2558,8 @@ export interface JSONRPCResponse {
   result?: JSONRPCResponseResultMap;
   error?: JSONRPCError;
 }
+const JSONRPCResponse = /*@__PURE__*/ __L.at(__c24, 0) as any as S.Schema<JSONRPCResponse>;
+
 export interface SetOrganizationMemberRoleRequest {
   /** Unique identifier for a specific organization */
   organizationID: string;
@@ -1631,7 +2567,15 @@ export interface SetOrganizationMemberRoleRequest {
   userID: string;
   role: OrganizationRoleName | (string & {});
 }
+const SetOrganizationMemberRoleRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  1,
+) as any as S.Schema<SetOrganizationMemberRoleRequest>;
+
 export interface SetOrganizationMemberRoleResponse {}
+const SetOrganizationMemberRoleResponse =
+  CreateOrganizationInvitationResponse as any as S.Schema<SetOrganizationMemberRoleResponse>;
+
 export interface SetOrganizationSSOProviderEnforcementRequest {
   /** Unique identifier for a specific organization */
   organizationID: string;
@@ -1640,23 +2584,49 @@ export interface SetOrganizationSSOProviderEnforcementRequest {
   /** Enable to send every address on the domain to this provider. Disable to let members sign in however they could before. */
   enforced: boolean;
 }
+const SetOrganizationSSOProviderEnforcementRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  2,
+) as any as S.Schema<SetOrganizationSSOProviderEnforcementRequest>;
+
 /** Stripe webhook event payload */
 export type StripeWebhookRequestBodyMap = { [key: string]: unknown | undefined };
+const StripeWebhookRequestBodyMap =
+  ResourceMetadataMap as any as S.Schema<StripeWebhookRequestBodyMap>;
+
 export interface StripeWebhookRequest {
   body: StripeWebhookRequestBodyMap;
 }
+const StripeWebhookRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  3,
+) as any as S.Schema<StripeWebhookRequest>;
+
 export interface StripeWebhookResponse {}
+const StripeWebhookResponse = DeleteBranchResponse as any as S.Schema<StripeWebhookResponse>;
+
 export interface UpdateBillingCustomerRequest {
   /** Unique identifier for a specific organization */
   organizationID: string;
   billing_email: string;
 }
+const UpdateBillingCustomerRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  4,
+) as any as S.Schema<UpdateBillingCustomerRequest>;
+
 /** Arbitrary PostgreSQL configuration parameters for the cluster */
 export type UpdateBranchRequestPostgresConfigurationParametersMap = {
   [key: string]: string | undefined;
 };
+const UpdateBranchRequestPostgresConfigurationParametersMap =
+  ClusterConfigurationPostgresConfigurationParametersMap as any as S.Schema<UpdateBranchRequestPostgresConfigurationParametersMap>;
+
 /** List of PostgreSQL extensions and libraries to preload */
 export type UpdateBranchRequestPreloadLibrariesList = Array<string>;
+const UpdateBranchRequestPreloadLibrariesList =
+  LogFilterValuesList as any as S.Schema<UpdateBranchRequestPreloadLibrariesList>;
+
 export interface UpdateBranchRequest {
   /** Unique identifier of the organization containing the project */
   organizationID: string;
@@ -1685,6 +2655,8 @@ export interface UpdateBranchRequest {
   /** PostgreSQL image to use for the database instances */
   image?: string;
 }
+const UpdateBranchRequest = /*@__PURE__*/ __L.at(__c24, 5) as any as S.Schema<UpdateBranchRequest>;
+
 export interface UpdateGithubAppInstallationRequest {
   /** Unique identifier of the organization */
   organizationID: string;
@@ -1693,6 +2665,11 @@ export interface UpdateGithubAppInstallationRequest {
   /** GitHub App installation ID */
   installationId: number;
 }
+const UpdateGithubAppInstallationRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  6,
+) as any as S.Schema<UpdateGithubAppInstallationRequest>;
+
 export interface UpdateGithubRepositoryRequest {
   /** Unique identifier of the organization */
   organizationID: string;
@@ -1703,6 +2680,11 @@ export interface UpdateGithubRepositoryRequest {
   /** GitHub repository ID */
   githubRepositoryID: number;
 }
+const UpdateGithubRepositoryRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  7,
+) as any as S.Schema<UpdateGithubRepositoryRequest>;
+
 export interface UpdateOrganizationRequest {
   /** Unique identifier for a specific organization */
   organizationID: string;
@@ -1711,6 +2693,11 @@ export interface UpdateOrganizationRequest {
   /** New name for the organization */
   name?: string;
 }
+const UpdateOrganizationRequest = /*@__PURE__*/ __L.at(
+  __c25,
+  0,
+) as any as S.Schema<UpdateOrganizationRequest>;
+
 export interface UpdateOrganizationSSOProviderRequest {
   /** Unique identifier for a specific organization */
   organizationID: string;
@@ -1723,11 +2710,21 @@ export interface UpdateOrganizationSSOProviderRequest {
   /** OAuth client secret. Write-only: it is stored in Keycloak and is never returned by this API. */
   client_secret: string | Redacted.Redacted<string>;
 }
+const UpdateOrganizationSSOProviderRequest = /*@__PURE__*/ __L.at(
+  __c25,
+  1,
+) as any as S.Schema<UpdateOrganizationSSOProviderRequest>;
+
 /** Partial configuration update for a project */
 export interface UpdateProjectConfiguration {
   scaleToZero?: ProjectScaleToZeroConfiguration;
   ipFiltering?: IPFilteringConfiguration;
 }
+const UpdateProjectConfiguration = /*@__PURE__*/ __L.at(
+  __c25,
+  2,
+) as any as S.Schema<UpdateProjectConfiguration>;
+
 export interface UpdateProjectRequest {
   /** Unique identifier of the organization containing the project */
   organizationID: string;
@@ -1737,21 +2734,42 @@ export interface UpdateProjectRequest {
   name?: string;
   configuration?: UpdateProjectConfiguration;
 }
+const UpdateProjectRequest = /*@__PURE__*/ __L.at(
+  __c25,
+  3,
+) as any as S.Schema<UpdateProjectRequest>;
+
 /** Scopes granted to the installation. */
 export type UpsertInstallationRequestScopesList = Array<string>;
+const UpsertInstallationRequestScopesList =
+  LogFilterValuesList as any as S.Schema<UpsertInstallationRequestScopesList>;
+
 /** Map of policy id to the acceptance timestamp (RFC 3339), e.g. {"toc": "2024-02-28T10:00:00Z"}. */
 export type UpsertInstallationRequestAcceptedPoliciesMap = { [key: string]: string | undefined };
+const UpsertInstallationRequestAcceptedPoliciesMap =
+  ClusterConfigurationPostgresConfigurationParametersMap as any as S.Schema<UpsertInstallationRequestAcceptedPoliciesMap>;
+
 export interface InstallationCredentials {
   /** Installation access token that authenticates our outbound Partner API calls to Vercel. Stored encrypted at rest. */
   access_token: string | Redacted.Redacted<string>;
   /** Token type (e.g. "Bearer"). */
   token_type: string;
 }
+const InstallationCredentials = /*@__PURE__*/ __L.at(
+  __c25,
+  4,
+) as any as S.Schema<InstallationCredentials>;
+
 /** Contact details for the account. */
 export interface InstallationAccountContact {
   email: string;
   name?: string;
 }
+const InstallationAccountContact = /*@__PURE__*/ __L.at(
+  __c25,
+  5,
+) as any as S.Schema<InstallationAccountContact>;
+
 /** The Vercel account/team installing the integration. */
 export interface InstallationAccount {
   /** Team name (absent for personal accounts). */
@@ -1761,6 +2779,8 @@ export interface InstallationAccount {
   /** Contact details for the account. */
   contact?: InstallationAccountContact;
 }
+const InstallationAccount = /*@__PURE__*/ __L.at(__c25, 6) as any as S.Schema<InstallationAccount>;
+
 export interface UpsertInstallationRequest {
   /** Vercel installation id (icfg_...). */
   installationId: string;
@@ -1771,15 +2791,32 @@ export interface UpsertInstallationRequest {
   credentials: InstallationCredentials;
   account: InstallationAccount;
 }
+const UpsertInstallationRequest = /*@__PURE__*/ __L.at(
+  __c25,
+  7,
+) as any as S.Schema<UpsertInstallationRequest>;
+
 export interface UpsertInstallationResponse {}
+const UpsertInstallationResponse =
+  DeleteBranchResponse as any as S.Schema<UpsertInstallationResponse>;
+
 export interface VerifyOrganizationSSODomainRequest {
   /** Unique identifier for a specific organization */
   organizationID: string;
   /** Email domain claimed for SSO */
   domain: string;
 }
+const VerifyOrganizationSSODomainRequest = /*@__PURE__*/ __L.at(
+  __c26,
+  0,
+) as any as S.Schema<VerifyOrganizationSSODomainRequest>;
+
 export interface WebsocketRequest {}
+const WebsocketRequest = /*@__PURE__*/ __L.at(__c26, 1) as any as S.Schema<WebsocketRequest>;
+
 export interface WebsocketResponse {}
+const WebsocketResponse = DeleteBranchResponse as any as S.Schema<WebsocketResponse>;
+
 export type BranchLogs2Error = BadRequest | NotFound | XataOpError;
 /** Retrieve branch logs */
 export const branchLogs2: API.OperationMethod<
@@ -1788,8 +2825,8 @@ export const branchLogs2: API.OperationMethod<
   BranchLogs2Error,
   XataOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3) as any as S.Schema<BranchLogsRequest>,
-  output: __S(6) as any as S.Schema<BranchLogs>,
+  input: BranchLogsRequest,
+  output: BranchLogs,
   errors: [BadRequest, NotFound, UnknownXataError],
   protocol: XataProtocol,
   retry: Retry.Retry,
@@ -1803,8 +2840,8 @@ export const branchMetrics2: API.OperationMethod<
   BranchMetrics2Error,
   XataOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8) as any as S.Schema<BranchMetricsRequest>,
-  output: __S(15) as any as S.Schema<BranchMetrics>,
+  input: BranchMetricsRequest,
+  output: BranchMetrics,
   errors: [BadRequest, NotFound, UnknownXataError],
   protocol: XataProtocol,
   retry: Retry.Retry,
@@ -1818,8 +2855,8 @@ export const claimOrganizationSSODomain: API.OperationMethod<
   ClaimOrganizationSSODomainError,
   XataOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16) as any as S.Schema<ClaimOrganizationSSODomainRequest>,
-  output: __S(18) as any as S.Schema<OrganizationSSODomain>,
+  input: ClaimOrganizationSSODomainRequest,
+  output: OrganizationSSODomain,
   errors: [BadRequest, Forbidden, Conflict, UnknownXataError],
   protocol: XataProtocol,
   retry: Retry.Retry,
@@ -1833,8 +2870,8 @@ export const createBillingCheckoutSession: API.OperationMethod<
   CreateBillingCheckoutSessionError,
   XataOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19) as any as S.Schema<CreateBillingCheckoutSessionRequest>,
-  output: __S(20) as any as S.Schema<BillingCheckoutSessionResponse>,
+  input: CreateBillingCheckoutSessionRequest,
+  output: BillingCheckoutSessionResponse,
   errors: [BadRequest, Forbidden, UnknownXataError],
   protocol: XataProtocol,
   retry: Retry.Retry,
@@ -1848,8 +2885,8 @@ export const createBillingPaymentMethodSession: API.OperationMethod<
   CreateBillingPaymentMethodSessionError,
   XataOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21) as any as S.Schema<CreateBillingPaymentMethodSessionRequest>,
-  output: __S(20) as any as S.Schema<BillingPaymentMethodSessionResponse>,
+  input: CreateBillingPaymentMethodSessionRequest,
+  output: BillingPaymentMethodSessionResponse,
   errors: [BadRequest, Forbidden, UnknownXataError],
   protocol: XataProtocol,
   retry: Retry.Retry,
@@ -1863,8 +2900,8 @@ export const createBranch: API.OperationMethod<
   CreateBranchError,
   XataOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24) as any as S.Schema<CreateBranchRequest>,
-  output: __S(25) as any as S.Schema<BranchShortMetadata>,
+  input: CreateBranchRequest,
+  output: BranchShortMetadata,
   errors: [BadRequest, NotFound, UnknownXataError],
   protocol: XataProtocol,
   retry: Retry.Retry,
@@ -1878,8 +2915,8 @@ export const createGithubAppInstallation: API.OperationMethod<
   CreateGithubAppInstallationError,
   XataOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26) as any as S.Schema<CreateGithubAppInstallationRequest>,
-  output: __S(27) as any as S.Schema<GithubInstallation>,
+  input: CreateGithubAppInstallationRequest,
+  output: GithubInstallation,
   errors: [BadRequest, Conflict, UnknownXataError],
   protocol: XataProtocol,
   retry: Retry.Retry,
@@ -1893,8 +2930,8 @@ export const createGithubRepository: API.OperationMethod<
   CreateGithubRepositoryError,
   XataOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28) as any as S.Schema<CreateGithubRepositoryRequest>,
-  output: __S(29) as any as S.Schema<GithubRepository>,
+  input: CreateGithubRepositoryRequest,
+  output: GithubRepository,
   errors: [BadRequest, Conflict, UnknownXataError],
   protocol: XataProtocol,
   retry: Retry.Retry,
@@ -1908,8 +2945,8 @@ export const createOrganization: API.OperationMethod<
   CreateOrganizationError,
   XataOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30) as any as S.Schema<CreateOrganizationRequest>,
-  output: __S(32) as any as S.Schema<Organization>,
+  input: CreateOrganizationRequest,
+  output: Organization,
   errors: [BadRequest, NotFound, UnknownXataError],
   protocol: XataProtocol,
   retry: Retry.Retry,
@@ -1923,8 +2960,8 @@ export const createOrganizationAPIKey: API.OperationMethod<
   CreateOrganizationAPIKeyError,
   XataOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33) as any as S.Schema<CreateOrganizationAPIKeyRequest>,
-  output: __S(35) as any as S.Schema<CreateOrganizationAPIKeyResponse>,
+  input: CreateOrganizationAPIKeyRequest,
+  output: CreateOrganizationAPIKeyResponse,
   errors: [BadRequest, UnknownXataError],
   protocol: XataProtocol,
   retry: Retry.Retry,
@@ -1943,8 +2980,8 @@ export const createOrganizationInvitation: API.OperationMethod<
   CreateOrganizationInvitationError,
   XataOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36) as any as S.Schema<CreateOrganizationInvitationRequest>,
-  output: __S(37) as any as S.Schema<CreateOrganizationInvitationResponse>,
+  input: CreateOrganizationInvitationRequest,
+  output: CreateOrganizationInvitationResponse,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownXataError],
   protocol: XataProtocol,
   retry: Retry.Retry,
@@ -1958,8 +2995,8 @@ export const createOrganizationSSOProvider: API.OperationMethod<
   CreateOrganizationSSOProviderError,
   XataOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38) as any as S.Schema<CreateOrganizationSSOProviderRequest>,
-  output: __S(39) as any as S.Schema<OrganizationSSOProvider>,
+  input: CreateOrganizationSSOProviderRequest,
+  output: OrganizationSSOProvider,
   errors: [BadRequest, Forbidden, Conflict, UnknownXataError],
   protocol: XataProtocol,
   retry: Retry.Retry,
@@ -1973,8 +3010,8 @@ export const createProject: API.OperationMethod<
   CreateProjectError,
   XataOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45) as any as S.Schema<CreateProjectRequest>,
-  output: __S(46) as any as S.Schema<Project>,
+  input: CreateProjectRequest,
+  output: Project,
   errors: [BadRequest, UnknownXataError],
   protocol: XataProtocol,
   retry: Retry.Retry,
@@ -1988,8 +3025,8 @@ export const createUserAPIKey: API.OperationMethod<
   CreateUserAPIKeyError,
   XataOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47) as any as S.Schema<CreateUserAPIKeyRequest>,
-  output: __S(48) as any as S.Schema<CreateUserAPIKeyResponse>,
+  input: CreateUserAPIKeyRequest,
+  output: CreateUserAPIKeyResponse,
   errors: [BadRequest, UnknownXataError],
   protocol: XataProtocol,
   retry: Retry.Retry,
@@ -2003,8 +3040,8 @@ export const deleteBranch: API.OperationMethod<
   DeleteBranchError,
   XataOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49) as any as S.Schema<DeleteBranchRequest>,
-  output: __S(50) as any as S.Schema<DeleteBranchResponse>,
+  input: DeleteBranchRequest,
+  output: DeleteBranchResponse,
   errors: [BadRequest, NotFound, UnknownXataError],
   protocol: XataProtocol,
   retry: Retry.Retry,
@@ -2018,8 +3055,8 @@ export const deleteGithubRepository: API.OperationMethod<
   DeleteGithubRepositoryError,
   XataOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(51) as any as S.Schema<DeleteGithubRepositoryRequest>,
-  output: __S(50) as any as S.Schema<DeleteGithubRepositoryResponse>,
+  input: DeleteGithubRepositoryRequest,
+  output: DeleteGithubRepositoryResponse,
   errors: [BadRequest, NotFound, UnknownXataError],
   protocol: XataProtocol,
   retry: Retry.Retry,
@@ -2033,8 +3070,8 @@ export const deleteInstallation: API.OperationMethod<
   DeleteInstallationError,
   XataOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(52) as any as S.Schema<DeleteInstallationRequest>,
-  output: __S(50) as any as S.Schema<DeleteInstallationResponse>,
+  input: DeleteInstallationRequest,
+  output: DeleteInstallationResponse,
   errors: [Forbidden, Conflict, UnknownXataError],
   protocol: XataProtocol,
   retry: Retry.Retry,
@@ -2048,8 +3085,8 @@ export const deleteOrganization: API.OperationMethod<
   DeleteOrganizationError,
   XataOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(53) as any as S.Schema<DeleteOrganizationRequest>,
-  output: __S(50) as any as S.Schema<DeleteOrganizationResponse>,
+  input: DeleteOrganizationRequest,
+  output: DeleteOrganizationResponse,
   errors: [BadRequest, Forbidden, NotFound, UnknownXataError],
   protocol: XataProtocol,
   retry: Retry.Retry,
@@ -2063,8 +3100,8 @@ export const deleteOrganizationAPIKeys: API.OperationMethod<
   DeleteOrganizationAPIKeysError,
   XataOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(54) as any as S.Schema<DeleteOrganizationAPIKeysRequest>,
-  output: __S(37) as any as S.Schema<DeleteOrganizationAPIKeysResponse>,
+  input: DeleteOrganizationAPIKeysRequest,
+  output: DeleteOrganizationAPIKeysResponse,
   errors: [BadRequest, NotFound, UnknownXataError],
   protocol: XataProtocol,
   retry: Retry.Retry,
@@ -2078,8 +3115,8 @@ export const deleteOrganizationInvitation: API.OperationMethod<
   DeleteOrganizationInvitationError,
   XataOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(55) as any as S.Schema<DeleteOrganizationInvitationRequest>,
-  output: __S(37) as any as S.Schema<DeleteOrganizationInvitationResponse>,
+  input: DeleteOrganizationInvitationRequest,
+  output: DeleteOrganizationInvitationResponse,
   errors: [BadRequest, Forbidden, NotFound, UnknownXataError],
   protocol: XataProtocol,
   retry: Retry.Retry,
@@ -2093,8 +3130,8 @@ export const deleteOrganizationSSODomain: API.OperationMethod<
   DeleteOrganizationSSODomainError,
   XataOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56) as any as S.Schema<DeleteOrganizationSSODomainRequest>,
-  output: __S(37) as any as S.Schema<DeleteOrganizationSSODomainResponse>,
+  input: DeleteOrganizationSSODomainRequest,
+  output: DeleteOrganizationSSODomainResponse,
   errors: [Forbidden, Conflict, UnknownXataError],
   protocol: XataProtocol,
   retry: Retry.Retry,
@@ -2108,8 +3145,8 @@ export const deleteOrganizationSSOProvider: API.OperationMethod<
   DeleteOrganizationSSOProviderError,
   XataOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57) as any as S.Schema<DeleteOrganizationSSOProviderRequest>,
-  output: __S(37) as any as S.Schema<DeleteOrganizationSSOProviderResponse>,
+  input: DeleteOrganizationSSOProviderRequest,
+  output: DeleteOrganizationSSOProviderResponse,
   errors: [Forbidden, UnknownXataError],
   protocol: XataProtocol,
   retry: Retry.Retry,
@@ -2123,8 +3160,8 @@ export const deleteProject: API.OperationMethod<
   DeleteProjectError,
   XataOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(58) as any as S.Schema<DeleteProjectRequest>,
-  output: __S(50) as any as S.Schema<DeleteProjectResponse>,
+  input: DeleteProjectRequest,
+  output: DeleteProjectResponse,
   errors: [BadRequest, NotFound, UnknownXataError],
   protocol: XataProtocol,
   retry: Retry.Retry,
@@ -2138,8 +3175,8 @@ export const deleteResource: API.OperationMethod<
   DeleteResourceError,
   XataOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(59) as any as S.Schema<DeleteResourceRequest>,
-  output: __S(50) as any as S.Schema<DeleteResourceResponse>,
+  input: DeleteResourceRequest,
+  output: DeleteResourceResponse,
   errors: [Forbidden, NotFound, UnknownXataError],
   protocol: XataProtocol,
   retry: Retry.Retry,
@@ -2153,8 +3190,8 @@ export const deleteUserAPIKeys: API.OperationMethod<
   DeleteUserAPIKeysError,
   XataOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60) as any as S.Schema<DeleteUserAPIKeysRequest>,
-  output: __S(50) as any as S.Schema<DeleteUserAPIKeysResponse>,
+  input: DeleteUserAPIKeysRequest,
+  output: DeleteUserAPIKeysResponse,
   errors: [BadRequest, NotFound, UnknownXataError],
   protocol: XataProtocol,
   retry: Retry.Retry,
@@ -2168,8 +3205,8 @@ export const describeBranch: API.OperationMethod<
   DescribeBranchError,
   XataOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(61) as any as S.Schema<DescribeBranchRequest>,
-  output: __S(68) as any as S.Schema<BranchMetadata>,
+  input: DescribeBranchRequest,
+  output: BranchMetadata,
   errors: [BadRequest, NotFound, UnknownXataError],
   protocol: XataProtocol,
   retry: Retry.Retry,
@@ -2183,8 +3220,8 @@ export const getBackup: API.OperationMethod<
   GetBackupError,
   XataOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(69) as any as S.Schema<GetBackupRequest>,
-  output: __S(70) as any as S.Schema<BackupMetadata>,
+  input: GetBackupRequest,
+  output: BackupMetadata,
   errors: [BadRequest, NotFound, UnknownXataError],
   protocol: XataProtocol,
   retry: Retry.Retry,
@@ -2198,8 +3235,8 @@ export const getBillingCustomer: API.OperationMethod<
   GetBillingCustomerError,
   XataOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(71) as any as S.Schema<GetBillingCustomerRequest>,
-  output: __S(77) as any as S.Schema<BillingCustomerResponse>,
+  input: GetBillingCustomerRequest,
+  output: BillingCustomerResponse,
   errors: [Forbidden, NotFound, UnknownXataError],
   protocol: XataProtocol,
   retry: Retry.Retry,
@@ -2213,8 +3250,8 @@ export const getBillingInvoices: API.OperationMethod<
   GetBillingInvoicesError,
   XataOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(78) as any as S.Schema<GetBillingInvoicesRequest>,
-  output: __S(82) as any as S.Schema<BillingInvoicesResponse>,
+  input: GetBillingInvoicesRequest,
+  output: BillingInvoicesResponse,
   errors: [BadRequest, Forbidden, NotFound, UnknownXataError],
   protocol: XataProtocol,
   retry: Retry.Retry,
@@ -2228,8 +3265,8 @@ export const getBillingUpcomingInvoice: API.OperationMethod<
   GetBillingUpcomingInvoiceError,
   XataOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(83) as any as S.Schema<GetBillingUpcomingInvoiceRequest>,
-  output: __S(84) as any as S.Schema<BillingUpcomingInvoiceResponse>,
+  input: GetBillingUpcomingInvoiceRequest,
+  output: BillingUpcomingInvoiceResponse,
   errors: [Forbidden, NotFound, UnknownXataError],
   protocol: XataProtocol,
   retry: Retry.Retry,
@@ -2243,8 +3280,8 @@ export const getBranchCredentials: API.OperationMethod<
   GetBranchCredentialsError,
   XataOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(85) as any as S.Schema<GetBranchCredentialsRequest>,
-  output: __S(86) as any as S.Schema<BranchCredentials>,
+  input: GetBranchCredentialsRequest,
+  output: BranchCredentials,
   errors: [BadRequest, NotFound, UnknownXataError],
   protocol: XataProtocol,
   retry: Retry.Retry,
@@ -2258,8 +3295,8 @@ export const getBranchPostgresConfig: API.OperationMethod<
   GetBranchPostgresConfigError,
   XataOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(87) as any as S.Schema<GetBranchPostgresConfigRequest>,
-  output: __S(91) as any as S.Schema<PostgresConfigDetails>,
+  input: GetBranchPostgresConfigRequest,
+  output: PostgresConfigDetails,
   errors: [BadRequest, NotFound, UnknownXataError],
   protocol: XataProtocol,
   retry: Retry.Retry,
@@ -2273,8 +3310,8 @@ export const getGithubRepository: API.OperationMethod<
   GetGithubRepositoryError,
   XataOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(92) as any as S.Schema<GetGithubRepositoryRequest>,
-  output: __S(93) as any as S.Schema<GetGithubRepositoryResponse>,
+  input: GetGithubRepositoryRequest,
+  output: GetGithubRepositoryResponse,
   errors: [BadRequest, UnknownXataError],
   protocol: XataProtocol,
   retry: Retry.Retry,
@@ -2288,8 +3325,8 @@ export const getOrganization: API.OperationMethod<
   GetOrganizationError,
   XataOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(94) as any as S.Schema<GetOrganizationRequest>,
-  output: __S(32) as any as S.Schema<Organization>,
+  input: GetOrganizationRequest,
+  output: Organization,
   errors: [BadRequest, Forbidden, NotFound, UnknownXataError],
   protocol: XataProtocol,
   retry: Retry.Retry,
@@ -2303,8 +3340,8 @@ export const getOrganizationInvitation: API.OperationMethod<
   GetOrganizationInvitationError,
   XataOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(95) as any as S.Schema<GetOrganizationInvitationRequest>,
-  output: __S(96) as any as S.Schema<OrganizationInvitation>,
+  input: GetOrganizationInvitationRequest,
+  output: OrganizationInvitation,
   errors: [BadRequest, Forbidden, NotFound, UnknownXataError],
   protocol: XataProtocol,
   retry: Retry.Retry,
@@ -2318,8 +3355,8 @@ export const getOrganizationLimits: API.OperationMethod<
   GetOrganizationLimitsError,
   XataOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(97) as any as S.Schema<GetOrganizationLimitsRequest>,
-  output: __S(98) as any as S.Schema<GetOrganizationLimitsResponse>,
+  input: GetOrganizationLimitsRequest,
+  output: GetOrganizationLimitsResponse,
   errors: [Forbidden, UnknownXataError],
   protocol: XataProtocol,
   retry: Retry.Retry,
@@ -2333,8 +3370,8 @@ export const getOrganizationMembershipLimits: API.OperationMethod<
   GetOrganizationMembershipLimitsError,
   XataOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(99) as any as S.Schema<GetOrganizationMembershipLimitsRequest>,
-  output: __S(100) as any as S.Schema<OrganizationMembershipLimits>,
+  input: GetOrganizationMembershipLimitsRequest,
+  output: OrganizationMembershipLimits,
   errors: [Forbidden, UnknownXataError],
   protocol: XataProtocol,
   retry: Retry.Retry,
@@ -2348,8 +3385,8 @@ export const getOrganizationsList: API.OperationMethod<
   GetOrganizationsListError,
   XataOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(101) as any as S.Schema<GetOrganizationsListRequest>,
-  output: __S(104) as any as S.Schema<GetOrganizationsListResponse>,
+  input: GetOrganizationsListRequest,
+  output: GetOrganizationsListResponse,
   errors: [BadRequest, NotFound, UnknownXataError],
   protocol: XataProtocol,
   retry: Retry.Retry,
@@ -2363,8 +3400,8 @@ export const getOrganizationSSO: API.OperationMethod<
   GetOrganizationSSOError,
   XataOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(105) as any as S.Schema<GetOrganizationSSORequest>,
-  output: __S(108) as any as S.Schema<OrganizationSSO>,
+  input: GetOrganizationSSORequest,
+  output: OrganizationSSO,
   errors: [Forbidden, UnknownXataError],
   protocol: XataProtocol,
   retry: Retry.Retry,
@@ -2378,8 +3415,8 @@ export const getProject: API.OperationMethod<
   GetProjectError,
   XataOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(109) as any as S.Schema<GetProjectRequest>,
-  output: __S(46) as any as S.Schema<Project>,
+  input: GetProjectRequest,
+  output: Project,
   errors: [BadRequest, NotFound, UnknownXataError],
   protocol: XataProtocol,
   retry: Retry.Retry,
@@ -2393,8 +3430,8 @@ export const getProjectLimits: API.OperationMethod<
   GetProjectLimitsError,
   XataOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(110) as any as S.Schema<GetProjectLimitsRequest>,
-  output: __S(111) as any as S.Schema<EffectiveProjectLimits>,
+  input: GetProjectLimitsRequest,
+  output: EffectiveProjectLimits,
   errors: [UnknownXataError],
   protocol: XataProtocol,
   retry: Retry.Retry,
@@ -2408,8 +3445,8 @@ export const getResource: API.OperationMethod<
   GetResourceError,
   XataOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(112) as any as S.Schema<GetResourceRequest>,
-  output: __S(114) as any as S.Schema<Resource>,
+  input: GetResourceRequest,
+  output: Resource,
   errors: [Forbidden, NotFound, UnknownXataError],
   protocol: XataProtocol,
   retry: Retry.Retry,
@@ -2423,8 +3460,8 @@ export const githubWebhook: API.OperationMethod<
   GithubWebhookError,
   XataOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(115) as any as S.Schema<GithubWebhookRequest>,
-  output: __S(50) as any as S.Schema<GithubWebhookResponse>,
+  input: GithubWebhookRequest,
+  output: GithubWebhookResponse,
   errors: [BadRequest, UnknownXataError],
   protocol: XataProtocol,
   retry: Retry.Retry,
@@ -2438,8 +3475,8 @@ export const listBackups: API.OperationMethod<
   ListBackupsError,
   XataOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(116) as any as S.Schema<ListBackupsRequest>,
-  output: __S(118) as any as S.Schema<ListBackupsResponse>,
+  input: ListBackupsRequest,
+  output: ListBackupsResponse,
   errors: [BadRequest, NotFound, UnknownXataError],
   protocol: XataProtocol,
   retry: Retry.Retry,
@@ -2453,8 +3490,8 @@ export const listBillingPlansForProduct: API.OperationMethod<
   ListBillingPlansForProductError,
   XataOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(119) as any as S.Schema<ListBillingPlansForProductRequest>,
-  output: __S(126) as any as S.Schema<ListBillingPlansResponse>,
+  input: ListBillingPlansForProductRequest,
+  output: ListBillingPlansResponse,
   errors: [BadRequest, Forbidden, NotFound, UnknownXataError],
   protocol: XataProtocol,
   retry: Retry.Retry,
@@ -2468,8 +3505,8 @@ export const listBranches: API.OperationMethod<
   ListBranchesError,
   XataOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(127) as any as S.Schema<ListBranchesRequest>,
-  output: __S(130) as any as S.Schema<ListBranchesResponse>,
+  input: ListBranchesRequest,
+  output: ListBranchesResponse,
   errors: [BadRequest, NotFound, UnknownXataError],
   protocol: XataProtocol,
   retry: Retry.Retry,
@@ -2483,8 +3520,8 @@ export const listExtensions: API.OperationMethod<
   ListExtensionsError,
   XataOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(131) as any as S.Schema<ListExtensionsRequest>,
-  output: __S(134) as any as S.Schema<ListExtensionsResponse>,
+  input: ListExtensionsRequest,
+  output: ListExtensionsResponse,
   errors: [BadRequest, UnknownXataError],
   protocol: XataProtocol,
   retry: Retry.Retry,
@@ -2498,8 +3535,8 @@ export const listGithubAppInstallations: API.OperationMethod<
   ListGithubAppInstallationsError,
   XataOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(135) as any as S.Schema<ListGithubAppInstallationsRequest>,
-  output: __S(137) as any as S.Schema<ListGithubAppInstallationsResponse>,
+  input: ListGithubAppInstallationsRequest,
+  output: ListGithubAppInstallationsResponse,
   errors: [BadRequest, UnknownXataError],
   protocol: XataProtocol,
   retry: Retry.Retry,
@@ -2513,8 +3550,8 @@ export const listImages: API.OperationMethod<
   ListImagesError,
   XataOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(138) as any as S.Schema<ListImagesRequest>,
-  output: __S(142) as any as S.Schema<ListImagesResponse>,
+  input: ListImagesRequest,
+  output: ListImagesResponse,
   errors: [BadRequest, UnknownXataError],
   protocol: XataProtocol,
   retry: Retry.Retry,
@@ -2528,8 +3565,8 @@ export const listInstanceTypes: API.OperationMethod<
   ListInstanceTypesError,
   XataOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(143) as any as S.Schema<ListInstanceTypesRequest>,
-  output: __S(146) as any as S.Schema<ListInstanceTypesResponse>,
+  input: ListInstanceTypesRequest,
+  output: ListInstanceTypesResponse,
   errors: [BadRequest, UnknownXataError],
   protocol: XataProtocol,
   retry: Retry.Retry,
@@ -2543,8 +3580,8 @@ export const listOrganizationAPIKeys: API.OperationMethod<
   ListOrganizationAPIKeysError,
   XataOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(147) as any as S.Schema<ListOrganizationAPIKeysRequest>,
-  output: __S(150) as any as S.Schema<ListOrganizationAPIKeysResponse>,
+  input: ListOrganizationAPIKeysRequest,
+  output: ListOrganizationAPIKeysResponse,
   errors: [BadRequest, Forbidden, NotFound, UnknownXataError],
   protocol: XataProtocol,
   retry: Retry.Retry,
@@ -2558,8 +3595,8 @@ export const listOrganizationInvitations: API.OperationMethod<
   ListOrganizationInvitationsError,
   XataOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(151) as any as S.Schema<ListOrganizationInvitationsRequest>,
-  output: __S(153) as any as S.Schema<ListOrganizationInvitationsResponse>,
+  input: ListOrganizationInvitationsRequest,
+  output: ListOrganizationInvitationsResponse,
   errors: [BadRequest, Forbidden, NotFound, UnknownXataError],
   protocol: XataProtocol,
   retry: Retry.Retry,
@@ -2573,8 +3610,8 @@ export const listOrganizationMembers: API.OperationMethod<
   ListOrganizationMembersError,
   XataOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(154) as any as S.Schema<ListOrganizationMembersRequest>,
-  output: __S(157) as any as S.Schema<ListOrganizationMembersResponse>,
+  input: ListOrganizationMembersRequest,
+  output: ListOrganizationMembersResponse,
   errors: [UnknownXataError],
   protocol: XataProtocol,
   retry: Retry.Retry,
@@ -2588,8 +3625,8 @@ export const listOrganizationRoles: API.OperationMethod<
   ListOrganizationRolesError,
   XataOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(158) as any as S.Schema<ListOrganizationRolesRequest>,
-  output: __S(161) as any as S.Schema<ListOrganizationRolesResponse>,
+  input: ListOrganizationRolesRequest,
+  output: ListOrganizationRolesResponse,
   errors: [Forbidden, NotFound, UnknownXataError],
   protocol: XataProtocol,
   retry: Retry.Retry,
@@ -2603,8 +3640,8 @@ export const listProjects: API.OperationMethod<
   ListProjectsError,
   XataOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(162) as any as S.Schema<ListProjectsRequest>,
-  output: __S(164) as any as S.Schema<ListProjectsResponse>,
+  input: ListProjectsRequest,
+  output: ListProjectsResponse,
   errors: [BadRequest, UnknownXataError],
   protocol: XataProtocol,
   retry: Retry.Retry,
@@ -2618,8 +3655,8 @@ export const listRegions: API.OperationMethod<
   ListRegionsError,
   XataOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(165) as any as S.Schema<ListRegionsRequest>,
-  output: __S(168) as any as S.Schema<ListRegionsResponse>,
+  input: ListRegionsRequest,
+  output: ListRegionsResponse,
   errors: [BadRequest, UnknownXataError],
   protocol: XataProtocol,
   retry: Retry.Retry,
@@ -2633,8 +3670,8 @@ export const listUserAPIKeys: API.OperationMethod<
   ListUserAPIKeysError,
   XataOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(169) as any as S.Schema<ListUserAPIKeysRequest>,
-  output: __S(170) as any as S.Schema<ListUserAPIKeysResponse>,
+  input: ListUserAPIKeysRequest,
+  output: ListUserAPIKeysResponse,
   errors: [BadRequest, UnknownXataError],
   protocol: XataProtocol,
   retry: Retry.Retry,
@@ -2648,8 +3685,8 @@ export const orbWebhook: API.OperationMethod<
   OrbWebhookError,
   XataOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(171) as any as S.Schema<OrbWebhookRequest>,
-  output: __S(50) as any as S.Schema<OrbWebhookResponse>,
+  input: OrbWebhookRequest,
+  output: OrbWebhookResponse,
   errors: [BadRequest, UnknownXataError],
   protocol: XataProtocol,
   retry: Retry.Retry,
@@ -2663,8 +3700,8 @@ export const provisionResource: API.OperationMethod<
   ProvisionResourceError,
   XataOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(172) as any as S.Schema<ProvisionResourceRequest>,
-  output: __S(176) as any as S.Schema<ProvisionedResource>,
+  input: ProvisionResourceRequest,
+  output: ProvisionedResource,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownXataError],
   protocol: XataProtocol,
   retry: Retry.Retry,
@@ -2674,8 +3711,8 @@ export type QueryError = BadRequest | Forbidden | NotFound | Conflict | XataOpEr
 /** Execute SQL query Execute a single SQL query or a batch of queries against a PostgreSQL branch. **Authentication:** send the branch's PostgreSQL connection string in the `Connection-String` header. The control-plane API key (Bearer token) is **not** accepted on the gateway host. **Routing:** the target branch, region, and endpoint type are taken from the hostname embedded in the connection string, which must match the request host. See the `Connection-String` security scheme for the host format. **Single query:** provide `query` (and optional `params`) at the top level. **Batch:** provide `queries` as an array of query objects, or send the request body as a JSON array. Batch queries execute within a single transaction. */
 export const query: API.OperationMethod<QueryRequest, QueryResponse, QueryError, XataOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(180) as any as S.Schema<QueryRequest>,
-    output: __S(181) as any as S.Schema<QueryResponse>,
+    input: QueryRequest,
+    output: QueryResponse,
     errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownXataError],
     protocol: XataProtocol,
     retry: Retry.Retry,
@@ -2689,8 +3726,8 @@ export const registerMarketplace: API.OperationMethod<
   RegisterMarketplaceError,
   XataOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(183) as any as S.Schema<RegisterMarketplaceRequest>,
-  output: __S(50) as any as S.Schema<RegisterMarketplaceResponse>,
+  input: RegisterMarketplaceRequest,
+  output: RegisterMarketplaceResponse,
   errors: [BadRequest, Conflict, UnknownXataError],
   protocol: XataProtocol,
   retry: Retry.Retry,
@@ -2704,8 +3741,8 @@ export const removeOrganizationMember: API.OperationMethod<
   RemoveOrganizationMemberError,
   XataOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(184) as any as S.Schema<RemoveOrganizationMemberRequest>,
-  output: __S(37) as any as S.Schema<RemoveOrganizationMemberResponse>,
+  input: RemoveOrganizationMemberRequest,
+  output: RemoveOrganizationMemberResponse,
   errors: [BadRequest, Conflict, UnknownXataError],
   protocol: XataProtocol,
   retry: Retry.Retry,
@@ -2719,8 +3756,8 @@ export const requestOrganizationDeletion: API.OperationMethod<
   RequestOrganizationDeletionError,
   XataOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(185) as any as S.Schema<RequestOrganizationDeletionRequest>,
-  output: __S(37) as any as S.Schema<RequestOrganizationDeletionResponse>,
+  input: RequestOrganizationDeletionRequest,
+  output: RequestOrganizationDeletionResponse,
   errors: [BadRequest, Forbidden, Conflict, UnknownXataError],
   protocol: XataProtocol,
   retry: Retry.Retry,
@@ -2734,8 +3771,8 @@ export const resendOrganizationInvitation: API.OperationMethod<
   ResendOrganizationInvitationError,
   XataOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(186) as any as S.Schema<ResendOrganizationInvitationRequest>,
-  output: __S(37) as any as S.Schema<ResendOrganizationInvitationResponse>,
+  input: ResendOrganizationInvitationRequest,
+  output: ResendOrganizationInvitationResponse,
   errors: [BadRequest, Forbidden, NotFound, UnknownXataError],
   protocol: XataProtocol,
   retry: Retry.Retry,
@@ -2749,8 +3786,8 @@ export const restoreFromBackup: API.OperationMethod<
   RestoreFromBackupError,
   XataOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(187) as any as S.Schema<RestoreFromBackupRequest>,
-  output: __S(25) as any as S.Schema<BranchShortMetadata>,
+  input: RestoreFromBackupRequest,
+  output: BranchShortMetadata,
   errors: [BadRequest, NotFound, UnknownXataError],
   protocol: XataProtocol,
   retry: Retry.Retry,
@@ -2764,8 +3801,8 @@ export const rotateBranchCredentials: API.OperationMethod<
   RotateBranchCredentialsError,
   XataOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(188) as any as S.Schema<RotateBranchCredentialsRequest>,
-  output: __S(189) as any as S.Schema<RotateBranchCredentialsResponse>,
+  input: RotateBranchCredentialsRequest,
+  output: RotateBranchCredentialsResponse,
   errors: [BadRequest, NotFound, UnknownXataError],
   protocol: XataProtocol,
   retry: Retry.Retry,
@@ -2779,8 +3816,8 @@ export const sendMcpRequest: API.OperationMethod<
   SendMcpRequestError,
   XataOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(190) as any as S.Schema<SendMcpRequestRequest>,
-  output: __S(192) as any as S.Schema<JSONRPCResponse>,
+  input: SendMcpRequestRequest,
+  output: JSONRPCResponse,
   errors: [BadRequest, UnknownXataError],
   protocol: XataProtocol,
   retry: Retry.Retry,
@@ -2799,8 +3836,8 @@ export const setOrganizationMemberRole: API.OperationMethod<
   SetOrganizationMemberRoleError,
   XataOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(193) as any as S.Schema<SetOrganizationMemberRoleRequest>,
-  output: __S(37) as any as S.Schema<SetOrganizationMemberRoleResponse>,
+  input: SetOrganizationMemberRoleRequest,
+  output: SetOrganizationMemberRoleResponse,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownXataError],
   protocol: XataProtocol,
   retry: Retry.Retry,
@@ -2818,8 +3855,8 @@ export const setOrganizationSSOProviderEnforcement: API.OperationMethod<
   SetOrganizationSSOProviderEnforcementError,
   XataOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(194) as any as S.Schema<SetOrganizationSSOProviderEnforcementRequest>,
-  output: __S(39) as any as S.Schema<OrganizationSSOProvider>,
+  input: SetOrganizationSSOProviderEnforcementRequest,
+  output: OrganizationSSOProvider,
   errors: [Forbidden, NotFound, Conflict, UnknownXataError],
   protocol: XataProtocol,
   retry: Retry.Retry,
@@ -2833,8 +3870,8 @@ export const stripeWebhook: API.OperationMethod<
   StripeWebhookError,
   XataOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(195) as any as S.Schema<StripeWebhookRequest>,
-  output: __S(50) as any as S.Schema<StripeWebhookResponse>,
+  input: StripeWebhookRequest,
+  output: StripeWebhookResponse,
   errors: [BadRequest, UnknownXataError],
   protocol: XataProtocol,
   retry: Retry.Retry,
@@ -2848,8 +3885,8 @@ export const updateBillingCustomer: API.OperationMethod<
   UpdateBillingCustomerError,
   XataOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(196) as any as S.Schema<UpdateBillingCustomerRequest>,
-  output: __S(77) as any as S.Schema<BillingCustomerResponse>,
+  input: UpdateBillingCustomerRequest,
+  output: BillingCustomerResponse,
   errors: [BadRequest, Forbidden, NotFound, UnknownXataError],
   protocol: XataProtocol,
   retry: Retry.Retry,
@@ -2863,8 +3900,8 @@ export const updateBranch: API.OperationMethod<
   UpdateBranchError,
   XataOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(197) as any as S.Schema<UpdateBranchRequest>,
-  output: __S(25) as any as S.Schema<BranchShortMetadata>,
+  input: UpdateBranchRequest,
+  output: BranchShortMetadata,
   errors: [BadRequest, NotFound, UnknownXataError],
   protocol: XataProtocol,
   retry: Retry.Retry,
@@ -2878,8 +3915,8 @@ export const updateGithubAppInstallation: API.OperationMethod<
   UpdateGithubAppInstallationError,
   XataOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(198) as any as S.Schema<UpdateGithubAppInstallationRequest>,
-  output: __S(27) as any as S.Schema<GithubInstallation>,
+  input: UpdateGithubAppInstallationRequest,
+  output: GithubInstallation,
   errors: [BadRequest, NotFound, Conflict, UnknownXataError],
   protocol: XataProtocol,
   retry: Retry.Retry,
@@ -2893,8 +3930,8 @@ export const updateGithubRepository: API.OperationMethod<
   UpdateGithubRepositoryError,
   XataOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(199) as any as S.Schema<UpdateGithubRepositoryRequest>,
-  output: __S(29) as any as S.Schema<GithubRepository>,
+  input: UpdateGithubRepositoryRequest,
+  output: GithubRepository,
   errors: [BadRequest, NotFound, UnknownXataError],
   protocol: XataProtocol,
   retry: Retry.Retry,
@@ -2908,8 +3945,8 @@ export const updateOrganization: API.OperationMethod<
   UpdateOrganizationError,
   XataOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(200) as any as S.Schema<UpdateOrganizationRequest>,
-  output: __S(32) as any as S.Schema<Organization>,
+  input: UpdateOrganizationRequest,
+  output: Organization,
   errors: [BadRequest, Forbidden, NotFound, UnknownXataError],
   protocol: XataProtocol,
   retry: Retry.Retry,
@@ -2928,8 +3965,8 @@ export const updateOrganizationSSOProvider: API.OperationMethod<
   UpdateOrganizationSSOProviderError,
   XataOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(201) as any as S.Schema<UpdateOrganizationSSOProviderRequest>,
-  output: __S(39) as any as S.Schema<OrganizationSSOProvider>,
+  input: UpdateOrganizationSSOProviderRequest,
+  output: OrganizationSSOProvider,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownXataError],
   protocol: XataProtocol,
   retry: Retry.Retry,
@@ -2943,8 +3980,8 @@ export const updateProject: API.OperationMethod<
   UpdateProjectError,
   XataOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(203) as any as S.Schema<UpdateProjectRequest>,
-  output: __S(46) as any as S.Schema<Project>,
+  input: UpdateProjectRequest,
+  output: Project,
   errors: [BadRequest, NotFound, UnknownXataError],
   protocol: XataProtocol,
   retry: Retry.Retry,
@@ -2958,8 +3995,8 @@ export const upsertInstallation: API.OperationMethod<
   UpsertInstallationError,
   XataOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(207) as any as S.Schema<UpsertInstallationRequest>,
-  output: __S(50) as any as S.Schema<UpsertInstallationResponse>,
+  input: UpsertInstallationRequest,
+  output: UpsertInstallationResponse,
   errors: [BadRequest, Forbidden, Conflict, UnknownXataError],
   protocol: XataProtocol,
   retry: Retry.Retry,
@@ -2973,8 +4010,8 @@ export const verifyOrganizationSSODomain: API.OperationMethod<
   VerifyOrganizationSSODomainError,
   XataOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(208) as any as S.Schema<VerifyOrganizationSSODomainRequest>,
-  output: __S(18) as any as S.Schema<OrganizationSSODomain>,
+  input: VerifyOrganizationSSODomainRequest,
+  output: OrganizationSSODomain,
   errors: [Forbidden, NotFound, Conflict, UnknownXataError],
   protocol: XataProtocol,
   retry: Retry.Retry,
@@ -2988,8 +4025,8 @@ export const websocket: API.OperationMethod<
   WebsocketError,
   XataOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(209) as any as S.Schema<WebsocketRequest>,
-  output: __S(50) as any as S.Schema<WebsocketResponse>,
+  input: WebsocketRequest,
+  output: WebsocketResponse,
   errors: [BadRequest, UnknownXataError],
   protocol: XataProtocol,
   retry: Retry.Retry,
@@ -3003,14 +4040,14 @@ function __c0(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          field: S.String,
-          op: S.String,
-          values: S.optional(__S(0)),
+          field: LogFilterField,
+          op: LogFilterOp,
+          values: S.optional(LogFilterValuesList),
           value: S.optional(S.String),
         }),
       ).annotate({ identifier: "LogFilter" });
     case 2:
-      return S.Array(__S(1));
+      return S.Array(LogFilter);
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -3019,7 +4056,7 @@ function __c0(j: number): any {
           branchID: S.String.pipe(T.Label()),
           start: S.String,
           end: S.String,
-          filters: S.optional(__S(2)),
+          filters: S.optional(BranchLogsRequestFiltersList),
           limit: S.optional(S.Number),
           cursor: S.optional(S.String),
         }).pipe(
@@ -3035,24 +4072,24 @@ function __c0(j: number): any {
         S.Struct({
           timestamp: S.String,
           instanceID: S.String,
-          level: S.optional(S.String),
+          level: S.optional(LogLevel),
           message: S.String,
           process: S.optional(S.String),
         }),
       ).annotate({ identifier: "LogEntry" });
     case 5:
-      return S.Array(__S(4));
+      return S.Array(LogEntry);
     case 6:
       return S.suspend(() =>
         S.Struct({
           start: S.String,
           end: S.String,
-          logs: __S(5),
+          logs: BranchLogsLogsList,
           nextCursor: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "BranchLogs" });
     case 7:
-      return S.Array(S.String);
+      return S.Array(BranchMetricName);
   }
 }
 function __c1(j: number): any {
@@ -3065,9 +4102,9 @@ function __c1(j: number): any {
           branchID: S.String.pipe(T.Label()),
           start: S.String,
           end: S.String,
-          metrics: __S(7),
-          instances: S.optional(__S(0)),
-          aggregations: __S(7),
+          metrics: BranchMetricsRequestMetricsList,
+          instances: S.optional(BranchMetricsRequestInstancesList),
+          aggregations: BranchMetricsRequestAggregationsList,
         }).pipe(
           T.Http({
             method: "POST",
@@ -3084,33 +4121,33 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "MetricSeriesValuesItem" });
     case 2:
-      return S.Array(__S(9));
+      return S.Array(MetricSeriesValuesItem);
     case 3:
       return S.suspend(() =>
         S.Struct({
           instanceID: S.String,
-          aggregation: S.String,
-          values: __S(10),
+          aggregation: MetricSeriesAggregation,
+          values: MetricSeriesValuesList,
         }),
       ).annotate({ identifier: "MetricSeries" });
     case 4:
-      return S.Array(__S(11));
+      return S.Array(MetricSeries);
     case 5:
       return S.suspend(() =>
         S.Struct({
           metric: S.String,
           unit: S.String,
-          series: __S(12),
+          series: BranchMetricResultSeriesList,
         }),
       ).annotate({ identifier: "BranchMetricResult" });
     case 6:
-      return S.Array(__S(13));
+      return S.Array(BranchMetricResult);
     case 7:
       return S.suspend(() =>
         S.Struct({
           start: S.String,
           end: S.String,
-          results: __S(14),
+          results: BranchMetricsResultsList,
         }),
       ).annotate({ identifier: "BranchMetrics" });
   }
@@ -3144,7 +4181,7 @@ function __c2(j: number): any {
           domain: S.String,
           provider_alias: S.String,
           verified: S.Boolean,
-          verification: S.optional(S.NullOr(__S(17))),
+          verification: S.optional(S.NullOr(OrganizationSSODomainVerification)),
           missing_since: S.optional(S.NullOr(S.String)),
           revokes_at: S.optional(S.NullOr(S.String)),
         }),
@@ -3210,9 +4247,9 @@ function __c3(j: number): any {
           projectID: S.String.pipe(T.Label()),
           name: S.String,
           description: S.optional(S.String),
-          scaleToZero: S.optional(__S(22)),
-          backupConfiguration: S.optional(__S(23)),
-          mode: S.String,
+          scaleToZero: S.optional(ScaleToZeroConfiguration),
+          backupConfiguration: S.optional(BackupConfiguration),
+          mode: CreateBranchRequestMode,
         }).pipe(
           T.Http({
             method: "POST",
@@ -3299,12 +4336,12 @@ function __c3(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          status: S.String,
+          status: OrganizationStatusStatus,
           disabled_by_admin: S.Boolean,
           admin_reason: S.optional(S.String),
-          billing_status: S.String,
+          billing_status: OrganizationStatusBillingStatus,
           billing_reason: S.optional(S.String),
-          usage_tier: S.String,
+          usage_tier: OrganizationStatusUsageTier,
           last_updated: S.String,
           created_at: S.optional(S.String),
         }),
@@ -3318,8 +4355,8 @@ function __c4(j: number): any {
         S.Struct({
           id: S.String,
           name: S.String,
-          status: __S(31),
-          marketplace: S.optional(S.NullOr(S.String)),
+          status: OrganizationStatus,
+          marketplace: S.optional(S.NullOr(OrganizationMarketplaceProvider)),
         }),
       ).annotate({ identifier: "Organization" });
     case 1:
@@ -3328,9 +4365,9 @@ function __c4(j: number): any {
           organizationID: S.String.pipe(T.Label()),
           name: S.String,
           expiry: S.optional(S.NullOr(S.String)),
-          scopes: S.optional(__S(0)),
-          projects: S.optional(__S(0)),
-          branches: S.optional(__S(0)),
+          scopes: S.optional(CreateOrganizationAPIKeyRequestScopesList),
+          projects: S.optional(CreateOrganizationAPIKeyRequestProjectsList),
+          branches: S.optional(CreateOrganizationAPIKeyRequestBranchesList),
         }).pipe(
           T.Http({ method: "POST", uri: "/organizations/{organizationID}/api-keys", code: 200 }),
         ),
@@ -3343,9 +4380,9 @@ function __c4(j: number): any {
           id: S.String,
           name: S.String,
           preview: S.String,
-          scopes: __S(0),
-          projects: __S(0),
-          branches: __S(0),
+          scopes: FullAPIKeyScopesList,
+          projects: FullAPIKeyProjectsList,
+          branches: FullAPIKeyBranchesList,
           created_at: S.String,
           expiry: S.NullOr(S.String),
           last_used: S.NullOr(S.String),
@@ -3357,7 +4394,7 @@ function __c4(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          key: __S(34),
+          key: FullAPIKey,
         }),
       ).annotate({
         identifier: "CreateOrganizationAPIKeyResponse",
@@ -3367,7 +4404,7 @@ function __c4(j: number): any {
         S.Struct({
           organizationID: S.String.pipe(T.Label()),
           email: S.String,
-          role: S.optional(S.String),
+          role: S.optional(OrganizationRoleName),
         }).pipe(
           T.Http({ method: "POST", uri: "/organizations/{organizationID}/invitations", code: 200 }),
         ),
@@ -3382,7 +4419,7 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           organizationID: S.String.pipe(T.Label()),
-          type: S.String,
+          type: OrganizationSSOProviderType,
           domain: S.String,
           issuer: S.optional(S.String),
           client_id: S.String,
@@ -3401,7 +4438,7 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           alias: S.String,
-          type: S.String,
+          type: OrganizationSSOProviderType,
           display_name: S.String,
           domain: S.String,
           enforced: S.Boolean,
@@ -3416,8 +4453,8 @@ function __c5(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          baseBranches: __S(22),
-          childBranches: __S(22),
+          baseBranches: ScaleToZeroConfiguration,
+          childBranches: ScaleToZeroConfiguration,
         }),
       ).annotate({
         identifier: "ProjectScaleToZeroConfiguration",
@@ -3430,19 +4467,19 @@ function __c5(j: number): any {
         }),
       ).annotate({ identifier: "CidrEntry" });
     case 2:
-      return S.Array(__S(41));
+      return S.Array(CidrEntry);
     case 3:
       return S.suspend(() =>
         S.Struct({
           enabled: S.Boolean,
-          cidr: __S(42),
+          cidr: IPFilteringConfigurationCidrList,
         }),
       ).annotate({ identifier: "IPFilteringConfiguration" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          scaleToZero: __S(40),
-          ipFiltering: S.optional(__S(43)),
+          scaleToZero: ProjectScaleToZeroConfiguration,
+          ipFiltering: S.optional(IPFilteringConfiguration),
         }),
       ).annotate({ identifier: "ProjectConfiguration" });
     case 5:
@@ -3450,7 +4487,7 @@ function __c5(j: number): any {
         S.Struct({
           organizationID: S.String.pipe(T.Label()),
           name: S.String,
-          configuration: S.optional(__S(44)),
+          configuration: S.optional(ProjectConfiguration),
         }).pipe(
           T.Http({ method: "POST", uri: "/organizations/{organizationID}/projects", code: 200 }),
         ),
@@ -3462,7 +4499,7 @@ function __c5(j: number): any {
           name: S.String,
           createdAt: S.String,
           updatedAt: S.String,
-          configuration: __S(44),
+          configuration: ProjectConfiguration,
         }),
       ).annotate({ identifier: "Project" });
     case 7:
@@ -3470,9 +4507,9 @@ function __c5(j: number): any {
         S.Struct({
           name: S.String,
           expiry: S.optional(S.NullOr(S.String)),
-          scopes: S.optional(__S(0)),
-          projects: S.optional(__S(0)),
-          branches: S.optional(__S(0)),
+          scopes: S.optional(CreateUserAPIKeyRequestScopesList),
+          projects: S.optional(CreateUserAPIKeyRequestProjectsList),
+          branches: S.optional(CreateUserAPIKeyRequestBranchesList),
         }).pipe(T.Http({ method: "POST", uri: "/api-keys", code: 200 })),
       ).annotate({ identifier: "CreateUserAPIKeyRequest" });
   }
@@ -3482,7 +4519,7 @@ function __c6(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          key: __S(34),
+          key: FullAPIKey,
         }),
       ).annotate({ identifier: "CreateUserAPIKeyResponse" });
     case 1:
@@ -3541,7 +4578,7 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           organizationID: S.String.pipe(T.Label()),
-          ids: __S(0),
+          ids: DeleteOrganizationAPIKeysRequestIdsList,
         }).pipe(
           T.Http({ method: "DELETE", uri: "/organizations/{organizationID}/api-keys", code: 200 }),
         ),
@@ -3626,7 +4663,7 @@ function __c7(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          ids: __S(0),
+          ids: DeleteUserAPIKeysRequestIdsList,
         }).pipe(T.Http({ method: "DELETE", uri: "/api-keys", code: 200 })),
       ).annotate({ identifier: "DeleteUserAPIKeysRequest" });
     case 5:
@@ -3646,7 +4683,7 @@ function __c7(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          state: S.String,
+          state: ClusterLifecycleState,
           reason: S.optional(S.String),
           phase: S.String,
         }),
@@ -3665,17 +4702,17 @@ function __c7(j: number): any {
 function __c8(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(63));
+      return S.Array(InstanceStatus);
     case 1:
       return S.suspend(() =>
         S.Struct({
           status: S.String,
-          statusType: S.String,
+          statusType: BranchStatusStatusType,
           message: S.optional(S.String),
-          lifecycle: S.optional(__S(62)),
+          lifecycle: S.optional(ClusterLifecycle),
           instanceCount: S.Number,
           instanceReadyCount: S.Number,
-          instances: __S(64),
+          instances: BranchStatusInstancesList,
         }),
       ).annotate({ identifier: "BranchStatus" });
     case 2:
@@ -3688,8 +4725,10 @@ function __c8(j: number): any {
           instanceType: S.String,
           image: S.String,
           replicas: S.Number,
-          postgresConfigurationParameters: S.optional(__S(66)),
-          preloadLibraries: S.optional(__S(0)),
+          postgresConfigurationParameters: S.optional(
+            ClusterConfigurationPostgresConfigurationParametersMap,
+          ),
+          preloadLibraries: S.optional(ClusterConfigurationPreloadLibrariesList),
         }),
       ).annotate({ identifier: "ClusterConfiguration" });
     case 4:
@@ -3702,13 +4741,13 @@ function __c8(j: number): any {
           updatedAt: S.String,
           parentID: S.optional(S.NullOr(S.String)),
           region: S.String,
-          status: __S(65),
+          status: BranchStatus,
           connectionString: S.NullOr(S.String).pipe(T.SensitiveValue({})),
           publicAccess: S.Boolean,
           backupsEnabled: S.Boolean,
-          scaleToZero: __S(22),
-          configuration: __S(67),
-          backupConfiguration: S.optional(__S(23)),
+          scaleToZero: ScaleToZeroConfiguration,
+          configuration: ClusterConfiguration,
+          backupConfiguration: S.optional(BackupConfiguration),
         }),
       ).annotate({ identifier: "BranchMetadata" });
     case 5:
@@ -3765,7 +4804,7 @@ function __c9(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          card: __S(72),
+          card: BillingPaymentMethodCard,
         }),
       ).annotate({ identifier: "BillingPaymentMethod" });
     case 2:
@@ -3776,18 +4815,18 @@ function __c9(j: number): any {
           effective_date: S.String,
           expiry_date: S.NullOr(S.String),
           maximum_initial_balance: S.Number,
-          status: S.String,
+          status: BillingCreditStatus,
         }),
       ).annotate({ identifier: "BillingCredit" });
     case 3:
-      return S.Array(__S(74));
+      return S.Array(BillingCredit);
     case 4:
       return S.suspend(() =>
         S.Struct({
           total_lifetime_credits: S.Number,
           last_expiry: S.NullOr(S.String),
           last_expiry_with_balance: S.NullOr(S.String),
-          active_credits: __S(75),
+          active_credits: BillingCreditDetailsActiveCreditsList,
           last_active_credit_expiry: S.NullOr(S.String),
           total_active_credits: S.Number,
           days_until_last_active_credit_expiry: S.NullOr(S.Number),
@@ -3798,13 +4837,13 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           billing_email: S.String,
-          marketplace: S.NullOr(S.String),
-          collection_method: S.String,
+          marketplace: S.NullOr(OrganizationMarketplaceProvider),
+          collection_method: BillingCollectionMethod,
           can_collect_payment: S.Boolean,
           has_payment_method: S.Boolean,
-          default_payment_method: S.NullOr(__S(73)),
-          credits: __S(75),
-          credit_details: __S(76),
+          default_payment_method: S.NullOr(BillingPaymentMethod),
+          credits: BillingCustomerResponseCreditsList,
+          credit_details: BillingCreditDetails,
         }),
       ).annotate({ identifier: "BillingCustomerResponse" });
     case 6:
@@ -3831,7 +4870,7 @@ function __c9(j: number): any {
           amount_due: S.Number,
           currency: S.String,
           invoice_date: S.String,
-          status: S.String,
+          status: BillingInvoiceStatus,
           invoice_pdf: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "BillingInvoice" });
@@ -3840,7 +4879,7 @@ function __c9(j: number): any {
 function __c10(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(79));
+      return S.Array(BillingInvoice);
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -3851,8 +4890,8 @@ function __c10(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          data: __S(80),
-          pagination_metadata: __S(81),
+          data: BillingInvoicesResponseDataList,
+          pagination_metadata: PaginationMetadata,
         }),
       ).annotate({ identifier: "BillingInvoicesResponse" });
     case 3:
@@ -3936,7 +4975,7 @@ function __c11(j: number): any {
         S.Struct({
           minValue: S.optional(S.String),
           maxValue: S.optional(S.String),
-          enumValues: S.optional(__S(0)),
+          enumValues: S.optional(PostgresConfigParameterAcceptableRangeEnumValuesList),
         }),
       ).annotate({
         identifier: "PostgresConfigParameterAcceptableRange",
@@ -3945,12 +4984,12 @@ function __c11(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          type: S.String,
+          type: PostgresConfigParameterType,
           description: S.String,
           section: S.String,
-          acceptableRange: S.optional(__S(88)),
+          acceptableRange: S.optional(PostgresConfigParameterAcceptableRange),
           defaultValue: S.String,
-          defaultValueSource: S.String,
+          defaultValueSource: PostgresConfigParameterDefaultValueSource,
           currentValue: S.String,
           documentationLink: S.String,
           recommendation: S.String,
@@ -3958,11 +4997,11 @@ function __c11(j: number): any {
         }),
       ).annotate({ identifier: "PostgresConfigParameter" });
     case 2:
-      return S.Array(__S(89));
+      return S.Array(PostgresConfigParameter);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          parameters: __S(90),
+          parameters: PostgresConfigDetailsParametersList,
         }),
       ).annotate({ identifier: "PostgresConfigDetails" });
     case 4:
@@ -3984,7 +5023,7 @@ function __c11(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          mapping: S.NullOr(__S(29)),
+          mapping: S.NullOr(GithubRepository),
         }),
       ).annotate({
         identifier: "GetGithubRepositoryResponse",
@@ -4024,8 +5063,8 @@ function __c12(j: number): any {
           last_name: S.optional(S.NullOr(S.String)),
           created_at: S.String,
           expires_at: S.String,
-          status: S.String,
-          role: S.String,
+          status: OrganizationInvitationStatus,
+          role: OrganizationRoleName,
         }),
       ).annotate({ identifier: "OrganizationInvitation" });
     case 1:
@@ -4089,13 +5128,13 @@ function __c12(j: number): any {
         S.Struct({
           id: S.String,
           name: S.String,
-          status: __S(31),
+          status: OrganizationStatus,
         }),
       ).annotate({
         identifier: "GetOrganizationsListResponseOrganizationsItem",
       });
     case 7:
-      return S.Array(__S(102));
+      return S.Array(GetOrganizationsListResponseOrganizationsItem);
   }
 }
 function __c13(j: number): any {
@@ -4103,7 +5142,7 @@ function __c13(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          organizations: __S(103),
+          organizations: GetOrganizationsListResponseOrganizationsList,
         }),
       ).annotate({
         identifier: "GetOrganizationsListResponse",
@@ -4117,14 +5156,14 @@ function __c13(j: number): any {
         identifier: "GetOrganizationSSORequest",
       });
     case 2:
-      return S.Array(__S(39));
+      return S.Array(OrganizationSSOProvider);
     case 3:
-      return S.Array(__S(18));
+      return S.Array(OrganizationSSODomain);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          providers: __S(106),
-          domains: __S(107),
+          providers: OrganizationSSOProvidersList,
+          domains: OrganizationSSODomainsList,
         }),
       ).annotate({ identifier: "OrganizationSSO" });
     case 5:
@@ -4190,14 +5229,14 @@ function __c14(j: number): any {
           id: S.String,
           productId: S.String,
           name: S.String,
-          metadata: __S(113),
+          metadata: ResourceMetadataMap,
           status: S.String,
         }),
       ).annotate({ identifier: "Resource" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          body: __S(113).pipe(T.HttpBody()),
+          body: GithubWebhookRequestBodyMap.pipe(T.HttpBody()),
         }).pipe(T.Http({ method: "POST", uri: "/webhooks/github", code: 200 })),
       ).annotate({ identifier: "GithubWebhookRequest" });
     case 4:
@@ -4214,11 +5253,11 @@ function __c14(j: number): any {
         ),
       ).annotate({ identifier: "ListBackupsRequest" });
     case 5:
-      return S.Array(__S(70));
+      return S.Array(BackupMetadata);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          backups: __S(117),
+          backups: ListBackupsResponseBackupsList,
         }),
       ).annotate({ identifier: "ListBackupsResponse" });
     case 7:
@@ -4242,7 +5281,7 @@ function __c15(j: number): any {
         }),
       ).annotate({ identifier: "PlanDetail" });
     case 1:
-      return S.Array(__S(120));
+      return S.Array(PlanDetail);
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -4251,7 +5290,7 @@ function __c15(j: number): any {
         }),
       ).annotate({ identifier: "PlanQuoteLine" });
     case 3:
-      return S.Array(__S(122));
+      return S.Array(PlanQuoteLine);
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -4264,19 +5303,19 @@ function __c15(j: number): any {
           preauthorizationAmount: S.optional(S.Number),
           initialCharge: S.optional(S.String),
           cost: S.optional(S.String),
-          details: S.optional(__S(121)),
-          highlightedDetails: S.optional(__S(121)),
-          quote: S.optional(__S(123)),
+          details: S.optional(BillingPlanDetailsList),
+          highlightedDetails: S.optional(BillingPlanHighlightedDetailsList),
+          quote: S.optional(BillingPlanQuoteList),
           effectiveDate: S.optional(S.String),
           disabled: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "BillingPlan" });
     case 5:
-      return S.Array(__S(124));
+      return S.Array(BillingPlan);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          plans: __S(125),
+          plans: ListBillingPlansResponsePlansList,
         }),
       ).annotate({ identifier: "ListBillingPlansResponse" });
     case 7:
@@ -4311,11 +5350,11 @@ function __c16(j: number): any {
         }),
       ).annotate({ identifier: "BranchListMetadata" });
     case 1:
-      return S.Array(__S(128));
+      return S.Array(BranchListMetadata);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          branches: __S(129),
+          branches: ListBranchesResponseBranchesList,
         }),
       ).annotate({ identifier: "ListBranchesResponse" });
     case 3:
@@ -4336,15 +5375,15 @@ function __c16(j: number): any {
           description: S.String,
           docs: S.String,
           preloadRequired: S.Boolean,
-          type: S.String,
+          type: ExtensionType,
         }),
       ).annotate({ identifier: "Extension" });
     case 5:
-      return S.Array(__S(132));
+      return S.Array(Extension);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          extensions: __S(133),
+          extensions: ListExtensionsResponseExtensionsList,
         }),
       ).annotate({ identifier: "ListExtensionsResponse" });
     case 7:
@@ -4366,11 +5405,11 @@ function __c16(j: number): any {
 function __c17(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(27));
+      return S.Array(GithubInstallation);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          installations: __S(136),
+          installations: ListGithubAppInstallationsResponseInstallationsList,
         }),
       ).annotate({
         identifier: "ListGithubAppInstallationsResponse",
@@ -4392,15 +5431,15 @@ function __c17(j: number): any {
           name: S.String,
           majorVersion: S.String,
           fullVersion: S.String,
-          region: S.optional(__S(139)),
+          region: S.optional(ImageRegionList),
         }),
       ).annotate({ identifier: "Image" });
     case 5:
-      return S.Array(__S(140));
+      return S.Array(Image);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          images: __S(141),
+          images: ListImagesResponseImagesList,
         }),
       ).annotate({ identifier: "ListImagesResponse" });
     case 7:
@@ -4434,11 +5473,11 @@ function __c18(j: number): any {
         identifier: "ListInstanceTypesResponseInstanceTypesItem",
       });
     case 1:
-      return S.Array(__S(144));
+      return S.Array(ListInstanceTypesResponseInstanceTypesItem);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          instanceTypes: __S(145),
+          instanceTypes: ListInstanceTypesResponseInstanceTypesList,
         }),
       ).annotate({
         identifier: "ListInstanceTypesResponse",
@@ -4459,9 +5498,9 @@ function __c18(j: number): any {
           id: S.String,
           name: S.String,
           preview: S.String,
-          scopes: __S(0),
-          projects: __S(0),
-          branches: __S(0),
+          scopes: APIKeyPreviewScopesList,
+          projects: APIKeyPreviewProjectsList,
+          branches: APIKeyPreviewBranchesList,
           created_at: S.String,
           expiry: S.NullOr(S.String),
           last_used: S.NullOr(S.String),
@@ -4470,11 +5509,11 @@ function __c18(j: number): any {
         }),
       ).annotate({ identifier: "APIKeyPreview" });
     case 5:
-      return S.Array(__S(148));
+      return S.Array(APIKeyPreview);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          keys: __S(149),
+          keys: ListOrganizationAPIKeysResponseKeysList,
         }),
       ).annotate({
         identifier: "ListOrganizationAPIKeysResponse",
@@ -4483,7 +5522,7 @@ function __c18(j: number): any {
       return S.suspend(() =>
         S.Struct({
           organizationID: S.String.pipe(T.Label()),
-          status: S.optional(S.String.pipe(T.Query())),
+          status: S.optional(ListOrganizationInvitationsRequestStatus.pipe(T.Query())),
           email: S.optional(S.String.pipe(T.Query())),
           first_name: S.optional(S.String.pipe(T.Query())),
           last_name: S.optional(S.String.pipe(T.Query())),
@@ -4501,11 +5540,11 @@ function __c18(j: number): any {
 function __c19(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(96));
+      return S.Array(OrganizationInvitation);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          invitations: __S(152),
+          invitations: ListOrganizationInvitationsResponseInvitationsList,
         }),
       ).annotate({
         identifier: "ListOrganizationInvitationsResponse",
@@ -4526,15 +5565,15 @@ function __c19(j: number): any {
           email: S.String,
           name: S.String,
           id: S.String,
-          role: S.String,
+          role: OrganizationRoleName,
         }),
       ).annotate({ identifier: "OrganizationMember" });
     case 4:
-      return S.Array(__S(155));
+      return S.Array(OrganizationMember);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          members: __S(156),
+          members: ListOrganizationMembersResponseMembersList,
         }),
       ).annotate({
         identifier: "ListOrganizationMembersResponse",
@@ -4550,7 +5589,7 @@ function __c19(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          id: S.String,
+          id: OrganizationRoleName,
           name: S.String,
           description: S.String,
         }),
@@ -4560,11 +5599,11 @@ function __c19(j: number): any {
 function __c20(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(159));
+      return S.Array(OrganizationRole);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          roles: __S(160),
+          roles: ListOrganizationRolesResponseRolesList,
         }),
       ).annotate({
         identifier: "ListOrganizationRolesResponse",
@@ -4578,11 +5617,11 @@ function __c20(j: number): any {
         ),
       ).annotate({ identifier: "ListProjectsRequest" });
     case 3:
-      return S.Array(__S(46));
+      return S.Array(Project);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          projects: __S(163),
+          projects: ListProjectsResponseProjectsList,
         }),
       ).annotate({ identifier: "ListProjectsResponse" });
     case 5:
@@ -4599,14 +5638,14 @@ function __c20(j: number): any {
           id: S.String,
           publicAccess: S.Boolean,
           backupsEnabled: S.Boolean,
-          provider: S.String,
+          provider: ListRegionsResponseRegionsItemProvider,
           organizationId: S.NullOr(S.String),
         }),
       ).annotate({
         identifier: "ListRegionsResponseRegionsItem",
       });
     case 7:
-      return S.Array(__S(166));
+      return S.Array(ListRegionsResponseRegionsItem);
   }
 }
 function __c21(j: number): any {
@@ -4614,7 +5653,7 @@ function __c21(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          regions: __S(167),
+          regions: ListRegionsResponseRegionsList,
         }),
       ).annotate({ identifier: "ListRegionsResponse" });
     case 1:
@@ -4624,13 +5663,13 @@ function __c21(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          keys: __S(149),
+          keys: ListUserAPIKeysResponseKeysList,
         }),
       ).annotate({ identifier: "ListUserAPIKeysResponse" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          body: __S(113).pipe(T.HttpBody()),
+          body: OrbWebhookRequestBodyMap.pipe(T.HttpBody()),
         }).pipe(T.Http({ method: "POST", uri: "/webhooks/orb", code: 200 })),
       ).annotate({ identifier: "OrbWebhookRequest" });
     case 4:
@@ -4639,7 +5678,7 @@ function __c21(j: number): any {
           installationId: S.String.pipe(T.Label()),
           productId: S.String,
           name: S.String,
-          metadata: __S(113),
+          metadata: ProvisionResourceRequestMetadataMap,
           billingPlanId: S.String,
           externalId: S.optional(S.String),
         }).pipe(
@@ -4665,11 +5704,11 @@ function __c21(j: number): any {
         S.Struct({
           name: S.String,
           value: S.String,
-          environmentOverrides: S.optional(__S(173)),
+          environmentOverrides: S.optional(SecretEnvironmentOverrides),
         }),
       ).annotate({ identifier: "Secret" });
     case 7:
-      return S.Array(__S(174));
+      return S.Array(Secret);
   }
 }
 function __c22(j: number): any {
@@ -4680,9 +5719,9 @@ function __c22(j: number): any {
           id: S.String,
           productId: S.String,
           name: S.String,
-          metadata: __S(113),
+          metadata: ProvisionedResourceMetadataMap,
           status: S.String,
-          secrets: __S(175),
+          secrets: ProvisionedResourceSecretsList,
         }),
       ).annotate({ identifier: "ProvisionedResource" });
     case 1:
@@ -4691,23 +5730,23 @@ function __c22(j: number): any {
       return S.suspend(() =>
         S.Struct({
           query: S.String,
-          params: S.optional(__S(177)),
+          params: S.optional(QueryItemParamsList),
           arrayMode: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "QueryItem" });
     case 3:
-      return S.Array(__S(178));
+      return S.Array(QueryItem);
     case 4:
       return S.suspend(() =>
         S.Struct({
           query: S.optional(S.String),
-          params: S.optional(__S(177)),
-          queries: S.optional(__S(179)),
+          params: S.optional(QueryRequestParamsList),
+          queries: S.optional(QueryRequestQueriesList),
           arrayMode: S.optional(S.Boolean),
         }).pipe(T.Http({ method: "POST", uri: "/sql", code: 200 })),
       ).annotate({ identifier: "QueryRequest" });
     case 5:
-      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => QueryResponseBody.pipe(T.RawResponseRoot())).annotate({
         identifier: "QueryResponse",
       });
     case 6:
@@ -4723,9 +5762,9 @@ function __c22(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          marketplace: S.String,
+          marketplace: MarketplaceRegistrationProvider,
           company_name: S.String,
-          aws: __S(182),
+          aws: RegisterMarketplaceRequestAws,
         }).pipe(T.Http({ method: "POST", uri: "/marketplace/register", code: 200 })),
       ).annotate({
         identifier: "RegisterMarketplaceRequest",
@@ -4786,9 +5825,9 @@ function __c23(j: number): any {
           branchID: S.String.pipe(T.Label()),
           name: S.String,
           description: S.optional(S.String),
-          scaleToZero: S.optional(__S(22)),
-          backupConfiguration: S.optional(__S(23)),
-          configuration: S.optional(__S(67)),
+          scaleToZero: S.optional(ScaleToZeroConfiguration),
+          backupConfiguration: S.optional(BackupConfiguration),
+          configuration: S.optional(ClusterConfiguration),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4821,10 +5860,10 @@ function __c23(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          jsonrpc: S.String,
-          id: S.optional(S.Unknown),
+          jsonrpc: SendMcpRequestRequestJsonrpc,
+          id: S.optional(SendMcpRequestRequestId),
           method: S.String,
-          params: S.optional(__S(113)),
+          params: S.optional(SendMcpRequestRequestParamsMap),
         }).pipe(T.Http({ method: "POST", uri: "/mcp", code: 200 })),
       ).annotate({ identifier: "SendMcpRequestRequest" });
     case 7:
@@ -4842,10 +5881,10 @@ function __c24(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          jsonrpc: S.String,
-          id: S.Unknown,
-          result: S.optional(__S(113)),
-          error: S.optional(__S(191)),
+          jsonrpc: JSONRPCResponseJsonrpc,
+          id: JSONRPCResponseId,
+          result: S.optional(JSONRPCResponseResultMap),
+          error: S.optional(JSONRPCError),
         }),
       ).annotate({ identifier: "JSONRPCResponse" });
     case 1:
@@ -4853,7 +5892,7 @@ function __c24(j: number): any {
         S.Struct({
           organizationID: S.String.pipe(T.Label()),
           userID: S.String.pipe(T.Label()),
-          role: S.String,
+          role: OrganizationRoleName,
         }).pipe(
           T.Http({
             method: "PUT",
@@ -4883,7 +5922,7 @@ function __c24(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          body: __S(113).pipe(T.HttpBody()),
+          body: StripeWebhookRequestBodyMap.pipe(T.HttpBody()),
         }).pipe(T.Http({ method: "POST", uri: "/webhooks/stripe", code: 200 })),
       ).annotate({ identifier: "StripeWebhookRequest" });
     case 4:
@@ -4912,11 +5951,13 @@ function __c24(j: number): any {
           replicas: S.optional(S.Number),
           storage: S.optional(S.Number),
           instanceType: S.optional(S.String),
-          backupConfiguration: S.optional(__S(23)),
+          backupConfiguration: S.optional(BackupConfiguration),
           hibernate: S.optional(S.Boolean),
-          scaleToZero: S.optional(__S(22)),
-          postgresConfigurationParameters: S.optional(__S(66)),
-          preloadLibraries: S.optional(__S(0)),
+          scaleToZero: S.optional(ScaleToZeroConfiguration),
+          postgresConfigurationParameters: S.optional(
+            UpdateBranchRequestPostgresConfigurationParametersMap,
+          ),
+          preloadLibraries: S.optional(UpdateBranchRequestPreloadLibrariesList),
           image: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -4994,8 +6035,8 @@ function __c25(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          scaleToZero: S.optional(__S(40)),
-          ipFiltering: S.optional(__S(43)),
+          scaleToZero: S.optional(ProjectScaleToZeroConfiguration),
+          ipFiltering: S.optional(IPFilteringConfiguration),
         }),
       ).annotate({
         identifier: "UpdateProjectConfiguration",
@@ -5006,7 +6047,7 @@ function __c25(j: number): any {
           organizationID: S.String.pipe(T.Label()),
           projectID: S.String.pipe(T.Label()),
           name: S.optional(S.String),
-          configuration: S.optional(__S(202)),
+          configuration: S.optional(UpdateProjectConfiguration),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -5036,17 +6077,17 @@ function __c25(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           url: S.String,
-          contact: S.optional(__S(205)),
+          contact: S.optional(InstallationAccountContact),
         }),
       ).annotate({ identifier: "InstallationAccount" });
     case 7:
       return S.suspend(() =>
         S.Struct({
           installationId: S.String.pipe(T.Label()),
-          scopes: __S(0),
-          acceptedPolicies: __S(66),
-          credentials: __S(204),
-          account: __S(206),
+          scopes: UpsertInstallationRequestScopesList,
+          acceptedPolicies: UpsertInstallationRequestAcceptedPoliciesMap,
+          credentials: InstallationCredentials,
+          account: InstallationAccount,
         }).pipe(T.Http({ method: "PUT", uri: "/v1/installations/{installationId}", code: 200 })),
       ).annotate({
         identifier: "UpsertInstallationRequest",
@@ -5074,68 +6115,5 @@ function __c26(j: number): any {
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/v2", code: 200 })),
       ).annotate({ identifier: "WebsocketRequest" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
-    case 9:
-      return __c9(i & 7);
-    case 10:
-      return __c10(i & 7);
-    case 11:
-      return __c11(i & 7);
-    case 12:
-      return __c12(i & 7);
-    case 13:
-      return __c13(i & 7);
-    case 14:
-      return __c14(i & 7);
-    case 15:
-      return __c15(i & 7);
-    case 16:
-      return __c16(i & 7);
-    case 17:
-      return __c17(i & 7);
-    case 18:
-      return __c18(i & 7);
-    case 19:
-      return __c19(i & 7);
-    case 20:
-      return __c20(i & 7);
-    case 21:
-      return __c21(i & 7);
-    case 22:
-      return __c22(i & 7);
-    case 23:
-      return __c23(i & 7);
-    case 24:
-      return __c24(i & 7);
-    case 25:
-      return __c25(i & 7);
-    case 26:
-      return __c26(i & 7);
   }
 }

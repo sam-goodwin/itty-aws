@@ -8,8 +8,6 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "FreeTier",
   serviceShapeName: "AWSFreeTierService",
@@ -133,22 +131,34 @@ export type LanguageCode =
   | "zh-TW"
   | "tr-TR"
   | (string & {});
+const LanguageCode = S.String;
+
 export interface GetAccountActivityRequest {
   activityId: string;
   languageCode?: LanguageCode;
 }
+const GetAccountActivityRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<GetAccountActivityRequest>;
 export type ActivityStatus =
   | "NOT_STARTED"
   | "IN_PROGRESS"
   | "COMPLETED"
   | "EXPIRING"
   | (string & {});
+const ActivityStatus = S.String;
+
 export type CurrencyCode = "USD" | (string & {});
+const CurrencyCode = S.String;
+
 export interface MonetaryAmount {
   amount: number;
   unit: CurrencyCode;
 }
+const MonetaryAmount = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<MonetaryAmount>;
 export type ActivityReward = { credit: MonetaryAmount };
+const ActivityReward = /*@__PURE__*/ __L.at(__c0, 2);
 export interface GetAccountActivityResponse {
   activityId: string;
   title: string;
@@ -161,10 +171,22 @@ export interface GetAccountActivityResponse {
   startedAt?: Date;
   completedAt?: Date;
 }
+const GetAccountActivityResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<GetAccountActivityResponse>;
 export interface GetAccountPlanStateRequest {}
+const GetAccountPlanStateRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<GetAccountPlanStateRequest>;
 export type AccountId = string;
 export type AccountPlanType = "FREE" | "PAID" | (string & {});
+const AccountPlanType = S.String;
+
 export type AccountPlanStatus = "NOT_STARTED" | "ACTIVE" | "EXPIRED" | (string & {});
+const AccountPlanStatus = S.String;
+
 export interface GetAccountPlanStateResponse {
   accountId: string;
   accountPlanType: AccountPlanType;
@@ -172,7 +194,12 @@ export interface GetAccountPlanStateResponse {
   accountPlanRemainingCredits?: MonetaryAmount;
   accountPlanExpirationDate?: Date;
 }
+const GetAccountPlanStateResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<GetAccountPlanStateResponse>;
 export type Expressions = Expression[];
+const Expressions = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<Expressions>;
 export type Dimension =
   | "SERVICE"
   | "OPERATION"
@@ -182,8 +209,11 @@ export type Dimension =
   | "DESCRIPTION"
   | "USAGE_PERCENTAGE"
   | (string & {});
+const Dimension = S.String;
+
 export type Value = string;
 export type Values = string[];
+const Values = /*@__PURE__*/ __L.at(__c0, 7);
 export type MatchOption =
   | "EQUALS"
   | "STARTS_WITH"
@@ -191,18 +221,23 @@ export type MatchOption =
   | "CONTAINS"
   | "GREATER_THAN_OR_EQUAL"
   | (string & {});
+const MatchOption = S.String;
+
 export type MatchOptions = MatchOption[];
+const MatchOptions = /*@__PURE__*/ __L.at(__c1, 0);
 export interface DimensionValues {
   Key: Dimension;
   Values: string[];
   MatchOptions: MatchOption[];
 }
+const DimensionValues = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<DimensionValues>;
 export interface Expression {
   Or?: Expression[];
   And?: Expression[];
   Not?: Expression;
   Dimensions?: DimensionValues;
 }
+const Expression = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<Expression>;
 export type MaxResults = number;
 export type NextPageToken = string;
 export interface GetFreeTierUsageRequest {
@@ -210,6 +245,10 @@ export interface GetFreeTierUsageRequest {
   maxResults?: number;
   nextToken?: string;
 }
+const GetFreeTierUsageRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<GetFreeTierUsageRequest>;
 export interface FreeTierUsage {
   service?: string;
   operation?: string;
@@ -222,37 +261,62 @@ export interface FreeTierUsage {
   description?: string;
   freeTierType?: string;
 }
+const FreeTierUsage = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<FreeTierUsage>;
 export type FreeTierUsages = FreeTierUsage[];
+const FreeTierUsages = /*@__PURE__*/ __L.at(__c1, 5);
 export interface GetFreeTierUsageResponse {
   freeTierUsages: FreeTierUsage[];
   nextToken?: string;
 }
+const GetFreeTierUsageResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<GetFreeTierUsageResponse>;
 export type FilterActivityStatuses = ActivityStatus[];
+const FilterActivityStatuses = MatchOptions as any as S.Schema<FilterActivityStatuses>;
 export interface ListAccountActivitiesRequest {
   filterActivityStatuses?: ActivityStatus[];
   nextToken?: string;
   maxResults?: number;
   languageCode?: LanguageCode;
 }
+const ListAccountActivitiesRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<ListAccountActivitiesRequest>;
 export interface ActivitySummary {
   activityId: string;
   title: string;
   reward: ActivityReward;
   status: ActivityStatus;
 }
+const ActivitySummary = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<ActivitySummary>;
 export type Activities = ActivitySummary[];
+const Activities = /*@__PURE__*/ __L.at(__c2, 1);
 export interface ListAccountActivitiesResponse {
   activities: ActivitySummary[];
   nextToken?: string;
 }
+const ListAccountActivitiesResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<ListAccountActivitiesResponse>;
 export interface UpgradeAccountPlanRequest {
   accountPlanType: AccountPlanType;
 }
+const UpgradeAccountPlanRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<UpgradeAccountPlanRequest>;
 export interface UpgradeAccountPlanResponse {
   accountId: string;
   accountPlanType: AccountPlanType;
   accountPlanStatus: AccountPlanStatus;
 }
+const UpgradeAccountPlanResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<UpgradeAccountPlanResponse>;
 export type GetAccountActivityError =
   | InternalServerException
   | ResourceNotFoundException
@@ -268,8 +332,8 @@ export const getAccountActivity: API.OperationMethod<
   GetAccountActivityError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<GetAccountActivityRequest>,
-  output: __S(3) as any as S.Schema<GetAccountActivityResponse>,
+  input: GetAccountActivityRequest,
+  output: GetAccountActivityResponse,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -297,8 +361,8 @@ export const getAccountPlanState: API.OperationMethod<
   GetAccountPlanStateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4) as any as S.Schema<GetAccountPlanStateRequest>,
-  output: __S(5) as any as S.Schema<GetAccountPlanStateResponse>,
+  input: GetAccountPlanStateRequest,
+  output: GetAccountPlanStateResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -326,8 +390,8 @@ export const getFreeTierUsage: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   FreeTierUsage
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(11) as any as S.Schema<GetFreeTierUsageRequest>,
-  output: __S(14) as any as S.Schema<GetFreeTierUsageResponse>,
+  input: GetFreeTierUsageRequest,
+  output: GetFreeTierUsageResponse,
   errors: [InternalServerException, ThrottlingException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -355,8 +419,8 @@ export const listAccountActivities: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ActivitySummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(15) as any as S.Schema<ListAccountActivitiesRequest>,
-  output: __S(18) as any as S.Schema<ListAccountActivitiesResponse>,
+  input: ListAccountActivitiesRequest,
+  output: ListAccountActivitiesResponse,
   errors: [InternalServerException, ThrottlingException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -385,8 +449,8 @@ export const upgradeAccountPlan: API.OperationMethod<
   UpgradeAccountPlanError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19) as any as S.Schema<UpgradeAccountPlanRequest>,
-  output: __S(20) as any as S.Schema<UpgradeAccountPlanResponse>,
+  input: UpgradeAccountPlanRequest,
+  output: UpgradeAccountPlanResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -404,27 +468,27 @@ function __c0(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ activityId: S.String, languageCode: S.optional(S.String) }).pipe(
+        S.Struct({ activityId: S.String, languageCode: S.optional(LanguageCode) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
         identifier: "GetAccountActivityRequest",
       });
     case 1:
-      return S.suspend(() => S.Struct({ amount: S.Number, unit: S.String })).annotate({
+      return S.suspend(() => S.Struct({ amount: S.Number, unit: CurrencyCode })).annotate({
         identifier: "MonetaryAmount",
       });
     case 2:
-      return S.Union([/*@__PURE__*/ S.Struct({ credit: __S(1) })]);
+      return S.Union([/*@__PURE__*/ S.Struct({ credit: MonetaryAmount })]);
     case 3:
       return S.suspend(() =>
         S.Struct({
           activityId: S.String,
           title: S.String,
           description: S.String,
-          status: S.String,
+          status: ActivityStatus,
           instructionsUrl: S.String,
-          reward: __S(2),
+          reward: ActivityReward,
           estimatedTimeToCompleteInMinutes: S.optional(S.Number),
           expiresAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           startedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
@@ -445,9 +509,9 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           accountId: S.String,
-          accountPlanType: S.String,
-          accountPlanStatus: S.String,
-          accountPlanRemainingCredits: S.optional(__S(1)),
+          accountPlanType: AccountPlanType,
+          accountPlanStatus: AccountPlanStatus,
+          accountPlanRemainingCredits: S.optional(MonetaryAmount),
           accountPlanExpirationDate: S.optional(
             T.DateFromString.pipe(T.TimestampFormat("date-time")),
           ),
@@ -457,7 +521,7 @@ function __c0(j: number): any {
       });
     case 6:
       return S.Array(
-        /*@__PURE__*/ S.suspend((): S.Schema<Expression> => __S(10)).annotate({
+        /*@__PURE__*/ S.suspend((): S.Schema<Expression> => Expression).annotate({
           identifier: "Expression",
         }),
       );
@@ -468,28 +532,28 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
+      return S.Array(MatchOption);
     case 1:
       return S.suspend(() =>
-        S.Struct({ Key: S.String, Values: __S(7), MatchOptions: __S(8) }),
+        S.Struct({ Key: Dimension, Values: Values, MatchOptions: MatchOptions }),
       ).annotate({ identifier: "DimensionValues" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          Or: S.optional(S.suspend(() => __S(6)).annotate({ identifier: "Expressions" })),
-          And: S.optional(S.suspend(() => __S(6)).annotate({ identifier: "Expressions" })),
+          Or: S.optional(S.suspend(() => Expressions).annotate({ identifier: "Expressions" })),
+          And: S.optional(S.suspend(() => Expressions).annotate({ identifier: "Expressions" })),
           Not: S.optional(
-            S.suspend((): S.Schema<Expression> => __S(10)).annotate({
+            S.suspend((): S.Schema<Expression> => Expression).annotate({
               identifier: "Expression",
             }),
           ),
-          Dimensions: S.optional(__S(9)),
+          Dimensions: S.optional(DimensionValues),
         }),
       ).annotate({ identifier: "Expression" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          filter: S.optional(__S(10)),
+          filter: S.optional(Expression),
           maxResults: S.optional(S.Number),
           nextToken: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -510,18 +574,18 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "FreeTierUsage" });
     case 5:
-      return S.Array(__S(12));
+      return S.Array(FreeTierUsage);
     case 6:
       return S.suspend(() =>
-        S.Struct({ freeTierUsages: __S(13), nextToken: S.optional(S.String) }),
+        S.Struct({ freeTierUsages: FreeTierUsages, nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "GetFreeTierUsageResponse" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          filterActivityStatuses: S.optional(__S(8)),
+          filterActivityStatuses: S.optional(FilterActivityStatuses),
           nextToken: S.optional(S.String),
           maxResults: S.optional(S.Number),
-          languageCode: S.optional(S.String),
+          languageCode: S.optional(LanguageCode),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "ListAccountActivitiesRequest",
@@ -535,21 +599,21 @@ function __c2(j: number): any {
         S.Struct({
           activityId: S.String,
           title: S.String,
-          reward: __S(2),
-          status: S.String,
+          reward: ActivityReward,
+          status: ActivityStatus,
         }),
       ).annotate({ identifier: "ActivitySummary" });
     case 1:
-      return S.Array(__S(16));
+      return S.Array(ActivitySummary);
     case 2:
       return S.suspend(() =>
-        S.Struct({ activities: __S(17), nextToken: S.optional(S.String) }),
+        S.Struct({ activities: Activities, nextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListAccountActivitiesResponse",
       });
     case 3:
       return S.suspend(() =>
-        S.Struct({ accountPlanType: S.String }).pipe(
+        S.Struct({ accountPlanType: AccountPlanType }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
@@ -559,26 +623,11 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           accountId: S.String,
-          accountPlanType: S.String,
-          accountPlanStatus: S.String,
+          accountPlanType: AccountPlanType,
+          accountPlanStatus: AccountPlanStatus,
         }),
       ).annotate({
         identifier: "UpgradeAccountPlanResponse",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
   }
 }

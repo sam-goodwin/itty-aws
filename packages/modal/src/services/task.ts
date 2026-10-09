@@ -6,8 +6,6 @@ import { UnknownModalError } from "../errors.ts";
 import { ModalProtocol, type ModalOpError, type ModalOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { ModalOpError, ModalOpContext };
 
@@ -15,6 +13,8 @@ export interface ListTaskRequest {
   environmentName?: string;
   appId?: string;
 }
+const ListTaskRequest = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<ListTaskRequest>;
+
 export interface TaskStats {
   taskId?: string;
   appId?: string;
@@ -22,16 +22,29 @@ export interface TaskStats {
   startedAt?: number;
   enqueuedAt?: number;
 }
+const TaskStats = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<TaskStats>;
+
 export type TaskStatsList = Array<TaskStats>;
+const TaskStatsList = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<TaskStatsList>;
+
 export interface ListTaskResponse {
   tasks?: TaskStatsList;
 }
+const ListTaskResponse = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<ListTaskResponse>;
+
 export interface TaskClusterHelloRequest {
   taskId?: string;
   containerIp?: string;
   imexHostIp?: string;
 }
+const TaskClusterHelloRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<TaskClusterHelloRequest>;
+
 export type StringList = Array<string>;
+const StringList = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<StringList>;
+
 export interface TaskClusterHelloResponse {
   clusterId?: string;
   clusterRank?: number;
@@ -43,20 +56,47 @@ export interface TaskClusterHelloResponse {
   /** GPU-memory-fabric labels, ordered by cluster rank */
   fabricIds?: StringList;
 }
+const TaskClusterHelloResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<TaskClusterHelloResponse>;
+
 export interface TaskCurrentInputsRequest {}
+const TaskCurrentInputsRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<TaskCurrentInputsRequest>;
+
 export interface TaskCurrentInputsResponse {
   inputIds?: StringList;
 }
+const TaskCurrentInputsResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<TaskCurrentInputsResponse>;
+
 export interface TaskGetCommandRouterAccessRequest {
   taskId?: string;
 }
+const TaskGetCommandRouterAccessRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<TaskGetCommandRouterAccessRequest>;
+
 export interface TaskGetCommandRouterAccessResponse {
   jwt?: string;
   url?: string;
 }
+const TaskGetCommandRouterAccessResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<TaskGetCommandRouterAccessResponse>;
+
 export interface TaskGetInfoRequest {
   taskId?: string;
 }
+const TaskGetInfoRequest = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<TaskGetInfoRequest>;
+
 /** Used for both tasks and function outputs */
 export type GenericResultGenericStatus =
   | "GENERIC_STATUS_UNSPECIFIED"
@@ -68,6 +108,8 @@ export type GenericResultGenericStatus =
   | "GENERIC_STATUS_INTERNAL_FAILURE"
   | "GENERIC_STATUS_IDLE_TIMEOUT"
   | "GENERIC_STATUS_MEMORY_MANAGER_EVICTION";
+const GenericResultGenericStatus = S.String;
+
 /** sub-type for generic types like lists */
 export interface GenericResult {
   status?: GenericResultGenericStatus | (string & {});
@@ -88,12 +130,16 @@ export interface GenericResult {
   /** Blob ID for large data. */
   propagationReason?: string;
 }
+const GenericResult = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<GenericResult>;
+
 /** ENOSPC: No space left on device */
 export type TaskSnapshotBehavior =
   | "TASK_SNAPSHOT_BEHAVIOR_UNSPECIFIED"
   | "TASK_SNAPSHOT_BEHAVIOR_SNAPSHOT"
   | "TASK_SNAPSHOT_BEHAVIOR_RESTORE"
   | "TASK_SNAPSHOT_BEHAVIOR_NONE";
+const TaskSnapshotBehavior = S.String;
+
 export type GPUType =
   | "GPU_TYPE_UNSPECIFIED"
   | "GPU_TYPE_T4"
@@ -105,12 +151,16 @@ export type GPUType =
   | "GPU_TYPE_H100"
   | "GPU_TYPE_L40S"
   | "GPU_TYPE_H200";
+const GPUType = S.String;
+
 export interface GPUConfig {
   type?: GPUType;
   /** Deprecated, at some point */
   count?: number;
   gpuType?: string;
 }
+const GPUConfig = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<GPUConfig>;
+
 export interface TaskInfo {
   id?: string;
   startedAt?: number;
@@ -123,14 +173,22 @@ export interface TaskInfo {
   snapshotBehavior?: TaskSnapshotBehavior;
   gpuConfig?: GPUConfig;
 }
+const TaskInfo = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<TaskInfo>;
+
 export interface TaskGetInfoResponse {
   appId?: string;
   info?: TaskInfo;
 }
+const TaskGetInfoResponse = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<TaskGetInfoResponse>;
+
 export interface TaskResultRequest {
   result?: GenericResult;
 }
+const TaskResultRequest = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<TaskResultRequest>;
+
 export interface TaskResultResponse {}
+const TaskResultResponse = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<TaskResultResponse>;
+
 export type ListTaskError = ModalOpError;
 export const listTask: API.OperationMethod<
   ListTaskRequest,
@@ -138,8 +196,8 @@ export const listTask: API.OperationMethod<
   ListTaskError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<ListTaskRequest>,
-  output: __S(3) as any as S.Schema<ListTaskResponse>,
+  input: ListTaskRequest,
+  output: ListTaskResponse,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -153,8 +211,8 @@ export const taskClusterHello: API.OperationMethod<
   TaskClusterHelloError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4) as any as S.Schema<TaskClusterHelloRequest>,
-  output: __S(6) as any as S.Schema<TaskClusterHelloResponse>,
+  input: TaskClusterHelloRequest,
+  output: TaskClusterHelloResponse,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -167,8 +225,8 @@ export const taskCurrentInputs: API.OperationMethod<
   TaskCurrentInputsError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7) as any as S.Schema<TaskCurrentInputsRequest>,
-  output: __S(8) as any as S.Schema<TaskCurrentInputsResponse>,
+  input: TaskCurrentInputsRequest,
+  output: TaskCurrentInputsResponse,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -181,8 +239,8 @@ export const taskGetCommandRouterAccess: API.OperationMethod<
   TaskGetCommandRouterAccessError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9) as any as S.Schema<TaskGetCommandRouterAccessRequest>,
-  output: __S(10) as any as S.Schema<TaskGetCommandRouterAccessResponse>,
+  input: TaskGetCommandRouterAccessRequest,
+  output: TaskGetCommandRouterAccessResponse,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -195,8 +253,8 @@ export const taskGetInfo: API.OperationMethod<
   TaskGetInfoError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11) as any as S.Schema<TaskGetInfoRequest>,
-  output: __S(15) as any as S.Schema<TaskGetInfoResponse>,
+  input: TaskGetInfoRequest,
+  output: TaskGetInfoResponse,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -209,8 +267,8 @@ export const taskResult: API.OperationMethod<
   TaskResultError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16) as any as S.Schema<TaskResultRequest>,
-  output: __S(17) as any as S.Schema<TaskResultResponse>,
+  input: TaskResultRequest,
+  output: TaskResultResponse,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -237,11 +295,11 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "TaskStats" });
     case 2:
-      return S.Array(__S(1));
+      return S.Array(TaskStats);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          tasks: S.optional(__S(2)),
+          tasks: S.optional(TaskStatsList),
         }),
       ).annotate({ identifier: "ListTaskResponse" });
     case 4:
@@ -261,10 +319,10 @@ function __c0(j: number): any {
         S.Struct({
           clusterId: S.optional(S.String),
           clusterRank: S.optional(S.Number),
-          containerIps: S.optional(__S(5)),
-          containerIpv4Ips: S.optional(__S(5)),
-          imexPeerIps: S.optional(__S(5)),
-          fabricIds: S.optional(__S(5)),
+          containerIps: S.optional(StringList),
+          containerIpv4Ips: S.optional(StringList),
+          imexPeerIps: S.optional(StringList),
+          fabricIds: S.optional(StringList),
         }),
       ).annotate({ identifier: "TaskClusterHelloResponse" });
     case 7:
@@ -280,7 +338,7 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          inputIds: S.optional(__S(5)),
+          inputIds: S.optional(StringList),
         }),
       ).annotate({
         identifier: "TaskCurrentInputsResponse",
@@ -319,7 +377,7 @@ function __c1(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(S.String),
+          status: S.optional(GenericResultGenericStatus),
           exception: S.optional(S.String),
           exitcode: S.optional(S.Number),
           traceback: S.optional(S.String),
@@ -333,7 +391,7 @@ function __c1(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(S.String),
+          type: S.optional(GPUType),
           count: S.optional(S.Number),
           gpuType: S.optional(S.String),
         }),
@@ -344,19 +402,19 @@ function __c1(j: number): any {
           id: S.optional(S.String),
           startedAt: S.optional(S.Number),
           finishedAt: S.optional(S.Number),
-          result: S.optional(__S(12)),
+          result: S.optional(GenericResult),
           enqueuedAt: S.optional(S.Number),
           gpuType: S.optional(S.String),
           sandboxId: S.optional(S.String),
-          snapshotBehavior: S.optional(S.String),
-          gpuConfig: S.optional(__S(13)),
+          snapshotBehavior: S.optional(TaskSnapshotBehavior),
+          gpuConfig: S.optional(GPUConfig),
         }),
       ).annotate({ identifier: "TaskInfo" });
     case 7:
       return S.suspend(() =>
         S.Struct({
           appId: S.optional(S.String),
-          info: S.optional(__S(14)),
+          info: S.optional(TaskInfo),
         }),
       ).annotate({ identifier: "TaskGetInfoResponse" });
   }
@@ -366,27 +424,12 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          result: S.optional(__S(12)),
+          result: S.optional(GenericResult),
         }).pipe(T.Http({ method: "POST", uri: "/modal.client.ModalClient/TaskResult", code: 200 })),
       ).annotate({ identifier: "TaskResultRequest" });
     case 1:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "TaskResultResponse",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
   }
 }

@@ -6,8 +6,6 @@ import { UnknownDaytonaError } from "../errors.ts";
 import { DaytonaProtocol, type DaytonaOpError, type DaytonaOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { DaytonaOpError, DaytonaOpContext };
 
@@ -16,10 +14,19 @@ export interface ArchiveSandboxRequest {
   /** Use with JWT to specify the organization ID */
   xDaytonaOrganizationID?: string;
 }
+const ArchiveSandboxRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<ArchiveSandboxRequest>;
+
 /** Environment variables for the sandbox */
 export type SandboxEnvMap = { [key: string]: string | undefined };
+const SandboxEnvMap = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<SandboxEnvMap>;
+
 /** Labels for the sandbox */
 export type SandboxLabelsMap = { [key: string]: string | undefined };
+const SandboxLabelsMap = SandboxEnvMap as any as S.Schema<SandboxLabelsMap>;
+
 export type GpuType =
   | "H100"
   | "H200"
@@ -28,6 +35,8 @@ export type GpuType =
   | "RTX-4090"
   | "RTX-5090"
   | "MI355X";
+const GpuType = S.String;
+
 export type SandboxState =
   | "creating"
   | "restoring"
@@ -51,6 +60,8 @@ export type SandboxState =
   | "pausing"
   | "paused"
   | "resuming";
+const SandboxState = S.String;
+
 /** The desired state of the sandbox */
 export type SandboxDesiredState =
   | "destroyed"
@@ -59,8 +70,12 @@ export type SandboxDesiredState =
   | "resized"
   | "archived"
   | "paused";
+const SandboxDesiredState = S.String;
+
 /** The state of the backup */
 export type SandboxBackupState = "None" | "Pending" | "InProgress" | "Completed" | "Error";
+const SandboxBackupState = S.String;
+
 export interface SandboxVolume {
   /** The ID or name of the volume. Resolved to the volume ID on sandbox create. */
   volumeId: string;
@@ -69,10 +84,19 @@ export interface SandboxVolume {
   /** Optional subpath within the volume to mount. When specified, only this S3 prefix will be accessible. When omitted, the entire volume is mounted. */
   subpath?: string;
 }
+const SandboxVolume = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<SandboxVolume>;
+
 /** Array of volumes attached to the sandbox */
 export type SandboxVolumesList = Array<SandboxVolume>;
+const SandboxVolumesList = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<SandboxVolumesList>;
+
 /** The context hashes used for the build */
 export type BuildInfoContextHashesList = Array<string>;
+const BuildInfoContextHashesList = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<BuildInfoContextHashesList>;
+
 export interface BuildInfo {
   /** The Dockerfile content used for the build */
   dockerfileContent?: string;
@@ -85,8 +109,12 @@ export interface BuildInfo {
   /** The snapshot reference */
   snapshotRef: string;
 }
+const BuildInfo = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<BuildInfo>;
+
 /** The class of the sandbox */
 export type SandboxSandboxClass = "linux-vm" | "container" | "windows";
+const SandboxSandboxClass = S.String;
+
 export interface Sandbox2 {
   /** The ID of the sandbox */
   id: string;
@@ -181,25 +209,53 @@ export interface Sandbox2 {
   /** The toolbox proxy URL for the sandbox */
   toolboxProxyUrl: string;
 }
+const Sandbox2 = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<Sandbox2>;
+
 /** Environment variables for the sandbox */
 export type CreateSandboxRequestEnvMap = { [key: string]: string | undefined };
+const CreateSandboxRequestEnvMap = SandboxEnvMap as any as S.Schema<CreateSandboxRequestEnvMap>;
+
 /** Labels for the sandbox */
 export type CreateSandboxRequestLabelsMap = { [key: string]: string | undefined };
+const CreateSandboxRequestLabelsMap =
+  SandboxEnvMap as any as S.Schema<CreateSandboxRequestLabelsMap>;
+
 /** Preferred GPU type for the sandbox. Accepts a single value or an ordered preference list -- the scheduler tries each in order and pins the sandbox to the first that has capacity. */
 export type CreateSandboxRequestGpuTypeList = Array<GpuType | (string & {})>;
+const CreateSandboxRequestGpuTypeList = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<CreateSandboxRequestGpuTypeList>;
+
 /** Array of volumes to attach to the sandbox */
 export type CreateSandboxRequestVolumesList = Array<SandboxVolume>;
+const CreateSandboxRequestVolumesList =
+  SandboxVolumesList as any as S.Schema<CreateSandboxRequestVolumesList>;
+
 /** The context hashes used for the build */
 export type CreateBuildInfoContextHashesList = Array<string>;
+const CreateBuildInfoContextHashesList =
+  BuildInfoContextHashesList as any as S.Schema<CreateBuildInfoContextHashesList>;
+
 export interface CreateBuildInfo {
   /** The Dockerfile content used for the build */
   dockerfileContent: string;
   /** The context hashes used for the build */
   contextHashes?: CreateBuildInfoContextHashesList;
 }
+const CreateBuildInfo = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<CreateBuildInfo>;
+
 export type CreateSandboxRequestSecretsItemMap = { [key: string]: string | undefined };
+const CreateSandboxRequestSecretsItemMap =
+  SandboxEnvMap as any as S.Schema<CreateSandboxRequestSecretsItemMap>;
+
 /** Secrets to mount in this sandbox. Each entry maps an env var name to a vault secret name. */
 export type CreateSandboxRequestSecretsList = Array<CreateSandboxRequestSecretsItemMap>;
+const CreateSandboxRequestSecretsList = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<CreateSandboxRequestSecretsList>;
+
 export interface CreateSandboxRequest {
   /** Use with JWT to specify the organization ID */
   xDaytonaOrganizationID?: string;
@@ -262,6 +318,8 @@ export interface CreateSandboxRequest {
   /** Secrets to mount in this sandbox. Each entry maps an env var name to a vault secret name. */
   secrets?: CreateSandboxRequestSecretsList;
 }
+const CreateSandboxRequest = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<CreateSandboxRequest>;
+
 export interface CreateSandboxSnapshotRequest {
   sandboxIdOrName: string;
   /** Use with JWT to specify the organization ID */
@@ -271,6 +329,11 @@ export interface CreateSandboxSnapshotRequest {
   /** Include the VM's memory in the snapshot. VM sandboxes only. When true the sandbox must be STARTED; when false (default) VM sandboxes must be STOPPED. Container sandboxes do not support memory snapshots. */
   includeMemory?: boolean;
 }
+const CreateSandboxSnapshotRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<CreateSandboxSnapshotRequest>;
+
 export interface CreateSshAccessRequest {
   /** ID or name of the sandbox */
   sandboxIdOrName: string;
@@ -279,6 +342,11 @@ export interface CreateSshAccessRequest {
   /** Use with JWT to specify the organization ID */
   xDaytonaOrganizationID?: string;
 }
+const CreateSshAccessRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<CreateSshAccessRequest>;
+
 export interface SshAccessDto {
   /** Unique identifier for the SSH access */
   id: string;
@@ -295,12 +363,16 @@ export interface SshAccessDto {
   /** SSH command to connect to the sandbox */
   sshCommand: string;
 }
+const SshAccessDto = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<SshAccessDto>;
+
 export interface DeleteSandboxRequest {
   /** ID or name of the sandbox */
   sandboxIdOrName: string;
   /** Use with JWT to specify the organization ID */
   xDaytonaOrganizationID?: string;
 }
+const DeleteSandboxRequest = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<DeleteSandboxRequest>;
+
 export interface ExpireSignedPortPreviewUrlRequest {
   /** ID or name of the sandbox */
   sandboxIdOrName: string;
@@ -311,7 +383,17 @@ export interface ExpireSignedPortPreviewUrlRequest {
   /** Use with JWT to specify the organization ID */
   xDaytonaOrganizationID?: string;
 }
+const ExpireSignedPortPreviewUrlRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<ExpireSignedPortPreviewUrlRequest>;
+
 export interface ExpireSignedPortPreviewUrlResponse {}
+const ExpireSignedPortPreviewUrlResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<ExpireSignedPortPreviewUrlResponse>;
+
 export interface ForkSandboxRequest {
   sandboxIdOrName: string;
   /** Use with JWT to specify the organization ID */
@@ -319,26 +401,44 @@ export interface ForkSandboxRequest {
   /** The name for the forked sandbox. If not provided, a unique name will be generated. */
   name?: string;
 }
+const ForkSandboxRequest = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<ForkSandboxRequest>;
+
 export interface GetBuildLogsUrlRequest {
   /** ID or name of the sandbox */
   sandboxIdOrName: string;
   /** Use with JWT to specify the organization ID */
   xDaytonaOrganizationID?: string;
 }
+const GetBuildLogsUrlRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<GetBuildLogsUrlRequest>;
+
 export interface Url {
   /** URL response */
   url: string;
 }
+const Url = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<Url>;
+
 export interface GetOrganizationBySandboxIdRequest {
   /** ID of the sandbox */
   sandboxId: string;
   /** Use with JWT to specify the organization ID */
   xDaytonaOrganizationID?: string;
 }
+const GetOrganizationBySandboxIdRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<GetOrganizationBySandboxIdRequest>;
+
 /** Connection state of the WorkOS SCIM directory, as last reported by WorkOS (absent when no directory has ever reported in) */
 export type DirectorySyncStatus = "active" | "inactive" | "deleted";
+const DirectorySyncStatus = S.String;
+
 /** Headers */
 export type OtelConfigHeadersMap = { [key: string]: string | undefined };
+const OtelConfigHeadersMap = SandboxEnvMap as any as S.Schema<OtelConfigHeadersMap>;
+
 export interface OtelConfig {
   /** Endpoint */
   endpoint: string;
@@ -347,6 +447,8 @@ export interface OtelConfig {
   /** Organization ID the config belongs to */
   organizationId?: string;
 }
+const OtelConfig = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<OtelConfig>;
+
 export interface Organization {
   /** Organization ID */
   id: string;
@@ -419,6 +521,8 @@ export interface Organization {
   /** Sandbox lifecycle rate limit TTL in seconds */
   sandboxLifecycleRateLimitTtlSeconds: number | null;
 }
+const Organization = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<Organization>;
+
 export interface GetPortPreviewUrlRequest {
   /** ID or name of the sandbox */
   sandboxIdOrName: string;
@@ -427,6 +531,11 @@ export interface GetPortPreviewUrlRequest {
   /** Use with JWT to specify the organization ID */
   xDaytonaOrganizationID?: string;
 }
+const GetPortPreviewUrlRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<GetPortPreviewUrlRequest>;
+
 export interface PortPreviewUrl {
   /** ID of the sandbox */
   sandboxId: string;
@@ -435,14 +544,26 @@ export interface PortPreviewUrl {
   /** Access token */
   token: string;
 }
+const PortPreviewUrl = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<PortPreviewUrl>;
+
 export interface GetRegionQuotaBySandboxIdRequest {
   /** ID of the sandbox */
   sandboxId: string;
   /** Use with JWT to specify the organization ID */
   xDaytonaOrganizationID?: string;
 }
+const GetRegionQuotaBySandboxIdRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<GetRegionQuotaBySandboxIdRequest>;
+
 export type SandboxClass = "linux-vm" | "container" | "windows";
+const SandboxClass = S.String;
+
 export type RegionQuotaAllowedGpuTypesList = Array<GpuType>;
+const RegionQuotaAllowedGpuTypesList =
+  CreateSandboxRequestGpuTypeList as any as S.Schema<RegionQuotaAllowedGpuTypesList>;
+
 export interface RegionQuota {
   organizationId: string;
   regionId: string;
@@ -465,6 +586,8 @@ export interface RegionQuota {
   /** Maximum sandbox lifespan in minutes, measured from sandbox creation to its auto-destroy deadline. If null or 0, lifespan is unrestricted. When set, sandboxes created without a TTL default to this lifespan and TTL cannot be disabled. */
   maxSandboxLifespan: number | null;
 }
+const RegionQuota = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<RegionQuota>;
+
 export interface GetSandboxRequest {
   /** ID or name of the sandbox */
   sandboxIdOrName: string;
@@ -473,13 +596,30 @@ export interface GetSandboxRequest {
   /** Use with JWT to specify the organization ID */
   xDaytonaOrganizationID?: string;
 }
+const GetSandboxRequest = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<GetSandboxRequest>;
+
 export interface GetSandboxAncestorsRequest {
   sandboxIdOrName: string;
   /** Use with JWT to specify the organization ID */
   xDaytonaOrganizationID?: string;
 }
+const GetSandboxAncestorsRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<GetSandboxAncestorsRequest>;
+
 export type GetSandboxAncestorsResponseBodyList = Array<Sandbox2>;
+const GetSandboxAncestorsResponseBodyList = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<GetSandboxAncestorsResponseBodyList>;
+
 export type GetSandboxAncestorsResponse = GetSandboxAncestorsResponseBodyList;
+const GetSandboxAncestorsResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<GetSandboxAncestorsResponse>;
+
 export interface GetSandboxesForRunnerRequest {
   /** Comma-separated list of sandbox states to filter by */
   states?: string;
@@ -488,17 +628,41 @@ export interface GetSandboxesForRunnerRequest {
   /** Use with JWT to specify the organization ID */
   xDaytonaOrganizationID?: string;
 }
+const GetSandboxesForRunnerRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<GetSandboxesForRunnerRequest>;
+
 export type GetSandboxesForRunnerResponseBodyList = Array<Sandbox2>;
 export type GetSandboxesForRunnerResponse = GetSandboxesForRunnerResponseBodyList;
+const GetSandboxesForRunnerResponse =
+  GetSandboxAncestorsResponse as any as S.Schema<GetSandboxesForRunnerResponse>;
+
 export interface GetSandboxForksRequest {
   sandboxIdOrName: string;
   includeDestroyed?: boolean;
   /** Use with JWT to specify the organization ID */
   xDaytonaOrganizationID?: string;
 }
+const GetSandboxForksRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<GetSandboxForksRequest>;
+
 export type GetSandboxForksResponseBodyList = Array<Sandbox2>;
+const GetSandboxForksResponseBodyList =
+  GetSandboxAncestorsResponseBodyList as any as S.Schema<GetSandboxForksResponseBodyList>;
+
 export type GetSandboxForksResponse = GetSandboxForksResponseBodyList;
+const GetSandboxForksResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<GetSandboxForksResponse>;
+
 export type GetSandboxLogsRequestSeveritiesList = Array<string>;
+const GetSandboxLogsRequestSeveritiesList =
+  BuildInfoContextHashesList as any as S.Schema<GetSandboxLogsRequestSeveritiesList>;
+
 export interface GetSandboxLogsRequest {
   /** ID of the sandbox */
   sandboxId: string;
@@ -517,10 +681,20 @@ export interface GetSandboxLogsRequest {
   /** Use with JWT to specify the organization ID */
   xDaytonaOrganizationID?: string;
 }
+const GetSandboxLogsRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<GetSandboxLogsRequest>;
+
 /** Resource attributes from OTEL */
 export type LogEntryResourceAttributesMap = { [key: string]: string | undefined };
+const LogEntryResourceAttributesMap =
+  SandboxEnvMap as any as S.Schema<LogEntryResourceAttributesMap>;
+
 /** Log-specific attributes */
 export type LogEntryLogAttributesMap = { [key: string]: string | undefined };
+const LogEntryLogAttributesMap = SandboxEnvMap as any as S.Schema<LogEntryLogAttributesMap>;
+
 export interface LogEntry {
   /** Timestamp of the log entry */
   timestamp: string;
@@ -541,8 +715,15 @@ export interface LogEntry {
   /** Associated span ID if available */
   spanId?: string;
 }
+const LogEntry = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<LogEntry>;
+
 /** List of log entries */
 export type PaginatedLogsItemsList = Array<LogEntry>;
+const PaginatedLogsItemsList = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<PaginatedLogsItemsList>;
+
 export interface PaginatedLogs {
   /** List of log entries */
   items: PaginatedLogsItemsList;
@@ -553,7 +734,12 @@ export interface PaginatedLogs {
   /** Total number of pages */
   totalPages: number;
 }
+const PaginatedLogs = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<PaginatedLogs>;
+
 export type GetSandboxMetricsRequestMetricNamesList = Array<string>;
+const GetSandboxMetricsRequestMetricNamesList =
+  BuildInfoContextHashesList as any as S.Schema<GetSandboxMetricsRequestMetricNamesList>;
+
 export interface GetSandboxMetricsRequest {
   /** ID of the sandbox */
   sandboxId: string;
@@ -566,38 +752,74 @@ export interface GetSandboxMetricsRequest {
   /** Use with JWT to specify the organization ID */
   xDaytonaOrganizationID?: string;
 }
+const GetSandboxMetricsRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<GetSandboxMetricsRequest>;
+
 export interface MetricDataPoint {
   /** Timestamp of the data point */
   timestamp: string;
   /** Value at this timestamp */
   value: number;
 }
+const MetricDataPoint = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<MetricDataPoint>;
+
 /** Data points for this metric */
 export type MetricSeriesDataPointsList = Array<MetricDataPoint>;
+const MetricSeriesDataPointsList = /*@__PURE__*/ __L.at(
+  __c5,
+  0,
+) as any as S.Schema<MetricSeriesDataPointsList>;
+
 export interface MetricSeries {
   /** Name of the metric */
   metricName: string;
   /** Data points for this metric */
   dataPoints: MetricSeriesDataPointsList;
 }
+const MetricSeries = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<MetricSeries>;
+
 /** List of metric series */
 export type MetricsResponseSeriesList = Array<MetricSeries>;
+const MetricsResponseSeriesList = /*@__PURE__*/ __L.at(
+  __c5,
+  2,
+) as any as S.Schema<MetricsResponseSeriesList>;
+
 export interface MetricsResponse {
   /** List of metric series */
   series: MetricsResponseSeriesList;
 }
+const MetricsResponse = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<MetricsResponse>;
+
 export interface GetSandboxParentRequest {
   sandboxIdOrName: string;
   /** Use with JWT to specify the organization ID */
   xDaytonaOrganizationID?: string;
 }
+const GetSandboxParentRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  4,
+) as any as S.Schema<GetSandboxParentRequest>;
+
 export interface GetSandboxSigningKeyRequest {
   /** ID of the sandbox */
   sandboxId: string;
   /** Use with JWT to specify the organization ID */
   xDaytonaOrganizationID?: string;
 }
+const GetSandboxSigningKeyRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  5,
+) as any as S.Schema<GetSandboxSigningKeyRequest>;
+
 export type GetSandboxSigningKeyResponse = string;
+const GetSandboxSigningKeyResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  6,
+) as any as S.Schema<GetSandboxSigningKeyResponse>;
+
 export interface GetSandboxTracesRequest {
   /** ID of the sandbox */
   sandboxId: string;
@@ -612,6 +834,11 @@ export interface GetSandboxTracesRequest {
   /** Use with JWT to specify the organization ID */
   xDaytonaOrganizationID?: string;
 }
+const GetSandboxTracesRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  7,
+) as any as S.Schema<GetSandboxTracesRequest>;
+
 export interface TraceSummary {
   /** Unique trace identifier */
   traceId: string;
@@ -628,8 +855,15 @@ export interface TraceSummary {
   /** Status code of the trace */
   statusCode?: string;
 }
+const TraceSummary = /*@__PURE__*/ __L.at(__c6, 0) as any as S.Schema<TraceSummary>;
+
 /** List of trace summaries */
 export type PaginatedTracesItemsList = Array<TraceSummary>;
+const PaginatedTracesItemsList = /*@__PURE__*/ __L.at(
+  __c6,
+  1,
+) as any as S.Schema<PaginatedTracesItemsList>;
+
 export interface PaginatedTraces {
   /** List of trace summaries */
   items: PaginatedTracesItemsList;
@@ -640,6 +874,8 @@ export interface PaginatedTraces {
   /** Total number of pages */
   totalPages: number;
 }
+const PaginatedTraces = /*@__PURE__*/ __L.at(__c6, 2) as any as S.Schema<PaginatedTraces>;
+
 export interface GetSandboxTraceSpansRequest {
   /** ID of the sandbox */
   sandboxId: string;
@@ -648,8 +884,15 @@ export interface GetSandboxTraceSpansRequest {
   /** Use with JWT to specify the organization ID */
   xDaytonaOrganizationID?: string;
 }
+const GetSandboxTraceSpansRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  3,
+) as any as S.Schema<GetSandboxTraceSpansRequest>;
+
 /** Span attributes */
 export type TraceSpanSpanAttributesMap = { [key: string]: string | undefined };
+const TraceSpanSpanAttributesMap = SandboxEnvMap as any as S.Schema<TraceSpanSpanAttributesMap>;
+
 export interface TraceSpan {
   /** Trace identifier */
   traceId: string;
@@ -670,8 +913,20 @@ export interface TraceSpan {
   /** Status message */
   statusMessage?: string;
 }
+const TraceSpan = /*@__PURE__*/ __L.at(__c6, 4) as any as S.Schema<TraceSpan>;
+
 export type GetSandboxTraceSpansResponseBodyList = Array<TraceSpan>;
+const GetSandboxTraceSpansResponseBodyList = /*@__PURE__*/ __L.at(
+  __c6,
+  5,
+) as any as S.Schema<GetSandboxTraceSpansResponseBodyList>;
+
 export type GetSandboxTraceSpansResponse = GetSandboxTraceSpansResponseBodyList;
+const GetSandboxTraceSpansResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  6,
+) as any as S.Schema<GetSandboxTraceSpansResponse>;
+
 export interface GetSignedPortPreviewUrlRequest {
   /** ID or name of the sandbox */
   sandboxIdOrName: string;
@@ -682,6 +937,11 @@ export interface GetSignedPortPreviewUrlRequest {
   /** Use with JWT to specify the organization ID */
   xDaytonaOrganizationID?: string;
 }
+const GetSignedPortPreviewUrlRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  7,
+) as any as S.Schema<GetSignedPortPreviewUrlRequest>;
+
 export interface SignedPortPreviewUrl {
   /** ID of the sandbox */
   sandboxId: string;
@@ -692,20 +952,41 @@ export interface SignedPortPreviewUrl {
   /** Signed preview url */
   url: string;
 }
+const SignedPortPreviewUrl = /*@__PURE__*/ __L.at(__c7, 0) as any as S.Schema<SignedPortPreviewUrl>;
+
 export interface GetToolboxProxyUrlRequest {
   /** ID of the sandbox */
   sandboxId: string;
   /** Use with JWT to specify the organization ID */
   xDaytonaOrganizationID?: string;
 }
+const GetToolboxProxyUrlRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  1,
+) as any as S.Schema<GetToolboxProxyUrlRequest>;
+
 export interface ToolboxProxyUrl {
   /** The toolbox proxy URL for the sandbox */
   url: string;
 }
+const ToolboxProxyUrl = Url as any as S.Schema<ToolboxProxyUrl>;
+
 export type ListSandboxesRequestStatesList = Array<SandboxState | (string & {})>;
+const ListSandboxesRequestStatesList =
+  CreateSandboxRequestGpuTypeList as any as S.Schema<ListSandboxesRequestStatesList>;
+
 export type ListSandboxesRequestSnapshotsList = Array<string>;
+const ListSandboxesRequestSnapshotsList =
+  BuildInfoContextHashesList as any as S.Schema<ListSandboxesRequestSnapshotsList>;
+
 export type ListSandboxesRequestRegionIdsList = Array<string>;
+const ListSandboxesRequestRegionIdsList =
+  BuildInfoContextHashesList as any as S.Schema<ListSandboxesRequestRegionIdsList>;
+
 export type ListSandboxesRequestSandboxClassesList = Array<SandboxClass | (string & {})>;
+const ListSandboxesRequestSandboxClassesList =
+  CreateSandboxRequestGpuTypeList as any as S.Schema<ListSandboxesRequestSandboxClassesList>;
+
 export type SandboxListSortField =
   | "name"
   | "cpu"
@@ -713,7 +994,11 @@ export type SandboxListSortField =
   | "diskGib"
   | "lastActivityAt"
   | "createdAt";
+const SandboxListSortField = S.String;
+
 export type SandboxListSortDirection = "asc" | "desc";
+const SandboxListSortDirection = S.String;
+
 export interface ListSandboxesRequest {
   /** Pagination cursor from a previous response */
   cursor?: string;
@@ -776,10 +1061,16 @@ export interface ListSandboxesRequest {
   /** Use with JWT to specify the organization ID */
   xDaytonaOrganizationID?: string;
 }
+const ListSandboxesRequest = /*@__PURE__*/ __L.at(__c7, 2) as any as S.Schema<ListSandboxesRequest>;
+
 /** Labels for the sandbox */
 export type SandboxListItemLabelsMap = { [key: string]: string | undefined };
+const SandboxListItemLabelsMap = SandboxEnvMap as any as S.Schema<SandboxListItemLabelsMap>;
+
 /** The state of the backup */
 export type SandboxListItemBackupState = "None" | "Pending" | "InProgress" | "Completed" | "Error";
+const SandboxListItemBackupState = S.String;
+
 export interface SandboxListItem {
   /** The ID of the sandbox */
   id: string;
@@ -858,20 +1149,34 @@ export interface SandboxListItem {
   /** The toolbox proxy URL for the sandbox */
   toolboxProxyUrl: string;
 }
+const SandboxListItem = /*@__PURE__*/ __L.at(__c7, 3) as any as S.Schema<SandboxListItem>;
+
 /** List of results for the current page */
 export type ListSandboxesResponseItemsList = Array<SandboxListItem>;
+const ListSandboxesResponseItemsList = /*@__PURE__*/ __L.at(
+  __c7,
+  4,
+) as any as S.Schema<ListSandboxesResponseItemsList>;
+
 export interface ListSandboxesResponse {
   /** List of results for the current page */
   items: ListSandboxesResponseItemsList;
   /** Cursor for the next page of results */
   nextCursor: string | null;
 }
+const ListSandboxesResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  5,
+) as any as S.Schema<ListSandboxesResponse>;
+
 export interface PauseSandboxRequest {
   /** ID or name of the sandbox */
   sandboxIdOrName: string;
   /** Use with JWT to specify the organization ID */
   xDaytonaOrganizationID?: string;
 }
+const PauseSandboxRequest = /*@__PURE__*/ __L.at(__c7, 6) as any as S.Schema<PauseSandboxRequest>;
+
 export interface RecoverSandboxRequest {
   /** ID or name of the sandbox */
   sandboxIdOrName: string;
@@ -880,8 +1185,16 @@ export interface RecoverSandboxRequest {
   /** Use with JWT to specify the organization ID */
   xDaytonaOrganizationID?: string;
 }
+const RecoverSandboxRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  7,
+) as any as S.Schema<RecoverSandboxRequest>;
+
 /** Key-value pairs of labels */
 export type ReplaceLabelsRequestLabelsMap = { [key: string]: string | undefined };
+const ReplaceLabelsRequestLabelsMap =
+  SandboxEnvMap as any as S.Schema<ReplaceLabelsRequestLabelsMap>;
+
 export interface ReplaceLabelsRequest {
   /** ID or name of the sandbox */
   sandboxIdOrName: string;
@@ -890,12 +1203,18 @@ export interface ReplaceLabelsRequest {
   /** Key-value pairs of labels */
   labels: ReplaceLabelsRequestLabelsMap;
 }
+const ReplaceLabelsRequest = /*@__PURE__*/ __L.at(__c8, 0) as any as S.Schema<ReplaceLabelsRequest>;
+
 /** Key-value pairs of labels */
 export type SandboxLabelsLabelsMap = { [key: string]: string | undefined };
+const SandboxLabelsLabelsMap = SandboxEnvMap as any as S.Schema<SandboxLabelsLabelsMap>;
+
 export interface SandboxLabels {
   /** Key-value pairs of labels */
   labels: SandboxLabelsLabelsMap;
 }
+const SandboxLabels = /*@__PURE__*/ __L.at(__c8, 1) as any as S.Schema<SandboxLabels>;
+
 export interface ResizeSandboxRequest {
   /** ID or name of the sandbox */
   sandboxIdOrName: string;
@@ -908,21 +1227,46 @@ export interface ResizeSandboxRequest {
   /** Disk space in GB to allocate to the sandbox (can only be increased) */
   disk?: number;
 }
+const ResizeSandboxRequest = /*@__PURE__*/ __L.at(__c8, 2) as any as S.Schema<ResizeSandboxRequest>;
+
 export interface ResolveSandboxSecretsRequest {
   /** Sandbox ID */
   sandboxId: string;
   /** Use with JWT to specify the organization ID */
   xDaytonaOrganizationID?: string;
 }
+const ResolveSandboxSecretsRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  3,
+) as any as S.Schema<ResolveSandboxSecretsRequest>;
+
 export type ResolveSandboxSecrets200ResponseInnerHostsList = Array<string>;
+const ResolveSandboxSecrets200ResponseInnerHostsList =
+  BuildInfoContextHashesList as any as S.Schema<ResolveSandboxSecrets200ResponseInnerHostsList>;
+
 export interface ResolveSandboxSecrets200ResponseInner {
   env?: string;
   placeholder?: string;
   value?: string;
   hosts?: ResolveSandboxSecrets200ResponseInnerHostsList;
 }
+const ResolveSandboxSecrets200ResponseInner = /*@__PURE__*/ __L.at(
+  __c8,
+  4,
+) as any as S.Schema<ResolveSandboxSecrets200ResponseInner>;
+
 export type ResolveSandboxSecretsResponseBodyList = Array<ResolveSandboxSecrets200ResponseInner>;
+const ResolveSandboxSecretsResponseBodyList = /*@__PURE__*/ __L.at(
+  __c8,
+  5,
+) as any as S.Schema<ResolveSandboxSecretsResponseBodyList>;
+
 export type ResolveSandboxSecretsResponse = ResolveSandboxSecretsResponseBodyList;
+const ResolveSandboxSecretsResponse = /*@__PURE__*/ __L.at(
+  __c8,
+  6,
+) as any as S.Schema<ResolveSandboxSecretsResponse>;
+
 export interface RevokeSshAccessRequest {
   /** ID or name of the sandbox */
   sandboxIdOrName: string;
@@ -931,13 +1275,28 @@ export interface RevokeSshAccessRequest {
   /** Use with JWT to specify the organization ID */
   xDaytonaOrganizationID?: string;
 }
+const RevokeSshAccessRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  7,
+) as any as S.Schema<RevokeSshAccessRequest>;
+
 export interface RotateSigningKeyRequest {
   /** ID of the sandbox */
   sandboxId: string;
   /** Use with JWT to specify the organization ID */
   xDaytonaOrganizationID?: string;
 }
+const RotateSigningKeyRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  0,
+) as any as S.Schema<RotateSigningKeyRequest>;
+
 export type RotateSigningKeyResponse = string;
+const RotateSigningKeyResponse = /*@__PURE__*/ __L.at(
+  __c9,
+  1,
+) as any as S.Schema<RotateSigningKeyResponse>;
+
 export interface SetAutoArchiveIntervalRequest {
   /** ID or name of the sandbox */
   sandboxIdOrName: string;
@@ -946,6 +1305,11 @@ export interface SetAutoArchiveIntervalRequest {
   /** Use with JWT to specify the organization ID */
   xDaytonaOrganizationID?: string;
 }
+const SetAutoArchiveIntervalRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  2,
+) as any as S.Schema<SetAutoArchiveIntervalRequest>;
+
 export interface SetAutoDeleteIntervalRequest {
   /** ID or name of the sandbox */
   sandboxIdOrName: string;
@@ -954,6 +1318,11 @@ export interface SetAutoDeleteIntervalRequest {
   /** Use with JWT to specify the organization ID */
   xDaytonaOrganizationID?: string;
 }
+const SetAutoDeleteIntervalRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  3,
+) as any as S.Schema<SetAutoDeleteIntervalRequest>;
+
 export interface SetAutoPauseIntervalRequest {
   /** ID or name of the sandbox */
   sandboxIdOrName: string;
@@ -962,6 +1331,11 @@ export interface SetAutoPauseIntervalRequest {
   /** Use with JWT to specify the organization ID */
   xDaytonaOrganizationID?: string;
 }
+const SetAutoPauseIntervalRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  4,
+) as any as S.Schema<SetAutoPauseIntervalRequest>;
+
 export interface SetAutostopIntervalRequest {
   /** ID or name of the sandbox */
   sandboxIdOrName: string;
@@ -970,6 +1344,11 @@ export interface SetAutostopIntervalRequest {
   /** Use with JWT to specify the organization ID */
   xDaytonaOrganizationID?: string;
 }
+const SetAutostopIntervalRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  5,
+) as any as S.Schema<SetAutostopIntervalRequest>;
+
 export interface SetTtlRequest {
   /** ID or name of the sandbox */
   sandboxIdOrName: string;
@@ -978,12 +1357,16 @@ export interface SetTtlRequest {
   /** Use with JWT to specify the organization ID */
   xDaytonaOrganizationID?: string;
 }
+const SetTtlRequest = /*@__PURE__*/ __L.at(__c9, 6) as any as S.Schema<SetTtlRequest>;
+
 export interface StartSandboxRequest {
   /** ID or name of the sandbox */
   sandboxIdOrName: string;
   /** Use with JWT to specify the organization ID */
   xDaytonaOrganizationID?: string;
 }
+const StartSandboxRequest = /*@__PURE__*/ __L.at(__c9, 7) as any as S.Schema<StartSandboxRequest>;
+
 export interface StopSandboxRequest {
   /** ID or name of the sandbox */
   sandboxIdOrName: string;
@@ -992,6 +1375,8 @@ export interface StopSandboxRequest {
   /** Use with JWT to specify the organization ID */
   xDaytonaOrganizationID?: string;
 }
+const StopSandboxRequest = /*@__PURE__*/ __L.at(__c10, 0) as any as S.Schema<StopSandboxRequest>;
+
 export interface UpdateLastActivityRequest {
   /** ID of the sandbox */
   sandboxId: string;
@@ -1000,7 +1385,17 @@ export interface UpdateLastActivityRequest {
   /** Optional type of interaction that reset the activity timer. */
   activityType?: string;
 }
+const UpdateLastActivityRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  1,
+) as any as S.Schema<UpdateLastActivityRequest>;
+
 export interface UpdateLastActivityResponse {}
+const UpdateLastActivityResponse = /*@__PURE__*/ __L.at(
+  __c10,
+  2,
+) as any as S.Schema<UpdateLastActivityResponse>;
+
 export interface UpdateNetworkSettingsRequest {
   /** ID or name of the sandbox */
   sandboxIdOrName: string;
@@ -1013,6 +1408,11 @@ export interface UpdateNetworkSettingsRequest {
   /** Comma-separated list of allowed domains for the sandbox */
   domainAllowList?: string;
 }
+const UpdateNetworkSettingsRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  3,
+) as any as S.Schema<UpdateNetworkSettingsRequest>;
+
 export interface UpdatePublicStatusRequest {
   /** ID or name of the sandbox */
   sandboxIdOrName: string;
@@ -1021,10 +1421,18 @@ export interface UpdatePublicStatusRequest {
   /** Use with JWT to specify the organization ID */
   xDaytonaOrganizationID?: string;
 }
+const UpdatePublicStatusRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  4,
+) as any as S.Schema<UpdatePublicStatusRequest>;
+
 export type UpdateSandboxSecretsRequestSecretsItemMap = { [key: string]: string | undefined };
 /** Secrets to mount in this sandbox, replacing the previously mounted set. Each entry maps an env var name to a vault secret name. Pass an empty array to detach all secrets. */
 export type UpdateSandboxSecretsRequestSecretsList =
   Array<UpdateSandboxSecretsRequestSecretsItemMap>;
+const UpdateSandboxSecretsRequestSecretsList =
+  CreateSandboxRequestSecretsList as any as S.Schema<UpdateSandboxSecretsRequestSecretsList>;
+
 export interface UpdateSandboxSecretsRequest {
   /** ID or name of the sandbox */
   sandboxIdOrName: string;
@@ -1033,6 +1441,11 @@ export interface UpdateSandboxSecretsRequest {
   /** Secrets to mount in this sandbox, replacing the previously mounted set. Each entry maps an env var name to a vault secret name. Pass an empty array to detach all secrets. */
   secrets: UpdateSandboxSecretsRequestSecretsList;
 }
+const UpdateSandboxSecretsRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  5,
+) as any as S.Schema<UpdateSandboxSecretsRequest>;
+
 /** The new state for the sandbox */
 export type UpdateSandboxStateRequestState =
   | "creating"
@@ -1057,6 +1470,8 @@ export type UpdateSandboxStateRequestState =
   | "pausing"
   | "paused"
   | "resuming";
+const UpdateSandboxStateRequestState = S.String;
+
 export interface UpdateSandboxStateRequest {
   /** ID of the sandbox */
   sandboxId: string;
@@ -1069,19 +1484,37 @@ export interface UpdateSandboxStateRequest {
   /** Whether the sandbox is recoverable */
   recoverable?: boolean;
 }
+const UpdateSandboxStateRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  6,
+) as any as S.Schema<UpdateSandboxStateRequest>;
+
 export interface UpdateSandboxStateResponse {}
+const UpdateSandboxStateResponse =
+  UpdateLastActivityResponse as any as S.Schema<UpdateSandboxStateResponse>;
+
 export interface ValidateSshAccessRequest {
   /** SSH access token to validate */
   token: string;
   /** Use with JWT to specify the organization ID */
   xDaytonaOrganizationID?: string;
 }
+const ValidateSshAccessRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  7,
+) as any as S.Schema<ValidateSshAccessRequest>;
+
 export interface SshAccessValidationDto {
   /** Whether the SSH access token is valid */
   valid: boolean;
   /** ID of the sandbox this SSH access is for */
   sandboxId: string;
 }
+const SshAccessValidationDto = /*@__PURE__*/ __L.at(
+  __c11,
+  0,
+) as any as S.Schema<SshAccessValidationDto>;
+
 export type ArchiveSandboxError = DaytonaOpError;
 /** Archive sandbox */
 export const archiveSandbox: API.OperationMethod<
@@ -1090,8 +1523,8 @@ export const archiveSandbox: API.OperationMethod<
   ArchiveSandboxError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<ArchiveSandboxRequest>,
-  output: __S(6) as any as S.Schema<Sandbox2>,
+  input: ArchiveSandboxRequest,
+  output: Sandbox2,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -1105,8 +1538,8 @@ export const createSandbox: API.OperationMethod<
   CreateSandboxError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10) as any as S.Schema<CreateSandboxRequest>,
-  output: __S(6) as any as S.Schema<Sandbox2>,
+  input: CreateSandboxRequest,
+  output: Sandbox2,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -1120,8 +1553,8 @@ export const createSandboxSnapshot: API.OperationMethod<
   CreateSandboxSnapshotError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11) as any as S.Schema<CreateSandboxSnapshotRequest>,
-  output: __S(6) as any as S.Schema<Sandbox2>,
+  input: CreateSandboxSnapshotRequest,
+  output: Sandbox2,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -1135,8 +1568,8 @@ export const createSshAccess: API.OperationMethod<
   CreateSshAccessError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12) as any as S.Schema<CreateSshAccessRequest>,
-  output: __S(13) as any as S.Schema<SshAccessDto>,
+  input: CreateSshAccessRequest,
+  output: SshAccessDto,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -1150,8 +1583,8 @@ export const deleteSandbox: API.OperationMethod<
   DeleteSandboxError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14) as any as S.Schema<DeleteSandboxRequest>,
-  output: __S(6) as any as S.Schema<Sandbox2>,
+  input: DeleteSandboxRequest,
+  output: Sandbox2,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -1165,8 +1598,8 @@ export const expireSignedPortPreviewUrl: API.OperationMethod<
   ExpireSignedPortPreviewUrlError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15) as any as S.Schema<ExpireSignedPortPreviewUrlRequest>,
-  output: __S(16) as any as S.Schema<ExpireSignedPortPreviewUrlResponse>,
+  input: ExpireSignedPortPreviewUrlRequest,
+  output: ExpireSignedPortPreviewUrlResponse,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -1180,8 +1613,8 @@ export const forkSandbox: API.OperationMethod<
   ForkSandboxError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17) as any as S.Schema<ForkSandboxRequest>,
-  output: __S(6) as any as S.Schema<Sandbox2>,
+  input: ForkSandboxRequest,
+  output: Sandbox2,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -1195,8 +1628,8 @@ export const getBuildLogsUrl: API.OperationMethod<
   GetBuildLogsUrlError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18) as any as S.Schema<GetBuildLogsUrlRequest>,
-  output: __S(19) as any as S.Schema<Url>,
+  input: GetBuildLogsUrlRequest,
+  output: Url,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -1210,8 +1643,8 @@ export const getOrganizationBySandboxId: API.OperationMethod<
   GetOrganizationBySandboxIdError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20) as any as S.Schema<GetOrganizationBySandboxIdRequest>,
-  output: __S(22) as any as S.Schema<Organization>,
+  input: GetOrganizationBySandboxIdRequest,
+  output: Organization,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -1225,8 +1658,8 @@ export const getPortPreviewUrl: API.OperationMethod<
   GetPortPreviewUrlError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23) as any as S.Schema<GetPortPreviewUrlRequest>,
-  output: __S(24) as any as S.Schema<PortPreviewUrl>,
+  input: GetPortPreviewUrlRequest,
+  output: PortPreviewUrl,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -1240,8 +1673,8 @@ export const getRegionQuotaBySandboxId: API.OperationMethod<
   GetRegionQuotaBySandboxIdError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25) as any as S.Schema<GetRegionQuotaBySandboxIdRequest>,
-  output: __S(26) as any as S.Schema<RegionQuota>,
+  input: GetRegionQuotaBySandboxIdRequest,
+  output: RegionQuota,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -1255,8 +1688,8 @@ export const getSandbox: API.OperationMethod<
   GetSandboxError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27) as any as S.Schema<GetSandboxRequest>,
-  output: __S(6) as any as S.Schema<Sandbox2>,
+  input: GetSandboxRequest,
+  output: Sandbox2,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -1270,8 +1703,8 @@ export const getSandboxAncestors: API.OperationMethod<
   GetSandboxAncestorsError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28) as any as S.Schema<GetSandboxAncestorsRequest>,
-  output: __S(30) as any as S.Schema<GetSandboxAncestorsResponse>,
+  input: GetSandboxAncestorsRequest,
+  output: GetSandboxAncestorsResponse,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -1285,8 +1718,8 @@ export const getSandboxesForRunner: API.OperationMethod<
   GetSandboxesForRunnerError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31) as any as S.Schema<GetSandboxesForRunnerRequest>,
-  output: __S(30) as any as S.Schema<GetSandboxesForRunnerResponse>,
+  input: GetSandboxesForRunnerRequest,
+  output: GetSandboxesForRunnerResponse,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -1300,8 +1733,8 @@ export const getSandboxForks: API.OperationMethod<
   GetSandboxForksError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32) as any as S.Schema<GetSandboxForksRequest>,
-  output: __S(33) as any as S.Schema<GetSandboxForksResponse>,
+  input: GetSandboxForksRequest,
+  output: GetSandboxForksResponse,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -1315,8 +1748,8 @@ export const getSandboxLogs: API.OperationMethod<
   GetSandboxLogsError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34) as any as S.Schema<GetSandboxLogsRequest>,
-  output: __S(37) as any as S.Schema<PaginatedLogs>,
+  input: GetSandboxLogsRequest,
+  output: PaginatedLogs,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -1330,8 +1763,8 @@ export const getSandboxMetrics: API.OperationMethod<
   GetSandboxMetricsError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38) as any as S.Schema<GetSandboxMetricsRequest>,
-  output: __S(43) as any as S.Schema<MetricsResponse>,
+  input: GetSandboxMetricsRequest,
+  output: MetricsResponse,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -1345,8 +1778,8 @@ export const getSandboxParent: API.OperationMethod<
   GetSandboxParentError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44) as any as S.Schema<GetSandboxParentRequest>,
-  output: __S(6) as any as S.Schema<Sandbox2>,
+  input: GetSandboxParentRequest,
+  output: Sandbox2,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -1360,8 +1793,8 @@ export const getSandboxSigningKey: API.OperationMethod<
   GetSandboxSigningKeyError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45) as any as S.Schema<GetSandboxSigningKeyRequest>,
-  output: __S(46) as any as S.Schema<GetSandboxSigningKeyResponse>,
+  input: GetSandboxSigningKeyRequest,
+  output: GetSandboxSigningKeyResponse,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -1375,8 +1808,8 @@ export const getSandboxTraces: API.OperationMethod<
   GetSandboxTracesError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47) as any as S.Schema<GetSandboxTracesRequest>,
-  output: __S(50) as any as S.Schema<PaginatedTraces>,
+  input: GetSandboxTracesRequest,
+  output: PaginatedTraces,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -1390,8 +1823,8 @@ export const getSandboxTraceSpans: API.OperationMethod<
   GetSandboxTraceSpansError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(51) as any as S.Schema<GetSandboxTraceSpansRequest>,
-  output: __S(54) as any as S.Schema<GetSandboxTraceSpansResponse>,
+  input: GetSandboxTraceSpansRequest,
+  output: GetSandboxTraceSpansResponse,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -1405,8 +1838,8 @@ export const getSignedPortPreviewUrl: API.OperationMethod<
   GetSignedPortPreviewUrlError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(55) as any as S.Schema<GetSignedPortPreviewUrlRequest>,
-  output: __S(56) as any as S.Schema<SignedPortPreviewUrl>,
+  input: GetSignedPortPreviewUrlRequest,
+  output: SignedPortPreviewUrl,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -1420,8 +1853,8 @@ export const getToolboxProxyUrl: API.OperationMethod<
   GetToolboxProxyUrlError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57) as any as S.Schema<GetToolboxProxyUrlRequest>,
-  output: __S(19) as any as S.Schema<ToolboxProxyUrl>,
+  input: GetToolboxProxyUrlRequest,
+  output: ToolboxProxyUrl,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -1435,8 +1868,8 @@ export const listSandboxes: API.OperationMethod<
   ListSandboxesError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(58) as any as S.Schema<ListSandboxesRequest>,
-  output: __S(61) as any as S.Schema<ListSandboxesResponse>,
+  input: ListSandboxesRequest,
+  output: ListSandboxesResponse,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -1450,8 +1883,8 @@ export const pauseSandbox: API.OperationMethod<
   PauseSandboxError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(62) as any as S.Schema<PauseSandboxRequest>,
-  output: __S(6) as any as S.Schema<Sandbox2>,
+  input: PauseSandboxRequest,
+  output: Sandbox2,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -1465,8 +1898,8 @@ export const recoverSandbox: API.OperationMethod<
   RecoverSandboxError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(63) as any as S.Schema<RecoverSandboxRequest>,
-  output: __S(6) as any as S.Schema<Sandbox2>,
+  input: RecoverSandboxRequest,
+  output: Sandbox2,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -1480,8 +1913,8 @@ export const replaceLabels: API.OperationMethod<
   ReplaceLabelsError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(64) as any as S.Schema<ReplaceLabelsRequest>,
-  output: __S(65) as any as S.Schema<SandboxLabels>,
+  input: ReplaceLabelsRequest,
+  output: SandboxLabels,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -1495,8 +1928,8 @@ export const resizeSandbox: API.OperationMethod<
   ResizeSandboxError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(66) as any as S.Schema<ResizeSandboxRequest>,
-  output: __S(6) as any as S.Schema<Sandbox2>,
+  input: ResizeSandboxRequest,
+  output: Sandbox2,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -1510,8 +1943,8 @@ export const resolveSandboxSecrets: API.OperationMethod<
   ResolveSandboxSecretsError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(67) as any as S.Schema<ResolveSandboxSecretsRequest>,
-  output: __S(70) as any as S.Schema<ResolveSandboxSecretsResponse>,
+  input: ResolveSandboxSecretsRequest,
+  output: ResolveSandboxSecretsResponse,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -1525,8 +1958,8 @@ export const revokeSshAccess: API.OperationMethod<
   RevokeSshAccessError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(71) as any as S.Schema<RevokeSshAccessRequest>,
-  output: __S(6) as any as S.Schema<Sandbox2>,
+  input: RevokeSshAccessRequest,
+  output: Sandbox2,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -1540,8 +1973,8 @@ export const rotateSigningKey: API.OperationMethod<
   RotateSigningKeyError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(72) as any as S.Schema<RotateSigningKeyRequest>,
-  output: __S(73) as any as S.Schema<RotateSigningKeyResponse>,
+  input: RotateSigningKeyRequest,
+  output: RotateSigningKeyResponse,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -1555,8 +1988,8 @@ export const setAutoArchiveInterval: API.OperationMethod<
   SetAutoArchiveIntervalError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(74) as any as S.Schema<SetAutoArchiveIntervalRequest>,
-  output: __S(6) as any as S.Schema<Sandbox2>,
+  input: SetAutoArchiveIntervalRequest,
+  output: Sandbox2,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -1570,8 +2003,8 @@ export const setAutoDeleteInterval: API.OperationMethod<
   SetAutoDeleteIntervalError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(75) as any as S.Schema<SetAutoDeleteIntervalRequest>,
-  output: __S(6) as any as S.Schema<Sandbox2>,
+  input: SetAutoDeleteIntervalRequest,
+  output: Sandbox2,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -1585,8 +2018,8 @@ export const setAutoPauseInterval: API.OperationMethod<
   SetAutoPauseIntervalError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(76) as any as S.Schema<SetAutoPauseIntervalRequest>,
-  output: __S(6) as any as S.Schema<Sandbox2>,
+  input: SetAutoPauseIntervalRequest,
+  output: Sandbox2,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -1600,8 +2033,8 @@ export const setAutostopInterval: API.OperationMethod<
   SetAutostopIntervalError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(77) as any as S.Schema<SetAutostopIntervalRequest>,
-  output: __S(6) as any as S.Schema<Sandbox2>,
+  input: SetAutostopIntervalRequest,
+  output: Sandbox2,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -1611,8 +2044,8 @@ export type SetTtlError = DaytonaOpError;
 /** Set sandbox TTL */
 export const setTtl: API.OperationMethod<SetTtlRequest, Sandbox2, SetTtlError, DaytonaOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(78) as any as S.Schema<SetTtlRequest>,
-    output: __S(6) as any as S.Schema<Sandbox2>,
+    input: SetTtlRequest,
+    output: Sandbox2,
     errors: [UnknownDaytonaError],
     protocol: DaytonaProtocol,
     retry: Retry.Retry,
@@ -1626,8 +2059,8 @@ export const startSandbox: API.OperationMethod<
   StartSandboxError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(79) as any as S.Schema<StartSandboxRequest>,
-  output: __S(6) as any as S.Schema<Sandbox2>,
+  input: StartSandboxRequest,
+  output: Sandbox2,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -1641,8 +2074,8 @@ export const stopSandbox: API.OperationMethod<
   StopSandboxError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(80) as any as S.Schema<StopSandboxRequest>,
-  output: __S(6) as any as S.Schema<Sandbox2>,
+  input: StopSandboxRequest,
+  output: Sandbox2,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -1656,8 +2089,8 @@ export const updateLastActivity: API.OperationMethod<
   UpdateLastActivityError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(81) as any as S.Schema<UpdateLastActivityRequest>,
-  output: __S(82) as any as S.Schema<UpdateLastActivityResponse>,
+  input: UpdateLastActivityRequest,
+  output: UpdateLastActivityResponse,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -1671,8 +2104,8 @@ export const updateNetworkSettings: API.OperationMethod<
   UpdateNetworkSettingsError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(83) as any as S.Schema<UpdateNetworkSettingsRequest>,
-  output: __S(6) as any as S.Schema<Sandbox2>,
+  input: UpdateNetworkSettingsRequest,
+  output: Sandbox2,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -1686,8 +2119,8 @@ export const updatePublicStatus: API.OperationMethod<
   UpdatePublicStatusError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(84) as any as S.Schema<UpdatePublicStatusRequest>,
-  output: __S(6) as any as S.Schema<Sandbox2>,
+  input: UpdatePublicStatusRequest,
+  output: Sandbox2,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -1701,8 +2134,8 @@ export const updateSandboxSecrets: API.OperationMethod<
   UpdateSandboxSecretsError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(85) as any as S.Schema<UpdateSandboxSecretsRequest>,
-  output: __S(6) as any as S.Schema<Sandbox2>,
+  input: UpdateSandboxSecretsRequest,
+  output: Sandbox2,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -1716,8 +2149,8 @@ export const updateSandboxState: API.OperationMethod<
   UpdateSandboxStateError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(86) as any as S.Schema<UpdateSandboxStateRequest>,
-  output: __S(82) as any as S.Schema<UpdateSandboxStateResponse>,
+  input: UpdateSandboxStateRequest,
+  output: UpdateSandboxStateResponse,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -1731,8 +2164,8 @@ export const validateSshAccess: API.OperationMethod<
   ValidateSshAccessError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(87) as any as S.Schema<ValidateSshAccessRequest>,
-  output: __S(88) as any as S.Schema<SshAccessValidationDto>,
+  input: ValidateSshAccessRequest,
+  output: SshAccessValidationDto,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -1759,14 +2192,14 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "SandboxVolume" });
     case 3:
-      return S.Array(__S(2));
+      return S.Array(SandboxVolume);
     case 4:
       return S.Array(S.String);
     case 5:
       return S.suspend(() =>
         S.Struct({
           dockerfileContent: S.optional(S.String),
-          contextHashes: S.optional(__S(4)),
+          contextHashes: S.optional(BuildInfoContextHashesList),
           createdAt: S.String,
           updatedAt: S.String,
           snapshotRef: S.String,
@@ -1780,8 +2213,8 @@ function __c0(j: number): any {
           name: S.String,
           snapshot: S.optional(S.String),
           user: S.String,
-          env: __S(1),
-          labels: __S(1),
+          env: SandboxEnvMap,
+          labels: SandboxLabelsMap,
           public: S.Boolean,
           networkBlockAll: S.Boolean,
           kvm: S.Boolean,
@@ -1795,15 +2228,15 @@ function __c0(j: number): any {
           spot: S.optional(S.Boolean),
           spotEvictedAt: S.optional(S.String),
           queueTimedOutAt: S.optional(S.String),
-          gpuType: S.optional(S.String),
+          gpuType: S.optional(GpuType),
           memory: S.Number,
           disk: S.Number,
-          state: S.optional(S.String),
-          desiredState: S.optional(S.String),
+          state: S.optional(SandboxState),
+          desiredState: S.optional(SandboxDesiredState),
           errorReason: S.optional(S.String),
           recoverable: S.optional(S.Boolean),
           warmPoolId: S.optional(S.String),
-          backupState: S.optional(S.String),
+          backupState: S.optional(SandboxBackupState),
           backupCreatedAt: S.optional(S.String),
           autoStopInterval: S.optional(S.Number),
           autoPauseInterval: S.optional(S.Number),
@@ -1811,12 +2244,12 @@ function __c0(j: number): any {
           autoDeleteInterval: S.optional(S.Number),
           autoDestroyAt: S.optional(S.String),
           queueTimeout: S.optional(S.NullOr(S.Number)),
-          volumes: S.optional(__S(3)),
-          buildInfo: S.optional(__S(5)),
+          volumes: S.optional(SandboxVolumesList),
+          buildInfo: S.optional(BuildInfo),
           createdAt: S.optional(S.String),
           updatedAt: S.optional(S.String),
           lastActivityAt: S.optional(S.String),
-          sandboxClass: S.optional(S.String),
+          sandboxClass: S.optional(SandboxSandboxClass),
           daemonVersion: S.optional(S.String),
           runnerId: S.optional(S.String),
           linkedSandboxId: S.optional(S.String),
@@ -1824,7 +2257,7 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "Sandbox2" });
     case 7:
-      return S.Array(S.String);
+      return S.Array(GpuType);
   }
 }
 function __c1(j: number): any {
@@ -1833,11 +2266,11 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           dockerfileContent: S.String,
-          contextHashes: S.optional(__S(4)),
+          contextHashes: S.optional(CreateBuildInfoContextHashesList),
         }),
       ).annotate({ identifier: "CreateBuildInfo" });
     case 1:
-      return S.Array(__S(1));
+      return S.Array(CreateSandboxRequestSecretsItemMap);
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -1845,8 +2278,8 @@ function __c1(j: number): any {
           name: S.optional(S.String),
           snapshot: S.optional(S.String),
           user: S.optional(S.String),
-          env: S.optional(__S(1)),
-          labels: S.optional(__S(1)),
+          env: S.optional(CreateSandboxRequestEnvMap),
+          labels: S.optional(CreateSandboxRequestLabelsMap),
           public: S.optional(S.Boolean),
           networkBlockAll: S.optional(S.Boolean),
           kvm: S.optional(S.Boolean),
@@ -1857,7 +2290,7 @@ function __c1(j: number): any {
           target: S.optional(S.String),
           cpu: S.optional(S.Number),
           gpu: S.optional(S.Number),
-          gpuType: S.optional(__S(7)),
+          gpuType: S.optional(CreateSandboxRequestGpuTypeList),
           spot: S.optional(S.Boolean),
           memory: S.optional(S.Number),
           disk: S.optional(S.Number),
@@ -1867,10 +2300,10 @@ function __c1(j: number): any {
           autoDeleteInterval: S.optional(S.Number),
           ttlMinutes: S.optional(S.Number),
           queueTimeout: S.optional(S.Number),
-          volumes: S.optional(__S(3)),
-          buildInfo: S.optional(__S(8)),
+          volumes: S.optional(CreateSandboxRequestVolumesList),
+          buildInfo: S.optional(CreateBuildInfo),
           linkedSandbox: S.optional(S.String),
-          secrets: S.optional(__S(9)),
+          secrets: S.optional(CreateSandboxRequestSecretsList),
         }).pipe(T.Http({ method: "POST", uri: "/sandbox", code: 200 })),
       ).annotate({ identifier: "CreateSandboxRequest" });
     case 3:
@@ -1974,7 +2407,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           endpoint: S.String,
-          headers: S.optional(S.NullOr(__S(1))),
+          headers: S.optional(S.NullOr(OtelConfigHeadersMap)),
           organizationId: S.optional(S.String),
         }),
       ).annotate({ identifier: "OtelConfig" });
@@ -2005,14 +2438,14 @@ function __c2(j: number): any {
           scimEnabled: S.Boolean,
           defaultRegionId: S.optional(S.String),
           workosOrgId: S.optional(S.String),
-          directorySyncStatus: S.optional(S.String),
+          directorySyncStatus: S.optional(DirectorySyncStatus),
           directorySyncStatusChangedAt: S.optional(S.String),
           directorySyncTokenRevokedAt: S.optional(S.String),
           authenticatedRateLimit: S.NullOr(S.Number),
           sandboxCreateRateLimit: S.NullOr(S.Number),
           sandboxLifecycleRateLimit: S.NullOr(S.Number),
           experimentalConfig: S.Unknown,
-          otelConfig: S.NullOr(__S(21)),
+          otelConfig: S.NullOr(OtelConfig),
           authenticatedRateLimitTtlSeconds: S.NullOr(S.Number),
           sandboxCreateRateLimitTtlSeconds: S.NullOr(S.Number),
           sandboxLifecycleRateLimitTtlSeconds: S.NullOr(S.Number),
@@ -2058,12 +2491,12 @@ function __c3(j: number): any {
         S.Struct({
           organizationId: S.String,
           regionId: S.String,
-          sandboxClass: S.String,
+          sandboxClass: SandboxClass,
           totalCpuQuota: S.Number,
           totalMemoryQuota: S.Number,
           totalDiskQuota: S.Number,
           totalGpuQuota: S.Number,
-          allowedGpuTypes: S.optional(__S(7)),
+          allowedGpuTypes: S.optional(RegionQuotaAllowedGpuTypesList),
           maxCpuPerSandbox: S.NullOr(S.Number),
           maxMemoryPerSandbox: S.NullOr(S.Number),
           maxDiskPerSandbox: S.NullOr(S.Number),
@@ -2092,9 +2525,11 @@ function __c3(j: number): any {
         identifier: "GetSandboxAncestorsRequest",
       });
     case 5:
-      return S.Array(__S(6));
+      return S.Array(Sandbox2);
     case 6:
-      return S.suspend(() => __S(29).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        GetSandboxAncestorsResponseBodyList.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "GetSandboxAncestorsResponse",
       });
     case 7:
@@ -2120,7 +2555,7 @@ function __c4(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/sandbox/{sandboxIdOrName}/forks", code: 200 })),
       ).annotate({ identifier: "GetSandboxForksRequest" });
     case 1:
-      return S.suspend(() => __S(29).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => GetSandboxForksResponseBodyList.pipe(T.RawResponseRoot())).annotate({
         identifier: "GetSandboxForksResponse",
       });
     case 2:
@@ -2131,7 +2566,7 @@ function __c4(j: number): any {
           to: S.String.pipe(T.Query()),
           page: S.optional(S.Number.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
-          severities: S.optional(__S(4).pipe(T.Query())),
+          severities: S.optional(GetSandboxLogsRequestSeveritiesList.pipe(T.Query())),
           search: S.optional(S.String.pipe(T.Query())),
           xDaytonaOrganizationID: S.optional(S.String.pipe(T.Header("X-Daytona-Organization-ID"))),
         }).pipe(T.Http({ method: "GET", uri: "/sandbox/{sandboxId}/telemetry/logs", code: 200 })),
@@ -2144,18 +2579,18 @@ function __c4(j: number): any {
           severityText: S.String,
           severityNumber: S.optional(S.Number),
           serviceName: S.String,
-          resourceAttributes: __S(1),
-          logAttributes: __S(1),
+          resourceAttributes: LogEntryResourceAttributesMap,
+          logAttributes: LogEntryLogAttributesMap,
           traceId: S.optional(S.String),
           spanId: S.optional(S.String),
         }),
       ).annotate({ identifier: "LogEntry" });
     case 4:
-      return S.Array(__S(35));
+      return S.Array(LogEntry);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          items: __S(36),
+          items: PaginatedLogsItemsList,
           total: S.Number,
           page: S.Number,
           totalPages: S.Number,
@@ -2167,7 +2602,7 @@ function __c4(j: number): any {
           sandboxId: S.String.pipe(T.Label()),
           from: S.String.pipe(T.Query()),
           to: S.String.pipe(T.Query()),
-          metricNames: S.optional(__S(4).pipe(T.Query())),
+          metricNames: S.optional(GetSandboxMetricsRequestMetricNamesList.pipe(T.Query())),
           xDaytonaOrganizationID: S.optional(S.String.pipe(T.Header("X-Daytona-Organization-ID"))),
         }).pipe(
           T.Http({ method: "GET", uri: "/sandbox/{sandboxId}/telemetry/metrics", code: 200 }),
@@ -2185,20 +2620,20 @@ function __c4(j: number): any {
 function __c5(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(39));
+      return S.Array(MetricDataPoint);
     case 1:
       return S.suspend(() =>
         S.Struct({
           metricName: S.String,
-          dataPoints: __S(40),
+          dataPoints: MetricSeriesDataPointsList,
         }),
       ).annotate({ identifier: "MetricSeries" });
     case 2:
-      return S.Array(__S(41));
+      return S.Array(MetricSeries);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          series: __S(42),
+          series: MetricsResponseSeriesList,
         }),
       ).annotate({ identifier: "MetricsResponse" });
     case 4:
@@ -2249,11 +2684,11 @@ function __c6(j: number): any {
         }),
       ).annotate({ identifier: "TraceSummary" });
     case 1:
-      return S.Array(__S(48));
+      return S.Array(TraceSummary);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          items: __S(49),
+          items: PaginatedTracesItemsList,
           total: S.Number,
           page: S.Number,
           totalPages: S.Number,
@@ -2284,15 +2719,17 @@ function __c6(j: number): any {
           spanName: S.String,
           timestamp: S.String,
           durationNs: S.Number,
-          spanAttributes: __S(1),
+          spanAttributes: TraceSpanSpanAttributesMap,
           statusCode: S.optional(S.String),
           statusMessage: S.optional(S.String),
         }),
       ).annotate({ identifier: "TraceSpan" });
     case 5:
-      return S.Array(__S(52));
+      return S.Array(TraceSpan);
     case 6:
-      return S.suspend(() => __S(53).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        GetSandboxTraceSpansResponseBodyList.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "GetSandboxTraceSpansResponse",
       });
     case 7:
@@ -2346,10 +2783,10 @@ function __c7(j: number): any {
           labels: S.optional(S.String.pipe(T.Query())),
           includeErroredDeleted: S.optional(S.Boolean.pipe(T.Query())),
           includeWarm: S.optional(S.Boolean.pipe(T.Query())),
-          states: S.optional(__S(7).pipe(T.Query())),
-          snapshots: S.optional(__S(4).pipe(T.Query())),
-          regionIds: S.optional(__S(4).pipe(T.Query())),
-          sandboxClasses: S.optional(__S(7).pipe(T.Query())),
+          states: S.optional(ListSandboxesRequestStatesList.pipe(T.Query())),
+          snapshots: S.optional(ListSandboxesRequestSnapshotsList.pipe(T.Query())),
+          regionIds: S.optional(ListSandboxesRequestRegionIdsList.pipe(T.Query())),
+          sandboxClasses: S.optional(ListSandboxesRequestSandboxClassesList.pipe(T.Query())),
           minCpu: S.optional(S.Number.pipe(T.Query())),
           maxCpu: S.optional(S.Number.pipe(T.Query())),
           minMemoryGiB: S.optional(S.Number.pipe(T.Query())),
@@ -2366,8 +2803,8 @@ function __c7(j: number): any {
           lastEventBefore: S.optional(S.String.pipe(T.Query())),
           autoDestroyAtAfter: S.optional(S.String.pipe(T.Query())),
           autoDestroyAtBefore: S.optional(S.String.pipe(T.Query())),
-          sort: S.optional(S.String.pipe(T.Query())),
-          order: S.optional(S.String.pipe(T.Query())),
+          sort: S.optional(SandboxListSortField.pipe(T.Query())),
+          order: S.optional(SandboxListSortDirection.pipe(T.Query())),
           xDaytonaOrganizationID: S.optional(S.String.pipe(T.Header("X-Daytona-Organization-ID"))),
         }).pipe(T.Http({ method: "GET", uri: "/sandbox", code: 200 })),
       ).annotate({ identifier: "ListSandboxesRequest" });
@@ -2379,9 +2816,9 @@ function __c7(j: number): any {
           name: S.String,
           target: S.String,
           runnerId: S.optional(S.String),
-          sandboxClass: S.optional(S.String),
-          state: S.optional(S.String),
-          desiredState: S.optional(S.String),
+          sandboxClass: S.optional(SandboxClass),
+          state: S.optional(SandboxState),
+          desiredState: S.optional(SandboxDesiredState),
           snapshot: S.optional(S.String),
           user: S.String,
           errorReason: S.optional(S.String),
@@ -2395,11 +2832,11 @@ function __c7(j: number): any {
           spot: S.optional(S.Boolean),
           spotEvictedAt: S.optional(S.String),
           queueTimedOutAt: S.optional(S.String),
-          gpuType: S.optional(S.String),
+          gpuType: S.optional(GpuType),
           memory: S.Number,
           disk: S.Number,
-          labels: __S(1),
-          backupState: S.optional(S.String),
+          labels: SandboxListItemLabelsMap,
+          backupState: S.optional(SandboxListItemBackupState),
           autoStopInterval: S.optional(S.Number),
           autoPauseInterval: S.optional(S.Number),
           autoArchiveInterval: S.optional(S.Number),
@@ -2415,11 +2852,11 @@ function __c7(j: number): any {
         }),
       ).annotate({ identifier: "SandboxListItem" });
     case 4:
-      return S.Array(__S(59));
+      return S.Array(SandboxListItem);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          items: __S(60),
+          items: ListSandboxesResponseItemsList,
           nextCursor: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "ListSandboxesResponse" });
@@ -2447,13 +2884,13 @@ function __c8(j: number): any {
         S.Struct({
           sandboxIdOrName: S.String.pipe(T.Label()),
           xDaytonaOrganizationID: S.optional(S.String.pipe(T.Header("X-Daytona-Organization-ID"))),
-          labels: __S(1),
+          labels: ReplaceLabelsRequestLabelsMap,
         }).pipe(T.Http({ method: "PUT", uri: "/sandbox/{sandboxIdOrName}/labels", code: 200 })),
       ).annotate({ identifier: "ReplaceLabelsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          labels: __S(1),
+          labels: SandboxLabelsLabelsMap,
         }),
       ).annotate({ identifier: "SandboxLabels" });
     case 2:
@@ -2481,15 +2918,17 @@ function __c8(j: number): any {
           env: S.optional(S.String),
           placeholder: S.optional(S.String),
           value: S.optional(S.String),
-          hosts: S.optional(__S(4)),
+          hosts: S.optional(ResolveSandboxSecrets200ResponseInnerHostsList),
         }),
       ).annotate({
         identifier: "ResolveSandboxSecrets200ResponseInner",
       });
     case 5:
-      return S.Array(__S(68));
+      return S.Array(ResolveSandboxSecrets200ResponseInner);
     case 6:
-      return S.suspend(() => __S(69).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        ResolveSandboxSecretsResponseBodyList.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "ResolveSandboxSecretsResponse",
       });
     case 7:
@@ -2661,7 +3100,7 @@ function __c10(j: number): any {
         S.Struct({
           sandboxIdOrName: S.String.pipe(T.Label()),
           xDaytonaOrganizationID: S.optional(S.String.pipe(T.Header("X-Daytona-Organization-ID"))),
-          secrets: __S(9),
+          secrets: UpdateSandboxSecretsRequestSecretsList,
         }).pipe(T.Http({ method: "PUT", uri: "/sandbox/{sandboxIdOrName}/secrets", code: 200 })),
       ).annotate({
         identifier: "UpdateSandboxSecretsRequest",
@@ -2671,7 +3110,7 @@ function __c10(j: number): any {
         S.Struct({
           sandboxId: S.String.pipe(T.Label()),
           xDaytonaOrganizationID: S.optional(S.String.pipe(T.Header("X-Daytona-Organization-ID"))),
-          state: S.String,
+          state: UpdateSandboxStateRequestState,
           errorReason: S.optional(S.String),
           recoverable: S.optional(S.Boolean),
         }).pipe(T.Http({ method: "PUT", uri: "/sandbox/{sandboxId}/state", code: 200 })),
@@ -2696,38 +3135,5 @@ function __c11(j: number): any {
           sandboxId: S.String,
         }),
       ).annotate({ identifier: "SshAccessValidationDto" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
-    case 9:
-      return __c9(i & 7);
-    case 10:
-      return __c10(i & 7);
-    case 11:
-      return __c11(i & 7);
   }
 }

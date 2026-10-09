@@ -7,8 +7,6 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -71,15 +69,24 @@ export interface AnswerQueryRequest {
   /** Optional. Applies a strict filter to the search results used to ground the answer. The expression supports a subset of the syntax described at https://google.aip.dev/160. Supported fields for filtering: * `content_length_bytes` (INTEGER): The length of the `Document.content` field in bytes. * `data_source` (STRING): The source of the document, e.g. `docs.cloud.google.com`. See https://developers.google.com/knowledge/reference/corpus-reference for the complete list of data sources in the corpus. * `update_time` (TIMESTAMP): The timestamp of when the document was last meaningfully updated. A meaningful update is one that changes document's markdown content or metadata. * `uri` (STRING): The document URI, e.g. `https://docs.cloud.google.com/bigquery/docs/tables`. INTEGER fields support `=`, `<`, `<=`, `>`, and `>=` operators. STRING fields support `=` (equals) and `!=` (not equals) operators for **exact match** on the whole string. Partial match, prefix match, and regexp match are not supported. TIMESTAMP fields support `=`, `<`, `<=`, `>`, and `>=` operators. Timestamps must be in RFC-3339 format, e.g., `"2025-01-01T00:00:00Z"`. You can combine expressions using `AND`, `OR`, and `NOT` (or `-`) logical operators. `OR` has higher precedence than `AND`. Use parentheses for explicit precedence grouping. Examples: * Filter by `Document.content_length_bytes`: `content_length_bytes < 50000` * `data_source = "docs.cloud.google.com" OR data_source = "firebase.google.com"` * `data_source != "firebase.google.com"` * `update_time < "2024-01-01T00:00:00Z"` * `update_time >= "2025-01-22T00:00:00Z" AND (data_source = "developer.chrome.com" OR data_source = "web.dev")` * `uri = "https://docs.cloud.google.com/release-notes"` The `filter` string must not exceed 500 characters; values longer than 500 characters will result in an `INVALID_ARGUMENT` error. */
   filter?: string;
 }
+const AnswerQueryRequest = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<AnswerQueryRequest>;
+
 export interface AnswerQueryV1alphaRequest {
   /** Request body */
   body?: AnswerQueryRequest;
 }
+const AnswerQueryV1alphaRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<AnswerQueryV1alphaRequest>;
+
 export type DocumentViewEnum =
   | "DOCUMENT_VIEW_UNSPECIFIED"
   | "DOCUMENT_VIEW_BASIC"
   | "DOCUMENT_VIEW_FULL"
   | "DOCUMENT_VIEW_CONTENT";
+const DocumentViewEnum = S.String;
+
 /** A Document represents a page of documentation in the Developer Knowledge corpus, like the page at https://docs.cloud.google.com/storage/docs/creating-buckets. */
 export interface Document {
   /** Output only. Provides the URI of the content, such as `https://docs.cloud.google.com/storage/docs/creating-buckets`. */
@@ -101,6 +108,8 @@ export interface Document {
   /** Output only. Specifies the DocumentView of the document. */
   view?: DocumentViewEnum;
 }
+const Document = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<Document>;
+
 /** A DocumentChunk represents a piece of content from a Document in the DeveloperKnowledge corpus. To fetch the entire document content, pass the `parent` to DeveloperKnowledge.GetDocument or DeveloperKnowledge.BatchGetDocuments. */
 export interface DocumentChunk {
   /** Output only. Specifies the ID of this chunk within the document. The chunk ID is unique within a document, but not globally unique across documents. The chunk ID is not stable and may change over time. */
@@ -114,23 +123,35 @@ export interface DocumentChunk {
   /** Output only. Represents the relevance score of the chunk to the search query. Higher score indicates higher chunk relevance. The score is in range [0.0, 1.0]. */
   relevanceScore?: number;
 }
+const DocumentChunk = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<DocumentChunk>;
+
 /** Represents a reference to a document. */
 export interface DocumentReference {
   /** Output only. Contains the document chunk. The `document_chunk.id` field is not set and will be empty. */
   documentChunk?: DocumentChunk;
 }
+const DocumentReference = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<DocumentReference>;
+
 /** Represents a reference to a source. */
 export interface AnswerReference {
   /** Output only. The reference document. */
   documentReference?: DocumentReference;
 }
+const AnswerReference = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<AnswerReference>;
+
 export type AnswerReferenceList = Array<AnswerReference>;
+const AnswerReferenceList = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<AnswerReferenceList>;
+
 /** Citation source. */
 export interface CitationSource {
   /** Output only. Contains the index of the Answer.AnswerReference in the `references` repeated field. */
   referenceIndex?: number;
 }
+const CitationSource = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<CitationSource>;
+
 export type CitationSourceList = Array<CitationSource>;
+const CitationSourceList = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<CitationSourceList>;
+
 /** Citation info for a segment. */
 export interface AnswerCitation {
   /** Output only. Indicates the end of the segment, measured in bytes (UTF-8 unicode), exclusive. If there are multi-byte characters, such as non-ASCII characters, the index measurement is longer than the string length. */
@@ -140,7 +161,11 @@ export interface AnswerCitation {
   /** Output only. Contains citation sources for the attributed segment. */
   sources?: CitationSourceList;
 }
+const AnswerCitation = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<AnswerCitation>;
+
 export type AnswerCitationList = Array<AnswerCitation>;
+const AnswerCitationList = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<AnswerCitationList>;
+
 /** An answer to a query. */
 export interface Answer {
   /** Output only. Contains references for the answer. */
@@ -150,40 +175,64 @@ export interface Answer {
   /** Output only. Contains citations for the answer. */
   citations?: AnswerCitationList;
 }
+const Answer = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<Answer>;
+
 /** Response message for DeveloperKnowledge.AnswerQuery. */
 export interface AnswerQueryResponse {
   /** The answer to the query. */
   answer?: Answer;
 }
+const AnswerQueryResponse = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<AnswerQueryResponse>;
+
 export type BatchGetDocumentsViewEnum =
   | "DOCUMENT_VIEW_UNSPECIFIED"
   | "DOCUMENT_VIEW_BASIC"
   | "DOCUMENT_VIEW_FULL"
   | "DOCUMENT_VIEW_CONTENT";
+const BatchGetDocumentsViewEnum = S.String;
+
 export type StringList = Array<string>;
+const StringList = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<StringList>;
+
 export interface BatchGetDocumentsRequest {
   /** Optional. Specifies the DocumentView of the document. If unspecified, DeveloperKnowledge.BatchGetDocuments defaults to `DOCUMENT_VIEW_CONTENT`. */
   view?: BatchGetDocumentsViewEnum | (string & {});
   /** Required. Specifies the names of the documents to retrieve. A maximum of 20 documents can be retrieved in a batch. The documents are returned in the same order as the `names` in the request. Format: `documents/{uri_without_scheme}` Example: `documents/docs.cloud.google.com/storage/docs/creating-buckets` Each name must not exceed 500 characters; values longer than 500 characters will result in an `INVALID_ARGUMENT` error. */
   names?: StringList;
 }
+const BatchGetDocumentsRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<BatchGetDocumentsRequest>;
+
 export type DocumentList = Array<Document>;
+const DocumentList = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<DocumentList>;
+
 /** Response message for DeveloperKnowledge.BatchGetDocuments. */
 export interface BatchGetDocumentsResponse {
   /** Contains the documents requested. */
   documents?: DocumentList;
 }
+const BatchGetDocumentsResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<BatchGetDocumentsResponse>;
+
 export type GetDocumentsViewEnum =
   | "DOCUMENT_VIEW_UNSPECIFIED"
   | "DOCUMENT_VIEW_BASIC"
   | "DOCUMENT_VIEW_FULL"
   | "DOCUMENT_VIEW_CONTENT";
+const GetDocumentsViewEnum = S.String;
+
 export interface GetDocumentsRequest {
   /** Required. Specifies the name of the document to retrieve. Format: `documents/{uri_without_scheme}` Example: `documents/docs.cloud.google.com/storage/docs/creating-buckets` The name must not exceed 500 characters; values longer than 500 characters will result in an `INVALID_ARGUMENT` error. */
   name: string;
   /** Optional. Specifies the DocumentView of the document. If unspecified, DeveloperKnowledge.GetDocument defaults to `DOCUMENT_VIEW_CONTENT`. */
   view?: GetDocumentsViewEnum | (string & {});
 }
+const GetDocumentsRequest = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<GetDocumentsRequest>;
+
 export interface SearchDocumentChunksDocumentsRequest {
   /** Optional. Specifies the maximum number of results to return. The service may return fewer than this value. If unspecified, at most 5 results will be returned. The maximum value is 100; values above 100 will be coerced to 100. */
   pageSize?: number;
@@ -194,7 +243,14 @@ export interface SearchDocumentChunksDocumentsRequest {
   /** Optional. Contains a page token, received from a previous `SearchDocumentChunks` call. Provide this to retrieve the subsequent page. */
   pageToken?: string;
 }
+const SearchDocumentChunksDocumentsRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<SearchDocumentChunksDocumentsRequest>;
+
 export type DocumentChunkList = Array<DocumentChunk>;
+const DocumentChunkList = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<DocumentChunkList>;
+
 /** Response message for DeveloperKnowledge.SearchDocumentChunks. */
 export interface SearchDocumentChunksResponse {
   /** Contains the search results for the given query. Each DocumentChunk in this list contains a snippet of content relevant to the search query. Use the DocumentChunk.parent field of each result with DeveloperKnowledge.GetDocument or DeveloperKnowledge.BatchGetDocuments to retrieve the full document content. */
@@ -202,6 +258,11 @@ export interface SearchDocumentChunksResponse {
   /** Provides a token that can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
+const SearchDocumentChunksResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<SearchDocumentChunksResponse>;
+
 export type AnswerQueryV1alphaError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Answers a query using grounded generation. */
 export const answerQueryV1alpha: API.OperationMethod<
@@ -210,8 +271,8 @@ export const answerQueryV1alpha: API.OperationMethod<
   AnswerQueryV1alphaError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1) as any as S.Schema<AnswerQueryV1alphaRequest>,
-  output: __S(12) as any as S.Schema<AnswerQueryResponse>,
+  input: AnswerQueryV1alphaRequest,
+  output: AnswerQueryResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -225,8 +286,8 @@ export const batchGetDocuments: API.OperationMethod<
   BatchGetDocumentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14) as any as S.Schema<BatchGetDocumentsRequest>,
-  output: __S(16) as any as S.Schema<BatchGetDocumentsResponse>,
+  input: BatchGetDocumentsRequest,
+  output: BatchGetDocumentsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -240,8 +301,8 @@ export const getDocuments: API.OperationMethod<
   GetDocumentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17) as any as S.Schema<GetDocumentsRequest>,
-  output: __S(2) as any as S.Schema<Document>,
+  input: GetDocumentsRequest,
+  output: Document,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -256,8 +317,8 @@ export const searchDocumentChunksDocuments: API.PaginatedOperationMethod<
   GcpOpContext,
   SearchDocumentChunksResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(18) as any as S.Schema<SearchDocumentChunksDocumentsRequest>,
-  output: __S(20) as any as S.Schema<SearchDocumentChunksResponse>,
+  input: SearchDocumentChunksDocumentsRequest,
+  output: SearchDocumentChunksResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -277,7 +338,7 @@ function __c0(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(__S(0).pipe(T.HttpBody())),
+          body: S.optional(AnswerQueryRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -299,7 +360,7 @@ function __c0(j: number): any {
           description: S.optional(S.String),
           updateTime: S.optional(S.String),
           name: S.optional(S.String),
-          view: S.optional(S.String),
+          view: S.optional(DocumentViewEnum),
         }),
       ).annotate({ identifier: "Document" });
     case 3:
@@ -308,24 +369,24 @@ function __c0(j: number): any {
           id: S.optional(S.String),
           parent: S.optional(S.String),
           content: S.optional(S.String),
-          document: S.optional(__S(2)),
+          document: S.optional(Document),
           relevanceScore: S.optional(S.Number),
         }),
       ).annotate({ identifier: "DocumentChunk" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          documentChunk: S.optional(__S(3)),
+          documentChunk: S.optional(DocumentChunk),
         }),
       ).annotate({ identifier: "DocumentReference" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          documentReference: S.optional(__S(4)),
+          documentReference: S.optional(DocumentReference),
         }),
       ).annotate({ identifier: "AnswerReference" });
     case 6:
-      return S.Array(__S(5));
+      return S.Array(AnswerReference);
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -337,29 +398,29 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(7));
+      return S.Array(CitationSource);
     case 1:
       return S.suspend(() =>
         S.Struct({
           endIndex: S.optional(S.Number),
           startIndex: S.optional(S.Number),
-          sources: S.optional(__S(8)),
+          sources: S.optional(CitationSourceList),
         }),
       ).annotate({ identifier: "AnswerCitation" });
     case 2:
-      return S.Array(__S(9));
+      return S.Array(AnswerCitation);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          references: S.optional(__S(6)),
+          references: S.optional(AnswerReferenceList),
           answerText: S.optional(S.String),
-          citations: S.optional(__S(10)),
+          citations: S.optional(AnswerCitationList),
         }),
       ).annotate({ identifier: "Answer" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          answer: S.optional(__S(11)),
+          answer: S.optional(Answer),
         }),
       ).annotate({ identifier: "AnswerQueryResponse" });
     case 5:
@@ -367,8 +428,8 @@ function __c1(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          view: S.optional(S.String.pipe(T.Query())),
-          names: S.optional(__S(13).pipe(T.Query())),
+          view: S.optional(BatchGetDocumentsViewEnum.pipe(T.Query())),
+          names: S.optional(StringList.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -378,7 +439,7 @@ function __c1(j: number): any {
         ),
       ).annotate({ identifier: "BatchGetDocumentsRequest" });
     case 7:
-      return S.Array(__S(2));
+      return S.Array(Document);
   }
 }
 function __c2(j: number): any {
@@ -386,7 +447,7 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          documents: S.optional(__S(15)),
+          documents: S.optional(DocumentList),
         }),
       ).annotate({
         identifier: "BatchGetDocumentsResponse",
@@ -395,7 +456,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          view: S.optional(S.String.pipe(T.Query())),
+          view: S.optional(GetDocumentsViewEnum.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -422,30 +483,15 @@ function __c2(j: number): any {
         identifier: "SearchDocumentChunksDocumentsRequest",
       });
     case 3:
-      return S.Array(__S(3));
+      return S.Array(DocumentChunk);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          results: S.optional(__S(19)),
+          results: S.optional(DocumentChunkList),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "SearchDocumentChunksResponse",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
   }
 }

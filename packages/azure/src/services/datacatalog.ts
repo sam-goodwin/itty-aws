@@ -6,15 +6,20 @@ import { UnknownAzureError } from "../errors.ts";
 import { AzureProtocol, type AzureOpError, type AzureOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { AzureOpError, AzureOpContext };
 
 /** Resource tags */
 export type ADCCatalogsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
+const ADCCatalogsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<ADCCatalogsCreateOrUpdateRequestTagsMap>;
+
 /** Azure data catalog SKU. */
 export type ADCCatalogPropertiesSku = "Free" | "Standard";
+const ADCCatalogPropertiesSku = S.String;
+
 /** User principals. */
 export interface Principals {
   /** UPN of the user. */
@@ -22,10 +27,20 @@ export interface Principals {
   /** Object Id for the user */
   objectId?: string;
 }
+const Principals = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<Principals>;
+
 /** Azure data catalog admin list. */
 export type ADCCatalogPropertiesAdminsList = Array<Principals>;
+const ADCCatalogPropertiesAdminsList = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<ADCCatalogPropertiesAdminsList>;
+
 /** Azure data catalog user list. */
 export type ADCCatalogPropertiesUsersList = Array<Principals>;
+const ADCCatalogPropertiesUsersList =
+  ADCCatalogPropertiesAdminsList as any as S.Schema<ADCCatalogPropertiesUsersList>;
+
 /** Properties of the data catalog. */
 export interface ADCCatalogProperties {
   /** Azure data catalog SKU. */
@@ -41,6 +56,8 @@ export interface ADCCatalogProperties {
   /** Automatic unit adjustment enabled or not. */
   enableAutomaticUnitAdjustment?: boolean;
 }
+const ADCCatalogProperties = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<ADCCatalogProperties>;
+
 export interface ADCCatalogsCreateOrUpdateRequest {
   /** Gets subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -57,8 +74,16 @@ export interface ADCCatalogsCreateOrUpdateRequest {
   /** Azure Data Catalog properties. */
   properties?: ADCCatalogProperties;
 }
+const ADCCatalogsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<ADCCatalogsCreateOrUpdateRequest>;
+
 /** Resource tags */
 export type ADCCatalogsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
+const ADCCatalogsCreateOrUpdateResponseTagsMap =
+  ADCCatalogsCreateOrUpdateRequestTagsMap as any as S.Schema<ADCCatalogsCreateOrUpdateResponseTagsMap>;
+
 export interface ADCCatalogsCreateOrUpdateResponse {
   /** Resource Id */
   id?: string;
@@ -75,14 +100,27 @@ export interface ADCCatalogsCreateOrUpdateResponse {
   /** Azure Data Catalog properties. */
   properties?: ADCCatalogProperties;
 }
+const ADCCatalogsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<ADCCatalogsCreateOrUpdateResponse>;
+
 export interface ADCCatalogsListtByResourceGroupRequest {
   /** Gets subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
   /** The name of the resource group within the user's subscription. The name is case insensitive. */
   resourceGroupName: string;
 }
+const ADCCatalogsListtByResourceGroupRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<ADCCatalogsListtByResourceGroupRequest>;
+
 /** Resource tags */
 export type ADCCatalogTagsMap = { [key: string]: string | undefined };
+const ADCCatalogTagsMap =
+  ADCCatalogsCreateOrUpdateRequestTagsMap as any as S.Schema<ADCCatalogTagsMap>;
+
 /** Azure Data Catalog. */
 export interface ADCCatalog {
   /** Resource Id */
@@ -100,13 +138,25 @@ export interface ADCCatalog {
   /** Azure Data Catalog properties. */
   properties?: ADCCatalogProperties;
 }
+const ADCCatalog = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<ADCCatalog>;
+
 /** the list of Azure Data Catalogs. */
 export type ADCCatalogsListResultValueList = Array<ADCCatalog>;
+const ADCCatalogsListResultValueList = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<ADCCatalogsListResultValueList>;
+
 /** The response from the List Azure Data Catalog operation. */
 export interface ADCCatalogsListResult {
   /** the list of Azure Data Catalogs. */
   value?: ADCCatalogsListResultValueList;
 }
+const ADCCatalogsListResult = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<ADCCatalogsListResult>;
+
 export interface DeleteADCCatalogRequest {
   /** Gets subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -115,7 +165,17 @@ export interface DeleteADCCatalogRequest {
   /** The name of the data catalog in the specified subscription and resource group. */
   catalogName: string;
 }
+const DeleteADCCatalogRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<DeleteADCCatalogRequest>;
+
 export interface DeleteADCCatalogResponse {}
+const DeleteADCCatalogResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<DeleteADCCatalogResponse>;
+
 export interface GetADCCatalogRequest {
   /** Gets subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -124,6 +184,8 @@ export interface GetADCCatalogRequest {
   /** The name of the data catalog in the specified subscription and resource group. */
   catalogName: string;
 }
+const GetADCCatalogRequest = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<GetADCCatalogRequest>;
+
 /** Resource tags */
 export type GetADCCatalogResponseTagsMap = { [key: string]: string | undefined };
 export interface GetADCCatalogResponse {
@@ -142,7 +204,14 @@ export interface GetADCCatalogResponse {
   /** Azure Data Catalog properties. */
   properties?: ADCCatalogProperties;
 }
+const GetADCCatalogResponse = ADCCatalog as any as S.Schema<GetADCCatalogResponse>;
+
 export interface ListADCOperationsRequest {}
+const ListADCOperationsRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<ListADCOperationsRequest>;
+
 /** The operation supported by Azure Data Catalog Service. */
 export interface OperationDisplayInfo {
   /** The description of the operation. */
@@ -154,6 +223,8 @@ export interface OperationDisplayInfo {
   /** Resource on which the operation is performed. */
   resource?: string;
 }
+const OperationDisplayInfo = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<OperationDisplayInfo>;
+
 /** The operation supported by Azure Data Catalog Service. */
 export interface OperationEntity {
   /** Operation name: {provider}/{resource}/{operation}. */
@@ -161,15 +232,30 @@ export interface OperationEntity {
   /** The operation supported by Azure Data Catalog Service. */
   display?: OperationDisplayInfo;
 }
+const OperationEntity = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<OperationEntity>;
+
 /** The list of operations. */
 export type OperationEntityListResultValueList = Array<OperationEntity>;
+const OperationEntityListResultValueList = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<OperationEntityListResultValueList>;
+
 /** The list of Azure data catalog service operation response. */
 export interface OperationEntityListResult {
   /** The list of operations. */
   value?: OperationEntityListResultValueList;
 }
+const OperationEntityListResult = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<OperationEntityListResult>;
+
 /** Resource tags */
 export type UpdateADCCatalogRequestTagsMap = { [key: string]: string | undefined };
+const UpdateADCCatalogRequestTagsMap =
+  ADCCatalogsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateADCCatalogRequestTagsMap>;
+
 export interface UpdateADCCatalogRequest {
   /** Gets subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -186,6 +272,11 @@ export interface UpdateADCCatalogRequest {
   /** Azure Data Catalog properties. */
   properties?: ADCCatalogProperties;
 }
+const UpdateADCCatalogRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<UpdateADCCatalogRequest>;
+
 /** Resource tags */
 export type UpdateADCCatalogResponseTagsMap = { [key: string]: string | undefined };
 export interface UpdateADCCatalogResponse {
@@ -204,6 +295,8 @@ export interface UpdateADCCatalogResponse {
   /** Azure Data Catalog properties. */
   properties?: ADCCatalogProperties;
 }
+const UpdateADCCatalogResponse = ADCCatalog as any as S.Schema<UpdateADCCatalogResponse>;
+
 export type ADCCatalogsCreateOrUpdateError = AzureOpError;
 /** Create or Update Azure Data Catalog service (PUT Resource) The Create Azure Data Catalog service operation creates a new data catalog service with the specified parameters. If the specific service already exists, then any patchable properties will be updated and any immutable properties will remain unchanged. */
 export const ADCCatalogsCreateOrUpdate: API.OperationMethod<
@@ -212,8 +305,8 @@ export const ADCCatalogsCreateOrUpdate: API.OperationMethod<
   ADCCatalogsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4) as any as S.Schema<ADCCatalogsCreateOrUpdateRequest>,
-  output: __S(5) as any as S.Schema<ADCCatalogsCreateOrUpdateResponse>,
+  input: ADCCatalogsCreateOrUpdateRequest,
+  output: ADCCatalogsCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -227,8 +320,8 @@ export const ADCCatalogsListtByResourceGroup: API.OperationMethod<
   ADCCatalogsListtByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6) as any as S.Schema<ADCCatalogsListtByResourceGroupRequest>,
-  output: __S(9) as any as S.Schema<ADCCatalogsListResult>,
+  input: ADCCatalogsListtByResourceGroupRequest,
+  output: ADCCatalogsListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -242,8 +335,8 @@ export const DeleteADCCatalog: API.OperationMethod<
   DeleteADCCatalogError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10) as any as S.Schema<DeleteADCCatalogRequest>,
-  output: __S(11) as any as S.Schema<DeleteADCCatalogResponse>,
+  input: DeleteADCCatalogRequest,
+  output: DeleteADCCatalogResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -257,8 +350,8 @@ export const GetADCCatalog: API.OperationMethod<
   GetADCCatalogError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12) as any as S.Schema<GetADCCatalogRequest>,
-  output: __S(7) as any as S.Schema<GetADCCatalogResponse>,
+  input: GetADCCatalogRequest,
+  output: GetADCCatalogResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -272,8 +365,8 @@ export const ListADCOperations: API.OperationMethod<
   ListADCOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13) as any as S.Schema<ListADCOperationsRequest>,
-  output: __S(17) as any as S.Schema<OperationEntityListResult>,
+  input: ListADCOperationsRequest,
+  output: OperationEntityListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -287,8 +380,8 @@ export const UpdateADCCatalog: API.OperationMethod<
   UpdateADCCatalogError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18) as any as S.Schema<UpdateADCCatalogRequest>,
-  output: __S(7) as any as S.Schema<UpdateADCCatalogResponse>,
+  input: UpdateADCCatalogRequest,
+  output: UpdateADCCatalogResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -307,14 +400,14 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "Principals" });
     case 2:
-      return S.Array(__S(1));
+      return S.Array(Principals);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          sku: S.optional(S.String),
+          sku: S.optional(ADCCatalogPropertiesSku),
           units: S.optional(S.Number),
-          admins: S.optional(__S(2)),
-          users: S.optional(__S(2)),
+          admins: S.optional(ADCCatalogPropertiesAdminsList),
+          users: S.optional(ADCCatalogPropertiesUsersList),
           successfullyProvisioned: S.optional(S.Boolean),
           enableAutomaticUnitAdjustment: S.optional(S.Boolean),
         }),
@@ -326,9 +419,9 @@ function __c0(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           catalogName: S.String.pipe(T.Label()),
           location: S.optional(S.String),
-          tags: S.optional(__S(0)),
+          tags: S.optional(ADCCatalogsCreateOrUpdateRequestTagsMap),
           etag: S.optional(S.String),
-          properties: S.optional(__S(3)),
+          properties: S.optional(ADCCatalogProperties),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -347,9 +440,9 @@ function __c0(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           location: S.optional(S.String),
-          tags: S.optional(__S(0)),
+          tags: S.optional(ADCCatalogsCreateOrUpdateResponseTagsMap),
           etag: S.optional(S.String),
-          properties: S.optional(__S(3)),
+          properties: S.optional(ADCCatalogProperties),
         }),
       ).annotate({
         identifier: "ADCCatalogsCreateOrUpdateResponse",
@@ -377,9 +470,9 @@ function __c0(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           location: S.optional(S.String),
-          tags: S.optional(__S(0)),
+          tags: S.optional(ADCCatalogTagsMap),
           etag: S.optional(S.String),
-          properties: S.optional(__S(3)),
+          properties: S.optional(ADCCatalogProperties),
         }),
       ).annotate({ identifier: "ADCCatalog" });
   }
@@ -387,11 +480,11 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(7));
+      return S.Array(ADCCatalog);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(8)),
+          value: S.optional(ADCCatalogsListResultValueList),
         }),
       ).annotate({ identifier: "ADCCatalogsListResult" });
     case 2:
@@ -452,7 +545,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          display: S.optional(__S(14)),
+          display: S.optional(OperationDisplayInfo),
         }),
       ).annotate({ identifier: "OperationEntity" });
   }
@@ -460,11 +553,11 @@ function __c1(j: number): any {
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(15));
+      return S.Array(OperationEntity);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(16)),
+          value: S.optional(OperationEntityListResultValueList),
         }),
       ).annotate({
         identifier: "OperationEntityListResult",
@@ -476,9 +569,9 @@ function __c2(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           catalogName: S.String.pipe(T.Label()),
           location: S.optional(S.String),
-          tags: S.optional(__S(0)),
+          tags: S.optional(UpdateADCCatalogRequestTagsMap),
           etag: S.optional(S.String),
-          properties: S.optional(__S(3)),
+          properties: S.optional(ADCCatalogProperties),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -488,20 +581,5 @@ function __c2(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateADCCatalogRequest" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
   }
 }

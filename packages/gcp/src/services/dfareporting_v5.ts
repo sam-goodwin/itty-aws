@@ -7,8 +7,6 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -79,6 +77,8 @@ export class NotFound
   ) {}
 
 export type StringList = Array<string>;
+const StringList = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<StringList>;
+
 /** Contains data of the items purchased. */
 export interface CartDataItem {
   /** The shopping id of the item. Must be equal to the Merchant Center product identifier. This is a required field. */
@@ -88,7 +88,11 @@ export interface CartDataItem {
   /** Number of items sold. This is a required field. */
   quantity?: number;
 }
+const CartDataItem = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<CartDataItem>;
+
 export type CartDataItemList = Array<CartDataItem>;
+const CartDataItemList = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<CartDataItemList>;
+
 /** Contains additional information about cart data. This field may only be used when calling batchinsert; it is not supported by batchupdate. Cart data reporting is only supported in SA360. [Learn more](https://support.google.com/sa360/topic/13425788) */
 export interface CartData {
   /** The feed labels associated with the feed where your items are uploaded. For more information, please refer to  https://support.google.com/merchants/answer/12453549. Providing the feed label reduces ambiguity in identifying the right offer details. */
@@ -100,6 +104,8 @@ export interface CartData {
   /** Data of the items purchased. */
   items?: CartDataItemList;
 }
+const CartData = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<CartData>;
+
 /** Identify a user by name and address. */
 export interface OfflineUserAddressInfo {
   /** City of the address. */
@@ -117,6 +123,11 @@ export interface OfflineUserAddressInfo {
   /** 2-letter country code in ISO-3166-1 alpha-2 of the user's address. */
   countryCode?: string;
 }
+const OfflineUserAddressInfo = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<OfflineUserAddressInfo>;
+
 /** User identifying information. Exactly one type of identifier must be specified. */
 export interface UserIdentifier {
   /** Address information. */
@@ -126,7 +137,11 @@ export interface UserIdentifier {
   /** Hashed email address using SHA-256 hash function after normalization. */
   hashedEmail?: string;
 }
+const UserIdentifier = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<UserIdentifier>;
+
 export type UserIdentifierList = Array<UserIdentifier>;
+const UserIdentifierList = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<UserIdentifierList>;
+
 export type CustomFloodlightVariableTypeEnum =
   | "U1"
   | "U2"
@@ -228,6 +243,8 @@ export type CustomFloodlightVariableTypeEnum =
   | "U98"
   | "U99"
   | "U100";
+const CustomFloodlightVariableTypeEnum = S.String;
+
 /** A custom floodlight variable. Can be used in both batchinsert and batchupdate. Adding this in batchupdate will update or append the variable to the existing list. */
 export interface CustomFloodlightVariable {
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#customFloodlightVariable". */
@@ -237,8 +254,20 @@ export interface CustomFloodlightVariable {
   /** The value of the custom floodlight variable. The length of string must not exceed 100 characters. */
   value?: string;
 }
+const CustomFloodlightVariable = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<CustomFloodlightVariable>;
+
 export type CustomFloodlightVariableList = Array<CustomFloodlightVariable>;
+const CustomFloodlightVariableList = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<CustomFloodlightVariableList>;
+
 export type ConversionAdUserDataConsentEnum = "GRANTED" | "DENIED";
+const ConversionAdUserDataConsentEnum = S.String;
+
 /** A Conversion represents when a user successfully performs a desired action after seeing an ad. */
 export interface Conversion {
   /** Whether Limit Ad Tracking is enabled. When set to true, the conversion will be used for reporting but not targeting. This will prevent remarketing. */
@@ -288,11 +317,17 @@ export interface Conversion {
   /** The impression ID. This field is mutually exclusive with encryptedUserId, encryptedUserIdCandidates[], matchId, mobileDeviceId, and gclid. One of these identifiers must be set. */
   impressionId?: string;
 }
+const Conversion = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<Conversion>;
+
 export type ConversionList = Array<Conversion>;
+const ConversionList = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<ConversionList>;
+
 export type EncryptionInfoEncryptionSourceEnum =
   | "ENCRYPTION_SCOPE_UNKNOWN"
   | "AD_SERVING"
   | "DATA_TRANSFER";
+const EncryptionInfoEncryptionSourceEnum = S.String;
+
 export type EncryptionInfoEncryptionEntityTypeEnum =
   | "ENCRYPTION_ENTITY_TYPE_UNKNOWN"
   | "DCM_ACCOUNT"
@@ -301,6 +336,8 @@ export type EncryptionInfoEncryptionEntityTypeEnum =
   | "DBM_ADVERTISER"
   | "ADWORDS_CUSTOMER"
   | "DFP_NETWORK_CODE";
+const EncryptionInfoEncryptionEntityTypeEnum = S.String;
+
 /** A description of how user IDs are encrypted. */
 export interface EncryptionInfo {
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#encryptionInfo". */
@@ -312,6 +349,8 @@ export interface EncryptionInfo {
   /** The encryption entity type. This should match the encryption configuration for ad serving or Data Transfer. */
   encryptionEntityType?: EncryptionInfoEncryptionEntityTypeEnum | (string & {});
 }
+const EncryptionInfo = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<EncryptionInfo>;
+
 /** Insert Conversions Request. */
 export interface ConversionsBatchInsertRequest {
   /** The set of conversions to insert. */
@@ -321,17 +360,29 @@ export interface ConversionsBatchInsertRequest {
   /** Describes how encryptedUserId or encryptedUserIdCandidates[] is encrypted. This is a required field if encryptedUserId or encryptedUserIdCandidates[] is used. */
   encryptionInfo?: EncryptionInfo;
 }
+const ConversionsBatchInsertRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<ConversionsBatchInsertRequest>;
+
 export interface BatchinsertConversionsRequest {
   /** User profile ID associated with this request. */
   profileId: string;
   /** Request body */
   body?: ConversionsBatchInsertRequest;
 }
+const BatchinsertConversionsRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<BatchinsertConversionsRequest>;
+
 export type ConversionErrorCodeEnum =
   | "INVALID_ARGUMENT"
   | "INTERNAL"
   | "PERMISSION_DENIED"
   | "NOT_FOUND";
+const ConversionErrorCodeEnum = S.String;
+
 /** The error code and description for a conversion that failed to insert or update. */
 export interface ConversionError {
   /** The error code. */
@@ -341,7 +392,11 @@ export interface ConversionError {
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#conversionError". */
   kind?: string;
 }
+const ConversionError = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<ConversionError>;
+
 export type ConversionErrorList = Array<ConversionError>;
+const ConversionErrorList = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<ConversionErrorList>;
+
 /** The original conversion that was inserted or updated and whether there were any errors. */
 export interface ConversionStatus {
   /** The original conversion that was inserted or updated. */
@@ -351,7 +406,11 @@ export interface ConversionStatus {
   /** A list of errors related to this conversion. */
   errors?: ConversionErrorList;
 }
+const ConversionStatus = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<ConversionStatus>;
+
 export type ConversionStatusList = Array<ConversionStatus>;
+const ConversionStatusList = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<ConversionStatusList>;
+
 /** Insert Conversions Response. */
 export interface ConversionsBatchInsertResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#conversionsBatchInsertResponse". */
@@ -361,6 +420,11 @@ export interface ConversionsBatchInsertResponse {
   /** The insert status of each conversion. Statuses are returned in the same order that conversions are inserted. */
   status?: ConversionStatusList;
 }
+const ConversionsBatchInsertResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<ConversionsBatchInsertResponse>;
+
 /** Update Conversions Request. */
 export interface ConversionsBatchUpdateRequest {
   /** The set of conversions to update. */
@@ -370,12 +434,20 @@ export interface ConversionsBatchUpdateRequest {
   /** Describes how encryptedUserId is encrypted. This is a required field if encryptedUserId is used. */
   encryptionInfo?: EncryptionInfo;
 }
+const ConversionsBatchUpdateRequest =
+  ConversionsBatchInsertRequest as any as S.Schema<ConversionsBatchUpdateRequest>;
+
 export interface BatchupdateConversionsRequest {
   /** User profile ID associated with this request. */
   profileId: string;
   /** Request body */
   body?: ConversionsBatchUpdateRequest;
 }
+const BatchupdateConversionsRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<BatchupdateConversionsRequest>;
+
 /** Update Conversions Response. */
 export interface ConversionsBatchUpdateResponse {
   /** Indicates that some or all conversions failed to update. */
@@ -385,27 +457,60 @@ export interface ConversionsBatchUpdateResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#conversionsBatchUpdateResponse". */
   kind?: string;
 }
+const ConversionsBatchUpdateResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<ConversionsBatchUpdateResponse>;
+
 export interface DeleteAdvertiserGroupsRequest {
   /** User profile ID associated with this request. */
   profileId: string;
   /** Advertiser group ID. */
   id: string;
 }
+const DeleteAdvertiserGroupsRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<DeleteAdvertiserGroupsRequest>;
+
 export interface DeleteAdvertiserGroupsResponse {}
+const DeleteAdvertiserGroupsResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<DeleteAdvertiserGroupsResponse>;
+
 export interface DeleteContentCategoriesRequest {
   /** Content category ID. */
   id: string;
   /** User profile ID associated with this request. */
   profileId: string;
 }
+const DeleteContentCategoriesRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<DeleteContentCategoriesRequest>;
+
 export interface DeleteContentCategoriesResponse {}
+const DeleteContentCategoriesResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<DeleteContentCategoriesResponse>;
+
 export interface DeleteCreativeFieldsRequest {
   /** Creative Field ID */
   id: string;
   /** User profile ID associated with this request. */
   profileId: string;
 }
+const DeleteCreativeFieldsRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<DeleteCreativeFieldsRequest>;
+
 export interface DeleteCreativeFieldsResponse {}
+const DeleteCreativeFieldsResponse =
+  DeleteAdvertiserGroupsResponse as any as S.Schema<DeleteCreativeFieldsResponse>;
+
 export interface DeleteCreativeFieldValuesRequest {
   /** User profile ID associated with this request. */
   profileId: string;
@@ -414,12 +519,24 @@ export interface DeleteCreativeFieldValuesRequest {
   /** Creative field ID for this creative field value. */
   creativeFieldId: string;
 }
+const DeleteCreativeFieldValuesRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<DeleteCreativeFieldValuesRequest>;
+
 export interface DeleteCreativeFieldValuesResponse {}
+const DeleteCreativeFieldValuesResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<DeleteCreativeFieldValuesResponse>;
+
 export type DeleteDynamicTargetingKeysObjectTypeEnum =
   | "OBJECT_ADVERTISER"
   | "OBJECT_AD"
   | "OBJECT_CREATIVE"
   | "OBJECT_PLACEMENT";
+const DeleteDynamicTargetingKeysObjectTypeEnum = S.String;
+
 export interface DeleteDynamicTargetingKeysRequest {
   /** Required. Type of the object of this dynamic targeting key. This is a required field. */
   objectType: DeleteDynamicTargetingKeysObjectTypeEnum | (string & {});
@@ -430,57 +547,117 @@ export interface DeleteDynamicTargetingKeysRequest {
   /** Required. Name of this dynamic targeting key. This is a required field. Must be less than 256 characters long and cannot contain commas. All characters are converted to lowercase. */
   name: string;
 }
+const DeleteDynamicTargetingKeysRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<DeleteDynamicTargetingKeysRequest>;
+
 export interface DeleteDynamicTargetingKeysResponse {}
+const DeleteDynamicTargetingKeysResponse =
+  DeleteCreativeFieldValuesResponse as any as S.Schema<DeleteDynamicTargetingKeysResponse>;
+
 export interface DeleteEventTagsRequest {
   /** User profile ID associated with this request. */
   profileId: string;
   /** Event tag ID. */
   id: string;
 }
+const DeleteEventTagsRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<DeleteEventTagsRequest>;
+
 export interface DeleteEventTagsResponse {}
+const DeleteEventTagsResponse =
+  DeleteAdvertiserGroupsResponse as any as S.Schema<DeleteEventTagsResponse>;
+
 export interface DeleteFloodlightActivitiesRequest {
   /** User profile ID associated with this request. */
   profileId: string;
   /** Floodlight activity ID. */
   id: string;
 }
+const DeleteFloodlightActivitiesRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<DeleteFloodlightActivitiesRequest>;
+
 export interface DeleteFloodlightActivitiesResponse {}
+const DeleteFloodlightActivitiesResponse =
+  DeleteCreativeFieldValuesResponse as any as S.Schema<DeleteFloodlightActivitiesResponse>;
+
 export interface DeletePlacementStrategiesRequest {
   /** Placement strategy ID. */
   id: string;
   /** User profile ID associated with this request. */
   profileId: string;
 }
+const DeletePlacementStrategiesRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<DeletePlacementStrategiesRequest>;
+
 export interface DeletePlacementStrategiesResponse {}
+const DeletePlacementStrategiesResponse =
+  DeleteCreativeFieldValuesResponse as any as S.Schema<DeletePlacementStrategiesResponse>;
+
 export interface DeleteReportsRequest {
   /** The ID of the report. */
   reportId: string;
   /** The Campaign Manager 360 user profile ID. */
   profileId: string;
 }
+const DeleteReportsRequest = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<DeleteReportsRequest>;
+
 export interface DeleteReportsResponse {}
+const DeleteReportsResponse =
+  DeleteAdvertiserGroupsResponse as any as S.Schema<DeleteReportsResponse>;
+
 export interface DeleteUserRolesRequest {
   /** User role ID. */
   id: string;
   /** User profile ID associated with this request. */
   profileId: string;
 }
+const DeleteUserRolesRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<DeleteUserRolesRequest>;
+
 export interface DeleteUserRolesResponse {}
+const DeleteUserRolesResponse =
+  DeleteAdvertiserGroupsResponse as any as S.Schema<DeleteUserRolesResponse>;
+
 export interface GenerateCodeDynamicProfilesRequest {
   /** Required. Dynamic profile ID. */
   dynamicProfileId: string;
 }
+const GenerateCodeDynamicProfilesRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<GenerateCodeDynamicProfilesRequest>;
+
 /** Response message for DfareportingDynamicProfiles.GenerateCode. */
 export interface DynamicProfileGenerateCodeResponse {
   /** Generated code for the dynamic profile. The code will need to be unescaped. */
   code?: string;
 }
+const DynamicProfileGenerateCodeResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<DynamicProfileGenerateCodeResponse>;
+
 export interface GeneratetagFloodlightActivitiesRequest {
   /** User profile ID associated with this request. */
   profileId: string;
   /** Floodlight activity ID for which we want to generate a tag. */
   floodlightActivityId?: string;
 }
+const GeneratetagFloodlightActivitiesRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<GeneratetagFloodlightActivitiesRequest>;
+
 /** Floodlight Activity GenerateTag Response */
 export interface FloodlightActivitiesGenerateTagResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#floodlightActivitiesGenerateTagResponse". */
@@ -490,6 +667,11 @@ export interface FloodlightActivitiesGenerateTagResponse {
   /** The global snippet section of a Google tag. The Google tag sets new cookies on your domain, which will store a unique identifier for a user or the ad click that brought the user to your site. Learn more. */
   globalSiteTagGlobalSnippet?: string;
 }
+const FloodlightActivitiesGenerateTagResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<FloodlightActivitiesGenerateTagResponse>;
+
 export type GeneratetagsPlacementsTagFormatsEnum =
   | "PLACEMENT_TAG_STANDARD"
   | "PLACEMENT_TAG_IFRAME_JAVASCRIPT"
@@ -511,9 +693,16 @@ export type GeneratetagsPlacementsTagFormatsEnum =
   | "PLACEMENT_TAG_INTERSTITIAL_JAVASCRIPT_LEGACY"
   | "PLACEMENT_TAG_INSTREAM_VIDEO_PREFETCH_VAST_4"
   | "PLACEMENT_TAG_TRACKING_THIRD_PARTY_MEASUREMENT";
+const GeneratetagsPlacementsTagFormatsEnum = S.String;
+
 export type GeneratetagsPlacementsTagFormatsEnumList = Array<
   GeneratetagsPlacementsTagFormatsEnum | (string & {})
 >;
+const GeneratetagsPlacementsTagFormatsEnumList = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<GeneratetagsPlacementsTagFormatsEnumList>;
+
 export interface GeneratetagsPlacementsRequest {
   /** Tag formats to generate for these placements. *Note:* PLACEMENT_TAG_STANDARD can only be generated for 1x1 placements. */
   tagFormats?: GeneratetagsPlacementsTagFormatsEnumList;
@@ -530,6 +719,11 @@ export interface GeneratetagsPlacementsRequest {
   /** Optional. Indicates whether to include the GPP macro in the generated tags. [Learn more](https://support.google.com/campaignmanager/answer/10031693) about this macro. */
   "tagProperties.gppMacrosIncluded"?: boolean;
 }
+const GeneratetagsPlacementsRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<GeneratetagsPlacementsRequest>;
+
 export type TagDataFormatEnum =
   | "PLACEMENT_TAG_STANDARD"
   | "PLACEMENT_TAG_IFRAME_JAVASCRIPT"
@@ -551,6 +745,8 @@ export type TagDataFormatEnum =
   | "PLACEMENT_TAG_INTERSTITIAL_JAVASCRIPT_LEGACY"
   | "PLACEMENT_TAG_INSTREAM_VIDEO_PREFETCH_VAST_4"
   | "PLACEMENT_TAG_TRACKING_THIRD_PARTY_MEASUREMENT";
+const TagDataFormatEnum = S.String;
+
 /** Placement Tag Data */
 export interface TagData {
   /** Tag string to record a click. */
@@ -564,7 +760,11 @@ export interface TagData {
   /** Ad associated with this placement tag. Applicable only when format is PLACEMENT_TAG_TRACKING. */
   adId?: string;
 }
+const TagData = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<TagData>;
+
 export type TagDataList = Array<TagData>;
+const TagDataList = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<TagDataList>;
+
 /** Placement Tag */
 export interface PlacementTag {
   /** Placement ID */
@@ -572,7 +772,11 @@ export interface PlacementTag {
   /** Tags generated for this placement. */
   tagDatas?: TagDataList;
 }
+const PlacementTag = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<PlacementTag>;
+
 export type PlacementTagList = Array<PlacementTag>;
+const PlacementTagList = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<PlacementTagList>;
+
 /** Placement GenerateTags Response */
 export interface PlacementsGenerateTagsResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#placementsGenerateTagsResponse". */
@@ -580,12 +784,22 @@ export interface PlacementsGenerateTagsResponse {
   /** Set of generated tags for the specified placements. */
   placementTags?: PlacementTagList;
 }
+const PlacementsGenerateTagsResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  4,
+) as any as S.Schema<PlacementsGenerateTagsResponse>;
+
 export interface GetAccountActiveAdSummariesRequest {
   /** User profile ID associated with this request. */
   profileId: string;
   /** Account ID. */
   summaryAccountId: string;
 }
+const GetAccountActiveAdSummariesRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  5,
+) as any as S.Schema<GetAccountActiveAdSummariesRequest>;
+
 export type AccountActiveAdSummaryActiveAdsLimitTierEnum =
   | "ACTIVE_ADS_TIER_40K"
   | "ACTIVE_ADS_TIER_75K"
@@ -595,6 +809,8 @@ export type AccountActiveAdSummaryActiveAdsLimitTierEnum =
   | "ACTIVE_ADS_TIER_500K"
   | "ACTIVE_ADS_TIER_750K"
   | "ACTIVE_ADS_TIER_1M";
+const AccountActiveAdSummaryActiveAdsLimitTierEnum = S.String;
+
 /** Gets a summary of active ads in an account. */
 export interface AccountActiveAdSummary {
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#accountActiveAdSummary". */
@@ -608,12 +824,22 @@ export interface AccountActiveAdSummary {
   /** ID of the account. */
   accountId?: string;
 }
+const AccountActiveAdSummary = /*@__PURE__*/ __L.at(
+  __c5,
+  6,
+) as any as S.Schema<AccountActiveAdSummary>;
+
 export interface GetAccountPermissionGroupsRequest {
   /** User profile ID associated with this request. */
   profileId: string;
   /** Account permission group ID. */
   id: string;
 }
+const GetAccountPermissionGroupsRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  7,
+) as any as S.Schema<GetAccountPermissionGroupsRequest>;
+
 /** AccountPermissionGroups contains a mapping of permission group IDs to names. A permission group is a grouping of account permissions. */
 export interface AccountPermissionGroup {
   /** ID of this account permission group. */
@@ -623,18 +849,33 @@ export interface AccountPermissionGroup {
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#accountPermissionGroup". */
   kind?: string;
 }
+const AccountPermissionGroup = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<AccountPermissionGroup>;
+
 export interface GetAccountPermissionsRequest {
   /** User profile ID associated with this request. */
   profileId: string;
   /** Account permission ID. */
   id: string;
 }
+const GetAccountPermissionsRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  1,
+) as any as S.Schema<GetAccountPermissionsRequest>;
+
 export type AccountPermissionLevelEnum = "USER" | "ADMINISTRATOR";
+const AccountPermissionLevelEnum = S.String;
+
 export type AccountPermissionAccountProfilesItemEnum =
   | "ACCOUNT_PROFILE_BASIC"
   | "ACCOUNT_PROFILE_STANDARD";
 export type AccountPermissionAccountProfilesItemEnumList =
   Array<AccountPermissionAccountProfilesItemEnum>;
+const AccountPermissionAccountProfilesItemEnumList =
+  GeneratetagsPlacementsTagFormatsEnumList as any as S.Schema<AccountPermissionAccountProfilesItemEnumList>;
+
 /** AccountPermissions contains information about a particular account permission. Some features of Campaign Manager require an account permission to be present in the account. */
 export interface AccountPermission {
   /** Administrative level required to enable this account permission. */
@@ -650,12 +891,16 @@ export interface AccountPermission {
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#accountPermission". */
   kind?: string;
 }
+const AccountPermission = /*@__PURE__*/ __L.at(__c6, 2) as any as S.Schema<AccountPermission>;
+
 export interface GetAccountsRequest {
   /** Account ID. */
   id: string;
   /** User profile ID associated with this request. */
   profileId: string;
 }
+const GetAccountsRequest = /*@__PURE__*/ __L.at(__c6, 3) as any as S.Schema<GetAccountsRequest>;
+
 export type AccountActiveAdsLimitTierEnum =
   | "ACTIVE_ADS_TIER_40K"
   | "ACTIVE_ADS_TIER_75K"
@@ -665,6 +910,8 @@ export type AccountActiveAdsLimitTierEnum =
   | "ACTIVE_ADS_TIER_500K"
   | "ACTIVE_ADS_TIER_750K"
   | "ACTIVE_ADS_TIER_1M";
+const AccountActiveAdsLimitTierEnum = S.String;
+
 /** Lookback configuration settings. */
 export interface LookbackConfiguration {
   /** Lookback window, in days, from the last time a given user clicked on one of your ads. If you enter 0, clicks will not be considered as triggering events for floodlight tracking. If you leave this field blank, the default value for your account will be used. Acceptable values are 0 to 90, inclusive. */
@@ -672,6 +919,11 @@ export interface LookbackConfiguration {
   /** Lookback window, in days, from the last time a given user viewed one of your ads. If you enter 0, impressions will not be considered as triggering events for floodlight tracking. If you leave this field blank, the default value for your account will be used. Acceptable values are 0 to 90, inclusive. */
   postImpressionActivitiesDuration?: number;
 }
+const LookbackConfiguration = /*@__PURE__*/ __L.at(
+  __c6,
+  4,
+) as any as S.Schema<LookbackConfiguration>;
+
 /** Reporting Configuration */
 export interface ReportsConfiguration {
   /** Default lookback windows for new advertisers in this account. */
@@ -681,7 +933,11 @@ export interface ReportsConfiguration {
   /** Whether the exposure to conversion report is enabled. This report shows detailed pathway information on up to 10 of the most recent ad exposures seen by a user before converting. */
   exposureToConversionEnabled?: boolean;
 }
+const ReportsConfiguration = /*@__PURE__*/ __L.at(__c6, 5) as any as S.Schema<ReportsConfiguration>;
+
 export type AccountAccountProfileEnum = "ACCOUNT_PROFILE_BASIC" | "ACCOUNT_PROFILE_STANDARD";
+const AccountAccountProfileEnum = S.String;
+
 /** Contains properties of a Campaign Manager account. */
 export interface Account {
   /** Maximum image size allowed for this account, in kilobytes. Value must be greater than or equal to 1. */
@@ -723,13 +979,22 @@ export interface Account {
   /** Share Path to Conversion reports with Twitter. */
   shareReportsWithTwitter?: boolean;
 }
+const Account = /*@__PURE__*/ __L.at(__c6, 6) as any as S.Schema<Account>;
+
 export interface GetAccountUserProfilesRequest {
   /** User profile ID. */
   id: string;
   /** User profile ID associated with this request. */
   profileId: string;
 }
+const GetAccountUserProfilesRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  7,
+) as any as S.Schema<GetAccountUserProfilesRequest>;
+
 export type ObjectFilterStatusEnum = "NONE" | "ASSIGNED" | "ALL";
+const ObjectFilterStatusEnum = S.String;
+
 /** Object Filter. */
 export interface ObjectFilter {
   /** Status of the filter. NONE means the user has access to none of the objects. ALL means the user has access to all objects. ASSIGNED means the user has access to the objects with IDs in the objectIds list. */
@@ -739,15 +1004,21 @@ export interface ObjectFilter {
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#objectFilter". */
   kind?: string;
 }
+const ObjectFilter = /*@__PURE__*/ __L.at(__c7, 0) as any as S.Schema<ObjectFilter>;
+
 export type AccountUserProfileTraffickerTypeEnum =
   | "INTERNAL_NON_TRAFFICKER"
   | "INTERNAL_TRAFFICKER"
   | "EXTERNAL_TRAFFICKER";
+const AccountUserProfileTraffickerTypeEnum = S.String;
+
 export type AccountUserProfileUserAccessTypeEnum =
   | "NORMAL_USER"
   | "SUPER_USER"
   | "INTERNAL_ADMINISTRATOR"
   | "READ_ONLY_SUPER_USER";
+const AccountUserProfileUserAccessTypeEnum = S.String;
+
 /** AccountUserProfiles contains properties of a Campaign Manager user profile. This resource is specifically for managing user profiles, whereas UserProfiles is for accessing the API. */
 export interface AccountUserProfile {
   /** Filter that describes which sites are visible to the user profile. */
@@ -783,12 +1054,16 @@ export interface AccountUserProfile {
   /** Account ID of the user profile. This is a read-only field that can be left blank. */
   accountId?: string;
 }
+const AccountUserProfile = /*@__PURE__*/ __L.at(__c7, 1) as any as S.Schema<AccountUserProfile>;
+
 export interface GetAdsRequest {
   /** Ad ID. */
   id: string;
   /** User profile ID associated with this request. */
   profileId: string;
 }
+const GetAdsRequest = /*@__PURE__*/ __L.at(__c7, 2) as any as S.Schema<GetAdsRequest>;
+
 export type AdCompatibilityEnum =
   | "DISPLAY"
   | "DISPLAY_INTERSTITIAL"
@@ -796,15 +1071,21 @@ export type AdCompatibilityEnum =
   | "APP_INTERSTITIAL"
   | "IN_STREAM_VIDEO"
   | "IN_STREAM_AUDIO";
+const AdCompatibilityEnum = S.String;
+
 export type AdTypeEnum =
   | "AD_SERVING_STANDARD_AD"
   | "AD_SERVING_DEFAULT_AD"
   | "AD_SERVING_CLICK_TRACKER"
   | "AD_SERVING_TRACKING"
   | "AD_SERVING_BRAND_SAFE_AD";
+const AdTypeEnum = S.String;
+
 export type CreativeGroupAssignmentCreativeGroupNumberEnum =
   | "CREATIVE_GROUP_ONE"
   | "CREATIVE_GROUP_TWO";
+const CreativeGroupAssignmentCreativeGroupNumberEnum = S.String;
+
 /** Creative Group Assignment. */
 export interface CreativeGroupAssignment {
   /** Creative group number of the creative group assignment. */
@@ -812,7 +1093,17 @@ export interface CreativeGroupAssignment {
   /** ID of the creative group to be assigned. */
   creativeGroupId?: string;
 }
+const CreativeGroupAssignment = /*@__PURE__*/ __L.at(
+  __c7,
+  3,
+) as any as S.Schema<CreativeGroupAssignment>;
+
 export type CreativeGroupAssignmentList = Array<CreativeGroupAssignment>;
+const CreativeGroupAssignmentList = /*@__PURE__*/ __L.at(
+  __c7,
+  4,
+) as any as S.Schema<CreativeGroupAssignmentList>;
+
 /** Represents the dimensions of ads, placements, creatives, or creative assets. */
 export interface Size {
   /** Width of this size. Acceptable values are 0 to 32767, inclusive. */
@@ -826,6 +1117,8 @@ export interface Size {
   /** ID of this size. This is a read-only, auto-generated field. */
   id?: string;
 }
+const Size = /*@__PURE__*/ __L.at(__c7, 5) as any as S.Schema<Size>;
+
 /** Click Through URL Suffix settings. */
 export interface ClickThroughUrlSuffixProperties {
   /** Click-through URL suffix to apply to all ads in this entity's scope. Must be less than 128 characters long. */
@@ -833,6 +1126,11 @@ export interface ClickThroughUrlSuffixProperties {
   /** Whether this entity should override the inherited click-through URL suffix with its own defined value. */
   overrideInheritedSuffix?: boolean;
 }
+const ClickThroughUrlSuffixProperties = /*@__PURE__*/ __L.at(
+  __c7,
+  6,
+) as any as S.Schema<ClickThroughUrlSuffixProperties>;
+
 /** Event tag override information. */
 export interface EventTagOverride {
   /** ID of this event tag override. This is a read-only, auto-generated field. */
@@ -840,12 +1138,18 @@ export interface EventTagOverride {
   /** Whether this override is enabled. */
   enabled?: boolean;
 }
+const EventTagOverride = /*@__PURE__*/ __L.at(__c7, 7) as any as S.Schema<EventTagOverride>;
+
 export type EventTagOverrideList = Array<EventTagOverride>;
+const EventTagOverrideList = /*@__PURE__*/ __L.at(__c8, 0) as any as S.Schema<EventTagOverrideList>;
+
 export type DimensionValueMatchTypeEnum =
   | "EXACT"
   | "BEGINS_WITH"
   | "CONTAINS"
   | "WILDCARD_EXPRESSION";
+const DimensionValueMatchTypeEnum = S.String;
+
 /** Represents a DimensionValue resource. */
 export interface DimensionValue {
   /** The name of the dimension. */
@@ -861,6 +1165,8 @@ export interface DimensionValue {
   /** Determines how the 'value' field is matched when filtering. If not specified, defaults to EXACT. If set to WILDCARD_EXPRESSION, '*' is allowed as a placeholder for variable length character sequences, and it can be escaped with a backslash. Note, only paid search dimensions ('dfa:paidSearch*') allow a matchType other than EXACT. */
   matchType?: DimensionValueMatchTypeEnum | (string & {});
 }
+const DimensionValue = /*@__PURE__*/ __L.at(__c8, 1) as any as S.Schema<DimensionValue>;
+
 /** Contains information about a mobile carrier that can be targeted by ads. */
 export interface MobileCarrier {
   /** DART ID of the country to which this mobile carrier belongs. */
@@ -874,7 +1180,11 @@ export interface MobileCarrier {
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#mobileCarrier". */
   kind?: string;
 }
+const MobileCarrier = /*@__PURE__*/ __L.at(__c8, 2) as any as S.Schema<MobileCarrier>;
+
 export type MobileCarrierList = Array<MobileCarrier>;
+const MobileCarrierList = /*@__PURE__*/ __L.at(__c8, 3) as any as S.Schema<MobileCarrierList>;
+
 /** Contains information about a platform type that can be targeted by ads. */
 export interface PlatformType {
   /** ID of this platform type. */
@@ -884,7 +1194,11 @@ export interface PlatformType {
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#platformType". */
   kind?: string;
 }
+const PlatformType = AccountPermissionGroup as any as S.Schema<PlatformType>;
+
 export type PlatformTypeList = Array<PlatformType>;
+const PlatformTypeList = /*@__PURE__*/ __L.at(__c8, 4) as any as S.Schema<PlatformTypeList>;
+
 /** Contains information about an internet connection type that can be targeted by ads. Clients can use the connection type to target mobile vs. broadband users. */
 export interface ConnectionType {
   /** Name of this connection type. */
@@ -894,7 +1208,11 @@ export interface ConnectionType {
   /** ID of this connection type. */
   id?: string;
 }
+const ConnectionType = /*@__PURE__*/ __L.at(__c8, 5) as any as S.Schema<ConnectionType>;
+
 export type ConnectionTypeList = Array<ConnectionType>;
+const ConnectionTypeList = /*@__PURE__*/ __L.at(__c8, 6) as any as S.Schema<ConnectionTypeList>;
+
 /** Contains information about a browser that can be targeted by ads. */
 export interface Browser {
   /** ID referring to this grouping of browser and version numbers. This is the ID used for targeting. */
@@ -910,7 +1228,11 @@ export interface Browser {
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#browser". */
   kind?: string;
 }
+const Browser = /*@__PURE__*/ __L.at(__c8, 7) as any as S.Schema<Browser>;
+
 export type BrowserList = Array<Browser>;
+const BrowserList = /*@__PURE__*/ __L.at(__c9, 0) as any as S.Schema<BrowserList>;
+
 /** Contains information about an operating system that can be targeted by ads. */
 export interface OperatingSystem {
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#operatingSystem". */
@@ -924,6 +1246,8 @@ export interface OperatingSystem {
   /** DART ID of this operating system. This is the ID used for targeting. */
   dartId?: string;
 }
+const OperatingSystem = /*@__PURE__*/ __L.at(__c9, 1) as any as S.Schema<OperatingSystem>;
+
 /** Contains information about a particular version of an operating system that can be targeted by ads. */
 export interface OperatingSystemVersion {
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#operatingSystemVersion". */
@@ -939,8 +1263,20 @@ export interface OperatingSystemVersion {
   /** Major version (leftmost number) of this operating system version. */
   majorVersion?: string;
 }
+const OperatingSystemVersion = /*@__PURE__*/ __L.at(
+  __c9,
+  2,
+) as any as S.Schema<OperatingSystemVersion>;
+
 export type OperatingSystemVersionList = Array<OperatingSystemVersion>;
+const OperatingSystemVersionList = /*@__PURE__*/ __L.at(
+  __c9,
+  3,
+) as any as S.Schema<OperatingSystemVersionList>;
+
 export type OperatingSystemList = Array<OperatingSystem>;
+const OperatingSystemList = /*@__PURE__*/ __L.at(__c9, 4) as any as S.Schema<OperatingSystemList>;
+
 /** Technology Targeting. */
 export interface TechnologyTargeting {
   /** Mobile carriers that this ad targets. For each mobile carrier only id is required, and the other fields are populated automatically when the ad is inserted or updated. If targeting a mobile carrier, do not set targeting for any zip codes. */
@@ -956,6 +1292,8 @@ export interface TechnologyTargeting {
   /** Operating systems that this ad targets. To target specific versions, use operatingSystemVersions. For each operating system only dartId is required. The other fields are populated automatically when the ad is inserted or updated. If targeting an operating system, do not set targeting for operating system versions for the same operating system. */
   operatingSystems?: OperatingSystemList;
 }
+const TechnologyTargeting = /*@__PURE__*/ __L.at(__c9, 5) as any as S.Schema<TechnologyTargeting>;
+
 /** Contains information about a language that can be targeted by ads. */
 export interface Language {
   /** Name of this language. */
@@ -967,20 +1305,30 @@ export interface Language {
   /** Language ID of this language. This is the ID used for targeting and generating reports. */
   id?: string;
 }
+const Language = /*@__PURE__*/ __L.at(__c9, 6) as any as S.Schema<Language>;
+
 export type LanguageList = Array<Language>;
+const LanguageList = /*@__PURE__*/ __L.at(__c9, 7) as any as S.Schema<LanguageList>;
+
 /** Language Targeting. */
 export interface LanguageTargeting {
   /** Languages that this ad targets. For each language only languageId is required. The other fields are populated automatically when the ad is inserted or updated. */
   languages?: LanguageList;
 }
+const LanguageTargeting = /*@__PURE__*/ __L.at(__c10, 0) as any as S.Schema<LanguageTargeting>;
+
 export type CreativeRotationTypeEnum =
   | "CREATIVE_ROTATION_TYPE_SEQUENTIAL"
   | "CREATIVE_ROTATION_TYPE_RANDOM";
+const CreativeRotationTypeEnum = S.String;
+
 export type CreativeRotationWeightCalculationStrategyEnum =
   | "WEIGHT_STRATEGY_EQUAL"
   | "WEIGHT_STRATEGY_CUSTOM"
   | "WEIGHT_STRATEGY_HIGHEST_CTR"
   | "WEIGHT_STRATEGY_OPTIMIZED";
+const CreativeRotationWeightCalculationStrategyEnum = S.String;
+
 /** Click-through URL */
 export interface ClickThroughUrl {
   /** Read-only convenience field representing the actual URL that will be used for this click-through. The URL is computed as follows: - If defaultLandingPage is enabled then the campaign's default landing page URL is assigned to this field. - If defaultLandingPage is not enabled and a landingPageId is specified then that landing page's URL is assigned to this field. - If neither of the above cases apply, then the customClickThroughUrl is assigned to this field. */
@@ -992,6 +1340,8 @@ export interface ClickThroughUrl {
   /** Whether the campaign default landing page is used. */
   defaultLandingPage?: boolean;
 }
+const ClickThroughUrl = /*@__PURE__*/ __L.at(__c10, 1) as any as S.Schema<ClickThroughUrl>;
+
 /** Rich Media Exit Override. */
 export interface RichMediaExitOverride {
   /** Whether to use the clickThroughUrl. If false, the creative-level exit will be used. */
@@ -1001,7 +1351,17 @@ export interface RichMediaExitOverride {
   /** Click-through URL of this rich media exit override. Applicable if the enabled field is set to true. */
   clickThroughUrl?: ClickThroughUrl;
 }
+const RichMediaExitOverride = /*@__PURE__*/ __L.at(
+  __c10,
+  2,
+) as any as S.Schema<RichMediaExitOverride>;
+
 export type RichMediaExitOverrideList = Array<RichMediaExitOverride>;
+const RichMediaExitOverrideList = /*@__PURE__*/ __L.at(
+  __c10,
+  3,
+) as any as S.Schema<RichMediaExitOverrideList>;
+
 /** Companion Click-through override. */
 export interface CompanionClickThroughOverride {
   /** ID of the creative for this companion click-through override. */
@@ -1009,7 +1369,17 @@ export interface CompanionClickThroughOverride {
   /** Click-through URL of this companion click-through override. */
   clickThroughUrl?: ClickThroughUrl;
 }
+const CompanionClickThroughOverride = /*@__PURE__*/ __L.at(
+  __c10,
+  4,
+) as any as S.Schema<CompanionClickThroughOverride>;
+
 export type CompanionClickThroughOverrideList = Array<CompanionClickThroughOverride>;
+const CompanionClickThroughOverrideList = /*@__PURE__*/ __L.at(
+  __c10,
+  5,
+) as any as S.Schema<CompanionClickThroughOverrideList>;
+
 /** Creative Assignment. */
 export interface CreativeAssignment {
   /** Whether applicable event tags should fire when this creative assignment is rendered. If this value is unset when the ad is inserted or updated, it will default to true for all creative types EXCEPT for INTERNAL_REDIRECT, INTERSTITIAL_INTERNAL_REDIRECT, and INSTREAM_VIDEO. */
@@ -1037,7 +1407,14 @@ export interface CreativeAssignment {
   /** ID of the creative to be assigned. This is a required field. */
   creativeId?: string;
 }
+const CreativeAssignment = /*@__PURE__*/ __L.at(__c10, 6) as any as S.Schema<CreativeAssignment>;
+
 export type CreativeAssignmentList = Array<CreativeAssignment>;
+const CreativeAssignmentList = /*@__PURE__*/ __L.at(
+  __c10,
+  7,
+) as any as S.Schema<CreativeAssignmentList>;
+
 /** Creative Rotation. */
 export interface CreativeRotation {
   /** Type of creative rotation. Can be used to specify whether to use sequential or random rotation. */
@@ -1049,11 +1426,15 @@ export interface CreativeRotation {
   /** Creative assignments in this creative rotation. */
   creativeAssignments?: CreativeAssignmentList;
 }
+const CreativeRotation = /*@__PURE__*/ __L.at(__c11, 0) as any as S.Schema<CreativeRotation>;
+
 /** Modification timestamp. */
 export interface LastModifiedInfo {
   /** Timestamp of the last change in milliseconds since epoch. */
   time?: string;
 }
+const LastModifiedInfo = /*@__PURE__*/ __L.at(__c11, 1) as any as S.Schema<LastModifiedInfo>;
+
 /** Frequency Cap. */
 export interface FrequencyCap {
   /** Number of times an individual user can be served the ad within the specified duration. Acceptable values are 1 to 15, inclusive. */
@@ -1061,6 +1442,8 @@ export interface FrequencyCap {
   /** Duration of time, in seconds, for this frequency cap. The maximum duration is 90 days. Acceptable values are 1 to 7776000, inclusive. */
   duration?: string;
 }
+const FrequencyCap = /*@__PURE__*/ __L.at(__c11, 2) as any as S.Schema<FrequencyCap>;
+
 export type DeliverySchedulePriorityEnum =
   | "AD_PRIORITY_01"
   | "AD_PRIORITY_02"
@@ -1078,6 +1461,8 @@ export type DeliverySchedulePriorityEnum =
   | "AD_PRIORITY_14"
   | "AD_PRIORITY_15"
   | "AD_PRIORITY_16";
+const DeliverySchedulePriorityEnum = S.String;
+
 /** Delivery Schedule. */
 export interface DeliverySchedule {
   /** Limit on the number of times an individual user can be served the ad within a specified period of time. */
@@ -1089,6 +1474,8 @@ export interface DeliverySchedule {
   /** Serving priority of an ad, with respect to other ads. The lower the priority number, the greater the priority with which it is served. */
   priority?: DeliverySchedulePriorityEnum | (string & {});
 }
+const DeliverySchedule = /*@__PURE__*/ __L.at(__c11, 3) as any as S.Schema<DeliverySchedule>;
+
 /** Properties of inheriting and overriding the default click-through event tag. A campaign may override the event tag defined at the advertiser level, and an ad may also override the campaign's setting further. */
 export interface DefaultClickThroughEventTagProperties {
   /** Whether this entity should override the inherited default click-through event tag with its own defined value. */
@@ -1096,17 +1483,34 @@ export interface DefaultClickThroughEventTagProperties {
   /** ID of the click-through event tag to apply to all ads in this entity's scope. */
   defaultClickThroughEventTagId?: string;
 }
+const DefaultClickThroughEventTagProperties = /*@__PURE__*/ __L.at(
+  __c11,
+  4,
+) as any as S.Schema<DefaultClickThroughEventTagProperties>;
+
 /** Contains information about a Contextual Keyword that can be targeted by ads. */
 export interface ContextualKeyword {
   /** The keyword that can be targeted by ads. */
   keyword?: string;
 }
+const ContextualKeyword = /*@__PURE__*/ __L.at(__c11, 5) as any as S.Schema<ContextualKeyword>;
+
 export type ContextualKeywordList = Array<ContextualKeyword>;
+const ContextualKeywordList = /*@__PURE__*/ __L.at(
+  __c11,
+  6,
+) as any as S.Schema<ContextualKeywordList>;
+
 /** Contextual Keyword Targeting. */
 export interface ContextualKeywordTargeting {
   /** Contextual keywords that this ad targets */
   keywords?: ContextualKeywordList;
 }
+const ContextualKeywordTargeting = /*@__PURE__*/ __L.at(
+  __c11,
+  7,
+) as any as S.Schema<ContextualKeywordTargeting>;
+
 export type DayPartTargetingDaysOfWeekItemEnum =
   | "SUNDAY"
   | "MONDAY"
@@ -1118,7 +1522,12 @@ export type DayPartTargetingDaysOfWeekItemEnum =
 export type DayPartTargetingDaysOfWeekItemEnumList = Array<
   DayPartTargetingDaysOfWeekItemEnum | (string & {})
 >;
+const DayPartTargetingDaysOfWeekItemEnumList =
+  GeneratetagsPlacementsTagFormatsEnumList as any as S.Schema<DayPartTargetingDaysOfWeekItemEnumList>;
+
 export type IntegerList = Array<number>;
+const IntegerList = /*@__PURE__*/ __L.at(__c12, 0) as any as S.Schema<IntegerList>;
+
 /** Day Part Targeting. */
 export interface DayPartTargeting {
   /** Days of the week when the ad will serve. Acceptable values are: - "SUNDAY" - "MONDAY" - "TUESDAY" - "WEDNESDAY" - "THURSDAY" - "FRIDAY" - "SATURDAY" */
@@ -1128,11 +1537,18 @@ export interface DayPartTargeting {
   /** Whether or not to use the user's local time. If false, the America/New York time zone applies. */
   userLocalTime?: boolean;
 }
+const DayPartTargeting = /*@__PURE__*/ __L.at(__c12, 1) as any as S.Schema<DayPartTargeting>;
+
 /** Remarketing List Targeting Expression. */
 export interface ListTargetingExpression {
   /** Expression describing which lists are being targeted by the ad. */
   expression?: string;
 }
+const ListTargetingExpression = /*@__PURE__*/ __L.at(
+  __c12,
+  2,
+) as any as S.Schema<ListTargetingExpression>;
+
 /** Placement Assignment. */
 export interface PlacementAssignment {
   /** ID of the placement to be assigned. This is a required field. */
@@ -1144,12 +1560,24 @@ export interface PlacementAssignment {
   /** Dimension value for the ID of the placement. This is a read-only, auto-generated field. */
   placementIdDimensionValue?: DimensionValue;
 }
+const PlacementAssignment = /*@__PURE__*/ __L.at(__c12, 3) as any as S.Schema<PlacementAssignment>;
+
 export type PlacementAssignmentList = Array<PlacementAssignment>;
+const PlacementAssignmentList = /*@__PURE__*/ __L.at(
+  __c12,
+  4,
+) as any as S.Schema<PlacementAssignmentList>;
+
 /** Key Value Targeting Expression. */
 export interface KeyValueTargetingExpression {
   /** Keyword expression being targeted by the ad. */
   expression?: string;
 }
+const KeyValueTargetingExpression = /*@__PURE__*/ __L.at(
+  __c12,
+  5,
+) as any as S.Schema<KeyValueTargetingExpression>;
+
 /** Contains information about a city that can be targeted by ads. */
 export interface City {
   /** Country code of the country to which this city belongs. */
@@ -1171,7 +1599,11 @@ export interface City {
   /** DART ID of the country to which this city belongs. */
   countryDartId?: string;
 }
+const City = /*@__PURE__*/ __L.at(__c12, 6) as any as S.Schema<City>;
+
 export type CityList = Array<City>;
+const CityList = /*@__PURE__*/ __L.at(__c12, 7) as any as S.Schema<CityList>;
+
 /** Contains information about a metro region that can be targeted by ads. */
 export interface Metro {
   /** Metro code of this metro region. This is equivalent to dma_id. */
@@ -1189,7 +1621,11 @@ export interface Metro {
   /** Country code of the country to which this metro region belongs. */
   countryCode?: string;
 }
+const Metro = /*@__PURE__*/ __L.at(__c13, 0) as any as S.Schema<Metro>;
+
 export type MetroList = Array<Metro>;
+const MetroList = /*@__PURE__*/ __L.at(__c13, 1) as any as S.Schema<MetroList>;
+
 export type CountryTvDataProvidersItemEnum =
   | "INVALID_TV_DATA_PROVIDER"
   | "INTAGE_JP"
@@ -1204,6 +1640,9 @@ export type CountryTvDataProvidersItemEnum =
 export type CountryTvDataProvidersItemEnumList = Array<
   CountryTvDataProvidersItemEnum | (string & {})
 >;
+const CountryTvDataProvidersItemEnumList =
+  GeneratetagsPlacementsTagFormatsEnumList as any as S.Schema<CountryTvDataProvidersItemEnumList>;
+
 /** Contains information about a country that can be targeted by ads. */
 export interface Country {
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#country". */
@@ -1219,7 +1658,11 @@ export interface Country {
   /** Country code. */
   countryCode?: string;
 }
+const Country = /*@__PURE__*/ __L.at(__c13, 2) as any as S.Schema<Country>;
+
 export type CountryList = Array<Country>;
+const CountryList = /*@__PURE__*/ __L.at(__c13, 3) as any as S.Schema<CountryList>;
+
 /** Contains information about a postal code that can be targeted by ads. */
 export interface PostalCode {
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#postalCode". */
@@ -1233,7 +1676,11 @@ export interface PostalCode {
   /** Country code of the country to which this postal code belongs. */
   countryCode?: string;
 }
+const PostalCode = /*@__PURE__*/ __L.at(__c13, 4) as any as S.Schema<PostalCode>;
+
 export type PostalCodeList = Array<PostalCode>;
+const PostalCodeList = /*@__PURE__*/ __L.at(__c13, 5) as any as S.Schema<PostalCodeList>;
+
 /** Contains information about a region that can be targeted by ads. */
 export interface Region {
   /** DART ID of this region. */
@@ -1249,7 +1696,11 @@ export interface Region {
   /** Country code of the country to which this region belongs. */
   countryCode?: string;
 }
+const Region = /*@__PURE__*/ __L.at(__c13, 6) as any as S.Schema<Region>;
+
 export type RegionList = Array<Region>;
+const RegionList = /*@__PURE__*/ __L.at(__c13, 7) as any as S.Schema<RegionList>;
+
 /** Geographical Targeting. */
 export interface GeoTargeting {
   /** Cities to be targeted. For each city only dartId is required. The other fields are populated automatically when the ad is inserted or updated. If targeting a city, do not target or exclude the country of the city, and do not target the metro or region of the city. */
@@ -1265,6 +1716,8 @@ export interface GeoTargeting {
   /** Regions to be targeted. For each region only dartId is required. The other fields are populated automatically when the ad is inserted or updated. If targeting a region, do not target or exclude the country of the region. */
   regions?: RegionList;
 }
+const GeoTargeting = /*@__PURE__*/ __L.at(__c14, 0) as any as S.Schema<GeoTargeting>;
+
 /** Contains properties of a Campaign Manager ad. */
 export interface Ad {
   /** Compatibility of this ad. Applicable when type is AD_SERVING_DEFAULT_AD. DISPLAY and DISPLAY_INTERSTITIAL refer to either rendering on desktop or on mobile devices or in mobile apps for regular or interstitial ads, respectively. APP and APP_INTERSTITIAL are only used for existing default ads. New mobile placements must be assigned DISPLAY or DISPLAY_INTERSTITIAL and default ads created for those placements will be limited to those compatibility types. IN_STREAM_VIDEO refers to rendering in-stream video ads developed with the VAST standard. */
@@ -1346,12 +1799,19 @@ export interface Ad {
   /** Whether this ad is active. When true, archived must be false. */
   active?: boolean;
 }
+const Ad = /*@__PURE__*/ __L.at(__c14, 1) as any as S.Schema<Ad>;
+
 export interface GetAdvertiserGroupsRequest {
   /** User profile ID associated with this request. */
   profileId: string;
   /** Advertiser group ID. */
   id: string;
 }
+const GetAdvertiserGroupsRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  2,
+) as any as S.Schema<GetAdvertiserGroupsRequest>;
+
 /** Groups advertisers together so that reports can be generated for the entire group at once. */
 export interface AdvertiserGroup {
   /** ID of this advertiser group. This is a read-only, auto-generated field. */
@@ -1363,12 +1823,19 @@ export interface AdvertiserGroup {
   /** Account ID of this advertiser group. This is a read-only field that can be left blank. */
   accountId?: string;
 }
+const AdvertiserGroup = /*@__PURE__*/ __L.at(__c14, 3) as any as S.Schema<AdvertiserGroup>;
+
 export interface GetAdvertiserLandingPagesRequest {
   /** Landing page ID. */
   id: string;
   /** User profile ID associated with this request. */
   profileId: string;
 }
+const GetAdvertiserLandingPagesRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  4,
+) as any as S.Schema<GetAdvertiserLandingPagesRequest>;
+
 export type MobileAppDirectoryEnum =
   | "UNKNOWN"
   | "APPLE_APP_STORE"
@@ -1381,6 +1848,8 @@ export type MobileAppDirectoryEnum =
   | "SAMSUNG_TV_APP_STORE"
   | "ANDROID_TV_APP_STORE"
   | "GENERIC_CTV_APP_STORE";
+const MobileAppDirectoryEnum = S.String;
+
 /** Contains information about a mobile app. Used as a landing page deep link. */
 export interface MobileApp {
   /** Title of this mobile app. */
@@ -1394,6 +1863,8 @@ export interface MobileApp {
   /** ID of this mobile app. */
   id?: string;
 }
+const MobileApp = /*@__PURE__*/ __L.at(__c14, 5) as any as S.Schema<MobileApp>;
+
 /** Contains information about a landing page deep link. */
 export interface DeepLink {
   /** The URL of the mobile app being linked to. */
@@ -1407,7 +1878,11 @@ export interface DeepLink {
   /** The fallback URL. This URL will be served to users who do not have the mobile app installed. */
   fallbackUrl?: string;
 }
+const DeepLink = /*@__PURE__*/ __L.at(__c14, 6) as any as S.Schema<DeepLink>;
+
 export type DeepLinkList = Array<DeepLink>;
+const DeepLinkList = /*@__PURE__*/ __L.at(__c14, 7) as any as S.Schema<DeepLinkList>;
+
 /** Contains information about where a user's browser is taken after the user clicks an ad. */
 export interface LandingPage {
   /** URL of this landing page. This is a required field. */
@@ -1425,20 +1900,33 @@ export interface LandingPage {
   /** Advertiser ID of this landing page. This is a required field. */
   advertiserId?: string;
 }
+const LandingPage = /*@__PURE__*/ __L.at(__c15, 0) as any as S.Schema<LandingPage>;
+
 export interface GetAdvertisersRequest {
   /** User profile ID associated with this request. */
   profileId: string;
   /** Advertiser ID. */
   id: string;
 }
+const GetAdvertisersRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  1,
+) as any as S.Schema<GetAdvertisersRequest>;
+
 export type AdvertiserStatusEnum = "APPROVED" | "ON_HOLD";
+const AdvertiserStatusEnum = S.String;
+
 export type AdvertiserEuPoliticalAdsDeclarationEnum =
   | "ADVERTISER_PLANS_TO_SERVE_EU_POLITICAL_ADS"
   | "ADVERTISER_DOES_NOT_PLAN_TO_SERVE_EU_POLITICAL_ADS";
+const AdvertiserEuPoliticalAdsDeclarationEnum = S.String;
+
 export type MeasurementPartnerAdvertiserLinkMeasurementPartnerEnum =
   | "NONE"
   | "INTEGRAL_AD_SCIENCE"
   | "DOUBLE_VERIFY";
+const MeasurementPartnerAdvertiserLinkMeasurementPartnerEnum = S.String;
+
 export type MeasurementPartnerAdvertiserLinkLinkStatusEnum =
   | "MEASUREMENT_PARTNER_UNLINKED"
   | "MEASUREMENT_PARTNER_LINKED"
@@ -1449,6 +1937,8 @@ export type MeasurementPartnerAdvertiserLinkLinkStatusEnum =
   | "MEASUREMENT_PARTNER_LINK_WRAPPING_PENDING"
   | "MEASUREMENT_PARTNER_MODE_CHANGE_PENDING"
   | "MEASUREMENT_PARTNER_UNLINK_PENDING";
+const MeasurementPartnerAdvertiserLinkLinkStatusEnum = S.String;
+
 export interface MeasurementPartnerAdvertiserLink {
   /** partner Advertiser Id. */
   partnerAdvertiserId?: string;
@@ -1457,6 +1947,11 @@ export interface MeasurementPartnerAdvertiserLink {
   /** Status of the partner link. */
   linkStatus?: MeasurementPartnerAdvertiserLinkLinkStatusEnum | (string & {});
 }
+const MeasurementPartnerAdvertiserLink = /*@__PURE__*/ __L.at(
+  __c15,
+  2,
+) as any as S.Schema<MeasurementPartnerAdvertiserLink>;
+
 /** Contains properties of a Campaign Manager advertiser. */
 export interface Advertiser {
   /** Suspension status of this advertiser. */
@@ -1494,17 +1989,28 @@ export interface Advertiser {
   /** Measurement partner advertiser link for tag wrapping. */
   measurementPartnerLink?: MeasurementPartnerAdvertiserLink;
 }
+const Advertiser = /*@__PURE__*/ __L.at(__c15, 3) as any as S.Schema<Advertiser>;
+
 export interface GetBillingProfilesRequest {
   /** User profile ID associated with this request. */
   profileId: string;
   /** Billing Profile ID. */
   id: string;
 }
+const GetBillingProfilesRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  4,
+) as any as S.Schema<GetBillingProfilesRequest>;
+
 export type BillingProfileInvoiceLevelEnum =
   | "ACCOUNT_LEVEL"
   | "ADVERTISER_LEVEL"
   | "CAMPAIGN_LEVEL";
+const BillingProfileInvoiceLevelEnum = S.String;
+
 export type BillingProfileStatusEnum = "UNDER_REVIEW" | "ACTIVE" | "ARCHIVED";
+const BillingProfileStatusEnum = S.String;
+
 /** Contains properties of a Campaign Manager Billing Profile. */
 export interface BillingProfile {
   /** The ID of the payment customer the billing profile belongs to. This is a read-only field. */
@@ -1534,18 +2040,24 @@ export interface BillingProfile {
   /** Status of this billing profile.This is a read-only field. */
   status?: BillingProfileStatusEnum | (string & {});
 }
+const BillingProfile = /*@__PURE__*/ __L.at(__c15, 5) as any as S.Schema<BillingProfile>;
+
 export interface GetCampaignsRequest {
   /** Campaign ID. */
   id: string;
   /** User profile ID associated with this request. */
   profileId: string;
 }
+const GetCampaignsRequest = /*@__PURE__*/ __L.at(__c15, 6) as any as S.Schema<GetCampaignsRequest>;
+
 export type CreativeOptimizationConfigurationOptimizationModelEnum =
   | "CLICK"
   | "POST_CLICK"
   | "POST_IMPRESSION"
   | "POST_CLICK_AND_IMPRESSION"
   | "VIDEO_COMPLETION";
+const CreativeOptimizationConfigurationOptimizationModelEnum = S.String;
+
 /** Creative optimization activity. */
 export interface OptimizationActivity {
   /** Floodlight activity ID of this optimization activity. This is a required field. */
@@ -1555,7 +2067,17 @@ export interface OptimizationActivity {
   /** Weight associated with this optimization. The weight assigned will be understood in proportion to the weights assigned to the other optimization activities. Value must be greater than or equal to 1. */
   weight?: number;
 }
+const OptimizationActivity = /*@__PURE__*/ __L.at(
+  __c15,
+  7,
+) as any as S.Schema<OptimizationActivity>;
+
 export type OptimizationActivityList = Array<OptimizationActivity>;
+const OptimizationActivityList = /*@__PURE__*/ __L.at(
+  __c16,
+  0,
+) as any as S.Schema<OptimizationActivityList>;
+
 /** Creative optimization settings. */
 export interface CreativeOptimizationConfiguration {
   /** Name of this creative optimization config. This is a required field and must be less than 129 characters long. */
@@ -1567,10 +2089,22 @@ export interface CreativeOptimizationConfiguration {
   /** ID of this creative optimization config. This field is auto-generated when the campaign is inserted or updated. It can be null for existing campaigns. */
   id?: string;
 }
+const CreativeOptimizationConfiguration = /*@__PURE__*/ __L.at(
+  __c16,
+  1,
+) as any as S.Schema<CreativeOptimizationConfiguration>;
+
 export type CreativeOptimizationConfigurationList = Array<CreativeOptimizationConfiguration>;
+const CreativeOptimizationConfigurationList = /*@__PURE__*/ __L.at(
+  __c16,
+  2,
+) as any as S.Schema<CreativeOptimizationConfigurationList>;
+
 export type CampaignEuPoliticalAdsDeclarationEnum =
   | "CONTAINS_EU_POLITICAL_ADS"
   | "DOES_NOT_CONTAIN_EU_POLITICAL_ADS";
+const CampaignEuPoliticalAdsDeclarationEnum = S.String;
+
 /** Audience Segment. */
 export interface AudienceSegment {
   /** ID of this audience segment. This is a read-only, auto-generated field. */
@@ -1580,7 +2114,11 @@ export interface AudienceSegment {
   /** Name of this audience segment. This is a required field and must be less than 65 characters long. */
   name?: string;
 }
+const AudienceSegment = /*@__PURE__*/ __L.at(__c16, 3) as any as S.Schema<AudienceSegment>;
+
 export type AudienceSegmentList = Array<AudienceSegment>;
+const AudienceSegmentList = /*@__PURE__*/ __L.at(__c16, 4) as any as S.Schema<AudienceSegmentList>;
+
 /** Audience Segment Group. */
 export interface AudienceSegmentGroup {
   /** ID of this audience segment group. This is a read-only, auto-generated field. */
@@ -1590,11 +2128,23 @@ export interface AudienceSegmentGroup {
   /** Name of this audience segment group. This is a required field and must be less than 65 characters long. */
   name?: string;
 }
+const AudienceSegmentGroup = /*@__PURE__*/ __L.at(
+  __c16,
+  5,
+) as any as S.Schema<AudienceSegmentGroup>;
+
 export type AudienceSegmentGroupList = Array<AudienceSegmentGroup>;
+const AudienceSegmentGroupList = /*@__PURE__*/ __L.at(
+  __c16,
+  6,
+) as any as S.Schema<AudienceSegmentGroupList>;
+
 export type MeasurementPartnerCampaignLinkMeasurementPartnerEnum =
   | "NONE"
   | "INTEGRAL_AD_SCIENCE"
   | "DOUBLE_VERIFY";
+const MeasurementPartnerCampaignLinkMeasurementPartnerEnum = S.String;
+
 export type MeasurementPartnerCampaignLinkLinkStatusEnum =
   | "MEASUREMENT_PARTNER_UNLINKED"
   | "MEASUREMENT_PARTNER_LINKED"
@@ -1605,6 +2155,8 @@ export type MeasurementPartnerCampaignLinkLinkStatusEnum =
   | "MEASUREMENT_PARTNER_LINK_WRAPPING_PENDING"
   | "MEASUREMENT_PARTNER_MODE_CHANGE_PENDING"
   | "MEASUREMENT_PARTNER_UNLINK_PENDING";
+const MeasurementPartnerCampaignLinkLinkStatusEnum = S.String;
+
 export interface MeasurementPartnerCampaignLink {
   /** Measurement partner used for tag wrapping. */
   measurementPartner?: MeasurementPartnerCampaignLinkMeasurementPartnerEnum | (string & {});
@@ -1613,11 +2165,21 @@ export interface MeasurementPartnerCampaignLink {
   /** Partner campaign ID needed for establishing linking with Measurement partner. */
   partnerCampaignId?: string;
 }
+const MeasurementPartnerCampaignLink = /*@__PURE__*/ __L.at(
+  __c16,
+  7,
+) as any as S.Schema<MeasurementPartnerCampaignLink>;
+
 /** Campaign ad blocking settings. */
 export interface AdBlockingConfiguration {
   /** Whether this campaign has enabled ad blocking. When true, ad blocking is enabled for placements in the campaign, but this may be overridden by site and placement settings. When false, ad blocking is disabled for all placements under the campaign, regardless of site and placement settings. */
   enabled?: boolean;
 }
+const AdBlockingConfiguration = /*@__PURE__*/ __L.at(
+  __c17,
+  0,
+) as any as S.Schema<AdBlockingConfiguration>;
+
 /** Contains properties of a Campaign Manager campaign. */
 export interface Campaign {
   startDate?: string;
@@ -1675,12 +2237,19 @@ export interface Campaign {
   /** Whether this campaign has been archived. */
   archived?: boolean;
 }
+const Campaign = /*@__PURE__*/ __L.at(__c17, 1) as any as S.Schema<Campaign>;
+
 export interface GetChangeLogsRequest {
   /** Change log ID. */
   id: string;
   /** User profile ID associated with this request. */
   profileId: string;
 }
+const GetChangeLogsRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  2,
+) as any as S.Schema<GetChangeLogsRequest>;
+
 /** Describes a change that a user has made to a resource. */
 export interface ChangeLog {
   /** ID of the user who modified the object. */
@@ -1711,18 +2280,30 @@ export interface ChangeLog {
   /** New value of the object field. */
   newValue?: string;
 }
+const ChangeLog = /*@__PURE__*/ __L.at(__c17, 3) as any as S.Schema<ChangeLog>;
+
 export interface GetConnectionTypesRequest {
   /** Connection type ID. */
   id: string;
   /** User profile ID associated with this request. */
   profileId: string;
 }
+const GetConnectionTypesRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  4,
+) as any as S.Schema<GetConnectionTypesRequest>;
+
 export interface GetContentCategoriesRequest {
   /** Content category ID. */
   id: string;
   /** User profile ID associated with this request. */
   profileId: string;
 }
+const GetContentCategoriesRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  5,
+) as any as S.Schema<GetContentCategoriesRequest>;
+
 export interface ContentCategory {
   /** Name of this content category. This is a required field and must be less than 256 characters long and unique among content categories of the same account. */
   name?: string;
@@ -1733,18 +2314,27 @@ export interface ContentCategory {
   /** ID of this content category. This is a read-only, auto-generated field. */
   id?: string;
 }
+const ContentCategory = /*@__PURE__*/ __L.at(__c17, 6) as any as S.Schema<ContentCategory>;
+
 export interface GetCountriesRequest {
   /** Country DART ID. */
   dartId: string;
   /** User profile ID associated with this request. */
   profileId: string;
 }
+const GetCountriesRequest = /*@__PURE__*/ __L.at(__c17, 7) as any as S.Schema<GetCountriesRequest>;
+
 export interface GetCreativeFieldsRequest {
   /** Creative Field ID */
   id: string;
   /** User profile ID associated with this request. */
   profileId: string;
 }
+const GetCreativeFieldsRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  0,
+) as any as S.Schema<GetCreativeFieldsRequest>;
+
 /** Contains properties of a creative field. */
 export interface CreativeField {
   /** Dimension value for the ID of the advertiser. This is a read-only, auto-generated field. */
@@ -1762,6 +2352,8 @@ export interface CreativeField {
   /** Name of this creative field. This is a required field and must be less than 256 characters long and unique among creative fields of the same advertiser. */
   name?: string;
 }
+const CreativeField = /*@__PURE__*/ __L.at(__c18, 1) as any as S.Schema<CreativeField>;
+
 export interface GetCreativeFieldValuesRequest {
   /** User profile ID associated with this request. */
   profileId: string;
@@ -1770,6 +2362,11 @@ export interface GetCreativeFieldValuesRequest {
   /** Creative field ID for this creative field value. */
   creativeFieldId: string;
 }
+const GetCreativeFieldValuesRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  2,
+) as any as S.Schema<GetCreativeFieldValuesRequest>;
+
 /** Contains properties of a creative field value. */
 export interface CreativeFieldValue {
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#creativeFieldValue". */
@@ -1779,12 +2376,19 @@ export interface CreativeFieldValue {
   /** Value of this creative field value. It needs to be less than 256 characters in length and unique per creative field. */
   value?: string;
 }
+const CreativeFieldValue = /*@__PURE__*/ __L.at(__c18, 3) as any as S.Schema<CreativeFieldValue>;
+
 export interface GetCreativeGroupsRequest {
   /** User profile ID associated with this request. */
   profileId: string;
   /** Creative group ID. */
   id: string;
 }
+const GetCreativeGroupsRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  4,
+) as any as S.Schema<GetCreativeGroupsRequest>;
+
 /** Contains properties of a creative group. */
 export interface CreativeGroup {
   /** Advertiser ID of this creative group. This is a required field on insertion. */
@@ -1804,12 +2408,16 @@ export interface CreativeGroup {
   /** Subaccount ID of this creative group. This is a read-only field that can be left blank. */
   subaccountId?: string;
 }
+const CreativeGroup = /*@__PURE__*/ __L.at(__c18, 5) as any as S.Schema<CreativeGroup>;
+
 export interface GetCreativesRequest {
   /** User profile ID associated with this request. */
   profileId: string;
   /** Creative ID. */
   id: string;
 }
+const GetCreativesRequest = /*@__PURE__*/ __L.at(__c18, 6) as any as S.Schema<GetCreativesRequest>;
+
 /** Video Offset */
 export interface VideoOffset {
   /** Duration, as a percentage of video duration. Do not set when offsetSeconds is set. Acceptable values are 0 to 100, inclusive. */
@@ -1817,6 +2425,8 @@ export interface VideoOffset {
   /** Duration, in seconds. Do not set when offsetPercentage is set. Acceptable values are 0 to 86399, inclusive. */
   offsetSeconds?: number;
 }
+const VideoOffset = /*@__PURE__*/ __L.at(__c18, 7) as any as S.Schema<VideoOffset>;
+
 export type CreativeCompatibilityItemEnum =
   | "DISPLAY"
   | "DISPLAY_INTERSTITIAL"
@@ -1827,6 +2437,9 @@ export type CreativeCompatibilityItemEnum =
 export type CreativeCompatibilityItemEnumList = Array<
   CreativeCompatibilityItemEnum | (string & {})
 >;
+const CreativeCompatibilityItemEnumList =
+  GeneratetagsPlacementsTagFormatsEnumList as any as S.Schema<CreativeCompatibilityItemEnumList>;
+
 export type ThirdPartyTrackingUrlThirdPartyUrlTypeEnum =
   | "IMPRESSION"
   | "CLICK_TRACKING"
@@ -1847,6 +2460,8 @@ export type ThirdPartyTrackingUrlThirdPartyUrlTypeEnum =
   | "RICH_MEDIA_BACKUP_IMPRESSION"
   | "VIDEO_SKIP"
   | "VIDEO_PROGRESS";
+const ThirdPartyTrackingUrlThirdPartyUrlTypeEnum = S.String;
+
 /** Third-party Tracking URL. */
 export interface ThirdPartyTrackingUrl {
   /** Third-party URL type for in-stream video and in-stream audio creatives. */
@@ -1854,7 +2469,17 @@ export interface ThirdPartyTrackingUrl {
   /** URL for the specified third-party URL type. */
   url?: string;
 }
+const ThirdPartyTrackingUrl = /*@__PURE__*/ __L.at(
+  __c19,
+  0,
+) as any as S.Schema<ThirdPartyTrackingUrl>;
+
 export type ThirdPartyTrackingUrlList = Array<ThirdPartyTrackingUrl>;
+const ThirdPartyTrackingUrlList = /*@__PURE__*/ __L.at(
+  __c19,
+  1,
+) as any as S.Schema<ThirdPartyTrackingUrlList>;
+
 export type UniversalAdIdRegistryEnum =
   | "OTHER"
   | "AD_ID_OFFICIAL"
@@ -1862,6 +2487,8 @@ export type UniversalAdIdRegistryEnum =
   | "DCM"
   | "ARPP"
   | "CUSV";
+const UniversalAdIdRegistryEnum = S.String;
+
 /** A Universal Ad ID as per the VAST 4.0 spec. Applicable to the following creative types: INSTREAM_AUDIO, INSTREAM_VIDEO and VPAID. */
 export interface UniversalAdId {
   /** ID value for this creative. Only alphanumeric characters and the following symbols are valid: "_/\-". Maximum length is 64 characters. Read only when registry is DCM. */
@@ -1869,6 +2496,8 @@ export interface UniversalAdId {
   /** Registry used for the Ad ID value. */
   registry?: UniversalAdIdRegistryEnum | (string & {});
 }
+const UniversalAdId = /*@__PURE__*/ __L.at(__c19, 2) as any as S.Schema<UniversalAdId>;
+
 /** Click-through URL */
 export interface CreativeClickThroughUrl {
   /** Custom click-through URL. Applicable if the landingPageId field is left unset. */
@@ -1878,16 +2507,27 @@ export interface CreativeClickThroughUrl {
   /** Read-only convenience field representing the actual URL that will be used for this click-through. The URL is computed as follows: - If landingPageId is specified then that landing page's URL is assigned to this field. - Otherwise, the customClickThroughUrl is assigned to this field. */
   computedClickThroughUrl?: string;
 }
+const CreativeClickThroughUrl = /*@__PURE__*/ __L.at(
+  __c19,
+  3,
+) as any as S.Schema<CreativeClickThroughUrl>;
+
 export type CreativeCustomEventAdvertiserCustomEventTypeEnum =
   | "ADVERTISER_EVENT_TIMER"
   | "ADVERTISER_EVENT_EXIT"
   | "ADVERTISER_EVENT_COUNTER";
+const CreativeCustomEventAdvertiserCustomEventTypeEnum = S.String;
+
 export type CreativeCustomEventArtworkTypeEnum =
   | "ARTWORK_TYPE_FLASH"
   | "ARTWORK_TYPE_HTML5"
   | "ARTWORK_TYPE_MIXED"
   | "ARTWORK_TYPE_IMAGE";
+const CreativeCustomEventArtworkTypeEnum = S.String;
+
 export type PopupWindowPropertiesPositionTypeEnum = "CENTER" | "COORDINATES";
+const PopupWindowPropertiesPositionTypeEnum = S.String;
+
 /** Offset Position. */
 export interface OffsetPosition {
   /** Offset distance from left side of an asset or a window. */
@@ -1895,6 +2535,8 @@ export interface OffsetPosition {
   /** Offset distance from top side of an asset or a window. */
   top?: number;
 }
+const OffsetPosition = /*@__PURE__*/ __L.at(__c19, 4) as any as S.Schema<OffsetPosition>;
+
 /** Popup Window Properties. */
 export interface PopupWindowProperties {
   /** Whether to display the browser address bar. */
@@ -1916,12 +2558,19 @@ export interface PopupWindowProperties {
   /** Whether to display the browser status bar. */
   showStatusBar?: boolean;
 }
+const PopupWindowProperties = /*@__PURE__*/ __L.at(
+  __c19,
+  5,
+) as any as S.Schema<PopupWindowProperties>;
+
 export type CreativeCustomEventTargetTypeEnum =
   | "TARGET_BLANK"
   | "TARGET_TOP"
   | "TARGET_SELF"
   | "TARGET_PARENT"
   | "TARGET_POPUP";
+const CreativeCustomEventTargetTypeEnum = S.String;
+
 /** Creative Custom Event. */
 export interface CreativeCustomEvent {
   /** Artwork label column, used to link events in Campaign Manager back to events in Studio. This is a required field and should not be modified after insertion. */
@@ -1945,12 +2594,21 @@ export interface CreativeCustomEvent {
   /** ID of this event. This is a required field and should not be modified after insertion. */
   id?: string;
 }
+const CreativeCustomEvent = /*@__PURE__*/ __L.at(__c19, 6) as any as S.Schema<CreativeCustomEvent>;
+
 export type CreativeCustomEventList = Array<CreativeCustomEvent>;
+const CreativeCustomEventList = /*@__PURE__*/ __L.at(
+  __c19,
+  7,
+) as any as S.Schema<CreativeCustomEventList>;
+
 export type CreativeArtworkTypeEnum =
   | "ARTWORK_TYPE_FLASH"
   | "ARTWORK_TYPE_HTML5"
   | "ARTWORK_TYPE_MIXED"
   | "ARTWORK_TYPE_IMAGE";
+const CreativeArtworkTypeEnum = S.String;
+
 /** Creative Click Tag. */
 export interface ClickTag {
   /** Parameter name for the specified click tag. For DISPLAY_IMAGE_GALLERY creative assets, this field must match the value of the creative asset's creativeAssetId.name field. */
@@ -1960,11 +2618,17 @@ export interface ClickTag {
   /** Parameter value for the specified click tag. This field contains a click-through url. */
   clickThroughUrl?: CreativeClickThroughUrl;
 }
+const ClickTag = /*@__PURE__*/ __L.at(__c20, 0) as any as S.Schema<ClickTag>;
+
 export type ClickTagList = Array<ClickTag>;
+const ClickTagList = /*@__PURE__*/ __L.at(__c20, 1) as any as S.Schema<ClickTagList>;
+
 export type CreativeSyntheticContentAttestationStatusEnum =
   | "SYNTHETIC_CONTENT_ATTESTATION_STATUS_UNSPECIFIED"
   | "IS_SYNTHETIC"
   | "NOT_SYNTHETIC";
+const CreativeSyntheticContentAttestationStatusEnum = S.String;
+
 /** Creative Field Assignment. */
 export interface CreativeFieldAssignment {
   /** ID of the creative field value. */
@@ -1972,7 +2636,17 @@ export interface CreativeFieldAssignment {
   /** ID of the creative field. */
   creativeFieldId?: string;
 }
+const CreativeFieldAssignment = /*@__PURE__*/ __L.at(
+  __c20,
+  2,
+) as any as S.Schema<CreativeFieldAssignment>;
+
 export type CreativeFieldAssignmentList = Array<CreativeFieldAssignment>;
+const CreativeFieldAssignmentList = /*@__PURE__*/ __L.at(
+  __c20,
+  3,
+) as any as S.Schema<CreativeFieldAssignmentList>;
+
 export type CreativeBackupImageFeaturesItemEnum =
   | "CSS_FONT_FACE"
   | "CSS_BACKGROUND_SIZE"
@@ -2043,7 +2717,12 @@ export type CreativeBackupImageFeaturesItemEnum =
 export type CreativeBackupImageFeaturesItemEnumList = Array<
   CreativeBackupImageFeaturesItemEnum | (string & {})
 >;
+const CreativeBackupImageFeaturesItemEnumList =
+  GeneratetagsPlacementsTagFormatsEnumList as any as S.Schema<CreativeBackupImageFeaturesItemEnumList>;
+
 export type TargetWindowTargetWindowOptionEnum = "NEW_WINDOW" | "CURRENT_WINDOW" | "CUSTOM";
+const TargetWindowTargetWindowOptionEnum = S.String;
+
 /** Target Window. */
 export interface TargetWindow {
   /** Type of browser window for which the backup image of the flash creative can be displayed. */
@@ -2051,7 +2730,11 @@ export interface TargetWindow {
   /** User-entered value. */
   customHtml?: string;
 }
+const TargetWindow = /*@__PURE__*/ __L.at(__c20, 4) as any as S.Schema<TargetWindow>;
+
 export type SizeList = Array<Size>;
+const SizeList = /*@__PURE__*/ __L.at(__c20, 5) as any as S.Schema<SizeList>;
+
 /** Online Behavioral Advertiser icon. */
 export interface ObaIcon {
   /** OBA icon x coordinate position. Accepted values are left or right. */
@@ -2071,6 +2754,8 @@ export interface ObaIcon {
   /** URL to track click when an OBA icon is clicked. */
   iconClickTrackingUrl?: string;
 }
+const ObaIcon = /*@__PURE__*/ __L.at(__c20, 6) as any as S.Schema<ObaIcon>;
+
 export type CreativeTypeEnum =
   | "IMAGE"
   | "DISPLAY_REDIRECT"
@@ -2097,6 +2782,8 @@ export type CreativeTypeEnum =
   | "DISPLAY_IMAGE_GALLERY"
   | "BRAND_SAFE_DEFAULT_INSTREAM_VIDEO"
   | "INSTREAM_AUDIO";
+const CreativeTypeEnum = S.String;
+
 export type CreativeAuthoringSourceEnum =
   | "CREATIVE_AUTHORING_SOURCE_DCM"
   | "CREATIVE_AUTHORING_SOURCE_DBM"
@@ -2109,8 +2796,14 @@ export type CreativeAuthoringSourceEnum =
   | "CREATIVE_AUTHORING_SOURCE_TRACKTO_STUDIO"
   | "CREATIVE_AUTHORING_SOURCE_BORNLOGIC"
   | "CREATIVE_AUTHORING_SOURCE_BEGEN_AI";
+const CreativeAuthoringSourceEnum = S.String;
+
 export type CreativeAuthoringToolEnum = "NINJA" | "SWIFFY";
+const CreativeAuthoringToolEnum = S.String;
+
 export type FsCommandPositionOptionEnum = "CENTERED" | "DISTANCE_FROM_TOP_LEFT_CORNER";
+const FsCommandPositionOptionEnum = S.String;
+
 /** FsCommand. */
 export interface FsCommand {
   /** Distance from the top of the browser. Applicable when positionOption is DISTANCE_FROM_TOP_LEFT_CORNER. */
@@ -2124,23 +2817,37 @@ export interface FsCommand {
   /** Height of the window. */
   windowHeight?: number;
 }
+const FsCommand = /*@__PURE__*/ __L.at(__c20, 7) as any as S.Schema<FsCommand>;
+
 export type CreativeAssetOrientationEnum = "LANDSCAPE" | "PORTRAIT" | "SQUARE";
+const CreativeAssetOrientationEnum = S.String;
+
 export type CreativeAssetAlignmentEnum =
   | "ALIGNMENT_TOP"
   | "ALIGNMENT_RIGHT"
   | "ALIGNMENT_BOTTOM"
   | "ALIGNMENT_LEFT";
+const CreativeAssetAlignmentEnum = S.String;
+
 export type CreativeAssetWindowModeEnum = "OPAQUE" | "WINDOW" | "TRANSPARENT";
+const CreativeAssetWindowModeEnum = S.String;
+
 export type CreativeAssetChildAssetTypeEnum =
   | "CHILD_ASSET_TYPE_FLASH"
   | "CHILD_ASSET_TYPE_VIDEO"
   | "CHILD_ASSET_TYPE_IMAGE"
   | "CHILD_ASSET_TYPE_DATA";
+const CreativeAssetChildAssetTypeEnum = S.String;
+
 export type CreativeAssetPositionTopUnitEnum =
   | "OFFSET_UNIT_PIXEL"
   | "OFFSET_UNIT_PERCENT"
   | "OFFSET_UNIT_PIXEL_FROM_CENTER";
+const CreativeAssetPositionTopUnitEnum = S.String;
+
 export type CreativeAssetIdTypeEnum = "IMAGE" | "FLASH" | "VIDEO" | "HTML" | "HTML_IMAGE" | "AUDIO";
+const CreativeAssetIdTypeEnum = S.String;
+
 /** Creative Asset ID. */
 export interface CreativeAssetId {
   /** Type of asset to upload. This is a required field. FLASH and IMAGE are no longer supported for new uploads. All image assets should use HTML_IMAGE. */
@@ -2148,6 +2855,8 @@ export interface CreativeAssetId {
   /** Name of the creative asset. This is a required field while inserting an asset. After insertion, this assetIdentifier is used to identify the uploaded asset. Characters in the name must be alphanumeric or one of the following: ".-_ ". Spaces are allowed. */
   name?: string;
 }
+const CreativeAssetId = /*@__PURE__*/ __L.at(__c21, 0) as any as S.Schema<CreativeAssetId>;
+
 export type CreativeAssetDetectedFeaturesItemEnum =
   | "CSS_FONT_FACE"
   | "CSS_BACKGROUND_SIZE"
@@ -2218,6 +2927,9 @@ export type CreativeAssetDetectedFeaturesItemEnum =
 export type CreativeAssetDetectedFeaturesItemEnumList = Array<
   CreativeAssetDetectedFeaturesItemEnum | (string & {})
 >;
+const CreativeAssetDetectedFeaturesItemEnumList =
+  GeneratetagsPlacementsTagFormatsEnumList as any as S.Schema<CreativeAssetDetectedFeaturesItemEnumList>;
+
 export type CreativeAssetDisplayTypeEnum =
   | "ASSET_DISPLAY_TYPE_INPAGE"
   | "ASSET_DISPLAY_TYPE_FLOATING"
@@ -2229,14 +2941,20 @@ export type CreativeAssetDisplayTypeEnum =
   | "ASSET_DISPLAY_TYPE_VPAID_LINEAR"
   | "ASSET_DISPLAY_TYPE_VPAID_NON_LINEAR"
   | "ASSET_DISPLAY_TYPE_BACKDROP";
+const CreativeAssetDisplayTypeEnum = S.String;
+
 export type CreativeAssetArtworkTypeEnum =
   | "ARTWORK_TYPE_FLASH"
   | "ARTWORK_TYPE_HTML5"
   | "ARTWORK_TYPE_MIXED"
   | "ARTWORK_TYPE_IMAGE";
+const CreativeAssetArtworkTypeEnum = S.String;
+
 export type CreativeAssetStartTimeTypeEnum =
   | "ASSET_START_TIME_TYPE_NONE"
   | "ASSET_START_TIME_TYPE_CUSTOM";
+const CreativeAssetStartTimeTypeEnum = S.String;
+
 export type CreativeAssetRoleEnum =
   | "PRIMARY"
   | "BACKUP_IMAGE"
@@ -2248,14 +2966,20 @@ export type CreativeAssetRoleEnum =
   | "ALTERNATE_VIDEO"
   | "PARENT_AUDIO"
   | "TRANSCODED_AUDIO";
+const CreativeAssetRoleEnum = S.String;
+
 export type CreativeAssetPositionLeftUnitEnum =
   | "OFFSET_UNIT_PIXEL"
   | "OFFSET_UNIT_PERCENT"
   | "OFFSET_UNIT_PIXEL_FROM_CENTER";
+const CreativeAssetPositionLeftUnitEnum = S.String;
+
 export type CreativeAssetDurationTypeEnum =
   | "ASSET_DURATION_TYPE_AUTO"
   | "ASSET_DURATION_TYPE_NONE"
   | "ASSET_DURATION_TYPE_CUSTOM";
+const CreativeAssetDurationTypeEnum = S.String;
+
 /** Creative Asset. */
 export interface CreativeAsset {
   /** Whether the asset is horizontally locked. This is a read-only field. Applicable to the following creative types: all RICH_MEDIA. */
@@ -2359,7 +3083,11 @@ export interface CreativeAsset {
   /** Size of an asset when collapsed. This is a read-only field. Applicable to the following creative types: all RICH_MEDIA and all VPAID. Additionally, applicable to assets whose displayType is ASSET_DISPLAY_TYPE_EXPANDING or ASSET_DISPLAY_TYPE_PEEL_DOWN. */
   collapsedSize?: Size;
 }
+const CreativeAsset = /*@__PURE__*/ __L.at(__c21, 1) as any as S.Schema<CreativeAsset>;
+
 export type CreativeAssetList = Array<CreativeAsset>;
+const CreativeAssetList = /*@__PURE__*/ __L.at(__c21, 2) as any as S.Schema<CreativeAssetList>;
+
 /** Contains properties of a Creative. */
 export interface Creative {
   /** Subaccount ID of this creative. This field, if left unset, will be auto-generated for both insert and update operations. Applicable to all creative types. */
@@ -2491,12 +3219,19 @@ export interface Creative {
   /** Account ID of this creative. This field, if left unset, will be auto-generated for both insert and update operations. Applicable to all creative types. */
   accountId?: string;
 }
+const Creative = /*@__PURE__*/ __L.at(__c21, 3) as any as S.Schema<Creative>;
+
 export interface GetDirectorySitesRequest {
   /** User profile ID associated with this request. */
   profileId: string;
   /** Directory site ID. */
   id: string;
 }
+const GetDirectorySitesRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  4,
+) as any as S.Schema<GetDirectorySitesRequest>;
+
 /** Google Ad Manager Settings */
 export interface DfpSettings {
   /** Whether this directory site accepts programmatic placements. */
@@ -2510,6 +3245,8 @@ export interface DfpSettings {
   /** Whether this directory site accepts publisher-paid tags. */
   pubPaidPlacementAccepted?: boolean;
 }
+const DfpSettings = /*@__PURE__*/ __L.at(__c21, 5) as any as S.Schema<DfpSettings>;
+
 /** Directory Site Settings */
 export interface DirectorySiteSettings {
   /** Directory site Ad Manager settings. */
@@ -2521,6 +3258,11 @@ export interface DirectorySiteSettings {
   /** Whether this directory site has disabled active view creatives. */
   activeViewOptOut?: boolean;
 }
+const DirectorySiteSettings = /*@__PURE__*/ __L.at(
+  __c21,
+  6,
+) as any as S.Schema<DirectorySiteSettings>;
+
 export type DirectorySiteInpageTagFormatsItemEnum =
   | "STANDARD"
   | "IFRAME_JAVASCRIPT_INPAGE"
@@ -2529,6 +3271,9 @@ export type DirectorySiteInpageTagFormatsItemEnum =
 export type DirectorySiteInpageTagFormatsItemEnumList = Array<
   DirectorySiteInpageTagFormatsItemEnum | (string & {})
 >;
+const DirectorySiteInpageTagFormatsItemEnumList =
+  GeneratetagsPlacementsTagFormatsEnumList as any as S.Schema<DirectorySiteInpageTagFormatsItemEnumList>;
+
 export type DirectorySiteInterstitialTagFormatsItemEnum =
   | "IFRAME_JAVASCRIPT_INTERSTITIAL"
   | "INTERNAL_REDIRECT_INTERSTITIAL"
@@ -2536,6 +3281,9 @@ export type DirectorySiteInterstitialTagFormatsItemEnum =
 export type DirectorySiteInterstitialTagFormatsItemEnumList = Array<
   DirectorySiteInterstitialTagFormatsItemEnum | (string & {})
 >;
+const DirectorySiteInterstitialTagFormatsItemEnumList =
+  GeneratetagsPlacementsTagFormatsEnumList as any as S.Schema<DirectorySiteInterstitialTagFormatsItemEnumList>;
+
 /** DirectorySites contains properties of a website from the Site Directory. Sites need to be added to an account via the Sites resource before they can be assigned to a placement. */
 export interface DirectorySite {
   /** ID of this directory site. This is a read-only, auto-generated field. */
@@ -2557,10 +3305,17 @@ export interface DirectorySite {
   /** Name of this directory site. */
   name?: string;
 }
+const DirectorySite = /*@__PURE__*/ __L.at(__c21, 7) as any as S.Schema<DirectorySite>;
+
 export interface GetDynamicFeedsRequest {
   /** Required. Dynamic feed ID. */
   dynamicFeedId: string;
 }
+const GetDynamicFeedsRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  0,
+) as any as S.Schema<GetDynamicFeedsRequest>;
+
 /** Contains the meta data of the content source. This is a read-only field. */
 export interface ContentSourceMetaData {
   /** Output only. The number of rows in the content source. */
@@ -2572,10 +3327,17 @@ export interface ContentSourceMetaData {
   /** Output only. The charset of the content source. */
   charset?: string;
 }
+const ContentSourceMetaData = /*@__PURE__*/ __L.at(
+  __c22,
+  1,
+) as any as S.Schema<ContentSourceMetaData>;
+
 export type ContentSourceResourceTypeEnum =
   | "RESOURCE_TYPE_UNSPECIFIED"
   | "RESOURCE_TYPE_GOOGLE_SPREADSHEET"
   | "RESOURCE_TYPE_REMOTE_FILE";
+const ContentSourceResourceTypeEnum = S.String;
+
 /** Contains the content source of the dynamic feed. */
 export interface ContentSource {
   /** Output only. Metadata of the content source. It contains the number of rows and the column names from resource link. This is a read-only field. */
@@ -2591,6 +3353,8 @@ export interface ContentSource {
   /** Output only. The last modified timestamp of the content source. This is a read-only field. */
   lastModifiedInfo?: LastModifiedInfo;
 }
+const ContentSource = /*@__PURE__*/ __L.at(__c22, 2) as any as S.Schema<ContentSource>;
+
 export type FieldErrorIngestionErrorEnum =
   | "UNKNOWN_PARSING_ERROR"
   | "MISSING_ID"
@@ -2634,6 +3398,8 @@ export type FieldErrorIngestionErrorEnum =
   | "NO_ACTIVE_DEFAULT_ROW_IN_DATE_RANGE"
   | "PAYLOAD_LIMIT_EXCEEDED"
   | "SSL_NOT_COMPLIANT";
+const FieldErrorIngestionErrorEnum = S.String;
+
 /** Contains the field error of the dynamic feed. */
 export interface FieldError {
   /** Output only. The ID of the field. */
@@ -2647,7 +3413,11 @@ export interface FieldError {
   /** Output only. The name of the field. */
   fieldName?: string;
 }
+const FieldError = /*@__PURE__*/ __L.at(__c22, 3) as any as S.Schema<FieldError>;
+
 export type FieldErrorList = Array<FieldError>;
+const FieldErrorList = /*@__PURE__*/ __L.at(__c22, 4) as any as S.Schema<FieldErrorList>;
+
 /** Contains the ingestion error record of the dynamic feed. limited to 100 records. */
 export interface IngestionErrorRecord {
   /** Output only. The list of field errors of the ingestion error record. */
@@ -2655,7 +3425,17 @@ export interface IngestionErrorRecord {
   /** Output only. The record ID of the ingestion error record. */
   recordId?: string;
 }
+const IngestionErrorRecord = /*@__PURE__*/ __L.at(
+  __c22,
+  5,
+) as any as S.Schema<IngestionErrorRecord>;
+
 export type IngestionErrorRecordList = Array<IngestionErrorRecord>;
+const IngestionErrorRecordList = /*@__PURE__*/ __L.at(
+  __c22,
+  6,
+) as any as S.Schema<IngestionErrorRecordList>;
+
 export type FeedIngestionStatusStateEnum =
   | "FEED_PROCESSING_STATE_UNKNOWN"
   | "CANCELLED"
@@ -2667,6 +3447,8 @@ export type FeedIngestionStatusStateEnum =
   | "PUBLISHING"
   | "PUBLISHED_SUCCESS"
   | "PUBLISHED_FAILURE";
+const FeedIngestionStatusStateEnum = S.String;
+
 /** Contains the ingestion status of the dynamic feed. */
 export interface IngestionStatus {
   /** Output only. The number of active rows in the feed. */
@@ -2680,6 +3462,8 @@ export interface IngestionStatus {
   /** Output only. The total number of warnings in the feed. */
   numWarningsTotal?: string;
 }
+const IngestionStatus = /*@__PURE__*/ __L.at(__c22, 7) as any as S.Schema<IngestionStatus>;
+
 /** Contains the ingestion status of the dynamic feed. Feed ingestion is an asynchronous process. If the feed create request is successful, feed ingestion will be processed in the background, including validation, assets retrieval, and saving the data from the resource link. The processing time is dependent on the data size in the resource link. This read-only status field contains the current stage of that processing and its ingestion state. */
 export interface FeedIngestionStatus {
   /** Output only. The ingestion error records of the feed. */
@@ -2689,7 +3473,11 @@ export interface FeedIngestionStatus {
   /** Output only. The ingestion status of the feed. */
   ingestionStatus?: IngestionStatus;
 }
+const FeedIngestionStatus = /*@__PURE__*/ __L.at(__c23, 0) as any as S.Schema<FeedIngestionStatus>;
+
 export type DynamicFeedStatusEnum = "STATUS_UNKNOWN" | "ACTIVE" | "INACTIVE" | "DELETED";
+const DynamicFeedStatusEnum = S.String;
+
 export type FeedFieldTypeEnum =
   | "TYPE_UNKNOWN"
   | "STRING"
@@ -2725,6 +3513,8 @@ export type FeedFieldTypeEnum =
   | "THIRD_PARTY_SERVED_URL"
   | "CM360_DYNAMIC_TARGETING_KEY"
   | "DV360_LINE_ITEM_ID";
+const FeedFieldTypeEnum = S.String;
+
 /** Each field of the element. This is a required field. */
 export interface FeedField {
   /** Optional. Whether the field is able to display. Could be set as true when the field type is not in any of the following and the field is not filterable: - COUNTRY_CODE_ISO - CITY - REGION - POSTAL_CODE - METRO - GEO_CANONICAL - USERLIST_ID - CONTEXTUAL_KEYWORD - CM360_DYNAMIC_TARGETING_KEY - WEIGHT */
@@ -2742,7 +3532,11 @@ export interface FeedField {
   /** Optional. Whether the field is required and should not be empty in the feed. Could be set as true when the field type is any of the following: - GPA_SERVED_IMAGE_URL - GPA_SERVED_ASSET_URL - ASSET_LIBRARY_HANDLE - ASSET_LIBRARY_VIDEO_HANDLE - ASSET_LIBRARY_DIRECTORY_HANDLE */
   required?: boolean;
 }
+const FeedField = /*@__PURE__*/ __L.at(__c23, 1) as any as S.Schema<FeedField>;
+
 export type FeedFieldList = Array<FeedField>;
+const FeedFieldList = /*@__PURE__*/ __L.at(__c23, 2) as any as S.Schema<FeedFieldList>;
+
 /** Contains the element of the dynamic feed. */
 export interface Element {
   /** Required. The field ID to specify the field used for uniquely identifying the feed row. This is a required field. */
@@ -2770,6 +3564,8 @@ export interface Element {
   /** Optional. The field ID to specify the field that represents the default field in the feed. */
   defaultFieldId?: number;
 }
+const Element = /*@__PURE__*/ __L.at(__c23, 3) as any as S.Schema<Element>;
+
 /** Contains the schedule of the dynamic feed. */
 export interface FeedSchedule {
   /** Optional. The hour of the day to start the feed. It is applicable if the repeat value is equal to 1. Default value is 0. */
@@ -2783,6 +3579,8 @@ export interface FeedSchedule {
   /** Optional. Whether the schedule is enabled. */
   scheduleEnabled?: boolean;
 }
+const FeedSchedule = /*@__PURE__*/ __L.at(__c23, 4) as any as S.Schema<FeedSchedule>;
+
 /** *Beta:* This API resource is available only to a very limited number of customers. If you'd like to use this resource, please reach out to your Google sales representative. Contains dynamic feed information. */
 export interface DynamicFeed {
   /** Required. The content source of the dynamic feed. This is a required field. */
@@ -2808,13 +3606,26 @@ export interface DynamicFeed {
   /** Optional. The schedule of the dynamic feed. It can be set if the feed is published. */
   feedSchedule?: FeedSchedule;
 }
+const DynamicFeed = /*@__PURE__*/ __L.at(__c23, 5) as any as S.Schema<DynamicFeed>;
+
 export interface GetDynamicProfilesRequest {
   /** Required. Dynamic profile ID. */
   dynamicProfileId: string;
 }
+const GetDynamicProfilesRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  6,
+) as any as S.Schema<GetDynamicProfilesRequest>;
+
 export type DynamicProfileArchiveStatusEnum = "ARCHIVE_STATUS_UNKNOWN" | "UNARCHIVED" | "ARCHIVED";
+const DynamicProfileArchiveStatusEnum = S.String;
+
 export type DynamicProfileStatusEnum = "STATUS_UNKNOWN" | "ACTIVE" | "INACTIVE" | "DELETED";
+const DynamicProfileStatusEnum = S.String;
+
 export type ProximityFilterRadiusUnitTypeEnum = "RADIUS_UNIT_TYPE_UNKNOWN" | "KILOMETERS" | "MILES";
+const ProximityFilterRadiusUnitTypeEnum = S.String;
+
 export type ProximityFilterRadiusBucketTypeEnum =
   | "RADIUS_BUCKET_TYPE_UNKNOWN"
   | "SMALL"
@@ -2822,6 +3633,8 @@ export type ProximityFilterRadiusBucketTypeEnum =
   | "LARGE"
   | "MULTI_REGIONAL"
   | "NATIONAL";
+const ProximityFilterRadiusBucketTypeEnum = S.String;
+
 /** Contains proximity filter information. */
 export interface ProximityFilter {
   /** Optional. Radius length in units defined by radius_units. */
@@ -2833,6 +3646,8 @@ export interface ProximityFilter {
   /** Optional. The radius bucket type of the proximity filter */
   radiusBucketType?: ProximityFilterRadiusBucketTypeEnum | (string & {});
 }
+const ProximityFilter = /*@__PURE__*/ __L.at(__c23, 7) as any as S.Schema<ProximityFilter>;
+
 /** Contains custom value field information. */
 export interface CustomValueField {
   /** Optional. Field ID in the element. */
@@ -2840,13 +3655,22 @@ export interface CustomValueField {
   /** Optional. Custom key used to match for auto filtering. */
   requestKey?: string;
 }
+const CustomValueField = /*@__PURE__*/ __L.at(__c24, 0) as any as S.Schema<CustomValueField>;
+
 export type CustomValueFieldList = Array<CustomValueField>;
+const CustomValueFieldList = /*@__PURE__*/ __L.at(
+  __c24,
+  1,
+) as any as S.Schema<CustomValueFieldList>;
+
 export type DynamicRulesRuleTypeEnum =
   | "RULE_SET_TYPE_UNKNOWN"
   | "OPEN"
   | "AUTO"
   | "CUSTOM"
   | "PROXIMITY_TARGETING";
+const DynamicRulesRuleTypeEnum = S.String;
+
 /** Contains remarketing value attribute information. */
 export interface RemarketingValueAttribute {
   /** Optional. Field ID in the element. */
@@ -2854,7 +3678,17 @@ export interface RemarketingValueAttribute {
   /** Optional. Remarketing user attribute IDs for auto filtering. */
   userAttributeIds?: StringList;
 }
+const RemarketingValueAttribute = /*@__PURE__*/ __L.at(
+  __c24,
+  2,
+) as any as S.Schema<RemarketingValueAttribute>;
+
 export type RemarketingValueAttributeList = Array<RemarketingValueAttribute>;
+const RemarketingValueAttributeList = /*@__PURE__*/ __L.at(
+  __c24,
+  3,
+) as any as S.Schema<RemarketingValueAttributeList>;
+
 /** Contains dependent field value information. */
 export interface DependentFieldValue {
   /** Optional. The ID of the element that value's field will match against. */
@@ -2864,18 +3698,24 @@ export interface DependentFieldValue {
   /** Optional. The ID of the dynamic feed that value's field will match against. */
   dynamicFeedId?: string;
 }
+const DependentFieldValue = /*@__PURE__*/ __L.at(__c24, 4) as any as S.Schema<DependentFieldValue>;
+
 export type FieldFilterMatchTypeEnum =
   | "LHS_MATCH_TYPE_UNKNOWN"
   | "EQUALS_OR_UNRESTRICTED"
   | "EQUALS"
   | "UNRESTRICTED"
   | "NOT_EQUALS";
+const FieldFilterMatchTypeEnum = S.String;
+
 export type FieldFilterValueTypeEnum =
   | "RHS_VALUE_TYPE_UNKNOWN"
   | "STRING"
   | "REQUEST"
   | "BOOL"
   | "DEPENDENT";
+const FieldFilterValueTypeEnum = S.String;
+
 /** Contains request value information. */
 export interface RequestValue {
   /** Optional. User attribute IDs in the request. Used only when the field type is REMARKETING_VALUE or USER_ATTRIBUTE_ID. */
@@ -2885,6 +3725,8 @@ export interface RequestValue {
   /** Optional. Custom key in the request. Used only when the field type is CUSTOM_VALUE. */
   key?: string;
 }
+const RequestValue = /*@__PURE__*/ __L.at(__c24, 5) as any as S.Schema<RequestValue>;
+
 /** Contains field filter information. */
 export interface FieldFilter {
   /** Optional. The boolean values, only applicable when rhs_value_type is BOOL. */
@@ -2902,13 +3744,21 @@ export interface FieldFilter {
   /** Optional. The request value, only applicable when rhs_value_type is REQUEST. */
   requestValue?: RequestValue;
 }
+const FieldFilter = /*@__PURE__*/ __L.at(__c24, 6) as any as S.Schema<FieldFilter>;
+
 export type FieldFilterList = Array<FieldFilter>;
+const FieldFilterList = /*@__PURE__*/ __L.at(__c24, 7) as any as S.Schema<FieldFilterList>;
+
 /** Contains a list of field filters that the given custom rule will apply. */
 export interface RuleBlock {
   /** Optional. A list of non-auto field filters */
   fieldFilter?: FieldFilterList;
 }
+const RuleBlock = /*@__PURE__*/ __L.at(__c25, 0) as any as S.Schema<RuleBlock>;
+
 export type RuleBlockList = Array<RuleBlock>;
+const RuleBlockList = /*@__PURE__*/ __L.at(__c25, 1) as any as S.Schema<RuleBlockList>;
+
 /** Contains custom rule information. */
 export interface CustomRule {
   /** Optional. Priority of the custom rule. */
@@ -2918,12 +3768,18 @@ export interface CustomRule {
   /** Optional. Name of this custom rule. */
   name?: string;
 }
+const CustomRule = /*@__PURE__*/ __L.at(__c25, 2) as any as S.Schema<CustomRule>;
+
 export type CustomRuleList = Array<CustomRule>;
+const CustomRuleList = /*@__PURE__*/ __L.at(__c25, 3) as any as S.Schema<CustomRuleList>;
+
 export type DynamicRulesRotationTypeEnum =
   | "ROTATION_TYPE_UNKNOWN"
   | "RANDOM"
   | "OPTIMIZED"
   | "WEIGHTED";
+const DynamicRulesRotationTypeEnum = S.String;
+
 /** Contains dynamic rules information. */
 export interface DynamicRules {
   /** Optional. The proximity targeting rules of the dynamic feed, only applicable when rule type is PROXIMITY_TARGETING. */
@@ -2943,6 +3799,8 @@ export interface DynamicRules {
   /** Optional. The field ID for the feed that will be used for weighted rotation, only applicable when rotation type is WEIGHTED. */
   weightFieldId?: number;
 }
+const DynamicRules = /*@__PURE__*/ __L.at(__c25, 4) as any as S.Schema<DynamicRules>;
+
 /** Contains dynamic profile specific settings for an associated dynamic feed. */
 export interface DynamicProfileFeedSettings {
   /** Optional. Dynamic rules for row selection for the given dynamic feed in the given dynamic profile. */
@@ -2952,7 +3810,17 @@ export interface DynamicProfileFeedSettings {
   /** Optional. Dynamic feed ID associated with dynamic profile version. */
   dynamicFeedId?: string;
 }
+const DynamicProfileFeedSettings = /*@__PURE__*/ __L.at(
+  __c25,
+  5,
+) as any as S.Schema<DynamicProfileFeedSettings>;
+
 export type DynamicProfileFeedSettingsList = Array<DynamicProfileFeedSettings>;
+const DynamicProfileFeedSettingsList = /*@__PURE__*/ __L.at(
+  __c25,
+  6,
+) as any as S.Schema<DynamicProfileFeedSettingsList>;
+
 /** Contains dynamic profile version information. */
 export interface DynamicProfileVersion {
   /** Optional. Associated dynamic feeds and their settings (including dynamic rules) for this dynamic profile version. */
@@ -2960,6 +3828,11 @@ export interface DynamicProfileVersion {
   /** Output only. Version ID of this dynamic profile version. This is a read-only, auto-generated field. -1 for draft version, 0+ for published versions. */
   versionId?: string;
 }
+const DynamicProfileVersion = /*@__PURE__*/ __L.at(
+  __c25,
+  7,
+) as any as S.Schema<DynamicProfileVersion>;
+
 /** *Beta:* This API resource is available only to a very limited number of customers. If you'd like to use this resource, please reach out to your Google sales representative. Contains dynamic profile information. */
 export interface DynamicProfile {
   /** Output only. Unique ID of this dynamic profile. This is a read-only, auto-generated field. */
@@ -2985,18 +3858,28 @@ export interface DynamicProfile {
   /** Optional. Draft version of the dynamic profile. */
   draft?: DynamicProfileVersion;
 }
+const DynamicProfile = /*@__PURE__*/ __L.at(__c26, 0) as any as S.Schema<DynamicProfile>;
+
 export interface GetEventTagsRequest {
   /** Event tag ID. */
   id: string;
   /** User profile ID associated with this request. */
   profileId: string;
 }
+const GetEventTagsRequest = /*@__PURE__*/ __L.at(__c26, 1) as any as S.Schema<GetEventTagsRequest>;
+
 export type EventTagTypeEnum =
   | "IMPRESSION_IMAGE_EVENT_TAG"
   | "IMPRESSION_JAVASCRIPT_EVENT_TAG"
   | "CLICK_THROUGH_EVENT_TAG";
+const EventTagTypeEnum = S.String;
+
 export type EventTagStatusEnum = "ENABLED" | "DISABLED";
+const EventTagStatusEnum = S.String;
+
 export type EventTagSiteFilterTypeEnum = "ALLOWLIST" | "BLOCKLIST";
+const EventTagSiteFilterTypeEnum = S.String;
+
 /** Contains properties of an event tag. */
 export interface EventTag {
   /** Whether to remove this event tag from ads that are trafficked through Display & Video 360 to Ad Exchange. This may be useful if the event tag uses a pixel that is unapproved for Ad Exchange bids on one or more networks, such as the Google Display Network. */
@@ -3036,20 +3919,30 @@ export interface EventTag {
   /** Whether this event tag should be automatically enabled for all of the advertiser's campaigns and ads. */
   enabledByDefault?: boolean;
 }
+const EventTag = /*@__PURE__*/ __L.at(__c26, 2) as any as S.Schema<EventTag>;
+
 export interface GetFilesRequest {
   /** The ID of the report. */
   reportId: string;
   /** The ID of the report file. */
   fileId: string;
 }
+const GetFilesRequest = /*@__PURE__*/ __L.at(__c26, 3) as any as S.Schema<GetFilesRequest>;
+
 export type FileFormatEnum = "CSV" | "EXCEL";
+const FileFormatEnum = S.String;
+
 export type FileStatusEnum = "PROCESSING" | "REPORT_AVAILABLE" | "FAILED" | "CANCELLED" | "QUEUED";
+const FileStatusEnum = S.String;
+
 export interface FileUrls {
   /** The URL for downloading the report data through a browser. */
   browserUrl?: string;
   /** The URL for downloading the report data through the API. */
   apiUrl?: string;
 }
+const FileUrls = /*@__PURE__*/ __L.at(__c26, 4) as any as S.Schema<FileUrls>;
+
 export type DateRangeRelativeDateRangeEnum =
   | "TODAY"
   | "YESTERDAY"
@@ -3068,6 +3961,8 @@ export type DateRangeRelativeDateRangeEnum =
   | "LAST_24_MONTHS"
   | "LAST_14_DAYS"
   | "LAST_60_DAYS";
+const DateRangeRelativeDateRangeEnum = S.String;
+
 /** Represents a date range. */
 export interface DateRange {
   startDate?: string;
@@ -3077,6 +3972,8 @@ export interface DateRange {
   relativeDateRange?: DateRangeRelativeDateRangeEnum | (string & {});
   endDate?: string;
 }
+const DateRange = /*@__PURE__*/ __L.at(__c26, 5) as any as S.Schema<DateRange>;
+
 /** Represents a File resource. A file contains the metadata for a report run. It shows the status of the run and holds the URLs to the generated report data if the run is finished and the status is "REPORT_AVAILABLE". */
 export interface File {
   /** Etag of this resource. */
@@ -3100,13 +3997,22 @@ export interface File {
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#file". */
   kind?: string;
 }
+const File = /*@__PURE__*/ __L.at(__c26, 6) as any as S.Schema<File>;
+
 export interface GetFloodlightActivitiesRequest {
   /** User profile ID associated with this request. */
   profileId: string;
   /** Floodlight activity ID. */
   id: string;
 }
+const GetFloodlightActivitiesRequest = /*@__PURE__*/ __L.at(
+  __c26,
+  7,
+) as any as S.Schema<GetFloodlightActivitiesRequest>;
+
 export type FloodlightActivityTagFormatEnum = "HTML" | "XHTML";
+const FloodlightActivityTagFormatEnum = S.String;
+
 /** Dynamic Tag */
 export interface FloodlightActivityDynamicTag {
   /** Name of this tag. */
@@ -3116,7 +4022,17 @@ export interface FloodlightActivityDynamicTag {
   /** ID of this dynamic tag. This is a read-only, auto-generated field. */
   id?: string;
 }
+const FloodlightActivityDynamicTag = /*@__PURE__*/ __L.at(
+  __c27,
+  0,
+) as any as S.Schema<FloodlightActivityDynamicTag>;
+
 export type FloodlightActivityDynamicTagList = Array<FloodlightActivityDynamicTag>;
+const FloodlightActivityDynamicTagList = /*@__PURE__*/ __L.at(
+  __c27,
+  1,
+) as any as S.Schema<FloodlightActivityDynamicTagList>;
+
 export type FloodlightActivityConversionCategoryEnum =
   | "CONVERSION_CATEGORY_DEFAULT"
   | "CONVERSION_CATEGORY_PURCHASE"
@@ -3135,6 +4051,8 @@ export type FloodlightActivityConversionCategoryEnum =
   | "CONVERSION_CATEGORY_QUALIFIED_LEAD"
   | "CONVERSION_CATEGORY_CONVERTED_LEAD"
   | "CONVERSION_CATEGORY_IN_APP_AD_REVENUE";
+const FloodlightActivityConversionCategoryEnum = S.String;
+
 /** Publisher Dynamic Tag */
 export interface FloodlightActivityPublisherDynamicTag {
   /** Whether this tag is applicable only for click-throughs. */
@@ -3150,8 +4068,18 @@ export interface FloodlightActivityPublisherDynamicTag {
   /** Directory site ID of this dynamic tag. This is a write-only field that can be used as an alternative to the siteId field. When this resource is retrieved, only the siteId field will be populated. */
   directorySiteId?: string;
 }
+const FloodlightActivityPublisherDynamicTag = /*@__PURE__*/ __L.at(
+  __c27,
+  2,
+) as any as S.Schema<FloodlightActivityPublisherDynamicTag>;
+
 export type FloodlightActivityPublisherDynamicTagList =
   Array<FloodlightActivityPublisherDynamicTag>;
+const FloodlightActivityPublisherDynamicTagList = /*@__PURE__*/ __L.at(
+  __c27,
+  3,
+) as any as S.Schema<FloodlightActivityPublisherDynamicTagList>;
+
 export type FloodlightActivityUserDefinedVariableTypesItemEnum =
   | "U1"
   | "U2"
@@ -3256,25 +4184,38 @@ export type FloodlightActivityUserDefinedVariableTypesItemEnum =
 export type FloodlightActivityUserDefinedVariableTypesItemEnumList = Array<
   FloodlightActivityUserDefinedVariableTypesItemEnum | (string & {})
 >;
+const FloodlightActivityUserDefinedVariableTypesItemEnumList =
+  GeneratetagsPlacementsTagFormatsEnumList as any as S.Schema<FloodlightActivityUserDefinedVariableTypesItemEnumList>;
+
 export type FloodlightActivityCacheBustingTypeEnum =
   | "JAVASCRIPT"
   | "ACTIVE_SERVER_PAGE"
   | "JSP"
   | "PHP"
   | "COLD_FUSION";
+const FloodlightActivityCacheBustingTypeEnum = S.String;
+
 export type FloodlightActivityStatusEnum =
   | "ACTIVE"
   | "ARCHIVED_AND_DISABLED"
   | "ARCHIVED"
   | "DISABLED_POLICY";
+const FloodlightActivityStatusEnum = S.String;
+
 export type FloodlightActivityFloodlightTagTypeEnum = "IFRAME" | "IMAGE" | "GLOBAL_SITE_TAG";
+const FloodlightActivityFloodlightTagTypeEnum = S.String;
+
 export type FloodlightActivityFloodlightActivityGroupTypeEnum = "COUNTER" | "SALE";
+const FloodlightActivityFloodlightActivityGroupTypeEnum = S.String;
+
 export type FloodlightActivityCountingMethodEnum =
   | "STANDARD_COUNTING"
   | "UNIQUE_COUNTING"
   | "SESSION_COUNTING"
   | "TRANSACTIONS_COUNTING"
   | "ITEMS_SOLD_COUNTING";
+const FloodlightActivityCountingMethodEnum = S.String;
+
 /** Contains properties of a Floodlight activity. */
 export interface FloodlightActivity {
   /** Account ID of this floodlight activity. This is a read-only field that can be left blank. */
@@ -3338,13 +4279,22 @@ export interface FloodlightActivity {
   /** URL where this tag will be deployed. If specified, must be less than 256 characters long. */
   expectedUrl?: string;
 }
+const FloodlightActivity = /*@__PURE__*/ __L.at(__c27, 4) as any as S.Schema<FloodlightActivity>;
+
 export interface GetFloodlightActivityGroupsRequest {
   /** User profile ID associated with this request. */
   profileId: string;
   /** Floodlight activity Group ID. */
   id: string;
 }
+const GetFloodlightActivityGroupsRequest = /*@__PURE__*/ __L.at(
+  __c27,
+  5,
+) as any as S.Schema<GetFloodlightActivityGroupsRequest>;
+
 export type FloodlightActivityGroupTypeEnum = "COUNTER" | "SALE";
+const FloodlightActivityGroupTypeEnum = S.String;
+
 /** Contains properties of a Floodlight activity group. */
 export interface FloodlightActivityGroup {
   /** Dimension value for the ID of the advertiser. This is a read-only, auto-generated field. */
@@ -3372,13 +4322,25 @@ export interface FloodlightActivityGroup {
   /** Subaccount ID of this floodlight activity group. This is a read-only field that can be left blank. */
   subaccountId?: string;
 }
+const FloodlightActivityGroup = /*@__PURE__*/ __L.at(
+  __c27,
+  6,
+) as any as S.Schema<FloodlightActivityGroup>;
+
 export interface GetFloodlightConfigurationsRequest {
   /** User profile ID associated with this request. */
   profileId: string;
   /** Floodlight configuration ID. */
   id: string;
 }
+const GetFloodlightConfigurationsRequest = /*@__PURE__*/ __L.at(
+  __c27,
+  7,
+) as any as S.Schema<GetFloodlightConfigurationsRequest>;
+
 export type FloodlightConfigurationFirstDayOfWeekEnum = "SUNDAY" | "MONDAY";
+const FloodlightConfigurationFirstDayOfWeekEnum = S.String;
+
 /** Third Party Authentication Token */
 export interface ThirdPartyAuthenticationToken {
   /** Value of the third-party authentication token. This is a read-only, auto-generated field. */
@@ -3386,11 +4348,23 @@ export interface ThirdPartyAuthenticationToken {
   /** Name of the third-party authentication token. */
   name?: string;
 }
+const ThirdPartyAuthenticationToken = /*@__PURE__*/ __L.at(
+  __c28,
+  0,
+) as any as S.Schema<ThirdPartyAuthenticationToken>;
+
 export type ThirdPartyAuthenticationTokenList = Array<ThirdPartyAuthenticationToken>;
+const ThirdPartyAuthenticationTokenList = /*@__PURE__*/ __L.at(
+  __c28,
+  1,
+) as any as S.Schema<ThirdPartyAuthenticationTokenList>;
+
 export type FloodlightConfigurationNaturalSearchConversionAttributionOptionEnum =
   | "EXCLUDE_NATURAL_SEARCH_CONVERSION_ATTRIBUTION"
   | "INCLUDE_NATURAL_SEARCH_CONVERSION_ATTRIBUTION"
   | "INCLUDE_NATURAL_SEARCH_TIERED_CONVERSION_ATTRIBUTION";
+const FloodlightConfigurationNaturalSearchConversionAttributionOptionEnum = S.String;
+
 /** The attributes, like playtime and percent onscreen, that define the Custom Viewability Metric. */
 export interface CustomViewabilityMetricConfiguration {
   /** The time in milliseconds the video must play for the Custom Viewability Metric to count an impression. If both this and timePercent are specified, the earlier of the two will be used. */
@@ -3402,6 +4376,11 @@ export interface CustomViewabilityMetricConfiguration {
   /** Whether the video must be audible to count an impression. */
   audible?: boolean;
 }
+const CustomViewabilityMetricConfiguration = /*@__PURE__*/ __L.at(
+  __c28,
+  2,
+) as any as S.Schema<CustomViewabilityMetricConfiguration>;
+
 /** Custom Viewability Metric */
 export interface CustomViewabilityMetric {
   /** ID of the custom viewability metric. */
@@ -3411,6 +4390,11 @@ export interface CustomViewabilityMetric {
   /** Name of the custom viewability metric. */
   name?: string;
 }
+const CustomViewabilityMetric = /*@__PURE__*/ __L.at(
+  __c28,
+  3,
+) as any as S.Schema<CustomViewabilityMetric>;
+
 /** Dynamic and Image Tag Settings. */
 export interface TagSettings {
   /** Whether image tags are enabled. */
@@ -3418,6 +4402,8 @@ export interface TagSettings {
   /** Whether dynamic floodlight tags are enabled. */
   dynamicTagEnabled?: boolean;
 }
+const TagSettings = /*@__PURE__*/ __L.at(__c28, 4) as any as S.Schema<TagSettings>;
+
 export type UserDefinedVariableConfigurationVariableTypeEnum =
   | "U1"
   | "U2"
@@ -3519,7 +4505,11 @@ export type UserDefinedVariableConfigurationVariableTypeEnum =
   | "U98"
   | "U99"
   | "U100";
+const UserDefinedVariableConfigurationVariableTypeEnum = S.String;
+
 export type UserDefinedVariableConfigurationDataTypeEnum = "STRING" | "NUMBER";
+const UserDefinedVariableConfigurationDataTypeEnum = S.String;
+
 /** User Defined Variable configuration. */
 export interface UserDefinedVariableConfiguration {
   /** Variable name in the tag. This is a required field. */
@@ -3529,7 +4519,17 @@ export interface UserDefinedVariableConfiguration {
   /** Data type for the variable. This is a required field. */
   dataType?: UserDefinedVariableConfigurationDataTypeEnum | (string & {});
 }
+const UserDefinedVariableConfiguration = /*@__PURE__*/ __L.at(
+  __c28,
+  5,
+) as any as S.Schema<UserDefinedVariableConfiguration>;
+
 export type UserDefinedVariableConfigurationList = Array<UserDefinedVariableConfiguration>;
+const UserDefinedVariableConfigurationList = /*@__PURE__*/ __L.at(
+  __c28,
+  6,
+) as any as S.Schema<UserDefinedVariableConfigurationList>;
+
 /** Omniture Integration Settings. */
 export interface OmnitureSettings {
   /** Whether Omniture integration is enabled. This property can be enabled only when the "Advanced Ad Serving" account setting is enabled. */
@@ -3537,6 +4537,8 @@ export interface OmnitureSettings {
   /** Whether placement cost data will be sent to Omniture. This property can be enabled only if omnitureIntegrationEnabled is true. */
   omnitureCostDataEnabled?: boolean;
 }
+const OmnitureSettings = /*@__PURE__*/ __L.at(__c28, 7) as any as S.Schema<OmnitureSettings>;
+
 /** Contains properties of a Floodlight configuration. */
 export interface FloodlightConfiguration {
   firstDayOfWeek?: FloodlightConfigurationFirstDayOfWeekEnum | (string & {});
@@ -3577,37 +4579,69 @@ export interface FloodlightConfiguration {
   /** Lookback window settings for this floodlight configuration. */
   lookbackConfiguration?: LookbackConfiguration;
 }
+const FloodlightConfiguration = /*@__PURE__*/ __L.at(
+  __c29,
+  0,
+) as any as S.Schema<FloodlightConfiguration>;
+
 export interface GetMobileAppsRequest {
   /** Mobile app ID. */
   id: string;
   /** User profile ID associated with this request. */
   profileId: string;
 }
+const GetMobileAppsRequest = /*@__PURE__*/ __L.at(
+  __c29,
+  1,
+) as any as S.Schema<GetMobileAppsRequest>;
+
 export interface GetMobileCarriersRequest {
   /** Mobile carrier ID. */
   id: string;
   /** User profile ID associated with this request. */
   profileId: string;
 }
+const GetMobileCarriersRequest = /*@__PURE__*/ __L.at(
+  __c29,
+  2,
+) as any as S.Schema<GetMobileCarriersRequest>;
+
 export interface GetOperatingSystemsRequest {
   /** Operating system DART ID. */
   dartId: string;
   /** User profile ID associated with this request. */
   profileId: string;
 }
+const GetOperatingSystemsRequest = /*@__PURE__*/ __L.at(
+  __c29,
+  3,
+) as any as S.Schema<GetOperatingSystemsRequest>;
+
 export interface GetOperatingSystemVersionsRequest {
   /** User profile ID associated with this request. */
   profileId: string;
   /** Operating system version ID. */
   id: string;
 }
+const GetOperatingSystemVersionsRequest = /*@__PURE__*/ __L.at(
+  __c29,
+  4,
+) as any as S.Schema<GetOperatingSystemVersionsRequest>;
+
 export interface GetPlacementGroupsRequest {
   /** User profile ID associated with this request. */
   profileId: string;
   /** Placement group ID. */
   id: string;
 }
+const GetPlacementGroupsRequest = /*@__PURE__*/ __L.at(
+  __c29,
+  5,
+) as any as S.Schema<GetPlacementGroupsRequest>;
+
 export type PlacementGroupPlacementGroupTypeEnum = "PLACEMENT_PACKAGE" | "PLACEMENT_ROADBLOCK";
+const PlacementGroupPlacementGroupTypeEnum = S.String;
+
 export type PricingSchedulePricingTypeEnum =
   | "PRICING_TYPE_CPM"
   | "PRICING_TYPE_CPC"
@@ -3615,6 +4649,8 @@ export type PricingSchedulePricingTypeEnum =
   | "PRICING_TYPE_FLAT_RATE_IMPRESSIONS"
   | "PRICING_TYPE_FLAT_RATE_CLICKS"
   | "PRICING_TYPE_CPM_ACTIVEVIEW";
+const PricingSchedulePricingTypeEnum = S.String;
+
 /** Pricing Period */
 export interface PricingSchedulePricingPeriod {
   /** Rate or cost of this pricing period in nanos (i.e., multiplied by 1000000000). Acceptable values are 0 to 1000000000000000000, inclusive. */
@@ -3626,11 +4662,23 @@ export interface PricingSchedulePricingPeriod {
   /** Units of this pricing period. Acceptable values are 0 to 10000000000, inclusive. */
   units?: string;
 }
+const PricingSchedulePricingPeriod = /*@__PURE__*/ __L.at(
+  __c29,
+  6,
+) as any as S.Schema<PricingSchedulePricingPeriod>;
+
 export type PricingSchedulePricingPeriodList = Array<PricingSchedulePricingPeriod>;
+const PricingSchedulePricingPeriodList = /*@__PURE__*/ __L.at(
+  __c29,
+  7,
+) as any as S.Schema<PricingSchedulePricingPeriodList>;
+
 export type PricingScheduleCapCostOptionEnum =
   | "CAP_COST_NONE"
   | "CAP_COST_MONTHLY"
   | "CAP_COST_CUMULATIVE";
+const PricingScheduleCapCostOptionEnum = S.String;
+
 /** Pricing Schedule */
 export interface PricingSchedule {
   startDate?: string;
@@ -3647,12 +4695,16 @@ export interface PricingSchedule {
   /** Placement cap cost option. */
   capCostOption?: PricingScheduleCapCostOptionEnum | (string & {});
 }
+const PricingSchedule = /*@__PURE__*/ __L.at(__c30, 0) as any as S.Schema<PricingSchedule>;
+
 export type PlacementGroupActiveStatusEnum =
   | "PLACEMENT_STATUS_UNKNOWN"
   | "PLACEMENT_STATUS_ACTIVE"
   | "PLACEMENT_STATUS_INACTIVE"
   | "PLACEMENT_STATUS_ARCHIVED"
   | "PLACEMENT_STATUS_PERMANENTLY_ARCHIVED";
+const PlacementGroupActiveStatusEnum = S.String;
+
 /** Contains properties of a package or roadblock. */
 export interface PlacementGroup {
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#placementGroup". */
@@ -3708,12 +4760,19 @@ export interface PlacementGroup {
   /** Whether this placement group is active, inactive, archived or permanently archived. */
   activeStatus?: PlacementGroupActiveStatusEnum | (string & {});
 }
+const PlacementGroup = /*@__PURE__*/ __L.at(__c30, 1) as any as S.Schema<PlacementGroup>;
+
 export interface GetPlacementsRequest {
   /** Placement ID. */
   id: string;
   /** User profile ID associated with this request. */
   profileId: string;
 }
+const GetPlacementsRequest = /*@__PURE__*/ __L.at(
+  __c30,
+  2,
+) as any as S.Schema<GetPlacementsRequest>;
+
 export type PlacementStatusEnum =
   | "PENDING_REVIEW"
   | "PAYMENT_ACCEPTED"
@@ -3721,8 +4780,14 @@ export type PlacementStatusEnum =
   | "ACKNOWLEDGE_REJECTION"
   | "ACKNOWLEDGE_ACCEPTANCE"
   | "DRAFT";
+const PlacementStatusEnum = S.String;
+
 export type PlacementVpaidAdapterChoiceEnum = "DEFAULT" | "FLASH" | "HTML5" | "BOTH";
+const PlacementVpaidAdapterChoiceEnum = S.String;
+
 export type PlacementPaymentSourceEnum = "PLACEMENT_AGENCY_PAID" | "PLACEMENT_PUBLISHER_PAID";
+const PlacementPaymentSourceEnum = S.String;
+
 export type MeasurementPartnerWrappingDataTagWrappingModeEnum =
   | "NONE"
   | "BLOCKING"
@@ -3740,10 +4805,14 @@ export type MeasurementPartnerWrappingDataTagWrappingModeEnum =
   | "NON_VPAID_FILTERING"
   | "BLOCKING_FILTERING_VPAID"
   | "BLOCKING_FILTERING_VPAID_ONLY";
+const MeasurementPartnerWrappingDataTagWrappingModeEnum = S.String;
+
 export type MeasurementPartnerWrappingDataMeasurementPartnerEnum =
   | "NONE"
   | "INTEGRAL_AD_SCIENCE"
   | "DOUBLE_VERIFY";
+const MeasurementPartnerWrappingDataMeasurementPartnerEnum = S.String;
+
 export type MeasurementPartnerWrappingDataLinkStatusEnum =
   | "MEASUREMENT_PARTNER_UNLINKED"
   | "MEASUREMENT_PARTNER_LINKED"
@@ -3754,6 +4823,8 @@ export type MeasurementPartnerWrappingDataLinkStatusEnum =
   | "MEASUREMENT_PARTNER_LINK_WRAPPING_PENDING"
   | "MEASUREMENT_PARTNER_MODE_CHANGE_PENDING"
   | "MEASUREMENT_PARTNER_UNLINK_PENDING";
+const MeasurementPartnerWrappingDataLinkStatusEnum = S.String;
+
 /** Placement tag wrapping */
 export interface MeasurementPartnerWrappingData {
   /** Measurement mode for the wrapped placement. */
@@ -3765,10 +4836,17 @@ export interface MeasurementPartnerWrappingData {
   /** Tag provided by the measurement partner during wrapping. */
   wrappedTag?: string;
 }
+const MeasurementPartnerWrappingData = /*@__PURE__*/ __L.at(
+  __c30,
+  3,
+) as any as S.Schema<MeasurementPartnerWrappingData>;
+
 export type TagSettingKeywordOptionEnum =
   | "PLACEHOLDER_WITH_LIST_OF_KEYWORDS"
   | "IGNORE"
   | "GENERATE_SEPARATE_TAG_FOR_EACH_KEYWORD";
+const TagSettingKeywordOptionEnum = S.String;
+
 /** Tag Settings */
 export interface TagSetting {
   /** Optional. Indicates that the unescapedlpurl macro should be included in the tag for the static landing page. New placements will default to the value set on their site. */
@@ -3782,6 +4860,8 @@ export interface TagSetting {
   /** Whether static landing page URLs should be included in the tags. New placements will default to the value set on their site. */
   includeClickThroughUrls?: boolean;
 }
+const TagSetting = /*@__PURE__*/ __L.at(__c30, 4) as any as S.Schema<TagSetting>;
+
 export type PlacementCompatibilityEnum =
   | "DISPLAY"
   | "DISPLAY_INTERSTITIAL"
@@ -3789,13 +4869,19 @@ export type PlacementCompatibilityEnum =
   | "APP_INTERSTITIAL"
   | "IN_STREAM_VIDEO"
   | "IN_STREAM_AUDIO";
+const PlacementCompatibilityEnum = S.String;
+
 export type PlacementActiveStatusEnum =
   | "PLACEMENT_STATUS_UNKNOWN"
   | "PLACEMENT_STATUS_ACTIVE"
   | "PLACEMENT_STATUS_INACTIVE"
   | "PLACEMENT_STATUS_ARCHIVED"
   | "PLACEMENT_STATUS_PERMANENTLY_ARCHIVED";
+const PlacementActiveStatusEnum = S.String;
+
 export type VideoSettingsOrientationEnum = "ANY" | "LANDSCAPE" | "PORTRAIT";
+const VideoSettingsOrientationEnum = S.String;
+
 /** Companion Settings */
 export interface CompanionSetting {
   /** Allowlist of companion sizes to be served to this placement. Set this list to null or empty to serve all companion sizes. */
@@ -3807,6 +4893,8 @@ export interface CompanionSetting {
   /** Whether to serve only static images as companions. */
   imageOnly?: boolean;
 }
+const CompanionSetting = /*@__PURE__*/ __L.at(__c30, 5) as any as S.Schema<CompanionSetting>;
+
 /** Transcode Settings */
 export interface TranscodeSetting {
   /** Allowlist of video formats to be served to this placement. Set this list to null or empty to serve all video formats. */
@@ -3814,6 +4902,8 @@ export interface TranscodeSetting {
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#transcodeSetting". */
   kind?: string;
 }
+const TranscodeSetting = /*@__PURE__*/ __L.at(__c30, 6) as any as S.Schema<TranscodeSetting>;
+
 /** Skippable Settings */
 export interface SkippableSetting {
   /** Amount of time to play videos served to this placement before the skip button should appear. Applicable when skippable is true. */
@@ -3825,6 +4915,8 @@ export interface SkippableSetting {
   /** Whether the user can skip creatives served to this placement. */
   skippable?: boolean;
 }
+const SkippableSetting = /*@__PURE__*/ __L.at(__c30, 7) as any as S.Schema<SkippableSetting>;
+
 /** Video Settings */
 export interface VideoSettings {
   /** Whether OBA icons are enabled for this placement. */
@@ -3846,6 +4938,8 @@ export interface VideoSettings {
   /** Settings for the OBA icon of video creatives served to this placement. If this object is provided, the creative-level OBA settings will be overridden. */
   obaSettings?: ObaIcon;
 }
+const VideoSettings = /*@__PURE__*/ __L.at(__c31, 0) as any as S.Schema<VideoSettings>;
+
 export type PlacementTagFormatsItemEnum =
   | "PLACEMENT_TAG_STANDARD"
   | "PLACEMENT_TAG_IFRAME_JAVASCRIPT"
@@ -3868,14 +4962,32 @@ export type PlacementTagFormatsItemEnum =
   | "PLACEMENT_TAG_INSTREAM_VIDEO_PREFETCH_VAST_4"
   | "PLACEMENT_TAG_TRACKING_THIRD_PARTY_MEASUREMENT";
 export type PlacementTagFormatsItemEnumList = Array<PlacementTagFormatsItemEnum | (string & {})>;
+const PlacementTagFormatsItemEnumList =
+  GeneratetagsPlacementsTagFormatsEnumList as any as S.Schema<PlacementTagFormatsItemEnumList>;
+
 export interface PlacementSingleConversionDomain {
   conversionDomainId?: string;
   conversionDomainValue?: string;
 }
+const PlacementSingleConversionDomain = /*@__PURE__*/ __L.at(
+  __c31,
+  1,
+) as any as S.Schema<PlacementSingleConversionDomain>;
+
 export type PlacementSingleConversionDomainList = Array<PlacementSingleConversionDomain>;
+const PlacementSingleConversionDomainList = /*@__PURE__*/ __L.at(
+  __c31,
+  2,
+) as any as S.Schema<PlacementSingleConversionDomainList>;
+
 export interface PlacementConversionDomainOverride {
   conversionDomains?: PlacementSingleConversionDomainList;
 }
+const PlacementConversionDomainOverride = /*@__PURE__*/ __L.at(
+  __c31,
+  3,
+) as any as S.Schema<PlacementConversionDomainOverride>;
+
 export type YoutubeSettingsCallToActionsItemEnum =
   | "CALL_TO_ACTION_UNKNOWN"
   | "CALL_TO_ACTION_LEARN_MORE"
@@ -3904,6 +5016,9 @@ export type YoutubeSettingsCallToActionsItemEnum =
 export type YoutubeSettingsCallToActionsItemEnumList = Array<
   YoutubeSettingsCallToActionsItemEnum | (string & {})
 >;
+const YoutubeSettingsCallToActionsItemEnumList =
+  GeneratetagsPlacementsTagFormatsEnumList as any as S.Schema<YoutubeSettingsCallToActionsItemEnumList>;
+
 /** Contains the YouTube settings. */
 export interface YoutubeSettings {
   /** Optional. The long headlines. Currently only one long headline is supported. */
@@ -3919,6 +5034,8 @@ export interface YoutubeSettings {
   /** Optional. The IDs of the creatives to use for the business logo. Currently only one creative is supported. */
   businessLogoCreativeIds?: StringList;
 }
+const YoutubeSettings = /*@__PURE__*/ __L.at(__c31, 4) as any as S.Schema<YoutubeSettings>;
+
 /** Contains properties of a placement. */
 export interface Placement {
   /** Comments for this placement. */
@@ -4018,12 +5135,19 @@ export interface Placement {
   /** Information about the most recent modification of this placement. This is a read-only field. */
   lastModifiedInfo?: LastModifiedInfo;
 }
+const Placement = /*@__PURE__*/ __L.at(__c31, 5) as any as S.Schema<Placement>;
+
 export interface GetPlacementStrategiesRequest {
   /** User profile ID associated with this request. */
   profileId: string;
   /** Placement strategy ID. */
   id: string;
 }
+const GetPlacementStrategiesRequest = /*@__PURE__*/ __L.at(
+  __c31,
+  6,
+) as any as S.Schema<GetPlacementStrategiesRequest>;
+
 /** Contains properties of a placement strategy. */
 export interface PlacementStrategy {
   /** Account ID of this placement strategy.This is a read-only field that can be left blank. */
@@ -4035,24 +5159,41 @@ export interface PlacementStrategy {
   /** Name of this placement strategy. This is a required field. It must be less than 256 characters long and unique among placement strategies of the same account. */
   name?: string;
 }
+const PlacementStrategy = /*@__PURE__*/ __L.at(__c31, 7) as any as S.Schema<PlacementStrategy>;
+
 export interface GetPlatformTypesRequest {
   /** User profile ID associated with this request. */
   profileId: string;
   /** Platform type ID. */
   id: string;
 }
+const GetPlatformTypesRequest = /*@__PURE__*/ __L.at(
+  __c32,
+  0,
+) as any as S.Schema<GetPlatformTypesRequest>;
+
 export interface GetPostalCodesRequest {
   /** User profile ID associated with this request. */
   profileId: string;
   /** Postal code ID. */
   code: string;
 }
+const GetPostalCodesRequest = /*@__PURE__*/ __L.at(
+  __c32,
+  1,
+) as any as S.Schema<GetPostalCodesRequest>;
+
 export interface GetRemarketingListsRequest {
   /** User profile ID associated with this request. */
   profileId: string;
   /** Remarketing list ID. */
   id: string;
 }
+const GetRemarketingListsRequest = /*@__PURE__*/ __L.at(
+  __c32,
+  2,
+) as any as S.Schema<GetRemarketingListsRequest>;
+
 export type RemarketingListListSourceEnum =
   | "REMARKETING_LIST_SOURCE_OTHER"
   | "REMARKETING_LIST_SOURCE_ADX"
@@ -4065,6 +5206,8 @@ export type RemarketingListListSourceEnum =
   | "REMARKETING_LIST_SOURCE_GPLUS"
   | "REMARKETING_LIST_SOURCE_DMP"
   | "REMARKETING_LIST_SOURCE_PLAY_STORE";
+const RemarketingListListSourceEnum = S.String;
+
 export type ListPopulationTermOperatorEnum =
   | "NUM_EQUALS"
   | "NUM_LESS_THAN"
@@ -4073,10 +5216,14 @@ export type ListPopulationTermOperatorEnum =
   | "NUM_GREATER_THAN_EQUAL"
   | "STRING_EQUALS"
   | "STRING_CONTAINS";
+const ListPopulationTermOperatorEnum = S.String;
+
 export type ListPopulationTermTypeEnum =
   | "CUSTOM_VARIABLE_TERM"
   | "LIST_MEMBERSHIP_TERM"
   | "REFERRER_TERM";
+const ListPopulationTermTypeEnum = S.String;
+
 /** Remarketing List Population Rule Term. */
 export interface ListPopulationTerm {
   /** Friendly name of this term's variable. This is a read-only, auto-generated field. This field is only relevant when type is left unset or set to CUSTOM_VARIABLE_TERM. */
@@ -4096,13 +5243,30 @@ export interface ListPopulationTerm {
   /** Whether to negate the comparison result of this term during rule evaluation. This field is only relevant when type is left unset or set to CUSTOM_VARIABLE_TERM or REFERRER_TERM. */
   negation?: boolean;
 }
+const ListPopulationTerm = /*@__PURE__*/ __L.at(__c32, 3) as any as S.Schema<ListPopulationTerm>;
+
 export type ListPopulationTermList = Array<ListPopulationTerm>;
+const ListPopulationTermList = /*@__PURE__*/ __L.at(
+  __c32,
+  4,
+) as any as S.Schema<ListPopulationTermList>;
+
 /** A group clause made up of list population terms representing constraints joined by ORs. */
 export interface ListPopulationClause {
   /** Terms of this list population clause. Each clause is made up of list population terms representing constraints and are joined by ORs. */
   terms?: ListPopulationTermList;
 }
+const ListPopulationClause = /*@__PURE__*/ __L.at(
+  __c32,
+  5,
+) as any as S.Schema<ListPopulationClause>;
+
 export type ListPopulationClauseList = Array<ListPopulationClause>;
+const ListPopulationClauseList = /*@__PURE__*/ __L.at(
+  __c32,
+  6,
+) as any as S.Schema<ListPopulationClauseList>;
+
 /** Remarketing List Population Rule. */
 export interface ListPopulationRule {
   /** Clauses that make up this list population rule. Clauses are joined by ANDs, and the clauses themselves are made up of list population terms which are joined by ORs. */
@@ -4112,6 +5276,8 @@ export interface ListPopulationRule {
   /** Name of floodlight activity associated with this rule. This is a read-only, auto-generated field. */
   floodlightActivityName?: string;
 }
+const ListPopulationRule = /*@__PURE__*/ __L.at(__c32, 7) as any as S.Schema<ListPopulationRule>;
+
 /** Contains properties of a remarketing list. Remarketing enables you to create lists of users who have performed specific actions on a site, then target ads to members of those lists. This resource can be used to manage remarketing lists that are owned by your advertisers. To see all remarketing lists that are visible to your advertisers, including those that are shared to your advertiser or account, use the TargetableRemarketingLists resource. */
 export interface RemarketingList {
   /** Whether this remarketing list is active. */
@@ -4141,12 +5307,19 @@ export interface RemarketingList {
   /** Rule used to populate the remarketing list with users. */
   listPopulationRule?: ListPopulationRule;
 }
+const RemarketingList = /*@__PURE__*/ __L.at(__c33, 0) as any as S.Schema<RemarketingList>;
+
 export interface GetRemarketingListSharesRequest {
   /** User profile ID associated with this request. */
   profileId: string;
   /** Remarketing list ID. */
   remarketingListId: string;
 }
+const GetRemarketingListSharesRequest = /*@__PURE__*/ __L.at(
+  __c33,
+  1,
+) as any as S.Schema<GetRemarketingListSharesRequest>;
+
 /** Contains properties of a remarketing list's sharing information. Sharing allows other accounts or advertisers to target to your remarketing lists. This resource can be used to manage remarketing list sharing to other accounts and advertisers. */
 export interface RemarketingListShare {
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#remarketingListShare". */
@@ -4158,14 +5331,25 @@ export interface RemarketingListShare {
   /** Accounts that the remarketing list is shared with. */
   sharedAccountIds?: StringList;
 }
+const RemarketingListShare = /*@__PURE__*/ __L.at(
+  __c33,
+  2,
+) as any as S.Schema<RemarketingListShare>;
+
 export interface GetReportsRequest {
   /** The ID of the report. */
   reportId: string;
   /** The Campaign Manager 360 user profile ID. */
   profileId: string;
 }
+const GetReportsRequest = /*@__PURE__*/ __L.at(__c33, 3) as any as S.Schema<GetReportsRequest>;
+
 export type DimensionValueList_ = Array<DimensionValue>;
+const DimensionValueList_ = /*@__PURE__*/ __L.at(__c33, 4) as any as S.Schema<DimensionValueList_>;
+
 export type SortedDimensionSortOrderEnum = "ASCENDING" | "DESCENDING";
+const SortedDimensionSortOrderEnum = S.String;
+
 /** Represents a sorted dimension. */
 export interface SortedDimension {
   /** The kind of resource this is, in this case dfareporting#sortedDimension. */
@@ -4175,7 +5359,11 @@ export interface SortedDimension {
   /** The name of the dimension. */
   name?: string;
 }
+const SortedDimension = /*@__PURE__*/ __L.at(__c33, 5) as any as S.Schema<SortedDimension>;
+
 export type SortedDimensionList = Array<SortedDimension>;
+const SortedDimensionList = /*@__PURE__*/ __L.at(__c33, 6) as any as S.Schema<SortedDimensionList>;
+
 export interface ReportPathToConversionCriteriaReportProperties {
   /** Deprecated: has no effect. */
   includeAttributedIPConversions?: boolean;
@@ -4196,6 +5384,11 @@ export interface ReportPathToConversionCriteriaReportProperties {
   /** Include conversions that have no associated cookies and no exposures. It's therefore impossible to know how the user was exposed to your ads during the lookback window prior to a conversion. */
   includeUnattributedIPConversions?: boolean;
 }
+const ReportPathToConversionCriteriaReportProperties = /*@__PURE__*/ __L.at(
+  __c33,
+  7,
+) as any as S.Schema<ReportPathToConversionCriteriaReportProperties>;
+
 export interface ReportPathToConversionCriteria {
   /** The list of 'dfa:activity' values to filter on. */
   activityFilters?: DimensionValueList_;
@@ -4216,6 +5409,11 @@ export interface ReportPathToConversionCriteria {
   /** The date range this report should be run for. */
   dateRange?: DateRange;
 }
+const ReportPathToConversionCriteria = /*@__PURE__*/ __L.at(
+  __c34,
+  0,
+) as any as S.Schema<ReportPathToConversionCriteria>;
+
 export type ReportScheduleRepeatsOnWeekDaysItemEnum =
   | "SUNDAY"
   | "MONDAY"
@@ -4227,7 +5425,12 @@ export type ReportScheduleRepeatsOnWeekDaysItemEnum =
 export type ReportScheduleRepeatsOnWeekDaysItemEnumList = Array<
   ReportScheduleRepeatsOnWeekDaysItemEnum | (string & {})
 >;
+const ReportScheduleRepeatsOnWeekDaysItemEnumList =
+  GeneratetagsPlacementsTagFormatsEnumList as any as S.Schema<ReportScheduleRepeatsOnWeekDaysItemEnumList>;
+
 export type ReportScheduleRunsOnDayOfMonthEnum = "DAY_OF_MONTH" | "WEEK_OF_MONTH";
+const ReportScheduleRunsOnDayOfMonthEnum = S.String;
+
 export interface ReportSchedule {
   /** The timezone when the report will run. */
   timezone?: string;
@@ -4244,6 +5447,8 @@ export interface ReportSchedule {
   repeats?: string;
   startDate?: string;
 }
+const ReportSchedule = /*@__PURE__*/ __L.at(__c34, 1) as any as S.Schema<ReportSchedule>;
+
 /** Represents an activity group. */
 export interface Activities {
   /** List of names of floodlight activity metrics. */
@@ -4253,6 +5458,8 @@ export interface Activities {
   /** The kind of resource this is, in this case dfareporting#activities. */
   kind?: string;
 }
+const Activities = /*@__PURE__*/ __L.at(__c34, 2) as any as S.Schema<Activities>;
+
 /** Represents a Custom Rich Media Events group. */
 export interface CustomRichMediaEvents {
   /** The kind of resource this is, in this case dfareporting#customRichMediaEvents. */
@@ -4260,6 +5467,11 @@ export interface CustomRichMediaEvents {
   /** List of custom rich media event IDs. Dimension values must be all of type dfa:richMediaEventTypeIdAndName. */
   filteredEventIds?: DimensionValueList_;
 }
+const CustomRichMediaEvents = /*@__PURE__*/ __L.at(
+  __c34,
+  3,
+) as any as S.Schema<CustomRichMediaEvents>;
+
 export interface ReportCriteria {
   /** Activity group. */
   activities?: Activities;
@@ -4274,6 +5486,8 @@ export interface ReportCriteria {
   /** The list of standard dimensions the report should include. */
   dimensions?: SortedDimensionList;
 }
+const ReportCriteria = /*@__PURE__*/ __L.at(__c34, 4) as any as S.Schema<ReportCriteria>;
+
 export interface ReportCrossMediaReachCriteria {
   /** Required. The date range this report should be run for. */
   dateRange?: DateRange;
@@ -4284,13 +5498,22 @@ export interface ReportCrossMediaReachCriteria {
   /** Required. The list of dimensions the report should include. */
   dimensions?: SortedDimensionList;
 }
+const ReportCrossMediaReachCriteria = /*@__PURE__*/ __L.at(
+  __c34,
+  5,
+) as any as S.Schema<ReportCrossMediaReachCriteria>;
+
 export type ReportTypeEnum =
   | "STANDARD"
   | "REACH"
   | "PATH_TO_CONVERSION"
   | "FLOODLIGHT"
   | "CROSS_MEDIA_REACH";
+const ReportTypeEnum = S.String;
+
 export type ReportFormatEnum = "CSV" | "EXCEL";
+const ReportFormatEnum = S.String;
+
 export interface ReportReachCriteria {
   /** The list of dimensions the report should include. */
   dimensions?: SortedDimensionList;
@@ -4307,7 +5530,11 @@ export interface ReportReachCriteria {
   /** The list of names of Reach By Frequency metrics the report should include. */
   reachByFrequencyMetricNames?: StringList;
 }
+const ReportReachCriteria = /*@__PURE__*/ __L.at(__c34, 6) as any as S.Schema<ReportReachCriteria>;
+
 export type RecipientDeliveryTypeEnum = "LINK" | "ATTACHMENT";
+const RecipientDeliveryTypeEnum = S.String;
+
 /** Represents a recipient. */
 export interface Recipient {
   /** The email address of the recipient. */
@@ -4317,8 +5544,14 @@ export interface Recipient {
   /** The delivery type for the recipient. */
   deliveryType?: RecipientDeliveryTypeEnum | (string & {});
 }
+const Recipient = /*@__PURE__*/ __L.at(__c34, 7) as any as S.Schema<Recipient>;
+
 export type RecipientList = Array<Recipient>;
+const RecipientList = /*@__PURE__*/ __L.at(__c35, 0) as any as S.Schema<RecipientList>;
+
 export type ReportDeliveryEmailOwnerDeliveryTypeEnum = "LINK" | "ATTACHMENT";
+const ReportDeliveryEmailOwnerDeliveryTypeEnum = S.String;
+
 export interface ReportDelivery {
   /** Whether the report should be emailed to the report owner. */
   emailOwner?: boolean;
@@ -4329,6 +5562,8 @@ export interface ReportDelivery {
   /** The type of delivery for the owner to receive, if enabled. */
   emailOwnerDeliveryType?: ReportDeliveryEmailOwnerDeliveryTypeEnum | (string & {});
 }
+const ReportDelivery = /*@__PURE__*/ __L.at(__c35, 1) as any as S.Schema<ReportDelivery>;
+
 export interface ReportFloodlightCriteriaReportProperties {
   /** Include conversions that have no cookie, but do have an exposure path. */
   includeAttributedIPConversions?: boolean;
@@ -4337,6 +5572,11 @@ export interface ReportFloodlightCriteriaReportProperties {
   /** Include conversions that have no associated cookies and no exposures. It's therefore impossible to know how the user was exposed to your ads during the lookback window prior to a conversion. */
   includeUnattributedIPConversions?: boolean;
 }
+const ReportFloodlightCriteriaReportProperties = /*@__PURE__*/ __L.at(
+  __c35,
+  2,
+) as any as S.Schema<ReportFloodlightCriteriaReportProperties>;
+
 export interface ReportFloodlightCriteria {
   /** The list of dimensions the report should include. */
   dimensions?: SortedDimensionList;
@@ -4353,6 +5593,11 @@ export interface ReportFloodlightCriteria {
   /** The date range this report should be run for. */
   dateRange?: DateRange;
 }
+const ReportFloodlightCriteria = /*@__PURE__*/ __L.at(
+  __c35,
+  3,
+) as any as S.Schema<ReportFloodlightCriteria>;
+
 /** Represents a Report resource. */
 export interface Report {
   /** The kind of resource this is, in this case dfareporting#report. */
@@ -4392,6 +5637,8 @@ export interface Report {
   /** The user profile id of the owner of this report. */
   ownerProfileId?: string;
 }
+const Report = /*@__PURE__*/ __L.at(__c35, 4) as any as S.Schema<Report>;
+
 export interface GetReportsFilesRequest {
   /** The Campaign Manager 360 user profile ID. */
   profileId: string;
@@ -4400,13 +5647,22 @@ export interface GetReportsFilesRequest {
   /** The ID of the report file. */
   fileId: string;
 }
+const GetReportsFilesRequest = /*@__PURE__*/ __L.at(
+  __c35,
+  5,
+) as any as S.Schema<GetReportsFilesRequest>;
+
 export interface GetSitesRequest {
   /** Site ID. */
   id: string;
   /** User profile ID associated with this request. */
   profileId: string;
 }
+const GetSitesRequest = /*@__PURE__*/ __L.at(__c35, 6) as any as S.Schema<GetSitesRequest>;
+
 export type SiteSettingsVpaidAdapterChoiceTemplateEnum = "DEFAULT" | "FLASH" | "HTML5" | "BOTH";
+const SiteSettingsVpaidAdapterChoiceTemplateEnum = S.String;
+
 /** Site Settings */
 export interface SiteSettings {
   /** Configuration settings for dynamic and image floodlight tags. */
@@ -4422,7 +5678,11 @@ export interface SiteSettings {
   /** Whether active view creatives are disabled for this site. */
   activeViewOptOut?: boolean;
 }
+const SiteSettings = /*@__PURE__*/ __L.at(__c35, 7) as any as S.Schema<SiteSettings>;
+
 export type SiteVideoSettingsOrientationEnum = "ANY" | "LANDSCAPE" | "PORTRAIT";
+const SiteVideoSettingsOrientationEnum = S.String;
+
 /** Skippable Settings */
 export interface SiteSkippableSetting {
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#siteSkippableSetting". */
@@ -4434,6 +5694,11 @@ export interface SiteSkippableSetting {
   /** Amount of time to play videos served to this site template before counting a view. Applicable when skippable is true. */
   progressOffset?: VideoOffset;
 }
+const SiteSkippableSetting = /*@__PURE__*/ __L.at(
+  __c36,
+  0,
+) as any as S.Schema<SiteSkippableSetting>;
+
 /** Companion Settings */
 export interface SiteCompanionSetting {
   /** Whether to serve only static images as companions. */
@@ -4445,6 +5710,11 @@ export interface SiteCompanionSetting {
   /** Allowlist of companion sizes to be served via this site template. Set this list to null or empty to serve all companion sizes. */
   enabledSizes?: SizeList;
 }
+const SiteCompanionSetting = /*@__PURE__*/ __L.at(
+  __c36,
+  1,
+) as any as S.Schema<SiteCompanionSetting>;
+
 /** Transcode Settings */
 export interface SiteTranscodeSetting {
   /** Allowlist of video formats to be served to this site template. Set this list to null or empty to serve all video formats. */
@@ -4452,6 +5722,8 @@ export interface SiteTranscodeSetting {
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#siteTranscodeSetting". */
   kind?: string;
 }
+const SiteTranscodeSetting = TranscodeSetting as any as S.Schema<SiteTranscodeSetting>;
+
 /** Video Settings */
 export interface SiteVideoSettings {
   /** Whether OBA icons are enabled for this placement. */
@@ -4471,7 +5743,11 @@ export interface SiteVideoSettings {
   /** Settings for the transcodes of video creatives served to this site. This will act as default for new placements created under this site. */
   transcodeSettings?: SiteTranscodeSetting;
 }
+const SiteVideoSettings = /*@__PURE__*/ __L.at(__c36, 2) as any as S.Schema<SiteVideoSettings>;
+
 export type SiteContactContactTypeEnum = "SALES_PERSON" | "TRAFFICKER";
+const SiteContactContactTypeEnum = S.String;
+
 /** Site Contact */
 export interface SiteContact {
   /** Address of this site contact. */
@@ -4491,7 +5767,11 @@ export interface SiteContact {
   /** ID of this site contact. This is a read-only, auto-generated field. */
   id?: string;
 }
+const SiteContact = /*@__PURE__*/ __L.at(__c36, 3) as any as S.Schema<SiteContact>;
+
 export type SiteContactList = Array<SiteContact>;
+const SiteContactList = /*@__PURE__*/ __L.at(__c36, 4) as any as S.Schema<SiteContactList>;
+
 /** Contains properties of a site. */
 export interface Site {
   /** Directory site associated with this site. This is a required field that is read-only after insertion. */
@@ -4523,16 +5803,25 @@ export interface Site {
   /** Account ID of this site. This is a read-only field that can be left blank. */
   accountId?: string;
 }
+const Site = /*@__PURE__*/ __L.at(__c36, 5) as any as S.Schema<Site>;
+
 export interface GetSizesRequest {
   /** User profile ID associated with this request. */
   profileId: string;
   /** Size ID. */
   id: string;
 }
+const GetSizesRequest = /*@__PURE__*/ __L.at(__c36, 6) as any as S.Schema<GetSizesRequest>;
+
 export interface GetStudioCreativesRequest {
   /** Required. Studio creative ID. */
   studioCreativeId: string;
 }
+const GetStudioCreativesRequest = /*@__PURE__*/ __L.at(
+  __c36,
+  7,
+) as any as S.Schema<GetStudioCreativesRequest>;
+
 export type StudioCreativeStatusEnum =
   | "UNKNOWN_STATUS"
   | "IN_DEVELOPMENT"
@@ -4540,6 +5829,8 @@ export type StudioCreativeStatusEnum =
   | "QA_REJECTED"
   | "QA_APPROVED"
   | "TRAFFICKED";
+const StudioCreativeStatusEnum = S.String;
+
 /** Dimension information for a studio creative. */
 export interface StudioCreativeDimension {
   /** Height of the studio creative. */
@@ -4547,12 +5838,19 @@ export interface StudioCreativeDimension {
   /** Width of the studio creative. */
   width?: number;
 }
+const StudioCreativeDimension = /*@__PURE__*/ __L.at(
+  __c37,
+  0,
+) as any as S.Schema<StudioCreativeDimension>;
+
 export type StudioCreativeFormatEnum =
   | "UNKNOWN"
   | "BANNER"
   | "EXPANDING"
   | "INTERSTITIAL"
   | "VPAID_LINEAR_VIDEO";
+const StudioCreativeFormatEnum = S.String;
+
 /** *Beta:* This API resource is available only to a very limited number of customers. If you'd like to use this resource, please reach out to your Google sales representative. Contains studio creative information. */
 export interface StudioCreative {
   /** Output only. Status of this studio creative. It is a read-only field. */
@@ -4582,12 +5880,19 @@ export interface StudioCreative {
   /** Identifier. Name of this studio creative. This is a required field on insertion. */
   name?: string;
 }
+const StudioCreative = /*@__PURE__*/ __L.at(__c37, 1) as any as S.Schema<StudioCreative>;
+
 export interface GetSubaccountsRequest {
   /** Subaccount ID. */
   id: string;
   /** User profile ID associated with this request. */
   profileId: string;
 }
+const GetSubaccountsRequest = /*@__PURE__*/ __L.at(
+  __c37,
+  2,
+) as any as S.Schema<GetSubaccountsRequest>;
+
 /** Contains properties of a Campaign Manager subaccount. */
 export interface Subaccount {
   /** Name of this subaccount. This is a required field. Must be less than 128 characters long and be unique among subaccounts of the same account. */
@@ -4601,12 +5906,19 @@ export interface Subaccount {
   /** ID of this subaccount. This is a read-only, auto-generated field. */
   id?: string;
 }
+const Subaccount = /*@__PURE__*/ __L.at(__c37, 3) as any as S.Schema<Subaccount>;
+
 export interface GetTargetableRemarketingListsRequest {
   /** Remarketing list ID. */
   id: string;
   /** User profile ID associated with this request. */
   profileId: string;
 }
+const GetTargetableRemarketingListsRequest = /*@__PURE__*/ __L.at(
+  __c37,
+  4,
+) as any as S.Schema<GetTargetableRemarketingListsRequest>;
+
 export type TargetableRemarketingListListSourceEnum =
   | "REMARKETING_LIST_SOURCE_OTHER"
   | "REMARKETING_LIST_SOURCE_ADX"
@@ -4619,6 +5931,8 @@ export type TargetableRemarketingListListSourceEnum =
   | "REMARKETING_LIST_SOURCE_GPLUS"
   | "REMARKETING_LIST_SOURCE_DMP"
   | "REMARKETING_LIST_SOURCE_PLAY_STORE";
+const TargetableRemarketingListListSourceEnum = S.String;
+
 /** Contains properties of a targetable remarketing list. Remarketing enables you to create lists of users who have performed specific actions on a site, then target ads to members of those lists. This resource is a read-only view of a remarketing list to be used to facilitate targeting ads to specific lists. Remarketing lists that are owned by your advertisers and those that are shared to your advertisers or account are accessible via this resource. To manage remarketing lists that are owned by your advertisers, use the RemarketingLists resource. */
 export interface TargetableRemarketingList {
   /** Whether this targetable remarketing list is active. */
@@ -4646,12 +5960,22 @@ export interface TargetableRemarketingList {
   /** Number of users currently in the list. This is a read-only field. */
   listSize?: string;
 }
+const TargetableRemarketingList = /*@__PURE__*/ __L.at(
+  __c37,
+  5,
+) as any as S.Schema<TargetableRemarketingList>;
+
 export interface GetTargetingTemplatesRequest {
   /** Targeting template ID. */
   id: string;
   /** User profile ID associated with this request. */
   profileId: string;
 }
+const GetTargetingTemplatesRequest = /*@__PURE__*/ __L.at(
+  __c37,
+  6,
+) as any as S.Schema<GetTargetingTemplatesRequest>;
+
 /** Contains properties of a targeting template. A targeting template encapsulates targeting information which can be reused across multiple ads. */
 export interface TargetingTemplate {
   /** Account ID of this targeting template. This field, if left unset, will be auto-generated on insert and is read-only after insert. */
@@ -4683,6 +6007,8 @@ export interface TargetingTemplate {
   /** Remarketing list targeting criteria. */
   listTargetingExpression?: ListTargetingExpression;
 }
+const TargetingTemplate = /*@__PURE__*/ __L.at(__c37, 7) as any as S.Schema<TargetingTemplate>;
+
 export type GetTvCampaignDetailsTvDataProviderEnum =
   | "INVALID_TV_DATA_PROVIDER"
   | "INTAGE_JP"
@@ -4694,6 +6020,8 @@ export type GetTvCampaignDetailsTvDataProviderEnum =
   | "COMSCORE_NATIONAL_US"
   | "COMSCORE_CA"
   | "SAMBA_AU";
+const GetTvCampaignDetailsTvDataProviderEnum = S.String;
+
 export interface GetTvCampaignDetailsRequest {
   /** Optional. TV data provider. If not specified, defaults to `COMSCORE_NATIONAL_US`. */
   tvDataProvider?: GetTvCampaignDetailsTvDataProviderEnum | (string & {});
@@ -4706,6 +6034,11 @@ export interface GetTvCampaignDetailsRequest {
   /** Required. TV Campaign ID. */
   id: string;
 }
+const GetTvCampaignDetailsRequest = /*@__PURE__*/ __L.at(
+  __c38,
+  0,
+) as any as S.Schema<GetTvCampaignDetailsRequest>;
+
 export type TvCampaignTimepointDateWindowEnum =
   | "WEEKS_UNSPECIFIED"
   | "DAYS_ONE"
@@ -4713,6 +6046,8 @@ export type TvCampaignTimepointDateWindowEnum =
   | "WEEKS_FOUR"
   | "WEEKS_EIGHT"
   | "WEEKS_TWELVE";
+const TvCampaignTimepointDateWindowEnum = S.String;
+
 /** A single data point for TvCampaignDetail, which holds information about the TV campaign for a specific start date and date window. */
 export interface TvCampaignTimepoint {
   /** The date window of the timepoint. */
@@ -4722,7 +6057,14 @@ export interface TvCampaignTimepoint {
   /** The spend within the time range of the timepoint. */
   spend?: number;
 }
+const TvCampaignTimepoint = /*@__PURE__*/ __L.at(__c38, 1) as any as S.Schema<TvCampaignTimepoint>;
+
 export type TvCampaignTimepointList = Array<TvCampaignTimepoint>;
+const TvCampaignTimepointList = /*@__PURE__*/ __L.at(
+  __c38,
+  2,
+) as any as S.Schema<TvCampaignTimepointList>;
+
 /** TvCampaignDetail contains data from a TV campaign for specific start dates and date windows. */
 export interface TvCampaignDetail {
   /** ID of this TV campaign. */
@@ -4732,10 +6074,17 @@ export interface TvCampaignDetail {
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#tvCampaignSummary". */
   kind?: string;
 }
+const TvCampaignDetail = /*@__PURE__*/ __L.at(__c38, 3) as any as S.Schema<TvCampaignDetail>;
+
 export interface GetUserProfilesRequest {
   /** The user profile ID. */
   profileId: string;
 }
+const GetUserProfilesRequest = /*@__PURE__*/ __L.at(
+  __c38,
+  4,
+) as any as S.Schema<GetUserProfilesRequest>;
+
 /** A UserProfile resource lets you list all DFA user profiles that are associated with a Google user account. The profile_id needs to be specified in other API requests. */
 export interface UserProfile {
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#userProfile". */
@@ -4755,12 +6104,19 @@ export interface UserProfile {
   /** The account ID to which this profile belongs. */
   accountId?: string;
 }
+const UserProfile = /*@__PURE__*/ __L.at(__c38, 5) as any as S.Schema<UserProfile>;
+
 export interface GetUserRolePermissionGroupsRequest {
   /** User role permission group ID. */
   id: string;
   /** User profile ID associated with this request. */
   profileId: string;
 }
+const GetUserRolePermissionGroupsRequest = /*@__PURE__*/ __L.at(
+  __c38,
+  6,
+) as any as S.Schema<GetUserRolePermissionGroupsRequest>;
+
 /** Represents a grouping of related user role permissions. */
 export interface UserRolePermissionGroup {
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#userRolePermissionGroup". */
@@ -4770,12 +6126,22 @@ export interface UserRolePermissionGroup {
   /** ID of this user role permission. */
   id?: string;
 }
+const UserRolePermissionGroup = /*@__PURE__*/ __L.at(
+  __c38,
+  7,
+) as any as S.Schema<UserRolePermissionGroup>;
+
 export interface GetUserRolePermissionsRequest {
   /** User profile ID associated with this request. */
   profileId: string;
   /** User role permission ID. */
   id: string;
 }
+const GetUserRolePermissionsRequest = /*@__PURE__*/ __L.at(
+  __c39,
+  0,
+) as any as S.Schema<GetUserRolePermissionsRequest>;
+
 export type UserRolePermissionAvailabilityEnum =
   | "NOT_AVAILABLE_BY_DEFAULT"
   | "ACCOUNT_BY_DEFAULT"
@@ -4783,6 +6149,8 @@ export type UserRolePermissionAvailabilityEnum =
   | "ACCOUNT_ALWAYS"
   | "SUBACCOUNT_AND_ACCOUNT_ALWAYS"
   | "USER_PROFILE_ONLY";
+const UserRolePermissionAvailabilityEnum = S.String;
+
 /** Contains properties of a user role permission. */
 export interface UserRolePermission {
   /** ID of this user role permission. */
@@ -4796,13 +6164,22 @@ export interface UserRolePermission {
   /** Name of this user role permission. */
   name?: string;
 }
+const UserRolePermission = /*@__PURE__*/ __L.at(__c39, 1) as any as S.Schema<UserRolePermission>;
+
 export interface GetUserRolesRequest {
   /** User profile ID associated with this request. */
   profileId: string;
   /** User role ID. */
   id: string;
 }
+const GetUserRolesRequest = /*@__PURE__*/ __L.at(__c39, 2) as any as S.Schema<GetUserRolesRequest>;
+
 export type UserRolePermissionList = Array<UserRolePermission>;
+const UserRolePermissionList = /*@__PURE__*/ __L.at(
+  __c39,
+  3,
+) as any as S.Schema<UserRolePermissionList>;
+
 /** Contains properties of auser role, which is used to manage user access. */
 export interface UserRole {
   /** Whether this is a default user role. Default user roles are created by the system for the account/subaccount and cannot be modified or deleted. Each default user role comes with a basic set of preassigned permissions. */
@@ -4822,13 +6199,22 @@ export interface UserRole {
   /** Account ID of this user role. This is a read-only field that can be left blank. */
   accountId?: string;
 }
+const UserRole = /*@__PURE__*/ __L.at(__c39, 4) as any as S.Schema<UserRole>;
+
 export interface GetVideoFormatsRequest {
   /** Video format ID. */
   id: number;
   /** User profile ID associated with this request. */
   profileId: string;
 }
+const GetVideoFormatsRequest = /*@__PURE__*/ __L.at(
+  __c39,
+  5,
+) as any as S.Schema<GetVideoFormatsRequest>;
+
 export type VideoFormatFileTypeEnum = "FLV" | "THREEGPP" | "MP4" | "WEBM" | "M3U8";
+const VideoFormatFileTypeEnum = S.String;
+
 /** Contains information about supported video formats. */
 export interface VideoFormat {
   /** ID of the video format. */
@@ -4842,36 +6228,60 @@ export interface VideoFormat {
   /** The resolution of this video format. */
   resolution?: Size;
 }
+const VideoFormat = /*@__PURE__*/ __L.at(__c39, 6) as any as S.Schema<VideoFormat>;
+
 export interface InsertAccountUserProfilesRequest {
   /** User profile ID associated with this request. */
   profileId: string;
   /** Request body */
   body?: AccountUserProfile;
 }
+const InsertAccountUserProfilesRequest = /*@__PURE__*/ __L.at(
+  __c39,
+  7,
+) as any as S.Schema<InsertAccountUserProfilesRequest>;
+
 export interface InsertAdsRequest {
   /** User profile ID associated with this request. */
   profileId: string;
   /** Request body */
   body?: Ad;
 }
+const InsertAdsRequest = /*@__PURE__*/ __L.at(__c40, 0) as any as S.Schema<InsertAdsRequest>;
+
 export interface InsertAdvertiserGroupsRequest {
   /** User profile ID associated with this request. */
   profileId: string;
   /** Request body */
   body?: AdvertiserGroup;
 }
+const InsertAdvertiserGroupsRequest = /*@__PURE__*/ __L.at(
+  __c40,
+  1,
+) as any as S.Schema<InsertAdvertiserGroupsRequest>;
+
 export interface InsertAdvertiserLandingPagesRequest {
   /** User profile ID associated with this request. */
   profileId: string;
   /** Request body */
   body?: LandingPage;
 }
+const InsertAdvertiserLandingPagesRequest = /*@__PURE__*/ __L.at(
+  __c40,
+  2,
+) as any as S.Schema<InsertAdvertiserLandingPagesRequest>;
+
 export interface InsertAdvertisersRequest {
   /** User profile ID associated with this request. */
   profileId: string;
   /** Request body */
   body?: Advertiser;
 }
+const InsertAdvertisersRequest = /*@__PURE__*/ __L.at(
+  __c40,
+  3,
+) as any as S.Schema<InsertAdvertisersRequest>;
+
 /** List account, subaccount, advertiser, and campaign associated with a given Billing Profile. */
 export interface BillingAssignment {
   /** ID of the subaccount associated with the billing assignment.Wildcard (*) means this assignment is not limited to a single subaccountThis is a read-only, auto-generated field. */
@@ -4885,6 +6295,8 @@ export interface BillingAssignment {
   /** ID of the advertiser associated with the billing assignment.Wildcard (*) means this assignment is not limited to a single advertiser */
   advertiserId?: string;
 }
+const BillingAssignment = /*@__PURE__*/ __L.at(__c40, 4) as any as S.Schema<BillingAssignment>;
+
 export interface InsertBillingAssignmentsRequest {
   /** User profile ID associated with this request. */
   profileId: string;
@@ -4893,6 +6305,11 @@ export interface InsertBillingAssignmentsRequest {
   /** Request body */
   body?: BillingAssignment;
 }
+const InsertBillingAssignmentsRequest = /*@__PURE__*/ __L.at(
+  __c40,
+  5,
+) as any as S.Schema<InsertBillingAssignmentsRequest>;
+
 /** Identifies a creative which has been associated with a given campaign. */
 export interface CampaignCreativeAssociation {
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#campaignCreativeAssociation". */
@@ -4900,6 +6317,11 @@ export interface CampaignCreativeAssociation {
   /** ID of the creative associated with the campaign. This is a required field. */
   creativeId?: string;
 }
+const CampaignCreativeAssociation = /*@__PURE__*/ __L.at(
+  __c40,
+  6,
+) as any as S.Schema<CampaignCreativeAssociation>;
+
 export interface InsertCampaignCreativeAssociationsRequest {
   /** User profile ID associated with this request. */
   profileId: string;
@@ -4908,18 +6330,33 @@ export interface InsertCampaignCreativeAssociationsRequest {
   /** Request body */
   body?: CampaignCreativeAssociation;
 }
+const InsertCampaignCreativeAssociationsRequest = /*@__PURE__*/ __L.at(
+  __c40,
+  7,
+) as any as S.Schema<InsertCampaignCreativeAssociationsRequest>;
+
 export interface InsertCampaignsRequest {
   /** User profile ID associated with this request. */
   profileId: string;
   /** Request body */
   body?: Campaign;
 }
+const InsertCampaignsRequest = /*@__PURE__*/ __L.at(
+  __c41,
+  0,
+) as any as S.Schema<InsertCampaignsRequest>;
+
 export interface InsertContentCategoriesRequest {
   /** User profile ID associated with this request. */
   profileId: string;
   /** Request body */
   body?: ContentCategory;
 }
+const InsertContentCategoriesRequest = /*@__PURE__*/ __L.at(
+  __c41,
+  1,
+) as any as S.Schema<InsertContentCategoriesRequest>;
+
 export type CreativeAssetMetadataDetectedFeaturesItemEnum =
   | "CSS_FONT_FACE"
   | "CSS_BACKGROUND_SIZE"
@@ -4990,6 +6427,9 @@ export type CreativeAssetMetadataDetectedFeaturesItemEnum =
 export type CreativeAssetMetadataDetectedFeaturesItemEnumList = Array<
   CreativeAssetMetadataDetectedFeaturesItemEnum | (string & {})
 >;
+const CreativeAssetMetadataDetectedFeaturesItemEnumList =
+  GeneratetagsPlacementsTagFormatsEnumList as any as S.Schema<CreativeAssetMetadataDetectedFeaturesItemEnumList>;
+
 export type CreativeAssetMetadataWarnedValidationRulesItemEnum =
   | "CLICK_TAG_NON_TOP_LEVEL"
   | "CLICK_TAG_MISSING"
@@ -5020,6 +6460,9 @@ export type CreativeAssetMetadataWarnedValidationRulesItemEnum =
 export type CreativeAssetMetadataWarnedValidationRulesItemEnumList = Array<
   CreativeAssetMetadataWarnedValidationRulesItemEnum | (string & {})
 >;
+const CreativeAssetMetadataWarnedValidationRulesItemEnumList =
+  GeneratetagsPlacementsTagFormatsEnumList as any as S.Schema<CreativeAssetMetadataWarnedValidationRulesItemEnumList>;
+
 /** CreativeAssets contains properties of a creative asset file which will be uploaded or has already been uploaded. Refer to the creative sample code for how to upload assets and insert a creative. */
 export interface CreativeAssetMetadata {
   /** ID of the creative asset. This is a required field. */
@@ -5045,6 +6488,11 @@ export interface CreativeAssetMetadata {
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#creativeAssetMetadata". */
   kind?: string;
 }
+const CreativeAssetMetadata = /*@__PURE__*/ __L.at(
+  __c41,
+  2,
+) as any as S.Schema<CreativeAssetMetadata>;
+
 export interface InsertCreativeAssetsRequest {
   /** Advertiser ID of this creative. This is a required field. */
   advertiserId: string;
@@ -5053,12 +6501,22 @@ export interface InsertCreativeAssetsRequest {
   /** Request body */
   body?: CreativeAssetMetadata;
 }
+const InsertCreativeAssetsRequest = /*@__PURE__*/ __L.at(
+  __c41,
+  3,
+) as any as S.Schema<InsertCreativeAssetsRequest>;
+
 export interface InsertCreativeFieldsRequest {
   /** User profile ID associated with this request. */
   profileId: string;
   /** Request body */
   body?: CreativeField;
 }
+const InsertCreativeFieldsRequest = /*@__PURE__*/ __L.at(
+  __c41,
+  4,
+) as any as S.Schema<InsertCreativeFieldsRequest>;
+
 export interface InsertCreativeFieldValuesRequest {
   /** User profile ID associated with this request. */
   profileId: string;
@@ -5067,24 +6525,44 @@ export interface InsertCreativeFieldValuesRequest {
   /** Request body */
   body?: CreativeFieldValue;
 }
+const InsertCreativeFieldValuesRequest = /*@__PURE__*/ __L.at(
+  __c41,
+  5,
+) as any as S.Schema<InsertCreativeFieldValuesRequest>;
+
 export interface InsertCreativeGroupsRequest {
   /** User profile ID associated with this request. */
   profileId: string;
   /** Request body */
   body?: CreativeGroup;
 }
+const InsertCreativeGroupsRequest = /*@__PURE__*/ __L.at(
+  __c41,
+  6,
+) as any as S.Schema<InsertCreativeGroupsRequest>;
+
 export interface InsertCreativesRequest {
   /** User profile ID associated with this request. */
   profileId: string;
   /** Request body */
   body?: Creative;
 }
+const InsertCreativesRequest = /*@__PURE__*/ __L.at(
+  __c41,
+  7,
+) as any as S.Schema<InsertCreativesRequest>;
+
 export interface InsertDirectorySitesRequest {
   /** User profile ID associated with this request. */
   profileId: string;
   /** Request body */
   body?: DirectorySite;
 }
+const InsertDirectorySitesRequest = /*@__PURE__*/ __L.at(
+  __c42,
+  0,
+) as any as S.Schema<InsertDirectorySitesRequest>;
+
 /** Dynamic profile ID is required for dynamic feed insert as the current GPA API only can create a dynamic feed under profile context,even though the dynamic feed itself don't need the dynamic profile id. */
 export interface DynamicFeedsInsertRequest {
   /** Required. Dynamic profile ID of the inserted dynamic feed. */
@@ -5092,19 +6570,36 @@ export interface DynamicFeedsInsertRequest {
   /** Required. Dynamic feed to insert. */
   dynamicFeed?: DynamicFeed;
 }
+const DynamicFeedsInsertRequest = /*@__PURE__*/ __L.at(
+  __c42,
+  1,
+) as any as S.Schema<DynamicFeedsInsertRequest>;
+
 export interface InsertDynamicFeedsRequest {
   /** Request body */
   body?: DynamicFeedsInsertRequest;
 }
+const InsertDynamicFeedsRequest = /*@__PURE__*/ __L.at(
+  __c42,
+  2,
+) as any as S.Schema<InsertDynamicFeedsRequest>;
+
 export interface InsertDynamicProfilesRequest {
   /** Request body */
   body?: DynamicProfile;
 }
+const InsertDynamicProfilesRequest = /*@__PURE__*/ __L.at(
+  __c42,
+  3,
+) as any as S.Schema<InsertDynamicProfilesRequest>;
+
 export type DynamicTargetingKeyObjectTypeEnum =
   | "OBJECT_ADVERTISER"
   | "OBJECT_AD"
   | "OBJECT_CREATIVE"
   | "OBJECT_PLACEMENT";
+const DynamicTargetingKeyObjectTypeEnum = S.String;
+
 /** Contains properties of a dynamic targeting key. Dynamic targeting keys are unique, user-friendly labels, created at the advertiser level in DCM, that can be assigned to ads, creatives, and placements and used for targeting with Studio dynamic creatives. Use these labels instead of numeric Campaign Manager IDs (such as placement IDs) to save time and avoid errors in your dynamic feeds. */
 export interface DynamicTargetingKey {
   /** ID of the object of this dynamic targeting key. This is a required field. */
@@ -5116,72 +6611,123 @@ export interface DynamicTargetingKey {
   /** Name of this dynamic targeting key. This is a required field. Must be less than 256 characters long and cannot contain commas. All characters are converted to lowercase. */
   name?: string;
 }
+const DynamicTargetingKey = /*@__PURE__*/ __L.at(__c42, 4) as any as S.Schema<DynamicTargetingKey>;
+
 export interface InsertDynamicTargetingKeysRequest {
   /** User profile ID associated with this request. */
   profileId: string;
   /** Request body */
   body?: DynamicTargetingKey;
 }
+const InsertDynamicTargetingKeysRequest = /*@__PURE__*/ __L.at(
+  __c42,
+  5,
+) as any as S.Schema<InsertDynamicTargetingKeysRequest>;
+
 export interface InsertEventTagsRequest {
   /** User profile ID associated with this request. */
   profileId: string;
   /** Request body */
   body?: EventTag;
 }
+const InsertEventTagsRequest = /*@__PURE__*/ __L.at(
+  __c42,
+  6,
+) as any as S.Schema<InsertEventTagsRequest>;
+
 export interface InsertFloodlightActivitiesRequest {
   /** User profile ID associated with this request. */
   profileId: string;
   /** Request body */
   body?: FloodlightActivity;
 }
+const InsertFloodlightActivitiesRequest = /*@__PURE__*/ __L.at(
+  __c42,
+  7,
+) as any as S.Schema<InsertFloodlightActivitiesRequest>;
+
 export interface InsertFloodlightActivityGroupsRequest {
   /** User profile ID associated with this request. */
   profileId: string;
   /** Request body */
   body?: FloodlightActivityGroup;
 }
+const InsertFloodlightActivityGroupsRequest = /*@__PURE__*/ __L.at(
+  __c43,
+  0,
+) as any as S.Schema<InsertFloodlightActivityGroupsRequest>;
+
 export interface InsertPlacementGroupsRequest {
   /** User profile ID associated with this request. */
   profileId: string;
   /** Request body */
   body?: PlacementGroup;
 }
+const InsertPlacementGroupsRequest = /*@__PURE__*/ __L.at(
+  __c43,
+  1,
+) as any as S.Schema<InsertPlacementGroupsRequest>;
+
 export interface InsertPlacementsRequest {
   /** User profile ID associated with this request. */
   profileId: string;
   /** Request body */
   body?: Placement;
 }
+const InsertPlacementsRequest = /*@__PURE__*/ __L.at(
+  __c43,
+  2,
+) as any as S.Schema<InsertPlacementsRequest>;
+
 export interface InsertPlacementStrategiesRequest {
   /** User profile ID associated with this request. */
   profileId: string;
   /** Request body */
   body?: PlacementStrategy;
 }
+const InsertPlacementStrategiesRequest = /*@__PURE__*/ __L.at(
+  __c43,
+  3,
+) as any as S.Schema<InsertPlacementStrategiesRequest>;
+
 export interface InsertRemarketingListsRequest {
   /** User profile ID associated with this request. */
   profileId: string;
   /** Request body */
   body?: RemarketingList;
 }
+const InsertRemarketingListsRequest = /*@__PURE__*/ __L.at(
+  __c43,
+  4,
+) as any as S.Schema<InsertRemarketingListsRequest>;
+
 export interface InsertReportsRequest {
   /** The Campaign Manager 360 user profile ID. */
   profileId: string;
   /** Request body */
   body?: Report;
 }
+const InsertReportsRequest = /*@__PURE__*/ __L.at(
+  __c43,
+  5,
+) as any as S.Schema<InsertReportsRequest>;
+
 export interface InsertSitesRequest {
   /** User profile ID associated with this request. */
   profileId: string;
   /** Request body */
   body?: Site;
 }
+const InsertSitesRequest = /*@__PURE__*/ __L.at(__c43, 6) as any as S.Schema<InsertSitesRequest>;
+
 export interface InsertSizesRequest {
   /** User profile ID associated with this request. */
   profileId: string;
   /** Request body */
   body?: Size;
 }
+const InsertSizesRequest = /*@__PURE__*/ __L.at(__c43, 7) as any as S.Schema<InsertSizesRequest>;
+
 /** Request message for DfareportingStudioCreativeAssets.Insert. */
 export interface DfareportingStudioCreativeAssetsInsertRequest {
   /** Optional. Studio account ID of the studio creative asset. It is a optional. */
@@ -5191,15 +6737,27 @@ export interface DfareportingStudioCreativeAssetsInsertRequest {
   /** Optional. Studio creative ID of the studio creative asset. It is a optional field. If it is set, the asset will be associated to the creative. */
   studioCreativeId?: string;
 }
+const DfareportingStudioCreativeAssetsInsertRequest = /*@__PURE__*/ __L.at(
+  __c44,
+  0,
+) as any as S.Schema<DfareportingStudioCreativeAssetsInsertRequest>;
+
 export interface InsertStudioCreativeAssetsRequest {
   /** Request body */
   body?: DfareportingStudioCreativeAssetsInsertRequest;
 }
+const InsertStudioCreativeAssetsRequest = /*@__PURE__*/ __L.at(
+  __c44,
+  1,
+) as any as S.Schema<InsertStudioCreativeAssetsRequest>;
+
 export type VideoProcessingDataProcessingStateEnum =
   | "UNKNOWN"
   | "PROCESSING"
   | "SUCCEEDED"
   | "FAILED";
+const VideoProcessingDataProcessingStateEnum = S.String;
+
 /** Contains processing data for a video asset. */
 export interface VideoProcessingData {
   /** For a FAILED processing state, the error reason discovered. */
@@ -5207,7 +6765,11 @@ export interface VideoProcessingData {
   /** Output only. The processing state of the studio creative asset. */
   processingState?: VideoProcessingDataProcessingStateEnum;
 }
+const VideoProcessingData = /*@__PURE__*/ __L.at(__c44, 2) as any as S.Schema<VideoProcessingData>;
+
 export type StudioCreativeAssetTypeEnum = "UNKNOWN_TYPE" | "HTML" | "VIDEO" | "IMAGE" | "FONT";
+const StudioCreativeAssetTypeEnum = S.String;
+
 /** *Beta:* This API resource is available only to a very limited number of customers. If you'd like to use this resource, please reach out to your Google sales representative. Contains studio creative asset information. */
 export interface StudioCreativeAsset {
   /** The filesize of the studio creative asset. This is a read-only field. */
@@ -5231,39 +6793,78 @@ export interface StudioCreativeAsset {
   /** The type of the studio creative asset. It is a auto-generated, read-only field. */
   type?: StudioCreativeAssetTypeEnum;
 }
+const StudioCreativeAsset = /*@__PURE__*/ __L.at(__c44, 3) as any as S.Schema<StudioCreativeAsset>;
+
 export type StudioCreativeAssetList = Array<StudioCreativeAsset>;
+const StudioCreativeAssetList = /*@__PURE__*/ __L.at(
+  __c44,
+  4,
+) as any as S.Schema<StudioCreativeAssetList>;
+
 /** Response message for DfareportingStudioCreativeAssets.Insert. */
 export interface StudioCreativeAssetsResponse {
   /** The list of studio creative assets. */
   assets?: StudioCreativeAssetList;
 }
+const StudioCreativeAssetsResponse = /*@__PURE__*/ __L.at(
+  __c44,
+  5,
+) as any as S.Schema<StudioCreativeAssetsResponse>;
+
 export interface InsertStudioCreativesRequest {
   /** Request body */
   body?: StudioCreative;
 }
+const InsertStudioCreativesRequest = /*@__PURE__*/ __L.at(
+  __c44,
+  6,
+) as any as S.Schema<InsertStudioCreativesRequest>;
+
 export interface InsertSubaccountsRequest {
   /** User profile ID associated with this request. */
   profileId: string;
   /** Request body */
   body?: Subaccount;
 }
+const InsertSubaccountsRequest = /*@__PURE__*/ __L.at(
+  __c44,
+  7,
+) as any as S.Schema<InsertSubaccountsRequest>;
+
 export interface InsertTargetingTemplatesRequest {
   /** User profile ID associated with this request. */
   profileId: string;
   /** Request body */
   body?: TargetingTemplate;
 }
+const InsertTargetingTemplatesRequest = /*@__PURE__*/ __L.at(
+  __c45,
+  0,
+) as any as S.Schema<InsertTargetingTemplatesRequest>;
+
 export interface InsertUserRolesRequest {
   /** User profile ID associated with this request. */
   profileId: string;
   /** Request body */
   body?: UserRole;
 }
+const InsertUserRolesRequest = /*@__PURE__*/ __L.at(
+  __c45,
+  1,
+) as any as S.Schema<InsertUserRolesRequest>;
+
 export interface ListAccountPermissionGroupsRequest {
   /** User profile ID associated with this request. */
   profileId: string;
 }
+const ListAccountPermissionGroupsRequest = /*@__PURE__*/ __L.at(
+  __c45,
+  2,
+) as any as S.Schema<ListAccountPermissionGroupsRequest>;
+
 export type AccountPermissionGroupList = Array<AccountPermissionGroup>;
+const AccountPermissionGroupList = PlatformTypeList as any as S.Schema<AccountPermissionGroupList>;
+
 /** Account Permission Group List Response */
 export interface AccountPermissionGroupsListResponse {
   /** Account permission group collection. */
@@ -5271,11 +6872,26 @@ export interface AccountPermissionGroupsListResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#accountPermissionGroupGroupsListResponse". */
   kind?: string;
 }
+const AccountPermissionGroupsListResponse = /*@__PURE__*/ __L.at(
+  __c45,
+  3,
+) as any as S.Schema<AccountPermissionGroupsListResponse>;
+
 export interface ListAccountPermissionsRequest {
   /** User profile ID associated with this request. */
   profileId: string;
 }
+const ListAccountPermissionsRequest = /*@__PURE__*/ __L.at(
+  __c45,
+  4,
+) as any as S.Schema<ListAccountPermissionsRequest>;
+
 export type AccountPermissionList = Array<AccountPermission>;
+const AccountPermissionList = /*@__PURE__*/ __L.at(
+  __c45,
+  5,
+) as any as S.Schema<AccountPermissionList>;
+
 /** Account Permission List Response */
 export interface AccountPermissionsListResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#accountPermissionsListResponse". */
@@ -5283,8 +6899,17 @@ export interface AccountPermissionsListResponse {
   /** Account permission collection. */
   accountPermissions?: AccountPermissionList;
 }
+const AccountPermissionsListResponse = /*@__PURE__*/ __L.at(
+  __c45,
+  6,
+) as any as S.Schema<AccountPermissionsListResponse>;
+
 export type ListAccountsSortOrderEnum = "ASCENDING" | "DESCENDING";
+const ListAccountsSortOrderEnum = S.String;
+
 export type ListAccountsSortFieldEnum = "ID" | "NAME";
+const ListAccountsSortFieldEnum = S.String;
+
 export interface ListAccountsRequest {
   /** Allows searching for objects by name or ID. Wildcards (*) are allowed. For example, "account*2015" will return objects with names like "account June 2015", "account April 2015", or simply "account 2015". Most of the searches also add wildcards implicitly at the start and the end of the search string. For example, a search string of "account" will match objects with name "my account", "account 2015", or simply "account". */
   searchString?: string;
@@ -5303,7 +6928,11 @@ export interface ListAccountsRequest {
   /** User profile ID associated with this request. */
   profileId: string;
 }
+const ListAccountsRequest = /*@__PURE__*/ __L.at(__c45, 7) as any as S.Schema<ListAccountsRequest>;
+
 export type AccountList = Array<Account>;
+const AccountList = /*@__PURE__*/ __L.at(__c46, 0) as any as S.Schema<AccountList>;
+
 /** Account List Response */
 export interface AccountsListResponse {
   /** Account collection. */
@@ -5313,8 +6942,17 @@ export interface AccountsListResponse {
   /** Pagination token to be used for the next list operation. */
   nextPageToken?: string;
 }
+const AccountsListResponse = /*@__PURE__*/ __L.at(
+  __c46,
+  1,
+) as any as S.Schema<AccountsListResponse>;
+
 export type ListAccountUserProfilesSortFieldEnum = "ID" | "NAME";
+const ListAccountUserProfilesSortFieldEnum = S.String;
+
 export type ListAccountUserProfilesSortOrderEnum = "ASCENDING" | "DESCENDING";
+const ListAccountUserProfilesSortOrderEnum = S.String;
+
 export interface ListAccountUserProfilesRequest {
   /** User profile ID associated with this request. */
   profileId: string;
@@ -5337,7 +6975,17 @@ export interface ListAccountUserProfilesRequest {
   /** Select only active user profiles. */
   active?: boolean;
 }
+const ListAccountUserProfilesRequest = /*@__PURE__*/ __L.at(
+  __c46,
+  2,
+) as any as S.Schema<ListAccountUserProfilesRequest>;
+
 export type AccountUserProfileList = Array<AccountUserProfile>;
+const AccountUserProfileList = /*@__PURE__*/ __L.at(
+  __c46,
+  3,
+) as any as S.Schema<AccountUserProfileList>;
+
 /** Account User Profile List Response */
 export interface AccountUserProfilesListResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#accountUserProfilesListResponse". */
@@ -5347,6 +6995,11 @@ export interface AccountUserProfilesListResponse {
   /** Pagination token to be used for the next list operation. */
   nextPageToken?: string;
 }
+const AccountUserProfilesListResponse = /*@__PURE__*/ __L.at(
+  __c46,
+  4,
+) as any as S.Schema<AccountUserProfilesListResponse>;
+
 export type ListAdsTypeEnum =
   | "AD_SERVING_STANDARD_AD"
   | "AD_SERVING_DEFAULT_AD"
@@ -5354,7 +7007,12 @@ export type ListAdsTypeEnum =
   | "AD_SERVING_TRACKING"
   | "AD_SERVING_BRAND_SAFE_AD";
 export type ListAdsTypeEnumList = Array<ListAdsTypeEnum | (string & {})>;
+const ListAdsTypeEnumList =
+  GeneratetagsPlacementsTagFormatsEnumList as any as S.Schema<ListAdsTypeEnumList>;
+
 export type ListAdsSortOrderEnum = "ASCENDING" | "DESCENDING";
+const ListAdsSortOrderEnum = S.String;
+
 export type ListAdsCompatibilityEnum =
   | "DISPLAY"
   | "DISPLAY_INTERSTITIAL"
@@ -5362,7 +7020,11 @@ export type ListAdsCompatibilityEnum =
   | "APP_INTERSTITIAL"
   | "IN_STREAM_VIDEO"
   | "IN_STREAM_AUDIO";
+const ListAdsCompatibilityEnum = S.String;
+
 export type ListAdsSortFieldEnum = "ID" | "NAME";
+const ListAdsSortFieldEnum = S.String;
+
 export interface ListAdsRequest {
   /** Select only ads with these types. */
   type?: ListAdsTypeEnumList;
@@ -5413,7 +7075,11 @@ export interface ListAdsRequest {
   /** Select only ads with this event tag override ID. */
   overriddenEventTagId?: string;
 }
+const ListAdsRequest = /*@__PURE__*/ __L.at(__c46, 5) as any as S.Schema<ListAdsRequest>;
+
 export type AdList = Array<Ad>;
+const AdList = /*@__PURE__*/ __L.at(__c46, 6) as any as S.Schema<AdList>;
+
 /** Ad List Response */
 export interface AdsListResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#adsListResponse". */
@@ -5423,8 +7089,14 @@ export interface AdsListResponse {
   /** Pagination token to be used for the next list operation. */
   nextPageToken?: string;
 }
+const AdsListResponse = /*@__PURE__*/ __L.at(__c46, 7) as any as S.Schema<AdsListResponse>;
+
 export type ListAdvertiserGroupsSortOrderEnum = "ASCENDING" | "DESCENDING";
+const ListAdvertiserGroupsSortOrderEnum = S.String;
+
 export type ListAdvertiserGroupsSortFieldEnum = "ID" | "NAME";
+const ListAdvertiserGroupsSortFieldEnum = S.String;
+
 export interface ListAdvertiserGroupsRequest {
   /** Select only advertiser groups with these IDs. */
   ids?: StringList;
@@ -5441,7 +7113,14 @@ export interface ListAdvertiserGroupsRequest {
   /** Value of the nextPageToken from the previous result page. */
   pageToken?: string;
 }
+const ListAdvertiserGroupsRequest = /*@__PURE__*/ __L.at(
+  __c47,
+  0,
+) as any as S.Schema<ListAdvertiserGroupsRequest>;
+
 export type AdvertiserGroupList = Array<AdvertiserGroup>;
+const AdvertiserGroupList = /*@__PURE__*/ __L.at(__c47, 1) as any as S.Schema<AdvertiserGroupList>;
+
 /** Advertiser Group List Response */
 export interface AdvertiserGroupsListResponse {
   /** Advertiser group collection. */
@@ -5451,6 +7130,11 @@ export interface AdvertiserGroupsListResponse {
   /** Pagination token to be used for the next list operation. */
   nextPageToken?: string;
 }
+const AdvertiserGroupsListResponse = /*@__PURE__*/ __L.at(
+  __c47,
+  2,
+) as any as S.Schema<AdvertiserGroupsListResponse>;
+
 export interface ListAdvertiserInvoicesRequest {
   /** User profile ID associated with this request. */
   profileId: string;
@@ -5463,6 +7147,11 @@ export interface ListAdvertiserInvoicesRequest {
   /** Maximum number of results to return. */
   maxResults?: number;
 }
+const ListAdvertiserInvoicesRequest = /*@__PURE__*/ __L.at(
+  __c47,
+  3,
+) as any as S.Schema<ListAdvertiserInvoicesRequest>;
+
 /** Represents a summarized campaign information associated with this invoice. */
 export interface CampaignSummary {
   /** The tax amount for this campaign, in micros of the invoice's currency. */
@@ -5476,11 +7165,17 @@ export interface CampaignSummary {
   /** Campaign ID. */
   campaignId?: string;
 }
+const CampaignSummary = /*@__PURE__*/ __L.at(__c47, 4) as any as S.Schema<CampaignSummary>;
+
 export type CampaignSummaryList = Array<CampaignSummary>;
+const CampaignSummaryList = /*@__PURE__*/ __L.at(__c47, 5) as any as S.Schema<CampaignSummaryList>;
+
 export type InvoiceInvoiceTypeEnum =
   | "INVOICE_TYPE_UNSPECIFIED"
   | "INVOICE_TYPE_CREDIT"
   | "INVOICE_TYPE_INVOICE";
+const InvoiceInvoiceTypeEnum = S.String;
+
 /** Contains information about a single invoice */
 export interface Invoice {
   /** The ID of the payments profile the invoice belongs to. Appears on the invoice PDF as *Billing ID*. */
@@ -5520,7 +7215,11 @@ export interface Invoice {
   /** The invoice service start date. */
   serviceStartDate?: string;
 }
+const Invoice = /*@__PURE__*/ __L.at(__c47, 6) as any as S.Schema<Invoice>;
+
 export type InvoiceList = Array<Invoice>;
+const InvoiceList = /*@__PURE__*/ __L.at(__c47, 7) as any as S.Schema<InvoiceList>;
+
 /** Invoice List Response */
 export interface AdvertiserInvoicesListResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#advertiserInvoicesListResponse". */
@@ -5530,8 +7229,17 @@ export interface AdvertiserInvoicesListResponse {
   /** Invoice collection */
   invoices?: InvoiceList;
 }
+const AdvertiserInvoicesListResponse = /*@__PURE__*/ __L.at(
+  __c48,
+  0,
+) as any as S.Schema<AdvertiserInvoicesListResponse>;
+
 export type ListAdvertiserLandingPagesSortFieldEnum = "ID" | "NAME";
+const ListAdvertiserLandingPagesSortFieldEnum = S.String;
+
 export type ListAdvertiserLandingPagesSortOrderEnum = "ASCENDING" | "DESCENDING";
+const ListAdvertiserLandingPagesSortOrderEnum = S.String;
+
 export interface ListAdvertiserLandingPagesRequest {
   /** Value of the nextPageToken from the previous result page. */
   pageToken?: string;
@@ -5556,7 +7264,14 @@ export interface ListAdvertiserLandingPagesRequest {
   /** Select only landing pages with these IDs. */
   ids?: StringList;
 }
+const ListAdvertiserLandingPagesRequest = /*@__PURE__*/ __L.at(
+  __c48,
+  1,
+) as any as S.Schema<ListAdvertiserLandingPagesRequest>;
+
 export type LandingPageList = Array<LandingPage>;
+const LandingPageList = /*@__PURE__*/ __L.at(__c48, 2) as any as S.Schema<LandingPageList>;
+
 /** Landing Page List Response */
 export interface AdvertiserLandingPagesListResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#advertiserLandingPagesListResponse". */
@@ -5566,9 +7281,20 @@ export interface AdvertiserLandingPagesListResponse {
   /** Landing page collection */
   landingPages?: LandingPageList;
 }
+const AdvertiserLandingPagesListResponse = /*@__PURE__*/ __L.at(
+  __c48,
+  3,
+) as any as S.Schema<AdvertiserLandingPagesListResponse>;
+
 export type ListAdvertisersSortOrderEnum = "ASCENDING" | "DESCENDING";
+const ListAdvertisersSortOrderEnum = S.String;
+
 export type ListAdvertisersStatusEnum = "APPROVED" | "ON_HOLD";
+const ListAdvertisersStatusEnum = S.String;
+
 export type ListAdvertisersSortFieldEnum = "ID" | "NAME";
+const ListAdvertisersSortFieldEnum = S.String;
+
 export interface ListAdvertisersRequest {
   /** Select only advertisers with these IDs. */
   ids?: StringList;
@@ -5597,7 +7323,14 @@ export interface ListAdvertisersRequest {
   /** Select only advertisers with these floodlight configuration IDs. */
   floodlightConfigurationIds?: StringList;
 }
+const ListAdvertisersRequest = /*@__PURE__*/ __L.at(
+  __c48,
+  4,
+) as any as S.Schema<ListAdvertisersRequest>;
+
 export type AdvertiserList = Array<Advertiser>;
+const AdvertiserList = /*@__PURE__*/ __L.at(__c48, 5) as any as S.Schema<AdvertiserList>;
+
 /** Advertiser List Response */
 export interface AdvertisersListResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#advertisersListResponse". */
@@ -5607,13 +7340,28 @@ export interface AdvertisersListResponse {
   /** Pagination token to be used for the next list operation. */
   nextPageToken?: string;
 }
+const AdvertisersListResponse = /*@__PURE__*/ __L.at(
+  __c48,
+  6,
+) as any as S.Schema<AdvertisersListResponse>;
+
 export interface ListBillingAssignmentsRequest {
   /** User profile ID associated with this request. */
   profileId: string;
   /** Billing profile ID of this billing assignment. */
   billingProfileId: string;
 }
+const ListBillingAssignmentsRequest = /*@__PURE__*/ __L.at(
+  __c48,
+  7,
+) as any as S.Schema<ListBillingAssignmentsRequest>;
+
 export type BillingAssignmentList = Array<BillingAssignment>;
+const BillingAssignmentList = /*@__PURE__*/ __L.at(
+  __c49,
+  0,
+) as any as S.Schema<BillingAssignmentList>;
+
 /** Billing assignment List Response */
 export interface BillingAssignmentsListResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#billingAssignmentsListResponse". */
@@ -5621,12 +7369,24 @@ export interface BillingAssignmentsListResponse {
   /** Billing assignments collection. */
   billingAssignments?: BillingAssignmentList;
 }
+const BillingAssignmentsListResponse = /*@__PURE__*/ __L.at(
+  __c49,
+  1,
+) as any as S.Schema<BillingAssignmentsListResponse>;
+
 export type ListBillingProfilesStatusEnum = "UNDER_REVIEW" | "ACTIVE" | "ARCHIVED";
 export type ListBillingProfilesStatusEnumList = Array<
   ListBillingProfilesStatusEnum | (string & {})
 >;
+const ListBillingProfilesStatusEnumList =
+  GeneratetagsPlacementsTagFormatsEnumList as any as S.Schema<ListBillingProfilesStatusEnumList>;
+
 export type ListBillingProfilesSortOrderEnum = "ASCENDING" | "DESCENDING";
+const ListBillingProfilesSortOrderEnum = S.String;
+
 export type ListBillingProfilesSortFieldEnum = "ID" | "NAME";
+const ListBillingProfilesSortFieldEnum = S.String;
+
 export interface ListBillingProfilesRequest {
   /** Select only billing profile with the specified status. */
   status?: ListBillingProfilesStatusEnumList;
@@ -5651,7 +7411,14 @@ export interface ListBillingProfilesRequest {
   /** User profile ID associated with this request. */
   profileId: string;
 }
+const ListBillingProfilesRequest = /*@__PURE__*/ __L.at(
+  __c49,
+  2,
+) as any as S.Schema<ListBillingProfilesRequest>;
+
 export type BillingProfileList = Array<BillingProfile>;
+const BillingProfileList = /*@__PURE__*/ __L.at(__c49, 3) as any as S.Schema<BillingProfileList>;
+
 /** Billing profile List Response */
 export interface BillingProfilesListResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#billingProfilesListResponse". */
@@ -5661,12 +7428,22 @@ export interface BillingProfilesListResponse {
   /** Pagination token to be used for the next list operation. */
   nextPageToken?: string;
 }
+const BillingProfilesListResponse = /*@__PURE__*/ __L.at(
+  __c49,
+  4,
+) as any as S.Schema<BillingProfilesListResponse>;
+
 export interface ListBillingRatesRequest {
   /** User profile ID associated with this request. */
   profileId: string;
   /** Billing profile ID of this billing rate. */
   billingProfileId: string;
 }
+const ListBillingRatesRequest = /*@__PURE__*/ __L.at(
+  __c49,
+  5,
+) as any as S.Schema<ListBillingRatesRequest>;
+
 export interface BillingRateTieredRate {
   /** The maximum for this tier range. */
   highValue?: string;
@@ -5675,8 +7452,20 @@ export interface BillingRateTieredRate {
   /** The minimum for this tier range. */
   lowValue?: string;
 }
+const BillingRateTieredRate = /*@__PURE__*/ __L.at(
+  __c49,
+  6,
+) as any as S.Schema<BillingRateTieredRate>;
+
 export type BillingRateTieredRateList = Array<BillingRateTieredRate>;
+const BillingRateTieredRateList = /*@__PURE__*/ __L.at(
+  __c49,
+  7,
+) as any as S.Schema<BillingRateTieredRateList>;
+
 export type BillingRateUnitOfMeasureEnum = "CPM" | "CPC" | "EA" | "P2C";
+const BillingRateUnitOfMeasureEnum = S.String;
+
 export type BillingRateTypeEnum =
   | "AD_SERVING"
   | "CLICKS"
@@ -5710,6 +7499,8 @@ export type BillingRateTypeEnum =
   | "VIDEO_AD_SERVING"
   | "AUDIO_AD_SERVING"
   | "ADVANCED_DISPLAY_AD_SERVING";
+const BillingRateTypeEnum = S.String;
+
 export interface BillingRate {
   /** Tiered rate of this billing rate. This cannot co-exist with flat rate. */
   tieredRates?: BillingRateTieredRateList;
@@ -5730,7 +7521,11 @@ export interface BillingRate {
   /** Type of this billing rate. */
   type?: BillingRateTypeEnum;
 }
+const BillingRate = /*@__PURE__*/ __L.at(__c50, 0) as any as S.Schema<BillingRate>;
+
 export type BillingRateList = Array<BillingRate>;
+const BillingRateList = /*@__PURE__*/ __L.at(__c50, 1) as any as S.Schema<BillingRateList>;
+
 /** Billing Rate List Response */
 export interface BillingRatesListResponse {
   /** Billing rates collection. */
@@ -5740,10 +7535,17 @@ export interface BillingRatesListResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#billingRatesListResponse". */
   kind?: string;
 }
+const BillingRatesListResponse = /*@__PURE__*/ __L.at(
+  __c50,
+  2,
+) as any as S.Schema<BillingRatesListResponse>;
+
 export interface ListBrowsersRequest {
   /** User profile ID associated with this request. */
   profileId: string;
 }
+const ListBrowsersRequest = /*@__PURE__*/ __L.at(__c50, 3) as any as S.Schema<ListBrowsersRequest>;
+
 /** Browser List Response */
 export interface BrowsersListResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#browsersListResponse". */
@@ -5751,7 +7553,14 @@ export interface BrowsersListResponse {
   /** Browser collection. */
   browsers?: BrowserList;
 }
+const BrowsersListResponse = /*@__PURE__*/ __L.at(
+  __c50,
+  4,
+) as any as S.Schema<BrowsersListResponse>;
+
 export type ListCampaignCreativeAssociationsSortOrderEnum = "ASCENDING" | "DESCENDING";
+const ListCampaignCreativeAssociationsSortOrderEnum = S.String;
+
 export interface ListCampaignCreativeAssociationsRequest {
   /** Order of sorted results. */
   sortOrder?: ListCampaignCreativeAssociationsSortOrderEnum | (string & {});
@@ -5764,7 +7573,17 @@ export interface ListCampaignCreativeAssociationsRequest {
   /** User profile ID associated with this request. */
   profileId: string;
 }
+const ListCampaignCreativeAssociationsRequest = /*@__PURE__*/ __L.at(
+  __c50,
+  5,
+) as any as S.Schema<ListCampaignCreativeAssociationsRequest>;
+
 export type CampaignCreativeAssociationList = Array<CampaignCreativeAssociation>;
+const CampaignCreativeAssociationList = /*@__PURE__*/ __L.at(
+  __c50,
+  6,
+) as any as S.Schema<CampaignCreativeAssociationList>;
+
 /** Campaign Creative Association List Response */
 export interface CampaignCreativeAssociationsListResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#campaignCreativeAssociationsListResponse". */
@@ -5774,8 +7593,17 @@ export interface CampaignCreativeAssociationsListResponse {
   /** Pagination token to be used for the next list operation. */
   nextPageToken?: string;
 }
+const CampaignCreativeAssociationsListResponse = /*@__PURE__*/ __L.at(
+  __c50,
+  7,
+) as any as S.Schema<CampaignCreativeAssociationsListResponse>;
+
 export type ListCampaignsSortOrderEnum = "ASCENDING" | "DESCENDING";
+const ListCampaignsSortOrderEnum = S.String;
+
 export type ListCampaignsSortFieldEnum = "ID" | "NAME";
+const ListCampaignsSortFieldEnum = S.String;
+
 export interface ListCampaignsRequest {
   /** Order of sorted results. */
   sortOrder?: ListCampaignsSortOrderEnum | (string & {});
@@ -5806,7 +7634,14 @@ export interface ListCampaignsRequest {
   /** Select only campaigns that belong to this subaccount. */
   subaccountId?: string;
 }
+const ListCampaignsRequest = /*@__PURE__*/ __L.at(
+  __c51,
+  0,
+) as any as S.Schema<ListCampaignsRequest>;
+
 export type CampaignList = Array<Campaign>;
+const CampaignList = /*@__PURE__*/ __L.at(__c51, 1) as any as S.Schema<CampaignList>;
+
 /** Campaign List Response */
 export interface CampaignsListResponse {
   /** Pagination token to be used for the next list operation. */
@@ -5816,6 +7651,11 @@ export interface CampaignsListResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#campaignsListResponse". */
   kind?: string;
 }
+const CampaignsListResponse = /*@__PURE__*/ __L.at(
+  __c51,
+  2,
+) as any as S.Schema<CampaignsListResponse>;
+
 export type ListChangeLogsObjectTypeEnum =
   | "OBJECT_ADVERTISER"
   | "OBJECT_FLOODLIGHT_CONFIGURATION"
@@ -5860,6 +7700,8 @@ export type ListChangeLogsObjectTypeEnum =
   | "OBJECT_ADVERTISER_CUSTOMER_LINK"
   | "OBJECT_CONVERSION_DOMAIN"
   | "OBJECT_ACCOUNT_CONVERSION_DOMAIN";
+const ListChangeLogsObjectTypeEnum = S.String;
+
 export type ListChangeLogsActionEnum =
   | "ACTION_CREATE"
   | "ACTION_UPDATE"
@@ -5878,6 +7720,8 @@ export type ListChangeLogsActionEnum =
   | "ACTION_PUSH"
   | "ACTION_EMAIL_TAGS"
   | "ACTION_SHARE";
+const ListChangeLogsActionEnum = S.String;
+
 export interface ListChangeLogsRequest {
   /** Select only change logs whose change time is after the specified minChangeTime.The time should be formatted as an RFC3339 date/time string. For example, for 10:54 PM on July 18th, 2015, in the America/New York time zone, the format is "2015-07-18T22:54:00-04:00". In other words, the year, month, day, the letter T, the hour (24-hour clock system), minute, second, and then the time zone offset. */
   minChangeTime?: string;
@@ -5902,7 +7746,14 @@ export interface ListChangeLogsRequest {
   /** Select only change logs with these IDs. */
   ids?: StringList;
 }
+const ListChangeLogsRequest = /*@__PURE__*/ __L.at(
+  __c51,
+  3,
+) as any as S.Schema<ListChangeLogsRequest>;
+
 export type ChangeLogList = Array<ChangeLog>;
+const ChangeLogList = /*@__PURE__*/ __L.at(__c51, 4) as any as S.Schema<ChangeLogList>;
+
 /** Change Log List Response */
 export interface ChangeLogsListResponse {
   /** Pagination token to be used for the next list operation. */
@@ -5912,6 +7763,11 @@ export interface ChangeLogsListResponse {
   /** Change log collection. */
   changeLogs?: ChangeLogList;
 }
+const ChangeLogsListResponse = /*@__PURE__*/ __L.at(
+  __c51,
+  5,
+) as any as S.Schema<ChangeLogsListResponse>;
+
 export interface ListCitiesRequest {
   /** Select only cities from these regions. */
   regionDartIds?: StringList;
@@ -5924,6 +7780,8 @@ export interface ListCitiesRequest {
   /** Select only cities with these DART IDs. */
   dartIds?: StringList;
 }
+const ListCitiesRequest = /*@__PURE__*/ __L.at(__c51, 6) as any as S.Schema<ListCitiesRequest>;
+
 /** City List Response */
 export interface CitiesListResponse {
   /** City collection. */
@@ -5931,10 +7789,17 @@ export interface CitiesListResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#citiesListResponse". */
   kind?: string;
 }
+const CitiesListResponse = /*@__PURE__*/ __L.at(__c51, 7) as any as S.Schema<CitiesListResponse>;
+
 export interface ListConnectionTypesRequest {
   /** User profile ID associated with this request. */
   profileId: string;
 }
+const ListConnectionTypesRequest = /*@__PURE__*/ __L.at(
+  __c52,
+  0,
+) as any as S.Schema<ListConnectionTypesRequest>;
+
 /** Connection Type List Response */
 export interface ConnectionTypesListResponse {
   /** Collection of connection types such as broadband and mobile. */
@@ -5942,8 +7807,17 @@ export interface ConnectionTypesListResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#connectionTypesListResponse". */
   kind?: string;
 }
+const ConnectionTypesListResponse = /*@__PURE__*/ __L.at(
+  __c52,
+  1,
+) as any as S.Schema<ConnectionTypesListResponse>;
+
 export type ListContentCategoriesSortOrderEnum = "ASCENDING" | "DESCENDING";
+const ListContentCategoriesSortOrderEnum = S.String;
+
 export type ListContentCategoriesSortFieldEnum = "ID" | "NAME";
+const ListContentCategoriesSortFieldEnum = S.String;
+
 export interface ListContentCategoriesRequest {
   /** Allows searching for objects by name or ID. Wildcards (*) are allowed. For example, "contentcategory*2015" will return objects with names like "contentcategory June 2015", "contentcategory April 2015", or simply "contentcategory 2015". Most of the searches also add wildcards implicitly at the start and the end of the search string. For example, a search string of "contentcategory" will match objects with name "my contentcategory", "contentcategory 2015", or simply "contentcategory". */
   searchString?: string;
@@ -5960,7 +7834,14 @@ export interface ListContentCategoriesRequest {
   /** Field by which to sort the list. */
   sortField?: ListContentCategoriesSortFieldEnum | (string & {});
 }
+const ListContentCategoriesRequest = /*@__PURE__*/ __L.at(
+  __c52,
+  2,
+) as any as S.Schema<ListContentCategoriesRequest>;
+
 export type ContentCategoryList = Array<ContentCategory>;
+const ContentCategoryList = /*@__PURE__*/ __L.at(__c52, 3) as any as S.Schema<ContentCategoryList>;
+
 /** Content Category List Response */
 export interface ContentCategoriesListResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#contentCategoriesListResponse". */
@@ -5970,10 +7851,20 @@ export interface ContentCategoriesListResponse {
   /** Pagination token to be used for the next list operation. */
   nextPageToken?: string;
 }
+const ContentCategoriesListResponse = /*@__PURE__*/ __L.at(
+  __c52,
+  4,
+) as any as S.Schema<ContentCategoriesListResponse>;
+
 export interface ListCountriesRequest {
   /** User profile ID associated with this request. */
   profileId: string;
 }
+const ListCountriesRequest = /*@__PURE__*/ __L.at(
+  __c52,
+  5,
+) as any as S.Schema<ListCountriesRequest>;
+
 /** Country List Response */
 export interface CountriesListResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#countriesListResponse". */
@@ -5981,8 +7872,17 @@ export interface CountriesListResponse {
   /** Country collection. */
   countries?: CountryList;
 }
+const CountriesListResponse = /*@__PURE__*/ __L.at(
+  __c52,
+  6,
+) as any as S.Schema<CountriesListResponse>;
+
 export type ListCreativeFieldsSortOrderEnum = "ASCENDING" | "DESCENDING";
+const ListCreativeFieldsSortOrderEnum = S.String;
+
 export type ListCreativeFieldsSortFieldEnum = "ID" | "NAME";
+const ListCreativeFieldsSortFieldEnum = S.String;
+
 export interface ListCreativeFieldsRequest {
   /** Order of sorted results. */
   sortOrder?: ListCreativeFieldsSortOrderEnum | (string & {});
@@ -6001,7 +7901,14 @@ export interface ListCreativeFieldsRequest {
   /** Field by which to sort the list. */
   sortField?: ListCreativeFieldsSortFieldEnum | (string & {});
 }
+const ListCreativeFieldsRequest = /*@__PURE__*/ __L.at(
+  __c52,
+  7,
+) as any as S.Schema<ListCreativeFieldsRequest>;
+
 export type CreativeFieldList = Array<CreativeField>;
+const CreativeFieldList = /*@__PURE__*/ __L.at(__c53, 0) as any as S.Schema<CreativeFieldList>;
+
 /** Creative Field List Response */
 export interface CreativeFieldsListResponse {
   /** Creative field collection. */
@@ -6011,8 +7918,17 @@ export interface CreativeFieldsListResponse {
   /** Pagination token to be used for the next list operation. */
   nextPageToken?: string;
 }
+const CreativeFieldsListResponse = /*@__PURE__*/ __L.at(
+  __c53,
+  1,
+) as any as S.Schema<CreativeFieldsListResponse>;
+
 export type ListCreativeFieldValuesSortFieldEnum = "ID" | "VALUE";
+const ListCreativeFieldValuesSortFieldEnum = S.String;
+
 export type ListCreativeFieldValuesSortOrderEnum = "ASCENDING" | "DESCENDING";
+const ListCreativeFieldValuesSortOrderEnum = S.String;
+
 export interface ListCreativeFieldValuesRequest {
   /** Maximum number of results to return. */
   maxResults?: number;
@@ -6031,7 +7947,17 @@ export interface ListCreativeFieldValuesRequest {
   /** Select only creative field values with these IDs. */
   ids?: StringList;
 }
+const ListCreativeFieldValuesRequest = /*@__PURE__*/ __L.at(
+  __c53,
+  2,
+) as any as S.Schema<ListCreativeFieldValuesRequest>;
+
 export type CreativeFieldValueList = Array<CreativeFieldValue>;
+const CreativeFieldValueList = /*@__PURE__*/ __L.at(
+  __c53,
+  3,
+) as any as S.Schema<CreativeFieldValueList>;
+
 /** Creative Field Value List Response */
 export interface CreativeFieldValuesListResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#creativeFieldValuesListResponse". */
@@ -6041,8 +7967,17 @@ export interface CreativeFieldValuesListResponse {
   /** Pagination token to be used for the next list operation. */
   nextPageToken?: string;
 }
+const CreativeFieldValuesListResponse = /*@__PURE__*/ __L.at(
+  __c53,
+  4,
+) as any as S.Schema<CreativeFieldValuesListResponse>;
+
 export type ListCreativeGroupsSortOrderEnum = "ASCENDING" | "DESCENDING";
+const ListCreativeGroupsSortOrderEnum = S.String;
+
 export type ListCreativeGroupsSortFieldEnum = "ID" | "NAME";
+const ListCreativeGroupsSortFieldEnum = S.String;
+
 export interface ListCreativeGroupsRequest {
   /** Select only creative groups that belong to these advertisers. */
   advertiserIds?: StringList;
@@ -6063,7 +7998,14 @@ export interface ListCreativeGroupsRequest {
   /** Value of the nextPageToken from the previous result page. */
   pageToken?: string;
 }
+const ListCreativeGroupsRequest = /*@__PURE__*/ __L.at(
+  __c53,
+  5,
+) as any as S.Schema<ListCreativeGroupsRequest>;
+
 export type CreativeGroupList = Array<CreativeGroup>;
+const CreativeGroupList = /*@__PURE__*/ __L.at(__c53, 6) as any as S.Schema<CreativeGroupList>;
+
 /** Creative Group List Response */
 export interface CreativeGroupsListResponse {
   /** Creative group collection. */
@@ -6073,8 +8015,17 @@ export interface CreativeGroupsListResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#creativeGroupsListResponse". */
   kind?: string;
 }
+const CreativeGroupsListResponse = /*@__PURE__*/ __L.at(
+  __c53,
+  7,
+) as any as S.Schema<CreativeGroupsListResponse>;
+
 export type ListCreativesSortFieldEnum = "ID" | "NAME";
+const ListCreativesSortFieldEnum = S.String;
+
 export type ListCreativesSortOrderEnum = "ASCENDING" | "DESCENDING";
+const ListCreativesSortOrderEnum = S.String;
+
 export type ListCreativesTypesEnum =
   | "IMAGE"
   | "DISPLAY_REDIRECT"
@@ -6102,6 +8053,9 @@ export type ListCreativesTypesEnum =
   | "BRAND_SAFE_DEFAULT_INSTREAM_VIDEO"
   | "INSTREAM_AUDIO";
 export type ListCreativesTypesEnumList = Array<ListCreativesTypesEnum | (string & {})>;
+const ListCreativesTypesEnumList =
+  GeneratetagsPlacementsTagFormatsEnumList as any as S.Schema<ListCreativesTypesEnumList>;
+
 export interface ListCreativesRequest {
   /** Select only creatives corresponding to this Studio creative ID. */
   studioCreativeId?: string;
@@ -6138,7 +8092,14 @@ export interface ListCreativesRequest {
   /** Value of the nextPageToken from the previous result page. */
   pageToken?: string;
 }
+const ListCreativesRequest = /*@__PURE__*/ __L.at(
+  __c54,
+  0,
+) as any as S.Schema<ListCreativesRequest>;
+
 export type CreativeList = Array<Creative>;
+const CreativeList = /*@__PURE__*/ __L.at(__c54, 1) as any as S.Schema<CreativeList>;
+
 /** Creative List Response */
 export interface CreativesListResponse {
   /** Pagination token to be used for the next list operation. */
@@ -6148,8 +8109,17 @@ export interface CreativesListResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#creativesListResponse". */
   kind?: string;
 }
+const CreativesListResponse = /*@__PURE__*/ __L.at(
+  __c54,
+  2,
+) as any as S.Schema<CreativesListResponse>;
+
 export type ListDirectorySitesSortFieldEnum = "ID" | "NAME";
+const ListDirectorySitesSortFieldEnum = S.String;
+
 export type ListDirectorySitesSortOrderEnum = "ASCENDING" | "DESCENDING";
+const ListDirectorySitesSortOrderEnum = S.String;
+
 export interface ListDirectorySitesRequest {
   /** This search filter is no longer supported and will have no effect on the results returned. */
   acceptsInStreamVideoPlacements?: boolean;
@@ -6176,7 +8146,14 @@ export interface ListDirectorySitesRequest {
   /** Select only directory sites with this Ad Manager network code. */
   dfpNetworkCode?: string;
 }
+const ListDirectorySitesRequest = /*@__PURE__*/ __L.at(
+  __c54,
+  3,
+) as any as S.Schema<ListDirectorySitesRequest>;
+
 export type DirectorySiteList = Array<DirectorySite>;
+const DirectorySiteList = /*@__PURE__*/ __L.at(__c54, 4) as any as S.Schema<DirectorySiteList>;
+
 /** Directory Site List Response */
 export interface DirectorySitesListResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#directorySitesListResponse". */
@@ -6186,11 +8163,18 @@ export interface DirectorySitesListResponse {
   /** Pagination token to be used for the next list operation. */
   nextPageToken?: string;
 }
+const DirectorySitesListResponse = /*@__PURE__*/ __L.at(
+  __c54,
+  5,
+) as any as S.Schema<DirectorySitesListResponse>;
+
 export type ListDynamicTargetingKeysObjectTypeEnum =
   | "OBJECT_ADVERTISER"
   | "OBJECT_AD"
   | "OBJECT_CREATIVE"
   | "OBJECT_PLACEMENT";
+const ListDynamicTargetingKeysObjectTypeEnum = S.String;
+
 export interface ListDynamicTargetingKeysRequest {
   /** Select only dynamic targeting keys with this object ID. */
   objectId?: string;
@@ -6203,7 +8187,17 @@ export interface ListDynamicTargetingKeysRequest {
   /** User profile ID associated with this request. */
   profileId: string;
 }
+const ListDynamicTargetingKeysRequest = /*@__PURE__*/ __L.at(
+  __c54,
+  6,
+) as any as S.Schema<ListDynamicTargetingKeysRequest>;
+
 export type DynamicTargetingKeyList = Array<DynamicTargetingKey>;
+const DynamicTargetingKeyList = /*@__PURE__*/ __L.at(
+  __c54,
+  7,
+) as any as S.Schema<DynamicTargetingKeyList>;
+
 /** Dynamic Targeting Key List Response */
 export interface DynamicTargetingKeysListResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#dynamicTargetingKeysListResponse". */
@@ -6211,8 +8205,17 @@ export interface DynamicTargetingKeysListResponse {
   /** Dynamic targeting key collection. */
   dynamicTargetingKeys?: DynamicTargetingKeyList;
 }
+const DynamicTargetingKeysListResponse = /*@__PURE__*/ __L.at(
+  __c55,
+  0,
+) as any as S.Schema<DynamicTargetingKeysListResponse>;
+
 export type ListEventTagsSortFieldEnum = "ID" | "NAME";
+const ListEventTagsSortFieldEnum = S.String;
+
 export type ListEventTagsSortOrderEnum = "ASCENDING" | "DESCENDING";
+const ListEventTagsSortOrderEnum = S.String;
+
 export type ListEventTagsEventTagTypesEnum =
   | "IMPRESSION_IMAGE_EVENT_TAG"
   | "IMPRESSION_JAVASCRIPT_EVENT_TAG"
@@ -6220,6 +8223,9 @@ export type ListEventTagsEventTagTypesEnum =
 export type ListEventTagsEventTagTypesEnumList = Array<
   ListEventTagsEventTagTypesEnum | (string & {})
 >;
+const ListEventTagsEventTagTypesEnumList =
+  GeneratetagsPlacementsTagFormatsEnumList as any as S.Schema<ListEventTagsEventTagTypesEnumList>;
+
 export interface ListEventTagsRequest {
   /** Examine only the specified campaign or advertiser's event tags for matching selector criteria. When set to false, the parent advertiser and parent campaign of the specified ad or campaign is examined as well. In addition, when set to false, the status field is examined as well, along with the enabledByDefault field. This parameter can not be set to true when adId is specified as ads do not define their own even tags. */
   definitionsOnly?: boolean;
@@ -6244,7 +8250,14 @@ export interface ListEventTagsRequest {
   /** Select only enabled event tags. What is considered enabled or disabled depends on the definitionsOnly parameter. When definitionsOnly is set to true, only the specified advertiser or campaign's event tags' enabledByDefault field is examined. When definitionsOnly is set to false, the specified ad or specified campaign's parent advertiser's or parent campaign's event tags' enabledByDefault and status fields are examined as well. */
   enabled?: boolean;
 }
+const ListEventTagsRequest = /*@__PURE__*/ __L.at(
+  __c55,
+  1,
+) as any as S.Schema<ListEventTagsRequest>;
+
 export type EventTagList = Array<EventTag>;
+const EventTagList = /*@__PURE__*/ __L.at(__c55, 2) as any as S.Schema<EventTagList>;
+
 /** Event Tag List Response */
 export interface EventTagsListResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#eventTagsListResponse". */
@@ -6252,9 +8265,20 @@ export interface EventTagsListResponse {
   /** Event tag collection. */
   eventTags?: EventTagList;
 }
+const EventTagsListResponse = /*@__PURE__*/ __L.at(
+  __c55,
+  3,
+) as any as S.Schema<EventTagsListResponse>;
+
 export type ListFilesSortFieldEnum = "ID" | "LAST_MODIFIED_TIME";
+const ListFilesSortFieldEnum = S.String;
+
 export type ListFilesSortOrderEnum = "ASCENDING" | "DESCENDING";
+const ListFilesSortOrderEnum = S.String;
+
 export type ListFilesScopeEnum = "ALL" | "MINE" | "SHARED_WITH_ME";
+const ListFilesScopeEnum = S.String;
+
 export interface ListFilesRequest {
   /** The value of the nextToken from the previous result page. */
   pageToken?: string;
@@ -6269,7 +8293,11 @@ export interface ListFilesRequest {
   /** The scope that defines which results are returned. */
   scope?: ListFilesScopeEnum | (string & {});
 }
+const ListFilesRequest = /*@__PURE__*/ __L.at(__c55, 4) as any as S.Schema<ListFilesRequest>;
+
 export type FileList_ = Array<File>;
+const FileList_ = /*@__PURE__*/ __L.at(__c55, 5) as any as S.Schema<FileList_>;
+
 /** List of files for a report. */
 export interface FileList {
   /** The files returned in this response. */
@@ -6281,9 +8309,17 @@ export interface FileList {
   /** Continuation token used to page through files. To retrieve the next page of results, set the next request's "pageToken" to the value of this field. The page token is only valid for a limited amount of time and should not be persisted. */
   nextPageToken?: string;
 }
+const FileList = /*@__PURE__*/ __L.at(__c55, 6) as any as S.Schema<FileList>;
+
 export type ListFloodlightActivitiesSortFieldEnum = "ID" | "NAME";
+const ListFloodlightActivitiesSortFieldEnum = S.String;
+
 export type ListFloodlightActivitiesSortOrderEnum = "ASCENDING" | "DESCENDING";
+const ListFloodlightActivitiesSortOrderEnum = S.String;
+
 export type ListFloodlightActivitiesFloodlightActivityGroupTypeEnum = "COUNTER" | "SALE";
+const ListFloodlightActivitiesFloodlightActivityGroupTypeEnum = S.String;
+
 export interface ListFloodlightActivitiesRequest {
   /** Field by which to sort the list. */
   sortField?: ListFloodlightActivitiesSortFieldEnum | (string & {});
@@ -6316,7 +8352,17 @@ export interface ListFloodlightActivitiesRequest {
   /** Select only floodlight activities for the specified floodlight configuration ID. Must specify either ids, advertiserId, or floodlightConfigurationId for a non-empty result. */
   floodlightConfigurationId?: string;
 }
+const ListFloodlightActivitiesRequest = /*@__PURE__*/ __L.at(
+  __c55,
+  7,
+) as any as S.Schema<ListFloodlightActivitiesRequest>;
+
 export type FloodlightActivityList = Array<FloodlightActivity>;
+const FloodlightActivityList = /*@__PURE__*/ __L.at(
+  __c56,
+  0,
+) as any as S.Schema<FloodlightActivityList>;
+
 /** Floodlight Activity List Response */
 export interface FloodlightActivitiesListResponse {
   /** Pagination token to be used for the next list operation. */
@@ -6326,9 +8372,20 @@ export interface FloodlightActivitiesListResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#floodlightActivitiesListResponse". */
   kind?: string;
 }
+const FloodlightActivitiesListResponse = /*@__PURE__*/ __L.at(
+  __c56,
+  1,
+) as any as S.Schema<FloodlightActivitiesListResponse>;
+
 export type ListFloodlightActivityGroupsTypeEnum = "COUNTER" | "SALE";
+const ListFloodlightActivityGroupsTypeEnum = S.String;
+
 export type ListFloodlightActivityGroupsSortOrderEnum = "ASCENDING" | "DESCENDING";
+const ListFloodlightActivityGroupsSortOrderEnum = S.String;
+
 export type ListFloodlightActivityGroupsSortFieldEnum = "ID" | "NAME";
+const ListFloodlightActivityGroupsSortFieldEnum = S.String;
+
 export interface ListFloodlightActivityGroupsRequest {
   /** Select only floodlight activity groups with the specified floodlight configuration ID. Must specify either advertiserId, or floodlightConfigurationId for a non-empty result. */
   floodlightConfigurationId?: string;
@@ -6351,7 +8408,17 @@ export interface ListFloodlightActivityGroupsRequest {
   /** Maximum number of results to return. */
   maxResults?: number;
 }
+const ListFloodlightActivityGroupsRequest = /*@__PURE__*/ __L.at(
+  __c56,
+  2,
+) as any as S.Schema<ListFloodlightActivityGroupsRequest>;
+
 export type FloodlightActivityGroupList = Array<FloodlightActivityGroup>;
+const FloodlightActivityGroupList = /*@__PURE__*/ __L.at(
+  __c56,
+  3,
+) as any as S.Schema<FloodlightActivityGroupList>;
+
 /** Floodlight Activity Group List Response */
 export interface FloodlightActivityGroupsListResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#floodlightActivityGroupsListResponse". */
@@ -6361,13 +8428,28 @@ export interface FloodlightActivityGroupsListResponse {
   /** Floodlight activity group collection. */
   floodlightActivityGroups?: FloodlightActivityGroupList;
 }
+const FloodlightActivityGroupsListResponse = /*@__PURE__*/ __L.at(
+  __c56,
+  4,
+) as any as S.Schema<FloodlightActivityGroupsListResponse>;
+
 export interface ListFloodlightConfigurationsRequest {
   /** User profile ID associated with this request. */
   profileId: string;
   /** Set of IDs of floodlight configurations to retrieve. Required field; otherwise an empty list will be returned. */
   ids?: StringList;
 }
+const ListFloodlightConfigurationsRequest = /*@__PURE__*/ __L.at(
+  __c56,
+  5,
+) as any as S.Schema<ListFloodlightConfigurationsRequest>;
+
 export type FloodlightConfigurationList = Array<FloodlightConfiguration>;
+const FloodlightConfigurationList = /*@__PURE__*/ __L.at(
+  __c56,
+  6,
+) as any as S.Schema<FloodlightConfigurationList>;
+
 /** Floodlight Configuration List Response */
 export interface FloodlightConfigurationsListResponse {
   /** Floodlight configuration collection. */
@@ -6375,10 +8457,20 @@ export interface FloodlightConfigurationsListResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#floodlightConfigurationsListResponse". */
   kind?: string;
 }
+const FloodlightConfigurationsListResponse = /*@__PURE__*/ __L.at(
+  __c56,
+  7,
+) as any as S.Schema<FloodlightConfigurationsListResponse>;
+
 export interface ListLanguagesRequest {
   /** User profile ID associated with this request. */
   profileId: string;
 }
+const ListLanguagesRequest = /*@__PURE__*/ __L.at(
+  __c57,
+  0,
+) as any as S.Schema<ListLanguagesRequest>;
+
 /** Language List Response */
 export interface LanguagesListResponse {
   /** Language collection. */
@@ -6386,10 +8478,17 @@ export interface LanguagesListResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#languagesListResponse". */
   kind?: string;
 }
+const LanguagesListResponse = /*@__PURE__*/ __L.at(
+  __c57,
+  1,
+) as any as S.Schema<LanguagesListResponse>;
+
 export interface ListMetrosRequest {
   /** User profile ID associated with this request. */
   profileId: string;
 }
+const ListMetrosRequest = /*@__PURE__*/ __L.at(__c57, 2) as any as S.Schema<ListMetrosRequest>;
+
 /** Metro List Response */
 export interface MetrosListResponse {
   /** Metro collection. */
@@ -6397,6 +8496,8 @@ export interface MetrosListResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#metrosListResponse". */
   kind?: string;
 }
+const MetrosListResponse = /*@__PURE__*/ __L.at(__c57, 3) as any as S.Schema<MetrosListResponse>;
+
 export type ListMobileAppsDirectoriesEnum =
   | "UNKNOWN"
   | "APPLE_APP_STORE"
@@ -6412,6 +8513,9 @@ export type ListMobileAppsDirectoriesEnum =
 export type ListMobileAppsDirectoriesEnumList = Array<
   ListMobileAppsDirectoriesEnum | (string & {})
 >;
+const ListMobileAppsDirectoriesEnumList =
+  GeneratetagsPlacementsTagFormatsEnumList as any as S.Schema<ListMobileAppsDirectoriesEnumList>;
+
 export interface ListMobileAppsRequest {
   /** Select only apps from these directories. */
   directories?: ListMobileAppsDirectoriesEnumList;
@@ -6426,7 +8530,14 @@ export interface ListMobileAppsRequest {
   /** Allows searching for objects by name or ID. Wildcards (*) are allowed. For example, "app*2015" will return objects with names like "app Jan 2018", "app Jan 2018", or simply "app 2018". Most of the searches also add wildcards implicitly at the start and the end of the search string. For example, a search string of "app" will match objects with name "my app", "app 2018", or simply "app". */
   searchString?: string;
 }
+const ListMobileAppsRequest = /*@__PURE__*/ __L.at(
+  __c57,
+  4,
+) as any as S.Schema<ListMobileAppsRequest>;
+
 export type MobileAppList = Array<MobileApp>;
+const MobileAppList = /*@__PURE__*/ __L.at(__c57, 5) as any as S.Schema<MobileAppList>;
+
 /** Mobile app List Response */
 export interface MobileAppsListResponse {
   /** Pagination token to be used for the next list operation. */
@@ -6436,10 +8547,20 @@ export interface MobileAppsListResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#mobileAppsListResponse". */
   kind?: string;
 }
+const MobileAppsListResponse = /*@__PURE__*/ __L.at(
+  __c57,
+  6,
+) as any as S.Schema<MobileAppsListResponse>;
+
 export interface ListMobileCarriersRequest {
   /** User profile ID associated with this request. */
   profileId: string;
 }
+const ListMobileCarriersRequest = /*@__PURE__*/ __L.at(
+  __c57,
+  7,
+) as any as S.Schema<ListMobileCarriersRequest>;
+
 /** Mobile Carrier List Response */
 export interface MobileCarriersListResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#mobileCarriersListResponse". */
@@ -6447,10 +8568,20 @@ export interface MobileCarriersListResponse {
   /** Mobile carrier collection. */
   mobileCarriers?: MobileCarrierList;
 }
+const MobileCarriersListResponse = /*@__PURE__*/ __L.at(
+  __c58,
+  0,
+) as any as S.Schema<MobileCarriersListResponse>;
+
 export interface ListOperatingSystemsRequest {
   /** User profile ID associated with this request. */
   profileId: string;
 }
+const ListOperatingSystemsRequest = /*@__PURE__*/ __L.at(
+  __c58,
+  1,
+) as any as S.Schema<ListOperatingSystemsRequest>;
+
 /** Operating System List Response */
 export interface OperatingSystemsListResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#operatingSystemsListResponse". */
@@ -6458,10 +8589,20 @@ export interface OperatingSystemsListResponse {
   /** Operating system collection. */
   operatingSystems?: OperatingSystemList;
 }
+const OperatingSystemsListResponse = /*@__PURE__*/ __L.at(
+  __c58,
+  2,
+) as any as S.Schema<OperatingSystemsListResponse>;
+
 export interface ListOperatingSystemVersionsRequest {
   /** User profile ID associated with this request. */
   profileId: string;
 }
+const ListOperatingSystemVersionsRequest = /*@__PURE__*/ __L.at(
+  __c58,
+  3,
+) as any as S.Schema<ListOperatingSystemVersionsRequest>;
+
 /** Operating System Version List Response */
 export interface OperatingSystemVersionsListResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#operatingSystemVersionsListResponse". */
@@ -6469,6 +8610,11 @@ export interface OperatingSystemVersionsListResponse {
   /** Operating system version collection. */
   operatingSystemVersions?: OperatingSystemVersionList;
 }
+const OperatingSystemVersionsListResponse = /*@__PURE__*/ __L.at(
+  __c58,
+  4,
+) as any as S.Schema<OperatingSystemVersionsListResponse>;
+
 export type ListPlacementGroupsActiveStatusEnum =
   | "PLACEMENT_STATUS_UNKNOWN"
   | "PLACEMENT_STATUS_ACTIVE"
@@ -6478,9 +8624,18 @@ export type ListPlacementGroupsActiveStatusEnum =
 export type ListPlacementGroupsActiveStatusEnumList = Array<
   ListPlacementGroupsActiveStatusEnum | (string & {})
 >;
+const ListPlacementGroupsActiveStatusEnumList =
+  GeneratetagsPlacementsTagFormatsEnumList as any as S.Schema<ListPlacementGroupsActiveStatusEnumList>;
+
 export type ListPlacementGroupsSortFieldEnum = "ID" | "NAME";
+const ListPlacementGroupsSortFieldEnum = S.String;
+
 export type ListPlacementGroupsPlacementGroupTypeEnum = "PLACEMENT_PACKAGE" | "PLACEMENT_ROADBLOCK";
+const ListPlacementGroupsPlacementGroupTypeEnum = S.String;
+
 export type ListPlacementGroupsSortOrderEnum = "ASCENDING" | "DESCENDING";
+const ListPlacementGroupsSortOrderEnum = S.String;
+
 export type ListPlacementGroupsPricingTypesEnum =
   | "PRICING_TYPE_CPM"
   | "PRICING_TYPE_CPC"
@@ -6491,6 +8646,9 @@ export type ListPlacementGroupsPricingTypesEnum =
 export type ListPlacementGroupsPricingTypesEnumList = Array<
   ListPlacementGroupsPricingTypesEnum | (string & {})
 >;
+const ListPlacementGroupsPricingTypesEnumList =
+  GeneratetagsPlacementsTagFormatsEnumList as any as S.Schema<ListPlacementGroupsPricingTypesEnumList>;
+
 export interface ListPlacementGroupsRequest {
   /** Select only placements with these active statuses. */
   activeStatus?: ListPlacementGroupsActiveStatusEnumList;
@@ -6533,7 +8691,14 @@ export interface ListPlacementGroupsRequest {
   /** Select only placement groups with these pricing types. */
   pricingTypes?: ListPlacementGroupsPricingTypesEnumList;
 }
+const ListPlacementGroupsRequest = /*@__PURE__*/ __L.at(
+  __c58,
+  5,
+) as any as S.Schema<ListPlacementGroupsRequest>;
+
 export type PlacementGroupList = Array<PlacementGroup>;
+const PlacementGroupList = /*@__PURE__*/ __L.at(__c58, 6) as any as S.Schema<PlacementGroupList>;
+
 /** Placement Group List Response */
 export interface PlacementGroupsListResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#placementGroupsListResponse". */
@@ -6543,8 +8708,17 @@ export interface PlacementGroupsListResponse {
   /** Placement group collection. */
   placementGroups?: PlacementGroupList;
 }
+const PlacementGroupsListResponse = /*@__PURE__*/ __L.at(
+  __c58,
+  7,
+) as any as S.Schema<PlacementGroupsListResponse>;
+
 export type ListPlacementsSortFieldEnum = "ID" | "NAME";
+const ListPlacementsSortFieldEnum = S.String;
+
 export type ListPlacementsPaymentSourceEnum = "PLACEMENT_AGENCY_PAID" | "PLACEMENT_PUBLISHER_PAID";
+const ListPlacementsPaymentSourceEnum = S.String;
+
 export type ListPlacementsActiveStatusEnum =
   | "PLACEMENT_STATUS_UNKNOWN"
   | "PLACEMENT_STATUS_ACTIVE"
@@ -6554,6 +8728,9 @@ export type ListPlacementsActiveStatusEnum =
 export type ListPlacementsActiveStatusEnumList = Array<
   ListPlacementsActiveStatusEnum | (string & {})
 >;
+const ListPlacementsActiveStatusEnumList =
+  GeneratetagsPlacementsTagFormatsEnumList as any as S.Schema<ListPlacementsActiveStatusEnumList>;
+
 export type ListPlacementsPricingTypesEnum =
   | "PRICING_TYPE_CPM"
   | "PRICING_TYPE_CPC"
@@ -6564,6 +8741,9 @@ export type ListPlacementsPricingTypesEnum =
 export type ListPlacementsPricingTypesEnumList = Array<
   ListPlacementsPricingTypesEnum | (string & {})
 >;
+const ListPlacementsPricingTypesEnumList =
+  GeneratetagsPlacementsTagFormatsEnumList as any as S.Schema<ListPlacementsPricingTypesEnumList>;
+
 export type ListPlacementsCompatibilitiesEnum =
   | "DISPLAY"
   | "DISPLAY_INTERSTITIAL"
@@ -6574,7 +8754,12 @@ export type ListPlacementsCompatibilitiesEnum =
 export type ListPlacementsCompatibilitiesEnumList = Array<
   ListPlacementsCompatibilitiesEnum | (string & {})
 >;
+const ListPlacementsCompatibilitiesEnumList =
+  GeneratetagsPlacementsTagFormatsEnumList as any as S.Schema<ListPlacementsCompatibilitiesEnumList>;
+
 export type ListPlacementsSortOrderEnum = "ASCENDING" | "DESCENDING";
+const ListPlacementsSortOrderEnum = S.String;
+
 export interface ListPlacementsRequest {
   /** Field by which to sort the list. */
   sortField?: ListPlacementsSortFieldEnum | (string & {});
@@ -6623,7 +8808,14 @@ export interface ListPlacementsRequest {
   /** Select only placements with these IDs. */
   ids?: StringList;
 }
+const ListPlacementsRequest = /*@__PURE__*/ __L.at(
+  __c59,
+  0,
+) as any as S.Schema<ListPlacementsRequest>;
+
 export type PlacementList = Array<Placement>;
+const PlacementList = /*@__PURE__*/ __L.at(__c59, 1) as any as S.Schema<PlacementList>;
+
 /** Placement List Response */
 export interface PlacementsListResponse {
   /** Pagination token to be used for the next list operation. */
@@ -6633,8 +8825,17 @@ export interface PlacementsListResponse {
   /** Placement collection. */
   placements?: PlacementList;
 }
+const PlacementsListResponse = /*@__PURE__*/ __L.at(
+  __c59,
+  2,
+) as any as S.Schema<PlacementsListResponse>;
+
 export type ListPlacementStrategiesSortOrderEnum = "ASCENDING" | "DESCENDING";
+const ListPlacementStrategiesSortOrderEnum = S.String;
+
 export type ListPlacementStrategiesSortFieldEnum = "ID" | "NAME";
+const ListPlacementStrategiesSortFieldEnum = S.String;
+
 export interface ListPlacementStrategiesRequest {
   /** Order of sorted results. */
   sortOrder?: ListPlacementStrategiesSortOrderEnum | (string & {});
@@ -6651,7 +8852,17 @@ export interface ListPlacementStrategiesRequest {
   /** Select only placement strategies with these IDs. */
   ids?: StringList;
 }
+const ListPlacementStrategiesRequest = /*@__PURE__*/ __L.at(
+  __c59,
+  3,
+) as any as S.Schema<ListPlacementStrategiesRequest>;
+
 export type PlacementStrategyList = Array<PlacementStrategy>;
+const PlacementStrategyList = /*@__PURE__*/ __L.at(
+  __c59,
+  4,
+) as any as S.Schema<PlacementStrategyList>;
+
 /** Placement Strategy List Response */
 export interface PlacementStrategiesListResponse {
   /** Pagination token to be used for the next list operation. */
@@ -6661,10 +8872,20 @@ export interface PlacementStrategiesListResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#placementStrategiesListResponse". */
   kind?: string;
 }
+const PlacementStrategiesListResponse = /*@__PURE__*/ __L.at(
+  __c59,
+  5,
+) as any as S.Schema<PlacementStrategiesListResponse>;
+
 export interface ListPlatformTypesRequest {
   /** User profile ID associated with this request. */
   profileId: string;
 }
+const ListPlatformTypesRequest = /*@__PURE__*/ __L.at(
+  __c59,
+  6,
+) as any as S.Schema<ListPlatformTypesRequest>;
+
 /** Platform Type List Response */
 export interface PlatformTypesListResponse {
   /** Platform type collection. */
@@ -6672,10 +8893,20 @@ export interface PlatformTypesListResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#platformTypesListResponse". */
   kind?: string;
 }
+const PlatformTypesListResponse = /*@__PURE__*/ __L.at(
+  __c59,
+  7,
+) as any as S.Schema<PlatformTypesListResponse>;
+
 export interface ListPostalCodesRequest {
   /** User profile ID associated with this request. */
   profileId: string;
 }
+const ListPostalCodesRequest = /*@__PURE__*/ __L.at(
+  __c60,
+  0,
+) as any as S.Schema<ListPostalCodesRequest>;
+
 /** Postal Code List Response */
 export interface PostalCodesListResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#postalCodesListResponse". */
@@ -6683,10 +8914,17 @@ export interface PostalCodesListResponse {
   /** Postal code collection. */
   postalCodes?: PostalCodeList;
 }
+const PostalCodesListResponse = /*@__PURE__*/ __L.at(
+  __c60,
+  1,
+) as any as S.Schema<PostalCodesListResponse>;
+
 export interface ListRegionsRequest {
   /** User profile ID associated with this request. */
   profileId: string;
 }
+const ListRegionsRequest = /*@__PURE__*/ __L.at(__c60, 2) as any as S.Schema<ListRegionsRequest>;
+
 /** Region List Response */
 export interface RegionsListResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#regionsListResponse". */
@@ -6694,8 +8932,14 @@ export interface RegionsListResponse {
   /** Region collection. */
   regions?: RegionList;
 }
+const RegionsListResponse = /*@__PURE__*/ __L.at(__c60, 3) as any as S.Schema<RegionsListResponse>;
+
 export type ListRemarketingListsSortFieldEnum = "ID" | "NAME";
+const ListRemarketingListsSortFieldEnum = S.String;
+
 export type ListRemarketingListsSortOrderEnum = "ASCENDING" | "DESCENDING";
+const ListRemarketingListsSortOrderEnum = S.String;
+
 export interface ListRemarketingListsRequest {
   /** Required. Select only remarketing lists owned by this advertiser. */
   advertiserId: string;
@@ -6716,7 +8960,14 @@ export interface ListRemarketingListsRequest {
   /** Order of sorted results. */
   sortOrder?: ListRemarketingListsSortOrderEnum | (string & {});
 }
+const ListRemarketingListsRequest = /*@__PURE__*/ __L.at(
+  __c60,
+  4,
+) as any as S.Schema<ListRemarketingListsRequest>;
+
 export type RemarketingListList = Array<RemarketingList>;
+const RemarketingListList = /*@__PURE__*/ __L.at(__c60, 5) as any as S.Schema<RemarketingListList>;
+
 /** Remarketing list response */
 export interface RemarketingListsListResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#remarketingListsListResponse". */
@@ -6726,9 +8977,20 @@ export interface RemarketingListsListResponse {
   /** Pagination token to be used for the next list operation. */
   nextPageToken?: string;
 }
+const RemarketingListsListResponse = /*@__PURE__*/ __L.at(
+  __c60,
+  6,
+) as any as S.Schema<RemarketingListsListResponse>;
+
 export type ListReportsSortOrderEnum = "ASCENDING" | "DESCENDING";
+const ListReportsSortOrderEnum = S.String;
+
 export type ListReportsScopeEnum = "ALL" | "MINE";
+const ListReportsScopeEnum = S.String;
+
 export type ListReportsSortFieldEnum = "ID" | "LAST_MODIFIED_TIME" | "NAME";
+const ListReportsSortFieldEnum = S.String;
+
 export interface ListReportsRequest {
   /** Order of sorted results. */
   sortOrder?: ListReportsSortOrderEnum | (string & {});
@@ -6743,7 +9005,11 @@ export interface ListReportsRequest {
   /** The field by which to sort the list. */
   sortField?: ListReportsSortFieldEnum | (string & {});
 }
+const ListReportsRequest = /*@__PURE__*/ __L.at(__c60, 7) as any as S.Schema<ListReportsRequest>;
+
 export type ReportList_ = Array<Report>;
+const ReportList_ = /*@__PURE__*/ __L.at(__c61, 0) as any as S.Schema<ReportList_>;
+
 /** Represents the list of reports. */
 export interface ReportList {
   /** The eTag of this response for caching purposes. */
@@ -6755,8 +9021,14 @@ export interface ReportList {
   /** The kind of list this is, in this case dfareporting#reportList. */
   kind?: string;
 }
+const ReportList = /*@__PURE__*/ __L.at(__c61, 1) as any as S.Schema<ReportList>;
+
 export type ListReportsFilesSortOrderEnum = "ASCENDING" | "DESCENDING";
+const ListReportsFilesSortOrderEnum = S.String;
+
 export type ListReportsFilesSortFieldEnum = "ID" | "LAST_MODIFIED_TIME";
+const ListReportsFilesSortFieldEnum = S.String;
+
 export interface ListReportsFilesRequest {
   /** Order of sorted results. */
   sortOrder?: ListReportsFilesSortOrderEnum | (string & {});
@@ -6771,8 +9043,17 @@ export interface ListReportsFilesRequest {
   /** The Campaign Manager 360 user profile ID. */
   profileId: string;
 }
+const ListReportsFilesRequest = /*@__PURE__*/ __L.at(
+  __c61,
+  2,
+) as any as S.Schema<ListReportsFilesRequest>;
+
 export type ListSitesSortOrderEnum = "ASCENDING" | "DESCENDING";
+const ListSitesSortOrderEnum = S.String;
+
 export type ListSitesSortFieldEnum = "ID" | "NAME";
+const ListSitesSortFieldEnum = S.String;
+
 export interface ListSitesRequest {
   /** Value of the nextPageToken from the previous result page. */
   pageToken?: string;
@@ -6807,7 +9088,11 @@ export interface ListSitesRequest {
   /** Field by which to sort the list. */
   sortField?: ListSitesSortFieldEnum | (string & {});
 }
+const ListSitesRequest = /*@__PURE__*/ __L.at(__c61, 3) as any as S.Schema<ListSitesRequest>;
+
 export type SiteList = Array<Site>;
+const SiteList = /*@__PURE__*/ __L.at(__c61, 4) as any as S.Schema<SiteList>;
+
 /** Site List Response */
 export interface SitesListResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#sitesListResponse". */
@@ -6817,6 +9102,8 @@ export interface SitesListResponse {
   /** Pagination token to be used for the next list operation. */
   nextPageToken?: string;
 }
+const SitesListResponse = /*@__PURE__*/ __L.at(__c61, 5) as any as S.Schema<SitesListResponse>;
+
 export interface ListSizesRequest {
   /** User profile ID associated with this request. */
   profileId: string;
@@ -6829,6 +9116,8 @@ export interface ListSizesRequest {
   /** Select only sizes with these IDs. */
   ids?: StringList;
 }
+const ListSizesRequest = /*@__PURE__*/ __L.at(__c61, 6) as any as S.Schema<ListSizesRequest>;
+
 /** Size List Response */
 export interface SizesListResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#sizesListResponse". */
@@ -6836,8 +9125,14 @@ export interface SizesListResponse {
   /** Size collection. */
   sizes?: SizeList;
 }
+const SizesListResponse = /*@__PURE__*/ __L.at(__c61, 7) as any as S.Schema<SizesListResponse>;
+
 export type ListSubaccountsSortFieldEnum = "ID" | "NAME";
+const ListSubaccountsSortFieldEnum = S.String;
+
 export type ListSubaccountsSortOrderEnum = "ASCENDING" | "DESCENDING";
+const ListSubaccountsSortOrderEnum = S.String;
+
 export interface ListSubaccountsRequest {
   /** Allows searching for objects by name or ID. Wildcards (*) are allowed. For example, "subaccount*2015" will return objects with names like "subaccount June 2015", "subaccount April 2015", or simply "subaccount 2015". Most of the searches also add wildcards implicitly at the start and the end of the search string. For example, a search string of "subaccount" will match objects with name "my subaccount", "subaccount 2015", or simply "subaccount" . */
   searchString?: string;
@@ -6854,7 +9149,14 @@ export interface ListSubaccountsRequest {
   /** Select only subaccounts with these IDs. */
   ids?: StringList;
 }
+const ListSubaccountsRequest = /*@__PURE__*/ __L.at(
+  __c62,
+  0,
+) as any as S.Schema<ListSubaccountsRequest>;
+
 export type SubaccountList = Array<Subaccount>;
+const SubaccountList = /*@__PURE__*/ __L.at(__c62, 1) as any as S.Schema<SubaccountList>;
+
 /** Subaccount List Response */
 export interface SubaccountsListResponse {
   /** Subaccount collection. */
@@ -6864,8 +9166,17 @@ export interface SubaccountsListResponse {
   /** Pagination token to be used for the next list operation. */
   nextPageToken?: string;
 }
+const SubaccountsListResponse = /*@__PURE__*/ __L.at(
+  __c62,
+  2,
+) as any as S.Schema<SubaccountsListResponse>;
+
 export type ListTargetableRemarketingListsSortOrderEnum = "ASCENDING" | "DESCENDING";
+const ListTargetableRemarketingListsSortOrderEnum = S.String;
+
 export type ListTargetableRemarketingListsSortFieldEnum = "ID" | "NAME";
+const ListTargetableRemarketingListsSortFieldEnum = S.String;
+
 export interface ListTargetableRemarketingListsRequest {
   /** Order of sorted results. */
   sortOrder?: ListTargetableRemarketingListsSortOrderEnum | (string & {});
@@ -6884,7 +9195,17 @@ export interface ListTargetableRemarketingListsRequest {
   /** Required. Select only targetable remarketing lists targetable by these advertisers. */
   advertiserId: string;
 }
+const ListTargetableRemarketingListsRequest = /*@__PURE__*/ __L.at(
+  __c62,
+  3,
+) as any as S.Schema<ListTargetableRemarketingListsRequest>;
+
 export type TargetableRemarketingListList = Array<TargetableRemarketingList>;
+const TargetableRemarketingListList = /*@__PURE__*/ __L.at(
+  __c62,
+  4,
+) as any as S.Schema<TargetableRemarketingListList>;
+
 /** Targetable remarketing list response */
 export interface TargetableRemarketingListsListResponse {
   /** Targetable remarketing list collection. */
@@ -6894,8 +9215,17 @@ export interface TargetableRemarketingListsListResponse {
   /** Pagination token to be used for the next list operation. */
   nextPageToken?: string;
 }
+const TargetableRemarketingListsListResponse = /*@__PURE__*/ __L.at(
+  __c62,
+  5,
+) as any as S.Schema<TargetableRemarketingListsListResponse>;
+
 export type ListTargetingTemplatesSortFieldEnum = "ID" | "NAME";
+const ListTargetingTemplatesSortFieldEnum = S.String;
+
 export type ListTargetingTemplatesSortOrderEnum = "ASCENDING" | "DESCENDING";
+const ListTargetingTemplatesSortOrderEnum = S.String;
+
 export interface ListTargetingTemplatesRequest {
   /** Field by which to sort the list. */
   sortField?: ListTargetingTemplatesSortFieldEnum | (string & {});
@@ -6914,7 +9244,17 @@ export interface ListTargetingTemplatesRequest {
   /** Order of sorted results. */
   sortOrder?: ListTargetingTemplatesSortOrderEnum | (string & {});
 }
+const ListTargetingTemplatesRequest = /*@__PURE__*/ __L.at(
+  __c62,
+  6,
+) as any as S.Schema<ListTargetingTemplatesRequest>;
+
 export type TargetingTemplateList = Array<TargetingTemplate>;
+const TargetingTemplateList = /*@__PURE__*/ __L.at(
+  __c62,
+  7,
+) as any as S.Schema<TargetingTemplateList>;
+
 /** Targeting Template List Response */
 export interface TargetingTemplatesListResponse {
   /** Targeting template collection. */
@@ -6924,6 +9264,11 @@ export interface TargetingTemplatesListResponse {
   /** Pagination token to be used for the next list operation. */
   nextPageToken?: string;
 }
+const TargetingTemplatesListResponse = /*@__PURE__*/ __L.at(
+  __c63,
+  0,
+) as any as S.Schema<TargetingTemplatesListResponse>;
+
 export type ListTvCampaignSummariesTvDataProviderEnum =
   | "INVALID_TV_DATA_PROVIDER"
   | "INTAGE_JP"
@@ -6935,6 +9280,8 @@ export type ListTvCampaignSummariesTvDataProviderEnum =
   | "COMSCORE_NATIONAL_US"
   | "COMSCORE_CA"
   | "SAMBA_AU";
+const ListTvCampaignSummariesTvDataProviderEnum = S.String;
+
 export interface ListTvCampaignSummariesRequest {
   /** Optional. Country Dart ID. If not specified, defaults to 256 (US). */
   countryDartId?: string;
@@ -6947,12 +9294,19 @@ export interface ListTvCampaignSummariesRequest {
   /** Optional. TV data provider. If not specified, defaults to `COMSCORE_NATIONAL_US`. */
   tvDataProvider?: ListTvCampaignSummariesTvDataProviderEnum | (string & {});
 }
+const ListTvCampaignSummariesRequest = /*@__PURE__*/ __L.at(
+  __c63,
+  1,
+) as any as S.Schema<ListTvCampaignSummariesRequest>;
+
 export type TvCampaignSummaryTypeEnum =
   | "CAMPAIGN_COMPONENT_TYPE_UNSPECIFIED"
   | "COMPANY"
   | "BRAND"
   | "PRODUCT"
   | "CAMPAIGN";
+const TvCampaignSummaryTypeEnum = S.String;
+
 /** TvCampaignSummary contains aggregate data from a TV campaign. */
 export interface TvCampaignSummary {
   /** GRP of this TV campaign. */
@@ -6974,7 +9328,14 @@ export interface TvCampaignSummary {
   /** Spend across the entire TV campaign. */
   spend?: number;
 }
+const TvCampaignSummary = /*@__PURE__*/ __L.at(__c63, 2) as any as S.Schema<TvCampaignSummary>;
+
 export type TvCampaignSummaryList = Array<TvCampaignSummary>;
+const TvCampaignSummaryList = /*@__PURE__*/ __L.at(
+  __c63,
+  3,
+) as any as S.Schema<TvCampaignSummaryList>;
+
 /** Response message for TvCampaignSummariesService.List. */
 export interface TvCampaignSummariesListResponse {
   /** List of TV campaign summaries. */
@@ -6982,8 +9343,20 @@ export interface TvCampaignSummariesListResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#tvCampaignSummariesListResponse". */
   kind?: string;
 }
+const TvCampaignSummariesListResponse = /*@__PURE__*/ __L.at(
+  __c63,
+  4,
+) as any as S.Schema<TvCampaignSummariesListResponse>;
+
 export interface ListUserProfilesRequest {}
+const ListUserProfilesRequest = /*@__PURE__*/ __L.at(
+  __c63,
+  5,
+) as any as S.Schema<ListUserProfilesRequest>;
+
 export type UserProfileList_ = Array<UserProfile>;
+const UserProfileList_ = /*@__PURE__*/ __L.at(__c63, 6) as any as S.Schema<UserProfileList_>;
+
 /** Represents the list of user profiles. */
 export interface UserProfileList {
   /** The user profiles returned in this response. */
@@ -6993,11 +9366,23 @@ export interface UserProfileList {
   /** Etag of this resource. */
   etag?: string;
 }
+const UserProfileList = /*@__PURE__*/ __L.at(__c63, 7) as any as S.Schema<UserProfileList>;
+
 export interface ListUserRolePermissionGroupsRequest {
   /** User profile ID associated with this request. */
   profileId: string;
 }
+const ListUserRolePermissionGroupsRequest = /*@__PURE__*/ __L.at(
+  __c64,
+  0,
+) as any as S.Schema<ListUserRolePermissionGroupsRequest>;
+
 export type UserRolePermissionGroupList = Array<UserRolePermissionGroup>;
+const UserRolePermissionGroupList = /*@__PURE__*/ __L.at(
+  __c64,
+  1,
+) as any as S.Schema<UserRolePermissionGroupList>;
+
 /** User Role Permission Group List Response */
 export interface UserRolePermissionGroupsListResponse {
   /** User role permission group collection. */
@@ -7005,12 +9390,22 @@ export interface UserRolePermissionGroupsListResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#userRolePermissionGroupsListResponse". */
   kind?: string;
 }
+const UserRolePermissionGroupsListResponse = /*@__PURE__*/ __L.at(
+  __c64,
+  2,
+) as any as S.Schema<UserRolePermissionGroupsListResponse>;
+
 export interface ListUserRolePermissionsRequest {
   /** User profile ID associated with this request. */
   profileId: string;
   /** Select only user role permissions with these IDs. */
   ids?: StringList;
 }
+const ListUserRolePermissionsRequest = /*@__PURE__*/ __L.at(
+  __c64,
+  3,
+) as any as S.Schema<ListUserRolePermissionsRequest>;
+
 /** User Role Permission List Response */
 export interface UserRolePermissionsListResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#userRolePermissionsListResponse". */
@@ -7018,8 +9413,17 @@ export interface UserRolePermissionsListResponse {
   /** User role permission collection. */
   userRolePermissions?: UserRolePermissionList;
 }
+const UserRolePermissionsListResponse = /*@__PURE__*/ __L.at(
+  __c64,
+  4,
+) as any as S.Schema<UserRolePermissionsListResponse>;
+
 export type ListUserRolesSortFieldEnum = "ID" | "NAME";
+const ListUserRolesSortFieldEnum = S.String;
+
 export type ListUserRolesSortOrderEnum = "ASCENDING" | "DESCENDING";
+const ListUserRolesSortOrderEnum = S.String;
+
 export interface ListUserRolesRequest {
   /** Select only user roles that belong to this subaccount. */
   subaccountId?: string;
@@ -7040,7 +9444,14 @@ export interface ListUserRolesRequest {
   /** Maximum number of results to return. */
   maxResults?: number;
 }
+const ListUserRolesRequest = /*@__PURE__*/ __L.at(
+  __c64,
+  5,
+) as any as S.Schema<ListUserRolesRequest>;
+
 export type UserRoleList = Array<UserRole>;
+const UserRoleList = /*@__PURE__*/ __L.at(__c64, 6) as any as S.Schema<UserRoleList>;
+
 /** User Role List Response */
 export interface UserRolesListResponse {
   /** Pagination token to be used for the next list operation. */
@@ -7050,11 +9461,23 @@ export interface UserRolesListResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#userRolesListResponse". */
   kind?: string;
 }
+const UserRolesListResponse = /*@__PURE__*/ __L.at(
+  __c64,
+  7,
+) as any as S.Schema<UserRolesListResponse>;
+
 export interface ListVideoFormatsRequest {
   /** User profile ID associated with this request. */
   profileId: string;
 }
+const ListVideoFormatsRequest = /*@__PURE__*/ __L.at(
+  __c65,
+  0,
+) as any as S.Schema<ListVideoFormatsRequest>;
+
 export type VideoFormatList = Array<VideoFormat>;
+const VideoFormatList = /*@__PURE__*/ __L.at(__c65, 1) as any as S.Schema<VideoFormatList>;
+
 /** Video Format List Response */
 export interface VideoFormatsListResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#videoFormatsListResponse". */
@@ -7062,6 +9485,11 @@ export interface VideoFormatsListResponse {
   /** Video format collection. */
   videoFormats?: VideoFormatList;
 }
+const VideoFormatsListResponse = /*@__PURE__*/ __L.at(
+  __c65,
+  2,
+) as any as S.Schema<VideoFormatsListResponse>;
+
 export interface PatchAccountsRequest {
   /** User profile ID associated with this request. */
   profileId: string;
@@ -7070,6 +9498,11 @@ export interface PatchAccountsRequest {
   /** Request body */
   body?: Account;
 }
+const PatchAccountsRequest = /*@__PURE__*/ __L.at(
+  __c65,
+  3,
+) as any as S.Schema<PatchAccountsRequest>;
+
 export interface PatchAccountUserProfilesRequest {
   /** User profile ID associated with this request. */
   profileId: string;
@@ -7078,6 +9511,11 @@ export interface PatchAccountUserProfilesRequest {
   /** Request body */
   body?: AccountUserProfile;
 }
+const PatchAccountUserProfilesRequest = /*@__PURE__*/ __L.at(
+  __c65,
+  4,
+) as any as S.Schema<PatchAccountUserProfilesRequest>;
+
 export interface PatchAdsRequest {
   /** Required. RemarketingList ID. */
   id: string;
@@ -7086,6 +9524,8 @@ export interface PatchAdsRequest {
   /** Request body */
   body?: Ad;
 }
+const PatchAdsRequest = /*@__PURE__*/ __L.at(__c65, 5) as any as S.Schema<PatchAdsRequest>;
+
 export interface PatchAdvertiserGroupsRequest {
   /** User profile ID associated with this request. */
   profileId: string;
@@ -7094,6 +9534,11 @@ export interface PatchAdvertiserGroupsRequest {
   /** Request body */
   body?: AdvertiserGroup;
 }
+const PatchAdvertiserGroupsRequest = /*@__PURE__*/ __L.at(
+  __c65,
+  6,
+) as any as S.Schema<PatchAdvertiserGroupsRequest>;
+
 export interface PatchAdvertiserLandingPagesRequest {
   /** User profile ID associated with this request. */
   profileId: string;
@@ -7102,6 +9547,11 @@ export interface PatchAdvertiserLandingPagesRequest {
   /** Request body */
   body?: LandingPage;
 }
+const PatchAdvertiserLandingPagesRequest = /*@__PURE__*/ __L.at(
+  __c65,
+  7,
+) as any as S.Schema<PatchAdvertiserLandingPagesRequest>;
+
 export interface PatchAdvertisersRequest {
   /** Required. Advertiser ID. */
   id: string;
@@ -7110,6 +9560,11 @@ export interface PatchAdvertisersRequest {
   /** Request body */
   body?: Advertiser;
 }
+const PatchAdvertisersRequest = /*@__PURE__*/ __L.at(
+  __c66,
+  0,
+) as any as S.Schema<PatchAdvertisersRequest>;
+
 export interface PatchCampaignsRequest {
   /** User profile ID associated with this request. */
   profileId: string;
@@ -7118,6 +9573,11 @@ export interface PatchCampaignsRequest {
   /** Request body */
   body?: Campaign;
 }
+const PatchCampaignsRequest = /*@__PURE__*/ __L.at(
+  __c66,
+  1,
+) as any as S.Schema<PatchCampaignsRequest>;
+
 export interface PatchContentCategoriesRequest {
   /** Required. ContentCategory ID. */
   id: string;
@@ -7126,6 +9586,11 @@ export interface PatchContentCategoriesRequest {
   /** Request body */
   body?: ContentCategory;
 }
+const PatchContentCategoriesRequest = /*@__PURE__*/ __L.at(
+  __c66,
+  2,
+) as any as S.Schema<PatchContentCategoriesRequest>;
+
 export interface PatchCreativeFieldsRequest {
   /** CreativeField ID. */
   id: string;
@@ -7134,6 +9599,11 @@ export interface PatchCreativeFieldsRequest {
   /** Request body */
   body?: CreativeField;
 }
+const PatchCreativeFieldsRequest = /*@__PURE__*/ __L.at(
+  __c66,
+  3,
+) as any as S.Schema<PatchCreativeFieldsRequest>;
+
 export interface PatchCreativeFieldValuesRequest {
   /** CreativeField ID. */
   creativeFieldId: string;
@@ -7144,6 +9614,11 @@ export interface PatchCreativeFieldValuesRequest {
   /** Request body */
   body?: CreativeFieldValue;
 }
+const PatchCreativeFieldValuesRequest = /*@__PURE__*/ __L.at(
+  __c66,
+  4,
+) as any as S.Schema<PatchCreativeFieldValuesRequest>;
+
 export interface PatchCreativeGroupsRequest {
   /** User profile ID associated with this request. */
   profileId: string;
@@ -7152,6 +9627,11 @@ export interface PatchCreativeGroupsRequest {
   /** Request body */
   body?: CreativeGroup;
 }
+const PatchCreativeGroupsRequest = /*@__PURE__*/ __L.at(
+  __c66,
+  5,
+) as any as S.Schema<PatchCreativeGroupsRequest>;
+
 export interface PatchCreativesRequest {
   /** User profile ID associated with this request. */
   profileId: string;
@@ -7160,6 +9640,11 @@ export interface PatchCreativesRequest {
   /** Request body */
   body?: Creative;
 }
+const PatchCreativesRequest = /*@__PURE__*/ __L.at(
+  __c66,
+  6,
+) as any as S.Schema<PatchCreativesRequest>;
+
 export interface PatchEventTagsRequest {
   /** User profile ID associated with this request. */
   profileId: string;
@@ -7168,6 +9653,11 @@ export interface PatchEventTagsRequest {
   /** Request body */
   body?: EventTag;
 }
+const PatchEventTagsRequest = /*@__PURE__*/ __L.at(
+  __c66,
+  7,
+) as any as S.Schema<PatchEventTagsRequest>;
+
 export interface PatchFloodlightActivitiesRequest {
   /** User profile ID associated with this request. */
   profileId: string;
@@ -7176,6 +9666,11 @@ export interface PatchFloodlightActivitiesRequest {
   /** Request body */
   body?: FloodlightActivity;
 }
+const PatchFloodlightActivitiesRequest = /*@__PURE__*/ __L.at(
+  __c67,
+  0,
+) as any as S.Schema<PatchFloodlightActivitiesRequest>;
+
 export interface PatchFloodlightActivityGroupsRequest {
   /** User profile ID associated with this request. */
   profileId: string;
@@ -7184,6 +9679,11 @@ export interface PatchFloodlightActivityGroupsRequest {
   /** Request body */
   body?: FloodlightActivityGroup;
 }
+const PatchFloodlightActivityGroupsRequest = /*@__PURE__*/ __L.at(
+  __c67,
+  1,
+) as any as S.Schema<PatchFloodlightActivityGroupsRequest>;
+
 export interface PatchFloodlightConfigurationsRequest {
   /** Required. EventTag ID. */
   id: string;
@@ -7192,6 +9692,11 @@ export interface PatchFloodlightConfigurationsRequest {
   /** Request body */
   body?: FloodlightConfiguration;
 }
+const PatchFloodlightConfigurationsRequest = /*@__PURE__*/ __L.at(
+  __c67,
+  2,
+) as any as S.Schema<PatchFloodlightConfigurationsRequest>;
+
 export interface PatchPlacementGroupsRequest {
   /** User profile ID associated with this request. */
   profileId: string;
@@ -7200,6 +9705,11 @@ export interface PatchPlacementGroupsRequest {
   /** Request body */
   body?: PlacementGroup;
 }
+const PatchPlacementGroupsRequest = /*@__PURE__*/ __L.at(
+  __c67,
+  3,
+) as any as S.Schema<PatchPlacementGroupsRequest>;
+
 export interface PatchPlacementsRequest {
   /** Required. Placement ID. */
   id: string;
@@ -7208,6 +9718,11 @@ export interface PatchPlacementsRequest {
   /** Request body */
   body?: Placement;
 }
+const PatchPlacementsRequest = /*@__PURE__*/ __L.at(
+  __c67,
+  4,
+) as any as S.Schema<PatchPlacementsRequest>;
+
 export interface PatchPlacementStrategiesRequest {
   /** Required. PlacementStrategy ID. */
   id: string;
@@ -7216,6 +9731,11 @@ export interface PatchPlacementStrategiesRequest {
   /** Request body */
   body?: PlacementStrategy;
 }
+const PatchPlacementStrategiesRequest = /*@__PURE__*/ __L.at(
+  __c67,
+  5,
+) as any as S.Schema<PatchPlacementStrategiesRequest>;
+
 export interface PatchRemarketingListsRequest {
   /** User profile ID associated with this request. */
   profileId: string;
@@ -7224,6 +9744,11 @@ export interface PatchRemarketingListsRequest {
   /** Request body */
   body?: RemarketingList;
 }
+const PatchRemarketingListsRequest = /*@__PURE__*/ __L.at(
+  __c67,
+  6,
+) as any as S.Schema<PatchRemarketingListsRequest>;
+
 export interface PatchRemarketingListSharesRequest {
   /** Required. RemarketingList ID. */
   id: string;
@@ -7232,6 +9757,11 @@ export interface PatchRemarketingListSharesRequest {
   /** Request body */
   body?: RemarketingListShare;
 }
+const PatchRemarketingListSharesRequest = /*@__PURE__*/ __L.at(
+  __c67,
+  7,
+) as any as S.Schema<PatchRemarketingListSharesRequest>;
+
 export interface PatchSitesRequest {
   /** User profile ID associated with this request. */
   profileId: string;
@@ -7240,6 +9770,8 @@ export interface PatchSitesRequest {
   /** Request body */
   body?: Site;
 }
+const PatchSitesRequest = /*@__PURE__*/ __L.at(__c68, 0) as any as S.Schema<PatchSitesRequest>;
+
 export interface PatchSubaccountsRequest {
   /** User profile ID associated with this request. */
   profileId: string;
@@ -7248,6 +9780,11 @@ export interface PatchSubaccountsRequest {
   /** Request body */
   body?: Subaccount;
 }
+const PatchSubaccountsRequest = /*@__PURE__*/ __L.at(
+  __c68,
+  1,
+) as any as S.Schema<PatchSubaccountsRequest>;
+
 export interface PatchTargetingTemplatesRequest {
   /** Required. RemarketingList ID. */
   id: string;
@@ -7256,6 +9793,11 @@ export interface PatchTargetingTemplatesRequest {
   /** Request body */
   body?: TargetingTemplate;
 }
+const PatchTargetingTemplatesRequest = /*@__PURE__*/ __L.at(
+  __c68,
+  2,
+) as any as S.Schema<PatchTargetingTemplatesRequest>;
+
 export interface PatchUserRolesRequest {
   /** Required. UserRole ID. */
   id: string;
@@ -7264,16 +9806,37 @@ export interface PatchUserRolesRequest {
   /** Request body */
   body?: UserRole;
 }
+const PatchUserRolesRequest = /*@__PURE__*/ __L.at(
+  __c68,
+  3,
+) as any as S.Schema<PatchUserRolesRequest>;
+
 export interface PublishDynamicProfilesRequest {
   /** Required. Dynamic profile ID. */
   dynamicProfileId: string;
 }
+const PublishDynamicProfilesRequest = /*@__PURE__*/ __L.at(
+  __c68,
+  4,
+) as any as S.Schema<PublishDynamicProfilesRequest>;
+
 export interface PublishDynamicProfilesResponse {}
+const PublishDynamicProfilesResponse =
+  DeleteAdvertiserGroupsResponse as any as S.Schema<PublishDynamicProfilesResponse>;
+
 export interface PublishStudioCreativesRequest {
   /** Required. Studio creative ID. */
   studioCreativeId: string;
 }
+const PublishStudioCreativesRequest = /*@__PURE__*/ __L.at(
+  __c68,
+  5,
+) as any as S.Schema<PublishStudioCreativesRequest>;
+
 export interface PublishStudioCreativesResponse {}
+const PublishStudioCreativesResponse =
+  DeleteAdvertiserGroupsResponse as any as S.Schema<PublishStudioCreativesResponse>;
+
 /** Represents a dimension filter. */
 export interface DimensionFilter {
   /** The name of the dimension to filter. */
@@ -7283,7 +9846,11 @@ export interface DimensionFilter {
   /** The kind of resource this is, in this case dfareporting#dimensionFilter. */
   kind?: string;
 }
+const DimensionFilter = /*@__PURE__*/ __L.at(__c68, 6) as any as S.Schema<DimensionFilter>;
+
 export type DimensionFilterList = Array<DimensionFilter>;
+const DimensionFilterList = /*@__PURE__*/ __L.at(__c68, 7) as any as S.Schema<DimensionFilterList>;
+
 /** Represents a DimensionValuesRequest. */
 export interface DimensionValueRequest {
   /** The kind of request this is, in this case dfareporting#dimensionValueRequest . */
@@ -7295,6 +9862,11 @@ export interface DimensionValueRequest {
   filters?: DimensionFilterList;
   endDate?: string;
 }
+const DimensionValueRequest = /*@__PURE__*/ __L.at(
+  __c69,
+  0,
+) as any as S.Schema<DimensionValueRequest>;
+
 export interface QueryDimensionValuesRequest {
   /** The value of the nextToken from the previous result page. */
   pageToken?: string;
@@ -7305,6 +9877,11 @@ export interface QueryDimensionValuesRequest {
   /** Request body */
   body?: DimensionValueRequest;
 }
+const QueryDimensionValuesRequest = /*@__PURE__*/ __L.at(
+  __c69,
+  1,
+) as any as S.Schema<QueryDimensionValuesRequest>;
+
 /** Represents the list of DimensionValue resources. */
 export interface DimensionValueList {
   /** The eTag of this response for caching purposes. */
@@ -7316,7 +9893,11 @@ export interface DimensionValueList {
   /** Continuation token used to page through dimension values. To retrieve the next page of results, set the next request's "pageToken" to the value of this field. The page token is only valid for a limited amount of time and should not be persisted. */
   nextPageToken?: string;
 }
+const DimensionValueList = /*@__PURE__*/ __L.at(__c69, 2) as any as S.Schema<DimensionValueList>;
+
 export type SortBySortOrderEnum = "ASCENDING" | "DESCENDING";
+const SortBySortOrderEnum = S.String;
+
 /** Specifies the sort configuration for a specific field in the report. */
 export interface SortBy {
   /** Required. The dimension or metric field name to sort on. */
@@ -7324,7 +9905,11 @@ export interface SortBy {
   /** Optional. The sort order of this column. */
   sortOrder?: SortBySortOrderEnum | (string & {});
 }
+const SortBy = /*@__PURE__*/ __L.at(__c69, 3) as any as S.Schema<SortBy>;
+
 export type SortByList = Array<SortBy>;
+const SortByList = /*@__PURE__*/ __L.at(__c69, 4) as any as S.Schema<SortByList>;
+
 /** The request body containing ad-hoc query parameters. */
 export interface ReportDataQueryRequest {
   /** Optional. The list of dimension values on which report lines are filtered. Utilizes the existing legacy filter message `DimensionValue`. */
@@ -7342,13 +9927,25 @@ export interface ReportDataQueryRequest {
   /** Optional. Maximum number of result rows to return per page. The default value is 100. The maximum allowed value is 1000. Values above 1000 will be coerced (clamped) down to 1000. Negative values will be rejected. */
   maxResults?: number;
 }
+const ReportDataQueryRequest = /*@__PURE__*/ __L.at(
+  __c69,
+  5,
+) as any as S.Schema<ReportDataQueryRequest>;
+
 export interface QueryReportDataRequest {
   /** Required. The Campaign Manager 360 user profile ID. */
   profileId: string;
   /** Request body */
   body?: ReportDataQueryRequest;
 }
+const QueryReportDataRequest = /*@__PURE__*/ __L.at(
+  __c69,
+  6,
+) as any as S.Schema<QueryReportDataRequest>;
+
 export type ColumnHeaderTypeEnum = "COLUMN_TYPE_UNSPECIFIED" | "DIMENSION" | "METRIC";
+const ColumnHeaderTypeEnum = S.String;
+
 /** A column header in the report. */
 export interface ColumnHeader {
   /** Output only. The column name. */
@@ -7356,13 +9953,21 @@ export interface ColumnHeader {
   /** Output only. The column type. */
   type?: ColumnHeaderTypeEnum;
 }
+const ColumnHeader = /*@__PURE__*/ __L.at(__c69, 7) as any as S.Schema<ColumnHeader>;
+
 export type ColumnHeaderList = Array<ColumnHeader>;
+const ColumnHeaderList = /*@__PURE__*/ __L.at(__c70, 0) as any as S.Schema<ColumnHeaderList>;
+
 /** A row of report data. */
 export interface ReportDataRow {
   /** Output only. A single sequential list of all cell values matching column_headers indices exactly. - Metric cells that are suppressed due to Minimum Reporting Standard (MRS) privacy protection constraints return "-". */
   values?: StringList;
 }
+const ReportDataRow = /*@__PURE__*/ __L.at(__c70, 1) as any as S.Schema<ReportDataRow>;
+
 export type ReportDataRowList = Array<ReportDataRow>;
+const ReportDataRowList = /*@__PURE__*/ __L.at(__c70, 2) as any as S.Schema<ReportDataRowList>;
+
 /** Represents a response to report data request. */
 export interface ReportDataResponse {
   /** Output only. Ordered descriptors of the requested column fields. */
@@ -7374,12 +9979,19 @@ export interface ReportDataResponse {
   /** Output only. Singular aggregate total row for the entire query matching the criteria. Column headers apply in the exact same order as data rows. In the total_row: - All dimension columns contain an empty string (""), as aggregation does not apply. - Non-summable metric columns (e.g. Reach metrics) contain an empty string (""), as grand total aggregation cannot be mathematically/logically computed for them. */
   totalRow?: ReportDataRow;
 }
+const ReportDataResponse = /*@__PURE__*/ __L.at(__c70, 3) as any as S.Schema<ReportDataResponse>;
+
 export interface QueryReportsCompatibleFieldsRequest {
   /** The Campaign Manager 360 user profile ID. */
   profileId: string;
   /** Request body */
   body?: Report;
 }
+const QueryReportsCompatibleFieldsRequest = /*@__PURE__*/ __L.at(
+  __c70,
+  4,
+) as any as S.Schema<QueryReportsCompatibleFieldsRequest>;
+
 /** Represents a dimension. */
 export interface Dimension {
   /** The dimension name, e.g. advertiser */
@@ -7387,7 +9999,11 @@ export interface Dimension {
   /** The kind of resource this is, in this case dfareporting#dimension. */
   kind?: string;
 }
+const Dimension = /*@__PURE__*/ __L.at(__c70, 5) as any as S.Schema<Dimension>;
+
 export type DimensionList = Array<Dimension>;
+const DimensionList = /*@__PURE__*/ __L.at(__c70, 6) as any as S.Schema<DimensionList>;
+
 /** Represents a metric. */
 export interface Metric {
   /** The metric name, e.g. impressions */
@@ -7396,6 +10012,8 @@ export interface Metric {
   kind?: string;
 }
 export type MetricList = Array<Metric>;
+const MetricList = DimensionList as any as S.Schema<MetricList>;
+
 /** Represents fields that are compatible to be selected for a report of type "REACH". */
 export interface ReachReportCompatibleFields {
   /** Dimensions which are compatible to be selected in the "dimensions" section of the report. */
@@ -7411,6 +10029,11 @@ export interface ReachReportCompatibleFields {
   /** Metrics which are compatible to be selected in the "reachByFrequencyMetricNames" section of the report. */
   reachByFrequencyMetrics?: MetricList;
 }
+const ReachReportCompatibleFields = /*@__PURE__*/ __L.at(
+  __c70,
+  7,
+) as any as S.Schema<ReachReportCompatibleFields>;
+
 /** Represents fields that are compatible to be selected for a report of type "CROSS_DIMENSION_REACH". */
 export interface CrossDimensionReachReportCompatibleFields {
   /** Metrics which are compatible to be selected in the "metricNames" section of the report. */
@@ -7424,6 +10047,11 @@ export interface CrossDimensionReachReportCompatibleFields {
   /** Metrics which are compatible to be selected in the "overlapMetricNames" section of the report. */
   overlapMetrics?: MetricList;
 }
+const CrossDimensionReachReportCompatibleFields = /*@__PURE__*/ __L.at(
+  __c71,
+  0,
+) as any as S.Schema<CrossDimensionReachReportCompatibleFields>;
+
 /** Represents fields that are compatible to be selected for a report of type "PATH_TO_CONVERSION". */
 export interface PathToConversionReportCompatibleFields {
   /** Per-interaction dimensions which are compatible to be selected in the "perInteractionDimensions" section of the report. */
@@ -7437,6 +10065,11 @@ export interface PathToConversionReportCompatibleFields {
   /** Conversion dimensions which are compatible to be selected in the "conversionDimensions" section of the report. */
   conversionDimensions?: DimensionList;
 }
+const PathToConversionReportCompatibleFields = /*@__PURE__*/ __L.at(
+  __c71,
+  1,
+) as any as S.Schema<PathToConversionReportCompatibleFields>;
+
 /** Represents fields that are compatible to be selected for a report of type "CROSS_MEDIA_REACH". */
 export interface CrossMediaReachReportCompatibleFields {
   /** Dimensions which are compatible to be selected in the "dimensionFilters" section of the report. */
@@ -7448,6 +10081,11 @@ export interface CrossMediaReachReportCompatibleFields {
   /** Dimensions which are compatible to be selected in the "dimensions" section of the report. */
   dimensions?: DimensionList;
 }
+const CrossMediaReachReportCompatibleFields = /*@__PURE__*/ __L.at(
+  __c71,
+  2,
+) as any as S.Schema<CrossMediaReachReportCompatibleFields>;
+
 /** Represents fields that are compatible to be selected for a report of type "FlOODLIGHT". */
 export interface FloodlightReportCompatibleFields {
   /** Dimensions which are compatible to be selected in the "dimensions" section of the report. */
@@ -7459,6 +10097,11 @@ export interface FloodlightReportCompatibleFields {
   /** Dimensions which are compatible to be selected in the "dimensionFilters" section of the report. */
   dimensionFilters?: DimensionList;
 }
+const FloodlightReportCompatibleFields = /*@__PURE__*/ __L.at(
+  __c71,
+  3,
+) as any as S.Schema<FloodlightReportCompatibleFields>;
+
 /** Represents fields that are compatible to be selected for a report of type "STANDARD". */
 export interface ReportCompatibleFields {
   /** Dimensions which are compatible to be selected in the "dimensionFilters" section of the report. */
@@ -7472,6 +10115,11 @@ export interface ReportCompatibleFields {
   /** The kind of resource this is, in this case dfareporting#reportCompatibleFields. */
   kind?: string;
 }
+const ReportCompatibleFields = /*@__PURE__*/ __L.at(
+  __c71,
+  4,
+) as any as S.Schema<ReportCompatibleFields>;
+
 /** Represents a response to the queryCompatibleFields method. Next ID: 10 */
 export interface CompatibleFields {
   /** The kind of resource this is, in this case dfareporting#compatibleFields. */
@@ -7489,10 +10137,17 @@ export interface CompatibleFields {
   /** Contains items that are compatible to be selected for a report of type "STANDARD". */
   reportCompatibleFields?: ReportCompatibleFields;
 }
+const CompatibleFields = /*@__PURE__*/ __L.at(__c71, 5) as any as S.Schema<CompatibleFields>;
+
 export interface RetransformDynamicFeedsRequest {
   /** Required. Dynamic feed ID. */
   dynamicFeedId: string;
 }
+const RetransformDynamicFeedsRequest = /*@__PURE__*/ __L.at(
+  __c71,
+  6,
+) as any as S.Schema<RetransformDynamicFeedsRequest>;
+
 export interface RunReportsRequest {
   /** If set and true, tries to run the report synchronously. */
   synchronous?: boolean;
@@ -7501,66 +10156,115 @@ export interface RunReportsRequest {
   /** The Campaign Manager 360 user profile ID. */
   profileId: string;
 }
+const RunReportsRequest = /*@__PURE__*/ __L.at(__c71, 7) as any as S.Schema<RunReportsRequest>;
+
 export interface UpdateAccountsRequest {
   /** User profile ID associated with this request. */
   profileId: string;
   /** Request body */
   body?: Account;
 }
+const UpdateAccountsRequest = /*@__PURE__*/ __L.at(
+  __c72,
+  0,
+) as any as S.Schema<UpdateAccountsRequest>;
+
 export interface UpdateAccountUserProfilesRequest {
   /** User profile ID associated with this request. */
   profileId: string;
   /** Request body */
   body?: AccountUserProfile;
 }
+const UpdateAccountUserProfilesRequest = /*@__PURE__*/ __L.at(
+  __c72,
+  1,
+) as any as S.Schema<UpdateAccountUserProfilesRequest>;
+
 export interface UpdateAdsRequest {
   /** User profile ID associated with this request. */
   profileId: string;
   /** Request body */
   body?: Ad;
 }
+const UpdateAdsRequest = /*@__PURE__*/ __L.at(__c72, 2) as any as S.Schema<UpdateAdsRequest>;
+
 export interface UpdateAdvertiserGroupsRequest {
   /** User profile ID associated with this request. */
   profileId: string;
   /** Request body */
   body?: AdvertiserGroup;
 }
+const UpdateAdvertiserGroupsRequest = /*@__PURE__*/ __L.at(
+  __c72,
+  3,
+) as any as S.Schema<UpdateAdvertiserGroupsRequest>;
+
 export interface UpdateAdvertiserLandingPagesRequest {
   /** User profile ID associated with this request. */
   profileId: string;
   /** Request body */
   body?: LandingPage;
 }
+const UpdateAdvertiserLandingPagesRequest = /*@__PURE__*/ __L.at(
+  __c72,
+  4,
+) as any as S.Schema<UpdateAdvertiserLandingPagesRequest>;
+
 export interface UpdateAdvertisersRequest {
   /** User profile ID associated with this request. */
   profileId: string;
   /** Request body */
   body?: Advertiser;
 }
+const UpdateAdvertisersRequest = /*@__PURE__*/ __L.at(
+  __c72,
+  5,
+) as any as S.Schema<UpdateAdvertisersRequest>;
+
 export interface UpdateBillingProfilesRequest {
   /** User profile ID associated with this request. */
   profileId: string;
   /** Request body */
   body?: BillingProfile;
 }
+const UpdateBillingProfilesRequest = /*@__PURE__*/ __L.at(
+  __c72,
+  6,
+) as any as S.Schema<UpdateBillingProfilesRequest>;
+
 export interface UpdateCampaignsRequest {
   /** User profile ID associated with this request. */
   profileId: string;
   /** Request body */
   body?: Campaign;
 }
+const UpdateCampaignsRequest = /*@__PURE__*/ __L.at(
+  __c72,
+  7,
+) as any as S.Schema<UpdateCampaignsRequest>;
+
 export interface UpdateContentCategoriesRequest {
   /** User profile ID associated with this request. */
   profileId: string;
   /** Request body */
   body?: ContentCategory;
 }
+const UpdateContentCategoriesRequest = /*@__PURE__*/ __L.at(
+  __c73,
+  0,
+) as any as S.Schema<UpdateContentCategoriesRequest>;
+
 export interface UpdateCreativeFieldsRequest {
   /** User profile ID associated with this request. */
   profileId: string;
   /** Request body */
   body?: CreativeField;
 }
+const UpdateCreativeFieldsRequest = /*@__PURE__*/ __L.at(
+  __c73,
+  1,
+) as any as S.Schema<UpdateCreativeFieldsRequest>;
+
 export interface UpdateCreativeFieldValuesRequest {
   /** User profile ID associated with this request. */
   profileId: string;
@@ -7569,80 +10273,150 @@ export interface UpdateCreativeFieldValuesRequest {
   /** Request body */
   body?: CreativeFieldValue;
 }
+const UpdateCreativeFieldValuesRequest = /*@__PURE__*/ __L.at(
+  __c73,
+  2,
+) as any as S.Schema<UpdateCreativeFieldValuesRequest>;
+
 export interface UpdateCreativeGroupsRequest {
   /** User profile ID associated with this request. */
   profileId: string;
   /** Request body */
   body?: CreativeGroup;
 }
+const UpdateCreativeGroupsRequest = /*@__PURE__*/ __L.at(
+  __c73,
+  3,
+) as any as S.Schema<UpdateCreativeGroupsRequest>;
+
 export interface UpdateCreativesRequest {
   /** User profile ID associated with this request. */
   profileId: string;
   /** Request body */
   body?: Creative;
 }
+const UpdateCreativesRequest = /*@__PURE__*/ __L.at(
+  __c73,
+  4,
+) as any as S.Schema<UpdateCreativesRequest>;
+
 export interface UpdateDynamicFeedsRequest {
   /** Request body */
   body?: DynamicFeed;
 }
+const UpdateDynamicFeedsRequest = /*@__PURE__*/ __L.at(
+  __c73,
+  5,
+) as any as S.Schema<UpdateDynamicFeedsRequest>;
+
 export interface UpdateDynamicProfilesRequest {
   /** Request body */
   body?: DynamicProfile;
 }
+const UpdateDynamicProfilesRequest = /*@__PURE__*/ __L.at(
+  __c73,
+  6,
+) as any as S.Schema<UpdateDynamicProfilesRequest>;
+
 export interface UpdateEventTagsRequest {
   /** User profile ID associated with this request. */
   profileId: string;
   /** Request body */
   body?: EventTag;
 }
+const UpdateEventTagsRequest = /*@__PURE__*/ __L.at(
+  __c73,
+  7,
+) as any as S.Schema<UpdateEventTagsRequest>;
+
 export interface UpdateFloodlightActivitiesRequest {
   /** User profile ID associated with this request. */
   profileId: string;
   /** Request body */
   body?: FloodlightActivity;
 }
+const UpdateFloodlightActivitiesRequest = /*@__PURE__*/ __L.at(
+  __c74,
+  0,
+) as any as S.Schema<UpdateFloodlightActivitiesRequest>;
+
 export interface UpdateFloodlightActivityGroupsRequest {
   /** User profile ID associated with this request. */
   profileId: string;
   /** Request body */
   body?: FloodlightActivityGroup;
 }
+const UpdateFloodlightActivityGroupsRequest = /*@__PURE__*/ __L.at(
+  __c74,
+  1,
+) as any as S.Schema<UpdateFloodlightActivityGroupsRequest>;
+
 export interface UpdateFloodlightConfigurationsRequest {
   /** User profile ID associated with this request. */
   profileId: string;
   /** Request body */
   body?: FloodlightConfiguration;
 }
+const UpdateFloodlightConfigurationsRequest = /*@__PURE__*/ __L.at(
+  __c74,
+  2,
+) as any as S.Schema<UpdateFloodlightConfigurationsRequest>;
+
 export interface UpdatePlacementGroupsRequest {
   /** User profile ID associated with this request. */
   profileId: string;
   /** Request body */
   body?: PlacementGroup;
 }
+const UpdatePlacementGroupsRequest = /*@__PURE__*/ __L.at(
+  __c74,
+  3,
+) as any as S.Schema<UpdatePlacementGroupsRequest>;
+
 export interface UpdatePlacementsRequest {
   /** User profile ID associated with this request. */
   profileId: string;
   /** Request body */
   body?: Placement;
 }
+const UpdatePlacementsRequest = /*@__PURE__*/ __L.at(
+  __c74,
+  4,
+) as any as S.Schema<UpdatePlacementsRequest>;
+
 export interface UpdatePlacementStrategiesRequest {
   /** User profile ID associated with this request. */
   profileId: string;
   /** Request body */
   body?: PlacementStrategy;
 }
+const UpdatePlacementStrategiesRequest = /*@__PURE__*/ __L.at(
+  __c74,
+  5,
+) as any as S.Schema<UpdatePlacementStrategiesRequest>;
+
 export interface UpdateRemarketingListsRequest {
   /** User profile ID associated with this request. */
   profileId: string;
   /** Request body */
   body?: RemarketingList;
 }
+const UpdateRemarketingListsRequest = /*@__PURE__*/ __L.at(
+  __c74,
+  6,
+) as any as S.Schema<UpdateRemarketingListsRequest>;
+
 export interface UpdateRemarketingListSharesRequest {
   /** User profile ID associated with this request. */
   profileId: string;
   /** Request body */
   body?: RemarketingListShare;
 }
+const UpdateRemarketingListSharesRequest = /*@__PURE__*/ __L.at(
+  __c74,
+  7,
+) as any as S.Schema<UpdateRemarketingListSharesRequest>;
+
 export interface UpdateReportsRequest {
   /** The Campaign Manager 360 user profile ID. */
   profileId: string;
@@ -7651,30 +10425,52 @@ export interface UpdateReportsRequest {
   /** Request body */
   body?: Report;
 }
+const UpdateReportsRequest = /*@__PURE__*/ __L.at(
+  __c75,
+  0,
+) as any as S.Schema<UpdateReportsRequest>;
+
 export interface UpdateSitesRequest {
   /** User profile ID associated with this request. */
   profileId: string;
   /** Request body */
   body?: Site;
 }
+const UpdateSitesRequest = /*@__PURE__*/ __L.at(__c75, 1) as any as S.Schema<UpdateSitesRequest>;
+
 export interface UpdateSubaccountsRequest {
   /** User profile ID associated with this request. */
   profileId: string;
   /** Request body */
   body?: Subaccount;
 }
+const UpdateSubaccountsRequest = /*@__PURE__*/ __L.at(
+  __c75,
+  2,
+) as any as S.Schema<UpdateSubaccountsRequest>;
+
 export interface UpdateTargetingTemplatesRequest {
   /** User profile ID associated with this request. */
   profileId: string;
   /** Request body */
   body?: TargetingTemplate;
 }
+const UpdateTargetingTemplatesRequest = /*@__PURE__*/ __L.at(
+  __c75,
+  3,
+) as any as S.Schema<UpdateTargetingTemplatesRequest>;
+
 export interface UpdateUserRolesRequest {
   /** User profile ID associated with this request. */
   profileId: string;
   /** Request body */
   body?: UserRole;
 }
+const UpdateUserRolesRequest = /*@__PURE__*/ __L.at(
+  __c75,
+  4,
+) as any as S.Schema<UpdateUserRolesRequest>;
+
 export type BatchinsertConversionsError =
   | NotFound
   | Forbidden
@@ -7689,8 +10485,8 @@ export const batchinsertConversions: API.OperationMethod<
   BatchinsertConversionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13) as any as S.Schema<BatchinsertConversionsRequest>,
-  output: __S(18) as any as S.Schema<ConversionsBatchInsertResponse>,
+  input: BatchinsertConversionsRequest,
+  output: ConversionsBatchInsertResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7710,8 +10506,8 @@ export const batchupdateConversions: API.OperationMethod<
   BatchupdateConversionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19) as any as S.Schema<BatchupdateConversionsRequest>,
-  output: __S(20) as any as S.Schema<ConversionsBatchUpdateResponse>,
+  input: BatchupdateConversionsRequest,
+  output: ConversionsBatchUpdateResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7731,8 +10527,8 @@ export const deleteAdvertiserGroups: API.OperationMethod<
   DeleteAdvertiserGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21) as any as S.Schema<DeleteAdvertiserGroupsRequest>,
-  output: __S(22) as any as S.Schema<DeleteAdvertiserGroupsResponse>,
+  input: DeleteAdvertiserGroupsRequest,
+  output: DeleteAdvertiserGroupsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7752,8 +10548,8 @@ export const deleteContentCategories: API.OperationMethod<
   DeleteContentCategoriesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23) as any as S.Schema<DeleteContentCategoriesRequest>,
-  output: __S(24) as any as S.Schema<DeleteContentCategoriesResponse>,
+  input: DeleteContentCategoriesRequest,
+  output: DeleteContentCategoriesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7773,8 +10569,8 @@ export const deleteCreativeFields: API.OperationMethod<
   DeleteCreativeFieldsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25) as any as S.Schema<DeleteCreativeFieldsRequest>,
-  output: __S(22) as any as S.Schema<DeleteCreativeFieldsResponse>,
+  input: DeleteCreativeFieldsRequest,
+  output: DeleteCreativeFieldsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7794,8 +10590,8 @@ export const deleteCreativeFieldValues: API.OperationMethod<
   DeleteCreativeFieldValuesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26) as any as S.Schema<DeleteCreativeFieldValuesRequest>,
-  output: __S(27) as any as S.Schema<DeleteCreativeFieldValuesResponse>,
+  input: DeleteCreativeFieldValuesRequest,
+  output: DeleteCreativeFieldValuesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7815,8 +10611,8 @@ export const deleteDynamicTargetingKeys: API.OperationMethod<
   DeleteDynamicTargetingKeysError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28) as any as S.Schema<DeleteDynamicTargetingKeysRequest>,
-  output: __S(27) as any as S.Schema<DeleteDynamicTargetingKeysResponse>,
+  input: DeleteDynamicTargetingKeysRequest,
+  output: DeleteDynamicTargetingKeysResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7836,8 +10632,8 @@ export const deleteEventTags: API.OperationMethod<
   DeleteEventTagsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29) as any as S.Schema<DeleteEventTagsRequest>,
-  output: __S(22) as any as S.Schema<DeleteEventTagsResponse>,
+  input: DeleteEventTagsRequest,
+  output: DeleteEventTagsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7857,8 +10653,8 @@ export const deleteFloodlightActivities: API.OperationMethod<
   DeleteFloodlightActivitiesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30) as any as S.Schema<DeleteFloodlightActivitiesRequest>,
-  output: __S(27) as any as S.Schema<DeleteFloodlightActivitiesResponse>,
+  input: DeleteFloodlightActivitiesRequest,
+  output: DeleteFloodlightActivitiesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7878,8 +10674,8 @@ export const deletePlacementStrategies: API.OperationMethod<
   DeletePlacementStrategiesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31) as any as S.Schema<DeletePlacementStrategiesRequest>,
-  output: __S(27) as any as S.Schema<DeletePlacementStrategiesResponse>,
+  input: DeletePlacementStrategiesRequest,
+  output: DeletePlacementStrategiesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7899,8 +10695,8 @@ export const deleteReports: API.OperationMethod<
   DeleteReportsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32) as any as S.Schema<DeleteReportsRequest>,
-  output: __S(22) as any as S.Schema<DeleteReportsResponse>,
+  input: DeleteReportsRequest,
+  output: DeleteReportsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7920,8 +10716,8 @@ export const deleteUserRoles: API.OperationMethod<
   DeleteUserRolesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33) as any as S.Schema<DeleteUserRolesRequest>,
-  output: __S(22) as any as S.Schema<DeleteUserRolesResponse>,
+  input: DeleteUserRolesRequest,
+  output: DeleteUserRolesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7939,8 +10735,8 @@ export const generateCodeDynamicProfiles: API.OperationMethod<
   GenerateCodeDynamicProfilesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34) as any as S.Schema<GenerateCodeDynamicProfilesRequest>,
-  output: __S(35) as any as S.Schema<DynamicProfileGenerateCodeResponse>,
+  input: GenerateCodeDynamicProfilesRequest,
+  output: DynamicProfileGenerateCodeResponse,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7960,8 +10756,8 @@ export const generatetagFloodlightActivities: API.OperationMethod<
   GeneratetagFloodlightActivitiesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36) as any as S.Schema<GeneratetagFloodlightActivitiesRequest>,
-  output: __S(37) as any as S.Schema<FloodlightActivitiesGenerateTagResponse>,
+  input: GeneratetagFloodlightActivitiesRequest,
+  output: FloodlightActivitiesGenerateTagResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7981,8 +10777,8 @@ export const generatetagsPlacements: API.OperationMethod<
   GeneratetagsPlacementsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39) as any as S.Schema<GeneratetagsPlacementsRequest>,
-  output: __S(44) as any as S.Schema<PlacementsGenerateTagsResponse>,
+  input: GeneratetagsPlacementsRequest,
+  output: PlacementsGenerateTagsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8000,8 +10796,8 @@ export const getAccountActiveAdSummaries: API.OperationMethod<
   GetAccountActiveAdSummariesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45) as any as S.Schema<GetAccountActiveAdSummariesRequest>,
-  output: __S(46) as any as S.Schema<AccountActiveAdSummary>,
+  input: GetAccountActiveAdSummariesRequest,
+  output: AccountActiveAdSummary,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8019,8 +10815,8 @@ export const getAccountPermissionGroups: API.OperationMethod<
   GetAccountPermissionGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47) as any as S.Schema<GetAccountPermissionGroupsRequest>,
-  output: __S(48) as any as S.Schema<AccountPermissionGroup>,
+  input: GetAccountPermissionGroupsRequest,
+  output: AccountPermissionGroup,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8034,8 +10830,8 @@ export const getAccountPermissions: API.OperationMethod<
   GetAccountPermissionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49) as any as S.Schema<GetAccountPermissionsRequest>,
-  output: __S(50) as any as S.Schema<AccountPermission>,
+  input: GetAccountPermissionsRequest,
+  output: AccountPermission,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8049,8 +10845,8 @@ export const getAccounts: API.OperationMethod<
   GetAccountsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(51) as any as S.Schema<GetAccountsRequest>,
-  output: __S(54) as any as S.Schema<Account>,
+  input: GetAccountsRequest,
+  output: Account,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8064,8 +10860,8 @@ export const getAccountUserProfiles: API.OperationMethod<
   GetAccountUserProfilesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(55) as any as S.Schema<GetAccountUserProfilesRequest>,
-  output: __S(57) as any as S.Schema<AccountUserProfile>,
+  input: GetAccountUserProfilesRequest,
+  output: AccountUserProfile,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8075,8 +10871,8 @@ export type GetAdsError = NotFound | Forbidden | InsufficientScopes | GcpOpError
 /** Gets one ad by ID. */
 export const getAds: API.OperationMethod<GetAdsRequest, Ad, GetAdsError, GcpOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(58) as any as S.Schema<GetAdsRequest>,
-    output: __S(113) as any as S.Schema<Ad>,
+    input: GetAdsRequest,
+    output: Ad,
     errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
     protocol: GcpProtocol,
     retry: Retry.Retry,
@@ -8090,8 +10886,8 @@ export const getAdvertiserGroups: API.OperationMethod<
   GetAdvertiserGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(114) as any as S.Schema<GetAdvertiserGroupsRequest>,
-  output: __S(115) as any as S.Schema<AdvertiserGroup>,
+  input: GetAdvertiserGroupsRequest,
+  output: AdvertiserGroup,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8105,8 +10901,8 @@ export const getAdvertiserLandingPages: API.OperationMethod<
   GetAdvertiserLandingPagesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(116) as any as S.Schema<GetAdvertiserLandingPagesRequest>,
-  output: __S(120) as any as S.Schema<LandingPage>,
+  input: GetAdvertiserLandingPagesRequest,
+  output: LandingPage,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8120,8 +10916,8 @@ export const getAdvertisers: API.OperationMethod<
   GetAdvertisersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(121) as any as S.Schema<GetAdvertisersRequest>,
-  output: __S(123) as any as S.Schema<Advertiser>,
+  input: GetAdvertisersRequest,
+  output: Advertiser,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8135,8 +10931,8 @@ export const getBillingProfiles: API.OperationMethod<
   GetBillingProfilesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(124) as any as S.Schema<GetBillingProfilesRequest>,
-  output: __S(125) as any as S.Schema<BillingProfile>,
+  input: GetBillingProfilesRequest,
+  output: BillingProfile,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8150,8 +10946,8 @@ export const getCampaigns: API.OperationMethod<
   GetCampaignsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(126) as any as S.Schema<GetCampaignsRequest>,
-  output: __S(137) as any as S.Schema<Campaign>,
+  input: GetCampaignsRequest,
+  output: Campaign,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8165,8 +10961,8 @@ export const getChangeLogs: API.OperationMethod<
   GetChangeLogsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(138) as any as S.Schema<GetChangeLogsRequest>,
-  output: __S(139) as any as S.Schema<ChangeLog>,
+  input: GetChangeLogsRequest,
+  output: ChangeLog,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8180,8 +10976,8 @@ export const getConnectionTypes: API.OperationMethod<
   GetConnectionTypesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(140) as any as S.Schema<GetConnectionTypesRequest>,
-  output: __S(69) as any as S.Schema<ConnectionType>,
+  input: GetConnectionTypesRequest,
+  output: ConnectionType,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8195,8 +10991,8 @@ export const getContentCategories: API.OperationMethod<
   GetContentCategoriesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(141) as any as S.Schema<GetContentCategoriesRequest>,
-  output: __S(142) as any as S.Schema<ContentCategory>,
+  input: GetContentCategoriesRequest,
+  output: ContentCategory,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8210,8 +11006,8 @@ export const getCountries: API.OperationMethod<
   GetCountriesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(143) as any as S.Schema<GetCountriesRequest>,
-  output: __S(106) as any as S.Schema<Country>,
+  input: GetCountriesRequest,
+  output: Country,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8225,8 +11021,8 @@ export const getCreativeFields: API.OperationMethod<
   GetCreativeFieldsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(144) as any as S.Schema<GetCreativeFieldsRequest>,
-  output: __S(145) as any as S.Schema<CreativeField>,
+  input: GetCreativeFieldsRequest,
+  output: CreativeField,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8240,8 +11036,8 @@ export const getCreativeFieldValues: API.OperationMethod<
   GetCreativeFieldValuesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(146) as any as S.Schema<GetCreativeFieldValuesRequest>,
-  output: __S(147) as any as S.Schema<CreativeFieldValue>,
+  input: GetCreativeFieldValuesRequest,
+  output: CreativeFieldValue,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8255,8 +11051,8 @@ export const getCreativeGroups: API.OperationMethod<
   GetCreativeGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(148) as any as S.Schema<GetCreativeGroupsRequest>,
-  output: __S(149) as any as S.Schema<CreativeGroup>,
+  input: GetCreativeGroupsRequest,
+  output: CreativeGroup,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8270,8 +11066,8 @@ export const getCreatives: API.OperationMethod<
   GetCreativesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(150) as any as S.Schema<GetCreativesRequest>,
-  output: __S(171) as any as S.Schema<Creative>,
+  input: GetCreativesRequest,
+  output: Creative,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8285,8 +11081,8 @@ export const getDirectorySites: API.OperationMethod<
   GetDirectorySitesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(172) as any as S.Schema<GetDirectorySitesRequest>,
-  output: __S(175) as any as S.Schema<DirectorySite>,
+  input: GetDirectorySitesRequest,
+  output: DirectorySite,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8300,8 +11096,8 @@ export const getDynamicFeeds: API.OperationMethod<
   GetDynamicFeedsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(176) as any as S.Schema<GetDynamicFeedsRequest>,
-  output: __S(189) as any as S.Schema<DynamicFeed>,
+  input: GetDynamicFeedsRequest,
+  output: DynamicFeed,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8315,8 +11111,8 @@ export const getDynamicProfiles: API.OperationMethod<
   GetDynamicProfilesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(190) as any as S.Schema<GetDynamicProfilesRequest>,
-  output: __S(208) as any as S.Schema<DynamicProfile>,
+  input: GetDynamicProfilesRequest,
+  output: DynamicProfile,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8330,8 +11126,8 @@ export const getEventTags: API.OperationMethod<
   GetEventTagsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(209) as any as S.Schema<GetEventTagsRequest>,
-  output: __S(210) as any as S.Schema<EventTag>,
+  input: GetEventTagsRequest,
+  output: EventTag,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8341,8 +11137,8 @@ export type GetFilesError = NotFound | Forbidden | InsufficientScopes | GcpOpErr
 /** Retrieves a report file by its report ID and file ID. This method supports media download. */
 export const getFiles: API.OperationMethod<GetFilesRequest, File, GetFilesError, GcpOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(211) as any as S.Schema<GetFilesRequest>,
-    output: __S(214) as any as S.Schema<File>,
+    input: GetFilesRequest,
+    output: File,
     errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
     protocol: GcpProtocol,
     retry: Retry.Retry,
@@ -8356,8 +11152,8 @@ export const getFloodlightActivities: API.OperationMethod<
   GetFloodlightActivitiesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(215) as any as S.Schema<GetFloodlightActivitiesRequest>,
-  output: __S(220) as any as S.Schema<FloodlightActivity>,
+  input: GetFloodlightActivitiesRequest,
+  output: FloodlightActivity,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8375,8 +11171,8 @@ export const getFloodlightActivityGroups: API.OperationMethod<
   GetFloodlightActivityGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(221) as any as S.Schema<GetFloodlightActivityGroupsRequest>,
-  output: __S(222) as any as S.Schema<FloodlightActivityGroup>,
+  input: GetFloodlightActivityGroupsRequest,
+  output: FloodlightActivityGroup,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8394,8 +11190,8 @@ export const getFloodlightConfigurations: API.OperationMethod<
   GetFloodlightConfigurationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(223) as any as S.Schema<GetFloodlightConfigurationsRequest>,
-  output: __S(232) as any as S.Schema<FloodlightConfiguration>,
+  input: GetFloodlightConfigurationsRequest,
+  output: FloodlightConfiguration,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8409,8 +11205,8 @@ export const getMobileApps: API.OperationMethod<
   GetMobileAppsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(233) as any as S.Schema<GetMobileAppsRequest>,
-  output: __S(117) as any as S.Schema<MobileApp>,
+  input: GetMobileAppsRequest,
+  output: MobileApp,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8424,8 +11220,8 @@ export const getMobileCarriers: API.OperationMethod<
   GetMobileCarriersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(234) as any as S.Schema<GetMobileCarriersRequest>,
-  output: __S(66) as any as S.Schema<MobileCarrier>,
+  input: GetMobileCarriersRequest,
+  output: MobileCarrier,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8439,8 +11235,8 @@ export const getOperatingSystems: API.OperationMethod<
   GetOperatingSystemsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(235) as any as S.Schema<GetOperatingSystemsRequest>,
-  output: __S(73) as any as S.Schema<OperatingSystem>,
+  input: GetOperatingSystemsRequest,
+  output: OperatingSystem,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8458,8 +11254,8 @@ export const getOperatingSystemVersions: API.OperationMethod<
   GetOperatingSystemVersionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(236) as any as S.Schema<GetOperatingSystemVersionsRequest>,
-  output: __S(74) as any as S.Schema<OperatingSystemVersion>,
+  input: GetOperatingSystemVersionsRequest,
+  output: OperatingSystemVersion,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8473,8 +11269,8 @@ export const getPlacementGroups: API.OperationMethod<
   GetPlacementGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(237) as any as S.Schema<GetPlacementGroupsRequest>,
-  output: __S(241) as any as S.Schema<PlacementGroup>,
+  input: GetPlacementGroupsRequest,
+  output: PlacementGroup,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8488,8 +11284,8 @@ export const getPlacements: API.OperationMethod<
   GetPlacementsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(242) as any as S.Schema<GetPlacementsRequest>,
-  output: __S(253) as any as S.Schema<Placement>,
+  input: GetPlacementsRequest,
+  output: Placement,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8503,8 +11299,8 @@ export const getPlacementStrategies: API.OperationMethod<
   GetPlacementStrategiesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(254) as any as S.Schema<GetPlacementStrategiesRequest>,
-  output: __S(255) as any as S.Schema<PlacementStrategy>,
+  input: GetPlacementStrategiesRequest,
+  output: PlacementStrategy,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8518,8 +11314,8 @@ export const getPlatformTypes: API.OperationMethod<
   GetPlatformTypesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(256) as any as S.Schema<GetPlatformTypesRequest>,
-  output: __S(48) as any as S.Schema<PlatformType>,
+  input: GetPlatformTypesRequest,
+  output: PlatformType,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8533,8 +11329,8 @@ export const getPostalCodes: API.OperationMethod<
   GetPostalCodesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(257) as any as S.Schema<GetPostalCodesRequest>,
-  output: __S(108) as any as S.Schema<PostalCode>,
+  input: GetPostalCodesRequest,
+  output: PostalCode,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8548,8 +11344,8 @@ export const getRemarketingLists: API.OperationMethod<
   GetRemarketingListsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(258) as any as S.Schema<GetRemarketingListsRequest>,
-  output: __S(264) as any as S.Schema<RemarketingList>,
+  input: GetRemarketingListsRequest,
+  output: RemarketingList,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8563,8 +11359,8 @@ export const getRemarketingListShares: API.OperationMethod<
   GetRemarketingListSharesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(265) as any as S.Schema<GetRemarketingListSharesRequest>,
-  output: __S(266) as any as S.Schema<RemarketingListShare>,
+  input: GetRemarketingListSharesRequest,
+  output: RemarketingListShare,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8578,8 +11374,8 @@ export const getReports: API.OperationMethod<
   GetReportsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(267) as any as S.Schema<GetReportsRequest>,
-  output: __S(284) as any as S.Schema<Report>,
+  input: GetReportsRequest,
+  output: Report,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8593,8 +11389,8 @@ export const getReportsFiles: API.OperationMethod<
   GetReportsFilesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(285) as any as S.Schema<GetReportsFilesRequest>,
-  output: __S(214) as any as S.Schema<File>,
+  input: GetReportsFilesRequest,
+  output: File,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8604,8 +11400,8 @@ export type GetSitesError = NotFound | Forbidden | InsufficientScopes | GcpOpErr
 /** Gets one site by ID. */
 export const getSites: API.OperationMethod<GetSitesRequest, Site, GetSitesError, GcpOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(286) as any as S.Schema<GetSitesRequest>,
-    output: __S(293) as any as S.Schema<Site>,
+    input: GetSitesRequest,
+    output: Site,
     errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
     protocol: GcpProtocol,
     retry: Retry.Retry,
@@ -8615,8 +11411,8 @@ export type GetSizesError = NotFound | Forbidden | InsufficientScopes | GcpOpErr
 /** Gets one size by ID. */
 export const getSizes: API.OperationMethod<GetSizesRequest, Size, GetSizesError, GcpOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(294) as any as S.Schema<GetSizesRequest>,
-    output: __S(61) as any as S.Schema<Size>,
+    input: GetSizesRequest,
+    output: Size,
     errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
     protocol: GcpProtocol,
     retry: Retry.Retry,
@@ -8630,8 +11426,8 @@ export const getStudioCreatives: API.OperationMethod<
   GetStudioCreativesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(295) as any as S.Schema<GetStudioCreativesRequest>,
-  output: __S(297) as any as S.Schema<StudioCreative>,
+  input: GetStudioCreativesRequest,
+  output: StudioCreative,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8645,8 +11441,8 @@ export const getSubaccounts: API.OperationMethod<
   GetSubaccountsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(298) as any as S.Schema<GetSubaccountsRequest>,
-  output: __S(299) as any as S.Schema<Subaccount>,
+  input: GetSubaccountsRequest,
+  output: Subaccount,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8664,8 +11460,8 @@ export const getTargetableRemarketingLists: API.OperationMethod<
   GetTargetableRemarketingListsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(300) as any as S.Schema<GetTargetableRemarketingListsRequest>,
-  output: __S(301) as any as S.Schema<TargetableRemarketingList>,
+  input: GetTargetableRemarketingListsRequest,
+  output: TargetableRemarketingList,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8679,8 +11475,8 @@ export const getTargetingTemplates: API.OperationMethod<
   GetTargetingTemplatesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(302) as any as S.Schema<GetTargetingTemplatesRequest>,
-  output: __S(303) as any as S.Schema<TargetingTemplate>,
+  input: GetTargetingTemplatesRequest,
+  output: TargetingTemplate,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8694,8 +11490,8 @@ export const getTvCampaignDetails: API.OperationMethod<
   GetTvCampaignDetailsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(304) as any as S.Schema<GetTvCampaignDetailsRequest>,
-  output: __S(307) as any as S.Schema<TvCampaignDetail>,
+  input: GetTvCampaignDetailsRequest,
+  output: TvCampaignDetail,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8709,8 +11505,8 @@ export const getUserProfiles: API.OperationMethod<
   GetUserProfilesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(308) as any as S.Schema<GetUserProfilesRequest>,
-  output: __S(309) as any as S.Schema<UserProfile>,
+  input: GetUserProfilesRequest,
+  output: UserProfile,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8728,8 +11524,8 @@ export const getUserRolePermissionGroups: API.OperationMethod<
   GetUserRolePermissionGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(310) as any as S.Schema<GetUserRolePermissionGroupsRequest>,
-  output: __S(311) as any as S.Schema<UserRolePermissionGroup>,
+  input: GetUserRolePermissionGroupsRequest,
+  output: UserRolePermissionGroup,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8743,8 +11539,8 @@ export const getUserRolePermissions: API.OperationMethod<
   GetUserRolePermissionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(312) as any as S.Schema<GetUserRolePermissionsRequest>,
-  output: __S(313) as any as S.Schema<UserRolePermission>,
+  input: GetUserRolePermissionsRequest,
+  output: UserRolePermission,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8758,8 +11554,8 @@ export const getUserRoles: API.OperationMethod<
   GetUserRolesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(314) as any as S.Schema<GetUserRolesRequest>,
-  output: __S(316) as any as S.Schema<UserRole>,
+  input: GetUserRolesRequest,
+  output: UserRole,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8773,8 +11569,8 @@ export const getVideoFormats: API.OperationMethod<
   GetVideoFormatsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(317) as any as S.Schema<GetVideoFormatsRequest>,
-  output: __S(318) as any as S.Schema<VideoFormat>,
+  input: GetVideoFormatsRequest,
+  output: VideoFormat,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8794,8 +11590,8 @@ export const insertAccountUserProfiles: API.OperationMethod<
   InsertAccountUserProfilesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(319) as any as S.Schema<InsertAccountUserProfilesRequest>,
-  output: __S(57) as any as S.Schema<AccountUserProfile>,
+  input: InsertAccountUserProfilesRequest,
+  output: AccountUserProfile,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8811,8 +11607,8 @@ export type InsertAdsError =
 /** Inserts a new ad. */
 export const insertAds: API.OperationMethod<InsertAdsRequest, Ad, InsertAdsError, GcpOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(320) as any as S.Schema<InsertAdsRequest>,
-    output: __S(113) as any as S.Schema<Ad>,
+    input: InsertAdsRequest,
+    output: Ad,
     errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
     protocol: GcpProtocol,
     retry: Retry.Retry,
@@ -8832,8 +11628,8 @@ export const insertAdvertiserGroups: API.OperationMethod<
   InsertAdvertiserGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(321) as any as S.Schema<InsertAdvertiserGroupsRequest>,
-  output: __S(115) as any as S.Schema<AdvertiserGroup>,
+  input: InsertAdvertiserGroupsRequest,
+  output: AdvertiserGroup,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8853,8 +11649,8 @@ export const insertAdvertiserLandingPages: API.OperationMethod<
   InsertAdvertiserLandingPagesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(322) as any as S.Schema<InsertAdvertiserLandingPagesRequest>,
-  output: __S(120) as any as S.Schema<LandingPage>,
+  input: InsertAdvertiserLandingPagesRequest,
+  output: LandingPage,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8874,8 +11670,8 @@ export const insertAdvertisers: API.OperationMethod<
   InsertAdvertisersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(323) as any as S.Schema<InsertAdvertisersRequest>,
-  output: __S(123) as any as S.Schema<Advertiser>,
+  input: InsertAdvertisersRequest,
+  output: Advertiser,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8895,8 +11691,8 @@ export const insertBillingAssignments: API.OperationMethod<
   InsertBillingAssignmentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(325) as any as S.Schema<InsertBillingAssignmentsRequest>,
-  output: __S(324) as any as S.Schema<BillingAssignment>,
+  input: InsertBillingAssignmentsRequest,
+  output: BillingAssignment,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8916,8 +11712,8 @@ export const insertCampaignCreativeAssociations: API.OperationMethod<
   InsertCampaignCreativeAssociationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(327) as any as S.Schema<InsertCampaignCreativeAssociationsRequest>,
-  output: __S(326) as any as S.Schema<CampaignCreativeAssociation>,
+  input: InsertCampaignCreativeAssociationsRequest,
+  output: CampaignCreativeAssociation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8937,8 +11733,8 @@ export const insertCampaigns: API.OperationMethod<
   InsertCampaignsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(328) as any as S.Schema<InsertCampaignsRequest>,
-  output: __S(137) as any as S.Schema<Campaign>,
+  input: InsertCampaignsRequest,
+  output: Campaign,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8958,8 +11754,8 @@ export const insertContentCategories: API.OperationMethod<
   InsertContentCategoriesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(329) as any as S.Schema<InsertContentCategoriesRequest>,
-  output: __S(142) as any as S.Schema<ContentCategory>,
+  input: InsertContentCategoriesRequest,
+  output: ContentCategory,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8979,8 +11775,8 @@ export const insertCreativeAssets: API.OperationMethod<
   InsertCreativeAssetsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(331) as any as S.Schema<InsertCreativeAssetsRequest>,
-  output: __S(330) as any as S.Schema<CreativeAssetMetadata>,
+  input: InsertCreativeAssetsRequest,
+  output: CreativeAssetMetadata,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9000,8 +11796,8 @@ export const insertCreativeFields: API.OperationMethod<
   InsertCreativeFieldsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(332) as any as S.Schema<InsertCreativeFieldsRequest>,
-  output: __S(145) as any as S.Schema<CreativeField>,
+  input: InsertCreativeFieldsRequest,
+  output: CreativeField,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9021,8 +11817,8 @@ export const insertCreativeFieldValues: API.OperationMethod<
   InsertCreativeFieldValuesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(333) as any as S.Schema<InsertCreativeFieldValuesRequest>,
-  output: __S(147) as any as S.Schema<CreativeFieldValue>,
+  input: InsertCreativeFieldValuesRequest,
+  output: CreativeFieldValue,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9042,8 +11838,8 @@ export const insertCreativeGroups: API.OperationMethod<
   InsertCreativeGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(334) as any as S.Schema<InsertCreativeGroupsRequest>,
-  output: __S(149) as any as S.Schema<CreativeGroup>,
+  input: InsertCreativeGroupsRequest,
+  output: CreativeGroup,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9063,8 +11859,8 @@ export const insertCreatives: API.OperationMethod<
   InsertCreativesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(335) as any as S.Schema<InsertCreativesRequest>,
-  output: __S(171) as any as S.Schema<Creative>,
+  input: InsertCreativesRequest,
+  output: Creative,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9084,8 +11880,8 @@ export const insertDirectorySites: API.OperationMethod<
   InsertDirectorySitesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(336) as any as S.Schema<InsertDirectorySitesRequest>,
-  output: __S(175) as any as S.Schema<DirectorySite>,
+  input: InsertDirectorySitesRequest,
+  output: DirectorySite,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9105,8 +11901,8 @@ export const insertDynamicFeeds: API.OperationMethod<
   InsertDynamicFeedsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(338) as any as S.Schema<InsertDynamicFeedsRequest>,
-  output: __S(189) as any as S.Schema<DynamicFeed>,
+  input: InsertDynamicFeedsRequest,
+  output: DynamicFeed,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9126,8 +11922,8 @@ export const insertDynamicProfiles: API.OperationMethod<
   InsertDynamicProfilesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(339) as any as S.Schema<InsertDynamicProfilesRequest>,
-  output: __S(208) as any as S.Schema<DynamicProfile>,
+  input: InsertDynamicProfilesRequest,
+  output: DynamicProfile,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9147,8 +11943,8 @@ export const insertDynamicTargetingKeys: API.OperationMethod<
   InsertDynamicTargetingKeysError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(341) as any as S.Schema<InsertDynamicTargetingKeysRequest>,
-  output: __S(340) as any as S.Schema<DynamicTargetingKey>,
+  input: InsertDynamicTargetingKeysRequest,
+  output: DynamicTargetingKey,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9168,8 +11964,8 @@ export const insertEventTags: API.OperationMethod<
   InsertEventTagsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(342) as any as S.Schema<InsertEventTagsRequest>,
-  output: __S(210) as any as S.Schema<EventTag>,
+  input: InsertEventTagsRequest,
+  output: EventTag,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9189,8 +11985,8 @@ export const insertFloodlightActivities: API.OperationMethod<
   InsertFloodlightActivitiesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(343) as any as S.Schema<InsertFloodlightActivitiesRequest>,
-  output: __S(220) as any as S.Schema<FloodlightActivity>,
+  input: InsertFloodlightActivitiesRequest,
+  output: FloodlightActivity,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9210,8 +12006,8 @@ export const insertFloodlightActivityGroups: API.OperationMethod<
   InsertFloodlightActivityGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(344) as any as S.Schema<InsertFloodlightActivityGroupsRequest>,
-  output: __S(222) as any as S.Schema<FloodlightActivityGroup>,
+  input: InsertFloodlightActivityGroupsRequest,
+  output: FloodlightActivityGroup,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9231,8 +12027,8 @@ export const insertPlacementGroups: API.OperationMethod<
   InsertPlacementGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(345) as any as S.Schema<InsertPlacementGroupsRequest>,
-  output: __S(241) as any as S.Schema<PlacementGroup>,
+  input: InsertPlacementGroupsRequest,
+  output: PlacementGroup,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9252,8 +12048,8 @@ export const insertPlacements: API.OperationMethod<
   InsertPlacementsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(346) as any as S.Schema<InsertPlacementsRequest>,
-  output: __S(253) as any as S.Schema<Placement>,
+  input: InsertPlacementsRequest,
+  output: Placement,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9273,8 +12069,8 @@ export const insertPlacementStrategies: API.OperationMethod<
   InsertPlacementStrategiesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(347) as any as S.Schema<InsertPlacementStrategiesRequest>,
-  output: __S(255) as any as S.Schema<PlacementStrategy>,
+  input: InsertPlacementStrategiesRequest,
+  output: PlacementStrategy,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9294,8 +12090,8 @@ export const insertRemarketingLists: API.OperationMethod<
   InsertRemarketingListsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(348) as any as S.Schema<InsertRemarketingListsRequest>,
-  output: __S(264) as any as S.Schema<RemarketingList>,
+  input: InsertRemarketingListsRequest,
+  output: RemarketingList,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9315,8 +12111,8 @@ export const insertReports: API.OperationMethod<
   InsertReportsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(349) as any as S.Schema<InsertReportsRequest>,
-  output: __S(284) as any as S.Schema<Report>,
+  input: InsertReportsRequest,
+  output: Report,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9336,8 +12132,8 @@ export const insertSites: API.OperationMethod<
   InsertSitesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(350) as any as S.Schema<InsertSitesRequest>,
-  output: __S(293) as any as S.Schema<Site>,
+  input: InsertSitesRequest,
+  output: Site,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9357,8 +12153,8 @@ export const insertSizes: API.OperationMethod<
   InsertSizesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(351) as any as S.Schema<InsertSizesRequest>,
-  output: __S(61) as any as S.Schema<Size>,
+  input: InsertSizesRequest,
+  output: Size,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9378,8 +12174,8 @@ export const insertStudioCreativeAssets: API.OperationMethod<
   InsertStudioCreativeAssetsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(353) as any as S.Schema<InsertStudioCreativeAssetsRequest>,
-  output: __S(357) as any as S.Schema<StudioCreativeAssetsResponse>,
+  input: InsertStudioCreativeAssetsRequest,
+  output: StudioCreativeAssetsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9399,8 +12195,8 @@ export const insertStudioCreatives: API.OperationMethod<
   InsertStudioCreativesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(358) as any as S.Schema<InsertStudioCreativesRequest>,
-  output: __S(297) as any as S.Schema<StudioCreative>,
+  input: InsertStudioCreativesRequest,
+  output: StudioCreative,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9420,8 +12216,8 @@ export const insertSubaccounts: API.OperationMethod<
   InsertSubaccountsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(359) as any as S.Schema<InsertSubaccountsRequest>,
-  output: __S(299) as any as S.Schema<Subaccount>,
+  input: InsertSubaccountsRequest,
+  output: Subaccount,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9441,8 +12237,8 @@ export const insertTargetingTemplates: API.OperationMethod<
   InsertTargetingTemplatesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(360) as any as S.Schema<InsertTargetingTemplatesRequest>,
-  output: __S(303) as any as S.Schema<TargetingTemplate>,
+  input: InsertTargetingTemplatesRequest,
+  output: TargetingTemplate,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9462,8 +12258,8 @@ export const insertUserRoles: API.OperationMethod<
   InsertUserRolesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(361) as any as S.Schema<InsertUserRolesRequest>,
-  output: __S(316) as any as S.Schema<UserRole>,
+  input: InsertUserRolesRequest,
+  output: UserRole,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9481,8 +12277,8 @@ export const listAccountPermissionGroups: API.OperationMethod<
   ListAccountPermissionGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(362) as any as S.Schema<ListAccountPermissionGroupsRequest>,
-  output: __S(363) as any as S.Schema<AccountPermissionGroupsListResponse>,
+  input: ListAccountPermissionGroupsRequest,
+  output: AccountPermissionGroupsListResponse,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9496,8 +12292,8 @@ export const listAccountPermissions: API.OperationMethod<
   ListAccountPermissionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(364) as any as S.Schema<ListAccountPermissionsRequest>,
-  output: __S(366) as any as S.Schema<AccountPermissionsListResponse>,
+  input: ListAccountPermissionsRequest,
+  output: AccountPermissionsListResponse,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9512,8 +12308,8 @@ export const listAccounts: API.PaginatedOperationMethod<
   GcpOpContext,
   AccountsListResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(367) as any as S.Schema<ListAccountsRequest>,
-  output: __S(369) as any as S.Schema<AccountsListResponse>,
+  input: ListAccountsRequest,
+  output: AccountsListResponse,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9529,8 +12325,8 @@ export const listAccountUserProfiles: API.PaginatedOperationMethod<
   GcpOpContext,
   AccountUserProfilesListResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(370) as any as S.Schema<ListAccountUserProfilesRequest>,
-  output: __S(372) as any as S.Schema<AccountUserProfilesListResponse>,
+  input: ListAccountUserProfilesRequest,
+  output: AccountUserProfilesListResponse,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9546,8 +12342,8 @@ export const listAds: API.PaginatedOperationMethod<
   GcpOpContext,
   AdsListResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(373) as any as S.Schema<ListAdsRequest>,
-  output: __S(375) as any as S.Schema<AdsListResponse>,
+  input: ListAdsRequest,
+  output: AdsListResponse,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9563,8 +12359,8 @@ export const listAdvertiserGroups: API.PaginatedOperationMethod<
   GcpOpContext,
   AdvertiserGroupsListResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(376) as any as S.Schema<ListAdvertiserGroupsRequest>,
-  output: __S(378) as any as S.Schema<AdvertiserGroupsListResponse>,
+  input: ListAdvertiserGroupsRequest,
+  output: AdvertiserGroupsListResponse,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9580,8 +12376,8 @@ export const listAdvertiserInvoices: API.PaginatedOperationMethod<
   GcpOpContext,
   AdvertiserInvoicesListResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(379) as any as S.Schema<ListAdvertiserInvoicesRequest>,
-  output: __S(384) as any as S.Schema<AdvertiserInvoicesListResponse>,
+  input: ListAdvertiserInvoicesRequest,
+  output: AdvertiserInvoicesListResponse,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9601,8 +12397,8 @@ export const listAdvertiserLandingPages: API.PaginatedOperationMethod<
   GcpOpContext,
   AdvertiserLandingPagesListResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(385) as any as S.Schema<ListAdvertiserLandingPagesRequest>,
-  output: __S(387) as any as S.Schema<AdvertiserLandingPagesListResponse>,
+  input: ListAdvertiserLandingPagesRequest,
+  output: AdvertiserLandingPagesListResponse,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9618,8 +12414,8 @@ export const listAdvertisers: API.PaginatedOperationMethod<
   GcpOpContext,
   AdvertisersListResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(388) as any as S.Schema<ListAdvertisersRequest>,
-  output: __S(390) as any as S.Schema<AdvertisersListResponse>,
+  input: ListAdvertisersRequest,
+  output: AdvertisersListResponse,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9634,8 +12430,8 @@ export const listBillingAssignments: API.OperationMethod<
   ListBillingAssignmentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(391) as any as S.Schema<ListBillingAssignmentsRequest>,
-  output: __S(393) as any as S.Schema<BillingAssignmentsListResponse>,
+  input: ListBillingAssignmentsRequest,
+  output: BillingAssignmentsListResponse,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9650,8 +12446,8 @@ export const listBillingProfiles: API.PaginatedOperationMethod<
   GcpOpContext,
   BillingProfilesListResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(394) as any as S.Schema<ListBillingProfilesRequest>,
-  output: __S(396) as any as S.Schema<BillingProfilesListResponse>,
+  input: ListBillingProfilesRequest,
+  output: BillingProfilesListResponse,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9666,8 +12462,8 @@ export const listBillingRates: API.OperationMethod<
   ListBillingRatesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(397) as any as S.Schema<ListBillingRatesRequest>,
-  output: __S(402) as any as S.Schema<BillingRatesListResponse>,
+  input: ListBillingRatesRequest,
+  output: BillingRatesListResponse,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9681,8 +12477,8 @@ export const listBrowsers: API.OperationMethod<
   ListBrowsersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(403) as any as S.Schema<ListBrowsersRequest>,
-  output: __S(404) as any as S.Schema<BrowsersListResponse>,
+  input: ListBrowsersRequest,
+  output: BrowsersListResponse,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9701,8 +12497,8 @@ export const listCampaignCreativeAssociations: API.PaginatedOperationMethod<
   GcpOpContext,
   CampaignCreativeAssociationsListResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(405) as any as S.Schema<ListCampaignCreativeAssociationsRequest>,
-  output: __S(407) as any as S.Schema<CampaignCreativeAssociationsListResponse>,
+  input: ListCampaignCreativeAssociationsRequest,
+  output: CampaignCreativeAssociationsListResponse,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9718,8 +12514,8 @@ export const listCampaigns: API.PaginatedOperationMethod<
   GcpOpContext,
   CampaignsListResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(408) as any as S.Schema<ListCampaignsRequest>,
-  output: __S(410) as any as S.Schema<CampaignsListResponse>,
+  input: ListCampaignsRequest,
+  output: CampaignsListResponse,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9735,8 +12531,8 @@ export const listChangeLogs: API.PaginatedOperationMethod<
   GcpOpContext,
   ChangeLogsListResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(411) as any as S.Schema<ListChangeLogsRequest>,
-  output: __S(413) as any as S.Schema<ChangeLogsListResponse>,
+  input: ListChangeLogsRequest,
+  output: ChangeLogsListResponse,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9751,8 +12547,8 @@ export const listCities: API.OperationMethod<
   ListCitiesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(414) as any as S.Schema<ListCitiesRequest>,
-  output: __S(415) as any as S.Schema<CitiesListResponse>,
+  input: ListCitiesRequest,
+  output: CitiesListResponse,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9766,8 +12562,8 @@ export const listConnectionTypes: API.OperationMethod<
   ListConnectionTypesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(416) as any as S.Schema<ListConnectionTypesRequest>,
-  output: __S(417) as any as S.Schema<ConnectionTypesListResponse>,
+  input: ListConnectionTypesRequest,
+  output: ConnectionTypesListResponse,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9782,8 +12578,8 @@ export const listContentCategories: API.PaginatedOperationMethod<
   GcpOpContext,
   ContentCategoriesListResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(418) as any as S.Schema<ListContentCategoriesRequest>,
-  output: __S(420) as any as S.Schema<ContentCategoriesListResponse>,
+  input: ListContentCategoriesRequest,
+  output: ContentCategoriesListResponse,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9798,8 +12594,8 @@ export const listCountries: API.OperationMethod<
   ListCountriesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(421) as any as S.Schema<ListCountriesRequest>,
-  output: __S(422) as any as S.Schema<CountriesListResponse>,
+  input: ListCountriesRequest,
+  output: CountriesListResponse,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9814,8 +12610,8 @@ export const listCreativeFields: API.PaginatedOperationMethod<
   GcpOpContext,
   CreativeFieldsListResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(423) as any as S.Schema<ListCreativeFieldsRequest>,
-  output: __S(425) as any as S.Schema<CreativeFieldsListResponse>,
+  input: ListCreativeFieldsRequest,
+  output: CreativeFieldsListResponse,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9831,8 +12627,8 @@ export const listCreativeFieldValues: API.PaginatedOperationMethod<
   GcpOpContext,
   CreativeFieldValuesListResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(426) as any as S.Schema<ListCreativeFieldValuesRequest>,
-  output: __S(428) as any as S.Schema<CreativeFieldValuesListResponse>,
+  input: ListCreativeFieldValuesRequest,
+  output: CreativeFieldValuesListResponse,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9848,8 +12644,8 @@ export const listCreativeGroups: API.PaginatedOperationMethod<
   GcpOpContext,
   CreativeGroupsListResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(429) as any as S.Schema<ListCreativeGroupsRequest>,
-  output: __S(431) as any as S.Schema<CreativeGroupsListResponse>,
+  input: ListCreativeGroupsRequest,
+  output: CreativeGroupsListResponse,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9865,8 +12661,8 @@ export const listCreatives: API.PaginatedOperationMethod<
   GcpOpContext,
   CreativesListResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(432) as any as S.Schema<ListCreativesRequest>,
-  output: __S(434) as any as S.Schema<CreativesListResponse>,
+  input: ListCreativesRequest,
+  output: CreativesListResponse,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9882,8 +12678,8 @@ export const listDirectorySites: API.PaginatedOperationMethod<
   GcpOpContext,
   DirectorySitesListResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(435) as any as S.Schema<ListDirectorySitesRequest>,
-  output: __S(437) as any as S.Schema<DirectorySitesListResponse>,
+  input: ListDirectorySitesRequest,
+  output: DirectorySitesListResponse,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9898,8 +12694,8 @@ export const listDynamicTargetingKeys: API.OperationMethod<
   ListDynamicTargetingKeysError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(438) as any as S.Schema<ListDynamicTargetingKeysRequest>,
-  output: __S(440) as any as S.Schema<DynamicTargetingKeysListResponse>,
+  input: ListDynamicTargetingKeysRequest,
+  output: DynamicTargetingKeysListResponse,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9913,8 +12709,8 @@ export const listEventTags: API.OperationMethod<
   ListEventTagsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(441) as any as S.Schema<ListEventTagsRequest>,
-  output: __S(443) as any as S.Schema<EventTagsListResponse>,
+  input: ListEventTagsRequest,
+  output: EventTagsListResponse,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9929,8 +12725,8 @@ export const listFiles: API.PaginatedOperationMethod<
   GcpOpContext,
   File
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(444) as any as S.Schema<ListFilesRequest>,
-  output: __S(446) as any as S.Schema<FileList>,
+  input: ListFilesRequest,
+  output: FileList,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9946,8 +12742,8 @@ export const listFloodlightActivities: API.PaginatedOperationMethod<
   GcpOpContext,
   FloodlightActivitiesListResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(447) as any as S.Schema<ListFloodlightActivitiesRequest>,
-  output: __S(449) as any as S.Schema<FloodlightActivitiesListResponse>,
+  input: ListFloodlightActivitiesRequest,
+  output: FloodlightActivitiesListResponse,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9967,8 +12763,8 @@ export const listFloodlightActivityGroups: API.PaginatedOperationMethod<
   GcpOpContext,
   FloodlightActivityGroupsListResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(450) as any as S.Schema<ListFloodlightActivityGroupsRequest>,
-  output: __S(452) as any as S.Schema<FloodlightActivityGroupsListResponse>,
+  input: ListFloodlightActivityGroupsRequest,
+  output: FloodlightActivityGroupsListResponse,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9987,8 +12783,8 @@ export const listFloodlightConfigurations: API.OperationMethod<
   ListFloodlightConfigurationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(453) as any as S.Schema<ListFloodlightConfigurationsRequest>,
-  output: __S(455) as any as S.Schema<FloodlightConfigurationsListResponse>,
+  input: ListFloodlightConfigurationsRequest,
+  output: FloodlightConfigurationsListResponse,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10002,8 +12798,8 @@ export const listLanguages: API.OperationMethod<
   ListLanguagesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(456) as any as S.Schema<ListLanguagesRequest>,
-  output: __S(457) as any as S.Schema<LanguagesListResponse>,
+  input: ListLanguagesRequest,
+  output: LanguagesListResponse,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10017,8 +12813,8 @@ export const listMetros: API.OperationMethod<
   ListMetrosError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(458) as any as S.Schema<ListMetrosRequest>,
-  output: __S(459) as any as S.Schema<MetrosListResponse>,
+  input: ListMetrosRequest,
+  output: MetrosListResponse,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10033,8 +12829,8 @@ export const listMobileApps: API.PaginatedOperationMethod<
   GcpOpContext,
   MobileAppsListResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(460) as any as S.Schema<ListMobileAppsRequest>,
-  output: __S(462) as any as S.Schema<MobileAppsListResponse>,
+  input: ListMobileAppsRequest,
+  output: MobileAppsListResponse,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10049,8 +12845,8 @@ export const listMobileCarriers: API.OperationMethod<
   ListMobileCarriersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(463) as any as S.Schema<ListMobileCarriersRequest>,
-  output: __S(464) as any as S.Schema<MobileCarriersListResponse>,
+  input: ListMobileCarriersRequest,
+  output: MobileCarriersListResponse,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10064,8 +12860,8 @@ export const listOperatingSystems: API.OperationMethod<
   ListOperatingSystemsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(465) as any as S.Schema<ListOperatingSystemsRequest>,
-  output: __S(466) as any as S.Schema<OperatingSystemsListResponse>,
+  input: ListOperatingSystemsRequest,
+  output: OperatingSystemsListResponse,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10083,8 +12879,8 @@ export const listOperatingSystemVersions: API.OperationMethod<
   ListOperatingSystemVersionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(467) as any as S.Schema<ListOperatingSystemVersionsRequest>,
-  output: __S(468) as any as S.Schema<OperatingSystemVersionsListResponse>,
+  input: ListOperatingSystemVersionsRequest,
+  output: OperatingSystemVersionsListResponse,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10099,8 +12895,8 @@ export const listPlacementGroups: API.PaginatedOperationMethod<
   GcpOpContext,
   PlacementGroupsListResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(469) as any as S.Schema<ListPlacementGroupsRequest>,
-  output: __S(471) as any as S.Schema<PlacementGroupsListResponse>,
+  input: ListPlacementGroupsRequest,
+  output: PlacementGroupsListResponse,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10116,8 +12912,8 @@ export const listPlacements: API.PaginatedOperationMethod<
   GcpOpContext,
   PlacementsListResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(472) as any as S.Schema<ListPlacementsRequest>,
-  output: __S(474) as any as S.Schema<PlacementsListResponse>,
+  input: ListPlacementsRequest,
+  output: PlacementsListResponse,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10133,8 +12929,8 @@ export const listPlacementStrategies: API.PaginatedOperationMethod<
   GcpOpContext,
   PlacementStrategiesListResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(475) as any as S.Schema<ListPlacementStrategiesRequest>,
-  output: __S(477) as any as S.Schema<PlacementStrategiesListResponse>,
+  input: ListPlacementStrategiesRequest,
+  output: PlacementStrategiesListResponse,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10149,8 +12945,8 @@ export const listPlatformTypes: API.OperationMethod<
   ListPlatformTypesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(478) as any as S.Schema<ListPlatformTypesRequest>,
-  output: __S(479) as any as S.Schema<PlatformTypesListResponse>,
+  input: ListPlatformTypesRequest,
+  output: PlatformTypesListResponse,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10164,8 +12960,8 @@ export const listPostalCodes: API.OperationMethod<
   ListPostalCodesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(480) as any as S.Schema<ListPostalCodesRequest>,
-  output: __S(481) as any as S.Schema<PostalCodesListResponse>,
+  input: ListPostalCodesRequest,
+  output: PostalCodesListResponse,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10179,8 +12975,8 @@ export const listRegions: API.OperationMethod<
   ListRegionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(482) as any as S.Schema<ListRegionsRequest>,
-  output: __S(483) as any as S.Schema<RegionsListResponse>,
+  input: ListRegionsRequest,
+  output: RegionsListResponse,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10195,8 +12991,8 @@ export const listRemarketingLists: API.PaginatedOperationMethod<
   GcpOpContext,
   RemarketingListsListResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(484) as any as S.Schema<ListRemarketingListsRequest>,
-  output: __S(486) as any as S.Schema<RemarketingListsListResponse>,
+  input: ListRemarketingListsRequest,
+  output: RemarketingListsListResponse,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10212,8 +13008,8 @@ export const listReports: API.PaginatedOperationMethod<
   GcpOpContext,
   Report
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(487) as any as S.Schema<ListReportsRequest>,
-  output: __S(489) as any as S.Schema<ReportList>,
+  input: ListReportsRequest,
+  output: ReportList,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10229,8 +13025,8 @@ export const listReportsFiles: API.PaginatedOperationMethod<
   GcpOpContext,
   File
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(490) as any as S.Schema<ListReportsFilesRequest>,
-  output: __S(446) as any as S.Schema<FileList>,
+  input: ListReportsFilesRequest,
+  output: FileList,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10246,8 +13042,8 @@ export const listSites: API.PaginatedOperationMethod<
   GcpOpContext,
   SitesListResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(491) as any as S.Schema<ListSitesRequest>,
-  output: __S(493) as any as S.Schema<SitesListResponse>,
+  input: ListSitesRequest,
+  output: SitesListResponse,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10262,8 +13058,8 @@ export const listSizes: API.OperationMethod<
   ListSizesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(494) as any as S.Schema<ListSizesRequest>,
-  output: __S(495) as any as S.Schema<SizesListResponse>,
+  input: ListSizesRequest,
+  output: SizesListResponse,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10278,8 +13074,8 @@ export const listSubaccounts: API.PaginatedOperationMethod<
   GcpOpContext,
   SubaccountsListResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(496) as any as S.Schema<ListSubaccountsRequest>,
-  output: __S(498) as any as S.Schema<SubaccountsListResponse>,
+  input: ListSubaccountsRequest,
+  output: SubaccountsListResponse,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10299,8 +13095,8 @@ export const listTargetableRemarketingLists: API.PaginatedOperationMethod<
   GcpOpContext,
   TargetableRemarketingListsListResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(499) as any as S.Schema<ListTargetableRemarketingListsRequest>,
-  output: __S(501) as any as S.Schema<TargetableRemarketingListsListResponse>,
+  input: ListTargetableRemarketingListsRequest,
+  output: TargetableRemarketingListsListResponse,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10316,8 +13112,8 @@ export const listTargetingTemplates: API.PaginatedOperationMethod<
   GcpOpContext,
   TargetingTemplatesListResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(502) as any as S.Schema<ListTargetingTemplatesRequest>,
-  output: __S(504) as any as S.Schema<TargetingTemplatesListResponse>,
+  input: ListTargetingTemplatesRequest,
+  output: TargetingTemplatesListResponse,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10332,8 +13128,8 @@ export const listTvCampaignSummaries: API.OperationMethod<
   ListTvCampaignSummariesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(505) as any as S.Schema<ListTvCampaignSummariesRequest>,
-  output: __S(508) as any as S.Schema<TvCampaignSummariesListResponse>,
+  input: ListTvCampaignSummariesRequest,
+  output: TvCampaignSummariesListResponse,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10347,8 +13143,8 @@ export const listUserProfiles: API.OperationMethod<
   ListUserProfilesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(509) as any as S.Schema<ListUserProfilesRequest>,
-  output: __S(511) as any as S.Schema<UserProfileList>,
+  input: ListUserProfilesRequest,
+  output: UserProfileList,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10366,8 +13162,8 @@ export const listUserRolePermissionGroups: API.OperationMethod<
   ListUserRolePermissionGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(512) as any as S.Schema<ListUserRolePermissionGroupsRequest>,
-  output: __S(514) as any as S.Schema<UserRolePermissionGroupsListResponse>,
+  input: ListUserRolePermissionGroupsRequest,
+  output: UserRolePermissionGroupsListResponse,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10381,8 +13177,8 @@ export const listUserRolePermissions: API.OperationMethod<
   ListUserRolePermissionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(515) as any as S.Schema<ListUserRolePermissionsRequest>,
-  output: __S(516) as any as S.Schema<UserRolePermissionsListResponse>,
+  input: ListUserRolePermissionsRequest,
+  output: UserRolePermissionsListResponse,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10397,8 +13193,8 @@ export const listUserRoles: API.PaginatedOperationMethod<
   GcpOpContext,
   UserRolesListResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(517) as any as S.Schema<ListUserRolesRequest>,
-  output: __S(519) as any as S.Schema<UserRolesListResponse>,
+  input: ListUserRolesRequest,
+  output: UserRolesListResponse,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10413,8 +13209,8 @@ export const listVideoFormats: API.OperationMethod<
   ListVideoFormatsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(520) as any as S.Schema<ListVideoFormatsRequest>,
-  output: __S(522) as any as S.Schema<VideoFormatsListResponse>,
+  input: ListVideoFormatsRequest,
+  output: VideoFormatsListResponse,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10434,8 +13230,8 @@ export const patchAccounts: API.OperationMethod<
   PatchAccountsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(523) as any as S.Schema<PatchAccountsRequest>,
-  output: __S(54) as any as S.Schema<Account>,
+  input: PatchAccountsRequest,
+  output: Account,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10455,8 +13251,8 @@ export const patchAccountUserProfiles: API.OperationMethod<
   PatchAccountUserProfilesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(524) as any as S.Schema<PatchAccountUserProfilesRequest>,
-  output: __S(57) as any as S.Schema<AccountUserProfile>,
+  input: PatchAccountUserProfilesRequest,
+  output: AccountUserProfile,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10472,8 +13268,8 @@ export type PatchAdsError =
 /** Updates an existing ad. This method supports patch semantics. */
 export const patchAds: API.OperationMethod<PatchAdsRequest, Ad, PatchAdsError, GcpOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(525) as any as S.Schema<PatchAdsRequest>,
-    output: __S(113) as any as S.Schema<Ad>,
+    input: PatchAdsRequest,
+    output: Ad,
     errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
     protocol: GcpProtocol,
     retry: Retry.Retry,
@@ -10493,8 +13289,8 @@ export const patchAdvertiserGroups: API.OperationMethod<
   PatchAdvertiserGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(526) as any as S.Schema<PatchAdvertiserGroupsRequest>,
-  output: __S(115) as any as S.Schema<AdvertiserGroup>,
+  input: PatchAdvertiserGroupsRequest,
+  output: AdvertiserGroup,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10514,8 +13310,8 @@ export const patchAdvertiserLandingPages: API.OperationMethod<
   PatchAdvertiserLandingPagesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(527) as any as S.Schema<PatchAdvertiserLandingPagesRequest>,
-  output: __S(120) as any as S.Schema<LandingPage>,
+  input: PatchAdvertiserLandingPagesRequest,
+  output: LandingPage,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10535,8 +13331,8 @@ export const patchAdvertisers: API.OperationMethod<
   PatchAdvertisersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(528) as any as S.Schema<PatchAdvertisersRequest>,
-  output: __S(123) as any as S.Schema<Advertiser>,
+  input: PatchAdvertisersRequest,
+  output: Advertiser,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10556,8 +13352,8 @@ export const patchCampaigns: API.OperationMethod<
   PatchCampaignsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(529) as any as S.Schema<PatchCampaignsRequest>,
-  output: __S(137) as any as S.Schema<Campaign>,
+  input: PatchCampaignsRequest,
+  output: Campaign,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10577,8 +13373,8 @@ export const patchContentCategories: API.OperationMethod<
   PatchContentCategoriesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(530) as any as S.Schema<PatchContentCategoriesRequest>,
-  output: __S(142) as any as S.Schema<ContentCategory>,
+  input: PatchContentCategoriesRequest,
+  output: ContentCategory,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10598,8 +13394,8 @@ export const patchCreativeFields: API.OperationMethod<
   PatchCreativeFieldsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(531) as any as S.Schema<PatchCreativeFieldsRequest>,
-  output: __S(145) as any as S.Schema<CreativeField>,
+  input: PatchCreativeFieldsRequest,
+  output: CreativeField,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10619,8 +13415,8 @@ export const patchCreativeFieldValues: API.OperationMethod<
   PatchCreativeFieldValuesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(532) as any as S.Schema<PatchCreativeFieldValuesRequest>,
-  output: __S(147) as any as S.Schema<CreativeFieldValue>,
+  input: PatchCreativeFieldValuesRequest,
+  output: CreativeFieldValue,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10640,8 +13436,8 @@ export const patchCreativeGroups: API.OperationMethod<
   PatchCreativeGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(533) as any as S.Schema<PatchCreativeGroupsRequest>,
-  output: __S(149) as any as S.Schema<CreativeGroup>,
+  input: PatchCreativeGroupsRequest,
+  output: CreativeGroup,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10661,8 +13457,8 @@ export const patchCreatives: API.OperationMethod<
   PatchCreativesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(534) as any as S.Schema<PatchCreativesRequest>,
-  output: __S(171) as any as S.Schema<Creative>,
+  input: PatchCreativesRequest,
+  output: Creative,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10682,8 +13478,8 @@ export const patchEventTags: API.OperationMethod<
   PatchEventTagsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(535) as any as S.Schema<PatchEventTagsRequest>,
-  output: __S(210) as any as S.Schema<EventTag>,
+  input: PatchEventTagsRequest,
+  output: EventTag,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10703,8 +13499,8 @@ export const patchFloodlightActivities: API.OperationMethod<
   PatchFloodlightActivitiesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(536) as any as S.Schema<PatchFloodlightActivitiesRequest>,
-  output: __S(220) as any as S.Schema<FloodlightActivity>,
+  input: PatchFloodlightActivitiesRequest,
+  output: FloodlightActivity,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10724,8 +13520,8 @@ export const patchFloodlightActivityGroups: API.OperationMethod<
   PatchFloodlightActivityGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(537) as any as S.Schema<PatchFloodlightActivityGroupsRequest>,
-  output: __S(222) as any as S.Schema<FloodlightActivityGroup>,
+  input: PatchFloodlightActivityGroupsRequest,
+  output: FloodlightActivityGroup,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10745,8 +13541,8 @@ export const patchFloodlightConfigurations: API.OperationMethod<
   PatchFloodlightConfigurationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(538) as any as S.Schema<PatchFloodlightConfigurationsRequest>,
-  output: __S(232) as any as S.Schema<FloodlightConfiguration>,
+  input: PatchFloodlightConfigurationsRequest,
+  output: FloodlightConfiguration,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10766,8 +13562,8 @@ export const patchPlacementGroups: API.OperationMethod<
   PatchPlacementGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(539) as any as S.Schema<PatchPlacementGroupsRequest>,
-  output: __S(241) as any as S.Schema<PlacementGroup>,
+  input: PatchPlacementGroupsRequest,
+  output: PlacementGroup,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10787,8 +13583,8 @@ export const patchPlacements: API.OperationMethod<
   PatchPlacementsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(540) as any as S.Schema<PatchPlacementsRequest>,
-  output: __S(253) as any as S.Schema<Placement>,
+  input: PatchPlacementsRequest,
+  output: Placement,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10808,8 +13604,8 @@ export const patchPlacementStrategies: API.OperationMethod<
   PatchPlacementStrategiesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(541) as any as S.Schema<PatchPlacementStrategiesRequest>,
-  output: __S(255) as any as S.Schema<PlacementStrategy>,
+  input: PatchPlacementStrategiesRequest,
+  output: PlacementStrategy,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10829,8 +13625,8 @@ export const patchRemarketingLists: API.OperationMethod<
   PatchRemarketingListsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(542) as any as S.Schema<PatchRemarketingListsRequest>,
-  output: __S(264) as any as S.Schema<RemarketingList>,
+  input: PatchRemarketingListsRequest,
+  output: RemarketingList,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10850,8 +13646,8 @@ export const patchRemarketingListShares: API.OperationMethod<
   PatchRemarketingListSharesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(543) as any as S.Schema<PatchRemarketingListSharesRequest>,
-  output: __S(266) as any as S.Schema<RemarketingListShare>,
+  input: PatchRemarketingListSharesRequest,
+  output: RemarketingListShare,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10871,8 +13667,8 @@ export const patchSites: API.OperationMethod<
   PatchSitesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(544) as any as S.Schema<PatchSitesRequest>,
-  output: __S(293) as any as S.Schema<Site>,
+  input: PatchSitesRequest,
+  output: Site,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10892,8 +13688,8 @@ export const patchSubaccounts: API.OperationMethod<
   PatchSubaccountsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(545) as any as S.Schema<PatchSubaccountsRequest>,
-  output: __S(299) as any as S.Schema<Subaccount>,
+  input: PatchSubaccountsRequest,
+  output: Subaccount,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10913,8 +13709,8 @@ export const patchTargetingTemplates: API.OperationMethod<
   PatchTargetingTemplatesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(546) as any as S.Schema<PatchTargetingTemplatesRequest>,
-  output: __S(303) as any as S.Schema<TargetingTemplate>,
+  input: PatchTargetingTemplatesRequest,
+  output: TargetingTemplate,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10934,8 +13730,8 @@ export const patchUserRoles: API.OperationMethod<
   PatchUserRolesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(547) as any as S.Schema<PatchUserRolesRequest>,
-  output: __S(316) as any as S.Schema<UserRole>,
+  input: PatchUserRolesRequest,
+  output: UserRole,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10955,8 +13751,8 @@ export const publishDynamicProfiles: API.OperationMethod<
   PublishDynamicProfilesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(548) as any as S.Schema<PublishDynamicProfilesRequest>,
-  output: __S(22) as any as S.Schema<PublishDynamicProfilesResponse>,
+  input: PublishDynamicProfilesRequest,
+  output: PublishDynamicProfilesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10976,8 +13772,8 @@ export const publishStudioCreatives: API.OperationMethod<
   PublishStudioCreativesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(549) as any as S.Schema<PublishStudioCreativesRequest>,
-  output: __S(22) as any as S.Schema<PublishStudioCreativesResponse>,
+  input: PublishStudioCreativesRequest,
+  output: PublishStudioCreativesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10998,8 +13794,8 @@ export const queryDimensionValues: API.PaginatedOperationMethod<
   GcpOpContext,
   DimensionValue
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(553) as any as S.Schema<QueryDimensionValuesRequest>,
-  output: __S(554) as any as S.Schema<DimensionValueList>,
+  input: QueryDimensionValuesRequest,
+  output: DimensionValueList,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11020,8 +13816,8 @@ export const queryReportData: API.OperationMethod<
   QueryReportDataError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(558) as any as S.Schema<QueryReportDataRequest>,
-  output: __S(563) as any as S.Schema<ReportDataResponse>,
+  input: QueryReportDataRequest,
+  output: ReportDataResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11041,8 +13837,8 @@ export const queryReportsCompatibleFields: API.OperationMethod<
   QueryReportsCompatibleFieldsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(564) as any as S.Schema<QueryReportsCompatibleFieldsRequest>,
-  output: __S(573) as any as S.Schema<CompatibleFields>,
+  input: QueryReportsCompatibleFieldsRequest,
+  output: CompatibleFields,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11062,8 +13858,8 @@ export const retransformDynamicFeeds: API.OperationMethod<
   RetransformDynamicFeedsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(574) as any as S.Schema<RetransformDynamicFeedsRequest>,
-  output: __S(189) as any as S.Schema<DynamicFeed>,
+  input: RetransformDynamicFeedsRequest,
+  output: DynamicFeed,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11083,8 +13879,8 @@ export const runReports: API.OperationMethod<
   RunReportsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(575) as any as S.Schema<RunReportsRequest>,
-  output: __S(214) as any as S.Schema<File>,
+  input: RunReportsRequest,
+  output: File,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11104,8 +13900,8 @@ export const updateAccounts: API.OperationMethod<
   UpdateAccountsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(576) as any as S.Schema<UpdateAccountsRequest>,
-  output: __S(54) as any as S.Schema<Account>,
+  input: UpdateAccountsRequest,
+  output: Account,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11125,8 +13921,8 @@ export const updateAccountUserProfiles: API.OperationMethod<
   UpdateAccountUserProfilesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(577) as any as S.Schema<UpdateAccountUserProfilesRequest>,
-  output: __S(57) as any as S.Schema<AccountUserProfile>,
+  input: UpdateAccountUserProfilesRequest,
+  output: AccountUserProfile,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11142,8 +13938,8 @@ export type UpdateAdsError =
 /** Updates an existing ad. */
 export const updateAds: API.OperationMethod<UpdateAdsRequest, Ad, UpdateAdsError, GcpOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(578) as any as S.Schema<UpdateAdsRequest>,
-    output: __S(113) as any as S.Schema<Ad>,
+    input: UpdateAdsRequest,
+    output: Ad,
     errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
     protocol: GcpProtocol,
     retry: Retry.Retry,
@@ -11163,8 +13959,8 @@ export const updateAdvertiserGroups: API.OperationMethod<
   UpdateAdvertiserGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(579) as any as S.Schema<UpdateAdvertiserGroupsRequest>,
-  output: __S(115) as any as S.Schema<AdvertiserGroup>,
+  input: UpdateAdvertiserGroupsRequest,
+  output: AdvertiserGroup,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11184,8 +13980,8 @@ export const updateAdvertiserLandingPages: API.OperationMethod<
   UpdateAdvertiserLandingPagesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(580) as any as S.Schema<UpdateAdvertiserLandingPagesRequest>,
-  output: __S(120) as any as S.Schema<LandingPage>,
+  input: UpdateAdvertiserLandingPagesRequest,
+  output: LandingPage,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11205,8 +14001,8 @@ export const updateAdvertisers: API.OperationMethod<
   UpdateAdvertisersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(581) as any as S.Schema<UpdateAdvertisersRequest>,
-  output: __S(123) as any as S.Schema<Advertiser>,
+  input: UpdateAdvertisersRequest,
+  output: Advertiser,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11226,8 +14022,8 @@ export const updateBillingProfiles: API.OperationMethod<
   UpdateBillingProfilesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(582) as any as S.Schema<UpdateBillingProfilesRequest>,
-  output: __S(125) as any as S.Schema<BillingProfile>,
+  input: UpdateBillingProfilesRequest,
+  output: BillingProfile,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11247,8 +14043,8 @@ export const updateCampaigns: API.OperationMethod<
   UpdateCampaignsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(583) as any as S.Schema<UpdateCampaignsRequest>,
-  output: __S(137) as any as S.Schema<Campaign>,
+  input: UpdateCampaignsRequest,
+  output: Campaign,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11268,8 +14064,8 @@ export const updateContentCategories: API.OperationMethod<
   UpdateContentCategoriesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(584) as any as S.Schema<UpdateContentCategoriesRequest>,
-  output: __S(142) as any as S.Schema<ContentCategory>,
+  input: UpdateContentCategoriesRequest,
+  output: ContentCategory,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11289,8 +14085,8 @@ export const updateCreativeFields: API.OperationMethod<
   UpdateCreativeFieldsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(585) as any as S.Schema<UpdateCreativeFieldsRequest>,
-  output: __S(145) as any as S.Schema<CreativeField>,
+  input: UpdateCreativeFieldsRequest,
+  output: CreativeField,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11310,8 +14106,8 @@ export const updateCreativeFieldValues: API.OperationMethod<
   UpdateCreativeFieldValuesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(586) as any as S.Schema<UpdateCreativeFieldValuesRequest>,
-  output: __S(147) as any as S.Schema<CreativeFieldValue>,
+  input: UpdateCreativeFieldValuesRequest,
+  output: CreativeFieldValue,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11331,8 +14127,8 @@ export const updateCreativeGroups: API.OperationMethod<
   UpdateCreativeGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(587) as any as S.Schema<UpdateCreativeGroupsRequest>,
-  output: __S(149) as any as S.Schema<CreativeGroup>,
+  input: UpdateCreativeGroupsRequest,
+  output: CreativeGroup,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11352,8 +14148,8 @@ export const updateCreatives: API.OperationMethod<
   UpdateCreativesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(588) as any as S.Schema<UpdateCreativesRequest>,
-  output: __S(171) as any as S.Schema<Creative>,
+  input: UpdateCreativesRequest,
+  output: Creative,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11373,8 +14169,8 @@ export const updateDynamicFeeds: API.OperationMethod<
   UpdateDynamicFeedsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(589) as any as S.Schema<UpdateDynamicFeedsRequest>,
-  output: __S(189) as any as S.Schema<DynamicFeed>,
+  input: UpdateDynamicFeedsRequest,
+  output: DynamicFeed,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11394,8 +14190,8 @@ export const updateDynamicProfiles: API.OperationMethod<
   UpdateDynamicProfilesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(590) as any as S.Schema<UpdateDynamicProfilesRequest>,
-  output: __S(208) as any as S.Schema<DynamicProfile>,
+  input: UpdateDynamicProfilesRequest,
+  output: DynamicProfile,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11415,8 +14211,8 @@ export const updateEventTags: API.OperationMethod<
   UpdateEventTagsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(591) as any as S.Schema<UpdateEventTagsRequest>,
-  output: __S(210) as any as S.Schema<EventTag>,
+  input: UpdateEventTagsRequest,
+  output: EventTag,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11436,8 +14232,8 @@ export const updateFloodlightActivities: API.OperationMethod<
   UpdateFloodlightActivitiesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(592) as any as S.Schema<UpdateFloodlightActivitiesRequest>,
-  output: __S(220) as any as S.Schema<FloodlightActivity>,
+  input: UpdateFloodlightActivitiesRequest,
+  output: FloodlightActivity,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11457,8 +14253,8 @@ export const updateFloodlightActivityGroups: API.OperationMethod<
   UpdateFloodlightActivityGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(593) as any as S.Schema<UpdateFloodlightActivityGroupsRequest>,
-  output: __S(222) as any as S.Schema<FloodlightActivityGroup>,
+  input: UpdateFloodlightActivityGroupsRequest,
+  output: FloodlightActivityGroup,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11478,8 +14274,8 @@ export const updateFloodlightConfigurations: API.OperationMethod<
   UpdateFloodlightConfigurationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(594) as any as S.Schema<UpdateFloodlightConfigurationsRequest>,
-  output: __S(232) as any as S.Schema<FloodlightConfiguration>,
+  input: UpdateFloodlightConfigurationsRequest,
+  output: FloodlightConfiguration,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11499,8 +14295,8 @@ export const updatePlacementGroups: API.OperationMethod<
   UpdatePlacementGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(595) as any as S.Schema<UpdatePlacementGroupsRequest>,
-  output: __S(241) as any as S.Schema<PlacementGroup>,
+  input: UpdatePlacementGroupsRequest,
+  output: PlacementGroup,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11520,8 +14316,8 @@ export const updatePlacements: API.OperationMethod<
   UpdatePlacementsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(596) as any as S.Schema<UpdatePlacementsRequest>,
-  output: __S(253) as any as S.Schema<Placement>,
+  input: UpdatePlacementsRequest,
+  output: Placement,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11541,8 +14337,8 @@ export const updatePlacementStrategies: API.OperationMethod<
   UpdatePlacementStrategiesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(597) as any as S.Schema<UpdatePlacementStrategiesRequest>,
-  output: __S(255) as any as S.Schema<PlacementStrategy>,
+  input: UpdatePlacementStrategiesRequest,
+  output: PlacementStrategy,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11562,8 +14358,8 @@ export const updateRemarketingLists: API.OperationMethod<
   UpdateRemarketingListsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(598) as any as S.Schema<UpdateRemarketingListsRequest>,
-  output: __S(264) as any as S.Schema<RemarketingList>,
+  input: UpdateRemarketingListsRequest,
+  output: RemarketingList,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11583,8 +14379,8 @@ export const updateRemarketingListShares: API.OperationMethod<
   UpdateRemarketingListSharesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(599) as any as S.Schema<UpdateRemarketingListSharesRequest>,
-  output: __S(266) as any as S.Schema<RemarketingListShare>,
+  input: UpdateRemarketingListSharesRequest,
+  output: RemarketingListShare,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11604,8 +14400,8 @@ export const updateReports: API.OperationMethod<
   UpdateReportsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(600) as any as S.Schema<UpdateReportsRequest>,
-  output: __S(284) as any as S.Schema<Report>,
+  input: UpdateReportsRequest,
+  output: Report,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11625,8 +14421,8 @@ export const updateSites: API.OperationMethod<
   UpdateSitesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(601) as any as S.Schema<UpdateSitesRequest>,
-  output: __S(293) as any as S.Schema<Site>,
+  input: UpdateSitesRequest,
+  output: Site,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11646,8 +14442,8 @@ export const updateSubaccounts: API.OperationMethod<
   UpdateSubaccountsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(602) as any as S.Schema<UpdateSubaccountsRequest>,
-  output: __S(299) as any as S.Schema<Subaccount>,
+  input: UpdateSubaccountsRequest,
+  output: Subaccount,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11667,8 +14463,8 @@ export const updateTargetingTemplates: API.OperationMethod<
   UpdateTargetingTemplatesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(603) as any as S.Schema<UpdateTargetingTemplatesRequest>,
-  output: __S(303) as any as S.Schema<TargetingTemplate>,
+  input: UpdateTargetingTemplatesRequest,
+  output: TargetingTemplate,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11688,8 +14484,8 @@ export const updateUserRoles: API.OperationMethod<
   UpdateUserRolesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(604) as any as S.Schema<UpdateUserRolesRequest>,
-  output: __S(316) as any as S.Schema<UserRole>,
+  input: UpdateUserRolesRequest,
+  output: UserRole,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11709,14 +14505,14 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "CartDataItem" });
     case 2:
-      return S.Array(__S(1));
+      return S.Array(CartDataItem);
     case 3:
       return S.suspend(() =>
         S.Struct({
           merchantFeedLabel: S.optional(S.String),
           merchantId: S.optional(S.String),
           merchantFeedLanguage: S.optional(S.String),
-          items: S.optional(__S(2)),
+          items: S.optional(CartDataItemList),
         }),
       ).annotate({ identifier: "CartData" });
     case 4:
@@ -11734,18 +14530,18 @@ function __c0(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          addressInfo: S.optional(__S(4)),
+          addressInfo: S.optional(OfflineUserAddressInfo),
           hashedPhoneNumber: S.optional(S.String),
           hashedEmail: S.optional(S.String),
         }),
       ).annotate({ identifier: "UserIdentifier" });
     case 6:
-      return S.Array(__S(5));
+      return S.Array(UserIdentifier);
     case 7:
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
-          type: S.optional(S.String),
+          type: S.optional(CustomFloodlightVariableTypeEnum),
           value: S.optional(S.String),
         }),
       ).annotate({ identifier: "CustomFloodlightVariable" });
@@ -11754,28 +14550,28 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(7));
+      return S.Array(CustomFloodlightVariable);
     case 1:
       return S.suspend(() =>
         S.Struct({
           limitAdTracking: S.optional(S.Boolean),
           floodlightActivityId: S.optional(S.String),
-          encryptedUserIdCandidates: S.optional(__S(0)),
+          encryptedUserIdCandidates: S.optional(StringList),
           ordinal: S.optional(S.String),
           floodlightConfigurationId: S.optional(S.String),
-          cartData: S.optional(__S(3)),
+          cartData: S.optional(CartData),
           encryptedUserId: S.optional(S.String),
           sessionAttributesEncoded: S.optional(S.String),
           dclid: S.optional(S.String),
           quantity: S.optional(S.String),
-          userIdentifiers: S.optional(__S(6)),
+          userIdentifiers: S.optional(UserIdentifierList),
           gclid: S.optional(S.String),
           treatmentForUnderage: S.optional(S.Boolean),
           kind: S.optional(S.String),
           nonPersonalizedAd: S.optional(S.Boolean),
-          customVariables: S.optional(__S(8)),
+          customVariables: S.optional(CustomFloodlightVariableList),
           mobileDeviceId: S.optional(S.String),
-          adUserDataConsent: S.optional(S.String),
+          adUserDataConsent: S.optional(ConversionAdUserDataConsentEnum),
           value: S.optional(S.Number),
           childDirectedTreatment: S.optional(S.Boolean),
           matchId: S.optional(S.String),
@@ -11784,22 +14580,22 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "Conversion" });
     case 2:
-      return S.Array(__S(9));
+      return S.Array(Conversion);
     case 3:
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
           encryptionEntityId: S.optional(S.String),
-          encryptionSource: S.optional(S.String),
-          encryptionEntityType: S.optional(S.String),
+          encryptionSource: S.optional(EncryptionInfoEncryptionSourceEnum),
+          encryptionEntityType: S.optional(EncryptionInfoEncryptionEntityTypeEnum),
         }),
       ).annotate({ identifier: "EncryptionInfo" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          conversions: S.optional(__S(10)),
+          conversions: S.optional(ConversionList),
           kind: S.optional(S.String),
-          encryptionInfo: S.optional(__S(11)),
+          encryptionInfo: S.optional(EncryptionInfo),
         }),
       ).annotate({
         identifier: "ConversionsBatchInsertRequest",
@@ -11808,7 +14604,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           profileId: S.String.pipe(T.Label()),
-          body: S.optional(__S(12).pipe(T.HttpBody())),
+          body: S.optional(ConversionsBatchInsertRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -11822,13 +14618,13 @@ function __c1(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          code: S.optional(S.String),
+          code: S.optional(ConversionErrorCodeEnum),
           message: S.optional(S.String),
           kind: S.optional(S.String),
         }),
       ).annotate({ identifier: "ConversionError" });
     case 7:
-      return S.Array(__S(14));
+      return S.Array(ConversionError);
   }
 }
 function __c2(j: number): any {
@@ -11836,19 +14632,19 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          conversion: S.optional(__S(9)),
+          conversion: S.optional(Conversion),
           kind: S.optional(S.String),
-          errors: S.optional(__S(15)),
+          errors: S.optional(ConversionErrorList),
         }),
       ).annotate({ identifier: "ConversionStatus" });
     case 1:
-      return S.Array(__S(16));
+      return S.Array(ConversionStatus);
     case 2:
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
           hasFailures: S.optional(S.Boolean),
-          status: S.optional(__S(17)),
+          status: S.optional(ConversionStatusList),
         }),
       ).annotate({
         identifier: "ConversionsBatchInsertResponse",
@@ -11857,7 +14653,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           profileId: S.String.pipe(T.Label()),
-          body: S.optional(__S(12).pipe(T.HttpBody())),
+          body: S.optional(ConversionsBatchUpdateRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -11872,7 +14668,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           hasFailures: S.optional(S.Boolean),
-          status: S.optional(__S(17)),
+          status: S.optional(ConversionStatusList),
           kind: S.optional(S.String),
         }),
       ).annotate({
@@ -11958,7 +14754,7 @@ function __c3(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          objectType: S.String.pipe(T.Query()),
+          objectType: DeleteDynamicTargetingKeysObjectTypeEnum.pipe(T.Query()),
           profileId: S.String.pipe(T.Label()),
           objectId: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Query()),
@@ -12093,14 +14889,14 @@ function __c4(j: number): any {
         identifier: "FloodlightActivitiesGenerateTagResponse",
       });
     case 6:
-      return S.Array(S.String);
+      return S.Array(GeneratetagsPlacementsTagFormatsEnum);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          tagFormats: S.optional(__S(38).pipe(T.Query())),
+          tagFormats: S.optional(GeneratetagsPlacementsTagFormatsEnumList.pipe(T.Query())),
           "tagProperties.tcfGdprMacrosIncluded": S.optional(S.Boolean.pipe(T.Query())),
           campaignId: S.optional(S.String.pipe(T.Query())),
-          placementIds: S.optional(__S(0).pipe(T.Query())),
+          placementIds: S.optional(StringList.pipe(T.Query())),
           "tagProperties.dcDbmMacroIncluded": S.optional(S.Boolean.pipe(T.Query())),
           profileId: S.String.pipe(T.Label()),
           "tagProperties.gppMacrosIncluded": S.optional(S.Boolean.pipe(T.Query())),
@@ -12122,28 +14918,28 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           clickTag: S.optional(S.String),
-          format: S.optional(S.String),
+          format: S.optional(TagDataFormatEnum),
           creativeId: S.optional(S.String),
           impressionTag: S.optional(S.String),
           adId: S.optional(S.String),
         }),
       ).annotate({ identifier: "TagData" });
     case 1:
-      return S.Array(__S(40));
+      return S.Array(TagData);
     case 2:
       return S.suspend(() =>
         S.Struct({
           placementId: S.optional(S.String),
-          tagDatas: S.optional(__S(41)),
+          tagDatas: S.optional(TagDataList),
         }),
       ).annotate({ identifier: "PlacementTag" });
     case 3:
-      return S.Array(__S(42));
+      return S.Array(PlacementTag);
     case 4:
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
-          placementTags: S.optional(__S(43)),
+          placementTags: S.optional(PlacementTagList),
         }),
       ).annotate({
         identifier: "PlacementsGenerateTagsResponse",
@@ -12168,7 +14964,7 @@ function __c5(j: number): any {
         S.Struct({
           kind: S.optional(S.String),
           availableAds: S.optional(S.String),
-          activeAdsLimitTier: S.optional(S.String),
+          activeAdsLimitTier: S.optional(AccountActiveAdSummaryActiveAdsLimitTierEnum),
           activeAds: S.optional(S.String),
           accountId: S.optional(S.String),
         }),
@@ -12218,10 +15014,10 @@ function __c6(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          level: S.optional(S.String),
+          level: S.optional(AccountPermissionLevelEnum),
           permissionGroupId: S.optional(S.String),
           name: S.optional(S.String),
-          accountProfiles: S.optional(__S(38)),
+          accountProfiles: S.optional(AccountPermissionAccountProfilesItemEnumList),
           id: S.optional(S.String),
           kind: S.optional(S.String),
         }),
@@ -12249,7 +15045,7 @@ function __c6(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          lookbackConfiguration: S.optional(__S(52)),
+          lookbackConfiguration: S.optional(LookbackConfiguration),
           reportGenerationTimeZoneId: S.optional(S.String),
           exposureToConversionEnabled: S.optional(S.Boolean),
         }),
@@ -12259,17 +15055,17 @@ function __c6(j: number): any {
         S.Struct({
           maximumImageSize: S.optional(S.String),
           kind: S.optional(S.String),
-          accountPermissionIds: S.optional(__S(0)),
+          accountPermissionIds: S.optional(StringList),
           currencyId: S.optional(S.String),
-          activeAdsLimitTier: S.optional(S.String),
+          activeAdsLimitTier: S.optional(AccountActiveAdsLimitTierEnum),
           activeViewOptOut: S.optional(S.Boolean),
           locale: S.optional(S.String),
-          reportsConfiguration: S.optional(__S(53)),
+          reportsConfiguration: S.optional(ReportsConfiguration),
           active: S.optional(S.Boolean),
-          availablePermissionIds: S.optional(__S(0)),
+          availablePermissionIds: S.optional(StringList),
           teaserSizeLimit: S.optional(S.String),
           id: S.optional(S.String),
-          accountProfile: S.optional(S.String),
+          accountProfile: S.optional(AccountAccountProfileEnum),
           defaultCreativeSizeId: S.optional(S.String),
           description: S.optional(S.String),
           nielsenOcrEnabled: S.optional(S.Boolean),
@@ -12300,29 +15096,29 @@ function __c7(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(S.String),
-          objectIds: S.optional(__S(0)),
+          status: S.optional(ObjectFilterStatusEnum),
+          objectIds: S.optional(StringList),
           kind: S.optional(S.String),
         }),
       ).annotate({ identifier: "ObjectFilter" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          siteFilter: S.optional(__S(56)),
+          siteFilter: S.optional(ObjectFilter),
           email: S.optional(S.String),
           comments: S.optional(S.String),
           name: S.optional(S.String),
           locale: S.optional(S.String),
-          advertiserFilter: S.optional(__S(56)),
+          advertiserFilter: S.optional(ObjectFilter),
           active: S.optional(S.Boolean),
-          traffickerType: S.optional(S.String),
+          traffickerType: S.optional(AccountUserProfileTraffickerTypeEnum),
           id: S.optional(S.String),
           kind: S.optional(S.String),
-          campaignFilter: S.optional(__S(56)),
+          campaignFilter: S.optional(ObjectFilter),
           subaccountId: S.optional(S.String),
           userRoleId: S.optional(S.String),
-          userRoleFilter: S.optional(__S(56)),
-          userAccessType: S.optional(S.String),
+          userRoleFilter: S.optional(ObjectFilter),
+          userAccessType: S.optional(AccountUserProfileUserAccessTypeEnum),
           accountId: S.optional(S.String),
         }),
       ).annotate({ identifier: "AccountUserProfile" });
@@ -12342,12 +15138,12 @@ function __c7(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          creativeGroupNumber: S.optional(S.String),
+          creativeGroupNumber: S.optional(CreativeGroupAssignmentCreativeGroupNumberEnum),
           creativeGroupId: S.optional(S.String),
         }),
       ).annotate({ identifier: "CreativeGroupAssignment" });
     case 4:
-      return S.Array(__S(59));
+      return S.Array(CreativeGroupAssignment);
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -12379,7 +15175,7 @@ function __c7(j: number): any {
 function __c8(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(63));
+      return S.Array(EventTagOverride);
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -12388,7 +15184,7 @@ function __c8(j: number): any {
           value: S.optional(S.String),
           kind: S.optional(S.String),
           etag: S.optional(S.String),
-          matchType: S.optional(S.String),
+          matchType: S.optional(DimensionValueMatchTypeEnum),
         }),
       ).annotate({ identifier: "DimensionValue" });
     case 2:
@@ -12402,9 +15198,9 @@ function __c8(j: number): any {
         }),
       ).annotate({ identifier: "MobileCarrier" });
     case 3:
-      return S.Array(__S(66));
+      return S.Array(MobileCarrier);
     case 4:
-      return S.Array(__S(48));
+      return S.Array(PlatformType);
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -12414,7 +15210,7 @@ function __c8(j: number): any {
         }),
       ).annotate({ identifier: "ConnectionType" });
     case 6:
-      return S.Array(__S(69));
+      return S.Array(ConnectionType);
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -12431,7 +15227,7 @@ function __c8(j: number): any {
 function __c9(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(71));
+      return S.Array(Browser);
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -12446,7 +15242,7 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
-          operatingSystem: S.optional(__S(73)),
+          operatingSystem: S.optional(OperatingSystem),
           name: S.optional(S.String),
           minorVersion: S.optional(S.String),
           id: S.optional(S.String),
@@ -12454,18 +15250,18 @@ function __c9(j: number): any {
         }),
       ).annotate({ identifier: "OperatingSystemVersion" });
     case 3:
-      return S.Array(__S(74));
+      return S.Array(OperatingSystemVersion);
     case 4:
-      return S.Array(__S(73));
+      return S.Array(OperatingSystem);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          mobileCarriers: S.optional(__S(67)),
-          platformTypes: S.optional(__S(68)),
-          connectionTypes: S.optional(__S(70)),
-          browsers: S.optional(__S(72)),
-          operatingSystemVersions: S.optional(__S(75)),
-          operatingSystems: S.optional(__S(76)),
+          mobileCarriers: S.optional(MobileCarrierList),
+          platformTypes: S.optional(PlatformTypeList),
+          connectionTypes: S.optional(ConnectionTypeList),
+          browsers: S.optional(BrowserList),
+          operatingSystemVersions: S.optional(OperatingSystemVersionList),
+          operatingSystems: S.optional(OperatingSystemList),
         }),
       ).annotate({ identifier: "TechnologyTargeting" });
     case 6:
@@ -12478,7 +15274,7 @@ function __c9(j: number): any {
         }),
       ).annotate({ identifier: "Language" });
     case 7:
-      return S.Array(__S(78));
+      return S.Array(Language);
   }
 }
 function __c10(j: number): any {
@@ -12486,7 +15282,7 @@ function __c10(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          languages: S.optional(__S(79)),
+          languages: S.optional(LanguageList),
         }),
       ).annotate({ identifier: "LanguageTargeting" });
     case 1:
@@ -12503,42 +15299,42 @@ function __c10(j: number): any {
         S.Struct({
           enabled: S.optional(S.Boolean),
           exitId: S.optional(S.String),
-          clickThroughUrl: S.optional(__S(81)),
+          clickThroughUrl: S.optional(ClickThroughUrl),
         }),
       ).annotate({ identifier: "RichMediaExitOverride" });
     case 3:
-      return S.Array(__S(82));
+      return S.Array(RichMediaExitOverride);
     case 4:
       return S.suspend(() =>
         S.Struct({
           creativeId: S.optional(S.String),
-          clickThroughUrl: S.optional(__S(81)),
+          clickThroughUrl: S.optional(ClickThroughUrl),
         }),
       ).annotate({
         identifier: "CompanionClickThroughOverride",
       });
     case 5:
-      return S.Array(__S(84));
+      return S.Array(CompanionClickThroughOverride);
     case 6:
       return S.suspend(() =>
         S.Struct({
           applyEventTags: S.optional(S.Boolean),
-          richMediaExitOverrides: S.optional(__S(83)),
-          creativeGroupAssignments: S.optional(__S(60)),
+          richMediaExitOverrides: S.optional(RichMediaExitOverrideList),
+          creativeGroupAssignments: S.optional(CreativeGroupAssignmentList),
           weight: S.optional(S.Number),
-          creativeIdDimensionValue: S.optional(__S(65)),
+          creativeIdDimensionValue: S.optional(DimensionValue),
           sequence: S.optional(S.Number),
           active: S.optional(S.Boolean),
-          clickThroughUrl: S.optional(__S(81)),
+          clickThroughUrl: S.optional(ClickThroughUrl),
           endTime: S.optional(S.String),
           sslCompliant: S.optional(S.Boolean),
-          companionCreativeOverrides: S.optional(__S(85)),
+          companionCreativeOverrides: S.optional(CompanionClickThroughOverrideList),
           startTime: S.optional(S.String),
           creativeId: S.optional(S.String),
         }),
       ).annotate({ identifier: "CreativeAssignment" });
     case 7:
-      return S.Array(__S(86));
+      return S.Array(CreativeAssignment);
   }
 }
 function __c11(j: number): any {
@@ -12546,10 +15342,10 @@ function __c11(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(S.String),
+          type: S.optional(CreativeRotationTypeEnum),
           creativeOptimizationConfigurationId: S.optional(S.String),
-          weightCalculationStrategy: S.optional(S.String),
-          creativeAssignments: S.optional(__S(87)),
+          weightCalculationStrategy: S.optional(CreativeRotationWeightCalculationStrategyEnum),
+          creativeAssignments: S.optional(CreativeAssignmentList),
         }),
       ).annotate({ identifier: "CreativeRotation" });
     case 1:
@@ -12568,10 +15364,10 @@ function __c11(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          frequencyCap: S.optional(__S(90)),
+          frequencyCap: S.optional(FrequencyCap),
           hardCutoff: S.optional(S.Boolean),
           impressionRatio: S.optional(S.String),
-          priority: S.optional(S.String),
+          priority: S.optional(DeliverySchedulePriorityEnum),
         }),
       ).annotate({ identifier: "DeliverySchedule" });
     case 4:
@@ -12590,11 +15386,11 @@ function __c11(j: number): any {
         }),
       ).annotate({ identifier: "ContextualKeyword" });
     case 6:
-      return S.Array(__S(93));
+      return S.Array(ContextualKeyword);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          keywords: S.optional(__S(94)),
+          keywords: S.optional(ContextualKeywordList),
         }),
       ).annotate({
         identifier: "ContextualKeywordTargeting",
@@ -12608,8 +15404,8 @@ function __c12(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          daysOfWeek: S.optional(__S(38)),
-          hoursOfDay: S.optional(__S(96)),
+          daysOfWeek: S.optional(DayPartTargetingDaysOfWeekItemEnumList),
+          hoursOfDay: S.optional(IntegerList),
           userLocalTime: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "DayPartTargeting" });
@@ -12625,11 +15421,11 @@ function __c12(j: number): any {
           placementId: S.optional(S.String),
           active: S.optional(S.Boolean),
           sslRequired: S.optional(S.Boolean),
-          placementIdDimensionValue: S.optional(__S(65)),
+          placementIdDimensionValue: S.optional(DimensionValue),
         }),
       ).annotate({ identifier: "PlacementAssignment" });
     case 4:
-      return S.Array(__S(99));
+      return S.Array(PlacementAssignment);
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -12653,7 +15449,7 @@ function __c12(j: number): any {
         }),
       ).annotate({ identifier: "City" });
     case 7:
-      return S.Array(__S(102));
+      return S.Array(City);
   }
 }
 function __c13(j: number): any {
@@ -12671,7 +15467,7 @@ function __c13(j: number): any {
         }),
       ).annotate({ identifier: "Metro" });
     case 1:
-      return S.Array(__S(104));
+      return S.Array(Metro);
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -12679,12 +15475,12 @@ function __c13(j: number): any {
           name: S.optional(S.String),
           sslEnabled: S.optional(S.Boolean),
           dartId: S.optional(S.String),
-          tvDataProviders: S.optional(__S(38)),
+          tvDataProviders: S.optional(CountryTvDataProvidersItemEnumList),
           countryCode: S.optional(S.String),
         }),
       ).annotate({ identifier: "Country" });
     case 3:
-      return S.Array(__S(106));
+      return S.Array(Country);
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -12696,7 +15492,7 @@ function __c13(j: number): any {
         }),
       ).annotate({ identifier: "PostalCode" });
     case 5:
-      return S.Array(__S(108));
+      return S.Array(PostalCode);
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -12709,7 +15505,7 @@ function __c13(j: number): any {
         }),
       ).annotate({ identifier: "Region" });
     case 7:
-      return S.Array(__S(110));
+      return S.Array(Region);
   }
 }
 function __c14(j: number): any {
@@ -12717,54 +15513,54 @@ function __c14(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          cities: S.optional(__S(103)),
-          metros: S.optional(__S(105)),
-          countries: S.optional(__S(107)),
-          postalCodes: S.optional(__S(109)),
+          cities: S.optional(CityList),
+          metros: S.optional(MetroList),
+          countries: S.optional(CountryList),
+          postalCodes: S.optional(PostalCodeList),
           excludeCountries: S.optional(S.Boolean),
-          regions: S.optional(__S(111)),
+          regions: S.optional(RegionList),
         }),
       ).annotate({ identifier: "GeoTargeting" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          compatibility: S.optional(S.String),
-          type: S.optional(S.String),
+          compatibility: S.optional(AdCompatibilityEnum),
+          type: S.optional(AdTypeEnum),
           subaccountId: S.optional(S.String),
-          creativeGroupAssignments: S.optional(__S(60)),
-          size: S.optional(__S(61)),
+          creativeGroupAssignments: S.optional(CreativeGroupAssignmentList),
+          size: S.optional(Size),
           audienceSegmentId: S.optional(S.String),
-          clickThroughUrlSuffixProperties: S.optional(__S(62)),
-          eventTagOverrides: S.optional(__S(64)),
+          clickThroughUrlSuffixProperties: S.optional(ClickThroughUrlSuffixProperties),
+          eventTagOverrides: S.optional(EventTagOverrideList),
           campaignId: S.optional(S.String),
-          idDimensionValue: S.optional(__S(65)),
+          idDimensionValue: S.optional(DimensionValue),
           sslRequired: S.optional(S.Boolean),
           id: S.optional(S.String),
-          technologyTargeting: S.optional(__S(77)),
+          technologyTargeting: S.optional(TechnologyTargeting),
           accountId: S.optional(S.String),
-          languageTargeting: S.optional(__S(80)),
-          creativeRotation: S.optional(__S(88)),
+          languageTargeting: S.optional(LanguageTargeting),
+          creativeRotation: S.optional(CreativeRotation),
           endTime: S.optional(S.String),
-          createInfo: S.optional(__S(89)),
-          deliverySchedule: S.optional(__S(91)),
-          advertiserIdDimensionValue: S.optional(__S(65)),
-          defaultClickThroughEventTagProperties: S.optional(__S(92)),
-          clickThroughUrl: S.optional(__S(81)),
+          createInfo: S.optional(LastModifiedInfo),
+          deliverySchedule: S.optional(DeliverySchedule),
+          advertiserIdDimensionValue: S.optional(DimensionValue),
+          defaultClickThroughEventTagProperties: S.optional(DefaultClickThroughEventTagProperties),
+          clickThroughUrl: S.optional(ClickThroughUrl),
           name: S.optional(S.String),
-          contextualKeywordTargeting: S.optional(__S(95)),
-          dayPartTargeting: S.optional(__S(97)),
+          contextualKeywordTargeting: S.optional(ContextualKeywordTargeting),
+          dayPartTargeting: S.optional(DayPartTargeting),
           dynamicClickTracker: S.optional(S.Boolean),
-          remarketingListExpression: S.optional(__S(98)),
-          placementAssignments: S.optional(__S(100)),
+          remarketingListExpression: S.optional(ListTargetingExpression),
+          placementAssignments: S.optional(PlacementAssignmentList),
           targetingTemplateId: S.optional(S.String),
           startTime: S.optional(S.String),
           sslCompliant: S.optional(S.Boolean),
           comments: S.optional(S.String),
-          keyValueTargetingExpression: S.optional(__S(101)),
-          campaignIdDimensionValue: S.optional(__S(65)),
+          keyValueTargetingExpression: S.optional(KeyValueTargetingExpression),
+          campaignIdDimensionValue: S.optional(DimensionValue),
           archived: S.optional(S.Boolean),
-          geoTargeting: S.optional(__S(112)),
-          lastModifiedInfo: S.optional(__S(89)),
+          geoTargeting: S.optional(GeoTargeting),
+          lastModifiedInfo: S.optional(LastModifiedInfo),
           kind: S.optional(S.String),
           advertiserId: S.optional(S.String),
           active: S.optional(S.Boolean),
@@ -12815,7 +15611,7 @@ function __c14(j: number): any {
           title: S.optional(S.String),
           publisherName: S.optional(S.String),
           kind: S.optional(S.String),
-          directory: S.optional(S.String),
+          directory: S.optional(MobileAppDirectoryEnum),
           id: S.optional(S.String),
         }),
       ).annotate({ identifier: "MobileApp" });
@@ -12823,14 +15619,14 @@ function __c14(j: number): any {
       return S.suspend(() =>
         S.Struct({
           appUrl: S.optional(S.String),
-          mobileApp: S.optional(__S(117)),
-          remarketingListIds: S.optional(__S(0)),
+          mobileApp: S.optional(MobileApp),
+          remarketingListIds: S.optional(StringList),
           kind: S.optional(S.String),
           fallbackUrl: S.optional(S.String),
         }),
       ).annotate({ identifier: "DeepLink" });
     case 7:
-      return S.Array(__S(118));
+      return S.Array(DeepLink);
   }
 }
 function __c15(j: number): any {
@@ -12843,7 +15639,7 @@ function __c15(j: number): any {
           archived: S.optional(S.Boolean),
           name: S.optional(S.String),
           id: S.optional(S.String),
-          deepLinks: S.optional(__S(119)),
+          deepLinks: S.optional(DeepLinkList),
           advertiserId: S.optional(S.String),
         }),
       ).annotate({ identifier: "LandingPage" });
@@ -12864,8 +15660,8 @@ function __c15(j: number): any {
       return S.suspend(() =>
         S.Struct({
           partnerAdvertiserId: S.optional(S.String),
-          measurementPartner: S.optional(S.String),
-          linkStatus: S.optional(S.String),
+          measurementPartner: S.optional(MeasurementPartnerAdvertiserLinkMeasurementPartnerEnum),
+          linkStatus: S.optional(MeasurementPartnerAdvertiserLinkLinkStatusEnum),
         }),
       ).annotate({
         identifier: "MeasurementPartnerAdvertiserLink",
@@ -12876,20 +15672,20 @@ function __c15(j: number): any {
           suspended: S.optional(S.Boolean),
           accountId: S.optional(S.String),
           name: S.optional(S.String),
-          idDimensionValue: S.optional(__S(65)),
+          idDimensionValue: S.optional(DimensionValue),
           id: S.optional(S.String),
-          status: S.optional(S.String),
+          status: S.optional(AdvertiserStatusEnum),
           floodlightConfigurationId: S.optional(S.String),
           clickThroughUrlSuffix: S.optional(S.String),
-          euPoliticalAdsDeclaration: S.optional(S.String),
+          euPoliticalAdsDeclaration: S.optional(AdvertiserEuPoliticalAdsDeclarationEnum),
           kind: S.optional(S.String),
-          floodlightConfigurationIdDimensionValue: S.optional(__S(65)),
+          floodlightConfigurationIdDimensionValue: S.optional(DimensionValue),
           advertiserGroupId: S.optional(S.String),
           defaultClickThroughEventTagId: S.optional(S.String),
           defaultEmail: S.optional(S.String),
           originalFloodlightConfigurationId: S.optional(S.String),
           subaccountId: S.optional(S.String),
-          measurementPartnerLink: S.optional(__S(122)),
+          measurementPartnerLink: S.optional(MeasurementPartnerAdvertiserLink),
         }),
       ).annotate({ identifier: "Advertiser" });
     case 4:
@@ -12912,7 +15708,7 @@ function __c15(j: number): any {
         S.Struct({
           paymentsCustomerId: S.optional(S.String),
           consolidatedInvoice: S.optional(S.Boolean),
-          invoiceLevel: S.optional(S.String),
+          invoiceLevel: S.optional(BillingProfileInvoiceLevelEnum),
           purchaseOrder: S.optional(S.String),
           kind: S.optional(S.String),
           currencyCode: S.optional(S.String),
@@ -12922,7 +15718,7 @@ function __c15(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           paymentsAccountId: S.optional(S.String),
-          status: S.optional(S.String),
+          status: S.optional(BillingProfileStatusEnum),
         }),
       ).annotate({ identifier: "BillingProfile" });
     case 6:
@@ -12942,7 +15738,7 @@ function __c15(j: number): any {
       return S.suspend(() =>
         S.Struct({
           floodlightActivityId: S.optional(S.String),
-          floodlightActivityIdDimensionValue: S.optional(__S(65)),
+          floodlightActivityIdDimensionValue: S.optional(DimensionValue),
           weight: S.optional(S.Number),
         }),
       ).annotate({ identifier: "OptimizationActivity" });
@@ -12951,20 +15747,20 @@ function __c15(j: number): any {
 function __c16(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(127));
+      return S.Array(OptimizationActivity);
     case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          optimizationModel: S.optional(S.String),
-          optimizationActivitys: S.optional(__S(128)),
+          optimizationModel: S.optional(CreativeOptimizationConfigurationOptimizationModelEnum),
+          optimizationActivitys: S.optional(OptimizationActivityList),
           id: S.optional(S.String),
         }),
       ).annotate({
         identifier: "CreativeOptimizationConfiguration",
       });
     case 2:
-      return S.Array(__S(129));
+      return S.Array(CreativeOptimizationConfiguration);
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -12974,22 +15770,22 @@ function __c16(j: number): any {
         }),
       ).annotate({ identifier: "AudienceSegment" });
     case 4:
-      return S.Array(__S(131));
+      return S.Array(AudienceSegment);
     case 5:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
-          audienceSegments: S.optional(__S(132)),
+          audienceSegments: S.optional(AudienceSegmentList),
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "AudienceSegmentGroup" });
     case 6:
-      return S.Array(__S(133));
+      return S.Array(AudienceSegmentGroup);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          measurementPartner: S.optional(S.String),
-          linkStatus: S.optional(S.String),
+          measurementPartner: S.optional(MeasurementPartnerCampaignLinkMeasurementPartnerEnum),
+          linkStatus: S.optional(MeasurementPartnerCampaignLinkLinkStatusEnum),
           partnerCampaignId: S.optional(S.String),
         }),
       ).annotate({
@@ -13009,28 +15805,30 @@ function __c17(j: number): any {
       return S.suspend(() =>
         S.Struct({
           startDate: S.optional(S.String),
-          lastModifiedInfo: S.optional(__S(89)),
+          lastModifiedInfo: S.optional(LastModifiedInfo),
           accountId: S.optional(S.String),
-          advertiserIdDimensionValue: S.optional(__S(65)),
+          advertiserIdDimensionValue: S.optional(DimensionValue),
           subaccountId: S.optional(S.String),
-          clickThroughUrlSuffixProperties: S.optional(__S(62)),
+          clickThroughUrlSuffixProperties: S.optional(ClickThroughUrlSuffixProperties),
           comment: S.optional(S.String),
-          createInfo: S.optional(__S(89)),
+          createInfo: S.optional(LastModifiedInfo),
           endDate: S.optional(S.String),
           billingInvoiceCode: S.optional(S.String),
-          additionalCreativeOptimizationConfigurations: S.optional(__S(130)),
-          defaultClickThroughEventTagProperties: S.optional(__S(92)),
-          euPoliticalAdsDeclaration: S.optional(S.String),
-          audienceSegmentGroups: S.optional(__S(134)),
-          creativeGroupIds: S.optional(__S(0)),
-          measurementPartnerLink: S.optional(__S(135)),
+          additionalCreativeOptimizationConfigurations: S.optional(
+            CreativeOptimizationConfigurationList,
+          ),
+          defaultClickThroughEventTagProperties: S.optional(DefaultClickThroughEventTagProperties),
+          euPoliticalAdsDeclaration: S.optional(CampaignEuPoliticalAdsDeclarationEnum),
+          audienceSegmentGroups: S.optional(AudienceSegmentGroupList),
+          creativeGroupIds: S.optional(StringList),
+          measurementPartnerLink: S.optional(MeasurementPartnerCampaignLink),
           externalId: S.optional(S.String),
-          eventTagOverrides: S.optional(__S(64)),
+          eventTagOverrides: S.optional(EventTagOverrideList),
           name: S.optional(S.String),
-          creativeOptimizationConfiguration: S.optional(__S(129)),
+          creativeOptimizationConfiguration: S.optional(CreativeOptimizationConfiguration),
           id: S.optional(S.String),
-          idDimensionValue: S.optional(__S(65)),
-          adBlockingConfiguration: S.optional(__S(136)),
+          idDimensionValue: S.optional(DimensionValue),
+          adBlockingConfiguration: S.optional(AdBlockingConfiguration),
           advertiserId: S.optional(S.String),
           kind: S.optional(S.String),
           advertiserGroupId: S.optional(S.String),
@@ -13142,7 +15940,7 @@ function __c18(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          advertiserIdDimensionValue: S.optional(__S(65)),
+          advertiserIdDimensionValue: S.optional(DimensionValue),
           id: S.optional(S.String),
           subaccountId: S.optional(S.String),
           advertiserId: S.optional(S.String),
@@ -13193,7 +15991,7 @@ function __c18(j: number): any {
         S.Struct({
           advertiserId: S.optional(S.String),
           groupNumber: S.optional(S.Number),
-          advertiserIdDimensionValue: S.optional(__S(65)),
+          advertiserIdDimensionValue: S.optional(DimensionValue),
           id: S.optional(S.String),
           name: S.optional(S.String),
           accountId: S.optional(S.String),
@@ -13228,17 +16026,17 @@ function __c19(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          thirdPartyUrlType: S.optional(S.String),
+          thirdPartyUrlType: S.optional(ThirdPartyTrackingUrlThirdPartyUrlTypeEnum),
           url: S.optional(S.String),
         }),
       ).annotate({ identifier: "ThirdPartyTrackingUrl" });
     case 1:
-      return S.Array(__S(152));
+      return S.Array(ThirdPartyTrackingUrl);
     case 2:
       return S.suspend(() =>
         S.Struct({
           value: S.optional(S.String),
-          registry: S.optional(S.String),
+          registry: S.optional(UniversalAdIdRegistryEnum),
         }),
       ).annotate({ identifier: "UniversalAdId" });
     case 3:
@@ -13260,13 +16058,13 @@ function __c19(j: number): any {
       return S.suspend(() =>
         S.Struct({
           showAddressBar: S.optional(S.Boolean),
-          dimension: S.optional(__S(61)),
+          dimension: S.optional(Size),
           showMenuBar: S.optional(S.Boolean),
           showScrollBar: S.optional(S.Boolean),
-          positionType: S.optional(S.String),
+          positionType: S.optional(PopupWindowPropertiesPositionTypeEnum),
           showToolBar: S.optional(S.Boolean),
           title: S.optional(S.String),
-          offset: S.optional(__S(156)),
+          offset: S.optional(OffsetPosition),
           showStatusBar: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "PopupWindowProperties" });
@@ -13274,19 +16072,19 @@ function __c19(j: number): any {
       return S.suspend(() =>
         S.Struct({
           artworkLabel: S.optional(S.String),
-          exitClickThroughUrl: S.optional(__S(155)),
-          advertiserCustomEventType: S.optional(S.String),
+          exitClickThroughUrl: S.optional(CreativeClickThroughUrl),
+          advertiserCustomEventType: S.optional(CreativeCustomEventAdvertiserCustomEventTypeEnum),
           advertiserCustomEventName: S.optional(S.String),
-          artworkType: S.optional(S.String),
-          popupWindowProperties: S.optional(__S(157)),
+          artworkType: S.optional(CreativeCustomEventArtworkTypeEnum),
+          popupWindowProperties: S.optional(PopupWindowProperties),
           advertiserCustomEventId: S.optional(S.String),
           videoReportingId: S.optional(S.String),
-          targetType: S.optional(S.String),
+          targetType: S.optional(CreativeCustomEventTargetTypeEnum),
           id: S.optional(S.String),
         }),
       ).annotate({ identifier: "CreativeCustomEvent" });
     case 7:
-      return S.Array(__S(158));
+      return S.Array(CreativeCustomEvent);
   }
 }
 function __c20(j: number): any {
@@ -13296,11 +16094,11 @@ function __c20(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           eventName: S.optional(S.String),
-          clickThroughUrl: S.optional(__S(155)),
+          clickThroughUrl: S.optional(CreativeClickThroughUrl),
         }),
       ).annotate({ identifier: "ClickTag" });
     case 1:
-      return S.Array(__S(160));
+      return S.Array(ClickTag);
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -13309,16 +16107,16 @@ function __c20(j: number): any {
         }),
       ).annotate({ identifier: "CreativeFieldAssignment" });
     case 3:
-      return S.Array(__S(162));
+      return S.Array(CreativeFieldAssignment);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          targetWindowOption: S.optional(S.String),
+          targetWindowOption: S.optional(TargetWindowTargetWindowOptionEnum),
           customHtml: S.optional(S.String),
         }),
       ).annotate({ identifier: "TargetWindow" });
     case 5:
-      return S.Array(__S(61));
+      return S.Array(Size);
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -13326,7 +16124,7 @@ function __c20(j: number): any {
           iconViewTrackingUrl: S.optional(S.String),
           yPosition: S.optional(S.String),
           iconClickThroughUrl: S.optional(S.String),
-          size: S.optional(__S(61)),
+          size: S.optional(Size),
           resourceUrl: S.optional(S.String),
           program: S.optional(S.String),
           iconClickTrackingUrl: S.optional(S.String),
@@ -13337,7 +16135,7 @@ function __c20(j: number): any {
         S.Struct({
           top: S.optional(S.Number),
           left: S.optional(S.Number),
-          positionOption: S.optional(S.String),
+          positionOption: S.optional(FsCommandPositionOptionEnum),
           windowWidth: S.optional(S.Number),
           windowHeight: S.optional(S.Number),
         }),
@@ -13349,7 +16147,7 @@ function __c21(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(S.String),
+          type: S.optional(CreativeAssetIdTypeEnum),
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "CreativeAssetId" });
@@ -13362,117 +16160,119 @@ function __c21(j: number): any {
           zipFilesize: S.optional(S.String),
           hideFlashObjects: S.optional(S.Boolean),
           pushdown: S.optional(S.Boolean),
-          orientation: S.optional(S.String),
+          orientation: S.optional(CreativeAssetOrientationEnum),
           originalBackup: S.optional(S.Boolean),
-          alignment: S.optional(S.String),
+          alignment: S.optional(CreativeAssetAlignmentEnum),
           zIndex: S.optional(S.Number),
-          windowMode: S.optional(S.String),
+          windowMode: S.optional(CreativeAssetWindowModeEnum),
           audioSampleRate: S.optional(S.Number),
-          size: S.optional(__S(61)),
+          size: S.optional(Size),
           flashVersion: S.optional(S.Number),
-          idDimensionValue: S.optional(__S(65)),
-          position: S.optional(__S(156)),
+          idDimensionValue: S.optional(DimensionValue),
+          position: S.optional(OffsetPosition),
           bitRate: S.optional(S.Number),
           frameRate: S.optional(S.Number),
           verticallyLocked: S.optional(S.Boolean),
           active: S.optional(S.Boolean),
-          backupImageExit: S.optional(__S(158)),
-          childAssetType: S.optional(S.String),
-          positionTopUnit: S.optional(S.String),
+          backupImageExit: S.optional(CreativeCustomEvent),
+          childAssetType: S.optional(CreativeAssetChildAssetTypeEnum),
+          positionTopUnit: S.optional(CreativeAssetPositionTopUnitEnum),
           fileSize: S.optional(S.String),
           sslCompliant: S.optional(S.Boolean),
-          assetIdentifier: S.optional(__S(168)),
+          assetIdentifier: S.optional(CreativeAssetId),
           audioBitRate: S.optional(S.Number),
-          companionCreativeIds: S.optional(__S(0)),
+          companionCreativeIds: S.optional(StringList),
           id: S.optional(S.String),
           mediaDuration: S.optional(S.Number),
           mimeType: S.optional(S.String),
-          detectedFeatures: S.optional(__S(38)),
-          displayType: S.optional(S.String),
-          offset: S.optional(__S(156)),
+          detectedFeatures: S.optional(CreativeAssetDetectedFeaturesItemEnumList),
+          displayType: S.optional(CreativeAssetDisplayTypeEnum),
+          offset: S.optional(OffsetPosition),
           customStartTimeValue: S.optional(S.Number),
           streamingServingUrl: S.optional(S.String),
           zipFilename: S.optional(S.String),
           progressiveServingUrl: S.optional(S.String),
-          expandedDimension: S.optional(__S(61)),
-          artworkType: S.optional(S.String),
-          startTimeType: S.optional(S.String),
-          role: S.optional(S.String),
-          positionLeftUnit: S.optional(S.String),
+          expandedDimension: S.optional(Size),
+          artworkType: S.optional(CreativeAssetArtworkTypeEnum),
+          startTimeType: S.optional(CreativeAssetStartTimeTypeEnum),
+          role: S.optional(CreativeAssetRoleEnum),
+          positionLeftUnit: S.optional(CreativeAssetPositionLeftUnitEnum),
           pushdownDuration: S.optional(S.Number),
           politeLoad: S.optional(S.Boolean),
-          additionalSizes: S.optional(__S(165)),
+          additionalSizes: S.optional(SizeList),
           hideSelectionBoxes: S.optional(S.Boolean),
           transparency: S.optional(S.Boolean),
-          durationType: S.optional(S.String),
-          collapsedSize: S.optional(__S(61)),
+          durationType: S.optional(CreativeAssetDurationTypeEnum),
+          collapsedSize: S.optional(Size),
         }),
       ).annotate({ identifier: "CreativeAsset" });
     case 2:
-      return S.Array(__S(169));
+      return S.Array(CreativeAsset);
     case 3:
       return S.suspend(() =>
         S.Struct({
           subaccountId: S.optional(S.String),
-          progressOffset: S.optional(__S(151)),
-          compatibility: S.optional(__S(38)),
+          progressOffset: S.optional(VideoOffset),
+          compatibility: S.optional(CreativeCompatibilityItemEnumList),
           commercialId: S.optional(S.String),
           renderingId: S.optional(S.String),
           archived: S.optional(S.Boolean),
           backgroundColor: S.optional(S.String),
           autoAdvanceImages: S.optional(S.Boolean),
           skippable: S.optional(S.Boolean),
-          thirdPartyUrls: S.optional(__S(153)),
+          thirdPartyUrls: S.optional(ThirdPartyTrackingUrlList),
           sslOverride: S.optional(S.Boolean),
-          universalAdId: S.optional(__S(154)),
+          universalAdId: S.optional(UniversalAdId),
           id: S.optional(S.String),
-          size: S.optional(__S(61)),
-          timerCustomEvents: S.optional(__S(159)),
+          size: S.optional(Size),
+          timerCustomEvents: S.optional(CreativeCustomEventList),
           adParameters: S.optional(S.String),
-          artworkType: S.optional(S.String),
-          clickTags: S.optional(__S(161)),
-          syntheticContentAttestationStatus: S.optional(S.String),
+          artworkType: S.optional(CreativeArtworkTypeEnum),
+          clickTags: S.optional(ClickTagList),
+          syntheticContentAttestationStatus: S.optional(
+            CreativeSyntheticContentAttestationStatusEnum,
+          ),
           studioCreativeId: S.optional(S.String),
           thirdPartyBackupImageImpressionsUrl: S.optional(S.String),
           redirectUrl: S.optional(S.String),
-          customKeyValues: S.optional(__S(0)),
+          customKeyValues: S.optional(StringList),
           name: S.optional(S.String),
           version: S.optional(S.Number),
           thirdPartyRichMediaImpressionsUrl: S.optional(S.String),
           latestTraffickedCreativeId: S.optional(S.String),
-          creativeFieldAssignments: S.optional(__S(163)),
+          creativeFieldAssignments: S.optional(CreativeFieldAssignmentList),
           requiredFlashPluginVersion: S.optional(S.String),
-          renderingIdDimensionValue: S.optional(__S(65)),
+          renderingIdDimensionValue: S.optional(DimensionValue),
           htmlCode: S.optional(S.String),
           active: S.optional(S.Boolean),
-          backupImageFeatures: S.optional(__S(38)),
+          backupImageFeatures: S.optional(CreativeBackupImageFeaturesItemEnumList),
           overrideCss: S.optional(S.String),
-          backupImageTargetWindow: S.optional(__S(164)),
-          additionalSizes: S.optional(__S(165)),
-          idDimensionValue: S.optional(__S(65)),
-          companionCreatives: S.optional(__S(0)),
+          backupImageTargetWindow: S.optional(TargetWindow),
+          additionalSizes: S.optional(SizeList),
+          idDimensionValue: S.optional(DimensionValue),
+          companionCreatives: S.optional(StringList),
           mediaDescription: S.optional(S.String),
-          obaIcon: S.optional(__S(166)),
-          type: S.optional(S.String),
-          authoringSource: S.optional(S.String),
-          authoringTool: S.optional(S.String),
-          adTagKeys: S.optional(__S(0)),
-          backupImageClickThroughUrl: S.optional(__S(155)),
+          obaIcon: S.optional(ObaIcon),
+          type: S.optional(CreativeTypeEnum),
+          authoringSource: S.optional(CreativeAuthoringSourceEnum),
+          authoringTool: S.optional(CreativeAuthoringToolEnum),
+          adTagKeys: S.optional(StringList),
+          backupImageClickThroughUrl: S.optional(CreativeClickThroughUrl),
           totalFileSize: S.optional(S.String),
-          fsCommand: S.optional(__S(167)),
+          fsCommand: S.optional(FsCommand),
           studioAdvertiserId: S.optional(S.String),
           studioTraffickedCreativeId: S.optional(S.String),
           htmlCodeLocked: S.optional(S.Boolean),
-          skipOffset: S.optional(__S(151)),
+          skipOffset: S.optional(VideoOffset),
           backupImageReportingLabel: S.optional(S.String),
           mediaDuration: S.optional(S.Number),
           kind: S.optional(S.String),
-          creativeAssets: S.optional(__S(170)),
-          exitCustomEvents: S.optional(__S(159)),
+          creativeAssets: S.optional(CreativeAssetList),
+          exitCustomEvents: S.optional(CreativeCustomEventList),
           sslCompliant: S.optional(S.Boolean),
-          lastModifiedInfo: S.optional(__S(89)),
+          lastModifiedInfo: S.optional(LastModifiedInfo),
           requiredFlashVersion: S.optional(S.Number),
-          counterCustomEvents: S.optional(__S(159)),
+          counterCustomEvents: S.optional(CreativeCustomEventList),
           allowScriptAccess: S.optional(S.Boolean),
           convertFlashToHtml5: S.optional(S.Boolean),
           advertiserId: S.optional(S.String),
@@ -13505,7 +16305,7 @@ function __c21(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          dfpSettings: S.optional(__S(173)),
+          dfpSettings: S.optional(DfpSettings),
           interstitialPlacementAccepted: S.optional(S.Boolean),
           instreamVideoPlacementAccepted: S.optional(S.Boolean),
           activeViewOptOut: S.optional(S.Boolean),
@@ -13516,12 +16316,12 @@ function __c21(j: number): any {
         S.Struct({
           id: S.optional(S.String),
           url: S.optional(S.String),
-          settings: S.optional(__S(174)),
+          settings: S.optional(DirectorySiteSettings),
           kind: S.optional(S.String),
-          inpageTagFormats: S.optional(__S(38)),
+          inpageTagFormats: S.optional(DirectorySiteInpageTagFormatsItemEnumList),
           publisherSpecificationId: S.optional(S.String),
-          idDimensionValue: S.optional(__S(65)),
-          interstitialTagFormats: S.optional(__S(38)),
+          idDimensionValue: S.optional(DimensionValue),
+          interstitialTagFormats: S.optional(DirectorySiteInterstitialTagFormatsItemEnumList),
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "DirectorySite" });
@@ -13545,7 +16345,7 @@ function __c22(j: number): any {
       return S.suspend(() =>
         S.Struct({
           rowNumber: S.optional(S.Number),
-          fieldNames: S.optional(__S(0)),
+          fieldNames: S.optional(StringList),
           separator: S.optional(S.String),
           charset: S.optional(S.String),
         }),
@@ -13553,35 +16353,35 @@ function __c22(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          metaData: S.optional(__S(177)),
+          metaData: S.optional(ContentSourceMetaData),
           resourceLink: S.optional(S.String),
           contentSourceName: S.optional(S.String),
-          resourceType: S.optional(S.String),
-          createInfo: S.optional(__S(89)),
-          lastModifiedInfo: S.optional(__S(89)),
+          resourceType: S.optional(ContentSourceResourceTypeEnum),
+          createInfo: S.optional(LastModifiedInfo),
+          lastModifiedInfo: S.optional(LastModifiedInfo),
         }),
       ).annotate({ identifier: "ContentSource" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           fieldId: S.optional(S.Number),
-          ingestionError: S.optional(S.String),
-          fieldValues: S.optional(__S(0)),
+          ingestionError: S.optional(FieldErrorIngestionErrorEnum),
+          fieldValues: S.optional(StringList),
           isError: S.optional(S.Boolean),
           fieldName: S.optional(S.String),
         }),
       ).annotate({ identifier: "FieldError" });
     case 4:
-      return S.Array(__S(179));
+      return S.Array(FieldError);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          errors: S.optional(__S(180)),
+          errors: S.optional(FieldErrorList),
           recordId: S.optional(S.String),
         }),
       ).annotate({ identifier: "IngestionErrorRecord" });
     case 6:
-      return S.Array(__S(181));
+      return S.Array(IngestionErrorRecord);
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -13599,9 +16399,9 @@ function __c23(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          ingestionErrorRecords: S.optional(__S(182)),
-          state: S.optional(S.String),
-          ingestionStatus: S.optional(__S(183)),
+          ingestionErrorRecords: S.optional(IngestionErrorRecordList),
+          state: S.optional(FeedIngestionStatusStateEnum),
+          ingestionStatus: S.optional(IngestionStatus),
         }),
       ).annotate({ identifier: "FeedIngestionStatus" });
     case 1:
@@ -13610,25 +16410,25 @@ function __c23(j: number): any {
           renderable: S.optional(S.Boolean),
           defaultValue: S.optional(S.String),
           filterable: S.optional(S.Boolean),
-          type: S.optional(S.String),
+          type: S.optional(FeedFieldTypeEnum),
           id: S.optional(S.Number),
           name: S.optional(S.String),
           required: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "FeedField" });
     case 2:
-      return S.Array(__S(185));
+      return S.Array(FeedField);
     case 3:
       return S.suspend(() =>
         S.Struct({
           externalIdFieldId: S.optional(S.Number),
           elementName: S.optional(S.String),
-          lastModifiedInfo: S.optional(__S(89)),
+          lastModifiedInfo: S.optional(LastModifiedInfo),
           endTimestampFieldId: S.optional(S.Number),
           reportingLabelFieldId: S.optional(S.Number),
-          feedFields: S.optional(__S(186)),
+          feedFields: S.optional(FeedFieldList),
           startTimestampFieldId: S.optional(S.Number),
-          createInfo: S.optional(__S(89)),
+          createInfo: S.optional(LastModifiedInfo),
           activeFieldId: S.optional(S.Number),
           proximityTargetingFieldId: S.optional(S.Number),
           isLocalTimestamp: S.optional(S.Boolean),
@@ -13648,17 +16448,17 @@ function __c23(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          contentSource: S.optional(__S(178)),
-          feedIngestionStatus: S.optional(__S(184)),
+          contentSource: S.optional(ContentSource),
+          feedIngestionStatus: S.optional(FeedIngestionStatus),
           hasPublished: S.optional(S.Boolean),
-          lastModifiedInfo: S.optional(__S(89)),
+          lastModifiedInfo: S.optional(LastModifiedInfo),
           dynamicFeedId: S.optional(S.String),
           studioAdvertiserId: S.optional(S.String),
           dynamicFeedName: S.optional(S.String),
-          createInfo: S.optional(__S(89)),
-          status: S.optional(S.String),
-          element: S.optional(__S(187)),
-          feedSchedule: S.optional(__S(188)),
+          createInfo: S.optional(LastModifiedInfo),
+          status: S.optional(DynamicFeedStatusEnum),
+          element: S.optional(Element),
+          feedSchedule: S.optional(FeedSchedule),
         }),
       ).annotate({ identifier: "DynamicFeed" });
     case 6:
@@ -13680,8 +16480,8 @@ function __c23(j: number): any {
         S.Struct({
           radiusValue: S.optional(S.Number),
           fieldId: S.optional(S.Number),
-          radiusUnitType: S.optional(S.String),
-          radiusBucketType: S.optional(S.String),
+          radiusUnitType: S.optional(ProximityFilterRadiusUnitTypeEnum),
+          radiusBucketType: S.optional(ProximityFilterRadiusBucketTypeEnum),
         }),
       ).annotate({ identifier: "ProximityFilter" });
   }
@@ -13696,18 +16496,18 @@ function __c24(j: number): any {
         }),
       ).annotate({ identifier: "CustomValueField" });
     case 1:
-      return S.Array(__S(192));
+      return S.Array(CustomValueField);
     case 2:
       return S.suspend(() =>
         S.Struct({
           fieldId: S.optional(S.Number),
-          userAttributeIds: S.optional(__S(0)),
+          userAttributeIds: S.optional(StringList),
         }),
       ).annotate({
         identifier: "RemarketingValueAttribute",
       });
     case 3:
-      return S.Array(__S(194));
+      return S.Array(RemarketingValueAttribute);
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -13719,8 +16519,8 @@ function __c24(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          userAttributeIds: S.optional(__S(0)),
-          excludeFromUserAttributeIds: S.optional(__S(0)),
+          userAttributeIds: S.optional(StringList),
+          excludeFromUserAttributeIds: S.optional(StringList),
           key: S.optional(S.String),
         }),
       ).annotate({ identifier: "RequestValue" });
@@ -13729,15 +16529,15 @@ function __c24(j: number): any {
         S.Struct({
           boolValue: S.optional(S.Boolean),
           fieldId: S.optional(S.Number),
-          dependentFieldValue: S.optional(__S(196)),
-          matchType: S.optional(S.String),
+          dependentFieldValue: S.optional(DependentFieldValue),
+          matchType: S.optional(FieldFilterMatchTypeEnum),
           stringValue: S.optional(S.String),
-          valueType: S.optional(S.String),
-          requestValue: S.optional(__S(197)),
+          valueType: S.optional(FieldFilterValueTypeEnum),
+          requestValue: S.optional(RequestValue),
         }),
       ).annotate({ identifier: "FieldFilter" });
     case 7:
-      return S.Array(__S(198));
+      return S.Array(FieldFilter);
   }
 }
 function __c25(j: number): any {
@@ -13745,38 +16545,38 @@ function __c25(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          fieldFilter: S.optional(__S(199)),
+          fieldFilter: S.optional(FieldFilterList),
         }),
       ).annotate({ identifier: "RuleBlock" });
     case 1:
-      return S.Array(__S(200));
+      return S.Array(RuleBlock);
     case 2:
       return S.suspend(() =>
         S.Struct({
           priority: S.optional(S.Number),
-          ruleBlocks: S.optional(__S(201)),
+          ruleBlocks: S.optional(RuleBlockList),
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "CustomRule" });
     case 3:
-      return S.Array(__S(202));
+      return S.Array(CustomRule);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          proximityFilter: S.optional(__S(191)),
-          customValueFields: S.optional(__S(193)),
-          autoTargetedFieldIds: S.optional(__S(96)),
-          ruleType: S.optional(S.String),
-          remarketingValueAttributes: S.optional(__S(195)),
-          customRules: S.optional(__S(203)),
-          rotationType: S.optional(S.String),
+          proximityFilter: S.optional(ProximityFilter),
+          customValueFields: S.optional(CustomValueFieldList),
+          autoTargetedFieldIds: S.optional(IntegerList),
+          ruleType: S.optional(DynamicRulesRuleTypeEnum),
+          remarketingValueAttributes: S.optional(RemarketingValueAttributeList),
+          customRules: S.optional(CustomRuleList),
+          rotationType: S.optional(DynamicRulesRotationTypeEnum),
           weightFieldId: S.optional(S.Number),
         }),
       ).annotate({ identifier: "DynamicRules" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          dynamicRules: S.optional(__S(204)),
+          dynamicRules: S.optional(DynamicRules),
           quantity: S.optional(S.Number),
           dynamicFeedId: S.optional(S.String),
         }),
@@ -13784,11 +16584,11 @@ function __c25(j: number): any {
         identifier: "DynamicProfileFeedSettings",
       });
     case 6:
-      return S.Array(__S(205));
+      return S.Array(DynamicProfileFeedSettings);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          dynamicProfileFeedSettings: S.optional(__S(206)),
+          dynamicProfileFeedSettings: S.optional(DynamicProfileFeedSettingsList),
           versionId: S.optional(S.String),
         }),
       ).annotate({ identifier: "DynamicProfileVersion" });
@@ -13800,16 +16600,16 @@ function __c26(j: number): any {
       return S.suspend(() =>
         S.Struct({
           dynamicProfileId: S.optional(S.String),
-          archiveStatus: S.optional(S.String),
+          archiveStatus: S.optional(DynamicProfileArchiveStatusEnum),
           name: S.optional(S.String),
-          lastModifiedInfo: S.optional(__S(89)),
+          lastModifiedInfo: S.optional(LastModifiedInfo),
           description: S.optional(S.String),
-          createInfo: S.optional(__S(89)),
+          createInfo: S.optional(LastModifiedInfo),
           kind: S.optional(S.String),
-          status: S.optional(S.String),
-          active: S.optional(__S(207)),
+          status: S.optional(DynamicProfileStatusEnum),
+          active: S.optional(DynamicProfileVersion),
           studioAdvertiserId: S.optional(S.String),
-          draft: S.optional(__S(207)),
+          draft: S.optional(DynamicProfileVersion),
         }),
       ).annotate({ identifier: "DynamicProfile" });
     case 1:
@@ -13832,19 +16632,19 @@ function __c26(j: number): any {
           url: S.optional(S.String),
           advertiserId: S.optional(S.String),
           sslCompliant: S.optional(S.Boolean),
-          advertiserIdDimensionValue: S.optional(__S(65)),
+          advertiserIdDimensionValue: S.optional(DimensionValue),
           kind: S.optional(S.String),
           accountId: S.optional(S.String),
-          siteIds: S.optional(__S(0)),
-          campaignIdDimensionValue: S.optional(__S(65)),
+          siteIds: S.optional(StringList),
+          campaignIdDimensionValue: S.optional(DimensionValue),
           id: S.optional(S.String),
-          type: S.optional(S.String),
+          type: S.optional(EventTagTypeEnum),
           name: S.optional(S.String),
           campaignId: S.optional(S.String),
           urlEscapeLevels: S.optional(S.Number),
           subaccountId: S.optional(S.String),
-          status: S.optional(S.String),
-          siteFilterType: S.optional(S.String),
+          status: S.optional(EventTagStatusEnum),
+          siteFilterType: S.optional(EventTagSiteFilterTypeEnum),
           enabledByDefault: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "EventTag" });
@@ -13873,7 +16673,7 @@ function __c26(j: number): any {
         S.Struct({
           startDate: S.optional(S.String),
           kind: S.optional(S.String),
-          relativeDateRange: S.optional(S.String),
+          relativeDateRange: S.optional(DateRangeRelativeDateRangeEnum),
           endDate: S.optional(S.String),
         }),
       ).annotate({ identifier: "DateRange" });
@@ -13881,13 +16681,13 @@ function __c26(j: number): any {
       return S.suspend(() =>
         S.Struct({
           etag: S.optional(S.String),
-          format: S.optional(S.String),
-          status: S.optional(S.String),
+          format: S.optional(FileFormatEnum),
+          status: S.optional(FileStatusEnum),
           id: S.optional(S.String),
           lastModifiedTime: S.optional(S.String),
           fileName: S.optional(S.String),
-          urls: S.optional(__S(212)),
-          dateRange: S.optional(__S(213)),
+          urls: S.optional(FileUrls),
+          dateRange: S.optional(DateRange),
           reportId: S.optional(S.String),
           kind: S.optional(S.String),
         }),
@@ -13922,13 +16722,13 @@ function __c27(j: number): any {
         identifier: "FloodlightActivityDynamicTag",
       });
     case 1:
-      return S.Array(__S(216));
+      return S.Array(FloodlightActivityDynamicTag);
     case 2:
       return S.suspend(() =>
         S.Struct({
           clickThrough: S.optional(S.Boolean),
-          siteIdDimensionValue: S.optional(__S(65)),
-          dynamicTag: S.optional(__S(216)),
+          siteIdDimensionValue: S.optional(DimensionValue),
+          dynamicTag: S.optional(FloodlightActivityDynamicTag),
           viewThrough: S.optional(S.Boolean),
           siteId: S.optional(S.String),
           directorySiteId: S.optional(S.String),
@@ -13937,37 +16737,41 @@ function __c27(j: number): any {
         identifier: "FloodlightActivityPublisherDynamicTag",
       });
     case 3:
-      return S.Array(__S(218));
+      return S.Array(FloodlightActivityPublisherDynamicTag);
     case 4:
       return S.suspend(() =>
         S.Struct({
           accountId: S.optional(S.String),
           floodlightActivityGroupId: S.optional(S.String),
-          tagFormat: S.optional(S.String),
-          defaultTags: S.optional(__S(217)),
+          tagFormat: S.optional(FloodlightActivityTagFormatEnum),
+          defaultTags: S.optional(FloodlightActivityDynamicTagList),
           floodlightConfigurationId: S.optional(S.String),
-          conversionCategory: S.optional(S.String),
+          conversionCategory: S.optional(FloodlightActivityConversionCategoryEnum),
           tagString: S.optional(S.String),
-          idDimensionValue: S.optional(__S(65)),
-          publisherTags: S.optional(__S(219)),
-          userDefinedVariableTypes: S.optional(__S(38)),
+          idDimensionValue: S.optional(DimensionValue),
+          publisherTags: S.optional(FloodlightActivityPublisherDynamicTagList),
+          userDefinedVariableTypes: S.optional(
+            FloodlightActivityUserDefinedVariableTypesItemEnumList,
+          ),
           kind: S.optional(S.String),
           notes: S.optional(S.String),
-          advertiserIdDimensionValue: S.optional(__S(65)),
-          cacheBustingType: S.optional(S.String),
+          advertiserIdDimensionValue: S.optional(DimensionValue),
+          cacheBustingType: S.optional(FloodlightActivityCacheBustingTypeEnum),
           sslRequired: S.optional(S.Boolean),
-          floodlightConfigurationIdDimensionValue: S.optional(__S(65)),
+          floodlightConfigurationIdDimensionValue: S.optional(DimensionValue),
           name: S.optional(S.String),
-          status: S.optional(S.String),
+          status: S.optional(FloodlightActivityStatusEnum),
           subaccountId: S.optional(S.String),
-          floodlightTagType: S.optional(S.String),
+          floodlightTagType: S.optional(FloodlightActivityFloodlightTagTypeEnum),
           attributionEnabled: S.optional(S.Boolean),
           secure: S.optional(S.Boolean),
           floodlightActivityGroupName: S.optional(S.String),
           advertiserId: S.optional(S.String),
           sslCompliant: S.optional(S.Boolean),
-          floodlightActivityGroupType: S.optional(S.String),
-          countingMethod: S.optional(S.String),
+          floodlightActivityGroupType: S.optional(
+            FloodlightActivityFloodlightActivityGroupTypeEnum,
+          ),
+          countingMethod: S.optional(FloodlightActivityCountingMethodEnum),
           floodlightActivityGroupTagString: S.optional(S.String),
           id: S.optional(S.String),
           expectedUrl: S.optional(S.String),
@@ -13991,14 +16795,14 @@ function __c27(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          advertiserIdDimensionValue: S.optional(__S(65)),
+          advertiserIdDimensionValue: S.optional(DimensionValue),
           advertiserId: S.optional(S.String),
-          idDimensionValue: S.optional(__S(65)),
+          idDimensionValue: S.optional(DimensionValue),
           tagString: S.optional(S.String),
           name: S.optional(S.String),
           floodlightConfigurationId: S.optional(S.String),
-          type: S.optional(S.String),
-          floodlightConfigurationIdDimensionValue: S.optional(__S(65)),
+          type: S.optional(FloodlightActivityGroupTypeEnum),
+          floodlightConfigurationIdDimensionValue: S.optional(DimensionValue),
           accountId: S.optional(S.String),
           kind: S.optional(S.String),
           id: S.optional(S.String),
@@ -14034,7 +16838,7 @@ function __c28(j: number): any {
         identifier: "ThirdPartyAuthenticationToken",
       });
     case 1:
-      return S.Array(__S(224));
+      return S.Array(ThirdPartyAuthenticationToken);
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -14050,7 +16854,7 @@ function __c28(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
-          configuration: S.optional(__S(226)),
+          configuration: S.optional(CustomViewabilityMetricConfiguration),
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "CustomViewabilityMetric" });
@@ -14064,15 +16868,15 @@ function __c28(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          variableType: S.optional(S.String),
+          variableType: S.optional(UserDefinedVariableConfigurationVariableTypeEnum),
           reportName: S.optional(S.String),
-          dataType: S.optional(S.String),
+          dataType: S.optional(UserDefinedVariableConfigurationDataTypeEnum),
         }),
       ).annotate({
         identifier: "UserDefinedVariableConfiguration",
       });
     case 6:
-      return S.Array(__S(229));
+      return S.Array(UserDefinedVariableConfiguration);
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -14087,24 +16891,26 @@ function __c29(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          firstDayOfWeek: S.optional(S.String),
+          firstDayOfWeek: S.optional(FloodlightConfigurationFirstDayOfWeekEnum),
           accountId: S.optional(S.String),
-          advertiserIdDimensionValue: S.optional(__S(65)),
+          advertiserIdDimensionValue: S.optional(DimensionValue),
           subaccountId: S.optional(S.String),
-          thirdPartyAuthenticationTokens: S.optional(__S(225)),
-          naturalSearchConversionAttributionOption: S.optional(S.String),
-          customViewabilityMetric: S.optional(__S(227)),
+          thirdPartyAuthenticationTokens: S.optional(ThirdPartyAuthenticationTokenList),
+          naturalSearchConversionAttributionOption: S.optional(
+            FloodlightConfigurationNaturalSearchConversionAttributionOptionEnum,
+          ),
+          customViewabilityMetric: S.optional(CustomViewabilityMetric),
           exposureToConversionEnabled: S.optional(S.Boolean),
-          tagSettings: S.optional(__S(228)),
+          tagSettings: S.optional(TagSettings),
           kind: S.optional(S.String),
-          userDefinedVariableConfigurations: S.optional(__S(230)),
-          idDimensionValue: S.optional(__S(65)),
-          omnitureSettings: S.optional(__S(231)),
+          userDefinedVariableConfigurations: S.optional(UserDefinedVariableConfigurationList),
+          idDimensionValue: S.optional(DimensionValue),
+          omnitureSettings: S.optional(OmnitureSettings),
           inAppAttributionTrackingEnabled: S.optional(S.Boolean),
           advertiserId: S.optional(S.String),
           id: S.optional(S.String),
           analyticsDataSharingEnabled: S.optional(S.Boolean),
-          lookbackConfiguration: S.optional(__S(52)),
+          lookbackConfiguration: S.optional(LookbackConfiguration),
         }),
       ).annotate({ identifier: "FloodlightConfiguration" });
     case 1:
@@ -14191,7 +16997,7 @@ function __c29(j: number): any {
         identifier: "PricingSchedulePricingPeriod",
       });
     case 7:
-      return S.Array(__S(238));
+      return S.Array(PricingSchedulePricingPeriod);
   }
 }
 function __c30(j: number): any {
@@ -14200,44 +17006,44 @@ function __c30(j: number): any {
       return S.suspend(() =>
         S.Struct({
           startDate: S.optional(S.String),
-          pricingType: S.optional(S.String),
-          pricingPeriods: S.optional(__S(239)),
+          pricingType: S.optional(PricingSchedulePricingTypeEnum),
+          pricingPeriods: S.optional(PricingSchedulePricingPeriodList),
           floodlightActivityId: S.optional(S.String),
           flighted: S.optional(S.Boolean),
           testingStartDate: S.optional(S.String),
           endDate: S.optional(S.String),
-          capCostOption: S.optional(S.String),
+          capCostOption: S.optional(PricingScheduleCapCostOptionEnum),
         }),
       ).annotate({ identifier: "PricingSchedule" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
-          campaignIdDimensionValue: S.optional(__S(65)),
-          primaryPlacementIdDimensionValue: S.optional(__S(65)),
-          createInfo: S.optional(__S(89)),
+          campaignIdDimensionValue: S.optional(DimensionValue),
+          primaryPlacementIdDimensionValue: S.optional(DimensionValue),
+          createInfo: S.optional(LastModifiedInfo),
           accountId: S.optional(S.String),
           placementStrategyId: S.optional(S.String),
-          directorySiteIdDimensionValue: S.optional(__S(65)),
+          directorySiteIdDimensionValue: S.optional(DimensionValue),
           campaignId: S.optional(S.String),
           advertiserId: S.optional(S.String),
-          lastModifiedInfo: S.optional(__S(89)),
+          lastModifiedInfo: S.optional(LastModifiedInfo),
           name: S.optional(S.String),
           comment: S.optional(S.String),
-          placementGroupType: S.optional(S.String),
-          siteIdDimensionValue: S.optional(__S(65)),
-          childPlacementIds: S.optional(__S(0)),
-          idDimensionValue: S.optional(__S(65)),
+          placementGroupType: S.optional(PlacementGroupPlacementGroupTypeEnum),
+          siteIdDimensionValue: S.optional(DimensionValue),
+          childPlacementIds: S.optional(StringList),
+          idDimensionValue: S.optional(DimensionValue),
           siteId: S.optional(S.String),
           id: S.optional(S.String),
           subaccountId: S.optional(S.String),
           primaryPlacementId: S.optional(S.String),
-          pricingSchedule: S.optional(__S(240)),
+          pricingSchedule: S.optional(PricingSchedule),
           contentCategoryId: S.optional(S.String),
           directorySiteId: S.optional(S.String),
-          advertiserIdDimensionValue: S.optional(__S(65)),
+          advertiserIdDimensionValue: S.optional(DimensionValue),
           externalId: S.optional(S.String),
-          activeStatus: S.optional(S.String),
+          activeStatus: S.optional(PlacementGroupActiveStatusEnum),
         }),
       ).annotate({ identifier: "PlacementGroup" });
     case 2:
@@ -14256,9 +17062,9 @@ function __c30(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          tagWrappingMode: S.optional(S.String),
-          measurementPartner: S.optional(S.String),
-          linkStatus: S.optional(S.String),
+          tagWrappingMode: S.optional(MeasurementPartnerWrappingDataTagWrappingModeEnum),
+          measurementPartner: S.optional(MeasurementPartnerWrappingDataMeasurementPartnerEnum),
+          linkStatus: S.optional(MeasurementPartnerWrappingDataLinkStatusEnum),
           wrappedTag: S.optional(S.String),
         }),
       ).annotate({
@@ -14269,7 +17075,7 @@ function __c30(j: number): any {
         S.Struct({
           includeUnescapedlpurlMacro: S.optional(S.Boolean),
           includeClickTracking: S.optional(S.Boolean),
-          keywordOption: S.optional(S.String),
+          keywordOption: S.optional(TagSettingKeywordOptionEnum),
           additionalKeyValues: S.optional(S.String),
           includeClickThroughUrls: S.optional(S.Boolean),
         }),
@@ -14277,7 +17083,7 @@ function __c30(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          enabledSizes: S.optional(__S(165)),
+          enabledSizes: S.optional(SizeList),
           companionsDisabled: S.optional(S.Boolean),
           kind: S.optional(S.String),
           imageOnly: S.optional(S.Boolean),
@@ -14286,16 +17092,16 @@ function __c30(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          enabledVideoFormats: S.optional(__S(96)),
+          enabledVideoFormats: S.optional(IntegerList),
           kind: S.optional(S.String),
         }),
       ).annotate({ identifier: "TranscodeSetting" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          skipOffset: S.optional(__S(151)),
+          skipOffset: S.optional(VideoOffset),
           kind: S.optional(S.String),
-          progressOffset: S.optional(__S(151)),
+          progressOffset: S.optional(VideoOffset),
           skippable: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "SkippableSetting" });
@@ -14307,14 +17113,14 @@ function __c31(j: number): any {
       return S.suspend(() =>
         S.Struct({
           obaEnabled: S.optional(S.Boolean),
-          orientation: S.optional(S.String),
+          orientation: S.optional(VideoSettingsOrientationEnum),
           kind: S.optional(S.String),
           publisherSpecificationId: S.optional(S.String),
           durationSeconds: S.optional(S.Number),
-          companionSettings: S.optional(__S(245)),
-          transcodeSettings: S.optional(__S(246)),
-          skippableSettings: S.optional(__S(247)),
-          obaSettings: S.optional(__S(166)),
+          companionSettings: S.optional(CompanionSetting),
+          transcodeSettings: S.optional(TranscodeSetting),
+          skippableSettings: S.optional(SkippableSetting),
+          obaSettings: S.optional(ObaIcon),
         }),
       ).annotate({ identifier: "VideoSettings" });
     case 1:
@@ -14327,11 +17133,11 @@ function __c31(j: number): any {
         identifier: "PlacementSingleConversionDomain",
       });
     case 2:
-      return S.Array(__S(249));
+      return S.Array(PlacementSingleConversionDomain);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          conversionDomains: S.optional(__S(250)),
+          conversionDomains: S.optional(PlacementSingleConversionDomainList),
         }),
       ).annotate({
         identifier: "PlacementConversionDomainOverride",
@@ -14339,52 +17145,52 @@ function __c31(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          longHeadlines: S.optional(__S(0)),
-          descriptions: S.optional(__S(0)),
-          callToActions: S.optional(__S(38)),
-          headlines: S.optional(__S(0)),
+          longHeadlines: S.optional(StringList),
+          descriptions: S.optional(StringList),
+          callToActions: S.optional(YoutubeSettingsCallToActionsItemEnumList),
+          headlines: S.optional(StringList),
           businessName: S.optional(S.String),
-          businessLogoCreativeIds: S.optional(__S(0)),
+          businessLogoCreativeIds: S.optional(StringList),
         }),
       ).annotate({ identifier: "YoutubeSettings" });
     case 5:
       return S.suspend(() =>
         S.Struct({
           comment: S.optional(S.String),
-          publisherUpdateInfo: S.optional(__S(89)),
-          status: S.optional(S.String),
+          publisherUpdateInfo: S.optional(LastModifiedInfo),
+          status: S.optional(PlacementStatusEnum),
           placementStrategyId: S.optional(S.String),
-          idDimensionValue: S.optional(__S(65)),
-          vpaidAdapterChoice: S.optional(S.String),
+          idDimensionValue: S.optional(DimensionValue),
+          vpaidAdapterChoice: S.optional(PlacementVpaidAdapterChoiceEnum),
           subaccountId: S.optional(S.String),
-          paymentSource: S.optional(S.String),
-          partnerWrappingData: S.optional(__S(243)),
+          paymentSource: S.optional(PlacementPaymentSourceEnum),
+          partnerWrappingData: S.optional(MeasurementPartnerWrappingData),
           directorySiteId: S.optional(S.String),
           externalId: S.optional(S.String),
           name: S.optional(S.String),
-          tagSetting: S.optional(__S(244)),
+          tagSetting: S.optional(TagSetting),
           sslRequired: S.optional(S.Boolean),
           videoActiveViewOptOut: S.optional(S.Boolean),
-          compatibility: S.optional(S.String),
-          placementGroupIdDimensionValue: S.optional(__S(65)),
+          compatibility: S.optional(PlacementCompatibilityEnum),
+          placementGroupIdDimensionValue: S.optional(DimensionValue),
           adBlockingOptOut: S.optional(S.Boolean),
-          directorySiteIdDimensionValue: S.optional(__S(65)),
+          directorySiteIdDimensionValue: S.optional(DimensionValue),
           kind: S.optional(S.String),
-          pricingSchedule: S.optional(__S(240)),
-          activeStatus: S.optional(S.String),
-          lookbackConfiguration: S.optional(__S(52)),
-          campaignIdDimensionValue: S.optional(__S(65)),
+          pricingSchedule: S.optional(PricingSchedule),
+          activeStatus: S.optional(PlacementActiveStatusEnum),
+          lookbackConfiguration: S.optional(LookbackConfiguration),
+          campaignIdDimensionValue: S.optional(DimensionValue),
           keyName: S.optional(S.String),
-          additionalSizes: S.optional(__S(165)),
-          advertiserIdDimensionValue: S.optional(__S(65)),
+          additionalSizes: S.optional(SizeList),
+          advertiserIdDimensionValue: S.optional(DimensionValue),
           accountId: S.optional(S.String),
-          videoSettings: S.optional(__S(248)),
+          videoSettings: S.optional(VideoSettings),
           contentCategoryId: S.optional(S.String),
           siteId: S.optional(S.String),
-          tagFormats: S.optional(__S(38)),
-          conversionDomainOverride: S.optional(__S(251)),
+          tagFormats: S.optional(PlacementTagFormatsItemEnumList),
+          conversionDomainOverride: S.optional(PlacementConversionDomainOverride),
           campaignId: S.optional(S.String),
-          size: S.optional(__S(61)),
+          size: S.optional(Size),
           wrappingOptOut: S.optional(S.Boolean),
           primary: S.optional(S.Boolean),
           allowOnYoutube: S.optional(S.Boolean),
@@ -14392,12 +17198,12 @@ function __c31(j: number): any {
           id: S.optional(S.String),
           adServingPlatformId: S.optional(S.String),
           paymentApproved: S.optional(S.Boolean),
-          createInfo: S.optional(__S(89)),
+          createInfo: S.optional(LastModifiedInfo),
           placementGroupId: S.optional(S.String),
-          youtubeSettings: S.optional(__S(252)),
-          siteIdDimensionValue: S.optional(__S(65)),
+          youtubeSettings: S.optional(YoutubeSettings),
+          siteIdDimensionValue: S.optional(DimensionValue),
           siteServed: S.optional(S.Boolean),
-          lastModifiedInfo: S.optional(__S(89)),
+          lastModifiedInfo: S.optional(LastModifiedInfo),
         }),
       ).annotate({ identifier: "Placement" });
     case 6:
@@ -14477,25 +17283,25 @@ function __c32(j: number): any {
           contains: S.optional(S.Boolean),
           variableName: S.optional(S.String),
           value: S.optional(S.String),
-          operator: S.optional(S.String),
-          type: S.optional(S.String),
+          operator: S.optional(ListPopulationTermOperatorEnum),
+          type: S.optional(ListPopulationTermTypeEnum),
           negation: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "ListPopulationTerm" });
     case 4:
-      return S.Array(__S(259));
+      return S.Array(ListPopulationTerm);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          terms: S.optional(__S(260)),
+          terms: S.optional(ListPopulationTermList),
         }),
       ).annotate({ identifier: "ListPopulationClause" });
     case 6:
-      return S.Array(__S(261));
+      return S.Array(ListPopulationClause);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          listPopulationClauses: S.optional(__S(262)),
+          listPopulationClauses: S.optional(ListPopulationClauseList),
           floodlightActivityId: S.optional(S.String),
           floodlightActivityName: S.optional(S.String),
         }),
@@ -14513,13 +17319,13 @@ function __c33(j: number): any {
           description: S.optional(S.String),
           kind: S.optional(S.String),
           lifeSpan: S.optional(S.String),
-          listSource: S.optional(S.String),
+          listSource: S.optional(RemarketingListListSourceEnum),
           id: S.optional(S.String),
-          advertiserIdDimensionValue: S.optional(__S(65)),
+          advertiserIdDimensionValue: S.optional(DimensionValue),
           accountId: S.optional(S.String),
           subaccountId: S.optional(S.String),
           name: S.optional(S.String),
-          listPopulationRule: S.optional(__S(263)),
+          listPopulationRule: S.optional(ListPopulationRule),
         }),
       ).annotate({ identifier: "RemarketingList" });
     case 1:
@@ -14542,8 +17348,8 @@ function __c33(j: number): any {
         S.Struct({
           kind: S.optional(S.String),
           remarketingListId: S.optional(S.String),
-          sharedAdvertiserIds: S.optional(__S(0)),
-          sharedAccountIds: S.optional(__S(0)),
+          sharedAdvertiserIds: S.optional(StringList),
+          sharedAccountIds: S.optional(StringList),
         }),
       ).annotate({ identifier: "RemarketingListShare" });
     case 3:
@@ -14560,17 +17366,17 @@ function __c33(j: number): any {
         ),
       ).annotate({ identifier: "GetReportsRequest" });
     case 4:
-      return S.Array(__S(65));
+      return S.Array(DimensionValue);
     case 5:
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
-          sortOrder: S.optional(S.String),
+          sortOrder: S.optional(SortedDimensionSortOrderEnum),
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "SortedDimension" });
     case 6:
-      return S.Array(__S(269));
+      return S.Array(SortedDimension);
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -14594,15 +17400,15 @@ function __c34(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          activityFilters: S.optional(__S(268)),
-          metricNames: S.optional(__S(0)),
-          floodlightConfigId: S.optional(__S(65)),
-          conversionDimensions: S.optional(__S(270)),
-          reportProperties: S.optional(__S(271)),
-          customFloodlightVariables: S.optional(__S(270)),
-          perInteractionDimensions: S.optional(__S(270)),
-          customRichMediaEvents: S.optional(__S(268)),
-          dateRange: S.optional(__S(213)),
+          activityFilters: S.optional(DimensionValueList_),
+          metricNames: S.optional(StringList),
+          floodlightConfigId: S.optional(DimensionValue),
+          conversionDimensions: S.optional(SortedDimensionList),
+          reportProperties: S.optional(ReportPathToConversionCriteriaReportProperties),
+          customFloodlightVariables: S.optional(SortedDimensionList),
+          perInteractionDimensions: S.optional(SortedDimensionList),
+          customRichMediaEvents: S.optional(DimensionValueList_),
+          dateRange: S.optional(DateRange),
         }),
       ).annotate({
         identifier: "ReportPathToConversionCriteria",
@@ -14611,11 +17417,11 @@ function __c34(j: number): any {
       return S.suspend(() =>
         S.Struct({
           timezone: S.optional(S.String),
-          repeatsOnWeekDays: S.optional(__S(38)),
+          repeatsOnWeekDays: S.optional(ReportScheduleRepeatsOnWeekDaysItemEnumList),
           active: S.optional(S.Boolean),
           expirationDate: S.optional(S.String),
           every: S.optional(S.Number),
-          runsOnDayOfMonth: S.optional(S.String),
+          runsOnDayOfMonth: S.optional(ReportScheduleRunsOnDayOfMonthEnum),
           repeats: S.optional(S.String),
           startDate: S.optional(S.String),
         }),
@@ -14623,8 +17429,8 @@ function __c34(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          metricNames: S.optional(__S(0)),
-          filters: S.optional(__S(268)),
+          metricNames: S.optional(StringList),
+          filters: S.optional(DimensionValueList_),
           kind: S.optional(S.String),
         }),
       ).annotate({ identifier: "Activities" });
@@ -14632,27 +17438,27 @@ function __c34(j: number): any {
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
-          filteredEventIds: S.optional(__S(268)),
+          filteredEventIds: S.optional(DimensionValueList_),
         }),
       ).annotate({ identifier: "CustomRichMediaEvents" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          activities: S.optional(__S(274)),
-          customRichMediaEvents: S.optional(__S(275)),
-          metricNames: S.optional(__S(0)),
-          dateRange: S.optional(__S(213)),
-          dimensionFilters: S.optional(__S(268)),
-          dimensions: S.optional(__S(270)),
+          activities: S.optional(Activities),
+          customRichMediaEvents: S.optional(CustomRichMediaEvents),
+          metricNames: S.optional(StringList),
+          dateRange: S.optional(DateRange),
+          dimensionFilters: S.optional(DimensionValueList_),
+          dimensions: S.optional(SortedDimensionList),
         }),
       ).annotate({ identifier: "ReportCriteria" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          dateRange: S.optional(__S(213)),
-          dimensionFilters: S.optional(__S(268)),
-          metricNames: S.optional(__S(0)),
-          dimensions: S.optional(__S(270)),
+          dateRange: S.optional(DateRange),
+          dimensionFilters: S.optional(DimensionValueList_),
+          metricNames: S.optional(StringList),
+          dimensions: S.optional(SortedDimensionList),
         }),
       ).annotate({
         identifier: "ReportCrossMediaReachCriteria",
@@ -14660,13 +17466,13 @@ function __c34(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          dimensions: S.optional(__S(270)),
-          dateRange: S.optional(__S(213)),
-          metricNames: S.optional(__S(0)),
-          customRichMediaEvents: S.optional(__S(275)),
-          activities: S.optional(__S(274)),
-          dimensionFilters: S.optional(__S(268)),
-          reachByFrequencyMetricNames: S.optional(__S(0)),
+          dimensions: S.optional(SortedDimensionList),
+          dateRange: S.optional(DateRange),
+          metricNames: S.optional(StringList),
+          customRichMediaEvents: S.optional(CustomRichMediaEvents),
+          activities: S.optional(Activities),
+          dimensionFilters: S.optional(DimensionValueList_),
+          reachByFrequencyMetricNames: S.optional(StringList),
         }),
       ).annotate({ identifier: "ReportReachCriteria" });
     case 7:
@@ -14674,7 +17480,7 @@ function __c34(j: number): any {
         S.Struct({
           email: S.optional(S.String),
           kind: S.optional(S.String),
-          deliveryType: S.optional(S.String),
+          deliveryType: S.optional(RecipientDeliveryTypeEnum),
         }),
       ).annotate({ identifier: "Recipient" });
   }
@@ -14682,14 +17488,14 @@ function __c34(j: number): any {
 function __c35(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(279));
+      return S.Array(Recipient);
     case 1:
       return S.suspend(() =>
         S.Struct({
           emailOwner: S.optional(S.Boolean),
           message: S.optional(S.String),
-          recipients: S.optional(__S(280)),
-          emailOwnerDeliveryType: S.optional(S.String),
+          recipients: S.optional(RecipientList),
+          emailOwnerDeliveryType: S.optional(ReportDeliveryEmailOwnerDeliveryTypeEnum),
         }),
       ).annotate({ identifier: "ReportDelivery" });
     case 2:
@@ -14705,34 +17511,34 @@ function __c35(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          dimensions: S.optional(__S(270)),
-          metricNames: S.optional(__S(0)),
-          reportProperties: S.optional(__S(282)),
-          floodlightConfigId: S.optional(__S(65)),
-          dimensionFilters: S.optional(__S(268)),
-          customRichMediaEvents: S.optional(__S(268)),
-          dateRange: S.optional(__S(213)),
+          dimensions: S.optional(SortedDimensionList),
+          metricNames: S.optional(StringList),
+          reportProperties: S.optional(ReportFloodlightCriteriaReportProperties),
+          floodlightConfigId: S.optional(DimensionValue),
+          dimensionFilters: S.optional(DimensionValueList_),
+          customRichMediaEvents: S.optional(DimensionValueList_),
+          dateRange: S.optional(DateRange),
         }),
       ).annotate({ identifier: "ReportFloodlightCriteria" });
     case 4:
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
-          pathToConversionCriteria: S.optional(__S(272)),
-          schedule: S.optional(__S(273)),
+          pathToConversionCriteria: S.optional(ReportPathToConversionCriteria),
+          schedule: S.optional(ReportSchedule),
           lastModifiedTime: S.optional(S.String),
-          criteria: S.optional(__S(276)),
+          criteria: S.optional(ReportCriteria),
           fileName: S.optional(S.String),
           id: S.optional(S.String),
-          crossMediaReachCriteria: S.optional(__S(277)),
+          crossMediaReachCriteria: S.optional(ReportCrossMediaReachCriteria),
           accountId: S.optional(S.String),
           subAccountId: S.optional(S.String),
-          type: S.optional(S.String),
-          format: S.optional(S.String),
+          type: S.optional(ReportTypeEnum),
+          format: S.optional(ReportFormatEnum),
           name: S.optional(S.String),
-          reachCriteria: S.optional(__S(278)),
-          delivery: S.optional(__S(281)),
-          floodlightCriteria: S.optional(__S(283)),
+          reachCriteria: S.optional(ReportReachCriteria),
+          delivery: S.optional(ReportDelivery),
+          floodlightCriteria: S.optional(ReportFloodlightCriteria),
           etag: S.optional(S.String),
           ownerProfileId: S.optional(S.String),
         }),
@@ -14767,8 +17573,8 @@ function __c35(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          tagSetting: S.optional(__S(244)),
-          vpaidAdapterChoiceTemplate: S.optional(S.String),
+          tagSetting: S.optional(TagSetting),
+          vpaidAdapterChoiceTemplate: S.optional(SiteSettingsVpaidAdapterChoiceTemplateEnum),
           videoActiveViewOptOutTemplate: S.optional(S.Boolean),
           adBlockingOptOut: S.optional(S.Boolean),
           disableNewCookie: S.optional(S.Boolean),
@@ -14784,8 +17590,8 @@ function __c36(j: number): any {
         S.Struct({
           kind: S.optional(S.String),
           skippable: S.optional(S.Boolean),
-          skipOffset: S.optional(__S(151)),
-          progressOffset: S.optional(__S(151)),
+          skipOffset: S.optional(VideoOffset),
+          progressOffset: S.optional(VideoOffset),
         }),
       ).annotate({ identifier: "SiteSkippableSetting" });
     case 1:
@@ -14794,20 +17600,20 @@ function __c36(j: number): any {
           imageOnly: S.optional(S.Boolean),
           companionsDisabled: S.optional(S.Boolean),
           kind: S.optional(S.String),
-          enabledSizes: S.optional(__S(165)),
+          enabledSizes: S.optional(SizeList),
         }),
       ).annotate({ identifier: "SiteCompanionSetting" });
     case 2:
       return S.suspend(() =>
         S.Struct({
           obaEnabled: S.optional(S.Boolean),
-          orientation: S.optional(S.String),
-          obaSettings: S.optional(__S(166)),
-          skippableSettings: S.optional(__S(288)),
-          companionSettings: S.optional(__S(289)),
+          orientation: S.optional(SiteVideoSettingsOrientationEnum),
+          obaSettings: S.optional(ObaIcon),
+          skippableSettings: S.optional(SiteSkippableSetting),
+          companionSettings: S.optional(SiteCompanionSetting),
           publisherSpecificationId: S.optional(S.String),
           kind: S.optional(S.String),
-          transcodeSettings: S.optional(__S(246)),
+          transcodeSettings: S.optional(SiteTranscodeSetting),
         }),
       ).annotate({ identifier: "SiteVideoSettings" });
     case 3:
@@ -14816,7 +17622,7 @@ function __c36(j: number): any {
           address: S.optional(S.String),
           lastName: S.optional(S.String),
           firstName: S.optional(S.String),
-          contactType: S.optional(S.String),
+          contactType: S.optional(SiteContactContactTypeEnum),
           title: S.optional(S.String),
           email: S.optional(S.String),
           phone: S.optional(S.String),
@@ -14824,20 +17630,20 @@ function __c36(j: number): any {
         }),
       ).annotate({ identifier: "SiteContact" });
     case 4:
-      return S.Array(__S(291));
+      return S.Array(SiteContact);
     case 5:
       return S.suspend(() =>
         S.Struct({
           directorySiteId: S.optional(S.String),
-          siteSettings: S.optional(__S(287)),
-          idDimensionValue: S.optional(__S(65)),
+          siteSettings: S.optional(SiteSettings),
+          idDimensionValue: S.optional(DimensionValue),
           name: S.optional(S.String),
           id: S.optional(S.String),
           adServingPlatformId: S.optional(S.String),
-          videoSettings: S.optional(__S(290)),
+          videoSettings: S.optional(SiteVideoSettings),
           subaccountId: S.optional(S.String),
-          siteContacts: S.optional(__S(292)),
-          directorySiteIdDimensionValue: S.optional(__S(65)),
+          siteContacts: S.optional(SiteContactList),
+          directorySiteIdDimensionValue: S.optional(DimensionValue),
           keyName: S.optional(S.String),
           approved: S.optional(S.Boolean),
           kind: S.optional(S.String),
@@ -14885,16 +17691,16 @@ function __c37(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(S.String),
-          dimension: S.optional(__S(296)),
-          assetIds: S.optional(__S(0)),
+          status: S.optional(StudioCreativeStatusEnum),
+          dimension: S.optional(StudioCreativeDimension),
+          assetIds: S.optional(StringList),
           studioAdvertiserId: S.optional(S.String),
           studioAccountId: S.optional(S.String),
           studioCampaignId: S.optional(S.String),
-          createdInfo: S.optional(__S(89)),
-          lastModifiedInfo: S.optional(__S(89)),
+          createdInfo: S.optional(LastModifiedInfo),
+          lastModifiedInfo: S.optional(LastModifiedInfo),
           dynamicProfileId: S.optional(S.String),
-          format: S.optional(S.String),
+          format: S.optional(StudioCreativeFormatEnum),
           id: S.optional(S.String),
           backupImageAssetId: S.optional(S.String),
           name: S.optional(S.String),
@@ -14918,7 +17724,7 @@ function __c37(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           kind: S.optional(S.String),
-          availablePermissionIds: S.optional(__S(0)),
+          availablePermissionIds: S.optional(StringList),
           accountId: S.optional(S.String),
           id: S.optional(S.String),
         }),
@@ -14947,11 +17753,11 @@ function __c37(j: number): any {
           description: S.optional(S.String),
           advertiserId: S.optional(S.String),
           lifeSpan: S.optional(S.String),
-          advertiserIdDimensionValue: S.optional(__S(65)),
+          advertiserIdDimensionValue: S.optional(DimensionValue),
           subaccountId: S.optional(S.String),
           accountId: S.optional(S.String),
           kind: S.optional(S.String),
-          listSource: S.optional(S.String),
+          listSource: S.optional(TargetableRemarketingListListSourceEnum),
           listSize: S.optional(S.String),
         }),
       ).annotate({
@@ -14976,19 +17782,19 @@ function __c37(j: number): any {
       return S.suspend(() =>
         S.Struct({
           accountId: S.optional(S.String),
-          geoTargeting: S.optional(__S(112)),
-          dayPartTargeting: S.optional(__S(97)),
+          geoTargeting: S.optional(GeoTargeting),
+          dayPartTargeting: S.optional(DayPartTargeting),
           kind: S.optional(S.String),
           advertiserId: S.optional(S.String),
-          contextualKeywordTargeting: S.optional(__S(95)),
+          contextualKeywordTargeting: S.optional(ContextualKeywordTargeting),
           subaccountId: S.optional(S.String),
-          advertiserIdDimensionValue: S.optional(__S(65)),
+          advertiserIdDimensionValue: S.optional(DimensionValue),
           name: S.optional(S.String),
           id: S.optional(S.String),
-          technologyTargeting: S.optional(__S(77)),
-          languageTargeting: S.optional(__S(80)),
-          keyValueTargetingExpression: S.optional(__S(101)),
-          listTargetingExpression: S.optional(__S(98)),
+          technologyTargeting: S.optional(TechnologyTargeting),
+          languageTargeting: S.optional(LanguageTargeting),
+          keyValueTargetingExpression: S.optional(KeyValueTargetingExpression),
+          listTargetingExpression: S.optional(ListTargetingExpression),
         }),
       ).annotate({ identifier: "TargetingTemplate" });
   }
@@ -14998,7 +17804,7 @@ function __c38(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          tvDataProvider: S.optional(S.String.pipe(T.Query())),
+          tvDataProvider: S.optional(GetTvCampaignDetailsTvDataProviderEnum.pipe(T.Query())),
           accountId: S.optional(S.String.pipe(T.Query())),
           profileId: S.String.pipe(T.Label()),
           countryDartId: S.optional(S.String.pipe(T.Query())),
@@ -15016,18 +17822,18 @@ function __c38(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          dateWindow: S.optional(S.String),
+          dateWindow: S.optional(TvCampaignTimepointDateWindowEnum),
           startDate: S.optional(S.String),
           spend: S.optional(S.Number),
         }),
       ).annotate({ identifier: "TvCampaignTimepoint" });
     case 2:
-      return S.Array(__S(305));
+      return S.Array(TvCampaignTimepoint);
     case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
-          timepoints: S.optional(__S(306)),
+          timepoints: S.optional(TvCampaignTimepointList),
           kind: S.optional(S.String),
         }),
       ).annotate({ identifier: "TvCampaignDetail" });
@@ -15102,7 +17908,7 @@ function __c39(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
-          availability: S.optional(S.String),
+          availability: S.optional(UserRolePermissionAvailabilityEnum),
           permissionGroupId: S.optional(S.String),
           kind: S.optional(S.String),
           name: S.optional(S.String),
@@ -15122,7 +17928,7 @@ function __c39(j: number): any {
         ),
       ).annotate({ identifier: "GetUserRolesRequest" });
     case 3:
-      return S.Array(__S(313));
+      return S.Array(UserRolePermission);
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -15130,7 +17936,7 @@ function __c39(j: number): any {
           name: S.optional(S.String),
           kind: S.optional(S.String),
           subaccountId: S.optional(S.String),
-          permissions: S.optional(__S(315)),
+          permissions: S.optional(UserRolePermissionList),
           parentUserRoleId: S.optional(S.String),
           id: S.optional(S.String),
           accountId: S.optional(S.String),
@@ -15154,16 +17960,16 @@ function __c39(j: number): any {
         S.Struct({
           id: S.optional(S.Number),
           targetBitRate: S.optional(S.Number),
-          fileType: S.optional(S.String),
+          fileType: S.optional(VideoFormatFileTypeEnum),
           kind: S.optional(S.String),
-          resolution: S.optional(__S(61)),
+          resolution: S.optional(Size),
         }),
       ).annotate({ identifier: "VideoFormat" });
     case 7:
       return S.suspend(() =>
         S.Struct({
           profileId: S.String.pipe(T.Label()),
-          body: S.optional(__S(57).pipe(T.HttpBody())),
+          body: S.optional(AccountUserProfile.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -15182,7 +17988,7 @@ function __c40(j: number): any {
       return S.suspend(() =>
         S.Struct({
           profileId: S.String.pipe(T.Label()),
-          body: S.optional(__S(113).pipe(T.HttpBody())),
+          body: S.optional(Ad.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -15195,7 +18001,7 @@ function __c40(j: number): any {
       return S.suspend(() =>
         S.Struct({
           profileId: S.String.pipe(T.Label()),
-          body: S.optional(__S(115).pipe(T.HttpBody())),
+          body: S.optional(AdvertiserGroup.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -15210,7 +18016,7 @@ function __c40(j: number): any {
       return S.suspend(() =>
         S.Struct({
           profileId: S.String.pipe(T.Label()),
-          body: S.optional(__S(120).pipe(T.HttpBody())),
+          body: S.optional(LandingPage.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -15225,7 +18031,7 @@ function __c40(j: number): any {
       return S.suspend(() =>
         S.Struct({
           profileId: S.String.pipe(T.Label()),
-          body: S.optional(__S(123).pipe(T.HttpBody())),
+          body: S.optional(Advertiser.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -15249,7 +18055,7 @@ function __c40(j: number): any {
         S.Struct({
           profileId: S.String.pipe(T.Label()),
           billingProfileId: S.String.pipe(T.Label()),
-          body: S.optional(__S(324).pipe(T.HttpBody())),
+          body: S.optional(BillingAssignment.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -15274,7 +18080,7 @@ function __c40(j: number): any {
         S.Struct({
           profileId: S.String.pipe(T.Label()),
           campaignId: S.String.pipe(T.Label()),
-          body: S.optional(__S(326).pipe(T.HttpBody())),
+          body: S.optional(CampaignCreativeAssociation.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -15293,7 +18099,7 @@ function __c41(j: number): any {
       return S.suspend(() =>
         S.Struct({
           profileId: S.String.pipe(T.Label()),
-          body: S.optional(__S(137).pipe(T.HttpBody())),
+          body: S.optional(Campaign.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -15306,7 +18112,7 @@ function __c41(j: number): any {
       return S.suspend(() =>
         S.Struct({
           profileId: S.String.pipe(T.Label()),
-          body: S.optional(__S(142).pipe(T.HttpBody())),
+          body: S.optional(ContentCategory.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -15320,15 +18126,15 @@ function __c41(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          assetIdentifier: S.optional(__S(168)),
-          exitCustomEvents: S.optional(__S(159)),
-          detectedFeatures: S.optional(__S(38)),
-          timerCustomEvents: S.optional(__S(159)),
-          counterCustomEvents: S.optional(__S(159)),
-          idDimensionValue: S.optional(__S(65)),
-          clickTags: S.optional(__S(161)),
+          assetIdentifier: S.optional(CreativeAssetId),
+          exitCustomEvents: S.optional(CreativeCustomEventList),
+          detectedFeatures: S.optional(CreativeAssetMetadataDetectedFeaturesItemEnumList),
+          timerCustomEvents: S.optional(CreativeCustomEventList),
+          counterCustomEvents: S.optional(CreativeCustomEventList),
+          idDimensionValue: S.optional(DimensionValue),
+          clickTags: S.optional(ClickTagList),
           richMedia: S.optional(S.Boolean),
-          warnedValidationRules: S.optional(__S(38)),
+          warnedValidationRules: S.optional(CreativeAssetMetadataWarnedValidationRulesItemEnumList),
           id: S.optional(S.String),
           kind: S.optional(S.String),
         }),
@@ -15338,7 +18144,7 @@ function __c41(j: number): any {
         S.Struct({
           advertiserId: S.String.pipe(T.Label()),
           profileId: S.String.pipe(T.Label()),
-          body: S.optional(__S(330).pipe(T.HttpBody())),
+          body: S.optional(CreativeAssetMetadata.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -15353,7 +18159,7 @@ function __c41(j: number): any {
       return S.suspend(() =>
         S.Struct({
           profileId: S.String.pipe(T.Label()),
-          body: S.optional(__S(145).pipe(T.HttpBody())),
+          body: S.optional(CreativeField.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -15369,7 +18175,7 @@ function __c41(j: number): any {
         S.Struct({
           profileId: S.String.pipe(T.Label()),
           creativeFieldId: S.String.pipe(T.Label()),
-          body: S.optional(__S(147).pipe(T.HttpBody())),
+          body: S.optional(CreativeFieldValue.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -15384,7 +18190,7 @@ function __c41(j: number): any {
       return S.suspend(() =>
         S.Struct({
           profileId: S.String.pipe(T.Label()),
-          body: S.optional(__S(149).pipe(T.HttpBody())),
+          body: S.optional(CreativeGroup.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -15399,7 +18205,7 @@ function __c41(j: number): any {
       return S.suspend(() =>
         S.Struct({
           profileId: S.String.pipe(T.Label()),
-          body: S.optional(__S(171).pipe(T.HttpBody())),
+          body: S.optional(Creative.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -15416,7 +18222,7 @@ function __c42(j: number): any {
       return S.suspend(() =>
         S.Struct({
           profileId: S.String.pipe(T.Label()),
-          body: S.optional(__S(175).pipe(T.HttpBody())),
+          body: S.optional(DirectorySite.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -15431,7 +18237,7 @@ function __c42(j: number): any {
       return S.suspend(() =>
         S.Struct({
           dynamicProfileId: S.optional(S.String),
-          dynamicFeed: S.optional(__S(189)),
+          dynamicFeed: S.optional(DynamicFeed),
         }),
       ).annotate({
         identifier: "DynamicFeedsInsertRequest",
@@ -15439,7 +18245,7 @@ function __c42(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(__S(337).pipe(T.HttpBody())),
+          body: S.optional(DynamicFeedsInsertRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -15453,7 +18259,7 @@ function __c42(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(__S(208).pipe(T.HttpBody())),
+          body: S.optional(DynamicProfile.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -15468,7 +18274,7 @@ function __c42(j: number): any {
       return S.suspend(() =>
         S.Struct({
           objectId: S.optional(S.String),
-          objectType: S.optional(S.String),
+          objectType: S.optional(DynamicTargetingKeyObjectTypeEnum),
           kind: S.optional(S.String),
           name: S.optional(S.String),
         }),
@@ -15477,7 +18283,7 @@ function __c42(j: number): any {
       return S.suspend(() =>
         S.Struct({
           profileId: S.String.pipe(T.Label()),
-          body: S.optional(__S(340).pipe(T.HttpBody())),
+          body: S.optional(DynamicTargetingKey.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -15492,7 +18298,7 @@ function __c42(j: number): any {
       return S.suspend(() =>
         S.Struct({
           profileId: S.String.pipe(T.Label()),
-          body: S.optional(__S(210).pipe(T.HttpBody())),
+          body: S.optional(EventTag.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -15505,7 +18311,7 @@ function __c42(j: number): any {
       return S.suspend(() =>
         S.Struct({
           profileId: S.String.pipe(T.Label()),
-          body: S.optional(__S(220).pipe(T.HttpBody())),
+          body: S.optional(FloodlightActivity.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -15524,7 +18330,7 @@ function __c43(j: number): any {
       return S.suspend(() =>
         S.Struct({
           profileId: S.String.pipe(T.Label()),
-          body: S.optional(__S(222).pipe(T.HttpBody())),
+          body: S.optional(FloodlightActivityGroup.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -15539,7 +18345,7 @@ function __c43(j: number): any {
       return S.suspend(() =>
         S.Struct({
           profileId: S.String.pipe(T.Label()),
-          body: S.optional(__S(241).pipe(T.HttpBody())),
+          body: S.optional(PlacementGroup.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -15554,7 +18360,7 @@ function __c43(j: number): any {
       return S.suspend(() =>
         S.Struct({
           profileId: S.String.pipe(T.Label()),
-          body: S.optional(__S(253).pipe(T.HttpBody())),
+          body: S.optional(Placement.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -15567,7 +18373,7 @@ function __c43(j: number): any {
       return S.suspend(() =>
         S.Struct({
           profileId: S.String.pipe(T.Label()),
-          body: S.optional(__S(255).pipe(T.HttpBody())),
+          body: S.optional(PlacementStrategy.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -15582,7 +18388,7 @@ function __c43(j: number): any {
       return S.suspend(() =>
         S.Struct({
           profileId: S.String.pipe(T.Label()),
-          body: S.optional(__S(264).pipe(T.HttpBody())),
+          body: S.optional(RemarketingList.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -15597,7 +18403,7 @@ function __c43(j: number): any {
       return S.suspend(() =>
         S.Struct({
           profileId: S.String.pipe(T.Label()),
-          body: S.optional(__S(284).pipe(T.HttpBody())),
+          body: S.optional(Report.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -15610,7 +18416,7 @@ function __c43(j: number): any {
       return S.suspend(() =>
         S.Struct({
           profileId: S.String.pipe(T.Label()),
-          body: S.optional(__S(293).pipe(T.HttpBody())),
+          body: S.optional(Site.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -15623,7 +18429,7 @@ function __c43(j: number): any {
       return S.suspend(() =>
         S.Struct({
           profileId: S.String.pipe(T.Label()),
-          body: S.optional(__S(61).pipe(T.HttpBody())),
+          body: S.optional(Size.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -15649,7 +18455,7 @@ function __c44(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(__S(352).pipe(T.HttpBody())),
+          body: S.optional(DfareportingStudioCreativeAssetsInsertRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -15664,30 +18470,30 @@ function __c44(j: number): any {
       return S.suspend(() =>
         S.Struct({
           errorReason: S.optional(S.String),
-          processingState: S.optional(S.String),
+          processingState: S.optional(VideoProcessingDataProcessingStateEnum),
         }),
       ).annotate({ identifier: "VideoProcessingData" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           filesize: S.optional(S.String),
-          createInfo: S.optional(__S(89)),
+          createInfo: S.optional(LastModifiedInfo),
           studioAdvertiserId: S.optional(S.String),
-          lastModifiedInfo: S.optional(__S(89)),
+          lastModifiedInfo: S.optional(LastModifiedInfo),
           filename: S.optional(S.String),
           id: S.optional(S.String),
           studioCreativeId: S.optional(S.String),
-          videoProcessingData: S.optional(__S(354)),
+          videoProcessingData: S.optional(VideoProcessingData),
           studioAccountId: S.optional(S.String),
-          type: S.optional(S.String),
+          type: S.optional(StudioCreativeAssetTypeEnum),
         }),
       ).annotate({ identifier: "StudioCreativeAsset" });
     case 4:
-      return S.Array(__S(355));
+      return S.Array(StudioCreativeAsset);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          assets: S.optional(__S(356)),
+          assets: S.optional(StudioCreativeAssetList),
         }),
       ).annotate({
         identifier: "StudioCreativeAssetsResponse",
@@ -15695,7 +18501,7 @@ function __c44(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(__S(297).pipe(T.HttpBody())),
+          body: S.optional(StudioCreative.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -15710,7 +18516,7 @@ function __c44(j: number): any {
       return S.suspend(() =>
         S.Struct({
           profileId: S.String.pipe(T.Label()),
-          body: S.optional(__S(299).pipe(T.HttpBody())),
+          body: S.optional(Subaccount.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -15727,7 +18533,7 @@ function __c45(j: number): any {
       return S.suspend(() =>
         S.Struct({
           profileId: S.String.pipe(T.Label()),
-          body: S.optional(__S(303).pipe(T.HttpBody())),
+          body: S.optional(TargetingTemplate.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -15742,7 +18548,7 @@ function __c45(j: number): any {
       return S.suspend(() =>
         S.Struct({
           profileId: S.String.pipe(T.Label()),
-          body: S.optional(__S(316).pipe(T.HttpBody())),
+          body: S.optional(UserRole.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -15768,7 +18574,7 @@ function __c45(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          accountPermissionGroups: S.optional(__S(68)),
+          accountPermissionGroups: S.optional(AccountPermissionGroupList),
           kind: S.optional(S.String),
         }),
       ).annotate({
@@ -15789,12 +18595,12 @@ function __c45(j: number): any {
         identifier: "ListAccountPermissionsRequest",
       });
     case 5:
-      return S.Array(__S(50));
+      return S.Array(AccountPermission);
     case 6:
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
-          accountPermissions: S.optional(__S(365)),
+          accountPermissions: S.optional(AccountPermissionList),
         }),
       ).annotate({
         identifier: "AccountPermissionsListResponse",
@@ -15803,11 +18609,11 @@ function __c45(j: number): any {
       return S.suspend(() =>
         S.Struct({
           searchString: S.optional(S.String.pipe(T.Query())),
-          sortOrder: S.optional(S.String.pipe(T.Query())),
+          sortOrder: S.optional(ListAccountsSortOrderEnum.pipe(T.Query())),
           maxResults: S.optional(S.Number.pipe(T.Query())),
           pageToken: S.optional(S.String.pipe(T.Query())),
-          ids: S.optional(__S(0).pipe(T.Query())),
-          sortField: S.optional(S.String.pipe(T.Query())),
+          ids: S.optional(StringList.pipe(T.Query())),
+          sortField: S.optional(ListAccountsSortFieldEnum.pipe(T.Query())),
           active: S.optional(S.Boolean.pipe(T.Query())),
           profileId: S.String.pipe(T.Label()),
         }).pipe(
@@ -15823,11 +18629,11 @@ function __c45(j: number): any {
 function __c46(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(54));
+      return S.Array(Account);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          accounts: S.optional(__S(368)),
+          accounts: S.optional(AccountList),
           kind: S.optional(S.String),
           nextPageToken: S.optional(S.String),
         }),
@@ -15837,11 +18643,11 @@ function __c46(j: number): any {
         S.Struct({
           profileId: S.String.pipe(T.Label()),
           maxResults: S.optional(S.Number.pipe(T.Query())),
-          sortField: S.optional(S.String.pipe(T.Query())),
+          sortField: S.optional(ListAccountUserProfilesSortFieldEnum.pipe(T.Query())),
           searchString: S.optional(S.String.pipe(T.Query())),
-          ids: S.optional(__S(0).pipe(T.Query())),
+          ids: S.optional(StringList.pipe(T.Query())),
           subaccountId: S.optional(S.String.pipe(T.Query())),
-          sortOrder: S.optional(S.String.pipe(T.Query())),
+          sortOrder: S.optional(ListAccountUserProfilesSortOrderEnum.pipe(T.Query())),
           pageToken: S.optional(S.String.pipe(T.Query())),
           userRoleId: S.optional(S.String.pipe(T.Query())),
           active: S.optional(S.Boolean.pipe(T.Query())),
@@ -15856,12 +18662,12 @@ function __c46(j: number): any {
         identifier: "ListAccountUserProfilesRequest",
       });
     case 3:
-      return S.Array(__S(57));
+      return S.Array(AccountUserProfile);
     case 4:
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
-          accountUserProfiles: S.optional(__S(371)),
+          accountUserProfiles: S.optional(AccountUserProfileList),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -15870,28 +18676,28 @@ function __c46(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(__S(38).pipe(T.Query())),
-          landingPageIds: S.optional(__S(0).pipe(T.Query())),
-          ids: S.optional(__S(0).pipe(T.Query())),
-          sortOrder: S.optional(S.String.pipe(T.Query())),
+          type: S.optional(ListAdsTypeEnumList.pipe(T.Query())),
+          landingPageIds: S.optional(StringList.pipe(T.Query())),
+          ids: S.optional(StringList.pipe(T.Query())),
+          sortOrder: S.optional(ListAdsSortOrderEnum.pipe(T.Query())),
           searchString: S.optional(S.String.pipe(T.Query())),
           active: S.optional(S.Boolean.pipe(T.Query())),
           profileId: S.String.pipe(T.Label()),
           sslCompliant: S.optional(S.Boolean.pipe(T.Query())),
-          remarketingListIds: S.optional(__S(0).pipe(T.Query())),
+          remarketingListIds: S.optional(StringList.pipe(T.Query())),
           dynamicClickTracker: S.optional(S.Boolean.pipe(T.Query())),
           advertiserId: S.optional(S.String.pipe(T.Query())),
-          audienceSegmentIds: S.optional(__S(0).pipe(T.Query())),
-          creativeOptimizationConfigurationIds: S.optional(__S(0).pipe(T.Query())),
+          audienceSegmentIds: S.optional(StringList.pipe(T.Query())),
+          creativeOptimizationConfigurationIds: S.optional(StringList.pipe(T.Query())),
           pageToken: S.optional(S.String.pipe(T.Query())),
-          compatibility: S.optional(S.String.pipe(T.Query())),
-          placementIds: S.optional(__S(0).pipe(T.Query())),
+          compatibility: S.optional(ListAdsCompatibilityEnum.pipe(T.Query())),
+          placementIds: S.optional(StringList.pipe(T.Query())),
           maxResults: S.optional(S.Number.pipe(T.Query())),
-          sizeIds: S.optional(__S(0).pipe(T.Query())),
-          campaignIds: S.optional(__S(0).pipe(T.Query())),
-          sortField: S.optional(S.String.pipe(T.Query())),
+          sizeIds: S.optional(StringList.pipe(T.Query())),
+          campaignIds: S.optional(StringList.pipe(T.Query())),
+          sortField: S.optional(ListAdsSortFieldEnum.pipe(T.Query())),
           sslRequired: S.optional(S.Boolean.pipe(T.Query())),
-          creativeIds: S.optional(__S(0).pipe(T.Query())),
+          creativeIds: S.optional(StringList.pipe(T.Query())),
           archived: S.optional(S.Boolean.pipe(T.Query())),
           overriddenEventTagId: S.optional(S.String.pipe(T.Query())),
         }).pipe(
@@ -15903,12 +18709,12 @@ function __c46(j: number): any {
         ),
       ).annotate({ identifier: "ListAdsRequest" });
     case 6:
-      return S.Array(__S(113));
+      return S.Array(Ad);
     case 7:
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
-          ads: S.optional(__S(374)),
+          ads: S.optional(AdList),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "AdsListResponse" });
@@ -15919,12 +18725,12 @@ function __c47(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          ids: S.optional(__S(0).pipe(T.Query())),
+          ids: S.optional(StringList.pipe(T.Query())),
           searchString: S.optional(S.String.pipe(T.Query())),
-          sortOrder: S.optional(S.String.pipe(T.Query())),
+          sortOrder: S.optional(ListAdvertiserGroupsSortOrderEnum.pipe(T.Query())),
           maxResults: S.optional(S.Number.pipe(T.Query())),
           profileId: S.String.pipe(T.Label()),
-          sortField: S.optional(S.String.pipe(T.Query())),
+          sortField: S.optional(ListAdvertiserGroupsSortFieldEnum.pipe(T.Query())),
           pageToken: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
@@ -15937,11 +18743,11 @@ function __c47(j: number): any {
         identifier: "ListAdvertiserGroupsRequest",
       });
     case 1:
-      return S.Array(__S(115));
+      return S.Array(AdvertiserGroup);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          advertiserGroups: S.optional(__S(377)),
+          advertiserGroups: S.optional(AdvertiserGroupList),
           kind: S.optional(S.String),
           nextPageToken: S.optional(S.String),
         }),
@@ -15977,7 +18783,7 @@ function __c47(j: number): any {
         }),
       ).annotate({ identifier: "CampaignSummary" });
     case 5:
-      return S.Array(__S(380));
+      return S.Array(CampaignSummary);
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -15990,19 +18796,19 @@ function __c47(j: number): any {
           id: S.optional(S.String),
           correctedInvoiceId: S.optional(S.String),
           subtotalAmountMicros: S.optional(S.String),
-          campaign_summaries: S.optional(__S(381)),
+          campaign_summaries: S.optional(CampaignSummaryList),
           issueDate: S.optional(S.String),
           totalAmountMicros: S.optional(S.String),
-          replacedInvoiceIds: S.optional(__S(0)),
+          replacedInvoiceIds: S.optional(StringList),
           pdfUrl: S.optional(S.String),
           purchaseOrderNumber: S.optional(S.String),
-          invoiceType: S.optional(S.String),
+          invoiceType: S.optional(InvoiceInvoiceTypeEnum),
           serviceEndDate: S.optional(S.String),
           serviceStartDate: S.optional(S.String),
         }),
       ).annotate({ identifier: "Invoice" });
     case 7:
-      return S.Array(__S(382));
+      return S.Array(Invoice);
   }
 }
 function __c48(j: number): any {
@@ -16012,7 +18818,7 @@ function __c48(j: number): any {
         S.Struct({
           kind: S.optional(S.String),
           nextPageToken: S.optional(S.String),
-          invoices: S.optional(__S(383)),
+          invoices: S.optional(InvoiceList),
         }),
       ).annotate({
         identifier: "AdvertiserInvoicesListResponse",
@@ -16022,15 +18828,15 @@ function __c48(j: number): any {
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
           archived: S.optional(S.Boolean.pipe(T.Query())),
-          advertiserIds: S.optional(__S(0).pipe(T.Query())),
+          advertiserIds: S.optional(StringList.pipe(T.Query())),
           subaccountId: S.optional(S.String.pipe(T.Query())),
           searchString: S.optional(S.String.pipe(T.Query())),
           profileId: S.String.pipe(T.Label()),
-          sortField: S.optional(S.String.pipe(T.Query())),
-          campaignIds: S.optional(__S(0).pipe(T.Query())),
+          sortField: S.optional(ListAdvertiserLandingPagesSortFieldEnum.pipe(T.Query())),
+          campaignIds: S.optional(StringList.pipe(T.Query())),
           maxResults: S.optional(S.Number.pipe(T.Query())),
-          sortOrder: S.optional(S.String.pipe(T.Query())),
-          ids: S.optional(__S(0).pipe(T.Query())),
+          sortOrder: S.optional(ListAdvertiserLandingPagesSortOrderEnum.pipe(T.Query())),
+          ids: S.optional(StringList.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -16042,13 +18848,13 @@ function __c48(j: number): any {
         identifier: "ListAdvertiserLandingPagesRequest",
       });
     case 2:
-      return S.Array(__S(120));
+      return S.Array(LandingPage);
     case 3:
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
           nextPageToken: S.optional(S.String),
-          landingPages: S.optional(__S(386)),
+          landingPages: S.optional(LandingPageList),
         }),
       ).annotate({
         identifier: "AdvertiserLandingPagesListResponse",
@@ -16056,19 +18862,19 @@ function __c48(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          ids: S.optional(__S(0).pipe(T.Query())),
+          ids: S.optional(StringList.pipe(T.Query())),
           subaccountId: S.optional(S.String.pipe(T.Query())),
-          advertiserGroupIds: S.optional(__S(0).pipe(T.Query())),
+          advertiserGroupIds: S.optional(StringList.pipe(T.Query())),
           pageToken: S.optional(S.String.pipe(T.Query())),
           maxResults: S.optional(S.Number.pipe(T.Query())),
           includeAdvertisersWithoutGroupsOnly: S.optional(S.Boolean.pipe(T.Query())),
-          sortOrder: S.optional(S.String.pipe(T.Query())),
-          status: S.optional(S.String.pipe(T.Query())),
+          sortOrder: S.optional(ListAdvertisersSortOrderEnum.pipe(T.Query())),
+          status: S.optional(ListAdvertisersStatusEnum.pipe(T.Query())),
           onlyParent: S.optional(S.Boolean.pipe(T.Query())),
           profileId: S.String.pipe(T.Label()),
           searchString: S.optional(S.String.pipe(T.Query())),
-          sortField: S.optional(S.String.pipe(T.Query())),
-          floodlightConfigurationIds: S.optional(__S(0).pipe(T.Query())),
+          sortField: S.optional(ListAdvertisersSortFieldEnum.pipe(T.Query())),
+          floodlightConfigurationIds: S.optional(StringList.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -16078,12 +18884,12 @@ function __c48(j: number): any {
         ),
       ).annotate({ identifier: "ListAdvertisersRequest" });
     case 5:
-      return S.Array(__S(123));
+      return S.Array(Advertiser);
     case 6:
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
-          advertisers: S.optional(__S(389)),
+          advertisers: S.optional(AdvertiserList),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "AdvertisersListResponse" });
@@ -16107,12 +18913,12 @@ function __c48(j: number): any {
 function __c49(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(324));
+      return S.Array(BillingAssignment);
     case 1:
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
-          billingAssignments: S.optional(__S(392)),
+          billingAssignments: S.optional(BillingAssignmentList),
         }),
       ).annotate({
         identifier: "BillingAssignmentsListResponse",
@@ -16120,16 +18926,16 @@ function __c49(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(__S(38).pipe(T.Query())),
+          status: S.optional(ListBillingProfilesStatusEnumList.pipe(T.Query())),
           currency_code: S.optional(S.String.pipe(T.Query())),
-          ids: S.optional(__S(0).pipe(T.Query())),
+          ids: S.optional(StringList.pipe(T.Query())),
           pageToken: S.optional(S.String.pipe(T.Query())),
-          subaccountIds: S.optional(__S(0).pipe(T.Query())),
-          sortOrder: S.optional(S.String.pipe(T.Query())),
+          subaccountIds: S.optional(StringList.pipe(T.Query())),
+          sortOrder: S.optional(ListBillingProfilesSortOrderEnum.pipe(T.Query())),
           name: S.optional(S.String.pipe(T.Query())),
           onlySuggestion: S.optional(S.Boolean.pipe(T.Query())),
           maxResults: S.optional(S.Number.pipe(T.Query())),
-          sortField: S.optional(S.String.pipe(T.Query())),
+          sortField: S.optional(ListBillingProfilesSortFieldEnum.pipe(T.Query())),
           profileId: S.String.pipe(T.Label()),
         }).pipe(
           T.Http({
@@ -16142,12 +18948,12 @@ function __c49(j: number): any {
         identifier: "ListBillingProfilesRequest",
       });
     case 3:
-      return S.Array(__S(125));
+      return S.Array(BillingProfile);
     case 4:
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
-          billingProfiles: S.optional(__S(395)),
+          billingProfiles: S.optional(BillingProfileList),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -16175,7 +18981,7 @@ function __c49(j: number): any {
         }),
       ).annotate({ identifier: "BillingRateTieredRate" });
     case 7:
-      return S.Array(__S(398));
+      return S.Array(BillingRateTieredRate);
   }
 }
 function __c50(j: number): any {
@@ -16183,23 +18989,23 @@ function __c50(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          tieredRates: S.optional(__S(399)),
+          tieredRates: S.optional(BillingRateTieredRateList),
           endDate: S.optional(S.String),
           rateInMicros: S.optional(S.String),
-          unitOfMeasure: S.optional(S.String),
+          unitOfMeasure: S.optional(BillingRateUnitOfMeasureEnum),
           currencyCode: S.optional(S.String),
           name: S.optional(S.String),
           id: S.optional(S.String),
           startDate: S.optional(S.String),
-          type: S.optional(S.String),
+          type: S.optional(BillingRateTypeEnum),
         }),
       ).annotate({ identifier: "BillingRate" });
     case 1:
-      return S.Array(__S(400));
+      return S.Array(BillingRate);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          billingRates: S.optional(__S(401)),
+          billingRates: S.optional(BillingRateList),
           nextPageToken: S.optional(S.String),
           kind: S.optional(S.String),
         }),
@@ -16220,13 +19026,13 @@ function __c50(j: number): any {
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
-          browsers: S.optional(__S(72)),
+          browsers: S.optional(BrowserList),
         }),
       ).annotate({ identifier: "BrowsersListResponse" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          sortOrder: S.optional(S.String.pipe(T.Query())),
+          sortOrder: S.optional(ListCampaignCreativeAssociationsSortOrderEnum.pipe(T.Query())),
           campaignId: S.String.pipe(T.Label()),
           pageToken: S.optional(S.String.pipe(T.Query())),
           maxResults: S.optional(S.Number.pipe(T.Query())),
@@ -16242,12 +19048,12 @@ function __c50(j: number): any {
         identifier: "ListCampaignCreativeAssociationsRequest",
       });
     case 6:
-      return S.Array(__S(326));
+      return S.Array(CampaignCreativeAssociation);
     case 7:
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
-          campaignCreativeAssociations: S.optional(__S(406)),
+          campaignCreativeAssociations: S.optional(CampaignCreativeAssociationList),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -16260,18 +19066,18 @@ function __c51(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          sortOrder: S.optional(S.String.pipe(T.Query())),
-          ids: S.optional(__S(0).pipe(T.Query())),
+          sortOrder: S.optional(ListCampaignsSortOrderEnum.pipe(T.Query())),
+          ids: S.optional(StringList.pipe(T.Query())),
           profileId: S.String.pipe(T.Label()),
           atLeastOneOptimizationActivity: S.optional(S.Boolean.pipe(T.Query())),
           maxResults: S.optional(S.Number.pipe(T.Query())),
-          advertiserIds: S.optional(__S(0).pipe(T.Query())),
+          advertiserIds: S.optional(StringList.pipe(T.Query())),
           archived: S.optional(S.Boolean.pipe(T.Query())),
           pageToken: S.optional(S.String.pipe(T.Query())),
           searchString: S.optional(S.String.pipe(T.Query())),
-          excludedIds: S.optional(__S(0).pipe(T.Query())),
-          sortField: S.optional(S.String.pipe(T.Query())),
-          advertiserGroupIds: S.optional(__S(0).pipe(T.Query())),
+          excludedIds: S.optional(StringList.pipe(T.Query())),
+          sortField: S.optional(ListCampaignsSortFieldEnum.pipe(T.Query())),
+          advertiserGroupIds: S.optional(StringList.pipe(T.Query())),
           overriddenEventTagId: S.optional(S.String.pipe(T.Query())),
           subaccountId: S.optional(S.String.pipe(T.Query())),
         }).pipe(
@@ -16283,12 +19089,12 @@ function __c51(j: number): any {
         ),
       ).annotate({ identifier: "ListCampaignsRequest" });
     case 1:
-      return S.Array(__S(137));
+      return S.Array(Campaign);
     case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          campaigns: S.optional(__S(409)),
+          campaigns: S.optional(CampaignList),
           kind: S.optional(S.String),
         }),
       ).annotate({ identifier: "CampaignsListResponse" });
@@ -16299,13 +19105,13 @@ function __c51(j: number): any {
           maxResults: S.optional(S.Number.pipe(T.Query())),
           profileId: S.String.pipe(T.Label()),
           searchString: S.optional(S.String.pipe(T.Query())),
-          userProfileIds: S.optional(__S(0).pipe(T.Query())),
+          userProfileIds: S.optional(StringList.pipe(T.Query())),
           pageToken: S.optional(S.String.pipe(T.Query())),
-          objectType: S.optional(S.String.pipe(T.Query())),
-          objectIds: S.optional(__S(0).pipe(T.Query())),
-          action: S.optional(S.String.pipe(T.Query())),
+          objectType: S.optional(ListChangeLogsObjectTypeEnum.pipe(T.Query())),
+          objectIds: S.optional(StringList.pipe(T.Query())),
+          action: S.optional(ListChangeLogsActionEnum.pipe(T.Query())),
           maxChangeTime: S.optional(S.String.pipe(T.Query())),
-          ids: S.optional(__S(0).pipe(T.Query())),
+          ids: S.optional(StringList.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -16315,23 +19121,23 @@ function __c51(j: number): any {
         ),
       ).annotate({ identifier: "ListChangeLogsRequest" });
     case 4:
-      return S.Array(__S(139));
+      return S.Array(ChangeLog);
     case 5:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
           kind: S.optional(S.String),
-          changeLogs: S.optional(__S(412)),
+          changeLogs: S.optional(ChangeLogList),
         }),
       ).annotate({ identifier: "ChangeLogsListResponse" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          regionDartIds: S.optional(__S(0).pipe(T.Query())),
-          countryDartIds: S.optional(__S(0).pipe(T.Query())),
+          regionDartIds: S.optional(StringList.pipe(T.Query())),
+          countryDartIds: S.optional(StringList.pipe(T.Query())),
           namePrefix: S.optional(S.String.pipe(T.Query())),
           profileId: S.String.pipe(T.Label()),
-          dartIds: S.optional(__S(0).pipe(T.Query())),
+          dartIds: S.optional(StringList.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -16343,7 +19149,7 @@ function __c51(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          cities: S.optional(__S(103)),
+          cities: S.optional(CityList),
           kind: S.optional(S.String),
         }),
       ).annotate({ identifier: "CitiesListResponse" });
@@ -16368,7 +19174,7 @@ function __c52(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          connectionTypes: S.optional(__S(70)),
+          connectionTypes: S.optional(ConnectionTypeList),
           kind: S.optional(S.String),
         }),
       ).annotate({
@@ -16378,12 +19184,12 @@ function __c52(j: number): any {
       return S.suspend(() =>
         S.Struct({
           searchString: S.optional(S.String.pipe(T.Query())),
-          sortOrder: S.optional(S.String.pipe(T.Query())),
-          ids: S.optional(__S(0).pipe(T.Query())),
+          sortOrder: S.optional(ListContentCategoriesSortOrderEnum.pipe(T.Query())),
+          ids: S.optional(StringList.pipe(T.Query())),
           maxResults: S.optional(S.Number.pipe(T.Query())),
           pageToken: S.optional(S.String.pipe(T.Query())),
           profileId: S.String.pipe(T.Label()),
-          sortField: S.optional(S.String.pipe(T.Query())),
+          sortField: S.optional(ListContentCategoriesSortFieldEnum.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -16395,12 +19201,12 @@ function __c52(j: number): any {
         identifier: "ListContentCategoriesRequest",
       });
     case 3:
-      return S.Array(__S(142));
+      return S.Array(ContentCategory);
     case 4:
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
-          contentCategories: S.optional(__S(419)),
+          contentCategories: S.optional(ContentCategoryList),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -16422,20 +19228,20 @@ function __c52(j: number): any {
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
-          countries: S.optional(__S(107)),
+          countries: S.optional(CountryList),
         }),
       ).annotate({ identifier: "CountriesListResponse" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          sortOrder: S.optional(S.String.pipe(T.Query())),
+          sortOrder: S.optional(ListCreativeFieldsSortOrderEnum.pipe(T.Query())),
           maxResults: S.optional(S.Number.pipe(T.Query())),
           pageToken: S.optional(S.String.pipe(T.Query())),
-          advertiserIds: S.optional(__S(0).pipe(T.Query())),
-          ids: S.optional(__S(0).pipe(T.Query())),
+          advertiserIds: S.optional(StringList.pipe(T.Query())),
+          ids: S.optional(StringList.pipe(T.Query())),
           searchString: S.optional(S.String.pipe(T.Query())),
           profileId: S.String.pipe(T.Label()),
-          sortField: S.optional(S.String.pipe(T.Query())),
+          sortField: S.optional(ListCreativeFieldsSortFieldEnum.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -16451,11 +19257,11 @@ function __c52(j: number): any {
 function __c53(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(145));
+      return S.Array(CreativeField);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          creativeFields: S.optional(__S(424)),
+          creativeFields: S.optional(CreativeFieldList),
           kind: S.optional(S.String),
           nextPageToken: S.optional(S.String),
         }),
@@ -16467,12 +19273,12 @@ function __c53(j: number): any {
         S.Struct({
           maxResults: S.optional(S.Number.pipe(T.Query())),
           pageToken: S.optional(S.String.pipe(T.Query())),
-          sortField: S.optional(S.String.pipe(T.Query())),
+          sortField: S.optional(ListCreativeFieldValuesSortFieldEnum.pipe(T.Query())),
           profileId: S.String.pipe(T.Label()),
           searchString: S.optional(S.String.pipe(T.Query())),
           creativeFieldId: S.String.pipe(T.Label()),
-          sortOrder: S.optional(S.String.pipe(T.Query())),
-          ids: S.optional(__S(0).pipe(T.Query())),
+          sortOrder: S.optional(ListCreativeFieldValuesSortOrderEnum.pipe(T.Query())),
+          ids: S.optional(StringList.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -16484,12 +19290,12 @@ function __c53(j: number): any {
         identifier: "ListCreativeFieldValuesRequest",
       });
     case 3:
-      return S.Array(__S(147));
+      return S.Array(CreativeFieldValue);
     case 4:
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
-          creativeFieldValues: S.optional(__S(427)),
+          creativeFieldValues: S.optional(CreativeFieldValueList),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -16498,11 +19304,11 @@ function __c53(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          advertiserIds: S.optional(__S(0).pipe(T.Query())),
-          sortOrder: S.optional(S.String.pipe(T.Query())),
-          sortField: S.optional(S.String.pipe(T.Query())),
+          advertiserIds: S.optional(StringList.pipe(T.Query())),
+          sortOrder: S.optional(ListCreativeGroupsSortOrderEnum.pipe(T.Query())),
+          sortField: S.optional(ListCreativeGroupsSortFieldEnum.pipe(T.Query())),
           profileId: S.String.pipe(T.Label()),
-          ids: S.optional(__S(0).pipe(T.Query())),
+          ids: S.optional(StringList.pipe(T.Query())),
           maxResults: S.optional(S.Number.pipe(T.Query())),
           searchString: S.optional(S.String.pipe(T.Query())),
           groupNumber: S.optional(S.Number.pipe(T.Query())),
@@ -16518,11 +19324,11 @@ function __c53(j: number): any {
         identifier: "ListCreativeGroupsRequest",
       });
     case 6:
-      return S.Array(__S(149));
+      return S.Array(CreativeGroup);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          creativeGroups: S.optional(__S(430)),
+          creativeGroups: S.optional(CreativeGroupList),
           nextPageToken: S.optional(S.String),
           kind: S.optional(S.String),
         }),
@@ -16537,18 +19343,18 @@ function __c54(j: number): any {
       return S.suspend(() =>
         S.Struct({
           studioCreativeId: S.optional(S.String.pipe(T.Query())),
-          sizeIds: S.optional(__S(0).pipe(T.Query())),
-          renderingIds: S.optional(__S(0).pipe(T.Query())),
-          sortField: S.optional(S.String.pipe(T.Query())),
-          companionCreativeIds: S.optional(__S(0).pipe(T.Query())),
+          sizeIds: S.optional(StringList.pipe(T.Query())),
+          renderingIds: S.optional(StringList.pipe(T.Query())),
+          sortField: S.optional(ListCreativesSortFieldEnum.pipe(T.Query())),
+          companionCreativeIds: S.optional(StringList.pipe(T.Query())),
           active: S.optional(S.Boolean.pipe(T.Query())),
           campaignId: S.optional(S.String.pipe(T.Query())),
-          creativeFieldIds: S.optional(__S(0).pipe(T.Query())),
-          sortOrder: S.optional(S.String.pipe(T.Query())),
+          creativeFieldIds: S.optional(StringList.pipe(T.Query())),
+          sortOrder: S.optional(ListCreativesSortOrderEnum.pipe(T.Query())),
           advertiserId: S.optional(S.String.pipe(T.Query())),
           profileId: S.String.pipe(T.Label()),
-          types: S.optional(__S(38).pipe(T.Query())),
-          ids: S.optional(__S(0).pipe(T.Query())),
+          types: S.optional(ListCreativesTypesEnumList.pipe(T.Query())),
+          ids: S.optional(StringList.pipe(T.Query())),
           searchString: S.optional(S.String.pipe(T.Query())),
           maxResults: S.optional(S.Number.pipe(T.Query())),
           archived: S.optional(S.Boolean.pipe(T.Query())),
@@ -16562,12 +19368,12 @@ function __c54(j: number): any {
         ),
       ).annotate({ identifier: "ListCreativesRequest" });
     case 1:
-      return S.Array(__S(171));
+      return S.Array(Creative);
     case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          creatives: S.optional(__S(433)),
+          creatives: S.optional(CreativeList),
           kind: S.optional(S.String),
         }),
       ).annotate({ identifier: "CreativesListResponse" });
@@ -16575,14 +19381,14 @@ function __c54(j: number): any {
       return S.suspend(() =>
         S.Struct({
           acceptsInStreamVideoPlacements: S.optional(S.Boolean.pipe(T.Query())),
-          sortField: S.optional(S.String.pipe(T.Query())),
+          sortField: S.optional(ListDirectorySitesSortFieldEnum.pipe(T.Query())),
           maxResults: S.optional(S.Number.pipe(T.Query())),
           acceptsPublisherPaidPlacements: S.optional(S.Boolean.pipe(T.Query())),
           profileId: S.String.pipe(T.Label()),
-          ids: S.optional(__S(0).pipe(T.Query())),
+          ids: S.optional(StringList.pipe(T.Query())),
           searchString: S.optional(S.String.pipe(T.Query())),
           active: S.optional(S.Boolean.pipe(T.Query())),
-          sortOrder: S.optional(S.String.pipe(T.Query())),
+          sortOrder: S.optional(ListDirectorySitesSortOrderEnum.pipe(T.Query())),
           acceptsInterstitialPlacements: S.optional(S.Boolean.pipe(T.Query())),
           pageToken: S.optional(S.String.pipe(T.Query())),
           dfpNetworkCode: S.optional(S.String.pipe(T.Query())),
@@ -16597,12 +19403,12 @@ function __c54(j: number): any {
         identifier: "ListDirectorySitesRequest",
       });
     case 4:
-      return S.Array(__S(175));
+      return S.Array(DirectorySite);
     case 5:
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
-          directorySites: S.optional(__S(436)),
+          directorySites: S.optional(DirectorySiteList),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -16612,8 +19418,8 @@ function __c54(j: number): any {
       return S.suspend(() =>
         S.Struct({
           objectId: S.optional(S.String.pipe(T.Query())),
-          objectType: S.optional(S.String.pipe(T.Query())),
-          names: S.optional(__S(0).pipe(T.Query())),
+          objectType: S.optional(ListDynamicTargetingKeysObjectTypeEnum.pipe(T.Query())),
+          names: S.optional(StringList.pipe(T.Query())),
           advertiserId: S.optional(S.String.pipe(T.Query())),
           profileId: S.String.pipe(T.Label()),
         }).pipe(
@@ -16627,7 +19433,7 @@ function __c54(j: number): any {
         identifier: "ListDynamicTargetingKeysRequest",
       });
     case 7:
-      return S.Array(__S(340));
+      return S.Array(DynamicTargetingKey);
   }
 }
 function __c55(j: number): any {
@@ -16636,7 +19442,7 @@ function __c55(j: number): any {
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
-          dynamicTargetingKeys: S.optional(__S(439)),
+          dynamicTargetingKeys: S.optional(DynamicTargetingKeyList),
         }),
       ).annotate({
         identifier: "DynamicTargetingKeysListResponse",
@@ -16648,10 +19454,10 @@ function __c55(j: number): any {
           advertiserId: S.optional(S.String.pipe(T.Query())),
           adId: S.optional(S.String.pipe(T.Query())),
           profileId: S.String.pipe(T.Label()),
-          sortField: S.optional(S.String.pipe(T.Query())),
-          sortOrder: S.optional(S.String.pipe(T.Query())),
-          ids: S.optional(__S(0).pipe(T.Query())),
-          eventTagTypes: S.optional(__S(38).pipe(T.Query())),
+          sortField: S.optional(ListEventTagsSortFieldEnum.pipe(T.Query())),
+          sortOrder: S.optional(ListEventTagsSortOrderEnum.pipe(T.Query())),
+          ids: S.optional(StringList.pipe(T.Query())),
+          eventTagTypes: S.optional(ListEventTagsEventTagTypesEnumList.pipe(T.Query())),
           campaignId: S.optional(S.String.pipe(T.Query())),
           searchString: S.optional(S.String.pipe(T.Query())),
           enabled: S.optional(S.Boolean.pipe(T.Query())),
@@ -16664,12 +19470,12 @@ function __c55(j: number): any {
         ),
       ).annotate({ identifier: "ListEventTagsRequest" });
     case 2:
-      return S.Array(__S(210));
+      return S.Array(EventTag);
     case 3:
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
-          eventTags: S.optional(__S(442)),
+          eventTags: S.optional(EventTagList),
         }),
       ).annotate({ identifier: "EventTagsListResponse" });
     case 4:
@@ -16678,9 +19484,9 @@ function __c55(j: number): any {
           pageToken: S.optional(S.String.pipe(T.Query())),
           profileId: S.String.pipe(T.Label()),
           maxResults: S.optional(S.Number.pipe(T.Query())),
-          sortField: S.optional(S.String.pipe(T.Query())),
-          sortOrder: S.optional(S.String.pipe(T.Query())),
-          scope: S.optional(S.String.pipe(T.Query())),
+          sortField: S.optional(ListFilesSortFieldEnum.pipe(T.Query())),
+          sortOrder: S.optional(ListFilesSortOrderEnum.pipe(T.Query())),
+          scope: S.optional(ListFilesScopeEnum.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -16690,11 +19496,11 @@ function __c55(j: number): any {
         ),
       ).annotate({ identifier: "ListFilesRequest" });
     case 5:
-      return S.Array(__S(214));
+      return S.Array(File);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          items: __S(445),
+          items: FileList_,
           etag: S.optional(S.String),
           kind: S.optional(S.String),
           nextPageToken: S.optional(S.String),
@@ -16703,17 +19509,19 @@ function __c55(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          sortField: S.optional(S.String.pipe(T.Query())),
+          sortField: S.optional(ListFloodlightActivitiesSortFieldEnum.pipe(T.Query())),
           maxResults: S.optional(S.Number.pipe(T.Query())),
           floodlightActivityGroupName: S.optional(S.String.pipe(T.Query())),
           tagString: S.optional(S.String.pipe(T.Query())),
-          ids: S.optional(__S(0).pipe(T.Query())),
-          floodlightActivityGroupIds: S.optional(__S(0).pipe(T.Query())),
+          ids: S.optional(StringList.pipe(T.Query())),
+          floodlightActivityGroupIds: S.optional(StringList.pipe(T.Query())),
           profileId: S.String.pipe(T.Label()),
           searchString: S.optional(S.String.pipe(T.Query())),
-          sortOrder: S.optional(S.String.pipe(T.Query())),
+          sortOrder: S.optional(ListFloodlightActivitiesSortOrderEnum.pipe(T.Query())),
           pageToken: S.optional(S.String.pipe(T.Query())),
-          floodlightActivityGroupType: S.optional(S.String.pipe(T.Query())),
+          floodlightActivityGroupType: S.optional(
+            ListFloodlightActivitiesFloodlightActivityGroupTypeEnum.pipe(T.Query()),
+          ),
           advertiserId: S.optional(S.String.pipe(T.Query())),
           floodlightActivityGroupTagString: S.optional(S.String.pipe(T.Query())),
           floodlightConfigurationId: S.optional(S.String.pipe(T.Query())),
@@ -16732,12 +19540,12 @@ function __c55(j: number): any {
 function __c56(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(220));
+      return S.Array(FloodlightActivity);
     case 1:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          floodlightActivities: S.optional(__S(448)),
+          floodlightActivities: S.optional(FloodlightActivityList),
           kind: S.optional(S.String),
         }),
       ).annotate({
@@ -16747,14 +19555,14 @@ function __c56(j: number): any {
       return S.suspend(() =>
         S.Struct({
           floodlightConfigurationId: S.optional(S.String.pipe(T.Query())),
-          type: S.optional(S.String.pipe(T.Query())),
+          type: S.optional(ListFloodlightActivityGroupsTypeEnum.pipe(T.Query())),
           searchString: S.optional(S.String.pipe(T.Query())),
           pageToken: S.optional(S.String.pipe(T.Query())),
-          sortOrder: S.optional(S.String.pipe(T.Query())),
-          ids: S.optional(__S(0).pipe(T.Query())),
+          sortOrder: S.optional(ListFloodlightActivityGroupsSortOrderEnum.pipe(T.Query())),
+          ids: S.optional(StringList.pipe(T.Query())),
           advertiserId: S.optional(S.String.pipe(T.Query())),
           profileId: S.String.pipe(T.Label()),
-          sortField: S.optional(S.String.pipe(T.Query())),
+          sortField: S.optional(ListFloodlightActivityGroupsSortFieldEnum.pipe(T.Query())),
           maxResults: S.optional(S.Number.pipe(T.Query())),
         }).pipe(
           T.Http({
@@ -16767,13 +19575,13 @@ function __c56(j: number): any {
         identifier: "ListFloodlightActivityGroupsRequest",
       });
     case 3:
-      return S.Array(__S(222));
+      return S.Array(FloodlightActivityGroup);
     case 4:
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
           nextPageToken: S.optional(S.String),
-          floodlightActivityGroups: S.optional(__S(451)),
+          floodlightActivityGroups: S.optional(FloodlightActivityGroupList),
         }),
       ).annotate({
         identifier: "FloodlightActivityGroupsListResponse",
@@ -16782,7 +19590,7 @@ function __c56(j: number): any {
       return S.suspend(() =>
         S.Struct({
           profileId: S.String.pipe(T.Label()),
-          ids: S.optional(__S(0).pipe(T.Query())),
+          ids: S.optional(StringList.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -16794,11 +19602,11 @@ function __c56(j: number): any {
         identifier: "ListFloodlightConfigurationsRequest",
       });
     case 6:
-      return S.Array(__S(232));
+      return S.Array(FloodlightConfiguration);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          floodlightConfigurations: S.optional(__S(454)),
+          floodlightConfigurations: S.optional(FloodlightConfigurationList),
           kind: S.optional(S.String),
         }),
       ).annotate({
@@ -16823,7 +19631,7 @@ function __c57(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          languages: S.optional(__S(79)),
+          languages: S.optional(LanguageList),
           kind: S.optional(S.String),
         }),
       ).annotate({ identifier: "LanguagesListResponse" });
@@ -16842,16 +19650,16 @@ function __c57(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          metros: S.optional(__S(105)),
+          metros: S.optional(MetroList),
           kind: S.optional(S.String),
         }),
       ).annotate({ identifier: "MetrosListResponse" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          directories: S.optional(__S(38).pipe(T.Query())),
+          directories: S.optional(ListMobileAppsDirectoriesEnumList.pipe(T.Query())),
           maxResults: S.optional(S.Number.pipe(T.Query())),
-          ids: S.optional(__S(0).pipe(T.Query())),
+          ids: S.optional(StringList.pipe(T.Query())),
           profileId: S.String.pipe(T.Label()),
           pageToken: S.optional(S.String.pipe(T.Query())),
           searchString: S.optional(S.String.pipe(T.Query())),
@@ -16864,12 +19672,12 @@ function __c57(j: number): any {
         ),
       ).annotate({ identifier: "ListMobileAppsRequest" });
     case 5:
-      return S.Array(__S(117));
+      return S.Array(MobileApp);
     case 6:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          mobileApps: S.optional(__S(461)),
+          mobileApps: S.optional(MobileAppList),
           kind: S.optional(S.String),
         }),
       ).annotate({ identifier: "MobileAppsListResponse" });
@@ -16895,7 +19703,7 @@ function __c58(j: number): any {
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
-          mobileCarriers: S.optional(__S(67)),
+          mobileCarriers: S.optional(MobileCarrierList),
         }),
       ).annotate({
         identifier: "MobileCarriersListResponse",
@@ -16918,7 +19726,7 @@ function __c58(j: number): any {
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
-          operatingSystems: S.optional(__S(76)),
+          operatingSystems: S.optional(OperatingSystemList),
         }),
       ).annotate({
         identifier: "OperatingSystemsListResponse",
@@ -16941,7 +19749,7 @@ function __c58(j: number): any {
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
-          operatingSystemVersions: S.optional(__S(75)),
+          operatingSystemVersions: S.optional(OperatingSystemVersionList),
         }),
       ).annotate({
         identifier: "OperatingSystemVersionsListResponse",
@@ -16949,26 +19757,26 @@ function __c58(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          activeStatus: S.optional(__S(38).pipe(T.Query())),
-          sortField: S.optional(S.String.pipe(T.Query())),
+          activeStatus: S.optional(ListPlacementGroupsActiveStatusEnumList.pipe(T.Query())),
+          sortField: S.optional(ListPlacementGroupsSortFieldEnum.pipe(T.Query())),
           maxStartDate: S.optional(S.String.pipe(T.Query())),
           searchString: S.optional(S.String.pipe(T.Query())),
           minStartDate: S.optional(S.String.pipe(T.Query())),
-          siteIds: S.optional(__S(0).pipe(T.Query())),
+          siteIds: S.optional(StringList.pipe(T.Query())),
           maxEndDate: S.optional(S.String.pipe(T.Query())),
-          advertiserIds: S.optional(__S(0).pipe(T.Query())),
+          advertiserIds: S.optional(StringList.pipe(T.Query())),
           minEndDate: S.optional(S.String.pipe(T.Query())),
           maxResults: S.optional(S.Number.pipe(T.Query())),
-          directorySiteIds: S.optional(__S(0).pipe(T.Query())),
-          ids: S.optional(__S(0).pipe(T.Query())),
+          directorySiteIds: S.optional(StringList.pipe(T.Query())),
+          ids: S.optional(StringList.pipe(T.Query())),
           profileId: S.String.pipe(T.Label()),
-          placementGroupType: S.optional(S.String.pipe(T.Query())),
-          sortOrder: S.optional(S.String.pipe(T.Query())),
+          placementGroupType: S.optional(ListPlacementGroupsPlacementGroupTypeEnum.pipe(T.Query())),
+          sortOrder: S.optional(ListPlacementGroupsSortOrderEnum.pipe(T.Query())),
           pageToken: S.optional(S.String.pipe(T.Query())),
-          campaignIds: S.optional(__S(0).pipe(T.Query())),
-          contentCategoryIds: S.optional(__S(0).pipe(T.Query())),
-          placementStrategyIds: S.optional(__S(0).pipe(T.Query())),
-          pricingTypes: S.optional(__S(38).pipe(T.Query())),
+          campaignIds: S.optional(StringList.pipe(T.Query())),
+          contentCategoryIds: S.optional(StringList.pipe(T.Query())),
+          placementStrategyIds: S.optional(StringList.pipe(T.Query())),
+          pricingTypes: S.optional(ListPlacementGroupsPricingTypesEnumList.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -16980,13 +19788,13 @@ function __c58(j: number): any {
         identifier: "ListPlacementGroupsRequest",
       });
     case 6:
-      return S.Array(__S(241));
+      return S.Array(PlacementGroup);
     case 7:
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
           nextPageToken: S.optional(S.String),
-          placementGroups: S.optional(__S(470)),
+          placementGroups: S.optional(PlacementGroupList),
         }),
       ).annotate({
         identifier: "PlacementGroupsListResponse",
@@ -16998,29 +19806,29 @@ function __c59(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          sortField: S.optional(S.String.pipe(T.Query())),
-          campaignIds: S.optional(__S(0).pipe(T.Query())),
-          siteIds: S.optional(__S(0).pipe(T.Query())),
-          groupIds: S.optional(__S(0).pipe(T.Query())),
+          sortField: S.optional(ListPlacementsSortFieldEnum.pipe(T.Query())),
+          campaignIds: S.optional(StringList.pipe(T.Query())),
+          siteIds: S.optional(StringList.pipe(T.Query())),
+          groupIds: S.optional(StringList.pipe(T.Query())),
           searchString: S.optional(S.String.pipe(T.Query())),
           minStartDate: S.optional(S.String.pipe(T.Query())),
-          advertiserIds: S.optional(__S(0).pipe(T.Query())),
-          sizeIds: S.optional(__S(0).pipe(T.Query())),
+          advertiserIds: S.optional(StringList.pipe(T.Query())),
+          sizeIds: S.optional(StringList.pipe(T.Query())),
           maxEndDate: S.optional(S.String.pipe(T.Query())),
-          paymentSource: S.optional(S.String.pipe(T.Query())),
-          activeStatus: S.optional(__S(38).pipe(T.Query())),
+          paymentSource: S.optional(ListPlacementsPaymentSourceEnum.pipe(T.Query())),
+          activeStatus: S.optional(ListPlacementsActiveStatusEnumList.pipe(T.Query())),
           minEndDate: S.optional(S.String.pipe(T.Query())),
           maxStartDate: S.optional(S.String.pipe(T.Query())),
-          pricingTypes: S.optional(__S(38).pipe(T.Query())),
-          placementStrategyIds: S.optional(__S(0).pipe(T.Query())),
+          pricingTypes: S.optional(ListPlacementsPricingTypesEnumList.pipe(T.Query())),
+          placementStrategyIds: S.optional(StringList.pipe(T.Query())),
           maxResults: S.optional(S.Number.pipe(T.Query())),
           profileId: S.String.pipe(T.Label()),
-          compatibilities: S.optional(__S(38).pipe(T.Query())),
-          directorySiteIds: S.optional(__S(0).pipe(T.Query())),
-          sortOrder: S.optional(S.String.pipe(T.Query())),
-          contentCategoryIds: S.optional(__S(0).pipe(T.Query())),
+          compatibilities: S.optional(ListPlacementsCompatibilitiesEnumList.pipe(T.Query())),
+          directorySiteIds: S.optional(StringList.pipe(T.Query())),
+          sortOrder: S.optional(ListPlacementsSortOrderEnum.pipe(T.Query())),
+          contentCategoryIds: S.optional(StringList.pipe(T.Query())),
           pageToken: S.optional(S.String.pipe(T.Query())),
-          ids: S.optional(__S(0).pipe(T.Query())),
+          ids: S.optional(StringList.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -17030,25 +19838,25 @@ function __c59(j: number): any {
         ),
       ).annotate({ identifier: "ListPlacementsRequest" });
     case 1:
-      return S.Array(__S(253));
+      return S.Array(Placement);
     case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
           kind: S.optional(S.String),
-          placements: S.optional(__S(473)),
+          placements: S.optional(PlacementList),
         }),
       ).annotate({ identifier: "PlacementsListResponse" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          sortOrder: S.optional(S.String.pipe(T.Query())),
+          sortOrder: S.optional(ListPlacementStrategiesSortOrderEnum.pipe(T.Query())),
           searchString: S.optional(S.String.pipe(T.Query())),
           pageToken: S.optional(S.String.pipe(T.Query())),
           maxResults: S.optional(S.Number.pipe(T.Query())),
           profileId: S.String.pipe(T.Label()),
-          sortField: S.optional(S.String.pipe(T.Query())),
-          ids: S.optional(__S(0).pipe(T.Query())),
+          sortField: S.optional(ListPlacementStrategiesSortFieldEnum.pipe(T.Query())),
+          ids: S.optional(StringList.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -17060,12 +19868,12 @@ function __c59(j: number): any {
         identifier: "ListPlacementStrategiesRequest",
       });
     case 4:
-      return S.Array(__S(255));
+      return S.Array(PlacementStrategy);
     case 5:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          placementStrategies: S.optional(__S(476)),
+          placementStrategies: S.optional(PlacementStrategyList),
           kind: S.optional(S.String),
         }),
       ).annotate({
@@ -17086,7 +19894,7 @@ function __c59(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          platformTypes: S.optional(__S(68)),
+          platformTypes: S.optional(PlatformTypeList),
           kind: S.optional(S.String),
         }),
       ).annotate({
@@ -17112,7 +19920,7 @@ function __c60(j: number): any {
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
-          postalCodes: S.optional(__S(109)),
+          postalCodes: S.optional(PostalCodeList),
         }),
       ).annotate({ identifier: "PostalCodesListResponse" });
     case 2:
@@ -17131,7 +19939,7 @@ function __c60(j: number): any {
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
-          regions: S.optional(__S(111)),
+          regions: S.optional(RegionList),
         }),
       ).annotate({ identifier: "RegionsListResponse" });
     case 4:
@@ -17141,11 +19949,11 @@ function __c60(j: number): any {
           pageToken: S.optional(S.String.pipe(T.Query())),
           floodlightActivityId: S.optional(S.String.pipe(T.Query())),
           active: S.optional(S.Boolean.pipe(T.Query())),
-          sortField: S.optional(S.String.pipe(T.Query())),
+          sortField: S.optional(ListRemarketingListsSortFieldEnum.pipe(T.Query())),
           profileId: S.String.pipe(T.Label()),
           maxResults: S.optional(S.Number.pipe(T.Query())),
           name: S.optional(S.String.pipe(T.Query())),
-          sortOrder: S.optional(S.String.pipe(T.Query())),
+          sortOrder: S.optional(ListRemarketingListsSortOrderEnum.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -17157,12 +19965,12 @@ function __c60(j: number): any {
         identifier: "ListRemarketingListsRequest",
       });
     case 5:
-      return S.Array(__S(264));
+      return S.Array(RemarketingList);
     case 6:
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
-          remarketingLists: S.optional(__S(485)),
+          remarketingLists: S.optional(RemarketingListList),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -17171,12 +19979,12 @@ function __c60(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          sortOrder: S.optional(S.String.pipe(T.Query())),
+          sortOrder: S.optional(ListReportsSortOrderEnum.pipe(T.Query())),
           maxResults: S.optional(S.Number.pipe(T.Query())),
           pageToken: S.optional(S.String.pipe(T.Query())),
-          scope: S.optional(S.String.pipe(T.Query())),
+          scope: S.optional(ListReportsScopeEnum.pipe(T.Query())),
           profileId: S.String.pipe(T.Label()),
-          sortField: S.optional(S.String.pipe(T.Query())),
+          sortField: S.optional(ListReportsSortFieldEnum.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -17190,24 +19998,24 @@ function __c60(j: number): any {
 function __c61(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(284));
+      return S.Array(Report);
     case 1:
       return S.suspend(() =>
         S.Struct({
           etag: S.optional(S.String),
           nextPageToken: S.optional(S.String),
-          items: __S(488),
+          items: ReportList_,
           kind: S.optional(S.String),
         }),
       ).annotate({ identifier: "ReportList" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          sortOrder: S.optional(S.String.pipe(T.Query())),
+          sortOrder: S.optional(ListReportsFilesSortOrderEnum.pipe(T.Query())),
           reportId: S.String.pipe(T.Label()),
           pageToken: S.optional(S.String.pipe(T.Query())),
           maxResults: S.optional(S.Number.pipe(T.Query())),
-          sortField: S.optional(S.String.pipe(T.Query())),
+          sortField: S.optional(ListReportsFilesSortFieldEnum.pipe(T.Query())),
           profileId: S.String.pipe(T.Label()),
         }).pipe(
           T.Http({
@@ -17226,16 +20034,16 @@ function __c61(j: number): any {
           subaccountId: S.optional(S.String.pipe(T.Query())),
           approved: S.optional(S.Boolean.pipe(T.Query())),
           profileId: S.String.pipe(T.Label()),
-          ids: S.optional(__S(0).pipe(T.Query())),
+          ids: S.optional(StringList.pipe(T.Query())),
           acceptsInterstitialPlacements: S.optional(S.Boolean.pipe(T.Query())),
-          sortOrder: S.optional(S.String.pipe(T.Query())),
+          sortOrder: S.optional(ListSitesSortOrderEnum.pipe(T.Query())),
           unmappedSite: S.optional(S.Boolean.pipe(T.Query())),
-          directorySiteIds: S.optional(__S(0).pipe(T.Query())),
+          directorySiteIds: S.optional(StringList.pipe(T.Query())),
           maxResults: S.optional(S.Number.pipe(T.Query())),
           searchString: S.optional(S.String.pipe(T.Query())),
           adWordsSite: S.optional(S.Boolean.pipe(T.Query())),
-          campaignIds: S.optional(__S(0).pipe(T.Query())),
-          sortField: S.optional(S.String.pipe(T.Query())),
+          campaignIds: S.optional(StringList.pipe(T.Query())),
+          sortField: S.optional(ListSitesSortFieldEnum.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -17245,12 +20053,12 @@ function __c61(j: number): any {
         ),
       ).annotate({ identifier: "ListSitesRequest" });
     case 4:
-      return S.Array(__S(293));
+      return S.Array(Site);
     case 5:
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
-          sites: S.optional(__S(492)),
+          sites: S.optional(SiteList),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "SitesListResponse" });
@@ -17261,7 +20069,7 @@ function __c61(j: number): any {
           height: S.optional(S.Number.pipe(T.Query())),
           width: S.optional(S.Number.pipe(T.Query())),
           iabStandard: S.optional(S.Boolean.pipe(T.Query())),
-          ids: S.optional(__S(0).pipe(T.Query())),
+          ids: S.optional(StringList.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -17274,7 +20082,7 @@ function __c61(j: number): any {
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
-          sizes: S.optional(__S(165)),
+          sizes: S.optional(SizeList),
         }),
       ).annotate({ identifier: "SizesListResponse" });
   }
@@ -17286,11 +20094,11 @@ function __c62(j: number): any {
         S.Struct({
           searchString: S.optional(S.String.pipe(T.Query())),
           profileId: S.String.pipe(T.Label()),
-          sortField: S.optional(S.String.pipe(T.Query())),
+          sortField: S.optional(ListSubaccountsSortFieldEnum.pipe(T.Query())),
           pageToken: S.optional(S.String.pipe(T.Query())),
           maxResults: S.optional(S.Number.pipe(T.Query())),
-          sortOrder: S.optional(S.String.pipe(T.Query())),
-          ids: S.optional(__S(0).pipe(T.Query())),
+          sortOrder: S.optional(ListSubaccountsSortOrderEnum.pipe(T.Query())),
+          ids: S.optional(StringList.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -17300,11 +20108,11 @@ function __c62(j: number): any {
         ),
       ).annotate({ identifier: "ListSubaccountsRequest" });
     case 1:
-      return S.Array(__S(299));
+      return S.Array(Subaccount);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          subaccounts: S.optional(__S(497)),
+          subaccounts: S.optional(SubaccountList),
           kind: S.optional(S.String),
           nextPageToken: S.optional(S.String),
         }),
@@ -17312,13 +20120,13 @@ function __c62(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          sortOrder: S.optional(S.String.pipe(T.Query())),
+          sortOrder: S.optional(ListTargetableRemarketingListsSortOrderEnum.pipe(T.Query())),
           pageToken: S.optional(S.String.pipe(T.Query())),
           active: S.optional(S.Boolean.pipe(T.Query())),
           name: S.optional(S.String.pipe(T.Query())),
           profileId: S.String.pipe(T.Label()),
           maxResults: S.optional(S.Number.pipe(T.Query())),
-          sortField: S.optional(S.String.pipe(T.Query())),
+          sortField: S.optional(ListTargetableRemarketingListsSortFieldEnum.pipe(T.Query())),
           advertiserId: S.String.pipe(T.Query()),
         }).pipe(
           T.Http({
@@ -17331,11 +20139,11 @@ function __c62(j: number): any {
         identifier: "ListTargetableRemarketingListsRequest",
       });
     case 4:
-      return S.Array(__S(301));
+      return S.Array(TargetableRemarketingList);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          targetableRemarketingLists: S.optional(__S(500)),
+          targetableRemarketingLists: S.optional(TargetableRemarketingListList),
           kind: S.optional(S.String),
           nextPageToken: S.optional(S.String),
         }),
@@ -17345,14 +20153,14 @@ function __c62(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          sortField: S.optional(S.String.pipe(T.Query())),
+          sortField: S.optional(ListTargetingTemplatesSortFieldEnum.pipe(T.Query())),
           advertiserId: S.optional(S.String.pipe(T.Query())),
           profileId: S.String.pipe(T.Label()),
           maxResults: S.optional(S.Number.pipe(T.Query())),
           pageToken: S.optional(S.String.pipe(T.Query())),
-          ids: S.optional(__S(0).pipe(T.Query())),
+          ids: S.optional(StringList.pipe(T.Query())),
           searchString: S.optional(S.String.pipe(T.Query())),
-          sortOrder: S.optional(S.String.pipe(T.Query())),
+          sortOrder: S.optional(ListTargetingTemplatesSortOrderEnum.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -17364,7 +20172,7 @@ function __c62(j: number): any {
         identifier: "ListTargetingTemplatesRequest",
       });
     case 7:
-      return S.Array(__S(303));
+      return S.Array(TargetingTemplate);
   }
 }
 function __c63(j: number): any {
@@ -17372,7 +20180,7 @@ function __c63(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          targetingTemplates: S.optional(__S(503)),
+          targetingTemplates: S.optional(TargetingTemplateList),
           kind: S.optional(S.String),
           nextPageToken: S.optional(S.String),
         }),
@@ -17386,7 +20194,7 @@ function __c63(j: number): any {
           profileId: S.String.pipe(T.Label()),
           name: S.optional(S.String.pipe(T.Query())),
           accountId: S.optional(S.String.pipe(T.Query())),
-          tvDataProvider: S.optional(S.String.pipe(T.Query())),
+          tvDataProvider: S.optional(ListTvCampaignSummariesTvDataProviderEnum.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -17403,7 +20211,7 @@ function __c63(j: number): any {
           grp: S.optional(S.String),
           endDate: S.optional(S.String),
           name: S.optional(S.String),
-          type: S.optional(S.String),
+          type: S.optional(TvCampaignSummaryTypeEnum),
           impressions: S.optional(S.String),
           id: S.optional(S.String),
           kind: S.optional(S.String),
@@ -17412,11 +20220,11 @@ function __c63(j: number): any {
         }),
       ).annotate({ identifier: "TvCampaignSummary" });
     case 3:
-      return S.Array(__S(506));
+      return S.Array(TvCampaignSummary);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          tvCampaignSummaries: S.optional(__S(507)),
+          tvCampaignSummaries: S.optional(TvCampaignSummaryList),
           kind: S.optional(S.String),
         }),
       ).annotate({
@@ -17433,11 +20241,11 @@ function __c63(j: number): any {
         ),
       ).annotate({ identifier: "ListUserProfilesRequest" });
     case 6:
-      return S.Array(__S(309));
+      return S.Array(UserProfile);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          items: S.optional(__S(510)),
+          items: S.optional(UserProfileList_),
           kind: S.optional(S.String),
           etag: S.optional(S.String),
         }),
@@ -17461,11 +20269,11 @@ function __c64(j: number): any {
         identifier: "ListUserRolePermissionGroupsRequest",
       });
     case 1:
-      return S.Array(__S(311));
+      return S.Array(UserRolePermissionGroup);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          userRolePermissionGroups: S.optional(__S(513)),
+          userRolePermissionGroups: S.optional(UserRolePermissionGroupList),
           kind: S.optional(S.String),
         }),
       ).annotate({
@@ -17475,7 +20283,7 @@ function __c64(j: number): any {
       return S.suspend(() =>
         S.Struct({
           profileId: S.String.pipe(T.Label()),
-          ids: S.optional(__S(0).pipe(T.Query())),
+          ids: S.optional(StringList.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -17490,7 +20298,7 @@ function __c64(j: number): any {
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
-          userRolePermissions: S.optional(__S(315)),
+          userRolePermissions: S.optional(UserRolePermissionList),
         }),
       ).annotate({
         identifier: "UserRolePermissionsListResponse",
@@ -17499,13 +20307,13 @@ function __c64(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subaccountId: S.optional(S.String.pipe(T.Query())),
-          sortField: S.optional(S.String.pipe(T.Query())),
+          sortField: S.optional(ListUserRolesSortFieldEnum.pipe(T.Query())),
           searchString: S.optional(S.String.pipe(T.Query())),
           profileId: S.String.pipe(T.Label()),
           accountUserRoleOnly: S.optional(S.Boolean.pipe(T.Query())),
-          sortOrder: S.optional(S.String.pipe(T.Query())),
+          sortOrder: S.optional(ListUserRolesSortOrderEnum.pipe(T.Query())),
           pageToken: S.optional(S.String.pipe(T.Query())),
-          ids: S.optional(__S(0).pipe(T.Query())),
+          ids: S.optional(StringList.pipe(T.Query())),
           maxResults: S.optional(S.Number.pipe(T.Query())),
         }).pipe(
           T.Http({
@@ -17516,12 +20324,12 @@ function __c64(j: number): any {
         ),
       ).annotate({ identifier: "ListUserRolesRequest" });
     case 6:
-      return S.Array(__S(316));
+      return S.Array(UserRole);
     case 7:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          userRoles: S.optional(__S(518)),
+          userRoles: S.optional(UserRoleList),
           kind: S.optional(S.String),
         }),
       ).annotate({ identifier: "UserRolesListResponse" });
@@ -17542,12 +20350,12 @@ function __c65(j: number): any {
         ),
       ).annotate({ identifier: "ListVideoFormatsRequest" });
     case 1:
-      return S.Array(__S(318));
+      return S.Array(VideoFormat);
     case 2:
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
-          videoFormats: S.optional(__S(521)),
+          videoFormats: S.optional(VideoFormatList),
         }),
       ).annotate({ identifier: "VideoFormatsListResponse" });
     case 3:
@@ -17555,7 +20363,7 @@ function __c65(j: number): any {
         S.Struct({
           profileId: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Query()),
-          body: S.optional(__S(54).pipe(T.HttpBody())),
+          body: S.optional(Account.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -17569,7 +20377,7 @@ function __c65(j: number): any {
         S.Struct({
           profileId: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Query()),
-          body: S.optional(__S(57).pipe(T.HttpBody())),
+          body: S.optional(AccountUserProfile.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -17585,7 +20393,7 @@ function __c65(j: number): any {
         S.Struct({
           id: S.String.pipe(T.Query()),
           profileId: S.String.pipe(T.Label()),
-          body: S.optional(__S(113).pipe(T.HttpBody())),
+          body: S.optional(Ad.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -17599,7 +20407,7 @@ function __c65(j: number): any {
         S.Struct({
           profileId: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Query()),
-          body: S.optional(__S(115).pipe(T.HttpBody())),
+          body: S.optional(AdvertiserGroup.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -17615,7 +20423,7 @@ function __c65(j: number): any {
         S.Struct({
           profileId: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Query()),
-          body: S.optional(__S(120).pipe(T.HttpBody())),
+          body: S.optional(LandingPage.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -17635,7 +20443,7 @@ function __c66(j: number): any {
         S.Struct({
           id: S.String.pipe(T.Query()),
           profileId: S.String.pipe(T.Label()),
-          body: S.optional(__S(123).pipe(T.HttpBody())),
+          body: S.optional(Advertiser.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -17649,7 +20457,7 @@ function __c66(j: number): any {
         S.Struct({
           profileId: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Query()),
-          body: S.optional(__S(137).pipe(T.HttpBody())),
+          body: S.optional(Campaign.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -17663,7 +20471,7 @@ function __c66(j: number): any {
         S.Struct({
           id: S.String.pipe(T.Query()),
           profileId: S.String.pipe(T.Label()),
-          body: S.optional(__S(142).pipe(T.HttpBody())),
+          body: S.optional(ContentCategory.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -17679,7 +20487,7 @@ function __c66(j: number): any {
         S.Struct({
           id: S.String.pipe(T.Query()),
           profileId: S.String.pipe(T.Label()),
-          body: S.optional(__S(145).pipe(T.HttpBody())),
+          body: S.optional(CreativeField.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -17696,7 +20504,7 @@ function __c66(j: number): any {
           creativeFieldId: S.String.pipe(T.Label()),
           profileId: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Query()),
-          body: S.optional(__S(147).pipe(T.HttpBody())),
+          body: S.optional(CreativeFieldValue.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -17712,7 +20520,7 @@ function __c66(j: number): any {
         S.Struct({
           profileId: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Query()),
-          body: S.optional(__S(149).pipe(T.HttpBody())),
+          body: S.optional(CreativeGroup.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -17728,7 +20536,7 @@ function __c66(j: number): any {
         S.Struct({
           profileId: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Query()),
-          body: S.optional(__S(171).pipe(T.HttpBody())),
+          body: S.optional(Creative.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -17742,7 +20550,7 @@ function __c66(j: number): any {
         S.Struct({
           profileId: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Query()),
-          body: S.optional(__S(210).pipe(T.HttpBody())),
+          body: S.optional(EventTag.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -17760,7 +20568,7 @@ function __c67(j: number): any {
         S.Struct({
           profileId: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Query()),
-          body: S.optional(__S(220).pipe(T.HttpBody())),
+          body: S.optional(FloodlightActivity.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -17776,7 +20584,7 @@ function __c67(j: number): any {
         S.Struct({
           profileId: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Query()),
-          body: S.optional(__S(222).pipe(T.HttpBody())),
+          body: S.optional(FloodlightActivityGroup.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -17792,7 +20600,7 @@ function __c67(j: number): any {
         S.Struct({
           id: S.String.pipe(T.Query()),
           profileId: S.String.pipe(T.Label()),
-          body: S.optional(__S(232).pipe(T.HttpBody())),
+          body: S.optional(FloodlightConfiguration.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -17808,7 +20616,7 @@ function __c67(j: number): any {
         S.Struct({
           profileId: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Query()),
-          body: S.optional(__S(241).pipe(T.HttpBody())),
+          body: S.optional(PlacementGroup.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -17824,7 +20632,7 @@ function __c67(j: number): any {
         S.Struct({
           id: S.String.pipe(T.Query()),
           profileId: S.String.pipe(T.Label()),
-          body: S.optional(__S(253).pipe(T.HttpBody())),
+          body: S.optional(Placement.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -17838,7 +20646,7 @@ function __c67(j: number): any {
         S.Struct({
           id: S.String.pipe(T.Query()),
           profileId: S.String.pipe(T.Label()),
-          body: S.optional(__S(255).pipe(T.HttpBody())),
+          body: S.optional(PlacementStrategy.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -17854,7 +20662,7 @@ function __c67(j: number): any {
         S.Struct({
           profileId: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Query()),
-          body: S.optional(__S(264).pipe(T.HttpBody())),
+          body: S.optional(RemarketingList.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -17870,7 +20678,7 @@ function __c67(j: number): any {
         S.Struct({
           id: S.String.pipe(T.Query()),
           profileId: S.String.pipe(T.Label()),
-          body: S.optional(__S(266).pipe(T.HttpBody())),
+          body: S.optional(RemarketingListShare.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -17890,7 +20698,7 @@ function __c68(j: number): any {
         S.Struct({
           profileId: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Query()),
-          body: S.optional(__S(293).pipe(T.HttpBody())),
+          body: S.optional(Site.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -17904,7 +20712,7 @@ function __c68(j: number): any {
         S.Struct({
           profileId: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Query()),
-          body: S.optional(__S(299).pipe(T.HttpBody())),
+          body: S.optional(Subaccount.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -17918,7 +20726,7 @@ function __c68(j: number): any {
         S.Struct({
           id: S.String.pipe(T.Query()),
           profileId: S.String.pipe(T.Label()),
-          body: S.optional(__S(303).pipe(T.HttpBody())),
+          body: S.optional(TargetingTemplate.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -17934,7 +20742,7 @@ function __c68(j: number): any {
         S.Struct({
           id: S.String.pipe(T.Query()),
           profileId: S.String.pipe(T.Label()),
-          body: S.optional(__S(316).pipe(T.HttpBody())),
+          body: S.optional(UserRole.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -17980,7 +20788,7 @@ function __c68(j: number): any {
         }),
       ).annotate({ identifier: "DimensionFilter" });
     case 7:
-      return S.Array(__S(550));
+      return S.Array(DimensionFilter);
   }
 }
 function __c69(j: number): any {
@@ -17991,7 +20799,7 @@ function __c69(j: number): any {
           kind: S.optional(S.String),
           startDate: S.optional(S.String),
           dimensionName: S.optional(S.String),
-          filters: S.optional(__S(551)),
+          filters: S.optional(DimensionFilterList),
           endDate: S.optional(S.String),
         }),
       ).annotate({ identifier: "DimensionValueRequest" });
@@ -18001,7 +20809,7 @@ function __c69(j: number): any {
           pageToken: S.optional(S.String.pipe(T.Query())),
           maxResults: S.optional(S.Number.pipe(T.Query())),
           profileId: S.String.pipe(T.Label()),
-          body: S.optional(__S(552).pipe(T.HttpBody())),
+          body: S.optional(DimensionValueRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -18017,7 +20825,7 @@ function __c69(j: number): any {
         S.Struct({
           etag: S.optional(S.String),
           kind: S.optional(S.String),
-          items: __S(268),
+          items: DimensionValueList_,
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "DimensionValueList" });
@@ -18025,19 +20833,19 @@ function __c69(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          sortOrder: S.optional(S.String),
+          sortOrder: S.optional(SortBySortOrderEnum),
         }),
       ).annotate({ identifier: "SortBy" });
     case 4:
-      return S.Array(__S(555));
+      return S.Array(SortBy);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          dimensionFilters: S.optional(__S(268)),
-          dateRange: S.optional(__S(213)),
-          sortBys: S.optional(__S(556)),
-          metricNames: S.optional(__S(0)),
-          dimensionNames: S.optional(__S(0)),
+          dimensionFilters: S.optional(DimensionValueList_),
+          dateRange: S.optional(DateRange),
+          sortBys: S.optional(SortByList),
+          metricNames: S.optional(StringList),
+          dimensionNames: S.optional(StringList),
           pageToken: S.optional(S.String),
           maxResults: S.optional(S.Number),
         }),
@@ -18046,7 +20854,7 @@ function __c69(j: number): any {
       return S.suspend(() =>
         S.Struct({
           profileId: S.String.pipe(T.Label()),
-          body: S.optional(__S(557).pipe(T.HttpBody())),
+          body: S.optional(ReportDataQueryRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -18059,7 +20867,7 @@ function __c69(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          type: S.optional(S.String),
+          type: S.optional(ColumnHeaderTypeEnum),
         }),
       ).annotate({ identifier: "ColumnHeader" });
   }
@@ -18067,29 +20875,29 @@ function __c69(j: number): any {
 function __c70(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(559));
+      return S.Array(ColumnHeader);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          values: S.optional(__S(0)),
+          values: S.optional(StringList),
         }),
       ).annotate({ identifier: "ReportDataRow" });
     case 2:
-      return S.Array(__S(561));
+      return S.Array(ReportDataRow);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          columnHeaders: S.optional(__S(560)),
+          columnHeaders: S.optional(ColumnHeaderList),
           nextPageToken: S.optional(S.String),
-          rows: S.optional(__S(562)),
-          totalRow: S.optional(__S(561)),
+          rows: S.optional(ReportDataRowList),
+          totalRow: S.optional(ReportDataRow),
         }),
       ).annotate({ identifier: "ReportDataResponse" });
     case 4:
       return S.suspend(() =>
         S.Struct({
           profileId: S.String.pipe(T.Label()),
-          body: S.optional(__S(284).pipe(T.HttpBody())),
+          body: S.optional(Report.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -18108,16 +20916,16 @@ function __c70(j: number): any {
         }),
       ).annotate({ identifier: "Dimension" });
     case 6:
-      return S.Array(__S(565));
+      return S.Array(Dimension);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          dimensions: S.optional(__S(566)),
-          dimensionFilters: S.optional(__S(566)),
-          pivotedActivityMetrics: S.optional(__S(566)),
-          metrics: S.optional(__S(566)),
+          dimensions: S.optional(DimensionList),
+          dimensionFilters: S.optional(DimensionList),
+          pivotedActivityMetrics: S.optional(MetricList),
+          metrics: S.optional(MetricList),
           kind: S.optional(S.String),
-          reachByFrequencyMetrics: S.optional(__S(566)),
+          reachByFrequencyMetrics: S.optional(MetricList),
         }),
       ).annotate({
         identifier: "ReachReportCompatibleFields",
@@ -18129,11 +20937,11 @@ function __c71(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          metrics: S.optional(__S(566)),
+          metrics: S.optional(MetricList),
           kind: S.optional(S.String),
-          breakdown: S.optional(__S(566)),
-          dimensionFilters: S.optional(__S(566)),
-          overlapMetrics: S.optional(__S(566)),
+          breakdown: S.optional(DimensionList),
+          dimensionFilters: S.optional(DimensionList),
+          overlapMetrics: S.optional(MetricList),
         }),
       ).annotate({
         identifier: "CrossDimensionReachReportCompatibleFields",
@@ -18141,11 +20949,11 @@ function __c71(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          perInteractionDimensions: S.optional(__S(566)),
+          perInteractionDimensions: S.optional(DimensionList),
           kind: S.optional(S.String),
-          customFloodlightVariables: S.optional(__S(566)),
-          metrics: S.optional(__S(566)),
-          conversionDimensions: S.optional(__S(566)),
+          customFloodlightVariables: S.optional(DimensionList),
+          metrics: S.optional(MetricList),
+          conversionDimensions: S.optional(DimensionList),
         }),
       ).annotate({
         identifier: "PathToConversionReportCompatibleFields",
@@ -18153,10 +20961,10 @@ function __c71(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          dimensionFilters: S.optional(__S(566)),
-          metrics: S.optional(__S(566)),
+          dimensionFilters: S.optional(DimensionList),
+          metrics: S.optional(MetricList),
           kind: S.optional(S.String),
-          dimensions: S.optional(__S(566)),
+          dimensions: S.optional(DimensionList),
         }),
       ).annotate({
         identifier: "CrossMediaReachReportCompatibleFields",
@@ -18164,10 +20972,10 @@ function __c71(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          dimensions: S.optional(__S(566)),
-          metrics: S.optional(__S(566)),
+          dimensions: S.optional(DimensionList),
+          metrics: S.optional(MetricList),
           kind: S.optional(S.String),
-          dimensionFilters: S.optional(__S(566)),
+          dimensionFilters: S.optional(DimensionList),
         }),
       ).annotate({
         identifier: "FloodlightReportCompatibleFields",
@@ -18175,10 +20983,10 @@ function __c71(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          dimensionFilters: S.optional(__S(566)),
-          metrics: S.optional(__S(566)),
-          dimensions: S.optional(__S(566)),
-          pivotedActivityMetrics: S.optional(__S(566)),
+          dimensionFilters: S.optional(DimensionList),
+          metrics: S.optional(MetricList),
+          dimensions: S.optional(DimensionList),
+          pivotedActivityMetrics: S.optional(MetricList),
           kind: S.optional(S.String),
         }),
       ).annotate({ identifier: "ReportCompatibleFields" });
@@ -18186,12 +20994,16 @@ function __c71(j: number): any {
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
-          reachReportCompatibleFields: S.optional(__S(567)),
-          crossDimensionReachReportCompatibleFields: S.optional(__S(568)),
-          pathToConversionReportCompatibleFields: S.optional(__S(569)),
-          crossMediaReachReportCompatibleFields: S.optional(__S(570)),
-          floodlightReportCompatibleFields: S.optional(__S(571)),
-          reportCompatibleFields: S.optional(__S(572)),
+          reachReportCompatibleFields: S.optional(ReachReportCompatibleFields),
+          crossDimensionReachReportCompatibleFields: S.optional(
+            CrossDimensionReachReportCompatibleFields,
+          ),
+          pathToConversionReportCompatibleFields: S.optional(
+            PathToConversionReportCompatibleFields,
+          ),
+          crossMediaReachReportCompatibleFields: S.optional(CrossMediaReachReportCompatibleFields),
+          floodlightReportCompatibleFields: S.optional(FloodlightReportCompatibleFields),
+          reportCompatibleFields: S.optional(ReportCompatibleFields),
         }),
       ).annotate({ identifier: "CompatibleFields" });
     case 6:
@@ -18230,7 +21042,7 @@ function __c72(j: number): any {
       return S.suspend(() =>
         S.Struct({
           profileId: S.String.pipe(T.Label()),
-          body: S.optional(__S(54).pipe(T.HttpBody())),
+          body: S.optional(Account.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -18243,7 +21055,7 @@ function __c72(j: number): any {
       return S.suspend(() =>
         S.Struct({
           profileId: S.String.pipe(T.Label()),
-          body: S.optional(__S(57).pipe(T.HttpBody())),
+          body: S.optional(AccountUserProfile.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -18258,7 +21070,7 @@ function __c72(j: number): any {
       return S.suspend(() =>
         S.Struct({
           profileId: S.String.pipe(T.Label()),
-          body: S.optional(__S(113).pipe(T.HttpBody())),
+          body: S.optional(Ad.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -18271,7 +21083,7 @@ function __c72(j: number): any {
       return S.suspend(() =>
         S.Struct({
           profileId: S.String.pipe(T.Label()),
-          body: S.optional(__S(115).pipe(T.HttpBody())),
+          body: S.optional(AdvertiserGroup.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -18286,7 +21098,7 @@ function __c72(j: number): any {
       return S.suspend(() =>
         S.Struct({
           profileId: S.String.pipe(T.Label()),
-          body: S.optional(__S(120).pipe(T.HttpBody())),
+          body: S.optional(LandingPage.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -18301,7 +21113,7 @@ function __c72(j: number): any {
       return S.suspend(() =>
         S.Struct({
           profileId: S.String.pipe(T.Label()),
-          body: S.optional(__S(123).pipe(T.HttpBody())),
+          body: S.optional(Advertiser.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -18314,7 +21126,7 @@ function __c72(j: number): any {
       return S.suspend(() =>
         S.Struct({
           profileId: S.String.pipe(T.Label()),
-          body: S.optional(__S(125).pipe(T.HttpBody())),
+          body: S.optional(BillingProfile.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -18329,7 +21141,7 @@ function __c72(j: number): any {
       return S.suspend(() =>
         S.Struct({
           profileId: S.String.pipe(T.Label()),
-          body: S.optional(__S(137).pipe(T.HttpBody())),
+          body: S.optional(Campaign.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -18346,7 +21158,7 @@ function __c73(j: number): any {
       return S.suspend(() =>
         S.Struct({
           profileId: S.String.pipe(T.Label()),
-          body: S.optional(__S(142).pipe(T.HttpBody())),
+          body: S.optional(ContentCategory.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -18361,7 +21173,7 @@ function __c73(j: number): any {
       return S.suspend(() =>
         S.Struct({
           profileId: S.String.pipe(T.Label()),
-          body: S.optional(__S(145).pipe(T.HttpBody())),
+          body: S.optional(CreativeField.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -18377,7 +21189,7 @@ function __c73(j: number): any {
         S.Struct({
           profileId: S.String.pipe(T.Label()),
           creativeFieldId: S.String.pipe(T.Label()),
-          body: S.optional(__S(147).pipe(T.HttpBody())),
+          body: S.optional(CreativeFieldValue.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -18392,7 +21204,7 @@ function __c73(j: number): any {
       return S.suspend(() =>
         S.Struct({
           profileId: S.String.pipe(T.Label()),
-          body: S.optional(__S(149).pipe(T.HttpBody())),
+          body: S.optional(CreativeGroup.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -18407,7 +21219,7 @@ function __c73(j: number): any {
       return S.suspend(() =>
         S.Struct({
           profileId: S.String.pipe(T.Label()),
-          body: S.optional(__S(171).pipe(T.HttpBody())),
+          body: S.optional(Creative.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -18419,7 +21231,7 @@ function __c73(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(__S(189).pipe(T.HttpBody())),
+          body: S.optional(DynamicFeed.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -18433,7 +21245,7 @@ function __c73(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(__S(208).pipe(T.HttpBody())),
+          body: S.optional(DynamicProfile.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -18448,7 +21260,7 @@ function __c73(j: number): any {
       return S.suspend(() =>
         S.Struct({
           profileId: S.String.pipe(T.Label()),
-          body: S.optional(__S(210).pipe(T.HttpBody())),
+          body: S.optional(EventTag.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -18465,7 +21277,7 @@ function __c74(j: number): any {
       return S.suspend(() =>
         S.Struct({
           profileId: S.String.pipe(T.Label()),
-          body: S.optional(__S(220).pipe(T.HttpBody())),
+          body: S.optional(FloodlightActivity.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -18480,7 +21292,7 @@ function __c74(j: number): any {
       return S.suspend(() =>
         S.Struct({
           profileId: S.String.pipe(T.Label()),
-          body: S.optional(__S(222).pipe(T.HttpBody())),
+          body: S.optional(FloodlightActivityGroup.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -18495,7 +21307,7 @@ function __c74(j: number): any {
       return S.suspend(() =>
         S.Struct({
           profileId: S.String.pipe(T.Label()),
-          body: S.optional(__S(232).pipe(T.HttpBody())),
+          body: S.optional(FloodlightConfiguration.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -18510,7 +21322,7 @@ function __c74(j: number): any {
       return S.suspend(() =>
         S.Struct({
           profileId: S.String.pipe(T.Label()),
-          body: S.optional(__S(241).pipe(T.HttpBody())),
+          body: S.optional(PlacementGroup.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -18525,7 +21337,7 @@ function __c74(j: number): any {
       return S.suspend(() =>
         S.Struct({
           profileId: S.String.pipe(T.Label()),
-          body: S.optional(__S(253).pipe(T.HttpBody())),
+          body: S.optional(Placement.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -18538,7 +21350,7 @@ function __c74(j: number): any {
       return S.suspend(() =>
         S.Struct({
           profileId: S.String.pipe(T.Label()),
-          body: S.optional(__S(255).pipe(T.HttpBody())),
+          body: S.optional(PlacementStrategy.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -18553,7 +21365,7 @@ function __c74(j: number): any {
       return S.suspend(() =>
         S.Struct({
           profileId: S.String.pipe(T.Label()),
-          body: S.optional(__S(264).pipe(T.HttpBody())),
+          body: S.optional(RemarketingList.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -18568,7 +21380,7 @@ function __c74(j: number): any {
       return S.suspend(() =>
         S.Struct({
           profileId: S.String.pipe(T.Label()),
-          body: S.optional(__S(266).pipe(T.HttpBody())),
+          body: S.optional(RemarketingListShare.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -18588,7 +21400,7 @@ function __c75(j: number): any {
         S.Struct({
           profileId: S.String.pipe(T.Label()),
           reportId: S.String.pipe(T.Label()),
-          body: S.optional(__S(284).pipe(T.HttpBody())),
+          body: S.optional(Report.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -18601,7 +21413,7 @@ function __c75(j: number): any {
       return S.suspend(() =>
         S.Struct({
           profileId: S.String.pipe(T.Label()),
-          body: S.optional(__S(293).pipe(T.HttpBody())),
+          body: S.optional(Site.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -18614,7 +21426,7 @@ function __c75(j: number): any {
       return S.suspend(() =>
         S.Struct({
           profileId: S.String.pipe(T.Label()),
-          body: S.optional(__S(299).pipe(T.HttpBody())),
+          body: S.optional(Subaccount.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -18627,7 +21439,7 @@ function __c75(j: number): any {
       return S.suspend(() =>
         S.Struct({
           profileId: S.String.pipe(T.Label()),
-          body: S.optional(__S(303).pipe(T.HttpBody())),
+          body: S.optional(TargetingTemplate.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -18642,7 +21454,7 @@ function __c75(j: number): any {
       return S.suspend(() =>
         S.Struct({
           profileId: S.String.pipe(T.Label()),
-          body: S.optional(__S(316).pipe(T.HttpBody())),
+          body: S.optional(UserRole.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -18651,166 +21463,5 @@ function __c75(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateUserRolesRequest" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
-    case 9:
-      return __c9(i & 7);
-    case 10:
-      return __c10(i & 7);
-    case 11:
-      return __c11(i & 7);
-    case 12:
-      return __c12(i & 7);
-    case 13:
-      return __c13(i & 7);
-    case 14:
-      return __c14(i & 7);
-    case 15:
-      return __c15(i & 7);
-    case 16:
-      return __c16(i & 7);
-    case 17:
-      return __c17(i & 7);
-    case 18:
-      return __c18(i & 7);
-    case 19:
-      return __c19(i & 7);
-    case 20:
-      return __c20(i & 7);
-    case 21:
-      return __c21(i & 7);
-    case 22:
-      return __c22(i & 7);
-    case 23:
-      return __c23(i & 7);
-    case 24:
-      return __c24(i & 7);
-    case 25:
-      return __c25(i & 7);
-    case 26:
-      return __c26(i & 7);
-    case 27:
-      return __c27(i & 7);
-    case 28:
-      return __c28(i & 7);
-    case 29:
-      return __c29(i & 7);
-    case 30:
-      return __c30(i & 7);
-    case 31:
-      return __c31(i & 7);
-    case 32:
-      return __c32(i & 7);
-    case 33:
-      return __c33(i & 7);
-    case 34:
-      return __c34(i & 7);
-    case 35:
-      return __c35(i & 7);
-    case 36:
-      return __c36(i & 7);
-    case 37:
-      return __c37(i & 7);
-    case 38:
-      return __c38(i & 7);
-    case 39:
-      return __c39(i & 7);
-    case 40:
-      return __c40(i & 7);
-    case 41:
-      return __c41(i & 7);
-    case 42:
-      return __c42(i & 7);
-    case 43:
-      return __c43(i & 7);
-    case 44:
-      return __c44(i & 7);
-    case 45:
-      return __c45(i & 7);
-    case 46:
-      return __c46(i & 7);
-    case 47:
-      return __c47(i & 7);
-    case 48:
-      return __c48(i & 7);
-    case 49:
-      return __c49(i & 7);
-    case 50:
-      return __c50(i & 7);
-    case 51:
-      return __c51(i & 7);
-    case 52:
-      return __c52(i & 7);
-    case 53:
-      return __c53(i & 7);
-    case 54:
-      return __c54(i & 7);
-    case 55:
-      return __c55(i & 7);
-    case 56:
-      return __c56(i & 7);
-    case 57:
-      return __c57(i & 7);
-    case 58:
-      return __c58(i & 7);
-    case 59:
-      return __c59(i & 7);
-    case 60:
-      return __c60(i & 7);
-    case 61:
-      return __c61(i & 7);
-    case 62:
-      return __c62(i & 7);
-    case 63:
-      return __c63(i & 7);
-    case 64:
-      return __c64(i & 7);
-    case 65:
-      return __c65(i & 7);
-    case 66:
-      return __c66(i & 7);
-    case 67:
-      return __c67(i & 7);
-    case 68:
-      return __c68(i & 7);
-    case 69:
-      return __c69(i & 7);
-    case 70:
-      return __c70(i & 7);
-    case 71:
-      return __c71(i & 7);
-    case 72:
-      return __c72(i & 7);
-    case 73:
-      return __c73(i & 7);
-    case 74:
-      return __c74(i & 7);
-    case 75:
-      return __c75(i & 7);
   }
 }

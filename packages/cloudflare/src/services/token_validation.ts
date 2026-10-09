@@ -12,8 +12,6 @@ import {
 } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { CloudflareOpError, CloudflareOpContext };
 
@@ -67,26 +65,63 @@ export class TokenValidationRuleNotFound
   ) {}
 
 export type RulesBulkCreateRequestBodyItemAction = "log" | "block";
+const RulesBulkCreateRequestBodyItemAction = S.String;
+
 export type RulesBulkCreateRequestBodyItemSelectorExcludeItemOperationIdsList = Array<string>;
+const RulesBulkCreateRequestBodyItemSelectorExcludeItemOperationIdsList = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<RulesBulkCreateRequestBodyItemSelectorExcludeItemOperationIdsList>;
+
 export interface RulesBulkCreateRequestBodyItemSelectorExcludeItem {
   /** Excluded operation IDs. */
   operationIds?: RulesBulkCreateRequestBodyItemSelectorExcludeItemOperationIdsList;
 }
+const RulesBulkCreateRequestBodyItemSelectorExcludeItem = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<RulesBulkCreateRequestBodyItemSelectorExcludeItem>;
+
 export type RulesBulkCreateRequestBodyItemSelectorExcludeList =
   Array<RulesBulkCreateRequestBodyItemSelectorExcludeItem>;
+const RulesBulkCreateRequestBodyItemSelectorExcludeList = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<RulesBulkCreateRequestBodyItemSelectorExcludeList>;
+
 export type RulesBulkCreateRequestBodyItemSelectorIncludeItemHostList = Array<string>;
+const RulesBulkCreateRequestBodyItemSelectorIncludeItemHostList = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<RulesBulkCreateRequestBodyItemSelectorIncludeItemHostList>;
+
 export interface RulesBulkCreateRequestBodyItemSelectorIncludeItem {
   /** Included hostnames. */
   host?: RulesBulkCreateRequestBodyItemSelectorIncludeItemHostList;
 }
+const RulesBulkCreateRequestBodyItemSelectorIncludeItem = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<RulesBulkCreateRequestBodyItemSelectorIncludeItem>;
+
 export type RulesBulkCreateRequestBodyItemSelectorIncludeList =
   Array<RulesBulkCreateRequestBodyItemSelectorIncludeItem>;
+const RulesBulkCreateRequestBodyItemSelectorIncludeList = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<RulesBulkCreateRequestBodyItemSelectorIncludeList>;
+
 export interface RulesBulkCreateRequestBodyItemSelector {
   /** Ignore operations that were otherwise included by `include`. */
   exclude?: RulesBulkCreateRequestBodyItemSelectorExcludeList;
   /** Select all matching operations. */
   include?: RulesBulkCreateRequestBodyItemSelectorIncludeList;
 }
+const RulesBulkCreateRequestBodyItemSelector = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<RulesBulkCreateRequestBodyItemSelector>;
+
 export interface RulesBulkCreateRequestBodyItem {
   /** Action to take on requests that match operations included in `selector` and fail `expression`. */
   action: RulesBulkCreateRequestBodyItemAction | (string & {});
@@ -101,33 +136,81 @@ export interface RulesBulkCreateRequestBodyItem {
   /** A human-readable name for the rule. */
   title: string;
 }
+const RulesBulkCreateRequestBodyItem = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<RulesBulkCreateRequestBodyItem>;
+
 export type RulesBulkCreateRequestBodyList = Array<RulesBulkCreateRequestBodyItem>;
+const RulesBulkCreateRequestBodyList = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<RulesBulkCreateRequestBodyList>;
+
 export interface BulkCreateRulesRequest {
   /** Identifier. */
   zoneId: string;
   body: RulesBulkCreateRequestBodyList;
 }
+const BulkCreateRulesRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<BulkCreateRulesRequest>;
+
 export type RulesBulkCreateResultItemAction = "log" | "block";
+const RulesBulkCreateResultItemAction = S.String;
+
 export type RulesBulkCreateResultItemSelectorExcludeItemOperationIdsList = Array<string>;
+const RulesBulkCreateResultItemSelectorExcludeItemOperationIdsList =
+  RulesBulkCreateRequestBodyItemSelectorIncludeItemHostList as any as S.Schema<RulesBulkCreateResultItemSelectorExcludeItemOperationIdsList>;
+
 export interface RulesBulkCreateResultItemSelectorExcludeItem {
   /** Excluded operation IDs. */
   operationIds?: RulesBulkCreateResultItemSelectorExcludeItemOperationIdsList | null;
 }
+const RulesBulkCreateResultItemSelectorExcludeItem = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<RulesBulkCreateResultItemSelectorExcludeItem>;
+
 export type RulesBulkCreateResultItemSelectorExcludeList =
   Array<RulesBulkCreateResultItemSelectorExcludeItem>;
+const RulesBulkCreateResultItemSelectorExcludeList = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<RulesBulkCreateResultItemSelectorExcludeList>;
+
 export type RulesBulkCreateResultItemSelectorIncludeItemHostList = Array<string>;
+const RulesBulkCreateResultItemSelectorIncludeItemHostList =
+  RulesBulkCreateRequestBodyItemSelectorIncludeItemHostList as any as S.Schema<RulesBulkCreateResultItemSelectorIncludeItemHostList>;
+
 export interface RulesBulkCreateResultItemSelectorIncludeItem {
   /** Included hostnames. */
   host?: RulesBulkCreateResultItemSelectorIncludeItemHostList | null;
 }
+const RulesBulkCreateResultItemSelectorIncludeItem = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<RulesBulkCreateResultItemSelectorIncludeItem>;
+
 export type RulesBulkCreateResultItemSelectorIncludeList =
   Array<RulesBulkCreateResultItemSelectorIncludeItem>;
+const RulesBulkCreateResultItemSelectorIncludeList = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<RulesBulkCreateResultItemSelectorIncludeList>;
+
 export interface RulesBulkCreateResultItemSelector {
   /** Ignore operations that were otherwise included by `include`. */
   exclude?: RulesBulkCreateResultItemSelectorExcludeList | null;
   /** Select all matching operations. */
   include?: RulesBulkCreateResultItemSelectorIncludeList | null;
 }
+const RulesBulkCreateResultItemSelector = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<RulesBulkCreateResultItemSelector>;
+
 export interface RulesBulkCreateResultItem {
   /** Action to take on requests that match operations included in `selector` and fail `expression`. */
   action: RulesBulkCreateResultItemAction;
@@ -146,14 +229,31 @@ export interface RulesBulkCreateResultItem {
   createdAt?: string | null;
   lastUpdated?: string | null;
 }
+const RulesBulkCreateResultItem = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<RulesBulkCreateResultItem>;
+
 export type RulesBulkCreateResultList = Array<RulesBulkCreateResultItem>;
+const RulesBulkCreateResultList = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<RulesBulkCreateResultList>;
+
 export interface BulkCreateRulesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result: RulesBulkCreateResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
+const BulkCreateRulesResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<BulkCreateRulesResponse>;
+
 export type RulesBulkEditRequestBodyItemAction = "log" | "block";
+const RulesBulkEditRequestBodyItemAction = S.String;
+
 export interface RulesBulkEditRequestBodyItemPositionAPIShieldIndex {
   /** Move rule to this position */
   index: number;
@@ -170,13 +270,28 @@ export type RulesBulkEditRequestBodyItemPosition =
   | RulesBulkEditRequestBodyItemPositionAPIShieldIndex
   | RulesBulkEditRequestBodyItemPositionAPIShieldBefore
   | RulesBulkEditRequestBodyItemPositionAPIShieldAfter;
+const RulesBulkEditRequestBodyItemPosition = /*@__PURE__*/ __L.at(__c2, 2);
+
 export type RulesBulkEditRequestBodyItemSelectorExcludeItemOperationIdsList = Array<string>;
+const RulesBulkEditRequestBodyItemSelectorExcludeItemOperationIdsList =
+  RulesBulkCreateRequestBodyItemSelectorExcludeItemOperationIdsList as any as S.Schema<RulesBulkEditRequestBodyItemSelectorExcludeItemOperationIdsList>;
+
 export interface RulesBulkEditRequestBodyItemSelectorExcludeItem {
   /** Excluded operation IDs. */
   operationIds?: RulesBulkEditRequestBodyItemSelectorExcludeItemOperationIdsList;
 }
+const RulesBulkEditRequestBodyItemSelectorExcludeItem = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<RulesBulkEditRequestBodyItemSelectorExcludeItem>;
+
 export type RulesBulkEditRequestBodyItemSelectorExcludeList =
   Array<RulesBulkEditRequestBodyItemSelectorExcludeItem>;
+const RulesBulkEditRequestBodyItemSelectorExcludeList = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<RulesBulkEditRequestBodyItemSelectorExcludeList>;
+
 export type RulesBulkEditRequestBodyItemSelectorIncludeItemHostList = Array<string>;
 export interface RulesBulkEditRequestBodyItemSelectorIncludeItem {
   /** Included hostnames. */
@@ -184,12 +299,20 @@ export interface RulesBulkEditRequestBodyItemSelectorIncludeItem {
 }
 export type RulesBulkEditRequestBodyItemSelectorIncludeList =
   Array<RulesBulkEditRequestBodyItemSelectorIncludeItem>;
+const RulesBulkEditRequestBodyItemSelectorIncludeList =
+  RulesBulkCreateRequestBodyItemSelectorIncludeList as any as S.Schema<RulesBulkEditRequestBodyItemSelectorIncludeList>;
+
 export interface RulesBulkEditRequestBodyItemSelector {
   /** Ignore operations that were otherwise included by `include`. */
   exclude?: RulesBulkEditRequestBodyItemSelectorExcludeList;
   /** Select all matching operations. */
   include?: RulesBulkEditRequestBodyItemSelectorIncludeList;
 }
+const RulesBulkEditRequestBodyItemSelector = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<RulesBulkEditRequestBodyItemSelector>;
+
 export interface RulesBulkEditRequestBodyItem {
   /** Rule ID this patch applies to */
   id: string;
@@ -208,13 +331,30 @@ export interface RulesBulkEditRequestBodyItem {
   /** A human-readable name for the rule. */
   title?: string;
 }
+const RulesBulkEditRequestBodyItem = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<RulesBulkEditRequestBodyItem>;
+
 export type RulesBulkEditRequestBodyList = Array<RulesBulkEditRequestBodyItem>;
+const RulesBulkEditRequestBodyList = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<RulesBulkEditRequestBodyList>;
+
 export interface BulkPatchRulesRequest {
   /** Identifier. */
   zoneId: string;
   body: RulesBulkEditRequestBodyList;
 }
+const BulkPatchRulesRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<BulkPatchRulesRequest>;
+
 export type RulesBulkEditResultItemAction = "log" | "block";
+const RulesBulkEditResultItemAction = S.String;
+
 export type RulesBulkEditResultItemSelectorExcludeItemOperationIdsList = Array<string>;
 export interface RulesBulkEditResultItemSelectorExcludeItem {
   /** Excluded operation IDs. */
@@ -235,6 +375,9 @@ export interface RulesBulkEditResultItemSelector {
   /** Select all matching operations. */
   include?: RulesBulkEditResultItemSelectorIncludeList | null;
 }
+const RulesBulkEditResultItemSelector =
+  RulesBulkCreateResultItemSelector as any as S.Schema<RulesBulkEditResultItemSelector>;
+
 export interface RulesBulkEditResultItem {
   /** Action to take on requests that match operations included in `selector` and fail `expression`. */
   action: RulesBulkEditResultItemAction;
@@ -253,13 +396,28 @@ export interface RulesBulkEditResultItem {
   createdAt?: string | null;
   lastUpdated?: string | null;
 }
+const RulesBulkEditResultItem = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<RulesBulkEditResultItem>;
+
 export type RulesBulkEditResultList = Array<RulesBulkEditResultItem>;
+const RulesBulkEditResultList = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<RulesBulkEditResultList>;
+
 export interface BulkPatchRulesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result: RulesBulkEditResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
+const BulkPatchRulesResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<BulkPatchRulesResponse>;
+
 export type ConfigurationCreateRequestCredentialsKeysItemAPIShieldCredentialsJWTKeyRSAAlg =
   | "RS256"
   | "RS384"
@@ -345,13 +503,30 @@ export type ConfigurationCreateRequestCredentialsKeysItem =
   | ConfigurationCreateRequestCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs256
   | ConfigurationCreateRequestCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs384
   | ConfigurationCreateRequestCredentialsKeysItemAPIShieldCredentialsJWTKeyOctRequest;
+const ConfigurationCreateRequestCredentialsKeysItem = /*@__PURE__*/ __L.at(__c3, 4);
+
 export type ConfigurationCreateRequestCredentialsKeysList =
   Array<ConfigurationCreateRequestCredentialsKeysItem>;
+const ConfigurationCreateRequestCredentialsKeysList = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<ConfigurationCreateRequestCredentialsKeysList>;
+
 export interface ConfigurationCreateRequestCredentials {
   keys: ConfigurationCreateRequestCredentialsKeysList;
 }
+const ConfigurationCreateRequestCredentials = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<ConfigurationCreateRequestCredentials>;
+
 export type ConfigurationCreateRequestTokenSourcesList = Array<string>;
+const ConfigurationCreateRequestTokenSourcesList =
+  RulesBulkCreateRequestBodyItemSelectorIncludeItemHostList as any as S.Schema<ConfigurationCreateRequestTokenSourcesList>;
+
 export type ConfigurationCreateRequestTokenType = "JWT";
+const ConfigurationCreateRequestTokenType = S.String;
+
 export interface CreateConfigurationRequest {
   /** Identifier. */
   zoneId: string;
@@ -362,6 +537,11 @@ export interface CreateConfigurationRequest {
   tokenSources: ConfigurationCreateRequestTokenSourcesList;
   tokenType: ConfigurationCreateRequestTokenType | (string & {});
 }
+const CreateConfigurationRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<CreateConfigurationRequest>;
+
 export type ConfigurationCreateResponseCredentialsKeysItemAPIShieldCredentialsJWTKeyRSAAlg =
   | "RS256"
   | "RS384"
@@ -441,13 +621,30 @@ export type ConfigurationCreateResponseCredentialsKeysItem =
   | ConfigurationCreateResponseCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs256
   | ConfigurationCreateResponseCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs384
   | ConfigurationCreateResponseCredentialsKeysItemAPIShieldCredentialsJWTKeyOctResponse;
+const ConfigurationCreateResponseCredentialsKeysItem = /*@__PURE__*/ __L.at(__c4, 0);
+
 export type ConfigurationCreateResponseCredentialsKeysList =
   Array<ConfigurationCreateResponseCredentialsKeysItem>;
+const ConfigurationCreateResponseCredentialsKeysList = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<ConfigurationCreateResponseCredentialsKeysList>;
+
 export interface ConfigurationCreateResponseCredentials {
   keys: ConfigurationCreateResponseCredentialsKeysList;
 }
+const ConfigurationCreateResponseCredentials = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<ConfigurationCreateResponseCredentials>;
+
 export type ConfigurationCreateResponseTokenSourcesList = Array<string>;
+const ConfigurationCreateResponseTokenSourcesList =
+  RulesBulkCreateRequestBodyItemSelectorIncludeItemHostList as any as S.Schema<ConfigurationCreateResponseTokenSourcesList>;
+
 export type ConfigurationCreateResponseTokenType = "JWT";
+const ConfigurationCreateResponseTokenType = S.String;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateConfigurationResponse {
   /** UUID. */
@@ -460,25 +657,53 @@ export interface CreateConfigurationResponse {
   tokenSources: ConfigurationCreateResponseTokenSourcesList;
   tokenType: ConfigurationCreateResponseTokenType;
 }
+const CreateConfigurationResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<CreateConfigurationResponse>;
+
 export type RulesCreateRequestAction = "log" | "block";
+const RulesCreateRequestAction = S.String;
+
 export type RulesCreateRequestSelectorExcludeItemOperationIdsList = Array<string>;
+const RulesCreateRequestSelectorExcludeItemOperationIdsList =
+  RulesBulkCreateRequestBodyItemSelectorIncludeItemHostList as any as S.Schema<RulesCreateRequestSelectorExcludeItemOperationIdsList>;
+
 export interface RulesCreateRequestSelectorExcludeItem {
   /** Excluded operation IDs. */
   operationIds?: RulesCreateRequestSelectorExcludeItemOperationIdsList;
 }
+const RulesCreateRequestSelectorExcludeItem = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<RulesCreateRequestSelectorExcludeItem>;
+
 export type RulesCreateRequestSelectorExcludeList = Array<RulesCreateRequestSelectorExcludeItem>;
+const RulesCreateRequestSelectorExcludeList = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<RulesCreateRequestSelectorExcludeList>;
+
 export type RulesCreateRequestSelectorIncludeItemHostList = Array<string>;
 export interface RulesCreateRequestSelectorIncludeItem {
   /** Included hostnames. */
   host?: RulesCreateRequestSelectorIncludeItemHostList;
 }
 export type RulesCreateRequestSelectorIncludeList = Array<RulesCreateRequestSelectorIncludeItem>;
+const RulesCreateRequestSelectorIncludeList =
+  RulesBulkCreateRequestBodyItemSelectorIncludeList as any as S.Schema<RulesCreateRequestSelectorIncludeList>;
+
 export interface RulesCreateRequestSelector {
   /** Ignore operations that were otherwise included by `include`. */
   exclude?: RulesCreateRequestSelectorExcludeList;
   /** Select all matching operations. */
   include?: RulesCreateRequestSelectorIncludeList;
 }
+const RulesCreateRequestSelector = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<RulesCreateRequestSelector>;
+
 export interface CreateRuleRequest {
   /** Identifier. */
   zoneId: string;
@@ -495,7 +720,11 @@ export interface CreateRuleRequest {
   /** A human-readable name for the rule. */
   title: string;
 }
+const CreateRuleRequest = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<CreateRuleRequest>;
+
 export type RulesCreateResponseAction = "log" | "block";
+const RulesCreateResponseAction = S.String;
+
 export type RulesCreateResponseSelectorExcludeItemOperationIdsList = Array<string>;
 export interface RulesCreateResponseSelectorExcludeItem {
   /** Excluded operation IDs. */
@@ -514,6 +743,9 @@ export interface RulesCreateResponseSelector {
   /** Select all matching operations. */
   include?: RulesCreateResponseSelectorIncludeList | null;
 }
+const RulesCreateResponseSelector =
+  RulesBulkCreateResultItemSelector as any as S.Schema<RulesCreateResponseSelector>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateRuleResponse {
   /** Action to take on requests that match operations included in `selector` and fail `expression`. */
@@ -533,24 +765,40 @@ export interface CreateRuleResponse {
   createdAt?: string | null;
   lastUpdated?: string | null;
 }
+const CreateRuleResponse = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<CreateRuleResponse>;
+
 export interface DeleteConfigurationRequest {
   /** Identifier. */
   zoneId: string;
   /** UUID. */
   configId: string;
 }
+const DeleteConfigurationRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  1,
+) as any as S.Schema<DeleteConfigurationRequest>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DeleteConfigurationResponse {
   /** UUID. */
   id?: string | null;
 }
+const DeleteConfigurationResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  2,
+) as any as S.Schema<DeleteConfigurationResponse>;
+
 export interface DeleteRuleRequest {
   /** Identifier. */
   zoneId: string;
   /** UUID. */
   ruleId: string;
 }
+const DeleteRuleRequest = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<DeleteRuleRequest>;
+
 export type DeleteRuleResponse = unknown;
+const DeleteRuleResponse = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<DeleteRuleResponse>;
+
 export type EditConfigurationCredentialsRequestKeysItemAPIShieldCredentialsJWTKeyRSAAlg =
   | "RS256"
   | "RS384"
@@ -632,8 +880,15 @@ export type EditConfigurationCredentialsRequestKeysItem =
   | EditConfigurationCredentialsRequestKeysItemAPIShieldCredentialsJWTKeyEcEs256
   | EditConfigurationCredentialsRequestKeysItemAPIShieldCredentialsJWTKeyEcEs384
   | EditConfigurationCredentialsRequestKeysItemAPIShieldCredentialsJWTKeyOctPatchRequest;
+const EditConfigurationCredentialsRequestKeysItem = /*@__PURE__*/ __L.at(__c5, 5);
+
 export type EditConfigurationCredentialsRequestKeysList =
   Array<EditConfigurationCredentialsRequestKeysItem>;
+const EditConfigurationCredentialsRequestKeysList = /*@__PURE__*/ __L.at(
+  __c5,
+  6,
+) as any as S.Schema<EditConfigurationCredentialsRequestKeysList>;
+
 export interface EditConfigurationCredentialsRequest {
   /** Identifier. */
   zoneId: string;
@@ -641,6 +896,11 @@ export interface EditConfigurationCredentialsRequest {
   configId: string;
   keys: EditConfigurationCredentialsRequestKeysList;
 }
+const EditConfigurationCredentialsRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  7,
+) as any as S.Schema<EditConfigurationCredentialsRequest>;
+
 export type EditConfigurationCredentialsResponseKeysItemAPIShieldCredentialsJWTKeyRSAAlg =
   | "RS256"
   | "RS384"
@@ -718,18 +978,35 @@ export type EditConfigurationCredentialsResponseKeysItem =
   | EditConfigurationCredentialsResponseKeysItemAPIShieldCredentialsJWTKeyEcEs256
   | EditConfigurationCredentialsResponseKeysItemAPIShieldCredentialsJWTKeyEcEs384
   | EditConfigurationCredentialsResponseKeysItemAPIShieldCredentialsJWTKeyOctResponse;
+const EditConfigurationCredentialsResponseKeysItem = /*@__PURE__*/ __L.at(__c6, 0);
+
 export type EditConfigurationCredentialsResponseKeysList =
   Array<EditConfigurationCredentialsResponseKeysItem>;
+const EditConfigurationCredentialsResponseKeysList = /*@__PURE__*/ __L.at(
+  __c6,
+  1,
+) as any as S.Schema<EditConfigurationCredentialsResponseKeysList>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface EditConfigurationCredentialsResponse {
   keys: EditConfigurationCredentialsResponseKeysList;
 }
+const EditConfigurationCredentialsResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  2,
+) as any as S.Schema<EditConfigurationCredentialsResponse>;
+
 export interface GetConfigurationRequest {
   /** Identifier. */
   zoneId: string;
   /** UUID. */
   configId: string;
 }
+const GetConfigurationRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  3,
+) as any as S.Schema<GetConfigurationRequest>;
+
 export type ConfigurationGetResponseCredentialsKeysItemAPIShieldCredentialsJWTKeyRSAAlg =
   | "RS256"
   | "RS384"
@@ -807,13 +1084,30 @@ export type ConfigurationGetResponseCredentialsKeysItem =
   | ConfigurationGetResponseCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs256
   | ConfigurationGetResponseCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs384
   | ConfigurationGetResponseCredentialsKeysItemAPIShieldCredentialsJWTKeyOctResponse;
+const ConfigurationGetResponseCredentialsKeysItem = /*@__PURE__*/ __L.at(__c6, 4);
+
 export type ConfigurationGetResponseCredentialsKeysList =
   Array<ConfigurationGetResponseCredentialsKeysItem>;
+const ConfigurationGetResponseCredentialsKeysList = /*@__PURE__*/ __L.at(
+  __c6,
+  5,
+) as any as S.Schema<ConfigurationGetResponseCredentialsKeysList>;
+
 export interface ConfigurationGetResponseCredentials {
   keys: ConfigurationGetResponseCredentialsKeysList;
 }
+const ConfigurationGetResponseCredentials = /*@__PURE__*/ __L.at(
+  __c6,
+  6,
+) as any as S.Schema<ConfigurationGetResponseCredentials>;
+
 export type ConfigurationGetResponseTokenSourcesList = Array<string>;
+const ConfigurationGetResponseTokenSourcesList =
+  RulesBulkCreateRequestBodyItemSelectorIncludeItemHostList as any as S.Schema<ConfigurationGetResponseTokenSourcesList>;
+
 export type ConfigurationGetResponseTokenType = "JWT";
+const ConfigurationGetResponseTokenType = S.String;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetConfigurationResponse {
   /** UUID. */
@@ -826,31 +1120,61 @@ export interface GetConfigurationResponse {
   tokenSources: ConfigurationGetResponseTokenSourcesList;
   tokenType: ConfigurationGetResponseTokenType;
 }
+const GetConfigurationResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  7,
+) as any as S.Schema<GetConfigurationResponse>;
+
 export interface GetRuleRequest {
   /** Identifier. */
   zoneId: string;
   /** UUID. */
   ruleId: string;
 }
+const GetRuleRequest = /*@__PURE__*/ __L.at(__c7, 0) as any as S.Schema<GetRuleRequest>;
+
 export type RulesGetResponseAction = "log" | "block";
+const RulesGetResponseAction = S.String;
+
 export type RulesGetResponseSelectorExcludeItemOperationIdsList = Array<string>;
+const RulesGetResponseSelectorExcludeItemOperationIdsList =
+  RulesBulkCreateRequestBodyItemSelectorIncludeItemHostList as any as S.Schema<RulesGetResponseSelectorExcludeItemOperationIdsList>;
+
 export interface RulesGetResponseSelectorExcludeItem {
   /** Excluded operation IDs. */
   operationIds?: RulesGetResponseSelectorExcludeItemOperationIdsList | null;
 }
+const RulesGetResponseSelectorExcludeItem = /*@__PURE__*/ __L.at(
+  __c7,
+  1,
+) as any as S.Schema<RulesGetResponseSelectorExcludeItem>;
+
 export type RulesGetResponseSelectorExcludeList = Array<RulesGetResponseSelectorExcludeItem>;
+const RulesGetResponseSelectorExcludeList = /*@__PURE__*/ __L.at(
+  __c7,
+  2,
+) as any as S.Schema<RulesGetResponseSelectorExcludeList>;
+
 export type RulesGetResponseSelectorIncludeItemHostList = Array<string>;
 export interface RulesGetResponseSelectorIncludeItem {
   /** Included hostnames. */
   host?: RulesGetResponseSelectorIncludeItemHostList | null;
 }
 export type RulesGetResponseSelectorIncludeList = Array<RulesGetResponseSelectorIncludeItem>;
+const RulesGetResponseSelectorIncludeList =
+  RulesBulkCreateResultItemSelectorIncludeList as any as S.Schema<RulesGetResponseSelectorIncludeList>;
+
 export interface RulesGetResponseSelector {
   /** Ignore operations that were otherwise included by `include`. */
   exclude?: RulesGetResponseSelectorExcludeList | null;
   /** Select all matching operations. */
   include?: RulesGetResponseSelectorIncludeList | null;
 }
+const RulesGetResponseSelector = /*@__PURE__*/ __L.at(
+  __c7,
+  3,
+) as any as S.Schema<RulesGetResponseSelector>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetRuleResponse {
   /** Action to take on requests that match operations included in `selector` and fail `expression`. */
@@ -870,6 +1194,8 @@ export interface GetRuleResponse {
   createdAt?: string | null;
   lastUpdated?: string | null;
 }
+const GetRuleResponse = /*@__PURE__*/ __L.at(__c7, 4) as any as S.Schema<GetRuleResponse>;
+
 export interface ListConfigurationsRequest {
   /** Identifier. */
   zoneId: string;
@@ -878,6 +1204,11 @@ export interface ListConfigurationsRequest {
   /** Maximum number of results per page. */
   perPage?: number;
 }
+const ListConfigurationsRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  5,
+) as any as S.Schema<ListConfigurationsRequest>;
+
 export type ConfigurationListResultItemCredentialsKeysItemAPIShieldCredentialsJWTKeyRSAAlg =
   | "RS256"
   | "RS384"
@@ -957,13 +1288,30 @@ export type ConfigurationListResultItemCredentialsKeysItem =
   | ConfigurationListResultItemCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs256
   | ConfigurationListResultItemCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs384
   | ConfigurationListResultItemCredentialsKeysItemAPIShieldCredentialsJWTKeyOctResponse;
+const ConfigurationListResultItemCredentialsKeysItem = /*@__PURE__*/ __L.at(__c7, 6);
+
 export type ConfigurationListResultItemCredentialsKeysList =
   Array<ConfigurationListResultItemCredentialsKeysItem>;
+const ConfigurationListResultItemCredentialsKeysList = /*@__PURE__*/ __L.at(
+  __c7,
+  7,
+) as any as S.Schema<ConfigurationListResultItemCredentialsKeysList>;
+
 export interface ConfigurationListResultItemCredentials {
   keys: ConfigurationListResultItemCredentialsKeysList;
 }
+const ConfigurationListResultItemCredentials = /*@__PURE__*/ __L.at(
+  __c8,
+  0,
+) as any as S.Schema<ConfigurationListResultItemCredentials>;
+
 export type ConfigurationListResultItemTokenSourcesList = Array<string>;
+const ConfigurationListResultItemTokenSourcesList =
+  RulesBulkCreateRequestBodyItemSelectorIncludeItemHostList as any as S.Schema<ConfigurationListResultItemTokenSourcesList>;
+
 export type ConfigurationListResultItemTokenType = "JWT";
+const ConfigurationListResultItemTokenType = S.String;
+
 export interface ConfigurationListResultItem {
   /** UUID. */
   id: string;
@@ -975,15 +1323,35 @@ export interface ConfigurationListResultItem {
   tokenSources: ConfigurationListResultItemTokenSourcesList;
   tokenType: ConfigurationListResultItemTokenType;
 }
+const ConfigurationListResultItem = /*@__PURE__*/ __L.at(
+  __c8,
+  1,
+) as any as S.Schema<ConfigurationListResultItem>;
+
 export type ConfigurationListResultList = Array<ConfigurationListResultItem>;
+const ConfigurationListResultList = /*@__PURE__*/ __L.at(
+  __c8,
+  2,
+) as any as S.Schema<ConfigurationListResultList>;
+
 export interface ListConfigurationsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result: ConfigurationListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
+const ListConfigurationsResponse = /*@__PURE__*/ __L.at(
+  __c8,
+  3,
+) as any as S.Schema<ListConfigurationsResponse>;
+
 export type RulesListRequestAction = "log" | "block";
+const RulesListRequestAction = S.String;
+
 export type RulesListRequestTokenConfigurationList = Array<string>;
+const RulesListRequestTokenConfigurationList =
+  RulesBulkCreateRequestBodyItemSelectorIncludeItemHostList as any as S.Schema<RulesListRequestTokenConfigurationList>;
+
 export interface ListRulesRequest {
   /** Identifier. */
   zoneId: string;
@@ -1006,7 +1374,11 @@ export interface ListRulesRequest {
   /** Select rules using any of these token configurations. */
   tokenConfiguration?: RulesListRequestTokenConfigurationList;
 }
+const ListRulesRequest = /*@__PURE__*/ __L.at(__c8, 4) as any as S.Schema<ListRulesRequest>;
+
 export type RulesListResultItemAction = "log" | "block";
+const RulesListResultItemAction = S.String;
+
 export type RulesListResultItemSelectorExcludeItemOperationIdsList = Array<string>;
 export interface RulesListResultItemSelectorExcludeItem {
   /** Excluded operation IDs. */
@@ -1025,6 +1397,9 @@ export interface RulesListResultItemSelector {
   /** Select all matching operations. */
   include?: RulesListResultItemSelectorIncludeList | null;
 }
+const RulesListResultItemSelector =
+  RulesBulkCreateResultItemSelector as any as S.Schema<RulesListResultItemSelector>;
+
 export interface RulesListResultItem {
   /** Action to take on requests that match operations included in `selector` and fail `expression`. */
   action: RulesListResultItemAction;
@@ -1043,14 +1418,23 @@ export interface RulesListResultItem {
   createdAt?: string | null;
   lastUpdated?: string | null;
 }
+const RulesListResultItem = /*@__PURE__*/ __L.at(__c8, 5) as any as S.Schema<RulesListResultItem>;
+
 export type RulesListResultList = Array<RulesListResultItem>;
+const RulesListResultList = /*@__PURE__*/ __L.at(__c8, 6) as any as S.Schema<RulesListResultList>;
+
 export interface ListRulesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result: RulesListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
+const ListRulesResponse = /*@__PURE__*/ __L.at(__c8, 7) as any as S.Schema<ListRulesResponse>;
+
 export type ConfigurationEditRequestTokenSourcesList = Array<string>;
+const ConfigurationEditRequestTokenSourcesList =
+  RulesBulkCreateRequestBodyItemSelectorIncludeItemHostList as any as S.Schema<ConfigurationEditRequestTokenSourcesList>;
+
 export interface PatchConfigurationRequest {
   /** Identifier. */
   zoneId: string;
@@ -1060,7 +1444,15 @@ export interface PatchConfigurationRequest {
   title?: string;
   tokenSources?: ConfigurationEditRequestTokenSourcesList;
 }
+const PatchConfigurationRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  0,
+) as any as S.Schema<PatchConfigurationRequest>;
+
 export type ConfigurationEditResponseTokenSourcesList = Array<string>;
+const ConfigurationEditResponseTokenSourcesList =
+  RulesBulkCreateRequestBodyItemSelectorIncludeItemHostList as any as S.Schema<ConfigurationEditResponseTokenSourcesList>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PatchConfigurationResponse {
   /** UUID. */
@@ -1069,7 +1461,14 @@ export interface PatchConfigurationResponse {
   title?: string | null;
   tokenSources?: ConfigurationEditResponseTokenSourcesList | null;
 }
+const PatchConfigurationResponse = /*@__PURE__*/ __L.at(
+  __c9,
+  1,
+) as any as S.Schema<PatchConfigurationResponse>;
+
 export type RulesEditRequestAction = "log" | "block";
+const RulesEditRequestAction = S.String;
+
 export type RulesEditRequestPositionAPIShieldIndex =
   RulesBulkEditRequestBodyItemPositionAPIShieldIndex;
 export type RulesEditRequestPositionAPIShieldBefore =
@@ -1080,24 +1479,37 @@ export type RulesEditRequestPosition =
   | RulesBulkEditRequestBodyItemPositionAPIShieldIndex
   | RulesBulkEditRequestBodyItemPositionAPIShieldBefore
   | RulesBulkEditRequestBodyItemPositionAPIShieldAfter;
+const RulesEditRequestPosition = /*@__PURE__*/ __L.at(__c9, 2);
+
 export type RulesEditRequestSelectorExcludeItemOperationIdsList = Array<string>;
 export interface RulesEditRequestSelectorExcludeItem {
   /** Excluded operation IDs. */
   operationIds?: RulesEditRequestSelectorExcludeItemOperationIdsList;
 }
 export type RulesEditRequestSelectorExcludeList = Array<RulesEditRequestSelectorExcludeItem>;
+const RulesEditRequestSelectorExcludeList =
+  RulesCreateRequestSelectorExcludeList as any as S.Schema<RulesEditRequestSelectorExcludeList>;
+
 export type RulesEditRequestSelectorIncludeItemHostList = Array<string>;
 export interface RulesEditRequestSelectorIncludeItem {
   /** Included hostnames. */
   host?: RulesEditRequestSelectorIncludeItemHostList;
 }
 export type RulesEditRequestSelectorIncludeList = Array<RulesEditRequestSelectorIncludeItem>;
+const RulesEditRequestSelectorIncludeList =
+  RulesBulkCreateRequestBodyItemSelectorIncludeList as any as S.Schema<RulesEditRequestSelectorIncludeList>;
+
 export interface RulesEditRequestSelector {
   /** Ignore operations that were otherwise included by `include`. */
   exclude?: RulesEditRequestSelectorExcludeList;
   /** Select all matching operations. */
   include?: RulesEditRequestSelectorIncludeList;
 }
+const RulesEditRequestSelector = /*@__PURE__*/ __L.at(
+  __c9,
+  3,
+) as any as S.Schema<RulesEditRequestSelector>;
+
 export interface PatchRuleRequest {
   /** Identifier. */
   zoneId: string;
@@ -1118,25 +1530,40 @@ export interface PatchRuleRequest {
   /** A human-readable name for the rule. */
   title?: string;
 }
+const PatchRuleRequest = /*@__PURE__*/ __L.at(__c9, 4) as any as S.Schema<PatchRuleRequest>;
+
 export type RulesEditResponseAction = "log" | "block";
+const RulesEditResponseAction = S.String;
+
 export type RulesEditResponseSelectorExcludeItemOperationIdsList = Array<string>;
 export interface RulesEditResponseSelectorExcludeItem {
   /** Excluded operation IDs. */
   operationIds?: RulesEditResponseSelectorExcludeItemOperationIdsList | null;
 }
 export type RulesEditResponseSelectorExcludeList = Array<RulesEditResponseSelectorExcludeItem>;
+const RulesEditResponseSelectorExcludeList =
+  RulesGetResponseSelectorExcludeList as any as S.Schema<RulesEditResponseSelectorExcludeList>;
+
 export type RulesEditResponseSelectorIncludeItemHostList = Array<string>;
 export interface RulesEditResponseSelectorIncludeItem {
   /** Included hostnames. */
   host?: RulesEditResponseSelectorIncludeItemHostList | null;
 }
 export type RulesEditResponseSelectorIncludeList = Array<RulesEditResponseSelectorIncludeItem>;
+const RulesEditResponseSelectorIncludeList =
+  RulesBulkCreateResultItemSelectorIncludeList as any as S.Schema<RulesEditResponseSelectorIncludeList>;
+
 export interface RulesEditResponseSelector {
   /** Ignore operations that were otherwise included by `include`. */
   exclude?: RulesEditResponseSelectorExcludeList | null;
   /** Select all matching operations. */
   include?: RulesEditResponseSelectorIncludeList | null;
 }
+const RulesEditResponseSelector = /*@__PURE__*/ __L.at(
+  __c9,
+  5,
+) as any as S.Schema<RulesEditResponseSelector>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PatchRuleResponse {
   /** Action to take on requests that match operations included in `selector` and fail `expression`. */
@@ -1156,6 +1583,8 @@ export interface PatchRuleResponse {
   createdAt?: string | null;
   lastUpdated?: string | null;
 }
+const PatchRuleResponse = /*@__PURE__*/ __L.at(__c9, 6) as any as S.Schema<PatchRuleResponse>;
+
 export type ConfigurationCredentialsUpdateRequestKeysItemAPIShieldCredentialsJWTKeyRSAAlg =
   | "RS256"
   | "RS384"
@@ -1241,8 +1670,15 @@ export type ConfigurationCredentialsUpdateRequestKeysItem =
   | ConfigurationCredentialsUpdateRequestKeysItemAPIShieldCredentialsJWTKeyEcEs256
   | ConfigurationCredentialsUpdateRequestKeysItemAPIShieldCredentialsJWTKeyEcEs384
   | ConfigurationCredentialsUpdateRequestKeysItemAPIShieldCredentialsJWTKeyOctRequest;
+const ConfigurationCredentialsUpdateRequestKeysItem = /*@__PURE__*/ __L.at(__c9, 7);
+
 export type ConfigurationCredentialsUpdateRequestKeysList =
   Array<ConfigurationCredentialsUpdateRequestKeysItem>;
+const ConfigurationCredentialsUpdateRequestKeysList = /*@__PURE__*/ __L.at(
+  __c10,
+  0,
+) as any as S.Schema<ConfigurationCredentialsUpdateRequestKeysList>;
+
 export interface PutConfigurationCredentialRequest {
   /** Identifier. */
   zoneId: string;
@@ -1250,6 +1686,11 @@ export interface PutConfigurationCredentialRequest {
   configId: string;
   keys: ConfigurationCredentialsUpdateRequestKeysList;
 }
+const PutConfigurationCredentialRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  1,
+) as any as S.Schema<PutConfigurationCredentialRequest>;
+
 export type ConfigurationCredentialsUpdateResponseKeysItemAPIShieldCredentialsJWTKeyRSAAlg =
   | "RS256"
   | "RS384"
@@ -1329,12 +1770,24 @@ export type ConfigurationCredentialsUpdateResponseKeysItem =
   | ConfigurationCredentialsUpdateResponseKeysItemAPIShieldCredentialsJWTKeyEcEs256
   | ConfigurationCredentialsUpdateResponseKeysItemAPIShieldCredentialsJWTKeyEcEs384
   | ConfigurationCredentialsUpdateResponseKeysItemAPIShieldCredentialsJWTKeyOctResponse;
+const ConfigurationCredentialsUpdateResponseKeysItem = /*@__PURE__*/ __L.at(__c10, 2);
+
 export type ConfigurationCredentialsUpdateResponseKeysList =
   Array<ConfigurationCredentialsUpdateResponseKeysItem>;
+const ConfigurationCredentialsUpdateResponseKeysList = /*@__PURE__*/ __L.at(
+  __c10,
+  3,
+) as any as S.Schema<ConfigurationCredentialsUpdateResponseKeysList>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PutConfigurationCredentialResponse {
   keys: ConfigurationCredentialsUpdateResponseKeysList;
 }
+const PutConfigurationCredentialResponse = /*@__PURE__*/ __L.at(
+  __c10,
+  4,
+) as any as S.Schema<PutConfigurationCredentialResponse>;
+
 export type BulkCreateRulesError = CloudflareOpError;
 /** Creates multiple token validation rules for the zone in one request. */
 export const bulkCreateRules: API.PaginatedOperationMethod<
@@ -1345,8 +1798,8 @@ export const bulkCreateRules: API.PaginatedOperationMethod<
   RulesBulkCreateResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(9) as any as S.Schema<BulkCreateRulesRequest>,
-    output: __S(17) as any as S.Schema<BulkCreateRulesResponse>,
+    input: BulkCreateRulesRequest,
+    output: BulkCreateRulesResponse,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -1365,8 +1818,8 @@ export const bulkPatchRules: API.PaginatedOperationMethod<
   RulesBulkEditResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(24) as any as S.Schema<BulkPatchRulesRequest>,
-    output: __S(27) as any as S.Schema<BulkPatchRulesResponse>,
+    input: BulkPatchRulesRequest,
+    output: BulkPatchRulesResponse,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -1383,8 +1836,8 @@ export const createConfiguration: API.OperationMethod<
   CreateConfigurationError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31) as any as S.Schema<CreateConfigurationRequest>,
-  output: __S(35) as any as S.Schema<CreateConfigurationResponse>,
+  input: CreateConfigurationRequest,
+  output: CreateConfigurationResponse,
   errors: [TokenValidationNotEntitled, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1398,8 +1851,8 @@ export const createRule: API.OperationMethod<
   CreateRuleError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39) as any as S.Schema<CreateRuleRequest>,
-  output: __S(40) as any as S.Schema<CreateRuleResponse>,
+  input: CreateRuleRequest,
+  output: CreateRuleResponse,
   errors: [TokenValidationNotEntitled, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1417,8 +1870,8 @@ export const deleteConfiguration: API.OperationMethod<
   DeleteConfigurationError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41) as any as S.Schema<DeleteConfigurationRequest>,
-  output: __S(42) as any as S.Schema<DeleteConfigurationResponse>,
+  input: DeleteConfigurationRequest,
+  output: DeleteConfigurationResponse,
   errors: [
     TokenConfigurationNotFound,
     TokenValidationNotEntitled,
@@ -1442,8 +1895,8 @@ export const deleteRule: API.OperationMethod<
   DeleteRuleError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43) as any as S.Schema<DeleteRuleRequest>,
-  output: __S(44) as any as S.Schema<DeleteRuleResponse>,
+  input: DeleteRuleRequest,
+  output: DeleteRuleResponse,
   errors: [
     TokenValidationRuleNotFound,
     TokenValidationNotEntitled,
@@ -1463,8 +1916,8 @@ export const editConfigurationCredentials: API.OperationMethod<
   EditConfigurationCredentialsError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47) as any as S.Schema<EditConfigurationCredentialsRequest>,
-  output: __S(50) as any as S.Schema<EditConfigurationCredentialsResponse>,
+  input: EditConfigurationCredentialsRequest,
+  output: EditConfigurationCredentialsResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1482,8 +1935,8 @@ export const getConfiguration: API.OperationMethod<
   GetConfigurationError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(51) as any as S.Schema<GetConfigurationRequest>,
-  output: __S(55) as any as S.Schema<GetConfigurationResponse>,
+  input: GetConfigurationRequest,
+  output: GetConfigurationResponse,
   errors: [
     TokenConfigurationNotFound,
     TokenValidationNotEntitled,
@@ -1507,8 +1960,8 @@ export const getRule: API.OperationMethod<
   GetRuleError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56) as any as S.Schema<GetRuleRequest>,
-  output: __S(60) as any as S.Schema<GetRuleResponse>,
+  input: GetRuleRequest,
+  output: GetRuleResponse,
   errors: [
     TokenValidationRuleNotFound,
     TokenValidationNotEntitled,
@@ -1530,8 +1983,8 @@ export const listConfigurations: API.PaginatedOperationMethod<
   ConfigurationListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(61) as any as S.Schema<ListConfigurationsRequest>,
-    output: __S(67) as any as S.Schema<ListConfigurationsResponse>,
+    input: ListConfigurationsRequest,
+    output: ListConfigurationsResponse,
     errors: [TokenValidationNotEntitled, Forbidden, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -1556,8 +2009,8 @@ export const listRules: API.PaginatedOperationMethod<
   RulesListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(68) as any as S.Schema<ListRulesRequest>,
-    output: __S(71) as any as S.Schema<ListRulesResponse>,
+    input: ListRulesRequest,
+    output: ListRulesResponse,
     errors: [TokenValidationNotEntitled, Forbidden, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -1584,8 +2037,8 @@ export const patchConfiguration: API.OperationMethod<
   PatchConfigurationError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(72) as any as S.Schema<PatchConfigurationRequest>,
-  output: __S(73) as any as S.Schema<PatchConfigurationResponse>,
+  input: PatchConfigurationRequest,
+  output: PatchConfigurationResponse,
   errors: [
     TokenConfigurationNotFound,
     TokenValidationNotEntitled,
@@ -1609,8 +2062,8 @@ export const patchRule: API.OperationMethod<
   PatchRuleError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(76) as any as S.Schema<PatchRuleRequest>,
-  output: __S(78) as any as S.Schema<PatchRuleResponse>,
+  input: PatchRuleRequest,
+  output: PatchRuleResponse,
   errors: [
     TokenValidationRuleNotFound,
     TokenValidationNotEntitled,
@@ -1634,8 +2087,8 @@ export const putConfigurationCredential: API.OperationMethod<
   PutConfigurationCredentialError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(81) as any as S.Schema<PutConfigurationCredentialRequest>,
-  output: __S(84) as any as S.Schema<PutConfigurationCredentialResponse>,
+  input: PutConfigurationCredentialRequest,
+  output: PutConfigurationCredentialResponse,
   errors: [
     TokenConfigurationNotFound,
     TokenValidationNotEntitled,
@@ -1655,30 +2108,34 @@ function __c0(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          operationIds: S.optional(__S(0).pipe(T.Body("operation_ids"))),
+          operationIds: S.optional(
+            RulesBulkCreateRequestBodyItemSelectorExcludeItemOperationIdsList.pipe(
+              T.Body("operation_ids"),
+            ),
+          ),
         }),
       ).annotate({
         identifier: "RulesBulkCreateRequestBodyItemSelectorExcludeItem",
       });
     case 2:
-      return S.Array(__S(1));
+      return S.Array(RulesBulkCreateRequestBodyItemSelectorExcludeItem);
     case 3:
       return S.Array(S.String);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          host: S.optional(__S(3)),
+          host: S.optional(RulesBulkCreateRequestBodyItemSelectorIncludeItemHostList),
         }),
       ).annotate({
         identifier: "RulesBulkCreateRequestBodyItemSelectorIncludeItem",
       });
     case 5:
-      return S.Array(__S(4));
+      return S.Array(RulesBulkCreateRequestBodyItemSelectorIncludeItem);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          exclude: S.optional(__S(2)),
-          include: S.optional(__S(5)),
+          exclude: S.optional(RulesBulkCreateRequestBodyItemSelectorExcludeList),
+          include: S.optional(RulesBulkCreateRequestBodyItemSelectorIncludeList),
         }),
       ).annotate({
         identifier: "RulesBulkCreateRequestBodyItemSelector",
@@ -1686,11 +2143,11 @@ function __c0(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          action: S.String,
+          action: RulesBulkCreateRequestBodyItemAction,
           description: S.String,
           enabled: S.Boolean,
           expression: S.String,
-          selector: __S(6),
+          selector: RulesBulkCreateRequestBodyItemSelector,
           title: S.String,
         }),
       ).annotate({
@@ -1701,12 +2158,12 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(7));
+      return S.Array(RulesBulkCreateRequestBodyItem);
     case 1:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
-          body: __S(8).pipe(T.HttpBody()),
+          body: RulesBulkCreateRequestBodyList.pipe(T.HttpBody()),
         })
           .pipe(
             T.Http({
@@ -1720,28 +2177,32 @@ function __c1(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          operationIds: S.optional(S.NullOr(__S(3)).pipe(T.Body("operation_ids"))),
+          operationIds: S.optional(
+            S.NullOr(RulesBulkCreateResultItemSelectorExcludeItemOperationIdsList).pipe(
+              T.Body("operation_ids"),
+            ),
+          ),
         }),
       ).annotate({
         identifier: "RulesBulkCreateResultItemSelectorExcludeItem",
       });
     case 3:
-      return S.Array(__S(10));
+      return S.Array(RulesBulkCreateResultItemSelectorExcludeItem);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          host: S.optional(S.NullOr(__S(3))),
+          host: S.optional(S.NullOr(RulesBulkCreateResultItemSelectorIncludeItemHostList)),
         }),
       ).annotate({
         identifier: "RulesBulkCreateResultItemSelectorIncludeItem",
       });
     case 5:
-      return S.Array(__S(12));
+      return S.Array(RulesBulkCreateResultItemSelectorIncludeItem);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          exclude: S.optional(S.NullOr(__S(11))),
-          include: S.optional(S.NullOr(__S(13))),
+          exclude: S.optional(S.NullOr(RulesBulkCreateResultItemSelectorExcludeList)),
+          include: S.optional(S.NullOr(RulesBulkCreateResultItemSelectorIncludeList)),
         }),
       ).annotate({
         identifier: "RulesBulkCreateResultItemSelector",
@@ -1749,11 +2210,11 @@ function __c1(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          action: S.String,
+          action: RulesBulkCreateResultItemAction,
           description: S.String,
           enabled: S.Boolean,
           expression: S.String,
-          selector: __S(14),
+          selector: RulesBulkCreateResultItemSelector,
           title: S.String,
           id: S.optional(S.NullOr(S.String)),
           createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
@@ -1767,11 +2228,11 @@ function __c1(j: number): any {
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(15));
+      return S.Array(RulesBulkCreateResultItem);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          result: __S(16).pipe(T.EnvelopePayload()),
+          result: RulesBulkCreateResultList.pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "BulkCreateRulesResponse" });
@@ -1780,18 +2241,22 @@ function __c2(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          operationIds: S.optional(__S(0).pipe(T.Body("operation_ids"))),
+          operationIds: S.optional(
+            RulesBulkEditRequestBodyItemSelectorExcludeItemOperationIdsList.pipe(
+              T.Body("operation_ids"),
+            ),
+          ),
         }),
       ).annotate({
         identifier: "RulesBulkEditRequestBodyItemSelectorExcludeItem",
       });
     case 4:
-      return S.Array(__S(19));
+      return S.Array(RulesBulkEditRequestBodyItemSelectorExcludeItem);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          exclude: S.optional(__S(20)),
-          include: S.optional(__S(5)),
+          exclude: S.optional(RulesBulkEditRequestBodyItemSelectorExcludeList),
+          include: S.optional(RulesBulkEditRequestBodyItemSelectorIncludeList),
         }),
       ).annotate({
         identifier: "RulesBulkEditRequestBodyItemSelector",
@@ -1800,19 +2265,19 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          action: S.optional(S.String),
+          action: S.optional(RulesBulkEditRequestBodyItemAction),
           description: S.optional(S.String),
           enabled: S.optional(S.Boolean),
           expression: S.optional(S.String),
-          position: S.optional(__S(18)),
-          selector: S.optional(__S(21)),
+          position: S.optional(RulesBulkEditRequestBodyItemPosition),
+          selector: S.optional(RulesBulkEditRequestBodyItemSelector),
           title: S.optional(S.String),
         }),
       ).annotate({
         identifier: "RulesBulkEditRequestBodyItem",
       });
     case 7:
-      return S.Array(__S(22));
+      return S.Array(RulesBulkEditRequestBodyItem);
   }
 }
 function __c3(j: number): any {
@@ -1821,7 +2286,7 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
-          body: __S(23).pipe(T.HttpBody()),
+          body: RulesBulkEditRequestBodyList.pipe(T.HttpBody()),
         })
           .pipe(
             T.Http({
@@ -1835,11 +2300,11 @@ function __c3(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          action: S.String,
+          action: RulesBulkEditResultItemAction,
           description: S.String,
           enabled: S.Boolean,
           expression: S.String,
-          selector: __S(14),
+          selector: RulesBulkEditResultItemSelector,
           title: S.String,
           id: S.optional(S.NullOr(S.String)),
           createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
@@ -1847,11 +2312,11 @@ function __c3(j: number): any {
         }),
       ).annotate({ identifier: "RulesBulkEditResultItem" });
     case 2:
-      return S.Array(__S(25));
+      return S.Array(RulesBulkEditResultItem);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          result: __S(26).pipe(T.EnvelopePayload()),
+          result: RulesBulkEditResultList.pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "BulkPatchRulesResponse" });
@@ -1865,11 +2330,11 @@ function __c3(j: number): any {
         ]),
       );
     case 5:
-      return S.Array(__S(28));
+      return S.Array(ConfigurationCreateRequestCredentialsKeysItem);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          keys: __S(29),
+          keys: ConfigurationCreateRequestCredentialsKeysList,
         }),
       ).annotate({
         identifier: "ConfigurationCreateRequestCredentials",
@@ -1878,11 +2343,11 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
-          credentials: __S(30),
+          credentials: ConfigurationCreateRequestCredentials,
           description: S.String,
           title: S.String,
-          tokenSources: __S(3).pipe(T.Body("token_sources")),
-          tokenType: S.String.pipe(T.Body("token_type")),
+          tokenSources: ConfigurationCreateRequestTokenSourcesList.pipe(T.Body("token_sources")),
+          tokenType: ConfigurationCreateRequestTokenType.pipe(T.Body("token_type")),
         })
           .pipe(
             T.Http({ method: "POST", uri: "/zones/{zone_id}/token_validation/config", code: 200 }),
@@ -1905,11 +2370,11 @@ function __c4(j: number): any {
         ]),
       );
     case 1:
-      return S.Array(__S(32));
+      return S.Array(ConfigurationCreateResponseCredentialsKeysItem);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          keys: __S(33),
+          keys: ConfigurationCreateResponseCredentialsKeysList,
         }),
       ).annotate({
         identifier: "ConfigurationCreateResponseCredentials",
@@ -1919,12 +2384,12 @@ function __c4(j: number): any {
         S.Struct({
           id: S.String,
           createdAt: S.String.pipe(T.Body("created_at")),
-          credentials: __S(34),
+          credentials: ConfigurationCreateResponseCredentials,
           description: S.String,
           lastUpdated: S.String.pipe(T.Body("last_updated")),
           title: S.String,
-          tokenSources: __S(3).pipe(T.Body("token_sources")),
-          tokenType: S.String.pipe(T.Body("token_type")),
+          tokenSources: ConfigurationCreateResponseTokenSourcesList.pipe(T.Body("token_sources")),
+          tokenType: ConfigurationCreateResponseTokenType.pipe(T.Body("token_type")),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "CreateConfigurationResponse",
@@ -1932,18 +2397,20 @@ function __c4(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          operationIds: S.optional(__S(3).pipe(T.Body("operation_ids"))),
+          operationIds: S.optional(
+            RulesCreateRequestSelectorExcludeItemOperationIdsList.pipe(T.Body("operation_ids")),
+          ),
         }),
       ).annotate({
         identifier: "RulesCreateRequestSelectorExcludeItem",
       });
     case 5:
-      return S.Array(__S(36));
+      return S.Array(RulesCreateRequestSelectorExcludeItem);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          exclude: S.optional(__S(37)),
-          include: S.optional(__S(5)),
+          exclude: S.optional(RulesCreateRequestSelectorExcludeList),
+          include: S.optional(RulesCreateRequestSelectorIncludeList),
         }),
       ).annotate({
         identifier: "RulesCreateRequestSelector",
@@ -1952,11 +2419,11 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
-          action: S.String,
+          action: RulesCreateRequestAction,
           description: S.String,
           enabled: S.Boolean,
           expression: S.String,
-          selector: __S(38),
+          selector: RulesCreateRequestSelector,
           title: S.String,
         })
           .pipe(
@@ -1971,11 +2438,11 @@ function __c5(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          action: S.String,
+          action: RulesCreateResponseAction,
           description: S.String,
           enabled: S.Boolean,
           expression: S.String,
-          selector: __S(14),
+          selector: RulesCreateResponseSelector,
           title: S.String,
           id: S.optional(S.NullOr(S.String)),
           createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
@@ -2036,13 +2503,13 @@ function __c5(j: number): any {
         ]),
       );
     case 6:
-      return S.Array(__S(45));
+      return S.Array(EditConfigurationCredentialsRequestKeysItem);
     case 7:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
           configId: S.String.pipe(T.Label("config_id")),
-          keys: __S(46),
+          keys: EditConfigurationCredentialsRequestKeysList,
         })
           .pipe(
             T.Http({
@@ -2069,11 +2536,11 @@ function __c6(j: number): any {
         ]),
       );
     case 1:
-      return S.Array(__S(48));
+      return S.Array(EditConfigurationCredentialsResponseKeysItem);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          keys: __S(49),
+          keys: EditConfigurationCredentialsResponseKeysList,
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "EditConfigurationCredentialsResponse",
@@ -2103,11 +2570,11 @@ function __c6(j: number): any {
         ]),
       );
     case 5:
-      return S.Array(__S(52));
+      return S.Array(ConfigurationGetResponseCredentialsKeysItem);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          keys: __S(53),
+          keys: ConfigurationGetResponseCredentialsKeysList,
         }),
       ).annotate({
         identifier: "ConfigurationGetResponseCredentials",
@@ -2117,12 +2584,12 @@ function __c6(j: number): any {
         S.Struct({
           id: S.String,
           createdAt: S.String.pipe(T.Body("created_at")),
-          credentials: __S(54),
+          credentials: ConfigurationGetResponseCredentials,
           description: S.String,
           lastUpdated: S.String.pipe(T.Body("last_updated")),
           title: S.String,
-          tokenSources: __S(3).pipe(T.Body("token_sources")),
-          tokenType: S.String.pipe(T.Body("token_type")),
+          tokenSources: ConfigurationGetResponseTokenSourcesList.pipe(T.Body("token_sources")),
+          tokenType: ConfigurationGetResponseTokenType.pipe(T.Body("token_type")),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetConfigurationResponse" });
   }
@@ -2147,28 +2614,32 @@ function __c7(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          operationIds: S.optional(S.NullOr(__S(3)).pipe(T.Body("operation_ids"))),
+          operationIds: S.optional(
+            S.NullOr(RulesGetResponseSelectorExcludeItemOperationIdsList).pipe(
+              T.Body("operation_ids"),
+            ),
+          ),
         }),
       ).annotate({
         identifier: "RulesGetResponseSelectorExcludeItem",
       });
     case 2:
-      return S.Array(__S(57));
+      return S.Array(RulesGetResponseSelectorExcludeItem);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          exclude: S.optional(S.NullOr(__S(58))),
-          include: S.optional(S.NullOr(__S(13))),
+          exclude: S.optional(S.NullOr(RulesGetResponseSelectorExcludeList)),
+          include: S.optional(S.NullOr(RulesGetResponseSelectorIncludeList)),
         }),
       ).annotate({ identifier: "RulesGetResponseSelector" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          action: S.String,
+          action: RulesGetResponseAction,
           description: S.String,
           enabled: S.Boolean,
           expression: S.String,
-          selector: __S(59),
+          selector: RulesGetResponseSelector,
           title: S.String,
           id: S.optional(S.NullOr(S.String)),
           createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
@@ -2199,7 +2670,7 @@ function __c7(j: number): any {
         ]),
       );
     case 7:
-      return S.Array(__S(62));
+      return S.Array(ConfigurationListResultItemCredentialsKeysItem);
   }
 }
 function __c8(j: number): any {
@@ -2207,7 +2678,7 @@ function __c8(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          keys: __S(63),
+          keys: ConfigurationListResultItemCredentialsKeysList,
         }),
       ).annotate({
         identifier: "ConfigurationListResultItemCredentials",
@@ -2217,22 +2688,22 @@ function __c8(j: number): any {
         S.Struct({
           id: S.String,
           createdAt: S.String.pipe(T.Body("created_at")),
-          credentials: __S(64),
+          credentials: ConfigurationListResultItemCredentials,
           description: S.String,
           lastUpdated: S.String.pipe(T.Body("last_updated")),
           title: S.String,
-          tokenSources: __S(3).pipe(T.Body("token_sources")),
-          tokenType: S.String.pipe(T.Body("token_type")),
+          tokenSources: ConfigurationListResultItemTokenSourcesList.pipe(T.Body("token_sources")),
+          tokenType: ConfigurationListResultItemTokenType.pipe(T.Body("token_type")),
         }),
       ).annotate({
         identifier: "ConfigurationListResultItem",
       });
     case 2:
-      return S.Array(__S(65));
+      return S.Array(ConfigurationListResultItem);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          result: __S(66).pipe(T.EnvelopePayload()),
+          result: ConfigurationListResultList.pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
@@ -2243,14 +2714,16 @@ function __c8(j: number): any {
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
           id: S.optional(S.String.pipe(T.Query())),
-          action: S.optional(S.String.pipe(T.Query())),
+          action: S.optional(RulesListRequestAction.pipe(T.Query())),
           enabled: S.optional(S.Boolean.pipe(T.Query())),
           host: S.optional(S.String.pipe(T.Query())),
           hostname: S.optional(S.String.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
           perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
           ruleId: S.optional(S.String.pipe(T.Query("rule_id"))),
-          tokenConfiguration: S.optional(__S(3).pipe(T.Query("token_configuration"))),
+          tokenConfiguration: S.optional(
+            RulesListRequestTokenConfigurationList.pipe(T.Query("token_configuration")),
+          ),
         })
           .pipe(
             T.Http({ method: "GET", uri: "/zones/{zone_id}/token_validation/rules", code: 200 }),
@@ -2260,11 +2733,11 @@ function __c8(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          action: S.String,
+          action: RulesListResultItemAction,
           description: S.String,
           enabled: S.Boolean,
           expression: S.String,
-          selector: __S(14),
+          selector: RulesListResultItemSelector,
           title: S.String,
           id: S.optional(S.NullOr(S.String)),
           createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
@@ -2272,11 +2745,11 @@ function __c8(j: number): any {
         }),
       ).annotate({ identifier: "RulesListResultItem" });
     case 6:
-      return S.Array(__S(69));
+      return S.Array(RulesListResultItem);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          result: __S(70).pipe(T.EnvelopePayload()),
+          result: RulesListResultList.pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListRulesResponse" });
@@ -2291,7 +2764,9 @@ function __c9(j: number): any {
           configId: S.String.pipe(T.Label("config_id")),
           description: S.optional(S.String),
           title: S.optional(S.String),
-          tokenSources: S.optional(__S(3).pipe(T.Body("token_sources"))),
+          tokenSources: S.optional(
+            ConfigurationEditRequestTokenSourcesList.pipe(T.Body("token_sources")),
+          ),
         })
           .pipe(
             T.Http({
@@ -2310,7 +2785,9 @@ function __c9(j: number): any {
           id: S.optional(S.NullOr(S.String)),
           description: S.optional(S.NullOr(S.String)),
           title: S.optional(S.NullOr(S.String)),
-          tokenSources: S.optional(S.NullOr(__S(3)).pipe(T.Body("token_sources"))),
+          tokenSources: S.optional(
+            S.NullOr(ConfigurationEditResponseTokenSourcesList).pipe(T.Body("token_sources")),
+          ),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "PatchConfigurationResponse",
@@ -2320,8 +2797,8 @@ function __c9(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          exclude: S.optional(__S(37)),
-          include: S.optional(__S(5)),
+          exclude: S.optional(RulesEditRequestSelectorExcludeList),
+          include: S.optional(RulesEditRequestSelectorIncludeList),
         }),
       ).annotate({ identifier: "RulesEditRequestSelector" });
     case 4:
@@ -2329,12 +2806,12 @@ function __c9(j: number): any {
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
           ruleId: S.String.pipe(T.Label("rule_id")),
-          action: S.optional(S.String),
+          action: S.optional(RulesEditRequestAction),
           description: S.optional(S.String),
           enabled: S.optional(S.Boolean),
           expression: S.optional(S.String),
-          position: S.optional(__S(74)),
-          selector: S.optional(__S(75)),
+          position: S.optional(RulesEditRequestPosition),
+          selector: S.optional(RulesEditRequestSelector),
           title: S.optional(S.String),
         })
           .pipe(
@@ -2349,8 +2826,8 @@ function __c9(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          exclude: S.optional(S.NullOr(__S(58))),
-          include: S.optional(S.NullOr(__S(13))),
+          exclude: S.optional(S.NullOr(RulesEditResponseSelectorExcludeList)),
+          include: S.optional(S.NullOr(RulesEditResponseSelectorIncludeList)),
         }),
       ).annotate({
         identifier: "RulesEditResponseSelector",
@@ -2358,11 +2835,11 @@ function __c9(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          action: S.String,
+          action: RulesEditResponseAction,
           description: S.String,
           enabled: S.Boolean,
           expression: S.String,
-          selector: __S(77),
+          selector: RulesEditResponseSelector,
           title: S.String,
           id: S.optional(S.NullOr(S.String)),
           createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
@@ -2383,13 +2860,13 @@ function __c9(j: number): any {
 function __c10(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(79));
+      return S.Array(ConfigurationCredentialsUpdateRequestKeysItem);
     case 1:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
           configId: S.String.pipe(T.Label("config_id")),
-          keys: __S(80),
+          keys: ConfigurationCredentialsUpdateRequestKeysList,
         })
           .pipe(
             T.Http({
@@ -2412,45 +2889,14 @@ function __c10(j: number): any {
         ]),
       );
     case 3:
-      return S.Array(__S(82));
+      return S.Array(ConfigurationCredentialsUpdateResponseKeysItem);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          keys: __S(83),
+          keys: ConfigurationCredentialsUpdateResponseKeysList,
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "PutConfigurationCredentialResponse",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
-    case 9:
-      return __c9(i & 7);
-    case 10:
-      return __c10(i & 7);
   }
 }

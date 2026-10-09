@@ -12,8 +12,6 @@ import {
 } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { CloudflareOpError, CloudflareOpContext };
 
@@ -54,12 +52,16 @@ export class KeylessSslNotAvailable
   ) {}
 
 export type CreateRequestBundleMethod = "ubiquitous" | "optimal" | "force";
+const CreateRequestBundleMethod = S.String;
+
 export interface CreateRequestTunnel {
   /** Private IP of the Key Server Host. */
   privateIp: string;
   /** Cloudflare Tunnel Virtual Network ID. */
   vnetId: string;
 }
+const CreateRequestTunnel = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<CreateRequestTunnel>;
+
 export interface CreateKeylessCertificateRequest {
   /** Identifier. */
   zoneId: string;
@@ -76,8 +78,20 @@ export interface CreateKeylessCertificateRequest {
   /** Configuration for using Keyless SSL through a Cloudflare Tunnel. */
   tunnel?: CreateRequestTunnel;
 }
+const CreateKeylessCertificateRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<CreateKeylessCertificateRequest>;
+
 export type CreateResponsePermissionsList = Array<string>;
+const CreateResponsePermissionsList = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<CreateResponsePermissionsList>;
+
 export type CreateResponseStatus = "active" | "deleted";
+const CreateResponseStatus = S.String;
+
 export type CreateResponseTunnel = CreateRequestTunnel;
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateKeylessCertificateResponse {
@@ -102,25 +116,50 @@ export interface CreateKeylessCertificateResponse {
   /** Configuration for using Keyless SSL through a Cloudflare Tunnel. */
   tunnel?: CreateRequestTunnel | null;
 }
+const CreateKeylessCertificateResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<CreateKeylessCertificateResponse>;
+
 export interface DeleteKeylessCertificateRequest {
   /** Identifier. */
   zoneId: string;
   /** Keyless certificate identifier tag. */
   keylessCertificateId: string;
 }
+const DeleteKeylessCertificateRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<DeleteKeylessCertificateRequest>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DeleteKeylessCertificateResponse {
   /** Keyless certificate identifier tag. */
   id?: string | null;
 }
+const DeleteKeylessCertificateResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<DeleteKeylessCertificateResponse>;
+
 export interface GetKeylessCertificateRequest {
   /** Identifier. */
   zoneId: string;
   /** Keyless certificate identifier tag. */
   keylessCertificateId: string;
 }
+const GetKeylessCertificateRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<GetKeylessCertificateRequest>;
+
 export type GetResponsePermissionsList = Array<string>;
+const GetResponsePermissionsList =
+  CreateResponsePermissionsList as any as S.Schema<GetResponsePermissionsList>;
+
 export type GetResponseStatus = "active" | "deleted";
+const GetResponseStatus = S.String;
+
 export type GetResponseTunnel = CreateRequestTunnel;
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetKeylessCertificateResponse {
@@ -145,12 +184,27 @@ export interface GetKeylessCertificateResponse {
   /** Configuration for using Keyless SSL through a Cloudflare Tunnel. */
   tunnel?: CreateRequestTunnel | null;
 }
+const GetKeylessCertificateResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<GetKeylessCertificateResponse>;
+
 export interface ListKeylessCertificatesRequest {
   /** Identifier. */
   zoneId: string;
 }
+const ListKeylessCertificatesRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<ListKeylessCertificatesRequest>;
+
 export type ListResultItemPermissionsList = Array<string>;
+const ListResultItemPermissionsList =
+  CreateResponsePermissionsList as any as S.Schema<ListResultItemPermissionsList>;
+
 export type ListResultItemStatus = "active" | "deleted";
+const ListResultItemStatus = S.String;
+
 export type ListResultItemTunnel = CreateRequestTunnel;
 export interface ListResultItem {
   /** Keyless certificate identifier tag. */
@@ -174,13 +228,22 @@ export interface ListResultItem {
   /** Configuration for using Keyless SSL through a Cloudflare Tunnel. */
   tunnel?: CreateRequestTunnel | null;
 }
+const ListResultItem = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<ListResultItem>;
+
 export type ListResultList = Array<ListResultItem>;
+const ListResultList = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<ListResultList>;
+
 export interface ListKeylessCertificatesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result: ListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
+const ListKeylessCertificatesResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<ListKeylessCertificatesResponse>;
+
 export type EditRequestTunnel = CreateRequestTunnel;
 export interface PatchKeylessCertificateRequest {
   /** Identifier. */
@@ -198,8 +261,18 @@ export interface PatchKeylessCertificateRequest {
   /** Configuration for using Keyless SSL through a Cloudflare Tunnel. */
   tunnel?: CreateRequestTunnel;
 }
+const PatchKeylessCertificateRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<PatchKeylessCertificateRequest>;
+
 export type EditResponsePermissionsList = Array<string>;
+const EditResponsePermissionsList =
+  CreateResponsePermissionsList as any as S.Schema<EditResponsePermissionsList>;
+
 export type EditResponseStatus = "active" | "deleted";
+const EditResponseStatus = S.String;
+
 export type EditResponseTunnel = CreateRequestTunnel;
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PatchKeylessCertificateResponse {
@@ -224,6 +297,11 @@ export interface PatchKeylessCertificateResponse {
   /** Configuration for using Keyless SSL through a Cloudflare Tunnel. */
   tunnel?: CreateRequestTunnel | null;
 }
+const PatchKeylessCertificateResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<PatchKeylessCertificateResponse>;
+
 export type CreateKeylessCertificateError = KeylessSslNotAvailable | Forbidden | CloudflareOpError;
 /** Creates a Keyless SSL configuration that allows SSL/TLS termination without exposing private keys to Cloudflare. Keys remain on your infrastructure. */
 export const createKeylessCertificate: API.OperationMethod<
@@ -232,8 +310,8 @@ export const createKeylessCertificate: API.OperationMethod<
   CreateKeylessCertificateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1) as any as S.Schema<CreateKeylessCertificateRequest>,
-  output: __S(3) as any as S.Schema<CreateKeylessCertificateResponse>,
+  input: CreateKeylessCertificateRequest,
+  output: CreateKeylessCertificateResponse,
   errors: [KeylessSslNotAvailable, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -250,8 +328,8 @@ export const deleteKeylessCertificate: API.OperationMethod<
   DeleteKeylessCertificateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4) as any as S.Schema<DeleteKeylessCertificateRequest>,
-  output: __S(5) as any as S.Schema<DeleteKeylessCertificateResponse>,
+  input: DeleteKeylessCertificateRequest,
+  output: DeleteKeylessCertificateResponse,
   errors: [KeylessCertificateNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -265,8 +343,8 @@ export const getKeylessCertificate: API.OperationMethod<
   GetKeylessCertificateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6) as any as S.Schema<GetKeylessCertificateRequest>,
-  output: __S(7) as any as S.Schema<GetKeylessCertificateResponse>,
+  input: GetKeylessCertificateRequest,
+  output: GetKeylessCertificateResponse,
   errors: [KeylessCertificateNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -282,8 +360,8 @@ export const listKeylessCertificates: API.PaginatedOperationMethod<
   ListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(8) as any as S.Schema<ListKeylessCertificatesRequest>,
-    output: __S(11) as any as S.Schema<ListKeylessCertificatesResponse>,
+    input: ListKeylessCertificatesRequest,
+    output: ListKeylessCertificatesResponse,
     errors: [Forbidden, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -303,8 +381,8 @@ export const patchKeylessCertificate: API.OperationMethod<
   PatchKeylessCertificateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12) as any as S.Schema<PatchKeylessCertificateRequest>,
-  output: __S(13) as any as S.Schema<PatchKeylessCertificateResponse>,
+  input: PatchKeylessCertificateRequest,
+  output: PatchKeylessCertificateResponse,
   errors: [KeylessCertificateNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -327,9 +405,9 @@ function __c0(j: number): any {
           certificate: S.String,
           host: S.String,
           port: S.Number,
-          bundleMethod: S.optional(S.String.pipe(T.Body("bundle_method"))),
+          bundleMethod: S.optional(CreateRequestBundleMethod.pipe(T.Body("bundle_method"))),
           name: S.optional(S.String),
-          tunnel: S.optional(__S(0)),
+          tunnel: S.optional(CreateRequestTunnel),
         })
           .pipe(T.Http({ method: "POST", uri: "/zones/{zone_id}/keyless_certificates", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -347,10 +425,10 @@ function __c0(j: number): any {
           host: S.String,
           modifiedOn: S.String.pipe(T.Body("modified_on")),
           name: S.String,
-          permissions: __S(2),
+          permissions: CreateResponsePermissionsList,
           port: S.Number,
-          status: S.String,
-          tunnel: S.optional(S.NullOr(__S(0))),
+          status: CreateResponseStatus,
+          tunnel: S.optional(S.NullOr(CreateRequestTunnel)),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "CreateKeylessCertificateResponse",
@@ -406,10 +484,10 @@ function __c0(j: number): any {
           host: S.String,
           modifiedOn: S.String.pipe(T.Body("modified_on")),
           name: S.String,
-          permissions: __S(2),
+          permissions: GetResponsePermissionsList,
           port: S.Number,
-          status: S.String,
-          tunnel: S.optional(S.NullOr(__S(0))),
+          status: GetResponseStatus,
+          tunnel: S.optional(S.NullOr(CreateRequestTunnel)),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "GetKeylessCertificateResponse",
@@ -437,18 +515,18 @@ function __c1(j: number): any {
           host: S.String,
           modifiedOn: S.String.pipe(T.Body("modified_on")),
           name: S.String,
-          permissions: __S(2),
+          permissions: ListResultItemPermissionsList,
           port: S.Number,
-          status: S.String,
-          tunnel: S.optional(S.NullOr(__S(0))),
+          status: ListResultItemStatus,
+          tunnel: S.optional(S.NullOr(CreateRequestTunnel)),
         }),
       ).annotate({ identifier: "ListResultItem" });
     case 2:
-      return S.Array(__S(9));
+      return S.Array(ListResultItem);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          result: __S(10).pipe(T.EnvelopePayload()),
+          result: ListResultList.pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
@@ -463,7 +541,7 @@ function __c1(j: number): any {
           host: S.optional(S.String),
           name: S.optional(S.String),
           port: S.optional(S.Number),
-          tunnel: S.optional(__S(0)),
+          tunnel: S.optional(CreateRequestTunnel),
         })
           .pipe(
             T.Http({
@@ -485,26 +563,13 @@ function __c1(j: number): any {
           host: S.String,
           modifiedOn: S.String.pipe(T.Body("modified_on")),
           name: S.String,
-          permissions: __S(2),
+          permissions: EditResponsePermissionsList,
           port: S.Number,
-          status: S.String,
-          tunnel: S.optional(S.NullOr(__S(0))),
+          status: EditResponseStatus,
+          tunnel: S.optional(S.NullOr(CreateRequestTunnel)),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "PatchKeylessCertificateResponse",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
   }
 }

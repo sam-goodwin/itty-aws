@@ -7,8 +7,6 @@ import { UnknownVantaError } from "../errors.ts";
 import { VantaProtocol, type VantaOpError, type VantaOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { VantaOpError, VantaOpContext };
 
@@ -16,15 +14,32 @@ export interface GetApiEndpointVulnerabilityConnectorsRequest {
   /** Vanta generated identifier for the given resource, and can be found on the developer console page. See the list of registered resources and their IDs on https://app.vanta.com/settings/developer-console/<app_id>?tab=resources */
   resourceId: string;
 }
+const GetApiEndpointVulnerabilityConnectorsRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<GetApiEndpointVulnerabilityConnectorsRequest>;
+
 export interface GetApiEndpointVulnerabilityConnectorsResponseResourcesItemOccurrencesItemQueryParamsItem {
   /** The API query param key associated with this vulnerability occurrence. */
   key: string;
   /** The API query param value associated with this vulnerability occurrence. */
   value: string;
 }
+const GetApiEndpointVulnerabilityConnectorsResponseResourcesItemOccurrencesItemQueryParamsItem =
+  /*@__PURE__*/ __L.at(
+    __c0,
+    1,
+  ) as any as S.Schema<GetApiEndpointVulnerabilityConnectorsResponseResourcesItemOccurrencesItemQueryParamsItem>;
+
 /** The API params associated with this vulnerability. */
 export type GetApiEndpointVulnerabilityConnectorsResponseResourcesItemOccurrencesItemQueryParamsList =
   Array<GetApiEndpointVulnerabilityConnectorsResponseResourcesItemOccurrencesItemQueryParamsItem>;
+const GetApiEndpointVulnerabilityConnectorsResponseResourcesItemOccurrencesItemQueryParamsList =
+  /*@__PURE__*/ __L.at(
+    __c0,
+    2,
+  ) as any as S.Schema<GetApiEndpointVulnerabilityConnectorsResponseResourcesItemOccurrencesItemQueryParamsList>;
+
 export interface GetApiEndpointVulnerabilityConnectorsResponseResourcesItemOccurrencesItemHeadersItem {
   /** The API header key associated with this vulnerability occurrence. */
   key: string;
@@ -34,6 +49,9 @@ export interface GetApiEndpointVulnerabilityConnectorsResponseResourcesItemOccur
 /** The API headers associated with this vulnerability. */
 export type GetApiEndpointVulnerabilityConnectorsResponseResourcesItemOccurrencesItemHeadersList =
   Array<GetApiEndpointVulnerabilityConnectorsResponseResourcesItemOccurrencesItemHeadersItem>;
+const GetApiEndpointVulnerabilityConnectorsResponseResourcesItemOccurrencesItemHeadersList =
+  GetApiEndpointVulnerabilityConnectorsResponseResourcesItemOccurrencesItemQueryParamsList as any as S.Schema<GetApiEndpointVulnerabilityConnectorsResponseResourcesItemOccurrencesItemHeadersList>;
+
 export interface GetApiEndpointVulnerabilityConnectorsResponseResourcesItemOccurrencesItem {
   /** Markdown description of this API endpoint vulnerability occurrence. */
   description: string;
@@ -46,9 +64,21 @@ export interface GetApiEndpointVulnerabilityConnectorsResponseResourcesItemOccur
   /** The body of the request passed to the API, with sensitive information redacted. */
   body?: string | null;
 }
+const GetApiEndpointVulnerabilityConnectorsResponseResourcesItemOccurrencesItem =
+  /*@__PURE__*/ __L.at(
+    __c0,
+    3,
+  ) as any as S.Schema<GetApiEndpointVulnerabilityConnectorsResponseResourcesItemOccurrencesItem>;
+
 /** A list of occurrences of vulnerable API endpoints. */
 export type GetApiEndpointVulnerabilityConnectorsResponseResourcesItemOccurrencesList =
   Array<GetApiEndpointVulnerabilityConnectorsResponseResourcesItemOccurrencesItem>;
+const GetApiEndpointVulnerabilityConnectorsResponseResourcesItemOccurrencesList =
+  /*@__PURE__*/ __L.at(
+    __c0,
+    4,
+  ) as any as S.Schema<GetApiEndpointVulnerabilityConnectorsResponseResourcesItemOccurrencesList>;
+
 export interface GetApiEndpointVulnerabilityConnectorsResponseResourcesItem {
   /** A human readable label for this resource - will be shown as-is in inventory page. */
   displayName: string;
@@ -77,20 +107,42 @@ export interface GetApiEndpointVulnerabilityConnectorsResponseResourcesItem {
   /** The Common Vulnerability Scoring System (CVSS) version 3 score for the vulnerability. This field is optional. */
   cvss3Score?: number | null;
 }
+const GetApiEndpointVulnerabilityConnectorsResponseResourcesItem = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<GetApiEndpointVulnerabilityConnectorsResponseResourcesItem>;
+
 export type GetApiEndpointVulnerabilityConnectorsResponseResourcesList =
   Array<GetApiEndpointVulnerabilityConnectorsResponseResourcesItem>;
+const GetApiEndpointVulnerabilityConnectorsResponseResourcesList = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<GetApiEndpointVulnerabilityConnectorsResponseResourcesList>;
+
 export interface GetApiEndpointVulnerabilityConnectorsResponse {
   resources?: GetApiEndpointVulnerabilityConnectorsResponseResourcesList;
 }
+const GetApiEndpointVulnerabilityConnectorsResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<GetApiEndpointVulnerabilityConnectorsResponse>;
+
 export interface GetBackgroundCheckConnectorRequest {
   /** Vanta generated identifier for the given resource, and can be found on the developer console page. See the list of registered resources and their IDs on https://app.vanta.com/settings/developer-console/<app_id>?tab=resources */
   resourceId: string;
 }
+const GetBackgroundCheckConnectorRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<GetBackgroundCheckConnectorRequest>;
+
 /** The current status of the background check. */
 export type GetBackgroundCheckConnectorResponseResourcesItemStatus =
   | "INCOMPLETE"
   | "IN_PROGRESS"
   | "COMPLETE";
+const GetBackgroundCheckConnectorResponseResourcesItemStatus = S.String;
+
 export interface GetBackgroundCheckConnectorResponseResourcesItem {
   /** A human readable label for this resource - will be shown as-is in inventory page. */
   displayName: string;
@@ -107,15 +159,35 @@ export interface GetBackgroundCheckConnectorResponseResourcesItem {
   /** If complete, the date of completion of the background check. */
   completionDate?: string | null;
 }
+const GetBackgroundCheckConnectorResponseResourcesItem = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<GetBackgroundCheckConnectorResponseResourcesItem>;
+
 export type GetBackgroundCheckConnectorResponseResourcesList =
   Array<GetBackgroundCheckConnectorResponseResourcesItem>;
+const GetBackgroundCheckConnectorResponseResourcesList = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<GetBackgroundCheckConnectorResponseResourcesList>;
+
 export interface GetBackgroundCheckConnectorResponse {
   resources?: GetBackgroundCheckConnectorResponseResourcesList;
 }
+const GetBackgroundCheckConnectorResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<GetBackgroundCheckConnectorResponse>;
+
 export interface GetCustomResourceRequest {
   /** Vanta generated identifier for the given resource, and can be found on the developer console page. See the list of registered resources and their IDs on https://app.vanta.com/settings/developer-console/<app_id>?tab=resources */
   resourceId: string;
 }
+const GetCustomResourceRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<GetCustomResourceRequest>;
+
 export interface GetCustomResourceResponseResourcesItem {
   /** A human readable label for this resource - will be shown as-is in inventory page. */
   displayName: string;
@@ -124,14 +196,34 @@ export interface GetCustomResourceResponseResourcesItem {
   /** A link to this resource on the partner site. This must be a HTTPS URL. */
   externalUrl: string;
 }
+const GetCustomResourceResponseResourcesItem = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<GetCustomResourceResponseResourcesItem>;
+
 export type GetCustomResourceResponseResourcesList = Array<GetCustomResourceResponseResourcesItem>;
+const GetCustomResourceResponseResourcesList = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<GetCustomResourceResponseResourcesList>;
+
 export interface GetCustomResourceResponse {
   resources?: GetCustomResourceResponseResourcesList;
 }
+const GetCustomResourceResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<GetCustomResourceResponse>;
+
 export interface GetMacosUserComputerRequest {
   /** Vanta generated identifier for the given resource, and can be found on the developer console page. See the list of registered resources and their IDs on https://app.vanta.com/settings/developer-console/<app_id>?tab=resources */
   resourceId: string;
 }
+const GetMacosUserComputerRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<GetMacosUserComputerRequest>;
+
 export interface GetMacosUserComputerResponseResourcesItemApplicationsItem {
   /** The name of the application. */
   name: string;
@@ -140,9 +232,19 @@ export interface GetMacosUserComputerResponseResourcesItemApplicationsItem {
   /** The last time the application was opened. */
   lastOpenedTimestamp?: string | null;
 }
+const GetMacosUserComputerResponseResourcesItemApplicationsItem = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<GetMacosUserComputerResponseResourcesItemApplicationsItem>;
+
 /** All the installed Mac Apps on the system. */
 export type GetMacosUserComputerResponseResourcesItemApplicationsList =
   Array<GetMacosUserComputerResponseResourcesItemApplicationsItem>;
+const GetMacosUserComputerResponseResourcesItemApplicationsList = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<GetMacosUserComputerResponseResourcesItemApplicationsList>;
+
 /** The type of browser. If you see something not on this list - if the browser is chromium based, use Chrome. Otherwise, skip sending the extension and contact Vanta for a longer term addition to this enum. */
 export type GetMacosUserComputerResponseResourcesItemBrowserExtensionsItemBrowser =
   | "CHROME"
@@ -150,6 +252,8 @@ export type GetMacosUserComputerResponseResourcesItemBrowserExtensionsItemBrowse
   | "OPERA"
   | "SAFARI"
   | "EDGE";
+const GetMacosUserComputerResponseResourcesItemBrowserExtensionsItemBrowser = S.String;
+
 export interface GetMacosUserComputerResponseResourcesItemBrowserExtensionsItem {
   /** The identifier of the browser extension. */
   extensionId: string;
@@ -158,9 +262,19 @@ export interface GetMacosUserComputerResponseResourcesItemBrowserExtensionsItem 
   /** The type of browser. If you see something not on this list - if the browser is chromium based, use Chrome. Otherwise, skip sending the extension and contact Vanta for a longer term addition to this enum. */
   browser: GetMacosUserComputerResponseResourcesItemBrowserExtensionsItemBrowser;
 }
+const GetMacosUserComputerResponseResourcesItemBrowserExtensionsItem = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<GetMacosUserComputerResponseResourcesItemBrowserExtensionsItem>;
+
 /** A list of browser extensions on this device. Used to match against known password managers to demonstrate use. */
 export type GetMacosUserComputerResponseResourcesItemBrowserExtensionsList =
   Array<GetMacosUserComputerResponseResourcesItemBrowserExtensionsItem>;
+const GetMacosUserComputerResponseResourcesItemBrowserExtensionsList = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<GetMacosUserComputerResponseResourcesItemBrowserExtensionsList>;
+
 export interface GetMacosUserComputerResponseResourcesItemDrivesItem {
   /** The name of the drive. */
   name: string;
@@ -171,18 +285,40 @@ export interface GetMacosUserComputerResponseResourcesItemDrivesItem {
   /** Metadata about the boot volume helps Vanta skip checking volumes that aren't relevant, like USB Drives. */
   isBootVolume?: boolean | null;
 }
+const GetMacosUserComputerResponseResourcesItemDrivesItem = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<GetMacosUserComputerResponseResourcesItemDrivesItem>;
+
 /** A list of drives on this device. Used to verify encryption status. */
 export type GetMacosUserComputerResponseResourcesItemDrivesList =
   Array<GetMacosUserComputerResponseResourcesItemDrivesItem>;
+const GetMacosUserComputerResponseResourcesItemDrivesList = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<GetMacosUserComputerResponseResourcesItemDrivesList>;
+
 export interface GetMacosUserComputerResponseResourcesItemUsersItemScreenlockPoliciesItem {
   /** After the screenlock takes effect, does the user have to enter a password to access their device. */
   requiresPassword: boolean;
   /** The timeout in milliseconds for screenlock to trigger. */
   screenSleepTimeoutMs: number;
 }
+const GetMacosUserComputerResponseResourcesItemUsersItemScreenlockPoliciesItem =
+  /*@__PURE__*/ __L.at(
+    __c2,
+    7,
+  ) as any as S.Schema<GetMacosUserComputerResponseResourcesItemUsersItemScreenlockPoliciesItem>;
+
 /** If the source system cannot easily retrieve screenlock policies, it's OK to skip this data. */
 export type GetMacosUserComputerResponseResourcesItemUsersItemScreenlockPoliciesList =
   Array<GetMacosUserComputerResponseResourcesItemUsersItemScreenlockPoliciesItem>;
+const GetMacosUserComputerResponseResourcesItemUsersItemScreenlockPoliciesList =
+  /*@__PURE__*/ __L.at(
+    __c3,
+    0,
+  ) as any as S.Schema<GetMacosUserComputerResponseResourcesItemUsersItemScreenlockPoliciesList>;
+
 export type GetMacosUserComputerResponseResourcesItemUsersItemScreenlockSettings =
   GetMacosUserComputerResponseResourcesItemUsersItemScreenlockPoliciesItem;
 export interface GetMacosUserComputerResponseResourcesItemUsersItem {
@@ -194,18 +330,36 @@ export interface GetMacosUserComputerResponseResourcesItemUsersItem {
   /** The last time the user logged in to the device, if available. */
   lastLoginTimestamp?: string | null;
 }
+const GetMacosUserComputerResponseResourcesItemUsersItem = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<GetMacosUserComputerResponseResourcesItemUsersItem>;
+
 /** The human users of the system. If it's not feasible to send only human users, prefer skipping sending users entirely. */
 export type GetMacosUserComputerResponseResourcesItemUsersList =
   Array<GetMacosUserComputerResponseResourcesItemUsersItem>;
+const GetMacosUserComputerResponseResourcesItemUsersList = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<GetMacosUserComputerResponseResourcesItemUsersList>;
+
 export type GetMacosUserComputerResponseResourcesItemSystemScreenlockPoliciesItem =
   GetMacosUserComputerResponseResourcesItemUsersItemScreenlockPoliciesItem;
 /** System screenlock policy settings. Pass an empty list if this is tricky to retrieve for your system. Used for screenlock tests. */
 export type GetMacosUserComputerResponseResourcesItemSystemScreenlockPoliciesList =
   Array<GetMacosUserComputerResponseResourcesItemUsersItemScreenlockPoliciesItem>;
+const GetMacosUserComputerResponseResourcesItemSystemScreenlockPoliciesList =
+  GetMacosUserComputerResponseResourcesItemUsersItemScreenlockPoliciesList as any as S.Schema<GetMacosUserComputerResponseResourcesItemSystemScreenlockPoliciesList>;
+
 export interface GetMacosUserComputerResponseResourcesItemPasswordPolicy {
   /** If the system has a password policy, what the minimum password length requirement is. */
   minimumLengthRequirement: number;
 }
+const GetMacosUserComputerResponseResourcesItemPasswordPolicy = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<GetMacosUserComputerResponseResourcesItemPasswordPolicy>;
+
 export interface GetMacosUserComputerResponseResourcesItem {
   /** A human readable label for this resource - will be shown as-is in inventory page. */
   displayName: string;
@@ -245,15 +399,35 @@ export interface GetMacosUserComputerResponseResourcesItem {
   /** Is XProtect enabled on the system. */
   isXProtectEnabled?: boolean | null;
 }
+const GetMacosUserComputerResponseResourcesItem = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<GetMacosUserComputerResponseResourcesItem>;
+
 export type GetMacosUserComputerResponseResourcesList =
   Array<GetMacosUserComputerResponseResourcesItem>;
+const GetMacosUserComputerResponseResourcesList = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<GetMacosUserComputerResponseResourcesList>;
+
 export interface GetMacosUserComputerResponse {
   resources?: GetMacosUserComputerResponseResourcesList;
 }
+const GetMacosUserComputerResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<GetMacosUserComputerResponse>;
+
 export interface GetPackageVulnerabilityConnectorsRequest {
   /** Vanta generated identifier for the given resource, and can be found on the developer console page. See the list of registered resources and their IDs on https://app.vanta.com/settings/developer-console/<app_id>?tab=resources */
   resourceId: string;
 }
+const GetPackageVulnerabilityConnectorsRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<GetPackageVulnerabilityConnectorsRequest>;
+
 export interface GetPackageVulnerabilityConnectorsResponseResourcesItem {
   /** A human readable label for this resource - will be shown as-is in inventory page. */
   displayName: string;
@@ -284,15 +458,32 @@ export interface GetPackageVulnerabilityConnectorsResponseResourcesItem {
   /** The Common Vulnerability Scoring System (CVSS) version 3 score for the vulnerability. This field is optional. */
   cvss3Score?: number | null;
 }
+const GetPackageVulnerabilityConnectorsResponseResourcesItem = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<GetPackageVulnerabilityConnectorsResponseResourcesItem>;
+
 export type GetPackageVulnerabilityConnectorsResponseResourcesList =
   Array<GetPackageVulnerabilityConnectorsResponseResourcesItem>;
+const GetPackageVulnerabilityConnectorsResponseResourcesList = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<GetPackageVulnerabilityConnectorsResponseResourcesList>;
+
 export interface GetPackageVulnerabilityConnectorsResponse {
   resources?: GetPackageVulnerabilityConnectorsResponseResourcesList;
 }
+const GetPackageVulnerabilityConnectorsResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<GetPackageVulnerabilityConnectorsResponse>;
+
 export interface GetSecretRequest {
   /** Vanta generated identifier for the given resource, and can be found on the developer console page. See the list of registered resources and their IDs on https://app.vanta.com/settings/developer-console/<app_id>?tab=resources */
   resourceId: string;
 }
+const GetSecretRequest = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<GetSecretRequest>;
+
 export interface GetSecretResponseResourcesItem {
   /** A human readable label for this resource - will be shown as-is in inventory page. */
   displayName: string;
@@ -317,22 +508,51 @@ export interface GetSecretResponseResourcesItem {
   /** When the secret is set to expire, if relevant. */
   expiresTimestamp?: string | null;
 }
+const GetSecretResponseResourcesItem = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<GetSecretResponseResourcesItem>;
+
 export type GetSecretResponseResourcesList = Array<GetSecretResponseResourcesItem>;
+const GetSecretResponseResourcesList = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<GetSecretResponseResourcesList>;
+
 export interface GetSecretResponse {
   resources?: GetSecretResponseResourcesList;
 }
+const GetSecretResponse = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<GetSecretResponse>;
+
 export interface GetSecurityTaskRequest {
   /** Vanta generated identifier for the given resource, and can be found on the developer console page. See the list of registered resources and their IDs on https://app.vanta.com/settings/developer-console/<app_id>?tab=resources */
   resourceId: string;
 }
+const GetSecurityTaskRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<GetSecurityTaskRequest>;
+
 /** The status of the task. If your application supports additional states, use the closest approximation. */
 export type GetSecurityTaskResponseResourcesItemTaskState = "OPEN" | "IN_PROGRESS" | "CLOSED";
+const GetSecurityTaskResponseResourcesItemTaskState = S.String;
+
 /** Priorities are mapped against SLAs for tasks. If your task system does not have fixed priorities, consider letting users configure priorities through labels. */
 export type GetSecurityTaskResponseResourcesItemPriority = "P0" | "P1" | "P2" | "P3" | "P4";
+const GetSecurityTaskResponseResourcesItemPriority = S.String;
+
 /** The set of users assigned to the tasks. Emails do not necessarily need to be Vanta users. */
 export type GetSecurityTaskResponseResourcesItemAssigneesList = Array<string>;
+const GetSecurityTaskResponseResourcesItemAssigneesList = /*@__PURE__*/ __L.at(
+  __c5,
+  0,
+) as any as S.Schema<GetSecurityTaskResponseResourcesItemAssigneesList>;
+
 /** The set of task tags or labels. */
 export type GetSecurityTaskResponseResourcesItemLabelsList = Array<string>;
+const GetSecurityTaskResponseResourcesItemLabelsList =
+  GetSecurityTaskResponseResourcesItemAssigneesList as any as S.Schema<GetSecurityTaskResponseResourcesItemLabelsList>;
+
 export interface GetSecurityTaskResponseResourcesItem {
   /** A human readable label for this resource - will be shown as-is in inventory page. */
   displayName: string;
@@ -361,14 +581,34 @@ export interface GetSecurityTaskResponseResourcesItem {
   /** When the task was last updated. */
   updatedTimestamp?: string | null;
 }
+const GetSecurityTaskResponseResourcesItem = /*@__PURE__*/ __L.at(
+  __c5,
+  1,
+) as any as S.Schema<GetSecurityTaskResponseResourcesItem>;
+
 export type GetSecurityTaskResponseResourcesList = Array<GetSecurityTaskResponseResourcesItem>;
+const GetSecurityTaskResponseResourcesList = /*@__PURE__*/ __L.at(
+  __c5,
+  2,
+) as any as S.Schema<GetSecurityTaskResponseResourcesList>;
+
 export interface GetSecurityTaskResponse {
   resources?: GetSecurityTaskResponseResourcesList;
 }
+const GetSecurityTaskResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<GetSecurityTaskResponse>;
+
 export interface GetStaticAnalysisCodeVulnerabilityConnectorsRequest {
   /** Vanta generated identifier for the given resource, and can be found on the developer console page. See the list of registered resources and their IDs on https://app.vanta.com/settings/developer-console/<app_id>?tab=resources */
   resourceId: string;
 }
+const GetStaticAnalysisCodeVulnerabilityConnectorsRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  4,
+) as any as S.Schema<GetStaticAnalysisCodeVulnerabilityConnectorsRequest>;
+
 export interface GetStaticAnalysisCodeVulnerabilityConnectorsResponseResourcesItemOccurrencesItem {
   /** The path to the file where the vulnerability was found. */
   path: string;
@@ -381,9 +621,21 @@ export interface GetStaticAnalysisCodeVulnerabilityConnectorsResponseResourcesIt
   /** The column number where the vulnerability ends. */
   endColumn: number;
 }
+const GetStaticAnalysisCodeVulnerabilityConnectorsResponseResourcesItemOccurrencesItem =
+  /*@__PURE__*/ __L.at(
+    __c5,
+    5,
+  ) as any as S.Schema<GetStaticAnalysisCodeVulnerabilityConnectorsResponseResourcesItemOccurrencesItem>;
+
 /** The path to each point in the source code where a vulnerability has been revealed through static analysis. */
 export type GetStaticAnalysisCodeVulnerabilityConnectorsResponseResourcesItemOccurrencesList =
   Array<GetStaticAnalysisCodeVulnerabilityConnectorsResponseResourcesItemOccurrencesItem>;
+const GetStaticAnalysisCodeVulnerabilityConnectorsResponseResourcesItemOccurrencesList =
+  /*@__PURE__*/ __L.at(
+    __c5,
+    6,
+  ) as any as S.Schema<GetStaticAnalysisCodeVulnerabilityConnectorsResponseResourcesItemOccurrencesList>;
+
 export interface GetStaticAnalysisCodeVulnerabilityConnectorsResponseResourcesItem {
   /** A human readable label for this resource - will be shown as-is in inventory page. */
   displayName: string;
@@ -412,19 +664,43 @@ export interface GetStaticAnalysisCodeVulnerabilityConnectorsResponseResourcesIt
   /** The Common Vulnerability Scoring System (CVSS) version 3 score for the vulnerability. This field is optional. */
   cvss3Score?: number | null;
 }
+const GetStaticAnalysisCodeVulnerabilityConnectorsResponseResourcesItem = /*@__PURE__*/ __L.at(
+  __c5,
+  7,
+) as any as S.Schema<GetStaticAnalysisCodeVulnerabilityConnectorsResponseResourcesItem>;
+
 export type GetStaticAnalysisCodeVulnerabilityConnectorsResponseResourcesList =
   Array<GetStaticAnalysisCodeVulnerabilityConnectorsResponseResourcesItem>;
+const GetStaticAnalysisCodeVulnerabilityConnectorsResponseResourcesList = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<GetStaticAnalysisCodeVulnerabilityConnectorsResponseResourcesList>;
+
 export interface GetStaticAnalysisCodeVulnerabilityConnectorsResponse {
   resources?: GetStaticAnalysisCodeVulnerabilityConnectorsResponseResourcesList;
 }
+const GetStaticAnalysisCodeVulnerabilityConnectorsResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  1,
+) as any as S.Schema<GetStaticAnalysisCodeVulnerabilityConnectorsResponse>;
+
 export interface GetUserAccountRequest {
   /** Vanta generated identifier for the given resource, and can be found on the developer console page. See the list of registered resources and their IDs on https://app.vanta.com/settings/developer-console/<app_id>?tab=resources */
   resourceId: string;
 }
+const GetUserAccountRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  2,
+) as any as S.Schema<GetUserAccountRequest>;
+
 /** What the permission level of the user is. If your system supports more advanced roles, find the closest approximation. This will be used to help populate Vanta access reviews and help customers ensure that the right set of users have access to their relevant systems. */
 export type GetUserAccountResponseResourcesItemPermissionLevel = "ADMIN" | "EDITOR" | "BASE";
+const GetUserAccountResponseResourcesItemPermissionLevel = S.String;
+
 /** The status of the user. It's acceptable to omit any deactivated users from your application, but if your application has access to deactivated users, it's preferable to send them over with this status. */
 export type GetUserAccountResponseResourcesItemStatus = "ACTIVE" | "DEACTIVATED";
+const GetUserAccountResponseResourcesItemStatus = S.String;
+
 /** The individual MFA setting. */
 export type GetUserAccountResponseResourcesItemMfaMethodsItem =
   | "UNSUPPORTED"
@@ -434,17 +710,29 @@ export type GetUserAccountResponseResourcesItemMfaMethodsItem =
   | "OTP"
   | "HARDWARE_TOKEN"
   | "PUSH_PROMPT";
+const GetUserAccountResponseResourcesItemMfaMethodsItem = S.String;
+
 /** The MFA settings of the user. This helps customers verify that their users are adequately protecting their accounts. This value is ignored if authMethod is SSO. Send an empty array if `mfaEnabled` is `null`, since an unknown MFA state says nothing about which methods are active. */
 export type GetUserAccountResponseResourcesItemMfaMethodsList =
   Array<GetUserAccountResponseResourcesItemMfaMethodsItem>;
+const GetUserAccountResponseResourcesItemMfaMethodsList = /*@__PURE__*/ __L.at(
+  __c6,
+  3,
+) as any as S.Schema<GetUserAccountResponseResourcesItemMfaMethodsList>;
+
 /** How the user logs into the system. This is useful for us to validate security properties, like ensuring MFA is enabled if the user logs in with a password. */
 export type GetUserAccountResponseResourcesItemAuthMethod =
   | "SSO"
   | "PASSWORD"
   | "TOKEN"
   | "BIOMETRIC";
+const GetUserAccountResponseResourcesItemAuthMethod = S.String;
+
 /** If the user belongs to any groups/teams in the product, those corresponding group IDs. We'll map these to groups in our product in the future. */
 export type GetUserAccountResponseResourcesItemGroupIdsList = Array<string>;
+const GetUserAccountResponseResourcesItemGroupIdsList =
+  GetSecurityTaskResponseResourcesItemAssigneesList as any as S.Schema<GetUserAccountResponseResourcesItemGroupIdsList>;
+
 export interface GetUserAccountResponseResourcesItem {
   /** A human readable label for this resource - will be shown as-is in inventory page. */
   displayName: string;
@@ -483,14 +771,34 @@ export interface GetUserAccountResponseResourcesItem {
   /** If the user belongs to any groups/teams in the product, those corresponding group IDs. We'll map these to groups in our product in the future. */
   groupIds?: GetUserAccountResponseResourcesItemGroupIdsList | null;
 }
+const GetUserAccountResponseResourcesItem = /*@__PURE__*/ __L.at(
+  __c6,
+  4,
+) as any as S.Schema<GetUserAccountResponseResourcesItem>;
+
 export type GetUserAccountResponseResourcesList = Array<GetUserAccountResponseResourcesItem>;
+const GetUserAccountResponseResourcesList = /*@__PURE__*/ __L.at(
+  __c6,
+  5,
+) as any as S.Schema<GetUserAccountResponseResourcesList>;
+
 export interface GetUserAccountResponse {
   resources?: GetUserAccountResponseResourcesList;
 }
+const GetUserAccountResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  6,
+) as any as S.Schema<GetUserAccountResponse>;
+
 export interface GetUserSecurityTrainingStatusRequest {
   /** Vanta generated identifier for the given resource, and can be found on the developer console page. See the list of registered resources and their IDs on https://app.vanta.com/settings/developer-console/<app_id>?tab=resources */
   resourceId: string;
 }
+const GetUserSecurityTrainingStatusRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  7,
+) as any as S.Schema<GetUserSecurityTrainingStatusRequest>;
+
 /** The individual framework. */
 export type GetUserSecurityTrainingStatusResponseResourcesItemFrameworksFulfilledItem =
   | "SOC2"
@@ -499,11 +807,21 @@ export type GetUserSecurityTrainingStatusResponseResourcesItemFrameworksFulfille
   | "PCI"
   | "GDPR"
   | "CCPA";
+const GetUserSecurityTrainingStatusResponseResourcesItemFrameworksFulfilledItem = S.String;
+
 /** The set of compliance or other framework requirements that can be satisfied when an employee completes this training. */
 export type GetUserSecurityTrainingStatusResponseResourcesItemFrameworksFulfilledList =
   Array<GetUserSecurityTrainingStatusResponseResourcesItemFrameworksFulfilledItem>;
+const GetUserSecurityTrainingStatusResponseResourcesItemFrameworksFulfilledList =
+  /*@__PURE__*/ __L.at(
+    __c7,
+    0,
+  ) as any as S.Schema<GetUserSecurityTrainingStatusResponseResourcesItemFrameworksFulfilledList>;
+
 /** Whether the training has been fully completed. */
 export type GetUserSecurityTrainingStatusResponseResourcesItemStatus = "INCOMPLETE" | "COMPLETE";
+const GetUserSecurityTrainingStatusResponseResourcesItemStatus = S.String;
+
 export interface GetUserSecurityTrainingStatusResponseResourcesItem {
   /** A human readable label for this resource - will be shown as-is in inventory page. */
   displayName: string;
@@ -532,15 +850,35 @@ export interface GetUserSecurityTrainingStatusResponseResourcesItem {
   /** The time at which this training course was completed by the user. */
   trainingCompletedTimestamp?: string | null;
 }
+const GetUserSecurityTrainingStatusResponseResourcesItem = /*@__PURE__*/ __L.at(
+  __c7,
+  1,
+) as any as S.Schema<GetUserSecurityTrainingStatusResponseResourcesItem>;
+
 export type GetUserSecurityTrainingStatusResponseResourcesList =
   Array<GetUserSecurityTrainingStatusResponseResourcesItem>;
+const GetUserSecurityTrainingStatusResponseResourcesList = /*@__PURE__*/ __L.at(
+  __c7,
+  2,
+) as any as S.Schema<GetUserSecurityTrainingStatusResponseResourcesList>;
+
 export interface GetUserSecurityTrainingStatusResponse {
   resources?: GetUserSecurityTrainingStatusResponseResourcesList;
 }
+const GetUserSecurityTrainingStatusResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  3,
+) as any as S.Schema<GetUserSecurityTrainingStatusResponse>;
+
 export interface GetVulnerableComponentRequest {
   /** Vanta generated identifier for the given resource, and can be found on the developer console page. See the list of registered resources and their IDs on https://app.vanta.com/settings/developer-console/<app_id>?tab=resources */
   resourceId: string;
 }
+const GetVulnerableComponentRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  4,
+) as any as S.Schema<GetVulnerableComponentRequest>;
+
 /** The type of the system component in which a vulnerability has been detected (eg: container, source code repository). */
 export type GetVulnerableComponentResponseResourcesItemTargetType =
   | "HOST"
@@ -553,6 +891,8 @@ export type GetVulnerableComponentResponseResourcesItemTargetType =
   | "MANIFEST_FILE"
   | "WORKSTATION"
   | "OTHER";
+const GetVulnerableComponentResponseResourcesItemTargetType = S.String;
+
 export interface GetVulnerableComponentResponseResourcesItem {
   /** A human readable label for this resource - will be shown as-is in inventory page. */
   displayName: string;
@@ -569,24 +909,54 @@ export interface GetVulnerableComponentResponseResourcesItem {
   /** The type of the system component in which a vulnerability has been detected (eg: container, source code repository). */
   targetType: GetVulnerableComponentResponseResourcesItemTargetType;
 }
+const GetVulnerableComponentResponseResourcesItem = /*@__PURE__*/ __L.at(
+  __c7,
+  5,
+) as any as S.Schema<GetVulnerableComponentResponseResourcesItem>;
+
 export type GetVulnerableComponentResponseResourcesList =
   Array<GetVulnerableComponentResponseResourcesItem>;
+const GetVulnerableComponentResponseResourcesList = /*@__PURE__*/ __L.at(
+  __c7,
+  6,
+) as any as S.Schema<GetVulnerableComponentResponseResourcesList>;
+
 export interface GetVulnerableComponentResponse {
   resources?: GetVulnerableComponentResponseResourcesList;
 }
+const GetVulnerableComponentResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  7,
+) as any as S.Schema<GetVulnerableComponentResponse>;
+
 export interface GetWindowsUserComputerRequest {
   /** Vanta generated identifier for the given resource, and can be found on the developer console page. See the list of registered resources and their IDs on https://app.vanta.com/settings/developer-console/<app_id>?tab=resources */
   resourceId: string;
 }
+const GetWindowsUserComputerRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  0,
+) as any as S.Schema<GetWindowsUserComputerRequest>;
+
 export interface GetWindowsUserComputerResponseResourcesItemProgramsItem {
   /** The name of the application. */
   name: string;
   /** The last time the application was opened. */
   lastOpenedTimestamp?: string | null;
 }
+const GetWindowsUserComputerResponseResourcesItemProgramsItem = /*@__PURE__*/ __L.at(
+  __c8,
+  1,
+) as any as S.Schema<GetWindowsUserComputerResponseResourcesItemProgramsItem>;
+
 /** All the installed programs on the Windows system. */
 export type GetWindowsUserComputerResponseResourcesItemProgramsList =
   Array<GetWindowsUserComputerResponseResourcesItemProgramsItem>;
+const GetWindowsUserComputerResponseResourcesItemProgramsList = /*@__PURE__*/ __L.at(
+  __c8,
+  2,
+) as any as S.Schema<GetWindowsUserComputerResponseResourcesItemProgramsList>;
+
 /** The type of browser. If you see something not on this list - if the browser is chromium based, use Chrome. Otherwise, skip sending the extension and contact Vanta for a longer term addition to this enum. */
 export type GetWindowsUserComputerResponseResourcesItemBrowserExtensionsItemBrowser =
   | "CHROME"
@@ -602,9 +972,17 @@ export interface GetWindowsUserComputerResponseResourcesItemBrowserExtensionsIte
   /** The type of browser. If you see something not on this list - if the browser is chromium based, use Chrome. Otherwise, skip sending the extension and contact Vanta for a longer term addition to this enum. */
   browser: GetWindowsUserComputerResponseResourcesItemBrowserExtensionsItemBrowser;
 }
+const GetWindowsUserComputerResponseResourcesItemBrowserExtensionsItem =
+  GetMacosUserComputerResponseResourcesItemBrowserExtensionsItem as any as S.Schema<GetWindowsUserComputerResponseResourcesItemBrowserExtensionsItem>;
+
 /** A list of browser extensions on this device. Used to match against known password managers to demonstrate use. */
 export type GetWindowsUserComputerResponseResourcesItemBrowserExtensionsList =
   Array<GetWindowsUserComputerResponseResourcesItemBrowserExtensionsItem>;
+const GetWindowsUserComputerResponseResourcesItemBrowserExtensionsList = /*@__PURE__*/ __L.at(
+  __c8,
+  3,
+) as any as S.Schema<GetWindowsUserComputerResponseResourcesItemBrowserExtensionsList>;
+
 export interface GetWindowsUserComputerResponseResourcesItemDrivesItem {
   /** The name of the drive. */
   name: string;
@@ -613,9 +991,19 @@ export interface GetWindowsUserComputerResponseResourcesItemDrivesItem {
   /** Metadata about the boot volume helps Vanta skip checking volumes that aren't relevant, like USB Drives. */
   isBootVolume?: boolean | null;
 }
+const GetWindowsUserComputerResponseResourcesItemDrivesItem = /*@__PURE__*/ __L.at(
+  __c8,
+  4,
+) as any as S.Schema<GetWindowsUserComputerResponseResourcesItemDrivesItem>;
+
 /** A list of drives on this device. Used to verify encryption status. */
 export type GetWindowsUserComputerResponseResourcesItemDrivesList =
   Array<GetWindowsUserComputerResponseResourcesItemDrivesItem>;
+const GetWindowsUserComputerResponseResourcesItemDrivesList = /*@__PURE__*/ __L.at(
+  __c8,
+  5,
+) as any as S.Schema<GetWindowsUserComputerResponseResourcesItemDrivesList>;
+
 export type GetWindowsUserComputerResponseResourcesItemUsersItemScreenlockPoliciesItem =
   GetMacosUserComputerResponseResourcesItemUsersItemScreenlockPoliciesItem;
 /** If the source system cannot easily retrieve screenlock policies, it's OK to skip this data. */
@@ -635,11 +1023,17 @@ export interface GetWindowsUserComputerResponseResourcesItemUsersItem {
 /** The human users of the system. If it's not feasible to send only human users, prefer skipping sending users entirely. */
 export type GetWindowsUserComputerResponseResourcesItemUsersList =
   Array<GetWindowsUserComputerResponseResourcesItemUsersItem>;
+const GetWindowsUserComputerResponseResourcesItemUsersList =
+  GetMacosUserComputerResponseResourcesItemUsersList as any as S.Schema<GetWindowsUserComputerResponseResourcesItemUsersList>;
+
 export type GetWindowsUserComputerResponseResourcesItemSystemScreenlockPoliciesItem =
   GetMacosUserComputerResponseResourcesItemUsersItemScreenlockPoliciesItem;
 /** System screenlock policy settings. Pass an empty list if this is tricky to retrieve for your system. Used for screenlock tests. */
 export type GetWindowsUserComputerResponseResourcesItemSystemScreenlockPoliciesList =
   Array<GetMacosUserComputerResponseResourcesItemUsersItemScreenlockPoliciesItem>;
+const GetWindowsUserComputerResponseResourcesItemSystemScreenlockPoliciesList =
+  GetMacosUserComputerResponseResourcesItemUsersItemScreenlockPoliciesList as any as S.Schema<GetWindowsUserComputerResponseResourcesItemSystemScreenlockPoliciesList>;
+
 export type GetWindowsUserComputerResponseResourcesItemPasswordPolicy =
   GetMacosUserComputerResponseResourcesItemPasswordPolicy;
 /** The category of the security product. */
@@ -647,11 +1041,15 @@ export type GetWindowsUserComputerResponseResourcesItemWindowsSecurityProductsIt
   | "FIREWALL"
   | "ANTIVIRUS"
   | "ANTISPYWARE";
+const GetWindowsUserComputerResponseResourcesItemWindowsSecurityProductsItemCategory = S.String;
+
 /** The state of the security product. */
 export type GetWindowsUserComputerResponseResourcesItemWindowsSecurityProductsItemState =
   | "ON"
   | "OFF"
   | "UNKNOWN";
+const GetWindowsUserComputerResponseResourcesItemWindowsSecurityProductsItemState = S.String;
+
 export interface GetWindowsUserComputerResponseResourcesItemWindowsSecurityProductsItem {
   /** The name of the security product. */
   name: string;
@@ -664,9 +1062,19 @@ export interface GetWindowsUserComputerResponseResourcesItemWindowsSecurityProdu
   /** Whether the security signatures are up to date. */
   signaturesUpToDate: boolean;
 }
+const GetWindowsUserComputerResponseResourcesItemWindowsSecurityProductsItem = /*@__PURE__*/ __L.at(
+  __c8,
+  6,
+) as any as S.Schema<GetWindowsUserComputerResponseResourcesItemWindowsSecurityProductsItem>;
+
 /** A list of services that are monitored by Windows Security Center (WSC). */
 export type GetWindowsUserComputerResponseResourcesItemWindowsSecurityProductsList =
   Array<GetWindowsUserComputerResponseResourcesItemWindowsSecurityProductsItem>;
+const GetWindowsUserComputerResponseResourcesItemWindowsSecurityProductsList = /*@__PURE__*/ __L.at(
+  __c8,
+  7,
+) as any as S.Schema<GetWindowsUserComputerResponseResourcesItemWindowsSecurityProductsList>;
+
 /** The health of the monitored Firewall. */
 export type GetWindowsUserComputerResponseResourcesItemWindowsSecurityCenterFirewall =
   | "GOOD"
@@ -674,6 +1082,8 @@ export type GetWindowsUserComputerResponseResourcesItemWindowsSecurityCenterFire
   | "SNOOZED"
   | "NOT_MONITORED"
   | "ERROR";
+const GetWindowsUserComputerResponseResourcesItemWindowsSecurityCenterFirewall = S.String;
+
 /** The health of the Windows Autoupdate feature. */
 export type GetWindowsUserComputerResponseResourcesItemWindowsSecurityCenterAutoupdate =
   | "GOOD"
@@ -681,6 +1091,8 @@ export type GetWindowsUserComputerResponseResourcesItemWindowsSecurityCenterAuto
   | "SNOOZED"
   | "NOT_MONITORED"
   | "ERROR";
+const GetWindowsUserComputerResponseResourcesItemWindowsSecurityCenterAutoupdate = S.String;
+
 /** The health of the monitored Antivirus solution. */
 export type GetWindowsUserComputerResponseResourcesItemWindowsSecurityCenterAntivirus =
   | "GOOD"
@@ -688,6 +1100,8 @@ export type GetWindowsUserComputerResponseResourcesItemWindowsSecurityCenterAnti
   | "SNOOZED"
   | "NOT_MONITORED"
   | "ERROR";
+const GetWindowsUserComputerResponseResourcesItemWindowsSecurityCenterAntivirus = S.String;
+
 /** The health of the Internet Settings. */
 export type GetWindowsUserComputerResponseResourcesItemWindowsSecurityCenterInternetSetting =
   | "GOOD"
@@ -695,6 +1109,8 @@ export type GetWindowsUserComputerResponseResourcesItemWindowsSecurityCenterInte
   | "SNOOZED"
   | "NOT_MONITORED"
   | "ERROR";
+const GetWindowsUserComputerResponseResourcesItemWindowsSecurityCenterInternetSetting = S.String;
+
 /** The health of the User Account Control (UAC) capability in Windows. */
 export type GetWindowsUserComputerResponseResourcesItemWindowsSecurityCenterUserAccountControl =
   | "GOOD"
@@ -702,6 +1118,8 @@ export type GetWindowsUserComputerResponseResourcesItemWindowsSecurityCenterUser
   | "SNOOZED"
   | "NOT_MONITORED"
   | "ERROR";
+const GetWindowsUserComputerResponseResourcesItemWindowsSecurityCenterUserAccountControl = S.String;
+
 /** The health of the Windows Security Center Service. */
 export type GetWindowsUserComputerResponseResourcesItemWindowsSecurityCenterWindowsSecurityCenterService =
   | "GOOD"
@@ -709,6 +1127,9 @@ export type GetWindowsUserComputerResponseResourcesItemWindowsSecurityCenterWind
   | "SNOOZED"
   | "NOT_MONITORED"
   | "ERROR";
+const GetWindowsUserComputerResponseResourcesItemWindowsSecurityCenterWindowsSecurityCenterService =
+  S.String;
+
 export interface GetWindowsUserComputerResponseResourcesItemWindowsSecurityCenter {
   /** The health of the monitored Firewall. */
   firewall: GetWindowsUserComputerResponseResourcesItemWindowsSecurityCenterFirewall;
@@ -723,6 +1144,11 @@ export interface GetWindowsUserComputerResponseResourcesItemWindowsSecurityCente
   /** The health of the Windows Security Center Service. */
   windowsSecurityCenterService: GetWindowsUserComputerResponseResourcesItemWindowsSecurityCenterWindowsSecurityCenterService;
 }
+const GetWindowsUserComputerResponseResourcesItemWindowsSecurityCenter = /*@__PURE__*/ __L.at(
+  __c9,
+  0,
+) as any as S.Schema<GetWindowsUserComputerResponseResourcesItemWindowsSecurityCenter>;
+
 export interface GetWindowsUserComputerResponseResourcesItem {
   /** A human readable label for this resource - will be shown as-is in inventory page. */
   displayName: string;
@@ -763,11 +1189,26 @@ export interface GetWindowsUserComputerResponseResourcesItem {
   windowsSecurityProducts?: GetWindowsUserComputerResponseResourcesItemWindowsSecurityProductsList | null;
   windowsSecurityCenter?: GetWindowsUserComputerResponseResourcesItemWindowsSecurityCenter | null;
 }
+const GetWindowsUserComputerResponseResourcesItem = /*@__PURE__*/ __L.at(
+  __c9,
+  1,
+) as any as S.Schema<GetWindowsUserComputerResponseResourcesItem>;
+
 export type GetWindowsUserComputerResponseResourcesList =
   Array<GetWindowsUserComputerResponseResourcesItem>;
+const GetWindowsUserComputerResponseResourcesList = /*@__PURE__*/ __L.at(
+  __c9,
+  2,
+) as any as S.Schema<GetWindowsUserComputerResponseResourcesList>;
+
 export interface GetWindowsUserComputerResponse {
   resources?: GetWindowsUserComputerResponseResourcesList;
 }
+const GetWindowsUserComputerResponse = /*@__PURE__*/ __L.at(
+  __c9,
+  3,
+) as any as S.Schema<GetWindowsUserComputerResponse>;
+
 export type PutApiEndpointVulnerabilityConnectorsRequestResourcesItemOccurrencesItemQueryParamsItem =
   GetApiEndpointVulnerabilityConnectorsResponseResourcesItemOccurrencesItemQueryParamsItem;
 /** The API params associated with this vulnerability. */
@@ -823,14 +1264,27 @@ export interface PutApiEndpointVulnerabilityConnectorsRequestResourcesItem {
 }
 export type PutApiEndpointVulnerabilityConnectorsRequestResourcesList =
   Array<PutApiEndpointVulnerabilityConnectorsRequestResourcesItem>;
+const PutApiEndpointVulnerabilityConnectorsRequestResourcesList =
+  GetApiEndpointVulnerabilityConnectorsResponseResourcesList as any as S.Schema<PutApiEndpointVulnerabilityConnectorsRequestResourcesList>;
+
 export interface PutApiEndpointVulnerabilityConnectorsRequest {
   /** Vanta generated identifier for the given resource, and can be found on the developer console page. See the list of registered resources and their IDs on https://app.vanta.com/settings/developer-console/<app_id>?tab=resources */
   resourceId: string;
   resources: PutApiEndpointVulnerabilityConnectorsRequestResourcesList;
 }
+const PutApiEndpointVulnerabilityConnectorsRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  4,
+) as any as S.Schema<PutApiEndpointVulnerabilityConnectorsRequest>;
+
 export interface PutApiEndpointVulnerabilityConnectorsResponse {
   success: boolean;
 }
+const PutApiEndpointVulnerabilityConnectorsResponse = /*@__PURE__*/ __L.at(
+  __c9,
+  5,
+) as any as S.Schema<PutApiEndpointVulnerabilityConnectorsResponse>;
+
 /** The current status of the background check. */
 export type PutBackgroundCheckConnectorRequestResourcesItemStatus =
   | "INCOMPLETE"
@@ -854,29 +1308,54 @@ export interface PutBackgroundCheckConnectorRequestResourcesItem {
 }
 export type PutBackgroundCheckConnectorRequestResourcesList =
   Array<PutBackgroundCheckConnectorRequestResourcesItem>;
+const PutBackgroundCheckConnectorRequestResourcesList =
+  GetBackgroundCheckConnectorResponseResourcesList as any as S.Schema<PutBackgroundCheckConnectorRequestResourcesList>;
+
 export interface PutBackgroundCheckConnectorRequest {
   /** Vanta generated identifier for the given resource, and can be found on the developer console page. See the list of registered resources and their IDs on https://app.vanta.com/settings/developer-console/<app_id>?tab=resources */
   resourceId: string;
   resources: PutBackgroundCheckConnectorRequestResourcesList;
 }
+const PutBackgroundCheckConnectorRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  6,
+) as any as S.Schema<PutBackgroundCheckConnectorRequest>;
+
 export interface PutBackgroundCheckConnectorResponse {
   success: boolean;
 }
+const PutBackgroundCheckConnectorResponse =
+  PutApiEndpointVulnerabilityConnectorsResponse as any as S.Schema<PutBackgroundCheckConnectorResponse>;
+
 export type PutCustomResourceRequestResourcesItem = GetCustomResourceResponseResourcesItem;
 export type PutCustomResourceRequestResourcesList = Array<GetCustomResourceResponseResourcesItem>;
+const PutCustomResourceRequestResourcesList =
+  GetCustomResourceResponseResourcesList as any as S.Schema<PutCustomResourceRequestResourcesList>;
+
 export interface PutCustomResourceRequest {
   /** Vanta generated identifier for the given resource, and can be found on the developer console page. See the list of registered resources and their IDs on https://app.vanta.com/settings/developer-console/<app_id>?tab=resources */
   resourceId: string;
   resources: PutCustomResourceRequestResourcesList;
 }
+const PutCustomResourceRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  7,
+) as any as S.Schema<PutCustomResourceRequest>;
+
 export interface PutCustomResourceResponse {
   success: boolean;
 }
+const PutCustomResourceResponse =
+  PutApiEndpointVulnerabilityConnectorsResponse as any as S.Schema<PutCustomResourceResponse>;
+
 export type PutMacosUserComputerRequestResourcesItemApplicationsItem =
   GetMacosUserComputerResponseResourcesItemApplicationsItem;
 /** All the installed Mac Apps on the system. */
 export type PutMacosUserComputerRequestResourcesItemApplicationsList =
   Array<GetMacosUserComputerResponseResourcesItemApplicationsItem>;
+const PutMacosUserComputerRequestResourcesItemApplicationsList =
+  GetMacosUserComputerResponseResourcesItemApplicationsList as any as S.Schema<PutMacosUserComputerRequestResourcesItemApplicationsList>;
+
 /** The type of browser. If you see something not on this list - if the browser is chromium based, use Chrome. Otherwise, skip sending the extension and contact Vanta for a longer term addition to this enum. */
 export type PutMacosUserComputerRequestResourcesItemBrowserExtensionsItemBrowser =
   | "CHROME"
@@ -895,11 +1374,17 @@ export interface PutMacosUserComputerRequestResourcesItemBrowserExtensionsItem {
 /** A list of browser extensions on this device. Used to match against known password managers to demonstrate use. */
 export type PutMacosUserComputerRequestResourcesItemBrowserExtensionsList =
   Array<PutMacosUserComputerRequestResourcesItemBrowserExtensionsItem>;
+const PutMacosUserComputerRequestResourcesItemBrowserExtensionsList =
+  GetMacosUserComputerResponseResourcesItemBrowserExtensionsList as any as S.Schema<PutMacosUserComputerRequestResourcesItemBrowserExtensionsList>;
+
 export type PutMacosUserComputerRequestResourcesItemDrivesItem =
   GetMacosUserComputerResponseResourcesItemDrivesItem;
 /** A list of drives on this device. Used to verify encryption status. */
 export type PutMacosUserComputerRequestResourcesItemDrivesList =
   Array<GetMacosUserComputerResponseResourcesItemDrivesItem>;
+const PutMacosUserComputerRequestResourcesItemDrivesList =
+  GetMacosUserComputerResponseResourcesItemDrivesList as any as S.Schema<PutMacosUserComputerRequestResourcesItemDrivesList>;
+
 export type PutMacosUserComputerRequestResourcesItemUsersItemScreenlockPoliciesItem =
   GetMacosUserComputerResponseResourcesItemUsersItemScreenlockPoliciesItem;
 /** If the source system cannot easily retrieve screenlock policies, it's OK to skip this data. */
@@ -919,11 +1404,17 @@ export interface PutMacosUserComputerRequestResourcesItemUsersItem {
 /** The human users of the system. If it's not feasible to send only human users, prefer skipping sending users entirely. */
 export type PutMacosUserComputerRequestResourcesItemUsersList =
   Array<PutMacosUserComputerRequestResourcesItemUsersItem>;
+const PutMacosUserComputerRequestResourcesItemUsersList =
+  GetMacosUserComputerResponseResourcesItemUsersList as any as S.Schema<PutMacosUserComputerRequestResourcesItemUsersList>;
+
 export type PutMacosUserComputerRequestResourcesItemSystemScreenlockPoliciesItem =
   GetMacosUserComputerResponseResourcesItemUsersItemScreenlockPoliciesItem;
 /** System screenlock policy settings. Pass an empty list if this is tricky to retrieve for your system. Used for screenlock tests. */
 export type PutMacosUserComputerRequestResourcesItemSystemScreenlockPoliciesList =
   Array<GetMacosUserComputerResponseResourcesItemUsersItemScreenlockPoliciesItem>;
+const PutMacosUserComputerRequestResourcesItemSystemScreenlockPoliciesList =
+  GetMacosUserComputerResponseResourcesItemUsersItemScreenlockPoliciesList as any as S.Schema<PutMacosUserComputerRequestResourcesItemSystemScreenlockPoliciesList>;
+
 export type PutMacosUserComputerRequestResourcesItemPasswordPolicy =
   GetMacosUserComputerResponseResourcesItemPasswordPolicy;
 export interface PutMacosUserComputerRequestResourcesItem {
@@ -965,46 +1456,92 @@ export interface PutMacosUserComputerRequestResourcesItem {
   /** Is XProtect enabled on the system. */
   isXProtectEnabled?: boolean | null;
 }
+const PutMacosUserComputerRequestResourcesItem = /*@__PURE__*/ __L.at(
+  __c10,
+  0,
+) as any as S.Schema<PutMacosUserComputerRequestResourcesItem>;
+
 export type PutMacosUserComputerRequestResourcesList =
   Array<PutMacosUserComputerRequestResourcesItem>;
+const PutMacosUserComputerRequestResourcesList = /*@__PURE__*/ __L.at(
+  __c10,
+  1,
+) as any as S.Schema<PutMacosUserComputerRequestResourcesList>;
+
 export interface PutMacosUserComputerRequest {
   /** Vanta generated identifier for the given resource, and can be found on the developer console page. See the list of registered resources and their IDs on https://app.vanta.com/settings/developer-console/<app_id>?tab=resources */
   resourceId: string;
   resources: PutMacosUserComputerRequestResourcesList;
 }
+const PutMacosUserComputerRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  2,
+) as any as S.Schema<PutMacosUserComputerRequest>;
+
 export interface PutMacosUserComputerResponse {
   success: boolean;
 }
+const PutMacosUserComputerResponse =
+  PutApiEndpointVulnerabilityConnectorsResponse as any as S.Schema<PutMacosUserComputerResponse>;
+
 export type PutPackageVulnerabilityConnectorsRequestResourcesItem =
   GetPackageVulnerabilityConnectorsResponseResourcesItem;
 export type PutPackageVulnerabilityConnectorsRequestResourcesList =
   Array<GetPackageVulnerabilityConnectorsResponseResourcesItem>;
+const PutPackageVulnerabilityConnectorsRequestResourcesList =
+  GetPackageVulnerabilityConnectorsResponseResourcesList as any as S.Schema<PutPackageVulnerabilityConnectorsRequestResourcesList>;
+
 export interface PutPackageVulnerabilityConnectorsRequest {
   /** Vanta generated identifier for the given resource, and can be found on the developer console page. See the list of registered resources and their IDs on https://app.vanta.com/settings/developer-console/<app_id>?tab=resources */
   resourceId: string;
   resources: PutPackageVulnerabilityConnectorsRequestResourcesList;
 }
+const PutPackageVulnerabilityConnectorsRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  3,
+) as any as S.Schema<PutPackageVulnerabilityConnectorsRequest>;
+
 export interface PutPackageVulnerabilityConnectorsResponse {
   success: boolean;
 }
+const PutPackageVulnerabilityConnectorsResponse =
+  PutApiEndpointVulnerabilityConnectorsResponse as any as S.Schema<PutPackageVulnerabilityConnectorsResponse>;
+
 export type PutSecretRequestResourcesItem = GetSecretResponseResourcesItem;
 export type PutSecretRequestResourcesList = Array<GetSecretResponseResourcesItem>;
+const PutSecretRequestResourcesList =
+  GetSecretResponseResourcesList as any as S.Schema<PutSecretRequestResourcesList>;
+
 export interface PutSecretRequest {
   /** Vanta generated identifier for the given resource, and can be found on the developer console page. See the list of registered resources and their IDs on https://app.vanta.com/settings/developer-console/<app_id>?tab=resources */
   resourceId: string;
   resources: PutSecretRequestResourcesList;
 }
+const PutSecretRequest = /*@__PURE__*/ __L.at(__c10, 4) as any as S.Schema<PutSecretRequest>;
+
 export interface PutSecretResponse {
   success: boolean;
 }
+const PutSecretResponse = /*@__PURE__*/ __L.at(__c10, 5) as any as S.Schema<PutSecretResponse>;
+
 /** The status of the task. If your application supports additional states, use the closest approximation. */
 export type PutSecurityTaskRequestResourcesItemTaskState = "OPEN" | "IN_PROGRESS" | "CLOSED";
+const PutSecurityTaskRequestResourcesItemTaskState = S.String;
+
 /** Priorities are mapped against SLAs for tasks. If your task system does not have fixed priorities, consider letting users configure priorities through labels. */
 export type PutSecurityTaskRequestResourcesItemPriority = "P0" | "P1" | "P2" | "P3" | "P4";
+const PutSecurityTaskRequestResourcesItemPriority = S.String;
+
 /** The set of users assigned to the tasks. Emails do not necessarily need to be Vanta users. */
 export type PutSecurityTaskRequestResourcesItemAssigneesList = Array<string>;
+const PutSecurityTaskRequestResourcesItemAssigneesList =
+  GetSecurityTaskResponseResourcesItemAssigneesList as any as S.Schema<PutSecurityTaskRequestResourcesItemAssigneesList>;
+
 /** The set of task tags or labels. */
 export type PutSecurityTaskRequestResourcesItemLabelsList = Array<string>;
+const PutSecurityTaskRequestResourcesItemLabelsList =
+  GetSecurityTaskResponseResourcesItemAssigneesList as any as S.Schema<PutSecurityTaskRequestResourcesItemLabelsList>;
+
 export interface PutSecurityTaskRequestResourcesItem {
   /** A human readable label for this resource - will be shown as-is in inventory page. */
   displayName: string;
@@ -1033,15 +1570,32 @@ export interface PutSecurityTaskRequestResourcesItem {
   /** When the task was last updated. */
   updatedTimestamp?: string | null;
 }
+const PutSecurityTaskRequestResourcesItem = /*@__PURE__*/ __L.at(
+  __c10,
+  6,
+) as any as S.Schema<PutSecurityTaskRequestResourcesItem>;
+
 export type PutSecurityTaskRequestResourcesList = Array<PutSecurityTaskRequestResourcesItem>;
+const PutSecurityTaskRequestResourcesList = /*@__PURE__*/ __L.at(
+  __c10,
+  7,
+) as any as S.Schema<PutSecurityTaskRequestResourcesList>;
+
 export interface PutSecurityTaskRequest {
   /** Vanta generated identifier for the given resource, and can be found on the developer console page. See the list of registered resources and their IDs on https://app.vanta.com/settings/developer-console/<app_id>?tab=resources */
   resourceId: string;
   resources: PutSecurityTaskRequestResourcesList;
 }
+const PutSecurityTaskRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  0,
+) as any as S.Schema<PutSecurityTaskRequest>;
+
 export interface PutSecurityTaskResponse {
   success: boolean;
 }
+const PutSecurityTaskResponse = PutSecretResponse as any as S.Schema<PutSecurityTaskResponse>;
+
 export type PutStaticAnalysisCodeVulnerabilityConnectorsRequestResourcesItemOccurrencesItem =
   GetStaticAnalysisCodeVulnerabilityConnectorsResponseResourcesItemOccurrencesItem;
 /** The path to each point in the source code where a vulnerability has been revealed through static analysis. */
@@ -1077,18 +1631,33 @@ export interface PutStaticAnalysisCodeVulnerabilityConnectorsRequestResourcesIte
 }
 export type PutStaticAnalysisCodeVulnerabilityConnectorsRequestResourcesList =
   Array<PutStaticAnalysisCodeVulnerabilityConnectorsRequestResourcesItem>;
+const PutStaticAnalysisCodeVulnerabilityConnectorsRequestResourcesList =
+  GetStaticAnalysisCodeVulnerabilityConnectorsResponseResourcesList as any as S.Schema<PutStaticAnalysisCodeVulnerabilityConnectorsRequestResourcesList>;
+
 export interface PutStaticAnalysisCodeVulnerabilityConnectorsRequest {
   /** Vanta generated identifier for the given resource, and can be found on the developer console page. See the list of registered resources and their IDs on https://app.vanta.com/settings/developer-console/<app_id>?tab=resources */
   resourceId: string;
   resources: PutStaticAnalysisCodeVulnerabilityConnectorsRequestResourcesList;
 }
+const PutStaticAnalysisCodeVulnerabilityConnectorsRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  1,
+) as any as S.Schema<PutStaticAnalysisCodeVulnerabilityConnectorsRequest>;
+
 export interface PutStaticAnalysisCodeVulnerabilityConnectorsResponse {
   success: boolean;
 }
+const PutStaticAnalysisCodeVulnerabilityConnectorsResponse =
+  PutApiEndpointVulnerabilityConnectorsResponse as any as S.Schema<PutStaticAnalysisCodeVulnerabilityConnectorsResponse>;
+
 /** What the permission level of the user is. If your system supports more advanced roles, find the closest approximation. This will be used to help populate Vanta access reviews and help customers ensure that the right set of users have access to their relevant systems. */
 export type PutUserAccountRequestResourcesItemPermissionLevel = "ADMIN" | "EDITOR" | "BASE";
+const PutUserAccountRequestResourcesItemPermissionLevel = S.String;
+
 /** The status of the user. It's acceptable to omit any deactivated users from your application, but if your application has access to deactivated users, it's preferable to send them over with this status. */
 export type PutUserAccountRequestResourcesItemStatus = "ACTIVE" | "DEACTIVATED";
+const PutUserAccountRequestResourcesItemStatus = S.String;
+
 /** The individual MFA setting. */
 export type PutUserAccountRequestResourcesItemMfaMethodsItem =
   | "UNSUPPORTED"
@@ -1102,14 +1671,22 @@ export type PutUserAccountRequestResourcesItemMfaMethodsItem =
 export type PutUserAccountRequestResourcesItemMfaMethodsList = Array<
   PutUserAccountRequestResourcesItemMfaMethodsItem | (string & {})
 >;
+const PutUserAccountRequestResourcesItemMfaMethodsList =
+  GetUserAccountResponseResourcesItemMfaMethodsList as any as S.Schema<PutUserAccountRequestResourcesItemMfaMethodsList>;
+
 /** How the user logs into the system. This is useful for us to validate security properties, like ensuring MFA is enabled if the user logs in with a password. */
 export type PutUserAccountRequestResourcesItemAuthMethod =
   | "SSO"
   | "PASSWORD"
   | "TOKEN"
   | "BIOMETRIC";
+const PutUserAccountRequestResourcesItemAuthMethod = S.String;
+
 /** If the user belongs to any groups/teams in the product, those corresponding group IDs. We'll map these to groups in our product in the future. */
 export type PutUserAccountRequestResourcesItemGroupIdsList = Array<string>;
+const PutUserAccountRequestResourcesItemGroupIdsList =
+  GetSecurityTaskResponseResourcesItemAssigneesList as any as S.Schema<PutUserAccountRequestResourcesItemGroupIdsList>;
+
 export interface PutUserAccountRequestResourcesItem {
   /** A human readable label for this resource - will be shown as-is in inventory page. */
   displayName: string;
@@ -1148,15 +1725,32 @@ export interface PutUserAccountRequestResourcesItem {
   /** If the user belongs to any groups/teams in the product, those corresponding group IDs. We'll map these to groups in our product in the future. */
   groupIds?: PutUserAccountRequestResourcesItemGroupIdsList | null;
 }
+const PutUserAccountRequestResourcesItem = /*@__PURE__*/ __L.at(
+  __c11,
+  2,
+) as any as S.Schema<PutUserAccountRequestResourcesItem>;
+
 export type PutUserAccountRequestResourcesList = Array<PutUserAccountRequestResourcesItem>;
+const PutUserAccountRequestResourcesList = /*@__PURE__*/ __L.at(
+  __c11,
+  3,
+) as any as S.Schema<PutUserAccountRequestResourcesList>;
+
 export interface PutUserAccountRequest {
   /** Vanta generated identifier for the given resource, and can be found on the developer console page. See the list of registered resources and their IDs on https://app.vanta.com/settings/developer-console/<app_id>?tab=resources */
   resourceId: string;
   resources: PutUserAccountRequestResourcesList;
 }
+const PutUserAccountRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  4,
+) as any as S.Schema<PutUserAccountRequest>;
+
 export interface PutUserAccountResponse {
   success: boolean;
 }
+const PutUserAccountResponse = PutSecretResponse as any as S.Schema<PutUserAccountResponse>;
+
 /** The individual framework. */
 export type PutUserSecurityTrainingStatusRequestResourcesItemFrameworksFulfilledItem =
   | "SOC2"
@@ -1201,14 +1795,25 @@ export interface PutUserSecurityTrainingStatusRequestResourcesItem {
 }
 export type PutUserSecurityTrainingStatusRequestResourcesList =
   Array<PutUserSecurityTrainingStatusRequestResourcesItem>;
+const PutUserSecurityTrainingStatusRequestResourcesList =
+  GetUserSecurityTrainingStatusResponseResourcesList as any as S.Schema<PutUserSecurityTrainingStatusRequestResourcesList>;
+
 export interface PutUserSecurityTrainingStatusRequest {
   /** Vanta generated identifier for the given resource, and can be found on the developer console page. See the list of registered resources and their IDs on https://app.vanta.com/settings/developer-console/<app_id>?tab=resources */
   resourceId: string;
   resources: PutUserSecurityTrainingStatusRequestResourcesList;
 }
+const PutUserSecurityTrainingStatusRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  5,
+) as any as S.Schema<PutUserSecurityTrainingStatusRequest>;
+
 export interface PutUserSecurityTrainingStatusResponse {
   success: boolean;
 }
+const PutUserSecurityTrainingStatusResponse =
+  PutApiEndpointVulnerabilityConnectorsResponse as any as S.Schema<PutUserSecurityTrainingStatusResponse>;
+
 /** The type of the system component in which a vulnerability has been detected (eg: container, source code repository). */
 export type PutVulnerableComponentRequestResourcesItemTargetType =
   | "HOST"
@@ -1239,19 +1844,33 @@ export interface PutVulnerableComponentRequestResourcesItem {
 }
 export type PutVulnerableComponentRequestResourcesList =
   Array<PutVulnerableComponentRequestResourcesItem>;
+const PutVulnerableComponentRequestResourcesList =
+  GetVulnerableComponentResponseResourcesList as any as S.Schema<PutVulnerableComponentRequestResourcesList>;
+
 export interface PutVulnerableComponentRequest {
   /** Vanta generated identifier for the given resource, and can be found on the developer console page. See the list of registered resources and their IDs on https://app.vanta.com/settings/developer-console/<app_id>?tab=resources */
   resourceId: string;
   resources: PutVulnerableComponentRequestResourcesList;
 }
+const PutVulnerableComponentRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  6,
+) as any as S.Schema<PutVulnerableComponentRequest>;
+
 export interface PutVulnerableComponentResponse {
   success: boolean;
 }
+const PutVulnerableComponentResponse =
+  PutApiEndpointVulnerabilityConnectorsResponse as any as S.Schema<PutVulnerableComponentResponse>;
+
 export type PutWindowsUserComputerRequestResourcesItemProgramsItem =
   GetWindowsUserComputerResponseResourcesItemProgramsItem;
 /** All the installed programs on the Windows system. */
 export type PutWindowsUserComputerRequestResourcesItemProgramsList =
   Array<GetWindowsUserComputerResponseResourcesItemProgramsItem>;
+const PutWindowsUserComputerRequestResourcesItemProgramsList =
+  GetWindowsUserComputerResponseResourcesItemProgramsList as any as S.Schema<PutWindowsUserComputerRequestResourcesItemProgramsList>;
+
 /** The type of browser. If you see something not on this list - if the browser is chromium based, use Chrome. Otherwise, skip sending the extension and contact Vanta for a longer term addition to this enum. */
 export type PutWindowsUserComputerRequestResourcesItemBrowserExtensionsItemBrowser =
   | "CHROME"
@@ -1270,11 +1889,17 @@ export interface PutWindowsUserComputerRequestResourcesItemBrowserExtensionsItem
 /** A list of browser extensions on this device. Used to match against known password managers to demonstrate use. */
 export type PutWindowsUserComputerRequestResourcesItemBrowserExtensionsList =
   Array<PutWindowsUserComputerRequestResourcesItemBrowserExtensionsItem>;
+const PutWindowsUserComputerRequestResourcesItemBrowserExtensionsList =
+  GetWindowsUserComputerResponseResourcesItemBrowserExtensionsList as any as S.Schema<PutWindowsUserComputerRequestResourcesItemBrowserExtensionsList>;
+
 export type PutWindowsUserComputerRequestResourcesItemDrivesItem =
   GetWindowsUserComputerResponseResourcesItemDrivesItem;
 /** A list of drives on this device. Used to verify encryption status. */
 export type PutWindowsUserComputerRequestResourcesItemDrivesList =
   Array<GetWindowsUserComputerResponseResourcesItemDrivesItem>;
+const PutWindowsUserComputerRequestResourcesItemDrivesList =
+  GetWindowsUserComputerResponseResourcesItemDrivesList as any as S.Schema<PutWindowsUserComputerRequestResourcesItemDrivesList>;
+
 export type PutWindowsUserComputerRequestResourcesItemUsersItemScreenlockPoliciesItem =
   GetMacosUserComputerResponseResourcesItemUsersItemScreenlockPoliciesItem;
 /** If the source system cannot easily retrieve screenlock policies, it's OK to skip this data. */
@@ -1294,11 +1919,17 @@ export interface PutWindowsUserComputerRequestResourcesItemUsersItem {
 /** The human users of the system. If it's not feasible to send only human users, prefer skipping sending users entirely. */
 export type PutWindowsUserComputerRequestResourcesItemUsersList =
   Array<PutWindowsUserComputerRequestResourcesItemUsersItem>;
+const PutWindowsUserComputerRequestResourcesItemUsersList =
+  GetMacosUserComputerResponseResourcesItemUsersList as any as S.Schema<PutWindowsUserComputerRequestResourcesItemUsersList>;
+
 export type PutWindowsUserComputerRequestResourcesItemSystemScreenlockPoliciesItem =
   GetMacosUserComputerResponseResourcesItemUsersItemScreenlockPoliciesItem;
 /** System screenlock policy settings. Pass an empty list if this is tricky to retrieve for your system. Used for screenlock tests. */
 export type PutWindowsUserComputerRequestResourcesItemSystemScreenlockPoliciesList =
   Array<GetMacosUserComputerResponseResourcesItemUsersItemScreenlockPoliciesItem>;
+const PutWindowsUserComputerRequestResourcesItemSystemScreenlockPoliciesList =
+  GetMacosUserComputerResponseResourcesItemUsersItemScreenlockPoliciesList as any as S.Schema<PutWindowsUserComputerRequestResourcesItemSystemScreenlockPoliciesList>;
+
 export type PutWindowsUserComputerRequestResourcesItemPasswordPolicy =
   GetMacosUserComputerResponseResourcesItemPasswordPolicy;
 /** The category of the security product. */
@@ -1328,6 +1959,9 @@ export interface PutWindowsUserComputerRequestResourcesItemWindowsSecurityProduc
 /** A list of services that are monitored by Windows Security Center (WSC). */
 export type PutWindowsUserComputerRequestResourcesItemWindowsSecurityProductsList =
   Array<PutWindowsUserComputerRequestResourcesItemWindowsSecurityProductsItem>;
+const PutWindowsUserComputerRequestResourcesItemWindowsSecurityProductsList =
+  GetWindowsUserComputerResponseResourcesItemWindowsSecurityProductsList as any as S.Schema<PutWindowsUserComputerRequestResourcesItemWindowsSecurityProductsList>;
+
 /** The health of the monitored Firewall. */
 export type PutWindowsUserComputerRequestResourcesItemWindowsSecurityCenterFirewall =
   | "GOOD"
@@ -1394,6 +2028,9 @@ export interface PutWindowsUserComputerRequestResourcesItemWindowsSecurityCenter
     | PutWindowsUserComputerRequestResourcesItemWindowsSecurityCenterWindowsSecurityCenterService
     | (string & {});
 }
+const PutWindowsUserComputerRequestResourcesItemWindowsSecurityCenter =
+  GetWindowsUserComputerResponseResourcesItemWindowsSecurityCenter as any as S.Schema<PutWindowsUserComputerRequestResourcesItemWindowsSecurityCenter>;
+
 export interface PutWindowsUserComputerRequestResourcesItem {
   /** A human readable label for this resource - will be shown as-is in inventory page. */
   displayName: string;
@@ -1434,16 +2071,34 @@ export interface PutWindowsUserComputerRequestResourcesItem {
   windowsSecurityProducts?: PutWindowsUserComputerRequestResourcesItemWindowsSecurityProductsList | null;
   windowsSecurityCenter?: PutWindowsUserComputerRequestResourcesItemWindowsSecurityCenter | null;
 }
+const PutWindowsUserComputerRequestResourcesItem = /*@__PURE__*/ __L.at(
+  __c11,
+  7,
+) as any as S.Schema<PutWindowsUserComputerRequestResourcesItem>;
+
 export type PutWindowsUserComputerRequestResourcesList =
   Array<PutWindowsUserComputerRequestResourcesItem>;
+const PutWindowsUserComputerRequestResourcesList = /*@__PURE__*/ __L.at(
+  __c12,
+  0,
+) as any as S.Schema<PutWindowsUserComputerRequestResourcesList>;
+
 export interface PutWindowsUserComputerRequest {
   /** Vanta generated identifier for the given resource, and can be found on the developer console page. See the list of registered resources and their IDs on https://app.vanta.com/settings/developer-console/<app_id>?tab=resources */
   resourceId: string;
   resources: PutWindowsUserComputerRequestResourcesList;
 }
+const PutWindowsUserComputerRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  1,
+) as any as S.Schema<PutWindowsUserComputerRequest>;
+
 export interface PutWindowsUserComputerResponse {
   success: boolean;
 }
+const PutWindowsUserComputerResponse =
+  PutApiEndpointVulnerabilityConnectorsResponse as any as S.Schema<PutWindowsUserComputerResponse>;
+
 export interface UploadFileForDocumentRequest {
   documentId: string;
   file: string;
@@ -1452,12 +2107,24 @@ export interface UploadFileForDocumentRequest {
   /** Description of the uploaded document. */
   description?: string;
 }
+const UploadFileForDocumentRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  2,
+) as any as S.Schema<UploadFileForDocumentRequest>;
+
 export type UploadedDocumentUploadedByType = "USER" | "APPLICATION";
+const UploadedDocumentUploadedByType = S.String;
+
 /** The actor who uploaded this document. It could be a user or an app. */
 export interface UploadedFileTUploadedBy {
   type: UploadedDocumentUploadedByType;
   id: string;
 }
+const UploadedFileTUploadedBy = /*@__PURE__*/ __L.at(
+  __c12,
+  3,
+) as any as S.Schema<UploadedFileTUploadedBy>;
+
 export interface UploadedFileT {
   /** Unique identifier for the document. */
   id: string;
@@ -1482,6 +2149,8 @@ export interface UploadedFileT {
   /** The document's URL. */
   url: string;
 }
+const UploadedFileT = /*@__PURE__*/ __L.at(__c12, 4) as any as S.Schema<UploadedFileT>;
+
 export type GetApiEndpointVulnerabilityConnectorsError = VantaOpError;
 /** List all API Endpoint Vulnerabilities List `ApiEndpointVulnerabilityConnectors` resources for the given application. ** Headers ** ``` Authorization: Bearer <access_token> ``` ** Scopes ** ``` connectors.self:read-resource ``` */
 export const getApiEndpointVulnerabilityConnectors: API.OperationMethod<
@@ -1490,8 +2159,8 @@ export const getApiEndpointVulnerabilityConnectors: API.OperationMethod<
   GetApiEndpointVulnerabilityConnectorsError,
   VantaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<GetApiEndpointVulnerabilityConnectorsRequest>,
-  output: __S(7) as any as S.Schema<GetApiEndpointVulnerabilityConnectorsResponse>,
+  input: GetApiEndpointVulnerabilityConnectorsRequest,
+  output: GetApiEndpointVulnerabilityConnectorsResponse,
   errors: [UnknownVantaError],
   protocol: VantaProtocol,
   retry: Retry.Retry,
@@ -1505,8 +2174,8 @@ export const getBackgroundCheckConnector: API.OperationMethod<
   GetBackgroundCheckConnectorError,
   VantaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8) as any as S.Schema<GetBackgroundCheckConnectorRequest>,
-  output: __S(11) as any as S.Schema<GetBackgroundCheckConnectorResponse>,
+  input: GetBackgroundCheckConnectorRequest,
+  output: GetBackgroundCheckConnectorResponse,
   errors: [UnknownVantaError],
   protocol: VantaProtocol,
   retry: Retry.Retry,
@@ -1520,8 +2189,8 @@ export const getCustomResource: API.OperationMethod<
   GetCustomResourceError,
   VantaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12) as any as S.Schema<GetCustomResourceRequest>,
-  output: __S(15) as any as S.Schema<GetCustomResourceResponse>,
+  input: GetCustomResourceRequest,
+  output: GetCustomResourceResponse,
   errors: [UnknownVantaError],
   protocol: VantaProtocol,
   retry: Retry.Retry,
@@ -1535,8 +2204,8 @@ export const getMacosUserComputer: API.OperationMethod<
   GetMacosUserComputerError,
   VantaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16) as any as S.Schema<GetMacosUserComputerRequest>,
-  output: __S(30) as any as S.Schema<GetMacosUserComputerResponse>,
+  input: GetMacosUserComputerRequest,
+  output: GetMacosUserComputerResponse,
   errors: [UnknownVantaError],
   protocol: VantaProtocol,
   retry: Retry.Retry,
@@ -1550,8 +2219,8 @@ export const getPackageVulnerabilityConnectors: API.OperationMethod<
   GetPackageVulnerabilityConnectorsError,
   VantaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31) as any as S.Schema<GetPackageVulnerabilityConnectorsRequest>,
-  output: __S(34) as any as S.Schema<GetPackageVulnerabilityConnectorsResponse>,
+  input: GetPackageVulnerabilityConnectorsRequest,
+  output: GetPackageVulnerabilityConnectorsResponse,
   errors: [UnknownVantaError],
   protocol: VantaProtocol,
   retry: Retry.Retry,
@@ -1565,8 +2234,8 @@ export const getSecret: API.OperationMethod<
   GetSecretError,
   VantaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35) as any as S.Schema<GetSecretRequest>,
-  output: __S(38) as any as S.Schema<GetSecretResponse>,
+  input: GetSecretRequest,
+  output: GetSecretResponse,
   errors: [UnknownVantaError],
   protocol: VantaProtocol,
   retry: Retry.Retry,
@@ -1580,8 +2249,8 @@ export const getSecurityTask: API.OperationMethod<
   GetSecurityTaskError,
   VantaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39) as any as S.Schema<GetSecurityTaskRequest>,
-  output: __S(43) as any as S.Schema<GetSecurityTaskResponse>,
+  input: GetSecurityTaskRequest,
+  output: GetSecurityTaskResponse,
   errors: [UnknownVantaError],
   protocol: VantaProtocol,
   retry: Retry.Retry,
@@ -1595,8 +2264,8 @@ export const getStaticAnalysisCodeVulnerabilityConnectors: API.OperationMethod<
   GetStaticAnalysisCodeVulnerabilityConnectorsError,
   VantaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44) as any as S.Schema<GetStaticAnalysisCodeVulnerabilityConnectorsRequest>,
-  output: __S(49) as any as S.Schema<GetStaticAnalysisCodeVulnerabilityConnectorsResponse>,
+  input: GetStaticAnalysisCodeVulnerabilityConnectorsRequest,
+  output: GetStaticAnalysisCodeVulnerabilityConnectorsResponse,
   errors: [UnknownVantaError],
   protocol: VantaProtocol,
   retry: Retry.Retry,
@@ -1610,8 +2279,8 @@ export const getUserAccount: API.OperationMethod<
   GetUserAccountError,
   VantaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(50) as any as S.Schema<GetUserAccountRequest>,
-  output: __S(54) as any as S.Schema<GetUserAccountResponse>,
+  input: GetUserAccountRequest,
+  output: GetUserAccountResponse,
   errors: [UnknownVantaError],
   protocol: VantaProtocol,
   retry: Retry.Retry,
@@ -1625,8 +2294,8 @@ export const getUserSecurityTrainingStatus: API.OperationMethod<
   GetUserSecurityTrainingStatusError,
   VantaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(55) as any as S.Schema<GetUserSecurityTrainingStatusRequest>,
-  output: __S(59) as any as S.Schema<GetUserSecurityTrainingStatusResponse>,
+  input: GetUserSecurityTrainingStatusRequest,
+  output: GetUserSecurityTrainingStatusResponse,
   errors: [UnknownVantaError],
   protocol: VantaProtocol,
   retry: Retry.Retry,
@@ -1640,8 +2309,8 @@ export const getVulnerableComponent: API.OperationMethod<
   GetVulnerableComponentError,
   VantaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60) as any as S.Schema<GetVulnerableComponentRequest>,
-  output: __S(63) as any as S.Schema<GetVulnerableComponentResponse>,
+  input: GetVulnerableComponentRequest,
+  output: GetVulnerableComponentResponse,
   errors: [UnknownVantaError],
   protocol: VantaProtocol,
   retry: Retry.Retry,
@@ -1655,8 +2324,8 @@ export const getWindowsUserComputer: API.OperationMethod<
   GetWindowsUserComputerError,
   VantaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(64) as any as S.Schema<GetWindowsUserComputerRequest>,
-  output: __S(75) as any as S.Schema<GetWindowsUserComputerResponse>,
+  input: GetWindowsUserComputerRequest,
+  output: GetWindowsUserComputerResponse,
   errors: [UnknownVantaError],
   protocol: VantaProtocol,
   retry: Retry.Retry,
@@ -1670,8 +2339,8 @@ export const putApiEndpointVulnerabilityConnectors: API.OperationMethod<
   PutApiEndpointVulnerabilityConnectorsError,
   VantaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(76) as any as S.Schema<PutApiEndpointVulnerabilityConnectorsRequest>,
-  output: __S(77) as any as S.Schema<PutApiEndpointVulnerabilityConnectorsResponse>,
+  input: PutApiEndpointVulnerabilityConnectorsRequest,
+  output: PutApiEndpointVulnerabilityConnectorsResponse,
   errors: [UnknownVantaError],
   protocol: VantaProtocol,
   retry: Retry.Retry,
@@ -1685,8 +2354,8 @@ export const putBackgroundCheckConnector: API.OperationMethod<
   PutBackgroundCheckConnectorError,
   VantaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(78) as any as S.Schema<PutBackgroundCheckConnectorRequest>,
-  output: __S(77) as any as S.Schema<PutBackgroundCheckConnectorResponse>,
+  input: PutBackgroundCheckConnectorRequest,
+  output: PutBackgroundCheckConnectorResponse,
   errors: [UnknownVantaError],
   protocol: VantaProtocol,
   retry: Retry.Retry,
@@ -1700,8 +2369,8 @@ export const putCustomResource: API.OperationMethod<
   PutCustomResourceError,
   VantaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(79) as any as S.Schema<PutCustomResourceRequest>,
-  output: __S(77) as any as S.Schema<PutCustomResourceResponse>,
+  input: PutCustomResourceRequest,
+  output: PutCustomResourceResponse,
   errors: [UnknownVantaError],
   protocol: VantaProtocol,
   retry: Retry.Retry,
@@ -1715,8 +2384,8 @@ export const putMacosUserComputer: API.OperationMethod<
   PutMacosUserComputerError,
   VantaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(82) as any as S.Schema<PutMacosUserComputerRequest>,
-  output: __S(77) as any as S.Schema<PutMacosUserComputerResponse>,
+  input: PutMacosUserComputerRequest,
+  output: PutMacosUserComputerResponse,
   errors: [UnknownVantaError],
   protocol: VantaProtocol,
   retry: Retry.Retry,
@@ -1730,8 +2399,8 @@ export const putPackageVulnerabilityConnectors: API.OperationMethod<
   PutPackageVulnerabilityConnectorsError,
   VantaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(83) as any as S.Schema<PutPackageVulnerabilityConnectorsRequest>,
-  output: __S(77) as any as S.Schema<PutPackageVulnerabilityConnectorsResponse>,
+  input: PutPackageVulnerabilityConnectorsRequest,
+  output: PutPackageVulnerabilityConnectorsResponse,
   errors: [UnknownVantaError],
   protocol: VantaProtocol,
   retry: Retry.Retry,
@@ -1745,8 +2414,8 @@ export const putSecret: API.OperationMethod<
   PutSecretError,
   VantaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(84) as any as S.Schema<PutSecretRequest>,
-  output: __S(85) as any as S.Schema<PutSecretResponse>,
+  input: PutSecretRequest,
+  output: PutSecretResponse,
   errors: [UnknownVantaError],
   protocol: VantaProtocol,
   retry: Retry.Retry,
@@ -1760,8 +2429,8 @@ export const putSecurityTask: API.OperationMethod<
   PutSecurityTaskError,
   VantaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(88) as any as S.Schema<PutSecurityTaskRequest>,
-  output: __S(85) as any as S.Schema<PutSecurityTaskResponse>,
+  input: PutSecurityTaskRequest,
+  output: PutSecurityTaskResponse,
   errors: [UnknownVantaError],
   protocol: VantaProtocol,
   retry: Retry.Retry,
@@ -1775,8 +2444,8 @@ export const putStaticAnalysisCodeVulnerabilityConnectors: API.OperationMethod<
   PutStaticAnalysisCodeVulnerabilityConnectorsError,
   VantaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(89) as any as S.Schema<PutStaticAnalysisCodeVulnerabilityConnectorsRequest>,
-  output: __S(77) as any as S.Schema<PutStaticAnalysisCodeVulnerabilityConnectorsResponse>,
+  input: PutStaticAnalysisCodeVulnerabilityConnectorsRequest,
+  output: PutStaticAnalysisCodeVulnerabilityConnectorsResponse,
   errors: [UnknownVantaError],
   protocol: VantaProtocol,
   retry: Retry.Retry,
@@ -1790,8 +2459,8 @@ export const putUserAccount: API.OperationMethod<
   PutUserAccountError,
   VantaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(92) as any as S.Schema<PutUserAccountRequest>,
-  output: __S(85) as any as S.Schema<PutUserAccountResponse>,
+  input: PutUserAccountRequest,
+  output: PutUserAccountResponse,
   errors: [UnknownVantaError],
   protocol: VantaProtocol,
   retry: Retry.Retry,
@@ -1805,8 +2474,8 @@ export const putUserSecurityTrainingStatus: API.OperationMethod<
   PutUserSecurityTrainingStatusError,
   VantaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(93) as any as S.Schema<PutUserSecurityTrainingStatusRequest>,
-  output: __S(77) as any as S.Schema<PutUserSecurityTrainingStatusResponse>,
+  input: PutUserSecurityTrainingStatusRequest,
+  output: PutUserSecurityTrainingStatusResponse,
   errors: [UnknownVantaError],
   protocol: VantaProtocol,
   retry: Retry.Retry,
@@ -1820,8 +2489,8 @@ export const putVulnerableComponent: API.OperationMethod<
   PutVulnerableComponentError,
   VantaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(94) as any as S.Schema<PutVulnerableComponentRequest>,
-  output: __S(77) as any as S.Schema<PutVulnerableComponentResponse>,
+  input: PutVulnerableComponentRequest,
+  output: PutVulnerableComponentResponse,
   errors: [UnknownVantaError],
   protocol: VantaProtocol,
   retry: Retry.Retry,
@@ -1835,8 +2504,8 @@ export const putWindowsUserComputer: API.OperationMethod<
   PutWindowsUserComputerError,
   VantaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(97) as any as S.Schema<PutWindowsUserComputerRequest>,
-  output: __S(77) as any as S.Schema<PutWindowsUserComputerResponse>,
+  input: PutWindowsUserComputerRequest,
+  output: PutWindowsUserComputerResponse,
   errors: [UnknownVantaError],
   protocol: VantaProtocol,
   retry: Retry.Retry,
@@ -1850,8 +2519,8 @@ export const uploadFileForDocument: API.OperationMethod<
   UploadFileForDocumentError,
   VantaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(98) as any as S.Schema<UploadFileForDocumentRequest>,
-  output: __S(100) as any as S.Schema<UploadedFileT>,
+  input: UploadFileForDocumentRequest,
+  output: UploadedFileT,
   errors: [UnknownVantaError],
   protocol: VantaProtocol,
   retry: Retry.Retry,
@@ -1885,28 +2554,38 @@ function __c0(j: number): any {
           "GetApiEndpointVulnerabilityConnectorsResponseResourcesItemOccurrencesItemQueryParamsItem",
       });
     case 2:
-      return S.Array(__S(1));
+      return S.Array(
+        GetApiEndpointVulnerabilityConnectorsResponseResourcesItemOccurrencesItemQueryParamsItem,
+      );
     case 3:
       return S.suspend(() =>
         S.Struct({
           description: S.String,
           fromUrl: S.optional(S.NullOr(S.String)),
-          queryParams: S.optional(S.NullOr(__S(2))),
-          headers: S.optional(S.NullOr(__S(2))),
+          queryParams: S.optional(
+            S.NullOr(
+              GetApiEndpointVulnerabilityConnectorsResponseResourcesItemOccurrencesItemQueryParamsList,
+            ),
+          ),
+          headers: S.optional(
+            S.NullOr(
+              GetApiEndpointVulnerabilityConnectorsResponseResourcesItemOccurrencesItemHeadersList,
+            ),
+          ),
           body: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
         identifier: "GetApiEndpointVulnerabilityConnectorsResponseResourcesItemOccurrencesItem",
       });
     case 4:
-      return S.Array(__S(3));
+      return S.Array(GetApiEndpointVulnerabilityConnectorsResponseResourcesItemOccurrencesItem);
     case 5:
       return S.suspend(() =>
         S.Struct({
           displayName: S.String,
           uniqueId: S.String,
           externalUrl: S.String,
-          occurrences: __S(4),
+          occurrences: GetApiEndpointVulnerabilityConnectorsResponseResourcesItemOccurrencesList,
           severity: S.Number,
           vulnerableComponentUniqueId: S.String,
           description: S.String,
@@ -1921,11 +2600,11 @@ function __c0(j: number): any {
         identifier: "GetApiEndpointVulnerabilityConnectorsResponseResourcesItem",
       });
     case 6:
-      return S.Array(__S(5));
+      return S.Array(GetApiEndpointVulnerabilityConnectorsResponseResourcesItem);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          resources: S.optional(__S(6)),
+          resources: S.optional(GetApiEndpointVulnerabilityConnectorsResponseResourcesList),
         }),
       ).annotate({
         identifier: "GetApiEndpointVulnerabilityConnectorsResponse",
@@ -1952,18 +2631,18 @@ function __c1(j: number): any {
           externalUrl: S.String,
           fullName: S.String,
           email: S.String,
-          status: S.String,
+          status: GetBackgroundCheckConnectorResponseResourcesItemStatus,
           completionDate: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
         identifier: "GetBackgroundCheckConnectorResponseResourcesItem",
       });
     case 2:
-      return S.Array(__S(9));
+      return S.Array(GetBackgroundCheckConnectorResponseResourcesItem);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          resources: S.optional(__S(10)),
+          resources: S.optional(GetBackgroundCheckConnectorResponseResourcesList),
         }),
       ).annotate({
         identifier: "GetBackgroundCheckConnectorResponse",
@@ -1985,11 +2664,11 @@ function __c1(j: number): any {
         identifier: "GetCustomResourceResponseResourcesItem",
       });
     case 6:
-      return S.Array(__S(13));
+      return S.Array(GetCustomResourceResponseResourcesItem);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          resources: S.optional(__S(14)),
+          resources: S.optional(GetCustomResourceResponseResourcesList),
         }),
       ).annotate({
         identifier: "GetCustomResourceResponse",
@@ -2017,19 +2696,19 @@ function __c2(j: number): any {
         identifier: "GetMacosUserComputerResponseResourcesItemApplicationsItem",
       });
     case 2:
-      return S.Array(__S(17));
+      return S.Array(GetMacosUserComputerResponseResourcesItemApplicationsItem);
     case 3:
       return S.suspend(() =>
         S.Struct({
           extensionId: S.String,
           name: S.String,
-          browser: S.String,
+          browser: GetMacosUserComputerResponseResourcesItemBrowserExtensionsItemBrowser,
         }),
       ).annotate({
         identifier: "GetMacosUserComputerResponseResourcesItemBrowserExtensionsItem",
       });
     case 4:
-      return S.Array(__S(19));
+      return S.Array(GetMacosUserComputerResponseResourcesItemBrowserExtensionsItem);
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -2042,7 +2721,7 @@ function __c2(j: number): any {
         identifier: "GetMacosUserComputerResponseResourcesItemDrivesItem",
       });
     case 6:
-      return S.Array(__S(21));
+      return S.Array(GetMacosUserComputerResponseResourcesItemDrivesItem);
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -2057,20 +2736,22 @@ function __c2(j: number): any {
 function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(23));
+      return S.Array(GetMacosUserComputerResponseResourcesItemUsersItemScreenlockPoliciesItem);
     case 1:
       return S.suspend(() =>
         S.Struct({
           username: S.String,
-          screenlockPolicies: __S(24),
-          screenlockSettings: __S(23),
+          screenlockPolicies:
+            GetMacosUserComputerResponseResourcesItemUsersItemScreenlockPoliciesList,
+          screenlockSettings:
+            GetMacosUserComputerResponseResourcesItemUsersItemScreenlockPoliciesItem,
           lastLoginTimestamp: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
         identifier: "GetMacosUserComputerResponseResourcesItemUsersItem",
       });
     case 2:
-      return S.Array(__S(25));
+      return S.Array(GetMacosUserComputerResponseResourcesItemUsersItem);
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -2090,15 +2771,18 @@ function __c3(j: number): any {
           osVersion: S.String,
           hardwareUuid: S.String,
           serialNumber: S.String,
-          applications: __S(18),
-          browserExtensions: __S(20),
-          drives: __S(22),
-          users: __S(26),
-          systemScreenlockPolicies: __S(24),
+          applications: GetMacosUserComputerResponseResourcesItemApplicationsList,
+          browserExtensions: GetMacosUserComputerResponseResourcesItemBrowserExtensionsList,
+          drives: GetMacosUserComputerResponseResourcesItemDrivesList,
+          users: GetMacosUserComputerResponseResourcesItemUsersList,
+          systemScreenlockPolicies:
+            GetMacosUserComputerResponseResourcesItemSystemScreenlockPoliciesList,
           isManaged: S.Boolean,
           autoUpdatesEnabled: S.Boolean,
           owner: S.optional(S.NullOr(S.String)),
-          passwordPolicy: S.optional(S.NullOr(__S(27))),
+          passwordPolicy: S.optional(
+            S.NullOr(GetMacosUserComputerResponseResourcesItemPasswordPolicy),
+          ),
           lastEnrolledTimestamp: S.optional(S.NullOr(S.String)),
           isXProtectEnabled: S.optional(S.NullOr(S.Boolean)),
         }),
@@ -2106,11 +2790,11 @@ function __c3(j: number): any {
         identifier: "GetMacosUserComputerResponseResourcesItem",
       });
     case 5:
-      return S.Array(__S(28));
+      return S.Array(GetMacosUserComputerResponseResourcesItem);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          resources: S.optional(__S(29)),
+          resources: S.optional(GetMacosUserComputerResponseResourcesList),
         }),
       ).annotate({
         identifier: "GetMacosUserComputerResponse",
@@ -2155,11 +2839,11 @@ function __c4(j: number): any {
         identifier: "GetPackageVulnerabilityConnectorsResponseResourcesItem",
       });
     case 1:
-      return S.Array(__S(32));
+      return S.Array(GetPackageVulnerabilityConnectorsResponseResourcesItem);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          resources: S.optional(__S(33)),
+          resources: S.optional(GetPackageVulnerabilityConnectorsResponseResourcesList),
         }),
       ).annotate({
         identifier: "GetPackageVulnerabilityConnectorsResponse",
@@ -2189,11 +2873,11 @@ function __c4(j: number): any {
         identifier: "GetSecretResponseResourcesItem",
       });
     case 5:
-      return S.Array(__S(36));
+      return S.Array(GetSecretResponseResourcesItem);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          resources: S.optional(__S(37)),
+          resources: S.optional(GetSecretResponseResourcesList),
         }),
       ).annotate({ identifier: "GetSecretResponse" });
     case 7:
@@ -2217,11 +2901,11 @@ function __c5(j: number): any {
           taskId: S.String,
           taskTitle: S.String,
           createdTimestamp: S.String,
-          taskState: S.String,
-          priority: S.String,
-          assignees: __S(40),
+          taskState: GetSecurityTaskResponseResourcesItemTaskState,
+          priority: GetSecurityTaskResponseResourcesItemPriority,
+          assignees: GetSecurityTaskResponseResourcesItemAssigneesList,
           creator: S.String,
-          labels: __S(40),
+          labels: GetSecurityTaskResponseResourcesItemLabelsList,
           closedTimestamp: S.optional(S.NullOr(S.String)),
           updatedTimestamp: S.optional(S.NullOr(S.String)),
         }),
@@ -2229,11 +2913,11 @@ function __c5(j: number): any {
         identifier: "GetSecurityTaskResponseResourcesItem",
       });
     case 2:
-      return S.Array(__S(41));
+      return S.Array(GetSecurityTaskResponseResourcesItem);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          resources: S.optional(__S(42)),
+          resources: S.optional(GetSecurityTaskResponseResourcesList),
         }),
       ).annotate({ identifier: "GetSecurityTaskResponse" });
     case 4:
@@ -2264,14 +2948,17 @@ function __c5(j: number): any {
           "GetStaticAnalysisCodeVulnerabilityConnectorsResponseResourcesItemOccurrencesItem",
       });
     case 6:
-      return S.Array(__S(45));
+      return S.Array(
+        GetStaticAnalysisCodeVulnerabilityConnectorsResponseResourcesItemOccurrencesItem,
+      );
     case 7:
       return S.suspend(() =>
         S.Struct({
           displayName: S.String,
           uniqueId: S.String,
           externalUrl: S.String,
-          occurrences: __S(46),
+          occurrences:
+            GetStaticAnalysisCodeVulnerabilityConnectorsResponseResourcesItemOccurrencesList,
           severity: S.Number,
           confidence: S.Number,
           isResolvable: S.Boolean,
@@ -2290,11 +2977,11 @@ function __c5(j: number): any {
 function __c6(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(47));
+      return S.Array(GetStaticAnalysisCodeVulnerabilityConnectorsResponseResourcesItem);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          resources: S.optional(__S(48)),
+          resources: S.optional(GetStaticAnalysisCodeVulnerabilityConnectorsResponseResourcesList),
         }),
       ).annotate({
         identifier: "GetStaticAnalysisCodeVulnerabilityConnectorsResponse",
@@ -2306,7 +2993,7 @@ function __c6(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/v1/resources/user_account", code: 200 })),
       ).annotate({ identifier: "GetUserAccountRequest" });
     case 3:
-      return S.Array(S.String);
+      return S.Array(GetUserAccountResponseResourcesItemMfaMethodsItem);
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -2316,28 +3003,28 @@ function __c6(j: number): any {
           fullName: S.String,
           accountName: S.String,
           email: S.String,
-          permissionLevel: S.String,
+          permissionLevel: GetUserAccountResponseResourcesItemPermissionLevel,
           createdTimestamp: S.String,
-          status: S.String,
+          status: GetUserAccountResponseResourcesItemStatus,
           mfaEnabled: S.NullOr(S.Boolean),
-          mfaMethods: __S(51),
-          authMethod: S.String,
+          mfaMethods: GetUserAccountResponseResourcesItemMfaMethodsList,
+          authMethod: GetUserAccountResponseResourcesItemAuthMethod,
           roleDescription: S.optional(S.NullOr(S.String)),
           updatedTimestamp: S.optional(S.NullOr(S.String)),
           deactivatedTimestamp: S.optional(S.NullOr(S.String)),
           lastLoginTimestamp: S.optional(S.NullOr(S.String)),
           lastPasswordResetTimestamp: S.optional(S.NullOr(S.String).pipe(T.SensitiveValue({}))),
-          groupIds: S.optional(S.NullOr(__S(40))),
+          groupIds: S.optional(S.NullOr(GetUserAccountResponseResourcesItemGroupIdsList)),
         }),
       ).annotate({
         identifier: "GetUserAccountResponseResourcesItem",
       });
     case 5:
-      return S.Array(__S(52));
+      return S.Array(GetUserAccountResponseResourcesItem);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          resources: S.optional(__S(53)),
+          resources: S.optional(GetUserAccountResponseResourcesList),
         }),
       ).annotate({ identifier: "GetUserAccountResponse" });
     case 7:
@@ -2355,7 +3042,7 @@ function __c6(j: number): any {
 function __c7(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
+      return S.Array(GetUserSecurityTrainingStatusResponseResourcesItemFrameworksFulfilledItem);
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2364,11 +3051,12 @@ function __c7(j: number): any {
           externalUrl: S.String,
           trainingId: S.String,
           trainingName: S.String,
-          frameworksFulfilled: __S(56),
+          frameworksFulfilled:
+            GetUserSecurityTrainingStatusResponseResourcesItemFrameworksFulfilledList,
           traineeFullName: S.String,
           traineeAccountName: S.String,
           traineeEmail: S.String,
-          status: S.String,
+          status: GetUserSecurityTrainingStatusResponseResourcesItemStatus,
           trainingCreatedTimestamp: S.String,
           trainingDueTimestamp: S.String,
           trainingCompletedTimestamp: S.optional(S.NullOr(S.String)),
@@ -2377,11 +3065,11 @@ function __c7(j: number): any {
         identifier: "GetUserSecurityTrainingStatusResponseResourcesItem",
       });
     case 2:
-      return S.Array(__S(57));
+      return S.Array(GetUserSecurityTrainingStatusResponseResourcesItem);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          resources: S.optional(__S(58)),
+          resources: S.optional(GetUserSecurityTrainingStatusResponseResourcesList),
         }),
       ).annotate({
         identifier: "GetUserSecurityTrainingStatusResponse",
@@ -2403,17 +3091,17 @@ function __c7(j: number): any {
           collectedTimestamp: S.String,
           name: S.String,
           description: S.String,
-          targetType: S.String,
+          targetType: GetVulnerableComponentResponseResourcesItemTargetType,
         }),
       ).annotate({
         identifier: "GetVulnerableComponentResponseResourcesItem",
       });
     case 6:
-      return S.Array(__S(61));
+      return S.Array(GetVulnerableComponentResponseResourcesItem);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          resources: S.optional(__S(62)),
+          resources: S.optional(GetVulnerableComponentResponseResourcesList),
         }),
       ).annotate({
         identifier: "GetVulnerableComponentResponse",
@@ -2440,9 +3128,9 @@ function __c8(j: number): any {
         identifier: "GetWindowsUserComputerResponseResourcesItemProgramsItem",
       });
     case 2:
-      return S.Array(__S(65));
+      return S.Array(GetWindowsUserComputerResponseResourcesItemProgramsItem);
     case 3:
-      return S.Array(__S(19));
+      return S.Array(GetWindowsUserComputerResponseResourcesItemBrowserExtensionsItem);
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -2454,13 +3142,13 @@ function __c8(j: number): any {
         identifier: "GetWindowsUserComputerResponseResourcesItemDrivesItem",
       });
     case 5:
-      return S.Array(__S(68));
+      return S.Array(GetWindowsUserComputerResponseResourcesItemDrivesItem);
     case 6:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          category: S.String,
-          state: S.String,
+          category: GetWindowsUserComputerResponseResourcesItemWindowsSecurityProductsItemCategory,
+          state: GetWindowsUserComputerResponseResourcesItemWindowsSecurityProductsItemState,
           stateTimestamp: S.String,
           signaturesUpToDate: S.Boolean,
         }),
@@ -2468,7 +3156,7 @@ function __c8(j: number): any {
         identifier: "GetWindowsUserComputerResponseResourcesItemWindowsSecurityProductsItem",
       });
     case 7:
-      return S.Array(__S(70));
+      return S.Array(GetWindowsUserComputerResponseResourcesItemWindowsSecurityProductsItem);
   }
 }
 function __c9(j: number): any {
@@ -2476,12 +3164,15 @@ function __c9(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          firewall: S.String,
-          autoupdate: S.String,
-          antivirus: S.String,
-          internetSetting: S.String,
-          userAccountControl: S.String,
-          windowsSecurityCenterService: S.String,
+          firewall: GetWindowsUserComputerResponseResourcesItemWindowsSecurityCenterFirewall,
+          autoupdate: GetWindowsUserComputerResponseResourcesItemWindowsSecurityCenterAutoupdate,
+          antivirus: GetWindowsUserComputerResponseResourcesItemWindowsSecurityCenterAntivirus,
+          internetSetting:
+            GetWindowsUserComputerResponseResourcesItemWindowsSecurityCenterInternetSetting,
+          userAccountControl:
+            GetWindowsUserComputerResponseResourcesItemWindowsSecurityCenterUserAccountControl,
+          windowsSecurityCenterService:
+            GetWindowsUserComputerResponseResourcesItemWindowsSecurityCenterWindowsSecurityCenterService,
         }),
       ).annotate({
         identifier: "GetWindowsUserComputerResponseResourcesItemWindowsSecurityCenter",
@@ -2497,28 +3188,35 @@ function __c9(j: number): any {
           osVersion: S.String,
           hardwareUuid: S.String,
           serialNumber: S.String,
-          programs: __S(66),
-          browserExtensions: __S(67),
-          drives: __S(69),
-          users: __S(26),
-          systemScreenlockPolicies: __S(24),
+          programs: GetWindowsUserComputerResponseResourcesItemProgramsList,
+          browserExtensions: GetWindowsUserComputerResponseResourcesItemBrowserExtensionsList,
+          drives: GetWindowsUserComputerResponseResourcesItemDrivesList,
+          users: GetWindowsUserComputerResponseResourcesItemUsersList,
+          systemScreenlockPolicies:
+            GetWindowsUserComputerResponseResourcesItemSystemScreenlockPoliciesList,
           isManaged: S.Boolean,
           autoUpdatesEnabled: S.Boolean,
           owner: S.optional(S.NullOr(S.String)),
-          passwordPolicy: S.optional(S.NullOr(__S(27))),
+          passwordPolicy: S.optional(
+            S.NullOr(GetMacosUserComputerResponseResourcesItemPasswordPolicy),
+          ),
           lastEnrolledTimestamp: S.optional(S.NullOr(S.String)),
-          windowsSecurityProducts: S.optional(S.NullOr(__S(71))),
-          windowsSecurityCenter: S.optional(S.NullOr(__S(72))),
+          windowsSecurityProducts: S.optional(
+            S.NullOr(GetWindowsUserComputerResponseResourcesItemWindowsSecurityProductsList),
+          ),
+          windowsSecurityCenter: S.optional(
+            S.NullOr(GetWindowsUserComputerResponseResourcesItemWindowsSecurityCenter),
+          ),
         }),
       ).annotate({
         identifier: "GetWindowsUserComputerResponseResourcesItem",
       });
     case 2:
-      return S.Array(__S(73));
+      return S.Array(GetWindowsUserComputerResponseResourcesItem);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          resources: S.optional(__S(74)),
+          resources: S.optional(GetWindowsUserComputerResponseResourcesList),
         }),
       ).annotate({
         identifier: "GetWindowsUserComputerResponse",
@@ -2527,7 +3225,7 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resourceId: S.String,
-          resources: __S(6),
+          resources: PutApiEndpointVulnerabilityConnectorsRequestResourcesList,
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2550,7 +3248,7 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resourceId: S.String,
-          resources: __S(10),
+          resources: PutBackgroundCheckConnectorRequestResourcesList,
         }).pipe(
           T.Http({ method: "PUT", uri: "/v1/resources/background_check_connector", code: 200 }),
         ),
@@ -2561,7 +3259,7 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resourceId: S.String,
-          resources: __S(14),
+          resources: PutCustomResourceRequestResourcesList,
         }).pipe(T.Http({ method: "PUT", uri: "/v1/resources/custom_resource", code: 200 })),
       ).annotate({ identifier: "PutCustomResourceRequest" });
   }
@@ -2579,15 +3277,18 @@ function __c10(j: number): any {
           osVersion: S.String,
           hardwareUuid: S.String,
           serialNumber: S.String,
-          applications: __S(18),
-          browserExtensions: __S(20),
-          drives: __S(22),
-          users: __S(26),
-          systemScreenlockPolicies: __S(24),
+          applications: PutMacosUserComputerRequestResourcesItemApplicationsList,
+          browserExtensions: PutMacosUserComputerRequestResourcesItemBrowserExtensionsList,
+          drives: PutMacosUserComputerRequestResourcesItemDrivesList,
+          users: PutMacosUserComputerRequestResourcesItemUsersList,
+          systemScreenlockPolicies:
+            PutMacosUserComputerRequestResourcesItemSystemScreenlockPoliciesList,
           isManaged: S.Boolean,
           autoUpdatesEnabled: S.Boolean,
           owner: S.optional(S.NullOr(S.String)),
-          passwordPolicy: S.optional(S.NullOr(__S(27))),
+          passwordPolicy: S.optional(
+            S.NullOr(GetMacosUserComputerResponseResourcesItemPasswordPolicy),
+          ),
           lastEnrolledTimestamp: S.optional(S.NullOr(S.String)),
           isXProtectEnabled: S.optional(S.NullOr(S.Boolean)),
         }),
@@ -2595,12 +3296,12 @@ function __c10(j: number): any {
         identifier: "PutMacosUserComputerRequestResourcesItem",
       });
     case 1:
-      return S.Array(__S(80));
+      return S.Array(PutMacosUserComputerRequestResourcesItem);
     case 2:
       return S.suspend(() =>
         S.Struct({
           resourceId: S.String,
-          resources: __S(81),
+          resources: PutMacosUserComputerRequestResourcesList,
         }).pipe(T.Http({ method: "PUT", uri: "/v1/resources/macos_user_computer", code: 200 })),
       ).annotate({
         identifier: "PutMacosUserComputerRequest",
@@ -2609,7 +3310,7 @@ function __c10(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resourceId: S.String,
-          resources: __S(33),
+          resources: PutPackageVulnerabilityConnectorsRequestResourcesList,
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2624,7 +3325,7 @@ function __c10(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resourceId: S.String,
-          resources: __S(37),
+          resources: PutSecretRequestResourcesList,
         }).pipe(T.Http({ method: "PUT", uri: "/v1/resources/secret", code: 200 })),
       ).annotate({ identifier: "PutSecretRequest" });
     case 5:
@@ -2642,11 +3343,11 @@ function __c10(j: number): any {
           taskId: S.String,
           taskTitle: S.String,
           createdTimestamp: S.String,
-          taskState: S.String,
-          priority: S.String,
-          assignees: __S(40),
+          taskState: PutSecurityTaskRequestResourcesItemTaskState,
+          priority: PutSecurityTaskRequestResourcesItemPriority,
+          assignees: PutSecurityTaskRequestResourcesItemAssigneesList,
           creator: S.String,
-          labels: __S(40),
+          labels: PutSecurityTaskRequestResourcesItemLabelsList,
           closedTimestamp: S.optional(S.NullOr(S.String)),
           updatedTimestamp: S.optional(S.NullOr(S.String)),
         }),
@@ -2654,7 +3355,7 @@ function __c10(j: number): any {
         identifier: "PutSecurityTaskRequestResourcesItem",
       });
     case 7:
-      return S.Array(__S(86));
+      return S.Array(PutSecurityTaskRequestResourcesItem);
   }
 }
 function __c11(j: number): any {
@@ -2663,14 +3364,14 @@ function __c11(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resourceId: S.String,
-          resources: __S(87),
+          resources: PutSecurityTaskRequestResourcesList,
         }).pipe(T.Http({ method: "PUT", uri: "/v1/resources/security_task", code: 200 })),
       ).annotate({ identifier: "PutSecurityTaskRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           resourceId: S.String,
-          resources: __S(48),
+          resources: PutStaticAnalysisCodeVulnerabilityConnectorsRequestResourcesList,
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2690,36 +3391,36 @@ function __c11(j: number): any {
           fullName: S.String,
           accountName: S.String,
           email: S.String,
-          permissionLevel: S.String,
+          permissionLevel: PutUserAccountRequestResourcesItemPermissionLevel,
           createdTimestamp: S.String,
-          status: S.String,
+          status: PutUserAccountRequestResourcesItemStatus,
           mfaEnabled: S.NullOr(S.Boolean),
-          mfaMethods: __S(51),
-          authMethod: S.String,
+          mfaMethods: PutUserAccountRequestResourcesItemMfaMethodsList,
+          authMethod: PutUserAccountRequestResourcesItemAuthMethod,
           roleDescription: S.optional(S.NullOr(S.String)),
           updatedTimestamp: S.optional(S.NullOr(S.String)),
           deactivatedTimestamp: S.optional(S.NullOr(S.String)),
           lastLoginTimestamp: S.optional(S.NullOr(S.String)),
           lastPasswordResetTimestamp: S.optional(S.NullOr(S.String).pipe(T.SensitiveValue({}))),
-          groupIds: S.optional(S.NullOr(__S(40))),
+          groupIds: S.optional(S.NullOr(PutUserAccountRequestResourcesItemGroupIdsList)),
         }),
       ).annotate({
         identifier: "PutUserAccountRequestResourcesItem",
       });
     case 3:
-      return S.Array(__S(90));
+      return S.Array(PutUserAccountRequestResourcesItem);
     case 4:
       return S.suspend(() =>
         S.Struct({
           resourceId: S.String,
-          resources: __S(91),
+          resources: PutUserAccountRequestResourcesList,
         }).pipe(T.Http({ method: "PUT", uri: "/v1/resources/user_account", code: 200 })),
       ).annotate({ identifier: "PutUserAccountRequest" });
     case 5:
       return S.suspend(() =>
         S.Struct({
           resourceId: S.String,
-          resources: __S(58),
+          resources: PutUserSecurityTrainingStatusRequestResourcesList,
         }).pipe(
           T.Http({ method: "PUT", uri: "/v1/resources/user_security_training_status", code: 200 }),
         ),
@@ -2730,7 +3431,7 @@ function __c11(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resourceId: S.String,
-          resources: __S(62),
+          resources: PutVulnerableComponentRequestResourcesList,
         }).pipe(T.Http({ method: "PUT", uri: "/v1/resources/vulnerable_component", code: 200 })),
       ).annotate({
         identifier: "PutVulnerableComponentRequest",
@@ -2746,18 +3447,25 @@ function __c11(j: number): any {
           osVersion: S.String,
           hardwareUuid: S.String,
           serialNumber: S.String,
-          programs: __S(66),
-          browserExtensions: __S(67),
-          drives: __S(69),
-          users: __S(26),
-          systemScreenlockPolicies: __S(24),
+          programs: PutWindowsUserComputerRequestResourcesItemProgramsList,
+          browserExtensions: PutWindowsUserComputerRequestResourcesItemBrowserExtensionsList,
+          drives: PutWindowsUserComputerRequestResourcesItemDrivesList,
+          users: PutWindowsUserComputerRequestResourcesItemUsersList,
+          systemScreenlockPolicies:
+            PutWindowsUserComputerRequestResourcesItemSystemScreenlockPoliciesList,
           isManaged: S.Boolean,
           autoUpdatesEnabled: S.Boolean,
           owner: S.optional(S.NullOr(S.String)),
-          passwordPolicy: S.optional(S.NullOr(__S(27))),
+          passwordPolicy: S.optional(
+            S.NullOr(GetMacosUserComputerResponseResourcesItemPasswordPolicy),
+          ),
           lastEnrolledTimestamp: S.optional(S.NullOr(S.String)),
-          windowsSecurityProducts: S.optional(S.NullOr(__S(71))),
-          windowsSecurityCenter: S.optional(S.NullOr(__S(72))),
+          windowsSecurityProducts: S.optional(
+            S.NullOr(PutWindowsUserComputerRequestResourcesItemWindowsSecurityProductsList),
+          ),
+          windowsSecurityCenter: S.optional(
+            S.NullOr(PutWindowsUserComputerRequestResourcesItemWindowsSecurityCenter),
+          ),
         }),
       ).annotate({
         identifier: "PutWindowsUserComputerRequestResourcesItem",
@@ -2767,12 +3475,12 @@ function __c11(j: number): any {
 function __c12(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(95));
+      return S.Array(PutWindowsUserComputerRequestResourcesItem);
     case 1:
       return S.suspend(() =>
         S.Struct({
           resourceId: S.String,
-          resources: __S(96),
+          resources: PutWindowsUserComputerRequestResourcesList,
         }).pipe(T.Http({ method: "PUT", uri: "/v1/resources/windows_user_computer", code: 200 })),
       ).annotate({
         identifier: "PutWindowsUserComputerRequest",
@@ -2798,7 +3506,7 @@ function __c12(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          type: S.String,
+          type: UploadedDocumentUploadedByType,
           id: S.String,
         }),
       ).annotate({ identifier: "UploadedFileTUploadedBy" });
@@ -2810,7 +3518,7 @@ function __c12(j: number): any {
           title: S.String,
           description: S.NullOr(S.String),
           mimeType: S.String,
-          uploadedBy: S.NullOr(__S(99)),
+          uploadedBy: S.NullOr(UploadedFileTUploadedBy),
           creationDate: S.String,
           updatedDate: S.String,
           deletionDate: S.NullOr(S.String),
@@ -2818,40 +3526,5 @@ function __c12(j: number): any {
           url: S.String,
         }),
       ).annotate({ identifier: "UploadedFileT" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
-    case 9:
-      return __c9(i & 7);
-    case 10:
-      return __c10(i & 7);
-    case 11:
-      return __c11(i & 7);
-    case 12:
-      return __c12(i & 7);
   }
 }

@@ -7,8 +7,6 @@ import { UnknownAzureError } from "../errors.ts";
 import { AzureProtocol, type AzureOpError, type AzureOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { AzureOpError, AzureOpContext };
 
@@ -16,6 +14,11 @@ export type { AzureOpError, AzureOpContext };
 export type AccessListRoleBindingNameListRequestSearchFiltersMap = {
   [key: string]: string | undefined;
 };
+const AccessListRoleBindingNameListRequestSearchFiltersMap = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<AccessListRoleBindingNameListRequestSearchFiltersMap>;
+
 export interface AccessListRoleBindingNameListRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -26,6 +29,11 @@ export interface AccessListRoleBindingNameListRequest {
   /** Search filters for the request */
   searchFilters?: AccessListRoleBindingNameListRequestSearchFiltersMap;
 }
+const AccessListRoleBindingNameListRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<AccessListRoleBindingNameListRequest>;
+
 /** Metadata of the list */
 export interface ConfluentListMetadata {
   /** First page of the list */
@@ -39,8 +47,18 @@ export interface ConfluentListMetadata {
   /** Total size of the list */
   total_size?: number;
 }
+const ConfluentListMetadata = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<ConfluentListMetadata>;
+
 /** List of role binding names */
 export type AccessRoleBindingNameListSuccessResponseDataList = Array<string>;
+const AccessRoleBindingNameListSuccessResponseDataList = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<AccessRoleBindingNameListSuccessResponseDataList>;
+
 /** Details of the role binding names returned on successful response */
 export interface AccessRoleBindingNameListSuccessResponse {
   /** Type of response */
@@ -50,6 +68,11 @@ export interface AccessRoleBindingNameListSuccessResponse {
   /** List of role binding names */
   data?: AccessRoleBindingNameListSuccessResponseDataList;
 }
+const AccessRoleBindingNameListSuccessResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<AccessRoleBindingNameListSuccessResponse>;
+
 /** Metadata of the data record */
 export interface SCMetadataEntity {
   /** Self lookup url */
@@ -63,13 +86,19 @@ export interface SCMetadataEntity {
   /** Deleted Date time */
   deletedTimestamp?: string;
 }
+const SCMetadataEntity = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<SCMetadataEntity>;
+
 /** Stream Governance Package. Supported values are ESSENTIALS and ADVANCED */
 export type Package = "ESSENTIALS" | "ADVANCED";
+const Package = S.String;
+
 /** The configuration of the Kafka cluster */
 export interface ClusterConfigEntity {
   /** The lifecycle phase of the cluster */
   kind?: string;
 }
+const ClusterConfigEntity = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<ClusterConfigEntity>;
+
 /** The environment or the network to which cluster belongs */
 export interface SCClusterNetworkEnvironmentEntity {
   /** ID of the referred resource */
@@ -81,6 +110,11 @@ export interface SCClusterNetworkEnvironmentEntity {
   /** CRN reference to the referred resource */
   resourceName?: string;
 }
+const SCClusterNetworkEnvironmentEntity = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<SCClusterNetworkEnvironmentEntity>;
+
 /** The network associated with this object */
 export interface SCClusterByokEntity {
   /** ID of the referred resource */
@@ -90,6 +124,8 @@ export interface SCClusterByokEntity {
   /** CRN reference to the referred resource */
   resourceName?: string;
 }
+const SCClusterByokEntity = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<SCClusterByokEntity>;
+
 /** Spec of the cluster record */
 export interface SCClusterSpecEntity {
   /** The name of the cluster */
@@ -119,6 +155,8 @@ export interface SCClusterSpecEntity {
   /** Specification of the cluster byok */
   byok?: SCClusterByokEntity;
 }
+const SCClusterSpecEntity = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<SCClusterSpecEntity>;
+
 /** Status of the cluster record */
 export interface ClusterStatusEntity {
   /** The lifecycle phase of the cluster */
@@ -126,6 +164,8 @@ export interface ClusterStatusEntity {
   /** The number of Confluent Kafka Units */
   cku?: number;
 }
+const ClusterStatusEntity = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<ClusterStatusEntity>;
+
 /** Service Connector Cluster Properties */
 export interface ClusterProperties {
   /** Metadata of the record */
@@ -135,6 +175,8 @@ export interface ClusterProperties {
   /** Specification of the cluster status */
   status?: ClusterStatusEntity;
 }
+const ClusterProperties = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<ClusterProperties>;
+
 export interface ClusterCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -151,10 +193,19 @@ export interface ClusterCreateOrUpdateRequest {
   /** Cluster Properties */
   properties?: ClusterProperties;
 }
+const ClusterCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<ClusterCreateOrUpdateRequest>;
+
 /** The type of identity that created the resource. */
 export type SystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
+const SystemDataCreatedByType = S.String;
+
 /** The type of identity that last modified the resource. */
 export type SystemDataLastModifiedByType = "User" | "Application" | "ManagedIdentity" | "Key";
+const SystemDataLastModifiedByType = S.String;
+
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface SystemData {
   /** The identity that created the resource. */
@@ -170,6 +221,8 @@ export interface SystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const SystemData = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<SystemData>;
+
 export interface ClusterCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -184,12 +237,23 @@ export interface ClusterCreateOrUpdateResponse {
   /** Cluster Properties */
   properties?: ClusterProperties;
 }
+const ClusterCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<ClusterCreateOrUpdateResponse>;
+
 /** Connector Type */
 export type ConnectorType = "SINK" | "SOURCE";
+const ConnectorType = S.String;
+
 /** Connector Class */
 export type ConnectorClass = "AZUREBLOBSOURCE" | "AZUREBLOBSINK";
+const ConnectorClass = S.String;
+
 /** Connector Status */
 export type ConnectorStatus = "PROVISIONING" | "RUNNING" | "PAUSED" | "FAILED";
+const ConnectorStatus = S.String;
+
 /** Connector Info Base properties */
 export interface ConnectorInfoBase {
   /** Connector Type */
@@ -203,6 +267,8 @@ export interface ConnectorInfoBase {
   /** Connector Status */
   connectorState?: ConnectorStatus | (string & {});
 }
+const ConnectorInfoBase = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<ConnectorInfoBase>;
+
 /** The resource properties of the Connector */
 export interface ConnectorResourceProperties {
   /** Connector Info Base */
@@ -212,6 +278,11 @@ export interface ConnectorResourceProperties {
   /** The connection information consumed by applications. */
   partnerConnectorInfo?: unknown;
 }
+const ConnectorResourceProperties = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<ConnectorResourceProperties>;
+
 export interface ConnectorCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -228,6 +299,11 @@ export interface ConnectorCreateOrUpdateRequest {
   /** The properties of the Connector */
   properties: ConnectorResourceProperties;
 }
+const ConnectorCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<ConnectorCreateOrUpdateRequest>;
+
 export interface ConnectorCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -240,6 +316,11 @@ export interface ConnectorCreateOrUpdateResponse {
   /** The properties of the Connector */
   properties: ConnectorResourceProperties;
 }
+const ConnectorCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<ConnectorCreateOrUpdateResponse>;
+
 export interface CreateAccessRoleBindingRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -254,6 +335,11 @@ export interface CreateAccessRoleBindingRequest {
   /** A CRN that specifies the scope and resource patterns necessary for the role to bind */
   crn_pattern?: string;
 }
+const CreateAccessRoleBindingRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<CreateAccessRoleBindingRequest>;
+
 /** Metadata of the data record */
 export interface MetadataEntity {
   /** Self lookup url */
@@ -267,6 +353,8 @@ export interface MetadataEntity {
   /** Deleted Date time */
   deleted_at?: string;
 }
+const MetadataEntity = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<MetadataEntity>;
+
 /** Details on principal, role name and crn pattern of a role binding */
 export interface RoleBindingRecord {
   /** The type of the resource. */
@@ -282,6 +370,8 @@ export interface RoleBindingRecord {
   /** A CRN that specifies the scope and resource patterns necessary for the role to bind */
   crn_pattern?: string;
 }
+const RoleBindingRecord = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<RoleBindingRecord>;
+
 /** Terms properties for Marketplace and Confluent. */
 export interface ConfluentAgreementProperties {
   /** Publisher identifier string. */
@@ -301,24 +391,38 @@ export interface ConfluentAgreementProperties {
   /** If any version of the terms have been accepted, otherwise false. */
   accepted?: boolean;
 }
+const ConfluentAgreementProperties = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<ConfluentAgreementProperties>;
+
 export interface CreateMarketplaceAgreementRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** Represents the properties of the resource. */
   properties?: ConfluentAgreementProperties;
 }
+const CreateMarketplaceAgreementRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<CreateMarketplaceAgreementRequest>;
+
 /** The type of identity that created the resource. */
 export type ConfluentAgreementResourceSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
+const ConfluentAgreementResourceSystemDataCreatedByType = S.String;
+
 /** The type of identity that last modified the resource. */
 export type ConfluentAgreementResourceSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
+const ConfluentAgreementResourceSystemDataLastModifiedByType = S.String;
+
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface ConfluentAgreementResourceSystemData {
   /** The identity that created the resource. */
@@ -334,6 +438,11 @@ export interface ConfluentAgreementResourceSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const ConfluentAgreementResourceSystemData = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<ConfluentAgreementResourceSystemData>;
+
 /** Agreement Terms definition */
 export interface ConfluentAgreementResource {
   /** The ARM id of the resource. */
@@ -347,10 +456,21 @@ export interface ConfluentAgreementResource {
   /** Represents the properties of the resource. */
   properties?: ConfluentAgreementProperties;
 }
+const ConfluentAgreementResource = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<ConfluentAgreementResource>;
+
 /** Resource tags. */
 export type CreateOrganizationRequestTagsMap = { [key: string]: string | undefined };
+const CreateOrganizationRequestTagsMap =
+  AccessListRoleBindingNameListRequestSearchFiltersMap as any as S.Schema<CreateOrganizationRequestTagsMap>;
+
 /** Array of Private Offer Ids */
 export type OfferDetailInputPrivateOfferIdsList = Array<string>;
+const OfferDetailInputPrivateOfferIdsList =
+  AccessRoleBindingNameListSuccessResponseDataList as any as S.Schema<OfferDetailInputPrivateOfferIdsList>;
+
 /** Confluent Offer detail */
 export interface OfferDetailInput {
   /** Publisher Id */
@@ -370,6 +490,8 @@ export interface OfferDetailInput {
   /** Array of Private Offer Ids */
   privateOfferIds?: OfferDetailInputPrivateOfferIdsList;
 }
+const OfferDetailInput = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<OfferDetailInput>;
+
 /** Subscriber detail */
 export interface UserDetail {
   /** First name */
@@ -383,11 +505,15 @@ export interface UserDetail {
   /** AAD email address */
   aadEmail?: string;
 }
+const UserDetail = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<UserDetail>;
+
 /** Link an existing Confluent organization */
 export interface LinkOrganization {
   /** User auth token */
   token: string;
 }
+const LinkOrganization = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<LinkOrganization>;
+
 /** Organization resource property */
 export interface OrganizationResourcePropertiesInput {
   /** Confluent offer detail */
@@ -397,6 +523,11 @@ export interface OrganizationResourcePropertiesInput {
   /** Link an existing Confluent organization */
   linkOrganization?: LinkOrganization;
 }
+const OrganizationResourcePropertiesInput = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<OrganizationResourcePropertiesInput>;
+
 export interface CreateOrganizationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -411,8 +542,16 @@ export interface CreateOrganizationRequest {
   /** Organization resource properties */
   properties: OrganizationResourcePropertiesInput;
 }
+const CreateOrganizationRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<CreateOrganizationRequest>;
+
 /** Resource tags. */
 export type CreateOrganizationResponseTagsMap = { [key: string]: string | undefined };
+const CreateOrganizationResponseTagsMap =
+  AccessListRoleBindingNameListRequestSearchFiltersMap as any as S.Schema<CreateOrganizationResponseTagsMap>;
+
 /** Provision states for confluent RP */
 export type ProvisionState =
   | "Accepted"
@@ -424,8 +563,13 @@ export type ProvisionState =
   | "Canceled"
   | "Deleted"
   | "NotSpecified";
+const ProvisionState = S.String;
+
 /** Array of Private Offer Ids */
 export type OfferDetailPrivateOfferIdsList = Array<string>;
+const OfferDetailPrivateOfferIdsList =
+  AccessRoleBindingNameListSuccessResponseDataList as any as S.Schema<OfferDetailPrivateOfferIdsList>;
+
 /** SaaS Offer Status for confluent RP */
 export type SaaSOfferStatus =
   | "Started"
@@ -438,6 +582,8 @@ export type SaaSOfferStatus =
   | "Failed"
   | "Unsubscribed"
   | "Updating";
+const SaaSOfferStatus = S.String;
+
 /** Confluent Offer detail */
 export interface OfferDetail {
   /** Publisher Id */
@@ -459,6 +605,8 @@ export interface OfferDetail {
   /** SaaS Offer Status */
   status?: SaaSOfferStatus;
 }
+const OfferDetail = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<OfferDetail>;
+
 /** Organization resource property */
 export interface OrganizationResourceProperties {
   /** The creation time of the resource. */
@@ -476,6 +624,11 @@ export interface OrganizationResourceProperties {
   /** Link an existing Confluent organization */
   linkOrganization?: LinkOrganization;
 }
+const OrganizationResourceProperties = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<OrganizationResourceProperties>;
+
 export interface CreateOrganizationResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -492,6 +645,11 @@ export interface CreateOrganizationResponse {
   /** Organization resource properties */
   properties: OrganizationResourceProperties;
 }
+const CreateOrganizationResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<CreateOrganizationResponse>;
+
 export interface CreateOrganizationAPIKeyRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -508,6 +666,11 @@ export interface CreateOrganizationAPIKeyRequest {
   /** Description of the API Key */
   description?: string;
 }
+const CreateOrganizationAPIKeyRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<CreateOrganizationAPIKeyRequest>;
+
 /** API Key Resource details which can be kafka cluster or schema registry cluster */
 export interface APIKeyResourceEntity {
   /** Id of the resource */
@@ -521,6 +684,8 @@ export interface APIKeyResourceEntity {
   /** Type of the owner which can be service or user account */
   kind?: string;
 }
+const APIKeyResourceEntity = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<APIKeyResourceEntity>;
+
 /** API Key Owner details which can be a user or service account */
 export interface APIKeyOwnerEntity {
   /** API Key owner id */
@@ -532,6 +697,8 @@ export interface APIKeyOwnerEntity {
   /** Type of the owner service or user account */
   kind?: string;
 }
+const APIKeyOwnerEntity = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<APIKeyOwnerEntity>;
+
 /** Spec of the API Key record */
 export interface APIKeySpecEntity {
   /** The description of the API Key */
@@ -545,6 +712,8 @@ export interface APIKeySpecEntity {
   /** Specification of the cluster */
   owner?: APIKeyOwnerEntity;
 }
+const APIKeySpecEntity = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<APIKeySpecEntity>;
+
 /** API Key Properties */
 export interface APIKeyProperties {
   /** Metadata of the record */
@@ -552,6 +721,8 @@ export interface APIKeyProperties {
   /** Specification of the API Key */
   spec?: APIKeySpecEntity;
 }
+const APIKeyProperties = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<APIKeyProperties>;
+
 /** Details API key */
 export interface APIKeyRecord {
   /** Type of api key */
@@ -561,6 +732,8 @@ export interface APIKeyRecord {
   /** API Key Properties */
   properties?: APIKeyProperties;
 }
+const APIKeyRecord = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<APIKeyRecord>;
+
 /** Metadata of the data record */
 export interface TopicMetadataEntity {
   /** Self lookup url */
@@ -568,11 +741,15 @@ export interface TopicMetadataEntity {
   /** Resource name of the record */
   resourceName?: string;
 }
+const TopicMetadataEntity = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<TopicMetadataEntity>;
+
 /** Partition Config spec of the topic record */
 export interface TopicsRelatedLink {
   /** Relationship of the topic */
   related?: string;
 }
+const TopicsRelatedLink = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<TopicsRelatedLink>;
+
 /** Topics input config */
 export interface TopicsInputConfig {
   /** Name of the topic input config */
@@ -580,8 +757,15 @@ export interface TopicsInputConfig {
   /** Value of the topic input config */
   value?: string;
 }
+const TopicsInputConfig = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<TopicsInputConfig>;
+
 /** Input Config Specification of the topic */
 export type TopicPropertiesInputConfigsList = Array<TopicsInputConfig>;
+const TopicPropertiesInputConfigsList = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<TopicPropertiesInputConfigsList>;
+
 /** Topic Properties */
 export interface TopicProperties {
   /** Type of topic */
@@ -603,6 +787,8 @@ export interface TopicProperties {
   /** Replication factor of the topic */
   replicationFactor?: string;
 }
+const TopicProperties = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<TopicProperties>;
+
 export interface CreateTopicRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -619,6 +805,8 @@ export interface CreateTopicRequest {
   /** Topic Properties */
   properties?: TopicProperties;
 }
+const CreateTopicRequest = /*@__PURE__*/ __L.at(__c5, 5) as any as S.Schema<CreateTopicRequest>;
+
 export interface CreateTopicResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -631,6 +819,8 @@ export interface CreateTopicResponse {
   /** Topic Properties */
   properties?: TopicProperties;
 }
+const CreateTopicResponse = /*@__PURE__*/ __L.at(__c5, 6) as any as S.Schema<CreateTopicResponse>;
+
 export interface DeleteAccessRoleBindingRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -641,7 +831,17 @@ export interface DeleteAccessRoleBindingRequest {
   /** Confluent Role binding id */
   roleBindingId: string;
 }
+const DeleteAccessRoleBindingRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  7,
+) as any as S.Schema<DeleteAccessRoleBindingRequest>;
+
 export interface DeleteAccessRoleBindingResponse {}
+const DeleteAccessRoleBindingResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<DeleteAccessRoleBindingResponse>;
+
 export interface DeleteClusterRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -654,7 +854,14 @@ export interface DeleteClusterRequest {
   /** Confluent kafka or schema registry cluster id */
   clusterId: string;
 }
+const DeleteClusterRequest = /*@__PURE__*/ __L.at(__c6, 1) as any as S.Schema<DeleteClusterRequest>;
+
 export interface DeleteClusterResponse {}
+const DeleteClusterResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  2,
+) as any as S.Schema<DeleteClusterResponse>;
+
 export interface DeleteConnectorRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -669,7 +876,14 @@ export interface DeleteConnectorRequest {
   /** Confluent connector name */
   connectorName: string;
 }
+const DeleteConnectorRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  3,
+) as any as S.Schema<DeleteConnectorRequest>;
+
 export interface DeleteConnectorResponse {}
+const DeleteConnectorResponse = DeleteClusterResponse as any as S.Schema<DeleteConnectorResponse>;
+
 export interface DeleteEnvironmentRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -680,7 +894,15 @@ export interface DeleteEnvironmentRequest {
   /** Confluent environment id */
   environmentId: string;
 }
+const DeleteEnvironmentRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  4,
+) as any as S.Schema<DeleteEnvironmentRequest>;
+
 export interface DeleteEnvironmentResponse {}
+const DeleteEnvironmentResponse =
+  DeleteClusterResponse as any as S.Schema<DeleteEnvironmentResponse>;
+
 export interface DeleteOrganizationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -689,7 +911,15 @@ export interface DeleteOrganizationRequest {
   /** Organization resource name */
   organizationName: string;
 }
+const DeleteOrganizationRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  5,
+) as any as S.Schema<DeleteOrganizationRequest>;
+
 export interface DeleteOrganizationResponse {}
+const DeleteOrganizationResponse =
+  DeleteClusterResponse as any as S.Schema<DeleteOrganizationResponse>;
+
 export interface DeleteOrganizationClusterAPIKeyRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -700,7 +930,17 @@ export interface DeleteOrganizationClusterAPIKeyRequest {
   /** Confluent API Key id */
   apiKeyId: string;
 }
+const DeleteOrganizationClusterAPIKeyRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  6,
+) as any as S.Schema<DeleteOrganizationClusterAPIKeyRequest>;
+
 export interface DeleteOrganizationClusterAPIKeyResponse {}
+const DeleteOrganizationClusterAPIKeyResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  7,
+) as any as S.Schema<DeleteOrganizationClusterAPIKeyResponse>;
+
 export interface DeleteTopicRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -715,12 +955,21 @@ export interface DeleteTopicRequest {
   /** Confluent kafka or schema registry topic name */
   topicName: string;
 }
+const DeleteTopicRequest = /*@__PURE__*/ __L.at(__c7, 0) as any as S.Schema<DeleteTopicRequest>;
+
 export interface DeleteTopicResponse {}
+const DeleteTopicResponse = DeleteClusterResponse as any as S.Schema<DeleteTopicResponse>;
+
 /** Stream governance configuration */
 export interface StreamGovernanceConfig {
   /** Stream governance configuration */
   package?: Package | (string & {});
 }
+const StreamGovernanceConfig = /*@__PURE__*/ __L.at(
+  __c7,
+  1,
+) as any as S.Schema<StreamGovernanceConfig>;
+
 /** Environment resource property */
 export interface EnvironmentProperties {
   /** Stream governance configuration */
@@ -728,6 +977,11 @@ export interface EnvironmentProperties {
   /** Metadata of the record */
   metadata?: SCMetadataEntity;
 }
+const EnvironmentProperties = /*@__PURE__*/ __L.at(
+  __c7,
+  2,
+) as any as S.Schema<EnvironmentProperties>;
+
 export interface EnvironmentCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -742,6 +996,11 @@ export interface EnvironmentCreateOrUpdateRequest {
   /** Environment properties */
   properties?: EnvironmentProperties;
 }
+const EnvironmentCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  3,
+) as any as S.Schema<EnvironmentCreateOrUpdateRequest>;
+
 export interface EnvironmentCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -756,6 +1015,11 @@ export interface EnvironmentCreateOrUpdateResponse {
   /** Environment properties */
   properties?: EnvironmentProperties;
 }
+const EnvironmentCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  4,
+) as any as S.Schema<EnvironmentCreateOrUpdateResponse>;
+
 export interface GetConnectorRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -770,6 +1034,8 @@ export interface GetConnectorRequest {
   /** Confluent connector name */
   connectorName: string;
 }
+const GetConnectorRequest = /*@__PURE__*/ __L.at(__c7, 5) as any as S.Schema<GetConnectorRequest>;
+
 export interface GetConnectorResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -782,6 +1048,8 @@ export interface GetConnectorResponse {
   /** The properties of the Connector */
   properties: ConnectorResourceProperties;
 }
+const GetConnectorResponse = /*@__PURE__*/ __L.at(__c7, 6) as any as S.Schema<GetConnectorResponse>;
+
 export interface GetOrganizationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -790,8 +1058,16 @@ export interface GetOrganizationRequest {
   /** Organization resource name */
   organizationName: string;
 }
+const GetOrganizationRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  7,
+) as any as S.Schema<GetOrganizationRequest>;
+
 /** Resource tags. */
 export type GetOrganizationResponseTagsMap = { [key: string]: string | undefined };
+const GetOrganizationResponseTagsMap =
+  AccessListRoleBindingNameListRequestSearchFiltersMap as any as S.Schema<GetOrganizationResponseTagsMap>;
+
 export interface GetOrganizationResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -808,6 +1084,11 @@ export interface GetOrganizationResponse {
   /** Organization resource properties */
   properties: OrganizationResourceProperties;
 }
+const GetOrganizationResponse = /*@__PURE__*/ __L.at(
+  __c8,
+  0,
+) as any as S.Schema<GetOrganizationResponse>;
+
 export interface GetOrganizationClusterAPIKeyRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -818,6 +1099,11 @@ export interface GetOrganizationClusterAPIKeyRequest {
   /** Confluent API Key id */
   apiKeyId: string;
 }
+const GetOrganizationClusterAPIKeyRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  1,
+) as any as S.Schema<GetOrganizationClusterAPIKeyRequest>;
+
 export interface GetOrganizationClusterByIdRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -830,6 +1116,11 @@ export interface GetOrganizationClusterByIdRequest {
   /** Confluent kafka or schema registry cluster id */
   clusterId: string;
 }
+const GetOrganizationClusterByIdRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  2,
+) as any as S.Schema<GetOrganizationClusterByIdRequest>;
+
 export interface GetOrganizationClusterByIdResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -844,6 +1135,9 @@ export interface GetOrganizationClusterByIdResponse {
   /** Cluster Properties */
   properties?: ClusterProperties;
 }
+const GetOrganizationClusterByIdResponse =
+  ClusterCreateOrUpdateResponse as any as S.Schema<GetOrganizationClusterByIdResponse>;
+
 export interface GetOrganizationEnvironmentByIdRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -854,6 +1148,11 @@ export interface GetOrganizationEnvironmentByIdRequest {
   /** Confluent environment id */
   environmentId: string;
 }
+const GetOrganizationEnvironmentByIdRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  3,
+) as any as S.Schema<GetOrganizationEnvironmentByIdRequest>;
+
 export interface GetOrganizationEnvironmentByIdResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -868,6 +1167,9 @@ export interface GetOrganizationEnvironmentByIdResponse {
   /** Environment properties */
   properties?: EnvironmentProperties;
 }
+const GetOrganizationEnvironmentByIdResponse =
+  EnvironmentCreateOrUpdateResponse as any as S.Schema<GetOrganizationEnvironmentByIdResponse>;
+
 export interface GetOrganizationSchemaRegistryClusterByIdRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -880,6 +1182,11 @@ export interface GetOrganizationSchemaRegistryClusterByIdRequest {
   /** Confluent connector name */
   clusterId: string;
 }
+const GetOrganizationSchemaRegistryClusterByIdRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  4,
+) as any as S.Schema<GetOrganizationSchemaRegistryClusterByIdRequest>;
+
 /** The environment associated with this object */
 export type SchemaRegistryClusterEnvironmentRegionEntity = SCClusterByokEntity;
 /** Details of schema registry cluster spec */
@@ -897,11 +1204,21 @@ export interface SchemaRegistryClusterSpecEntity {
   /** The cloud service provider */
   cloud?: string;
 }
+const SchemaRegistryClusterSpecEntity = /*@__PURE__*/ __L.at(
+  __c8,
+  5,
+) as any as S.Schema<SchemaRegistryClusterSpecEntity>;
+
 /** Status of the schema registry cluster record */
 export interface SchemaRegistryClusterStatusEntity {
   /** The lifecycle phase of the cluster */
   phase?: string;
 }
+const SchemaRegistryClusterStatusEntity = /*@__PURE__*/ __L.at(
+  __c8,
+  6,
+) as any as S.Schema<SchemaRegistryClusterStatusEntity>;
+
 /** Schema Registry Cluster Properties */
 export interface SchemaRegistryClusterProperties {
   /** Metadata of the record */
@@ -911,6 +1228,11 @@ export interface SchemaRegistryClusterProperties {
   /** Specification of the cluster status */
   status?: SchemaRegistryClusterStatusEntity;
 }
+const SchemaRegistryClusterProperties = /*@__PURE__*/ __L.at(
+  __c8,
+  7,
+) as any as S.Schema<SchemaRegistryClusterProperties>;
+
 /** Details of schema registry cluster record */
 export interface SchemaRegistryClusterRecord {
   /** Kind of the cluster */
@@ -920,6 +1242,11 @@ export interface SchemaRegistryClusterRecord {
   /** Schema Registry Cluster Properties */
   properties?: SchemaRegistryClusterProperties;
 }
+const SchemaRegistryClusterRecord = /*@__PURE__*/ __L.at(
+  __c9,
+  0,
+) as any as S.Schema<SchemaRegistryClusterRecord>;
+
 export interface GetTopicRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -934,6 +1261,8 @@ export interface GetTopicRequest {
   /** Confluent kafka or schema registry topic name */
   topicName: string;
 }
+const GetTopicRequest = /*@__PURE__*/ __L.at(__c9, 1) as any as S.Schema<GetTopicRequest>;
+
 export interface GetTopicResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -946,6 +1275,8 @@ export interface GetTopicResponse {
   /** Topic Properties */
   properties?: TopicProperties;
 }
+const GetTopicResponse = CreateTopicResponse as any as S.Schema<GetTopicResponse>;
+
 /** Details of the user being invited */
 export interface AccessInvitedUserDetails {
   /** UPN/Email of the user who is being invited */
@@ -953,6 +1284,11 @@ export interface AccessInvitedUserDetails {
   /** Auth type of the user */
   auth_type?: string;
 }
+const AccessInvitedUserDetails = /*@__PURE__*/ __L.at(
+  __c9,
+  2,
+) as any as S.Schema<AccessInvitedUserDetails>;
+
 export interface InviteAccessUserRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -969,6 +1305,11 @@ export interface InviteAccessUserRequest {
   /** Details of the user who is being invited */
   invitedUserDetails?: AccessInvitedUserDetails;
 }
+const InviteAccessUserRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  3,
+) as any as S.Schema<InviteAccessUserRequest>;
+
 /** Record of the invitation */
 export interface InvitationRecord {
   /** Type of account */
@@ -988,8 +1329,13 @@ export interface InvitationRecord {
   /** Expiration date time of the invitation */
   expires_at?: string;
 }
+const InvitationRecord = /*@__PURE__*/ __L.at(__c9, 4) as any as S.Schema<InvitationRecord>;
+
 /** Search filters for the request */
 export type ListAccessClustersRequestSearchFiltersMap = { [key: string]: string | undefined };
+const ListAccessClustersRequestSearchFiltersMap =
+  AccessListRoleBindingNameListRequestSearchFiltersMap as any as S.Schema<ListAccessClustersRequestSearchFiltersMap>;
+
 export interface ListAccessClustersRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1000,6 +1346,11 @@ export interface ListAccessClustersRequest {
   /** Search filters for the request */
   searchFilters?: ListAccessClustersRequestSearchFiltersMap;
 }
+const ListAccessClustersRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  5,
+) as any as S.Schema<ListAccessClustersRequest>;
+
 /** The environment to which cluster belongs */
 export interface ClusterEnvironmentEntity {
   /** ID of the referred resource */
@@ -1011,6 +1362,11 @@ export interface ClusterEnvironmentEntity {
   /** CRN reference to the referred resource */
   resource_name?: string;
 }
+const ClusterEnvironmentEntity = /*@__PURE__*/ __L.at(
+  __c9,
+  6,
+) as any as S.Schema<ClusterEnvironmentEntity>;
+
 /** The network associated with this object */
 export type ClusterNetworkEntity = ClusterEnvironmentEntity;
 /** The network associated with this object */
@@ -1022,6 +1378,8 @@ export interface ClusterByokEntity {
   /** CRN reference to the referred resource */
   resource_name?: string;
 }
+const ClusterByokEntity = /*@__PURE__*/ __L.at(__c9, 7) as any as S.Schema<ClusterByokEntity>;
+
 /** Spec of the cluster record */
 export interface ClusterSpecEntity {
   /** The name of the cluster */
@@ -1049,6 +1407,8 @@ export interface ClusterSpecEntity {
   /** Specification of the cluster */
   byok?: ClusterByokEntity;
 }
+const ClusterSpecEntity = /*@__PURE__*/ __L.at(__c10, 0) as any as S.Schema<ClusterSpecEntity>;
+
 /** Details of cluster record */
 export interface ClusterRecord {
   /** Type of cluster */
@@ -1064,8 +1424,15 @@ export interface ClusterRecord {
   /** Specification of the cluster */
   status?: ClusterStatusEntity;
 }
+const ClusterRecord = /*@__PURE__*/ __L.at(__c10, 1) as any as S.Schema<ClusterRecord>;
+
 /** List of clusters */
 export type AccessListClusterSuccessResponseDataList = Array<ClusterRecord>;
+const AccessListClusterSuccessResponseDataList = /*@__PURE__*/ __L.at(
+  __c10,
+  2,
+) as any as S.Schema<AccessListClusterSuccessResponseDataList>;
+
 /** Details of the clusters returned on successful response */
 export interface AccessListClusterSuccessResponse {
   /** Type of response */
@@ -1075,8 +1442,16 @@ export interface AccessListClusterSuccessResponse {
   /** List of clusters */
   data?: AccessListClusterSuccessResponseDataList;
 }
+const AccessListClusterSuccessResponse = /*@__PURE__*/ __L.at(
+  __c10,
+  3,
+) as any as S.Schema<AccessListClusterSuccessResponse>;
+
 /** Search filters for the request */
 export type ListAccessEnvironmentsRequestSearchFiltersMap = { [key: string]: string | undefined };
+const ListAccessEnvironmentsRequestSearchFiltersMap =
+  AccessListRoleBindingNameListRequestSearchFiltersMap as any as S.Schema<ListAccessEnvironmentsRequestSearchFiltersMap>;
+
 export interface ListAccessEnvironmentsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1087,6 +1462,11 @@ export interface ListAccessEnvironmentsRequest {
   /** Search filters for the request */
   searchFilters?: ListAccessEnvironmentsRequestSearchFiltersMap;
 }
+const ListAccessEnvironmentsRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  4,
+) as any as S.Schema<ListAccessEnvironmentsRequest>;
+
 /** Details about environment name, metadata and environment id of an environment */
 export interface EnvironmentRecord {
   /** Type of environment */
@@ -1098,8 +1478,15 @@ export interface EnvironmentRecord {
   /** Display name of the user */
   display_name?: string;
 }
+const EnvironmentRecord = /*@__PURE__*/ __L.at(__c10, 5) as any as S.Schema<EnvironmentRecord>;
+
 /** Environment list data */
 export type AccessListEnvironmentsSuccessResponseDataList = Array<EnvironmentRecord>;
+const AccessListEnvironmentsSuccessResponseDataList = /*@__PURE__*/ __L.at(
+  __c10,
+  6,
+) as any as S.Schema<AccessListEnvironmentsSuccessResponseDataList>;
+
 /** Details of the environments returned on successful response */
 export interface AccessListEnvironmentsSuccessResponse {
   /** Type of response */
@@ -1109,8 +1496,16 @@ export interface AccessListEnvironmentsSuccessResponse {
   /** Environment list data */
   data?: AccessListEnvironmentsSuccessResponseDataList;
 }
+const AccessListEnvironmentsSuccessResponse = /*@__PURE__*/ __L.at(
+  __c10,
+  7,
+) as any as S.Schema<AccessListEnvironmentsSuccessResponse>;
+
 /** Search filters for the request */
 export type ListAccessInvitationsRequestSearchFiltersMap = { [key: string]: string | undefined };
+const ListAccessInvitationsRequestSearchFiltersMap =
+  AccessListRoleBindingNameListRequestSearchFiltersMap as any as S.Schema<ListAccessInvitationsRequestSearchFiltersMap>;
+
 export interface ListAccessInvitationsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1121,8 +1516,18 @@ export interface ListAccessInvitationsRequest {
   /** Search filters for the request */
   searchFilters?: ListAccessInvitationsRequestSearchFiltersMap;
 }
+const ListAccessInvitationsRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  0,
+) as any as S.Schema<ListAccessInvitationsRequest>;
+
 /** Data of the invitations list */
 export type AccessListInvitationsSuccessResponseDataList = Array<InvitationRecord>;
+const AccessListInvitationsSuccessResponseDataList = /*@__PURE__*/ __L.at(
+  __c11,
+  1,
+) as any as S.Schema<AccessListInvitationsSuccessResponseDataList>;
+
 /** List invitations success response */
 export interface AccessListInvitationsSuccessResponse {
   /** Type of response */
@@ -1132,8 +1537,16 @@ export interface AccessListInvitationsSuccessResponse {
   /** Data of the invitations list */
   data?: AccessListInvitationsSuccessResponseDataList;
 }
+const AccessListInvitationsSuccessResponse = /*@__PURE__*/ __L.at(
+  __c11,
+  2,
+) as any as S.Schema<AccessListInvitationsSuccessResponse>;
+
 /** Search filters for the request */
 export type ListAccessRoleBindingsRequestSearchFiltersMap = { [key: string]: string | undefined };
+const ListAccessRoleBindingsRequestSearchFiltersMap =
+  AccessListRoleBindingNameListRequestSearchFiltersMap as any as S.Schema<ListAccessRoleBindingsRequestSearchFiltersMap>;
+
 export interface ListAccessRoleBindingsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1144,8 +1557,18 @@ export interface ListAccessRoleBindingsRequest {
   /** Search filters for the request */
   searchFilters?: ListAccessRoleBindingsRequestSearchFiltersMap;
 }
+const ListAccessRoleBindingsRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  3,
+) as any as S.Schema<ListAccessRoleBindingsRequest>;
+
 /** List of role binding */
 export type AccessListRoleBindingsSuccessResponseDataList = Array<RoleBindingRecord>;
+const AccessListRoleBindingsSuccessResponseDataList = /*@__PURE__*/ __L.at(
+  __c11,
+  4,
+) as any as S.Schema<AccessListRoleBindingsSuccessResponseDataList>;
+
 /** Details of the role bindings returned on successful response */
 export interface AccessListRoleBindingsSuccessResponse {
   /** Type of response */
@@ -1155,10 +1578,18 @@ export interface AccessListRoleBindingsSuccessResponse {
   /** List of role binding */
   data?: AccessListRoleBindingsSuccessResponseDataList;
 }
+const AccessListRoleBindingsSuccessResponse = /*@__PURE__*/ __L.at(
+  __c11,
+  5,
+) as any as S.Schema<AccessListRoleBindingsSuccessResponse>;
+
 /** Search filters for the request */
 export type ListAccessServiceAccountsRequestSearchFiltersMap = {
   [key: string]: string | undefined;
 };
+const ListAccessServiceAccountsRequestSearchFiltersMap =
+  AccessListRoleBindingNameListRequestSearchFiltersMap as any as S.Schema<ListAccessServiceAccountsRequestSearchFiltersMap>;
+
 export interface ListAccessServiceAccountsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1169,6 +1600,11 @@ export interface ListAccessServiceAccountsRequest {
   /** Search filters for the request */
   searchFilters?: ListAccessServiceAccountsRequestSearchFiltersMap;
 }
+const ListAccessServiceAccountsRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  6,
+) as any as S.Schema<ListAccessServiceAccountsRequest>;
+
 /** Record of the service account */
 export interface ServiceAccountRecord {
   /** Type of account */
@@ -1182,8 +1618,18 @@ export interface ServiceAccountRecord {
   /** Description of the service account */
   description?: string;
 }
+const ServiceAccountRecord = /*@__PURE__*/ __L.at(
+  __c11,
+  7,
+) as any as S.Schema<ServiceAccountRecord>;
+
 /** Data of the service accounts list */
 export type AccessListServiceAccountsSuccessResponseDataList = Array<ServiceAccountRecord>;
+const AccessListServiceAccountsSuccessResponseDataList = /*@__PURE__*/ __L.at(
+  __c12,
+  0,
+) as any as S.Schema<AccessListServiceAccountsSuccessResponseDataList>;
+
 /** List service accounts success response */
 export interface AccessListServiceAccountsSuccessResponse {
   /** Type of response */
@@ -1193,8 +1639,16 @@ export interface AccessListServiceAccountsSuccessResponse {
   /** Data of the service accounts list */
   data?: AccessListServiceAccountsSuccessResponseDataList;
 }
+const AccessListServiceAccountsSuccessResponse = /*@__PURE__*/ __L.at(
+  __c12,
+  1,
+) as any as S.Schema<AccessListServiceAccountsSuccessResponse>;
+
 /** Search filters for the request */
 export type ListAccessUsersRequestSearchFiltersMap = { [key: string]: string | undefined };
+const ListAccessUsersRequestSearchFiltersMap =
+  AccessListRoleBindingNameListRequestSearchFiltersMap as any as S.Schema<ListAccessUsersRequestSearchFiltersMap>;
+
 export interface ListAccessUsersRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1205,6 +1659,11 @@ export interface ListAccessUsersRequest {
   /** Search filters for the request */
   searchFilters?: ListAccessUsersRequestSearchFiltersMap;
 }
+const ListAccessUsersRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  2,
+) as any as S.Schema<ListAccessUsersRequest>;
+
 /** Record of the user */
 export interface UserRecord {
   /** Type of account */
@@ -1220,8 +1679,15 @@ export interface UserRecord {
   /** Auth type of the user */
   auth_type?: string;
 }
+const UserRecord = /*@__PURE__*/ __L.at(__c12, 3) as any as S.Schema<UserRecord>;
+
 /** Data of the users list */
 export type AccessListUsersSuccessResponseDataList = Array<UserRecord>;
+const AccessListUsersSuccessResponseDataList = /*@__PURE__*/ __L.at(
+  __c12,
+  4,
+) as any as S.Schema<AccessListUsersSuccessResponseDataList>;
+
 /** List users success response */
 export interface AccessListUsersSuccessResponse {
   /** Type of response */
@@ -1231,6 +1697,11 @@ export interface AccessListUsersSuccessResponse {
   /** Data of the users list */
   data?: AccessListUsersSuccessResponseDataList;
 }
+const AccessListUsersSuccessResponse = /*@__PURE__*/ __L.at(
+  __c12,
+  5,
+) as any as S.Schema<AccessListUsersSuccessResponse>;
+
 export interface ListConnectorRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1247,6 +1718,11 @@ export interface ListConnectorRequest {
   /** An opaque pagination token to fetch the next set of records */
   pageToken?: string;
 }
+const ListConnectorRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  6,
+) as any as S.Schema<ListConnectorRequest>;
+
 /** Details of connector record */
 export interface ConnectorResource {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -1260,8 +1736,15 @@ export interface ConnectorResource {
   /** The properties of the Connector */
   properties: ConnectorResourceProperties;
 }
+const ConnectorResource = GetConnectorResponse as any as S.Schema<ConnectorResource>;
+
 /** The ConnectorResource items on this page */
 export type ListConnectorsSuccessResponseValueList = Array<ConnectorResource>;
+const ListConnectorsSuccessResponseValueList = /*@__PURE__*/ __L.at(
+  __c12,
+  7,
+) as any as S.Schema<ListConnectorsSuccessResponseValueList>;
+
 /** Result of GET request to list connectors in the cluster of a confluent organization */
 export interface ListConnectorsSuccessResponse {
   /** The ConnectorResource items on this page */
@@ -1269,12 +1752,27 @@ export interface ListConnectorsSuccessResponse {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const ListConnectorsSuccessResponse = /*@__PURE__*/ __L.at(
+  __c13,
+  0,
+) as any as S.Schema<ListConnectorsSuccessResponse>;
+
 export interface ListMarketplaceAgreementsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
+const ListMarketplaceAgreementsRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  1,
+) as any as S.Schema<ListMarketplaceAgreementsRequest>;
+
 /** The ConfluentAgreementResource items on this page */
 export type ConfluentAgreementResourceListResponseValueList = Array<ConfluentAgreementResource>;
+const ConfluentAgreementResourceListResponseValueList = /*@__PURE__*/ __L.at(
+  __c13,
+  2,
+) as any as S.Schema<ConfluentAgreementResourceListResponseValueList>;
+
 /** Response of a list operation. */
 export interface ConfluentAgreementResourceListResponse {
   /** The ConfluentAgreementResource items on this page */
@@ -1282,12 +1780,22 @@ export interface ConfluentAgreementResourceListResponse {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const ConfluentAgreementResourceListResponse = /*@__PURE__*/ __L.at(
+  __c13,
+  3,
+) as any as S.Schema<ConfluentAgreementResourceListResponse>;
+
 export interface ListOrganizationByResourceGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
+const ListOrganizationByResourceGroupRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  4,
+) as any as S.Schema<ListOrganizationByResourceGroupRequest>;
+
 /** Resource tags. */
 export type OrganizationResourceTagsMap = { [key: string]: string | undefined };
 /** Organization resource. */
@@ -1307,8 +1815,15 @@ export interface OrganizationResource {
   /** Organization resource properties */
   properties: OrganizationResourceProperties;
 }
+const OrganizationResource = GetOrganizationResponse as any as S.Schema<OrganizationResource>;
+
 /** The OrganizationResource items on this page */
 export type OrganizationResourceListResultValueList = Array<OrganizationResource>;
+const OrganizationResourceListResultValueList = /*@__PURE__*/ __L.at(
+  __c13,
+  5,
+) as any as S.Schema<OrganizationResourceListResultValueList>;
+
 /** The response of a OrganizationResource list operation. */
 export interface OrganizationResourceListResult {
   /** The OrganizationResource items on this page */
@@ -1316,10 +1831,20 @@ export interface OrganizationResourceListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const OrganizationResourceListResult = /*@__PURE__*/ __L.at(
+  __c13,
+  6,
+) as any as S.Schema<OrganizationResourceListResult>;
+
 export interface ListOrganizationBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
+const ListOrganizationBySubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  7,
+) as any as S.Schema<ListOrganizationBySubscriptionRequest>;
+
 export interface ListOrganizationClustersRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1334,6 +1859,11 @@ export interface ListOrganizationClustersRequest {
   /** An opaque pagination token to fetch the next set of records */
   pageToken?: string;
 }
+const ListOrganizationClustersRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  0,
+) as any as S.Schema<ListOrganizationClustersRequest>;
+
 /** Details of cluster record */
 export interface SCClusterRecord {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -1349,8 +1879,15 @@ export interface SCClusterRecord {
   /** Cluster Properties */
   properties?: ClusterProperties;
 }
+const SCClusterRecord = /*@__PURE__*/ __L.at(__c14, 1) as any as S.Schema<SCClusterRecord>;
+
 /** The SCClusterRecord items on this page */
 export type ListClustersSuccessResponseValueList = Array<SCClusterRecord>;
+const ListClustersSuccessResponseValueList = /*@__PURE__*/ __L.at(
+  __c14,
+  2,
+) as any as S.Schema<ListClustersSuccessResponseValueList>;
+
 /** Result of GET request to list clusters in the environment of a confluent organization */
 export interface ListClustersSuccessResponse {
   /** The SCClusterRecord items on this page */
@@ -1358,6 +1895,11 @@ export interface ListClustersSuccessResponse {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const ListClustersSuccessResponse = /*@__PURE__*/ __L.at(
+  __c14,
+  3,
+) as any as S.Schema<ListClustersSuccessResponse>;
+
 export interface ListOrganizationEnvironmentsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1370,6 +1912,11 @@ export interface ListOrganizationEnvironmentsRequest {
   /** An opaque pagination token to fetch the next set of records */
   pageToken?: string;
 }
+const ListOrganizationEnvironmentsRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  4,
+) as any as S.Schema<ListOrganizationEnvironmentsRequest>;
+
 /** Details about environment name, metadata and environment id of an environment */
 export interface SCEnvironmentRecord {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -1385,8 +1932,15 @@ export interface SCEnvironmentRecord {
   /** Environment properties */
   properties?: EnvironmentProperties;
 }
+const SCEnvironmentRecord = /*@__PURE__*/ __L.at(__c14, 5) as any as S.Schema<SCEnvironmentRecord>;
+
 /** The SCEnvironmentRecord items on this page */
 export type GetEnvironmentsResponseValueList = Array<SCEnvironmentRecord>;
+const GetEnvironmentsResponseValueList = /*@__PURE__*/ __L.at(
+  __c14,
+  6,
+) as any as S.Schema<GetEnvironmentsResponseValueList>;
+
 /** Result of GET request to list Confluent operations. */
 export interface GetEnvironmentsResponse {
   /** The SCEnvironmentRecord items on this page */
@@ -1394,7 +1948,17 @@ export interface GetEnvironmentsResponse {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const GetEnvironmentsResponse = /*@__PURE__*/ __L.at(
+  __c14,
+  7,
+) as any as S.Schema<GetEnvironmentsResponse>;
+
 export interface ListOrganizationOperationsRequest {}
+const ListOrganizationOperationsRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  0,
+) as any as S.Schema<ListOrganizationOperationsRequest>;
+
 /** The object that represents the operation. */
 export interface OperationDisplay {
   /** Service provider: Microsoft.Confluent */
@@ -1406,6 +1970,8 @@ export interface OperationDisplay {
   /** Description of the operation, e.g., 'Write confluent'. */
   description?: string;
 }
+const OperationDisplay = /*@__PURE__*/ __L.at(__c15, 1) as any as S.Schema<OperationDisplay>;
+
 /** An Confluent REST API operation. */
 export interface OperationResult {
   /** Operation name: {provider}/{resource}/{operation} */
@@ -1415,8 +1981,15 @@ export interface OperationResult {
   /** Indicates whether the operation is a data action */
   isDataAction?: boolean;
 }
+const OperationResult = /*@__PURE__*/ __L.at(__c15, 2) as any as S.Schema<OperationResult>;
+
 /** List of Confluent operations supported by the Microsoft.Confluent provider. */
 export type OperationListResultValueList = Array<OperationResult>;
+const OperationListResultValueList = /*@__PURE__*/ __L.at(
+  __c15,
+  3,
+) as any as S.Schema<OperationListResultValueList>;
+
 /** Result of GET request to list Confluent operations. */
 export interface OperationListResult {
   /** List of Confluent operations supported by the Microsoft.Confluent provider. */
@@ -1424,8 +1997,13 @@ export interface OperationListResult {
   /** URL to get the next set of operation list results if there are any. */
   nextLink?: string;
 }
+const OperationListResult = /*@__PURE__*/ __L.at(__c15, 4) as any as S.Schema<OperationListResult>;
+
 /** Search filters for the request */
 export type ListOrganizationRegionsRequestSearchFiltersMap = { [key: string]: string | undefined };
+const ListOrganizationRegionsRequestSearchFiltersMap =
+  AccessListRoleBindingNameListRequestSearchFiltersMap as any as S.Schema<ListOrganizationRegionsRequestSearchFiltersMap>;
+
 export interface ListOrganizationRegionsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1436,7 +2014,15 @@ export interface ListOrganizationRegionsRequest {
   /** Search filters for the request */
   searchFilters?: ListOrganizationRegionsRequestSearchFiltersMap;
 }
+const ListOrganizationRegionsRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  5,
+) as any as S.Schema<ListOrganizationRegionsRequest>;
+
 export type RegionSpecEntityPackagesList = Array<string>;
+const RegionSpecEntityPackagesList =
+  AccessRoleBindingNameListSuccessResponseDataList as any as S.Schema<RegionSpecEntityPackagesList>;
+
 /** Region spec details */
 export interface RegionSpecEntity {
   /** Display Name of the region */
@@ -1447,6 +2033,8 @@ export interface RegionSpecEntity {
   regionName?: string;
   packages?: RegionSpecEntityPackagesList;
 }
+const RegionSpecEntity = /*@__PURE__*/ __L.at(__c15, 6) as any as S.Schema<RegionSpecEntity>;
+
 /** Region Properties */
 export interface RegionProperties {
   /** Metadata of the record */
@@ -1454,6 +2042,8 @@ export interface RegionProperties {
   /** Specification of the region */
   spec?: RegionSpecEntity;
 }
+const RegionProperties = /*@__PURE__*/ __L.at(__c15, 7) as any as S.Schema<RegionProperties>;
+
 /** Details of region record */
 export interface RegionRecord {
   /** Kind of the cluster */
@@ -1463,13 +2053,25 @@ export interface RegionRecord {
   /** Region Properties */
   properties?: RegionProperties;
 }
+const RegionRecord = /*@__PURE__*/ __L.at(__c16, 0) as any as S.Schema<RegionRecord>;
+
 /** List of regions supported by confluent */
 export type ListRegionsSuccessResponseDataList = Array<RegionRecord>;
+const ListRegionsSuccessResponseDataList = /*@__PURE__*/ __L.at(
+  __c16,
+  1,
+) as any as S.Schema<ListRegionsSuccessResponseDataList>;
+
 /** Result of POST request to list regions supported by confluent */
 export interface ListRegionsSuccessResponse {
   /** List of regions supported by confluent */
   data?: ListRegionsSuccessResponseDataList;
 }
+const ListRegionsSuccessResponse = /*@__PURE__*/ __L.at(
+  __c16,
+  2,
+) as any as S.Schema<ListRegionsSuccessResponse>;
+
 export interface ListOrganizationSchemaRegistryClustersRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1484,8 +2086,18 @@ export interface ListOrganizationSchemaRegistryClustersRequest {
   /** An opaque pagination token to fetch the next set of records */
   pageToken?: string;
 }
+const ListOrganizationSchemaRegistryClustersRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  3,
+) as any as S.Schema<ListOrganizationSchemaRegistryClustersRequest>;
+
 /** The SchemaRegistryClusterRecord items on this page */
 export type ListSchemaRegistryClustersResponseValueList = Array<SchemaRegistryClusterRecord>;
+const ListSchemaRegistryClustersResponseValueList = /*@__PURE__*/ __L.at(
+  __c16,
+  4,
+) as any as S.Schema<ListSchemaRegistryClustersResponseValueList>;
+
 /** Result of GET request to list schema registry clusters in the environment of a confluent organization */
 export interface ListSchemaRegistryClustersResponse {
   /** The SchemaRegistryClusterRecord items on this page */
@@ -1493,6 +2105,11 @@ export interface ListSchemaRegistryClustersResponse {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const ListSchemaRegistryClustersResponse = /*@__PURE__*/ __L.at(
+  __c16,
+  5,
+) as any as S.Schema<ListSchemaRegistryClustersResponse>;
+
 export interface ListTopicsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1509,6 +2126,8 @@ export interface ListTopicsRequest {
   /** An opaque pagination token to fetch the next set of records */
   pageToken?: string;
 }
+const ListTopicsRequest = /*@__PURE__*/ __L.at(__c16, 6) as any as S.Schema<ListTopicsRequest>;
+
 /** Details of topic record */
 export interface TopicRecord {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -1522,8 +2141,15 @@ export interface TopicRecord {
   /** Topic Properties */
   properties?: TopicProperties;
 }
+const TopicRecord = CreateTopicResponse as any as S.Schema<TopicRecord>;
+
 /** The TopicRecord items on this page */
 export type ListTopicsSuccessResponseValueList = Array<TopicRecord>;
+const ListTopicsSuccessResponseValueList = /*@__PURE__*/ __L.at(
+  __c16,
+  7,
+) as any as S.Schema<ListTopicsSuccessResponseValueList>;
+
 /** Result of GET request to list topics in the cluster of a confluent organization */
 export interface ListTopicsSuccessResponse {
   /** The TopicRecord items on this page */
@@ -1531,8 +2157,16 @@ export interface ListTopicsSuccessResponse {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const ListTopicsSuccessResponse = /*@__PURE__*/ __L.at(
+  __c17,
+  0,
+) as any as S.Schema<ListTopicsSuccessResponse>;
+
 /** ARM resource tags */
 export type UpdateOrganizationRequestTagsMap = { [key: string]: string | undefined };
+const UpdateOrganizationRequestTagsMap =
+  AccessListRoleBindingNameListRequestSearchFiltersMap as any as S.Schema<UpdateOrganizationRequestTagsMap>;
+
 export interface UpdateOrganizationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1543,6 +2177,11 @@ export interface UpdateOrganizationRequest {
   /** ARM resource tags */
   tags?: UpdateOrganizationRequestTagsMap;
 }
+const UpdateOrganizationRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  1,
+) as any as S.Schema<UpdateOrganizationRequest>;
+
 /** Resource tags. */
 export type UpdateOrganizationResponseTagsMap = { [key: string]: string | undefined };
 export interface UpdateOrganizationResponse {
@@ -1561,8 +2200,14 @@ export interface UpdateOrganizationResponse {
   /** Organization resource properties */
   properties: OrganizationResourceProperties;
 }
+const UpdateOrganizationResponse =
+  CreateOrganizationResponse as any as S.Schema<UpdateOrganizationResponse>;
+
 /** Resource tags. */
 export type ValidateValidationOrganizationRequestTagsMap = { [key: string]: string | undefined };
+const ValidateValidationOrganizationRequestTagsMap =
+  AccessListRoleBindingNameListRequestSearchFiltersMap as any as S.Schema<ValidateValidationOrganizationRequestTagsMap>;
+
 export interface ValidateValidationOrganizationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1577,6 +2222,11 @@ export interface ValidateValidationOrganizationRequest {
   /** Organization resource properties */
   properties: OrganizationResourcePropertiesInput;
 }
+const ValidateValidationOrganizationRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  2,
+) as any as S.Schema<ValidateValidationOrganizationRequest>;
+
 /** Resource tags. */
 export type ValidateValidationOrganizationResponseTagsMap = { [key: string]: string | undefined };
 export interface ValidateValidationOrganizationResponse {
@@ -1595,8 +2245,14 @@ export interface ValidateValidationOrganizationResponse {
   /** Organization resource properties */
   properties: OrganizationResourceProperties;
 }
+const ValidateValidationOrganizationResponse =
+  CreateOrganizationResponse as any as S.Schema<ValidateValidationOrganizationResponse>;
+
 /** Resource tags. */
 export type ValidateValidationOrganizationV2RequestTagsMap = { [key: string]: string | undefined };
+const ValidateValidationOrganizationV2RequestTagsMap =
+  AccessListRoleBindingNameListRequestSearchFiltersMap as any as S.Schema<ValidateValidationOrganizationV2RequestTagsMap>;
+
 export interface ValidateValidationOrganizationV2Request {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1611,13 +2267,23 @@ export interface ValidateValidationOrganizationV2Request {
   /** Organization resource properties */
   properties: OrganizationResourcePropertiesInput;
 }
+const ValidateValidationOrganizationV2Request = /*@__PURE__*/ __L.at(
+  __c17,
+  3,
+) as any as S.Schema<ValidateValidationOrganizationV2Request>;
+
 /** Info from the response */
 export type ValidationResponseInfoMap = { [key: string]: string | undefined };
+const ValidationResponseInfoMap =
+  AccessListRoleBindingNameListRequestSearchFiltersMap as any as S.Schema<ValidationResponseInfoMap>;
+
 /** Validation response from the provider */
 export interface ValidationResponse {
   /** Info from the response */
   info?: ValidationResponseInfoMap;
 }
+const ValidationResponse = /*@__PURE__*/ __L.at(__c17, 4) as any as S.Schema<ValidationResponse>;
+
 export type AccessListRoleBindingNameListError = AzureOpError;
 /** Organization role bindings */
 export const AccessListRoleBindingNameList: API.OperationMethod<
@@ -1626,8 +2292,8 @@ export const AccessListRoleBindingNameList: API.OperationMethod<
   AccessListRoleBindingNameListError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1) as any as S.Schema<AccessListRoleBindingNameListRequest>,
-  output: __S(4) as any as S.Schema<AccessRoleBindingNameListSuccessResponse>,
+  input: AccessListRoleBindingNameListRequest,
+  output: AccessRoleBindingNameListSuccessResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1641,8 +2307,8 @@ export const ClusterCreateOrUpdate: API.OperationMethod<
   ClusterCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12) as any as S.Schema<ClusterCreateOrUpdateRequest>,
-  output: __S(14) as any as S.Schema<ClusterCreateOrUpdateResponse>,
+  input: ClusterCreateOrUpdateRequest,
+  output: ClusterCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1656,8 +2322,8 @@ export const ConnectorCreateOrUpdate: API.OperationMethod<
   ConnectorCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17) as any as S.Schema<ConnectorCreateOrUpdateRequest>,
-  output: __S(18) as any as S.Schema<ConnectorCreateOrUpdateResponse>,
+  input: ConnectorCreateOrUpdateRequest,
+  output: ConnectorCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1671,8 +2337,8 @@ export const CreateAccessRoleBinding: API.OperationMethod<
   CreateAccessRoleBindingError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19) as any as S.Schema<CreateAccessRoleBindingRequest>,
-  output: __S(21) as any as S.Schema<RoleBindingRecord>,
+  input: CreateAccessRoleBindingRequest,
+  output: RoleBindingRecord,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1686,8 +2352,8 @@ export const CreateMarketplaceAgreement: API.OperationMethod<
   CreateMarketplaceAgreementError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23) as any as S.Schema<CreateMarketplaceAgreementRequest>,
-  output: __S(25) as any as S.Schema<ConfluentAgreementResource>,
+  input: CreateMarketplaceAgreementRequest,
+  output: ConfluentAgreementResource,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1701,8 +2367,8 @@ export const CreateOrganization: API.OperationMethod<
   CreateOrganizationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30) as any as S.Schema<CreateOrganizationRequest>,
-  output: __S(33) as any as S.Schema<CreateOrganizationResponse>,
+  input: CreateOrganizationRequest,
+  output: CreateOrganizationResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1716,8 +2382,8 @@ export const CreateOrganizationAPIKey: API.OperationMethod<
   CreateOrganizationAPIKeyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34) as any as S.Schema<CreateOrganizationAPIKeyRequest>,
-  output: __S(39) as any as S.Schema<APIKeyRecord>,
+  input: CreateOrganizationAPIKeyRequest,
+  output: APIKeyRecord,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1731,8 +2397,8 @@ export const CreateTopic: API.OperationMethod<
   CreateTopicError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45) as any as S.Schema<CreateTopicRequest>,
-  output: __S(46) as any as S.Schema<CreateTopicResponse>,
+  input: CreateTopicRequest,
+  output: CreateTopicResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1746,8 +2412,8 @@ export const DeleteAccessRoleBinding: API.OperationMethod<
   DeleteAccessRoleBindingError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47) as any as S.Schema<DeleteAccessRoleBindingRequest>,
-  output: __S(48) as any as S.Schema<DeleteAccessRoleBindingResponse>,
+  input: DeleteAccessRoleBindingRequest,
+  output: DeleteAccessRoleBindingResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1761,8 +2427,8 @@ export const DeleteCluster: API.OperationMethod<
   DeleteClusterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49) as any as S.Schema<DeleteClusterRequest>,
-  output: __S(50) as any as S.Schema<DeleteClusterResponse>,
+  input: DeleteClusterRequest,
+  output: DeleteClusterResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1776,8 +2442,8 @@ export const DeleteConnector: API.OperationMethod<
   DeleteConnectorError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(51) as any as S.Schema<DeleteConnectorRequest>,
-  output: __S(50) as any as S.Schema<DeleteConnectorResponse>,
+  input: DeleteConnectorRequest,
+  output: DeleteConnectorResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1791,8 +2457,8 @@ export const DeleteEnvironment: API.OperationMethod<
   DeleteEnvironmentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(52) as any as S.Schema<DeleteEnvironmentRequest>,
-  output: __S(50) as any as S.Schema<DeleteEnvironmentResponse>,
+  input: DeleteEnvironmentRequest,
+  output: DeleteEnvironmentResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1806,8 +2472,8 @@ export const DeleteOrganization: API.OperationMethod<
   DeleteOrganizationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(53) as any as S.Schema<DeleteOrganizationRequest>,
-  output: __S(50) as any as S.Schema<DeleteOrganizationResponse>,
+  input: DeleteOrganizationRequest,
+  output: DeleteOrganizationResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1821,8 +2487,8 @@ export const DeleteOrganizationClusterAPIKey: API.OperationMethod<
   DeleteOrganizationClusterAPIKeyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(54) as any as S.Schema<DeleteOrganizationClusterAPIKeyRequest>,
-  output: __S(55) as any as S.Schema<DeleteOrganizationClusterAPIKeyResponse>,
+  input: DeleteOrganizationClusterAPIKeyRequest,
+  output: DeleteOrganizationClusterAPIKeyResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1836,8 +2502,8 @@ export const DeleteTopic: API.OperationMethod<
   DeleteTopicError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56) as any as S.Schema<DeleteTopicRequest>,
-  output: __S(50) as any as S.Schema<DeleteTopicResponse>,
+  input: DeleteTopicRequest,
+  output: DeleteTopicResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1851,8 +2517,8 @@ export const EnvironmentCreateOrUpdate: API.OperationMethod<
   EnvironmentCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(59) as any as S.Schema<EnvironmentCreateOrUpdateRequest>,
-  output: __S(60) as any as S.Schema<EnvironmentCreateOrUpdateResponse>,
+  input: EnvironmentCreateOrUpdateRequest,
+  output: EnvironmentCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1866,8 +2532,8 @@ export const GetConnector: API.OperationMethod<
   GetConnectorError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(61) as any as S.Schema<GetConnectorRequest>,
-  output: __S(62) as any as S.Schema<GetConnectorResponse>,
+  input: GetConnectorRequest,
+  output: GetConnectorResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1881,8 +2547,8 @@ export const GetOrganization: API.OperationMethod<
   GetOrganizationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(63) as any as S.Schema<GetOrganizationRequest>,
-  output: __S(64) as any as S.Schema<GetOrganizationResponse>,
+  input: GetOrganizationRequest,
+  output: GetOrganizationResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1896,8 +2562,8 @@ export const GetOrganizationClusterAPIKey: API.OperationMethod<
   GetOrganizationClusterAPIKeyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65) as any as S.Schema<GetOrganizationClusterAPIKeyRequest>,
-  output: __S(39) as any as S.Schema<APIKeyRecord>,
+  input: GetOrganizationClusterAPIKeyRequest,
+  output: APIKeyRecord,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1911,8 +2577,8 @@ export const GetOrganizationClusterById: API.OperationMethod<
   GetOrganizationClusterByIdError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(66) as any as S.Schema<GetOrganizationClusterByIdRequest>,
-  output: __S(14) as any as S.Schema<GetOrganizationClusterByIdResponse>,
+  input: GetOrganizationClusterByIdRequest,
+  output: GetOrganizationClusterByIdResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1926,8 +2592,8 @@ export const GetOrganizationEnvironmentById: API.OperationMethod<
   GetOrganizationEnvironmentByIdError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(67) as any as S.Schema<GetOrganizationEnvironmentByIdRequest>,
-  output: __S(60) as any as S.Schema<GetOrganizationEnvironmentByIdResponse>,
+  input: GetOrganizationEnvironmentByIdRequest,
+  output: GetOrganizationEnvironmentByIdResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1941,8 +2607,8 @@ export const GetOrganizationSchemaRegistryClusterById: API.OperationMethod<
   GetOrganizationSchemaRegistryClusterByIdError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(68) as any as S.Schema<GetOrganizationSchemaRegistryClusterByIdRequest>,
-  output: __S(72) as any as S.Schema<SchemaRegistryClusterRecord>,
+  input: GetOrganizationSchemaRegistryClusterByIdRequest,
+  output: SchemaRegistryClusterRecord,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1956,8 +2622,8 @@ export const GetTopic: API.OperationMethod<
   GetTopicError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(73) as any as S.Schema<GetTopicRequest>,
-  output: __S(46) as any as S.Schema<GetTopicResponse>,
+  input: GetTopicRequest,
+  output: GetTopicResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1971,8 +2637,8 @@ export const InviteAccessUser: API.OperationMethod<
   InviteAccessUserError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(75) as any as S.Schema<InviteAccessUserRequest>,
-  output: __S(76) as any as S.Schema<InvitationRecord>,
+  input: InviteAccessUserRequest,
+  output: InvitationRecord,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1986,8 +2652,8 @@ export const ListAccessClusters: API.OperationMethod<
   ListAccessClustersError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(77) as any as S.Schema<ListAccessClustersRequest>,
-  output: __S(83) as any as S.Schema<AccessListClusterSuccessResponse>,
+  input: ListAccessClustersRequest,
+  output: AccessListClusterSuccessResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2001,8 +2667,8 @@ export const ListAccessEnvironments: API.OperationMethod<
   ListAccessEnvironmentsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(84) as any as S.Schema<ListAccessEnvironmentsRequest>,
-  output: __S(87) as any as S.Schema<AccessListEnvironmentsSuccessResponse>,
+  input: ListAccessEnvironmentsRequest,
+  output: AccessListEnvironmentsSuccessResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2016,8 +2682,8 @@ export const ListAccessInvitations: API.OperationMethod<
   ListAccessInvitationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(88) as any as S.Schema<ListAccessInvitationsRequest>,
-  output: __S(90) as any as S.Schema<AccessListInvitationsSuccessResponse>,
+  input: ListAccessInvitationsRequest,
+  output: AccessListInvitationsSuccessResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2031,8 +2697,8 @@ export const ListAccessRoleBindings: API.OperationMethod<
   ListAccessRoleBindingsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(91) as any as S.Schema<ListAccessRoleBindingsRequest>,
-  output: __S(93) as any as S.Schema<AccessListRoleBindingsSuccessResponse>,
+  input: ListAccessRoleBindingsRequest,
+  output: AccessListRoleBindingsSuccessResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2046,8 +2712,8 @@ export const ListAccessServiceAccounts: API.OperationMethod<
   ListAccessServiceAccountsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(94) as any as S.Schema<ListAccessServiceAccountsRequest>,
-  output: __S(97) as any as S.Schema<AccessListServiceAccountsSuccessResponse>,
+  input: ListAccessServiceAccountsRequest,
+  output: AccessListServiceAccountsSuccessResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2061,8 +2727,8 @@ export const ListAccessUsers: API.OperationMethod<
   ListAccessUsersError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(98) as any as S.Schema<ListAccessUsersRequest>,
-  output: __S(101) as any as S.Schema<AccessListUsersSuccessResponse>,
+  input: ListAccessUsersRequest,
+  output: AccessListUsersSuccessResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2076,8 +2742,8 @@ export const ListConnector: API.OperationMethod<
   ListConnectorError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(102) as any as S.Schema<ListConnectorRequest>,
-  output: __S(104) as any as S.Schema<ListConnectorsSuccessResponse>,
+  input: ListConnectorRequest,
+  output: ListConnectorsSuccessResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2091,8 +2757,8 @@ export const ListMarketplaceAgreements: API.OperationMethod<
   ListMarketplaceAgreementsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(105) as any as S.Schema<ListMarketplaceAgreementsRequest>,
-  output: __S(107) as any as S.Schema<ConfluentAgreementResourceListResponse>,
+  input: ListMarketplaceAgreementsRequest,
+  output: ConfluentAgreementResourceListResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2106,8 +2772,8 @@ export const ListOrganizationByResourceGroup: API.OperationMethod<
   ListOrganizationByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(108) as any as S.Schema<ListOrganizationByResourceGroupRequest>,
-  output: __S(110) as any as S.Schema<OrganizationResourceListResult>,
+  input: ListOrganizationByResourceGroupRequest,
+  output: OrganizationResourceListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2121,8 +2787,8 @@ export const ListOrganizationBySubscription: API.OperationMethod<
   ListOrganizationBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(111) as any as S.Schema<ListOrganizationBySubscriptionRequest>,
-  output: __S(110) as any as S.Schema<OrganizationResourceListResult>,
+  input: ListOrganizationBySubscriptionRequest,
+  output: OrganizationResourceListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2136,8 +2802,8 @@ export const ListOrganizationClusters: API.OperationMethod<
   ListOrganizationClustersError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(112) as any as S.Schema<ListOrganizationClustersRequest>,
-  output: __S(115) as any as S.Schema<ListClustersSuccessResponse>,
+  input: ListOrganizationClustersRequest,
+  output: ListClustersSuccessResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2151,8 +2817,8 @@ export const ListOrganizationEnvironments: API.OperationMethod<
   ListOrganizationEnvironmentsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(116) as any as S.Schema<ListOrganizationEnvironmentsRequest>,
-  output: __S(119) as any as S.Schema<GetEnvironmentsResponse>,
+  input: ListOrganizationEnvironmentsRequest,
+  output: GetEnvironmentsResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2166,8 +2832,8 @@ export const ListOrganizationOperations: API.OperationMethod<
   ListOrganizationOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(120) as any as S.Schema<ListOrganizationOperationsRequest>,
-  output: __S(124) as any as S.Schema<OperationListResult>,
+  input: ListOrganizationOperationsRequest,
+  output: OperationListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2181,8 +2847,8 @@ export const ListOrganizationRegions: API.OperationMethod<
   ListOrganizationRegionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(125) as any as S.Schema<ListOrganizationRegionsRequest>,
-  output: __S(130) as any as S.Schema<ListRegionsSuccessResponse>,
+  input: ListOrganizationRegionsRequest,
+  output: ListRegionsSuccessResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2196,8 +2862,8 @@ export const ListOrganizationSchemaRegistryClusters: API.OperationMethod<
   ListOrganizationSchemaRegistryClustersError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(131) as any as S.Schema<ListOrganizationSchemaRegistryClustersRequest>,
-  output: __S(133) as any as S.Schema<ListSchemaRegistryClustersResponse>,
+  input: ListOrganizationSchemaRegistryClustersRequest,
+  output: ListSchemaRegistryClustersResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2211,8 +2877,8 @@ export const ListTopics: API.OperationMethod<
   ListTopicsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(134) as any as S.Schema<ListTopicsRequest>,
-  output: __S(136) as any as S.Schema<ListTopicsSuccessResponse>,
+  input: ListTopicsRequest,
+  output: ListTopicsSuccessResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2226,8 +2892,8 @@ export const UpdateOrganization: API.OperationMethod<
   UpdateOrganizationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(137) as any as S.Schema<UpdateOrganizationRequest>,
-  output: __S(33) as any as S.Schema<UpdateOrganizationResponse>,
+  input: UpdateOrganizationRequest,
+  output: UpdateOrganizationResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2241,8 +2907,8 @@ export const ValidateValidationOrganization: API.OperationMethod<
   ValidateValidationOrganizationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(138) as any as S.Schema<ValidateValidationOrganizationRequest>,
-  output: __S(33) as any as S.Schema<ValidateValidationOrganizationResponse>,
+  input: ValidateValidationOrganizationRequest,
+  output: ValidateValidationOrganizationResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2256,8 +2922,8 @@ export const ValidateValidationOrganizationV2: API.OperationMethod<
   ValidateValidationOrganizationV2Error,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(139) as any as S.Schema<ValidateValidationOrganizationV2Request>,
-  output: __S(140) as any as S.Schema<ValidationResponse>,
+  input: ValidateValidationOrganizationV2Request,
+  output: ValidationResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2274,7 +2940,7 @@ function __c0(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           organizationName: S.String.pipe(T.Label()),
-          searchFilters: S.optional(__S(0)),
+          searchFilters: S.optional(AccessListRoleBindingNameListRequestSearchFiltersMap),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2302,8 +2968,8 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
-          metadata: S.optional(__S(2)),
-          data: S.optional(__S(3)),
+          metadata: S.optional(ConfluentListMetadata),
+          data: S.optional(AccessRoleBindingNameListSuccessResponseDataList),
         }),
       ).annotate({
         identifier: "AccessRoleBindingNameListSuccessResponse",
@@ -2354,15 +3020,15 @@ function __c1(j: number): any {
           availability: S.optional(S.String),
           cloud: S.optional(S.String),
           zone: S.optional(S.String),
-          package: S.optional(S.String),
+          package: S.optional(Package),
           region: S.optional(S.String),
           kafkaBootstrapEndpoint: S.optional(S.String),
           httpEndpoint: S.optional(S.String),
           apiEndpoint: S.optional(S.String),
-          config: S.optional(__S(6)),
-          environment: S.optional(__S(7)),
-          network: S.optional(__S(7)),
-          byok: S.optional(__S(8)),
+          config: S.optional(ClusterConfigEntity),
+          environment: S.optional(SCClusterNetworkEnvironmentEntity),
+          network: S.optional(SCClusterNetworkEnvironmentEntity),
+          byok: S.optional(SCClusterByokEntity),
         }),
       ).annotate({ identifier: "SCClusterSpecEntity" });
     case 2:
@@ -2375,9 +3041,9 @@ function __c1(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          metadata: S.optional(__S(5)),
-          spec: S.optional(__S(9)),
-          status: S.optional(__S(10)),
+          metadata: S.optional(SCMetadataEntity),
+          spec: S.optional(SCClusterSpecEntity),
+          status: S.optional(ClusterStatusEntity),
         }),
       ).annotate({ identifier: "ClusterProperties" });
     case 4:
@@ -2389,7 +3055,7 @@ function __c1(j: number): any {
           environmentId: S.String.pipe(T.Label()),
           clusterId: S.String.pipe(T.Label()),
           kind: S.optional(S.String),
-          properties: S.optional(__S(11)),
+          properties: S.optional(ClusterProperties),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2405,10 +3071,10 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
-          createdByType: S.optional(S.String),
+          createdByType: S.optional(SystemDataCreatedByType),
           createdAt: S.optional(S.String),
           lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(S.String),
+          lastModifiedByType: S.optional(SystemDataLastModifiedByType),
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "SystemData" });
@@ -2418,9 +3084,9 @@ function __c1(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(13)),
+          systemData: S.optional(SystemData),
           kind: S.optional(S.String),
-          properties: S.optional(__S(11)),
+          properties: S.optional(ClusterProperties),
         }),
       ).annotate({
         identifier: "ClusterCreateOrUpdateResponse",
@@ -2428,11 +3094,11 @@ function __c1(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          connectorType: S.optional(S.String),
-          connectorClass: S.optional(S.String),
+          connectorType: S.optional(ConnectorType),
+          connectorClass: S.optional(ConnectorClass),
           connectorName: S.optional(S.String),
           connectorId: S.optional(S.String),
-          connectorState: S.optional(S.String),
+          connectorState: S.optional(ConnectorStatus),
         }),
       ).annotate({ identifier: "ConnectorInfoBase" });
   }
@@ -2442,7 +3108,7 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          connectorBasicInfo: S.optional(__S(15)),
+          connectorBasicInfo: S.optional(ConnectorInfoBase),
           connectorServiceTypeInfo: S.optional(S.Unknown),
           partnerConnectorInfo: S.optional(S.Unknown),
         }),
@@ -2458,7 +3124,7 @@ function __c2(j: number): any {
           environmentId: S.String.pipe(T.Label()),
           clusterId: S.String.pipe(T.Label()),
           connectorName: S.String.pipe(T.Label()),
-          properties: __S(16),
+          properties: ConnectorResourceProperties,
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2476,8 +3142,8 @@ function __c2(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(13)),
-          properties: __S(16),
+          systemData: S.optional(SystemData),
+          properties: ConnectorResourceProperties,
         }),
       ).annotate({
         identifier: "ConnectorCreateOrUpdateResponse",
@@ -2517,7 +3183,7 @@ function __c2(j: number): any {
         S.Struct({
           kind: S.optional(S.String),
           id: S.optional(S.String),
-          metadata: S.optional(__S(20)),
+          metadata: S.optional(MetadataEntity),
           principal: S.optional(S.String),
           role_name: S.optional(S.String),
           crn_pattern: S.optional(S.String),
@@ -2542,7 +3208,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
-          properties: S.optional(__S(22)),
+          properties: S.optional(ConfluentAgreementProperties),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2562,10 +3228,10 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
-          createdByType: S.optional(S.String),
+          createdByType: S.optional(ConfluentAgreementResourceSystemDataCreatedByType),
           createdAt: S.optional(S.String),
           lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(S.String),
+          lastModifiedByType: S.optional(ConfluentAgreementResourceSystemDataLastModifiedByType),
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({
@@ -2577,8 +3243,8 @@ function __c3(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(24)),
-          properties: S.optional(__S(22)),
+          systemData: S.optional(ConfluentAgreementResourceSystemData),
+          properties: S.optional(ConfluentAgreementProperties),
         }),
       ).annotate({
         identifier: "ConfluentAgreementResource",
@@ -2593,7 +3259,7 @@ function __c3(j: number): any {
           termUnit: S.String,
           termId: S.optional(S.String),
           privateOfferId: S.optional(S.String),
-          privateOfferIds: S.optional(__S(3)),
+          privateOfferIds: S.optional(OfferDetailInputPrivateOfferIdsList),
         }),
       ).annotate({ identifier: "OfferDetailInput" });
     case 3:
@@ -2615,9 +3281,9 @@ function __c3(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          offerDetail: __S(26),
-          userDetail: __S(27),
-          linkOrganization: S.optional(__S(28)),
+          offerDetail: OfferDetailInput,
+          userDetail: UserDetail,
+          linkOrganization: S.optional(LinkOrganization),
         }),
       ).annotate({
         identifier: "OrganizationResourcePropertiesInput",
@@ -2628,9 +3294,9 @@ function __c3(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           organizationName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(0)),
+          tags: S.optional(CreateOrganizationRequestTagsMap),
           location: S.String,
-          properties: __S(29),
+          properties: OrganizationResourcePropertiesInput,
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2652,8 +3318,8 @@ function __c3(j: number): any {
           termUnit: S.String,
           termId: S.optional(S.String),
           privateOfferId: S.optional(S.String),
-          privateOfferIds: S.optional(__S(3)),
-          status: S.optional(S.String),
+          privateOfferIds: S.optional(OfferDetailPrivateOfferIdsList),
+          status: S.optional(SaaSOfferStatus),
         }),
       ).annotate({ identifier: "OfferDetail" });
   }
@@ -2664,12 +3330,12 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           createdTime: S.optional(S.String),
-          provisioningState: S.optional(S.String),
+          provisioningState: S.optional(ProvisionState),
           organizationId: S.optional(S.String),
           ssoUrl: S.optional(S.String),
-          offerDetail: __S(31),
-          userDetail: __S(27),
-          linkOrganization: S.optional(__S(28)),
+          offerDetail: OfferDetail,
+          userDetail: UserDetail,
+          linkOrganization: S.optional(LinkOrganization),
         }),
       ).annotate({
         identifier: "OrganizationResourceProperties",
@@ -2680,10 +3346,10 @@ function __c4(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(13)),
-          tags: S.optional(__S(0)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(CreateOrganizationResponseTagsMap),
           location: S.String,
-          properties: __S(32),
+          properties: OrganizationResourceProperties,
         }),
       ).annotate({
         identifier: "CreateOrganizationResponse",
@@ -2734,15 +3400,15 @@ function __c4(j: number): any {
           description: S.optional(S.String),
           name: S.optional(S.String),
           secret: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          resource: S.optional(__S(35)),
-          owner: S.optional(__S(36)),
+          resource: S.optional(APIKeyResourceEntity),
+          owner: S.optional(APIKeyOwnerEntity),
         }),
       ).annotate({ identifier: "APIKeySpecEntity" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          metadata: S.optional(__S(5)),
-          spec: S.optional(__S(37)),
+          metadata: S.optional(SCMetadataEntity),
+          spec: S.optional(APIKeySpecEntity),
         }),
       ).annotate({ identifier: "APIKeyProperties" });
     case 7:
@@ -2750,7 +3416,7 @@ function __c4(j: number): any {
         S.Struct({
           kind: S.optional(S.String),
           id: S.optional(S.String),
-          properties: S.optional(__S(38)),
+          properties: S.optional(APIKeyProperties),
         }),
       ).annotate({ identifier: "APIKeyRecord" });
   }
@@ -2778,17 +3444,17 @@ function __c5(j: number): any {
         }),
       ).annotate({ identifier: "TopicsInputConfig" });
     case 3:
-      return S.Array(__S(42));
+      return S.Array(TopicsInputConfig);
     case 4:
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
           topicId: S.optional(S.String),
-          metadata: S.optional(__S(40)),
-          partitions: S.optional(__S(41)),
-          configs: S.optional(__S(41)),
-          inputConfigs: S.optional(__S(43)),
-          partitionsReassignments: S.optional(__S(41)),
+          metadata: S.optional(TopicMetadataEntity),
+          partitions: S.optional(TopicsRelatedLink),
+          configs: S.optional(TopicsRelatedLink),
+          inputConfigs: S.optional(TopicPropertiesInputConfigsList),
+          partitionsReassignments: S.optional(TopicsRelatedLink),
           partitionsCount: S.optional(S.String),
           replicationFactor: S.optional(S.String),
         }),
@@ -2802,7 +3468,7 @@ function __c5(j: number): any {
           environmentId: S.String.pipe(T.Label()),
           clusterId: S.String.pipe(T.Label()),
           topicName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(44)),
+          properties: S.optional(TopicProperties),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2818,8 +3484,8 @@ function __c5(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(13)),
-          properties: S.optional(__S(44)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(TopicProperties),
         }),
       ).annotate({ identifier: "CreateTopicResponse" });
     case 7:
@@ -2967,14 +3633,14 @@ function __c7(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          package: S.optional(S.String),
+          package: S.optional(Package),
         }),
       ).annotate({ identifier: "StreamGovernanceConfig" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          streamGovernanceConfig: S.optional(__S(57)),
-          metadata: S.optional(__S(5)),
+          streamGovernanceConfig: S.optional(StreamGovernanceConfig),
+          metadata: S.optional(SCMetadataEntity),
         }),
       ).annotate({ identifier: "EnvironmentProperties" });
     case 3:
@@ -2985,7 +3651,7 @@ function __c7(j: number): any {
           organizationName: S.String.pipe(T.Label()),
           environmentId: S.String.pipe(T.Label()),
           kind: S.optional(S.String),
-          properties: S.optional(__S(58)),
+          properties: S.optional(EnvironmentProperties),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -3003,9 +3669,9 @@ function __c7(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(13)),
+          systemData: S.optional(SystemData),
           kind: S.optional(S.String),
-          properties: S.optional(__S(58)),
+          properties: S.optional(EnvironmentProperties),
         }),
       ).annotate({
         identifier: "EnvironmentCreateOrUpdateResponse",
@@ -3034,8 +3700,8 @@ function __c7(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(13)),
-          properties: __S(16),
+          systemData: S.optional(SystemData),
+          properties: ConnectorResourceProperties,
         }),
       ).annotate({ identifier: "GetConnectorResponse" });
     case 7:
@@ -3063,10 +3729,10 @@ function __c8(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(13)),
-          tags: S.optional(__S(0)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(GetOrganizationResponseTagsMap),
           location: S.String,
-          properties: __S(32),
+          properties: OrganizationResourceProperties,
         }),
       ).annotate({ identifier: "GetOrganizationResponse" });
     case 1:
@@ -3149,8 +3815,8 @@ function __c8(j: number): any {
           name: S.optional(S.String),
           httpEndpoint: S.optional(S.String),
           package: S.optional(S.String),
-          region: S.optional(__S(8)),
-          environment: S.optional(__S(8)),
+          region: S.optional(SCClusterByokEntity),
+          environment: S.optional(SCClusterByokEntity),
           cloud: S.optional(S.String),
         }),
       ).annotate({
@@ -3167,9 +3833,9 @@ function __c8(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          metadata: S.optional(__S(5)),
-          spec: S.optional(__S(69)),
-          status: S.optional(__S(70)),
+          metadata: S.optional(SCMetadataEntity),
+          spec: S.optional(SchemaRegistryClusterSpecEntity),
+          status: S.optional(SchemaRegistryClusterStatusEntity),
         }),
       ).annotate({
         identifier: "SchemaRegistryClusterProperties",
@@ -3183,7 +3849,7 @@ function __c9(j: number): any {
         S.Struct({
           kind: S.optional(S.String),
           id: S.optional(S.String),
-          properties: S.optional(__S(71)),
+          properties: S.optional(SchemaRegistryClusterProperties),
         }),
       ).annotate({
         identifier: "SchemaRegistryClusterRecord",
@@ -3222,7 +3888,7 @@ function __c9(j: number): any {
           organizationId: S.optional(S.String),
           email: S.optional(S.String),
           upn: S.optional(S.String),
-          invitedUserDetails: S.optional(__S(74)),
+          invitedUserDetails: S.optional(AccessInvitedUserDetails),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3237,7 +3903,7 @@ function __c9(j: number): any {
         S.Struct({
           kind: S.optional(S.String),
           id: S.optional(S.String),
-          metadata: S.optional(__S(20)),
+          metadata: S.optional(MetadataEntity),
           email: S.optional(S.String),
           auth_type: S.optional(S.String),
           status: S.optional(S.String),
@@ -3251,7 +3917,7 @@ function __c9(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           organizationName: S.String.pipe(T.Label()),
-          searchFilters: S.optional(__S(0)),
+          searchFilters: S.optional(ListAccessClustersRequestSearchFiltersMap),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3295,10 +3961,10 @@ function __c10(j: number): any {
           kafka_bootstrap_endpoint: S.optional(S.String),
           http_endpoint: S.optional(S.String),
           api_endpoint: S.optional(S.String),
-          config: S.optional(__S(6)),
-          environment: S.optional(__S(78)),
-          network: S.optional(__S(78)),
-          byok: S.optional(__S(79)),
+          config: S.optional(ClusterConfigEntity),
+          environment: S.optional(ClusterEnvironmentEntity),
+          network: S.optional(ClusterEnvironmentEntity),
+          byok: S.optional(ClusterByokEntity),
         }),
       ).annotate({ identifier: "ClusterSpecEntity" });
     case 1:
@@ -3306,20 +3972,20 @@ function __c10(j: number): any {
         S.Struct({
           kind: S.optional(S.String),
           id: S.optional(S.String),
-          metadata: S.optional(__S(20)),
+          metadata: S.optional(MetadataEntity),
           display_name: S.optional(S.String),
-          spec: S.optional(__S(80)),
-          status: S.optional(__S(10)),
+          spec: S.optional(ClusterSpecEntity),
+          status: S.optional(ClusterStatusEntity),
         }),
       ).annotate({ identifier: "ClusterRecord" });
     case 2:
-      return S.Array(__S(81));
+      return S.Array(ClusterRecord);
     case 3:
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
-          metadata: S.optional(__S(2)),
-          data: S.optional(__S(82)),
+          metadata: S.optional(ConfluentListMetadata),
+          data: S.optional(AccessListClusterSuccessResponseDataList),
         }),
       ).annotate({
         identifier: "AccessListClusterSuccessResponse",
@@ -3330,7 +3996,7 @@ function __c10(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           organizationName: S.String.pipe(T.Label()),
-          searchFilters: S.optional(__S(0)),
+          searchFilters: S.optional(ListAccessEnvironmentsRequestSearchFiltersMap),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3347,18 +4013,18 @@ function __c10(j: number): any {
         S.Struct({
           kind: S.optional(S.String),
           id: S.optional(S.String),
-          metadata: S.optional(__S(20)),
+          metadata: S.optional(MetadataEntity),
           display_name: S.optional(S.String),
         }),
       ).annotate({ identifier: "EnvironmentRecord" });
     case 6:
-      return S.Array(__S(85));
+      return S.Array(EnvironmentRecord);
     case 7:
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
-          metadata: S.optional(__S(2)),
-          data: S.optional(__S(86)),
+          metadata: S.optional(ConfluentListMetadata),
+          data: S.optional(AccessListEnvironmentsSuccessResponseDataList),
         }),
       ).annotate({
         identifier: "AccessListEnvironmentsSuccessResponse",
@@ -3373,7 +4039,7 @@ function __c11(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           organizationName: S.String.pipe(T.Label()),
-          searchFilters: S.optional(__S(0)),
+          searchFilters: S.optional(ListAccessInvitationsRequestSearchFiltersMap),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3386,13 +4052,13 @@ function __c11(j: number): any {
         identifier: "ListAccessInvitationsRequest",
       });
     case 1:
-      return S.Array(__S(76));
+      return S.Array(InvitationRecord);
     case 2:
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
-          metadata: S.optional(__S(2)),
-          data: S.optional(__S(89)),
+          metadata: S.optional(ConfluentListMetadata),
+          data: S.optional(AccessListInvitationsSuccessResponseDataList),
         }),
       ).annotate({
         identifier: "AccessListInvitationsSuccessResponse",
@@ -3403,7 +4069,7 @@ function __c11(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           organizationName: S.String.pipe(T.Label()),
-          searchFilters: S.optional(__S(0)),
+          searchFilters: S.optional(ListAccessRoleBindingsRequestSearchFiltersMap),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3416,13 +4082,13 @@ function __c11(j: number): any {
         identifier: "ListAccessRoleBindingsRequest",
       });
     case 4:
-      return S.Array(__S(21));
+      return S.Array(RoleBindingRecord);
     case 5:
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
-          metadata: S.optional(__S(2)),
-          data: S.optional(__S(92)),
+          metadata: S.optional(ConfluentListMetadata),
+          data: S.optional(AccessListRoleBindingsSuccessResponseDataList),
         }),
       ).annotate({
         identifier: "AccessListRoleBindingsSuccessResponse",
@@ -3433,7 +4099,7 @@ function __c11(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           organizationName: S.String.pipe(T.Label()),
-          searchFilters: S.optional(__S(0)),
+          searchFilters: S.optional(ListAccessServiceAccountsRequestSearchFiltersMap),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3450,7 +4116,7 @@ function __c11(j: number): any {
         S.Struct({
           kind: S.optional(S.String),
           id: S.optional(S.String),
-          metadata: S.optional(__S(20)),
+          metadata: S.optional(MetadataEntity),
           display_name: S.optional(S.String),
           description: S.optional(S.String),
         }),
@@ -3460,13 +4126,13 @@ function __c11(j: number): any {
 function __c12(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(95));
+      return S.Array(ServiceAccountRecord);
     case 1:
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
-          metadata: S.optional(__S(2)),
-          data: S.optional(__S(96)),
+          metadata: S.optional(ConfluentListMetadata),
+          data: S.optional(AccessListServiceAccountsSuccessResponseDataList),
         }),
       ).annotate({
         identifier: "AccessListServiceAccountsSuccessResponse",
@@ -3477,7 +4143,7 @@ function __c12(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           organizationName: S.String.pipe(T.Label()),
-          searchFilters: S.optional(__S(0)),
+          searchFilters: S.optional(ListAccessUsersRequestSearchFiltersMap),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3492,20 +4158,20 @@ function __c12(j: number): any {
         S.Struct({
           kind: S.optional(S.String),
           id: S.optional(S.String),
-          metadata: S.optional(__S(20)),
+          metadata: S.optional(MetadataEntity),
           email: S.optional(S.String),
           full_name: S.optional(S.String),
           auth_type: S.optional(S.String),
         }),
       ).annotate({ identifier: "UserRecord" });
     case 4:
-      return S.Array(__S(99));
+      return S.Array(UserRecord);
     case 5:
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
-          metadata: S.optional(__S(2)),
-          data: S.optional(__S(100)),
+          metadata: S.optional(ConfluentListMetadata),
+          data: S.optional(AccessListUsersSuccessResponseDataList),
         }),
       ).annotate({
         identifier: "AccessListUsersSuccessResponse",
@@ -3530,7 +4196,7 @@ function __c12(j: number): any {
         ),
       ).annotate({ identifier: "ListConnectorRequest" });
     case 7:
-      return S.Array(__S(62));
+      return S.Array(ConnectorResource);
   }
 }
 function __c13(j: number): any {
@@ -3538,7 +4204,7 @@ function __c13(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          value: __S(103),
+          value: ListConnectorsSuccessResponseValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -3560,11 +4226,11 @@ function __c13(j: number): any {
         identifier: "ListMarketplaceAgreementsRequest",
       });
     case 2:
-      return S.Array(__S(25));
+      return S.Array(ConfluentAgreementResource);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: __S(106),
+          value: ConfluentAgreementResourceListResponseValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -3587,11 +4253,11 @@ function __c13(j: number): any {
         identifier: "ListOrganizationByResourceGroupRequest",
       });
     case 5:
-      return S.Array(__S(64));
+      return S.Array(OrganizationResource);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          value: __S(109),
+          value: OrganizationResourceListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -3642,17 +4308,17 @@ function __c14(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(13)),
+          systemData: S.optional(SystemData),
           kind: S.optional(S.String),
-          properties: S.optional(__S(11)),
+          properties: S.optional(ClusterProperties),
         }),
       ).annotate({ identifier: "SCClusterRecord" });
     case 2:
-      return S.Array(__S(113));
+      return S.Array(SCClusterRecord);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: __S(114),
+          value: ListClustersSuccessResponseValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -3683,17 +4349,17 @@ function __c14(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(13)),
+          systemData: S.optional(SystemData),
           kind: S.optional(S.String),
-          properties: S.optional(__S(58)),
+          properties: S.optional(EnvironmentProperties),
         }),
       ).annotate({ identifier: "SCEnvironmentRecord" });
     case 6:
-      return S.Array(__S(117));
+      return S.Array(SCEnvironmentRecord);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          value: __S(118),
+          value: GetEnvironmentsResponseValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetEnvironmentsResponse" });
@@ -3727,16 +4393,16 @@ function __c15(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          display: S.optional(__S(121)),
+          display: S.optional(OperationDisplay),
           isDataAction: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "OperationResult" });
     case 3:
-      return S.Array(__S(122));
+      return S.Array(OperationResult);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: __S(123),
+          value: OperationListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationListResult" });
@@ -3746,7 +4412,7 @@ function __c15(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           organizationName: S.String.pipe(T.Label()),
-          searchFilters: S.optional(__S(0)),
+          searchFilters: S.optional(ListOrganizationRegionsRequestSearchFiltersMap),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3764,14 +4430,14 @@ function __c15(j: number): any {
           name: S.optional(S.String),
           cloud: S.optional(S.String),
           regionName: S.optional(S.String),
-          packages: S.optional(__S(3)),
+          packages: S.optional(RegionSpecEntityPackagesList),
         }),
       ).annotate({ identifier: "RegionSpecEntity" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          metadata: S.optional(__S(5)),
-          spec: S.optional(__S(126)),
+          metadata: S.optional(SCMetadataEntity),
+          spec: S.optional(RegionSpecEntity),
         }),
       ).annotate({ identifier: "RegionProperties" });
   }
@@ -3783,15 +4449,15 @@ function __c16(j: number): any {
         S.Struct({
           kind: S.optional(S.String),
           id: S.optional(S.String),
-          properties: S.optional(__S(127)),
+          properties: S.optional(RegionProperties),
         }),
       ).annotate({ identifier: "RegionRecord" });
     case 1:
-      return S.Array(__S(128));
+      return S.Array(RegionRecord);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(__S(129)),
+          data: S.optional(ListRegionsSuccessResponseDataList),
         }),
       ).annotate({
         identifier: "ListRegionsSuccessResponse",
@@ -3817,11 +4483,11 @@ function __c16(j: number): any {
         identifier: "ListOrganizationSchemaRegistryClustersRequest",
       });
     case 4:
-      return S.Array(__S(72));
+      return S.Array(SchemaRegistryClusterRecord);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          value: __S(132),
+          value: ListSchemaRegistryClustersResponseValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -3847,7 +4513,7 @@ function __c16(j: number): any {
         ),
       ).annotate({ identifier: "ListTopicsRequest" });
     case 7:
-      return S.Array(__S(46));
+      return S.Array(TopicRecord);
   }
 }
 function __c17(j: number): any {
@@ -3855,7 +4521,7 @@ function __c17(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          value: __S(135),
+          value: ListTopicsSuccessResponseValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -3867,7 +4533,7 @@ function __c17(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           organizationName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(0)),
+          tags: S.optional(UpdateOrganizationRequestTagsMap),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3885,9 +4551,9 @@ function __c17(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           organizationName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(0)),
+          tags: S.optional(ValidateValidationOrganizationRequestTagsMap),
           location: S.String,
-          properties: __S(29),
+          properties: OrganizationResourcePropertiesInput,
         }).pipe(
           T.Http({
             method: "POST",
@@ -3905,9 +4571,9 @@ function __c17(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           organizationName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(0)),
+          tags: S.optional(ValidateValidationOrganizationV2RequestTagsMap),
           location: S.String,
-          properties: __S(29),
+          properties: OrganizationResourcePropertiesInput,
         }).pipe(
           T.Http({
             method: "POST",
@@ -3922,53 +4588,8 @@ function __c17(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          info: S.optional(__S(0)),
+          info: S.optional(ValidationResponseInfoMap),
         }),
       ).annotate({ identifier: "ValidationResponse" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
-    case 9:
-      return __c9(i & 7);
-    case 10:
-      return __c10(i & 7);
-    case 11:
-      return __c11(i & 7);
-    case 12:
-      return __c12(i & 7);
-    case 13:
-      return __c13(i & 7);
-    case 14:
-      return __c14(i & 7);
-    case 15:
-      return __c15(i & 7);
-    case 16:
-      return __c16(i & 7);
-    case 17:
-      return __c17(i & 7);
   }
 }

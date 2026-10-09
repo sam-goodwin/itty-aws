@@ -8,8 +8,6 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "InternetMonitor",
   serviceShapeName: "InternetMonitor20210603",
@@ -151,9 +149,11 @@ export class ValidationException
 export type ResourceName = string;
 export type Arn = string;
 export type SetOfARNs = string[];
+const SetOfARNs = /*@__PURE__*/ __L.at(__c0, 0);
 export type TagKey = string;
 export type TagValue = string;
 export type TagMap = { [key: string]: string | undefined };
+const TagMap = /*@__PURE__*/ __L.at(__c0, 1);
 export type MaxCityNetworksToMonitor = number;
 export type LogDeliveryStatus = string;
 export interface S3Config {
@@ -161,9 +161,14 @@ export interface S3Config {
   BucketPrefix?: string;
   LogDeliveryStatus?: string;
 }
+const S3Config = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<S3Config>;
 export interface InternetMeasurementsLogDelivery {
   S3Config?: S3Config;
 }
+const InternetMeasurementsLogDelivery = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<InternetMeasurementsLogDelivery>;
 export type TrafficPercentageToMonitor = number;
 export type Percentage = number;
 export type LocalHealthEventsConfigStatus = string;
@@ -172,12 +177,17 @@ export interface LocalHealthEventsConfig {
   HealthScoreThreshold?: number;
   MinTrafficImpact?: number;
 }
+const LocalHealthEventsConfig = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<LocalHealthEventsConfig>;
 export interface HealthEventsConfig {
   AvailabilityScoreThreshold?: number;
   PerformanceScoreThreshold?: number;
   AvailabilityLocalHealthEventsConfig?: LocalHealthEventsConfig;
   PerformanceLocalHealthEventsConfig?: LocalHealthEventsConfig;
 }
+const HealthEventsConfig = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<HealthEventsConfig>;
 export interface CreateMonitorInput {
   MonitorName: string;
   Resources?: string[];
@@ -188,16 +198,20 @@ export interface CreateMonitorInput {
   TrafficPercentageToMonitor?: number;
   HealthEventsConfig?: HealthEventsConfig;
 }
+const CreateMonitorInput = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<CreateMonitorInput>;
 export type MonitorArn = string;
 export type MonitorConfigState = string;
 export interface CreateMonitorOutput {
   Arn: string;
   Status: string;
 }
+const CreateMonitorOutput = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<CreateMonitorOutput>;
 export interface DeleteMonitorInput {
   MonitorName: string;
 }
+const DeleteMonitorInput = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<DeleteMonitorInput>;
 export interface DeleteMonitorOutput {}
+const DeleteMonitorOutput = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<DeleteMonitorOutput>;
 export type HealthEventName = string;
 export type AccountId = string;
 export interface GetHealthEventInput {
@@ -205,39 +219,54 @@ export interface GetHealthEventInput {
   EventId: string;
   LinkedAccountId?: string;
 }
+const GetHealthEventInput = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<GetHealthEventInput>;
 export type HealthEventStatus = string;
 export interface Network {
   ASName: string;
   ASNumber: number;
 }
+const Network = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<Network>;
 export type NetworkList = Network[];
+const NetworkList = /*@__PURE__*/ __L.at(__c1, 4);
 export type TriangulationEventType = string;
 export interface NetworkImpairment {
   Networks: Network[];
   AsPath: Network[];
   NetworkEventType: string;
 }
+const NetworkImpairment = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<NetworkImpairment>;
 export interface AvailabilityMeasurement {
   ExperienceScore?: number;
   PercentOfTotalTrafficImpacted?: number;
   PercentOfClientLocationImpacted?: number;
 }
+const AvailabilityMeasurement = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<AvailabilityMeasurement>;
 export interface RoundTripTime {
   P50?: number;
   P90?: number;
   P95?: number;
 }
+const RoundTripTime = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<RoundTripTime>;
 export interface PerformanceMeasurement {
   ExperienceScore?: number;
   PercentOfTotalTrafficImpacted?: number;
   PercentOfClientLocationImpacted?: number;
   RoundTripTime?: RoundTripTime;
 }
+const PerformanceMeasurement = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<PerformanceMeasurement>;
 export interface InternetHealth {
   Availability?: AvailabilityMeasurement;
   Performance?: PerformanceMeasurement;
 }
+const InternetHealth = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<InternetHealth>;
 export type Ipv4PrefixList = string[];
+const Ipv4PrefixList = SetOfARNs as any as S.Schema<Ipv4PrefixList>;
 export interface ImpactedLocation {
   ASName: string;
   ASNumber: number;
@@ -255,7 +284,9 @@ export interface ImpactedLocation {
   InternetHealth?: InternetHealth;
   Ipv4Prefixes?: string[];
 }
+const ImpactedLocation = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<ImpactedLocation>;
 export type ImpactedLocationsList = ImpactedLocation[];
+const ImpactedLocationsList = /*@__PURE__*/ __L.at(__c2, 3);
 export type HealthEventImpactType = string;
 export interface GetHealthEventOutput {
   EventArn: string;
@@ -270,10 +301,15 @@ export interface GetHealthEventOutput {
   ImpactType: string;
   HealthScoreThreshold?: number;
 }
+const GetHealthEventOutput = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<GetHealthEventOutput>;
 export type InternetEventId = string;
 export interface GetInternetEventInput {
   EventId: string;
 }
+const GetInternetEventInput = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<GetInternetEventInput>;
 export interface ClientLocation {
   ASName: string;
   ASNumber: number;
@@ -284,6 +320,7 @@ export interface ClientLocation {
   Latitude: number;
   Longitude: number;
 }
+const ClientLocation = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<ClientLocation>;
 export type InternetEventType = string;
 export type InternetEventStatus = string;
 export interface GetInternetEventOutput {
@@ -295,10 +332,15 @@ export interface GetInternetEventOutput {
   EventType: string;
   EventStatus: string;
 }
+const GetInternetEventOutput = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<GetInternetEventOutput>;
 export interface GetMonitorInput {
   MonitorName: string;
   LinkedAccountId?: string;
 }
+const GetMonitorInput = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<GetMonitorInput>;
 export type MonitorProcessingStatusCode = string;
 export interface GetMonitorOutput {
   MonitorName: string;
@@ -315,6 +357,7 @@ export interface GetMonitorOutput {
   TrafficPercentageToMonitor?: number;
   HealthEventsConfig?: HealthEventsConfig;
 }
+const GetMonitorOutput = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<GetMonitorOutput>;
 export type QueryMaxResults = number;
 export interface GetQueryResultsInput {
   MonitorName: string;
@@ -322,26 +365,37 @@ export interface GetQueryResultsInput {
   NextToken?: string;
   MaxResults?: number;
 }
+const GetQueryResultsInput = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<GetQueryResultsInput>;
 export interface QueryField {
   Name?: string;
   Type?: string;
 }
+const QueryField = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<QueryField>;
 export type QueryFields = QueryField[];
+const QueryFields = /*@__PURE__*/ __L.at(__c3, 4);
 export type QueryRow = string[];
+const QueryRow = SetOfARNs as any as S.Schema<QueryRow>;
 export type QueryData = string[][];
+const QueryData = /*@__PURE__*/ __L.at(__c3, 5);
 export interface GetQueryResultsOutput {
   Fields: QueryField[];
   Data?: string[][];
   NextToken?: string;
 }
+const GetQueryResultsOutput = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<GetQueryResultsOutput>;
 export interface GetQueryStatusInput {
   MonitorName: string;
   QueryId: string;
 }
+const GetQueryStatusInput = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<GetQueryStatusInput>;
 export type QueryStatus = string;
 export interface GetQueryStatusOutput {
   Status: string;
 }
+const GetQueryStatusOutput = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<GetQueryStatusOutput>;
 export type MaxResults = number;
 export interface ListHealthEventsInput {
   MonitorName: string;
@@ -352,6 +406,10 @@ export interface ListHealthEventsInput {
   EventStatus?: string;
   LinkedAccountId?: string;
 }
+const ListHealthEventsInput = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<ListHealthEventsInput>;
 export interface HealthEvent {
   EventArn: string;
   EventId: string;
@@ -365,11 +423,17 @@ export interface HealthEvent {
   ImpactType: string;
   HealthScoreThreshold?: number;
 }
+const HealthEvent = GetHealthEventOutput as any as S.Schema<HealthEvent>;
 export type HealthEventList = HealthEvent[];
+const HealthEventList = /*@__PURE__*/ __L.at(__c4, 2);
 export interface ListHealthEventsOutput {
   HealthEvents: HealthEvent[];
   NextToken?: string;
 }
+const ListHealthEventsOutput = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<ListHealthEventsOutput>;
 export type InternetEventMaxResults = number;
 export interface ListInternetEventsInput {
   NextToken?: string;
@@ -379,6 +443,10 @@ export interface ListInternetEventsInput {
   EventStatus?: string;
   EventType?: string;
 }
+const ListInternetEventsInput = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<ListInternetEventsInput>;
 export interface InternetEventSummary {
   EventId: string;
   EventArn: string;
@@ -388,43 +456,64 @@ export interface InternetEventSummary {
   EventType: string;
   EventStatus: string;
 }
+const InternetEventSummary = GetInternetEventOutput as any as S.Schema<InternetEventSummary>;
 export type InternetEventsList = InternetEventSummary[];
+const InternetEventsList = /*@__PURE__*/ __L.at(__c4, 5);
 export interface ListInternetEventsOutput {
   InternetEvents: InternetEventSummary[];
   NextToken?: string;
 }
+const ListInternetEventsOutput = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<ListInternetEventsOutput>;
 export interface ListMonitorsInput {
   NextToken?: string;
   MaxResults?: number;
   MonitorStatus?: string;
   IncludeLinkedAccounts?: boolean;
 }
+const ListMonitorsInput = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<ListMonitorsInput>;
 export interface Monitor {
   MonitorName: string;
   MonitorArn: string;
   Status: string;
   ProcessingStatus?: string;
 }
+const Monitor = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<Monitor>;
 export type MonitorList = Monitor[];
+const MonitorList = /*@__PURE__*/ __L.at(__c5, 1);
 export interface ListMonitorsOutput {
   Monitors: Monitor[];
   NextToken?: string;
 }
+const ListMonitorsOutput = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<ListMonitorsOutput>;
 export interface ListTagsForResourceInput {
   ResourceArn: string;
 }
+const ListTagsForResourceInput = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<ListTagsForResourceInput>;
 export interface ListTagsForResourceOutput {
   Tags?: { [key: string]: string | undefined };
 }
+const ListTagsForResourceOutput = /*@__PURE__*/ __L.at(
+  __c5,
+  4,
+) as any as S.Schema<ListTagsForResourceOutput>;
 export type QueryType = string;
 export type Operator = string;
 export type FilterList = string[];
+const FilterList = SetOfARNs as any as S.Schema<FilterList>;
 export interface FilterParameter {
   Field?: string;
   Operator?: string;
   Values?: string[];
 }
+const FilterParameter = /*@__PURE__*/ __L.at(__c5, 5) as any as S.Schema<FilterParameter>;
 export type FilterParameters = FilterParameter[];
+const FilterParameters = /*@__PURE__*/ __L.at(__c5, 6);
 export interface StartQueryInput {
   MonitorName: string;
   StartTime: Date;
@@ -433,25 +522,34 @@ export interface StartQueryInput {
   FilterParameters?: FilterParameter[];
   LinkedAccountId?: string;
 }
+const StartQueryInput = /*@__PURE__*/ __L.at(__c5, 7) as any as S.Schema<StartQueryInput>;
 export interface StartQueryOutput {
   QueryId: string;
 }
+const StartQueryOutput = /*@__PURE__*/ __L.at(__c6, 0) as any as S.Schema<StartQueryOutput>;
 export interface StopQueryInput {
   MonitorName: string;
   QueryId: string;
 }
+const StopQueryInput = /*@__PURE__*/ __L.at(__c6, 1) as any as S.Schema<StopQueryInput>;
 export interface StopQueryOutput {}
+const StopQueryOutput = DeleteMonitorOutput as any as S.Schema<StopQueryOutput>;
 export interface TagResourceInput {
   ResourceArn: string;
   Tags: { [key: string]: string | undefined };
 }
+const TagResourceInput = /*@__PURE__*/ __L.at(__c6, 2) as any as S.Schema<TagResourceInput>;
 export interface TagResourceOutput {}
+const TagResourceOutput = DeleteMonitorOutput as any as S.Schema<TagResourceOutput>;
 export type TagKeys = string[];
+const TagKeys = SetOfARNs as any as S.Schema<TagKeys>;
 export interface UntagResourceInput {
   ResourceArn: string;
   TagKeys: string[];
 }
+const UntagResourceInput = /*@__PURE__*/ __L.at(__c6, 3) as any as S.Schema<UntagResourceInput>;
 export interface UntagResourceOutput {}
+const UntagResourceOutput = DeleteMonitorOutput as any as S.Schema<UntagResourceOutput>;
 export interface UpdateMonitorInput {
   MonitorName: string;
   ResourcesToAdd?: string[];
@@ -463,10 +561,12 @@ export interface UpdateMonitorInput {
   TrafficPercentageToMonitor?: number;
   HealthEventsConfig?: HealthEventsConfig;
 }
+const UpdateMonitorInput = /*@__PURE__*/ __L.at(__c6, 4) as any as S.Schema<UpdateMonitorInput>;
 export interface UpdateMonitorOutput {
   MonitorArn: string;
   Status: string;
 }
+const UpdateMonitorOutput = /*@__PURE__*/ __L.at(__c6, 5) as any as S.Schema<UpdateMonitorOutput>;
 export type CreateMonitorError =
   | AccessDeniedException
   | ConflictException
@@ -493,8 +593,8 @@ export const createMonitor: API.OperationMethod<
   CreateMonitorError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6) as any as S.Schema<CreateMonitorInput>,
-  output: __S(7) as any as S.Schema<CreateMonitorOutput>,
+  input: CreateMonitorInput,
+  output: CreateMonitorOutput,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -524,8 +624,8 @@ export const deleteMonitor: API.OperationMethod<
   DeleteMonitorError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8) as any as S.Schema<DeleteMonitorInput>,
-  output: __S(9) as any as S.Schema<DeleteMonitorOutput>,
+  input: DeleteMonitorInput,
+  output: DeleteMonitorOutput,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -559,8 +659,8 @@ export const getHealthEvent: API.OperationMethod<
   GetHealthEventError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10) as any as S.Schema<GetHealthEventInput>,
-  output: __S(20) as any as S.Schema<GetHealthEventOutput>,
+  input: GetHealthEventInput,
+  output: GetHealthEventOutput,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -593,8 +693,8 @@ export const getInternetEvent: API.OperationMethod<
   GetInternetEventError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21) as any as S.Schema<GetInternetEventInput>,
-  output: __S(23) as any as S.Schema<GetInternetEventOutput>,
+  input: GetInternetEventInput,
+  output: GetInternetEventOutput,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -623,8 +723,8 @@ export const getMonitor: API.OperationMethod<
   GetMonitorError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24) as any as S.Schema<GetMonitorInput>,
-  output: __S(25) as any as S.Schema<GetMonitorOutput>,
+  input: GetMonitorInput,
+  output: GetMonitorOutput,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -659,8 +759,8 @@ export const getQueryResults: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(26) as any as S.Schema<GetQueryResultsInput>,
-  output: __S(30) as any as S.Schema<GetQueryResultsOutput>,
+  input: GetQueryResultsInput,
+  output: GetQueryResultsOutput,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -705,8 +805,8 @@ export const getQueryStatus: API.OperationMethod<
   GetQueryStatusError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31) as any as S.Schema<GetQueryStatusInput>,
-  output: __S(32) as any as S.Schema<GetQueryStatusOutput>,
+  input: GetQueryStatusInput,
+  output: GetQueryStatusOutput,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -738,8 +838,8 @@ export const listHealthEvents: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   HealthEvent
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(33) as any as S.Schema<ListHealthEventsInput>,
-  output: __S(35) as any as S.Schema<ListHealthEventsOutput>,
+  input: ListHealthEventsInput,
+  output: ListHealthEventsOutput,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -782,8 +882,8 @@ export const listInternetEvents: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   InternetEventSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(36) as any as S.Schema<ListInternetEventsInput>,
-  output: __S(38) as any as S.Schema<ListInternetEventsOutput>,
+  input: ListInternetEventsInput,
+  output: ListInternetEventsOutput,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -817,8 +917,8 @@ export const listMonitors: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Monitor
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(39) as any as S.Schema<ListMonitorsInput>,
-  output: __S(42) as any as S.Schema<ListMonitorsOutput>,
+  input: ListMonitorsInput,
+  output: ListMonitorsOutput,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -852,8 +952,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43) as any as S.Schema<ListTagsForResourceInput>,
-  output: __S(44) as any as S.Schema<ListTagsForResourceOutput>,
+  input: ListTagsForResourceInput,
+  output: ListTagsForResourceOutput,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -888,8 +988,8 @@ export const startQuery: API.OperationMethod<
   StartQueryError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47) as any as S.Schema<StartQueryInput>,
-  output: __S(48) as any as S.Schema<StartQueryOutput>,
+  input: StartQueryInput,
+  output: StartQueryOutput,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -918,8 +1018,8 @@ export const stopQuery: API.OperationMethod<
   StopQueryError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49) as any as S.Schema<StopQueryInput>,
-  output: __S(9) as any as S.Schema<StopQueryOutput>,
+  input: StopQueryInput,
+  output: StopQueryOutput,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -950,8 +1050,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(50) as any as S.Schema<TagResourceInput>,
-  output: __S(9) as any as S.Schema<TagResourceOutput>,
+  input: TagResourceInput,
+  output: TagResourceOutput,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -980,8 +1080,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(51) as any as S.Schema<UntagResourceInput>,
-  output: __S(9) as any as S.Schema<UntagResourceOutput>,
+  input: UntagResourceInput,
+  output: UntagResourceOutput,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -1015,8 +1115,8 @@ export const updateMonitor: API.OperationMethod<
   UpdateMonitorError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(52) as any as S.Schema<UpdateMonitorInput>,
-  output: __S(53) as any as S.Schema<UpdateMonitorOutput>,
+  input: UpdateMonitorInput,
+  output: UpdateMonitorOutput,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1046,7 +1146,7 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "S3Config" });
     case 3:
-      return S.suspend(() => S.Struct({ S3Config: S.optional(__S(2)) })).annotate({
+      return S.suspend(() => S.Struct({ S3Config: S.optional(S3Config) })).annotate({
         identifier: "InternetMeasurementsLogDelivery",
       });
     case 4:
@@ -1062,21 +1162,21 @@ function __c0(j: number): any {
         S.Struct({
           AvailabilityScoreThreshold: S.optional(S.Number),
           PerformanceScoreThreshold: S.optional(S.Number),
-          AvailabilityLocalHealthEventsConfig: S.optional(__S(4)),
-          PerformanceLocalHealthEventsConfig: S.optional(__S(4)),
+          AvailabilityLocalHealthEventsConfig: S.optional(LocalHealthEventsConfig),
+          PerformanceLocalHealthEventsConfig: S.optional(LocalHealthEventsConfig),
         }),
       ).annotate({ identifier: "HealthEventsConfig" });
     case 6:
       return S.suspend(() =>
         S.Struct({
           MonitorName: S.String,
-          Resources: S.optional(__S(0)),
+          Resources: S.optional(SetOfARNs),
           ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          Tags: S.optional(__S(1)),
+          Tags: S.optional(TagMap),
           MaxCityNetworksToMonitor: S.optional(S.Number),
-          InternetMeasurementsLogDelivery: S.optional(__S(3)),
+          InternetMeasurementsLogDelivery: S.optional(InternetMeasurementsLogDelivery),
           TrafficPercentageToMonitor: S.optional(S.Number),
-          HealthEventsConfig: S.optional(__S(5)),
+          HealthEventsConfig: S.optional(HealthEventsConfig),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/v20210603/Monitors" }),
@@ -1138,10 +1238,10 @@ function __c1(j: number): any {
         identifier: "Network",
       });
     case 4:
-      return S.Array(__S(11));
+      return S.Array(Network);
     case 5:
       return S.suspend(() =>
-        S.Struct({ Networks: __S(12), AsPath: __S(12), NetworkEventType: S.String }),
+        S.Struct({ Networks: NetworkList, AsPath: NetworkList, NetworkEventType: S.String }),
       ).annotate({ identifier: "NetworkImpairment" });
     case 6:
       return S.suspend(() =>
@@ -1169,14 +1269,14 @@ function __c2(j: number): any {
           ExperienceScore: S.optional(S.Number),
           PercentOfTotalTrafficImpacted: S.optional(S.Number),
           PercentOfClientLocationImpacted: S.optional(S.Number),
-          RoundTripTime: S.optional(__S(15)),
+          RoundTripTime: S.optional(RoundTripTime),
         }),
       ).annotate({ identifier: "PerformanceMeasurement" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          Availability: S.optional(__S(14)),
-          Performance: S.optional(__S(16)),
+          Availability: S.optional(AvailabilityMeasurement),
+          Performance: S.optional(PerformanceMeasurement),
         }),
       ).annotate({ identifier: "InternetHealth" });
     case 2:
@@ -1194,13 +1294,13 @@ function __c2(j: number): any {
           SubdivisionCode: S.optional(S.String),
           ServiceLocation: S.optional(S.String),
           Status: S.String,
-          CausedBy: S.optional(__S(13)),
-          InternetHealth: S.optional(__S(17)),
-          Ipv4Prefixes: S.optional(__S(0)),
+          CausedBy: S.optional(NetworkImpairment),
+          InternetHealth: S.optional(InternetHealth),
+          Ipv4Prefixes: S.optional(Ipv4PrefixList),
         }),
       ).annotate({ identifier: "ImpactedLocation" });
     case 3:
-      return S.Array(__S(18));
+      return S.Array(ImpactedLocation);
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -1210,7 +1310,7 @@ function __c2(j: number): any {
           EndedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           CreatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           LastUpdatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-          ImpactedLocations: __S(19),
+          ImpactedLocations: ImpactedLocationsList,
           Status: S.String,
           PercentOfTotalTrafficImpacted: S.optional(S.Number),
           ImpactType: S.String,
@@ -1250,7 +1350,7 @@ function __c2(j: number): any {
           EventArn: S.String,
           StartedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           EndedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          ClientLocation: __S(22),
+          ClientLocation: ClientLocation,
           EventType: S.String,
           EventStatus: S.String,
         }),
@@ -1280,17 +1380,17 @@ function __c3(j: number): any {
         S.Struct({
           MonitorName: S.String,
           MonitorArn: S.String,
-          Resources: __S(0),
+          Resources: SetOfARNs,
           Status: S.String,
           CreatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           ModifiedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           ProcessingStatus: S.optional(S.String),
           ProcessingStatusInfo: S.optional(S.String),
-          Tags: S.optional(__S(1)),
+          Tags: S.optional(TagMap),
           MaxCityNetworksToMonitor: S.optional(S.Number),
-          InternetMeasurementsLogDelivery: S.optional(__S(3)),
+          InternetMeasurementsLogDelivery: S.optional(InternetMeasurementsLogDelivery),
           TrafficPercentageToMonitor: S.optional(S.Number),
-          HealthEventsConfig: S.optional(__S(5)),
+          HealthEventsConfig: S.optional(HealthEventsConfig),
         }),
       ).annotate({ identifier: "GetMonitorOutput" });
     case 2:
@@ -1319,14 +1419,14 @@ function __c3(j: number): any {
         S.Struct({ Name: S.optional(S.String), Type: S.optional(S.String) }),
       ).annotate({ identifier: "QueryField" });
     case 4:
-      return S.Array(__S(27));
+      return S.Array(QueryField);
     case 5:
-      return S.Array(__S(0));
+      return S.Array(QueryRow);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          Fields: __S(28),
-          Data: S.optional(__S(29)),
+          Fields: QueryFields,
+          Data: S.optional(QueryData),
           NextToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetQueryResultsOutput" });
@@ -1383,10 +1483,10 @@ function __c4(j: number): any {
         ),
       ).annotate({ identifier: "ListHealthEventsInput" });
     case 2:
-      return S.Array(__S(20));
+      return S.Array(HealthEvent);
     case 3:
       return S.suspend(() =>
-        S.Struct({ HealthEvents: __S(34), NextToken: S.optional(S.String) }),
+        S.Struct({ HealthEvents: HealthEventList, NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListHealthEventsOutput" });
     case 4:
       return S.suspend(() =>
@@ -1413,10 +1513,10 @@ function __c4(j: number): any {
         ),
       ).annotate({ identifier: "ListInternetEventsInput" });
     case 5:
-      return S.Array(__S(23));
+      return S.Array(InternetEventSummary);
     case 6:
       return S.suspend(() =>
-        S.Struct({ InternetEvents: __S(37), NextToken: S.optional(S.String) }),
+        S.Struct({ InternetEvents: InternetEventsList, NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListInternetEventsOutput" });
     case 7:
       return S.suspend(() =>
@@ -1450,10 +1550,10 @@ function __c5(j: number): any {
         }),
       ).annotate({ identifier: "Monitor" });
     case 1:
-      return S.Array(__S(40));
+      return S.Array(Monitor);
     case 2:
       return S.suspend(() =>
-        S.Struct({ Monitors: __S(41), NextToken: S.optional(S.String) }),
+        S.Struct({ Monitors: MonitorList, NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListMonitorsOutput" });
     case 3:
       return S.suspend(() =>
@@ -1469,7 +1569,7 @@ function __c5(j: number): any {
         ),
       ).annotate({ identifier: "ListTagsForResourceInput" });
     case 4:
-      return S.suspend(() => S.Struct({ Tags: S.optional(__S(1)) })).annotate({
+      return S.suspend(() => S.Struct({ Tags: S.optional(TagMap) })).annotate({
         identifier: "ListTagsForResourceOutput",
       });
     case 5:
@@ -1477,11 +1577,11 @@ function __c5(j: number): any {
         S.Struct({
           Field: S.optional(S.String),
           Operator: S.optional(S.String),
-          Values: S.optional(__S(0)),
+          Values: S.optional(FilterList),
         }),
       ).annotate({ identifier: "FilterParameter" });
     case 6:
-      return S.Array(__S(45));
+      return S.Array(FilterParameter);
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -1489,7 +1589,7 @@ function __c5(j: number): any {
           StartTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           EndTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           QueryType: S.String,
-          FilterParameters: S.optional(__S(46)),
+          FilterParameters: S.optional(FilterParameters),
           LinkedAccountId: S.optional(S.String),
         }).pipe(
           T.all(
@@ -1531,7 +1631,7 @@ function __c6(j: number): any {
       ).annotate({ identifier: "StopQueryInput" });
     case 2:
       return S.suspend(() =>
-        S.Struct({ ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")), Tags: __S(1) }).pipe(
+        S.Struct({ ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")), Tags: TagMap }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/tags/{ResourceArn}" }),
             svc,
@@ -1546,7 +1646,7 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")),
-          TagKeys: __S(0).pipe(T.HttpQuery("tagKeys")),
+          TagKeys: TagKeys.pipe(T.HttpQuery("tagKeys")),
         }).pipe(
           T.all(
             T.Http({ method: "DELETE", uri: "/tags/{ResourceArn}" }),
@@ -1562,14 +1662,14 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           MonitorName: S.String.pipe(T.HttpLabel("MonitorName")),
-          ResourcesToAdd: S.optional(__S(0)),
-          ResourcesToRemove: S.optional(__S(0)),
+          ResourcesToAdd: S.optional(SetOfARNs),
+          ResourcesToRemove: S.optional(SetOfARNs),
           Status: S.optional(S.String),
           ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
           MaxCityNetworksToMonitor: S.optional(S.Number),
-          InternetMeasurementsLogDelivery: S.optional(__S(3)),
+          InternetMeasurementsLogDelivery: S.optional(InternetMeasurementsLogDelivery),
           TrafficPercentageToMonitor: S.optional(S.Number),
-          HealthEventsConfig: S.optional(__S(5)),
+          HealthEventsConfig: S.optional(HealthEventsConfig),
         }).pipe(
           T.all(
             T.Http({ method: "PATCH", uri: "/v20210603/Monitors/{MonitorName}" }),
@@ -1585,28 +1685,5 @@ function __c6(j: number): any {
       return S.suspend(() => S.Struct({ MonitorArn: S.String, Status: S.String })).annotate({
         identifier: "UpdateMonitorOutput",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
   }
 }

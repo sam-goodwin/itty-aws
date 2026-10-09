@@ -6,8 +6,6 @@ import * as S from "@distilled.cloud/core/schema";
 import { PosthogProtocol, type PosthogOpError, type PosthogOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { PosthogOpError, PosthogOpContext };
 
@@ -46,6 +44,11 @@ export interface CreateObjectMediaPreviewRequest {
   exported_asset_id?: string | null;
   event_definition_id?: string | null;
 }
+const CreateObjectMediaPreviewRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<CreateObjectMediaPreviewRequest>;
+
 export interface ObjectMediaPreviewOutput {
   id?: string;
   created_at?: string;
@@ -55,16 +58,31 @@ export interface ObjectMediaPreviewOutput {
   media_type?: string;
   metadata?: unknown;
 }
+const ObjectMediaPreviewOutput = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<ObjectMediaPreviewOutput>;
+
 export interface GetObjectMediaPreviewRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A UUID string identifying this object media preview. */
   id: string;
 }
+const GetObjectMediaPreviewRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<GetObjectMediaPreviewRequest>;
+
 export interface GetObjectMediaPreviewsPreferredForEventRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
+const GetObjectMediaPreviewsPreferredForEventRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<GetObjectMediaPreviewsPreferredForEventRequest>;
+
 export interface ListObjectMediaPreviewsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -73,20 +91,45 @@ export interface ListObjectMediaPreviewsRequest {
   /** The initial index from which to return the results. */
   offset?: number;
 }
+const ListObjectMediaPreviewsRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<ListObjectMediaPreviewsRequest>;
+
 export type PaginatedObjectMediaPreviewListOutputResultsList = Array<ObjectMediaPreviewOutput>;
+const PaginatedObjectMediaPreviewListOutputResultsList = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<PaginatedObjectMediaPreviewListOutputResultsList>;
+
 export interface PaginatedObjectMediaPreviewListOutput {
   count?: number;
   next?: string | null;
   previous?: string | null;
   results?: PaginatedObjectMediaPreviewListOutputResultsList;
 }
+const PaginatedObjectMediaPreviewListOutput = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<PaginatedObjectMediaPreviewListOutput>;
+
 export interface ObjectMediaPreviewsDestroyRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A UUID string identifying this object media preview. */
   id: string;
 }
+const ObjectMediaPreviewsDestroyRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<ObjectMediaPreviewsDestroyRequest>;
+
 export interface ObjectMediaPreviewsDestroyResponse {}
+const ObjectMediaPreviewsDestroyResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<ObjectMediaPreviewsDestroyResponse>;
+
 export interface UpdateObjectMediaPreviewRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -97,6 +140,11 @@ export interface UpdateObjectMediaPreviewRequest {
   exported_asset_id?: string | null;
   event_definition_id?: string | null;
 }
+const UpdateObjectMediaPreviewRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<UpdateObjectMediaPreviewRequest>;
+
 export interface UpdateObjectMediaPreviewsPartialRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -107,6 +155,11 @@ export interface UpdateObjectMediaPreviewsPartialRequest {
   exported_asset_id?: string | null;
   event_definition_id?: string | null;
 }
+const UpdateObjectMediaPreviewsPartialRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<UpdateObjectMediaPreviewsPartialRequest>;
+
 export type CreateObjectMediaPreviewError = BadRequest | Forbidden | NotFound | PosthogOpError;
 export const createObjectMediaPreview: API.OperationMethod<
   CreateObjectMediaPreviewRequest,
@@ -114,8 +167,8 @@ export const createObjectMediaPreview: API.OperationMethod<
   CreateObjectMediaPreviewError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<CreateObjectMediaPreviewRequest>,
-  output: __S(1) as any as S.Schema<ObjectMediaPreviewOutput>,
+  input: CreateObjectMediaPreviewRequest,
+  output: ObjectMediaPreviewOutput,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -128,8 +181,8 @@ export const getObjectMediaPreview: API.OperationMethod<
   GetObjectMediaPreviewError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2) as any as S.Schema<GetObjectMediaPreviewRequest>,
-  output: __S(1) as any as S.Schema<ObjectMediaPreviewOutput>,
+  input: GetObjectMediaPreviewRequest,
+  output: ObjectMediaPreviewOutput,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -143,8 +196,8 @@ export const getObjectMediaPreviewsPreferredForEvent: API.OperationMethod<
   GetObjectMediaPreviewsPreferredForEventError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3) as any as S.Schema<GetObjectMediaPreviewsPreferredForEventRequest>,
-  output: __S(1) as any as S.Schema<ObjectMediaPreviewOutput>,
+  input: GetObjectMediaPreviewsPreferredForEventRequest,
+  output: ObjectMediaPreviewOutput,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -157,8 +210,8 @@ export const listObjectMediaPreviews: API.OperationMethod<
   ListObjectMediaPreviewsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4) as any as S.Schema<ListObjectMediaPreviewsRequest>,
-  output: __S(6) as any as S.Schema<PaginatedObjectMediaPreviewListOutput>,
+  input: ListObjectMediaPreviewsRequest,
+  output: PaginatedObjectMediaPreviewListOutput,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -171,8 +224,8 @@ export const objectMediaPreviewsDestroy: API.OperationMethod<
   ObjectMediaPreviewsDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7) as any as S.Schema<ObjectMediaPreviewsDestroyRequest>,
-  output: __S(8) as any as S.Schema<ObjectMediaPreviewsDestroyResponse>,
+  input: ObjectMediaPreviewsDestroyRequest,
+  output: ObjectMediaPreviewsDestroyResponse,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -185,8 +238,8 @@ export const updateObjectMediaPreview: API.OperationMethod<
   UpdateObjectMediaPreviewError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9) as any as S.Schema<UpdateObjectMediaPreviewRequest>,
-  output: __S(1) as any as S.Schema<ObjectMediaPreviewOutput>,
+  input: UpdateObjectMediaPreviewRequest,
+  output: ObjectMediaPreviewOutput,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -203,8 +256,8 @@ export const updateObjectMediaPreviewsPartial: API.OperationMethod<
   UpdateObjectMediaPreviewsPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10) as any as S.Schema<UpdateObjectMediaPreviewsPartialRequest>,
-  output: __S(1) as any as S.Schema<ObjectMediaPreviewOutput>,
+  input: UpdateObjectMediaPreviewsPartialRequest,
+  output: ObjectMediaPreviewOutput,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -288,14 +341,14 @@ function __c0(j: number): any {
         identifier: "ListObjectMediaPreviewsRequest",
       });
     case 5:
-      return S.Array(__S(1));
+      return S.Array(ObjectMediaPreviewOutput);
     case 6:
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.Number),
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: S.optional(__S(5)),
+          results: S.optional(PaginatedObjectMediaPreviewListOutputResultsList),
         }),
       ).annotate({
         identifier: "PaginatedObjectMediaPreviewListOutput",
@@ -361,18 +414,5 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "UpdateObjectMediaPreviewsPartialRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
   }
 }

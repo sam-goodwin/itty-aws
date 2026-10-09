@@ -12,8 +12,6 @@ import {
 } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { CloudflareOpError, CloudflareOpContext };
 
@@ -157,18 +155,49 @@ export class ProjectNotFound
   ) {}
 
 export type AssetsCheckMissingRequestHashesList = Array<string>;
+const AssetsCheckMissingRequestHashesList = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<AssetsCheckMissingRequestHashesList>;
+
 export interface AssetsCheckMissingRequest {
   /** List of file content hashes to check for existence in the asset store. */
   hashes: AssetsCheckMissingRequestHashesList;
 }
+const AssetsCheckMissingRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<AssetsCheckMissingRequest>;
+
 export type AssetsCheckMissingResultList = Array<string>;
+const AssetsCheckMissingResultList =
+  AssetsCheckMissingRequestHashesList as any as S.Schema<AssetsCheckMissingResultList>;
+
 export type AssetsCheckMissingResponse = AssetsCheckMissingResultList;
+const AssetsCheckMissingResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<AssetsCheckMissingResponse>;
+
 export type AssetsUpsertHashesRequestHashesList = Array<string>;
+const AssetsUpsertHashesRequestHashesList =
+  AssetsCheckMissingRequestHashesList as any as S.Schema<AssetsUpsertHashesRequestHashesList>;
+
 export interface AssetsUpsertHashesRequest {
   /** List of file content hashes to register in the asset store. */
   hashes: AssetsUpsertHashesRequestHashesList;
 }
+const AssetsUpsertHashesRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<AssetsUpsertHashesRequest>;
+
 export interface AssetsUpsertHashesResponse {}
+const AssetsUpsertHashesResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<AssetsUpsertHashesResponse>;
+
 export interface ProjectsCreateRequestBuildConfig {
   /** Enable build caching for the project. */
   buildCaching?: boolean;
@@ -183,71 +212,172 @@ export interface ProjectsCreateRequestBuildConfig {
   /** The auth token for analytics. */
   webAnalyticsToken?: string;
 }
+const ProjectsCreateRequestBuildConfig = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<ProjectsCreateRequestBuildConfig>;
+
 export interface ProjectsCreateRequestDeploymentConfigsPreviewAiBindingsValue {
   projectId: string;
 }
+const ProjectsCreateRequestDeploymentConfigsPreviewAiBindingsValue = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<ProjectsCreateRequestDeploymentConfigsPreviewAiBindingsValue>;
+
 export type ProjectsCreateRequestDeploymentConfigsPreviewAiBindingsMap = {
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewAiBindingsValue | undefined;
 };
+const ProjectsCreateRequestDeploymentConfigsPreviewAiBindingsMap = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<ProjectsCreateRequestDeploymentConfigsPreviewAiBindingsMap>;
+
 export interface ProjectsCreateRequestDeploymentConfigsPreviewAnalyticsEngineDatasetsValue {
   /** Name of the dataset. */
   dataset: string;
 }
+const ProjectsCreateRequestDeploymentConfigsPreviewAnalyticsEngineDatasetsValue =
+  /*@__PURE__*/ __L.at(
+    __c1,
+    0,
+  ) as any as S.Schema<ProjectsCreateRequestDeploymentConfigsPreviewAnalyticsEngineDatasetsValue>;
+
 export type ProjectsCreateRequestDeploymentConfigsPreviewAnalyticsEngineDatasetsMap = {
   [key: string]:
     | ProjectsCreateRequestDeploymentConfigsPreviewAnalyticsEngineDatasetsValue
     | undefined;
 };
+const ProjectsCreateRequestDeploymentConfigsPreviewAnalyticsEngineDatasetsMap =
+  /*@__PURE__*/ __L.at(
+    __c1,
+    1,
+  ) as any as S.Schema<ProjectsCreateRequestDeploymentConfigsPreviewAnalyticsEngineDatasetsMap>;
+
 export type ProjectsCreateRequestDeploymentConfigsPreviewBrowsersMap = {
   [key: string]: unknown | undefined;
 };
+const ProjectsCreateRequestDeploymentConfigsPreviewBrowsersMap = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<ProjectsCreateRequestDeploymentConfigsPreviewBrowsersMap>;
+
 export type ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList = Array<string>;
+const ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList>;
+
 export type ProjectsCreateRequestDeploymentConfigsPreviewD1DatabasesMap = {
   [key: string]: unknown | undefined;
 };
+const ProjectsCreateRequestDeploymentConfigsPreviewD1DatabasesMap =
+  ProjectsCreateRequestDeploymentConfigsPreviewBrowsersMap as any as S.Schema<ProjectsCreateRequestDeploymentConfigsPreviewD1DatabasesMap>;
+
 export interface ProjectsCreateRequestDeploymentConfigsPreviewDurableObjectNamespacesValue {
   /** ID of the Durable Object namespace. */
   namespaceId: string;
 }
+const ProjectsCreateRequestDeploymentConfigsPreviewDurableObjectNamespacesValue =
+  /*@__PURE__*/ __L.at(
+    __c1,
+    4,
+  ) as any as S.Schema<ProjectsCreateRequestDeploymentConfigsPreviewDurableObjectNamespacesValue>;
+
 export type ProjectsCreateRequestDeploymentConfigsPreviewDurableObjectNamespacesMap = {
   [key: string]:
     | ProjectsCreateRequestDeploymentConfigsPreviewDurableObjectNamespacesValue
     | undefined;
 };
+const ProjectsCreateRequestDeploymentConfigsPreviewDurableObjectNamespacesMap =
+  /*@__PURE__*/ __L.at(
+    __c1,
+    5,
+  ) as any as S.Schema<ProjectsCreateRequestDeploymentConfigsPreviewDurableObjectNamespacesMap>;
+
 export type UntypedBindingMap = { [key: string]: unknown | undefined };
+const UntypedBindingMap =
+  ProjectsCreateRequestDeploymentConfigsPreviewBrowsersMap as any as S.Schema<UntypedBindingMap>;
+
 export interface ProjectsCreateRequestDeploymentConfigsPreviewHyperdriveBindingsValue {
   id: string;
 }
+const ProjectsCreateRequestDeploymentConfigsPreviewHyperdriveBindingsValue = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<ProjectsCreateRequestDeploymentConfigsPreviewHyperdriveBindingsValue>;
+
 export type ProjectsCreateRequestDeploymentConfigsPreviewHyperdriveBindingsMap = {
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewHyperdriveBindingsValue | undefined;
 };
+const ProjectsCreateRequestDeploymentConfigsPreviewHyperdriveBindingsMap = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<ProjectsCreateRequestDeploymentConfigsPreviewHyperdriveBindingsMap>;
+
 export type ProjectsCreateRequestDeploymentConfigsPreviewKvNamespacesMap = {
   [key: string]: unknown | undefined;
 };
+const ProjectsCreateRequestDeploymentConfigsPreviewKvNamespacesMap =
+  ProjectsCreateRequestDeploymentConfigsPreviewBrowsersMap as any as S.Schema<ProjectsCreateRequestDeploymentConfigsPreviewKvNamespacesMap>;
+
 export interface ProjectsCreateRequestDeploymentConfigsPreviewLimits {
   /** CPU time limit in milliseconds. */
   cpuMs: number;
 }
+const ProjectsCreateRequestDeploymentConfigsPreviewLimits = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<ProjectsCreateRequestDeploymentConfigsPreviewLimits>;
+
 export interface ProjectsCreateRequestDeploymentConfigsPreviewMtlsCertificatesValue {
   certificateId: string;
 }
+const ProjectsCreateRequestDeploymentConfigsPreviewMtlsCertificatesValue = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<ProjectsCreateRequestDeploymentConfigsPreviewMtlsCertificatesValue>;
+
 export type ProjectsCreateRequestDeploymentConfigsPreviewMtlsCertificatesMap = {
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewMtlsCertificatesValue | undefined;
 };
+const ProjectsCreateRequestDeploymentConfigsPreviewMtlsCertificatesMap = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<ProjectsCreateRequestDeploymentConfigsPreviewMtlsCertificatesMap>;
+
 export interface ProjectsCreateRequestDeploymentConfigsPreviewPlacement {
   /** Placement mode. */
   mode: string;
 }
+const ProjectsCreateRequestDeploymentConfigsPreviewPlacement = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<ProjectsCreateRequestDeploymentConfigsPreviewPlacement>;
+
 export interface ProjectsCreateRequestDeploymentConfigsPreviewQueueProducersValue {
   /** Name of the Queue. */
   name: string;
 }
+const ProjectsCreateRequestDeploymentConfigsPreviewQueueProducersValue = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<ProjectsCreateRequestDeploymentConfigsPreviewQueueProducersValue>;
+
 export type ProjectsCreateRequestDeploymentConfigsPreviewQueueProducersMap = {
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewQueueProducersValue | undefined;
 };
+const ProjectsCreateRequestDeploymentConfigsPreviewQueueProducersMap = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<ProjectsCreateRequestDeploymentConfigsPreviewQueueProducersMap>;
+
 export type ProjectsCreateRequestDeploymentConfigsPreviewR2BucketsMap = {
   [key: string]: unknown | undefined;
 };
+const ProjectsCreateRequestDeploymentConfigsPreviewR2BucketsMap =
+  ProjectsCreateRequestDeploymentConfigsPreviewBrowsersMap as any as S.Schema<ProjectsCreateRequestDeploymentConfigsPreviewR2BucketsMap>;
+
 export interface ProjectsCreateRequestDeploymentConfigsPreviewServicesValue {
   /** The Service name. */
   service: string;
@@ -256,19 +386,41 @@ export interface ProjectsCreateRequestDeploymentConfigsPreviewServicesValue {
   /** The Service environment. */
   environment?: string;
 }
+const ProjectsCreateRequestDeploymentConfigsPreviewServicesValue = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<ProjectsCreateRequestDeploymentConfigsPreviewServicesValue>;
+
 export type ProjectsCreateRequestDeploymentConfigsPreviewServicesMap = {
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewServicesValue | undefined;
 };
+const ProjectsCreateRequestDeploymentConfigsPreviewServicesMap = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<ProjectsCreateRequestDeploymentConfigsPreviewServicesMap>;
+
 export type ProjectsCreateRequestDeploymentConfigsPreviewUsageModel =
   | "standard"
   | "bundled"
   | "unbound";
+const ProjectsCreateRequestDeploymentConfigsPreviewUsageModel = S.String;
+
 export interface ProjectsCreateRequestDeploymentConfigsPreviewVectorizeBindingsValue {
   indexName: string;
 }
+const ProjectsCreateRequestDeploymentConfigsPreviewVectorizeBindingsValue = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<ProjectsCreateRequestDeploymentConfigsPreviewVectorizeBindingsValue>;
+
 export type ProjectsCreateRequestDeploymentConfigsPreviewVectorizeBindingsMap = {
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewVectorizeBindingsValue | undefined;
 };
+const ProjectsCreateRequestDeploymentConfigsPreviewVectorizeBindingsMap = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<ProjectsCreateRequestDeploymentConfigsPreviewVectorizeBindingsMap>;
+
 export interface ProjectsCreateRequestDeploymentConfigsPreview {
   /** Constellation bindings used for Pages Functions. */
   aiBindings?: ProjectsCreateRequestDeploymentConfigsPreviewAiBindingsMap;
@@ -315,11 +467,19 @@ export interface ProjectsCreateRequestDeploymentConfigsPreview {
   /** Hash of the Wrangler configuration used for the deployment. */
   wranglerConfigHash?: string;
 }
+const ProjectsCreateRequestDeploymentConfigsPreview = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<ProjectsCreateRequestDeploymentConfigsPreview>;
+
 export type ProjectsCreateRequestDeploymentConfigsProductionAiBindingsValue =
   ProjectsCreateRequestDeploymentConfigsPreviewAiBindingsValue;
 export type ProjectsCreateRequestDeploymentConfigsProductionAiBindingsMap = {
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewAiBindingsValue | undefined;
 };
+const ProjectsCreateRequestDeploymentConfigsProductionAiBindingsMap =
+  ProjectsCreateRequestDeploymentConfigsPreviewAiBindingsMap as any as S.Schema<ProjectsCreateRequestDeploymentConfigsProductionAiBindingsMap>;
+
 export type ProjectsCreateRequestDeploymentConfigsProductionAnalyticsEngineDatasetsValue =
   ProjectsCreateRequestDeploymentConfigsPreviewAnalyticsEngineDatasetsValue;
 export type ProjectsCreateRequestDeploymentConfigsProductionAnalyticsEngineDatasetsMap = {
@@ -327,13 +487,27 @@ export type ProjectsCreateRequestDeploymentConfigsProductionAnalyticsEngineDatas
     | ProjectsCreateRequestDeploymentConfigsPreviewAnalyticsEngineDatasetsValue
     | undefined;
 };
+const ProjectsCreateRequestDeploymentConfigsProductionAnalyticsEngineDatasetsMap =
+  ProjectsCreateRequestDeploymentConfigsPreviewAnalyticsEngineDatasetsMap as any as S.Schema<ProjectsCreateRequestDeploymentConfigsProductionAnalyticsEngineDatasetsMap>;
+
 export type ProjectsCreateRequestDeploymentConfigsProductionBrowsersMap = {
   [key: string]: unknown | undefined;
 };
+const ProjectsCreateRequestDeploymentConfigsProductionBrowsersMap =
+  ProjectsCreateRequestDeploymentConfigsPreviewBrowsersMap as any as S.Schema<ProjectsCreateRequestDeploymentConfigsProductionBrowsersMap>;
+
 export type ProjectsCreateRequestDeploymentConfigsProductionCompatibilityFlagsList = Array<string>;
+const ProjectsCreateRequestDeploymentConfigsProductionCompatibilityFlagsList =
+  ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList as any as S.Schema<ProjectsCreateRequestDeploymentConfigsProductionCompatibilityFlagsList>;
+
 export type ProjectsCreateRequestDeploymentConfigsProductionD1DatabasesMap = {
   [key: string]: unknown | undefined;
 };
+const ProjectsCreateRequestDeploymentConfigsProductionD1DatabasesMap = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<ProjectsCreateRequestDeploymentConfigsProductionD1DatabasesMap>;
+
 export type ProjectsCreateRequestDeploymentConfigsProductionDurableObjectNamespacesValue =
   ProjectsCreateRequestDeploymentConfigsPreviewDurableObjectNamespacesValue;
 export type ProjectsCreateRequestDeploymentConfigsProductionDurableObjectNamespacesMap = {
@@ -341,14 +515,23 @@ export type ProjectsCreateRequestDeploymentConfigsProductionDurableObjectNamespa
     | ProjectsCreateRequestDeploymentConfigsPreviewDurableObjectNamespacesValue
     | undefined;
 };
+const ProjectsCreateRequestDeploymentConfigsProductionDurableObjectNamespacesMap =
+  ProjectsCreateRequestDeploymentConfigsPreviewDurableObjectNamespacesMap as any as S.Schema<ProjectsCreateRequestDeploymentConfigsProductionDurableObjectNamespacesMap>;
+
 export type ProjectsCreateRequestDeploymentConfigsProductionHyperdriveBindingsValue =
   ProjectsCreateRequestDeploymentConfigsPreviewHyperdriveBindingsValue;
 export type ProjectsCreateRequestDeploymentConfigsProductionHyperdriveBindingsMap = {
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewHyperdriveBindingsValue | undefined;
 };
+const ProjectsCreateRequestDeploymentConfigsProductionHyperdriveBindingsMap =
+  ProjectsCreateRequestDeploymentConfigsPreviewHyperdriveBindingsMap as any as S.Schema<ProjectsCreateRequestDeploymentConfigsProductionHyperdriveBindingsMap>;
+
 export type ProjectsCreateRequestDeploymentConfigsProductionKvNamespacesMap = {
   [key: string]: unknown | undefined;
 };
+const ProjectsCreateRequestDeploymentConfigsProductionKvNamespacesMap =
+  ProjectsCreateRequestDeploymentConfigsProductionD1DatabasesMap as any as S.Schema<ProjectsCreateRequestDeploymentConfigsProductionKvNamespacesMap>;
+
 export type ProjectsCreateRequestDeploymentConfigsProductionLimits =
   ProjectsCreateRequestDeploymentConfigsPreviewLimits;
 export type ProjectsCreateRequestDeploymentConfigsProductionMtlsCertificatesValue =
@@ -356,6 +539,9 @@ export type ProjectsCreateRequestDeploymentConfigsProductionMtlsCertificatesValu
 export type ProjectsCreateRequestDeploymentConfigsProductionMtlsCertificatesMap = {
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewMtlsCertificatesValue | undefined;
 };
+const ProjectsCreateRequestDeploymentConfigsProductionMtlsCertificatesMap =
+  ProjectsCreateRequestDeploymentConfigsPreviewMtlsCertificatesMap as any as S.Schema<ProjectsCreateRequestDeploymentConfigsProductionMtlsCertificatesMap>;
+
 export type ProjectsCreateRequestDeploymentConfigsProductionPlacement =
   ProjectsCreateRequestDeploymentConfigsPreviewPlacement;
 export type ProjectsCreateRequestDeploymentConfigsProductionQueueProducersValue =
@@ -363,23 +549,37 @@ export type ProjectsCreateRequestDeploymentConfigsProductionQueueProducersValue 
 export type ProjectsCreateRequestDeploymentConfigsProductionQueueProducersMap = {
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewQueueProducersValue | undefined;
 };
+const ProjectsCreateRequestDeploymentConfigsProductionQueueProducersMap =
+  ProjectsCreateRequestDeploymentConfigsPreviewQueueProducersMap as any as S.Schema<ProjectsCreateRequestDeploymentConfigsProductionQueueProducersMap>;
+
 export type ProjectsCreateRequestDeploymentConfigsProductionR2BucketsMap = {
   [key: string]: unknown | undefined;
 };
+const ProjectsCreateRequestDeploymentConfigsProductionR2BucketsMap =
+  ProjectsCreateRequestDeploymentConfigsPreviewBrowsersMap as any as S.Schema<ProjectsCreateRequestDeploymentConfigsProductionR2BucketsMap>;
+
 export type ProjectsCreateRequestDeploymentConfigsProductionServicesValue =
   ProjectsCreateRequestDeploymentConfigsPreviewServicesValue;
 export type ProjectsCreateRequestDeploymentConfigsProductionServicesMap = {
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewServicesValue | undefined;
 };
+const ProjectsCreateRequestDeploymentConfigsProductionServicesMap =
+  ProjectsCreateRequestDeploymentConfigsPreviewServicesMap as any as S.Schema<ProjectsCreateRequestDeploymentConfigsProductionServicesMap>;
+
 export type ProjectsCreateRequestDeploymentConfigsProductionUsageModel =
   | "standard"
   | "bundled"
   | "unbound";
+const ProjectsCreateRequestDeploymentConfigsProductionUsageModel = S.String;
+
 export type ProjectsCreateRequestDeploymentConfigsProductionVectorizeBindingsValue =
   ProjectsCreateRequestDeploymentConfigsPreviewVectorizeBindingsValue;
 export type ProjectsCreateRequestDeploymentConfigsProductionVectorizeBindingsMap = {
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewVectorizeBindingsValue | undefined;
 };
+const ProjectsCreateRequestDeploymentConfigsProductionVectorizeBindingsMap =
+  ProjectsCreateRequestDeploymentConfigsPreviewVectorizeBindingsMap as any as S.Schema<ProjectsCreateRequestDeploymentConfigsProductionVectorizeBindingsMap>;
+
 export interface ProjectsCreateRequestDeploymentConfigsProduction {
   /** Constellation bindings used for Pages Functions. */
   aiBindings?: ProjectsCreateRequestDeploymentConfigsProductionAiBindingsMap;
@@ -426,17 +626,41 @@ export interface ProjectsCreateRequestDeploymentConfigsProduction {
   /** Hash of the Wrangler configuration used for the deployment. */
   wranglerConfigHash?: string;
 }
+const ProjectsCreateRequestDeploymentConfigsProduction = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<ProjectsCreateRequestDeploymentConfigsProduction>;
+
 export interface ProjectsCreateRequestDeploymentConfigs {
   /** Configs for preview deploys. */
   preview?: ProjectsCreateRequestDeploymentConfigsPreview;
   /** Configs for production deploys. */
   production?: ProjectsCreateRequestDeploymentConfigsProduction;
 }
+const ProjectsCreateRequestDeploymentConfigs = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<ProjectsCreateRequestDeploymentConfigs>;
+
 export type ProjectsCreateRequestSourceConfigPathExcludesList = Array<string>;
+const ProjectsCreateRequestSourceConfigPathExcludesList =
+  AssetsCheckMissingRequestHashesList as any as S.Schema<ProjectsCreateRequestSourceConfigPathExcludesList>;
+
 export type ProjectsCreateRequestSourceConfigPathIncludesList = Array<string>;
+const ProjectsCreateRequestSourceConfigPathIncludesList =
+  AssetsCheckMissingRequestHashesList as any as S.Schema<ProjectsCreateRequestSourceConfigPathIncludesList>;
+
 export type ProjectsCreateRequestSourceConfigPreviewBranchExcludesList = Array<string>;
+const ProjectsCreateRequestSourceConfigPreviewBranchExcludesList =
+  AssetsCheckMissingRequestHashesList as any as S.Schema<ProjectsCreateRequestSourceConfigPreviewBranchExcludesList>;
+
 export type ProjectsCreateRequestSourceConfigPreviewBranchIncludesList = Array<string>;
+const ProjectsCreateRequestSourceConfigPreviewBranchIncludesList =
+  AssetsCheckMissingRequestHashesList as any as S.Schema<ProjectsCreateRequestSourceConfigPreviewBranchIncludesList>;
+
 export type ProjectsCreateRequestSourceConfigPreviewDeploymentSetting = "all" | "none" | "custom";
+const ProjectsCreateRequestSourceConfigPreviewDeploymentSetting = S.String;
+
 export interface ProjectsCreateRequestSourceConfig {
   /** Use `production_deployments_enabled` and `preview_deployment_setting` for more granular control. */
   deploymentsEnabled?: boolean;
@@ -467,12 +691,24 @@ export interface ProjectsCreateRequestSourceConfig {
   /** The name of the repository. */
   repoName?: string;
 }
+const ProjectsCreateRequestSourceConfig = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<ProjectsCreateRequestSourceConfig>;
+
 export type ProjectsCreateRequestSourceType = "github" | "gitlab";
+const ProjectsCreateRequestSourceType = S.String;
+
 export interface ProjectsCreateRequestSource {
   config: ProjectsCreateRequestSourceConfig;
   /** The source control management provider. */
   type: ProjectsCreateRequestSourceType | (string & {});
 }
+const ProjectsCreateRequestSource = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<ProjectsCreateRequestSource>;
+
 export interface CreateProjectRequest {
   /** Identifier. */
   accountId: string;
@@ -487,7 +723,12 @@ export interface CreateProjectRequest {
   /** Configs for the project source control. */
   source?: ProjectsCreateRequestSource;
 }
+const CreateProjectRequest = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<CreateProjectRequest>;
+
 export type ProjectsCreateResponseCanonicalDeploymentAliasesList = Array<string>;
+const ProjectsCreateResponseCanonicalDeploymentAliasesList =
+  AssetsCheckMissingRequestHashesList as any as S.Schema<ProjectsCreateResponseCanonicalDeploymentAliasesList>;
+
 export interface ProjectsCreateResponseCanonicalDeploymentBuildConfig {
   /** The classifying tag for analytics. */
   webAnalyticsTag: string;
@@ -502,6 +743,11 @@ export interface ProjectsCreateResponseCanonicalDeploymentBuildConfig {
   /** Directory to run the command. */
   rootDir?: string | null;
 }
+const ProjectsCreateResponseCanonicalDeploymentBuildConfig = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<ProjectsCreateResponseCanonicalDeploymentBuildConfig>;
+
 export interface ProjectsCreateResponseCanonicalDeploymentDeploymentTriggerMetadata {
   /** Where the trigger happened. */
   branch: string;
@@ -512,23 +758,39 @@ export interface ProjectsCreateResponseCanonicalDeploymentDeploymentTriggerMetad
   /** Message of the deployment trigger commit. */
   commitMessage: string;
 }
+const ProjectsCreateResponseCanonicalDeploymentDeploymentTriggerMetadata = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<ProjectsCreateResponseCanonicalDeploymentDeploymentTriggerMetadata>;
+
 export type ProjectsCreateResponseCanonicalDeploymentDeploymentTriggerType =
   | "github:push"
   | "ad_hoc"
   | "deploy_hook";
+const ProjectsCreateResponseCanonicalDeploymentDeploymentTriggerType = S.String;
+
 export interface ProjectsCreateResponseCanonicalDeploymentDeploymentTrigger {
   /** Additional info about the trigger. */
   metadata: ProjectsCreateResponseCanonicalDeploymentDeploymentTriggerMetadata;
   /** What caused the deployment. */
   type: ProjectsCreateResponseCanonicalDeploymentDeploymentTriggerType;
 }
+const ProjectsCreateResponseCanonicalDeploymentDeploymentTrigger = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<ProjectsCreateResponseCanonicalDeploymentDeploymentTrigger>;
+
 export type ProjectsCreateResponseCanonicalDeploymentEnvironment = "preview" | "production";
+const ProjectsCreateResponseCanonicalDeploymentEnvironment = S.String;
+
 export type ProjectsCreateResponseCanonicalDeploymentLatestStageName =
   | "queued"
   | "initialize"
   | "clone_repo"
   | "build"
   | "deploy";
+const ProjectsCreateResponseCanonicalDeploymentLatestStageName = S.String;
+
 export type ProjectsCreateResponseCanonicalDeploymentLatestStageStatus =
   | "success"
   | "idle"
@@ -536,6 +798,8 @@ export type ProjectsCreateResponseCanonicalDeploymentLatestStageStatus =
   | "failure"
   | "canceled"
   | "skipped";
+const ProjectsCreateResponseCanonicalDeploymentLatestStageStatus = S.String;
+
 export interface ProjectsCreateResponseCanonicalDeploymentLatestStage {
   /** When the stage ended. */
   endedOn: string;
@@ -546,16 +810,35 @@ export interface ProjectsCreateResponseCanonicalDeploymentLatestStage {
   /** State of the current stage. */
   status: ProjectsCreateResponseCanonicalDeploymentLatestStageStatus;
 }
+const ProjectsCreateResponseCanonicalDeploymentLatestStage = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<ProjectsCreateResponseCanonicalDeploymentLatestStage>;
+
 export type ProjectsCreateResponseCanonicalDeploymentSourceConfigPathExcludesList = Array<string>;
+const ProjectsCreateResponseCanonicalDeploymentSourceConfigPathExcludesList =
+  ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList as any as S.Schema<ProjectsCreateResponseCanonicalDeploymentSourceConfigPathExcludesList>;
+
 export type ProjectsCreateResponseCanonicalDeploymentSourceConfigPathIncludesList = Array<string>;
+const ProjectsCreateResponseCanonicalDeploymentSourceConfigPathIncludesList =
+  ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList as any as S.Schema<ProjectsCreateResponseCanonicalDeploymentSourceConfigPathIncludesList>;
+
 export type ProjectsCreateResponseCanonicalDeploymentSourceConfigPreviewBranchExcludesList =
   Array<string>;
+const ProjectsCreateResponseCanonicalDeploymentSourceConfigPreviewBranchExcludesList =
+  ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList as any as S.Schema<ProjectsCreateResponseCanonicalDeploymentSourceConfigPreviewBranchExcludesList>;
+
 export type ProjectsCreateResponseCanonicalDeploymentSourceConfigPreviewBranchIncludesList =
   Array<string>;
+const ProjectsCreateResponseCanonicalDeploymentSourceConfigPreviewBranchIncludesList =
+  ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList as any as S.Schema<ProjectsCreateResponseCanonicalDeploymentSourceConfigPreviewBranchIncludesList>;
+
 export type ProjectsCreateResponseCanonicalDeploymentSourceConfigPreviewDeploymentSetting =
   | "all"
   | "none"
   | "custom";
+const ProjectsCreateResponseCanonicalDeploymentSourceConfigPreviewDeploymentSetting = S.String;
+
 export interface ProjectsCreateResponseCanonicalDeploymentSourceConfig {
   /** Use `production_deployments_enabled` and `preview_deployment_setting` for more granular control. */
   deploymentsEnabled: boolean;
@@ -584,12 +867,24 @@ export interface ProjectsCreateResponseCanonicalDeploymentSourceConfig {
   /** The name of the repository. */
   repoName: string;
 }
+const ProjectsCreateResponseCanonicalDeploymentSourceConfig = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<ProjectsCreateResponseCanonicalDeploymentSourceConfig>;
+
 export type ProjectsCreateResponseCanonicalDeploymentSourceType = "github" | "gitlab";
+const ProjectsCreateResponseCanonicalDeploymentSourceType = S.String;
+
 export interface ProjectsCreateResponseCanonicalDeploymentSource {
   config: ProjectsCreateResponseCanonicalDeploymentSourceConfig;
   /** The source control management provider. */
   type: ProjectsCreateResponseCanonicalDeploymentSourceType;
 }
+const ProjectsCreateResponseCanonicalDeploymentSource = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<ProjectsCreateResponseCanonicalDeploymentSource>;
+
 export type ProjectsCreateResponseCanonicalDeploymentStagesItemName =
   | "queued"
   | "initialize"
@@ -613,8 +908,16 @@ export interface ProjectsCreateResponseCanonicalDeploymentStagesItem {
   /** State of the current stage. */
   status: ProjectsCreateResponseCanonicalDeploymentStagesItemStatus;
 }
+const ProjectsCreateResponseCanonicalDeploymentStagesItem =
+  ProjectsCreateResponseCanonicalDeploymentLatestStage as any as S.Schema<ProjectsCreateResponseCanonicalDeploymentStagesItem>;
+
 export type ProjectsCreateResponseCanonicalDeploymentStagesList =
   Array<ProjectsCreateResponseCanonicalDeploymentStagesItem>;
+const ProjectsCreateResponseCanonicalDeploymentStagesList = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<ProjectsCreateResponseCanonicalDeploymentStagesList>;
+
 export type ProjectsCreateResponseCanonicalDeploymentSkipReason =
   | "commit_message"
   | "preview_deployments_disabled"
@@ -623,6 +926,8 @@ export type ProjectsCreateResponseCanonicalDeploymentSkipReason =
   | "branch_config"
   | "pages_to_workers_conversion"
   | "superseded_queued_build";
+const ProjectsCreateResponseCanonicalDeploymentSkipReason = S.String;
+
 export interface ProjectsCreateResponseCanonicalDeployment {
   /** Id of the deployment. */
   id: string;
@@ -661,16 +966,29 @@ export interface ProjectsCreateResponseCanonicalDeployment {
   /** Whether the deployment uses functions. */
   usesFunctions?: boolean | null;
 }
+const ProjectsCreateResponseCanonicalDeployment = /*@__PURE__*/ __L.at(
+  __c5,
+  0,
+) as any as S.Schema<ProjectsCreateResponseCanonicalDeployment>;
+
 export type ProjectsCreateResponseDeploymentConfigsPreviewCompatibilityFlagsList = Array<string>;
+const ProjectsCreateResponseDeploymentConfigsPreviewCompatibilityFlagsList =
+  ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList as any as S.Schema<ProjectsCreateResponseDeploymentConfigsPreviewCompatibilityFlagsList>;
+
 export type ProjectsCreateResponseDeploymentConfigsPreviewUsageModel =
   | "standard"
   | "bundled"
   | "unbound";
+const ProjectsCreateResponseDeploymentConfigsPreviewUsageModel = S.String;
+
 export type ProjectsCreateResponseDeploymentConfigsPreviewAiBindingsValue =
   ProjectsCreateRequestDeploymentConfigsPreviewAiBindingsValue;
 export type ProjectsCreateResponseDeploymentConfigsPreviewAiBindingsMap = {
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewAiBindingsValue | undefined;
 };
+const ProjectsCreateResponseDeploymentConfigsPreviewAiBindingsMap =
+  ProjectsCreateRequestDeploymentConfigsPreviewAiBindingsMap as any as S.Schema<ProjectsCreateResponseDeploymentConfigsPreviewAiBindingsMap>;
+
 export type ProjectsCreateResponseDeploymentConfigsPreviewAnalyticsEngineDatasetsValue =
   ProjectsCreateRequestDeploymentConfigsPreviewAnalyticsEngineDatasetsValue;
 export type ProjectsCreateResponseDeploymentConfigsPreviewAnalyticsEngineDatasetsMap = {
@@ -678,12 +996,21 @@ export type ProjectsCreateResponseDeploymentConfigsPreviewAnalyticsEngineDataset
     | ProjectsCreateRequestDeploymentConfigsPreviewAnalyticsEngineDatasetsValue
     | undefined;
 };
+const ProjectsCreateResponseDeploymentConfigsPreviewAnalyticsEngineDatasetsMap =
+  ProjectsCreateRequestDeploymentConfigsPreviewAnalyticsEngineDatasetsMap as any as S.Schema<ProjectsCreateResponseDeploymentConfigsPreviewAnalyticsEngineDatasetsMap>;
+
 export type ProjectsCreateResponseDeploymentConfigsPreviewBrowsersMap = {
   [key: string]: unknown | undefined;
 };
+const ProjectsCreateResponseDeploymentConfigsPreviewBrowsersMap =
+  ProjectsCreateRequestDeploymentConfigsPreviewBrowsersMap as any as S.Schema<ProjectsCreateResponseDeploymentConfigsPreviewBrowsersMap>;
+
 export type ProjectsCreateResponseDeploymentConfigsPreviewD1DatabasesMap = {
   [key: string]: unknown | undefined;
 };
+const ProjectsCreateResponseDeploymentConfigsPreviewD1DatabasesMap =
+  ProjectsCreateRequestDeploymentConfigsPreviewBrowsersMap as any as S.Schema<ProjectsCreateResponseDeploymentConfigsPreviewD1DatabasesMap>;
+
 export type ProjectsCreateResponseDeploymentConfigsPreviewDurableObjectNamespacesValue =
   ProjectsCreateRequestDeploymentConfigsPreviewDurableObjectNamespacesValue;
 export type ProjectsCreateResponseDeploymentConfigsPreviewDurableObjectNamespacesMap = {
@@ -691,14 +1018,23 @@ export type ProjectsCreateResponseDeploymentConfigsPreviewDurableObjectNamespace
     | ProjectsCreateRequestDeploymentConfigsPreviewDurableObjectNamespacesValue
     | undefined;
 };
+const ProjectsCreateResponseDeploymentConfigsPreviewDurableObjectNamespacesMap =
+  ProjectsCreateRequestDeploymentConfigsPreviewDurableObjectNamespacesMap as any as S.Schema<ProjectsCreateResponseDeploymentConfigsPreviewDurableObjectNamespacesMap>;
+
 export type ProjectsCreateResponseDeploymentConfigsPreviewHyperdriveBindingsValue =
   ProjectsCreateRequestDeploymentConfigsPreviewHyperdriveBindingsValue;
 export type ProjectsCreateResponseDeploymentConfigsPreviewHyperdriveBindingsMap = {
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewHyperdriveBindingsValue | undefined;
 };
+const ProjectsCreateResponseDeploymentConfigsPreviewHyperdriveBindingsMap =
+  ProjectsCreateRequestDeploymentConfigsPreviewHyperdriveBindingsMap as any as S.Schema<ProjectsCreateResponseDeploymentConfigsPreviewHyperdriveBindingsMap>;
+
 export type ProjectsCreateResponseDeploymentConfigsPreviewKvNamespacesMap = {
   [key: string]: unknown | undefined;
 };
+const ProjectsCreateResponseDeploymentConfigsPreviewKvNamespacesMap =
+  ProjectsCreateRequestDeploymentConfigsPreviewBrowsersMap as any as S.Schema<ProjectsCreateResponseDeploymentConfigsPreviewKvNamespacesMap>;
+
 export type ProjectsCreateResponseDeploymentConfigsPreviewLimits =
   ProjectsCreateRequestDeploymentConfigsPreviewLimits;
 export type ProjectsCreateResponseDeploymentConfigsPreviewMtlsCertificatesValue =
@@ -706,6 +1042,9 @@ export type ProjectsCreateResponseDeploymentConfigsPreviewMtlsCertificatesValue 
 export type ProjectsCreateResponseDeploymentConfigsPreviewMtlsCertificatesMap = {
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewMtlsCertificatesValue | undefined;
 };
+const ProjectsCreateResponseDeploymentConfigsPreviewMtlsCertificatesMap =
+  ProjectsCreateRequestDeploymentConfigsPreviewMtlsCertificatesMap as any as S.Schema<ProjectsCreateResponseDeploymentConfigsPreviewMtlsCertificatesMap>;
+
 export type ProjectsCreateResponseDeploymentConfigsPreviewPlacement =
   ProjectsCreateRequestDeploymentConfigsPreviewPlacement;
 export type ProjectsCreateResponseDeploymentConfigsPreviewQueueProducersValue =
@@ -713,9 +1052,15 @@ export type ProjectsCreateResponseDeploymentConfigsPreviewQueueProducersValue =
 export type ProjectsCreateResponseDeploymentConfigsPreviewQueueProducersMap = {
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewQueueProducersValue | undefined;
 };
+const ProjectsCreateResponseDeploymentConfigsPreviewQueueProducersMap =
+  ProjectsCreateRequestDeploymentConfigsPreviewQueueProducersMap as any as S.Schema<ProjectsCreateResponseDeploymentConfigsPreviewQueueProducersMap>;
+
 export type ProjectsCreateResponseDeploymentConfigsPreviewR2BucketsMap = {
   [key: string]: unknown | undefined;
 };
+const ProjectsCreateResponseDeploymentConfigsPreviewR2BucketsMap =
+  ProjectsCreateRequestDeploymentConfigsPreviewBrowsersMap as any as S.Schema<ProjectsCreateResponseDeploymentConfigsPreviewR2BucketsMap>;
+
 export interface ProjectsCreateResponseDeploymentConfigsPreviewServicesValue {
   /** The Service environment. */
   environment: string;
@@ -724,14 +1069,27 @@ export interface ProjectsCreateResponseDeploymentConfigsPreviewServicesValue {
   /** The entrypoint to bind to. */
   entrypoint?: string | null;
 }
+const ProjectsCreateResponseDeploymentConfigsPreviewServicesValue = /*@__PURE__*/ __L.at(
+  __c5,
+  1,
+) as any as S.Schema<ProjectsCreateResponseDeploymentConfigsPreviewServicesValue>;
+
 export type ProjectsCreateResponseDeploymentConfigsPreviewServicesMap = {
   [key: string]: ProjectsCreateResponseDeploymentConfigsPreviewServicesValue | undefined;
 };
+const ProjectsCreateResponseDeploymentConfigsPreviewServicesMap = /*@__PURE__*/ __L.at(
+  __c5,
+  2,
+) as any as S.Schema<ProjectsCreateResponseDeploymentConfigsPreviewServicesMap>;
+
 export type ProjectsCreateResponseDeploymentConfigsPreviewVectorizeBindingsValue =
   ProjectsCreateRequestDeploymentConfigsPreviewVectorizeBindingsValue;
 export type ProjectsCreateResponseDeploymentConfigsPreviewVectorizeBindingsMap = {
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewVectorizeBindingsValue | undefined;
 };
+const ProjectsCreateResponseDeploymentConfigsPreviewVectorizeBindingsMap =
+  ProjectsCreateRequestDeploymentConfigsPreviewVectorizeBindingsMap as any as S.Schema<ProjectsCreateResponseDeploymentConfigsPreviewVectorizeBindingsMap>;
+
 export interface ProjectsCreateResponseDeploymentConfigsPreview {
   /** Whether to always use the latest compatibility date for Pages Functions. */
   alwaysUseLatestCompatibilityDate: boolean;
@@ -778,16 +1136,31 @@ export interface ProjectsCreateResponseDeploymentConfigsPreview {
   /** Hash of the Wrangler configuration used for the deployment. */
   wranglerConfigHash?: string | null;
 }
+const ProjectsCreateResponseDeploymentConfigsPreview = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<ProjectsCreateResponseDeploymentConfigsPreview>;
+
 export type ProjectsCreateResponseDeploymentConfigsProductionCompatibilityFlagsList = Array<string>;
+const ProjectsCreateResponseDeploymentConfigsProductionCompatibilityFlagsList =
+  ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList as any as S.Schema<ProjectsCreateResponseDeploymentConfigsProductionCompatibilityFlagsList>;
+
 export type ProjectsCreateResponseDeploymentConfigsProductionUsageModel =
   | "standard"
   | "bundled"
   | "unbound";
+const ProjectsCreateResponseDeploymentConfigsProductionUsageModel = S.String;
+
 export type ProjectsCreateResponseDeploymentConfigsProductionAiBindingsValue =
   ProjectsCreateRequestDeploymentConfigsPreviewAiBindingsValue;
 export type ProjectsCreateResponseDeploymentConfigsProductionAiBindingsMap = {
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewAiBindingsValue | undefined;
 };
+const ProjectsCreateResponseDeploymentConfigsProductionAiBindingsMap = /*@__PURE__*/ __L.at(
+  __c5,
+  4,
+) as any as S.Schema<ProjectsCreateResponseDeploymentConfigsProductionAiBindingsMap>;
+
 export type ProjectsCreateResponseDeploymentConfigsProductionAnalyticsEngineDatasetsValue =
   ProjectsCreateRequestDeploymentConfigsPreviewAnalyticsEngineDatasetsValue;
 export type ProjectsCreateResponseDeploymentConfigsProductionAnalyticsEngineDatasetsMap = {
@@ -795,12 +1168,21 @@ export type ProjectsCreateResponseDeploymentConfigsProductionAnalyticsEngineData
     | ProjectsCreateRequestDeploymentConfigsPreviewAnalyticsEngineDatasetsValue
     | undefined;
 };
+const ProjectsCreateResponseDeploymentConfigsProductionAnalyticsEngineDatasetsMap =
+  ProjectsCreateRequestDeploymentConfigsPreviewAnalyticsEngineDatasetsMap as any as S.Schema<ProjectsCreateResponseDeploymentConfigsProductionAnalyticsEngineDatasetsMap>;
+
 export type ProjectsCreateResponseDeploymentConfigsProductionBrowsersMap = {
   [key: string]: unknown | undefined;
 };
+const ProjectsCreateResponseDeploymentConfigsProductionBrowsersMap =
+  ProjectsCreateRequestDeploymentConfigsPreviewBrowsersMap as any as S.Schema<ProjectsCreateResponseDeploymentConfigsProductionBrowsersMap>;
+
 export type ProjectsCreateResponseDeploymentConfigsProductionD1DatabasesMap = {
   [key: string]: unknown | undefined;
 };
+const ProjectsCreateResponseDeploymentConfigsProductionD1DatabasesMap =
+  ProjectsCreateRequestDeploymentConfigsProductionD1DatabasesMap as any as S.Schema<ProjectsCreateResponseDeploymentConfigsProductionD1DatabasesMap>;
+
 export type ProjectsCreateResponseDeploymentConfigsProductionDurableObjectNamespacesValue =
   ProjectsCreateRequestDeploymentConfigsPreviewDurableObjectNamespacesValue;
 export type ProjectsCreateResponseDeploymentConfigsProductionDurableObjectNamespacesMap = {
@@ -808,14 +1190,23 @@ export type ProjectsCreateResponseDeploymentConfigsProductionDurableObjectNamesp
     | ProjectsCreateRequestDeploymentConfigsPreviewDurableObjectNamespacesValue
     | undefined;
 };
+const ProjectsCreateResponseDeploymentConfigsProductionDurableObjectNamespacesMap =
+  ProjectsCreateRequestDeploymentConfigsPreviewDurableObjectNamespacesMap as any as S.Schema<ProjectsCreateResponseDeploymentConfigsProductionDurableObjectNamespacesMap>;
+
 export type ProjectsCreateResponseDeploymentConfigsProductionHyperdriveBindingsValue =
   ProjectsCreateRequestDeploymentConfigsPreviewHyperdriveBindingsValue;
 export type ProjectsCreateResponseDeploymentConfigsProductionHyperdriveBindingsMap = {
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewHyperdriveBindingsValue | undefined;
 };
+const ProjectsCreateResponseDeploymentConfigsProductionHyperdriveBindingsMap =
+  ProjectsCreateRequestDeploymentConfigsPreviewHyperdriveBindingsMap as any as S.Schema<ProjectsCreateResponseDeploymentConfigsProductionHyperdriveBindingsMap>;
+
 export type ProjectsCreateResponseDeploymentConfigsProductionKvNamespacesMap = {
   [key: string]: unknown | undefined;
 };
+const ProjectsCreateResponseDeploymentConfigsProductionKvNamespacesMap =
+  ProjectsCreateRequestDeploymentConfigsProductionD1DatabasesMap as any as S.Schema<ProjectsCreateResponseDeploymentConfigsProductionKvNamespacesMap>;
+
 export type ProjectsCreateResponseDeploymentConfigsProductionLimits =
   ProjectsCreateRequestDeploymentConfigsPreviewLimits;
 export type ProjectsCreateResponseDeploymentConfigsProductionMtlsCertificatesValue =
@@ -823,6 +1214,9 @@ export type ProjectsCreateResponseDeploymentConfigsProductionMtlsCertificatesVal
 export type ProjectsCreateResponseDeploymentConfigsProductionMtlsCertificatesMap = {
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewMtlsCertificatesValue | undefined;
 };
+const ProjectsCreateResponseDeploymentConfigsProductionMtlsCertificatesMap =
+  ProjectsCreateRequestDeploymentConfigsPreviewMtlsCertificatesMap as any as S.Schema<ProjectsCreateResponseDeploymentConfigsProductionMtlsCertificatesMap>;
+
 export type ProjectsCreateResponseDeploymentConfigsProductionPlacement =
   ProjectsCreateRequestDeploymentConfigsPreviewPlacement;
 export type ProjectsCreateResponseDeploymentConfigsProductionQueueProducersValue =
@@ -830,19 +1224,31 @@ export type ProjectsCreateResponseDeploymentConfigsProductionQueueProducersValue
 export type ProjectsCreateResponseDeploymentConfigsProductionQueueProducersMap = {
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewQueueProducersValue | undefined;
 };
+const ProjectsCreateResponseDeploymentConfigsProductionQueueProducersMap =
+  ProjectsCreateRequestDeploymentConfigsPreviewQueueProducersMap as any as S.Schema<ProjectsCreateResponseDeploymentConfigsProductionQueueProducersMap>;
+
 export type ProjectsCreateResponseDeploymentConfigsProductionR2BucketsMap = {
   [key: string]: unknown | undefined;
 };
+const ProjectsCreateResponseDeploymentConfigsProductionR2BucketsMap =
+  ProjectsCreateRequestDeploymentConfigsPreviewBrowsersMap as any as S.Schema<ProjectsCreateResponseDeploymentConfigsProductionR2BucketsMap>;
+
 export type ProjectsCreateResponseDeploymentConfigsProductionServicesValue =
   ProjectsCreateResponseDeploymentConfigsPreviewServicesValue;
 export type ProjectsCreateResponseDeploymentConfigsProductionServicesMap = {
   [key: string]: ProjectsCreateResponseDeploymentConfigsPreviewServicesValue | undefined;
 };
+const ProjectsCreateResponseDeploymentConfigsProductionServicesMap =
+  ProjectsCreateResponseDeploymentConfigsPreviewServicesMap as any as S.Schema<ProjectsCreateResponseDeploymentConfigsProductionServicesMap>;
+
 export type ProjectsCreateResponseDeploymentConfigsProductionVectorizeBindingsValue =
   ProjectsCreateRequestDeploymentConfigsPreviewVectorizeBindingsValue;
 export type ProjectsCreateResponseDeploymentConfigsProductionVectorizeBindingsMap = {
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewVectorizeBindingsValue | undefined;
 };
+const ProjectsCreateResponseDeploymentConfigsProductionVectorizeBindingsMap =
+  ProjectsCreateRequestDeploymentConfigsPreviewVectorizeBindingsMap as any as S.Schema<ProjectsCreateResponseDeploymentConfigsProductionVectorizeBindingsMap>;
+
 export interface ProjectsCreateResponseDeploymentConfigsProduction {
   /** Whether to always use the latest compatibility date for Pages Functions. */
   alwaysUseLatestCompatibilityDate: boolean;
@@ -889,13 +1295,26 @@ export interface ProjectsCreateResponseDeploymentConfigsProduction {
   /** Hash of the Wrangler configuration used for the deployment. */
   wranglerConfigHash?: string | null;
 }
+const ProjectsCreateResponseDeploymentConfigsProduction = /*@__PURE__*/ __L.at(
+  __c5,
+  5,
+) as any as S.Schema<ProjectsCreateResponseDeploymentConfigsProduction>;
+
 export interface ProjectsCreateResponseDeploymentConfigs {
   /** Configs for preview deploys. */
   preview: ProjectsCreateResponseDeploymentConfigsPreview;
   /** Configs for production deploys. */
   production: ProjectsCreateResponseDeploymentConfigsProduction;
 }
+const ProjectsCreateResponseDeploymentConfigs = /*@__PURE__*/ __L.at(
+  __c5,
+  6,
+) as any as S.Schema<ProjectsCreateResponseDeploymentConfigs>;
+
 export type ProjectsCreateResponseLatestDeploymentAliasesList = Array<string>;
+const ProjectsCreateResponseLatestDeploymentAliasesList =
+  AssetsCheckMissingRequestHashesList as any as S.Schema<ProjectsCreateResponseLatestDeploymentAliasesList>;
+
 export type ProjectsCreateResponseLatestDeploymentBuildConfig =
   ProjectsCreateResponseCanonicalDeploymentBuildConfig;
 export type ProjectsCreateResponseLatestDeploymentDeploymentTriggerMetadata =
@@ -904,12 +1323,19 @@ export type ProjectsCreateResponseLatestDeploymentDeploymentTriggerType =
   | "github:push"
   | "ad_hoc"
   | "deploy_hook";
+const ProjectsCreateResponseLatestDeploymentDeploymentTriggerType = S.String;
+
 export interface ProjectsCreateResponseLatestDeploymentDeploymentTrigger {
   /** Additional info about the trigger. */
   metadata: ProjectsCreateResponseCanonicalDeploymentDeploymentTriggerMetadata;
   /** What caused the deployment. */
   type: ProjectsCreateResponseLatestDeploymentDeploymentTriggerType;
 }
+const ProjectsCreateResponseLatestDeploymentDeploymentTrigger = /*@__PURE__*/ __L.at(
+  __c5,
+  7,
+) as any as S.Schema<ProjectsCreateResponseLatestDeploymentDeploymentTrigger>;
+
 export type ProjectsCreateResponseLatestDeploymentEnvVarsValuePlainTextType = "plain_text";
 export interface ProjectsCreateResponseLatestDeploymentEnvVarsValuePlainText {
   type: ProjectsCreateResponseLatestDeploymentEnvVarsValuePlainTextType;
@@ -925,10 +1351,19 @@ export interface ProjectsCreateResponseLatestDeploymentEnvVarsValueSecretText {
 export type ProjectsCreateResponseLatestDeploymentEnvVarsValue =
   | ProjectsCreateResponseLatestDeploymentEnvVarsValuePlainText
   | ProjectsCreateResponseLatestDeploymentEnvVarsValueSecretText;
+const ProjectsCreateResponseLatestDeploymentEnvVarsValue = /*@__PURE__*/ __L.at(__c6, 0);
+
 export type ProjectsCreateResponseLatestDeploymentEnvVarsMap = {
   [key: string]: ProjectsCreateResponseLatestDeploymentEnvVarsValue | undefined;
 };
+const ProjectsCreateResponseLatestDeploymentEnvVarsMap = /*@__PURE__*/ __L.at(
+  __c6,
+  1,
+) as any as S.Schema<ProjectsCreateResponseLatestDeploymentEnvVarsMap>;
+
 export type ProjectsCreateResponseLatestDeploymentEnvironment = "preview" | "production";
+const ProjectsCreateResponseLatestDeploymentEnvironment = S.String;
+
 export type ProjectsCreateResponseLatestDeploymentLatestStageName =
   | "queued"
   | "initialize"
@@ -952,16 +1387,33 @@ export interface ProjectsCreateResponseLatestDeploymentLatestStage {
   /** State of the current stage. */
   status: ProjectsCreateResponseLatestDeploymentLatestStageStatus;
 }
+const ProjectsCreateResponseLatestDeploymentLatestStage =
+  ProjectsCreateResponseCanonicalDeploymentLatestStage as any as S.Schema<ProjectsCreateResponseLatestDeploymentLatestStage>;
+
 export type ProjectsCreateResponseLatestDeploymentSourceConfigPathExcludesList = Array<string>;
+const ProjectsCreateResponseLatestDeploymentSourceConfigPathExcludesList =
+  ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList as any as S.Schema<ProjectsCreateResponseLatestDeploymentSourceConfigPathExcludesList>;
+
 export type ProjectsCreateResponseLatestDeploymentSourceConfigPathIncludesList = Array<string>;
+const ProjectsCreateResponseLatestDeploymentSourceConfigPathIncludesList =
+  ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList as any as S.Schema<ProjectsCreateResponseLatestDeploymentSourceConfigPathIncludesList>;
+
 export type ProjectsCreateResponseLatestDeploymentSourceConfigPreviewBranchExcludesList =
   Array<string>;
+const ProjectsCreateResponseLatestDeploymentSourceConfigPreviewBranchExcludesList =
+  ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList as any as S.Schema<ProjectsCreateResponseLatestDeploymentSourceConfigPreviewBranchExcludesList>;
+
 export type ProjectsCreateResponseLatestDeploymentSourceConfigPreviewBranchIncludesList =
   Array<string>;
+const ProjectsCreateResponseLatestDeploymentSourceConfigPreviewBranchIncludesList =
+  ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList as any as S.Schema<ProjectsCreateResponseLatestDeploymentSourceConfigPreviewBranchIncludesList>;
+
 export type ProjectsCreateResponseLatestDeploymentSourceConfigPreviewDeploymentSetting =
   | "all"
   | "none"
   | "custom";
+const ProjectsCreateResponseLatestDeploymentSourceConfigPreviewDeploymentSetting = S.String;
+
 export interface ProjectsCreateResponseLatestDeploymentSourceConfig {
   /** Use `production_deployments_enabled` and `preview_deployment_setting` for more granular control. */
   deploymentsEnabled: boolean;
@@ -990,12 +1442,24 @@ export interface ProjectsCreateResponseLatestDeploymentSourceConfig {
   /** The name of the repository. */
   repoName: string;
 }
+const ProjectsCreateResponseLatestDeploymentSourceConfig = /*@__PURE__*/ __L.at(
+  __c6,
+  2,
+) as any as S.Schema<ProjectsCreateResponseLatestDeploymentSourceConfig>;
+
 export type ProjectsCreateResponseLatestDeploymentSourceType = "github" | "gitlab";
+const ProjectsCreateResponseLatestDeploymentSourceType = S.String;
+
 export interface ProjectsCreateResponseLatestDeploymentSource {
   config: ProjectsCreateResponseLatestDeploymentSourceConfig;
   /** The source control management provider. */
   type: ProjectsCreateResponseLatestDeploymentSourceType;
 }
+const ProjectsCreateResponseLatestDeploymentSource = /*@__PURE__*/ __L.at(
+  __c6,
+  3,
+) as any as S.Schema<ProjectsCreateResponseLatestDeploymentSource>;
+
 export type ProjectsCreateResponseLatestDeploymentStagesItemName =
   | "queued"
   | "initialize"
@@ -1021,6 +1485,9 @@ export interface ProjectsCreateResponseLatestDeploymentStagesItem {
 }
 export type ProjectsCreateResponseLatestDeploymentStagesList =
   Array<ProjectsCreateResponseLatestDeploymentStagesItem>;
+const ProjectsCreateResponseLatestDeploymentStagesList =
+  ProjectsCreateResponseCanonicalDeploymentStagesList as any as S.Schema<ProjectsCreateResponseLatestDeploymentStagesList>;
+
 export type ProjectsCreateResponseLatestDeploymentSkipReason =
   | "commit_message"
   | "preview_deployments_disabled"
@@ -1029,6 +1496,8 @@ export type ProjectsCreateResponseLatestDeploymentSkipReason =
   | "branch_config"
   | "pages_to_workers_conversion"
   | "superseded_queued_build";
+const ProjectsCreateResponseLatestDeploymentSkipReason = S.String;
+
 export interface ProjectsCreateResponseLatestDeployment {
   /** Id of the deployment. */
   id: string;
@@ -1067,14 +1536,36 @@ export interface ProjectsCreateResponseLatestDeployment {
   /** Whether the deployment uses functions. */
   usesFunctions?: boolean | null;
 }
+const ProjectsCreateResponseLatestDeployment = /*@__PURE__*/ __L.at(
+  __c6,
+  4,
+) as any as S.Schema<ProjectsCreateResponseLatestDeployment>;
+
 export type ProjectsCreateResponseBuildConfig =
   ProjectsCreateResponseCanonicalDeploymentBuildConfig;
 export type ProjectsCreateResponseDomainsList = Array<string>;
+const ProjectsCreateResponseDomainsList =
+  AssetsCheckMissingRequestHashesList as any as S.Schema<ProjectsCreateResponseDomainsList>;
+
 export type ProjectsCreateResponseSourceConfigPathExcludesList = Array<string>;
+const ProjectsCreateResponseSourceConfigPathExcludesList =
+  AssetsCheckMissingRequestHashesList as any as S.Schema<ProjectsCreateResponseSourceConfigPathExcludesList>;
+
 export type ProjectsCreateResponseSourceConfigPathIncludesList = Array<string>;
+const ProjectsCreateResponseSourceConfigPathIncludesList =
+  AssetsCheckMissingRequestHashesList as any as S.Schema<ProjectsCreateResponseSourceConfigPathIncludesList>;
+
 export type ProjectsCreateResponseSourceConfigPreviewBranchExcludesList = Array<string>;
+const ProjectsCreateResponseSourceConfigPreviewBranchExcludesList =
+  AssetsCheckMissingRequestHashesList as any as S.Schema<ProjectsCreateResponseSourceConfigPreviewBranchExcludesList>;
+
 export type ProjectsCreateResponseSourceConfigPreviewBranchIncludesList = Array<string>;
+const ProjectsCreateResponseSourceConfigPreviewBranchIncludesList =
+  AssetsCheckMissingRequestHashesList as any as S.Schema<ProjectsCreateResponseSourceConfigPreviewBranchIncludesList>;
+
 export type ProjectsCreateResponseSourceConfigPreviewDeploymentSetting = "all" | "none" | "custom";
+const ProjectsCreateResponseSourceConfigPreviewDeploymentSetting = S.String;
+
 export interface ProjectsCreateResponseSourceConfig {
   /** Use `production_deployments_enabled` and `preview_deployment_setting` for more granular control. */
   deploymentsEnabled: boolean;
@@ -1103,12 +1594,24 @@ export interface ProjectsCreateResponseSourceConfig {
   /** The name of the repository. */
   repoName: string;
 }
+const ProjectsCreateResponseSourceConfig = /*@__PURE__*/ __L.at(
+  __c6,
+  5,
+) as any as S.Schema<ProjectsCreateResponseSourceConfig>;
+
 export type ProjectsCreateResponseSourceType = "github" | "gitlab";
+const ProjectsCreateResponseSourceType = S.String;
+
 export interface ProjectsCreateResponseSource {
   config: ProjectsCreateResponseSourceConfig;
   /** The source control management provider. */
   type: ProjectsCreateResponseSourceType;
 }
+const ProjectsCreateResponseSource = /*@__PURE__*/ __L.at(
+  __c6,
+  6,
+) as any as S.Schema<ProjectsCreateResponseSource>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateProjectResponse {
   /** ID of the project. */
@@ -1144,6 +1647,11 @@ export interface CreateProjectResponse {
   /** The Cloudflare subdomain associated with the project. */
   subdomain?: string | null;
 }
+const CreateProjectResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  7,
+) as any as S.Schema<CreateProjectResponse>;
+
 export interface CreateProjectDeploymentRequest {
   /** Identifier. */
   accountId: string;
@@ -1176,7 +1684,15 @@ export interface CreateProjectDeploymentRequest {
   /** Hash of the Wrangler configuration file used for this deployment. */
   wranglerConfigHash?: string;
 }
+const CreateProjectDeploymentRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  0,
+) as any as S.Schema<CreateProjectDeploymentRequest>;
+
 export type ProjectsDeploymentsCreateResponseAliasesList = Array<string>;
+const ProjectsDeploymentsCreateResponseAliasesList =
+  AssetsCheckMissingRequestHashesList as any as S.Schema<ProjectsDeploymentsCreateResponseAliasesList>;
+
 export type ProjectsDeploymentsCreateResponseBuildConfig =
   ProjectsCreateResponseCanonicalDeploymentBuildConfig;
 export type ProjectsDeploymentsCreateResponseDeploymentTriggerMetadata =
@@ -1191,7 +1707,12 @@ export interface ProjectsDeploymentsCreateResponseDeploymentTrigger {
   /** What caused the deployment. */
   type: ProjectsDeploymentsCreateResponseDeploymentTriggerType;
 }
+const ProjectsDeploymentsCreateResponseDeploymentTrigger =
+  ProjectsCreateResponseLatestDeploymentDeploymentTrigger as any as S.Schema<ProjectsDeploymentsCreateResponseDeploymentTrigger>;
+
 export type ProjectsDeploymentsCreateResponseEnvironment = "preview" | "production";
+const ProjectsDeploymentsCreateResponseEnvironment = S.String;
+
 export type ProjectsDeploymentsCreateResponseLatestStageName =
   | "queued"
   | "initialize"
@@ -1215,14 +1736,31 @@ export interface ProjectsDeploymentsCreateResponseLatestStage {
   /** State of the current stage. */
   status: ProjectsDeploymentsCreateResponseLatestStageStatus;
 }
+const ProjectsDeploymentsCreateResponseLatestStage =
+  ProjectsCreateResponseCanonicalDeploymentLatestStage as any as S.Schema<ProjectsDeploymentsCreateResponseLatestStage>;
+
 export type ProjectsDeploymentsCreateResponseSourceConfigPathExcludesList = Array<string>;
+const ProjectsDeploymentsCreateResponseSourceConfigPathExcludesList =
+  AssetsCheckMissingRequestHashesList as any as S.Schema<ProjectsDeploymentsCreateResponseSourceConfigPathExcludesList>;
+
 export type ProjectsDeploymentsCreateResponseSourceConfigPathIncludesList = Array<string>;
+const ProjectsDeploymentsCreateResponseSourceConfigPathIncludesList =
+  AssetsCheckMissingRequestHashesList as any as S.Schema<ProjectsDeploymentsCreateResponseSourceConfigPathIncludesList>;
+
 export type ProjectsDeploymentsCreateResponseSourceConfigPreviewBranchExcludesList = Array<string>;
+const ProjectsDeploymentsCreateResponseSourceConfigPreviewBranchExcludesList =
+  ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList as any as S.Schema<ProjectsDeploymentsCreateResponseSourceConfigPreviewBranchExcludesList>;
+
 export type ProjectsDeploymentsCreateResponseSourceConfigPreviewBranchIncludesList = Array<string>;
+const ProjectsDeploymentsCreateResponseSourceConfigPreviewBranchIncludesList =
+  ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList as any as S.Schema<ProjectsDeploymentsCreateResponseSourceConfigPreviewBranchIncludesList>;
+
 export type ProjectsDeploymentsCreateResponseSourceConfigPreviewDeploymentSetting =
   | "all"
   | "none"
   | "custom";
+const ProjectsDeploymentsCreateResponseSourceConfigPreviewDeploymentSetting = S.String;
+
 export interface ProjectsDeploymentsCreateResponseSourceConfig {
   /** Use `production_deployments_enabled` and `preview_deployment_setting` for more granular control. */
   deploymentsEnabled: boolean;
@@ -1251,12 +1789,24 @@ export interface ProjectsDeploymentsCreateResponseSourceConfig {
   /** The name of the repository. */
   repoName: string;
 }
+const ProjectsDeploymentsCreateResponseSourceConfig = /*@__PURE__*/ __L.at(
+  __c7,
+  1,
+) as any as S.Schema<ProjectsDeploymentsCreateResponseSourceConfig>;
+
 export type ProjectsDeploymentsCreateResponseSourceType = "github" | "gitlab";
+const ProjectsDeploymentsCreateResponseSourceType = S.String;
+
 export interface ProjectsDeploymentsCreateResponseSource {
   config: ProjectsDeploymentsCreateResponseSourceConfig;
   /** The source control management provider. */
   type: ProjectsDeploymentsCreateResponseSourceType;
 }
+const ProjectsDeploymentsCreateResponseSource = /*@__PURE__*/ __L.at(
+  __c7,
+  2,
+) as any as S.Schema<ProjectsDeploymentsCreateResponseSource>;
+
 export type ProjectsDeploymentsCreateResponseStagesItemName =
   | "queued"
   | "initialize"
@@ -1282,6 +1832,9 @@ export interface ProjectsDeploymentsCreateResponseStagesItem {
 }
 export type ProjectsDeploymentsCreateResponseStagesList =
   Array<ProjectsDeploymentsCreateResponseStagesItem>;
+const ProjectsDeploymentsCreateResponseStagesList =
+  ProjectsCreateResponseCanonicalDeploymentStagesList as any as S.Schema<ProjectsDeploymentsCreateResponseStagesList>;
+
 export type ProjectsDeploymentsCreateResponseSkipReason =
   | "commit_message"
   | "preview_deployments_disabled"
@@ -1290,6 +1843,8 @@ export type ProjectsDeploymentsCreateResponseSkipReason =
   | "branch_config"
   | "pages_to_workers_conversion"
   | "superseded_queued_build";
+const ProjectsDeploymentsCreateResponseSkipReason = S.String;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateProjectDeploymentResponse {
   /** Id of the deployment. */
@@ -1329,6 +1884,11 @@ export interface CreateProjectDeploymentResponse {
   /** Whether the deployment uses functions. */
   usesFunctions?: boolean | null;
 }
+const CreateProjectDeploymentResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  3,
+) as any as S.Schema<CreateProjectDeploymentResponse>;
+
 export interface CreateProjectDomainRequest {
   /** Identifier. */
   accountId: string;
@@ -1337,7 +1897,14 @@ export interface CreateProjectDomainRequest {
   /** Fully qualified domain name for the Pages project, such as `example.com`. */
   name: string;
 }
+const CreateProjectDomainRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  4,
+) as any as S.Schema<CreateProjectDomainRequest>;
+
 export type ProjectsDomainsCreateResponseCertificateAuthority = "google" | "lets_encrypt";
+const ProjectsDomainsCreateResponseCertificateAuthority = S.String;
+
 export type ProjectsDomainsCreateResponseStatus =
   | "initializing"
   | "pending"
@@ -1345,13 +1912,19 @@ export type ProjectsDomainsCreateResponseStatus =
   | "deactivated"
   | "blocked"
   | "error";
+const ProjectsDomainsCreateResponseStatus = S.String;
+
 export type ProjectsDomainsCreateResponseValidationDataMethod = "http" | "txt";
+const ProjectsDomainsCreateResponseValidationDataMethod = S.String;
+
 export type ProjectsDomainsCreateResponseValidationDataStatus =
   | "initializing"
   | "pending"
   | "active"
   | "deactivated"
   | "error";
+const ProjectsDomainsCreateResponseValidationDataStatus = S.String;
+
 export interface ProjectsDomainsCreateResponseValidationData {
   method: ProjectsDomainsCreateResponseValidationDataMethod;
   status: ProjectsDomainsCreateResponseValidationDataStatus;
@@ -1359,16 +1932,28 @@ export interface ProjectsDomainsCreateResponseValidationData {
   txtName?: string | null;
   txtValue?: string | null;
 }
+const ProjectsDomainsCreateResponseValidationData = /*@__PURE__*/ __L.at(
+  __c7,
+  5,
+) as any as S.Schema<ProjectsDomainsCreateResponseValidationData>;
+
 export type ProjectsDomainsCreateResponseVerificationDataStatus =
   | "pending"
   | "active"
   | "deactivated"
   | "blocked"
   | "error";
+const ProjectsDomainsCreateResponseVerificationDataStatus = S.String;
+
 export interface ProjectsDomainsCreateResponseVerificationData {
   status: ProjectsDomainsCreateResponseVerificationDataStatus;
   errorMessage?: string | null;
 }
+const ProjectsDomainsCreateResponseVerificationData = /*@__PURE__*/ __L.at(
+  __c7,
+  6,
+) as any as S.Schema<ProjectsDomainsCreateResponseVerificationData>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateProjectDomainResponse {
   id: string;
@@ -1382,11 +1967,24 @@ export interface CreateProjectDomainResponse {
   verificationData: ProjectsDomainsCreateResponseVerificationData;
   zoneTag: string;
 }
+const CreateProjectDomainResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  7,
+) as any as S.Schema<CreateProjectDomainResponse>;
+
 export type CreateProjectsDeploymentsTailRequestFiltersItemMap = {
   [key: string]: unknown | undefined;
 };
+const CreateProjectsDeploymentsTailRequestFiltersItemMap =
+  ProjectsCreateRequestDeploymentConfigsPreviewBrowsersMap as any as S.Schema<CreateProjectsDeploymentsTailRequestFiltersItemMap>;
+
 export type CreateProjectsDeploymentsTailRequestFiltersList =
   Array<CreateProjectsDeploymentsTailRequestFiltersItemMap>;
+const CreateProjectsDeploymentsTailRequestFiltersList = /*@__PURE__*/ __L.at(
+  __c8,
+  0,
+) as any as S.Schema<CreateProjectsDeploymentsTailRequestFiltersList>;
+
 export interface CreateProjectsDeploymentsTailRequest {
   /** Identifier. */
   accountId: string;
@@ -1397,6 +1995,11 @@ export interface CreateProjectsDeploymentsTailRequest {
   /** Filters to apply to the tail session. */
   filters?: CreateProjectsDeploymentsTailRequestFiltersList;
 }
+const CreateProjectsDeploymentsTailRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  1,
+) as any as S.Schema<CreateProjectsDeploymentsTailRequest>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateProjectsDeploymentsTailResponse {
   /** Identifier of the tail session. */
@@ -1404,13 +2007,25 @@ export interface CreateProjectsDeploymentsTailResponse {
   /** Optional WebSocket URL to connect to for receiving tail events, when returned by the tail service. */
   url?: string | null;
 }
+const CreateProjectsDeploymentsTailResponse = /*@__PURE__*/ __L.at(
+  __c8,
+  2,
+) as any as S.Schema<CreateProjectsDeploymentsTailResponse>;
+
 export interface DeleteProjectRequest {
   /** Identifier. */
   accountId: string;
   /** Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens. */
   projectName: string;
 }
+const DeleteProjectRequest = /*@__PURE__*/ __L.at(__c8, 3) as any as S.Schema<DeleteProjectRequest>;
+
 export type DeleteProjectResponse = unknown;
+const DeleteProjectResponse = /*@__PURE__*/ __L.at(
+  __c8,
+  4,
+) as any as S.Schema<DeleteProjectResponse>;
+
 export interface DeleteProjectDeploymentRequest {
   /** Identifier. */
   accountId: string;
@@ -1421,7 +2036,17 @@ export interface DeleteProjectDeploymentRequest {
   /** Allow deletion when a non-production deployment has an active alias. */
   force?: boolean;
 }
+const DeleteProjectDeploymentRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  5,
+) as any as S.Schema<DeleteProjectDeploymentRequest>;
+
 export type DeleteProjectDeploymentResponse = unknown;
+const DeleteProjectDeploymentResponse = /*@__PURE__*/ __L.at(
+  __c8,
+  6,
+) as any as S.Schema<DeleteProjectDeploymentResponse>;
+
 export interface DeleteProjectDomainRequest {
   /** Identifier. */
   accountId: string;
@@ -1430,7 +2055,15 @@ export interface DeleteProjectDomainRequest {
   /** Fully qualified domain name for the Pages project, such as `example.com`. */
   domainName: string;
 }
+const DeleteProjectDomainRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  7,
+) as any as S.Schema<DeleteProjectDomainRequest>;
+
 export type DeleteProjectDomainResponse = unknown;
+const DeleteProjectDomainResponse =
+  DeleteProjectDeploymentResponse as any as S.Schema<DeleteProjectDomainResponse>;
+
 export interface DeleteProjectsDeploymentsTailRequest {
   /** Identifier. */
   accountId: string;
@@ -1441,14 +2074,27 @@ export interface DeleteProjectsDeploymentsTailRequest {
   /** Identifier. */
   tailId: string;
 }
+const DeleteProjectsDeploymentsTailRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  0,
+) as any as S.Schema<DeleteProjectsDeploymentsTailRequest>;
+
 export type DeleteProjectsDeploymentsTailResponse = unknown;
+const DeleteProjectsDeploymentsTailResponse =
+  DeleteProjectDeploymentResponse as any as S.Schema<DeleteProjectsDeploymentsTailResponse>;
+
 export interface GetProjectRequest {
   /** Identifier. */
   accountId: string;
   /** Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens. */
   projectName: string;
 }
+const GetProjectRequest = /*@__PURE__*/ __L.at(__c9, 1) as any as S.Schema<GetProjectRequest>;
+
 export type ProjectsGetResponseCanonicalDeploymentAliasesList = Array<string>;
+const ProjectsGetResponseCanonicalDeploymentAliasesList =
+  AssetsCheckMissingRequestHashesList as any as S.Schema<ProjectsGetResponseCanonicalDeploymentAliasesList>;
+
 export type ProjectsGetResponseCanonicalDeploymentBuildConfig =
   ProjectsCreateResponseCanonicalDeploymentBuildConfig;
 export type ProjectsGetResponseCanonicalDeploymentDeploymentTriggerMetadata =
@@ -1463,7 +2109,12 @@ export interface ProjectsGetResponseCanonicalDeploymentDeploymentTrigger {
   /** What caused the deployment. */
   type: ProjectsGetResponseCanonicalDeploymentDeploymentTriggerType;
 }
+const ProjectsGetResponseCanonicalDeploymentDeploymentTrigger =
+  ProjectsCreateResponseLatestDeploymentDeploymentTrigger as any as S.Schema<ProjectsGetResponseCanonicalDeploymentDeploymentTrigger>;
+
 export type ProjectsGetResponseCanonicalDeploymentEnvironment = "preview" | "production";
+const ProjectsGetResponseCanonicalDeploymentEnvironment = S.String;
+
 export type ProjectsGetResponseCanonicalDeploymentLatestStageName =
   | "queued"
   | "initialize"
@@ -1487,16 +2138,33 @@ export interface ProjectsGetResponseCanonicalDeploymentLatestStage {
   /** State of the current stage. */
   status: ProjectsGetResponseCanonicalDeploymentLatestStageStatus;
 }
+const ProjectsGetResponseCanonicalDeploymentLatestStage =
+  ProjectsCreateResponseCanonicalDeploymentLatestStage as any as S.Schema<ProjectsGetResponseCanonicalDeploymentLatestStage>;
+
 export type ProjectsGetResponseCanonicalDeploymentSourceConfigPathExcludesList = Array<string>;
+const ProjectsGetResponseCanonicalDeploymentSourceConfigPathExcludesList =
+  ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList as any as S.Schema<ProjectsGetResponseCanonicalDeploymentSourceConfigPathExcludesList>;
+
 export type ProjectsGetResponseCanonicalDeploymentSourceConfigPathIncludesList = Array<string>;
+const ProjectsGetResponseCanonicalDeploymentSourceConfigPathIncludesList =
+  ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList as any as S.Schema<ProjectsGetResponseCanonicalDeploymentSourceConfigPathIncludesList>;
+
 export type ProjectsGetResponseCanonicalDeploymentSourceConfigPreviewBranchExcludesList =
   Array<string>;
+const ProjectsGetResponseCanonicalDeploymentSourceConfigPreviewBranchExcludesList =
+  ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList as any as S.Schema<ProjectsGetResponseCanonicalDeploymentSourceConfigPreviewBranchExcludesList>;
+
 export type ProjectsGetResponseCanonicalDeploymentSourceConfigPreviewBranchIncludesList =
   Array<string>;
+const ProjectsGetResponseCanonicalDeploymentSourceConfigPreviewBranchIncludesList =
+  ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList as any as S.Schema<ProjectsGetResponseCanonicalDeploymentSourceConfigPreviewBranchIncludesList>;
+
 export type ProjectsGetResponseCanonicalDeploymentSourceConfigPreviewDeploymentSetting =
   | "all"
   | "none"
   | "custom";
+const ProjectsGetResponseCanonicalDeploymentSourceConfigPreviewDeploymentSetting = S.String;
+
 export interface ProjectsGetResponseCanonicalDeploymentSourceConfig {
   /** Use `production_deployments_enabled` and `preview_deployment_setting` for more granular control. */
   deploymentsEnabled: boolean;
@@ -1525,12 +2193,24 @@ export interface ProjectsGetResponseCanonicalDeploymentSourceConfig {
   /** The name of the repository. */
   repoName: string;
 }
+const ProjectsGetResponseCanonicalDeploymentSourceConfig = /*@__PURE__*/ __L.at(
+  __c9,
+  2,
+) as any as S.Schema<ProjectsGetResponseCanonicalDeploymentSourceConfig>;
+
 export type ProjectsGetResponseCanonicalDeploymentSourceType = "github" | "gitlab";
+const ProjectsGetResponseCanonicalDeploymentSourceType = S.String;
+
 export interface ProjectsGetResponseCanonicalDeploymentSource {
   config: ProjectsGetResponseCanonicalDeploymentSourceConfig;
   /** The source control management provider. */
   type: ProjectsGetResponseCanonicalDeploymentSourceType;
 }
+const ProjectsGetResponseCanonicalDeploymentSource = /*@__PURE__*/ __L.at(
+  __c9,
+  3,
+) as any as S.Schema<ProjectsGetResponseCanonicalDeploymentSource>;
+
 export type ProjectsGetResponseCanonicalDeploymentStagesItemName =
   | "queued"
   | "initialize"
@@ -1556,6 +2236,9 @@ export interface ProjectsGetResponseCanonicalDeploymentStagesItem {
 }
 export type ProjectsGetResponseCanonicalDeploymentStagesList =
   Array<ProjectsGetResponseCanonicalDeploymentStagesItem>;
+const ProjectsGetResponseCanonicalDeploymentStagesList =
+  ProjectsCreateResponseCanonicalDeploymentStagesList as any as S.Schema<ProjectsGetResponseCanonicalDeploymentStagesList>;
+
 export type ProjectsGetResponseCanonicalDeploymentSkipReason =
   | "commit_message"
   | "preview_deployments_disabled"
@@ -1564,6 +2247,8 @@ export type ProjectsGetResponseCanonicalDeploymentSkipReason =
   | "branch_config"
   | "pages_to_workers_conversion"
   | "superseded_queued_build";
+const ProjectsGetResponseCanonicalDeploymentSkipReason = S.String;
+
 export interface ProjectsGetResponseCanonicalDeployment {
   /** Id of the deployment. */
   id: string;
@@ -1602,16 +2287,29 @@ export interface ProjectsGetResponseCanonicalDeployment {
   /** Whether the deployment uses functions. */
   usesFunctions?: boolean | null;
 }
+const ProjectsGetResponseCanonicalDeployment = /*@__PURE__*/ __L.at(
+  __c9,
+  4,
+) as any as S.Schema<ProjectsGetResponseCanonicalDeployment>;
+
 export type ProjectsGetResponseDeploymentConfigsPreviewCompatibilityFlagsList = Array<string>;
+const ProjectsGetResponseDeploymentConfigsPreviewCompatibilityFlagsList =
+  ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList as any as S.Schema<ProjectsGetResponseDeploymentConfigsPreviewCompatibilityFlagsList>;
+
 export type ProjectsGetResponseDeploymentConfigsPreviewUsageModel =
   | "standard"
   | "bundled"
   | "unbound";
+const ProjectsGetResponseDeploymentConfigsPreviewUsageModel = S.String;
+
 export type ProjectsGetResponseDeploymentConfigsPreviewAiBindingsValue =
   ProjectsCreateRequestDeploymentConfigsPreviewAiBindingsValue;
 export type ProjectsGetResponseDeploymentConfigsPreviewAiBindingsMap = {
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewAiBindingsValue | undefined;
 };
+const ProjectsGetResponseDeploymentConfigsPreviewAiBindingsMap =
+  ProjectsCreateRequestDeploymentConfigsPreviewAiBindingsMap as any as S.Schema<ProjectsGetResponseDeploymentConfigsPreviewAiBindingsMap>;
+
 export type ProjectsGetResponseDeploymentConfigsPreviewAnalyticsEngineDatasetsValue =
   ProjectsCreateRequestDeploymentConfigsPreviewAnalyticsEngineDatasetsValue;
 export type ProjectsGetResponseDeploymentConfigsPreviewAnalyticsEngineDatasetsMap = {
@@ -1619,12 +2317,21 @@ export type ProjectsGetResponseDeploymentConfigsPreviewAnalyticsEngineDatasetsMa
     | ProjectsCreateRequestDeploymentConfigsPreviewAnalyticsEngineDatasetsValue
     | undefined;
 };
+const ProjectsGetResponseDeploymentConfigsPreviewAnalyticsEngineDatasetsMap =
+  ProjectsCreateRequestDeploymentConfigsPreviewAnalyticsEngineDatasetsMap as any as S.Schema<ProjectsGetResponseDeploymentConfigsPreviewAnalyticsEngineDatasetsMap>;
+
 export type ProjectsGetResponseDeploymentConfigsPreviewBrowsersMap = {
   [key: string]: unknown | undefined;
 };
+const ProjectsGetResponseDeploymentConfigsPreviewBrowsersMap =
+  ProjectsCreateRequestDeploymentConfigsPreviewBrowsersMap as any as S.Schema<ProjectsGetResponseDeploymentConfigsPreviewBrowsersMap>;
+
 export type ProjectsGetResponseDeploymentConfigsPreviewD1DatabasesMap = {
   [key: string]: unknown | undefined;
 };
+const ProjectsGetResponseDeploymentConfigsPreviewD1DatabasesMap =
+  ProjectsCreateRequestDeploymentConfigsPreviewBrowsersMap as any as S.Schema<ProjectsGetResponseDeploymentConfigsPreviewD1DatabasesMap>;
+
 export type ProjectsGetResponseDeploymentConfigsPreviewDurableObjectNamespacesValue =
   ProjectsCreateRequestDeploymentConfigsPreviewDurableObjectNamespacesValue;
 export type ProjectsGetResponseDeploymentConfigsPreviewDurableObjectNamespacesMap = {
@@ -1632,14 +2339,23 @@ export type ProjectsGetResponseDeploymentConfigsPreviewDurableObjectNamespacesMa
     | ProjectsCreateRequestDeploymentConfigsPreviewDurableObjectNamespacesValue
     | undefined;
 };
+const ProjectsGetResponseDeploymentConfigsPreviewDurableObjectNamespacesMap =
+  ProjectsCreateRequestDeploymentConfigsPreviewDurableObjectNamespacesMap as any as S.Schema<ProjectsGetResponseDeploymentConfigsPreviewDurableObjectNamespacesMap>;
+
 export type ProjectsGetResponseDeploymentConfigsPreviewHyperdriveBindingsValue =
   ProjectsCreateRequestDeploymentConfigsPreviewHyperdriveBindingsValue;
 export type ProjectsGetResponseDeploymentConfigsPreviewHyperdriveBindingsMap = {
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewHyperdriveBindingsValue | undefined;
 };
+const ProjectsGetResponseDeploymentConfigsPreviewHyperdriveBindingsMap =
+  ProjectsCreateRequestDeploymentConfigsPreviewHyperdriveBindingsMap as any as S.Schema<ProjectsGetResponseDeploymentConfigsPreviewHyperdriveBindingsMap>;
+
 export type ProjectsGetResponseDeploymentConfigsPreviewKvNamespacesMap = {
   [key: string]: unknown | undefined;
 };
+const ProjectsGetResponseDeploymentConfigsPreviewKvNamespacesMap =
+  ProjectsCreateRequestDeploymentConfigsPreviewBrowsersMap as any as S.Schema<ProjectsGetResponseDeploymentConfigsPreviewKvNamespacesMap>;
+
 export type ProjectsGetResponseDeploymentConfigsPreviewLimits =
   ProjectsCreateRequestDeploymentConfigsPreviewLimits;
 export type ProjectsGetResponseDeploymentConfigsPreviewMtlsCertificatesValue =
@@ -1647,6 +2363,9 @@ export type ProjectsGetResponseDeploymentConfigsPreviewMtlsCertificatesValue =
 export type ProjectsGetResponseDeploymentConfigsPreviewMtlsCertificatesMap = {
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewMtlsCertificatesValue | undefined;
 };
+const ProjectsGetResponseDeploymentConfigsPreviewMtlsCertificatesMap =
+  ProjectsCreateRequestDeploymentConfigsPreviewMtlsCertificatesMap as any as S.Schema<ProjectsGetResponseDeploymentConfigsPreviewMtlsCertificatesMap>;
+
 export type ProjectsGetResponseDeploymentConfigsPreviewPlacement =
   ProjectsCreateRequestDeploymentConfigsPreviewPlacement;
 export type ProjectsGetResponseDeploymentConfigsPreviewQueueProducersValue =
@@ -1654,19 +2373,33 @@ export type ProjectsGetResponseDeploymentConfigsPreviewQueueProducersValue =
 export type ProjectsGetResponseDeploymentConfigsPreviewQueueProducersMap = {
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewQueueProducersValue | undefined;
 };
+const ProjectsGetResponseDeploymentConfigsPreviewQueueProducersMap = /*@__PURE__*/ __L.at(
+  __c9,
+  5,
+) as any as S.Schema<ProjectsGetResponseDeploymentConfigsPreviewQueueProducersMap>;
+
 export type ProjectsGetResponseDeploymentConfigsPreviewR2BucketsMap = {
   [key: string]: unknown | undefined;
 };
+const ProjectsGetResponseDeploymentConfigsPreviewR2BucketsMap =
+  ProjectsCreateRequestDeploymentConfigsPreviewBrowsersMap as any as S.Schema<ProjectsGetResponseDeploymentConfigsPreviewR2BucketsMap>;
+
 export type ProjectsGetResponseDeploymentConfigsPreviewServicesValue =
   ProjectsCreateResponseDeploymentConfigsPreviewServicesValue;
 export type ProjectsGetResponseDeploymentConfigsPreviewServicesMap = {
   [key: string]: ProjectsCreateResponseDeploymentConfigsPreviewServicesValue | undefined;
 };
+const ProjectsGetResponseDeploymentConfigsPreviewServicesMap =
+  ProjectsCreateResponseDeploymentConfigsPreviewServicesMap as any as S.Schema<ProjectsGetResponseDeploymentConfigsPreviewServicesMap>;
+
 export type ProjectsGetResponseDeploymentConfigsPreviewVectorizeBindingsValue =
   ProjectsCreateRequestDeploymentConfigsPreviewVectorizeBindingsValue;
 export type ProjectsGetResponseDeploymentConfigsPreviewVectorizeBindingsMap = {
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewVectorizeBindingsValue | undefined;
 };
+const ProjectsGetResponseDeploymentConfigsPreviewVectorizeBindingsMap =
+  ProjectsCreateRequestDeploymentConfigsPreviewVectorizeBindingsMap as any as S.Schema<ProjectsGetResponseDeploymentConfigsPreviewVectorizeBindingsMap>;
+
 export interface ProjectsGetResponseDeploymentConfigsPreview {
   /** Whether to always use the latest compatibility date for Pages Functions. */
   alwaysUseLatestCompatibilityDate: boolean;
@@ -1713,16 +2446,29 @@ export interface ProjectsGetResponseDeploymentConfigsPreview {
   /** Hash of the Wrangler configuration used for the deployment. */
   wranglerConfigHash?: string | null;
 }
+const ProjectsGetResponseDeploymentConfigsPreview = /*@__PURE__*/ __L.at(
+  __c9,
+  6,
+) as any as S.Schema<ProjectsGetResponseDeploymentConfigsPreview>;
+
 export type ProjectsGetResponseDeploymentConfigsProductionCompatibilityFlagsList = Array<string>;
+const ProjectsGetResponseDeploymentConfigsProductionCompatibilityFlagsList =
+  ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList as any as S.Schema<ProjectsGetResponseDeploymentConfigsProductionCompatibilityFlagsList>;
+
 export type ProjectsGetResponseDeploymentConfigsProductionUsageModel =
   | "standard"
   | "bundled"
   | "unbound";
+const ProjectsGetResponseDeploymentConfigsProductionUsageModel = S.String;
+
 export type ProjectsGetResponseDeploymentConfigsProductionAiBindingsValue =
   ProjectsCreateRequestDeploymentConfigsPreviewAiBindingsValue;
 export type ProjectsGetResponseDeploymentConfigsProductionAiBindingsMap = {
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewAiBindingsValue | undefined;
 };
+const ProjectsGetResponseDeploymentConfigsProductionAiBindingsMap =
+  ProjectsCreateRequestDeploymentConfigsPreviewAiBindingsMap as any as S.Schema<ProjectsGetResponseDeploymentConfigsProductionAiBindingsMap>;
+
 export type ProjectsGetResponseDeploymentConfigsProductionAnalyticsEngineDatasetsValue =
   ProjectsCreateRequestDeploymentConfigsPreviewAnalyticsEngineDatasetsValue;
 export type ProjectsGetResponseDeploymentConfigsProductionAnalyticsEngineDatasetsMap = {
@@ -1730,12 +2476,21 @@ export type ProjectsGetResponseDeploymentConfigsProductionAnalyticsEngineDataset
     | ProjectsCreateRequestDeploymentConfigsPreviewAnalyticsEngineDatasetsValue
     | undefined;
 };
+const ProjectsGetResponseDeploymentConfigsProductionAnalyticsEngineDatasetsMap =
+  ProjectsCreateRequestDeploymentConfigsPreviewAnalyticsEngineDatasetsMap as any as S.Schema<ProjectsGetResponseDeploymentConfigsProductionAnalyticsEngineDatasetsMap>;
+
 export type ProjectsGetResponseDeploymentConfigsProductionBrowsersMap = {
   [key: string]: unknown | undefined;
 };
+const ProjectsGetResponseDeploymentConfigsProductionBrowsersMap =
+  ProjectsCreateRequestDeploymentConfigsPreviewBrowsersMap as any as S.Schema<ProjectsGetResponseDeploymentConfigsProductionBrowsersMap>;
+
 export type ProjectsGetResponseDeploymentConfigsProductionD1DatabasesMap = {
   [key: string]: unknown | undefined;
 };
+const ProjectsGetResponseDeploymentConfigsProductionD1DatabasesMap =
+  ProjectsCreateRequestDeploymentConfigsPreviewBrowsersMap as any as S.Schema<ProjectsGetResponseDeploymentConfigsProductionD1DatabasesMap>;
+
 export type ProjectsGetResponseDeploymentConfigsProductionDurableObjectNamespacesValue =
   ProjectsCreateRequestDeploymentConfigsPreviewDurableObjectNamespacesValue;
 export type ProjectsGetResponseDeploymentConfigsProductionDurableObjectNamespacesMap = {
@@ -1743,14 +2498,23 @@ export type ProjectsGetResponseDeploymentConfigsProductionDurableObjectNamespace
     | ProjectsCreateRequestDeploymentConfigsPreviewDurableObjectNamespacesValue
     | undefined;
 };
+const ProjectsGetResponseDeploymentConfigsProductionDurableObjectNamespacesMap =
+  ProjectsCreateRequestDeploymentConfigsPreviewDurableObjectNamespacesMap as any as S.Schema<ProjectsGetResponseDeploymentConfigsProductionDurableObjectNamespacesMap>;
+
 export type ProjectsGetResponseDeploymentConfigsProductionHyperdriveBindingsValue =
   ProjectsCreateRequestDeploymentConfigsPreviewHyperdriveBindingsValue;
 export type ProjectsGetResponseDeploymentConfigsProductionHyperdriveBindingsMap = {
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewHyperdriveBindingsValue | undefined;
 };
+const ProjectsGetResponseDeploymentConfigsProductionHyperdriveBindingsMap =
+  ProjectsCreateRequestDeploymentConfigsPreviewHyperdriveBindingsMap as any as S.Schema<ProjectsGetResponseDeploymentConfigsProductionHyperdriveBindingsMap>;
+
 export type ProjectsGetResponseDeploymentConfigsProductionKvNamespacesMap = {
   [key: string]: unknown | undefined;
 };
+const ProjectsGetResponseDeploymentConfigsProductionKvNamespacesMap =
+  ProjectsCreateRequestDeploymentConfigsPreviewBrowsersMap as any as S.Schema<ProjectsGetResponseDeploymentConfigsProductionKvNamespacesMap>;
+
 export type ProjectsGetResponseDeploymentConfigsProductionLimits =
   ProjectsCreateRequestDeploymentConfigsPreviewLimits;
 export type ProjectsGetResponseDeploymentConfigsProductionMtlsCertificatesValue =
@@ -1758,6 +2522,9 @@ export type ProjectsGetResponseDeploymentConfigsProductionMtlsCertificatesValue 
 export type ProjectsGetResponseDeploymentConfigsProductionMtlsCertificatesMap = {
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewMtlsCertificatesValue | undefined;
 };
+const ProjectsGetResponseDeploymentConfigsProductionMtlsCertificatesMap =
+  ProjectsCreateRequestDeploymentConfigsPreviewMtlsCertificatesMap as any as S.Schema<ProjectsGetResponseDeploymentConfigsProductionMtlsCertificatesMap>;
+
 export type ProjectsGetResponseDeploymentConfigsProductionPlacement =
   ProjectsCreateRequestDeploymentConfigsPreviewPlacement;
 export type ProjectsGetResponseDeploymentConfigsProductionQueueProducersValue =
@@ -1765,19 +2532,31 @@ export type ProjectsGetResponseDeploymentConfigsProductionQueueProducersValue =
 export type ProjectsGetResponseDeploymentConfigsProductionQueueProducersMap = {
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewQueueProducersValue | undefined;
 };
+const ProjectsGetResponseDeploymentConfigsProductionQueueProducersMap =
+  ProjectsCreateRequestDeploymentConfigsPreviewQueueProducersMap as any as S.Schema<ProjectsGetResponseDeploymentConfigsProductionQueueProducersMap>;
+
 export type ProjectsGetResponseDeploymentConfigsProductionR2BucketsMap = {
   [key: string]: unknown | undefined;
 };
+const ProjectsGetResponseDeploymentConfigsProductionR2BucketsMap =
+  ProjectsCreateRequestDeploymentConfigsPreviewBrowsersMap as any as S.Schema<ProjectsGetResponseDeploymentConfigsProductionR2BucketsMap>;
+
 export type ProjectsGetResponseDeploymentConfigsProductionServicesValue =
   ProjectsCreateResponseDeploymentConfigsPreviewServicesValue;
 export type ProjectsGetResponseDeploymentConfigsProductionServicesMap = {
   [key: string]: ProjectsCreateResponseDeploymentConfigsPreviewServicesValue | undefined;
 };
+const ProjectsGetResponseDeploymentConfigsProductionServicesMap =
+  ProjectsCreateResponseDeploymentConfigsPreviewServicesMap as any as S.Schema<ProjectsGetResponseDeploymentConfigsProductionServicesMap>;
+
 export type ProjectsGetResponseDeploymentConfigsProductionVectorizeBindingsValue =
   ProjectsCreateRequestDeploymentConfigsPreviewVectorizeBindingsValue;
 export type ProjectsGetResponseDeploymentConfigsProductionVectorizeBindingsMap = {
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewVectorizeBindingsValue | undefined;
 };
+const ProjectsGetResponseDeploymentConfigsProductionVectorizeBindingsMap =
+  ProjectsCreateRequestDeploymentConfigsPreviewVectorizeBindingsMap as any as S.Schema<ProjectsGetResponseDeploymentConfigsProductionVectorizeBindingsMap>;
+
 export interface ProjectsGetResponseDeploymentConfigsProduction {
   /** Whether to always use the latest compatibility date for Pages Functions. */
   alwaysUseLatestCompatibilityDate: boolean;
@@ -1824,13 +2603,26 @@ export interface ProjectsGetResponseDeploymentConfigsProduction {
   /** Hash of the Wrangler configuration used for the deployment. */
   wranglerConfigHash?: string | null;
 }
+const ProjectsGetResponseDeploymentConfigsProduction = /*@__PURE__*/ __L.at(
+  __c9,
+  7,
+) as any as S.Schema<ProjectsGetResponseDeploymentConfigsProduction>;
+
 export interface ProjectsGetResponseDeploymentConfigs {
   /** Configs for preview deploys. */
   preview: ProjectsGetResponseDeploymentConfigsPreview;
   /** Configs for production deploys. */
   production: ProjectsGetResponseDeploymentConfigsProduction;
 }
+const ProjectsGetResponseDeploymentConfigs = /*@__PURE__*/ __L.at(
+  __c10,
+  0,
+) as any as S.Schema<ProjectsGetResponseDeploymentConfigs>;
+
 export type ProjectsGetResponseLatestDeploymentAliasesList = Array<string>;
+const ProjectsGetResponseLatestDeploymentAliasesList =
+  AssetsCheckMissingRequestHashesList as any as S.Schema<ProjectsGetResponseLatestDeploymentAliasesList>;
+
 export type ProjectsGetResponseLatestDeploymentBuildConfig =
   ProjectsCreateResponseCanonicalDeploymentBuildConfig;
 export type ProjectsGetResponseLatestDeploymentDeploymentTriggerMetadata =
@@ -1845,6 +2637,9 @@ export interface ProjectsGetResponseLatestDeploymentDeploymentTrigger {
   /** What caused the deployment. */
   type: ProjectsGetResponseLatestDeploymentDeploymentTriggerType;
 }
+const ProjectsGetResponseLatestDeploymentDeploymentTrigger =
+  ProjectsCreateResponseLatestDeploymentDeploymentTrigger as any as S.Schema<ProjectsGetResponseLatestDeploymentDeploymentTrigger>;
+
 export type ProjectsGetResponseLatestDeploymentEnvVarsValuePlainTextType = "plain_text";
 export interface ProjectsGetResponseLatestDeploymentEnvVarsValuePlainText {
   type: ProjectsGetResponseLatestDeploymentEnvVarsValuePlainTextType;
@@ -1860,10 +2655,19 @@ export interface ProjectsGetResponseLatestDeploymentEnvVarsValueSecretText {
 export type ProjectsGetResponseLatestDeploymentEnvVarsValue =
   | ProjectsGetResponseLatestDeploymentEnvVarsValuePlainText
   | ProjectsGetResponseLatestDeploymentEnvVarsValueSecretText;
+const ProjectsGetResponseLatestDeploymentEnvVarsValue = /*@__PURE__*/ __L.at(__c10, 1);
+
 export type ProjectsGetResponseLatestDeploymentEnvVarsMap = {
   [key: string]: ProjectsGetResponseLatestDeploymentEnvVarsValue | undefined;
 };
+const ProjectsGetResponseLatestDeploymentEnvVarsMap = /*@__PURE__*/ __L.at(
+  __c10,
+  2,
+) as any as S.Schema<ProjectsGetResponseLatestDeploymentEnvVarsMap>;
+
 export type ProjectsGetResponseLatestDeploymentEnvironment = "preview" | "production";
+const ProjectsGetResponseLatestDeploymentEnvironment = S.String;
+
 export type ProjectsGetResponseLatestDeploymentLatestStageName =
   | "queued"
   | "initialize"
@@ -1887,16 +2691,33 @@ export interface ProjectsGetResponseLatestDeploymentLatestStage {
   /** State of the current stage. */
   status: ProjectsGetResponseLatestDeploymentLatestStageStatus;
 }
+const ProjectsGetResponseLatestDeploymentLatestStage =
+  ProjectsCreateResponseCanonicalDeploymentLatestStage as any as S.Schema<ProjectsGetResponseLatestDeploymentLatestStage>;
+
 export type ProjectsGetResponseLatestDeploymentSourceConfigPathExcludesList = Array<string>;
+const ProjectsGetResponseLatestDeploymentSourceConfigPathExcludesList =
+  ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList as any as S.Schema<ProjectsGetResponseLatestDeploymentSourceConfigPathExcludesList>;
+
 export type ProjectsGetResponseLatestDeploymentSourceConfigPathIncludesList = Array<string>;
+const ProjectsGetResponseLatestDeploymentSourceConfigPathIncludesList =
+  ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList as any as S.Schema<ProjectsGetResponseLatestDeploymentSourceConfigPathIncludesList>;
+
 export type ProjectsGetResponseLatestDeploymentSourceConfigPreviewBranchExcludesList =
   Array<string>;
+const ProjectsGetResponseLatestDeploymentSourceConfigPreviewBranchExcludesList =
+  ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList as any as S.Schema<ProjectsGetResponseLatestDeploymentSourceConfigPreviewBranchExcludesList>;
+
 export type ProjectsGetResponseLatestDeploymentSourceConfigPreviewBranchIncludesList =
   Array<string>;
+const ProjectsGetResponseLatestDeploymentSourceConfigPreviewBranchIncludesList =
+  ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList as any as S.Schema<ProjectsGetResponseLatestDeploymentSourceConfigPreviewBranchIncludesList>;
+
 export type ProjectsGetResponseLatestDeploymentSourceConfigPreviewDeploymentSetting =
   | "all"
   | "none"
   | "custom";
+const ProjectsGetResponseLatestDeploymentSourceConfigPreviewDeploymentSetting = S.String;
+
 export interface ProjectsGetResponseLatestDeploymentSourceConfig {
   /** Use `production_deployments_enabled` and `preview_deployment_setting` for more granular control. */
   deploymentsEnabled: boolean;
@@ -1925,12 +2746,24 @@ export interface ProjectsGetResponseLatestDeploymentSourceConfig {
   /** The name of the repository. */
   repoName: string;
 }
+const ProjectsGetResponseLatestDeploymentSourceConfig = /*@__PURE__*/ __L.at(
+  __c10,
+  3,
+) as any as S.Schema<ProjectsGetResponseLatestDeploymentSourceConfig>;
+
 export type ProjectsGetResponseLatestDeploymentSourceType = "github" | "gitlab";
+const ProjectsGetResponseLatestDeploymentSourceType = S.String;
+
 export interface ProjectsGetResponseLatestDeploymentSource {
   config: ProjectsGetResponseLatestDeploymentSourceConfig;
   /** The source control management provider. */
   type: ProjectsGetResponseLatestDeploymentSourceType;
 }
+const ProjectsGetResponseLatestDeploymentSource = /*@__PURE__*/ __L.at(
+  __c10,
+  4,
+) as any as S.Schema<ProjectsGetResponseLatestDeploymentSource>;
+
 export type ProjectsGetResponseLatestDeploymentStagesItemName =
   | "queued"
   | "initialize"
@@ -1956,6 +2789,9 @@ export interface ProjectsGetResponseLatestDeploymentStagesItem {
 }
 export type ProjectsGetResponseLatestDeploymentStagesList =
   Array<ProjectsGetResponseLatestDeploymentStagesItem>;
+const ProjectsGetResponseLatestDeploymentStagesList =
+  ProjectsCreateResponseCanonicalDeploymentStagesList as any as S.Schema<ProjectsGetResponseLatestDeploymentStagesList>;
+
 export type ProjectsGetResponseLatestDeploymentSkipReason =
   | "commit_message"
   | "preview_deployments_disabled"
@@ -1964,6 +2800,8 @@ export type ProjectsGetResponseLatestDeploymentSkipReason =
   | "branch_config"
   | "pages_to_workers_conversion"
   | "superseded_queued_build";
+const ProjectsGetResponseLatestDeploymentSkipReason = S.String;
+
 export interface ProjectsGetResponseLatestDeployment {
   /** Id of the deployment. */
   id: string;
@@ -2002,13 +2840,35 @@ export interface ProjectsGetResponseLatestDeployment {
   /** Whether the deployment uses functions. */
   usesFunctions?: boolean | null;
 }
+const ProjectsGetResponseLatestDeployment = /*@__PURE__*/ __L.at(
+  __c10,
+  5,
+) as any as S.Schema<ProjectsGetResponseLatestDeployment>;
+
 export type ProjectsGetResponseBuildConfig = ProjectsCreateResponseCanonicalDeploymentBuildConfig;
 export type ProjectsGetResponseDomainsList = Array<string>;
+const ProjectsGetResponseDomainsList =
+  AssetsCheckMissingRequestHashesList as any as S.Schema<ProjectsGetResponseDomainsList>;
+
 export type ProjectsGetResponseSourceConfigPathExcludesList = Array<string>;
+const ProjectsGetResponseSourceConfigPathExcludesList =
+  AssetsCheckMissingRequestHashesList as any as S.Schema<ProjectsGetResponseSourceConfigPathExcludesList>;
+
 export type ProjectsGetResponseSourceConfigPathIncludesList = Array<string>;
+const ProjectsGetResponseSourceConfigPathIncludesList =
+  AssetsCheckMissingRequestHashesList as any as S.Schema<ProjectsGetResponseSourceConfigPathIncludesList>;
+
 export type ProjectsGetResponseSourceConfigPreviewBranchExcludesList = Array<string>;
+const ProjectsGetResponseSourceConfigPreviewBranchExcludesList =
+  AssetsCheckMissingRequestHashesList as any as S.Schema<ProjectsGetResponseSourceConfigPreviewBranchExcludesList>;
+
 export type ProjectsGetResponseSourceConfigPreviewBranchIncludesList = Array<string>;
+const ProjectsGetResponseSourceConfigPreviewBranchIncludesList =
+  AssetsCheckMissingRequestHashesList as any as S.Schema<ProjectsGetResponseSourceConfigPreviewBranchIncludesList>;
+
 export type ProjectsGetResponseSourceConfigPreviewDeploymentSetting = "all" | "none" | "custom";
+const ProjectsGetResponseSourceConfigPreviewDeploymentSetting = S.String;
+
 export interface ProjectsGetResponseSourceConfig {
   /** Use `production_deployments_enabled` and `preview_deployment_setting` for more granular control. */
   deploymentsEnabled: boolean;
@@ -2037,12 +2897,24 @@ export interface ProjectsGetResponseSourceConfig {
   /** The name of the repository. */
   repoName: string;
 }
+const ProjectsGetResponseSourceConfig = /*@__PURE__*/ __L.at(
+  __c10,
+  6,
+) as any as S.Schema<ProjectsGetResponseSourceConfig>;
+
 export type ProjectsGetResponseSourceType = "github" | "gitlab";
+const ProjectsGetResponseSourceType = S.String;
+
 export interface ProjectsGetResponseSource {
   config: ProjectsGetResponseSourceConfig;
   /** The source control management provider. */
   type: ProjectsGetResponseSourceType;
 }
+const ProjectsGetResponseSource = /*@__PURE__*/ __L.at(
+  __c10,
+  7,
+) as any as S.Schema<ProjectsGetResponseSource>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetProjectResponse {
   /** ID of the project. */
@@ -2078,6 +2950,8 @@ export interface GetProjectResponse {
   /** The Cloudflare subdomain associated with the project. */
   subdomain?: string | null;
 }
+const GetProjectResponse = /*@__PURE__*/ __L.at(__c11, 0) as any as S.Schema<GetProjectResponse>;
+
 export interface GetProjectDeploymentRequest {
   /** Identifier. */
   accountId: string;
@@ -2086,7 +2960,15 @@ export interface GetProjectDeploymentRequest {
   /** UUID of the Pages deployment, as returned by deployment list or create operations. */
   deploymentId: string;
 }
+const GetProjectDeploymentRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  1,
+) as any as S.Schema<GetProjectDeploymentRequest>;
+
 export type ProjectsDeploymentsGetResponseAliasesList = Array<string>;
+const ProjectsDeploymentsGetResponseAliasesList =
+  AssetsCheckMissingRequestHashesList as any as S.Schema<ProjectsDeploymentsGetResponseAliasesList>;
+
 export type ProjectsDeploymentsGetResponseBuildConfig =
   ProjectsCreateResponseCanonicalDeploymentBuildConfig;
 export type ProjectsDeploymentsGetResponseDeploymentTriggerMetadata =
@@ -2101,7 +2983,12 @@ export interface ProjectsDeploymentsGetResponseDeploymentTrigger {
   /** What caused the deployment. */
   type: ProjectsDeploymentsGetResponseDeploymentTriggerType;
 }
+const ProjectsDeploymentsGetResponseDeploymentTrigger =
+  ProjectsCreateResponseLatestDeploymentDeploymentTrigger as any as S.Schema<ProjectsDeploymentsGetResponseDeploymentTrigger>;
+
 export type ProjectsDeploymentsGetResponseEnvironment = "preview" | "production";
+const ProjectsDeploymentsGetResponseEnvironment = S.String;
+
 export type ProjectsDeploymentsGetResponseLatestStageName =
   | "queued"
   | "initialize"
@@ -2125,14 +3012,31 @@ export interface ProjectsDeploymentsGetResponseLatestStage {
   /** State of the current stage. */
   status: ProjectsDeploymentsGetResponseLatestStageStatus;
 }
+const ProjectsDeploymentsGetResponseLatestStage =
+  ProjectsCreateResponseCanonicalDeploymentLatestStage as any as S.Schema<ProjectsDeploymentsGetResponseLatestStage>;
+
 export type ProjectsDeploymentsGetResponseSourceConfigPathExcludesList = Array<string>;
+const ProjectsDeploymentsGetResponseSourceConfigPathExcludesList =
+  AssetsCheckMissingRequestHashesList as any as S.Schema<ProjectsDeploymentsGetResponseSourceConfigPathExcludesList>;
+
 export type ProjectsDeploymentsGetResponseSourceConfigPathIncludesList = Array<string>;
+const ProjectsDeploymentsGetResponseSourceConfigPathIncludesList =
+  AssetsCheckMissingRequestHashesList as any as S.Schema<ProjectsDeploymentsGetResponseSourceConfigPathIncludesList>;
+
 export type ProjectsDeploymentsGetResponseSourceConfigPreviewBranchExcludesList = Array<string>;
+const ProjectsDeploymentsGetResponseSourceConfigPreviewBranchExcludesList =
+  ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList as any as S.Schema<ProjectsDeploymentsGetResponseSourceConfigPreviewBranchExcludesList>;
+
 export type ProjectsDeploymentsGetResponseSourceConfigPreviewBranchIncludesList = Array<string>;
+const ProjectsDeploymentsGetResponseSourceConfigPreviewBranchIncludesList =
+  ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList as any as S.Schema<ProjectsDeploymentsGetResponseSourceConfigPreviewBranchIncludesList>;
+
 export type ProjectsDeploymentsGetResponseSourceConfigPreviewDeploymentSetting =
   | "all"
   | "none"
   | "custom";
+const ProjectsDeploymentsGetResponseSourceConfigPreviewDeploymentSetting = S.String;
+
 export interface ProjectsDeploymentsGetResponseSourceConfig {
   /** Use `production_deployments_enabled` and `preview_deployment_setting` for more granular control. */
   deploymentsEnabled: boolean;
@@ -2161,12 +3065,24 @@ export interface ProjectsDeploymentsGetResponseSourceConfig {
   /** The name of the repository. */
   repoName: string;
 }
+const ProjectsDeploymentsGetResponseSourceConfig = /*@__PURE__*/ __L.at(
+  __c11,
+  2,
+) as any as S.Schema<ProjectsDeploymentsGetResponseSourceConfig>;
+
 export type ProjectsDeploymentsGetResponseSourceType = "github" | "gitlab";
+const ProjectsDeploymentsGetResponseSourceType = S.String;
+
 export interface ProjectsDeploymentsGetResponseSource {
   config: ProjectsDeploymentsGetResponseSourceConfig;
   /** The source control management provider. */
   type: ProjectsDeploymentsGetResponseSourceType;
 }
+const ProjectsDeploymentsGetResponseSource = /*@__PURE__*/ __L.at(
+  __c11,
+  3,
+) as any as S.Schema<ProjectsDeploymentsGetResponseSource>;
+
 export type ProjectsDeploymentsGetResponseStagesItemName =
   | "queued"
   | "initialize"
@@ -2192,6 +3108,9 @@ export interface ProjectsDeploymentsGetResponseStagesItem {
 }
 export type ProjectsDeploymentsGetResponseStagesList =
   Array<ProjectsDeploymentsGetResponseStagesItem>;
+const ProjectsDeploymentsGetResponseStagesList =
+  ProjectsCreateResponseCanonicalDeploymentStagesList as any as S.Schema<ProjectsDeploymentsGetResponseStagesList>;
+
 export type ProjectsDeploymentsGetResponseSkipReason =
   | "commit_message"
   | "preview_deployments_disabled"
@@ -2200,6 +3119,8 @@ export type ProjectsDeploymentsGetResponseSkipReason =
   | "branch_config"
   | "pages_to_workers_conversion"
   | "superseded_queued_build";
+const ProjectsDeploymentsGetResponseSkipReason = S.String;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetProjectDeploymentResponse {
   /** Id of the deployment. */
@@ -2239,6 +3160,11 @@ export interface GetProjectDeploymentResponse {
   /** Whether the deployment uses functions. */
   usesFunctions?: boolean | null;
 }
+const GetProjectDeploymentResponse = /*@__PURE__*/ __L.at(
+  __c11,
+  4,
+) as any as S.Schema<GetProjectDeploymentResponse>;
+
 export interface GetProjectDeploymentHistoryLogRequest {
   /** Identifier. */
   accountId: string;
@@ -2247,18 +3173,38 @@ export interface GetProjectDeploymentHistoryLogRequest {
   /** UUID of the Pages deployment, as returned by deployment list or create operations. */
   deploymentId: string;
 }
+const GetProjectDeploymentHistoryLogRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  5,
+) as any as S.Schema<GetProjectDeploymentHistoryLogRequest>;
+
 export interface ProjectsDeploymentsHistoryLogsGetResponseDataItem {
   line: string;
   ts: string;
 }
+const ProjectsDeploymentsHistoryLogsGetResponseDataItem = /*@__PURE__*/ __L.at(
+  __c11,
+  6,
+) as any as S.Schema<ProjectsDeploymentsHistoryLogsGetResponseDataItem>;
+
 export type ProjectsDeploymentsHistoryLogsGetResponseDataList =
   Array<ProjectsDeploymentsHistoryLogsGetResponseDataItem>;
+const ProjectsDeploymentsHistoryLogsGetResponseDataList = /*@__PURE__*/ __L.at(
+  __c11,
+  7,
+) as any as S.Schema<ProjectsDeploymentsHistoryLogsGetResponseDataList>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetProjectDeploymentHistoryLogResponse {
   data: ProjectsDeploymentsHistoryLogsGetResponseDataList;
   includesContainerLogs: boolean;
   total: number;
 }
+const GetProjectDeploymentHistoryLogResponse = /*@__PURE__*/ __L.at(
+  __c12,
+  0,
+) as any as S.Schema<GetProjectDeploymentHistoryLogResponse>;
+
 export interface GetProjectDomainRequest {
   /** Identifier. */
   accountId: string;
@@ -2267,7 +3213,14 @@ export interface GetProjectDomainRequest {
   /** Fully qualified domain name for the Pages project, such as `example.com`. */
   domainName: string;
 }
+const GetProjectDomainRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  1,
+) as any as S.Schema<GetProjectDomainRequest>;
+
 export type ProjectsDomainsGetResponseCertificateAuthority = "google" | "lets_encrypt";
+const ProjectsDomainsGetResponseCertificateAuthority = S.String;
+
 export type ProjectsDomainsGetResponseStatus =
   | "initializing"
   | "pending"
@@ -2275,6 +3228,8 @@ export type ProjectsDomainsGetResponseStatus =
   | "deactivated"
   | "blocked"
   | "error";
+const ProjectsDomainsGetResponseStatus = S.String;
+
 export type ProjectsDomainsGetResponseValidationDataMethod = "http" | "txt";
 export type ProjectsDomainsGetResponseValidationDataStatus =
   | "initializing"
@@ -2289,6 +3244,9 @@ export interface ProjectsDomainsGetResponseValidationData {
   txtName?: string | null;
   txtValue?: string | null;
 }
+const ProjectsDomainsGetResponseValidationData =
+  ProjectsDomainsCreateResponseValidationData as any as S.Schema<ProjectsDomainsGetResponseValidationData>;
+
 export type ProjectsDomainsGetResponseVerificationDataStatus =
   | "pending"
   | "active"
@@ -2299,6 +3257,9 @@ export interface ProjectsDomainsGetResponseVerificationData {
   status: ProjectsDomainsGetResponseVerificationDataStatus;
   errorMessage?: string | null;
 }
+const ProjectsDomainsGetResponseVerificationData =
+  ProjectsDomainsCreateResponseVerificationData as any as S.Schema<ProjectsDomainsGetResponseVerificationData>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetProjectDomainResponse {
   id: string;
@@ -2312,7 +3273,14 @@ export interface GetProjectDomainResponse {
   verificationData: ProjectsDomainsGetResponseVerificationData;
   zoneTag: string;
 }
+const GetProjectDomainResponse = /*@__PURE__*/ __L.at(
+  __c12,
+  2,
+) as any as S.Schema<GetProjectDomainResponse>;
+
 export type ProjectsDeploymentsListRequestEnv = "production" | "preview";
+const ProjectsDeploymentsListRequestEnv = S.String;
+
 export interface ListProjectDeploymentsRequest {
   /** Identifier. */
   accountId: string;
@@ -2325,7 +3293,15 @@ export interface ListProjectDeploymentsRequest {
   /** Number of results to return per page. */
   perPage?: number;
 }
+const ListProjectDeploymentsRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  3,
+) as any as S.Schema<ListProjectDeploymentsRequest>;
+
 export type ProjectsDeploymentsListResultItemAliasesList = Array<string>;
+const ProjectsDeploymentsListResultItemAliasesList =
+  AssetsCheckMissingRequestHashesList as any as S.Schema<ProjectsDeploymentsListResultItemAliasesList>;
+
 export type ProjectsDeploymentsListResultItemBuildConfig =
   ProjectsCreateResponseCanonicalDeploymentBuildConfig;
 export type ProjectsDeploymentsListResultItemDeploymentTriggerMetadata =
@@ -2340,7 +3316,12 @@ export interface ProjectsDeploymentsListResultItemDeploymentTrigger {
   /** What caused the deployment. */
   type: ProjectsDeploymentsListResultItemDeploymentTriggerType;
 }
+const ProjectsDeploymentsListResultItemDeploymentTrigger =
+  ProjectsCreateResponseLatestDeploymentDeploymentTrigger as any as S.Schema<ProjectsDeploymentsListResultItemDeploymentTrigger>;
+
 export type ProjectsDeploymentsListResultItemEnvironment = "preview" | "production";
+const ProjectsDeploymentsListResultItemEnvironment = S.String;
+
 export type ProjectsDeploymentsListResultItemLatestStageName =
   | "queued"
   | "initialize"
@@ -2364,14 +3345,31 @@ export interface ProjectsDeploymentsListResultItemLatestStage {
   /** State of the current stage. */
   status: ProjectsDeploymentsListResultItemLatestStageStatus;
 }
+const ProjectsDeploymentsListResultItemLatestStage =
+  ProjectsCreateResponseCanonicalDeploymentLatestStage as any as S.Schema<ProjectsDeploymentsListResultItemLatestStage>;
+
 export type ProjectsDeploymentsListResultItemSourceConfigPathExcludesList = Array<string>;
+const ProjectsDeploymentsListResultItemSourceConfigPathExcludesList =
+  AssetsCheckMissingRequestHashesList as any as S.Schema<ProjectsDeploymentsListResultItemSourceConfigPathExcludesList>;
+
 export type ProjectsDeploymentsListResultItemSourceConfigPathIncludesList = Array<string>;
+const ProjectsDeploymentsListResultItemSourceConfigPathIncludesList =
+  AssetsCheckMissingRequestHashesList as any as S.Schema<ProjectsDeploymentsListResultItemSourceConfigPathIncludesList>;
+
 export type ProjectsDeploymentsListResultItemSourceConfigPreviewBranchExcludesList = Array<string>;
+const ProjectsDeploymentsListResultItemSourceConfigPreviewBranchExcludesList =
+  ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList as any as S.Schema<ProjectsDeploymentsListResultItemSourceConfigPreviewBranchExcludesList>;
+
 export type ProjectsDeploymentsListResultItemSourceConfigPreviewBranchIncludesList = Array<string>;
+const ProjectsDeploymentsListResultItemSourceConfigPreviewBranchIncludesList =
+  ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList as any as S.Schema<ProjectsDeploymentsListResultItemSourceConfigPreviewBranchIncludesList>;
+
 export type ProjectsDeploymentsListResultItemSourceConfigPreviewDeploymentSetting =
   | "all"
   | "none"
   | "custom";
+const ProjectsDeploymentsListResultItemSourceConfigPreviewDeploymentSetting = S.String;
+
 export interface ProjectsDeploymentsListResultItemSourceConfig {
   /** Use `production_deployments_enabled` and `preview_deployment_setting` for more granular control. */
   deploymentsEnabled: boolean;
@@ -2400,12 +3398,24 @@ export interface ProjectsDeploymentsListResultItemSourceConfig {
   /** The name of the repository. */
   repoName: string;
 }
+const ProjectsDeploymentsListResultItemSourceConfig = /*@__PURE__*/ __L.at(
+  __c12,
+  4,
+) as any as S.Schema<ProjectsDeploymentsListResultItemSourceConfig>;
+
 export type ProjectsDeploymentsListResultItemSourceType = "github" | "gitlab";
+const ProjectsDeploymentsListResultItemSourceType = S.String;
+
 export interface ProjectsDeploymentsListResultItemSource {
   config: ProjectsDeploymentsListResultItemSourceConfig;
   /** The source control management provider. */
   type: ProjectsDeploymentsListResultItemSourceType;
 }
+const ProjectsDeploymentsListResultItemSource = /*@__PURE__*/ __L.at(
+  __c12,
+  5,
+) as any as S.Schema<ProjectsDeploymentsListResultItemSource>;
+
 export type ProjectsDeploymentsListResultItemStagesItemName =
   | "queued"
   | "initialize"
@@ -2431,6 +3441,9 @@ export interface ProjectsDeploymentsListResultItemStagesItem {
 }
 export type ProjectsDeploymentsListResultItemStagesList =
   Array<ProjectsDeploymentsListResultItemStagesItem>;
+const ProjectsDeploymentsListResultItemStagesList =
+  ProjectsCreateResponseCanonicalDeploymentStagesList as any as S.Schema<ProjectsDeploymentsListResultItemStagesList>;
+
 export type ProjectsDeploymentsListResultItemSkipReason =
   | "commit_message"
   | "preview_deployments_disabled"
@@ -2439,6 +3452,8 @@ export type ProjectsDeploymentsListResultItemSkipReason =
   | "branch_config"
   | "pages_to_workers_conversion"
   | "superseded_queued_build";
+const ProjectsDeploymentsListResultItemSkipReason = S.String;
+
 export interface ProjectsDeploymentsListResultItem {
   /** Id of the deployment. */
   id: string;
@@ -2477,20 +3492,42 @@ export interface ProjectsDeploymentsListResultItem {
   /** Whether the deployment uses functions. */
   usesFunctions?: boolean | null;
 }
+const ProjectsDeploymentsListResultItem = /*@__PURE__*/ __L.at(
+  __c12,
+  6,
+) as any as S.Schema<ProjectsDeploymentsListResultItem>;
+
 export type ProjectsDeploymentsListResultList = Array<ProjectsDeploymentsListResultItem>;
+const ProjectsDeploymentsListResultList = /*@__PURE__*/ __L.at(
+  __c12,
+  7,
+) as any as S.Schema<ProjectsDeploymentsListResultList>;
+
 export interface ListProjectDeploymentsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result: ProjectsDeploymentsListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
+const ListProjectDeploymentsResponse = /*@__PURE__*/ __L.at(
+  __c13,
+  0,
+) as any as S.Schema<ListProjectDeploymentsResponse>;
+
 export interface ListProjectDomainsRequest {
   /** Identifier. */
   accountId: string;
   /** Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens. */
   projectName: string;
 }
+const ListProjectDomainsRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  1,
+) as any as S.Schema<ListProjectDomainsRequest>;
+
 export type ProjectsDomainsListResultItemCertificateAuthority = "google" | "lets_encrypt";
+const ProjectsDomainsListResultItemCertificateAuthority = S.String;
+
 export type ProjectsDomainsListResultItemStatus =
   | "initializing"
   | "pending"
@@ -2498,6 +3535,8 @@ export type ProjectsDomainsListResultItemStatus =
   | "deactivated"
   | "blocked"
   | "error";
+const ProjectsDomainsListResultItemStatus = S.String;
+
 export type ProjectsDomainsListResultItemValidationDataMethod = "http" | "txt";
 export type ProjectsDomainsListResultItemValidationDataStatus =
   | "initializing"
@@ -2512,6 +3551,9 @@ export interface ProjectsDomainsListResultItemValidationData {
   txtName?: string | null;
   txtValue?: string | null;
 }
+const ProjectsDomainsListResultItemValidationData =
+  ProjectsDomainsCreateResponseValidationData as any as S.Schema<ProjectsDomainsListResultItemValidationData>;
+
 export type ProjectsDomainsListResultItemVerificationDataStatus =
   | "pending"
   | "active"
@@ -2522,6 +3564,9 @@ export interface ProjectsDomainsListResultItemVerificationData {
   status: ProjectsDomainsListResultItemVerificationDataStatus;
   errorMessage?: string | null;
 }
+const ProjectsDomainsListResultItemVerificationData =
+  ProjectsDomainsCreateResponseVerificationData as any as S.Schema<ProjectsDomainsListResultItemVerificationData>;
+
 export interface ProjectsDomainsListResultItem {
   id: string;
   certificateAuthority: ProjectsDomainsListResultItemCertificateAuthority;
@@ -2534,13 +3579,28 @@ export interface ProjectsDomainsListResultItem {
   verificationData: ProjectsDomainsListResultItemVerificationData;
   zoneTag: string;
 }
+const ProjectsDomainsListResultItem = /*@__PURE__*/ __L.at(
+  __c13,
+  2,
+) as any as S.Schema<ProjectsDomainsListResultItem>;
+
 export type ProjectsDomainsListResultList = Array<ProjectsDomainsListResultItem>;
+const ProjectsDomainsListResultList = /*@__PURE__*/ __L.at(
+  __c13,
+  3,
+) as any as S.Schema<ProjectsDomainsListResultList>;
+
 export interface ListProjectDomainsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result: ProjectsDomainsListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
+const ListProjectDomainsResponse = /*@__PURE__*/ __L.at(
+  __c13,
+  4,
+) as any as S.Schema<ListProjectDomainsResponse>;
+
 export interface ListProjectsRequest {
   /** Identifier. */
   accountId: string;
@@ -2549,7 +3609,12 @@ export interface ListProjectsRequest {
   /** Number of results to return per page. */
   perPage?: number;
 }
+const ListProjectsRequest = /*@__PURE__*/ __L.at(__c13, 5) as any as S.Schema<ListProjectsRequest>;
+
 export type ProjectsListResultItemCanonicalDeploymentAliasesList = Array<string>;
+const ProjectsListResultItemCanonicalDeploymentAliasesList =
+  AssetsCheckMissingRequestHashesList as any as S.Schema<ProjectsListResultItemCanonicalDeploymentAliasesList>;
+
 export type ProjectsListResultItemCanonicalDeploymentBuildConfig =
   ProjectsCreateResponseCanonicalDeploymentBuildConfig;
 export type ProjectsListResultItemCanonicalDeploymentDeploymentTriggerMetadata =
@@ -2564,7 +3629,12 @@ export interface ProjectsListResultItemCanonicalDeploymentDeploymentTrigger {
   /** What caused the deployment. */
   type: ProjectsListResultItemCanonicalDeploymentDeploymentTriggerType;
 }
+const ProjectsListResultItemCanonicalDeploymentDeploymentTrigger =
+  ProjectsCreateResponseCanonicalDeploymentDeploymentTrigger as any as S.Schema<ProjectsListResultItemCanonicalDeploymentDeploymentTrigger>;
+
 export type ProjectsListResultItemCanonicalDeploymentEnvironment = "preview" | "production";
+const ProjectsListResultItemCanonicalDeploymentEnvironment = S.String;
+
 export type ProjectsListResultItemCanonicalDeploymentLatestStageName =
   | "queued"
   | "initialize"
@@ -2588,16 +3658,33 @@ export interface ProjectsListResultItemCanonicalDeploymentLatestStage {
   /** State of the current stage. */
   status: ProjectsListResultItemCanonicalDeploymentLatestStageStatus;
 }
+const ProjectsListResultItemCanonicalDeploymentLatestStage =
+  ProjectsCreateResponseCanonicalDeploymentLatestStage as any as S.Schema<ProjectsListResultItemCanonicalDeploymentLatestStage>;
+
 export type ProjectsListResultItemCanonicalDeploymentSourceConfigPathExcludesList = Array<string>;
+const ProjectsListResultItemCanonicalDeploymentSourceConfigPathExcludesList =
+  ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList as any as S.Schema<ProjectsListResultItemCanonicalDeploymentSourceConfigPathExcludesList>;
+
 export type ProjectsListResultItemCanonicalDeploymentSourceConfigPathIncludesList = Array<string>;
+const ProjectsListResultItemCanonicalDeploymentSourceConfigPathIncludesList =
+  ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList as any as S.Schema<ProjectsListResultItemCanonicalDeploymentSourceConfigPathIncludesList>;
+
 export type ProjectsListResultItemCanonicalDeploymentSourceConfigPreviewBranchExcludesList =
   Array<string>;
+const ProjectsListResultItemCanonicalDeploymentSourceConfigPreviewBranchExcludesList =
+  ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList as any as S.Schema<ProjectsListResultItemCanonicalDeploymentSourceConfigPreviewBranchExcludesList>;
+
 export type ProjectsListResultItemCanonicalDeploymentSourceConfigPreviewBranchIncludesList =
   Array<string>;
+const ProjectsListResultItemCanonicalDeploymentSourceConfigPreviewBranchIncludesList =
+  ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList as any as S.Schema<ProjectsListResultItemCanonicalDeploymentSourceConfigPreviewBranchIncludesList>;
+
 export type ProjectsListResultItemCanonicalDeploymentSourceConfigPreviewDeploymentSetting =
   | "all"
   | "none"
   | "custom";
+const ProjectsListResultItemCanonicalDeploymentSourceConfigPreviewDeploymentSetting = S.String;
+
 export interface ProjectsListResultItemCanonicalDeploymentSourceConfig {
   /** Use `production_deployments_enabled` and `preview_deployment_setting` for more granular control. */
   deploymentsEnabled: boolean;
@@ -2626,12 +3713,24 @@ export interface ProjectsListResultItemCanonicalDeploymentSourceConfig {
   /** The name of the repository. */
   repoName: string;
 }
+const ProjectsListResultItemCanonicalDeploymentSourceConfig = /*@__PURE__*/ __L.at(
+  __c13,
+  6,
+) as any as S.Schema<ProjectsListResultItemCanonicalDeploymentSourceConfig>;
+
 export type ProjectsListResultItemCanonicalDeploymentSourceType = "github" | "gitlab";
+const ProjectsListResultItemCanonicalDeploymentSourceType = S.String;
+
 export interface ProjectsListResultItemCanonicalDeploymentSource {
   config: ProjectsListResultItemCanonicalDeploymentSourceConfig;
   /** The source control management provider. */
   type: ProjectsListResultItemCanonicalDeploymentSourceType;
 }
+const ProjectsListResultItemCanonicalDeploymentSource = /*@__PURE__*/ __L.at(
+  __c13,
+  7,
+) as any as S.Schema<ProjectsListResultItemCanonicalDeploymentSource>;
+
 export type ProjectsListResultItemCanonicalDeploymentStagesItemName =
   | "queued"
   | "initialize"
@@ -2657,6 +3756,9 @@ export interface ProjectsListResultItemCanonicalDeploymentStagesItem {
 }
 export type ProjectsListResultItemCanonicalDeploymentStagesList =
   Array<ProjectsListResultItemCanonicalDeploymentStagesItem>;
+const ProjectsListResultItemCanonicalDeploymentStagesList =
+  ProjectsCreateResponseCanonicalDeploymentStagesList as any as S.Schema<ProjectsListResultItemCanonicalDeploymentStagesList>;
+
 export type ProjectsListResultItemCanonicalDeploymentSkipReason =
   | "commit_message"
   | "preview_deployments_disabled"
@@ -2665,6 +3767,8 @@ export type ProjectsListResultItemCanonicalDeploymentSkipReason =
   | "branch_config"
   | "pages_to_workers_conversion"
   | "superseded_queued_build";
+const ProjectsListResultItemCanonicalDeploymentSkipReason = S.String;
+
 export interface ProjectsListResultItemCanonicalDeployment {
   /** Id of the deployment. */
   id: string;
@@ -2703,16 +3807,29 @@ export interface ProjectsListResultItemCanonicalDeployment {
   /** Whether the deployment uses functions. */
   usesFunctions?: boolean | null;
 }
+const ProjectsListResultItemCanonicalDeployment = /*@__PURE__*/ __L.at(
+  __c14,
+  0,
+) as any as S.Schema<ProjectsListResultItemCanonicalDeployment>;
+
 export type ProjectsListResultItemDeploymentConfigsPreviewCompatibilityFlagsList = Array<string>;
+const ProjectsListResultItemDeploymentConfigsPreviewCompatibilityFlagsList =
+  ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList as any as S.Schema<ProjectsListResultItemDeploymentConfigsPreviewCompatibilityFlagsList>;
+
 export type ProjectsListResultItemDeploymentConfigsPreviewUsageModel =
   | "standard"
   | "bundled"
   | "unbound";
+const ProjectsListResultItemDeploymentConfigsPreviewUsageModel = S.String;
+
 export type ProjectsListResultItemDeploymentConfigsPreviewAiBindingsValue =
   ProjectsCreateRequestDeploymentConfigsPreviewAiBindingsValue;
 export type ProjectsListResultItemDeploymentConfigsPreviewAiBindingsMap = {
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewAiBindingsValue | undefined;
 };
+const ProjectsListResultItemDeploymentConfigsPreviewAiBindingsMap =
+  ProjectsCreateRequestDeploymentConfigsPreviewAiBindingsMap as any as S.Schema<ProjectsListResultItemDeploymentConfigsPreviewAiBindingsMap>;
+
 export type ProjectsListResultItemDeploymentConfigsPreviewAnalyticsEngineDatasetsValue =
   ProjectsCreateRequestDeploymentConfigsPreviewAnalyticsEngineDatasetsValue;
 export type ProjectsListResultItemDeploymentConfigsPreviewAnalyticsEngineDatasetsMap = {
@@ -2720,12 +3837,21 @@ export type ProjectsListResultItemDeploymentConfigsPreviewAnalyticsEngineDataset
     | ProjectsCreateRequestDeploymentConfigsPreviewAnalyticsEngineDatasetsValue
     | undefined;
 };
+const ProjectsListResultItemDeploymentConfigsPreviewAnalyticsEngineDatasetsMap =
+  ProjectsCreateRequestDeploymentConfigsPreviewAnalyticsEngineDatasetsMap as any as S.Schema<ProjectsListResultItemDeploymentConfigsPreviewAnalyticsEngineDatasetsMap>;
+
 export type ProjectsListResultItemDeploymentConfigsPreviewBrowsersMap = {
   [key: string]: unknown | undefined;
 };
+const ProjectsListResultItemDeploymentConfigsPreviewBrowsersMap =
+  ProjectsCreateRequestDeploymentConfigsPreviewBrowsersMap as any as S.Schema<ProjectsListResultItemDeploymentConfigsPreviewBrowsersMap>;
+
 export type ProjectsListResultItemDeploymentConfigsPreviewD1DatabasesMap = {
   [key: string]: unknown | undefined;
 };
+const ProjectsListResultItemDeploymentConfigsPreviewD1DatabasesMap =
+  ProjectsCreateRequestDeploymentConfigsPreviewBrowsersMap as any as S.Schema<ProjectsListResultItemDeploymentConfigsPreviewD1DatabasesMap>;
+
 export type ProjectsListResultItemDeploymentConfigsPreviewDurableObjectNamespacesValue =
   ProjectsCreateRequestDeploymentConfigsPreviewDurableObjectNamespacesValue;
 export type ProjectsListResultItemDeploymentConfigsPreviewDurableObjectNamespacesMap = {
@@ -2733,14 +3859,23 @@ export type ProjectsListResultItemDeploymentConfigsPreviewDurableObjectNamespace
     | ProjectsCreateRequestDeploymentConfigsPreviewDurableObjectNamespacesValue
     | undefined;
 };
+const ProjectsListResultItemDeploymentConfigsPreviewDurableObjectNamespacesMap =
+  ProjectsCreateRequestDeploymentConfigsPreviewDurableObjectNamespacesMap as any as S.Schema<ProjectsListResultItemDeploymentConfigsPreviewDurableObjectNamespacesMap>;
+
 export type ProjectsListResultItemDeploymentConfigsPreviewHyperdriveBindingsValue =
   ProjectsCreateRequestDeploymentConfigsPreviewHyperdriveBindingsValue;
 export type ProjectsListResultItemDeploymentConfigsPreviewHyperdriveBindingsMap = {
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewHyperdriveBindingsValue | undefined;
 };
+const ProjectsListResultItemDeploymentConfigsPreviewHyperdriveBindingsMap =
+  ProjectsCreateRequestDeploymentConfigsPreviewHyperdriveBindingsMap as any as S.Schema<ProjectsListResultItemDeploymentConfigsPreviewHyperdriveBindingsMap>;
+
 export type ProjectsListResultItemDeploymentConfigsPreviewKvNamespacesMap = {
   [key: string]: unknown | undefined;
 };
+const ProjectsListResultItemDeploymentConfigsPreviewKvNamespacesMap =
+  ProjectsCreateRequestDeploymentConfigsPreviewBrowsersMap as any as S.Schema<ProjectsListResultItemDeploymentConfigsPreviewKvNamespacesMap>;
+
 export type ProjectsListResultItemDeploymentConfigsPreviewLimits =
   ProjectsCreateRequestDeploymentConfigsPreviewLimits;
 export type ProjectsListResultItemDeploymentConfigsPreviewMtlsCertificatesValue =
@@ -2748,6 +3883,9 @@ export type ProjectsListResultItemDeploymentConfigsPreviewMtlsCertificatesValue 
 export type ProjectsListResultItemDeploymentConfigsPreviewMtlsCertificatesMap = {
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewMtlsCertificatesValue | undefined;
 };
+const ProjectsListResultItemDeploymentConfigsPreviewMtlsCertificatesMap =
+  ProjectsCreateRequestDeploymentConfigsPreviewMtlsCertificatesMap as any as S.Schema<ProjectsListResultItemDeploymentConfigsPreviewMtlsCertificatesMap>;
+
 export type ProjectsListResultItemDeploymentConfigsPreviewPlacement =
   ProjectsCreateRequestDeploymentConfigsPreviewPlacement;
 export type ProjectsListResultItemDeploymentConfigsPreviewQueueProducersValue =
@@ -2755,19 +3893,31 @@ export type ProjectsListResultItemDeploymentConfigsPreviewQueueProducersValue =
 export type ProjectsListResultItemDeploymentConfigsPreviewQueueProducersMap = {
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewQueueProducersValue | undefined;
 };
+const ProjectsListResultItemDeploymentConfigsPreviewQueueProducersMap =
+  ProjectsCreateRequestDeploymentConfigsPreviewQueueProducersMap as any as S.Schema<ProjectsListResultItemDeploymentConfigsPreviewQueueProducersMap>;
+
 export type ProjectsListResultItemDeploymentConfigsPreviewR2BucketsMap = {
   [key: string]: unknown | undefined;
 };
+const ProjectsListResultItemDeploymentConfigsPreviewR2BucketsMap =
+  ProjectsCreateRequestDeploymentConfigsPreviewBrowsersMap as any as S.Schema<ProjectsListResultItemDeploymentConfigsPreviewR2BucketsMap>;
+
 export type ProjectsListResultItemDeploymentConfigsPreviewServicesValue =
   ProjectsCreateResponseDeploymentConfigsPreviewServicesValue;
 export type ProjectsListResultItemDeploymentConfigsPreviewServicesMap = {
   [key: string]: ProjectsCreateResponseDeploymentConfigsPreviewServicesValue | undefined;
 };
+const ProjectsListResultItemDeploymentConfigsPreviewServicesMap =
+  ProjectsCreateResponseDeploymentConfigsPreviewServicesMap as any as S.Schema<ProjectsListResultItemDeploymentConfigsPreviewServicesMap>;
+
 export type ProjectsListResultItemDeploymentConfigsPreviewVectorizeBindingsValue =
   ProjectsCreateRequestDeploymentConfigsPreviewVectorizeBindingsValue;
 export type ProjectsListResultItemDeploymentConfigsPreviewVectorizeBindingsMap = {
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewVectorizeBindingsValue | undefined;
 };
+const ProjectsListResultItemDeploymentConfigsPreviewVectorizeBindingsMap =
+  ProjectsCreateRequestDeploymentConfigsPreviewVectorizeBindingsMap as any as S.Schema<ProjectsListResultItemDeploymentConfigsPreviewVectorizeBindingsMap>;
+
 export interface ProjectsListResultItemDeploymentConfigsPreview {
   /** Whether to always use the latest compatibility date for Pages Functions. */
   alwaysUseLatestCompatibilityDate: boolean;
@@ -2814,16 +3964,29 @@ export interface ProjectsListResultItemDeploymentConfigsPreview {
   /** Hash of the Wrangler configuration used for the deployment. */
   wranglerConfigHash?: string | null;
 }
+const ProjectsListResultItemDeploymentConfigsPreview = /*@__PURE__*/ __L.at(
+  __c14,
+  1,
+) as any as S.Schema<ProjectsListResultItemDeploymentConfigsPreview>;
+
 export type ProjectsListResultItemDeploymentConfigsProductionCompatibilityFlagsList = Array<string>;
+const ProjectsListResultItemDeploymentConfigsProductionCompatibilityFlagsList =
+  ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList as any as S.Schema<ProjectsListResultItemDeploymentConfigsProductionCompatibilityFlagsList>;
+
 export type ProjectsListResultItemDeploymentConfigsProductionUsageModel =
   | "standard"
   | "bundled"
   | "unbound";
+const ProjectsListResultItemDeploymentConfigsProductionUsageModel = S.String;
+
 export type ProjectsListResultItemDeploymentConfigsProductionAiBindingsValue =
   ProjectsCreateRequestDeploymentConfigsPreviewAiBindingsValue;
 export type ProjectsListResultItemDeploymentConfigsProductionAiBindingsMap = {
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewAiBindingsValue | undefined;
 };
+const ProjectsListResultItemDeploymentConfigsProductionAiBindingsMap =
+  ProjectsCreateResponseDeploymentConfigsProductionAiBindingsMap as any as S.Schema<ProjectsListResultItemDeploymentConfigsProductionAiBindingsMap>;
+
 export type ProjectsListResultItemDeploymentConfigsProductionAnalyticsEngineDatasetsValue =
   ProjectsCreateRequestDeploymentConfigsPreviewAnalyticsEngineDatasetsValue;
 export type ProjectsListResultItemDeploymentConfigsProductionAnalyticsEngineDatasetsMap = {
@@ -2831,12 +3994,21 @@ export type ProjectsListResultItemDeploymentConfigsProductionAnalyticsEngineData
     | ProjectsCreateRequestDeploymentConfigsPreviewAnalyticsEngineDatasetsValue
     | undefined;
 };
+const ProjectsListResultItemDeploymentConfigsProductionAnalyticsEngineDatasetsMap =
+  ProjectsCreateRequestDeploymentConfigsPreviewAnalyticsEngineDatasetsMap as any as S.Schema<ProjectsListResultItemDeploymentConfigsProductionAnalyticsEngineDatasetsMap>;
+
 export type ProjectsListResultItemDeploymentConfigsProductionBrowsersMap = {
   [key: string]: unknown | undefined;
 };
+const ProjectsListResultItemDeploymentConfigsProductionBrowsersMap =
+  ProjectsCreateRequestDeploymentConfigsPreviewBrowsersMap as any as S.Schema<ProjectsListResultItemDeploymentConfigsProductionBrowsersMap>;
+
 export type ProjectsListResultItemDeploymentConfigsProductionD1DatabasesMap = {
   [key: string]: unknown | undefined;
 };
+const ProjectsListResultItemDeploymentConfigsProductionD1DatabasesMap =
+  ProjectsCreateRequestDeploymentConfigsProductionD1DatabasesMap as any as S.Schema<ProjectsListResultItemDeploymentConfigsProductionD1DatabasesMap>;
+
 export type ProjectsListResultItemDeploymentConfigsProductionDurableObjectNamespacesValue =
   ProjectsCreateRequestDeploymentConfigsPreviewDurableObjectNamespacesValue;
 export type ProjectsListResultItemDeploymentConfigsProductionDurableObjectNamespacesMap = {
@@ -2844,14 +4016,23 @@ export type ProjectsListResultItemDeploymentConfigsProductionDurableObjectNamesp
     | ProjectsCreateRequestDeploymentConfigsPreviewDurableObjectNamespacesValue
     | undefined;
 };
+const ProjectsListResultItemDeploymentConfigsProductionDurableObjectNamespacesMap =
+  ProjectsCreateRequestDeploymentConfigsPreviewDurableObjectNamespacesMap as any as S.Schema<ProjectsListResultItemDeploymentConfigsProductionDurableObjectNamespacesMap>;
+
 export type ProjectsListResultItemDeploymentConfigsProductionHyperdriveBindingsValue =
   ProjectsCreateRequestDeploymentConfigsPreviewHyperdriveBindingsValue;
 export type ProjectsListResultItemDeploymentConfigsProductionHyperdriveBindingsMap = {
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewHyperdriveBindingsValue | undefined;
 };
+const ProjectsListResultItemDeploymentConfigsProductionHyperdriveBindingsMap =
+  ProjectsCreateRequestDeploymentConfigsPreviewHyperdriveBindingsMap as any as S.Schema<ProjectsListResultItemDeploymentConfigsProductionHyperdriveBindingsMap>;
+
 export type ProjectsListResultItemDeploymentConfigsProductionKvNamespacesMap = {
   [key: string]: unknown | undefined;
 };
+const ProjectsListResultItemDeploymentConfigsProductionKvNamespacesMap =
+  ProjectsCreateRequestDeploymentConfigsProductionD1DatabasesMap as any as S.Schema<ProjectsListResultItemDeploymentConfigsProductionKvNamespacesMap>;
+
 export type ProjectsListResultItemDeploymentConfigsProductionLimits =
   ProjectsCreateRequestDeploymentConfigsPreviewLimits;
 export type ProjectsListResultItemDeploymentConfigsProductionMtlsCertificatesValue =
@@ -2859,6 +4040,9 @@ export type ProjectsListResultItemDeploymentConfigsProductionMtlsCertificatesVal
 export type ProjectsListResultItemDeploymentConfigsProductionMtlsCertificatesMap = {
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewMtlsCertificatesValue | undefined;
 };
+const ProjectsListResultItemDeploymentConfigsProductionMtlsCertificatesMap =
+  ProjectsCreateRequestDeploymentConfigsPreviewMtlsCertificatesMap as any as S.Schema<ProjectsListResultItemDeploymentConfigsProductionMtlsCertificatesMap>;
+
 export type ProjectsListResultItemDeploymentConfigsProductionPlacement =
   ProjectsCreateRequestDeploymentConfigsPreviewPlacement;
 export type ProjectsListResultItemDeploymentConfigsProductionQueueProducersValue =
@@ -2866,19 +4050,31 @@ export type ProjectsListResultItemDeploymentConfigsProductionQueueProducersValue
 export type ProjectsListResultItemDeploymentConfigsProductionQueueProducersMap = {
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewQueueProducersValue | undefined;
 };
+const ProjectsListResultItemDeploymentConfigsProductionQueueProducersMap =
+  ProjectsCreateRequestDeploymentConfigsPreviewQueueProducersMap as any as S.Schema<ProjectsListResultItemDeploymentConfigsProductionQueueProducersMap>;
+
 export type ProjectsListResultItemDeploymentConfigsProductionR2BucketsMap = {
   [key: string]: unknown | undefined;
 };
+const ProjectsListResultItemDeploymentConfigsProductionR2BucketsMap =
+  ProjectsCreateRequestDeploymentConfigsPreviewBrowsersMap as any as S.Schema<ProjectsListResultItemDeploymentConfigsProductionR2BucketsMap>;
+
 export type ProjectsListResultItemDeploymentConfigsProductionServicesValue =
   ProjectsCreateResponseDeploymentConfigsPreviewServicesValue;
 export type ProjectsListResultItemDeploymentConfigsProductionServicesMap = {
   [key: string]: ProjectsCreateResponseDeploymentConfigsPreviewServicesValue | undefined;
 };
+const ProjectsListResultItemDeploymentConfigsProductionServicesMap =
+  ProjectsCreateResponseDeploymentConfigsPreviewServicesMap as any as S.Schema<ProjectsListResultItemDeploymentConfigsProductionServicesMap>;
+
 export type ProjectsListResultItemDeploymentConfigsProductionVectorizeBindingsValue =
   ProjectsCreateRequestDeploymentConfigsPreviewVectorizeBindingsValue;
 export type ProjectsListResultItemDeploymentConfigsProductionVectorizeBindingsMap = {
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewVectorizeBindingsValue | undefined;
 };
+const ProjectsListResultItemDeploymentConfigsProductionVectorizeBindingsMap =
+  ProjectsCreateRequestDeploymentConfigsPreviewVectorizeBindingsMap as any as S.Schema<ProjectsListResultItemDeploymentConfigsProductionVectorizeBindingsMap>;
+
 export interface ProjectsListResultItemDeploymentConfigsProduction {
   /** Whether to always use the latest compatibility date for Pages Functions. */
   alwaysUseLatestCompatibilityDate: boolean;
@@ -2925,13 +4121,26 @@ export interface ProjectsListResultItemDeploymentConfigsProduction {
   /** Hash of the Wrangler configuration used for the deployment. */
   wranglerConfigHash?: string | null;
 }
+const ProjectsListResultItemDeploymentConfigsProduction = /*@__PURE__*/ __L.at(
+  __c14,
+  2,
+) as any as S.Schema<ProjectsListResultItemDeploymentConfigsProduction>;
+
 export interface ProjectsListResultItemDeploymentConfigs {
   /** Configs for preview deploys. */
   preview: ProjectsListResultItemDeploymentConfigsPreview;
   /** Configs for production deploys. */
   production: ProjectsListResultItemDeploymentConfigsProduction;
 }
+const ProjectsListResultItemDeploymentConfigs = /*@__PURE__*/ __L.at(
+  __c14,
+  3,
+) as any as S.Schema<ProjectsListResultItemDeploymentConfigs>;
+
 export type ProjectsListResultItemLatestDeploymentAliasesList = Array<string>;
+const ProjectsListResultItemLatestDeploymentAliasesList =
+  AssetsCheckMissingRequestHashesList as any as S.Schema<ProjectsListResultItemLatestDeploymentAliasesList>;
+
 export type ProjectsListResultItemLatestDeploymentBuildConfig =
   ProjectsCreateResponseCanonicalDeploymentBuildConfig;
 export type ProjectsListResultItemLatestDeploymentDeploymentTriggerMetadata =
@@ -2946,6 +4155,9 @@ export interface ProjectsListResultItemLatestDeploymentDeploymentTrigger {
   /** What caused the deployment. */
   type: ProjectsListResultItemLatestDeploymentDeploymentTriggerType;
 }
+const ProjectsListResultItemLatestDeploymentDeploymentTrigger =
+  ProjectsCreateResponseLatestDeploymentDeploymentTrigger as any as S.Schema<ProjectsListResultItemLatestDeploymentDeploymentTrigger>;
+
 export type ProjectsListResultItemLatestDeploymentEnvVarsValuePlainTextType = "plain_text";
 export interface ProjectsListResultItemLatestDeploymentEnvVarsValuePlainText {
   type: ProjectsListResultItemLatestDeploymentEnvVarsValuePlainTextType;
@@ -2961,10 +4173,19 @@ export interface ProjectsListResultItemLatestDeploymentEnvVarsValueSecretText {
 export type ProjectsListResultItemLatestDeploymentEnvVarsValue =
   | ProjectsListResultItemLatestDeploymentEnvVarsValuePlainText
   | ProjectsListResultItemLatestDeploymentEnvVarsValueSecretText;
+const ProjectsListResultItemLatestDeploymentEnvVarsValue = /*@__PURE__*/ __L.at(__c14, 4);
+
 export type ProjectsListResultItemLatestDeploymentEnvVarsMap = {
   [key: string]: ProjectsListResultItemLatestDeploymentEnvVarsValue | undefined;
 };
+const ProjectsListResultItemLatestDeploymentEnvVarsMap = /*@__PURE__*/ __L.at(
+  __c14,
+  5,
+) as any as S.Schema<ProjectsListResultItemLatestDeploymentEnvVarsMap>;
+
 export type ProjectsListResultItemLatestDeploymentEnvironment = "preview" | "production";
+const ProjectsListResultItemLatestDeploymentEnvironment = S.String;
+
 export type ProjectsListResultItemLatestDeploymentLatestStageName =
   | "queued"
   | "initialize"
@@ -2988,16 +4209,33 @@ export interface ProjectsListResultItemLatestDeploymentLatestStage {
   /** State of the current stage. */
   status: ProjectsListResultItemLatestDeploymentLatestStageStatus;
 }
+const ProjectsListResultItemLatestDeploymentLatestStage =
+  ProjectsCreateResponseCanonicalDeploymentLatestStage as any as S.Schema<ProjectsListResultItemLatestDeploymentLatestStage>;
+
 export type ProjectsListResultItemLatestDeploymentSourceConfigPathExcludesList = Array<string>;
+const ProjectsListResultItemLatestDeploymentSourceConfigPathExcludesList =
+  ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList as any as S.Schema<ProjectsListResultItemLatestDeploymentSourceConfigPathExcludesList>;
+
 export type ProjectsListResultItemLatestDeploymentSourceConfigPathIncludesList = Array<string>;
+const ProjectsListResultItemLatestDeploymentSourceConfigPathIncludesList =
+  ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList as any as S.Schema<ProjectsListResultItemLatestDeploymentSourceConfigPathIncludesList>;
+
 export type ProjectsListResultItemLatestDeploymentSourceConfigPreviewBranchExcludesList =
   Array<string>;
+const ProjectsListResultItemLatestDeploymentSourceConfigPreviewBranchExcludesList =
+  ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList as any as S.Schema<ProjectsListResultItemLatestDeploymentSourceConfigPreviewBranchExcludesList>;
+
 export type ProjectsListResultItemLatestDeploymentSourceConfigPreviewBranchIncludesList =
   Array<string>;
+const ProjectsListResultItemLatestDeploymentSourceConfigPreviewBranchIncludesList =
+  ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList as any as S.Schema<ProjectsListResultItemLatestDeploymentSourceConfigPreviewBranchIncludesList>;
+
 export type ProjectsListResultItemLatestDeploymentSourceConfigPreviewDeploymentSetting =
   | "all"
   | "none"
   | "custom";
+const ProjectsListResultItemLatestDeploymentSourceConfigPreviewDeploymentSetting = S.String;
+
 export interface ProjectsListResultItemLatestDeploymentSourceConfig {
   /** Use `production_deployments_enabled` and `preview_deployment_setting` for more granular control. */
   deploymentsEnabled: boolean;
@@ -3026,12 +4264,24 @@ export interface ProjectsListResultItemLatestDeploymentSourceConfig {
   /** The name of the repository. */
   repoName: string;
 }
+const ProjectsListResultItemLatestDeploymentSourceConfig = /*@__PURE__*/ __L.at(
+  __c14,
+  6,
+) as any as S.Schema<ProjectsListResultItemLatestDeploymentSourceConfig>;
+
 export type ProjectsListResultItemLatestDeploymentSourceType = "github" | "gitlab";
+const ProjectsListResultItemLatestDeploymentSourceType = S.String;
+
 export interface ProjectsListResultItemLatestDeploymentSource {
   config: ProjectsListResultItemLatestDeploymentSourceConfig;
   /** The source control management provider. */
   type: ProjectsListResultItemLatestDeploymentSourceType;
 }
+const ProjectsListResultItemLatestDeploymentSource = /*@__PURE__*/ __L.at(
+  __c14,
+  7,
+) as any as S.Schema<ProjectsListResultItemLatestDeploymentSource>;
+
 export type ProjectsListResultItemLatestDeploymentStagesItemName =
   | "queued"
   | "initialize"
@@ -3057,6 +4307,9 @@ export interface ProjectsListResultItemLatestDeploymentStagesItem {
 }
 export type ProjectsListResultItemLatestDeploymentStagesList =
   Array<ProjectsListResultItemLatestDeploymentStagesItem>;
+const ProjectsListResultItemLatestDeploymentStagesList =
+  ProjectsCreateResponseCanonicalDeploymentStagesList as any as S.Schema<ProjectsListResultItemLatestDeploymentStagesList>;
+
 export type ProjectsListResultItemLatestDeploymentSkipReason =
   | "commit_message"
   | "preview_deployments_disabled"
@@ -3065,6 +4318,8 @@ export type ProjectsListResultItemLatestDeploymentSkipReason =
   | "branch_config"
   | "pages_to_workers_conversion"
   | "superseded_queued_build";
+const ProjectsListResultItemLatestDeploymentSkipReason = S.String;
+
 export interface ProjectsListResultItemLatestDeployment {
   /** Id of the deployment. */
   id: string;
@@ -3103,14 +4358,36 @@ export interface ProjectsListResultItemLatestDeployment {
   /** Whether the deployment uses functions. */
   usesFunctions?: boolean | null;
 }
+const ProjectsListResultItemLatestDeployment = /*@__PURE__*/ __L.at(
+  __c15,
+  0,
+) as any as S.Schema<ProjectsListResultItemLatestDeployment>;
+
 export type ProjectsListResultItemBuildConfig =
   ProjectsCreateResponseCanonicalDeploymentBuildConfig;
 export type ProjectsListResultItemDomainsList = Array<string>;
+const ProjectsListResultItemDomainsList =
+  AssetsCheckMissingRequestHashesList as any as S.Schema<ProjectsListResultItemDomainsList>;
+
 export type ProjectsListResultItemSourceConfigPathExcludesList = Array<string>;
+const ProjectsListResultItemSourceConfigPathExcludesList =
+  AssetsCheckMissingRequestHashesList as any as S.Schema<ProjectsListResultItemSourceConfigPathExcludesList>;
+
 export type ProjectsListResultItemSourceConfigPathIncludesList = Array<string>;
+const ProjectsListResultItemSourceConfigPathIncludesList =
+  AssetsCheckMissingRequestHashesList as any as S.Schema<ProjectsListResultItemSourceConfigPathIncludesList>;
+
 export type ProjectsListResultItemSourceConfigPreviewBranchExcludesList = Array<string>;
+const ProjectsListResultItemSourceConfigPreviewBranchExcludesList =
+  AssetsCheckMissingRequestHashesList as any as S.Schema<ProjectsListResultItemSourceConfigPreviewBranchExcludesList>;
+
 export type ProjectsListResultItemSourceConfigPreviewBranchIncludesList = Array<string>;
+const ProjectsListResultItemSourceConfigPreviewBranchIncludesList =
+  AssetsCheckMissingRequestHashesList as any as S.Schema<ProjectsListResultItemSourceConfigPreviewBranchIncludesList>;
+
 export type ProjectsListResultItemSourceConfigPreviewDeploymentSetting = "all" | "none" | "custom";
+const ProjectsListResultItemSourceConfigPreviewDeploymentSetting = S.String;
+
 export interface ProjectsListResultItemSourceConfig {
   /** Use `production_deployments_enabled` and `preview_deployment_setting` for more granular control. */
   deploymentsEnabled: boolean;
@@ -3139,12 +4416,24 @@ export interface ProjectsListResultItemSourceConfig {
   /** The name of the repository. */
   repoName: string;
 }
+const ProjectsListResultItemSourceConfig = /*@__PURE__*/ __L.at(
+  __c15,
+  1,
+) as any as S.Schema<ProjectsListResultItemSourceConfig>;
+
 export type ProjectsListResultItemSourceType = "github" | "gitlab";
+const ProjectsListResultItemSourceType = S.String;
+
 export interface ProjectsListResultItemSource {
   config: ProjectsListResultItemSourceConfig;
   /** The source control management provider. */
   type: ProjectsListResultItemSourceType;
 }
+const ProjectsListResultItemSource = /*@__PURE__*/ __L.at(
+  __c15,
+  2,
+) as any as S.Schema<ProjectsListResultItemSource>;
+
 export interface ProjectsListResultItem {
   /** ID of the project. */
   id: string;
@@ -3179,19 +4468,37 @@ export interface ProjectsListResultItem {
   /** The Cloudflare subdomain associated with the project. */
   subdomain?: string | null;
 }
+const ProjectsListResultItem = /*@__PURE__*/ __L.at(
+  __c15,
+  3,
+) as any as S.Schema<ProjectsListResultItem>;
+
 export type ProjectsListResultList = Array<ProjectsListResultItem>;
+const ProjectsListResultList = /*@__PURE__*/ __L.at(
+  __c15,
+  4,
+) as any as S.Schema<ProjectsListResultList>;
+
 export interface ListProjectsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result: ProjectsListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
+const ListProjectsResponse = /*@__PURE__*/ __L.at(
+  __c15,
+  5,
+) as any as S.Schema<ListProjectsResponse>;
+
 export type ProjectsEditRequestBuildConfig = ProjectsCreateRequestBuildConfig;
 export type ProjectsEditRequestDeploymentConfigsPreviewAiBindingsValue =
   ProjectsCreateRequestDeploymentConfigsPreviewAiBindingsValue;
 export type ProjectsEditRequestDeploymentConfigsPreviewAiBindingsMap = {
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewAiBindingsValue | undefined;
 };
+const ProjectsEditRequestDeploymentConfigsPreviewAiBindingsMap =
+  ProjectsCreateRequestDeploymentConfigsPreviewAiBindingsMap as any as S.Schema<ProjectsEditRequestDeploymentConfigsPreviewAiBindingsMap>;
+
 export type ProjectsEditRequestDeploymentConfigsPreviewAnalyticsEngineDatasetsValue =
   ProjectsCreateRequestDeploymentConfigsPreviewAnalyticsEngineDatasetsValue;
 export type ProjectsEditRequestDeploymentConfigsPreviewAnalyticsEngineDatasetsMap = {
@@ -3199,13 +4506,25 @@ export type ProjectsEditRequestDeploymentConfigsPreviewAnalyticsEngineDatasetsMa
     | ProjectsCreateRequestDeploymentConfigsPreviewAnalyticsEngineDatasetsValue
     | undefined;
 };
+const ProjectsEditRequestDeploymentConfigsPreviewAnalyticsEngineDatasetsMap =
+  ProjectsCreateRequestDeploymentConfigsPreviewAnalyticsEngineDatasetsMap as any as S.Schema<ProjectsEditRequestDeploymentConfigsPreviewAnalyticsEngineDatasetsMap>;
+
 export type ProjectsEditRequestDeploymentConfigsPreviewBrowsersMap = {
   [key: string]: unknown | undefined;
 };
+const ProjectsEditRequestDeploymentConfigsPreviewBrowsersMap =
+  ProjectsCreateRequestDeploymentConfigsPreviewBrowsersMap as any as S.Schema<ProjectsEditRequestDeploymentConfigsPreviewBrowsersMap>;
+
 export type ProjectsEditRequestDeploymentConfigsPreviewCompatibilityFlagsList = Array<string>;
+const ProjectsEditRequestDeploymentConfigsPreviewCompatibilityFlagsList =
+  ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList as any as S.Schema<ProjectsEditRequestDeploymentConfigsPreviewCompatibilityFlagsList>;
+
 export type ProjectsEditRequestDeploymentConfigsPreviewD1DatabasesMap = {
   [key: string]: unknown | undefined;
 };
+const ProjectsEditRequestDeploymentConfigsPreviewD1DatabasesMap =
+  ProjectsCreateRequestDeploymentConfigsPreviewBrowsersMap as any as S.Schema<ProjectsEditRequestDeploymentConfigsPreviewD1DatabasesMap>;
+
 export type ProjectsEditRequestDeploymentConfigsPreviewDurableObjectNamespacesValue =
   ProjectsCreateRequestDeploymentConfigsPreviewDurableObjectNamespacesValue;
 export type ProjectsEditRequestDeploymentConfigsPreviewDurableObjectNamespacesMap = {
@@ -3213,14 +4532,23 @@ export type ProjectsEditRequestDeploymentConfigsPreviewDurableObjectNamespacesMa
     | ProjectsCreateRequestDeploymentConfigsPreviewDurableObjectNamespacesValue
     | undefined;
 };
+const ProjectsEditRequestDeploymentConfigsPreviewDurableObjectNamespacesMap =
+  ProjectsCreateRequestDeploymentConfigsPreviewDurableObjectNamespacesMap as any as S.Schema<ProjectsEditRequestDeploymentConfigsPreviewDurableObjectNamespacesMap>;
+
 export type ProjectsEditRequestDeploymentConfigsPreviewHyperdriveBindingsValue =
   ProjectsCreateRequestDeploymentConfigsPreviewHyperdriveBindingsValue;
 export type ProjectsEditRequestDeploymentConfigsPreviewHyperdriveBindingsMap = {
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewHyperdriveBindingsValue | undefined;
 };
+const ProjectsEditRequestDeploymentConfigsPreviewHyperdriveBindingsMap =
+  ProjectsCreateRequestDeploymentConfigsPreviewHyperdriveBindingsMap as any as S.Schema<ProjectsEditRequestDeploymentConfigsPreviewHyperdriveBindingsMap>;
+
 export type ProjectsEditRequestDeploymentConfigsPreviewKvNamespacesMap = {
   [key: string]: unknown | undefined;
 };
+const ProjectsEditRequestDeploymentConfigsPreviewKvNamespacesMap =
+  ProjectsCreateRequestDeploymentConfigsPreviewBrowsersMap as any as S.Schema<ProjectsEditRequestDeploymentConfigsPreviewKvNamespacesMap>;
+
 export type ProjectsEditRequestDeploymentConfigsPreviewLimits =
   ProjectsCreateRequestDeploymentConfigsPreviewLimits;
 export type ProjectsEditRequestDeploymentConfigsPreviewMtlsCertificatesValue =
@@ -3228,6 +4556,9 @@ export type ProjectsEditRequestDeploymentConfigsPreviewMtlsCertificatesValue =
 export type ProjectsEditRequestDeploymentConfigsPreviewMtlsCertificatesMap = {
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewMtlsCertificatesValue | undefined;
 };
+const ProjectsEditRequestDeploymentConfigsPreviewMtlsCertificatesMap =
+  ProjectsCreateRequestDeploymentConfigsPreviewMtlsCertificatesMap as any as S.Schema<ProjectsEditRequestDeploymentConfigsPreviewMtlsCertificatesMap>;
+
 export type ProjectsEditRequestDeploymentConfigsPreviewPlacement =
   ProjectsCreateRequestDeploymentConfigsPreviewPlacement;
 export type ProjectsEditRequestDeploymentConfigsPreviewQueueProducersValue =
@@ -3235,23 +4566,37 @@ export type ProjectsEditRequestDeploymentConfigsPreviewQueueProducersValue =
 export type ProjectsEditRequestDeploymentConfigsPreviewQueueProducersMap = {
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewQueueProducersValue | undefined;
 };
+const ProjectsEditRequestDeploymentConfigsPreviewQueueProducersMap =
+  ProjectsGetResponseDeploymentConfigsPreviewQueueProducersMap as any as S.Schema<ProjectsEditRequestDeploymentConfigsPreviewQueueProducersMap>;
+
 export type ProjectsEditRequestDeploymentConfigsPreviewR2BucketsMap = {
   [key: string]: unknown | undefined;
 };
+const ProjectsEditRequestDeploymentConfigsPreviewR2BucketsMap =
+  ProjectsCreateRequestDeploymentConfigsPreviewBrowsersMap as any as S.Schema<ProjectsEditRequestDeploymentConfigsPreviewR2BucketsMap>;
+
 export type ProjectsEditRequestDeploymentConfigsPreviewServicesValue =
   ProjectsCreateRequestDeploymentConfigsPreviewServicesValue;
 export type ProjectsEditRequestDeploymentConfigsPreviewServicesMap = {
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewServicesValue | undefined;
 };
+const ProjectsEditRequestDeploymentConfigsPreviewServicesMap =
+  ProjectsCreateRequestDeploymentConfigsPreviewServicesMap as any as S.Schema<ProjectsEditRequestDeploymentConfigsPreviewServicesMap>;
+
 export type ProjectsEditRequestDeploymentConfigsPreviewUsageModel =
   | "standard"
   | "bundled"
   | "unbound";
+const ProjectsEditRequestDeploymentConfigsPreviewUsageModel = S.String;
+
 export type ProjectsEditRequestDeploymentConfigsPreviewVectorizeBindingsValue =
   ProjectsCreateRequestDeploymentConfigsPreviewVectorizeBindingsValue;
 export type ProjectsEditRequestDeploymentConfigsPreviewVectorizeBindingsMap = {
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewVectorizeBindingsValue | undefined;
 };
+const ProjectsEditRequestDeploymentConfigsPreviewVectorizeBindingsMap =
+  ProjectsCreateRequestDeploymentConfigsPreviewVectorizeBindingsMap as any as S.Schema<ProjectsEditRequestDeploymentConfigsPreviewVectorizeBindingsMap>;
+
 export interface ProjectsEditRequestDeploymentConfigsPreview {
   /** Constellation bindings used for Pages Functions. */
   aiBindings?: ProjectsEditRequestDeploymentConfigsPreviewAiBindingsMap;
@@ -3298,11 +4643,19 @@ export interface ProjectsEditRequestDeploymentConfigsPreview {
   /** Hash of the Wrangler configuration used for the deployment. */
   wranglerConfigHash?: string;
 }
+const ProjectsEditRequestDeploymentConfigsPreview = /*@__PURE__*/ __L.at(
+  __c15,
+  6,
+) as any as S.Schema<ProjectsEditRequestDeploymentConfigsPreview>;
+
 export type ProjectsEditRequestDeploymentConfigsProductionAiBindingsValue =
   ProjectsCreateRequestDeploymentConfigsPreviewAiBindingsValue;
 export type ProjectsEditRequestDeploymentConfigsProductionAiBindingsMap = {
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewAiBindingsValue | undefined;
 };
+const ProjectsEditRequestDeploymentConfigsProductionAiBindingsMap =
+  ProjectsCreateRequestDeploymentConfigsPreviewAiBindingsMap as any as S.Schema<ProjectsEditRequestDeploymentConfigsProductionAiBindingsMap>;
+
 export type ProjectsEditRequestDeploymentConfigsProductionAnalyticsEngineDatasetsValue =
   ProjectsCreateRequestDeploymentConfigsPreviewAnalyticsEngineDatasetsValue;
 export type ProjectsEditRequestDeploymentConfigsProductionAnalyticsEngineDatasetsMap = {
@@ -3310,13 +4663,25 @@ export type ProjectsEditRequestDeploymentConfigsProductionAnalyticsEngineDataset
     | ProjectsCreateRequestDeploymentConfigsPreviewAnalyticsEngineDatasetsValue
     | undefined;
 };
+const ProjectsEditRequestDeploymentConfigsProductionAnalyticsEngineDatasetsMap =
+  ProjectsCreateRequestDeploymentConfigsPreviewAnalyticsEngineDatasetsMap as any as S.Schema<ProjectsEditRequestDeploymentConfigsProductionAnalyticsEngineDatasetsMap>;
+
 export type ProjectsEditRequestDeploymentConfigsProductionBrowsersMap = {
   [key: string]: unknown | undefined;
 };
+const ProjectsEditRequestDeploymentConfigsProductionBrowsersMap =
+  ProjectsCreateRequestDeploymentConfigsPreviewBrowsersMap as any as S.Schema<ProjectsEditRequestDeploymentConfigsProductionBrowsersMap>;
+
 export type ProjectsEditRequestDeploymentConfigsProductionCompatibilityFlagsList = Array<string>;
+const ProjectsEditRequestDeploymentConfigsProductionCompatibilityFlagsList =
+  ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList as any as S.Schema<ProjectsEditRequestDeploymentConfigsProductionCompatibilityFlagsList>;
+
 export type ProjectsEditRequestDeploymentConfigsProductionD1DatabasesMap = {
   [key: string]: unknown | undefined;
 };
+const ProjectsEditRequestDeploymentConfigsProductionD1DatabasesMap =
+  ProjectsCreateRequestDeploymentConfigsPreviewBrowsersMap as any as S.Schema<ProjectsEditRequestDeploymentConfigsProductionD1DatabasesMap>;
+
 export type ProjectsEditRequestDeploymentConfigsProductionDurableObjectNamespacesValue =
   ProjectsCreateRequestDeploymentConfigsPreviewDurableObjectNamespacesValue;
 export type ProjectsEditRequestDeploymentConfigsProductionDurableObjectNamespacesMap = {
@@ -3324,14 +4689,23 @@ export type ProjectsEditRequestDeploymentConfigsProductionDurableObjectNamespace
     | ProjectsCreateRequestDeploymentConfigsPreviewDurableObjectNamespacesValue
     | undefined;
 };
+const ProjectsEditRequestDeploymentConfigsProductionDurableObjectNamespacesMap =
+  ProjectsCreateRequestDeploymentConfigsPreviewDurableObjectNamespacesMap as any as S.Schema<ProjectsEditRequestDeploymentConfigsProductionDurableObjectNamespacesMap>;
+
 export type ProjectsEditRequestDeploymentConfigsProductionHyperdriveBindingsValue =
   ProjectsCreateRequestDeploymentConfigsPreviewHyperdriveBindingsValue;
 export type ProjectsEditRequestDeploymentConfigsProductionHyperdriveBindingsMap = {
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewHyperdriveBindingsValue | undefined;
 };
+const ProjectsEditRequestDeploymentConfigsProductionHyperdriveBindingsMap =
+  ProjectsCreateRequestDeploymentConfigsPreviewHyperdriveBindingsMap as any as S.Schema<ProjectsEditRequestDeploymentConfigsProductionHyperdriveBindingsMap>;
+
 export type ProjectsEditRequestDeploymentConfigsProductionKvNamespacesMap = {
   [key: string]: unknown | undefined;
 };
+const ProjectsEditRequestDeploymentConfigsProductionKvNamespacesMap =
+  ProjectsCreateRequestDeploymentConfigsPreviewBrowsersMap as any as S.Schema<ProjectsEditRequestDeploymentConfigsProductionKvNamespacesMap>;
+
 export type ProjectsEditRequestDeploymentConfigsProductionLimits =
   ProjectsCreateRequestDeploymentConfigsPreviewLimits;
 export type ProjectsEditRequestDeploymentConfigsProductionMtlsCertificatesValue =
@@ -3339,6 +4713,9 @@ export type ProjectsEditRequestDeploymentConfigsProductionMtlsCertificatesValue 
 export type ProjectsEditRequestDeploymentConfigsProductionMtlsCertificatesMap = {
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewMtlsCertificatesValue | undefined;
 };
+const ProjectsEditRequestDeploymentConfigsProductionMtlsCertificatesMap =
+  ProjectsCreateRequestDeploymentConfigsPreviewMtlsCertificatesMap as any as S.Schema<ProjectsEditRequestDeploymentConfigsProductionMtlsCertificatesMap>;
+
 export type ProjectsEditRequestDeploymentConfigsProductionPlacement =
   ProjectsCreateRequestDeploymentConfigsPreviewPlacement;
 export type ProjectsEditRequestDeploymentConfigsProductionQueueProducersValue =
@@ -3346,23 +4723,37 @@ export type ProjectsEditRequestDeploymentConfigsProductionQueueProducersValue =
 export type ProjectsEditRequestDeploymentConfigsProductionQueueProducersMap = {
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewQueueProducersValue | undefined;
 };
+const ProjectsEditRequestDeploymentConfigsProductionQueueProducersMap =
+  ProjectsCreateRequestDeploymentConfigsPreviewQueueProducersMap as any as S.Schema<ProjectsEditRequestDeploymentConfigsProductionQueueProducersMap>;
+
 export type ProjectsEditRequestDeploymentConfigsProductionR2BucketsMap = {
   [key: string]: unknown | undefined;
 };
+const ProjectsEditRequestDeploymentConfigsProductionR2BucketsMap =
+  ProjectsCreateRequestDeploymentConfigsPreviewBrowsersMap as any as S.Schema<ProjectsEditRequestDeploymentConfigsProductionR2BucketsMap>;
+
 export type ProjectsEditRequestDeploymentConfigsProductionServicesValue =
   ProjectsCreateRequestDeploymentConfigsPreviewServicesValue;
 export type ProjectsEditRequestDeploymentConfigsProductionServicesMap = {
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewServicesValue | undefined;
 };
+const ProjectsEditRequestDeploymentConfigsProductionServicesMap =
+  ProjectsCreateRequestDeploymentConfigsPreviewServicesMap as any as S.Schema<ProjectsEditRequestDeploymentConfigsProductionServicesMap>;
+
 export type ProjectsEditRequestDeploymentConfigsProductionUsageModel =
   | "standard"
   | "bundled"
   | "unbound";
+const ProjectsEditRequestDeploymentConfigsProductionUsageModel = S.String;
+
 export type ProjectsEditRequestDeploymentConfigsProductionVectorizeBindingsValue =
   ProjectsCreateRequestDeploymentConfigsPreviewVectorizeBindingsValue;
 export type ProjectsEditRequestDeploymentConfigsProductionVectorizeBindingsMap = {
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewVectorizeBindingsValue | undefined;
 };
+const ProjectsEditRequestDeploymentConfigsProductionVectorizeBindingsMap =
+  ProjectsCreateRequestDeploymentConfigsPreviewVectorizeBindingsMap as any as S.Schema<ProjectsEditRequestDeploymentConfigsProductionVectorizeBindingsMap>;
+
 export interface ProjectsEditRequestDeploymentConfigsProduction {
   /** Constellation bindings used for Pages Functions. */
   aiBindings?: ProjectsEditRequestDeploymentConfigsProductionAiBindingsMap;
@@ -3409,17 +4800,41 @@ export interface ProjectsEditRequestDeploymentConfigsProduction {
   /** Hash of the Wrangler configuration used for the deployment. */
   wranglerConfigHash?: string;
 }
+const ProjectsEditRequestDeploymentConfigsProduction = /*@__PURE__*/ __L.at(
+  __c15,
+  7,
+) as any as S.Schema<ProjectsEditRequestDeploymentConfigsProduction>;
+
 export interface ProjectsEditRequestDeploymentConfigs {
   /** Configs for preview deploys. */
   preview?: ProjectsEditRequestDeploymentConfigsPreview;
   /** Configs for production deploys. */
   production?: ProjectsEditRequestDeploymentConfigsProduction;
 }
+const ProjectsEditRequestDeploymentConfigs = /*@__PURE__*/ __L.at(
+  __c16,
+  0,
+) as any as S.Schema<ProjectsEditRequestDeploymentConfigs>;
+
 export type ProjectsEditRequestSourceConfigPathExcludesList = Array<string>;
+const ProjectsEditRequestSourceConfigPathExcludesList =
+  AssetsCheckMissingRequestHashesList as any as S.Schema<ProjectsEditRequestSourceConfigPathExcludesList>;
+
 export type ProjectsEditRequestSourceConfigPathIncludesList = Array<string>;
+const ProjectsEditRequestSourceConfigPathIncludesList =
+  AssetsCheckMissingRequestHashesList as any as S.Schema<ProjectsEditRequestSourceConfigPathIncludesList>;
+
 export type ProjectsEditRequestSourceConfigPreviewBranchExcludesList = Array<string>;
+const ProjectsEditRequestSourceConfigPreviewBranchExcludesList =
+  AssetsCheckMissingRequestHashesList as any as S.Schema<ProjectsEditRequestSourceConfigPreviewBranchExcludesList>;
+
 export type ProjectsEditRequestSourceConfigPreviewBranchIncludesList = Array<string>;
+const ProjectsEditRequestSourceConfigPreviewBranchIncludesList =
+  AssetsCheckMissingRequestHashesList as any as S.Schema<ProjectsEditRequestSourceConfigPreviewBranchIncludesList>;
+
 export type ProjectsEditRequestSourceConfigPreviewDeploymentSetting = "all" | "none" | "custom";
+const ProjectsEditRequestSourceConfigPreviewDeploymentSetting = S.String;
+
 export interface ProjectsEditRequestSourceConfig {
   /** Use `production_deployments_enabled` and `preview_deployment_setting` for more granular control. */
   deploymentsEnabled?: boolean;
@@ -3450,12 +4865,24 @@ export interface ProjectsEditRequestSourceConfig {
   /** The name of the repository. */
   repoName?: string;
 }
+const ProjectsEditRequestSourceConfig = /*@__PURE__*/ __L.at(
+  __c16,
+  1,
+) as any as S.Schema<ProjectsEditRequestSourceConfig>;
+
 export type ProjectsEditRequestSourceType = "github" | "gitlab";
+const ProjectsEditRequestSourceType = S.String;
+
 export interface ProjectsEditRequestSource {
   config: ProjectsEditRequestSourceConfig;
   /** The source control management provider. */
   type: ProjectsEditRequestSourceType | (string & {});
 }
+const ProjectsEditRequestSource = /*@__PURE__*/ __L.at(
+  __c16,
+  2,
+) as any as S.Schema<ProjectsEditRequestSource>;
+
 export interface PatchProjectRequest {
   /** Identifier. */
   accountId: string;
@@ -3472,7 +4899,12 @@ export interface PatchProjectRequest {
   /** Configs for the project source control. */
   source?: ProjectsEditRequestSource;
 }
+const PatchProjectRequest = /*@__PURE__*/ __L.at(__c16, 3) as any as S.Schema<PatchProjectRequest>;
+
 export type ProjectsEditResponseCanonicalDeploymentAliasesList = Array<string>;
+const ProjectsEditResponseCanonicalDeploymentAliasesList =
+  AssetsCheckMissingRequestHashesList as any as S.Schema<ProjectsEditResponseCanonicalDeploymentAliasesList>;
+
 export type ProjectsEditResponseCanonicalDeploymentBuildConfig =
   ProjectsCreateResponseCanonicalDeploymentBuildConfig;
 export type ProjectsEditResponseCanonicalDeploymentDeploymentTriggerMetadata =
@@ -3487,7 +4919,12 @@ export interface ProjectsEditResponseCanonicalDeploymentDeploymentTrigger {
   /** What caused the deployment. */
   type: ProjectsEditResponseCanonicalDeploymentDeploymentTriggerType;
 }
+const ProjectsEditResponseCanonicalDeploymentDeploymentTrigger =
+  ProjectsCreateResponseCanonicalDeploymentDeploymentTrigger as any as S.Schema<ProjectsEditResponseCanonicalDeploymentDeploymentTrigger>;
+
 export type ProjectsEditResponseCanonicalDeploymentEnvironment = "preview" | "production";
+const ProjectsEditResponseCanonicalDeploymentEnvironment = S.String;
+
 export type ProjectsEditResponseCanonicalDeploymentLatestStageName =
   | "queued"
   | "initialize"
@@ -3511,16 +4948,33 @@ export interface ProjectsEditResponseCanonicalDeploymentLatestStage {
   /** State of the current stage. */
   status: ProjectsEditResponseCanonicalDeploymentLatestStageStatus;
 }
+const ProjectsEditResponseCanonicalDeploymentLatestStage =
+  ProjectsCreateResponseCanonicalDeploymentLatestStage as any as S.Schema<ProjectsEditResponseCanonicalDeploymentLatestStage>;
+
 export type ProjectsEditResponseCanonicalDeploymentSourceConfigPathExcludesList = Array<string>;
+const ProjectsEditResponseCanonicalDeploymentSourceConfigPathExcludesList =
+  ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList as any as S.Schema<ProjectsEditResponseCanonicalDeploymentSourceConfigPathExcludesList>;
+
 export type ProjectsEditResponseCanonicalDeploymentSourceConfigPathIncludesList = Array<string>;
+const ProjectsEditResponseCanonicalDeploymentSourceConfigPathIncludesList =
+  ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList as any as S.Schema<ProjectsEditResponseCanonicalDeploymentSourceConfigPathIncludesList>;
+
 export type ProjectsEditResponseCanonicalDeploymentSourceConfigPreviewBranchExcludesList =
   Array<string>;
+const ProjectsEditResponseCanonicalDeploymentSourceConfigPreviewBranchExcludesList =
+  ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList as any as S.Schema<ProjectsEditResponseCanonicalDeploymentSourceConfigPreviewBranchExcludesList>;
+
 export type ProjectsEditResponseCanonicalDeploymentSourceConfigPreviewBranchIncludesList =
   Array<string>;
+const ProjectsEditResponseCanonicalDeploymentSourceConfigPreviewBranchIncludesList =
+  ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList as any as S.Schema<ProjectsEditResponseCanonicalDeploymentSourceConfigPreviewBranchIncludesList>;
+
 export type ProjectsEditResponseCanonicalDeploymentSourceConfigPreviewDeploymentSetting =
   | "all"
   | "none"
   | "custom";
+const ProjectsEditResponseCanonicalDeploymentSourceConfigPreviewDeploymentSetting = S.String;
+
 export interface ProjectsEditResponseCanonicalDeploymentSourceConfig {
   /** Use `production_deployments_enabled` and `preview_deployment_setting` for more granular control. */
   deploymentsEnabled: boolean;
@@ -3549,12 +5003,24 @@ export interface ProjectsEditResponseCanonicalDeploymentSourceConfig {
   /** The name of the repository. */
   repoName: string;
 }
+const ProjectsEditResponseCanonicalDeploymentSourceConfig = /*@__PURE__*/ __L.at(
+  __c16,
+  4,
+) as any as S.Schema<ProjectsEditResponseCanonicalDeploymentSourceConfig>;
+
 export type ProjectsEditResponseCanonicalDeploymentSourceType = "github" | "gitlab";
+const ProjectsEditResponseCanonicalDeploymentSourceType = S.String;
+
 export interface ProjectsEditResponseCanonicalDeploymentSource {
   config: ProjectsEditResponseCanonicalDeploymentSourceConfig;
   /** The source control management provider. */
   type: ProjectsEditResponseCanonicalDeploymentSourceType;
 }
+const ProjectsEditResponseCanonicalDeploymentSource = /*@__PURE__*/ __L.at(
+  __c16,
+  5,
+) as any as S.Schema<ProjectsEditResponseCanonicalDeploymentSource>;
+
 export type ProjectsEditResponseCanonicalDeploymentStagesItemName =
   | "queued"
   | "initialize"
@@ -3580,6 +5046,9 @@ export interface ProjectsEditResponseCanonicalDeploymentStagesItem {
 }
 export type ProjectsEditResponseCanonicalDeploymentStagesList =
   Array<ProjectsEditResponseCanonicalDeploymentStagesItem>;
+const ProjectsEditResponseCanonicalDeploymentStagesList =
+  ProjectsCreateResponseCanonicalDeploymentStagesList as any as S.Schema<ProjectsEditResponseCanonicalDeploymentStagesList>;
+
 export type ProjectsEditResponseCanonicalDeploymentSkipReason =
   | "commit_message"
   | "preview_deployments_disabled"
@@ -3588,6 +5057,8 @@ export type ProjectsEditResponseCanonicalDeploymentSkipReason =
   | "branch_config"
   | "pages_to_workers_conversion"
   | "superseded_queued_build";
+const ProjectsEditResponseCanonicalDeploymentSkipReason = S.String;
+
 export interface ProjectsEditResponseCanonicalDeployment {
   /** Id of the deployment. */
   id: string;
@@ -3626,16 +5097,29 @@ export interface ProjectsEditResponseCanonicalDeployment {
   /** Whether the deployment uses functions. */
   usesFunctions?: boolean | null;
 }
+const ProjectsEditResponseCanonicalDeployment = /*@__PURE__*/ __L.at(
+  __c16,
+  6,
+) as any as S.Schema<ProjectsEditResponseCanonicalDeployment>;
+
 export type ProjectsEditResponseDeploymentConfigsPreviewCompatibilityFlagsList = Array<string>;
+const ProjectsEditResponseDeploymentConfigsPreviewCompatibilityFlagsList =
+  ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList as any as S.Schema<ProjectsEditResponseDeploymentConfigsPreviewCompatibilityFlagsList>;
+
 export type ProjectsEditResponseDeploymentConfigsPreviewUsageModel =
   | "standard"
   | "bundled"
   | "unbound";
+const ProjectsEditResponseDeploymentConfigsPreviewUsageModel = S.String;
+
 export type ProjectsEditResponseDeploymentConfigsPreviewAiBindingsValue =
   ProjectsCreateRequestDeploymentConfigsPreviewAiBindingsValue;
 export type ProjectsEditResponseDeploymentConfigsPreviewAiBindingsMap = {
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewAiBindingsValue | undefined;
 };
+const ProjectsEditResponseDeploymentConfigsPreviewAiBindingsMap =
+  ProjectsCreateRequestDeploymentConfigsPreviewAiBindingsMap as any as S.Schema<ProjectsEditResponseDeploymentConfigsPreviewAiBindingsMap>;
+
 export type ProjectsEditResponseDeploymentConfigsPreviewAnalyticsEngineDatasetsValue =
   ProjectsCreateRequestDeploymentConfigsPreviewAnalyticsEngineDatasetsValue;
 export type ProjectsEditResponseDeploymentConfigsPreviewAnalyticsEngineDatasetsMap = {
@@ -3643,12 +5127,21 @@ export type ProjectsEditResponseDeploymentConfigsPreviewAnalyticsEngineDatasetsM
     | ProjectsCreateRequestDeploymentConfigsPreviewAnalyticsEngineDatasetsValue
     | undefined;
 };
+const ProjectsEditResponseDeploymentConfigsPreviewAnalyticsEngineDatasetsMap =
+  ProjectsCreateRequestDeploymentConfigsPreviewAnalyticsEngineDatasetsMap as any as S.Schema<ProjectsEditResponseDeploymentConfigsPreviewAnalyticsEngineDatasetsMap>;
+
 export type ProjectsEditResponseDeploymentConfigsPreviewBrowsersMap = {
   [key: string]: unknown | undefined;
 };
+const ProjectsEditResponseDeploymentConfigsPreviewBrowsersMap =
+  ProjectsCreateRequestDeploymentConfigsPreviewBrowsersMap as any as S.Schema<ProjectsEditResponseDeploymentConfigsPreviewBrowsersMap>;
+
 export type ProjectsEditResponseDeploymentConfigsPreviewD1DatabasesMap = {
   [key: string]: unknown | undefined;
 };
+const ProjectsEditResponseDeploymentConfigsPreviewD1DatabasesMap =
+  ProjectsCreateRequestDeploymentConfigsPreviewBrowsersMap as any as S.Schema<ProjectsEditResponseDeploymentConfigsPreviewD1DatabasesMap>;
+
 export type ProjectsEditResponseDeploymentConfigsPreviewDurableObjectNamespacesValue =
   ProjectsCreateRequestDeploymentConfigsPreviewDurableObjectNamespacesValue;
 export type ProjectsEditResponseDeploymentConfigsPreviewDurableObjectNamespacesMap = {
@@ -3656,14 +5149,23 @@ export type ProjectsEditResponseDeploymentConfigsPreviewDurableObjectNamespacesM
     | ProjectsCreateRequestDeploymentConfigsPreviewDurableObjectNamespacesValue
     | undefined;
 };
+const ProjectsEditResponseDeploymentConfigsPreviewDurableObjectNamespacesMap =
+  ProjectsCreateRequestDeploymentConfigsPreviewDurableObjectNamespacesMap as any as S.Schema<ProjectsEditResponseDeploymentConfigsPreviewDurableObjectNamespacesMap>;
+
 export type ProjectsEditResponseDeploymentConfigsPreviewHyperdriveBindingsValue =
   ProjectsCreateRequestDeploymentConfigsPreviewHyperdriveBindingsValue;
 export type ProjectsEditResponseDeploymentConfigsPreviewHyperdriveBindingsMap = {
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewHyperdriveBindingsValue | undefined;
 };
+const ProjectsEditResponseDeploymentConfigsPreviewHyperdriveBindingsMap =
+  ProjectsCreateRequestDeploymentConfigsPreviewHyperdriveBindingsMap as any as S.Schema<ProjectsEditResponseDeploymentConfigsPreviewHyperdriveBindingsMap>;
+
 export type ProjectsEditResponseDeploymentConfigsPreviewKvNamespacesMap = {
   [key: string]: unknown | undefined;
 };
+const ProjectsEditResponseDeploymentConfigsPreviewKvNamespacesMap =
+  ProjectsCreateRequestDeploymentConfigsPreviewBrowsersMap as any as S.Schema<ProjectsEditResponseDeploymentConfigsPreviewKvNamespacesMap>;
+
 export type ProjectsEditResponseDeploymentConfigsPreviewLimits =
   ProjectsCreateRequestDeploymentConfigsPreviewLimits;
 export type ProjectsEditResponseDeploymentConfigsPreviewMtlsCertificatesValue =
@@ -3671,6 +5173,9 @@ export type ProjectsEditResponseDeploymentConfigsPreviewMtlsCertificatesValue =
 export type ProjectsEditResponseDeploymentConfigsPreviewMtlsCertificatesMap = {
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewMtlsCertificatesValue | undefined;
 };
+const ProjectsEditResponseDeploymentConfigsPreviewMtlsCertificatesMap =
+  ProjectsCreateRequestDeploymentConfigsPreviewMtlsCertificatesMap as any as S.Schema<ProjectsEditResponseDeploymentConfigsPreviewMtlsCertificatesMap>;
+
 export type ProjectsEditResponseDeploymentConfigsPreviewPlacement =
   ProjectsCreateRequestDeploymentConfigsPreviewPlacement;
 export type ProjectsEditResponseDeploymentConfigsPreviewQueueProducersValue =
@@ -3678,19 +5183,31 @@ export type ProjectsEditResponseDeploymentConfigsPreviewQueueProducersValue =
 export type ProjectsEditResponseDeploymentConfigsPreviewQueueProducersMap = {
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewQueueProducersValue | undefined;
 };
+const ProjectsEditResponseDeploymentConfigsPreviewQueueProducersMap =
+  ProjectsGetResponseDeploymentConfigsPreviewQueueProducersMap as any as S.Schema<ProjectsEditResponseDeploymentConfigsPreviewQueueProducersMap>;
+
 export type ProjectsEditResponseDeploymentConfigsPreviewR2BucketsMap = {
   [key: string]: unknown | undefined;
 };
+const ProjectsEditResponseDeploymentConfigsPreviewR2BucketsMap =
+  ProjectsCreateRequestDeploymentConfigsPreviewBrowsersMap as any as S.Schema<ProjectsEditResponseDeploymentConfigsPreviewR2BucketsMap>;
+
 export type ProjectsEditResponseDeploymentConfigsPreviewServicesValue =
   ProjectsCreateResponseDeploymentConfigsPreviewServicesValue;
 export type ProjectsEditResponseDeploymentConfigsPreviewServicesMap = {
   [key: string]: ProjectsCreateResponseDeploymentConfigsPreviewServicesValue | undefined;
 };
+const ProjectsEditResponseDeploymentConfigsPreviewServicesMap =
+  ProjectsCreateResponseDeploymentConfigsPreviewServicesMap as any as S.Schema<ProjectsEditResponseDeploymentConfigsPreviewServicesMap>;
+
 export type ProjectsEditResponseDeploymentConfigsPreviewVectorizeBindingsValue =
   ProjectsCreateRequestDeploymentConfigsPreviewVectorizeBindingsValue;
 export type ProjectsEditResponseDeploymentConfigsPreviewVectorizeBindingsMap = {
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewVectorizeBindingsValue | undefined;
 };
+const ProjectsEditResponseDeploymentConfigsPreviewVectorizeBindingsMap =
+  ProjectsCreateRequestDeploymentConfigsPreviewVectorizeBindingsMap as any as S.Schema<ProjectsEditResponseDeploymentConfigsPreviewVectorizeBindingsMap>;
+
 export interface ProjectsEditResponseDeploymentConfigsPreview {
   /** Whether to always use the latest compatibility date for Pages Functions. */
   alwaysUseLatestCompatibilityDate: boolean;
@@ -3737,16 +5254,29 @@ export interface ProjectsEditResponseDeploymentConfigsPreview {
   /** Hash of the Wrangler configuration used for the deployment. */
   wranglerConfigHash?: string | null;
 }
+const ProjectsEditResponseDeploymentConfigsPreview = /*@__PURE__*/ __L.at(
+  __c16,
+  7,
+) as any as S.Schema<ProjectsEditResponseDeploymentConfigsPreview>;
+
 export type ProjectsEditResponseDeploymentConfigsProductionCompatibilityFlagsList = Array<string>;
+const ProjectsEditResponseDeploymentConfigsProductionCompatibilityFlagsList =
+  ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList as any as S.Schema<ProjectsEditResponseDeploymentConfigsProductionCompatibilityFlagsList>;
+
 export type ProjectsEditResponseDeploymentConfigsProductionUsageModel =
   | "standard"
   | "bundled"
   | "unbound";
+const ProjectsEditResponseDeploymentConfigsProductionUsageModel = S.String;
+
 export type ProjectsEditResponseDeploymentConfigsProductionAiBindingsValue =
   ProjectsCreateRequestDeploymentConfigsPreviewAiBindingsValue;
 export type ProjectsEditResponseDeploymentConfigsProductionAiBindingsMap = {
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewAiBindingsValue | undefined;
 };
+const ProjectsEditResponseDeploymentConfigsProductionAiBindingsMap =
+  ProjectsCreateRequestDeploymentConfigsPreviewAiBindingsMap as any as S.Schema<ProjectsEditResponseDeploymentConfigsProductionAiBindingsMap>;
+
 export type ProjectsEditResponseDeploymentConfigsProductionAnalyticsEngineDatasetsValue =
   ProjectsCreateRequestDeploymentConfigsPreviewAnalyticsEngineDatasetsValue;
 export type ProjectsEditResponseDeploymentConfigsProductionAnalyticsEngineDatasetsMap = {
@@ -3754,12 +5284,21 @@ export type ProjectsEditResponseDeploymentConfigsProductionAnalyticsEngineDatase
     | ProjectsCreateRequestDeploymentConfigsPreviewAnalyticsEngineDatasetsValue
     | undefined;
 };
+const ProjectsEditResponseDeploymentConfigsProductionAnalyticsEngineDatasetsMap =
+  ProjectsCreateRequestDeploymentConfigsPreviewAnalyticsEngineDatasetsMap as any as S.Schema<ProjectsEditResponseDeploymentConfigsProductionAnalyticsEngineDatasetsMap>;
+
 export type ProjectsEditResponseDeploymentConfigsProductionBrowsersMap = {
   [key: string]: unknown | undefined;
 };
+const ProjectsEditResponseDeploymentConfigsProductionBrowsersMap =
+  ProjectsCreateRequestDeploymentConfigsPreviewBrowsersMap as any as S.Schema<ProjectsEditResponseDeploymentConfigsProductionBrowsersMap>;
+
 export type ProjectsEditResponseDeploymentConfigsProductionD1DatabasesMap = {
   [key: string]: unknown | undefined;
 };
+const ProjectsEditResponseDeploymentConfigsProductionD1DatabasesMap =
+  ProjectsCreateRequestDeploymentConfigsPreviewBrowsersMap as any as S.Schema<ProjectsEditResponseDeploymentConfigsProductionD1DatabasesMap>;
+
 export type ProjectsEditResponseDeploymentConfigsProductionDurableObjectNamespacesValue =
   ProjectsCreateRequestDeploymentConfigsPreviewDurableObjectNamespacesValue;
 export type ProjectsEditResponseDeploymentConfigsProductionDurableObjectNamespacesMap = {
@@ -3767,14 +5306,23 @@ export type ProjectsEditResponseDeploymentConfigsProductionDurableObjectNamespac
     | ProjectsCreateRequestDeploymentConfigsPreviewDurableObjectNamespacesValue
     | undefined;
 };
+const ProjectsEditResponseDeploymentConfigsProductionDurableObjectNamespacesMap =
+  ProjectsCreateRequestDeploymentConfigsPreviewDurableObjectNamespacesMap as any as S.Schema<ProjectsEditResponseDeploymentConfigsProductionDurableObjectNamespacesMap>;
+
 export type ProjectsEditResponseDeploymentConfigsProductionHyperdriveBindingsValue =
   ProjectsCreateRequestDeploymentConfigsPreviewHyperdriveBindingsValue;
 export type ProjectsEditResponseDeploymentConfigsProductionHyperdriveBindingsMap = {
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewHyperdriveBindingsValue | undefined;
 };
+const ProjectsEditResponseDeploymentConfigsProductionHyperdriveBindingsMap =
+  ProjectsCreateRequestDeploymentConfigsPreviewHyperdriveBindingsMap as any as S.Schema<ProjectsEditResponseDeploymentConfigsProductionHyperdriveBindingsMap>;
+
 export type ProjectsEditResponseDeploymentConfigsProductionKvNamespacesMap = {
   [key: string]: unknown | undefined;
 };
+const ProjectsEditResponseDeploymentConfigsProductionKvNamespacesMap =
+  ProjectsCreateRequestDeploymentConfigsProductionD1DatabasesMap as any as S.Schema<ProjectsEditResponseDeploymentConfigsProductionKvNamespacesMap>;
+
 export type ProjectsEditResponseDeploymentConfigsProductionLimits =
   ProjectsCreateRequestDeploymentConfigsPreviewLimits;
 export type ProjectsEditResponseDeploymentConfigsProductionMtlsCertificatesValue =
@@ -3782,6 +5330,9 @@ export type ProjectsEditResponseDeploymentConfigsProductionMtlsCertificatesValue
 export type ProjectsEditResponseDeploymentConfigsProductionMtlsCertificatesMap = {
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewMtlsCertificatesValue | undefined;
 };
+const ProjectsEditResponseDeploymentConfigsProductionMtlsCertificatesMap =
+  ProjectsCreateRequestDeploymentConfigsPreviewMtlsCertificatesMap as any as S.Schema<ProjectsEditResponseDeploymentConfigsProductionMtlsCertificatesMap>;
+
 export type ProjectsEditResponseDeploymentConfigsProductionPlacement =
   ProjectsCreateRequestDeploymentConfigsPreviewPlacement;
 export type ProjectsEditResponseDeploymentConfigsProductionQueueProducersValue =
@@ -3789,19 +5340,31 @@ export type ProjectsEditResponseDeploymentConfigsProductionQueueProducersValue =
 export type ProjectsEditResponseDeploymentConfigsProductionQueueProducersMap = {
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewQueueProducersValue | undefined;
 };
+const ProjectsEditResponseDeploymentConfigsProductionQueueProducersMap =
+  ProjectsCreateRequestDeploymentConfigsPreviewQueueProducersMap as any as S.Schema<ProjectsEditResponseDeploymentConfigsProductionQueueProducersMap>;
+
 export type ProjectsEditResponseDeploymentConfigsProductionR2BucketsMap = {
   [key: string]: unknown | undefined;
 };
+const ProjectsEditResponseDeploymentConfigsProductionR2BucketsMap =
+  ProjectsCreateRequestDeploymentConfigsPreviewBrowsersMap as any as S.Schema<ProjectsEditResponseDeploymentConfigsProductionR2BucketsMap>;
+
 export type ProjectsEditResponseDeploymentConfigsProductionServicesValue =
   ProjectsCreateResponseDeploymentConfigsPreviewServicesValue;
 export type ProjectsEditResponseDeploymentConfigsProductionServicesMap = {
   [key: string]: ProjectsCreateResponseDeploymentConfigsPreviewServicesValue | undefined;
 };
+const ProjectsEditResponseDeploymentConfigsProductionServicesMap =
+  ProjectsCreateResponseDeploymentConfigsPreviewServicesMap as any as S.Schema<ProjectsEditResponseDeploymentConfigsProductionServicesMap>;
+
 export type ProjectsEditResponseDeploymentConfigsProductionVectorizeBindingsValue =
   ProjectsCreateRequestDeploymentConfigsPreviewVectorizeBindingsValue;
 export type ProjectsEditResponseDeploymentConfigsProductionVectorizeBindingsMap = {
   [key: string]: ProjectsCreateRequestDeploymentConfigsPreviewVectorizeBindingsValue | undefined;
 };
+const ProjectsEditResponseDeploymentConfigsProductionVectorizeBindingsMap =
+  ProjectsCreateRequestDeploymentConfigsPreviewVectorizeBindingsMap as any as S.Schema<ProjectsEditResponseDeploymentConfigsProductionVectorizeBindingsMap>;
+
 export interface ProjectsEditResponseDeploymentConfigsProduction {
   /** Whether to always use the latest compatibility date for Pages Functions. */
   alwaysUseLatestCompatibilityDate: boolean;
@@ -3848,13 +5411,26 @@ export interface ProjectsEditResponseDeploymentConfigsProduction {
   /** Hash of the Wrangler configuration used for the deployment. */
   wranglerConfigHash?: string | null;
 }
+const ProjectsEditResponseDeploymentConfigsProduction = /*@__PURE__*/ __L.at(
+  __c17,
+  0,
+) as any as S.Schema<ProjectsEditResponseDeploymentConfigsProduction>;
+
 export interface ProjectsEditResponseDeploymentConfigs {
   /** Configs for preview deploys. */
   preview: ProjectsEditResponseDeploymentConfigsPreview;
   /** Configs for production deploys. */
   production: ProjectsEditResponseDeploymentConfigsProduction;
 }
+const ProjectsEditResponseDeploymentConfigs = /*@__PURE__*/ __L.at(
+  __c17,
+  1,
+) as any as S.Schema<ProjectsEditResponseDeploymentConfigs>;
+
 export type ProjectsEditResponseLatestDeploymentAliasesList = Array<string>;
+const ProjectsEditResponseLatestDeploymentAliasesList =
+  AssetsCheckMissingRequestHashesList as any as S.Schema<ProjectsEditResponseLatestDeploymentAliasesList>;
+
 export type ProjectsEditResponseLatestDeploymentBuildConfig =
   ProjectsCreateResponseCanonicalDeploymentBuildConfig;
 export type ProjectsEditResponseLatestDeploymentDeploymentTriggerMetadata =
@@ -3869,6 +5445,9 @@ export interface ProjectsEditResponseLatestDeploymentDeploymentTrigger {
   /** What caused the deployment. */
   type: ProjectsEditResponseLatestDeploymentDeploymentTriggerType;
 }
+const ProjectsEditResponseLatestDeploymentDeploymentTrigger =
+  ProjectsCreateResponseLatestDeploymentDeploymentTrigger as any as S.Schema<ProjectsEditResponseLatestDeploymentDeploymentTrigger>;
+
 export type ProjectsEditResponseLatestDeploymentEnvVarsValuePlainTextType = "plain_text";
 export interface ProjectsEditResponseLatestDeploymentEnvVarsValuePlainText {
   type: ProjectsEditResponseLatestDeploymentEnvVarsValuePlainTextType;
@@ -3884,10 +5463,19 @@ export interface ProjectsEditResponseLatestDeploymentEnvVarsValueSecretText {
 export type ProjectsEditResponseLatestDeploymentEnvVarsValue =
   | ProjectsEditResponseLatestDeploymentEnvVarsValuePlainText
   | ProjectsEditResponseLatestDeploymentEnvVarsValueSecretText;
+const ProjectsEditResponseLatestDeploymentEnvVarsValue = /*@__PURE__*/ __L.at(__c17, 2);
+
 export type ProjectsEditResponseLatestDeploymentEnvVarsMap = {
   [key: string]: ProjectsEditResponseLatestDeploymentEnvVarsValue | undefined;
 };
+const ProjectsEditResponseLatestDeploymentEnvVarsMap = /*@__PURE__*/ __L.at(
+  __c17,
+  3,
+) as any as S.Schema<ProjectsEditResponseLatestDeploymentEnvVarsMap>;
+
 export type ProjectsEditResponseLatestDeploymentEnvironment = "preview" | "production";
+const ProjectsEditResponseLatestDeploymentEnvironment = S.String;
+
 export type ProjectsEditResponseLatestDeploymentLatestStageName =
   | "queued"
   | "initialize"
@@ -3911,16 +5499,33 @@ export interface ProjectsEditResponseLatestDeploymentLatestStage {
   /** State of the current stage. */
   status: ProjectsEditResponseLatestDeploymentLatestStageStatus;
 }
+const ProjectsEditResponseLatestDeploymentLatestStage =
+  ProjectsCreateResponseCanonicalDeploymentLatestStage as any as S.Schema<ProjectsEditResponseLatestDeploymentLatestStage>;
+
 export type ProjectsEditResponseLatestDeploymentSourceConfigPathExcludesList = Array<string>;
+const ProjectsEditResponseLatestDeploymentSourceConfigPathExcludesList =
+  ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList as any as S.Schema<ProjectsEditResponseLatestDeploymentSourceConfigPathExcludesList>;
+
 export type ProjectsEditResponseLatestDeploymentSourceConfigPathIncludesList = Array<string>;
+const ProjectsEditResponseLatestDeploymentSourceConfigPathIncludesList =
+  ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList as any as S.Schema<ProjectsEditResponseLatestDeploymentSourceConfigPathIncludesList>;
+
 export type ProjectsEditResponseLatestDeploymentSourceConfigPreviewBranchExcludesList =
   Array<string>;
+const ProjectsEditResponseLatestDeploymentSourceConfigPreviewBranchExcludesList =
+  ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList as any as S.Schema<ProjectsEditResponseLatestDeploymentSourceConfigPreviewBranchExcludesList>;
+
 export type ProjectsEditResponseLatestDeploymentSourceConfigPreviewBranchIncludesList =
   Array<string>;
+const ProjectsEditResponseLatestDeploymentSourceConfigPreviewBranchIncludesList =
+  ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList as any as S.Schema<ProjectsEditResponseLatestDeploymentSourceConfigPreviewBranchIncludesList>;
+
 export type ProjectsEditResponseLatestDeploymentSourceConfigPreviewDeploymentSetting =
   | "all"
   | "none"
   | "custom";
+const ProjectsEditResponseLatestDeploymentSourceConfigPreviewDeploymentSetting = S.String;
+
 export interface ProjectsEditResponseLatestDeploymentSourceConfig {
   /** Use `production_deployments_enabled` and `preview_deployment_setting` for more granular control. */
   deploymentsEnabled: boolean;
@@ -3949,12 +5554,24 @@ export interface ProjectsEditResponseLatestDeploymentSourceConfig {
   /** The name of the repository. */
   repoName: string;
 }
+const ProjectsEditResponseLatestDeploymentSourceConfig = /*@__PURE__*/ __L.at(
+  __c17,
+  4,
+) as any as S.Schema<ProjectsEditResponseLatestDeploymentSourceConfig>;
+
 export type ProjectsEditResponseLatestDeploymentSourceType = "github" | "gitlab";
+const ProjectsEditResponseLatestDeploymentSourceType = S.String;
+
 export interface ProjectsEditResponseLatestDeploymentSource {
   config: ProjectsEditResponseLatestDeploymentSourceConfig;
   /** The source control management provider. */
   type: ProjectsEditResponseLatestDeploymentSourceType;
 }
+const ProjectsEditResponseLatestDeploymentSource = /*@__PURE__*/ __L.at(
+  __c17,
+  5,
+) as any as S.Schema<ProjectsEditResponseLatestDeploymentSource>;
+
 export type ProjectsEditResponseLatestDeploymentStagesItemName =
   | "queued"
   | "initialize"
@@ -3980,6 +5597,9 @@ export interface ProjectsEditResponseLatestDeploymentStagesItem {
 }
 export type ProjectsEditResponseLatestDeploymentStagesList =
   Array<ProjectsEditResponseLatestDeploymentStagesItem>;
+const ProjectsEditResponseLatestDeploymentStagesList =
+  ProjectsCreateResponseCanonicalDeploymentStagesList as any as S.Schema<ProjectsEditResponseLatestDeploymentStagesList>;
+
 export type ProjectsEditResponseLatestDeploymentSkipReason =
   | "commit_message"
   | "preview_deployments_disabled"
@@ -3988,6 +5608,8 @@ export type ProjectsEditResponseLatestDeploymentSkipReason =
   | "branch_config"
   | "pages_to_workers_conversion"
   | "superseded_queued_build";
+const ProjectsEditResponseLatestDeploymentSkipReason = S.String;
+
 export interface ProjectsEditResponseLatestDeployment {
   /** Id of the deployment. */
   id: string;
@@ -4026,13 +5648,35 @@ export interface ProjectsEditResponseLatestDeployment {
   /** Whether the deployment uses functions. */
   usesFunctions?: boolean | null;
 }
+const ProjectsEditResponseLatestDeployment = /*@__PURE__*/ __L.at(
+  __c17,
+  6,
+) as any as S.Schema<ProjectsEditResponseLatestDeployment>;
+
 export type ProjectsEditResponseBuildConfig = ProjectsCreateResponseCanonicalDeploymentBuildConfig;
 export type ProjectsEditResponseDomainsList = Array<string>;
+const ProjectsEditResponseDomainsList =
+  AssetsCheckMissingRequestHashesList as any as S.Schema<ProjectsEditResponseDomainsList>;
+
 export type ProjectsEditResponseSourceConfigPathExcludesList = Array<string>;
+const ProjectsEditResponseSourceConfigPathExcludesList =
+  AssetsCheckMissingRequestHashesList as any as S.Schema<ProjectsEditResponseSourceConfigPathExcludesList>;
+
 export type ProjectsEditResponseSourceConfigPathIncludesList = Array<string>;
+const ProjectsEditResponseSourceConfigPathIncludesList =
+  AssetsCheckMissingRequestHashesList as any as S.Schema<ProjectsEditResponseSourceConfigPathIncludesList>;
+
 export type ProjectsEditResponseSourceConfigPreviewBranchExcludesList = Array<string>;
+const ProjectsEditResponseSourceConfigPreviewBranchExcludesList =
+  AssetsCheckMissingRequestHashesList as any as S.Schema<ProjectsEditResponseSourceConfigPreviewBranchExcludesList>;
+
 export type ProjectsEditResponseSourceConfigPreviewBranchIncludesList = Array<string>;
+const ProjectsEditResponseSourceConfigPreviewBranchIncludesList =
+  AssetsCheckMissingRequestHashesList as any as S.Schema<ProjectsEditResponseSourceConfigPreviewBranchIncludesList>;
+
 export type ProjectsEditResponseSourceConfigPreviewDeploymentSetting = "all" | "none" | "custom";
+const ProjectsEditResponseSourceConfigPreviewDeploymentSetting = S.String;
+
 export interface ProjectsEditResponseSourceConfig {
   /** Use `production_deployments_enabled` and `preview_deployment_setting` for more granular control. */
   deploymentsEnabled: boolean;
@@ -4061,12 +5705,24 @@ export interface ProjectsEditResponseSourceConfig {
   /** The name of the repository. */
   repoName: string;
 }
+const ProjectsEditResponseSourceConfig = /*@__PURE__*/ __L.at(
+  __c17,
+  7,
+) as any as S.Schema<ProjectsEditResponseSourceConfig>;
+
 export type ProjectsEditResponseSourceType = "github" | "gitlab";
+const ProjectsEditResponseSourceType = S.String;
+
 export interface ProjectsEditResponseSource {
   config: ProjectsEditResponseSourceConfig;
   /** The source control management provider. */
   type: ProjectsEditResponseSourceType;
 }
+const ProjectsEditResponseSource = /*@__PURE__*/ __L.at(
+  __c18,
+  0,
+) as any as S.Schema<ProjectsEditResponseSource>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PatchProjectResponse {
   /** ID of the project. */
@@ -4102,6 +5758,11 @@ export interface PatchProjectResponse {
   /** The Cloudflare subdomain associated with the project. */
   subdomain?: string | null;
 }
+const PatchProjectResponse = /*@__PURE__*/ __L.at(
+  __c18,
+  1,
+) as any as S.Schema<PatchProjectResponse>;
+
 export interface PatchProjectDomainRequest {
   /** Identifier. */
   accountId: string;
@@ -4110,7 +5771,14 @@ export interface PatchProjectDomainRequest {
   /** Fully qualified domain name for the Pages project, such as `example.com`. */
   domainName: string;
 }
+const PatchProjectDomainRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  2,
+) as any as S.Schema<PatchProjectDomainRequest>;
+
 export type ProjectsDomainsEditResponseCertificateAuthority = "google" | "lets_encrypt";
+const ProjectsDomainsEditResponseCertificateAuthority = S.String;
+
 export type ProjectsDomainsEditResponseStatus =
   | "initializing"
   | "pending"
@@ -4118,6 +5786,8 @@ export type ProjectsDomainsEditResponseStatus =
   | "deactivated"
   | "blocked"
   | "error";
+const ProjectsDomainsEditResponseStatus = S.String;
+
 export type ProjectsDomainsEditResponseValidationDataMethod = "http" | "txt";
 export type ProjectsDomainsEditResponseValidationDataStatus =
   | "initializing"
@@ -4132,6 +5802,9 @@ export interface ProjectsDomainsEditResponseValidationData {
   txtName?: string | null;
   txtValue?: string | null;
 }
+const ProjectsDomainsEditResponseValidationData =
+  ProjectsDomainsCreateResponseValidationData as any as S.Schema<ProjectsDomainsEditResponseValidationData>;
+
 export type ProjectsDomainsEditResponseVerificationDataStatus =
   | "pending"
   | "active"
@@ -4142,6 +5815,9 @@ export interface ProjectsDomainsEditResponseVerificationData {
   status: ProjectsDomainsEditResponseVerificationDataStatus;
   errorMessage?: string | null;
 }
+const ProjectsDomainsEditResponseVerificationData =
+  ProjectsDomainsCreateResponseVerificationData as any as S.Schema<ProjectsDomainsEditResponseVerificationData>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PatchProjectDomainResponse {
   id: string;
@@ -4155,24 +5831,47 @@ export interface PatchProjectDomainResponse {
   verificationData: ProjectsDomainsEditResponseVerificationData;
   zoneTag: string;
 }
+const PatchProjectDomainResponse = /*@__PURE__*/ __L.at(
+  __c18,
+  3,
+) as any as S.Schema<PatchProjectDomainResponse>;
+
 export interface ProjectsGetUploadTokenRequest {
   /** Identifier. */
   accountId: string;
   /** Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens. */
   projectName: string;
 }
+const ProjectsGetUploadTokenRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  4,
+) as any as S.Schema<ProjectsGetUploadTokenRequest>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface ProjectsGetUploadTokenResponse {
   /** Short-lived JWT used to authenticate Pages Direct Upload asset operations. */
   jwt: string;
 }
+const ProjectsGetUploadTokenResponse = /*@__PURE__*/ __L.at(
+  __c18,
+  5,
+) as any as S.Schema<ProjectsGetUploadTokenResponse>;
+
 export interface PurgeBuildCacheProjectRequest {
   /** Identifier. */
   accountId: string;
   /** Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens. */
   projectName: string;
 }
+const PurgeBuildCacheProjectRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  6,
+) as any as S.Schema<PurgeBuildCacheProjectRequest>;
+
 export type PurgeBuildCacheProjectResponse = unknown;
+const PurgeBuildCacheProjectResponse =
+  DeleteProjectDeploymentResponse as any as S.Schema<PurgeBuildCacheProjectResponse>;
+
 export interface RetryProjectDeploymentRequest {
   /** Identifier. */
   accountId: string;
@@ -4181,7 +5880,15 @@ export interface RetryProjectDeploymentRequest {
   /** UUID of the Pages deployment, as returned by deployment list or create operations. */
   deploymentId: string;
 }
+const RetryProjectDeploymentRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  7,
+) as any as S.Schema<RetryProjectDeploymentRequest>;
+
 export type ProjectsDeploymentsRetryResponseAliasesList = Array<string>;
+const ProjectsDeploymentsRetryResponseAliasesList =
+  AssetsCheckMissingRequestHashesList as any as S.Schema<ProjectsDeploymentsRetryResponseAliasesList>;
+
 export type ProjectsDeploymentsRetryResponseBuildConfig =
   ProjectsCreateResponseCanonicalDeploymentBuildConfig;
 export type ProjectsDeploymentsRetryResponseDeploymentTriggerMetadata =
@@ -4196,7 +5903,12 @@ export interface ProjectsDeploymentsRetryResponseDeploymentTrigger {
   /** What caused the deployment. */
   type: ProjectsDeploymentsRetryResponseDeploymentTriggerType;
 }
+const ProjectsDeploymentsRetryResponseDeploymentTrigger =
+  ProjectsCreateResponseLatestDeploymentDeploymentTrigger as any as S.Schema<ProjectsDeploymentsRetryResponseDeploymentTrigger>;
+
 export type ProjectsDeploymentsRetryResponseEnvironment = "preview" | "production";
+const ProjectsDeploymentsRetryResponseEnvironment = S.String;
+
 export type ProjectsDeploymentsRetryResponseLatestStageName =
   | "queued"
   | "initialize"
@@ -4220,14 +5932,31 @@ export interface ProjectsDeploymentsRetryResponseLatestStage {
   /** State of the current stage. */
   status: ProjectsDeploymentsRetryResponseLatestStageStatus;
 }
+const ProjectsDeploymentsRetryResponseLatestStage =
+  ProjectsCreateResponseCanonicalDeploymentLatestStage as any as S.Schema<ProjectsDeploymentsRetryResponseLatestStage>;
+
 export type ProjectsDeploymentsRetryResponseSourceConfigPathExcludesList = Array<string>;
+const ProjectsDeploymentsRetryResponseSourceConfigPathExcludesList =
+  AssetsCheckMissingRequestHashesList as any as S.Schema<ProjectsDeploymentsRetryResponseSourceConfigPathExcludesList>;
+
 export type ProjectsDeploymentsRetryResponseSourceConfigPathIncludesList = Array<string>;
+const ProjectsDeploymentsRetryResponseSourceConfigPathIncludesList =
+  AssetsCheckMissingRequestHashesList as any as S.Schema<ProjectsDeploymentsRetryResponseSourceConfigPathIncludesList>;
+
 export type ProjectsDeploymentsRetryResponseSourceConfigPreviewBranchExcludesList = Array<string>;
+const ProjectsDeploymentsRetryResponseSourceConfigPreviewBranchExcludesList =
+  ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList as any as S.Schema<ProjectsDeploymentsRetryResponseSourceConfigPreviewBranchExcludesList>;
+
 export type ProjectsDeploymentsRetryResponseSourceConfigPreviewBranchIncludesList = Array<string>;
+const ProjectsDeploymentsRetryResponseSourceConfigPreviewBranchIncludesList =
+  ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList as any as S.Schema<ProjectsDeploymentsRetryResponseSourceConfigPreviewBranchIncludesList>;
+
 export type ProjectsDeploymentsRetryResponseSourceConfigPreviewDeploymentSetting =
   | "all"
   | "none"
   | "custom";
+const ProjectsDeploymentsRetryResponseSourceConfigPreviewDeploymentSetting = S.String;
+
 export interface ProjectsDeploymentsRetryResponseSourceConfig {
   /** Use `production_deployments_enabled` and `preview_deployment_setting` for more granular control. */
   deploymentsEnabled: boolean;
@@ -4256,12 +5985,24 @@ export interface ProjectsDeploymentsRetryResponseSourceConfig {
   /** The name of the repository. */
   repoName: string;
 }
+const ProjectsDeploymentsRetryResponseSourceConfig = /*@__PURE__*/ __L.at(
+  __c19,
+  0,
+) as any as S.Schema<ProjectsDeploymentsRetryResponseSourceConfig>;
+
 export type ProjectsDeploymentsRetryResponseSourceType = "github" | "gitlab";
+const ProjectsDeploymentsRetryResponseSourceType = S.String;
+
 export interface ProjectsDeploymentsRetryResponseSource {
   config: ProjectsDeploymentsRetryResponseSourceConfig;
   /** The source control management provider. */
   type: ProjectsDeploymentsRetryResponseSourceType;
 }
+const ProjectsDeploymentsRetryResponseSource = /*@__PURE__*/ __L.at(
+  __c19,
+  1,
+) as any as S.Schema<ProjectsDeploymentsRetryResponseSource>;
+
 export type ProjectsDeploymentsRetryResponseStagesItemName =
   | "queued"
   | "initialize"
@@ -4287,6 +6028,9 @@ export interface ProjectsDeploymentsRetryResponseStagesItem {
 }
 export type ProjectsDeploymentsRetryResponseStagesList =
   Array<ProjectsDeploymentsRetryResponseStagesItem>;
+const ProjectsDeploymentsRetryResponseStagesList =
+  ProjectsCreateResponseCanonicalDeploymentStagesList as any as S.Schema<ProjectsDeploymentsRetryResponseStagesList>;
+
 export type ProjectsDeploymentsRetryResponseSkipReason =
   | "commit_message"
   | "preview_deployments_disabled"
@@ -4295,6 +6039,8 @@ export type ProjectsDeploymentsRetryResponseSkipReason =
   | "branch_config"
   | "pages_to_workers_conversion"
   | "superseded_queued_build";
+const ProjectsDeploymentsRetryResponseSkipReason = S.String;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface RetryProjectDeploymentResponse {
   /** Id of the deployment. */
@@ -4334,6 +6080,11 @@ export interface RetryProjectDeploymentResponse {
   /** Whether the deployment uses functions. */
   usesFunctions?: boolean | null;
 }
+const RetryProjectDeploymentResponse = /*@__PURE__*/ __L.at(
+  __c19,
+  2,
+) as any as S.Schema<RetryProjectDeploymentResponse>;
+
 export interface RollbackProjectDeploymentRequest {
   /** Identifier. */
   accountId: string;
@@ -4342,7 +6093,15 @@ export interface RollbackProjectDeploymentRequest {
   /** UUID of the Pages deployment, as returned by deployment list or create operations. */
   deploymentId: string;
 }
+const RollbackProjectDeploymentRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  3,
+) as any as S.Schema<RollbackProjectDeploymentRequest>;
+
 export type ProjectsDeploymentsRollbackResponseAliasesList = Array<string>;
+const ProjectsDeploymentsRollbackResponseAliasesList =
+  AssetsCheckMissingRequestHashesList as any as S.Schema<ProjectsDeploymentsRollbackResponseAliasesList>;
+
 export type ProjectsDeploymentsRollbackResponseBuildConfig =
   ProjectsCreateResponseCanonicalDeploymentBuildConfig;
 export type ProjectsDeploymentsRollbackResponseDeploymentTriggerMetadata =
@@ -4357,7 +6116,12 @@ export interface ProjectsDeploymentsRollbackResponseDeploymentTrigger {
   /** What caused the deployment. */
   type: ProjectsDeploymentsRollbackResponseDeploymentTriggerType;
 }
+const ProjectsDeploymentsRollbackResponseDeploymentTrigger =
+  ProjectsCreateResponseLatestDeploymentDeploymentTrigger as any as S.Schema<ProjectsDeploymentsRollbackResponseDeploymentTrigger>;
+
 export type ProjectsDeploymentsRollbackResponseEnvironment = "preview" | "production";
+const ProjectsDeploymentsRollbackResponseEnvironment = S.String;
+
 export type ProjectsDeploymentsRollbackResponseLatestStageName =
   | "queued"
   | "initialize"
@@ -4381,16 +6145,33 @@ export interface ProjectsDeploymentsRollbackResponseLatestStage {
   /** State of the current stage. */
   status: ProjectsDeploymentsRollbackResponseLatestStageStatus;
 }
+const ProjectsDeploymentsRollbackResponseLatestStage =
+  ProjectsCreateResponseCanonicalDeploymentLatestStage as any as S.Schema<ProjectsDeploymentsRollbackResponseLatestStage>;
+
 export type ProjectsDeploymentsRollbackResponseSourceConfigPathExcludesList = Array<string>;
+const ProjectsDeploymentsRollbackResponseSourceConfigPathExcludesList =
+  ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList as any as S.Schema<ProjectsDeploymentsRollbackResponseSourceConfigPathExcludesList>;
+
 export type ProjectsDeploymentsRollbackResponseSourceConfigPathIncludesList = Array<string>;
+const ProjectsDeploymentsRollbackResponseSourceConfigPathIncludesList =
+  ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList as any as S.Schema<ProjectsDeploymentsRollbackResponseSourceConfigPathIncludesList>;
+
 export type ProjectsDeploymentsRollbackResponseSourceConfigPreviewBranchExcludesList =
   Array<string>;
+const ProjectsDeploymentsRollbackResponseSourceConfigPreviewBranchExcludesList =
+  ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList as any as S.Schema<ProjectsDeploymentsRollbackResponseSourceConfigPreviewBranchExcludesList>;
+
 export type ProjectsDeploymentsRollbackResponseSourceConfigPreviewBranchIncludesList =
   Array<string>;
+const ProjectsDeploymentsRollbackResponseSourceConfigPreviewBranchIncludesList =
+  ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList as any as S.Schema<ProjectsDeploymentsRollbackResponseSourceConfigPreviewBranchIncludesList>;
+
 export type ProjectsDeploymentsRollbackResponseSourceConfigPreviewDeploymentSetting =
   | "all"
   | "none"
   | "custom";
+const ProjectsDeploymentsRollbackResponseSourceConfigPreviewDeploymentSetting = S.String;
+
 export interface ProjectsDeploymentsRollbackResponseSourceConfig {
   /** Use `production_deployments_enabled` and `preview_deployment_setting` for more granular control. */
   deploymentsEnabled: boolean;
@@ -4419,12 +6200,24 @@ export interface ProjectsDeploymentsRollbackResponseSourceConfig {
   /** The name of the repository. */
   repoName: string;
 }
+const ProjectsDeploymentsRollbackResponseSourceConfig = /*@__PURE__*/ __L.at(
+  __c19,
+  4,
+) as any as S.Schema<ProjectsDeploymentsRollbackResponseSourceConfig>;
+
 export type ProjectsDeploymentsRollbackResponseSourceType = "github" | "gitlab";
+const ProjectsDeploymentsRollbackResponseSourceType = S.String;
+
 export interface ProjectsDeploymentsRollbackResponseSource {
   config: ProjectsDeploymentsRollbackResponseSourceConfig;
   /** The source control management provider. */
   type: ProjectsDeploymentsRollbackResponseSourceType;
 }
+const ProjectsDeploymentsRollbackResponseSource = /*@__PURE__*/ __L.at(
+  __c19,
+  5,
+) as any as S.Schema<ProjectsDeploymentsRollbackResponseSource>;
+
 export type ProjectsDeploymentsRollbackResponseStagesItemName =
   | "queued"
   | "initialize"
@@ -4450,6 +6243,9 @@ export interface ProjectsDeploymentsRollbackResponseStagesItem {
 }
 export type ProjectsDeploymentsRollbackResponseStagesList =
   Array<ProjectsDeploymentsRollbackResponseStagesItem>;
+const ProjectsDeploymentsRollbackResponseStagesList =
+  ProjectsCreateResponseCanonicalDeploymentStagesList as any as S.Schema<ProjectsDeploymentsRollbackResponseStagesList>;
+
 export type ProjectsDeploymentsRollbackResponseSkipReason =
   | "commit_message"
   | "preview_deployments_disabled"
@@ -4458,6 +6254,8 @@ export type ProjectsDeploymentsRollbackResponseSkipReason =
   | "branch_config"
   | "pages_to_workers_conversion"
   | "superseded_queued_build";
+const ProjectsDeploymentsRollbackResponseSkipReason = S.String;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface RollbackProjectDeploymentResponse {
   /** Id of the deployment. */
@@ -4497,10 +6295,20 @@ export interface RollbackProjectDeploymentResponse {
   /** Whether the deployment uses functions. */
   usesFunctions?: boolean | null;
 }
+const RollbackProjectDeploymentResponse = /*@__PURE__*/ __L.at(
+  __c19,
+  6,
+) as any as S.Schema<RollbackProjectDeploymentResponse>;
+
 export interface UploadAssetRequestBodyItemMetadata {
   /** MIME type for the uploaded file. */
   contentType: string;
 }
+const UploadAssetRequestBodyItemMetadata = /*@__PURE__*/ __L.at(
+  __c19,
+  7,
+) as any as S.Schema<UploadAssetRequestBodyItemMetadata>;
+
 export interface UploadAssetRequestBodyItem {
   /** Whether value is base64 encoded. */
   base64: boolean;
@@ -4510,11 +6318,25 @@ export interface UploadAssetRequestBodyItem {
   /** File content. When base64 is true, this value is base64 encoded. */
   value: string;
 }
+const UploadAssetRequestBodyItem = /*@__PURE__*/ __L.at(
+  __c20,
+  0,
+) as any as S.Schema<UploadAssetRequestBodyItem>;
+
 export type UploadAssetRequestBodyList = Array<UploadAssetRequestBodyItem>;
+const UploadAssetRequestBodyList = /*@__PURE__*/ __L.at(
+  __c20,
+  1,
+) as any as S.Schema<UploadAssetRequestBodyList>;
+
 export interface UploadAssetRequest {
   body: UploadAssetRequestBodyList;
 }
+const UploadAssetRequest = /*@__PURE__*/ __L.at(__c20, 2) as any as S.Schema<UploadAssetRequest>;
+
 export interface UploadAssetResponse {}
+const UploadAssetResponse = /*@__PURE__*/ __L.at(__c20, 3) as any as S.Schema<UploadAssetResponse>;
+
 export type AssetsCheckMissingError = CloudflareOpError;
 /** Check which of the provided file hashes are missing from the Pages asset store. Returns a list of missing hashes that need to be uploaded. Used as part of the Pages Direct Upload workflow. Authenticate with the JWT obtained from the upload-token endpoint: GET /accounts/{account_id}/pages/projects/{project_name}/upload-token */
 export const assetsCheckMissing: API.OperationMethod<
@@ -4523,8 +6345,8 @@ export const assetsCheckMissing: API.OperationMethod<
   AssetsCheckMissingError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1) as any as S.Schema<AssetsCheckMissingRequest>,
-  output: __S(2) as any as S.Schema<AssetsCheckMissingResponse>,
+  input: AssetsCheckMissingRequest,
+  output: AssetsCheckMissingResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4538,8 +6360,8 @@ export const assetsUpsertHashes: API.OperationMethod<
   AssetsUpsertHashesError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3) as any as S.Schema<AssetsUpsertHashesRequest>,
-  output: __S(4) as any as S.Schema<AssetsUpsertHashesResponse>,
+  input: AssetsUpsertHashesRequest,
+  output: AssetsUpsertHashesResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4553,8 +6375,8 @@ export const createProject: API.OperationMethod<
   CreateProjectError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32) as any as S.Schema<CreateProjectRequest>,
-  output: __S(55) as any as S.Schema<CreateProjectResponse>,
+  input: CreateProjectRequest,
+  output: CreateProjectResponse,
   errors: [ProjectAlreadyExists, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4568,8 +6390,8 @@ export const createProjectDeployment: API.OperationMethod<
   CreateProjectDeploymentError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56) as any as S.Schema<CreateProjectDeploymentRequest>,
-  output: __S(59) as any as S.Schema<CreateProjectDeploymentResponse>,
+  input: CreateProjectDeploymentRequest,
+  output: CreateProjectDeploymentResponse,
   errors: [ProjectNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4587,8 +6409,8 @@ export const createProjectDomain: API.OperationMethod<
   CreateProjectDomainError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60) as any as S.Schema<CreateProjectDomainRequest>,
-  output: __S(63) as any as S.Schema<CreateProjectDomainResponse>,
+  input: CreateProjectDomainRequest,
+  output: CreateProjectDomainResponse,
   errors: [
     ProjectNotFound,
     PagesDomainAlreadyExists,
@@ -4608,8 +6430,8 @@ export const createProjectsDeploymentsTail: API.OperationMethod<
   CreateProjectsDeploymentsTailError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65) as any as S.Schema<CreateProjectsDeploymentsTailRequest>,
-  output: __S(66) as any as S.Schema<CreateProjectsDeploymentsTailResponse>,
+  input: CreateProjectsDeploymentsTailRequest,
+  output: CreateProjectsDeploymentsTailResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4623,8 +6445,8 @@ export const deleteProject: API.OperationMethod<
   DeleteProjectError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(67) as any as S.Schema<DeleteProjectRequest>,
-  output: __S(68) as any as S.Schema<DeleteProjectResponse>,
+  input: DeleteProjectRequest,
+  output: DeleteProjectResponse,
   errors: [ProjectNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4643,8 +6465,8 @@ export const deleteProjectDeployment: API.OperationMethod<
   DeleteProjectDeploymentError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(69) as any as S.Schema<DeleteProjectDeploymentRequest>,
-  output: __S(70) as any as S.Schema<DeleteProjectDeploymentResponse>,
+  input: DeleteProjectDeploymentRequest,
+  output: DeleteProjectDeploymentResponse,
   errors: [
     DeploymentNotFound,
     ProjectNotFound,
@@ -4669,8 +6491,8 @@ export const deleteProjectDomain: API.OperationMethod<
   DeleteProjectDomainError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(71) as any as S.Schema<DeleteProjectDomainRequest>,
-  output: __S(70) as any as S.Schema<DeleteProjectDomainResponse>,
+  input: DeleteProjectDomainRequest,
+  output: DeleteProjectDomainResponse,
   errors: [ProjectNotFound, PagesDomainNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4684,8 +6506,8 @@ export const deleteProjectsDeploymentsTail: API.OperationMethod<
   DeleteProjectsDeploymentsTailError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(72) as any as S.Schema<DeleteProjectsDeploymentsTailRequest>,
-  output: __S(70) as any as S.Schema<DeleteProjectsDeploymentsTailResponse>,
+  input: DeleteProjectsDeploymentsTailRequest,
+  output: DeleteProjectsDeploymentsTailResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4699,8 +6521,8 @@ export const getProject: API.OperationMethod<
   GetProjectError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(73) as any as S.Schema<GetProjectRequest>,
-  output: __S(88) as any as S.Schema<GetProjectResponse>,
+  input: GetProjectRequest,
+  output: GetProjectResponse,
   errors: [ProjectNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4718,8 +6540,8 @@ export const getProjectDeployment: API.OperationMethod<
   GetProjectDeploymentError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(89) as any as S.Schema<GetProjectDeploymentRequest>,
-  output: __S(92) as any as S.Schema<GetProjectDeploymentResponse>,
+  input: GetProjectDeploymentRequest,
+  output: GetProjectDeploymentResponse,
   errors: [DeploymentNotFound, ProjectNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4733,8 +6555,8 @@ export const getProjectDeploymentHistoryLog: API.OperationMethod<
   GetProjectDeploymentHistoryLogError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(93) as any as S.Schema<GetProjectDeploymentHistoryLogRequest>,
-  output: __S(96) as any as S.Schema<GetProjectDeploymentHistoryLogResponse>,
+  input: GetProjectDeploymentHistoryLogRequest,
+  output: GetProjectDeploymentHistoryLogResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4752,8 +6574,8 @@ export const getProjectDomain: API.OperationMethod<
   GetProjectDomainError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(97) as any as S.Schema<GetProjectDomainRequest>,
-  output: __S(98) as any as S.Schema<GetProjectDomainResponse>,
+  input: GetProjectDomainRequest,
+  output: GetProjectDomainResponse,
   errors: [ProjectNotFound, PagesDomainNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4769,8 +6591,8 @@ export const listProjectDeployments: API.PaginatedOperationMethod<
   ProjectsDeploymentsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(99) as any as S.Schema<ListProjectDeploymentsRequest>,
-    output: __S(104) as any as S.Schema<ListProjectDeploymentsResponse>,
+    input: ListProjectDeploymentsRequest,
+    output: ListProjectDeploymentsResponse,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -4795,8 +6617,8 @@ export const listProjectDomains: API.PaginatedOperationMethod<
   ProjectsDomainsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(105) as any as S.Schema<ListProjectDomainsRequest>,
-    output: __S(108) as any as S.Schema<ListProjectDomainsResponse>,
+    input: ListProjectDomainsRequest,
+    output: ListProjectDomainsResponse,
     errors: [ProjectNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -4815,8 +6637,8 @@ export const listProjects: API.PaginatedOperationMethod<
   ProjectsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(109) as any as S.Schema<ListProjectsRequest>,
-    output: __S(125) as any as S.Schema<ListProjectsResponse>,
+    input: ListProjectsRequest,
+    output: ListProjectsResponse,
     errors: [Forbidden, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -4839,8 +6661,8 @@ export const patchProject: API.OperationMethod<
   PatchProjectError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(131) as any as S.Schema<PatchProjectRequest>,
-  output: __S(145) as any as S.Schema<PatchProjectResponse>,
+  input: PatchProjectRequest,
+  output: PatchProjectResponse,
   errors: [ProjectNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4858,8 +6680,8 @@ export const patchProjectDomain: API.OperationMethod<
   PatchProjectDomainError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(146) as any as S.Schema<PatchProjectDomainRequest>,
-  output: __S(147) as any as S.Schema<PatchProjectDomainResponse>,
+  input: PatchProjectDomainRequest,
+  output: PatchProjectDomainResponse,
   errors: [ProjectNotFound, PagesDomainNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4873,8 +6695,8 @@ export const projectsGetUploadToken: API.OperationMethod<
   ProjectsGetUploadTokenError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(148) as any as S.Schema<ProjectsGetUploadTokenRequest>,
-  output: __S(149) as any as S.Schema<ProjectsGetUploadTokenResponse>,
+  input: ProjectsGetUploadTokenRequest,
+  output: ProjectsGetUploadTokenResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4888,8 +6710,8 @@ export const purgeBuildCacheProject: API.OperationMethod<
   PurgeBuildCacheProjectError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(150) as any as S.Schema<PurgeBuildCacheProjectRequest>,
-  output: __S(70) as any as S.Schema<PurgeBuildCacheProjectResponse>,
+  input: PurgeBuildCacheProjectRequest,
+  output: PurgeBuildCacheProjectResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4903,8 +6725,8 @@ export const retryProjectDeployment: API.OperationMethod<
   RetryProjectDeploymentError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(151) as any as S.Schema<RetryProjectDeploymentRequest>,
-  output: __S(154) as any as S.Schema<RetryProjectDeploymentResponse>,
+  input: RetryProjectDeploymentRequest,
+  output: RetryProjectDeploymentResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4918,8 +6740,8 @@ export const rollbackProjectDeployment: API.OperationMethod<
   RollbackProjectDeploymentError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(155) as any as S.Schema<RollbackProjectDeploymentRequest>,
-  output: __S(158) as any as S.Schema<RollbackProjectDeploymentResponse>,
+  input: RollbackProjectDeploymentRequest,
+  output: RollbackProjectDeploymentResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4933,8 +6755,8 @@ export const uploadAsset: API.OperationMethod<
   UploadAssetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(162) as any as S.Schema<UploadAssetRequest>,
-  output: __S(163) as any as S.Schema<UploadAssetResponse>,
+  input: UploadAssetRequest,
+  output: UploadAssetResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4948,7 +6770,7 @@ function __c0(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          hashes: __S(0),
+          hashes: AssetsCheckMissingRequestHashesList,
         })
           .pipe(T.Http({ method: "POST", uri: "/pages/assets/check-missing", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -4957,14 +6779,14 @@ function __c0(j: number): any {
       });
     case 2:
       return S.suspend(() =>
-        __S(0).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
+        AssetsCheckMissingResultList.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "AssetsCheckMissingResponse",
       });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          hashes: __S(0),
+          hashes: AssetsUpsertHashesRequestHashesList,
         })
           .pipe(T.Http({ method: "POST", uri: "/pages/assets/upsert-hashes", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -4997,7 +6819,7 @@ function __c0(j: number): any {
         identifier: "ProjectsCreateRequestDeploymentConfigsPreviewAiBindingsValue",
       });
     case 7:
-      return S.Record(S.String, __S(6));
+      return S.Record(S.String, ProjectsCreateRequestDeploymentConfigsPreviewAiBindingsValue);
   }
 }
 function __c1(j: number): any {
@@ -5011,7 +6833,10 @@ function __c1(j: number): any {
         identifier: "ProjectsCreateRequestDeploymentConfigsPreviewAnalyticsEngineDatasetsValue",
       });
     case 1:
-      return S.Record(S.String, __S(8));
+      return S.Record(
+        S.String,
+        ProjectsCreateRequestDeploymentConfigsPreviewAnalyticsEngineDatasetsValue,
+      );
     case 2:
       return S.Record(S.String, S.Unknown);
     case 3:
@@ -5025,7 +6850,10 @@ function __c1(j: number): any {
         identifier: "ProjectsCreateRequestDeploymentConfigsPreviewDurableObjectNamespacesValue",
       });
     case 5:
-      return S.Record(S.String, __S(12));
+      return S.Record(
+        S.String,
+        ProjectsCreateRequestDeploymentConfigsPreviewDurableObjectNamespacesValue,
+      );
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -5035,7 +6863,10 @@ function __c1(j: number): any {
         identifier: "ProjectsCreateRequestDeploymentConfigsPreviewHyperdriveBindingsValue",
       });
     case 7:
-      return S.Record(S.String, __S(14));
+      return S.Record(
+        S.String,
+        ProjectsCreateRequestDeploymentConfigsPreviewHyperdriveBindingsValue,
+      );
   }
 }
 function __c2(j: number): any {
@@ -5057,7 +6888,7 @@ function __c2(j: number): any {
         identifier: "ProjectsCreateRequestDeploymentConfigsPreviewMtlsCertificatesValue",
       });
     case 2:
-      return S.Record(S.String, __S(17));
+      return S.Record(S.String, ProjectsCreateRequestDeploymentConfigsPreviewMtlsCertificatesValue);
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -5075,7 +6906,7 @@ function __c2(j: number): any {
         identifier: "ProjectsCreateRequestDeploymentConfigsPreviewQueueProducersValue",
       });
     case 5:
-      return S.Record(S.String, __S(20));
+      return S.Record(S.String, ProjectsCreateRequestDeploymentConfigsPreviewQueueProducersValue);
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -5087,7 +6918,7 @@ function __c2(j: number): any {
         identifier: "ProjectsCreateRequestDeploymentConfigsPreviewServicesValue",
       });
     case 7:
-      return S.Record(S.String, __S(22));
+      return S.Record(S.String, ProjectsCreateRequestDeploymentConfigsPreviewServicesValue);
   }
 }
 function __c3(j: number): any {
@@ -5101,33 +6932,78 @@ function __c3(j: number): any {
         identifier: "ProjectsCreateRequestDeploymentConfigsPreviewVectorizeBindingsValue",
       });
     case 1:
-      return S.Record(S.String, __S(24));
+      return S.Record(
+        S.String,
+        ProjectsCreateRequestDeploymentConfigsPreviewVectorizeBindingsValue,
+      );
     case 2:
       return S.suspend(() =>
         S.Struct({
-          aiBindings: S.optional(__S(7).pipe(T.Body("ai_bindings"))),
+          aiBindings: S.optional(
+            ProjectsCreateRequestDeploymentConfigsPreviewAiBindingsMap.pipe(T.Body("ai_bindings")),
+          ),
           alwaysUseLatestCompatibilityDate: S.optional(
             S.Boolean.pipe(T.Body("always_use_latest_compatibility_date")),
           ),
-          analyticsEngineDatasets: S.optional(__S(9).pipe(T.Body("analytics_engine_datasets"))),
-          browsers: S.optional(__S(10)),
+          analyticsEngineDatasets: S.optional(
+            ProjectsCreateRequestDeploymentConfigsPreviewAnalyticsEngineDatasetsMap.pipe(
+              T.Body("analytics_engine_datasets"),
+            ),
+          ),
+          browsers: S.optional(ProjectsCreateRequestDeploymentConfigsPreviewBrowsersMap),
           buildImageMajorVersion: S.optional(S.Number.pipe(T.Body("build_image_major_version"))),
           compatibilityDate: S.optional(S.String.pipe(T.Body("compatibility_date"))),
-          compatibilityFlags: S.optional(__S(11).pipe(T.Body("compatibility_flags"))),
-          d1Databases: S.optional(__S(10).pipe(T.Body("d1_databases"))),
-          durableObjectNamespaces: S.optional(__S(13).pipe(T.Body("durable_object_namespaces"))),
-          envVars: S.optional(__S(10).pipe(T.Body("env_vars"))),
+          compatibilityFlags: S.optional(
+            ProjectsCreateRequestDeploymentConfigsPreviewCompatibilityFlagsList.pipe(
+              T.Body("compatibility_flags"),
+            ),
+          ),
+          d1Databases: S.optional(
+            ProjectsCreateRequestDeploymentConfigsPreviewD1DatabasesMap.pipe(
+              T.Body("d1_databases"),
+            ),
+          ),
+          durableObjectNamespaces: S.optional(
+            ProjectsCreateRequestDeploymentConfigsPreviewDurableObjectNamespacesMap.pipe(
+              T.Body("durable_object_namespaces"),
+            ),
+          ),
+          envVars: S.optional(UntypedBindingMap.pipe(T.Body("env_vars"))),
           failOpen: S.optional(S.Boolean.pipe(T.Body("fail_open"))),
-          hyperdriveBindings: S.optional(__S(15).pipe(T.Body("hyperdrive_bindings"))),
-          kvNamespaces: S.optional(__S(10).pipe(T.Body("kv_namespaces"))),
-          limits: S.optional(__S(16)),
-          mtlsCertificates: S.optional(__S(18).pipe(T.Body("mtls_certificates"))),
-          placement: S.optional(__S(19)),
-          queueProducers: S.optional(__S(21).pipe(T.Body("queue_producers"))),
-          r2Buckets: S.optional(__S(10).pipe(T.Body("r2_buckets"))),
-          services: S.optional(__S(23)),
-          usageModel: S.optional(S.String.pipe(T.Body("usage_model"))),
-          vectorizeBindings: S.optional(__S(25).pipe(T.Body("vectorize_bindings"))),
+          hyperdriveBindings: S.optional(
+            ProjectsCreateRequestDeploymentConfigsPreviewHyperdriveBindingsMap.pipe(
+              T.Body("hyperdrive_bindings"),
+            ),
+          ),
+          kvNamespaces: S.optional(
+            ProjectsCreateRequestDeploymentConfigsPreviewKvNamespacesMap.pipe(
+              T.Body("kv_namespaces"),
+            ),
+          ),
+          limits: S.optional(ProjectsCreateRequestDeploymentConfigsPreviewLimits),
+          mtlsCertificates: S.optional(
+            ProjectsCreateRequestDeploymentConfigsPreviewMtlsCertificatesMap.pipe(
+              T.Body("mtls_certificates"),
+            ),
+          ),
+          placement: S.optional(ProjectsCreateRequestDeploymentConfigsPreviewPlacement),
+          queueProducers: S.optional(
+            ProjectsCreateRequestDeploymentConfigsPreviewQueueProducersMap.pipe(
+              T.Body("queue_producers"),
+            ),
+          ),
+          r2Buckets: S.optional(
+            ProjectsCreateRequestDeploymentConfigsPreviewR2BucketsMap.pipe(T.Body("r2_buckets")),
+          ),
+          services: S.optional(ProjectsCreateRequestDeploymentConfigsPreviewServicesMap),
+          usageModel: S.optional(
+            ProjectsCreateRequestDeploymentConfigsPreviewUsageModel.pipe(T.Body("usage_model")),
+          ),
+          vectorizeBindings: S.optional(
+            ProjectsCreateRequestDeploymentConfigsPreviewVectorizeBindingsMap.pipe(
+              T.Body("vectorize_bindings"),
+            ),
+          ),
           wranglerConfigHash: S.optional(S.String.pipe(T.Body("wrangler_config_hash"))),
         }),
       ).annotate({
@@ -5138,29 +7014,73 @@ function __c3(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          aiBindings: S.optional(__S(7).pipe(T.Body("ai_bindings"))),
+          aiBindings: S.optional(
+            ProjectsCreateRequestDeploymentConfigsProductionAiBindingsMap.pipe(
+              T.Body("ai_bindings"),
+            ),
+          ),
           alwaysUseLatestCompatibilityDate: S.optional(
             S.Boolean.pipe(T.Body("always_use_latest_compatibility_date")),
           ),
-          analyticsEngineDatasets: S.optional(__S(9).pipe(T.Body("analytics_engine_datasets"))),
-          browsers: S.optional(__S(10)),
+          analyticsEngineDatasets: S.optional(
+            ProjectsCreateRequestDeploymentConfigsProductionAnalyticsEngineDatasetsMap.pipe(
+              T.Body("analytics_engine_datasets"),
+            ),
+          ),
+          browsers: S.optional(ProjectsCreateRequestDeploymentConfigsProductionBrowsersMap),
           buildImageMajorVersion: S.optional(S.Number.pipe(T.Body("build_image_major_version"))),
           compatibilityDate: S.optional(S.String.pipe(T.Body("compatibility_date"))),
-          compatibilityFlags: S.optional(__S(11).pipe(T.Body("compatibility_flags"))),
-          d1Databases: S.optional(__S(27).pipe(T.Body("d1_databases"))),
-          durableObjectNamespaces: S.optional(__S(13).pipe(T.Body("durable_object_namespaces"))),
-          envVars: S.optional(__S(10).pipe(T.Body("env_vars"))),
+          compatibilityFlags: S.optional(
+            ProjectsCreateRequestDeploymentConfigsProductionCompatibilityFlagsList.pipe(
+              T.Body("compatibility_flags"),
+            ),
+          ),
+          d1Databases: S.optional(
+            ProjectsCreateRequestDeploymentConfigsProductionD1DatabasesMap.pipe(
+              T.Body("d1_databases"),
+            ),
+          ),
+          durableObjectNamespaces: S.optional(
+            ProjectsCreateRequestDeploymentConfigsProductionDurableObjectNamespacesMap.pipe(
+              T.Body("durable_object_namespaces"),
+            ),
+          ),
+          envVars: S.optional(UntypedBindingMap.pipe(T.Body("env_vars"))),
           failOpen: S.optional(S.Boolean.pipe(T.Body("fail_open"))),
-          hyperdriveBindings: S.optional(__S(15).pipe(T.Body("hyperdrive_bindings"))),
-          kvNamespaces: S.optional(__S(27).pipe(T.Body("kv_namespaces"))),
-          limits: S.optional(__S(16)),
-          mtlsCertificates: S.optional(__S(18).pipe(T.Body("mtls_certificates"))),
-          placement: S.optional(__S(19)),
-          queueProducers: S.optional(__S(21).pipe(T.Body("queue_producers"))),
-          r2Buckets: S.optional(__S(10).pipe(T.Body("r2_buckets"))),
-          services: S.optional(__S(23)),
-          usageModel: S.optional(S.String.pipe(T.Body("usage_model"))),
-          vectorizeBindings: S.optional(__S(25).pipe(T.Body("vectorize_bindings"))),
+          hyperdriveBindings: S.optional(
+            ProjectsCreateRequestDeploymentConfigsProductionHyperdriveBindingsMap.pipe(
+              T.Body("hyperdrive_bindings"),
+            ),
+          ),
+          kvNamespaces: S.optional(
+            ProjectsCreateRequestDeploymentConfigsProductionKvNamespacesMap.pipe(
+              T.Body("kv_namespaces"),
+            ),
+          ),
+          limits: S.optional(ProjectsCreateRequestDeploymentConfigsPreviewLimits),
+          mtlsCertificates: S.optional(
+            ProjectsCreateRequestDeploymentConfigsProductionMtlsCertificatesMap.pipe(
+              T.Body("mtls_certificates"),
+            ),
+          ),
+          placement: S.optional(ProjectsCreateRequestDeploymentConfigsPreviewPlacement),
+          queueProducers: S.optional(
+            ProjectsCreateRequestDeploymentConfigsProductionQueueProducersMap.pipe(
+              T.Body("queue_producers"),
+            ),
+          ),
+          r2Buckets: S.optional(
+            ProjectsCreateRequestDeploymentConfigsProductionR2BucketsMap.pipe(T.Body("r2_buckets")),
+          ),
+          services: S.optional(ProjectsCreateRequestDeploymentConfigsProductionServicesMap),
+          usageModel: S.optional(
+            ProjectsCreateRequestDeploymentConfigsProductionUsageModel.pipe(T.Body("usage_model")),
+          ),
+          vectorizeBindings: S.optional(
+            ProjectsCreateRequestDeploymentConfigsProductionVectorizeBindingsMap.pipe(
+              T.Body("vectorize_bindings"),
+            ),
+          ),
           wranglerConfigHash: S.optional(S.String.pipe(T.Body("wrangler_config_hash"))),
         }),
       ).annotate({
@@ -5169,8 +7089,8 @@ function __c3(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          preview: S.optional(__S(26)),
-          production: S.optional(__S(28)),
+          preview: S.optional(ProjectsCreateRequestDeploymentConfigsPreview),
+          production: S.optional(ProjectsCreateRequestDeploymentConfigsProduction),
         }),
       ).annotate({
         identifier: "ProjectsCreateRequestDeploymentConfigs",
@@ -5181,12 +7101,28 @@ function __c3(j: number): any {
           deploymentsEnabled: S.optional(S.Boolean.pipe(T.Body("deployments_enabled"))),
           owner: S.optional(S.String),
           ownerId: S.optional(S.String.pipe(T.Body("owner_id"))),
-          pathExcludes: S.optional(__S(0).pipe(T.Body("path_excludes"))),
-          pathIncludes: S.optional(__S(0).pipe(T.Body("path_includes"))),
+          pathExcludes: S.optional(
+            ProjectsCreateRequestSourceConfigPathExcludesList.pipe(T.Body("path_excludes")),
+          ),
+          pathIncludes: S.optional(
+            ProjectsCreateRequestSourceConfigPathIncludesList.pipe(T.Body("path_includes")),
+          ),
           prCommentsEnabled: S.optional(S.Boolean.pipe(T.Body("pr_comments_enabled"))),
-          previewBranchExcludes: S.optional(__S(0).pipe(T.Body("preview_branch_excludes"))),
-          previewBranchIncludes: S.optional(__S(0).pipe(T.Body("preview_branch_includes"))),
-          previewDeploymentSetting: S.optional(S.String.pipe(T.Body("preview_deployment_setting"))),
+          previewBranchExcludes: S.optional(
+            ProjectsCreateRequestSourceConfigPreviewBranchExcludesList.pipe(
+              T.Body("preview_branch_excludes"),
+            ),
+          ),
+          previewBranchIncludes: S.optional(
+            ProjectsCreateRequestSourceConfigPreviewBranchIncludesList.pipe(
+              T.Body("preview_branch_includes"),
+            ),
+          ),
+          previewDeploymentSetting: S.optional(
+            ProjectsCreateRequestSourceConfigPreviewDeploymentSetting.pipe(
+              T.Body("preview_deployment_setting"),
+            ),
+          ),
           productionBranch: S.optional(S.String.pipe(T.Body("production_branch"))),
           productionDeploymentsEnabled: S.optional(
             S.Boolean.pipe(T.Body("production_deployments_enabled")),
@@ -5200,8 +7136,8 @@ function __c3(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          config: __S(30),
-          type: S.String,
+          config: ProjectsCreateRequestSourceConfig,
+          type: ProjectsCreateRequestSourceType,
         }),
       ).annotate({
         identifier: "ProjectsCreateRequestSource",
@@ -5216,9 +7152,11 @@ function __c4(j: number): any {
           accountId: S.String.pipe(T.Label("account_id")),
           name: S.String,
           productionBranch: S.String.pipe(T.Body("production_branch")),
-          buildConfig: S.optional(__S(5).pipe(T.Body("build_config"))),
-          deploymentConfigs: S.optional(__S(29).pipe(T.Body("deployment_configs"))),
-          source: S.optional(__S(31)),
+          buildConfig: S.optional(ProjectsCreateRequestBuildConfig.pipe(T.Body("build_config"))),
+          deploymentConfigs: S.optional(
+            ProjectsCreateRequestDeploymentConfigs.pipe(T.Body("deployment_configs")),
+          ),
+          source: S.optional(ProjectsCreateRequestSource),
         })
           .pipe(T.Http({ method: "POST", uri: "/accounts/{account_id}/pages/projects", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -5250,8 +7188,8 @@ function __c4(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          metadata: __S(34),
-          type: S.String,
+          metadata: ProjectsCreateResponseCanonicalDeploymentDeploymentTriggerMetadata,
+          type: ProjectsCreateResponseCanonicalDeploymentDeploymentTriggerType,
         }),
       ).annotate({
         identifier: "ProjectsCreateResponseCanonicalDeploymentDeploymentTrigger",
@@ -5260,9 +7198,9 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           endedOn: S.String.pipe(T.Body("ended_on")),
-          name: S.String,
+          name: ProjectsCreateResponseCanonicalDeploymentLatestStageName,
           startedOn: S.String.pipe(T.Body("started_on")),
-          status: S.String,
+          status: ProjectsCreateResponseCanonicalDeploymentLatestStageStatus,
         }),
       ).annotate({
         identifier: "ProjectsCreateResponseCanonicalDeploymentLatestStage",
@@ -5273,12 +7211,25 @@ function __c4(j: number): any {
           deploymentsEnabled: S.Boolean.pipe(T.Body("deployments_enabled")),
           owner: S.String,
           ownerId: S.String.pipe(T.Body("owner_id")),
-          pathExcludes: __S(11).pipe(T.Body("path_excludes")),
-          pathIncludes: __S(11).pipe(T.Body("path_includes")),
+          pathExcludes: ProjectsCreateResponseCanonicalDeploymentSourceConfigPathExcludesList.pipe(
+            T.Body("path_excludes"),
+          ),
+          pathIncludes: ProjectsCreateResponseCanonicalDeploymentSourceConfigPathIncludesList.pipe(
+            T.Body("path_includes"),
+          ),
           prCommentsEnabled: S.Boolean.pipe(T.Body("pr_comments_enabled")),
-          previewBranchExcludes: __S(11).pipe(T.Body("preview_branch_excludes")),
-          previewBranchIncludes: __S(11).pipe(T.Body("preview_branch_includes")),
-          previewDeploymentSetting: S.String.pipe(T.Body("preview_deployment_setting")),
+          previewBranchExcludes:
+            ProjectsCreateResponseCanonicalDeploymentSourceConfigPreviewBranchExcludesList.pipe(
+              T.Body("preview_branch_excludes"),
+            ),
+          previewBranchIncludes:
+            ProjectsCreateResponseCanonicalDeploymentSourceConfigPreviewBranchIncludesList.pipe(
+              T.Body("preview_branch_includes"),
+            ),
+          previewDeploymentSetting:
+            ProjectsCreateResponseCanonicalDeploymentSourceConfigPreviewDeploymentSetting.pipe(
+              T.Body("preview_deployment_setting"),
+            ),
           productionBranch: S.String.pipe(T.Body("production_branch")),
           productionDeploymentsEnabled: S.Boolean.pipe(T.Body("production_deployments_enabled")),
           repoId: S.String.pipe(T.Body("repo_id")),
@@ -5290,14 +7241,14 @@ function __c4(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          config: __S(37),
-          type: S.String,
+          config: ProjectsCreateResponseCanonicalDeploymentSourceConfig,
+          type: ProjectsCreateResponseCanonicalDeploymentSourceType,
         }),
       ).annotate({
         identifier: "ProjectsCreateResponseCanonicalDeploymentSource",
       });
     case 7:
-      return S.Array(__S(36));
+      return S.Array(ProjectsCreateResponseCanonicalDeploymentStagesItem);
   }
 }
 function __c5(j: number): any {
@@ -5306,22 +7257,32 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          aliases: __S(0),
-          buildConfig: __S(33).pipe(T.Body("build_config")),
+          aliases: ProjectsCreateResponseCanonicalDeploymentAliasesList,
+          buildConfig: ProjectsCreateResponseCanonicalDeploymentBuildConfig.pipe(
+            T.Body("build_config"),
+          ),
           createdOn: S.String.pipe(T.Body("created_on")),
-          deploymentTrigger: __S(35).pipe(T.Body("deployment_trigger")),
-          envVars: __S(10).pipe(T.Body("env_vars")),
-          environment: S.String,
+          deploymentTrigger: ProjectsCreateResponseCanonicalDeploymentDeploymentTrigger.pipe(
+            T.Body("deployment_trigger"),
+          ),
+          envVars: UntypedBindingMap.pipe(T.Body("env_vars")),
+          environment: ProjectsCreateResponseCanonicalDeploymentEnvironment,
           isSkipped: S.Boolean.pipe(T.Body("is_skipped")),
-          latestStage: __S(36).pipe(T.Body("latest_stage")),
+          latestStage: ProjectsCreateResponseCanonicalDeploymentLatestStage.pipe(
+            T.Body("latest_stage"),
+          ),
           modifiedOn: S.String.pipe(T.Body("modified_on")),
           projectId: S.String.pipe(T.Body("project_id")),
           projectName: S.String.pipe(T.Body("project_name")),
           shortId: S.String.pipe(T.Body("short_id")),
-          source: __S(38),
-          stages: __S(39),
+          source: ProjectsCreateResponseCanonicalDeploymentSource,
+          stages: ProjectsCreateResponseCanonicalDeploymentStagesList,
           url: S.String,
-          skipReason: S.optional(S.NullOr(S.String).pipe(T.Body("skip_reason"))),
+          skipReason: S.optional(
+            S.NullOr(ProjectsCreateResponseCanonicalDeploymentSkipReason).pipe(
+              T.Body("skip_reason"),
+            ),
+          ),
           usesFunctions: S.optional(S.NullOr(S.Boolean).pipe(T.Body("uses_functions"))),
         }),
       ).annotate({
@@ -5338,7 +7299,7 @@ function __c5(j: number): any {
         identifier: "ProjectsCreateResponseDeploymentConfigsPreviewServicesValue",
       });
     case 2:
-      return S.Record(S.String, __S(41));
+      return S.Record(S.String, ProjectsCreateResponseDeploymentConfigsPreviewServicesValue);
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -5347,35 +7308,76 @@ function __c5(j: number): any {
           ),
           buildImageMajorVersion: S.Number.pipe(T.Body("build_image_major_version")),
           compatibilityDate: S.String.pipe(T.Body("compatibility_date")),
-          compatibilityFlags: __S(11).pipe(T.Body("compatibility_flags")),
-          envVars: __S(10).pipe(T.Body("env_vars")),
+          compatibilityFlags:
+            ProjectsCreateResponseDeploymentConfigsPreviewCompatibilityFlagsList.pipe(
+              T.Body("compatibility_flags"),
+            ),
+          envVars: UntypedBindingMap.pipe(T.Body("env_vars")),
           failOpen: S.Boolean.pipe(T.Body("fail_open")),
-          usageModel: S.String.pipe(T.Body("usage_model")),
-          aiBindings: S.optional(S.NullOr(__S(7)).pipe(T.Body("ai_bindings"))),
+          usageModel: ProjectsCreateResponseDeploymentConfigsPreviewUsageModel.pipe(
+            T.Body("usage_model"),
+          ),
+          aiBindings: S.optional(
+            S.NullOr(ProjectsCreateResponseDeploymentConfigsPreviewAiBindingsMap).pipe(
+              T.Body("ai_bindings"),
+            ),
+          ),
           analyticsEngineDatasets: S.optional(
-            S.NullOr(__S(9)).pipe(T.Body("analytics_engine_datasets")),
+            S.NullOr(ProjectsCreateResponseDeploymentConfigsPreviewAnalyticsEngineDatasetsMap).pipe(
+              T.Body("analytics_engine_datasets"),
+            ),
           ),
-          browsers: S.optional(S.NullOr(__S(10))),
-          d1Databases: S.optional(S.NullOr(__S(10)).pipe(T.Body("d1_databases"))),
+          browsers: S.optional(S.NullOr(ProjectsCreateResponseDeploymentConfigsPreviewBrowsersMap)),
+          d1Databases: S.optional(
+            S.NullOr(ProjectsCreateResponseDeploymentConfigsPreviewD1DatabasesMap).pipe(
+              T.Body("d1_databases"),
+            ),
+          ),
           durableObjectNamespaces: S.optional(
-            S.NullOr(__S(13)).pipe(T.Body("durable_object_namespaces")),
+            S.NullOr(ProjectsCreateResponseDeploymentConfigsPreviewDurableObjectNamespacesMap).pipe(
+              T.Body("durable_object_namespaces"),
+            ),
           ),
-          hyperdriveBindings: S.optional(S.NullOr(__S(15)).pipe(T.Body("hyperdrive_bindings"))),
-          kvNamespaces: S.optional(S.NullOr(__S(10)).pipe(T.Body("kv_namespaces"))),
-          limits: S.optional(S.NullOr(__S(16))),
-          mtlsCertificates: S.optional(S.NullOr(__S(18)).pipe(T.Body("mtls_certificates"))),
-          placement: S.optional(S.NullOr(__S(19))),
-          queueProducers: S.optional(S.NullOr(__S(21)).pipe(T.Body("queue_producers"))),
-          r2Buckets: S.optional(S.NullOr(__S(10)).pipe(T.Body("r2_buckets"))),
-          services: S.optional(S.NullOr(__S(42))),
-          vectorizeBindings: S.optional(S.NullOr(__S(25)).pipe(T.Body("vectorize_bindings"))),
+          hyperdriveBindings: S.optional(
+            S.NullOr(ProjectsCreateResponseDeploymentConfigsPreviewHyperdriveBindingsMap).pipe(
+              T.Body("hyperdrive_bindings"),
+            ),
+          ),
+          kvNamespaces: S.optional(
+            S.NullOr(ProjectsCreateResponseDeploymentConfigsPreviewKvNamespacesMap).pipe(
+              T.Body("kv_namespaces"),
+            ),
+          ),
+          limits: S.optional(S.NullOr(ProjectsCreateRequestDeploymentConfigsPreviewLimits)),
+          mtlsCertificates: S.optional(
+            S.NullOr(ProjectsCreateResponseDeploymentConfigsPreviewMtlsCertificatesMap).pipe(
+              T.Body("mtls_certificates"),
+            ),
+          ),
+          placement: S.optional(S.NullOr(ProjectsCreateRequestDeploymentConfigsPreviewPlacement)),
+          queueProducers: S.optional(
+            S.NullOr(ProjectsCreateResponseDeploymentConfigsPreviewQueueProducersMap).pipe(
+              T.Body("queue_producers"),
+            ),
+          ),
+          r2Buckets: S.optional(
+            S.NullOr(ProjectsCreateResponseDeploymentConfigsPreviewR2BucketsMap).pipe(
+              T.Body("r2_buckets"),
+            ),
+          ),
+          services: S.optional(S.NullOr(ProjectsCreateResponseDeploymentConfigsPreviewServicesMap)),
+          vectorizeBindings: S.optional(
+            S.NullOr(ProjectsCreateResponseDeploymentConfigsPreviewVectorizeBindingsMap).pipe(
+              T.Body("vectorize_bindings"),
+            ),
+          ),
           wranglerConfigHash: S.optional(S.NullOr(S.String).pipe(T.Body("wrangler_config_hash"))),
         }),
       ).annotate({
         identifier: "ProjectsCreateResponseDeploymentConfigsPreview",
       });
     case 4:
-      return S.Record(S.String, __S(6));
+      return S.Record(S.String, ProjectsCreateRequestDeploymentConfigsPreviewAiBindingsValue);
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -5384,28 +7386,73 @@ function __c5(j: number): any {
           ),
           buildImageMajorVersion: S.Number.pipe(T.Body("build_image_major_version")),
           compatibilityDate: S.String.pipe(T.Body("compatibility_date")),
-          compatibilityFlags: __S(11).pipe(T.Body("compatibility_flags")),
-          envVars: __S(10).pipe(T.Body("env_vars")),
+          compatibilityFlags:
+            ProjectsCreateResponseDeploymentConfigsProductionCompatibilityFlagsList.pipe(
+              T.Body("compatibility_flags"),
+            ),
+          envVars: UntypedBindingMap.pipe(T.Body("env_vars")),
           failOpen: S.Boolean.pipe(T.Body("fail_open")),
-          usageModel: S.String.pipe(T.Body("usage_model")),
-          aiBindings: S.optional(S.NullOr(__S(44)).pipe(T.Body("ai_bindings"))),
+          usageModel: ProjectsCreateResponseDeploymentConfigsProductionUsageModel.pipe(
+            T.Body("usage_model"),
+          ),
+          aiBindings: S.optional(
+            S.NullOr(ProjectsCreateResponseDeploymentConfigsProductionAiBindingsMap).pipe(
+              T.Body("ai_bindings"),
+            ),
+          ),
           analyticsEngineDatasets: S.optional(
-            S.NullOr(__S(9)).pipe(T.Body("analytics_engine_datasets")),
+            S.NullOr(
+              ProjectsCreateResponseDeploymentConfigsProductionAnalyticsEngineDatasetsMap,
+            ).pipe(T.Body("analytics_engine_datasets")),
           ),
-          browsers: S.optional(S.NullOr(__S(10))),
-          d1Databases: S.optional(S.NullOr(__S(27)).pipe(T.Body("d1_databases"))),
+          browsers: S.optional(
+            S.NullOr(ProjectsCreateResponseDeploymentConfigsProductionBrowsersMap),
+          ),
+          d1Databases: S.optional(
+            S.NullOr(ProjectsCreateResponseDeploymentConfigsProductionD1DatabasesMap).pipe(
+              T.Body("d1_databases"),
+            ),
+          ),
           durableObjectNamespaces: S.optional(
-            S.NullOr(__S(13)).pipe(T.Body("durable_object_namespaces")),
+            S.NullOr(
+              ProjectsCreateResponseDeploymentConfigsProductionDurableObjectNamespacesMap,
+            ).pipe(T.Body("durable_object_namespaces")),
           ),
-          hyperdriveBindings: S.optional(S.NullOr(__S(15)).pipe(T.Body("hyperdrive_bindings"))),
-          kvNamespaces: S.optional(S.NullOr(__S(27)).pipe(T.Body("kv_namespaces"))),
-          limits: S.optional(S.NullOr(__S(16))),
-          mtlsCertificates: S.optional(S.NullOr(__S(18)).pipe(T.Body("mtls_certificates"))),
-          placement: S.optional(S.NullOr(__S(19))),
-          queueProducers: S.optional(S.NullOr(__S(21)).pipe(T.Body("queue_producers"))),
-          r2Buckets: S.optional(S.NullOr(__S(10)).pipe(T.Body("r2_buckets"))),
-          services: S.optional(S.NullOr(__S(42))),
-          vectorizeBindings: S.optional(S.NullOr(__S(25)).pipe(T.Body("vectorize_bindings"))),
+          hyperdriveBindings: S.optional(
+            S.NullOr(ProjectsCreateResponseDeploymentConfigsProductionHyperdriveBindingsMap).pipe(
+              T.Body("hyperdrive_bindings"),
+            ),
+          ),
+          kvNamespaces: S.optional(
+            S.NullOr(ProjectsCreateResponseDeploymentConfigsProductionKvNamespacesMap).pipe(
+              T.Body("kv_namespaces"),
+            ),
+          ),
+          limits: S.optional(S.NullOr(ProjectsCreateRequestDeploymentConfigsPreviewLimits)),
+          mtlsCertificates: S.optional(
+            S.NullOr(ProjectsCreateResponseDeploymentConfigsProductionMtlsCertificatesMap).pipe(
+              T.Body("mtls_certificates"),
+            ),
+          ),
+          placement: S.optional(S.NullOr(ProjectsCreateRequestDeploymentConfigsPreviewPlacement)),
+          queueProducers: S.optional(
+            S.NullOr(ProjectsCreateResponseDeploymentConfigsProductionQueueProducersMap).pipe(
+              T.Body("queue_producers"),
+            ),
+          ),
+          r2Buckets: S.optional(
+            S.NullOr(ProjectsCreateResponseDeploymentConfigsProductionR2BucketsMap).pipe(
+              T.Body("r2_buckets"),
+            ),
+          ),
+          services: S.optional(
+            S.NullOr(ProjectsCreateResponseDeploymentConfigsProductionServicesMap),
+          ),
+          vectorizeBindings: S.optional(
+            S.NullOr(ProjectsCreateResponseDeploymentConfigsProductionVectorizeBindingsMap).pipe(
+              T.Body("vectorize_bindings"),
+            ),
+          ),
           wranglerConfigHash: S.optional(S.NullOr(S.String).pipe(T.Body("wrangler_config_hash"))),
         }),
       ).annotate({
@@ -5414,8 +7461,8 @@ function __c5(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          preview: __S(43),
-          production: __S(45),
+          preview: ProjectsCreateResponseDeploymentConfigsPreview,
+          production: ProjectsCreateResponseDeploymentConfigsProduction,
         }),
       ).annotate({
         identifier: "ProjectsCreateResponseDeploymentConfigs",
@@ -5423,8 +7470,8 @@ function __c5(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          metadata: __S(34),
-          type: S.String,
+          metadata: ProjectsCreateResponseCanonicalDeploymentDeploymentTriggerMetadata,
+          type: ProjectsCreateResponseLatestDeploymentDeploymentTriggerType,
         }),
       ).annotate({
         identifier: "ProjectsCreateResponseLatestDeploymentDeploymentTrigger",
@@ -5444,19 +7491,32 @@ function __c6(j: number): any {
         ),
       );
     case 1:
-      return S.Record(S.String, __S(48));
+      return S.Record(S.String, ProjectsCreateResponseLatestDeploymentEnvVarsValue);
     case 2:
       return S.suspend(() =>
         S.Struct({
           deploymentsEnabled: S.Boolean.pipe(T.Body("deployments_enabled")),
           owner: S.String,
           ownerId: S.String.pipe(T.Body("owner_id")),
-          pathExcludes: __S(11).pipe(T.Body("path_excludes")),
-          pathIncludes: __S(11).pipe(T.Body("path_includes")),
+          pathExcludes: ProjectsCreateResponseLatestDeploymentSourceConfigPathExcludesList.pipe(
+            T.Body("path_excludes"),
+          ),
+          pathIncludes: ProjectsCreateResponseLatestDeploymentSourceConfigPathIncludesList.pipe(
+            T.Body("path_includes"),
+          ),
           prCommentsEnabled: S.Boolean.pipe(T.Body("pr_comments_enabled")),
-          previewBranchExcludes: __S(11).pipe(T.Body("preview_branch_excludes")),
-          previewBranchIncludes: __S(11).pipe(T.Body("preview_branch_includes")),
-          previewDeploymentSetting: S.String.pipe(T.Body("preview_deployment_setting")),
+          previewBranchExcludes:
+            ProjectsCreateResponseLatestDeploymentSourceConfigPreviewBranchExcludesList.pipe(
+              T.Body("preview_branch_excludes"),
+            ),
+          previewBranchIncludes:
+            ProjectsCreateResponseLatestDeploymentSourceConfigPreviewBranchIncludesList.pipe(
+              T.Body("preview_branch_includes"),
+            ),
+          previewDeploymentSetting:
+            ProjectsCreateResponseLatestDeploymentSourceConfigPreviewDeploymentSetting.pipe(
+              T.Body("preview_deployment_setting"),
+            ),
           productionBranch: S.String.pipe(T.Body("production_branch")),
           productionDeploymentsEnabled: S.Boolean.pipe(T.Body("production_deployments_enabled")),
           repoId: S.String.pipe(T.Body("repo_id")),
@@ -5468,8 +7528,8 @@ function __c6(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          config: __S(50),
-          type: S.String,
+          config: ProjectsCreateResponseLatestDeploymentSourceConfig,
+          type: ProjectsCreateResponseLatestDeploymentSourceType,
         }),
       ).annotate({
         identifier: "ProjectsCreateResponseLatestDeploymentSource",
@@ -5478,22 +7538,30 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          aliases: __S(0),
-          buildConfig: __S(33).pipe(T.Body("build_config")),
+          aliases: ProjectsCreateResponseLatestDeploymentAliasesList,
+          buildConfig: ProjectsCreateResponseCanonicalDeploymentBuildConfig.pipe(
+            T.Body("build_config"),
+          ),
           createdOn: S.String.pipe(T.Body("created_on")),
-          deploymentTrigger: __S(47).pipe(T.Body("deployment_trigger")),
-          envVars: __S(49).pipe(T.Body("env_vars")),
-          environment: S.String,
+          deploymentTrigger: ProjectsCreateResponseLatestDeploymentDeploymentTrigger.pipe(
+            T.Body("deployment_trigger"),
+          ),
+          envVars: ProjectsCreateResponseLatestDeploymentEnvVarsMap.pipe(T.Body("env_vars")),
+          environment: ProjectsCreateResponseLatestDeploymentEnvironment,
           isSkipped: S.Boolean.pipe(T.Body("is_skipped")),
-          latestStage: __S(36).pipe(T.Body("latest_stage")),
+          latestStage: ProjectsCreateResponseLatestDeploymentLatestStage.pipe(
+            T.Body("latest_stage"),
+          ),
           modifiedOn: S.String.pipe(T.Body("modified_on")),
           projectId: S.String.pipe(T.Body("project_id")),
           projectName: S.String.pipe(T.Body("project_name")),
           shortId: S.String.pipe(T.Body("short_id")),
-          source: __S(51),
-          stages: __S(39),
+          source: ProjectsCreateResponseLatestDeploymentSource,
+          stages: ProjectsCreateResponseLatestDeploymentStagesList,
           url: S.String,
-          skipReason: S.optional(S.NullOr(S.String).pipe(T.Body("skip_reason"))),
+          skipReason: S.optional(
+            S.NullOr(ProjectsCreateResponseLatestDeploymentSkipReason).pipe(T.Body("skip_reason")),
+          ),
           usesFunctions: S.optional(S.NullOr(S.Boolean).pipe(T.Body("uses_functions"))),
         }),
       ).annotate({
@@ -5505,12 +7573,22 @@ function __c6(j: number): any {
           deploymentsEnabled: S.Boolean.pipe(T.Body("deployments_enabled")),
           owner: S.String,
           ownerId: S.String.pipe(T.Body("owner_id")),
-          pathExcludes: __S(0).pipe(T.Body("path_excludes")),
-          pathIncludes: __S(0).pipe(T.Body("path_includes")),
+          pathExcludes: ProjectsCreateResponseSourceConfigPathExcludesList.pipe(
+            T.Body("path_excludes"),
+          ),
+          pathIncludes: ProjectsCreateResponseSourceConfigPathIncludesList.pipe(
+            T.Body("path_includes"),
+          ),
           prCommentsEnabled: S.Boolean.pipe(T.Body("pr_comments_enabled")),
-          previewBranchExcludes: __S(0).pipe(T.Body("preview_branch_excludes")),
-          previewBranchIncludes: __S(0).pipe(T.Body("preview_branch_includes")),
-          previewDeploymentSetting: S.String.pipe(T.Body("preview_deployment_setting")),
+          previewBranchExcludes: ProjectsCreateResponseSourceConfigPreviewBranchExcludesList.pipe(
+            T.Body("preview_branch_excludes"),
+          ),
+          previewBranchIncludes: ProjectsCreateResponseSourceConfigPreviewBranchIncludesList.pipe(
+            T.Body("preview_branch_includes"),
+          ),
+          previewDeploymentSetting: ProjectsCreateResponseSourceConfigPreviewDeploymentSetting.pipe(
+            T.Body("preview_deployment_setting"),
+          ),
           productionBranch: S.String.pipe(T.Body("production_branch")),
           productionDeploymentsEnabled: S.Boolean.pipe(T.Body("production_deployments_enabled")),
           repoId: S.String.pipe(T.Body("repo_id")),
@@ -5522,8 +7600,8 @@ function __c6(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          config: __S(53),
-          type: S.String,
+          config: ProjectsCreateResponseSourceConfig,
+          type: ProjectsCreateResponseSourceType,
         }),
       ).annotate({
         identifier: "ProjectsCreateResponseSource",
@@ -5532,20 +7610,30 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          canonicalDeployment: __S(40).pipe(T.Body("canonical_deployment")),
+          canonicalDeployment: ProjectsCreateResponseCanonicalDeployment.pipe(
+            T.Body("canonical_deployment"),
+          ),
           createdOn: S.String.pipe(T.Body("created_on")),
-          deploymentConfigs: __S(46).pipe(T.Body("deployment_configs")),
+          deploymentConfigs: ProjectsCreateResponseDeploymentConfigs.pipe(
+            T.Body("deployment_configs"),
+          ),
           framework: S.String,
           frameworkVersion: S.String.pipe(T.Body("framework_version")),
-          latestDeployment: __S(52).pipe(T.Body("latest_deployment")),
+          latestDeployment: ProjectsCreateResponseLatestDeployment.pipe(
+            T.Body("latest_deployment"),
+          ),
           name: S.String,
           previewScriptName: S.String.pipe(T.Body("preview_script_name")),
           productionBranch: S.String.pipe(T.Body("production_branch")),
           productionScriptName: S.String.pipe(T.Body("production_script_name")),
           usesFunctions: S.Boolean.pipe(T.Body("uses_functions")),
-          buildConfig: S.optional(S.NullOr(__S(33)).pipe(T.Body("build_config"))),
-          domains: S.optional(S.NullOr(__S(0))),
-          source: S.optional(S.NullOr(__S(54))),
+          buildConfig: S.optional(
+            S.NullOr(ProjectsCreateResponseCanonicalDeploymentBuildConfig).pipe(
+              T.Body("build_config"),
+            ),
+          ),
+          domains: S.optional(S.NullOr(ProjectsCreateResponseDomainsList)),
+          source: S.optional(S.NullOr(ProjectsCreateResponseSource)),
           subdomain: S.optional(S.NullOr(S.String)),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "CreateProjectResponse" });
@@ -5592,12 +7680,25 @@ function __c7(j: number): any {
           deploymentsEnabled: S.Boolean.pipe(T.Body("deployments_enabled")),
           owner: S.String,
           ownerId: S.String.pipe(T.Body("owner_id")),
-          pathExcludes: __S(0).pipe(T.Body("path_excludes")),
-          pathIncludes: __S(0).pipe(T.Body("path_includes")),
+          pathExcludes: ProjectsDeploymentsCreateResponseSourceConfigPathExcludesList.pipe(
+            T.Body("path_excludes"),
+          ),
+          pathIncludes: ProjectsDeploymentsCreateResponseSourceConfigPathIncludesList.pipe(
+            T.Body("path_includes"),
+          ),
           prCommentsEnabled: S.Boolean.pipe(T.Body("pr_comments_enabled")),
-          previewBranchExcludes: __S(11).pipe(T.Body("preview_branch_excludes")),
-          previewBranchIncludes: __S(11).pipe(T.Body("preview_branch_includes")),
-          previewDeploymentSetting: S.String.pipe(T.Body("preview_deployment_setting")),
+          previewBranchExcludes:
+            ProjectsDeploymentsCreateResponseSourceConfigPreviewBranchExcludesList.pipe(
+              T.Body("preview_branch_excludes"),
+            ),
+          previewBranchIncludes:
+            ProjectsDeploymentsCreateResponseSourceConfigPreviewBranchIncludesList.pipe(
+              T.Body("preview_branch_includes"),
+            ),
+          previewDeploymentSetting:
+            ProjectsDeploymentsCreateResponseSourceConfigPreviewDeploymentSetting.pipe(
+              T.Body("preview_deployment_setting"),
+            ),
           productionBranch: S.String.pipe(T.Body("production_branch")),
           productionDeploymentsEnabled: S.Boolean.pipe(T.Body("production_deployments_enabled")),
           repoId: S.String.pipe(T.Body("repo_id")),
@@ -5609,8 +7710,8 @@ function __c7(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          config: __S(57),
-          type: S.String,
+          config: ProjectsDeploymentsCreateResponseSourceConfig,
+          type: ProjectsDeploymentsCreateResponseSourceType,
         }),
       ).annotate({
         identifier: "ProjectsDeploymentsCreateResponseSource",
@@ -5619,22 +7720,28 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          aliases: __S(0),
-          buildConfig: __S(33).pipe(T.Body("build_config")),
+          aliases: ProjectsDeploymentsCreateResponseAliasesList,
+          buildConfig: ProjectsCreateResponseCanonicalDeploymentBuildConfig.pipe(
+            T.Body("build_config"),
+          ),
           createdOn: S.String.pipe(T.Body("created_on")),
-          deploymentTrigger: __S(47).pipe(T.Body("deployment_trigger")),
-          envVars: __S(10).pipe(T.Body("env_vars")),
-          environment: S.String,
+          deploymentTrigger: ProjectsDeploymentsCreateResponseDeploymentTrigger.pipe(
+            T.Body("deployment_trigger"),
+          ),
+          envVars: UntypedBindingMap.pipe(T.Body("env_vars")),
+          environment: ProjectsDeploymentsCreateResponseEnvironment,
           isSkipped: S.Boolean.pipe(T.Body("is_skipped")),
-          latestStage: __S(36).pipe(T.Body("latest_stage")),
+          latestStage: ProjectsDeploymentsCreateResponseLatestStage.pipe(T.Body("latest_stage")),
           modifiedOn: S.String.pipe(T.Body("modified_on")),
           projectId: S.String.pipe(T.Body("project_id")),
           projectName: S.String.pipe(T.Body("project_name")),
           shortId: S.String.pipe(T.Body("short_id")),
-          source: __S(58),
-          stages: __S(39),
+          source: ProjectsDeploymentsCreateResponseSource,
+          stages: ProjectsDeploymentsCreateResponseStagesList,
           url: S.String,
-          skipReason: S.optional(S.NullOr(S.String).pipe(T.Body("skip_reason"))),
+          skipReason: S.optional(
+            S.NullOr(ProjectsDeploymentsCreateResponseSkipReason).pipe(T.Body("skip_reason")),
+          ),
           usesFunctions: S.optional(S.NullOr(S.Boolean).pipe(T.Body("uses_functions"))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
@@ -5661,8 +7768,8 @@ function __c7(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          method: S.String,
-          status: S.String,
+          method: ProjectsDomainsCreateResponseValidationDataMethod,
+          status: ProjectsDomainsCreateResponseValidationDataStatus,
           errorMessage: S.optional(S.NullOr(S.String).pipe(T.Body("error_message"))),
           txtName: S.optional(S.NullOr(S.String).pipe(T.Body("txt_name"))),
           txtValue: S.optional(S.NullOr(S.String).pipe(T.Body("txt_value"))),
@@ -5673,7 +7780,7 @@ function __c7(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          status: S.String,
+          status: ProjectsDomainsCreateResponseVerificationDataStatus,
           errorMessage: S.optional(S.NullOr(S.String).pipe(T.Body("error_message"))),
         }),
       ).annotate({
@@ -5683,13 +7790,19 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          certificateAuthority: S.String.pipe(T.Body("certificate_authority")),
+          certificateAuthority: ProjectsDomainsCreateResponseCertificateAuthority.pipe(
+            T.Body("certificate_authority"),
+          ),
           createdOn: S.String.pipe(T.Body("created_on")),
           domainId: S.String.pipe(T.Body("domain_id")),
           name: S.String,
-          status: S.String,
-          validationData: __S(61).pipe(T.Body("validation_data")),
-          verificationData: __S(62).pipe(T.Body("verification_data")),
+          status: ProjectsDomainsCreateResponseStatus,
+          validationData: ProjectsDomainsCreateResponseValidationData.pipe(
+            T.Body("validation_data"),
+          ),
+          verificationData: ProjectsDomainsCreateResponseVerificationData.pipe(
+            T.Body("verification_data"),
+          ),
           zoneTag: S.String.pipe(T.Body("zone_tag")),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
@@ -5700,14 +7813,14 @@ function __c7(j: number): any {
 function __c8(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(10));
+      return S.Array(CreateProjectsDeploymentsTailRequestFiltersItemMap);
     case 1:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           projectName: S.String.pipe(T.Label("project_name")),
           deploymentId: S.String.pipe(T.Label("deployment_id")),
-          filters: S.optional(__S(64)),
+          filters: S.optional(CreateProjectsDeploymentsTailRequestFiltersList),
         })
           .pipe(
             T.Http({
@@ -5835,12 +7948,25 @@ function __c9(j: number): any {
           deploymentsEnabled: S.Boolean.pipe(T.Body("deployments_enabled")),
           owner: S.String,
           ownerId: S.String.pipe(T.Body("owner_id")),
-          pathExcludes: __S(11).pipe(T.Body("path_excludes")),
-          pathIncludes: __S(11).pipe(T.Body("path_includes")),
+          pathExcludes: ProjectsGetResponseCanonicalDeploymentSourceConfigPathExcludesList.pipe(
+            T.Body("path_excludes"),
+          ),
+          pathIncludes: ProjectsGetResponseCanonicalDeploymentSourceConfigPathIncludesList.pipe(
+            T.Body("path_includes"),
+          ),
           prCommentsEnabled: S.Boolean.pipe(T.Body("pr_comments_enabled")),
-          previewBranchExcludes: __S(11).pipe(T.Body("preview_branch_excludes")),
-          previewBranchIncludes: __S(11).pipe(T.Body("preview_branch_includes")),
-          previewDeploymentSetting: S.String.pipe(T.Body("preview_deployment_setting")),
+          previewBranchExcludes:
+            ProjectsGetResponseCanonicalDeploymentSourceConfigPreviewBranchExcludesList.pipe(
+              T.Body("preview_branch_excludes"),
+            ),
+          previewBranchIncludes:
+            ProjectsGetResponseCanonicalDeploymentSourceConfigPreviewBranchIncludesList.pipe(
+              T.Body("preview_branch_includes"),
+            ),
+          previewDeploymentSetting:
+            ProjectsGetResponseCanonicalDeploymentSourceConfigPreviewDeploymentSetting.pipe(
+              T.Body("preview_deployment_setting"),
+            ),
           productionBranch: S.String.pipe(T.Body("production_branch")),
           productionDeploymentsEnabled: S.Boolean.pipe(T.Body("production_deployments_enabled")),
           repoId: S.String.pipe(T.Body("repo_id")),
@@ -5852,8 +7978,8 @@ function __c9(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          config: __S(74),
-          type: S.String,
+          config: ProjectsGetResponseCanonicalDeploymentSourceConfig,
+          type: ProjectsGetResponseCanonicalDeploymentSourceType,
         }),
       ).annotate({
         identifier: "ProjectsGetResponseCanonicalDeploymentSource",
@@ -5862,29 +7988,37 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          aliases: __S(0),
-          buildConfig: __S(33).pipe(T.Body("build_config")),
+          aliases: ProjectsGetResponseCanonicalDeploymentAliasesList,
+          buildConfig: ProjectsCreateResponseCanonicalDeploymentBuildConfig.pipe(
+            T.Body("build_config"),
+          ),
           createdOn: S.String.pipe(T.Body("created_on")),
-          deploymentTrigger: __S(47).pipe(T.Body("deployment_trigger")),
-          envVars: __S(10).pipe(T.Body("env_vars")),
-          environment: S.String,
+          deploymentTrigger: ProjectsGetResponseCanonicalDeploymentDeploymentTrigger.pipe(
+            T.Body("deployment_trigger"),
+          ),
+          envVars: UntypedBindingMap.pipe(T.Body("env_vars")),
+          environment: ProjectsGetResponseCanonicalDeploymentEnvironment,
           isSkipped: S.Boolean.pipe(T.Body("is_skipped")),
-          latestStage: __S(36).pipe(T.Body("latest_stage")),
+          latestStage: ProjectsGetResponseCanonicalDeploymentLatestStage.pipe(
+            T.Body("latest_stage"),
+          ),
           modifiedOn: S.String.pipe(T.Body("modified_on")),
           projectId: S.String.pipe(T.Body("project_id")),
           projectName: S.String.pipe(T.Body("project_name")),
           shortId: S.String.pipe(T.Body("short_id")),
-          source: __S(75),
-          stages: __S(39),
+          source: ProjectsGetResponseCanonicalDeploymentSource,
+          stages: ProjectsGetResponseCanonicalDeploymentStagesList,
           url: S.String,
-          skipReason: S.optional(S.NullOr(S.String).pipe(T.Body("skip_reason"))),
+          skipReason: S.optional(
+            S.NullOr(ProjectsGetResponseCanonicalDeploymentSkipReason).pipe(T.Body("skip_reason")),
+          ),
           usesFunctions: S.optional(S.NullOr(S.Boolean).pipe(T.Body("uses_functions"))),
         }),
       ).annotate({
         identifier: "ProjectsGetResponseCanonicalDeployment",
       });
     case 5:
-      return S.Record(S.String, __S(20));
+      return S.Record(S.String, ProjectsCreateRequestDeploymentConfigsPreviewQueueProducersValue);
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -5893,28 +8027,69 @@ function __c9(j: number): any {
           ),
           buildImageMajorVersion: S.Number.pipe(T.Body("build_image_major_version")),
           compatibilityDate: S.String.pipe(T.Body("compatibility_date")),
-          compatibilityFlags: __S(11).pipe(T.Body("compatibility_flags")),
-          envVars: __S(10).pipe(T.Body("env_vars")),
+          compatibilityFlags:
+            ProjectsGetResponseDeploymentConfigsPreviewCompatibilityFlagsList.pipe(
+              T.Body("compatibility_flags"),
+            ),
+          envVars: UntypedBindingMap.pipe(T.Body("env_vars")),
           failOpen: S.Boolean.pipe(T.Body("fail_open")),
-          usageModel: S.String.pipe(T.Body("usage_model")),
-          aiBindings: S.optional(S.NullOr(__S(7)).pipe(T.Body("ai_bindings"))),
+          usageModel: ProjectsGetResponseDeploymentConfigsPreviewUsageModel.pipe(
+            T.Body("usage_model"),
+          ),
+          aiBindings: S.optional(
+            S.NullOr(ProjectsGetResponseDeploymentConfigsPreviewAiBindingsMap).pipe(
+              T.Body("ai_bindings"),
+            ),
+          ),
           analyticsEngineDatasets: S.optional(
-            S.NullOr(__S(9)).pipe(T.Body("analytics_engine_datasets")),
+            S.NullOr(ProjectsGetResponseDeploymentConfigsPreviewAnalyticsEngineDatasetsMap).pipe(
+              T.Body("analytics_engine_datasets"),
+            ),
           ),
-          browsers: S.optional(S.NullOr(__S(10))),
-          d1Databases: S.optional(S.NullOr(__S(10)).pipe(T.Body("d1_databases"))),
+          browsers: S.optional(S.NullOr(ProjectsGetResponseDeploymentConfigsPreviewBrowsersMap)),
+          d1Databases: S.optional(
+            S.NullOr(ProjectsGetResponseDeploymentConfigsPreviewD1DatabasesMap).pipe(
+              T.Body("d1_databases"),
+            ),
+          ),
           durableObjectNamespaces: S.optional(
-            S.NullOr(__S(13)).pipe(T.Body("durable_object_namespaces")),
+            S.NullOr(ProjectsGetResponseDeploymentConfigsPreviewDurableObjectNamespacesMap).pipe(
+              T.Body("durable_object_namespaces"),
+            ),
           ),
-          hyperdriveBindings: S.optional(S.NullOr(__S(15)).pipe(T.Body("hyperdrive_bindings"))),
-          kvNamespaces: S.optional(S.NullOr(__S(10)).pipe(T.Body("kv_namespaces"))),
-          limits: S.optional(S.NullOr(__S(16))),
-          mtlsCertificates: S.optional(S.NullOr(__S(18)).pipe(T.Body("mtls_certificates"))),
-          placement: S.optional(S.NullOr(__S(19))),
-          queueProducers: S.optional(S.NullOr(__S(77)).pipe(T.Body("queue_producers"))),
-          r2Buckets: S.optional(S.NullOr(__S(10)).pipe(T.Body("r2_buckets"))),
-          services: S.optional(S.NullOr(__S(42))),
-          vectorizeBindings: S.optional(S.NullOr(__S(25)).pipe(T.Body("vectorize_bindings"))),
+          hyperdriveBindings: S.optional(
+            S.NullOr(ProjectsGetResponseDeploymentConfigsPreviewHyperdriveBindingsMap).pipe(
+              T.Body("hyperdrive_bindings"),
+            ),
+          ),
+          kvNamespaces: S.optional(
+            S.NullOr(ProjectsGetResponseDeploymentConfigsPreviewKvNamespacesMap).pipe(
+              T.Body("kv_namespaces"),
+            ),
+          ),
+          limits: S.optional(S.NullOr(ProjectsCreateRequestDeploymentConfigsPreviewLimits)),
+          mtlsCertificates: S.optional(
+            S.NullOr(ProjectsGetResponseDeploymentConfigsPreviewMtlsCertificatesMap).pipe(
+              T.Body("mtls_certificates"),
+            ),
+          ),
+          placement: S.optional(S.NullOr(ProjectsCreateRequestDeploymentConfigsPreviewPlacement)),
+          queueProducers: S.optional(
+            S.NullOr(ProjectsGetResponseDeploymentConfigsPreviewQueueProducersMap).pipe(
+              T.Body("queue_producers"),
+            ),
+          ),
+          r2Buckets: S.optional(
+            S.NullOr(ProjectsGetResponseDeploymentConfigsPreviewR2BucketsMap).pipe(
+              T.Body("r2_buckets"),
+            ),
+          ),
+          services: S.optional(S.NullOr(ProjectsGetResponseDeploymentConfigsPreviewServicesMap)),
+          vectorizeBindings: S.optional(
+            S.NullOr(ProjectsGetResponseDeploymentConfigsPreviewVectorizeBindingsMap).pipe(
+              T.Body("vectorize_bindings"),
+            ),
+          ),
           wranglerConfigHash: S.optional(S.NullOr(S.String).pipe(T.Body("wrangler_config_hash"))),
         }),
       ).annotate({
@@ -5928,28 +8103,69 @@ function __c9(j: number): any {
           ),
           buildImageMajorVersion: S.Number.pipe(T.Body("build_image_major_version")),
           compatibilityDate: S.String.pipe(T.Body("compatibility_date")),
-          compatibilityFlags: __S(11).pipe(T.Body("compatibility_flags")),
-          envVars: __S(10).pipe(T.Body("env_vars")),
+          compatibilityFlags:
+            ProjectsGetResponseDeploymentConfigsProductionCompatibilityFlagsList.pipe(
+              T.Body("compatibility_flags"),
+            ),
+          envVars: UntypedBindingMap.pipe(T.Body("env_vars")),
           failOpen: S.Boolean.pipe(T.Body("fail_open")),
-          usageModel: S.String.pipe(T.Body("usage_model")),
-          aiBindings: S.optional(S.NullOr(__S(7)).pipe(T.Body("ai_bindings"))),
+          usageModel: ProjectsGetResponseDeploymentConfigsProductionUsageModel.pipe(
+            T.Body("usage_model"),
+          ),
+          aiBindings: S.optional(
+            S.NullOr(ProjectsGetResponseDeploymentConfigsProductionAiBindingsMap).pipe(
+              T.Body("ai_bindings"),
+            ),
+          ),
           analyticsEngineDatasets: S.optional(
-            S.NullOr(__S(9)).pipe(T.Body("analytics_engine_datasets")),
+            S.NullOr(ProjectsGetResponseDeploymentConfigsProductionAnalyticsEngineDatasetsMap).pipe(
+              T.Body("analytics_engine_datasets"),
+            ),
           ),
-          browsers: S.optional(S.NullOr(__S(10))),
-          d1Databases: S.optional(S.NullOr(__S(10)).pipe(T.Body("d1_databases"))),
+          browsers: S.optional(S.NullOr(ProjectsGetResponseDeploymentConfigsProductionBrowsersMap)),
+          d1Databases: S.optional(
+            S.NullOr(ProjectsGetResponseDeploymentConfigsProductionD1DatabasesMap).pipe(
+              T.Body("d1_databases"),
+            ),
+          ),
           durableObjectNamespaces: S.optional(
-            S.NullOr(__S(13)).pipe(T.Body("durable_object_namespaces")),
+            S.NullOr(ProjectsGetResponseDeploymentConfigsProductionDurableObjectNamespacesMap).pipe(
+              T.Body("durable_object_namespaces"),
+            ),
           ),
-          hyperdriveBindings: S.optional(S.NullOr(__S(15)).pipe(T.Body("hyperdrive_bindings"))),
-          kvNamespaces: S.optional(S.NullOr(__S(10)).pipe(T.Body("kv_namespaces"))),
-          limits: S.optional(S.NullOr(__S(16))),
-          mtlsCertificates: S.optional(S.NullOr(__S(18)).pipe(T.Body("mtls_certificates"))),
-          placement: S.optional(S.NullOr(__S(19))),
-          queueProducers: S.optional(S.NullOr(__S(21)).pipe(T.Body("queue_producers"))),
-          r2Buckets: S.optional(S.NullOr(__S(10)).pipe(T.Body("r2_buckets"))),
-          services: S.optional(S.NullOr(__S(42))),
-          vectorizeBindings: S.optional(S.NullOr(__S(25)).pipe(T.Body("vectorize_bindings"))),
+          hyperdriveBindings: S.optional(
+            S.NullOr(ProjectsGetResponseDeploymentConfigsProductionHyperdriveBindingsMap).pipe(
+              T.Body("hyperdrive_bindings"),
+            ),
+          ),
+          kvNamespaces: S.optional(
+            S.NullOr(ProjectsGetResponseDeploymentConfigsProductionKvNamespacesMap).pipe(
+              T.Body("kv_namespaces"),
+            ),
+          ),
+          limits: S.optional(S.NullOr(ProjectsCreateRequestDeploymentConfigsPreviewLimits)),
+          mtlsCertificates: S.optional(
+            S.NullOr(ProjectsGetResponseDeploymentConfigsProductionMtlsCertificatesMap).pipe(
+              T.Body("mtls_certificates"),
+            ),
+          ),
+          placement: S.optional(S.NullOr(ProjectsCreateRequestDeploymentConfigsPreviewPlacement)),
+          queueProducers: S.optional(
+            S.NullOr(ProjectsGetResponseDeploymentConfigsProductionQueueProducersMap).pipe(
+              T.Body("queue_producers"),
+            ),
+          ),
+          r2Buckets: S.optional(
+            S.NullOr(ProjectsGetResponseDeploymentConfigsProductionR2BucketsMap).pipe(
+              T.Body("r2_buckets"),
+            ),
+          ),
+          services: S.optional(S.NullOr(ProjectsGetResponseDeploymentConfigsProductionServicesMap)),
+          vectorizeBindings: S.optional(
+            S.NullOr(ProjectsGetResponseDeploymentConfigsProductionVectorizeBindingsMap).pipe(
+              T.Body("vectorize_bindings"),
+            ),
+          ),
           wranglerConfigHash: S.optional(S.NullOr(S.String).pipe(T.Body("wrangler_config_hash"))),
         }),
       ).annotate({
@@ -5962,8 +8178,8 @@ function __c10(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          preview: __S(78),
-          production: __S(79),
+          preview: ProjectsGetResponseDeploymentConfigsPreview,
+          production: ProjectsGetResponseDeploymentConfigsProduction,
         }),
       ).annotate({
         identifier: "ProjectsGetResponseDeploymentConfigs",
@@ -5979,19 +8195,32 @@ function __c10(j: number): any {
         ),
       );
     case 2:
-      return S.Record(S.String, __S(81));
+      return S.Record(S.String, ProjectsGetResponseLatestDeploymentEnvVarsValue);
     case 3:
       return S.suspend(() =>
         S.Struct({
           deploymentsEnabled: S.Boolean.pipe(T.Body("deployments_enabled")),
           owner: S.String,
           ownerId: S.String.pipe(T.Body("owner_id")),
-          pathExcludes: __S(11).pipe(T.Body("path_excludes")),
-          pathIncludes: __S(11).pipe(T.Body("path_includes")),
+          pathExcludes: ProjectsGetResponseLatestDeploymentSourceConfigPathExcludesList.pipe(
+            T.Body("path_excludes"),
+          ),
+          pathIncludes: ProjectsGetResponseLatestDeploymentSourceConfigPathIncludesList.pipe(
+            T.Body("path_includes"),
+          ),
           prCommentsEnabled: S.Boolean.pipe(T.Body("pr_comments_enabled")),
-          previewBranchExcludes: __S(11).pipe(T.Body("preview_branch_excludes")),
-          previewBranchIncludes: __S(11).pipe(T.Body("preview_branch_includes")),
-          previewDeploymentSetting: S.String.pipe(T.Body("preview_deployment_setting")),
+          previewBranchExcludes:
+            ProjectsGetResponseLatestDeploymentSourceConfigPreviewBranchExcludesList.pipe(
+              T.Body("preview_branch_excludes"),
+            ),
+          previewBranchIncludes:
+            ProjectsGetResponseLatestDeploymentSourceConfigPreviewBranchIncludesList.pipe(
+              T.Body("preview_branch_includes"),
+            ),
+          previewDeploymentSetting:
+            ProjectsGetResponseLatestDeploymentSourceConfigPreviewDeploymentSetting.pipe(
+              T.Body("preview_deployment_setting"),
+            ),
           productionBranch: S.String.pipe(T.Body("production_branch")),
           productionDeploymentsEnabled: S.Boolean.pipe(T.Body("production_deployments_enabled")),
           repoId: S.String.pipe(T.Body("repo_id")),
@@ -6003,8 +8232,8 @@ function __c10(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          config: __S(83),
-          type: S.String,
+          config: ProjectsGetResponseLatestDeploymentSourceConfig,
+          type: ProjectsGetResponseLatestDeploymentSourceType,
         }),
       ).annotate({
         identifier: "ProjectsGetResponseLatestDeploymentSource",
@@ -6013,22 +8242,28 @@ function __c10(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          aliases: __S(0),
-          buildConfig: __S(33).pipe(T.Body("build_config")),
+          aliases: ProjectsGetResponseLatestDeploymentAliasesList,
+          buildConfig: ProjectsCreateResponseCanonicalDeploymentBuildConfig.pipe(
+            T.Body("build_config"),
+          ),
           createdOn: S.String.pipe(T.Body("created_on")),
-          deploymentTrigger: __S(47).pipe(T.Body("deployment_trigger")),
-          envVars: __S(82).pipe(T.Body("env_vars")),
-          environment: S.String,
+          deploymentTrigger: ProjectsGetResponseLatestDeploymentDeploymentTrigger.pipe(
+            T.Body("deployment_trigger"),
+          ),
+          envVars: ProjectsGetResponseLatestDeploymentEnvVarsMap.pipe(T.Body("env_vars")),
+          environment: ProjectsGetResponseLatestDeploymentEnvironment,
           isSkipped: S.Boolean.pipe(T.Body("is_skipped")),
-          latestStage: __S(36).pipe(T.Body("latest_stage")),
+          latestStage: ProjectsGetResponseLatestDeploymentLatestStage.pipe(T.Body("latest_stage")),
           modifiedOn: S.String.pipe(T.Body("modified_on")),
           projectId: S.String.pipe(T.Body("project_id")),
           projectName: S.String.pipe(T.Body("project_name")),
           shortId: S.String.pipe(T.Body("short_id")),
-          source: __S(84),
-          stages: __S(39),
+          source: ProjectsGetResponseLatestDeploymentSource,
+          stages: ProjectsGetResponseLatestDeploymentStagesList,
           url: S.String,
-          skipReason: S.optional(S.NullOr(S.String).pipe(T.Body("skip_reason"))),
+          skipReason: S.optional(
+            S.NullOr(ProjectsGetResponseLatestDeploymentSkipReason).pipe(T.Body("skip_reason")),
+          ),
           usesFunctions: S.optional(S.NullOr(S.Boolean).pipe(T.Body("uses_functions"))),
         }),
       ).annotate({
@@ -6040,12 +8275,22 @@ function __c10(j: number): any {
           deploymentsEnabled: S.Boolean.pipe(T.Body("deployments_enabled")),
           owner: S.String,
           ownerId: S.String.pipe(T.Body("owner_id")),
-          pathExcludes: __S(0).pipe(T.Body("path_excludes")),
-          pathIncludes: __S(0).pipe(T.Body("path_includes")),
+          pathExcludes: ProjectsGetResponseSourceConfigPathExcludesList.pipe(
+            T.Body("path_excludes"),
+          ),
+          pathIncludes: ProjectsGetResponseSourceConfigPathIncludesList.pipe(
+            T.Body("path_includes"),
+          ),
           prCommentsEnabled: S.Boolean.pipe(T.Body("pr_comments_enabled")),
-          previewBranchExcludes: __S(0).pipe(T.Body("preview_branch_excludes")),
-          previewBranchIncludes: __S(0).pipe(T.Body("preview_branch_includes")),
-          previewDeploymentSetting: S.String.pipe(T.Body("preview_deployment_setting")),
+          previewBranchExcludes: ProjectsGetResponseSourceConfigPreviewBranchExcludesList.pipe(
+            T.Body("preview_branch_excludes"),
+          ),
+          previewBranchIncludes: ProjectsGetResponseSourceConfigPreviewBranchIncludesList.pipe(
+            T.Body("preview_branch_includes"),
+          ),
+          previewDeploymentSetting: ProjectsGetResponseSourceConfigPreviewDeploymentSetting.pipe(
+            T.Body("preview_deployment_setting"),
+          ),
           productionBranch: S.String.pipe(T.Body("production_branch")),
           productionDeploymentsEnabled: S.Boolean.pipe(T.Body("production_deployments_enabled")),
           repoId: S.String.pipe(T.Body("repo_id")),
@@ -6057,8 +8302,8 @@ function __c10(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          config: __S(86),
-          type: S.String,
+          config: ProjectsGetResponseSourceConfig,
+          type: ProjectsGetResponseSourceType,
         }),
       ).annotate({
         identifier: "ProjectsGetResponseSource",
@@ -6071,20 +8316,28 @@ function __c11(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          canonicalDeployment: __S(76).pipe(T.Body("canonical_deployment")),
+          canonicalDeployment: ProjectsGetResponseCanonicalDeployment.pipe(
+            T.Body("canonical_deployment"),
+          ),
           createdOn: S.String.pipe(T.Body("created_on")),
-          deploymentConfigs: __S(80).pipe(T.Body("deployment_configs")),
+          deploymentConfigs: ProjectsGetResponseDeploymentConfigs.pipe(
+            T.Body("deployment_configs"),
+          ),
           framework: S.String,
           frameworkVersion: S.String.pipe(T.Body("framework_version")),
-          latestDeployment: __S(85).pipe(T.Body("latest_deployment")),
+          latestDeployment: ProjectsGetResponseLatestDeployment.pipe(T.Body("latest_deployment")),
           name: S.String,
           previewScriptName: S.String.pipe(T.Body("preview_script_name")),
           productionBranch: S.String.pipe(T.Body("production_branch")),
           productionScriptName: S.String.pipe(T.Body("production_script_name")),
           usesFunctions: S.Boolean.pipe(T.Body("uses_functions")),
-          buildConfig: S.optional(S.NullOr(__S(33)).pipe(T.Body("build_config"))),
-          domains: S.optional(S.NullOr(__S(0))),
-          source: S.optional(S.NullOr(__S(87))),
+          buildConfig: S.optional(
+            S.NullOr(ProjectsCreateResponseCanonicalDeploymentBuildConfig).pipe(
+              T.Body("build_config"),
+            ),
+          ),
+          domains: S.optional(S.NullOr(ProjectsGetResponseDomainsList)),
+          source: S.optional(S.NullOr(ProjectsGetResponseSource)),
           subdomain: S.optional(S.NullOr(S.String)),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetProjectResponse" });
@@ -6112,12 +8365,25 @@ function __c11(j: number): any {
           deploymentsEnabled: S.Boolean.pipe(T.Body("deployments_enabled")),
           owner: S.String,
           ownerId: S.String.pipe(T.Body("owner_id")),
-          pathExcludes: __S(0).pipe(T.Body("path_excludes")),
-          pathIncludes: __S(0).pipe(T.Body("path_includes")),
+          pathExcludes: ProjectsDeploymentsGetResponseSourceConfigPathExcludesList.pipe(
+            T.Body("path_excludes"),
+          ),
+          pathIncludes: ProjectsDeploymentsGetResponseSourceConfigPathIncludesList.pipe(
+            T.Body("path_includes"),
+          ),
           prCommentsEnabled: S.Boolean.pipe(T.Body("pr_comments_enabled")),
-          previewBranchExcludes: __S(11).pipe(T.Body("preview_branch_excludes")),
-          previewBranchIncludes: __S(11).pipe(T.Body("preview_branch_includes")),
-          previewDeploymentSetting: S.String.pipe(T.Body("preview_deployment_setting")),
+          previewBranchExcludes:
+            ProjectsDeploymentsGetResponseSourceConfigPreviewBranchExcludesList.pipe(
+              T.Body("preview_branch_excludes"),
+            ),
+          previewBranchIncludes:
+            ProjectsDeploymentsGetResponseSourceConfigPreviewBranchIncludesList.pipe(
+              T.Body("preview_branch_includes"),
+            ),
+          previewDeploymentSetting:
+            ProjectsDeploymentsGetResponseSourceConfigPreviewDeploymentSetting.pipe(
+              T.Body("preview_deployment_setting"),
+            ),
           productionBranch: S.String.pipe(T.Body("production_branch")),
           productionDeploymentsEnabled: S.Boolean.pipe(T.Body("production_deployments_enabled")),
           repoId: S.String.pipe(T.Body("repo_id")),
@@ -6129,8 +8395,8 @@ function __c11(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          config: __S(90),
-          type: S.String,
+          config: ProjectsDeploymentsGetResponseSourceConfig,
+          type: ProjectsDeploymentsGetResponseSourceType,
         }),
       ).annotate({
         identifier: "ProjectsDeploymentsGetResponseSource",
@@ -6139,22 +8405,28 @@ function __c11(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          aliases: __S(0),
-          buildConfig: __S(33).pipe(T.Body("build_config")),
+          aliases: ProjectsDeploymentsGetResponseAliasesList,
+          buildConfig: ProjectsCreateResponseCanonicalDeploymentBuildConfig.pipe(
+            T.Body("build_config"),
+          ),
           createdOn: S.String.pipe(T.Body("created_on")),
-          deploymentTrigger: __S(47).pipe(T.Body("deployment_trigger")),
-          envVars: __S(10).pipe(T.Body("env_vars")),
-          environment: S.String,
+          deploymentTrigger: ProjectsDeploymentsGetResponseDeploymentTrigger.pipe(
+            T.Body("deployment_trigger"),
+          ),
+          envVars: UntypedBindingMap.pipe(T.Body("env_vars")),
+          environment: ProjectsDeploymentsGetResponseEnvironment,
           isSkipped: S.Boolean.pipe(T.Body("is_skipped")),
-          latestStage: __S(36).pipe(T.Body("latest_stage")),
+          latestStage: ProjectsDeploymentsGetResponseLatestStage.pipe(T.Body("latest_stage")),
           modifiedOn: S.String.pipe(T.Body("modified_on")),
           projectId: S.String.pipe(T.Body("project_id")),
           projectName: S.String.pipe(T.Body("project_name")),
           shortId: S.String.pipe(T.Body("short_id")),
-          source: __S(91),
-          stages: __S(39),
+          source: ProjectsDeploymentsGetResponseSource,
+          stages: ProjectsDeploymentsGetResponseStagesList,
           url: S.String,
-          skipReason: S.optional(S.NullOr(S.String).pipe(T.Body("skip_reason"))),
+          skipReason: S.optional(
+            S.NullOr(ProjectsDeploymentsGetResponseSkipReason).pipe(T.Body("skip_reason")),
+          ),
           usesFunctions: S.optional(S.NullOr(S.Boolean).pipe(T.Body("uses_functions"))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
@@ -6188,7 +8460,7 @@ function __c11(j: number): any {
         identifier: "ProjectsDeploymentsHistoryLogsGetResponseDataItem",
       });
     case 7:
-      return S.Array(__S(94));
+      return S.Array(ProjectsDeploymentsHistoryLogsGetResponseDataItem);
   }
 }
 function __c12(j: number): any {
@@ -6196,7 +8468,7 @@ function __c12(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          data: __S(95),
+          data: ProjectsDeploymentsHistoryLogsGetResponseDataList,
           includesContainerLogs: S.Boolean.pipe(T.Body("includes_container_logs")),
           total: S.Number,
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -6223,13 +8495,17 @@ function __c12(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          certificateAuthority: S.String.pipe(T.Body("certificate_authority")),
+          certificateAuthority: ProjectsDomainsGetResponseCertificateAuthority.pipe(
+            T.Body("certificate_authority"),
+          ),
           createdOn: S.String.pipe(T.Body("created_on")),
           domainId: S.String.pipe(T.Body("domain_id")),
           name: S.String,
-          status: S.String,
-          validationData: __S(61).pipe(T.Body("validation_data")),
-          verificationData: __S(62).pipe(T.Body("verification_data")),
+          status: ProjectsDomainsGetResponseStatus,
+          validationData: ProjectsDomainsGetResponseValidationData.pipe(T.Body("validation_data")),
+          verificationData: ProjectsDomainsGetResponseVerificationData.pipe(
+            T.Body("verification_data"),
+          ),
           zoneTag: S.String.pipe(T.Body("zone_tag")),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetProjectDomainResponse" });
@@ -6238,7 +8514,7 @@ function __c12(j: number): any {
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           projectName: S.String.pipe(T.Label("project_name")),
-          env: S.optional(S.String.pipe(T.Query())),
+          env: S.optional(ProjectsDeploymentsListRequestEnv.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
           perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
         })
@@ -6259,12 +8535,25 @@ function __c12(j: number): any {
           deploymentsEnabled: S.Boolean.pipe(T.Body("deployments_enabled")),
           owner: S.String,
           ownerId: S.String.pipe(T.Body("owner_id")),
-          pathExcludes: __S(0).pipe(T.Body("path_excludes")),
-          pathIncludes: __S(0).pipe(T.Body("path_includes")),
+          pathExcludes: ProjectsDeploymentsListResultItemSourceConfigPathExcludesList.pipe(
+            T.Body("path_excludes"),
+          ),
+          pathIncludes: ProjectsDeploymentsListResultItemSourceConfigPathIncludesList.pipe(
+            T.Body("path_includes"),
+          ),
           prCommentsEnabled: S.Boolean.pipe(T.Body("pr_comments_enabled")),
-          previewBranchExcludes: __S(11).pipe(T.Body("preview_branch_excludes")),
-          previewBranchIncludes: __S(11).pipe(T.Body("preview_branch_includes")),
-          previewDeploymentSetting: S.String.pipe(T.Body("preview_deployment_setting")),
+          previewBranchExcludes:
+            ProjectsDeploymentsListResultItemSourceConfigPreviewBranchExcludesList.pipe(
+              T.Body("preview_branch_excludes"),
+            ),
+          previewBranchIncludes:
+            ProjectsDeploymentsListResultItemSourceConfigPreviewBranchIncludesList.pipe(
+              T.Body("preview_branch_includes"),
+            ),
+          previewDeploymentSetting:
+            ProjectsDeploymentsListResultItemSourceConfigPreviewDeploymentSetting.pipe(
+              T.Body("preview_deployment_setting"),
+            ),
           productionBranch: S.String.pipe(T.Body("production_branch")),
           productionDeploymentsEnabled: S.Boolean.pipe(T.Body("production_deployments_enabled")),
           repoId: S.String.pipe(T.Body("repo_id")),
@@ -6276,8 +8565,8 @@ function __c12(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          config: __S(100),
-          type: S.String,
+          config: ProjectsDeploymentsListResultItemSourceConfig,
+          type: ProjectsDeploymentsListResultItemSourceType,
         }),
       ).annotate({
         identifier: "ProjectsDeploymentsListResultItemSource",
@@ -6286,29 +8575,35 @@ function __c12(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          aliases: __S(0),
-          buildConfig: __S(33).pipe(T.Body("build_config")),
+          aliases: ProjectsDeploymentsListResultItemAliasesList,
+          buildConfig: ProjectsCreateResponseCanonicalDeploymentBuildConfig.pipe(
+            T.Body("build_config"),
+          ),
           createdOn: S.String.pipe(T.Body("created_on")),
-          deploymentTrigger: __S(47).pipe(T.Body("deployment_trigger")),
-          envVars: __S(10).pipe(T.Body("env_vars")),
-          environment: S.String,
+          deploymentTrigger: ProjectsDeploymentsListResultItemDeploymentTrigger.pipe(
+            T.Body("deployment_trigger"),
+          ),
+          envVars: UntypedBindingMap.pipe(T.Body("env_vars")),
+          environment: ProjectsDeploymentsListResultItemEnvironment,
           isSkipped: S.Boolean.pipe(T.Body("is_skipped")),
-          latestStage: __S(36).pipe(T.Body("latest_stage")),
+          latestStage: ProjectsDeploymentsListResultItemLatestStage.pipe(T.Body("latest_stage")),
           modifiedOn: S.String.pipe(T.Body("modified_on")),
           projectId: S.String.pipe(T.Body("project_id")),
           projectName: S.String.pipe(T.Body("project_name")),
           shortId: S.String.pipe(T.Body("short_id")),
-          source: __S(101),
-          stages: __S(39),
+          source: ProjectsDeploymentsListResultItemSource,
+          stages: ProjectsDeploymentsListResultItemStagesList,
           url: S.String,
-          skipReason: S.optional(S.NullOr(S.String).pipe(T.Body("skip_reason"))),
+          skipReason: S.optional(
+            S.NullOr(ProjectsDeploymentsListResultItemSkipReason).pipe(T.Body("skip_reason")),
+          ),
           usesFunctions: S.optional(S.NullOr(S.Boolean).pipe(T.Body("uses_functions"))),
         }),
       ).annotate({
         identifier: "ProjectsDeploymentsListResultItem",
       });
     case 7:
-      return S.Array(__S(102));
+      return S.Array(ProjectsDeploymentsListResultItem);
   }
 }
 function __c13(j: number): any {
@@ -6316,7 +8611,7 @@ function __c13(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          result: __S(103).pipe(T.EnvelopePayload()),
+          result: ProjectsDeploymentsListResultList.pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
@@ -6343,24 +8638,30 @@ function __c13(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          certificateAuthority: S.String.pipe(T.Body("certificate_authority")),
+          certificateAuthority: ProjectsDomainsListResultItemCertificateAuthority.pipe(
+            T.Body("certificate_authority"),
+          ),
           createdOn: S.String.pipe(T.Body("created_on")),
           domainId: S.String.pipe(T.Body("domain_id")),
           name: S.String,
-          status: S.String,
-          validationData: __S(61).pipe(T.Body("validation_data")),
-          verificationData: __S(62).pipe(T.Body("verification_data")),
+          status: ProjectsDomainsListResultItemStatus,
+          validationData: ProjectsDomainsListResultItemValidationData.pipe(
+            T.Body("validation_data"),
+          ),
+          verificationData: ProjectsDomainsListResultItemVerificationData.pipe(
+            T.Body("verification_data"),
+          ),
           zoneTag: S.String.pipe(T.Body("zone_tag")),
         }),
       ).annotate({
         identifier: "ProjectsDomainsListResultItem",
       });
     case 3:
-      return S.Array(__S(106));
+      return S.Array(ProjectsDomainsListResultItem);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          result: __S(107).pipe(T.EnvelopePayload()),
+          result: ProjectsDomainsListResultList.pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
@@ -6382,12 +8683,25 @@ function __c13(j: number): any {
           deploymentsEnabled: S.Boolean.pipe(T.Body("deployments_enabled")),
           owner: S.String,
           ownerId: S.String.pipe(T.Body("owner_id")),
-          pathExcludes: __S(11).pipe(T.Body("path_excludes")),
-          pathIncludes: __S(11).pipe(T.Body("path_includes")),
+          pathExcludes: ProjectsListResultItemCanonicalDeploymentSourceConfigPathExcludesList.pipe(
+            T.Body("path_excludes"),
+          ),
+          pathIncludes: ProjectsListResultItemCanonicalDeploymentSourceConfigPathIncludesList.pipe(
+            T.Body("path_includes"),
+          ),
           prCommentsEnabled: S.Boolean.pipe(T.Body("pr_comments_enabled")),
-          previewBranchExcludes: __S(11).pipe(T.Body("preview_branch_excludes")),
-          previewBranchIncludes: __S(11).pipe(T.Body("preview_branch_includes")),
-          previewDeploymentSetting: S.String.pipe(T.Body("preview_deployment_setting")),
+          previewBranchExcludes:
+            ProjectsListResultItemCanonicalDeploymentSourceConfigPreviewBranchExcludesList.pipe(
+              T.Body("preview_branch_excludes"),
+            ),
+          previewBranchIncludes:
+            ProjectsListResultItemCanonicalDeploymentSourceConfigPreviewBranchIncludesList.pipe(
+              T.Body("preview_branch_includes"),
+            ),
+          previewDeploymentSetting:
+            ProjectsListResultItemCanonicalDeploymentSourceConfigPreviewDeploymentSetting.pipe(
+              T.Body("preview_deployment_setting"),
+            ),
           productionBranch: S.String.pipe(T.Body("production_branch")),
           productionDeploymentsEnabled: S.Boolean.pipe(T.Body("production_deployments_enabled")),
           repoId: S.String.pipe(T.Body("repo_id")),
@@ -6399,8 +8713,8 @@ function __c13(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          config: __S(110),
-          type: S.String,
+          config: ProjectsListResultItemCanonicalDeploymentSourceConfig,
+          type: ProjectsListResultItemCanonicalDeploymentSourceType,
         }),
       ).annotate({
         identifier: "ProjectsListResultItemCanonicalDeploymentSource",
@@ -6413,22 +8727,32 @@ function __c14(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          aliases: __S(0),
-          buildConfig: __S(33).pipe(T.Body("build_config")),
+          aliases: ProjectsListResultItemCanonicalDeploymentAliasesList,
+          buildConfig: ProjectsCreateResponseCanonicalDeploymentBuildConfig.pipe(
+            T.Body("build_config"),
+          ),
           createdOn: S.String.pipe(T.Body("created_on")),
-          deploymentTrigger: __S(35).pipe(T.Body("deployment_trigger")),
-          envVars: __S(10).pipe(T.Body("env_vars")),
-          environment: S.String,
+          deploymentTrigger: ProjectsListResultItemCanonicalDeploymentDeploymentTrigger.pipe(
+            T.Body("deployment_trigger"),
+          ),
+          envVars: UntypedBindingMap.pipe(T.Body("env_vars")),
+          environment: ProjectsListResultItemCanonicalDeploymentEnvironment,
           isSkipped: S.Boolean.pipe(T.Body("is_skipped")),
-          latestStage: __S(36).pipe(T.Body("latest_stage")),
+          latestStage: ProjectsListResultItemCanonicalDeploymentLatestStage.pipe(
+            T.Body("latest_stage"),
+          ),
           modifiedOn: S.String.pipe(T.Body("modified_on")),
           projectId: S.String.pipe(T.Body("project_id")),
           projectName: S.String.pipe(T.Body("project_name")),
           shortId: S.String.pipe(T.Body("short_id")),
-          source: __S(111),
-          stages: __S(39),
+          source: ProjectsListResultItemCanonicalDeploymentSource,
+          stages: ProjectsListResultItemCanonicalDeploymentStagesList,
           url: S.String,
-          skipReason: S.optional(S.NullOr(S.String).pipe(T.Body("skip_reason"))),
+          skipReason: S.optional(
+            S.NullOr(ProjectsListResultItemCanonicalDeploymentSkipReason).pipe(
+              T.Body("skip_reason"),
+            ),
+          ),
           usesFunctions: S.optional(S.NullOr(S.Boolean).pipe(T.Body("uses_functions"))),
         }),
       ).annotate({
@@ -6442,28 +8766,69 @@ function __c14(j: number): any {
           ),
           buildImageMajorVersion: S.Number.pipe(T.Body("build_image_major_version")),
           compatibilityDate: S.String.pipe(T.Body("compatibility_date")),
-          compatibilityFlags: __S(11).pipe(T.Body("compatibility_flags")),
-          envVars: __S(10).pipe(T.Body("env_vars")),
+          compatibilityFlags:
+            ProjectsListResultItemDeploymentConfigsPreviewCompatibilityFlagsList.pipe(
+              T.Body("compatibility_flags"),
+            ),
+          envVars: UntypedBindingMap.pipe(T.Body("env_vars")),
           failOpen: S.Boolean.pipe(T.Body("fail_open")),
-          usageModel: S.String.pipe(T.Body("usage_model")),
-          aiBindings: S.optional(S.NullOr(__S(7)).pipe(T.Body("ai_bindings"))),
+          usageModel: ProjectsListResultItemDeploymentConfigsPreviewUsageModel.pipe(
+            T.Body("usage_model"),
+          ),
+          aiBindings: S.optional(
+            S.NullOr(ProjectsListResultItemDeploymentConfigsPreviewAiBindingsMap).pipe(
+              T.Body("ai_bindings"),
+            ),
+          ),
           analyticsEngineDatasets: S.optional(
-            S.NullOr(__S(9)).pipe(T.Body("analytics_engine_datasets")),
+            S.NullOr(ProjectsListResultItemDeploymentConfigsPreviewAnalyticsEngineDatasetsMap).pipe(
+              T.Body("analytics_engine_datasets"),
+            ),
           ),
-          browsers: S.optional(S.NullOr(__S(10))),
-          d1Databases: S.optional(S.NullOr(__S(10)).pipe(T.Body("d1_databases"))),
+          browsers: S.optional(S.NullOr(ProjectsListResultItemDeploymentConfigsPreviewBrowsersMap)),
+          d1Databases: S.optional(
+            S.NullOr(ProjectsListResultItemDeploymentConfigsPreviewD1DatabasesMap).pipe(
+              T.Body("d1_databases"),
+            ),
+          ),
           durableObjectNamespaces: S.optional(
-            S.NullOr(__S(13)).pipe(T.Body("durable_object_namespaces")),
+            S.NullOr(ProjectsListResultItemDeploymentConfigsPreviewDurableObjectNamespacesMap).pipe(
+              T.Body("durable_object_namespaces"),
+            ),
           ),
-          hyperdriveBindings: S.optional(S.NullOr(__S(15)).pipe(T.Body("hyperdrive_bindings"))),
-          kvNamespaces: S.optional(S.NullOr(__S(10)).pipe(T.Body("kv_namespaces"))),
-          limits: S.optional(S.NullOr(__S(16))),
-          mtlsCertificates: S.optional(S.NullOr(__S(18)).pipe(T.Body("mtls_certificates"))),
-          placement: S.optional(S.NullOr(__S(19))),
-          queueProducers: S.optional(S.NullOr(__S(21)).pipe(T.Body("queue_producers"))),
-          r2Buckets: S.optional(S.NullOr(__S(10)).pipe(T.Body("r2_buckets"))),
-          services: S.optional(S.NullOr(__S(42))),
-          vectorizeBindings: S.optional(S.NullOr(__S(25)).pipe(T.Body("vectorize_bindings"))),
+          hyperdriveBindings: S.optional(
+            S.NullOr(ProjectsListResultItemDeploymentConfigsPreviewHyperdriveBindingsMap).pipe(
+              T.Body("hyperdrive_bindings"),
+            ),
+          ),
+          kvNamespaces: S.optional(
+            S.NullOr(ProjectsListResultItemDeploymentConfigsPreviewKvNamespacesMap).pipe(
+              T.Body("kv_namespaces"),
+            ),
+          ),
+          limits: S.optional(S.NullOr(ProjectsCreateRequestDeploymentConfigsPreviewLimits)),
+          mtlsCertificates: S.optional(
+            S.NullOr(ProjectsListResultItemDeploymentConfigsPreviewMtlsCertificatesMap).pipe(
+              T.Body("mtls_certificates"),
+            ),
+          ),
+          placement: S.optional(S.NullOr(ProjectsCreateRequestDeploymentConfigsPreviewPlacement)),
+          queueProducers: S.optional(
+            S.NullOr(ProjectsListResultItemDeploymentConfigsPreviewQueueProducersMap).pipe(
+              T.Body("queue_producers"),
+            ),
+          ),
+          r2Buckets: S.optional(
+            S.NullOr(ProjectsListResultItemDeploymentConfigsPreviewR2BucketsMap).pipe(
+              T.Body("r2_buckets"),
+            ),
+          ),
+          services: S.optional(S.NullOr(ProjectsListResultItemDeploymentConfigsPreviewServicesMap)),
+          vectorizeBindings: S.optional(
+            S.NullOr(ProjectsListResultItemDeploymentConfigsPreviewVectorizeBindingsMap).pipe(
+              T.Body("vectorize_bindings"),
+            ),
+          ),
           wranglerConfigHash: S.optional(S.NullOr(S.String).pipe(T.Body("wrangler_config_hash"))),
         }),
       ).annotate({
@@ -6477,28 +8842,73 @@ function __c14(j: number): any {
           ),
           buildImageMajorVersion: S.Number.pipe(T.Body("build_image_major_version")),
           compatibilityDate: S.String.pipe(T.Body("compatibility_date")),
-          compatibilityFlags: __S(11).pipe(T.Body("compatibility_flags")),
-          envVars: __S(10).pipe(T.Body("env_vars")),
+          compatibilityFlags:
+            ProjectsListResultItemDeploymentConfigsProductionCompatibilityFlagsList.pipe(
+              T.Body("compatibility_flags"),
+            ),
+          envVars: UntypedBindingMap.pipe(T.Body("env_vars")),
           failOpen: S.Boolean.pipe(T.Body("fail_open")),
-          usageModel: S.String.pipe(T.Body("usage_model")),
-          aiBindings: S.optional(S.NullOr(__S(44)).pipe(T.Body("ai_bindings"))),
+          usageModel: ProjectsListResultItemDeploymentConfigsProductionUsageModel.pipe(
+            T.Body("usage_model"),
+          ),
+          aiBindings: S.optional(
+            S.NullOr(ProjectsListResultItemDeploymentConfigsProductionAiBindingsMap).pipe(
+              T.Body("ai_bindings"),
+            ),
+          ),
           analyticsEngineDatasets: S.optional(
-            S.NullOr(__S(9)).pipe(T.Body("analytics_engine_datasets")),
+            S.NullOr(
+              ProjectsListResultItemDeploymentConfigsProductionAnalyticsEngineDatasetsMap,
+            ).pipe(T.Body("analytics_engine_datasets")),
           ),
-          browsers: S.optional(S.NullOr(__S(10))),
-          d1Databases: S.optional(S.NullOr(__S(27)).pipe(T.Body("d1_databases"))),
+          browsers: S.optional(
+            S.NullOr(ProjectsListResultItemDeploymentConfigsProductionBrowsersMap),
+          ),
+          d1Databases: S.optional(
+            S.NullOr(ProjectsListResultItemDeploymentConfigsProductionD1DatabasesMap).pipe(
+              T.Body("d1_databases"),
+            ),
+          ),
           durableObjectNamespaces: S.optional(
-            S.NullOr(__S(13)).pipe(T.Body("durable_object_namespaces")),
+            S.NullOr(
+              ProjectsListResultItemDeploymentConfigsProductionDurableObjectNamespacesMap,
+            ).pipe(T.Body("durable_object_namespaces")),
           ),
-          hyperdriveBindings: S.optional(S.NullOr(__S(15)).pipe(T.Body("hyperdrive_bindings"))),
-          kvNamespaces: S.optional(S.NullOr(__S(27)).pipe(T.Body("kv_namespaces"))),
-          limits: S.optional(S.NullOr(__S(16))),
-          mtlsCertificates: S.optional(S.NullOr(__S(18)).pipe(T.Body("mtls_certificates"))),
-          placement: S.optional(S.NullOr(__S(19))),
-          queueProducers: S.optional(S.NullOr(__S(21)).pipe(T.Body("queue_producers"))),
-          r2Buckets: S.optional(S.NullOr(__S(10)).pipe(T.Body("r2_buckets"))),
-          services: S.optional(S.NullOr(__S(42))),
-          vectorizeBindings: S.optional(S.NullOr(__S(25)).pipe(T.Body("vectorize_bindings"))),
+          hyperdriveBindings: S.optional(
+            S.NullOr(ProjectsListResultItemDeploymentConfigsProductionHyperdriveBindingsMap).pipe(
+              T.Body("hyperdrive_bindings"),
+            ),
+          ),
+          kvNamespaces: S.optional(
+            S.NullOr(ProjectsListResultItemDeploymentConfigsProductionKvNamespacesMap).pipe(
+              T.Body("kv_namespaces"),
+            ),
+          ),
+          limits: S.optional(S.NullOr(ProjectsCreateRequestDeploymentConfigsPreviewLimits)),
+          mtlsCertificates: S.optional(
+            S.NullOr(ProjectsListResultItemDeploymentConfigsProductionMtlsCertificatesMap).pipe(
+              T.Body("mtls_certificates"),
+            ),
+          ),
+          placement: S.optional(S.NullOr(ProjectsCreateRequestDeploymentConfigsPreviewPlacement)),
+          queueProducers: S.optional(
+            S.NullOr(ProjectsListResultItemDeploymentConfigsProductionQueueProducersMap).pipe(
+              T.Body("queue_producers"),
+            ),
+          ),
+          r2Buckets: S.optional(
+            S.NullOr(ProjectsListResultItemDeploymentConfigsProductionR2BucketsMap).pipe(
+              T.Body("r2_buckets"),
+            ),
+          ),
+          services: S.optional(
+            S.NullOr(ProjectsListResultItemDeploymentConfigsProductionServicesMap),
+          ),
+          vectorizeBindings: S.optional(
+            S.NullOr(ProjectsListResultItemDeploymentConfigsProductionVectorizeBindingsMap).pipe(
+              T.Body("vectorize_bindings"),
+            ),
+          ),
           wranglerConfigHash: S.optional(S.NullOr(S.String).pipe(T.Body("wrangler_config_hash"))),
         }),
       ).annotate({
@@ -6507,8 +8917,8 @@ function __c14(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          preview: __S(113),
-          production: __S(114),
+          preview: ProjectsListResultItemDeploymentConfigsPreview,
+          production: ProjectsListResultItemDeploymentConfigsProduction,
         }),
       ).annotate({
         identifier: "ProjectsListResultItemDeploymentConfigs",
@@ -6524,19 +8934,32 @@ function __c14(j: number): any {
         ),
       );
     case 5:
-      return S.Record(S.String, __S(116));
+      return S.Record(S.String, ProjectsListResultItemLatestDeploymentEnvVarsValue);
     case 6:
       return S.suspend(() =>
         S.Struct({
           deploymentsEnabled: S.Boolean.pipe(T.Body("deployments_enabled")),
           owner: S.String,
           ownerId: S.String.pipe(T.Body("owner_id")),
-          pathExcludes: __S(11).pipe(T.Body("path_excludes")),
-          pathIncludes: __S(11).pipe(T.Body("path_includes")),
+          pathExcludes: ProjectsListResultItemLatestDeploymentSourceConfigPathExcludesList.pipe(
+            T.Body("path_excludes"),
+          ),
+          pathIncludes: ProjectsListResultItemLatestDeploymentSourceConfigPathIncludesList.pipe(
+            T.Body("path_includes"),
+          ),
           prCommentsEnabled: S.Boolean.pipe(T.Body("pr_comments_enabled")),
-          previewBranchExcludes: __S(11).pipe(T.Body("preview_branch_excludes")),
-          previewBranchIncludes: __S(11).pipe(T.Body("preview_branch_includes")),
-          previewDeploymentSetting: S.String.pipe(T.Body("preview_deployment_setting")),
+          previewBranchExcludes:
+            ProjectsListResultItemLatestDeploymentSourceConfigPreviewBranchExcludesList.pipe(
+              T.Body("preview_branch_excludes"),
+            ),
+          previewBranchIncludes:
+            ProjectsListResultItemLatestDeploymentSourceConfigPreviewBranchIncludesList.pipe(
+              T.Body("preview_branch_includes"),
+            ),
+          previewDeploymentSetting:
+            ProjectsListResultItemLatestDeploymentSourceConfigPreviewDeploymentSetting.pipe(
+              T.Body("preview_deployment_setting"),
+            ),
           productionBranch: S.String.pipe(T.Body("production_branch")),
           productionDeploymentsEnabled: S.Boolean.pipe(T.Body("production_deployments_enabled")),
           repoId: S.String.pipe(T.Body("repo_id")),
@@ -6548,8 +8971,8 @@ function __c14(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          config: __S(118),
-          type: S.String,
+          config: ProjectsListResultItemLatestDeploymentSourceConfig,
+          type: ProjectsListResultItemLatestDeploymentSourceType,
         }),
       ).annotate({
         identifier: "ProjectsListResultItemLatestDeploymentSource",
@@ -6562,22 +8985,30 @@ function __c15(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          aliases: __S(0),
-          buildConfig: __S(33).pipe(T.Body("build_config")),
+          aliases: ProjectsListResultItemLatestDeploymentAliasesList,
+          buildConfig: ProjectsCreateResponseCanonicalDeploymentBuildConfig.pipe(
+            T.Body("build_config"),
+          ),
           createdOn: S.String.pipe(T.Body("created_on")),
-          deploymentTrigger: __S(47).pipe(T.Body("deployment_trigger")),
-          envVars: __S(117).pipe(T.Body("env_vars")),
-          environment: S.String,
+          deploymentTrigger: ProjectsListResultItemLatestDeploymentDeploymentTrigger.pipe(
+            T.Body("deployment_trigger"),
+          ),
+          envVars: ProjectsListResultItemLatestDeploymentEnvVarsMap.pipe(T.Body("env_vars")),
+          environment: ProjectsListResultItemLatestDeploymentEnvironment,
           isSkipped: S.Boolean.pipe(T.Body("is_skipped")),
-          latestStage: __S(36).pipe(T.Body("latest_stage")),
+          latestStage: ProjectsListResultItemLatestDeploymentLatestStage.pipe(
+            T.Body("latest_stage"),
+          ),
           modifiedOn: S.String.pipe(T.Body("modified_on")),
           projectId: S.String.pipe(T.Body("project_id")),
           projectName: S.String.pipe(T.Body("project_name")),
           shortId: S.String.pipe(T.Body("short_id")),
-          source: __S(119),
-          stages: __S(39),
+          source: ProjectsListResultItemLatestDeploymentSource,
+          stages: ProjectsListResultItemLatestDeploymentStagesList,
           url: S.String,
-          skipReason: S.optional(S.NullOr(S.String).pipe(T.Body("skip_reason"))),
+          skipReason: S.optional(
+            S.NullOr(ProjectsListResultItemLatestDeploymentSkipReason).pipe(T.Body("skip_reason")),
+          ),
           usesFunctions: S.optional(S.NullOr(S.Boolean).pipe(T.Body("uses_functions"))),
         }),
       ).annotate({
@@ -6589,12 +9020,22 @@ function __c15(j: number): any {
           deploymentsEnabled: S.Boolean.pipe(T.Body("deployments_enabled")),
           owner: S.String,
           ownerId: S.String.pipe(T.Body("owner_id")),
-          pathExcludes: __S(0).pipe(T.Body("path_excludes")),
-          pathIncludes: __S(0).pipe(T.Body("path_includes")),
+          pathExcludes: ProjectsListResultItemSourceConfigPathExcludesList.pipe(
+            T.Body("path_excludes"),
+          ),
+          pathIncludes: ProjectsListResultItemSourceConfigPathIncludesList.pipe(
+            T.Body("path_includes"),
+          ),
           prCommentsEnabled: S.Boolean.pipe(T.Body("pr_comments_enabled")),
-          previewBranchExcludes: __S(0).pipe(T.Body("preview_branch_excludes")),
-          previewBranchIncludes: __S(0).pipe(T.Body("preview_branch_includes")),
-          previewDeploymentSetting: S.String.pipe(T.Body("preview_deployment_setting")),
+          previewBranchExcludes: ProjectsListResultItemSourceConfigPreviewBranchExcludesList.pipe(
+            T.Body("preview_branch_excludes"),
+          ),
+          previewBranchIncludes: ProjectsListResultItemSourceConfigPreviewBranchIncludesList.pipe(
+            T.Body("preview_branch_includes"),
+          ),
+          previewDeploymentSetting: ProjectsListResultItemSourceConfigPreviewDeploymentSetting.pipe(
+            T.Body("preview_deployment_setting"),
+          ),
           productionBranch: S.String.pipe(T.Body("production_branch")),
           productionDeploymentsEnabled: S.Boolean.pipe(T.Body("production_deployments_enabled")),
           repoId: S.String.pipe(T.Body("repo_id")),
@@ -6606,8 +9047,8 @@ function __c15(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          config: __S(121),
-          type: S.String,
+          config: ProjectsListResultItemSourceConfig,
+          type: ProjectsListResultItemSourceType,
         }),
       ).annotate({
         identifier: "ProjectsListResultItemSource",
@@ -6616,58 +9057,108 @@ function __c15(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          canonicalDeployment: __S(112).pipe(T.Body("canonical_deployment")),
+          canonicalDeployment: ProjectsListResultItemCanonicalDeployment.pipe(
+            T.Body("canonical_deployment"),
+          ),
           createdOn: S.String.pipe(T.Body("created_on")),
-          deploymentConfigs: __S(115).pipe(T.Body("deployment_configs")),
+          deploymentConfigs: ProjectsListResultItemDeploymentConfigs.pipe(
+            T.Body("deployment_configs"),
+          ),
           framework: S.String,
           frameworkVersion: S.String.pipe(T.Body("framework_version")),
-          latestDeployment: __S(120).pipe(T.Body("latest_deployment")),
+          latestDeployment: ProjectsListResultItemLatestDeployment.pipe(
+            T.Body("latest_deployment"),
+          ),
           name: S.String,
           previewScriptName: S.String.pipe(T.Body("preview_script_name")),
           productionBranch: S.String.pipe(T.Body("production_branch")),
           productionScriptName: S.String.pipe(T.Body("production_script_name")),
           usesFunctions: S.Boolean.pipe(T.Body("uses_functions")),
-          buildConfig: S.optional(S.NullOr(__S(33)).pipe(T.Body("build_config"))),
-          domains: S.optional(S.NullOr(__S(0))),
-          source: S.optional(S.NullOr(__S(122))),
+          buildConfig: S.optional(
+            S.NullOr(ProjectsCreateResponseCanonicalDeploymentBuildConfig).pipe(
+              T.Body("build_config"),
+            ),
+          ),
+          domains: S.optional(S.NullOr(ProjectsListResultItemDomainsList)),
+          source: S.optional(S.NullOr(ProjectsListResultItemSource)),
           subdomain: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "ProjectsListResultItem" });
     case 4:
-      return S.Array(__S(123));
+      return S.Array(ProjectsListResultItem);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          result: __S(124).pipe(T.EnvelopePayload()),
+          result: ProjectsListResultList.pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListProjectsResponse" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          aiBindings: S.optional(__S(7).pipe(T.Body("ai_bindings"))),
+          aiBindings: S.optional(
+            ProjectsEditRequestDeploymentConfigsPreviewAiBindingsMap.pipe(T.Body("ai_bindings")),
+          ),
           alwaysUseLatestCompatibilityDate: S.optional(
             S.Boolean.pipe(T.Body("always_use_latest_compatibility_date")),
           ),
-          analyticsEngineDatasets: S.optional(__S(9).pipe(T.Body("analytics_engine_datasets"))),
-          browsers: S.optional(__S(10)),
+          analyticsEngineDatasets: S.optional(
+            ProjectsEditRequestDeploymentConfigsPreviewAnalyticsEngineDatasetsMap.pipe(
+              T.Body("analytics_engine_datasets"),
+            ),
+          ),
+          browsers: S.optional(ProjectsEditRequestDeploymentConfigsPreviewBrowsersMap),
           buildImageMajorVersion: S.optional(S.Number.pipe(T.Body("build_image_major_version"))),
           compatibilityDate: S.optional(S.String.pipe(T.Body("compatibility_date"))),
-          compatibilityFlags: S.optional(__S(11).pipe(T.Body("compatibility_flags"))),
-          d1Databases: S.optional(__S(10).pipe(T.Body("d1_databases"))),
-          durableObjectNamespaces: S.optional(__S(13).pipe(T.Body("durable_object_namespaces"))),
-          envVars: S.optional(__S(10).pipe(T.Body("env_vars"))),
+          compatibilityFlags: S.optional(
+            ProjectsEditRequestDeploymentConfigsPreviewCompatibilityFlagsList.pipe(
+              T.Body("compatibility_flags"),
+            ),
+          ),
+          d1Databases: S.optional(
+            ProjectsEditRequestDeploymentConfigsPreviewD1DatabasesMap.pipe(T.Body("d1_databases")),
+          ),
+          durableObjectNamespaces: S.optional(
+            ProjectsEditRequestDeploymentConfigsPreviewDurableObjectNamespacesMap.pipe(
+              T.Body("durable_object_namespaces"),
+            ),
+          ),
+          envVars: S.optional(UntypedBindingMap.pipe(T.Body("env_vars"))),
           failOpen: S.optional(S.Boolean.pipe(T.Body("fail_open"))),
-          hyperdriveBindings: S.optional(__S(15).pipe(T.Body("hyperdrive_bindings"))),
-          kvNamespaces: S.optional(__S(10).pipe(T.Body("kv_namespaces"))),
-          limits: S.optional(__S(16)),
-          mtlsCertificates: S.optional(__S(18).pipe(T.Body("mtls_certificates"))),
-          placement: S.optional(__S(19)),
-          queueProducers: S.optional(__S(77).pipe(T.Body("queue_producers"))),
-          r2Buckets: S.optional(__S(10).pipe(T.Body("r2_buckets"))),
-          services: S.optional(__S(23)),
-          usageModel: S.optional(S.String.pipe(T.Body("usage_model"))),
-          vectorizeBindings: S.optional(__S(25).pipe(T.Body("vectorize_bindings"))),
+          hyperdriveBindings: S.optional(
+            ProjectsEditRequestDeploymentConfigsPreviewHyperdriveBindingsMap.pipe(
+              T.Body("hyperdrive_bindings"),
+            ),
+          ),
+          kvNamespaces: S.optional(
+            ProjectsEditRequestDeploymentConfigsPreviewKvNamespacesMap.pipe(
+              T.Body("kv_namespaces"),
+            ),
+          ),
+          limits: S.optional(ProjectsCreateRequestDeploymentConfigsPreviewLimits),
+          mtlsCertificates: S.optional(
+            ProjectsEditRequestDeploymentConfigsPreviewMtlsCertificatesMap.pipe(
+              T.Body("mtls_certificates"),
+            ),
+          ),
+          placement: S.optional(ProjectsCreateRequestDeploymentConfigsPreviewPlacement),
+          queueProducers: S.optional(
+            ProjectsEditRequestDeploymentConfigsPreviewQueueProducersMap.pipe(
+              T.Body("queue_producers"),
+            ),
+          ),
+          r2Buckets: S.optional(
+            ProjectsEditRequestDeploymentConfigsPreviewR2BucketsMap.pipe(T.Body("r2_buckets")),
+          ),
+          services: S.optional(ProjectsEditRequestDeploymentConfigsPreviewServicesMap),
+          usageModel: S.optional(
+            ProjectsEditRequestDeploymentConfigsPreviewUsageModel.pipe(T.Body("usage_model")),
+          ),
+          vectorizeBindings: S.optional(
+            ProjectsEditRequestDeploymentConfigsPreviewVectorizeBindingsMap.pipe(
+              T.Body("vectorize_bindings"),
+            ),
+          ),
           wranglerConfigHash: S.optional(S.String.pipe(T.Body("wrangler_config_hash"))),
         }),
       ).annotate({
@@ -6676,29 +9167,71 @@ function __c15(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          aiBindings: S.optional(__S(7).pipe(T.Body("ai_bindings"))),
+          aiBindings: S.optional(
+            ProjectsEditRequestDeploymentConfigsProductionAiBindingsMap.pipe(T.Body("ai_bindings")),
+          ),
           alwaysUseLatestCompatibilityDate: S.optional(
             S.Boolean.pipe(T.Body("always_use_latest_compatibility_date")),
           ),
-          analyticsEngineDatasets: S.optional(__S(9).pipe(T.Body("analytics_engine_datasets"))),
-          browsers: S.optional(__S(10)),
+          analyticsEngineDatasets: S.optional(
+            ProjectsEditRequestDeploymentConfigsProductionAnalyticsEngineDatasetsMap.pipe(
+              T.Body("analytics_engine_datasets"),
+            ),
+          ),
+          browsers: S.optional(ProjectsEditRequestDeploymentConfigsProductionBrowsersMap),
           buildImageMajorVersion: S.optional(S.Number.pipe(T.Body("build_image_major_version"))),
           compatibilityDate: S.optional(S.String.pipe(T.Body("compatibility_date"))),
-          compatibilityFlags: S.optional(__S(11).pipe(T.Body("compatibility_flags"))),
-          d1Databases: S.optional(__S(10).pipe(T.Body("d1_databases"))),
-          durableObjectNamespaces: S.optional(__S(13).pipe(T.Body("durable_object_namespaces"))),
-          envVars: S.optional(__S(10).pipe(T.Body("env_vars"))),
+          compatibilityFlags: S.optional(
+            ProjectsEditRequestDeploymentConfigsProductionCompatibilityFlagsList.pipe(
+              T.Body("compatibility_flags"),
+            ),
+          ),
+          d1Databases: S.optional(
+            ProjectsEditRequestDeploymentConfigsProductionD1DatabasesMap.pipe(
+              T.Body("d1_databases"),
+            ),
+          ),
+          durableObjectNamespaces: S.optional(
+            ProjectsEditRequestDeploymentConfigsProductionDurableObjectNamespacesMap.pipe(
+              T.Body("durable_object_namespaces"),
+            ),
+          ),
+          envVars: S.optional(UntypedBindingMap.pipe(T.Body("env_vars"))),
           failOpen: S.optional(S.Boolean.pipe(T.Body("fail_open"))),
-          hyperdriveBindings: S.optional(__S(15).pipe(T.Body("hyperdrive_bindings"))),
-          kvNamespaces: S.optional(__S(10).pipe(T.Body("kv_namespaces"))),
-          limits: S.optional(__S(16)),
-          mtlsCertificates: S.optional(__S(18).pipe(T.Body("mtls_certificates"))),
-          placement: S.optional(__S(19)),
-          queueProducers: S.optional(__S(21).pipe(T.Body("queue_producers"))),
-          r2Buckets: S.optional(__S(10).pipe(T.Body("r2_buckets"))),
-          services: S.optional(__S(23)),
-          usageModel: S.optional(S.String.pipe(T.Body("usage_model"))),
-          vectorizeBindings: S.optional(__S(25).pipe(T.Body("vectorize_bindings"))),
+          hyperdriveBindings: S.optional(
+            ProjectsEditRequestDeploymentConfigsProductionHyperdriveBindingsMap.pipe(
+              T.Body("hyperdrive_bindings"),
+            ),
+          ),
+          kvNamespaces: S.optional(
+            ProjectsEditRequestDeploymentConfigsProductionKvNamespacesMap.pipe(
+              T.Body("kv_namespaces"),
+            ),
+          ),
+          limits: S.optional(ProjectsCreateRequestDeploymentConfigsPreviewLimits),
+          mtlsCertificates: S.optional(
+            ProjectsEditRequestDeploymentConfigsProductionMtlsCertificatesMap.pipe(
+              T.Body("mtls_certificates"),
+            ),
+          ),
+          placement: S.optional(ProjectsCreateRequestDeploymentConfigsPreviewPlacement),
+          queueProducers: S.optional(
+            ProjectsEditRequestDeploymentConfigsProductionQueueProducersMap.pipe(
+              T.Body("queue_producers"),
+            ),
+          ),
+          r2Buckets: S.optional(
+            ProjectsEditRequestDeploymentConfigsProductionR2BucketsMap.pipe(T.Body("r2_buckets")),
+          ),
+          services: S.optional(ProjectsEditRequestDeploymentConfigsProductionServicesMap),
+          usageModel: S.optional(
+            ProjectsEditRequestDeploymentConfigsProductionUsageModel.pipe(T.Body("usage_model")),
+          ),
+          vectorizeBindings: S.optional(
+            ProjectsEditRequestDeploymentConfigsProductionVectorizeBindingsMap.pipe(
+              T.Body("vectorize_bindings"),
+            ),
+          ),
           wranglerConfigHash: S.optional(S.String.pipe(T.Body("wrangler_config_hash"))),
         }),
       ).annotate({
@@ -6711,8 +9244,8 @@ function __c16(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          preview: S.optional(__S(126)),
-          production: S.optional(__S(127)),
+          preview: S.optional(ProjectsEditRequestDeploymentConfigsPreview),
+          production: S.optional(ProjectsEditRequestDeploymentConfigsProduction),
         }),
       ).annotate({
         identifier: "ProjectsEditRequestDeploymentConfigs",
@@ -6723,12 +9256,28 @@ function __c16(j: number): any {
           deploymentsEnabled: S.optional(S.Boolean.pipe(T.Body("deployments_enabled"))),
           owner: S.optional(S.String),
           ownerId: S.optional(S.String.pipe(T.Body("owner_id"))),
-          pathExcludes: S.optional(__S(0).pipe(T.Body("path_excludes"))),
-          pathIncludes: S.optional(__S(0).pipe(T.Body("path_includes"))),
+          pathExcludes: S.optional(
+            ProjectsEditRequestSourceConfigPathExcludesList.pipe(T.Body("path_excludes")),
+          ),
+          pathIncludes: S.optional(
+            ProjectsEditRequestSourceConfigPathIncludesList.pipe(T.Body("path_includes")),
+          ),
           prCommentsEnabled: S.optional(S.Boolean.pipe(T.Body("pr_comments_enabled"))),
-          previewBranchExcludes: S.optional(__S(0).pipe(T.Body("preview_branch_excludes"))),
-          previewBranchIncludes: S.optional(__S(0).pipe(T.Body("preview_branch_includes"))),
-          previewDeploymentSetting: S.optional(S.String.pipe(T.Body("preview_deployment_setting"))),
+          previewBranchExcludes: S.optional(
+            ProjectsEditRequestSourceConfigPreviewBranchExcludesList.pipe(
+              T.Body("preview_branch_excludes"),
+            ),
+          ),
+          previewBranchIncludes: S.optional(
+            ProjectsEditRequestSourceConfigPreviewBranchIncludesList.pipe(
+              T.Body("preview_branch_includes"),
+            ),
+          ),
+          previewDeploymentSetting: S.optional(
+            ProjectsEditRequestSourceConfigPreviewDeploymentSetting.pipe(
+              T.Body("preview_deployment_setting"),
+            ),
+          ),
           productionBranch: S.optional(S.String.pipe(T.Body("production_branch"))),
           productionDeploymentsEnabled: S.optional(
             S.Boolean.pipe(T.Body("production_deployments_enabled")),
@@ -6742,8 +9291,8 @@ function __c16(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          config: __S(129),
-          type: S.String,
+          config: ProjectsEditRequestSourceConfig,
+          type: ProjectsEditRequestSourceType,
         }),
       ).annotate({
         identifier: "ProjectsEditRequestSource",
@@ -6753,11 +9302,13 @@ function __c16(j: number): any {
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           projectName: S.String.pipe(T.Label("project_name")),
-          buildConfig: S.optional(__S(5).pipe(T.Body("build_config"))),
-          deploymentConfigs: S.optional(__S(128).pipe(T.Body("deployment_configs"))),
+          buildConfig: S.optional(ProjectsCreateRequestBuildConfig.pipe(T.Body("build_config"))),
+          deploymentConfigs: S.optional(
+            ProjectsEditRequestDeploymentConfigs.pipe(T.Body("deployment_configs")),
+          ),
           name: S.optional(S.String),
           productionBranch: S.optional(S.String.pipe(T.Body("production_branch"))),
-          source: S.optional(__S(130)),
+          source: S.optional(ProjectsEditRequestSource),
         })
           .pipe(
             T.Http({
@@ -6774,12 +9325,25 @@ function __c16(j: number): any {
           deploymentsEnabled: S.Boolean.pipe(T.Body("deployments_enabled")),
           owner: S.String,
           ownerId: S.String.pipe(T.Body("owner_id")),
-          pathExcludes: __S(11).pipe(T.Body("path_excludes")),
-          pathIncludes: __S(11).pipe(T.Body("path_includes")),
+          pathExcludes: ProjectsEditResponseCanonicalDeploymentSourceConfigPathExcludesList.pipe(
+            T.Body("path_excludes"),
+          ),
+          pathIncludes: ProjectsEditResponseCanonicalDeploymentSourceConfigPathIncludesList.pipe(
+            T.Body("path_includes"),
+          ),
           prCommentsEnabled: S.Boolean.pipe(T.Body("pr_comments_enabled")),
-          previewBranchExcludes: __S(11).pipe(T.Body("preview_branch_excludes")),
-          previewBranchIncludes: __S(11).pipe(T.Body("preview_branch_includes")),
-          previewDeploymentSetting: S.String.pipe(T.Body("preview_deployment_setting")),
+          previewBranchExcludes:
+            ProjectsEditResponseCanonicalDeploymentSourceConfigPreviewBranchExcludesList.pipe(
+              T.Body("preview_branch_excludes"),
+            ),
+          previewBranchIncludes:
+            ProjectsEditResponseCanonicalDeploymentSourceConfigPreviewBranchIncludesList.pipe(
+              T.Body("preview_branch_includes"),
+            ),
+          previewDeploymentSetting:
+            ProjectsEditResponseCanonicalDeploymentSourceConfigPreviewDeploymentSetting.pipe(
+              T.Body("preview_deployment_setting"),
+            ),
           productionBranch: S.String.pipe(T.Body("production_branch")),
           productionDeploymentsEnabled: S.Boolean.pipe(T.Body("production_deployments_enabled")),
           repoId: S.String.pipe(T.Body("repo_id")),
@@ -6791,8 +9355,8 @@ function __c16(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          config: __S(132),
-          type: S.String,
+          config: ProjectsEditResponseCanonicalDeploymentSourceConfig,
+          type: ProjectsEditResponseCanonicalDeploymentSourceType,
         }),
       ).annotate({
         identifier: "ProjectsEditResponseCanonicalDeploymentSource",
@@ -6801,22 +9365,30 @@ function __c16(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          aliases: __S(0),
-          buildConfig: __S(33).pipe(T.Body("build_config")),
+          aliases: ProjectsEditResponseCanonicalDeploymentAliasesList,
+          buildConfig: ProjectsCreateResponseCanonicalDeploymentBuildConfig.pipe(
+            T.Body("build_config"),
+          ),
           createdOn: S.String.pipe(T.Body("created_on")),
-          deploymentTrigger: __S(35).pipe(T.Body("deployment_trigger")),
-          envVars: __S(10).pipe(T.Body("env_vars")),
-          environment: S.String,
+          deploymentTrigger: ProjectsEditResponseCanonicalDeploymentDeploymentTrigger.pipe(
+            T.Body("deployment_trigger"),
+          ),
+          envVars: UntypedBindingMap.pipe(T.Body("env_vars")),
+          environment: ProjectsEditResponseCanonicalDeploymentEnvironment,
           isSkipped: S.Boolean.pipe(T.Body("is_skipped")),
-          latestStage: __S(36).pipe(T.Body("latest_stage")),
+          latestStage: ProjectsEditResponseCanonicalDeploymentLatestStage.pipe(
+            T.Body("latest_stage"),
+          ),
           modifiedOn: S.String.pipe(T.Body("modified_on")),
           projectId: S.String.pipe(T.Body("project_id")),
           projectName: S.String.pipe(T.Body("project_name")),
           shortId: S.String.pipe(T.Body("short_id")),
-          source: __S(133),
-          stages: __S(39),
+          source: ProjectsEditResponseCanonicalDeploymentSource,
+          stages: ProjectsEditResponseCanonicalDeploymentStagesList,
           url: S.String,
-          skipReason: S.optional(S.NullOr(S.String).pipe(T.Body("skip_reason"))),
+          skipReason: S.optional(
+            S.NullOr(ProjectsEditResponseCanonicalDeploymentSkipReason).pipe(T.Body("skip_reason")),
+          ),
           usesFunctions: S.optional(S.NullOr(S.Boolean).pipe(T.Body("uses_functions"))),
         }),
       ).annotate({
@@ -6830,28 +9402,69 @@ function __c16(j: number): any {
           ),
           buildImageMajorVersion: S.Number.pipe(T.Body("build_image_major_version")),
           compatibilityDate: S.String.pipe(T.Body("compatibility_date")),
-          compatibilityFlags: __S(11).pipe(T.Body("compatibility_flags")),
-          envVars: __S(10).pipe(T.Body("env_vars")),
+          compatibilityFlags:
+            ProjectsEditResponseDeploymentConfigsPreviewCompatibilityFlagsList.pipe(
+              T.Body("compatibility_flags"),
+            ),
+          envVars: UntypedBindingMap.pipe(T.Body("env_vars")),
           failOpen: S.Boolean.pipe(T.Body("fail_open")),
-          usageModel: S.String.pipe(T.Body("usage_model")),
-          aiBindings: S.optional(S.NullOr(__S(7)).pipe(T.Body("ai_bindings"))),
+          usageModel: ProjectsEditResponseDeploymentConfigsPreviewUsageModel.pipe(
+            T.Body("usage_model"),
+          ),
+          aiBindings: S.optional(
+            S.NullOr(ProjectsEditResponseDeploymentConfigsPreviewAiBindingsMap).pipe(
+              T.Body("ai_bindings"),
+            ),
+          ),
           analyticsEngineDatasets: S.optional(
-            S.NullOr(__S(9)).pipe(T.Body("analytics_engine_datasets")),
+            S.NullOr(ProjectsEditResponseDeploymentConfigsPreviewAnalyticsEngineDatasetsMap).pipe(
+              T.Body("analytics_engine_datasets"),
+            ),
           ),
-          browsers: S.optional(S.NullOr(__S(10))),
-          d1Databases: S.optional(S.NullOr(__S(10)).pipe(T.Body("d1_databases"))),
+          browsers: S.optional(S.NullOr(ProjectsEditResponseDeploymentConfigsPreviewBrowsersMap)),
+          d1Databases: S.optional(
+            S.NullOr(ProjectsEditResponseDeploymentConfigsPreviewD1DatabasesMap).pipe(
+              T.Body("d1_databases"),
+            ),
+          ),
           durableObjectNamespaces: S.optional(
-            S.NullOr(__S(13)).pipe(T.Body("durable_object_namespaces")),
+            S.NullOr(ProjectsEditResponseDeploymentConfigsPreviewDurableObjectNamespacesMap).pipe(
+              T.Body("durable_object_namespaces"),
+            ),
           ),
-          hyperdriveBindings: S.optional(S.NullOr(__S(15)).pipe(T.Body("hyperdrive_bindings"))),
-          kvNamespaces: S.optional(S.NullOr(__S(10)).pipe(T.Body("kv_namespaces"))),
-          limits: S.optional(S.NullOr(__S(16))),
-          mtlsCertificates: S.optional(S.NullOr(__S(18)).pipe(T.Body("mtls_certificates"))),
-          placement: S.optional(S.NullOr(__S(19))),
-          queueProducers: S.optional(S.NullOr(__S(77)).pipe(T.Body("queue_producers"))),
-          r2Buckets: S.optional(S.NullOr(__S(10)).pipe(T.Body("r2_buckets"))),
-          services: S.optional(S.NullOr(__S(42))),
-          vectorizeBindings: S.optional(S.NullOr(__S(25)).pipe(T.Body("vectorize_bindings"))),
+          hyperdriveBindings: S.optional(
+            S.NullOr(ProjectsEditResponseDeploymentConfigsPreviewHyperdriveBindingsMap).pipe(
+              T.Body("hyperdrive_bindings"),
+            ),
+          ),
+          kvNamespaces: S.optional(
+            S.NullOr(ProjectsEditResponseDeploymentConfigsPreviewKvNamespacesMap).pipe(
+              T.Body("kv_namespaces"),
+            ),
+          ),
+          limits: S.optional(S.NullOr(ProjectsCreateRequestDeploymentConfigsPreviewLimits)),
+          mtlsCertificates: S.optional(
+            S.NullOr(ProjectsEditResponseDeploymentConfigsPreviewMtlsCertificatesMap).pipe(
+              T.Body("mtls_certificates"),
+            ),
+          ),
+          placement: S.optional(S.NullOr(ProjectsCreateRequestDeploymentConfigsPreviewPlacement)),
+          queueProducers: S.optional(
+            S.NullOr(ProjectsEditResponseDeploymentConfigsPreviewQueueProducersMap).pipe(
+              T.Body("queue_producers"),
+            ),
+          ),
+          r2Buckets: S.optional(
+            S.NullOr(ProjectsEditResponseDeploymentConfigsPreviewR2BucketsMap).pipe(
+              T.Body("r2_buckets"),
+            ),
+          ),
+          services: S.optional(S.NullOr(ProjectsEditResponseDeploymentConfigsPreviewServicesMap)),
+          vectorizeBindings: S.optional(
+            S.NullOr(ProjectsEditResponseDeploymentConfigsPreviewVectorizeBindingsMap).pipe(
+              T.Body("vectorize_bindings"),
+            ),
+          ),
           wranglerConfigHash: S.optional(S.NullOr(S.String).pipe(T.Body("wrangler_config_hash"))),
         }),
       ).annotate({
@@ -6869,28 +9482,73 @@ function __c17(j: number): any {
           ),
           buildImageMajorVersion: S.Number.pipe(T.Body("build_image_major_version")),
           compatibilityDate: S.String.pipe(T.Body("compatibility_date")),
-          compatibilityFlags: __S(11).pipe(T.Body("compatibility_flags")),
-          envVars: __S(10).pipe(T.Body("env_vars")),
+          compatibilityFlags:
+            ProjectsEditResponseDeploymentConfigsProductionCompatibilityFlagsList.pipe(
+              T.Body("compatibility_flags"),
+            ),
+          envVars: UntypedBindingMap.pipe(T.Body("env_vars")),
           failOpen: S.Boolean.pipe(T.Body("fail_open")),
-          usageModel: S.String.pipe(T.Body("usage_model")),
-          aiBindings: S.optional(S.NullOr(__S(7)).pipe(T.Body("ai_bindings"))),
+          usageModel: ProjectsEditResponseDeploymentConfigsProductionUsageModel.pipe(
+            T.Body("usage_model"),
+          ),
+          aiBindings: S.optional(
+            S.NullOr(ProjectsEditResponseDeploymentConfigsProductionAiBindingsMap).pipe(
+              T.Body("ai_bindings"),
+            ),
+          ),
           analyticsEngineDatasets: S.optional(
-            S.NullOr(__S(9)).pipe(T.Body("analytics_engine_datasets")),
+            S.NullOr(
+              ProjectsEditResponseDeploymentConfigsProductionAnalyticsEngineDatasetsMap,
+            ).pipe(T.Body("analytics_engine_datasets")),
           ),
-          browsers: S.optional(S.NullOr(__S(10))),
-          d1Databases: S.optional(S.NullOr(__S(10)).pipe(T.Body("d1_databases"))),
+          browsers: S.optional(
+            S.NullOr(ProjectsEditResponseDeploymentConfigsProductionBrowsersMap),
+          ),
+          d1Databases: S.optional(
+            S.NullOr(ProjectsEditResponseDeploymentConfigsProductionD1DatabasesMap).pipe(
+              T.Body("d1_databases"),
+            ),
+          ),
           durableObjectNamespaces: S.optional(
-            S.NullOr(__S(13)).pipe(T.Body("durable_object_namespaces")),
+            S.NullOr(
+              ProjectsEditResponseDeploymentConfigsProductionDurableObjectNamespacesMap,
+            ).pipe(T.Body("durable_object_namespaces")),
           ),
-          hyperdriveBindings: S.optional(S.NullOr(__S(15)).pipe(T.Body("hyperdrive_bindings"))),
-          kvNamespaces: S.optional(S.NullOr(__S(27)).pipe(T.Body("kv_namespaces"))),
-          limits: S.optional(S.NullOr(__S(16))),
-          mtlsCertificates: S.optional(S.NullOr(__S(18)).pipe(T.Body("mtls_certificates"))),
-          placement: S.optional(S.NullOr(__S(19))),
-          queueProducers: S.optional(S.NullOr(__S(21)).pipe(T.Body("queue_producers"))),
-          r2Buckets: S.optional(S.NullOr(__S(10)).pipe(T.Body("r2_buckets"))),
-          services: S.optional(S.NullOr(__S(42))),
-          vectorizeBindings: S.optional(S.NullOr(__S(25)).pipe(T.Body("vectorize_bindings"))),
+          hyperdriveBindings: S.optional(
+            S.NullOr(ProjectsEditResponseDeploymentConfigsProductionHyperdriveBindingsMap).pipe(
+              T.Body("hyperdrive_bindings"),
+            ),
+          ),
+          kvNamespaces: S.optional(
+            S.NullOr(ProjectsEditResponseDeploymentConfigsProductionKvNamespacesMap).pipe(
+              T.Body("kv_namespaces"),
+            ),
+          ),
+          limits: S.optional(S.NullOr(ProjectsCreateRequestDeploymentConfigsPreviewLimits)),
+          mtlsCertificates: S.optional(
+            S.NullOr(ProjectsEditResponseDeploymentConfigsProductionMtlsCertificatesMap).pipe(
+              T.Body("mtls_certificates"),
+            ),
+          ),
+          placement: S.optional(S.NullOr(ProjectsCreateRequestDeploymentConfigsPreviewPlacement)),
+          queueProducers: S.optional(
+            S.NullOr(ProjectsEditResponseDeploymentConfigsProductionQueueProducersMap).pipe(
+              T.Body("queue_producers"),
+            ),
+          ),
+          r2Buckets: S.optional(
+            S.NullOr(ProjectsEditResponseDeploymentConfigsProductionR2BucketsMap).pipe(
+              T.Body("r2_buckets"),
+            ),
+          ),
+          services: S.optional(
+            S.NullOr(ProjectsEditResponseDeploymentConfigsProductionServicesMap),
+          ),
+          vectorizeBindings: S.optional(
+            S.NullOr(ProjectsEditResponseDeploymentConfigsProductionVectorizeBindingsMap).pipe(
+              T.Body("vectorize_bindings"),
+            ),
+          ),
           wranglerConfigHash: S.optional(S.NullOr(S.String).pipe(T.Body("wrangler_config_hash"))),
         }),
       ).annotate({
@@ -6899,8 +9557,8 @@ function __c17(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          preview: __S(135),
-          production: __S(136),
+          preview: ProjectsEditResponseDeploymentConfigsPreview,
+          production: ProjectsEditResponseDeploymentConfigsProduction,
         }),
       ).annotate({
         identifier: "ProjectsEditResponseDeploymentConfigs",
@@ -6916,19 +9574,32 @@ function __c17(j: number): any {
         ),
       );
     case 3:
-      return S.Record(S.String, __S(138));
+      return S.Record(S.String, ProjectsEditResponseLatestDeploymentEnvVarsValue);
     case 4:
       return S.suspend(() =>
         S.Struct({
           deploymentsEnabled: S.Boolean.pipe(T.Body("deployments_enabled")),
           owner: S.String,
           ownerId: S.String.pipe(T.Body("owner_id")),
-          pathExcludes: __S(11).pipe(T.Body("path_excludes")),
-          pathIncludes: __S(11).pipe(T.Body("path_includes")),
+          pathExcludes: ProjectsEditResponseLatestDeploymentSourceConfigPathExcludesList.pipe(
+            T.Body("path_excludes"),
+          ),
+          pathIncludes: ProjectsEditResponseLatestDeploymentSourceConfigPathIncludesList.pipe(
+            T.Body("path_includes"),
+          ),
           prCommentsEnabled: S.Boolean.pipe(T.Body("pr_comments_enabled")),
-          previewBranchExcludes: __S(11).pipe(T.Body("preview_branch_excludes")),
-          previewBranchIncludes: __S(11).pipe(T.Body("preview_branch_includes")),
-          previewDeploymentSetting: S.String.pipe(T.Body("preview_deployment_setting")),
+          previewBranchExcludes:
+            ProjectsEditResponseLatestDeploymentSourceConfigPreviewBranchExcludesList.pipe(
+              T.Body("preview_branch_excludes"),
+            ),
+          previewBranchIncludes:
+            ProjectsEditResponseLatestDeploymentSourceConfigPreviewBranchIncludesList.pipe(
+              T.Body("preview_branch_includes"),
+            ),
+          previewDeploymentSetting:
+            ProjectsEditResponseLatestDeploymentSourceConfigPreviewDeploymentSetting.pipe(
+              T.Body("preview_deployment_setting"),
+            ),
           productionBranch: S.String.pipe(T.Body("production_branch")),
           productionDeploymentsEnabled: S.Boolean.pipe(T.Body("production_deployments_enabled")),
           repoId: S.String.pipe(T.Body("repo_id")),
@@ -6940,8 +9611,8 @@ function __c17(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          config: __S(140),
-          type: S.String,
+          config: ProjectsEditResponseLatestDeploymentSourceConfig,
+          type: ProjectsEditResponseLatestDeploymentSourceType,
         }),
       ).annotate({
         identifier: "ProjectsEditResponseLatestDeploymentSource",
@@ -6950,22 +9621,28 @@ function __c17(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          aliases: __S(0),
-          buildConfig: __S(33).pipe(T.Body("build_config")),
+          aliases: ProjectsEditResponseLatestDeploymentAliasesList,
+          buildConfig: ProjectsCreateResponseCanonicalDeploymentBuildConfig.pipe(
+            T.Body("build_config"),
+          ),
           createdOn: S.String.pipe(T.Body("created_on")),
-          deploymentTrigger: __S(47).pipe(T.Body("deployment_trigger")),
-          envVars: __S(139).pipe(T.Body("env_vars")),
-          environment: S.String,
+          deploymentTrigger: ProjectsEditResponseLatestDeploymentDeploymentTrigger.pipe(
+            T.Body("deployment_trigger"),
+          ),
+          envVars: ProjectsEditResponseLatestDeploymentEnvVarsMap.pipe(T.Body("env_vars")),
+          environment: ProjectsEditResponseLatestDeploymentEnvironment,
           isSkipped: S.Boolean.pipe(T.Body("is_skipped")),
-          latestStage: __S(36).pipe(T.Body("latest_stage")),
+          latestStage: ProjectsEditResponseLatestDeploymentLatestStage.pipe(T.Body("latest_stage")),
           modifiedOn: S.String.pipe(T.Body("modified_on")),
           projectId: S.String.pipe(T.Body("project_id")),
           projectName: S.String.pipe(T.Body("project_name")),
           shortId: S.String.pipe(T.Body("short_id")),
-          source: __S(141),
-          stages: __S(39),
+          source: ProjectsEditResponseLatestDeploymentSource,
+          stages: ProjectsEditResponseLatestDeploymentStagesList,
           url: S.String,
-          skipReason: S.optional(S.NullOr(S.String).pipe(T.Body("skip_reason"))),
+          skipReason: S.optional(
+            S.NullOr(ProjectsEditResponseLatestDeploymentSkipReason).pipe(T.Body("skip_reason")),
+          ),
           usesFunctions: S.optional(S.NullOr(S.Boolean).pipe(T.Body("uses_functions"))),
         }),
       ).annotate({
@@ -6977,12 +9654,22 @@ function __c17(j: number): any {
           deploymentsEnabled: S.Boolean.pipe(T.Body("deployments_enabled")),
           owner: S.String,
           ownerId: S.String.pipe(T.Body("owner_id")),
-          pathExcludes: __S(0).pipe(T.Body("path_excludes")),
-          pathIncludes: __S(0).pipe(T.Body("path_includes")),
+          pathExcludes: ProjectsEditResponseSourceConfigPathExcludesList.pipe(
+            T.Body("path_excludes"),
+          ),
+          pathIncludes: ProjectsEditResponseSourceConfigPathIncludesList.pipe(
+            T.Body("path_includes"),
+          ),
           prCommentsEnabled: S.Boolean.pipe(T.Body("pr_comments_enabled")),
-          previewBranchExcludes: __S(0).pipe(T.Body("preview_branch_excludes")),
-          previewBranchIncludes: __S(0).pipe(T.Body("preview_branch_includes")),
-          previewDeploymentSetting: S.String.pipe(T.Body("preview_deployment_setting")),
+          previewBranchExcludes: ProjectsEditResponseSourceConfigPreviewBranchExcludesList.pipe(
+            T.Body("preview_branch_excludes"),
+          ),
+          previewBranchIncludes: ProjectsEditResponseSourceConfigPreviewBranchIncludesList.pipe(
+            T.Body("preview_branch_includes"),
+          ),
+          previewDeploymentSetting: ProjectsEditResponseSourceConfigPreviewDeploymentSetting.pipe(
+            T.Body("preview_deployment_setting"),
+          ),
           productionBranch: S.String.pipe(T.Body("production_branch")),
           productionDeploymentsEnabled: S.Boolean.pipe(T.Body("production_deployments_enabled")),
           repoId: S.String.pipe(T.Body("repo_id")),
@@ -6998,8 +9685,8 @@ function __c18(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          config: __S(143),
-          type: S.String,
+          config: ProjectsEditResponseSourceConfig,
+          type: ProjectsEditResponseSourceType,
         }),
       ).annotate({
         identifier: "ProjectsEditResponseSource",
@@ -7008,20 +9695,28 @@ function __c18(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          canonicalDeployment: __S(134).pipe(T.Body("canonical_deployment")),
+          canonicalDeployment: ProjectsEditResponseCanonicalDeployment.pipe(
+            T.Body("canonical_deployment"),
+          ),
           createdOn: S.String.pipe(T.Body("created_on")),
-          deploymentConfigs: __S(137).pipe(T.Body("deployment_configs")),
+          deploymentConfigs: ProjectsEditResponseDeploymentConfigs.pipe(
+            T.Body("deployment_configs"),
+          ),
           framework: S.String,
           frameworkVersion: S.String.pipe(T.Body("framework_version")),
-          latestDeployment: __S(142).pipe(T.Body("latest_deployment")),
+          latestDeployment: ProjectsEditResponseLatestDeployment.pipe(T.Body("latest_deployment")),
           name: S.String,
           previewScriptName: S.String.pipe(T.Body("preview_script_name")),
           productionBranch: S.String.pipe(T.Body("production_branch")),
           productionScriptName: S.String.pipe(T.Body("production_script_name")),
           usesFunctions: S.Boolean.pipe(T.Body("uses_functions")),
-          buildConfig: S.optional(S.NullOr(__S(33)).pipe(T.Body("build_config"))),
-          domains: S.optional(S.NullOr(__S(0))),
-          source: S.optional(S.NullOr(__S(144))),
+          buildConfig: S.optional(
+            S.NullOr(ProjectsCreateResponseCanonicalDeploymentBuildConfig).pipe(
+              T.Body("build_config"),
+            ),
+          ),
+          domains: S.optional(S.NullOr(ProjectsEditResponseDomainsList)),
+          source: S.optional(S.NullOr(ProjectsEditResponseSource)),
           subdomain: S.optional(S.NullOr(S.String)),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "PatchProjectResponse" });
@@ -7047,13 +9742,17 @@ function __c18(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          certificateAuthority: S.String.pipe(T.Body("certificate_authority")),
+          certificateAuthority: ProjectsDomainsEditResponseCertificateAuthority.pipe(
+            T.Body("certificate_authority"),
+          ),
           createdOn: S.String.pipe(T.Body("created_on")),
           domainId: S.String.pipe(T.Body("domain_id")),
           name: S.String,
-          status: S.String,
-          validationData: __S(61).pipe(T.Body("validation_data")),
-          verificationData: __S(62).pipe(T.Body("verification_data")),
+          status: ProjectsDomainsEditResponseStatus,
+          validationData: ProjectsDomainsEditResponseValidationData.pipe(T.Body("validation_data")),
+          verificationData: ProjectsDomainsEditResponseVerificationData.pipe(
+            T.Body("verification_data"),
+          ),
           zoneTag: S.String.pipe(T.Body("zone_tag")),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
@@ -7129,12 +9828,25 @@ function __c19(j: number): any {
           deploymentsEnabled: S.Boolean.pipe(T.Body("deployments_enabled")),
           owner: S.String,
           ownerId: S.String.pipe(T.Body("owner_id")),
-          pathExcludes: __S(0).pipe(T.Body("path_excludes")),
-          pathIncludes: __S(0).pipe(T.Body("path_includes")),
+          pathExcludes: ProjectsDeploymentsRetryResponseSourceConfigPathExcludesList.pipe(
+            T.Body("path_excludes"),
+          ),
+          pathIncludes: ProjectsDeploymentsRetryResponseSourceConfigPathIncludesList.pipe(
+            T.Body("path_includes"),
+          ),
           prCommentsEnabled: S.Boolean.pipe(T.Body("pr_comments_enabled")),
-          previewBranchExcludes: __S(11).pipe(T.Body("preview_branch_excludes")),
-          previewBranchIncludes: __S(11).pipe(T.Body("preview_branch_includes")),
-          previewDeploymentSetting: S.String.pipe(T.Body("preview_deployment_setting")),
+          previewBranchExcludes:
+            ProjectsDeploymentsRetryResponseSourceConfigPreviewBranchExcludesList.pipe(
+              T.Body("preview_branch_excludes"),
+            ),
+          previewBranchIncludes:
+            ProjectsDeploymentsRetryResponseSourceConfigPreviewBranchIncludesList.pipe(
+              T.Body("preview_branch_includes"),
+            ),
+          previewDeploymentSetting:
+            ProjectsDeploymentsRetryResponseSourceConfigPreviewDeploymentSetting.pipe(
+              T.Body("preview_deployment_setting"),
+            ),
           productionBranch: S.String.pipe(T.Body("production_branch")),
           productionDeploymentsEnabled: S.Boolean.pipe(T.Body("production_deployments_enabled")),
           repoId: S.String.pipe(T.Body("repo_id")),
@@ -7146,8 +9858,8 @@ function __c19(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          config: __S(152),
-          type: S.String,
+          config: ProjectsDeploymentsRetryResponseSourceConfig,
+          type: ProjectsDeploymentsRetryResponseSourceType,
         }),
       ).annotate({
         identifier: "ProjectsDeploymentsRetryResponseSource",
@@ -7156,22 +9868,28 @@ function __c19(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          aliases: __S(0),
-          buildConfig: __S(33).pipe(T.Body("build_config")),
+          aliases: ProjectsDeploymentsRetryResponseAliasesList,
+          buildConfig: ProjectsCreateResponseCanonicalDeploymentBuildConfig.pipe(
+            T.Body("build_config"),
+          ),
           createdOn: S.String.pipe(T.Body("created_on")),
-          deploymentTrigger: __S(47).pipe(T.Body("deployment_trigger")),
-          envVars: __S(10).pipe(T.Body("env_vars")),
-          environment: S.String,
+          deploymentTrigger: ProjectsDeploymentsRetryResponseDeploymentTrigger.pipe(
+            T.Body("deployment_trigger"),
+          ),
+          envVars: UntypedBindingMap.pipe(T.Body("env_vars")),
+          environment: ProjectsDeploymentsRetryResponseEnvironment,
           isSkipped: S.Boolean.pipe(T.Body("is_skipped")),
-          latestStage: __S(36).pipe(T.Body("latest_stage")),
+          latestStage: ProjectsDeploymentsRetryResponseLatestStage.pipe(T.Body("latest_stage")),
           modifiedOn: S.String.pipe(T.Body("modified_on")),
           projectId: S.String.pipe(T.Body("project_id")),
           projectName: S.String.pipe(T.Body("project_name")),
           shortId: S.String.pipe(T.Body("short_id")),
-          source: __S(153),
-          stages: __S(39),
+          source: ProjectsDeploymentsRetryResponseSource,
+          stages: ProjectsDeploymentsRetryResponseStagesList,
           url: S.String,
-          skipReason: S.optional(S.NullOr(S.String).pipe(T.Body("skip_reason"))),
+          skipReason: S.optional(
+            S.NullOr(ProjectsDeploymentsRetryResponseSkipReason).pipe(T.Body("skip_reason")),
+          ),
           usesFunctions: S.optional(S.NullOr(S.Boolean).pipe(T.Body("uses_functions"))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
@@ -7201,12 +9919,25 @@ function __c19(j: number): any {
           deploymentsEnabled: S.Boolean.pipe(T.Body("deployments_enabled")),
           owner: S.String,
           ownerId: S.String.pipe(T.Body("owner_id")),
-          pathExcludes: __S(11).pipe(T.Body("path_excludes")),
-          pathIncludes: __S(11).pipe(T.Body("path_includes")),
+          pathExcludes: ProjectsDeploymentsRollbackResponseSourceConfigPathExcludesList.pipe(
+            T.Body("path_excludes"),
+          ),
+          pathIncludes: ProjectsDeploymentsRollbackResponseSourceConfigPathIncludesList.pipe(
+            T.Body("path_includes"),
+          ),
           prCommentsEnabled: S.Boolean.pipe(T.Body("pr_comments_enabled")),
-          previewBranchExcludes: __S(11).pipe(T.Body("preview_branch_excludes")),
-          previewBranchIncludes: __S(11).pipe(T.Body("preview_branch_includes")),
-          previewDeploymentSetting: S.String.pipe(T.Body("preview_deployment_setting")),
+          previewBranchExcludes:
+            ProjectsDeploymentsRollbackResponseSourceConfigPreviewBranchExcludesList.pipe(
+              T.Body("preview_branch_excludes"),
+            ),
+          previewBranchIncludes:
+            ProjectsDeploymentsRollbackResponseSourceConfigPreviewBranchIncludesList.pipe(
+              T.Body("preview_branch_includes"),
+            ),
+          previewDeploymentSetting:
+            ProjectsDeploymentsRollbackResponseSourceConfigPreviewDeploymentSetting.pipe(
+              T.Body("preview_deployment_setting"),
+            ),
           productionBranch: S.String.pipe(T.Body("production_branch")),
           productionDeploymentsEnabled: S.Boolean.pipe(T.Body("production_deployments_enabled")),
           repoId: S.String.pipe(T.Body("repo_id")),
@@ -7218,8 +9949,8 @@ function __c19(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          config: __S(156),
-          type: S.String,
+          config: ProjectsDeploymentsRollbackResponseSourceConfig,
+          type: ProjectsDeploymentsRollbackResponseSourceType,
         }),
       ).annotate({
         identifier: "ProjectsDeploymentsRollbackResponseSource",
@@ -7228,22 +9959,28 @@ function __c19(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          aliases: __S(0),
-          buildConfig: __S(33).pipe(T.Body("build_config")),
+          aliases: ProjectsDeploymentsRollbackResponseAliasesList,
+          buildConfig: ProjectsCreateResponseCanonicalDeploymentBuildConfig.pipe(
+            T.Body("build_config"),
+          ),
           createdOn: S.String.pipe(T.Body("created_on")),
-          deploymentTrigger: __S(47).pipe(T.Body("deployment_trigger")),
-          envVars: __S(10).pipe(T.Body("env_vars")),
-          environment: S.String,
+          deploymentTrigger: ProjectsDeploymentsRollbackResponseDeploymentTrigger.pipe(
+            T.Body("deployment_trigger"),
+          ),
+          envVars: UntypedBindingMap.pipe(T.Body("env_vars")),
+          environment: ProjectsDeploymentsRollbackResponseEnvironment,
           isSkipped: S.Boolean.pipe(T.Body("is_skipped")),
-          latestStage: __S(36).pipe(T.Body("latest_stage")),
+          latestStage: ProjectsDeploymentsRollbackResponseLatestStage.pipe(T.Body("latest_stage")),
           modifiedOn: S.String.pipe(T.Body("modified_on")),
           projectId: S.String.pipe(T.Body("project_id")),
           projectName: S.String.pipe(T.Body("project_name")),
           shortId: S.String.pipe(T.Body("short_id")),
-          source: __S(157),
-          stages: __S(39),
+          source: ProjectsDeploymentsRollbackResponseSource,
+          stages: ProjectsDeploymentsRollbackResponseStagesList,
           url: S.String,
-          skipReason: S.optional(S.NullOr(S.String).pipe(T.Body("skip_reason"))),
+          skipReason: S.optional(
+            S.NullOr(ProjectsDeploymentsRollbackResponseSkipReason).pipe(T.Body("skip_reason")),
+          ),
           usesFunctions: S.optional(S.NullOr(S.Boolean).pipe(T.Body("uses_functions"))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
@@ -7266,18 +10003,18 @@ function __c20(j: number): any {
         S.Struct({
           base64: S.Boolean,
           key: S.String,
-          metadata: __S(159),
+          metadata: UploadAssetRequestBodyItemMetadata,
           value: S.String,
         }),
       ).annotate({
         identifier: "UploadAssetRequestBodyItem",
       });
     case 1:
-      return S.Array(__S(160));
+      return S.Array(UploadAssetRequestBodyItem);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          body: __S(161).pipe(T.HttpBody()),
+          body: UploadAssetRequestBodyList.pipe(T.HttpBody()),
         })
           .pipe(T.Http({ method: "POST", uri: "/pages/assets/upload", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -7286,56 +10023,5 @@ function __c20(j: number): any {
       return S.suspend(() => S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY))).annotate({
         identifier: "UploadAssetResponse",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
-    case 9:
-      return __c9(i & 7);
-    case 10:
-      return __c10(i & 7);
-    case 11:
-      return __c11(i & 7);
-    case 12:
-      return __c12(i & 7);
-    case 13:
-      return __c13(i & 7);
-    case 14:
-      return __c14(i & 7);
-    case 15:
-      return __c15(i & 7);
-    case 16:
-      return __c16(i & 7);
-    case 17:
-      return __c17(i & 7);
-    case 18:
-      return __c18(i & 7);
-    case 19:
-      return __c19(i & 7);
-    case 20:
-      return __c20(i & 7);
   }
 }

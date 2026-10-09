@@ -7,8 +7,6 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -66,12 +64,22 @@ export class NotFound
 
 /** Request message for cancelling an execution. */
 export interface CancelExecutionRequest {}
+const CancelExecutionRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<CancelExecutionRequest>;
+
 export interface CancelNamespacesExecutionsRequest {
   /** Required. The name of the execution to cancel. Replace {namespace} with the project ID or number. It takes the form namespaces/{namespace}. For example: namespaces/PROJECT_ID */
   name: string;
   /** Request body */
   body?: CancelExecutionRequest;
 }
+const CancelNamespacesExecutionsRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<CancelNamespacesExecutionsRequest>;
+
 /** This is not supported or used by Cloud Run. */
 export interface OwnerReference {
   /** This is not supported or used by Cloud Run. */
@@ -87,9 +95,17 @@ export interface OwnerReference {
   /** This is not supported or used by Cloud Run. */
   apiVersion?: string;
 }
+const OwnerReference = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<OwnerReference>;
+
 export type OwnerReferenceList = Array<OwnerReference>;
+const OwnerReferenceList = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<OwnerReferenceList>;
+
 export type StringMap = { [key: string]: string | undefined };
+const StringMap = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<StringMap>;
+
 export type StringList = Array<string>;
+const StringList = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<StringList>;
+
 /** google.cloud.run.meta.v1.ObjectMeta is metadata that all persisted resources must have, which includes all objects users must create. */
 export interface ObjectMeta {
   /** Unique, system-generated identifier for this resource. */
@@ -123,6 +139,8 @@ export interface ObjectMeta {
   /** Not supported by Cloud Run */
   clusterName?: string;
 }
+const ObjectMeta = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<ObjectMeta>;
+
 /** Conditions show the status of reconciliation progress on a given resource. Most resource use a top-level condition type "Ready" or "Completed" to show overall status with other conditions to checkpoint each stage of reconciliation. Note that if metadata.Generation does not equal status.ObservedGeneration, the conditions shown may not be relevant for the current spec. */
 export interface GoogleCloudRunV1Condition {
   /** Status of the condition, one of True, False, Unknown. */
@@ -138,7 +156,17 @@ export interface GoogleCloudRunV1Condition {
   /** Optional. How to interpret this condition. One of Error, Warning, or Info. Conditions of severity Info do not contribute to resource readiness. */
   severity?: string;
 }
+const GoogleCloudRunV1Condition = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<GoogleCloudRunV1Condition>;
+
 export type GoogleCloudRunV1ConditionList = Array<GoogleCloudRunV1Condition>;
+const GoogleCloudRunV1ConditionList = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<GoogleCloudRunV1ConditionList>;
+
 /** ExecutionStatus represents the current state of an Execution. */
 export interface ExecutionStatus {
   /** Optional. The number of actively running tasks. */
@@ -162,6 +190,8 @@ export interface ExecutionStatus {
   /** Optional. The number of tasks which reached phase Succeeded. */
   succeededCount?: number;
 }
+const ExecutionStatus = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<ExecutionStatus>;
+
 /** HTTPHeader describes a custom header to be used in HTTP probes */
 export interface HTTPHeader {
   /** Required. The header field name */
@@ -169,7 +199,11 @@ export interface HTTPHeader {
   /** The header field value */
   value?: string;
 }
+const HTTPHeader = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<HTTPHeader>;
+
 export type HTTPHeaderList = Array<HTTPHeader>;
+const HTTPHeaderList = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<HTTPHeaderList>;
+
 /** HTTPGetAction describes an action based on HTTP Get requests. */
 export interface HTTPGetAction {
   /** Port number to access on the container. Number must be in the range 1 to 65535. */
@@ -183,6 +217,8 @@ export interface HTTPGetAction {
   /** Custom headers to set in the request. HTTP allows repeated headers. */
   httpHeaders?: HTTPHeaderList;
 }
+const HTTPGetAction = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<HTTPGetAction>;
+
 /** TCPSocketAction describes an action based on opening a socket */
 export interface TCPSocketAction {
   /** Port number to access on the container. Number must be in the range 1 to 65535. */
@@ -190,6 +226,8 @@ export interface TCPSocketAction {
   /** Not supported by Cloud Run. */
   host?: string;
 }
+const TCPSocketAction = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<TCPSocketAction>;
+
 /** GRPCAction describes an action involving a GRPC port. */
 export interface GRPCAction {
   /** Service is the name of the service to place in the gRPC HealthCheckRequest. If this is not specified, the default behavior is defined by gRPC. */
@@ -197,11 +235,15 @@ export interface GRPCAction {
   /** Port number of the gRPC service. Number must be in the range 1 to 65535. */
   port?: number;
 }
+const GRPCAction = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<GRPCAction>;
+
 /** Not supported by Cloud Run. ExecAction describes a "run in container" action. */
 export interface ExecAction {
   /** Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions ('|', etc) won't work. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy. */
   command?: StringList;
 }
+const ExecAction = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<ExecAction>;
+
 /** Probe describes a health check to be performed against a container to determine whether it is alive or ready to receive traffic. */
 export interface Probe {
   /** Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. */
@@ -223,16 +265,22 @@ export interface Probe {
   /** Minimum consecutive successes for the probe to be considered successful after having failed. Must be 1 if set. */
   successThreshold?: number;
 }
+const Probe = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<Probe>;
+
 /** Not supported by Cloud Run. SecurityContext holds security configuration that will be applied to a container. Some fields are present in both SecurityContext and PodSecurityContext. When both are set, the values in SecurityContext take precedence. */
 export interface SecurityContext {
   /** The UID to run the entrypoint of the container process. Defaults to user specified in image metadata if unspecified. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence. */
   runAsUser?: number;
 }
+const SecurityContext = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<SecurityContext>;
+
 /** Not supported by Cloud Run. LocalObjectReference contains enough information to let you locate the referenced object inside the same namespace. */
 export interface LocalObjectReference {
   /** Name of the referent. */
   name?: string;
 }
+const LocalObjectReference = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<LocalObjectReference>;
+
 /** SecretKeySelector selects a key of a Secret. */
 export interface SecretKeySelector {
   /** Required. A Cloud Secret Manager secret version. Must be 'latest' for the latest version, an integer for a specific version, or a version alias. The key of the secret to select from. Must be a valid secret key. */
@@ -244,6 +292,8 @@ export interface SecretKeySelector {
   /** Specify whether the Secret or its key must be defined. */
   optional?: boolean;
 }
+const SecretKeySelector = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<SecretKeySelector>;
+
 /** Not supported by Cloud Run. */
 export interface ConfigMapKeySelector {
   /** Not supported by Cloud Run. */
@@ -255,6 +305,8 @@ export interface ConfigMapKeySelector {
   /** Not supported by Cloud Run. */
   localObjectReference?: LocalObjectReference;
 }
+const ConfigMapKeySelector = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<ConfigMapKeySelector>;
+
 /** EnvVarSource represents a source for the value of an EnvVar. */
 export interface EnvVarSource {
   /** Selects a key (version) of a secret in Secret Manager. */
@@ -262,6 +314,8 @@ export interface EnvVarSource {
   /** Not supported by Cloud Run. Not supported in Cloud Run. */
   configMapKeyRef?: ConfigMapKeySelector;
 }
+const EnvVarSource = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<EnvVarSource>;
+
 /** EnvVar represents an environment variable present in a Container. */
 export interface EnvVar {
   /** Source for the environment variable's value. Only supports secret_key_ref. Cannot be used if value is not empty. */
@@ -271,7 +325,11 @@ export interface EnvVar {
   /** Value of the environment variable. Defaults to "". Variable references are not supported in Cloud Run. */
   value?: string;
 }
+const EnvVar = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<EnvVar>;
+
 export type EnvVarList = Array<EnvVar>;
+const EnvVarList = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<EnvVarList>;
+
 /** ResourceRequirements describes the compute resource requirements. */
 export interface ResourceRequirements {
   /** Limits describes the maximum amount of compute resources allowed. Only 'cpu', 'memory' and 'nvidia.com/gpu' keys are supported. * For supported 'cpu' values, go to https://cloud.google.com/run/docs/configuring/cpu. * For supported 'memory' values and syntax, go to https://cloud.google.com/run/docs/configuring/memory-limits. * The only supported 'nvidia.com/gpu' value is '1'. */
@@ -279,6 +337,8 @@ export interface ResourceRequirements {
   /** Requests describes the minimum amount of compute resources required. Only `cpu` and `memory` are supported. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. * For supported 'cpu' values, go to https://cloud.google.com/run/docs/configuring/cpu. * For supported 'memory' values and syntax, go to https://cloud.google.com/run/docs/configuring/memory-limits */
   requests?: StringMap;
 }
+const ResourceRequirements = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<ResourceRequirements>;
+
 /** Not supported by Cloud Run. SecretEnvSource selects a Secret to populate the environment variables with. The contents of the target Secret's Data field will represent the key-value pairs as environment variables. */
 export interface SecretEnvSource {
   /** This field should not be used directly as it is meant to be inlined directly into the message. Use the "name" field instead. */
@@ -288,6 +348,8 @@ export interface SecretEnvSource {
   /** The Secret to select from. */
   name?: string;
 }
+const SecretEnvSource = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<SecretEnvSource>;
+
 /** Not supported by Cloud Run. ConfigMapEnvSource selects a ConfigMap to populate the environment variables with. The contents of the target ConfigMap's Data field will represent the key-value pairs as environment variables. */
 export interface ConfigMapEnvSource {
   /** Specify whether the ConfigMap must be defined. */
@@ -297,6 +359,8 @@ export interface ConfigMapEnvSource {
   /** This field should not be used directly as it is meant to be inlined directly into the message. Use the "name" field instead. */
   localObjectReference?: LocalObjectReference;
 }
+const ConfigMapEnvSource = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<ConfigMapEnvSource>;
+
 /** Not supported by Cloud Run. EnvFromSource represents the source of a set of ConfigMaps */
 export interface EnvFromSource {
   /** The Secret to select from */
@@ -306,7 +370,11 @@ export interface EnvFromSource {
   /** The ConfigMap to select from */
   configMapRef?: ConfigMapEnvSource;
 }
+const EnvFromSource = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<EnvFromSource>;
+
 export type EnvFromSourceList = Array<EnvFromSource>;
+const EnvFromSourceList = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<EnvFromSourceList>;
+
 /** VolumeMount describes a mounting of a Volume within a container. */
 export interface VolumeMount {
   /** Sets the mount to be read-only or read-write. Not used by Cloud Run. */
@@ -318,7 +386,11 @@ export interface VolumeMount {
   /** Required. Path within the container at which the volume should be mounted. Must not contain ':'. */
   mountPath?: string;
 }
+const VolumeMount = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<VolumeMount>;
+
 export type VolumeMountList = Array<VolumeMount>;
+const VolumeMountList = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<VolumeMountList>;
+
 /** ContainerPort represents a network port in a single container. */
 export interface ContainerPort {
   /** If specified, used to specify which protocol to use. Allowed values are "http1" and "h2c". */
@@ -328,7 +400,11 @@ export interface ContainerPort {
   /** Port number the container listens on. If present, this must be a valid port number, 0 < x < 65536. If not present, it will default to port 8080. For more information, see https://cloud.google.com/run/docs/container-contract#port */
   containerPort?: number;
 }
+const ContainerPort = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<ContainerPort>;
+
 export type ContainerPortList = Array<ContainerPort>;
+const ContainerPortList = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<ContainerPortList>;
+
 /** A single application container. This specifies both the container to run, the command to run in the container and the arguments to supply to it. Note that additional arguments may be supplied by the system to the container at runtime. */
 export interface Container {
   /** Path at which the file to which the container's termination message will be written is mounted into the container's filesystem. Message written is intended to be brief final status, such as an assertion failure message. Will be truncated by the node if greater than 4096 bytes. The total message length across all containers will be limited to 12kb. Defaults to /dev/termination-log. */
@@ -368,7 +444,11 @@ export interface Container {
   /** List of ports to expose from the container. Only a single port can be specified. The specified ports must be listening on all interfaces (0.0.0.0) within the container to be accessible. If omitted, a port number will be chosen and passed to the container through the PORT environment variable for the container to listen on. */
   ports?: ContainerPortList;
 }
+const Container = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<Container>;
+
 export type ContainerList = Array<Container>;
+const ContainerList = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<ContainerList>;
+
 /** Represents a persistent volume that will be mounted using NFS. This volume will be shared between all instances of the resource and data will not be deleted when the instance is shut down. */
 export interface NFSVolumeSource {
   /** If true, mount the NFS volume as read only. Defaults to false. */
@@ -378,6 +458,8 @@ export interface NFSVolumeSource {
   /** Hostname or IP address of the NFS server. */
   server?: string;
 }
+const NFSVolumeSource = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<NFSVolumeSource>;
+
 /** Maps a string key to a path within a volume. */
 export interface KeyToPath {
   /** The Cloud Secret Manager secret version. Can be 'latest' for the latest value, or an integer or a secret alias for a specific version. The key to project. */
@@ -387,7 +469,11 @@ export interface KeyToPath {
   /** (Optional) Mode bits to use on this file, must be a value between 01 and 0777 (octal). If 0 or not set, the Volume's default mode will be used. Notes * Internally, a umask of 0222 will be applied to any non-zero value. * This is an integer representation of the mode bits. So, the octal integer value should look exactly as the chmod numeric notation with a leading zero. Some examples: for chmod 777 (a=rwx), set to 0777 (octal) or 511 (base-10). For chmod 640 (u=rw,g=r), set to 0640 (octal) or 416 (base-10). For chmod 755 (u=rwx,g=rx,o=rx), set to 0755 (octal) or 493 (base-10). * This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set. */
   mode?: number;
 }
+const KeyToPath = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<KeyToPath>;
+
 export type KeyToPathList = Array<KeyToPath>;
+const KeyToPathList = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<KeyToPathList>;
+
 /** Not supported by Cloud Run. Adapts a ConfigMap into a volume. The contents of the target ConfigMap's Data field will be presented in a volume as files using the keys in the Data field as the file names, unless the items element is populated with specific mappings of keys to paths. */
 export interface ConfigMapVolumeSource {
   /** Name of the config. */
@@ -399,6 +485,11 @@ export interface ConfigMapVolumeSource {
   /** (Optional) If unspecified, each key-value pair in the Data field of the referenced Secret will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified that is not present in the Secret, the volume setup will error unless it is marked optional. */
   items?: KeyToPathList;
 }
+const ConfigMapVolumeSource = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<ConfigMapVolumeSource>;
+
 /** A volume representing a secret stored in Google Secret Manager. The secret's value will be presented as the content of a file whose name is defined in the item path. If no items are defined, the name of the file is the secret_name. The contents of the target Secret's Data field will be presented in a volume as files using the keys in the Data field as the file names. */
 export interface SecretVolumeSource {
   /** A list of secret versions to mount in the volume. If no items are specified, the volume will expose a file with the same name as the secret name. The contents of the file will be the data in the latest version of the secret. If items are specified, the key will be used as the version to fetch from Cloud Secret Manager and the path will be the name of the file exposed in the volume. When items are defined, they must specify both a key and a path. */
@@ -410,6 +501,8 @@ export interface SecretVolumeSource {
   /** Integer representation of mode bits to use on created files by default. Must be a value between 01 and 0777 (octal). If 0 or not set, it will default to 0444. Directories within the path are not affected by this setting. Notes * Internally, a umask of 0222 will be applied to any non-zero value. * This is an integer representation of the mode bits. So, the octal integer value should look exactly as the chmod numeric notation with a leading zero. Some examples: for chmod 777 (a=rwx), set to 0777 (octal) or 511 (base-10). For chmod 640 (u=rw,g=r), set to 0640 (octal) or 416 (base-10). For chmod 755 (u=rwx,g=rx,o=rx), set to 0755 (octal) or 493 (base-10). * This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set. */
   defaultMode?: number;
 }
+const SecretVolumeSource = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<SecretVolumeSource>;
+
 /** In memory or disk-backed ephemeral storage. It is ephemeral in the sense that when the sandbox is taken down, the data is destroyed with it (it does not persist across sandbox runs). */
 export interface EmptyDirVolumeSource {
   /** The medium on which the data is stored. The default is "" which means to use the node's default medium. Must be an empty string (default), `Memory`, or `Disk`. More info: https://kubernetes.io/docs/concepts/storage/volumes#emptydir */
@@ -417,6 +510,8 @@ export interface EmptyDirVolumeSource {
   /** Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers. The default is nil which means that the limit is undefined. More info: https://cloud.google.com/run/docs/configuring/in-memory-volumes#configure-volume. Info in Kubernetes: https://kubernetes.io/docs/concepts/storage/volumes/#emptydir */
   sizeLimit?: string;
 }
+const EmptyDirVolumeSource = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<EmptyDirVolumeSource>;
+
 /** Storage volume source using the Container Storage Interface. */
 export interface CSIVolumeSource {
   /** If true, mount the volume as read only. Defaults to false. */
@@ -426,6 +521,8 @@ export interface CSIVolumeSource {
   /** name of the CSI driver for the requested storage system. Cloud Run supports the following drivers: * gcsfuse.run.googleapis.com : Mount a Cloud Storage Bucket as a volume. */
   driver?: string;
 }
+const CSIVolumeSource = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<CSIVolumeSource>;
+
 /** Volume represents a named volume in a container. */
 export interface Volume {
   nfs?: NFSVolumeSource;
@@ -440,7 +537,11 @@ export interface Volume {
   /** Volume specified by the Container Storage Interface driver */
   csi?: CSIVolumeSource;
 }
+const Volume = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<Volume>;
+
 export type VolumeList = Array<Volume>;
+const VolumeList = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<VolumeList>;
+
 /** TaskSpec is a description of a task. */
 export interface TaskSpec {
   /** Optional. Email address of the IAM service account associated with the task of a job execution. The service account represents the identity of the running task, and determines what permissions the task has. If not provided, the task will use the project's default service account. */
@@ -456,11 +557,15 @@ export interface TaskSpec {
   /** Optional. List of volumes that can be mounted by containers belonging to the task. */
   volumes?: VolumeList;
 }
+const TaskSpec = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<TaskSpec>;
+
 /** TaskTemplateSpec describes the data a task should have when created from a template. */
 export interface TaskTemplateSpec {
   /** Optional. Specification of the desired behavior of the task. */
   spec?: TaskSpec;
 }
+const TaskTemplateSpec = /*@__PURE__*/ __L.at(__c5, 5) as any as S.Schema<TaskTemplateSpec>;
+
 /** ExecutionSpec describes how the execution will look. */
 export interface ExecutionSpec {
   /** Optional. Specifies the maximum desired number of tasks the execution should run at given time. When the job is run, if this field is 0 or unset, the maximum possible value will be used for that execution. The actual number of tasks running in steady state will be less than this number when there are fewer tasks waiting to be completed, i.e. when the work left to do is less than max parallelism. */
@@ -472,6 +577,8 @@ export interface ExecutionSpec {
   /** Optional. If true, the system will start the execution within the next 12 hours depending on available capacity. */
   delayExecution?: boolean;
 }
+const ExecutionSpec = /*@__PURE__*/ __L.at(__c5, 6) as any as S.Schema<ExecutionSpec>;
+
 /** Execution represents the configuration of a single execution. An execution is an immutable resource that references a container image which is run to completion. */
 export interface Execution {
   /** Optional. Standard object's metadata. */
@@ -485,10 +592,14 @@ export interface Execution {
   /** Optional. APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. */
   apiVersion?: string;
 }
+const Execution = /*@__PURE__*/ __L.at(__c5, 7) as any as S.Schema<Execution>;
+
 export type DomainMappingSpecCertificateModeEnum =
   | "CERTIFICATE_MODE_UNSPECIFIED"
   | "NONE"
   | "AUTOMATIC";
+const DomainMappingSpecCertificateModeEnum = S.String;
+
 /** The desired state of the Domain Mapping. */
 export interface DomainMappingSpec {
   /** The name of the Knative Route that this DomainMapping applies to. The route must exist. */
@@ -498,7 +609,11 @@ export interface DomainMappingSpec {
   /** If set, the mapping will override any mapping set before this spec was set. It is recommended that the user leaves this empty to receive an error warning about a potential conflict and only set it once the respective UI has given such a warning. */
   forceOverride?: boolean;
 }
+const DomainMappingSpec = /*@__PURE__*/ __L.at(__c6, 0) as any as S.Schema<DomainMappingSpec>;
+
 export type ResourceRecordTypeEnum = "RECORD_TYPE_UNSPECIFIED" | "A" | "AAAA" | "CNAME";
+const ResourceRecordTypeEnum = S.String;
+
 /** A DNS resource record. */
 export interface ResourceRecord {
   /** Name of the resource record relative to its apex domain, e.g. `www` for `www.example.com`. Omitted for apex records. */
@@ -508,7 +623,11 @@ export interface ResourceRecord {
   /** Resource record type. Example: `AAAA`. */
   type?: ResourceRecordTypeEnum | (string & {});
 }
+const ResourceRecord = /*@__PURE__*/ __L.at(__c6, 1) as any as S.Schema<ResourceRecord>;
+
 export type ResourceRecordList = Array<ResourceRecord>;
+const ResourceRecordList = /*@__PURE__*/ __L.at(__c6, 2) as any as S.Schema<ResourceRecordList>;
+
 /** The current state of the Domain Mapping. */
 export interface DomainMappingStatus {
   /** The resource records required to configure this domain mapping. These records must be added to the domain's DNS configuration in order to serve the application via this domain mapping. */
@@ -522,6 +641,8 @@ export interface DomainMappingStatus {
   /** Optional. Not supported by Cloud Run. */
   url?: string;
 }
+const DomainMappingStatus = /*@__PURE__*/ __L.at(__c6, 3) as any as S.Schema<DomainMappingStatus>;
+
 /** Resource to hold the state and status of a user's domain mapping. NOTE: This resource is currently in Beta. */
 export interface DomainMapping {
   /** The API version for this call such as "domains.cloudrun.com/v1". */
@@ -535,6 +656,8 @@ export interface DomainMapping {
   /** The kind of resource, in this case "DomainMapping". */
   kind?: string;
 }
+const DomainMapping = /*@__PURE__*/ __L.at(__c6, 4) as any as S.Schema<DomainMapping>;
+
 export interface CreateNamespacesDomainmappingsRequest {
   /** Required. The namespace in which the domain mapping should be created. For Cloud Run (fully managed), replace {namespace} with the project ID or number. It takes the form namespaces/{namespace}. For example: namespaces/PROJECT_ID */
   parent: string;
@@ -543,6 +666,11 @@ export interface CreateNamespacesDomainmappingsRequest {
   /** Request body */
   body?: DomainMapping;
 }
+const CreateNamespacesDomainmappingsRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  5,
+) as any as S.Schema<CreateNamespacesDomainmappingsRequest>;
+
 /** InstanceStatus represents the current state of an Instance. */
 export interface InstanceStatus {
   /** Output only. Conditions communicate information about ongoing/complete reconciliation processes that bring the "spec" inline with the observed state of the world. Instance-specific conditions include: * `Ready`: `True` when the Instance is ready to be executed. */
@@ -554,6 +682,8 @@ export interface InstanceStatus {
   /** Output only. All URLs serving traffic for this Instance. */
   urls?: StringList;
 }
+const InstanceStatus = /*@__PURE__*/ __L.at(__c6, 6) as any as S.Schema<InstanceStatus>;
+
 /** InstanceSpec describes how the Instance will look. */
 export interface InstanceSpec {
   /** Optional. List of containers belonging to the Instance. We disallow a number of fields on this Container. */
@@ -567,6 +697,8 @@ export interface InstanceSpec {
   /** Optional. List of volumes that can be mounted by containers belonging to the Instance. */
   volumes?: VolumeList;
 }
+const InstanceSpec = /*@__PURE__*/ __L.at(__c6, 7) as any as S.Schema<InstanceSpec>;
+
 /** An Instance represents the configuration of a single instance that references a container image and runs to completion. */
 export interface Instance {
   /** Optional. APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. */
@@ -580,6 +712,8 @@ export interface Instance {
   /** Optional. Specification of the desired behavior of an Instance. */
   spec?: InstanceSpec;
 }
+const Instance = /*@__PURE__*/ __L.at(__c7, 0) as any as S.Schema<Instance>;
+
 export interface CreateNamespacesInstancesRequest {
   /** Required. The resource's parent. In Cloud Run, it may be one of the following: * `{project_id_or_number}` * `namespaces/{project_id_or_number}` * `namespaces/{project_id_or_number}/instances` * `projects/{project_id_or_number}/locations/{region}` * `projects/{project_id_or_number}/regions/{region}` Parent resource namespace. */
   parent: string;
@@ -588,6 +722,11 @@ export interface CreateNamespacesInstancesRequest {
   /** Request body */
   body?: Instance;
 }
+const CreateNamespacesInstancesRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  1,
+) as any as S.Schema<CreateNamespacesInstancesRequest>;
+
 /** ExecutionTemplateSpec describes the metadata and spec an Execution should have when created from a job. */
 export interface ExecutionTemplateSpec {
   /** Required. ExecutionSpec holds the desired configuration for executions of this job. */
@@ -595,6 +734,11 @@ export interface ExecutionTemplateSpec {
   /** Optional. Optional metadata for this Execution, including labels and annotations. The following annotation keys set properties of the created execution: * `run.googleapis.com/cloudsql-instances` sets Cloud SQL connections. Multiple values should be comma separated. * `run.googleapis.com/vpc-access-connector` sets a Serverless VPC Access connector. * `run.googleapis.com/vpc-access-egress` sets VPC egress. Supported values are `all-traffic`, `all` (deprecated), and `private-ranges-only`. `all-traffic` and `all` provide the same functionality. `all` is deprecated but will continue to be supported. Prefer `all-traffic`. */
   metadata?: ObjectMeta;
 }
+const ExecutionTemplateSpec = /*@__PURE__*/ __L.at(
+  __c7,
+  2,
+) as any as S.Schema<ExecutionTemplateSpec>;
+
 /** JobSpec describes how the job will look. */
 export interface JobSpec {
   /** A unique string used as a suffix for creating a new execution. The Job will become ready when the execution is successfully started. The sum of job name and token length must be fewer than 63 characters. */
@@ -604,6 +748,8 @@ export interface JobSpec {
   /** A unique string used as a suffix for creating a new execution. The Job will become ready when the execution is successfully completed. The sum of job name and token length must be fewer than 63 characters. */
   runExecutionToken?: string;
 }
+const JobSpec = /*@__PURE__*/ __L.at(__c7, 3) as any as S.Schema<JobSpec>;
+
 export type ExecutionReferenceCompletionStatusEnum =
   | "COMPLETION_STATUS_UNSPECIFIED"
   | "EXECUTION_SUCCEEDED"
@@ -611,6 +757,8 @@ export type ExecutionReferenceCompletionStatusEnum =
   | "EXECUTION_RUNNING"
   | "EXECUTION_PENDING"
   | "EXECUTION_CANCELLED";
+const ExecutionReferenceCompletionStatusEnum = S.String;
+
 /** Reference to an Execution. Use /Executions.GetExecution with the given name to get full execution including the latest status. */
 export interface ExecutionReference {
   /** Optional. Completion timestamp of the execution. */
@@ -624,6 +772,8 @@ export interface ExecutionReference {
   /** Optional. Status for the execution completion. */
   completionStatus?: ExecutionReferenceCompletionStatusEnum | (string & {});
 }
+const ExecutionReference = /*@__PURE__*/ __L.at(__c7, 4) as any as S.Schema<ExecutionReference>;
+
 /** JobStatus represents the current state of a Job. */
 export interface JobStatus {
   /** The 'generation' of the job that was last processed by the controller. */
@@ -635,6 +785,8 @@ export interface JobStatus {
   /** Number of executions created for this job. */
   executionCount?: number;
 }
+const JobStatus = /*@__PURE__*/ __L.at(__c7, 5) as any as S.Schema<JobStatus>;
+
 /** Job represents the configuration of a single job, which references a container image which is run to completion. */
 export interface Job {
   /** Optional. Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. */
@@ -648,6 +800,8 @@ export interface Job {
   /** Output only. Current status of a job. */
   status?: JobStatus;
 }
+const Job = /*@__PURE__*/ __L.at(__c7, 6) as any as S.Schema<Job>;
+
 export interface CreateNamespacesJobsRequest {
   /** Required. The namespace in which the job should be created. Replace {namespace} with the project ID or number. It takes the form namespaces/{namespace}. For example: namespaces/PROJECT_ID */
   parent: string;
@@ -656,6 +810,11 @@ export interface CreateNamespacesJobsRequest {
   /** Request body */
   body?: Job;
 }
+const CreateNamespacesJobsRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  7,
+) as any as S.Schema<CreateNamespacesJobsRequest>;
+
 /** TrafficTarget holds a single entry of the routing table for a Route. */
 export interface TrafficTarget {
   /** Output only. URL displays the URL for accessing tagged traffic targets. URL is displayed in status, and is disallowed on spec. URL must contain a scheme (e.g. https://) and a hostname, but may not contain anything else (e.g. basic auth, url path, etc.) */
@@ -671,11 +830,17 @@ export interface TrafficTarget {
   /** Points this traffic target to a specific Revision. This field is mutually exclusive with latest_revision. */
   revisionName?: string;
 }
+const TrafficTarget = /*@__PURE__*/ __L.at(__c8, 0) as any as S.Schema<TrafficTarget>;
+
 export type TrafficTargetList = Array<TrafficTarget>;
+const TrafficTargetList = /*@__PURE__*/ __L.at(__c8, 1) as any as S.Schema<TrafficTargetList>;
+
 /** Information for connecting over HTTP(s). */
 export interface Addressable {
   url?: string;
 }
+const Addressable = /*@__PURE__*/ __L.at(__c8, 2) as any as S.Schema<Addressable>;
+
 /** The current state of the Service. Output only. */
 export interface ServiceStatus {
   /** Holds the configured traffic distribution. These entries will always contain RevisionName references. When ConfigurationName appears in the spec, this will hold the LatestReadyRevisionName that we last observed. */
@@ -693,7 +858,14 @@ export interface ServiceStatus {
   /** Conditions communicate information about ongoing/complete reconciliation processes that bring the `spec` inline with the observed state of the world. Service-specific conditions include: * `ConfigurationsReady`: `True` when the underlying Configuration is ready. * `RoutesReady`: `True` when the underlying Route is ready. * `Ready`: `True` when all underlying resources are ready. */
   conditions?: GoogleCloudRunV1ConditionList;
 }
+const ServiceStatus = /*@__PURE__*/ __L.at(__c8, 3) as any as S.Schema<ServiceStatus>;
+
 export type LocalObjectReferenceList = Array<LocalObjectReference>;
+const LocalObjectReferenceList = /*@__PURE__*/ __L.at(
+  __c8,
+  4,
+) as any as S.Schema<LocalObjectReferenceList>;
+
 /** RevisionSpec holds the desired state of the Revision (from the client). */
 export interface RevisionSpec {
   /** Email address of the IAM service account associated with the revision of the service. The service account represents the identity of the running revision, and determines what permissions the revision has. If not provided, the revision will use the project's default service account. */
@@ -714,6 +886,8 @@ export interface RevisionSpec {
   /** Not supported by Cloud Run. */
   imagePullSecrets?: LocalObjectReferenceList;
 }
+const RevisionSpec = /*@__PURE__*/ __L.at(__c8, 5) as any as S.Schema<RevisionSpec>;
+
 /** RevisionTemplateSpec describes the data a revision should have when created from a template. */
 export interface RevisionTemplate {
   /** RevisionSpec holds the desired state of the Revision (from the client). */
@@ -721,6 +895,8 @@ export interface RevisionTemplate {
   /** Optional metadata for this Revision, including labels and annotations. Name will be generated by the Configuration. The following annotation keys set properties of the created revision: * `autoscaling.knative.dev/minScale` sets the minimum number of instances. * `autoscaling.knative.dev/maxScale` sets the maximum number of instances. * `run.googleapis.com/cloudsql-instances` sets Cloud SQL connections. Multiple values should be comma separated. * `run.googleapis.com/health-check-disabled`: if true, deploy-time startup probes will not run for this revision. * `run.googleapis.com/vpc-access-connector` sets a Serverless VPC Access connector. * `run.googleapis.com/vpc-access-egress` sets VPC egress. Supported values are `all-traffic`, `all` (deprecated), and `private-ranges-only`. `all-traffic` and `all` provide the same functionality. `all` is deprecated but will continue to be supported. Prefer `all-traffic`. */
   metadata?: ObjectMeta;
 }
+const RevisionTemplate = /*@__PURE__*/ __L.at(__c8, 6) as any as S.Schema<RevisionTemplate>;
+
 /** ServiceSpec holds the desired state of the Route (from the client), which is used to manipulate the underlying Route and Configuration(s). */
 export interface ServiceSpec {
   /** Specifies how to distribute traffic over a collection of Knative Revisions and Configurations to the Service's main URL. */
@@ -728,6 +904,8 @@ export interface ServiceSpec {
   /** Holds the latest specification for the Revision to be stamped out. */
   template?: RevisionTemplate;
 }
+const ServiceSpec = /*@__PURE__*/ __L.at(__c8, 7) as any as S.Schema<ServiceSpec>;
+
 /** Service acts as a top-level container that manages a set of Routes and Configurations which implement a network service. Service exists to provide a singular abstraction which can be access controlled, reasoned about, and which encapsulates software lifecycle decisions such as rollout policy and team resource ownership. Service acts only as an orchestrator of the underlying Routes and Configurations (much as a kubernetes Deployment orchestrates ReplicaSets). The Service's controller will track the statuses of its owned Configuration and Route, reflecting their statuses and conditions as its own. */
 export interface Service {
   /** Metadata associated with this Service, including name, namespace, labels, and annotations. In Cloud Run, annotations with 'run.googleapis.com/' and 'autoscaling.knative.dev' are restricted, and the accepted annotations will be different depending on the resource type. The following Cloud Run-specific annotations are accepted in Service.metadata.annotations. * `run.googleapis.com/base-images` * `run.googleapis.com/binary-authorization-breakglass` * `run.googleapis.com/binary-authorization` * `run.googleapis.com/client-name` * `run.googleapis.com/custom-audiences` * `run.googleapis.com/default-url-disabled` * `run.googleapis.com/description` * `run.googleapis.com/gc-traffic-tags` * `run.googleapis.com/ingress` * `run.googleapis.com/ingress` sets the ingress settings for the Service. See [the ingress settings documentation](/run/docs/securing/ingress) for details on configuring ingress settings. * `run.googleapis.com/ingress-status` is output-only and contains the currently active ingress settings for the Service. `run.googleapis.com/ingress-status` may differ from `run.googleapis.com/ingress` while the system is processing a change to `run.googleapis.com/ingress` or if the system failed to process a change to `run.googleapis.com/ingress`. When the system has processed all changes successfully `run.googleapis.com/ingress-status` and `run.googleapis.com/ingress` are equal. */
@@ -741,6 +919,8 @@ export interface Service {
   /** Holds the desired state of the Service (from the client). */
   spec?: ServiceSpec;
 }
+const Service = /*@__PURE__*/ __L.at(__c9, 0) as any as S.Schema<Service>;
+
 export interface CreateNamespacesServicesRequest {
   /** Required. The resource's parent. In Cloud Run, it may be one of the following: * `{project_id_or_number}` * `namespaces/{project_id_or_number}` * `namespaces/{project_id_or_number}/services` * `projects/{project_id_or_number}/locations/{region}` * `projects/{project_id_or_number}/regions/{region}` */
   parent: string;
@@ -749,6 +929,11 @@ export interface CreateNamespacesServicesRequest {
   /** Request body */
   body?: Service;
 }
+const CreateNamespacesServicesRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  1,
+) as any as S.Schema<CreateNamespacesServicesRequest>;
+
 /** Holds a single instance split entry for the Worker. Allocations can be done to a specific Revision name, or pointing to the latest Ready Revision. */
 export interface InstanceSplit {
   /** Uses the "status.latestReadyRevisionName" to determine the instance split target. When it changes, workloads will automatically migrate from the prior "latest ready" revision to the new one. */
@@ -758,7 +943,11 @@ export interface InstanceSplit {
   /** Revision to which to assign this portion of instances. */
   revisionName?: string;
 }
+const InstanceSplit = /*@__PURE__*/ __L.at(__c9, 2) as any as S.Schema<InstanceSplit>;
+
 export type InstanceSplitList = Array<InstanceSplit>;
+const InstanceSplitList = /*@__PURE__*/ __L.at(__c9, 3) as any as S.Schema<InstanceSplitList>;
+
 /** The current state of the WorkerPool. Output only. */
 export interface WorkerPoolStatus {
   /** Name of the latest Revision from this WorkerPool's template that has had its `Ready` condition become `True`. */
@@ -772,6 +961,8 @@ export interface WorkerPoolStatus {
   /** Conditions communicate information about ongoing/complete reconciliation processes that bring the `spec` inline with the observed state of the world. * `Ready`: `True` when all underlying resources are ready. */
   conditions?: GoogleCloudRunV1ConditionList;
 }
+const WorkerPoolStatus = /*@__PURE__*/ __L.at(__c9, 4) as any as S.Schema<WorkerPoolStatus>;
+
 /** WorkerPoolSpec holds the desired state of the WorkerPool's template and instance splits. */
 export interface WorkerPoolSpec {
   /** Specifies how to distribute instances over a collection of Revisions. */
@@ -779,6 +970,8 @@ export interface WorkerPoolSpec {
   /** Holds the latest specification for the Revision to be stamped out. */
   template?: RevisionTemplate;
 }
+const WorkerPoolSpec = /*@__PURE__*/ __L.at(__c9, 5) as any as S.Schema<WorkerPoolSpec>;
+
 /** WorkerPool acts as a top-level container that manages a set instance splits among a set of Revisions and a template for creating new Revisions. */
 export interface WorkerPool {
   /** Communicates the system-controlled state of the WorkerPool. */
@@ -792,6 +985,8 @@ export interface WorkerPool {
   /** The kind of resource. It must be "WorkerPool". */
   kind?: string;
 }
+const WorkerPool = /*@__PURE__*/ __L.at(__c9, 6) as any as S.Schema<WorkerPool>;
+
 export interface CreateNamespacesWorkerpoolsRequest {
   /** Required. The resource's parent. In Cloud Run, it may be one of the following: * `{project_id_or_number}` * `namespaces/{project_id_or_number}` * `namespaces/{project_id_or_number}/workerpools` * `projects/{project_id_or_number}/locations/{region}` * `projects/{project_id_or_number}/regions/{region}` */
   parent: string;
@@ -800,6 +995,11 @@ export interface CreateNamespacesWorkerpoolsRequest {
   /** Request body */
   body?: WorkerPool;
 }
+const CreateNamespacesWorkerpoolsRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  7,
+) as any as S.Schema<CreateNamespacesWorkerpoolsRequest>;
+
 export interface CreateProjectsLocationsDomainmappingsRequest {
   /** Required. The namespace in which the domain mapping should be created. For Cloud Run (fully managed), replace {namespace} with the project ID or number. It takes the form namespaces/{namespace}. For example: namespaces/PROJECT_ID */
   parent: string;
@@ -808,6 +1008,11 @@ export interface CreateProjectsLocationsDomainmappingsRequest {
   /** Request body */
   body?: DomainMapping;
 }
+const CreateProjectsLocationsDomainmappingsRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  0,
+) as any as S.Schema<CreateProjectsLocationsDomainmappingsRequest>;
+
 export interface CreateProjectsLocationsServicesRequest {
   /** Required. The resource's parent. In Cloud Run, it may be one of the following: * `{project_id_or_number}` * `namespaces/{project_id_or_number}` * `namespaces/{project_id_or_number}/services` * `projects/{project_id_or_number}/locations/{region}` * `projects/{project_id_or_number}/regions/{region}` */
   parent: string;
@@ -816,6 +1021,11 @@ export interface CreateProjectsLocationsServicesRequest {
   /** Request body */
   body?: Service;
 }
+const CreateProjectsLocationsServicesRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  1,
+) as any as S.Schema<CreateProjectsLocationsServicesRequest>;
+
 export interface DeleteNamespacesDomainmappingsRequest {
   /** Indicates that the server should validate the request and populate default values without persisting the request. Supported values: `all` */
   dryRun?: string;
@@ -828,6 +1038,11 @@ export interface DeleteNamespacesDomainmappingsRequest {
   /** Cloud Run currently ignores this parameter. */
   apiVersion?: string;
 }
+const DeleteNamespacesDomainmappingsRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  2,
+) as any as S.Schema<DeleteNamespacesDomainmappingsRequest>;
+
 /** Metadata for synthetic resources like List. In Cloud Run, all List Resources Responses will have a ListMeta instead of ObjectMeta. */
 export interface ListMeta {
   /** URL representing this object. */
@@ -837,6 +1052,8 @@ export interface ListMeta {
   /** Opaque string that identifies the server's internal version of this object. It can be used by clients to determine when objects have changed. If the message is passed back to the server, it must be left unmodified. */
   resourceVersion?: string;
 }
+const ListMeta = /*@__PURE__*/ __L.at(__c10, 3) as any as S.Schema<ListMeta>;
+
 /** StatusCause provides more information about an api.Status failure, including cases when multiple errors are encountered. */
 export interface StatusCause {
   /** A machine-readable description of the cause of the error. If this value is empty there is no information available. */
@@ -846,7 +1063,11 @@ export interface StatusCause {
   /** A human-readable description of the cause of the error. This field may be presented as-is to a reader. */
   message?: string;
 }
+const StatusCause = /*@__PURE__*/ __L.at(__c10, 4) as any as S.Schema<StatusCause>;
+
 export type StatusCauseList = Array<StatusCause>;
+const StatusCauseList = /*@__PURE__*/ __L.at(__c10, 5) as any as S.Schema<StatusCauseList>;
+
 /** StatusDetails is a set of additional properties that MAY be set by the server to provide additional information about a response. The Reason field of a Status object defines what attributes will be set. Clients must ignore fields that do not match the defined type of each attribute, and should assume that any attribute may be empty, invalid, or under defined. */
 export interface StatusDetails {
   /** The group attribute of the resource associated with the status StatusReason. */
@@ -862,6 +1083,8 @@ export interface StatusDetails {
   /** The Causes array includes more details associated with the StatusReason failure. Not all StatusReasons may provide detailed causes. */
   causes?: StatusCauseList;
 }
+const StatusDetails = /*@__PURE__*/ __L.at(__c10, 6) as any as S.Schema<StatusDetails>;
+
 /** Status is a return value for calls that don't return other objects. */
 export interface Status {
   /** A human-readable description of the status of this operation. */
@@ -877,6 +1100,8 @@ export interface Status {
   /** Suggested HTTP return code for this status, 0 if not set. */
   code?: number;
 }
+const Status = /*@__PURE__*/ __L.at(__c10, 7) as any as S.Schema<Status>;
+
 export interface DeleteNamespacesExecutionsRequest {
   /** Optional. Specifies the propagation policy of delete. Cloud Run currently ignores this setting. */
   propagationPolicy?: string;
@@ -887,6 +1112,11 @@ export interface DeleteNamespacesExecutionsRequest {
   /** Optional. Cloud Run currently ignores this parameter. */
   apiVersion?: string;
 }
+const DeleteNamespacesExecutionsRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  0,
+) as any as S.Schema<DeleteNamespacesExecutionsRequest>;
+
 export interface DeleteNamespacesInstancesRequest {
   /** Optional. Indicates that the server should validate the request and populate default values without persisting the request. Supported values: `all` */
   dryRun?: string;
@@ -899,6 +1129,11 @@ export interface DeleteNamespacesInstancesRequest {
   /** Optional. Cloud Run currently ignores this parameter. */
   kind?: string;
 }
+const DeleteNamespacesInstancesRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  1,
+) as any as S.Schema<DeleteNamespacesInstancesRequest>;
+
 export interface DeleteNamespacesJobsRequest {
   /** Optional. Cloud Run currently ignores this parameter. */
   apiVersion?: string;
@@ -911,6 +1146,11 @@ export interface DeleteNamespacesJobsRequest {
   /** Optional. Cloud Run currently ignores this parameter. */
   kind?: string;
 }
+const DeleteNamespacesJobsRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  2,
+) as any as S.Schema<DeleteNamespacesJobsRequest>;
+
 export interface DeleteNamespacesRevisionsRequest {
   /** Cloud Run currently ignores this parameter. */
   kind?: string;
@@ -923,6 +1163,11 @@ export interface DeleteNamespacesRevisionsRequest {
   /** Cloud Run currently ignores this parameter. */
   apiVersion?: string;
 }
+const DeleteNamespacesRevisionsRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  3,
+) as any as S.Schema<DeleteNamespacesRevisionsRequest>;
+
 export interface DeleteNamespacesServicesRequest {
   /** Indicates that the server should validate the request and populate default values without persisting the request. Supported values: `all` */
   dryRun?: string;
@@ -935,12 +1180,22 @@ export interface DeleteNamespacesServicesRequest {
   /** Not supported, and ignored by Cloud Run. */
   propagationPolicy?: string;
 }
+const DeleteNamespacesServicesRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  4,
+) as any as S.Schema<DeleteNamespacesServicesRequest>;
+
 export interface DeleteNamespacesWorkerpoolsRequest {
   /** Indicates that the server should validate the request and populate default values without persisting the request. Supported values: `all` */
   dryRun?: string;
   /** Required. The fully qualified name of the worker pool to delete. It can be any of the following forms: * `namespaces/{project_id_or_number}/workerpools/{worker_pool_name}` (only when the `endpoint` is regional) * `projects/{project_id_or_number}/locations/{region}/workerpools/{worker_pool_name}` * `projects/{project_id_or_number}/regions/{region}/workerpools/{worker_pool_name}` */
   name: string;
 }
+const DeleteNamespacesWorkerpoolsRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  5,
+) as any as S.Schema<DeleteNamespacesWorkerpoolsRequest>;
+
 export interface DeleteProjectsLocationsDomainmappingsRequest {
   /** Specifies the propagation policy of delete. Cloud Run currently ignores this setting, and deletes in the background. Please see kubernetes.io/docs/concepts/architecture/garbage-collection/ for more information. */
   propagationPolicy?: string;
@@ -953,12 +1208,24 @@ export interface DeleteProjectsLocationsDomainmappingsRequest {
   /** Required. The name of the domain mapping to delete. For Cloud Run (fully managed), replace {namespace} with the project ID or number. It takes the form namespaces/{namespace}. For example: namespaces/PROJECT_ID */
   name: string;
 }
+const DeleteProjectsLocationsDomainmappingsRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  6,
+) as any as S.Schema<DeleteProjectsLocationsDomainmappingsRequest>;
+
 export interface DeleteProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
+const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  7,
+) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>;
+
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
+const Empty = CancelExecutionRequest as any as S.Schema<Empty>;
+
 export interface DeleteProjectsLocationsRevisionsRequest {
   /** Specifies the propagation policy of delete. Cloud Run currently ignores this setting, and deletes in the background. */
   propagationPolicy?: string;
@@ -971,6 +1238,11 @@ export interface DeleteProjectsLocationsRevisionsRequest {
   /** The name of the revision to delete. For Cloud Run (fully managed), replace {namespace} with the project ID or number. It takes the form namespaces/{namespace}. For example: namespaces/PROJECT_ID */
   name: string;
 }
+const DeleteProjectsLocationsRevisionsRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  0,
+) as any as S.Schema<DeleteProjectsLocationsRevisionsRequest>;
+
 export interface DeleteProjectsLocationsServicesRequest {
   /** Not supported, and ignored by Cloud Run. */
   apiVersion?: string;
@@ -983,12 +1255,22 @@ export interface DeleteProjectsLocationsServicesRequest {
   /** Not supported, and ignored by Cloud Run. */
   kind?: string;
 }
+const DeleteProjectsLocationsServicesRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  1,
+) as any as S.Schema<DeleteProjectsLocationsServicesRequest>;
+
 export interface GetIamPolicyProjectsLocationsInstancesRequest {
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
 }
+const GetIamPolicyProjectsLocationsInstancesRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  2,
+) as any as S.Schema<GetIamPolicyProjectsLocationsInstancesRequest>;
+
 /** Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information. */
 export interface Expr {
   /** Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file. */
@@ -1000,6 +1282,8 @@ export interface Expr {
   /** Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression. */
   title?: string;
 }
+const Expr = /*@__PURE__*/ __L.at(__c12, 3) as any as S.Schema<Expr>;
+
 /** Associates `members`, or principals, with a `role`. */
 export interface Binding {
   /** Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles). */
@@ -1009,12 +1293,18 @@ export interface Binding {
   /** The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   condition?: Expr;
 }
+const Binding = /*@__PURE__*/ __L.at(__c12, 4) as any as S.Schema<Binding>;
+
 export type BindingList = Array<Binding>;
+const BindingList = /*@__PURE__*/ __L.at(__c12, 5) as any as S.Schema<BindingList>;
+
 export type AuditLogConfigLogTypeEnum =
   | "LOG_TYPE_UNSPECIFIED"
   | "ADMIN_READ"
   | "DATA_WRITE"
   | "DATA_READ";
+const AuditLogConfigLogTypeEnum = S.String;
+
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
 export interface AuditLogConfig {
   /** The log type that this config enables. */
@@ -1022,7 +1312,11 @@ export interface AuditLogConfig {
   /** Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members. */
   exemptedMembers?: StringList;
 }
+const AuditLogConfig = /*@__PURE__*/ __L.at(__c12, 6) as any as S.Schema<AuditLogConfig>;
+
 export type AuditLogConfigList = Array<AuditLogConfig>;
+const AuditLogConfigList = /*@__PURE__*/ __L.at(__c12, 7) as any as S.Schema<AuditLogConfigList>;
+
 /** Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts `jose@example.com` from DATA_READ logging, and `aliya@example.com` from DATA_WRITE logging. */
 export interface AuditConfig {
   /** The configuration for logging of each type of permission. */
@@ -1030,7 +1324,11 @@ export interface AuditConfig {
   /** Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services. */
   service?: string;
 }
+const AuditConfig = /*@__PURE__*/ __L.at(__c13, 0) as any as S.Schema<AuditConfig>;
+
 export type AuditConfigList = Array<AuditConfig>;
+const AuditConfigList = /*@__PURE__*/ __L.at(__c13, 1) as any as S.Schema<AuditConfigList>;
+
 /** An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single `role`. Principals can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** ``` { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } ``` **YAML example:** ``` bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/). */
 export interface Policy {
   /** Associates a list of `members`, or principals, with a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one principal. The `bindings` in a `Policy` can refer to up to 1,500 principals; up to 250 of these principals can be Google groups. Each occurrence of a principal counts towards these limits. For example, if the `bindings` grant 50 different roles to `user:alice@example.com`, and not to any other principal, then you can add another 1,450 principals to the `bindings` in the `Policy`. */
@@ -1042,33 +1340,57 @@ export interface Policy {
   /** Specifies cloud audit logging configuration for this policy. */
   auditConfigs?: AuditConfigList;
 }
+const Policy = /*@__PURE__*/ __L.at(__c13, 2) as any as S.Schema<Policy>;
+
 export interface GetIamPolicyProjectsLocationsJobsRequest {
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
 }
+const GetIamPolicyProjectsLocationsJobsRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  3,
+) as any as S.Schema<GetIamPolicyProjectsLocationsJobsRequest>;
+
 export interface GetIamPolicyProjectsLocationsServicesRequest {
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
 }
+const GetIamPolicyProjectsLocationsServicesRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  4,
+) as any as S.Schema<GetIamPolicyProjectsLocationsServicesRequest>;
+
 export interface GetIamPolicyProjectsLocationsWorkerpoolsRequest {
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
 }
+const GetIamPolicyProjectsLocationsWorkerpoolsRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  5,
+) as any as S.Schema<GetIamPolicyProjectsLocationsWorkerpoolsRequest>;
+
 export interface GetNamespacesConfigurationsRequest {
   /** The name of the configuration to retrieve. For Cloud Run, replace {namespace_id} with the project ID or number. */
   name: string;
 }
+const GetNamespacesConfigurationsRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  6,
+) as any as S.Schema<GetNamespacesConfigurationsRequest>;
+
 /** ConfigurationSpec holds the desired state of the Configuration (from the client). */
 export interface ConfigurationSpec {
   /** Template holds the latest specification for the Revision to be stamped out. */
   template?: RevisionTemplate;
 }
+const ConfigurationSpec = /*@__PURE__*/ __L.at(__c13, 7) as any as S.Schema<ConfigurationSpec>;
+
 /** ConfigurationStatus communicates the observed state of the Configuration (from the controller). */
 export interface ConfigurationStatus {
   /** LatestReadyRevisionName holds the name of the latest Revision stamped out from this Configuration that has had its "Ready" condition become "True". */
@@ -1080,6 +1402,8 @@ export interface ConfigurationStatus {
   /** ObservedGeneration is the 'Generation' of the Configuration that was last processed by the controller. The observed generation is updated even if the controller failed to process the spec and create the Revision. Clients polling for completed reconciliation should poll until observedGeneration = metadata.generation, and the Ready condition's status is True or False. */
   observedGeneration?: number;
 }
+const ConfigurationStatus = /*@__PURE__*/ __L.at(__c14, 0) as any as S.Schema<ConfigurationStatus>;
+
 /** Configuration represents the "floating HEAD" of a linear history of Revisions, and optionally how the containers those revisions reference are built. Users create new Revisions by updating the Configuration's spec. The "latest created" revision's name is available under status, as is the "latest ready" revision's name. */
 export interface Configuration {
   /** Metadata associated with this Configuration, including name, namespace, labels, and annotations. */
@@ -1093,26 +1417,53 @@ export interface Configuration {
   /** Status communicates the observed state of the Configuration (from the controller). */
   status?: ConfigurationStatus;
 }
+const Configuration = /*@__PURE__*/ __L.at(__c14, 1) as any as S.Schema<Configuration>;
+
 export interface GetNamespacesDomainmappingsRequest {
   /** Required. The name of the domain mapping to retrieve. For Cloud Run (fully managed), replace {namespace} with the project ID or number. It takes the form namespaces/{namespace}. For example: namespaces/PROJECT_ID */
   name: string;
 }
+const GetNamespacesDomainmappingsRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  2,
+) as any as S.Schema<GetNamespacesDomainmappingsRequest>;
+
 export interface GetNamespacesExecutionsRequest {
   /** Required. The name of the execution to retrieve. Replace {namespace} with the project ID or number. It takes the form namespaces/{namespace}. For example: namespaces/PROJECT_ID */
   name: string;
 }
+const GetNamespacesExecutionsRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  3,
+) as any as S.Schema<GetNamespacesExecutionsRequest>;
+
 export interface GetNamespacesInstancesRequest {
   /** Required. The fully qualified name of the Instance to retrieve. It can be any of the following forms: * `namespaces/{project_id_or_number}/instances/{instance_name}` (only when the `endpoint` is regional) * `projects/{project_id_or_number}/locations/{region}/instances/{instance_name}` * `projects/{project_id_or_number}/regions/{region}/instances/{instance_name}` Parent resource namespace. */
   name: string;
 }
+const GetNamespacesInstancesRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  4,
+) as any as S.Schema<GetNamespacesInstancesRequest>;
+
 export interface GetNamespacesJobsRequest {
   /** Required. The name of the job to retrieve. It takes the form namespaces/{namespace}/jobs/{job_name} and the `endpoint` must be regional. Replace {namespace} with the project ID or number. */
   name: string;
 }
+const GetNamespacesJobsRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  5,
+) as any as S.Schema<GetNamespacesJobsRequest>;
+
 export interface GetNamespacesRevisionsRequest {
   /** The name of the revision to retrieve. For Cloud Run (fully managed), replace {namespace} with the project ID or number. It takes the form namespaces/{namespace}. For example: namespaces/PROJECT_ID */
   name: string;
 }
+const GetNamespacesRevisionsRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  6,
+) as any as S.Schema<GetNamespacesRevisionsRequest>;
+
 /** RevisionStatus communicates the observed state of the Revision (from the controller). */
 export interface RevisionStatus {
   /** Conditions communicate information about ongoing/complete reconciliation processes that bring the "spec" inline with the observed state of the world. As a Revision is being prepared, it will incrementally update conditions. Revision-specific conditions include: * `ResourcesAvailable`: `True` when underlying resources have been provisioned. * `ContainerHealthy`: `True` when the Revision readiness check completes. * `Active`: `True` when the Revision may receive traffic. */
@@ -1128,6 +1479,8 @@ export interface RevisionStatus {
   /** Optional. Specifies the generated logging url for this particular revision based on the revision url template specified in the controller's config. */
   logUrl?: string;
 }
+const RevisionStatus = /*@__PURE__*/ __L.at(__c14, 7) as any as S.Schema<RevisionStatus>;
+
 /** Revision is an immutable snapshot of code and configuration. A revision references one or more container images. Revisions are created by updates to a Service. */
 export interface Revision {
   /** Metadata associated with this Revision, including name, namespace, labels, and annotations. */
@@ -1141,15 +1494,24 @@ export interface Revision {
   /** Spec holds the desired state of the Revision (from the client). */
   spec?: RevisionSpec;
 }
+const Revision = /*@__PURE__*/ __L.at(__c15, 0) as any as S.Schema<Revision>;
+
 export interface GetNamespacesRoutesRequest {
   /** The name of the route to retrieve. For Cloud Run (fully managed), replace {namespace} with the project ID or number. It takes the form namespaces/{namespace}. For example: namespaces/PROJECT_ID */
   name: string;
 }
+const GetNamespacesRoutesRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  1,
+) as any as S.Schema<GetNamespacesRoutesRequest>;
+
 /** RouteSpec holds the desired state of the Route (from the client). */
 export interface RouteSpec {
   /** Traffic specifies how to distribute traffic over a collection of Knative Revisions and Configurations. Cloud Run currently supports a single configurationName. */
   traffic?: TrafficTargetList;
 }
+const RouteSpec = /*@__PURE__*/ __L.at(__c15, 2) as any as S.Schema<RouteSpec>;
+
 /** RouteStatus communicates the observed state of the Route (from the controller). */
 export interface RouteStatus {
   /** ObservedGeneration is the 'Generation' of the Route that was last processed by the controller. Clients polling for completed reconciliation should poll until observedGeneration = metadata.generation and the Ready condition's status is True or False. Note that providing a TrafficTarget that has latest_revision=True will result in a Route that does not increment either its metadata.generation or its observedGeneration, as new "latest ready" revisions from the Configuration are processed without an update to the Route's spec. */
@@ -1163,6 +1525,8 @@ export interface RouteStatus {
   /** Traffic holds the configured traffic distribution. These entries will always contain RevisionName references. When ConfigurationName appears in the spec, this will hold the LatestReadyRevisionName that was last observed. */
   traffic?: TrafficTargetList;
 }
+const RouteStatus = /*@__PURE__*/ __L.at(__c15, 3) as any as S.Schema<RouteStatus>;
+
 /** Route is responsible for configuring ingress over a collection of Revisions. Some of the Revisions a Route distributes traffic over may be specified by referencing the Configuration responsible for creating them; in these cases the Route is additionally responsible for monitoring the Configuration for "latest ready" revision changes, and smoothly rolling out latest revisions. Cloud Run currently supports referencing a single Configuration to automatically deploy the "latest ready" Revision from that Configuration. */
 export interface Route {
   /** The kind of this resource, in this case always "Route". */
@@ -1176,16 +1540,32 @@ export interface Route {
   /** Metadata associated with this Route, including name, namespace, labels, and annotations. */
   metadata?: ObjectMeta;
 }
+const Route = /*@__PURE__*/ __L.at(__c15, 4) as any as S.Schema<Route>;
+
 export interface GetNamespacesServicesRequest {
   /** Required. The fully qualified name of the service to retrieve. It can be any of the following forms: * `namespaces/{project_id_or_number}/services/{service_name}` (only when the `endpoint` is regional) * `projects/{project_id_or_number}/locations/{region}/services/{service_name}` * `projects/{project_id_or_number}/regions/{region}/services/{service_name}` */
   name: string;
 }
+const GetNamespacesServicesRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  5,
+) as any as S.Schema<GetNamespacesServicesRequest>;
+
 export interface GetNamespacesTasksRequest {
   /** Required. The name of the task to retrieve. Replace {namespace} with the project ID or number. It takes the form namespaces/{namespace}. For example: namespaces/PROJECT_ID */
   name: string;
 }
+const GetNamespacesTasksRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  6,
+) as any as S.Schema<GetNamespacesTasksRequest>;
+
 export type DocumentMap = { [key: string]: unknown | undefined };
+const DocumentMap = /*@__PURE__*/ __L.at(__c15, 7) as any as S.Schema<DocumentMap>;
+
 export type DocumentMapList = Array<DocumentMap>;
+const DocumentMapList = /*@__PURE__*/ __L.at(__c16, 0) as any as S.Schema<DocumentMapList>;
+
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface GoogleRpcStatus {
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
@@ -1195,6 +1575,8 @@ export interface GoogleRpcStatus {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
   message?: string;
 }
+const GoogleRpcStatus = /*@__PURE__*/ __L.at(__c16, 1) as any as S.Schema<GoogleRpcStatus>;
+
 /** Result of a task attempt. */
 export interface TaskAttemptResult {
   /** Optional. Termination signal of the container. This is set to non-zero if the container is terminated by the system. At most one of exit_code or term_signal will be set. */
@@ -1204,6 +1586,8 @@ export interface TaskAttemptResult {
   /** Optional. The status of this attempt. If the status code is OK, then the attempt succeeded. */
   status?: GoogleRpcStatus;
 }
+const TaskAttemptResult = /*@__PURE__*/ __L.at(__c16, 2) as any as S.Schema<TaskAttemptResult>;
+
 /** TaskStatus represents the status of a task. */
 export interface TaskStatus {
   /** Required. Index of the task, unique per execution, and beginning at 0. */
@@ -1223,6 +1607,8 @@ export interface TaskStatus {
   /** Optional. Conditions communicate information about ongoing/complete reconciliation processes that bring the "spec" inline with the observed state of the world. Task-specific conditions include: * `Started`: `True` when the task has started to execute. * `Completed`: `True` when the task has succeeded. `False` when the task has failed. */
   conditions?: GoogleCloudRunV1ConditionList;
 }
+const TaskStatus = /*@__PURE__*/ __L.at(__c16, 3) as any as S.Schema<TaskStatus>;
+
 /** Task represents a single run of a container to completion. */
 export interface Task {
   /** Optional. Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. */
@@ -1236,22 +1622,44 @@ export interface Task {
   /** Output only. Current status of a task. */
   status?: TaskStatus;
 }
+const Task = /*@__PURE__*/ __L.at(__c16, 4) as any as S.Schema<Task>;
+
 export interface GetNamespacesWorkerpoolsRequest {
   /** Required. The fully qualified name of the worker pool to retrieve. It can be any of the following forms: * `namespaces/{project_id_or_number}/workerpools/{worker_pool_name}` (only when the `endpoint` is regional) * `projects/{project_id_or_number}/locations/{region}/workerpools/{worker_pool_name}` * `projects/{project_id_or_number}/regions/{region}/workerpools/{worker_pool_name}` */
   name: string;
 }
+const GetNamespacesWorkerpoolsRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  5,
+) as any as S.Schema<GetNamespacesWorkerpoolsRequest>;
+
 export interface GetProjectsLocationsConfigurationsRequest {
   /** The name of the configuration to retrieve. For Cloud Run, replace {namespace_id} with the project ID or number. */
   name: string;
 }
+const GetProjectsLocationsConfigurationsRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  6,
+) as any as S.Schema<GetProjectsLocationsConfigurationsRequest>;
+
 export interface GetProjectsLocationsDomainmappingsRequest {
   /** Required. The name of the domain mapping to retrieve. For Cloud Run (fully managed), replace {namespace} with the project ID or number. It takes the form namespaces/{namespace}. For example: namespaces/PROJECT_ID */
   name: string;
 }
+const GetProjectsLocationsDomainmappingsRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  7,
+) as any as S.Schema<GetProjectsLocationsDomainmappingsRequest>;
+
 export interface GetProjectsLocationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
+const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  0,
+) as any as S.Schema<GetProjectsLocationsOperationsRequest>;
+
 /** This resource represents a long-running operation that is the result of a network API call. */
 export interface GoogleLongrunningOperation {
   /** The error result of the operation in case of failure or cancellation. */
@@ -1265,18 +1673,38 @@ export interface GoogleLongrunningOperation {
   /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
   name?: string;
 }
+const GoogleLongrunningOperation = /*@__PURE__*/ __L.at(
+  __c17,
+  1,
+) as any as S.Schema<GoogleLongrunningOperation>;
+
 export interface GetProjectsLocationsRevisionsRequest {
   /** The name of the revision to retrieve. For Cloud Run (fully managed), replace {namespace} with the project ID or number. It takes the form namespaces/{namespace}. For example: namespaces/PROJECT_ID */
   name: string;
 }
+const GetProjectsLocationsRevisionsRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  2,
+) as any as S.Schema<GetProjectsLocationsRevisionsRequest>;
+
 export interface GetProjectsLocationsRoutesRequest {
   /** The name of the route to retrieve. For Cloud Run (fully managed), replace {namespace} with the project ID or number. It takes the form namespaces/{namespace}. For example: namespaces/PROJECT_ID */
   name: string;
 }
+const GetProjectsLocationsRoutesRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  3,
+) as any as S.Schema<GetProjectsLocationsRoutesRequest>;
+
 export interface GetProjectsLocationsServicesRequest {
   /** Required. The fully qualified name of the service to retrieve. It can be any of the following forms: * `namespaces/{project_id_or_number}/services/{service_name}` (only when the `endpoint` is regional) * `projects/{project_id_or_number}/locations/{region}/services/{service_name}` * `projects/{project_id_or_number}/regions/{region}/services/{service_name}` */
   name: string;
 }
+const GetProjectsLocationsServicesRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  4,
+) as any as S.Schema<GetProjectsLocationsServicesRequest>;
+
 export interface ListNamespacesAuthorizeddomainsRequest {
   /** Name of the parent Project resource. Example: `projects/myproject`. */
   parent: string;
@@ -1285,6 +1713,11 @@ export interface ListNamespacesAuthorizeddomainsRequest {
   /** Maximum results to return per page. */
   pageSize?: number;
 }
+const ListNamespacesAuthorizeddomainsRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  5,
+) as any as S.Schema<ListNamespacesAuthorizeddomainsRequest>;
+
 /** A domain that a user has been authorized to administer. To authorize use of a domain, verify ownership via [Search Console](https://search.google.com/search-console/welcome). */
 export interface AuthorizedDomain {
   /** Deprecated Read only. Full path to the `AuthorizedDomain` resource in the API. Example: `projects/myproject/authorizedDomains/example.com`. */
@@ -1292,7 +1725,14 @@ export interface AuthorizedDomain {
   /** Relative name of the domain authorized for use. Example: `example.com`. */
   id?: string;
 }
+const AuthorizedDomain = /*@__PURE__*/ __L.at(__c17, 6) as any as S.Schema<AuthorizedDomain>;
+
 export type AuthorizedDomainList = Array<AuthorizedDomain>;
+const AuthorizedDomainList = /*@__PURE__*/ __L.at(
+  __c17,
+  7,
+) as any as S.Schema<AuthorizedDomainList>;
+
 /** A list of Authorized Domains. */
 export interface ListAuthorizedDomainsResponse {
   /** The authorized domains belonging to the user. */
@@ -1300,6 +1740,11 @@ export interface ListAuthorizedDomainsResponse {
   /** Continuation token for fetching the next page of results. */
   nextPageToken?: string;
 }
+const ListAuthorizedDomainsResponse = /*@__PURE__*/ __L.at(
+  __c18,
+  0,
+) as any as S.Schema<ListAuthorizedDomainsResponse>;
+
 export interface ListNamespacesConfigurationsRequest {
   /** Optional. The maximum number of the records that should be returned. */
   limit?: number;
@@ -1318,7 +1763,14 @@ export interface ListNamespacesConfigurationsRequest {
   /** Not supported by Cloud Run. */
   fieldSelector?: string;
 }
+const ListNamespacesConfigurationsRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  1,
+) as any as S.Schema<ListNamespacesConfigurationsRequest>;
+
 export type ConfigurationList = Array<Configuration>;
+const ConfigurationList = /*@__PURE__*/ __L.at(__c18, 2) as any as S.Schema<ConfigurationList>;
+
 /** ListConfigurationsResponse is a list of Configuration resources. */
 export interface ListConfigurationsResponse {
   /** Metadata associated with this Configuration list. */
@@ -1332,6 +1784,11 @@ export interface ListConfigurationsResponse {
   /** The API version for this call such as "serving.knative.dev/v1". */
   apiVersion?: string;
 }
+const ListConfigurationsResponse = /*@__PURE__*/ __L.at(
+  __c18,
+  3,
+) as any as S.Schema<ListConfigurationsResponse>;
+
 export interface ListNamespacesDomainmappingsRequest {
   /** Allows to filter resources based on a specific value for a field name. Send this in a query string format. i.e. 'metadata.name%3Dlorem'. Not currently used by Cloud Run. */
   fieldSelector?: string;
@@ -1350,7 +1807,14 @@ export interface ListNamespacesDomainmappingsRequest {
   /** Allows to filter resources based on a label. Supported operations are =, !=, exists, in, and notIn. */
   labelSelector?: string;
 }
+const ListNamespacesDomainmappingsRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  4,
+) as any as S.Schema<ListNamespacesDomainmappingsRequest>;
+
 export type DomainMappingList = Array<DomainMapping>;
+const DomainMappingList = /*@__PURE__*/ __L.at(__c18, 5) as any as S.Schema<DomainMappingList>;
+
 /** ListDomainMappingsResponse is a list of DomainMapping resources. */
 export interface ListDomainMappingsResponse {
   /** Locations that could not be reached. */
@@ -1364,6 +1828,11 @@ export interface ListDomainMappingsResponse {
   /** The kind of this resource, in this case "DomainMappingList". */
   kind?: string;
 }
+const ListDomainMappingsResponse = /*@__PURE__*/ __L.at(
+  __c18,
+  6,
+) as any as S.Schema<ListDomainMappingsResponse>;
+
 export interface ListNamespacesExecutionsRequest {
   /** Required. The namespace from which the executions should be listed. Replace {namespace} with the project ID or number. It takes the form namespaces/{namespace}. For example: namespaces/PROJECT_ID */
   parent: string;
@@ -1382,7 +1851,14 @@ export interface ListNamespacesExecutionsRequest {
   /** Optional. Not supported by Cloud Run. */
   resourceVersion?: string;
 }
+const ListNamespacesExecutionsRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  7,
+) as any as S.Schema<ListNamespacesExecutionsRequest>;
+
 export type ExecutionList = Array<Execution>;
+const ExecutionList = /*@__PURE__*/ __L.at(__c19, 0) as any as S.Schema<ExecutionList>;
+
 /** ListExecutionsResponse is a list of Executions resources. */
 export interface ListExecutionsResponse {
   /** Locations that could not be reached. */
@@ -1396,6 +1872,11 @@ export interface ListExecutionsResponse {
   /** The API version for this call such as "run.googleapis.com/v1". */
   apiVersion?: string;
 }
+const ListExecutionsResponse = /*@__PURE__*/ __L.at(
+  __c19,
+  1,
+) as any as S.Schema<ListExecutionsResponse>;
+
 export interface ListNamespacesInstancesRequest {
   /** Optional. The maximum number of records that should be returned. */
   limit?: number;
@@ -1414,7 +1895,14 @@ export interface ListNamespacesInstancesRequest {
   /** Optional. Not supported by Cloud Run. */
   fieldSelector?: string;
 }
+const ListNamespacesInstancesRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  2,
+) as any as S.Schema<ListNamespacesInstancesRequest>;
+
 export type InstanceList = Array<Instance>;
+const InstanceList = /*@__PURE__*/ __L.at(__c19, 3) as any as S.Schema<InstanceList>;
+
 /** ListInstancesResponse is a list of Instances resources. */
 export interface ListInstancesResponse {
   /** List of Instances. */
@@ -1428,6 +1916,11 @@ export interface ListInstancesResponse {
   /** The kind of this resource, in this case "InstancesList". */
   kind?: string;
 }
+const ListInstancesResponse = /*@__PURE__*/ __L.at(
+  __c19,
+  4,
+) as any as S.Schema<ListInstancesResponse>;
+
 export interface ListNamespacesJobsRequest {
   /** Required. The namespace from which the jobs should be listed. Replace {namespace} with the project ID or number. It takes the form namespaces/{namespace}. For example: namespaces/PROJECT_ID */
   parent: string;
@@ -1446,7 +1939,14 @@ export interface ListNamespacesJobsRequest {
   /** Optional. Optional encoded string to continue paging. */
   continue?: string;
 }
+const ListNamespacesJobsRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  5,
+) as any as S.Schema<ListNamespacesJobsRequest>;
+
 export type JobList = Array<Job>;
+const JobList = /*@__PURE__*/ __L.at(__c19, 6) as any as S.Schema<JobList>;
+
 /** ListJobsResponse is a list of Jobs resources. */
 export interface ListJobsResponse {
   /** The API version for this call such as "run.googleapis.com/v1". */
@@ -1460,6 +1960,8 @@ export interface ListJobsResponse {
   /** The kind of this resource, in this case "JobsList". */
   kind?: string;
 }
+const ListJobsResponse = /*@__PURE__*/ __L.at(__c19, 7) as any as S.Schema<ListJobsResponse>;
+
 export interface ListNamespacesRevisionsRequest {
   /** Allows to filter resources based on a label. Supported operations are =, !=, exists, in, and notIn. */
   labelSelector?: string;
@@ -1478,7 +1980,14 @@ export interface ListNamespacesRevisionsRequest {
   /** The baseline resource version from which the list or watch operation should start. Not currently used by Cloud Run. */
   resourceVersion?: string;
 }
+const ListNamespacesRevisionsRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  0,
+) as any as S.Schema<ListNamespacesRevisionsRequest>;
+
 export type RevisionList = Array<Revision>;
+const RevisionList = /*@__PURE__*/ __L.at(__c20, 1) as any as S.Schema<RevisionList>;
+
 /** ListRevisionsResponse is a list of Revision resources. */
 export interface ListRevisionsResponse {
   /** The kind of this resource, in this case "RevisionList". */
@@ -1492,6 +2001,11 @@ export interface ListRevisionsResponse {
   /** The API version for this call such as "serving.knative.dev/v1". */
   apiVersion?: string;
 }
+const ListRevisionsResponse = /*@__PURE__*/ __L.at(
+  __c20,
+  2,
+) as any as S.Schema<ListRevisionsResponse>;
+
 export interface ListNamespacesRoutesRequest {
   /** Not currently used by Cloud Run. */
   includeUninitialized?: boolean;
@@ -1510,7 +2024,14 @@ export interface ListNamespacesRoutesRequest {
   /** Optional. Encoded string to continue paging. */
   continue?: string;
 }
+const ListNamespacesRoutesRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  3,
+) as any as S.Schema<ListNamespacesRoutesRequest>;
+
 export type RouteList = Array<Route>;
+const RouteList = /*@__PURE__*/ __L.at(__c20, 4) as any as S.Schema<RouteList>;
+
 /** ListRoutesResponse is a list of Route resources. */
 export interface ListRoutesResponse {
   /** Locations that could not be reached. */
@@ -1524,6 +2045,8 @@ export interface ListRoutesResponse {
   /** List of Routes. */
   items?: RouteList;
 }
+const ListRoutesResponse = /*@__PURE__*/ __L.at(__c20, 5) as any as S.Schema<ListRoutesResponse>;
+
 export interface ListNamespacesServicesRequest {
   /** The maximum number of records that should be returned. */
   limit?: number;
@@ -1542,7 +2065,14 @@ export interface ListNamespacesServicesRequest {
   /** Not supported, and ignored by Cloud Run. */
   resourceVersion?: string;
 }
+const ListNamespacesServicesRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  6,
+) as any as S.Schema<ListNamespacesServicesRequest>;
+
 export type ServiceList = Array<Service>;
+const ServiceList = /*@__PURE__*/ __L.at(__c20, 7) as any as S.Schema<ServiceList>;
+
 /** A list of Service resources. */
 export interface ListServicesResponse {
   /** Metadata associated with this Service list. */
@@ -1556,6 +2086,11 @@ export interface ListServicesResponse {
   /** List of Services. */
   items?: ServiceList;
 }
+const ListServicesResponse = /*@__PURE__*/ __L.at(
+  __c21,
+  0,
+) as any as S.Schema<ListServicesResponse>;
+
 export interface ListNamespacesTasksRequest {
   /** Optional. Not supported by Cloud Run. */
   fieldSelector?: string;
@@ -1574,7 +2109,14 @@ export interface ListNamespacesTasksRequest {
   /** Optional. Not supported by Cloud Run. */
   resourceVersion?: string;
 }
+const ListNamespacesTasksRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  1,
+) as any as S.Schema<ListNamespacesTasksRequest>;
+
 export type TaskList = Array<Task>;
+const TaskList = /*@__PURE__*/ __L.at(__c21, 2) as any as S.Schema<TaskList>;
+
 /** ListTasksResponse is a list of Tasks resources. */
 export interface ListTasksResponse {
   /** List of Tasks. */
@@ -1588,6 +2130,8 @@ export interface ListTasksResponse {
   /** The kind of this resource, in this case "TasksList". */
   kind?: string;
 }
+const ListTasksResponse = /*@__PURE__*/ __L.at(__c21, 3) as any as S.Schema<ListTasksResponse>;
+
 export interface ListNamespacesWorkerpoolsRequest {
   /** The maximum number of records that should be returned. */
   limit?: number;
@@ -1598,7 +2142,14 @@ export interface ListNamespacesWorkerpoolsRequest {
   /** =, !=, exists, in, and notIn. */
   labelSelector?: string;
 }
+const ListNamespacesWorkerpoolsRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  4,
+) as any as S.Schema<ListNamespacesWorkerpoolsRequest>;
+
 export type WorkerPoolList = Array<WorkerPool>;
+const WorkerPoolList = /*@__PURE__*/ __L.at(__c21, 5) as any as S.Schema<WorkerPoolList>;
+
 /** A list of WorkerPool resources. */
 export interface ListWorkerPoolsResponse {
   /** For calls against the global endpoint, returns the list of Cloud locations that could not be reached. For regional calls, this field is not used. */
@@ -1612,6 +2163,11 @@ export interface ListWorkerPoolsResponse {
   /** The API version for this call; returns "run.googleapis.com/v1". */
   apiVersion?: string;
 }
+const ListWorkerPoolsResponse = /*@__PURE__*/ __L.at(
+  __c21,
+  6,
+) as any as S.Schema<ListWorkerPoolsResponse>;
+
 export interface ListProjectsAuthorizeddomainsRequest {
   /** Name of the parent Project resource. Example: `projects/myproject`. */
   parent: string;
@@ -1620,6 +2176,11 @@ export interface ListProjectsAuthorizeddomainsRequest {
   /** Continuation token for fetching the next page of results. */
   pageToken?: string;
 }
+const ListProjectsAuthorizeddomainsRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  7,
+) as any as S.Schema<ListProjectsAuthorizeddomainsRequest>;
+
 export interface ListProjectsLocationsRequest {
   /** A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. */
   pageToken?: string;
@@ -1632,6 +2193,11 @@ export interface ListProjectsLocationsRequest {
   /** A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). */
   filter?: string;
 }
+const ListProjectsLocationsRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  0,
+) as any as S.Schema<ListProjectsLocationsRequest>;
+
 /** A resource that represents a Google Cloud location. */
 export interface Location {
   /** Service-specific metadata. For example the available capacity at the given location. */
@@ -1645,7 +2211,11 @@ export interface Location {
   /** The canonical id for this location. For example: `"us-east1"`. */
   locationId?: string;
 }
+const Location = /*@__PURE__*/ __L.at(__c22, 1) as any as S.Schema<Location>;
+
 export type LocationList = Array<Location>;
+const LocationList = /*@__PURE__*/ __L.at(__c22, 2) as any as S.Schema<LocationList>;
+
 /** The response message for Locations.ListLocations. */
 export interface ListLocationsResponse {
   /** The standard List next-page token. */
@@ -1653,6 +2223,11 @@ export interface ListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
   locations?: LocationList;
 }
+const ListLocationsResponse = /*@__PURE__*/ __L.at(
+  __c22,
+  3,
+) as any as S.Schema<ListLocationsResponse>;
+
 export interface ListProjectsLocationsAuthorizeddomainsRequest {
   /** Name of the parent Project resource. Example: `projects/myproject`. */
   parent: string;
@@ -1661,6 +2236,11 @@ export interface ListProjectsLocationsAuthorizeddomainsRequest {
   /** Continuation token for fetching the next page of results. */
   pageToken?: string;
 }
+const ListProjectsLocationsAuthorizeddomainsRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  4,
+) as any as S.Schema<ListProjectsLocationsAuthorizeddomainsRequest>;
+
 export interface ListProjectsLocationsConfigurationsRequest {
   /** Optional. Encoded string to continue paging. */
   continue?: string;
@@ -1679,6 +2259,11 @@ export interface ListProjectsLocationsConfigurationsRequest {
   /** Not supported by Cloud Run. */
   fieldSelector?: string;
 }
+const ListProjectsLocationsConfigurationsRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  5,
+) as any as S.Schema<ListProjectsLocationsConfigurationsRequest>;
+
 export interface ListProjectsLocationsDomainmappingsRequest {
   /** Allows to filter resources based on a specific value for a field name. Send this in a query string format. i.e. 'metadata.name%3Dlorem'. Not currently used by Cloud Run. */
   fieldSelector?: string;
@@ -1697,6 +2282,11 @@ export interface ListProjectsLocationsDomainmappingsRequest {
   /** The baseline resource version from which the list or watch operation should start. Not currently used by Cloud Run. */
   resourceVersion?: string;
 }
+const ListProjectsLocationsDomainmappingsRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  6,
+) as any as S.Schema<ListProjectsLocationsDomainmappingsRequest>;
+
 export interface ListProjectsLocationsOperationsRequest {
   /** Token identifying which result to start with, which is returned by a previous list call. */
   pageToken?: string;
@@ -1709,7 +2299,17 @@ export interface ListProjectsLocationsOperationsRequest {
   /** Optional. A filter for matching the completed or in-progress operations. The supported formats of *filter* are: To query for only completed operations: done:true To query for only ongoing operations: done:false Must be empty to query for all of the latest operations for the given parent project. */
   filter?: string;
 }
+const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  7,
+) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
+
 export type GoogleLongrunningOperationList = Array<GoogleLongrunningOperation>;
+const GoogleLongrunningOperationList = /*@__PURE__*/ __L.at(
+  __c23,
+  0,
+) as any as S.Schema<GoogleLongrunningOperationList>;
+
 /** The response message for Operations.ListOperations. */
 export interface GoogleLongrunningListOperationsResponse {
   /** The standard List next-page token. */
@@ -1719,6 +2319,11 @@ export interface GoogleLongrunningListOperationsResponse {
   /** A list of operations that matches the specified filter in the request. */
   operations?: GoogleLongrunningOperationList;
 }
+const GoogleLongrunningListOperationsResponse = /*@__PURE__*/ __L.at(
+  __c23,
+  1,
+) as any as S.Schema<GoogleLongrunningListOperationsResponse>;
+
 export interface ListProjectsLocationsRevisionsRequest {
   /** The baseline resource version from which the list or watch operation should start. Not currently used by Cloud Run. */
   resourceVersion?: string;
@@ -1737,6 +2342,11 @@ export interface ListProjectsLocationsRevisionsRequest {
   /** Allows to filter resources based on a label. Supported operations are =, !=, exists, in, and notIn. */
   labelSelector?: string;
 }
+const ListProjectsLocationsRevisionsRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  2,
+) as any as S.Schema<ListProjectsLocationsRevisionsRequest>;
+
 export interface ListProjectsLocationsRoutesRequest {
   /** Not currently used by Cloud Run. */
   includeUninitialized?: boolean;
@@ -1755,6 +2365,11 @@ export interface ListProjectsLocationsRoutesRequest {
   /** Allows to filter resources based on a label. Supported operations are =, !=, exists, in, and notIn. */
   labelSelector?: string;
 }
+const ListProjectsLocationsRoutesRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  3,
+) as any as S.Schema<ListProjectsLocationsRoutesRequest>;
+
 export interface ListProjectsLocationsServicesRequest {
   /** Not supported, and ignored by Cloud Run. */
   includeUninitialized?: boolean;
@@ -1773,6 +2388,11 @@ export interface ListProjectsLocationsServicesRequest {
   /** Not supported, and ignored by Cloud Run. */
   resourceVersion?: string;
 }
+const ListProjectsLocationsServicesRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  4,
+) as any as S.Schema<ListProjectsLocationsServicesRequest>;
+
 export interface ReplaceInstanceNamespacesInstancesRequest {
   /** Required. The fully qualified name of the Instance being replaced. It can be any of the following forms: * `namespaces/{project_id_or_number}/instances/{instance_name}` (only when the `endpoint` is regional) * `projects/{project_id_or_number}/locations/{region}/instances/{instance_name}` * `projects/{project_id_or_number}/regions/{region}/instances/{instance_name}` Parent resource namespace. */
   name: string;
@@ -1781,6 +2401,11 @@ export interface ReplaceInstanceNamespacesInstancesRequest {
   /** Request body */
   body?: Instance;
 }
+const ReplaceInstanceNamespacesInstancesRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  5,
+) as any as S.Schema<ReplaceInstanceNamespacesInstancesRequest>;
+
 export interface ReplaceJobNamespacesJobsRequest {
   /** Required. The name of the job being replaced. Replace {namespace} with the project ID or number. It takes the form namespaces/{namespace}. For example: namespaces/PROJECT_ID */
   name: string;
@@ -1789,6 +2414,11 @@ export interface ReplaceJobNamespacesJobsRequest {
   /** Request body */
   body?: Job;
 }
+const ReplaceJobNamespacesJobsRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  6,
+) as any as S.Schema<ReplaceJobNamespacesJobsRequest>;
+
 export interface ReplaceServiceNamespacesServicesRequest {
   /** Indicates that the server should validate the request and populate default values without persisting the request. Supported values: `all` */
   dryRun?: string;
@@ -1797,6 +2427,11 @@ export interface ReplaceServiceNamespacesServicesRequest {
   /** Request body */
   body?: Service;
 }
+const ReplaceServiceNamespacesServicesRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  7,
+) as any as S.Schema<ReplaceServiceNamespacesServicesRequest>;
+
 export interface ReplaceServiceProjectsLocationsServicesRequest {
   /** Required. The fully qualified name of the service to replace. It can be any of the following forms: * `namespaces/{project_id_or_number}/services/{service_name}` (only when the `endpoint` is regional) * `projects/{project_id_or_number}/locations/{region}/services/{service_name}` * `projects/{project_id_or_number}/regions/{region}/services/{service_name}` */
   name: string;
@@ -1805,6 +2440,11 @@ export interface ReplaceServiceProjectsLocationsServicesRequest {
   /** Request body */
   body?: Service;
 }
+const ReplaceServiceProjectsLocationsServicesRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  0,
+) as any as S.Schema<ReplaceServiceProjectsLocationsServicesRequest>;
+
 export interface ReplaceWorkerPoolNamespacesWorkerpoolsRequest {
   /** Indicates that the server should validate the request and populate default values without persisting the request. Supported values: `all` */
   dryRun?: string;
@@ -1813,6 +2453,11 @@ export interface ReplaceWorkerPoolNamespacesWorkerpoolsRequest {
   /** Request body */
   body?: WorkerPool;
 }
+const ReplaceWorkerPoolNamespacesWorkerpoolsRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  1,
+) as any as S.Schema<ReplaceWorkerPoolNamespacesWorkerpoolsRequest>;
+
 /** Per container override specification. */
 export interface ContainerOverride {
   /** List of environment variables to set in the container. All specified environment variables are merged with existing environment variables. When the specified environment variables exist, these values override any existing values. */
@@ -1824,7 +2469,14 @@ export interface ContainerOverride {
   /** Optional. Set to True to clear all existing arguments. */
   clearArgs?: boolean;
 }
+const ContainerOverride = /*@__PURE__*/ __L.at(__c24, 2) as any as S.Schema<ContainerOverride>;
+
 export type ContainerOverrideList = Array<ContainerOverride>;
+const ContainerOverrideList = /*@__PURE__*/ __L.at(
+  __c24,
+  3,
+) as any as S.Schema<ContainerOverrideList>;
+
 /** RunJob Overrides that contains Execution fields to be overridden on the go. */
 export interface Overrides {
   /** Per container override specification. */
@@ -1836,17 +2488,26 @@ export interface Overrides {
   /** Duration in seconds the task may be active before the system will actively try to mark it failed and kill associated containers. Will replace existing timeout_seconds value. */
   timeoutSeconds?: number;
 }
+const Overrides = /*@__PURE__*/ __L.at(__c24, 4) as any as S.Schema<Overrides>;
+
 /** Request message for creating a new execution of a job. */
 export interface RunJobRequest {
   /** Optional. Overrides existing job configuration for one specific new job execution only, using the specified values to update the job configuration for the new execution. */
   overrides?: Overrides;
 }
+const RunJobRequest = /*@__PURE__*/ __L.at(__c24, 5) as any as S.Schema<RunJobRequest>;
+
 export interface RunNamespacesJobsRequest {
   /** Required. The name of the job to run. Replace {namespace} with the project ID or number. It takes the form namespaces/{namespace}. For example: namespaces/PROJECT_ID */
   name: string;
   /** Request body */
   body?: RunJobRequest;
 }
+const RunNamespacesJobsRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  6,
+) as any as S.Schema<RunNamespacesJobsRequest>;
+
 /** Request message for `SetIamPolicy` method. */
 export interface SetIamPolicyRequest {
   /** REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Google Cloud services (such as Projects) might reject them. */
@@ -1854,41 +2515,73 @@ export interface SetIamPolicyRequest {
   /** OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask will be modified. If no mask is provided, the following default mask is used: `paths: "bindings, etag"` */
   updateMask?: string;
 }
+const SetIamPolicyRequest = /*@__PURE__*/ __L.at(__c24, 7) as any as S.Schema<SetIamPolicyRequest>;
+
 export interface SetIamPolicyProjectsLocationsInstancesRequest {
   /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: SetIamPolicyRequest;
 }
+const SetIamPolicyProjectsLocationsInstancesRequest = /*@__PURE__*/ __L.at(
+  __c25,
+  0,
+) as any as S.Schema<SetIamPolicyProjectsLocationsInstancesRequest>;
+
 export interface SetIamPolicyProjectsLocationsJobsRequest {
   /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: SetIamPolicyRequest;
 }
+const SetIamPolicyProjectsLocationsJobsRequest = /*@__PURE__*/ __L.at(
+  __c25,
+  1,
+) as any as S.Schema<SetIamPolicyProjectsLocationsJobsRequest>;
+
 export interface SetIamPolicyProjectsLocationsServicesRequest {
   /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: SetIamPolicyRequest;
 }
+const SetIamPolicyProjectsLocationsServicesRequest = /*@__PURE__*/ __L.at(
+  __c25,
+  2,
+) as any as S.Schema<SetIamPolicyProjectsLocationsServicesRequest>;
+
 export interface SetIamPolicyProjectsLocationsWorkerpoolsRequest {
   /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: SetIamPolicyRequest;
 }
+const SetIamPolicyProjectsLocationsWorkerpoolsRequest = /*@__PURE__*/ __L.at(
+  __c25,
+  3,
+) as any as S.Schema<SetIamPolicyProjectsLocationsWorkerpoolsRequest>;
+
 /** Request message for starting a stopped Instance. */
 export interface StartInstanceRequest {
   /** Optional. Indicates that the server should validate the request and populate default values without persisting the request. Supported values: `all` */
   dryRun?: string;
 }
+const StartInstanceRequest = /*@__PURE__*/ __L.at(
+  __c25,
+  4,
+) as any as S.Schema<StartInstanceRequest>;
+
 export interface StartNamespacesInstancesRequest {
   /** Required. The name of the Instance to run. Replace {namespace} with the project ID or number. It takes the form namespaces/{namespace}. For example: namespaces/PROJECT_ID */
   name: string;
   /** Request body */
   body?: StartInstanceRequest;
 }
+const StartNamespacesInstancesRequest = /*@__PURE__*/ __L.at(
+  __c25,
+  5,
+) as any as S.Schema<StartNamespacesInstancesRequest>;
+
 /** Request message for stopping a running Instance. */
 export type StopInstanceRequest = StartInstanceRequest;
 export interface StopNamespacesInstancesRequest {
@@ -1897,51 +2590,94 @@ export interface StopNamespacesInstancesRequest {
   /** Request body */
   body?: StartInstanceRequest;
 }
+const StopNamespacesInstancesRequest = /*@__PURE__*/ __L.at(
+  __c25,
+  6,
+) as any as S.Schema<StopNamespacesInstancesRequest>;
+
 /** Request message for `TestIamPermissions` method. */
 export interface TestIamPermissionsRequest {
   /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
   permissions?: StringList;
 }
+const TestIamPermissionsRequest = /*@__PURE__*/ __L.at(
+  __c25,
+  7,
+) as any as S.Schema<TestIamPermissionsRequest>;
+
 export interface TestIamPermissionsProjectsLocationsInstancesRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
+const TestIamPermissionsProjectsLocationsInstancesRequest = /*@__PURE__*/ __L.at(
+  __c26,
+  0,
+) as any as S.Schema<TestIamPermissionsProjectsLocationsInstancesRequest>;
+
 /** Response message for `TestIamPermissions` method. */
 export interface TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
   permissions?: StringList;
 }
+const TestIamPermissionsResponse =
+  TestIamPermissionsRequest as any as S.Schema<TestIamPermissionsResponse>;
+
 export interface TestIamPermissionsProjectsLocationsJobsRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
+const TestIamPermissionsProjectsLocationsJobsRequest = /*@__PURE__*/ __L.at(
+  __c26,
+  1,
+) as any as S.Schema<TestIamPermissionsProjectsLocationsJobsRequest>;
+
 export interface TestIamPermissionsProjectsLocationsServicesRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
+const TestIamPermissionsProjectsLocationsServicesRequest = /*@__PURE__*/ __L.at(
+  __c26,
+  2,
+) as any as S.Schema<TestIamPermissionsProjectsLocationsServicesRequest>;
+
 export interface TestIamPermissionsProjectsLocationsWorkerpoolsRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
+const TestIamPermissionsProjectsLocationsWorkerpoolsRequest = /*@__PURE__*/ __L.at(
+  __c26,
+  3,
+) as any as S.Schema<TestIamPermissionsProjectsLocationsWorkerpoolsRequest>;
+
 /** The request message for Operations.WaitOperation. */
 export interface GoogleLongrunningWaitOperationRequest {
   /** The maximum duration to wait before timing out. If left blank, the wait will be at most the time permitted by the underlying HTTP/RPC protocol. If RPC context deadline is also specified, the shorter one will be used. */
   timeout?: string;
 }
+const GoogleLongrunningWaitOperationRequest = /*@__PURE__*/ __L.at(
+  __c26,
+  4,
+) as any as S.Schema<GoogleLongrunningWaitOperationRequest>;
+
 export interface WaitProjectsLocationsOperationsRequest {
   /** The name of the operation resource to wait on. */
   name: string;
   /** Request body */
   body?: GoogleLongrunningWaitOperationRequest;
 }
+const WaitProjectsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
+  __c26,
+  5,
+) as any as S.Schema<WaitProjectsLocationsOperationsRequest>;
+
 export type CancelNamespacesExecutionsError =
   | NotFound
   | Forbidden
@@ -1955,8 +2691,8 @@ export const cancelNamespacesExecutions: API.OperationMethod<
   CancelNamespacesExecutionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1) as any as S.Schema<CancelNamespacesExecutionsRequest>,
-  output: __S(47) as any as S.Schema<Execution>,
+  input: CancelNamespacesExecutionsRequest,
+  output: Execution,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1975,8 +2711,8 @@ export const createNamespacesDomainmappings: API.OperationMethod<
   CreateNamespacesDomainmappingsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(53) as any as S.Schema<CreateNamespacesDomainmappingsRequest>,
-  output: __S(52) as any as S.Schema<DomainMapping>,
+  input: CreateNamespacesDomainmappingsRequest,
+  output: DomainMapping,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1995,8 +2731,8 @@ export const createNamespacesInstances: API.OperationMethod<
   CreateNamespacesInstancesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57) as any as S.Schema<CreateNamespacesInstancesRequest>,
-  output: __S(56) as any as S.Schema<Instance>,
+  input: CreateNamespacesInstancesRequest,
+  output: Instance,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2010,8 +2746,8 @@ export const createNamespacesJobs: API.OperationMethod<
   CreateNamespacesJobsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(63) as any as S.Schema<CreateNamespacesJobsRequest>,
-  output: __S(62) as any as S.Schema<Job>,
+  input: CreateNamespacesJobsRequest,
+  output: Job,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2030,8 +2766,8 @@ export const createNamespacesServices: API.OperationMethod<
   CreateNamespacesServicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(73) as any as S.Schema<CreateNamespacesServicesRequest>,
-  output: __S(72) as any as S.Schema<Service>,
+  input: CreateNamespacesServicesRequest,
+  output: Service,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2050,8 +2786,8 @@ export const createNamespacesWorkerpools: API.OperationMethod<
   CreateNamespacesWorkerpoolsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(79) as any as S.Schema<CreateNamespacesWorkerpoolsRequest>,
-  output: __S(78) as any as S.Schema<WorkerPool>,
+  input: CreateNamespacesWorkerpoolsRequest,
+  output: WorkerPool,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2070,8 +2806,8 @@ export const createProjectsLocationsDomainmappings: API.OperationMethod<
   CreateProjectsLocationsDomainmappingsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(80) as any as S.Schema<CreateProjectsLocationsDomainmappingsRequest>,
-  output: __S(52) as any as S.Schema<DomainMapping>,
+  input: CreateProjectsLocationsDomainmappingsRequest,
+  output: DomainMapping,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2090,8 +2826,8 @@ export const createProjectsLocationsServices: API.OperationMethod<
   CreateProjectsLocationsServicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(81) as any as S.Schema<CreateProjectsLocationsServicesRequest>,
-  output: __S(72) as any as S.Schema<Service>,
+  input: CreateProjectsLocationsServicesRequest,
+  output: Service,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2110,8 +2846,8 @@ export const deleteNamespacesDomainmappings: API.OperationMethod<
   DeleteNamespacesDomainmappingsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(82) as any as S.Schema<DeleteNamespacesDomainmappingsRequest>,
-  output: __S(87) as any as S.Schema<Status>,
+  input: DeleteNamespacesDomainmappingsRequest,
+  output: Status,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2130,8 +2866,8 @@ export const deleteNamespacesExecutions: API.OperationMethod<
   DeleteNamespacesExecutionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(88) as any as S.Schema<DeleteNamespacesExecutionsRequest>,
-  output: __S(87) as any as S.Schema<Status>,
+  input: DeleteNamespacesExecutionsRequest,
+  output: Status,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2150,8 +2886,8 @@ export const deleteNamespacesInstances: API.OperationMethod<
   DeleteNamespacesInstancesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(89) as any as S.Schema<DeleteNamespacesInstancesRequest>,
-  output: __S(87) as any as S.Schema<Status>,
+  input: DeleteNamespacesInstancesRequest,
+  output: Status,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2165,8 +2901,8 @@ export const deleteNamespacesJobs: API.OperationMethod<
   DeleteNamespacesJobsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(90) as any as S.Schema<DeleteNamespacesJobsRequest>,
-  output: __S(87) as any as S.Schema<Status>,
+  input: DeleteNamespacesJobsRequest,
+  output: Status,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2185,8 +2921,8 @@ export const deleteNamespacesRevisions: API.OperationMethod<
   DeleteNamespacesRevisionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(91) as any as S.Schema<DeleteNamespacesRevisionsRequest>,
-  output: __S(87) as any as S.Schema<Status>,
+  input: DeleteNamespacesRevisionsRequest,
+  output: Status,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2205,8 +2941,8 @@ export const deleteNamespacesServices: API.OperationMethod<
   DeleteNamespacesServicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(92) as any as S.Schema<DeleteNamespacesServicesRequest>,
-  output: __S(87) as any as S.Schema<Status>,
+  input: DeleteNamespacesServicesRequest,
+  output: Status,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2225,8 +2961,8 @@ export const deleteNamespacesWorkerpools: API.OperationMethod<
   DeleteNamespacesWorkerpoolsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(93) as any as S.Schema<DeleteNamespacesWorkerpoolsRequest>,
-  output: __S(87) as any as S.Schema<Status>,
+  input: DeleteNamespacesWorkerpoolsRequest,
+  output: Status,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2245,8 +2981,8 @@ export const deleteProjectsLocationsDomainmappings: API.OperationMethod<
   DeleteProjectsLocationsDomainmappingsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(94) as any as S.Schema<DeleteProjectsLocationsDomainmappingsRequest>,
-  output: __S(87) as any as S.Schema<Status>,
+  input: DeleteProjectsLocationsDomainmappingsRequest,
+  output: Status,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2265,8 +3001,8 @@ export const deleteProjectsLocationsOperations: API.OperationMethod<
   DeleteProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(95) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>,
-  output: __S(0) as any as S.Schema<Empty>,
+  input: DeleteProjectsLocationsOperationsRequest,
+  output: Empty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2285,8 +3021,8 @@ export const deleteProjectsLocationsRevisions: API.OperationMethod<
   DeleteProjectsLocationsRevisionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(96) as any as S.Schema<DeleteProjectsLocationsRevisionsRequest>,
-  output: __S(87) as any as S.Schema<Status>,
+  input: DeleteProjectsLocationsRevisionsRequest,
+  output: Status,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2305,8 +3041,8 @@ export const deleteProjectsLocationsServices: API.OperationMethod<
   DeleteProjectsLocationsServicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(97) as any as S.Schema<DeleteProjectsLocationsServicesRequest>,
-  output: __S(87) as any as S.Schema<Status>,
+  input: DeleteProjectsLocationsServicesRequest,
+  output: Status,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2320,8 +3056,8 @@ export const getIamPolicyProjectsLocationsInstances: API.OperationMethod<
   GetIamPolicyProjectsLocationsInstancesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(98) as any as S.Schema<GetIamPolicyProjectsLocationsInstancesRequest>,
-  output: __S(106) as any as S.Schema<Policy>,
+  input: GetIamPolicyProjectsLocationsInstancesRequest,
+  output: Policy,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2335,8 +3071,8 @@ export const getIamPolicyProjectsLocationsJobs: API.OperationMethod<
   GetIamPolicyProjectsLocationsJobsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(107) as any as S.Schema<GetIamPolicyProjectsLocationsJobsRequest>,
-  output: __S(106) as any as S.Schema<Policy>,
+  input: GetIamPolicyProjectsLocationsJobsRequest,
+  output: Policy,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2350,8 +3086,8 @@ export const getIamPolicyProjectsLocationsServices: API.OperationMethod<
   GetIamPolicyProjectsLocationsServicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(108) as any as S.Schema<GetIamPolicyProjectsLocationsServicesRequest>,
-  output: __S(106) as any as S.Schema<Policy>,
+  input: GetIamPolicyProjectsLocationsServicesRequest,
+  output: Policy,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2365,8 +3101,8 @@ export const getIamPolicyProjectsLocationsWorkerpools: API.OperationMethod<
   GetIamPolicyProjectsLocationsWorkerpoolsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(109) as any as S.Schema<GetIamPolicyProjectsLocationsWorkerpoolsRequest>,
-  output: __S(106) as any as S.Schema<Policy>,
+  input: GetIamPolicyProjectsLocationsWorkerpoolsRequest,
+  output: Policy,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2380,8 +3116,8 @@ export const getNamespacesConfigurations: API.OperationMethod<
   GetNamespacesConfigurationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(110) as any as S.Schema<GetNamespacesConfigurationsRequest>,
-  output: __S(113) as any as S.Schema<Configuration>,
+  input: GetNamespacesConfigurationsRequest,
+  output: Configuration,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2395,8 +3131,8 @@ export const getNamespacesDomainmappings: API.OperationMethod<
   GetNamespacesDomainmappingsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(114) as any as S.Schema<GetNamespacesDomainmappingsRequest>,
-  output: __S(52) as any as S.Schema<DomainMapping>,
+  input: GetNamespacesDomainmappingsRequest,
+  output: DomainMapping,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2410,8 +3146,8 @@ export const getNamespacesExecutions: API.OperationMethod<
   GetNamespacesExecutionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(115) as any as S.Schema<GetNamespacesExecutionsRequest>,
-  output: __S(47) as any as S.Schema<Execution>,
+  input: GetNamespacesExecutionsRequest,
+  output: Execution,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2425,8 +3161,8 @@ export const getNamespacesInstances: API.OperationMethod<
   GetNamespacesInstancesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(116) as any as S.Schema<GetNamespacesInstancesRequest>,
-  output: __S(56) as any as S.Schema<Instance>,
+  input: GetNamespacesInstancesRequest,
+  output: Instance,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2440,8 +3176,8 @@ export const getNamespacesJobs: API.OperationMethod<
   GetNamespacesJobsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(117) as any as S.Schema<GetNamespacesJobsRequest>,
-  output: __S(62) as any as S.Schema<Job>,
+  input: GetNamespacesJobsRequest,
+  output: Job,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2455,8 +3191,8 @@ export const getNamespacesRevisions: API.OperationMethod<
   GetNamespacesRevisionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(118) as any as S.Schema<GetNamespacesRevisionsRequest>,
-  output: __S(120) as any as S.Schema<Revision>,
+  input: GetNamespacesRevisionsRequest,
+  output: Revision,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2470,8 +3206,8 @@ export const getNamespacesRoutes: API.OperationMethod<
   GetNamespacesRoutesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(121) as any as S.Schema<GetNamespacesRoutesRequest>,
-  output: __S(124) as any as S.Schema<Route>,
+  input: GetNamespacesRoutesRequest,
+  output: Route,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2485,8 +3221,8 @@ export const getNamespacesServices: API.OperationMethod<
   GetNamespacesServicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(125) as any as S.Schema<GetNamespacesServicesRequest>,
-  output: __S(72) as any as S.Schema<Service>,
+  input: GetNamespacesServicesRequest,
+  output: Service,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2500,8 +3236,8 @@ export const getNamespacesTasks: API.OperationMethod<
   GetNamespacesTasksError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(126) as any as S.Schema<GetNamespacesTasksRequest>,
-  output: __S(132) as any as S.Schema<Task>,
+  input: GetNamespacesTasksRequest,
+  output: Task,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2515,8 +3251,8 @@ export const getNamespacesWorkerpools: API.OperationMethod<
   GetNamespacesWorkerpoolsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(133) as any as S.Schema<GetNamespacesWorkerpoolsRequest>,
-  output: __S(78) as any as S.Schema<WorkerPool>,
+  input: GetNamespacesWorkerpoolsRequest,
+  output: WorkerPool,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2530,8 +3266,8 @@ export const getProjectsLocationsConfigurations: API.OperationMethod<
   GetProjectsLocationsConfigurationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(134) as any as S.Schema<GetProjectsLocationsConfigurationsRequest>,
-  output: __S(113) as any as S.Schema<Configuration>,
+  input: GetProjectsLocationsConfigurationsRequest,
+  output: Configuration,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2545,8 +3281,8 @@ export const getProjectsLocationsDomainmappings: API.OperationMethod<
   GetProjectsLocationsDomainmappingsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(135) as any as S.Schema<GetProjectsLocationsDomainmappingsRequest>,
-  output: __S(52) as any as S.Schema<DomainMapping>,
+  input: GetProjectsLocationsDomainmappingsRequest,
+  output: DomainMapping,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2560,8 +3296,8 @@ export const getProjectsLocationsOperations: API.OperationMethod<
   GetProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(136) as any as S.Schema<GetProjectsLocationsOperationsRequest>,
-  output: __S(137) as any as S.Schema<GoogleLongrunningOperation>,
+  input: GetProjectsLocationsOperationsRequest,
+  output: GoogleLongrunningOperation,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2575,8 +3311,8 @@ export const getProjectsLocationsRevisions: API.OperationMethod<
   GetProjectsLocationsRevisionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(138) as any as S.Schema<GetProjectsLocationsRevisionsRequest>,
-  output: __S(120) as any as S.Schema<Revision>,
+  input: GetProjectsLocationsRevisionsRequest,
+  output: Revision,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2590,8 +3326,8 @@ export const getProjectsLocationsRoutes: API.OperationMethod<
   GetProjectsLocationsRoutesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(139) as any as S.Schema<GetProjectsLocationsRoutesRequest>,
-  output: __S(124) as any as S.Schema<Route>,
+  input: GetProjectsLocationsRoutesRequest,
+  output: Route,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2605,8 +3341,8 @@ export const getProjectsLocationsServices: API.OperationMethod<
   GetProjectsLocationsServicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(140) as any as S.Schema<GetProjectsLocationsServicesRequest>,
-  output: __S(72) as any as S.Schema<Service>,
+  input: GetProjectsLocationsServicesRequest,
+  output: Service,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2621,8 +3357,8 @@ export const listNamespacesAuthorizeddomains: API.PaginatedOperationMethod<
   GcpOpContext,
   ListAuthorizedDomainsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(141) as any as S.Schema<ListNamespacesAuthorizeddomainsRequest>,
-  output: __S(144) as any as S.Schema<ListAuthorizedDomainsResponse>,
+  input: ListNamespacesAuthorizeddomainsRequest,
+  output: ListAuthorizedDomainsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2637,8 +3373,8 @@ export const listNamespacesConfigurations: API.OperationMethod<
   ListNamespacesConfigurationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(145) as any as S.Schema<ListNamespacesConfigurationsRequest>,
-  output: __S(147) as any as S.Schema<ListConfigurationsResponse>,
+  input: ListNamespacesConfigurationsRequest,
+  output: ListConfigurationsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2652,8 +3388,8 @@ export const listNamespacesDomainmappings: API.OperationMethod<
   ListNamespacesDomainmappingsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(148) as any as S.Schema<ListNamespacesDomainmappingsRequest>,
-  output: __S(150) as any as S.Schema<ListDomainMappingsResponse>,
+  input: ListNamespacesDomainmappingsRequest,
+  output: ListDomainMappingsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2667,8 +3403,8 @@ export const listNamespacesExecutions: API.OperationMethod<
   ListNamespacesExecutionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(151) as any as S.Schema<ListNamespacesExecutionsRequest>,
-  output: __S(153) as any as S.Schema<ListExecutionsResponse>,
+  input: ListNamespacesExecutionsRequest,
+  output: ListExecutionsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2682,8 +3418,8 @@ export const listNamespacesInstances: API.OperationMethod<
   ListNamespacesInstancesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(154) as any as S.Schema<ListNamespacesInstancesRequest>,
-  output: __S(156) as any as S.Schema<ListInstancesResponse>,
+  input: ListNamespacesInstancesRequest,
+  output: ListInstancesResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2697,8 +3433,8 @@ export const listNamespacesJobs: API.OperationMethod<
   ListNamespacesJobsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(157) as any as S.Schema<ListNamespacesJobsRequest>,
-  output: __S(159) as any as S.Schema<ListJobsResponse>,
+  input: ListNamespacesJobsRequest,
+  output: ListJobsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2712,8 +3448,8 @@ export const listNamespacesRevisions: API.OperationMethod<
   ListNamespacesRevisionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(160) as any as S.Schema<ListNamespacesRevisionsRequest>,
-  output: __S(162) as any as S.Schema<ListRevisionsResponse>,
+  input: ListNamespacesRevisionsRequest,
+  output: ListRevisionsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2727,8 +3463,8 @@ export const listNamespacesRoutes: API.OperationMethod<
   ListNamespacesRoutesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(163) as any as S.Schema<ListNamespacesRoutesRequest>,
-  output: __S(165) as any as S.Schema<ListRoutesResponse>,
+  input: ListNamespacesRoutesRequest,
+  output: ListRoutesResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2742,8 +3478,8 @@ export const listNamespacesServices: API.OperationMethod<
   ListNamespacesServicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(166) as any as S.Schema<ListNamespacesServicesRequest>,
-  output: __S(168) as any as S.Schema<ListServicesResponse>,
+  input: ListNamespacesServicesRequest,
+  output: ListServicesResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2757,8 +3493,8 @@ export const listNamespacesTasks: API.OperationMethod<
   ListNamespacesTasksError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(169) as any as S.Schema<ListNamespacesTasksRequest>,
-  output: __S(171) as any as S.Schema<ListTasksResponse>,
+  input: ListNamespacesTasksRequest,
+  output: ListTasksResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2772,8 +3508,8 @@ export const listNamespacesWorkerpools: API.OperationMethod<
   ListNamespacesWorkerpoolsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(172) as any as S.Schema<ListNamespacesWorkerpoolsRequest>,
-  output: __S(174) as any as S.Schema<ListWorkerPoolsResponse>,
+  input: ListNamespacesWorkerpoolsRequest,
+  output: ListWorkerPoolsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2788,8 +3524,8 @@ export const listProjectsAuthorizeddomains: API.PaginatedOperationMethod<
   GcpOpContext,
   ListAuthorizedDomainsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(175) as any as S.Schema<ListProjectsAuthorizeddomainsRequest>,
-  output: __S(144) as any as S.Schema<ListAuthorizedDomainsResponse>,
+  input: ListProjectsAuthorizeddomainsRequest,
+  output: ListAuthorizedDomainsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2805,8 +3541,8 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListLocationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(176) as any as S.Schema<ListProjectsLocationsRequest>,
-  output: __S(179) as any as S.Schema<ListLocationsResponse>,
+  input: ListProjectsLocationsRequest,
+  output: ListLocationsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2822,8 +3558,8 @@ export const listProjectsLocationsAuthorizeddomains: API.PaginatedOperationMetho
   GcpOpContext,
   ListAuthorizedDomainsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(180) as any as S.Schema<ListProjectsLocationsAuthorizeddomainsRequest>,
-  output: __S(144) as any as S.Schema<ListAuthorizedDomainsResponse>,
+  input: ListProjectsLocationsAuthorizeddomainsRequest,
+  output: ListAuthorizedDomainsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2838,8 +3574,8 @@ export const listProjectsLocationsConfigurations: API.OperationMethod<
   ListProjectsLocationsConfigurationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(181) as any as S.Schema<ListProjectsLocationsConfigurationsRequest>,
-  output: __S(147) as any as S.Schema<ListConfigurationsResponse>,
+  input: ListProjectsLocationsConfigurationsRequest,
+  output: ListConfigurationsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2853,8 +3589,8 @@ export const listProjectsLocationsDomainmappings: API.OperationMethod<
   ListProjectsLocationsDomainmappingsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(182) as any as S.Schema<ListProjectsLocationsDomainmappingsRequest>,
-  output: __S(150) as any as S.Schema<ListDomainMappingsResponse>,
+  input: ListProjectsLocationsDomainmappingsRequest,
+  output: ListDomainMappingsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2869,8 +3605,8 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleLongrunningListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(183) as any as S.Schema<ListProjectsLocationsOperationsRequest>,
-  output: __S(185) as any as S.Schema<GoogleLongrunningListOperationsResponse>,
+  input: ListProjectsLocationsOperationsRequest,
+  output: GoogleLongrunningListOperationsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2885,8 +3621,8 @@ export const listProjectsLocationsRevisions: API.OperationMethod<
   ListProjectsLocationsRevisionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(186) as any as S.Schema<ListProjectsLocationsRevisionsRequest>,
-  output: __S(162) as any as S.Schema<ListRevisionsResponse>,
+  input: ListProjectsLocationsRevisionsRequest,
+  output: ListRevisionsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2900,8 +3636,8 @@ export const listProjectsLocationsRoutes: API.OperationMethod<
   ListProjectsLocationsRoutesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(187) as any as S.Schema<ListProjectsLocationsRoutesRequest>,
-  output: __S(165) as any as S.Schema<ListRoutesResponse>,
+  input: ListProjectsLocationsRoutesRequest,
+  output: ListRoutesResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2915,8 +3651,8 @@ export const listProjectsLocationsServices: API.OperationMethod<
   ListProjectsLocationsServicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(188) as any as S.Schema<ListProjectsLocationsServicesRequest>,
-  output: __S(168) as any as S.Schema<ListServicesResponse>,
+  input: ListProjectsLocationsServicesRequest,
+  output: ListServicesResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2935,8 +3671,8 @@ export const replaceInstanceNamespacesInstances: API.OperationMethod<
   ReplaceInstanceNamespacesInstancesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(189) as any as S.Schema<ReplaceInstanceNamespacesInstancesRequest>,
-  output: __S(56) as any as S.Schema<Instance>,
+  input: ReplaceInstanceNamespacesInstancesRequest,
+  output: Instance,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2955,8 +3691,8 @@ export const replaceJobNamespacesJobs: API.OperationMethod<
   ReplaceJobNamespacesJobsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(190) as any as S.Schema<ReplaceJobNamespacesJobsRequest>,
-  output: __S(62) as any as S.Schema<Job>,
+  input: ReplaceJobNamespacesJobsRequest,
+  output: Job,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2975,8 +3711,8 @@ export const replaceServiceNamespacesServices: API.OperationMethod<
   ReplaceServiceNamespacesServicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(191) as any as S.Schema<ReplaceServiceNamespacesServicesRequest>,
-  output: __S(72) as any as S.Schema<Service>,
+  input: ReplaceServiceNamespacesServicesRequest,
+  output: Service,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2995,8 +3731,8 @@ export const replaceServiceProjectsLocationsServices: API.OperationMethod<
   ReplaceServiceProjectsLocationsServicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(192) as any as S.Schema<ReplaceServiceProjectsLocationsServicesRequest>,
-  output: __S(72) as any as S.Schema<Service>,
+  input: ReplaceServiceProjectsLocationsServicesRequest,
+  output: Service,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3015,8 +3751,8 @@ export const replaceWorkerPoolNamespacesWorkerpools: API.OperationMethod<
   ReplaceWorkerPoolNamespacesWorkerpoolsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(193) as any as S.Schema<ReplaceWorkerPoolNamespacesWorkerpoolsRequest>,
-  output: __S(78) as any as S.Schema<WorkerPool>,
+  input: ReplaceWorkerPoolNamespacesWorkerpoolsRequest,
+  output: WorkerPool,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3030,8 +3766,8 @@ export const runNamespacesJobs: API.OperationMethod<
   RunNamespacesJobsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(198) as any as S.Schema<RunNamespacesJobsRequest>,
-  output: __S(47) as any as S.Schema<Execution>,
+  input: RunNamespacesJobsRequest,
+  output: Execution,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3050,8 +3786,8 @@ export const setIamPolicyProjectsLocationsInstances: API.OperationMethod<
   SetIamPolicyProjectsLocationsInstancesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(200) as any as S.Schema<SetIamPolicyProjectsLocationsInstancesRequest>,
-  output: __S(106) as any as S.Schema<Policy>,
+  input: SetIamPolicyProjectsLocationsInstancesRequest,
+  output: Policy,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3070,8 +3806,8 @@ export const setIamPolicyProjectsLocationsJobs: API.OperationMethod<
   SetIamPolicyProjectsLocationsJobsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(201) as any as S.Schema<SetIamPolicyProjectsLocationsJobsRequest>,
-  output: __S(106) as any as S.Schema<Policy>,
+  input: SetIamPolicyProjectsLocationsJobsRequest,
+  output: Policy,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3090,8 +3826,8 @@ export const setIamPolicyProjectsLocationsServices: API.OperationMethod<
   SetIamPolicyProjectsLocationsServicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(202) as any as S.Schema<SetIamPolicyProjectsLocationsServicesRequest>,
-  output: __S(106) as any as S.Schema<Policy>,
+  input: SetIamPolicyProjectsLocationsServicesRequest,
+  output: Policy,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3110,8 +3846,8 @@ export const setIamPolicyProjectsLocationsWorkerpools: API.OperationMethod<
   SetIamPolicyProjectsLocationsWorkerpoolsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(203) as any as S.Schema<SetIamPolicyProjectsLocationsWorkerpoolsRequest>,
-  output: __S(106) as any as S.Schema<Policy>,
+  input: SetIamPolicyProjectsLocationsWorkerpoolsRequest,
+  output: Policy,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3130,8 +3866,8 @@ export const startNamespacesInstances: API.OperationMethod<
   StartNamespacesInstancesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(205) as any as S.Schema<StartNamespacesInstancesRequest>,
-  output: __S(56) as any as S.Schema<Instance>,
+  input: StartNamespacesInstancesRequest,
+  output: Instance,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3150,8 +3886,8 @@ export const stopNamespacesInstances: API.OperationMethod<
   StopNamespacesInstancesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(206) as any as S.Schema<StopNamespacesInstancesRequest>,
-  output: __S(56) as any as S.Schema<Instance>,
+  input: StopNamespacesInstancesRequest,
+  output: Instance,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3170,8 +3906,8 @@ export const testIamPermissionsProjectsLocationsInstances: API.OperationMethod<
   TestIamPermissionsProjectsLocationsInstancesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(208) as any as S.Schema<TestIamPermissionsProjectsLocationsInstancesRequest>,
-  output: __S(207) as any as S.Schema<TestIamPermissionsResponse>,
+  input: TestIamPermissionsProjectsLocationsInstancesRequest,
+  output: TestIamPermissionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3190,8 +3926,8 @@ export const testIamPermissionsProjectsLocationsJobs: API.OperationMethod<
   TestIamPermissionsProjectsLocationsJobsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(209) as any as S.Schema<TestIamPermissionsProjectsLocationsJobsRequest>,
-  output: __S(207) as any as S.Schema<TestIamPermissionsResponse>,
+  input: TestIamPermissionsProjectsLocationsJobsRequest,
+  output: TestIamPermissionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3210,8 +3946,8 @@ export const testIamPermissionsProjectsLocationsServices: API.OperationMethod<
   TestIamPermissionsProjectsLocationsServicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(210) as any as S.Schema<TestIamPermissionsProjectsLocationsServicesRequest>,
-  output: __S(207) as any as S.Schema<TestIamPermissionsResponse>,
+  input: TestIamPermissionsProjectsLocationsServicesRequest,
+  output: TestIamPermissionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3230,8 +3966,8 @@ export const testIamPermissionsProjectsLocationsWorkerpools: API.OperationMethod
   TestIamPermissionsProjectsLocationsWorkerpoolsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(211) as any as S.Schema<TestIamPermissionsProjectsLocationsWorkerpoolsRequest>,
-  output: __S(207) as any as S.Schema<TestIamPermissionsResponse>,
+  input: TestIamPermissionsProjectsLocationsWorkerpoolsRequest,
+  output: TestIamPermissionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3250,8 +3986,8 @@ export const waitProjectsLocationsOperations: API.OperationMethod<
   WaitProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(213) as any as S.Schema<WaitProjectsLocationsOperationsRequest>,
-  output: __S(137) as any as S.Schema<GoogleLongrunningOperation>,
+  input: WaitProjectsLocationsOperationsRequest,
+  output: GoogleLongrunningOperation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3268,7 +4004,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(0).pipe(T.HttpBody())),
+          body: S.optional(CancelExecutionRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3291,7 +4027,7 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "OwnerReference" });
     case 3:
-      return S.Array(__S(2));
+      return S.Array(OwnerReference);
     case 4:
       return S.Record(S.String, S.String);
     case 5:
@@ -3300,19 +4036,19 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           uid: S.optional(S.String),
-          ownerReferences: S.optional(__S(3)),
+          ownerReferences: S.optional(OwnerReferenceList),
           generation: S.optional(S.Number),
-          annotations: S.optional(__S(4)),
+          annotations: S.optional(StringMap),
           resourceVersion: S.optional(S.String),
           selfLink: S.optional(S.String),
           deletionTimestamp: S.optional(S.String),
           deletionGracePeriodSeconds: S.optional(S.Number),
           name: S.optional(S.String),
           creationTimestamp: S.optional(S.String),
-          finalizers: S.optional(__S(5)),
+          finalizers: S.optional(StringList),
           namespace: S.optional(S.String),
           generateName: S.optional(S.String),
-          labels: S.optional(__S(4)),
+          labels: S.optional(StringMap),
           clusterName: S.optional(S.String),
         }),
       ).annotate({ identifier: "ObjectMeta" });
@@ -3334,14 +4070,14 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(7));
+      return S.Array(GoogleCloudRunV1Condition);
     case 1:
       return S.suspend(() =>
         S.Struct({
           runningCount: S.optional(S.Number),
           logUri: S.optional(S.String),
           startTime: S.optional(S.String),
-          conditions: S.optional(__S(8)),
+          conditions: S.optional(GoogleCloudRunV1ConditionList),
           observedGeneration: S.optional(S.Number),
           cancelledCount: S.optional(S.Number),
           failedCount: S.optional(S.Number),
@@ -3358,7 +4094,7 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "HTTPHeader" });
     case 3:
-      return S.Array(__S(10));
+      return S.Array(HTTPHeader);
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -3366,7 +4102,7 @@ function __c1(j: number): any {
           host: S.optional(S.String),
           scheme: S.optional(S.String),
           path: S.optional(S.String),
-          httpHeaders: S.optional(__S(11)),
+          httpHeaders: S.optional(HTTPHeaderList),
         }),
       ).annotate({ identifier: "HTTPGetAction" });
     case 5:
@@ -3386,7 +4122,7 @@ function __c1(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          command: S.optional(__S(5)),
+          command: S.optional(StringList),
         }),
       ).annotate({ identifier: "ExecAction" });
   }
@@ -3397,12 +4133,12 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           initialDelaySeconds: S.optional(S.Number),
-          httpGet: S.optional(__S(12)),
+          httpGet: S.optional(HTTPGetAction),
           periodSeconds: S.optional(S.Number),
-          tcpSocket: S.optional(__S(13)),
-          grpc: S.optional(__S(14)),
+          tcpSocket: S.optional(TCPSocketAction),
+          grpc: S.optional(GRPCAction),
           failureThreshold: S.optional(S.Number),
-          exec: S.optional(__S(15)),
+          exec: S.optional(ExecAction),
           timeoutSeconds: S.optional(S.Number),
           successThreshold: S.optional(S.Number),
         }),
@@ -3423,7 +4159,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           key: S.optional(S.String),
-          localObjectReference: S.optional(__S(18)),
+          localObjectReference: S.optional(LocalObjectReference),
           name: S.optional(S.String),
           optional: S.optional(S.Boolean),
         }),
@@ -3434,26 +4170,26 @@ function __c2(j: number): any {
           optional: S.optional(S.Boolean),
           name: S.optional(S.String),
           key: S.optional(S.String),
-          localObjectReference: S.optional(__S(18)),
+          localObjectReference: S.optional(LocalObjectReference),
         }),
       ).annotate({ identifier: "ConfigMapKeySelector" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          secretKeyRef: S.optional(__S(19)),
-          configMapKeyRef: S.optional(__S(20)),
+          secretKeyRef: S.optional(SecretKeySelector),
+          configMapKeyRef: S.optional(ConfigMapKeySelector),
         }),
       ).annotate({ identifier: "EnvVarSource" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          valueFrom: S.optional(__S(21)),
+          valueFrom: S.optional(EnvVarSource),
           name: S.optional(S.String),
           value: S.optional(S.String),
         }),
       ).annotate({ identifier: "EnvVar" });
     case 7:
-      return S.Array(__S(22));
+      return S.Array(EnvVar);
   }
 }
 function __c3(j: number): any {
@@ -3461,14 +4197,14 @@ function __c3(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          limits: S.optional(__S(4)),
-          requests: S.optional(__S(4)),
+          limits: S.optional(StringMap),
+          requests: S.optional(StringMap),
         }),
       ).annotate({ identifier: "ResourceRequirements" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          localObjectReference: S.optional(__S(18)),
+          localObjectReference: S.optional(LocalObjectReference),
           optional: S.optional(S.Boolean),
           name: S.optional(S.String),
         }),
@@ -3478,19 +4214,19 @@ function __c3(j: number): any {
         S.Struct({
           optional: S.optional(S.Boolean),
           name: S.optional(S.String),
-          localObjectReference: S.optional(__S(18)),
+          localObjectReference: S.optional(LocalObjectReference),
         }),
       ).annotate({ identifier: "ConfigMapEnvSource" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          secretRef: S.optional(__S(25)),
+          secretRef: S.optional(SecretEnvSource),
           prefix: S.optional(S.String),
-          configMapRef: S.optional(__S(26)),
+          configMapRef: S.optional(ConfigMapEnvSource),
         }),
       ).annotate({ identifier: "EnvFromSource" });
     case 4:
-      return S.Array(__S(27));
+      return S.Array(EnvFromSource);
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -3501,7 +4237,7 @@ function __c3(j: number): any {
         }),
       ).annotate({ identifier: "VolumeMount" });
     case 6:
-      return S.Array(__S(29));
+      return S.Array(VolumeMount);
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -3515,32 +4251,32 @@ function __c3(j: number): any {
 function __c4(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(31));
+      return S.Array(ContainerPort);
     case 1:
       return S.suspend(() =>
         S.Struct({
           terminationMessagePath: S.optional(S.String),
-          readinessProbe: S.optional(__S(16)),
-          startupProbe: S.optional(__S(16)),
+          readinessProbe: S.optional(Probe),
+          startupProbe: S.optional(Probe),
           imagePullPolicy: S.optional(S.String),
-          command: S.optional(__S(5)),
-          livenessProbe: S.optional(__S(16)),
+          command: S.optional(StringList),
+          livenessProbe: S.optional(Probe),
           sandboxLauncher: S.optional(S.Boolean),
-          securityContext: S.optional(__S(17)),
-          env: S.optional(__S(23)),
+          securityContext: S.optional(SecurityContext),
+          env: S.optional(EnvVarList),
           name: S.optional(S.String),
           image: S.optional(S.String),
           workingDir: S.optional(S.String),
           terminationMessagePolicy: S.optional(S.String),
-          resources: S.optional(__S(24)),
-          args: S.optional(__S(5)),
-          envFrom: S.optional(__S(28)),
-          volumeMounts: S.optional(__S(30)),
-          ports: S.optional(__S(32)),
+          resources: S.optional(ResourceRequirements),
+          args: S.optional(StringList),
+          envFrom: S.optional(EnvFromSourceList),
+          volumeMounts: S.optional(VolumeMountList),
+          ports: S.optional(ContainerPortList),
         }),
       ).annotate({ identifier: "Container" });
     case 2:
-      return S.Array(__S(33));
+      return S.Array(Container);
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -3558,20 +4294,20 @@ function __c4(j: number): any {
         }),
       ).annotate({ identifier: "KeyToPath" });
     case 5:
-      return S.Array(__S(36));
+      return S.Array(KeyToPath);
     case 6:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           defaultMode: S.optional(S.Number),
           optional: S.optional(S.Boolean),
-          items: S.optional(__S(37)),
+          items: S.optional(KeyToPathList),
         }),
       ).annotate({ identifier: "ConfigMapVolumeSource" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          items: S.optional(__S(37)),
+          items: S.optional(KeyToPathList),
           secretName: S.optional(S.String),
           optional: S.optional(S.Boolean),
           defaultMode: S.optional(S.Number),
@@ -3592,45 +4328,45 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           readOnly: S.optional(S.Boolean),
-          volumeAttributes: S.optional(__S(4)),
+          volumeAttributes: S.optional(StringMap),
           driver: S.optional(S.String),
         }),
       ).annotate({ identifier: "CSIVolumeSource" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          nfs: S.optional(__S(35)),
-          configMap: S.optional(__S(38)),
+          nfs: S.optional(NFSVolumeSource),
+          configMap: S.optional(ConfigMapVolumeSource),
           name: S.optional(S.String),
-          secret: S.optional(__S(39)),
-          emptyDir: S.optional(__S(40)),
-          csi: S.optional(__S(41)),
+          secret: S.optional(SecretVolumeSource),
+          emptyDir: S.optional(EmptyDirVolumeSource),
+          csi: S.optional(CSIVolumeSource),
         }),
       ).annotate({ identifier: "Volume" });
     case 3:
-      return S.Array(__S(42));
+      return S.Array(Volume);
     case 4:
       return S.suspend(() =>
         S.Struct({
           serviceAccountName: S.optional(S.String),
-          containers: S.optional(__S(34)),
+          containers: S.optional(ContainerList),
           timeoutSeconds: S.optional(S.String),
           maxRetries: S.optional(S.Number),
-          nodeSelector: S.optional(__S(4)),
-          volumes: S.optional(__S(43)),
+          nodeSelector: S.optional(StringMap),
+          volumes: S.optional(VolumeList),
         }),
       ).annotate({ identifier: "TaskSpec" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          spec: S.optional(__S(44)),
+          spec: S.optional(TaskSpec),
         }),
       ).annotate({ identifier: "TaskTemplateSpec" });
     case 6:
       return S.suspend(() =>
         S.Struct({
           parallelism: S.optional(S.Number),
-          template: S.optional(__S(45)),
+          template: S.optional(TaskTemplateSpec),
           taskCount: S.optional(S.Number),
           delayExecution: S.optional(S.Boolean),
         }),
@@ -3638,10 +4374,10 @@ function __c5(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          metadata: S.optional(__S(6)),
+          metadata: S.optional(ObjectMeta),
           kind: S.optional(S.String),
-          status: S.optional(__S(9)),
-          spec: S.optional(__S(46)),
+          status: S.optional(ExecutionStatus),
+          spec: S.optional(ExecutionSpec),
           apiVersion: S.optional(S.String),
         }),
       ).annotate({ identifier: "Execution" });
@@ -3653,7 +4389,7 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           routeName: S.optional(S.String),
-          certificateMode: S.optional(S.String),
+          certificateMode: S.optional(DomainMappingSpecCertificateModeEnum),
           forceOverride: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "DomainMappingSpec" });
@@ -3662,17 +4398,17 @@ function __c6(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           rrdata: S.optional(S.String),
-          type: S.optional(S.String),
+          type: S.optional(ResourceRecordTypeEnum),
         }),
       ).annotate({ identifier: "ResourceRecord" });
     case 2:
-      return S.Array(__S(49));
+      return S.Array(ResourceRecord);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          resourceRecords: S.optional(__S(50)),
+          resourceRecords: S.optional(ResourceRecordList),
           mappedRouteName: S.optional(S.String),
-          conditions: S.optional(__S(8)),
+          conditions: S.optional(GoogleCloudRunV1ConditionList),
           observedGeneration: S.optional(S.Number),
           url: S.optional(S.String),
         }),
@@ -3681,9 +4417,9 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           apiVersion: S.optional(S.String),
-          metadata: S.optional(__S(6)),
-          spec: S.optional(__S(48)),
-          status: S.optional(__S(51)),
+          metadata: S.optional(ObjectMeta),
+          spec: S.optional(DomainMappingSpec),
+          status: S.optional(DomainMappingStatus),
           kind: S.optional(S.String),
         }),
       ).annotate({ identifier: "DomainMapping" });
@@ -3692,7 +4428,7 @@ function __c6(j: number): any {
         S.Struct({
           parent: S.String.pipe(T.Label()),
           dryRun: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(52).pipe(T.HttpBody())),
+          body: S.optional(DomainMapping.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3706,20 +4442,20 @@ function __c6(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          conditions: S.optional(__S(8)),
+          conditions: S.optional(GoogleCloudRunV1ConditionList),
           logUri: S.optional(S.String),
           observedGeneration: S.optional(S.Number),
-          urls: S.optional(__S(5)),
+          urls: S.optional(StringList),
         }),
       ).annotate({ identifier: "InstanceStatus" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          containers: S.optional(__S(34)),
-          nodeSelector: S.optional(__S(4)),
+          containers: S.optional(ContainerList),
+          nodeSelector: S.optional(StringMap),
           restartPolicy: S.optional(S.String),
           serviceAccountName: S.optional(S.String),
-          volumes: S.optional(__S(43)),
+          volumes: S.optional(VolumeList),
         }),
       ).annotate({ identifier: "InstanceSpec" });
   }
@@ -3731,9 +4467,9 @@ function __c7(j: number): any {
         S.Struct({
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          metadata: S.optional(__S(6)),
-          status: S.optional(__S(54)),
-          spec: S.optional(__S(55)),
+          metadata: S.optional(ObjectMeta),
+          status: S.optional(InstanceStatus),
+          spec: S.optional(InstanceSpec),
         }),
       ).annotate({ identifier: "Instance" });
     case 1:
@@ -3741,7 +4477,7 @@ function __c7(j: number): any {
         S.Struct({
           parent: S.String.pipe(T.Label()),
           dryRun: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(56).pipe(T.HttpBody())),
+          body: S.optional(Instance.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3755,15 +4491,15 @@ function __c7(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          spec: S.optional(__S(46)),
-          metadata: S.optional(__S(6)),
+          spec: S.optional(ExecutionSpec),
+          metadata: S.optional(ObjectMeta),
         }),
       ).annotate({ identifier: "ExecutionTemplateSpec" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           startExecutionToken: S.optional(S.String),
-          template: S.optional(__S(58)),
+          template: S.optional(ExecutionTemplateSpec),
           runExecutionToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "JobSpec" });
@@ -3774,15 +4510,15 @@ function __c7(j: number): any {
           deletionTimestamp: S.optional(S.String),
           name: S.optional(S.String),
           creationTimestamp: S.optional(S.String),
-          completionStatus: S.optional(S.String),
+          completionStatus: S.optional(ExecutionReferenceCompletionStatusEnum),
         }),
       ).annotate({ identifier: "ExecutionReference" });
     case 5:
       return S.suspend(() =>
         S.Struct({
           observedGeneration: S.optional(S.Number),
-          conditions: S.optional(__S(8)),
-          latestCreatedExecution: S.optional(__S(60)),
+          conditions: S.optional(GoogleCloudRunV1ConditionList),
+          latestCreatedExecution: S.optional(ExecutionReference),
           executionCount: S.optional(S.Number),
         }),
       ).annotate({ identifier: "JobStatus" });
@@ -3790,10 +4526,10 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
-          spec: S.optional(__S(59)),
-          metadata: S.optional(__S(6)),
+          spec: S.optional(JobSpec),
+          metadata: S.optional(ObjectMeta),
           apiVersion: S.optional(S.String),
-          status: S.optional(__S(61)),
+          status: S.optional(JobStatus),
         }),
       ).annotate({ identifier: "Job" });
     case 7:
@@ -3801,7 +4537,7 @@ function __c7(j: number): any {
         S.Struct({
           parent: S.String.pipe(T.Label()),
           dryRun: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(62).pipe(T.HttpBody())),
+          body: S.optional(Job.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3828,7 +4564,7 @@ function __c8(j: number): any {
         }),
       ).annotate({ identifier: "TrafficTarget" });
     case 1:
-      return S.Array(__S(64));
+      return S.Array(TrafficTarget);
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -3838,43 +4574,43 @@ function __c8(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          traffic: S.optional(__S(65)),
-          address: S.optional(__S(66)),
+          traffic: S.optional(TrafficTargetList),
+          address: S.optional(Addressable),
           url: S.optional(S.String),
           observedGeneration: S.optional(S.Number),
           latestReadyRevisionName: S.optional(S.String),
           latestCreatedRevisionName: S.optional(S.String),
-          conditions: S.optional(__S(8)),
+          conditions: S.optional(GoogleCloudRunV1ConditionList),
         }),
       ).annotate({ identifier: "ServiceStatus" });
     case 4:
-      return S.Array(__S(18));
+      return S.Array(LocalObjectReference);
     case 5:
       return S.suspend(() =>
         S.Struct({
           serviceAccountName: S.optional(S.String),
-          nodeSelector: S.optional(__S(4)),
+          nodeSelector: S.optional(StringMap),
           runtimeClassName: S.optional(S.String),
-          volumes: S.optional(__S(43)),
+          volumes: S.optional(VolumeList),
           timeoutSeconds: S.optional(S.Number),
           enableServiceLinks: S.optional(S.Boolean),
           containerConcurrency: S.optional(S.Number),
-          containers: S.optional(__S(34)),
-          imagePullSecrets: S.optional(__S(68)),
+          containers: S.optional(ContainerList),
+          imagePullSecrets: S.optional(LocalObjectReferenceList),
         }),
       ).annotate({ identifier: "RevisionSpec" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          spec: S.optional(__S(69)),
-          metadata: S.optional(__S(6)),
+          spec: S.optional(RevisionSpec),
+          metadata: S.optional(ObjectMeta),
         }),
       ).annotate({ identifier: "RevisionTemplate" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          traffic: S.optional(__S(65)),
-          template: S.optional(__S(70)),
+          traffic: S.optional(TrafficTargetList),
+          template: S.optional(RevisionTemplate),
         }),
       ).annotate({ identifier: "ServiceSpec" });
   }
@@ -3884,11 +4620,11 @@ function __c9(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          metadata: S.optional(__S(6)),
+          metadata: S.optional(ObjectMeta),
           kind: S.optional(S.String),
           apiVersion: S.optional(S.String),
-          status: S.optional(__S(67)),
-          spec: S.optional(__S(71)),
+          status: S.optional(ServiceStatus),
+          spec: S.optional(ServiceSpec),
         }),
       ).annotate({ identifier: "Service" });
     case 1:
@@ -3896,7 +4632,7 @@ function __c9(j: number): any {
         S.Struct({
           parent: S.String.pipe(T.Label()),
           dryRun: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(72).pipe(T.HttpBody())),
+          body: S.optional(Service.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3916,30 +4652,30 @@ function __c9(j: number): any {
         }),
       ).annotate({ identifier: "InstanceSplit" });
     case 3:
-      return S.Array(__S(74));
+      return S.Array(InstanceSplit);
     case 4:
       return S.suspend(() =>
         S.Struct({
           latestReadyRevisionName: S.optional(S.String),
-          instanceSplits: S.optional(__S(75)),
+          instanceSplits: S.optional(InstanceSplitList),
           latestCreatedRevisionName: S.optional(S.String),
           observedGeneration: S.optional(S.Number),
-          conditions: S.optional(__S(8)),
+          conditions: S.optional(GoogleCloudRunV1ConditionList),
         }),
       ).annotate({ identifier: "WorkerPoolStatus" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          instanceSplits: S.optional(__S(75)),
-          template: S.optional(__S(70)),
+          instanceSplits: S.optional(InstanceSplitList),
+          template: S.optional(RevisionTemplate),
         }),
       ).annotate({ identifier: "WorkerPoolSpec" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(__S(76)),
-          spec: S.optional(__S(77)),
-          metadata: S.optional(__S(6)),
+          status: S.optional(WorkerPoolStatus),
+          spec: S.optional(WorkerPoolSpec),
+          metadata: S.optional(ObjectMeta),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
         }),
@@ -3949,7 +4685,7 @@ function __c9(j: number): any {
         S.Struct({
           parent: S.String.pipe(T.Label()),
           dryRun: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(78).pipe(T.HttpBody())),
+          body: S.optional(WorkerPool.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3969,7 +4705,7 @@ function __c10(j: number): any {
         S.Struct({
           parent: S.String.pipe(T.Label()),
           dryRun: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(52).pipe(T.HttpBody())),
+          body: S.optional(DomainMapping.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3985,7 +4721,7 @@ function __c10(j: number): any {
         S.Struct({
           parent: S.String.pipe(T.Label()),
           dryRun: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(72).pipe(T.HttpBody())),
+          body: S.optional(Service.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4031,7 +4767,7 @@ function __c10(j: number): any {
         }),
       ).annotate({ identifier: "StatusCause" });
     case 5:
-      return S.Array(__S(84));
+      return S.Array(StatusCause);
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -4040,7 +4776,7 @@ function __c10(j: number): any {
           uid: S.optional(S.String),
           name: S.optional(S.String),
           retryAfterSeconds: S.optional(S.Number),
-          causes: S.optional(__S(85)),
+          causes: S.optional(StatusCauseList),
         }),
       ).annotate({ identifier: "StatusDetails" });
     case 7:
@@ -4048,9 +4784,9 @@ function __c10(j: number): any {
         S.Struct({
           message: S.optional(S.String),
           status: S.optional(S.String),
-          metadata: S.optional(__S(83)),
+          metadata: S.optional(ListMeta),
           reason: S.optional(S.String),
-          details: S.optional(__S(86)),
+          details: S.optional(StatusDetails),
           code: S.optional(S.Number),
         }),
       ).annotate({ identifier: "Status" });
@@ -4246,21 +4982,21 @@ function __c12(j: number): any {
       return S.suspend(() =>
         S.Struct({
           role: S.optional(S.String),
-          members: S.optional(__S(5)),
-          condition: S.optional(__S(99)),
+          members: S.optional(StringList),
+          condition: S.optional(Expr),
         }),
       ).annotate({ identifier: "Binding" });
     case 5:
-      return S.Array(__S(100));
+      return S.Array(Binding);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          logType: S.optional(S.String),
-          exemptedMembers: S.optional(__S(5)),
+          logType: S.optional(AuditLogConfigLogTypeEnum),
+          exemptedMembers: S.optional(StringList),
         }),
       ).annotate({ identifier: "AuditLogConfig" });
     case 7:
-      return S.Array(__S(102));
+      return S.Array(AuditLogConfig);
   }
 }
 function __c13(j: number): any {
@@ -4268,19 +5004,19 @@ function __c13(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          auditLogConfigs: S.optional(__S(103)),
+          auditLogConfigs: S.optional(AuditLogConfigList),
           service: S.optional(S.String),
         }),
       ).annotate({ identifier: "AuditConfig" });
     case 1:
-      return S.Array(__S(104));
+      return S.Array(AuditConfig);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          bindings: S.optional(__S(101)),
+          bindings: S.optional(BindingList),
           etag: S.optional(S.String),
           version: S.optional(S.Number),
-          auditConfigs: S.optional(__S(105)),
+          auditConfigs: S.optional(AuditConfigList),
         }),
       ).annotate({ identifier: "Policy" });
     case 3:
@@ -4345,7 +5081,7 @@ function __c13(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          template: S.optional(__S(70)),
+          template: S.optional(RevisionTemplate),
         }),
       ).annotate({ identifier: "ConfigurationSpec" });
   }
@@ -4356,7 +5092,7 @@ function __c14(j: number): any {
       return S.suspend(() =>
         S.Struct({
           latestReadyRevisionName: S.optional(S.String),
-          conditions: S.optional(__S(8)),
+          conditions: S.optional(GoogleCloudRunV1ConditionList),
           latestCreatedRevisionName: S.optional(S.String),
           observedGeneration: S.optional(S.Number),
         }),
@@ -4364,11 +5100,11 @@ function __c14(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          metadata: S.optional(__S(6)),
+          metadata: S.optional(ObjectMeta),
           apiVersion: S.optional(S.String),
-          spec: S.optional(__S(111)),
+          spec: S.optional(ConfigurationSpec),
           kind: S.optional(S.String),
-          status: S.optional(__S(112)),
+          status: S.optional(ConfigurationStatus),
         }),
       ).annotate({ identifier: "Configuration" });
     case 2:
@@ -4442,7 +5178,7 @@ function __c14(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          conditions: S.optional(__S(8)),
+          conditions: S.optional(GoogleCloudRunV1ConditionList),
           desiredReplicas: S.optional(S.Number),
           serviceName: S.optional(S.String),
           observedGeneration: S.optional(S.Number),
@@ -4457,11 +5193,11 @@ function __c15(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          metadata: S.optional(__S(6)),
+          metadata: S.optional(ObjectMeta),
           apiVersion: S.optional(S.String),
-          status: S.optional(__S(119)),
+          status: S.optional(RevisionStatus),
           kind: S.optional(S.String),
-          spec: S.optional(__S(69)),
+          spec: S.optional(RevisionSpec),
         }),
       ).annotate({ identifier: "Revision" });
     case 1:
@@ -4481,7 +5217,7 @@ function __c15(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          traffic: S.optional(__S(65)),
+          traffic: S.optional(TrafficTargetList),
         }),
       ).annotate({ identifier: "RouteSpec" });
     case 3:
@@ -4489,9 +5225,9 @@ function __c15(j: number): any {
         S.Struct({
           observedGeneration: S.optional(S.Number),
           url: S.optional(S.String),
-          conditions: S.optional(__S(8)),
-          address: S.optional(__S(66)),
-          traffic: S.optional(__S(65)),
+          conditions: S.optional(GoogleCloudRunV1ConditionList),
+          address: S.optional(Addressable),
+          traffic: S.optional(TrafficTargetList),
         }),
       ).annotate({ identifier: "RouteStatus" });
     case 4:
@@ -4499,9 +5235,9 @@ function __c15(j: number): any {
         S.Struct({
           kind: S.optional(S.String),
           apiVersion: S.optional(S.String),
-          spec: S.optional(__S(122)),
-          status: S.optional(__S(123)),
-          metadata: S.optional(__S(6)),
+          spec: S.optional(RouteSpec),
+          status: S.optional(RouteStatus),
+          metadata: S.optional(ObjectMeta),
         }),
       ).annotate({ identifier: "Route" });
     case 5:
@@ -4539,11 +5275,11 @@ function __c15(j: number): any {
 function __c16(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(127));
+      return S.Array(DocumentMap);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          details: S.optional(__S(128)),
+          details: S.optional(DocumentMapList),
           code: S.optional(S.Number),
           message: S.optional(S.String),
         }),
@@ -4553,7 +5289,7 @@ function __c16(j: number): any {
         S.Struct({
           termSignal: S.optional(S.Number),
           exitCode: S.optional(S.Number),
-          status: S.optional(__S(129)),
+          status: S.optional(GoogleRpcStatus),
         }),
       ).annotate({ identifier: "TaskAttemptResult" });
     case 3:
@@ -4562,21 +5298,21 @@ function __c16(j: number): any {
           index: S.optional(S.Number),
           completionTime: S.optional(S.String),
           retried: S.optional(S.Number),
-          lastAttemptResult: S.optional(__S(130)),
+          lastAttemptResult: S.optional(TaskAttemptResult),
           startTime: S.optional(S.String),
           observedGeneration: S.optional(S.Number),
           logUri: S.optional(S.String),
-          conditions: S.optional(__S(8)),
+          conditions: S.optional(GoogleCloudRunV1ConditionList),
         }),
       ).annotate({ identifier: "TaskStatus" });
     case 4:
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
-          spec: S.optional(__S(44)),
+          spec: S.optional(TaskSpec),
           apiVersion: S.optional(S.String),
-          metadata: S.optional(__S(6)),
-          status: S.optional(__S(131)),
+          metadata: S.optional(ObjectMeta),
+          status: S.optional(TaskStatus),
         }),
       ).annotate({ identifier: "Task" });
     case 5:
@@ -4630,9 +5366,9 @@ function __c17(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          error: S.optional(__S(129)),
-          response: S.optional(__S(127)),
-          metadata: S.optional(__S(127)),
+          error: S.optional(GoogleRpcStatus),
+          response: S.optional(DocumentMap),
+          metadata: S.optional(DocumentMap),
           done: S.optional(S.Boolean),
           name: S.optional(S.String),
         }),
@@ -4693,7 +5429,7 @@ function __c17(j: number): any {
         }),
       ).annotate({ identifier: "AuthorizedDomain" });
     case 7:
-      return S.Array(__S(142));
+      return S.Array(AuthorizedDomain);
   }
 }
 function __c18(j: number): any {
@@ -4701,7 +5437,7 @@ function __c18(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          domains: S.optional(__S(143)),
+          domains: S.optional(AuthorizedDomainList),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -4729,14 +5465,14 @@ function __c18(j: number): any {
         identifier: "ListNamespacesConfigurationsRequest",
       });
     case 2:
-      return S.Array(__S(113));
+      return S.Array(Configuration);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          metadata: S.optional(__S(83)),
+          metadata: S.optional(ListMeta),
           kind: S.optional(S.String),
-          unreachable: S.optional(__S(5)),
-          items: S.optional(__S(146)),
+          unreachable: S.optional(StringList),
+          items: S.optional(ConfigurationList),
           apiVersion: S.optional(S.String),
         }),
       ).annotate({
@@ -4764,13 +5500,13 @@ function __c18(j: number): any {
         identifier: "ListNamespacesDomainmappingsRequest",
       });
     case 5:
-      return S.Array(__S(52));
+      return S.Array(DomainMapping);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          unreachable: S.optional(__S(5)),
-          items: S.optional(__S(149)),
-          metadata: S.optional(__S(83)),
+          unreachable: S.optional(StringList),
+          items: S.optional(DomainMappingList),
+          metadata: S.optional(ListMeta),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
         }),
@@ -4803,13 +5539,13 @@ function __c18(j: number): any {
 function __c19(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(47));
+      return S.Array(Execution);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          unreachable: S.optional(__S(5)),
-          metadata: S.optional(__S(83)),
-          items: S.optional(__S(152)),
+          unreachable: S.optional(StringList),
+          metadata: S.optional(ListMeta),
+          items: S.optional(ExecutionList),
           kind: S.optional(S.String),
           apiVersion: S.optional(S.String),
         }),
@@ -4836,13 +5572,13 @@ function __c19(j: number): any {
         identifier: "ListNamespacesInstancesRequest",
       });
     case 3:
-      return S.Array(__S(56));
+      return S.Array(Instance);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          items: S.optional(__S(155)),
-          metadata: S.optional(__S(83)),
-          unreachable: S.optional(__S(5)),
+          items: S.optional(InstanceList),
+          metadata: S.optional(ListMeta),
+          unreachable: S.optional(StringList),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
         }),
@@ -4869,14 +5605,14 @@ function __c19(j: number): any {
         identifier: "ListNamespacesJobsRequest",
       });
     case 6:
-      return S.Array(__S(62));
+      return S.Array(Job);
     case 7:
       return S.suspend(() =>
         S.Struct({
           apiVersion: S.optional(S.String),
-          items: S.optional(__S(158)),
-          unreachable: S.optional(__S(5)),
-          metadata: S.optional(__S(83)),
+          items: S.optional(JobList),
+          unreachable: S.optional(StringList),
+          metadata: S.optional(ListMeta),
           kind: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListJobsResponse" });
@@ -4906,14 +5642,14 @@ function __c20(j: number): any {
         identifier: "ListNamespacesRevisionsRequest",
       });
     case 1:
-      return S.Array(__S(120));
+      return S.Array(Revision);
     case 2:
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
-          items: S.optional(__S(161)),
-          metadata: S.optional(__S(83)),
-          unreachable: S.optional(__S(5)),
+          items: S.optional(RevisionList),
+          metadata: S.optional(ListMeta),
+          unreachable: S.optional(StringList),
           apiVersion: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListRevisionsResponse" });
@@ -4939,15 +5675,15 @@ function __c20(j: number): any {
         identifier: "ListNamespacesRoutesRequest",
       });
     case 4:
-      return S.Array(__S(124));
+      return S.Array(Route);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          unreachable: S.optional(__S(5)),
+          unreachable: S.optional(StringList),
           apiVersion: S.optional(S.String),
-          metadata: S.optional(__S(83)),
+          metadata: S.optional(ListMeta),
           kind: S.optional(S.String),
-          items: S.optional(__S(164)),
+          items: S.optional(RouteList),
         }),
       ).annotate({ identifier: "ListRoutesResponse" });
     case 6:
@@ -4972,7 +5708,7 @@ function __c20(j: number): any {
         identifier: "ListNamespacesServicesRequest",
       });
     case 7:
-      return S.Array(__S(72));
+      return S.Array(Service);
   }
 }
 function __c21(j: number): any {
@@ -4980,11 +5716,11 @@ function __c21(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          metadata: S.optional(__S(83)),
+          metadata: S.optional(ListMeta),
           apiVersion: S.optional(S.String),
-          unreachable: S.optional(__S(5)),
+          unreachable: S.optional(StringList),
           kind: S.optional(S.String),
-          items: S.optional(__S(167)),
+          items: S.optional(ServiceList),
         }),
       ).annotate({ identifier: "ListServicesResponse" });
     case 1:
@@ -5009,13 +5745,13 @@ function __c21(j: number): any {
         identifier: "ListNamespacesTasksRequest",
       });
     case 2:
-      return S.Array(__S(132));
+      return S.Array(Task);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          items: S.optional(__S(170)),
-          unreachable: S.optional(__S(5)),
-          metadata: S.optional(__S(83)),
+          items: S.optional(TaskList),
+          unreachable: S.optional(StringList),
+          metadata: S.optional(ListMeta),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
         }),
@@ -5038,14 +5774,14 @@ function __c21(j: number): any {
         identifier: "ListNamespacesWorkerpoolsRequest",
       });
     case 5:
-      return S.Array(__S(78));
+      return S.Array(WorkerPool);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          unreachable: S.optional(__S(5)),
-          items: S.optional(__S(173)),
+          unreachable: S.optional(StringList),
+          items: S.optional(WorkerPoolList),
           kind: S.optional(S.String),
-          metadata: S.optional(__S(83)),
+          metadata: S.optional(ListMeta),
           apiVersion: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListWorkerPoolsResponse" });
@@ -5073,7 +5809,7 @@ function __c22(j: number): any {
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
-          extraLocationTypes: S.optional(__S(5).pipe(T.Query())),
+          extraLocationTypes: S.optional(StringList.pipe(T.Query())),
           pageSize: S.optional(S.Number.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
           filter: S.optional(S.String.pipe(T.Query())),
@@ -5090,20 +5826,20 @@ function __c22(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          metadata: S.optional(__S(127)),
-          labels: S.optional(__S(4)),
+          metadata: S.optional(DocumentMap),
+          labels: S.optional(StringMap),
           name: S.optional(S.String),
           displayName: S.optional(S.String),
           locationId: S.optional(S.String),
         }),
       ).annotate({ identifier: "Location" });
     case 2:
-      return S.Array(__S(177));
+      return S.Array(Location);
     case 3:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          locations: S.optional(__S(178)),
+          locations: S.optional(LocationList),
         }),
       ).annotate({ identifier: "ListLocationsResponse" });
     case 4:
@@ -5187,13 +5923,13 @@ function __c22(j: number): any {
 function __c23(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(137));
+      return S.Array(GoogleLongrunningOperation);
     case 1:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          unreachable: S.optional(__S(5)),
-          operations: S.optional(__S(184)),
+          unreachable: S.optional(StringList),
+          operations: S.optional(GoogleLongrunningOperationList),
         }),
       ).annotate({
         identifier: "GoogleLongrunningListOperationsResponse",
@@ -5266,7 +6002,7 @@ function __c23(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           dryRun: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(56).pipe(T.HttpBody())),
+          body: S.optional(Instance.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -5282,7 +6018,7 @@ function __c23(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           dryRun: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(62).pipe(T.HttpBody())),
+          body: S.optional(Job.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -5298,7 +6034,7 @@ function __c23(j: number): any {
         S.Struct({
           dryRun: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(72).pipe(T.HttpBody())),
+          body: S.optional(Service.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -5318,7 +6054,7 @@ function __c24(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           dryRun: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(72).pipe(T.HttpBody())),
+          body: S.optional(Service.pipe(T.HttpBody())),
         }).pipe(
           T.Http({ method: "PUT", uri: "v1/{+name}", baseUrl: "https://run.googleapis.com/" }),
         ),
@@ -5330,7 +6066,7 @@ function __c24(j: number): any {
         S.Struct({
           dryRun: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(78).pipe(T.HttpBody())),
+          body: S.optional(WorkerPool.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -5344,18 +6080,18 @@ function __c24(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          env: S.optional(__S(23)),
+          env: S.optional(EnvVarList),
           name: S.optional(S.String),
-          args: S.optional(__S(5)),
+          args: S.optional(StringList),
           clearArgs: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "ContainerOverride" });
     case 3:
-      return S.Array(__S(194));
+      return S.Array(ContainerOverride);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          containerOverrides: S.optional(__S(195)),
+          containerOverrides: S.optional(ContainerOverrideList),
           delayExecution: S.optional(S.Boolean),
           taskCount: S.optional(S.Number),
           timeoutSeconds: S.optional(S.Number),
@@ -5364,14 +6100,14 @@ function __c24(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          overrides: S.optional(__S(196)),
+          overrides: S.optional(Overrides),
         }),
       ).annotate({ identifier: "RunJobRequest" });
     case 6:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(197).pipe(T.HttpBody())),
+          body: S.optional(RunJobRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5383,7 +6119,7 @@ function __c24(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          policy: S.optional(__S(106)),
+          policy: S.optional(Policy),
           updateMask: S.optional(S.String),
         }),
       ).annotate({ identifier: "SetIamPolicyRequest" });
@@ -5395,7 +6131,7 @@ function __c25(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(199).pipe(T.HttpBody())),
+          body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5410,7 +6146,7 @@ function __c25(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(199).pipe(T.HttpBody())),
+          body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5425,7 +6161,7 @@ function __c25(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(199).pipe(T.HttpBody())),
+          body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5440,7 +6176,7 @@ function __c25(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(199).pipe(T.HttpBody())),
+          body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5461,7 +6197,7 @@ function __c25(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(204).pipe(T.HttpBody())),
+          body: S.optional(StartInstanceRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5476,7 +6212,7 @@ function __c25(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(204).pipe(T.HttpBody())),
+          body: S.optional(StartInstanceRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5490,7 +6226,7 @@ function __c25(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          permissions: S.optional(__S(5)),
+          permissions: S.optional(StringList),
         }),
       ).annotate({
         identifier: "TestIamPermissionsRequest",
@@ -5503,7 +6239,7 @@ function __c26(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(207).pipe(T.HttpBody())),
+          body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5518,7 +6254,7 @@ function __c26(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(207).pipe(T.HttpBody())),
+          body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5533,7 +6269,7 @@ function __c26(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(207).pipe(T.HttpBody())),
+          body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5548,7 +6284,7 @@ function __c26(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(207).pipe(T.HttpBody())),
+          body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5571,7 +6307,7 @@ function __c26(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(212).pipe(T.HttpBody())),
+          body: S.optional(GoogleLongrunningWaitOperationRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5582,68 +6318,5 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "WaitProjectsLocationsOperationsRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
-    case 9:
-      return __c9(i & 7);
-    case 10:
-      return __c10(i & 7);
-    case 11:
-      return __c11(i & 7);
-    case 12:
-      return __c12(i & 7);
-    case 13:
-      return __c13(i & 7);
-    case 14:
-      return __c14(i & 7);
-    case 15:
-      return __c15(i & 7);
-    case 16:
-      return __c16(i & 7);
-    case 17:
-      return __c17(i & 7);
-    case 18:
-      return __c18(i & 7);
-    case 19:
-      return __c19(i & 7);
-    case 20:
-      return __c20(i & 7);
-    case 21:
-      return __c21(i & 7);
-    case 22:
-      return __c22(i & 7);
-    case 23:
-      return __c23(i & 7);
-    case 24:
-      return __c24(i & 7);
-    case 25:
-      return __c25(i & 7);
-    case 26:
-      return __c26(i & 7);
   }
 }

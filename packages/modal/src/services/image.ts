@@ -6,18 +6,25 @@ import { UnknownModalError } from "../errors.ts";
 import { ModalProtocol, type ModalOpError, type ModalOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { ModalOpError, ModalOpContext };
 
 export interface DeleteImageRequest {
   imageId?: string;
 }
+const DeleteImageRequest = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<DeleteImageRequest>;
+
 export interface DeleteImageResponse {}
+const DeleteImageResponse = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<DeleteImageResponse>;
+
 export interface GetImageBuildChainRequest {
   imageId?: string;
 }
+const GetImageBuildChainRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<GetImageBuildChainRequest>;
+
 export interface ImageBuildStep {
   imageId?: string;
   startedAt?: string;
@@ -25,14 +32,27 @@ export interface ImageBuildStep {
   builderAppId?: string;
   builderTaskId?: string;
 }
+const ImageBuildStep = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<ImageBuildStep>;
+
 export type ImageBuildStepList = Array<ImageBuildStep>;
+const ImageBuildStepList = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<ImageBuildStepList>;
+
 export interface GetImageBuildChainResponse {
   buildSteps?: ImageBuildStepList;
 }
+const GetImageBuildChainResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<GetImageBuildChainResponse>;
+
 export interface ImageFromIdRequest {
   imageId?: string;
 }
+const ImageFromIdRequest = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<ImageFromIdRequest>;
+
 export type StringMap = { [key: string]: string | undefined };
+const StringMap = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<StringMap>;
+
 export interface ImageMetadata {
   /** The output of `python -VV. Not set if missing */
   pythonVersionInfo?: string;
@@ -45,30 +65,51 @@ export interface ImageMetadata {
   /** The builder version for/with which the image was created. */
   imageBuilderVersion?: string;
 }
+const ImageMetadata = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<ImageMetadata>;
+
 export interface ImageFromIdResponse {
   imageId?: string;
   metadata?: ImageMetadata;
 }
+const ImageFromIdResponse = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<ImageFromIdResponse>;
+
 export interface ImageGetByTagRequest {
   /** Named image reference: "[[workspace/]environment/]name[:tag]". The tag suffix defaults to "latest" when omitted. */
   tag?: string;
   /** New clients should send environment name as a /-separated prefix of the `tag` field. environment_name only accepted when tag has no environment or workspace prefix. */
   environmentName?: string;
 }
+const ImageGetByTagRequest = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<ImageGetByTagRequest>;
+
 export interface ImageGetByTagResponse {
   imageId?: string;
 }
+const ImageGetByTagResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<ImageGetByTagResponse>;
+
 export interface BaseImage {
   imageId?: string;
   dockerTag?: string;
 }
+const BaseImage = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<BaseImage>;
+
 export type BaseImageList = Array<BaseImage>;
+const BaseImageList = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<BaseImageList>;
+
 export type StringList = Array<string>;
+const StringList = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<StringList>;
+
 export interface ImageContextFile {
   filename?: string;
   data?: string;
 }
+const ImageContextFile = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<ImageContextFile>;
+
 export type ImageContextFileList = Array<ImageContextFile>;
+const ImageContextFileList = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<ImageContextFileList>;
+
 export type GPUType =
   | "GPU_TYPE_UNSPECIFIED"
   | "GPU_TYPE_T4"
@@ -80,22 +121,30 @@ export type GPUType =
   | "GPU_TYPE_H100"
   | "GPU_TYPE_L40S"
   | "GPU_TYPE_H200";
+const GPUType = S.String;
+
 export interface GPUConfig {
   type?: GPUType | (string & {});
   /** Deprecated, at some point */
   count?: number;
   gpuType?: string;
 }
+const GPUConfig = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<GPUConfig>;
+
 export type RegistryAuthType =
   | "REGISTRY_AUTH_TYPE_UNSPECIFIED"
   | "REGISTRY_AUTH_TYPE_AWS"
   | "REGISTRY_AUTH_TYPE_GCP"
   | "REGISTRY_AUTH_TYPE_PUBLIC"
   | "REGISTRY_AUTH_TYPE_STATIC_CREDS";
+const RegistryAuthType = S.String;
+
 export interface ImageRegistryConfig {
   registryAuthType?: RegistryAuthType | (string & {});
   secretId?: string;
 }
+const ImageRegistryConfig = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<ImageRegistryConfig>;
+
 /** Which data format a binary message is encoded with. */
 export type DataFormat =
   | "DATA_FORMAT_UNSPECIFIED"
@@ -103,6 +152,8 @@ export type DataFormat =
   | "DATA_FORMAT_ASGI"
   | "DATA_FORMAT_GENERATOR_DONE"
   | "DATA_FORMAT_CBOR";
+const DataFormat = S.String;
+
 export interface FunctionInput {
   /** serialized (args, kwargs). */
   args?: string;
@@ -112,11 +163,15 @@ export interface FunctionInput {
   /** For args_oneof. */
   methodName?: string;
 }
+const FunctionInput = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<FunctionInput>;
+
 export interface BuildFunction {
   definition?: string;
   globals?: string;
   input?: FunctionInput;
 }
+const BuildFunction = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<BuildFunction>;
+
 export interface VolumeMount {
   volumeId?: string;
   mountPath?: string;
@@ -124,9 +179,15 @@ export interface VolumeMount {
   readOnly?: boolean;
   subPath?: string;
 }
+const VolumeMount = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<VolumeMount>;
+
 export type VolumeMountList = Array<VolumeMount>;
+const VolumeMountList = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<VolumeMountList>;
+
 /** CPU architecture an image is built for and must run on. */
 export type Arch = "ARCH_UNSPECIFIED" | "ARCH_X86_64" | "ARCH_AARCH64";
+const Arch = S.String;
+
 export interface Image {
   baseImages?: BaseImageList;
   dockerfileCommands?: StringList;
@@ -152,10 +213,14 @@ export interface Image {
   /** CPU architecture the image is built for. Images with an unspecified arch predate this field and are treated as x86_64. */
   arch?: Arch | (string & {});
 }
+const Image = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<Image>;
+
 export type DeploymentNamespace =
   | "DEPLOYMENT_NAMESPACE_UNSPECIFIED"
   | "DEPLOYMENT_NAMESPACE_WORKSPACE"
   | "DEPLOYMENT_NAMESPACE_GLOBAL";
+const DeploymentNamespace = S.String;
+
 export interface ImageGetOrCreateRequest {
   image?: Image;
   appId?: string;
@@ -170,6 +235,11 @@ export interface ImageGetOrCreateRequest {
   /** Force the Image to build but don't clobber any Images with the same recipe in the cache */
   ignoreCache?: boolean;
 }
+const ImageGetOrCreateRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<ImageGetOrCreateRequest>;
+
 /** Used for both tasks and function outputs */
 export type GenericResultGenericStatus =
   | "GENERIC_STATUS_UNSPECIFIED"
@@ -181,6 +251,8 @@ export type GenericResultGenericStatus =
   | "GENERIC_STATUS_INTERNAL_FAILURE"
   | "GENERIC_STATUS_IDLE_TIMEOUT"
   | "GENERIC_STATUS_MEMORY_MANAGER_EVICTION";
+const GenericResultGenericStatus = S.String;
+
 /** sub-type for generic types like lists */
 export interface GenericResult {
   status?: GenericResultGenericStatus;
@@ -201,6 +273,8 @@ export interface GenericResult {
   /** Blob ID for large data. */
   propagationReason?: string;
 }
+const GenericResult = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<GenericResult>;
+
 export interface ImageGetOrCreateResponse {
   /** image_id is set regardless if the image is built (use ImageJoinStreaming to wait for build) */
   imageId?: string;
@@ -209,6 +283,11 @@ export interface ImageGetOrCreateResponse {
   /** image metadata - only set if the image has built successfully */
   metadata?: ImageMetadata;
 }
+const ImageGetOrCreateResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<ImageGetOrCreateResponse>;
+
 export interface ImageListTagsRequest {
   environmentName?: string;
   /** Prefix search over full "name:tag" strings. */
@@ -217,6 +296,8 @@ export interface ImageListTagsRequest {
   maxObjects?: number;
   pageToken?: string;
 }
+const ImageListTagsRequest = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<ImageListTagsRequest>;
+
 /** set on success */
 export interface ImageListTagsItem {
   tag?: string;
@@ -225,12 +306,24 @@ export interface ImageListTagsItem {
   createdAt?: number;
   updatedAt?: number;
 }
+const ImageListTagsItem = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<ImageListTagsItem>;
+
 export type ImageListTagsItemList = Array<ImageListTagsItem>;
+const ImageListTagsItemList = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<ImageListTagsItemList>;
+
 export interface ImageListTagsResponse {
   items?: ImageListTagsItemList;
   nextPageToken?: string;
   environmentName?: string;
 }
+const ImageListTagsResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<ImageListTagsResponse>;
+
 export interface ImageTagRevisionsRequest {
   /** Named image reference: "[[workspace/]environment/]name[:tag]". The tag suffix defaults to "latest" when omitted. */
   tag?: string;
@@ -240,19 +333,39 @@ export interface ImageTagRevisionsRequest {
   maxObjects?: number;
   pageToken?: string;
 }
+const ImageTagRevisionsRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<ImageTagRevisionsRequest>;
+
 export interface ImageTagRevisionsItem {
   imageId?: string;
   revisionId?: string;
   createdAt?: number;
   publishedBy?: string;
 }
+const ImageTagRevisionsItem = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<ImageTagRevisionsItem>;
+
 export type ImageTagRevisionsItemList = Array<ImageTagRevisionsItem>;
+const ImageTagRevisionsItemList = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<ImageTagRevisionsItemList>;
+
 export interface ImageTagRevisionsResponse {
   items?: ImageTagRevisionsItemList;
   nextPageToken?: string;
   tag?: string;
   environmentName?: string;
 }
+const ImageTagRevisionsResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<ImageTagRevisionsResponse>;
+
 export interface PublishImageRequest {
   imageId?: string;
   /** Named image reference: "[[workspace/]environment/]name[:tag]". The tag suffix defaults to "latest" when omitted. */
@@ -262,10 +375,14 @@ export interface PublishImageRequest {
   /** Explicit opt-in required when publishing to a public environment. */
   allowPublic?: boolean;
 }
+const PublishImageRequest = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<PublishImageRequest>;
+
 export interface PublishImageResponse {
   imageId?: string;
   revisionId?: string;
 }
+const PublishImageResponse = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<PublishImageResponse>;
+
 export type DeleteImageError = ModalOpError;
 export const deleteImage: API.OperationMethod<
   DeleteImageRequest,
@@ -273,8 +390,8 @@ export const deleteImage: API.OperationMethod<
   DeleteImageError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<DeleteImageRequest>,
-  output: __S(1) as any as S.Schema<DeleteImageResponse>,
+  input: DeleteImageRequest,
+  output: DeleteImageResponse,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -288,8 +405,8 @@ export const getImageBuildChain: API.OperationMethod<
   GetImageBuildChainError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2) as any as S.Schema<GetImageBuildChainRequest>,
-  output: __S(5) as any as S.Schema<GetImageBuildChainResponse>,
+  input: GetImageBuildChainRequest,
+  output: GetImageBuildChainResponse,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -302,8 +419,8 @@ export const imageFromId: API.OperationMethod<
   ImageFromIdError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6) as any as S.Schema<ImageFromIdRequest>,
-  output: __S(9) as any as S.Schema<ImageFromIdResponse>,
+  input: ImageFromIdRequest,
+  output: ImageFromIdResponse,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -316,8 +433,8 @@ export const imageGetByTag: API.OperationMethod<
   ImageGetByTagError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10) as any as S.Schema<ImageGetByTagRequest>,
-  output: __S(11) as any as S.Schema<ImageGetByTagResponse>,
+  input: ImageGetByTagRequest,
+  output: ImageGetByTagResponse,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -330,8 +447,8 @@ export const imageGetOrCreate: API.OperationMethod<
   ImageGetOrCreateError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24) as any as S.Schema<ImageGetOrCreateRequest>,
-  output: __S(26) as any as S.Schema<ImageGetOrCreateResponse>,
+  input: ImageGetOrCreateRequest,
+  output: ImageGetOrCreateResponse,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -344,8 +461,8 @@ export const imageListTags: API.OperationMethod<
   ImageListTagsError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27) as any as S.Schema<ImageListTagsRequest>,
-  output: __S(30) as any as S.Schema<ImageListTagsResponse>,
+  input: ImageListTagsRequest,
+  output: ImageListTagsResponse,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -358,8 +475,8 @@ export const imageTagRevisions: API.OperationMethod<
   ImageTagRevisionsError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31) as any as S.Schema<ImageTagRevisionsRequest>,
-  output: __S(34) as any as S.Schema<ImageTagRevisionsResponse>,
+  input: ImageTagRevisionsRequest,
+  output: ImageTagRevisionsResponse,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -372,8 +489,8 @@ export const publishImage: API.OperationMethod<
   PublishImageError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35) as any as S.Schema<PublishImageRequest>,
-  output: __S(36) as any as S.Schema<PublishImageResponse>,
+  input: PublishImageRequest,
+  output: PublishImageResponse,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -419,11 +536,11 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "ImageBuildStep" });
     case 4:
-      return S.Array(__S(3));
+      return S.Array(ImageBuildStep);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          buildSteps: S.optional(__S(4)),
+          buildSteps: S.optional(ImageBuildStepList),
         }),
       ).annotate({
         identifier: "GetImageBuildChainResponse",
@@ -446,7 +563,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           pythonVersionInfo: S.optional(S.String),
-          pythonPackages: S.optional(__S(7)),
+          pythonPackages: S.optional(StringMap),
           workdir: S.optional(S.String),
           libcVersionInfo: S.optional(S.String),
           imageBuilderVersion: S.optional(S.String),
@@ -456,7 +573,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           imageId: S.optional(S.String),
-          metadata: S.optional(__S(8)),
+          metadata: S.optional(ImageMetadata),
         }),
       ).annotate({ identifier: "ImageFromIdResponse" });
     case 2:
@@ -482,7 +599,7 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "BaseImage" });
     case 5:
-      return S.Array(__S(12));
+      return S.Array(BaseImage);
     case 6:
       return S.Array(S.String);
     case 7:
@@ -497,11 +614,11 @@ function __c1(j: number): any {
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(15));
+      return S.Array(ImageContextFile);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(S.String),
+          type: S.optional(GPUType),
           count: S.optional(S.Number),
           gpuType: S.optional(S.String),
         }),
@@ -509,7 +626,7 @@ function __c2(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          registryAuthType: S.optional(S.String),
+          registryAuthType: S.optional(RegistryAuthType),
           secretId: S.optional(S.String),
         }),
       ).annotate({ identifier: "ImageRegistryConfig" });
@@ -519,7 +636,7 @@ function __c2(j: number): any {
           args: S.optional(S.String),
           argsBlobId: S.optional(S.String),
           finalInput: S.optional(S.Boolean),
-          dataFormat: S.optional(S.String),
+          dataFormat: S.optional(DataFormat),
           methodName: S.optional(S.String),
         }),
       ).annotate({ identifier: "FunctionInput" });
@@ -528,7 +645,7 @@ function __c2(j: number): any {
         S.Struct({
           definition: S.optional(S.String),
           globals: S.optional(S.String),
-          input: S.optional(__S(19)),
+          input: S.optional(FunctionInput),
         }),
       ).annotate({ identifier: "BuildFunction" });
     case 5:
@@ -542,26 +659,26 @@ function __c2(j: number): any {
         }),
       ).annotate({ identifier: "VolumeMount" });
     case 6:
-      return S.Array(__S(21));
+      return S.Array(VolumeMount);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          baseImages: S.optional(__S(13)),
-          dockerfileCommands: S.optional(__S(14)),
-          contextFiles: S.optional(__S(16)),
+          baseImages: S.optional(BaseImageList),
+          dockerfileCommands: S.optional(StringList),
+          contextFiles: S.optional(ImageContextFileList),
           version: S.optional(S.String),
-          secretIds: S.optional(__S(14)),
+          secretIds: S.optional(StringList),
           contextMountId: S.optional(S.String),
-          gpuConfig: S.optional(__S(17)),
-          imageRegistryConfig: S.optional(__S(18)),
+          gpuConfig: S.optional(GPUConfig),
+          imageRegistryConfig: S.optional(ImageRegistryConfig),
           buildFunctionDef: S.optional(S.String),
           buildFunctionGlobals: S.optional(S.String),
           runtime: S.optional(S.String),
           runtimeDebug: S.optional(S.Boolean),
-          buildFunction: S.optional(__S(20)),
-          buildArgs: S.optional(__S(7)),
-          volumeMounts: S.optional(__S(22)),
-          arch: S.optional(S.String),
+          buildFunction: S.optional(BuildFunction),
+          buildArgs: S.optional(StringMap),
+          volumeMounts: S.optional(VolumeMountList),
+          arch: S.optional(Arch),
         }),
       ).annotate({ identifier: "Image" });
   }
@@ -571,12 +688,12 @@ function __c3(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          image: S.optional(__S(23)),
+          image: S.optional(Image),
           appId: S.optional(S.String),
           existingImageId: S.optional(S.String),
           buildFunctionId: S.optional(S.String),
           forceBuild: S.optional(S.Boolean),
-          namespace: S.optional(S.String),
+          namespace: S.optional(DeploymentNamespace),
           builderVersion: S.optional(S.String),
           allowGlobalDeployment: S.optional(S.Boolean),
           ignoreCache: S.optional(S.Boolean),
@@ -587,7 +704,7 @@ function __c3(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(S.String),
+          status: S.optional(GenericResultGenericStatus),
           exception: S.optional(S.String),
           exitcode: S.optional(S.Number),
           traceback: S.optional(S.String),
@@ -602,8 +719,8 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           imageId: S.optional(S.String),
-          result: S.optional(__S(25)),
-          metadata: S.optional(__S(8)),
+          result: S.optional(GenericResult),
+          metadata: S.optional(ImageMetadata),
         }),
       ).annotate({ identifier: "ImageGetOrCreateResponse" });
     case 3:
@@ -628,11 +745,11 @@ function __c3(j: number): any {
         }),
       ).annotate({ identifier: "ImageListTagsItem" });
     case 5:
-      return S.Array(__S(28));
+      return S.Array(ImageListTagsItem);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          items: S.optional(__S(29)),
+          items: S.optional(ImageListTagsItemList),
           nextPageToken: S.optional(S.String),
           environmentName: S.optional(S.String),
         }),
@@ -662,11 +779,11 @@ function __c4(j: number): any {
         }),
       ).annotate({ identifier: "ImageTagRevisionsItem" });
     case 1:
-      return S.Array(__S(32));
+      return S.Array(ImageTagRevisionsItem);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          items: S.optional(__S(33)),
+          items: S.optional(ImageTagRevisionsItemList),
           nextPageToken: S.optional(S.String),
           tag: S.optional(S.String),
           environmentName: S.optional(S.String),
@@ -692,24 +809,5 @@ function __c4(j: number): any {
           revisionId: S.optional(S.String),
         }),
       ).annotate({ identifier: "PublishImageResponse" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
   }
 }

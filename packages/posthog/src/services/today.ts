@@ -5,8 +5,6 @@ import * as S from "@distilled.cloud/core/schema";
 import { PosthogProtocol, type PosthogOpError, type PosthogOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { PosthogOpError, PosthogOpContext };
 
@@ -16,6 +14,11 @@ export interface GetTodayBriefingRequest {
   /** IANA timezone of the person's browser, for example Europe/Prague. The briefing day starts at 8:00 in it. Defaults to the project timezone. */
   timezone?: string;
 }
+const GetTodayBriefingRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<GetTodayBriefingRequest>;
+
 export interface BriefingSegment {
   /** A run of text in a paragraph. Includes its own spaces. */
   text: string;
@@ -24,11 +27,25 @@ export interface BriefingSegment {
   /** True only for the run that names the top item. */
   highlight: boolean;
 }
+const BriefingSegment = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<BriefingSegment>;
+
 export type BriefingParagraphsItemList = Array<BriefingSegment>;
+const BriefingParagraphsItemList = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<BriefingParagraphsItemList>;
+
 /** Up to 3 paragraphs, each a list of text runs; runs with an item_key are links. */
 export type BriefingParagraphsList = Array<BriefingParagraphsItemList>;
+const BriefingParagraphsList = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<BriefingParagraphsList>;
+
 /** * `draft` - draft * `open` - open * `closed` - closed * `merged` - merged */
 export type PullRequestStateEnum = "draft" | "open" | "closed" | "merged";
+const PullRequestStateEnum = S.String;
+
 /** * `affected_users` - affected_users * `affected_sessions` - affected_sessions * `occurrences` - occurrences * `conversion_rate` - conversion_rate * `error_rate` - error_rate * `duration` - duration * `revenue` - revenue * `custom` - custom */
 export type ReportMetricKindEnum =
   | "affected_users"
@@ -39,10 +56,19 @@ export type ReportMetricKindEnum =
   | "duration"
   | "revenue"
   | "custom";
+const ReportMetricKindEnum = S.String;
+
 /** * `primary` - primary * `supporting` - supporting */
 export type RoleEnum = "primary" | "supporting";
+const RoleEnum = S.String;
+
 /** Trailing per-bucket values saved with the snapshot, oldest first. Null when none were saved. */
 export type BriefingItemMetricSeriesList = Array<number>;
+const BriefingItemMetricSeriesList = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<BriefingItemMetricSeriesList>;
+
 /** * `number` - number * `count` - count * `percentage` - percentage * `percentage_scaled` - percentage_scaled * `duration` - duration * `currency` - currency */
 export type ValueFormatEnum =
   | "number"
@@ -51,6 +77,8 @@ export type ValueFormatEnum =
   | "percentage_scaled"
   | "duration"
   | "currency";
+const ValueFormatEnum = S.String;
+
 export interface BriefingItemMetric {
   /** Stable slug of the metric within its report. */
   metric_id: string;
@@ -71,8 +99,15 @@ export interface BriefingItemMetric {
   /** The metric's live InsightVizNode wrapping one TrendsQuery, as the report stores it. */
   query: unknown;
 }
+const BriefingItemMetric = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<BriefingItemMetric>;
+
 /** The report's metrics that have a saved snapshot, in the report's order. */
 export type BriefingItemReportMetricsList = Array<BriefingItemMetric>;
+const BriefingItemReportMetricsList = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<BriefingItemReportMetricsList>;
+
 export interface BriefingItemChart {
   /** Stable slug of the chart within its report. */
   chart_id: string;
@@ -81,8 +116,15 @@ export interface BriefingItemChart {
   /** The query node the report body draws, as the report stores it. */
   query: unknown;
 }
+const BriefingItemChart = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<BriefingItemChart>;
+
 /** The charts in the report body, in the report's order. */
 export type BriefingItemReportChartsList = Array<BriefingItemChart>;
+const BriefingItemReportChartsList = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<BriefingItemReportChartsList>;
+
 export interface BriefingItemReport {
   /** The report's priority, P0 to P4, or null if unset. */
   priority: string | null;
@@ -101,8 +143,12 @@ export interface BriefingItemReport {
   /** The charts in the report body, in the report's order. */
   charts: BriefingItemReportChartsList;
 }
+const BriefingItemReport = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<BriefingItemReport>;
+
 /** * `report` - REPORT * `dashboard` - DASHBOARD * `other` - OTHER */
 export type TodayItemGroupEnum = "report" | "dashboard" | "other";
+const TodayItemGroupEnum = S.String;
+
 /** * `self_driving` - SELF_DRIVING * `product_analytics` - PRODUCT_ANALYTICS * `alerts` - ALERTS * `support` - SUPPORT * `error_tracking` - ERROR_TRACKING * `github` - GITHUB */
 export type TodayItemSourceEnum =
   | "self_driving"
@@ -111,6 +157,8 @@ export type TodayItemSourceEnum =
   | "support"
   | "error_tracking"
   | "github";
+const TodayItemSourceEnum = S.String;
+
 /** * `claimed_by_you` - CLAIMED_BY_YOU * `waiting_for_you` - WAITING_FOR_YOU * `suggested_reviewer` - SUGGESTED_REVIEWER * `urgent_for_project` - URGENT_FOR_PROJECT * `dashboard_you_viewed` - DASHBOARD_YOU_VIEWED * `dashboard_you_starred` - DASHBOARD_YOU_STARRED * `insight_you_viewed` - INSIGHT_YOU_VIEWED * `insight_you_starred` - INSIGHT_YOU_STARRED * `alert_firing` - ALERT_FIRING * `assigned_ticket` - ASSIGNED_TICKET * `assigned_error_issue` - ASSIGNED_ERROR_ISSUE * `review_requested` - REVIEW_REQUESTED * `your_pull_request` - YOUR_PULL_REQUEST */
 export type TodayItemReasonEnum =
   | "claimed_by_you"
@@ -126,8 +174,12 @@ export type TodayItemReasonEnum =
   | "assigned_error_issue"
   | "review_requested"
   | "your_pull_request";
+const TodayItemReasonEnum = S.String;
+
 /** * `open` - OPEN * `done` - DONE * `dismissed` - DISMISSED */
 export type BriefingItemStateEnum = "open" | "done" | "dismissed";
+const BriefingItemStateEnum = S.String;
+
 export interface BriefingItem {
   /** Stable item key, for example report:<uuid>, dashboard:<id> or ticket:<uuid>. */
   key: string;
@@ -151,12 +203,20 @@ export interface BriefingItem {
   /** `done` when the item was resolved since the briefing was written, `dismissed` when it was dismissed or suppressed, else `open`. Pull requests always stay `open`. * `open` - OPEN * `done` - DONE * `dismissed` - DISMISSED */
   state: BriefingItemStateEnum;
 }
+const BriefingItem = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<BriefingItem>;
+
 /** The items the text names, in rank order: what the page and the left bar show. */
 export type BriefingItemsList = Array<BriefingItem>;
+const BriefingItemsList = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<BriefingItemsList>;
+
 /** * `collecting` - COLLECTING * `writing` - WRITING * `ready` - READY * `failed` - FAILED */
 export type BriefingStatusEnum = "collecting" | "writing" | "ready" | "failed";
+const BriefingStatusEnum = S.String;
+
 /** * `agent` - AGENT */
 export type WriterEnum = "agent";
+const WriterEnum = S.String;
+
 export interface Briefing {
   /** Briefing id. */
   id: string;
@@ -177,20 +237,31 @@ export interface Briefing {
   created_at: string;
   ready_at: string | null;
 }
+const Briefing = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<Briefing>;
+
 export interface GetTodayCandidateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** IANA timezone of the person's browser, for example Europe/Prague. The briefing day starts at 8:00 in it. Defaults to the project timezone. */
   timezone?: string;
 }
+const GetTodayCandidateRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<GetTodayCandidateRequest>;
+
 export interface CandidateFact {
   /** Fact name, for example pct_change or unread_messages. */
   name: string;
   /** Fact value as text. */
   value: string;
 }
+const CandidateFact = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<CandidateFact>;
+
 /** The numbers and short facts the briefing text rests on. */
 export type CandidateFactsList = Array<CandidateFact>;
+const CandidateFactsList = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<CandidateFactsList>;
+
 export interface Candidate {
   /** Stable item key, for example report:<uuid> or dashboard:<id>. */
   key: string;
@@ -206,8 +277,15 @@ export interface Candidate {
   source: TodayItemSourceEnum;
   reason: TodayItemReasonEnum;
 }
+const Candidate = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<Candidate>;
+
 /** The briefing's items in rank order, up to 5. */
 export type CandidateListCandidatesList = Array<Candidate>;
+const CandidateListCandidatesList = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<CandidateListCandidatesList>;
+
 export interface CandidateList {
   /** The day the list is for, in the person's timezone. */
   local_day: string;
@@ -216,12 +294,19 @@ export interface CandidateList {
   /** Other open reports for the person not in the list. */
   more_reports_count: number;
 }
+const CandidateList = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<CandidateList>;
+
 export interface TodayBriefingRefreshCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** IANA timezone of the person's browser, for example Europe/Prague. The briefing day starts at 8:00 in it. Defaults to the project timezone. */
   timezone?: string;
 }
+const TodayBriefingRefreshCreateRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<TodayBriefingRefreshCreateRequest>;
+
 export type GetTodayBriefingError = PosthogOpError;
 /** Get today's briefing Today's personal briefing: a short text about up to 5 items and the same items for the left bar. A new one is written every morning from 8:00 local time. Starts generating today's when there is none yet and returns it as 'collecting'. While a refresh is being written, the ready briefing is returned as 'writing', so it can stay on screen; poll again after a few seconds. 404 when the person gets no briefing: the flag is off, the organization has not approved AI data processing, or it is out of AI credits. */
 export const getTodayBriefing: API.OperationMethod<
@@ -230,8 +315,8 @@ export const getTodayBriefing: API.OperationMethod<
   GetTodayBriefingError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<GetTodayBriefingRequest>,
-  output: __S(12) as any as S.Schema<Briefing>,
+  input: GetTodayBriefingRequest,
+  output: Briefing,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -245,8 +330,8 @@ export const getTodayCandidate: API.OperationMethod<
   GetTodayCandidateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13) as any as S.Schema<GetTodayCandidateRequest>,
-  output: __S(18) as any as S.Schema<CandidateList>,
+  input: GetTodayCandidateRequest,
+  output: CandidateList,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -260,8 +345,8 @@ export const todayBriefingRefreshCreate: API.OperationMethod<
   TodayBriefingRefreshCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19) as any as S.Schema<TodayBriefingRefreshCreateRequest>,
-  output: __S(12) as any as S.Schema<Briefing>,
+  input: TodayBriefingRefreshCreateRequest,
+  output: Briefing,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -288,9 +373,9 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "BriefingSegment" });
     case 2:
-      return S.Array(__S(1));
+      return S.Array(BriefingSegment);
     case 3:
-      return S.Array(__S(2));
+      return S.Array(BriefingParagraphsItemList);
     case 4:
       return S.Array(S.Number);
     case 5:
@@ -298,17 +383,17 @@ function __c0(j: number): any {
         S.Struct({
           metric_id: S.String,
           title: S.String,
-          kind: S.String,
-          role: S.String,
+          kind: ReportMetricKindEnum,
+          role: RoleEnum,
           value: S.Number,
-          series: S.NullOr(__S(4)),
-          value_format: S.String,
+          series: S.NullOr(BriefingItemMetricSeriesList),
+          value_format: ValueFormatEnum,
           unit: S.NullOr(S.String),
           query: S.Unknown,
         }),
       ).annotate({ identifier: "BriefingItemMetric" });
     case 6:
-      return S.Array(__S(5));
+      return S.Array(BriefingItemMetric);
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -322,18 +407,18 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(7));
+      return S.Array(BriefingItemChart);
     case 1:
       return S.suspend(() =>
         S.Struct({
           priority: S.NullOr(S.String),
           summary: S.String,
-          pull_request_state: S.NullOr(S.String),
+          pull_request_state: S.NullOr(PullRequestStateEnum),
           pull_request_url: S.NullOr(S.String),
           signal_count: S.Number,
           updated_at: S.String,
-          metrics: __S(6),
-          charts: __S(8),
+          metrics: BriefingItemReportMetricsList,
+          charts: BriefingItemReportChartsList,
         }),
       ).annotate({ identifier: "BriefingItemReport" });
     case 2:
@@ -346,27 +431,27 @@ function __c1(j: number): any {
           url: S.String,
           rank: S.Number,
           source_product: S.NullOr(S.String),
-          report: S.NullOr(__S(9)),
-          group: S.String,
-          source: S.String,
-          reason: S.String,
-          state: S.String,
+          report: S.NullOr(BriefingItemReport),
+          group: TodayItemGroupEnum,
+          source: TodayItemSourceEnum,
+          reason: TodayItemReasonEnum,
+          state: BriefingItemStateEnum,
         }),
       ).annotate({ identifier: "BriefingItem" });
     case 3:
-      return S.Array(__S(10));
+      return S.Array(BriefingItem);
     case 4:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           local_day: S.String,
           headline: S.String,
-          paragraphs: __S(3),
-          items: __S(11),
+          paragraphs: BriefingParagraphsList,
+          items: BriefingItemsList,
           more_reports_count: S.Number,
           open_reports_count: S.Number,
-          status: S.String,
-          writer: S.NullOr(S.String),
+          status: BriefingStatusEnum,
+          writer: S.NullOr(WriterEnum),
           created_at: S.String,
           ready_at: S.NullOr(S.String),
         }),
@@ -388,7 +473,7 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "CandidateFact" });
     case 7:
-      return S.Array(__S(14));
+      return S.Array(CandidateFact);
   }
 }
 function __c2(j: number): any {
@@ -400,19 +485,19 @@ function __c2(j: number): any {
           title: S.String,
           url: S.String,
           rank: S.Number,
-          facts: __S(15),
-          group: S.String,
-          source: S.String,
-          reason: S.String,
+          facts: CandidateFactsList,
+          group: TodayItemGroupEnum,
+          source: TodayItemSourceEnum,
+          reason: TodayItemReasonEnum,
         }),
       ).annotate({ identifier: "Candidate" });
     case 1:
-      return S.Array(__S(16));
+      return S.Array(Candidate);
     case 2:
       return S.suspend(() =>
         S.Struct({
           local_day: S.String,
-          candidates: __S(17),
+          candidates: CandidateListCandidatesList,
           more_reports_count: S.Number,
         }),
       ).annotate({ identifier: "CandidateList" });
@@ -431,20 +516,5 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "TodayBriefingRefreshCreateRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
   }
 }

@@ -7,29 +7,43 @@ import { paginateCursor } from "../pagination.ts";
 import { NotionProtocol, type NotionOpError, type NotionOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { NotionOpError, NotionOpContext };
 
 export interface CompleteFileUploadRequest {
   file_upload_id: string;
 }
+const CompleteFileUploadRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<CompleteFileUploadRequest>;
+
 /** One of: `person`, `bot`, `agent` */
 export type FileUploadObjectResponseCreatedByType = "person" | "bot" | "agent";
+const FileUploadObjectResponseCreatedByType = S.String;
+
 export interface FileUploadObjectResponseCreatedBy {
   id: string;
   /** One of: `person`, `bot`, `agent` */
   type: FileUploadObjectResponseCreatedByType;
 }
+const FileUploadObjectResponseCreatedBy = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<FileUploadObjectResponseCreatedBy>;
+
 /** One of: `pending`, `uploaded`, `expired`, `failed` */
 export type FileUploadObjectResponseStatus = "pending" | "uploaded" | "expired" | "failed";
+const FileUploadObjectResponseStatus = S.String;
+
 /** The type of error that occurred during file import. */
 export type FileUploadObjectResponseFileImportResultErrorType =
   | "validation_error"
   | "internal_system_error"
   | "download_error"
   | "upload_error";
+const FileUploadObjectResponseFileImportResultErrorType = S.String;
+
 /** Details about the error that occurred during file import. */
 export interface FileUploadObjectResponseFileImportResultError {
   /** The type of error that occurred during file import. */
@@ -43,6 +57,11 @@ export interface FileUploadObjectResponseFileImportResultError {
   /** The HTTP status code associated with the error, if available. Null if not applicable. */
   status_code: number | null;
 }
+const FileUploadObjectResponseFileImportResultError = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<FileUploadObjectResponseFileImportResultError>;
+
 export interface FileUploadObjectResponseFileImportResult {
   /** The time the file was imported into Notion. ISO 8601 format. */
   imported_time: string;
@@ -53,10 +72,20 @@ export interface FileUploadObjectResponseFileImportResult {
   /** Details about the error that occurred during file import. */
   error?: FileUploadObjectResponseFileImportResultError;
 }
+const FileUploadObjectResponseFileImportResult = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<FileUploadObjectResponseFileImportResult>;
+
 export interface FileUploadObjectResponseNumberOfParts {
   total: number;
   sent: number;
 }
+const FileUploadObjectResponseNumberOfParts = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<FileUploadObjectResponseNumberOfParts>;
+
 export interface FileUploadObjectResponse {
   /** Always `file_upload` */
   object: string;
@@ -76,8 +105,15 @@ export interface FileUploadObjectResponse {
   file_import_result?: FileUploadObjectResponseFileImportResult;
   number_of_parts?: FileUploadObjectResponseNumberOfParts;
 }
+const FileUploadObjectResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<FileUploadObjectResponse>;
+
 /** How the file is sent. Defaults to single_part. Use multi_part for files larger than 20 MiB or external_url for a temporary public HTTPS URL. */
 export type CreateFileUploadRequestMode = "single_part" | "multi_part" | "external_url";
+const CreateFileUploadRequestMode = S.String;
+
 export interface CreateFileUploadRequest {
   /** How the file is sent. Defaults to single_part. Use multi_part for files larger than 20 MiB or external_url for a temporary public HTTPS URL. */
   mode?: CreateFileUploadRequestMode | (string & {});
@@ -90,25 +126,51 @@ export interface CreateFileUploadRequest {
   /** A public HTTPS URL to import. Required only for external_url uploads. */
   external_url?: string;
 }
+const CreateFileUploadRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<CreateFileUploadRequest>;
+
 export interface GetFileUploadRequest {
   file_upload_id: string;
 }
+const GetFileUploadRequest = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<GetFileUploadRequest>;
+
 /** If supplied, the endpoint will return file uploads with the specified status. */
 export type ListFileUploadsRequestStatus = "pending" | "uploaded" | "expired" | "failed";
+const ListFileUploadsRequestStatus = S.String;
+
 export interface ListFileUploadsRequest {
   status?: ListFileUploadsRequestStatus | (string & {});
   start_cursor?: string;
   page_size?: number;
 }
+const ListFileUploadsRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<ListFileUploadsRequest>;
+
 export type ListFileUploadsResponseResultsList = Array<FileUploadObjectResponse>;
+const ListFileUploadsResponseResultsList = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<ListFileUploadsResponseResultsList>;
+
 /** Whether the result set is complete or incomplete. `incomplete` means the response does not include all rows that match the query parameters (e.g. due to a server-side pagination depth limit). */
 export type RequestStatusResponseType = "complete" | "incomplete";
+const RequestStatusResponseType = S.String;
+
 export interface RequestStatusResponse {
   /** Whether the result set is complete or incomplete. `incomplete` means the response does not include all rows that match the query parameters (e.g. due to a server-side pagination depth limit). */
   type: RequestStatusResponseType;
   /** Why the result set is incomplete. Only present when `type` is `incomplete`. */
   incomplete_reason?: string;
 }
+const RequestStatusResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<RequestStatusResponse>;
+
 export interface ListFileUploadsResponse {
   /** Always `list` */
   object: string;
@@ -120,6 +182,11 @@ export interface ListFileUploadsResponse {
   file_upload: unknown;
   request_status?: RequestStatusResponse;
 }
+const ListFileUploadsResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<ListFileUploadsResponse>;
+
 export interface SendFileUploadRequest {
   file_upload_id: string;
   /** The raw binary file contents to upload. */
@@ -127,6 +194,11 @@ export interface SendFileUploadRequest {
   /** When uploading files greater than 20MB in parts, this is the current part number. Must be an integer between 1 and 1,000. */
   part_number?: string;
 }
+const SendFileUploadRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<SendFileUploadRequest>;
+
 export type CompleteFileUploadError = NotionOpError;
 /** Complete a multi-part file upload */
 export const completeFileUpload: API.OperationMethod<
@@ -135,8 +207,8 @@ export const completeFileUpload: API.OperationMethod<
   CompleteFileUploadError,
   NotionOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<CompleteFileUploadRequest>,
-  output: __S(5) as any as S.Schema<FileUploadObjectResponse>,
+  input: CompleteFileUploadRequest,
+  output: FileUploadObjectResponse,
   errors: [UnknownNotionError],
   protocol: NotionProtocol,
   retry: Retry.Retry,
@@ -150,8 +222,8 @@ export const createFileUpload: API.OperationMethod<
   CreateFileUploadError,
   NotionOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6) as any as S.Schema<CreateFileUploadRequest>,
-  output: __S(5) as any as S.Schema<FileUploadObjectResponse>,
+  input: CreateFileUploadRequest,
+  output: FileUploadObjectResponse,
   errors: [UnknownNotionError],
   protocol: NotionProtocol,
   retry: Retry.Retry,
@@ -165,8 +237,8 @@ export const getFileUpload: API.OperationMethod<
   GetFileUploadError,
   NotionOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7) as any as S.Schema<GetFileUploadRequest>,
-  output: __S(5) as any as S.Schema<FileUploadObjectResponse>,
+  input: GetFileUploadRequest,
+  output: FileUploadObjectResponse,
   errors: [UnknownNotionError],
   protocol: NotionProtocol,
   retry: Retry.Retry,
@@ -182,8 +254,8 @@ export const listFileUploads: API.PaginatedOperationMethod<
   FileUploadObjectResponse
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(8) as any as S.Schema<ListFileUploadsRequest>,
-    output: __S(11) as any as S.Schema<ListFileUploadsResponse>,
+    input: ListFileUploadsRequest,
+    output: ListFileUploadsResponse,
     errors: [UnknownNotionError],
     protocol: NotionProtocol,
     retry: Retry.Retry,
@@ -205,8 +277,8 @@ export const sendFileUpload: API.OperationMethod<
   SendFileUploadError,
   NotionOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12) as any as S.Schema<SendFileUploadRequest>,
-  output: __S(5) as any as S.Schema<FileUploadObjectResponse>,
+  input: SendFileUploadRequest,
+  output: FileUploadObjectResponse,
   errors: [UnknownNotionError],
   protocol: NotionProtocol,
   retry: Retry.Retry,
@@ -229,7 +301,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          type: S.String,
+          type: FileUploadObjectResponseCreatedByType,
         }),
       ).annotate({
         identifier: "FileUploadObjectResponseCreatedBy",
@@ -237,7 +309,7 @@ function __c0(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          type: S.String,
+          type: FileUploadObjectResponseFileImportResultErrorType,
           code: S.String,
           message: S.String,
           parameter: S.NullOr(S.String),
@@ -252,7 +324,7 @@ function __c0(j: number): any {
           imported_time: S.String,
           type: S.optional(S.String),
           success: S.optional(S.Unknown),
-          error: S.optional(__S(2)),
+          error: S.optional(FileUploadObjectResponseFileImportResultError),
         }),
       ).annotate({
         identifier: "FileUploadObjectResponseFileImportResult",
@@ -272,24 +344,24 @@ function __c0(j: number): any {
           object: S.String,
           id: S.String,
           created_time: S.String,
-          created_by: __S(1),
+          created_by: FileUploadObjectResponseCreatedBy,
           last_edited_time: S.String,
           in_trash: S.Boolean,
           expiry_time: S.NullOr(S.String),
-          status: S.String,
+          status: FileUploadObjectResponseStatus,
           filename: S.NullOr(S.String),
           content_type: S.NullOr(S.String),
           content_length: S.NullOr(S.Number),
           upload_url: S.optional(S.String),
           complete_url: S.optional(S.String),
-          file_import_result: S.optional(__S(3)),
-          number_of_parts: S.optional(__S(4)),
+          file_import_result: S.optional(FileUploadObjectResponseFileImportResult),
+          number_of_parts: S.optional(FileUploadObjectResponseNumberOfParts),
         }),
       ).annotate({ identifier: "FileUploadObjectResponse" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          mode: S.optional(S.String),
+          mode: S.optional(CreateFileUploadRequestMode),
           filename: S.optional(S.String),
           content_type: S.optional(S.String),
           number_of_parts: S.optional(S.Number),
@@ -309,17 +381,17 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(S.String.pipe(T.Query())),
+          status: S.optional(ListFileUploadsRequestStatus.pipe(T.Query())),
           start_cursor: S.optional(S.String.pipe(T.Query())),
           page_size: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/v1/file_uploads", code: 200 })),
       ).annotate({ identifier: "ListFileUploadsRequest" });
     case 1:
-      return S.Array(__S(5));
+      return S.Array(FileUploadObjectResponse);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          type: S.String,
+          type: RequestStatusResponseType,
           incomplete_reason: S.optional(S.String),
         }),
       ).annotate({ identifier: "RequestStatusResponse" });
@@ -329,10 +401,10 @@ function __c1(j: number): any {
           object: S.String,
           next_cursor: S.NullOr(S.String),
           has_more: S.Boolean,
-          results: __S(9),
+          results: ListFileUploadsResponseResultsList,
           type: S.String,
           file_upload: S.Unknown,
-          request_status: S.optional(__S(10)),
+          request_status: S.optional(RequestStatusResponse),
         }),
       ).annotate({ identifier: "ListFileUploadsResponse" });
     case 4:
@@ -350,18 +422,5 @@ function __c1(j: number): any {
           }),
         ),
       ).annotate({ identifier: "SendFileUploadRequest" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
   }
 }

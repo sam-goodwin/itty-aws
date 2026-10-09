@@ -6,13 +6,13 @@ import { UnknownAzureError } from "../errors.ts";
 import { AzureProtocol, type AzureOpError, type AzureOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { AzureOpError, AzureOpContext };
 
 /** The action type in requests for bulk upload or download of a DNS resolver domain list. */
 export type Action = "Upload" | "Download";
+const Action = S.String;
+
 /** Describes DNS resolver domain list properties for bulk UPLOAD or DOWNLOAD operations. */
 export interface DnsResolverDomainListBulkProperties {
   /** The storage account blob file URL to be used in the bulk upload or download request of DNS resolver domain list. */
@@ -20,6 +20,11 @@ export interface DnsResolverDomainListBulkProperties {
   /** The action to take in the request, Upload or Download. */
   action: Action | (string & {});
 }
+const DnsResolverDomainListBulkProperties = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<DnsResolverDomainListBulkProperties>;
+
 export interface BulkDnsResolverDomainListRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -30,10 +35,19 @@ export interface BulkDnsResolverDomainListRequest {
   /** Properties of the DNS resolver domain list upload or download request. */
   properties: DnsResolverDomainListBulkProperties;
 }
+const BulkDnsResolverDomainListRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<BulkDnsResolverDomainListRequest>;
+
 /** The type of identity that created the resource. */
 export type SystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
+const SystemDataCreatedByType = S.String;
+
 /** The type of identity that last modified the resource. */
 export type SystemDataLastModifiedByType = "User" | "Application" | "ManagedIdentity" | "Key";
+const SystemDataLastModifiedByType = S.String;
+
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface SystemData {
   /** The identity that created the resource. */
@@ -49,10 +63,22 @@ export interface SystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const SystemData = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<SystemData>;
+
 /** Resource tags. */
 export type BulkDnsResolverDomainListResponseTagsMap = { [key: string]: string | undefined };
+const BulkDnsResolverDomainListResponseTagsMap = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<BulkDnsResolverDomainListResponseTagsMap>;
+
 /** The domains in the domain list. Will be null if user is using large domain list. */
 export type DnsResolverDomainListPropertiesDomainsList = Array<string>;
+const DnsResolverDomainListPropertiesDomainsList = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<DnsResolverDomainListPropertiesDomainsList>;
+
 /** The current provisioning state of the resource. */
 export type ProvisioningState =
   | "Creating"
@@ -61,6 +87,8 @@ export type ProvisioningState =
   | "Succeeded"
   | "Failed"
   | "Canceled";
+const ProvisioningState = S.String;
+
 /** Represents the properties of a DNS resolver domain list. */
 export interface DnsResolverDomainListProperties {
   /** The domains in the domain list. Will be null if user is using large domain list. */
@@ -72,6 +100,11 @@ export interface DnsResolverDomainListProperties {
   /** The resourceGuid property of the DNS resolver domain list resource. */
   resourceGuid?: string;
 }
+const DnsResolverDomainListProperties = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<DnsResolverDomainListProperties>;
+
 export interface BulkDnsResolverDomainListResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -90,6 +123,11 @@ export interface BulkDnsResolverDomainListResponse {
   /** "If etag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.") */
   etag?: string;
 }
+const BulkDnsResolverDomainListResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<BulkDnsResolverDomainListResponse>;
+
 export interface DeleteDnsForwardingRulesetRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -98,7 +136,17 @@ export interface DeleteDnsForwardingRulesetRequest {
   /** The name of the DNS forwarding ruleset. */
   dnsForwardingRulesetName: string;
 }
+const DeleteDnsForwardingRulesetRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<DeleteDnsForwardingRulesetRequest>;
+
 export interface DeleteDnsForwardingRulesetResponse {}
+const DeleteDnsForwardingRulesetResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<DeleteDnsForwardingRulesetResponse>;
+
 export interface DeleteDnsResolverRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -107,7 +155,17 @@ export interface DeleteDnsResolverRequest {
   /** The name of the DNS resolver. */
   dnsResolverName: string;
 }
+const DeleteDnsResolverRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<DeleteDnsResolverRequest>;
+
 export interface DeleteDnsResolverResponse {}
+const DeleteDnsResolverResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<DeleteDnsResolverResponse>;
+
 export interface DeleteDnsResolverDomainListRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -116,7 +174,15 @@ export interface DeleteDnsResolverDomainListRequest {
   /** The name of the DNS resolver domain list. */
   dnsResolverDomainListName: string;
 }
+const DeleteDnsResolverDomainListRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<DeleteDnsResolverDomainListRequest>;
+
 export interface DeleteDnsResolverDomainListResponse {}
+const DeleteDnsResolverDomainListResponse =
+  DeleteDnsForwardingRulesetResponse as any as S.Schema<DeleteDnsResolverDomainListResponse>;
+
 export interface DeleteDnsResolverPolicyRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -125,7 +191,17 @@ export interface DeleteDnsResolverPolicyRequest {
   /** The name of the DNS resolver policy. */
   dnsResolverPolicyName: string;
 }
+const DeleteDnsResolverPolicyRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<DeleteDnsResolverPolicyRequest>;
+
 export interface DeleteDnsResolverPolicyResponse {}
+const DeleteDnsResolverPolicyResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<DeleteDnsResolverPolicyResponse>;
+
 export interface DeleteDnsResolverPolicyVirtualNetworkLinkRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -136,7 +212,15 @@ export interface DeleteDnsResolverPolicyVirtualNetworkLinkRequest {
   /** The name of the DNS resolver policy virtual network link for the DNS resolver policy. */
   dnsResolverPolicyVirtualNetworkLinkName: string;
 }
+const DeleteDnsResolverPolicyVirtualNetworkLinkRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<DeleteDnsResolverPolicyVirtualNetworkLinkRequest>;
+
 export interface DeleteDnsResolverPolicyVirtualNetworkLinkResponse {}
+const DeleteDnsResolverPolicyVirtualNetworkLinkResponse =
+  DeleteDnsForwardingRulesetResponse as any as S.Schema<DeleteDnsResolverPolicyVirtualNetworkLinkResponse>;
+
 export interface DeleteDnsSecurityRuleRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -147,7 +231,15 @@ export interface DeleteDnsSecurityRuleRequest {
   /** The name of the DNS security rule. */
   dnsSecurityRuleName: string;
 }
+const DeleteDnsSecurityRuleRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<DeleteDnsSecurityRuleRequest>;
+
 export interface DeleteDnsSecurityRuleResponse {}
+const DeleteDnsSecurityRuleResponse =
+  DeleteDnsResolverResponse as any as S.Schema<DeleteDnsSecurityRuleResponse>;
+
 export interface DeleteForwardingRuleRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -158,7 +250,15 @@ export interface DeleteForwardingRuleRequest {
   /** The name of the forwarding rule. */
   forwardingRuleName: string;
 }
+const DeleteForwardingRuleRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<DeleteForwardingRuleRequest>;
+
 export interface DeleteForwardingRuleResponse {}
+const DeleteForwardingRuleResponse =
+  DeleteDnsResolverResponse as any as S.Schema<DeleteForwardingRuleResponse>;
+
 export interface DeleteInboundEndpointRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -169,7 +269,15 @@ export interface DeleteInboundEndpointRequest {
   /** The name of the inbound endpoint for the DNS resolver. */
   inboundEndpointName: string;
 }
+const DeleteInboundEndpointRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<DeleteInboundEndpointRequest>;
+
 export interface DeleteInboundEndpointResponse {}
+const DeleteInboundEndpointResponse =
+  DeleteDnsResolverResponse as any as S.Schema<DeleteInboundEndpointResponse>;
+
 export interface DeleteOutboundEndpointRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -180,7 +288,15 @@ export interface DeleteOutboundEndpointRequest {
   /** The name of the outbound endpoint for the DNS resolver. */
   outboundEndpointName: string;
 }
+const DeleteOutboundEndpointRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<DeleteOutboundEndpointRequest>;
+
 export interface DeleteOutboundEndpointResponse {}
+const DeleteOutboundEndpointResponse =
+  DeleteDnsResolverResponse as any as S.Schema<DeleteOutboundEndpointResponse>;
+
 export interface DeleteVirtualNetworkLinkRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -191,24 +307,47 @@ export interface DeleteVirtualNetworkLinkRequest {
   /** The name of the virtual network link. */
   virtualNetworkLinkName: string;
 }
+const DeleteVirtualNetworkLinkRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<DeleteVirtualNetworkLinkRequest>;
+
 export interface DeleteVirtualNetworkLinkResponse {}
+const DeleteVirtualNetworkLinkResponse =
+  DeleteDnsForwardingRulesetResponse as any as S.Schema<DeleteVirtualNetworkLinkResponse>;
+
 /** Resource tags. */
 export type DnsForwardingRulesetsCreateOrUpdateRequestTagsMap = {
   [key: string]: string | undefined;
 };
+const DnsForwardingRulesetsCreateOrUpdateRequestTagsMap =
+  BulkDnsResolverDomainListResponseTagsMap as any as S.Schema<DnsForwardingRulesetsCreateOrUpdateRequestTagsMap>;
+
 /** Reference to another ARM resource. */
 export interface SubResource {
   /** Resource ID. */
   id: string;
 }
+const SubResource = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<SubResource>;
+
 /** The reference to the DNS resolver outbound endpoints that are used to route DNS queries matching the forwarding rules in the ruleset to the target DNS servers. */
 export type DnsForwardingRulesetPropertiesInputDnsResolverOutboundEndpointsList =
   Array<SubResource>;
+const DnsForwardingRulesetPropertiesInputDnsResolverOutboundEndpointsList = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<DnsForwardingRulesetPropertiesInputDnsResolverOutboundEndpointsList>;
+
 /** Represents the properties of a DNS forwarding ruleset. */
 export interface DnsForwardingRulesetPropertiesInput {
   /** The reference to the DNS resolver outbound endpoints that are used to route DNS queries matching the forwarding rules in the ruleset to the target DNS servers. */
   dnsResolverOutboundEndpoints: DnsForwardingRulesetPropertiesInputDnsResolverOutboundEndpointsList;
 }
+const DnsForwardingRulesetPropertiesInput = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<DnsForwardingRulesetPropertiesInput>;
+
 export interface DnsForwardingRulesetsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -223,12 +362,25 @@ export interface DnsForwardingRulesetsCreateOrUpdateRequest {
   /** Properties of the DNS forwarding ruleset. */
   properties: DnsForwardingRulesetPropertiesInput;
 }
+const DnsForwardingRulesetsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<DnsForwardingRulesetsCreateOrUpdateRequest>;
+
 /** Resource tags. */
 export type DnsForwardingRulesetsCreateOrUpdateResponseTagsMap = {
   [key: string]: string | undefined;
 };
+const DnsForwardingRulesetsCreateOrUpdateResponseTagsMap =
+  BulkDnsResolverDomainListResponseTagsMap as any as S.Schema<DnsForwardingRulesetsCreateOrUpdateResponseTagsMap>;
+
 /** The reference to the DNS resolver outbound endpoints that are used to route DNS queries matching the forwarding rules in the ruleset to the target DNS servers. */
 export type DnsForwardingRulesetPropertiesDnsResolverOutboundEndpointsList = Array<SubResource>;
+const DnsForwardingRulesetPropertiesDnsResolverOutboundEndpointsList = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<DnsForwardingRulesetPropertiesDnsResolverOutboundEndpointsList>;
+
 /** Represents the properties of a DNS forwarding ruleset. */
 export interface DnsForwardingRulesetProperties {
   /** The reference to the DNS resolver outbound endpoints that are used to route DNS queries matching the forwarding rules in the ruleset to the target DNS servers. */
@@ -238,6 +390,11 @@ export interface DnsForwardingRulesetProperties {
   /** The resourceGuid for the DNS forwarding ruleset. */
   resourceGuid?: string;
 }
+const DnsForwardingRulesetProperties = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<DnsForwardingRulesetProperties>;
+
 export interface DnsForwardingRulesetsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -256,17 +413,33 @@ export interface DnsForwardingRulesetsCreateOrUpdateResponse {
   /** "If etag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.") */
   etag?: string;
 }
+const DnsForwardingRulesetsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<DnsForwardingRulesetsCreateOrUpdateResponse>;
+
 /** Resource tags. */
 export type DnsResolverDomainListsCreateOrUpdateRequestTagsMap = {
   [key: string]: string | undefined;
 };
+const DnsResolverDomainListsCreateOrUpdateRequestTagsMap =
+  BulkDnsResolverDomainListResponseTagsMap as any as S.Schema<DnsResolverDomainListsCreateOrUpdateRequestTagsMap>;
+
 /** The domains in the domain list. Will be null if user is using large domain list. */
 export type DnsResolverDomainListPropertiesInputDomainsList = Array<string>;
+const DnsResolverDomainListPropertiesInputDomainsList =
+  DnsResolverDomainListPropertiesDomainsList as any as S.Schema<DnsResolverDomainListPropertiesInputDomainsList>;
+
 /** Represents the properties of a DNS resolver domain list. */
 export interface DnsResolverDomainListPropertiesInput {
   /** The domains in the domain list. Will be null if user is using large domain list. */
   domains?: DnsResolverDomainListPropertiesInputDomainsList;
 }
+const DnsResolverDomainListPropertiesInput = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<DnsResolverDomainListPropertiesInput>;
+
 export interface DnsResolverDomainListsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -281,6 +454,11 @@ export interface DnsResolverDomainListsCreateOrUpdateRequest {
   /** Properties of the DNS resolver domain list. */
   properties?: DnsResolverDomainListPropertiesInput;
 }
+const DnsResolverDomainListsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<DnsResolverDomainListsCreateOrUpdateRequest>;
+
 /** Resource tags. */
 export type DnsResolverDomainListsCreateOrUpdateResponseTagsMap = {
   [key: string]: string | undefined;
@@ -303,10 +481,19 @@ export interface DnsResolverDomainListsCreateOrUpdateResponse {
   /** "If etag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.") */
   etag?: string;
 }
+const DnsResolverDomainListsCreateOrUpdateResponse =
+  BulkDnsResolverDomainListResponse as any as S.Schema<DnsResolverDomainListsCreateOrUpdateResponse>;
+
 /** Resource tags. */
 export type DnsResolverPoliciesCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
+const DnsResolverPoliciesCreateOrUpdateRequestTagsMap =
+  BulkDnsResolverDomainListResponseTagsMap as any as S.Schema<DnsResolverPoliciesCreateOrUpdateRequestTagsMap>;
+
 /** Represents the properties of a DNS resolver policy. */
 export interface DnsResolverPolicyPropertiesInput {}
+const DnsResolverPolicyPropertiesInput =
+  DeleteDnsForwardingRulesetResponse as any as S.Schema<DnsResolverPolicyPropertiesInput>;
+
 export interface DnsResolverPoliciesCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -321,10 +508,18 @@ export interface DnsResolverPoliciesCreateOrUpdateRequest {
   /** Properties of the DNS resolver policy. */
   properties?: DnsResolverPolicyPropertiesInput;
 }
+const DnsResolverPoliciesCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<DnsResolverPoliciesCreateOrUpdateRequest>;
+
 /** Resource tags. */
 export type DnsResolverPoliciesCreateOrUpdateResponseTagsMap = {
   [key: string]: string | undefined;
 };
+const DnsResolverPoliciesCreateOrUpdateResponseTagsMap =
+  BulkDnsResolverDomainListResponseTagsMap as any as S.Schema<DnsResolverPoliciesCreateOrUpdateResponseTagsMap>;
+
 /** Represents the properties of a DNS resolver policy. */
 export interface DnsResolverPolicyProperties {
   /** The current provisioning state of the DNS resolver policy. This is a read-only property and any attempt to set this value will be ignored. */
@@ -332,6 +527,11 @@ export interface DnsResolverPolicyProperties {
   /** The resourceGuid property of the DNS resolver policy resource. */
   resourceGuid?: string;
 }
+const DnsResolverPolicyProperties = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<DnsResolverPolicyProperties>;
+
 export interface DnsResolverPoliciesCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -350,10 +550,20 @@ export interface DnsResolverPoliciesCreateOrUpdateResponse {
   /** "If etag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.") */
   etag?: string;
 }
+const DnsResolverPoliciesCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<DnsResolverPoliciesCreateOrUpdateResponse>;
+
 /** Resource tags. */
 export type DnsResolverPolicyVirtualNetworkLinksCreateOrUpdateRequestTagsMap = {
   [key: string]: string | undefined;
 };
+const DnsResolverPolicyVirtualNetworkLinksCreateOrUpdateRequestTagsMap = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<DnsResolverPolicyVirtualNetworkLinksCreateOrUpdateRequestTagsMap>;
+
 /** Represents the properties of a DNS resolver policy virtual network link. */
 export interface DnsResolverPolicyVirtualNetworkLinkProperties {
   /** The reference to the virtual network. This cannot be changed after creation. */
@@ -361,6 +571,11 @@ export interface DnsResolverPolicyVirtualNetworkLinkProperties {
   /** The current provisioning state of the DNS resolver policy virtual network link. This is a read-only property and any attempt to set this value will be ignored. */
   provisioningState?: ProvisioningState | (string & {});
 }
+const DnsResolverPolicyVirtualNetworkLinkProperties = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<DnsResolverPolicyVirtualNetworkLinkProperties>;
+
 export interface DnsResolverPolicyVirtualNetworkLinksCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -377,10 +592,18 @@ export interface DnsResolverPolicyVirtualNetworkLinksCreateOrUpdateRequest {
   /** Properties of the DNS resolver policy virtual network link. */
   properties: DnsResolverPolicyVirtualNetworkLinkProperties;
 }
+const DnsResolverPolicyVirtualNetworkLinksCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<DnsResolverPolicyVirtualNetworkLinksCreateOrUpdateRequest>;
+
 /** Resource tags. */
 export type DnsResolverPolicyVirtualNetworkLinksCreateOrUpdateResponseTagsMap = {
   [key: string]: string | undefined;
 };
+const DnsResolverPolicyVirtualNetworkLinksCreateOrUpdateResponseTagsMap =
+  DnsResolverPolicyVirtualNetworkLinksCreateOrUpdateRequestTagsMap as any as S.Schema<DnsResolverPolicyVirtualNetworkLinksCreateOrUpdateResponseTagsMap>;
+
 export interface DnsResolverPolicyVirtualNetworkLinksCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -399,13 +622,26 @@ export interface DnsResolverPolicyVirtualNetworkLinksCreateOrUpdateResponse {
   /** "If etag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.") */
   etag?: string;
 }
+const DnsResolverPolicyVirtualNetworkLinksCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<DnsResolverPolicyVirtualNetworkLinksCreateOrUpdateResponse>;
+
 /** Resource tags. */
 export type DnsResolversCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
+const DnsResolversCreateOrUpdateRequestTagsMap =
+  BulkDnsResolverDomainListResponseTagsMap as any as S.Schema<DnsResolversCreateOrUpdateRequestTagsMap>;
+
 /** Represents the properties of a DNS resolver. */
 export interface DnsResolverPropertiesInput {
   /** The reference to the virtual network. This cannot be changed after creation. */
   virtualNetwork: SubResource;
 }
+const DnsResolverPropertiesInput = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<DnsResolverPropertiesInput>;
+
 export interface DnsResolversCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -420,10 +656,20 @@ export interface DnsResolversCreateOrUpdateRequest {
   /** Properties of the DNS resolver. */
   properties: DnsResolverPropertiesInput;
 }
+const DnsResolversCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<DnsResolversCreateOrUpdateRequest>;
+
 /** Resource tags. */
 export type DnsResolversCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
+const DnsResolversCreateOrUpdateResponseTagsMap =
+  BulkDnsResolverDomainListResponseTagsMap as any as S.Schema<DnsResolversCreateOrUpdateResponseTagsMap>;
+
 /** The current status of the DNS resolver. This is a read-only property and any attempt to set this value will be ignored. */
 export type DnsResolverState = "Connected" | "Disconnected";
+const DnsResolverState = S.String;
+
 /** Represents the properties of a DNS resolver. */
 export interface DnsResolverProperties {
   /** The reference to the virtual network. This cannot be changed after creation. */
@@ -435,6 +681,11 @@ export interface DnsResolverProperties {
   /** The resourceGuid property of the DNS resolver resource. */
   resourceGuid?: string;
 }
+const DnsResolverProperties = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<DnsResolverProperties>;
+
 export interface DnsResolversCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -453,19 +704,39 @@ export interface DnsResolversCreateOrUpdateResponse {
   /** "If etag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.") */
   etag?: string;
 }
+const DnsResolversCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<DnsResolversCreateOrUpdateResponse>;
+
 /** Resource tags. */
 export type DnsSecurityRulesCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
+const DnsSecurityRulesCreateOrUpdateRequestTagsMap =
+  BulkDnsResolverDomainListResponseTagsMap as any as S.Schema<DnsSecurityRulesCreateOrUpdateRequestTagsMap>;
+
 /** The type of action to take. */
 export type ActionType = "Allow" | "Alert" | "Block";
+const ActionType = S.String;
+
 /** The action to take on DNS requests that match the DNS security rule. */
 export interface DnsSecurityRuleAction {
   /** The type of action to take. */
   actionType?: ActionType | (string & {});
 }
+const DnsSecurityRuleAction = /*@__PURE__*/ __L.at(
+  __c5,
+  0,
+) as any as S.Schema<DnsSecurityRuleAction>;
+
 /** DNS resolver policy domains lists that the DNS security rule applies to. */
 export type DnsSecurityRulePropertiesDnsResolverDomainListsList = Array<SubResource>;
+const DnsSecurityRulePropertiesDnsResolverDomainListsList =
+  DnsForwardingRulesetPropertiesDnsResolverOutboundEndpointsList as any as S.Schema<DnsSecurityRulePropertiesDnsResolverDomainListsList>;
+
 /** The state of DNS security rule. */
 export type DnsSecurityRuleState = "Enabled" | "Disabled";
+const DnsSecurityRuleState = S.String;
+
 /** Represents the properties of a DNS security rule. */
 export interface DnsSecurityRuleProperties {
   /** The priority of the DNS security rule. */
@@ -479,6 +750,11 @@ export interface DnsSecurityRuleProperties {
   /** The current provisioning state of the DNS security rule. This is a read-only property and any attempt to set this value will be ignored. */
   provisioningState?: ProvisioningState | (string & {});
 }
+const DnsSecurityRuleProperties = /*@__PURE__*/ __L.at(
+  __c5,
+  1,
+) as any as S.Schema<DnsSecurityRuleProperties>;
+
 export interface DnsSecurityRulesCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -495,8 +771,16 @@ export interface DnsSecurityRulesCreateOrUpdateRequest {
   /** Properties of the DNS security rule. */
   properties: DnsSecurityRuleProperties;
 }
+const DnsSecurityRulesCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  2,
+) as any as S.Schema<DnsSecurityRulesCreateOrUpdateRequest>;
+
 /** Resource tags. */
 export type DnsSecurityRulesCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
+const DnsSecurityRulesCreateOrUpdateResponseTagsMap =
+  BulkDnsResolverDomainListResponseTagsMap as any as S.Schema<DnsSecurityRulesCreateOrUpdateResponseTagsMap>;
+
 export interface DnsSecurityRulesCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -515,6 +799,11 @@ export interface DnsSecurityRulesCreateOrUpdateResponse {
   /** "If etag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.") */
   etag?: string;
 }
+const DnsSecurityRulesCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<DnsSecurityRulesCreateOrUpdateResponse>;
+
 /** Describes a server to forward the DNS queries to. */
 export interface TargetDnsServer {
   /** DNS server IP address. */
@@ -522,12 +811,24 @@ export interface TargetDnsServer {
   /** DNS server port. */
   port?: number;
 }
+const TargetDnsServer = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<TargetDnsServer>;
+
 /** DNS servers to forward the DNS query to. */
 export type ForwardingRulePropertiesTargetDnsServersList = Array<TargetDnsServer>;
+const ForwardingRulePropertiesTargetDnsServersList = /*@__PURE__*/ __L.at(
+  __c5,
+  5,
+) as any as S.Schema<ForwardingRulePropertiesTargetDnsServersList>;
+
 /** Metadata attached to the forwarding rule. */
 export type ForwardingRulePropertiesMetadataMap = { [key: string]: string | undefined };
+const ForwardingRulePropertiesMetadataMap =
+  BulkDnsResolverDomainListResponseTagsMap as any as S.Schema<ForwardingRulePropertiesMetadataMap>;
+
 /** The state of forwarding rule. */
 export type ForwardingRuleState = "Enabled" | "Disabled";
+const ForwardingRuleState = S.String;
+
 /** Represents the properties of a forwarding rule within a DNS forwarding ruleset. */
 export interface ForwardingRuleProperties {
   /** The domain name for the forwarding rule. */
@@ -541,6 +842,11 @@ export interface ForwardingRuleProperties {
   /** The current provisioning state of the forwarding rule. This is a read-only property and any attempt to set this value will be ignored. */
   provisioningState?: ProvisioningState | (string & {});
 }
+const ForwardingRuleProperties = /*@__PURE__*/ __L.at(
+  __c5,
+  6,
+) as any as S.Schema<ForwardingRuleProperties>;
+
 export interface ForwardingRulesCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -553,6 +859,11 @@ export interface ForwardingRulesCreateOrUpdateRequest {
   /** Properties of the forwarding rule. */
   properties: ForwardingRuleProperties;
 }
+const ForwardingRulesCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  7,
+) as any as S.Schema<ForwardingRulesCreateOrUpdateRequest>;
+
 export interface ForwardingRulesCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -567,6 +878,11 @@ export interface ForwardingRulesCreateOrUpdateResponse {
   /** "If etag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.") */
   etag?: string;
 }
+const ForwardingRulesCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<ForwardingRulesCreateOrUpdateResponse>;
+
 export interface GetDnsForwardingRulesetRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -575,6 +891,11 @@ export interface GetDnsForwardingRulesetRequest {
   /** The name of the DNS forwarding ruleset. */
   dnsForwardingRulesetName: string;
 }
+const GetDnsForwardingRulesetRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  1,
+) as any as S.Schema<GetDnsForwardingRulesetRequest>;
+
 /** Resource tags. */
 export type GetDnsForwardingRulesetResponseTagsMap = { [key: string]: string | undefined };
 export interface GetDnsForwardingRulesetResponse {
@@ -595,6 +916,9 @@ export interface GetDnsForwardingRulesetResponse {
   /** "If etag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.") */
   etag?: string;
 }
+const GetDnsForwardingRulesetResponse =
+  DnsForwardingRulesetsCreateOrUpdateResponse as any as S.Schema<GetDnsForwardingRulesetResponse>;
+
 export interface GetDnsResolverRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -603,8 +927,16 @@ export interface GetDnsResolverRequest {
   /** The name of the DNS resolver. */
   dnsResolverName: string;
 }
+const GetDnsResolverRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  2,
+) as any as S.Schema<GetDnsResolverRequest>;
+
 /** Resource tags. */
 export type GetDnsResolverResponseTagsMap = { [key: string]: string | undefined };
+const GetDnsResolverResponseTagsMap =
+  BulkDnsResolverDomainListResponseTagsMap as any as S.Schema<GetDnsResolverResponseTagsMap>;
+
 export interface GetDnsResolverResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -623,6 +955,11 @@ export interface GetDnsResolverResponse {
   /** "If etag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.") */
   etag?: string;
 }
+const GetDnsResolverResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  3,
+) as any as S.Schema<GetDnsResolverResponse>;
+
 export interface GetDnsResolverDomainListRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -631,6 +968,11 @@ export interface GetDnsResolverDomainListRequest {
   /** The name of the DNS resolver domain list. */
   dnsResolverDomainListName: string;
 }
+const GetDnsResolverDomainListRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  4,
+) as any as S.Schema<GetDnsResolverDomainListRequest>;
+
 /** Resource tags. */
 export type GetDnsResolverDomainListResponseTagsMap = { [key: string]: string | undefined };
 export interface GetDnsResolverDomainListResponse {
@@ -651,6 +993,9 @@ export interface GetDnsResolverDomainListResponse {
   /** "If etag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.") */
   etag?: string;
 }
+const GetDnsResolverDomainListResponse =
+  BulkDnsResolverDomainListResponse as any as S.Schema<GetDnsResolverDomainListResponse>;
+
 export interface GetDnsResolverPolicyRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -659,6 +1004,11 @@ export interface GetDnsResolverPolicyRequest {
   /** The name of the DNS resolver policy. */
   dnsResolverPolicyName: string;
 }
+const GetDnsResolverPolicyRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  5,
+) as any as S.Schema<GetDnsResolverPolicyRequest>;
+
 /** Resource tags. */
 export type GetDnsResolverPolicyResponseTagsMap = { [key: string]: string | undefined };
 export interface GetDnsResolverPolicyResponse {
@@ -679,6 +1029,9 @@ export interface GetDnsResolverPolicyResponse {
   /** "If etag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.") */
   etag?: string;
 }
+const GetDnsResolverPolicyResponse =
+  DnsResolverPoliciesCreateOrUpdateResponse as any as S.Schema<GetDnsResolverPolicyResponse>;
+
 export interface GetDnsResolverPolicyVirtualNetworkLinkRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -689,10 +1042,18 @@ export interface GetDnsResolverPolicyVirtualNetworkLinkRequest {
   /** The name of the DNS resolver policy virtual network link for the DNS resolver policy. */
   dnsResolverPolicyVirtualNetworkLinkName: string;
 }
+const GetDnsResolverPolicyVirtualNetworkLinkRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  6,
+) as any as S.Schema<GetDnsResolverPolicyVirtualNetworkLinkRequest>;
+
 /** Resource tags. */
 export type GetDnsResolverPolicyVirtualNetworkLinkResponseTagsMap = {
   [key: string]: string | undefined;
 };
+const GetDnsResolverPolicyVirtualNetworkLinkResponseTagsMap =
+  BulkDnsResolverDomainListResponseTagsMap as any as S.Schema<GetDnsResolverPolicyVirtualNetworkLinkResponseTagsMap>;
+
 export interface GetDnsResolverPolicyVirtualNetworkLinkResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -711,6 +1072,11 @@ export interface GetDnsResolverPolicyVirtualNetworkLinkResponse {
   /** "If etag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.") */
   etag?: string;
 }
+const GetDnsResolverPolicyVirtualNetworkLinkResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  7,
+) as any as S.Schema<GetDnsResolverPolicyVirtualNetworkLinkResponse>;
+
 export interface GetDnsSecurityRuleRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -721,6 +1087,11 @@ export interface GetDnsSecurityRuleRequest {
   /** The name of the DNS security rule. */
   dnsSecurityRuleName: string;
 }
+const GetDnsSecurityRuleRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  0,
+) as any as S.Schema<GetDnsSecurityRuleRequest>;
+
 /** Resource tags. */
 export type GetDnsSecurityRuleResponseTagsMap = { [key: string]: string | undefined };
 export interface GetDnsSecurityRuleResponse {
@@ -741,6 +1112,9 @@ export interface GetDnsSecurityRuleResponse {
   /** "If etag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.") */
   etag?: string;
 }
+const GetDnsSecurityRuleResponse =
+  DnsSecurityRulesCreateOrUpdateResponse as any as S.Schema<GetDnsSecurityRuleResponse>;
+
 export interface GetForwardingRuleRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -751,6 +1125,11 @@ export interface GetForwardingRuleRequest {
   /** The name of the forwarding rule. */
   forwardingRuleName: string;
 }
+const GetForwardingRuleRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  1,
+) as any as S.Schema<GetForwardingRuleRequest>;
+
 export interface GetForwardingRuleResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -765,6 +1144,9 @@ export interface GetForwardingRuleResponse {
   /** "If etag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.") */
   etag?: string;
 }
+const GetForwardingRuleResponse =
+  ForwardingRulesCreateOrUpdateResponse as any as S.Schema<GetForwardingRuleResponse>;
+
 export interface GetInboundEndpointRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -775,10 +1157,20 @@ export interface GetInboundEndpointRequest {
   /** The name of the inbound endpoint for the DNS resolver. */
   inboundEndpointName: string;
 }
+const GetInboundEndpointRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  2,
+) as any as S.Schema<GetInboundEndpointRequest>;
+
 /** Resource tags. */
 export type GetInboundEndpointResponseTagsMap = { [key: string]: string | undefined };
+const GetInboundEndpointResponseTagsMap =
+  BulkDnsResolverDomainListResponseTagsMap as any as S.Schema<GetInboundEndpointResponseTagsMap>;
+
 /** Private IP address allocation method. */
 export type IpConfigurationPrivateIpAllocationMethod = "Static" | "Dynamic";
+const IpConfigurationPrivateIpAllocationMethod = S.String;
+
 /** IP configuration. */
 export interface IpConfiguration {
   /** The reference to the subnet bound to the IP configuration. */
@@ -788,8 +1180,15 @@ export interface IpConfiguration {
   /** Private IP address allocation method. */
   privateIpAllocationMethod?: IpConfigurationPrivateIpAllocationMethod | (string & {});
 }
+const IpConfiguration = /*@__PURE__*/ __L.at(__c7, 3) as any as S.Schema<IpConfiguration>;
+
 /** IP configurations for the inbound endpoint. */
 export type InboundEndpointPropertiesIpConfigurationsList = Array<IpConfiguration>;
+const InboundEndpointPropertiesIpConfigurationsList = /*@__PURE__*/ __L.at(
+  __c7,
+  4,
+) as any as S.Schema<InboundEndpointPropertiesIpConfigurationsList>;
+
 /** Represents the properties of an inbound endpoint for a DNS resolver. */
 export interface InboundEndpointProperties {
   /** IP configurations for the inbound endpoint. */
@@ -799,6 +1198,11 @@ export interface InboundEndpointProperties {
   /** The resourceGuid property of the inbound endpoint resource. */
   resourceGuid?: string;
 }
+const InboundEndpointProperties = /*@__PURE__*/ __L.at(
+  __c7,
+  5,
+) as any as S.Schema<InboundEndpointProperties>;
+
 export interface GetInboundEndpointResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -817,6 +1221,11 @@ export interface GetInboundEndpointResponse {
   /** "If etag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.") */
   etag?: string;
 }
+const GetInboundEndpointResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  6,
+) as any as S.Schema<GetInboundEndpointResponse>;
+
 export interface GetOutboundEndpointRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -827,8 +1236,16 @@ export interface GetOutboundEndpointRequest {
   /** The name of the outbound endpoint for the DNS resolver. */
   outboundEndpointName: string;
 }
+const GetOutboundEndpointRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  7,
+) as any as S.Schema<GetOutboundEndpointRequest>;
+
 /** Resource tags. */
 export type GetOutboundEndpointResponseTagsMap = { [key: string]: string | undefined };
+const GetOutboundEndpointResponseTagsMap =
+  BulkDnsResolverDomainListResponseTagsMap as any as S.Schema<GetOutboundEndpointResponseTagsMap>;
+
 /** Represents the properties of an outbound endpoint for a DNS resolver. */
 export interface OutboundEndpointProperties {
   /** The reference to the subnet used for the outbound endpoint. */
@@ -838,6 +1255,11 @@ export interface OutboundEndpointProperties {
   /** The resourceGuid property of the outbound endpoint resource. */
   resourceGuid?: string;
 }
+const OutboundEndpointProperties = /*@__PURE__*/ __L.at(
+  __c8,
+  0,
+) as any as S.Schema<OutboundEndpointProperties>;
+
 export interface GetOutboundEndpointResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -856,6 +1278,11 @@ export interface GetOutboundEndpointResponse {
   /** "If etag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.") */
   etag?: string;
 }
+const GetOutboundEndpointResponse = /*@__PURE__*/ __L.at(
+  __c8,
+  1,
+) as any as S.Schema<GetOutboundEndpointResponse>;
+
 export interface GetVirtualNetworkLinkRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -866,8 +1293,16 @@ export interface GetVirtualNetworkLinkRequest {
   /** The name of the virtual network link. */
   virtualNetworkLinkName: string;
 }
+const GetVirtualNetworkLinkRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  2,
+) as any as S.Schema<GetVirtualNetworkLinkRequest>;
+
 /** Metadata attached to the virtual network link. */
 export type VirtualNetworkLinkPropertiesMetadataMap = { [key: string]: string | undefined };
+const VirtualNetworkLinkPropertiesMetadataMap =
+  BulkDnsResolverDomainListResponseTagsMap as any as S.Schema<VirtualNetworkLinkPropertiesMetadataMap>;
+
 /** Represents the properties of a virtual network link. */
 export interface VirtualNetworkLinkProperties {
   /** The reference to the virtual network. This cannot be changed after creation. */
@@ -877,6 +1312,11 @@ export interface VirtualNetworkLinkProperties {
   /** The current provisioning state of the virtual network link. This is a read-only property and any attempt to set this value will be ignored. */
   provisioningState?: ProvisioningState | (string & {});
 }
+const VirtualNetworkLinkProperties = /*@__PURE__*/ __L.at(
+  __c8,
+  3,
+) as any as S.Schema<VirtualNetworkLinkProperties>;
+
 export interface GetVirtualNetworkLinkResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -891,15 +1331,31 @@ export interface GetVirtualNetworkLinkResponse {
   /** "If etag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.") */
   etag?: string;
 }
+const GetVirtualNetworkLinkResponse = /*@__PURE__*/ __L.at(
+  __c8,
+  4,
+) as any as S.Schema<GetVirtualNetworkLinkResponse>;
+
 /** Resource tags. */
 export type InboundEndpointsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
+const InboundEndpointsCreateOrUpdateRequestTagsMap =
+  BulkDnsResolverDomainListResponseTagsMap as any as S.Schema<InboundEndpointsCreateOrUpdateRequestTagsMap>;
+
 /** IP configurations for the inbound endpoint. */
 export type InboundEndpointPropertiesInputIpConfigurationsList = Array<IpConfiguration>;
+const InboundEndpointPropertiesInputIpConfigurationsList =
+  InboundEndpointPropertiesIpConfigurationsList as any as S.Schema<InboundEndpointPropertiesInputIpConfigurationsList>;
+
 /** Represents the properties of an inbound endpoint for a DNS resolver. */
 export interface InboundEndpointPropertiesInput {
   /** IP configurations for the inbound endpoint. */
   ipConfigurations: InboundEndpointPropertiesInputIpConfigurationsList;
 }
+const InboundEndpointPropertiesInput = /*@__PURE__*/ __L.at(
+  __c8,
+  5,
+) as any as S.Schema<InboundEndpointPropertiesInput>;
+
 export interface InboundEndpointsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -916,6 +1372,11 @@ export interface InboundEndpointsCreateOrUpdateRequest {
   /** Properties of the inbound endpoint. */
   properties: InboundEndpointPropertiesInput;
 }
+const InboundEndpointsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  6,
+) as any as S.Schema<InboundEndpointsCreateOrUpdateRequest>;
+
 /** Resource tags. */
 export type InboundEndpointsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
 export interface InboundEndpointsCreateOrUpdateResponse {
@@ -936,6 +1397,9 @@ export interface InboundEndpointsCreateOrUpdateResponse {
   /** "If etag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.") */
   etag?: string;
 }
+const InboundEndpointsCreateOrUpdateResponse =
+  GetInboundEndpointResponse as any as S.Schema<InboundEndpointsCreateOrUpdateResponse>;
+
 export interface ListDnsForwardingRulesetByResourceGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -944,8 +1408,16 @@ export interface ListDnsForwardingRulesetByResourceGroupRequest {
   /** The maximum number of results to return. If not specified, returns up to 100 results. */
   _top?: number;
 }
+const ListDnsForwardingRulesetByResourceGroupRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  7,
+) as any as S.Schema<ListDnsForwardingRulesetByResourceGroupRequest>;
+
 /** Resource tags. */
 export type DnsForwardingRulesetTagsMap = { [key: string]: string | undefined };
+const DnsForwardingRulesetTagsMap =
+  BulkDnsResolverDomainListResponseTagsMap as any as S.Schema<DnsForwardingRulesetTagsMap>;
+
 /** Describes a DNS forwarding ruleset. */
 export interface DnsForwardingRuleset {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -965,8 +1437,15 @@ export interface DnsForwardingRuleset {
   /** "If etag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.") */
   etag?: string;
 }
+const DnsForwardingRuleset = /*@__PURE__*/ __L.at(__c9, 0) as any as S.Schema<DnsForwardingRuleset>;
+
 /** The DnsForwardingRuleset items on this page */
 export type DnsForwardingRulesetListResultValueList = Array<DnsForwardingRuleset>;
+const DnsForwardingRulesetListResultValueList = /*@__PURE__*/ __L.at(
+  __c9,
+  1,
+) as any as S.Schema<DnsForwardingRulesetListResultValueList>;
+
 /** The response of a DnsForwardingRuleset list operation. */
 export interface DnsForwardingRulesetListResult {
   /** The DnsForwardingRuleset items on this page */
@@ -974,6 +1453,11 @@ export interface DnsForwardingRulesetListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const DnsForwardingRulesetListResult = /*@__PURE__*/ __L.at(
+  __c9,
+  2,
+) as any as S.Schema<DnsForwardingRulesetListResult>;
+
 export interface ListDnsForwardingRulesetByVirtualNetworkRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -984,11 +1468,21 @@ export interface ListDnsForwardingRulesetByVirtualNetworkRequest {
   /** The maximum number of results to return. If not specified, returns up to 100 results. */
   _top?: number;
 }
+const ListDnsForwardingRulesetByVirtualNetworkRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  3,
+) as any as S.Schema<ListDnsForwardingRulesetByVirtualNetworkRequest>;
+
 /** The reference to the virtual network link that associates between the DNS forwarding ruleset and virtual network. */
 export interface VirtualNetworkLinkSubResourceProperties {
   /** The reference to the virtual network link. */
   virtualNetworkLink?: SubResource;
 }
+const VirtualNetworkLinkSubResourceProperties = /*@__PURE__*/ __L.at(
+  __c9,
+  4,
+) as any as S.Schema<VirtualNetworkLinkSubResourceProperties>;
+
 /** Reference to DNS forwarding ruleset and associated virtual network link. */
 export interface VirtualNetworkDnsForwardingRuleset {
   /** DNS Forwarding Ruleset Resource ID. */
@@ -996,9 +1490,19 @@ export interface VirtualNetworkDnsForwardingRuleset {
   /** Properties of the virtual network link sub-resource reference. */
   properties?: VirtualNetworkLinkSubResourceProperties;
 }
+const VirtualNetworkDnsForwardingRuleset = /*@__PURE__*/ __L.at(
+  __c9,
+  5,
+) as any as S.Schema<VirtualNetworkDnsForwardingRuleset>;
+
 /** The VirtualNetworkDnsForwardingRuleset items on this page */
 export type VirtualNetworkDnsForwardingRulesetListResultValueList =
   Array<VirtualNetworkDnsForwardingRuleset>;
+const VirtualNetworkDnsForwardingRulesetListResultValueList = /*@__PURE__*/ __L.at(
+  __c9,
+  6,
+) as any as S.Schema<VirtualNetworkDnsForwardingRulesetListResultValueList>;
+
 /** The response to an enumeration operation on Virtual Network DNS Forwarding Ruleset. */
 export interface VirtualNetworkDnsForwardingRulesetListResult {
   /** The VirtualNetworkDnsForwardingRuleset items on this page */
@@ -1006,12 +1510,22 @@ export interface VirtualNetworkDnsForwardingRulesetListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const VirtualNetworkDnsForwardingRulesetListResult = /*@__PURE__*/ __L.at(
+  __c9,
+  7,
+) as any as S.Schema<VirtualNetworkDnsForwardingRulesetListResult>;
+
 export interface ListDnsForwardingRulesetsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The maximum number of results to return. If not specified, returns up to 100 results. */
   _top?: number;
 }
+const ListDnsForwardingRulesetsRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  0,
+) as any as S.Schema<ListDnsForwardingRulesetsRequest>;
+
 export interface ListDnsResolverByResourceGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1020,6 +1534,11 @@ export interface ListDnsResolverByResourceGroupRequest {
   /** The maximum number of results to return. If not specified, returns up to 100 results. */
   _top?: number;
 }
+const ListDnsResolverByResourceGroupRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  1,
+) as any as S.Schema<ListDnsResolverByResourceGroupRequest>;
+
 /** Resource tags. */
 export type DnsResolverTagsMap = { [key: string]: string | undefined };
 /** Describes a DNS resolver. */
@@ -1041,8 +1560,15 @@ export interface DnsResolver {
   /** "If etag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.") */
   etag?: string;
 }
+const DnsResolver = GetDnsResolverResponse as any as S.Schema<DnsResolver>;
+
 /** The DnsResolver items on this page */
 export type DnsResolverListResultValueList = Array<DnsResolver>;
+const DnsResolverListResultValueList = /*@__PURE__*/ __L.at(
+  __c10,
+  2,
+) as any as S.Schema<DnsResolverListResultValueList>;
+
 /** The response of a DnsResolver list operation. */
 export interface DnsResolverListResult {
   /** The DnsResolver items on this page */
@@ -1050,6 +1576,11 @@ export interface DnsResolverListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const DnsResolverListResult = /*@__PURE__*/ __L.at(
+  __c10,
+  3,
+) as any as S.Schema<DnsResolverListResult>;
+
 export interface ListDnsResolverByVirtualNetworkRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1060,8 +1591,16 @@ export interface ListDnsResolverByVirtualNetworkRequest {
   /** The maximum number of results to return. If not specified, returns up to 100 results. */
   _top?: number;
 }
+const ListDnsResolverByVirtualNetworkRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  4,
+) as any as S.Schema<ListDnsResolverByVirtualNetworkRequest>;
+
 /** The SubResource items on this page */
 export type SubResourceListResultValueList = Array<SubResource>;
+const SubResourceListResultValueList =
+  DnsForwardingRulesetPropertiesDnsResolverOutboundEndpointsList as any as S.Schema<SubResourceListResultValueList>;
+
 /** The response to an enumeration operation on sub-resources. */
 export interface SubResourceListResult {
   /** The SubResource items on this page */
@@ -1069,6 +1608,11 @@ export interface SubResourceListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const SubResourceListResult = /*@__PURE__*/ __L.at(
+  __c10,
+  5,
+) as any as S.Schema<SubResourceListResult>;
+
 export interface ListDnsResolverDomainListByResourceGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1077,8 +1621,16 @@ export interface ListDnsResolverDomainListByResourceGroupRequest {
   /** The maximum number of results to return. If not specified, returns up to 100 results. */
   _top?: number;
 }
+const ListDnsResolverDomainListByResourceGroupRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  6,
+) as any as S.Schema<ListDnsResolverDomainListByResourceGroupRequest>;
+
 /** Resource tags. */
 export type DnsResolverDomainListTagsMap = { [key: string]: string | undefined };
+const DnsResolverDomainListTagsMap =
+  BulkDnsResolverDomainListResponseTagsMap as any as S.Schema<DnsResolverDomainListTagsMap>;
+
 /** Describes a DNS resolver domain list. */
 export interface DnsResolverDomainList {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -1098,8 +1650,18 @@ export interface DnsResolverDomainList {
   /** "If etag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.") */
   etag?: string;
 }
+const DnsResolverDomainList = /*@__PURE__*/ __L.at(
+  __c10,
+  7,
+) as any as S.Schema<DnsResolverDomainList>;
+
 /** The DnsResolverDomainList items on this page */
 export type DnsResolverDomainListListResultValueList = Array<DnsResolverDomainList>;
+const DnsResolverDomainListListResultValueList = /*@__PURE__*/ __L.at(
+  __c11,
+  0,
+) as any as S.Schema<DnsResolverDomainListListResultValueList>;
+
 /** The response of a DnsResolverDomainList list operation. */
 export interface DnsResolverDomainListListResult {
   /** The DnsResolverDomainList items on this page */
@@ -1107,20 +1669,38 @@ export interface DnsResolverDomainListListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const DnsResolverDomainListListResult = /*@__PURE__*/ __L.at(
+  __c11,
+  1,
+) as any as S.Schema<DnsResolverDomainListListResult>;
+
 export interface ListDnsResolverDomainListsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The maximum number of results to return. If not specified, returns up to 100 results. */
   _top?: number;
 }
+const ListDnsResolverDomainListsRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  2,
+) as any as S.Schema<ListDnsResolverDomainListsRequest>;
+
 export interface ListDnsResolverPoliciesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The maximum number of results to return. If not specified, returns up to 100 results. */
   _top?: number;
 }
+const ListDnsResolverPoliciesRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  3,
+) as any as S.Schema<ListDnsResolverPoliciesRequest>;
+
 /** Resource tags. */
 export type DnsResolverPolicyTagsMap = { [key: string]: string | undefined };
+const DnsResolverPolicyTagsMap =
+  BulkDnsResolverDomainListResponseTagsMap as any as S.Schema<DnsResolverPolicyTagsMap>;
+
 /** Describes a DNS resolver policy. */
 export interface DnsResolverPolicy {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -1140,8 +1720,15 @@ export interface DnsResolverPolicy {
   /** "If etag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.") */
   etag?: string;
 }
+const DnsResolverPolicy = /*@__PURE__*/ __L.at(__c11, 4) as any as S.Schema<DnsResolverPolicy>;
+
 /** The DnsResolverPolicy items on this page */
 export type DnsResolverPolicyListResultValueList = Array<DnsResolverPolicy>;
+const DnsResolverPolicyListResultValueList = /*@__PURE__*/ __L.at(
+  __c11,
+  5,
+) as any as S.Schema<DnsResolverPolicyListResultValueList>;
+
 /** The response of a DnsResolverPolicy list operation. */
 export interface DnsResolverPolicyListResult {
   /** The DnsResolverPolicy items on this page */
@@ -1149,6 +1736,11 @@ export interface DnsResolverPolicyListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const DnsResolverPolicyListResult = /*@__PURE__*/ __L.at(
+  __c11,
+  6,
+) as any as S.Schema<DnsResolverPolicyListResult>;
+
 export interface ListDnsResolverPolicyByResourceGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1157,6 +1749,11 @@ export interface ListDnsResolverPolicyByResourceGroupRequest {
   /** The maximum number of results to return. If not specified, returns up to 100 results. */
   _top?: number;
 }
+const ListDnsResolverPolicyByResourceGroupRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  7,
+) as any as S.Schema<ListDnsResolverPolicyByResourceGroupRequest>;
+
 export interface ListDnsResolverPolicyByVirtualNetworkRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1165,6 +1762,11 @@ export interface ListDnsResolverPolicyByVirtualNetworkRequest {
   /** The name of the VirtualNetwork */
   virtualNetworkName: string;
 }
+const ListDnsResolverPolicyByVirtualNetworkRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  0,
+) as any as S.Schema<ListDnsResolverPolicyByVirtualNetworkRequest>;
+
 export interface ListDnsResolverPolicyVirtualNetworkLinksRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1175,6 +1777,11 @@ export interface ListDnsResolverPolicyVirtualNetworkLinksRequest {
   /** The maximum number of results to return. If not specified, returns up to 100 results. */
   _top?: number;
 }
+const ListDnsResolverPolicyVirtualNetworkLinksRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  1,
+) as any as S.Schema<ListDnsResolverPolicyVirtualNetworkLinksRequest>;
+
 /** Resource tags. */
 export type DnsResolverPolicyVirtualNetworkLinkTagsMap = { [key: string]: string | undefined };
 /** Describes a DNS resolver policy virtual network link. */
@@ -1196,9 +1803,17 @@ export interface DnsResolverPolicyVirtualNetworkLink {
   /** "If etag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.") */
   etag?: string;
 }
+const DnsResolverPolicyVirtualNetworkLink =
+  GetDnsResolverPolicyVirtualNetworkLinkResponse as any as S.Schema<DnsResolverPolicyVirtualNetworkLink>;
+
 /** The DnsResolverPolicyVirtualNetworkLink items on this page */
 export type DnsResolverPolicyVirtualNetworkLinkListResultValueList =
   Array<DnsResolverPolicyVirtualNetworkLink>;
+const DnsResolverPolicyVirtualNetworkLinkListResultValueList = /*@__PURE__*/ __L.at(
+  __c12,
+  2,
+) as any as S.Schema<DnsResolverPolicyVirtualNetworkLinkListResultValueList>;
+
 /** The response of a DnsResolverPolicyVirtualNetworkLink list operation. */
 export interface DnsResolverPolicyVirtualNetworkLinkListResult {
   /** The DnsResolverPolicyVirtualNetworkLink items on this page */
@@ -1206,12 +1821,22 @@ export interface DnsResolverPolicyVirtualNetworkLinkListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const DnsResolverPolicyVirtualNetworkLinkListResult = /*@__PURE__*/ __L.at(
+  __c12,
+  3,
+) as any as S.Schema<DnsResolverPolicyVirtualNetworkLinkListResult>;
+
 export interface ListDnsResolversRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The maximum number of results to return. If not specified, returns up to 100 results. */
   _top?: number;
 }
+const ListDnsResolversRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  4,
+) as any as S.Schema<ListDnsResolversRequest>;
+
 export interface ListDnsSecurityRulesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1222,8 +1847,16 @@ export interface ListDnsSecurityRulesRequest {
   /** The maximum number of results to return. If not specified, returns up to 100 results. */
   _top?: number;
 }
+const ListDnsSecurityRulesRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  5,
+) as any as S.Schema<ListDnsSecurityRulesRequest>;
+
 /** Resource tags. */
 export type DnsSecurityRuleTagsMap = { [key: string]: string | undefined };
+const DnsSecurityRuleTagsMap =
+  BulkDnsResolverDomainListResponseTagsMap as any as S.Schema<DnsSecurityRuleTagsMap>;
+
 /** Describes a DNS security rule. */
 export interface DnsSecurityRule {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -1243,8 +1876,15 @@ export interface DnsSecurityRule {
   /** "If etag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.") */
   etag?: string;
 }
+const DnsSecurityRule = /*@__PURE__*/ __L.at(__c12, 6) as any as S.Schema<DnsSecurityRule>;
+
 /** The DnsSecurityRule items on this page */
 export type DnsSecurityRuleListResultValueList = Array<DnsSecurityRule>;
+const DnsSecurityRuleListResultValueList = /*@__PURE__*/ __L.at(
+  __c12,
+  7,
+) as any as S.Schema<DnsSecurityRuleListResultValueList>;
+
 /** The response of a DnsSecurityRule list operation. */
 export interface DnsSecurityRuleListResult {
   /** The DnsSecurityRule items on this page */
@@ -1252,6 +1892,11 @@ export interface DnsSecurityRuleListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const DnsSecurityRuleListResult = /*@__PURE__*/ __L.at(
+  __c13,
+  0,
+) as any as S.Schema<DnsSecurityRuleListResult>;
+
 export interface ListForwardingRulesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1262,6 +1907,11 @@ export interface ListForwardingRulesRequest {
   /** The maximum number of results to return. If not specified, returns up to 100 results. */
   _top?: number;
 }
+const ListForwardingRulesRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  1,
+) as any as S.Schema<ListForwardingRulesRequest>;
+
 /** Describes a forwarding rule within a DNS forwarding ruleset. */
 export interface ForwardingRule {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -1277,8 +1927,15 @@ export interface ForwardingRule {
   /** "If etag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.") */
   etag?: string;
 }
+const ForwardingRule = /*@__PURE__*/ __L.at(__c13, 2) as any as S.Schema<ForwardingRule>;
+
 /** The ForwardingRule items on this page */
 export type ForwardingRuleListResultValueList = Array<ForwardingRule>;
+const ForwardingRuleListResultValueList = /*@__PURE__*/ __L.at(
+  __c13,
+  3,
+) as any as S.Schema<ForwardingRuleListResultValueList>;
+
 /** The response of a ForwardingRule list operation. */
 export interface ForwardingRuleListResult {
   /** The ForwardingRule items on this page */
@@ -1286,6 +1943,11 @@ export interface ForwardingRuleListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const ForwardingRuleListResult = /*@__PURE__*/ __L.at(
+  __c13,
+  4,
+) as any as S.Schema<ForwardingRuleListResult>;
+
 export interface ListInboundEndpointsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1296,8 +1958,16 @@ export interface ListInboundEndpointsRequest {
   /** The maximum number of results to return. If not specified, returns up to 100 results. */
   _top?: number;
 }
+const ListInboundEndpointsRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  5,
+) as any as S.Schema<ListInboundEndpointsRequest>;
+
 /** Resource tags. */
 export type InboundEndpointTagsMap = { [key: string]: string | undefined };
+const InboundEndpointTagsMap =
+  BulkDnsResolverDomainListResponseTagsMap as any as S.Schema<InboundEndpointTagsMap>;
+
 /** Describes an inbound endpoint for a DNS resolver. */
 export interface InboundEndpoint {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -1317,8 +1987,15 @@ export interface InboundEndpoint {
   /** "If etag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.") */
   etag?: string;
 }
+const InboundEndpoint = /*@__PURE__*/ __L.at(__c13, 6) as any as S.Schema<InboundEndpoint>;
+
 /** The InboundEndpoint items on this page */
 export type InboundEndpointListResultValueList = Array<InboundEndpoint>;
+const InboundEndpointListResultValueList = /*@__PURE__*/ __L.at(
+  __c13,
+  7,
+) as any as S.Schema<InboundEndpointListResultValueList>;
+
 /** The response of a InboundEndpoint list operation. */
 export interface InboundEndpointListResult {
   /** The InboundEndpoint items on this page */
@@ -1326,6 +2003,11 @@ export interface InboundEndpointListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const InboundEndpointListResult = /*@__PURE__*/ __L.at(
+  __c14,
+  0,
+) as any as S.Schema<InboundEndpointListResult>;
+
 export interface ListOutboundEndpointsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1336,8 +2018,16 @@ export interface ListOutboundEndpointsRequest {
   /** The maximum number of results to return. If not specified, returns up to 100 results. */
   _top?: number;
 }
+const ListOutboundEndpointsRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  1,
+) as any as S.Schema<ListOutboundEndpointsRequest>;
+
 /** Resource tags. */
 export type OutboundEndpointTagsMap = { [key: string]: string | undefined };
+const OutboundEndpointTagsMap =
+  BulkDnsResolverDomainListResponseTagsMap as any as S.Schema<OutboundEndpointTagsMap>;
+
 /** Describes an outbound endpoint for a DNS resolver. */
 export interface OutboundEndpoint {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -1357,8 +2047,15 @@ export interface OutboundEndpoint {
   /** "If etag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.") */
   etag?: string;
 }
+const OutboundEndpoint = /*@__PURE__*/ __L.at(__c14, 2) as any as S.Schema<OutboundEndpoint>;
+
 /** The OutboundEndpoint items on this page */
 export type OutboundEndpointListResultValueList = Array<OutboundEndpoint>;
+const OutboundEndpointListResultValueList = /*@__PURE__*/ __L.at(
+  __c14,
+  3,
+) as any as S.Schema<OutboundEndpointListResultValueList>;
+
 /** The response of a OutboundEndpoint list operation. */
 export interface OutboundEndpointListResult {
   /** The OutboundEndpoint items on this page */
@@ -1366,6 +2063,11 @@ export interface OutboundEndpointListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const OutboundEndpointListResult = /*@__PURE__*/ __L.at(
+  __c14,
+  4,
+) as any as S.Schema<OutboundEndpointListResult>;
+
 export interface ListVirtualNetworkLinksRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1376,6 +2078,11 @@ export interface ListVirtualNetworkLinksRequest {
   /** The maximum number of results to return. If not specified, returns up to 100 results. */
   _top?: number;
 }
+const ListVirtualNetworkLinksRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  5,
+) as any as S.Schema<ListVirtualNetworkLinksRequest>;
+
 /** Describes a virtual network link. */
 export interface VirtualNetworkLink {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -1391,8 +2098,15 @@ export interface VirtualNetworkLink {
   /** "If etag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.") */
   etag?: string;
 }
+const VirtualNetworkLink = /*@__PURE__*/ __L.at(__c14, 6) as any as S.Schema<VirtualNetworkLink>;
+
 /** The VirtualNetworkLink items on this page */
 export type VirtualNetworkLinkListResultValueList = Array<VirtualNetworkLink>;
+const VirtualNetworkLinkListResultValueList = /*@__PURE__*/ __L.at(
+  __c14,
+  7,
+) as any as S.Schema<VirtualNetworkLinkListResultValueList>;
+
 /** The response of a VirtualNetworkLink list operation. */
 export interface VirtualNetworkLinkListResult {
   /** The VirtualNetworkLink items on this page */
@@ -1400,13 +2114,26 @@ export interface VirtualNetworkLinkListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const VirtualNetworkLinkListResult = /*@__PURE__*/ __L.at(
+  __c15,
+  0,
+) as any as S.Schema<VirtualNetworkLinkListResult>;
+
 /** Resource tags. */
 export type OutboundEndpointsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
+const OutboundEndpointsCreateOrUpdateRequestTagsMap =
+  BulkDnsResolverDomainListResponseTagsMap as any as S.Schema<OutboundEndpointsCreateOrUpdateRequestTagsMap>;
+
 /** Represents the properties of an outbound endpoint for a DNS resolver. */
 export interface OutboundEndpointPropertiesInput {
   /** The reference to the subnet used for the outbound endpoint. */
   subnet: SubResource;
 }
+const OutboundEndpointPropertiesInput = /*@__PURE__*/ __L.at(
+  __c15,
+  1,
+) as any as S.Schema<OutboundEndpointPropertiesInput>;
+
 export interface OutboundEndpointsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1423,6 +2150,11 @@ export interface OutboundEndpointsCreateOrUpdateRequest {
   /** Properties of the outbound endpoint. */
   properties: OutboundEndpointPropertiesInput;
 }
+const OutboundEndpointsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  2,
+) as any as S.Schema<OutboundEndpointsCreateOrUpdateRequest>;
+
 /** Resource tags. */
 export type OutboundEndpointsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
 export interface OutboundEndpointsCreateOrUpdateResponse {
@@ -1443,10 +2175,19 @@ export interface OutboundEndpointsCreateOrUpdateResponse {
   /** "If etag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.") */
   etag?: string;
 }
+const OutboundEndpointsCreateOrUpdateResponse =
+  GetOutboundEndpointResponse as any as S.Schema<OutboundEndpointsCreateOrUpdateResponse>;
+
 /** The reference to the DNS resolver outbound endpoints that are used to route DNS queries matching the forwarding rules in the ruleset to the target DNS servers. */
 export type UpdateDnsForwardingRulesetRequestDnsResolverOutboundEndpointsList = Array<SubResource>;
+const UpdateDnsForwardingRulesetRequestDnsResolverOutboundEndpointsList =
+  DnsForwardingRulesetPropertiesInputDnsResolverOutboundEndpointsList as any as S.Schema<UpdateDnsForwardingRulesetRequestDnsResolverOutboundEndpointsList>;
+
 /** Tags for DNS Resolver. */
 export type UpdateDnsForwardingRulesetRequestTagsMap = { [key: string]: string | undefined };
+const UpdateDnsForwardingRulesetRequestTagsMap =
+  BulkDnsResolverDomainListResponseTagsMap as any as S.Schema<UpdateDnsForwardingRulesetRequestTagsMap>;
+
 export interface UpdateDnsForwardingRulesetRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1459,6 +2200,11 @@ export interface UpdateDnsForwardingRulesetRequest {
   /** Tags for DNS Resolver. */
   tags?: UpdateDnsForwardingRulesetRequestTagsMap;
 }
+const UpdateDnsForwardingRulesetRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  3,
+) as any as S.Schema<UpdateDnsForwardingRulesetRequest>;
+
 /** Resource tags. */
 export type UpdateDnsForwardingRulesetResponseTagsMap = { [key: string]: string | undefined };
 export interface UpdateDnsForwardingRulesetResponse {
@@ -1479,8 +2225,14 @@ export interface UpdateDnsForwardingRulesetResponse {
   /** "If etag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.") */
   etag?: string;
 }
+const UpdateDnsForwardingRulesetResponse =
+  DnsForwardingRulesetsCreateOrUpdateResponse as any as S.Schema<UpdateDnsForwardingRulesetResponse>;
+
 /** Tags for DNS Resolver. */
 export type UpdateDnsResolverRequestTagsMap = { [key: string]: string | undefined };
+const UpdateDnsResolverRequestTagsMap =
+  BulkDnsResolverDomainListResponseTagsMap as any as S.Schema<UpdateDnsResolverRequestTagsMap>;
+
 export interface UpdateDnsResolverRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1491,6 +2243,11 @@ export interface UpdateDnsResolverRequest {
   /** Tags for DNS Resolver. */
   tags?: UpdateDnsResolverRequestTagsMap;
 }
+const UpdateDnsResolverRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  4,
+) as any as S.Schema<UpdateDnsResolverRequest>;
+
 /** Resource tags. */
 export type UpdateDnsResolverResponseTagsMap = { [key: string]: string | undefined };
 export interface UpdateDnsResolverResponse {
@@ -1511,6 +2268,9 @@ export interface UpdateDnsResolverResponse {
   /** "If etag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.") */
   etag?: string;
 }
+const UpdateDnsResolverResponse =
+  DnsResolversCreateOrUpdateResponse as any as S.Schema<UpdateDnsResolverResponse>;
+
 /** The domains in the domain list. */
 export type DnsResolverDomainListPatchPropertiesDomainsList = Array<string>;
 /** Represents the updatable properties of a DNS resolver domain list. */
@@ -1518,8 +2278,14 @@ export interface DnsResolverDomainListPatchProperties {
   /** The domains in the domain list. */
   domains?: DnsResolverDomainListPatchPropertiesDomainsList;
 }
+const DnsResolverDomainListPatchProperties =
+  DnsResolverDomainListPropertiesInput as any as S.Schema<DnsResolverDomainListPatchProperties>;
+
 /** Tags for DNS resolver domain list. */
 export type UpdateDnsResolverDomainListRequestTagsMap = { [key: string]: string | undefined };
+const UpdateDnsResolverDomainListRequestTagsMap =
+  BulkDnsResolverDomainListResponseTagsMap as any as S.Schema<UpdateDnsResolverDomainListRequestTagsMap>;
+
 export interface UpdateDnsResolverDomainListRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1532,6 +2298,11 @@ export interface UpdateDnsResolverDomainListRequest {
   /** Tags for DNS resolver domain list. */
   tags?: UpdateDnsResolverDomainListRequestTagsMap;
 }
+const UpdateDnsResolverDomainListRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  5,
+) as any as S.Schema<UpdateDnsResolverDomainListRequest>;
+
 /** Resource tags. */
 export type UpdateDnsResolverDomainListResponseTagsMap = { [key: string]: string | undefined };
 export interface UpdateDnsResolverDomainListResponse {
@@ -1552,8 +2323,14 @@ export interface UpdateDnsResolverDomainListResponse {
   /** "If etag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.") */
   etag?: string;
 }
+const UpdateDnsResolverDomainListResponse =
+  BulkDnsResolverDomainListResponse as any as S.Schema<UpdateDnsResolverDomainListResponse>;
+
 /** Tags for DNS resolver policy. */
 export type UpdateDnsResolverPolicyRequestTagsMap = { [key: string]: string | undefined };
+const UpdateDnsResolverPolicyRequestTagsMap =
+  BulkDnsResolverDomainListResponseTagsMap as any as S.Schema<UpdateDnsResolverPolicyRequestTagsMap>;
+
 export interface UpdateDnsResolverPolicyRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1564,6 +2341,11 @@ export interface UpdateDnsResolverPolicyRequest {
   /** Tags for DNS resolver policy. */
   tags?: UpdateDnsResolverPolicyRequestTagsMap;
 }
+const UpdateDnsResolverPolicyRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  6,
+) as any as S.Schema<UpdateDnsResolverPolicyRequest>;
+
 /** Resource tags. */
 export type UpdateDnsResolverPolicyResponseTagsMap = { [key: string]: string | undefined };
 export interface UpdateDnsResolverPolicyResponse {
@@ -1584,10 +2366,16 @@ export interface UpdateDnsResolverPolicyResponse {
   /** "If etag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.") */
   etag?: string;
 }
+const UpdateDnsResolverPolicyResponse =
+  DnsResolverPoliciesCreateOrUpdateResponse as any as S.Schema<UpdateDnsResolverPolicyResponse>;
+
 /** Tags for the DNS resolver policy virtual network link. */
 export type UpdateDnsResolverPolicyVirtualNetworkLinkRequestTagsMap = {
   [key: string]: string | undefined;
 };
+const UpdateDnsResolverPolicyVirtualNetworkLinkRequestTagsMap =
+  BulkDnsResolverDomainListResponseTagsMap as any as S.Schema<UpdateDnsResolverPolicyVirtualNetworkLinkRequestTagsMap>;
+
 export interface UpdateDnsResolverPolicyVirtualNetworkLinkRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1600,6 +2388,11 @@ export interface UpdateDnsResolverPolicyVirtualNetworkLinkRequest {
   /** Tags for the DNS resolver policy virtual network link. */
   tags?: UpdateDnsResolverPolicyVirtualNetworkLinkRequestTagsMap;
 }
+const UpdateDnsResolverPolicyVirtualNetworkLinkRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  7,
+) as any as S.Schema<UpdateDnsResolverPolicyVirtualNetworkLinkRequest>;
+
 /** Resource tags. */
 export type UpdateDnsResolverPolicyVirtualNetworkLinkResponseTagsMap = {
   [key: string]: string | undefined;
@@ -1622,8 +2415,14 @@ export interface UpdateDnsResolverPolicyVirtualNetworkLinkResponse {
   /** "If etag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.") */
   etag?: string;
 }
+const UpdateDnsResolverPolicyVirtualNetworkLinkResponse =
+  GetDnsResolverPolicyVirtualNetworkLinkResponse as any as S.Schema<UpdateDnsResolverPolicyVirtualNetworkLinkResponse>;
+
 /** DNS resolver policy domains lists that the DNS security rule applies to. */
 export type DnsSecurityRulePatchPropertiesDnsResolverDomainListsList = Array<SubResource>;
+const DnsSecurityRulePatchPropertiesDnsResolverDomainListsList =
+  DnsForwardingRulesetPropertiesDnsResolverOutboundEndpointsList as any as S.Schema<DnsSecurityRulePatchPropertiesDnsResolverDomainListsList>;
+
 /** Represents the updatable properties of a DNS security rule. */
 export interface DnsSecurityRulePatchProperties {
   /** The action to take on DNS requests that match the DNS security rule. */
@@ -1635,8 +2434,16 @@ export interface DnsSecurityRulePatchProperties {
   /** The priority of the DNS security rule. */
   priority?: number;
 }
+const DnsSecurityRulePatchProperties = /*@__PURE__*/ __L.at(
+  __c16,
+  0,
+) as any as S.Schema<DnsSecurityRulePatchProperties>;
+
 /** Tags for DNS security rule. */
 export type UpdateDnsSecurityRuleRequestTagsMap = { [key: string]: string | undefined };
+const UpdateDnsSecurityRuleRequestTagsMap =
+  BulkDnsResolverDomainListResponseTagsMap as any as S.Schema<UpdateDnsSecurityRuleRequestTagsMap>;
+
 export interface UpdateDnsSecurityRuleRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1651,6 +2458,11 @@ export interface UpdateDnsSecurityRuleRequest {
   /** Tags for DNS security rule. */
   tags?: UpdateDnsSecurityRuleRequestTagsMap;
 }
+const UpdateDnsSecurityRuleRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  1,
+) as any as S.Schema<UpdateDnsSecurityRuleRequest>;
+
 /** Resource tags. */
 export type UpdateDnsSecurityRuleResponseTagsMap = { [key: string]: string | undefined };
 export interface UpdateDnsSecurityRuleResponse {
@@ -1671,12 +2483,23 @@ export interface UpdateDnsSecurityRuleResponse {
   /** "If etag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.") */
   etag?: string;
 }
+const UpdateDnsSecurityRuleResponse =
+  DnsSecurityRulesCreateOrUpdateResponse as any as S.Schema<UpdateDnsSecurityRuleResponse>;
+
 /** DNS servers to forward the DNS query to. */
 export type ForwardingRulePatchPropertiesTargetDnsServersList = Array<TargetDnsServer>;
+const ForwardingRulePatchPropertiesTargetDnsServersList =
+  ForwardingRulePropertiesTargetDnsServersList as any as S.Schema<ForwardingRulePatchPropertiesTargetDnsServersList>;
+
 /** Metadata attached to the forwarding rule. */
 export type ForwardingRulePatchPropertiesMetadataMap = { [key: string]: string | undefined };
+const ForwardingRulePatchPropertiesMetadataMap =
+  BulkDnsResolverDomainListResponseTagsMap as any as S.Schema<ForwardingRulePatchPropertiesMetadataMap>;
+
 /** The state of forwarding rule. */
 export type ForwardingRulePatchPropertiesForwardingRuleState = "Enabled" | "Disabled";
+const ForwardingRulePatchPropertiesForwardingRuleState = S.String;
+
 /** Represents the updatable properties of a forwarding rule within a DNS forwarding ruleset. */
 export interface ForwardingRulePatchProperties {
   /** DNS servers to forward the DNS query to. */
@@ -1686,6 +2509,11 @@ export interface ForwardingRulePatchProperties {
   /** The state of forwarding rule. */
   forwardingRuleState?: ForwardingRulePatchPropertiesForwardingRuleState | (string & {});
 }
+const ForwardingRulePatchProperties = /*@__PURE__*/ __L.at(
+  __c16,
+  2,
+) as any as S.Schema<ForwardingRulePatchProperties>;
+
 export interface UpdateForwardingRuleRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1698,6 +2526,11 @@ export interface UpdateForwardingRuleRequest {
   /** Updatable properties of the forwarding rule. */
   properties?: ForwardingRulePatchProperties;
 }
+const UpdateForwardingRuleRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  3,
+) as any as S.Schema<UpdateForwardingRuleRequest>;
+
 export interface UpdateForwardingRuleResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1712,8 +2545,14 @@ export interface UpdateForwardingRuleResponse {
   /** "If etag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.") */
   etag?: string;
 }
+const UpdateForwardingRuleResponse =
+  ForwardingRulesCreateOrUpdateResponse as any as S.Schema<UpdateForwardingRuleResponse>;
+
 /** Tags for inbound endpoint. */
 export type UpdateInboundEndpointRequestTagsMap = { [key: string]: string | undefined };
+const UpdateInboundEndpointRequestTagsMap =
+  BulkDnsResolverDomainListResponseTagsMap as any as S.Schema<UpdateInboundEndpointRequestTagsMap>;
+
 export interface UpdateInboundEndpointRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1726,6 +2565,11 @@ export interface UpdateInboundEndpointRequest {
   /** Tags for inbound endpoint. */
   tags?: UpdateInboundEndpointRequestTagsMap;
 }
+const UpdateInboundEndpointRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  4,
+) as any as S.Schema<UpdateInboundEndpointRequest>;
+
 /** Resource tags. */
 export type UpdateInboundEndpointResponseTagsMap = { [key: string]: string | undefined };
 export interface UpdateInboundEndpointResponse {
@@ -1746,8 +2590,14 @@ export interface UpdateInboundEndpointResponse {
   /** "If etag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.") */
   etag?: string;
 }
+const UpdateInboundEndpointResponse =
+  GetInboundEndpointResponse as any as S.Schema<UpdateInboundEndpointResponse>;
+
 /** Tags for outbound endpoint. */
 export type UpdateOutboundEndpointRequestTagsMap = { [key: string]: string | undefined };
+const UpdateOutboundEndpointRequestTagsMap =
+  BulkDnsResolverDomainListResponseTagsMap as any as S.Schema<UpdateOutboundEndpointRequestTagsMap>;
+
 export interface UpdateOutboundEndpointRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1760,6 +2610,11 @@ export interface UpdateOutboundEndpointRequest {
   /** Tags for outbound endpoint. */
   tags?: UpdateOutboundEndpointRequestTagsMap;
 }
+const UpdateOutboundEndpointRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  5,
+) as any as S.Schema<UpdateOutboundEndpointRequest>;
+
 /** Resource tags. */
 export type UpdateOutboundEndpointResponseTagsMap = { [key: string]: string | undefined };
 export interface UpdateOutboundEndpointResponse {
@@ -1780,13 +2635,24 @@ export interface UpdateOutboundEndpointResponse {
   /** "If etag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.") */
   etag?: string;
 }
+const UpdateOutboundEndpointResponse =
+  GetOutboundEndpointResponse as any as S.Schema<UpdateOutboundEndpointResponse>;
+
 /** Metadata attached to the virtual network link. */
 export type VirtualNetworkLinkPatchPropertiesMetadataMap = { [key: string]: string | undefined };
+const VirtualNetworkLinkPatchPropertiesMetadataMap =
+  BulkDnsResolverDomainListResponseTagsMap as any as S.Schema<VirtualNetworkLinkPatchPropertiesMetadataMap>;
+
 /** Represents the updatable properties of the virtual network link. */
 export interface VirtualNetworkLinkPatchProperties {
   /** Metadata attached to the virtual network link. */
   metadata?: VirtualNetworkLinkPatchPropertiesMetadataMap;
 }
+const VirtualNetworkLinkPatchProperties = /*@__PURE__*/ __L.at(
+  __c16,
+  6,
+) as any as S.Schema<VirtualNetworkLinkPatchProperties>;
+
 export interface UpdateVirtualNetworkLinkRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1799,6 +2665,11 @@ export interface UpdateVirtualNetworkLinkRequest {
   /** Updatable properties of the virtual network link. */
   properties?: VirtualNetworkLinkPatchProperties;
 }
+const UpdateVirtualNetworkLinkRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  7,
+) as any as S.Schema<UpdateVirtualNetworkLinkRequest>;
+
 export interface UpdateVirtualNetworkLinkResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1813,6 +2684,9 @@ export interface UpdateVirtualNetworkLinkResponse {
   /** "If etag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.") */
   etag?: string;
 }
+const UpdateVirtualNetworkLinkResponse =
+  GetVirtualNetworkLinkResponse as any as S.Schema<UpdateVirtualNetworkLinkResponse>;
+
 export interface VirtualNetworkLinksCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1825,6 +2699,11 @@ export interface VirtualNetworkLinksCreateOrUpdateRequest {
   /** Properties of the virtual network link. */
   properties: VirtualNetworkLinkProperties;
 }
+const VirtualNetworkLinksCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  0,
+) as any as S.Schema<VirtualNetworkLinksCreateOrUpdateRequest>;
+
 export interface VirtualNetworkLinksCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1839,6 +2718,9 @@ export interface VirtualNetworkLinksCreateOrUpdateResponse {
   /** "If etag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.") */
   etag?: string;
 }
+const VirtualNetworkLinksCreateOrUpdateResponse =
+  GetVirtualNetworkLinkResponse as any as S.Schema<VirtualNetworkLinksCreateOrUpdateResponse>;
+
 export type BulkDnsResolverDomainListError = AzureOpError;
 /** Uploads or downloads the list of domains for a DNS Resolver Domain List from a storage link. */
 export const BulkDnsResolverDomainList: API.OperationMethod<
@@ -1847,8 +2729,8 @@ export const BulkDnsResolverDomainList: API.OperationMethod<
   BulkDnsResolverDomainListError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1) as any as S.Schema<BulkDnsResolverDomainListRequest>,
-  output: __S(6) as any as S.Schema<BulkDnsResolverDomainListResponse>,
+  input: BulkDnsResolverDomainListRequest,
+  output: BulkDnsResolverDomainListResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1862,8 +2744,8 @@ export const DeleteDnsForwardingRuleset: API.OperationMethod<
   DeleteDnsForwardingRulesetError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7) as any as S.Schema<DeleteDnsForwardingRulesetRequest>,
-  output: __S(8) as any as S.Schema<DeleteDnsForwardingRulesetResponse>,
+  input: DeleteDnsForwardingRulesetRequest,
+  output: DeleteDnsForwardingRulesetResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1877,8 +2759,8 @@ export const DeleteDnsResolver: API.OperationMethod<
   DeleteDnsResolverError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9) as any as S.Schema<DeleteDnsResolverRequest>,
-  output: __S(10) as any as S.Schema<DeleteDnsResolverResponse>,
+  input: DeleteDnsResolverRequest,
+  output: DeleteDnsResolverResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1892,8 +2774,8 @@ export const DeleteDnsResolverDomainList: API.OperationMethod<
   DeleteDnsResolverDomainListError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11) as any as S.Schema<DeleteDnsResolverDomainListRequest>,
-  output: __S(8) as any as S.Schema<DeleteDnsResolverDomainListResponse>,
+  input: DeleteDnsResolverDomainListRequest,
+  output: DeleteDnsResolverDomainListResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1907,8 +2789,8 @@ export const DeleteDnsResolverPolicy: API.OperationMethod<
   DeleteDnsResolverPolicyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12) as any as S.Schema<DeleteDnsResolverPolicyRequest>,
-  output: __S(13) as any as S.Schema<DeleteDnsResolverPolicyResponse>,
+  input: DeleteDnsResolverPolicyRequest,
+  output: DeleteDnsResolverPolicyResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1922,8 +2804,8 @@ export const DeleteDnsResolverPolicyVirtualNetworkLink: API.OperationMethod<
   DeleteDnsResolverPolicyVirtualNetworkLinkError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14) as any as S.Schema<DeleteDnsResolverPolicyVirtualNetworkLinkRequest>,
-  output: __S(8) as any as S.Schema<DeleteDnsResolverPolicyVirtualNetworkLinkResponse>,
+  input: DeleteDnsResolverPolicyVirtualNetworkLinkRequest,
+  output: DeleteDnsResolverPolicyVirtualNetworkLinkResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1937,8 +2819,8 @@ export const DeleteDnsSecurityRule: API.OperationMethod<
   DeleteDnsSecurityRuleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15) as any as S.Schema<DeleteDnsSecurityRuleRequest>,
-  output: __S(10) as any as S.Schema<DeleteDnsSecurityRuleResponse>,
+  input: DeleteDnsSecurityRuleRequest,
+  output: DeleteDnsSecurityRuleResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1952,8 +2834,8 @@ export const DeleteForwardingRule: API.OperationMethod<
   DeleteForwardingRuleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16) as any as S.Schema<DeleteForwardingRuleRequest>,
-  output: __S(10) as any as S.Schema<DeleteForwardingRuleResponse>,
+  input: DeleteForwardingRuleRequest,
+  output: DeleteForwardingRuleResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1967,8 +2849,8 @@ export const DeleteInboundEndpoint: API.OperationMethod<
   DeleteInboundEndpointError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17) as any as S.Schema<DeleteInboundEndpointRequest>,
-  output: __S(10) as any as S.Schema<DeleteInboundEndpointResponse>,
+  input: DeleteInboundEndpointRequest,
+  output: DeleteInboundEndpointResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1982,8 +2864,8 @@ export const DeleteOutboundEndpoint: API.OperationMethod<
   DeleteOutboundEndpointError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18) as any as S.Schema<DeleteOutboundEndpointRequest>,
-  output: __S(10) as any as S.Schema<DeleteOutboundEndpointResponse>,
+  input: DeleteOutboundEndpointRequest,
+  output: DeleteOutboundEndpointResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1997,8 +2879,8 @@ export const DeleteVirtualNetworkLink: API.OperationMethod<
   DeleteVirtualNetworkLinkError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19) as any as S.Schema<DeleteVirtualNetworkLinkRequest>,
-  output: __S(8) as any as S.Schema<DeleteVirtualNetworkLinkResponse>,
+  input: DeleteVirtualNetworkLinkRequest,
+  output: DeleteVirtualNetworkLinkResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2012,8 +2894,8 @@ export const DnsForwardingRulesetsCreateOrUpdate: API.OperationMethod<
   DnsForwardingRulesetsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23) as any as S.Schema<DnsForwardingRulesetsCreateOrUpdateRequest>,
-  output: __S(26) as any as S.Schema<DnsForwardingRulesetsCreateOrUpdateResponse>,
+  input: DnsForwardingRulesetsCreateOrUpdateRequest,
+  output: DnsForwardingRulesetsCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2027,8 +2909,8 @@ export const DnsResolverDomainListsCreateOrUpdate: API.OperationMethod<
   DnsResolverDomainListsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28) as any as S.Schema<DnsResolverDomainListsCreateOrUpdateRequest>,
-  output: __S(6) as any as S.Schema<DnsResolverDomainListsCreateOrUpdateResponse>,
+  input: DnsResolverDomainListsCreateOrUpdateRequest,
+  output: DnsResolverDomainListsCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2042,8 +2924,8 @@ export const DnsResolverPoliciesCreateOrUpdate: API.OperationMethod<
   DnsResolverPoliciesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29) as any as S.Schema<DnsResolverPoliciesCreateOrUpdateRequest>,
-  output: __S(31) as any as S.Schema<DnsResolverPoliciesCreateOrUpdateResponse>,
+  input: DnsResolverPoliciesCreateOrUpdateRequest,
+  output: DnsResolverPoliciesCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2057,8 +2939,8 @@ export const DnsResolverPolicyVirtualNetworkLinksCreateOrUpdate: API.OperationMe
   DnsResolverPolicyVirtualNetworkLinksCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34) as any as S.Schema<DnsResolverPolicyVirtualNetworkLinksCreateOrUpdateRequest>,
-  output: __S(35) as any as S.Schema<DnsResolverPolicyVirtualNetworkLinksCreateOrUpdateResponse>,
+  input: DnsResolverPolicyVirtualNetworkLinksCreateOrUpdateRequest,
+  output: DnsResolverPolicyVirtualNetworkLinksCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2072,8 +2954,8 @@ export const DnsResolversCreateOrUpdate: API.OperationMethod<
   DnsResolversCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37) as any as S.Schema<DnsResolversCreateOrUpdateRequest>,
-  output: __S(39) as any as S.Schema<DnsResolversCreateOrUpdateResponse>,
+  input: DnsResolversCreateOrUpdateRequest,
+  output: DnsResolversCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2087,8 +2969,8 @@ export const DnsSecurityRulesCreateOrUpdate: API.OperationMethod<
   DnsSecurityRulesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42) as any as S.Schema<DnsSecurityRulesCreateOrUpdateRequest>,
-  output: __S(43) as any as S.Schema<DnsSecurityRulesCreateOrUpdateResponse>,
+  input: DnsSecurityRulesCreateOrUpdateRequest,
+  output: DnsSecurityRulesCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2102,8 +2984,8 @@ export const ForwardingRulesCreateOrUpdate: API.OperationMethod<
   ForwardingRulesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47) as any as S.Schema<ForwardingRulesCreateOrUpdateRequest>,
-  output: __S(48) as any as S.Schema<ForwardingRulesCreateOrUpdateResponse>,
+  input: ForwardingRulesCreateOrUpdateRequest,
+  output: ForwardingRulesCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2117,8 +2999,8 @@ export const GetDnsForwardingRuleset: API.OperationMethod<
   GetDnsForwardingRulesetError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49) as any as S.Schema<GetDnsForwardingRulesetRequest>,
-  output: __S(26) as any as S.Schema<GetDnsForwardingRulesetResponse>,
+  input: GetDnsForwardingRulesetRequest,
+  output: GetDnsForwardingRulesetResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2132,8 +3014,8 @@ export const GetDnsResolver: API.OperationMethod<
   GetDnsResolverError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(50) as any as S.Schema<GetDnsResolverRequest>,
-  output: __S(51) as any as S.Schema<GetDnsResolverResponse>,
+  input: GetDnsResolverRequest,
+  output: GetDnsResolverResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2147,8 +3029,8 @@ export const GetDnsResolverDomainList: API.OperationMethod<
   GetDnsResolverDomainListError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(52) as any as S.Schema<GetDnsResolverDomainListRequest>,
-  output: __S(6) as any as S.Schema<GetDnsResolverDomainListResponse>,
+  input: GetDnsResolverDomainListRequest,
+  output: GetDnsResolverDomainListResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2162,8 +3044,8 @@ export const GetDnsResolverPolicy: API.OperationMethod<
   GetDnsResolverPolicyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(53) as any as S.Schema<GetDnsResolverPolicyRequest>,
-  output: __S(31) as any as S.Schema<GetDnsResolverPolicyResponse>,
+  input: GetDnsResolverPolicyRequest,
+  output: GetDnsResolverPolicyResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2177,8 +3059,8 @@ export const GetDnsResolverPolicyVirtualNetworkLink: API.OperationMethod<
   GetDnsResolverPolicyVirtualNetworkLinkError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(54) as any as S.Schema<GetDnsResolverPolicyVirtualNetworkLinkRequest>,
-  output: __S(55) as any as S.Schema<GetDnsResolverPolicyVirtualNetworkLinkResponse>,
+  input: GetDnsResolverPolicyVirtualNetworkLinkRequest,
+  output: GetDnsResolverPolicyVirtualNetworkLinkResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2192,8 +3074,8 @@ export const GetDnsSecurityRule: API.OperationMethod<
   GetDnsSecurityRuleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56) as any as S.Schema<GetDnsSecurityRuleRequest>,
-  output: __S(43) as any as S.Schema<GetDnsSecurityRuleResponse>,
+  input: GetDnsSecurityRuleRequest,
+  output: GetDnsSecurityRuleResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2207,8 +3089,8 @@ export const GetForwardingRule: API.OperationMethod<
   GetForwardingRuleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57) as any as S.Schema<GetForwardingRuleRequest>,
-  output: __S(48) as any as S.Schema<GetForwardingRuleResponse>,
+  input: GetForwardingRuleRequest,
+  output: GetForwardingRuleResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2222,8 +3104,8 @@ export const GetInboundEndpoint: API.OperationMethod<
   GetInboundEndpointError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(58) as any as S.Schema<GetInboundEndpointRequest>,
-  output: __S(62) as any as S.Schema<GetInboundEndpointResponse>,
+  input: GetInboundEndpointRequest,
+  output: GetInboundEndpointResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2237,8 +3119,8 @@ export const GetOutboundEndpoint: API.OperationMethod<
   GetOutboundEndpointError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(63) as any as S.Schema<GetOutboundEndpointRequest>,
-  output: __S(65) as any as S.Schema<GetOutboundEndpointResponse>,
+  input: GetOutboundEndpointRequest,
+  output: GetOutboundEndpointResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2252,8 +3134,8 @@ export const GetVirtualNetworkLink: API.OperationMethod<
   GetVirtualNetworkLinkError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(66) as any as S.Schema<GetVirtualNetworkLinkRequest>,
-  output: __S(68) as any as S.Schema<GetVirtualNetworkLinkResponse>,
+  input: GetVirtualNetworkLinkRequest,
+  output: GetVirtualNetworkLinkResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2267,8 +3149,8 @@ export const InboundEndpointsCreateOrUpdate: API.OperationMethod<
   InboundEndpointsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(70) as any as S.Schema<InboundEndpointsCreateOrUpdateRequest>,
-  output: __S(62) as any as S.Schema<InboundEndpointsCreateOrUpdateResponse>,
+  input: InboundEndpointsCreateOrUpdateRequest,
+  output: InboundEndpointsCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2282,8 +3164,8 @@ export const ListDnsForwardingRulesetByResourceGroup: API.OperationMethod<
   ListDnsForwardingRulesetByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(71) as any as S.Schema<ListDnsForwardingRulesetByResourceGroupRequest>,
-  output: __S(74) as any as S.Schema<DnsForwardingRulesetListResult>,
+  input: ListDnsForwardingRulesetByResourceGroupRequest,
+  output: DnsForwardingRulesetListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2297,8 +3179,8 @@ export const ListDnsForwardingRulesetByVirtualNetwork: API.OperationMethod<
   ListDnsForwardingRulesetByVirtualNetworkError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(75) as any as S.Schema<ListDnsForwardingRulesetByVirtualNetworkRequest>,
-  output: __S(79) as any as S.Schema<VirtualNetworkDnsForwardingRulesetListResult>,
+  input: ListDnsForwardingRulesetByVirtualNetworkRequest,
+  output: VirtualNetworkDnsForwardingRulesetListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2312,8 +3194,8 @@ export const ListDnsForwardingRulesets: API.OperationMethod<
   ListDnsForwardingRulesetsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(80) as any as S.Schema<ListDnsForwardingRulesetsRequest>,
-  output: __S(74) as any as S.Schema<DnsForwardingRulesetListResult>,
+  input: ListDnsForwardingRulesetsRequest,
+  output: DnsForwardingRulesetListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2327,8 +3209,8 @@ export const ListDnsResolverByResourceGroup: API.OperationMethod<
   ListDnsResolverByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(81) as any as S.Schema<ListDnsResolverByResourceGroupRequest>,
-  output: __S(83) as any as S.Schema<DnsResolverListResult>,
+  input: ListDnsResolverByResourceGroupRequest,
+  output: DnsResolverListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2342,8 +3224,8 @@ export const ListDnsResolverByVirtualNetwork: API.OperationMethod<
   ListDnsResolverByVirtualNetworkError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(84) as any as S.Schema<ListDnsResolverByVirtualNetworkRequest>,
-  output: __S(85) as any as S.Schema<SubResourceListResult>,
+  input: ListDnsResolverByVirtualNetworkRequest,
+  output: SubResourceListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2357,8 +3239,8 @@ export const ListDnsResolverDomainListByResourceGroup: API.OperationMethod<
   ListDnsResolverDomainListByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(86) as any as S.Schema<ListDnsResolverDomainListByResourceGroupRequest>,
-  output: __S(89) as any as S.Schema<DnsResolverDomainListListResult>,
+  input: ListDnsResolverDomainListByResourceGroupRequest,
+  output: DnsResolverDomainListListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2372,8 +3254,8 @@ export const ListDnsResolverDomainLists: API.OperationMethod<
   ListDnsResolverDomainListsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(90) as any as S.Schema<ListDnsResolverDomainListsRequest>,
-  output: __S(89) as any as S.Schema<DnsResolverDomainListListResult>,
+  input: ListDnsResolverDomainListsRequest,
+  output: DnsResolverDomainListListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2387,8 +3269,8 @@ export const ListDnsResolverPolicies: API.OperationMethod<
   ListDnsResolverPoliciesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(91) as any as S.Schema<ListDnsResolverPoliciesRequest>,
-  output: __S(94) as any as S.Schema<DnsResolverPolicyListResult>,
+  input: ListDnsResolverPoliciesRequest,
+  output: DnsResolverPolicyListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2402,8 +3284,8 @@ export const ListDnsResolverPolicyByResourceGroup: API.OperationMethod<
   ListDnsResolverPolicyByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(95) as any as S.Schema<ListDnsResolverPolicyByResourceGroupRequest>,
-  output: __S(94) as any as S.Schema<DnsResolverPolicyListResult>,
+  input: ListDnsResolverPolicyByResourceGroupRequest,
+  output: DnsResolverPolicyListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2417,8 +3299,8 @@ export const ListDnsResolverPolicyByVirtualNetwork: API.OperationMethod<
   ListDnsResolverPolicyByVirtualNetworkError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(96) as any as S.Schema<ListDnsResolverPolicyByVirtualNetworkRequest>,
-  output: __S(85) as any as S.Schema<SubResourceListResult>,
+  input: ListDnsResolverPolicyByVirtualNetworkRequest,
+  output: SubResourceListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2432,8 +3314,8 @@ export const ListDnsResolverPolicyVirtualNetworkLinks: API.OperationMethod<
   ListDnsResolverPolicyVirtualNetworkLinksError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(97) as any as S.Schema<ListDnsResolverPolicyVirtualNetworkLinksRequest>,
-  output: __S(99) as any as S.Schema<DnsResolverPolicyVirtualNetworkLinkListResult>,
+  input: ListDnsResolverPolicyVirtualNetworkLinksRequest,
+  output: DnsResolverPolicyVirtualNetworkLinkListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2447,8 +3329,8 @@ export const ListDnsResolvers: API.OperationMethod<
   ListDnsResolversError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(100) as any as S.Schema<ListDnsResolversRequest>,
-  output: __S(83) as any as S.Schema<DnsResolverListResult>,
+  input: ListDnsResolversRequest,
+  output: DnsResolverListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2462,8 +3344,8 @@ export const ListDnsSecurityRules: API.OperationMethod<
   ListDnsSecurityRulesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(101) as any as S.Schema<ListDnsSecurityRulesRequest>,
-  output: __S(104) as any as S.Schema<DnsSecurityRuleListResult>,
+  input: ListDnsSecurityRulesRequest,
+  output: DnsSecurityRuleListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2477,8 +3359,8 @@ export const ListForwardingRules: API.OperationMethod<
   ListForwardingRulesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(105) as any as S.Schema<ListForwardingRulesRequest>,
-  output: __S(108) as any as S.Schema<ForwardingRuleListResult>,
+  input: ListForwardingRulesRequest,
+  output: ForwardingRuleListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2492,8 +3374,8 @@ export const ListInboundEndpoints: API.OperationMethod<
   ListInboundEndpointsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(109) as any as S.Schema<ListInboundEndpointsRequest>,
-  output: __S(112) as any as S.Schema<InboundEndpointListResult>,
+  input: ListInboundEndpointsRequest,
+  output: InboundEndpointListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2507,8 +3389,8 @@ export const ListOutboundEndpoints: API.OperationMethod<
   ListOutboundEndpointsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(113) as any as S.Schema<ListOutboundEndpointsRequest>,
-  output: __S(116) as any as S.Schema<OutboundEndpointListResult>,
+  input: ListOutboundEndpointsRequest,
+  output: OutboundEndpointListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2522,8 +3404,8 @@ export const ListVirtualNetworkLinks: API.OperationMethod<
   ListVirtualNetworkLinksError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(117) as any as S.Schema<ListVirtualNetworkLinksRequest>,
-  output: __S(120) as any as S.Schema<VirtualNetworkLinkListResult>,
+  input: ListVirtualNetworkLinksRequest,
+  output: VirtualNetworkLinkListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2537,8 +3419,8 @@ export const OutboundEndpointsCreateOrUpdate: API.OperationMethod<
   OutboundEndpointsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(122) as any as S.Schema<OutboundEndpointsCreateOrUpdateRequest>,
-  output: __S(65) as any as S.Schema<OutboundEndpointsCreateOrUpdateResponse>,
+  input: OutboundEndpointsCreateOrUpdateRequest,
+  output: OutboundEndpointsCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2552,8 +3434,8 @@ export const UpdateDnsForwardingRuleset: API.OperationMethod<
   UpdateDnsForwardingRulesetError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(123) as any as S.Schema<UpdateDnsForwardingRulesetRequest>,
-  output: __S(26) as any as S.Schema<UpdateDnsForwardingRulesetResponse>,
+  input: UpdateDnsForwardingRulesetRequest,
+  output: UpdateDnsForwardingRulesetResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2567,8 +3449,8 @@ export const UpdateDnsResolver: API.OperationMethod<
   UpdateDnsResolverError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(124) as any as S.Schema<UpdateDnsResolverRequest>,
-  output: __S(39) as any as S.Schema<UpdateDnsResolverResponse>,
+  input: UpdateDnsResolverRequest,
+  output: UpdateDnsResolverResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2582,8 +3464,8 @@ export const UpdateDnsResolverDomainList: API.OperationMethod<
   UpdateDnsResolverDomainListError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(125) as any as S.Schema<UpdateDnsResolverDomainListRequest>,
-  output: __S(6) as any as S.Schema<UpdateDnsResolverDomainListResponse>,
+  input: UpdateDnsResolverDomainListRequest,
+  output: UpdateDnsResolverDomainListResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2597,8 +3479,8 @@ export const UpdateDnsResolverPolicy: API.OperationMethod<
   UpdateDnsResolverPolicyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(126) as any as S.Schema<UpdateDnsResolverPolicyRequest>,
-  output: __S(31) as any as S.Schema<UpdateDnsResolverPolicyResponse>,
+  input: UpdateDnsResolverPolicyRequest,
+  output: UpdateDnsResolverPolicyResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2612,8 +3494,8 @@ export const UpdateDnsResolverPolicyVirtualNetworkLink: API.OperationMethod<
   UpdateDnsResolverPolicyVirtualNetworkLinkError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(127) as any as S.Schema<UpdateDnsResolverPolicyVirtualNetworkLinkRequest>,
-  output: __S(55) as any as S.Schema<UpdateDnsResolverPolicyVirtualNetworkLinkResponse>,
+  input: UpdateDnsResolverPolicyVirtualNetworkLinkRequest,
+  output: UpdateDnsResolverPolicyVirtualNetworkLinkResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2627,8 +3509,8 @@ export const UpdateDnsSecurityRule: API.OperationMethod<
   UpdateDnsSecurityRuleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(129) as any as S.Schema<UpdateDnsSecurityRuleRequest>,
-  output: __S(43) as any as S.Schema<UpdateDnsSecurityRuleResponse>,
+  input: UpdateDnsSecurityRuleRequest,
+  output: UpdateDnsSecurityRuleResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2642,8 +3524,8 @@ export const UpdateForwardingRule: API.OperationMethod<
   UpdateForwardingRuleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(131) as any as S.Schema<UpdateForwardingRuleRequest>,
-  output: __S(48) as any as S.Schema<UpdateForwardingRuleResponse>,
+  input: UpdateForwardingRuleRequest,
+  output: UpdateForwardingRuleResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2657,8 +3539,8 @@ export const UpdateInboundEndpoint: API.OperationMethod<
   UpdateInboundEndpointError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(132) as any as S.Schema<UpdateInboundEndpointRequest>,
-  output: __S(62) as any as S.Schema<UpdateInboundEndpointResponse>,
+  input: UpdateInboundEndpointRequest,
+  output: UpdateInboundEndpointResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2672,8 +3554,8 @@ export const UpdateOutboundEndpoint: API.OperationMethod<
   UpdateOutboundEndpointError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(133) as any as S.Schema<UpdateOutboundEndpointRequest>,
-  output: __S(65) as any as S.Schema<UpdateOutboundEndpointResponse>,
+  input: UpdateOutboundEndpointRequest,
+  output: UpdateOutboundEndpointResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2687,8 +3569,8 @@ export const UpdateVirtualNetworkLink: API.OperationMethod<
   UpdateVirtualNetworkLinkError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(135) as any as S.Schema<UpdateVirtualNetworkLinkRequest>,
-  output: __S(68) as any as S.Schema<UpdateVirtualNetworkLinkResponse>,
+  input: UpdateVirtualNetworkLinkRequest,
+  output: UpdateVirtualNetworkLinkResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2702,8 +3584,8 @@ export const VirtualNetworkLinksCreateOrUpdate: API.OperationMethod<
   VirtualNetworkLinksCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(136) as any as S.Schema<VirtualNetworkLinksCreateOrUpdateRequest>,
-  output: __S(68) as any as S.Schema<VirtualNetworkLinksCreateOrUpdateResponse>,
+  input: VirtualNetworkLinksCreateOrUpdateRequest,
+  output: VirtualNetworkLinksCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2716,7 +3598,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           storageUrl: S.String,
-          action: S.String,
+          action: Action,
         }),
       ).annotate({
         identifier: "DnsResolverDomainListBulkProperties",
@@ -2727,7 +3609,7 @@ function __c0(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           dnsResolverDomainListName: S.String.pipe(T.Label()),
-          properties: __S(0),
+          properties: DnsResolverDomainListBulkProperties,
         }).pipe(
           T.Http({
             method: "POST",
@@ -2743,10 +3625,10 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
-          createdByType: S.optional(S.String),
+          createdByType: S.optional(SystemDataCreatedByType),
           createdAt: S.optional(S.String),
           lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(S.String),
+          lastModifiedByType: S.optional(SystemDataLastModifiedByType),
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "SystemData" });
@@ -2757,9 +3639,9 @@ function __c0(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          domains: S.optional(__S(4)),
+          domains: S.optional(DnsResolverDomainListPropertiesDomainsList),
           domainsUrl: S.optional(S.String),
-          provisioningState: S.optional(S.String),
+          provisioningState: S.optional(ProvisioningState),
           resourceGuid: S.optional(S.String),
         }),
       ).annotate({
@@ -2771,10 +3653,10 @@ function __c0(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          tags: S.optional(__S(3)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(BulkDnsResolverDomainListResponseTagsMap),
           location: S.String,
-          properties: S.optional(__S(5)),
+          properties: S.optional(DnsResolverDomainListProperties),
           etag: S.optional(S.String),
         }),
       ).annotate({
@@ -2981,11 +3863,12 @@ function __c2(j: number): any {
         }),
       ).annotate({ identifier: "SubResource" });
     case 5:
-      return S.Array(__S(20));
+      return S.Array(SubResource);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          dnsResolverOutboundEndpoints: __S(21),
+          dnsResolverOutboundEndpoints:
+            DnsForwardingRulesetPropertiesInputDnsResolverOutboundEndpointsList,
         }),
       ).annotate({
         identifier: "DnsForwardingRulesetPropertiesInput",
@@ -2996,9 +3879,9 @@ function __c2(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           dnsForwardingRulesetName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(3)),
+          tags: S.optional(DnsForwardingRulesetsCreateOrUpdateRequestTagsMap),
           location: S.String,
-          properties: __S(22),
+          properties: DnsForwardingRulesetPropertiesInput,
         }).pipe(
           T.Http({
             method: "PUT",
@@ -3015,12 +3898,13 @@ function __c2(j: number): any {
 function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(20));
+      return S.Array(SubResource);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          dnsResolverOutboundEndpoints: __S(24),
-          provisioningState: S.optional(S.String),
+          dnsResolverOutboundEndpoints:
+            DnsForwardingRulesetPropertiesDnsResolverOutboundEndpointsList,
+          provisioningState: S.optional(ProvisioningState),
           resourceGuid: S.optional(S.String),
         }),
       ).annotate({
@@ -3032,10 +3916,10 @@ function __c3(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          tags: S.optional(__S(3)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(DnsForwardingRulesetsCreateOrUpdateResponseTagsMap),
           location: S.String,
-          properties: __S(25),
+          properties: DnsForwardingRulesetProperties,
           etag: S.optional(S.String),
         }),
       ).annotate({
@@ -3044,7 +3928,7 @@ function __c3(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          domains: S.optional(__S(4)),
+          domains: S.optional(DnsResolverDomainListPropertiesInputDomainsList),
         }),
       ).annotate({
         identifier: "DnsResolverDomainListPropertiesInput",
@@ -3055,9 +3939,9 @@ function __c3(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           dnsResolverDomainListName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(3)),
+          tags: S.optional(DnsResolverDomainListsCreateOrUpdateRequestTagsMap),
           location: S.String,
-          properties: S.optional(__S(27)),
+          properties: S.optional(DnsResolverDomainListPropertiesInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -3075,9 +3959,9 @@ function __c3(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           dnsResolverPolicyName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(3)),
+          tags: S.optional(DnsResolverPoliciesCreateOrUpdateRequestTagsMap),
           location: S.String,
-          properties: S.optional(__S(8)),
+          properties: S.optional(DnsResolverPolicyPropertiesInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -3092,7 +3976,7 @@ function __c3(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          provisioningState: S.optional(S.String),
+          provisioningState: S.optional(ProvisioningState),
           resourceGuid: S.optional(S.String),
         }),
       ).annotate({
@@ -3104,10 +3988,10 @@ function __c3(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          tags: S.optional(__S(3)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(DnsResolverPoliciesCreateOrUpdateResponseTagsMap),
           location: S.String,
-          properties: S.optional(__S(30)),
+          properties: S.optional(DnsResolverPolicyProperties),
           etag: S.optional(S.String),
         }),
       ).annotate({
@@ -3122,8 +4006,8 @@ function __c4(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          virtualNetwork: __S(20),
-          provisioningState: S.optional(S.String),
+          virtualNetwork: SubResource,
+          provisioningState: S.optional(ProvisioningState),
         }),
       ).annotate({
         identifier: "DnsResolverPolicyVirtualNetworkLinkProperties",
@@ -3135,9 +4019,9 @@ function __c4(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           dnsResolverPolicyName: S.String.pipe(T.Label()),
           dnsResolverPolicyVirtualNetworkLinkName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(32)),
+          tags: S.optional(DnsResolverPolicyVirtualNetworkLinksCreateOrUpdateRequestTagsMap),
           location: S.String,
-          properties: __S(33),
+          properties: DnsResolverPolicyVirtualNetworkLinkProperties,
         }).pipe(
           T.Http({
             method: "PUT",
@@ -3155,10 +4039,10 @@ function __c4(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          tags: S.optional(__S(32)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(DnsResolverPolicyVirtualNetworkLinksCreateOrUpdateResponseTagsMap),
           location: S.String,
-          properties: __S(33),
+          properties: DnsResolverPolicyVirtualNetworkLinkProperties,
           etag: S.optional(S.String),
         }),
       ).annotate({
@@ -3167,7 +4051,7 @@ function __c4(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          virtualNetwork: __S(20),
+          virtualNetwork: SubResource,
         }),
       ).annotate({
         identifier: "DnsResolverPropertiesInput",
@@ -3178,9 +4062,9 @@ function __c4(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           dnsResolverName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(3)),
+          tags: S.optional(DnsResolversCreateOrUpdateRequestTagsMap),
           location: S.String,
-          properties: __S(36),
+          properties: DnsResolverPropertiesInput,
         }).pipe(
           T.Http({
             method: "PUT",
@@ -3195,9 +4079,9 @@ function __c4(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          virtualNetwork: __S(20),
-          dnsResolverState: S.optional(S.String),
-          provisioningState: S.optional(S.String),
+          virtualNetwork: SubResource,
+          dnsResolverState: S.optional(DnsResolverState),
+          provisioningState: S.optional(ProvisioningState),
           resourceGuid: S.optional(S.String),
         }),
       ).annotate({ identifier: "DnsResolverProperties" });
@@ -3207,10 +4091,10 @@ function __c4(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          tags: S.optional(__S(3)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(DnsResolversCreateOrUpdateResponseTagsMap),
           location: S.String,
-          properties: __S(38),
+          properties: DnsResolverProperties,
           etag: S.optional(S.String),
         }),
       ).annotate({
@@ -3223,17 +4107,17 @@ function __c5(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          actionType: S.optional(S.String),
+          actionType: S.optional(ActionType),
         }),
       ).annotate({ identifier: "DnsSecurityRuleAction" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           priority: S.Number,
-          action: __S(40),
-          dnsResolverDomainLists: __S(24),
-          dnsSecurityRuleState: S.optional(S.String),
-          provisioningState: S.optional(S.String),
+          action: DnsSecurityRuleAction,
+          dnsResolverDomainLists: DnsSecurityRulePropertiesDnsResolverDomainListsList,
+          dnsSecurityRuleState: S.optional(DnsSecurityRuleState),
+          provisioningState: S.optional(ProvisioningState),
         }),
       ).annotate({
         identifier: "DnsSecurityRuleProperties",
@@ -3245,9 +4129,9 @@ function __c5(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           dnsResolverPolicyName: S.String.pipe(T.Label()),
           dnsSecurityRuleName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(3)),
+          tags: S.optional(DnsSecurityRulesCreateOrUpdateRequestTagsMap),
           location: S.String,
-          properties: __S(41),
+          properties: DnsSecurityRuleProperties,
         }).pipe(
           T.Http({
             method: "PUT",
@@ -3265,10 +4149,10 @@ function __c5(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          tags: S.optional(__S(3)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(DnsSecurityRulesCreateOrUpdateResponseTagsMap),
           location: S.String,
-          properties: __S(41),
+          properties: DnsSecurityRuleProperties,
           etag: S.optional(S.String),
         }),
       ).annotate({
@@ -3282,15 +4166,15 @@ function __c5(j: number): any {
         }),
       ).annotate({ identifier: "TargetDnsServer" });
     case 5:
-      return S.Array(__S(44));
+      return S.Array(TargetDnsServer);
     case 6:
       return S.suspend(() =>
         S.Struct({
           domainName: S.String,
-          targetDnsServers: __S(45),
-          metadata: S.optional(__S(3)),
-          forwardingRuleState: S.optional(S.String),
-          provisioningState: S.optional(S.String),
+          targetDnsServers: ForwardingRulePropertiesTargetDnsServersList,
+          metadata: S.optional(ForwardingRulePropertiesMetadataMap),
+          forwardingRuleState: S.optional(ForwardingRuleState),
+          provisioningState: S.optional(ProvisioningState),
         }),
       ).annotate({ identifier: "ForwardingRuleProperties" });
     case 7:
@@ -3300,7 +4184,7 @@ function __c5(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           dnsForwardingRulesetName: S.String.pipe(T.Label()),
           forwardingRuleName: S.String.pipe(T.Label()),
-          properties: __S(46),
+          properties: ForwardingRuleProperties,
         }).pipe(
           T.Http({
             method: "PUT",
@@ -3322,8 +4206,8 @@ function __c6(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: __S(46),
+          systemData: S.optional(SystemData),
+          properties: ForwardingRuleProperties,
           etag: S.optional(S.String),
         }),
       ).annotate({
@@ -3367,10 +4251,10 @@ function __c6(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          tags: S.optional(__S(3)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(GetDnsResolverResponseTagsMap),
           location: S.String,
-          properties: __S(38),
+          properties: DnsResolverProperties,
           etag: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetDnsResolverResponse" });
@@ -3432,10 +4316,10 @@ function __c6(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          tags: S.optional(__S(3)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(GetDnsResolverPolicyVirtualNetworkLinkResponseTagsMap),
           location: S.String,
-          properties: __S(33),
+          properties: DnsResolverPolicyVirtualNetworkLinkProperties,
           etag: S.optional(S.String),
         }),
       ).annotate({
@@ -3500,18 +4384,18 @@ function __c7(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          subnet: __S(20),
+          subnet: SubResource,
           privateIpAddress: S.optional(S.String),
-          privateIpAllocationMethod: S.optional(S.String),
+          privateIpAllocationMethod: S.optional(IpConfigurationPrivateIpAllocationMethod),
         }),
       ).annotate({ identifier: "IpConfiguration" });
     case 4:
-      return S.Array(__S(59));
+      return S.Array(IpConfiguration);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          ipConfigurations: __S(60),
-          provisioningState: S.optional(S.String),
+          ipConfigurations: InboundEndpointPropertiesIpConfigurationsList,
+          provisioningState: S.optional(ProvisioningState),
           resourceGuid: S.optional(S.String),
         }),
       ).annotate({
@@ -3523,10 +4407,10 @@ function __c7(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          tags: S.optional(__S(3)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(GetInboundEndpointResponseTagsMap),
           location: S.String,
-          properties: __S(61),
+          properties: InboundEndpointProperties,
           etag: S.optional(S.String),
         }),
       ).annotate({
@@ -3557,8 +4441,8 @@ function __c8(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          subnet: __S(20),
-          provisioningState: S.optional(S.String),
+          subnet: SubResource,
+          provisioningState: S.optional(ProvisioningState),
           resourceGuid: S.optional(S.String),
         }),
       ).annotate({
@@ -3570,10 +4454,10 @@ function __c8(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          tags: S.optional(__S(3)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(GetOutboundEndpointResponseTagsMap),
           location: S.String,
-          properties: __S(64),
+          properties: OutboundEndpointProperties,
           etag: S.optional(S.String),
         }),
       ).annotate({
@@ -3600,9 +4484,9 @@ function __c8(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          virtualNetwork: __S(20),
-          metadata: S.optional(__S(3)),
-          provisioningState: S.optional(S.String),
+          virtualNetwork: SubResource,
+          metadata: S.optional(VirtualNetworkLinkPropertiesMetadataMap),
+          provisioningState: S.optional(ProvisioningState),
         }),
       ).annotate({
         identifier: "VirtualNetworkLinkProperties",
@@ -3613,8 +4497,8 @@ function __c8(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: __S(67),
+          systemData: S.optional(SystemData),
+          properties: VirtualNetworkLinkProperties,
           etag: S.optional(S.String),
         }),
       ).annotate({
@@ -3623,7 +4507,7 @@ function __c8(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          ipConfigurations: __S(60),
+          ipConfigurations: InboundEndpointPropertiesInputIpConfigurationsList,
         }),
       ).annotate({
         identifier: "InboundEndpointPropertiesInput",
@@ -3635,9 +4519,9 @@ function __c8(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           dnsResolverName: S.String.pipe(T.Label()),
           inboundEndpointName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(3)),
+          tags: S.optional(InboundEndpointsCreateOrUpdateRequestTagsMap),
           location: S.String,
-          properties: __S(69),
+          properties: InboundEndpointPropertiesInput,
         }).pipe(
           T.Http({
             method: "PUT",
@@ -3676,19 +4560,19 @@ function __c9(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          tags: S.optional(__S(3)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(DnsForwardingRulesetTagsMap),
           location: S.String,
-          properties: __S(25),
+          properties: DnsForwardingRulesetProperties,
           etag: S.optional(S.String),
         }),
       ).annotate({ identifier: "DnsForwardingRuleset" });
     case 1:
-      return S.Array(__S(72));
+      return S.Array(DnsForwardingRuleset);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(73),
+          value: DnsForwardingRulesetListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -3715,7 +4599,7 @@ function __c9(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          virtualNetworkLink: S.optional(__S(20)),
+          virtualNetworkLink: S.optional(SubResource),
         }),
       ).annotate({
         identifier: "VirtualNetworkLinkSubResourceProperties",
@@ -3724,17 +4608,17 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
-          properties: S.optional(__S(76)),
+          properties: S.optional(VirtualNetworkLinkSubResourceProperties),
         }),
       ).annotate({
         identifier: "VirtualNetworkDnsForwardingRuleset",
       });
     case 6:
-      return S.Array(__S(77));
+      return S.Array(VirtualNetworkDnsForwardingRuleset);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          value: __S(78),
+          value: VirtualNetworkDnsForwardingRulesetListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -3778,11 +4662,11 @@ function __c10(j: number): any {
         identifier: "ListDnsResolverByResourceGroupRequest",
       });
     case 2:
-      return S.Array(__S(51));
+      return S.Array(DnsResolver);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: __S(82),
+          value: DnsResolverListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "DnsResolverListResult" });
@@ -3807,7 +4691,7 @@ function __c10(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          value: __S(24),
+          value: SubResourceListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "SubResourceListResult" });
@@ -3834,10 +4718,10 @@ function __c10(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          tags: S.optional(__S(3)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(DnsResolverDomainListTagsMap),
           location: S.String,
-          properties: S.optional(__S(5)),
+          properties: S.optional(DnsResolverDomainListProperties),
           etag: S.optional(S.String),
         }),
       ).annotate({ identifier: "DnsResolverDomainList" });
@@ -3846,11 +4730,11 @@ function __c10(j: number): any {
 function __c11(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(87));
+      return S.Array(DnsResolverDomainList);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(88),
+          value: DnsResolverDomainListListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -3894,19 +4778,19 @@ function __c11(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          tags: S.optional(__S(3)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(DnsResolverPolicyTagsMap),
           location: S.String,
-          properties: S.optional(__S(30)),
+          properties: S.optional(DnsResolverPolicyProperties),
           etag: S.optional(S.String),
         }),
       ).annotate({ identifier: "DnsResolverPolicy" });
     case 5:
-      return S.Array(__S(92));
+      return S.Array(DnsResolverPolicy);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          value: __S(93),
+          value: DnsResolverPolicyListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -3969,11 +4853,11 @@ function __c12(j: number): any {
         identifier: "ListDnsResolverPolicyVirtualNetworkLinksRequest",
       });
     case 2:
-      return S.Array(__S(55));
+      return S.Array(DnsResolverPolicyVirtualNetworkLink);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: __S(98),
+          value: DnsResolverPolicyVirtualNetworkLinkListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -4017,15 +4901,15 @@ function __c12(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          tags: S.optional(__S(3)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(DnsSecurityRuleTagsMap),
           location: S.String,
-          properties: __S(41),
+          properties: DnsSecurityRuleProperties,
           etag: S.optional(S.String),
         }),
       ).annotate({ identifier: "DnsSecurityRule" });
     case 7:
-      return S.Array(__S(102));
+      return S.Array(DnsSecurityRule);
   }
 }
 function __c13(j: number): any {
@@ -4033,7 +4917,7 @@ function __c13(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          value: __S(103),
+          value: DnsSecurityRuleListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -4063,17 +4947,17 @@ function __c13(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: __S(46),
+          systemData: S.optional(SystemData),
+          properties: ForwardingRuleProperties,
           etag: S.optional(S.String),
         }),
       ).annotate({ identifier: "ForwardingRule" });
     case 3:
-      return S.Array(__S(106));
+      return S.Array(ForwardingRule);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: __S(107),
+          value: ForwardingRuleListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ForwardingRuleListResult" });
@@ -4101,15 +4985,15 @@ function __c13(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          tags: S.optional(__S(3)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(InboundEndpointTagsMap),
           location: S.String,
-          properties: __S(61),
+          properties: InboundEndpointProperties,
           etag: S.optional(S.String),
         }),
       ).annotate({ identifier: "InboundEndpoint" });
     case 7:
-      return S.Array(__S(110));
+      return S.Array(InboundEndpoint);
   }
 }
 function __c14(j: number): any {
@@ -4117,7 +5001,7 @@ function __c14(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          value: __S(111),
+          value: InboundEndpointListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -4147,19 +5031,19 @@ function __c14(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          tags: S.optional(__S(3)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(OutboundEndpointTagsMap),
           location: S.String,
-          properties: __S(64),
+          properties: OutboundEndpointProperties,
           etag: S.optional(S.String),
         }),
       ).annotate({ identifier: "OutboundEndpoint" });
     case 3:
-      return S.Array(__S(114));
+      return S.Array(OutboundEndpoint);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: __S(115),
+          value: OutboundEndpointListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -4189,13 +5073,13 @@ function __c14(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: __S(67),
+          systemData: S.optional(SystemData),
+          properties: VirtualNetworkLinkProperties,
           etag: S.optional(S.String),
         }),
       ).annotate({ identifier: "VirtualNetworkLink" });
     case 7:
-      return S.Array(__S(118));
+      return S.Array(VirtualNetworkLink);
   }
 }
 function __c15(j: number): any {
@@ -4203,7 +5087,7 @@ function __c15(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          value: __S(119),
+          value: VirtualNetworkLinkListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -4212,7 +5096,7 @@ function __c15(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          subnet: __S(20),
+          subnet: SubResource,
         }),
       ).annotate({
         identifier: "OutboundEndpointPropertiesInput",
@@ -4224,9 +5108,9 @@ function __c15(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           dnsResolverName: S.String.pipe(T.Label()),
           outboundEndpointName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(3)),
+          tags: S.optional(OutboundEndpointsCreateOrUpdateRequestTagsMap),
           location: S.String,
-          properties: __S(121),
+          properties: OutboundEndpointPropertiesInput,
         }).pipe(
           T.Http({
             method: "PUT",
@@ -4244,8 +5128,10 @@ function __c15(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           dnsForwardingRulesetName: S.String.pipe(T.Label()),
-          dnsResolverOutboundEndpoints: S.optional(__S(21)),
-          tags: S.optional(__S(3)),
+          dnsResolverOutboundEndpoints: S.optional(
+            UpdateDnsForwardingRulesetRequestDnsResolverOutboundEndpointsList,
+          ),
+          tags: S.optional(UpdateDnsForwardingRulesetRequestTagsMap),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -4263,7 +5149,7 @@ function __c15(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           dnsResolverName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(3)),
+          tags: S.optional(UpdateDnsResolverRequestTagsMap),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -4279,8 +5165,8 @@ function __c15(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           dnsResolverDomainListName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(27)),
-          tags: S.optional(__S(3)),
+          properties: S.optional(DnsResolverDomainListPatchProperties),
+          tags: S.optional(UpdateDnsResolverDomainListRequestTagsMap),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -4298,7 +5184,7 @@ function __c15(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           dnsResolverPolicyName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(3)),
+          tags: S.optional(UpdateDnsResolverPolicyRequestTagsMap),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -4317,7 +5203,7 @@ function __c15(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           dnsResolverPolicyName: S.String.pipe(T.Label()),
           dnsResolverPolicyVirtualNetworkLinkName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(3)),
+          tags: S.optional(UpdateDnsResolverPolicyVirtualNetworkLinkRequestTagsMap),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -4336,9 +5222,11 @@ function __c16(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          action: S.optional(__S(40)),
-          dnsResolverDomainLists: S.optional(__S(24)),
-          dnsSecurityRuleState: S.optional(S.String),
+          action: S.optional(DnsSecurityRuleAction),
+          dnsResolverDomainLists: S.optional(
+            DnsSecurityRulePatchPropertiesDnsResolverDomainListsList,
+          ),
+          dnsSecurityRuleState: S.optional(DnsSecurityRuleState),
           priority: S.optional(S.Number),
         }),
       ).annotate({
@@ -4351,8 +5239,8 @@ function __c16(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           dnsResolverPolicyName: S.String.pipe(T.Label()),
           dnsSecurityRuleName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(128)),
-          tags: S.optional(__S(3)),
+          properties: S.optional(DnsSecurityRulePatchProperties),
+          tags: S.optional(UpdateDnsSecurityRuleRequestTagsMap),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -4367,9 +5255,9 @@ function __c16(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          targetDnsServers: S.optional(__S(45)),
-          metadata: S.optional(__S(3)),
-          forwardingRuleState: S.optional(S.String),
+          targetDnsServers: S.optional(ForwardingRulePatchPropertiesTargetDnsServersList),
+          metadata: S.optional(ForwardingRulePatchPropertiesMetadataMap),
+          forwardingRuleState: S.optional(ForwardingRulePatchPropertiesForwardingRuleState),
         }),
       ).annotate({
         identifier: "ForwardingRulePatchProperties",
@@ -4381,7 +5269,7 @@ function __c16(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           dnsForwardingRulesetName: S.String.pipe(T.Label()),
           forwardingRuleName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(130)),
+          properties: S.optional(ForwardingRulePatchProperties),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -4400,7 +5288,7 @@ function __c16(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           dnsResolverName: S.String.pipe(T.Label()),
           inboundEndpointName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(3)),
+          tags: S.optional(UpdateInboundEndpointRequestTagsMap),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -4419,7 +5307,7 @@ function __c16(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           dnsResolverName: S.String.pipe(T.Label()),
           outboundEndpointName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(3)),
+          tags: S.optional(UpdateOutboundEndpointRequestTagsMap),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -4434,7 +5322,7 @@ function __c16(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          metadata: S.optional(__S(3)),
+          metadata: S.optional(VirtualNetworkLinkPatchPropertiesMetadataMap),
         }),
       ).annotate({
         identifier: "VirtualNetworkLinkPatchProperties",
@@ -4446,7 +5334,7 @@ function __c16(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           dnsForwardingRulesetName: S.String.pipe(T.Label()),
           virtualNetworkLinkName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(134)),
+          properties: S.optional(VirtualNetworkLinkPatchProperties),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -4469,7 +5357,7 @@ function __c17(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           dnsForwardingRulesetName: S.String.pipe(T.Label()),
           virtualNetworkLinkName: S.String.pipe(T.Label()),
-          properties: __S(67),
+          properties: VirtualNetworkLinkProperties,
         }).pipe(
           T.Http({
             method: "PUT",
@@ -4481,50 +5369,5 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "VirtualNetworkLinksCreateOrUpdateRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
-    case 9:
-      return __c9(i & 7);
-    case 10:
-      return __c10(i & 7);
-    case 11:
-      return __c11(i & 7);
-    case 12:
-      return __c12(i & 7);
-    case 13:
-      return __c13(i & 7);
-    case 14:
-      return __c14(i & 7);
-    case 15:
-      return __c15(i & 7);
-    case 16:
-      return __c16(i & 7);
-    case 17:
-      return __c17(i & 7);
   }
 }

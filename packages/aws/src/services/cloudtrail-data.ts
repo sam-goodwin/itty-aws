@@ -7,8 +7,6 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "CloudTrail Data",
   serviceShapeName: "CloudTrailDataService",
@@ -107,7 +105,9 @@ export interface AuditEvent {
   eventData: string;
   eventDataChecksum?: string;
 }
+const AuditEvent = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<AuditEvent>;
 export type AuditEvents = AuditEvent[];
+const AuditEvents = /*@__PURE__*/ __L.at(__c0, 1);
 export type ChannelArn = string;
 export type ExternalId = string;
 export interface PutAuditEventsRequest {
@@ -115,11 +115,20 @@ export interface PutAuditEventsRequest {
   channelArn: string;
   externalId?: string;
 }
+const PutAuditEventsRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<PutAuditEventsRequest>;
 export interface AuditEventResultEntry {
   id: string;
   eventID: string;
 }
+const AuditEventResultEntry = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<AuditEventResultEntry>;
 export type AuditEventResultEntries = AuditEventResultEntry[];
+const AuditEventResultEntries = /*@__PURE__*/ __L.at(__c0, 4);
 export type ErrorCode = string;
 export type ErrorMessage = string;
 export interface ResultErrorEntry {
@@ -127,11 +136,17 @@ export interface ResultErrorEntry {
   errorCode: string;
   errorMessage: string;
 }
+const ResultErrorEntry = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<ResultErrorEntry>;
 export type ResultErrorEntries = ResultErrorEntry[];
+const ResultErrorEntries = /*@__PURE__*/ __L.at(__c0, 6);
 export interface PutAuditEventsResponse {
   successful: AuditEventResultEntry[];
   failed: ResultErrorEntry[];
 }
+const PutAuditEventsResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<PutAuditEventsResponse>;
 export type PutAuditEventsError =
   | ChannelInsufficientPermission
   | ChannelNotFound
@@ -153,8 +168,8 @@ export const putAuditEvents: API.OperationMethod<
   PutAuditEventsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2) as any as S.Schema<PutAuditEventsRequest>,
-  output: __S(7) as any as S.Schema<PutAuditEventsResponse>,
+  input: PutAuditEventsRequest,
+  output: PutAuditEventsResponse,
   errors: [
     ChannelInsufficientPermission,
     ChannelNotFound,
@@ -176,11 +191,11 @@ function __c0(j: number): any {
         S.Struct({ id: S.String, eventData: S.String, eventDataChecksum: S.optional(S.String) }),
       ).annotate({ identifier: "AuditEvent" });
     case 1:
-      return S.Array(__S(0));
+      return S.Array(AuditEvent);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          auditEvents: __S(1),
+          auditEvents: AuditEvents,
           channelArn: S.String.pipe(T.HttpQuery("channelArn")),
           externalId: S.optional(S.String).pipe(T.HttpQuery("externalId")),
         }).pipe(
@@ -192,27 +207,16 @@ function __c0(j: number): any {
         identifier: "AuditEventResultEntry",
       });
     case 4:
-      return S.Array(__S(3));
+      return S.Array(AuditEventResultEntry);
     case 5:
       return S.suspend(() =>
         S.Struct({ id: S.String, errorCode: S.String, errorMessage: S.String }),
       ).annotate({ identifier: "ResultErrorEntry" });
     case 6:
-      return S.Array(__S(5));
+      return S.Array(ResultErrorEntry);
     case 7:
-      return S.suspend(() => S.Struct({ successful: __S(4), failed: __S(6) })).annotate({
-        identifier: "PutAuditEventsResponse",
-      });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
+      return S.suspend(() =>
+        S.Struct({ successful: AuditEventResultEntries, failed: ResultErrorEntries }),
+      ).annotate({ identifier: "PutAuditEventsResponse" });
   }
 }

@@ -6,8 +6,6 @@ import * as S from "@distilled.cloud/core/schema";
 import { PosthogProtocol, type PosthogOpError, type PosthogOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { PosthogOpError, PosthogOpContext };
 
@@ -24,18 +22,30 @@ export interface RevokeLeakedKeyCreateRequest {
   /** The leaked PostHog personal API key, project secret API key, or OAuth access/refresh token to revoke. */
   token: string;
 }
+const RevokeLeakedKeyCreateRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<RevokeLeakedKeyCreateRequest>;
+
 /** * `personal_api_key` - personal_api_key * `project_secret_api_key` - project_secret_api_key * `oauth_access_token` - oauth_access_token * `oauth_refresh_token` - oauth_refresh_token */
 export type LeakedKeyReportResponseTypeEnum =
   | "personal_api_key"
   | "project_secret_api_key"
   | "oauth_access_token"
   | "oauth_refresh_token";
+const LeakedKeyReportResponseTypeEnum = S.String;
+
 export interface LeakedKeyReportResponse {
   /** Whether a matching PostHog key or token was found and revoked. */
   found: boolean;
   /** The type of key that was found and revoked, or null if no match was found. * `personal_api_key` - personal_api_key * `project_secret_api_key` - project_secret_api_key * `oauth_access_token` - oauth_access_token * `oauth_refresh_token` - oauth_refresh_token */
   type: LeakedKeyReportResponseTypeEnum | null;
 }
+const LeakedKeyReportResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<LeakedKeyReportResponse>;
+
 export type RevokeLeakedKeyCreateError = BadRequest | PosthogOpError;
 /** Report and revoke a leaked PostHog API key or token Public, unauthenticated endpoint for self-service revocation of a leaked PostHog personal API key, project secret API key, or OAuth access/refresh token. If the token matches a real credential, it is revoked immediately and the owner is notified by email. This includes an expired OAuth access token: the paired refresh token it protects may still be live. This endpoint only checks the region it is running on. `"found": false` does not guarantee the token is safe. If you're not sure which region issued it, check both: https://app.posthog.com/api/revoke_leaked_key and https://eu.posthog.com/api/revoke_leaked_key. */
 export const revokeLeakedKeyCreate: API.OperationMethod<
@@ -44,8 +54,8 @@ export const revokeLeakedKeyCreate: API.OperationMethod<
   RevokeLeakedKeyCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<RevokeLeakedKeyCreateRequest>,
-  output: __S(1) as any as S.Schema<LeakedKeyReportResponse>,
+  input: RevokeLeakedKeyCreateRequest,
+  output: LeakedKeyReportResponse,
   errors: [BadRequest],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -66,19 +76,8 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           found: S.Boolean,
-          type: S.NullOr(S.String),
+          type: S.NullOr(LeakedKeyReportResponseTypeEnum),
         }),
       ).annotate({ identifier: "LeakedKeyReportResponse" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 1) {
-    case 0:
-      return __c0(i & 1);
   }
 }

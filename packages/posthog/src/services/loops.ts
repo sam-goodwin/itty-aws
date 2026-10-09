@@ -6,8 +6,6 @@ import * as S from "@distilled.cloud/core/schema";
 import { PosthogProtocol, type PosthogOpError, type PosthogOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { PosthogOpError, PosthogOpContext };
 
@@ -31,20 +29,35 @@ export class NotFound
 
 /** * `personal` - personal * `team` - team */
 export type LoopWriteVisibilityEnum = "personal" | "team";
+const LoopWriteVisibilityEnum = S.String;
+
 /** * `claude` - claude * `codex` - codex */
 export type RuntimeAdapterEnum = "claude" | "codex";
+const RuntimeAdapterEnum = S.String;
+
 /** * `low` - low * `medium` - medium * `high` - high * `xhigh` - xhigh * `max` - max * `ultracode` - ultracode */
 export type ReasoningEffortEnum = "low" | "medium" | "high" | "xhigh" | "max" | "ultracode";
+const ReasoningEffortEnum = S.String;
+
 export interface LoopRepositoryEntry {
   /** GitHub integration id this repository is accessed through. */
   github_integration_id: number;
   /** Repository in `organization/repo` format, e.g. `posthog/posthog`. */
   full_name: string;
 }
+const LoopRepositoryEntry = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<LoopRepositoryEntry>;
+
 /** Repositories this loop operates on, ordered. Capped at 1 until multi-repo execution ships. May be empty for report-only loops. */
 export type CreateLoopRequestRepositoriesList = Array<LoopRepositoryEntry>;
+const CreateLoopRequestRepositoriesList = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<CreateLoopRequestRepositoriesList>;
+
 /** * `skip` - skip * `allow` - allow * `cancel_previous` - cancel_previous */
 export type OverlapPolicyEnum = "skip" | "allow" | "cancel_previous";
+const OverlapPolicyEnum = S.String;
+
 export interface LoopBehaviors {
   /** Whether the agent may push branches and open PRs. False makes this a report-only loop. */
   create_prs?: boolean;
@@ -55,16 +68,27 @@ export interface LoopBehaviors {
   /** Ceiling on automatic CI/review-comment fix iterations, capped at 10. */
   max_fix_iterations?: number;
 }
+const LoopBehaviors = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<LoopBehaviors>;
+
 /** MCP Store installation ids (Slack, Linear, etc.) available to this loop's runs. */
 export type LoopConnectorsMcpInstallationIdsList = Array<string>;
+const LoopConnectorsMcpInstallationIdsList = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<LoopConnectorsMcpInstallationIdsList>;
+
 /** * `read_only` - read_only * `full` - full */
 export type PosthogMcpScopesEnum = "read_only" | "full";
+const PosthogMcpScopesEnum = S.String;
+
 export interface LoopConnectors {
   /** MCP Store installation ids (Slack, Linear, etc.) available to this loop's runs. */
   mcp_installation_ids?: LoopConnectorsMcpInstallationIdsList;
   /** Scope of the PostHog MCP access injected into this loop's runs. * `read_only` - read_only * `full` - full */
   posthog_mcp_scopes?: PosthogMcpScopesEnum | (string & {});
 }
+const LoopConnectors = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<LoopConnectors>;
+
 /** * `run_completed` - run_completed * `run_failed` - run_failed * `pr_created` - pr_created * `pr_merged` - pr_merged * `pr_closed` - pr_closed * `needs_attention` - needs_attention */
 export type EventsEnum =
   | "run_completed"
@@ -73,10 +97,22 @@ export type EventsEnum =
   | "pr_merged"
   | "pr_closed"
   | "needs_attention";
+const EventsEnum = S.String;
+
 /** Event kinds this channel notifies on. One or more of: run_completed, run_failed, pr_created, pr_merged, pr_closed, needs_attention. */
 export type LoopNotificationChannelEventsList = Array<EventsEnum | (string & {})>;
+const LoopNotificationChannelEventsList = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<LoopNotificationChannelEventsList>;
+
 /** Channel-specific parameters, e.g. Slack's `integration_id` and `channel`. */
 export type LoopNotificationChannelParamsMap = { [key: string]: unknown | undefined };
+const LoopNotificationChannelParamsMap = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<LoopNotificationChannelParamsMap>;
+
 export interface LoopNotificationChannel {
   /** Whether this channel is active. */
   enabled?: boolean;
@@ -85,6 +121,11 @@ export interface LoopNotificationChannel {
   /** Channel-specific parameters, e.g. Slack's `integration_id` and `channel`. */
   params?: LoopNotificationChannelParamsMap;
 }
+const LoopNotificationChannel = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<LoopNotificationChannel>;
+
 export interface LoopNotifications {
   /** Push notification settings. */
   push?: LoopNotificationChannel;
@@ -93,6 +134,8 @@ export interface LoopNotifications {
   /** Slack notification settings. */
   slack?: LoopNotificationChannel;
 }
+const LoopNotifications = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<LoopNotifications>;
+
 export interface LoopContextOutputsWrite {
   /** Whether each run is filed into the context's feed as a card (sets the run's channel). */
   post_to_feed?: boolean;
@@ -101,6 +144,11 @@ export interface LoopContextOutputsWrite {
   /** Id of a canvas in this context the loop keeps up to date each run, or null to maintain none. */
   canvas_id?: string | null;
 }
+const LoopContextOutputsWrite = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<LoopContextOutputsWrite>;
+
 export interface LoopContextTargetWrite {
   /** Id of the channel (context) this loop is attached to. */
   channel_id: string;
@@ -109,8 +157,15 @@ export interface LoopContextTargetWrite {
   /** What the loop maintains in this context each run. */
   outputs?: LoopContextOutputsWrite;
 }
+const LoopContextTargetWrite = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<LoopContextTargetWrite>;
+
 /** * `schedule` - schedule * `github` - github * `api` - api */
 export type LoopTriggerTypeEnum = "schedule" | "github" | "api";
+const LoopTriggerTypeEnum = S.String;
+
 export interface LoopTriggerWrite {
   /** Existing trigger id to update in place. Omit to create a new trigger. */
   id?: string;
@@ -121,8 +176,15 @@ export interface LoopTriggerWrite {
   /** Trigger configuration, shape validated per `type`: schedule takes `{cron_expression, timezone}` or `{run_at}` for a one-time run; github takes `{github_integration_id, repository, events, filters}` where `events` is one or more of `issues`, `issue_comment`, `pull_request`, `push` (`event.action` shorthand like `issues.opened` is folded into an `actions` filter, one event per trigger) and `filters` takes `{actions, branches, labels, payload}`. Use `actions` for the event action; `payload` is for anything else in the webhook body, as a list of `{path, equals}` conditions where `path` is a dot-path of object keys and `equals` is a string or list of strings, e.g. `[{"path": "requested_team.slug", "equals": "team-security"}]` to run only when that team is asked to review. All filters must match. API triggers take no config. */
   config?: unknown;
 }
+const LoopTriggerWrite = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<LoopTriggerWrite>;
+
 /** Full desired trigger list, id-stable: entries with a matching `id` are updated in place, entries without one are created, and existing triggers absent from this list are deleted. Omit the field entirely to leave triggers untouched. At most 25 triggers per loop. */
 export type CreateLoopRequestTriggersList = Array<LoopTriggerWrite>;
+const CreateLoopRequestTriggersList = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<CreateLoopRequestTriggersList>;
+
 export interface CreateLoopRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -161,47 +223,79 @@ export interface CreateLoopRequest {
   /** Full desired trigger list, id-stable: entries with a matching `id` are updated in place, entries without one are created, and existing triggers absent from this list are deleted. Omit the field entirely to leave triggers untouched. At most 25 triggers per loop. */
   triggers?: CreateLoopRequestTriggersList;
 }
+const CreateLoopRequest = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<CreateLoopRequest>;
+
 export interface LoopRepositoryEntryDTO {
   github_integration_id: number;
   full_name: string;
 }
 /** Repositories this loop operates on. */
 export type LoopDTORepositoriesList = Array<LoopRepositoryEntryDTO>;
+const LoopDTORepositoriesList =
+  CreateLoopRequestRepositoriesList as any as S.Schema<LoopDTORepositoriesList>;
+
 export interface LoopBehaviorsDTO {
   create_prs?: boolean;
   watch_ci?: boolean;
   fix_review_comments?: boolean;
   max_fix_iterations?: number;
 }
+const LoopBehaviorsDTO = LoopBehaviors as any as S.Schema<LoopBehaviorsDTO>;
+
 export type LoopConnectorsDTOMcpInstallationIdsList = Array<string>;
+const LoopConnectorsDTOMcpInstallationIdsList =
+  LoopConnectorsMcpInstallationIdsList as any as S.Schema<LoopConnectorsDTOMcpInstallationIdsList>;
+
 export interface LoopConnectorsDTO {
   mcp_installation_ids?: LoopConnectorsDTOMcpInstallationIdsList;
   posthog_mcp_scopes?: string;
 }
+const LoopConnectorsDTO = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<LoopConnectorsDTO>;
+
 export type LoopNotificationChannelDTOEventsList = Array<string>;
+const LoopNotificationChannelDTOEventsList =
+  LoopConnectorsMcpInstallationIdsList as any as S.Schema<LoopNotificationChannelDTOEventsList>;
+
 export type LoopNotificationChannelDTOParamsMap = { [key: string]: unknown | undefined };
+const LoopNotificationChannelDTOParamsMap =
+  LoopNotificationChannelParamsMap as any as S.Schema<LoopNotificationChannelDTOParamsMap>;
+
 export interface LoopNotificationChannelDTO {
   enabled?: boolean;
   events?: LoopNotificationChannelDTOEventsList;
   params?: LoopNotificationChannelDTOParamsMap;
 }
+const LoopNotificationChannelDTO = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<LoopNotificationChannelDTO>;
+
 export interface LoopNotificationsDTO {
   push: LoopNotificationChannelDTO;
   email: LoopNotificationChannelDTO;
   slack: LoopNotificationChannelDTO;
 }
+const LoopNotificationsDTO = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<LoopNotificationsDTO>;
+
 export interface LoopContextOutputsDTO {
   post_to_feed?: boolean;
   update_context?: boolean;
   canvas_id?: string | null;
 }
+const LoopContextOutputsDTO = LoopContextOutputsWrite as any as S.Schema<LoopContextOutputsDTO>;
+
 export interface LoopContextTargetDTO {
   /** What the loop maintains in this context each run. */
   outputs: LoopContextOutputsDTO;
   channel_id: string;
   name: string;
 }
+const LoopContextTargetDTO = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<LoopContextTargetDTO>;
+
 export type LoopTriggerDTOConfigMap = { [key: string]: unknown | undefined };
+const LoopTriggerDTOConfigMap =
+  LoopNotificationChannelParamsMap as any as S.Schema<LoopTriggerDTOConfigMap>;
+
 /** Read response for a single loop trigger. */
 export interface LoopTriggerDTO {
   id: string;
@@ -214,8 +308,12 @@ export interface LoopTriggerDTO {
   created_at: string;
   updated_at: string;
 }
+const LoopTriggerDTO = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<LoopTriggerDTO>;
+
 /** Triggers attached to this loop. */
 export type LoopDTOTriggersList = Array<LoopTriggerDTO>;
+const LoopDTOTriggersList = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<LoopDTOTriggersList>;
+
 export interface LoopSkillBundleDTO {
   id: string;
   skill_name: string;
@@ -224,8 +322,15 @@ export interface LoopSkillBundleDTO {
   content_sha256: string;
   uploaded_at: string;
 }
+const LoopSkillBundleDTO = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<LoopSkillBundleDTO>;
+
 /** Skill bundles attached to this loop, seeded into every fired run. */
 export type LoopDTOSkillBundlesList = Array<LoopSkillBundleDTO>;
+const LoopDTOSkillBundlesList = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<LoopDTOSkillBundlesList>;
+
 /** Detail/create/update response for a loop, including its triggers. */
 export interface LoopDTO {
   id: string;
@@ -265,6 +370,8 @@ export interface LoopDTO {
   /** Skill bundles attached to this loop, seeded into every fired run. */
   skill_bundles: LoopDTOSkillBundlesList;
 }
+const LoopDTO = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<LoopDTO>;
+
 export interface CreateLoopsPreviewRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -274,16 +381,28 @@ export interface CreateLoopsPreviewRequest {
   /** Sample trigger payload, e.g. a GitHub webhook body or an API trigger body, to render into context. */
   payload?: unknown;
 }
+const CreateLoopsPreviewRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<CreateLoopsPreviewRequest>;
+
 export interface LoopPreviewDTO {
   instructions: string;
   trigger_type: string;
   trigger_context: string;
 }
+const LoopPreviewDTO = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<LoopPreviewDTO>;
+
 export interface CreateLoopsRunRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   id: string;
 }
+const CreateLoopsRunRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<CreateLoopsRunRequest>;
+
 /** * `created` - created * `deduped` - deduped * `overlap_skipped` - overlap_skipped * `rate_capped` - rate_capped * `team_rate_capped` - team_rate_capped * `disabled` - disabled * `gate_blocked` - gate_blocked * `owner_inactive` - owner_inactive * `owner_changed` - owner_changed */
 export type LoopFireResultReasonEnum =
   | "created"
@@ -295,6 +414,8 @@ export type LoopFireResultReasonEnum =
   | "gate_blocked"
   | "owner_inactive"
   | "owner_changed";
+const LoopFireResultReasonEnum = S.String;
+
 /** Response for a manual (`run/`) or external (`trigger/`) fire. */
 export interface LoopFireResult {
   created: boolean;
@@ -305,11 +426,15 @@ export interface LoopFireResult {
   /** Id of the created task run, when `created` is true. */
   task_run_id: string | null;
 }
+const LoopFireResult = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<LoopFireResult>;
+
 export interface GetLoopRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   id: string;
 }
+const GetLoopRequest = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<GetLoopRequest>;
+
 export type GetLoopsRunRequestStatus =
   | "not_started"
   | "queued"
@@ -317,6 +442,8 @@ export type GetLoopsRunRequestStatus =
   | "completed"
   | "failed"
   | "cancelled";
+const GetLoopsRunRequestStatus = S.String;
+
 export interface GetLoopsRunRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -328,7 +455,12 @@ export interface GetLoopsRunRequest {
   /** Only return runs with this status. Use failed to read errors even when canvas state is unavailable. * `not_started` - Not Started * `queued` - Queued * `in_progress` - In Progress * `completed` - Completed * `failed` - Failed * `cancelled` - Cancelled */
   status?: GetLoopsRunRequestStatus | (string & {});
 }
+const GetLoopsRunRequest = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<GetLoopsRunRequest>;
+
 export type LoopRunDTOOutputMap = { [key: string]: unknown | undefined };
+const LoopRunDTOOutputMap =
+  LoopNotificationChannelParamsMap as any as S.Schema<LoopRunDTOOutputMap>;
+
 /** A single entry in a loop's run history. */
 export interface LoopRunDTO {
   id: string;
@@ -342,14 +474,23 @@ export interface LoopRunDTO {
   created_at: string;
   completed_at: string | null;
 }
+const LoopRunDTO = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<LoopRunDTO>;
+
 /** Run history entries, newest first. */
 export type LoopRunPageResultsList = Array<LoopRunDTO>;
+const LoopRunPageResultsList = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<LoopRunPageResultsList>;
+
 export interface LoopRunPage {
   /** Run history entries, newest first. */
   results: LoopRunPageResultsList;
   /** Opaque cursor for the next page, or null when there are no more results. */
   next_cursor: string | null;
 }
+const LoopRunPage = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<LoopRunPage>;
+
 export interface ListLoopsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -358,7 +499,14 @@ export interface ListLoopsRequest {
   /** The initial index from which to return the results. */
   offset?: number;
 }
+const ListLoopsRequest = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<ListLoopsRequest>;
+
 export type PaginatedLoopDTOListResultsList = Array<LoopDTO>;
+const PaginatedLoopDTOListResultsList = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<PaginatedLoopDTOListResultsList>;
+
 export interface PaginatedLoopDTOList {
   count: number;
   next?: string | null;
@@ -369,23 +517,43 @@ export interface PaginatedLoopDTOList {
   /** Current number of non-deleted, user-facing loops in this project, counted against `max_loops_per_team`. At or above the cap, creation is blocked. */
   total_loop_count?: number;
 }
+const PaginatedLoopDTOList = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<PaginatedLoopDTOList>;
+
 export interface LoopsDestroyRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   id: string;
 }
+const LoopsDestroyRequest = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<LoopsDestroyRequest>;
+
 export interface LoopsDestroyResponse {}
+const LoopsDestroyResponse = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<LoopsDestroyResponse>;
+
 export type LoopsTriggerCreateRequestBodyMap = { [key: string]: unknown | undefined };
+const LoopsTriggerCreateRequestBodyMap =
+  LoopNotificationChannelParamsMap as any as S.Schema<LoopsTriggerCreateRequestBodyMap>;
+
 export interface LoopsTriggerCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   id: string;
   body?: LoopsTriggerCreateRequestBodyMap;
 }
+const LoopsTriggerCreateRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<LoopsTriggerCreateRequest>;
+
 /** Repositories this loop operates on, ordered. Capped at 1 until multi-repo execution ships. May be empty for report-only loops. */
 export type UpdateLoopsPartialRequestRepositoriesList = Array<LoopRepositoryEntry>;
+const UpdateLoopsPartialRequestRepositoriesList =
+  CreateLoopRequestRepositoriesList as any as S.Schema<UpdateLoopsPartialRequestRepositoriesList>;
+
 /** Full desired trigger list, id-stable: entries with a matching `id` are updated in place, entries without one are created, and existing triggers absent from this list are deleted. Omit the field entirely to leave triggers untouched. At most 25 triggers per loop. */
 export type UpdateLoopsPartialRequestTriggersList = Array<LoopTriggerWrite>;
+const UpdateLoopsPartialRequestTriggersList =
+  CreateLoopRequestTriggersList as any as S.Schema<UpdateLoopsPartialRequestTriggersList>;
+
 export interface UpdateLoopsPartialRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -425,10 +593,19 @@ export interface UpdateLoopsPartialRequest {
   /** Full desired trigger list, id-stable: entries with a matching `id` are updated in place, entries without one are created, and existing triggers absent from this list are deleted. Omit the field entirely to leave triggers untouched. At most 25 triggers per loop. */
   triggers?: UpdateLoopsPartialRequestTriggersList;
 }
+const UpdateLoopsPartialRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<UpdateLoopsPartialRequest>;
+
 /** * `user` - user * `repo` - repo * `marketplace` - marketplace * `codex` - codex */
 export type SkillSourceEnum = "user" | "repo" | "marketplace" | "codex";
+const SkillSourceEnum = S.String;
+
 /** * `zip` - zip */
 export type BundleFormatEnum = "zip";
+const BundleFormatEnum = S.String;
+
 /** One zipped local skill in a skill-bundle replace request. */
 export interface LoopSkillBundleUpload {
   /** File name for the stored bundle, e.g. `my-skill.zip`. */
@@ -444,13 +621,28 @@ export interface LoopSkillBundleUpload {
   /** Base64-encoded bundle bytes. */
   content_base64: string;
 }
+const LoopSkillBundleUpload = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<LoopSkillBundleUpload>;
+
 export type UpdateLoopsSkillBundleRequestBundlesList = Array<LoopSkillBundleUpload>;
+const UpdateLoopsSkillBundleRequestBundlesList = /*@__PURE__*/ __L.at(
+  __c5,
+  0,
+) as any as S.Schema<UpdateLoopsSkillBundleRequestBundlesList>;
+
 export interface UpdateLoopsSkillBundleRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   id: string;
   bundles: UpdateLoopsSkillBundleRequestBundlesList;
 }
+const UpdateLoopsSkillBundleRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  1,
+) as any as S.Schema<UpdateLoopsSkillBundleRequest>;
+
 export type CreateLoopError = PosthogOpError;
 /** Create a loop API for managing loops -- named, cloud-executed agent automations triggered by schedule, GitHub events or authenticated API calls. See `products/tasks/docs/LOOPS.md`. */
 export const createLoop: API.OperationMethod<
@@ -459,8 +651,8 @@ export const createLoop: API.OperationMethod<
   CreateLoopError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13) as any as S.Schema<CreateLoopRequest>,
-  output: __S(22) as any as S.Schema<LoopDTO>,
+  input: CreateLoopRequest,
+  output: LoopDTO,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -474,8 +666,8 @@ export const createLoopsPreview: API.OperationMethod<
   CreateLoopsPreviewError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23) as any as S.Schema<CreateLoopsPreviewRequest>,
-  output: __S(24) as any as S.Schema<LoopPreviewDTO>,
+  input: CreateLoopsPreviewRequest,
+  output: LoopPreviewDTO,
   errors: [NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -489,8 +681,8 @@ export const createLoopsRun: API.OperationMethod<
   CreateLoopsRunError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25) as any as S.Schema<CreateLoopsRunRequest>,
-  output: __S(26) as any as S.Schema<LoopFireResult>,
+  input: CreateLoopsRunRequest,
+  output: LoopFireResult,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -500,8 +692,8 @@ export type GetLoopError = NotFound | PosthogOpError;
 /** Get a loop API for managing loops -- named, cloud-executed agent automations triggered by schedule, GitHub events or authenticated API calls. See `products/tasks/docs/LOOPS.md`. */
 export const getLoop: API.OperationMethod<GetLoopRequest, LoopDTO, GetLoopError, PosthogOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(27) as any as S.Schema<GetLoopRequest>,
-    output: __S(22) as any as S.Schema<LoopDTO>,
+    input: GetLoopRequest,
+    output: LoopDTO,
     errors: [NotFound],
     protocol: PosthogProtocol,
     retry: Retry.Retry,
@@ -515,8 +707,8 @@ export const getLoopsRun: API.OperationMethod<
   GetLoopsRunError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28) as any as S.Schema<GetLoopsRunRequest>,
-  output: __S(31) as any as S.Schema<LoopRunPage>,
+  input: GetLoopsRunRequest,
+  output: LoopRunPage,
   errors: [NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -530,8 +722,8 @@ export const listLoops: API.OperationMethod<
   ListLoopsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32) as any as S.Schema<ListLoopsRequest>,
-  output: __S(34) as any as S.Schema<PaginatedLoopDTOList>,
+  input: ListLoopsRequest,
+  output: PaginatedLoopDTOList,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -545,8 +737,8 @@ export const loopsDestroy: API.OperationMethod<
   LoopsDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35) as any as S.Schema<LoopsDestroyRequest>,
-  output: __S(36) as any as S.Schema<LoopsDestroyResponse>,
+  input: LoopsDestroyRequest,
+  output: LoopsDestroyResponse,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -560,8 +752,8 @@ export const loopsTriggerCreate: API.OperationMethod<
   LoopsTriggerCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37) as any as S.Schema<LoopsTriggerCreateRequest>,
-  output: __S(26) as any as S.Schema<LoopFireResult>,
+  input: LoopsTriggerCreateRequest,
+  output: LoopFireResult,
   errors: [NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -575,8 +767,8 @@ export const updateLoopsPartial: API.OperationMethod<
   UpdateLoopsPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38) as any as S.Schema<UpdateLoopsPartialRequest>,
-  output: __S(22) as any as S.Schema<LoopDTO>,
+  input: UpdateLoopsPartialRequest,
+  output: LoopDTO,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -590,8 +782,8 @@ export const updateLoopsSkillBundle: API.OperationMethod<
   UpdateLoopsSkillBundleError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41) as any as S.Schema<UpdateLoopsSkillBundleRequest>,
-  output: __S(22) as any as S.Schema<LoopDTO>,
+  input: UpdateLoopsSkillBundleRequest,
+  output: LoopDTO,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -608,7 +800,7 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "LoopRepositoryEntry" });
     case 1:
-      return S.Array(__S(0));
+      return S.Array(LoopRepositoryEntry);
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -623,20 +815,20 @@ function __c0(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          mcp_installation_ids: S.optional(__S(3)),
-          posthog_mcp_scopes: S.optional(S.String),
+          mcp_installation_ids: S.optional(LoopConnectorsMcpInstallationIdsList),
+          posthog_mcp_scopes: S.optional(PosthogMcpScopesEnum),
         }),
       ).annotate({ identifier: "LoopConnectors" });
     case 5:
-      return S.Array(S.String);
+      return S.Array(EventsEnum);
     case 6:
       return S.Record(S.String, S.Unknown);
     case 7:
       return S.suspend(() =>
         S.Struct({
           enabled: S.optional(S.Boolean),
-          events: S.optional(__S(5)),
-          params: S.optional(__S(6)),
+          events: S.optional(LoopNotificationChannelEventsList),
+          params: S.optional(LoopNotificationChannelParamsMap),
         }),
       ).annotate({ identifier: "LoopNotificationChannel" });
   }
@@ -646,9 +838,9 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          push: S.optional(__S(7)),
-          email: S.optional(__S(7)),
-          slack: S.optional(__S(7)),
+          push: S.optional(LoopNotificationChannel),
+          email: S.optional(LoopNotificationChannel),
+          slack: S.optional(LoopNotificationChannel),
         }),
       ).annotate({ identifier: "LoopNotifications" });
     case 1:
@@ -664,20 +856,20 @@ function __c1(j: number): any {
         S.Struct({
           channel_id: S.String,
           name: S.String,
-          outputs: S.optional(__S(9)),
+          outputs: S.optional(LoopContextOutputsWrite),
         }),
       ).annotate({ identifier: "LoopContextTargetWrite" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
-          type: S.String,
+          type: LoopTriggerTypeEnum,
           enabled: S.optional(S.Boolean),
           config: S.optional(S.Unknown),
         }),
       ).annotate({ identifier: "LoopTriggerWrite" });
     case 4:
-      return S.Array(__S(11));
+      return S.Array(LoopTriggerWrite);
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -685,26 +877,26 @@ function __c1(j: number): any {
           name: S.String,
           description: S.optional(S.String),
           take_ownership: S.optional(S.Boolean),
-          visibility: S.optional(S.String),
+          visibility: S.optional(LoopWriteVisibilityEnum),
           instructions: S.String,
-          runtime_adapter: S.String,
+          runtime_adapter: RuntimeAdapterEnum,
           model: S.optional(S.String),
-          reasoning_effort: S.optional(S.NullOr(S.String)),
-          repositories: S.optional(__S(1)),
+          reasoning_effort: S.optional(S.NullOr(ReasoningEffortEnum)),
+          repositories: S.optional(CreateLoopRequestRepositoriesList),
           sandbox_environment: S.optional(S.NullOr(S.String)),
           enabled: S.optional(S.Boolean),
-          overlap_policy: S.optional(S.String),
-          behaviors: S.optional(__S(2)),
-          connectors: S.optional(__S(4)),
-          notifications: S.optional(__S(8)),
-          context_target: S.optional(S.NullOr(__S(10))),
-          triggers: S.optional(__S(12)),
+          overlap_policy: S.optional(OverlapPolicyEnum),
+          behaviors: S.optional(LoopBehaviors),
+          connectors: S.optional(LoopConnectors),
+          notifications: S.optional(LoopNotifications),
+          context_target: S.optional(S.NullOr(LoopContextTargetWrite)),
+          triggers: S.optional(CreateLoopRequestTriggersList),
         }).pipe(T.Http({ method: "POST", uri: "/api/projects/{project_id}/loops/", code: 200 })),
       ).annotate({ identifier: "CreateLoopRequest" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          mcp_installation_ids: S.optional(__S(3)),
+          mcp_installation_ids: S.optional(LoopConnectorsDTOMcpInstallationIdsList),
           posthog_mcp_scopes: S.optional(S.String),
         }),
       ).annotate({ identifier: "LoopConnectorsDTO" });
@@ -712,8 +904,8 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           enabled: S.optional(S.Boolean),
-          events: S.optional(__S(3)),
-          params: S.optional(__S(6)),
+          events: S.optional(LoopNotificationChannelDTOEventsList),
+          params: S.optional(LoopNotificationChannelDTOParamsMap),
         }),
       ).annotate({
         identifier: "LoopNotificationChannelDTO",
@@ -725,15 +917,15 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          push: __S(15),
-          email: __S(15),
-          slack: __S(15),
+          push: LoopNotificationChannelDTO,
+          email: LoopNotificationChannelDTO,
+          slack: LoopNotificationChannelDTO,
         }),
       ).annotate({ identifier: "LoopNotificationsDTO" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          outputs: __S(9),
+          outputs: LoopContextOutputsDTO,
           channel_id: S.String,
           name: S.String,
         }),
@@ -745,7 +937,7 @@ function __c2(j: number): any {
           loop_id: S.String,
           type: S.String,
           enabled: S.Boolean,
-          config: __S(6),
+          config: LoopTriggerDTOConfigMap,
           schedule_sync_status: S.NullOr(S.String),
           last_fired_at: S.NullOr(S.String),
           created_at: S.String,
@@ -753,7 +945,7 @@ function __c2(j: number): any {
         }),
       ).annotate({ identifier: "LoopTriggerDTO" });
     case 3:
-      return S.Array(__S(18));
+      return S.Array(LoopTriggerDTO);
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -766,7 +958,7 @@ function __c2(j: number): any {
         }),
       ).annotate({ identifier: "LoopSkillBundleDTO" });
     case 5:
-      return S.Array(__S(20));
+      return S.Array(LoopSkillBundleDTO);
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -780,15 +972,15 @@ function __c2(j: number): any {
           runtime_adapter: S.String,
           model: S.String,
           reasoning_effort: S.NullOr(S.String),
-          repositories: __S(1),
+          repositories: LoopDTORepositoriesList,
           sandbox_environment_id: S.NullOr(S.String),
           enabled: S.Boolean,
           disabled_reason: S.NullOr(S.String),
           overlap_policy: S.String,
-          behaviors: __S(2),
-          connectors: __S(14),
-          notifications: __S(16),
-          context_target: S.optional(S.NullOr(__S(17))),
+          behaviors: LoopBehaviorsDTO,
+          connectors: LoopConnectorsDTO,
+          notifications: LoopNotificationsDTO,
+          context_target: S.optional(S.NullOr(LoopContextTargetDTO)),
           internal: S.Boolean,
           origin_product: S.String,
           last_run_at: S.NullOr(S.String),
@@ -797,8 +989,8 @@ function __c2(j: number): any {
           consecutive_failures: S.Number,
           created_at: S.String,
           updated_at: S.String,
-          triggers: __S(19),
-          skill_bundles: __S(21),
+          triggers: LoopDTOTriggersList,
+          skill_bundles: LoopDTOSkillBundlesList,
         }),
       ).annotate({ identifier: "LoopDTO" });
     case 7:
@@ -806,7 +998,7 @@ function __c2(j: number): any {
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
-          trigger_type: S.optional(S.String),
+          trigger_type: S.optional(LoopTriggerTypeEnum),
           payload: S.optional(S.Unknown),
         }).pipe(
           T.Http({
@@ -843,7 +1035,7 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           created: S.Boolean,
-          reason: S.String,
+          reason: LoopFireResultReasonEnum,
           task_id: S.NullOr(S.String),
           task_run_id: S.NullOr(S.String),
         }),
@@ -864,7 +1056,7 @@ function __c3(j: number): any {
           id: S.String.pipe(T.Label()),
           cursor: S.optional(S.String.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
-          status: S.optional(S.String.pipe(T.Query())),
+          status: S.optional(GetLoopsRunRequestStatus.pipe(T.Query())),
         }).pipe(
           T.Http({ method: "GET", uri: "/api/projects/{project_id}/loops/{id}/runs/", code: 200 }),
         ),
@@ -879,17 +1071,17 @@ function __c3(j: number): any {
           environment: S.String,
           branch: S.NullOr(S.String),
           error_message: S.NullOr(S.String),
-          output: S.NullOr(__S(6)),
+          output: S.NullOr(LoopRunDTOOutputMap),
           created_at: S.String,
           completed_at: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "LoopRunDTO" });
     case 6:
-      return S.Array(__S(29));
+      return S.Array(LoopRunDTO);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          results: __S(30),
+          results: LoopRunPageResultsList,
           next_cursor: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "LoopRunPage" });
@@ -906,14 +1098,14 @@ function __c4(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/api/projects/{project_id}/loops/", code: 200 })),
       ).annotate({ identifier: "ListLoopsRequest" });
     case 1:
-      return S.Array(__S(22));
+      return S.Array(LoopDTO);
     case 2:
       return S.suspend(() =>
         S.Struct({
           count: S.Number,
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: __S(33),
+          results: PaginatedLoopDTOListResultsList,
           max_loops_per_team: S.optional(S.Number),
           total_loop_count: S.optional(S.Number),
         }),
@@ -936,7 +1128,7 @@ function __c4(j: number): any {
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
-          body: S.optional(__S(6).pipe(T.HttpBody())),
+          body: S.optional(LoopsTriggerCreateRequestBodyMap.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -955,20 +1147,20 @@ function __c4(j: number): any {
           name: S.optional(S.String),
           description: S.optional(S.String),
           take_ownership: S.optional(S.Boolean),
-          visibility: S.optional(S.String),
+          visibility: S.optional(LoopWriteVisibilityEnum),
           instructions: S.optional(S.String),
-          runtime_adapter: S.optional(S.String),
+          runtime_adapter: S.optional(RuntimeAdapterEnum),
           model: S.optional(S.String),
-          reasoning_effort: S.optional(S.NullOr(S.String)),
-          repositories: S.optional(__S(1)),
+          reasoning_effort: S.optional(S.NullOr(ReasoningEffortEnum)),
+          repositories: S.optional(UpdateLoopsPartialRequestRepositoriesList),
           sandbox_environment: S.optional(S.NullOr(S.String)),
           enabled: S.optional(S.Boolean),
-          overlap_policy: S.optional(S.String),
-          behaviors: S.optional(__S(2)),
-          connectors: S.optional(__S(4)),
-          notifications: S.optional(__S(8)),
-          context_target: S.optional(S.NullOr(__S(10))),
-          triggers: S.optional(__S(12)),
+          overlap_policy: S.optional(OverlapPolicyEnum),
+          behaviors: S.optional(LoopBehaviors),
+          connectors: S.optional(LoopConnectors),
+          notifications: S.optional(LoopNotifications),
+          context_target: S.optional(S.NullOr(LoopContextTargetWrite)),
+          triggers: S.optional(UpdateLoopsPartialRequestTriggersList),
         }).pipe(
           T.Http({ method: "PATCH", uri: "/api/projects/{project_id}/loops/{id}/", code: 200 }),
         ),
@@ -980,9 +1172,9 @@ function __c4(j: number): any {
         S.Struct({
           file_name: S.String,
           skill_name: S.String,
-          skill_source: S.String,
+          skill_source: SkillSourceEnum,
           content_sha256: S.String,
-          bundle_format: S.String,
+          bundle_format: BundleFormatEnum,
           content_base64: S.String,
         }),
       ).annotate({ identifier: "LoopSkillBundleUpload" });
@@ -991,13 +1183,13 @@ function __c4(j: number): any {
 function __c5(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(39));
+      return S.Array(LoopSkillBundleUpload);
     case 1:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
-          bundles: __S(40),
+          bundles: UpdateLoopsSkillBundleRequestBundlesList,
         }).pipe(
           T.Http({
             method: "PUT",
@@ -1008,26 +1200,5 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "UpdateLoopsSkillBundleRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
   }
 }

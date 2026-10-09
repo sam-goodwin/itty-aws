@@ -7,8 +7,6 @@ import { UnknownDaytonaError } from "../errors.ts";
 import { DaytonaProtocol, type DaytonaOpError, type DaytonaOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { DaytonaOpError, DaytonaOpContext };
 
@@ -26,8 +24,15 @@ export interface CreateRegistryRequest {
   /** Registry project */
   project?: string;
 }
+const CreateRegistryRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<CreateRegistryRequest>;
+
 /** Registry type */
 export type DockerRegistryRegistryType = "internal" | "organization" | "transient" | "backup";
+const DockerRegistryRegistryType = S.String;
+
 export interface DockerRegistry2 {
   /** Registry ID */
   id: string;
@@ -46,25 +51,44 @@ export interface DockerRegistry2 {
   /** Last update timestamp */
   updatedAt: string;
 }
+const DockerRegistry2 = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<DockerRegistry2>;
+
 export interface DeleteRegistryRequest {
   /** ID of the docker registry */
   id: string;
   /** Use with JWT to specify the organization ID */
   xDaytonaOrganizationID?: string;
 }
+const DeleteRegistryRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<DeleteRegistryRequest>;
+
 export interface DeleteRegistryResponse {}
+const DeleteRegistryResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<DeleteRegistryResponse>;
+
 export interface GetRegistryRequest {
   /** ID of the docker registry */
   id: string;
   /** Use with JWT to specify the organization ID */
   xDaytonaOrganizationID?: string;
 }
+const GetRegistryRequest = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<GetRegistryRequest>;
+
 export interface GetTransientPushAccessRequest {
   /** ID of the region where the snapshot will be available (defaults to organization default region) */
   regionId?: string;
   /** Use with JWT to specify the organization ID */
   xDaytonaOrganizationID?: string;
 }
+const GetTransientPushAccessRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<GetTransientPushAccessRequest>;
+
 export interface RegistryPushAccessDto {
   /** Temporary username for registry authentication */
   username: string;
@@ -79,12 +103,32 @@ export interface RegistryPushAccessDto {
   /** Token expiration time in ISO format */
   expiresAt: string;
 }
+const RegistryPushAccessDto = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<RegistryPushAccessDto>;
+
 export interface ListRegistriesRequest {
   /** Use with JWT to specify the organization ID */
   xDaytonaOrganizationID?: string;
 }
+const ListRegistriesRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<ListRegistriesRequest>;
+
 export type ListRegistriesResponseBodyList = Array<DockerRegistry2>;
+const ListRegistriesResponseBodyList = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<ListRegistriesResponseBodyList>;
+
 export type ListRegistriesResponse = ListRegistriesResponseBodyList;
+const ListRegistriesResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<ListRegistriesResponse>;
+
 export interface UpdateRegistryRequest {
   /** ID of the docker registry */
   id: string;
@@ -101,6 +145,11 @@ export interface UpdateRegistryRequest {
   /** Registry project */
   project?: string;
 }
+const UpdateRegistryRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<UpdateRegistryRequest>;
+
 export type CreateRegistryError = DaytonaOpError;
 /** Create registry */
 export const createRegistry: API.OperationMethod<
@@ -109,8 +158,8 @@ export const createRegistry: API.OperationMethod<
   CreateRegistryError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<CreateRegistryRequest>,
-  output: __S(1) as any as S.Schema<DockerRegistry2>,
+  input: CreateRegistryRequest,
+  output: DockerRegistry2,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -124,8 +173,8 @@ export const deleteRegistry: API.OperationMethod<
   DeleteRegistryError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2) as any as S.Schema<DeleteRegistryRequest>,
-  output: __S(3) as any as S.Schema<DeleteRegistryResponse>,
+  input: DeleteRegistryRequest,
+  output: DeleteRegistryResponse,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -139,8 +188,8 @@ export const getRegistry: API.OperationMethod<
   GetRegistryError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4) as any as S.Schema<GetRegistryRequest>,
-  output: __S(1) as any as S.Schema<DockerRegistry2>,
+  input: GetRegistryRequest,
+  output: DockerRegistry2,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -154,8 +203,8 @@ export const getTransientPushAccess: API.OperationMethod<
   GetTransientPushAccessError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5) as any as S.Schema<GetTransientPushAccessRequest>,
-  output: __S(6) as any as S.Schema<RegistryPushAccessDto>,
+  input: GetTransientPushAccessRequest,
+  output: RegistryPushAccessDto,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -169,8 +218,8 @@ export const listRegistries: API.OperationMethod<
   ListRegistriesError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7) as any as S.Schema<ListRegistriesRequest>,
-  output: __S(9) as any as S.Schema<ListRegistriesResponse>,
+  input: ListRegistriesRequest,
+  output: ListRegistriesResponse,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -184,8 +233,8 @@ export const updateRegistry: API.OperationMethod<
   UpdateRegistryError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10) as any as S.Schema<UpdateRegistryRequest>,
-  output: __S(1) as any as S.Schema<DockerRegistry2>,
+  input: UpdateRegistryRequest,
+  output: DockerRegistry2,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -213,7 +262,7 @@ function __c0(j: number): any {
           url: S.String,
           username: S.String,
           project: S.String,
-          registryType: S.String,
+          registryType: DockerRegistryRegistryType,
           createdAt: S.String,
           updatedAt: S.String,
         }),
@@ -267,9 +316,9 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(1));
+      return S.Array(DockerRegistry2);
     case 1:
-      return S.suspend(() => __S(8).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => ListRegistriesResponseBodyList.pipe(T.RawResponseRoot())).annotate({
         identifier: "ListRegistriesResponse",
       });
     case 2:
@@ -284,18 +333,5 @@ function __c1(j: number): any {
           project: S.optional(S.String),
         }).pipe(T.Http({ method: "PATCH", uri: "/docker-registry/{id}", code: 200 })),
       ).annotate({ identifier: "UpdateRegistryRequest" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
   }
 }

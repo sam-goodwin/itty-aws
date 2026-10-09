@@ -12,8 +12,6 @@ import {
 } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { CloudflareOpError, CloudflareOpContext };
 
@@ -74,12 +72,25 @@ export class ZoneNotFound
   ) {}
 
 export type CreateRequestBundleMethod = "ubiquitous" | "optimal" | "force";
+const CreateRequestBundleMethod = S.String;
+
 export type CreateRequestDeploy = "staging" | "production";
+const CreateRequestDeploy = S.String;
+
 export type CreateRequestGeoRestrictionsLabel = "us" | "eu" | "highest_security";
+const CreateRequestGeoRestrictionsLabel = S.String;
+
 export interface CreateRequestGeoRestrictions {
   label?: CreateRequestGeoRestrictionsLabel | (string & {});
 }
+const CreateRequestGeoRestrictions = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<CreateRequestGeoRestrictions>;
+
 export type CreateRequestType = "legacy_custom" | "sni_custom";
+const CreateRequestType = S.String;
+
 export interface CreateCustomCertificateRequest {
   /** Identifier. */
   zoneId: string;
@@ -100,20 +111,49 @@ export interface CreateCustomCertificateRequest {
   /** The type 'legacy_custom' enables support for legacy clients which do not include SNI in the TLS handshake. */
   type?: CreateRequestType | (string & {});
 }
+const CreateCustomCertificateRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<CreateCustomCertificateRequest>;
+
 export type CreateResponseBundleMethod = "ubiquitous" | "optimal" | "force";
+const CreateResponseBundleMethod = S.String;
+
 export type CreateResponseGeoRestrictionsLabel = "us" | "eu" | "highest_security";
+const CreateResponseGeoRestrictionsLabel = S.String;
+
 export interface CreateResponseGeoRestrictions {
   label?: CreateResponseGeoRestrictionsLabel | null;
 }
+const CreateResponseGeoRestrictions = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<CreateResponseGeoRestrictions>;
+
 export type CreateResponseHostsList = Array<string>;
+const CreateResponseHostsList = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<CreateResponseHostsList>;
+
 export type CreateResponseKeylessServerPermissionsList = Array<string>;
+const CreateResponseKeylessServerPermissionsList =
+  CreateResponseHostsList as any as S.Schema<CreateResponseKeylessServerPermissionsList>;
+
 export type CreateResponseKeylessServerStatus = "active" | "deleted";
+const CreateResponseKeylessServerStatus = S.String;
+
 export interface CreateResponseKeylessServerTunnel {
   /** Private IP of the Key Server Host. */
   privateIp: string;
   /** Cloudflare Tunnel Virtual Network ID. */
   vnetId: string;
 }
+const CreateResponseKeylessServerTunnel = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<CreateResponseKeylessServerTunnel>;
+
 export interface CreateResponseKeylessServer {
   /** Keyless certificate identifier tag. */
   id: string;
@@ -136,7 +176,14 @@ export interface CreateResponseKeylessServer {
   /** Configuration for using Keyless SSL through a Cloudflare Tunnel. */
   tunnel?: CreateResponseKeylessServerTunnel | null;
 }
+const CreateResponseKeylessServer = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<CreateResponseKeylessServer>;
+
 export type CreateResponseStatus = "active" | "expired" | "deleted" | "pending" | "initializing";
+const CreateResponseStatus = S.String;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateCustomCertificateResponse {
   /** Custom certificate identifier tag. */
@@ -168,31 +215,63 @@ export interface CreateCustomCertificateResponse {
   /** When the certificate was uploaded to Cloudflare. */
   uploadedOn?: string | null;
 }
+const CreateCustomCertificateResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<CreateCustomCertificateResponse>;
+
 export interface DeleteCustomCertificateRequest {
   /** Identifier. */
   zoneId: string;
   /** Custom certificate identifier tag. */
   customCertificateId: string;
 }
+const DeleteCustomCertificateRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<DeleteCustomCertificateRequest>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DeleteCustomCertificateResponse {
   /** Custom certificate identifier tag. */
   id?: string | null;
 }
+const DeleteCustomCertificateResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<DeleteCustomCertificateResponse>;
+
 export interface GetCustomCertificateRequest {
   /** Identifier. */
   zoneId: string;
   /** Custom certificate identifier tag. */
   customCertificateId: string;
 }
+const GetCustomCertificateRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<GetCustomCertificateRequest>;
+
 export type GetResponseBundleMethod = "ubiquitous" | "optimal" | "force";
+const GetResponseBundleMethod = S.String;
+
 export type GetResponseGeoRestrictionsLabel = "us" | "eu" | "highest_security";
 export interface GetResponseGeoRestrictions {
   label?: GetResponseGeoRestrictionsLabel | null;
 }
+const GetResponseGeoRestrictions =
+  CreateResponseGeoRestrictions as any as S.Schema<GetResponseGeoRestrictions>;
+
 export type GetResponseHostsList = Array<string>;
+const GetResponseHostsList = CreateResponseHostsList as any as S.Schema<GetResponseHostsList>;
+
 export type GetResponseKeylessServerPermissionsList = Array<string>;
+const GetResponseKeylessServerPermissionsList =
+  CreateResponseHostsList as any as S.Schema<GetResponseKeylessServerPermissionsList>;
+
 export type GetResponseKeylessServerStatus = "active" | "deleted";
+const GetResponseKeylessServerStatus = S.String;
+
 export type GetResponseKeylessServerTunnel = CreateResponseKeylessServerTunnel;
 export interface GetResponseKeylessServer {
   /** Keyless certificate identifier tag. */
@@ -216,7 +295,14 @@ export interface GetResponseKeylessServer {
   /** Configuration for using Keyless SSL through a Cloudflare Tunnel. */
   tunnel?: CreateResponseKeylessServerTunnel | null;
 }
+const GetResponseKeylessServer = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<GetResponseKeylessServer>;
+
 export type GetResponseStatus = "active" | "expired" | "deleted" | "pending" | "initializing";
+const GetResponseStatus = S.String;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetCustomCertificateResponse {
   /** Custom certificate identifier tag. */
@@ -248,8 +334,17 @@ export interface GetCustomCertificateResponse {
   /** When the certificate was uploaded to Cloudflare. */
   uploadedOn?: string | null;
 }
+const GetCustomCertificateResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<GetCustomCertificateResponse>;
+
 export type ListRequestMatch = "any" | "all";
+const ListRequestMatch = S.String;
+
 export type ListRequestStatus = "active" | "expired" | "deleted" | "pending" | "initializing";
+const ListRequestStatus = S.String;
+
 export interface ListCustomCertificatesRequest {
   /** Identifier. */
   zoneId: string;
@@ -262,14 +357,31 @@ export interface ListCustomCertificatesRequest {
   /** Status of the zone's custom SSL. */
   status?: ListRequestStatus | (string & {});
 }
+const ListCustomCertificatesRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<ListCustomCertificatesRequest>;
+
 export type ListResultItemBundleMethod = "ubiquitous" | "optimal" | "force";
+const ListResultItemBundleMethod = S.String;
+
 export type ListResultItemGeoRestrictionsLabel = "us" | "eu" | "highest_security";
 export interface ListResultItemGeoRestrictions {
   label?: ListResultItemGeoRestrictionsLabel | null;
 }
+const ListResultItemGeoRestrictions =
+  CreateResponseGeoRestrictions as any as S.Schema<ListResultItemGeoRestrictions>;
+
 export type ListResultItemHostsList = Array<string>;
+const ListResultItemHostsList = CreateResponseHostsList as any as S.Schema<ListResultItemHostsList>;
+
 export type ListResultItemKeylessServerPermissionsList = Array<string>;
+const ListResultItemKeylessServerPermissionsList =
+  CreateResponseHostsList as any as S.Schema<ListResultItemKeylessServerPermissionsList>;
+
 export type ListResultItemKeylessServerStatus = "active" | "deleted";
+const ListResultItemKeylessServerStatus = S.String;
+
 export type ListResultItemKeylessServerTunnel = CreateResponseKeylessServerTunnel;
 export interface ListResultItemKeylessServer {
   /** Keyless certificate identifier tag. */
@@ -293,7 +405,14 @@ export interface ListResultItemKeylessServer {
   /** Configuration for using Keyless SSL through a Cloudflare Tunnel. */
   tunnel?: CreateResponseKeylessServerTunnel | null;
 }
+const ListResultItemKeylessServer = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<ListResultItemKeylessServer>;
+
 export type ListResultItemStatus = "active" | "expired" | "deleted" | "pending" | "initializing";
+const ListResultItemStatus = S.String;
+
 export interface ListResultItem {
   /** Custom certificate identifier tag. */
   id: string;
@@ -324,19 +443,35 @@ export interface ListResultItem {
   /** When the certificate was uploaded to Cloudflare. */
   uploadedOn?: string | null;
 }
+const ListResultItem = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<ListResultItem>;
+
 export type ListResultList = Array<ListResultItem>;
+const ListResultList = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<ListResultList>;
+
 export interface ListCustomCertificatesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result: ListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
+const ListCustomCertificatesResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<ListCustomCertificatesResponse>;
+
 export type EditRequestBundleMethod = "ubiquitous" | "optimal" | "force";
+const EditRequestBundleMethod = S.String;
+
 export type EditRequestDeploy = "staging" | "production";
+const EditRequestDeploy = S.String;
+
 export type EditRequestGeoRestrictionsLabel = "us" | "eu" | "highest_security";
 export interface EditRequestGeoRestrictions {
   label?: EditRequestGeoRestrictionsLabel | (string & {});
 }
+const EditRequestGeoRestrictions =
+  CreateRequestGeoRestrictions as any as S.Schema<EditRequestGeoRestrictions>;
+
 export interface PatchCustomCertificateRequest {
   /** Identifier. */
   zoneId: string;
@@ -357,14 +492,31 @@ export interface PatchCustomCertificateRequest {
   /** The zone's private key. Not required if custom_csr_id is provided, in which case the private key is retrieved from the CSR record held by Cloudflare. */
   privateKey?: string;
 }
+const PatchCustomCertificateRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<PatchCustomCertificateRequest>;
+
 export type EditResponseBundleMethod = "ubiquitous" | "optimal" | "force";
+const EditResponseBundleMethod = S.String;
+
 export type EditResponseGeoRestrictionsLabel = "us" | "eu" | "highest_security";
 export interface EditResponseGeoRestrictions {
   label?: EditResponseGeoRestrictionsLabel | null;
 }
+const EditResponseGeoRestrictions =
+  CreateResponseGeoRestrictions as any as S.Schema<EditResponseGeoRestrictions>;
+
 export type EditResponseHostsList = Array<string>;
+const EditResponseHostsList = CreateResponseHostsList as any as S.Schema<EditResponseHostsList>;
+
 export type EditResponseKeylessServerPermissionsList = Array<string>;
+const EditResponseKeylessServerPermissionsList =
+  CreateResponseHostsList as any as S.Schema<EditResponseKeylessServerPermissionsList>;
+
 export type EditResponseKeylessServerStatus = "active" | "deleted";
+const EditResponseKeylessServerStatus = S.String;
+
 export type EditResponseKeylessServerTunnel = CreateResponseKeylessServerTunnel;
 export interface EditResponseKeylessServer {
   /** Keyless certificate identifier tag. */
@@ -388,7 +540,14 @@ export interface EditResponseKeylessServer {
   /** Configuration for using Keyless SSL through a Cloudflare Tunnel. */
   tunnel?: CreateResponseKeylessServerTunnel | null;
 }
+const EditResponseKeylessServer = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<EditResponseKeylessServer>;
+
 export type EditResponseStatus = "active" | "expired" | "deleted" | "pending" | "initializing";
+const EditResponseStatus = S.String;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PatchCustomCertificateResponse {
   /** Custom certificate identifier tag. */
@@ -420,28 +579,58 @@ export interface PatchCustomCertificateResponse {
   /** When the certificate was uploaded to Cloudflare. */
   uploadedOn?: string | null;
 }
+const PatchCustomCertificateResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<PatchCustomCertificateResponse>;
+
 export interface PrioritizeUpdateRequestCertificatesItem {
   /** Custom certificate identifier tag. */
   id?: string;
   /** The order/priority in which the certificate will be used in a request. The higher priority will break ties across overlapping 'legacy_custom' certificates, but 'legacy_custom' certificates will always supercede 'sni_custom' certificates. */
   priority?: number;
 }
+const PrioritizeUpdateRequestCertificatesItem = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<PrioritizeUpdateRequestCertificatesItem>;
+
 export type PrioritizeUpdateRequestCertificatesList =
   Array<PrioritizeUpdateRequestCertificatesItem>;
+const PrioritizeUpdateRequestCertificatesList = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<PrioritizeUpdateRequestCertificatesList>;
+
 export interface PutPrioritizeRequest {
   /** Identifier. */
   zoneId: string;
   /** Array of ordered certificates. */
   certificates: PrioritizeUpdateRequestCertificatesList;
 }
+const PutPrioritizeRequest = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<PutPrioritizeRequest>;
+
 export type PrioritizeUpdateResultItemBundleMethod = "ubiquitous" | "optimal" | "force";
+const PrioritizeUpdateResultItemBundleMethod = S.String;
+
 export type PrioritizeUpdateResultItemGeoRestrictionsLabel = "us" | "eu" | "highest_security";
 export interface PrioritizeUpdateResultItemGeoRestrictions {
   label?: PrioritizeUpdateResultItemGeoRestrictionsLabel | null;
 }
+const PrioritizeUpdateResultItemGeoRestrictions =
+  CreateResponseGeoRestrictions as any as S.Schema<PrioritizeUpdateResultItemGeoRestrictions>;
+
 export type PrioritizeUpdateResultItemHostsList = Array<string>;
+const PrioritizeUpdateResultItemHostsList =
+  CreateResponseHostsList as any as S.Schema<PrioritizeUpdateResultItemHostsList>;
+
 export type PrioritizeUpdateResultItemKeylessServerPermissionsList = Array<string>;
+const PrioritizeUpdateResultItemKeylessServerPermissionsList =
+  CreateResponseHostsList as any as S.Schema<PrioritizeUpdateResultItemKeylessServerPermissionsList>;
+
 export type PrioritizeUpdateResultItemKeylessServerStatus = "active" | "deleted";
+const PrioritizeUpdateResultItemKeylessServerStatus = S.String;
+
 export type PrioritizeUpdateResultItemKeylessServerTunnel = CreateResponseKeylessServerTunnel;
 export interface PrioritizeUpdateResultItemKeylessServer {
   /** Keyless certificate identifier tag. */
@@ -465,12 +654,19 @@ export interface PrioritizeUpdateResultItemKeylessServer {
   /** Configuration for using Keyless SSL through a Cloudflare Tunnel. */
   tunnel?: CreateResponseKeylessServerTunnel | null;
 }
+const PrioritizeUpdateResultItemKeylessServer = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<PrioritizeUpdateResultItemKeylessServer>;
+
 export type PrioritizeUpdateResultItemStatus =
   | "active"
   | "expired"
   | "deleted"
   | "pending"
   | "initializing";
+const PrioritizeUpdateResultItemStatus = S.String;
+
 export interface PrioritizeUpdateResultItem {
   /** Custom certificate identifier tag. */
   id: string;
@@ -501,13 +697,28 @@ export interface PrioritizeUpdateResultItem {
   /** When the certificate was uploaded to Cloudflare. */
   uploadedOn?: string | null;
 }
+const PrioritizeUpdateResultItem = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<PrioritizeUpdateResultItem>;
+
 export type PrioritizeUpdateResultList = Array<PrioritizeUpdateResultItem>;
+const PrioritizeUpdateResultList = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<PrioritizeUpdateResultList>;
+
 export interface PutPrioritizeResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result: PrioritizeUpdateResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
+const PutPrioritizeResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<PutPrioritizeResponse>;
+
 export type CreateCustomCertificateError = PlanLevelNotAllowed | Forbidden | CloudflareOpError;
 /** Upload a new SSL certificate for a zone. */
 export const createCustomCertificate: API.OperationMethod<
@@ -516,8 +727,8 @@ export const createCustomCertificate: API.OperationMethod<
   CreateCustomCertificateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1) as any as S.Schema<CreateCustomCertificateRequest>,
-  output: __S(6) as any as S.Schema<CreateCustomCertificateResponse>,
+  input: CreateCustomCertificateRequest,
+  output: CreateCustomCertificateResponse,
   errors: [PlanLevelNotAllowed, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -535,8 +746,8 @@ export const deleteCustomCertificate: API.OperationMethod<
   DeleteCustomCertificateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7) as any as S.Schema<DeleteCustomCertificateRequest>,
-  output: __S(8) as any as S.Schema<DeleteCustomCertificateResponse>,
+  input: DeleteCustomCertificateRequest,
+  output: DeleteCustomCertificateResponse,
   errors: [
     CustomCertificateNotFound,
     PlanLevelNotAllowed,
@@ -560,8 +771,8 @@ export const getCustomCertificate: API.OperationMethod<
   GetCustomCertificateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9) as any as S.Schema<GetCustomCertificateRequest>,
-  output: __S(11) as any as S.Schema<GetCustomCertificateResponse>,
+  input: GetCustomCertificateRequest,
+  output: GetCustomCertificateResponse,
   errors: [
     CustomCertificateNotFound,
     PlanLevelNotAllowed,
@@ -587,8 +798,8 @@ export const listCustomCertificates: API.PaginatedOperationMethod<
   ListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(12) as any as S.Schema<ListCustomCertificatesRequest>,
-    output: __S(16) as any as S.Schema<ListCustomCertificatesResponse>,
+    input: ListCustomCertificatesRequest,
+    output: ListCustomCertificatesResponse,
     errors: [PlanLevelNotAllowed, ZoneNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -615,8 +826,8 @@ export const patchCustomCertificate: API.OperationMethod<
   PatchCustomCertificateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17) as any as S.Schema<PatchCustomCertificateRequest>,
-  output: __S(19) as any as S.Schema<PatchCustomCertificateResponse>,
+  input: PatchCustomCertificateRequest,
+  output: PatchCustomCertificateResponse,
   errors: [
     CustomCertificateNotFound,
     PlanLevelNotAllowed,
@@ -638,8 +849,8 @@ export const putPrioritize: API.PaginatedOperationMethod<
   PrioritizeUpdateResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(22) as any as S.Schema<PutPrioritizeRequest>,
-    output: __S(26) as any as S.Schema<PutPrioritizeResponse>,
+    input: PutPrioritizeRequest,
+    output: PutPrioritizeResponse,
     errors: [PlanLevelNotAllowed, Forbidden, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -654,7 +865,7 @@ function __c0(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          label: S.optional(S.String),
+          label: S.optional(CreateRequestGeoRestrictionsLabel),
         }),
       ).annotate({
         identifier: "CreateRequestGeoRestrictions",
@@ -664,13 +875,15 @@ function __c0(j: number): any {
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
           certificate: S.String,
-          bundleMethod: S.optional(S.String.pipe(T.Body("bundle_method"))),
+          bundleMethod: S.optional(CreateRequestBundleMethod.pipe(T.Body("bundle_method"))),
           customCsrId: S.optional(S.String.pipe(T.Body("custom_csr_id"))),
-          deploy: S.optional(S.String),
-          geoRestrictions: S.optional(__S(0).pipe(T.Body("geo_restrictions"))),
+          deploy: S.optional(CreateRequestDeploy),
+          geoRestrictions: S.optional(
+            CreateRequestGeoRestrictions.pipe(T.Body("geo_restrictions")),
+          ),
           policy: S.optional(S.String),
           privateKey: S.optional(S.String.pipe(T.Body("private_key"))),
-          type: S.optional(S.String),
+          type: S.optional(CreateRequestType),
         })
           .pipe(T.Http({ method: "POST", uri: "/zones/{zone_id}/custom_certificates", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -680,7 +893,7 @@ function __c0(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          label: S.optional(S.NullOr(S.String)),
+          label: S.optional(S.NullOr(CreateResponseGeoRestrictionsLabel)),
         }),
       ).annotate({
         identifier: "CreateResponseGeoRestrictions",
@@ -705,10 +918,10 @@ function __c0(j: number): any {
           host: S.String,
           modifiedOn: S.String.pipe(T.Body("modified_on")),
           name: S.String,
-          permissions: __S(3),
+          permissions: CreateResponseKeylessServerPermissionsList,
           port: S.Number,
-          status: S.String,
-          tunnel: S.optional(S.NullOr(__S(4))),
+          status: CreateResponseKeylessServerStatus,
+          tunnel: S.optional(S.NullOr(CreateResponseKeylessServerTunnel)),
         }),
       ).annotate({
         identifier: "CreateResponseKeylessServer",
@@ -718,18 +931,24 @@ function __c0(j: number): any {
         S.Struct({
           id: S.String,
           zoneId: S.String.pipe(T.Body("zone_id")),
-          bundleMethod: S.optional(S.NullOr(S.String).pipe(T.Body("bundle_method"))),
+          bundleMethod: S.optional(
+            S.NullOr(CreateResponseBundleMethod).pipe(T.Body("bundle_method")),
+          ),
           customCsrId: S.optional(S.NullOr(S.String).pipe(T.Body("custom_csr_id"))),
           expiresOn: S.optional(S.NullOr(S.String).pipe(T.Body("expires_on"))),
-          geoRestrictions: S.optional(S.NullOr(__S(2)).pipe(T.Body("geo_restrictions"))),
-          hosts: S.optional(S.NullOr(__S(3))),
+          geoRestrictions: S.optional(
+            S.NullOr(CreateResponseGeoRestrictions).pipe(T.Body("geo_restrictions")),
+          ),
+          hosts: S.optional(S.NullOr(CreateResponseHostsList)),
           issuer: S.optional(S.NullOr(S.String)),
-          keylessServer: S.optional(S.NullOr(__S(5)).pipe(T.Body("keyless_server"))),
+          keylessServer: S.optional(
+            S.NullOr(CreateResponseKeylessServer).pipe(T.Body("keyless_server")),
+          ),
           modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
           policyRestrictions: S.optional(S.NullOr(S.String).pipe(T.Body("policy_restrictions"))),
           priority: S.optional(S.NullOr(S.Number)),
           signature: S.optional(S.NullOr(S.String)),
-          status: S.optional(S.NullOr(S.String)),
+          status: S.optional(S.NullOr(CreateResponseStatus)),
           uploadedOn: S.optional(S.NullOr(S.String).pipe(T.Body("uploaded_on"))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
@@ -790,10 +1009,10 @@ function __c1(j: number): any {
           host: S.String,
           modifiedOn: S.String.pipe(T.Body("modified_on")),
           name: S.String,
-          permissions: __S(3),
+          permissions: GetResponseKeylessServerPermissionsList,
           port: S.Number,
-          status: S.String,
-          tunnel: S.optional(S.NullOr(__S(4))),
+          status: GetResponseKeylessServerStatus,
+          tunnel: S.optional(S.NullOr(CreateResponseKeylessServerTunnel)),
         }),
       ).annotate({ identifier: "GetResponseKeylessServer" });
     case 3:
@@ -801,18 +1020,22 @@ function __c1(j: number): any {
         S.Struct({
           id: S.String,
           zoneId: S.String.pipe(T.Body("zone_id")),
-          bundleMethod: S.optional(S.NullOr(S.String).pipe(T.Body("bundle_method"))),
+          bundleMethod: S.optional(S.NullOr(GetResponseBundleMethod).pipe(T.Body("bundle_method"))),
           customCsrId: S.optional(S.NullOr(S.String).pipe(T.Body("custom_csr_id"))),
           expiresOn: S.optional(S.NullOr(S.String).pipe(T.Body("expires_on"))),
-          geoRestrictions: S.optional(S.NullOr(__S(2)).pipe(T.Body("geo_restrictions"))),
-          hosts: S.optional(S.NullOr(__S(3))),
+          geoRestrictions: S.optional(
+            S.NullOr(GetResponseGeoRestrictions).pipe(T.Body("geo_restrictions")),
+          ),
+          hosts: S.optional(S.NullOr(GetResponseHostsList)),
           issuer: S.optional(S.NullOr(S.String)),
-          keylessServer: S.optional(S.NullOr(__S(10)).pipe(T.Body("keyless_server"))),
+          keylessServer: S.optional(
+            S.NullOr(GetResponseKeylessServer).pipe(T.Body("keyless_server")),
+          ),
           modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
           policyRestrictions: S.optional(S.NullOr(S.String).pipe(T.Body("policy_restrictions"))),
           priority: S.optional(S.NullOr(S.Number)),
           signature: S.optional(S.NullOr(S.String)),
-          status: S.optional(S.NullOr(S.String)),
+          status: S.optional(S.NullOr(GetResponseStatus)),
           uploadedOn: S.optional(S.NullOr(S.String).pipe(T.Body("uploaded_on"))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
@@ -822,10 +1045,10 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
-          match: S.optional(S.String.pipe(T.Query())),
+          match: S.optional(ListRequestMatch.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
           perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
-          status: S.optional(S.String.pipe(T.Query())),
+          status: S.optional(ListRequestStatus.pipe(T.Query())),
         })
           .pipe(T.Http({ method: "GET", uri: "/zones/{zone_id}/custom_certificates", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -841,10 +1064,10 @@ function __c1(j: number): any {
           host: S.String,
           modifiedOn: S.String.pipe(T.Body("modified_on")),
           name: S.String,
-          permissions: __S(3),
+          permissions: ListResultItemKeylessServerPermissionsList,
           port: S.Number,
-          status: S.String,
-          tunnel: S.optional(S.NullOr(__S(4))),
+          status: ListResultItemKeylessServerStatus,
+          tunnel: S.optional(S.NullOr(CreateResponseKeylessServerTunnel)),
         }),
       ).annotate({
         identifier: "ListResultItemKeylessServer",
@@ -854,23 +1077,29 @@ function __c1(j: number): any {
         S.Struct({
           id: S.String,
           zoneId: S.String.pipe(T.Body("zone_id")),
-          bundleMethod: S.optional(S.NullOr(S.String).pipe(T.Body("bundle_method"))),
+          bundleMethod: S.optional(
+            S.NullOr(ListResultItemBundleMethod).pipe(T.Body("bundle_method")),
+          ),
           customCsrId: S.optional(S.NullOr(S.String).pipe(T.Body("custom_csr_id"))),
           expiresOn: S.optional(S.NullOr(S.String).pipe(T.Body("expires_on"))),
-          geoRestrictions: S.optional(S.NullOr(__S(2)).pipe(T.Body("geo_restrictions"))),
-          hosts: S.optional(S.NullOr(__S(3))),
+          geoRestrictions: S.optional(
+            S.NullOr(ListResultItemGeoRestrictions).pipe(T.Body("geo_restrictions")),
+          ),
+          hosts: S.optional(S.NullOr(ListResultItemHostsList)),
           issuer: S.optional(S.NullOr(S.String)),
-          keylessServer: S.optional(S.NullOr(__S(13)).pipe(T.Body("keyless_server"))),
+          keylessServer: S.optional(
+            S.NullOr(ListResultItemKeylessServer).pipe(T.Body("keyless_server")),
+          ),
           modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
           policyRestrictions: S.optional(S.NullOr(S.String).pipe(T.Body("policy_restrictions"))),
           priority: S.optional(S.NullOr(S.Number)),
           signature: S.optional(S.NullOr(S.String)),
-          status: S.optional(S.NullOr(S.String)),
+          status: S.optional(S.NullOr(ListResultItemStatus)),
           uploadedOn: S.optional(S.NullOr(S.String).pipe(T.Body("uploaded_on"))),
         }),
       ).annotate({ identifier: "ListResultItem" });
     case 7:
-      return S.Array(__S(14));
+      return S.Array(ListResultItem);
   }
 }
 function __c2(j: number): any {
@@ -878,7 +1107,7 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          result: __S(15).pipe(T.EnvelopePayload()),
+          result: ListResultList.pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
@@ -889,11 +1118,11 @@ function __c2(j: number): any {
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
           customCertificateId: S.String.pipe(T.Label("custom_certificate_id")),
-          bundleMethod: S.optional(S.String.pipe(T.Body("bundle_method"))),
+          bundleMethod: S.optional(EditRequestBundleMethod.pipe(T.Body("bundle_method"))),
           certificate: S.optional(S.String),
           customCsrId: S.optional(S.String.pipe(T.Body("custom_csr_id"))),
-          deploy: S.optional(S.String),
-          geoRestrictions: S.optional(__S(0).pipe(T.Body("geo_restrictions"))),
+          deploy: S.optional(EditRequestDeploy),
+          geoRestrictions: S.optional(EditRequestGeoRestrictions.pipe(T.Body("geo_restrictions"))),
           policy: S.optional(S.String),
           privateKey: S.optional(S.String.pipe(T.Body("private_key"))),
         })
@@ -917,10 +1146,10 @@ function __c2(j: number): any {
           host: S.String,
           modifiedOn: S.String.pipe(T.Body("modified_on")),
           name: S.String,
-          permissions: __S(3),
+          permissions: EditResponseKeylessServerPermissionsList,
           port: S.Number,
-          status: S.String,
-          tunnel: S.optional(S.NullOr(__S(4))),
+          status: EditResponseKeylessServerStatus,
+          tunnel: S.optional(S.NullOr(CreateResponseKeylessServerTunnel)),
         }),
       ).annotate({
         identifier: "EditResponseKeylessServer",
@@ -930,18 +1159,24 @@ function __c2(j: number): any {
         S.Struct({
           id: S.String,
           zoneId: S.String.pipe(T.Body("zone_id")),
-          bundleMethod: S.optional(S.NullOr(S.String).pipe(T.Body("bundle_method"))),
+          bundleMethod: S.optional(
+            S.NullOr(EditResponseBundleMethod).pipe(T.Body("bundle_method")),
+          ),
           customCsrId: S.optional(S.NullOr(S.String).pipe(T.Body("custom_csr_id"))),
           expiresOn: S.optional(S.NullOr(S.String).pipe(T.Body("expires_on"))),
-          geoRestrictions: S.optional(S.NullOr(__S(2)).pipe(T.Body("geo_restrictions"))),
-          hosts: S.optional(S.NullOr(__S(3))),
+          geoRestrictions: S.optional(
+            S.NullOr(EditResponseGeoRestrictions).pipe(T.Body("geo_restrictions")),
+          ),
+          hosts: S.optional(S.NullOr(EditResponseHostsList)),
           issuer: S.optional(S.NullOr(S.String)),
-          keylessServer: S.optional(S.NullOr(__S(18)).pipe(T.Body("keyless_server"))),
+          keylessServer: S.optional(
+            S.NullOr(EditResponseKeylessServer).pipe(T.Body("keyless_server")),
+          ),
           modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
           policyRestrictions: S.optional(S.NullOr(S.String).pipe(T.Body("policy_restrictions"))),
           priority: S.optional(S.NullOr(S.Number)),
           signature: S.optional(S.NullOr(S.String)),
-          status: S.optional(S.NullOr(S.String)),
+          status: S.optional(S.NullOr(EditResponseStatus)),
           uploadedOn: S.optional(S.NullOr(S.String).pipe(T.Body("uploaded_on"))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
@@ -957,12 +1192,12 @@ function __c2(j: number): any {
         identifier: "PrioritizeUpdateRequestCertificatesItem",
       });
     case 5:
-      return S.Array(__S(20));
+      return S.Array(PrioritizeUpdateRequestCertificatesItem);
     case 6:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
-          certificates: __S(21),
+          certificates: PrioritizeUpdateRequestCertificatesList,
         })
           .pipe(
             T.Http({
@@ -982,10 +1217,10 @@ function __c2(j: number): any {
           host: S.String,
           modifiedOn: S.String.pipe(T.Body("modified_on")),
           name: S.String,
-          permissions: __S(3),
+          permissions: PrioritizeUpdateResultItemKeylessServerPermissionsList,
           port: S.Number,
-          status: S.String,
-          tunnel: S.optional(S.NullOr(__S(4))),
+          status: PrioritizeUpdateResultItemKeylessServerStatus,
+          tunnel: S.optional(S.NullOr(CreateResponseKeylessServerTunnel)),
         }),
       ).annotate({
         identifier: "PrioritizeUpdateResultItemKeylessServer",
@@ -999,48 +1234,37 @@ function __c3(j: number): any {
         S.Struct({
           id: S.String,
           zoneId: S.String.pipe(T.Body("zone_id")),
-          bundleMethod: S.optional(S.NullOr(S.String).pipe(T.Body("bundle_method"))),
+          bundleMethod: S.optional(
+            S.NullOr(PrioritizeUpdateResultItemBundleMethod).pipe(T.Body("bundle_method")),
+          ),
           customCsrId: S.optional(S.NullOr(S.String).pipe(T.Body("custom_csr_id"))),
           expiresOn: S.optional(S.NullOr(S.String).pipe(T.Body("expires_on"))),
-          geoRestrictions: S.optional(S.NullOr(__S(2)).pipe(T.Body("geo_restrictions"))),
-          hosts: S.optional(S.NullOr(__S(3))),
+          geoRestrictions: S.optional(
+            S.NullOr(PrioritizeUpdateResultItemGeoRestrictions).pipe(T.Body("geo_restrictions")),
+          ),
+          hosts: S.optional(S.NullOr(PrioritizeUpdateResultItemHostsList)),
           issuer: S.optional(S.NullOr(S.String)),
-          keylessServer: S.optional(S.NullOr(__S(23)).pipe(T.Body("keyless_server"))),
+          keylessServer: S.optional(
+            S.NullOr(PrioritizeUpdateResultItemKeylessServer).pipe(T.Body("keyless_server")),
+          ),
           modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
           policyRestrictions: S.optional(S.NullOr(S.String).pipe(T.Body("policy_restrictions"))),
           priority: S.optional(S.NullOr(S.Number)),
           signature: S.optional(S.NullOr(S.String)),
-          status: S.optional(S.NullOr(S.String)),
+          status: S.optional(S.NullOr(PrioritizeUpdateResultItemStatus)),
           uploadedOn: S.optional(S.NullOr(S.String).pipe(T.Body("uploaded_on"))),
         }),
       ).annotate({
         identifier: "PrioritizeUpdateResultItem",
       });
     case 1:
-      return S.Array(__S(24));
+      return S.Array(PrioritizeUpdateResultItem);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          result: __S(25).pipe(T.EnvelopePayload()),
+          result: PrioritizeUpdateResultList.pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "PutPrioritizeResponse" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
   }
 }

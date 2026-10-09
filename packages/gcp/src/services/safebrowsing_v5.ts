@@ -7,8 +7,6 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -39,6 +37,8 @@ export class NotFound
   ) {}
 
 export type StringList = Array<string>;
+const StringList = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<StringList>;
+
 export interface BatchGetHashListsRequest {
   /** Sets the maximum number of entries that the client is willing to have in the local database for the list. (The server MAY cause the client to store less than this number of entries.) If omitted or zero, no database size limit is set. */
   "sizeConstraints.maxDatabaseEntries"?: number;
@@ -49,6 +49,11 @@ export interface BatchGetHashListsRequest {
   /** The versions of the hash list that the client already has. If this is the first time the client is fetching the hash lists, the field should be left empty. Otherwise, the client should supply the versions previously received from the server. The client MUST NOT manipulate those bytes. The client need not send the versions in the same order as the corresponding list names. The client may send fewer or more versions in a request than there are names. However the client MUST NOT send multiple versions that correspond to the same name; if it did, the client will get an error. Historical note: in V4 of the API, this was called `states`; it is now renamed to `version` for clarity. */
   version?: StringList;
 }
+const BatchGetHashListsRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<BatchGetHashListsRequest>;
+
 /** Same as `RiceDeltaEncoded32Bit` except this encodes 64-bit numbers. */
 export interface GoogleSecuritySafebrowsingV5RiceDeltaEncoded64Bit {
   /** The encoded deltas that are encoded using the Golomb-Rice coder. */
@@ -60,6 +65,11 @@ export interface GoogleSecuritySafebrowsingV5RiceDeltaEncoded64Bit {
   /** The Golomb-Rice parameter. This parameter is guaranteed to be between 35 and 62, inclusive. */
   riceParameter?: number;
 }
+const GoogleSecuritySafebrowsingV5RiceDeltaEncoded64Bit = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<GoogleSecuritySafebrowsingV5RiceDeltaEncoded64Bit>;
+
 /** The Rice-Golomb encoded data. Used for either hashes or removal indices. It is guaranteed that every hash or index here has the same length, and this length is exactly 32 bits. Generally speaking, if we sort all the entries lexicographically, we will find that the higher order bits tend not to change as frequently as lower order bits. This means that if we also take the adjacent difference between entries, the higher order bits have a high probability of being zero. This exploits this high probability of zero by essentially choosing a certain number of bits; all bits more significant than this are likely to be zero so we use unary encoding. See the `rice_parameter` field. Historical note: the Rice-delta encoding was first used in V4 of this API. In V5, two significant improvements were made: firstly, the Rice-delta encoding is now available with hash prefixes longer than 4 bytes; secondly, the encoded data are now treated as big-endian so as to avoid a costly sorting step. */
 export interface GoogleSecuritySafebrowsingV5RiceDeltaEncoded32Bit {
   /** The number of entries that are delta encoded in the encoded data. If only a single integer was encoded, this will be zero and the single value will be stored in `first_value`. */
@@ -71,6 +81,11 @@ export interface GoogleSecuritySafebrowsingV5RiceDeltaEncoded32Bit {
   /** The Golomb-Rice parameter. This parameter is guaranteed to be between 3 and 30, inclusive. */
   riceParameter?: number;
 }
+const GoogleSecuritySafebrowsingV5RiceDeltaEncoded32Bit = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<GoogleSecuritySafebrowsingV5RiceDeltaEncoded32Bit>;
+
 /** Same as `RiceDeltaEncoded32Bit` except this encodes 128-bit numbers. */
 export interface GoogleSecuritySafebrowsingV5RiceDeltaEncoded128Bit {
   /** The number of entries that are delta encoded in the encoded data. If only a single integer was encoded, this will be zero and the single value will be stored in `first_value`. */
@@ -84,19 +99,34 @@ export interface GoogleSecuritySafebrowsingV5RiceDeltaEncoded128Bit {
   /** The lower 64 bits of the first entry in the encoded data (hashes). If the field is empty, the lower 64 bits are all zero. */
   firstValueLo?: string;
 }
+const GoogleSecuritySafebrowsingV5RiceDeltaEncoded128Bit = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<GoogleSecuritySafebrowsingV5RiceDeltaEncoded128Bit>;
+
 export type GoogleSecuritySafebrowsingV5HashListMetadataLikelySafeTypesItemEnum =
   | "LIKELY_SAFE_TYPE_UNSPECIFIED"
   | "GENERAL_BROWSING"
   | "CSD"
   | "DOWNLOAD";
+const GoogleSecuritySafebrowsingV5HashListMetadataLikelySafeTypesItemEnum = S.String;
+
 export type GoogleSecuritySafebrowsingV5HashListMetadataLikelySafeTypesItemEnumList =
   Array<GoogleSecuritySafebrowsingV5HashListMetadataLikelySafeTypesItemEnum>;
+const GoogleSecuritySafebrowsingV5HashListMetadataLikelySafeTypesItemEnumList =
+  /*@__PURE__*/ __L.at(
+    __c0,
+    5,
+  ) as any as S.Schema<GoogleSecuritySafebrowsingV5HashListMetadataLikelySafeTypesItemEnumList>;
+
 export type GoogleSecuritySafebrowsingV5HashListMetadataHashLengthEnum =
   | "HASH_LENGTH_UNSPECIFIED"
   | "FOUR_BYTES"
   | "EIGHT_BYTES"
   | "SIXTEEN_BYTES"
   | "THIRTY_TWO_BYTES";
+const GoogleSecuritySafebrowsingV5HashListMetadataHashLengthEnum = S.String;
+
 export type GoogleSecuritySafebrowsingV5HashListMetadataThreatTypesItemEnum =
   | "THREAT_TYPE_UNSPECIFIED"
   | "MALWARE"
@@ -105,6 +135,9 @@ export type GoogleSecuritySafebrowsingV5HashListMetadataThreatTypesItemEnum =
   | "POTENTIALLY_HARMFUL_APPLICATION";
 export type GoogleSecuritySafebrowsingV5HashListMetadataThreatTypesItemEnumList =
   Array<GoogleSecuritySafebrowsingV5HashListMetadataThreatTypesItemEnum>;
+const GoogleSecuritySafebrowsingV5HashListMetadataThreatTypesItemEnumList =
+  GoogleSecuritySafebrowsingV5HashListMetadataLikelySafeTypesItemEnumList as any as S.Schema<GoogleSecuritySafebrowsingV5HashListMetadataThreatTypesItemEnumList>;
+
 /** Metadata about a particular hash list. */
 export interface GoogleSecuritySafebrowsingV5HashListMetadata {
   /** Unordered list. If not empty, this specifies that the hash list represents a list of likely safe hashes, and this enumerates the ways they are considered likely safe. This field is mutually exclusive with the threat_types field. */
@@ -116,6 +149,11 @@ export interface GoogleSecuritySafebrowsingV5HashListMetadata {
   /** A human-readable description about this list. Written in English. */
   description?: string;
 }
+const GoogleSecuritySafebrowsingV5HashListMetadata = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<GoogleSecuritySafebrowsingV5HashListMetadata>;
+
 /** Same as `RiceDeltaEncoded32Bit` except this encodes 256-bit numbers. */
 export interface GoogleSecuritySafebrowsingV5RiceDeltaEncoded256Bit {
   /** The last 64 bits of the first entry in the encoded data (hashes). If the field is empty, the last 64 bits are all zero. */
@@ -133,6 +171,11 @@ export interface GoogleSecuritySafebrowsingV5RiceDeltaEncoded256Bit {
   /** The 65 through 128th bits of the first entry in the encoded data (hashes). If the field is empty, the 65 through 128th bits are all zero. */
   firstValueSecondPart?: string;
 }
+const GoogleSecuritySafebrowsingV5RiceDeltaEncoded256Bit = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<GoogleSecuritySafebrowsingV5RiceDeltaEncoded256Bit>;
+
 /** A list of hashes identified by its name. */
 export interface GoogleSecuritySafebrowsingV5HashList {
   /** The 8-byte additions. */
@@ -158,12 +201,27 @@ export interface GoogleSecuritySafebrowsingV5HashList {
   /** The sorted list of all hashes, hashed again with SHA256. This is the checksum for the sorted list of all hashes present in the database after applying the provided update. In the case that no updates were provided, the server will omit this field to indicate that the client should use the existing checksum. */
   sha256Checksum?: string;
 }
+const GoogleSecuritySafebrowsingV5HashList = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<GoogleSecuritySafebrowsingV5HashList>;
+
 export type GoogleSecuritySafebrowsingV5HashListList = Array<GoogleSecuritySafebrowsingV5HashList>;
+const GoogleSecuritySafebrowsingV5HashListList = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<GoogleSecuritySafebrowsingV5HashListList>;
+
 /** The response containing multiple hash lists. */
 export interface GoogleSecuritySafebrowsingV5BatchGetHashListsResponse {
   /** The hash lists in the same order given in the request. */
   hashLists?: GoogleSecuritySafebrowsingV5HashListList;
 }
+const GoogleSecuritySafebrowsingV5BatchGetHashListsResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<GoogleSecuritySafebrowsingV5BatchGetHashListsResponse>;
+
 export interface GetHashListRequest {
   /** Sets the maximum number of entries that the client is willing to have in the local database for the list. (The server MAY cause the client to store less than this number of entries.) If omitted or zero, no database size limit is set. */
   "sizeConstraints.maxDatabaseEntries"?: number;
@@ -174,12 +232,16 @@ export interface GetHashListRequest {
   /** The maximum size in number of entries. The update will not contain more entries than this value, but it is possible that the update will contain fewer entries than this value. This MUST be at least 1024. If omitted or zero, no update size limit is set. */
   "sizeConstraints.maxUpdateEntries"?: number;
 }
+const GetHashListRequest = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<GetHashListRequest>;
+
 export interface ListHashListsRequest {
   /** A page token, received from a previous `ListHashLists` call. Provide this to retrieve the subsequent page. */
   pageToken?: string;
   /** The maximum number of hash lists to return. The service may return fewer than this value. If unspecified, the server will choose a page size, which may be larger than the number of hash lists so that pagination is not necessary. */
   pageSize?: number;
 }
+const ListHashListsRequest = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<ListHashListsRequest>;
+
 /** The response containing metadata about hash lists. */
 export interface GoogleSecuritySafebrowsingV5ListHashListsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
@@ -187,22 +249,34 @@ export interface GoogleSecuritySafebrowsingV5ListHashListsResponse {
   /** The hash lists in an arbitrary order. Only metadata about the hash lists will be included, not the contents. */
   hashLists?: GoogleSecuritySafebrowsingV5HashListList;
 }
+const GoogleSecuritySafebrowsingV5ListHashListsResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<GoogleSecuritySafebrowsingV5ListHashListsResponse>;
+
 export interface SearchHashesRequest {
   /** Required. The hash prefixes to be looked up. Clients MUST NOT send more than 1000 hash prefixes. However, following the URL processing procedure, clients SHOULD NOT need to send more than 30 hash prefixes. Currently each hash prefix is required to be exactly 4 bytes long. This MAY be relaxed in the future. */
   hashPrefixes?: StringList;
 }
+const SearchHashesRequest = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<SearchHashesRequest>;
+
 export type GoogleSecuritySafebrowsingV5FullHashFullHashDetailThreatTypeEnum =
   | "THREAT_TYPE_UNSPECIFIED"
   | "MALWARE"
   | "SOCIAL_ENGINEERING"
   | "UNWANTED_SOFTWARE"
   | "POTENTIALLY_HARMFUL_APPLICATION";
+const GoogleSecuritySafebrowsingV5FullHashFullHashDetailThreatTypeEnum = S.String;
+
 export type GoogleSecuritySafebrowsingV5FullHashFullHashDetailAttributesItemEnum =
   | "THREAT_ATTRIBUTE_UNSPECIFIED"
   | "CANARY"
   | "FRAME_ONLY";
 export type GoogleSecuritySafebrowsingV5FullHashFullHashDetailAttributesItemEnumList =
   Array<GoogleSecuritySafebrowsingV5FullHashFullHashDetailAttributesItemEnum>;
+const GoogleSecuritySafebrowsingV5FullHashFullHashDetailAttributesItemEnumList =
+  GoogleSecuritySafebrowsingV5HashListMetadataLikelySafeTypesItemEnumList as any as S.Schema<GoogleSecuritySafebrowsingV5FullHashFullHashDetailAttributesItemEnumList>;
+
 /** Details about a matching full hash. An important note about forward compatibility: new threat types and threat attributes may be added by the server at any time; those additions are considered minor version changes. It is Google's policy not to expose minor version numbers in APIs (see https://cloud.google.com/apis/design/versioning for the versioning policy), so clients MUST be prepared to receive `FullHashDetail` messages containing `ThreatType` enum values or `ThreatAttribute` enum values that are considered invalid by the client. Therefore, it is the client's responsibility to check for the validity of all `ThreatType` and `ThreatAttribute` enum values; if any value is considered invalid, the client MUST disregard the entire `FullHashDetail` message. */
 export interface GoogleSecuritySafebrowsingV5FullHashFullHashDetail {
   /** The type of threat. This field will never be empty. */
@@ -210,8 +284,18 @@ export interface GoogleSecuritySafebrowsingV5FullHashFullHashDetail {
   /** Unordered list. Additional attributes about those full hashes. This may be empty. */
   attributes?: GoogleSecuritySafebrowsingV5FullHashFullHashDetailAttributesItemEnumList;
 }
+const GoogleSecuritySafebrowsingV5FullHashFullHashDetail = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<GoogleSecuritySafebrowsingV5FullHashFullHashDetail>;
+
 export type GoogleSecuritySafebrowsingV5FullHashFullHashDetailList =
   Array<GoogleSecuritySafebrowsingV5FullHashFullHashDetail>;
+const GoogleSecuritySafebrowsingV5FullHashFullHashDetailList = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<GoogleSecuritySafebrowsingV5FullHashFullHashDetailList>;
+
 /** The full hash identified with one or more matches. */
 export interface GoogleSecuritySafebrowsingV5FullHash {
   /** The matching full hash. This is the SHA256 hash. The length will be exactly 32 bytes. */
@@ -219,7 +303,17 @@ export interface GoogleSecuritySafebrowsingV5FullHash {
   /** Unordered list. A repeated field identifying the details relevant to this full hash. */
   fullHashDetails?: GoogleSecuritySafebrowsingV5FullHashFullHashDetailList;
 }
+const GoogleSecuritySafebrowsingV5FullHash = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<GoogleSecuritySafebrowsingV5FullHash>;
+
 export type GoogleSecuritySafebrowsingV5FullHashList = Array<GoogleSecuritySafebrowsingV5FullHash>;
+const GoogleSecuritySafebrowsingV5FullHashList = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<GoogleSecuritySafebrowsingV5FullHashList>;
+
 /** The response returned after searching threat hashes. If nothing is found, the server will return an OK status (HTTP status code 200) with the `full_hashes` field empty, rather than returning a NOT_FOUND status (HTTP status code 404). **What's new in V5**: There is a separation between `FullHash` and `FullHashDetail`. In the case when a hash represents a site having multiple threats (e.g. both MALWARE and SOCIAL_ENGINEERING), the full hash does not need to be sent twice as in V4. Furthermore, the cache duration has been simplified into a single `cache_duration` field. */
 export interface GoogleSecuritySafebrowsingV5SearchHashesResponse {
   /** The client-side cache duration. The client MUST add this duration to the current time to determine the expiration time. The expiration time then applies to every hash prefix queried by the client in the request, regardless of how many full hashes are returned in the response. Even if the server returns no full hashes for a particular hash prefix, this fact MUST also be cached by the client. If and only if the field `full_hashes` is empty, the client MAY increase the `cache_duration` to determine a new expiration that is later than that specified by the server. In any case, the increased cache duration must not be longer than 24 hours. Important: the client MUST NOT assume that the server will return the same cache duration for all responses. The server MAY choose different cache durations for different responses depending on the situation. */
@@ -227,18 +321,32 @@ export interface GoogleSecuritySafebrowsingV5SearchHashesResponse {
   /** Unordered list. The unordered list of full hashes found. */
   fullHashes?: GoogleSecuritySafebrowsingV5FullHashList;
 }
+const GoogleSecuritySafebrowsingV5SearchHashesResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<GoogleSecuritySafebrowsingV5SearchHashesResponse>;
+
 export interface SearchUrlsRequest {
   /** Required. The URLs to be looked up. Clients MUST NOT send more than 50 URLs. */
   urls?: StringList;
 }
+const SearchUrlsRequest = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<SearchUrlsRequest>;
+
 export type GoogleSecuritySafebrowsingV5ThreatUrlThreatTypesItemEnum =
   | "THREAT_TYPE_UNSPECIFIED"
   | "MALWARE"
   | "SOCIAL_ENGINEERING"
   | "UNWANTED_SOFTWARE"
   | "POTENTIALLY_HARMFUL_APPLICATION";
+const GoogleSecuritySafebrowsingV5ThreatUrlThreatTypesItemEnum = S.String;
+
 export type GoogleSecuritySafebrowsingV5ThreatUrlThreatTypesItemEnumList =
   Array<GoogleSecuritySafebrowsingV5ThreatUrlThreatTypesItemEnum>;
+const GoogleSecuritySafebrowsingV5ThreatUrlThreatTypesItemEnumList = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<GoogleSecuritySafebrowsingV5ThreatUrlThreatTypesItemEnumList>;
+
 /** A URL matching one or more threats. */
 export interface GoogleSecuritySafebrowsingV5ThreatUrl {
   /** Unordered list. The unordered list of threat that the URL is classified as. */
@@ -246,8 +354,18 @@ export interface GoogleSecuritySafebrowsingV5ThreatUrl {
   /** The requested URL that was matched by one or more threats. */
   url?: string;
 }
+const GoogleSecuritySafebrowsingV5ThreatUrl = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<GoogleSecuritySafebrowsingV5ThreatUrl>;
+
 export type GoogleSecuritySafebrowsingV5ThreatUrlList =
   Array<GoogleSecuritySafebrowsingV5ThreatUrl>;
+const GoogleSecuritySafebrowsingV5ThreatUrlList = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<GoogleSecuritySafebrowsingV5ThreatUrlList>;
+
 /** The response returned after searching threats matching the specified URLs. If nothing is found, the server will return an OK status (HTTP status code 200) with the `threats` field empty, rather than returning a NOT_FOUND status (HTTP status code 404). */
 export interface GoogleSecuritySafebrowsingV5SearchUrlsResponse {
   /** Unordered list. The unordered list of threat matches found. Each entry contains a URL and the threat types that were found matching that URL. The list size can be greater than the number of URLs in the request as the all expressions of the URL would've been considered. */
@@ -255,6 +373,11 @@ export interface GoogleSecuritySafebrowsingV5SearchUrlsResponse {
   /** The client-side cache duration. The client MUST add this duration to the current time to determine the expiration time. The expiration time then applies to every URL queried by the client in the request, regardless of how many URLs are returned in the response. Even if the server returns no matches for a particular URL, this fact MUST also be cached by the client. If and only if the field `threats` is empty, the client MAY increase the `cache_duration` to determine a new expiration that is later than that specified by the server. In any case, the increased cache duration must not be longer than 24 hours. Important: the client MUST NOT assume that the server will return the same cache duration for all responses. The server MAY choose different cache durations for different responses depending on the situation. */
   cacheDuration?: string;
 }
+const GoogleSecuritySafebrowsingV5SearchUrlsResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<GoogleSecuritySafebrowsingV5SearchUrlsResponse>;
+
 export type BatchGetHashListsError = NotFound | Forbidden | GcpOpError;
 /** Gets multiple hash lists at once. It is very common for a client to need to get multiple hash lists. Using this method is preferred over using the regular Get method multiple times. This is a standard batch Get method as defined by https://google.aip.dev/231 and the HTTP method is also GET. */
 export const batchGetHashLists: API.OperationMethod<
@@ -263,8 +386,8 @@ export const batchGetHashLists: API.OperationMethod<
   BatchGetHashListsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1) as any as S.Schema<BatchGetHashListsRequest>,
-  output: __S(10) as any as S.Schema<GoogleSecuritySafebrowsingV5BatchGetHashListsResponse>,
+  input: BatchGetHashListsRequest,
+  output: GoogleSecuritySafebrowsingV5BatchGetHashListsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -278,8 +401,8 @@ export const getHashList: API.OperationMethod<
   GetHashListError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11) as any as S.Schema<GetHashListRequest>,
-  output: __S(8) as any as S.Schema<GoogleSecuritySafebrowsingV5HashList>,
+  input: GetHashListRequest,
+  output: GoogleSecuritySafebrowsingV5HashList,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -294,8 +417,8 @@ export const listHashLists: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleSecuritySafebrowsingV5ListHashListsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(12) as any as S.Schema<ListHashListsRequest>,
-  output: __S(13) as any as S.Schema<GoogleSecuritySafebrowsingV5ListHashListsResponse>,
+  input: ListHashListsRequest,
+  output: GoogleSecuritySafebrowsingV5ListHashListsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -310,8 +433,8 @@ export const searchHashes: API.OperationMethod<
   SearchHashesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14) as any as S.Schema<SearchHashesRequest>,
-  output: __S(19) as any as S.Schema<GoogleSecuritySafebrowsingV5SearchHashesResponse>,
+  input: SearchHashesRequest,
+  output: GoogleSecuritySafebrowsingV5SearchHashesResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -325,8 +448,8 @@ export const searchUrls: API.OperationMethod<
   SearchUrlsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20) as any as S.Schema<SearchUrlsRequest>,
-  output: __S(24) as any as S.Schema<GoogleSecuritySafebrowsingV5SearchUrlsResponse>,
+  input: SearchUrlsRequest,
+  output: GoogleSecuritySafebrowsingV5SearchUrlsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -342,8 +465,8 @@ function __c0(j: number): any {
         S.Struct({
           "sizeConstraints.maxDatabaseEntries": S.optional(S.Number.pipe(T.Query())),
           "sizeConstraints.maxUpdateEntries": S.optional(S.Number.pipe(T.Query())),
-          names: S.optional(__S(0).pipe(T.Query())),
-          version: S.optional(__S(0).pipe(T.Query())),
+          names: S.optional(StringList.pipe(T.Query())),
+          version: S.optional(StringList.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -387,13 +510,17 @@ function __c0(j: number): any {
         identifier: "GoogleSecuritySafebrowsingV5RiceDeltaEncoded128Bit",
       });
     case 5:
-      return S.Array(S.String);
+      return S.Array(GoogleSecuritySafebrowsingV5HashListMetadataLikelySafeTypesItemEnum);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          likelySafeTypes: S.optional(__S(5)),
-          hashLength: S.optional(S.String),
-          threatTypes: S.optional(__S(5)),
+          likelySafeTypes: S.optional(
+            GoogleSecuritySafebrowsingV5HashListMetadataLikelySafeTypesItemEnumList,
+          ),
+          hashLength: S.optional(GoogleSecuritySafebrowsingV5HashListMetadataHashLengthEnum),
+          threatTypes: S.optional(
+            GoogleSecuritySafebrowsingV5HashListMetadataThreatTypesItemEnumList,
+          ),
           description: S.optional(S.String),
         }),
       ).annotate({
@@ -420,27 +547,27 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          additionsEightBytes: S.optional(__S(2)),
-          additionsFourBytes: S.optional(__S(3)),
-          additionsSixteenBytes: S.optional(__S(4)),
-          metadata: S.optional(__S(6)),
+          additionsEightBytes: S.optional(GoogleSecuritySafebrowsingV5RiceDeltaEncoded64Bit),
+          additionsFourBytes: S.optional(GoogleSecuritySafebrowsingV5RiceDeltaEncoded32Bit),
+          additionsSixteenBytes: S.optional(GoogleSecuritySafebrowsingV5RiceDeltaEncoded128Bit),
+          metadata: S.optional(GoogleSecuritySafebrowsingV5HashListMetadata),
           name: S.optional(S.String),
           version: S.optional(S.String),
           minimumWaitDuration: S.optional(S.String),
-          compressedRemovals: S.optional(__S(3)),
+          compressedRemovals: S.optional(GoogleSecuritySafebrowsingV5RiceDeltaEncoded32Bit),
           partialUpdate: S.optional(S.Boolean),
-          additionsThirtyTwoBytes: S.optional(__S(7)),
+          additionsThirtyTwoBytes: S.optional(GoogleSecuritySafebrowsingV5RiceDeltaEncoded256Bit),
           sha256Checksum: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleSecuritySafebrowsingV5HashList",
       });
     case 1:
-      return S.Array(__S(8));
+      return S.Array(GoogleSecuritySafebrowsingV5HashList);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          hashLists: S.optional(__S(9)),
+          hashLists: S.optional(GoogleSecuritySafebrowsingV5HashListList),
         }),
       ).annotate({
         identifier: "GoogleSecuritySafebrowsingV5BatchGetHashListsResponse",
@@ -477,7 +604,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          hashLists: S.optional(__S(9)),
+          hashLists: S.optional(GoogleSecuritySafebrowsingV5HashListList),
         }),
       ).annotate({
         identifier: "GoogleSecuritySafebrowsingV5ListHashListsResponse",
@@ -485,7 +612,7 @@ function __c1(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          hashPrefixes: S.optional(__S(0).pipe(T.Query())),
+          hashPrefixes: S.optional(StringList.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -497,8 +624,10 @@ function __c1(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          threatType: S.optional(S.String),
-          attributes: S.optional(__S(5)),
+          threatType: S.optional(GoogleSecuritySafebrowsingV5FullHashFullHashDetailThreatTypeEnum),
+          attributes: S.optional(
+            GoogleSecuritySafebrowsingV5FullHashFullHashDetailAttributesItemEnumList,
+          ),
         }),
       ).annotate({
         identifier: "GoogleSecuritySafebrowsingV5FullHashFullHashDetail",
@@ -508,23 +637,23 @@ function __c1(j: number): any {
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(15));
+      return S.Array(GoogleSecuritySafebrowsingV5FullHashFullHashDetail);
     case 1:
       return S.suspend(() =>
         S.Struct({
           fullHash: S.optional(S.String),
-          fullHashDetails: S.optional(__S(16)),
+          fullHashDetails: S.optional(GoogleSecuritySafebrowsingV5FullHashFullHashDetailList),
         }),
       ).annotate({
         identifier: "GoogleSecuritySafebrowsingV5FullHash",
       });
     case 2:
-      return S.Array(__S(17));
+      return S.Array(GoogleSecuritySafebrowsingV5FullHash);
     case 3:
       return S.suspend(() =>
         S.Struct({
           cacheDuration: S.optional(S.String),
-          fullHashes: S.optional(__S(18)),
+          fullHashes: S.optional(GoogleSecuritySafebrowsingV5FullHashList),
         }),
       ).annotate({
         identifier: "GoogleSecuritySafebrowsingV5SearchHashesResponse",
@@ -532,7 +661,7 @@ function __c2(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          urls: S.optional(__S(0).pipe(T.Query())),
+          urls: S.optional(StringList.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -542,18 +671,18 @@ function __c2(j: number): any {
         ),
       ).annotate({ identifier: "SearchUrlsRequest" });
     case 5:
-      return S.Array(S.String);
+      return S.Array(GoogleSecuritySafebrowsingV5ThreatUrlThreatTypesItemEnum);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          threatTypes: S.optional(__S(21)),
+          threatTypes: S.optional(GoogleSecuritySafebrowsingV5ThreatUrlThreatTypesItemEnumList),
           url: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleSecuritySafebrowsingV5ThreatUrl",
       });
     case 7:
-      return S.Array(__S(22));
+      return S.Array(GoogleSecuritySafebrowsingV5ThreatUrl);
   }
 }
 function __c3(j: number): any {
@@ -561,28 +690,11 @@ function __c3(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          threats: S.optional(__S(23)),
+          threats: S.optional(GoogleSecuritySafebrowsingV5ThreatUrlList),
           cacheDuration: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleSecuritySafebrowsingV5SearchUrlsResponse",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
   }
 }

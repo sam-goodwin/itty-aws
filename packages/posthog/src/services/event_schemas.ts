@@ -6,8 +6,6 @@ import * as S from "@distilled.cloud/core/schema";
 import { PosthogProtocol, type PosthogOpError, type PosthogOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { PosthogOpError, PosthogOpContext };
 
@@ -44,8 +42,15 @@ export interface CreateEventSchemaRequest {
   event_definition?: string;
   property_group_id?: string;
 }
+const CreateEventSchemaRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<CreateEventSchemaRequest>;
+
 /** * `DateTime` - DateTime * `String` - String * `Numeric` - Numeric * `Boolean` - Boolean * `Object` - Object */
 export type SchemaPropertyTypeEnum = "DateTime" | "String" | "Numeric" | "Boolean" | "Object";
+const SchemaPropertyTypeEnum = S.String;
+
 export interface SchemaPropertyGroupProperty {
   id?: string;
   name?: string;
@@ -56,13 +61,35 @@ export interface SchemaPropertyGroupProperty {
   created_at?: string;
   updated_at?: string;
 }
+const SchemaPropertyGroupProperty = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<SchemaPropertyGroupProperty>;
+
 export type SchemaPropertyGroupPropertiesList = Array<SchemaPropertyGroupProperty>;
+const SchemaPropertyGroupPropertiesList = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<SchemaPropertyGroupPropertiesList>;
+
 export interface EventDefinitionBasic {
   id?: string;
   name?: string;
 }
+const EventDefinitionBasic = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<EventDefinitionBasic>;
+
 export type SchemaPropertyGroupEventsList = Array<EventDefinitionBasic>;
+const SchemaPropertyGroupEventsList = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<SchemaPropertyGroupEventsList>;
+
 export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
+const UserBasicHedgehogConfigMap = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<UserBasicHedgehogConfigMap>;
+
 /** * `engineering` - Engineering * `data` - Data * `product` - Product Management * `founder` - Founder * `leadership` - Leadership * `marketing` - Marketing * `sales` - Sales / Success * `student` - Student * `other` - Other */
 export type RoleAtOrganizationEnum =
   | "engineering"
@@ -76,6 +103,8 @@ export type RoleAtOrganizationEnum =
   | "other";
 export type BlankEnum = "";
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
+const UserBasicRoleAtOrganization = S.Unknown as any as S.Schema<UserBasicRoleAtOrganization>;
+
 export interface UserBasic {
   id?: number;
   uuid?: string;
@@ -87,6 +116,8 @@ export interface UserBasic {
   hedgehog_config?: UserBasicHedgehogConfigMap | null;
   role_at_organization?: UserBasicRoleAtOrganization | null;
 }
+const UserBasic = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<UserBasic>;
+
 export interface SchemaPropertyGroup {
   id?: string;
   name?: string;
@@ -97,6 +128,8 @@ export interface SchemaPropertyGroup {
   updated_at?: string;
   created_by?: UserBasic | null;
 }
+const SchemaPropertyGroup = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<SchemaPropertyGroup>;
+
 export interface EventSchemaOutput {
   id?: string;
   event_definition?: string;
@@ -104,13 +137,25 @@ export interface EventSchemaOutput {
   created_at?: string;
   updated_at?: string;
 }
+const EventSchemaOutput = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<EventSchemaOutput>;
+
 export interface EventSchemasDestroyRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A UUID string identifying this event schema. */
   id: string;
 }
+const EventSchemasDestroyRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<EventSchemasDestroyRequest>;
+
 export interface EventSchemasDestroyResponse {}
+const EventSchemasDestroyResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<EventSchemasDestroyResponse>;
+
 export interface ListEventSchemasRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -119,13 +164,28 @@ export interface ListEventSchemasRequest {
   /** The initial index from which to return the results. */
   offset?: number;
 }
+const ListEventSchemasRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<ListEventSchemasRequest>;
+
 export type PaginatedEventSchemaListOutputResultsList = Array<EventSchemaOutput>;
+const PaginatedEventSchemaListOutputResultsList = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<PaginatedEventSchemaListOutputResultsList>;
+
 export interface PaginatedEventSchemaListOutput {
   count?: number;
   next?: string | null;
   previous?: string | null;
   results?: PaginatedEventSchemaListOutputResultsList;
 }
+const PaginatedEventSchemaListOutput = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<PaginatedEventSchemaListOutput>;
+
 export interface UpdateEventSchemaRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -134,6 +194,11 @@ export interface UpdateEventSchemaRequest {
   event_definition?: string;
   property_group_id?: string;
 }
+const UpdateEventSchemaRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<UpdateEventSchemaRequest>;
+
 export interface UpdateEventSchemasPartialRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -142,6 +207,11 @@ export interface UpdateEventSchemasPartialRequest {
   event_definition?: string;
   property_group_id?: string;
 }
+const UpdateEventSchemasPartialRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<UpdateEventSchemasPartialRequest>;
+
 export type CreateEventSchemaError = BadRequest | Forbidden | NotFound | PosthogOpError;
 export const createEventSchema: API.OperationMethod<
   CreateEventSchemaRequest,
@@ -149,8 +219,8 @@ export const createEventSchema: API.OperationMethod<
   CreateEventSchemaError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<CreateEventSchemaRequest>,
-  output: __S(8) as any as S.Schema<EventSchemaOutput>,
+  input: CreateEventSchemaRequest,
+  output: EventSchemaOutput,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -163,8 +233,8 @@ export const eventSchemasDestroy: API.OperationMethod<
   EventSchemasDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9) as any as S.Schema<EventSchemasDestroyRequest>,
-  output: __S(10) as any as S.Schema<EventSchemasDestroyResponse>,
+  input: EventSchemasDestroyRequest,
+  output: EventSchemasDestroyResponse,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -177,8 +247,8 @@ export const listEventSchemas: API.OperationMethod<
   ListEventSchemasError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11) as any as S.Schema<ListEventSchemasRequest>,
-  output: __S(13) as any as S.Schema<PaginatedEventSchemaListOutput>,
+  input: ListEventSchemasRequest,
+  output: PaginatedEventSchemaListOutput,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -191,8 +261,8 @@ export const updateEventSchema: API.OperationMethod<
   UpdateEventSchemaError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14) as any as S.Schema<UpdateEventSchemaRequest>,
-  output: __S(8) as any as S.Schema<EventSchemaOutput>,
+  input: UpdateEventSchemaRequest,
+  output: EventSchemaOutput,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -205,8 +275,8 @@ export const updateEventSchemasPartial: API.OperationMethod<
   UpdateEventSchemasPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15) as any as S.Schema<UpdateEventSchemasPartialRequest>,
-  output: __S(8) as any as S.Schema<EventSchemaOutput>,
+  input: UpdateEventSchemasPartialRequest,
+  output: EventSchemaOutput,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -230,7 +300,7 @@ function __c0(j: number): any {
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
-          property_type: S.optional(S.String),
+          property_type: S.optional(SchemaPropertyTypeEnum),
           is_required: S.optional(S.Boolean),
           is_optional_in_types: S.optional(S.Boolean),
           description: S.optional(S.String),
@@ -241,7 +311,7 @@ function __c0(j: number): any {
         identifier: "SchemaPropertyGroupProperty",
       });
     case 2:
-      return S.Array(__S(1));
+      return S.Array(SchemaPropertyGroupProperty);
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -250,7 +320,7 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "EventDefinitionBasic" });
     case 4:
-      return S.Array(__S(3));
+      return S.Array(EventDefinitionBasic);
     case 5:
       return S.Record(S.String, S.Unknown);
     case 6:
@@ -263,8 +333,8 @@ function __c0(j: number): any {
           last_name: S.optional(S.String),
           email: S.optional(S.String),
           is_email_verified: S.optional(S.NullOr(S.Boolean)),
-          hedgehog_config: S.optional(S.NullOr(__S(5))),
-          role_at_organization: S.optional(S.NullOr(S.Unknown)),
+          hedgehog_config: S.optional(S.NullOr(UserBasicHedgehogConfigMap)),
+          role_at_organization: S.optional(S.NullOr(UserBasicRoleAtOrganization)),
         }),
       ).annotate({ identifier: "UserBasic" });
     case 7:
@@ -273,11 +343,11 @@ function __c0(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           description: S.optional(S.String),
-          properties: S.optional(__S(2)),
-          events: S.optional(__S(4)),
+          properties: S.optional(SchemaPropertyGroupPropertiesList),
+          events: S.optional(SchemaPropertyGroupEventsList),
           created_at: S.optional(S.String),
           updated_at: S.optional(S.String),
-          created_by: S.optional(S.NullOr(__S(6))),
+          created_by: S.optional(S.NullOr(UserBasic)),
         }),
       ).annotate({ identifier: "SchemaPropertyGroup" });
   }
@@ -289,7 +359,7 @@ function __c1(j: number): any {
         S.Struct({
           id: S.optional(S.String),
           event_definition: S.optional(S.String),
-          property_group: S.optional(__S(7)),
+          property_group: S.optional(SchemaPropertyGroup),
           created_at: S.optional(S.String),
           updated_at: S.optional(S.String),
         }),
@@ -324,14 +394,14 @@ function __c1(j: number): any {
         ),
       ).annotate({ identifier: "ListEventSchemasRequest" });
     case 4:
-      return S.Array(__S(8));
+      return S.Array(EventSchemaOutput);
     case 5:
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.Number),
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: S.optional(__S(12)),
+          results: S.optional(PaginatedEventSchemaListOutputResultsList),
         }),
       ).annotate({
         identifier: "PaginatedEventSchemaListOutput",
@@ -368,18 +438,5 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "UpdateEventSchemasPartialRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
   }
 }

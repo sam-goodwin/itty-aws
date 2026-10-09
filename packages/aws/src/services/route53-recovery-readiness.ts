@@ -8,8 +8,6 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "Route53 Recovery Readiness",
   serviceShapeName: "Route53RecoveryReadiness",
@@ -117,11 +115,13 @@ export class ValidationException
 export type __listOf__string = string[];
 const __listOf__string = /*@__PURE__*/ __L.at(__c0, 0);
 export type Tags = { [key: string]: string | undefined };
+const Tags = /*@__PURE__*/ __L.at(__c0, 1);
 export interface CreateCellRequest {
   CellName?: string;
   Cells?: string[];
   Tags?: { [key: string]: string | undefined };
 }
+const CreateCellRequest = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<CreateCellRequest>;
 export type __stringMax256 = string;
 export type __stringMax64PatternAAZAZ09Z = string;
 export interface CreateCellResponse {
@@ -131,47 +131,75 @@ export interface CreateCellResponse {
   ParentReadinessScopes?: string[];
   Tags?: { [key: string]: string | undefined };
 }
+const CreateCellResponse = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<CreateCellResponse>;
 export type CrossAccountAuthorization = string;
 export interface CreateCrossAccountAuthorizationRequest {
   CrossAccountAuthorization?: string;
 }
+const CreateCrossAccountAuthorizationRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<CreateCrossAccountAuthorizationRequest>;
 export interface CreateCrossAccountAuthorizationResponse {
   CrossAccountAuthorization?: string;
 }
+const CreateCrossAccountAuthorizationResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<CreateCrossAccountAuthorizationResponse>;
 export interface CreateReadinessCheckRequest {
   ReadinessCheckName?: string;
   ResourceSetName?: string;
   Tags?: { [key: string]: string | undefined };
 }
+const CreateReadinessCheckRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<CreateReadinessCheckRequest>;
 export interface CreateReadinessCheckResponse {
   ReadinessCheckArn?: string;
   ReadinessCheckName?: string;
   ResourceSet?: string;
   Tags?: { [key: string]: string | undefined };
 }
+const CreateReadinessCheckResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<CreateReadinessCheckResponse>;
 export interface CreateRecoveryGroupRequest {
   Cells?: string[];
   RecoveryGroupName?: string;
   Tags?: { [key: string]: string | undefined };
 }
+const CreateRecoveryGroupRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<CreateRecoveryGroupRequest>;
 export interface CreateRecoveryGroupResponse {
   Cells?: string[];
   RecoveryGroupArn?: string;
   RecoveryGroupName?: string;
   Tags?: { [key: string]: string | undefined };
 }
+const CreateRecoveryGroupResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<CreateRecoveryGroupResponse>;
 export type __stringPatternAWSAZaZ09AZaZ09 = string;
 export interface NLBResource {
   Arn?: string;
 }
+const NLBResource = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<NLBResource>;
 export interface R53ResourceRecord {
   DomainName?: string;
   RecordSetId?: string;
 }
+const R53ResourceRecord = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<R53ResourceRecord>;
 export interface TargetResource {
   NLBResource?: NLBResource;
   R53Resource?: R53ResourceRecord;
 }
+const TargetResource = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<TargetResource>;
 export interface DNSTargetResource {
   DomainName?: string;
   HostedZoneArn?: string;
@@ -179,12 +207,14 @@ export interface DNSTargetResource {
   RecordType?: string;
   TargetResource?: TargetResource;
 }
+const DNSTargetResource = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<DNSTargetResource>;
 export interface Resource {
   ComponentId?: string;
   DnsTargetResource?: DNSTargetResource;
   ReadinessScopes?: string[];
   ResourceArn?: string;
 }
+const Resource = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<Resource>;
 export type __listOfResource = Resource[];
 const __listOfResource = /*@__PURE__*/ __L.at(__c1, 7);
 export interface CreateResourceSetRequest {
@@ -193,6 +223,10 @@ export interface CreateResourceSetRequest {
   Resources?: Resource[];
   Tags?: { [key: string]: string | undefined };
 }
+const CreateResourceSetRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<CreateResourceSetRequest>;
 export interface CreateResourceSetResponse {
   ResourceSetArn?: string;
   ResourceSetName?: string;
@@ -200,36 +234,72 @@ export interface CreateResourceSetResponse {
   Resources?: Resource[];
   Tags?: { [key: string]: string | undefined };
 }
+const CreateResourceSetResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<CreateResourceSetResponse>;
 export interface DeleteCellRequest {
   CellName: string;
 }
+const DeleteCellRequest = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<DeleteCellRequest>;
 export interface DeleteCellResponse {}
+const DeleteCellResponse = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<DeleteCellResponse>;
 export interface DeleteCrossAccountAuthorizationRequest {
   CrossAccountAuthorization: string;
 }
+const DeleteCrossAccountAuthorizationRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<DeleteCrossAccountAuthorizationRequest>;
 export interface DeleteCrossAccountAuthorizationResponse {}
+const DeleteCrossAccountAuthorizationResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<DeleteCrossAccountAuthorizationResponse>;
 export interface DeleteReadinessCheckRequest {
   ReadinessCheckName: string;
 }
+const DeleteReadinessCheckRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<DeleteReadinessCheckRequest>;
 export interface DeleteReadinessCheckResponse {}
+const DeleteReadinessCheckResponse =
+  DeleteCellResponse as any as S.Schema<DeleteReadinessCheckResponse>;
 export interface DeleteRecoveryGroupRequest {
   RecoveryGroupName: string;
 }
+const DeleteRecoveryGroupRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<DeleteRecoveryGroupRequest>;
 export interface DeleteRecoveryGroupResponse {}
+const DeleteRecoveryGroupResponse =
+  DeleteCellResponse as any as S.Schema<DeleteRecoveryGroupResponse>;
 export interface DeleteResourceSetRequest {
   ResourceSetName: string;
 }
+const DeleteResourceSetRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<DeleteResourceSetRequest>;
 export interface DeleteResourceSetResponse {}
+const DeleteResourceSetResponse = DeleteCellResponse as any as S.Schema<DeleteResourceSetResponse>;
 export type MaxResults = number;
 export interface GetArchitectureRecommendationsRequest {
   MaxResults?: number;
   NextToken?: string;
   RecoveryGroupName: string;
 }
+const GetArchitectureRecommendationsRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<GetArchitectureRecommendationsRequest>;
 export type LastAuditTimestamp = Date;
 export interface Recommendation {
   RecommendationText?: string;
 }
+const Recommendation = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<Recommendation>;
 export type __listOfRecommendation = Recommendation[];
 const __listOfRecommendation = /*@__PURE__*/ __L.at(__c3, 3);
 export interface GetArchitectureRecommendationsResponse {
@@ -237,9 +307,14 @@ export interface GetArchitectureRecommendationsResponse {
   NextToken?: string;
   Recommendations?: (Recommendation & { RecommendationText: string })[];
 }
+const GetArchitectureRecommendationsResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<GetArchitectureRecommendationsResponse>;
 export interface GetCellRequest {
   CellName: string;
 }
+const GetCellRequest = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<GetCellRequest>;
 export interface GetCellResponse {
   CellArn?: string;
   CellName?: string;
@@ -247,16 +322,27 @@ export interface GetCellResponse {
   ParentReadinessScopes?: string[];
   Tags?: { [key: string]: string | undefined };
 }
+const GetCellResponse = CreateCellResponse as any as S.Schema<GetCellResponse>;
 export interface GetCellReadinessSummaryRequest {
   CellName: string;
   MaxResults?: number;
   NextToken?: string;
 }
+const GetCellReadinessSummaryRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<GetCellReadinessSummaryRequest>;
 export type Readiness = "READY" | "NOT_READY" | "UNKNOWN" | "NOT_AUTHORIZED" | (string & {});
+const Readiness = S.String;
+
 export interface ReadinessCheckSummary {
   Readiness?: Readiness;
   ReadinessCheckName?: string;
 }
+const ReadinessCheckSummary = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<ReadinessCheckSummary>;
 export type __listOfReadinessCheckSummary = ReadinessCheckSummary[];
 const __listOfReadinessCheckSummary = /*@__PURE__*/ __L.at(__c4, 0);
 export interface GetCellReadinessSummaryResponse {
@@ -264,25 +350,40 @@ export interface GetCellReadinessSummaryResponse {
   Readiness?: Readiness;
   ReadinessChecks?: ReadinessCheckSummary[];
 }
+const GetCellReadinessSummaryResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<GetCellReadinessSummaryResponse>;
 export interface GetReadinessCheckRequest {
   ReadinessCheckName: string;
 }
+const GetReadinessCheckRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<GetReadinessCheckRequest>;
 export interface GetReadinessCheckResponse {
   ReadinessCheckArn?: string;
   ReadinessCheckName?: string;
   ResourceSet?: string;
   Tags?: { [key: string]: string | undefined };
 }
+const GetReadinessCheckResponse =
+  CreateReadinessCheckResponse as any as S.Schema<GetReadinessCheckResponse>;
 export interface GetReadinessCheckResourceStatusRequest {
   MaxResults?: number;
   NextToken?: string;
   ReadinessCheckName: string;
   ResourceIdentifier: string;
 }
+const GetReadinessCheckResourceStatusRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<GetReadinessCheckResourceStatusRequest>;
 export type ReadinessCheckTimestamp = Date;
 export interface Message {
   MessageText?: string;
 }
+const Message = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<Message>;
 export type __listOfMessage = Message[];
 const __listOfMessage = /*@__PURE__*/ __L.at(__c4, 5);
 export interface RuleResult {
@@ -291,6 +392,7 @@ export interface RuleResult {
   Readiness?: Readiness;
   RuleId?: string;
 }
+const RuleResult = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<RuleResult>;
 export type __listOfRuleResult = RuleResult[];
 const __listOfRuleResult = /*@__PURE__*/ __L.at(__c4, 7);
 export interface GetReadinessCheckResourceStatusResponse {
@@ -303,17 +405,26 @@ export interface GetReadinessCheckResourceStatusResponse {
     RuleId: string;
   })[];
 }
+const GetReadinessCheckResourceStatusResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  0,
+) as any as S.Schema<GetReadinessCheckResourceStatusResponse>;
 export interface GetReadinessCheckStatusRequest {
   MaxResults?: number;
   NextToken?: string;
   ReadinessCheckName: string;
 }
+const GetReadinessCheckStatusRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  1,
+) as any as S.Schema<GetReadinessCheckStatusRequest>;
 export interface ResourceResult {
   ComponentId?: string;
   LastCheckedTimestamp?: Date;
   Readiness?: Readiness;
   ResourceArn?: string;
 }
+const ResourceResult = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<ResourceResult>;
 export type __listOfResourceResult = ResourceResult[];
 const __listOfResourceResult = /*@__PURE__*/ __L.at(__c5, 3);
 export interface GetReadinessCheckStatusResponse {
@@ -325,28 +436,50 @@ export interface GetReadinessCheckStatusResponse {
     Readiness: Readiness;
   })[];
 }
+const GetReadinessCheckStatusResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  4,
+) as any as S.Schema<GetReadinessCheckStatusResponse>;
 export interface GetRecoveryGroupRequest {
   RecoveryGroupName: string;
 }
+const GetRecoveryGroupRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  5,
+) as any as S.Schema<GetRecoveryGroupRequest>;
 export interface GetRecoveryGroupResponse {
   Cells?: string[];
   RecoveryGroupArn?: string;
   RecoveryGroupName?: string;
   Tags?: { [key: string]: string | undefined };
 }
+const GetRecoveryGroupResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  6,
+) as any as S.Schema<GetRecoveryGroupResponse>;
 export interface GetRecoveryGroupReadinessSummaryRequest {
   MaxResults?: number;
   NextToken?: string;
   RecoveryGroupName: string;
 }
+const GetRecoveryGroupReadinessSummaryRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  7,
+) as any as S.Schema<GetRecoveryGroupReadinessSummaryRequest>;
 export interface GetRecoveryGroupReadinessSummaryResponse {
   NextToken?: string;
   Readiness?: Readiness;
   ReadinessChecks?: ReadinessCheckSummary[];
 }
+const GetRecoveryGroupReadinessSummaryResponse =
+  GetCellReadinessSummaryResponse as any as S.Schema<GetRecoveryGroupReadinessSummaryResponse>;
 export interface GetResourceSetRequest {
   ResourceSetName: string;
 }
+const GetResourceSetRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<GetResourceSetRequest>;
 export interface GetResourceSetResponse {
   ResourceSetArn?: string;
   ResourceSetName?: string;
@@ -354,10 +487,15 @@ export interface GetResourceSetResponse {
   Resources?: Resource[];
   Tags?: { [key: string]: string | undefined };
 }
+const GetResourceSetResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  1,
+) as any as S.Schema<GetResourceSetResponse>;
 export interface ListCellsRequest {
   MaxResults?: number;
   NextToken?: string;
 }
+const ListCellsRequest = /*@__PURE__*/ __L.at(__c6, 2) as any as S.Schema<ListCellsRequest>;
 export interface CellOutput {
   CellArn?: string;
   CellName?: string;
@@ -365,6 +503,7 @@ export interface CellOutput {
   ParentReadinessScopes?: string[];
   Tags?: { [key: string]: string | undefined };
 }
+const CellOutput = CreateCellResponse as any as S.Schema<CellOutput>;
 export type __listOfCellOutput = CellOutput[];
 const __listOfCellOutput = /*@__PURE__*/ __L.at(__c6, 3);
 export interface ListCellsResponse {
@@ -376,10 +515,15 @@ export interface ListCellsResponse {
   })[];
   NextToken?: string;
 }
+const ListCellsResponse = /*@__PURE__*/ __L.at(__c6, 4) as any as S.Schema<ListCellsResponse>;
 export interface ListCrossAccountAuthorizationsRequest {
   MaxResults?: number;
   NextToken?: string;
 }
+const ListCrossAccountAuthorizationsRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  5,
+) as any as S.Schema<ListCrossAccountAuthorizationsRequest>;
 export type __listOfCrossAccountAuthorization = string[];
 const __listOfCrossAccountAuthorization =
   __listOf__string as any as S.Schema<__listOfCrossAccountAuthorization>;
@@ -387,16 +531,25 @@ export interface ListCrossAccountAuthorizationsResponse {
   CrossAccountAuthorizations?: string[];
   NextToken?: string;
 }
+const ListCrossAccountAuthorizationsResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  6,
+) as any as S.Schema<ListCrossAccountAuthorizationsResponse>;
 export interface ListReadinessChecksRequest {
   MaxResults?: number;
   NextToken?: string;
 }
+const ListReadinessChecksRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  7,
+) as any as S.Schema<ListReadinessChecksRequest>;
 export interface ReadinessCheckOutput {
   ReadinessCheckArn?: string;
   ReadinessCheckName?: string;
   ResourceSet?: string;
   Tags?: { [key: string]: string | undefined };
 }
+const ReadinessCheckOutput = /*@__PURE__*/ __L.at(__c7, 0) as any as S.Schema<ReadinessCheckOutput>;
 export type __listOfReadinessCheckOutput = ReadinessCheckOutput[];
 const __listOfReadinessCheckOutput = /*@__PURE__*/ __L.at(__c7, 1);
 export interface ListReadinessChecksResponse {
@@ -406,16 +559,25 @@ export interface ListReadinessChecksResponse {
     ResourceSet: __stringMax64PatternAAZAZ09Z;
   })[];
 }
+const ListReadinessChecksResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  2,
+) as any as S.Schema<ListReadinessChecksResponse>;
 export interface ListRecoveryGroupsRequest {
   MaxResults?: number;
   NextToken?: string;
 }
+const ListRecoveryGroupsRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  3,
+) as any as S.Schema<ListRecoveryGroupsRequest>;
 export interface RecoveryGroupOutput {
   Cells?: string[];
   RecoveryGroupArn?: string;
   RecoveryGroupName?: string;
   Tags?: { [key: string]: string | undefined };
 }
+const RecoveryGroupOutput = GetRecoveryGroupResponse as any as S.Schema<RecoveryGroupOutput>;
 export type __listOfRecoveryGroupOutput = RecoveryGroupOutput[];
 const __listOfRecoveryGroupOutput = /*@__PURE__*/ __L.at(__c7, 4);
 export interface ListRecoveryGroupsResponse {
@@ -426,10 +588,18 @@ export interface ListRecoveryGroupsResponse {
     RecoveryGroupName: __stringMax64PatternAAZAZ09Z;
   })[];
 }
+const ListRecoveryGroupsResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  5,
+) as any as S.Schema<ListRecoveryGroupsResponse>;
 export interface ListResourceSetsRequest {
   MaxResults?: number;
   NextToken?: string;
 }
+const ListResourceSetsRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  6,
+) as any as S.Schema<ListResourceSetsRequest>;
 export interface ResourceSetOutput {
   ResourceSetArn?: string;
   ResourceSetName?: string;
@@ -437,6 +607,7 @@ export interface ResourceSetOutput {
   Resources?: Resource[];
   Tags?: { [key: string]: string | undefined };
 }
+const ResourceSetOutput = GetResourceSetResponse as any as S.Schema<ResourceSetOutput>;
 export type __listOfResourceSetOutput = ResourceSetOutput[];
 const __listOfResourceSetOutput = /*@__PURE__*/ __L.at(__c7, 7);
 export interface ListResourceSetsResponse {
@@ -448,17 +619,23 @@ export interface ListResourceSetsResponse {
     Resources: __listOfResource;
   })[];
 }
+const ListResourceSetsResponse = /*@__PURE__*/ __L.at(
+  __c8,
+  0,
+) as any as S.Schema<ListResourceSetsResponse>;
 export interface ListRulesRequest {
   MaxResults?: number;
   NextToken?: string;
   ResourceType?: string;
 }
+const ListRulesRequest = /*@__PURE__*/ __L.at(__c8, 1) as any as S.Schema<ListRulesRequest>;
 export type __stringMax64 = string;
 export interface ListRulesOutput {
   ResourceType?: string;
   RuleDescription?: string;
   RuleId?: string;
 }
+const ListRulesOutput = /*@__PURE__*/ __L.at(__c8, 2) as any as S.Schema<ListRulesOutput>;
 export type __listOfListRulesOutput = ListRulesOutput[];
 const __listOfListRulesOutput = /*@__PURE__*/ __L.at(__c8, 3);
 export interface ListRulesResponse {
@@ -469,26 +646,40 @@ export interface ListRulesResponse {
     RuleId: __stringMax64;
   })[];
 }
+const ListRulesResponse = /*@__PURE__*/ __L.at(__c8, 4) as any as S.Schema<ListRulesResponse>;
 export interface ListTagsForResourcesRequest {
   ResourceArn: string;
 }
+const ListTagsForResourcesRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  5,
+) as any as S.Schema<ListTagsForResourcesRequest>;
 export interface ListTagsForResourcesResponse {
   Tags?: { [key: string]: string | undefined };
 }
+const ListTagsForResourcesResponse = /*@__PURE__*/ __L.at(
+  __c8,
+  6,
+) as any as S.Schema<ListTagsForResourcesResponse>;
 export interface TagResourceRequest {
   ResourceArn: string;
   Tags?: { [key: string]: string | undefined };
 }
+const TagResourceRequest = /*@__PURE__*/ __L.at(__c8, 7) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
+const TagResourceResponse = DeleteCellResponse as any as S.Schema<TagResourceResponse>;
 export interface UntagResourceRequest {
   ResourceArn: string;
   TagKeys?: string[];
 }
+const UntagResourceRequest = /*@__PURE__*/ __L.at(__c9, 0) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
+const UntagResourceResponse = DeleteCellResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateCellRequest {
   CellName: string;
   Cells?: string[];
 }
+const UpdateCellRequest = /*@__PURE__*/ __L.at(__c9, 1) as any as S.Schema<UpdateCellRequest>;
 export interface UpdateCellResponse {
   CellArn?: string;
   CellName?: string;
@@ -496,31 +687,48 @@ export interface UpdateCellResponse {
   ParentReadinessScopes?: string[];
   Tags?: { [key: string]: string | undefined };
 }
+const UpdateCellResponse = CreateCellResponse as any as S.Schema<UpdateCellResponse>;
 export interface UpdateReadinessCheckRequest {
   ReadinessCheckName: string;
   ResourceSetName?: string;
 }
+const UpdateReadinessCheckRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  2,
+) as any as S.Schema<UpdateReadinessCheckRequest>;
 export interface UpdateReadinessCheckResponse {
   ReadinessCheckArn?: string;
   ReadinessCheckName?: string;
   ResourceSet?: string;
   Tags?: { [key: string]: string | undefined };
 }
+const UpdateReadinessCheckResponse =
+  CreateReadinessCheckResponse as any as S.Schema<UpdateReadinessCheckResponse>;
 export interface UpdateRecoveryGroupRequest {
   Cells?: string[];
   RecoveryGroupName: string;
 }
+const UpdateRecoveryGroupRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  3,
+) as any as S.Schema<UpdateRecoveryGroupRequest>;
 export interface UpdateRecoveryGroupResponse {
   Cells?: string[];
   RecoveryGroupArn?: string;
   RecoveryGroupName?: string;
   Tags?: { [key: string]: string | undefined };
 }
+const UpdateRecoveryGroupResponse =
+  CreateRecoveryGroupResponse as any as S.Schema<UpdateRecoveryGroupResponse>;
 export interface UpdateResourceSetRequest {
   ResourceSetName: string;
   ResourceSetType?: string;
   Resources?: Resource[];
 }
+const UpdateResourceSetRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  4,
+) as any as S.Schema<UpdateResourceSetRequest>;
 export interface UpdateResourceSetResponse {
   ResourceSetArn?: string;
   ResourceSetName?: string;
@@ -528,6 +736,8 @@ export interface UpdateResourceSetResponse {
   Resources?: Resource[];
   Tags?: { [key: string]: string | undefined };
 }
+const UpdateResourceSetResponse =
+  CreateResourceSetResponse as any as S.Schema<UpdateResourceSetResponse>;
 export type CreateCellError =
   | AccessDeniedException
   | ConflictException
@@ -544,8 +754,8 @@ export const createCell: API.OperationMethod<
   CreateCellError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2) as any as S.Schema<CreateCellRequest>,
-  output: __S(3) as any as S.Schema<CreateCellResponse>,
+  input: CreateCellRequest,
+  output: CreateCellResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -574,8 +784,8 @@ export const createCrossAccountAuthorization: API.OperationMethod<
   CreateCrossAccountAuthorizationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4) as any as S.Schema<CreateCrossAccountAuthorizationRequest>,
-  output: __S(5) as any as S.Schema<CreateCrossAccountAuthorizationResponse>,
+  input: CreateCrossAccountAuthorizationRequest,
+  output: CreateCrossAccountAuthorizationResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -604,8 +814,8 @@ export const createReadinessCheck: API.OperationMethod<
   CreateReadinessCheckError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6) as any as S.Schema<CreateReadinessCheckRequest>,
-  output: __S(7) as any as S.Schema<CreateReadinessCheckResponse>,
+  input: CreateReadinessCheckRequest,
+  output: CreateReadinessCheckResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -634,8 +844,8 @@ export const createRecoveryGroup: API.OperationMethod<
   CreateRecoveryGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8) as any as S.Schema<CreateRecoveryGroupRequest>,
-  output: __S(9) as any as S.Schema<CreateRecoveryGroupResponse>,
+  input: CreateRecoveryGroupRequest,
+  output: CreateRecoveryGroupResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -664,8 +874,8 @@ export const createResourceSet: API.OperationMethod<
   CreateResourceSetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16) as any as S.Schema<CreateResourceSetRequest>,
-  output: __S(17) as any as S.Schema<CreateResourceSetResponse>,
+  input: CreateResourceSetRequest,
+  output: CreateResourceSetResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -694,8 +904,8 @@ export const deleteCell: API.OperationMethod<
   DeleteCellError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18) as any as S.Schema<DeleteCellRequest>,
-  output: __S(19) as any as S.Schema<DeleteCellResponse>,
+  input: DeleteCellRequest,
+  output: DeleteCellResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -723,8 +933,8 @@ export const deleteCrossAccountAuthorization: API.OperationMethod<
   DeleteCrossAccountAuthorizationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20) as any as S.Schema<DeleteCrossAccountAuthorizationRequest>,
-  output: __S(21) as any as S.Schema<DeleteCrossAccountAuthorizationResponse>,
+  input: DeleteCrossAccountAuthorizationRequest,
+  output: DeleteCrossAccountAuthorizationResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -752,8 +962,8 @@ export const deleteReadinessCheck: API.OperationMethod<
   DeleteReadinessCheckError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22) as any as S.Schema<DeleteReadinessCheckRequest>,
-  output: __S(19) as any as S.Schema<DeleteReadinessCheckResponse>,
+  input: DeleteReadinessCheckRequest,
+  output: DeleteReadinessCheckResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -782,8 +992,8 @@ export const deleteRecoveryGroup: API.OperationMethod<
   DeleteRecoveryGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23) as any as S.Schema<DeleteRecoveryGroupRequest>,
-  output: __S(19) as any as S.Schema<DeleteRecoveryGroupResponse>,
+  input: DeleteRecoveryGroupRequest,
+  output: DeleteRecoveryGroupResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -812,8 +1022,8 @@ export const deleteResourceSet: API.OperationMethod<
   DeleteResourceSetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24) as any as S.Schema<DeleteResourceSetRequest>,
-  output: __S(19) as any as S.Schema<DeleteResourceSetResponse>,
+  input: DeleteResourceSetRequest,
+  output: DeleteResourceSetResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -842,8 +1052,8 @@ export const getArchitectureRecommendations: API.OperationMethod<
   GetArchitectureRecommendationsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25) as any as S.Schema<GetArchitectureRecommendationsRequest>,
-  output: __S(28) as any as S.Schema<GetArchitectureRecommendationsResponse>,
+  input: GetArchitectureRecommendationsRequest,
+  output: GetArchitectureRecommendationsResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -872,8 +1082,8 @@ export const getCell: API.OperationMethod<
   GetCellError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29) as any as S.Schema<GetCellRequest>,
-  output: __S(3) as any as S.Schema<GetCellResponse>,
+  input: GetCellRequest,
+  output: GetCellResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -903,8 +1113,8 @@ export const getCellReadinessSummary: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ReadinessCheckSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(30) as any as S.Schema<GetCellReadinessSummaryRequest>,
-  output: __S(33) as any as S.Schema<GetCellReadinessSummaryResponse>,
+  input: GetCellReadinessSummaryRequest,
+  output: GetCellReadinessSummaryResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -939,8 +1149,8 @@ export const getReadinessCheck: API.OperationMethod<
   GetReadinessCheckError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34) as any as S.Schema<GetReadinessCheckRequest>,
-  output: __S(7) as any as S.Schema<GetReadinessCheckResponse>,
+  input: GetReadinessCheckRequest,
+  output: GetReadinessCheckResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -970,8 +1180,8 @@ export const getReadinessCheckResourceStatus: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   RuleResult
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(35) as any as S.Schema<GetReadinessCheckResourceStatusRequest>,
-  output: __S(40) as any as S.Schema<GetReadinessCheckResourceStatusResponse>,
+  input: GetReadinessCheckResourceStatusRequest,
+  output: GetReadinessCheckResourceStatusResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1007,8 +1217,8 @@ export const getReadinessCheckStatus: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ResourceResult
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(41) as any as S.Schema<GetReadinessCheckStatusRequest>,
-  output: __S(44) as any as S.Schema<GetReadinessCheckStatusResponse>,
+  input: GetReadinessCheckStatusRequest,
+  output: GetReadinessCheckStatusResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1043,8 +1253,8 @@ export const getRecoveryGroup: API.OperationMethod<
   GetRecoveryGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45) as any as S.Schema<GetRecoveryGroupRequest>,
-  output: __S(46) as any as S.Schema<GetRecoveryGroupResponse>,
+  input: GetRecoveryGroupRequest,
+  output: GetRecoveryGroupResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1074,8 +1284,8 @@ export const getRecoveryGroupReadinessSummary: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ReadinessCheckSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(47) as any as S.Schema<GetRecoveryGroupReadinessSummaryRequest>,
-  output: __S(33) as any as S.Schema<GetRecoveryGroupReadinessSummaryResponse>,
+  input: GetRecoveryGroupReadinessSummaryRequest,
+  output: GetRecoveryGroupReadinessSummaryResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1110,8 +1320,8 @@ export const getResourceSet: API.OperationMethod<
   GetResourceSetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48) as any as S.Schema<GetResourceSetRequest>,
-  output: __S(49) as any as S.Schema<GetResourceSetResponse>,
+  input: GetResourceSetRequest,
+  output: GetResourceSetResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1140,8 +1350,8 @@ export const listCells: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   CellOutput
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(50) as any as S.Schema<ListCellsRequest>,
-  output: __S(52) as any as S.Schema<ListCellsResponse>,
+  input: ListCellsRequest,
+  output: ListCellsResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1175,8 +1385,8 @@ export const listCrossAccountAuthorizations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   CrossAccountAuthorization
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(53) as any as S.Schema<ListCrossAccountAuthorizationsRequest>,
-  output: __S(54) as any as S.Schema<ListCrossAccountAuthorizationsResponse>,
+  input: ListCrossAccountAuthorizationsRequest,
+  output: ListCrossAccountAuthorizationsResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1210,8 +1420,8 @@ export const listReadinessChecks: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ReadinessCheckOutput
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(55) as any as S.Schema<ListReadinessChecksRequest>,
-  output: __S(58) as any as S.Schema<ListReadinessChecksResponse>,
+  input: ListReadinessChecksRequest,
+  output: ListReadinessChecksResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1245,8 +1455,8 @@ export const listRecoveryGroups: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   RecoveryGroupOutput
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(59) as any as S.Schema<ListRecoveryGroupsRequest>,
-  output: __S(61) as any as S.Schema<ListRecoveryGroupsResponse>,
+  input: ListRecoveryGroupsRequest,
+  output: ListRecoveryGroupsResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1280,8 +1490,8 @@ export const listResourceSets: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ResourceSetOutput
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(62) as any as S.Schema<ListResourceSetsRequest>,
-  output: __S(64) as any as S.Schema<ListResourceSetsResponse>,
+  input: ListResourceSetsRequest,
+  output: ListResourceSetsResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1315,8 +1525,8 @@ export const listRules: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ListRulesOutput
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(65) as any as S.Schema<ListRulesRequest>,
-  output: __S(68) as any as S.Schema<ListRulesResponse>,
+  input: ListRulesRequest,
+  output: ListRulesResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1348,8 +1558,8 @@ export const listTagsForResources: API.OperationMethod<
   ListTagsForResourcesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(69) as any as S.Schema<ListTagsForResourcesRequest>,
-  output: __S(70) as any as S.Schema<ListTagsForResourcesResponse>,
+  input: ListTagsForResourcesRequest,
+  output: ListTagsForResourcesResponse,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1370,8 +1580,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(71) as any as S.Schema<TagResourceRequest>,
-  output: __S(19) as any as S.Schema<TagResourceResponse>,
+  input: TagResourceRequest,
+  output: TagResourceResponse,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1392,8 +1602,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(72) as any as S.Schema<UntagResourceRequest>,
-  output: __S(19) as any as S.Schema<UntagResourceResponse>,
+  input: UntagResourceRequest,
+  output: UntagResourceResponse,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1416,8 +1626,8 @@ export const updateCell: API.OperationMethod<
   UpdateCellError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(73) as any as S.Schema<UpdateCellRequest>,
-  output: __S(3) as any as S.Schema<UpdateCellResponse>,
+  input: UpdateCellRequest,
+  output: UpdateCellResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1446,8 +1656,8 @@ export const updateReadinessCheck: API.OperationMethod<
   UpdateReadinessCheckError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(74) as any as S.Schema<UpdateReadinessCheckRequest>,
-  output: __S(7) as any as S.Schema<UpdateReadinessCheckResponse>,
+  input: UpdateReadinessCheckRequest,
+  output: UpdateReadinessCheckResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1476,8 +1686,8 @@ export const updateRecoveryGroup: API.OperationMethod<
   UpdateRecoveryGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(75) as any as S.Schema<UpdateRecoveryGroupRequest>,
-  output: __S(9) as any as S.Schema<UpdateRecoveryGroupResponse>,
+  input: UpdateRecoveryGroupRequest,
+  output: UpdateRecoveryGroupResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1506,8 +1716,8 @@ export const updateResourceSet: API.OperationMethod<
   UpdateResourceSetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(76) as any as S.Schema<UpdateResourceSetRequest>,
-  output: __S(17) as any as S.Schema<UpdateResourceSetResponse>,
+  input: UpdateResourceSetRequest,
+  output: UpdateResourceSetResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1532,7 +1742,7 @@ function __c0(j: number): any {
         S.Struct({
           CellName: S.optional(S.String),
           Cells: S.optional(__listOf__string),
-          Tags: S.optional(__S(1)),
+          Tags: S.optional(Tags),
         })
           .pipe(S.encodeKeys({ CellName: "cellName", Cells: "cells", Tags: "tags" }))
           .pipe(T.all(T.Http({ method: "POST", uri: "/cells" }), svc, auth, proto, ver, rules)),
@@ -1544,7 +1754,7 @@ function __c0(j: number): any {
           CellName: S.optional(S.String),
           Cells: S.optional(__listOf__string),
           ParentReadinessScopes: S.optional(__listOf__string),
-          Tags: S.optional(__S(1)),
+          Tags: S.optional(Tags),
         }).pipe(
           S.encodeKeys({
             CellArn: "cellArn",
@@ -1585,7 +1795,7 @@ function __c0(j: number): any {
         S.Struct({
           ReadinessCheckName: S.optional(S.String),
           ResourceSetName: S.optional(S.String),
-          Tags: S.optional(__S(1)),
+          Tags: S.optional(Tags),
         })
           .pipe(
             S.encodeKeys({
@@ -1613,7 +1823,7 @@ function __c0(j: number): any {
           ReadinessCheckArn: S.optional(S.String),
           ReadinessCheckName: S.optional(S.String),
           ResourceSet: S.optional(S.String),
-          Tags: S.optional(__S(1)),
+          Tags: S.optional(Tags),
         }).pipe(
           S.encodeKeys({
             ReadinessCheckArn: "readinessCheckArn",
@@ -1634,7 +1844,7 @@ function __c1(j: number): any {
         S.Struct({
           Cells: S.optional(__listOf__string),
           RecoveryGroupName: S.optional(S.String),
-          Tags: S.optional(__S(1)),
+          Tags: S.optional(Tags),
         })
           .pipe(
             S.encodeKeys({ Cells: "cells", RecoveryGroupName: "recoveryGroupName", Tags: "tags" }),
@@ -1651,7 +1861,7 @@ function __c1(j: number): any {
           Cells: S.optional(__listOf__string),
           RecoveryGroupArn: S.optional(S.String),
           RecoveryGroupName: S.optional(S.String),
-          Tags: S.optional(__S(1)),
+          Tags: S.optional(Tags),
         }).pipe(
           S.encodeKeys({
             Cells: "cells",
@@ -1676,8 +1886,8 @@ function __c1(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          NLBResource: S.optional(__S(10)),
-          R53Resource: S.optional(__S(11)),
+          NLBResource: S.optional(NLBResource),
+          R53Resource: S.optional(R53ResourceRecord),
         }).pipe(S.encodeKeys({ NLBResource: "nLBResource", R53Resource: "r53Resource" })),
       ).annotate({ identifier: "TargetResource" });
     case 5:
@@ -1687,7 +1897,7 @@ function __c1(j: number): any {
           HostedZoneArn: S.optional(S.String),
           RecordSetId: S.optional(S.String),
           RecordType: S.optional(S.String),
-          TargetResource: S.optional(__S(12)),
+          TargetResource: S.optional(TargetResource),
         }).pipe(
           S.encodeKeys({
             DomainName: "domainName",
@@ -1702,7 +1912,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ComponentId: S.optional(S.String),
-          DnsTargetResource: S.optional(__S(13)),
+          DnsTargetResource: S.optional(DNSTargetResource),
           ReadinessScopes: S.optional(__listOf__string),
           ResourceArn: S.optional(S.String),
         }).pipe(
@@ -1715,7 +1925,7 @@ function __c1(j: number): any {
         ),
       ).annotate({ identifier: "Resource" });
     case 7:
-      return S.Array(__S(14));
+      return S.Array(Resource);
   }
 }
 function __c2(j: number): any {
@@ -1726,7 +1936,7 @@ function __c2(j: number): any {
           ResourceSetName: S.optional(S.String),
           ResourceSetType: S.optional(S.String),
           Resources: S.optional(__listOfResource),
-          Tags: S.optional(__S(1)),
+          Tags: S.optional(Tags),
         })
           .pipe(
             S.encodeKeys({
@@ -1747,7 +1957,7 @@ function __c2(j: number): any {
           ResourceSetName: S.optional(S.String),
           ResourceSetType: S.optional(S.String),
           Resources: S.optional(__listOfResource),
-          Tags: S.optional(__S(1)),
+          Tags: S.optional(Tags),
         }).pipe(
           S.encodeKeys({
             ResourceSetArn: "resourceSetArn",
@@ -1877,7 +2087,7 @@ function __c3(j: number): any {
         ),
       ).annotate({ identifier: "Recommendation" });
     case 3:
-      return S.Array(__S(26));
+      return S.Array(Recommendation);
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -1922,7 +2132,7 @@ function __c3(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          Readiness: S.optional(S.String),
+          Readiness: S.optional(Readiness),
           ReadinessCheckName: S.optional(S.String),
         }).pipe(S.encodeKeys({ Readiness: "readiness", ReadinessCheckName: "readinessCheckName" })),
       ).annotate({ identifier: "ReadinessCheckSummary" });
@@ -1931,12 +2141,12 @@ function __c3(j: number): any {
 function __c4(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(31));
+      return S.Array(ReadinessCheckSummary);
     case 1:
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String),
-          Readiness: S.optional(S.String),
+          Readiness: S.optional(Readiness),
           ReadinessChecks: S.optional(__listOfReadinessCheckSummary),
         }).pipe(
           S.encodeKeys({
@@ -1991,13 +2201,13 @@ function __c4(j: number): any {
         ),
       ).annotate({ identifier: "Message" });
     case 5:
-      return S.Array(__S(36));
+      return S.Array(Message);
     case 6:
       return S.suspend(() =>
         S.Struct({
           LastCheckedTimestamp: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           Messages: S.optional(__listOfMessage),
-          Readiness: S.optional(S.String),
+          Readiness: S.optional(Readiness),
           RuleId: S.optional(S.String),
         }).pipe(
           S.encodeKeys({
@@ -2009,7 +2219,7 @@ function __c4(j: number): any {
         ),
       ).annotate({ identifier: "RuleResult" });
     case 7:
-      return S.Array(__S(38));
+      return S.Array(RuleResult);
   }
 }
 function __c5(j: number): any {
@@ -2018,7 +2228,7 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String),
-          Readiness: S.optional(S.String),
+          Readiness: S.optional(Readiness),
           Rules: S.optional(__listOfRuleResult),
         }).pipe(S.encodeKeys({ NextToken: "nextToken", Readiness: "readiness", Rules: "rules" })),
       ).annotate({
@@ -2048,7 +2258,7 @@ function __c5(j: number): any {
         S.Struct({
           ComponentId: S.optional(S.String),
           LastCheckedTimestamp: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          Readiness: S.optional(S.String),
+          Readiness: S.optional(Readiness),
           ResourceArn: S.optional(S.String),
         }).pipe(
           S.encodeKeys({
@@ -2060,13 +2270,13 @@ function __c5(j: number): any {
         ),
       ).annotate({ identifier: "ResourceResult" });
     case 3:
-      return S.Array(__S(42));
+      return S.Array(ResourceResult);
     case 4:
       return S.suspend(() =>
         S.Struct({
           Messages: S.optional(__listOfMessage),
           NextToken: S.optional(S.String),
-          Readiness: S.optional(S.String),
+          Readiness: S.optional(Readiness),
           Resources: S.optional(__listOfResourceResult),
         }).pipe(
           S.encodeKeys({
@@ -2098,7 +2308,7 @@ function __c5(j: number): any {
           Cells: S.optional(__listOf__string),
           RecoveryGroupArn: S.optional(S.String),
           RecoveryGroupName: S.optional(S.String),
-          Tags: S.optional(__S(1)),
+          Tags: S.optional(Tags),
         }).pipe(
           S.encodeKeys({
             Cells: "cells",
@@ -2151,7 +2361,7 @@ function __c6(j: number): any {
           ResourceSetName: S.optional(S.String),
           ResourceSetType: S.optional(S.String),
           Resources: S.optional(__listOfResource),
-          Tags: S.optional(__S(1)),
+          Tags: S.optional(Tags),
         }).pipe(
           S.encodeKeys({
             ResourceSetArn: "resourceSetArn",
@@ -2170,7 +2380,7 @@ function __c6(j: number): any {
         }).pipe(T.all(T.Http({ method: "GET", uri: "/cells" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListCellsRequest" });
     case 3:
-      return S.Array(__S(3));
+      return S.Array(CellOutput);
     case 4:
       return S.suspend(() =>
         S.Struct({ Cells: S.optional(__listOfCellOutput), NextToken: S.optional(S.String) }).pipe(
@@ -2230,7 +2440,7 @@ function __c7(j: number): any {
           ReadinessCheckArn: S.optional(S.String),
           ReadinessCheckName: S.optional(S.String),
           ResourceSet: S.optional(S.String),
-          Tags: S.optional(__S(1)),
+          Tags: S.optional(Tags),
         }).pipe(
           S.encodeKeys({
             ReadinessCheckArn: "readinessCheckArn",
@@ -2241,7 +2451,7 @@ function __c7(j: number): any {
         ),
       ).annotate({ identifier: "ReadinessCheckOutput" });
     case 1:
-      return S.Array(__S(56));
+      return S.Array(ReadinessCheckOutput);
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -2263,7 +2473,7 @@ function __c7(j: number): any {
         identifier: "ListRecoveryGroupsRequest",
       });
     case 4:
-      return S.Array(__S(46));
+      return S.Array(RecoveryGroupOutput);
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -2283,7 +2493,7 @@ function __c7(j: number): any {
         ),
       ).annotate({ identifier: "ListResourceSetsRequest" });
     case 7:
-      return S.Array(__S(49));
+      return S.Array(ResourceSetOutput);
   }
 }
 function __c8(j: number): any {
@@ -2318,7 +2528,7 @@ function __c8(j: number): any {
         ),
       ).annotate({ identifier: "ListRulesOutput" });
     case 3:
-      return S.Array(__S(66));
+      return S.Array(ListRulesOutput);
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -2343,16 +2553,13 @@ function __c8(j: number): any {
       });
     case 6:
       return S.suspend(() =>
-        S.Struct({ Tags: S.optional(__S(1)) }).pipe(S.encodeKeys({ Tags: "tags" })),
+        S.Struct({ Tags: S.optional(Tags) }).pipe(S.encodeKeys({ Tags: "tags" })),
       ).annotate({
         identifier: "ListTagsForResourcesResponse",
       });
     case 7:
       return S.suspend(() =>
-        S.Struct({
-          ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")),
-          Tags: S.optional(__S(1)),
-        })
+        S.Struct({ ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")), Tags: S.optional(Tags) })
           .pipe(S.encodeKeys({ Tags: "tags" }))
           .pipe(
             T.all(
@@ -2462,34 +2669,5 @@ function __c9(j: number): any {
             ),
           ),
       ).annotate({ identifier: "UpdateResourceSetRequest" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
-    case 9:
-      return __c9(i & 7);
   }
 }

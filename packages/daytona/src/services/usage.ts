@@ -6,8 +6,6 @@ import { UnknownDaytonaError } from "../errors.ts";
 import { DaytonaProtocol, type DaytonaOpError, type DaytonaOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { DaytonaOpError, DaytonaOpContext };
 
@@ -19,6 +17,11 @@ export interface GetOrganizationUsageAggregatedRequest {
   /** End time (RFC3339) */
   to: string;
 }
+const GetOrganizationUsageAggregatedRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<GetOrganizationUsageAggregatedRequest>;
+
 export interface ModelsAggregatedUsage {
   firstStart?: string;
   lastEnd?: string;
@@ -29,6 +32,11 @@ export interface ModelsAggregatedUsage {
   totalPrice?: number;
   totalRAMGBSeconds?: number;
 }
+const ModelsAggregatedUsage = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<ModelsAggregatedUsage>;
+
 export interface ListOrganizationSandboxUsageRequest {
   /** Organization ID */
   organizationId: string;
@@ -39,6 +47,11 @@ export interface ListOrganizationSandboxUsageRequest {
   /** End time (RFC3339) */
   to: string;
 }
+const ListOrganizationSandboxUsageRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<ListOrganizationSandboxUsageRequest>;
+
 export interface ModelsUsagePeriod {
   cpu?: number;
   diskGB?: number;
@@ -48,8 +61,20 @@ export interface ModelsUsagePeriod {
   ramGB?: number;
   startAt?: string;
 }
+const ModelsUsagePeriod = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<ModelsUsagePeriod>;
+
 export type ListOrganizationSandboxUsageResponseBodyList = Array<ModelsUsagePeriod>;
+const ListOrganizationSandboxUsageResponseBodyList = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<ListOrganizationSandboxUsageResponseBodyList>;
+
 export type ListOrganizationSandboxUsageResponse = ListOrganizationSandboxUsageResponseBodyList;
+const ListOrganizationSandboxUsageResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<ListOrganizationSandboxUsageResponse>;
+
 export interface ListOrganizationUsageChartRequest {
   /** Organization ID */
   organizationId: string;
@@ -60,6 +85,11 @@ export interface ListOrganizationUsageChartRequest {
   /** Region filter */
   region?: string;
 }
+const ListOrganizationUsageChartRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<ListOrganizationUsageChartRequest>;
+
 export interface ModelsUsageChartPoint {
   cpu?: number;
   cpuPrice?: number;
@@ -69,8 +99,23 @@ export interface ModelsUsageChartPoint {
   ramPrice?: number;
   time?: string;
 }
+const ModelsUsageChartPoint = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<ModelsUsageChartPoint>;
+
 export type ListOrganizationUsageChartResponseBodyList = Array<ModelsUsageChartPoint>;
+const ListOrganizationUsageChartResponseBodyList = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<ListOrganizationUsageChartResponseBodyList>;
+
 export type ListOrganizationUsageChartResponse = ListOrganizationUsageChartResponseBodyList;
+const ListOrganizationUsageChartResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<ListOrganizationUsageChartResponse>;
+
 export interface ListOrganizationUsageSandboxRequest {
   /** Organization ID */
   organizationId: string;
@@ -79,6 +124,11 @@ export interface ListOrganizationUsageSandboxRequest {
   /** End time (RFC3339) */
   to: string;
 }
+const ListOrganizationUsageSandboxRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<ListOrganizationUsageSandboxRequest>;
+
 export interface ModelsSandboxUsage {
   firstStart?: string;
   lastEnd?: string;
@@ -89,8 +139,20 @@ export interface ModelsSandboxUsage {
   totalPrice?: number;
   totalRAMGBSeconds?: number;
 }
+const ModelsSandboxUsage = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<ModelsSandboxUsage>;
+
 export type ListOrganizationUsageSandboxResponseBodyList = Array<ModelsSandboxUsage>;
+const ListOrganizationUsageSandboxResponseBodyList = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<ListOrganizationUsageSandboxResponseBodyList>;
+
 export type ListOrganizationUsageSandboxResponse = ListOrganizationUsageSandboxResponseBodyList;
+const ListOrganizationUsageSandboxResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<ListOrganizationUsageSandboxResponse>;
+
 export type GetOrganizationUsageAggregatedError = DaytonaOpError;
 /** Get aggregated usage Returns organization-level resource usage totals for a given time period */
 export const getOrganizationUsageAggregated: API.OperationMethod<
@@ -99,8 +161,8 @@ export const getOrganizationUsageAggregated: API.OperationMethod<
   GetOrganizationUsageAggregatedError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<GetOrganizationUsageAggregatedRequest>,
-  output: __S(1) as any as S.Schema<ModelsAggregatedUsage>,
+  input: GetOrganizationUsageAggregatedRequest,
+  output: ModelsAggregatedUsage,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -114,8 +176,8 @@ export const listOrganizationSandboxUsage: API.OperationMethod<
   ListOrganizationSandboxUsageError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2) as any as S.Schema<ListOrganizationSandboxUsageRequest>,
-  output: __S(5) as any as S.Schema<ListOrganizationSandboxUsageResponse>,
+  input: ListOrganizationSandboxUsageRequest,
+  output: ListOrganizationSandboxUsageResponse,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -129,8 +191,8 @@ export const listOrganizationUsageChart: API.OperationMethod<
   ListOrganizationUsageChartError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6) as any as S.Schema<ListOrganizationUsageChartRequest>,
-  output: __S(9) as any as S.Schema<ListOrganizationUsageChartResponse>,
+  input: ListOrganizationUsageChartRequest,
+  output: ListOrganizationUsageChartResponse,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -144,8 +206,8 @@ export const listOrganizationUsageSandbox: API.OperationMethod<
   ListOrganizationUsageSandboxError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10) as any as S.Schema<ListOrganizationUsageSandboxRequest>,
-  output: __S(13) as any as S.Schema<ListOrganizationUsageSandboxResponse>,
+  input: ListOrganizationUsageSandboxRequest,
+  output: ListOrganizationUsageSandboxResponse,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -213,9 +275,11 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "ModelsUsagePeriod" });
     case 4:
-      return S.Array(__S(3));
+      return S.Array(ModelsUsagePeriod);
     case 5:
-      return S.suspend(() => __S(4).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        ListOrganizationSandboxUsageResponseBodyList.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "ListOrganizationSandboxUsageResponse",
       });
     case 6:
@@ -248,9 +312,11 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(7));
+      return S.Array(ModelsUsageChartPoint);
     case 1:
-      return S.suspend(() => __S(8).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        ListOrganizationUsageChartResponseBodyList.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "ListOrganizationUsageChartResponse",
       });
     case 2:
@@ -279,23 +345,12 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "ModelsSandboxUsage" });
     case 4:
-      return S.Array(__S(11));
+      return S.Array(ModelsSandboxUsage);
     case 5:
-      return S.suspend(() => __S(12).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        ListOrganizationUsageSandboxResponseBodyList.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "ListOrganizationUsageSandboxResponse",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
   }
 }

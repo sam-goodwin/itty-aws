@@ -7,8 +7,6 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -68,15 +66,28 @@ export interface CancelOperationsRequest {
   /** The name of the operation resource to be cancelled. */
   name: string;
 }
+const CancelOperationsRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<CancelOperationsRequest>;
+
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
+const Empty = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<Empty>;
+
 export type StringList = Array<string>;
+const StringList = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<StringList>;
+
 export type RRSetRoutingPolicyLoadBalancerTargetLoadBalancerTypeEnum =
   | "none"
   | "globalL7ilb"
   | "regionalL4ilb"
   | "regionalL7ilb";
+const RRSetRoutingPolicyLoadBalancerTargetLoadBalancerTypeEnum = S.String;
+
 export type RRSetRoutingPolicyLoadBalancerTargetIpProtocolEnum = "undefined" | "tcp" | "udp";
+const RRSetRoutingPolicyLoadBalancerTargetIpProtocolEnum = S.String;
+
 /** The configuration for an individual load balancer to health check. */
 export interface RRSetRoutingPolicyLoadBalancerTarget {
   /** The fully qualified URL of the network that the load balancer is attached to. This should be formatted like `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`. */
@@ -95,7 +106,17 @@ export interface RRSetRoutingPolicyLoadBalancerTarget {
   /** The configured port of the load balancer. */
   port?: string;
 }
+const RRSetRoutingPolicyLoadBalancerTarget = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<RRSetRoutingPolicyLoadBalancerTarget>;
+
 export type RRSetRoutingPolicyLoadBalancerTargetList = Array<RRSetRoutingPolicyLoadBalancerTarget>;
+const RRSetRoutingPolicyLoadBalancerTargetList = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<RRSetRoutingPolicyLoadBalancerTargetList>;
+
 /** HealthCheckTargets describes endpoints to health-check when responding to Routing Policy queries. Only the healthy endpoints will be included in the response. Set either `internal_load_balancer` or `external_endpoints`. Do not set both. */
 export interface RRSetRoutingPolicyHealthCheckTargets {
   /** Configuration for internal load balancers to be health checked. */
@@ -103,6 +124,11 @@ export interface RRSetRoutingPolicyHealthCheckTargets {
   /** The Internet IP addresses to be health checked. The format matches the format of ResourceRecordSet.rrdata as defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1) */
   externalEndpoints?: StringList;
 }
+const RRSetRoutingPolicyHealthCheckTargets = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<RRSetRoutingPolicyHealthCheckTargets>;
+
 /** ResourceRecordSet data for one geo location. */
 export interface RRSetRoutingPolicyGeoPolicyGeoPolicyItem {
   /** For A and AAAA types only. Endpoints to return in the query result only if they are healthy. These can be specified along with `rrdata` within this item. */
@@ -114,8 +140,18 @@ export interface RRSetRoutingPolicyGeoPolicyGeoPolicyItem {
   /** DNSSEC generated signatures for all the `rrdata` within this item. When using health-checked targets for DNSSEC-enabled zones, you can only use at most one health-checked IP address per item. */
   signatureRrdatas?: StringList;
 }
+const RRSetRoutingPolicyGeoPolicyGeoPolicyItem = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<RRSetRoutingPolicyGeoPolicyGeoPolicyItem>;
+
 export type RRSetRoutingPolicyGeoPolicyGeoPolicyItemList =
   Array<RRSetRoutingPolicyGeoPolicyGeoPolicyItem>;
+const RRSetRoutingPolicyGeoPolicyGeoPolicyItemList = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<RRSetRoutingPolicyGeoPolicyGeoPolicyItemList>;
+
 /** Configures a `RRSetRoutingPolicy` that routes based on the geo location of the querying user. */
 export interface RRSetRoutingPolicyGeoPolicy {
   /** Without fencing, if health check fails for all configured items in the current geo bucket, we failover to the next nearest geo bucket. With fencing, if health checking is enabled, as long as some targets in the current geo bucket are healthy, we return only the healthy targets. However, if all targets are unhealthy, we don't failover to the next nearest bucket; instead, we return all the items in the current bucket even when all targets are unhealthy. */
@@ -124,6 +160,11 @@ export interface RRSetRoutingPolicyGeoPolicy {
   /** The primary geo routing configuration. If there are multiple items with the same location, an error is returned instead. */
   items?: RRSetRoutingPolicyGeoPolicyGeoPolicyItemList;
 }
+const RRSetRoutingPolicyGeoPolicy = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<RRSetRoutingPolicyGeoPolicy>;
+
 /** A routing block which contains the routing information for one WRR item. */
 export interface RRSetRoutingPolicyWrrPolicyWrrPolicyItem {
   /** The weight corresponding to this `WrrPolicyItem` object. When multiple `WrrPolicyItem` objects are configured, the probability of returning an `WrrPolicyItem` object's data is proportional to its weight relative to the sum of weights configured for all items. This weight must be non-negative. */
@@ -135,13 +176,28 @@ export interface RRSetRoutingPolicyWrrPolicyWrrPolicyItem {
   healthCheckedTargets?: RRSetRoutingPolicyHealthCheckTargets;
   kind?: string;
 }
+const RRSetRoutingPolicyWrrPolicyWrrPolicyItem = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<RRSetRoutingPolicyWrrPolicyWrrPolicyItem>;
+
 export type RRSetRoutingPolicyWrrPolicyWrrPolicyItemList =
   Array<RRSetRoutingPolicyWrrPolicyWrrPolicyItem>;
+const RRSetRoutingPolicyWrrPolicyWrrPolicyItemList = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<RRSetRoutingPolicyWrrPolicyWrrPolicyItemList>;
+
 /** Configures a RRSetRoutingPolicy that routes in a weighted round robin fashion. */
 export interface RRSetRoutingPolicyWrrPolicy {
   kind?: string;
   items?: RRSetRoutingPolicyWrrPolicyWrrPolicyItemList;
 }
+const RRSetRoutingPolicyWrrPolicy = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<RRSetRoutingPolicyWrrPolicy>;
+
 /** Configures a RRSetRoutingPolicy such that all queries are responded with the primary_targets if they are healthy. And if all of them are unhealthy, then we fallback to a geo localized policy. */
 export interface RRSetRoutingPolicyPrimaryBackupPolicy {
   /** Endpoints that are health checked before making the routing decision. Unhealthy endpoints are omitted from the results. If all endpoints are unhealthy, we serve a response based on the `backup_geo_targets`. */
@@ -152,6 +208,11 @@ export interface RRSetRoutingPolicyPrimaryBackupPolicy {
   /** Backup targets provide a regional failover policy for the otherwise global primary targets. If serving state is set to `BACKUP`, this policy essentially becomes a geo routing policy. */
   backupGeoTargets?: RRSetRoutingPolicyGeoPolicy;
 }
+const RRSetRoutingPolicyPrimaryBackupPolicy = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<RRSetRoutingPolicyPrimaryBackupPolicy>;
+
 /** A RRSetRoutingPolicy represents ResourceRecordSet data that is returned dynamically with the response varying based on configured properties such as geolocation or by weighted random selection. */
 export interface RRSetRoutingPolicy {
   /** The fully qualified URL of the HealthCheck to use for this RRSetRoutingPolicy. Format this URL like `https://www.googleapis.com/compute/v1/projects/{project}/global/healthChecks/{healthCheck}`. https://cloud.google.com/compute/docs/reference/rest/v1/healthChecks */
@@ -163,6 +224,8 @@ export interface RRSetRoutingPolicy {
   primaryBackup?: RRSetRoutingPolicyPrimaryBackupPolicy;
   wrrPolicy?: RRSetRoutingPolicyWrrPolicy;
 }
+const RRSetRoutingPolicy = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<RRSetRoutingPolicy>;
+
 /** A unit of data that is returned by the DNS servers. */
 export interface ResourceRecordSet {
   /** Number of seconds that this `ResourceRecordSet` can be cached by resolvers. */
@@ -178,8 +241,17 @@ export interface ResourceRecordSet {
   /** The identifier of a supported record type. See the list of Supported DNS record types. */
   type?: string;
 }
+const ResourceRecordSet = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<ResourceRecordSet>;
+
 export type ResourceRecordSetList = Array<ResourceRecordSet>;
+const ResourceRecordSetList = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<ResourceRecordSetList>;
+
 export type ChangeStatusEnum = "pending" | "done";
+const ChangeStatusEnum = S.String;
+
 /** A Change represents a set of `ResourceRecordSet` additions and deletions applied atomically to a ManagedZone. ResourceRecordSets within a ManagedZone are modified by creating a new Change element in the Changes collection. In turn the Changes collection also records the past modifications to the `ResourceRecordSets` in a `ManagedZone`. The current state of the `ManagedZone` is the sum effect of applying all `Change` elements in the `Changes` collection in sequence. */
 export interface Change {
   /** Unique identifier for the resource; defined by the server (output only). */
@@ -196,6 +268,8 @@ export interface Change {
   /** The time that this operation was started by the server (output only). This is in RFC3339 text format. */
   startTime?: string;
 }
+const Change = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<Change>;
+
 export interface CreateChangesRequest {
   /** Identifies the project addressed by this request. */
   project: string;
@@ -206,6 +280,8 @@ export interface CreateChangesRequest {
   /** Request body */
   body?: Change;
 }
+const CreateChangesRequest = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<CreateChangesRequest>;
+
 export interface ManagedZoneServiceDirectoryConfigNamespace {
   kind?: string;
   /** The fully qualified URL of the namespace associated with the zone. Format must be `https://servicedirectory.googleapis.com/v1/projects/{project}/locations/{location}/namespaces/{namespace}` */
@@ -213,13 +289,25 @@ export interface ManagedZoneServiceDirectoryConfigNamespace {
   /** The time that the namespace backing this zone was deleted; an empty string if it still exists. This is in RFC3339 text format. Output only. */
   deletionTime?: string;
 }
+const ManagedZoneServiceDirectoryConfigNamespace = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<ManagedZoneServiceDirectoryConfigNamespace>;
+
 /** Contains information about Service Directory-backed zones. */
 export interface ManagedZoneServiceDirectoryConfig {
   kind?: string;
   /** Contains information about the namespace associated with the zone. */
   namespace?: ManagedZoneServiceDirectoryConfigNamespace;
 }
+const ManagedZoneServiceDirectoryConfig = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<ManagedZoneServiceDirectoryConfig>;
+
 export type ManagedZoneVisibilityEnum = "public" | "private";
+const ManagedZoneVisibilityEnum = S.String;
+
 export interface ManagedZonePeeringConfigTargetNetwork {
   kind?: string;
   /** The time at which the zone was deactivated, in RFC 3339 date-time format. An empty string indicates that the peering connection is active. The producer network can deactivate a zone. The zone is automatically deactivated if the producer network that the zone targeted is deleted. Output only. */
@@ -227,31 +315,66 @@ export interface ManagedZonePeeringConfigTargetNetwork {
   /** The fully qualified URL of the VPC network to forward queries to. This should be formatted like `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}` */
   networkUrl?: string;
 }
+const ManagedZonePeeringConfigTargetNetwork = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<ManagedZonePeeringConfigTargetNetwork>;
+
 export interface ManagedZonePeeringConfig {
   kind?: string;
   /** The network with which to peer. */
   targetNetwork?: ManagedZonePeeringConfigTargetNetwork;
 }
+const ManagedZonePeeringConfig = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<ManagedZonePeeringConfig>;
+
 /** Cloud Logging configurations for publicly visible zones. */
 export interface ManagedZoneCloudLoggingConfig {
   kind?: string;
   /** If set, enable query logging for this ManagedZone. False by default, making logging opt-in. */
   enableLogging?: boolean;
 }
+const ManagedZoneCloudLoggingConfig = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<ManagedZoneCloudLoggingConfig>;
+
 export interface ManagedZonePrivateVisibilityConfigGKECluster {
   /** The resource name of the cluster to bind this ManagedZone to. This should be specified in the format like: projects/*\/locations/*\/clusters/*. This is referenced from GKE projects.locations.clusters.get API: https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters/get */
   gkeClusterName?: string;
   kind?: string;
 }
+const ManagedZonePrivateVisibilityConfigGKECluster = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<ManagedZonePrivateVisibilityConfigGKECluster>;
+
 export type ManagedZonePrivateVisibilityConfigGKEClusterList =
   Array<ManagedZonePrivateVisibilityConfigGKECluster>;
+const ManagedZonePrivateVisibilityConfigGKEClusterList = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<ManagedZonePrivateVisibilityConfigGKEClusterList>;
+
 export interface ManagedZonePrivateVisibilityConfigNetwork {
   kind?: string;
   /** The fully qualified URL of the VPC network to bind to. Format this URL like `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}` */
   networkUrl?: string;
 }
+const ManagedZonePrivateVisibilityConfigNetwork = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<ManagedZonePrivateVisibilityConfigNetwork>;
+
 export type ManagedZonePrivateVisibilityConfigNetworkList =
   Array<ManagedZonePrivateVisibilityConfigNetwork>;
+const ManagedZonePrivateVisibilityConfigNetworkList = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<ManagedZonePrivateVisibilityConfigNetworkList>;
+
 export interface ManagedZonePrivateVisibilityConfig {
   kind?: string;
   /** The list of Google Kubernetes Engine clusters that can see this zone. */
@@ -259,17 +382,33 @@ export interface ManagedZonePrivateVisibilityConfig {
   /** The list of VPC networks that can see this zone. */
   networks?: ManagedZonePrivateVisibilityConfigNetworkList;
 }
+const ManagedZonePrivateVisibilityConfig = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<ManagedZonePrivateVisibilityConfig>;
+
 export interface ManagedZoneReverseLookupConfig {
   kind?: string;
 }
+const ManagedZoneReverseLookupConfig = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<ManagedZoneReverseLookupConfig>;
+
 export type ManagedZoneDnsSecConfigStateEnum = "off" | "on" | "transfer";
+const ManagedZoneDnsSecConfigStateEnum = S.String;
+
 export type DnsKeySpecAlgorithmEnum =
   | "rsasha1"
   | "rsasha256"
   | "rsasha512"
   | "ecdsap256sha256"
   | "ecdsap384sha384";
+const DnsKeySpecAlgorithmEnum = S.String;
+
 export type DnsKeySpecKeyTypeEnum = "keySigning" | "zoneSigning";
+const DnsKeySpecKeyTypeEnum = S.String;
+
 /** Parameters for DnsKey key generation. Used for generating initial keys for a new ManagedZone and as default when adding a new DnsKey. */
 export interface DnsKeySpec {
   kind?: string;
@@ -280,8 +419,14 @@ export interface DnsKeySpec {
   /** Length of the keys in bits. */
   keyLength?: number;
 }
+const DnsKeySpec = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<DnsKeySpec>;
+
 export type DnsKeySpecList = Array<DnsKeySpec>;
+const DnsKeySpecList = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<DnsKeySpecList>;
+
 export type ManagedZoneDnsSecConfigNonExistenceEnum = "nsec" | "nsec3";
+const ManagedZoneDnsSecConfigNonExistenceEnum = S.String;
+
 export interface ManagedZoneDnsSecConfig {
   /** Specifies whether DNSSEC is enabled, and what mode it is in. */
   state?: ManagedZoneDnsSecConfigStateEnum | (string & {});
@@ -291,14 +436,31 @@ export interface ManagedZoneDnsSecConfig {
   /** Specifies the mechanism for authenticated denial-of-existence responses. Can only be changed while the state is OFF. */
   nonExistence?: ManagedZoneDnsSecConfigNonExistenceEnum | (string & {});
 }
+const ManagedZoneDnsSecConfig = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<ManagedZoneDnsSecConfig>;
+
 export interface ManagedZoneForwardingConfigOutboundEndpoint {
   /** Specified as a resource path including project and region. This should be formatted like projects/{project}/locations/{location}/outboundEndpoints/{endpoint} */
   name?: string;
   kind?: string;
 }
+const ManagedZoneForwardingConfigOutboundEndpoint = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<ManagedZoneForwardingConfigOutboundEndpoint>;
+
 export type ManagedZoneForwardingConfigOutboundEndpointList =
   Array<ManagedZoneForwardingConfigOutboundEndpoint>;
+const ManagedZoneForwardingConfigOutboundEndpointList = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<ManagedZoneForwardingConfigOutboundEndpointList>;
+
 export type ManagedZoneForwardingConfigNameServerTargetForwardingPathEnum = "default" | "private";
+const ManagedZoneForwardingConfigNameServerTargetForwardingPathEnum = S.String;
+
 export interface ManagedZoneForwardingConfigNameServerTarget {
   /** Fully qualified domain name for the forwarding target. */
   domainName?: string;
@@ -310,8 +472,18 @@ export interface ManagedZoneForwardingConfigNameServerTarget {
   /** IPv6 address of a target name server. Does not accept both fields (ipv4 & ipv6) being populated. Public preview as of November 2022. */
   ipv6Address?: string;
 }
+const ManagedZoneForwardingConfigNameServerTarget = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<ManagedZoneForwardingConfigNameServerTarget>;
+
 export type ManagedZoneForwardingConfigNameServerTargetList =
   Array<ManagedZoneForwardingConfigNameServerTarget>;
+const ManagedZoneForwardingConfigNameServerTargetList = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<ManagedZoneForwardingConfigNameServerTargetList>;
+
 export interface ManagedZoneForwardingConfig {
   /** The list of outbound endpoints to use for queries. */
   outboundEndpoints?: ManagedZoneForwardingConfigOutboundEndpointList;
@@ -319,7 +491,14 @@ export interface ManagedZoneForwardingConfig {
   /** List of target name servers to forward to. Cloud DNS selects the best available name server if more than one target is given. */
   targetNameServers?: ManagedZoneForwardingConfigNameServerTargetList;
 }
+const ManagedZoneForwardingConfig = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<ManagedZoneForwardingConfig>;
+
 export type StringMap = { [key: string]: string | undefined };
+const StringMap = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<StringMap>;
+
 /** A zone is a subtree of the DNS namespace under one administrative responsibility. A ManagedZone is a resource that represents a DNS zone hosted by the Cloud DNS service. */
 export interface ManagedZone {
   /** This field links to the associated service directory namespace. Do not set this field for public zones or forwarding zones. */
@@ -355,6 +534,8 @@ export interface ManagedZone {
   /** User labels. */
   labels?: StringMap;
 }
+const ManagedZone = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<ManagedZone>;
+
 export interface CreateManagedZonesRequest {
   /** Identifies the project addressed by this request. */
   project: string;
@@ -363,6 +544,11 @@ export interface CreateManagedZonesRequest {
   /** Request body */
   body?: ManagedZone;
 }
+const CreateManagedZonesRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<CreateManagedZonesRequest>;
+
 /** An OutboundEndpoint is a regional resource to enable outbound forwarding from a private IP range in VPCs to on-premise or other networks. */
 export interface OutboundEndpoint {
   /** Optional. User provided description. */
@@ -386,6 +572,8 @@ export interface OutboundEndpoint {
   /** Required. Immutable. The VPC network containing the outbound endpoint, specified as full path. */
   network?: string;
 }
+const OutboundEndpoint = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<OutboundEndpoint>;
+
 export interface CreateOutboundEndpointsRequest {
   /** Optional. An optional request ID to identify requests. */
   requestId?: string;
@@ -398,8 +586,17 @@ export interface CreateOutboundEndpointsRequest {
   /** Request body */
   body?: OutboundEndpoint;
 }
+const CreateOutboundEndpointsRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  1,
+) as any as S.Schema<CreateOutboundEndpointsRequest>;
+
 export type DocumentMap = { [key: string]: unknown | undefined };
+const DocumentMap = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<DocumentMap>;
+
 export type DocumentMapList = Array<DocumentMap>;
+const DocumentMapList = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<DocumentMapList>;
+
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
@@ -409,6 +606,8 @@ export interface Status {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
   message?: string;
 }
+const Status = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<Status>;
+
 /** This resource represents a long-running operation that is the result of a network API call. */
 export interface GoogleLongrunningOperation {
   /** The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`. */
@@ -422,15 +621,26 @@ export interface GoogleLongrunningOperation {
   /** If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available. */
   done?: boolean;
 }
+const GoogleLongrunningOperation = /*@__PURE__*/ __L.at(
+  __c5,
+  5,
+) as any as S.Schema<GoogleLongrunningOperation>;
+
 export interface PolicyNetwork {
   kind?: string;
   /** The fully qualified URL of the VPC network to bind to. This should be formatted like https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network} */
   networkUrl?: string;
 }
+const PolicyNetwork = /*@__PURE__*/ __L.at(__c5, 6) as any as S.Schema<PolicyNetwork>;
+
 export type PolicyNetworkList = Array<PolicyNetwork>;
+const PolicyNetworkList = /*@__PURE__*/ __L.at(__c5, 7) as any as S.Schema<PolicyNetworkList>;
+
 export type PolicyAlternativeNameServerConfigTargetNameServerForwardingPathEnum =
   | "default"
   | "private";
+const PolicyAlternativeNameServerConfigTargetNameServerForwardingPathEnum = S.String;
+
 export interface PolicyAlternativeNameServerConfigTargetNameServer {
   kind?: string;
   /** IPv4 address to forward queries to. */
@@ -442,12 +652,25 @@ export interface PolicyAlternativeNameServerConfigTargetNameServer {
     | PolicyAlternativeNameServerConfigTargetNameServerForwardingPathEnum
     | (string & {});
 }
+const PolicyAlternativeNameServerConfigTargetNameServer = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<PolicyAlternativeNameServerConfigTargetNameServer>;
+
 export type PolicyAlternativeNameServerConfigTargetNameServerList =
   Array<PolicyAlternativeNameServerConfigTargetNameServer>;
+const PolicyAlternativeNameServerConfigTargetNameServerList = /*@__PURE__*/ __L.at(
+  __c6,
+  1,
+) as any as S.Schema<PolicyAlternativeNameServerConfigTargetNameServerList>;
+
 export type PolicyAlternativeNameServerConfigOutboundEndpoint =
   ManagedZoneForwardingConfigOutboundEndpoint;
 export type PolicyAlternativeNameServerConfigOutboundEndpointList =
   Array<ManagedZoneForwardingConfigOutboundEndpoint>;
+const PolicyAlternativeNameServerConfigOutboundEndpointList =
+  ManagedZoneForwardingConfigOutboundEndpointList as any as S.Schema<PolicyAlternativeNameServerConfigOutboundEndpointList>;
+
 export interface PolicyAlternativeNameServerConfig {
   kind?: string;
   /** Sets an alternative name server for the associated networks. When specified, all DNS queries are forwarded to a name server that you choose. Names such as .internal are not available when an alternative name server is specified. */
@@ -455,17 +678,29 @@ export interface PolicyAlternativeNameServerConfig {
   /** The list of outbound endpoints to use for queries. */
   outboundEndpoints?: PolicyAlternativeNameServerConfigOutboundEndpointList;
 }
+const PolicyAlternativeNameServerConfig = /*@__PURE__*/ __L.at(
+  __c6,
+  2,
+) as any as S.Schema<PolicyAlternativeNameServerConfig>;
+
 export interface PolicyDns64ConfigScope {
   /** Controls whether DNS64 is enabled globally for all networks bound to the policy. */
   allQueries?: boolean;
   kind?: string;
 }
+const PolicyDns64ConfigScope = /*@__PURE__*/ __L.at(
+  __c6,
+  3,
+) as any as S.Schema<PolicyDns64ConfigScope>;
+
 /** DNS64 policies */
 export interface PolicyDns64Config {
   kind?: string;
   /** The scope to which DNS64 config will be applied to. */
   scope?: PolicyDns64ConfigScope;
 }
+const PolicyDns64Config = /*@__PURE__*/ __L.at(__c6, 4) as any as S.Schema<PolicyDns64Config>;
+
 /** A policy is a collection of DNS rules applied to one or more Virtual Private Cloud resources. */
 export interface Policy {
   /** List of network names specifying networks to which this policy is applied. */
@@ -486,6 +721,8 @@ export interface Policy {
   /** Unique identifier for the resource; defined by the server (output only). */
   id?: string;
 }
+const Policy = /*@__PURE__*/ __L.at(__c6, 5) as any as S.Schema<Policy>;
+
 export interface CreatePoliciesRequest {
   /** Identifies the project addressed by this request. */
   project: string;
@@ -494,6 +731,11 @@ export interface CreatePoliciesRequest {
   /** Request body */
   body?: Policy;
 }
+const CreatePoliciesRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  6,
+) as any as S.Schema<CreatePoliciesRequest>;
+
 export interface CreateResourceRecordSetsRequest {
   /** For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection. */
   clientOperationId?: string;
@@ -504,18 +746,35 @@ export interface CreateResourceRecordSetsRequest {
   /** Request body */
   body?: ResourceRecordSet;
 }
+const CreateResourceRecordSetsRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  7,
+) as any as S.Schema<CreateResourceRecordSetsRequest>;
+
 export interface ResponsePolicyNetwork {
   kind?: string;
   /** The fully qualified URL of the VPC network to bind to. This should be formatted like `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}` */
   networkUrl?: string;
 }
 export type ResponsePolicyNetworkList = Array<ResponsePolicyNetwork>;
+const ResponsePolicyNetworkList = PolicyNetworkList as any as S.Schema<ResponsePolicyNetworkList>;
+
 export interface ResponsePolicyGKECluster {
   /** The resource name of the cluster to bind this response policy to. This should be specified in the format like: projects/*\/locations/*\/clusters/*. This is referenced from GKE projects.locations.clusters.get API: https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters/get */
   gkeClusterName?: string;
   kind?: string;
 }
+const ResponsePolicyGKECluster = /*@__PURE__*/ __L.at(
+  __c7,
+  0,
+) as any as S.Schema<ResponsePolicyGKECluster>;
+
 export type ResponsePolicyGKEClusterList = Array<ResponsePolicyGKECluster>;
+const ResponsePolicyGKEClusterList = /*@__PURE__*/ __L.at(
+  __c7,
+  1,
+) as any as S.Schema<ResponsePolicyGKEClusterList>;
+
 /** A Response Policy is a collection of selectors that apply to queries made against one or more Virtual Private Cloud networks. */
 export interface ResponsePolicy {
   /** User-provided description for this Response Policy. */
@@ -532,6 +791,8 @@ export interface ResponsePolicy {
   /** User assigned name for this Response Policy. */
   responsePolicyName?: string;
 }
+const ResponsePolicy = /*@__PURE__*/ __L.at(__c7, 2) as any as S.Schema<ResponsePolicy>;
+
 export interface CreateResponsePoliciesRequest {
   /** Identifies the project addressed by this request. */
   project: string;
@@ -540,11 +801,23 @@ export interface CreateResponsePoliciesRequest {
   /** Request body */
   body?: ResponsePolicy;
 }
+const CreateResponsePoliciesRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  3,
+) as any as S.Schema<CreateResponsePoliciesRequest>;
+
 export type ResponsePolicyRuleBehaviorEnum = "behaviorUnspecified" | "bypassResponsePolicy";
+const ResponsePolicyRuleBehaviorEnum = S.String;
+
 export interface ResponsePolicyRuleLocalData {
   /** All resource record sets for this selector, one per resource record type. The name must match the dns_name. */
   localDatas?: ResourceRecordSetList;
 }
+const ResponsePolicyRuleLocalData = /*@__PURE__*/ __L.at(
+  __c7,
+  4,
+) as any as S.Schema<ResponsePolicyRuleLocalData>;
+
 /** A Response Policy Rule is a selector that applies its behavior to queries that match the selector. Selectors are DNS names, which may be wildcards or exact matches. Each DNS query subject to a Response Policy matches at most one ResponsePolicyRule, as identified by the dns_name field with the longest matching suffix. */
 export interface ResponsePolicyRule {
   /** The DNS name (wildcard or exact) to apply this rule to. Must be unique within the Response Policy Rule. */
@@ -557,6 +830,8 @@ export interface ResponsePolicyRule {
   /** An identifier for this rule. Must be unique with the ResponsePolicy. */
   ruleName?: string;
 }
+const ResponsePolicyRule = /*@__PURE__*/ __L.at(__c7, 5) as any as S.Schema<ResponsePolicyRule>;
+
 export interface CreateResponsePolicyRulesRequest {
   /** Identifies the project addressed by this request. */
   project: string;
@@ -567,6 +842,11 @@ export interface CreateResponsePolicyRulesRequest {
   /** Request body */
   body?: ResponsePolicyRule;
 }
+const CreateResponsePolicyRulesRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  6,
+) as any as S.Schema<CreateResponsePolicyRulesRequest>;
+
 export interface DeleteManagedZonesRequest {
   /** For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection. */
   clientOperationId?: string;
@@ -575,11 +855,23 @@ export interface DeleteManagedZonesRequest {
   /** Identifies the managed zone addressed by this request. Can be the managed zone name or ID. */
   managedZone: string;
 }
+const DeleteManagedZonesRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  7,
+) as any as S.Schema<DeleteManagedZonesRequest>;
+
 export interface DeleteManagedZonesResponse {}
+const DeleteManagedZonesResponse = Empty as any as S.Schema<DeleteManagedZonesResponse>;
+
 export interface DeleteOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
+const DeleteOperationsRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  0,
+) as any as S.Schema<DeleteOperationsRequest>;
+
 export interface DeleteOutboundEndpointsRequest {
   /** For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection. */
   clientOperationId?: string;
@@ -588,6 +880,11 @@ export interface DeleteOutboundEndpointsRequest {
   /** Required. The name of the OutboundEndpoint to delete. Format: projects/{project}/locations/{location}/outboundEndpoints/{outboundEndpoint} */
   name: string;
 }
+const DeleteOutboundEndpointsRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  1,
+) as any as S.Schema<DeleteOutboundEndpointsRequest>;
+
 export interface DeletePoliciesRequest {
   /** For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection. */
   clientOperationId?: string;
@@ -596,7 +893,14 @@ export interface DeletePoliciesRequest {
   /** User given friendly name of the policy addressed by this request. */
   policy: string;
 }
+const DeletePoliciesRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  2,
+) as any as S.Schema<DeletePoliciesRequest>;
+
 export interface DeletePoliciesResponse {}
+const DeletePoliciesResponse = Empty as any as S.Schema<DeletePoliciesResponse>;
+
 export interface DeleteResourceRecordSetsRequest {
   /** RRSet type. */
   type: string;
@@ -609,7 +913,17 @@ export interface DeleteResourceRecordSetsRequest {
   /** For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection. */
   clientOperationId?: string;
 }
+const DeleteResourceRecordSetsRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  3,
+) as any as S.Schema<DeleteResourceRecordSetsRequest>;
+
 export interface DeleteResourceRecordSetsResponse {}
+const DeleteResourceRecordSetsResponse = /*@__PURE__*/ __L.at(
+  __c8,
+  4,
+) as any as S.Schema<DeleteResourceRecordSetsResponse>;
+
 export interface DeleteResponsePoliciesRequest {
   /** Identifies the project addressed by this request. */
   project: string;
@@ -618,7 +932,14 @@ export interface DeleteResponsePoliciesRequest {
   /** User assigned name of the Response Policy addressed by this request. */
   responsePolicy: string;
 }
+const DeleteResponsePoliciesRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  5,
+) as any as S.Schema<DeleteResponsePoliciesRequest>;
+
 export interface DeleteResponsePoliciesResponse {}
+const DeleteResponsePoliciesResponse = Empty as any as S.Schema<DeleteResponsePoliciesResponse>;
+
 export interface DeleteResponsePolicyRulesRequest {
   /** User assigned name of the Response Policy containing the Response Policy Rule. */
   responsePolicy: string;
@@ -629,7 +950,15 @@ export interface DeleteResponsePolicyRulesRequest {
   /** For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection. */
   clientOperationId?: string;
 }
+const DeleteResponsePolicyRulesRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  6,
+) as any as S.Schema<DeleteResponsePolicyRulesRequest>;
+
 export interface DeleteResponsePolicyRulesResponse {}
+const DeleteResponsePolicyRulesResponse =
+  DeleteResourceRecordSetsResponse as any as S.Schema<DeleteResponsePolicyRulesResponse>;
+
 export interface GetChangesRequest {
   /** For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection. */
   clientOperationId?: string;
@@ -640,6 +969,8 @@ export interface GetChangesRequest {
   /** Identifies the managed zone addressed by this request. Can be the managed zone name or ID. */
   managedZone: string;
 }
+const GetChangesRequest = /*@__PURE__*/ __L.at(__c8, 7) as any as S.Schema<GetChangesRequest>;
+
 export interface GetDnsKeysRequest {
   /** Identifies the managed zone addressed by this request. Can be the managed zone name or ID. */
   managedZone: string;
@@ -652,21 +983,33 @@ export interface GetDnsKeysRequest {
   /** Identifies the project addressed by this request. */
   project: string;
 }
+const GetDnsKeysRequest = /*@__PURE__*/ __L.at(__c9, 0) as any as S.Schema<GetDnsKeysRequest>;
+
 export type DnsKeyTypeEnum = "keySigning" | "zoneSigning";
+const DnsKeyTypeEnum = S.String;
+
 export type DnsKeyDigestTypeEnum = "sha1" | "sha256" | "sha384";
+const DnsKeyDigestTypeEnum = S.String;
+
 export interface DnsKeyDigest {
   /** The base-16 encoded bytes of this digest. Suitable for use in a DS resource record. */
   digest?: string;
   /** Specifies the algorithm used to calculate this digest. */
   type?: DnsKeyDigestTypeEnum;
 }
+const DnsKeyDigest = /*@__PURE__*/ __L.at(__c9, 1) as any as S.Schema<DnsKeyDigest>;
+
 export type DnsKeyDigestList = Array<DnsKeyDigest>;
+const DnsKeyDigestList = /*@__PURE__*/ __L.at(__c9, 2) as any as S.Schema<DnsKeyDigestList>;
+
 export type DnsKeyAlgorithmEnum =
   | "rsasha1"
   | "rsasha256"
   | "rsasha512"
   | "ecdsap256sha256"
   | "ecdsap384sha384";
+const DnsKeyAlgorithmEnum = S.String;
+
 /** A DNSSEC key pair. */
 export interface DnsKey {
   /** The key tag is a non-cryptographic hash of the a DNSKEY resource record associated with this DnsKey. The key tag can be used to identify a DNSKEY more quickly (but it is not a unique identifier). In particular, the key tag is used in a parent zone's DS record to point at the DNSKEY in this child ManagedZone. The key tag is a number in the range [0, 65535] and the algorithm to calculate it is specified in RFC4034 Appendix B. Output only. */
@@ -691,22 +1034,39 @@ export interface DnsKey {
   /** String mnemonic specifying the DNSSEC algorithm of this key. Immutable after creation time. */
   algorithm?: DnsKeyAlgorithmEnum;
 }
+const DnsKey = /*@__PURE__*/ __L.at(__c9, 3) as any as S.Schema<DnsKey>;
+
 /** Encapsulates settings provided to GetIamPolicy. */
 export interface GoogleIamV1GetPolicyOptions {
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   requestedPolicyVersion?: number;
 }
+const GoogleIamV1GetPolicyOptions = /*@__PURE__*/ __L.at(
+  __c9,
+  4,
+) as any as S.Schema<GoogleIamV1GetPolicyOptions>;
+
 /** Request message for `GetIamPolicy` method. */
 export interface GoogleIamV1GetIamPolicyRequest {
   /** OPTIONAL: A `GetPolicyOptions` object for specifying options to `GetIamPolicy`. */
   options?: GoogleIamV1GetPolicyOptions;
 }
+const GoogleIamV1GetIamPolicyRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  5,
+) as any as S.Schema<GoogleIamV1GetIamPolicyRequest>;
+
 export interface GetIamPolicyManagedZonesRequest {
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: GoogleIamV1GetIamPolicyRequest;
 }
+const GetIamPolicyManagedZonesRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  6,
+) as any as S.Schema<GetIamPolicyManagedZonesRequest>;
+
 /** Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information. */
 export interface Expr {
   /** Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression. */
@@ -718,6 +1078,8 @@ export interface Expr {
   /** Textual representation of an expression in Common Expression Language syntax. */
   expression?: string;
 }
+const Expr = /*@__PURE__*/ __L.at(__c9, 7) as any as S.Schema<Expr>;
+
 /** Associates `members`, or principals, with a `role`. */
 export interface GoogleIamV1Binding {
   /** Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles). */
@@ -727,12 +1089,21 @@ export interface GoogleIamV1Binding {
   /** Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`. */
   members?: StringList;
 }
+const GoogleIamV1Binding = /*@__PURE__*/ __L.at(__c10, 0) as any as S.Schema<GoogleIamV1Binding>;
+
 export type GoogleIamV1BindingList = Array<GoogleIamV1Binding>;
+const GoogleIamV1BindingList = /*@__PURE__*/ __L.at(
+  __c10,
+  1,
+) as any as S.Schema<GoogleIamV1BindingList>;
+
 export type GoogleIamV1AuditLogConfigLogTypeEnum =
   | "LOG_TYPE_UNSPECIFIED"
   | "ADMIN_READ"
   | "DATA_WRITE"
   | "DATA_READ";
+const GoogleIamV1AuditLogConfigLogTypeEnum = S.String;
+
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
 export interface GoogleIamV1AuditLogConfig {
   /** The log type that this config enables. */
@@ -740,7 +1111,17 @@ export interface GoogleIamV1AuditLogConfig {
   /** Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members. */
   exemptedMembers?: StringList;
 }
+const GoogleIamV1AuditLogConfig = /*@__PURE__*/ __L.at(
+  __c10,
+  2,
+) as any as S.Schema<GoogleIamV1AuditLogConfig>;
+
 export type GoogleIamV1AuditLogConfigList = Array<GoogleIamV1AuditLogConfig>;
+const GoogleIamV1AuditLogConfigList = /*@__PURE__*/ __L.at(
+  __c10,
+  3,
+) as any as S.Schema<GoogleIamV1AuditLogConfigList>;
+
 /** Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts `jose@example.com` from DATA_READ logging, and `aliya@example.com` from DATA_WRITE logging. */
 export interface GoogleIamV1AuditConfig {
   /** Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services. */
@@ -748,7 +1129,17 @@ export interface GoogleIamV1AuditConfig {
   /** The configuration for logging of each type of permission. */
   auditLogConfigs?: GoogleIamV1AuditLogConfigList;
 }
+const GoogleIamV1AuditConfig = /*@__PURE__*/ __L.at(
+  __c10,
+  4,
+) as any as S.Schema<GoogleIamV1AuditConfig>;
+
 export type GoogleIamV1AuditConfigList = Array<GoogleIamV1AuditConfig>;
+const GoogleIamV1AuditConfigList = /*@__PURE__*/ __L.at(
+  __c10,
+  5,
+) as any as S.Schema<GoogleIamV1AuditConfigList>;
+
 /** An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single `role`. Principals can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** ``` { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } ``` **YAML example:** ``` bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/). */
 export interface GoogleIamV1Policy {
   /** `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. */
@@ -760,10 +1151,14 @@ export interface GoogleIamV1Policy {
   /** Specifies cloud audit logging configuration for this policy. */
   auditConfigs?: GoogleIamV1AuditConfigList;
 }
+const GoogleIamV1Policy = /*@__PURE__*/ __L.at(__c10, 6) as any as S.Schema<GoogleIamV1Policy>;
+
 export interface GetLocationsRequest {
   /** Resource name for the location. */
   name: string;
 }
+const GetLocationsRequest = /*@__PURE__*/ __L.at(__c10, 7) as any as S.Schema<GetLocationsRequest>;
+
 /** A resource that represents a Google Cloud location. */
 export interface Location {
   /** Service-specific metadata. For example the available capacity at the given location. */
@@ -777,6 +1172,8 @@ export interface Location {
   /** The canonical id for this location. For example: `"us-east1"`. */
   locationId?: string;
 }
+const Location = /*@__PURE__*/ __L.at(__c11, 0) as any as S.Schema<Location>;
+
 export interface GetManagedZoneOperationsRequest {
   /** Identifies the managed zone addressed by this request. */
   managedZone: string;
@@ -787,19 +1184,36 @@ export interface GetManagedZoneOperationsRequest {
   /** Identifies the operation addressed by this request (ID of the operation). */
   operation: string;
 }
+const GetManagedZoneOperationsRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  1,
+) as any as S.Schema<GetManagedZoneOperationsRequest>;
+
 export interface OperationManagedZoneContext {
   /** The pre-operation ManagedZone resource. */
   oldValue?: ManagedZone;
   /** The post-operation ManagedZone resource. */
   newValue?: ManagedZone;
 }
+const OperationManagedZoneContext = /*@__PURE__*/ __L.at(
+  __c11,
+  2,
+) as any as S.Schema<OperationManagedZoneContext>;
+
 export interface OperationDnsKeyContext {
   /** The pre-operation DnsKey resource. */
   oldValue?: DnsKey;
   /** The post-operation DnsKey resource. */
   newValue?: DnsKey;
 }
+const OperationDnsKeyContext = /*@__PURE__*/ __L.at(
+  __c11,
+  3,
+) as any as S.Schema<OperationDnsKeyContext>;
+
 export type OperationStatusEnum = "pending" | "done";
+const OperationStatusEnum = S.String;
+
 /** An operation represents a successful mutation performed on a Cloud DNS resource. Operations provide: - An audit log of server resource mutations. - A way to recover/retry API calls in the case where the response is never received by the caller. Use the caller specified client_operation_id. */
 export interface Operation {
   /** Only populated if the operation targeted a ManagedZone (output only). */
@@ -818,6 +1232,8 @@ export interface Operation {
   /** Unique identifier for the resource. This is the client_operation_id if the client specified it when the mutation was initiated, otherwise, it is generated by the server. The name must be 1-63 characters long and match the regular expression [-a-z0-9]? (output only) */
   id?: string;
 }
+const Operation = /*@__PURE__*/ __L.at(__c11, 4) as any as S.Schema<Operation>;
+
 export interface GetManagedZonesRequest {
   /** Identifies the managed zone addressed by this request. Can be the managed zone name or ID. */
   managedZone: string;
@@ -826,16 +1242,31 @@ export interface GetManagedZonesRequest {
   /** For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection. */
   clientOperationId?: string;
 }
+const GetManagedZonesRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  5,
+) as any as S.Schema<GetManagedZonesRequest>;
+
 export interface GetOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
+const GetOperationsRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  6,
+) as any as S.Schema<GetOperationsRequest>;
+
 export interface GetOutboundEndpointsRequest {
   /** Required. The name of the OutboundEndpoint to retrieve. Format: projects/{project}/locations/{location}/outboundEndpoints/{outboundEndpoint} */
   name: string;
   /** For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection. */
   clientOperationId?: string;
 }
+const GetOutboundEndpointsRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  7,
+) as any as S.Schema<GetOutboundEndpointsRequest>;
+
 export interface GetPoliciesRequest {
   /** For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection. */
   clientOperationId?: string;
@@ -844,10 +1275,14 @@ export interface GetPoliciesRequest {
   /** Identifies the project addressed by this request. */
   project: string;
 }
+const GetPoliciesRequest = /*@__PURE__*/ __L.at(__c12, 0) as any as S.Schema<GetPoliciesRequest>;
+
 export interface GetProjectsRequest {
   /** Identifies the project addressed by this request. */
   project: string;
 }
+const GetProjectsRequest = /*@__PURE__*/ __L.at(__c12, 1) as any as S.Schema<GetProjectsRequest>;
+
 /** Limits associated with a Project. */
 export interface Quota {
   /** Maximum allowed number of response policies per project. */
@@ -905,6 +1340,8 @@ export interface Quota {
   /** Maximum allowed number of ResourceRecordSets to delete per ChangesCreateRequest. */
   rrsetDeletionsPerChange?: number;
 }
+const Quota = /*@__PURE__*/ __L.at(__c12, 2) as any as S.Schema<Quota>;
+
 /** A project resource. The project is a top level container for resources including Cloud DNS ManagedZones. Projects can be created only in the APIs console. */
 export interface Project {
   /** Unique numeric identifier for the resource; defined by the server (output only). */
@@ -915,6 +1352,8 @@ export interface Project {
   quota?: Quota;
   kind?: string;
 }
+const Project = /*@__PURE__*/ __L.at(__c12, 3) as any as S.Schema<Project>;
+
 export interface GetResourceRecordSetsRequest {
   /** For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection. */
   clientOperationId?: string;
@@ -927,6 +1366,11 @@ export interface GetResourceRecordSetsRequest {
   /** RRSet type. */
   type: string;
 }
+const GetResourceRecordSetsRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  4,
+) as any as S.Schema<GetResourceRecordSetsRequest>;
+
 export interface GetResponsePoliciesRequest {
   /** Identifies the project addressed by this request. */
   project: string;
@@ -935,6 +1379,11 @@ export interface GetResponsePoliciesRequest {
   /** For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection. */
   clientOperationId?: string;
 }
+const GetResponsePoliciesRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  5,
+) as any as S.Schema<GetResponsePoliciesRequest>;
+
 export interface GetResponsePolicyRulesRequest {
   /** For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection. */
   clientOperationId?: string;
@@ -945,7 +1394,14 @@ export interface GetResponsePolicyRulesRequest {
   /** Identifies the project addressed by this request. */
   project: string;
 }
+const GetResponsePolicyRulesRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  6,
+) as any as S.Schema<GetResponsePolicyRulesRequest>;
+
 export type ListChangesSortByEnum = "changeSequence";
+const ListChangesSortByEnum = S.String;
+
 export interface ListChangesRequest {
   /** Optional. A tag returned by a previous list request that was truncated. Use this parameter to continue a previous list request. */
   pageToken?: string;
@@ -960,7 +1416,11 @@ export interface ListChangesRequest {
   /** Sorting criterion. The only supported value is change sequence. */
   sortBy?: ListChangesSortByEnum | (string & {});
 }
+const ListChangesRequest = /*@__PURE__*/ __L.at(__c12, 7) as any as S.Schema<ListChangesRequest>;
+
 export type ChangeList = Array<Change>;
+const ChangeList = /*@__PURE__*/ __L.at(__c13, 0) as any as S.Schema<ChangeList>;
+
 /** The response to a request to enumerate Changes to a ResourceRecordSets collection. */
 export interface ChangesListResponse {
   /** This field indicates that more results are available beyond the last page displayed. To fetch the results, make another list request and use this value as your page token. This lets you retrieve the complete contents of a very large collection one page at a time. However, if the contents of the collection change between the first and last paginated list request, the set of all elements returned are an inconsistent view of the collection. You can't retrieve a consistent snapshot of a collection larger than the maximum page size. */
@@ -970,6 +1430,8 @@ export interface ChangesListResponse {
   /** The requested changes. */
   changes?: ChangeList;
 }
+const ChangesListResponse = /*@__PURE__*/ __L.at(__c13, 1) as any as S.Schema<ChangesListResponse>;
+
 export interface ListDnsKeysRequest {
   /** Identifies the managed zone addressed by this request. Can be the managed zone name or ID. */
   managedZone: string;
@@ -982,7 +1444,11 @@ export interface ListDnsKeysRequest {
   /** An optional comma-separated list of digest types to compute and display for key signing keys. If omitted, the recommended digest type is computed and displayed. */
   digestType?: string;
 }
+const ListDnsKeysRequest = /*@__PURE__*/ __L.at(__c13, 2) as any as S.Schema<ListDnsKeysRequest>;
+
 export type DnsKeyList = Array<DnsKey>;
+const DnsKeyList = /*@__PURE__*/ __L.at(__c13, 3) as any as S.Schema<DnsKeyList>;
+
 /** The response to a request to enumerate DnsKeys in a ManagedZone. */
 export interface DnsKeysListResponse {
   /** The requested resources. */
@@ -992,6 +1458,8 @@ export interface DnsKeysListResponse {
   /** This field indicates that more results are available beyond the last page displayed. To fetch the results, make another list request and use this value as your page token. This lets you retrieve the complete contents of a very large collection one page at a time. However, if the contents of the collection change between the first and last paginated list request, the set of all elements returned are an inconsistent view of the collection. You can't retrieve a consistent snapshot of a collection larger than the maximum page size. */
   nextPageToken?: string;
 }
+const DnsKeysListResponse = /*@__PURE__*/ __L.at(__c13, 4) as any as S.Schema<DnsKeysListResponse>;
+
 export interface ListLocationsRequest {
   /** Optional. Do not use this field unless explicitly documented otherwise. This is primarily for internal usage. */
   extraLocationTypes?: StringList;
@@ -1004,7 +1472,14 @@ export interface ListLocationsRequest {
   /** A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). */
   filter?: string;
 }
+const ListLocationsRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  5,
+) as any as S.Schema<ListLocationsRequest>;
+
 export type LocationList = Array<Location>;
+const LocationList = /*@__PURE__*/ __L.at(__c13, 6) as any as S.Schema<LocationList>;
+
 /** The response message for Locations.ListLocations. */
 export interface ListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
@@ -1012,7 +1487,14 @@ export interface ListLocationsResponse {
   /** The standard List next-page token. */
   nextPageToken?: string;
 }
+const ListLocationsResponse = /*@__PURE__*/ __L.at(
+  __c13,
+  7,
+) as any as S.Schema<ListLocationsResponse>;
+
 export type ListManagedZoneOperationsSortByEnum = "startTime" | "id";
+const ListManagedZoneOperationsSortByEnum = S.String;
+
 export interface ListManagedZoneOperationsRequest {
   /** Sorting criterion. The only supported values are START_TIME and ID. */
   sortBy?: ListManagedZoneOperationsSortByEnum | (string & {});
@@ -1025,7 +1507,14 @@ export interface ListManagedZoneOperationsRequest {
   /** Identifies the managed zone addressed by this request. */
   managedZone: string;
 }
+const ListManagedZoneOperationsRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  0,
+) as any as S.Schema<ListManagedZoneOperationsRequest>;
+
 export type OperationList = Array<Operation>;
+const OperationList = /*@__PURE__*/ __L.at(__c14, 1) as any as S.Schema<OperationList>;
+
 export interface ManagedZoneOperationsListResponse {
   /** This field indicates that more results are available beyond the last page displayed. To fetch the results, make another list request and use this value as your page token. This lets you retrieve the complete contents of a very large collection one page at a time. However, if the contents of the collection change between the first and last paginated list request, the set of all elements returned are an inconsistent view of the collection. You can't retrieve a consistent snapshot of a collection larger than the maximum page size. */
   nextPageToken?: string;
@@ -1034,6 +1523,11 @@ export interface ManagedZoneOperationsListResponse {
   /** The operation resources. */
   operations?: OperationList;
 }
+const ManagedZoneOperationsListResponse = /*@__PURE__*/ __L.at(
+  __c14,
+  2,
+) as any as S.Schema<ManagedZoneOperationsListResponse>;
+
 export interface ListManagedZonesRequest {
   /** Optional. Maximum number of results to be returned. If unspecified, the server decides how many results to return. */
   maxResults?: number;
@@ -1044,7 +1538,14 @@ export interface ListManagedZonesRequest {
   /** Identifies the project addressed by this request. */
   project: string;
 }
+const ListManagedZonesRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  3,
+) as any as S.Schema<ListManagedZonesRequest>;
+
 export type ManagedZoneList = Array<ManagedZone>;
+const ManagedZoneList = /*@__PURE__*/ __L.at(__c14, 4) as any as S.Schema<ManagedZoneList>;
+
 export interface ManagedZonesListResponse {
   /** The managed zone resources. */
   managedZones?: ManagedZoneList;
@@ -1053,6 +1554,11 @@ export interface ManagedZonesListResponse {
   /** Output only. Type of resource. */
   kind?: string;
 }
+const ManagedZonesListResponse = /*@__PURE__*/ __L.at(
+  __c14,
+  5,
+) as any as S.Schema<ManagedZonesListResponse>;
+
 export interface ListOperationsRequest {
   /** The standard list page token. */
   pageToken?: string;
@@ -1065,7 +1571,17 @@ export interface ListOperationsRequest {
   /** The standard list page size. */
   pageSize?: number;
 }
+const ListOperationsRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  6,
+) as any as S.Schema<ListOperationsRequest>;
+
 export type GoogleLongrunningOperationList = Array<GoogleLongrunningOperation>;
+const GoogleLongrunningOperationList = /*@__PURE__*/ __L.at(
+  __c14,
+  7,
+) as any as S.Schema<GoogleLongrunningOperationList>;
+
 /** The response message for Operations.ListOperations. */
 export interface GoogleLongrunningListOperationsResponse {
   /** The standard List next-page token. */
@@ -1075,6 +1591,11 @@ export interface GoogleLongrunningListOperationsResponse {
   /** A list of operations that matches the specified filter in the request. */
   operations?: GoogleLongrunningOperationList;
 }
+const GoogleLongrunningListOperationsResponse = /*@__PURE__*/ __L.at(
+  __c15,
+  0,
+) as any as S.Schema<GoogleLongrunningListOperationsResponse>;
+
 export interface ListOutboundEndpointsRequest {
   clientOperationId?: string;
   /** Optional. The maximum number of results to return. */
@@ -1084,7 +1605,17 @@ export interface ListOutboundEndpointsRequest {
   /** Required. The parent project and location from which to list resources. Format: projects/{project}/locations/{location} */
   parent: string;
 }
+const ListOutboundEndpointsRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  1,
+) as any as S.Schema<ListOutboundEndpointsRequest>;
+
 export type OutboundEndpointList = Array<OutboundEndpoint>;
+const OutboundEndpointList = /*@__PURE__*/ __L.at(
+  __c15,
+  2,
+) as any as S.Schema<OutboundEndpointList>;
+
 /** Response message for OutboundEndpointsService.ListOutboundEndpoints */
 export interface ListOutboundEndpointsResponse {
   /** Unordered list. The resource names of the unreachable locations. Format: `projects/{project}/locations/{location}` */
@@ -1094,6 +1625,11 @@ export interface ListOutboundEndpointsResponse {
   /** The list of OutboundEndpoints. */
   outboundEndpoints?: OutboundEndpointList;
 }
+const ListOutboundEndpointsResponse = /*@__PURE__*/ __L.at(
+  __c15,
+  3,
+) as any as S.Schema<ListOutboundEndpointsResponse>;
+
 export interface ListPoliciesRequest {
   /** Identifies the project addressed by this request. */
   project: string;
@@ -1102,7 +1638,11 @@ export interface ListPoliciesRequest {
   /** Optional. Maximum number of results to be returned. If unspecified, the server decides how many results to return. */
   maxResults?: number;
 }
+const ListPoliciesRequest = /*@__PURE__*/ __L.at(__c15, 4) as any as S.Schema<ListPoliciesRequest>;
+
 export type PolicyList = Array<Policy>;
+const PolicyList = /*@__PURE__*/ __L.at(__c15, 5) as any as S.Schema<PolicyList>;
+
 export interface PoliciesListResponse {
   /** This field indicates that more results are available beyond the last page displayed. To fetch the results, make another list request and use this value as your page token. This lets you retrieve the complete contents of a very large collection one page at a time. However, if the contents of the collection change between the first and last paginated list request, the set of all elements returned are an inconsistent view of the collection. You can't retrieve a consistent snapshot of a collection larger than the maximum page size. */
   nextPageToken?: string;
@@ -1111,6 +1651,11 @@ export interface PoliciesListResponse {
   /** The policy resources. */
   policies?: PolicyList;
 }
+const PoliciesListResponse = /*@__PURE__*/ __L.at(
+  __c15,
+  6,
+) as any as S.Schema<PoliciesListResponse>;
+
 export interface ListResourceRecordSetsRequest {
   /** Specify a fully qualified domain name to view only those records. The `name` parameter is not supported and must be omitted when you use `filter`. */
   name?: string;
@@ -1127,6 +1672,11 @@ export interface ListResourceRecordSetsRequest {
   /** Identifies the project addressed by this request. */
   project: string;
 }
+const ListResourceRecordSetsRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  7,
+) as any as S.Schema<ListResourceRecordSetsRequest>;
+
 export interface ResourceRecordSetsListResponse {
   /** This field indicates that more results are available beyond the last page displayed. To fetch the results, make another list request and use this value as your page token. This lets you retrieve the complete contents of a very large collection one page at a time. However, if the contents of the collection change between the first and last paginated list request, the set of all elements returned are an inconsistent view of the collection. You can't retrieve a consistent snapshot of a collection larger than the maximum page size. */
   nextPageToken?: string;
@@ -1135,6 +1685,11 @@ export interface ResourceRecordSetsListResponse {
   /** The resource record set resources. */
   rrsets?: ResourceRecordSetList;
 }
+const ResourceRecordSetsListResponse = /*@__PURE__*/ __L.at(
+  __c16,
+  0,
+) as any as S.Schema<ResourceRecordSetsListResponse>;
+
 export interface ListResponsePoliciesRequest {
   /** Optional. A tag returned by a previous list request that was truncated. Use this parameter to continue a previous list request. */
   pageToken?: string;
@@ -1143,13 +1698,25 @@ export interface ListResponsePoliciesRequest {
   /** Optional. Maximum number of results to be returned. If unspecified, the server decides how many results to return. */
   maxResults?: number;
 }
+const ListResponsePoliciesRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  1,
+) as any as S.Schema<ListResponsePoliciesRequest>;
+
 export type ResponsePolicyList = Array<ResponsePolicy>;
+const ResponsePolicyList = /*@__PURE__*/ __L.at(__c16, 2) as any as S.Schema<ResponsePolicyList>;
+
 export interface ResponsePoliciesListResponse {
   /** The Response Policy resources. */
   responsePolicies?: ResponsePolicyList;
   /** This field indicates that more results are available beyond the last page displayed. To fetch the results, make another list request and use this value as your page token. This lets you retrieve the complete contents of a very large collection one page at a time. However, if the contents of the collection change between the first and last paginated list request, the set of all elements returned are an inconsistent view of the collection. You can't retrieve a consistent snapshot of a collection larger than the maximum page size. */
   nextPageToken?: string;
 }
+const ResponsePoliciesListResponse = /*@__PURE__*/ __L.at(
+  __c16,
+  3,
+) as any as S.Schema<ResponsePoliciesListResponse>;
+
 export interface ListResponsePolicyRulesRequest {
   /** Optional. A tag returned by a previous list request that was truncated. Use this parameter to continue a previous list request. */
   pageToken?: string;
@@ -1160,13 +1727,28 @@ export interface ListResponsePolicyRulesRequest {
   /** Optional. Maximum number of results to be returned. If unspecified, the server decides how many results to return. */
   maxResults?: number;
 }
+const ListResponsePolicyRulesRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  4,
+) as any as S.Schema<ListResponsePolicyRulesRequest>;
+
 export type ResponsePolicyRuleList = Array<ResponsePolicyRule>;
+const ResponsePolicyRuleList = /*@__PURE__*/ __L.at(
+  __c16,
+  5,
+) as any as S.Schema<ResponsePolicyRuleList>;
+
 export interface ResponsePolicyRulesListResponse {
   /** The Response Policy Rule resources. */
   responsePolicyRules?: ResponsePolicyRuleList;
   /** This field indicates that more results are available beyond the last page displayed. To fetch the results, make another list request and use this value as your page token. This lets you retrieve the complete contents of a very large collection one page at a time. However, if the contents of the collection change between the first and last paginated list request, the set of all elements returned are an inconsistent view of the collection. You can't retrieve a consistent snapshot of a collection larger than the maximum page size. */
   nextPageToken?: string;
 }
+const ResponsePolicyRulesListResponse = /*@__PURE__*/ __L.at(
+  __c16,
+  6,
+) as any as S.Schema<ResponsePolicyRulesListResponse>;
+
 export interface PatchManagedZonesRequest {
   /** Identifies the managed zone addressed by this request. Can be the managed zone name or ID. */
   managedZone: string;
@@ -1177,6 +1759,11 @@ export interface PatchManagedZonesRequest {
   /** Request body */
   body?: ManagedZone;
 }
+const PatchManagedZonesRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  7,
+) as any as S.Schema<PatchManagedZonesRequest>;
+
 export interface PatchOutboundEndpointsRequest {
   /** Identifier. The resource name of the OutboundEndpoint. Format: `projects/{project}/locations/{location}/outboundEndpoints/{outboundEndpoint}` */
   name: string;
@@ -1189,6 +1776,11 @@ export interface PatchOutboundEndpointsRequest {
   /** Request body */
   body?: OutboundEndpoint;
 }
+const PatchOutboundEndpointsRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  0,
+) as any as S.Schema<PatchOutboundEndpointsRequest>;
+
 export interface PatchPoliciesRequest {
   /** User given friendly name of the policy addressed by this request. */
   policy: string;
@@ -1199,9 +1791,19 @@ export interface PatchPoliciesRequest {
   /** Request body */
   body?: Policy;
 }
+const PatchPoliciesRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  1,
+) as any as S.Schema<PatchPoliciesRequest>;
+
 export interface PoliciesPatchResponse {
   policy?: Policy;
 }
+const PoliciesPatchResponse = /*@__PURE__*/ __L.at(
+  __c17,
+  2,
+) as any as S.Schema<PoliciesPatchResponse>;
+
 export interface PatchResourceRecordSetsRequest {
   /** Fully qualified domain name. */
   name: string;
@@ -1216,6 +1818,11 @@ export interface PatchResourceRecordSetsRequest {
   /** Request body */
   body?: ResourceRecordSet;
 }
+const PatchResourceRecordSetsRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  3,
+) as any as S.Schema<PatchResourceRecordSetsRequest>;
+
 export interface PatchResponsePoliciesRequest {
   /** User assigned name of the response policy addressed by this request. */
   responsePolicy: string;
@@ -1226,9 +1833,19 @@ export interface PatchResponsePoliciesRequest {
   /** Request body */
   body?: ResponsePolicy;
 }
+const PatchResponsePoliciesRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  4,
+) as any as S.Schema<PatchResponsePoliciesRequest>;
+
 export interface ResponsePoliciesPatchResponse {
   responsePolicy?: ResponsePolicy;
 }
+const ResponsePoliciesPatchResponse = /*@__PURE__*/ __L.at(
+  __c17,
+  5,
+) as any as S.Schema<ResponsePoliciesPatchResponse>;
+
 export interface PatchResponsePolicyRulesRequest {
   /** User assigned name of the Response Policy containing the Response Policy Rule. */
   responsePolicy: string;
@@ -1241,9 +1858,19 @@ export interface PatchResponsePolicyRulesRequest {
   /** Request body */
   body?: ResponsePolicyRule;
 }
+const PatchResponsePolicyRulesRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  6,
+) as any as S.Schema<PatchResponsePolicyRulesRequest>;
+
 export interface ResponsePolicyRulesPatchResponse {
   responsePolicyRule?: ResponsePolicyRule;
 }
+const ResponsePolicyRulesPatchResponse = /*@__PURE__*/ __L.at(
+  __c17,
+  7,
+) as any as S.Schema<ResponsePolicyRulesPatchResponse>;
+
 /** Request message for `SetIamPolicy` method. */
 export interface GoogleIamV1SetIamPolicyRequest {
   /** REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Google Cloud services (such as Projects) might reject them. */
@@ -1251,28 +1878,51 @@ export interface GoogleIamV1SetIamPolicyRequest {
   /** OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask will be modified. If no mask is provided, the following default mask is used: `paths: "bindings, etag"` */
   updateMask?: string;
 }
+const GoogleIamV1SetIamPolicyRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  0,
+) as any as S.Schema<GoogleIamV1SetIamPolicyRequest>;
+
 export interface SetIamPolicyManagedZonesRequest {
   /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: GoogleIamV1SetIamPolicyRequest;
 }
+const SetIamPolicyManagedZonesRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  1,
+) as any as S.Schema<SetIamPolicyManagedZonesRequest>;
+
 /** Request message for `TestIamPermissions` method. */
 export interface GoogleIamV1TestIamPermissionsRequest {
   /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
   permissions?: StringList;
 }
+const GoogleIamV1TestIamPermissionsRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  2,
+) as any as S.Schema<GoogleIamV1TestIamPermissionsRequest>;
+
 export interface TestIamPermissionsManagedZonesRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: GoogleIamV1TestIamPermissionsRequest;
 }
+const TestIamPermissionsManagedZonesRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  3,
+) as any as S.Schema<TestIamPermissionsManagedZonesRequest>;
+
 /** Response message for `TestIamPermissions` method. */
 export interface GoogleIamV1TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
   permissions?: StringList;
 }
+const GoogleIamV1TestIamPermissionsResponse =
+  GoogleIamV1TestIamPermissionsRequest as any as S.Schema<GoogleIamV1TestIamPermissionsResponse>;
+
 export interface UpdateManagedZonesRequest {
   /** For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection. */
   clientOperationId?: string;
@@ -1283,6 +1933,11 @@ export interface UpdateManagedZonesRequest {
   /** Request body */
   body?: ManagedZone;
 }
+const UpdateManagedZonesRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  4,
+) as any as S.Schema<UpdateManagedZonesRequest>;
+
 export interface UpdatePoliciesRequest {
   /** Identifies the project addressed by this request. */
   project: string;
@@ -1293,9 +1948,16 @@ export interface UpdatePoliciesRequest {
   /** Request body */
   body?: Policy;
 }
+const UpdatePoliciesRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  5,
+) as any as S.Schema<UpdatePoliciesRequest>;
+
 export interface PoliciesUpdateResponse {
   policy?: Policy;
 }
+const PoliciesUpdateResponse = PoliciesPatchResponse as any as S.Schema<PoliciesUpdateResponse>;
+
 export interface UpdateResponsePoliciesRequest {
   /** User assigned name of the Response Policy addressed by this request. */
   responsePolicy: string;
@@ -1306,9 +1968,17 @@ export interface UpdateResponsePoliciesRequest {
   /** Request body */
   body?: ResponsePolicy;
 }
+const UpdateResponsePoliciesRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  6,
+) as any as S.Schema<UpdateResponsePoliciesRequest>;
+
 export interface ResponsePoliciesUpdateResponse {
   responsePolicy?: ResponsePolicy;
 }
+const ResponsePoliciesUpdateResponse =
+  ResponsePoliciesPatchResponse as any as S.Schema<ResponsePoliciesUpdateResponse>;
+
 export interface UpdateResponsePolicyRulesRequest {
   /** For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection. */
   clientOperationId?: string;
@@ -1321,9 +1991,17 @@ export interface UpdateResponsePolicyRulesRequest {
   /** Request body */
   body?: ResponsePolicyRule;
 }
+const UpdateResponsePolicyRulesRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  7,
+) as any as S.Schema<UpdateResponsePolicyRulesRequest>;
+
 export interface ResponsePolicyRulesUpdateResponse {
   responsePolicyRule?: ResponsePolicyRule;
 }
+const ResponsePolicyRulesUpdateResponse =
+  ResponsePolicyRulesPatchResponse as any as S.Schema<ResponsePolicyRulesUpdateResponse>;
+
 export type CancelOperationsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`. */
 export const cancelOperations: API.OperationMethod<
@@ -1332,8 +2010,8 @@ export const cancelOperations: API.OperationMethod<
   CancelOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<CancelOperationsRequest>,
-  output: __S(1) as any as S.Schema<Empty>,
+  input: CancelOperationsRequest,
+  output: Empty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1347,8 +2025,8 @@ export const createChanges: API.OperationMethod<
   CreateChangesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17) as any as S.Schema<CreateChangesRequest>,
-  output: __S(16) as any as S.Schema<Change>,
+  input: CreateChangesRequest,
+  output: Change,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1362,8 +2040,8 @@ export const createManagedZones: API.OperationMethod<
   CreateManagedZonesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39) as any as S.Schema<CreateManagedZonesRequest>,
-  output: __S(38) as any as S.Schema<ManagedZone>,
+  input: CreateManagedZonesRequest,
+  output: ManagedZone,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1382,8 +2060,8 @@ export const createOutboundEndpoints: API.OperationMethod<
   CreateOutboundEndpointsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41) as any as S.Schema<CreateOutboundEndpointsRequest>,
-  output: __S(45) as any as S.Schema<GoogleLongrunningOperation>,
+  input: CreateOutboundEndpointsRequest,
+  output: GoogleLongrunningOperation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1397,8 +2075,8 @@ export const createPolicies: API.OperationMethod<
   CreatePoliciesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(54) as any as S.Schema<CreatePoliciesRequest>,
-  output: __S(53) as any as S.Schema<Policy>,
+  input: CreatePoliciesRequest,
+  output: Policy,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1417,8 +2095,8 @@ export const createResourceRecordSets: API.OperationMethod<
   CreateResourceRecordSetsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(55) as any as S.Schema<CreateResourceRecordSetsRequest>,
-  output: __S(14) as any as S.Schema<ResourceRecordSet>,
+  input: CreateResourceRecordSetsRequest,
+  output: ResourceRecordSet,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1432,8 +2110,8 @@ export const createResponsePolicies: API.OperationMethod<
   CreateResponsePoliciesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(59) as any as S.Schema<CreateResponsePoliciesRequest>,
-  output: __S(58) as any as S.Schema<ResponsePolicy>,
+  input: CreateResponsePoliciesRequest,
+  output: ResponsePolicy,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1452,8 +2130,8 @@ export const createResponsePolicyRules: API.OperationMethod<
   CreateResponsePolicyRulesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(62) as any as S.Schema<CreateResponsePolicyRulesRequest>,
-  output: __S(61) as any as S.Schema<ResponsePolicyRule>,
+  input: CreateResponsePolicyRulesRequest,
+  output: ResponsePolicyRule,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1467,8 +2145,8 @@ export const deleteManagedZones: API.OperationMethod<
   DeleteManagedZonesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(63) as any as S.Schema<DeleteManagedZonesRequest>,
-  output: __S(1) as any as S.Schema<DeleteManagedZonesResponse>,
+  input: DeleteManagedZonesRequest,
+  output: DeleteManagedZonesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1482,8 +2160,8 @@ export const deleteOperations: API.OperationMethod<
   DeleteOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(64) as any as S.Schema<DeleteOperationsRequest>,
-  output: __S(1) as any as S.Schema<Empty>,
+  input: DeleteOperationsRequest,
+  output: Empty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1502,8 +2180,8 @@ export const deleteOutboundEndpoints: API.OperationMethod<
   DeleteOutboundEndpointsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65) as any as S.Schema<DeleteOutboundEndpointsRequest>,
-  output: __S(45) as any as S.Schema<GoogleLongrunningOperation>,
+  input: DeleteOutboundEndpointsRequest,
+  output: GoogleLongrunningOperation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1517,8 +2195,8 @@ export const deletePolicies: API.OperationMethod<
   DeletePoliciesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(66) as any as S.Schema<DeletePoliciesRequest>,
-  output: __S(1) as any as S.Schema<DeletePoliciesResponse>,
+  input: DeletePoliciesRequest,
+  output: DeletePoliciesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1537,8 +2215,8 @@ export const deleteResourceRecordSets: API.OperationMethod<
   DeleteResourceRecordSetsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(67) as any as S.Schema<DeleteResourceRecordSetsRequest>,
-  output: __S(68) as any as S.Schema<DeleteResourceRecordSetsResponse>,
+  input: DeleteResourceRecordSetsRequest,
+  output: DeleteResourceRecordSetsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1552,8 +2230,8 @@ export const deleteResponsePolicies: API.OperationMethod<
   DeleteResponsePoliciesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(69) as any as S.Schema<DeleteResponsePoliciesRequest>,
-  output: __S(1) as any as S.Schema<DeleteResponsePoliciesResponse>,
+  input: DeleteResponsePoliciesRequest,
+  output: DeleteResponsePoliciesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1572,8 +2250,8 @@ export const deleteResponsePolicyRules: API.OperationMethod<
   DeleteResponsePolicyRulesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(70) as any as S.Schema<DeleteResponsePolicyRulesRequest>,
-  output: __S(68) as any as S.Schema<DeleteResponsePolicyRulesResponse>,
+  input: DeleteResponsePolicyRulesRequest,
+  output: DeleteResponsePolicyRulesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1587,8 +2265,8 @@ export const getChanges: API.OperationMethod<
   GetChangesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(71) as any as S.Schema<GetChangesRequest>,
-  output: __S(16) as any as S.Schema<Change>,
+  input: GetChangesRequest,
+  output: Change,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1602,8 +2280,8 @@ export const getDnsKeys: API.OperationMethod<
   GetDnsKeysError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(72) as any as S.Schema<GetDnsKeysRequest>,
-  output: __S(75) as any as S.Schema<DnsKey>,
+  input: GetDnsKeysRequest,
+  output: DnsKey,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1622,8 +2300,8 @@ export const getIamPolicyManagedZones: API.OperationMethod<
   GetIamPolicyManagedZonesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(78) as any as S.Schema<GetIamPolicyManagedZonesRequest>,
-  output: __S(86) as any as S.Schema<GoogleIamV1Policy>,
+  input: GetIamPolicyManagedZonesRequest,
+  output: GoogleIamV1Policy,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1637,8 +2315,8 @@ export const getLocations: API.OperationMethod<
   GetLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(87) as any as S.Schema<GetLocationsRequest>,
-  output: __S(88) as any as S.Schema<Location>,
+  input: GetLocationsRequest,
+  output: Location,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1652,8 +2330,8 @@ export const getManagedZoneOperations: API.OperationMethod<
   GetManagedZoneOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(89) as any as S.Schema<GetManagedZoneOperationsRequest>,
-  output: __S(92) as any as S.Schema<Operation>,
+  input: GetManagedZoneOperationsRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1667,8 +2345,8 @@ export const getManagedZones: API.OperationMethod<
   GetManagedZonesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(93) as any as S.Schema<GetManagedZonesRequest>,
-  output: __S(38) as any as S.Schema<ManagedZone>,
+  input: GetManagedZonesRequest,
+  output: ManagedZone,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1682,8 +2360,8 @@ export const getOperations: API.OperationMethod<
   GetOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(94) as any as S.Schema<GetOperationsRequest>,
-  output: __S(45) as any as S.Schema<GoogleLongrunningOperation>,
+  input: GetOperationsRequest,
+  output: GoogleLongrunningOperation,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1697,8 +2375,8 @@ export const getOutboundEndpoints: API.OperationMethod<
   GetOutboundEndpointsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(95) as any as S.Schema<GetOutboundEndpointsRequest>,
-  output: __S(40) as any as S.Schema<OutboundEndpoint>,
+  input: GetOutboundEndpointsRequest,
+  output: OutboundEndpoint,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1712,8 +2390,8 @@ export const getPolicies: API.OperationMethod<
   GetPoliciesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(96) as any as S.Schema<GetPoliciesRequest>,
-  output: __S(53) as any as S.Schema<Policy>,
+  input: GetPoliciesRequest,
+  output: Policy,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1727,8 +2405,8 @@ export const getProjects: API.OperationMethod<
   GetProjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(97) as any as S.Schema<GetProjectsRequest>,
-  output: __S(99) as any as S.Schema<Project>,
+  input: GetProjectsRequest,
+  output: Project,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1742,8 +2420,8 @@ export const getResourceRecordSets: API.OperationMethod<
   GetResourceRecordSetsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(100) as any as S.Schema<GetResourceRecordSetsRequest>,
-  output: __S(14) as any as S.Schema<ResourceRecordSet>,
+  input: GetResourceRecordSetsRequest,
+  output: ResourceRecordSet,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1757,8 +2435,8 @@ export const getResponsePolicies: API.OperationMethod<
   GetResponsePoliciesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(101) as any as S.Schema<GetResponsePoliciesRequest>,
-  output: __S(58) as any as S.Schema<ResponsePolicy>,
+  input: GetResponsePoliciesRequest,
+  output: ResponsePolicy,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1772,8 +2450,8 @@ export const getResponsePolicyRules: API.OperationMethod<
   GetResponsePolicyRulesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(102) as any as S.Schema<GetResponsePolicyRulesRequest>,
-  output: __S(61) as any as S.Schema<ResponsePolicyRule>,
+  input: GetResponsePolicyRulesRequest,
+  output: ResponsePolicyRule,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1788,8 +2466,8 @@ export const listChanges: API.PaginatedOperationMethod<
   GcpOpContext,
   ChangesListResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(103) as any as S.Schema<ListChangesRequest>,
-  output: __S(105) as any as S.Schema<ChangesListResponse>,
+  input: ListChangesRequest,
+  output: ChangesListResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1805,8 +2483,8 @@ export const listDnsKeys: API.PaginatedOperationMethod<
   GcpOpContext,
   DnsKeysListResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(106) as any as S.Schema<ListDnsKeysRequest>,
-  output: __S(108) as any as S.Schema<DnsKeysListResponse>,
+  input: ListDnsKeysRequest,
+  output: DnsKeysListResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1822,8 +2500,8 @@ export const listLocations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListLocationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(109) as any as S.Schema<ListLocationsRequest>,
-  output: __S(111) as any as S.Schema<ListLocationsResponse>,
+  input: ListLocationsRequest,
+  output: ListLocationsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1839,8 +2517,8 @@ export const listManagedZoneOperations: API.PaginatedOperationMethod<
   GcpOpContext,
   ManagedZoneOperationsListResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(112) as any as S.Schema<ListManagedZoneOperationsRequest>,
-  output: __S(114) as any as S.Schema<ManagedZoneOperationsListResponse>,
+  input: ListManagedZoneOperationsRequest,
+  output: ManagedZoneOperationsListResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1856,8 +2534,8 @@ export const listManagedZones: API.PaginatedOperationMethod<
   GcpOpContext,
   ManagedZonesListResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(115) as any as S.Schema<ListManagedZonesRequest>,
-  output: __S(117) as any as S.Schema<ManagedZonesListResponse>,
+  input: ListManagedZonesRequest,
+  output: ManagedZonesListResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1873,8 +2551,8 @@ export const listOperations: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleLongrunningListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(118) as any as S.Schema<ListOperationsRequest>,
-  output: __S(120) as any as S.Schema<GoogleLongrunningListOperationsResponse>,
+  input: ListOperationsRequest,
+  output: GoogleLongrunningListOperationsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1890,8 +2568,8 @@ export const listOutboundEndpoints: API.PaginatedOperationMethod<
   GcpOpContext,
   ListOutboundEndpointsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(121) as any as S.Schema<ListOutboundEndpointsRequest>,
-  output: __S(123) as any as S.Schema<ListOutboundEndpointsResponse>,
+  input: ListOutboundEndpointsRequest,
+  output: ListOutboundEndpointsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1907,8 +2585,8 @@ export const listPolicies: API.PaginatedOperationMethod<
   GcpOpContext,
   PoliciesListResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(124) as any as S.Schema<ListPoliciesRequest>,
-  output: __S(126) as any as S.Schema<PoliciesListResponse>,
+  input: ListPoliciesRequest,
+  output: PoliciesListResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1924,8 +2602,8 @@ export const listResourceRecordSets: API.PaginatedOperationMethod<
   GcpOpContext,
   ResourceRecordSetsListResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(127) as any as S.Schema<ListResourceRecordSetsRequest>,
-  output: __S(128) as any as S.Schema<ResourceRecordSetsListResponse>,
+  input: ListResourceRecordSetsRequest,
+  output: ResourceRecordSetsListResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1941,8 +2619,8 @@ export const listResponsePolicies: API.PaginatedOperationMethod<
   GcpOpContext,
   ResponsePoliciesListResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(129) as any as S.Schema<ListResponsePoliciesRequest>,
-  output: __S(131) as any as S.Schema<ResponsePoliciesListResponse>,
+  input: ListResponsePoliciesRequest,
+  output: ResponsePoliciesListResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1958,8 +2636,8 @@ export const listResponsePolicyRules: API.PaginatedOperationMethod<
   GcpOpContext,
   ResponsePolicyRulesListResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(132) as any as S.Schema<ListResponsePolicyRulesRequest>,
-  output: __S(134) as any as S.Schema<ResponsePolicyRulesListResponse>,
+  input: ListResponsePolicyRulesRequest,
+  output: ResponsePolicyRulesListResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1974,8 +2652,8 @@ export const patchManagedZones: API.OperationMethod<
   PatchManagedZonesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(135) as any as S.Schema<PatchManagedZonesRequest>,
-  output: __S(92) as any as S.Schema<Operation>,
+  input: PatchManagedZonesRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1989,8 +2667,8 @@ export const patchOutboundEndpoints: API.OperationMethod<
   PatchOutboundEndpointsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(136) as any as S.Schema<PatchOutboundEndpointsRequest>,
-  output: __S(45) as any as S.Schema<GoogleLongrunningOperation>,
+  input: PatchOutboundEndpointsRequest,
+  output: GoogleLongrunningOperation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2004,8 +2682,8 @@ export const patchPolicies: API.OperationMethod<
   PatchPoliciesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(137) as any as S.Schema<PatchPoliciesRequest>,
-  output: __S(138) as any as S.Schema<PoliciesPatchResponse>,
+  input: PatchPoliciesRequest,
+  output: PoliciesPatchResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2024,8 +2702,8 @@ export const patchResourceRecordSets: API.OperationMethod<
   PatchResourceRecordSetsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(139) as any as S.Schema<PatchResourceRecordSetsRequest>,
-  output: __S(14) as any as S.Schema<ResourceRecordSet>,
+  input: PatchResourceRecordSetsRequest,
+  output: ResourceRecordSet,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2039,8 +2717,8 @@ export const patchResponsePolicies: API.OperationMethod<
   PatchResponsePoliciesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(140) as any as S.Schema<PatchResponsePoliciesRequest>,
-  output: __S(141) as any as S.Schema<ResponsePoliciesPatchResponse>,
+  input: PatchResponsePoliciesRequest,
+  output: ResponsePoliciesPatchResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2059,8 +2737,8 @@ export const patchResponsePolicyRules: API.OperationMethod<
   PatchResponsePolicyRulesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(142) as any as S.Schema<PatchResponsePolicyRulesRequest>,
-  output: __S(143) as any as S.Schema<ResponsePolicyRulesPatchResponse>,
+  input: PatchResponsePolicyRulesRequest,
+  output: ResponsePolicyRulesPatchResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2079,8 +2757,8 @@ export const setIamPolicyManagedZones: API.OperationMethod<
   SetIamPolicyManagedZonesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(145) as any as S.Schema<SetIamPolicyManagedZonesRequest>,
-  output: __S(86) as any as S.Schema<GoogleIamV1Policy>,
+  input: SetIamPolicyManagedZonesRequest,
+  output: GoogleIamV1Policy,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2099,8 +2777,8 @@ export const testIamPermissionsManagedZones: API.OperationMethod<
   TestIamPermissionsManagedZonesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(147) as any as S.Schema<TestIamPermissionsManagedZonesRequest>,
-  output: __S(146) as any as S.Schema<GoogleIamV1TestIamPermissionsResponse>,
+  input: TestIamPermissionsManagedZonesRequest,
+  output: GoogleIamV1TestIamPermissionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2114,8 +2792,8 @@ export const updateManagedZones: API.OperationMethod<
   UpdateManagedZonesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(148) as any as S.Schema<UpdateManagedZonesRequest>,
-  output: __S(92) as any as S.Schema<Operation>,
+  input: UpdateManagedZonesRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2129,8 +2807,8 @@ export const updatePolicies: API.OperationMethod<
   UpdatePoliciesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(149) as any as S.Schema<UpdatePoliciesRequest>,
-  output: __S(138) as any as S.Schema<PoliciesUpdateResponse>,
+  input: UpdatePoliciesRequest,
+  output: PoliciesUpdateResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2144,8 +2822,8 @@ export const updateResponsePolicies: API.OperationMethod<
   UpdateResponsePoliciesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(150) as any as S.Schema<UpdateResponsePoliciesRequest>,
-  output: __S(141) as any as S.Schema<ResponsePoliciesUpdateResponse>,
+  input: UpdateResponsePoliciesRequest,
+  output: ResponsePoliciesUpdateResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2164,8 +2842,8 @@ export const updateResponsePolicyRules: API.OperationMethod<
   UpdateResponsePolicyRulesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(151) as any as S.Schema<UpdateResponsePolicyRulesRequest>,
-  output: __S(143) as any as S.Schema<ResponsePolicyRulesUpdateResponse>,
+  input: UpdateResponsePolicyRulesRequest,
+  output: ResponsePolicyRulesUpdateResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2196,24 +2874,24 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           networkUrl: S.optional(S.String),
-          loadBalancerType: S.optional(S.String),
+          loadBalancerType: S.optional(RRSetRoutingPolicyLoadBalancerTargetLoadBalancerTypeEnum),
           kind: S.optional(S.String),
           project: S.optional(S.String),
           ipAddress: S.optional(S.String),
           region: S.optional(S.String),
-          ipProtocol: S.optional(S.String),
+          ipProtocol: S.optional(RRSetRoutingPolicyLoadBalancerTargetIpProtocolEnum),
           port: S.optional(S.String),
         }),
       ).annotate({
         identifier: "RRSetRoutingPolicyLoadBalancerTarget",
       });
     case 4:
-      return S.Array(__S(3));
+      return S.Array(RRSetRoutingPolicyLoadBalancerTarget);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          internalLoadBalancers: S.optional(__S(4)),
-          externalEndpoints: S.optional(__S(2)),
+          internalLoadBalancers: S.optional(RRSetRoutingPolicyLoadBalancerTargetList),
+          externalEndpoints: S.optional(StringList),
         }),
       ).annotate({
         identifier: "RRSetRoutingPolicyHealthCheckTargets",
@@ -2221,17 +2899,17 @@ function __c0(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          healthCheckedTargets: S.optional(__S(5)),
+          healthCheckedTargets: S.optional(RRSetRoutingPolicyHealthCheckTargets),
           location: S.optional(S.String),
           kind: S.optional(S.String),
-          rrdatas: S.optional(__S(2)),
-          signatureRrdatas: S.optional(__S(2)),
+          rrdatas: S.optional(StringList),
+          signatureRrdatas: S.optional(StringList),
         }),
       ).annotate({
         identifier: "RRSetRoutingPolicyGeoPolicyGeoPolicyItem",
       });
     case 7:
-      return S.Array(__S(6));
+      return S.Array(RRSetRoutingPolicyGeoPolicyGeoPolicyItem);
   }
 }
 function __c1(j: number): any {
@@ -2241,7 +2919,7 @@ function __c1(j: number): any {
         S.Struct({
           enableFencing: S.optional(S.Boolean),
           kind: S.optional(S.String),
-          items: S.optional(__S(7)),
+          items: S.optional(RRSetRoutingPolicyGeoPolicyGeoPolicyItemList),
         }),
       ).annotate({
         identifier: "RRSetRoutingPolicyGeoPolicy",
@@ -2250,21 +2928,21 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           weight: S.optional(S.Number),
-          rrdatas: S.optional(__S(2)),
-          signatureRrdatas: S.optional(__S(2)),
-          healthCheckedTargets: S.optional(__S(5)),
+          rrdatas: S.optional(StringList),
+          signatureRrdatas: S.optional(StringList),
+          healthCheckedTargets: S.optional(RRSetRoutingPolicyHealthCheckTargets),
           kind: S.optional(S.String),
         }),
       ).annotate({
         identifier: "RRSetRoutingPolicyWrrPolicyWrrPolicyItem",
       });
     case 2:
-      return S.Array(__S(9));
+      return S.Array(RRSetRoutingPolicyWrrPolicyWrrPolicyItem);
     case 3:
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
-          items: S.optional(__S(10)),
+          items: S.optional(RRSetRoutingPolicyWrrPolicyWrrPolicyItemList),
         }),
       ).annotate({
         identifier: "RRSetRoutingPolicyWrrPolicy",
@@ -2272,10 +2950,10 @@ function __c1(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          primaryTargets: S.optional(__S(5)),
+          primaryTargets: S.optional(RRSetRoutingPolicyHealthCheckTargets),
           trickleTraffic: S.optional(S.Number),
           kind: S.optional(S.String),
-          backupGeoTargets: S.optional(__S(8)),
+          backupGeoTargets: S.optional(RRSetRoutingPolicyGeoPolicy),
         }),
       ).annotate({
         identifier: "RRSetRoutingPolicyPrimaryBackupPolicy",
@@ -2284,28 +2962,28 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           healthCheck: S.optional(S.String),
-          geo: S.optional(__S(8)),
-          wrr: S.optional(__S(11)),
+          geo: S.optional(RRSetRoutingPolicyGeoPolicy),
+          wrr: S.optional(RRSetRoutingPolicyWrrPolicy),
           kind: S.optional(S.String),
-          geoPolicy: S.optional(__S(8)),
-          primaryBackup: S.optional(__S(12)),
-          wrrPolicy: S.optional(__S(11)),
+          geoPolicy: S.optional(RRSetRoutingPolicyGeoPolicy),
+          primaryBackup: S.optional(RRSetRoutingPolicyPrimaryBackupPolicy),
+          wrrPolicy: S.optional(RRSetRoutingPolicyWrrPolicy),
         }),
       ).annotate({ identifier: "RRSetRoutingPolicy" });
     case 6:
       return S.suspend(() =>
         S.Struct({
           ttl: S.optional(S.Number),
-          signatureRrdatas: S.optional(__S(2)),
+          signatureRrdatas: S.optional(StringList),
           kind: S.optional(S.String),
           name: S.optional(S.String),
-          routingPolicy: S.optional(__S(13)),
-          rrdatas: S.optional(__S(2)),
+          routingPolicy: S.optional(RRSetRoutingPolicy),
+          rrdatas: S.optional(StringList),
           type: S.optional(S.String),
         }),
       ).annotate({ identifier: "ResourceRecordSet" });
     case 7:
-      return S.Array(__S(14));
+      return S.Array(ResourceRecordSet);
   }
 }
 function __c2(j: number): any {
@@ -2314,9 +2992,9 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
-          additions: S.optional(__S(15)),
-          deletions: S.optional(__S(15)),
-          status: S.optional(S.String),
+          additions: S.optional(ResourceRecordSetList),
+          deletions: S.optional(ResourceRecordSetList),
+          status: S.optional(ChangeStatusEnum),
           isServing: S.optional(S.Boolean),
           kind: S.optional(S.String),
           startTime: S.optional(S.String),
@@ -2328,7 +3006,7 @@ function __c2(j: number): any {
           project: S.String.pipe(T.Label()),
           clientOperationId: S.optional(S.String.pipe(T.Query())),
           managedZone: S.String.pipe(T.Label()),
-          body: S.optional(__S(16).pipe(T.HttpBody())),
+          body: S.optional(Change.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2351,7 +3029,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
-          namespace: S.optional(__S(18)),
+          namespace: S.optional(ManagedZoneServiceDirectoryConfigNamespace),
         }),
       ).annotate({
         identifier: "ManagedZoneServiceDirectoryConfig",
@@ -2370,7 +3048,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
-          targetNetwork: S.optional(__S(20)),
+          targetNetwork: S.optional(ManagedZonePeeringConfigTargetNetwork),
         }),
       ).annotate({ identifier: "ManagedZonePeeringConfig" });
     case 6:
@@ -2396,7 +3074,7 @@ function __c2(j: number): any {
 function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(23));
+      return S.Array(ManagedZonePrivateVisibilityConfigGKECluster);
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2407,13 +3085,13 @@ function __c3(j: number): any {
         identifier: "ManagedZonePrivateVisibilityConfigNetwork",
       });
     case 2:
-      return S.Array(__S(25));
+      return S.Array(ManagedZonePrivateVisibilityConfigNetwork);
     case 3:
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
-          gkeClusters: S.optional(__S(24)),
-          networks: S.optional(__S(26)),
+          gkeClusters: S.optional(ManagedZonePrivateVisibilityConfigGKEClusterList),
+          networks: S.optional(ManagedZonePrivateVisibilityConfigNetworkList),
         }),
       ).annotate({
         identifier: "ManagedZonePrivateVisibilityConfig",
@@ -2430,20 +3108,20 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
-          algorithm: S.optional(S.String),
-          keyType: S.optional(S.String),
+          algorithm: S.optional(DnsKeySpecAlgorithmEnum),
+          keyType: S.optional(DnsKeySpecKeyTypeEnum),
           keyLength: S.optional(S.Number),
         }),
       ).annotate({ identifier: "DnsKeySpec" });
     case 6:
-      return S.Array(__S(29));
+      return S.Array(DnsKeySpec);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          state: S.optional(S.String),
+          state: S.optional(ManagedZoneDnsSecConfigStateEnum),
           kind: S.optional(S.String),
-          defaultKeySpecs: S.optional(__S(30)),
-          nonExistence: S.optional(S.String),
+          defaultKeySpecs: S.optional(DnsKeySpecList),
+          nonExistence: S.optional(ManagedZoneDnsSecConfigNonExistenceEnum),
         }),
       ).annotate({ identifier: "ManagedZoneDnsSecConfig" });
   }
@@ -2460,13 +3138,13 @@ function __c4(j: number): any {
         identifier: "ManagedZoneForwardingConfigOutboundEndpoint",
       });
     case 1:
-      return S.Array(__S(32));
+      return S.Array(ManagedZoneForwardingConfigOutboundEndpoint);
     case 2:
       return S.suspend(() =>
         S.Struct({
           domainName: S.optional(S.String),
           kind: S.optional(S.String),
-          forwardingPath: S.optional(S.String),
+          forwardingPath: S.optional(ManagedZoneForwardingConfigNameServerTargetForwardingPathEnum),
           ipv4Address: S.optional(S.String),
           ipv6Address: S.optional(S.String),
         }),
@@ -2474,13 +3152,13 @@ function __c4(j: number): any {
         identifier: "ManagedZoneForwardingConfigNameServerTarget",
       });
     case 3:
-      return S.Array(__S(34));
+      return S.Array(ManagedZoneForwardingConfigNameServerTarget);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          outboundEndpoints: S.optional(__S(33)),
+          outboundEndpoints: S.optional(ManagedZoneForwardingConfigOutboundEndpointList),
           kind: S.optional(S.String),
-          targetNameServers: S.optional(__S(35)),
+          targetNameServers: S.optional(ManagedZoneForwardingConfigNameServerTargetList),
         }),
       ).annotate({
         identifier: "ManagedZoneForwardingConfig",
@@ -2490,23 +3168,23 @@ function __c4(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          serviceDirectoryConfig: S.optional(__S(19)),
-          visibility: S.optional(S.String),
-          peeringConfig: S.optional(__S(21)),
-          cloudLoggingConfig: S.optional(__S(22)),
-          privateVisibilityConfig: S.optional(__S(27)),
+          serviceDirectoryConfig: S.optional(ManagedZoneServiceDirectoryConfig),
+          visibility: S.optional(ManagedZoneVisibilityEnum),
+          peeringConfig: S.optional(ManagedZonePeeringConfig),
+          cloudLoggingConfig: S.optional(ManagedZoneCloudLoggingConfig),
+          privateVisibilityConfig: S.optional(ManagedZonePrivateVisibilityConfig),
           kind: S.optional(S.String),
           id: S.optional(S.String),
-          reverseLookupConfig: S.optional(__S(28)),
+          reverseLookupConfig: S.optional(ManagedZoneReverseLookupConfig),
           description: S.optional(S.String),
-          dnssecConfig: S.optional(__S(31)),
+          dnssecConfig: S.optional(ManagedZoneDnsSecConfig),
           name: S.optional(S.String),
           dnsName: S.optional(S.String),
-          forwardingConfig: S.optional(__S(36)),
-          nameServers: S.optional(__S(2)),
+          forwardingConfig: S.optional(ManagedZoneForwardingConfig),
+          nameServers: S.optional(StringList),
           nameServerSet: S.optional(S.String),
           creationTime: S.optional(S.String),
-          labels: S.optional(__S(37)),
+          labels: S.optional(StringMap),
         }),
       ).annotate({ identifier: "ManagedZone" });
     case 7:
@@ -2514,7 +3192,7 @@ function __c4(j: number): any {
         S.Struct({
           project: S.String.pipe(T.Label()),
           clientOperationId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(38).pipe(T.HttpBody())),
+          body: S.optional(ManagedZone.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2534,9 +3212,9 @@ function __c5(j: number): any {
         S.Struct({
           description: S.optional(S.String),
           endpointIp: S.optional(S.String),
-          annotations: S.optional(__S(37)),
-          labels: S.optional(__S(37)),
-          tags: S.optional(__S(37)),
+          annotations: S.optional(StringMap),
+          labels: S.optional(StringMap),
+          tags: S.optional(StringMap),
           updateTime: S.optional(S.String),
           subnetwork: S.optional(S.String),
           createTime: S.optional(S.String),
@@ -2551,7 +3229,7 @@ function __c5(j: number): any {
           parent: S.String.pipe(T.Label()),
           outboundEndpointId: S.optional(S.String.pipe(T.Query())),
           clientOperationId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(40).pipe(T.HttpBody())),
+          body: S.optional(OutboundEndpoint.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2565,11 +3243,11 @@ function __c5(j: number): any {
     case 2:
       return S.Record(S.String, S.Unknown);
     case 3:
-      return S.Array(__S(42));
+      return S.Array(DocumentMap);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          details: S.optional(__S(43)),
+          details: S.optional(DocumentMapList),
           code: S.optional(S.Number),
           message: S.optional(S.String),
         }),
@@ -2577,10 +3255,10 @@ function __c5(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          response: S.optional(__S(42)),
+          response: S.optional(DocumentMap),
           name: S.optional(S.String),
-          error: S.optional(__S(44)),
-          metadata: S.optional(__S(42)),
+          error: S.optional(Status),
+          metadata: S.optional(DocumentMap),
           done: S.optional(S.Boolean),
         }),
       ).annotate({
@@ -2594,7 +3272,7 @@ function __c5(j: number): any {
         }),
       ).annotate({ identifier: "PolicyNetwork" });
     case 7:
-      return S.Array(__S(46));
+      return S.Array(PolicyNetwork);
   }
 }
 function __c6(j: number): any {
@@ -2605,19 +3283,21 @@ function __c6(j: number): any {
           kind: S.optional(S.String),
           ipv4Address: S.optional(S.String),
           ipv6Address: S.optional(S.String),
-          forwardingPath: S.optional(S.String),
+          forwardingPath: S.optional(
+            PolicyAlternativeNameServerConfigTargetNameServerForwardingPathEnum,
+          ),
         }),
       ).annotate({
         identifier: "PolicyAlternativeNameServerConfigTargetNameServer",
       });
     case 1:
-      return S.Array(__S(48));
+      return S.Array(PolicyAlternativeNameServerConfigTargetNameServer);
     case 2:
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
-          targetNameServers: S.optional(__S(49)),
-          outboundEndpoints: S.optional(__S(33)),
+          targetNameServers: S.optional(PolicyAlternativeNameServerConfigTargetNameServerList),
+          outboundEndpoints: S.optional(PolicyAlternativeNameServerConfigOutboundEndpointList),
         }),
       ).annotate({
         identifier: "PolicyAlternativeNameServerConfig",
@@ -2633,18 +3313,18 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
-          scope: S.optional(__S(51)),
+          scope: S.optional(PolicyDns64ConfigScope),
         }),
       ).annotate({ identifier: "PolicyDns64Config" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          networks: S.optional(__S(47)),
-          alternativeNameServerConfig: S.optional(__S(50)),
+          networks: S.optional(PolicyNetworkList),
+          alternativeNameServerConfig: S.optional(PolicyAlternativeNameServerConfig),
           name: S.optional(S.String),
           enableInboundForwarding: S.optional(S.Boolean),
           description: S.optional(S.String),
-          dns64Config: S.optional(__S(52)),
+          dns64Config: S.optional(PolicyDns64Config),
           enableLogging: S.optional(S.Boolean),
           kind: S.optional(S.String),
           id: S.optional(S.String),
@@ -2655,7 +3335,7 @@ function __c6(j: number): any {
         S.Struct({
           project: S.String.pipe(T.Label()),
           clientOperationId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(53).pipe(T.HttpBody())),
+          body: S.optional(Policy.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2670,7 +3350,7 @@ function __c6(j: number): any {
           clientOperationId: S.optional(S.String.pipe(T.Query())),
           managedZone: S.String.pipe(T.Label()),
           project: S.String.pipe(T.Label()),
-          body: S.optional(__S(14).pipe(T.HttpBody())),
+          body: S.optional(ResourceRecordSet.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2693,14 +3373,14 @@ function __c7(j: number): any {
         }),
       ).annotate({ identifier: "ResponsePolicyGKECluster" });
     case 1:
-      return S.Array(__S(56));
+      return S.Array(ResponsePolicyGKECluster);
     case 2:
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
-          labels: S.optional(__S(37)),
-          networks: S.optional(__S(47)),
-          gkeClusters: S.optional(__S(57)),
+          labels: S.optional(StringMap),
+          networks: S.optional(ResponsePolicyNetworkList),
+          gkeClusters: S.optional(ResponsePolicyGKEClusterList),
           kind: S.optional(S.String),
           id: S.optional(S.String),
           responsePolicyName: S.optional(S.String),
@@ -2711,7 +3391,7 @@ function __c7(j: number): any {
         S.Struct({
           project: S.String.pipe(T.Label()),
           clientOperationId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(58).pipe(T.HttpBody())),
+          body: S.optional(ResponsePolicy.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2725,7 +3405,7 @@ function __c7(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          localDatas: S.optional(__S(15)),
+          localDatas: S.optional(ResourceRecordSetList),
         }),
       ).annotate({
         identifier: "ResponsePolicyRuleLocalData",
@@ -2735,8 +3415,8 @@ function __c7(j: number): any {
         S.Struct({
           dnsName: S.optional(S.String),
           kind: S.optional(S.String),
-          behavior: S.optional(S.String),
-          localData: S.optional(__S(60)),
+          behavior: S.optional(ResponsePolicyRuleBehaviorEnum),
+          localData: S.optional(ResponsePolicyRuleLocalData),
           ruleName: S.optional(S.String),
         }),
       ).annotate({ identifier: "ResponsePolicyRule" });
@@ -2746,7 +3426,7 @@ function __c7(j: number): any {
           project: S.String.pipe(T.Label()),
           responsePolicy: S.String.pipe(T.Label()),
           clientOperationId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(61).pipe(T.HttpBody())),
+          body: S.optional(ResponsePolicyRule.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2913,11 +3593,11 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           digest: S.optional(S.String),
-          type: S.optional(S.String),
+          type: S.optional(DnsKeyDigestTypeEnum),
         }),
       ).annotate({ identifier: "DnsKeyDigest" });
     case 2:
-      return S.Array(__S(73));
+      return S.Array(DnsKeyDigest);
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -2926,12 +3606,12 @@ function __c9(j: number): any {
           publicKey: S.optional(S.String),
           id: S.optional(S.String),
           description: S.optional(S.String),
-          type: S.optional(S.String),
-          digests: S.optional(__S(74)),
+          type: S.optional(DnsKeyTypeEnum),
+          digests: S.optional(DnsKeyDigestList),
           creationTime: S.optional(S.String),
           keyLength: S.optional(S.Number),
           isActive: S.optional(S.Boolean),
-          algorithm: S.optional(S.String),
+          algorithm: S.optional(DnsKeyAlgorithmEnum),
         }),
       ).annotate({ identifier: "DnsKey" });
     case 4:
@@ -2945,7 +3625,7 @@ function __c9(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          options: S.optional(__S(76)),
+          options: S.optional(GoogleIamV1GetPolicyOptions),
         }),
       ).annotate({
         identifier: "GoogleIamV1GetIamPolicyRequest",
@@ -2954,7 +3634,7 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(77).pipe(T.HttpBody())),
+          body: S.optional(GoogleIamV1GetIamPolicyRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2982,39 +3662,39 @@ function __c10(j: number): any {
       return S.suspend(() =>
         S.Struct({
           role: S.optional(S.String),
-          condition: S.optional(__S(79)),
-          members: S.optional(__S(2)),
+          condition: S.optional(Expr),
+          members: S.optional(StringList),
         }),
       ).annotate({ identifier: "GoogleIamV1Binding" });
     case 1:
-      return S.Array(__S(80));
+      return S.Array(GoogleIamV1Binding);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          logType: S.optional(S.String),
-          exemptedMembers: S.optional(__S(2)),
+          logType: S.optional(GoogleIamV1AuditLogConfigLogTypeEnum),
+          exemptedMembers: S.optional(StringList),
         }),
       ).annotate({
         identifier: "GoogleIamV1AuditLogConfig",
       });
     case 3:
-      return S.Array(__S(82));
+      return S.Array(GoogleIamV1AuditLogConfig);
     case 4:
       return S.suspend(() =>
         S.Struct({
           service: S.optional(S.String),
-          auditLogConfigs: S.optional(__S(83)),
+          auditLogConfigs: S.optional(GoogleIamV1AuditLogConfigList),
         }),
       ).annotate({ identifier: "GoogleIamV1AuditConfig" });
     case 5:
-      return S.Array(__S(84));
+      return S.Array(GoogleIamV1AuditConfig);
     case 6:
       return S.suspend(() =>
         S.Struct({
           etag: S.optional(S.String),
-          bindings: S.optional(__S(81)),
+          bindings: S.optional(GoogleIamV1BindingList),
           version: S.optional(S.Number),
-          auditConfigs: S.optional(__S(85)),
+          auditConfigs: S.optional(GoogleIamV1AuditConfigList),
         }),
       ).annotate({ identifier: "GoogleIamV1Policy" });
     case 7:
@@ -3036,8 +3716,8 @@ function __c11(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          metadata: S.optional(__S(42)),
-          labels: S.optional(__S(37)),
+          metadata: S.optional(DocumentMap),
+          labels: S.optional(StringMap),
           name: S.optional(S.String),
           displayName: S.optional(S.String),
           locationId: S.optional(S.String),
@@ -3063,8 +3743,8 @@ function __c11(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          oldValue: S.optional(__S(38)),
-          newValue: S.optional(__S(38)),
+          oldValue: S.optional(ManagedZone),
+          newValue: S.optional(ManagedZone),
         }),
       ).annotate({
         identifier: "OperationManagedZoneContext",
@@ -3072,18 +3752,18 @@ function __c11(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          oldValue: S.optional(__S(75)),
-          newValue: S.optional(__S(75)),
+          oldValue: S.optional(DnsKey),
+          newValue: S.optional(DnsKey),
         }),
       ).annotate({ identifier: "OperationDnsKeyContext" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          zoneContext: S.optional(__S(90)),
-          dnsKeyContext: S.optional(__S(91)),
+          zoneContext: S.optional(OperationManagedZoneContext),
+          dnsKeyContext: S.optional(OperationDnsKeyContext),
           startTime: S.optional(S.String),
           kind: S.optional(S.String),
-          status: S.optional(S.String),
+          status: S.optional(OperationStatusEnum),
           user: S.optional(S.String),
           type: S.optional(S.String),
           id: S.optional(S.String),
@@ -3183,7 +3863,7 @@ function __c12(j: number): any {
           itemsPerRoutingPolicy: S.optional(S.Number),
           peeringZonesPerTargetNetwork: S.optional(S.Number),
           gkeClustersPerManagedZone: S.optional(S.Number),
-          whitelistedKeySpecs: S.optional(__S(30)),
+          whitelistedKeySpecs: S.optional(DnsKeySpecList),
           networksPerManagedZone: S.optional(S.Number),
           rrsetsPerManagedZone: S.optional(S.Number),
           networksPerPolicy: S.optional(S.Number),
@@ -3198,7 +3878,7 @@ function __c12(j: number): any {
         S.Struct({
           number: S.optional(S.String),
           id: S.optional(S.String),
-          quota: S.optional(__S(98)),
+          quota: S.optional(Quota),
           kind: S.optional(S.String),
         }),
       ).annotate({ identifier: "Project" });
@@ -3261,7 +3941,7 @@ function __c12(j: number): any {
           maxResults: S.optional(S.Number.pipe(T.Query())),
           sortOrder: S.optional(S.String.pipe(T.Query())),
           managedZone: S.String.pipe(T.Label()),
-          sortBy: S.optional(S.String.pipe(T.Query())),
+          sortBy: S.optional(ListChangesSortByEnum.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -3275,13 +3955,13 @@ function __c12(j: number): any {
 function __c13(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(16));
+      return S.Array(Change);
     case 1:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
           kind: S.optional(S.String),
-          changes: S.optional(__S(104)),
+          changes: S.optional(ChangeList),
         }),
       ).annotate({ identifier: "ChangesListResponse" });
     case 2:
@@ -3301,11 +3981,11 @@ function __c13(j: number): any {
         ),
       ).annotate({ identifier: "ListDnsKeysRequest" });
     case 3:
-      return S.Array(__S(75));
+      return S.Array(DnsKey);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          dnsKeys: S.optional(__S(107)),
+          dnsKeys: S.optional(DnsKeyList),
           kind: S.optional(S.String),
           nextPageToken: S.optional(S.String),
         }),
@@ -3313,7 +3993,7 @@ function __c13(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          extraLocationTypes: S.optional(__S(2).pipe(T.Query())),
+          extraLocationTypes: S.optional(StringList.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
           pageToken: S.optional(S.String.pipe(T.Query())),
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -3327,11 +4007,11 @@ function __c13(j: number): any {
         ),
       ).annotate({ identifier: "ListLocationsRequest" });
     case 6:
-      return S.Array(__S(88));
+      return S.Array(Location);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          locations: S.optional(__S(110)),
+          locations: S.optional(LocationList),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListLocationsResponse" });
@@ -3342,7 +4022,7 @@ function __c14(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          sortBy: S.optional(S.String.pipe(T.Query())),
+          sortBy: S.optional(ListManagedZoneOperationsSortByEnum.pipe(T.Query())),
           project: S.String.pipe(T.Label()),
           maxResults: S.optional(S.Number.pipe(T.Query())),
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -3358,13 +4038,13 @@ function __c14(j: number): any {
         identifier: "ListManagedZoneOperationsRequest",
       });
     case 1:
-      return S.Array(__S(92));
+      return S.Array(Operation);
     case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
           kind: S.optional(S.String),
-          operations: S.optional(__S(113)),
+          operations: S.optional(OperationList),
         }),
       ).annotate({
         identifier: "ManagedZoneOperationsListResponse",
@@ -3385,11 +4065,11 @@ function __c14(j: number): any {
         ),
       ).annotate({ identifier: "ListManagedZonesRequest" });
     case 4:
-      return S.Array(__S(38));
+      return S.Array(ManagedZone);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          managedZones: S.optional(__S(116)),
+          managedZones: S.optional(ManagedZoneList),
           nextPageToken: S.optional(S.String),
           kind: S.optional(S.String),
         }),
@@ -3411,7 +4091,7 @@ function __c14(j: number): any {
         ),
       ).annotate({ identifier: "ListOperationsRequest" });
     case 7:
-      return S.Array(__S(45));
+      return S.Array(GoogleLongrunningOperation);
   }
 }
 function __c15(j: number): any {
@@ -3420,8 +4100,8 @@ function __c15(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          unreachable: S.optional(__S(2)),
-          operations: S.optional(__S(119)),
+          unreachable: S.optional(StringList),
+          operations: S.optional(GoogleLongrunningOperationList),
         }),
       ).annotate({
         identifier: "GoogleLongrunningListOperationsResponse",
@@ -3444,13 +4124,13 @@ function __c15(j: number): any {
         identifier: "ListOutboundEndpointsRequest",
       });
     case 2:
-      return S.Array(__S(40));
+      return S.Array(OutboundEndpoint);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          unreachable: S.optional(__S(2)),
+          unreachable: S.optional(StringList),
           nextPageToken: S.optional(S.String),
-          outboundEndpoints: S.optional(__S(122)),
+          outboundEndpoints: S.optional(OutboundEndpointList),
         }),
       ).annotate({
         identifier: "ListOutboundEndpointsResponse",
@@ -3470,13 +4150,13 @@ function __c15(j: number): any {
         ),
       ).annotate({ identifier: "ListPoliciesRequest" });
     case 5:
-      return S.Array(__S(53));
+      return S.Array(Policy);
     case 6:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
           kind: S.optional(S.String),
-          policies: S.optional(__S(125)),
+          policies: S.optional(PolicyList),
         }),
       ).annotate({ identifier: "PoliciesListResponse" });
     case 7:
@@ -3508,7 +4188,7 @@ function __c16(j: number): any {
         S.Struct({
           nextPageToken: S.optional(S.String),
           kind: S.optional(S.String),
-          rrsets: S.optional(__S(15)),
+          rrsets: S.optional(ResourceRecordSetList),
         }),
       ).annotate({
         identifier: "ResourceRecordSetsListResponse",
@@ -3530,11 +4210,11 @@ function __c16(j: number): any {
         identifier: "ListResponsePoliciesRequest",
       });
     case 2:
-      return S.Array(__S(58));
+      return S.Array(ResponsePolicy);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          responsePolicies: S.optional(__S(130)),
+          responsePolicies: S.optional(ResponsePolicyList),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -3558,11 +4238,11 @@ function __c16(j: number): any {
         identifier: "ListResponsePolicyRulesRequest",
       });
     case 5:
-      return S.Array(__S(61));
+      return S.Array(ResponsePolicyRule);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          responsePolicyRules: S.optional(__S(133)),
+          responsePolicyRules: S.optional(ResponsePolicyRuleList),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -3574,7 +4254,7 @@ function __c16(j: number): any {
           managedZone: S.String.pipe(T.Label()),
           clientOperationId: S.optional(S.String.pipe(T.Query())),
           project: S.String.pipe(T.Label()),
-          body: S.optional(__S(38).pipe(T.HttpBody())),
+          body: S.optional(ManagedZone.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3594,7 +4274,7 @@ function __c17(j: number): any {
           updateMask: S.optional(S.String.pipe(T.Query())),
           requestId: S.optional(S.String.pipe(T.Query())),
           clientOperationId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(40).pipe(T.HttpBody())),
+          body: S.optional(OutboundEndpoint.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3611,7 +4291,7 @@ function __c17(j: number): any {
           policy: S.String.pipe(T.Label()),
           project: S.String.pipe(T.Label()),
           clientOperationId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(53).pipe(T.HttpBody())),
+          body: S.optional(Policy.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3623,7 +4303,7 @@ function __c17(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          policy: S.optional(__S(53)),
+          policy: S.optional(Policy),
         }),
       ).annotate({ identifier: "PoliciesPatchResponse" });
     case 3:
@@ -3634,7 +4314,7 @@ function __c17(j: number): any {
           type: S.String.pipe(T.Label()),
           project: S.String.pipe(T.Label()),
           clientOperationId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(14).pipe(T.HttpBody())),
+          body: S.optional(ResourceRecordSet.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3651,7 +4331,7 @@ function __c17(j: number): any {
           responsePolicy: S.String.pipe(T.Label()),
           project: S.String.pipe(T.Label()),
           clientOperationId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(58).pipe(T.HttpBody())),
+          body: S.optional(ResponsePolicy.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3665,7 +4345,7 @@ function __c17(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          responsePolicy: S.optional(__S(58)),
+          responsePolicy: S.optional(ResponsePolicy),
         }),
       ).annotate({
         identifier: "ResponsePoliciesPatchResponse",
@@ -3677,7 +4357,7 @@ function __c17(j: number): any {
           responsePolicyRule: S.String.pipe(T.Label()),
           project: S.String.pipe(T.Label()),
           clientOperationId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(61).pipe(T.HttpBody())),
+          body: S.optional(ResponsePolicyRule.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3691,7 +4371,7 @@ function __c17(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          responsePolicyRule: S.optional(__S(61)),
+          responsePolicyRule: S.optional(ResponsePolicyRule),
         }),
       ).annotate({
         identifier: "ResponsePolicyRulesPatchResponse",
@@ -3703,7 +4383,7 @@ function __c18(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          policy: S.optional(__S(86)),
+          policy: S.optional(GoogleIamV1Policy),
           updateMask: S.optional(S.String),
         }),
       ).annotate({
@@ -3713,7 +4393,7 @@ function __c18(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(144).pipe(T.HttpBody())),
+          body: S.optional(GoogleIamV1SetIamPolicyRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3727,7 +4407,7 @@ function __c18(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          permissions: S.optional(__S(2)),
+          permissions: S.optional(StringList),
         }),
       ).annotate({
         identifier: "GoogleIamV1TestIamPermissionsRequest",
@@ -3736,7 +4416,7 @@ function __c18(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(146).pipe(T.HttpBody())),
+          body: S.optional(GoogleIamV1TestIamPermissionsRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3753,7 +4433,7 @@ function __c18(j: number): any {
           clientOperationId: S.optional(S.String.pipe(T.Query())),
           managedZone: S.String.pipe(T.Label()),
           project: S.String.pipe(T.Label()),
-          body: S.optional(__S(38).pipe(T.HttpBody())),
+          body: S.optional(ManagedZone.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -3770,7 +4450,7 @@ function __c18(j: number): any {
           project: S.String.pipe(T.Label()),
           policy: S.String.pipe(T.Label()),
           clientOperationId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(53).pipe(T.HttpBody())),
+          body: S.optional(Policy.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -3785,7 +4465,7 @@ function __c18(j: number): any {
           responsePolicy: S.String.pipe(T.Label()),
           project: S.String.pipe(T.Label()),
           clientOperationId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(58).pipe(T.HttpBody())),
+          body: S.optional(ResponsePolicy.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -3803,7 +4483,7 @@ function __c18(j: number): any {
           responsePolicyRule: S.String.pipe(T.Label()),
           project: S.String.pipe(T.Label()),
           responsePolicy: S.String.pipe(T.Label()),
-          body: S.optional(__S(61).pipe(T.HttpBody())),
+          body: S.optional(ResponsePolicyRule.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -3814,52 +4494,5 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "UpdateResponsePolicyRulesRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
-    case 9:
-      return __c9(i & 7);
-    case 10:
-      return __c10(i & 7);
-    case 11:
-      return __c11(i & 7);
-    case 12:
-      return __c12(i & 7);
-    case 13:
-      return __c13(i & 7);
-    case 14:
-      return __c14(i & 7);
-    case 15:
-      return __c15(i & 7);
-    case 16:
-      return __c16(i & 7);
-    case 17:
-      return __c17(i & 7);
-    case 18:
-      return __c18(i & 7);
   }
 }

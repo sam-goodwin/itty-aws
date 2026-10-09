@@ -7,8 +7,6 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -68,10 +66,20 @@ export type CreateServicesConsumerQuotaMetricsLimitsProducerOverridesForceOnlyEn
   | "QUOTA_SAFETY_CHECK_UNSPECIFIED"
   | "LIMIT_DECREASE_BELOW_USAGE"
   | "LIMIT_DECREASE_PERCENTAGE_TOO_HIGH";
+const CreateServicesConsumerQuotaMetricsLimitsProducerOverridesForceOnlyEnum = S.String;
+
 export type CreateServicesConsumerQuotaMetricsLimitsProducerOverridesForceOnlyEnumList = Array<
   CreateServicesConsumerQuotaMetricsLimitsProducerOverridesForceOnlyEnum | (string & {})
 >;
+const CreateServicesConsumerQuotaMetricsLimitsProducerOverridesForceOnlyEnumList =
+  /*@__PURE__*/ __L.at(
+    __c0,
+    0,
+  ) as any as S.Schema<CreateServicesConsumerQuotaMetricsLimitsProducerOverridesForceOnlyEnumList>;
+
 export type StringMap = { [key: string]: string | undefined };
+const StringMap = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<StringMap>;
+
 /** A quota override */
 export interface V1Beta1QuotaOverride {
   /** The resource name of the ancestor that requested the override. For example: "organizations/12345" or "folders/67890". Used by admin overrides only. */
@@ -87,6 +95,8 @@ export interface V1Beta1QuotaOverride {
   /** If this map is nonempty, then this override applies only to specific values for dimensions defined in the limit unit. For example, an override on a limit with the unit 1/{project}/{region} could contain an entry with the key "region" and the value "us-east-1"; the override is only applied to quota consumed in that region. This map has the following restrictions: * Keys that are not defined in the limit's unit are not valid keys. Any string appearing in {brackets} in the unit (besides {project} or {user}) is a defined key. * "project" is not a valid key; the project is already specified in the parent resource name. * "user" is not a valid key; the API does not support quota overrides that apply only to a specific user. * If "region" appears as a key, its value must be a valid Cloud region. * If "zone" appears as a key, its value must be a valid Cloud zone. * If any valid key other than "region" or "zone" appears in the map, then all valid keys other than "region" or "zone" must also appear in the map. */
   dimensions?: StringMap;
 }
+const V1Beta1QuotaOverride = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<V1Beta1QuotaOverride>;
+
 export interface CreateServicesConsumerQuotaMetricsLimitsProducerOverridesRequest {
   /** The resource name of the parent quota limit, returned by a ListConsumerQuotaMetrics or GetConsumerQuotaMetric call. An example name would be: `services/compute.googleapis.com/projects/123/consumerQuotaMetrics/compute.googleapis.com%2Fcpus/limits/%2Fproject%2Fregion` */
   parent: string;
@@ -99,8 +109,17 @@ export interface CreateServicesConsumerQuotaMetricsLimitsProducerOverridesReques
   /** Request body */
   body?: V1Beta1QuotaOverride;
 }
+const CreateServicesConsumerQuotaMetricsLimitsProducerOverridesRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<CreateServicesConsumerQuotaMetricsLimitsProducerOverridesRequest>;
+
 export type DocumentMap = { [key: string]: unknown | undefined };
+const DocumentMap = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<DocumentMap>;
+
 export type DocumentMapList = Array<DocumentMap>;
+const DocumentMapList = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<DocumentMapList>;
+
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
@@ -110,6 +129,8 @@ export interface Status {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
   message?: string;
 }
+const Status = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<Status>;
+
 /** This resource represents a long-running operation that is the result of a network API call. */
 export interface Operation {
   /** Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any. */
@@ -123,6 +144,8 @@ export interface Operation {
   /** The error result of the operation in case of failure or cancellation. */
   error?: Status;
 }
+const Operation = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<Operation>;
+
 /** Quota policy created by service producer. */
 export interface V1Beta1ProducerQuotaPolicy {
   /** The limit unit of the limit to which this policy applies. An example unit would be: `1/{project}/{region}` Note that `{project}` and `{region}` are not placeholders in this example; the literal characters `{` and `}` occur in the string. */
@@ -138,6 +161,11 @@ export interface V1Beta1ProducerQuotaPolicy {
   /** The name of the metric to which this policy applies. An example name would be: `compute.googleapis.com/cpus` */
   metric?: string;
 }
+const V1Beta1ProducerQuotaPolicy = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<V1Beta1ProducerQuotaPolicy>;
+
 export interface CreateServicesConsumerQuotaMetricsLimitsProducerQuotaPoliciesRequest {
   /** If force option is set to true, force_justification is suggested to be set to log the reason in audit logs. */
   forceJustification?: string;
@@ -150,6 +178,11 @@ export interface CreateServicesConsumerQuotaMetricsLimitsProducerQuotaPoliciesRe
   /** Request body */
   body?: V1Beta1ProducerQuotaPolicy;
 }
+const CreateServicesConsumerQuotaMetricsLimitsProducerQuotaPoliciesRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<CreateServicesConsumerQuotaMetricsLimitsProducerQuotaPoliciesRequest>;
+
 export type DeleteServicesConsumerQuotaMetricsLimitsProducerOverridesForceOnlyEnum =
   | "QUOTA_SAFETY_CHECK_UNSPECIFIED"
   | "LIMIT_DECREASE_BELOW_USAGE"
@@ -157,6 +190,9 @@ export type DeleteServicesConsumerQuotaMetricsLimitsProducerOverridesForceOnlyEn
 export type DeleteServicesConsumerQuotaMetricsLimitsProducerOverridesForceOnlyEnumList = Array<
   DeleteServicesConsumerQuotaMetricsLimitsProducerOverridesForceOnlyEnum | (string & {})
 >;
+const DeleteServicesConsumerQuotaMetricsLimitsProducerOverridesForceOnlyEnumList =
+  CreateServicesConsumerQuotaMetricsLimitsProducerOverridesForceOnlyEnumList as any as S.Schema<DeleteServicesConsumerQuotaMetricsLimitsProducerOverridesForceOnlyEnumList>;
+
 export interface DeleteServicesConsumerQuotaMetricsLimitsProducerOverridesRequest {
   /** Whether to force the deletion of the quota override. Setting the force parameter to 'true' ignores all quota safety checks that would fail the request. QuotaSafetyCheck lists all such validations. */
   force?: boolean;
@@ -167,6 +203,11 @@ export interface DeleteServicesConsumerQuotaMetricsLimitsProducerOverridesReques
   /** The resource name of the override to delete. An example name would be: `services/compute.googleapis.com/projects/123/consumerQuotaMetrics/compute.googleapis.com%2Fcpus/limits/%2Fproject%2Fregion/producerOverrides/4a3f2c1d` */
   name: string;
 }
+const DeleteServicesConsumerQuotaMetricsLimitsProducerOverridesRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<DeleteServicesConsumerQuotaMetricsLimitsProducerOverridesRequest>;
+
 export interface DeleteServicesConsumerQuotaMetricsLimitsProducerQuotaPoliciesRequest {
   /** If set to true, validate the request, but do not actually update. */
   validateOnly?: boolean;
@@ -177,23 +218,41 @@ export interface DeleteServicesConsumerQuotaMetricsLimitsProducerQuotaPoliciesRe
   /** If force option is set to true, force_justification is suggested to be set to log the reason in audit logs. */
   forceJustification?: string;
 }
+const DeleteServicesConsumerQuotaMetricsLimitsProducerQuotaPoliciesRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<DeleteServicesConsumerQuotaMetricsLimitsProducerQuotaPoliciesRequest>;
+
 export interface GetOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
+const GetOperationsRequest = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<GetOperationsRequest>;
+
 export type GetServicesConsumerQuotaMetricsViewEnum = "QUOTA_VIEW_UNSPECIFIED" | "BASIC" | "FULL";
+const GetServicesConsumerQuotaMetricsViewEnum = S.String;
+
 export interface GetServicesConsumerQuotaMetricsRequest {
   /** Specifies the level of detail for quota information in the response. */
   view?: GetServicesConsumerQuotaMetricsViewEnum | (string & {});
   /** The resource name of the quota metric, returned by a ListConsumerQuotaMetrics call. An example name would be: `services/compute.googleapis.com/projects/123/consumerQuotaMetrics/compute.googleapis.com%2Fcpus` */
   name: string;
 }
+const GetServicesConsumerQuotaMetricsRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<GetServicesConsumerQuotaMetricsRequest>;
+
 export type StringList = Array<string>;
+const StringList = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<StringList>;
+
 /** [Output only] Rollout information of a quota. */
 export interface V1Beta1RolloutInfo {
   /** Whether there is an ongoing rollout for the default limit or not. */
   defaultLimitOngoingRollout?: boolean;
 }
+const V1Beta1RolloutInfo = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<V1Beta1RolloutInfo>;
+
 /** A quota bucket is a quota provisioning unit for a specific set of dimensions. */
 export interface V1Beta1QuotaBucket {
   /** Consumer override on this quota bucket. */
@@ -213,7 +272,14 @@ export interface V1Beta1QuotaBucket {
   /** Rollout information of this quota bucket. This field is present only if the effective limit will change due to the ongoing rollout of the service config. */
   rolloutInfo?: V1Beta1RolloutInfo;
 }
+const V1Beta1QuotaBucket = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<V1Beta1QuotaBucket>;
+
 export type V1Beta1QuotaBucketList = Array<V1Beta1QuotaBucket>;
+const V1Beta1QuotaBucketList = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<V1Beta1QuotaBucketList>;
+
 /** Consumer quota settings for a quota limit. */
 export interface V1Beta1ConsumerQuotaLimit {
   /** The limit unit. An example unit would be: `1/{project}/{region}` Note that `{project}` and `{region}` are not placeholders in this example; the literal characters `{` and `}` occur in the string. */
@@ -229,7 +295,17 @@ export interface V1Beta1ConsumerQuotaLimit {
   /** Summary of the enforced quota buckets, organized by quota dimension, ordered from least specific to most specific (for example, the global default bucket, with no quota dimensions, will always appear first). */
   quotaBuckets?: V1Beta1QuotaBucketList;
 }
+const V1Beta1ConsumerQuotaLimit = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<V1Beta1ConsumerQuotaLimit>;
+
 export type V1Beta1ConsumerQuotaLimitList = Array<V1Beta1ConsumerQuotaLimit>;
+const V1Beta1ConsumerQuotaLimitList = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<V1Beta1ConsumerQuotaLimitList>;
+
 /** Consumer quota settings for a quota metric. */
 export interface V1Beta1ConsumerQuotaMetric {
   /** The resource name of the quota settings on this metric for this consumer. An example name would be: `services/serviceconsumermanagement.googleapis.com/projects/123/consumerQuotaMetrics/compute.googleapis.com%2Fcpus` The resource name is intended to be opaque and should not be parsed for its component strings, since its representation could change in the future. */
@@ -245,29 +321,58 @@ export interface V1Beta1ConsumerQuotaMetric {
   /** The consumer quota for each quota limit defined on the metric. */
   consumerQuotaLimits?: V1Beta1ConsumerQuotaLimitList;
 }
+const V1Beta1ConsumerQuotaMetric = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<V1Beta1ConsumerQuotaMetric>;
+
 export type GetServicesConsumerQuotaMetricsLimitsViewEnum =
   | "QUOTA_VIEW_UNSPECIFIED"
   | "BASIC"
   | "FULL";
+const GetServicesConsumerQuotaMetricsLimitsViewEnum = S.String;
+
 export interface GetServicesConsumerQuotaMetricsLimitsRequest {
   /** The resource name of the quota limit, returned by a ListConsumerQuotaMetrics or GetConsumerQuotaMetric call. An example name would be: `services/compute.googleapis.com/projects/123/consumerQuotaMetrics/compute.googleapis.com%2Fcpus/limits/%2Fproject%2Fregion` */
   name: string;
   /** Specifies the level of detail for quota information in the response. */
   view?: GetServicesConsumerQuotaMetricsLimitsViewEnum | (string & {});
 }
+const GetServicesConsumerQuotaMetricsLimitsRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<GetServicesConsumerQuotaMetricsLimitsRequest>;
+
 export type V1Beta1ImportProducerOverridesRequestForceOnlyItemEnum =
   | "QUOTA_SAFETY_CHECK_UNSPECIFIED"
   | "LIMIT_DECREASE_BELOW_USAGE"
   | "LIMIT_DECREASE_PERCENTAGE_TOO_HIGH";
+const V1Beta1ImportProducerOverridesRequestForceOnlyItemEnum = S.String;
+
 export type V1Beta1ImportProducerOverridesRequestForceOnlyItemEnumList = Array<
   V1Beta1ImportProducerOverridesRequestForceOnlyItemEnum | (string & {})
 >;
+const V1Beta1ImportProducerOverridesRequestForceOnlyItemEnumList = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<V1Beta1ImportProducerOverridesRequestForceOnlyItemEnumList>;
+
 export type V1Beta1QuotaOverrideList = Array<V1Beta1QuotaOverride>;
+const V1Beta1QuotaOverrideList = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<V1Beta1QuotaOverrideList>;
+
 /** Import data embedded in the request message */
 export interface V1Beta1OverrideInlineSource {
   /** The overrides to create. Each override must have a value for 'metric' and 'unit', to specify which metric and which limit the override should be applied to. The 'name' field of the override does not need to be set; it is ignored. */
   overrides?: V1Beta1QuotaOverrideList;
 }
+const V1Beta1OverrideInlineSource = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<V1Beta1OverrideInlineSource>;
+
 /** Request message for ImportProducerOverrides */
 export interface V1Beta1ImportProducerOverridesRequest {
   /** The list of quota safety checks to ignore before the override mutation. Unlike 'force' field that ignores all the quota safety checks, the 'force_only' field ignores only the specified checks; other checks are still enforced. The 'force' and 'force_only' fields cannot both be set. */
@@ -279,18 +384,38 @@ export interface V1Beta1ImportProducerOverridesRequest {
   /** The import data is specified in the request message itself */
   inlineSource?: V1Beta1OverrideInlineSource;
 }
+const V1Beta1ImportProducerOverridesRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<V1Beta1ImportProducerOverridesRequest>;
+
 export interface ImportProducerOverridesServicesConsumerQuotaMetricsRequest {
   /** The resource name of the consumer. An example name would be: `services/compute.googleapis.com/projects/123` */
   parent: string;
   /** Request body */
   body?: V1Beta1ImportProducerOverridesRequest;
 }
+const ImportProducerOverridesServicesConsumerQuotaMetricsRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<ImportProducerOverridesServicesConsumerQuotaMetricsRequest>;
+
 export type V1Beta1ProducerQuotaPolicyList = Array<V1Beta1ProducerQuotaPolicy>;
+const V1Beta1ProducerQuotaPolicyList = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<V1Beta1ProducerQuotaPolicyList>;
+
 /** Import data embedded in the request message */
 export interface V1Beta1PolicyInlineSource {
   /** The policies to create. Each policy must have a value for 'metric' and 'unit', to specify which metric and which limit the policy should be applied to. */
   policies?: V1Beta1ProducerQuotaPolicyList;
 }
+const V1Beta1PolicyInlineSource = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<V1Beta1PolicyInlineSource>;
+
 /** Request message for ImportProducerQuotaPolicies */
 export interface V1Beta1ImportProducerQuotaPoliciesRequest {
   /** The import data is specified in the request message itself */
@@ -304,13 +429,25 @@ export interface V1Beta1ImportProducerQuotaPoliciesRequest {
   /** If set to true, skip the quota usage check. This field is only used when the effective limit can be decreased. If the force field is not set, this field will be ignored. */
   forceSkipQuotaUsageCheck?: boolean;
 }
+const V1Beta1ImportProducerQuotaPoliciesRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<V1Beta1ImportProducerQuotaPoliciesRequest>;
+
 export interface ImportProducerQuotaPoliciesServicesConsumerQuotaMetricsRequest {
   /** The resource name of the consumer. An example name would be: `services/compute.googleapis.com/organizations/123` */
   parent: string;
   /** Request body */
   body?: V1Beta1ImportProducerQuotaPoliciesRequest;
 }
+const ImportProducerQuotaPoliciesServicesConsumerQuotaMetricsRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<ImportProducerQuotaPoliciesServicesConsumerQuotaMetricsRequest>;
+
 export type ListServicesConsumerQuotaMetricsViewEnum = "QUOTA_VIEW_UNSPECIFIED" | "BASIC" | "FULL";
+const ListServicesConsumerQuotaMetricsViewEnum = S.String;
+
 export interface ListServicesConsumerQuotaMetricsRequest {
   /** Specifies the level of detail for quota information in the response. */
   view?: ListServicesConsumerQuotaMetricsViewEnum | (string & {});
@@ -321,7 +458,17 @@ export interface ListServicesConsumerQuotaMetricsRequest {
   /** Parent of the quotas resource. An example parent would be: `services/serviceconsumermanagement.googleapis.com/projects/123` */
   parent: string;
 }
+const ListServicesConsumerQuotaMetricsRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<ListServicesConsumerQuotaMetricsRequest>;
+
 export type V1Beta1ConsumerQuotaMetricList = Array<V1Beta1ConsumerQuotaMetric>;
+const V1Beta1ConsumerQuotaMetricList = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<V1Beta1ConsumerQuotaMetricList>;
+
 /** Response message for ListConsumerQuotaMetrics. */
 export interface V1Beta1ListConsumerQuotaMetricsResponse {
   /** Quota settings for the consumer, organized by quota metric. */
@@ -329,6 +476,11 @@ export interface V1Beta1ListConsumerQuotaMetricsResponse {
   /** Token identifying which result to start with; returned by a previous list call. */
   nextPageToken?: string;
 }
+const V1Beta1ListConsumerQuotaMetricsResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<V1Beta1ListConsumerQuotaMetricsResponse>;
+
 export interface ListServicesConsumerQuotaMetricsLimitsProducerOverridesRequest {
   /** The resource name of the parent quota limit, returned by a ListConsumerQuotaMetrics or GetConsumerQuotaMetric call. An example name would be: `services/compute.googleapis.com/projects/123/consumerQuotaMetrics/compute.googleapis.com%2Fcpus/limits/%2Fproject%2Fregion` */
   parent: string;
@@ -337,6 +489,11 @@ export interface ListServicesConsumerQuotaMetricsLimitsProducerOverridesRequest 
   /** Requested size of the next page of data. */
   pageSize?: number;
 }
+const ListServicesConsumerQuotaMetricsLimitsProducerOverridesRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<ListServicesConsumerQuotaMetricsLimitsProducerOverridesRequest>;
+
 /** Response message for ListProducerOverrides. */
 export interface V1Beta1ListProducerOverridesResponse {
   /** Token identifying which result to start with; returned by a previous list call. */
@@ -344,6 +501,11 @@ export interface V1Beta1ListProducerOverridesResponse {
   /** Producer overrides on this limit. */
   overrides?: V1Beta1QuotaOverrideList;
 }
+const V1Beta1ListProducerOverridesResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<V1Beta1ListProducerOverridesResponse>;
+
 export interface ListServicesConsumerQuotaMetricsLimitsProducerQuotaPoliciesRequest {
   /** Required. The resource name of the parent quota limit. An example name would be: `services/compute.googleapis.com/organizations/123/consumerQuotaMetrics/compute.googleapis.com%2Fcpus/limits/%2Fproject%2Fregion` */
   parent: string;
@@ -352,6 +514,11 @@ export interface ListServicesConsumerQuotaMetricsLimitsProducerQuotaPoliciesRequ
   /** Requested size of the next page of data. */
   pageSize?: number;
 }
+const ListServicesConsumerQuotaMetricsLimitsProducerQuotaPoliciesRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<ListServicesConsumerQuotaMetricsLimitsProducerQuotaPoliciesRequest>;
+
 /** Response message for ListProducerQuotaPolicies. */
 export interface V1Beta1ListProducerQuotaPoliciesResponse {
   /** Token identifying which result to start with; returned by a previous list call. */
@@ -359,6 +526,11 @@ export interface V1Beta1ListProducerQuotaPoliciesResponse {
   /** Producer policies on this limit. */
   producerQuotaPolicies?: V1Beta1ProducerQuotaPolicyList;
 }
+const V1Beta1ListProducerQuotaPoliciesResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<V1Beta1ListProducerQuotaPoliciesResponse>;
+
 export type PatchServicesConsumerQuotaMetricsLimitsProducerOverridesForceOnlyEnum =
   | "QUOTA_SAFETY_CHECK_UNSPECIFIED"
   | "LIMIT_DECREASE_BELOW_USAGE"
@@ -366,6 +538,9 @@ export type PatchServicesConsumerQuotaMetricsLimitsProducerOverridesForceOnlyEnu
 export type PatchServicesConsumerQuotaMetricsLimitsProducerOverridesForceOnlyEnumList = Array<
   PatchServicesConsumerQuotaMetricsLimitsProducerOverridesForceOnlyEnum | (string & {})
 >;
+const PatchServicesConsumerQuotaMetricsLimitsProducerOverridesForceOnlyEnumList =
+  CreateServicesConsumerQuotaMetricsLimitsProducerOverridesForceOnlyEnumList as any as S.Schema<PatchServicesConsumerQuotaMetricsLimitsProducerOverridesForceOnlyEnumList>;
+
 export interface PatchServicesConsumerQuotaMetricsLimitsProducerOverridesRequest {
   /** Whether to force the update of the quota override. Setting the force parameter to 'true' ignores all quota safety checks that would fail the request. QuotaSafetyCheck lists all such validations. */
   force?: boolean;
@@ -380,6 +555,11 @@ export interface PatchServicesConsumerQuotaMetricsLimitsProducerOverridesRequest
   /** Request body */
   body?: V1Beta1QuotaOverride;
 }
+const PatchServicesConsumerQuotaMetricsLimitsProducerOverridesRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<PatchServicesConsumerQuotaMetricsLimitsProducerOverridesRequest>;
+
 export interface PatchServicesConsumerQuotaMetricsLimitsProducerQuotaPoliciesRequest {
   /** If force option is set to true, force_justification is suggested to be set to log the reason in audit logs. */
   forceJustification?: string;
@@ -394,6 +574,11 @@ export interface PatchServicesConsumerQuotaMetricsLimitsProducerQuotaPoliciesReq
   /** Request body */
   body?: V1Beta1ProducerQuotaPolicy;
 }
+const PatchServicesConsumerQuotaMetricsLimitsProducerQuotaPoliciesRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<PatchServicesConsumerQuotaMetricsLimitsProducerQuotaPoliciesRequest>;
+
 export type CreateServicesConsumerQuotaMetricsLimitsProducerOverridesError =
   | NotFound
   | Forbidden
@@ -407,10 +592,8 @@ export const createServicesConsumerQuotaMetricsLimitsProducerOverrides: API.Oper
   CreateServicesConsumerQuotaMetricsLimitsProducerOverridesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(
-    3,
-  ) as any as S.Schema<CreateServicesConsumerQuotaMetricsLimitsProducerOverridesRequest>,
-  output: __S(7) as any as S.Schema<Operation>,
+  input: CreateServicesConsumerQuotaMetricsLimitsProducerOverridesRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -429,10 +612,8 @@ export const createServicesConsumerQuotaMetricsLimitsProducerQuotaPolicies: API.
   CreateServicesConsumerQuotaMetricsLimitsProducerQuotaPoliciesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(
-    9,
-  ) as any as S.Schema<CreateServicesConsumerQuotaMetricsLimitsProducerQuotaPoliciesRequest>,
-  output: __S(7) as any as S.Schema<Operation>,
+  input: CreateServicesConsumerQuotaMetricsLimitsProducerQuotaPoliciesRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -451,10 +632,8 @@ export const deleteServicesConsumerQuotaMetricsLimitsProducerOverrides: API.Oper
   DeleteServicesConsumerQuotaMetricsLimitsProducerOverridesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(
-    10,
-  ) as any as S.Schema<DeleteServicesConsumerQuotaMetricsLimitsProducerOverridesRequest>,
-  output: __S(7) as any as S.Schema<Operation>,
+  input: DeleteServicesConsumerQuotaMetricsLimitsProducerOverridesRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -473,10 +652,8 @@ export const deleteServicesConsumerQuotaMetricsLimitsProducerQuotaPolicies: API.
   DeleteServicesConsumerQuotaMetricsLimitsProducerQuotaPoliciesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(
-    11,
-  ) as any as S.Schema<DeleteServicesConsumerQuotaMetricsLimitsProducerQuotaPoliciesRequest>,
-  output: __S(7) as any as S.Schema<Operation>,
+  input: DeleteServicesConsumerQuotaMetricsLimitsProducerQuotaPoliciesRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -490,8 +667,8 @@ export const getOperations: API.OperationMethod<
   GetOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12) as any as S.Schema<GetOperationsRequest>,
-  output: __S(7) as any as S.Schema<Operation>,
+  input: GetOperationsRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -505,8 +682,8 @@ export const getServicesConsumerQuotaMetrics: API.OperationMethod<
   GetServicesConsumerQuotaMetricsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13) as any as S.Schema<GetServicesConsumerQuotaMetricsRequest>,
-  output: __S(20) as any as S.Schema<V1Beta1ConsumerQuotaMetric>,
+  input: GetServicesConsumerQuotaMetricsRequest,
+  output: V1Beta1ConsumerQuotaMetric,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -520,8 +697,8 @@ export const getServicesConsumerQuotaMetricsLimits: API.OperationMethod<
   GetServicesConsumerQuotaMetricsLimitsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21) as any as S.Schema<GetServicesConsumerQuotaMetricsLimitsRequest>,
-  output: __S(18) as any as S.Schema<V1Beta1ConsumerQuotaLimit>,
+  input: GetServicesConsumerQuotaMetricsLimitsRequest,
+  output: V1Beta1ConsumerQuotaLimit,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -540,8 +717,8 @@ export const importProducerOverridesServicesConsumerQuotaMetrics: API.OperationM
   ImportProducerOverridesServicesConsumerQuotaMetricsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26) as any as S.Schema<ImportProducerOverridesServicesConsumerQuotaMetricsRequest>,
-  output: __S(7) as any as S.Schema<Operation>,
+  input: ImportProducerOverridesServicesConsumerQuotaMetricsRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -560,8 +737,8 @@ export const importProducerQuotaPoliciesServicesConsumerQuotaMetrics: API.Operat
   ImportProducerQuotaPoliciesServicesConsumerQuotaMetricsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30) as any as S.Schema<ImportProducerQuotaPoliciesServicesConsumerQuotaMetricsRequest>,
-  output: __S(7) as any as S.Schema<Operation>,
+  input: ImportProducerQuotaPoliciesServicesConsumerQuotaMetricsRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -576,8 +753,8 @@ export const listServicesConsumerQuotaMetrics: API.PaginatedOperationMethod<
   GcpOpContext,
   V1Beta1ListConsumerQuotaMetricsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(31) as any as S.Schema<ListServicesConsumerQuotaMetricsRequest>,
-  output: __S(33) as any as S.Schema<V1Beta1ListConsumerQuotaMetricsResponse>,
+  input: ListServicesConsumerQuotaMetricsRequest,
+  output: V1Beta1ListConsumerQuotaMetricsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -596,8 +773,8 @@ export const listServicesConsumerQuotaMetricsLimitsProducerOverrides: API.Pagina
   GcpOpContext,
   V1Beta1ListProducerOverridesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(34) as any as S.Schema<ListServicesConsumerQuotaMetricsLimitsProducerOverridesRequest>,
-  output: __S(35) as any as S.Schema<V1Beta1ListProducerOverridesResponse>,
+  input: ListServicesConsumerQuotaMetricsLimitsProducerOverridesRequest,
+  output: V1Beta1ListProducerOverridesResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -616,10 +793,8 @@ export const listServicesConsumerQuotaMetricsLimitsProducerQuotaPolicies: API.Pa
   GcpOpContext,
   V1Beta1ListProducerQuotaPoliciesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(
-    36,
-  ) as any as S.Schema<ListServicesConsumerQuotaMetricsLimitsProducerQuotaPoliciesRequest>,
-  output: __S(37) as any as S.Schema<V1Beta1ListProducerQuotaPoliciesResponse>,
+  input: ListServicesConsumerQuotaMetricsLimitsProducerQuotaPoliciesRequest,
+  output: V1Beta1ListProducerQuotaPoliciesResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -639,10 +814,8 @@ export const patchServicesConsumerQuotaMetricsLimitsProducerOverrides: API.Opera
   PatchServicesConsumerQuotaMetricsLimitsProducerOverridesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(
-    38,
-  ) as any as S.Schema<PatchServicesConsumerQuotaMetricsLimitsProducerOverridesRequest>,
-  output: __S(7) as any as S.Schema<Operation>,
+  input: PatchServicesConsumerQuotaMetricsLimitsProducerOverridesRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -661,10 +834,8 @@ export const patchServicesConsumerQuotaMetricsLimitsProducerQuotaPolicies: API.O
   PatchServicesConsumerQuotaMetricsLimitsProducerQuotaPoliciesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(
-    39,
-  ) as any as S.Schema<PatchServicesConsumerQuotaMetricsLimitsProducerQuotaPoliciesRequest>,
-  output: __S(7) as any as S.Schema<Operation>,
+  input: PatchServicesConsumerQuotaMetricsLimitsProducerQuotaPoliciesRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -674,7 +845,7 @@ export const patchServicesConsumerQuotaMetricsLimitsProducerQuotaPolicies: API.O
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
+      return S.Array(CreateServicesConsumerQuotaMetricsLimitsProducerOverridesForceOnlyEnum);
     case 1:
       return S.Record(S.String, S.String);
     case 2:
@@ -685,17 +856,21 @@ function __c0(j: number): any {
           name: S.optional(S.String),
           metric: S.optional(S.String),
           unit: S.optional(S.String),
-          dimensions: S.optional(__S(1)),
+          dimensions: S.optional(StringMap),
         }),
       ).annotate({ identifier: "V1Beta1QuotaOverride" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          forceOnly: S.optional(__S(0).pipe(T.Query())),
+          forceOnly: S.optional(
+            CreateServicesConsumerQuotaMetricsLimitsProducerOverridesForceOnlyEnumList.pipe(
+              T.Query(),
+            ),
+          ),
           forceJustification: S.optional(S.String.pipe(T.Query())),
           force: S.optional(S.Boolean.pipe(T.Query())),
-          body: S.optional(__S(2).pipe(T.HttpBody())),
+          body: S.optional(V1Beta1QuotaOverride.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -709,11 +884,11 @@ function __c0(j: number): any {
     case 4:
       return S.Record(S.String, S.Unknown);
     case 5:
-      return S.Array(__S(4));
+      return S.Array(DocumentMap);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          details: S.optional(__S(5)),
+          details: S.optional(DocumentMapList),
           code: S.optional(S.Number),
           message: S.optional(S.String),
         }),
@@ -721,11 +896,11 @@ function __c0(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          metadata: S.optional(__S(4)),
+          metadata: S.optional(DocumentMap),
           name: S.optional(S.String),
           done: S.optional(S.Boolean),
-          response: S.optional(__S(4)),
-          error: S.optional(__S(6)),
+          response: S.optional(DocumentMap),
+          error: S.optional(Status),
         }),
       ).annotate({ identifier: "Operation" });
   }
@@ -737,7 +912,7 @@ function __c1(j: number): any {
         S.Struct({
           unit: S.optional(S.String),
           policyValue: S.optional(S.String),
-          dimensions: S.optional(__S(1)),
+          dimensions: S.optional(StringMap),
           container: S.optional(S.String),
           name: S.optional(S.String),
           metric: S.optional(S.String),
@@ -752,7 +927,7 @@ function __c1(j: number): any {
           force: S.optional(S.Boolean.pipe(T.Query())),
           validateOnly: S.optional(S.Boolean.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(8).pipe(T.HttpBody())),
+          body: S.optional(V1Beta1ProducerQuotaPolicy.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -768,7 +943,11 @@ function __c1(j: number): any {
         S.Struct({
           force: S.optional(S.Boolean.pipe(T.Query())),
           forceJustification: S.optional(S.String.pipe(T.Query())),
-          forceOnly: S.optional(__S(0).pipe(T.Query())),
+          forceOnly: S.optional(
+            DeleteServicesConsumerQuotaMetricsLimitsProducerOverridesForceOnlyEnumList.pipe(
+              T.Query(),
+            ),
+          ),
           name: S.String.pipe(T.Label()),
         }).pipe(
           T.Http({
@@ -812,7 +991,7 @@ function __c1(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          view: S.optional(S.String.pipe(T.Query())),
+          view: S.optional(GetServicesConsumerQuotaMetricsViewEnum.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
         }).pipe(
           T.Http({
@@ -839,18 +1018,18 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          consumerOverride: S.optional(__S(2)),
-          dimensions: S.optional(__S(1)),
-          producerQuotaPolicy: S.optional(__S(8)),
-          producerOverride: S.optional(__S(2)),
+          consumerOverride: S.optional(V1Beta1QuotaOverride),
+          dimensions: S.optional(StringMap),
+          producerQuotaPolicy: S.optional(V1Beta1ProducerQuotaPolicy),
+          producerOverride: S.optional(V1Beta1QuotaOverride),
           effectiveLimit: S.optional(S.String),
           defaultLimit: S.optional(S.String),
-          adminOverride: S.optional(__S(2)),
-          rolloutInfo: S.optional(__S(15)),
+          adminOverride: S.optional(V1Beta1QuotaOverride),
+          rolloutInfo: S.optional(V1Beta1RolloutInfo),
         }),
       ).annotate({ identifier: "V1Beta1QuotaBucket" });
     case 1:
-      return S.Array(__S(16));
+      return S.Array(V1Beta1QuotaBucket);
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -858,14 +1037,14 @@ function __c2(j: number): any {
           metric: S.optional(S.String),
           isPrecise: S.optional(S.Boolean),
           name: S.optional(S.String),
-          supportedLocations: S.optional(__S(14)),
-          quotaBuckets: S.optional(__S(17)),
+          supportedLocations: S.optional(StringList),
+          quotaBuckets: S.optional(V1Beta1QuotaBucketList),
         }),
       ).annotate({
         identifier: "V1Beta1ConsumerQuotaLimit",
       });
     case 3:
-      return S.Array(__S(18));
+      return S.Array(V1Beta1ConsumerQuotaLimit);
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -873,8 +1052,8 @@ function __c2(j: number): any {
           metric: S.optional(S.String),
           unit: S.optional(S.String),
           displayName: S.optional(S.String),
-          descendantConsumerQuotaLimits: S.optional(__S(19)),
-          consumerQuotaLimits: S.optional(__S(19)),
+          descendantConsumerQuotaLimits: S.optional(V1Beta1ConsumerQuotaLimitList),
+          consumerQuotaLimits: S.optional(V1Beta1ConsumerQuotaLimitList),
         }),
       ).annotate({
         identifier: "V1Beta1ConsumerQuotaMetric",
@@ -883,7 +1062,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          view: S.optional(S.String.pipe(T.Query())),
+          view: S.optional(GetServicesConsumerQuotaMetricsLimitsViewEnum.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -895,9 +1074,9 @@ function __c2(j: number): any {
         identifier: "GetServicesConsumerQuotaMetricsLimitsRequest",
       });
     case 6:
-      return S.Array(S.String);
+      return S.Array(V1Beta1ImportProducerOverridesRequestForceOnlyItemEnum);
     case 7:
-      return S.Array(__S(2));
+      return S.Array(V1Beta1QuotaOverride);
   }
 }
 function __c3(j: number): any {
@@ -905,7 +1084,7 @@ function __c3(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          overrides: S.optional(__S(23)),
+          overrides: S.optional(V1Beta1QuotaOverrideList),
         }),
       ).annotate({
         identifier: "V1Beta1OverrideInlineSource",
@@ -913,10 +1092,10 @@ function __c3(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          forceOnly: S.optional(__S(22)),
+          forceOnly: S.optional(V1Beta1ImportProducerOverridesRequestForceOnlyItemEnumList),
           forceJustification: S.optional(S.String),
           force: S.optional(S.Boolean),
-          inlineSource: S.optional(__S(24)),
+          inlineSource: S.optional(V1Beta1OverrideInlineSource),
         }),
       ).annotate({
         identifier: "V1Beta1ImportProducerOverridesRequest",
@@ -925,7 +1104,7 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(25).pipe(T.HttpBody())),
+          body: S.optional(V1Beta1ImportProducerOverridesRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -937,11 +1116,11 @@ function __c3(j: number): any {
         identifier: "ImportProducerOverridesServicesConsumerQuotaMetricsRequest",
       });
     case 3:
-      return S.Array(__S(8));
+      return S.Array(V1Beta1ProducerQuotaPolicy);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          policies: S.optional(__S(27)),
+          policies: S.optional(V1Beta1ProducerQuotaPolicyList),
         }),
       ).annotate({
         identifier: "V1Beta1PolicyInlineSource",
@@ -949,7 +1128,7 @@ function __c3(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          inlineSource: S.optional(__S(28)),
+          inlineSource: S.optional(V1Beta1PolicyInlineSource),
           validateOnly: S.optional(S.Boolean),
           force: S.optional(S.Boolean),
           forceJustification: S.optional(S.String),
@@ -962,7 +1141,7 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(29).pipe(T.HttpBody())),
+          body: S.optional(V1Beta1ImportProducerQuotaPoliciesRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -976,7 +1155,7 @@ function __c3(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          view: S.optional(S.String.pipe(T.Query())),
+          view: S.optional(ListServicesConsumerQuotaMetricsViewEnum.pipe(T.Query())),
           pageToken: S.optional(S.String.pipe(T.Query())),
           pageSize: S.optional(S.Number.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
@@ -995,11 +1174,11 @@ function __c3(j: number): any {
 function __c4(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(20));
+      return S.Array(V1Beta1ConsumerQuotaMetric);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          metrics: S.optional(__S(32)),
+          metrics: S.optional(V1Beta1ConsumerQuotaMetricList),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -1025,7 +1204,7 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          overrides: S.optional(__S(23)),
+          overrides: S.optional(V1Beta1QuotaOverrideList),
         }),
       ).annotate({
         identifier: "V1Beta1ListProducerOverridesResponse",
@@ -1050,7 +1229,7 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          producerQuotaPolicies: S.optional(__S(27)),
+          producerQuotaPolicies: S.optional(V1Beta1ProducerQuotaPolicyList),
         }),
       ).annotate({
         identifier: "V1Beta1ListProducerQuotaPoliciesResponse",
@@ -1062,8 +1241,12 @@ function __c4(j: number): any {
           forceJustification: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          forceOnly: S.optional(__S(0).pipe(T.Query())),
-          body: S.optional(__S(2).pipe(T.HttpBody())),
+          forceOnly: S.optional(
+            PatchServicesConsumerQuotaMetricsLimitsProducerOverridesForceOnlyEnumList.pipe(
+              T.Query(),
+            ),
+          ),
+          body: S.optional(V1Beta1QuotaOverride.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1082,7 +1265,7 @@ function __c4(j: number): any {
           name: S.String.pipe(T.Label()),
           force: S.optional(S.Boolean.pipe(T.Query())),
           validateOnly: S.optional(S.Boolean.pipe(T.Query())),
-          body: S.optional(__S(8).pipe(T.HttpBody())),
+          body: S.optional(V1Beta1ProducerQuotaPolicy.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1093,24 +1276,5 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "PatchServicesConsumerQuotaMetricsLimitsProducerQuotaPoliciesRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
   }
 }

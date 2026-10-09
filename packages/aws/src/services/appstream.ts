@@ -10,8 +10,6 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "AppStream",
   serviceShapeName: "PhotonAdminProxyService",
@@ -180,71 +178,130 @@ export interface AssociateAppBlockBuilderAppBlockRequest {
   AppBlockArn?: string;
   AppBlockBuilderName?: string;
 }
+const AssociateAppBlockBuilderAppBlockRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<AssociateAppBlockBuilderAppBlockRequest>;
 export interface AppBlockBuilderAppBlockAssociation {
   AppBlockArn?: string;
   AppBlockBuilderName?: string;
 }
+const AppBlockBuilderAppBlockAssociation = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<AppBlockBuilderAppBlockAssociation>;
 export interface AssociateAppBlockBuilderAppBlockResult {
   AppBlockBuilderAppBlockAssociation?: AppBlockBuilderAppBlockAssociation & {
     AppBlockArn: Arn;
     AppBlockBuilderName: Name;
   };
 }
+const AssociateAppBlockBuilderAppBlockResult = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<AssociateAppBlockBuilderAppBlockResult>;
 export interface AssociateApplicationFleetRequest {
   FleetName?: string;
   ApplicationArn?: string;
 }
+const AssociateApplicationFleetRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<AssociateApplicationFleetRequest>;
 export interface ApplicationFleetAssociation {
   FleetName?: string;
   ApplicationArn?: string;
 }
+const ApplicationFleetAssociation = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<ApplicationFleetAssociation>;
 export interface AssociateApplicationFleetResult {
   ApplicationFleetAssociation?: ApplicationFleetAssociation & {
     FleetName: string;
     ApplicationArn: Arn;
   };
 }
+const AssociateApplicationFleetResult = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<AssociateApplicationFleetResult>;
 export interface AssociateApplicationToEntitlementRequest {
   StackName?: string;
   EntitlementName?: string;
   ApplicationIdentifier?: string;
 }
+const AssociateApplicationToEntitlementRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<AssociateApplicationToEntitlementRequest>;
 export interface AssociateApplicationToEntitlementResult {}
+const AssociateApplicationToEntitlementResult = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<AssociateApplicationToEntitlementResult>;
 export interface AssociateFleetRequest {
   FleetName?: string;
   StackName?: string;
 }
+const AssociateFleetRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<AssociateFleetRequest>;
 export interface AssociateFleetResult {}
+const AssociateFleetResult = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<AssociateFleetResult>;
 export type StringList = string[];
+const StringList = /*@__PURE__*/ __L.at(__c1, 2);
 export interface AssociateSoftwareToImageBuilderRequest {
   ImageBuilderName?: string;
   SoftwareNames?: string[];
 }
+const AssociateSoftwareToImageBuilderRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<AssociateSoftwareToImageBuilderRequest>;
 export interface AssociateSoftwareToImageBuilderResult {}
+const AssociateSoftwareToImageBuilderResult =
+  AssociateApplicationToEntitlementResult as any as S.Schema<AssociateSoftwareToImageBuilderResult>;
 export type Username = string | redacted.Redacted<string>;
 export type AuthenticationType = "API" | "SAML" | "USERPOOL" | "AWS_AD" | (string & {});
+const AuthenticationType = S.String;
+
 export interface UserStackAssociation {
   StackName?: string;
   UserName?: string | redacted.Redacted<string>;
   AuthenticationType?: AuthenticationType;
   SendEmailNotification?: boolean;
 }
+const UserStackAssociation = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<UserStackAssociation>;
 export type UserStackAssociationList = UserStackAssociation[];
+const UserStackAssociationList = /*@__PURE__*/ __L.at(__c1, 5);
 export interface BatchAssociateUserStackRequest {
   UserStackAssociations?: UserStackAssociation[];
 }
+const BatchAssociateUserStackRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<BatchAssociateUserStackRequest>;
 export type UserStackAssociationErrorCode =
   | "STACK_NOT_FOUND"
   | "USER_NAME_NOT_FOUND"
   | "DIRECTORY_NOT_FOUND"
   | "INTERNAL_ERROR"
   | (string & {});
+const UserStackAssociationErrorCode = S.String;
+
 export interface UserStackAssociationError {
   UserStackAssociation?: UserStackAssociation;
   ErrorCode?: UserStackAssociationErrorCode;
   ErrorMessage?: string;
 }
+const UserStackAssociationError = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<UserStackAssociationError>;
 export type UserStackAssociationErrorList = UserStackAssociationError[];
+const UserStackAssociationErrorList = /*@__PURE__*/ __L.at(__c2, 0);
 export interface BatchAssociateUserStackResult {
   errors?: (UserStackAssociationError & {
     UserStackAssociation: UserStackAssociation & {
@@ -254,9 +311,17 @@ export interface BatchAssociateUserStackResult {
     };
   })[];
 }
+const BatchAssociateUserStackResult = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<BatchAssociateUserStackResult>;
 export interface BatchDisassociateUserStackRequest {
   UserStackAssociations?: UserStackAssociation[];
 }
+const BatchDisassociateUserStackRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<BatchDisassociateUserStackRequest>;
 export interface BatchDisassociateUserStackResult {
   errors?: (UserStackAssociationError & {
     UserStackAssociation: UserStackAssociation & {
@@ -266,6 +331,8 @@ export interface BatchDisassociateUserStackResult {
     };
   })[];
 }
+const BatchDisassociateUserStackResult =
+  BatchAssociateUserStackResult as any as S.Schema<BatchDisassociateUserStackResult>;
 export type RegionName = string;
 export type Description = string;
 export interface CopyImageRequest {
@@ -274,9 +341,11 @@ export interface CopyImageRequest {
   DestinationRegion?: string;
   DestinationImageDescription?: string;
 }
+const CopyImageRequest = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<CopyImageRequest>;
 export interface CopyImageResponse {
   DestinationImageName?: string;
 }
+const CopyImageResponse = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<CopyImageResponse>;
 export type DisplayName = string;
 export type S3Bucket = string;
 export type S3Key = string;
@@ -284,16 +353,21 @@ export interface S3Location {
   S3Bucket?: string;
   S3Key?: string;
 }
+const S3Location = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<S3Location>;
 export interface ScriptDetails {
   ScriptS3Location?: S3Location;
   ExecutablePath?: string;
   ExecutableParameters?: string;
   TimeoutInSeconds?: number;
 }
+const ScriptDetails = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<ScriptDetails>;
 export type TagKey = string;
 export type TagValue = string;
 export type Tags = { [key: string]: string | undefined };
+const Tags = /*@__PURE__*/ __L.at(__c2, 7);
 export type PackagingType = "CUSTOM" | "APPSTREAM2" | (string & {});
+const PackagingType = S.String;
+
 export interface CreateAppBlockRequest {
   Name?: string;
   Description?: string;
@@ -304,12 +378,20 @@ export interface CreateAppBlockRequest {
   PostSetupScriptDetails?: ScriptDetails;
   PackagingType?: PackagingType;
 }
+const CreateAppBlockRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<CreateAppBlockRequest>;
 export type AppBlockState = "INACTIVE" | "ACTIVE" | (string & {});
+const AppBlockState = S.String;
+
 export interface ErrorDetails {
   ErrorCode?: string;
   ErrorMessage?: string;
 }
+const ErrorDetails = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<ErrorDetails>;
 export type ErrorDetailsList = ErrorDetails[];
+const ErrorDetailsList = /*@__PURE__*/ __L.at(__c3, 2);
 export interface AppBlock {
   Name?: string;
   Arn?: string;
@@ -323,6 +405,7 @@ export interface AppBlock {
   State?: AppBlockState;
   AppBlockErrors?: ErrorDetails[];
 }
+const AppBlock = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<AppBlock>;
 export interface CreateAppBlockResult {
   AppBlock?: AppBlock & {
     Name: string;
@@ -340,19 +423,29 @@ export interface CreateAppBlockResult {
     };
   };
 }
+const CreateAppBlockResult = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<CreateAppBlockResult>;
 export type AppBlockBuilderPlatformType = "WINDOWS_SERVER_2019" | (string & {});
+const AppBlockBuilderPlatformType = S.String;
+
 export type SubnetIdList = string[];
+const SubnetIdList = StringList as any as S.Schema<SubnetIdList>;
 export type SecurityGroupIdList = string[];
+const SecurityGroupIdList = StringList as any as S.Schema<SecurityGroupIdList>;
 export interface VpcConfig {
   SubnetIds?: string[];
   SecurityGroupIds?: string[];
 }
+const VpcConfig = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<VpcConfig>;
 export type AccessEndpointType = "STREAMING" | (string & {});
+const AccessEndpointType = S.String;
+
 export interface AccessEndpoint {
   EndpointType?: AccessEndpointType;
   VpceId?: string;
 }
+const AccessEndpoint = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<AccessEndpoint>;
 export type AccessEndpointList = AccessEndpoint[];
+const AccessEndpointList = /*@__PURE__*/ __L.at(__c3, 7);
 export interface CreateAppBlockBuilderRequest {
   Name?: string;
   Description?: string;
@@ -366,7 +459,13 @@ export interface CreateAppBlockBuilderRequest {
   AccessEndpoints?: AccessEndpoint[];
   DisableIMDSV1?: boolean;
 }
+const CreateAppBlockBuilderRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<CreateAppBlockBuilderRequest>;
 export type AppBlockBuilderState = "STARTING" | "RUNNING" | "STOPPING" | "STOPPED" | (string & {});
+const AppBlockBuilderState = S.String;
+
 export type FleetErrorCode =
   | "IAM_SERVICE_ROLE_MISSING_ENI_DESCRIBE_ACTION"
   | "IAM_SERVICE_ROLE_MISSING_ENI_CREATE_ACTION"
@@ -400,17 +499,27 @@ export type FleetErrorCode =
   | "DOMAIN_JOIN_INTERNAL_SERVICE_ERROR"
   | "VALIDATION_ERROR"
   | (string & {});
+const FleetErrorCode = S.String;
+
 export interface ResourceError {
   ErrorCode?: FleetErrorCode;
   ErrorMessage?: string;
   ErrorTimestamp?: Date;
 }
+const ResourceError = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<ResourceError>;
 export type ResourceErrors = ResourceError[];
+const ResourceErrors = /*@__PURE__*/ __L.at(__c4, 2);
 export type AppBlockBuilderStateChangeReasonCode = "INTERNAL_ERROR" | (string & {});
+const AppBlockBuilderStateChangeReasonCode = S.String;
+
 export interface AppBlockBuilderStateChangeReason {
   Code?: AppBlockBuilderStateChangeReasonCode;
   Message?: string;
 }
+const AppBlockBuilderStateChangeReason = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<AppBlockBuilderStateChangeReason>;
 export interface AppBlockBuilder {
   Arn?: string;
   Name?: string;
@@ -428,6 +537,7 @@ export interface AppBlockBuilder {
   AccessEndpoints?: AccessEndpoint[];
   DisableIMDSV1?: boolean;
 }
+const AppBlockBuilder = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<AppBlockBuilder>;
 export interface CreateAppBlockBuilderResult {
   AppBlockBuilder?: AppBlockBuilder & {
     Arn: Arn;
@@ -439,14 +549,26 @@ export interface CreateAppBlockBuilderResult {
     AccessEndpoints: (AccessEndpoint & { EndpointType: AccessEndpointType })[];
   };
 }
+const CreateAppBlockBuilderResult = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<CreateAppBlockBuilderResult>;
 export interface CreateAppBlockBuilderStreamingURLRequest {
   AppBlockBuilderName?: string;
   Validity?: number;
 }
+const CreateAppBlockBuilderStreamingURLRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<CreateAppBlockBuilderStreamingURLRequest>;
 export interface CreateAppBlockBuilderStreamingURLResult {
   StreamingURL?: string;
   Expires?: Date;
 }
+const CreateAppBlockBuilderStreamingURLResult = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<CreateAppBlockBuilderStreamingURLResult>;
 export type PlatformType =
   | "WINDOWS"
   | "WINDOWS_SERVER_2016"
@@ -458,7 +580,10 @@ export type PlatformType =
   | "ROCKY_LINUX8"
   | "UBUNTU_PRO_2404"
   | (string & {});
+const PlatformType = S.String;
+
 export type Platforms = PlatformType[];
+const Platforms = /*@__PURE__*/ __L.at(__c5, 0);
 export interface CreateApplicationRequest {
   Name?: string;
   DisplayName?: string;
@@ -472,7 +597,12 @@ export interface CreateApplicationRequest {
   AppBlockArn?: string;
   Tags?: { [key: string]: string | undefined };
 }
+const CreateApplicationRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  1,
+) as any as S.Schema<CreateApplicationRequest>;
 export type Metadata = { [key: string]: string | undefined };
+const Metadata = Tags as any as S.Schema<Metadata>;
 export interface Application {
   Name?: string;
   DisplayName?: string;
@@ -490,33 +620,54 @@ export interface Application {
   InstanceFamilies?: string[];
   CreatedTime?: Date;
 }
+const Application = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<Application>;
 export interface CreateApplicationResult {
   Application?: Application & { IconS3Location: S3Location & { S3Bucket: S3Bucket } };
 }
+const CreateApplicationResult = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<CreateApplicationResult>;
 export type DirectoryName = string;
 export type OrganizationalUnitDistinguishedName = string;
 export type OrganizationalUnitDistinguishedNamesList = string[];
+const OrganizationalUnitDistinguishedNamesList =
+  StringList as any as S.Schema<OrganizationalUnitDistinguishedNamesList>;
 export type AccountName = string | redacted.Redacted<string>;
 export type AccountPassword = string | redacted.Redacted<string>;
 export interface ServiceAccountCredentials {
   AccountName?: string | redacted.Redacted<string>;
   AccountPassword?: string | redacted.Redacted<string>;
 }
+const ServiceAccountCredentials = /*@__PURE__*/ __L.at(
+  __c5,
+  4,
+) as any as S.Schema<ServiceAccountCredentials>;
 export type CertificateBasedAuthStatus =
   | "DISABLED"
   | "ENABLED"
   | "ENABLED_NO_DIRECTORY_LOGIN_FALLBACK"
   | (string & {});
+const CertificateBasedAuthStatus = S.String;
+
 export interface CertificateBasedAuthProperties {
   Status?: CertificateBasedAuthStatus;
   CertificateAuthorityArn?: string;
 }
+const CertificateBasedAuthProperties = /*@__PURE__*/ __L.at(
+  __c5,
+  5,
+) as any as S.Schema<CertificateBasedAuthProperties>;
 export interface CreateDirectoryConfigRequest {
   DirectoryName?: string;
   OrganizationalUnitDistinguishedNames?: string[];
   ServiceAccountCredentials?: ServiceAccountCredentials;
   CertificateBasedAuthProperties?: CertificateBasedAuthProperties;
 }
+const CreateDirectoryConfigRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  6,
+) as any as S.Schema<CreateDirectoryConfigRequest>;
 export interface DirectoryConfig {
   DirectoryName?: string;
   OrganizationalUnitDistinguishedNames?: string[];
@@ -524,6 +675,7 @@ export interface DirectoryConfig {
   CreatedTime?: Date;
   CertificateBasedAuthProperties?: CertificateBasedAuthProperties;
 }
+const DirectoryConfig = /*@__PURE__*/ __L.at(__c5, 7) as any as S.Schema<DirectoryConfig>;
 export interface CreateDirectoryConfigResult {
   DirectoryConfig?: DirectoryConfig & {
     DirectoryName: DirectoryName;
@@ -533,12 +685,20 @@ export interface CreateDirectoryConfigResult {
     };
   };
 }
+const CreateDirectoryConfigResult = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<CreateDirectoryConfigResult>;
 export type AppVisibility = "ALL" | "ASSOCIATED" | (string & {});
+const AppVisibility = S.String;
+
 export interface EntitlementAttribute {
   Name?: string;
   Value?: string;
 }
+const EntitlementAttribute = /*@__PURE__*/ __L.at(__c6, 1) as any as S.Schema<EntitlementAttribute>;
 export type EntitlementAttributeList = EntitlementAttribute[];
+const EntitlementAttributeList = /*@__PURE__*/ __L.at(__c6, 2);
 export interface CreateEntitlementRequest {
   Name?: string;
   StackName?: string;
@@ -546,6 +706,10 @@ export interface CreateEntitlementRequest {
   AppVisibility?: AppVisibility;
   Attributes?: EntitlementAttribute[];
 }
+const CreateEntitlementRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  3,
+) as any as S.Schema<CreateEntitlementRequest>;
 export interface Entitlement {
   Name?: string;
   StackName?: string;
@@ -555,6 +719,7 @@ export interface Entitlement {
   CreatedTime?: Date;
   LastModifiedTime?: Date;
 }
+const Entitlement = /*@__PURE__*/ __L.at(__c6, 4) as any as S.Schema<Entitlement>;
 export interface CreateEntitlementResult {
   Entitlement?: Entitlement & {
     Name: Name;
@@ -563,6 +728,10 @@ export interface CreateEntitlementResult {
     Attributes: (EntitlementAttribute & { Name: string; Value: string })[];
   };
 }
+const CreateEntitlementResult = /*@__PURE__*/ __L.at(
+  __c6,
+  5,
+) as any as S.Schema<CreateEntitlementResult>;
 export type AmiName = string;
 export interface CreateExportImageTaskRequest {
   ImageName?: string;
@@ -571,6 +740,10 @@ export interface CreateExportImageTaskRequest {
   TagSpecifications?: { [key: string]: string | undefined };
   AmiDescription?: string;
 }
+const CreateExportImageTaskRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  6,
+) as any as S.Schema<CreateExportImageTaskRequest>;
 export type UUID = string;
 export type ExportImageTaskState =
   | "EXPORTING"
@@ -578,6 +751,8 @@ export type ExportImageTaskState =
   | "FAILED"
   | "TIMED_OUT"
   | (string & {});
+const ExportImageTaskState = S.String;
+
 export type PhotonAmiId = string;
 export interface ExportImageTask {
   TaskId?: string;
@@ -590,6 +765,7 @@ export interface ExportImageTask {
   TagSpecifications?: { [key: string]: string | undefined };
   ErrorDetails?: ErrorDetails[];
 }
+const ExportImageTask = /*@__PURE__*/ __L.at(__c6, 7) as any as S.Schema<ExportImageTask>;
 export interface CreateExportImageTaskResult {
   ExportImageTask?: ExportImageTask & {
     TaskId: UUID;
@@ -598,21 +774,33 @@ export interface CreateExportImageTaskResult {
     CreatedDate: Date;
   };
 }
+const CreateExportImageTaskResult = /*@__PURE__*/ __L.at(
+  __c7,
+  0,
+) as any as S.Schema<CreateExportImageTaskResult>;
 export type FleetType = "ALWAYS_ON" | "ON_DEMAND" | "ELASTIC" | (string & {});
+const FleetType = S.String;
+
 export interface ComputeCapacity {
   DesiredInstances?: number;
   DesiredSessions?: number;
 }
+const ComputeCapacity = /*@__PURE__*/ __L.at(__c7, 1) as any as S.Schema<ComputeCapacity>;
 export interface DomainJoinInfo {
   DirectoryName?: string;
   OrganizationalUnitDistinguishedName?: string;
 }
+const DomainJoinInfo = /*@__PURE__*/ __L.at(__c7, 2) as any as S.Schema<DomainJoinInfo>;
 export type StreamView = "APP" | "DESKTOP" | (string & {});
+const StreamView = S.String;
+
 export type UsbDeviceFilterString = string;
 export type UsbDeviceFilterStrings = string[];
+const UsbDeviceFilterStrings = StringList as any as S.Schema<UsbDeviceFilterStrings>;
 export interface VolumeConfig {
   VolumeSizeInGb?: number;
 }
+const VolumeConfig = /*@__PURE__*/ __L.at(__c7, 3) as any as S.Schema<VolumeConfig>;
 export interface CreateFleetRequest {
   Name?: string;
   ImageName?: string;
@@ -639,6 +827,7 @@ export interface CreateFleetRequest {
   RootVolumeConfig?: VolumeConfig;
   DisableIMDSV1?: boolean;
 }
+const CreateFleetRequest = /*@__PURE__*/ __L.at(__c7, 4) as any as S.Schema<CreateFleetRequest>;
 export interface ComputeCapacityStatus {
   Desired?: number;
   Running?: number;
@@ -652,12 +841,20 @@ export interface ComputeCapacityStatus {
   DrainModeActiveUserSessions?: number;
   DrainModeUnusedUserSessions?: number;
 }
+const ComputeCapacityStatus = /*@__PURE__*/ __L.at(
+  __c7,
+  5,
+) as any as S.Schema<ComputeCapacityStatus>;
 export type FleetState = "STARTING" | "RUNNING" | "STOPPING" | "STOPPED" | (string & {});
+const FleetState = S.String;
+
 export interface FleetError {
   ErrorCode?: FleetErrorCode;
   ErrorMessage?: string;
 }
+const FleetError = /*@__PURE__*/ __L.at(__c7, 6) as any as S.Schema<FleetError>;
 export type FleetErrors = FleetError[];
+const FleetErrors = /*@__PURE__*/ __L.at(__c7, 7);
 export interface Fleet {
   Arn?: string;
   Name?: string;
@@ -687,6 +884,7 @@ export interface Fleet {
   RootVolumeConfig?: VolumeConfig;
   DisableIMDSV1?: boolean;
 }
+const Fleet = /*@__PURE__*/ __L.at(__c8, 0) as any as S.Schema<Fleet>;
 export interface CreateFleetResult {
   Fleet?: Fleet & {
     Arn: Arn;
@@ -697,6 +895,7 @@ export interface CreateFleetResult {
     SessionScriptS3Location: S3Location & { S3Bucket: S3Bucket };
   };
 }
+const CreateFleetResult = /*@__PURE__*/ __L.at(__c8, 1) as any as S.Schema<CreateFleetResult>;
 export type AppstreamAgentVersion = string;
 export interface CreateImageBuilderRequest {
   Name?: string;
@@ -717,6 +916,10 @@ export interface CreateImageBuilderRequest {
   SoftwaresToUninstall?: string[];
   DisableIMDSV1?: boolean;
 }
+const CreateImageBuilderRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  2,
+) as any as S.Schema<CreateImageBuilderRequest>;
 export type ImageBuilderState =
   | "PENDING"
   | "UPDATING_AGENT"
@@ -733,20 +936,34 @@ export type ImageBuilderState =
   | "SYNCING_APPS"
   | "PENDING_IMAGE_IMPORT"
   | (string & {});
+const ImageBuilderState = S.String;
+
 export type ImageBuilderStateChangeReasonCode =
   | "INTERNAL_ERROR"
   | "IMAGE_UNAVAILABLE"
   | (string & {});
+const ImageBuilderStateChangeReasonCode = S.String;
+
 export interface ImageBuilderStateChangeReason {
   Code?: ImageBuilderStateChangeReasonCode;
   Message?: string;
 }
+const ImageBuilderStateChangeReason = /*@__PURE__*/ __L.at(
+  __c8,
+  3,
+) as any as S.Schema<ImageBuilderStateChangeReason>;
 export interface NetworkAccessConfiguration {
   EniPrivateIpAddress?: string;
   EniIpv6Addresses?: string[];
   EniId?: string;
 }
+const NetworkAccessConfiguration = /*@__PURE__*/ __L.at(
+  __c8,
+  4,
+) as any as S.Schema<NetworkAccessConfiguration>;
 export type LatestAppstreamAgentVersion = "TRUE" | "FALSE" | (string & {});
+const LatestAppstreamAgentVersion = S.String;
+
 export interface ImageBuilder {
   Name?: string;
   Arn?: string;
@@ -770,20 +987,31 @@ export interface ImageBuilder {
   LatestAppstreamAgentVersion?: LatestAppstreamAgentVersion;
   DisableIMDSV1?: boolean;
 }
+const ImageBuilder = /*@__PURE__*/ __L.at(__c8, 5) as any as S.Schema<ImageBuilder>;
 export interface CreateImageBuilderResult {
   ImageBuilder?: ImageBuilder & {
     Name: string;
     AccessEndpoints: (AccessEndpoint & { EndpointType: AccessEndpointType })[];
   };
 }
+const CreateImageBuilderResult = /*@__PURE__*/ __L.at(
+  __c8,
+  6,
+) as any as S.Schema<CreateImageBuilderResult>;
 export interface CreateImageBuilderStreamingURLRequest {
   Name?: string;
   Validity?: number;
 }
+const CreateImageBuilderStreamingURLRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  7,
+) as any as S.Schema<CreateImageBuilderStreamingURLRequest>;
 export interface CreateImageBuilderStreamingURLResult {
   StreamingURL?: string;
   Expires?: Date;
 }
+const CreateImageBuilderStreamingURLResult =
+  CreateAppBlockBuilderStreamingURLResult as any as S.Schema<CreateImageBuilderStreamingURLResult>;
 export type WorkspaceImageId = string;
 export type ImageImportDescription = string;
 export type ImageImportDisplayName = string;
@@ -791,7 +1019,13 @@ export type InstanceType = string;
 export interface RuntimeValidationConfig {
   IntendedInstanceType?: string;
 }
+const RuntimeValidationConfig = /*@__PURE__*/ __L.at(
+  __c9,
+  0,
+) as any as S.Schema<RuntimeValidationConfig>;
 export type AgentSoftwareVersion = "CURRENT_LATEST" | "ALWAYS_LATEST" | (string & {});
+const AgentSoftwareVersion = S.String;
+
 export type AppName = string;
 export type AppDisplayName = string;
 export type FilePath = string | redacted.Redacted<string>;
@@ -805,7 +1039,9 @@ export interface ApplicationConfig {
   WorkingDirectory?: string | redacted.Redacted<string>;
   LaunchParameters?: string | redacted.Redacted<string>;
 }
+const ApplicationConfig = /*@__PURE__*/ __L.at(__c9, 1) as any as S.Schema<ApplicationConfig>;
 export type AppCatalogConfig = ApplicationConfig[];
+const AppCatalogConfig = /*@__PURE__*/ __L.at(__c9, 2);
 export interface CreateImportedImageRequest {
   Name?: string;
   SourceAmiId?: string;
@@ -819,6 +1055,10 @@ export interface CreateImportedImageRequest {
   AppCatalogConfig?: ApplicationConfig[];
   DryRun?: boolean;
 }
+const CreateImportedImageRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  3,
+) as any as S.Schema<CreateImportedImageRequest>;
 export type ImageState =
   | "PENDING"
   | "AVAILABLE"
@@ -829,7 +1069,11 @@ export type ImageState =
   | "IMPORTING"
   | "VALIDATING"
   | (string & {});
+const ImageState = S.String;
+
 export type VisibilityType = "PUBLIC" | "PRIVATE" | "SHARED" | (string & {});
+const VisibilityType = S.String;
+
 export type ImageStateChangeReasonCode =
   | "INTERNAL_ERROR"
   | "IMAGE_BUILDER_NOT_AVAILABLE"
@@ -837,22 +1081,40 @@ export type ImageStateChangeReasonCode =
   | "IMAGE_UPDATE_FAILURE"
   | "IMAGE_IMPORT_FAILURE"
   | (string & {});
+const ImageStateChangeReasonCode = S.String;
+
 export interface ImageStateChangeReason {
   Code?: ImageStateChangeReasonCode;
   Message?: string;
 }
+const ImageStateChangeReason = /*@__PURE__*/ __L.at(
+  __c9,
+  4,
+) as any as S.Schema<ImageStateChangeReason>;
 export type Applications = Application[];
+const Applications = /*@__PURE__*/ __L.at(__c9, 5);
 export interface ImagePermissions {
   allowFleet?: boolean;
   allowImageBuilder?: boolean;
 }
+const ImagePermissions = /*@__PURE__*/ __L.at(__c9, 6) as any as S.Schema<ImagePermissions>;
 export type DynamicAppProvidersEnabled = "ENABLED" | "DISABLED" | (string & {});
+const DynamicAppProvidersEnabled = S.String;
+
 export type ImageSharedWithOthers = "TRUE" | "FALSE" | (string & {});
+const ImageSharedWithOthers = S.String;
+
 export type ImageType = "CUSTOM" | "NATIVE" | "BYOL" | (string & {});
+const ImageType = S.String;
+
 export type NvidiaGridDriverVersion = string;
 export interface ImageSoftwareMetadata {
   nvidiaGridDriverVersion?: string;
 }
+const ImageSoftwareMetadata = /*@__PURE__*/ __L.at(
+  __c9,
+  7,
+) as any as S.Schema<ImageSoftwareMetadata>;
 export interface Image {
   Name?: string;
   Arn?: string;
@@ -879,23 +1141,33 @@ export interface Image {
   ImageType?: ImageType;
   ImageSoftwareMetadata?: ImageSoftwareMetadata;
 }
+const Image = /*@__PURE__*/ __L.at(__c10, 0) as any as S.Schema<Image>;
 export interface CreateImportedImageResult {
   Image?: Image & {
     Name: string;
     Applications: (Application & { IconS3Location: S3Location & { S3Bucket: S3Bucket } })[];
   };
 }
+const CreateImportedImageResult = /*@__PURE__*/ __L.at(
+  __c10,
+  1,
+) as any as S.Schema<CreateImportedImageResult>;
 export type StorageConnectorType = "HOMEFOLDERS" | "GOOGLE_DRIVE" | "ONE_DRIVE" | (string & {});
+const StorageConnectorType = S.String;
+
 export type ResourceIdentifier = string;
 export type Domain = string;
 export type DomainList = string[];
+const DomainList = StringList as any as S.Schema<DomainList>;
 export interface StorageConnector {
   ConnectorType?: StorageConnectorType;
   ResourceIdentifier?: string;
   Domains?: string[];
   DomainsRequireAdminConsent?: string[];
 }
+const StorageConnector = /*@__PURE__*/ __L.at(__c10, 2) as any as S.Schema<StorageConnector>;
 export type StorageConnectorList = StorageConnector[];
+const StorageConnectorList = /*@__PURE__*/ __L.at(__c10, 3);
 export type RedirectURL = string;
 export type FeedbackURL = string;
 export type Action =
@@ -908,48 +1180,78 @@ export type Action =
   | "DOMAIN_SMART_CARD_SIGNIN"
   | "AUTO_TIME_ZONE_REDIRECTION"
   | (string & {});
+const Action = S.String;
+
 export type Permission = "ENABLED" | "DISABLED" | (string & {});
+const Permission = S.String;
+
 export interface UserSetting {
   Action?: Action;
   Permission?: Permission;
   MaximumLength?: number;
 }
+const UserSetting = /*@__PURE__*/ __L.at(__c10, 4) as any as S.Schema<UserSetting>;
 export type UserSettingList = UserSetting[];
+const UserSettingList = /*@__PURE__*/ __L.at(__c10, 5);
 export type SettingsGroup = string;
 export interface ApplicationSettings {
   Enabled?: boolean;
   SettingsGroup?: string;
 }
+const ApplicationSettings = /*@__PURE__*/ __L.at(__c10, 6) as any as S.Schema<ApplicationSettings>;
 export type EmbedHostDomain = string;
 export type EmbedHostDomains = string[];
+const EmbedHostDomains = StringList as any as S.Schema<EmbedHostDomains>;
 export type PreferredProtocol = "TCP" | "UDP" | (string & {});
+const PreferredProtocol = S.String;
+
 export interface StreamingExperienceSettings {
   PreferredProtocol?: PreferredProtocol;
 }
+const StreamingExperienceSettings = /*@__PURE__*/ __L.at(
+  __c10,
+  7,
+) as any as S.Schema<StreamingExperienceSettings>;
 export type UrlPattern = string;
 export type UrlPatternList = string[];
+const UrlPatternList = StringList as any as S.Schema<UrlPatternList>;
 export interface UrlRedirectionConfig {
   Enabled?: boolean;
   AllowedUrls?: string[];
   DeniedUrls?: string[];
 }
+const UrlRedirectionConfig = /*@__PURE__*/ __L.at(
+  __c11,
+  0,
+) as any as S.Schema<UrlRedirectionConfig>;
 export interface ContentRedirection {
   HostToClient?: UrlRedirectionConfig;
 }
+const ContentRedirection = /*@__PURE__*/ __L.at(__c11, 1) as any as S.Schema<ContentRedirection>;
 export type AgentAction =
   | "COMPUTER_VISION"
   | "COMPUTER_INPUT"
   | "FORWARD_MCP_TOOLS"
   | (string & {});
+const AgentAction = S.String;
+
 export interface AgentAccessSetting {
   AgentAction?: AgentAction;
   Permission?: Permission;
 }
+const AgentAccessSetting = /*@__PURE__*/ __L.at(__c11, 2) as any as S.Schema<AgentAccessSetting>;
 export type AgentAccessSettingList = AgentAccessSetting[];
+const AgentAccessSettingList = /*@__PURE__*/ __L.at(__c11, 3);
 export type S3BucketArn = string;
 export type ScreenResolution = "W_1280xH_720" | (string & {});
+const ScreenResolution = S.String;
+
 export type ScreenImageFormat = "PNG" | "JPEG" | (string & {});
+const ScreenImageFormat = S.String;
+
 export type UserControlMode = "VIEW_ONLY" | "VIEW_STOP" | "DISABLED" | (string & {});
+const UserControlMode = S.String;
+
 export interface AgentAccessConfig {
   Settings?: AgentAccessSetting[];
   S3BucketArn?: string;
@@ -958,6 +1260,7 @@ export interface AgentAccessConfig {
   ScreenImageFormat?: ScreenImageFormat;
   UserControlMode?: UserControlMode;
 }
+const AgentAccessConfig = /*@__PURE__*/ __L.at(__c11, 4) as any as S.Schema<AgentAccessConfig>;
 export interface CreateStackRequest {
   Name?: string;
   Description?: string;
@@ -974,17 +1277,23 @@ export interface CreateStackRequest {
   ContentRedirection?: ContentRedirection;
   AgentAccessConfig?: AgentAccessConfig;
 }
+const CreateStackRequest = /*@__PURE__*/ __L.at(__c11, 5) as any as S.Schema<CreateStackRequest>;
 export type StackErrorCode = "STORAGE_CONNECTOR_ERROR" | "INTERNAL_SERVICE_ERROR" | (string & {});
 export interface StackError {
   ErrorCode?: StackErrorCode;
   ErrorMessage?: string;
 }
 export type StackErrors = StackError[];
+const StackErrors = FleetErrors as any as S.Schema<StackErrors>;
 export interface ApplicationSettingsResponse {
   Enabled?: boolean;
   SettingsGroup?: string;
   S3BucketName?: string;
 }
+const ApplicationSettingsResponse = /*@__PURE__*/ __L.at(
+  __c11,
+  6,
+) as any as S.Schema<ApplicationSettingsResponse>;
 export interface Stack {
   Arn?: string;
   Name?: string;
@@ -1003,6 +1312,7 @@ export interface Stack {
   ContentRedirection?: ContentRedirection;
   AgentAccessConfig?: AgentAccessConfig;
 }
+const Stack = /*@__PURE__*/ __L.at(__c11, 7) as any as S.Schema<Stack>;
 export interface CreateStackResult {
   Stack?: Stack & {
     Name: string;
@@ -1019,6 +1329,7 @@ export interface CreateStackResult {
     };
   };
 }
+const CreateStackResult = /*@__PURE__*/ __L.at(__c12, 0) as any as S.Schema<CreateStackResult>;
 export type StreamingUrlUserId = string;
 export interface CreateStreamingURLRequest {
   StackName?: string;
@@ -1028,19 +1339,31 @@ export interface CreateStreamingURLRequest {
   Validity?: number;
   SessionContext?: string;
 }
+const CreateStreamingURLRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  1,
+) as any as S.Schema<CreateStreamingURLRequest>;
 export interface CreateStreamingURLResult {
   StreamingURL?: string;
   Expires?: Date;
 }
+const CreateStreamingURLResult = /*@__PURE__*/ __L.at(
+  __c12,
+  2,
+) as any as S.Schema<CreateStreamingURLResult>;
 export type ThemeFooterLinkDisplayName = string;
 export type ThemeFooterLinkURL = string;
 export interface ThemeFooterLink {
   DisplayName?: string;
   FooterLinkURL?: string;
 }
+const ThemeFooterLink = /*@__PURE__*/ __L.at(__c12, 3) as any as S.Schema<ThemeFooterLink>;
 export type ThemeFooterLinks = ThemeFooterLink[];
+const ThemeFooterLinks = /*@__PURE__*/ __L.at(__c12, 4);
 export type ThemeTitleText = string;
 export type ThemeStyling = "LIGHT_BLUE" | "BLUE" | "PINK" | "RED" | (string & {});
+const ThemeStyling = S.String;
+
 export interface CreateThemeForStackRequest {
   StackName?: string;
   FooterLinks?: ThemeFooterLink[];
@@ -1049,7 +1372,13 @@ export interface CreateThemeForStackRequest {
   OrganizationLogoS3Location?: S3Location;
   FaviconS3Location?: S3Location;
 }
+const CreateThemeForStackRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  5,
+) as any as S.Schema<CreateThemeForStackRequest>;
 export type ThemeState = "ENABLED" | "DISABLED" | (string & {});
+const ThemeState = S.String;
+
 export interface Theme {
   StackName?: string;
   State?: ThemeState;
@@ -1060,9 +1389,14 @@ export interface Theme {
   ThemeFaviconURL?: string;
   CreatedTime?: Date;
 }
+const Theme = /*@__PURE__*/ __L.at(__c12, 6) as any as S.Schema<Theme>;
 export interface CreateThemeForStackResult {
   Theme?: Theme;
 }
+const CreateThemeForStackResult = /*@__PURE__*/ __L.at(
+  __c12,
+  7,
+) as any as S.Schema<CreateThemeForStackResult>;
 export interface CreateUpdatedImageRequest {
   existingImageName?: string;
   newImageName?: string;
@@ -1071,6 +1405,10 @@ export interface CreateUpdatedImageRequest {
   newImageTags?: { [key: string]: string | undefined };
   dryRun?: boolean;
 }
+const CreateUpdatedImageRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  0,
+) as any as S.Schema<CreateUpdatedImageRequest>;
 export interface CreateUpdatedImageResult {
   image?: Image & {
     Name: string;
@@ -1078,13 +1416,29 @@ export interface CreateUpdatedImageResult {
   };
   canUpdateImage?: boolean;
 }
+const CreateUpdatedImageResult = /*@__PURE__*/ __L.at(
+  __c13,
+  1,
+) as any as S.Schema<CreateUpdatedImageResult>;
 export interface CreateUsageReportSubscriptionRequest {}
+const CreateUsageReportSubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  2,
+) as any as S.Schema<CreateUsageReportSubscriptionRequest>;
 export type UsageReportSchedule = "DAILY" | (string & {});
+const UsageReportSchedule = S.String;
+
 export interface CreateUsageReportSubscriptionResult {
   S3BucketName?: string;
   Schedule?: UsageReportSchedule;
 }
+const CreateUsageReportSubscriptionResult = /*@__PURE__*/ __L.at(
+  __c13,
+  3,
+) as any as S.Schema<CreateUsageReportSubscriptionResult>;
 export type MessageAction = "SUPPRESS" | "RESEND" | (string & {});
+const MessageAction = S.String;
+
 export type UserAttributeValue = string | redacted.Redacted<string>;
 export interface CreateUserRequest {
   UserName?: string | redacted.Redacted<string>;
@@ -1093,78 +1447,144 @@ export interface CreateUserRequest {
   LastName?: string | redacted.Redacted<string>;
   AuthenticationType?: AuthenticationType;
 }
+const CreateUserRequest = /*@__PURE__*/ __L.at(__c13, 4) as any as S.Schema<CreateUserRequest>;
 export interface CreateUserResult {}
+const CreateUserResult = AssociateFleetResult as any as S.Schema<CreateUserResult>;
 export interface DeleteAppBlockRequest {
   Name?: string;
 }
+const DeleteAppBlockRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  5,
+) as any as S.Schema<DeleteAppBlockRequest>;
 export interface DeleteAppBlockResult {}
+const DeleteAppBlockResult = AssociateFleetResult as any as S.Schema<DeleteAppBlockResult>;
 export interface DeleteAppBlockBuilderRequest {
   Name?: string;
 }
+const DeleteAppBlockBuilderRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  6,
+) as any as S.Schema<DeleteAppBlockBuilderRequest>;
 export interface DeleteAppBlockBuilderResult {}
+const DeleteAppBlockBuilderResult =
+  AssociateFleetResult as any as S.Schema<DeleteAppBlockBuilderResult>;
 export interface DeleteApplicationRequest {
   Name?: string;
 }
+const DeleteApplicationRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  7,
+) as any as S.Schema<DeleteApplicationRequest>;
 export interface DeleteApplicationResult {}
+const DeleteApplicationResult = AssociateFleetResult as any as S.Schema<DeleteApplicationResult>;
 export interface DeleteDirectoryConfigRequest {
   DirectoryName?: string;
 }
+const DeleteDirectoryConfigRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  0,
+) as any as S.Schema<DeleteDirectoryConfigRequest>;
 export interface DeleteDirectoryConfigResult {}
+const DeleteDirectoryConfigResult =
+  AssociateFleetResult as any as S.Schema<DeleteDirectoryConfigResult>;
 export interface DeleteEntitlementRequest {
   Name?: string;
   StackName?: string;
 }
+const DeleteEntitlementRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  1,
+) as any as S.Schema<DeleteEntitlementRequest>;
 export interface DeleteEntitlementResult {}
+const DeleteEntitlementResult = AssociateFleetResult as any as S.Schema<DeleteEntitlementResult>;
 export interface DeleteFleetRequest {
   Name?: string;
 }
+const DeleteFleetRequest = /*@__PURE__*/ __L.at(__c14, 2) as any as S.Schema<DeleteFleetRequest>;
 export interface DeleteFleetResult {}
+const DeleteFleetResult = AssociateFleetResult as any as S.Schema<DeleteFleetResult>;
 export interface DeleteImageRequest {
   Name?: string;
 }
+const DeleteImageRequest = /*@__PURE__*/ __L.at(__c14, 3) as any as S.Schema<DeleteImageRequest>;
 export interface DeleteImageResult {
   Image?: Image & {
     Name: string;
     Applications: (Application & { IconS3Location: S3Location & { S3Bucket: S3Bucket } })[];
   };
 }
+const DeleteImageResult = /*@__PURE__*/ __L.at(__c14, 4) as any as S.Schema<DeleteImageResult>;
 export interface DeleteImageBuilderRequest {
   Name?: string;
 }
+const DeleteImageBuilderRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  5,
+) as any as S.Schema<DeleteImageBuilderRequest>;
 export interface DeleteImageBuilderResult {
   ImageBuilder?: ImageBuilder & {
     Name: string;
     AccessEndpoints: (AccessEndpoint & { EndpointType: AccessEndpointType })[];
   };
 }
+const DeleteImageBuilderResult =
+  CreateImageBuilderResult as any as S.Schema<DeleteImageBuilderResult>;
 export type AwsAccountId = string;
 export interface DeleteImagePermissionsRequest {
   Name?: string;
   SharedAccountId?: string;
 }
+const DeleteImagePermissionsRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  6,
+) as any as S.Schema<DeleteImagePermissionsRequest>;
 export interface DeleteImagePermissionsResult {}
+const DeleteImagePermissionsResult =
+  AssociateFleetResult as any as S.Schema<DeleteImagePermissionsResult>;
 export interface DeleteStackRequest {
   Name?: string;
 }
+const DeleteStackRequest = /*@__PURE__*/ __L.at(__c14, 7) as any as S.Schema<DeleteStackRequest>;
 export interface DeleteStackResult {}
+const DeleteStackResult = AssociateFleetResult as any as S.Schema<DeleteStackResult>;
 export interface DeleteThemeForStackRequest {
   StackName?: string;
 }
+const DeleteThemeForStackRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  0,
+) as any as S.Schema<DeleteThemeForStackRequest>;
 export interface DeleteThemeForStackResult {}
+const DeleteThemeForStackResult =
+  AssociateFleetResult as any as S.Schema<DeleteThemeForStackResult>;
 export interface DeleteUsageReportSubscriptionRequest {}
+const DeleteUsageReportSubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  1,
+) as any as S.Schema<DeleteUsageReportSubscriptionRequest>;
 export interface DeleteUsageReportSubscriptionResult {}
+const DeleteUsageReportSubscriptionResult =
+  AssociateApplicationToEntitlementResult as any as S.Schema<DeleteUsageReportSubscriptionResult>;
 export interface DeleteUserRequest {
   UserName?: string | redacted.Redacted<string>;
   AuthenticationType?: AuthenticationType;
 }
+const DeleteUserRequest = /*@__PURE__*/ __L.at(__c15, 2) as any as S.Schema<DeleteUserRequest>;
 export interface DeleteUserResult {}
+const DeleteUserResult = AssociateFleetResult as any as S.Schema<DeleteUserResult>;
 export interface DescribeAppBlockBuilderAppBlockAssociationsRequest {
   AppBlockArn?: string;
   AppBlockBuilderName?: string;
   MaxResults?: number;
   NextToken?: string;
 }
+const DescribeAppBlockBuilderAppBlockAssociationsRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  3,
+) as any as S.Schema<DescribeAppBlockBuilderAppBlockAssociationsRequest>;
 export type AppBlockBuilderAppBlockAssociationsList = AppBlockBuilderAppBlockAssociation[];
+const AppBlockBuilderAppBlockAssociationsList = /*@__PURE__*/ __L.at(__c15, 4);
 export interface DescribeAppBlockBuilderAppBlockAssociationsResult {
   AppBlockBuilderAppBlockAssociations?: (AppBlockBuilderAppBlockAssociation & {
     AppBlockArn: Arn;
@@ -1172,12 +1592,21 @@ export interface DescribeAppBlockBuilderAppBlockAssociationsResult {
   })[];
   NextToken?: string;
 }
+const DescribeAppBlockBuilderAppBlockAssociationsResult = /*@__PURE__*/ __L.at(
+  __c15,
+  5,
+) as any as S.Schema<DescribeAppBlockBuilderAppBlockAssociationsResult>;
 export interface DescribeAppBlockBuildersRequest {
   Names?: string[];
   NextToken?: string;
   MaxResults?: number;
 }
+const DescribeAppBlockBuildersRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  6,
+) as any as S.Schema<DescribeAppBlockBuildersRequest>;
 export type AppBlockBuilderList = AppBlockBuilder[];
+const AppBlockBuilderList = /*@__PURE__*/ __L.at(__c15, 7);
 export interface DescribeAppBlockBuildersResult {
   AppBlockBuilders?: (AppBlockBuilder & {
     Arn: Arn;
@@ -1190,13 +1619,23 @@ export interface DescribeAppBlockBuildersResult {
   })[];
   NextToken?: string;
 }
+const DescribeAppBlockBuildersResult = /*@__PURE__*/ __L.at(
+  __c16,
+  0,
+) as any as S.Schema<DescribeAppBlockBuildersResult>;
 export type ArnList = string[];
+const ArnList = StringList as any as S.Schema<ArnList>;
 export interface DescribeAppBlocksRequest {
   Arns?: string[];
   NextToken?: string;
   MaxResults?: number;
 }
+const DescribeAppBlocksRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  1,
+) as any as S.Schema<DescribeAppBlocksRequest>;
 export type AppBlocks = AppBlock[];
+const AppBlocks = /*@__PURE__*/ __L.at(__c16, 2);
 export interface DescribeAppBlocksResult {
   AppBlocks?: (AppBlock & {
     Name: string;
@@ -1215,13 +1654,22 @@ export interface DescribeAppBlocksResult {
   })[];
   NextToken?: string;
 }
+const DescribeAppBlocksResult = /*@__PURE__*/ __L.at(
+  __c16,
+  3,
+) as any as S.Schema<DescribeAppBlocksResult>;
 export interface DescribeApplicationFleetAssociationsRequest {
   FleetName?: string;
   ApplicationArn?: string;
   MaxResults?: number;
   NextToken?: string;
 }
+const DescribeApplicationFleetAssociationsRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  4,
+) as any as S.Schema<DescribeApplicationFleetAssociationsRequest>;
 export type ApplicationFleetAssociationList = ApplicationFleetAssociation[];
+const ApplicationFleetAssociationList = /*@__PURE__*/ __L.at(__c16, 5);
 export interface DescribeApplicationFleetAssociationsResult {
   ApplicationFleetAssociations?: (ApplicationFleetAssociation & {
     FleetName: string;
@@ -1229,20 +1677,36 @@ export interface DescribeApplicationFleetAssociationsResult {
   })[];
   NextToken?: string;
 }
+const DescribeApplicationFleetAssociationsResult = /*@__PURE__*/ __L.at(
+  __c16,
+  6,
+) as any as S.Schema<DescribeApplicationFleetAssociationsResult>;
 export interface DescribeApplicationsRequest {
   Arns?: string[];
   NextToken?: string;
   MaxResults?: number;
 }
+const DescribeApplicationsRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  7,
+) as any as S.Schema<DescribeApplicationsRequest>;
 export interface DescribeApplicationsResult {
   Applications?: (Application & { IconS3Location: S3Location & { S3Bucket: S3Bucket } })[];
   NextToken?: string;
 }
+const DescribeApplicationsResult = /*@__PURE__*/ __L.at(
+  __c17,
+  0,
+) as any as S.Schema<DescribeApplicationsResult>;
 export interface DescribeAppLicenseUsageRequest {
   BillingPeriod?: string;
   MaxResults?: number;
   NextToken?: string;
 }
+const DescribeAppLicenseUsageRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  1,
+) as any as S.Schema<DescribeAppLicenseUsageRequest>;
 export interface AdminAppLicenseUsageRecord {
   UserArn?: string;
   BillingPeriod?: string;
@@ -1252,7 +1716,12 @@ export interface AdminAppLicenseUsageRecord {
   LicenseType?: string;
   UserId?: string;
 }
+const AdminAppLicenseUsageRecord = /*@__PURE__*/ __L.at(
+  __c17,
+  2,
+) as any as S.Schema<AdminAppLicenseUsageRecord>;
 export type AdminAppLicenseUsageList = AdminAppLicenseUsageRecord[];
+const AdminAppLicenseUsageList = /*@__PURE__*/ __L.at(__c17, 3);
 export interface DescribeAppLicenseUsageResult {
   AppLicenseUsages?: (AdminAppLicenseUsageRecord & {
     UserArn: string;
@@ -1265,13 +1734,23 @@ export interface DescribeAppLicenseUsageResult {
   })[];
   NextToken?: string;
 }
+const DescribeAppLicenseUsageResult = /*@__PURE__*/ __L.at(
+  __c17,
+  4,
+) as any as S.Schema<DescribeAppLicenseUsageResult>;
 export type DirectoryNameList = string[];
+const DirectoryNameList = StringList as any as S.Schema<DirectoryNameList>;
 export interface DescribeDirectoryConfigsRequest {
   DirectoryNames?: string[];
   MaxResults?: number;
   NextToken?: string;
 }
+const DescribeDirectoryConfigsRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  5,
+) as any as S.Schema<DescribeDirectoryConfigsRequest>;
 export type DirectoryConfigList = DirectoryConfig[];
+const DirectoryConfigList = /*@__PURE__*/ __L.at(__c17, 6);
 export interface DescribeDirectoryConfigsResult {
   DirectoryConfigs?: (DirectoryConfig & {
     DirectoryName: DirectoryName;
@@ -1282,13 +1761,22 @@ export interface DescribeDirectoryConfigsResult {
   })[];
   NextToken?: string;
 }
+const DescribeDirectoryConfigsResult = /*@__PURE__*/ __L.at(
+  __c17,
+  7,
+) as any as S.Schema<DescribeDirectoryConfigsResult>;
 export interface DescribeEntitlementsRequest {
   Name?: string;
   StackName?: string;
   NextToken?: string;
   MaxResults?: number;
 }
+const DescribeEntitlementsRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  0,
+) as any as S.Schema<DescribeEntitlementsRequest>;
 export type EntitlementList = Entitlement[];
+const EntitlementList = /*@__PURE__*/ __L.at(__c18, 1);
 export interface DescribeEntitlementsResult {
   Entitlements?: (Entitlement & {
     Name: Name;
@@ -1298,11 +1786,20 @@ export interface DescribeEntitlementsResult {
   })[];
   NextToken?: string;
 }
+const DescribeEntitlementsResult = /*@__PURE__*/ __L.at(
+  __c18,
+  2,
+) as any as S.Schema<DescribeEntitlementsResult>;
 export interface DescribeFleetsRequest {
   Names?: string[];
   NextToken?: string;
 }
+const DescribeFleetsRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  3,
+) as any as S.Schema<DescribeFleetsRequest>;
 export type FleetList = Fleet[];
+const FleetList = /*@__PURE__*/ __L.at(__c18, 4);
 export interface DescribeFleetsResult {
   Fleets?: (Fleet & {
     Arn: Arn;
@@ -1314,12 +1811,21 @@ export interface DescribeFleetsResult {
   })[];
   NextToken?: string;
 }
+const DescribeFleetsResult = /*@__PURE__*/ __L.at(
+  __c18,
+  5,
+) as any as S.Schema<DescribeFleetsResult>;
 export interface DescribeImageBuildersRequest {
   Names?: string[];
   MaxResults?: number;
   NextToken?: string;
 }
+const DescribeImageBuildersRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  6,
+) as any as S.Schema<DescribeImageBuildersRequest>;
 export type ImageBuilderList = ImageBuilder[];
+const ImageBuilderList = /*@__PURE__*/ __L.at(__c18, 7);
 export interface DescribeImageBuildersResult {
   ImageBuilders?: (ImageBuilder & {
     Name: string;
@@ -1327,19 +1833,33 @@ export interface DescribeImageBuildersResult {
   })[];
   NextToken?: string;
 }
+const DescribeImageBuildersResult = /*@__PURE__*/ __L.at(
+  __c19,
+  0,
+) as any as S.Schema<DescribeImageBuildersResult>;
 export type MaxResults = number;
 export type AwsAccountIdList = string[];
+const AwsAccountIdList = StringList as any as S.Schema<AwsAccountIdList>;
 export interface DescribeImagePermissionsRequest {
   Name?: string;
   MaxResults?: number;
   SharedAwsAccountIds?: string[];
   NextToken?: string;
 }
+const DescribeImagePermissionsRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  1,
+) as any as S.Schema<DescribeImagePermissionsRequest>;
 export interface SharedImagePermissions {
   sharedAccountId?: string;
   imagePermissions?: ImagePermissions;
 }
+const SharedImagePermissions = /*@__PURE__*/ __L.at(
+  __c19,
+  2,
+) as any as S.Schema<SharedImagePermissions>;
 export type SharedImagePermissionsList = SharedImagePermissions[];
+const SharedImagePermissionsList = /*@__PURE__*/ __L.at(__c19, 3);
 export interface DescribeImagePermissionsResult {
   Name?: string;
   SharedImagePermissionsList?: (SharedImagePermissions & {
@@ -1348,6 +1868,10 @@ export interface DescribeImagePermissionsResult {
   })[];
   NextToken?: string;
 }
+const DescribeImagePermissionsResult = /*@__PURE__*/ __L.at(
+  __c19,
+  4,
+) as any as S.Schema<DescribeImagePermissionsResult>;
 export type DescribeImagesMaxResults = number;
 export interface DescribeImagesRequest {
   Names?: string[];
@@ -1356,7 +1880,12 @@ export interface DescribeImagesRequest {
   NextToken?: string;
   MaxResults?: number;
 }
+const DescribeImagesRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  5,
+) as any as S.Schema<DescribeImagesRequest>;
 export type ImageList = Image[];
+const ImageList = /*@__PURE__*/ __L.at(__c19, 6);
 export interface DescribeImagesResult {
   Images?: (Image & {
     Name: string;
@@ -1364,6 +1893,10 @@ export interface DescribeImagesResult {
   })[];
   NextToken?: string;
 }
+const DescribeImagesResult = /*@__PURE__*/ __L.at(
+  __c19,
+  7,
+) as any as S.Schema<DescribeImagesResult>;
 export type UserId = string;
 export interface DescribeSessionsRequest {
   StackName?: string;
@@ -1374,9 +1907,19 @@ export interface DescribeSessionsRequest {
   AuthenticationType?: AuthenticationType;
   InstanceId?: string;
 }
+const DescribeSessionsRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  0,
+) as any as S.Schema<DescribeSessionsRequest>;
 export type SessionState = "ACTIVE" | "PENDING" | "EXPIRED" | (string & {});
+const SessionState = S.String;
+
 export type SessionConnectionState = "CONNECTED" | "NOT_CONNECTED" | (string & {});
+const SessionConnectionState = S.String;
+
 export type InstanceDrainStatus = "ACTIVE" | "DRAINING" | "NOT_APPLICABLE" | (string & {});
+const InstanceDrainStatus = S.String;
+
 export interface Session {
   Id?: string;
   UserId?: string;
@@ -1391,7 +1934,9 @@ export interface Session {
   InstanceId?: string;
   InstanceDrainStatus?: InstanceDrainStatus;
 }
+const Session = /*@__PURE__*/ __L.at(__c20, 1) as any as S.Schema<Session>;
 export type SessionList = Session[];
+const SessionList = /*@__PURE__*/ __L.at(__c20, 2);
 export interface DescribeSessionsResult {
   Sessions?: (Session & {
     Id: string;
@@ -1402,11 +1947,19 @@ export interface DescribeSessionsResult {
   })[];
   NextToken?: string;
 }
+const DescribeSessionsResult = /*@__PURE__*/ __L.at(
+  __c20,
+  3,
+) as any as S.Schema<DescribeSessionsResult>;
 export interface DescribeSoftwareAssociationsRequest {
   AssociatedResource?: string;
   MaxResults?: number;
   NextToken?: string;
 }
+const DescribeSoftwareAssociationsRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  4,
+) as any as S.Schema<DescribeSoftwareAssociationsRequest>;
 export type SoftwareDeploymentStatus =
   | "STAGED_FOR_INSTALLATION"
   | "PENDING_INSTALLATION"
@@ -1416,22 +1969,38 @@ export type SoftwareDeploymentStatus =
   | "FAILED_TO_INSTALL"
   | "FAILED_TO_UNINSTALL"
   | (string & {});
+const SoftwareDeploymentStatus = S.String;
+
 export interface SoftwareAssociations {
   SoftwareName?: string;
   Status?: SoftwareDeploymentStatus;
   DeploymentError?: ErrorDetails[];
 }
+const SoftwareAssociations = /*@__PURE__*/ __L.at(
+  __c20,
+  5,
+) as any as S.Schema<SoftwareAssociations>;
 export type SoftwareAssociationsList = SoftwareAssociations[];
+const SoftwareAssociationsList = /*@__PURE__*/ __L.at(__c20, 6);
 export interface DescribeSoftwareAssociationsResult {
   AssociatedResource?: string;
   SoftwareAssociations?: SoftwareAssociations[];
   NextToken?: string;
 }
+const DescribeSoftwareAssociationsResult = /*@__PURE__*/ __L.at(
+  __c20,
+  7,
+) as any as S.Schema<DescribeSoftwareAssociationsResult>;
 export interface DescribeStacksRequest {
   Names?: string[];
   NextToken?: string;
 }
+const DescribeStacksRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  0,
+) as any as S.Schema<DescribeStacksRequest>;
 export type StackList = Stack[];
+const StackList = /*@__PURE__*/ __L.at(__c21, 1);
 export interface DescribeStacksResult {
   Stacks?: (Stack & {
     Name: string;
@@ -1449,42 +2018,76 @@ export interface DescribeStacksResult {
   })[];
   NextToken?: string;
 }
+const DescribeStacksResult = /*@__PURE__*/ __L.at(
+  __c21,
+  2,
+) as any as S.Schema<DescribeStacksResult>;
 export interface DescribeThemeForStackRequest {
   StackName?: string;
 }
+const DescribeThemeForStackRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  3,
+) as any as S.Schema<DescribeThemeForStackRequest>;
 export interface DescribeThemeForStackResult {
   Theme?: Theme;
 }
+const DescribeThemeForStackResult =
+  CreateThemeForStackResult as any as S.Schema<DescribeThemeForStackResult>;
 export interface DescribeUsageReportSubscriptionsRequest {
   MaxResults?: number;
   NextToken?: string;
 }
+const DescribeUsageReportSubscriptionsRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  4,
+) as any as S.Schema<DescribeUsageReportSubscriptionsRequest>;
 export type UsageReportExecutionErrorCode =
   | "RESOURCE_NOT_FOUND"
   | "ACCESS_DENIED"
   | "INTERNAL_SERVICE_ERROR"
   | (string & {});
+const UsageReportExecutionErrorCode = S.String;
+
 export interface LastReportGenerationExecutionError {
   ErrorCode?: UsageReportExecutionErrorCode;
   ErrorMessage?: string;
 }
+const LastReportGenerationExecutionError = /*@__PURE__*/ __L.at(
+  __c21,
+  5,
+) as any as S.Schema<LastReportGenerationExecutionError>;
 export type LastReportGenerationExecutionErrors = LastReportGenerationExecutionError[];
+const LastReportGenerationExecutionErrors = /*@__PURE__*/ __L.at(__c21, 6);
 export interface UsageReportSubscription {
   S3BucketName?: string;
   Schedule?: UsageReportSchedule;
   LastGeneratedReportDate?: Date;
   SubscriptionErrors?: LastReportGenerationExecutionError[];
 }
+const UsageReportSubscription = /*@__PURE__*/ __L.at(
+  __c21,
+  7,
+) as any as S.Schema<UsageReportSubscription>;
 export type UsageReportSubscriptionList = UsageReportSubscription[];
+const UsageReportSubscriptionList = /*@__PURE__*/ __L.at(__c22, 0);
 export interface DescribeUsageReportSubscriptionsResult {
   UsageReportSubscriptions?: UsageReportSubscription[];
   NextToken?: string;
 }
+const DescribeUsageReportSubscriptionsResult = /*@__PURE__*/ __L.at(
+  __c22,
+  1,
+) as any as S.Schema<DescribeUsageReportSubscriptionsResult>;
 export interface DescribeUsersRequest {
   AuthenticationType?: AuthenticationType;
   MaxResults?: number;
   NextToken?: string;
 }
+const DescribeUsersRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  2,
+) as any as S.Schema<DescribeUsersRequest>;
 export interface User {
   Arn?: string;
   UserName?: string | redacted.Redacted<string>;
@@ -1495,11 +2098,14 @@ export interface User {
   CreatedTime?: Date;
   AuthenticationType?: AuthenticationType;
 }
+const User = /*@__PURE__*/ __L.at(__c22, 3) as any as S.Schema<User>;
 export type UserList = User[];
+const UserList = /*@__PURE__*/ __L.at(__c22, 4);
 export interface DescribeUsersResult {
   Users?: (User & { AuthenticationType: AuthenticationType })[];
   NextToken?: string;
 }
+const DescribeUsersResult = /*@__PURE__*/ __L.at(__c22, 5) as any as S.Schema<DescribeUsersResult>;
 export interface DescribeUserStackAssociationsRequest {
   StackName?: string;
   UserName?: string | redacted.Redacted<string>;
@@ -1507,6 +2113,10 @@ export interface DescribeUserStackAssociationsRequest {
   MaxResults?: number;
   NextToken?: string;
 }
+const DescribeUserStackAssociationsRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  6,
+) as any as S.Schema<DescribeUserStackAssociationsRequest>;
 export interface DescribeUserStackAssociationsResult {
   UserStackAssociations?: (UserStackAssociation & {
     StackName: string;
@@ -1515,53 +2125,105 @@ export interface DescribeUserStackAssociationsResult {
   })[];
   NextToken?: string;
 }
+const DescribeUserStackAssociationsResult = /*@__PURE__*/ __L.at(
+  __c22,
+  7,
+) as any as S.Schema<DescribeUserStackAssociationsResult>;
 export interface DisableUserRequest {
   UserName?: string | redacted.Redacted<string>;
   AuthenticationType?: AuthenticationType;
 }
+const DisableUserRequest = /*@__PURE__*/ __L.at(__c23, 0) as any as S.Schema<DisableUserRequest>;
 export interface DisableUserResult {}
+const DisableUserResult = AssociateFleetResult as any as S.Schema<DisableUserResult>;
 export interface DisassociateAppBlockBuilderAppBlockRequest {
   AppBlockArn?: string;
   AppBlockBuilderName?: string;
 }
+const DisassociateAppBlockBuilderAppBlockRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  1,
+) as any as S.Schema<DisassociateAppBlockBuilderAppBlockRequest>;
 export interface DisassociateAppBlockBuilderAppBlockResult {}
+const DisassociateAppBlockBuilderAppBlockResult =
+  AssociateApplicationToEntitlementResult as any as S.Schema<DisassociateAppBlockBuilderAppBlockResult>;
 export interface DisassociateApplicationFleetRequest {
   FleetName?: string;
   ApplicationArn?: string;
 }
+const DisassociateApplicationFleetRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  2,
+) as any as S.Schema<DisassociateApplicationFleetRequest>;
 export interface DisassociateApplicationFleetResult {}
+const DisassociateApplicationFleetResult =
+  AssociateApplicationToEntitlementResult as any as S.Schema<DisassociateApplicationFleetResult>;
 export interface DisassociateApplicationFromEntitlementRequest {
   StackName?: string;
   EntitlementName?: string;
   ApplicationIdentifier?: string;
 }
+const DisassociateApplicationFromEntitlementRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  3,
+) as any as S.Schema<DisassociateApplicationFromEntitlementRequest>;
 export interface DisassociateApplicationFromEntitlementResult {}
+const DisassociateApplicationFromEntitlementResult =
+  AssociateApplicationToEntitlementResult as any as S.Schema<DisassociateApplicationFromEntitlementResult>;
 export interface DisassociateFleetRequest {
   FleetName?: string;
   StackName?: string;
 }
+const DisassociateFleetRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  4,
+) as any as S.Schema<DisassociateFleetRequest>;
 export interface DisassociateFleetResult {}
+const DisassociateFleetResult = AssociateFleetResult as any as S.Schema<DisassociateFleetResult>;
 export interface DisassociateSoftwareFromImageBuilderRequest {
   ImageBuilderName?: string;
   SoftwareNames?: string[];
 }
+const DisassociateSoftwareFromImageBuilderRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  5,
+) as any as S.Schema<DisassociateSoftwareFromImageBuilderRequest>;
 export interface DisassociateSoftwareFromImageBuilderResult {}
+const DisassociateSoftwareFromImageBuilderResult =
+  AssociateApplicationToEntitlementResult as any as S.Schema<DisassociateSoftwareFromImageBuilderResult>;
 export interface DrainSessionInstanceRequest {
   SessionId?: string;
 }
+const DrainSessionInstanceRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  6,
+) as any as S.Schema<DrainSessionInstanceRequest>;
 export interface DrainSessionInstanceResult {}
+const DrainSessionInstanceResult =
+  AssociateFleetResult as any as S.Schema<DrainSessionInstanceResult>;
 export interface EnableUserRequest {
   UserName?: string | redacted.Redacted<string>;
   AuthenticationType?: AuthenticationType;
 }
+const EnableUserRequest = /*@__PURE__*/ __L.at(__c23, 7) as any as S.Schema<EnableUserRequest>;
 export interface EnableUserResult {}
+const EnableUserResult = AssociateFleetResult as any as S.Schema<EnableUserResult>;
 export interface ExpireSessionRequest {
   SessionId?: string;
 }
+const ExpireSessionRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  0,
+) as any as S.Schema<ExpireSessionRequest>;
 export interface ExpireSessionResult {}
+const ExpireSessionResult = AssociateFleetResult as any as S.Schema<ExpireSessionResult>;
 export interface GetExportImageTaskRequest {
   TaskId?: string;
 }
+const GetExportImageTaskRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  1,
+) as any as S.Schema<GetExportImageTaskRequest>;
 export interface GetExportImageTaskResult {
   ExportImageTask?: ExportImageTask & {
     TaskId: UUID;
@@ -1570,50 +2232,86 @@ export interface GetExportImageTaskResult {
     CreatedDate: Date;
   };
 }
+const GetExportImageTaskResult = /*@__PURE__*/ __L.at(
+  __c24,
+  2,
+) as any as S.Schema<GetExportImageTaskResult>;
 export interface ListAssociatedFleetsRequest {
   StackName?: string;
   NextToken?: string;
 }
+const ListAssociatedFleetsRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  3,
+) as any as S.Schema<ListAssociatedFleetsRequest>;
 export interface ListAssociatedFleetsResult {
   Names?: string[];
   NextToken?: string;
 }
+const ListAssociatedFleetsResult = /*@__PURE__*/ __L.at(
+  __c24,
+  4,
+) as any as S.Schema<ListAssociatedFleetsResult>;
 export interface ListAssociatedStacksRequest {
   FleetName?: string;
   NextToken?: string;
 }
+const ListAssociatedStacksRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  5,
+) as any as S.Schema<ListAssociatedStacksRequest>;
 export interface ListAssociatedStacksResult {
   Names?: string[];
   NextToken?: string;
 }
+const ListAssociatedStacksResult =
+  ListAssociatedFleetsResult as any as S.Schema<ListAssociatedStacksResult>;
 export interface ListEntitledApplicationsRequest {
   StackName?: string;
   EntitlementName?: string;
   NextToken?: string;
   MaxResults?: number;
 }
+const ListEntitledApplicationsRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  6,
+) as any as S.Schema<ListEntitledApplicationsRequest>;
 export interface EntitledApplication {
   ApplicationIdentifier?: string;
 }
+const EntitledApplication = /*@__PURE__*/ __L.at(__c24, 7) as any as S.Schema<EntitledApplication>;
 export type EntitledApplicationList = EntitledApplication[];
+const EntitledApplicationList = /*@__PURE__*/ __L.at(__c25, 0);
 export interface ListEntitledApplicationsResult {
   EntitledApplications?: (EntitledApplication & { ApplicationIdentifier: string })[];
   NextToken?: string;
 }
+const ListEntitledApplicationsResult = /*@__PURE__*/ __L.at(
+  __c25,
+  1,
+) as any as S.Schema<ListEntitledApplicationsResult>;
 export type FilterName = string;
 export type FilterValue = string;
 export type FilterValues = string[];
+const FilterValues = StringList as any as S.Schema<FilterValues>;
 export interface Filter {
   Name?: string;
   Values?: string[];
 }
+const Filter = /*@__PURE__*/ __L.at(__c25, 2) as any as S.Schema<Filter>;
 export type Filters = Filter[];
+const Filters = /*@__PURE__*/ __L.at(__c25, 3);
 export interface ListExportImageTasksRequest {
   Filters?: Filter[];
   MaxResults?: number;
   NextToken?: string;
 }
+const ListExportImageTasksRequest = /*@__PURE__*/ __L.at(
+  __c25,
+  4,
+) as any as S.Schema<ListExportImageTasksRequest>;
 export type ExportImageTasks = ExportImageTask[];
+const ExportImageTasks = /*@__PURE__*/ __L.at(__c25, 5);
 export interface ListExportImageTasksResult {
   ExportImageTasks?: (ExportImageTask & {
     TaskId: UUID;
@@ -1623,15 +2321,31 @@ export interface ListExportImageTasksResult {
   })[];
   NextToken?: string;
 }
+const ListExportImageTasksResult = /*@__PURE__*/ __L.at(
+  __c25,
+  6,
+) as any as S.Schema<ListExportImageTasksResult>;
 export interface ListTagsForResourceRequest {
   ResourceArn?: string;
 }
+const ListTagsForResourceRequest = /*@__PURE__*/ __L.at(
+  __c25,
+  7,
+) as any as S.Schema<ListTagsForResourceRequest>;
 export interface ListTagsForResourceResponse {
   Tags?: { [key: string]: string | undefined };
 }
+const ListTagsForResourceResponse = /*@__PURE__*/ __L.at(
+  __c26,
+  0,
+) as any as S.Schema<ListTagsForResourceResponse>;
 export interface StartAppBlockBuilderRequest {
   Name?: string;
 }
+const StartAppBlockBuilderRequest = /*@__PURE__*/ __L.at(
+  __c26,
+  1,
+) as any as S.Schema<StartAppBlockBuilderRequest>;
 export interface StartAppBlockBuilderResult {
   AppBlockBuilder?: AppBlockBuilder & {
     Arn: Arn;
@@ -1643,28 +2357,48 @@ export interface StartAppBlockBuilderResult {
     AccessEndpoints: (AccessEndpoint & { EndpointType: AccessEndpointType })[];
   };
 }
+const StartAppBlockBuilderResult =
+  CreateAppBlockBuilderResult as any as S.Schema<StartAppBlockBuilderResult>;
 export interface StartFleetRequest {
   Name?: string;
 }
+const StartFleetRequest = /*@__PURE__*/ __L.at(__c26, 2) as any as S.Schema<StartFleetRequest>;
 export interface StartFleetResult {}
+const StartFleetResult = AssociateFleetResult as any as S.Schema<StartFleetResult>;
 export interface StartImageBuilderRequest {
   Name?: string;
   AppstreamAgentVersion?: string;
 }
+const StartImageBuilderRequest = /*@__PURE__*/ __L.at(
+  __c26,
+  3,
+) as any as S.Schema<StartImageBuilderRequest>;
 export interface StartImageBuilderResult {
   ImageBuilder?: ImageBuilder & {
     Name: string;
     AccessEndpoints: (AccessEndpoint & { EndpointType: AccessEndpointType })[];
   };
 }
+const StartImageBuilderResult =
+  CreateImageBuilderResult as any as S.Schema<StartImageBuilderResult>;
 export interface StartSoftwareDeploymentToImageBuilderRequest {
   ImageBuilderName?: string;
   RetryFailedDeployments?: boolean;
 }
+const StartSoftwareDeploymentToImageBuilderRequest = /*@__PURE__*/ __L.at(
+  __c26,
+  4,
+) as any as S.Schema<StartSoftwareDeploymentToImageBuilderRequest>;
 export interface StartSoftwareDeploymentToImageBuilderResult {}
+const StartSoftwareDeploymentToImageBuilderResult =
+  AssociateApplicationToEntitlementResult as any as S.Schema<StartSoftwareDeploymentToImageBuilderResult>;
 export interface StopAppBlockBuilderRequest {
   Name?: string;
 }
+const StopAppBlockBuilderRequest = /*@__PURE__*/ __L.at(
+  __c26,
+  5,
+) as any as S.Schema<StopAppBlockBuilderRequest>;
 export interface StopAppBlockBuilderResult {
   AppBlockBuilder?: AppBlockBuilder & {
     Arn: Arn;
@@ -1676,36 +2410,54 @@ export interface StopAppBlockBuilderResult {
     AccessEndpoints: (AccessEndpoint & { EndpointType: AccessEndpointType })[];
   };
 }
+const StopAppBlockBuilderResult =
+  CreateAppBlockBuilderResult as any as S.Schema<StopAppBlockBuilderResult>;
 export interface StopFleetRequest {
   Name?: string;
 }
+const StopFleetRequest = /*@__PURE__*/ __L.at(__c26, 6) as any as S.Schema<StopFleetRequest>;
 export interface StopFleetResult {}
+const StopFleetResult = AssociateFleetResult as any as S.Schema<StopFleetResult>;
 export interface StopImageBuilderRequest {
   Name?: string;
 }
+const StopImageBuilderRequest = /*@__PURE__*/ __L.at(
+  __c26,
+  7,
+) as any as S.Schema<StopImageBuilderRequest>;
 export interface StopImageBuilderResult {
   ImageBuilder?: ImageBuilder & {
     Name: string;
     AccessEndpoints: (AccessEndpoint & { EndpointType: AccessEndpointType })[];
   };
 }
+const StopImageBuilderResult = CreateImageBuilderResult as any as S.Schema<StopImageBuilderResult>;
 export interface TagResourceRequest {
   ResourceArn?: string;
   Tags?: { [key: string]: string | undefined };
 }
+const TagResourceRequest = /*@__PURE__*/ __L.at(__c27, 0) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
+const TagResourceResponse = AssociateFleetResult as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
+const TagKeyList = StringList as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   ResourceArn?: string;
   TagKeys?: string[];
 }
+const UntagResourceRequest = /*@__PURE__*/ __L.at(
+  __c27,
+  1,
+) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
+const UntagResourceResponse = AssociateFleetResult as any as S.Schema<UntagResourceResponse>;
 export type AppBlockBuilderAttribute =
   | "IAM_ROLE_ARN"
   | "ACCESS_ENDPOINTS"
   | "VPC_CONFIGURATION_SECURITY_GROUP_IDS"
   | (string & {});
 export type AppBlockBuilderAttributes = AppBlockBuilderAttribute[];
+const AppBlockBuilderAttributes = Platforms as any as S.Schema<AppBlockBuilderAttributes>;
 export interface UpdateAppBlockBuilderRequest {
   Name?: string;
   Description?: string;
@@ -1719,6 +2471,10 @@ export interface UpdateAppBlockBuilderRequest {
   AttributesToDelete?: AppBlockBuilderAttribute[];
   DisableIMDSV1?: boolean;
 }
+const UpdateAppBlockBuilderRequest = /*@__PURE__*/ __L.at(
+  __c27,
+  2,
+) as any as S.Schema<UpdateAppBlockBuilderRequest>;
 export interface UpdateAppBlockBuilderResult {
   AppBlockBuilder?: AppBlockBuilder & {
     Arn: Arn;
@@ -1730,8 +2486,11 @@ export interface UpdateAppBlockBuilderResult {
     AccessEndpoints: (AccessEndpoint & { EndpointType: AccessEndpointType })[];
   };
 }
+const UpdateAppBlockBuilderResult =
+  CreateAppBlockBuilderResult as any as S.Schema<UpdateAppBlockBuilderResult>;
 export type ApplicationAttribute = "LAUNCH_PARAMETERS" | "WORKING_DIRECTORY" | (string & {});
 export type ApplicationAttributes = ApplicationAttribute[];
+const ApplicationAttributes = Platforms as any as S.Schema<ApplicationAttributes>;
 export interface UpdateApplicationRequest {
   Name?: string;
   DisplayName?: string;
@@ -1743,15 +2502,24 @@ export interface UpdateApplicationRequest {
   AppBlockArn?: string;
   AttributesToDelete?: ApplicationAttribute[];
 }
+const UpdateApplicationRequest = /*@__PURE__*/ __L.at(
+  __c27,
+  3,
+) as any as S.Schema<UpdateApplicationRequest>;
 export interface UpdateApplicationResult {
   Application?: Application & { IconS3Location: S3Location & { S3Bucket: S3Bucket } };
 }
+const UpdateApplicationResult = CreateApplicationResult as any as S.Schema<UpdateApplicationResult>;
 export interface UpdateDirectoryConfigRequest {
   DirectoryName?: string;
   OrganizationalUnitDistinguishedNames?: string[];
   ServiceAccountCredentials?: ServiceAccountCredentials;
   CertificateBasedAuthProperties?: CertificateBasedAuthProperties;
 }
+const UpdateDirectoryConfigRequest = /*@__PURE__*/ __L.at(
+  __c27,
+  4,
+) as any as S.Schema<UpdateDirectoryConfigRequest>;
 export interface UpdateDirectoryConfigResult {
   DirectoryConfig?: DirectoryConfig & {
     DirectoryName: DirectoryName;
@@ -1761,6 +2529,8 @@ export interface UpdateDirectoryConfigResult {
     };
   };
 }
+const UpdateDirectoryConfigResult =
+  CreateDirectoryConfigResult as any as S.Schema<UpdateDirectoryConfigResult>;
 export interface UpdateEntitlementRequest {
   Name?: string;
   StackName?: string;
@@ -1768,6 +2538,10 @@ export interface UpdateEntitlementRequest {
   AppVisibility?: AppVisibility;
   Attributes?: EntitlementAttribute[];
 }
+const UpdateEntitlementRequest = /*@__PURE__*/ __L.at(
+  __c27,
+  5,
+) as any as S.Schema<UpdateEntitlementRequest>;
 export interface UpdateEntitlementResult {
   Entitlement?: Entitlement & {
     Name: Name;
@@ -1776,6 +2550,7 @@ export interface UpdateEntitlementResult {
     Attributes: (EntitlementAttribute & { Name: string; Value: string })[];
   };
 }
+const UpdateEntitlementResult = CreateEntitlementResult as any as S.Schema<UpdateEntitlementResult>;
 export type FleetAttribute =
   | "VPC_CONFIGURATION"
   | "VPC_CONFIGURATION_SECURITY_GROUP_IDS"
@@ -1787,6 +2562,7 @@ export type FleetAttribute =
   | "VOLUME_CONFIGURATION"
   | (string & {});
 export type FleetAttributes = FleetAttribute[];
+const FleetAttributes = Platforms as any as S.Schema<FleetAttributes>;
 export interface UpdateFleetRequest {
   ImageName?: string;
   ImageArn?: string;
@@ -1813,6 +2589,7 @@ export interface UpdateFleetRequest {
   RootVolumeConfig?: VolumeConfig;
   DisableIMDSV1?: boolean;
 }
+const UpdateFleetRequest = /*@__PURE__*/ __L.at(__c27, 6) as any as S.Schema<UpdateFleetRequest>;
 export interface UpdateFleetResult {
   Fleet?: Fleet & {
     Arn: Arn;
@@ -1823,12 +2600,19 @@ export interface UpdateFleetResult {
     SessionScriptS3Location: S3Location & { S3Bucket: S3Bucket };
   };
 }
+const UpdateFleetResult = CreateFleetResult as any as S.Schema<UpdateFleetResult>;
 export interface UpdateImagePermissionsRequest {
   Name?: string;
   SharedAccountId?: string;
   ImagePermissions?: ImagePermissions;
 }
+const UpdateImagePermissionsRequest = /*@__PURE__*/ __L.at(
+  __c27,
+  7,
+) as any as S.Schema<UpdateImagePermissionsRequest>;
 export interface UpdateImagePermissionsResult {}
+const UpdateImagePermissionsResult =
+  AssociateFleetResult as any as S.Schema<UpdateImagePermissionsResult>;
 export type StackAttribute =
   | "STORAGE_CONNECTORS"
   | "STORAGE_CONNECTOR_HOMEFOLDERS"
@@ -1846,6 +2630,7 @@ export type StackAttribute =
   | "AGENT_ACCESS_CONFIG"
   | (string & {});
 export type StackAttributes = StackAttribute[];
+const StackAttributes = Platforms as any as S.Schema<StackAttributes>;
 export interface AgentAccessConfigForUpdate {
   Settings?: AgentAccessSetting[];
   S3BucketArn?: string;
@@ -1854,6 +2639,10 @@ export interface AgentAccessConfigForUpdate {
   ScreenImageFormat?: ScreenImageFormat;
   UserControlMode?: UserControlMode;
 }
+const AgentAccessConfigForUpdate = /*@__PURE__*/ __L.at(
+  __c28,
+  0,
+) as any as S.Schema<AgentAccessConfigForUpdate>;
 export interface UpdateStackRequest {
   DisplayName?: string;
   Description?: string;
@@ -1871,6 +2660,7 @@ export interface UpdateStackRequest {
   ContentRedirection?: ContentRedirection;
   AgentAccessConfig?: AgentAccessConfigForUpdate;
 }
+const UpdateStackRequest = /*@__PURE__*/ __L.at(__c28, 1) as any as S.Schema<UpdateStackRequest>;
 export interface UpdateStackResult {
   Stack?: Stack & {
     Name: string;
@@ -1887,8 +2677,10 @@ export interface UpdateStackResult {
     };
   };
 }
+const UpdateStackResult = CreateStackResult as any as S.Schema<UpdateStackResult>;
 export type ThemeAttribute = "FOOTER_LINKS" | (string & {});
 export type ThemeAttributes = ThemeAttribute[];
+const ThemeAttributes = Platforms as any as S.Schema<ThemeAttributes>;
 export interface UpdateThemeForStackRequest {
   StackName?: string;
   FooterLinks?: ThemeFooterLink[];
@@ -1899,9 +2691,15 @@ export interface UpdateThemeForStackRequest {
   State?: ThemeState;
   AttributesToDelete?: ThemeAttribute[];
 }
+const UpdateThemeForStackRequest = /*@__PURE__*/ __L.at(
+  __c28,
+  2,
+) as any as S.Schema<UpdateThemeForStackRequest>;
 export interface UpdateThemeForStackResult {
   Theme?: Theme;
 }
+const UpdateThemeForStackResult =
+  CreateThemeForStackResult as any as S.Schema<UpdateThemeForStackResult>;
 export type ErrorMessage = string;
 export type AssociateAppBlockBuilderAppBlockError =
   | ConcurrentModificationException
@@ -1919,8 +2717,8 @@ export const associateAppBlockBuilderAppBlock: API.OperationMethod<
   AssociateAppBlockBuilderAppBlockError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<AssociateAppBlockBuilderAppBlockRequest>,
-  output: __S(2) as any as S.Schema<AssociateAppBlockBuilderAppBlockResult>,
+  input: AssociateAppBlockBuilderAppBlockRequest,
+  output: AssociateAppBlockBuilderAppBlockResult,
   errors: [
     ConcurrentModificationException,
     InvalidParameterCombinationException,
@@ -1949,8 +2747,8 @@ export const associateApplicationFleet: API.OperationMethod<
   AssociateApplicationFleetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3) as any as S.Schema<AssociateApplicationFleetRequest>,
-  output: __S(5) as any as S.Schema<AssociateApplicationFleetResult>,
+  input: AssociateApplicationFleetRequest,
+  output: AssociateApplicationFleetResult,
   errors: [
     ConcurrentModificationException,
     InvalidParameterCombinationException,
@@ -1978,8 +2776,8 @@ export const associateApplicationToEntitlement: API.OperationMethod<
   AssociateApplicationToEntitlementError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6) as any as S.Schema<AssociateApplicationToEntitlementRequest>,
-  output: __S(7) as any as S.Schema<AssociateApplicationToEntitlementResult>,
+  input: AssociateApplicationToEntitlementRequest,
+  output: AssociateApplicationToEntitlementResult,
   errors: [
     EntitlementNotFoundException,
     LimitExceededException,
@@ -2008,8 +2806,8 @@ export const associateFleet: API.OperationMethod<
   AssociateFleetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8) as any as S.Schema<AssociateFleetRequest>,
-  output: __S(9) as any as S.Schema<AssociateFleetResult>,
+  input: AssociateFleetRequest,
+  output: AssociateFleetResult,
   errors: [
     ConcurrentModificationException,
     IncompatibleImageException,
@@ -2039,8 +2837,8 @@ export const associateSoftwareToImageBuilder: API.OperationMethod<
   AssociateSoftwareToImageBuilderError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11) as any as S.Schema<AssociateSoftwareToImageBuilderRequest>,
-  output: __S(7) as any as S.Schema<AssociateSoftwareToImageBuilderResult>,
+  input: AssociateSoftwareToImageBuilderRequest,
+  output: AssociateSoftwareToImageBuilderResult,
   errors: [
     ConcurrentModificationException,
     IncompatibleImageException,
@@ -2066,8 +2864,8 @@ export const batchAssociateUserStack: API.OperationMethod<
   BatchAssociateUserStackError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14) as any as S.Schema<BatchAssociateUserStackRequest>,
-  output: __S(17) as any as S.Schema<BatchAssociateUserStackResult>,
+  input: BatchAssociateUserStackRequest,
+  output: BatchAssociateUserStackResult,
   errors: [InvalidParameterCombinationException, OperationNotPermittedException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2087,8 +2885,8 @@ export const batchDisassociateUserStack: API.OperationMethod<
   BatchDisassociateUserStackError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18) as any as S.Schema<BatchDisassociateUserStackRequest>,
-  output: __S(17) as any as S.Schema<BatchDisassociateUserStackResult>,
+  input: BatchDisassociateUserStackRequest,
+  output: BatchDisassociateUserStackResult,
   errors: [InvalidParameterCombinationException, OperationNotPermittedException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2112,8 +2910,8 @@ export const copyImage: API.OperationMethod<
   CopyImageError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19) as any as S.Schema<CopyImageRequest>,
-  output: __S(20) as any as S.Schema<CopyImageResponse>,
+  input: CopyImageRequest,
+  output: CopyImageResponse,
   errors: [
     IncompatibleImageException,
     InvalidAccountStatusException,
@@ -2150,8 +2948,8 @@ export const createAppBlock: API.OperationMethod<
   CreateAppBlockError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24) as any as S.Schema<CreateAppBlockRequest>,
-  output: __S(28) as any as S.Schema<CreateAppBlockResult>,
+  input: CreateAppBlockRequest,
+  output: CreateAppBlockResult,
   errors: [
     ConcurrentModificationException,
     LimitExceededException,
@@ -2184,8 +2982,8 @@ export const createAppBlockBuilder: API.OperationMethod<
   CreateAppBlockBuilderError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32) as any as S.Schema<CreateAppBlockBuilderRequest>,
-  output: __S(37) as any as S.Schema<CreateAppBlockBuilderResult>,
+  input: CreateAppBlockBuilderRequest,
+  output: CreateAppBlockBuilderResult,
   errors: [
     ConcurrentModificationException,
     InvalidAccountStatusException,
@@ -2216,8 +3014,8 @@ export const createAppBlockBuilderStreamingURL: API.OperationMethod<
   CreateAppBlockBuilderStreamingURLError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38) as any as S.Schema<CreateAppBlockBuilderStreamingURLRequest>,
-  output: __S(39) as any as S.Schema<CreateAppBlockBuilderStreamingURLResult>,
+  input: CreateAppBlockBuilderStreamingURLRequest,
+  output: CreateAppBlockBuilderStreamingURLResult,
   errors: [OperationNotPermittedException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2248,8 +3046,8 @@ export const createApplication: API.OperationMethod<
   CreateApplicationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41) as any as S.Schema<CreateApplicationRequest>,
-  output: __S(43) as any as S.Schema<CreateApplicationResult>,
+  input: CreateApplicationRequest,
+  output: CreateApplicationResult,
   errors: [
     ConcurrentModificationException,
     LimitExceededException,
@@ -2279,8 +3077,8 @@ export const createDirectoryConfig: API.OperationMethod<
   CreateDirectoryConfigError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(46) as any as S.Schema<CreateDirectoryConfigRequest>,
-  output: __S(48) as any as S.Schema<CreateDirectoryConfigResult>,
+  input: CreateDirectoryConfigRequest,
+  output: CreateDirectoryConfigResult,
   errors: [
     InvalidAccountStatusException,
     InvalidRoleException,
@@ -2314,8 +3112,8 @@ export const createEntitlement: API.OperationMethod<
   CreateEntitlementError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(51) as any as S.Schema<CreateEntitlementRequest>,
-  output: __S(53) as any as S.Schema<CreateEntitlementResult>,
+  input: CreateEntitlementRequest,
+  output: CreateEntitlementResult,
   errors: [
     EntitlementAlreadyExistsException,
     LimitExceededException,
@@ -2345,8 +3143,8 @@ export const createExportImageTask: API.OperationMethod<
   CreateExportImageTaskError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(54) as any as S.Schema<CreateExportImageTaskRequest>,
-  output: __S(56) as any as S.Schema<CreateExportImageTaskResult>,
+  input: CreateExportImageTaskRequest,
+  output: CreateExportImageTaskResult,
   errors: [
     ConcurrentModificationException,
     InvalidAccountStatusException,
@@ -2383,8 +3181,8 @@ export const createFleet: API.OperationMethod<
   CreateFleetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60) as any as S.Schema<CreateFleetRequest>,
-  output: __S(65) as any as S.Schema<CreateFleetResult>,
+  input: CreateFleetRequest,
+  output: CreateFleetResult,
   errors: [
     ConcurrentModificationException,
     IncompatibleImageException,
@@ -2427,8 +3225,8 @@ export const createImageBuilder: API.OperationMethod<
   CreateImageBuilderError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(66) as any as S.Schema<CreateImageBuilderRequest>,
-  output: __S(70) as any as S.Schema<CreateImageBuilderResult>,
+  input: CreateImageBuilderRequest,
+  output: CreateImageBuilderResult,
   errors: [
     ConcurrentModificationException,
     IncompatibleImageException,
@@ -2460,8 +3258,8 @@ export const createImageBuilderStreamingURL: API.OperationMethod<
   CreateImageBuilderStreamingURLError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(71) as any as S.Schema<CreateImageBuilderStreamingURLRequest>,
-  output: __S(39) as any as S.Schema<CreateImageBuilderStreamingURLResult>,
+  input: CreateImageBuilderStreamingURLRequest,
+  output: CreateImageBuilderStreamingURLResult,
   errors: [OperationNotPermittedException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2488,8 +3286,8 @@ export const createImportedImage: API.OperationMethod<
   CreateImportedImageError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(75) as any as S.Schema<CreateImportedImageRequest>,
-  output: __S(81) as any as S.Schema<CreateImportedImageResult>,
+  input: CreateImportedImageRequest,
+  output: CreateImportedImageResult,
   errors: [
     DryRunOperationException,
     IncompatibleImageException,
@@ -2525,8 +3323,8 @@ export const createStack: API.OperationMethod<
   CreateStackError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(93) as any as S.Schema<CreateStackRequest>,
-  output: __S(96) as any as S.Schema<CreateStackResult>,
+  input: CreateStackRequest,
+  output: CreateStackResult,
   errors: [
     ConcurrentModificationException,
     InvalidAccountStatusException,
@@ -2557,8 +3355,8 @@ export const createStreamingURL: API.OperationMethod<
   CreateStreamingURLError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(97) as any as S.Schema<CreateStreamingURLRequest>,
-  output: __S(98) as any as S.Schema<CreateStreamingURLResult>,
+  input: CreateStreamingURLRequest,
+  output: CreateStreamingURLResult,
   errors: [
     InvalidParameterCombinationException,
     OperationNotPermittedException,
@@ -2587,8 +3385,8 @@ export const createThemeForStack: API.OperationMethod<
   CreateThemeForStackError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(101) as any as S.Schema<CreateThemeForStackRequest>,
-  output: __S(103) as any as S.Schema<CreateThemeForStackResult>,
+  input: CreateThemeForStackRequest,
+  output: CreateThemeForStackResult,
   errors: [
     ConcurrentModificationException,
     InvalidAccountStatusException,
@@ -2623,8 +3421,8 @@ export const createUpdatedImage: API.OperationMethod<
   CreateUpdatedImageError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(104) as any as S.Schema<CreateUpdatedImageRequest>,
-  output: __S(105) as any as S.Schema<CreateUpdatedImageResult>,
+  input: CreateUpdatedImageRequest,
+  output: CreateUpdatedImageResult,
   errors: [
     ConcurrentModificationException,
     IncompatibleImageException,
@@ -2653,8 +3451,8 @@ export const createUsageReportSubscription: API.OperationMethod<
   CreateUsageReportSubscriptionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(106) as any as S.Schema<CreateUsageReportSubscriptionRequest>,
-  output: __S(107) as any as S.Schema<CreateUsageReportSubscriptionResult>,
+  input: CreateUsageReportSubscriptionRequest,
+  output: CreateUsageReportSubscriptionResult,
   errors: [InvalidAccountStatusException, InvalidRoleException, LimitExceededException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2677,8 +3475,8 @@ export const createUser: API.OperationMethod<
   CreateUserError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(108) as any as S.Schema<CreateUserRequest>,
-  output: __S(9) as any as S.Schema<CreateUserResult>,
+  input: CreateUserRequest,
+  output: CreateUserResult,
   errors: [
     InvalidAccountStatusException,
     InvalidParameterCombinationException,
@@ -2705,8 +3503,8 @@ export const deleteAppBlock: API.OperationMethod<
   DeleteAppBlockError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(109) as any as S.Schema<DeleteAppBlockRequest>,
-  output: __S(9) as any as S.Schema<DeleteAppBlockResult>,
+  input: DeleteAppBlockRequest,
+  output: DeleteAppBlockResult,
   errors: [ConcurrentModificationException, ResourceInUseException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2731,8 +3529,8 @@ export const deleteAppBlockBuilder: API.OperationMethod<
   DeleteAppBlockBuilderError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(110) as any as S.Schema<DeleteAppBlockBuilderRequest>,
-  output: __S(9) as any as S.Schema<DeleteAppBlockBuilderResult>,
+  input: DeleteAppBlockBuilderRequest,
+  output: DeleteAppBlockBuilderResult,
   errors: [
     ConcurrentModificationException,
     OperationNotPermittedException,
@@ -2759,8 +3557,8 @@ export const deleteApplication: API.OperationMethod<
   DeleteApplicationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(111) as any as S.Schema<DeleteApplicationRequest>,
-  output: __S(9) as any as S.Schema<DeleteApplicationResult>,
+  input: DeleteApplicationRequest,
+  output: DeleteApplicationResult,
   errors: [
     ConcurrentModificationException,
     OperationNotPermittedException,
@@ -2785,8 +3583,8 @@ export const deleteDirectoryConfig: API.OperationMethod<
   DeleteDirectoryConfigError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(112) as any as S.Schema<DeleteDirectoryConfigRequest>,
-  output: __S(9) as any as S.Schema<DeleteDirectoryConfigResult>,
+  input: DeleteDirectoryConfigRequest,
+  output: DeleteDirectoryConfigResult,
   errors: [ResourceInUseException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2808,8 +3606,8 @@ export const deleteEntitlement: API.OperationMethod<
   DeleteEntitlementError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(113) as any as S.Schema<DeleteEntitlementRequest>,
-  output: __S(9) as any as S.Schema<DeleteEntitlementResult>,
+  input: DeleteEntitlementRequest,
+  output: DeleteEntitlementResult,
   errors: [
     ConcurrentModificationException,
     EntitlementNotFoundException,
@@ -2835,8 +3633,8 @@ export const deleteFleet: API.OperationMethod<
   DeleteFleetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(114) as any as S.Schema<DeleteFleetRequest>,
-  output: __S(9) as any as S.Schema<DeleteFleetResult>,
+  input: DeleteFleetRequest,
+  output: DeleteFleetResult,
   errors: [ConcurrentModificationException, ResourceInUseException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2859,8 +3657,8 @@ export const deleteImage: API.OperationMethod<
   DeleteImageError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(115) as any as S.Schema<DeleteImageRequest>,
-  output: __S(116) as any as S.Schema<DeleteImageResult>,
+  input: DeleteImageRequest,
+  output: DeleteImageResult,
   errors: [
     ConcurrentModificationException,
     OperationNotPermittedException,
@@ -2886,8 +3684,8 @@ export const deleteImageBuilder: API.OperationMethod<
   DeleteImageBuilderError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(117) as any as S.Schema<DeleteImageBuilderRequest>,
-  output: __S(70) as any as S.Schema<DeleteImageBuilderResult>,
+  input: DeleteImageBuilderRequest,
+  output: DeleteImageBuilderResult,
   errors: [
     ConcurrentModificationException,
     OperationNotPermittedException,
@@ -2911,8 +3709,8 @@ export const deleteImagePermissions: API.OperationMethod<
   DeleteImagePermissionsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(118) as any as S.Schema<DeleteImagePermissionsRequest>,
-  output: __S(9) as any as S.Schema<DeleteImagePermissionsResult>,
+  input: DeleteImagePermissionsRequest,
+  output: DeleteImagePermissionsResult,
   errors: [ResourceNotAvailableException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2934,8 +3732,8 @@ export const deleteStack: API.OperationMethod<
   DeleteStackError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(119) as any as S.Schema<DeleteStackRequest>,
-  output: __S(9) as any as S.Schema<DeleteStackResult>,
+  input: DeleteStackRequest,
+  output: DeleteStackResult,
   errors: [
     ConcurrentModificationException,
     OperationNotPermittedException,
@@ -2961,8 +3759,8 @@ export const deleteThemeForStack: API.OperationMethod<
   DeleteThemeForStackError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(120) as any as S.Schema<DeleteThemeForStackRequest>,
-  output: __S(9) as any as S.Schema<DeleteThemeForStackResult>,
+  input: DeleteThemeForStackRequest,
+  output: DeleteThemeForStackResult,
   errors: [
     ConcurrentModificationException,
     OperationNotPermittedException,
@@ -2986,8 +3784,8 @@ export const deleteUsageReportSubscription: API.OperationMethod<
   DeleteUsageReportSubscriptionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(121) as any as S.Schema<DeleteUsageReportSubscriptionRequest>,
-  output: __S(7) as any as S.Schema<DeleteUsageReportSubscriptionResult>,
+  input: DeleteUsageReportSubscriptionRequest,
+  output: DeleteUsageReportSubscriptionResult,
   errors: [InvalidAccountStatusException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3004,8 +3802,8 @@ export const deleteUser: API.OperationMethod<
   DeleteUserError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(122) as any as S.Schema<DeleteUserRequest>,
-  output: __S(9) as any as S.Schema<DeleteUserResult>,
+  input: DeleteUserRequest,
+  output: DeleteUserResult,
   errors: [ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3026,8 +3824,8 @@ export const describeAppBlockBuilderAppBlockAssociations: API.PaginatedOperation
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(123) as any as S.Schema<DescribeAppBlockBuilderAppBlockAssociationsRequest>,
-  output: __S(125) as any as S.Schema<DescribeAppBlockBuilderAppBlockAssociationsResult>,
+  input: DescribeAppBlockBuilderAppBlockAssociationsRequest,
+  output: DescribeAppBlockBuilderAppBlockAssociationsResult,
   errors: [InvalidParameterCombinationException, OperationNotPermittedException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3053,8 +3851,8 @@ export const describeAppBlockBuilders: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(126) as any as S.Schema<DescribeAppBlockBuildersRequest>,
-  output: __S(128) as any as S.Schema<DescribeAppBlockBuildersResult>,
+  input: DescribeAppBlockBuildersRequest,
+  output: DescribeAppBlockBuildersResult,
   errors: [OperationNotPermittedException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3079,8 +3877,8 @@ export const describeAppBlocks: API.OperationMethod<
   DescribeAppBlocksError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(129) as any as S.Schema<DescribeAppBlocksRequest>,
-  output: __S(131) as any as S.Schema<DescribeAppBlocksResult>,
+  input: DescribeAppBlocksRequest,
+  output: DescribeAppBlocksResult,
   errors: [OperationNotPermittedException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3100,8 +3898,8 @@ export const describeApplicationFleetAssociations: API.OperationMethod<
   DescribeApplicationFleetAssociationsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(132) as any as S.Schema<DescribeApplicationFleetAssociationsRequest>,
-  output: __S(134) as any as S.Schema<DescribeApplicationFleetAssociationsResult>,
+  input: DescribeApplicationFleetAssociationsRequest,
+  output: DescribeApplicationFleetAssociationsResult,
   errors: [InvalidParameterCombinationException, OperationNotPermittedException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3121,8 +3919,8 @@ export const describeApplications: API.OperationMethod<
   DescribeApplicationsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(135) as any as S.Schema<DescribeApplicationsRequest>,
-  output: __S(136) as any as S.Schema<DescribeApplicationsResult>,
+  input: DescribeApplicationsRequest,
+  output: DescribeApplicationsResult,
   errors: [OperationNotPermittedException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3143,8 +3941,8 @@ export const describeAppLicenseUsage: API.OperationMethod<
   DescribeAppLicenseUsageError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(137) as any as S.Schema<DescribeAppLicenseUsageRequest>,
-  output: __S(140) as any as S.Schema<DescribeAppLicenseUsageResult>,
+  input: DescribeAppLicenseUsageRequest,
+  output: DescribeAppLicenseUsageResult,
   errors: [
     InvalidParameterCombinationException,
     OperationNotPermittedException,
@@ -3167,8 +3965,8 @@ export const describeDirectoryConfigs: API.OperationMethod<
   DescribeDirectoryConfigsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(141) as any as S.Schema<DescribeDirectoryConfigsRequest>,
-  output: __S(143) as any as S.Schema<DescribeDirectoryConfigsResult>,
+  input: DescribeDirectoryConfigsRequest,
+  output: DescribeDirectoryConfigsResult,
   errors: [ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3189,8 +3987,8 @@ export const describeEntitlements: API.OperationMethod<
   DescribeEntitlementsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(144) as any as S.Schema<DescribeEntitlementsRequest>,
-  output: __S(146) as any as S.Schema<DescribeEntitlementsResult>,
+  input: DescribeEntitlementsRequest,
+  output: DescribeEntitlementsResult,
   errors: [EntitlementNotFoundException, OperationNotPermittedException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3207,8 +4005,8 @@ export const describeFleets: API.OperationMethod<
   DescribeFleetsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(147) as any as S.Schema<DescribeFleetsRequest>,
-  output: __S(149) as any as S.Schema<DescribeFleetsResult>,
+  input: DescribeFleetsRequest,
+  output: DescribeFleetsResult,
   errors: [ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3225,8 +4023,8 @@ export const describeImageBuilders: API.OperationMethod<
   DescribeImageBuildersError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(150) as any as S.Schema<DescribeImageBuildersRequest>,
-  output: __S(152) as any as S.Schema<DescribeImageBuildersResult>,
+  input: DescribeImageBuildersRequest,
+  output: DescribeImageBuildersResult,
   errors: [ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3244,8 +4042,8 @@ export const describeImagePermissions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(153) as any as S.Schema<DescribeImagePermissionsRequest>,
-  output: __S(156) as any as S.Schema<DescribeImagePermissionsResult>,
+  input: DescribeImagePermissionsRequest,
+  output: DescribeImagePermissionsResult,
   errors: [ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3271,8 +4069,8 @@ export const describeImages: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(157) as any as S.Schema<DescribeImagesRequest>,
-  output: __S(159) as any as S.Schema<DescribeImagesResult>,
+  input: DescribeImagesRequest,
+  output: DescribeImagesResult,
   errors: [InvalidParameterCombinationException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3296,8 +4094,8 @@ export const describeSessions: API.OperationMethod<
   DescribeSessionsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(160) as any as S.Schema<DescribeSessionsRequest>,
-  output: __S(163) as any as S.Schema<DescribeSessionsResult>,
+  input: DescribeSessionsRequest,
+  output: DescribeSessionsResult,
   errors: [InvalidParameterCombinationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3317,8 +4115,8 @@ export const describeSoftwareAssociations: API.OperationMethod<
   DescribeSoftwareAssociationsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(164) as any as S.Schema<DescribeSoftwareAssociationsRequest>,
-  output: __S(167) as any as S.Schema<DescribeSoftwareAssociationsResult>,
+  input: DescribeSoftwareAssociationsRequest,
+  output: DescribeSoftwareAssociationsResult,
   errors: [OperationNotPermittedException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3335,8 +4133,8 @@ export const describeStacks: API.OperationMethod<
   DescribeStacksError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(168) as any as S.Schema<DescribeStacksRequest>,
-  output: __S(170) as any as S.Schema<DescribeStacksResult>,
+  input: DescribeStacksRequest,
+  output: DescribeStacksResult,
   errors: [ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3356,8 +4154,8 @@ export const describeThemeForStack: API.OperationMethod<
   DescribeThemeForStackError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(171) as any as S.Schema<DescribeThemeForStackRequest>,
-  output: __S(103) as any as S.Schema<DescribeThemeForStackResult>,
+  input: DescribeThemeForStackRequest,
+  output: DescribeThemeForStackResult,
   errors: [OperationNotPermittedException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3377,8 +4175,8 @@ export const describeUsageReportSubscriptions: API.OperationMethod<
   DescribeUsageReportSubscriptionsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(172) as any as S.Schema<DescribeUsageReportSubscriptionsRequest>,
-  output: __S(177) as any as S.Schema<DescribeUsageReportSubscriptionsResult>,
+  input: DescribeUsageReportSubscriptionsRequest,
+  output: DescribeUsageReportSubscriptionsResult,
   errors: [InvalidAccountStatusException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3399,8 +4197,8 @@ export const describeUsers: API.OperationMethod<
   DescribeUsersError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(178) as any as S.Schema<DescribeUsersRequest>,
-  output: __S(181) as any as S.Schema<DescribeUsersResult>,
+  input: DescribeUsersRequest,
+  output: DescribeUsersResult,
   errors: [
     InvalidParameterCombinationException,
     OperationNotPermittedException,
@@ -3428,8 +4226,8 @@ export const describeUserStackAssociations: API.OperationMethod<
   DescribeUserStackAssociationsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(182) as any as S.Schema<DescribeUserStackAssociationsRequest>,
-  output: __S(183) as any as S.Schema<DescribeUserStackAssociationsResult>,
+  input: DescribeUserStackAssociationsRequest,
+  output: DescribeUserStackAssociationsResult,
   errors: [InvalidParameterCombinationException, OperationNotPermittedException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3446,8 +4244,8 @@ export const disableUser: API.OperationMethod<
   DisableUserError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(184) as any as S.Schema<DisableUserRequest>,
-  output: __S(9) as any as S.Schema<DisableUserResult>,
+  input: DisableUserRequest,
+  output: DisableUserResult,
   errors: [ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3469,8 +4267,8 @@ export const disassociateAppBlockBuilderAppBlock: API.OperationMethod<
   DisassociateAppBlockBuilderAppBlockError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(185) as any as S.Schema<DisassociateAppBlockBuilderAppBlockRequest>,
-  output: __S(7) as any as S.Schema<DisassociateAppBlockBuilderAppBlockResult>,
+  input: DisassociateAppBlockBuilderAppBlockRequest,
+  output: DisassociateAppBlockBuilderAppBlockResult,
   errors: [
     ConcurrentModificationException,
     InvalidParameterCombinationException,
@@ -3496,8 +4294,8 @@ export const disassociateApplicationFleet: API.OperationMethod<
   DisassociateApplicationFleetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(186) as any as S.Schema<DisassociateApplicationFleetRequest>,
-  output: __S(7) as any as S.Schema<DisassociateApplicationFleetResult>,
+  input: DisassociateApplicationFleetRequest,
+  output: DisassociateApplicationFleetResult,
   errors: [
     ConcurrentModificationException,
     InvalidParameterCombinationException,
@@ -3522,8 +4320,8 @@ export const disassociateApplicationFromEntitlement: API.OperationMethod<
   DisassociateApplicationFromEntitlementError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(187) as any as S.Schema<DisassociateApplicationFromEntitlementRequest>,
-  output: __S(7) as any as S.Schema<DisassociateApplicationFromEntitlementResult>,
+  input: DisassociateApplicationFromEntitlementRequest,
+  output: DisassociateApplicationFromEntitlementResult,
   errors: [EntitlementNotFoundException, OperationNotPermittedException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3545,8 +4343,8 @@ export const disassociateFleet: API.OperationMethod<
   DisassociateFleetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(188) as any as S.Schema<DisassociateFleetRequest>,
-  output: __S(9) as any as S.Schema<DisassociateFleetResult>,
+  input: DisassociateFleetRequest,
+  output: DisassociateFleetResult,
   errors: [
     ConcurrentModificationException,
     OperationNotPermittedException,
@@ -3573,8 +4371,8 @@ export const disassociateSoftwareFromImageBuilder: API.OperationMethod<
   DisassociateSoftwareFromImageBuilderError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(189) as any as S.Schema<DisassociateSoftwareFromImageBuilderRequest>,
-  output: __S(7) as any as S.Schema<DisassociateSoftwareFromImageBuilderResult>,
+  input: DisassociateSoftwareFromImageBuilderRequest,
+  output: DisassociateSoftwareFromImageBuilderResult,
   errors: [
     ConcurrentModificationException,
     InvalidParameterCombinationException,
@@ -3600,8 +4398,8 @@ export const drainSessionInstance: API.OperationMethod<
   DrainSessionInstanceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(190) as any as S.Schema<DrainSessionInstanceRequest>,
-  output: __S(9) as any as S.Schema<DrainSessionInstanceResult>,
+  input: DrainSessionInstanceRequest,
+  output: DrainSessionInstanceResult,
   errors: [
     ConcurrentModificationException,
     OperationNotPermittedException,
@@ -3625,8 +4423,8 @@ export const enableUser: API.OperationMethod<
   EnableUserError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(191) as any as S.Schema<EnableUserRequest>,
-  output: __S(9) as any as S.Schema<EnableUserResult>,
+  input: EnableUserRequest,
+  output: EnableUserResult,
   errors: [InvalidAccountStatusException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3643,8 +4441,8 @@ export const expireSession: API.OperationMethod<
   ExpireSessionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(192) as any as S.Schema<ExpireSessionRequest>,
-  output: __S(9) as any as S.Schema<ExpireSessionResult>,
+  input: ExpireSessionRequest,
+  output: ExpireSessionResult,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3664,8 +4462,8 @@ export const getExportImageTask: API.OperationMethod<
   GetExportImageTaskError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(193) as any as S.Schema<GetExportImageTaskRequest>,
-  output: __S(194) as any as S.Schema<GetExportImageTaskResult>,
+  input: GetExportImageTaskRequest,
+  output: GetExportImageTaskResult,
   errors: [OperationNotPermittedException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3682,8 +4480,8 @@ export const listAssociatedFleets: API.OperationMethod<
   ListAssociatedFleetsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(195) as any as S.Schema<ListAssociatedFleetsRequest>,
-  output: __S(196) as any as S.Schema<ListAssociatedFleetsResult>,
+  input: ListAssociatedFleetsRequest,
+  output: ListAssociatedFleetsResult,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3700,8 +4498,8 @@ export const listAssociatedStacks: API.OperationMethod<
   ListAssociatedStacksError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(197) as any as S.Schema<ListAssociatedStacksRequest>,
-  output: __S(196) as any as S.Schema<ListAssociatedStacksResult>,
+  input: ListAssociatedStacksRequest,
+  output: ListAssociatedStacksResult,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3722,8 +4520,8 @@ export const listEntitledApplications: API.OperationMethod<
   ListEntitledApplicationsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(198) as any as S.Schema<ListEntitledApplicationsRequest>,
-  output: __S(201) as any as S.Schema<ListEntitledApplicationsResult>,
+  input: ListEntitledApplicationsRequest,
+  output: ListEntitledApplicationsResult,
   errors: [EntitlementNotFoundException, OperationNotPermittedException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3740,8 +4538,8 @@ export const listExportImageTasks: API.OperationMethod<
   ListExportImageTasksError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(204) as any as S.Schema<ListExportImageTasksRequest>,
-  output: __S(206) as any as S.Schema<ListExportImageTasksResult>,
+  input: ListExportImageTasksRequest,
+  output: ListExportImageTasksResult,
   errors: [OperationNotPermittedException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3760,8 +4558,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(207) as any as S.Schema<ListTagsForResourceRequest>,
-  output: __S(208) as any as S.Schema<ListTagsForResourceResponse>,
+  input: ListTagsForResourceRequest,
+  output: ListTagsForResourceResponse,
   errors: [ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3792,8 +4590,8 @@ export const startAppBlockBuilder: API.OperationMethod<
   StartAppBlockBuilderError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(209) as any as S.Schema<StartAppBlockBuilderRequest>,
-  output: __S(37) as any as S.Schema<StartAppBlockBuilderResult>,
+  input: StartAppBlockBuilderRequest,
+  output: StartAppBlockBuilderResult,
   errors: [
     ConcurrentModificationException,
     InvalidAccountStatusException,
@@ -3827,8 +4625,8 @@ export const startFleet: API.OperationMethod<
   StartFleetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(210) as any as S.Schema<StartFleetRequest>,
-  output: __S(9) as any as S.Schema<StartFleetResult>,
+  input: StartFleetRequest,
+  output: StartFleetResult,
   errors: [
     ConcurrentModificationException,
     InvalidAccountStatusException,
@@ -3860,8 +4658,8 @@ export const startImageBuilder: API.OperationMethod<
   StartImageBuilderError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(211) as any as S.Schema<StartImageBuilderRequest>,
-  output: __S(70) as any as S.Schema<StartImageBuilderResult>,
+  input: StartImageBuilderRequest,
+  output: StartImageBuilderResult,
   errors: [
     ConcurrentModificationException,
     IncompatibleImageException,
@@ -3888,8 +4686,8 @@ export const startSoftwareDeploymentToImageBuilder: API.OperationMethod<
   StartSoftwareDeploymentToImageBuilderError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(212) as any as S.Schema<StartSoftwareDeploymentToImageBuilderRequest>,
-  output: __S(7) as any as S.Schema<StartSoftwareDeploymentToImageBuilderResult>,
+  input: StartSoftwareDeploymentToImageBuilderRequest,
+  output: StartSoftwareDeploymentToImageBuilderResult,
   errors: [
     ConcurrentModificationException,
     OperationNotPermittedException,
@@ -3917,8 +4715,8 @@ export const stopAppBlockBuilder: API.OperationMethod<
   StopAppBlockBuilderError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(213) as any as S.Schema<StopAppBlockBuilderRequest>,
-  output: __S(37) as any as S.Schema<StopAppBlockBuilderResult>,
+  input: StopAppBlockBuilderRequest,
+  output: StopAppBlockBuilderResult,
   errors: [
     ConcurrentModificationException,
     OperationNotPermittedException,
@@ -3942,8 +4740,8 @@ export const stopFleet: API.OperationMethod<
   StopFleetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(214) as any as S.Schema<StopFleetRequest>,
-  output: __S(9) as any as S.Schema<StopFleetResult>,
+  input: StopFleetRequest,
+  output: StopFleetResult,
   errors: [ConcurrentModificationException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3964,8 +4762,8 @@ export const stopImageBuilder: API.OperationMethod<
   StopImageBuilderError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(215) as any as S.Schema<StopImageBuilderRequest>,
-  output: __S(70) as any as S.Schema<StopImageBuilderResult>,
+  input: StopImageBuilderRequest,
+  output: StopImageBuilderResult,
   errors: [
     ConcurrentModificationException,
     OperationNotPermittedException,
@@ -3998,8 +4796,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(216) as any as S.Schema<TagResourceRequest>,
-  output: __S(9) as any as S.Schema<TagResourceResponse>,
+  input: TagResourceRequest,
+  output: TagResourceResponse,
   errors: [InvalidAccountStatusException, LimitExceededException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4020,8 +4818,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(217) as any as S.Schema<UntagResourceRequest>,
-  output: __S(9) as any as S.Schema<UntagResourceResponse>,
+  input: UntagResourceRequest,
+  output: UntagResourceResponse,
   errors: [ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4054,8 +4852,8 @@ export const updateAppBlockBuilder: API.OperationMethod<
   UpdateAppBlockBuilderError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(218) as any as S.Schema<UpdateAppBlockBuilderRequest>,
-  output: __S(37) as any as S.Schema<UpdateAppBlockBuilderResult>,
+  input: UpdateAppBlockBuilderRequest,
+  output: UpdateAppBlockBuilderResult,
   errors: [
     ConcurrentModificationException,
     InvalidAccountStatusException,
@@ -4087,8 +4885,8 @@ export const updateApplication: API.OperationMethod<
   UpdateApplicationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(219) as any as S.Schema<UpdateApplicationRequest>,
-  output: __S(43) as any as S.Schema<UpdateApplicationResult>,
+  input: UpdateApplicationRequest,
+  output: UpdateApplicationResult,
   errors: [
     ConcurrentModificationException,
     OperationNotPermittedException,
@@ -4116,8 +4914,8 @@ export const updateDirectoryConfig: API.OperationMethod<
   UpdateDirectoryConfigError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(220) as any as S.Schema<UpdateDirectoryConfigRequest>,
-  output: __S(48) as any as S.Schema<UpdateDirectoryConfigResult>,
+  input: UpdateDirectoryConfigRequest,
+  output: UpdateDirectoryConfigResult,
   errors: [
     ConcurrentModificationException,
     IncompatibleImageException,
@@ -4146,8 +4944,8 @@ export const updateEntitlement: API.OperationMethod<
   UpdateEntitlementError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(221) as any as S.Schema<UpdateEntitlementRequest>,
-  output: __S(53) as any as S.Schema<UpdateEntitlementResult>,
+  input: UpdateEntitlementRequest,
+  output: UpdateEntitlementResult,
   errors: [
     ConcurrentModificationException,
     EntitlementNotFoundException,
@@ -4203,8 +5001,8 @@ export const updateFleet: API.OperationMethod<
   UpdateFleetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(222) as any as S.Schema<UpdateFleetRequest>,
-  output: __S(65) as any as S.Schema<UpdateFleetResult>,
+  input: UpdateFleetRequest,
+  output: UpdateFleetResult,
   errors: [
     ConcurrentModificationException,
     IncompatibleImageException,
@@ -4237,8 +5035,8 @@ export const updateImagePermissions: API.OperationMethod<
   UpdateImagePermissionsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(223) as any as S.Schema<UpdateImagePermissionsRequest>,
-  output: __S(9) as any as S.Schema<UpdateImagePermissionsResult>,
+  input: UpdateImagePermissionsRequest,
+  output: UpdateImagePermissionsResult,
   errors: [LimitExceededException, ResourceNotAvailableException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4265,8 +5063,8 @@ export const updateStack: API.OperationMethod<
   UpdateStackError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(225) as any as S.Schema<UpdateStackRequest>,
-  output: __S(96) as any as S.Schema<UpdateStackResult>,
+  input: UpdateStackRequest,
+  output: UpdateStackResult,
   errors: [
     ConcurrentModificationException,
     IncompatibleImageException,
@@ -4300,8 +5098,8 @@ export const updateThemeForStack: API.OperationMethod<
   UpdateThemeForStackError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(226) as any as S.Schema<UpdateThemeForStackRequest>,
-  output: __S(103) as any as S.Schema<UpdateThemeForStackResult>,
+  input: UpdateThemeForStackRequest,
+  output: UpdateThemeForStackResult,
   errors: [
     ConcurrentModificationException,
     InvalidAccountStatusException,
@@ -4336,7 +5134,7 @@ function __c0(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          AppBlockBuilderAppBlockAssociation: S.optional(__S(1)),
+          AppBlockBuilderAppBlockAssociation: S.optional(AppBlockBuilderAppBlockAssociation),
         }),
       ).annotate({
         identifier: "AssociateAppBlockBuilderAppBlockResult",
@@ -4357,7 +5155,7 @@ function __c0(j: number): any {
       });
     case 5:
       return S.suspend(() =>
-        S.Struct({ ApplicationFleetAssociation: S.optional(__S(4)) }),
+        S.Struct({ ApplicationFleetAssociation: S.optional(ApplicationFleetAssociation) }),
       ).annotate({
         identifier: "AssociateApplicationFleetResult",
       });
@@ -4395,7 +5193,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ImageBuilderName: S.optional(S.String),
-          SoftwareNames: S.optional(__S(10)),
+          SoftwareNames: S.optional(StringList),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "AssociateSoftwareToImageBuilderRequest",
@@ -4405,15 +5203,15 @@ function __c1(j: number): any {
         S.Struct({
           StackName: S.optional(S.String),
           UserName: S.optional(SensitiveString),
-          AuthenticationType: S.optional(S.String),
+          AuthenticationType: S.optional(AuthenticationType),
           SendEmailNotification: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "UserStackAssociation" });
     case 5:
-      return S.Array(__S(12));
+      return S.Array(UserStackAssociation);
     case 6:
       return S.suspend(() =>
-        S.Struct({ UserStackAssociations: S.optional(__S(13)) }).pipe(
+        S.Struct({ UserStackAssociations: S.optional(UserStackAssociationList) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
@@ -4422,8 +5220,8 @@ function __c1(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          UserStackAssociation: S.optional(__S(12)),
-          ErrorCode: S.optional(S.String),
+          UserStackAssociation: S.optional(UserStackAssociation),
+          ErrorCode: S.optional(UserStackAssociationErrorCode),
           ErrorMessage: S.optional(S.String),
         }),
       ).annotate({
@@ -4434,14 +5232,16 @@ function __c1(j: number): any {
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(15));
+      return S.Array(UserStackAssociationError);
     case 1:
-      return S.suspend(() => S.Struct({ errors: S.optional(__S(16)) })).annotate({
+      return S.suspend(() =>
+        S.Struct({ errors: S.optional(UserStackAssociationErrorList) }),
+      ).annotate({
         identifier: "BatchAssociateUserStackResult",
       });
     case 2:
       return S.suspend(() =>
-        S.Struct({ UserStackAssociations: S.optional(__S(13)) }).pipe(
+        S.Struct({ UserStackAssociations: S.optional(UserStackAssociationList) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
@@ -4467,7 +5267,7 @@ function __c2(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          ScriptS3Location: S.optional(__S(21)),
+          ScriptS3Location: S.optional(S3Location),
           ExecutablePath: S.optional(S.String),
           ExecutableParameters: S.optional(S.String),
           TimeoutInSeconds: S.optional(S.Number),
@@ -4485,11 +5285,11 @@ function __c3(j: number): any {
           Name: S.optional(S.String),
           Description: S.optional(S.String),
           DisplayName: S.optional(S.String),
-          SourceS3Location: S.optional(__S(21)),
-          SetupScriptDetails: S.optional(__S(22)),
-          Tags: S.optional(__S(23)),
-          PostSetupScriptDetails: S.optional(__S(22)),
-          PackagingType: S.optional(S.String),
+          SourceS3Location: S.optional(S3Location),
+          SetupScriptDetails: S.optional(ScriptDetails),
+          Tags: S.optional(Tags),
+          PostSetupScriptDetails: S.optional(ScriptDetails),
+          PackagingType: S.optional(PackagingType),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateAppBlockRequest" });
     case 1:
@@ -4497,7 +5297,7 @@ function __c3(j: number): any {
         S.Struct({ ErrorCode: S.optional(S.String), ErrorMessage: S.optional(S.String) }),
       ).annotate({ identifier: "ErrorDetails" });
     case 2:
-      return S.Array(__S(25));
+      return S.Array(ErrorDetails);
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -4505,32 +5305,32 @@ function __c3(j: number): any {
           Arn: S.optional(S.String),
           Description: S.optional(S.String),
           DisplayName: S.optional(S.String),
-          SourceS3Location: S.optional(__S(21)),
-          SetupScriptDetails: S.optional(__S(22)),
+          SourceS3Location: S.optional(S3Location),
+          SetupScriptDetails: S.optional(ScriptDetails),
           CreatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          PostSetupScriptDetails: S.optional(__S(22)),
-          PackagingType: S.optional(S.String),
-          State: S.optional(S.String),
-          AppBlockErrors: S.optional(__S(26)),
+          PostSetupScriptDetails: S.optional(ScriptDetails),
+          PackagingType: S.optional(PackagingType),
+          State: S.optional(AppBlockState),
+          AppBlockErrors: S.optional(ErrorDetailsList),
         }),
       ).annotate({ identifier: "AppBlock" });
     case 4:
-      return S.suspend(() => S.Struct({ AppBlock: S.optional(__S(27)) })).annotate({
+      return S.suspend(() => S.Struct({ AppBlock: S.optional(AppBlock) })).annotate({
         identifier: "CreateAppBlockResult",
       });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          SubnetIds: S.optional(__S(10)),
-          SecurityGroupIds: S.optional(__S(10)),
+          SubnetIds: S.optional(SubnetIdList),
+          SecurityGroupIds: S.optional(SecurityGroupIdList),
         }),
       ).annotate({ identifier: "VpcConfig" });
     case 6:
       return S.suspend(() =>
-        S.Struct({ EndpointType: S.optional(S.String), VpceId: S.optional(S.String) }),
+        S.Struct({ EndpointType: S.optional(AccessEndpointType), VpceId: S.optional(S.String) }),
       ).annotate({ identifier: "AccessEndpoint" });
     case 7:
-      return S.Array(__S(30));
+      return S.Array(AccessEndpoint);
   }
 }
 function __c4(j: number): any {
@@ -4541,13 +5341,13 @@ function __c4(j: number): any {
           Name: S.optional(S.String),
           Description: S.optional(S.String),
           DisplayName: S.optional(S.String),
-          Tags: S.optional(__S(23)),
-          Platform: S.optional(S.String),
+          Tags: S.optional(Tags),
+          Platform: S.optional(AppBlockBuilderPlatformType),
           InstanceType: S.optional(S.String),
-          VpcConfig: S.optional(__S(29)),
+          VpcConfig: S.optional(VpcConfig),
           EnableDefaultInternetAccess: S.optional(S.Boolean),
           IamRoleArn: S.optional(S.String),
-          AccessEndpoints: S.optional(__S(31)),
+          AccessEndpoints: S.optional(AccessEndpointList),
           DisableIMDSV1: S.optional(S.Boolean),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
@@ -4556,17 +5356,17 @@ function __c4(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          ErrorCode: S.optional(S.String),
+          ErrorCode: S.optional(FleetErrorCode),
           ErrorMessage: S.optional(S.String),
           ErrorTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "ResourceError" });
     case 2:
-      return S.Array(__S(33));
+      return S.Array(ResourceError);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          Code: S.optional(S.String),
+          Code: S.optional(AppBlockBuilderStateChangeReasonCode),
           Message: S.optional(S.String),
         }),
       ).annotate({
@@ -4579,21 +5379,21 @@ function __c4(j: number): any {
           Name: S.optional(S.String),
           DisplayName: S.optional(S.String),
           Description: S.optional(S.String),
-          Platform: S.optional(S.String),
+          Platform: S.optional(AppBlockBuilderPlatformType),
           InstanceType: S.optional(S.String),
           EnableDefaultInternetAccess: S.optional(S.Boolean),
           IamRoleArn: S.optional(S.String),
-          VpcConfig: S.optional(__S(29)),
-          State: S.optional(S.String),
+          VpcConfig: S.optional(VpcConfig),
+          State: S.optional(AppBlockBuilderState),
           CreatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          AppBlockBuilderErrors: S.optional(__S(34)),
-          StateChangeReason: S.optional(__S(35)),
-          AccessEndpoints: S.optional(__S(31)),
+          AppBlockBuilderErrors: S.optional(ResourceErrors),
+          StateChangeReason: S.optional(AppBlockBuilderStateChangeReason),
+          AccessEndpoints: S.optional(AccessEndpointList),
           DisableIMDSV1: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "AppBlockBuilder" });
     case 5:
-      return S.suspend(() => S.Struct({ AppBlockBuilder: S.optional(__S(36)) })).annotate({
+      return S.suspend(() => S.Struct({ AppBlockBuilder: S.optional(AppBlockBuilder) })).annotate({
         identifier: "CreateAppBlockBuilderResult",
       });
     case 6:
@@ -4619,21 +5419,21 @@ function __c4(j: number): any {
 function __c5(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
+      return S.Array(PlatformType);
     case 1:
       return S.suspend(() =>
         S.Struct({
           Name: S.optional(S.String),
           DisplayName: S.optional(S.String),
           Description: S.optional(S.String),
-          IconS3Location: S.optional(__S(21)),
+          IconS3Location: S.optional(S3Location),
           LaunchPath: S.optional(S.String),
           WorkingDirectory: S.optional(S.String),
           LaunchParameters: S.optional(S.String),
-          Platforms: S.optional(__S(40)),
-          InstanceFamilies: S.optional(__S(10)),
+          Platforms: S.optional(Platforms),
+          InstanceFamilies: S.optional(StringList),
           AppBlockArn: S.optional(S.String),
-          Tags: S.optional(__S(23)),
+          Tags: S.optional(Tags),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateApplicationRequest" });
     case 2:
@@ -4645,19 +5445,19 @@ function __c5(j: number): any {
           LaunchPath: S.optional(S.String),
           LaunchParameters: S.optional(S.String),
           Enabled: S.optional(S.Boolean),
-          Metadata: S.optional(__S(23)),
+          Metadata: S.optional(Metadata),
           WorkingDirectory: S.optional(S.String),
           Description: S.optional(S.String),
           Arn: S.optional(S.String),
           AppBlockArn: S.optional(S.String),
-          IconS3Location: S.optional(__S(21)),
-          Platforms: S.optional(__S(40)),
-          InstanceFamilies: S.optional(__S(10)),
+          IconS3Location: S.optional(S3Location),
+          Platforms: S.optional(Platforms),
+          InstanceFamilies: S.optional(StringList),
           CreatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "Application" });
     case 3:
-      return S.suspend(() => S.Struct({ Application: S.optional(__S(42)) })).annotate({
+      return S.suspend(() => S.Struct({ Application: S.optional(Application) })).annotate({
         identifier: "CreateApplicationResult",
       });
     case 4:
@@ -4672,7 +5472,7 @@ function __c5(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          Status: S.optional(S.String),
+          Status: S.optional(CertificateBasedAuthStatus),
           CertificateAuthorityArn: S.optional(S.String),
         }),
       ).annotate({
@@ -4682,9 +5482,11 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           DirectoryName: S.optional(S.String),
-          OrganizationalUnitDistinguishedNames: S.optional(__S(10)),
-          ServiceAccountCredentials: S.optional(__S(44)),
-          CertificateBasedAuthProperties: S.optional(__S(45)),
+          OrganizationalUnitDistinguishedNames: S.optional(
+            OrganizationalUnitDistinguishedNamesList,
+          ),
+          ServiceAccountCredentials: S.optional(ServiceAccountCredentials),
+          CertificateBasedAuthProperties: S.optional(CertificateBasedAuthProperties),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "CreateDirectoryConfigRequest",
@@ -4693,10 +5495,12 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           DirectoryName: S.optional(S.String),
-          OrganizationalUnitDistinguishedNames: S.optional(__S(10)),
-          ServiceAccountCredentials: S.optional(__S(44)),
+          OrganizationalUnitDistinguishedNames: S.optional(
+            OrganizationalUnitDistinguishedNamesList,
+          ),
+          ServiceAccountCredentials: S.optional(ServiceAccountCredentials),
           CreatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          CertificateBasedAuthProperties: S.optional(__S(45)),
+          CertificateBasedAuthProperties: S.optional(CertificateBasedAuthProperties),
         }),
       ).annotate({ identifier: "DirectoryConfig" });
   }
@@ -4704,7 +5508,7 @@ function __c5(j: number): any {
 function __c6(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ DirectoryConfig: S.optional(__S(47)) })).annotate({
+      return S.suspend(() => S.Struct({ DirectoryConfig: S.optional(DirectoryConfig) })).annotate({
         identifier: "CreateDirectoryConfigResult",
       });
     case 1:
@@ -4712,15 +5516,15 @@ function __c6(j: number): any {
         S.Struct({ Name: S.optional(S.String), Value: S.optional(S.String) }),
       ).annotate({ identifier: "EntitlementAttribute" });
     case 2:
-      return S.Array(__S(49));
+      return S.Array(EntitlementAttribute);
     case 3:
       return S.suspend(() =>
         S.Struct({
           Name: S.optional(S.String),
           StackName: S.optional(S.String),
           Description: S.optional(S.String),
-          AppVisibility: S.optional(S.String),
-          Attributes: S.optional(__S(50)),
+          AppVisibility: S.optional(AppVisibility),
+          Attributes: S.optional(EntitlementAttributeList),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateEntitlementRequest" });
     case 4:
@@ -4729,14 +5533,14 @@ function __c6(j: number): any {
           Name: S.optional(S.String),
           StackName: S.optional(S.String),
           Description: S.optional(S.String),
-          AppVisibility: S.optional(S.String),
-          Attributes: S.optional(__S(50)),
+          AppVisibility: S.optional(AppVisibility),
+          Attributes: S.optional(EntitlementAttributeList),
           CreatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           LastModifiedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "Entitlement" });
     case 5:
-      return S.suspend(() => S.Struct({ Entitlement: S.optional(__S(52)) })).annotate({
+      return S.suspend(() => S.Struct({ Entitlement: S.optional(Entitlement) })).annotate({
         identifier: "CreateEntitlementResult",
       });
     case 6:
@@ -4745,7 +5549,7 @@ function __c6(j: number): any {
           ImageName: S.optional(S.String),
           AmiName: S.optional(S.String),
           IamRoleArn: S.optional(S.String),
-          TagSpecifications: S.optional(__S(23)),
+          TagSpecifications: S.optional(Tags),
           AmiDescription: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
@@ -4759,10 +5563,10 @@ function __c6(j: number): any {
           AmiName: S.optional(S.String),
           CreatedDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           AmiDescription: S.optional(S.String),
-          State: S.optional(S.String),
+          State: S.optional(ExportImageTaskState),
           AmiId: S.optional(S.String),
-          TagSpecifications: S.optional(__S(23)),
-          ErrorDetails: S.optional(__S(26)),
+          TagSpecifications: S.optional(Tags),
+          ErrorDetails: S.optional(ErrorDetailsList),
         }),
       ).annotate({ identifier: "ExportImageTask" });
   }
@@ -4770,7 +5574,7 @@ function __c6(j: number): any {
 function __c7(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ ExportImageTask: S.optional(__S(55)) })).annotate({
+      return S.suspend(() => S.Struct({ ExportImageTask: S.optional(ExportImageTask) })).annotate({
         identifier: "CreateExportImageTaskResult",
       });
     case 1:
@@ -4795,25 +5599,25 @@ function __c7(j: number): any {
           ImageName: S.optional(S.String),
           ImageArn: S.optional(S.String),
           InstanceType: S.optional(S.String),
-          FleetType: S.optional(S.String),
-          ComputeCapacity: S.optional(__S(57)),
-          VpcConfig: S.optional(__S(29)),
+          FleetType: S.optional(FleetType),
+          ComputeCapacity: S.optional(ComputeCapacity),
+          VpcConfig: S.optional(VpcConfig),
           MaxUserDurationInSeconds: S.optional(S.Number),
           DisconnectTimeoutInSeconds: S.optional(S.Number),
           Description: S.optional(S.String),
           DisplayName: S.optional(S.String),
           EnableDefaultInternetAccess: S.optional(S.Boolean),
-          DomainJoinInfo: S.optional(__S(58)),
-          Tags: S.optional(__S(23)),
+          DomainJoinInfo: S.optional(DomainJoinInfo),
+          Tags: S.optional(Tags),
           IdleDisconnectTimeoutInSeconds: S.optional(S.Number),
           IamRoleArn: S.optional(S.String),
-          StreamView: S.optional(S.String),
-          Platform: S.optional(S.String),
+          StreamView: S.optional(StreamView),
+          Platform: S.optional(PlatformType),
           MaxConcurrentSessions: S.optional(S.Number),
-          UsbDeviceFilterStrings: S.optional(__S(10)),
-          SessionScriptS3Location: S.optional(__S(21)),
+          UsbDeviceFilterStrings: S.optional(UsbDeviceFilterStrings),
+          SessionScriptS3Location: S.optional(S3Location),
           MaxSessionsPerInstance: S.optional(S.Number),
-          RootVolumeConfig: S.optional(__S(59)),
+          RootVolumeConfig: S.optional(VolumeConfig),
           DisableIMDSV1: S.optional(S.Boolean),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateFleetRequest" });
@@ -4835,10 +5639,10 @@ function __c7(j: number): any {
       ).annotate({ identifier: "ComputeCapacityStatus" });
     case 6:
       return S.suspend(() =>
-        S.Struct({ ErrorCode: S.optional(S.String), ErrorMessage: S.optional(S.String) }),
+        S.Struct({ ErrorCode: S.optional(FleetErrorCode), ErrorMessage: S.optional(S.String) }),
       ).annotate({ identifier: "FleetError" });
     case 7:
-      return S.Array(__S(62));
+      return S.Array(FleetError);
   }
 }
 function __c8(j: number): any {
@@ -4853,30 +5657,30 @@ function __c8(j: number): any {
           ImageName: S.optional(S.String),
           ImageArn: S.optional(S.String),
           InstanceType: S.optional(S.String),
-          FleetType: S.optional(S.String),
-          ComputeCapacityStatus: S.optional(__S(61)),
+          FleetType: S.optional(FleetType),
+          ComputeCapacityStatus: S.optional(ComputeCapacityStatus),
           MaxUserDurationInSeconds: S.optional(S.Number),
           DisconnectTimeoutInSeconds: S.optional(S.Number),
-          State: S.optional(S.String),
-          VpcConfig: S.optional(__S(29)),
+          State: S.optional(FleetState),
+          VpcConfig: S.optional(VpcConfig),
           CreatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          FleetErrors: S.optional(__S(63)),
+          FleetErrors: S.optional(FleetErrors),
           EnableDefaultInternetAccess: S.optional(S.Boolean),
-          DomainJoinInfo: S.optional(__S(58)),
+          DomainJoinInfo: S.optional(DomainJoinInfo),
           IdleDisconnectTimeoutInSeconds: S.optional(S.Number),
           IamRoleArn: S.optional(S.String),
-          StreamView: S.optional(S.String),
-          Platform: S.optional(S.String),
+          StreamView: S.optional(StreamView),
+          Platform: S.optional(PlatformType),
           MaxConcurrentSessions: S.optional(S.Number),
-          UsbDeviceFilterStrings: S.optional(__S(10)),
-          SessionScriptS3Location: S.optional(__S(21)),
+          UsbDeviceFilterStrings: S.optional(UsbDeviceFilterStrings),
+          SessionScriptS3Location: S.optional(S3Location),
           MaxSessionsPerInstance: S.optional(S.Number),
-          RootVolumeConfig: S.optional(__S(59)),
+          RootVolumeConfig: S.optional(VolumeConfig),
           DisableIMDSV1: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "Fleet" });
     case 1:
-      return S.suspend(() => S.Struct({ Fleet: S.optional(__S(64)) })).annotate({
+      return S.suspend(() => S.Struct({ Fleet: S.optional(Fleet) })).annotate({
         identifier: "CreateFleetResult",
       });
     case 2:
@@ -4888,16 +5692,16 @@ function __c8(j: number): any {
           InstanceType: S.optional(S.String),
           Description: S.optional(S.String),
           DisplayName: S.optional(S.String),
-          VpcConfig: S.optional(__S(29)),
+          VpcConfig: S.optional(VpcConfig),
           IamRoleArn: S.optional(S.String),
           EnableDefaultInternetAccess: S.optional(S.Boolean),
-          DomainJoinInfo: S.optional(__S(58)),
+          DomainJoinInfo: S.optional(DomainJoinInfo),
           AppstreamAgentVersion: S.optional(S.String),
-          Tags: S.optional(__S(23)),
-          AccessEndpoints: S.optional(__S(31)),
-          RootVolumeConfig: S.optional(__S(59)),
-          SoftwaresToInstall: S.optional(__S(10)),
-          SoftwaresToUninstall: S.optional(__S(10)),
+          Tags: S.optional(Tags),
+          AccessEndpoints: S.optional(AccessEndpointList),
+          RootVolumeConfig: S.optional(VolumeConfig),
+          SoftwaresToInstall: S.optional(StringList),
+          SoftwaresToUninstall: S.optional(StringList),
           DisableIMDSV1: S.optional(S.Boolean),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
@@ -4906,7 +5710,7 @@ function __c8(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          Code: S.optional(S.String),
+          Code: S.optional(ImageBuilderStateChangeReasonCode),
           Message: S.optional(S.String),
         }),
       ).annotate({
@@ -4916,7 +5720,7 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           EniPrivateIpAddress: S.optional(S.String),
-          EniIpv6Addresses: S.optional(__S(10)),
+          EniIpv6Addresses: S.optional(StringList),
           EniId: S.optional(S.String),
         }),
       ).annotate({
@@ -4930,26 +5734,26 @@ function __c8(j: number): any {
           ImageArn: S.optional(S.String),
           Description: S.optional(S.String),
           DisplayName: S.optional(S.String),
-          VpcConfig: S.optional(__S(29)),
+          VpcConfig: S.optional(VpcConfig),
           InstanceType: S.optional(S.String),
-          Platform: S.optional(S.String),
+          Platform: S.optional(PlatformType),
           IamRoleArn: S.optional(S.String),
-          State: S.optional(S.String),
-          StateChangeReason: S.optional(__S(67)),
+          State: S.optional(ImageBuilderState),
+          StateChangeReason: S.optional(ImageBuilderStateChangeReason),
           CreatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           EnableDefaultInternetAccess: S.optional(S.Boolean),
-          DomainJoinInfo: S.optional(__S(58)),
-          NetworkAccessConfiguration: S.optional(__S(68)),
-          ImageBuilderErrors: S.optional(__S(34)),
+          DomainJoinInfo: S.optional(DomainJoinInfo),
+          NetworkAccessConfiguration: S.optional(NetworkAccessConfiguration),
+          ImageBuilderErrors: S.optional(ResourceErrors),
           AppstreamAgentVersion: S.optional(S.String),
-          AccessEndpoints: S.optional(__S(31)),
-          RootVolumeConfig: S.optional(__S(59)),
-          LatestAppstreamAgentVersion: S.optional(S.String),
+          AccessEndpoints: S.optional(AccessEndpointList),
+          RootVolumeConfig: S.optional(VolumeConfig),
+          LatestAppstreamAgentVersion: S.optional(LatestAppstreamAgentVersion),
           DisableIMDSV1: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "ImageBuilder" });
     case 6:
-      return S.suspend(() => S.Struct({ ImageBuilder: S.optional(__S(69)) })).annotate({
+      return S.suspend(() => S.Struct({ ImageBuilder: S.optional(ImageBuilder) })).annotate({
         identifier: "CreateImageBuilderResult",
       });
     case 7:
@@ -4981,7 +5785,7 @@ function __c9(j: number): any {
         }),
       ).annotate({ identifier: "ApplicationConfig" });
     case 2:
-      return S.Array(__S(73));
+      return S.Array(ApplicationConfig);
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -4991,10 +5795,10 @@ function __c9(j: number): any {
           IamRoleArn: S.optional(S.String),
           Description: S.optional(S.String),
           DisplayName: S.optional(S.String),
-          Tags: S.optional(__S(23)),
-          RuntimeValidationConfig: S.optional(__S(72)),
-          AgentSoftwareVersion: S.optional(S.String),
-          AppCatalogConfig: S.optional(__S(74)),
+          Tags: S.optional(Tags),
+          RuntimeValidationConfig: S.optional(RuntimeValidationConfig),
+          AgentSoftwareVersion: S.optional(AgentSoftwareVersion),
+          AppCatalogConfig: S.optional(AppCatalogConfig),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
@@ -5002,10 +5806,10 @@ function __c9(j: number): any {
       });
     case 4:
       return S.suspend(() =>
-        S.Struct({ Code: S.optional(S.String), Message: S.optional(S.String) }),
+        S.Struct({ Code: S.optional(ImageStateChangeReasonCode), Message: S.optional(S.String) }),
       ).annotate({ identifier: "ImageStateChangeReason" });
     case 5:
-      return S.Array(__S(42));
+      return S.Array(Application);
     case 6:
       return S.suspend(() =>
         S.Struct({ allowFleet: S.optional(S.Boolean), allowImageBuilder: S.optional(S.Boolean) }),
@@ -5025,59 +5829,61 @@ function __c10(j: number): any {
           Arn: S.optional(S.String),
           BaseImageArn: S.optional(S.String),
           DisplayName: S.optional(S.String),
-          State: S.optional(S.String),
-          Visibility: S.optional(S.String),
+          State: S.optional(ImageState),
+          Visibility: S.optional(VisibilityType),
           ImageBuilderSupported: S.optional(S.Boolean),
           ImageBuilderName: S.optional(S.String),
-          Platform: S.optional(S.String),
+          Platform: S.optional(PlatformType),
           Description: S.optional(S.String),
-          StateChangeReason: S.optional(__S(76)),
-          Applications: S.optional(__S(77)),
+          StateChangeReason: S.optional(ImageStateChangeReason),
+          Applications: S.optional(Applications),
           CreatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           PublicBaseImageReleasedDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           AppstreamAgentVersion: S.optional(S.String),
-          ImagePermissions: S.optional(__S(78)),
-          ImageErrors: S.optional(__S(34)),
-          LatestAppstreamAgentVersion: S.optional(S.String),
-          SupportedInstanceFamilies: S.optional(__S(10)),
-          DynamicAppProvidersEnabled: S.optional(S.String),
-          ImageSharedWithOthers: S.optional(S.String),
+          ImagePermissions: S.optional(ImagePermissions),
+          ImageErrors: S.optional(ResourceErrors),
+          LatestAppstreamAgentVersion: S.optional(LatestAppstreamAgentVersion),
+          SupportedInstanceFamilies: S.optional(StringList),
+          DynamicAppProvidersEnabled: S.optional(DynamicAppProvidersEnabled),
+          ImageSharedWithOthers: S.optional(ImageSharedWithOthers),
           ManagedSoftwareIncluded: S.optional(S.Boolean),
-          ImageType: S.optional(S.String),
-          ImageSoftwareMetadata: S.optional(__S(79)),
+          ImageType: S.optional(ImageType),
+          ImageSoftwareMetadata: S.optional(ImageSoftwareMetadata),
         }),
       ).annotate({ identifier: "Image" });
     case 1:
-      return S.suspend(() => S.Struct({ Image: S.optional(__S(80)) })).annotate({
+      return S.suspend(() => S.Struct({ Image: S.optional(Image) })).annotate({
         identifier: "CreateImportedImageResult",
       });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          ConnectorType: S.optional(S.String),
+          ConnectorType: S.optional(StorageConnectorType),
           ResourceIdentifier: S.optional(S.String),
-          Domains: S.optional(__S(10)),
-          DomainsRequireAdminConsent: S.optional(__S(10)),
+          Domains: S.optional(DomainList),
+          DomainsRequireAdminConsent: S.optional(DomainList),
         }),
       ).annotate({ identifier: "StorageConnector" });
     case 3:
-      return S.Array(__S(82));
+      return S.Array(StorageConnector);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          Action: S.optional(S.String),
-          Permission: S.optional(S.String),
+          Action: S.optional(Action),
+          Permission: S.optional(Permission),
           MaximumLength: S.optional(S.Number),
         }),
       ).annotate({ identifier: "UserSetting" });
     case 5:
-      return S.Array(__S(84));
+      return S.Array(UserSetting);
     case 6:
       return S.suspend(() =>
         S.Struct({ Enabled: S.optional(S.Boolean), SettingsGroup: S.optional(S.String) }),
       ).annotate({ identifier: "ApplicationSettings" });
     case 7:
-      return S.suspend(() => S.Struct({ PreferredProtocol: S.optional(S.String) })).annotate({
+      return S.suspend(() =>
+        S.Struct({ PreferredProtocol: S.optional(PreferredProtocol) }),
+      ).annotate({
         identifier: "StreamingExperienceSettings",
       });
   }
@@ -5088,29 +5894,29 @@ function __c11(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Enabled: S.optional(S.Boolean),
-          AllowedUrls: S.optional(__S(10)),
-          DeniedUrls: S.optional(__S(10)),
+          AllowedUrls: S.optional(UrlPatternList),
+          DeniedUrls: S.optional(UrlPatternList),
         }),
       ).annotate({ identifier: "UrlRedirectionConfig" });
     case 1:
-      return S.suspend(() => S.Struct({ HostToClient: S.optional(__S(88)) })).annotate({
-        identifier: "ContentRedirection",
-      });
+      return S.suspend(() => S.Struct({ HostToClient: S.optional(UrlRedirectionConfig) })).annotate(
+        { identifier: "ContentRedirection" },
+      );
     case 2:
       return S.suspend(() =>
-        S.Struct({ AgentAction: S.optional(S.String), Permission: S.optional(S.String) }),
+        S.Struct({ AgentAction: S.optional(AgentAction), Permission: S.optional(Permission) }),
       ).annotate({ identifier: "AgentAccessSetting" });
     case 3:
-      return S.Array(__S(90));
+      return S.Array(AgentAccessSetting);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          Settings: S.optional(__S(91)),
+          Settings: S.optional(AgentAccessSettingList),
           S3BucketArn: S.optional(S.String),
           ScreenshotsUploadEnabled: S.optional(S.Boolean),
-          ScreenResolution: S.optional(S.String),
-          ScreenImageFormat: S.optional(S.String),
-          UserControlMode: S.optional(S.String),
+          ScreenResolution: S.optional(ScreenResolution),
+          ScreenImageFormat: S.optional(ScreenImageFormat),
+          UserControlMode: S.optional(UserControlMode),
         }),
       ).annotate({ identifier: "AgentAccessConfig" });
     case 5:
@@ -5119,17 +5925,17 @@ function __c11(j: number): any {
           Name: S.optional(S.String),
           Description: S.optional(S.String),
           DisplayName: S.optional(S.String),
-          StorageConnectors: S.optional(__S(83)),
+          StorageConnectors: S.optional(StorageConnectorList),
           RedirectURL: S.optional(S.String),
           FeedbackURL: S.optional(S.String),
-          UserSettings: S.optional(__S(85)),
-          ApplicationSettings: S.optional(__S(86)),
-          Tags: S.optional(__S(23)),
-          AccessEndpoints: S.optional(__S(31)),
-          EmbedHostDomains: S.optional(__S(10)),
-          StreamingExperienceSettings: S.optional(__S(87)),
-          ContentRedirection: S.optional(__S(89)),
-          AgentAccessConfig: S.optional(__S(92)),
+          UserSettings: S.optional(UserSettingList),
+          ApplicationSettings: S.optional(ApplicationSettings),
+          Tags: S.optional(Tags),
+          AccessEndpoints: S.optional(AccessEndpointList),
+          EmbedHostDomains: S.optional(EmbedHostDomains),
+          StreamingExperienceSettings: S.optional(StreamingExperienceSettings),
+          ContentRedirection: S.optional(ContentRedirection),
+          AgentAccessConfig: S.optional(AgentAccessConfig),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateStackRequest" });
     case 6:
@@ -5150,17 +5956,17 @@ function __c11(j: number): any {
           Description: S.optional(S.String),
           DisplayName: S.optional(S.String),
           CreatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          StorageConnectors: S.optional(__S(83)),
+          StorageConnectors: S.optional(StorageConnectorList),
           RedirectURL: S.optional(S.String),
           FeedbackURL: S.optional(S.String),
-          StackErrors: S.optional(__S(63)),
-          UserSettings: S.optional(__S(85)),
-          ApplicationSettings: S.optional(__S(94)),
-          AccessEndpoints: S.optional(__S(31)),
-          EmbedHostDomains: S.optional(__S(10)),
-          StreamingExperienceSettings: S.optional(__S(87)),
-          ContentRedirection: S.optional(__S(89)),
-          AgentAccessConfig: S.optional(__S(92)),
+          StackErrors: S.optional(StackErrors),
+          UserSettings: S.optional(UserSettingList),
+          ApplicationSettings: S.optional(ApplicationSettingsResponse),
+          AccessEndpoints: S.optional(AccessEndpointList),
+          EmbedHostDomains: S.optional(EmbedHostDomains),
+          StreamingExperienceSettings: S.optional(StreamingExperienceSettings),
+          ContentRedirection: S.optional(ContentRedirection),
+          AgentAccessConfig: S.optional(AgentAccessConfig),
         }),
       ).annotate({ identifier: "Stack" });
   }
@@ -5168,7 +5974,7 @@ function __c11(j: number): any {
 function __c12(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ Stack: S.optional(__S(95)) })).annotate({
+      return S.suspend(() => S.Struct({ Stack: S.optional(Stack) })).annotate({
         identifier: "CreateStackResult",
       });
     case 1:
@@ -5196,16 +6002,16 @@ function __c12(j: number): any {
         S.Struct({ DisplayName: S.optional(S.String), FooterLinkURL: S.optional(S.String) }),
       ).annotate({ identifier: "ThemeFooterLink" });
     case 4:
-      return S.Array(__S(99));
+      return S.Array(ThemeFooterLink);
     case 5:
       return S.suspend(() =>
         S.Struct({
           StackName: S.optional(S.String),
-          FooterLinks: S.optional(__S(100)),
+          FooterLinks: S.optional(ThemeFooterLinks),
           TitleText: S.optional(S.String),
-          ThemeStyling: S.optional(S.String),
-          OrganizationLogoS3Location: S.optional(__S(21)),
-          FaviconS3Location: S.optional(__S(21)),
+          ThemeStyling: S.optional(ThemeStyling),
+          OrganizationLogoS3Location: S.optional(S3Location),
+          FaviconS3Location: S.optional(S3Location),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "CreateThemeForStackRequest",
@@ -5214,17 +6020,17 @@ function __c12(j: number): any {
       return S.suspend(() =>
         S.Struct({
           StackName: S.optional(S.String),
-          State: S.optional(S.String),
+          State: S.optional(ThemeState),
           ThemeTitleText: S.optional(S.String),
-          ThemeStyling: S.optional(S.String),
-          ThemeFooterLinks: S.optional(__S(100)),
+          ThemeStyling: S.optional(ThemeStyling),
+          ThemeFooterLinks: S.optional(ThemeFooterLinks),
           ThemeOrganizationLogoURL: S.optional(S.String),
           ThemeFaviconURL: S.optional(S.String),
           CreatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "Theme" });
     case 7:
-      return S.suspend(() => S.Struct({ Theme: S.optional(__S(102)) })).annotate({
+      return S.suspend(() => S.Struct({ Theme: S.optional(Theme) })).annotate({
         identifier: "CreateThemeForStackResult",
       });
   }
@@ -5238,7 +6044,7 @@ function __c13(j: number): any {
           newImageName: S.optional(S.String),
           newImageDescription: S.optional(S.String),
           newImageDisplayName: S.optional(S.String),
-          newImageTags: S.optional(__S(23)),
+          newImageTags: S.optional(Tags),
           dryRun: S.optional(S.Boolean),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
@@ -5246,7 +6052,7 @@ function __c13(j: number): any {
       });
     case 1:
       return S.suspend(() =>
-        S.Struct({ image: S.optional(__S(80)), canUpdateImage: S.optional(S.Boolean) }),
+        S.Struct({ image: S.optional(Image), canUpdateImage: S.optional(S.Boolean) }),
       ).annotate({ identifier: "CreateUpdatedImageResult" });
     case 2:
       return S.suspend(() =>
@@ -5258,7 +6064,7 @@ function __c13(j: number): any {
       });
     case 3:
       return S.suspend(() =>
-        S.Struct({ S3BucketName: S.optional(S.String), Schedule: S.optional(S.String) }),
+        S.Struct({ S3BucketName: S.optional(S.String), Schedule: S.optional(UsageReportSchedule) }),
       ).annotate({
         identifier: "CreateUsageReportSubscriptionResult",
       });
@@ -5266,10 +6072,10 @@ function __c13(j: number): any {
       return S.suspend(() =>
         S.Struct({
           UserName: S.optional(SensitiveString),
-          MessageAction: S.optional(S.String),
+          MessageAction: S.optional(MessageAction),
           FirstName: S.optional(SensitiveString),
           LastName: S.optional(SensitiveString),
-          AuthenticationType: S.optional(S.String),
+          AuthenticationType: S.optional(AuthenticationType),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateUserRequest" });
     case 5:
@@ -5323,7 +6129,7 @@ function __c14(j: number): any {
         ),
       ).annotate({ identifier: "DeleteImageRequest" });
     case 4:
-      return S.suspend(() => S.Struct({ Image: S.optional(__S(80)) })).annotate({
+      return S.suspend(() => S.Struct({ Image: S.optional(Image) })).annotate({
         identifier: "DeleteImageResult",
       });
     case 5:
@@ -5372,7 +6178,7 @@ function __c15(j: number): any {
       return S.suspend(() =>
         S.Struct({
           UserName: S.optional(SensitiveString),
-          AuthenticationType: S.optional(S.String),
+          AuthenticationType: S.optional(AuthenticationType),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "DeleteUserRequest" });
     case 3:
@@ -5387,11 +6193,11 @@ function __c15(j: number): any {
         identifier: "DescribeAppBlockBuilderAppBlockAssociationsRequest",
       });
     case 4:
-      return S.Array(__S(1));
+      return S.Array(AppBlockBuilderAppBlockAssociation);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          AppBlockBuilderAppBlockAssociations: S.optional(__S(124)),
+          AppBlockBuilderAppBlockAssociations: S.optional(AppBlockBuilderAppBlockAssociationsList),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -5400,7 +6206,7 @@ function __c15(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          Names: S.optional(__S(10)),
+          Names: S.optional(StringList),
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -5408,7 +6214,7 @@ function __c15(j: number): any {
         identifier: "DescribeAppBlockBuildersRequest",
       });
     case 7:
-      return S.Array(__S(36));
+      return S.Array(AppBlockBuilder);
   }
 }
 function __c16(j: number): any {
@@ -5416,7 +6222,7 @@ function __c16(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          AppBlockBuilders: S.optional(__S(127)),
+          AppBlockBuilders: S.optional(AppBlockBuilderList),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -5425,16 +6231,16 @@ function __c16(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          Arns: S.optional(__S(10)),
+          Arns: S.optional(ArnList),
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "DescribeAppBlocksRequest" });
     case 2:
-      return S.Array(__S(27));
+      return S.Array(AppBlock);
     case 3:
       return S.suspend(() =>
-        S.Struct({ AppBlocks: S.optional(__S(130)), NextToken: S.optional(S.String) }),
+        S.Struct({ AppBlocks: S.optional(AppBlocks), NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "DescribeAppBlocksResult" });
     case 4:
       return S.suspend(() =>
@@ -5448,11 +6254,11 @@ function __c16(j: number): any {
         identifier: "DescribeApplicationFleetAssociationsRequest",
       });
     case 5:
-      return S.Array(__S(4));
+      return S.Array(ApplicationFleetAssociation);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          ApplicationFleetAssociations: S.optional(__S(133)),
+          ApplicationFleetAssociations: S.optional(ApplicationFleetAssociationList),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -5461,7 +6267,7 @@ function __c16(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          Arns: S.optional(__S(10)),
+          Arns: S.optional(ArnList),
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -5474,7 +6280,7 @@ function __c17(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ Applications: S.optional(__S(77)), NextToken: S.optional(S.String) }),
+        S.Struct({ Applications: S.optional(Applications), NextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "DescribeApplicationsResult",
       });
@@ -5503,11 +6309,11 @@ function __c17(j: number): any {
         identifier: "AdminAppLicenseUsageRecord",
       });
     case 3:
-      return S.Array(__S(138));
+      return S.Array(AdminAppLicenseUsageRecord);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          AppLicenseUsages: S.optional(__S(139)),
+          AppLicenseUsages: S.optional(AdminAppLicenseUsageList),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -5516,7 +6322,7 @@ function __c17(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          DirectoryNames: S.optional(__S(10)),
+          DirectoryNames: S.optional(DirectoryNameList),
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -5524,11 +6330,11 @@ function __c17(j: number): any {
         identifier: "DescribeDirectoryConfigsRequest",
       });
     case 6:
-      return S.Array(__S(47));
+      return S.Array(DirectoryConfig);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          DirectoryConfigs: S.optional(__S(142)),
+          DirectoryConfigs: S.optional(DirectoryConfigList),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -5550,29 +6356,29 @@ function __c18(j: number): any {
         identifier: "DescribeEntitlementsRequest",
       });
     case 1:
-      return S.Array(__S(52));
+      return S.Array(Entitlement);
     case 2:
       return S.suspend(() =>
-        S.Struct({ Entitlements: S.optional(__S(145)), NextToken: S.optional(S.String) }),
+        S.Struct({ Entitlements: S.optional(EntitlementList), NextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "DescribeEntitlementsResult",
       });
     case 3:
       return S.suspend(() =>
-        S.Struct({ Names: S.optional(__S(10)), NextToken: S.optional(S.String) }).pipe(
+        S.Struct({ Names: S.optional(StringList), NextToken: S.optional(S.String) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "DescribeFleetsRequest" });
     case 4:
-      return S.Array(__S(64));
+      return S.Array(Fleet);
     case 5:
       return S.suspend(() =>
-        S.Struct({ Fleets: S.optional(__S(148)), NextToken: S.optional(S.String) }),
+        S.Struct({ Fleets: S.optional(FleetList), NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "DescribeFleetsResult" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          Names: S.optional(__S(10)),
+          Names: S.optional(StringList),
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -5580,14 +6386,14 @@ function __c18(j: number): any {
         identifier: "DescribeImageBuildersRequest",
       });
     case 7:
-      return S.Array(__S(69));
+      return S.Array(ImageBuilder);
   }
 }
 function __c19(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ ImageBuilders: S.optional(__S(151)), NextToken: S.optional(S.String) }),
+        S.Struct({ ImageBuilders: S.optional(ImageBuilderList), NextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "DescribeImageBuildersResult",
       });
@@ -5596,7 +6402,7 @@ function __c19(j: number): any {
         S.Struct({
           Name: S.optional(S.String),
           MaxResults: S.optional(S.Number),
-          SharedAwsAccountIds: S.optional(__S(10)),
+          SharedAwsAccountIds: S.optional(AwsAccountIdList),
           NextToken: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
@@ -5606,16 +6412,16 @@ function __c19(j: number): any {
       return S.suspend(() =>
         S.Struct({
           sharedAccountId: S.optional(S.String),
-          imagePermissions: S.optional(__S(78)),
+          imagePermissions: S.optional(ImagePermissions),
         }),
       ).annotate({ identifier: "SharedImagePermissions" });
     case 3:
-      return S.Array(__S(154));
+      return S.Array(SharedImagePermissions);
     case 4:
       return S.suspend(() =>
         S.Struct({
           Name: S.optional(S.String),
-          SharedImagePermissionsList: S.optional(__S(155)),
+          SharedImagePermissionsList: S.optional(SharedImagePermissionsList),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -5624,18 +6430,18 @@ function __c19(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          Names: S.optional(__S(10)),
-          Arns: S.optional(__S(10)),
-          Type: S.optional(S.String),
+          Names: S.optional(StringList),
+          Arns: S.optional(ArnList),
+          Type: S.optional(VisibilityType),
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "DescribeImagesRequest" });
     case 6:
-      return S.Array(__S(80));
+      return S.Array(Image);
     case 7:
       return S.suspend(() =>
-        S.Struct({ Images: S.optional(__S(158)), NextToken: S.optional(S.String) }),
+        S.Struct({ Images: S.optional(ImageList), NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "DescribeImagesResult" });
   }
 }
@@ -5649,7 +6455,7 @@ function __c20(j: number): any {
           UserId: S.optional(S.String),
           NextToken: S.optional(S.String),
           Limit: S.optional(S.Number),
-          AuthenticationType: S.optional(S.String),
+          AuthenticationType: S.optional(AuthenticationType),
           InstanceId: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "DescribeSessionsRequest" });
@@ -5660,21 +6466,21 @@ function __c20(j: number): any {
           UserId: S.optional(S.String),
           StackName: S.optional(S.String),
           FleetName: S.optional(S.String),
-          State: S.optional(S.String),
-          ConnectionState: S.optional(S.String),
+          State: S.optional(SessionState),
+          ConnectionState: S.optional(SessionConnectionState),
           StartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           MaxExpirationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          AuthenticationType: S.optional(S.String),
-          NetworkAccessConfiguration: S.optional(__S(68)),
+          AuthenticationType: S.optional(AuthenticationType),
+          NetworkAccessConfiguration: S.optional(NetworkAccessConfiguration),
           InstanceId: S.optional(S.String),
-          InstanceDrainStatus: S.optional(S.String),
+          InstanceDrainStatus: S.optional(InstanceDrainStatus),
         }),
       ).annotate({ identifier: "Session" });
     case 2:
-      return S.Array(__S(161));
+      return S.Array(Session);
     case 3:
       return S.suspend(() =>
-        S.Struct({ Sessions: S.optional(__S(162)), NextToken: S.optional(S.String) }),
+        S.Struct({ Sessions: S.optional(SessionList), NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "DescribeSessionsResult" });
     case 4:
       return S.suspend(() =>
@@ -5690,17 +6496,17 @@ function __c20(j: number): any {
       return S.suspend(() =>
         S.Struct({
           SoftwareName: S.optional(S.String),
-          Status: S.optional(S.String),
-          DeploymentError: S.optional(__S(26)),
+          Status: S.optional(SoftwareDeploymentStatus),
+          DeploymentError: S.optional(ErrorDetailsList),
         }),
       ).annotate({ identifier: "SoftwareAssociations" });
     case 6:
-      return S.Array(__S(165));
+      return S.Array(SoftwareAssociations);
     case 7:
       return S.suspend(() =>
         S.Struct({
           AssociatedResource: S.optional(S.String),
-          SoftwareAssociations: S.optional(__S(166)),
+          SoftwareAssociations: S.optional(SoftwareAssociationsList),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -5712,15 +6518,15 @@ function __c21(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ Names: S.optional(__S(10)), NextToken: S.optional(S.String) }).pipe(
+        S.Struct({ Names: S.optional(StringList), NextToken: S.optional(S.String) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "DescribeStacksRequest" });
     case 1:
-      return S.Array(__S(95));
+      return S.Array(Stack);
     case 2:
       return S.suspend(() =>
-        S.Struct({ Stacks: S.optional(__S(169)), NextToken: S.optional(S.String) }),
+        S.Struct({ Stacks: S.optional(StackList), NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "DescribeStacksResult" });
     case 3:
       return S.suspend(() =>
@@ -5741,21 +6547,21 @@ function __c21(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          ErrorCode: S.optional(S.String),
+          ErrorCode: S.optional(UsageReportExecutionErrorCode),
           ErrorMessage: S.optional(S.String),
         }),
       ).annotate({
         identifier: "LastReportGenerationExecutionError",
       });
     case 6:
-      return S.Array(__S(173));
+      return S.Array(LastReportGenerationExecutionError);
     case 7:
       return S.suspend(() =>
         S.Struct({
           S3BucketName: S.optional(S.String),
-          Schedule: S.optional(S.String),
+          Schedule: S.optional(UsageReportSchedule),
           LastGeneratedReportDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          SubscriptionErrors: S.optional(__S(174)),
+          SubscriptionErrors: S.optional(LastReportGenerationExecutionErrors),
         }),
       ).annotate({ identifier: "UsageReportSubscription" });
   }
@@ -5763,11 +6569,11 @@ function __c21(j: number): any {
 function __c22(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(175));
+      return S.Array(UsageReportSubscription);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          UsageReportSubscriptions: S.optional(__S(176)),
+          UsageReportSubscriptions: S.optional(UsageReportSubscriptionList),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -5776,7 +6582,7 @@ function __c22(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          AuthenticationType: S.optional(S.String),
+          AuthenticationType: S.optional(AuthenticationType),
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -5791,21 +6597,21 @@ function __c22(j: number): any {
           FirstName: S.optional(SensitiveString),
           LastName: S.optional(SensitiveString),
           CreatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          AuthenticationType: S.optional(S.String),
+          AuthenticationType: S.optional(AuthenticationType),
         }),
       ).annotate({ identifier: "User" });
     case 4:
-      return S.Array(__S(179));
+      return S.Array(User);
     case 5:
       return S.suspend(() =>
-        S.Struct({ Users: S.optional(__S(180)), NextToken: S.optional(S.String) }),
+        S.Struct({ Users: S.optional(UserList), NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "DescribeUsersResult" });
     case 6:
       return S.suspend(() =>
         S.Struct({
           StackName: S.optional(S.String),
           UserName: S.optional(SensitiveString),
-          AuthenticationType: S.optional(S.String),
+          AuthenticationType: S.optional(AuthenticationType),
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -5815,7 +6621,7 @@ function __c22(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          UserStackAssociations: S.optional(__S(13)),
+          UserStackAssociations: S.optional(UserStackAssociationList),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -5829,7 +6635,7 @@ function __c23(j: number): any {
       return S.suspend(() =>
         S.Struct({
           UserName: S.optional(SensitiveString),
-          AuthenticationType: S.optional(S.String),
+          AuthenticationType: S.optional(AuthenticationType),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "DisableUserRequest" });
     case 1:
@@ -5869,7 +6675,7 @@ function __c23(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ImageBuilderName: S.optional(S.String),
-          SoftwareNames: S.optional(__S(10)),
+          SoftwareNames: S.optional(StringList),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "DisassociateSoftwareFromImageBuilderRequest",
@@ -5886,7 +6692,7 @@ function __c23(j: number): any {
       return S.suspend(() =>
         S.Struct({
           UserName: S.optional(SensitiveString),
-          AuthenticationType: S.optional(S.String),
+          AuthenticationType: S.optional(AuthenticationType),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "EnableUserRequest" });
   }
@@ -5908,7 +6714,7 @@ function __c24(j: number): any {
         identifier: "GetExportImageTaskRequest",
       });
     case 2:
-      return S.suspend(() => S.Struct({ ExportImageTask: S.optional(__S(55)) })).annotate({
+      return S.suspend(() => S.Struct({ ExportImageTask: S.optional(ExportImageTask) })).annotate({
         identifier: "GetExportImageTaskResult",
       });
     case 3:
@@ -5921,7 +6727,7 @@ function __c24(j: number): any {
       });
     case 4:
       return S.suspend(() =>
-        S.Struct({ Names: S.optional(__S(10)), NextToken: S.optional(S.String) }),
+        S.Struct({ Names: S.optional(StringList), NextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListAssociatedFleetsResult",
       });
@@ -5953,11 +6759,11 @@ function __c24(j: number): any {
 function __c25(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(199));
+      return S.Array(EntitledApplication);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          EntitledApplications: S.optional(__S(200)),
+          EntitledApplications: S.optional(EntitledApplicationList),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -5965,14 +6771,14 @@ function __c25(j: number): any {
       });
     case 2:
       return S.suspend(() =>
-        S.Struct({ Name: S.optional(S.String), Values: S.optional(__S(10)) }),
+        S.Struct({ Name: S.optional(S.String), Values: S.optional(FilterValues) }),
       ).annotate({ identifier: "Filter" });
     case 3:
-      return S.Array(__S(202));
+      return S.Array(Filter);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          Filters: S.optional(__S(203)),
+          Filters: S.optional(Filters),
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -5980,11 +6786,11 @@ function __c25(j: number): any {
         identifier: "ListExportImageTasksRequest",
       });
     case 5:
-      return S.Array(__S(55));
+      return S.Array(ExportImageTask);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          ExportImageTasks: S.optional(__S(205)),
+          ExportImageTasks: S.optional(ExportImageTasks),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -6003,7 +6809,7 @@ function __c25(j: number): any {
 function __c26(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ Tags: S.optional(__S(23)) })).annotate({
+      return S.suspend(() => S.Struct({ Tags: S.optional(Tags) })).annotate({
         identifier: "ListTagsForResourceResponse",
       });
     case 1:
@@ -6061,13 +6867,13 @@ function __c27(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ ResourceArn: S.optional(S.String), Tags: S.optional(__S(23)) }).pipe(
+        S.Struct({ ResourceArn: S.optional(S.String), Tags: S.optional(Tags) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "TagResourceRequest" });
     case 1:
       return S.suspend(() =>
-        S.Struct({ ResourceArn: S.optional(S.String), TagKeys: S.optional(__S(10)) }).pipe(
+        S.Struct({ ResourceArn: S.optional(S.String), TagKeys: S.optional(TagKeyList) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "UntagResourceRequest" });
@@ -6077,13 +6883,13 @@ function __c27(j: number): any {
           Name: S.optional(S.String),
           Description: S.optional(S.String),
           DisplayName: S.optional(S.String),
-          Platform: S.optional(S.String),
+          Platform: S.optional(PlatformType),
           InstanceType: S.optional(S.String),
-          VpcConfig: S.optional(__S(29)),
+          VpcConfig: S.optional(VpcConfig),
           EnableDefaultInternetAccess: S.optional(S.Boolean),
           IamRoleArn: S.optional(S.String),
-          AccessEndpoints: S.optional(__S(31)),
-          AttributesToDelete: S.optional(__S(40)),
+          AccessEndpoints: S.optional(AccessEndpointList),
+          AttributesToDelete: S.optional(AppBlockBuilderAttributes),
           DisableIMDSV1: S.optional(S.Boolean),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
@@ -6095,21 +6901,23 @@ function __c27(j: number): any {
           Name: S.optional(S.String),
           DisplayName: S.optional(S.String),
           Description: S.optional(S.String),
-          IconS3Location: S.optional(__S(21)),
+          IconS3Location: S.optional(S3Location),
           LaunchPath: S.optional(S.String),
           WorkingDirectory: S.optional(S.String),
           LaunchParameters: S.optional(S.String),
           AppBlockArn: S.optional(S.String),
-          AttributesToDelete: S.optional(__S(40)),
+          AttributesToDelete: S.optional(ApplicationAttributes),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "UpdateApplicationRequest" });
     case 4:
       return S.suspend(() =>
         S.Struct({
           DirectoryName: S.optional(S.String),
-          OrganizationalUnitDistinguishedNames: S.optional(__S(10)),
-          ServiceAccountCredentials: S.optional(__S(44)),
-          CertificateBasedAuthProperties: S.optional(__S(45)),
+          OrganizationalUnitDistinguishedNames: S.optional(
+            OrganizationalUnitDistinguishedNamesList,
+          ),
+          ServiceAccountCredentials: S.optional(ServiceAccountCredentials),
+          CertificateBasedAuthProperties: S.optional(CertificateBasedAuthProperties),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "UpdateDirectoryConfigRequest",
@@ -6120,8 +6928,8 @@ function __c27(j: number): any {
           Name: S.optional(S.String),
           StackName: S.optional(S.String),
           Description: S.optional(S.String),
-          AppVisibility: S.optional(S.String),
-          Attributes: S.optional(__S(50)),
+          AppVisibility: S.optional(AppVisibility),
+          Attributes: S.optional(EntitlementAttributeList),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "UpdateEntitlementRequest" });
     case 6:
@@ -6131,25 +6939,25 @@ function __c27(j: number): any {
           ImageArn: S.optional(S.String),
           Name: S.optional(S.String),
           InstanceType: S.optional(S.String),
-          ComputeCapacity: S.optional(__S(57)),
-          VpcConfig: S.optional(__S(29)),
+          ComputeCapacity: S.optional(ComputeCapacity),
+          VpcConfig: S.optional(VpcConfig),
           MaxUserDurationInSeconds: S.optional(S.Number),
           DisconnectTimeoutInSeconds: S.optional(S.Number),
           DeleteVpcConfig: S.optional(S.Boolean),
           Description: S.optional(S.String),
           DisplayName: S.optional(S.String),
           EnableDefaultInternetAccess: S.optional(S.Boolean),
-          DomainJoinInfo: S.optional(__S(58)),
+          DomainJoinInfo: S.optional(DomainJoinInfo),
           IdleDisconnectTimeoutInSeconds: S.optional(S.Number),
-          AttributesToDelete: S.optional(__S(40)),
+          AttributesToDelete: S.optional(FleetAttributes),
           IamRoleArn: S.optional(S.String),
-          StreamView: S.optional(S.String),
-          Platform: S.optional(S.String),
+          StreamView: S.optional(StreamView),
+          Platform: S.optional(PlatformType),
           MaxConcurrentSessions: S.optional(S.Number),
-          UsbDeviceFilterStrings: S.optional(__S(10)),
-          SessionScriptS3Location: S.optional(__S(21)),
+          UsbDeviceFilterStrings: S.optional(UsbDeviceFilterStrings),
+          SessionScriptS3Location: S.optional(S3Location),
           MaxSessionsPerInstance: S.optional(S.Number),
-          RootVolumeConfig: S.optional(__S(59)),
+          RootVolumeConfig: S.optional(VolumeConfig),
           DisableIMDSV1: S.optional(S.Boolean),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "UpdateFleetRequest" });
@@ -6158,7 +6966,7 @@ function __c27(j: number): any {
         S.Struct({
           Name: S.optional(S.String),
           SharedAccountId: S.optional(S.String),
-          ImagePermissions: S.optional(__S(78)),
+          ImagePermissions: S.optional(ImagePermissions),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "UpdateImagePermissionsRequest",
@@ -6170,12 +6978,12 @@ function __c28(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          Settings: S.optional(__S(91)),
+          Settings: S.optional(AgentAccessSettingList),
           S3BucketArn: S.optional(S.String),
           ScreenshotsUploadEnabled: S.optional(S.Boolean),
-          ScreenResolution: S.optional(S.String),
-          ScreenImageFormat: S.optional(S.String),
-          UserControlMode: S.optional(S.String),
+          ScreenResolution: S.optional(ScreenResolution),
+          ScreenImageFormat: S.optional(ScreenImageFormat),
+          UserControlMode: S.optional(UserControlMode),
         }),
       ).annotate({
         identifier: "AgentAccessConfigForUpdate",
@@ -6186,101 +6994,34 @@ function __c28(j: number): any {
           DisplayName: S.optional(S.String),
           Description: S.optional(S.String),
           Name: S.optional(S.String),
-          StorageConnectors: S.optional(__S(83)),
+          StorageConnectors: S.optional(StorageConnectorList),
           DeleteStorageConnectors: S.optional(S.Boolean),
           RedirectURL: S.optional(S.String),
           FeedbackURL: S.optional(S.String),
-          AttributesToDelete: S.optional(__S(40)),
-          UserSettings: S.optional(__S(85)),
-          ApplicationSettings: S.optional(__S(86)),
-          AccessEndpoints: S.optional(__S(31)),
-          EmbedHostDomains: S.optional(__S(10)),
-          StreamingExperienceSettings: S.optional(__S(87)),
-          ContentRedirection: S.optional(__S(89)),
-          AgentAccessConfig: S.optional(__S(224)),
+          AttributesToDelete: S.optional(StackAttributes),
+          UserSettings: S.optional(UserSettingList),
+          ApplicationSettings: S.optional(ApplicationSettings),
+          AccessEndpoints: S.optional(AccessEndpointList),
+          EmbedHostDomains: S.optional(EmbedHostDomains),
+          StreamingExperienceSettings: S.optional(StreamingExperienceSettings),
+          ContentRedirection: S.optional(ContentRedirection),
+          AgentAccessConfig: S.optional(AgentAccessConfigForUpdate),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "UpdateStackRequest" });
     case 2:
       return S.suspend(() =>
         S.Struct({
           StackName: S.optional(S.String),
-          FooterLinks: S.optional(__S(100)),
+          FooterLinks: S.optional(ThemeFooterLinks),
           TitleText: S.optional(S.String),
-          ThemeStyling: S.optional(S.String),
-          OrganizationLogoS3Location: S.optional(__S(21)),
-          FaviconS3Location: S.optional(__S(21)),
-          State: S.optional(S.String),
-          AttributesToDelete: S.optional(__S(40)),
+          ThemeStyling: S.optional(ThemeStyling),
+          OrganizationLogoS3Location: S.optional(S3Location),
+          FaviconS3Location: S.optional(S3Location),
+          State: S.optional(ThemeState),
+          AttributesToDelete: S.optional(ThemeAttributes),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "UpdateThemeForStackRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
-    case 9:
-      return __c9(i & 7);
-    case 10:
-      return __c10(i & 7);
-    case 11:
-      return __c11(i & 7);
-    case 12:
-      return __c12(i & 7);
-    case 13:
-      return __c13(i & 7);
-    case 14:
-      return __c14(i & 7);
-    case 15:
-      return __c15(i & 7);
-    case 16:
-      return __c16(i & 7);
-    case 17:
-      return __c17(i & 7);
-    case 18:
-      return __c18(i & 7);
-    case 19:
-      return __c19(i & 7);
-    case 20:
-      return __c20(i & 7);
-    case 21:
-      return __c21(i & 7);
-    case 22:
-      return __c22(i & 7);
-    case 23:
-      return __c23(i & 7);
-    case 24:
-      return __c24(i & 7);
-    case 25:
-      return __c25(i & 7);
-    case 26:
-      return __c26(i & 7);
-    case 27:
-      return __c27(i & 7);
-    case 28:
-      return __c28(i & 7);
   }
 }

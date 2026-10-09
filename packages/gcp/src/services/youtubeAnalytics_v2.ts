@@ -7,8 +7,6 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -70,6 +68,11 @@ export interface DeleteGroupItemsRequest {
   /** This parameter can only be used in a properly authorized request. **Note:** This parameter is intended exclusively for YouTube content partners that own and manage many different YouTube channels. The `onBehalfOfContentOwner` parameter indicates that the request's authorization credentials identify a YouTube user who is acting on behalf of the content owner specified in the parameter value. It allows content owners to authenticate once and get access to all their video and channel data, without having to provide authentication credentials for each individual channel. The account that the user authenticates with must be linked to the specified YouTube content owner. */
   onBehalfOfContentOwner?: string;
 }
+const DeleteGroupItemsRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<DeleteGroupItemsRequest>;
+
 export type ErrorsCodeEnum =
   | "BAD_REQUEST"
   | "FORBIDDEN"
@@ -79,8 +82,14 @@ export type ErrorsCodeEnum =
   | "PRECONDITION_FAILED"
   | "INTERNAL_ERROR"
   | "SERVICE_UNAVAILABLE";
+const ErrorsCodeEnum = S.String;
+
 export type StringList = Array<string>;
+const StringList = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<StringList>;
+
 export type ErrorProtoLocationTypeEnum = "PATH" | "OTHER" | "PARAMETER";
+const ErrorProtoLocationTypeEnum = S.String;
+
 /** Describes one specific error. */
 export interface ErrorProto {
   /** Error arguments, to be used when building user-friendly error messages given the error domain and code. Different error codes require different arguments. */
@@ -97,7 +106,11 @@ export interface ErrorProto {
   domain?: string;
   locationType?: ErrorProtoLocationTypeEnum | (string & {});
 }
+const ErrorProto = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<ErrorProto>;
+
 export type ErrorProtoList = Array<ErrorProto>;
+const ErrorProtoList = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<ErrorProtoList>;
+
 /** Request Error information. The presence of an error field signals that the operation has failed. */
 export interface Errors {
   /** Global error code. Deprecated and ignored. Set custom error codes in ErrorProto.domain and ErrorProto.code instead. */
@@ -107,23 +120,31 @@ export interface Errors {
   /** Specific error description and codes */
   error?: ErrorProtoList;
 }
+const Errors = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<Errors>;
+
 /** Empty response. */
 export interface EmptyResponse {
   /** Apiary error details */
   errors?: Errors;
 }
+const EmptyResponse = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<EmptyResponse>;
+
 export interface DeleteGroupsRequest {
   /** This parameter can only be used in a properly authorized request. **Note:** This parameter is intended exclusively for YouTube content partners that own and manage many different YouTube channels. The `onBehalfOfContentOwner` parameter indicates that the request's authorization credentials identify a YouTube user who is acting on behalf of the content owner specified in the parameter value. It allows content owners to authenticate once and get access to all their video and channel data, without having to provide authentication credentials for each individual channel. The account that the user authenticates with must be linked to the specified YouTube content owner. */
   onBehalfOfContentOwner?: string;
   /** The `id` parameter specifies the YouTube group ID of the group that is being deleted. */
   id?: string;
 }
+const DeleteGroupsRequest = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<DeleteGroupsRequest>;
+
 export interface GroupItemResource {
   /** The channel, video, playlist, or asset ID that YouTube uses to uniquely identify the item that is being added to the group. */
   id?: string;
   /** Identifies the type of resource being added to the group. Valid values for this property are: * `youtube#channel` * `youtube#playlist` * `youtube#video` * `youtubePartner#asset` */
   kind?: string;
 }
+const GroupItemResource = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<GroupItemResource>;
+
 /** A group item. */
 export interface GroupItem {
   /** The Etag of this resource. */
@@ -139,12 +160,19 @@ export interface GroupItem {
   /** The ID that YouTube uses to uniquely identify the `channel`, `video`, `playlist`, or `asset` resource that is included in the group. Note that this ID refers specifically to the inclusion of that resource in a particular group and is different than the channel ID, video ID, playlist ID, or asset ID that uniquely identifies the resource itself. The `resource.id` property's value specifies the unique channel, video, playlist, or asset ID. */
   id?: string;
 }
+const GroupItem = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<GroupItem>;
+
 export interface InsertGroupItemsRequest {
   /** This parameter can only be used in a properly authorized request. **Note:** This parameter is intended exclusively for YouTube content partners that own and manage many different YouTube channels. The `onBehalfOfContentOwner` parameter indicates that the request's authorization credentials identify a YouTube user who is acting on behalf of the content owner specified in the parameter value. It allows content owners to authenticate once and get access to all their video and channel data, without having to provide authentication credentials for each individual channel. The account that the user authenticates with must be linked to the specified YouTube content owner. */
   onBehalfOfContentOwner?: string;
   /** Request body */
   body?: GroupItem;
 }
+const InsertGroupItemsRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<InsertGroupItemsRequest>;
+
 /** A group snippet. */
 export interface GroupSnippet {
   /** The group name. The value must be a non-empty string. */
@@ -152,6 +180,8 @@ export interface GroupSnippet {
   /** The date and time that the group was created. The value is specified in ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ) format. */
   publishedAt?: string;
 }
+const GroupSnippet = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<GroupSnippet>;
+
 /** A group's content details. */
 export interface GroupContentDetails {
   /** The type of resources that the group contains. Valid values for this property are: * `youtube#channel` * `youtube#playlist` * `youtube#video` * `youtubePartner#asset` */
@@ -159,6 +189,8 @@ export interface GroupContentDetails {
   /** The number of items in the group. */
   itemCount?: string;
 }
+const GroupContentDetails = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<GroupContentDetails>;
+
 /** A group. */
 export interface Group {
   /** The `snippet` object contains basic information about the group, including its creation date and name. */
@@ -174,19 +206,30 @@ export interface Group {
   /** Apiary error details */
   errors?: Errors;
 }
+const Group = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<Group>;
+
 export interface InsertGroupsRequest {
   /** This parameter can only be used in a properly authorized request. **Note:** This parameter is intended exclusively for YouTube content partners that own and manage many different YouTube channels. The `onBehalfOfContentOwner` parameter indicates that the request's authorization credentials identify a YouTube user who is acting on behalf of the content owner specified in the parameter value. It allows content owners to authenticate once and get access to all their video and channel data, without having to provide authentication credentials for each individual channel. The account that the user authenticates with must be linked to the specified YouTube content owner. */
   onBehalfOfContentOwner?: string;
   /** Request body */
   body?: Group;
 }
+const InsertGroupsRequest = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<InsertGroupsRequest>;
+
 export interface ListGroupItemsRequest {
   /** The `groupId` parameter specifies the unique ID of the group for which you want to retrieve group items. */
   groupId?: string;
   /** This parameter can only be used in a properly authorized request. **Note:** This parameter is intended exclusively for YouTube content partners that own and manage many different YouTube channels. The `onBehalfOfContentOwner` parameter indicates that the request's authorization credentials identify a YouTube user who is acting on behalf of the content owner specified in the parameter value. It allows content owners to authenticate once and get access to all their video and channel data, without having to provide authentication credentials for each individual channel. The account that the user authenticates with must be linked to the specified YouTube content owner. */
   onBehalfOfContentOwner?: string;
 }
+const ListGroupItemsRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<ListGroupItemsRequest>;
+
 export type GroupItemList = Array<GroupItem>;
+const GroupItemList = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<GroupItemList>;
+
 /** Response message for GroupsService.ListGroupItems. */
 export interface ListGroupItemsResponse {
   /** A list of groups that match the API request parameters. Each item in the list represents a `groupItem` resource. */
@@ -198,6 +241,11 @@ export interface ListGroupItemsResponse {
   /** Apiary error details */
   errors?: Errors;
 }
+const ListGroupItemsResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<ListGroupItemsResponse>;
+
 export interface ListGroupsRequest {
   /** This parameter can only be used in a properly authorized request. **Note:** This parameter is intended exclusively for YouTube content partners that own and manage many different YouTube channels. The `onBehalfOfContentOwner` parameter indicates that the request's authorization credentials identify a YouTube user who is acting on behalf of the content owner specified in the parameter value. It allows content owners to authenticate once and get access to all their video and channel data, without having to provide authentication credentials for each individual channel. The account that the user authenticates with must be linked to the specified YouTube content owner. */
   onBehalfOfContentOwner?: string;
@@ -208,7 +256,11 @@ export interface ListGroupsRequest {
   /** The `id` parameter specifies a comma-separated list of the YouTube group ID(s) for the resource(s) that are being retrieved. Each group must be owned by the authenticated user. In a `group` resource, the `id` property specifies the group's YouTube group ID. Note that if you do not specify a value for the `id` parameter, then you must set the `mine` parameter to `true`. */
   id?: string;
 }
+const ListGroupsRequest = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<ListGroupsRequest>;
+
 export type GroupList = Array<Group>;
+const GroupList = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<GroupList>;
+
 /** Response message for GroupsService.ListGroups. */
 export interface ListGroupsResponse {
   /** A list of groups that match the API request parameters. Each item in the list represents a `group` resource. */
@@ -222,6 +274,8 @@ export interface ListGroupsResponse {
   /** Identifies the API resource's type. The value will be `youtube#groupListResponse`. */
   kind?: string;
 }
+const ListGroupsResponse = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<ListGroupsResponse>;
+
 export interface QueryReportsRequest {
   /** The currency to which financial metrics should be converted. The default is US Dollar (USD). If the result contains no financial metrics, this flag will be ignored. Responds with an error if the specified currency is not recognized.", pattern: [A-Z]{3} */
   currency?: string;
@@ -246,6 +300,8 @@ export interface QueryReportsRequest {
   /** A comma-separated list of YouTube Analytics metrics, such as `views` or `likes,dislikes`. See the [Available Reports](/youtube/analytics/v2/available_reports) document for a list of the reports that you can retrieve and the metrics available in each report, and see the [Metrics](/youtube/analytics/v2/dimsmets/mets) document for definitions of those metrics. required: true, pattern: [0-9a-zA-Z,]+ */
   metrics?: string;
 }
+const QueryReportsRequest = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<QueryReportsRequest>;
+
 /** The description of a column of the result table. */
 export interface ResultTableColumnHeader {
   /** The name of the dimension or metric. */
@@ -255,9 +311,23 @@ export interface ResultTableColumnHeader {
   /** The type of the data in the column (`STRING`, `INTEGER`, `FLOAT`, etc.). */
   dataType?: string;
 }
+const ResultTableColumnHeader = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<ResultTableColumnHeader>;
+
 export type ResultTableColumnHeaderList = Array<ResultTableColumnHeader>;
+const ResultTableColumnHeaderList = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<ResultTableColumnHeaderList>;
+
 export type DocumentList = Array<unknown>;
+const DocumentList = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<DocumentList>;
+
 export type DocumentListList = Array<DocumentList>;
+const DocumentListList = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<DocumentListList>;
+
 /** Response message for TargetedQueriesService.Query. */
 export interface QueryResponse {
   /** This value specifies information about the data returned in the `rows` fields. Each item in the `columnHeaders` list identifies a field returned in the `rows` value, which contains a list of comma-delimited data. The `columnHeaders` list will begin with the dimensions specified in the API request, which will be followed by the metrics specified in the API request. The order of both dimensions and metrics will match the ordering in the API request. For example, if the API request contains the parameters `dimensions=ageGroup,gender&metrics=viewerPercentage`, the API response will return columns in this order: `ageGroup`, `gender`, `viewerPercentage`. */
@@ -269,12 +339,16 @@ export interface QueryResponse {
   /** This value specifies the type of data included in the API response. For the query method, the kind property value will be `youtubeAnalytics#resultTable`. */
   kind?: string;
 }
+const QueryResponse = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<QueryResponse>;
+
 export interface UpdateGroupsRequest {
   /** This parameter can only be used in a properly authorized request. **Note:** This parameter is intended exclusively for YouTube content partners that own and manage many different YouTube channels. The `onBehalfOfContentOwner` parameter indicates that the request's authorization credentials identify a YouTube user who is acting on behalf of the content owner specified in the parameter value. It allows content owners to authenticate once and get access to all their video and channel data, without having to provide authentication credentials for each individual channel. The account that the user authenticates with must be linked to the specified YouTube content owner. */
   onBehalfOfContentOwner?: string;
   /** Request body */
   body?: Group;
 }
+const UpdateGroupsRequest = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<UpdateGroupsRequest>;
+
 export type DeleteGroupItemsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Removes an item from a group. */
 export const deleteGroupItems: API.OperationMethod<
@@ -283,8 +357,8 @@ export const deleteGroupItems: API.OperationMethod<
   DeleteGroupItemsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<DeleteGroupItemsRequest>,
-  output: __S(5) as any as S.Schema<EmptyResponse>,
+  input: DeleteGroupItemsRequest,
+  output: EmptyResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -298,8 +372,8 @@ export const deleteGroups: API.OperationMethod<
   DeleteGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6) as any as S.Schema<DeleteGroupsRequest>,
-  output: __S(5) as any as S.Schema<EmptyResponse>,
+  input: DeleteGroupsRequest,
+  output: EmptyResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -313,8 +387,8 @@ export const insertGroupItems: API.OperationMethod<
   InsertGroupItemsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9) as any as S.Schema<InsertGroupItemsRequest>,
-  output: __S(8) as any as S.Schema<GroupItem>,
+  input: InsertGroupItemsRequest,
+  output: GroupItem,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -328,8 +402,8 @@ export const insertGroups: API.OperationMethod<
   InsertGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13) as any as S.Schema<InsertGroupsRequest>,
-  output: __S(12) as any as S.Schema<Group>,
+  input: InsertGroupsRequest,
+  output: Group,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -343,8 +417,8 @@ export const listGroupItems: API.OperationMethod<
   ListGroupItemsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14) as any as S.Schema<ListGroupItemsRequest>,
-  output: __S(16) as any as S.Schema<ListGroupItemsResponse>,
+  input: ListGroupItemsRequest,
+  output: ListGroupItemsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -359,8 +433,8 @@ export const listGroups: API.PaginatedOperationMethod<
   GcpOpContext,
   Group
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(17) as any as S.Schema<ListGroupsRequest>,
-  output: __S(19) as any as S.Schema<ListGroupsResponse>,
+  input: ListGroupsRequest,
+  output: ListGroupsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -375,8 +449,8 @@ export const queryReports: API.OperationMethod<
   QueryReportsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20) as any as S.Schema<QueryReportsRequest>,
-  output: __S(25) as any as S.Schema<QueryResponse>,
+  input: QueryReportsRequest,
+  output: QueryResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -390,8 +464,8 @@ export const updateGroups: API.OperationMethod<
   UpdateGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26) as any as S.Schema<UpdateGroupsRequest>,
-  output: __S(12) as any as S.Schema<Group>,
+  input: UpdateGroupsRequest,
+  output: Group,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -418,29 +492,29 @@ function __c0(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          argument: S.optional(__S(1)),
+          argument: S.optional(StringList),
           code: S.optional(S.String),
           externalErrorMessage: S.optional(S.String),
           debugInfo: S.optional(S.String),
           location: S.optional(S.String),
           domain: S.optional(S.String),
-          locationType: S.optional(S.String),
+          locationType: S.optional(ErrorProtoLocationTypeEnum),
         }),
       ).annotate({ identifier: "ErrorProto" });
     case 3:
-      return S.Array(__S(2));
+      return S.Array(ErrorProto);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          code: S.optional(S.String),
+          code: S.optional(ErrorsCodeEnum),
           requestId: S.optional(S.String),
-          error: S.optional(__S(3)),
+          error: S.optional(ErrorProtoList),
         }),
       ).annotate({ identifier: "Errors" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          errors: S.optional(__S(4)),
+          errors: S.optional(Errors),
         }),
       ).annotate({ identifier: "EmptyResponse" });
     case 6:
@@ -471,9 +545,9 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           etag: S.optional(S.String),
-          errors: S.optional(__S(4)),
+          errors: S.optional(Errors),
           kind: S.optional(S.String),
-          resource: S.optional(__S(7)),
+          resource: S.optional(GroupItemResource),
           groupId: S.optional(S.String),
           id: S.optional(S.String),
         }),
@@ -482,7 +556,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           onBehalfOfContentOwner: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(8).pipe(T.HttpBody())),
+          body: S.optional(GroupItem.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -508,19 +582,19 @@ function __c1(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          snippet: S.optional(__S(10)),
+          snippet: S.optional(GroupSnippet),
           kind: S.optional(S.String),
-          contentDetails: S.optional(__S(11)),
+          contentDetails: S.optional(GroupContentDetails),
           etag: S.optional(S.String),
           id: S.optional(S.String),
-          errors: S.optional(__S(4)),
+          errors: S.optional(Errors),
         }),
       ).annotate({ identifier: "Group" });
     case 5:
       return S.suspend(() =>
         S.Struct({
           onBehalfOfContentOwner: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(12).pipe(T.HttpBody())),
+          body: S.optional(Group.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -543,7 +617,7 @@ function __c1(j: number): any {
         ),
       ).annotate({ identifier: "ListGroupItemsRequest" });
     case 7:
-      return S.Array(__S(8));
+      return S.Array(GroupItem);
   }
 }
 function __c2(j: number): any {
@@ -551,10 +625,10 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          items: S.optional(__S(15)),
+          items: S.optional(GroupItemList),
           kind: S.optional(S.String),
           etag: S.optional(S.String),
-          errors: S.optional(__S(4)),
+          errors: S.optional(Errors),
         }),
       ).annotate({ identifier: "ListGroupItemsResponse" });
     case 1:
@@ -573,13 +647,13 @@ function __c2(j: number): any {
         ),
       ).annotate({ identifier: "ListGroupsRequest" });
     case 2:
-      return S.Array(__S(12));
+      return S.Array(Group);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          items: __S(18),
+          items: GroupList,
           etag: S.optional(S.String),
-          errors: S.optional(__S(4)),
+          errors: S.optional(Errors),
           nextPageToken: S.optional(S.String),
           kind: S.optional(S.String),
         }),
@@ -615,7 +689,7 @@ function __c2(j: number): any {
         }),
       ).annotate({ identifier: "ResultTableColumnHeader" });
     case 6:
-      return S.Array(__S(21));
+      return S.Array(ResultTableColumnHeader);
     case 7:
       return S.Array(S.Unknown);
   }
@@ -623,13 +697,13 @@ function __c2(j: number): any {
 function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(23));
+      return S.Array(DocumentList);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          columnHeaders: S.optional(__S(22)),
-          rows: S.optional(__S(24)),
-          errors: S.optional(__S(4)),
+          columnHeaders: S.optional(ResultTableColumnHeaderList),
+          rows: S.optional(DocumentListList),
+          errors: S.optional(Errors),
           kind: S.optional(S.String),
         }),
       ).annotate({ identifier: "QueryResponse" });
@@ -637,7 +711,7 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           onBehalfOfContentOwner: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(12).pipe(T.HttpBody())),
+          body: S.optional(Group.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -646,22 +720,5 @@ function __c3(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateGroupsRequest" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
   }
 }

@@ -8,8 +8,6 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 const svc = /*@__PURE__*/ T.AwsApiService({ sdkId: "SimpleDBv2", serviceShapeName: "SimpleDBv2" });
 const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "sdb" });
 const ver = /*@__PURE__*/ T.ServiceVersion("2025-09-26");
@@ -118,13 +116,18 @@ export type ExportArn = string;
 export interface GetExportRequest {
   exportArn: string;
 }
+const GetExportRequest = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<GetExportRequest>;
 export type IdempotencyToken = string;
 export type ExportStatus = "PENDING" | "IN_PROGRESS" | "SUCCEEDED" | "FAILED" | (string & {});
+const ExportStatus = S.String;
+
 export type DomainName = string;
 export type RequestedAt = Date;
 export type S3BucketName = string;
 export type S3KeyPrefix = string;
 export type S3SseAlgorithm = "AES256" | "KMS" | (string & {});
+const S3SseAlgorithm = S.String;
+
 export type S3SseKmsKeyId = string;
 export type AwsAccountId = string;
 export type FailureCode = string;
@@ -149,6 +152,7 @@ export interface GetExportResponse {
   itemsCount?: number;
   exportDataCutoffTime?: Date;
 }
+const GetExportResponse = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<GetExportResponse>;
 export type MaxResults = number;
 export type NextToken = string;
 export interface ListExportsRequest {
@@ -156,17 +160,21 @@ export interface ListExportsRequest {
   maxResults?: number;
   nextToken?: string;
 }
+const ListExportsRequest = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<ListExportsRequest>;
 export interface ExportSummary {
   exportArn: string;
   exportStatus: ExportStatus;
   requestedAt: Date;
   domainName: string;
 }
+const ExportSummary = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<ExportSummary>;
 export type ExportSummaries = ExportSummary[];
+const ExportSummaries = /*@__PURE__*/ __L.at(__c0, 4);
 export interface ListExportsResponse {
   exportSummaries: ExportSummary[];
   nextToken?: string;
 }
+const ListExportsResponse = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<ListExportsResponse>;
 export interface StartDomainExportRequest {
   clientToken?: string;
   domainName: string;
@@ -176,11 +184,19 @@ export interface StartDomainExportRequest {
   s3SseKmsKeyId?: string;
   s3BucketOwner?: string;
 }
+const StartDomainExportRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<StartDomainExportRequest>;
 export interface StartDomainExportResponse {
   clientToken: string;
   exportArn: string;
   requestedAt: Date;
 }
+const StartDomainExportResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<StartDomainExportResponse>;
 export type GetExportError = InvalidParameterValueException | NoSuchExportException | CommonErrors;
 /**
  * Returns information for an existing domain export.
@@ -191,8 +207,8 @@ export const getExport: API.OperationMethod<
   GetExportError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<GetExportRequest>,
-  output: __S(1) as any as S.Schema<GetExportResponse>,
+  input: GetExportRequest,
+  output: GetExportResponse,
   errors: [InvalidParameterValueException, NoSuchExportException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -214,8 +230,8 @@ export const listExports: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ExportSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(2) as any as S.Schema<ListExportsRequest>,
-  output: __S(5) as any as S.Schema<ListExportsResponse>,
+  input: ListExportsRequest,
+  output: ListExportsResponse,
   errors: [InvalidNextTokenException, InvalidParameterValueException, NoSuchDomainException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -244,8 +260,8 @@ export const startDomainExport: API.OperationMethod<
   StartDomainExportError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6) as any as S.Schema<StartDomainExportRequest>,
-  output: __S(7) as any as S.Schema<StartDomainExportResponse>,
+  input: StartDomainExportRequest,
+  output: StartDomainExportResponse,
   errors: [
     ConflictException,
     InvalidParameterCombinationException,
@@ -272,12 +288,12 @@ function __c0(j: number): any {
         S.Struct({
           exportArn: S.String,
           clientToken: S.String,
-          exportStatus: S.String,
+          exportStatus: ExportStatus,
           domainName: S.String,
           requestedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           s3Bucket: S.String,
           s3KeyPrefix: S.optional(S.String),
-          s3SseAlgorithm: S.optional(S.String),
+          s3SseAlgorithm: S.optional(S3SseAlgorithm),
           s3SseKmsKeyId: S.optional(S.String),
           s3BucketOwner: S.optional(S.String),
           failureCode: S.optional(S.String),
@@ -301,16 +317,16 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           exportArn: S.String,
-          exportStatus: S.String,
+          exportStatus: ExportStatus,
           requestedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           domainName: S.String,
         }),
       ).annotate({ identifier: "ExportSummary" });
     case 4:
-      return S.Array(__S(3));
+      return S.Array(ExportSummary);
     case 5:
       return S.suspend(() =>
-        S.Struct({ exportSummaries: __S(4), nextToken: S.optional(S.String) }),
+        S.Struct({ exportSummaries: ExportSummaries, nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListExportsResponse" });
     case 6:
       return S.suspend(() =>
@@ -319,7 +335,7 @@ function __c0(j: number): any {
           domainName: S.String,
           s3Bucket: S.String,
           s3KeyPrefix: S.optional(S.String),
-          s3SseAlgorithm: S.optional(S.String),
+          s3SseAlgorithm: S.optional(S3SseAlgorithm),
           s3SseKmsKeyId: S.optional(S.String),
           s3BucketOwner: S.optional(S.String),
         }).pipe(
@@ -343,16 +359,5 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "StartDomainExportResponse",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
   }
 }

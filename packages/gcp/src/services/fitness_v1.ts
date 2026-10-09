@@ -7,8 +7,6 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -70,6 +68,8 @@ export interface BucketByActivity {
   /** The default activity stream will be used if a specific activityDataSourceId is not specified. */
   activityDataSourceId?: string;
 }
+const BucketByActivity = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<BucketByActivity>;
+
 export type AggregateRequestFilteredDataQualityStandardItemEnum =
   | "dataQualityUnknown"
   | "dataQualityBloodPressureEsh2002"
@@ -81,21 +81,34 @@ export type AggregateRequestFilteredDataQualityStandardItemEnum =
   | "dataQualityBloodPressureBhsBB"
   | "dataQualityBloodGlucoseIso151972003"
   | "dataQualityBloodGlucoseIso151972013";
+const AggregateRequestFilteredDataQualityStandardItemEnum = S.String;
+
 export type AggregateRequestFilteredDataQualityStandardItemEnumList = Array<
   AggregateRequestFilteredDataQualityStandardItemEnum | (string & {})
 >;
+const AggregateRequestFilteredDataQualityStandardItemEnumList = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<AggregateRequestFilteredDataQualityStandardItemEnumList>;
+
 export type BucketByTimePeriodTypeEnum = "day" | "week" | "month";
+const BucketByTimePeriodTypeEnum = S.String;
+
 export interface BucketByTimePeriod {
   type?: BucketByTimePeriodTypeEnum | (string & {});
   /** org.joda.timezone.DateTimeZone */
   timeZoneId?: string;
   value?: number;
 }
+const BucketByTimePeriod = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<BucketByTimePeriod>;
+
 export interface BucketByTime {
   /** Specifies that result buckets aggregate data by exactly durationMillis time frames. Time frames that contain no data will be included in the response with an empty dataset. */
   durationMillis?: string;
   period?: BucketByTimePeriod;
 }
+const BucketByTime = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<BucketByTime>;
+
 /** The specification of which data to aggregate. */
 export interface AggregateBy {
   /** A data source ID to aggregate. Only data from the specified data source ID will be included in the aggregation. If specified, this data source must exist; the OAuth scopes in the supplied credentials must grant read access to this data type. The dataset in the response will have the same data source ID. Note: Data can be aggregated by either the dataTypeName or the dataSourceId, not both. */
@@ -103,11 +116,17 @@ export interface AggregateBy {
   /** The data type to aggregate. All data sources providing this data type will contribute data to the aggregation. The response will contain a single dataset for this data type name. The dataset will have a data source ID of derived::com.google.android.gms:aggregated. If the user has no data for this data type, an empty data set will be returned. Note: Data can be aggregated by either the dataTypeName or the dataSourceId, not both. */
   dataTypeName?: string;
 }
+const AggregateBy = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<AggregateBy>;
+
 export type AggregateByList = Array<AggregateBy>;
+const AggregateByList = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<AggregateByList>;
+
 export interface BucketBySession {
   /** Specifies that only sessions of duration longer than minDurationMillis are considered and used as a container for aggregated data. */
   minDurationMillis?: string;
 }
+const BucketBySession = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<BucketBySession>;
+
 /** Next id: 10 */
 export interface AggregateRequest {
   /** Specifies that data be aggregated by the type of activity being performed when the data was recorded. All data that was recorded during a certain activity type (.for the given time range) will be aggregated into the same bucket. Data that was recorded while the user was not active will not be included in the response. Mutually exclusive of other bucketing specifications. */
@@ -127,12 +146,19 @@ export interface AggregateRequest {
   /** Specifies that data be aggregated by user sessions. Data that does not fall within the time range of a session will not be included in the response. Mutually exclusive of other bucketing specifications. */
   bucketBySession?: BucketBySession;
 }
+const AggregateRequest = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<AggregateRequest>;
+
 export interface AggregateUsersDatasetRequest {
   /** Aggregate data for the person identified. Use me to indicate the authenticated user. Only me is supported at this time. */
   userId: string;
   /** Request body */
   body?: AggregateRequest;
 }
+const AggregateUsersDatasetRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<AggregateUsersDatasetRequest>;
+
 export interface Application {
   /** Package name for this application. This is used as a unique identifier when created by Android applications, but cannot be specified by REST clients. REST clients will have their developer project number reflected into the Data Source data stream IDs, instead of the packageName. */
   packageName?: string;
@@ -143,6 +169,8 @@ export interface Application {
   /** An optional URI that can be used to link back to the application. */
   detailsUrl?: string;
 }
+const Application = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<Application>;
+
 /** Sessions contain metadata, such as a user-friendly name and time interval information. */
 export interface Session {
   /** A human readable name of the session. */
@@ -164,16 +192,24 @@ export interface Session {
   /** An end time, in milliseconds since epoch, inclusive. */
   endTimeMillis?: string;
 }
+const Session = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<Session>;
+
 /** Holder object for the value of an entry in a map field of a data point. A map value supports a subset of the formats that the regular Value supports. */
 export interface MapValue {
   /** Floating point value. */
   fpVal?: number;
 }
+const MapValue = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<MapValue>;
+
 export interface ValueMapValEntry {
   key?: string;
   value?: MapValue;
 }
+const ValueMapValEntry = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<ValueMapValEntry>;
+
 export type ValueMapValEntryList = Array<ValueMapValEntry>;
+const ValueMapValEntryList = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<ValueMapValEntryList>;
+
 /** Holder object for the value of a single field in a data point. A field value has a particular format and is only ever set to one of an integer or a floating point value. */
 export interface Value {
   /** Floating point value. When this is set, other values must not be set. */
@@ -185,7 +221,11 @@ export interface Value {
   /** Integer value. When this is set, other values must not be set. */
   intVal?: number;
 }
+const Value = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<Value>;
+
 export type ValueList = Array<Value>;
+const ValueList = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<ValueList>;
+
 /** Represents a single data point, generated by a particular data source. A data point holds a value for each field, an end timestamp and an optional start time. The exact semantics of each of these attributes are specified in the documentation for the particular data type. A data point can represent an instantaneous measurement, reading or input observation, as well as averages or aggregates over a time interval. Check the data type documentation to determine which is the case for a particular data type. Data points always contain one value for each field of the data type. */
 export interface DataPoint {
   /** Values of each data type field for the data point. It is expected that each value corresponding to a data type field will occur in the same order that the field is listed with in the data type specified in a data source. Only one of integer and floating point fields will be populated, depending on the format enum value within data source's type field. */
@@ -205,7 +245,11 @@ export interface DataPoint {
   /** Indicates the last time this data point was modified. Useful only in contexts where we are listing the data changes, rather than representing the current state of the data. */
   modifiedTimeMillis?: string;
 }
+const DataPoint = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<DataPoint>;
+
 export type DataPointList = Array<DataPoint>;
+const DataPointList = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<DataPointList>;
+
 /** A dataset represents a projection container for data points. They do not carry any info of their own. Datasets represent a set of data points from a particular data source. A data point can be found in more than one dataset. */
 export interface Dataset {
   /** A partial list of data points contained in the dataset, ordered by endTimeNanos. This list is considered complete when retrieving a small dataset and partial when patching a dataset or retrieving a dataset that is too large to include in a single response. */
@@ -219,13 +263,19 @@ export interface Dataset {
   /** The largest end time of all data points in this possibly partial representation of the dataset. Time is in nanoseconds from epoch. This should also match the second part of the dataset identifier. */
   maxEndTimeNs?: string;
 }
+const Dataset = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<Dataset>;
+
 export type DatasetList = Array<Dataset>;
+const DatasetList = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<DatasetList>;
+
 export type AggregateBucketTypeEnum =
   | "unknown"
   | "time"
   | "session"
   | "activityType"
   | "activitySegment";
+const AggregateBucketTypeEnum = S.String;
+
 export interface AggregateBucket {
   /** Available for Bucket.Type.ACTIVITY_TYPE, Bucket.Type.ACTIVITY_SEGMENT */
   activity?: number;
@@ -240,11 +290,17 @@ export interface AggregateBucket {
   /** The type of a bucket signifies how the data aggregation is performed in the bucket. */
   type?: AggregateBucketTypeEnum;
 }
+const AggregateBucket = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<AggregateBucket>;
+
 export type AggregateBucketList = Array<AggregateBucket>;
+const AggregateBucketList = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<AggregateBucketList>;
+
 export interface AggregateResponse {
   /** A list of buckets containing the aggregated data. */
   bucket?: AggregateBucketList;
 }
+const AggregateResponse = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<AggregateResponse>;
+
 export type DeviceTypeEnum =
   | "unknown"
   | "phone"
@@ -254,6 +310,8 @@ export type DeviceTypeEnum =
   | "scale"
   | "headMounted"
   | "smartDisplay";
+const DeviceTypeEnum = S.String;
+
 /** Representation of an integrated device (such as a phone or a wearable) that can hold sensors. Each sensor is exposed as a data source. The main purpose of the device information contained in this class is to identify the hardware of a particular data source. This can be useful in different ways, including: - Distinguishing two similar sensors on different devices (the step counter on two nexus 5 phones, for instance) - Display the source of data to the user (by using the device make / model) - Treat data differently depending on sensor type (accelerometers on a watch may give different patterns than those on a phone) - Build different analysis models for each device/version. */
 export interface Device {
   /** Version string for the device hardware/software. */
@@ -267,6 +325,8 @@ export interface Device {
   /** The serial number or other unique ID for the hardware. This field is obfuscated when read by any REST or Android client that did not create the data source. Only the data source creator will see the uid field in clear and normal form. The obfuscation preserves equality; that is, given two IDs, if id1 == id2, obfuscated(id1) == obfuscated(id2). */
   uid?: string;
 }
+const Device = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<Device>;
+
 export type DataTypeFieldFormatEnum =
   | "integer"
   | "floatPoint"
@@ -275,6 +335,8 @@ export type DataTypeFieldFormatEnum =
   | "integerList"
   | "floatList"
   | "blob";
+const DataTypeFieldFormatEnum = S.String;
+
 /** In case of multi-dimensional data (such as an accelerometer with x, y, and z axes) each field represents one dimension. Each data type field has a unique name which identifies it. The field also defines the format of the data (int, float, etc.). This message is only instantiated in code and not used for wire comms or stored in any way. */
 export interface DataTypeField {
   /** The different supported formats for each field in a data type. */
@@ -283,14 +345,22 @@ export interface DataTypeField {
   /** Defines the name and format of data. Unlike data type names, field names are not namespaced, and only need to be unique within the data type. */
   name?: string;
 }
+const DataTypeField = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<DataTypeField>;
+
 export type DataTypeFieldList = Array<DataTypeField>;
+const DataTypeFieldList = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<DataTypeFieldList>;
+
 export interface DataType {
   /** A field represents one dimension of a data type. */
   field?: DataTypeFieldList;
   /** Each data type has a unique, namespaced, name. All data types in the com.google namespace are shared as part of the platform. */
   name?: string;
 }
+const DataType = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<DataType>;
+
 export type DataSourceTypeEnum = "raw" | "derived";
+const DataSourceTypeEnum = S.String;
+
 export type DataSourceDataQualityStandardItemEnum =
   | "dataQualityUnknown"
   | "dataQualityBloodPressureEsh2002"
@@ -305,6 +375,9 @@ export type DataSourceDataQualityStandardItemEnum =
 export type DataSourceDataQualityStandardItemEnumList = Array<
   DataSourceDataQualityStandardItemEnum | (string & {})
 >;
+const DataSourceDataQualityStandardItemEnumList =
+  AggregateRequestFilteredDataQualityStandardItemEnumList as any as S.Schema<DataSourceDataQualityStandardItemEnumList>;
+
 /** Definition of a unique source of sensor data. Data sources can expose raw data coming from hardware sensors on local or companion devices. They can also expose derived data, created by transforming or merging other data sources. Multiple data sources can exist for the same data type. Every data point inserted into or read from this service has an associated data source. The data source contains enough information to uniquely identify its data, including the hardware device and the application that collected and/or transformed the data. It also holds useful metadata, such as the hardware and application versions, and the device type. Each data source produces a unique stream of data, with a unique identifier. Not all changes to data source affect the stream identifier, so that data collected by updated versions of the same application/device can still be considered to belong to the same data stream. */
 export interface DataSource {
   /** A unique identifier for the data stream produced by this data source. The identifier includes: - The physical device's manufacturer, model, and serial number (UID). - The application's package name or name. Package name is used when the data source was created by an Android application. The developer project number is used when the data source was created by a REST client. - The data source's type. - The data source's stream name. Note that not all attributes of the data source are used as part of the stream identifier. In particular, the version of the hardware/the application isn't used. This allows us to preserve the same stream through version updates. This also means that two DataSource objects may represent the same data stream even if they're not equal. The exact format of the data stream ID created by an Android application is: type:dataType.name:application.packageName:device.manufacturer:device.model:device.uid:dataStreamName The exact format of the data stream ID created by a REST client is: type:dataType.name:developer project number:device.manufacturer:device.model:device.uid:dataStreamName When any of the optional fields that make up the data stream ID are absent, they will be omitted from the data stream ID. The minimum viable data stream ID would be: type:dataType.name:developer project number Finally, the developer project number and device UID are obfuscated when read by any REST or Android client that did not create the data source. Only the data source creator will see the developer project number in clear and normal form. This means a client will see a different set of data_stream_ids than another client with different credentials. */
@@ -324,18 +397,30 @@ export interface DataSource {
   /** DO NOT POPULATE THIS FIELD. It is never populated in responses from the platform, and is ignored in queries. It will be removed in a future version entirely. */
   dataQualityStandard?: DataSourceDataQualityStandardItemEnumList;
 }
+const DataSource = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<DataSource>;
+
 export interface CreateUsersDataSourcesRequest {
   /** Create the data source for the person identified. Use me to indicate the authenticated user. Only me is supported at this time. */
   userId: string;
   /** Request body */
   body?: DataSource;
 }
+const CreateUsersDataSourcesRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<CreateUsersDataSourcesRequest>;
+
 export interface DeleteUsersDataSourcesRequest {
   /** Retrieve a data source for the person identified. Use me to indicate the authenticated user. Only me is supported at this time. */
   userId: string;
   /** The data stream ID of the data source to delete. */
   dataSourceId: string;
 }
+const DeleteUsersDataSourcesRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<DeleteUsersDataSourcesRequest>;
+
 export interface DeleteUsersDataSourcesDatasetsRequest {
   /** The data stream ID of the data source that created the dataset. */
   dataSourceId: string;
@@ -344,20 +429,45 @@ export interface DeleteUsersDataSourcesDatasetsRequest {
   /** Delete a dataset for the person identified. Use me to indicate the authenticated user. Only me is supported at this time. */
   userId: string;
 }
+const DeleteUsersDataSourcesDatasetsRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<DeleteUsersDataSourcesDatasetsRequest>;
+
 export interface DeleteUsersDataSourcesDatasetsResponse {}
+const DeleteUsersDataSourcesDatasetsResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<DeleteUsersDataSourcesDatasetsResponse>;
+
 export interface DeleteUsersSessionsRequest {
   /** Delete a session for the person identified. Use me to indicate the authenticated user. Only me is supported at this time. */
   userId: string;
   /** The ID of the session to be deleted. */
   sessionId: string;
 }
+const DeleteUsersSessionsRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<DeleteUsersSessionsRequest>;
+
 export interface DeleteUsersSessionsResponse {}
+const DeleteUsersSessionsResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<DeleteUsersSessionsResponse>;
+
 export interface GetUsersDataSourcesRequest {
   /** Retrieve a data source for the person identified. Use me to indicate the authenticated user. Only me is supported at this time. */
   userId: string;
   /** The data stream ID of the data source to retrieve. */
   dataSourceId: string;
 }
+const GetUsersDataSourcesRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<GetUsersDataSourcesRequest>;
+
 export interface GetUsersDataSourcesDatasetsRequest {
   /** Dataset identifier that is a composite of the minimum data point start time and maximum data point end time represented as nanoseconds from the epoch. The ID is formatted like: "startTime-endTime" where startTime and endTime are 64 bit integers. */
   datasetId: string;
@@ -370,18 +480,37 @@ export interface GetUsersDataSourcesDatasetsRequest {
   /** Retrieve a dataset for the person identified. Use me to indicate the authenticated user. Only me is supported at this time. */
   userId: string;
 }
+const GetUsersDataSourcesDatasetsRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<GetUsersDataSourcesDatasetsRequest>;
+
 export type StringList = Array<string>;
+const StringList = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<StringList>;
+
 export interface ListUsersDataSourcesRequest {
   /** The names of data types to include in the list. If not specified, all data sources will be returned. */
   dataTypeName?: StringList;
   /** List data sources for the person identified. Use me to indicate the authenticated user. Only me is supported at this time. */
   userId: string;
 }
+const ListUsersDataSourcesRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<ListUsersDataSourcesRequest>;
+
 export type DataSourceList = Array<DataSource>;
+const DataSourceList = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<DataSourceList>;
+
 export interface ListDataSourcesResponse {
   /** A previously created data source. */
   dataSource?: DataSourceList;
 }
+const ListDataSourcesResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<ListDataSourcesResponse>;
+
 export interface ListUsersDataSourcesDataPointChangesRequest {
   /** The data stream ID of the data source that created the dataset. */
   dataSourceId: string;
@@ -392,6 +521,11 @@ export interface ListUsersDataSourcesDataPointChangesRequest {
   /** If specified, no more than this many data point changes will be included in the response. */
   limit?: number;
 }
+const ListUsersDataSourcesDataPointChangesRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  0,
+) as any as S.Schema<ListUsersDataSourcesDataPointChangesRequest>;
+
 export interface ListDataPointChangesResponse {
   /** Inserted data points for the user. */
   insertedDataPoint?: DataPointList;
@@ -402,7 +536,14 @@ export interface ListDataPointChangesResponse {
   /** Deleted data points for the user. Note, for modifications this should be parsed before handling insertions. */
   deletedDataPoint?: DataPointList;
 }
+const ListDataPointChangesResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  1,
+) as any as S.Schema<ListDataPointChangesResponse>;
+
 export type IntegerList = Array<number>;
+const IntegerList = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<IntegerList>;
+
 export interface ListUsersSessionsRequest {
   /** An RFC3339 timestamp. Only sessions starting before endTime and ending after startTime up to (endTime + 1 day) will be included in the response. If this time is omitted but startTime is specified, all sessions ending after startTime to the end of time will be returned. */
   endTime?: string;
@@ -417,7 +558,14 @@ export interface ListUsersSessionsRequest {
   /** If non-empty, only sessions with these activity types should be returned. */
   activityType?: IntegerList;
 }
+const ListUsersSessionsRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<ListUsersSessionsRequest>;
+
 export type SessionList = Array<Session>;
+const SessionList = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<SessionList>;
+
 export interface ListSessionsResponse {
   /** Flag to indicate server has more data to transfer. DO NOT USE THIS FIELD. It is never populated in responses from the server. */
   hasMoreData?: boolean;
@@ -428,6 +576,8 @@ export interface ListSessionsResponse {
   /** If includeDeleted is set to true in the request, and startTime and endTime are omitted, this will include sessions which were deleted since the last sync. */
   deletedSession?: SessionList;
 }
+const ListSessionsResponse = /*@__PURE__*/ __L.at(__c5, 5) as any as S.Schema<ListSessionsResponse>;
+
 export interface PatchUsersDataSourcesDatasetsRequest {
   /** Patch a dataset for the person identified. Use me to indicate the authenticated user. Only me is supported at this time. */
   userId: string;
@@ -438,6 +588,11 @@ export interface PatchUsersDataSourcesDatasetsRequest {
   /** Request body */
   body?: Dataset;
 }
+const PatchUsersDataSourcesDatasetsRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  6,
+) as any as S.Schema<PatchUsersDataSourcesDatasetsRequest>;
+
 export interface UpdateUsersDataSourcesRequest {
   /** Update the data source for the person identified. Use me to indicate the authenticated user. Only me is supported at this time. */
   userId: string;
@@ -446,6 +601,11 @@ export interface UpdateUsersDataSourcesRequest {
   /** Request body */
   body?: DataSource;
 }
+const UpdateUsersDataSourcesRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  7,
+) as any as S.Schema<UpdateUsersDataSourcesRequest>;
+
 export interface UpdateUsersSessionsRequest {
   /** The ID of the session to be created. */
   sessionId: string;
@@ -454,6 +614,11 @@ export interface UpdateUsersSessionsRequest {
   /** Request body */
   body?: Session;
 }
+const UpdateUsersSessionsRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<UpdateUsersSessionsRequest>;
+
 export type AggregateUsersDatasetError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Aggregates data of a certain type or stream into buckets divided by a given type of boundary. Multiple data sets of multiple types and from multiple sources can be aggregated into exactly one bucket type per request. */
 export const aggregateUsersDataset: API.OperationMethod<
@@ -462,8 +627,8 @@ export const aggregateUsersDataset: API.OperationMethod<
   AggregateUsersDatasetError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8) as any as S.Schema<AggregateUsersDatasetRequest>,
-  output: __S(22) as any as S.Schema<AggregateResponse>,
+  input: AggregateUsersDatasetRequest,
+  output: AggregateResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -477,8 +642,8 @@ export const createUsersDataSources: API.OperationMethod<
   CreateUsersDataSourcesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28) as any as S.Schema<CreateUsersDataSourcesRequest>,
-  output: __S(27) as any as S.Schema<DataSource>,
+  input: CreateUsersDataSourcesRequest,
+  output: DataSource,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -492,8 +657,8 @@ export const deleteUsersDataSources: API.OperationMethod<
   DeleteUsersDataSourcesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29) as any as S.Schema<DeleteUsersDataSourcesRequest>,
-  output: __S(27) as any as S.Schema<DataSource>,
+  input: DeleteUsersDataSourcesRequest,
+  output: DataSource,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -512,8 +677,8 @@ export const deleteUsersDataSourcesDatasets: API.OperationMethod<
   DeleteUsersDataSourcesDatasetsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30) as any as S.Schema<DeleteUsersDataSourcesDatasetsRequest>,
-  output: __S(31) as any as S.Schema<DeleteUsersDataSourcesDatasetsResponse>,
+  input: DeleteUsersDataSourcesDatasetsRequest,
+  output: DeleteUsersDataSourcesDatasetsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -527,8 +692,8 @@ export const deleteUsersSessions: API.OperationMethod<
   DeleteUsersSessionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32) as any as S.Schema<DeleteUsersSessionsRequest>,
-  output: __S(33) as any as S.Schema<DeleteUsersSessionsResponse>,
+  input: DeleteUsersSessionsRequest,
+  output: DeleteUsersSessionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -542,8 +707,8 @@ export const getUsersDataSources: API.OperationMethod<
   GetUsersDataSourcesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34) as any as S.Schema<GetUsersDataSourcesRequest>,
-  output: __S(27) as any as S.Schema<DataSource>,
+  input: GetUsersDataSourcesRequest,
+  output: DataSource,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -558,8 +723,8 @@ export const getUsersDataSourcesDatasets: API.PaginatedOperationMethod<
   GcpOpContext,
   Dataset
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(35) as any as S.Schema<GetUsersDataSourcesDatasetsRequest>,
-  output: __S(18) as any as S.Schema<Dataset>,
+  input: GetUsersDataSourcesDatasetsRequest,
+  output: Dataset,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -574,8 +739,8 @@ export const listUsersDataSources: API.OperationMethod<
   ListUsersDataSourcesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37) as any as S.Schema<ListUsersDataSourcesRequest>,
-  output: __S(39) as any as S.Schema<ListDataSourcesResponse>,
+  input: ListUsersDataSourcesRequest,
+  output: ListDataSourcesResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -590,8 +755,8 @@ export const listUsersDataSourcesDataPointChanges: API.PaginatedOperationMethod<
   GcpOpContext,
   ListDataPointChangesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(40) as any as S.Schema<ListUsersDataSourcesDataPointChangesRequest>,
-  output: __S(41) as any as S.Schema<ListDataPointChangesResponse>,
+  input: ListUsersDataSourcesDataPointChangesRequest,
+  output: ListDataPointChangesResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -607,8 +772,8 @@ export const listUsersSessions: API.PaginatedOperationMethod<
   GcpOpContext,
   ListSessionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(43) as any as S.Schema<ListUsersSessionsRequest>,
-  output: __S(45) as any as S.Schema<ListSessionsResponse>,
+  input: ListUsersSessionsRequest,
+  output: ListSessionsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -628,8 +793,8 @@ export const patchUsersDataSourcesDatasets: API.OperationMethod<
   PatchUsersDataSourcesDatasetsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(46) as any as S.Schema<PatchUsersDataSourcesDatasetsRequest>,
-  output: __S(18) as any as S.Schema<Dataset>,
+  input: PatchUsersDataSourcesDatasetsRequest,
+  output: Dataset,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -643,8 +808,8 @@ export const updateUsersDataSources: API.OperationMethod<
   UpdateUsersDataSourcesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47) as any as S.Schema<UpdateUsersDataSourcesRequest>,
-  output: __S(27) as any as S.Schema<DataSource>,
+  input: UpdateUsersDataSourcesRequest,
+  output: DataSource,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -658,8 +823,8 @@ export const updateUsersSessions: API.OperationMethod<
   UpdateUsersSessionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48) as any as S.Schema<UpdateUsersSessionsRequest>,
-  output: __S(10) as any as S.Schema<Session>,
+  input: UpdateUsersSessionsRequest,
+  output: Session,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -676,11 +841,11 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "BucketByActivity" });
     case 1:
-      return S.Array(S.String);
+      return S.Array(AggregateRequestFilteredDataQualityStandardItemEnum);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(S.String),
+          type: S.optional(BucketByTimePeriodTypeEnum),
           timeZoneId: S.optional(S.String),
           value: S.optional(S.Number),
         }),
@@ -689,7 +854,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           durationMillis: S.optional(S.String),
-          period: S.optional(__S(2)),
+          period: S.optional(BucketByTimePeriod),
         }),
       ).annotate({ identifier: "BucketByTime" });
     case 4:
@@ -700,7 +865,7 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "AggregateBy" });
     case 5:
-      return S.Array(__S(4));
+      return S.Array(AggregateBy);
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -710,14 +875,16 @@ function __c0(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          bucketByActivityType: S.optional(__S(0)),
-          bucketByActivitySegment: S.optional(__S(0)),
-          filteredDataQualityStandard: S.optional(__S(1)),
-          bucketByTime: S.optional(__S(3)),
+          bucketByActivityType: S.optional(BucketByActivity),
+          bucketByActivitySegment: S.optional(BucketByActivity),
+          filteredDataQualityStandard: S.optional(
+            AggregateRequestFilteredDataQualityStandardItemEnumList,
+          ),
+          bucketByTime: S.optional(BucketByTime),
           startTimeMillis: S.optional(S.String),
           endTimeMillis: S.optional(S.String),
-          aggregateBy: S.optional(__S(5)),
-          bucketBySession: S.optional(__S(6)),
+          aggregateBy: S.optional(AggregateByList),
+          bucketBySession: S.optional(BucketBySession),
         }),
       ).annotate({ identifier: "AggregateRequest" });
   }
@@ -728,7 +895,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           userId: S.String.pipe(T.Label()),
-          body: S.optional(__S(7).pipe(T.HttpBody())),
+          body: S.optional(AggregateRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -753,7 +920,7 @@ function __c1(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           id: S.optional(S.String),
-          application: S.optional(__S(9)),
+          application: S.optional(Application),
           startTimeMillis: S.optional(S.String),
           activeTimeMillis: S.optional(S.String),
           activityType: S.optional(S.Number),
@@ -772,22 +939,22 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           key: S.optional(S.String),
-          value: S.optional(__S(11)),
+          value: S.optional(MapValue),
         }),
       ).annotate({ identifier: "ValueMapValEntry" });
     case 5:
-      return S.Array(__S(12));
+      return S.Array(ValueMapValEntry);
     case 6:
       return S.suspend(() =>
         S.Struct({
           fpVal: S.optional(S.Number),
-          mapVal: S.optional(__S(13)),
+          mapVal: S.optional(ValueMapValEntryList),
           stringVal: S.optional(S.String),
           intVal: S.optional(S.Number),
         }),
       ).annotate({ identifier: "Value" });
     case 7:
-      return S.Array(__S(14));
+      return S.Array(Value);
   }
 }
 function __c2(j: number): any {
@@ -795,7 +962,7 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(15)),
+          value: S.optional(ValueList),
           rawTimestampNanos: S.optional(S.String),
           startTimeNanos: S.optional(S.String),
           computationTimeMillis: S.optional(S.String),
@@ -806,11 +973,11 @@ function __c2(j: number): any {
         }),
       ).annotate({ identifier: "DataPoint" });
     case 1:
-      return S.Array(__S(16));
+      return S.Array(DataPoint);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          point: S.optional(__S(17)),
+          point: S.optional(DataPointList),
           dataSourceId: S.optional(S.String),
           minStartTimeNs: S.optional(S.String),
           nextPageToken: S.optional(S.String),
@@ -818,31 +985,31 @@ function __c2(j: number): any {
         }),
       ).annotate({ identifier: "Dataset" });
     case 3:
-      return S.Array(__S(18));
+      return S.Array(Dataset);
     case 4:
       return S.suspend(() =>
         S.Struct({
           activity: S.optional(S.Number),
           endTimeMillis: S.optional(S.String),
-          session: S.optional(__S(10)),
-          dataset: S.optional(__S(19)),
+          session: S.optional(Session),
+          dataset: S.optional(DatasetList),
           startTimeMillis: S.optional(S.String),
-          type: S.optional(S.String),
+          type: S.optional(AggregateBucketTypeEnum),
         }),
       ).annotate({ identifier: "AggregateBucket" });
     case 5:
-      return S.Array(__S(20));
+      return S.Array(AggregateBucket);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          bucket: S.optional(__S(21)),
+          bucket: S.optional(AggregateBucketList),
         }),
       ).annotate({ identifier: "AggregateResponse" });
     case 7:
       return S.suspend(() =>
         S.Struct({
           version: S.optional(S.String),
-          type: S.optional(S.String),
+          type: S.optional(DeviceTypeEnum),
           model: S.optional(S.String),
           manufacturer: S.optional(S.String),
           uid: S.optional(S.String),
@@ -855,17 +1022,17 @@ function __c3(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          format: S.optional(S.String),
+          format: S.optional(DataTypeFieldFormatEnum),
           optional: S.optional(S.Boolean),
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "DataTypeField" });
     case 1:
-      return S.Array(__S(24));
+      return S.Array(DataTypeField);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          field: S.optional(__S(25)),
+          field: S.optional(DataTypeFieldList),
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "DataType" });
@@ -873,20 +1040,20 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           dataStreamId: S.optional(S.String),
-          application: S.optional(__S(9)),
-          device: S.optional(__S(23)),
-          dataType: S.optional(__S(26)),
+          application: S.optional(Application),
+          device: S.optional(Device),
+          dataType: S.optional(DataType),
           name: S.optional(S.String),
           dataStreamName: S.optional(S.String),
-          type: S.optional(S.String),
-          dataQualityStandard: S.optional(__S(1)),
+          type: S.optional(DataSourceTypeEnum),
+          dataQualityStandard: S.optional(DataSourceDataQualityStandardItemEnumList),
         }),
       ).annotate({ identifier: "DataSource" });
     case 4:
       return S.suspend(() =>
         S.Struct({
           userId: S.String.pipe(T.Label()),
-          body: S.optional(__S(27).pipe(T.HttpBody())),
+          body: S.optional(DataSource.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -993,7 +1160,7 @@ function __c4(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          dataTypeName: S.optional(__S(36).pipe(T.Query())),
+          dataTypeName: S.optional(StringList.pipe(T.Query())),
           userId: S.String.pipe(T.Label()),
         }).pipe(
           T.Http({
@@ -1006,11 +1173,11 @@ function __c4(j: number): any {
         identifier: "ListUsersDataSourcesRequest",
       });
     case 6:
-      return S.Array(__S(27));
+      return S.Array(DataSource);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          dataSource: S.optional(__S(38)),
+          dataSource: S.optional(DataSourceList),
         }),
       ).annotate({ identifier: "ListDataSourcesResponse" });
   }
@@ -1037,10 +1204,10 @@ function __c5(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          insertedDataPoint: S.optional(__S(17)),
+          insertedDataPoint: S.optional(DataPointList),
           dataSourceId: S.optional(S.String),
           nextPageToken: S.optional(S.String),
-          deletedDataPoint: S.optional(__S(17)),
+          deletedDataPoint: S.optional(DataPointList),
         }),
       ).annotate({
         identifier: "ListDataPointChangesResponse",
@@ -1055,7 +1222,7 @@ function __c5(j: number): any {
           userId: S.String.pipe(T.Label()),
           includeDeleted: S.optional(S.Boolean.pipe(T.Query())),
           startTime: S.optional(S.String.pipe(T.Query())),
-          activityType: S.optional(__S(42).pipe(T.Query())),
+          activityType: S.optional(IntegerList.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -1065,14 +1232,14 @@ function __c5(j: number): any {
         ),
       ).annotate({ identifier: "ListUsersSessionsRequest" });
     case 4:
-      return S.Array(__S(10));
+      return S.Array(Session);
     case 5:
       return S.suspend(() =>
         S.Struct({
           hasMoreData: S.optional(S.Boolean),
-          session: S.optional(__S(44)),
+          session: S.optional(SessionList),
           nextPageToken: S.optional(S.String),
-          deletedSession: S.optional(__S(44)),
+          deletedSession: S.optional(SessionList),
         }),
       ).annotate({ identifier: "ListSessionsResponse" });
     case 6:
@@ -1081,7 +1248,7 @@ function __c5(j: number): any {
           userId: S.String.pipe(T.Label()),
           dataSourceId: S.String.pipe(T.Label()),
           datasetId: S.String.pipe(T.Label()),
-          body: S.optional(__S(18).pipe(T.HttpBody())),
+          body: S.optional(Dataset.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1097,7 +1264,7 @@ function __c5(j: number): any {
         S.Struct({
           userId: S.String.pipe(T.Label()),
           dataSourceId: S.String.pipe(T.Label()),
-          body: S.optional(__S(27).pipe(T.HttpBody())),
+          body: S.optional(DataSource.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -1117,7 +1284,7 @@ function __c6(j: number): any {
         S.Struct({
           sessionId: S.String.pipe(T.Label()),
           userId: S.String.pipe(T.Label()),
-          body: S.optional(__S(10).pipe(T.HttpBody())),
+          body: S.optional(Session.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -1128,28 +1295,5 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "UpdateUsersSessionsRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
   }
 }

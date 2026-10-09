@@ -10,8 +10,6 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "Backup Gateway",
   serviceShapeName: "BackupOnPremises_v20210101",
@@ -111,9 +109,17 @@ export interface AssociateGatewayToServerInput {
   GatewayArn: string;
   ServerArn: string;
 }
+const AssociateGatewayToServerInput = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<AssociateGatewayToServerInput>;
 export interface AssociateGatewayToServerOutput {
   GatewayArn?: string;
 }
+const AssociateGatewayToServerOutput = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<AssociateGatewayToServerOutput>;
 export type ActivationKey = string;
 export type Name = string;
 export type GatewayType = string;
@@ -123,42 +129,67 @@ export interface Tag {
   Key: string;
   Value: string;
 }
+const Tag = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<Tag>;
 export type Tags = Tag[];
+const Tags = /*@__PURE__*/ __L.at(__c0, 3);
 export interface CreateGatewayInput {
   ActivationKey: string;
   GatewayDisplayName: string;
   GatewayType: string;
   Tags?: Tag[];
 }
+const CreateGatewayInput = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<CreateGatewayInput>;
 export interface CreateGatewayOutput {
   GatewayArn?: string;
 }
+const CreateGatewayOutput = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<CreateGatewayOutput>;
 export interface DeleteGatewayInput {
   GatewayArn: string;
 }
+const DeleteGatewayInput = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<DeleteGatewayInput>;
 export interface DeleteGatewayOutput {
   GatewayArn?: string;
 }
+const DeleteGatewayOutput = CreateGatewayOutput as any as S.Schema<DeleteGatewayOutput>;
 export interface DeleteHypervisorInput {
   HypervisorArn: string;
 }
+const DeleteHypervisorInput = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<DeleteHypervisorInput>;
 export interface DeleteHypervisorOutput {
   HypervisorArn?: string;
 }
+const DeleteHypervisorOutput = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<DeleteHypervisorOutput>;
 export interface DisassociateGatewayFromServerInput {
   GatewayArn: string;
 }
+const DisassociateGatewayFromServerInput = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<DisassociateGatewayFromServerInput>;
 export interface DisassociateGatewayFromServerOutput {
   GatewayArn?: string;
 }
+const DisassociateGatewayFromServerOutput =
+  AssociateGatewayToServerOutput as any as S.Schema<DisassociateGatewayFromServerOutput>;
 export interface GetBandwidthRateLimitScheduleInput {
   GatewayArn: string;
 }
+const GetBandwidthRateLimitScheduleInput = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<GetBandwidthRateLimitScheduleInput>;
 export type AverageUploadRateLimit = number;
 export type HourOfDay = number;
 export type MinuteOfHour = number;
 export type DayOfWeek = number;
 export type DaysOfWeek = number[];
+const DaysOfWeek = /*@__PURE__*/ __L.at(__c1, 3);
 export interface BandwidthRateLimitInterval {
   AverageUploadRateLimitInBitsPerSec?: number;
   StartHourOfDay: number;
@@ -167,14 +198,24 @@ export interface BandwidthRateLimitInterval {
   EndMinuteOfHour: number;
   DaysOfWeek: number[];
 }
+const BandwidthRateLimitInterval = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<BandwidthRateLimitInterval>;
 export type BandwidthRateLimitIntervals = BandwidthRateLimitInterval[];
+const BandwidthRateLimitIntervals = /*@__PURE__*/ __L.at(__c1, 5);
 export interface GetBandwidthRateLimitScheduleOutput {
   GatewayArn?: string;
   BandwidthRateLimitIntervals?: BandwidthRateLimitInterval[];
 }
+const GetBandwidthRateLimitScheduleOutput = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<GetBandwidthRateLimitScheduleOutput>;
 export interface GetGatewayInput {
   GatewayArn: string;
 }
+const GetGatewayInput = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<GetGatewayInput>;
 export type HypervisorId = string;
 export type DayOfMonth = number;
 export interface MaintenanceStartTime {
@@ -183,6 +224,7 @@ export interface MaintenanceStartTime {
   HourOfDay: number;
   MinuteOfHour: number;
 }
+const MaintenanceStartTime = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<MaintenanceStartTime>;
 export type VpcEndpoint = string;
 export interface GatewayDetails {
   GatewayArn?: string;
@@ -196,12 +238,15 @@ export interface GatewayDetails {
   DeprecationDate?: Date;
   SoftwareVersion?: string;
 }
+const GatewayDetails = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<GatewayDetails>;
 export interface GetGatewayOutput {
   Gateway?: GatewayDetails;
 }
+const GetGatewayOutput = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<GetGatewayOutput>;
 export interface GetHypervisorInput {
   HypervisorArn: string;
 }
+const GetHypervisorInput = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<GetHypervisorInput>;
 export type Host = string;
 export type KmsKeyArn = string;
 export type LogGroupArn = string;
@@ -218,12 +263,18 @@ export interface HypervisorDetails {
   LatestMetadataSyncStatusMessage?: string;
   LatestMetadataSyncStatus?: string;
 }
+const HypervisorDetails = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<HypervisorDetails>;
 export interface GetHypervisorOutput {
   Hypervisor?: HypervisorDetails;
 }
+const GetHypervisorOutput = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<GetHypervisorOutput>;
 export interface GetHypervisorPropertyMappingsInput {
   HypervisorArn: string;
 }
+const GetHypervisorPropertyMappingsInput = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<GetHypervisorPropertyMappingsInput>;
 export type VmwareCategory = string;
 export type VmwareTagName = string;
 export interface VmwareToAwsTagMapping {
@@ -232,24 +283,39 @@ export interface VmwareToAwsTagMapping {
   AwsTagKey: string;
   AwsTagValue: string;
 }
+const VmwareToAwsTagMapping = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<VmwareToAwsTagMapping>;
 export type VmwareToAwsTagMappings = VmwareToAwsTagMapping[];
+const VmwareToAwsTagMappings = /*@__PURE__*/ __L.at(__c3, 0);
 export type IamRoleArn = string;
 export interface GetHypervisorPropertyMappingsOutput {
   HypervisorArn?: string;
   VmwareToAwsTagMappings?: VmwareToAwsTagMapping[];
   IamRoleArn?: string;
 }
+const GetHypervisorPropertyMappingsOutput = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<GetHypervisorPropertyMappingsOutput>;
 export type ResourceArn = string;
 export interface GetVirtualMachineInput {
   ResourceArn: string;
 }
+const GetVirtualMachineInput = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<GetVirtualMachineInput>;
 export type Path = string;
 export interface VmwareTag {
   VmwareCategory?: string;
   VmwareTagName?: string;
   VmwareTagDescription?: string;
 }
+const VmwareTag = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<VmwareTag>;
 export type VmwareTags = VmwareTag[];
+const VmwareTags = /*@__PURE__*/ __L.at(__c3, 4);
 export interface VirtualMachineDetails {
   HostName?: string;
   HypervisorId?: string;
@@ -259,9 +325,17 @@ export interface VirtualMachineDetails {
   LastBackupDate?: Date;
   VmwareTags?: VmwareTag[];
 }
+const VirtualMachineDetails = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<VirtualMachineDetails>;
 export interface GetVirtualMachineOutput {
   VirtualMachine?: VirtualMachineDetails;
 }
+const GetVirtualMachineOutput = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<GetVirtualMachineOutput>;
 export type Username = string | redacted.Redacted<string>;
 export type Password = string | redacted.Redacted<string>;
 export interface ImportHypervisorConfigurationInput {
@@ -272,15 +346,24 @@ export interface ImportHypervisorConfigurationInput {
   KmsKeyArn?: string;
   Tags?: Tag[];
 }
+const ImportHypervisorConfigurationInput = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<ImportHypervisorConfigurationInput>;
 export interface ImportHypervisorConfigurationOutput {
   HypervisorArn?: string;
 }
+const ImportHypervisorConfigurationOutput = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<ImportHypervisorConfigurationOutput>;
 export type MaxResults = number;
 export type NextToken = string;
 export interface ListGatewaysInput {
   MaxResults?: number;
   NextToken?: string;
 }
+const ListGatewaysInput = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<ListGatewaysInput>;
 export interface Gateway {
   GatewayArn?: string;
   GatewayDisplayName?: string;
@@ -288,15 +371,19 @@ export interface Gateway {
   HypervisorId?: string;
   LastSeenTime?: Date;
 }
+const Gateway = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<Gateway>;
 export type Gateways = Gateway[];
+const Gateways = /*@__PURE__*/ __L.at(__c4, 3);
 export interface ListGatewaysOutput {
   Gateways?: Gateway[];
   NextToken?: string;
 }
+const ListGatewaysOutput = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<ListGatewaysOutput>;
 export interface ListHypervisorsInput {
   MaxResults?: number;
   NextToken?: string;
 }
+const ListHypervisorsInput = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<ListHypervisorsInput>;
 export interface Hypervisor {
   Host?: string;
   HypervisorArn?: string;
@@ -304,23 +391,41 @@ export interface Hypervisor {
   Name?: string;
   State?: string;
 }
+const Hypervisor = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<Hypervisor>;
 export type Hypervisors = Hypervisor[];
+const Hypervisors = /*@__PURE__*/ __L.at(__c4, 7);
 export interface ListHypervisorsOutput {
   Hypervisors?: Hypervisor[];
   NextToken?: string;
 }
+const ListHypervisorsOutput = /*@__PURE__*/ __L.at(
+  __c5,
+  0,
+) as any as S.Schema<ListHypervisorsOutput>;
 export interface ListTagsForResourceInput {
   ResourceArn: string;
 }
+const ListTagsForResourceInput = /*@__PURE__*/ __L.at(
+  __c5,
+  1,
+) as any as S.Schema<ListTagsForResourceInput>;
 export interface ListTagsForResourceOutput {
   ResourceArn?: string;
   Tags?: Tag[];
 }
+const ListTagsForResourceOutput = /*@__PURE__*/ __L.at(
+  __c5,
+  2,
+) as any as S.Schema<ListTagsForResourceOutput>;
 export interface ListVirtualMachinesInput {
   HypervisorArn?: string;
   MaxResults?: number;
   NextToken?: string;
 }
+const ListVirtualMachinesInput = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<ListVirtualMachinesInput>;
 export interface VirtualMachine {
   HostName?: string;
   HypervisorId?: string;
@@ -329,26 +434,44 @@ export interface VirtualMachine {
   ResourceArn?: string;
   LastBackupDate?: Date;
 }
+const VirtualMachine = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<VirtualMachine>;
 export type VirtualMachines = VirtualMachine[];
+const VirtualMachines = /*@__PURE__*/ __L.at(__c5, 5);
 export interface ListVirtualMachinesOutput {
   VirtualMachines?: VirtualMachine[];
   NextToken?: string;
 }
+const ListVirtualMachinesOutput = /*@__PURE__*/ __L.at(
+  __c5,
+  6,
+) as any as S.Schema<ListVirtualMachinesOutput>;
 export interface PutBandwidthRateLimitScheduleInput {
   GatewayArn: string;
   BandwidthRateLimitIntervals: BandwidthRateLimitInterval[];
 }
+const PutBandwidthRateLimitScheduleInput = /*@__PURE__*/ __L.at(
+  __c5,
+  7,
+) as any as S.Schema<PutBandwidthRateLimitScheduleInput>;
 export interface PutBandwidthRateLimitScheduleOutput {
   GatewayArn?: string;
 }
+const PutBandwidthRateLimitScheduleOutput =
+  AssociateGatewayToServerOutput as any as S.Schema<PutBandwidthRateLimitScheduleOutput>;
 export interface PutHypervisorPropertyMappingsInput {
   HypervisorArn: string;
   VmwareToAwsTagMappings: VmwareToAwsTagMapping[];
   IamRoleArn: string;
 }
+const PutHypervisorPropertyMappingsInput = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<PutHypervisorPropertyMappingsInput>;
 export interface PutHypervisorPropertyMappingsOutput {
   HypervisorArn?: string;
 }
+const PutHypervisorPropertyMappingsOutput =
+  ImportHypervisorConfigurationOutput as any as S.Schema<PutHypervisorPropertyMappingsOutput>;
 export interface PutMaintenanceStartTimeInput {
   GatewayArn: string;
   HourOfDay: number;
@@ -356,50 +479,87 @@ export interface PutMaintenanceStartTimeInput {
   DayOfWeek?: number;
   DayOfMonth?: number;
 }
+const PutMaintenanceStartTimeInput = /*@__PURE__*/ __L.at(
+  __c6,
+  1,
+) as any as S.Schema<PutMaintenanceStartTimeInput>;
 export interface PutMaintenanceStartTimeOutput {
   GatewayArn?: string;
 }
+const PutMaintenanceStartTimeOutput =
+  AssociateGatewayToServerOutput as any as S.Schema<PutMaintenanceStartTimeOutput>;
 export interface StartVirtualMachinesMetadataSyncInput {
   HypervisorArn: string;
 }
+const StartVirtualMachinesMetadataSyncInput = /*@__PURE__*/ __L.at(
+  __c6,
+  2,
+) as any as S.Schema<StartVirtualMachinesMetadataSyncInput>;
 export interface StartVirtualMachinesMetadataSyncOutput {
   HypervisorArn?: string;
 }
+const StartVirtualMachinesMetadataSyncOutput =
+  ImportHypervisorConfigurationOutput as any as S.Schema<StartVirtualMachinesMetadataSyncOutput>;
 export interface TagResourceInput {
   ResourceARN: string;
   Tags: Tag[];
 }
+const TagResourceInput = /*@__PURE__*/ __L.at(__c6, 3) as any as S.Schema<TagResourceInput>;
 export interface TagResourceOutput {
   ResourceARN?: string;
 }
+const TagResourceOutput = /*@__PURE__*/ __L.at(__c6, 4) as any as S.Schema<TagResourceOutput>;
 export interface TestHypervisorConfigurationInput {
   GatewayArn: string;
   Host: string;
   Username?: string | redacted.Redacted<string>;
   Password?: string | redacted.Redacted<string>;
 }
+const TestHypervisorConfigurationInput = /*@__PURE__*/ __L.at(
+  __c6,
+  5,
+) as any as S.Schema<TestHypervisorConfigurationInput>;
 export interface TestHypervisorConfigurationOutput {}
+const TestHypervisorConfigurationOutput = /*@__PURE__*/ __L.at(
+  __c6,
+  6,
+) as any as S.Schema<TestHypervisorConfigurationOutput>;
 export type TagKeys = string[];
+const TagKeys = /*@__PURE__*/ __L.at(__c6, 7);
 export interface UntagResourceInput {
   ResourceARN: string;
   TagKeys: string[];
 }
+const UntagResourceInput = /*@__PURE__*/ __L.at(__c7, 0) as any as S.Schema<UntagResourceInput>;
 export interface UntagResourceOutput {
   ResourceARN?: string;
 }
+const UntagResourceOutput = TagResourceOutput as any as S.Schema<UntagResourceOutput>;
 export interface UpdateGatewayInformationInput {
   GatewayArn: string;
   GatewayDisplayName?: string;
 }
+const UpdateGatewayInformationInput = /*@__PURE__*/ __L.at(
+  __c7,
+  1,
+) as any as S.Schema<UpdateGatewayInformationInput>;
 export interface UpdateGatewayInformationOutput {
   GatewayArn?: string;
 }
+const UpdateGatewayInformationOutput =
+  AssociateGatewayToServerOutput as any as S.Schema<UpdateGatewayInformationOutput>;
 export interface UpdateGatewaySoftwareNowInput {
   GatewayArn: string;
 }
+const UpdateGatewaySoftwareNowInput = /*@__PURE__*/ __L.at(
+  __c7,
+  2,
+) as any as S.Schema<UpdateGatewaySoftwareNowInput>;
 export interface UpdateGatewaySoftwareNowOutput {
   GatewayArn?: string;
 }
+const UpdateGatewaySoftwareNowOutput =
+  AssociateGatewayToServerOutput as any as S.Schema<UpdateGatewaySoftwareNowOutput>;
 export interface UpdateHypervisorInput {
   HypervisorArn: string;
   Host?: string;
@@ -408,9 +568,14 @@ export interface UpdateHypervisorInput {
   Name?: string;
   LogGroupArn?: string;
 }
+const UpdateHypervisorInput = /*@__PURE__*/ __L.at(
+  __c7,
+  3,
+) as any as S.Schema<UpdateHypervisorInput>;
 export interface UpdateHypervisorOutput {
   HypervisorArn?: string;
 }
+const UpdateHypervisorOutput = DeleteHypervisorOutput as any as S.Schema<UpdateHypervisorOutput>;
 export type AssociateGatewayToServerError = ConflictException | CommonErrors;
 /**
  * Associates a backup gateway with your server. After you complete the association process, you can back up and restore your VMs through the gateway.
@@ -421,8 +586,8 @@ export const associateGatewayToServer: API.OperationMethod<
   AssociateGatewayToServerError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<AssociateGatewayToServerInput>,
-  output: __S(1) as any as S.Schema<AssociateGatewayToServerOutput>,
+  input: AssociateGatewayToServerInput,
+  output: AssociateGatewayToServerOutput,
   errors: [ConflictException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -439,8 +604,8 @@ export const createGateway: API.OperationMethod<
   CreateGatewayError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4) as any as S.Schema<CreateGatewayInput>,
-  output: __S(5) as any as S.Schema<CreateGatewayOutput>,
+  input: CreateGatewayInput,
+  output: CreateGatewayOutput,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -457,8 +622,8 @@ export const deleteGateway: API.OperationMethod<
   DeleteGatewayError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6) as any as S.Schema<DeleteGatewayInput>,
-  output: __S(5) as any as S.Schema<DeleteGatewayOutput>,
+  input: DeleteGatewayInput,
+  output: DeleteGatewayOutput,
   errors: [ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -479,8 +644,8 @@ export const deleteHypervisor: API.OperationMethod<
   DeleteHypervisorError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7) as any as S.Schema<DeleteHypervisorInput>,
-  output: __S(8) as any as S.Schema<DeleteHypervisorOutput>,
+  input: DeleteHypervisorInput,
+  output: DeleteHypervisorOutput,
   errors: [AccessDeniedException, ConflictException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -500,8 +665,8 @@ export const disassociateGatewayFromServer: API.OperationMethod<
   DisassociateGatewayFromServerError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9) as any as S.Schema<DisassociateGatewayFromServerInput>,
-  output: __S(1) as any as S.Schema<DisassociateGatewayFromServerOutput>,
+  input: DisassociateGatewayFromServerInput,
+  output: DisassociateGatewayFromServerOutput,
   errors: [ConflictException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -518,8 +683,8 @@ export const getBandwidthRateLimitSchedule: API.OperationMethod<
   GetBandwidthRateLimitScheduleError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10) as any as S.Schema<GetBandwidthRateLimitScheduleInput>,
-  output: __S(14) as any as S.Schema<GetBandwidthRateLimitScheduleOutput>,
+  input: GetBandwidthRateLimitScheduleInput,
+  output: GetBandwidthRateLimitScheduleOutput,
   errors: [ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -536,8 +701,8 @@ export const getGateway: API.OperationMethod<
   GetGatewayError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15) as any as S.Schema<GetGatewayInput>,
-  output: __S(18) as any as S.Schema<GetGatewayOutput>,
+  input: GetGatewayInput,
+  output: GetGatewayOutput,
   errors: [ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -554,8 +719,8 @@ export const getHypervisor: API.OperationMethod<
   GetHypervisorError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19) as any as S.Schema<GetHypervisorInput>,
-  output: __S(21) as any as S.Schema<GetHypervisorOutput>,
+  input: GetHypervisorInput,
+  output: GetHypervisorOutput,
   errors: [ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -572,8 +737,8 @@ export const getHypervisorPropertyMappings: API.OperationMethod<
   GetHypervisorPropertyMappingsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22) as any as S.Schema<GetHypervisorPropertyMappingsInput>,
-  output: __S(25) as any as S.Schema<GetHypervisorPropertyMappingsOutput>,
+  input: GetHypervisorPropertyMappingsInput,
+  output: GetHypervisorPropertyMappingsOutput,
   errors: [ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -590,8 +755,8 @@ export const getVirtualMachine: API.OperationMethod<
   GetVirtualMachineError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26) as any as S.Schema<GetVirtualMachineInput>,
-  output: __S(30) as any as S.Schema<GetVirtualMachineOutput>,
+  input: GetVirtualMachineInput,
+  output: GetVirtualMachineOutput,
   errors: [ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -611,8 +776,8 @@ export const importHypervisorConfiguration: API.OperationMethod<
   ImportHypervisorConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31) as any as S.Schema<ImportHypervisorConfigurationInput>,
-  output: __S(32) as any as S.Schema<ImportHypervisorConfigurationOutput>,
+  input: ImportHypervisorConfigurationInput,
+  output: ImportHypervisorConfigurationOutput,
   errors: [AccessDeniedException, ConflictException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -630,8 +795,8 @@ export const listGateways: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Gateway
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(33) as any as S.Schema<ListGatewaysInput>,
-  output: __S(36) as any as S.Schema<ListGatewaysOutput>,
+  input: ListGatewaysInput,
+  output: ListGatewaysOutput,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -655,8 +820,8 @@ export const listHypervisors: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Hypervisor
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(37) as any as S.Schema<ListHypervisorsInput>,
-  output: __S(40) as any as S.Schema<ListHypervisorsOutput>,
+  input: ListHypervisorsInput,
+  output: ListHypervisorsOutput,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -679,8 +844,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41) as any as S.Schema<ListTagsForResourceInput>,
-  output: __S(42) as any as S.Schema<ListTagsForResourceOutput>,
+  input: ListTagsForResourceInput,
+  output: ListTagsForResourceOutput,
   errors: [ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -698,8 +863,8 @@ export const listVirtualMachines: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   VirtualMachine
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(43) as any as S.Schema<ListVirtualMachinesInput>,
-  output: __S(46) as any as S.Schema<ListVirtualMachinesOutput>,
+  input: ListVirtualMachinesInput,
+  output: ListVirtualMachinesOutput,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -722,8 +887,8 @@ export const putBandwidthRateLimitSchedule: API.OperationMethod<
   PutBandwidthRateLimitScheduleError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47) as any as S.Schema<PutBandwidthRateLimitScheduleInput>,
-  output: __S(1) as any as S.Schema<PutBandwidthRateLimitScheduleOutput>,
+  input: PutBandwidthRateLimitScheduleInput,
+  output: PutBandwidthRateLimitScheduleOutput,
   errors: [ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -744,8 +909,8 @@ export const putHypervisorPropertyMappings: API.OperationMethod<
   PutHypervisorPropertyMappingsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48) as any as S.Schema<PutHypervisorPropertyMappingsInput>,
-  output: __S(32) as any as S.Schema<PutHypervisorPropertyMappingsOutput>,
+  input: PutHypervisorPropertyMappingsInput,
+  output: PutHypervisorPropertyMappingsOutput,
   errors: [AccessDeniedException, ConflictException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -765,8 +930,8 @@ export const putMaintenanceStartTime: API.OperationMethod<
   PutMaintenanceStartTimeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49) as any as S.Schema<PutMaintenanceStartTimeInput>,
-  output: __S(1) as any as S.Schema<PutMaintenanceStartTimeOutput>,
+  input: PutMaintenanceStartTimeInput,
+  output: PutMaintenanceStartTimeOutput,
   errors: [ConflictException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -786,8 +951,8 @@ export const startVirtualMachinesMetadataSync: API.OperationMethod<
   StartVirtualMachinesMetadataSyncError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(50) as any as S.Schema<StartVirtualMachinesMetadataSyncInput>,
-  output: __S(32) as any as S.Schema<StartVirtualMachinesMetadataSyncOutput>,
+  input: StartVirtualMachinesMetadataSyncInput,
+  output: StartVirtualMachinesMetadataSyncOutput,
   errors: [AccessDeniedException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -804,8 +969,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(51) as any as S.Schema<TagResourceInput>,
-  output: __S(52) as any as S.Schema<TagResourceOutput>,
+  input: TagResourceInput,
+  output: TagResourceOutput,
   errors: [ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -825,8 +990,8 @@ export const testHypervisorConfiguration: API.OperationMethod<
   TestHypervisorConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(53) as any as S.Schema<TestHypervisorConfigurationInput>,
-  output: __S(54) as any as S.Schema<TestHypervisorConfigurationOutput>,
+  input: TestHypervisorConfigurationInput,
+  output: TestHypervisorConfigurationOutput,
   errors: [ConflictException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -843,8 +1008,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56) as any as S.Schema<UntagResourceInput>,
-  output: __S(52) as any as S.Schema<UntagResourceOutput>,
+  input: UntagResourceInput,
+  output: UntagResourceOutput,
   errors: [ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -864,8 +1029,8 @@ export const updateGatewayInformation: API.OperationMethod<
   UpdateGatewayInformationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57) as any as S.Schema<UpdateGatewayInformationInput>,
-  output: __S(1) as any as S.Schema<UpdateGatewayInformationOutput>,
+  input: UpdateGatewayInformationInput,
+  output: UpdateGatewayInformationOutput,
   errors: [ConflictException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -884,8 +1049,8 @@ export const updateGatewaySoftwareNow: API.OperationMethod<
   UpdateGatewaySoftwareNowError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(58) as any as S.Schema<UpdateGatewaySoftwareNowInput>,
-  output: __S(1) as any as S.Schema<UpdateGatewaySoftwareNowOutput>,
+  input: UpdateGatewaySoftwareNowInput,
+  output: UpdateGatewaySoftwareNowOutput,
   errors: [ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -906,8 +1071,8 @@ export const updateHypervisor: API.OperationMethod<
   UpdateHypervisorError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(59) as any as S.Schema<UpdateHypervisorInput>,
-  output: __S(8) as any as S.Schema<UpdateHypervisorOutput>,
+  input: UpdateHypervisorInput,
+  output: UpdateHypervisorOutput,
   errors: [AccessDeniedException, ConflictException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -934,14 +1099,14 @@ function __c0(j: number): any {
         identifier: "Tag",
       });
     case 3:
-      return S.Array(__S(2));
+      return S.Array(Tag);
     case 4:
       return S.suspend(() =>
         S.Struct({
           ActivationKey: S.String,
           GatewayDisplayName: S.String,
           GatewayType: S.String,
-          Tags: S.optional(__S(3)),
+          Tags: S.optional(Tags),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateGatewayInput" });
     case 5:
@@ -994,18 +1159,18 @@ function __c1(j: number): any {
           EndHourOfDay: S.Number,
           StartMinuteOfHour: S.Number,
           EndMinuteOfHour: S.Number,
-          DaysOfWeek: __S(11),
+          DaysOfWeek: DaysOfWeek,
         }),
       ).annotate({
         identifier: "BandwidthRateLimitInterval",
       });
     case 5:
-      return S.Array(__S(12));
+      return S.Array(BandwidthRateLimitInterval);
     case 6:
       return S.suspend(() =>
         S.Struct({
           GatewayArn: S.optional(S.String),
-          BandwidthRateLimitIntervals: S.optional(__S(13)),
+          BandwidthRateLimitIntervals: S.optional(BandwidthRateLimitIntervals),
         }),
       ).annotate({
         identifier: "GetBandwidthRateLimitScheduleOutput",
@@ -1037,7 +1202,7 @@ function __c2(j: number): any {
           GatewayType: S.optional(S.String),
           HypervisorId: S.optional(S.String),
           LastSeenTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          MaintenanceStartTime: S.optional(__S(16)),
+          MaintenanceStartTime: S.optional(MaintenanceStartTime),
           NextUpdateAvailabilityTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           VpcEndpoint: S.optional(S.String),
           DeprecationDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
@@ -1045,7 +1210,7 @@ function __c2(j: number): any {
         }),
       ).annotate({ identifier: "GatewayDetails" });
     case 2:
-      return S.suspend(() => S.Struct({ Gateway: S.optional(__S(17)) })).annotate({
+      return S.suspend(() => S.Struct({ Gateway: S.optional(GatewayDetails) })).annotate({
         identifier: "GetGatewayOutput",
       });
     case 3:
@@ -1071,7 +1236,7 @@ function __c2(j: number): any {
         }),
       ).annotate({ identifier: "HypervisorDetails" });
     case 5:
-      return S.suspend(() => S.Struct({ Hypervisor: S.optional(__S(20)) })).annotate({
+      return S.suspend(() => S.Struct({ Hypervisor: S.optional(HypervisorDetails) })).annotate({
         identifier: "GetHypervisorOutput",
       });
     case 6:
@@ -1096,12 +1261,12 @@ function __c2(j: number): any {
 function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(23));
+      return S.Array(VmwareToAwsTagMapping);
     case 1:
       return S.suspend(() =>
         S.Struct({
           HypervisorArn: S.optional(S.String),
-          VmwareToAwsTagMappings: S.optional(__S(24)),
+          VmwareToAwsTagMappings: S.optional(VmwareToAwsTagMappings),
           IamRoleArn: S.optional(S.String),
         }),
       ).annotate({
@@ -1122,7 +1287,7 @@ function __c3(j: number): any {
         }),
       ).annotate({ identifier: "VmwareTag" });
     case 4:
-      return S.Array(__S(27));
+      return S.Array(VmwareTag);
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -1132,13 +1297,13 @@ function __c3(j: number): any {
           Path: S.optional(S.String),
           ResourceArn: S.optional(S.String),
           LastBackupDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          VmwareTags: S.optional(__S(28)),
+          VmwareTags: S.optional(VmwareTags),
         }),
       ).annotate({ identifier: "VirtualMachineDetails" });
     case 6:
-      return S.suspend(() => S.Struct({ VirtualMachine: S.optional(__S(29)) })).annotate({
-        identifier: "GetVirtualMachineOutput",
-      });
+      return S.suspend(() =>
+        S.Struct({ VirtualMachine: S.optional(VirtualMachineDetails) }),
+      ).annotate({ identifier: "GetVirtualMachineOutput" });
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -1147,7 +1312,7 @@ function __c3(j: number): any {
           Username: S.optional(SensitiveString),
           Password: S.optional(SensitiveString),
           KmsKeyArn: S.optional(S.String),
-          Tags: S.optional(__S(3)),
+          Tags: S.optional(Tags),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "ImportHypervisorConfigurationInput",
@@ -1177,10 +1342,10 @@ function __c4(j: number): any {
         }),
       ).annotate({ identifier: "Gateway" });
     case 3:
-      return S.Array(__S(34));
+      return S.Array(Gateway);
     case 4:
       return S.suspend(() =>
-        S.Struct({ Gateways: S.optional(__S(35)), NextToken: S.optional(S.String) }),
+        S.Struct({ Gateways: S.optional(Gateways), NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListGatewaysOutput" });
     case 5:
       return S.suspend(() =>
@@ -1199,14 +1364,14 @@ function __c4(j: number): any {
         }),
       ).annotate({ identifier: "Hypervisor" });
     case 7:
-      return S.Array(__S(38));
+      return S.Array(Hypervisor);
   }
 }
 function __c5(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ Hypervisors: S.optional(__S(39)), NextToken: S.optional(S.String) }),
+        S.Struct({ Hypervisors: S.optional(Hypervisors), NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListHypervisorsOutput" });
     case 1:
       return S.suspend(() =>
@@ -1216,7 +1381,7 @@ function __c5(j: number): any {
       ).annotate({ identifier: "ListTagsForResourceInput" });
     case 2:
       return S.suspend(() =>
-        S.Struct({ ResourceArn: S.optional(S.String), Tags: S.optional(__S(3)) }),
+        S.Struct({ ResourceArn: S.optional(S.String), Tags: S.optional(Tags) }),
       ).annotate({
         identifier: "ListTagsForResourceOutput",
       });
@@ -1240,10 +1405,10 @@ function __c5(j: number): any {
         }),
       ).annotate({ identifier: "VirtualMachine" });
     case 5:
-      return S.Array(__S(44));
+      return S.Array(VirtualMachine);
     case 6:
       return S.suspend(() =>
-        S.Struct({ VirtualMachines: S.optional(__S(45)), NextToken: S.optional(S.String) }),
+        S.Struct({ VirtualMachines: S.optional(VirtualMachines), NextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListVirtualMachinesOutput",
       });
@@ -1251,7 +1416,7 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           GatewayArn: S.String,
-          BandwidthRateLimitIntervals: __S(13),
+          BandwidthRateLimitIntervals: BandwidthRateLimitIntervals,
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "PutBandwidthRateLimitScheduleInput",
@@ -1264,7 +1429,7 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           HypervisorArn: S.String,
-          VmwareToAwsTagMappings: __S(24),
+          VmwareToAwsTagMappings: VmwareToAwsTagMappings,
           IamRoleArn: S.String,
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
@@ -1292,7 +1457,7 @@ function __c6(j: number): any {
       });
     case 3:
       return S.suspend(() =>
-        S.Struct({ ResourceARN: S.String, Tags: __S(3) }).pipe(
+        S.Struct({ ResourceARN: S.String, Tags: Tags }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "TagResourceInput" });
@@ -1323,7 +1488,7 @@ function __c7(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ ResourceARN: S.String, TagKeys: __S(55) }).pipe(
+        S.Struct({ ResourceARN: S.String, TagKeys: TagKeys }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "UntagResourceInput" });
@@ -1354,30 +1519,5 @@ function __c7(j: number): any {
           LogGroupArn: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "UpdateHypervisorInput" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
   }
 }

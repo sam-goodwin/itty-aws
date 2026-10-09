@@ -6,8 +6,6 @@ import * as S from "@distilled.cloud/core/schema";
 import { GithubProtocol, type GithubOpError, type GithubOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { GithubOpError, GithubOpContext };
 
@@ -67,6 +65,11 @@ export class UnprocessableEntity
 
 /** The names of the custom labels to add to the runner. */
 export type AddCustomLabelsToSelfHostedRunnerForOrgRequestLabelsList = Array<string>;
+const AddCustomLabelsToSelfHostedRunnerForOrgRequestLabelsList = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<AddCustomLabelsToSelfHostedRunnerForOrgRequestLabelsList>;
+
 export interface AddCustomLabelsToSelfHostedRunnerForOrgRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -75,8 +78,15 @@ export interface AddCustomLabelsToSelfHostedRunnerForOrgRequest {
   /** The names of the custom labels to add to the runner. */
   labels: AddCustomLabelsToSelfHostedRunnerForOrgRequestLabelsList;
 }
+const AddCustomLabelsToSelfHostedRunnerForOrgRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<AddCustomLabelsToSelfHostedRunnerForOrgRequest>;
+
 /** The type of label. Read-only labels are applied automatically when the runner is configured. */
 export type RunnerLabelType = "read-only" | "custom";
+const RunnerLabelType = S.String;
+
 /** A label for a self hosted runner */
 export interface RunnerLabel {
   /** Unique identifier of the label. */
@@ -86,13 +96,28 @@ export interface RunnerLabel {
   /** The type of label. Read-only labels are applied automatically when the runner is configured. */
   type?: RunnerLabelType;
 }
+const RunnerLabel = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<RunnerLabel>;
+
 export type AddCustomLabelsToSelfHostedRunnerForOrgResponseLabelsList = Array<RunnerLabel>;
+const AddCustomLabelsToSelfHostedRunnerForOrgResponseLabelsList = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<AddCustomLabelsToSelfHostedRunnerForOrgResponseLabelsList>;
+
 export interface AddCustomLabelsToSelfHostedRunnerForOrgResponse {
   total_count: number;
   labels: AddCustomLabelsToSelfHostedRunnerForOrgResponseLabelsList;
 }
+const AddCustomLabelsToSelfHostedRunnerForOrgResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<AddCustomLabelsToSelfHostedRunnerForOrgResponse>;
+
 /** The names of the custom labels to add to the runner. */
 export type AddCustomLabelsToSelfHostedRunnerForRepoRequestLabelsList = Array<string>;
+const AddCustomLabelsToSelfHostedRunnerForRepoRequestLabelsList =
+  AddCustomLabelsToSelfHostedRunnerForOrgRequestLabelsList as any as S.Schema<AddCustomLabelsToSelfHostedRunnerForRepoRequestLabelsList>;
+
 export interface AddCustomLabelsToSelfHostedRunnerForRepoRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -103,11 +128,19 @@ export interface AddCustomLabelsToSelfHostedRunnerForRepoRequest {
   /** The names of the custom labels to add to the runner. */
   labels: AddCustomLabelsToSelfHostedRunnerForRepoRequestLabelsList;
 }
+const AddCustomLabelsToSelfHostedRunnerForRepoRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<AddCustomLabelsToSelfHostedRunnerForRepoRequest>;
+
 export type AddCustomLabelsToSelfHostedRunnerForRepoResponseLabelsList = Array<RunnerLabel>;
 export interface AddCustomLabelsToSelfHostedRunnerForRepoResponse {
   total_count: number;
   labels: AddCustomLabelsToSelfHostedRunnerForRepoResponseLabelsList;
 }
+const AddCustomLabelsToSelfHostedRunnerForRepoResponse =
+  AddCustomLabelsToSelfHostedRunnerForOrgResponse as any as S.Schema<AddCustomLabelsToSelfHostedRunnerForRepoResponse>;
+
 export interface AddRepoAccessToSelfHostedRunnerGroupInOrgRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -116,7 +149,17 @@ export interface AddRepoAccessToSelfHostedRunnerGroupInOrgRequest {
   /** The unique identifier of the repository. */
   repository_id: number;
 }
+const AddRepoAccessToSelfHostedRunnerGroupInOrgRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<AddRepoAccessToSelfHostedRunnerGroupInOrgRequest>;
+
 export interface AddRepoAccessToSelfHostedRunnerGroupInOrgResponse {}
+const AddRepoAccessToSelfHostedRunnerGroupInOrgResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<AddRepoAccessToSelfHostedRunnerGroupInOrgResponse>;
+
 export interface AddSelectedRepoToOrgSecretRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -124,7 +167,15 @@ export interface AddSelectedRepoToOrgSecretRequest {
   secret_name: string;
   repository_id: number;
 }
+const AddSelectedRepoToOrgSecretRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<AddSelectedRepoToOrgSecretRequest>;
+
 export interface AddSelectedRepoToOrgSecretResponse {}
+const AddSelectedRepoToOrgSecretResponse =
+  AddRepoAccessToSelfHostedRunnerGroupInOrgResponse as any as S.Schema<AddSelectedRepoToOrgSecretResponse>;
+
 export interface AddSelectedRepoToOrgVariableRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -132,7 +183,15 @@ export interface AddSelectedRepoToOrgVariableRequest {
   name: string;
   repository_id: number;
 }
+const AddSelectedRepoToOrgVariableRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<AddSelectedRepoToOrgVariableRequest>;
+
 export interface AddSelectedRepoToOrgVariableResponse {}
+const AddSelectedRepoToOrgVariableResponse =
+  AddRepoAccessToSelfHostedRunnerGroupInOrgResponse as any as S.Schema<AddSelectedRepoToOrgVariableResponse>;
+
 export interface AddSelfHostedRunnerToGroupForOrgRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -141,7 +200,15 @@ export interface AddSelfHostedRunnerToGroupForOrgRequest {
   /** Unique identifier of the self-hosted runner. */
   runner_id: number;
 }
+const AddSelfHostedRunnerToGroupForOrgRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<AddSelfHostedRunnerToGroupForOrgRequest>;
+
 export interface AddSelfHostedRunnerToGroupForOrgResponse {}
+const AddSelfHostedRunnerToGroupForOrgResponse =
+  AddRepoAccessToSelfHostedRunnerGroupInOrgResponse as any as S.Schema<AddSelfHostedRunnerToGroupForOrgResponse>;
+
 export interface ApproveWorkflowRunRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -150,7 +217,17 @@ export interface ApproveWorkflowRunRequest {
   /** The unique identifier of the workflow run. */
   run_id: number;
 }
+const ApproveWorkflowRunRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<ApproveWorkflowRunRequest>;
+
 export type ApproveWorkflowRunResponse = unknown;
+const ApproveWorkflowRunResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<ApproveWorkflowRunResponse>;
+
 export interface CancelWorkflowRunRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -159,7 +236,17 @@ export interface CancelWorkflowRunRequest {
   /** The unique identifier of the workflow run. */
   run_id: number;
 }
+const CancelWorkflowRunRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<CancelWorkflowRunRequest>;
+
 export interface CancelWorkflowRunResponse {}
+const CancelWorkflowRunResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<CancelWorkflowRunResponse>;
+
 export interface CreateEnvironmentVariableRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -172,9 +259,19 @@ export interface CreateEnvironmentVariableRequest {
   /** The value of the variable. */
   value: string;
 }
+const CreateEnvironmentVariableRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<CreateEnvironmentVariableRequest>;
+
 export type CreateEnvironmentVariableResponse = unknown;
+const CreateEnvironmentVariableResponse =
+  ApproveWorkflowRunResponse as any as S.Schema<CreateEnvironmentVariableResponse>;
+
 /** The source of the runner image. */
 export type CreateHostedRunnerForOrgRequestImageSource = "github" | "partner" | "custom";
+const CreateHostedRunnerForOrgRequestImageSource = S.String;
+
 /** The image of runner. To list all available images, use `GET /actions/hosted-runners/images/github-owned` or `GET /actions/hosted-runners/images/partner`. */
 export interface CreateHostedRunnerForOrgRequestImage {
   /** The unique identifier of the runner image. */
@@ -184,6 +281,11 @@ export interface CreateHostedRunnerForOrgRequestImage {
   /** The version of the runner image to deploy. This is relevant only for runners using custom images. */
   version?: string | null;
 }
+const CreateHostedRunnerForOrgRequestImage = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<CreateHostedRunnerForOrgRequestImage>;
+
 export interface CreateHostedRunnerForOrgRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -202,8 +304,15 @@ export interface CreateHostedRunnerForOrgRequest {
   /** Whether this runner should be used to generate custom images. */
   image_gen?: boolean;
 }
+const CreateHostedRunnerForOrgRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<CreateHostedRunnerForOrgRequest>;
+
 /** The image provider. */
 export type NullableActionsHostedRunnerPoolImageSource = "github" | "partner" | "custom";
+const NullableActionsHostedRunnerPoolImageSource = S.String;
+
 /** Provides details of a hosted runner image */
 export interface NullableActionsHostedRunnerPoolImage {
   /** The ID of the image. Use this ID for the `image` parameter when creating a new larger runner. */
@@ -217,6 +326,11 @@ export interface NullableActionsHostedRunnerPoolImage {
   /** The image version of the hosted runner pool. */
   version?: string;
 }
+const NullableActionsHostedRunnerPoolImage = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<NullableActionsHostedRunnerPoolImage>;
+
 /** Provides details of a particular machine spec. */
 export interface ActionsHostedRunnerMachineSpec {
   /** The ID used for the `size` parameter when creating a new runner. */
@@ -228,6 +342,11 @@ export interface ActionsHostedRunnerMachineSpec {
   /** The available SSD storage for the machine spec. */
   storage_gb: number;
 }
+const ActionsHostedRunnerMachineSpec = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<ActionsHostedRunnerMachineSpec>;
+
 /** The status of the runner. */
 export type ActionsHostedRunnerStatus =
   | "Ready"
@@ -235,6 +354,8 @@ export type ActionsHostedRunnerStatus =
   | "Shutdown"
   | "Deleting"
   | "Stuck";
+const ActionsHostedRunnerStatus = S.String;
+
 /** Provides details of Public IP for a GitHub-hosted larger runners */
 export interface PublicIp {
   /** Whether public IP is enabled. */
@@ -244,8 +365,15 @@ export interface PublicIp {
   /** The length of the IP prefix. */
   length?: number;
 }
+const PublicIp = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<PublicIp>;
+
 /** The public IP ranges when public IP is enabled for the hosted runners. */
 export type ActionsHostedRunnerPublicIpsList = Array<PublicIp>;
+const ActionsHostedRunnerPublicIpsList = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<ActionsHostedRunnerPublicIpsList>;
+
 /** A Github-hosted hosted runner. */
 export interface ActionsHostedRunner {
   /** The unique identifier of the hosted runner. */
@@ -271,8 +399,12 @@ export interface ActionsHostedRunner {
   /** Whether custom image generation is enabled for the hosted runners. */
   image_gen?: boolean;
 }
+const ActionsHostedRunner = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<ActionsHostedRunner>;
+
 /** The enforcement level of the ruleset. `evaluate` allows admins to test rules before enforcing them. Admins can view insights on the Rule Insights page (`evaluate` is only available with GitHub Enterprise). */
 export type RepositoryRuleEnforcement = "disabled" | "active" | "evaluate";
+const RepositoryRuleEnforcement = S.String;
+
 /** Array of repository names or patterns to include. One of these patterns must match for the condition to pass. Also accepts `~ALL` to include all repositories. */
 export type ActionsPolicyOrgConditionsCase0RepositoryNameIncludeList = Array<string>;
 /** Array of repository names or patterns to exclude. The condition will not pass if any of these patterns match. */
@@ -301,6 +433,11 @@ export interface ActionsPolicyOrgConditionsCase0 {
 }
 /** The repository IDs that the ruleset applies to. One of these IDs must match for the condition to pass. */
 export type ActionsPolicyOrgConditionsCase1RepositoryIdRepositoryIdsList = Array<number>;
+const ActionsPolicyOrgConditionsCase1RepositoryIdRepositoryIdsList = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<ActionsPolicyOrgConditionsCase1RepositoryIdRepositoryIdsList>;
+
 export interface ActionsPolicyOrgConditionsCase1RepositoryId {
   /** The repository IDs that the ruleset applies to. One of these IDs must match for the condition to pass. */
   repository_ids?: ActionsPolicyOrgConditionsCase1RepositoryIdRepositoryIdsList;
@@ -363,6 +500,8 @@ export type ActionsPolicyOrgConditions =
   | ActionsPolicyOrgConditionsCase0
   | ActionsPolicyOrgConditionsCase1
   | ActionsPolicyOrgConditionsCase2;
+const ActionsPolicyOrgConditions = S.Unknown as any as S.Schema<ActionsPolicyOrgConditions>;
+
 export type ActionsRuleRestrictActionsActorsType = "restrict_actions_actors";
 /** The type of the actor */
 export type ActionsRuleParamsActorType =
@@ -446,8 +585,15 @@ export interface ActionsRuleRestrictActionEvents {
 }
 /** An actions rule. */
 export type ActionsRule = ActionsRuleRestrictActionsActors | ActionsRuleRestrictActionEvents;
+const ActionsRule = S.Unknown as any as S.Schema<ActionsRule>;
+
 /** An array of rules within the policy. */
 export type CreateOrgActionsPolicyRequestRulesList = Array<ActionsRule>;
+const CreateOrgActionsPolicyRequestRulesList = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<CreateOrgActionsPolicyRequestRulesList>;
+
 export interface CreateOrgActionsPolicyRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -458,10 +604,19 @@ export interface CreateOrgActionsPolicyRequest {
   /** An array of rules within the policy. */
   rules?: CreateOrgActionsPolicyRequestRulesList;
 }
+const CreateOrgActionsPolicyRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<CreateOrgActionsPolicyRequest>;
+
 /** The target of the policy */
 export type ActionsPolicyTarget = "actions";
+const ActionsPolicyTarget = S.String;
+
 /** The type of the source of the policy */
 export type ActionsPolicySourceType = "Repository" | "Organization" | "Enterprise";
+const ActionsPolicySourceType = S.String;
+
 /** Array of workflow file paths or glob patterns to include. An empty array includes all workflows not matched by an excluded pattern. Use `~ALL` by itself to include all workflows. `~ALL` cannot be combined with other included patterns. */
 export type ActionsPolicyWorkflowPathConditionWorkflowPathIncludeList = Array<string>;
 /** Array of workflow file paths or glob patterns to exclude. The condition will not pass if any of these patterns match. `~ALL` is not allowed in this array. */
@@ -478,6 +633,8 @@ export interface ActionsPolicyWorkflowPathCondition {
 }
 /** Conditions for a repository Actions policy. The object may be empty to preserve or use the default workflow targeting, or contain only `workflow_path`. */
 export type ActionsPolicyRepoConditions = unknown | ActionsPolicyWorkflowPathCondition;
+const ActionsPolicyRepoConditions = S.Unknown as any as S.Schema<ActionsPolicyRepoConditions>;
+
 /** Array of organization names or patterns to include. One of these patterns must match for the condition to pass. Also accepts `~ALL` to include all organizations and ~EMUS to target all enterprise managed user accounts. */
 export type ActionsPolicyEnterpriseConditionsCase0OrganizationNameIncludeList = Array<string>;
 /** Array of organization names or patterns to exclude. The condition will not pass if any of these patterns match. */
@@ -556,6 +713,12 @@ export interface ActionsPolicyEnterpriseConditionsCase1 {
 }
 /** The organization IDs that the ruleset applies to. One of these IDs must match for the condition to pass. */
 export type ActionsPolicyEnterpriseConditionsCase2OrganizationIdOrganizationIdsList = Array<number>;
+const ActionsPolicyEnterpriseConditionsCase2OrganizationIdOrganizationIdsList =
+  /*@__PURE__*/ __L.at(
+    __c3,
+    2,
+  ) as any as S.Schema<ActionsPolicyEnterpriseConditionsCase2OrganizationIdOrganizationIdsList>;
+
 export interface ActionsPolicyEnterpriseConditionsCase2OrganizationId {
   /** The organization IDs that the ruleset applies to. One of these IDs must match for the condition to pass. */
   organization_ids?: ActionsPolicyEnterpriseConditionsCase2OrganizationIdOrganizationIdsList;
@@ -724,20 +887,34 @@ export type ActionsPolicyConditions =
   | ActionsPolicyRepoConditions
   | ActionsPolicyOrgConditions
   | ActionsPolicyEnterpriseConditions;
+const ActionsPolicyConditions = S.Unknown as any as S.Schema<ActionsPolicyConditions>;
+
 /** An array of rules within the policy */
 export type ActionsPolicyRulesList = Array<ActionsRule>;
+const ActionsPolicyRulesList =
+  CreateOrgActionsPolicyRequestRulesList as any as S.Schema<ActionsPolicyRulesList>;
+
 export interface ActionsPolicyLinksSelf {
   /** The URL of the policy */
   href?: string;
 }
+const ActionsPolicyLinksSelf = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<ActionsPolicyLinksSelf>;
+
 export interface ActionsPolicyLinksHtml {
   /** The html URL of the policy */
   href?: string;
 }
+const ActionsPolicyLinksHtml = ActionsPolicyLinksSelf as any as S.Schema<ActionsPolicyLinksHtml>;
+
 export interface ActionsPolicyLinks {
   self?: ActionsPolicyLinksSelf;
   html?: ActionsPolicyLinksHtml;
 }
+const ActionsPolicyLinks = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<ActionsPolicyLinks>;
+
 /** An Actions policy defines rules for workflow execution protection. */
 export interface ActionsPolicy {
   /** The ID of the policy */
@@ -760,10 +937,17 @@ export interface ActionsPolicy {
   created_at?: string;
   updated_at?: string;
 }
+const ActionsPolicy = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<ActionsPolicy>;
+
 /** The type of repositories in the organization that can access the variable. `selected` means only the repositories specified by `selected_repository_ids` can access the variable. */
 export type CreateOrgVariableRequestVisibility = "all" | "private" | "selected";
+const CreateOrgVariableRequestVisibility = S.String;
+
 /** An array of repository ids that can access the organization variable. You can only provide a list of repository ids when the `visibility` is set to `selected`. */
 export type CreateOrgVariableRequestSelectedRepositoryIdsList = Array<number>;
+const CreateOrgVariableRequestSelectedRepositoryIdsList =
+  ActionsPolicyOrgConditionsCase1RepositoryIdRepositoryIdsList as any as S.Schema<CreateOrgVariableRequestSelectedRepositoryIdsList>;
+
 export interface CreateOrgVariableRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -776,7 +960,15 @@ export interface CreateOrgVariableRequest {
   /** An array of repository ids that can access the organization variable. You can only provide a list of repository ids when the `visibility` is set to `selected`. */
   selected_repository_ids?: CreateOrgVariableRequestSelectedRepositoryIdsList;
 }
+const CreateOrgVariableRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<CreateOrgVariableRequest>;
+
 export type CreateOrgVariableResponse = unknown;
+const CreateOrgVariableResponse =
+  ApproveWorkflowRunResponse as any as S.Schema<CreateOrgVariableResponse>;
+
 export interface CreateOrUpdateEnvironmentSecretRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -791,11 +983,24 @@ export interface CreateOrUpdateEnvironmentSecretRequest {
   /** ID of the key you used to encrypt the secret. */
   key_id: string;
 }
+const CreateOrUpdateEnvironmentSecretRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<CreateOrUpdateEnvironmentSecretRequest>;
+
 export type CreateOrUpdateEnvironmentSecretResponse = unknown;
+const CreateOrUpdateEnvironmentSecretResponse =
+  ApproveWorkflowRunResponse as any as S.Schema<CreateOrUpdateEnvironmentSecretResponse>;
+
 /** Which type of organization repositories have access to the organization secret. `selected` means only the repositories specified by `selected_repository_ids` can access the secret. */
 export type CreateOrUpdateOrgSecretRequestVisibility = "all" | "private" | "selected";
+const CreateOrUpdateOrgSecretRequestVisibility = S.String;
+
 /** An array of repository ids that can access the organization secret. You can only provide a list of repository ids when the `visibility` is set to `selected`. You can manage the list of selected repositories using the [List selected repositories for an organization secret](https://docs.github.com/rest/actions/secrets#list-selected-repositories-for-an-organization-secret), [Set selected repositories for an organization secret](https://docs.github.com/rest/actions/secrets#set-selected-repositories-for-an-organization-secret), and [Remove selected repository from an organization secret](https://docs.github.com/rest/actions/secrets#remove-selected-repository-from-an-organization-secret) endpoints. */
 export type CreateOrUpdateOrgSecretRequestSelectedRepositoryIdsList = Array<number>;
+const CreateOrUpdateOrgSecretRequestSelectedRepositoryIdsList =
+  ActionsPolicyOrgConditionsCase1RepositoryIdRepositoryIdsList as any as S.Schema<CreateOrUpdateOrgSecretRequestSelectedRepositoryIdsList>;
+
 export interface CreateOrUpdateOrgSecretRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -810,7 +1015,15 @@ export interface CreateOrUpdateOrgSecretRequest {
   /** An array of repository ids that can access the organization secret. You can only provide a list of repository ids when the `visibility` is set to `selected`. You can manage the list of selected repositories using the [List selected repositories for an organization secret](https://docs.github.com/rest/actions/secrets#list-selected-repositories-for-an-organization-secret), [Set selected repositories for an organization secret](https://docs.github.com/rest/actions/secrets#set-selected-repositories-for-an-organization-secret), and [Remove selected repository from an organization secret](https://docs.github.com/rest/actions/secrets#remove-selected-repository-from-an-organization-secret) endpoints. */
   selected_repository_ids?: CreateOrUpdateOrgSecretRequestSelectedRepositoryIdsList;
 }
+const CreateOrUpdateOrgSecretRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<CreateOrUpdateOrgSecretRequest>;
+
 export type CreateOrUpdateOrgSecretResponse = unknown;
+const CreateOrUpdateOrgSecretResponse =
+  ApproveWorkflowRunResponse as any as S.Schema<CreateOrUpdateOrgSecretResponse>;
+
 export interface CreateOrUpdateRepoSecretRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -823,11 +1036,24 @@ export interface CreateOrUpdateRepoSecretRequest {
   /** ID of the key you used to encrypt the secret. */
   key_id: string;
 }
+const CreateOrUpdateRepoSecretRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<CreateOrUpdateRepoSecretRequest>;
+
 export type CreateOrUpdateRepoSecretResponse = unknown;
+const CreateOrUpdateRepoSecretResponse =
+  ApproveWorkflowRunResponse as any as S.Schema<CreateOrUpdateRepoSecretResponse>;
+
 export interface CreateRegistrationTokenForOrgRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
 }
+const CreateRegistrationTokenForOrgRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<CreateRegistrationTokenForOrgRequest>;
+
 /** License Simple */
 export interface NullableLicenseSimple {
   key: string;
@@ -837,6 +1063,11 @@ export interface NullableLicenseSimple {
   node_id: string;
   html_url?: string;
 }
+const NullableLicenseSimple = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<NullableLicenseSimple>;
+
 export interface RepositoryPermissions {
   admin: boolean;
   pull: boolean;
@@ -844,6 +1075,11 @@ export interface RepositoryPermissions {
   push: boolean;
   maintain?: boolean;
 }
+const RepositoryPermissions = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<RepositoryPermissions>;
+
 /** A GitHub user. */
 export interface SimpleUser {
   name?: string | null;
@@ -869,22 +1105,42 @@ export interface SimpleUser {
   starred_at?: string;
   user_view_type?: string;
 }
+const SimpleUser = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<SimpleUser>;
+
 export type RepositoryTopicsList = Array<string>;
+const RepositoryTopicsList =
+  AddCustomLabelsToSelfHostedRunnerForOrgRequestLabelsList as any as S.Schema<RepositoryTopicsList>;
+
 /** The policy controlling who can create pull requests: all or collaborators_only. */
 export type RepositoryPullRequestCreationPolicy = "all" | "collaborators_only";
+const RepositoryPullRequestCreationPolicy = S.String;
+
 /** The default value for a squash merge commit title: - `PR_TITLE` - default to the pull request's title. - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit). */
 export type RepositorySquashMergeCommitTitle = "PR_TITLE" | "COMMIT_OR_PR_TITLE";
+const RepositorySquashMergeCommitTitle = S.String;
+
 /** The default value for a squash merge commit message: - `PR_BODY` - default to the pull request's body. - `COMMIT_MESSAGES` - default to the branch's commit messages. - `BLANK` - default to a blank commit message. */
 export type RepositorySquashMergeCommitMessage = "PR_BODY" | "COMMIT_MESSAGES" | "BLANK";
+const RepositorySquashMergeCommitMessage = S.String;
+
 /** The default value for a merge commit title. - `PR_TITLE` - default to the pull request's title. - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name). */
 export type RepositoryMergeCommitTitle = "PR_TITLE" | "MERGE_MESSAGE";
+const RepositoryMergeCommitTitle = S.String;
+
 /** The default value for a merge commit message. - `PR_TITLE` - default to the pull request's title. - `PR_BODY` - default to the pull request's body. - `BLANK` - default to a blank commit message. */
 export type RepositoryMergeCommitMessage = "PR_BODY" | "PR_TITLE" | "BLANK";
+const RepositoryMergeCommitMessage = S.String;
+
 /** The status of the code search index for this repository */
 export interface RepositoryCodeSearchIndexStatus {
   lexical_search_ok?: boolean;
   lexical_commit_sha?: string;
 }
+const RepositoryCodeSearchIndexStatus = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<RepositoryCodeSearchIndexStatus>;
+
 /** A repository on GitHub. */
 export interface Repository {
   /** Unique identifier of the repository */
@@ -1017,10 +1273,19 @@ export interface Repository {
   /** The status of the code search index for this repository */
   code_search_index_status?: RepositoryCodeSearchIndexStatus;
 }
+const Repository = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<Repository>;
+
 /** The repositories this token has access to */
 export type AuthenticationTokenRepositoriesList = Array<Repository>;
+const AuthenticationTokenRepositoriesList = /*@__PURE__*/ __L.at(
+  __c5,
+  0,
+) as any as S.Schema<AuthenticationTokenRepositoriesList>;
+
 /** Describe whether all repositories have been selected or there's a selection involved */
 export type AuthenticationTokenRepositorySelection = "all" | "selected";
+const AuthenticationTokenRepositorySelection = S.String;
+
 /** Authentication Token */
 export interface AuthenticationToken {
   /** The token used for authentication */
@@ -1034,24 +1299,44 @@ export interface AuthenticationToken {
   /** Describe whether all repositories have been selected or there's a selection involved */
   repository_selection?: AuthenticationTokenRepositorySelection;
 }
+const AuthenticationToken = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<AuthenticationToken>;
+
 export interface CreateRegistrationTokenForRepoRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
   /** The name of the repository without the `.git` extension. The name is not case sensitive. */
   repo: string;
 }
+const CreateRegistrationTokenForRepoRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  2,
+) as any as S.Schema<CreateRegistrationTokenForRepoRequest>;
+
 export interface CreateRemoveTokenForOrgRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
 }
+const CreateRemoveTokenForOrgRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<CreateRemoveTokenForOrgRequest>;
+
 export interface CreateRemoveTokenForRepoRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
   /** The name of the repository without the `.git` extension. The name is not case sensitive. */
   repo: string;
 }
+const CreateRemoveTokenForRepoRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  4,
+) as any as S.Schema<CreateRemoveTokenForRepoRequest>;
+
 /** An array of rules within the policy. */
 export type CreateRepoActionsPolicyRequestRulesList = Array<ActionsRule>;
+const CreateRepoActionsPolicyRequestRulesList =
+  CreateOrgActionsPolicyRequestRulesList as any as S.Schema<CreateRepoActionsPolicyRequestRulesList>;
+
 export interface CreateRepoActionsPolicyRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -1064,6 +1349,11 @@ export interface CreateRepoActionsPolicyRequest {
   /** An array of rules within the policy. */
   rules?: CreateRepoActionsPolicyRequestRulesList;
 }
+const CreateRepoActionsPolicyRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  5,
+) as any as S.Schema<CreateRepoActionsPolicyRequest>;
+
 export interface CreateRepoVariableRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -1074,15 +1364,34 @@ export interface CreateRepoVariableRequest {
   /** The value of the variable. */
   value: string;
 }
+const CreateRepoVariableRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  6,
+) as any as S.Schema<CreateRepoVariableRequest>;
+
 export type CreateRepoVariableResponse = unknown;
+const CreateRepoVariableResponse =
+  ApproveWorkflowRunResponse as any as S.Schema<CreateRepoVariableResponse>;
+
 /** Visibility of a runner group. You can select all repositories, select individual repositories, or limit access to private repositories. */
 export type CreateSelfHostedRunnerGroupForOrgRequestVisibility = "selected" | "all" | "private";
+const CreateSelfHostedRunnerGroupForOrgRequestVisibility = S.String;
+
 /** List of repository IDs that can access the runner group. */
 export type CreateSelfHostedRunnerGroupForOrgRequestSelectedRepositoryIdsList = Array<number>;
+const CreateSelfHostedRunnerGroupForOrgRequestSelectedRepositoryIdsList =
+  ActionsPolicyEnterpriseConditionsCase2OrganizationIdOrganizationIdsList as any as S.Schema<CreateSelfHostedRunnerGroupForOrgRequestSelectedRepositoryIdsList>;
+
 /** List of runner IDs to add to the runner group. */
 export type CreateSelfHostedRunnerGroupForOrgRequestRunnersList = Array<number>;
+const CreateSelfHostedRunnerGroupForOrgRequestRunnersList =
+  ActionsPolicyOrgConditionsCase1RepositoryIdRepositoryIdsList as any as S.Schema<CreateSelfHostedRunnerGroupForOrgRequestRunnersList>;
+
 /** List of workflows the runner group should be allowed to run. This setting will be ignored unless `restricted_to_workflows` is set to `true`. */
 export type CreateSelfHostedRunnerGroupForOrgRequestSelectedWorkflowsList = Array<string>;
+const CreateSelfHostedRunnerGroupForOrgRequestSelectedWorkflowsList =
+  AddCustomLabelsToSelfHostedRunnerForOrgRequestLabelsList as any as S.Schema<CreateSelfHostedRunnerGroupForOrgRequestSelectedWorkflowsList>;
+
 export interface CreateSelfHostedRunnerGroupForOrgRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -1103,8 +1412,16 @@ export interface CreateSelfHostedRunnerGroupForOrgRequest {
   /** The identifier of a hosted compute network configuration. */
   network_configuration_id?: string;
 }
+const CreateSelfHostedRunnerGroupForOrgRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  7,
+) as any as S.Schema<CreateSelfHostedRunnerGroupForOrgRequest>;
+
 /** List of workflows the runner group should be allowed to run. This setting will be ignored unless `restricted_to_workflows` is set to `true`. */
 export type RunnerGroupsOrgSelectedWorkflowsList = Array<string>;
+const RunnerGroupsOrgSelectedWorkflowsList =
+  AddCustomLabelsToSelfHostedRunnerForOrgRequestLabelsList as any as S.Schema<RunnerGroupsOrgSelectedWorkflowsList>;
+
 export interface RunnerGroupsOrg {
   id: number;
   name: string;
@@ -1126,8 +1443,15 @@ export interface RunnerGroupsOrg {
   /** List of workflows the runner group should be allowed to run. This setting will be ignored unless `restricted_to_workflows` is set to `true`. */
   selected_workflows?: RunnerGroupsOrgSelectedWorkflowsList;
 }
+const RunnerGroupsOrg = /*@__PURE__*/ __L.at(__c6, 0) as any as S.Schema<RunnerGroupsOrg>;
+
 /** Input keys and values configured in the workflow file. The maximum number of properties is 25. Any default properties configured in the workflow file will be used when `inputs` are omitted. */
 export type CreateWorkflowDispatchRequestInputsMap = { [key: string]: unknown | undefined };
+const CreateWorkflowDispatchRequestInputsMap = /*@__PURE__*/ __L.at(
+  __c6,
+  1,
+) as any as S.Schema<CreateWorkflowDispatchRequestInputsMap>;
+
 export interface CreateWorkflowDispatchRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -1142,6 +1466,11 @@ export interface CreateWorkflowDispatchRequest {
   /** Whether the response should include the workflow run ID and URLs. */
   return_run_details?: boolean;
 }
+const CreateWorkflowDispatchRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  2,
+) as any as S.Schema<CreateWorkflowDispatchRequest>;
+
 /** Response containing the workflow run ID and URLs. */
 export interface WorkflowDispatchResponse {
   workflow_run_id: number;
@@ -1149,6 +1478,11 @@ export interface WorkflowDispatchResponse {
   run_url: string;
   html_url: string;
 }
+const WorkflowDispatchResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  3,
+) as any as S.Schema<WorkflowDispatchResponse>;
+
 export interface DeleteActionsCacheByIdRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -1157,7 +1491,15 @@ export interface DeleteActionsCacheByIdRequest {
   /** The unique identifier of the GitHub Actions cache. */
   cache_id: number;
 }
+const DeleteActionsCacheByIdRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  4,
+) as any as S.Schema<DeleteActionsCacheByIdRequest>;
+
 export interface DeleteActionsCacheByIdResponse {}
+const DeleteActionsCacheByIdResponse =
+  CancelWorkflowRunResponse as any as S.Schema<DeleteActionsCacheByIdResponse>;
+
 export interface DeleteActionsCacheByKeyRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -1168,6 +1510,11 @@ export interface DeleteActionsCacheByKeyRequest {
   /** The full Git reference for narrowing down the cache. The `ref` for a branch should be formatted as `refs/heads/<branch name>`. To reference a pull request use `refs/pull/<number>/merge`. */
   ref?: string;
 }
+const DeleteActionsCacheByKeyRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  5,
+) as any as S.Schema<DeleteActionsCacheByKeyRequest>;
+
 export interface ActionsCacheListActionsCachesItem {
   id?: number;
   ref?: string;
@@ -1177,8 +1524,18 @@ export interface ActionsCacheListActionsCachesItem {
   created_at?: string;
   size_in_bytes?: number;
 }
+const ActionsCacheListActionsCachesItem = /*@__PURE__*/ __L.at(
+  __c6,
+  6,
+) as any as S.Schema<ActionsCacheListActionsCachesItem>;
+
 /** Array of caches */
 export type ActionsCacheListActionsCachesList = Array<ActionsCacheListActionsCachesItem>;
+const ActionsCacheListActionsCachesList = /*@__PURE__*/ __L.at(
+  __c6,
+  7,
+) as any as S.Schema<ActionsCacheListActionsCachesList>;
+
 /** Repository actions caches */
 export interface ActionsCacheList {
   /** Total number of caches */
@@ -1186,6 +1543,8 @@ export interface ActionsCacheList {
   /** Array of caches */
   actions_caches: ActionsCacheListActionsCachesList;
 }
+const ActionsCacheList = /*@__PURE__*/ __L.at(__c7, 0) as any as S.Schema<ActionsCacheList>;
+
 export interface DeleteArtifactRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -1194,14 +1553,29 @@ export interface DeleteArtifactRequest {
   /** The unique identifier of the artifact. */
   artifact_id: number;
 }
+const DeleteArtifactRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  1,
+) as any as S.Schema<DeleteArtifactRequest>;
+
 export interface DeleteArtifactResponse {}
+const DeleteArtifactResponse = CancelWorkflowRunResponse as any as S.Schema<DeleteArtifactResponse>;
+
 export interface DeleteCustomImageFromOrgRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
   /** Image definition ID of custom image */
   image_definition_id: number;
 }
+const DeleteCustomImageFromOrgRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  2,
+) as any as S.Schema<DeleteCustomImageFromOrgRequest>;
+
 export interface DeleteCustomImageFromOrgResponse {}
+const DeleteCustomImageFromOrgResponse =
+  AddRepoAccessToSelfHostedRunnerGroupInOrgResponse as any as S.Schema<DeleteCustomImageFromOrgResponse>;
+
 export interface DeleteCustomImageVersionFromOrgRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -1210,7 +1584,15 @@ export interface DeleteCustomImageVersionFromOrgRequest {
   /** Version of a custom image */
   version: string;
 }
+const DeleteCustomImageVersionFromOrgRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  3,
+) as any as S.Schema<DeleteCustomImageVersionFromOrgRequest>;
+
 export interface DeleteCustomImageVersionFromOrgResponse {}
+const DeleteCustomImageVersionFromOrgResponse =
+  AddRepoAccessToSelfHostedRunnerGroupInOrgResponse as any as S.Schema<DeleteCustomImageVersionFromOrgResponse>;
+
 export interface DeleteEnvironmentSecretRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -1221,7 +1603,17 @@ export interface DeleteEnvironmentSecretRequest {
   /** The name of the secret. */
   secret_name: string;
 }
+const DeleteEnvironmentSecretRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  4,
+) as any as S.Schema<DeleteEnvironmentSecretRequest>;
+
 export interface DeleteEnvironmentSecretResponse {}
+const DeleteEnvironmentSecretResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  5,
+) as any as S.Schema<DeleteEnvironmentSecretResponse>;
+
 export interface DeleteEnvironmentVariableRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -1232,35 +1624,75 @@ export interface DeleteEnvironmentVariableRequest {
   /** The name of the variable. */
   name: string;
 }
+const DeleteEnvironmentVariableRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  6,
+) as any as S.Schema<DeleteEnvironmentVariableRequest>;
+
 export interface DeleteEnvironmentVariableResponse {}
+const DeleteEnvironmentVariableResponse =
+  AddRepoAccessToSelfHostedRunnerGroupInOrgResponse as any as S.Schema<DeleteEnvironmentVariableResponse>;
+
 export interface DeleteHostedRunnerForOrgRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
   /** Unique identifier of the GitHub-hosted runner. */
   hosted_runner_id: number;
 }
+const DeleteHostedRunnerForOrgRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  7,
+) as any as S.Schema<DeleteHostedRunnerForOrgRequest>;
+
 export interface DeleteHostedRunnerForOrgResponse {}
+const DeleteHostedRunnerForOrgResponse =
+  AddRepoAccessToSelfHostedRunnerGroupInOrgResponse as any as S.Schema<DeleteHostedRunnerForOrgResponse>;
+
 export interface DeleteOrgActionsPolicyRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
   /** The ID of the policy. */
   policy_id: number;
 }
+const DeleteOrgActionsPolicyRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  0,
+) as any as S.Schema<DeleteOrgActionsPolicyRequest>;
+
 export interface DeleteOrgActionsPolicyResponse {}
+const DeleteOrgActionsPolicyResponse =
+  CancelWorkflowRunResponse as any as S.Schema<DeleteOrgActionsPolicyResponse>;
+
 export interface DeleteOrgSecretRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
   /** The name of the secret. */
   secret_name: string;
 }
+const DeleteOrgSecretRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  1,
+) as any as S.Schema<DeleteOrgSecretRequest>;
+
 export interface DeleteOrgSecretResponse {}
+const DeleteOrgSecretResponse =
+  CancelWorkflowRunResponse as any as S.Schema<DeleteOrgSecretResponse>;
+
 export interface DeleteOrgVariableRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
   /** The name of the variable. */
   name: string;
 }
+const DeleteOrgVariableRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  2,
+) as any as S.Schema<DeleteOrgVariableRequest>;
+
 export interface DeleteOrgVariableResponse {}
+const DeleteOrgVariableResponse =
+  CancelWorkflowRunResponse as any as S.Schema<DeleteOrgVariableResponse>;
+
 export interface DeleteRepoActionsPolicyRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -1269,7 +1701,15 @@ export interface DeleteRepoActionsPolicyRequest {
   /** The ID of the policy. */
   policy_id: number;
 }
+const DeleteRepoActionsPolicyRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  3,
+) as any as S.Schema<DeleteRepoActionsPolicyRequest>;
+
 export interface DeleteRepoActionsPolicyResponse {}
+const DeleteRepoActionsPolicyResponse =
+  DeleteEnvironmentSecretResponse as any as S.Schema<DeleteRepoActionsPolicyResponse>;
+
 export interface DeleteRepoSecretRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -1278,7 +1718,15 @@ export interface DeleteRepoSecretRequest {
   /** The name of the secret. */
   secret_name: string;
 }
+const DeleteRepoSecretRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  4,
+) as any as S.Schema<DeleteRepoSecretRequest>;
+
 export interface DeleteRepoSecretResponse {}
+const DeleteRepoSecretResponse =
+  CancelWorkflowRunResponse as any as S.Schema<DeleteRepoSecretResponse>;
+
 export interface DeleteRepoVariableRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -1287,14 +1735,30 @@ export interface DeleteRepoVariableRequest {
   /** The name of the variable. */
   name: string;
 }
+const DeleteRepoVariableRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  5,
+) as any as S.Schema<DeleteRepoVariableRequest>;
+
 export interface DeleteRepoVariableResponse {}
+const DeleteRepoVariableResponse =
+  CancelWorkflowRunResponse as any as S.Schema<DeleteRepoVariableResponse>;
+
 export interface DeleteSelfHostedRunnerFromOrgRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
   /** Unique identifier of the self-hosted runner. */
   runner_id: number;
 }
+const DeleteSelfHostedRunnerFromOrgRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  6,
+) as any as S.Schema<DeleteSelfHostedRunnerFromOrgRequest>;
+
 export interface DeleteSelfHostedRunnerFromOrgResponse {}
+const DeleteSelfHostedRunnerFromOrgResponse =
+  AddRepoAccessToSelfHostedRunnerGroupInOrgResponse as any as S.Schema<DeleteSelfHostedRunnerFromOrgResponse>;
+
 export interface DeleteSelfHostedRunnerFromRepoRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -1303,14 +1767,30 @@ export interface DeleteSelfHostedRunnerFromRepoRequest {
   /** Unique identifier of the self-hosted runner. */
   runner_id: number;
 }
+const DeleteSelfHostedRunnerFromRepoRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  7,
+) as any as S.Schema<DeleteSelfHostedRunnerFromRepoRequest>;
+
 export interface DeleteSelfHostedRunnerFromRepoResponse {}
+const DeleteSelfHostedRunnerFromRepoResponse =
+  AddRepoAccessToSelfHostedRunnerGroupInOrgResponse as any as S.Schema<DeleteSelfHostedRunnerFromRepoResponse>;
+
 export interface DeleteSelfHostedRunnerGroupFromOrgRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
   /** Unique identifier of the self-hosted runner group. */
   runner_group_id: number;
 }
+const DeleteSelfHostedRunnerGroupFromOrgRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  0,
+) as any as S.Schema<DeleteSelfHostedRunnerGroupFromOrgRequest>;
+
 export interface DeleteSelfHostedRunnerGroupFromOrgResponse {}
+const DeleteSelfHostedRunnerGroupFromOrgResponse =
+  AddRepoAccessToSelfHostedRunnerGroupInOrgResponse as any as S.Schema<DeleteSelfHostedRunnerGroupFromOrgResponse>;
+
 export interface DeleteWorkflowRunRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -1319,7 +1799,15 @@ export interface DeleteWorkflowRunRequest {
   /** The unique identifier of the workflow run. */
   run_id: number;
 }
+const DeleteWorkflowRunRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  1,
+) as any as S.Schema<DeleteWorkflowRunRequest>;
+
 export interface DeleteWorkflowRunResponse {}
+const DeleteWorkflowRunResponse =
+  CancelWorkflowRunResponse as any as S.Schema<DeleteWorkflowRunResponse>;
+
 export interface DeleteWorkflowRunLogsRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -1328,21 +1816,49 @@ export interface DeleteWorkflowRunLogsRequest {
   /** The unique identifier of the workflow run. */
   run_id: number;
 }
+const DeleteWorkflowRunLogsRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  2,
+) as any as S.Schema<DeleteWorkflowRunLogsRequest>;
+
 export interface DeleteWorkflowRunLogsResponse {}
+const DeleteWorkflowRunLogsResponse =
+  CancelWorkflowRunResponse as any as S.Schema<DeleteWorkflowRunLogsResponse>;
+
 export interface DisableSelectedRepositoryGithubActionsOrganizationRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
   /** The unique identifier of the repository. */
   repository_id: number;
 }
+const DisableSelectedRepositoryGithubActionsOrganizationRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  3,
+) as any as S.Schema<DisableSelectedRepositoryGithubActionsOrganizationRequest>;
+
 export interface DisableSelectedRepositoryGithubActionsOrganizationResponse {}
+const DisableSelectedRepositoryGithubActionsOrganizationResponse = /*@__PURE__*/ __L.at(
+  __c9,
+  4,
+) as any as S.Schema<DisableSelectedRepositoryGithubActionsOrganizationResponse>;
+
 export interface DisableSelectedRepositorySelfHostedRunnersOrganizationRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
   /** The unique identifier of the repository. */
   repository_id: number;
 }
+const DisableSelectedRepositorySelfHostedRunnersOrganizationRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  5,
+) as any as S.Schema<DisableSelectedRepositorySelfHostedRunnersOrganizationRequest>;
+
 export interface DisableSelectedRepositorySelfHostedRunnersOrganizationResponse {}
+const DisableSelectedRepositorySelfHostedRunnersOrganizationResponse = /*@__PURE__*/ __L.at(
+  __c9,
+  6,
+) as any as S.Schema<DisableSelectedRepositorySelfHostedRunnersOrganizationResponse>;
+
 export interface DisableWorkflowRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -1351,7 +1867,15 @@ export interface DisableWorkflowRequest {
   /** The ID of the workflow. You can also pass the workflow file name as a string. */
   workflow_id: string;
 }
+const DisableWorkflowRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  7,
+) as any as S.Schema<DisableWorkflowRequest>;
+
 export interface DisableWorkflowResponse {}
+const DisableWorkflowResponse =
+  CancelWorkflowRunResponse as any as S.Schema<DisableWorkflowResponse>;
+
 export interface DownloadArtifactRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -1361,7 +1885,15 @@ export interface DownloadArtifactRequest {
   artifact_id: number;
   archive_format: string;
 }
+const DownloadArtifactRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  0,
+) as any as S.Schema<DownloadArtifactRequest>;
+
 export interface DownloadArtifactResponse {}
+const DownloadArtifactResponse =
+  CancelWorkflowRunResponse as any as S.Schema<DownloadArtifactResponse>;
+
 export interface DownloadJobLogsForWorkflowRunRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -1370,7 +1902,15 @@ export interface DownloadJobLogsForWorkflowRunRequest {
   /** The unique identifier of the job. */
   job_id: number;
 }
+const DownloadJobLogsForWorkflowRunRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  1,
+) as any as S.Schema<DownloadJobLogsForWorkflowRunRequest>;
+
 export interface DownloadJobLogsForWorkflowRunResponse {}
+const DownloadJobLogsForWorkflowRunResponse =
+  AddRepoAccessToSelfHostedRunnerGroupInOrgResponse as any as S.Schema<DownloadJobLogsForWorkflowRunResponse>;
+
 export interface DownloadStepLogsForWorkflowRunJobRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -1381,7 +1921,15 @@ export interface DownloadStepLogsForWorkflowRunJobRequest {
   /** The zero-based position number of the step in the job. */
   step_number: number;
 }
+const DownloadStepLogsForWorkflowRunJobRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  2,
+) as any as S.Schema<DownloadStepLogsForWorkflowRunJobRequest>;
+
 export interface DownloadStepLogsForWorkflowRunJobResponse {}
+const DownloadStepLogsForWorkflowRunJobResponse =
+  AddRepoAccessToSelfHostedRunnerGroupInOrgResponse as any as S.Schema<DownloadStepLogsForWorkflowRunJobResponse>;
+
 export interface DownloadWorkflowRunAttemptLogsRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -1392,7 +1940,15 @@ export interface DownloadWorkflowRunAttemptLogsRequest {
   /** The attempt number of the workflow run. */
   attempt_number: number;
 }
+const DownloadWorkflowRunAttemptLogsRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  3,
+) as any as S.Schema<DownloadWorkflowRunAttemptLogsRequest>;
+
 export interface DownloadWorkflowRunAttemptLogsResponse {}
+const DownloadWorkflowRunAttemptLogsResponse =
+  AddRepoAccessToSelfHostedRunnerGroupInOrgResponse as any as S.Schema<DownloadWorkflowRunAttemptLogsResponse>;
+
 export interface DownloadWorkflowRunLogsRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -1401,21 +1957,45 @@ export interface DownloadWorkflowRunLogsRequest {
   /** The unique identifier of the workflow run. */
   run_id: number;
 }
+const DownloadWorkflowRunLogsRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  4,
+) as any as S.Schema<DownloadWorkflowRunLogsRequest>;
+
 export interface DownloadWorkflowRunLogsResponse {}
+const DownloadWorkflowRunLogsResponse =
+  DeleteEnvironmentSecretResponse as any as S.Schema<DownloadWorkflowRunLogsResponse>;
+
 export interface EnableSelectedRepositoryGithubActionsOrganizationRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
   /** The unique identifier of the repository. */
   repository_id: number;
 }
+const EnableSelectedRepositoryGithubActionsOrganizationRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  5,
+) as any as S.Schema<EnableSelectedRepositoryGithubActionsOrganizationRequest>;
+
 export interface EnableSelectedRepositoryGithubActionsOrganizationResponse {}
+const EnableSelectedRepositoryGithubActionsOrganizationResponse =
+  DisableSelectedRepositoryGithubActionsOrganizationResponse as any as S.Schema<EnableSelectedRepositoryGithubActionsOrganizationResponse>;
+
 export interface EnableSelectedRepositorySelfHostedRunnersOrganizationRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
   /** The unique identifier of the repository. */
   repository_id: number;
 }
+const EnableSelectedRepositorySelfHostedRunnersOrganizationRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  6,
+) as any as S.Schema<EnableSelectedRepositorySelfHostedRunnersOrganizationRequest>;
+
 export interface EnableSelectedRepositorySelfHostedRunnersOrganizationResponse {}
+const EnableSelectedRepositorySelfHostedRunnersOrganizationResponse =
+  DisableSelectedRepositorySelfHostedRunnersOrganizationResponse as any as S.Schema<EnableSelectedRepositorySelfHostedRunnersOrganizationResponse>;
+
 export interface EnableWorkflowRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -1424,7 +2004,14 @@ export interface EnableWorkflowRequest {
   /** The ID of the workflow. You can also pass the workflow file name as a string. */
   workflow_id: string;
 }
+const EnableWorkflowRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  7,
+) as any as S.Schema<EnableWorkflowRequest>;
+
 export interface EnableWorkflowResponse {}
+const EnableWorkflowResponse = CancelWorkflowRunResponse as any as S.Schema<EnableWorkflowResponse>;
+
 export interface ForceCancelWorkflowRunRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -1433,9 +2020,20 @@ export interface ForceCancelWorkflowRunRequest {
   /** The unique identifier of the workflow run. */
   run_id: number;
 }
+const ForceCancelWorkflowRunRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  0,
+) as any as S.Schema<ForceCancelWorkflowRunRequest>;
+
 export interface ForceCancelWorkflowRunResponse {}
+const ForceCancelWorkflowRunResponse =
+  CancelWorkflowRunResponse as any as S.Schema<ForceCancelWorkflowRunResponse>;
+
 /** The names of the custom labels to add to the runner. **Minimum items**: 1. **Maximum items**: 100. */
 export type GenerateRunnerJitconfigForOrgRequestLabelsList = Array<string>;
+const GenerateRunnerJitconfigForOrgRequestLabelsList =
+  AddCustomLabelsToSelfHostedRunnerForOrgRequestLabelsList as any as S.Schema<GenerateRunnerJitconfigForOrgRequestLabelsList>;
+
 export interface GenerateRunnerJitconfigForOrgRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -1448,7 +2046,15 @@ export interface GenerateRunnerJitconfigForOrgRequest {
   /** The working directory to be used for job execution, relative to the runner install directory. */
   work_folder?: string;
 }
+const GenerateRunnerJitconfigForOrgRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  1,
+) as any as S.Schema<GenerateRunnerJitconfigForOrgRequest>;
+
 export type RunnerLabelsList = Array<RunnerLabel>;
+const RunnerLabelsList =
+  AddCustomLabelsToSelfHostedRunnerForOrgResponseLabelsList as any as S.Schema<RunnerLabelsList>;
+
 /** A self hosted runner */
 export interface Runner {
   /** The ID of the runner. */
@@ -1467,13 +2073,23 @@ export interface Runner {
   /** The version of the GitHub Actions Runner software. This is only set if the runner has connected to the service at least once. */
   version?: string | null;
 }
+const Runner = /*@__PURE__*/ __L.at(__c11, 2) as any as S.Schema<Runner>;
+
 export interface GenerateRunnerJitconfigForOrgResponse {
   runner: Runner;
   /** The base64 encoded runner configuration. */
   encoded_jit_config: string;
 }
+const GenerateRunnerJitconfigForOrgResponse = /*@__PURE__*/ __L.at(
+  __c11,
+  3,
+) as any as S.Schema<GenerateRunnerJitconfigForOrgResponse>;
+
 /** The names of the custom labels to add to the runner. **Minimum items**: 1. **Maximum items**: 100. */
 export type GenerateRunnerJitconfigForRepoRequestLabelsList = Array<string>;
+const GenerateRunnerJitconfigForRepoRequestLabelsList =
+  AddCustomLabelsToSelfHostedRunnerForOrgRequestLabelsList as any as S.Schema<GenerateRunnerJitconfigForRepoRequestLabelsList>;
+
 export interface GenerateRunnerJitconfigForRepoRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -1488,13 +2104,25 @@ export interface GenerateRunnerJitconfigForRepoRequest {
   /** The working directory to be used for job execution, relative to the runner install directory. */
   work_folder?: string;
 }
+const GenerateRunnerJitconfigForRepoRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  4,
+) as any as S.Schema<GenerateRunnerJitconfigForRepoRequest>;
+
 export interface GenerateRunnerJitconfigForRepoResponse {
   runner: Runner;
   /** The base64 encoded runner configuration. */
   encoded_jit_config: string;
 }
+const GenerateRunnerJitconfigForRepoResponse =
+  GenerateRunnerJitconfigForOrgResponse as any as S.Schema<GenerateRunnerJitconfigForRepoResponse>;
+
 export type GetActionsCacheListRequestSort = "created_at" | "last_accessed_at" | "size_in_bytes";
+const GetActionsCacheListRequestSort = S.String;
+
 export type GetActionsCacheListRequestDirection = "asc" | "desc";
+const GetActionsCacheListRequestDirection = S.String;
+
 export interface GetActionsCacheListRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -1513,70 +2141,132 @@ export interface GetActionsCacheListRequest {
   /** The direction to sort the results by. */
   direction?: GetActionsCacheListRequestDirection | (string & {});
 }
+const GetActionsCacheListRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  5,
+) as any as S.Schema<GetActionsCacheListRequest>;
+
 export interface GetActionsCacheRetentionLimitForEnterpriseRequest {
   /** The slug version of the enterprise name. */
   enterprise: string;
 }
+const GetActionsCacheRetentionLimitForEnterpriseRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  6,
+) as any as S.Schema<GetActionsCacheRetentionLimitForEnterpriseRequest>;
+
 /** GitHub Actions cache retention policy for an enterprise. */
 export interface ActionsCacheRetentionLimitForEnterprise {
   /** For repositories & organizations in an enterprise, the maximum duration, in days, for which caches in a repository may be retained. */
   max_cache_retention_days?: number;
 }
+const ActionsCacheRetentionLimitForEnterprise = /*@__PURE__*/ __L.at(
+  __c11,
+  7,
+) as any as S.Schema<ActionsCacheRetentionLimitForEnterprise>;
+
 export interface GetActionsCacheRetentionLimitForOrganizationRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
 }
+const GetActionsCacheRetentionLimitForOrganizationRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  0,
+) as any as S.Schema<GetActionsCacheRetentionLimitForOrganizationRequest>;
+
 /** GitHub Actions cache retention policy for an organization. */
 export interface ActionsCacheRetentionLimitForOrganization {
   /** For repositories in this organization, the maximum duration, in days, for which caches in a repository may be retained. */
   max_cache_retention_days?: number;
 }
+const ActionsCacheRetentionLimitForOrganization =
+  ActionsCacheRetentionLimitForEnterprise as any as S.Schema<ActionsCacheRetentionLimitForOrganization>;
+
 export interface GetActionsCacheRetentionLimitForRepositoryRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
   /** The name of the repository without the `.git` extension. The name is not case sensitive. */
   repo: string;
 }
+const GetActionsCacheRetentionLimitForRepositoryRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  1,
+) as any as S.Schema<GetActionsCacheRetentionLimitForRepositoryRequest>;
+
 /** GitHub Actions cache retention policy for a repository. */
 export interface ActionsCacheRetentionLimitForRepository {
   /** The maximum number of days to keep caches in this repository. */
   max_cache_retention_days?: number;
 }
+const ActionsCacheRetentionLimitForRepository =
+  ActionsCacheRetentionLimitForEnterprise as any as S.Schema<ActionsCacheRetentionLimitForRepository>;
+
 export interface GetActionsCacheStorageLimitForEnterpriseRequest {
   /** The slug version of the enterprise name. */
   enterprise: string;
 }
+const GetActionsCacheStorageLimitForEnterpriseRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  2,
+) as any as S.Schema<GetActionsCacheStorageLimitForEnterpriseRequest>;
+
 /** GitHub Actions cache storage policy for an enterprise. */
 export interface ActionsCacheStorageLimitForEnterprise {
   /** For repositories & organizations in an enterprise, the maximum size limit for the sum of all caches in a repository, in gigabytes. */
   max_cache_size_gb?: number;
 }
+const ActionsCacheStorageLimitForEnterprise = /*@__PURE__*/ __L.at(
+  __c12,
+  3,
+) as any as S.Schema<ActionsCacheStorageLimitForEnterprise>;
+
 export interface GetActionsCacheStorageLimitForOrganizationRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
 }
+const GetActionsCacheStorageLimitForOrganizationRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  4,
+) as any as S.Schema<GetActionsCacheStorageLimitForOrganizationRequest>;
+
 /** GitHub Actions cache storage policy for an organization. */
 export interface ActionsCacheStorageLimitForOrganization {
   /** For repositories in the organization, the maximum size limit for the sum of all caches in a repository, in gigabytes. */
   max_cache_size_gb?: number;
 }
+const ActionsCacheStorageLimitForOrganization =
+  ActionsCacheStorageLimitForEnterprise as any as S.Schema<ActionsCacheStorageLimitForOrganization>;
+
 export interface GetActionsCacheStorageLimitForRepositoryRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
   /** The name of the repository without the `.git` extension. The name is not case sensitive. */
   repo: string;
 }
+const GetActionsCacheStorageLimitForRepositoryRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  5,
+) as any as S.Schema<GetActionsCacheStorageLimitForRepositoryRequest>;
+
 /** GitHub Actions cache storage policy for a repository. */
 export interface ActionsCacheStorageLimitForRepository {
   /** The maximum total cache size for this repository, in gigabytes. */
   max_cache_size_gb?: number;
 }
+const ActionsCacheStorageLimitForRepository =
+  ActionsCacheStorageLimitForEnterprise as any as S.Schema<ActionsCacheStorageLimitForRepository>;
+
 export interface GetActionsCacheUsageRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
   /** The name of the repository without the `.git` extension. The name is not case sensitive. */
   repo: string;
 }
+const GetActionsCacheUsageRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  6,
+) as any as S.Schema<GetActionsCacheUsageRequest>;
+
 /** GitHub Actions Cache Usage by repository. */
 export interface ActionsCacheUsageByRepository {
   /** The repository owner and name for the cache usage being shown. */
@@ -1586,6 +2276,11 @@ export interface ActionsCacheUsageByRepository {
   /** The number of active caches in the repository. */
   active_caches_count: number;
 }
+const ActionsCacheUsageByRepository = /*@__PURE__*/ __L.at(
+  __c12,
+  7,
+) as any as S.Schema<ActionsCacheUsageByRepository>;
+
 export interface GetActionsCacheUsageByRepoForOrgRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -1594,28 +2289,61 @@ export interface GetActionsCacheUsageByRepoForOrgRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
+const GetActionsCacheUsageByRepoForOrgRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  0,
+) as any as S.Schema<GetActionsCacheUsageByRepoForOrgRequest>;
+
 export type GetActionsCacheUsageByRepoForOrgResponseRepositoryCacheUsagesList =
   Array<ActionsCacheUsageByRepository>;
+const GetActionsCacheUsageByRepoForOrgResponseRepositoryCacheUsagesList = /*@__PURE__*/ __L.at(
+  __c13,
+  1,
+) as any as S.Schema<GetActionsCacheUsageByRepoForOrgResponseRepositoryCacheUsagesList>;
+
 export interface GetActionsCacheUsageByRepoForOrgResponse {
   total_count: number;
   repository_cache_usages: GetActionsCacheUsageByRepoForOrgResponseRepositoryCacheUsagesList;
 }
+const GetActionsCacheUsageByRepoForOrgResponse = /*@__PURE__*/ __L.at(
+  __c13,
+  2,
+) as any as S.Schema<GetActionsCacheUsageByRepoForOrgResponse>;
+
 export interface GetActionsCacheUsageForOrgRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
 }
+const GetActionsCacheUsageForOrgRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  3,
+) as any as S.Schema<GetActionsCacheUsageForOrgRequest>;
+
 export interface ActionsCacheUsageOrgEnterprise {
   /** The count of active caches across all repositories of an enterprise or an organization. */
   total_active_caches_count: number;
   /** The total size in bytes of all active cache items across all repositories of an enterprise or an organization. */
   total_active_caches_size_in_bytes: number;
 }
+const ActionsCacheUsageOrgEnterprise = /*@__PURE__*/ __L.at(
+  __c13,
+  4,
+) as any as S.Schema<ActionsCacheUsageOrgEnterprise>;
+
 export interface GetAllowedActionsOrganizationRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
 }
+const GetAllowedActionsOrganizationRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  5,
+) as any as S.Schema<GetAllowedActionsOrganizationRequest>;
+
 /** Specifies a list of string-matching patterns to allow specific action(s) and reusable workflow(s). Wildcards, tags, and SHAs are allowed. For example, `monalisa/octocat@*`, `monalisa/octocat@v2`, `monalisa/*`. > [!NOTE] > The `patterns_allowed` setting only applies to public repositories. */
 export type SelectedActionsPatternsAllowedList = Array<string>;
+const SelectedActionsPatternsAllowedList =
+  AddCustomLabelsToSelfHostedRunnerForOrgRequestLabelsList as any as S.Schema<SelectedActionsPatternsAllowedList>;
+
 export interface SelectedActions {
   /** Whether GitHub-owned actions are allowed. For example, this includes the actions in the `actions` organization. */
   github_owned_allowed?: boolean;
@@ -1624,12 +2352,19 @@ export interface SelectedActions {
   /** Specifies a list of string-matching patterns to allow specific action(s) and reusable workflow(s). Wildcards, tags, and SHAs are allowed. For example, `monalisa/octocat@*`, `monalisa/octocat@v2`, `monalisa/*`. > [!NOTE] > The `patterns_allowed` setting only applies to public repositories. */
   patterns_allowed?: SelectedActionsPatternsAllowedList;
 }
+const SelectedActions = /*@__PURE__*/ __L.at(__c13, 6) as any as S.Schema<SelectedActions>;
+
 export interface GetAllowedActionsRepositoryRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
   /** The name of the repository without the `.git` extension. The name is not case sensitive. */
   repo: string;
 }
+const GetAllowedActionsRepositoryRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  7,
+) as any as S.Schema<GetAllowedActionsRepositoryRequest>;
+
 export interface GetArtifactRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -1638,6 +2373,8 @@ export interface GetArtifactRequest {
   /** The unique identifier of the artifact. */
   artifact_id: number;
 }
+const GetArtifactRequest = /*@__PURE__*/ __L.at(__c14, 0) as any as S.Schema<GetArtifactRequest>;
+
 export interface ArtifactWorkflowRun {
   id?: number;
   repository_id?: number;
@@ -1645,6 +2382,8 @@ export interface ArtifactWorkflowRun {
   head_branch?: string;
   head_sha?: string;
 }
+const ArtifactWorkflowRun = /*@__PURE__*/ __L.at(__c14, 1) as any as S.Schema<ArtifactWorkflowRun>;
+
 /** An artifact */
 export interface Artifact {
   id: number;
@@ -1664,22 +2403,39 @@ export interface Artifact {
   digest?: string | null;
   workflow_run?: ArtifactWorkflowRun | null;
 }
+const Artifact = /*@__PURE__*/ __L.at(__c14, 2) as any as S.Schema<Artifact>;
+
 export interface GetArtifactAndLogRetentionSettingsOrganizationRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
 }
+const GetArtifactAndLogRetentionSettingsOrganizationRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  3,
+) as any as S.Schema<GetArtifactAndLogRetentionSettingsOrganizationRequest>;
+
 export interface ActionsArtifactAndLogRetentionResponse {
   /** The number of days checks, workflow runs, commit statuses, artifacts, and logs are retained */
   days: number;
   /** The maximum number of days that can be configured */
   maximum_allowed_days: number;
 }
+const ActionsArtifactAndLogRetentionResponse = /*@__PURE__*/ __L.at(
+  __c14,
+  4,
+) as any as S.Schema<ActionsArtifactAndLogRetentionResponse>;
+
 export interface GetArtifactAndLogRetentionSettingsRepositoryRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
   /** The name of the repository without the `.git` extension. The name is not case sensitive. */
   repo: string;
 }
+const GetArtifactAndLogRetentionSettingsRepositoryRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  5,
+) as any as S.Schema<GetArtifactAndLogRetentionSettingsRepositoryRequest>;
+
 export interface GetConcurrencyGroupForRepositoryRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -1692,7 +2448,14 @@ export interface GetConcurrencyGroupForRepositoryRequest {
   /** Filter to items ahead of this job ID in the queue, plus the job itself. Matches job-level concurrency and reusable-workflow leases on the job's ancestor paths. Mutually exclusive with `ahead_of_run`. */
   ahead_of_job?: number;
 }
+const GetConcurrencyGroupForRepositoryRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  6,
+) as any as S.Schema<GetConcurrencyGroupForRepositoryRequest>;
+
 export type ConcurrencyGroupGroupMembersItemStatus = "in_progress" | "pending";
+const ConcurrencyGroupGroupMembersItemStatus = S.String;
+
 export interface ConcurrencyGroupGroupMembersItem {
   /** The ID of the workflow run. */
   run_id: number;
@@ -1712,7 +2475,17 @@ export interface ConcurrencyGroupGroupMembersItem {
   job_html_url?: string | null;
   status: ConcurrencyGroupGroupMembersItemStatus;
 }
+const ConcurrencyGroupGroupMembersItem = /*@__PURE__*/ __L.at(
+  __c14,
+  7,
+) as any as S.Schema<ConcurrencyGroupGroupMembersItem>;
+
 export type ConcurrencyGroupGroupMembersList = Array<ConcurrencyGroupGroupMembersItem>;
+const ConcurrencyGroupGroupMembersList = /*@__PURE__*/ __L.at(
+  __c15,
+  0,
+) as any as S.Schema<ConcurrencyGroupGroupMembersList>;
+
 /** A concurrency group with the workflow runs and jobs that are either currently holding or waiting for the concurrency group lease. */
 export interface ConcurrencyGroup {
   /** The name of the concurrency group. */
@@ -1722,12 +2495,19 @@ export interface ConcurrencyGroup {
   total_count: number;
   group_members: ConcurrencyGroupGroupMembersList;
 }
+const ConcurrencyGroup = /*@__PURE__*/ __L.at(__c15, 1) as any as S.Schema<ConcurrencyGroup>;
+
 export interface GetCustomImageForOrgRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
   /** Image definition ID of custom image */
   image_definition_id: number;
 }
+const GetCustomImageForOrgRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  2,
+) as any as S.Schema<GetCustomImageForOrgRequest>;
+
 /** Provides details of a custom runner image */
 export interface ActionsHostedRunnerCustomImage {
   /** The ID of the image. Use this ID for the `image` parameter when creating a new larger runner. */
@@ -1747,6 +2527,11 @@ export interface ActionsHostedRunnerCustomImage {
   /** The number of image versions associated with the image. */
   state: string;
 }
+const ActionsHostedRunnerCustomImage = /*@__PURE__*/ __L.at(
+  __c15,
+  3,
+) as any as S.Schema<ActionsHostedRunnerCustomImage>;
+
 export interface GetCustomImageVersionForOrgRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -1755,6 +2540,11 @@ export interface GetCustomImageVersionForOrgRequest {
   /** Version of a custom image */
   version: string;
 }
+const GetCustomImageVersionForOrgRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  4,
+) as any as S.Schema<GetCustomImageVersionForOrgRequest>;
+
 /** Provides details of a hosted runner custom image version */
 export interface ActionsHostedRunnerCustomImageVersion {
   /** The version of image. */
@@ -1768,14 +2558,27 @@ export interface ActionsHostedRunnerCustomImageVersion {
   /** The image version status details. */
   state_details: string;
 }
+const ActionsHostedRunnerCustomImageVersion = /*@__PURE__*/ __L.at(
+  __c15,
+  5,
+) as any as S.Schema<ActionsHostedRunnerCustomImageVersion>;
+
 export interface GetCustomOidcSubClaimForRepoRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
   /** The name of the repository without the `.git` extension. The name is not case sensitive. */
   repo: string;
 }
+const GetCustomOidcSubClaimForRepoRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  6,
+) as any as S.Schema<GetCustomOidcSubClaimForRepoRequest>;
+
 /** Array of unique strings. Each claim key can only contain alphanumeric characters and underscores. */
 export type OidcCustomSubRepoIncludeClaimKeysList = Array<string>;
+const OidcCustomSubRepoIncludeClaimKeysList =
+  AddCustomLabelsToSelfHostedRunnerForOrgRequestLabelsList as any as S.Schema<OidcCustomSubRepoIncludeClaimKeysList>;
+
 /** Actions OIDC subject customization for a repository */
 export interface OidcCustomSubRepo {
   /** Whether to use the default template or not. If `true`, the `include_claim_keys` field is ignored. */
@@ -1787,6 +2590,8 @@ export interface OidcCustomSubRepo {
   /** The current `sub` claim prefix for this repository. */
   sub_claim_prefix?: string;
 }
+const OidcCustomSubRepo = /*@__PURE__*/ __L.at(__c15, 7) as any as S.Schema<OidcCustomSubRepo>;
+
 export interface GetEnvironmentPublicKeyRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -1795,6 +2600,11 @@ export interface GetEnvironmentPublicKeyRequest {
   /** The name of the environment. The name must be URL encoded. For example, any slashes in the name must be replaced with `%2F`. */
   environment_name: string;
 }
+const GetEnvironmentPublicKeyRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  0,
+) as any as S.Schema<GetEnvironmentPublicKeyRequest>;
+
 /** The public key used for setting Actions Secrets. */
 export interface ActionsPublicKey {
   /** The identifier for the key. */
@@ -1806,6 +2616,8 @@ export interface ActionsPublicKey {
   title?: string;
   created_at?: string;
 }
+const ActionsPublicKey = /*@__PURE__*/ __L.at(__c16, 1) as any as S.Schema<ActionsPublicKey>;
+
 export interface GetEnvironmentSecretRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -1816,6 +2628,11 @@ export interface GetEnvironmentSecretRequest {
   /** The name of the secret. */
   secret_name: string;
 }
+const GetEnvironmentSecretRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  2,
+) as any as S.Schema<GetEnvironmentSecretRequest>;
+
 /** Set secrets for GitHub Actions. */
 export interface ActionsSecret {
   /** The name of the secret. */
@@ -1823,6 +2640,8 @@ export interface ActionsSecret {
   created_at: string;
   updated_at: string;
 }
+const ActionsSecret = /*@__PURE__*/ __L.at(__c16, 3) as any as S.Schema<ActionsSecret>;
+
 export interface GetEnvironmentVariableRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -1833,6 +2652,11 @@ export interface GetEnvironmentVariableRequest {
   /** The name of the variable. */
   name: string;
 }
+const GetEnvironmentVariableRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  4,
+) as any as S.Schema<GetEnvironmentVariableRequest>;
+
 export interface ActionsVariable {
   /** The name of the variable. */
   name: string;
@@ -1843,49 +2667,94 @@ export interface ActionsVariable {
   /** The date and time at which the variable was last updated, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ. */
   updated_at: string;
 }
+const ActionsVariable = /*@__PURE__*/ __L.at(__c16, 5) as any as S.Schema<ActionsVariable>;
+
 export interface GetForkPrContributorApprovalPermissionsOrganizationRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
 }
+const GetForkPrContributorApprovalPermissionsOrganizationRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  6,
+) as any as S.Schema<GetForkPrContributorApprovalPermissionsOrganizationRequest>;
+
 /** The policy that controls when fork PR workflows require approval from a maintainer. */
 export type ActionsForkPrContributorApprovalApprovalPolicy =
   | "first_time_contributors_new_to_github"
   | "first_time_contributors"
   | "all_external_contributors";
+const ActionsForkPrContributorApprovalApprovalPolicy = S.String;
+
 export interface ActionsForkPrContributorApproval {
   /** The policy that controls when fork PR workflows require approval from a maintainer. */
   approval_policy: ActionsForkPrContributorApprovalApprovalPolicy;
 }
+const ActionsForkPrContributorApproval = /*@__PURE__*/ __L.at(
+  __c16,
+  7,
+) as any as S.Schema<ActionsForkPrContributorApproval>;
+
 export interface GetForkPrContributorApprovalPermissionsRepositoryRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
   /** The name of the repository without the `.git` extension. The name is not case sensitive. */
   repo: string;
 }
+const GetForkPrContributorApprovalPermissionsRepositoryRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  0,
+) as any as S.Schema<GetForkPrContributorApprovalPermissionsRepositoryRequest>;
+
 export interface GetGithubActionsDefaultWorkflowPermissionsOrganizationRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
 }
+const GetGithubActionsDefaultWorkflowPermissionsOrganizationRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  1,
+) as any as S.Schema<GetGithubActionsDefaultWorkflowPermissionsOrganizationRequest>;
+
 /** The default workflow permissions granted to the GITHUB_TOKEN when running workflows. */
 export type ActionsDefaultWorkflowPermissions = "read" | "write";
+const ActionsDefaultWorkflowPermissions = S.String;
+
 export interface ActionsGetDefaultWorkflowPermissions {
   default_workflow_permissions: ActionsDefaultWorkflowPermissions;
   can_approve_pull_request_reviews: boolean;
 }
+const ActionsGetDefaultWorkflowPermissions = /*@__PURE__*/ __L.at(
+  __c17,
+  2,
+) as any as S.Schema<ActionsGetDefaultWorkflowPermissions>;
+
 export interface GetGithubActionsDefaultWorkflowPermissionsRepositoryRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
   /** The name of the repository without the `.git` extension. The name is not case sensitive. */
   repo: string;
 }
+const GetGithubActionsDefaultWorkflowPermissionsRepositoryRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  3,
+) as any as S.Schema<GetGithubActionsDefaultWorkflowPermissionsRepositoryRequest>;
+
 export interface GetGithubActionsPermissionsOrganizationRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
 }
+const GetGithubActionsPermissionsOrganizationRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  4,
+) as any as S.Schema<GetGithubActionsPermissionsOrganizationRequest>;
+
 /** The policy that controls the repositories in the organization that are allowed to run GitHub Actions. */
 export type EnabledRepositories = "all" | "none" | "selected";
+const EnabledRepositories = S.String;
+
 /** The permissions policy that controls the actions and reusable workflows that are allowed to run. */
 export type AllowedActions = "all" | "local_only" | "selected";
+const AllowedActions = S.String;
+
 export interface ActionsOrganizationPermissions {
   enabled_repositories: EnabledRepositories;
   /** The API URL to use to get or set the selected repositories that are allowed to run GitHub Actions, when `enabled_repositories` is set to `selected`. */
@@ -1894,30 +2763,57 @@ export interface ActionsOrganizationPermissions {
   selected_actions_url?: string;
   sha_pinning_required?: boolean;
 }
+const ActionsOrganizationPermissions = /*@__PURE__*/ __L.at(
+  __c17,
+  5,
+) as any as S.Schema<ActionsOrganizationPermissions>;
+
 export interface GetGithubActionsPermissionsRepositoryRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
   /** The name of the repository without the `.git` extension. The name is not case sensitive. */
   repo: string;
 }
+const GetGithubActionsPermissionsRepositoryRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  6,
+) as any as S.Schema<GetGithubActionsPermissionsRepositoryRequest>;
+
 export interface ActionsRepositoryPermissions {
   enabled: boolean;
   allowed_actions?: AllowedActions;
   selected_actions_url?: string;
   sha_pinning_required?: boolean;
 }
+const ActionsRepositoryPermissions = /*@__PURE__*/ __L.at(
+  __c17,
+  7,
+) as any as S.Schema<ActionsRepositoryPermissions>;
+
 export interface GetHostedRunnerForOrgRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
   /** Unique identifier of the GitHub-hosted runner. */
   hosted_runner_id: number;
 }
+const GetHostedRunnerForOrgRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  0,
+) as any as S.Schema<GetHostedRunnerForOrgRequest>;
+
 export interface GetHostedRunnersGithubOwnedImagesForOrgRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
 }
+const GetHostedRunnersGithubOwnedImagesForOrgRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  1,
+) as any as S.Schema<GetHostedRunnersGithubOwnedImagesForOrgRequest>;
+
 /** The image provider. */
 export type ActionsHostedRunnerCuratedImageSource = "github" | "partner" | "custom";
+const ActionsHostedRunnerCuratedImageSource = S.String;
+
 /** Provides details of a hosted runner image */
 export interface ActionsHostedRunnerCuratedImage {
   /** The ID of the image. Use this ID for the `image` parameter when creating a new larger runner. */
@@ -1931,16 +2827,36 @@ export interface ActionsHostedRunnerCuratedImage {
   /** The image provider. */
   source: ActionsHostedRunnerCuratedImageSource;
 }
+const ActionsHostedRunnerCuratedImage = /*@__PURE__*/ __L.at(
+  __c18,
+  2,
+) as any as S.Schema<ActionsHostedRunnerCuratedImage>;
+
 export type GetHostedRunnersGithubOwnedImagesForOrgResponseImagesList =
   Array<ActionsHostedRunnerCuratedImage>;
+const GetHostedRunnersGithubOwnedImagesForOrgResponseImagesList = /*@__PURE__*/ __L.at(
+  __c18,
+  3,
+) as any as S.Schema<GetHostedRunnersGithubOwnedImagesForOrgResponseImagesList>;
+
 export interface GetHostedRunnersGithubOwnedImagesForOrgResponse {
   total_count: number;
   images: GetHostedRunnersGithubOwnedImagesForOrgResponseImagesList;
 }
+const GetHostedRunnersGithubOwnedImagesForOrgResponse = /*@__PURE__*/ __L.at(
+  __c18,
+  4,
+) as any as S.Schema<GetHostedRunnersGithubOwnedImagesForOrgResponse>;
+
 export interface GetHostedRunnersLimitsForOrgRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
 }
+const GetHostedRunnersLimitsForOrgRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  5,
+) as any as S.Schema<GetHostedRunnersLimitsForOrgRequest>;
+
 /** Provides details of static public IP limits for GitHub-hosted Hosted Runners */
 export interface ActionsHostedRunnerLimitsPublicIps {
   /** The maximum number of static public IP addresses that can be used for Hosted Runners. */
@@ -1948,39 +2864,85 @@ export interface ActionsHostedRunnerLimitsPublicIps {
   /** The current number of static public IP addresses in use by Hosted Runners. */
   current_usage: number;
 }
+const ActionsHostedRunnerLimitsPublicIps = /*@__PURE__*/ __L.at(
+  __c18,
+  6,
+) as any as S.Schema<ActionsHostedRunnerLimitsPublicIps>;
+
 export interface ActionsHostedRunnerLimits {
   /** Provides details of static public IP limits for GitHub-hosted Hosted Runners */
   public_ips: ActionsHostedRunnerLimitsPublicIps;
 }
+const ActionsHostedRunnerLimits = /*@__PURE__*/ __L.at(
+  __c18,
+  7,
+) as any as S.Schema<ActionsHostedRunnerLimits>;
+
 export interface GetHostedRunnersMachineSpecsForOrgRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
 }
+const GetHostedRunnersMachineSpecsForOrgRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  0,
+) as any as S.Schema<GetHostedRunnersMachineSpecsForOrgRequest>;
+
 export type GetHostedRunnersMachineSpecsForOrgResponseMachineSpecsList =
   Array<ActionsHostedRunnerMachineSpec>;
+const GetHostedRunnersMachineSpecsForOrgResponseMachineSpecsList = /*@__PURE__*/ __L.at(
+  __c19,
+  1,
+) as any as S.Schema<GetHostedRunnersMachineSpecsForOrgResponseMachineSpecsList>;
+
 export interface GetHostedRunnersMachineSpecsForOrgResponse {
   total_count: number;
   machine_specs: GetHostedRunnersMachineSpecsForOrgResponseMachineSpecsList;
 }
+const GetHostedRunnersMachineSpecsForOrgResponse = /*@__PURE__*/ __L.at(
+  __c19,
+  2,
+) as any as S.Schema<GetHostedRunnersMachineSpecsForOrgResponse>;
+
 export interface GetHostedRunnersPartnerImagesForOrgRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
 }
+const GetHostedRunnersPartnerImagesForOrgRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  3,
+) as any as S.Schema<GetHostedRunnersPartnerImagesForOrgRequest>;
+
 export type GetHostedRunnersPartnerImagesForOrgResponseImagesList =
   Array<ActionsHostedRunnerCuratedImage>;
 export interface GetHostedRunnersPartnerImagesForOrgResponse {
   total_count: number;
   images: GetHostedRunnersPartnerImagesForOrgResponseImagesList;
 }
+const GetHostedRunnersPartnerImagesForOrgResponse =
+  GetHostedRunnersGithubOwnedImagesForOrgResponse as any as S.Schema<GetHostedRunnersPartnerImagesForOrgResponse>;
+
 export interface GetHostedRunnersPlatformsForOrgRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
 }
+const GetHostedRunnersPlatformsForOrgRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  4,
+) as any as S.Schema<GetHostedRunnersPlatformsForOrgRequest>;
+
 export type GetHostedRunnersPlatformsForOrgResponsePlatformsList = Array<string>;
+const GetHostedRunnersPlatformsForOrgResponsePlatformsList =
+  AddCustomLabelsToSelfHostedRunnerForOrgRequestLabelsList as any as S.Schema<GetHostedRunnersPlatformsForOrgResponsePlatformsList>;
+
 export interface GetHostedRunnersPlatformsForOrgResponse {
   total_count: number;
   platforms: GetHostedRunnersPlatformsForOrgResponsePlatformsList;
 }
+const GetHostedRunnersPlatformsForOrgResponse = /*@__PURE__*/ __L.at(
+  __c19,
+  5,
+) as any as S.Schema<GetHostedRunnersPlatformsForOrgResponse>;
+
 export interface GetJobForWorkflowRunRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -1989,6 +2951,11 @@ export interface GetJobForWorkflowRunRequest {
   /** The unique identifier of the job. */
   job_id: number;
 }
+const GetJobForWorkflowRunRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  6,
+) as any as S.Schema<GetJobForWorkflowRunRequest>;
+
 /** The phase of the lifecycle that the job is currently in. */
 export type JobStatus =
   | "queued"
@@ -1997,6 +2964,8 @@ export type JobStatus =
   | "waiting"
   | "requested"
   | "pending";
+const JobStatus = S.String;
+
 /** The outcome of the job. */
 export type JobConclusion =
   | "success"
@@ -2006,8 +2975,12 @@ export type JobConclusion =
   | "skipped"
   | "timed_out"
   | "action_required";
+const JobConclusion = S.String;
+
 /** The phase of the lifecycle that the job is currently in. */
 export type JobStepsItemStatus = "queued" | "in_progress" | "completed";
+const JobStepsItemStatus = S.String;
+
 export interface JobStepsItem {
   /** The phase of the lifecycle that the job is currently in. */
   status: JobStepsItemStatus;
@@ -2021,10 +2994,16 @@ export interface JobStepsItem {
   /** The time that the job finished, in ISO 8601 format. */
   completed_at?: string | null;
 }
+const JobStepsItem = /*@__PURE__*/ __L.at(__c19, 7) as any as S.Schema<JobStepsItem>;
+
 /** Steps in this job. */
 export type JobStepsList = Array<JobStepsItem>;
+const JobStepsList = /*@__PURE__*/ __L.at(__c20, 0) as any as S.Schema<JobStepsList>;
+
 /** Labels for the workflow job. Specified by the "runs_on" attribute in the action's workflow file. */
 export type JobLabelsList = Array<string>;
+const JobLabelsList = /*@__PURE__*/ __L.at(__c20, 1) as any as S.Schema<JobLabelsList>;
+
 /** Information of a job execution in a workflow run */
 export interface Job {
   /** The id of the job. */
@@ -2069,6 +3048,8 @@ export interface Job {
   /** The name of the current branch. */
   head_branch: string | null;
 }
+const Job = /*@__PURE__*/ __L.at(__c20, 2) as any as S.Schema<Job>;
+
 export interface GetOrgActionsPoliciesRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -2079,32 +3060,61 @@ export interface GetOrgActionsPoliciesRequest {
   /** Include policies configured at higher levels that apply to this organization */
   has_parents?: boolean;
 }
+const GetOrgActionsPoliciesRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  3,
+) as any as S.Schema<GetOrgActionsPoliciesRequest>;
+
 /** An array of Actions policies. */
 export type GetOrgActionsPoliciesResponsePoliciesList = Array<ActionsPolicy>;
+const GetOrgActionsPoliciesResponsePoliciesList = /*@__PURE__*/ __L.at(
+  __c20,
+  4,
+) as any as S.Schema<GetOrgActionsPoliciesResponsePoliciesList>;
+
 export interface GetOrgActionsPoliciesResponse {
   /** The total number of Actions policies. */
   total_count: number;
   /** An array of Actions policies. */
   policies: GetOrgActionsPoliciesResponsePoliciesList;
 }
+const GetOrgActionsPoliciesResponse = /*@__PURE__*/ __L.at(
+  __c20,
+  5,
+) as any as S.Schema<GetOrgActionsPoliciesResponse>;
+
 export interface GetOrgActionsPolicyRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
   /** The ID of the policy. */
   policy_id: number;
 }
+const GetOrgActionsPolicyRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  6,
+) as any as S.Schema<GetOrgActionsPolicyRequest>;
+
 export interface GetOrgPublicKeyRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
 }
+const GetOrgPublicKeyRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  7,
+) as any as S.Schema<GetOrgPublicKeyRequest>;
+
 export interface GetOrgSecretRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
   /** The name of the secret. */
   secret_name: string;
 }
+const GetOrgSecretRequest = /*@__PURE__*/ __L.at(__c21, 0) as any as S.Schema<GetOrgSecretRequest>;
+
 /** Visibility of a secret */
 export type OrganizationActionsSecretVisibility = "all" | "private" | "selected";
+const OrganizationActionsSecretVisibility = S.String;
+
 /** Secrets for GitHub Actions for an organization. */
 export interface OrganizationActionsSecret {
   /** The name of the secret. */
@@ -2115,14 +3125,26 @@ export interface OrganizationActionsSecret {
   visibility: OrganizationActionsSecretVisibility;
   selected_repositories_url?: string;
 }
+const OrganizationActionsSecret = /*@__PURE__*/ __L.at(
+  __c21,
+  1,
+) as any as S.Schema<OrganizationActionsSecret>;
+
 export interface GetOrgVariableRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
   /** The name of the variable. */
   name: string;
 }
+const GetOrgVariableRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  2,
+) as any as S.Schema<GetOrgVariableRequest>;
+
 /** Visibility of a variable */
 export type OrganizationActionsVariableVisibility = "all" | "private" | "selected";
+const OrganizationActionsVariableVisibility = S.String;
+
 /** Organization variable for GitHub Actions. */
 export interface OrganizationActionsVariable {
   /** The name of the variable. */
@@ -2137,6 +3159,11 @@ export interface OrganizationActionsVariable {
   visibility: OrganizationActionsVariableVisibility;
   selected_repositories_url?: string;
 }
+const OrganizationActionsVariable = /*@__PURE__*/ __L.at(
+  __c21,
+  3,
+) as any as S.Schema<OrganizationActionsVariable>;
+
 export interface GetPendingDeploymentsForRunRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -2145,6 +3172,11 @@ export interface GetPendingDeploymentsForRunRequest {
   /** The unique identifier of the workflow run. */
   run_id: number;
 }
+const GetPendingDeploymentsForRunRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  4,
+) as any as S.Schema<GetPendingDeploymentsForRunRequest>;
+
 export interface PendingDeploymentEnvironment {
   /** The id of the environment. */
   id?: number;
@@ -2154,8 +3186,15 @@ export interface PendingDeploymentEnvironment {
   url?: string;
   html_url?: string;
 }
+const PendingDeploymentEnvironment = /*@__PURE__*/ __L.at(
+  __c21,
+  5,
+) as any as S.Schema<PendingDeploymentEnvironment>;
+
 /** The type of reviewer. */
 export type DeploymentReviewerType = "User" | "Team";
+const DeploymentReviewerType = S.String;
+
 export interface TeamPermissions {
   pull: boolean;
   triage: boolean;
@@ -2225,12 +3264,25 @@ export interface Team {
   parent: NullableTeamSimple | null;
 }
 export type PendingDeploymentReviewersItemReviewer = SimpleUser | Team;
+const PendingDeploymentReviewersItemReviewer =
+  S.Unknown as any as S.Schema<PendingDeploymentReviewersItemReviewer>;
+
 export interface PendingDeploymentReviewersItem {
   type?: DeploymentReviewerType;
   reviewer?: PendingDeploymentReviewersItemReviewer;
 }
+const PendingDeploymentReviewersItem = /*@__PURE__*/ __L.at(
+  __c21,
+  6,
+) as any as S.Schema<PendingDeploymentReviewersItem>;
+
 /** The people or teams that may approve jobs that reference the environment. You can list up to six users or teams as reviewers. The reviewers must have at least read access to the repository. Only one of the required reviewers needs to approve the job for it to proceed. */
 export type PendingDeploymentReviewersList = Array<PendingDeploymentReviewersItem>;
+const PendingDeploymentReviewersList = /*@__PURE__*/ __L.at(
+  __c21,
+  7,
+) as any as S.Schema<PendingDeploymentReviewersList>;
+
 /** Details of a deployment that is waiting for protection rules to pass */
 export interface PendingDeployment {
   environment: PendingDeploymentEnvironment;
@@ -2243,12 +3295,29 @@ export interface PendingDeployment {
   /** The people or teams that may approve jobs that reference the environment. You can list up to six users or teams as reviewers. The reviewers must have at least read access to the repository. Only one of the required reviewers needs to approve the job for it to proceed. */
   reviewers: PendingDeploymentReviewersList;
 }
+const PendingDeployment = /*@__PURE__*/ __L.at(__c22, 0) as any as S.Schema<PendingDeployment>;
+
 export type GetPendingDeploymentsForRunResponseBodyList = Array<PendingDeployment>;
+const GetPendingDeploymentsForRunResponseBodyList = /*@__PURE__*/ __L.at(
+  __c22,
+  1,
+) as any as S.Schema<GetPendingDeploymentsForRunResponseBodyList>;
+
 export type GetPendingDeploymentsForRunResponse = GetPendingDeploymentsForRunResponseBodyList;
+const GetPendingDeploymentsForRunResponse = /*@__PURE__*/ __L.at(
+  __c22,
+  2,
+) as any as S.Schema<GetPendingDeploymentsForRunResponse>;
+
 export interface GetPrivateRepoForkPrWorkflowsSettingsOrganizationRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
 }
+const GetPrivateRepoForkPrWorkflowsSettingsOrganizationRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  3,
+) as any as S.Schema<GetPrivateRepoForkPrWorkflowsSettingsOrganizationRequest>;
+
 export interface ActionsForkPrWorkflowsPrivateRepos {
   /** Whether workflows triggered by pull requests from forks are allowed to run on private repositories. */
   run_workflows_from_fork_pull_requests: boolean;
@@ -2259,12 +3328,22 @@ export interface ActionsForkPrWorkflowsPrivateRepos {
   /** Whether workflows triggered by pull requests from forks require approval from a repository administrator to run. */
   require_approval_for_fork_pr_workflows: boolean;
 }
+const ActionsForkPrWorkflowsPrivateRepos = /*@__PURE__*/ __L.at(
+  __c22,
+  4,
+) as any as S.Schema<ActionsForkPrWorkflowsPrivateRepos>;
+
 export interface GetPrivateRepoForkPrWorkflowsSettingsRepositoryRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
   /** The name of the repository without the `.git` extension. The name is not case sensitive. */
   repo: string;
 }
+const GetPrivateRepoForkPrWorkflowsSettingsRepositoryRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  5,
+) as any as S.Schema<GetPrivateRepoForkPrWorkflowsSettingsRepositoryRequest>;
+
 export interface GetRepoActionsPoliciesRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -2277,6 +3356,11 @@ export interface GetRepoActionsPoliciesRequest {
   /** Include policies configured at higher levels that apply to this repository */
   has_parents?: boolean;
 }
+const GetRepoActionsPoliciesRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  6,
+) as any as S.Schema<GetRepoActionsPoliciesRequest>;
+
 /** An array of Actions policies. */
 export type GetRepoActionsPoliciesResponsePoliciesList = Array<ActionsPolicy>;
 export interface GetRepoActionsPoliciesResponse {
@@ -2285,6 +3369,9 @@ export interface GetRepoActionsPoliciesResponse {
   /** An array of Actions policies. */
   policies: GetRepoActionsPoliciesResponsePoliciesList;
 }
+const GetRepoActionsPoliciesResponse =
+  GetOrgActionsPoliciesResponse as any as S.Schema<GetRepoActionsPoliciesResponse>;
+
 export interface GetRepoActionsPolicyRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -2293,12 +3380,22 @@ export interface GetRepoActionsPolicyRequest {
   /** The ID of the policy. */
   policy_id: number;
 }
+const GetRepoActionsPolicyRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  7,
+) as any as S.Schema<GetRepoActionsPolicyRequest>;
+
 export interface GetRepoPublicKeyRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
   /** The name of the repository without the `.git` extension. The name is not case sensitive. */
   repo: string;
 }
+const GetRepoPublicKeyRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  0,
+) as any as S.Schema<GetRepoPublicKeyRequest>;
+
 export interface GetRepoSecretRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -2307,6 +3404,11 @@ export interface GetRepoSecretRequest {
   /** The name of the secret. */
   secret_name: string;
 }
+const GetRepoSecretRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  1,
+) as any as S.Schema<GetRepoSecretRequest>;
+
 export interface GetRepoVariableRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -2315,6 +3417,11 @@ export interface GetRepoVariableRequest {
   /** The name of the variable. */
   name: string;
 }
+const GetRepoVariableRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  2,
+) as any as S.Schema<GetRepoVariableRequest>;
+
 export interface GetReviewsForRunRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -2323,6 +3430,11 @@ export interface GetReviewsForRunRequest {
   /** The unique identifier of the workflow run. */
   run_id: number;
 }
+const GetReviewsForRunRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  3,
+) as any as S.Schema<GetReviewsForRunRequest>;
+
 export interface EnvironmentApprovalsEnvironmentsItem {
   /** The id of the environment. */
   id?: number;
@@ -2336,10 +3448,22 @@ export interface EnvironmentApprovalsEnvironmentsItem {
   /** The time that the environment was last updated, in ISO 8601 format. */
   updated_at?: string;
 }
+const EnvironmentApprovalsEnvironmentsItem = /*@__PURE__*/ __L.at(
+  __c23,
+  4,
+) as any as S.Schema<EnvironmentApprovalsEnvironmentsItem>;
+
 /** The list of environments that were approved or rejected */
 export type EnvironmentApprovalsEnvironmentsList = Array<EnvironmentApprovalsEnvironmentsItem>;
+const EnvironmentApprovalsEnvironmentsList = /*@__PURE__*/ __L.at(
+  __c23,
+  5,
+) as any as S.Schema<EnvironmentApprovalsEnvironmentsList>;
+
 /** Whether deployment to the environment(s) was approved or rejected or pending (with comments) */
 export type EnvironmentApprovalsState = "approved" | "rejected" | "pending";
+const EnvironmentApprovalsState = S.String;
+
 /** An entry in the reviews log for environment deployments */
 export interface EnvironmentApprovals {
   /** The list of environments that were approved or rejected */
@@ -2350,14 +3474,34 @@ export interface EnvironmentApprovals {
   /** The comment submitted with the deployment review */
   comment: string;
 }
+const EnvironmentApprovals = /*@__PURE__*/ __L.at(
+  __c23,
+  6,
+) as any as S.Schema<EnvironmentApprovals>;
+
 export type GetReviewsForRunResponseBodyList = Array<EnvironmentApprovals>;
+const GetReviewsForRunResponseBodyList = /*@__PURE__*/ __L.at(
+  __c23,
+  7,
+) as any as S.Schema<GetReviewsForRunResponseBodyList>;
+
 export type GetReviewsForRunResponse = GetReviewsForRunResponseBodyList;
+const GetReviewsForRunResponse = /*@__PURE__*/ __L.at(
+  __c24,
+  0,
+) as any as S.Schema<GetReviewsForRunResponse>;
+
 export interface GetRunnerVersionDeprecationForOrgRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
   /** The runner version to look up. */
   version: string;
 }
+const GetRunnerVersionDeprecationForOrgRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  1,
+) as any as S.Schema<GetRunnerVersionDeprecationForOrgRequest>;
+
 export interface GetRunnerVersionDeprecationForOrgResponse {
   /** The runner version string. */
   runner_version: string;
@@ -2366,6 +3510,11 @@ export interface GetRunnerVersionDeprecationForOrgResponse {
   /** The date after which jobs will no longer be dispatched to runners on this version. */
   runtime_deprecates_at?: string | null;
 }
+const GetRunnerVersionDeprecationForOrgResponse = /*@__PURE__*/ __L.at(
+  __c24,
+  2,
+) as any as S.Schema<GetRunnerVersionDeprecationForOrgResponse>;
+
 export interface GetRunnerVersionDeprecationForRepoRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -2374,6 +3523,11 @@ export interface GetRunnerVersionDeprecationForRepoRequest {
   /** The runner version to look up. */
   version: string;
 }
+const GetRunnerVersionDeprecationForRepoRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  3,
+) as any as S.Schema<GetRunnerVersionDeprecationForRepoRequest>;
+
 export interface GetRunnerVersionDeprecationForRepoResponse {
   /** The runner version string. */
   runner_version: string;
@@ -2382,12 +3536,20 @@ export interface GetRunnerVersionDeprecationForRepoResponse {
   /** The date after which jobs will no longer be dispatched to runners on this version. */
   runtime_deprecates_at?: string | null;
 }
+const GetRunnerVersionDeprecationForRepoResponse =
+  GetRunnerVersionDeprecationForOrgResponse as any as S.Schema<GetRunnerVersionDeprecationForRepoResponse>;
+
 export interface GetSelfHostedRunnerForOrgRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
   /** Unique identifier of the self-hosted runner. */
   runner_id: number;
 }
+const GetSelfHostedRunnerForOrgRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  4,
+) as any as S.Schema<GetSelfHostedRunnerForOrgRequest>;
+
 export interface GetSelfHostedRunnerForRepoRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -2396,24 +3558,46 @@ export interface GetSelfHostedRunnerForRepoRequest {
   /** Unique identifier of the self-hosted runner. */
   runner_id: number;
 }
+const GetSelfHostedRunnerForRepoRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  5,
+) as any as S.Schema<GetSelfHostedRunnerForRepoRequest>;
+
 export interface GetSelfHostedRunnerGroupForOrgRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
   /** Unique identifier of the self-hosted runner group. */
   runner_group_id: number;
 }
+const GetSelfHostedRunnerGroupForOrgRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  6,
+) as any as S.Schema<GetSelfHostedRunnerGroupForOrgRequest>;
+
 export interface GetSelfHostedRunnersPermissionsOrganizationRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
 }
+const GetSelfHostedRunnersPermissionsOrganizationRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  7,
+) as any as S.Schema<GetSelfHostedRunnersPermissionsOrganizationRequest>;
+
 /** The policy that controls whether self-hosted runners can be used by repositories in the organization */
 export type SelfHostedRunnersSettingsEnabledRepositories = "all" | "selected" | "none";
+const SelfHostedRunnersSettingsEnabledRepositories = S.String;
+
 export interface SelfHostedRunnersSettings {
   /** The policy that controls whether self-hosted runners can be used by repositories in the organization */
   enabled_repositories: SelfHostedRunnersSettingsEnabledRepositories;
   /** The URL to the endpoint for managing selected repositories for self-hosted runners in the organization */
   selected_repositories_url?: string;
 }
+const SelfHostedRunnersSettings = /*@__PURE__*/ __L.at(
+  __c25,
+  0,
+) as any as S.Schema<SelfHostedRunnersSettings>;
+
 export interface GetWorkflowRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -2422,12 +3606,16 @@ export interface GetWorkflowRequest {
   /** The ID of the workflow. You can also pass the workflow file name as a string. */
   workflow_id: string;
 }
+const GetWorkflowRequest = /*@__PURE__*/ __L.at(__c25, 1) as any as S.Schema<GetWorkflowRequest>;
+
 export type WorkflowState =
   | "active"
   | "deleted"
   | "disabled_fork"
   | "disabled_inactivity"
   | "disabled_manually";
+const WorkflowState = S.String;
+
 /** A GitHub Actions workflow */
 export interface Workflow {
   id: number;
@@ -2442,18 +3630,32 @@ export interface Workflow {
   badge_url: string;
   deleted_at?: string;
 }
+const Workflow = /*@__PURE__*/ __L.at(__c25, 2) as any as S.Schema<Workflow>;
+
 export interface GetWorkflowAccessToRepositoryRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
   /** The name of the repository without the `.git` extension. The name is not case sensitive. */
   repo: string;
 }
+const GetWorkflowAccessToRepositoryRequest = /*@__PURE__*/ __L.at(
+  __c25,
+  3,
+) as any as S.Schema<GetWorkflowAccessToRepositoryRequest>;
+
 /** Defines the level of access that workflows outside of the repository have to actions and reusable workflows within the repository. `none` means the access is only possible from workflows in this repository. `user` level access allows sharing across user owned private repositories only. `organization` level access allows sharing across the organization. */
 export type ActionsWorkflowAccessToRepositoryAccessLevel = "none" | "user" | "organization";
+const ActionsWorkflowAccessToRepositoryAccessLevel = S.String;
+
 export interface ActionsWorkflowAccessToRepository {
   /** Defines the level of access that workflows outside of the repository have to actions and reusable workflows within the repository. `none` means the access is only possible from workflows in this repository. `user` level access allows sharing across user owned private repositories only. `organization` level access allows sharing across the organization. */
   access_level: ActionsWorkflowAccessToRepositoryAccessLevel;
 }
+const ActionsWorkflowAccessToRepository = /*@__PURE__*/ __L.at(
+  __c25,
+  4,
+) as any as S.Schema<ActionsWorkflowAccessToRepository>;
+
 export interface GetWorkflowRunRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -2464,23 +3666,45 @@ export interface GetWorkflowRunRequest {
   /** If `true` pull requests are omitted from the response (empty array). */
   exclude_pull_requests?: boolean;
 }
+const GetWorkflowRunRequest = /*@__PURE__*/ __L.at(
+  __c25,
+  5,
+) as any as S.Schema<GetWorkflowRunRequest>;
+
 /** A workflow referenced/reused by the initial caller workflow */
 export interface ReferencedWorkflow {
   path: string;
   sha: string;
   ref?: string;
 }
+const ReferencedWorkflow = /*@__PURE__*/ __L.at(__c25, 6) as any as S.Schema<ReferencedWorkflow>;
+
 export type WorkflowRunReferencedWorkflowsList = Array<ReferencedWorkflow>;
+const WorkflowRunReferencedWorkflowsList = /*@__PURE__*/ __L.at(
+  __c25,
+  7,
+) as any as S.Schema<WorkflowRunReferencedWorkflowsList>;
+
 export interface PullRequestMinimalHeadRepo {
   id: number;
   url: string;
   name: string;
 }
+const PullRequestMinimalHeadRepo = /*@__PURE__*/ __L.at(
+  __c26,
+  0,
+) as any as S.Schema<PullRequestMinimalHeadRepo>;
+
 export interface PullRequestMinimalHead {
   ref: string;
   sha: string;
   repo: PullRequestMinimalHeadRepo;
 }
+const PullRequestMinimalHead = /*@__PURE__*/ __L.at(
+  __c26,
+  1,
+) as any as S.Schema<PullRequestMinimalHead>;
+
 export type PullRequestMinimalBaseRepo = PullRequestMinimalHeadRepo;
 export type PullRequestMinimalBase = PullRequestMinimalHead;
 export interface PullRequestMinimal {
@@ -2490,8 +3714,15 @@ export interface PullRequestMinimal {
   head: PullRequestMinimalHead;
   base: PullRequestMinimalHead;
 }
+const PullRequestMinimal = /*@__PURE__*/ __L.at(__c26, 2) as any as S.Schema<PullRequestMinimal>;
+
 /** Pull requests that are open with a `head_sha` or `head_branch` that matches the workflow run. The returned pull requests do not necessarily indicate pull requests that triggered the run. */
 export type WorkflowRunPullRequestsList = Array<PullRequestMinimal>;
+const WorkflowRunPullRequestsList = /*@__PURE__*/ __L.at(
+  __c26,
+  3,
+) as any as S.Schema<WorkflowRunPullRequestsList>;
+
 /** Information about the Git author */
 export interface NullableSimpleCommitAuthor {
   /** Name of the commit's author */
@@ -2499,6 +3730,11 @@ export interface NullableSimpleCommitAuthor {
   /** Git email address of the commit's author */
   email: string;
 }
+const NullableSimpleCommitAuthor = /*@__PURE__*/ __L.at(
+  __c26,
+  4,
+) as any as S.Schema<NullableSimpleCommitAuthor>;
+
 /** Information about the Git committer */
 export interface NullableSimpleCommitCommitter {
   /** Name of the commit's committer */
@@ -2506,6 +3742,9 @@ export interface NullableSimpleCommitCommitter {
   /** Git email address of the commit's committer */
   email: string;
 }
+const NullableSimpleCommitCommitter =
+  NullableSimpleCommitAuthor as any as S.Schema<NullableSimpleCommitCommitter>;
+
 /** A commit. */
 export interface NullableSimpleCommit {
   /** SHA for the commit */
@@ -2521,9 +3760,19 @@ export interface NullableSimpleCommit {
   /** Information about the Git committer */
   committer: NullableSimpleCommitCommitter | null;
 }
+const NullableSimpleCommit = /*@__PURE__*/ __L.at(
+  __c26,
+  5,
+) as any as S.Schema<NullableSimpleCommit>;
+
 export type MinimalRepositoryTopicsList = Array<string>;
+const MinimalRepositoryTopicsList =
+  AddCustomLabelsToSelfHostedRunnerForOrgRequestLabelsList as any as S.Schema<MinimalRepositoryTopicsList>;
+
 /** The policy controlling who can create pull requests: all or collaborators_only. */
 export type MinimalRepositoryPullRequestCreationPolicy = "all" | "collaborators_only";
+const MinimalRepositoryPullRequestCreationPolicy = S.String;
+
 export interface MinimalRepositoryPermissions {
   admin?: boolean;
   maintain?: boolean;
@@ -2531,6 +3780,11 @@ export interface MinimalRepositoryPermissions {
   triage?: boolean;
   pull?: boolean;
 }
+const MinimalRepositoryPermissions = /*@__PURE__*/ __L.at(
+  __c26,
+  6,
+) as any as S.Schema<MinimalRepositoryPermissions>;
+
 /** Code Of Conduct */
 export interface CodeOfConduct {
   key: string;
@@ -2539,6 +3793,8 @@ export interface CodeOfConduct {
   body?: string;
   html_url: string | null;
 }
+const CodeOfConduct = /*@__PURE__*/ __L.at(__c26, 7) as any as S.Schema<CodeOfConduct>;
+
 export interface MinimalRepositoryLicense {
   key?: string;
   name?: string;
@@ -2546,15 +3802,30 @@ export interface MinimalRepositoryLicense {
   url?: string | null;
   node_id?: string;
 }
+const MinimalRepositoryLicense = /*@__PURE__*/ __L.at(
+  __c27,
+  0,
+) as any as S.Schema<MinimalRepositoryLicense>;
+
 export type SecurityAndAnalysisAdvancedSecurityStatus = "enabled" | "disabled";
+const SecurityAndAnalysisAdvancedSecurityStatus = S.String;
+
 /** Enable or disable GitHub Advanced Security for the repository. For standalone Code Scanning or Secret Protection products, this parameter cannot be used. */
 export interface SecurityAndAnalysisAdvancedSecurity {
   status?: SecurityAndAnalysisAdvancedSecurityStatus;
 }
+const SecurityAndAnalysisAdvancedSecurity = /*@__PURE__*/ __L.at(
+  __c27,
+  1,
+) as any as S.Schema<SecurityAndAnalysisAdvancedSecurity>;
+
 export type SecurityAndAnalysisCodeSecurityStatus = "enabled" | "disabled";
 export interface SecurityAndAnalysisCodeSecurity {
   status?: SecurityAndAnalysisCodeSecurityStatus;
 }
+const SecurityAndAnalysisCodeSecurity =
+  SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisCodeSecurity>;
+
 /** The enablement status of Dependabot security updates for the repository. */
 export type SecurityAndAnalysisDependabotSecurityUpdatesStatus = "enabled" | "disabled";
 /** Enable or disable Dependabot security updates for the repository. */
@@ -2562,38 +3833,67 @@ export interface SecurityAndAnalysisDependabotSecurityUpdates {
   /** The enablement status of Dependabot security updates for the repository. */
   status?: SecurityAndAnalysisDependabotSecurityUpdatesStatus;
 }
+const SecurityAndAnalysisDependabotSecurityUpdates =
+  SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisDependabotSecurityUpdates>;
+
 export type SecurityAndAnalysisSecretScanningStatus = "enabled" | "disabled";
 export interface SecurityAndAnalysisSecretScanning {
   status?: SecurityAndAnalysisSecretScanningStatus;
 }
+const SecurityAndAnalysisSecretScanning =
+  SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisSecretScanning>;
+
 export type SecurityAndAnalysisSecretScanningPushProtectionStatus = "enabled" | "disabled";
 export interface SecurityAndAnalysisSecretScanningPushProtection {
   status?: SecurityAndAnalysisSecretScanningPushProtectionStatus;
 }
+const SecurityAndAnalysisSecretScanningPushProtection =
+  SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisSecretScanningPushProtection>;
+
 export type SecurityAndAnalysisSecretScanningNonProviderPatternsStatus = "enabled" | "disabled";
 export interface SecurityAndAnalysisSecretScanningNonProviderPatterns {
   status?: SecurityAndAnalysisSecretScanningNonProviderPatternsStatus;
 }
+const SecurityAndAnalysisSecretScanningNonProviderPatterns =
+  SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisSecretScanningNonProviderPatterns>;
+
 export type SecurityAndAnalysisSecretScanningAiDetectionStatus = "enabled" | "disabled";
 export interface SecurityAndAnalysisSecretScanningAiDetection {
   status?: SecurityAndAnalysisSecretScanningAiDetectionStatus;
 }
+const SecurityAndAnalysisSecretScanningAiDetection =
+  SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisSecretScanningAiDetection>;
+
 export type SecurityAndAnalysisSecretScanningDelegatedAlertDismissalStatus = "enabled" | "disabled";
+const SecurityAndAnalysisSecretScanningDelegatedAlertDismissalStatus = S.String;
+
 export interface SecurityAndAnalysisSecretScanningDelegatedAlertDismissal {
   status?: SecurityAndAnalysisSecretScanningDelegatedAlertDismissalStatus;
 }
+const SecurityAndAnalysisSecretScanningDelegatedAlertDismissal = /*@__PURE__*/ __L.at(
+  __c27,
+  2,
+) as any as S.Schema<SecurityAndAnalysisSecretScanningDelegatedAlertDismissal>;
+
 export type SecurityAndAnalysisSecretScanningDelegatedBypassStatus = "enabled" | "disabled";
 export interface SecurityAndAnalysisSecretScanningDelegatedBypass {
   status?: SecurityAndAnalysisSecretScanningDelegatedBypassStatus;
 }
+const SecurityAndAnalysisSecretScanningDelegatedBypass =
+  SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisSecretScanningDelegatedBypass>;
+
 /** The type of the bypass reviewer */
 export type SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemReviewerType =
   | "TEAM"
   | "ROLE";
+const SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemReviewerType = S.String;
+
 /** The bypass mode for the reviewer */
 export type SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemMode =
   | "ALWAYS"
   | "EXEMPT";
+const SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemMode = S.String;
+
 export interface SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItem {
   /** The ID of the team or role selected as a bypass reviewer */
   reviewer_id: number;
@@ -2602,13 +3902,28 @@ export interface SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewer
   /** The bypass mode for the reviewer */
   mode?: SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemMode;
 }
+const SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItem = /*@__PURE__*/ __L.at(
+  __c27,
+  3,
+) as any as S.Schema<SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItem>;
+
 /** The bypass reviewers for secret scanning delegated bypass */
 export type SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersList =
   Array<SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItem>;
+const SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersList = /*@__PURE__*/ __L.at(
+  __c27,
+  4,
+) as any as S.Schema<SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersList>;
+
 export interface SecurityAndAnalysisSecretScanningDelegatedBypassOptions {
   /** The bypass reviewers for secret scanning delegated bypass */
   reviewers?: SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersList;
 }
+const SecurityAndAnalysisSecretScanningDelegatedBypassOptions = /*@__PURE__*/ __L.at(
+  __c27,
+  5,
+) as any as S.Schema<SecurityAndAnalysisSecretScanningDelegatedBypassOptions>;
+
 export interface SecurityAndAnalysis {
   /** Enable or disable GitHub Advanced Security for the repository. For standalone Code Scanning or Secret Protection products, this parameter cannot be used. */
   advanced_security?: SecurityAndAnalysisAdvancedSecurity;
@@ -2623,8 +3938,13 @@ export interface SecurityAndAnalysis {
   secret_scanning_delegated_bypass?: SecurityAndAnalysisSecretScanningDelegatedBypass;
   secret_scanning_delegated_bypass_options?: SecurityAndAnalysisSecretScanningDelegatedBypassOptions;
 }
+const SecurityAndAnalysis = /*@__PURE__*/ __L.at(__c27, 6) as any as S.Schema<SecurityAndAnalysis>;
+
 /** The custom properties that were defined for the repository. The keys are the custom property names, and the values are the corresponding custom property values. */
 export type MinimalRepositoryCustomPropertiesMap = { [key: string]: unknown | undefined };
+const MinimalRepositoryCustomPropertiesMap =
+  CreateWorkflowDispatchRequestInputsMap as any as S.Schema<MinimalRepositoryCustomPropertiesMap>;
+
 /** Minimal Repository */
 export interface MinimalRepository {
   id: number;
@@ -2721,6 +4041,8 @@ export interface MinimalRepository {
   /** The custom properties that were defined for the repository. The keys are the custom property names, and the values are the corresponding custom property values. */
   custom_properties?: MinimalRepositoryCustomPropertiesMap;
 }
+const MinimalRepository = /*@__PURE__*/ __L.at(__c27, 7) as any as S.Schema<MinimalRepository>;
+
 /** An invocation of a workflow */
 export interface WorkflowRun {
   /** The ID of the workflow run. */
@@ -2781,6 +4103,8 @@ export interface WorkflowRun {
   /** The event-specific title associated with the run or the run-name if set, or the value of `run-name` if it is set in the workflow. */
   display_title: string;
 }
+const WorkflowRun = /*@__PURE__*/ __L.at(__c28, 0) as any as S.Schema<WorkflowRun>;
+
 export interface GetWorkflowRunAttemptRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -2793,6 +4117,11 @@ export interface GetWorkflowRunAttemptRequest {
   /** If `true` pull requests are omitted from the response (empty array). */
   exclude_pull_requests?: boolean;
 }
+const GetWorkflowRunAttemptRequest = /*@__PURE__*/ __L.at(
+  __c28,
+  1,
+) as any as S.Schema<GetWorkflowRunAttemptRequest>;
+
 export interface GetWorkflowRunUsageRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -2801,17 +4130,37 @@ export interface GetWorkflowRunUsageRequest {
   /** The unique identifier of the workflow run. */
   run_id: number;
 }
+const GetWorkflowRunUsageRequest = /*@__PURE__*/ __L.at(
+  __c28,
+  2,
+) as any as S.Schema<GetWorkflowRunUsageRequest>;
+
 export interface WorkflowRunUsageBillableUBUNTUJobRunsItem {
   job_id: number;
   duration_ms: number;
 }
+const WorkflowRunUsageBillableUBUNTUJobRunsItem = /*@__PURE__*/ __L.at(
+  __c28,
+  3,
+) as any as S.Schema<WorkflowRunUsageBillableUBUNTUJobRunsItem>;
+
 export type WorkflowRunUsageBillableUBUNTUJobRunsList =
   Array<WorkflowRunUsageBillableUBUNTUJobRunsItem>;
+const WorkflowRunUsageBillableUBUNTUJobRunsList = /*@__PURE__*/ __L.at(
+  __c28,
+  4,
+) as any as S.Schema<WorkflowRunUsageBillableUBUNTUJobRunsList>;
+
 export interface WorkflowRunUsageBillableUBUNTU {
   total_ms: number;
   jobs: number;
   job_runs?: WorkflowRunUsageBillableUBUNTUJobRunsList;
 }
+const WorkflowRunUsageBillableUBUNTU = /*@__PURE__*/ __L.at(
+  __c28,
+  5,
+) as any as S.Schema<WorkflowRunUsageBillableUBUNTU>;
+
 export type WorkflowRunUsageBillableMACOSJobRunsItem = WorkflowRunUsageBillableUBUNTUJobRunsItem;
 export type WorkflowRunUsageBillableMACOSJobRunsList =
   Array<WorkflowRunUsageBillableUBUNTUJobRunsItem>;
@@ -2820,6 +4169,9 @@ export interface WorkflowRunUsageBillableMACOS {
   jobs: number;
   job_runs?: WorkflowRunUsageBillableMACOSJobRunsList;
 }
+const WorkflowRunUsageBillableMACOS =
+  WorkflowRunUsageBillableUBUNTU as any as S.Schema<WorkflowRunUsageBillableMACOS>;
+
 export type WorkflowRunUsageBillableWINDOWSJobRunsItem = WorkflowRunUsageBillableUBUNTUJobRunsItem;
 export type WorkflowRunUsageBillableWINDOWSJobRunsList =
   Array<WorkflowRunUsageBillableUBUNTUJobRunsItem>;
@@ -2828,16 +4180,26 @@ export interface WorkflowRunUsageBillableWINDOWS {
   jobs: number;
   job_runs?: WorkflowRunUsageBillableWINDOWSJobRunsList;
 }
+const WorkflowRunUsageBillableWINDOWS =
+  WorkflowRunUsageBillableUBUNTU as any as S.Schema<WorkflowRunUsageBillableWINDOWS>;
+
 export interface WorkflowRunUsageBillable {
   UBUNTU?: WorkflowRunUsageBillableUBUNTU;
   MACOS?: WorkflowRunUsageBillableMACOS;
   WINDOWS?: WorkflowRunUsageBillableWINDOWS;
 }
+const WorkflowRunUsageBillable = /*@__PURE__*/ __L.at(
+  __c28,
+  6,
+) as any as S.Schema<WorkflowRunUsageBillable>;
+
 /** Workflow Run Usage */
 export interface WorkflowRunUsage {
   billable: WorkflowRunUsageBillable;
   run_duration_ms?: number;
 }
+const WorkflowRunUsage = /*@__PURE__*/ __L.at(__c28, 7) as any as S.Schema<WorkflowRunUsage>;
+
 export interface GetWorkflowUsageRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -2846,9 +4208,19 @@ export interface GetWorkflowUsageRequest {
   /** The ID of the workflow. You can also pass the workflow file name as a string. */
   workflow_id: string;
 }
+const GetWorkflowUsageRequest = /*@__PURE__*/ __L.at(
+  __c29,
+  0,
+) as any as S.Schema<GetWorkflowUsageRequest>;
+
 export interface WorkflowUsageBillableUBUNTU {
   total_ms?: number;
 }
+const WorkflowUsageBillableUBUNTU = /*@__PURE__*/ __L.at(
+  __c29,
+  1,
+) as any as S.Schema<WorkflowUsageBillableUBUNTU>;
+
 export type WorkflowUsageBillableMACOS = WorkflowUsageBillableUBUNTU;
 export type WorkflowUsageBillableWINDOWS = WorkflowUsageBillableUBUNTU;
 export interface WorkflowUsageBillable {
@@ -2856,10 +4228,17 @@ export interface WorkflowUsageBillable {
   MACOS?: WorkflowUsageBillableUBUNTU;
   WINDOWS?: WorkflowUsageBillableUBUNTU;
 }
+const WorkflowUsageBillable = /*@__PURE__*/ __L.at(
+  __c29,
+  2,
+) as any as S.Schema<WorkflowUsageBillable>;
+
 /** Workflow Usage */
 export interface WorkflowUsage {
   billable: WorkflowUsageBillable;
 }
+const WorkflowUsage = /*@__PURE__*/ __L.at(__c29, 3) as any as S.Schema<WorkflowUsage>;
+
 export interface ListArtifactsForRepoRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -2872,11 +4251,26 @@ export interface ListArtifactsForRepoRequest {
   /** The name field of an artifact. When specified, only artifacts with this name will be returned. */
   name?: string;
 }
+const ListArtifactsForRepoRequest = /*@__PURE__*/ __L.at(
+  __c29,
+  4,
+) as any as S.Schema<ListArtifactsForRepoRequest>;
+
 export type ListArtifactsForRepoResponseArtifactsList = Array<Artifact>;
+const ListArtifactsForRepoResponseArtifactsList = /*@__PURE__*/ __L.at(
+  __c29,
+  5,
+) as any as S.Schema<ListArtifactsForRepoResponseArtifactsList>;
+
 export interface ListArtifactsForRepoResponse {
   total_count: number;
   artifacts: ListArtifactsForRepoResponseArtifactsList;
 }
+const ListArtifactsForRepoResponse = /*@__PURE__*/ __L.at(
+  __c29,
+  6,
+) as any as S.Schema<ListArtifactsForRepoResponse>;
+
 export interface ListConcurrencyGroupsForRepositoryRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -2887,6 +4281,11 @@ export interface ListConcurrencyGroupsForRepositoryRequest {
   /** A cursor, as given in the [Link header](https://docs.github.com/rest/guides/using-pagination-in-the-rest-api#using-link-headers). If specified, the query only searches for results after this cursor. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   after?: string;
 }
+const ListConcurrencyGroupsForRepositoryRequest = /*@__PURE__*/ __L.at(
+  __c29,
+  7,
+) as any as S.Schema<ListConcurrencyGroupsForRepositoryRequest>;
+
 export interface ConcurrencyGroupListConcurrencyGroupsItem {
   /** The name of the concurrency group. */
   group_name: string;
@@ -2894,13 +4293,28 @@ export interface ConcurrencyGroupListConcurrencyGroupsItem {
   group_url: string;
   last_acquired_at: string | null;
 }
+const ConcurrencyGroupListConcurrencyGroupsItem = /*@__PURE__*/ __L.at(
+  __c30,
+  0,
+) as any as S.Schema<ConcurrencyGroupListConcurrencyGroupsItem>;
+
 export type ConcurrencyGroupListConcurrencyGroupsList =
   Array<ConcurrencyGroupListConcurrencyGroupsItem>;
+const ConcurrencyGroupListConcurrencyGroupsList = /*@__PURE__*/ __L.at(
+  __c30,
+  1,
+) as any as S.Schema<ConcurrencyGroupListConcurrencyGroupsList>;
+
 /** A list of active concurrency groups for a repository. */
 export interface ConcurrencyGroupList {
   total_count: number;
   concurrency_groups: ConcurrencyGroupListConcurrencyGroupsList;
 }
+const ConcurrencyGroupList = /*@__PURE__*/ __L.at(
+  __c30,
+  2,
+) as any as S.Schema<ConcurrencyGroupList>;
+
 export interface ListConcurrencyGroupsForWorkflowRunRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -2915,9 +4329,16 @@ export interface ListConcurrencyGroupsForWorkflowRunRequest {
   /** A cursor, as given in the [Link header](https://docs.github.com/rest/guides/using-pagination-in-the-rest-api#using-link-headers). If specified, the query only searches for results after this cursor. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   after?: string;
 }
+const ListConcurrencyGroupsForWorkflowRunRequest = /*@__PURE__*/ __L.at(
+  __c30,
+  3,
+) as any as S.Schema<ListConcurrencyGroupsForWorkflowRunRequest>;
+
 export type ConcurrencyGroupRunListConcurrencyGroupsItemGroupMembersItemStatus =
   | "in_progress"
   | "pending";
+const ConcurrencyGroupRunListConcurrencyGroupsItemGroupMembersItemStatus = S.String;
+
 export interface ConcurrencyGroupRunListConcurrencyGroupsItemGroupMembersItem {
   /** The ID of the workflow run. */
   run_id: number;
@@ -2941,9 +4362,19 @@ export interface ConcurrencyGroupRunListConcurrencyGroupsItemGroupMembersItem {
   job_html_url?: string | null;
   status: ConcurrencyGroupRunListConcurrencyGroupsItemGroupMembersItemStatus;
 }
+const ConcurrencyGroupRunListConcurrencyGroupsItemGroupMembersItem = /*@__PURE__*/ __L.at(
+  __c30,
+  4,
+) as any as S.Schema<ConcurrencyGroupRunListConcurrencyGroupsItemGroupMembersItem>;
+
 /** Items belonging to this workflow run that are either currently holding or waiting for the concurrency group lease. May be empty if the run no longer has any active or queued items in this group. */
 export type ConcurrencyGroupRunListConcurrencyGroupsItemGroupMembersList =
   Array<ConcurrencyGroupRunListConcurrencyGroupsItemGroupMembersItem>;
+const ConcurrencyGroupRunListConcurrencyGroupsItemGroupMembersList = /*@__PURE__*/ __L.at(
+  __c30,
+  5,
+) as any as S.Schema<ConcurrencyGroupRunListConcurrencyGroupsItemGroupMembersList>;
+
 export interface ConcurrencyGroupRunListConcurrencyGroupsItem {
   /** The name of the concurrency group. */
   group_name: string;
@@ -2952,35 +4383,80 @@ export interface ConcurrencyGroupRunListConcurrencyGroupsItem {
   /** Items belonging to this workflow run that are either currently holding or waiting for the concurrency group lease. May be empty if the run no longer has any active or queued items in this group. */
   group_members: ConcurrencyGroupRunListConcurrencyGroupsItemGroupMembersList;
 }
+const ConcurrencyGroupRunListConcurrencyGroupsItem = /*@__PURE__*/ __L.at(
+  __c30,
+  6,
+) as any as S.Schema<ConcurrencyGroupRunListConcurrencyGroupsItem>;
+
 export type ConcurrencyGroupRunListConcurrencyGroupsList =
   Array<ConcurrencyGroupRunListConcurrencyGroupsItem>;
+const ConcurrencyGroupRunListConcurrencyGroupsList = /*@__PURE__*/ __L.at(
+  __c30,
+  7,
+) as any as S.Schema<ConcurrencyGroupRunListConcurrencyGroupsList>;
+
 /** A list of concurrency groups associated with a workflow run. */
 export interface ConcurrencyGroupRunList {
   /** The total number of concurrency groups this workflow run participates in, derived from the run's configuration. This count is not filtered by whether the run currently holds or is waiting in each group, so it can include groups whose `group_members` array is empty (for example, when the run has already released its lease in that group). */
   total_count: number;
   concurrency_groups: ConcurrencyGroupRunListConcurrencyGroupsList;
 }
+const ConcurrencyGroupRunList = /*@__PURE__*/ __L.at(
+  __c31,
+  0,
+) as any as S.Schema<ConcurrencyGroupRunList>;
+
 export interface ListCustomImagesForOrgRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
 }
+const ListCustomImagesForOrgRequest = /*@__PURE__*/ __L.at(
+  __c31,
+  1,
+) as any as S.Schema<ListCustomImagesForOrgRequest>;
+
 export type ListCustomImagesForOrgResponseImagesList = Array<ActionsHostedRunnerCustomImage>;
+const ListCustomImagesForOrgResponseImagesList = /*@__PURE__*/ __L.at(
+  __c31,
+  2,
+) as any as S.Schema<ListCustomImagesForOrgResponseImagesList>;
+
 export interface ListCustomImagesForOrgResponse {
   total_count: number;
   images: ListCustomImagesForOrgResponseImagesList;
 }
+const ListCustomImagesForOrgResponse = /*@__PURE__*/ __L.at(
+  __c31,
+  3,
+) as any as S.Schema<ListCustomImagesForOrgResponse>;
+
 export interface ListCustomImageVersionsForOrgRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
   /** Image definition ID of custom image */
   image_definition_id: number;
 }
+const ListCustomImageVersionsForOrgRequest = /*@__PURE__*/ __L.at(
+  __c31,
+  4,
+) as any as S.Schema<ListCustomImageVersionsForOrgRequest>;
+
 export type ListCustomImageVersionsForOrgResponseImageVersionsList =
   Array<ActionsHostedRunnerCustomImageVersion>;
+const ListCustomImageVersionsForOrgResponseImageVersionsList = /*@__PURE__*/ __L.at(
+  __c31,
+  5,
+) as any as S.Schema<ListCustomImageVersionsForOrgResponseImageVersionsList>;
+
 export interface ListCustomImageVersionsForOrgResponse {
   total_count: number;
   image_versions: ListCustomImageVersionsForOrgResponseImageVersionsList;
 }
+const ListCustomImageVersionsForOrgResponse = /*@__PURE__*/ __L.at(
+  __c31,
+  6,
+) as any as S.Schema<ListCustomImageVersionsForOrgResponse>;
+
 export interface ListEnvironmentSecretsRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -2993,11 +4469,26 @@ export interface ListEnvironmentSecretsRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
+const ListEnvironmentSecretsRequest = /*@__PURE__*/ __L.at(
+  __c31,
+  7,
+) as any as S.Schema<ListEnvironmentSecretsRequest>;
+
 export type ListEnvironmentSecretsResponseSecretsList = Array<ActionsSecret>;
+const ListEnvironmentSecretsResponseSecretsList = /*@__PURE__*/ __L.at(
+  __c32,
+  0,
+) as any as S.Schema<ListEnvironmentSecretsResponseSecretsList>;
+
 export interface ListEnvironmentSecretsResponse {
   total_count: number;
   secrets: ListEnvironmentSecretsResponseSecretsList;
 }
+const ListEnvironmentSecretsResponse = /*@__PURE__*/ __L.at(
+  __c32,
+  1,
+) as any as S.Schema<ListEnvironmentSecretsResponse>;
+
 export interface ListEnvironmentVariablesRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -3010,11 +4501,26 @@ export interface ListEnvironmentVariablesRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
+const ListEnvironmentVariablesRequest = /*@__PURE__*/ __L.at(
+  __c32,
+  2,
+) as any as S.Schema<ListEnvironmentVariablesRequest>;
+
 export type ListEnvironmentVariablesResponseVariablesList = Array<ActionsVariable>;
+const ListEnvironmentVariablesResponseVariablesList = /*@__PURE__*/ __L.at(
+  __c32,
+  3,
+) as any as S.Schema<ListEnvironmentVariablesResponseVariablesList>;
+
 export interface ListEnvironmentVariablesResponse {
   total_count: number;
   variables: ListEnvironmentVariablesResponseVariablesList;
 }
+const ListEnvironmentVariablesResponse = /*@__PURE__*/ __L.at(
+  __c32,
+  4,
+) as any as S.Schema<ListEnvironmentVariablesResponse>;
+
 export interface ListGithubHostedRunnersInGroupForOrgRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -3025,11 +4531,26 @@ export interface ListGithubHostedRunnersInGroupForOrgRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
+const ListGithubHostedRunnersInGroupForOrgRequest = /*@__PURE__*/ __L.at(
+  __c32,
+  5,
+) as any as S.Schema<ListGithubHostedRunnersInGroupForOrgRequest>;
+
 export type ListGithubHostedRunnersInGroupForOrgResponseRunnersList = Array<ActionsHostedRunner>;
+const ListGithubHostedRunnersInGroupForOrgResponseRunnersList = /*@__PURE__*/ __L.at(
+  __c32,
+  6,
+) as any as S.Schema<ListGithubHostedRunnersInGroupForOrgResponseRunnersList>;
+
 export interface ListGithubHostedRunnersInGroupForOrgResponse {
   total_count: number;
   runners: ListGithubHostedRunnersInGroupForOrgResponseRunnersList;
 }
+const ListGithubHostedRunnersInGroupForOrgResponse = /*@__PURE__*/ __L.at(
+  __c32,
+  7,
+) as any as S.Schema<ListGithubHostedRunnersInGroupForOrgResponse>;
+
 export interface ListHostedRunnersForOrgRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -3038,12 +4559,22 @@ export interface ListHostedRunnersForOrgRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
+const ListHostedRunnersForOrgRequest = /*@__PURE__*/ __L.at(
+  __c33,
+  0,
+) as any as S.Schema<ListHostedRunnersForOrgRequest>;
+
 export type ListHostedRunnersForOrgResponseRunnersList = Array<ActionsHostedRunner>;
 export interface ListHostedRunnersForOrgResponse {
   total_count: number;
   runners: ListHostedRunnersForOrgResponseRunnersList;
 }
+const ListHostedRunnersForOrgResponse =
+  ListGithubHostedRunnersInGroupForOrgResponse as any as S.Schema<ListHostedRunnersForOrgResponse>;
+
 export type ListJobsForWorkflowRunRequestFilter = "latest" | "all";
+const ListJobsForWorkflowRunRequestFilter = S.String;
+
 export interface ListJobsForWorkflowRunRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -3058,11 +4589,26 @@ export interface ListJobsForWorkflowRunRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
+const ListJobsForWorkflowRunRequest = /*@__PURE__*/ __L.at(
+  __c33,
+  1,
+) as any as S.Schema<ListJobsForWorkflowRunRequest>;
+
 export type ListJobsForWorkflowRunResponseJobsList = Array<Job>;
+const ListJobsForWorkflowRunResponseJobsList = /*@__PURE__*/ __L.at(
+  __c33,
+  2,
+) as any as S.Schema<ListJobsForWorkflowRunResponseJobsList>;
+
 export interface ListJobsForWorkflowRunResponse {
   total_count: number;
   jobs: ListJobsForWorkflowRunResponseJobsList;
 }
+const ListJobsForWorkflowRunResponse = /*@__PURE__*/ __L.at(
+  __c33,
+  3,
+) as any as S.Schema<ListJobsForWorkflowRunResponse>;
+
 export interface ListJobsForWorkflowRunAttemptRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -3077,22 +4623,38 @@ export interface ListJobsForWorkflowRunAttemptRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
+const ListJobsForWorkflowRunAttemptRequest = /*@__PURE__*/ __L.at(
+  __c33,
+  4,
+) as any as S.Schema<ListJobsForWorkflowRunAttemptRequest>;
+
 export type ListJobsForWorkflowRunAttemptResponseJobsList = Array<Job>;
 export interface ListJobsForWorkflowRunAttemptResponse {
   total_count: number;
   jobs: ListJobsForWorkflowRunAttemptResponseJobsList;
 }
+const ListJobsForWorkflowRunAttemptResponse =
+  ListJobsForWorkflowRunResponse as any as S.Schema<ListJobsForWorkflowRunAttemptResponse>;
+
 export interface ListLabelsForSelfHostedRunnerForOrgRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
   /** Unique identifier of the self-hosted runner. */
   runner_id: number;
 }
+const ListLabelsForSelfHostedRunnerForOrgRequest = /*@__PURE__*/ __L.at(
+  __c33,
+  5,
+) as any as S.Schema<ListLabelsForSelfHostedRunnerForOrgRequest>;
+
 export type ListLabelsForSelfHostedRunnerForOrgResponseLabelsList = Array<RunnerLabel>;
 export interface ListLabelsForSelfHostedRunnerForOrgResponse {
   total_count: number;
   labels: ListLabelsForSelfHostedRunnerForOrgResponseLabelsList;
 }
+const ListLabelsForSelfHostedRunnerForOrgResponse =
+  AddCustomLabelsToSelfHostedRunnerForOrgResponse as any as S.Schema<ListLabelsForSelfHostedRunnerForOrgResponse>;
+
 export interface ListLabelsForSelfHostedRunnerForRepoRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -3101,11 +4663,19 @@ export interface ListLabelsForSelfHostedRunnerForRepoRequest {
   /** Unique identifier of the self-hosted runner. */
   runner_id: number;
 }
+const ListLabelsForSelfHostedRunnerForRepoRequest = /*@__PURE__*/ __L.at(
+  __c33,
+  6,
+) as any as S.Schema<ListLabelsForSelfHostedRunnerForRepoRequest>;
+
 export type ListLabelsForSelfHostedRunnerForRepoResponseLabelsList = Array<RunnerLabel>;
 export interface ListLabelsForSelfHostedRunnerForRepoResponse {
   total_count: number;
   labels: ListLabelsForSelfHostedRunnerForRepoResponseLabelsList;
 }
+const ListLabelsForSelfHostedRunnerForRepoResponse =
+  AddCustomLabelsToSelfHostedRunnerForOrgResponse as any as S.Schema<ListLabelsForSelfHostedRunnerForRepoResponse>;
+
 export interface ListOrgSecretsRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -3114,11 +4684,26 @@ export interface ListOrgSecretsRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
+const ListOrgSecretsRequest = /*@__PURE__*/ __L.at(
+  __c33,
+  7,
+) as any as S.Schema<ListOrgSecretsRequest>;
+
 export type ListOrgSecretsResponseSecretsList = Array<OrganizationActionsSecret>;
+const ListOrgSecretsResponseSecretsList = /*@__PURE__*/ __L.at(
+  __c34,
+  0,
+) as any as S.Schema<ListOrgSecretsResponseSecretsList>;
+
 export interface ListOrgSecretsResponse {
   total_count: number;
   secrets: ListOrgSecretsResponseSecretsList;
 }
+const ListOrgSecretsResponse = /*@__PURE__*/ __L.at(
+  __c34,
+  1,
+) as any as S.Schema<ListOrgSecretsResponse>;
+
 export interface ListOrgVariablesRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -3127,11 +4712,26 @@ export interface ListOrgVariablesRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
+const ListOrgVariablesRequest = /*@__PURE__*/ __L.at(
+  __c34,
+  2,
+) as any as S.Schema<ListOrgVariablesRequest>;
+
 export type ListOrgVariablesResponseVariablesList = Array<OrganizationActionsVariable>;
+const ListOrgVariablesResponseVariablesList = /*@__PURE__*/ __L.at(
+  __c34,
+  3,
+) as any as S.Schema<ListOrgVariablesResponseVariablesList>;
+
 export interface ListOrgVariablesResponse {
   total_count: number;
   variables: ListOrgVariablesResponseVariablesList;
 }
+const ListOrgVariablesResponse = /*@__PURE__*/ __L.at(
+  __c34,
+  4,
+) as any as S.Schema<ListOrgVariablesResponse>;
+
 export interface ListRepoAccessToSelfHostedRunnerGroupInOrgRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -3142,12 +4742,27 @@ export interface ListRepoAccessToSelfHostedRunnerGroupInOrgRequest {
   /** The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   per_page?: number;
 }
+const ListRepoAccessToSelfHostedRunnerGroupInOrgRequest = /*@__PURE__*/ __L.at(
+  __c34,
+  5,
+) as any as S.Schema<ListRepoAccessToSelfHostedRunnerGroupInOrgRequest>;
+
 export type ListRepoAccessToSelfHostedRunnerGroupInOrgResponseRepositoriesList =
   Array<MinimalRepository>;
+const ListRepoAccessToSelfHostedRunnerGroupInOrgResponseRepositoriesList = /*@__PURE__*/ __L.at(
+  __c34,
+  6,
+) as any as S.Schema<ListRepoAccessToSelfHostedRunnerGroupInOrgResponseRepositoriesList>;
+
 export interface ListRepoAccessToSelfHostedRunnerGroupInOrgResponse {
   total_count: number;
   repositories: ListRepoAccessToSelfHostedRunnerGroupInOrgResponseRepositoriesList;
 }
+const ListRepoAccessToSelfHostedRunnerGroupInOrgResponse = /*@__PURE__*/ __L.at(
+  __c34,
+  7,
+) as any as S.Schema<ListRepoAccessToSelfHostedRunnerGroupInOrgResponse>;
+
 export interface ListRepoOrganizationSecretsRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -3158,11 +4773,19 @@ export interface ListRepoOrganizationSecretsRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
+const ListRepoOrganizationSecretsRequest = /*@__PURE__*/ __L.at(
+  __c35,
+  0,
+) as any as S.Schema<ListRepoOrganizationSecretsRequest>;
+
 export type ListRepoOrganizationSecretsResponseSecretsList = Array<ActionsSecret>;
 export interface ListRepoOrganizationSecretsResponse {
   total_count: number;
   secrets: ListRepoOrganizationSecretsResponseSecretsList;
 }
+const ListRepoOrganizationSecretsResponse =
+  ListEnvironmentSecretsResponse as any as S.Schema<ListRepoOrganizationSecretsResponse>;
+
 export interface ListRepoOrganizationVariablesRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -3173,11 +4796,19 @@ export interface ListRepoOrganizationVariablesRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
+const ListRepoOrganizationVariablesRequest = /*@__PURE__*/ __L.at(
+  __c35,
+  1,
+) as any as S.Schema<ListRepoOrganizationVariablesRequest>;
+
 export type ListRepoOrganizationVariablesResponseVariablesList = Array<ActionsVariable>;
 export interface ListRepoOrganizationVariablesResponse {
   total_count: number;
   variables: ListRepoOrganizationVariablesResponseVariablesList;
 }
+const ListRepoOrganizationVariablesResponse =
+  ListEnvironmentVariablesResponse as any as S.Schema<ListRepoOrganizationVariablesResponse>;
+
 export interface ListRepoSecretsRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -3188,11 +4819,24 @@ export interface ListRepoSecretsRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
+const ListRepoSecretsRequest = /*@__PURE__*/ __L.at(
+  __c35,
+  2,
+) as any as S.Schema<ListRepoSecretsRequest>;
+
 export type ListRepoSecretsResponseSecretsList = Array<ActionsSecret>;
+const ListRepoSecretsResponseSecretsList =
+  ListEnvironmentSecretsResponseSecretsList as any as S.Schema<ListRepoSecretsResponseSecretsList>;
+
 export interface ListRepoSecretsResponse {
   total_count: number;
   secrets: ListRepoSecretsResponseSecretsList;
 }
+const ListRepoSecretsResponse = /*@__PURE__*/ __L.at(
+  __c35,
+  3,
+) as any as S.Schema<ListRepoSecretsResponse>;
+
 export interface ListRepoVariablesRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -3203,11 +4847,19 @@ export interface ListRepoVariablesRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
+const ListRepoVariablesRequest = /*@__PURE__*/ __L.at(
+  __c35,
+  4,
+) as any as S.Schema<ListRepoVariablesRequest>;
+
 export type ListRepoVariablesResponseVariablesList = Array<ActionsVariable>;
 export interface ListRepoVariablesResponse {
   total_count: number;
   variables: ListRepoVariablesResponseVariablesList;
 }
+const ListRepoVariablesResponse =
+  ListEnvironmentVariablesResponse as any as S.Schema<ListRepoVariablesResponse>;
+
 export interface ListRepoWorkflowsRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -3218,15 +4870,35 @@ export interface ListRepoWorkflowsRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
+const ListRepoWorkflowsRequest = /*@__PURE__*/ __L.at(
+  __c35,
+  5,
+) as any as S.Schema<ListRepoWorkflowsRequest>;
+
 export type ListRepoWorkflowsResponseWorkflowsList = Array<Workflow>;
+const ListRepoWorkflowsResponseWorkflowsList = /*@__PURE__*/ __L.at(
+  __c35,
+  6,
+) as any as S.Schema<ListRepoWorkflowsResponseWorkflowsList>;
+
 export interface ListRepoWorkflowsResponse {
   total_count: number;
   workflows: ListRepoWorkflowsResponseWorkflowsList;
 }
+const ListRepoWorkflowsResponse = /*@__PURE__*/ __L.at(
+  __c35,
+  7,
+) as any as S.Schema<ListRepoWorkflowsResponse>;
+
 export interface ListRunnerApplicationsForOrgRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
 }
+const ListRunnerApplicationsForOrgRequest = /*@__PURE__*/ __L.at(
+  __c36,
+  0,
+) as any as S.Schema<ListRunnerApplicationsForOrgRequest>;
+
 /** Runner Application */
 export interface RunnerApplication {
   os: string;
@@ -3237,16 +4909,36 @@ export interface RunnerApplication {
   temp_download_token?: string;
   sha256_checksum?: string;
 }
+const RunnerApplication = /*@__PURE__*/ __L.at(__c36, 1) as any as S.Schema<RunnerApplication>;
+
 export type ListRunnerApplicationsForOrgResponseBodyList = Array<RunnerApplication>;
+const ListRunnerApplicationsForOrgResponseBodyList = /*@__PURE__*/ __L.at(
+  __c36,
+  2,
+) as any as S.Schema<ListRunnerApplicationsForOrgResponseBodyList>;
+
 export type ListRunnerApplicationsForOrgResponse = ListRunnerApplicationsForOrgResponseBodyList;
+const ListRunnerApplicationsForOrgResponse = /*@__PURE__*/ __L.at(
+  __c36,
+  3,
+) as any as S.Schema<ListRunnerApplicationsForOrgResponse>;
+
 export interface ListRunnerApplicationsForRepoRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
   /** The name of the repository without the `.git` extension. The name is not case sensitive. */
   repo: string;
 }
+const ListRunnerApplicationsForRepoRequest = /*@__PURE__*/ __L.at(
+  __c36,
+  4,
+) as any as S.Schema<ListRunnerApplicationsForRepoRequest>;
+
 export type ListRunnerApplicationsForRepoResponseBodyList = Array<RunnerApplication>;
 export type ListRunnerApplicationsForRepoResponse = ListRunnerApplicationsForRepoResponseBodyList;
+const ListRunnerApplicationsForRepoResponse =
+  ListRunnerApplicationsForOrgResponse as any as S.Schema<ListRunnerApplicationsForRepoResponse>;
+
 export interface ListSelectedReposForOrgSecretRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -3257,11 +4949,26 @@ export interface ListSelectedReposForOrgSecretRequest {
   /** The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   per_page?: number;
 }
+const ListSelectedReposForOrgSecretRequest = /*@__PURE__*/ __L.at(
+  __c36,
+  5,
+) as any as S.Schema<ListSelectedReposForOrgSecretRequest>;
+
 export type ListSelectedReposForOrgSecretResponseRepositoriesList = Array<MinimalRepository>;
+const ListSelectedReposForOrgSecretResponseRepositoriesList = /*@__PURE__*/ __L.at(
+  __c36,
+  6,
+) as any as S.Schema<ListSelectedReposForOrgSecretResponseRepositoriesList>;
+
 export interface ListSelectedReposForOrgSecretResponse {
   total_count: number;
   repositories: ListSelectedReposForOrgSecretResponseRepositoriesList;
 }
+const ListSelectedReposForOrgSecretResponse = /*@__PURE__*/ __L.at(
+  __c36,
+  7,
+) as any as S.Schema<ListSelectedReposForOrgSecretResponse>;
+
 export interface ListSelectedReposForOrgVariableRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -3272,11 +4979,19 @@ export interface ListSelectedReposForOrgVariableRequest {
   /** The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   per_page?: number;
 }
+const ListSelectedReposForOrgVariableRequest = /*@__PURE__*/ __L.at(
+  __c37,
+  0,
+) as any as S.Schema<ListSelectedReposForOrgVariableRequest>;
+
 export type ListSelectedReposForOrgVariableResponseRepositoriesList = Array<MinimalRepository>;
 export interface ListSelectedReposForOrgVariableResponse {
   total_count: number;
   repositories: ListSelectedReposForOrgVariableResponseRepositoriesList;
 }
+const ListSelectedReposForOrgVariableResponse =
+  ListSelectedReposForOrgSecretResponse as any as S.Schema<ListSelectedReposForOrgVariableResponse>;
+
 export interface ListSelectedRepositoriesEnabledGithubActionsOrganizationRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -3285,12 +5000,28 @@ export interface ListSelectedRepositoriesEnabledGithubActionsOrganizationRequest
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
+const ListSelectedRepositoriesEnabledGithubActionsOrganizationRequest = /*@__PURE__*/ __L.at(
+  __c37,
+  1,
+) as any as S.Schema<ListSelectedRepositoriesEnabledGithubActionsOrganizationRequest>;
+
 export type ListSelectedRepositoriesEnabledGithubActionsOrganizationResponseRepositoriesList =
   Array<Repository>;
+const ListSelectedRepositoriesEnabledGithubActionsOrganizationResponseRepositoriesList =
+  /*@__PURE__*/ __L.at(
+    __c37,
+    2,
+  ) as any as S.Schema<ListSelectedRepositoriesEnabledGithubActionsOrganizationResponseRepositoriesList>;
+
 export interface ListSelectedRepositoriesEnabledGithubActionsOrganizationResponse {
   total_count: number;
   repositories: ListSelectedRepositoriesEnabledGithubActionsOrganizationResponseRepositoriesList;
 }
+const ListSelectedRepositoriesEnabledGithubActionsOrganizationResponse = /*@__PURE__*/ __L.at(
+  __c37,
+  3,
+) as any as S.Schema<ListSelectedRepositoriesEnabledGithubActionsOrganizationResponse>;
+
 export interface ListSelectedRepositoriesSelfHostedRunnersOrganizationRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -3299,12 +5030,25 @@ export interface ListSelectedRepositoriesSelfHostedRunnersOrganizationRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
+const ListSelectedRepositoriesSelfHostedRunnersOrganizationRequest = /*@__PURE__*/ __L.at(
+  __c37,
+  4,
+) as any as S.Schema<ListSelectedRepositoriesSelfHostedRunnersOrganizationRequest>;
+
 export type ListSelectedRepositoriesSelfHostedRunnersOrganizationResponseRepositoriesList =
   Array<Repository>;
+const ListSelectedRepositoriesSelfHostedRunnersOrganizationResponseRepositoriesList =
+  ListSelectedRepositoriesEnabledGithubActionsOrganizationResponseRepositoriesList as any as S.Schema<ListSelectedRepositoriesSelfHostedRunnersOrganizationResponseRepositoriesList>;
+
 export interface ListSelectedRepositoriesSelfHostedRunnersOrganizationResponse {
   total_count?: number;
   repositories?: ListSelectedRepositoriesSelfHostedRunnersOrganizationResponseRepositoriesList;
 }
+const ListSelectedRepositoriesSelfHostedRunnersOrganizationResponse = /*@__PURE__*/ __L.at(
+  __c37,
+  5,
+) as any as S.Schema<ListSelectedRepositoriesSelfHostedRunnersOrganizationResponse>;
+
 export interface ListSelfHostedRunnerGroupsForOrgRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -3315,11 +5059,26 @@ export interface ListSelfHostedRunnerGroupsForOrgRequest {
   /** Only return runner groups that are allowed to be used by this repository. */
   visible_to_repository?: string;
 }
+const ListSelfHostedRunnerGroupsForOrgRequest = /*@__PURE__*/ __L.at(
+  __c37,
+  6,
+) as any as S.Schema<ListSelfHostedRunnerGroupsForOrgRequest>;
+
 export type ListSelfHostedRunnerGroupsForOrgResponseRunnerGroupsList = Array<RunnerGroupsOrg>;
+const ListSelfHostedRunnerGroupsForOrgResponseRunnerGroupsList = /*@__PURE__*/ __L.at(
+  __c37,
+  7,
+) as any as S.Schema<ListSelfHostedRunnerGroupsForOrgResponseRunnerGroupsList>;
+
 export interface ListSelfHostedRunnerGroupsForOrgResponse {
   total_count: number;
   runner_groups: ListSelfHostedRunnerGroupsForOrgResponseRunnerGroupsList;
 }
+const ListSelfHostedRunnerGroupsForOrgResponse = /*@__PURE__*/ __L.at(
+  __c38,
+  0,
+) as any as S.Schema<ListSelfHostedRunnerGroupsForOrgResponse>;
+
 export interface ListSelfHostedRunnersForOrgRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -3330,11 +5089,26 @@ export interface ListSelfHostedRunnersForOrgRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
+const ListSelfHostedRunnersForOrgRequest = /*@__PURE__*/ __L.at(
+  __c38,
+  1,
+) as any as S.Schema<ListSelfHostedRunnersForOrgRequest>;
+
 export type ListSelfHostedRunnersForOrgResponseRunnersList = Array<Runner>;
+const ListSelfHostedRunnersForOrgResponseRunnersList = /*@__PURE__*/ __L.at(
+  __c38,
+  2,
+) as any as S.Schema<ListSelfHostedRunnersForOrgResponseRunnersList>;
+
 export interface ListSelfHostedRunnersForOrgResponse {
   total_count: number;
   runners: ListSelfHostedRunnersForOrgResponseRunnersList;
 }
+const ListSelfHostedRunnersForOrgResponse = /*@__PURE__*/ __L.at(
+  __c38,
+  3,
+) as any as S.Schema<ListSelfHostedRunnersForOrgResponse>;
+
 export interface ListSelfHostedRunnersForRepoRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -3347,11 +5121,19 @@ export interface ListSelfHostedRunnersForRepoRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
+const ListSelfHostedRunnersForRepoRequest = /*@__PURE__*/ __L.at(
+  __c38,
+  4,
+) as any as S.Schema<ListSelfHostedRunnersForRepoRequest>;
+
 export type ListSelfHostedRunnersForRepoResponseRunnersList = Array<Runner>;
 export interface ListSelfHostedRunnersForRepoResponse {
   total_count: number;
   runners: ListSelfHostedRunnersForRepoResponseRunnersList;
 }
+const ListSelfHostedRunnersForRepoResponse =
+  ListSelfHostedRunnersForOrgResponse as any as S.Schema<ListSelfHostedRunnersForRepoResponse>;
+
 export interface ListSelfHostedRunnersInGroupForOrgRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -3362,12 +5144,22 @@ export interface ListSelfHostedRunnersInGroupForOrgRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
+const ListSelfHostedRunnersInGroupForOrgRequest = /*@__PURE__*/ __L.at(
+  __c38,
+  5,
+) as any as S.Schema<ListSelfHostedRunnersInGroupForOrgRequest>;
+
 export type ListSelfHostedRunnersInGroupForOrgResponseRunnersList = Array<Runner>;
 export interface ListSelfHostedRunnersInGroupForOrgResponse {
   total_count: number;
   runners: ListSelfHostedRunnersInGroupForOrgResponseRunnersList;
 }
+const ListSelfHostedRunnersInGroupForOrgResponse =
+  ListSelfHostedRunnersForOrgResponse as any as S.Schema<ListSelfHostedRunnersInGroupForOrgResponse>;
+
 export type ListWorkflowRunArtifactsRequestDirection = "asc" | "desc";
+const ListWorkflowRunArtifactsRequestDirection = S.String;
+
 export interface ListWorkflowRunArtifactsRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -3384,11 +5176,19 @@ export interface ListWorkflowRunArtifactsRequest {
   /** The direction to sort the results by. */
   direction?: ListWorkflowRunArtifactsRequestDirection | (string & {});
 }
+const ListWorkflowRunArtifactsRequest = /*@__PURE__*/ __L.at(
+  __c38,
+  6,
+) as any as S.Schema<ListWorkflowRunArtifactsRequest>;
+
 export type ListWorkflowRunArtifactsResponseArtifactsList = Array<Artifact>;
 export interface ListWorkflowRunArtifactsResponse {
   total_count: number;
   artifacts: ListWorkflowRunArtifactsResponseArtifactsList;
 }
+const ListWorkflowRunArtifactsResponse =
+  ListArtifactsForRepoResponse as any as S.Schema<ListWorkflowRunArtifactsResponse>;
+
 export type ListWorkflowRunsRequestStatus =
   | "completed"
   | "action_required"
@@ -3404,6 +5204,8 @@ export type ListWorkflowRunsRequestStatus =
   | "requested"
   | "waiting"
   | "pending";
+const ListWorkflowRunsRequestStatus = S.String;
+
 export interface ListWorkflowRunsRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -3432,11 +5234,26 @@ export interface ListWorkflowRunsRequest {
   /** Only returns workflow runs that are associated with the specified `head_sha`. */
   head_sha?: string;
 }
+const ListWorkflowRunsRequest = /*@__PURE__*/ __L.at(
+  __c38,
+  7,
+) as any as S.Schema<ListWorkflowRunsRequest>;
+
 export type ListWorkflowRunsResponseWorkflowRunsList = Array<WorkflowRun>;
+const ListWorkflowRunsResponseWorkflowRunsList = /*@__PURE__*/ __L.at(
+  __c39,
+  0,
+) as any as S.Schema<ListWorkflowRunsResponseWorkflowRunsList>;
+
 export interface ListWorkflowRunsResponse {
   total_count: number;
   workflow_runs: ListWorkflowRunsResponseWorkflowRunsList;
 }
+const ListWorkflowRunsResponse = /*@__PURE__*/ __L.at(
+  __c39,
+  1,
+) as any as S.Schema<ListWorkflowRunsResponse>;
+
 export type ListWorkflowRunsForRepoRequestStatus =
   | "completed"
   | "action_required"
@@ -3452,6 +5269,8 @@ export type ListWorkflowRunsForRepoRequestStatus =
   | "requested"
   | "waiting"
   | "pending";
+const ListWorkflowRunsForRepoRequestStatus = S.String;
+
 export interface ListWorkflowRunsForRepoRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -3478,22 +5297,50 @@ export interface ListWorkflowRunsForRepoRequest {
   /** Only returns workflow runs that are associated with the specified `head_sha`. */
   head_sha?: string;
 }
+const ListWorkflowRunsForRepoRequest = /*@__PURE__*/ __L.at(
+  __c39,
+  2,
+) as any as S.Schema<ListWorkflowRunsForRepoRequest>;
+
 export type ListWorkflowRunsForRepoResponseWorkflowRunsList = Array<WorkflowRun>;
+const ListWorkflowRunsForRepoResponseWorkflowRunsList =
+  ListWorkflowRunsResponseWorkflowRunsList as any as S.Schema<ListWorkflowRunsForRepoResponseWorkflowRunsList>;
+
 export interface ListWorkflowRunsForRepoResponse {
   total_count: number;
   workflow_runs: ListWorkflowRunsForRepoResponseWorkflowRunsList;
 }
+const ListWorkflowRunsForRepoResponse = /*@__PURE__*/ __L.at(
+  __c39,
+  3,
+) as any as S.Schema<ListWorkflowRunsForRepoResponse>;
+
 export interface RemoveAllCustomLabelsFromSelfHostedRunnerForOrgRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
   /** Unique identifier of the self-hosted runner. */
   runner_id: number;
 }
+const RemoveAllCustomLabelsFromSelfHostedRunnerForOrgRequest = /*@__PURE__*/ __L.at(
+  __c39,
+  4,
+) as any as S.Schema<RemoveAllCustomLabelsFromSelfHostedRunnerForOrgRequest>;
+
 export type RemoveAllCustomLabelsFromSelfHostedRunnerForOrgResponseLabelsList = Array<RunnerLabel>;
+const RemoveAllCustomLabelsFromSelfHostedRunnerForOrgResponseLabelsList = /*@__PURE__*/ __L.at(
+  __c39,
+  5,
+) as any as S.Schema<RemoveAllCustomLabelsFromSelfHostedRunnerForOrgResponseLabelsList>;
+
 export interface RemoveAllCustomLabelsFromSelfHostedRunnerForOrgResponse {
   total_count: number;
   labels: RemoveAllCustomLabelsFromSelfHostedRunnerForOrgResponseLabelsList;
 }
+const RemoveAllCustomLabelsFromSelfHostedRunnerForOrgResponse = /*@__PURE__*/ __L.at(
+  __c39,
+  6,
+) as any as S.Schema<RemoveAllCustomLabelsFromSelfHostedRunnerForOrgResponse>;
+
 export interface RemoveAllCustomLabelsFromSelfHostedRunnerForRepoRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -3502,11 +5349,24 @@ export interface RemoveAllCustomLabelsFromSelfHostedRunnerForRepoRequest {
   /** Unique identifier of the self-hosted runner. */
   runner_id: number;
 }
+const RemoveAllCustomLabelsFromSelfHostedRunnerForRepoRequest = /*@__PURE__*/ __L.at(
+  __c39,
+  7,
+) as any as S.Schema<RemoveAllCustomLabelsFromSelfHostedRunnerForRepoRequest>;
+
 export type RemoveAllCustomLabelsFromSelfHostedRunnerForRepoResponseLabelsList = Array<RunnerLabel>;
+const RemoveAllCustomLabelsFromSelfHostedRunnerForRepoResponseLabelsList =
+  RemoveAllCustomLabelsFromSelfHostedRunnerForOrgResponseLabelsList as any as S.Schema<RemoveAllCustomLabelsFromSelfHostedRunnerForRepoResponseLabelsList>;
+
 export interface RemoveAllCustomLabelsFromSelfHostedRunnerForRepoResponse {
   total_count: number;
   labels: RemoveAllCustomLabelsFromSelfHostedRunnerForRepoResponseLabelsList;
 }
+const RemoveAllCustomLabelsFromSelfHostedRunnerForRepoResponse = /*@__PURE__*/ __L.at(
+  __c40,
+  0,
+) as any as S.Schema<RemoveAllCustomLabelsFromSelfHostedRunnerForRepoResponse>;
+
 export interface RemoveCustomLabelFromSelfHostedRunnerForOrgRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -3515,11 +5375,19 @@ export interface RemoveCustomLabelFromSelfHostedRunnerForOrgRequest {
   /** The name of a self-hosted runner's custom label. */
   name: string;
 }
+const RemoveCustomLabelFromSelfHostedRunnerForOrgRequest = /*@__PURE__*/ __L.at(
+  __c40,
+  1,
+) as any as S.Schema<RemoveCustomLabelFromSelfHostedRunnerForOrgRequest>;
+
 export type RemoveCustomLabelFromSelfHostedRunnerForOrgResponseLabelsList = Array<RunnerLabel>;
 export interface RemoveCustomLabelFromSelfHostedRunnerForOrgResponse {
   total_count: number;
   labels: RemoveCustomLabelFromSelfHostedRunnerForOrgResponseLabelsList;
 }
+const RemoveCustomLabelFromSelfHostedRunnerForOrgResponse =
+  AddCustomLabelsToSelfHostedRunnerForOrgResponse as any as S.Schema<RemoveCustomLabelFromSelfHostedRunnerForOrgResponse>;
+
 export interface RemoveCustomLabelFromSelfHostedRunnerForRepoRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -3530,11 +5398,19 @@ export interface RemoveCustomLabelFromSelfHostedRunnerForRepoRequest {
   /** The name of a self-hosted runner's custom label. */
   name: string;
 }
+const RemoveCustomLabelFromSelfHostedRunnerForRepoRequest = /*@__PURE__*/ __L.at(
+  __c40,
+  2,
+) as any as S.Schema<RemoveCustomLabelFromSelfHostedRunnerForRepoRequest>;
+
 export type RemoveCustomLabelFromSelfHostedRunnerForRepoResponseLabelsList = Array<RunnerLabel>;
 export interface RemoveCustomLabelFromSelfHostedRunnerForRepoResponse {
   total_count: number;
   labels: RemoveCustomLabelFromSelfHostedRunnerForRepoResponseLabelsList;
 }
+const RemoveCustomLabelFromSelfHostedRunnerForRepoResponse =
+  AddCustomLabelsToSelfHostedRunnerForOrgResponse as any as S.Schema<RemoveCustomLabelFromSelfHostedRunnerForRepoResponse>;
+
 export interface RemoveRepoAccessToSelfHostedRunnerGroupInOrgRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -3543,7 +5419,15 @@ export interface RemoveRepoAccessToSelfHostedRunnerGroupInOrgRequest {
   /** The unique identifier of the repository. */
   repository_id: number;
 }
+const RemoveRepoAccessToSelfHostedRunnerGroupInOrgRequest = /*@__PURE__*/ __L.at(
+  __c40,
+  3,
+) as any as S.Schema<RemoveRepoAccessToSelfHostedRunnerGroupInOrgRequest>;
+
 export interface RemoveRepoAccessToSelfHostedRunnerGroupInOrgResponse {}
+const RemoveRepoAccessToSelfHostedRunnerGroupInOrgResponse =
+  AddRepoAccessToSelfHostedRunnerGroupInOrgResponse as any as S.Schema<RemoveRepoAccessToSelfHostedRunnerGroupInOrgResponse>;
+
 export interface RemoveSelectedRepoFromOrgSecretRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -3551,7 +5435,15 @@ export interface RemoveSelectedRepoFromOrgSecretRequest {
   secret_name: string;
   repository_id: number;
 }
+const RemoveSelectedRepoFromOrgSecretRequest = /*@__PURE__*/ __L.at(
+  __c40,
+  4,
+) as any as S.Schema<RemoveSelectedRepoFromOrgSecretRequest>;
+
 export interface RemoveSelectedRepoFromOrgSecretResponse {}
+const RemoveSelectedRepoFromOrgSecretResponse =
+  AddRepoAccessToSelfHostedRunnerGroupInOrgResponse as any as S.Schema<RemoveSelectedRepoFromOrgSecretResponse>;
+
 export interface RemoveSelectedRepoFromOrgVariableRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -3559,7 +5451,15 @@ export interface RemoveSelectedRepoFromOrgVariableRequest {
   name: string;
   repository_id: number;
 }
+const RemoveSelectedRepoFromOrgVariableRequest = /*@__PURE__*/ __L.at(
+  __c40,
+  5,
+) as any as S.Schema<RemoveSelectedRepoFromOrgVariableRequest>;
+
 export interface RemoveSelectedRepoFromOrgVariableResponse {}
+const RemoveSelectedRepoFromOrgVariableResponse =
+  AddRepoAccessToSelfHostedRunnerGroupInOrgResponse as any as S.Schema<RemoveSelectedRepoFromOrgVariableResponse>;
+
 export interface RemoveSelfHostedRunnerFromGroupForOrgRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -3568,7 +5468,15 @@ export interface RemoveSelfHostedRunnerFromGroupForOrgRequest {
   /** Unique identifier of the self-hosted runner. */
   runner_id: number;
 }
+const RemoveSelfHostedRunnerFromGroupForOrgRequest = /*@__PURE__*/ __L.at(
+  __c40,
+  6,
+) as any as S.Schema<RemoveSelfHostedRunnerFromGroupForOrgRequest>;
+
 export interface RemoveSelfHostedRunnerFromGroupForOrgResponse {}
+const RemoveSelfHostedRunnerFromGroupForOrgResponse =
+  AddRepoAccessToSelfHostedRunnerGroupInOrgResponse as any as S.Schema<RemoveSelfHostedRunnerFromGroupForOrgResponse>;
+
 export interface ReRunWorkflowRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -3579,7 +5487,17 @@ export interface ReRunWorkflowRequest {
   /** Whether to enable debug logging for the re-run. */
   enable_debug_logging?: boolean;
 }
+const ReRunWorkflowRequest = /*@__PURE__*/ __L.at(
+  __c40,
+  7,
+) as any as S.Schema<ReRunWorkflowRequest>;
+
 export type ReRunWorkflowResponse = unknown;
+const ReRunWorkflowResponse = /*@__PURE__*/ __L.at(
+  __c41,
+  0,
+) as any as S.Schema<ReRunWorkflowResponse>;
+
 export interface ReRunWorkflowFailedJobsRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -3590,7 +5508,15 @@ export interface ReRunWorkflowFailedJobsRequest {
   /** Whether to enable debug logging for the re-run. */
   enable_debug_logging?: boolean;
 }
+const ReRunWorkflowFailedJobsRequest = /*@__PURE__*/ __L.at(
+  __c41,
+  1,
+) as any as S.Schema<ReRunWorkflowFailedJobsRequest>;
+
 export type ReRunWorkflowFailedJobsResponse = unknown;
+const ReRunWorkflowFailedJobsResponse =
+  ApproveWorkflowRunResponse as any as S.Schema<ReRunWorkflowFailedJobsResponse>;
+
 export interface ReviewCustomGatesCommentRequired {
   /** The name of the environment to approve or reject. */
   environment_name: string;
@@ -3610,6 +5536,9 @@ export interface ReviewCustomGatesStateRequired {
 export type ReviewCustomGatesForRunRequestBody =
   | ReviewCustomGatesCommentRequired
   | ReviewCustomGatesStateRequired;
+const ReviewCustomGatesForRunRequestBody =
+  S.Unknown as any as S.Schema<ReviewCustomGatesForRunRequestBody>;
+
 export interface ReviewCustomGatesForRunRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -3619,11 +5548,24 @@ export interface ReviewCustomGatesForRunRequest {
   run_id: number;
   body: ReviewCustomGatesForRunRequestBody;
 }
+const ReviewCustomGatesForRunRequest = /*@__PURE__*/ __L.at(
+  __c41,
+  2,
+) as any as S.Schema<ReviewCustomGatesForRunRequest>;
+
 export interface ReviewCustomGatesForRunResponse {}
+const ReviewCustomGatesForRunResponse =
+  DeleteEnvironmentSecretResponse as any as S.Schema<ReviewCustomGatesForRunResponse>;
+
 /** The list of environment ids to approve or reject */
 export type ReviewPendingDeploymentsForRunRequestEnvironmentIdsList = Array<number>;
+const ReviewPendingDeploymentsForRunRequestEnvironmentIdsList =
+  ActionsPolicyOrgConditionsCase1RepositoryIdRepositoryIdsList as any as S.Schema<ReviewPendingDeploymentsForRunRequestEnvironmentIdsList>;
+
 /** Whether to approve or reject deployment to the specified environments. */
 export type ReviewPendingDeploymentsForRunRequestState = "approved" | "rejected";
+const ReviewPendingDeploymentsForRunRequestState = S.String;
+
 export interface ReviewPendingDeploymentsForRunRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -3638,8 +5580,15 @@ export interface ReviewPendingDeploymentsForRunRequest {
   /** A comment to accompany the deployment review */
   comment: string;
 }
+const ReviewPendingDeploymentsForRunRequest = /*@__PURE__*/ __L.at(
+  __c41,
+  3,
+) as any as S.Schema<ReviewPendingDeploymentsForRunRequest>;
+
 export type DeploymentPayloadCase0Map = { [key: string]: unknown | undefined };
 export type DeploymentPayload = DeploymentPayloadCase0Map | string;
+const DeploymentPayload = S.Unknown as any as S.Schema<DeploymentPayload>;
+
 /** A GitHub user. */
 export type NullableSimpleUser = SimpleUser;
 /** An enterprise on GitHub. */
@@ -3661,6 +5610,8 @@ export interface Enterprise {
   avatar_url: string;
 }
 export type NullableIntegrationOwner = SimpleUser | Enterprise;
+const NullableIntegrationOwner = S.Unknown as any as S.Schema<NullableIntegrationOwner>;
+
 /** The set of permissions for the GitHub app */
 export interface NullableIntegrationPermissions {
   issues?: string;
@@ -3669,8 +5620,16 @@ export interface NullableIntegrationPermissions {
   contents?: string;
   deployments?: string;
 }
+const NullableIntegrationPermissions = /*@__PURE__*/ __L.at(
+  __c41,
+  4,
+) as any as S.Schema<NullableIntegrationPermissions>;
+
 /** The list of events for the GitHub app. Note that the `installation_target`, `security_advisory`, and `meta` events are not included because they are global events and not specific to an installation. */
 export type NullableIntegrationEventsList = Array<string>;
+const NullableIntegrationEventsList =
+  AddCustomLabelsToSelfHostedRunnerForOrgRequestLabelsList as any as S.Schema<NullableIntegrationEventsList>;
+
 /** GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub. */
 export interface NullableIntegration {
   /** Unique identifier of the GitHub app */
@@ -3694,6 +5653,8 @@ export interface NullableIntegration {
   /** The number of installations associated with the GitHub app. Only returned when the integration is requesting details about itself. */
   installations_count?: number;
 }
+const NullableIntegration = /*@__PURE__*/ __L.at(__c41, 5) as any as S.Schema<NullableIntegration>;
+
 /** A request for a specific ref(branch,sha,tag) to be deployed */
 export interface Deployment {
   url: string;
@@ -3721,8 +5682,20 @@ export interface Deployment {
   production_environment?: boolean;
   performed_via_github_app?: NullableIntegration | null;
 }
+const Deployment = /*@__PURE__*/ __L.at(__c41, 6) as any as S.Schema<Deployment>;
+
 export type ReviewPendingDeploymentsForRunResponseBodyList = Array<Deployment>;
+const ReviewPendingDeploymentsForRunResponseBodyList = /*@__PURE__*/ __L.at(
+  __c41,
+  7,
+) as any as S.Schema<ReviewPendingDeploymentsForRunResponseBodyList>;
+
 export type ReviewPendingDeploymentsForRunResponse = ReviewPendingDeploymentsForRunResponseBodyList;
+const ReviewPendingDeploymentsForRunResponse = /*@__PURE__*/ __L.at(
+  __c42,
+  0,
+) as any as S.Schema<ReviewPendingDeploymentsForRunResponse>;
+
 export interface RunReRunJobForWorkflowRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -3735,21 +5708,45 @@ export interface RunReRunJobForWorkflowRequest {
   /** Whether to enable the debugger for the re-run of this job. */
   enable_debugger?: boolean;
 }
+const RunReRunJobForWorkflowRequest = /*@__PURE__*/ __L.at(
+  __c42,
+  1,
+) as any as S.Schema<RunReRunJobForWorkflowRequest>;
+
 export type RunReRunJobForWorkflowResponse = unknown;
+const RunReRunJobForWorkflowResponse =
+  ApproveWorkflowRunResponse as any as S.Schema<RunReRunJobForWorkflowResponse>;
+
 export interface SetActionsCacheRetentionLimitForEnterpriseRequest {
   /** The slug version of the enterprise name. */
   enterprise: string;
   /** For repositories & organizations in an enterprise, the maximum duration, in days, for which caches in a repository may be retained. */
   max_cache_retention_days?: number;
 }
+const SetActionsCacheRetentionLimitForEnterpriseRequest = /*@__PURE__*/ __L.at(
+  __c42,
+  2,
+) as any as S.Schema<SetActionsCacheRetentionLimitForEnterpriseRequest>;
+
 export interface SetActionsCacheRetentionLimitForEnterpriseResponse {}
+const SetActionsCacheRetentionLimitForEnterpriseResponse =
+  AddRepoAccessToSelfHostedRunnerGroupInOrgResponse as any as S.Schema<SetActionsCacheRetentionLimitForEnterpriseResponse>;
+
 export interface SetActionsCacheRetentionLimitForOrganizationRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
   /** For repositories in this organization, the maximum duration, in days, for which caches in a repository may be retained. */
   max_cache_retention_days?: number;
 }
+const SetActionsCacheRetentionLimitForOrganizationRequest = /*@__PURE__*/ __L.at(
+  __c42,
+  3,
+) as any as S.Schema<SetActionsCacheRetentionLimitForOrganizationRequest>;
+
 export interface SetActionsCacheRetentionLimitForOrganizationResponse {}
+const SetActionsCacheRetentionLimitForOrganizationResponse =
+  AddRepoAccessToSelfHostedRunnerGroupInOrgResponse as any as S.Schema<SetActionsCacheRetentionLimitForOrganizationResponse>;
+
 export interface SetActionsCacheRetentionLimitForRepositoryRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -3758,21 +5755,45 @@ export interface SetActionsCacheRetentionLimitForRepositoryRequest {
   /** The maximum number of days to keep caches in this repository. */
   max_cache_retention_days?: number;
 }
+const SetActionsCacheRetentionLimitForRepositoryRequest = /*@__PURE__*/ __L.at(
+  __c42,
+  4,
+) as any as S.Schema<SetActionsCacheRetentionLimitForRepositoryRequest>;
+
 export interface SetActionsCacheRetentionLimitForRepositoryResponse {}
+const SetActionsCacheRetentionLimitForRepositoryResponse =
+  AddRepoAccessToSelfHostedRunnerGroupInOrgResponse as any as S.Schema<SetActionsCacheRetentionLimitForRepositoryResponse>;
+
 export interface SetActionsCacheStorageLimitForEnterpriseRequest {
   /** The slug version of the enterprise name. */
   enterprise: string;
   /** For repositories & organizations in an enterprise, the maximum size limit for the sum of all caches in a repository, in gigabytes. */
   max_cache_size_gb?: number;
 }
+const SetActionsCacheStorageLimitForEnterpriseRequest = /*@__PURE__*/ __L.at(
+  __c42,
+  5,
+) as any as S.Schema<SetActionsCacheStorageLimitForEnterpriseRequest>;
+
 export interface SetActionsCacheStorageLimitForEnterpriseResponse {}
+const SetActionsCacheStorageLimitForEnterpriseResponse =
+  AddRepoAccessToSelfHostedRunnerGroupInOrgResponse as any as S.Schema<SetActionsCacheStorageLimitForEnterpriseResponse>;
+
 export interface SetActionsCacheStorageLimitForOrganizationRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
   /** For repositories in the organization, the maximum size limit for the sum of all caches in a repository, in gigabytes. */
   max_cache_size_gb?: number;
 }
+const SetActionsCacheStorageLimitForOrganizationRequest = /*@__PURE__*/ __L.at(
+  __c42,
+  6,
+) as any as S.Schema<SetActionsCacheStorageLimitForOrganizationRequest>;
+
 export interface SetActionsCacheStorageLimitForOrganizationResponse {}
+const SetActionsCacheStorageLimitForOrganizationResponse =
+  AddRepoAccessToSelfHostedRunnerGroupInOrgResponse as any as S.Schema<SetActionsCacheStorageLimitForOrganizationResponse>;
+
 export interface SetActionsCacheStorageLimitForRepositoryRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -3781,9 +5802,20 @@ export interface SetActionsCacheStorageLimitForRepositoryRequest {
   /** The maximum total cache size for this repository, in gigabytes. */
   max_cache_size_gb?: number;
 }
+const SetActionsCacheStorageLimitForRepositoryRequest = /*@__PURE__*/ __L.at(
+  __c42,
+  7,
+) as any as S.Schema<SetActionsCacheStorageLimitForRepositoryRequest>;
+
 export interface SetActionsCacheStorageLimitForRepositoryResponse {}
+const SetActionsCacheStorageLimitForRepositoryResponse =
+  AddRepoAccessToSelfHostedRunnerGroupInOrgResponse as any as S.Schema<SetActionsCacheStorageLimitForRepositoryResponse>;
+
 /** Specifies a list of string-matching patterns to allow specific action(s) and reusable workflow(s). Wildcards, tags, and SHAs are allowed. For example, `monalisa/octocat@*`, `monalisa/octocat@v2`, `monalisa/*`. > [!NOTE] > The `patterns_allowed` setting only applies to public repositories. */
 export type SetAllowedActionsOrganizationRequestPatternsAllowedList = Array<string>;
+const SetAllowedActionsOrganizationRequestPatternsAllowedList =
+  AddCustomLabelsToSelfHostedRunnerForOrgRequestLabelsList as any as S.Schema<SetAllowedActionsOrganizationRequestPatternsAllowedList>;
+
 export interface SetAllowedActionsOrganizationRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -3794,9 +5826,20 @@ export interface SetAllowedActionsOrganizationRequest {
   /** Specifies a list of string-matching patterns to allow specific action(s) and reusable workflow(s). Wildcards, tags, and SHAs are allowed. For example, `monalisa/octocat@*`, `monalisa/octocat@v2`, `monalisa/*`. > [!NOTE] > The `patterns_allowed` setting only applies to public repositories. */
   patterns_allowed?: SetAllowedActionsOrganizationRequestPatternsAllowedList;
 }
+const SetAllowedActionsOrganizationRequest = /*@__PURE__*/ __L.at(
+  __c43,
+  0,
+) as any as S.Schema<SetAllowedActionsOrganizationRequest>;
+
 export interface SetAllowedActionsOrganizationResponse {}
+const SetAllowedActionsOrganizationResponse =
+  AddRepoAccessToSelfHostedRunnerGroupInOrgResponse as any as S.Schema<SetAllowedActionsOrganizationResponse>;
+
 /** Specifies a list of string-matching patterns to allow specific action(s) and reusable workflow(s). Wildcards, tags, and SHAs are allowed. For example, `monalisa/octocat@*`, `monalisa/octocat@v2`, `monalisa/*`. > [!NOTE] > The `patterns_allowed` setting only applies to public repositories. */
 export type SetAllowedActionsRepositoryRequestPatternsAllowedList = Array<string>;
+const SetAllowedActionsRepositoryRequestPatternsAllowedList =
+  AddCustomLabelsToSelfHostedRunnerForOrgRequestLabelsList as any as S.Schema<SetAllowedActionsRepositoryRequestPatternsAllowedList>;
+
 export interface SetAllowedActionsRepositoryRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -3809,14 +5852,30 @@ export interface SetAllowedActionsRepositoryRequest {
   /** Specifies a list of string-matching patterns to allow specific action(s) and reusable workflow(s). Wildcards, tags, and SHAs are allowed. For example, `monalisa/octocat@*`, `monalisa/octocat@v2`, `monalisa/*`. > [!NOTE] > The `patterns_allowed` setting only applies to public repositories. */
   patterns_allowed?: SetAllowedActionsRepositoryRequestPatternsAllowedList;
 }
+const SetAllowedActionsRepositoryRequest = /*@__PURE__*/ __L.at(
+  __c43,
+  1,
+) as any as S.Schema<SetAllowedActionsRepositoryRequest>;
+
 export interface SetAllowedActionsRepositoryResponse {}
+const SetAllowedActionsRepositoryResponse =
+  AddRepoAccessToSelfHostedRunnerGroupInOrgResponse as any as S.Schema<SetAllowedActionsRepositoryResponse>;
+
 export interface SetArtifactAndLogRetentionSettingsOrganizationRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
   /** The number of days to retain checks, workflow runs, commit statuses, artifacts, and logs */
   days: number;
 }
+const SetArtifactAndLogRetentionSettingsOrganizationRequest = /*@__PURE__*/ __L.at(
+  __c43,
+  2,
+) as any as S.Schema<SetArtifactAndLogRetentionSettingsOrganizationRequest>;
+
 export interface SetArtifactAndLogRetentionSettingsOrganizationResponse {}
+const SetArtifactAndLogRetentionSettingsOrganizationResponse =
+  AddRepoAccessToSelfHostedRunnerGroupInOrgResponse as any as S.Schema<SetArtifactAndLogRetentionSettingsOrganizationResponse>;
+
 export interface SetArtifactAndLogRetentionSettingsRepositoryRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -3825,9 +5884,20 @@ export interface SetArtifactAndLogRetentionSettingsRepositoryRequest {
   /** The number of days to retain checks, workflow runs, commit statuses, artifacts, and logs */
   days: number;
 }
+const SetArtifactAndLogRetentionSettingsRepositoryRequest = /*@__PURE__*/ __L.at(
+  __c43,
+  3,
+) as any as S.Schema<SetArtifactAndLogRetentionSettingsRepositoryRequest>;
+
 export interface SetArtifactAndLogRetentionSettingsRepositoryResponse {}
+const SetArtifactAndLogRetentionSettingsRepositoryResponse =
+  AddRepoAccessToSelfHostedRunnerGroupInOrgResponse as any as S.Schema<SetArtifactAndLogRetentionSettingsRepositoryResponse>;
+
 /** The names of the custom labels to set for the runner. You can pass an empty array to remove all custom labels. */
 export type SetCustomLabelsForSelfHostedRunnerForOrgRequestLabelsList = Array<string>;
+const SetCustomLabelsForSelfHostedRunnerForOrgRequestLabelsList =
+  AddCustomLabelsToSelfHostedRunnerForOrgRequestLabelsList as any as S.Schema<SetCustomLabelsForSelfHostedRunnerForOrgRequestLabelsList>;
+
 export interface SetCustomLabelsForSelfHostedRunnerForOrgRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -3836,13 +5906,24 @@ export interface SetCustomLabelsForSelfHostedRunnerForOrgRequest {
   /** The names of the custom labels to set for the runner. You can pass an empty array to remove all custom labels. */
   labels: SetCustomLabelsForSelfHostedRunnerForOrgRequestLabelsList;
 }
+const SetCustomLabelsForSelfHostedRunnerForOrgRequest = /*@__PURE__*/ __L.at(
+  __c43,
+  4,
+) as any as S.Schema<SetCustomLabelsForSelfHostedRunnerForOrgRequest>;
+
 export type SetCustomLabelsForSelfHostedRunnerForOrgResponseLabelsList = Array<RunnerLabel>;
 export interface SetCustomLabelsForSelfHostedRunnerForOrgResponse {
   total_count: number;
   labels: SetCustomLabelsForSelfHostedRunnerForOrgResponseLabelsList;
 }
+const SetCustomLabelsForSelfHostedRunnerForOrgResponse =
+  AddCustomLabelsToSelfHostedRunnerForOrgResponse as any as S.Schema<SetCustomLabelsForSelfHostedRunnerForOrgResponse>;
+
 /** The names of the custom labels to set for the runner. You can pass an empty array to remove all custom labels. */
 export type SetCustomLabelsForSelfHostedRunnerForRepoRequestLabelsList = Array<string>;
+const SetCustomLabelsForSelfHostedRunnerForRepoRequestLabelsList =
+  AddCustomLabelsToSelfHostedRunnerForOrgRequestLabelsList as any as S.Schema<SetCustomLabelsForSelfHostedRunnerForRepoRequestLabelsList>;
+
 export interface SetCustomLabelsForSelfHostedRunnerForRepoRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -3853,13 +5934,24 @@ export interface SetCustomLabelsForSelfHostedRunnerForRepoRequest {
   /** The names of the custom labels to set for the runner. You can pass an empty array to remove all custom labels. */
   labels: SetCustomLabelsForSelfHostedRunnerForRepoRequestLabelsList;
 }
+const SetCustomLabelsForSelfHostedRunnerForRepoRequest = /*@__PURE__*/ __L.at(
+  __c43,
+  5,
+) as any as S.Schema<SetCustomLabelsForSelfHostedRunnerForRepoRequest>;
+
 export type SetCustomLabelsForSelfHostedRunnerForRepoResponseLabelsList = Array<RunnerLabel>;
 export interface SetCustomLabelsForSelfHostedRunnerForRepoResponse {
   total_count: number;
   labels: SetCustomLabelsForSelfHostedRunnerForRepoResponseLabelsList;
 }
+const SetCustomLabelsForSelfHostedRunnerForRepoResponse =
+  AddCustomLabelsToSelfHostedRunnerForOrgResponse as any as S.Schema<SetCustomLabelsForSelfHostedRunnerForRepoResponse>;
+
 /** Array of unique strings. Each claim key can only contain alphanumeric characters and underscores. */
 export type SetCustomOidcSubClaimForRepoRequestIncludeClaimKeysList = Array<string>;
+const SetCustomOidcSubClaimForRepoRequestIncludeClaimKeysList =
+  AddCustomLabelsToSelfHostedRunnerForOrgRequestLabelsList as any as S.Schema<SetCustomOidcSubClaimForRepoRequestIncludeClaimKeysList>;
+
 export interface SetCustomOidcSubClaimForRepoRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -3872,12 +5964,22 @@ export interface SetCustomOidcSubClaimForRepoRequest {
   /** Whether to opt in to the immutable OIDC subject claim format for this repository. When `true`, OIDC tokens will use a stable, repository-ID-based `sub` claim. */
   use_immutable_subject?: boolean;
 }
+const SetCustomOidcSubClaimForRepoRequest = /*@__PURE__*/ __L.at(
+  __c43,
+  6,
+) as any as S.Schema<SetCustomOidcSubClaimForRepoRequest>;
+
 export type SetCustomOidcSubClaimForRepoResponse = unknown;
+const SetCustomOidcSubClaimForRepoResponse =
+  ApproveWorkflowRunResponse as any as S.Schema<SetCustomOidcSubClaimForRepoResponse>;
+
 /** The policy that controls when fork PR workflows require approval from a maintainer. */
 export type SetForkPrContributorApprovalPermissionsOrganizationRequestApprovalPolicy =
   | "first_time_contributors_new_to_github"
   | "first_time_contributors"
   | "all_external_contributors";
+const SetForkPrContributorApprovalPermissionsOrganizationRequestApprovalPolicy = S.String;
+
 export interface SetForkPrContributorApprovalPermissionsOrganizationRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -3886,12 +5988,22 @@ export interface SetForkPrContributorApprovalPermissionsOrganizationRequest {
     | SetForkPrContributorApprovalPermissionsOrganizationRequestApprovalPolicy
     | (string & {});
 }
+const SetForkPrContributorApprovalPermissionsOrganizationRequest = /*@__PURE__*/ __L.at(
+  __c43,
+  7,
+) as any as S.Schema<SetForkPrContributorApprovalPermissionsOrganizationRequest>;
+
 export interface SetForkPrContributorApprovalPermissionsOrganizationResponse {}
+const SetForkPrContributorApprovalPermissionsOrganizationResponse =
+  DisableSelectedRepositoryGithubActionsOrganizationResponse as any as S.Schema<SetForkPrContributorApprovalPermissionsOrganizationResponse>;
+
 /** The policy that controls when fork PR workflows require approval from a maintainer. */
 export type SetForkPrContributorApprovalPermissionsRepositoryRequestApprovalPolicy =
   | "first_time_contributors_new_to_github"
   | "first_time_contributors"
   | "all_external_contributors";
+const SetForkPrContributorApprovalPermissionsRepositoryRequestApprovalPolicy = S.String;
+
 export interface SetForkPrContributorApprovalPermissionsRepositoryRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -3902,14 +6014,30 @@ export interface SetForkPrContributorApprovalPermissionsRepositoryRequest {
     | SetForkPrContributorApprovalPermissionsRepositoryRequestApprovalPolicy
     | (string & {});
 }
+const SetForkPrContributorApprovalPermissionsRepositoryRequest = /*@__PURE__*/ __L.at(
+  __c44,
+  0,
+) as any as S.Schema<SetForkPrContributorApprovalPermissionsRepositoryRequest>;
+
 export interface SetForkPrContributorApprovalPermissionsRepositoryResponse {}
+const SetForkPrContributorApprovalPermissionsRepositoryResponse =
+  DisableSelectedRepositoryGithubActionsOrganizationResponse as any as S.Schema<SetForkPrContributorApprovalPermissionsRepositoryResponse>;
+
 export interface SetGithubActionsDefaultWorkflowPermissionsOrganizationRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
   default_workflow_permissions?: ActionsDefaultWorkflowPermissions | (string & {});
   can_approve_pull_request_reviews?: boolean;
 }
+const SetGithubActionsDefaultWorkflowPermissionsOrganizationRequest = /*@__PURE__*/ __L.at(
+  __c44,
+  1,
+) as any as S.Schema<SetGithubActionsDefaultWorkflowPermissionsOrganizationRequest>;
+
 export interface SetGithubActionsDefaultWorkflowPermissionsOrganizationResponse {}
+const SetGithubActionsDefaultWorkflowPermissionsOrganizationResponse =
+  DisableSelectedRepositorySelfHostedRunnersOrganizationResponse as any as S.Schema<SetGithubActionsDefaultWorkflowPermissionsOrganizationResponse>;
+
 export interface SetGithubActionsDefaultWorkflowPermissionsRepositoryRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -3918,7 +6046,15 @@ export interface SetGithubActionsDefaultWorkflowPermissionsRepositoryRequest {
   default_workflow_permissions?: ActionsDefaultWorkflowPermissions | (string & {});
   can_approve_pull_request_reviews?: boolean;
 }
+const SetGithubActionsDefaultWorkflowPermissionsRepositoryRequest = /*@__PURE__*/ __L.at(
+  __c44,
+  2,
+) as any as S.Schema<SetGithubActionsDefaultWorkflowPermissionsRepositoryRequest>;
+
 export interface SetGithubActionsDefaultWorkflowPermissionsRepositoryResponse {}
+const SetGithubActionsDefaultWorkflowPermissionsRepositoryResponse =
+  DisableSelectedRepositoryGithubActionsOrganizationResponse as any as S.Schema<SetGithubActionsDefaultWorkflowPermissionsRepositoryResponse>;
+
 export interface SetGithubActionsPermissionsOrganizationRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -3926,7 +6062,15 @@ export interface SetGithubActionsPermissionsOrganizationRequest {
   allowed_actions?: AllowedActions | (string & {});
   sha_pinning_required?: boolean;
 }
+const SetGithubActionsPermissionsOrganizationRequest = /*@__PURE__*/ __L.at(
+  __c44,
+  3,
+) as any as S.Schema<SetGithubActionsPermissionsOrganizationRequest>;
+
 export interface SetGithubActionsPermissionsOrganizationResponse {}
+const SetGithubActionsPermissionsOrganizationResponse =
+  AddRepoAccessToSelfHostedRunnerGroupInOrgResponse as any as S.Schema<SetGithubActionsPermissionsOrganizationResponse>;
+
 export interface SetGithubActionsPermissionsRepositoryRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -3936,7 +6080,15 @@ export interface SetGithubActionsPermissionsRepositoryRequest {
   allowed_actions?: AllowedActions | (string & {});
   sha_pinning_required?: boolean;
 }
+const SetGithubActionsPermissionsRepositoryRequest = /*@__PURE__*/ __L.at(
+  __c44,
+  4,
+) as any as S.Schema<SetGithubActionsPermissionsRepositoryRequest>;
+
 export interface SetGithubActionsPermissionsRepositoryResponse {}
+const SetGithubActionsPermissionsRepositoryResponse =
+  AddRepoAccessToSelfHostedRunnerGroupInOrgResponse as any as S.Schema<SetGithubActionsPermissionsRepositoryResponse>;
+
 export interface SetPrivateRepoForkPrWorkflowsSettingsOrganizationRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -3949,7 +6101,15 @@ export interface SetPrivateRepoForkPrWorkflowsSettingsOrganizationRequest {
   /** Whether workflows triggered by pull requests from forks require approval from a repository administrator to run. */
   require_approval_for_fork_pr_workflows?: boolean;
 }
+const SetPrivateRepoForkPrWorkflowsSettingsOrganizationRequest = /*@__PURE__*/ __L.at(
+  __c44,
+  5,
+) as any as S.Schema<SetPrivateRepoForkPrWorkflowsSettingsOrganizationRequest>;
+
 export interface SetPrivateRepoForkPrWorkflowsSettingsOrganizationResponse {}
+const SetPrivateRepoForkPrWorkflowsSettingsOrganizationResponse =
+  DisableSelectedRepositoryGithubActionsOrganizationResponse as any as S.Schema<SetPrivateRepoForkPrWorkflowsSettingsOrganizationResponse>;
+
 export interface SetPrivateRepoForkPrWorkflowsSettingsRepositoryRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -3964,10 +6124,21 @@ export interface SetPrivateRepoForkPrWorkflowsSettingsRepositoryRequest {
   /** Whether workflows triggered by pull requests from forks require approval from a repository administrator to run. */
   require_approval_for_fork_pr_workflows?: boolean;
 }
+const SetPrivateRepoForkPrWorkflowsSettingsRepositoryRequest = /*@__PURE__*/ __L.at(
+  __c44,
+  6,
+) as any as S.Schema<SetPrivateRepoForkPrWorkflowsSettingsRepositoryRequest>;
+
 export interface SetPrivateRepoForkPrWorkflowsSettingsRepositoryResponse {}
+const SetPrivateRepoForkPrWorkflowsSettingsRepositoryResponse =
+  AddRepoAccessToSelfHostedRunnerGroupInOrgResponse as any as S.Schema<SetPrivateRepoForkPrWorkflowsSettingsRepositoryResponse>;
+
 /** List of repository IDs that can access the runner group. */
 export type SetRepoAccessToSelfHostedRunnerGroupInOrgRequestSelectedRepositoryIdsList =
   Array<number>;
+const SetRepoAccessToSelfHostedRunnerGroupInOrgRequestSelectedRepositoryIdsList =
+  ActionsPolicyEnterpriseConditionsCase2OrganizationIdOrganizationIdsList as any as S.Schema<SetRepoAccessToSelfHostedRunnerGroupInOrgRequestSelectedRepositoryIdsList>;
+
 export interface SetRepoAccessToSelfHostedRunnerGroupInOrgRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -3976,9 +6147,20 @@ export interface SetRepoAccessToSelfHostedRunnerGroupInOrgRequest {
   /** List of repository IDs that can access the runner group. */
   selected_repository_ids: SetRepoAccessToSelfHostedRunnerGroupInOrgRequestSelectedRepositoryIdsList;
 }
+const SetRepoAccessToSelfHostedRunnerGroupInOrgRequest = /*@__PURE__*/ __L.at(
+  __c44,
+  7,
+) as any as S.Schema<SetRepoAccessToSelfHostedRunnerGroupInOrgRequest>;
+
 export interface SetRepoAccessToSelfHostedRunnerGroupInOrgResponse {}
+const SetRepoAccessToSelfHostedRunnerGroupInOrgResponse =
+  AddRepoAccessToSelfHostedRunnerGroupInOrgResponse as any as S.Schema<SetRepoAccessToSelfHostedRunnerGroupInOrgResponse>;
+
 /** An array of repository ids that can access the organization secret. You can only provide a list of repository ids when the `visibility` is set to `selected`. You can add and remove individual repositories using the [Add selected repository to an organization secret](https://docs.github.com/rest/actions/secrets#add-selected-repository-to-an-organization-secret) and [Remove selected repository from an organization secret](https://docs.github.com/rest/actions/secrets#remove-selected-repository-from-an-organization-secret) endpoints. */
 export type SetSelectedReposForOrgSecretRequestSelectedRepositoryIdsList = Array<number>;
+const SetSelectedReposForOrgSecretRequestSelectedRepositoryIdsList =
+  ActionsPolicyOrgConditionsCase1RepositoryIdRepositoryIdsList as any as S.Schema<SetSelectedReposForOrgSecretRequestSelectedRepositoryIdsList>;
+
 export interface SetSelectedReposForOrgSecretRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -3987,9 +6169,20 @@ export interface SetSelectedReposForOrgSecretRequest {
   /** An array of repository ids that can access the organization secret. You can only provide a list of repository ids when the `visibility` is set to `selected`. You can add and remove individual repositories using the [Add selected repository to an organization secret](https://docs.github.com/rest/actions/secrets#add-selected-repository-to-an-organization-secret) and [Remove selected repository from an organization secret](https://docs.github.com/rest/actions/secrets#remove-selected-repository-from-an-organization-secret) endpoints. */
   selected_repository_ids: SetSelectedReposForOrgSecretRequestSelectedRepositoryIdsList;
 }
+const SetSelectedReposForOrgSecretRequest = /*@__PURE__*/ __L.at(
+  __c45,
+  0,
+) as any as S.Schema<SetSelectedReposForOrgSecretRequest>;
+
 export interface SetSelectedReposForOrgSecretResponse {}
+const SetSelectedReposForOrgSecretResponse =
+  AddRepoAccessToSelfHostedRunnerGroupInOrgResponse as any as S.Schema<SetSelectedReposForOrgSecretResponse>;
+
 /** The IDs of the repositories that can access the organization variable. */
 export type SetSelectedReposForOrgVariableRequestSelectedRepositoryIdsList = Array<number>;
+const SetSelectedReposForOrgVariableRequestSelectedRepositoryIdsList =
+  ActionsPolicyOrgConditionsCase1RepositoryIdRepositoryIdsList as any as S.Schema<SetSelectedReposForOrgVariableRequestSelectedRepositoryIdsList>;
+
 export interface SetSelectedReposForOrgVariableRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -3998,29 +6191,62 @@ export interface SetSelectedReposForOrgVariableRequest {
   /** The IDs of the repositories that can access the organization variable. */
   selected_repository_ids: SetSelectedReposForOrgVariableRequestSelectedRepositoryIdsList;
 }
+const SetSelectedReposForOrgVariableRequest = /*@__PURE__*/ __L.at(
+  __c45,
+  1,
+) as any as S.Schema<SetSelectedReposForOrgVariableRequest>;
+
 export interface SetSelectedReposForOrgVariableResponse {}
+const SetSelectedReposForOrgVariableResponse =
+  AddRepoAccessToSelfHostedRunnerGroupInOrgResponse as any as S.Schema<SetSelectedReposForOrgVariableResponse>;
+
 /** List of repository IDs to enable for GitHub Actions. */
 export type SetSelectedRepositoriesEnabledGithubActionsOrganizationRequestSelectedRepositoryIdsList =
   Array<number>;
+const SetSelectedRepositoriesEnabledGithubActionsOrganizationRequestSelectedRepositoryIdsList =
+  ActionsPolicyEnterpriseConditionsCase2OrganizationIdOrganizationIdsList as any as S.Schema<SetSelectedRepositoriesEnabledGithubActionsOrganizationRequestSelectedRepositoryIdsList>;
+
 export interface SetSelectedRepositoriesEnabledGithubActionsOrganizationRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
   /** List of repository IDs to enable for GitHub Actions. */
   selected_repository_ids: SetSelectedRepositoriesEnabledGithubActionsOrganizationRequestSelectedRepositoryIdsList;
 }
+const SetSelectedRepositoriesEnabledGithubActionsOrganizationRequest = /*@__PURE__*/ __L.at(
+  __c45,
+  2,
+) as any as S.Schema<SetSelectedRepositoriesEnabledGithubActionsOrganizationRequest>;
+
 export interface SetSelectedRepositoriesEnabledGithubActionsOrganizationResponse {}
+const SetSelectedRepositoriesEnabledGithubActionsOrganizationResponse =
+  DisableSelectedRepositorySelfHostedRunnersOrganizationResponse as any as S.Schema<SetSelectedRepositoriesEnabledGithubActionsOrganizationResponse>;
+
 /** IDs of repositories that can use repository-level self-hosted runners */
 export type SetSelectedRepositoriesSelfHostedRunnersOrganizationRequestSelectedRepositoryIdsList =
   Array<number>;
+const SetSelectedRepositoriesSelfHostedRunnersOrganizationRequestSelectedRepositoryIdsList =
+  ActionsPolicyEnterpriseConditionsCase2OrganizationIdOrganizationIdsList as any as S.Schema<SetSelectedRepositoriesSelfHostedRunnersOrganizationRequestSelectedRepositoryIdsList>;
+
 export interface SetSelectedRepositoriesSelfHostedRunnersOrganizationRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
   /** IDs of repositories that can use repository-level self-hosted runners */
   selected_repository_ids: SetSelectedRepositoriesSelfHostedRunnersOrganizationRequestSelectedRepositoryIdsList;
 }
+const SetSelectedRepositoriesSelfHostedRunnersOrganizationRequest = /*@__PURE__*/ __L.at(
+  __c45,
+  3,
+) as any as S.Schema<SetSelectedRepositoriesSelfHostedRunnersOrganizationRequest>;
+
 export interface SetSelectedRepositoriesSelfHostedRunnersOrganizationResponse {}
+const SetSelectedRepositoriesSelfHostedRunnersOrganizationResponse =
+  DisableSelectedRepositoryGithubActionsOrganizationResponse as any as S.Schema<SetSelectedRepositoriesSelfHostedRunnersOrganizationResponse>;
+
 /** List of runner IDs to add to the runner group. */
 export type SetSelfHostedRunnersInGroupForOrgRequestRunnersList = Array<number>;
+const SetSelfHostedRunnersInGroupForOrgRequestRunnersList =
+  ActionsPolicyOrgConditionsCase1RepositoryIdRepositoryIdsList as any as S.Schema<SetSelfHostedRunnersInGroupForOrgRequestRunnersList>;
+
 export interface SetSelfHostedRunnersInGroupForOrgRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -4029,12 +6255,22 @@ export interface SetSelfHostedRunnersInGroupForOrgRequest {
   /** List of runner IDs to add to the runner group. */
   runners: SetSelfHostedRunnersInGroupForOrgRequestRunnersList;
 }
+const SetSelfHostedRunnersInGroupForOrgRequest = /*@__PURE__*/ __L.at(
+  __c45,
+  4,
+) as any as S.Schema<SetSelfHostedRunnersInGroupForOrgRequest>;
+
 export interface SetSelfHostedRunnersInGroupForOrgResponse {}
+const SetSelfHostedRunnersInGroupForOrgResponse =
+  AddRepoAccessToSelfHostedRunnerGroupInOrgResponse as any as S.Schema<SetSelfHostedRunnersInGroupForOrgResponse>;
+
 /** The policy that controls whether self-hosted runners can be used in the organization */
 export type SetSelfHostedRunnersPermissionsOrganizationRequestEnabledRepositories =
   | "all"
   | "selected"
   | "none";
+const SetSelfHostedRunnersPermissionsOrganizationRequestEnabledRepositories = S.String;
+
 export interface SetSelfHostedRunnersPermissionsOrganizationRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -4043,9 +6279,19 @@ export interface SetSelfHostedRunnersPermissionsOrganizationRequest {
     | SetSelfHostedRunnersPermissionsOrganizationRequestEnabledRepositories
     | (string & {});
 }
+const SetSelfHostedRunnersPermissionsOrganizationRequest = /*@__PURE__*/ __L.at(
+  __c45,
+  5,
+) as any as S.Schema<SetSelfHostedRunnersPermissionsOrganizationRequest>;
+
 export interface SetSelfHostedRunnersPermissionsOrganizationResponse {}
+const SetSelfHostedRunnersPermissionsOrganizationResponse =
+  AddRepoAccessToSelfHostedRunnerGroupInOrgResponse as any as S.Schema<SetSelfHostedRunnersPermissionsOrganizationResponse>;
+
 /** Defines the level of access that workflows outside of the repository have to actions and reusable workflows within the repository. `none` means the access is only possible from workflows in this repository. `user` level access allows sharing across user owned private repositories only. `organization` level access allows sharing across the organization. */
 export type SetWorkflowAccessToRepositoryRequestAccessLevel = "none" | "user" | "organization";
+const SetWorkflowAccessToRepositoryRequestAccessLevel = S.String;
+
 export interface SetWorkflowAccessToRepositoryRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -4054,7 +6300,15 @@ export interface SetWorkflowAccessToRepositoryRequest {
   /** Defines the level of access that workflows outside of the repository have to actions and reusable workflows within the repository. `none` means the access is only possible from workflows in this repository. `user` level access allows sharing across user owned private repositories only. `organization` level access allows sharing across the organization. */
   access_level: SetWorkflowAccessToRepositoryRequestAccessLevel | (string & {});
 }
+const SetWorkflowAccessToRepositoryRequest = /*@__PURE__*/ __L.at(
+  __c45,
+  6,
+) as any as S.Schema<SetWorkflowAccessToRepositoryRequest>;
+
 export interface SetWorkflowAccessToRepositoryResponse {}
+const SetWorkflowAccessToRepositoryResponse =
+  AddRepoAccessToSelfHostedRunnerGroupInOrgResponse as any as S.Schema<SetWorkflowAccessToRepositoryResponse>;
+
 export interface UpdateEnvironmentVariableRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -4067,9 +6321,19 @@ export interface UpdateEnvironmentVariableRequest {
   /** The value of the variable. */
   value?: string;
 }
+const UpdateEnvironmentVariableRequest = /*@__PURE__*/ __L.at(
+  __c45,
+  7,
+) as any as S.Schema<UpdateEnvironmentVariableRequest>;
+
 export interface UpdateEnvironmentVariableResponse {}
+const UpdateEnvironmentVariableResponse =
+  AddRepoAccessToSelfHostedRunnerGroupInOrgResponse as any as S.Schema<UpdateEnvironmentVariableResponse>;
+
 /** The source type of the runner image to use. Must match the source of the image specified by `image_id`. Can be one of `github`, `partner`, or `custom`. */
 export type UpdateHostedRunnerForOrgRequestImageSource = "github" | "partner" | "custom";
+const UpdateHostedRunnerForOrgRequestImageSource = S.String;
+
 export interface UpdateHostedRunnerForOrgRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -4094,8 +6358,16 @@ export interface UpdateHostedRunnerForOrgRequest {
   /** Whether to enable image generation for this runner pool. When enabled, the runner pool is used to build and publish custom runner images. */
   image_gen?: boolean;
 }
+const UpdateHostedRunnerForOrgRequest = /*@__PURE__*/ __L.at(
+  __c46,
+  0,
+) as any as S.Schema<UpdateHostedRunnerForOrgRequest>;
+
 /** An array of rules within the policy. */
 export type UpdateOrgActionsPolicyRequestRulesList = Array<ActionsRule>;
+const UpdateOrgActionsPolicyRequestRulesList =
+  CreateOrgActionsPolicyRequestRulesList as any as S.Schema<UpdateOrgActionsPolicyRequestRulesList>;
+
 export interface UpdateOrgActionsPolicyRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -4108,10 +6380,20 @@ export interface UpdateOrgActionsPolicyRequest {
   /** An array of rules within the policy. */
   rules?: UpdateOrgActionsPolicyRequestRulesList;
 }
+const UpdateOrgActionsPolicyRequest = /*@__PURE__*/ __L.at(
+  __c46,
+  1,
+) as any as S.Schema<UpdateOrgActionsPolicyRequest>;
+
 /** The type of repositories in the organization that can access the variable. `selected` means only the repositories specified by `selected_repository_ids` can access the variable. */
 export type UpdateOrgVariableRequestVisibility = "all" | "private" | "selected";
+const UpdateOrgVariableRequestVisibility = S.String;
+
 /** An array of repository ids that can access the organization variable. You can only provide a list of repository ids when the `visibility` is set to `selected`. */
 export type UpdateOrgVariableRequestSelectedRepositoryIdsList = Array<number>;
+const UpdateOrgVariableRequestSelectedRepositoryIdsList =
+  ActionsPolicyOrgConditionsCase1RepositoryIdRepositoryIdsList as any as S.Schema<UpdateOrgVariableRequestSelectedRepositoryIdsList>;
+
 export interface UpdateOrgVariableRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -4124,9 +6406,20 @@ export interface UpdateOrgVariableRequest {
   /** An array of repository ids that can access the organization variable. You can only provide a list of repository ids when the `visibility` is set to `selected`. */
   selected_repository_ids?: UpdateOrgVariableRequestSelectedRepositoryIdsList;
 }
+const UpdateOrgVariableRequest = /*@__PURE__*/ __L.at(
+  __c46,
+  2,
+) as any as S.Schema<UpdateOrgVariableRequest>;
+
 export interface UpdateOrgVariableResponse {}
+const UpdateOrgVariableResponse =
+  CancelWorkflowRunResponse as any as S.Schema<UpdateOrgVariableResponse>;
+
 /** An array of rules within the policy. */
 export type UpdateRepoActionsPolicyRequestRulesList = Array<ActionsRule>;
+const UpdateRepoActionsPolicyRequestRulesList =
+  CreateOrgActionsPolicyRequestRulesList as any as S.Schema<UpdateRepoActionsPolicyRequestRulesList>;
+
 export interface UpdateRepoActionsPolicyRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -4141,6 +6434,11 @@ export interface UpdateRepoActionsPolicyRequest {
   /** An array of rules within the policy. */
   rules?: UpdateRepoActionsPolicyRequestRulesList;
 }
+const UpdateRepoActionsPolicyRequest = /*@__PURE__*/ __L.at(
+  __c46,
+  3,
+) as any as S.Schema<UpdateRepoActionsPolicyRequest>;
+
 export interface UpdateRepoVariableRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -4151,11 +6449,24 @@ export interface UpdateRepoVariableRequest {
   /** The value of the variable. */
   value?: string;
 }
+const UpdateRepoVariableRequest = /*@__PURE__*/ __L.at(
+  __c46,
+  4,
+) as any as S.Schema<UpdateRepoVariableRequest>;
+
 export interface UpdateRepoVariableResponse {}
+const UpdateRepoVariableResponse =
+  CancelWorkflowRunResponse as any as S.Schema<UpdateRepoVariableResponse>;
+
 /** Visibility of a runner group. You can select all repositories, select individual repositories, or all private repositories. */
 export type UpdateSelfHostedRunnerGroupForOrgRequestVisibility = "selected" | "all" | "private";
+const UpdateSelfHostedRunnerGroupForOrgRequestVisibility = S.String;
+
 /** List of workflows the runner group should be allowed to run. This setting will be ignored unless `restricted_to_workflows` is set to `true`. */
 export type UpdateSelfHostedRunnerGroupForOrgRequestSelectedWorkflowsList = Array<string>;
+const UpdateSelfHostedRunnerGroupForOrgRequestSelectedWorkflowsList =
+  AddCustomLabelsToSelfHostedRunnerForOrgRequestLabelsList as any as S.Schema<UpdateSelfHostedRunnerGroupForOrgRequestSelectedWorkflowsList>;
+
 export interface UpdateSelfHostedRunnerGroupForOrgRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -4174,6 +6485,11 @@ export interface UpdateSelfHostedRunnerGroupForOrgRequest {
   /** The identifier of a hosted compute network configuration. */
   network_configuration_id?: string | null;
 }
+const UpdateSelfHostedRunnerGroupForOrgRequest = /*@__PURE__*/ __L.at(
+  __c46,
+  5,
+) as any as S.Schema<UpdateSelfHostedRunnerGroupForOrgRequest>;
+
 export type AddCustomLabelsToSelfHostedRunnerForOrgError =
   | NotFound
   | UnprocessableEntity
@@ -4185,8 +6501,8 @@ export const addCustomLabelsToSelfHostedRunnerForOrg: API.OperationMethod<
   AddCustomLabelsToSelfHostedRunnerForOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1) as any as S.Schema<AddCustomLabelsToSelfHostedRunnerForOrgRequest>,
-  output: __S(4) as any as S.Schema<AddCustomLabelsToSelfHostedRunnerForOrgResponse>,
+  input: AddCustomLabelsToSelfHostedRunnerForOrgRequest,
+  output: AddCustomLabelsToSelfHostedRunnerForOrgResponse,
   errors: [NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -4203,8 +6519,8 @@ export const addCustomLabelsToSelfHostedRunnerForRepo: API.OperationMethod<
   AddCustomLabelsToSelfHostedRunnerForRepoError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5) as any as S.Schema<AddCustomLabelsToSelfHostedRunnerForRepoRequest>,
-  output: __S(4) as any as S.Schema<AddCustomLabelsToSelfHostedRunnerForRepoResponse>,
+  input: AddCustomLabelsToSelfHostedRunnerForRepoRequest,
+  output: AddCustomLabelsToSelfHostedRunnerForRepoResponse,
   errors: [NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -4218,8 +6534,8 @@ export const addRepoAccessToSelfHostedRunnerGroupInOrg: API.OperationMethod<
   AddRepoAccessToSelfHostedRunnerGroupInOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6) as any as S.Schema<AddRepoAccessToSelfHostedRunnerGroupInOrgRequest>,
-  output: __S(7) as any as S.Schema<AddRepoAccessToSelfHostedRunnerGroupInOrgResponse>,
+  input: AddRepoAccessToSelfHostedRunnerGroupInOrgRequest,
+  output: AddRepoAccessToSelfHostedRunnerGroupInOrgResponse,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -4233,8 +6549,8 @@ export const addSelectedRepoToOrgSecret: API.OperationMethod<
   AddSelectedRepoToOrgSecretError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8) as any as S.Schema<AddSelectedRepoToOrgSecretRequest>,
-  output: __S(7) as any as S.Schema<AddSelectedRepoToOrgSecretResponse>,
+  input: AddSelectedRepoToOrgSecretRequest,
+  output: AddSelectedRepoToOrgSecretResponse,
   errors: [Conflict],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -4248,8 +6564,8 @@ export const addSelectedRepoToOrgVariable: API.OperationMethod<
   AddSelectedRepoToOrgVariableError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9) as any as S.Schema<AddSelectedRepoToOrgVariableRequest>,
-  output: __S(7) as any as S.Schema<AddSelectedRepoToOrgVariableResponse>,
+  input: AddSelectedRepoToOrgVariableRequest,
+  output: AddSelectedRepoToOrgVariableResponse,
   errors: [Conflict],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -4263,8 +6579,8 @@ export const addSelfHostedRunnerToGroupForOrg: API.OperationMethod<
   AddSelfHostedRunnerToGroupForOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10) as any as S.Schema<AddSelfHostedRunnerToGroupForOrgRequest>,
-  output: __S(7) as any as S.Schema<AddSelfHostedRunnerToGroupForOrgResponse>,
+  input: AddSelfHostedRunnerToGroupForOrgRequest,
+  output: AddSelfHostedRunnerToGroupForOrgResponse,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -4278,8 +6594,8 @@ export const approveWorkflowRun: API.OperationMethod<
   ApproveWorkflowRunError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11) as any as S.Schema<ApproveWorkflowRunRequest>,
-  output: __S(12) as any as S.Schema<ApproveWorkflowRunResponse>,
+  input: ApproveWorkflowRunRequest,
+  output: ApproveWorkflowRunResponse,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -4293,8 +6609,8 @@ export const cancelWorkflowRun: API.OperationMethod<
   CancelWorkflowRunError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13) as any as S.Schema<CancelWorkflowRunRequest>,
-  output: __S(14) as any as S.Schema<CancelWorkflowRunResponse>,
+  input: CancelWorkflowRunRequest,
+  output: CancelWorkflowRunResponse,
   errors: [Conflict],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -4308,8 +6624,8 @@ export const createEnvironmentVariable: API.OperationMethod<
   CreateEnvironmentVariableError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15) as any as S.Schema<CreateEnvironmentVariableRequest>,
-  output: __S(12) as any as S.Schema<CreateEnvironmentVariableResponse>,
+  input: CreateEnvironmentVariableRequest,
+  output: CreateEnvironmentVariableResponse,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -4323,8 +6639,8 @@ export const createHostedRunnerForOrg: API.OperationMethod<
   CreateHostedRunnerForOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17) as any as S.Schema<CreateHostedRunnerForOrgRequest>,
-  output: __S(22) as any as S.Schema<ActionsHostedRunner>,
+  input: CreateHostedRunnerForOrgRequest,
+  output: ActionsHostedRunner,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -4338,8 +6654,8 @@ export const createOrgActionsPolicy: API.OperationMethod<
   CreateOrgActionsPolicyError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25) as any as S.Schema<CreateOrgActionsPolicyRequest>,
-  output: __S(29) as any as S.Schema<ActionsPolicy>,
+  input: CreateOrgActionsPolicyRequest,
+  output: ActionsPolicy,
   errors: [NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -4353,8 +6669,8 @@ export const createOrgVariable: API.OperationMethod<
   CreateOrgVariableError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30) as any as S.Schema<CreateOrgVariableRequest>,
-  output: __S(12) as any as S.Schema<CreateOrgVariableResponse>,
+  input: CreateOrgVariableRequest,
+  output: CreateOrgVariableResponse,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -4368,8 +6684,8 @@ export const createOrUpdateEnvironmentSecret: API.OperationMethod<
   CreateOrUpdateEnvironmentSecretError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31) as any as S.Schema<CreateOrUpdateEnvironmentSecretRequest>,
-  output: __S(12) as any as S.Schema<CreateOrUpdateEnvironmentSecretResponse>,
+  input: CreateOrUpdateEnvironmentSecretRequest,
+  output: CreateOrUpdateEnvironmentSecretResponse,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -4383,8 +6699,8 @@ export const createOrUpdateOrgSecret: API.OperationMethod<
   CreateOrUpdateOrgSecretError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32) as any as S.Schema<CreateOrUpdateOrgSecretRequest>,
-  output: __S(12) as any as S.Schema<CreateOrUpdateOrgSecretResponse>,
+  input: CreateOrUpdateOrgSecretRequest,
+  output: CreateOrUpdateOrgSecretResponse,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -4398,8 +6714,8 @@ export const createOrUpdateRepoSecret: API.OperationMethod<
   CreateOrUpdateRepoSecretError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33) as any as S.Schema<CreateOrUpdateRepoSecretRequest>,
-  output: __S(12) as any as S.Schema<CreateOrUpdateRepoSecretResponse>,
+  input: CreateOrUpdateRepoSecretRequest,
+  output: CreateOrUpdateRepoSecretResponse,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -4413,8 +6729,8 @@ export const createRegistrationTokenForOrg: API.OperationMethod<
   CreateRegistrationTokenForOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34) as any as S.Schema<CreateRegistrationTokenForOrgRequest>,
-  output: __S(41) as any as S.Schema<AuthenticationToken>,
+  input: CreateRegistrationTokenForOrgRequest,
+  output: AuthenticationToken,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -4428,8 +6744,8 @@ export const createRegistrationTokenForRepo: API.OperationMethod<
   CreateRegistrationTokenForRepoError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42) as any as S.Schema<CreateRegistrationTokenForRepoRequest>,
-  output: __S(41) as any as S.Schema<AuthenticationToken>,
+  input: CreateRegistrationTokenForRepoRequest,
+  output: AuthenticationToken,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -4443,8 +6759,8 @@ export const createRemoveTokenForOrg: API.OperationMethod<
   CreateRemoveTokenForOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43) as any as S.Schema<CreateRemoveTokenForOrgRequest>,
-  output: __S(41) as any as S.Schema<AuthenticationToken>,
+  input: CreateRemoveTokenForOrgRequest,
+  output: AuthenticationToken,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -4458,8 +6774,8 @@ export const createRemoveTokenForRepo: API.OperationMethod<
   CreateRemoveTokenForRepoError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44) as any as S.Schema<CreateRemoveTokenForRepoRequest>,
-  output: __S(41) as any as S.Schema<AuthenticationToken>,
+  input: CreateRemoveTokenForRepoRequest,
+  output: AuthenticationToken,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -4473,8 +6789,8 @@ export const createRepoActionsPolicy: API.OperationMethod<
   CreateRepoActionsPolicyError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45) as any as S.Schema<CreateRepoActionsPolicyRequest>,
-  output: __S(29) as any as S.Schema<ActionsPolicy>,
+  input: CreateRepoActionsPolicyRequest,
+  output: ActionsPolicy,
   errors: [NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -4488,8 +6804,8 @@ export const createRepoVariable: API.OperationMethod<
   CreateRepoVariableError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(46) as any as S.Schema<CreateRepoVariableRequest>,
-  output: __S(12) as any as S.Schema<CreateRepoVariableResponse>,
+  input: CreateRepoVariableRequest,
+  output: CreateRepoVariableResponse,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -4503,8 +6819,8 @@ export const createSelfHostedRunnerGroupForOrg: API.OperationMethod<
   CreateSelfHostedRunnerGroupForOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47) as any as S.Schema<CreateSelfHostedRunnerGroupForOrgRequest>,
-  output: __S(48) as any as S.Schema<RunnerGroupsOrg>,
+  input: CreateSelfHostedRunnerGroupForOrgRequest,
+  output: RunnerGroupsOrg,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -4518,8 +6834,8 @@ export const createWorkflowDispatch: API.OperationMethod<
   CreateWorkflowDispatchError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(50) as any as S.Schema<CreateWorkflowDispatchRequest>,
-  output: __S(51) as any as S.Schema<WorkflowDispatchResponse>,
+  input: CreateWorkflowDispatchRequest,
+  output: WorkflowDispatchResponse,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -4533,8 +6849,8 @@ export const deleteActionsCacheById: API.OperationMethod<
   DeleteActionsCacheByIdError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(52) as any as S.Schema<DeleteActionsCacheByIdRequest>,
-  output: __S(14) as any as S.Schema<DeleteActionsCacheByIdResponse>,
+  input: DeleteActionsCacheByIdRequest,
+  output: DeleteActionsCacheByIdResponse,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -4548,8 +6864,8 @@ export const deleteActionsCacheByKey: API.OperationMethod<
   DeleteActionsCacheByKeyError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(53) as any as S.Schema<DeleteActionsCacheByKeyRequest>,
-  output: __S(56) as any as S.Schema<ActionsCacheList>,
+  input: DeleteActionsCacheByKeyRequest,
+  output: ActionsCacheList,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -4563,8 +6879,8 @@ export const deleteArtifact: API.OperationMethod<
   DeleteArtifactError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57) as any as S.Schema<DeleteArtifactRequest>,
-  output: __S(14) as any as S.Schema<DeleteArtifactResponse>,
+  input: DeleteArtifactRequest,
+  output: DeleteArtifactResponse,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -4578,8 +6894,8 @@ export const deleteCustomImageFromOrg: API.OperationMethod<
   DeleteCustomImageFromOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(58) as any as S.Schema<DeleteCustomImageFromOrgRequest>,
-  output: __S(7) as any as S.Schema<DeleteCustomImageFromOrgResponse>,
+  input: DeleteCustomImageFromOrgRequest,
+  output: DeleteCustomImageFromOrgResponse,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -4593,8 +6909,8 @@ export const deleteCustomImageVersionFromOrg: API.OperationMethod<
   DeleteCustomImageVersionFromOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(59) as any as S.Schema<DeleteCustomImageVersionFromOrgRequest>,
-  output: __S(7) as any as S.Schema<DeleteCustomImageVersionFromOrgResponse>,
+  input: DeleteCustomImageVersionFromOrgRequest,
+  output: DeleteCustomImageVersionFromOrgResponse,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -4608,8 +6924,8 @@ export const deleteEnvironmentSecret: API.OperationMethod<
   DeleteEnvironmentSecretError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60) as any as S.Schema<DeleteEnvironmentSecretRequest>,
-  output: __S(61) as any as S.Schema<DeleteEnvironmentSecretResponse>,
+  input: DeleteEnvironmentSecretRequest,
+  output: DeleteEnvironmentSecretResponse,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -4623,8 +6939,8 @@ export const deleteEnvironmentVariable: API.OperationMethod<
   DeleteEnvironmentVariableError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(62) as any as S.Schema<DeleteEnvironmentVariableRequest>,
-  output: __S(7) as any as S.Schema<DeleteEnvironmentVariableResponse>,
+  input: DeleteEnvironmentVariableRequest,
+  output: DeleteEnvironmentVariableResponse,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -4638,8 +6954,8 @@ export const deleteHostedRunnerForOrg: API.OperationMethod<
   DeleteHostedRunnerForOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(63) as any as S.Schema<DeleteHostedRunnerForOrgRequest>,
-  output: __S(7) as any as S.Schema<DeleteHostedRunnerForOrgResponse>,
+  input: DeleteHostedRunnerForOrgRequest,
+  output: DeleteHostedRunnerForOrgResponse,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -4653,8 +6969,8 @@ export const deleteOrgActionsPolicy: API.OperationMethod<
   DeleteOrgActionsPolicyError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(64) as any as S.Schema<DeleteOrgActionsPolicyRequest>,
-  output: __S(14) as any as S.Schema<DeleteOrgActionsPolicyResponse>,
+  input: DeleteOrgActionsPolicyRequest,
+  output: DeleteOrgActionsPolicyResponse,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -4668,8 +6984,8 @@ export const deleteOrgSecret: API.OperationMethod<
   DeleteOrgSecretError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65) as any as S.Schema<DeleteOrgSecretRequest>,
-  output: __S(14) as any as S.Schema<DeleteOrgSecretResponse>,
+  input: DeleteOrgSecretRequest,
+  output: DeleteOrgSecretResponse,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -4683,8 +6999,8 @@ export const deleteOrgVariable: API.OperationMethod<
   DeleteOrgVariableError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(66) as any as S.Schema<DeleteOrgVariableRequest>,
-  output: __S(14) as any as S.Schema<DeleteOrgVariableResponse>,
+  input: DeleteOrgVariableRequest,
+  output: DeleteOrgVariableResponse,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -4698,8 +7014,8 @@ export const deleteRepoActionsPolicy: API.OperationMethod<
   DeleteRepoActionsPolicyError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(67) as any as S.Schema<DeleteRepoActionsPolicyRequest>,
-  output: __S(61) as any as S.Schema<DeleteRepoActionsPolicyResponse>,
+  input: DeleteRepoActionsPolicyRequest,
+  output: DeleteRepoActionsPolicyResponse,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -4713,8 +7029,8 @@ export const deleteRepoSecret: API.OperationMethod<
   DeleteRepoSecretError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(68) as any as S.Schema<DeleteRepoSecretRequest>,
-  output: __S(14) as any as S.Schema<DeleteRepoSecretResponse>,
+  input: DeleteRepoSecretRequest,
+  output: DeleteRepoSecretResponse,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -4728,8 +7044,8 @@ export const deleteRepoVariable: API.OperationMethod<
   DeleteRepoVariableError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(69) as any as S.Schema<DeleteRepoVariableRequest>,
-  output: __S(14) as any as S.Schema<DeleteRepoVariableResponse>,
+  input: DeleteRepoVariableRequest,
+  output: DeleteRepoVariableResponse,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -4743,8 +7059,8 @@ export const deleteSelfHostedRunnerFromOrg: API.OperationMethod<
   DeleteSelfHostedRunnerFromOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(70) as any as S.Schema<DeleteSelfHostedRunnerFromOrgRequest>,
-  output: __S(7) as any as S.Schema<DeleteSelfHostedRunnerFromOrgResponse>,
+  input: DeleteSelfHostedRunnerFromOrgRequest,
+  output: DeleteSelfHostedRunnerFromOrgResponse,
   errors: [UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -4758,8 +7074,8 @@ export const deleteSelfHostedRunnerFromRepo: API.OperationMethod<
   DeleteSelfHostedRunnerFromRepoError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(71) as any as S.Schema<DeleteSelfHostedRunnerFromRepoRequest>,
-  output: __S(7) as any as S.Schema<DeleteSelfHostedRunnerFromRepoResponse>,
+  input: DeleteSelfHostedRunnerFromRepoRequest,
+  output: DeleteSelfHostedRunnerFromRepoResponse,
   errors: [UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -4773,8 +7089,8 @@ export const deleteSelfHostedRunnerGroupFromOrg: API.OperationMethod<
   DeleteSelfHostedRunnerGroupFromOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(72) as any as S.Schema<DeleteSelfHostedRunnerGroupFromOrgRequest>,
-  output: __S(7) as any as S.Schema<DeleteSelfHostedRunnerGroupFromOrgResponse>,
+  input: DeleteSelfHostedRunnerGroupFromOrgRequest,
+  output: DeleteSelfHostedRunnerGroupFromOrgResponse,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -4788,8 +7104,8 @@ export const deleteWorkflowRun: API.OperationMethod<
   DeleteWorkflowRunError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(73) as any as S.Schema<DeleteWorkflowRunRequest>,
-  output: __S(14) as any as S.Schema<DeleteWorkflowRunResponse>,
+  input: DeleteWorkflowRunRequest,
+  output: DeleteWorkflowRunResponse,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -4803,8 +7119,8 @@ export const deleteWorkflowRunLogs: API.OperationMethod<
   DeleteWorkflowRunLogsError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(74) as any as S.Schema<DeleteWorkflowRunLogsRequest>,
-  output: __S(14) as any as S.Schema<DeleteWorkflowRunLogsResponse>,
+  input: DeleteWorkflowRunLogsRequest,
+  output: DeleteWorkflowRunLogsResponse,
   errors: [Forbidden],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -4818,8 +7134,8 @@ export const disableSelectedRepositoryGithubActionsOrganization: API.OperationMe
   DisableSelectedRepositoryGithubActionsOrganizationError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(75) as any as S.Schema<DisableSelectedRepositoryGithubActionsOrganizationRequest>,
-  output: __S(76) as any as S.Schema<DisableSelectedRepositoryGithubActionsOrganizationResponse>,
+  input: DisableSelectedRepositoryGithubActionsOrganizationRequest,
+  output: DisableSelectedRepositoryGithubActionsOrganizationResponse,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -4838,10 +7154,8 @@ export const disableSelectedRepositorySelfHostedRunnersOrganization: API.Operati
   DisableSelectedRepositorySelfHostedRunnersOrganizationError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(77) as any as S.Schema<DisableSelectedRepositorySelfHostedRunnersOrganizationRequest>,
-  output: __S(
-    78,
-  ) as any as S.Schema<DisableSelectedRepositorySelfHostedRunnersOrganizationResponse>,
+  input: DisableSelectedRepositorySelfHostedRunnersOrganizationRequest,
+  output: DisableSelectedRepositorySelfHostedRunnersOrganizationResponse,
   errors: [Forbidden, NotFound, Conflict, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -4855,8 +7169,8 @@ export const disableWorkflow: API.OperationMethod<
   DisableWorkflowError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(79) as any as S.Schema<DisableWorkflowRequest>,
-  output: __S(14) as any as S.Schema<DisableWorkflowResponse>,
+  input: DisableWorkflowRequest,
+  output: DisableWorkflowResponse,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -4870,8 +7184,8 @@ export const downloadArtifact: API.OperationMethod<
   DownloadArtifactError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(80) as any as S.Schema<DownloadArtifactRequest>,
-  output: __S(14) as any as S.Schema<DownloadArtifactResponse>,
+  input: DownloadArtifactRequest,
+  output: DownloadArtifactResponse,
   errors: [Gone],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -4885,8 +7199,8 @@ export const downloadJobLogsForWorkflowRun: API.OperationMethod<
   DownloadJobLogsForWorkflowRunError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(81) as any as S.Schema<DownloadJobLogsForWorkflowRunRequest>,
-  output: __S(7) as any as S.Schema<DownloadJobLogsForWorkflowRunResponse>,
+  input: DownloadJobLogsForWorkflowRunRequest,
+  output: DownloadJobLogsForWorkflowRunResponse,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -4900,8 +7214,8 @@ export const downloadStepLogsForWorkflowRunJob: API.OperationMethod<
   DownloadStepLogsForWorkflowRunJobError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(82) as any as S.Schema<DownloadStepLogsForWorkflowRunJobRequest>,
-  output: __S(7) as any as S.Schema<DownloadStepLogsForWorkflowRunJobResponse>,
+  input: DownloadStepLogsForWorkflowRunJobRequest,
+  output: DownloadStepLogsForWorkflowRunJobResponse,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -4915,8 +7229,8 @@ export const downloadWorkflowRunAttemptLogs: API.OperationMethod<
   DownloadWorkflowRunAttemptLogsError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(83) as any as S.Schema<DownloadWorkflowRunAttemptLogsRequest>,
-  output: __S(7) as any as S.Schema<DownloadWorkflowRunAttemptLogsResponse>,
+  input: DownloadWorkflowRunAttemptLogsRequest,
+  output: DownloadWorkflowRunAttemptLogsResponse,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -4930,8 +7244,8 @@ export const downloadWorkflowRunLogs: API.OperationMethod<
   DownloadWorkflowRunLogsError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(84) as any as S.Schema<DownloadWorkflowRunLogsRequest>,
-  output: __S(61) as any as S.Schema<DownloadWorkflowRunLogsResponse>,
+  input: DownloadWorkflowRunLogsRequest,
+  output: DownloadWorkflowRunLogsResponse,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -4945,8 +7259,8 @@ export const enableSelectedRepositoryGithubActionsOrganization: API.OperationMet
   EnableSelectedRepositoryGithubActionsOrganizationError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(85) as any as S.Schema<EnableSelectedRepositoryGithubActionsOrganizationRequest>,
-  output: __S(76) as any as S.Schema<EnableSelectedRepositoryGithubActionsOrganizationResponse>,
+  input: EnableSelectedRepositoryGithubActionsOrganizationRequest,
+  output: EnableSelectedRepositoryGithubActionsOrganizationResponse,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -4965,8 +7279,8 @@ export const enableSelectedRepositorySelfHostedRunnersOrganization: API.Operatio
   EnableSelectedRepositorySelfHostedRunnersOrganizationError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(86) as any as S.Schema<EnableSelectedRepositorySelfHostedRunnersOrganizationRequest>,
-  output: __S(78) as any as S.Schema<EnableSelectedRepositorySelfHostedRunnersOrganizationResponse>,
+  input: EnableSelectedRepositorySelfHostedRunnersOrganizationRequest,
+  output: EnableSelectedRepositorySelfHostedRunnersOrganizationResponse,
   errors: [Forbidden, NotFound, Conflict, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -4980,8 +7294,8 @@ export const enableWorkflow: API.OperationMethod<
   EnableWorkflowError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(87) as any as S.Schema<EnableWorkflowRequest>,
-  output: __S(14) as any as S.Schema<EnableWorkflowResponse>,
+  input: EnableWorkflowRequest,
+  output: EnableWorkflowResponse,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -4995,8 +7309,8 @@ export const forceCancelWorkflowRun: API.OperationMethod<
   ForceCancelWorkflowRunError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(88) as any as S.Schema<ForceCancelWorkflowRunRequest>,
-  output: __S(14) as any as S.Schema<ForceCancelWorkflowRunResponse>,
+  input: ForceCancelWorkflowRunRequest,
+  output: ForceCancelWorkflowRunResponse,
   errors: [Conflict],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -5014,8 +7328,8 @@ export const generateRunnerJitconfigForOrg: API.OperationMethod<
   GenerateRunnerJitconfigForOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(89) as any as S.Schema<GenerateRunnerJitconfigForOrgRequest>,
-  output: __S(91) as any as S.Schema<GenerateRunnerJitconfigForOrgResponse>,
+  input: GenerateRunnerJitconfigForOrgRequest,
+  output: GenerateRunnerJitconfigForOrgResponse,
   errors: [NotFound, Conflict, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -5033,8 +7347,8 @@ export const generateRunnerJitconfigForRepo: API.OperationMethod<
   GenerateRunnerJitconfigForRepoError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(92) as any as S.Schema<GenerateRunnerJitconfigForRepoRequest>,
-  output: __S(91) as any as S.Schema<GenerateRunnerJitconfigForRepoResponse>,
+  input: GenerateRunnerJitconfigForRepoRequest,
+  output: GenerateRunnerJitconfigForRepoResponse,
   errors: [NotFound, Conflict, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -5048,8 +7362,8 @@ export const getActionsCacheList: API.OperationMethod<
   GetActionsCacheListError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(93) as any as S.Schema<GetActionsCacheListRequest>,
-  output: __S(56) as any as S.Schema<ActionsCacheList>,
+  input: GetActionsCacheListRequest,
+  output: ActionsCacheList,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -5063,8 +7377,8 @@ export const getActionsCacheRetentionLimitForEnterprise: API.OperationMethod<
   GetActionsCacheRetentionLimitForEnterpriseError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(94) as any as S.Schema<GetActionsCacheRetentionLimitForEnterpriseRequest>,
-  output: __S(95) as any as S.Schema<ActionsCacheRetentionLimitForEnterprise>,
+  input: GetActionsCacheRetentionLimitForEnterpriseRequest,
+  output: ActionsCacheRetentionLimitForEnterprise,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -5081,8 +7395,8 @@ export const getActionsCacheRetentionLimitForOrganization: API.OperationMethod<
   GetActionsCacheRetentionLimitForOrganizationError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(96) as any as S.Schema<GetActionsCacheRetentionLimitForOrganizationRequest>,
-  output: __S(95) as any as S.Schema<ActionsCacheRetentionLimitForOrganization>,
+  input: GetActionsCacheRetentionLimitForOrganizationRequest,
+  output: ActionsCacheRetentionLimitForOrganization,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -5096,8 +7410,8 @@ export const getActionsCacheRetentionLimitForRepository: API.OperationMethod<
   GetActionsCacheRetentionLimitForRepositoryError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(97) as any as S.Schema<GetActionsCacheRetentionLimitForRepositoryRequest>,
-  output: __S(95) as any as S.Schema<ActionsCacheRetentionLimitForRepository>,
+  input: GetActionsCacheRetentionLimitForRepositoryRequest,
+  output: ActionsCacheRetentionLimitForRepository,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -5111,8 +7425,8 @@ export const getActionsCacheStorageLimitForEnterprise: API.OperationMethod<
   GetActionsCacheStorageLimitForEnterpriseError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(98) as any as S.Schema<GetActionsCacheStorageLimitForEnterpriseRequest>,
-  output: __S(99) as any as S.Schema<ActionsCacheStorageLimitForEnterprise>,
+  input: GetActionsCacheStorageLimitForEnterpriseRequest,
+  output: ActionsCacheStorageLimitForEnterprise,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -5126,8 +7440,8 @@ export const getActionsCacheStorageLimitForOrganization: API.OperationMethod<
   GetActionsCacheStorageLimitForOrganizationError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(100) as any as S.Schema<GetActionsCacheStorageLimitForOrganizationRequest>,
-  output: __S(99) as any as S.Schema<ActionsCacheStorageLimitForOrganization>,
+  input: GetActionsCacheStorageLimitForOrganizationRequest,
+  output: ActionsCacheStorageLimitForOrganization,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -5141,8 +7455,8 @@ export const getActionsCacheStorageLimitForRepository: API.OperationMethod<
   GetActionsCacheStorageLimitForRepositoryError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(101) as any as S.Schema<GetActionsCacheStorageLimitForRepositoryRequest>,
-  output: __S(99) as any as S.Schema<ActionsCacheStorageLimitForRepository>,
+  input: GetActionsCacheStorageLimitForRepositoryRequest,
+  output: ActionsCacheStorageLimitForRepository,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -5156,8 +7470,8 @@ export const getActionsCacheUsage: API.OperationMethod<
   GetActionsCacheUsageError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(102) as any as S.Schema<GetActionsCacheUsageRequest>,
-  output: __S(103) as any as S.Schema<ActionsCacheUsageByRepository>,
+  input: GetActionsCacheUsageRequest,
+  output: ActionsCacheUsageByRepository,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -5171,8 +7485,8 @@ export const getActionsCacheUsageByRepoForOrg: API.OperationMethod<
   GetActionsCacheUsageByRepoForOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(104) as any as S.Schema<GetActionsCacheUsageByRepoForOrgRequest>,
-  output: __S(106) as any as S.Schema<GetActionsCacheUsageByRepoForOrgResponse>,
+  input: GetActionsCacheUsageByRepoForOrgRequest,
+  output: GetActionsCacheUsageByRepoForOrgResponse,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -5186,8 +7500,8 @@ export const getActionsCacheUsageForOrg: API.OperationMethod<
   GetActionsCacheUsageForOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(107) as any as S.Schema<GetActionsCacheUsageForOrgRequest>,
-  output: __S(108) as any as S.Schema<ActionsCacheUsageOrgEnterprise>,
+  input: GetActionsCacheUsageForOrgRequest,
+  output: ActionsCacheUsageOrgEnterprise,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -5201,8 +7515,8 @@ export const getAllowedActionsOrganization: API.OperationMethod<
   GetAllowedActionsOrganizationError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(109) as any as S.Schema<GetAllowedActionsOrganizationRequest>,
-  output: __S(110) as any as S.Schema<SelectedActions>,
+  input: GetAllowedActionsOrganizationRequest,
+  output: SelectedActions,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -5216,8 +7530,8 @@ export const getAllowedActionsRepository: API.OperationMethod<
   GetAllowedActionsRepositoryError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(111) as any as S.Schema<GetAllowedActionsRepositoryRequest>,
-  output: __S(110) as any as S.Schema<SelectedActions>,
+  input: GetAllowedActionsRepositoryRequest,
+  output: SelectedActions,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -5231,8 +7545,8 @@ export const getArtifact: API.OperationMethod<
   GetArtifactError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(112) as any as S.Schema<GetArtifactRequest>,
-  output: __S(114) as any as S.Schema<Artifact>,
+  input: GetArtifactRequest,
+  output: Artifact,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -5249,8 +7563,8 @@ export const getArtifactAndLogRetentionSettingsOrganization: API.OperationMethod
   GetArtifactAndLogRetentionSettingsOrganizationError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(115) as any as S.Schema<GetArtifactAndLogRetentionSettingsOrganizationRequest>,
-  output: __S(116) as any as S.Schema<ActionsArtifactAndLogRetentionResponse>,
+  input: GetArtifactAndLogRetentionSettingsOrganizationRequest,
+  output: ActionsArtifactAndLogRetentionResponse,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -5264,8 +7578,8 @@ export const getArtifactAndLogRetentionSettingsRepository: API.OperationMethod<
   GetArtifactAndLogRetentionSettingsRepositoryError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(117) as any as S.Schema<GetArtifactAndLogRetentionSettingsRepositoryRequest>,
-  output: __S(116) as any as S.Schema<ActionsArtifactAndLogRetentionResponse>,
+  input: GetArtifactAndLogRetentionSettingsRepositoryRequest,
+  output: ActionsArtifactAndLogRetentionResponse,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -5279,8 +7593,8 @@ export const getConcurrencyGroupForRepository: API.OperationMethod<
   GetConcurrencyGroupForRepositoryError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(118) as any as S.Schema<GetConcurrencyGroupForRepositoryRequest>,
-  output: __S(121) as any as S.Schema<ConcurrencyGroup>,
+  input: GetConcurrencyGroupForRepositoryRequest,
+  output: ConcurrencyGroup,
   errors: [NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -5294,8 +7608,8 @@ export const getCustomImageForOrg: API.OperationMethod<
   GetCustomImageForOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(122) as any as S.Schema<GetCustomImageForOrgRequest>,
-  output: __S(123) as any as S.Schema<ActionsHostedRunnerCustomImage>,
+  input: GetCustomImageForOrgRequest,
+  output: ActionsHostedRunnerCustomImage,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -5309,8 +7623,8 @@ export const getCustomImageVersionForOrg: API.OperationMethod<
   GetCustomImageVersionForOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(124) as any as S.Schema<GetCustomImageVersionForOrgRequest>,
-  output: __S(125) as any as S.Schema<ActionsHostedRunnerCustomImageVersion>,
+  input: GetCustomImageVersionForOrgRequest,
+  output: ActionsHostedRunnerCustomImageVersion,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -5324,8 +7638,8 @@ export const getCustomOidcSubClaimForRepo: API.OperationMethod<
   GetCustomOidcSubClaimForRepoError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(126) as any as S.Schema<GetCustomOidcSubClaimForRepoRequest>,
-  output: __S(127) as any as S.Schema<OidcCustomSubRepo>,
+  input: GetCustomOidcSubClaimForRepoRequest,
+  output: OidcCustomSubRepo,
   errors: [BadRequest, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -5339,8 +7653,8 @@ export const getEnvironmentPublicKey: API.OperationMethod<
   GetEnvironmentPublicKeyError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(128) as any as S.Schema<GetEnvironmentPublicKeyRequest>,
-  output: __S(129) as any as S.Schema<ActionsPublicKey>,
+  input: GetEnvironmentPublicKeyRequest,
+  output: ActionsPublicKey,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -5354,8 +7668,8 @@ export const getEnvironmentSecret: API.OperationMethod<
   GetEnvironmentSecretError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(130) as any as S.Schema<GetEnvironmentSecretRequest>,
-  output: __S(131) as any as S.Schema<ActionsSecret>,
+  input: GetEnvironmentSecretRequest,
+  output: ActionsSecret,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -5369,8 +7683,8 @@ export const getEnvironmentVariable: API.OperationMethod<
   GetEnvironmentVariableError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(132) as any as S.Schema<GetEnvironmentVariableRequest>,
-  output: __S(133) as any as S.Schema<ActionsVariable>,
+  input: GetEnvironmentVariableRequest,
+  output: ActionsVariable,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -5384,8 +7698,8 @@ export const getForkPrContributorApprovalPermissionsOrganization: API.OperationM
   GetForkPrContributorApprovalPermissionsOrganizationError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(134) as any as S.Schema<GetForkPrContributorApprovalPermissionsOrganizationRequest>,
-  output: __S(135) as any as S.Schema<ActionsForkPrContributorApproval>,
+  input: GetForkPrContributorApprovalPermissionsOrganizationRequest,
+  output: ActionsForkPrContributorApproval,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -5399,8 +7713,8 @@ export const getForkPrContributorApprovalPermissionsRepository: API.OperationMet
   GetForkPrContributorApprovalPermissionsRepositoryError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(136) as any as S.Schema<GetForkPrContributorApprovalPermissionsRepositoryRequest>,
-  output: __S(135) as any as S.Schema<ActionsForkPrContributorApproval>,
+  input: GetForkPrContributorApprovalPermissionsRepositoryRequest,
+  output: ActionsForkPrContributorApproval,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -5414,8 +7728,8 @@ export const getGithubActionsDefaultWorkflowPermissionsOrganization: API.Operati
   GetGithubActionsDefaultWorkflowPermissionsOrganizationError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(137) as any as S.Schema<GetGithubActionsDefaultWorkflowPermissionsOrganizationRequest>,
-  output: __S(138) as any as S.Schema<ActionsGetDefaultWorkflowPermissions>,
+  input: GetGithubActionsDefaultWorkflowPermissionsOrganizationRequest,
+  output: ActionsGetDefaultWorkflowPermissions,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -5429,8 +7743,8 @@ export const getGithubActionsDefaultWorkflowPermissionsRepository: API.Operation
   GetGithubActionsDefaultWorkflowPermissionsRepositoryError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(139) as any as S.Schema<GetGithubActionsDefaultWorkflowPermissionsRepositoryRequest>,
-  output: __S(138) as any as S.Schema<ActionsGetDefaultWorkflowPermissions>,
+  input: GetGithubActionsDefaultWorkflowPermissionsRepositoryRequest,
+  output: ActionsGetDefaultWorkflowPermissions,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -5444,8 +7758,8 @@ export const getGithubActionsPermissionsOrganization: API.OperationMethod<
   GetGithubActionsPermissionsOrganizationError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(140) as any as S.Schema<GetGithubActionsPermissionsOrganizationRequest>,
-  output: __S(141) as any as S.Schema<ActionsOrganizationPermissions>,
+  input: GetGithubActionsPermissionsOrganizationRequest,
+  output: ActionsOrganizationPermissions,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -5459,8 +7773,8 @@ export const getGithubActionsPermissionsRepository: API.OperationMethod<
   GetGithubActionsPermissionsRepositoryError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(142) as any as S.Schema<GetGithubActionsPermissionsRepositoryRequest>,
-  output: __S(143) as any as S.Schema<ActionsRepositoryPermissions>,
+  input: GetGithubActionsPermissionsRepositoryRequest,
+  output: ActionsRepositoryPermissions,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -5474,8 +7788,8 @@ export const getHostedRunnerForOrg: API.OperationMethod<
   GetHostedRunnerForOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(144) as any as S.Schema<GetHostedRunnerForOrgRequest>,
-  output: __S(22) as any as S.Schema<ActionsHostedRunner>,
+  input: GetHostedRunnerForOrgRequest,
+  output: ActionsHostedRunner,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -5489,8 +7803,8 @@ export const getHostedRunnersGithubOwnedImagesForOrg: API.OperationMethod<
   GetHostedRunnersGithubOwnedImagesForOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(145) as any as S.Schema<GetHostedRunnersGithubOwnedImagesForOrgRequest>,
-  output: __S(148) as any as S.Schema<GetHostedRunnersGithubOwnedImagesForOrgResponse>,
+  input: GetHostedRunnersGithubOwnedImagesForOrgRequest,
+  output: GetHostedRunnersGithubOwnedImagesForOrgResponse,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -5504,8 +7818,8 @@ export const getHostedRunnersLimitsForOrg: API.OperationMethod<
   GetHostedRunnersLimitsForOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(149) as any as S.Schema<GetHostedRunnersLimitsForOrgRequest>,
-  output: __S(151) as any as S.Schema<ActionsHostedRunnerLimits>,
+  input: GetHostedRunnersLimitsForOrgRequest,
+  output: ActionsHostedRunnerLimits,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -5519,8 +7833,8 @@ export const getHostedRunnersMachineSpecsForOrg: API.OperationMethod<
   GetHostedRunnersMachineSpecsForOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(152) as any as S.Schema<GetHostedRunnersMachineSpecsForOrgRequest>,
-  output: __S(154) as any as S.Schema<GetHostedRunnersMachineSpecsForOrgResponse>,
+  input: GetHostedRunnersMachineSpecsForOrgRequest,
+  output: GetHostedRunnersMachineSpecsForOrgResponse,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -5534,8 +7848,8 @@ export const getHostedRunnersPartnerImagesForOrg: API.OperationMethod<
   GetHostedRunnersPartnerImagesForOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(155) as any as S.Schema<GetHostedRunnersPartnerImagesForOrgRequest>,
-  output: __S(148) as any as S.Schema<GetHostedRunnersPartnerImagesForOrgResponse>,
+  input: GetHostedRunnersPartnerImagesForOrgRequest,
+  output: GetHostedRunnersPartnerImagesForOrgResponse,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -5549,8 +7863,8 @@ export const getHostedRunnersPlatformsForOrg: API.OperationMethod<
   GetHostedRunnersPlatformsForOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(156) as any as S.Schema<GetHostedRunnersPlatformsForOrgRequest>,
-  output: __S(157) as any as S.Schema<GetHostedRunnersPlatformsForOrgResponse>,
+  input: GetHostedRunnersPlatformsForOrgRequest,
+  output: GetHostedRunnersPlatformsForOrgResponse,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -5564,8 +7878,8 @@ export const getJobForWorkflowRun: API.OperationMethod<
   GetJobForWorkflowRunError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(158) as any as S.Schema<GetJobForWorkflowRunRequest>,
-  output: __S(162) as any as S.Schema<Job>,
+  input: GetJobForWorkflowRunRequest,
+  output: Job,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -5579,8 +7893,8 @@ export const getOrgActionsPolicies: API.OperationMethod<
   GetOrgActionsPoliciesError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(163) as any as S.Schema<GetOrgActionsPoliciesRequest>,
-  output: __S(165) as any as S.Schema<GetOrgActionsPoliciesResponse>,
+  input: GetOrgActionsPoliciesRequest,
+  output: GetOrgActionsPoliciesResponse,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -5594,8 +7908,8 @@ export const getOrgActionsPolicy: API.OperationMethod<
   GetOrgActionsPolicyError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(166) as any as S.Schema<GetOrgActionsPolicyRequest>,
-  output: __S(29) as any as S.Schema<ActionsPolicy>,
+  input: GetOrgActionsPolicyRequest,
+  output: ActionsPolicy,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -5609,8 +7923,8 @@ export const getOrgPublicKey: API.OperationMethod<
   GetOrgPublicKeyError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(167) as any as S.Schema<GetOrgPublicKeyRequest>,
-  output: __S(129) as any as S.Schema<ActionsPublicKey>,
+  input: GetOrgPublicKeyRequest,
+  output: ActionsPublicKey,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -5624,8 +7938,8 @@ export const getOrgSecret: API.OperationMethod<
   GetOrgSecretError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(168) as any as S.Schema<GetOrgSecretRequest>,
-  output: __S(169) as any as S.Schema<OrganizationActionsSecret>,
+  input: GetOrgSecretRequest,
+  output: OrganizationActionsSecret,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -5639,8 +7953,8 @@ export const getOrgVariable: API.OperationMethod<
   GetOrgVariableError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(170) as any as S.Schema<GetOrgVariableRequest>,
-  output: __S(171) as any as S.Schema<OrganizationActionsVariable>,
+  input: GetOrgVariableRequest,
+  output: OrganizationActionsVariable,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -5654,8 +7968,8 @@ export const getPendingDeploymentsForRun: API.OperationMethod<
   GetPendingDeploymentsForRunError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(172) as any as S.Schema<GetPendingDeploymentsForRunRequest>,
-  output: __S(178) as any as S.Schema<GetPendingDeploymentsForRunResponse>,
+  input: GetPendingDeploymentsForRunRequest,
+  output: GetPendingDeploymentsForRunResponse,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -5672,8 +7986,8 @@ export const getPrivateRepoForkPrWorkflowsSettingsOrganization: API.OperationMet
   GetPrivateRepoForkPrWorkflowsSettingsOrganizationError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(179) as any as S.Schema<GetPrivateRepoForkPrWorkflowsSettingsOrganizationRequest>,
-  output: __S(180) as any as S.Schema<ActionsForkPrWorkflowsPrivateRepos>,
+  input: GetPrivateRepoForkPrWorkflowsSettingsOrganizationRequest,
+  output: ActionsForkPrWorkflowsPrivateRepos,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -5690,8 +8004,8 @@ export const getPrivateRepoForkPrWorkflowsSettingsRepository: API.OperationMetho
   GetPrivateRepoForkPrWorkflowsSettingsRepositoryError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(181) as any as S.Schema<GetPrivateRepoForkPrWorkflowsSettingsRepositoryRequest>,
-  output: __S(180) as any as S.Schema<ActionsForkPrWorkflowsPrivateRepos>,
+  input: GetPrivateRepoForkPrWorkflowsSettingsRepositoryRequest,
+  output: ActionsForkPrWorkflowsPrivateRepos,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -5705,8 +8019,8 @@ export const getRepoActionsPolicies: API.OperationMethod<
   GetRepoActionsPoliciesError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(182) as any as S.Schema<GetRepoActionsPoliciesRequest>,
-  output: __S(165) as any as S.Schema<GetRepoActionsPoliciesResponse>,
+  input: GetRepoActionsPoliciesRequest,
+  output: GetRepoActionsPoliciesResponse,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -5720,8 +8034,8 @@ export const getRepoActionsPolicy: API.OperationMethod<
   GetRepoActionsPolicyError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(183) as any as S.Schema<GetRepoActionsPolicyRequest>,
-  output: __S(29) as any as S.Schema<ActionsPolicy>,
+  input: GetRepoActionsPolicyRequest,
+  output: ActionsPolicy,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -5735,8 +8049,8 @@ export const getRepoPublicKey: API.OperationMethod<
   GetRepoPublicKeyError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(184) as any as S.Schema<GetRepoPublicKeyRequest>,
-  output: __S(129) as any as S.Schema<ActionsPublicKey>,
+  input: GetRepoPublicKeyRequest,
+  output: ActionsPublicKey,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -5750,8 +8064,8 @@ export const getRepoSecret: API.OperationMethod<
   GetRepoSecretError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(185) as any as S.Schema<GetRepoSecretRequest>,
-  output: __S(131) as any as S.Schema<ActionsSecret>,
+  input: GetRepoSecretRequest,
+  output: ActionsSecret,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -5765,8 +8079,8 @@ export const getRepoVariable: API.OperationMethod<
   GetRepoVariableError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(186) as any as S.Schema<GetRepoVariableRequest>,
-  output: __S(133) as any as S.Schema<ActionsVariable>,
+  input: GetRepoVariableRequest,
+  output: ActionsVariable,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -5780,8 +8094,8 @@ export const getReviewsForRun: API.OperationMethod<
   GetReviewsForRunError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(187) as any as S.Schema<GetReviewsForRunRequest>,
-  output: __S(192) as any as S.Schema<GetReviewsForRunResponse>,
+  input: GetReviewsForRunRequest,
+  output: GetReviewsForRunResponse,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -5795,8 +8109,8 @@ export const getRunnerVersionDeprecationForOrg: API.OperationMethod<
   GetRunnerVersionDeprecationForOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(193) as any as S.Schema<GetRunnerVersionDeprecationForOrgRequest>,
-  output: __S(194) as any as S.Schema<GetRunnerVersionDeprecationForOrgResponse>,
+  input: GetRunnerVersionDeprecationForOrgRequest,
+  output: GetRunnerVersionDeprecationForOrgResponse,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -5810,8 +8124,8 @@ export const getRunnerVersionDeprecationForRepo: API.OperationMethod<
   GetRunnerVersionDeprecationForRepoError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(195) as any as S.Schema<GetRunnerVersionDeprecationForRepoRequest>,
-  output: __S(194) as any as S.Schema<GetRunnerVersionDeprecationForRepoResponse>,
+  input: GetRunnerVersionDeprecationForRepoRequest,
+  output: GetRunnerVersionDeprecationForRepoResponse,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -5825,8 +8139,8 @@ export const getSelfHostedRunnerForOrg: API.OperationMethod<
   GetSelfHostedRunnerForOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(196) as any as S.Schema<GetSelfHostedRunnerForOrgRequest>,
-  output: __S(90) as any as S.Schema<Runner>,
+  input: GetSelfHostedRunnerForOrgRequest,
+  output: Runner,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -5840,8 +8154,8 @@ export const getSelfHostedRunnerForRepo: API.OperationMethod<
   GetSelfHostedRunnerForRepoError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(197) as any as S.Schema<GetSelfHostedRunnerForRepoRequest>,
-  output: __S(90) as any as S.Schema<Runner>,
+  input: GetSelfHostedRunnerForRepoRequest,
+  output: Runner,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -5855,8 +8169,8 @@ export const getSelfHostedRunnerGroupForOrg: API.OperationMethod<
   GetSelfHostedRunnerGroupForOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(198) as any as S.Schema<GetSelfHostedRunnerGroupForOrgRequest>,
-  output: __S(48) as any as S.Schema<RunnerGroupsOrg>,
+  input: GetSelfHostedRunnerGroupForOrgRequest,
+  output: RunnerGroupsOrg,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -5870,8 +8184,8 @@ export const getSelfHostedRunnersPermissionsOrganization: API.OperationMethod<
   GetSelfHostedRunnersPermissionsOrganizationError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(199) as any as S.Schema<GetSelfHostedRunnersPermissionsOrganizationRequest>,
-  output: __S(200) as any as S.Schema<SelfHostedRunnersSettings>,
+  input: GetSelfHostedRunnersPermissionsOrganizationRequest,
+  output: SelfHostedRunnersSettings,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -5885,8 +8199,8 @@ export const getWorkflow: API.OperationMethod<
   GetWorkflowError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(201) as any as S.Schema<GetWorkflowRequest>,
-  output: __S(202) as any as S.Schema<Workflow>,
+  input: GetWorkflowRequest,
+  output: Workflow,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -5900,8 +8214,8 @@ export const getWorkflowAccessToRepository: API.OperationMethod<
   GetWorkflowAccessToRepositoryError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(203) as any as S.Schema<GetWorkflowAccessToRepositoryRequest>,
-  output: __S(204) as any as S.Schema<ActionsWorkflowAccessToRepository>,
+  input: GetWorkflowAccessToRepositoryRequest,
+  output: ActionsWorkflowAccessToRepository,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -5915,8 +8229,8 @@ export const getWorkflowRun: API.OperationMethod<
   GetWorkflowRunError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(205) as any as S.Schema<GetWorkflowRunRequest>,
-  output: __S(224) as any as S.Schema<WorkflowRun>,
+  input: GetWorkflowRunRequest,
+  output: WorkflowRun,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -5930,8 +8244,8 @@ export const getWorkflowRunAttempt: API.OperationMethod<
   GetWorkflowRunAttemptError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(225) as any as S.Schema<GetWorkflowRunAttemptRequest>,
-  output: __S(224) as any as S.Schema<WorkflowRun>,
+  input: GetWorkflowRunAttemptRequest,
+  output: WorkflowRun,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -5945,8 +8259,8 @@ export const getWorkflowRunUsage: API.OperationMethod<
   GetWorkflowRunUsageError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(226) as any as S.Schema<GetWorkflowRunUsageRequest>,
-  output: __S(231) as any as S.Schema<WorkflowRunUsage>,
+  input: GetWorkflowRunUsageRequest,
+  output: WorkflowRunUsage,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -5960,8 +8274,8 @@ export const getWorkflowUsage: API.OperationMethod<
   GetWorkflowUsageError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(232) as any as S.Schema<GetWorkflowUsageRequest>,
-  output: __S(235) as any as S.Schema<WorkflowUsage>,
+  input: GetWorkflowUsageRequest,
+  output: WorkflowUsage,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -5975,8 +8289,8 @@ export const listArtifactsForRepo: API.OperationMethod<
   ListArtifactsForRepoError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(236) as any as S.Schema<ListArtifactsForRepoRequest>,
-  output: __S(238) as any as S.Schema<ListArtifactsForRepoResponse>,
+  input: ListArtifactsForRepoRequest,
+  output: ListArtifactsForRepoResponse,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -5990,8 +8304,8 @@ export const listConcurrencyGroupsForRepository: API.OperationMethod<
   ListConcurrencyGroupsForRepositoryError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(239) as any as S.Schema<ListConcurrencyGroupsForRepositoryRequest>,
-  output: __S(242) as any as S.Schema<ConcurrencyGroupList>,
+  input: ListConcurrencyGroupsForRepositoryRequest,
+  output: ConcurrencyGroupList,
   errors: [UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -6008,8 +8322,8 @@ export const listConcurrencyGroupsForWorkflowRun: API.OperationMethod<
   ListConcurrencyGroupsForWorkflowRunError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(243) as any as S.Schema<ListConcurrencyGroupsForWorkflowRunRequest>,
-  output: __S(248) as any as S.Schema<ConcurrencyGroupRunList>,
+  input: ListConcurrencyGroupsForWorkflowRunRequest,
+  output: ConcurrencyGroupRunList,
   errors: [NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -6023,8 +8337,8 @@ export const listCustomImagesForOrg: API.OperationMethod<
   ListCustomImagesForOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(249) as any as S.Schema<ListCustomImagesForOrgRequest>,
-  output: __S(251) as any as S.Schema<ListCustomImagesForOrgResponse>,
+  input: ListCustomImagesForOrgRequest,
+  output: ListCustomImagesForOrgResponse,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -6038,8 +8352,8 @@ export const listCustomImageVersionsForOrg: API.OperationMethod<
   ListCustomImageVersionsForOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(252) as any as S.Schema<ListCustomImageVersionsForOrgRequest>,
-  output: __S(254) as any as S.Schema<ListCustomImageVersionsForOrgResponse>,
+  input: ListCustomImageVersionsForOrgRequest,
+  output: ListCustomImageVersionsForOrgResponse,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -6053,8 +8367,8 @@ export const listEnvironmentSecrets: API.OperationMethod<
   ListEnvironmentSecretsError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(255) as any as S.Schema<ListEnvironmentSecretsRequest>,
-  output: __S(257) as any as S.Schema<ListEnvironmentSecretsResponse>,
+  input: ListEnvironmentSecretsRequest,
+  output: ListEnvironmentSecretsResponse,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -6068,8 +8382,8 @@ export const listEnvironmentVariables: API.OperationMethod<
   ListEnvironmentVariablesError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(258) as any as S.Schema<ListEnvironmentVariablesRequest>,
-  output: __S(260) as any as S.Schema<ListEnvironmentVariablesResponse>,
+  input: ListEnvironmentVariablesRequest,
+  output: ListEnvironmentVariablesResponse,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -6083,8 +8397,8 @@ export const listGithubHostedRunnersInGroupForOrg: API.OperationMethod<
   ListGithubHostedRunnersInGroupForOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(261) as any as S.Schema<ListGithubHostedRunnersInGroupForOrgRequest>,
-  output: __S(263) as any as S.Schema<ListGithubHostedRunnersInGroupForOrgResponse>,
+  input: ListGithubHostedRunnersInGroupForOrgRequest,
+  output: ListGithubHostedRunnersInGroupForOrgResponse,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -6098,8 +8412,8 @@ export const listHostedRunnersForOrg: API.OperationMethod<
   ListHostedRunnersForOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(264) as any as S.Schema<ListHostedRunnersForOrgRequest>,
-  output: __S(263) as any as S.Schema<ListHostedRunnersForOrgResponse>,
+  input: ListHostedRunnersForOrgRequest,
+  output: ListHostedRunnersForOrgResponse,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -6113,8 +8427,8 @@ export const listJobsForWorkflowRun: API.OperationMethod<
   ListJobsForWorkflowRunError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(265) as any as S.Schema<ListJobsForWorkflowRunRequest>,
-  output: __S(267) as any as S.Schema<ListJobsForWorkflowRunResponse>,
+  input: ListJobsForWorkflowRunRequest,
+  output: ListJobsForWorkflowRunResponse,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -6128,8 +8442,8 @@ export const listJobsForWorkflowRunAttempt: API.OperationMethod<
   ListJobsForWorkflowRunAttemptError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(268) as any as S.Schema<ListJobsForWorkflowRunAttemptRequest>,
-  output: __S(267) as any as S.Schema<ListJobsForWorkflowRunAttemptResponse>,
+  input: ListJobsForWorkflowRunAttemptRequest,
+  output: ListJobsForWorkflowRunAttemptResponse,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -6143,8 +8457,8 @@ export const listLabelsForSelfHostedRunnerForOrg: API.OperationMethod<
   ListLabelsForSelfHostedRunnerForOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(269) as any as S.Schema<ListLabelsForSelfHostedRunnerForOrgRequest>,
-  output: __S(4) as any as S.Schema<ListLabelsForSelfHostedRunnerForOrgResponse>,
+  input: ListLabelsForSelfHostedRunnerForOrgRequest,
+  output: ListLabelsForSelfHostedRunnerForOrgResponse,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -6158,8 +8472,8 @@ export const listLabelsForSelfHostedRunnerForRepo: API.OperationMethod<
   ListLabelsForSelfHostedRunnerForRepoError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(270) as any as S.Schema<ListLabelsForSelfHostedRunnerForRepoRequest>,
-  output: __S(4) as any as S.Schema<ListLabelsForSelfHostedRunnerForRepoResponse>,
+  input: ListLabelsForSelfHostedRunnerForRepoRequest,
+  output: ListLabelsForSelfHostedRunnerForRepoResponse,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -6173,8 +8487,8 @@ export const listOrgSecrets: API.OperationMethod<
   ListOrgSecretsError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(271) as any as S.Schema<ListOrgSecretsRequest>,
-  output: __S(273) as any as S.Schema<ListOrgSecretsResponse>,
+  input: ListOrgSecretsRequest,
+  output: ListOrgSecretsResponse,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -6188,8 +8502,8 @@ export const listOrgVariables: API.OperationMethod<
   ListOrgVariablesError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(274) as any as S.Schema<ListOrgVariablesRequest>,
-  output: __S(276) as any as S.Schema<ListOrgVariablesResponse>,
+  input: ListOrgVariablesRequest,
+  output: ListOrgVariablesResponse,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -6203,8 +8517,8 @@ export const listRepoAccessToSelfHostedRunnerGroupInOrg: API.OperationMethod<
   ListRepoAccessToSelfHostedRunnerGroupInOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(277) as any as S.Schema<ListRepoAccessToSelfHostedRunnerGroupInOrgRequest>,
-  output: __S(279) as any as S.Schema<ListRepoAccessToSelfHostedRunnerGroupInOrgResponse>,
+  input: ListRepoAccessToSelfHostedRunnerGroupInOrgRequest,
+  output: ListRepoAccessToSelfHostedRunnerGroupInOrgResponse,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -6218,8 +8532,8 @@ export const listRepoOrganizationSecrets: API.OperationMethod<
   ListRepoOrganizationSecretsError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(280) as any as S.Schema<ListRepoOrganizationSecretsRequest>,
-  output: __S(257) as any as S.Schema<ListRepoOrganizationSecretsResponse>,
+  input: ListRepoOrganizationSecretsRequest,
+  output: ListRepoOrganizationSecretsResponse,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -6233,8 +8547,8 @@ export const listRepoOrganizationVariables: API.OperationMethod<
   ListRepoOrganizationVariablesError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(281) as any as S.Schema<ListRepoOrganizationVariablesRequest>,
-  output: __S(260) as any as S.Schema<ListRepoOrganizationVariablesResponse>,
+  input: ListRepoOrganizationVariablesRequest,
+  output: ListRepoOrganizationVariablesResponse,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -6248,8 +8562,8 @@ export const listRepoSecrets: API.OperationMethod<
   ListRepoSecretsError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(282) as any as S.Schema<ListRepoSecretsRequest>,
-  output: __S(283) as any as S.Schema<ListRepoSecretsResponse>,
+  input: ListRepoSecretsRequest,
+  output: ListRepoSecretsResponse,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -6263,8 +8577,8 @@ export const listRepoVariables: API.OperationMethod<
   ListRepoVariablesError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(284) as any as S.Schema<ListRepoVariablesRequest>,
-  output: __S(260) as any as S.Schema<ListRepoVariablesResponse>,
+  input: ListRepoVariablesRequest,
+  output: ListRepoVariablesResponse,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -6278,8 +8592,8 @@ export const listRepoWorkflows: API.OperationMethod<
   ListRepoWorkflowsError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(285) as any as S.Schema<ListRepoWorkflowsRequest>,
-  output: __S(287) as any as S.Schema<ListRepoWorkflowsResponse>,
+  input: ListRepoWorkflowsRequest,
+  output: ListRepoWorkflowsResponse,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -6293,8 +8607,8 @@ export const listRunnerApplicationsForOrg: API.OperationMethod<
   ListRunnerApplicationsForOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(288) as any as S.Schema<ListRunnerApplicationsForOrgRequest>,
-  output: __S(291) as any as S.Schema<ListRunnerApplicationsForOrgResponse>,
+  input: ListRunnerApplicationsForOrgRequest,
+  output: ListRunnerApplicationsForOrgResponse,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -6308,8 +8622,8 @@ export const listRunnerApplicationsForRepo: API.OperationMethod<
   ListRunnerApplicationsForRepoError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(292) as any as S.Schema<ListRunnerApplicationsForRepoRequest>,
-  output: __S(291) as any as S.Schema<ListRunnerApplicationsForRepoResponse>,
+  input: ListRunnerApplicationsForRepoRequest,
+  output: ListRunnerApplicationsForRepoResponse,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -6323,8 +8637,8 @@ export const listSelectedReposForOrgSecret: API.OperationMethod<
   ListSelectedReposForOrgSecretError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(293) as any as S.Schema<ListSelectedReposForOrgSecretRequest>,
-  output: __S(295) as any as S.Schema<ListSelectedReposForOrgSecretResponse>,
+  input: ListSelectedReposForOrgSecretRequest,
+  output: ListSelectedReposForOrgSecretResponse,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -6338,8 +8652,8 @@ export const listSelectedReposForOrgVariable: API.OperationMethod<
   ListSelectedReposForOrgVariableError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(296) as any as S.Schema<ListSelectedReposForOrgVariableRequest>,
-  output: __S(295) as any as S.Schema<ListSelectedReposForOrgVariableResponse>,
+  input: ListSelectedReposForOrgVariableRequest,
+  output: ListSelectedReposForOrgVariableResponse,
   errors: [Conflict],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -6353,12 +8667,8 @@ export const listSelectedRepositoriesEnabledGithubActionsOrganization: API.Opera
   ListSelectedRepositoriesEnabledGithubActionsOrganizationError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(
-    297,
-  ) as any as S.Schema<ListSelectedRepositoriesEnabledGithubActionsOrganizationRequest>,
-  output: __S(
-    299,
-  ) as any as S.Schema<ListSelectedRepositoriesEnabledGithubActionsOrganizationResponse>,
+  input: ListSelectedRepositoriesEnabledGithubActionsOrganizationRequest,
+  output: ListSelectedRepositoriesEnabledGithubActionsOrganizationResponse,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -6375,10 +8685,8 @@ export const listSelectedRepositoriesSelfHostedRunnersOrganization: API.Operatio
   ListSelectedRepositoriesSelfHostedRunnersOrganizationError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(300) as any as S.Schema<ListSelectedRepositoriesSelfHostedRunnersOrganizationRequest>,
-  output: __S(
-    301,
-  ) as any as S.Schema<ListSelectedRepositoriesSelfHostedRunnersOrganizationResponse>,
+  input: ListSelectedRepositoriesSelfHostedRunnersOrganizationRequest,
+  output: ListSelectedRepositoriesSelfHostedRunnersOrganizationResponse,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -6392,8 +8700,8 @@ export const listSelfHostedRunnerGroupsForOrg: API.OperationMethod<
   ListSelfHostedRunnerGroupsForOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(302) as any as S.Schema<ListSelfHostedRunnerGroupsForOrgRequest>,
-  output: __S(304) as any as S.Schema<ListSelfHostedRunnerGroupsForOrgResponse>,
+  input: ListSelfHostedRunnerGroupsForOrgRequest,
+  output: ListSelfHostedRunnerGroupsForOrgResponse,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -6407,8 +8715,8 @@ export const listSelfHostedRunnersForOrg: API.OperationMethod<
   ListSelfHostedRunnersForOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(305) as any as S.Schema<ListSelfHostedRunnersForOrgRequest>,
-  output: __S(307) as any as S.Schema<ListSelfHostedRunnersForOrgResponse>,
+  input: ListSelfHostedRunnersForOrgRequest,
+  output: ListSelfHostedRunnersForOrgResponse,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -6422,8 +8730,8 @@ export const listSelfHostedRunnersForRepo: API.OperationMethod<
   ListSelfHostedRunnersForRepoError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(308) as any as S.Schema<ListSelfHostedRunnersForRepoRequest>,
-  output: __S(307) as any as S.Schema<ListSelfHostedRunnersForRepoResponse>,
+  input: ListSelfHostedRunnersForRepoRequest,
+  output: ListSelfHostedRunnersForRepoResponse,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -6437,8 +8745,8 @@ export const listSelfHostedRunnersInGroupForOrg: API.OperationMethod<
   ListSelfHostedRunnersInGroupForOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(309) as any as S.Schema<ListSelfHostedRunnersInGroupForOrgRequest>,
-  output: __S(307) as any as S.Schema<ListSelfHostedRunnersInGroupForOrgResponse>,
+  input: ListSelfHostedRunnersInGroupForOrgRequest,
+  output: ListSelfHostedRunnersInGroupForOrgResponse,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -6452,8 +8760,8 @@ export const listWorkflowRunArtifacts: API.OperationMethod<
   ListWorkflowRunArtifactsError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(310) as any as S.Schema<ListWorkflowRunArtifactsRequest>,
-  output: __S(238) as any as S.Schema<ListWorkflowRunArtifactsResponse>,
+  input: ListWorkflowRunArtifactsRequest,
+  output: ListWorkflowRunArtifactsResponse,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -6467,8 +8775,8 @@ export const listWorkflowRuns: API.OperationMethod<
   ListWorkflowRunsError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(311) as any as S.Schema<ListWorkflowRunsRequest>,
-  output: __S(313) as any as S.Schema<ListWorkflowRunsResponse>,
+  input: ListWorkflowRunsRequest,
+  output: ListWorkflowRunsResponse,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -6482,8 +8790,8 @@ export const listWorkflowRunsForRepo: API.OperationMethod<
   ListWorkflowRunsForRepoError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(314) as any as S.Schema<ListWorkflowRunsForRepoRequest>,
-  output: __S(315) as any as S.Schema<ListWorkflowRunsForRepoResponse>,
+  input: ListWorkflowRunsForRepoRequest,
+  output: ListWorkflowRunsForRepoResponse,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -6497,8 +8805,8 @@ export const removeAllCustomLabelsFromSelfHostedRunnerForOrg: API.OperationMetho
   RemoveAllCustomLabelsFromSelfHostedRunnerForOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(316) as any as S.Schema<RemoveAllCustomLabelsFromSelfHostedRunnerForOrgRequest>,
-  output: __S(318) as any as S.Schema<RemoveAllCustomLabelsFromSelfHostedRunnerForOrgResponse>,
+  input: RemoveAllCustomLabelsFromSelfHostedRunnerForOrgRequest,
+  output: RemoveAllCustomLabelsFromSelfHostedRunnerForOrgResponse,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -6512,8 +8820,8 @@ export const removeAllCustomLabelsFromSelfHostedRunnerForRepo: API.OperationMeth
   RemoveAllCustomLabelsFromSelfHostedRunnerForRepoError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(319) as any as S.Schema<RemoveAllCustomLabelsFromSelfHostedRunnerForRepoRequest>,
-  output: __S(320) as any as S.Schema<RemoveAllCustomLabelsFromSelfHostedRunnerForRepoResponse>,
+  input: RemoveAllCustomLabelsFromSelfHostedRunnerForRepoRequest,
+  output: RemoveAllCustomLabelsFromSelfHostedRunnerForRepoResponse,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -6530,8 +8838,8 @@ export const removeCustomLabelFromSelfHostedRunnerForOrg: API.OperationMethod<
   RemoveCustomLabelFromSelfHostedRunnerForOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(321) as any as S.Schema<RemoveCustomLabelFromSelfHostedRunnerForOrgRequest>,
-  output: __S(4) as any as S.Schema<RemoveCustomLabelFromSelfHostedRunnerForOrgResponse>,
+  input: RemoveCustomLabelFromSelfHostedRunnerForOrgRequest,
+  output: RemoveCustomLabelFromSelfHostedRunnerForOrgResponse,
   errors: [NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -6548,8 +8856,8 @@ export const removeCustomLabelFromSelfHostedRunnerForRepo: API.OperationMethod<
   RemoveCustomLabelFromSelfHostedRunnerForRepoError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(322) as any as S.Schema<RemoveCustomLabelFromSelfHostedRunnerForRepoRequest>,
-  output: __S(4) as any as S.Schema<RemoveCustomLabelFromSelfHostedRunnerForRepoResponse>,
+  input: RemoveCustomLabelFromSelfHostedRunnerForRepoRequest,
+  output: RemoveCustomLabelFromSelfHostedRunnerForRepoResponse,
   errors: [NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -6563,8 +8871,8 @@ export const removeRepoAccessToSelfHostedRunnerGroupInOrg: API.OperationMethod<
   RemoveRepoAccessToSelfHostedRunnerGroupInOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(323) as any as S.Schema<RemoveRepoAccessToSelfHostedRunnerGroupInOrgRequest>,
-  output: __S(7) as any as S.Schema<RemoveRepoAccessToSelfHostedRunnerGroupInOrgResponse>,
+  input: RemoveRepoAccessToSelfHostedRunnerGroupInOrgRequest,
+  output: RemoveRepoAccessToSelfHostedRunnerGroupInOrgResponse,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -6578,8 +8886,8 @@ export const removeSelectedRepoFromOrgSecret: API.OperationMethod<
   RemoveSelectedRepoFromOrgSecretError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(324) as any as S.Schema<RemoveSelectedRepoFromOrgSecretRequest>,
-  output: __S(7) as any as S.Schema<RemoveSelectedRepoFromOrgSecretResponse>,
+  input: RemoveSelectedRepoFromOrgSecretRequest,
+  output: RemoveSelectedRepoFromOrgSecretResponse,
   errors: [Conflict],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -6593,8 +8901,8 @@ export const removeSelectedRepoFromOrgVariable: API.OperationMethod<
   RemoveSelectedRepoFromOrgVariableError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(325) as any as S.Schema<RemoveSelectedRepoFromOrgVariableRequest>,
-  output: __S(7) as any as S.Schema<RemoveSelectedRepoFromOrgVariableResponse>,
+  input: RemoveSelectedRepoFromOrgVariableRequest,
+  output: RemoveSelectedRepoFromOrgVariableResponse,
   errors: [Conflict],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -6608,8 +8916,8 @@ export const removeSelfHostedRunnerFromGroupForOrg: API.OperationMethod<
   RemoveSelfHostedRunnerFromGroupForOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(326) as any as S.Schema<RemoveSelfHostedRunnerFromGroupForOrgRequest>,
-  output: __S(7) as any as S.Schema<RemoveSelfHostedRunnerFromGroupForOrgResponse>,
+  input: RemoveSelfHostedRunnerFromGroupForOrgRequest,
+  output: RemoveSelfHostedRunnerFromGroupForOrgResponse,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -6623,8 +8931,8 @@ export const reRunWorkflow: API.OperationMethod<
   ReRunWorkflowError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(327) as any as S.Schema<ReRunWorkflowRequest>,
-  output: __S(328) as any as S.Schema<ReRunWorkflowResponse>,
+  input: ReRunWorkflowRequest,
+  output: ReRunWorkflowResponse,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -6638,8 +8946,8 @@ export const reRunWorkflowFailedJobs: API.OperationMethod<
   ReRunWorkflowFailedJobsError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(329) as any as S.Schema<ReRunWorkflowFailedJobsRequest>,
-  output: __S(12) as any as S.Schema<ReRunWorkflowFailedJobsResponse>,
+  input: ReRunWorkflowFailedJobsRequest,
+  output: ReRunWorkflowFailedJobsResponse,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -6653,8 +8961,8 @@ export const reviewCustomGatesForRun: API.OperationMethod<
   ReviewCustomGatesForRunError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(330) as any as S.Schema<ReviewCustomGatesForRunRequest>,
-  output: __S(61) as any as S.Schema<ReviewCustomGatesForRunResponse>,
+  input: ReviewCustomGatesForRunRequest,
+  output: ReviewCustomGatesForRunResponse,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -6668,8 +8976,8 @@ export const reviewPendingDeploymentsForRun: API.OperationMethod<
   ReviewPendingDeploymentsForRunError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(331) as any as S.Schema<ReviewPendingDeploymentsForRunRequest>,
-  output: __S(336) as any as S.Schema<ReviewPendingDeploymentsForRunResponse>,
+  input: ReviewPendingDeploymentsForRunRequest,
+  output: ReviewPendingDeploymentsForRunResponse,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -6683,8 +8991,8 @@ export const runReRunJobForWorkflow: API.OperationMethod<
   RunReRunJobForWorkflowError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(337) as any as S.Schema<RunReRunJobForWorkflowRequest>,
-  output: __S(12) as any as S.Schema<RunReRunJobForWorkflowResponse>,
+  input: RunReRunJobForWorkflowRequest,
+  output: RunReRunJobForWorkflowResponse,
   errors: [Forbidden],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -6702,8 +9010,8 @@ export const setActionsCacheRetentionLimitForEnterprise: API.OperationMethod<
   SetActionsCacheRetentionLimitForEnterpriseError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(338) as any as S.Schema<SetActionsCacheRetentionLimitForEnterpriseRequest>,
-  output: __S(7) as any as S.Schema<SetActionsCacheRetentionLimitForEnterpriseResponse>,
+  input: SetActionsCacheRetentionLimitForEnterpriseRequest,
+  output: SetActionsCacheRetentionLimitForEnterpriseResponse,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -6721,8 +9029,8 @@ export const setActionsCacheRetentionLimitForOrganization: API.OperationMethod<
   SetActionsCacheRetentionLimitForOrganizationError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(339) as any as S.Schema<SetActionsCacheRetentionLimitForOrganizationRequest>,
-  output: __S(7) as any as S.Schema<SetActionsCacheRetentionLimitForOrganizationResponse>,
+  input: SetActionsCacheRetentionLimitForOrganizationRequest,
+  output: SetActionsCacheRetentionLimitForOrganizationResponse,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -6740,8 +9048,8 @@ export const setActionsCacheRetentionLimitForRepository: API.OperationMethod<
   SetActionsCacheRetentionLimitForRepositoryError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(340) as any as S.Schema<SetActionsCacheRetentionLimitForRepositoryRequest>,
-  output: __S(7) as any as S.Schema<SetActionsCacheRetentionLimitForRepositoryResponse>,
+  input: SetActionsCacheRetentionLimitForRepositoryRequest,
+  output: SetActionsCacheRetentionLimitForRepositoryResponse,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -6759,8 +9067,8 @@ export const setActionsCacheStorageLimitForEnterprise: API.OperationMethod<
   SetActionsCacheStorageLimitForEnterpriseError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(341) as any as S.Schema<SetActionsCacheStorageLimitForEnterpriseRequest>,
-  output: __S(7) as any as S.Schema<SetActionsCacheStorageLimitForEnterpriseResponse>,
+  input: SetActionsCacheStorageLimitForEnterpriseRequest,
+  output: SetActionsCacheStorageLimitForEnterpriseResponse,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -6778,8 +9086,8 @@ export const setActionsCacheStorageLimitForOrganization: API.OperationMethod<
   SetActionsCacheStorageLimitForOrganizationError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(342) as any as S.Schema<SetActionsCacheStorageLimitForOrganizationRequest>,
-  output: __S(7) as any as S.Schema<SetActionsCacheStorageLimitForOrganizationResponse>,
+  input: SetActionsCacheStorageLimitForOrganizationRequest,
+  output: SetActionsCacheStorageLimitForOrganizationResponse,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -6797,8 +9105,8 @@ export const setActionsCacheStorageLimitForRepository: API.OperationMethod<
   SetActionsCacheStorageLimitForRepositoryError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(343) as any as S.Schema<SetActionsCacheStorageLimitForRepositoryRequest>,
-  output: __S(7) as any as S.Schema<SetActionsCacheStorageLimitForRepositoryResponse>,
+  input: SetActionsCacheStorageLimitForRepositoryRequest,
+  output: SetActionsCacheStorageLimitForRepositoryResponse,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -6812,8 +9120,8 @@ export const setAllowedActionsOrganization: API.OperationMethod<
   SetAllowedActionsOrganizationError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(344) as any as S.Schema<SetAllowedActionsOrganizationRequest>,
-  output: __S(7) as any as S.Schema<SetAllowedActionsOrganizationResponse>,
+  input: SetAllowedActionsOrganizationRequest,
+  output: SetAllowedActionsOrganizationResponse,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -6827,8 +9135,8 @@ export const setAllowedActionsRepository: API.OperationMethod<
   SetAllowedActionsRepositoryError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(345) as any as S.Schema<SetAllowedActionsRepositoryRequest>,
-  output: __S(7) as any as S.Schema<SetAllowedActionsRepositoryResponse>,
+  input: SetAllowedActionsRepositoryRequest,
+  output: SetAllowedActionsRepositoryResponse,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -6847,8 +9155,8 @@ export const setArtifactAndLogRetentionSettingsOrganization: API.OperationMethod
   SetArtifactAndLogRetentionSettingsOrganizationError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(346) as any as S.Schema<SetArtifactAndLogRetentionSettingsOrganizationRequest>,
-  output: __S(7) as any as S.Schema<SetArtifactAndLogRetentionSettingsOrganizationResponse>,
+  input: SetArtifactAndLogRetentionSettingsOrganizationRequest,
+  output: SetArtifactAndLogRetentionSettingsOrganizationResponse,
   errors: [Forbidden, NotFound, Conflict, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -6865,8 +9173,8 @@ export const setArtifactAndLogRetentionSettingsRepository: API.OperationMethod<
   SetArtifactAndLogRetentionSettingsRepositoryError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(347) as any as S.Schema<SetArtifactAndLogRetentionSettingsRepositoryRequest>,
-  output: __S(7) as any as S.Schema<SetArtifactAndLogRetentionSettingsRepositoryResponse>,
+  input: SetArtifactAndLogRetentionSettingsRepositoryRequest,
+  output: SetArtifactAndLogRetentionSettingsRepositoryResponse,
   errors: [NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -6883,8 +9191,8 @@ export const setCustomLabelsForSelfHostedRunnerForOrg: API.OperationMethod<
   SetCustomLabelsForSelfHostedRunnerForOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(348) as any as S.Schema<SetCustomLabelsForSelfHostedRunnerForOrgRequest>,
-  output: __S(4) as any as S.Schema<SetCustomLabelsForSelfHostedRunnerForOrgResponse>,
+  input: SetCustomLabelsForSelfHostedRunnerForOrgRequest,
+  output: SetCustomLabelsForSelfHostedRunnerForOrgResponse,
   errors: [NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -6901,8 +9209,8 @@ export const setCustomLabelsForSelfHostedRunnerForRepo: API.OperationMethod<
   SetCustomLabelsForSelfHostedRunnerForRepoError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(349) as any as S.Schema<SetCustomLabelsForSelfHostedRunnerForRepoRequest>,
-  output: __S(4) as any as S.Schema<SetCustomLabelsForSelfHostedRunnerForRepoResponse>,
+  input: SetCustomLabelsForSelfHostedRunnerForRepoRequest,
+  output: SetCustomLabelsForSelfHostedRunnerForRepoResponse,
   errors: [NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -6920,8 +9228,8 @@ export const setCustomOidcSubClaimForRepo: API.OperationMethod<
   SetCustomOidcSubClaimForRepoError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(350) as any as S.Schema<SetCustomOidcSubClaimForRepoRequest>,
-  output: __S(12) as any as S.Schema<SetCustomOidcSubClaimForRepoResponse>,
+  input: SetCustomOidcSubClaimForRepoRequest,
+  output: SetCustomOidcSubClaimForRepoResponse,
   errors: [BadRequest, NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -6938,8 +9246,8 @@ export const setForkPrContributorApprovalPermissionsOrganization: API.OperationM
   SetForkPrContributorApprovalPermissionsOrganizationError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(351) as any as S.Schema<SetForkPrContributorApprovalPermissionsOrganizationRequest>,
-  output: __S(76) as any as S.Schema<SetForkPrContributorApprovalPermissionsOrganizationResponse>,
+  input: SetForkPrContributorApprovalPermissionsOrganizationRequest,
+  output: SetForkPrContributorApprovalPermissionsOrganizationResponse,
   errors: [NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -6956,8 +9264,8 @@ export const setForkPrContributorApprovalPermissionsRepository: API.OperationMet
   SetForkPrContributorApprovalPermissionsRepositoryError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(352) as any as S.Schema<SetForkPrContributorApprovalPermissionsRepositoryRequest>,
-  output: __S(76) as any as S.Schema<SetForkPrContributorApprovalPermissionsRepositoryResponse>,
+  input: SetForkPrContributorApprovalPermissionsRepositoryRequest,
+  output: SetForkPrContributorApprovalPermissionsRepositoryResponse,
   errors: [NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -6971,10 +9279,8 @@ export const setGithubActionsDefaultWorkflowPermissionsOrganization: API.Operati
   SetGithubActionsDefaultWorkflowPermissionsOrganizationError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(353) as any as S.Schema<SetGithubActionsDefaultWorkflowPermissionsOrganizationRequest>,
-  output: __S(
-    78,
-  ) as any as S.Schema<SetGithubActionsDefaultWorkflowPermissionsOrganizationResponse>,
+  input: SetGithubActionsDefaultWorkflowPermissionsOrganizationRequest,
+  output: SetGithubActionsDefaultWorkflowPermissionsOrganizationResponse,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -6988,8 +9294,8 @@ export const setGithubActionsDefaultWorkflowPermissionsRepository: API.Operation
   SetGithubActionsDefaultWorkflowPermissionsRepositoryError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(354) as any as S.Schema<SetGithubActionsDefaultWorkflowPermissionsRepositoryRequest>,
-  output: __S(76) as any as S.Schema<SetGithubActionsDefaultWorkflowPermissionsRepositoryResponse>,
+  input: SetGithubActionsDefaultWorkflowPermissionsRepositoryRequest,
+  output: SetGithubActionsDefaultWorkflowPermissionsRepositoryResponse,
   errors: [Conflict],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -7003,8 +9309,8 @@ export const setGithubActionsPermissionsOrganization: API.OperationMethod<
   SetGithubActionsPermissionsOrganizationError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(355) as any as S.Schema<SetGithubActionsPermissionsOrganizationRequest>,
-  output: __S(7) as any as S.Schema<SetGithubActionsPermissionsOrganizationResponse>,
+  input: SetGithubActionsPermissionsOrganizationRequest,
+  output: SetGithubActionsPermissionsOrganizationResponse,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -7018,8 +9324,8 @@ export const setGithubActionsPermissionsRepository: API.OperationMethod<
   SetGithubActionsPermissionsRepositoryError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(356) as any as S.Schema<SetGithubActionsPermissionsRepositoryRequest>,
-  output: __S(7) as any as S.Schema<SetGithubActionsPermissionsRepositoryResponse>,
+  input: SetGithubActionsPermissionsRepositoryRequest,
+  output: SetGithubActionsPermissionsRepositoryResponse,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -7037,8 +9343,8 @@ export const setPrivateRepoForkPrWorkflowsSettingsOrganization: API.OperationMet
   SetPrivateRepoForkPrWorkflowsSettingsOrganizationError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(357) as any as S.Schema<SetPrivateRepoForkPrWorkflowsSettingsOrganizationRequest>,
-  output: __S(76) as any as S.Schema<SetPrivateRepoForkPrWorkflowsSettingsOrganizationResponse>,
+  input: SetPrivateRepoForkPrWorkflowsSettingsOrganizationRequest,
+  output: SetPrivateRepoForkPrWorkflowsSettingsOrganizationResponse,
   errors: [Forbidden, NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -7055,8 +9361,8 @@ export const setPrivateRepoForkPrWorkflowsSettingsRepository: API.OperationMetho
   SetPrivateRepoForkPrWorkflowsSettingsRepositoryError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(358) as any as S.Schema<SetPrivateRepoForkPrWorkflowsSettingsRepositoryRequest>,
-  output: __S(7) as any as S.Schema<SetPrivateRepoForkPrWorkflowsSettingsRepositoryResponse>,
+  input: SetPrivateRepoForkPrWorkflowsSettingsRepositoryRequest,
+  output: SetPrivateRepoForkPrWorkflowsSettingsRepositoryResponse,
   errors: [NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -7070,8 +9376,8 @@ export const setRepoAccessToSelfHostedRunnerGroupInOrg: API.OperationMethod<
   SetRepoAccessToSelfHostedRunnerGroupInOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(359) as any as S.Schema<SetRepoAccessToSelfHostedRunnerGroupInOrgRequest>,
-  output: __S(7) as any as S.Schema<SetRepoAccessToSelfHostedRunnerGroupInOrgResponse>,
+  input: SetRepoAccessToSelfHostedRunnerGroupInOrgRequest,
+  output: SetRepoAccessToSelfHostedRunnerGroupInOrgResponse,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -7085,8 +9391,8 @@ export const setSelectedReposForOrgSecret: API.OperationMethod<
   SetSelectedReposForOrgSecretError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(360) as any as S.Schema<SetSelectedReposForOrgSecretRequest>,
-  output: __S(7) as any as S.Schema<SetSelectedReposForOrgSecretResponse>,
+  input: SetSelectedReposForOrgSecretRequest,
+  output: SetSelectedReposForOrgSecretResponse,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -7100,8 +9406,8 @@ export const setSelectedReposForOrgVariable: API.OperationMethod<
   SetSelectedReposForOrgVariableError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(361) as any as S.Schema<SetSelectedReposForOrgVariableRequest>,
-  output: __S(7) as any as S.Schema<SetSelectedReposForOrgVariableResponse>,
+  input: SetSelectedReposForOrgVariableRequest,
+  output: SetSelectedReposForOrgVariableResponse,
   errors: [Conflict],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -7115,12 +9421,8 @@ export const setSelectedRepositoriesEnabledGithubActionsOrganization: API.Operat
   SetSelectedRepositoriesEnabledGithubActionsOrganizationError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(
-    362,
-  ) as any as S.Schema<SetSelectedRepositoriesEnabledGithubActionsOrganizationRequest>,
-  output: __S(
-    78,
-  ) as any as S.Schema<SetSelectedRepositoriesEnabledGithubActionsOrganizationResponse>,
+  input: SetSelectedRepositoriesEnabledGithubActionsOrganizationRequest,
+  output: SetSelectedRepositoriesEnabledGithubActionsOrganizationResponse,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -7138,8 +9440,8 @@ export const setSelectedRepositoriesSelfHostedRunnersOrganization: API.Operation
   SetSelectedRepositoriesSelfHostedRunnersOrganizationError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(363) as any as S.Schema<SetSelectedRepositoriesSelfHostedRunnersOrganizationRequest>,
-  output: __S(76) as any as S.Schema<SetSelectedRepositoriesSelfHostedRunnersOrganizationResponse>,
+  input: SetSelectedRepositoriesSelfHostedRunnersOrganizationRequest,
+  output: SetSelectedRepositoriesSelfHostedRunnersOrganizationResponse,
   errors: [Forbidden, NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -7153,8 +9455,8 @@ export const setSelfHostedRunnersInGroupForOrg: API.OperationMethod<
   SetSelfHostedRunnersInGroupForOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(364) as any as S.Schema<SetSelfHostedRunnersInGroupForOrgRequest>,
-  output: __S(7) as any as S.Schema<SetSelfHostedRunnersInGroupForOrgResponse>,
+  input: SetSelfHostedRunnersInGroupForOrgRequest,
+  output: SetSelfHostedRunnersInGroupForOrgResponse,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -7173,8 +9475,8 @@ export const setSelfHostedRunnersPermissionsOrganization: API.OperationMethod<
   SetSelfHostedRunnersPermissionsOrganizationError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(365) as any as S.Schema<SetSelfHostedRunnersPermissionsOrganizationRequest>,
-  output: __S(7) as any as S.Schema<SetSelfHostedRunnersPermissionsOrganizationResponse>,
+  input: SetSelfHostedRunnersPermissionsOrganizationRequest,
+  output: SetSelfHostedRunnersPermissionsOrganizationResponse,
   errors: [Forbidden, NotFound, Conflict, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -7188,8 +9490,8 @@ export const setWorkflowAccessToRepository: API.OperationMethod<
   SetWorkflowAccessToRepositoryError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(366) as any as S.Schema<SetWorkflowAccessToRepositoryRequest>,
-  output: __S(7) as any as S.Schema<SetWorkflowAccessToRepositoryResponse>,
+  input: SetWorkflowAccessToRepositoryRequest,
+  output: SetWorkflowAccessToRepositoryResponse,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -7203,8 +9505,8 @@ export const updateEnvironmentVariable: API.OperationMethod<
   UpdateEnvironmentVariableError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(367) as any as S.Schema<UpdateEnvironmentVariableRequest>,
-  output: __S(7) as any as S.Schema<UpdateEnvironmentVariableResponse>,
+  input: UpdateEnvironmentVariableRequest,
+  output: UpdateEnvironmentVariableResponse,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -7218,8 +9520,8 @@ export const updateHostedRunnerForOrg: API.OperationMethod<
   UpdateHostedRunnerForOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(368) as any as S.Schema<UpdateHostedRunnerForOrgRequest>,
-  output: __S(22) as any as S.Schema<ActionsHostedRunner>,
+  input: UpdateHostedRunnerForOrgRequest,
+  output: ActionsHostedRunner,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -7233,8 +9535,8 @@ export const updateOrgActionsPolicy: API.OperationMethod<
   UpdateOrgActionsPolicyError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(369) as any as S.Schema<UpdateOrgActionsPolicyRequest>,
-  output: __S(29) as any as S.Schema<ActionsPolicy>,
+  input: UpdateOrgActionsPolicyRequest,
+  output: ActionsPolicy,
   errors: [NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -7248,8 +9550,8 @@ export const updateOrgVariable: API.OperationMethod<
   UpdateOrgVariableError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(370) as any as S.Schema<UpdateOrgVariableRequest>,
-  output: __S(14) as any as S.Schema<UpdateOrgVariableResponse>,
+  input: UpdateOrgVariableRequest,
+  output: UpdateOrgVariableResponse,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -7263,8 +9565,8 @@ export const updateRepoActionsPolicy: API.OperationMethod<
   UpdateRepoActionsPolicyError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(371) as any as S.Schema<UpdateRepoActionsPolicyRequest>,
-  output: __S(29) as any as S.Schema<ActionsPolicy>,
+  input: UpdateRepoActionsPolicyRequest,
+  output: ActionsPolicy,
   errors: [NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -7278,8 +9580,8 @@ export const updateRepoVariable: API.OperationMethod<
   UpdateRepoVariableError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(372) as any as S.Schema<UpdateRepoVariableRequest>,
-  output: __S(14) as any as S.Schema<UpdateRepoVariableResponse>,
+  input: UpdateRepoVariableRequest,
+  output: UpdateRepoVariableResponse,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -7293,8 +9595,8 @@ export const updateSelfHostedRunnerGroupForOrg: API.OperationMethod<
   UpdateSelfHostedRunnerGroupForOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(373) as any as S.Schema<UpdateSelfHostedRunnerGroupForOrgRequest>,
-  output: __S(48) as any as S.Schema<RunnerGroupsOrg>,
+  input: UpdateSelfHostedRunnerGroupForOrgRequest,
+  output: RunnerGroupsOrg,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -7310,7 +9612,7 @@ function __c0(j: number): any {
         S.Struct({
           org: S.String.pipe(T.Label()),
           runner_id: S.Number.pipe(T.Label()),
-          labels: __S(0),
+          labels: AddCustomLabelsToSelfHostedRunnerForOrgRequestLabelsList,
         }).pipe(
           T.Http({
             method: "POST",
@@ -7326,16 +9628,16 @@ function __c0(j: number): any {
         S.Struct({
           id: S.optional(S.Number),
           name: S.String,
-          type: S.optional(S.String),
+          type: S.optional(RunnerLabelType),
         }),
       ).annotate({ identifier: "RunnerLabel" });
     case 3:
-      return S.Array(__S(2));
+      return S.Array(RunnerLabel);
     case 4:
       return S.suspend(() =>
         S.Struct({
           total_count: S.Number,
-          labels: __S(3),
+          labels: AddCustomLabelsToSelfHostedRunnerForOrgResponseLabelsList,
         }),
       ).annotate({
         identifier: "AddCustomLabelsToSelfHostedRunnerForOrgResponse",
@@ -7346,7 +9648,7 @@ function __c0(j: number): any {
           owner: S.String.pipe(T.Label()),
           repo: S.String.pipe(T.Label()),
           runner_id: S.Number.pipe(T.Label()),
-          labels: __S(0),
+          labels: AddCustomLabelsToSelfHostedRunnerForRepoRequestLabelsList,
         }).pipe(
           T.Http({
             method: "POST",
@@ -7493,7 +9795,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
-          source: S.optional(S.String),
+          source: S.optional(CreateHostedRunnerForOrgRequestImageSource),
           version: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
@@ -7504,7 +9806,7 @@ function __c2(j: number): any {
         S.Struct({
           org: S.String.pipe(T.Label()),
           name: S.String,
-          image: __S(16),
+          image: CreateHostedRunnerForOrgRequestImage,
           size: S.String,
           runner_group_id: S.Number,
           maximum_runners: S.optional(S.Number),
@@ -7520,7 +9822,7 @@ function __c2(j: number): any {
           id: S.String,
           size_gb: S.Number,
           display_name: S.String,
-          source: S.String,
+          source: NullableActionsHostedRunnerPoolImageSource,
           version: S.optional(S.String),
         }),
       ).annotate({
@@ -7546,20 +9848,20 @@ function __c2(j: number): any {
         }),
       ).annotate({ identifier: "PublicIp" });
     case 5:
-      return S.Array(__S(20));
+      return S.Array(PublicIp);
     case 6:
       return S.suspend(() =>
         S.Struct({
           id: S.Number,
           name: S.String,
           runner_group_id: S.optional(S.Number),
-          image_details: S.NullOr(__S(18)),
-          machine_size_details: __S(19),
-          status: S.String,
+          image_details: S.NullOr(NullableActionsHostedRunnerPoolImage),
+          machine_size_details: ActionsHostedRunnerMachineSpec,
+          status: ActionsHostedRunnerStatus,
           platform: S.String,
           maximum_runners: S.optional(S.Number),
           public_ip_enabled: S.Boolean,
-          public_ips: S.optional(__S(21)),
+          public_ips: S.optional(ActionsHostedRunnerPublicIpsList),
           last_active_on: S.optional(S.NullOr(S.String)),
           image_gen: S.optional(S.Boolean),
         }),
@@ -7571,15 +9873,15 @@ function __c2(j: number): any {
 function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.Unknown);
+      return S.Array(ActionsRule);
     case 1:
       return S.suspend(() =>
         S.Struct({
           org: S.String.pipe(T.Label()),
           name: S.String,
-          enforcement: S.String,
-          conditions: S.optional(S.Unknown),
-          rules: S.optional(__S(24)),
+          enforcement: RepositoryRuleEnforcement,
+          conditions: S.optional(ActionsPolicyOrgConditions),
+          rules: S.optional(CreateOrgActionsPolicyRequestRulesList),
         }).pipe(T.Http({ method: "POST", uri: "/orgs/{org}/actions/policies", code: 200 })),
       ).annotate({
         identifier: "CreateOrgActionsPolicyRequest",
@@ -7595,8 +9897,8 @@ function __c3(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          self: S.optional(__S(27)),
-          html: S.optional(__S(27)),
+          self: S.optional(ActionsPolicyLinksSelf),
+          html: S.optional(ActionsPolicyLinksHtml),
         }),
       ).annotate({ identifier: "ActionsPolicyLinks" });
     case 5:
@@ -7604,14 +9906,14 @@ function __c3(j: number): any {
         S.Struct({
           id: S.Number,
           name: S.String,
-          target: S.String,
-          source_type: S.String,
+          target: ActionsPolicyTarget,
+          source_type: ActionsPolicySourceType,
           source: S.String,
-          enforcement: S.String,
-          conditions: S.optional(S.NullOr(S.Unknown)),
-          rules: S.optional(__S(24)),
+          enforcement: RepositoryRuleEnforcement,
+          conditions: S.optional(S.NullOr(ActionsPolicyConditions)),
+          rules: S.optional(ActionsPolicyRulesList),
           node_id: S.optional(S.String),
-          _links: S.optional(__S(28)),
+          _links: S.optional(ActionsPolicyLinks),
           created_at: S.optional(S.String),
           updated_at: S.optional(S.String),
         }),
@@ -7622,8 +9924,8 @@ function __c3(j: number): any {
           org: S.String.pipe(T.Label()),
           name: S.String,
           value: S.String,
-          visibility: S.String,
-          selected_repository_ids: S.optional(__S(23)),
+          visibility: CreateOrgVariableRequestVisibility,
+          selected_repository_ids: S.optional(CreateOrgVariableRequestSelectedRepositoryIdsList),
         }).pipe(T.Http({ method: "POST", uri: "/orgs/{org}/actions/variables", code: 200 })),
       ).annotate({ identifier: "CreateOrgVariableRequest" });
     case 7:
@@ -7656,8 +9958,10 @@ function __c4(j: number): any {
           secret_name: S.String.pipe(T.Label()),
           encrypted_value: S.String,
           key_id: S.String,
-          visibility: S.String,
-          selected_repository_ids: S.optional(__S(23)),
+          visibility: CreateOrUpdateOrgSecretRequestVisibility,
+          selected_repository_ids: S.optional(
+            CreateOrUpdateOrgSecretRequestSelectedRepositoryIdsList,
+          ),
         }).pipe(
           T.Http({ method: "PUT", uri: "/orgs/{org}/actions/secrets/{secret_name}", code: 200 }),
         ),
@@ -7760,10 +10064,10 @@ function __c4(j: number): any {
           node_id: S.String,
           name: S.String,
           full_name: S.String,
-          license: S.NullOr(__S(35)),
+          license: S.NullOr(NullableLicenseSimple),
           forks: S.Number,
-          permissions: S.optional(__S(36)),
-          owner: __S(37),
+          permissions: S.optional(RepositoryPermissions),
+          owner: SimpleUser,
           private: S.Boolean,
           html_url: S.String,
           description: S.NullOr(S.String),
@@ -7819,7 +10123,7 @@ function __c4(j: number): any {
           default_branch: S.String,
           open_issues_count: S.Number,
           is_template: S.optional(S.Boolean),
-          topics: S.optional(__S(0)),
+          topics: S.optional(RepositoryTopicsList),
           has_issues: S.Boolean,
           has_projects: S.Boolean,
           has_wiki: S.Boolean,
@@ -7827,7 +10131,7 @@ function __c4(j: number): any {
           has_downloads: S.Boolean,
           has_discussions: S.optional(S.Boolean),
           has_pull_requests: S.optional(S.Boolean),
-          pull_request_creation_policy: S.optional(S.String),
+          pull_request_creation_policy: S.optional(RepositoryPullRequestCreationPolicy),
           archived: S.Boolean,
           disabled: S.Boolean,
           visibility: S.optional(S.String),
@@ -7841,10 +10145,10 @@ function __c4(j: number): any {
           delete_branch_on_merge: S.optional(S.Boolean),
           allow_update_branch: S.optional(S.Boolean),
           use_squash_pr_title_as_default: S.optional(S.Boolean),
-          squash_merge_commit_title: S.optional(S.String),
-          squash_merge_commit_message: S.optional(S.String),
-          merge_commit_title: S.optional(S.String),
-          merge_commit_message: S.optional(S.String),
+          squash_merge_commit_title: S.optional(RepositorySquashMergeCommitTitle),
+          squash_merge_commit_message: S.optional(RepositorySquashMergeCommitMessage),
+          merge_commit_title: S.optional(RepositoryMergeCommitTitle),
+          merge_commit_message: S.optional(RepositoryMergeCommitMessage),
           allow_merge_commit: S.optional(S.Boolean),
           allow_forking: S.optional(S.Boolean),
           web_commit_signoff_required: S.optional(S.Boolean),
@@ -7853,7 +10157,7 @@ function __c4(j: number): any {
           master_branch: S.optional(S.String),
           starred_at: S.optional(S.String),
           anonymous_access_enabled: S.optional(S.Boolean),
-          code_search_index_status: S.optional(__S(38)),
+          code_search_index_status: S.optional(RepositoryCodeSearchIndexStatus),
         }),
       ).annotate({ identifier: "Repository" });
   }
@@ -7861,16 +10165,16 @@ function __c4(j: number): any {
 function __c5(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(39));
+      return S.Array(Repository);
     case 1:
       return S.suspend(() =>
         S.Struct({
           token: S.String,
           expires_at: S.String,
           permissions: S.optional(S.Unknown),
-          repositories: S.optional(__S(40)),
+          repositories: S.optional(AuthenticationTokenRepositoriesList),
           single_file: S.optional(S.NullOr(S.String)),
-          repository_selection: S.optional(S.String),
+          repository_selection: S.optional(AuthenticationTokenRepositorySelection),
         }),
       ).annotate({ identifier: "AuthenticationToken" });
     case 2:
@@ -7919,9 +10223,9 @@ function __c5(j: number): any {
           owner: S.String.pipe(T.Label()),
           repo: S.String.pipe(T.Label()),
           name: S.String,
-          enforcement: S.String,
-          conditions: S.optional(S.Unknown),
-          rules: S.optional(__S(24)),
+          enforcement: RepositoryRuleEnforcement,
+          conditions: S.optional(ActionsPolicyRepoConditions),
+          rules: S.optional(CreateRepoActionsPolicyRequestRulesList),
         }).pipe(
           T.Http({ method: "POST", uri: "/repos/{owner}/{repo}/actions/policies", code: 200 }),
         ),
@@ -7946,12 +10250,16 @@ function __c5(j: number): any {
         S.Struct({
           org: S.String.pipe(T.Label()),
           name: S.String,
-          visibility: S.optional(S.String),
-          selected_repository_ids: S.optional(__S(26)),
-          runners: S.optional(__S(23)),
+          visibility: S.optional(CreateSelfHostedRunnerGroupForOrgRequestVisibility),
+          selected_repository_ids: S.optional(
+            CreateSelfHostedRunnerGroupForOrgRequestSelectedRepositoryIdsList,
+          ),
+          runners: S.optional(CreateSelfHostedRunnerGroupForOrgRequestRunnersList),
           allows_public_repositories: S.optional(S.Boolean),
           restricted_to_workflows: S.optional(S.Boolean),
-          selected_workflows: S.optional(__S(0)),
+          selected_workflows: S.optional(
+            CreateSelfHostedRunnerGroupForOrgRequestSelectedWorkflowsList,
+          ),
           network_configuration_id: S.optional(S.String),
         }).pipe(T.Http({ method: "POST", uri: "/orgs/{org}/actions/runner-groups", code: 200 })),
       ).annotate({
@@ -7977,7 +10285,7 @@ function __c6(j: number): any {
           allows_public_repositories: S.Boolean,
           workflow_restrictions_read_only: S.optional(S.Boolean),
           restricted_to_workflows: S.optional(S.Boolean),
-          selected_workflows: S.optional(__S(0)),
+          selected_workflows: S.optional(RunnerGroupsOrgSelectedWorkflowsList),
         }),
       ).annotate({ identifier: "RunnerGroupsOrg" });
     case 1:
@@ -7989,7 +10297,7 @@ function __c6(j: number): any {
           repo: S.String.pipe(T.Label()),
           workflow_id: S.String.pipe(T.Label()),
           ref: S.String,
-          inputs: S.optional(__S(49)),
+          inputs: S.optional(CreateWorkflowDispatchRequestInputsMap),
           return_run_details: S.optional(S.Boolean),
         }).pipe(
           T.Http({
@@ -8053,7 +10361,7 @@ function __c6(j: number): any {
         identifier: "ActionsCacheListActionsCachesItem",
       });
     case 7:
-      return S.Array(__S(54));
+      return S.Array(ActionsCacheListActionsCachesItem);
   }
 }
 function __c7(j: number): any {
@@ -8062,7 +10370,7 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           total_count: S.Number,
-          actions_caches: __S(55),
+          actions_caches: ActionsCacheListActionsCachesList,
         }),
       ).annotate({ identifier: "ActionsCacheList" });
     case 1:
@@ -8525,7 +10833,7 @@ function __c11(j: number): any {
           org: S.String.pipe(T.Label()),
           name: S.String,
           runner_group_id: S.Number,
-          labels: __S(0),
+          labels: GenerateRunnerJitconfigForOrgRequestLabelsList,
           work_folder: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -8546,7 +10854,7 @@ function __c11(j: number): any {
           os: S.String,
           status: S.String,
           busy: S.Boolean,
-          labels: __S(3),
+          labels: RunnerLabelsList,
           ephemeral: S.optional(S.Boolean),
           version: S.optional(S.NullOr(S.String)),
         }),
@@ -8554,7 +10862,7 @@ function __c11(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          runner: __S(90),
+          runner: Runner,
           encoded_jit_config: S.String,
         }),
       ).annotate({
@@ -8567,7 +10875,7 @@ function __c11(j: number): any {
           repo: S.String.pipe(T.Label()),
           name: S.String,
           runner_group_id: S.Number,
-          labels: __S(0),
+          labels: GenerateRunnerJitconfigForRepoRequestLabelsList,
           work_folder: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -8588,8 +10896,8 @@ function __c11(j: number): any {
           page: S.optional(S.Number.pipe(T.Query())),
           ref: S.optional(S.String.pipe(T.Query())),
           key: S.optional(S.String.pipe(T.Query())),
-          sort: S.optional(S.String.pipe(T.Query())),
-          direction: S.optional(S.String.pipe(T.Query())),
+          sort: S.optional(GetActionsCacheListRequestSort.pipe(T.Query())),
+          direction: S.optional(GetActionsCacheListRequestDirection.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/repos/{owner}/{repo}/actions/caches", code: 200 })),
       ).annotate({
         identifier: "GetActionsCacheListRequest",
@@ -8742,12 +11050,13 @@ function __c13(j: number): any {
         identifier: "GetActionsCacheUsageByRepoForOrgRequest",
       });
     case 1:
-      return S.Array(__S(103));
+      return S.Array(ActionsCacheUsageByRepository);
     case 2:
       return S.suspend(() =>
         S.Struct({
           total_count: S.Number,
-          repository_cache_usages: __S(105),
+          repository_cache_usages:
+            GetActionsCacheUsageByRepoForOrgResponseRepositoryCacheUsagesList,
         }),
       ).annotate({
         identifier: "GetActionsCacheUsageByRepoForOrgResponse",
@@ -8788,7 +11097,7 @@ function __c13(j: number): any {
         S.Struct({
           github_owned_allowed: S.optional(S.Boolean),
           verified_allowed: S.optional(S.Boolean),
-          patterns_allowed: S.optional(__S(0)),
+          patterns_allowed: S.optional(SelectedActionsPatternsAllowedList),
         }),
       ).annotate({ identifier: "SelectedActions" });
     case 7:
@@ -8848,7 +11157,7 @@ function __c14(j: number): any {
           expires_at: S.NullOr(S.String),
           updated_at: S.NullOr(S.String),
           digest: S.optional(S.NullOr(S.String)),
-          workflow_run: S.optional(S.NullOr(__S(113))),
+          workflow_run: S.optional(S.NullOr(ArtifactWorkflowRun)),
         }),
       ).annotate({ identifier: "Artifact" });
     case 3:
@@ -8918,7 +11227,7 @@ function __c14(j: number): any {
           job_name: S.optional(S.String),
           job_url: S.optional(S.NullOr(S.String)),
           job_html_url: S.optional(S.NullOr(S.String)),
-          status: S.String,
+          status: ConcurrencyGroupGroupMembersItemStatus,
         }),
       ).annotate({
         identifier: "ConcurrencyGroupGroupMembersItem",
@@ -8928,14 +11237,14 @@ function __c14(j: number): any {
 function __c15(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(119));
+      return S.Array(ConcurrencyGroupGroupMembersItem);
     case 1:
       return S.suspend(() =>
         S.Struct({
           group_name: S.String,
           group_url: S.String,
           total_count: S.Number,
-          group_members: __S(120),
+          group_members: ConcurrencyGroupGroupMembersList,
         }),
       ).annotate({ identifier: "ConcurrencyGroup" });
     case 2:
@@ -9015,7 +11324,7 @@ function __c15(j: number): any {
       return S.suspend(() =>
         S.Struct({
           use_default: S.Boolean,
-          include_claim_keys: S.optional(__S(0)),
+          include_claim_keys: S.optional(OidcCustomSubRepoIncludeClaimKeysList),
           use_immutable_subject: S.optional(S.Boolean),
           sub_claim_prefix: S.optional(S.String),
         }),
@@ -9119,7 +11428,7 @@ function __c16(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          approval_policy: S.String,
+          approval_policy: ActionsForkPrContributorApprovalApprovalPolicy,
         }),
       ).annotate({
         identifier: "ActionsForkPrContributorApproval",
@@ -9156,7 +11465,7 @@ function __c17(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          default_workflow_permissions: S.String,
+          default_workflow_permissions: ActionsDefaultWorkflowPermissions,
           can_approve_pull_request_reviews: S.Boolean,
         }),
       ).annotate({
@@ -9188,9 +11497,9 @@ function __c17(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          enabled_repositories: S.String,
+          enabled_repositories: EnabledRepositories,
           selected_repositories_url: S.optional(S.String),
-          allowed_actions: S.optional(S.String),
+          allowed_actions: S.optional(AllowedActions),
           selected_actions_url: S.optional(S.String),
           sha_pinning_required: S.optional(S.Boolean),
         }),
@@ -9212,7 +11521,7 @@ function __c17(j: number): any {
       return S.suspend(() =>
         S.Struct({
           enabled: S.Boolean,
-          allowed_actions: S.optional(S.String),
+          allowed_actions: S.optional(AllowedActions),
           selected_actions_url: S.optional(S.String),
           sha_pinning_required: S.optional(S.Boolean),
         }),
@@ -9259,18 +11568,18 @@ function __c18(j: number): any {
           platform: S.String,
           size_gb: S.Number,
           display_name: S.String,
-          source: S.String,
+          source: ActionsHostedRunnerCuratedImageSource,
         }),
       ).annotate({
         identifier: "ActionsHostedRunnerCuratedImage",
       });
     case 3:
-      return S.Array(__S(146));
+      return S.Array(ActionsHostedRunnerCuratedImage);
     case 4:
       return S.suspend(() =>
         S.Struct({
           total_count: S.Number,
-          images: __S(147),
+          images: GetHostedRunnersGithubOwnedImagesForOrgResponseImagesList,
         }),
       ).annotate({
         identifier: "GetHostedRunnersGithubOwnedImagesForOrgResponse",
@@ -9297,7 +11606,7 @@ function __c18(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          public_ips: __S(150),
+          public_ips: ActionsHostedRunnerLimitsPublicIps,
         }),
       ).annotate({
         identifier: "ActionsHostedRunnerLimits",
@@ -9321,12 +11630,12 @@ function __c19(j: number): any {
         identifier: "GetHostedRunnersMachineSpecsForOrgRequest",
       });
     case 1:
-      return S.Array(__S(19));
+      return S.Array(ActionsHostedRunnerMachineSpec);
     case 2:
       return S.suspend(() =>
         S.Struct({
           total_count: S.Number,
-          machine_specs: __S(153),
+          machine_specs: GetHostedRunnersMachineSpecsForOrgResponseMachineSpecsList,
         }),
       ).annotate({
         identifier: "GetHostedRunnersMachineSpecsForOrgResponse",
@@ -9359,7 +11668,7 @@ function __c19(j: number): any {
       return S.suspend(() =>
         S.Struct({
           total_count: S.Number,
-          platforms: __S(0),
+          platforms: GetHostedRunnersPlatformsForOrgResponsePlatformsList,
         }),
       ).annotate({
         identifier: "GetHostedRunnersPlatformsForOrgResponse",
@@ -9379,7 +11688,7 @@ function __c19(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          status: S.String,
+          status: JobStepsItemStatus,
           conclusion: S.NullOr(S.String),
           name: S.String,
           number: S.Number,
@@ -9392,7 +11701,7 @@ function __c19(j: number): any {
 function __c20(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(159));
+      return S.Array(JobStepsItem);
     case 1:
       return S.Array(S.String);
     case 2:
@@ -9406,15 +11715,15 @@ function __c20(j: number): any {
           head_sha: S.String,
           url: S.String,
           html_url: S.NullOr(S.String),
-          status: S.String,
-          conclusion: S.NullOr(S.String),
+          status: JobStatus,
+          conclusion: S.NullOr(JobConclusion),
           created_at: S.String,
           started_at: S.String,
           completed_at: S.NullOr(S.String),
           name: S.String,
-          steps: S.optional(__S(160)),
+          steps: S.optional(JobStepsList),
           check_run_url: S.String,
-          labels: __S(161),
+          labels: JobLabelsList,
           runner_id: S.NullOr(S.Number),
           runner_name: S.NullOr(S.String),
           runner_group_id: S.NullOr(S.Number),
@@ -9435,12 +11744,12 @@ function __c20(j: number): any {
         identifier: "GetOrgActionsPoliciesRequest",
       });
     case 4:
-      return S.Array(__S(29));
+      return S.Array(ActionsPolicy);
     case 5:
       return S.suspend(() =>
         S.Struct({
           total_count: S.Number,
-          policies: __S(164),
+          policies: GetOrgActionsPoliciesResponsePoliciesList,
         }),
       ).annotate({
         identifier: "GetOrgActionsPoliciesResponse",
@@ -9483,7 +11792,7 @@ function __c21(j: number): any {
           name: S.String,
           created_at: S.String,
           updated_at: S.String,
-          visibility: S.String,
+          visibility: OrganizationActionsSecretVisibility,
           selected_repositories_url: S.optional(S.String),
         }),
       ).annotate({
@@ -9503,7 +11812,7 @@ function __c21(j: number): any {
           value: S.String,
           created_at: S.String,
           updated_at: S.String,
-          visibility: S.String,
+          visibility: OrganizationActionsVariableVisibility,
           selected_repositories_url: S.optional(S.String),
         }),
       ).annotate({
@@ -9540,14 +11849,14 @@ function __c21(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(S.String),
-          reviewer: S.optional(S.Unknown),
+          type: S.optional(DeploymentReviewerType),
+          reviewer: S.optional(PendingDeploymentReviewersItemReviewer),
         }),
       ).annotate({
         identifier: "PendingDeploymentReviewersItem",
       });
     case 7:
-      return S.Array(__S(174));
+      return S.Array(PendingDeploymentReviewersItem);
   }
 }
 function __c22(j: number): any {
@@ -9555,17 +11864,19 @@ function __c22(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          environment: __S(173),
+          environment: PendingDeploymentEnvironment,
           wait_timer: S.Number,
           wait_timer_started_at: S.NullOr(S.String),
           current_user_can_approve: S.Boolean,
-          reviewers: __S(175),
+          reviewers: PendingDeploymentReviewersList,
         }),
       ).annotate({ identifier: "PendingDeployment" });
     case 1:
-      return S.Array(__S(176));
+      return S.Array(PendingDeployment);
     case 2:
-      return S.suspend(() => __S(177).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        GetPendingDeploymentsForRunResponseBodyList.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "GetPendingDeploymentsForRunResponse",
       });
     case 3:
@@ -9712,24 +12023,24 @@ function __c23(j: number): any {
         identifier: "EnvironmentApprovalsEnvironmentsItem",
       });
     case 5:
-      return S.Array(__S(188));
+      return S.Array(EnvironmentApprovalsEnvironmentsItem);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          environments: __S(189),
-          state: S.String,
-          user: __S(37),
+          environments: EnvironmentApprovalsEnvironmentsList,
+          state: EnvironmentApprovalsState,
+          user: SimpleUser,
           comment: S.String,
         }),
       ).annotate({ identifier: "EnvironmentApprovals" });
     case 7:
-      return S.Array(__S(190));
+      return S.Array(EnvironmentApprovals);
   }
 }
 function __c24(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => __S(191).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => GetReviewsForRunResponseBodyList.pipe(T.RawResponseRoot())).annotate({
         identifier: "GetReviewsForRunResponse",
       });
     case 1:
@@ -9836,7 +12147,7 @@ function __c25(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          enabled_repositories: S.String,
+          enabled_repositories: SelfHostedRunnersSettingsEnabledRepositories,
           selected_repositories_url: S.optional(S.String),
         }),
       ).annotate({
@@ -9863,7 +12174,7 @@ function __c25(j: number): any {
           node_id: S.String,
           name: S.String,
           path: S.String,
-          state: S.String,
+          state: WorkflowState,
           created_at: S.String,
           updated_at: S.String,
           url: S.String,
@@ -9890,7 +12201,7 @@ function __c25(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          access_level: S.String,
+          access_level: ActionsWorkflowAccessToRepositoryAccessLevel,
         }),
       ).annotate({
         identifier: "ActionsWorkflowAccessToRepository",
@@ -9915,7 +12226,7 @@ function __c25(j: number): any {
         }),
       ).annotate({ identifier: "ReferencedWorkflow" });
     case 7:
-      return S.Array(__S(206));
+      return S.Array(ReferencedWorkflow);
   }
 }
 function __c26(j: number): any {
@@ -9935,7 +12246,7 @@ function __c26(j: number): any {
         S.Struct({
           ref: S.String,
           sha: S.String,
-          repo: __S(208),
+          repo: PullRequestMinimalHeadRepo,
         }),
       ).annotate({ identifier: "PullRequestMinimalHead" });
     case 2:
@@ -9944,12 +12255,12 @@ function __c26(j: number): any {
           id: S.Number,
           number: S.Number,
           url: S.String,
-          head: __S(209),
-          base: __S(209),
+          head: PullRequestMinimalHead,
+          base: PullRequestMinimalHead,
         }),
       ).annotate({ identifier: "PullRequestMinimal" });
     case 3:
-      return S.Array(__S(210));
+      return S.Array(PullRequestMinimal);
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -9966,8 +12277,8 @@ function __c26(j: number): any {
           tree_id: S.String,
           message: S.String,
           timestamp: S.String,
-          author: S.NullOr(__S(212)),
-          committer: S.NullOr(__S(212)),
+          author: S.NullOr(NullableSimpleCommitAuthor),
+          committer: S.NullOr(NullableSimpleCommitCommitter),
         }),
       ).annotate({ identifier: "NullableSimpleCommit" });
     case 6:
@@ -10009,7 +12320,7 @@ function __c27(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(S.String),
+          status: S.optional(SecurityAndAnalysisAdvancedSecurityStatus),
         }),
       ).annotate({
         identifier: "SecurityAndAnalysisAdvancedSecurity",
@@ -10017,7 +12328,7 @@ function __c27(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(S.String),
+          status: S.optional(SecurityAndAnalysisSecretScanningDelegatedAlertDismissalStatus),
         }),
       ).annotate({
         identifier: "SecurityAndAnalysisSecretScanningDelegatedAlertDismissal",
@@ -10026,18 +12337,23 @@ function __c27(j: number): any {
       return S.suspend(() =>
         S.Struct({
           reviewer_id: S.Number,
-          reviewer_type: S.String,
-          mode: S.optional(S.String),
+          reviewer_type:
+            SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemReviewerType,
+          mode: S.optional(
+            SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemMode,
+          ),
         }),
       ).annotate({
         identifier: "SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItem",
       });
     case 4:
-      return S.Array(__S(219));
+      return S.Array(SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItem);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          reviewers: S.optional(__S(220)),
+          reviewers: S.optional(
+            SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersList,
+          ),
         }),
       ).annotate({
         identifier: "SecurityAndAnalysisSecretScanningDelegatedBypassOptions",
@@ -10045,16 +12361,26 @@ function __c27(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          advanced_security: S.optional(__S(217)),
-          code_security: S.optional(__S(217)),
-          dependabot_security_updates: S.optional(__S(217)),
-          secret_scanning: S.optional(__S(217)),
-          secret_scanning_push_protection: S.optional(__S(217)),
-          secret_scanning_non_provider_patterns: S.optional(__S(217)),
-          secret_scanning_ai_detection: S.optional(__S(217)),
-          secret_scanning_delegated_alert_dismissal: S.optional(__S(218)),
-          secret_scanning_delegated_bypass: S.optional(__S(217)),
-          secret_scanning_delegated_bypass_options: S.optional(__S(221)),
+          advanced_security: S.optional(SecurityAndAnalysisAdvancedSecurity),
+          code_security: S.optional(SecurityAndAnalysisCodeSecurity),
+          dependabot_security_updates: S.optional(SecurityAndAnalysisDependabotSecurityUpdates),
+          secret_scanning: S.optional(SecurityAndAnalysisSecretScanning),
+          secret_scanning_push_protection: S.optional(
+            SecurityAndAnalysisSecretScanningPushProtection,
+          ),
+          secret_scanning_non_provider_patterns: S.optional(
+            SecurityAndAnalysisSecretScanningNonProviderPatterns,
+          ),
+          secret_scanning_ai_detection: S.optional(SecurityAndAnalysisSecretScanningAiDetection),
+          secret_scanning_delegated_alert_dismissal: S.optional(
+            SecurityAndAnalysisSecretScanningDelegatedAlertDismissal,
+          ),
+          secret_scanning_delegated_bypass: S.optional(
+            SecurityAndAnalysisSecretScanningDelegatedBypass,
+          ),
+          secret_scanning_delegated_bypass_options: S.optional(
+            SecurityAndAnalysisSecretScanningDelegatedBypassOptions,
+          ),
         }),
       ).annotate({ identifier: "SecurityAndAnalysis" });
     case 7:
@@ -10064,7 +12390,7 @@ function __c27(j: number): any {
           node_id: S.String,
           name: S.String,
           full_name: S.String,
-          owner: __S(37),
+          owner: SimpleUser,
           private: S.Boolean,
           html_url: S.String,
           description: S.NullOr(S.String),
@@ -10120,7 +12446,7 @@ function __c27(j: number): any {
           default_branch: S.optional(S.String),
           open_issues_count: S.optional(S.Number),
           is_template: S.optional(S.Boolean),
-          topics: S.optional(__S(0)),
+          topics: S.optional(MinimalRepositoryTopicsList),
           has_issues: S.optional(S.Boolean),
           has_projects: S.optional(S.Boolean),
           has_wiki: S.optional(S.Boolean),
@@ -10128,28 +12454,28 @@ function __c27(j: number): any {
           has_downloads: S.optional(S.Boolean),
           has_discussions: S.optional(S.Boolean),
           has_pull_requests: S.optional(S.Boolean),
-          pull_request_creation_policy: S.optional(S.String),
+          pull_request_creation_policy: S.optional(MinimalRepositoryPullRequestCreationPolicy),
           archived: S.optional(S.Boolean),
           disabled: S.optional(S.Boolean),
           visibility: S.optional(S.String),
           pushed_at: S.optional(S.NullOr(S.String)),
           created_at: S.optional(S.NullOr(S.String)),
           updated_at: S.optional(S.NullOr(S.String)),
-          permissions: S.optional(__S(214)),
+          permissions: S.optional(MinimalRepositoryPermissions),
           role_name: S.optional(S.String),
           temp_clone_token: S.optional(S.String),
           delete_branch_on_merge: S.optional(S.Boolean),
           subscribers_count: S.optional(S.Number),
           network_count: S.optional(S.Number),
-          code_of_conduct: S.optional(__S(215)),
-          license: S.optional(S.NullOr(__S(216))),
+          code_of_conduct: S.optional(CodeOfConduct),
+          license: S.optional(S.NullOr(MinimalRepositoryLicense)),
           forks: S.optional(S.Number),
           open_issues: S.optional(S.Number),
           watchers: S.optional(S.Number),
           allow_forking: S.optional(S.Boolean),
           web_commit_signoff_required: S.optional(S.Boolean),
-          security_and_analysis: S.optional(S.NullOr(__S(222))),
-          custom_properties: S.optional(__S(49)),
+          security_and_analysis: S.optional(S.NullOr(SecurityAndAnalysis)),
+          custom_properties: S.optional(MinimalRepositoryCustomPropertiesMap),
         }),
       ).annotate({ identifier: "MinimalRepository" });
   }
@@ -10169,18 +12495,18 @@ function __c28(j: number): any {
           path: S.String,
           run_number: S.Number,
           run_attempt: S.optional(S.Number),
-          referenced_workflows: S.optional(S.NullOr(__S(207))),
+          referenced_workflows: S.optional(S.NullOr(WorkflowRunReferencedWorkflowsList)),
           event: S.String,
           status: S.NullOr(S.String),
           conclusion: S.NullOr(S.String),
           workflow_id: S.Number,
           url: S.String,
           html_url: S.String,
-          pull_requests: S.NullOr(__S(211)),
+          pull_requests: S.NullOr(WorkflowRunPullRequestsList),
           created_at: S.String,
           updated_at: S.String,
-          actor: S.optional(__S(37)),
-          triggering_actor: S.optional(__S(37)),
+          actor: S.optional(SimpleUser),
+          triggering_actor: S.optional(SimpleUser),
           run_started_at: S.optional(S.String),
           jobs_url: S.String,
           logs_url: S.String,
@@ -10190,9 +12516,9 @@ function __c28(j: number): any {
           rerun_url: S.String,
           previous_attempt_url: S.optional(S.NullOr(S.String)),
           workflow_url: S.String,
-          head_commit: S.NullOr(__S(213)),
-          repository: __S(223),
-          head_repository: __S(223),
+          head_commit: S.NullOr(NullableSimpleCommit),
+          repository: MinimalRepository,
+          head_repository: MinimalRepository,
           head_repository_id: S.optional(S.Number),
           display_title: S.String,
         }),
@@ -10241,13 +12567,13 @@ function __c28(j: number): any {
         identifier: "WorkflowRunUsageBillableUBUNTUJobRunsItem",
       });
     case 4:
-      return S.Array(__S(227));
+      return S.Array(WorkflowRunUsageBillableUBUNTUJobRunsItem);
     case 5:
       return S.suspend(() =>
         S.Struct({
           total_ms: S.Number,
           jobs: S.Number,
-          job_runs: S.optional(__S(228)),
+          job_runs: S.optional(WorkflowRunUsageBillableUBUNTUJobRunsList),
         }),
       ).annotate({
         identifier: "WorkflowRunUsageBillableUBUNTU",
@@ -10255,15 +12581,15 @@ function __c28(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          UBUNTU: S.optional(__S(229)),
-          MACOS: S.optional(__S(229)),
-          WINDOWS: S.optional(__S(229)),
+          UBUNTU: S.optional(WorkflowRunUsageBillableUBUNTU),
+          MACOS: S.optional(WorkflowRunUsageBillableMACOS),
+          WINDOWS: S.optional(WorkflowRunUsageBillableWINDOWS),
         }),
       ).annotate({ identifier: "WorkflowRunUsageBillable" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          billable: __S(230),
+          billable: WorkflowRunUsageBillable,
           run_duration_ms: S.optional(S.Number),
         }),
       ).annotate({ identifier: "WorkflowRunUsage" });
@@ -10296,15 +12622,15 @@ function __c29(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          UBUNTU: S.optional(__S(233)),
-          MACOS: S.optional(__S(233)),
-          WINDOWS: S.optional(__S(233)),
+          UBUNTU: S.optional(WorkflowUsageBillableUBUNTU),
+          MACOS: S.optional(WorkflowUsageBillableUBUNTU),
+          WINDOWS: S.optional(WorkflowUsageBillableUBUNTU),
         }),
       ).annotate({ identifier: "WorkflowUsageBillable" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          billable: __S(234),
+          billable: WorkflowUsageBillable,
         }),
       ).annotate({ identifier: "WorkflowUsage" });
     case 4:
@@ -10322,12 +12648,12 @@ function __c29(j: number): any {
         identifier: "ListArtifactsForRepoRequest",
       });
     case 5:
-      return S.Array(__S(114));
+      return S.Array(Artifact);
     case 6:
       return S.suspend(() =>
         S.Struct({
           total_count: S.Number,
-          artifacts: __S(237),
+          artifacts: ListArtifactsForRepoResponseArtifactsList,
         }),
       ).annotate({
         identifier: "ListArtifactsForRepoResponse",
@@ -10364,12 +12690,12 @@ function __c30(j: number): any {
         identifier: "ConcurrencyGroupListConcurrencyGroupsItem",
       });
     case 1:
-      return S.Array(__S(240));
+      return S.Array(ConcurrencyGroupListConcurrencyGroupsItem);
     case 2:
       return S.suspend(() =>
         S.Struct({
           total_count: S.Number,
-          concurrency_groups: __S(241),
+          concurrency_groups: ConcurrencyGroupListConcurrencyGroupsList,
         }),
       ).annotate({ identifier: "ConcurrencyGroupList" });
     case 3:
@@ -10404,25 +12730,25 @@ function __c30(j: number): any {
           job_name: S.optional(S.NullOr(S.String)),
           job_url: S.optional(S.NullOr(S.String)),
           job_html_url: S.optional(S.NullOr(S.String)),
-          status: S.String,
+          status: ConcurrencyGroupRunListConcurrencyGroupsItemGroupMembersItemStatus,
         }),
       ).annotate({
         identifier: "ConcurrencyGroupRunListConcurrencyGroupsItemGroupMembersItem",
       });
     case 5:
-      return S.Array(__S(244));
+      return S.Array(ConcurrencyGroupRunListConcurrencyGroupsItemGroupMembersItem);
     case 6:
       return S.suspend(() =>
         S.Struct({
           group_name: S.String,
           group_url: S.String,
-          group_members: __S(245),
+          group_members: ConcurrencyGroupRunListConcurrencyGroupsItemGroupMembersList,
         }),
       ).annotate({
         identifier: "ConcurrencyGroupRunListConcurrencyGroupsItem",
       });
     case 7:
-      return S.Array(__S(246));
+      return S.Array(ConcurrencyGroupRunListConcurrencyGroupsItem);
   }
 }
 function __c31(j: number): any {
@@ -10431,7 +12757,7 @@ function __c31(j: number): any {
       return S.suspend(() =>
         S.Struct({
           total_count: S.Number,
-          concurrency_groups: __S(247),
+          concurrency_groups: ConcurrencyGroupRunListConcurrencyGroupsList,
         }),
       ).annotate({ identifier: "ConcurrencyGroupRunList" });
     case 1:
@@ -10449,12 +12775,12 @@ function __c31(j: number): any {
         identifier: "ListCustomImagesForOrgRequest",
       });
     case 2:
-      return S.Array(__S(123));
+      return S.Array(ActionsHostedRunnerCustomImage);
     case 3:
       return S.suspend(() =>
         S.Struct({
           total_count: S.Number,
-          images: __S(250),
+          images: ListCustomImagesForOrgResponseImagesList,
         }),
       ).annotate({
         identifier: "ListCustomImagesForOrgResponse",
@@ -10475,12 +12801,12 @@ function __c31(j: number): any {
         identifier: "ListCustomImageVersionsForOrgRequest",
       });
     case 5:
-      return S.Array(__S(125));
+      return S.Array(ActionsHostedRunnerCustomImageVersion);
     case 6:
       return S.suspend(() =>
         S.Struct({
           total_count: S.Number,
-          image_versions: __S(253),
+          image_versions: ListCustomImageVersionsForOrgResponseImageVersionsList,
         }),
       ).annotate({
         identifier: "ListCustomImageVersionsForOrgResponse",
@@ -10508,12 +12834,12 @@ function __c31(j: number): any {
 function __c32(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(131));
+      return S.Array(ActionsSecret);
     case 1:
       return S.suspend(() =>
         S.Struct({
           total_count: S.Number,
-          secrets: __S(256),
+          secrets: ListEnvironmentSecretsResponseSecretsList,
         }),
       ).annotate({
         identifier: "ListEnvironmentSecretsResponse",
@@ -10537,12 +12863,12 @@ function __c32(j: number): any {
         identifier: "ListEnvironmentVariablesRequest",
       });
     case 3:
-      return S.Array(__S(133));
+      return S.Array(ActionsVariable);
     case 4:
       return S.suspend(() =>
         S.Struct({
           total_count: S.Number,
-          variables: __S(259),
+          variables: ListEnvironmentVariablesResponseVariablesList,
         }),
       ).annotate({
         identifier: "ListEnvironmentVariablesResponse",
@@ -10565,12 +12891,12 @@ function __c32(j: number): any {
         identifier: "ListGithubHostedRunnersInGroupForOrgRequest",
       });
     case 6:
-      return S.Array(__S(22));
+      return S.Array(ActionsHostedRunner);
     case 7:
       return S.suspend(() =>
         S.Struct({
           total_count: S.Number,
-          runners: __S(262),
+          runners: ListGithubHostedRunnersInGroupForOrgResponseRunnersList,
         }),
       ).annotate({
         identifier: "ListGithubHostedRunnersInGroupForOrgResponse",
@@ -10595,7 +12921,7 @@ function __c33(j: number): any {
           owner: S.String.pipe(T.Label()),
           repo: S.String.pipe(T.Label()),
           run_id: S.Number.pipe(T.Label()),
-          filter: S.optional(S.String.pipe(T.Query())),
+          filter: S.optional(ListJobsForWorkflowRunRequestFilter.pipe(T.Query())),
           per_page: S.optional(S.Number.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
         }).pipe(
@@ -10609,12 +12935,12 @@ function __c33(j: number): any {
         identifier: "ListJobsForWorkflowRunRequest",
       });
     case 2:
-      return S.Array(__S(162));
+      return S.Array(Job);
     case 3:
       return S.suspend(() =>
         S.Struct({
           total_count: S.Number,
-          jobs: __S(266),
+          jobs: ListJobsForWorkflowRunResponseJobsList,
         }),
       ).annotate({
         identifier: "ListJobsForWorkflowRunResponse",
@@ -10682,12 +13008,12 @@ function __c33(j: number): any {
 function __c34(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(169));
+      return S.Array(OrganizationActionsSecret);
     case 1:
       return S.suspend(() =>
         S.Struct({
           total_count: S.Number,
-          secrets: __S(272),
+          secrets: ListOrgSecretsResponseSecretsList,
         }),
       ).annotate({ identifier: "ListOrgSecretsResponse" });
     case 2:
@@ -10699,12 +13025,12 @@ function __c34(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/orgs/{org}/actions/variables", code: 200 })),
       ).annotate({ identifier: "ListOrgVariablesRequest" });
     case 3:
-      return S.Array(__S(171));
+      return S.Array(OrganizationActionsVariable);
     case 4:
       return S.suspend(() =>
         S.Struct({
           total_count: S.Number,
-          variables: __S(275),
+          variables: ListOrgVariablesResponseVariablesList,
         }),
       ).annotate({ identifier: "ListOrgVariablesResponse" });
     case 5:
@@ -10725,12 +13051,12 @@ function __c34(j: number): any {
         identifier: "ListRepoAccessToSelfHostedRunnerGroupInOrgRequest",
       });
     case 6:
-      return S.Array(__S(223));
+      return S.Array(MinimalRepository);
     case 7:
       return S.suspend(() =>
         S.Struct({
           total_count: S.Number,
-          repositories: __S(278),
+          repositories: ListRepoAccessToSelfHostedRunnerGroupInOrgResponseRepositoriesList,
         }),
       ).annotate({
         identifier: "ListRepoAccessToSelfHostedRunnerGroupInOrgResponse",
@@ -10786,7 +13112,7 @@ function __c35(j: number): any {
       return S.suspend(() =>
         S.Struct({
           total_count: S.Number,
-          secrets: __S(256),
+          secrets: ListRepoSecretsResponseSecretsList,
         }),
       ).annotate({ identifier: "ListRepoSecretsResponse" });
     case 4:
@@ -10812,12 +13138,12 @@ function __c35(j: number): any {
         ),
       ).annotate({ identifier: "ListRepoWorkflowsRequest" });
     case 6:
-      return S.Array(__S(202));
+      return S.Array(Workflow);
     case 7:
       return S.suspend(() =>
         S.Struct({
           total_count: S.Number,
-          workflows: __S(286),
+          workflows: ListRepoWorkflowsResponseWorkflowsList,
         }),
       ).annotate({
         identifier: "ListRepoWorkflowsResponse",
@@ -10846,9 +13172,11 @@ function __c36(j: number): any {
         }),
       ).annotate({ identifier: "RunnerApplication" });
     case 2:
-      return S.Array(__S(289));
+      return S.Array(RunnerApplication);
     case 3:
-      return S.suspend(() => __S(290).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        ListRunnerApplicationsForOrgResponseBodyList.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "ListRunnerApplicationsForOrgResponse",
       });
     case 4:
@@ -10884,12 +13212,12 @@ function __c36(j: number): any {
         identifier: "ListSelectedReposForOrgSecretRequest",
       });
     case 6:
-      return S.Array(__S(223));
+      return S.Array(MinimalRepository);
     case 7:
       return S.suspend(() =>
         S.Struct({
           total_count: S.Number,
-          repositories: __S(294),
+          repositories: ListSelectedReposForOrgSecretResponseRepositoriesList,
         }),
       ).annotate({
         identifier: "ListSelectedReposForOrgSecretResponse",
@@ -10928,12 +13256,13 @@ function __c37(j: number): any {
         identifier: "ListSelectedRepositoriesEnabledGithubActionsOrganizationRequest",
       });
     case 2:
-      return S.Array(__S(39));
+      return S.Array(Repository);
     case 3:
       return S.suspend(() =>
         S.Struct({
           total_count: S.Number,
-          repositories: __S(298),
+          repositories:
+            ListSelectedRepositoriesEnabledGithubActionsOrganizationResponseRepositoriesList,
         }),
       ).annotate({
         identifier: "ListSelectedRepositoriesEnabledGithubActionsOrganizationResponse",
@@ -10958,7 +13287,9 @@ function __c37(j: number): any {
       return S.suspend(() =>
         S.Struct({
           total_count: S.optional(S.Number),
-          repositories: S.optional(__S(298)),
+          repositories: S.optional(
+            ListSelectedRepositoriesSelfHostedRunnersOrganizationResponseRepositoriesList,
+          ),
         }),
       ).annotate({
         identifier: "ListSelectedRepositoriesSelfHostedRunnersOrganizationResponse",
@@ -10975,7 +13306,7 @@ function __c37(j: number): any {
         identifier: "ListSelfHostedRunnerGroupsForOrgRequest",
       });
     case 7:
-      return S.Array(__S(48));
+      return S.Array(RunnerGroupsOrg);
   }
 }
 function __c38(j: number): any {
@@ -10984,7 +13315,7 @@ function __c38(j: number): any {
       return S.suspend(() =>
         S.Struct({
           total_count: S.Number,
-          runner_groups: __S(303),
+          runner_groups: ListSelfHostedRunnerGroupsForOrgResponseRunnerGroupsList,
         }),
       ).annotate({
         identifier: "ListSelfHostedRunnerGroupsForOrgResponse",
@@ -11001,12 +13332,12 @@ function __c38(j: number): any {
         identifier: "ListSelfHostedRunnersForOrgRequest",
       });
     case 2:
-      return S.Array(__S(90));
+      return S.Array(Runner);
     case 3:
       return S.suspend(() =>
         S.Struct({
           total_count: S.Number,
-          runners: __S(306),
+          runners: ListSelfHostedRunnersForOrgResponseRunnersList,
         }),
       ).annotate({
         identifier: "ListSelfHostedRunnersForOrgResponse",
@@ -11049,7 +13380,7 @@ function __c38(j: number): any {
           per_page: S.optional(S.Number.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
           name: S.optional(S.String.pipe(T.Query())),
-          direction: S.optional(S.String.pipe(T.Query())),
+          direction: S.optional(ListWorkflowRunArtifactsRequestDirection.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -11069,7 +13400,7 @@ function __c38(j: number): any {
           actor: S.optional(S.String.pipe(T.Query())),
           branch: S.optional(S.String.pipe(T.Query())),
           event: S.optional(S.String.pipe(T.Query())),
-          status: S.optional(S.String.pipe(T.Query())),
+          status: S.optional(ListWorkflowRunsRequestStatus.pipe(T.Query())),
           per_page: S.optional(S.Number.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
           created: S.optional(S.String.pipe(T.Query())),
@@ -11089,12 +13420,12 @@ function __c38(j: number): any {
 function __c39(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(224));
+      return S.Array(WorkflowRun);
     case 1:
       return S.suspend(() =>
         S.Struct({
           total_count: S.Number,
-          workflow_runs: __S(312),
+          workflow_runs: ListWorkflowRunsResponseWorkflowRunsList,
         }),
       ).annotate({ identifier: "ListWorkflowRunsResponse" });
     case 2:
@@ -11105,7 +13436,7 @@ function __c39(j: number): any {
           actor: S.optional(S.String.pipe(T.Query())),
           branch: S.optional(S.String.pipe(T.Query())),
           event: S.optional(S.String.pipe(T.Query())),
-          status: S.optional(S.String.pipe(T.Query())),
+          status: S.optional(ListWorkflowRunsForRepoRequestStatus.pipe(T.Query())),
           per_page: S.optional(S.Number.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
           created: S.optional(S.String.pipe(T.Query())),
@@ -11120,7 +13451,7 @@ function __c39(j: number): any {
       return S.suspend(() =>
         S.Struct({
           total_count: S.Number,
-          workflow_runs: __S(312),
+          workflow_runs: ListWorkflowRunsForRepoResponseWorkflowRunsList,
         }),
       ).annotate({
         identifier: "ListWorkflowRunsForRepoResponse",
@@ -11141,12 +13472,12 @@ function __c39(j: number): any {
         identifier: "RemoveAllCustomLabelsFromSelfHostedRunnerForOrgRequest",
       });
     case 5:
-      return S.Array(__S(2));
+      return S.Array(RunnerLabel);
     case 6:
       return S.suspend(() =>
         S.Struct({
           total_count: S.Number,
-          labels: __S(317),
+          labels: RemoveAllCustomLabelsFromSelfHostedRunnerForOrgResponseLabelsList,
         }),
       ).annotate({
         identifier: "RemoveAllCustomLabelsFromSelfHostedRunnerForOrgResponse",
@@ -11175,7 +13506,7 @@ function __c40(j: number): any {
       return S.suspend(() =>
         S.Struct({
           total_count: S.Number,
-          labels: __S(317),
+          labels: RemoveAllCustomLabelsFromSelfHostedRunnerForRepoResponseLabelsList,
         }),
       ).annotate({
         identifier: "RemoveAllCustomLabelsFromSelfHostedRunnerForRepoResponse",
@@ -11323,7 +13654,7 @@ function __c41(j: number): any {
           owner: S.String.pipe(T.Label()),
           repo: S.String.pipe(T.Label()),
           run_id: S.Number.pipe(T.Label()),
-          body: S.Unknown.pipe(T.HttpBody()),
+          body: ReviewCustomGatesForRunRequestBody.pipe(T.HttpBody()),
         }).pipe(
           T.Http({
             method: "POST",
@@ -11340,8 +13671,8 @@ function __c41(j: number): any {
           owner: S.String.pipe(T.Label()),
           repo: S.String.pipe(T.Label()),
           run_id: S.Number.pipe(T.Label()),
-          environment_ids: __S(23),
-          state: S.String,
+          environment_ids: ReviewPendingDeploymentsForRunRequestEnvironmentIdsList,
+          state: ReviewPendingDeploymentsForRunRequestState,
           comment: S.String,
         }).pipe(
           T.Http({
@@ -11372,15 +13703,15 @@ function __c41(j: number): any {
           slug: S.optional(S.String),
           node_id: S.String,
           client_id: S.optional(S.String),
-          owner: S.Unknown,
+          owner: NullableIntegrationOwner,
           name: S.String,
           description: S.NullOr(S.String),
           external_url: S.String,
           html_url: S.String,
           created_at: S.String,
           updated_at: S.String,
-          permissions: __S(332),
-          events: __S(0),
+          permissions: NullableIntegrationPermissions,
+          events: NullableIntegrationEventsList,
           installations_count: S.optional(S.Number),
         }),
       ).annotate({ identifier: "NullableIntegration" });
@@ -11393,28 +13724,30 @@ function __c41(j: number): any {
           sha: S.String,
           ref: S.String,
           task: S.String,
-          payload: S.Unknown,
+          payload: DeploymentPayload,
           original_environment: S.optional(S.String),
           environment: S.String,
           description: S.NullOr(S.String),
-          creator: S.NullOr(__S(37)),
+          creator: S.NullOr(SimpleUser),
           created_at: S.String,
           updated_at: S.String,
           statuses_url: S.String,
           repository_url: S.String,
           transient_environment: S.optional(S.Boolean),
           production_environment: S.optional(S.Boolean),
-          performed_via_github_app: S.optional(S.NullOr(__S(333))),
+          performed_via_github_app: S.optional(S.NullOr(NullableIntegration)),
         }),
       ).annotate({ identifier: "Deployment" });
     case 7:
-      return S.Array(__S(334));
+      return S.Array(Deployment);
   }
 }
 function __c42(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => __S(335).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        ReviewPendingDeploymentsForRunResponseBodyList.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "ReviewPendingDeploymentsForRunResponse",
       });
     case 1:
@@ -11537,7 +13870,7 @@ function __c43(j: number): any {
           org: S.String.pipe(T.Label()),
           github_owned_allowed: S.optional(S.Boolean),
           verified_allowed: S.optional(S.Boolean),
-          patterns_allowed: S.optional(__S(0)),
+          patterns_allowed: S.optional(SetAllowedActionsOrganizationRequestPatternsAllowedList),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -11555,7 +13888,7 @@ function __c43(j: number): any {
           repo: S.String.pipe(T.Label()),
           github_owned_allowed: S.optional(S.Boolean),
           verified_allowed: S.optional(S.Boolean),
-          patterns_allowed: S.optional(__S(0)),
+          patterns_allowed: S.optional(SetAllowedActionsRepositoryRequestPatternsAllowedList),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -11602,7 +13935,7 @@ function __c43(j: number): any {
         S.Struct({
           org: S.String.pipe(T.Label()),
           runner_id: S.Number.pipe(T.Label()),
-          labels: __S(0),
+          labels: SetCustomLabelsForSelfHostedRunnerForOrgRequestLabelsList,
         }).pipe(
           T.Http({
             method: "PUT",
@@ -11619,7 +13952,7 @@ function __c43(j: number): any {
           owner: S.String.pipe(T.Label()),
           repo: S.String.pipe(T.Label()),
           runner_id: S.Number.pipe(T.Label()),
-          labels: __S(0),
+          labels: SetCustomLabelsForSelfHostedRunnerForRepoRequestLabelsList,
         }).pipe(
           T.Http({
             method: "PUT",
@@ -11636,7 +13969,7 @@ function __c43(j: number): any {
           owner: S.String.pipe(T.Label()),
           repo: S.String.pipe(T.Label()),
           use_default: S.Boolean,
-          include_claim_keys: S.optional(__S(0)),
+          include_claim_keys: S.optional(SetCustomOidcSubClaimForRepoRequestIncludeClaimKeysList),
           use_immutable_subject: S.optional(S.Boolean),
         }).pipe(
           T.Http({
@@ -11652,7 +13985,7 @@ function __c43(j: number): any {
       return S.suspend(() =>
         S.Struct({
           org: S.String.pipe(T.Label()),
-          approval_policy: S.String,
+          approval_policy: SetForkPrContributorApprovalPermissionsOrganizationRequestApprovalPolicy,
         }).pipe(
           T.Http({
             method: "PUT",
@@ -11672,7 +14005,7 @@ function __c44(j: number): any {
         S.Struct({
           owner: S.String.pipe(T.Label()),
           repo: S.String.pipe(T.Label()),
-          approval_policy: S.String,
+          approval_policy: SetForkPrContributorApprovalPermissionsRepositoryRequestApprovalPolicy,
         }).pipe(
           T.Http({
             method: "PUT",
@@ -11687,7 +14020,7 @@ function __c44(j: number): any {
       return S.suspend(() =>
         S.Struct({
           org: S.String.pipe(T.Label()),
-          default_workflow_permissions: S.optional(S.String),
+          default_workflow_permissions: S.optional(ActionsDefaultWorkflowPermissions),
           can_approve_pull_request_reviews: S.optional(S.Boolean),
         }).pipe(
           T.Http({ method: "PUT", uri: "/orgs/{org}/actions/permissions/workflow", code: 200 }),
@@ -11700,7 +14033,7 @@ function __c44(j: number): any {
         S.Struct({
           owner: S.String.pipe(T.Label()),
           repo: S.String.pipe(T.Label()),
-          default_workflow_permissions: S.optional(S.String),
+          default_workflow_permissions: S.optional(ActionsDefaultWorkflowPermissions),
           can_approve_pull_request_reviews: S.optional(S.Boolean),
         }).pipe(
           T.Http({
@@ -11716,8 +14049,8 @@ function __c44(j: number): any {
       return S.suspend(() =>
         S.Struct({
           org: S.String.pipe(T.Label()),
-          enabled_repositories: S.String,
-          allowed_actions: S.optional(S.String),
+          enabled_repositories: EnabledRepositories,
+          allowed_actions: S.optional(AllowedActions),
           sha_pinning_required: S.optional(S.Boolean),
         }).pipe(T.Http({ method: "PUT", uri: "/orgs/{org}/actions/permissions", code: 200 })),
       ).annotate({
@@ -11729,7 +14062,7 @@ function __c44(j: number): any {
           owner: S.String.pipe(T.Label()),
           repo: S.String.pipe(T.Label()),
           enabled: S.Boolean,
-          allowed_actions: S.optional(S.String),
+          allowed_actions: S.optional(AllowedActions),
           sha_pinning_required: S.optional(S.Boolean),
         }).pipe(
           T.Http({ method: "PUT", uri: "/repos/{owner}/{repo}/actions/permissions", code: 200 }),
@@ -11779,7 +14112,8 @@ function __c44(j: number): any {
         S.Struct({
           org: S.String.pipe(T.Label()),
           runner_group_id: S.Number.pipe(T.Label()),
-          selected_repository_ids: __S(26),
+          selected_repository_ids:
+            SetRepoAccessToSelfHostedRunnerGroupInOrgRequestSelectedRepositoryIdsList,
         }).pipe(
           T.Http({
             method: "PUT",
@@ -11799,7 +14133,7 @@ function __c45(j: number): any {
         S.Struct({
           org: S.String.pipe(T.Label()),
           secret_name: S.String.pipe(T.Label()),
-          selected_repository_ids: __S(23),
+          selected_repository_ids: SetSelectedReposForOrgSecretRequestSelectedRepositoryIdsList,
         }).pipe(
           T.Http({
             method: "PUT",
@@ -11815,7 +14149,7 @@ function __c45(j: number): any {
         S.Struct({
           org: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
-          selected_repository_ids: __S(23),
+          selected_repository_ids: SetSelectedReposForOrgVariableRequestSelectedRepositoryIdsList,
         }).pipe(
           T.Http({
             method: "PUT",
@@ -11830,7 +14164,8 @@ function __c45(j: number): any {
       return S.suspend(() =>
         S.Struct({
           org: S.String.pipe(T.Label()),
-          selected_repository_ids: __S(26),
+          selected_repository_ids:
+            SetSelectedRepositoriesEnabledGithubActionsOrganizationRequestSelectedRepositoryIdsList,
         }).pipe(
           T.Http({ method: "PUT", uri: "/orgs/{org}/actions/permissions/repositories", code: 200 }),
         ),
@@ -11841,7 +14176,8 @@ function __c45(j: number): any {
       return S.suspend(() =>
         S.Struct({
           org: S.String.pipe(T.Label()),
-          selected_repository_ids: __S(26),
+          selected_repository_ids:
+            SetSelectedRepositoriesSelfHostedRunnersOrganizationRequestSelectedRepositoryIdsList,
         }).pipe(
           T.Http({
             method: "PUT",
@@ -11857,7 +14193,7 @@ function __c45(j: number): any {
         S.Struct({
           org: S.String.pipe(T.Label()),
           runner_group_id: S.Number.pipe(T.Label()),
-          runners: __S(23),
+          runners: SetSelfHostedRunnersInGroupForOrgRequestRunnersList,
         }).pipe(
           T.Http({
             method: "PUT",
@@ -11872,7 +14208,8 @@ function __c45(j: number): any {
       return S.suspend(() =>
         S.Struct({
           org: S.String.pipe(T.Label()),
-          enabled_repositories: S.String,
+          enabled_repositories:
+            SetSelfHostedRunnersPermissionsOrganizationRequestEnabledRepositories,
         }).pipe(
           T.Http({
             method: "PUT",
@@ -11888,7 +14225,7 @@ function __c45(j: number): any {
         S.Struct({
           owner: S.String.pipe(T.Label()),
           repo: S.String.pipe(T.Label()),
-          access_level: S.String,
+          access_level: SetWorkflowAccessToRepositoryRequestAccessLevel,
         }).pipe(
           T.Http({
             method: "PUT",
@@ -11931,7 +14268,7 @@ function __c46(j: number): any {
           maximum_runners: S.optional(S.Number),
           enable_static_ip: S.optional(S.Boolean),
           size: S.optional(S.String),
-          image_source: S.optional(S.String),
+          image_source: S.optional(UpdateHostedRunnerForOrgRequestImageSource),
           image_id: S.optional(S.String),
           image_version: S.optional(S.NullOr(S.String)),
           image_gen: S.optional(S.Boolean),
@@ -11951,9 +14288,9 @@ function __c46(j: number): any {
           org: S.String.pipe(T.Label()),
           policy_id: S.Number.pipe(T.Label()),
           name: S.optional(S.String),
-          enforcement: S.optional(S.String),
-          conditions: S.optional(S.Unknown),
-          rules: S.optional(__S(24)),
+          enforcement: S.optional(RepositoryRuleEnforcement),
+          conditions: S.optional(ActionsPolicyOrgConditions),
+          rules: S.optional(UpdateOrgActionsPolicyRequestRulesList),
         }).pipe(
           T.Http({ method: "PUT", uri: "/orgs/{org}/actions/policies/{policy_id}", code: 200 }),
         ),
@@ -11966,8 +14303,8 @@ function __c46(j: number): any {
           org: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
           value: S.optional(S.String),
-          visibility: S.optional(S.String),
-          selected_repository_ids: S.optional(__S(23)),
+          visibility: S.optional(UpdateOrgVariableRequestVisibility),
+          selected_repository_ids: S.optional(UpdateOrgVariableRequestSelectedRepositoryIdsList),
         }).pipe(
           T.Http({ method: "PATCH", uri: "/orgs/{org}/actions/variables/{name}", code: 200 }),
         ),
@@ -11979,9 +14316,9 @@ function __c46(j: number): any {
           repo: S.String.pipe(T.Label()),
           policy_id: S.Number.pipe(T.Label()),
           name: S.optional(S.String),
-          enforcement: S.optional(S.String),
-          conditions: S.optional(S.Unknown),
-          rules: S.optional(__S(24)),
+          enforcement: S.optional(RepositoryRuleEnforcement),
+          conditions: S.optional(ActionsPolicyRepoConditions),
+          rules: S.optional(UpdateRepoActionsPolicyRequestRulesList),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -12015,10 +14352,12 @@ function __c46(j: number): any {
           org: S.String.pipe(T.Label()),
           runner_group_id: S.Number.pipe(T.Label()),
           name: S.String,
-          visibility: S.optional(S.String),
+          visibility: S.optional(UpdateSelfHostedRunnerGroupForOrgRequestVisibility),
           allows_public_repositories: S.optional(S.Boolean),
           restricted_to_workflows: S.optional(S.Boolean),
-          selected_workflows: S.optional(__S(0)),
+          selected_workflows: S.optional(
+            UpdateSelfHostedRunnerGroupForOrgRequestSelectedWorkflowsList,
+          ),
           network_configuration_id: S.optional(S.NullOr(S.String)),
         }).pipe(
           T.Http({
@@ -12030,108 +14369,5 @@ function __c46(j: number): any {
       ).annotate({
         identifier: "UpdateSelfHostedRunnerGroupForOrgRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
-    case 9:
-      return __c9(i & 7);
-    case 10:
-      return __c10(i & 7);
-    case 11:
-      return __c11(i & 7);
-    case 12:
-      return __c12(i & 7);
-    case 13:
-      return __c13(i & 7);
-    case 14:
-      return __c14(i & 7);
-    case 15:
-      return __c15(i & 7);
-    case 16:
-      return __c16(i & 7);
-    case 17:
-      return __c17(i & 7);
-    case 18:
-      return __c18(i & 7);
-    case 19:
-      return __c19(i & 7);
-    case 20:
-      return __c20(i & 7);
-    case 21:
-      return __c21(i & 7);
-    case 22:
-      return __c22(i & 7);
-    case 23:
-      return __c23(i & 7);
-    case 24:
-      return __c24(i & 7);
-    case 25:
-      return __c25(i & 7);
-    case 26:
-      return __c26(i & 7);
-    case 27:
-      return __c27(i & 7);
-    case 28:
-      return __c28(i & 7);
-    case 29:
-      return __c29(i & 7);
-    case 30:
-      return __c30(i & 7);
-    case 31:
-      return __c31(i & 7);
-    case 32:
-      return __c32(i & 7);
-    case 33:
-      return __c33(i & 7);
-    case 34:
-      return __c34(i & 7);
-    case 35:
-      return __c35(i & 7);
-    case 36:
-      return __c36(i & 7);
-    case 37:
-      return __c37(i & 7);
-    case 38:
-      return __c38(i & 7);
-    case 39:
-      return __c39(i & 7);
-    case 40:
-      return __c40(i & 7);
-    case 41:
-      return __c41(i & 7);
-    case 42:
-      return __c42(i & 7);
-    case 43:
-      return __c43(i & 7);
-    case 44:
-      return __c44(i & 7);
-    case 45:
-      return __c45(i & 7);
-    case 46:
-      return __c46(i & 7);
   }
 }

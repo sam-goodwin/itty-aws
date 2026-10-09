@@ -7,8 +7,6 @@ import { paginateRelay } from "../pagination.ts";
 import { WhopProtocol, type WhopOpError, type WhopOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { WhopOpError, WhopOpContext };
 
@@ -52,35 +50,65 @@ export interface CreateReferralPartnerRequest {
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
+const CreateReferralPartnerRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<CreateReferralPartnerRequest>;
+
 export interface CreateReferralPartnerResponse {
   /** The caller's referral link -- businesses that sign up through it are attributed to the caller. */
   referral_link: string;
   /** When the caller became a Whop partner. */
   whop_partner_enabled_at: string;
 }
+const CreateReferralPartnerResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<CreateReferralPartnerResponse>;
+
 export interface GetPartnerRequest {
   /** The authenticated partner's user ID, prefixed user_, or me. Other users' profiles are not accessible. */
   id: string;
 }
+const GetPartnerRequest = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<GetPartnerRequest>;
+
 /** Unit of the earning window. Month means a calendar month; day means a day. */
 export type PartnerPayoutDurationUnit = "day" | "month";
+const PartnerPayoutDurationUnit = S.String;
+
 export interface PartnerPayoutDuration {
   /** Unit of the earning window. Month means a calendar month; day means a day. */
   unit: PartnerPayoutDurationUnit;
   /** Number of units in the earning window. */
   value: number;
 }
+const PartnerPayoutDuration = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<PartnerPayoutDuration>;
+
 /** Income source that generates this percentage payout. */
 export type PartnerPayoutRateIncomeSource = "sales" | "transfer" | "card_interchange" | "ad_spend";
+const PartnerPayoutRateIncomeSource = S.String;
+
 export interface PartnerPayoutRate {
   /** Income source that generates this percentage payout. */
   income_source: PartnerPayoutRateIncomeSource;
   /** Partner's default percentage for this tier and income source. For example, 30 means 30%. */
   percentage: number;
 }
+const PartnerPayoutRate = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<PartnerPayoutRate>;
+
 export type PartnerPayoutTierRatesList = Array<PartnerPayoutRate>;
+const PartnerPayoutTierRatesList = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<PartnerPayoutTierRatesList>;
+
 /** Referral tier: first for a directly referred business, or second for a business brought by a referred partner. */
 export type PartnerPayoutTierTier = "first" | "second";
+const PartnerPayoutTierTier = S.String;
+
 export interface PartnerPayoutTier {
   /** Default period during which a new referred business can generate commissions, measured from its attribution start. This is not a payout delay. Individual business terms can differ. */
   duration: PartnerPayoutDuration;
@@ -88,11 +116,20 @@ export interface PartnerPayoutTier {
   /** Referral tier: first for a directly referred business, or second for a business brought by a referred partner. */
   tier: PartnerPayoutTierTier;
 }
+const PartnerPayoutTier = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<PartnerPayoutTier>;
+
 export type PartnerPayoutRatesList = Array<PartnerPayoutTier>;
+const PartnerPayoutRatesList = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<PartnerPayoutRatesList>;
+
 export interface UserProfilePicture {
   /** Avatar image URL. Always present -- a generated placeholder when the user set no picture. */
   url: string;
 }
+const UserProfilePicture = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<UserProfilePicture>;
+
 export interface UserSummary {
   /** User ID, prefixed `user_`. */
   id: string;
@@ -103,6 +140,8 @@ export interface UserSummary {
   /** Public username. */
   username: string;
 }
+const UserSummary = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<UserSummary>;
+
 export interface Partner {
   /** Whether the user finished the partner certification course: every visible quiz and knowledge check has a passing result, or, when the course has none, every visible lesson is marked completed. */
   certification_complete: boolean;
@@ -118,34 +157,65 @@ export interface Partner {
   /** When the user became a verified Whop Partner, as an ISO 8601 timestamp. `null` if not verified. */
   whop_partner_verified_at: string | null;
 }
+const Partner = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<Partner>;
+
 export interface GetPartnerBusinessRequest {
   /** The partner business ID (a coma_ identifier). */
   id: string;
 }
+const GetPartnerBusinessRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<GetPartnerBusinessRequest>;
+
 /** Bank payins: debits, transfers, and local bank rails */
 export type AccountCapabilitiesAcceptBankPayments = "active" | "inactive" | "pending";
+const AccountCapabilitiesAcceptBankPayments = S.String;
+
 /** Buy-now-pay-later payins; requires approval */
 export type AccountCapabilitiesAcceptBnplPayments = "active" | "inactive" | "pending";
+const AccountCapabilitiesAcceptBnplPayments = S.String;
+
 /** Card payins, including Apple Pay and Google Pay */
 export type AccountCapabilitiesAcceptCardPayments = "active" | "inactive" | "pending";
+const AccountCapabilitiesAcceptCardPayments = S.String;
+
 /** Deposits by bank wire or ACH to the account's virtual bank account */
 export type AccountCapabilitiesBankDeposit = "active" | "inactive" | "pending";
+const AccountCapabilitiesBankDeposit = S.String;
+
 /** Balance top-ups by charging a stored payment method */
 export type AccountCapabilitiesCardDeposit = "active" | "inactive" | "pending";
+const AccountCapabilitiesCardDeposit = S.String;
+
 /** Issuing Whop cards; requires card application approval */
 export type AccountCapabilitiesCardIssuing = "active" | "inactive" | "pending";
+const AccountCapabilitiesCardIssuing = S.String;
+
 /** On-chain deposits to the account's crypto wallet */
 export type AccountCapabilitiesCryptoDeposit = "active" | "inactive" | "pending";
+const AccountCapabilitiesCryptoDeposit = S.String;
+
 /** On-chain payouts to a crypto wallet */
 export type AccountCapabilitiesCryptoPayout = "active" | "inactive" | "pending";
+const AccountCapabilitiesCryptoPayout = S.String;
+
 /** Instant payouts to an eligible payout destination */
 export type AccountCapabilitiesInstantPayout = "active" | "inactive" | "pending";
+const AccountCapabilitiesInstantPayout = S.String;
+
 /** Launching ad campaigns through Whop Ads. `inactive` while a requested ads services agreement is awaiting the account's signature. */
 export type AccountCapabilitiesRunAds = "active" | "inactive" | "pending";
+const AccountCapabilitiesRunAds = S.String;
+
 /** Standard payouts to an external payout destination */
 export type AccountCapabilitiesStandardPayout = "active" | "inactive" | "pending";
+const AccountCapabilitiesStandardPayout = S.String;
+
 /** Transfers to other accounts */
 export type AccountCapabilitiesTransfer = "active" | "inactive" | "pending";
+const AccountCapabilitiesTransfer = S.String;
+
 export interface AccountCapabilities {
   /** Bank payins: debits, transfers, and local bank rails */
   accept_bank_payments: AccountCapabilitiesAcceptBankPayments;
@@ -172,6 +242,8 @@ export interface AccountCapabilities {
   /** Transfers to other accounts */
   transfer: AccountCapabilitiesTransfer;
 }
+const AccountCapabilities = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<AccountCapabilities>;
+
 /** The recommendation; new values may be added, so handle unknown actions gracefully */
 export type AccountRecommendedActionAction =
   | "theme_business"
@@ -194,9 +266,18 @@ export type AccountRecommendedActionAction =
   | "enable_tax_collection"
   | "create_card"
   | "apply_for_financing";
+const AccountRecommendedActionAction = S.String;
+
 export type AccountRecommendedActionBlockedCapabilitiesList = Array<string>;
+const AccountRecommendedActionBlockedCapabilitiesList = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<AccountRecommendedActionBlockedCapabilitiesList>;
+
 /** Always optional -- never blocking */
 export type AccountRecommendedActionStatus = "optional";
+const AccountRecommendedActionStatus = S.String;
+
 export interface AccountRecommendedAction {
   /** The recommendation; new values may be added, so handle unknown actions gracefully */
   action: AccountRecommendedActionAction;
@@ -218,9 +299,19 @@ export interface AccountRecommendedAction {
   /** Headline for the recommendation */
   title: string;
 }
+const AccountRecommendedAction = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<AccountRecommendedAction>;
+
 /** Optional actions that unlock capabilities or grow the referred account. */
 export type GetPartnerBusinessResponseAccountRecommendedActionsList =
   Array<AccountRecommendedAction>;
+const GetPartnerBusinessResponseAccountRecommendedActionsList = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<GetPartnerBusinessResponseAccountRecommendedActionsList>;
+
 /** What the holder must do; new values may be added, so handle unknown actions gracefully */
 export type AccountRequiredActionAction =
   | "deposit_funds"
@@ -239,9 +330,16 @@ export type AccountRequiredActionAction =
   | "add_vat_registration"
   | "accept_payout_terms"
   | "enable_two_factor_authentication";
+const AccountRequiredActionAction = S.String;
+
 export type AccountRequiredActionBlockedCapabilitiesList = Array<string>;
+const AccountRequiredActionBlockedCapabilitiesList =
+  AccountRecommendedActionBlockedCapabilitiesList as any as S.Schema<AccountRequiredActionBlockedCapabilitiesList>;
+
 /** required (act now) or pending (under review) */
 export type AccountRequiredActionStatus = "required" | "pending";
+const AccountRequiredActionStatus = S.String;
+
 export interface AccountRequiredAction {
   /** What the holder must do; new values may be added, so handle unknown actions gracefully */
   action: AccountRequiredActionAction;
@@ -259,8 +357,18 @@ export interface AccountRequiredAction {
   /** Headline for the action */
   title: string;
 }
+const AccountRequiredAction = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<AccountRequiredAction>;
+
 /** Actions the referred account owner must take to unblock capabilities. */
 export type GetPartnerBusinessResponseAccountRequiredActionsList = Array<AccountRequiredAction>;
+const GetPartnerBusinessResponseAccountRequiredActionsList = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<GetPartnerBusinessResponseAccountRequiredActionsList>;
+
 /** Referred account. */
 export interface GetPartnerBusinessResponseAccount {
   capabilities: AccountCapabilities | null;
@@ -277,11 +385,21 @@ export interface GetPartnerBusinessResponseAccount {
   /** Referred account display name. */
   title: string;
 }
+const GetPartnerBusinessResponseAccount = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<GetPartnerBusinessResponseAccount>;
+
 /** The user's profile picture. */
 export interface GetPartnerBusinessResponseBlueprintPartnerProfilePicture {
   /** The user's profile picture URL. */
   url: string;
 }
+const GetPartnerBusinessResponseBlueprintPartnerProfilePicture = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<GetPartnerBusinessResponseBlueprintPartnerProfilePicture>;
+
 /** The partner whose blueprint the business deployed. Null unless this is a blueprint referral. */
 export interface GetPartnerBusinessResponseBlueprintPartner {
   /** User ID, prefixed `user_`. */
@@ -293,6 +411,11 @@ export interface GetPartnerBusinessResponseBlueprintPartner {
   /** The user's unique username. */
   username: string;
 }
+const GetPartnerBusinessResponseBlueprintPartner = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<GetPartnerBusinessResponseBlueprintPartner>;
+
 export interface GetPartnerBusinessResponseEarningsUsd {
   /** Commission already paid out, in USD. */
   completed: string;
@@ -301,6 +424,11 @@ export interface GetPartnerBusinessResponseEarningsUsd {
   /** Pending + completed commission, in USD. */
   total: string;
 }
+const GetPartnerBusinessResponseEarningsUsd = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<GetPartnerBusinessResponseEarningsUsd>;
+
 /** The user's profile picture. */
 export type GetPartnerBusinessResponseFirstTierPartnerProfilePicture =
   GetPartnerBusinessResponseBlueprintPartnerProfilePicture;
@@ -308,7 +436,11 @@ export type GetPartnerBusinessResponseFirstTierPartnerProfilePicture =
 export type GetPartnerBusinessResponseFirstTierPartner = GetPartnerBusinessResponseBlueprintPartner;
 /** Which tier the caller earns on for this business: `first` (they referred the owner), `second` (they referred the first-tier partner), or `blueprint` (the business deployed a site from their blueprint). */
 export type GetPartnerBusinessResponseMyPartnerTier = "first" | "second" | "blueprint";
+const GetPartnerBusinessResponseMyPartnerTier = S.String;
+
 export type GetPartnerBusinessResponseObject = "partner_business";
+const GetPartnerBusinessResponseObject = S.String;
+
 /** The user's profile picture. */
 export type GetPartnerBusinessResponseOwnerProfilePicture =
   GetPartnerBusinessResponseBlueprintPartnerProfilePicture;
@@ -325,6 +457,11 @@ export interface GetPartnerBusinessResponseOwner {
   /** The user's unique username. */
   username: string;
 }
+const GetPartnerBusinessResponseOwner = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<GetPartnerBusinessResponseOwner>;
+
 /** The referrer's commission rate for each income source, expressed as a fraction (0.3 = 30%). */
 export interface GetPartnerBusinessResponsePayoutPercentages {
   /** Share of the referred business's Whop Ads spend. */
@@ -336,6 +473,11 @@ export interface GetPartnerBusinessResponsePayoutPercentages {
   /** Share of Whop's profit from platform balance transfers. */
   transfer: number | null;
 }
+const GetPartnerBusinessResponsePayoutPercentages = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<GetPartnerBusinessResponsePayoutPercentages>;
+
 /** The user's profile picture. */
 export type GetPartnerBusinessResponseSecondTierPartnerProfilePicture =
   GetPartnerBusinessResponseBlueprintPartnerProfilePicture;
@@ -344,6 +486,8 @@ export type GetPartnerBusinessResponseSecondTierPartner =
   GetPartnerBusinessResponseBlueprintPartner;
 /** Current referral status. */
 export type GetPartnerBusinessResponseStatus = "active" | "removed";
+const GetPartnerBusinessResponseStatus = S.String;
+
 export interface GetPartnerBusinessResponseVolumeUsd {
   /** Credited GMV (awaiting_settlement + settled); excludes canceled and reversed, in USD. */
   attributed: string;
@@ -354,6 +498,11 @@ export interface GetPartnerBusinessResponseVolumeUsd {
   /** GMV of pending + completed payments, in USD. */
   settled: string;
 }
+const GetPartnerBusinessResponseVolumeUsd = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<GetPartnerBusinessResponseVolumeUsd>;
+
 export interface GetPartnerBusinessResponse {
   /** Referred account. */
   account: GetPartnerBusinessResponseAccount | null;
@@ -383,16 +532,28 @@ export interface GetPartnerBusinessResponse {
   status: GetPartnerBusinessResponseStatus;
   volume_usd: GetPartnerBusinessResponseVolumeUsd;
 }
+const GetPartnerBusinessResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<GetPartnerBusinessResponse>;
+
 export type GetPartnerLeaderboardRequestPeriod =
   | "day"
   | "month"
   | "year"
   | "last_30_days"
   | "all_time";
+const GetPartnerLeaderboardRequestPeriod = S.String;
+
 export interface GetPartnerLeaderboardRequest {
   /** Time window for the rankings. `day`, `month`, and `year` count earnings since the start of the current calendar day, month, or year; `last_30_days` counts earnings over the trailing 30 days; `all_time` ranks lifetime earnings. */
   period?: GetPartnerLeaderboardRequestPeriod | (string & {});
 }
+const GetPartnerLeaderboardRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<GetPartnerLeaderboardRequest>;
+
 /** The user's profile picture. Present only on the caller's own entry. */
 export type GetPartnerLeaderboardResponseLeadersItemUserProfilePicture =
   GetPartnerBusinessResponseBlueprintPartnerProfilePicture;
@@ -411,6 +572,11 @@ export interface GetPartnerLeaderboardResponseLeadersItemUser {
   /** The user's unique username. Present only on the caller's own entry. */
   username?: string;
 }
+const GetPartnerLeaderboardResponseLeadersItemUser = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<GetPartnerLeaderboardResponseLeadersItemUser>;
+
 export interface GetPartnerLeaderboardResponseLeadersItem {
   /** When the referrer's earliest partner business became active. */
   first_referral_started_at: string;
@@ -423,9 +589,19 @@ export interface GetPartnerLeaderboardResponseLeadersItem {
   /** The ranked referrer. Identity fields (id, name, username, profile_picture) are returned only on the caller's own entry; other referrers expose coarse location only. */
   user: GetPartnerLeaderboardResponseLeadersItemUser | null;
 }
+const GetPartnerLeaderboardResponseLeadersItem = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<GetPartnerLeaderboardResponseLeadersItem>;
+
 /** The top referrers by total earnings, best first. */
 export type GetPartnerLeaderboardResponseLeadersList =
   Array<GetPartnerLeaderboardResponseLeadersItem>;
+const GetPartnerLeaderboardResponseLeadersList = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<GetPartnerLeaderboardResponseLeadersList>;
+
 /** The user's profile picture. Present only on the caller's own entry. */
 export type GetPartnerLeaderboardResponseMeUserProfilePicture =
   GetPartnerBusinessResponseBlueprintPartnerProfilePicture;
@@ -439,12 +615,19 @@ export interface GetPartnerLeaderboardResponse {
   /** The caller's own standing; null when the caller has no referral earnings. */
   me: GetPartnerLeaderboardResponseLeadersItem | null;
 }
+const GetPartnerLeaderboardResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<GetPartnerLeaderboardResponse>;
+
 export type ListPartnerBusinessEarningsRequestStatus =
   | "awaiting_settlement"
   | "pending"
   | "completed"
   | "canceled"
   | "reversed";
+const ListPartnerBusinessEarningsRequestStatus = S.String;
+
 export type ListPartnerBusinessEarningsRequestIncomeSourceItem =
   | "sales"
   | "ad_spend"
@@ -452,15 +635,26 @@ export type ListPartnerBusinessEarningsRequestIncomeSourceItem =
   | "card_interchange"
   | "onboarding_reward"
   | "partner_reward";
+const ListPartnerBusinessEarningsRequestIncomeSourceItem = S.String;
+
 export type ListPartnerBusinessEarningsRequestIncomeSourceList = Array<
   ListPartnerBusinessEarningsRequestIncomeSourceItem | (string & {})
 >;
+const ListPartnerBusinessEarningsRequestIncomeSourceList = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<ListPartnerBusinessEarningsRequestIncomeSourceList>;
+
 export type ListPartnerBusinessEarningsRequestOrder =
   | "created_at"
   | "commission_amount"
   | "transaction_amount"
   | "payout_at";
+const ListPartnerBusinessEarningsRequestOrder = S.String;
+
 export type ListPartnerBusinessEarningsRequestDirection = "asc" | "desc";
+const ListPartnerBusinessEarningsRequestDirection = S.String;
+
 export interface ListPartnerBusinessEarningsRequest {
   /** The partner business ID (a coma_ identifier). */
   id: string;
@@ -485,6 +679,11 @@ export interface ListPartnerBusinessEarningsRequest {
   /** Only return earnings created after this timestamp. */
   created_after?: string;
 }
+const ListPartnerBusinessEarningsRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<ListPartnerBusinessEarningsRequest>;
+
 /** Referred account. */
 export interface ListPartnerBusinessEarningsResponseDataItemAccount {
   /** Referred account ID. */
@@ -496,10 +695,17 @@ export interface ListPartnerBusinessEarningsResponseDataItemAccount {
   /** Referred account display name. */
   title: string;
 }
+const ListPartnerBusinessEarningsResponseDataItemAccount = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<ListPartnerBusinessEarningsResponseDataItemAccount>;
+
 /** Whether the line is income Whop collected or a cost Whop paid. */
 export type ListPartnerBusinessEarningsResponseDataItemFinancialActivityItemType =
   | "income"
   | "expense";
+const ListPartnerBusinessEarningsResponseDataItemFinancialActivityItemType = S.String;
+
 export interface ListPartnerBusinessEarningsResponseDataItemFinancialActivityItem {
   /** Line amount in its native currency. */
   amount: string;
@@ -513,9 +719,19 @@ export interface ListPartnerBusinessEarningsResponseDataItemFinancialActivityIte
   /** Whether the line is income Whop collected or a cost Whop paid. */
   type: ListPartnerBusinessEarningsResponseDataItemFinancialActivityItemType;
 }
+const ListPartnerBusinessEarningsResponseDataItemFinancialActivityItem = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<ListPartnerBusinessEarningsResponseDataItemFinancialActivityItem>;
+
 /** Income and cost lines behind this earning's commission. Null for earnings settled before this data was recorded. */
 export type ListPartnerBusinessEarningsResponseDataItemFinancialActivityList =
   Array<ListPartnerBusinessEarningsResponseDataItemFinancialActivityItem>;
+const ListPartnerBusinessEarningsResponseDataItemFinancialActivityList = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<ListPartnerBusinessEarningsResponseDataItemFinancialActivityList>;
+
 /** Which income source the commission is on: product-sales gross profit, Whop Ads spend billed to the business, platform balance transfer fees, Whop Card interchange, or a fixed onboarding or referral link reward paid to the partner when a referred business qualifies. */
 export type ListPartnerBusinessEarningsResponseDataItemIncomeSource =
   | "sales"
@@ -524,12 +740,21 @@ export type ListPartnerBusinessEarningsResponseDataItemIncomeSource =
   | "card_interchange"
   | "onboarding_reward"
   | "partner_reward";
+const ListPartnerBusinessEarningsResponseDataItemIncomeSource = S.String;
+
 export type ListPartnerBusinessEarningsResponseDataItemObject = "partner_business_earning";
+const ListPartnerBusinessEarningsResponseDataItemObject = S.String;
+
 export interface ListPartnerBusinessEarningsResponseDataItemProduct {
   id: string;
   route: string;
   title: string;
 }
+const ListPartnerBusinessEarningsResponseDataItemProduct = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<ListPartnerBusinessEarningsResponseDataItemProduct>;
+
 export interface ListPartnerBusinessEarningsResponseDataItemResourceCase0AlternativePaymentMethod {
   image_url: string | null;
   name: string;
@@ -588,6 +813,9 @@ export type ListPartnerBusinessEarningsResponseDataItemResource =
   | ListPartnerBusinessEarningsResponseDataItemResourceCase2
   | ListPartnerBusinessEarningsResponseDataItemResourceCase3
   | ListPartnerBusinessEarningsResponseDataItemResourceCase4;
+const ListPartnerBusinessEarningsResponseDataItemResource =
+  S.Unknown as any as S.Schema<ListPartnerBusinessEarningsResponseDataItemResource>;
+
 /** Current status of the earning. */
 export type ListPartnerBusinessEarningsResponseDataItemStatus =
   | "awaiting_settlement"
@@ -595,6 +823,8 @@ export type ListPartnerBusinessEarningsResponseDataItemStatus =
   | "completed"
   | "canceled"
   | "reversed";
+const ListPartnerBusinessEarningsResponseDataItemStatus = S.String;
+
 export interface ListPartnerBusinessEarningsResponseDataItem {
   /** Referred account. */
   account: ListPartnerBusinessEarningsResponseDataItemAccount | null;
@@ -622,19 +852,41 @@ export interface ListPartnerBusinessEarningsResponseDataItem {
   /** The underlying transaction amount the commission's income comes from, in USD. */
   transaction_amount_usd: string;
 }
+const ListPartnerBusinessEarningsResponseDataItem = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<ListPartnerBusinessEarningsResponseDataItem>;
+
 export type ListPartnerBusinessEarningsResponseDataList =
   Array<ListPartnerBusinessEarningsResponseDataItem>;
+const ListPartnerBusinessEarningsResponseDataList = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<ListPartnerBusinessEarningsResponseDataList>;
+
 export interface ListPartnerBusinessEarningsResponsePageInfo {
   end_cursor: string | null;
   has_next_page: boolean;
   has_previous_page: boolean;
   start_cursor: string | null;
 }
+const ListPartnerBusinessEarningsResponsePageInfo = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<ListPartnerBusinessEarningsResponsePageInfo>;
+
 export interface ListPartnerBusinessEarningsResponse {
   data: ListPartnerBusinessEarningsResponseDataList;
   page_info: ListPartnerBusinessEarningsResponsePageInfo;
 }
+const ListPartnerBusinessEarningsResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  0,
+) as any as S.Schema<ListPartnerBusinessEarningsResponse>;
+
 export type ListPartnerBusinessesRequestStatus = "active" | "removed";
+const ListPartnerBusinessesRequestStatus = S.String;
+
 export type ListPartnerBusinessesRequestOrder =
   | "created_at"
   | "referral_started_at"
@@ -643,8 +895,14 @@ export type ListPartnerBusinessesRequestOrder =
   | "volume_usd"
   | "volume_30d_usd"
   | "earnings_usd";
+const ListPartnerBusinessesRequestOrder = S.String;
+
 export type ListPartnerBusinessesRequestDirection = "asc" | "desc";
+const ListPartnerBusinessesRequestDirection = S.String;
+
 export type ListPartnerBusinessesRequestTier = "first" | "second" | "blueprint";
+const ListPartnerBusinessesRequestTier = S.String;
+
 export interface ListPartnerBusinessesRequest {
   /** Filter by referral status. */
   status?: ListPartnerBusinessesRequestStatus | (string & {});
@@ -675,6 +933,11 @@ export interface ListPartnerBusinessesRequest {
   /** Case-insensitive business-name prefix, or an exact `biz_` account ID. Surrounding whitespace is ignored; blank values apply no filter. */
   business_prefix_query?: string;
 }
+const ListPartnerBusinessesRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  1,
+) as any as S.Schema<ListPartnerBusinessesRequest>;
+
 /** Referred account. */
 export type ListPartnerBusinessesResponseDataItemAccount =
   ListPartnerBusinessEarningsResponseDataItemAccount;
@@ -694,7 +957,11 @@ export type ListPartnerBusinessesResponseDataItemFirstTierPartner =
   GetPartnerBusinessResponseBlueprintPartner;
 /** Which tier the caller earns on for this business: `first` (they referred the owner), `second` (they referred the first-tier partner), or `blueprint` (the business deployed a site from their blueprint). */
 export type ListPartnerBusinessesResponseDataItemMyPartnerTier = "first" | "second" | "blueprint";
+const ListPartnerBusinessesResponseDataItemMyPartnerTier = S.String;
+
 export type ListPartnerBusinessesResponseDataItemObject = "partner_business";
+const ListPartnerBusinessesResponseDataItemObject = S.String;
+
 /** The user's profile picture. */
 export type ListPartnerBusinessesResponseDataItemOwnerProfilePicture =
   GetPartnerBusinessResponseBlueprintPartnerProfilePicture;
@@ -711,6 +978,8 @@ export type ListPartnerBusinessesResponseDataItemSecondTierPartner =
   GetPartnerBusinessResponseBlueprintPartner;
 /** Current referral status. */
 export type ListPartnerBusinessesResponseDataItemStatus = "active" | "removed";
+const ListPartnerBusinessesResponseDataItemStatus = S.String;
+
 export type ListPartnerBusinessesResponseDataItemVolumeUsd = GetPartnerBusinessResponseVolumeUsd;
 export interface ListPartnerBusinessesResponseDataItem {
   /** Referred account. */
@@ -741,12 +1010,27 @@ export interface ListPartnerBusinessesResponseDataItem {
   status: ListPartnerBusinessesResponseDataItemStatus;
   volume_usd: GetPartnerBusinessResponseVolumeUsd;
 }
+const ListPartnerBusinessesResponseDataItem = /*@__PURE__*/ __L.at(
+  __c5,
+  2,
+) as any as S.Schema<ListPartnerBusinessesResponseDataItem>;
+
 export type ListPartnerBusinessesResponseDataList = Array<ListPartnerBusinessesResponseDataItem>;
+const ListPartnerBusinessesResponseDataList = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<ListPartnerBusinessesResponseDataList>;
+
 export type ListPartnerBusinessesResponsePageInfo = ListPartnerBusinessEarningsResponsePageInfo;
 export interface ListPartnerBusinessesResponse {
   data: ListPartnerBusinessesResponseDataList;
   page_info: ListPartnerBusinessEarningsResponsePageInfo;
 }
+const ListPartnerBusinessesResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  4,
+) as any as S.Schema<ListPartnerBusinessesResponse>;
+
 export interface ListReferredUsersRequest {
   /** Search referred users by name or username. */
   query?: string;
@@ -763,6 +1047,11 @@ export interface ListReferredUsersRequest {
   /** Return results before this cursor. Use `page_info.start_cursor` from the previous response to fetch the previous page. */
   before?: string;
 }
+const ListReferredUsersRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  5,
+) as any as S.Schema<ListReferredUsersRequest>;
+
 export interface Money {
   /** The amount in major units, as an exact decimal string -- `"10.00"` is ten dollars. A string so no float rounds it in transit. */
   amount: string;
@@ -773,9 +1062,16 @@ export interface Money {
   /** How many decimal places to SHOW. Usually equal to `decimals`, and deliberately not always: COP is charged in centavos but written in whole pesos, so it is `2` and `0`. Format the number in your own locale using this. */
   display_decimals: number;
 }
+const Money = /*@__PURE__*/ __L.at(__c5, 6) as any as S.Schema<Money>;
+
 export interface ListReferredUsersResponseDataItemUserProfilePicture {
   url?: string | null;
 }
+const ListReferredUsersResponseDataItemUserProfilePicture = /*@__PURE__*/ __L.at(
+  __c5,
+  7,
+) as any as S.Schema<ListReferredUsersResponseDataItemUserProfilePicture>;
+
 export interface ListReferredUsersResponseDataItemUser {
   city?: string | null;
   country?: string | null;
@@ -786,6 +1082,11 @@ export interface ListReferredUsersResponseDataItemUser {
   profile_picture?: ListReferredUsersResponseDataItemUserProfilePicture;
   username: string;
 }
+const ListReferredUsersResponseDataItemUser = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<ListReferredUsersResponseDataItemUser>;
+
 export interface ListReferredUsersResponseDataItem {
   /** Number of active businesses this user referred that credit the caller as a second-tier partner. Excludes deleted businesses. */
   business_count: number;
@@ -799,12 +1100,27 @@ export interface ListReferredUsersResponseDataItem {
   /** Attributed volume over the last 30 days across the business referrals included in business_count, in USD. */
   volume_30d: Money;
 }
+const ListReferredUsersResponseDataItem = /*@__PURE__*/ __L.at(
+  __c6,
+  1,
+) as any as S.Schema<ListReferredUsersResponseDataItem>;
+
 export type ListReferredUsersResponseDataList = Array<ListReferredUsersResponseDataItem>;
+const ListReferredUsersResponseDataList = /*@__PURE__*/ __L.at(
+  __c6,
+  2,
+) as any as S.Schema<ListReferredUsersResponseDataList>;
+
 export type ListReferredUsersResponsePageInfo = ListPartnerBusinessEarningsResponsePageInfo;
 export interface ListReferredUsersResponse {
   data: ListReferredUsersResponseDataList;
   page_info: ListPartnerBusinessEarningsResponsePageInfo;
 }
+const ListReferredUsersResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  3,
+) as any as S.Schema<ListReferredUsersResponse>;
+
 export type CreateReferralPartnerError = Forbidden | Conflict | WhopOpError;
 /** Enroll as a Whop partner Enrolls the calling user in the Whop partner program, making their partner businesses eligible for earnings. Idempotent -- enrolling again keeps the original enrollment time. */
 export const createReferralPartner: API.OperationMethod<
@@ -813,8 +1129,8 @@ export const createReferralPartner: API.OperationMethod<
   CreateReferralPartnerError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<CreateReferralPartnerRequest>,
-  output: __S(1) as any as S.Schema<CreateReferralPartnerResponse>,
+  input: CreateReferralPartnerRequest,
+  output: CreateReferralPartnerResponse,
   errors: [Forbidden, Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -828,8 +1144,8 @@ export const getPartner: API.OperationMethod<
   GetPartnerError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2) as any as S.Schema<GetPartnerRequest>,
-  output: __S(10) as any as S.Schema<Partner>,
+  input: GetPartnerRequest,
+  output: Partner,
   errors: [Forbidden, NotFound],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -843,8 +1159,8 @@ export const getPartnerBusiness: API.OperationMethod<
   GetPartnerBusinessError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11) as any as S.Schema<GetPartnerBusinessRequest>,
-  output: __S(25) as any as S.Schema<GetPartnerBusinessResponse>,
+  input: GetPartnerBusinessRequest,
+  output: GetPartnerBusinessResponse,
   errors: [NotFound],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -858,8 +1174,8 @@ export const getPartnerLeaderboard: API.OperationMethod<
   GetPartnerLeaderboardError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26) as any as S.Schema<GetPartnerLeaderboardRequest>,
-  output: __S(30) as any as S.Schema<GetPartnerLeaderboardResponse>,
+  input: GetPartnerLeaderboardRequest,
+  output: GetPartnerLeaderboardResponse,
   errors: [BadRequest],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -875,8 +1191,8 @@ export const listPartnerBusinessEarnings: API.PaginatedOperationMethod<
   ListPartnerBusinessEarningsResponseDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(32) as any as S.Schema<ListPartnerBusinessEarningsRequest>,
-    output: __S(40) as any as S.Schema<ListPartnerBusinessEarningsResponse>,
+    input: ListPartnerBusinessEarningsRequest,
+    output: ListPartnerBusinessEarningsResponse,
     errors: [BadRequest],
     protocol: WhopProtocol,
     retry: Retry.Retry,
@@ -902,8 +1218,8 @@ export const listPartnerBusinesses: API.PaginatedOperationMethod<
   ListPartnerBusinessesResponseDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(41) as any as S.Schema<ListPartnerBusinessesRequest>,
-    output: __S(44) as any as S.Schema<ListPartnerBusinessesResponse>,
+    input: ListPartnerBusinessesRequest,
+    output: ListPartnerBusinessesResponse,
     errors: [BadRequest, Forbidden],
     protocol: WhopProtocol,
     retry: Retry.Retry,
@@ -929,8 +1245,8 @@ export const listReferredUsers: API.PaginatedOperationMethod<
   ListReferredUsersResponseDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(45) as any as S.Schema<ListReferredUsersRequest>,
-    output: __S(51) as any as S.Schema<ListReferredUsersResponse>,
+    input: ListReferredUsersRequest,
+    output: ListReferredUsersResponse,
     errors: [],
     protocol: WhopProtocol,
     retry: Retry.Retry,
@@ -975,29 +1291,29 @@ function __c0(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          unit: S.String,
+          unit: PartnerPayoutDurationUnit,
           value: S.Number,
         }),
       ).annotate({ identifier: "PartnerPayoutDuration" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          income_source: S.String,
+          income_source: PartnerPayoutRateIncomeSource,
           percentage: S.Number,
         }),
       ).annotate({ identifier: "PartnerPayoutRate" });
     case 5:
-      return S.Array(__S(4));
+      return S.Array(PartnerPayoutRate);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          duration: __S(3),
-          rates: __S(5),
-          tier: S.String,
+          duration: PartnerPayoutDuration,
+          rates: PartnerPayoutTierRatesList,
+          tier: PartnerPayoutTierTier,
         }),
       ).annotate({ identifier: "PartnerPayoutTier" });
     case 7:
-      return S.Array(__S(6));
+      return S.Array(PartnerPayoutTier);
   }
 }
 function __c1(j: number): any {
@@ -1013,7 +1329,7 @@ function __c1(j: number): any {
         S.Struct({
           id: S.String,
           name: S.NullOr(S.String),
-          profile_picture: __S(8),
+          profile_picture: UserProfilePicture,
           username: S.String,
         }),
       ).annotate({ identifier: "UserSummary" });
@@ -1022,9 +1338,9 @@ function __c1(j: number): any {
         S.Struct({
           certification_complete: S.Boolean,
           joined_at: S.NullOr(S.String),
-          payout_rates: __S(7),
+          payout_rates: PartnerPayoutRatesList,
           referred_businesses_count: S.Number,
-          user: __S(9),
+          user: UserSummary,
           verification_waitlist_joined: S.Boolean,
           whop_partner_verified_at: S.NullOr(S.String),
         }),
@@ -1040,18 +1356,18 @@ function __c1(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          accept_bank_payments: S.String,
-          accept_bnpl_payments: S.String,
-          accept_card_payments: S.String,
-          bank_deposit: S.String,
-          card_deposit: S.String,
-          card_issuing: S.String,
-          crypto_deposit: S.String,
-          crypto_payout: S.String,
-          instant_payout: S.String,
-          run_ads: S.String,
-          standard_payout: S.String,
-          transfer: S.String,
+          accept_bank_payments: AccountCapabilitiesAcceptBankPayments,
+          accept_bnpl_payments: AccountCapabilitiesAcceptBnplPayments,
+          accept_card_payments: AccountCapabilitiesAcceptCardPayments,
+          bank_deposit: AccountCapabilitiesBankDeposit,
+          card_deposit: AccountCapabilitiesCardDeposit,
+          card_issuing: AccountCapabilitiesCardIssuing,
+          crypto_deposit: AccountCapabilitiesCryptoDeposit,
+          crypto_payout: AccountCapabilitiesCryptoPayout,
+          instant_payout: AccountCapabilitiesInstantPayout,
+          run_ads: AccountCapabilitiesRunAds,
+          standard_payout: AccountCapabilitiesStandardPayout,
+          transfer: AccountCapabilitiesTransfer,
         }),
       ).annotate({ identifier: "AccountCapabilities" });
     case 5:
@@ -1059,20 +1375,20 @@ function __c1(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          action: S.String,
-          blocked_capabilities: __S(13),
+          action: AccountRecommendedActionAction,
+          blocked_capabilities: AccountRecommendedActionBlockedCapabilitiesList,
           cta: S.String,
           cta_label: S.String,
           description: S.String,
           icon_url: S.NullOr(S.String),
           impact_score: S.NullOr(S.Number),
           reasoning: S.NullOr(S.String),
-          status: S.String,
+          status: AccountRecommendedActionStatus,
           title: S.String,
         }),
       ).annotate({ identifier: "AccountRecommendedAction" });
     case 7:
-      return S.Array(__S(14));
+      return S.Array(AccountRecommendedAction);
   }
 }
 function __c2(j: number): any {
@@ -1080,26 +1396,26 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          action: S.String,
-          blocked_capabilities: __S(13),
+          action: AccountRequiredActionAction,
+          blocked_capabilities: AccountRequiredActionBlockedCapabilitiesList,
           cta: S.NullOr(S.String),
           cta_label: S.String,
           description: S.String,
           icon_url: S.NullOr(S.String),
-          status: S.String,
+          status: AccountRequiredActionStatus,
           title: S.String,
         }),
       ).annotate({ identifier: "AccountRequiredAction" });
     case 1:
-      return S.Array(__S(16));
+      return S.Array(AccountRequiredAction);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          capabilities: S.NullOr(__S(12)),
+          capabilities: S.NullOr(AccountCapabilities),
           id: S.String,
           logo_url: S.NullOr(S.String),
-          recommended_actions: S.NullOr(__S(15)),
-          required_actions: S.NullOr(__S(17)),
+          recommended_actions: S.NullOr(GetPartnerBusinessResponseAccountRecommendedActionsList),
+          required_actions: S.NullOr(GetPartnerBusinessResponseAccountRequiredActionsList),
           route: S.String,
           title: S.String,
         }),
@@ -1119,7 +1435,7 @@ function __c2(j: number): any {
         S.Struct({
           id: S.String,
           name: S.NullOr(S.String),
-          profile_picture: __S(19),
+          profile_picture: GetPartnerBusinessResponseBlueprintPartnerProfilePicture,
           username: S.String,
         }),
       ).annotate({
@@ -1141,7 +1457,7 @@ function __c2(j: number): any {
           email: S.NullOr(S.String),
           id: S.String,
           name: S.NullOr(S.String),
-          profile_picture: __S(19),
+          profile_picture: GetPartnerBusinessResponseBlueprintPartnerProfilePicture,
           username: S.String,
         }),
       ).annotate({
@@ -1176,21 +1492,21 @@ function __c3(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          account: S.NullOr(__S(18)),
-          blueprint_partner: S.NullOr(__S(20)),
+          account: S.NullOr(GetPartnerBusinessResponseAccount),
+          blueprint_partner: S.NullOr(GetPartnerBusinessResponseBlueprintPartner),
           created_at: S.String,
-          earnings_usd: __S(21),
-          first_tier_partner: S.NullOr(__S(20)),
+          earnings_usd: GetPartnerBusinessResponseEarningsUsd,
+          first_tier_partner: S.NullOr(GetPartnerBusinessResponseBlueprintPartner),
           id: S.String,
-          my_partner_tier: S.String,
-          object: S.String,
-          owner: S.NullOr(__S(22)),
-          payout_percentages: __S(23),
+          my_partner_tier: GetPartnerBusinessResponseMyPartnerTier,
+          object: GetPartnerBusinessResponseObject,
+          owner: S.NullOr(GetPartnerBusinessResponseOwner),
+          payout_percentages: GetPartnerBusinessResponsePayoutPercentages,
           referral_expires_at: S.NullOr(S.String),
           referral_started_at: S.NullOr(S.String),
-          second_tier_partner: S.NullOr(__S(20)),
-          status: S.String,
-          volume_usd: __S(24),
+          second_tier_partner: S.NullOr(GetPartnerBusinessResponseBlueprintPartner),
+          status: GetPartnerBusinessResponseStatus,
+          volume_usd: GetPartnerBusinessResponseVolumeUsd,
         }),
       ).annotate({
         identifier: "GetPartnerBusinessResponse",
@@ -1198,7 +1514,7 @@ function __c3(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          period: S.optional(S.String.pipe(T.Query())),
+          period: S.optional(GetPartnerLeaderboardRequestPeriod.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/partners/leaderboard", code: 200 })),
       ).annotate({
         identifier: "GetPartnerLeaderboardRequest",
@@ -1210,7 +1526,7 @@ function __c3(j: number): any {
           country: S.NullOr(S.String),
           id: S.optional(S.String),
           name: S.optional(S.NullOr(S.String)),
-          profile_picture: S.optional(__S(19)),
+          profile_picture: S.optional(GetPartnerBusinessResponseBlueprintPartnerProfilePicture),
           username: S.optional(S.String),
         }),
       ).annotate({
@@ -1223,24 +1539,24 @@ function __c3(j: number): any {
           rank: S.Number,
           total_earnings_usd: S.String,
           total_volume_usd: S.String,
-          user: S.NullOr(__S(27)),
+          user: S.NullOr(GetPartnerLeaderboardResponseLeadersItemUser),
         }),
       ).annotate({
         identifier: "GetPartnerLeaderboardResponseLeadersItem",
       });
     case 5:
-      return S.Array(__S(28));
+      return S.Array(GetPartnerLeaderboardResponseLeadersItem);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          leaders: __S(29),
-          me: S.NullOr(__S(28)),
+          leaders: GetPartnerLeaderboardResponseLeadersList,
+          me: S.NullOr(GetPartnerLeaderboardResponseLeadersItem),
         }),
       ).annotate({
         identifier: "GetPartnerLeaderboardResponse",
       });
     case 7:
-      return S.Array(S.String);
+      return S.Array(ListPartnerBusinessEarningsRequestIncomeSourceItem);
   }
 }
 function __c4(j: number): any {
@@ -1249,14 +1565,16 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
-          status: S.optional(S.String.pipe(T.Query())),
-          income_source: S.optional(__S(31).pipe(T.Query())),
+          status: S.optional(ListPartnerBusinessEarningsRequestStatus.pipe(T.Query())),
+          income_source: S.optional(
+            ListPartnerBusinessEarningsRequestIncomeSourceList.pipe(T.Query()),
+          ),
           first: S.optional(S.Number.pipe(T.Query())),
           after: S.optional(S.String.pipe(T.Query())),
           last: S.optional(S.Number.pipe(T.Query())),
           before: S.optional(S.String.pipe(T.Query())),
-          order: S.optional(S.String.pipe(T.Query())),
-          direction: S.optional(S.String.pipe(T.Query())),
+          order: S.optional(ListPartnerBusinessEarningsRequestOrder.pipe(T.Query())),
+          direction: S.optional(ListPartnerBusinessEarningsRequestDirection.pipe(T.Query())),
           created_before: S.optional(S.String.pipe(T.Query())),
           created_after: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/partners/businesses/{id}/earnings", code: 200 })),
@@ -1282,13 +1600,13 @@ function __c4(j: number): any {
           category: S.NullOr(S.String),
           created_at: S.NullOr(S.String),
           currency: S.String,
-          type: S.String,
+          type: ListPartnerBusinessEarningsResponseDataItemFinancialActivityItemType,
         }),
       ).annotate({
         identifier: "ListPartnerBusinessEarningsResponseDataItemFinancialActivityItem",
       });
     case 3:
-      return S.Array(__S(34));
+      return S.Array(ListPartnerBusinessEarningsResponseDataItemFinancialActivityItem);
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -1302,27 +1620,29 @@ function __c4(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          account: S.NullOr(__S(33)),
+          account: S.NullOr(ListPartnerBusinessEarningsResponseDataItemAccount),
           cancelation_reason: S.NullOr(S.String),
           commission_amount_usd: S.NullOr(S.String),
           created_at: S.String,
-          financial_activity: S.NullOr(__S(35)),
+          financial_activity: S.NullOr(
+            ListPartnerBusinessEarningsResponseDataItemFinancialActivityList,
+          ),
           id: S.NullOr(S.String),
-          income_source: S.String,
-          object: S.String,
+          income_source: ListPartnerBusinessEarningsResponseDataItemIncomeSource,
+          object: ListPartnerBusinessEarningsResponseDataItemObject,
           payout_at: S.NullOr(S.String),
           payout_percentage: S.NullOr(S.Number),
-          product: S.NullOr(__S(36)),
-          resource: S.NullOr(S.Unknown),
+          product: S.NullOr(ListPartnerBusinessEarningsResponseDataItemProduct),
+          resource: S.NullOr(ListPartnerBusinessEarningsResponseDataItemResource),
           second_tier: S.Boolean,
-          status: S.String,
+          status: ListPartnerBusinessEarningsResponseDataItemStatus,
           transaction_amount_usd: S.String,
         }),
       ).annotate({
         identifier: "ListPartnerBusinessEarningsResponseDataItem",
       });
     case 6:
-      return S.Array(__S(37));
+      return S.Array(ListPartnerBusinessEarningsResponseDataItem);
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -1341,8 +1661,8 @@ function __c5(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          data: __S(38),
-          page_info: __S(39),
+          data: ListPartnerBusinessEarningsResponseDataList,
+          page_info: ListPartnerBusinessEarningsResponsePageInfo,
         }),
       ).annotate({
         identifier: "ListPartnerBusinessEarningsResponse",
@@ -1350,19 +1670,19 @@ function __c5(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(S.String.pipe(T.Query())),
+          status: S.optional(ListPartnerBusinessesRequestStatus.pipe(T.Query())),
           has_earnings: S.optional(S.Boolean.pipe(T.Query())),
           first: S.optional(S.Number.pipe(T.Query())),
           after: S.optional(S.String.pipe(T.Query())),
           last: S.optional(S.Number.pipe(T.Query())),
           before: S.optional(S.String.pipe(T.Query())),
-          order: S.optional(S.String.pipe(T.Query())),
-          direction: S.optional(S.String.pipe(T.Query())),
+          order: S.optional(ListPartnerBusinessesRequestOrder.pipe(T.Query())),
+          direction: S.optional(ListPartnerBusinessesRequestDirection.pipe(T.Query())),
           created_before: S.optional(S.String.pipe(T.Query())),
           created_after: S.optional(S.String.pipe(T.Query())),
           referred_user_id: S.optional(S.String.pipe(T.Query())),
           referred_username: S.optional(S.String.pipe(T.Query())),
-          tier: S.optional(S.String.pipe(T.Query())),
+          tier: S.optional(ListPartnerBusinessesRequestTier.pipe(T.Query())),
           business_prefix_query: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/partners/businesses", code: 200 })),
       ).annotate({
@@ -1371,32 +1691,32 @@ function __c5(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          account: S.NullOr(__S(33)),
-          blueprint_partner: S.NullOr(__S(20)),
+          account: S.NullOr(ListPartnerBusinessEarningsResponseDataItemAccount),
+          blueprint_partner: S.NullOr(GetPartnerBusinessResponseBlueprintPartner),
           created_at: S.String,
-          earnings_usd: __S(21),
-          first_tier_partner: S.NullOr(__S(20)),
+          earnings_usd: GetPartnerBusinessResponseEarningsUsd,
+          first_tier_partner: S.NullOr(GetPartnerBusinessResponseBlueprintPartner),
           id: S.String,
-          my_partner_tier: S.String,
-          object: S.String,
-          owner: S.NullOr(__S(22)),
-          payout_percentages: __S(23),
+          my_partner_tier: ListPartnerBusinessesResponseDataItemMyPartnerTier,
+          object: ListPartnerBusinessesResponseDataItemObject,
+          owner: S.NullOr(GetPartnerBusinessResponseOwner),
+          payout_percentages: GetPartnerBusinessResponsePayoutPercentages,
           referral_expires_at: S.NullOr(S.String),
           referral_started_at: S.NullOr(S.String),
-          second_tier_partner: S.NullOr(__S(20)),
-          status: S.String,
-          volume_usd: __S(24),
+          second_tier_partner: S.NullOr(GetPartnerBusinessResponseBlueprintPartner),
+          status: ListPartnerBusinessesResponseDataItemStatus,
+          volume_usd: GetPartnerBusinessResponseVolumeUsd,
         }),
       ).annotate({
         identifier: "ListPartnerBusinessesResponseDataItem",
       });
     case 3:
-      return S.Array(__S(42));
+      return S.Array(ListPartnerBusinessesResponseDataItem);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          data: __S(43),
-          page_info: __S(39),
+          data: ListPartnerBusinessesResponseDataList,
+          page_info: ListPartnerBusinessEarningsResponsePageInfo,
         }),
       ).annotate({
         identifier: "ListPartnerBusinessesResponse",
@@ -1442,7 +1762,7 @@ function __c6(j: number): any {
           email: S.NullOr(S.String),
           id: S.String,
           name: S.optional(S.NullOr(S.String)),
-          profile_picture: S.optional(__S(47)),
+          profile_picture: S.optional(ListReferredUsersResponseDataItemUserProfilePicture),
           username: S.String,
         }),
       ).annotate({
@@ -1452,49 +1772,26 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           business_count: S.Number,
-          earnings: __S(46),
+          earnings: Money,
           joined_at: S.String,
           total_earnings_usd: S.String,
           total_volume_usd: S.String,
-          user: __S(48),
-          volume_30d: __S(46),
+          user: ListReferredUsersResponseDataItemUser,
+          volume_30d: Money,
         }),
       ).annotate({
         identifier: "ListReferredUsersResponseDataItem",
       });
     case 2:
-      return S.Array(__S(49));
+      return S.Array(ListReferredUsersResponseDataItem);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          data: __S(50),
-          page_info: __S(39),
+          data: ListReferredUsersResponseDataList,
+          page_info: ListPartnerBusinessEarningsResponsePageInfo,
         }),
       ).annotate({
         identifier: "ListReferredUsersResponse",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
   }
 }

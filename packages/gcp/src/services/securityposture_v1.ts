@@ -7,8 +7,6 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -66,32 +64,60 @@ export class NotFound
 
 /** The request message for Operations.CancelOperation. */
 export interface CancelOperationRequest {}
+const CancelOperationRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<CancelOperationRequest>;
+
 export interface CancelOrganizationsLocationsOperationsRequest {
   /** The name of the operation resource to be cancelled. */
   name: string;
   /** Request body */
   body?: CancelOperationRequest;
 }
+const CancelOrganizationsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<CancelOrganizationsLocationsOperationsRequest>;
+
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
+const Empty = CancelOperationRequest as any as S.Schema<Empty>;
+
 /** Details of an infrastructure-as-code (IaC) configuration. */
 export interface IaC {
   /** Optional. A Terraform plan file, formatted as a stringified JSON object. To learn how to generate a Terraform plan file in JSON format, see [JSON output format](https://developer.hashicorp.com/terraform/internals/json-format) in the Terraform documentation. */
   tfPlan?: string;
 }
+const IaC = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<IaC>;
+
 /** Request message for CreateIaCValidationReport. */
 export interface CreateIaCValidationReportRequest {
   /** Required. The infrastructure-as-code (IaC) configuration to validate. */
   iac?: IaC;
 }
+const CreateIaCValidationReportRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<CreateIaCValidationReportRequest>;
+
 export interface CreateIaCValidationReportOrganizationsLocationsReportsRequest {
   /** Required. The parent resource name, in the format `organizations/{organization}/locations/global`. */
   parent: string;
   /** Request body */
   body?: CreateIaCValidationReportRequest;
 }
+const CreateIaCValidationReportOrganizationsLocationsReportsRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<CreateIaCValidationReportOrganizationsLocationsReportsRequest>;
+
 export type DocumentMap = { [key: string]: unknown | undefined };
+const DocumentMap = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<DocumentMap>;
+
 export type DocumentMapList = Array<DocumentMap>;
+const DocumentMapList = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<DocumentMapList>;
+
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
@@ -101,6 +127,8 @@ export interface Status {
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
   details?: DocumentMapList;
 }
+const Status = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<Status>;
+
 /** This resource represents a long-running operation that is the result of a network API call. */
 export interface Operation {
   /** If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available. */
@@ -114,6 +142,8 @@ export interface Operation {
   /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
   name?: string;
 }
+const Operation = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<Operation>;
+
 export type PostureDeploymentStateEnum =
   | "STATE_UNSPECIFIED"
   | "CREATING"
@@ -123,16 +153,27 @@ export type PostureDeploymentStateEnum =
   | "CREATE_FAILED"
   | "UPDATE_FAILED"
   | "DELETE_FAILED";
+const PostureDeploymentStateEnum = S.String;
+
 export type PostureDeploymentCategoriesItemEnum =
   | "CATEGORY_UNSPECIFIED"
   | "AI"
   | "AWS"
   | "GCP"
   | "AZURE";
+const PostureDeploymentCategoriesItemEnum = S.String;
+
 export type PostureDeploymentCategoriesItemEnumList = Array<
   PostureDeploymentCategoriesItemEnum | (string & {})
 >;
+const PostureDeploymentCategoriesItemEnumList = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<PostureDeploymentCategoriesItemEnumList>;
+
 export type StringMap = { [key: string]: string | undefined };
+const StringMap = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<StringMap>;
+
 /** Details for a Posture deployment on an organization, folder, or project. You can deploy at most one posture to each organization, folder, or project. The parent resource for a posture deployment is always the organization, even if the deployment applies to a folder or project. */
 export interface PostureDeployment {
   /** Required. The revision ID of the posture used in the deployment. */
@@ -166,6 +207,8 @@ export interface PostureDeployment {
   /** Optional. The user-specified annotations for the posture deployment. For details about the values you can use in an annotation, see [AIP-148: Standard fields](https://google.aip.dev/148#annotations). */
   annotations?: StringMap;
 }
+const PostureDeployment = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<PostureDeployment>;
+
 export interface CreateOrganizationsLocationsPostureDeploymentsRequest {
   /** Required. An identifier for the posture deployment. */
   postureDeploymentId?: string;
@@ -174,9 +217,19 @@ export interface CreateOrganizationsLocationsPostureDeploymentsRequest {
   /** Request body */
   body?: PostureDeployment;
 }
+const CreateOrganizationsLocationsPostureDeploymentsRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<CreateOrganizationsLocationsPostureDeploymentsRequest>;
+
 export type PostureCategoriesItemEnum = "CATEGORY_UNSPECIFIED" | "AI" | "AWS" | "GCP" | "AZURE";
 export type PostureCategoriesItemEnumList = Array<PostureCategoriesItemEnum | (string & {})>;
+const PostureCategoriesItemEnumList =
+  PostureDeploymentCategoriesItemEnumList as any as S.Schema<PostureCategoriesItemEnumList>;
+
 export type PostureStateEnum = "STATE_UNSPECIFIED" | "DEPRECATED" | "DRAFT" | "ACTIVE";
+const PostureStateEnum = S.String;
+
 /** Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information. */
 export interface Expr {
   /** Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file. */
@@ -188,12 +241,18 @@ export interface Expr {
   /** Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression. */
   title?: string;
 }
+const Expr = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<Expr>;
+
 export type StringList = Array<string>;
+const StringList = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<StringList>;
+
 /** Set multiple resource types for one policy, for example: ``` resourceTypes: included: - compute.googleapis.com/Instance - compute.googleapis.com/Disk ``` Constraint definition contains an empty resource type in order to support multiple resource types in the policy. Only supports managed constraints. Method type is `GOVERN_TAGS`. */
 export interface ResourceTypes {
   /** Optional. The resource types we support. */
   included?: StringList;
 }
+const ResourceTypes = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<ResourceTypes>;
+
 /** The allowed and denied values for a list constraint. For all constraints, these fields can contain literal values. Optionally, you can add the `is:` prefix to these values. If the value contains a colon (`:`), then the `is:` prefix is required. Some constraints allow you to specify a portion of the resource hierarchy, known as a [_hierarchy subtree_](https://cloud.google.com/resource-manager/help/organization-policy/hierarchy-subtree), that the constraint applies to. To specify a hierarchy subtree, use the `under:` prefix, followed by a value with one of these formats: - `projects/{project_id}` (for example, `projects/tokyo-rain-123`) - `folders/{folder_id}` (for example, `folders/1234567890123`) - `organizations/{organization_id}` (for example, `organizations/123456789012`) A constraint's `supports_under` field indicates whether you can specify a hierarchy subtree. To learn which predefined constraints let you specify a hierarchy subtree, see the [constraints reference](https://cloud.google.com/resource-manager/help/organization-policy/constraints/reference). */
 export interface GoogleCloudSecuritypostureV1PolicyRuleStringValues {
   /** The allowed values for the constraint. */
@@ -201,6 +260,11 @@ export interface GoogleCloudSecuritypostureV1PolicyRuleStringValues {
   /** The denied values for the constraint. */
   deniedValues?: StringList;
 }
+const GoogleCloudSecuritypostureV1PolicyRuleStringValues = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<GoogleCloudSecuritypostureV1PolicyRuleStringValues>;
+
 /** A rule that defines the allowed and denied values for an organization policy constraint. */
 export interface GoogleCloudSecuritypostureV1PolicyRule {
   /** A condition that determines whether this rule is used to evaluate the policy. When set, the google.type.Expr.expression field must contain 1 to 10 subexpressions, joined by the `||` or `&&` operators. Each subexpression must use the `resource.matchTag()`, `resource.matchTagId()`, `resource.hasTagKey()`, or `resource.hasTagKeyId()` Common Expression Language (CEL) function. The `resource.matchTag()` function takes the following arguments: * `key_name`: the namespaced name of the tag key, with the organization ID and a slash (`/`) as a prefix; for example, `123456789012/environment` * `value_name`: the short name of the tag value For example: `resource.matchTag('123456789012/environment, 'prod')` The `resource.matchTagId()` function takes the following arguments: * `key_id`: the permanent ID of the tag key; for example, `tagKeys/123456789012` * `value_id`: the permanent ID of the tag value; for example, `tagValues/567890123456` For example: `resource.matchTagId('tagKeys/123456789012', 'tagValues/567890123456')` The `resource.hasTagKey()` function takes the following argument: * `key_name`: the namespaced name of the tag key, with the organization ID and a slash (`/`) as a prefix; for example, `123456789012/environment` For example: `resource.hasTagKey('123456789012/environment')` The `resource.hasTagKeyId()` function takes the following arguments: * `key_id`: the permanent ID of the tag key; for example, `tagKeys/123456789012` For example: `resource.hasTagKeyId('tagKeys/123456789012')` */
@@ -218,8 +282,18 @@ export interface GoogleCloudSecuritypostureV1PolicyRule {
   /** The allowed and denied values for a list constraint. Valid only for list constraints. */
   values?: GoogleCloudSecuritypostureV1PolicyRuleStringValues;
 }
+const GoogleCloudSecuritypostureV1PolicyRule = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<GoogleCloudSecuritypostureV1PolicyRule>;
+
 export type GoogleCloudSecuritypostureV1PolicyRuleList =
   Array<GoogleCloudSecuritypostureV1PolicyRule>;
+const GoogleCloudSecuritypostureV1PolicyRuleList = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<GoogleCloudSecuritypostureV1PolicyRuleList>;
+
 /** A predefined organization policy constraint. */
 export interface OrgPolicyConstraint {
   /** Required. A unique identifier for the constraint. */
@@ -227,18 +301,29 @@ export interface OrgPolicyConstraint {
   /** Required. The rules enforced by the constraint. */
   policyRules?: GoogleCloudSecuritypostureV1PolicyRuleList;
 }
+const OrgPolicyConstraint = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<OrgPolicyConstraint>;
+
 export type GoogleCloudSecuritypostureV1CustomConstraintActionTypeEnum =
   | "ACTION_TYPE_UNSPECIFIED"
   | "ALLOW"
   | "DENY";
+const GoogleCloudSecuritypostureV1CustomConstraintActionTypeEnum = S.String;
+
 export type GoogleCloudSecuritypostureV1CustomConstraintMethodTypesItemEnum =
   | "METHOD_TYPE_UNSPECIFIED"
   | "CREATE"
   | "UPDATE"
   | "DELETE";
+const GoogleCloudSecuritypostureV1CustomConstraintMethodTypesItemEnum = S.String;
+
 export type GoogleCloudSecuritypostureV1CustomConstraintMethodTypesItemEnumList = Array<
   GoogleCloudSecuritypostureV1CustomConstraintMethodTypesItemEnum | (string & {})
 >;
+const GoogleCloudSecuritypostureV1CustomConstraintMethodTypesItemEnumList = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<GoogleCloudSecuritypostureV1CustomConstraintMethodTypesItemEnumList>;
+
 /** A custom, user-defined constraint. You can apply the constraint only to the resource types specified in the constraint, and only within the organization where the constraint is defined. _When you create a custom constraint, it is not enforced automatically._ You must use an organization policy to [enforce the constraint](https://cloud.google.com/resource-manager/help/organization-policy/constraints/enforce). */
 export interface GoogleCloudSecuritypostureV1CustomConstraint {
   /** Immutable. The name of the constraint, in the format `organizations/{organization_id}/customConstraints/custom.{custom_constraint_id}`. For example, `organizations/123456789012/customConstraints/custom.createOnlyE2TypeVms`. Must contain 1 to 62 characters, excluding the prefix `organizations/{organization_id}/customConstraints/custom.`. */
@@ -258,6 +343,11 @@ export interface GoogleCloudSecuritypostureV1CustomConstraint {
   /** Immutable. The resource type that the constraint applies to, in the format `{canonical_service_name}/{resource_type_name}`. For example, `compute.googleapis.com/Instance`. */
   resourceTypes?: StringList;
 }
+const GoogleCloudSecuritypostureV1CustomConstraint = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<GoogleCloudSecuritypostureV1CustomConstraint>;
+
 /** A custom organization policy constraint. */
 export interface OrgPolicyConstraintCustom {
   /** Required. The rules enforced by the constraint. */
@@ -265,15 +355,24 @@ export interface OrgPolicyConstraintCustom {
   /** Required. Metadata for the constraint. */
   customConstraint?: GoogleCloudSecuritypostureV1CustomConstraint;
 }
+const OrgPolicyConstraintCustom = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<OrgPolicyConstraintCustom>;
+
 export type SecurityHealthAnalyticsCustomModuleModuleEnablementStateEnum =
   | "ENABLEMENT_STATE_UNSPECIFIED"
   | "ENABLED"
   | "DISABLED";
+const SecurityHealthAnalyticsCustomModuleModuleEnablementStateEnum = S.String;
+
 /** A selector for the resource types to run the detector on. */
 export interface ResourceSelector {
   /** Required. The resource types to run the detector on. Each custom module can specify up to 5 resource types. */
   resourceTypes?: StringList;
 }
+const ResourceSelector = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<ResourceSelector>;
+
 /** A name-value pair used as a custom source property. */
 export interface Property {
   /** Required. The name of the custom source property. */
@@ -281,18 +380,26 @@ export interface Property {
   /** Optional. The CEL expression for the value of the custom source property. For resource properties, you can return the value of the property or a string enclosed in quotation marks. */
   valueExpression?: Expr;
 }
+const Property = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<Property>;
+
 export type PropertyList = Array<Property>;
+const PropertyList = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<PropertyList>;
+
 /** Definitions of custom source properties that can appear in findings. */
 export interface CustomOutputSpec {
   /** Optional. The custom source properties that can appear in findings. */
   properties?: PropertyList;
 }
+const CustomOutputSpec = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<CustomOutputSpec>;
+
 export type CustomConfigSeverityEnum =
   | "SEVERITY_UNSPECIFIED"
   | "CRITICAL"
   | "HIGH"
   | "MEDIUM"
   | "LOW";
+const CustomConfigSeverityEnum = S.String;
+
 /** A custom module configuration for Security Health Analytics. Use `CustomConfig` to create custom detectors that generate custom findings for resources that you specify. */
 export interface CustomConfig {
   /** Required. The resource types that the custom module operates on. */
@@ -308,6 +415,8 @@ export interface CustomConfig {
   /** Optional. A description of the vulnerability or misconfiguration that the custom module detects. The description appears in each finding. Provide enough information to help an investigator understand the finding. The value must be enclosed in quotation marks. */
   description?: string;
 }
+const CustomConfig = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<CustomConfig>;
+
 /** A custom module for Security Health Analytics. */
 export interface SecurityHealthAnalyticsCustomModule {
   /** Optional. The display name of the custom module. This value is used as the finding category for all the asset violation findings that the custom module returns. The display name must contain between 1 and 128 alphanumeric characters or underscores, and it must start with a lowercase letter. */
@@ -321,10 +430,17 @@ export interface SecurityHealthAnalyticsCustomModule {
   /** Required. Configuration settings for the custom module. */
   config?: CustomConfig;
 }
+const SecurityHealthAnalyticsCustomModule = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<SecurityHealthAnalyticsCustomModule>;
+
 export type SecurityHealthAnalyticsModuleModuleEnablementStateEnum =
   | "ENABLEMENT_STATE_UNSPECIFIED"
   | "ENABLED"
   | "DISABLED";
+const SecurityHealthAnalyticsModuleModuleEnablementStateEnum = S.String;
+
 /** A built-in detector for Security Health Analytics. */
 export interface SecurityHealthAnalyticsModule {
   /** Required. The name of the detector. For example, `BIGQUERY_TABLE_CMEK_DISABLED`. This field is also used as the finding category for all the asset violation findings that the detector returns. */
@@ -332,6 +448,11 @@ export interface SecurityHealthAnalyticsModule {
   /** Whether the detector is enabled at a specified level of the resource hierarchy. */
   moduleEnablementState?: SecurityHealthAnalyticsModuleModuleEnablementStateEnum | (string & {});
 }
+const SecurityHealthAnalyticsModule = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<SecurityHealthAnalyticsModule>;
+
 /** Metadata for a constraint in a Policy. */
 export interface Constraint {
   /** Optional. A predefined organization policy constraint. */
@@ -343,6 +464,8 @@ export interface Constraint {
   /** Optional. A built-in detector for Security Health Analytics. */
   securityHealthAnalyticsModule?: SecurityHealthAnalyticsModule;
 }
+const Constraint = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<Constraint>;
+
 /** Information about a compliance standard that the policy helps enforce. */
 export interface ComplianceStandard {
   /** Optional. The control in the compliance standard that the policy helps enforce. For example, `AC-3`. */
@@ -350,7 +473,14 @@ export interface ComplianceStandard {
   /** Optional. The compliance standard that the policy helps enforce. For example, `NIST SP 800-53`. */
   standard?: string;
 }
+const ComplianceStandard = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<ComplianceStandard>;
+
 export type ComplianceStandardList = Array<ComplianceStandard>;
+const ComplianceStandardList = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<ComplianceStandardList>;
+
 /** The details of a policy, including the constraints that it includes. */
 export interface Policy {
   /** Required. The constraints that the policy includes. */
@@ -362,7 +492,11 @@ export interface Policy {
   /** Optional. The compliance standards that the policy helps enforce. */
   complianceStandards?: ComplianceStandardList;
 }
+const Policy = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<Policy>;
+
 export type PolicyList = Array<Policy>;
+const PolicyList = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<PolicyList>;
+
 /** A group of one or more Policy resources. */
 export interface PolicySet {
   /** Required. An identifier for the policy set. */
@@ -372,7 +506,11 @@ export interface PolicySet {
   /** Required. The Policy resources in the policy set. Each policy must have a policy_id that's unique within the policy set. */
   policies?: PolicyList;
 }
+const PolicySet = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<PolicySet>;
+
 export type PolicySetList = Array<PolicySet>;
+const PolicySetList = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<PolicySetList>;
+
 /** The details of a posture. */
 export interface Posture {
   /** Output only. Whether the posture is in the process of being updated. */
@@ -398,6 +536,8 @@ export interface Posture {
   /** Required. The PolicySet resources that the posture includes. */
   policySets?: PolicySetList;
 }
+const Posture = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<Posture>;
+
 export interface CreateOrganizationsLocationsPosturesRequest {
   /** Required. The parent resource name, in the format `organizations/{organization}/locations/global`. */
   parent: string;
@@ -406,22 +546,42 @@ export interface CreateOrganizationsLocationsPosturesRequest {
   /** Request body */
   body?: Posture;
 }
+const CreateOrganizationsLocationsPosturesRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<CreateOrganizationsLocationsPosturesRequest>;
+
 export interface DeleteOrganizationsLocationsOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
+const DeleteOrganizationsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<DeleteOrganizationsLocationsOperationsRequest>;
+
 export interface DeleteOrganizationsLocationsPostureDeploymentsRequest {
   /** Required. The name of the posture deployment, in the format `organizations/{organization}/locations/global/postureDeployments/{posture_id}`. */
   name: string;
   /** Optional. An opaque identifier for the current version of the posture deployment. If you provide this value, then it must match the existing value. If the values don't match, then the request fails with an ABORTED error. If you omit this value, then the posture deployment is deleted regardless of its current `etag` value. */
   etag?: string;
 }
+const DeleteOrganizationsLocationsPostureDeploymentsRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  0,
+) as any as S.Schema<DeleteOrganizationsLocationsPostureDeploymentsRequest>;
+
 export interface DeleteOrganizationsLocationsPosturesRequest {
   /** Optional. An opaque identifier for the current version of the posture. If you provide this value, then it must match the existing value. If the values don't match, then the request fails with an ABORTED error. If you omit this value, then the posture is deleted regardless of its current `etag` value. */
   etag?: string;
   /** Required. The name of the Posture, in the format `organizations/{organization}/locations/global/postures/{posture_id}`. */
   name: string;
 }
+const DeleteOrganizationsLocationsPosturesRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  1,
+) as any as S.Schema<DeleteOrganizationsLocationsPosturesRequest>;
+
 /** Request message for ExtractPosture. */
 export interface ExtractPostureRequest {
   /** Required. An identifier for the posture. */
@@ -429,16 +589,31 @@ export interface ExtractPostureRequest {
   /** Required. The organization, folder, or project from which policies are extracted. Must be within the organization defined in parent. Use one of the following formats: * `organization/{organization_number}` * `folder/{folder_number}` * `project/{project_number}` */
   workload?: string;
 }
+const ExtractPostureRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  2,
+) as any as S.Schema<ExtractPostureRequest>;
+
 export interface ExtractOrganizationsLocationsPosturesRequest {
   /** Required. The parent resource name, in the format `organizations/{organization}/locations/global`. */
   parent: string;
   /** Request body */
   body?: ExtractPostureRequest;
 }
+const ExtractOrganizationsLocationsPosturesRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<ExtractOrganizationsLocationsPosturesRequest>;
+
 export interface GetOrganizationsLocationsRequest {
   /** Resource name for the location. */
   name: string;
 }
+const GetOrganizationsLocationsRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  4,
+) as any as S.Schema<GetOrganizationsLocationsRequest>;
+
 /** A resource that represents a Google Cloud location. */
 export interface Location {
   /** Cross-service attributes for the location. For example {"cloud.googleapis.com/region": "us-east1"} */
@@ -452,26 +627,48 @@ export interface Location {
   /** The canonical id for this location. For example: `"us-east1"`. */
   locationId?: string;
 }
+const Location = /*@__PURE__*/ __L.at(__c5, 5) as any as S.Schema<Location>;
+
 export interface GetOrganizationsLocationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
+const GetOrganizationsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  6,
+) as any as S.Schema<GetOrganizationsLocationsOperationsRequest>;
+
 export interface GetOrganizationsLocationsPostureDeploymentsRequest {
   /** Required. The name of the PostureDeployment, in the format `organizations/{organization}/locations/global/postureDeployments/{posture_deployment_id}`. */
   name: string;
 }
+const GetOrganizationsLocationsPostureDeploymentsRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  7,
+) as any as S.Schema<GetOrganizationsLocationsPostureDeploymentsRequest>;
+
 export interface GetOrganizationsLocationsPosturesRequest {
   /** Required. The name of the Posture, in the format `organizations/{organization}/locations/global/postures/{posture_id}`. */
   name: string;
   /** Optional. The posture revision to retrieve. If not specified, the most recently updated revision is retrieved. */
   revisionId?: string;
 }
+const GetOrganizationsLocationsPosturesRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<GetOrganizationsLocationsPosturesRequest>;
+
 export interface GetOrganizationsLocationsPostureTemplatesRequest {
   /** Optional. The posture template revision to retrieve. If not specified, the most recently updated revision is retrieved. */
   revisionId?: string;
   /** Required. The name of the PostureTemplate, in the format `organizations/{organization}/locations/global/postureTemplates/{posture_template}`. */
   name: string;
 }
+const GetOrganizationsLocationsPostureTemplatesRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  1,
+) as any as S.Schema<GetOrganizationsLocationsPostureTemplatesRequest>;
+
 export type PostureTemplateCategoriesItemEnum =
   | "CATEGORY_UNSPECIFIED"
   | "AI"
@@ -479,7 +676,12 @@ export type PostureTemplateCategoriesItemEnum =
   | "GCP"
   | "AZURE";
 export type PostureTemplateCategoriesItemEnumList = Array<PostureTemplateCategoriesItemEnum>;
+const PostureTemplateCategoriesItemEnumList =
+  PostureDeploymentCategoriesItemEnumList as any as S.Schema<PostureTemplateCategoriesItemEnumList>;
+
 export type PostureTemplateStateEnum = "STATE_UNSPECIFIED" | "ACTIVE" | "DEPRECATED";
+const PostureTemplateStateEnum = S.String;
+
 /** The details of a posture template. */
 export interface PostureTemplate {
   /** Output only. A string that identifies the revision of the posture template. */
@@ -495,10 +697,17 @@ export interface PostureTemplate {
   /** Output only. The state of the posture template at the specified `revision_id`. */
   state?: PostureTemplateStateEnum;
 }
+const PostureTemplate = /*@__PURE__*/ __L.at(__c6, 2) as any as S.Schema<PostureTemplate>;
+
 export interface GetOrganizationsLocationsReportsRequest {
   /** Required. The name of the report, in the format `organizations/{organization}/locations/global/reports/{report_id}`. */
   name: string;
 }
+const GetOrganizationsLocationsReportsRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  3,
+) as any as S.Schema<GetOrganizationsLocationsReportsRequest>;
+
 export type PolicyDetailsConstraintTypeEnum =
   | "CONSTRAINT_TYPE_UNSPECIFIED"
   | "SECURITY_HEALTH_ANALYTICS_CUSTOM_MODULE"
@@ -506,6 +715,8 @@ export type PolicyDetailsConstraintTypeEnum =
   | "SECURITY_HEALTH_ANALYTICS_MODULE"
   | "ORG_POLICY"
   | "REGO_POLICY";
+const PolicyDetailsConstraintTypeEnum = S.String;
+
 /** Details of a policy that was violated. */
 export interface PolicyDetails {
   /** The type of constraint that was violated. */
@@ -517,6 +728,8 @@ export interface PolicyDetails {
   /** Information about the constraint that was violated. The format of this information can change at any time without prior notice. Your application must not depend on this information in any way. */
   constraint?: string;
 }
+const PolicyDetails = /*@__PURE__*/ __L.at(__c6, 4) as any as S.Schema<PolicyDetails>;
+
 /** Details of a Cloud Asset Inventory asset that caused a violation. */
 export interface AssetDetails {
   /** The type of Cloud Asset Inventory asset. For a list of asset types, see [Supported asset types](https://cloud.google.com/asset-inventory/docs/supported-asset-types). */
@@ -524,7 +737,11 @@ export interface AssetDetails {
   /** Information about the Cloud Asset Inventory asset that violated a policy. The format of this information can change at any time without prior notice. Your application must not depend on this information in any way. */
   asset?: string;
 }
+const AssetDetails = /*@__PURE__*/ __L.at(__c6, 5) as any as S.Schema<AssetDetails>;
+
 export type ViolationSeverityEnum = "SEVERITY_UNSPECIFIED" | "CRITICAL" | "HIGH" | "MEDIUM" | "LOW";
+const ViolationSeverityEnum = S.String;
+
 /** Details of a posture deployment. */
 export interface PostureDetails {
   /** The identifier for the PolicySet that the relevant policy belongs to. */
@@ -538,6 +755,8 @@ export interface PostureDetails {
   /** The organization, folder, or project where the posture is deployed. Uses one of the following formats: * `organizations/{organization_number}` * `folders/{folder_number}` * `projects/{project_number}` */
   postureDeploymentTargetResource?: string;
 }
+const PostureDetails = /*@__PURE__*/ __L.at(__c6, 6) as any as S.Schema<PostureDetails>;
+
 /** Details of a violation. */
 export interface Violation {
   /** Details of the policy that was violated. */
@@ -555,7 +774,11 @@ export interface Violation {
   /** The policy that was violated. */
   policyId?: string;
 }
+const Violation = /*@__PURE__*/ __L.at(__c6, 7) as any as S.Schema<Violation>;
+
 export type ViolationList = Array<Violation>;
+const ViolationList = /*@__PURE__*/ __L.at(__c7, 0) as any as S.Schema<ViolationList>;
+
 /** Details of an infrastructure-as-code (IaC) validation report. */
 export interface IaCValidationReport {
   /** A list of every Violation found in the IaC configuration. */
@@ -563,6 +786,8 @@ export interface IaCValidationReport {
   /** Additional information about the report. */
   note?: string;
 }
+const IaCValidationReport = /*@__PURE__*/ __L.at(__c7, 1) as any as S.Schema<IaCValidationReport>;
+
 /** Details of a report. */
 export interface Report {
   /** Output only. The time at which the report was last updated. */
@@ -574,6 +799,8 @@ export interface Report {
   /** Required. The name of the report, in the format `organizations/{organization}/locations/global/reports/{report_id}`. */
   name?: string;
 }
+const Report = /*@__PURE__*/ __L.at(__c7, 2) as any as S.Schema<Report>;
+
 export interface ListOrganizationsLocationsRequest {
   /** Optional. Do not use this field unless explicitly documented otherwise. This is primarily for internal usage. */
   extraLocationTypes?: StringList;
@@ -586,7 +813,14 @@ export interface ListOrganizationsLocationsRequest {
   /** A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). */
   filter?: string;
 }
+const ListOrganizationsLocationsRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  3,
+) as any as S.Schema<ListOrganizationsLocationsRequest>;
+
 export type LocationList = Array<Location>;
+const LocationList = /*@__PURE__*/ __L.at(__c7, 4) as any as S.Schema<LocationList>;
+
 /** The response message for Locations.ListLocations. */
 export interface ListLocationsResponse {
   /** The standard List next-page token. */
@@ -594,6 +828,11 @@ export interface ListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
   locations?: LocationList;
 }
+const ListLocationsResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  5,
+) as any as S.Schema<ListLocationsResponse>;
+
 export interface ListOrganizationsLocationsOperationsRequest {
   /** The name of the operation's parent resource. */
   name: string;
@@ -606,7 +845,14 @@ export interface ListOrganizationsLocationsOperationsRequest {
   /** The standard list filter. */
   filter?: string;
 }
+const ListOrganizationsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  6,
+) as any as S.Schema<ListOrganizationsLocationsOperationsRequest>;
+
 export type OperationList = Array<Operation>;
+const OperationList = /*@__PURE__*/ __L.at(__c7, 7) as any as S.Schema<OperationList>;
+
 /** The response message for Operations.ListOperations. */
 export interface ListOperationsResponse {
   /** A list of operations that matches the specified filter in the request. */
@@ -616,6 +862,11 @@ export interface ListOperationsResponse {
   /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
   unreachable?: StringList;
 }
+const ListOperationsResponse = /*@__PURE__*/ __L.at(
+  __c8,
+  0,
+) as any as S.Schema<ListOperationsResponse>;
+
 export interface ListOrganizationsLocationsPostureDeploymentsRequest {
   /** Optional. The maximum number of posture deployments to return. The default value is `500`. If you exceed the maximum value of `1000`, then the service uses the maximum value. */
   pageSize?: number;
@@ -626,7 +877,17 @@ export interface ListOrganizationsLocationsPostureDeploymentsRequest {
   /** Optional. A pagination token returned from a previous request to list posture deployments. Provide this token to retrieve the next page of results. */
   pageToken?: string;
 }
+const ListOrganizationsLocationsPostureDeploymentsRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  1,
+) as any as S.Schema<ListOrganizationsLocationsPostureDeploymentsRequest>;
+
 export type PostureDeploymentList = Array<PostureDeployment>;
+const PostureDeploymentList = /*@__PURE__*/ __L.at(
+  __c8,
+  2,
+) as any as S.Schema<PostureDeploymentList>;
+
 /** Response message for ListPostureDeployments. */
 export interface ListPostureDeploymentsResponse {
   /** The list of PostureDeployment resources. */
@@ -636,6 +897,11 @@ export interface ListPostureDeploymentsResponse {
   /** A pagination token. To retrieve the next page of results, call the method again with this token. */
   nextPageToken?: string;
 }
+const ListPostureDeploymentsResponse = /*@__PURE__*/ __L.at(
+  __c8,
+  3,
+) as any as S.Schema<ListPostureDeploymentsResponse>;
+
 export interface ListOrganizationsLocationsPosturesRequest {
   /** Optional. A filter to apply to the list of postures, in the format defined in [AIP-160: Filtering](https://google.aip.dev/160). */
   filter?: string;
@@ -646,7 +912,14 @@ export interface ListOrganizationsLocationsPosturesRequest {
   /** A pagination token returned from a previous request to list postures. Provide this token to retrieve the next page of results. */
   pageToken?: string;
 }
+const ListOrganizationsLocationsPosturesRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  4,
+) as any as S.Schema<ListOrganizationsLocationsPosturesRequest>;
+
 export type PostureList = Array<Posture>;
+const PostureList = /*@__PURE__*/ __L.at(__c8, 5) as any as S.Schema<PostureList>;
+
 /** Response message for ListPostures. */
 export interface ListPosturesResponse {
   /** A pagination token. To retrieve the next page of results, call the method again with this token. */
@@ -656,6 +929,8 @@ export interface ListPosturesResponse {
   /** Locations that were temporarily unavailable and could not be reached. */
   unreachable?: StringList;
 }
+const ListPosturesResponse = /*@__PURE__*/ __L.at(__c8, 6) as any as S.Schema<ListPosturesResponse>;
+
 export interface ListOrganizationsLocationsPostureTemplatesRequest {
   /** Required. The parent resource name, in the format `organizations/{organization}/locations/global`. */
   parent: string;
@@ -666,7 +941,14 @@ export interface ListOrganizationsLocationsPostureTemplatesRequest {
   /** Optional. A pagination token returned from a previous request to list posture templates. Provide this token to retrieve the next page of results. */
   pageToken?: string;
 }
+const ListOrganizationsLocationsPostureTemplatesRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  7,
+) as any as S.Schema<ListOrganizationsLocationsPostureTemplatesRequest>;
+
 export type PostureTemplateList = Array<PostureTemplate>;
+const PostureTemplateList = /*@__PURE__*/ __L.at(__c9, 0) as any as S.Schema<PostureTemplateList>;
+
 /** Response message for ListPostureTemplates. */
 export interface ListPostureTemplatesResponse {
   /** The list of PostureTemplate resources. */
@@ -674,6 +956,11 @@ export interface ListPostureTemplatesResponse {
   /** A pagination token. To retrieve the next page of results, call the method again with this token. */
   nextPageToken?: string;
 }
+const ListPostureTemplatesResponse = /*@__PURE__*/ __L.at(
+  __c9,
+  1,
+) as any as S.Schema<ListPostureTemplatesResponse>;
+
 export interface ListOrganizationsLocationsReportsRequest {
   /** Required. The parent resource name, in the format `organizations/{organization}/locations/global`. */
   parent: string;
@@ -684,7 +971,14 @@ export interface ListOrganizationsLocationsReportsRequest {
   /** Optional. A filter to apply to the list of reports, in the format defined in [AIP-160: Filtering](https://google.aip.dev/160). */
   filter?: string;
 }
+const ListOrganizationsLocationsReportsRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  2,
+) as any as S.Schema<ListOrganizationsLocationsReportsRequest>;
+
 export type ReportList = Array<Report>;
+const ReportList = /*@__PURE__*/ __L.at(__c9, 3) as any as S.Schema<ReportList>;
+
 /** Response message for ListReports. */
 export interface ListReportsResponse {
   /** The list of Report resources. */
@@ -694,6 +988,8 @@ export interface ListReportsResponse {
   /** A pagination token. To retrieve the next page of results, call the method again with this token. */
   nextPageToken?: string;
 }
+const ListReportsResponse = /*@__PURE__*/ __L.at(__c9, 4) as any as S.Schema<ListReportsResponse>;
+
 export interface ListRevisionsOrganizationsLocationsPosturesRequest {
   /** Required. The name of the Posture, in the format `organizations/{organization}/locations/global/postures/{posture_id}`. */
   name: string;
@@ -702,6 +998,11 @@ export interface ListRevisionsOrganizationsLocationsPosturesRequest {
   /** Optional. The maximum number of posture revisions to return. The default value is `500`. If you exceed the maximum value of `1000`, then the service uses the maximum value. */
   pageSize?: number;
 }
+const ListRevisionsOrganizationsLocationsPosturesRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  5,
+) as any as S.Schema<ListRevisionsOrganizationsLocationsPosturesRequest>;
+
 /** Response message for ListPostureRevisions. */
 export interface ListPostureRevisionsResponse {
   /** A pagination token. To retrieve the next page of results, call the method again with this token. */
@@ -709,6 +1010,11 @@ export interface ListPostureRevisionsResponse {
   /** The list of revisions for the Posture. */
   revisions?: PostureList;
 }
+const ListPostureRevisionsResponse = /*@__PURE__*/ __L.at(
+  __c9,
+  6,
+) as any as S.Schema<ListPostureRevisionsResponse>;
+
 export interface PatchOrganizationsLocationsPostureDeploymentsRequest {
   /** Required. The fields in the PostureDeployment to update. You can update only the following fields: * PostureDeployment.posture_id * PostureDeployment.posture_revision_id */
   updateMask?: string;
@@ -717,6 +1023,11 @@ export interface PatchOrganizationsLocationsPostureDeploymentsRequest {
   /** Request body */
   body?: PostureDeployment;
 }
+const PatchOrganizationsLocationsPostureDeploymentsRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  7,
+) as any as S.Schema<PatchOrganizationsLocationsPostureDeploymentsRequest>;
+
 export interface PatchOrganizationsLocationsPosturesRequest {
   /** Required. Identifier. The name of the posture, in the format `organizations/{organization}/locations/global/postures/{posture_id}`. */
   name: string;
@@ -727,6 +1038,11 @@ export interface PatchOrganizationsLocationsPosturesRequest {
   /** Request body */
   body?: Posture;
 }
+const PatchOrganizationsLocationsPosturesRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  0,
+) as any as S.Schema<PatchOrganizationsLocationsPosturesRequest>;
+
 export type CancelOrganizationsLocationsOperationsError =
   | NotFound
   | Forbidden
@@ -740,8 +1056,8 @@ export const cancelOrganizationsLocationsOperations: API.OperationMethod<
   CancelOrganizationsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1) as any as S.Schema<CancelOrganizationsLocationsOperationsRequest>,
-  output: __S(0) as any as S.Schema<Empty>,
+  input: CancelOrganizationsLocationsOperationsRequest,
+  output: Empty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -760,8 +1076,8 @@ export const createIaCValidationReportOrganizationsLocationsReports: API.Operati
   CreateIaCValidationReportOrganizationsLocationsReportsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4) as any as S.Schema<CreateIaCValidationReportOrganizationsLocationsReportsRequest>,
-  output: __S(8) as any as S.Schema<Operation>,
+  input: CreateIaCValidationReportOrganizationsLocationsReportsRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -780,8 +1096,8 @@ export const createOrganizationsLocationsPostureDeployments: API.OperationMethod
   CreateOrganizationsLocationsPostureDeploymentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12) as any as S.Schema<CreateOrganizationsLocationsPostureDeploymentsRequest>,
-  output: __S(8) as any as S.Schema<Operation>,
+  input: CreateOrganizationsLocationsPostureDeploymentsRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -800,8 +1116,8 @@ export const createOrganizationsLocationsPostures: API.OperationMethod<
   CreateOrganizationsLocationsPosturesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38) as any as S.Schema<CreateOrganizationsLocationsPosturesRequest>,
-  output: __S(8) as any as S.Schema<Operation>,
+  input: CreateOrganizationsLocationsPosturesRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -820,8 +1136,8 @@ export const deleteOrganizationsLocationsOperations: API.OperationMethod<
   DeleteOrganizationsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39) as any as S.Schema<DeleteOrganizationsLocationsOperationsRequest>,
-  output: __S(0) as any as S.Schema<Empty>,
+  input: DeleteOrganizationsLocationsOperationsRequest,
+  output: Empty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -840,8 +1156,8 @@ export const deleteOrganizationsLocationsPostureDeployments: API.OperationMethod
   DeleteOrganizationsLocationsPostureDeploymentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40) as any as S.Schema<DeleteOrganizationsLocationsPostureDeploymentsRequest>,
-  output: __S(8) as any as S.Schema<Operation>,
+  input: DeleteOrganizationsLocationsPostureDeploymentsRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -860,8 +1176,8 @@ export const deleteOrganizationsLocationsPostures: API.OperationMethod<
   DeleteOrganizationsLocationsPosturesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41) as any as S.Schema<DeleteOrganizationsLocationsPosturesRequest>,
-  output: __S(8) as any as S.Schema<Operation>,
+  input: DeleteOrganizationsLocationsPosturesRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -880,8 +1196,8 @@ export const extractOrganizationsLocationsPostures: API.OperationMethod<
   ExtractOrganizationsLocationsPosturesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43) as any as S.Schema<ExtractOrganizationsLocationsPosturesRequest>,
-  output: __S(8) as any as S.Schema<Operation>,
+  input: ExtractOrganizationsLocationsPosturesRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -895,8 +1211,8 @@ export const getOrganizationsLocations: API.OperationMethod<
   GetOrganizationsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44) as any as S.Schema<GetOrganizationsLocationsRequest>,
-  output: __S(45) as any as S.Schema<Location>,
+  input: GetOrganizationsLocationsRequest,
+  output: Location,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -910,8 +1226,8 @@ export const getOrganizationsLocationsOperations: API.OperationMethod<
   GetOrganizationsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(46) as any as S.Schema<GetOrganizationsLocationsOperationsRequest>,
-  output: __S(8) as any as S.Schema<Operation>,
+  input: GetOrganizationsLocationsOperationsRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -925,8 +1241,8 @@ export const getOrganizationsLocationsPostureDeployments: API.OperationMethod<
   GetOrganizationsLocationsPostureDeploymentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47) as any as S.Schema<GetOrganizationsLocationsPostureDeploymentsRequest>,
-  output: __S(11) as any as S.Schema<PostureDeployment>,
+  input: GetOrganizationsLocationsPostureDeploymentsRequest,
+  output: PostureDeployment,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -940,8 +1256,8 @@ export const getOrganizationsLocationsPostures: API.OperationMethod<
   GetOrganizationsLocationsPosturesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48) as any as S.Schema<GetOrganizationsLocationsPosturesRequest>,
-  output: __S(37) as any as S.Schema<Posture>,
+  input: GetOrganizationsLocationsPosturesRequest,
+  output: Posture,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -955,8 +1271,8 @@ export const getOrganizationsLocationsPostureTemplates: API.OperationMethod<
   GetOrganizationsLocationsPostureTemplatesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49) as any as S.Schema<GetOrganizationsLocationsPostureTemplatesRequest>,
-  output: __S(50) as any as S.Schema<PostureTemplate>,
+  input: GetOrganizationsLocationsPostureTemplatesRequest,
+  output: PostureTemplate,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -970,8 +1286,8 @@ export const getOrganizationsLocationsReports: API.OperationMethod<
   GetOrganizationsLocationsReportsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(51) as any as S.Schema<GetOrganizationsLocationsReportsRequest>,
-  output: __S(58) as any as S.Schema<Report>,
+  input: GetOrganizationsLocationsReportsRequest,
+  output: Report,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -986,8 +1302,8 @@ export const listOrganizationsLocations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListLocationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(59) as any as S.Schema<ListOrganizationsLocationsRequest>,
-  output: __S(61) as any as S.Schema<ListLocationsResponse>,
+  input: ListOrganizationsLocationsRequest,
+  output: ListLocationsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1003,8 +1319,8 @@ export const listOrganizationsLocationsOperations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(62) as any as S.Schema<ListOrganizationsLocationsOperationsRequest>,
-  output: __S(64) as any as S.Schema<ListOperationsResponse>,
+  input: ListOrganizationsLocationsOperationsRequest,
+  output: ListOperationsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1020,8 +1336,8 @@ export const listOrganizationsLocationsPostureDeployments: API.PaginatedOperatio
   GcpOpContext,
   ListPostureDeploymentsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(65) as any as S.Schema<ListOrganizationsLocationsPostureDeploymentsRequest>,
-  output: __S(67) as any as S.Schema<ListPostureDeploymentsResponse>,
+  input: ListOrganizationsLocationsPostureDeploymentsRequest,
+  output: ListPostureDeploymentsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1037,8 +1353,8 @@ export const listOrganizationsLocationsPostures: API.PaginatedOperationMethod<
   GcpOpContext,
   ListPosturesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(68) as any as S.Schema<ListOrganizationsLocationsPosturesRequest>,
-  output: __S(70) as any as S.Schema<ListPosturesResponse>,
+  input: ListOrganizationsLocationsPosturesRequest,
+  output: ListPosturesResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1054,8 +1370,8 @@ export const listOrganizationsLocationsPostureTemplates: API.PaginatedOperationM
   GcpOpContext,
   ListPostureTemplatesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(71) as any as S.Schema<ListOrganizationsLocationsPostureTemplatesRequest>,
-  output: __S(73) as any as S.Schema<ListPostureTemplatesResponse>,
+  input: ListOrganizationsLocationsPostureTemplatesRequest,
+  output: ListPostureTemplatesResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1071,8 +1387,8 @@ export const listOrganizationsLocationsReports: API.PaginatedOperationMethod<
   GcpOpContext,
   ListReportsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(74) as any as S.Schema<ListOrganizationsLocationsReportsRequest>,
-  output: __S(76) as any as S.Schema<ListReportsResponse>,
+  input: ListOrganizationsLocationsReportsRequest,
+  output: ListReportsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1088,8 +1404,8 @@ export const listRevisionsOrganizationsLocationsPostures: API.PaginatedOperation
   GcpOpContext,
   ListPostureRevisionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(77) as any as S.Schema<ListRevisionsOrganizationsLocationsPosturesRequest>,
-  output: __S(78) as any as S.Schema<ListPostureRevisionsResponse>,
+  input: ListRevisionsOrganizationsLocationsPosturesRequest,
+  output: ListPostureRevisionsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1109,8 +1425,8 @@ export const patchOrganizationsLocationsPostureDeployments: API.OperationMethod<
   PatchOrganizationsLocationsPostureDeploymentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(79) as any as S.Schema<PatchOrganizationsLocationsPostureDeploymentsRequest>,
-  output: __S(8) as any as S.Schema<Operation>,
+  input: PatchOrganizationsLocationsPostureDeploymentsRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1129,8 +1445,8 @@ export const patchOrganizationsLocationsPostures: API.OperationMethod<
   PatchOrganizationsLocationsPosturesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(80) as any as S.Schema<PatchOrganizationsLocationsPosturesRequest>,
-  output: __S(8) as any as S.Schema<Operation>,
+  input: PatchOrganizationsLocationsPosturesRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1147,7 +1463,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(0).pipe(T.HttpBody())),
+          body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1167,7 +1483,7 @@ function __c0(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          iac: S.optional(__S(2)),
+          iac: S.optional(IaC),
         }),
       ).annotate({
         identifier: "CreateIaCValidationReportRequest",
@@ -1176,7 +1492,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(3).pipe(T.HttpBody())),
+          body: S.optional(CreateIaCValidationReportRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1190,13 +1506,13 @@ function __c0(j: number): any {
     case 5:
       return S.Record(S.String, S.Unknown);
     case 6:
-      return S.Array(__S(5));
+      return S.Array(DocumentMap);
     case 7:
       return S.suspend(() =>
         S.Struct({
           message: S.optional(S.String),
           code: S.optional(S.Number),
-          details: S.optional(__S(6)),
+          details: S.optional(DocumentMapList),
         }),
       ).annotate({ identifier: "Status" });
   }
@@ -1207,14 +1523,14 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           done: S.optional(S.Boolean),
-          metadata: S.optional(__S(5)),
-          response: S.optional(__S(5)),
-          error: S.optional(__S(7)),
+          metadata: S.optional(DocumentMap),
+          response: S.optional(DocumentMap),
+          error: S.optional(Status),
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "Operation" });
     case 1:
-      return S.Array(S.String);
+      return S.Array(PostureDeploymentCategoriesItemEnum);
     case 2:
       return S.Record(S.String, S.String);
     case 3:
@@ -1227,14 +1543,14 @@ function __c1(j: number): any {
           desiredPostureRevisionId: S.optional(S.String),
           description: S.optional(S.String),
           targetResource: S.optional(S.String),
-          state: S.optional(S.String),
+          state: S.optional(PostureDeploymentStateEnum),
           createTime: S.optional(S.String),
           reconciling: S.optional(S.Boolean),
           desiredPostureId: S.optional(S.String),
           postureId: S.optional(S.String),
           updateTime: S.optional(S.String),
-          categories: S.optional(__S(9)),
-          annotations: S.optional(__S(10)),
+          categories: S.optional(PostureDeploymentCategoriesItemEnumList),
+          annotations: S.optional(StringMap),
         }),
       ).annotate({ identifier: "PostureDeployment" });
     case 4:
@@ -1242,7 +1558,7 @@ function __c1(j: number): any {
         S.Struct({
           postureDeploymentId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(11).pipe(T.HttpBody())),
+          body: S.optional(PostureDeployment.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1267,7 +1583,7 @@ function __c1(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          included: S.optional(__S(14)),
+          included: S.optional(StringList),
         }),
       ).annotate({ identifier: "ResourceTypes" });
   }
@@ -1277,8 +1593,8 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          allowedValues: S.optional(__S(14)),
-          deniedValues: S.optional(__S(14)),
+          allowedValues: S.optional(StringList),
+          deniedValues: S.optional(StringList),
         }),
       ).annotate({
         identifier: "GoogleCloudSecuritypostureV1PolicyRuleStringValues",
@@ -1286,39 +1602,41 @@ function __c2(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          condition: S.optional(__S(13)),
-          parameters: S.optional(__S(5)),
-          resourceTypes: S.optional(__S(15)),
+          condition: S.optional(Expr),
+          parameters: S.optional(DocumentMap),
+          resourceTypes: S.optional(ResourceTypes),
           allowAll: S.optional(S.Boolean),
           denyAll: S.optional(S.Boolean),
           enforce: S.optional(S.Boolean),
-          values: S.optional(__S(16)),
+          values: S.optional(GoogleCloudSecuritypostureV1PolicyRuleStringValues),
         }),
       ).annotate({
         identifier: "GoogleCloudSecuritypostureV1PolicyRule",
       });
     case 2:
-      return S.Array(__S(17));
+      return S.Array(GoogleCloudSecuritypostureV1PolicyRule);
     case 3:
       return S.suspend(() =>
         S.Struct({
           cannedConstraintId: S.optional(S.String),
-          policyRules: S.optional(__S(18)),
+          policyRules: S.optional(GoogleCloudSecuritypostureV1PolicyRuleList),
         }),
       ).annotate({ identifier: "OrgPolicyConstraint" });
     case 4:
-      return S.Array(S.String);
+      return S.Array(GoogleCloudSecuritypostureV1CustomConstraintMethodTypesItemEnum);
     case 5:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          actionType: S.optional(S.String),
+          actionType: S.optional(GoogleCloudSecuritypostureV1CustomConstraintActionTypeEnum),
           condition: S.optional(S.String),
           description: S.optional(S.String),
           updateTime: S.optional(S.String),
-          methodTypes: S.optional(__S(20)),
+          methodTypes: S.optional(
+            GoogleCloudSecuritypostureV1CustomConstraintMethodTypesItemEnumList,
+          ),
           displayName: S.optional(S.String),
-          resourceTypes: S.optional(__S(14)),
+          resourceTypes: S.optional(StringList),
         }),
       ).annotate({
         identifier: "GoogleCloudSecuritypostureV1CustomConstraint",
@@ -1326,8 +1644,8 @@ function __c2(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          policyRules: S.optional(__S(18)),
-          customConstraint: S.optional(__S(21)),
+          policyRules: S.optional(GoogleCloudSecuritypostureV1PolicyRuleList),
+          customConstraint: S.optional(GoogleCloudSecuritypostureV1CustomConstraint),
         }),
       ).annotate({
         identifier: "OrgPolicyConstraintCustom",
@@ -1335,7 +1653,7 @@ function __c2(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          resourceTypes: S.optional(__S(14)),
+          resourceTypes: S.optional(StringList),
         }),
       ).annotate({ identifier: "ResourceSelector" });
   }
@@ -1346,24 +1664,24 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          valueExpression: S.optional(__S(13)),
+          valueExpression: S.optional(Expr),
         }),
       ).annotate({ identifier: "Property" });
     case 1:
-      return S.Array(__S(24));
+      return S.Array(Property);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          properties: S.optional(__S(25)),
+          properties: S.optional(PropertyList),
         }),
       ).annotate({ identifier: "CustomOutputSpec" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          resourceSelector: S.optional(__S(23)),
-          customOutput: S.optional(__S(26)),
-          severity: S.optional(S.String),
-          predicate: S.optional(__S(13)),
+          resourceSelector: S.optional(ResourceSelector),
+          customOutput: S.optional(CustomOutputSpec),
+          severity: S.optional(CustomConfigSeverityEnum),
+          predicate: S.optional(Expr),
           recommendation: S.optional(S.String),
           description: S.optional(S.String),
         }),
@@ -1373,8 +1691,10 @@ function __c3(j: number): any {
         S.Struct({
           displayName: S.optional(S.String),
           id: S.optional(S.String),
-          moduleEnablementState: S.optional(S.String),
-          config: S.optional(__S(27)),
+          moduleEnablementState: S.optional(
+            SecurityHealthAnalyticsCustomModuleModuleEnablementStateEnum,
+          ),
+          config: S.optional(CustomConfig),
         }),
       ).annotate({
         identifier: "SecurityHealthAnalyticsCustomModule",
@@ -1383,7 +1703,7 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           moduleName: S.optional(S.String),
-          moduleEnablementState: S.optional(S.String),
+          moduleEnablementState: S.optional(SecurityHealthAnalyticsModuleModuleEnablementStateEnum),
         }),
       ).annotate({
         identifier: "SecurityHealthAnalyticsModule",
@@ -1391,10 +1711,10 @@ function __c3(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          orgPolicyConstraint: S.optional(__S(19)),
-          orgPolicyConstraintCustom: S.optional(__S(22)),
-          securityHealthAnalyticsCustomModule: S.optional(__S(28)),
-          securityHealthAnalyticsModule: S.optional(__S(29)),
+          orgPolicyConstraint: S.optional(OrgPolicyConstraint),
+          orgPolicyConstraintCustom: S.optional(OrgPolicyConstraintCustom),
+          securityHealthAnalyticsCustomModule: S.optional(SecurityHealthAnalyticsCustomModule),
+          securityHealthAnalyticsModule: S.optional(SecurityHealthAnalyticsModule),
         }),
       ).annotate({ identifier: "Constraint" });
     case 7:
@@ -1409,42 +1729,42 @@ function __c3(j: number): any {
 function __c4(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(31));
+      return S.Array(ComplianceStandard);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          constraint: S.optional(__S(30)),
+          constraint: S.optional(Constraint),
           policyId: S.optional(S.String),
           description: S.optional(S.String),
-          complianceStandards: S.optional(__S(32)),
+          complianceStandards: S.optional(ComplianceStandardList),
         }),
       ).annotate({ identifier: "Policy" });
     case 2:
-      return S.Array(__S(33));
+      return S.Array(Policy);
     case 3:
       return S.suspend(() =>
         S.Struct({
           policySetId: S.optional(S.String),
           description: S.optional(S.String),
-          policies: S.optional(__S(34)),
+          policies: S.optional(PolicyList),
         }),
       ).annotate({ identifier: "PolicySet" });
     case 4:
-      return S.Array(__S(35));
+      return S.Array(PolicySet);
     case 5:
       return S.suspend(() =>
         S.Struct({
           reconciling: S.optional(S.Boolean),
           updateTime: S.optional(S.String),
-          categories: S.optional(__S(9)),
-          state: S.optional(S.String),
+          categories: S.optional(PostureCategoriesItemEnumList),
+          state: S.optional(PostureStateEnum),
           revisionId: S.optional(S.String),
           name: S.optional(S.String),
           createTime: S.optional(S.String),
-          annotations: S.optional(__S(10)),
+          annotations: S.optional(StringMap),
           etag: S.optional(S.String),
           description: S.optional(S.String),
-          policySets: S.optional(__S(36)),
+          policySets: S.optional(PolicySetList),
         }),
       ).annotate({ identifier: "Posture" });
     case 6:
@@ -1452,7 +1772,7 @@ function __c4(j: number): any {
         S.Struct({
           parent: S.String.pipe(T.Label()),
           postureId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(37).pipe(T.HttpBody())),
+          body: S.optional(Posture.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1522,7 +1842,7 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(42).pipe(T.HttpBody())),
+          body: S.optional(ExtractPostureRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1550,9 +1870,9 @@ function __c5(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          labels: S.optional(__S(10)),
+          labels: S.optional(StringMap),
           displayName: S.optional(S.String),
-          metadata: S.optional(__S(5)),
+          metadata: S.optional(DocumentMap),
           name: S.optional(S.String),
           locationId: S.optional(S.String),
         }),
@@ -1623,11 +1943,11 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           revisionId: S.optional(S.String),
-          policySets: S.optional(__S(36)),
-          categories: S.optional(__S(9)),
+          policySets: S.optional(PolicySetList),
+          categories: S.optional(PostureTemplateCategoriesItemEnumList),
           description: S.optional(S.String),
           name: S.optional(S.String),
-          state: S.optional(S.String),
+          state: S.optional(PostureTemplateStateEnum),
         }),
       ).annotate({ identifier: "PostureTemplate" });
     case 3:
@@ -1647,9 +1967,9 @@ function __c6(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          constraintType: S.optional(S.String),
+          constraintType: S.optional(PolicyDetailsConstraintTypeEnum),
           description: S.optional(S.String),
-          complianceStandards: S.optional(__S(14)),
+          complianceStandards: S.optional(StringList),
           constraint: S.optional(S.String),
         }),
       ).annotate({ identifier: "PolicyDetails" });
@@ -1673,12 +1993,12 @@ function __c6(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          violatedPolicy: S.optional(__S(52)),
-          violatedAsset: S.optional(__S(53)),
-          severity: S.optional(S.String),
+          violatedPolicy: S.optional(PolicyDetails),
+          violatedAsset: S.optional(AssetDetails),
+          severity: S.optional(ViolationSeverityEnum),
           nextSteps: S.optional(S.String),
           assetId: S.optional(S.String),
-          violatedPosture: S.optional(__S(54)),
+          violatedPosture: S.optional(PostureDetails),
           policyId: S.optional(S.String),
         }),
       ).annotate({ identifier: "Violation" });
@@ -1687,11 +2007,11 @@ function __c6(j: number): any {
 function __c7(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(55));
+      return S.Array(Violation);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          violations: S.optional(__S(56)),
+          violations: S.optional(ViolationList),
           note: S.optional(S.String),
         }),
       ).annotate({ identifier: "IaCValidationReport" });
@@ -1699,7 +2019,7 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           updateTime: S.optional(S.String),
-          iacValidationReport: S.optional(__S(57)),
+          iacValidationReport: S.optional(IaCValidationReport),
           createTime: S.optional(S.String),
           name: S.optional(S.String),
         }),
@@ -1707,7 +2027,7 @@ function __c7(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          extraLocationTypes: S.optional(__S(14).pipe(T.Query())),
+          extraLocationTypes: S.optional(StringList.pipe(T.Query())),
           pageSize: S.optional(S.Number.pipe(T.Query())),
           pageToken: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
@@ -1723,12 +2043,12 @@ function __c7(j: number): any {
         identifier: "ListOrganizationsLocationsRequest",
       });
     case 4:
-      return S.Array(__S(45));
+      return S.Array(Location);
     case 5:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          locations: S.optional(__S(60)),
+          locations: S.optional(LocationList),
         }),
       ).annotate({ identifier: "ListLocationsResponse" });
     case 6:
@@ -1750,7 +2070,7 @@ function __c7(j: number): any {
         identifier: "ListOrganizationsLocationsOperationsRequest",
       });
     case 7:
-      return S.Array(__S(8));
+      return S.Array(Operation);
   }
 }
 function __c8(j: number): any {
@@ -1758,9 +2078,9 @@ function __c8(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          operations: S.optional(__S(63)),
+          operations: S.optional(OperationList),
           nextPageToken: S.optional(S.String),
-          unreachable: S.optional(__S(14)),
+          unreachable: S.optional(StringList),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
     case 1:
@@ -1781,12 +2101,12 @@ function __c8(j: number): any {
         identifier: "ListOrganizationsLocationsPostureDeploymentsRequest",
       });
     case 2:
-      return S.Array(__S(11));
+      return S.Array(PostureDeployment);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          postureDeployments: S.optional(__S(66)),
-          unreachable: S.optional(__S(14)),
+          postureDeployments: S.optional(PostureDeploymentList),
+          unreachable: S.optional(StringList),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -1810,13 +2130,13 @@ function __c8(j: number): any {
         identifier: "ListOrganizationsLocationsPosturesRequest",
       });
     case 5:
-      return S.Array(__S(37));
+      return S.Array(Posture);
     case 6:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          postures: S.optional(__S(69)),
-          unreachable: S.optional(__S(14)),
+          postures: S.optional(PostureList),
+          unreachable: S.optional(StringList),
         }),
       ).annotate({ identifier: "ListPosturesResponse" });
     case 7:
@@ -1841,11 +2161,11 @@ function __c8(j: number): any {
 function __c9(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(50));
+      return S.Array(PostureTemplate);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          postureTemplates: S.optional(__S(72)),
+          postureTemplates: S.optional(PostureTemplateList),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -1869,12 +2189,12 @@ function __c9(j: number): any {
         identifier: "ListOrganizationsLocationsReportsRequest",
       });
     case 3:
-      return S.Array(__S(58));
+      return S.Array(Report);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          reports: S.optional(__S(75)),
-          unreachable: S.optional(__S(14)),
+          reports: S.optional(ReportList),
+          unreachable: S.optional(StringList),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListReportsResponse" });
@@ -1898,7 +2218,7 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          revisions: S.optional(__S(69)),
+          revisions: S.optional(PostureList),
         }),
       ).annotate({
         identifier: "ListPostureRevisionsResponse",
@@ -1908,7 +2228,7 @@ function __c9(j: number): any {
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(11).pipe(T.HttpBody())),
+          body: S.optional(PostureDeployment.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1929,7 +2249,7 @@ function __c10(j: number): any {
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
           revisionId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(37).pipe(T.HttpBody())),
+          body: S.optional(Posture.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1940,36 +2260,5 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "PatchOrganizationsLocationsPosturesRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
-    case 9:
-      return __c9(i & 7);
-    case 10:
-      return __c10(i & 7);
   }
 }

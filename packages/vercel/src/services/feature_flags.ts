@@ -6,8 +6,6 @@ import * as S from "@distilled.cloud/core/schema";
 import { VercelProtocol, type VercelOpError, type VercelOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { VercelOpError, VercelOpContext };
 
@@ -58,13 +56,23 @@ export class PaymentRequired
 
 /** The kind of flag */
 export type CreateFlagRequestKind = "boolean" | "string" | "number" | "json";
+const CreateFlagRequestKind = S.String;
+
 export type CreateFlagRequestVariantsItemValueCase4List = Array<unknown>;
+const CreateFlagRequestVariantsItemValueCase4List = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<CreateFlagRequestVariantsItemValueCase4List>;
+
 export type CreateFlagRequestVariantsItemValue =
   | string
   | number
   | boolean
   | unknown
   | CreateFlagRequestVariantsItemValueCase4List;
+const CreateFlagRequestVariantsItemValue =
+  S.Unknown as any as S.Schema<CreateFlagRequestVariantsItemValue>;
+
 export interface CreateFlagRequestVariantsItem {
   /** The id of the variant */
   id: string;
@@ -74,8 +82,18 @@ export interface CreateFlagRequestVariantsItem {
   description?: string;
   value: CreateFlagRequestVariantsItemValue;
 }
+const CreateFlagRequestVariantsItem = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<CreateFlagRequestVariantsItem>;
+
 /** The variants of the flag */
 export type CreateFlagRequestVariantsList = Array<CreateFlagRequestVariantsItem>;
+const CreateFlagRequestVariantsList = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<CreateFlagRequestVariantsList>;
+
 /** Allows linking this environment to another environment so this flag will be evaluated with the other flag's configuration */
 export interface CreateFlagRequestEnvironmentsValueReuse {
   /** Whether the reuse is active or not */
@@ -83,26 +101,61 @@ export interface CreateFlagRequestEnvironmentsValueReuse {
   /** The environment to link to */
   environment: string;
 }
+const CreateFlagRequestEnvironmentsValueReuse = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<CreateFlagRequestEnvironmentsValueReuse>;
+
 export interface CreateFlagRequestEnvironmentsValueTargetsValueValueValueItem {
   note?: string;
   value: string;
 }
+const CreateFlagRequestEnvironmentsValueTargetsValueValueValueItem = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<CreateFlagRequestEnvironmentsValueTargetsValueValueValueItem>;
+
 export type CreateFlagRequestEnvironmentsValueTargetsValueValueValueList =
   Array<CreateFlagRequestEnvironmentsValueTargetsValueValueValueItem>;
+const CreateFlagRequestEnvironmentsValueTargetsValueValueValueList = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<CreateFlagRequestEnvironmentsValueTargetsValueValueValueList>;
+
 export type CreateFlagRequestEnvironmentsValueTargetsValueValueMap = {
   [key: string]: CreateFlagRequestEnvironmentsValueTargetsValueValueValueList | undefined;
 };
+const CreateFlagRequestEnvironmentsValueTargetsValueValueMap = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<CreateFlagRequestEnvironmentsValueTargetsValueValueMap>;
+
 export type CreateFlagRequestEnvironmentsValueTargetsValueMap = {
   [key: string]: CreateFlagRequestEnvironmentsValueTargetsValueValueMap | undefined;
 };
+const CreateFlagRequestEnvironmentsValueTargetsValueMap = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<CreateFlagRequestEnvironmentsValueTargetsValueMap>;
+
 /** Allows assigning targets to variants while bypassing the flag's rules */
 export type CreateFlagRequestEnvironmentsValueTargetsMap = {
   [key: string]: CreateFlagRequestEnvironmentsValueTargetsValueMap | undefined;
 };
+const CreateFlagRequestEnvironmentsValueTargetsMap = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<CreateFlagRequestEnvironmentsValueTargetsMap>;
+
 export interface CreateFlagRequestEnvironmentsValuePausedOutcome {
   type: unknown;
   variantId: string;
 }
+const CreateFlagRequestEnvironmentsValuePausedOutcome = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<CreateFlagRequestEnvironmentsValuePausedOutcome>;
+
 export interface CreateFlagRequestEnvironmentsValueRulesItemConditionsItemLhsCase0 {
   type: unknown;
 }
@@ -114,6 +167,9 @@ export interface CreateFlagRequestEnvironmentsValueRulesItemConditionsItemLhsCas
 export type CreateFlagRequestEnvironmentsValueRulesItemConditionsItemLhs =
   | CreateFlagRequestEnvironmentsValueRulesItemConditionsItemLhsCase0
   | CreateFlagRequestEnvironmentsValueRulesItemConditionsItemLhsCase1;
+const CreateFlagRequestEnvironmentsValueRulesItemConditionsItemLhs =
+  S.Unknown as any as S.Schema<CreateFlagRequestEnvironmentsValueRulesItemConditionsItemLhs>;
+
 export type CreateFlagRequestEnvironmentsValueRulesItemConditionsItemCmp =
   | "eq"
   | "!eq"
@@ -138,6 +194,8 @@ export type CreateFlagRequestEnvironmentsValueRulesItemConditionsItemCmp =
   | "!regex"
   | "before"
   | "after";
+const CreateFlagRequestEnvironmentsValueRulesItemConditionsItemCmp = S.String;
+
 export type CreateFlagRequestEnvironmentsValueRulesItemConditionsItemRhsCase0Type =
   | "list/inline"
   | "list";
@@ -171,17 +229,35 @@ export type CreateFlagRequestEnvironmentsValueRulesItemConditionsItemRhs =
   | string
   | number
   | boolean;
+const CreateFlagRequestEnvironmentsValueRulesItemConditionsItemRhs =
+  S.Unknown as any as S.Schema<CreateFlagRequestEnvironmentsValueRulesItemConditionsItemRhs>;
+
 export interface CreateFlagRequestEnvironmentsValueRulesItemConditionsItemCmpOptions {
   ignoreCase?: boolean;
 }
+const CreateFlagRequestEnvironmentsValueRulesItemConditionsItemCmpOptions = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<CreateFlagRequestEnvironmentsValueRulesItemConditionsItemCmpOptions>;
+
 export interface CreateFlagRequestEnvironmentsValueRulesItemConditionsItem {
   lhs: CreateFlagRequestEnvironmentsValueRulesItemConditionsItemLhs;
   cmp: CreateFlagRequestEnvironmentsValueRulesItemConditionsItemCmp | (string & {});
   rhs?: CreateFlagRequestEnvironmentsValueRulesItemConditionsItemRhs;
   cmpOptions?: CreateFlagRequestEnvironmentsValueRulesItemConditionsItemCmpOptions;
 }
+const CreateFlagRequestEnvironmentsValueRulesItemConditionsItem = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<CreateFlagRequestEnvironmentsValueRulesItemConditionsItem>;
+
 export type CreateFlagRequestEnvironmentsValueRulesItemConditionsList =
   Array<CreateFlagRequestEnvironmentsValueRulesItemConditionsItem>;
+const CreateFlagRequestEnvironmentsValueRulesItemConditionsList = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<CreateFlagRequestEnvironmentsValueRulesItemConditionsList>;
+
 export type CreateFlagRequestEnvironmentsValueRulesItemOutcomeCase0 =
   CreateFlagRequestEnvironmentsValuePausedOutcome;
 export type CreateFlagRequestEnvironmentsValueRulesItemOutcomeCase1Base =
@@ -229,13 +305,26 @@ export type CreateFlagRequestEnvironmentsValueRulesItemOutcome =
   | CreateFlagRequestEnvironmentsValuePausedOutcome
   | CreateFlagRequestEnvironmentsValueRulesItemOutcomeCase1
   | CreateFlagRequestEnvironmentsValueRulesItemOutcomeCase2;
+const CreateFlagRequestEnvironmentsValueRulesItemOutcome =
+  S.Unknown as any as S.Schema<CreateFlagRequestEnvironmentsValueRulesItemOutcome>;
+
 export interface CreateFlagRequestEnvironmentsValueRulesItem {
   id: string;
   conditions: CreateFlagRequestEnvironmentsValueRulesItemConditionsList;
   outcome: CreateFlagRequestEnvironmentsValueRulesItemOutcome;
 }
+const CreateFlagRequestEnvironmentsValueRulesItem = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<CreateFlagRequestEnvironmentsValueRulesItem>;
+
 export type CreateFlagRequestEnvironmentsValueRulesList =
   Array<CreateFlagRequestEnvironmentsValueRulesItem>;
+const CreateFlagRequestEnvironmentsValueRulesList = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<CreateFlagRequestEnvironmentsValueRulesList>;
+
 export type CreateFlagRequestEnvironmentsValueFallthroughCase0 =
   CreateFlagRequestEnvironmentsValuePausedOutcome;
 export type CreateFlagRequestEnvironmentsValueFallthroughCase1Base =
@@ -279,6 +368,9 @@ export type CreateFlagRequestEnvironmentsValueFallthrough =
   | CreateFlagRequestEnvironmentsValuePausedOutcome
   | CreateFlagRequestEnvironmentsValueFallthroughCase1
   | CreateFlagRequestEnvironmentsValueFallthroughCase2;
+const CreateFlagRequestEnvironmentsValueFallthrough =
+  S.Unknown as any as S.Schema<CreateFlagRequestEnvironmentsValueFallthrough>;
+
 export interface CreateFlagRequestEnvironmentsValue {
   active: boolean;
   /** Allows linking this environment to another environment so this flag will be evaluated with the other flag's configuration */
@@ -291,15 +383,35 @@ export interface CreateFlagRequestEnvironmentsValue {
   /** The revision of the environment config */
   revision?: number;
 }
+const CreateFlagRequestEnvironmentsValue = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<CreateFlagRequestEnvironmentsValue>;
+
 /** The configuration for the flag in different environments */
 export type CreateFlagRequestEnvironmentsMap = {
   [key: string]: CreateFlagRequestEnvironmentsValue | undefined;
 };
+const CreateFlagRequestEnvironmentsMap = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<CreateFlagRequestEnvironmentsMap>;
+
 export type CreateFlagRequestState = "active" | "archived";
+const CreateFlagRequestState = S.String;
+
 /** The user ids of the maintainers of the flag */
 export type CreateFlagRequestMaintainerIdsList = Array<string>;
+const CreateFlagRequestMaintainerIdsList = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<CreateFlagRequestMaintainerIdsList>;
+
 /** Tags for categorizing the flag */
 export type CreateFlagRequestTagsList = Array<string>;
+const CreateFlagRequestTagsList =
+  CreateFlagRequestMaintainerIdsList as any as S.Schema<CreateFlagRequestTagsList>;
+
 export interface CreateFlagRequest {
   /** The project id or name */
   projectIdOrName: string;
@@ -325,11 +437,20 @@ export interface CreateFlagRequest {
   /** Tags for categorizing the flag */
   tags?: CreateFlagRequestTagsList;
 }
+const CreateFlagRequest = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<CreateFlagRequest>;
+
 export type CreateFlagResponseEnvironmentsValueFallthroughCase0Type = "variant";
+const CreateFlagResponseEnvironmentsValueFallthroughCase0Type = S.String;
+
 export interface CreateFlagResponseEnvironmentsValueFallthroughCase0 {
   type: CreateFlagResponseEnvironmentsValueFallthroughCase0Type;
   variantId: string;
 }
+const CreateFlagResponseEnvironmentsValueFallthroughCase0 = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<CreateFlagResponseEnvironmentsValueFallthroughCase0>;
+
 export type CreateFlagResponseEnvironmentsValueFallthroughCase1BaseType = "entity";
 export interface CreateFlagResponseEnvironmentsValueFallthroughCase1Base {
   attribute: string;
@@ -378,15 +499,24 @@ export type CreateFlagResponseEnvironmentsValueFallthrough =
   | CreateFlagResponseEnvironmentsValueFallthroughCase1
   | CreateFlagResponseEnvironmentsValueFallthroughCase2
   | CreateFlagResponseEnvironmentsValueFallthroughCase3;
+const CreateFlagResponseEnvironmentsValueFallthrough =
+  S.Unknown as any as S.Schema<CreateFlagResponseEnvironmentsValueFallthrough>;
+
 export type CreateFlagResponseEnvironmentsValuePausedOutcomeType = "variant";
 export interface CreateFlagResponseEnvironmentsValuePausedOutcome {
   type: CreateFlagResponseEnvironmentsValuePausedOutcomeType;
   variantId: string;
 }
+const CreateFlagResponseEnvironmentsValuePausedOutcome =
+  CreateFlagResponseEnvironmentsValueFallthroughCase0 as any as S.Schema<CreateFlagResponseEnvironmentsValuePausedOutcome>;
+
 export interface CreateFlagResponseEnvironmentsValueReuse {
   active: boolean;
   environment: string;
 }
+const CreateFlagResponseEnvironmentsValueReuse =
+  CreateFlagRequestEnvironmentsValueReuse as any as S.Schema<CreateFlagResponseEnvironmentsValueReuse>;
+
 export type CreateFlagResponseEnvironmentsValueRulesItemConditionsItemCmp =
   | "!contains"
   | "!endsWith"
@@ -411,6 +541,8 @@ export type CreateFlagResponseEnvironmentsValueRulesItemConditionsItemCmp =
   | "oneOf"
   | "regex"
   | "startsWith";
+const CreateFlagResponseEnvironmentsValueRulesItemConditionsItemCmp = S.String;
+
 export type CreateFlagResponseEnvironmentsValueRulesItemConditionsItemCmpOptions =
   CreateFlagRequestEnvironmentsValueRulesItemConditionsItemCmpOptions;
 export type CreateFlagResponseEnvironmentsValueRulesItemConditionsItemLhsCase0Type = "segment";
@@ -426,6 +558,9 @@ export interface CreateFlagResponseEnvironmentsValueRulesItemConditionsItemLhsCa
 export type CreateFlagResponseEnvironmentsValueRulesItemConditionsItemLhs =
   | CreateFlagResponseEnvironmentsValueRulesItemConditionsItemLhsCase0
   | CreateFlagResponseEnvironmentsValueRulesItemConditionsItemLhsCase1;
+const CreateFlagResponseEnvironmentsValueRulesItemConditionsItemLhs =
+  S.Unknown as any as S.Schema<CreateFlagResponseEnvironmentsValueRulesItemConditionsItemLhs>;
+
 export type CreateFlagResponseEnvironmentsValueRulesItemConditionsItemRhsCase2ItemsItemCase0 =
   CreateFlagRequestEnvironmentsValueRulesItemConditionsItemRhsCase0ItemsItemCase0;
 export type CreateFlagResponseEnvironmentsValueRulesItemConditionsItemRhsCase2ItemsItemCase1 =
@@ -454,14 +589,27 @@ export type CreateFlagResponseEnvironmentsValueRulesItemConditionsItemRhs =
   | CreateFlagResponseEnvironmentsValueRulesItemConditionsItemRhsCase2
   | CreateFlagResponseEnvironmentsValueRulesItemConditionsItemRhsCase3
   | boolean;
+const CreateFlagResponseEnvironmentsValueRulesItemConditionsItemRhs =
+  S.Unknown as any as S.Schema<CreateFlagResponseEnvironmentsValueRulesItemConditionsItemRhs>;
+
 export interface CreateFlagResponseEnvironmentsValueRulesItemConditionsItem {
   cmp: CreateFlagResponseEnvironmentsValueRulesItemConditionsItemCmp;
   cmpOptions?: CreateFlagRequestEnvironmentsValueRulesItemConditionsItemCmpOptions;
   lhs: CreateFlagResponseEnvironmentsValueRulesItemConditionsItemLhs;
   rhs?: CreateFlagResponseEnvironmentsValueRulesItemConditionsItemRhs;
 }
+const CreateFlagResponseEnvironmentsValueRulesItemConditionsItem = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<CreateFlagResponseEnvironmentsValueRulesItemConditionsItem>;
+
 export type CreateFlagResponseEnvironmentsValueRulesItemConditionsList =
   Array<CreateFlagResponseEnvironmentsValueRulesItemConditionsItem>;
+const CreateFlagResponseEnvironmentsValueRulesItemConditionsList = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<CreateFlagResponseEnvironmentsValueRulesItemConditionsList>;
+
 export type CreateFlagResponseEnvironmentsValueRulesItemOutcomeCase0Type = "variant";
 export interface CreateFlagResponseEnvironmentsValueRulesItemOutcomeCase0 {
   type: CreateFlagResponseEnvironmentsValueRulesItemOutcomeCase0Type;
@@ -513,13 +661,26 @@ export type CreateFlagResponseEnvironmentsValueRulesItemOutcome =
   | CreateFlagResponseEnvironmentsValueRulesItemOutcomeCase1
   | CreateFlagResponseEnvironmentsValueRulesItemOutcomeCase2
   | CreateFlagResponseEnvironmentsValueRulesItemOutcomeCase3;
+const CreateFlagResponseEnvironmentsValueRulesItemOutcome =
+  S.Unknown as any as S.Schema<CreateFlagResponseEnvironmentsValueRulesItemOutcome>;
+
 export interface CreateFlagResponseEnvironmentsValueRulesItem {
   conditions: CreateFlagResponseEnvironmentsValueRulesItemConditionsList;
   id: string;
   outcome: CreateFlagResponseEnvironmentsValueRulesItemOutcome;
 }
+const CreateFlagResponseEnvironmentsValueRulesItem = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<CreateFlagResponseEnvironmentsValueRulesItem>;
+
 export type CreateFlagResponseEnvironmentsValueRulesList =
   Array<CreateFlagResponseEnvironmentsValueRulesItem>;
+const CreateFlagResponseEnvironmentsValueRulesList = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<CreateFlagResponseEnvironmentsValueRulesList>;
+
 export type CreateFlagResponseEnvironmentsValueTargetsValueValueValueItem =
   CreateFlagRequestEnvironmentsValueTargetsValueValueValueItem;
 export type CreateFlagResponseEnvironmentsValueTargetsValueValueValueList =
@@ -533,6 +694,9 @@ export type CreateFlagResponseEnvironmentsValueTargetsValueMap = {
 export type CreateFlagResponseEnvironmentsValueTargetsMap = {
   [key: string]: CreateFlagResponseEnvironmentsValueTargetsValueMap | undefined;
 };
+const CreateFlagResponseEnvironmentsValueTargetsMap =
+  CreateFlagRequestEnvironmentsValueTargetsMap as any as S.Schema<CreateFlagResponseEnvironmentsValueTargetsMap>;
+
 export interface CreateFlagResponseEnvironmentsValue {
   active: boolean;
   fallthrough: CreateFlagResponseEnvironmentsValueFallthrough;
@@ -542,14 +706,36 @@ export interface CreateFlagResponseEnvironmentsValue {
   rules: CreateFlagResponseEnvironmentsValueRulesList;
   targets?: CreateFlagResponseEnvironmentsValueTargetsMap;
 }
+const CreateFlagResponseEnvironmentsValue = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<CreateFlagResponseEnvironmentsValue>;
+
 export type CreateFlagResponseEnvironmentsMap = {
   [key: string]: CreateFlagResponseEnvironmentsValue | undefined;
 };
+const CreateFlagResponseEnvironmentsMap = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<CreateFlagResponseEnvironmentsMap>;
+
 export type CreateFlagResponseKind = "boolean" | "json" | "number" | "string";
+const CreateFlagResponseKind = S.String;
+
 export type CreateFlagResponseMaintainerIdsList = Array<string>;
+const CreateFlagResponseMaintainerIdsList =
+  CreateFlagRequestMaintainerIdsList as any as S.Schema<CreateFlagResponseMaintainerIdsList>;
+
 export type CreateFlagResponseState = "active" | "archived";
+const CreateFlagResponseState = S.String;
+
 export type CreateFlagResponseTagsList = Array<string>;
+const CreateFlagResponseTagsList =
+  CreateFlagRequestMaintainerIdsList as any as S.Schema<CreateFlagResponseTagsList>;
+
 export type CreateFlagResponseTypeName = "flag";
+const CreateFlagResponseTypeName = S.String;
+
 export type CreateFlagResponseVariantsItemValueCase2Map = { [key: string]: unknown | undefined };
 export type CreateFlagResponseVariantsItemValueCase3List = Array<unknown>;
 export type CreateFlagResponseVariantsItemValue =
@@ -558,13 +744,26 @@ export type CreateFlagResponseVariantsItemValue =
   | CreateFlagResponseVariantsItemValueCase2Map
   | CreateFlagResponseVariantsItemValueCase3List
   | boolean;
+const CreateFlagResponseVariantsItemValue =
+  S.Unknown as any as S.Schema<CreateFlagResponseVariantsItemValue>;
+
 export interface CreateFlagResponseVariantsItem {
   description?: string;
   id: string;
   label?: string;
   value: CreateFlagResponseVariantsItemValue | null;
 }
+const CreateFlagResponseVariantsItem = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<CreateFlagResponseVariantsItem>;
+
 export type CreateFlagResponseVariantsList = Array<CreateFlagResponseVariantsItem>;
+const CreateFlagResponseVariantsList = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<CreateFlagResponseVariantsList>;
+
 export interface CreateFlagResponse {
   createdAt: number;
   createdBy: string;
@@ -586,6 +785,8 @@ export interface CreateFlagResponse {
   updatedBy?: string;
   variants: CreateFlagResponseVariantsList;
 }
+const CreateFlagResponse = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<CreateFlagResponse>;
+
 export type CreateFlagSegmentRequestDataRulesItemConditionsItemLhsCase0 =
   CreateFlagRequestEnvironmentsValueRulesItemConditionsItemLhsCase0;
 export type CreateFlagSegmentRequestDataRulesItemConditionsItemLhsCase1 =
@@ -593,6 +794,9 @@ export type CreateFlagSegmentRequestDataRulesItemConditionsItemLhsCase1 =
 export type CreateFlagSegmentRequestDataRulesItemConditionsItemLhs =
   | CreateFlagRequestEnvironmentsValueRulesItemConditionsItemLhsCase0
   | CreateFlagRequestEnvironmentsValueRulesItemConditionsItemLhsCase1;
+const CreateFlagSegmentRequestDataRulesItemConditionsItemLhs =
+  S.Unknown as any as S.Schema<CreateFlagSegmentRequestDataRulesItemConditionsItemLhs>;
+
 export type CreateFlagSegmentRequestDataRulesItemConditionsItemCmp =
   | "eq"
   | "!eq"
@@ -617,6 +821,8 @@ export type CreateFlagSegmentRequestDataRulesItemConditionsItemCmp =
   | "!regex"
   | "before"
   | "after";
+const CreateFlagSegmentRequestDataRulesItemConditionsItemCmp = S.String;
+
 export type CreateFlagSegmentRequestDataRulesItemConditionsItemRhsCase0Type =
   | "list/inline"
   | "list";
@@ -641,6 +847,9 @@ export type CreateFlagSegmentRequestDataRulesItemConditionsItemRhs =
   | string
   | number
   | boolean;
+const CreateFlagSegmentRequestDataRulesItemConditionsItemRhs =
+  S.Unknown as any as S.Schema<CreateFlagSegmentRequestDataRulesItemConditionsItemRhs>;
+
 export type CreateFlagSegmentRequestDataRulesItemConditionsItemCmpOptions =
   CreateFlagRequestEnvironmentsValueRulesItemConditionsItemCmpOptions;
 export interface CreateFlagSegmentRequestDataRulesItemConditionsItem {
@@ -649,8 +858,18 @@ export interface CreateFlagSegmentRequestDataRulesItemConditionsItem {
   rhs?: CreateFlagSegmentRequestDataRulesItemConditionsItemRhs;
   cmpOptions?: CreateFlagRequestEnvironmentsValueRulesItemConditionsItemCmpOptions;
 }
+const CreateFlagSegmentRequestDataRulesItemConditionsItem = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<CreateFlagSegmentRequestDataRulesItemConditionsItem>;
+
 export type CreateFlagSegmentRequestDataRulesItemConditionsList =
   Array<CreateFlagSegmentRequestDataRulesItemConditionsItem>;
+const CreateFlagSegmentRequestDataRulesItemConditionsList = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<CreateFlagSegmentRequestDataRulesItemConditionsList>;
+
 export type CreateFlagSegmentRequestDataRulesItemOutcomeCase0 =
   CreateFlagRequestEnvironmentsValueRulesItemConditionsItemLhsCase0;
 export type CreateFlagSegmentRequestDataRulesItemOutcomeCase1Base =
@@ -663,12 +882,25 @@ export interface CreateFlagSegmentRequestDataRulesItemOutcomeCase1 {
 export type CreateFlagSegmentRequestDataRulesItemOutcome =
   | CreateFlagRequestEnvironmentsValueRulesItemConditionsItemLhsCase0
   | CreateFlagSegmentRequestDataRulesItemOutcomeCase1;
+const CreateFlagSegmentRequestDataRulesItemOutcome =
+  S.Unknown as any as S.Schema<CreateFlagSegmentRequestDataRulesItemOutcome>;
+
 export interface CreateFlagSegmentRequestDataRulesItem {
   id: string;
   conditions: CreateFlagSegmentRequestDataRulesItemConditionsList;
   outcome: CreateFlagSegmentRequestDataRulesItemOutcome;
 }
+const CreateFlagSegmentRequestDataRulesItem = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<CreateFlagSegmentRequestDataRulesItem>;
+
 export type CreateFlagSegmentRequestDataRulesList = Array<CreateFlagSegmentRequestDataRulesItem>;
+const CreateFlagSegmentRequestDataRulesList = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<CreateFlagSegmentRequestDataRulesList>;
+
 export type CreateFlagSegmentRequestDataIncludeValueValueItem =
   CreateFlagRequestEnvironmentsValueTargetsValueValueValueItem;
 export type CreateFlagSegmentRequestDataIncludeValueValueList =
@@ -679,6 +911,9 @@ export type CreateFlagSegmentRequestDataIncludeValueMap = {
 export type CreateFlagSegmentRequestDataIncludeMap = {
   [key: string]: CreateFlagSegmentRequestDataIncludeValueMap | undefined;
 };
+const CreateFlagSegmentRequestDataIncludeMap =
+  CreateFlagRequestEnvironmentsValueTargetsValueMap as any as S.Schema<CreateFlagSegmentRequestDataIncludeMap>;
+
 export type CreateFlagSegmentRequestDataExcludeValueValueItem =
   CreateFlagRequestEnvironmentsValueTargetsValueValueValueItem;
 export type CreateFlagSegmentRequestDataExcludeValueValueList =
@@ -689,12 +924,20 @@ export type CreateFlagSegmentRequestDataExcludeValueMap = {
 export type CreateFlagSegmentRequestDataExcludeMap = {
   [key: string]: CreateFlagSegmentRequestDataExcludeValueMap | undefined;
 };
+const CreateFlagSegmentRequestDataExcludeMap =
+  CreateFlagRequestEnvironmentsValueTargetsValueMap as any as S.Schema<CreateFlagSegmentRequestDataExcludeMap>;
+
 /** The data of the segment */
 export interface CreateFlagSegmentRequestData {
   rules?: CreateFlagSegmentRequestDataRulesList;
   include?: CreateFlagSegmentRequestDataIncludeMap;
   exclude?: CreateFlagSegmentRequestDataExcludeMap;
 }
+const CreateFlagSegmentRequestData = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<CreateFlagSegmentRequestData>;
+
 export interface CreateFlagSegmentRequest {
   /** The project id or name */
   projectIdOrName: string;
@@ -710,6 +953,11 @@ export interface CreateFlagSegmentRequest {
   data: CreateFlagSegmentRequestData;
   hint: string;
 }
+const CreateFlagSegmentRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<CreateFlagSegmentRequest>;
+
 export type CreateFlagSegmentResponseDataExcludeValueValueItem =
   CreateFlagRequestEnvironmentsValueTargetsValueValueValueItem;
 export type CreateFlagSegmentResponseDataExcludeValueValueList =
@@ -720,6 +968,9 @@ export type CreateFlagSegmentResponseDataExcludeValueMap = {
 export type CreateFlagSegmentResponseDataExcludeMap = {
   [key: string]: CreateFlagSegmentResponseDataExcludeValueMap | undefined;
 };
+const CreateFlagSegmentResponseDataExcludeMap =
+  CreateFlagRequestEnvironmentsValueTargetsValueMap as any as S.Schema<CreateFlagSegmentResponseDataExcludeMap>;
+
 export type CreateFlagSegmentResponseDataIncludeValueValueItem =
   CreateFlagRequestEnvironmentsValueTargetsValueValueValueItem;
 export type CreateFlagSegmentResponseDataIncludeValueValueList =
@@ -730,6 +981,9 @@ export type CreateFlagSegmentResponseDataIncludeValueMap = {
 export type CreateFlagSegmentResponseDataIncludeMap = {
   [key: string]: CreateFlagSegmentResponseDataIncludeValueMap | undefined;
 };
+const CreateFlagSegmentResponseDataIncludeMap =
+  CreateFlagRequestEnvironmentsValueTargetsValueMap as any as S.Schema<CreateFlagSegmentResponseDataIncludeMap>;
+
 export type CreateFlagSegmentResponseDataRulesItemConditionsItemCmp =
   | "!contains"
   | "!endsWith"
@@ -754,6 +1008,8 @@ export type CreateFlagSegmentResponseDataRulesItemConditionsItemCmp =
   | "oneOf"
   | "regex"
   | "startsWith";
+const CreateFlagSegmentResponseDataRulesItemConditionsItemCmp = S.String;
+
 export type CreateFlagSegmentResponseDataRulesItemConditionsItemCmpOptions =
   CreateFlagRequestEnvironmentsValueRulesItemConditionsItemCmpOptions;
 export type CreateFlagSegmentResponseDataRulesItemConditionsItemLhsCase0Type = "segment";
@@ -769,6 +1025,9 @@ export interface CreateFlagSegmentResponseDataRulesItemConditionsItemLhsCase1 {
 export type CreateFlagSegmentResponseDataRulesItemConditionsItemLhs =
   | CreateFlagSegmentResponseDataRulesItemConditionsItemLhsCase0
   | CreateFlagSegmentResponseDataRulesItemConditionsItemLhsCase1;
+const CreateFlagSegmentResponseDataRulesItemConditionsItemLhs =
+  S.Unknown as any as S.Schema<CreateFlagSegmentResponseDataRulesItemConditionsItemLhs>;
+
 export type CreateFlagSegmentResponseDataRulesItemConditionsItemRhsCase2ItemsItemCase0 =
   CreateFlagRequestEnvironmentsValueRulesItemConditionsItemRhsCase0ItemsItemCase0;
 export type CreateFlagSegmentResponseDataRulesItemConditionsItemRhsCase2ItemsItemCase1 =
@@ -797,14 +1056,27 @@ export type CreateFlagSegmentResponseDataRulesItemConditionsItemRhs =
   | CreateFlagSegmentResponseDataRulesItemConditionsItemRhsCase2
   | CreateFlagSegmentResponseDataRulesItemConditionsItemRhsCase3
   | boolean;
+const CreateFlagSegmentResponseDataRulesItemConditionsItemRhs =
+  S.Unknown as any as S.Schema<CreateFlagSegmentResponseDataRulesItemConditionsItemRhs>;
+
 export interface CreateFlagSegmentResponseDataRulesItemConditionsItem {
   cmp: CreateFlagSegmentResponseDataRulesItemConditionsItemCmp;
   cmpOptions?: CreateFlagRequestEnvironmentsValueRulesItemConditionsItemCmpOptions;
   lhs: CreateFlagSegmentResponseDataRulesItemConditionsItemLhs;
   rhs?: CreateFlagSegmentResponseDataRulesItemConditionsItemRhs;
 }
+const CreateFlagSegmentResponseDataRulesItemConditionsItem = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<CreateFlagSegmentResponseDataRulesItemConditionsItem>;
+
 export type CreateFlagSegmentResponseDataRulesItemConditionsList =
   Array<CreateFlagSegmentResponseDataRulesItemConditionsItem>;
+const CreateFlagSegmentResponseDataRulesItemConditionsList = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<CreateFlagSegmentResponseDataRulesItemConditionsList>;
+
 export type CreateFlagSegmentResponseDataRulesItemOutcomeCase0Type = "all";
 export interface CreateFlagSegmentResponseDataRulesItemOutcomeCase0 {
   type: CreateFlagSegmentResponseDataRulesItemOutcomeCase0Type;
@@ -824,20 +1096,46 @@ export interface CreateFlagSegmentResponseDataRulesItemOutcomeCase1 {
 export type CreateFlagSegmentResponseDataRulesItemOutcome =
   | CreateFlagSegmentResponseDataRulesItemOutcomeCase0
   | CreateFlagSegmentResponseDataRulesItemOutcomeCase1;
+const CreateFlagSegmentResponseDataRulesItemOutcome =
+  S.Unknown as any as S.Schema<CreateFlagSegmentResponseDataRulesItemOutcome>;
+
 export interface CreateFlagSegmentResponseDataRulesItem {
   conditions: CreateFlagSegmentResponseDataRulesItemConditionsList;
   id: string;
   outcome: CreateFlagSegmentResponseDataRulesItemOutcome;
 }
+const CreateFlagSegmentResponseDataRulesItem = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<CreateFlagSegmentResponseDataRulesItem>;
+
 export type CreateFlagSegmentResponseDataRulesList = Array<CreateFlagSegmentResponseDataRulesItem>;
+const CreateFlagSegmentResponseDataRulesList = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<CreateFlagSegmentResponseDataRulesList>;
+
 export interface CreateFlagSegmentResponseData {
   exclude?: CreateFlagSegmentResponseDataExcludeMap;
   include?: CreateFlagSegmentResponseDataIncludeMap;
   rules?: CreateFlagSegmentResponseDataRulesList;
 }
+const CreateFlagSegmentResponseData = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<CreateFlagSegmentResponseData>;
+
 export type CreateFlagSegmentResponseTypeName = "segment";
+const CreateFlagSegmentResponseTypeName = S.String;
+
 export type CreateFlagSegmentResponseUsedByFlagsList = Array<string>;
+const CreateFlagSegmentResponseUsedByFlagsList =
+  CreateFlagRequestMaintainerIdsList as any as S.Schema<CreateFlagSegmentResponseUsedByFlagsList>;
+
 export type CreateFlagSegmentResponseUsedBySegmentsList = Array<string>;
+const CreateFlagSegmentResponseUsedBySegmentsList =
+  CreateFlagRequestMaintainerIdsList as any as S.Schema<CreateFlagSegmentResponseUsedBySegmentsList>;
+
 export interface CreateFlagSegmentResponse {
   createdAt: number;
   createdBy?: string;
@@ -853,7 +1151,14 @@ export interface CreateFlagSegmentResponse {
   usedByFlags?: CreateFlagSegmentResponseUsedByFlagsList;
   usedBySegments?: CreateFlagSegmentResponseUsedBySegmentsList;
 }
+const CreateFlagSegmentResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  0,
+) as any as S.Schema<CreateFlagSegmentResponse>;
+
 export type CreateSdkKeyRequestSdkKeyType = "server" | "mobile" | "client";
+const CreateSdkKeyRequestSdkKeyType = S.String;
+
 export interface CreateSdkKeyRequest {
   /** The project id or name */
   projectIdOrName: string;
@@ -865,7 +1170,11 @@ export interface CreateSdkKeyRequest {
   environment: string;
   label?: string;
 }
+const CreateSdkKeyRequest = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<CreateSdkKeyRequest>;
+
 export type FlagsSdkKeyWithSecretsType = "client" | "mobile" | "server";
+const FlagsSdkKeyWithSecretsType = S.String;
+
 /** Representation of a Flags SDK key returned by CREATE. Includes cleartext secrets (`keyValue`, `tokenValue`, `connectionString`) which are only ever disclosed once, on creation. */
 export interface FlagsSdkKeyWithSecrets {
   createdAt: number;
@@ -884,6 +1193,11 @@ export interface FlagsSdkKeyWithSecrets {
   /** Cleartext value of the Global Config token, when the project has a Global Config connection. */
   tokenValue?: string;
 }
+const FlagsSdkKeyWithSecrets = /*@__PURE__*/ __L.at(
+  __c5,
+  2,
+) as any as S.Schema<FlagsSdkKeyWithSecrets>;
+
 export interface DeleteFlagRequest {
   /** The project id or name */
   projectIdOrName: string;
@@ -898,7 +1212,11 @@ export interface DeleteFlagRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
+const DeleteFlagRequest = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<DeleteFlagRequest>;
+
 export interface DeleteFlagResponse {}
+const DeleteFlagResponse = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<DeleteFlagResponse>;
+
 export interface DeleteFlagSegmentRequest {
   /** The project id or name */
   projectIdOrName: string;
@@ -911,7 +1229,14 @@ export interface DeleteFlagSegmentRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
+const DeleteFlagSegmentRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  5,
+) as any as S.Schema<DeleteFlagSegmentRequest>;
+
 export interface DeleteFlagSegmentResponse {}
+const DeleteFlagSegmentResponse = DeleteFlagResponse as any as S.Schema<DeleteFlagSegmentResponse>;
+
 export interface DeleteSdkKeyRequest {
   /** The project id or name */
   projectIdOrName: string;
@@ -922,7 +1247,11 @@ export interface DeleteSdkKeyRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
+const DeleteSdkKeyRequest = /*@__PURE__*/ __L.at(__c5, 6) as any as S.Schema<DeleteSdkKeyRequest>;
+
 export interface DeleteSdkKeyResponse {}
+const DeleteSdkKeyResponse = DeleteFlagResponse as any as S.Schema<DeleteSdkKeyResponse>;
+
 export interface GetDeploymentFeatureFlagsRequest {
   deploymentId: string;
   /** The Team identifier to perform the request on behalf of. */
@@ -930,7 +1259,15 @@ export interface GetDeploymentFeatureFlagsRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
+const GetDeploymentFeatureFlagsRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  7,
+) as any as S.Schema<GetDeploymentFeatureFlagsRequest>;
+
 export type GetDeploymentFeatureFlagsResponseFlagsList = Array<unknown>;
+const GetDeploymentFeatureFlagsResponseFlagsList =
+  CreateFlagRequestVariantsItemValueCase4List as any as S.Schema<GetDeploymentFeatureFlagsResponseFlagsList>;
+
 export interface GetDeploymentFeatureFlagsResponseStatus {
   createdAt: number;
   deploymentId: string;
@@ -940,10 +1277,20 @@ export interface GetDeploymentFeatureFlagsResponseStatus {
   /** The HTTP status code from the flags discovery endpoint. */
   responseStatus: number;
 }
+const GetDeploymentFeatureFlagsResponseStatus = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<GetDeploymentFeatureFlagsResponseStatus>;
+
 export interface GetDeploymentFeatureFlagsResponse {
   flags: GetDeploymentFeatureFlagsResponseFlagsList;
   status: GetDeploymentFeatureFlagsResponseStatus | null;
 }
+const GetDeploymentFeatureFlagsResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  1,
+) as any as S.Schema<GetDeploymentFeatureFlagsResponse>;
+
 export interface GetFlagRequest {
   /** The project id or name */
   projectIdOrName: string;
@@ -958,6 +1305,8 @@ export interface GetFlagRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
+const GetFlagRequest = /*@__PURE__*/ __L.at(__c6, 2) as any as S.Schema<GetFlagRequest>;
+
 export type FlagEnvironmentsValueFallthroughCase0Type = "variant";
 export interface FlagEnvironmentsValueFallthroughCase0 {
   type: FlagEnvironmentsValueFallthroughCase0Type;
@@ -1007,11 +1356,17 @@ export type FlagEnvironmentsValueFallthrough =
   | FlagEnvironmentsValueFallthroughCase1
   | FlagEnvironmentsValueFallthroughCase2
   | FlagEnvironmentsValueFallthroughCase3;
+const FlagEnvironmentsValueFallthrough =
+  S.Unknown as any as S.Schema<FlagEnvironmentsValueFallthrough>;
+
 export type FlagEnvironmentsValuePausedOutcomeType = "variant";
 export interface FlagEnvironmentsValuePausedOutcome {
   type: FlagEnvironmentsValuePausedOutcomeType;
   variantId: string;
 }
+const FlagEnvironmentsValuePausedOutcome =
+  CreateFlagResponseEnvironmentsValueFallthroughCase0 as any as S.Schema<FlagEnvironmentsValuePausedOutcome>;
+
 export type FlagEnvironmentsValueReuse = CreateFlagResponseEnvironmentsValueReuse;
 export type FlagEnvironmentsValueRulesItemConditionsItemCmp =
   | "!contains"
@@ -1037,6 +1392,8 @@ export type FlagEnvironmentsValueRulesItemConditionsItemCmp =
   | "oneOf"
   | "regex"
   | "startsWith";
+const FlagEnvironmentsValueRulesItemConditionsItemCmp = S.String;
+
 export type FlagEnvironmentsValueRulesItemConditionsItemCmpOptions =
   CreateFlagRequestEnvironmentsValueRulesItemConditionsItemCmpOptions;
 export type FlagEnvironmentsValueRulesItemConditionsItemLhsCase0Type = "segment";
@@ -1052,6 +1409,9 @@ export interface FlagEnvironmentsValueRulesItemConditionsItemLhsCase1 {
 export type FlagEnvironmentsValueRulesItemConditionsItemLhs =
   | FlagEnvironmentsValueRulesItemConditionsItemLhsCase0
   | FlagEnvironmentsValueRulesItemConditionsItemLhsCase1;
+const FlagEnvironmentsValueRulesItemConditionsItemLhs =
+  S.Unknown as any as S.Schema<FlagEnvironmentsValueRulesItemConditionsItemLhs>;
+
 export type FlagEnvironmentsValueRulesItemConditionsItemRhsCase2ItemsItemCase0 =
   CreateFlagRequestEnvironmentsValueRulesItemConditionsItemRhsCase0ItemsItemCase0;
 export type FlagEnvironmentsValueRulesItemConditionsItemRhsCase2ItemsItemCase1 =
@@ -1078,14 +1438,27 @@ export type FlagEnvironmentsValueRulesItemConditionsItemRhs =
   | FlagEnvironmentsValueRulesItemConditionsItemRhsCase2
   | FlagEnvironmentsValueRulesItemConditionsItemRhsCase3
   | boolean;
+const FlagEnvironmentsValueRulesItemConditionsItemRhs =
+  S.Unknown as any as S.Schema<FlagEnvironmentsValueRulesItemConditionsItemRhs>;
+
 export interface FlagEnvironmentsValueRulesItemConditionsItem {
   cmp: FlagEnvironmentsValueRulesItemConditionsItemCmp;
   cmpOptions?: CreateFlagRequestEnvironmentsValueRulesItemConditionsItemCmpOptions;
   lhs: FlagEnvironmentsValueRulesItemConditionsItemLhs;
   rhs?: FlagEnvironmentsValueRulesItemConditionsItemRhs;
 }
+const FlagEnvironmentsValueRulesItemConditionsItem = /*@__PURE__*/ __L.at(
+  __c6,
+  3,
+) as any as S.Schema<FlagEnvironmentsValueRulesItemConditionsItem>;
+
 export type FlagEnvironmentsValueRulesItemConditionsList =
   Array<FlagEnvironmentsValueRulesItemConditionsItem>;
+const FlagEnvironmentsValueRulesItemConditionsList = /*@__PURE__*/ __L.at(
+  __c6,
+  4,
+) as any as S.Schema<FlagEnvironmentsValueRulesItemConditionsList>;
+
 export type FlagEnvironmentsValueRulesItemOutcomeCase0Type = "variant";
 export interface FlagEnvironmentsValueRulesItemOutcomeCase0 {
   type: FlagEnvironmentsValueRulesItemOutcomeCase0Type;
@@ -1137,12 +1510,25 @@ export type FlagEnvironmentsValueRulesItemOutcome =
   | FlagEnvironmentsValueRulesItemOutcomeCase1
   | FlagEnvironmentsValueRulesItemOutcomeCase2
   | FlagEnvironmentsValueRulesItemOutcomeCase3;
+const FlagEnvironmentsValueRulesItemOutcome =
+  S.Unknown as any as S.Schema<FlagEnvironmentsValueRulesItemOutcome>;
+
 export interface FlagEnvironmentsValueRulesItem {
   conditions: FlagEnvironmentsValueRulesItemConditionsList;
   id: string;
   outcome: FlagEnvironmentsValueRulesItemOutcome;
 }
+const FlagEnvironmentsValueRulesItem = /*@__PURE__*/ __L.at(
+  __c6,
+  5,
+) as any as S.Schema<FlagEnvironmentsValueRulesItem>;
+
 export type FlagEnvironmentsValueRulesList = Array<FlagEnvironmentsValueRulesItem>;
+const FlagEnvironmentsValueRulesList = /*@__PURE__*/ __L.at(
+  __c6,
+  6,
+) as any as S.Schema<FlagEnvironmentsValueRulesList>;
+
 export type FlagEnvironmentsValueTargetsValueValueValueItem =
   CreateFlagRequestEnvironmentsValueTargetsValueValueValueItem;
 export type FlagEnvironmentsValueTargetsValueValueValueList =
@@ -1156,6 +1542,9 @@ export type FlagEnvironmentsValueTargetsValueMap = {
 export type FlagEnvironmentsValueTargetsMap = {
   [key: string]: FlagEnvironmentsValueTargetsValueMap | undefined;
 };
+const FlagEnvironmentsValueTargetsMap =
+  CreateFlagRequestEnvironmentsValueTargetsMap as any as S.Schema<FlagEnvironmentsValueTargetsMap>;
+
 export interface FlagEnvironmentsValue {
   active: boolean;
   fallthrough: FlagEnvironmentsValueFallthrough;
@@ -1165,12 +1554,30 @@ export interface FlagEnvironmentsValue {
   rules: FlagEnvironmentsValueRulesList;
   targets?: FlagEnvironmentsValueTargetsMap;
 }
+const FlagEnvironmentsValue = /*@__PURE__*/ __L.at(
+  __c6,
+  7,
+) as any as S.Schema<FlagEnvironmentsValue>;
+
 export type FlagEnvironmentsMap = { [key: string]: FlagEnvironmentsValue | undefined };
+const FlagEnvironmentsMap = /*@__PURE__*/ __L.at(__c7, 0) as any as S.Schema<FlagEnvironmentsMap>;
+
 export type FlagKind = "boolean" | "json" | "number" | "string";
+const FlagKind = S.String;
+
 export type FlagMaintainerIdsList = Array<string>;
+const FlagMaintainerIdsList =
+  CreateFlagRequestMaintainerIdsList as any as S.Schema<FlagMaintainerIdsList>;
+
 export type FlagState = "active" | "archived";
+const FlagState = S.String;
+
 export type FlagTagsList = Array<string>;
+const FlagTagsList = /*@__PURE__*/ __L.at(__c7, 1) as any as S.Schema<FlagTagsList>;
+
 export type FlagTypeName = "flag";
+const FlagTypeName = S.String;
+
 export type FlagVariantsItemValueCase2Map = { [key: string]: unknown | undefined };
 export type FlagVariantsItemValueCase3List = Array<unknown>;
 export type FlagVariantsItemValue =
@@ -1179,20 +1586,30 @@ export type FlagVariantsItemValue =
   | FlagVariantsItemValueCase2Map
   | FlagVariantsItemValueCase3List
   | boolean;
+const FlagVariantsItemValue = S.Unknown as any as S.Schema<FlagVariantsItemValue>;
+
 export interface FlagVariantsItem {
   description?: string;
   id: string;
   label?: string;
   value: FlagVariantsItemValue | null;
 }
+const FlagVariantsItem = /*@__PURE__*/ __L.at(__c7, 2) as any as S.Schema<FlagVariantsItem>;
+
 export type FlagVariantsList = Array<FlagVariantsItem>;
+const FlagVariantsList = /*@__PURE__*/ __L.at(__c7, 3) as any as S.Schema<FlagVariantsList>;
+
 export interface FlagMetadataCreator {
   id: string;
   name: string;
 }
+const FlagMetadataCreator = /*@__PURE__*/ __L.at(__c7, 4) as any as S.Schema<FlagMetadataCreator>;
+
 export interface FlagMetadata {
   creator?: FlagMetadataCreator;
 }
+const FlagMetadata = /*@__PURE__*/ __L.at(__c7, 5) as any as S.Schema<FlagMetadata>;
+
 export interface Flag {
   createdAt: number;
   createdBy: string;
@@ -1215,6 +1632,8 @@ export interface Flag {
   variants: FlagVariantsList;
   metadata?: FlagMetadata;
 }
+const Flag = /*@__PURE__*/ __L.at(__c7, 6) as any as S.Schema<Flag>;
+
 export interface GetFlagSegmentRequest {
   /** The project id or name */
   projectIdOrName: string;
@@ -1227,6 +1646,11 @@ export interface GetFlagSegmentRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
+const GetFlagSegmentRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  7,
+) as any as S.Schema<GetFlagSegmentRequest>;
+
 export type SegmentDataExcludeValueValueItem =
   CreateFlagRequestEnvironmentsValueTargetsValueValueValueItem;
 export type SegmentDataExcludeValueValueList =
@@ -1235,6 +1659,9 @@ export type SegmentDataExcludeValueMap = {
   [key: string]: SegmentDataExcludeValueValueList | undefined;
 };
 export type SegmentDataExcludeMap = { [key: string]: SegmentDataExcludeValueMap | undefined };
+const SegmentDataExcludeMap =
+  CreateFlagRequestEnvironmentsValueTargetsValueMap as any as S.Schema<SegmentDataExcludeMap>;
+
 export type SegmentDataIncludeValueValueItem =
   CreateFlagRequestEnvironmentsValueTargetsValueValueValueItem;
 export type SegmentDataIncludeValueValueList =
@@ -1243,6 +1670,9 @@ export type SegmentDataIncludeValueMap = {
   [key: string]: SegmentDataIncludeValueValueList | undefined;
 };
 export type SegmentDataIncludeMap = { [key: string]: SegmentDataIncludeValueMap | undefined };
+const SegmentDataIncludeMap =
+  CreateFlagRequestEnvironmentsValueTargetsValueMap as any as S.Schema<SegmentDataIncludeMap>;
+
 export type SegmentDataRulesItemConditionsItemCmp =
   | "!contains"
   | "!endsWith"
@@ -1267,6 +1697,8 @@ export type SegmentDataRulesItemConditionsItemCmp =
   | "oneOf"
   | "regex"
   | "startsWith";
+const SegmentDataRulesItemConditionsItemCmp = S.String;
+
 export type SegmentDataRulesItemConditionsItemCmpOptions =
   CreateFlagRequestEnvironmentsValueRulesItemConditionsItemCmpOptions;
 export type SegmentDataRulesItemConditionsItemLhsCase0Type = "segment";
@@ -1282,6 +1714,9 @@ export interface SegmentDataRulesItemConditionsItemLhsCase1 {
 export type SegmentDataRulesItemConditionsItemLhs =
   | SegmentDataRulesItemConditionsItemLhsCase0
   | SegmentDataRulesItemConditionsItemLhsCase1;
+const SegmentDataRulesItemConditionsItemLhs =
+  S.Unknown as any as S.Schema<SegmentDataRulesItemConditionsItemLhs>;
+
 export type SegmentDataRulesItemConditionsItemRhsCase2ItemsItemCase0 =
   CreateFlagRequestEnvironmentsValueRulesItemConditionsItemRhsCase0ItemsItemCase0;
 export type SegmentDataRulesItemConditionsItemRhsCase2ItemsItemCase1 =
@@ -1308,13 +1743,26 @@ export type SegmentDataRulesItemConditionsItemRhs =
   | SegmentDataRulesItemConditionsItemRhsCase2
   | SegmentDataRulesItemConditionsItemRhsCase3
   | boolean;
+const SegmentDataRulesItemConditionsItemRhs =
+  S.Unknown as any as S.Schema<SegmentDataRulesItemConditionsItemRhs>;
+
 export interface SegmentDataRulesItemConditionsItem {
   cmp: SegmentDataRulesItemConditionsItemCmp;
   cmpOptions?: CreateFlagRequestEnvironmentsValueRulesItemConditionsItemCmpOptions;
   lhs: SegmentDataRulesItemConditionsItemLhs;
   rhs?: SegmentDataRulesItemConditionsItemRhs;
 }
+const SegmentDataRulesItemConditionsItem = /*@__PURE__*/ __L.at(
+  __c8,
+  0,
+) as any as S.Schema<SegmentDataRulesItemConditionsItem>;
+
 export type SegmentDataRulesItemConditionsList = Array<SegmentDataRulesItemConditionsItem>;
+const SegmentDataRulesItemConditionsList = /*@__PURE__*/ __L.at(
+  __c8,
+  1,
+) as any as S.Schema<SegmentDataRulesItemConditionsList>;
+
 export type SegmentDataRulesItemOutcomeCase0Type = "all";
 export interface SegmentDataRulesItemOutcomeCase0 {
   type: SegmentDataRulesItemOutcomeCase0Type;
@@ -1334,20 +1782,36 @@ export interface SegmentDataRulesItemOutcomeCase1 {
 export type SegmentDataRulesItemOutcome =
   | SegmentDataRulesItemOutcomeCase0
   | SegmentDataRulesItemOutcomeCase1;
+const SegmentDataRulesItemOutcome = S.Unknown as any as S.Schema<SegmentDataRulesItemOutcome>;
+
 export interface SegmentDataRulesItem {
   conditions: SegmentDataRulesItemConditionsList;
   id: string;
   outcome: SegmentDataRulesItemOutcome;
 }
+const SegmentDataRulesItem = /*@__PURE__*/ __L.at(__c8, 2) as any as S.Schema<SegmentDataRulesItem>;
+
 export type SegmentDataRulesList = Array<SegmentDataRulesItem>;
+const SegmentDataRulesList = /*@__PURE__*/ __L.at(__c8, 3) as any as S.Schema<SegmentDataRulesList>;
+
 export interface SegmentData {
   exclude?: SegmentDataExcludeMap;
   include?: SegmentDataIncludeMap;
   rules?: SegmentDataRulesList;
 }
+const SegmentData = /*@__PURE__*/ __L.at(__c8, 4) as any as S.Schema<SegmentData>;
+
 export type SegmentTypeName = "segment";
+const SegmentTypeName = S.String;
+
 export type SegmentUsedByFlagsList = Array<string>;
+const SegmentUsedByFlagsList =
+  CreateFlagRequestMaintainerIdsList as any as S.Schema<SegmentUsedByFlagsList>;
+
 export type SegmentUsedBySegmentsList = Array<string>;
+const SegmentUsedBySegmentsList =
+  CreateFlagRequestMaintainerIdsList as any as S.Schema<SegmentUsedBySegmentsList>;
+
 export type SegmentMetadataCreator = FlagMetadataCreator;
 export type SegmentMetadata = FlagMetadata;
 export interface Segment {
@@ -1366,6 +1830,8 @@ export interface Segment {
   usedBySegments?: SegmentUsedBySegmentsList;
   metadata?: FlagMetadata;
 }
+const Segment = /*@__PURE__*/ __L.at(__c8, 5) as any as S.Schema<Segment>;
+
 export interface GetFlagSettingsRequest {
   /** The project id or name */
   projectIdOrName: string;
@@ -1374,26 +1840,64 @@ export interface GetFlagSettingsRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
+const GetFlagSettingsRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  6,
+) as any as S.Schema<GetFlagSettingsRequest>;
+
 export interface GetFlagSettingsResponseEntitiesItemAttributesItemLabelsItem {
   label: string;
   value: string;
 }
+const GetFlagSettingsResponseEntitiesItemAttributesItemLabelsItem = /*@__PURE__*/ __L.at(
+  __c8,
+  7,
+) as any as S.Schema<GetFlagSettingsResponseEntitiesItemAttributesItemLabelsItem>;
+
 export type GetFlagSettingsResponseEntitiesItemAttributesItemLabelsList =
   Array<GetFlagSettingsResponseEntitiesItemAttributesItemLabelsItem>;
+const GetFlagSettingsResponseEntitiesItemAttributesItemLabelsList = /*@__PURE__*/ __L.at(
+  __c9,
+  0,
+) as any as S.Schema<GetFlagSettingsResponseEntitiesItemAttributesItemLabelsList>;
+
 export interface GetFlagSettingsResponseEntitiesItemAttributesItem {
   key: string;
   labels?: GetFlagSettingsResponseEntitiesItemAttributesItemLabelsList;
   type: string;
 }
+const GetFlagSettingsResponseEntitiesItemAttributesItem = /*@__PURE__*/ __L.at(
+  __c9,
+  1,
+) as any as S.Schema<GetFlagSettingsResponseEntitiesItemAttributesItem>;
+
 export type GetFlagSettingsResponseEntitiesItemAttributesList =
   Array<GetFlagSettingsResponseEntitiesItemAttributesItem>;
+const GetFlagSettingsResponseEntitiesItemAttributesList = /*@__PURE__*/ __L.at(
+  __c9,
+  2,
+) as any as S.Schema<GetFlagSettingsResponseEntitiesItemAttributesList>;
+
 export interface GetFlagSettingsResponseEntitiesItem {
   attributes: GetFlagSettingsResponseEntitiesItemAttributesList;
   kind: string;
   label: string;
 }
+const GetFlagSettingsResponseEntitiesItem = /*@__PURE__*/ __L.at(
+  __c9,
+  3,
+) as any as S.Schema<GetFlagSettingsResponseEntitiesItem>;
+
 export type GetFlagSettingsResponseEntitiesList = Array<GetFlagSettingsResponseEntitiesItem>;
+const GetFlagSettingsResponseEntitiesList = /*@__PURE__*/ __L.at(
+  __c9,
+  4,
+) as any as S.Schema<GetFlagSettingsResponseEntitiesList>;
+
 export type GetFlagSettingsResponseEnvironmentsList = Array<string>;
+const GetFlagSettingsResponseEnvironmentsList =
+  CreateFlagRequestMaintainerIdsList as any as S.Schema<GetFlagSettingsResponseEnvironmentsList>;
+
 export interface GetFlagSettingsResponseMetadata {
   activeFlagCount: number;
   archivedFlagCount: number;
@@ -1402,7 +1906,14 @@ export interface GetFlagSettingsResponseMetadata {
   packSizeInBytes: number;
   segmentCount: number;
 }
+const GetFlagSettingsResponseMetadata = /*@__PURE__*/ __L.at(
+  __c9,
+  5,
+) as any as S.Schema<GetFlagSettingsResponseMetadata>;
+
 export type GetFlagSettingsResponseTypeName = "settings";
+const GetFlagSettingsResponseTypeName = S.String;
+
 export interface GetFlagSettingsResponse {
   createdAt?: number;
   enabled: boolean;
@@ -1414,6 +1925,11 @@ export interface GetFlagSettingsResponse {
   typeName: GetFlagSettingsResponseTypeName;
   updatedAt?: number;
 }
+const GetFlagSettingsResponse = /*@__PURE__*/ __L.at(
+  __c9,
+  6,
+) as any as S.Schema<GetFlagSettingsResponse>;
+
 export interface GetSdkKeysRequest {
   /** The project id or name */
   projectIdOrName: string;
@@ -1422,7 +1938,11 @@ export interface GetSdkKeysRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
+const GetSdkKeysRequest = /*@__PURE__*/ __L.at(__c9, 7) as any as S.Schema<GetSdkKeysRequest>;
+
 export type GetSdkKeysResponseDataItemType = "client" | "mobile" | "server";
+const GetSdkKeysResponseDataItemType = S.String;
+
 /** Shared metadata for a Flags SDK key, safe to return on both LIST and CREATE. Never contains cleartext secrets. */
 export interface GetSdkKeysResponseDataItem {
   createdAt: number;
@@ -1437,14 +1957,31 @@ export interface GetSdkKeysResponseDataItem {
   type: GetSdkKeysResponseDataItemType;
   updatedAt: number;
 }
+const GetSdkKeysResponseDataItem = /*@__PURE__*/ __L.at(
+  __c10,
+  0,
+) as any as S.Schema<GetSdkKeysResponseDataItem>;
+
 export type GetSdkKeysResponseDataList = Array<GetSdkKeysResponseDataItem>;
+const GetSdkKeysResponseDataList = /*@__PURE__*/ __L.at(
+  __c10,
+  1,
+) as any as S.Schema<GetSdkKeysResponseDataList>;
+
 export interface GetSdkKeysResponse {
   data: GetSdkKeysResponseDataList;
 }
+const GetSdkKeysResponse = /*@__PURE__*/ __L.at(__c10, 2) as any as S.Schema<GetSdkKeysResponse>;
+
 /** The state of the flags to retrieve. Defaults to `active`. */
 export type ListFlagsRequestState = "active" | "archived";
+const ListFlagsRequestState = S.String;
+
 /** Filter flags by tag. Repeat the parameter for multiple tags (all must match). */
 export type ListFlagsRequestTagsList = Array<string>;
+const ListFlagsRequestTagsList =
+  CreateFlagRequestMaintainerIdsList as any as S.Schema<ListFlagsRequestTagsList>;
+
 export interface ListFlagsRequest {
   /** The project id or name */
   projectIdOrName: string;
@@ -1465,14 +2002,28 @@ export interface ListFlagsRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
+const ListFlagsRequest = /*@__PURE__*/ __L.at(__c10, 3) as any as S.Schema<ListFlagsRequest>;
+
 export type ListFlagsResponseDataList = Array<Flag>;
+const ListFlagsResponseDataList = /*@__PURE__*/ __L.at(
+  __c10,
+  4,
+) as any as S.Schema<ListFlagsResponseDataList>;
+
 export interface ListFlagsResponsePagination {
   next: string | null;
 }
+const ListFlagsResponsePagination = /*@__PURE__*/ __L.at(
+  __c10,
+  5,
+) as any as S.Schema<ListFlagsResponsePagination>;
+
 export interface ListFlagsResponse {
   data: ListFlagsResponseDataList;
   pagination: ListFlagsResponsePagination;
 }
+const ListFlagsResponse = /*@__PURE__*/ __L.at(__c10, 6) as any as S.Schema<ListFlagsResponse>;
+
 export interface ListFlagSegmentsRequest {
   /** The project id or name */
   projectIdOrName: string;
@@ -1483,16 +2034,39 @@ export interface ListFlagSegmentsRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
+const ListFlagSegmentsRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  7,
+) as any as S.Schema<ListFlagSegmentsRequest>;
+
 export type ListFlagSegmentsResponseDataList = Array<Segment>;
+const ListFlagSegmentsResponseDataList = /*@__PURE__*/ __L.at(
+  __c11,
+  0,
+) as any as S.Schema<ListFlagSegmentsResponseDataList>;
+
 export interface ListFlagSegmentsResponse {
   data: ListFlagSegmentsResponseDataList;
 }
+const ListFlagSegmentsResponse = /*@__PURE__*/ __L.at(
+  __c11,
+  1,
+) as any as S.Schema<ListFlagSegmentsResponse>;
+
 /** The state of the flags to retrieve. Defaults to `active`. */
 export type ListFlagsV2RequestState = "active" | "archived";
+const ListFlagsV2RequestState = S.String;
+
 /** Filter flags by tag. Repeat the parameter for multiple tags (all must match). */
 export type ListFlagsV2RequestTagsList = Array<string>;
+const ListFlagsV2RequestTagsList =
+  CreateFlagRequestMaintainerIdsList as any as S.Schema<ListFlagsV2RequestTagsList>;
+
 /** Filter flags by maintainer user id. Repeat the parameter for multiple maintainers (any may match). */
 export type ListFlagsV2RequestMaintainerIdsList = Array<string>;
+const ListFlagsV2RequestMaintainerIdsList =
+  CreateFlagRequestMaintainerIdsList as any as S.Schema<ListFlagsV2RequestMaintainerIdsList>;
+
 export interface ListFlagsV2Request {
   /** The project id or name */
   projectIdOrName: string;
@@ -1517,6 +2091,8 @@ export interface ListFlagsV2Request {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
+const ListFlagsV2Request = /*@__PURE__*/ __L.at(__c11, 2) as any as S.Schema<ListFlagsV2Request>;
+
 export type ListFlagsV2ResponsePagination = ListFlagsResponsePagination;
 export type MarketplaceFlagCategory = "experiment" | "flag";
 export type MarketplaceFlagState = "active" | "archived";
@@ -1539,11 +2115,20 @@ export interface MarketplaceFlag {
   updatedAt?: number;
 }
 export type ListFlagsV2ResponseDataItem = Flag | MarketplaceFlag;
+const ListFlagsV2ResponseDataItem = S.Unknown as any as S.Schema<ListFlagsV2ResponseDataItem>;
+
 export type ListFlagsV2ResponseDataList = Array<ListFlagsV2ResponseDataItem>;
+const ListFlagsV2ResponseDataList = /*@__PURE__*/ __L.at(
+  __c11,
+  3,
+) as any as S.Schema<ListFlagsV2ResponseDataList>;
+
 export interface ListFlagsV2Response {
   pagination: ListFlagsResponsePagination;
   data: ListFlagsV2ResponseDataList;
 }
+const ListFlagsV2Response = /*@__PURE__*/ __L.at(__c11, 4) as any as S.Schema<ListFlagsV2Response>;
+
 export interface ListFlagVersionsRequest {
   projectIdOrName: string;
   flagIdOrSlug: string;
@@ -1559,13 +2144,29 @@ export interface ListFlagVersionsRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
+const ListFlagVersionsRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  5,
+) as any as S.Schema<ListFlagVersionsRequest>;
+
 export type ListFlagVersionsResponseVersionsItemChangedEnvironmentsList = Array<string>;
+const ListFlagVersionsResponseVersionsItemChangedEnvironmentsList =
+  CreateFlagRequestMaintainerIdsList as any as S.Schema<ListFlagVersionsResponseVersionsItemChangedEnvironmentsList>;
+
 export type ListFlagVersionsResponseVersionsItemDataEnvironmentsValueFallthroughCase0Type =
   "variant";
+const ListFlagVersionsResponseVersionsItemDataEnvironmentsValueFallthroughCase0Type = S.String;
+
 export interface ListFlagVersionsResponseVersionsItemDataEnvironmentsValueFallthroughCase0 {
   type: ListFlagVersionsResponseVersionsItemDataEnvironmentsValueFallthroughCase0Type;
   variantId: string;
 }
+const ListFlagVersionsResponseVersionsItemDataEnvironmentsValueFallthroughCase0 =
+  /*@__PURE__*/ __L.at(
+    __c11,
+    6,
+  ) as any as S.Schema<ListFlagVersionsResponseVersionsItemDataEnvironmentsValueFallthroughCase0>;
+
 export type ListFlagVersionsResponseVersionsItemDataEnvironmentsValueFallthroughCase1BaseType =
   "entity";
 export interface ListFlagVersionsResponseVersionsItemDataEnvironmentsValueFallthroughCase1Base {
@@ -1616,11 +2217,17 @@ export type ListFlagVersionsResponseVersionsItemDataEnvironmentsValueFallthrough
   | ListFlagVersionsResponseVersionsItemDataEnvironmentsValueFallthroughCase1
   | ListFlagVersionsResponseVersionsItemDataEnvironmentsValueFallthroughCase2
   | ListFlagVersionsResponseVersionsItemDataEnvironmentsValueFallthroughCase3;
+const ListFlagVersionsResponseVersionsItemDataEnvironmentsValueFallthrough =
+  S.Unknown as any as S.Schema<ListFlagVersionsResponseVersionsItemDataEnvironmentsValueFallthrough>;
+
 export type ListFlagVersionsResponseVersionsItemDataEnvironmentsValuePausedOutcomeType = "variant";
 export interface ListFlagVersionsResponseVersionsItemDataEnvironmentsValuePausedOutcome {
   type: ListFlagVersionsResponseVersionsItemDataEnvironmentsValuePausedOutcomeType;
   variantId: string;
 }
+const ListFlagVersionsResponseVersionsItemDataEnvironmentsValuePausedOutcome =
+  ListFlagVersionsResponseVersionsItemDataEnvironmentsValueFallthroughCase0 as any as S.Schema<ListFlagVersionsResponseVersionsItemDataEnvironmentsValuePausedOutcome>;
+
 export type ListFlagVersionsResponseVersionsItemDataEnvironmentsValueReuse =
   CreateFlagResponseEnvironmentsValueReuse;
 export type ListFlagVersionsResponseVersionsItemDataEnvironmentsValueRulesItemConditionsItemCmp =
@@ -1647,6 +2254,9 @@ export type ListFlagVersionsResponseVersionsItemDataEnvironmentsValueRulesItemCo
   | "oneOf"
   | "regex"
   | "startsWith";
+const ListFlagVersionsResponseVersionsItemDataEnvironmentsValueRulesItemConditionsItemCmp =
+  S.String;
+
 export type ListFlagVersionsResponseVersionsItemDataEnvironmentsValueRulesItemConditionsItemCmpOptions =
   CreateFlagRequestEnvironmentsValueRulesItemConditionsItemCmpOptions;
 export type ListFlagVersionsResponseVersionsItemDataEnvironmentsValueRulesItemConditionsItemLhsCase0Type =
@@ -1664,6 +2274,9 @@ export interface ListFlagVersionsResponseVersionsItemDataEnvironmentsValueRulesI
 export type ListFlagVersionsResponseVersionsItemDataEnvironmentsValueRulesItemConditionsItemLhs =
   | ListFlagVersionsResponseVersionsItemDataEnvironmentsValueRulesItemConditionsItemLhsCase0
   | ListFlagVersionsResponseVersionsItemDataEnvironmentsValueRulesItemConditionsItemLhsCase1;
+const ListFlagVersionsResponseVersionsItemDataEnvironmentsValueRulesItemConditionsItemLhs =
+  S.Unknown as any as S.Schema<ListFlagVersionsResponseVersionsItemDataEnvironmentsValueRulesItemConditionsItemLhs>;
+
 export type ListFlagVersionsResponseVersionsItemDataEnvironmentsValueRulesItemConditionsItemRhsCase2ItemsItemCase0 =
   CreateFlagRequestEnvironmentsValueRulesItemConditionsItemRhsCase0ItemsItemCase0;
 export type ListFlagVersionsResponseVersionsItemDataEnvironmentsValueRulesItemConditionsItemRhsCase2ItemsItemCase1 =
@@ -1693,14 +2306,29 @@ export type ListFlagVersionsResponseVersionsItemDataEnvironmentsValueRulesItemCo
   | ListFlagVersionsResponseVersionsItemDataEnvironmentsValueRulesItemConditionsItemRhsCase2
   | ListFlagVersionsResponseVersionsItemDataEnvironmentsValueRulesItemConditionsItemRhsCase3
   | boolean;
+const ListFlagVersionsResponseVersionsItemDataEnvironmentsValueRulesItemConditionsItemRhs =
+  S.Unknown as any as S.Schema<ListFlagVersionsResponseVersionsItemDataEnvironmentsValueRulesItemConditionsItemRhs>;
+
 export interface ListFlagVersionsResponseVersionsItemDataEnvironmentsValueRulesItemConditionsItem {
   cmp: ListFlagVersionsResponseVersionsItemDataEnvironmentsValueRulesItemConditionsItemCmp;
   cmpOptions?: CreateFlagRequestEnvironmentsValueRulesItemConditionsItemCmpOptions;
   lhs: ListFlagVersionsResponseVersionsItemDataEnvironmentsValueRulesItemConditionsItemLhs;
   rhs?: ListFlagVersionsResponseVersionsItemDataEnvironmentsValueRulesItemConditionsItemRhs;
 }
+const ListFlagVersionsResponseVersionsItemDataEnvironmentsValueRulesItemConditionsItem =
+  /*@__PURE__*/ __L.at(
+    __c11,
+    7,
+  ) as any as S.Schema<ListFlagVersionsResponseVersionsItemDataEnvironmentsValueRulesItemConditionsItem>;
+
 export type ListFlagVersionsResponseVersionsItemDataEnvironmentsValueRulesItemConditionsList =
   Array<ListFlagVersionsResponseVersionsItemDataEnvironmentsValueRulesItemConditionsItem>;
+const ListFlagVersionsResponseVersionsItemDataEnvironmentsValueRulesItemConditionsList =
+  /*@__PURE__*/ __L.at(
+    __c12,
+    0,
+  ) as any as S.Schema<ListFlagVersionsResponseVersionsItemDataEnvironmentsValueRulesItemConditionsList>;
+
 export type ListFlagVersionsResponseVersionsItemDataEnvironmentsValueRulesItemOutcomeCase0Type =
   "variant";
 export interface ListFlagVersionsResponseVersionsItemDataEnvironmentsValueRulesItemOutcomeCase0 {
@@ -1757,32 +2385,68 @@ export type ListFlagVersionsResponseVersionsItemDataEnvironmentsValueRulesItemOu
   | ListFlagVersionsResponseVersionsItemDataEnvironmentsValueRulesItemOutcomeCase1
   | ListFlagVersionsResponseVersionsItemDataEnvironmentsValueRulesItemOutcomeCase2
   | ListFlagVersionsResponseVersionsItemDataEnvironmentsValueRulesItemOutcomeCase3;
+const ListFlagVersionsResponseVersionsItemDataEnvironmentsValueRulesItemOutcome =
+  S.Unknown as any as S.Schema<ListFlagVersionsResponseVersionsItemDataEnvironmentsValueRulesItemOutcome>;
+
 export interface ListFlagVersionsResponseVersionsItemDataEnvironmentsValueRulesItem {
   conditions: ListFlagVersionsResponseVersionsItemDataEnvironmentsValueRulesItemConditionsList;
   id: string;
   outcome: ListFlagVersionsResponseVersionsItemDataEnvironmentsValueRulesItemOutcome;
 }
+const ListFlagVersionsResponseVersionsItemDataEnvironmentsValueRulesItem = /*@__PURE__*/ __L.at(
+  __c12,
+  1,
+) as any as S.Schema<ListFlagVersionsResponseVersionsItemDataEnvironmentsValueRulesItem>;
+
 export type ListFlagVersionsResponseVersionsItemDataEnvironmentsValueRulesList =
   Array<ListFlagVersionsResponseVersionsItemDataEnvironmentsValueRulesItem>;
+const ListFlagVersionsResponseVersionsItemDataEnvironmentsValueRulesList = /*@__PURE__*/ __L.at(
+  __c12,
+  2,
+) as any as S.Schema<ListFlagVersionsResponseVersionsItemDataEnvironmentsValueRulesList>;
+
 export type ListFlagVersionsResponseVersionsItemDataEnvironmentsValueTargetsValueValueValueItem =
   CreateFlagRequestEnvironmentsValueTargetsValueValueValueItem;
 export type ListFlagVersionsResponseVersionsItemDataEnvironmentsValueTargetsValueValueValueList =
   Array<CreateFlagRequestEnvironmentsValueTargetsValueValueValueItem>;
+const ListFlagVersionsResponseVersionsItemDataEnvironmentsValueTargetsValueValueValueList =
+  /*@__PURE__*/ __L.at(
+    __c12,
+    3,
+  ) as any as S.Schema<ListFlagVersionsResponseVersionsItemDataEnvironmentsValueTargetsValueValueValueList>;
+
 export type ListFlagVersionsResponseVersionsItemDataEnvironmentsValueTargetsValueValueMap = {
   [key: string]:
     | ListFlagVersionsResponseVersionsItemDataEnvironmentsValueTargetsValueValueValueList
     | undefined;
 };
+const ListFlagVersionsResponseVersionsItemDataEnvironmentsValueTargetsValueValueMap =
+  /*@__PURE__*/ __L.at(
+    __c12,
+    4,
+  ) as any as S.Schema<ListFlagVersionsResponseVersionsItemDataEnvironmentsValueTargetsValueValueMap>;
+
 export type ListFlagVersionsResponseVersionsItemDataEnvironmentsValueTargetsValueMap = {
   [key: string]:
     | ListFlagVersionsResponseVersionsItemDataEnvironmentsValueTargetsValueValueMap
     | undefined;
 };
+const ListFlagVersionsResponseVersionsItemDataEnvironmentsValueTargetsValueMap =
+  /*@__PURE__*/ __L.at(
+    __c12,
+    5,
+  ) as any as S.Schema<ListFlagVersionsResponseVersionsItemDataEnvironmentsValueTargetsValueMap>;
+
 export type ListFlagVersionsResponseVersionsItemDataEnvironmentsValueTargetsMap = {
   [key: string]:
     | ListFlagVersionsResponseVersionsItemDataEnvironmentsValueTargetsValueMap
     | undefined;
 };
+const ListFlagVersionsResponseVersionsItemDataEnvironmentsValueTargetsMap = /*@__PURE__*/ __L.at(
+  __c12,
+  6,
+) as any as S.Schema<ListFlagVersionsResponseVersionsItemDataEnvironmentsValueTargetsMap>;
+
 export interface ListFlagVersionsResponseVersionsItemDataEnvironmentsValue {
   active: boolean;
   fallthrough: ListFlagVersionsResponseVersionsItemDataEnvironmentsValueFallthrough;
@@ -1792,12 +2456,30 @@ export interface ListFlagVersionsResponseVersionsItemDataEnvironmentsValue {
   rules: ListFlagVersionsResponseVersionsItemDataEnvironmentsValueRulesList;
   targets?: ListFlagVersionsResponseVersionsItemDataEnvironmentsValueTargetsMap;
 }
+const ListFlagVersionsResponseVersionsItemDataEnvironmentsValue = /*@__PURE__*/ __L.at(
+  __c12,
+  7,
+) as any as S.Schema<ListFlagVersionsResponseVersionsItemDataEnvironmentsValue>;
+
 export type ListFlagVersionsResponseVersionsItemDataEnvironmentsMap = {
   [key: string]: ListFlagVersionsResponseVersionsItemDataEnvironmentsValue | undefined;
 };
+const ListFlagVersionsResponseVersionsItemDataEnvironmentsMap = /*@__PURE__*/ __L.at(
+  __c13,
+  0,
+) as any as S.Schema<ListFlagVersionsResponseVersionsItemDataEnvironmentsMap>;
+
 export type ListFlagVersionsResponseVersionsItemDataMaintainerIdsList = Array<string>;
+const ListFlagVersionsResponseVersionsItemDataMaintainerIdsList =
+  CreateFlagRequestMaintainerIdsList as any as S.Schema<ListFlagVersionsResponseVersionsItemDataMaintainerIdsList>;
+
 export type ListFlagVersionsResponseVersionsItemDataState = "active" | "archived";
+const ListFlagVersionsResponseVersionsItemDataState = S.String;
+
 export type ListFlagVersionsResponseVersionsItemDataTagsList = Array<string>;
+const ListFlagVersionsResponseVersionsItemDataTagsList =
+  CreateFlagRequestMaintainerIdsList as any as S.Schema<ListFlagVersionsResponseVersionsItemDataTagsList>;
+
 export type ListFlagVersionsResponseVersionsItemDataVariantsItemValueCase2Map = {
   [key: string]: unknown | undefined;
 };
@@ -1808,14 +2490,27 @@ export type ListFlagVersionsResponseVersionsItemDataVariantsItemValue =
   | ListFlagVersionsResponseVersionsItemDataVariantsItemValueCase2Map
   | ListFlagVersionsResponseVersionsItemDataVariantsItemValueCase3List
   | boolean;
+const ListFlagVersionsResponseVersionsItemDataVariantsItemValue =
+  S.Unknown as any as S.Schema<ListFlagVersionsResponseVersionsItemDataVariantsItemValue>;
+
 export interface ListFlagVersionsResponseVersionsItemDataVariantsItem {
   description?: string;
   id: string;
   label?: string;
   value: ListFlagVersionsResponseVersionsItemDataVariantsItemValue | null;
 }
+const ListFlagVersionsResponseVersionsItemDataVariantsItem = /*@__PURE__*/ __L.at(
+  __c13,
+  1,
+) as any as S.Schema<ListFlagVersionsResponseVersionsItemDataVariantsItem>;
+
 export type ListFlagVersionsResponseVersionsItemDataVariantsList =
   Array<ListFlagVersionsResponseVersionsItemDataVariantsItem>;
+const ListFlagVersionsResponseVersionsItemDataVariantsList = /*@__PURE__*/ __L.at(
+  __c13,
+  2,
+) as any as S.Schema<ListFlagVersionsResponseVersionsItemDataVariantsList>;
+
 export interface ListFlagVersionsResponseVersionsItemData {
   description?: string;
   environments: ListFlagVersionsResponseVersionsItemDataEnvironmentsMap;
@@ -1826,6 +2521,11 @@ export interface ListFlagVersionsResponseVersionsItemData {
   tags?: ListFlagVersionsResponseVersionsItemDataTagsList;
   variants: ListFlagVersionsResponseVersionsItemDataVariantsList;
 }
+const ListFlagVersionsResponseVersionsItemData = /*@__PURE__*/ __L.at(
+  __c13,
+  3,
+) as any as S.Schema<ListFlagVersionsResponseVersionsItemData>;
+
 export type ListFlagVersionsResponseVersionsItemMetadataCreator = FlagMetadataCreator;
 export type ListFlagVersionsResponseVersionsItemMetadata = FlagMetadata;
 export interface ListFlagVersionsResponseVersionsItem {
@@ -1839,17 +2539,39 @@ export interface ListFlagVersionsResponseVersionsItem {
   data: ListFlagVersionsResponseVersionsItemData;
   metadata?: FlagMetadata;
 }
+const ListFlagVersionsResponseVersionsItem = /*@__PURE__*/ __L.at(
+  __c13,
+  4,
+) as any as S.Schema<ListFlagVersionsResponseVersionsItem>;
+
 export type ListFlagVersionsResponseVersionsList = Array<ListFlagVersionsResponseVersionsItem>;
+const ListFlagVersionsResponseVersionsList = /*@__PURE__*/ __L.at(
+  __c13,
+  5,
+) as any as S.Schema<ListFlagVersionsResponseVersionsList>;
+
 export interface ListFlagVersionsResponse {
   pagination: unknown;
   versions: ListFlagVersionsResponseVersionsList;
 }
+const ListFlagVersionsResponse = /*@__PURE__*/ __L.at(
+  __c13,
+  6,
+) as any as S.Schema<ListFlagVersionsResponse>;
+
 /** The state of the flags to retrieve. Defaults to `active`. */
 export type ListTeamFlagsRequestState = "active" | "archived";
+const ListTeamFlagsRequestState = S.String;
+
 /** The kind of flags to retrieve. */
 export type ListTeamFlagsRequestKind = "boolean" | "string" | "number" | "json";
+const ListTeamFlagsRequestKind = S.String;
+
 /** Filter flags by tag. Repeat the parameter for multiple tags (all must match). */
 export type ListTeamFlagsRequestTagsList = Array<string>;
+const ListTeamFlagsRequestTagsList =
+  CreateFlagRequestMaintainerIdsList as any as S.Schema<ListTeamFlagsRequestTagsList>;
+
 export interface ListTeamFlagsRequest {
   /** The Team identifier to perform the request on behalf of. */
   teamId: string;
@@ -1870,12 +2592,19 @@ export interface ListTeamFlagsRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
+const ListTeamFlagsRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  7,
+) as any as S.Schema<ListTeamFlagsRequest>;
+
 export type ListTeamFlagsResponseDataList = Array<Flag>;
 export type ListTeamFlagsResponsePagination = ListFlagsResponsePagination;
 export interface ListTeamFlagsResponse {
   data: ListTeamFlagsResponseDataList;
   pagination: ListFlagsResponsePagination;
 }
+const ListTeamFlagsResponse = ListFlagsResponse as any as S.Schema<ListTeamFlagsResponse>;
+
 export interface ListTeamFlagSettingsRequest {
   /** The Team identifier to perform the request on behalf of. */
   teamId: string;
@@ -1886,6 +2615,11 @@ export interface ListTeamFlagSettingsRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
+const ListTeamFlagSettingsRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  0,
+) as any as S.Schema<ListTeamFlagSettingsRequest>;
+
 export type ListTeamFlagSettingsResponseBodyCase1DataItemEntitiesItemAttributesItemLabelsItem =
   GetFlagSettingsResponseEntitiesItemAttributesItemLabelsItem;
 export type ListTeamFlagSettingsResponseBodyCase1DataItemEntitiesItemAttributesItemLabelsList =
@@ -1926,15 +2660,33 @@ export interface ListTeamFlagSettingsResponseBodyCase1 {
   pagination: ListFlagsResponsePagination;
 }
 export type ListTeamFlagSettingsResponseBody = unknown | ListTeamFlagSettingsResponseBodyCase1;
+const ListTeamFlagSettingsResponseBody =
+  S.Unknown as any as S.Schema<ListTeamFlagSettingsResponseBody>;
+
 export type ListTeamFlagSettingsResponse = ListTeamFlagSettingsResponseBody;
+const ListTeamFlagSettingsResponse = /*@__PURE__*/ __L.at(
+  __c14,
+  1,
+) as any as S.Schema<ListTeamFlagSettingsResponse>;
+
 /** The state of the flags to retrieve. Defaults to `active`. */
 export type ListTeamFlagsV2RequestState = "active" | "archived";
+const ListTeamFlagsV2RequestState = S.String;
+
 /** The kind of flags to retrieve. */
 export type ListTeamFlagsV2RequestKind = "boolean" | "string" | "number" | "json";
+const ListTeamFlagsV2RequestKind = S.String;
+
 /** Filter flags by tag. Repeat the parameter for multiple tags (all must match). */
 export type ListTeamFlagsV2RequestTagsList = Array<string>;
+const ListTeamFlagsV2RequestTagsList =
+  CreateFlagRequestMaintainerIdsList as any as S.Schema<ListTeamFlagsV2RequestTagsList>;
+
 /** Filter flags by maintainer user id. Repeat the parameter for multiple maintainers (any may match). */
 export type ListTeamFlagsV2RequestMaintainerIdsList = Array<string>;
+const ListTeamFlagsV2RequestMaintainerIdsList =
+  CreateFlagRequestMaintainerIdsList as any as S.Schema<ListTeamFlagsV2RequestMaintainerIdsList>;
+
 export interface ListTeamFlagsV2Request {
   /** The Team identifier to perform the request on behalf of. */
   teamId: string;
@@ -1959,13 +2711,31 @@ export interface ListTeamFlagsV2Request {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
+const ListTeamFlagsV2Request = /*@__PURE__*/ __L.at(
+  __c14,
+  2,
+) as any as S.Schema<ListTeamFlagsV2Request>;
+
 export type ListTeamFlagsV2ResponsePagination = ListFlagsResponsePagination;
 export type ListTeamFlagsV2ResponseDataItem = Flag | MarketplaceFlag;
+const ListTeamFlagsV2ResponseDataItem =
+  S.Unknown as any as S.Schema<ListTeamFlagsV2ResponseDataItem>;
+
 export type ListTeamFlagsV2ResponseDataList = Array<ListTeamFlagsV2ResponseDataItem>;
+const ListTeamFlagsV2ResponseDataList = /*@__PURE__*/ __L.at(
+  __c14,
+  3,
+) as any as S.Schema<ListTeamFlagsV2ResponseDataList>;
+
 export interface ListTeamFlagsV2Response {
   pagination: ListFlagsResponsePagination;
   data: ListTeamFlagsV2ResponseDataList;
 }
+const ListTeamFlagsV2Response = /*@__PURE__*/ __L.at(
+  __c14,
+  4,
+) as any as S.Schema<ListTeamFlagsV2Response>;
+
 export type UpdateFlagRequestVariantsItemValueCase4List = Array<unknown>;
 export type UpdateFlagRequestVariantsItemValue =
   | string
@@ -1973,6 +2743,9 @@ export type UpdateFlagRequestVariantsItemValue =
   | boolean
   | unknown
   | UpdateFlagRequestVariantsItemValueCase4List;
+const UpdateFlagRequestVariantsItemValue =
+  S.Unknown as any as S.Schema<UpdateFlagRequestVariantsItemValue>;
+
 export interface UpdateFlagRequestVariantsItem {
   /** The id of the variant */
   id: string;
@@ -1982,8 +2755,18 @@ export interface UpdateFlagRequestVariantsItem {
   description?: string;
   value: UpdateFlagRequestVariantsItemValue;
 }
+const UpdateFlagRequestVariantsItem = /*@__PURE__*/ __L.at(
+  __c14,
+  5,
+) as any as S.Schema<UpdateFlagRequestVariantsItem>;
+
 /** The variants of the flag */
 export type UpdateFlagRequestVariantsList = Array<UpdateFlagRequestVariantsItem>;
+const UpdateFlagRequestVariantsList = /*@__PURE__*/ __L.at(
+  __c14,
+  6,
+) as any as S.Schema<UpdateFlagRequestVariantsList>;
+
 /** Allows linking this environment to another environment so this flag will be evaluated with the other flag's configuration */
 export type UpdateFlagRequestEnvironmentsValueReuse = CreateFlagRequestEnvironmentsValueReuse;
 export type UpdateFlagRequestEnvironmentsValueTargetsValueValueValueItem =
@@ -2000,6 +2783,9 @@ export type UpdateFlagRequestEnvironmentsValueTargetsValueMap = {
 export type UpdateFlagRequestEnvironmentsValueTargetsMap = {
   [key: string]: UpdateFlagRequestEnvironmentsValueTargetsValueMap | undefined;
 };
+const UpdateFlagRequestEnvironmentsValueTargetsMap =
+  CreateFlagRequestEnvironmentsValueTargetsMap as any as S.Schema<UpdateFlagRequestEnvironmentsValueTargetsMap>;
+
 export type UpdateFlagRequestEnvironmentsValuePausedOutcome =
   CreateFlagRequestEnvironmentsValuePausedOutcome;
 export type UpdateFlagRequestEnvironmentsValueRulesItemConditionsItemLhsCase0 =
@@ -2009,6 +2795,9 @@ export type UpdateFlagRequestEnvironmentsValueRulesItemConditionsItemLhsCase1 =
 export type UpdateFlagRequestEnvironmentsValueRulesItemConditionsItemLhs =
   | CreateFlagRequestEnvironmentsValueRulesItemConditionsItemLhsCase0
   | CreateFlagRequestEnvironmentsValueRulesItemConditionsItemLhsCase1;
+const UpdateFlagRequestEnvironmentsValueRulesItemConditionsItemLhs =
+  S.Unknown as any as S.Schema<UpdateFlagRequestEnvironmentsValueRulesItemConditionsItemLhs>;
+
 export type UpdateFlagRequestEnvironmentsValueRulesItemConditionsItemCmp =
   | "eq"
   | "!eq"
@@ -2033,6 +2822,8 @@ export type UpdateFlagRequestEnvironmentsValueRulesItemConditionsItemCmp =
   | "!regex"
   | "before"
   | "after";
+const UpdateFlagRequestEnvironmentsValueRulesItemConditionsItemCmp = S.String;
+
 export type UpdateFlagRequestEnvironmentsValueRulesItemConditionsItemRhsCase0Type =
   | "list/inline"
   | "list";
@@ -2057,6 +2848,9 @@ export type UpdateFlagRequestEnvironmentsValueRulesItemConditionsItemRhs =
   | string
   | number
   | boolean;
+const UpdateFlagRequestEnvironmentsValueRulesItemConditionsItemRhs =
+  S.Unknown as any as S.Schema<UpdateFlagRequestEnvironmentsValueRulesItemConditionsItemRhs>;
+
 export type UpdateFlagRequestEnvironmentsValueRulesItemConditionsItemCmpOptions =
   CreateFlagRequestEnvironmentsValueRulesItemConditionsItemCmpOptions;
 export interface UpdateFlagRequestEnvironmentsValueRulesItemConditionsItem {
@@ -2065,8 +2859,18 @@ export interface UpdateFlagRequestEnvironmentsValueRulesItemConditionsItem {
   rhs?: UpdateFlagRequestEnvironmentsValueRulesItemConditionsItemRhs;
   cmpOptions?: CreateFlagRequestEnvironmentsValueRulesItemConditionsItemCmpOptions;
 }
+const UpdateFlagRequestEnvironmentsValueRulesItemConditionsItem = /*@__PURE__*/ __L.at(
+  __c14,
+  7,
+) as any as S.Schema<UpdateFlagRequestEnvironmentsValueRulesItemConditionsItem>;
+
 export type UpdateFlagRequestEnvironmentsValueRulesItemConditionsList =
   Array<UpdateFlagRequestEnvironmentsValueRulesItemConditionsItem>;
+const UpdateFlagRequestEnvironmentsValueRulesItemConditionsList = /*@__PURE__*/ __L.at(
+  __c15,
+  0,
+) as any as S.Schema<UpdateFlagRequestEnvironmentsValueRulesItemConditionsList>;
+
 export type UpdateFlagRequestEnvironmentsValueRulesItemOutcomeCase0 =
   CreateFlagRequestEnvironmentsValuePausedOutcome;
 export type UpdateFlagRequestEnvironmentsValueRulesItemOutcomeCase1Base =
@@ -2110,13 +2914,26 @@ export type UpdateFlagRequestEnvironmentsValueRulesItemOutcome =
   | CreateFlagRequestEnvironmentsValuePausedOutcome
   | UpdateFlagRequestEnvironmentsValueRulesItemOutcomeCase1
   | UpdateFlagRequestEnvironmentsValueRulesItemOutcomeCase2;
+const UpdateFlagRequestEnvironmentsValueRulesItemOutcome =
+  S.Unknown as any as S.Schema<UpdateFlagRequestEnvironmentsValueRulesItemOutcome>;
+
 export interface UpdateFlagRequestEnvironmentsValueRulesItem {
   id: string;
   conditions: UpdateFlagRequestEnvironmentsValueRulesItemConditionsList;
   outcome: UpdateFlagRequestEnvironmentsValueRulesItemOutcome;
 }
+const UpdateFlagRequestEnvironmentsValueRulesItem = /*@__PURE__*/ __L.at(
+  __c15,
+  1,
+) as any as S.Schema<UpdateFlagRequestEnvironmentsValueRulesItem>;
+
 export type UpdateFlagRequestEnvironmentsValueRulesList =
   Array<UpdateFlagRequestEnvironmentsValueRulesItem>;
+const UpdateFlagRequestEnvironmentsValueRulesList = /*@__PURE__*/ __L.at(
+  __c15,
+  2,
+) as any as S.Schema<UpdateFlagRequestEnvironmentsValueRulesList>;
+
 export type UpdateFlagRequestEnvironmentsValueFallthroughCase0 =
   CreateFlagRequestEnvironmentsValuePausedOutcome;
 export type UpdateFlagRequestEnvironmentsValueFallthroughCase1Base =
@@ -2160,6 +2977,9 @@ export type UpdateFlagRequestEnvironmentsValueFallthrough =
   | CreateFlagRequestEnvironmentsValuePausedOutcome
   | UpdateFlagRequestEnvironmentsValueFallthroughCase1
   | UpdateFlagRequestEnvironmentsValueFallthroughCase2;
+const UpdateFlagRequestEnvironmentsValueFallthrough =
+  S.Unknown as any as S.Schema<UpdateFlagRequestEnvironmentsValueFallthrough>;
+
 export interface UpdateFlagRequestEnvironmentsValue {
   active: boolean;
   /** Allows linking this environment to another environment so this flag will be evaluated with the other flag's configuration */
@@ -2172,15 +2992,33 @@ export interface UpdateFlagRequestEnvironmentsValue {
   /** The revision of the environment config */
   revision?: number;
 }
+const UpdateFlagRequestEnvironmentsValue = /*@__PURE__*/ __L.at(
+  __c15,
+  3,
+) as any as S.Schema<UpdateFlagRequestEnvironmentsValue>;
+
 /** The configuration for the flag in different environments */
 export type UpdateFlagRequestEnvironmentsMap = {
   [key: string]: UpdateFlagRequestEnvironmentsValue | undefined;
 };
+const UpdateFlagRequestEnvironmentsMap = /*@__PURE__*/ __L.at(
+  __c15,
+  4,
+) as any as S.Schema<UpdateFlagRequestEnvironmentsMap>;
+
 export type UpdateFlagRequestState = "active" | "archived";
+const UpdateFlagRequestState = S.String;
+
 /** The user ids of the maintainers of the flag */
 export type UpdateFlagRequestMaintainerIdsList = Array<string>;
+const UpdateFlagRequestMaintainerIdsList =
+  CreateFlagRequestMaintainerIdsList as any as S.Schema<UpdateFlagRequestMaintainerIdsList>;
+
 /** Tags for categorizing the flag */
 export type UpdateFlagRequestTagsList = Array<string>;
+const UpdateFlagRequestTagsList =
+  CreateFlagRequestMaintainerIdsList as any as S.Schema<UpdateFlagRequestTagsList>;
+
 export interface UpdateFlagRequest {
   /** The project id or name */
   projectIdOrName: string;
@@ -2214,6 +3052,8 @@ export interface UpdateFlagRequest {
   /** Tags for categorizing the flag */
   tags?: UpdateFlagRequestTagsList;
 }
+const UpdateFlagRequest = /*@__PURE__*/ __L.at(__c15, 5) as any as S.Schema<UpdateFlagRequest>;
+
 export type UpdateFlagResponseBodyCase0EnvironmentsValueFallthroughCase0Type = "variant";
 export interface UpdateFlagResponseBodyCase0EnvironmentsValueFallthroughCase0 {
   type: UpdateFlagResponseBodyCase0EnvironmentsValueFallthroughCase0Type;
@@ -2478,9 +3318,17 @@ export interface UpdateFlagResponseBodyCase0 {
   variants: UpdateFlagResponseBodyCase0VariantsList;
 }
 export type UpdateFlagResponseBody = UpdateFlagResponseBodyCase0 | Flag;
+const UpdateFlagResponseBody = S.Unknown as any as S.Schema<UpdateFlagResponseBody>;
+
 export type UpdateFlagResponse = UpdateFlagResponseBody;
+const UpdateFlagResponse = /*@__PURE__*/ __L.at(__c15, 6) as any as S.Schema<UpdateFlagResponse>;
+
 export type UpdateFlagSegmentRequestOperationsItemAction = "add" | "remove";
+const UpdateFlagSegmentRequestOperationsItemAction = S.String;
+
 export type UpdateFlagSegmentRequestOperationsItemField = "include" | "exclude";
+const UpdateFlagSegmentRequestOperationsItemField = S.String;
+
 export type UpdateFlagSegmentRequestOperationsItemValue =
   CreateFlagRequestEnvironmentsValueTargetsValueValueValueItem;
 export interface UpdateFlagSegmentRequestOperationsItem {
@@ -2490,7 +3338,17 @@ export interface UpdateFlagSegmentRequestOperationsItem {
   attribute: string;
   value: CreateFlagRequestEnvironmentsValueTargetsValueValueValueItem;
 }
+const UpdateFlagSegmentRequestOperationsItem = /*@__PURE__*/ __L.at(
+  __c15,
+  7,
+) as any as S.Schema<UpdateFlagSegmentRequestOperationsItem>;
+
 export type UpdateFlagSegmentRequestOperationsList = Array<UpdateFlagSegmentRequestOperationsItem>;
+const UpdateFlagSegmentRequestOperationsList = /*@__PURE__*/ __L.at(
+  __c16,
+  0,
+) as any as S.Schema<UpdateFlagSegmentRequestOperationsList>;
+
 export type UpdateFlagSegmentRequestDataRulesItemConditionsItemLhsCase0 =
   CreateFlagRequestEnvironmentsValueRulesItemConditionsItemLhsCase0;
 export type UpdateFlagSegmentRequestDataRulesItemConditionsItemLhsCase1 =
@@ -2498,6 +3356,9 @@ export type UpdateFlagSegmentRequestDataRulesItemConditionsItemLhsCase1 =
 export type UpdateFlagSegmentRequestDataRulesItemConditionsItemLhs =
   | CreateFlagRequestEnvironmentsValueRulesItemConditionsItemLhsCase0
   | CreateFlagRequestEnvironmentsValueRulesItemConditionsItemLhsCase1;
+const UpdateFlagSegmentRequestDataRulesItemConditionsItemLhs =
+  S.Unknown as any as S.Schema<UpdateFlagSegmentRequestDataRulesItemConditionsItemLhs>;
+
 export type UpdateFlagSegmentRequestDataRulesItemConditionsItemCmp =
   | "eq"
   | "!eq"
@@ -2522,6 +3383,8 @@ export type UpdateFlagSegmentRequestDataRulesItemConditionsItemCmp =
   | "!regex"
   | "before"
   | "after";
+const UpdateFlagSegmentRequestDataRulesItemConditionsItemCmp = S.String;
+
 export type UpdateFlagSegmentRequestDataRulesItemConditionsItemRhsCase0Type =
   | "list/inline"
   | "list";
@@ -2546,6 +3409,9 @@ export type UpdateFlagSegmentRequestDataRulesItemConditionsItemRhs =
   | string
   | number
   | boolean;
+const UpdateFlagSegmentRequestDataRulesItemConditionsItemRhs =
+  S.Unknown as any as S.Schema<UpdateFlagSegmentRequestDataRulesItemConditionsItemRhs>;
+
 export type UpdateFlagSegmentRequestDataRulesItemConditionsItemCmpOptions =
   CreateFlagRequestEnvironmentsValueRulesItemConditionsItemCmpOptions;
 export interface UpdateFlagSegmentRequestDataRulesItemConditionsItem {
@@ -2554,8 +3420,18 @@ export interface UpdateFlagSegmentRequestDataRulesItemConditionsItem {
   rhs?: UpdateFlagSegmentRequestDataRulesItemConditionsItemRhs;
   cmpOptions?: CreateFlagRequestEnvironmentsValueRulesItemConditionsItemCmpOptions;
 }
+const UpdateFlagSegmentRequestDataRulesItemConditionsItem = /*@__PURE__*/ __L.at(
+  __c16,
+  1,
+) as any as S.Schema<UpdateFlagSegmentRequestDataRulesItemConditionsItem>;
+
 export type UpdateFlagSegmentRequestDataRulesItemConditionsList =
   Array<UpdateFlagSegmentRequestDataRulesItemConditionsItem>;
+const UpdateFlagSegmentRequestDataRulesItemConditionsList = /*@__PURE__*/ __L.at(
+  __c16,
+  2,
+) as any as S.Schema<UpdateFlagSegmentRequestDataRulesItemConditionsList>;
+
 export type UpdateFlagSegmentRequestDataRulesItemOutcomeCase0 =
   CreateFlagRequestEnvironmentsValueRulesItemConditionsItemLhsCase0;
 export type UpdateFlagSegmentRequestDataRulesItemOutcomeCase1Base =
@@ -2565,12 +3441,25 @@ export type UpdateFlagSegmentRequestDataRulesItemOutcomeCase1 =
 export type UpdateFlagSegmentRequestDataRulesItemOutcome =
   | CreateFlagRequestEnvironmentsValueRulesItemConditionsItemLhsCase0
   | CreateFlagSegmentRequestDataRulesItemOutcomeCase1;
+const UpdateFlagSegmentRequestDataRulesItemOutcome =
+  S.Unknown as any as S.Schema<UpdateFlagSegmentRequestDataRulesItemOutcome>;
+
 export interface UpdateFlagSegmentRequestDataRulesItem {
   id: string;
   conditions: UpdateFlagSegmentRequestDataRulesItemConditionsList;
   outcome: UpdateFlagSegmentRequestDataRulesItemOutcome;
 }
+const UpdateFlagSegmentRequestDataRulesItem = /*@__PURE__*/ __L.at(
+  __c16,
+  3,
+) as any as S.Schema<UpdateFlagSegmentRequestDataRulesItem>;
+
 export type UpdateFlagSegmentRequestDataRulesList = Array<UpdateFlagSegmentRequestDataRulesItem>;
+const UpdateFlagSegmentRequestDataRulesList = /*@__PURE__*/ __L.at(
+  __c16,
+  4,
+) as any as S.Schema<UpdateFlagSegmentRequestDataRulesList>;
+
 export type UpdateFlagSegmentRequestDataIncludeValueValueItem =
   CreateFlagRequestEnvironmentsValueTargetsValueValueValueItem;
 export type UpdateFlagSegmentRequestDataIncludeValueValueList =
@@ -2581,6 +3470,9 @@ export type UpdateFlagSegmentRequestDataIncludeValueMap = {
 export type UpdateFlagSegmentRequestDataIncludeMap = {
   [key: string]: UpdateFlagSegmentRequestDataIncludeValueMap | undefined;
 };
+const UpdateFlagSegmentRequestDataIncludeMap =
+  CreateFlagRequestEnvironmentsValueTargetsValueMap as any as S.Schema<UpdateFlagSegmentRequestDataIncludeMap>;
+
 export type UpdateFlagSegmentRequestDataExcludeValueValueItem =
   CreateFlagRequestEnvironmentsValueTargetsValueValueValueItem;
 export type UpdateFlagSegmentRequestDataExcludeValueValueList =
@@ -2591,12 +3483,20 @@ export type UpdateFlagSegmentRequestDataExcludeValueMap = {
 export type UpdateFlagSegmentRequestDataExcludeMap = {
   [key: string]: UpdateFlagSegmentRequestDataExcludeValueMap | undefined;
 };
+const UpdateFlagSegmentRequestDataExcludeMap =
+  CreateFlagRequestEnvironmentsValueTargetsValueMap as any as S.Schema<UpdateFlagSegmentRequestDataExcludeMap>;
+
 /** The data of the segment */
 export interface UpdateFlagSegmentRequestData {
   rules?: UpdateFlagSegmentRequestDataRulesList;
   include?: UpdateFlagSegmentRequestDataIncludeMap;
   exclude?: UpdateFlagSegmentRequestDataExcludeMap;
 }
+const UpdateFlagSegmentRequestData = /*@__PURE__*/ __L.at(
+  __c16,
+  5,
+) as any as S.Schema<UpdateFlagSegmentRequestData>;
+
 export interface UpdateFlagSegmentRequest {
   /** The project id or name */
   projectIdOrName: string;
@@ -2615,6 +3515,11 @@ export interface UpdateFlagSegmentRequest {
   data?: UpdateFlagSegmentRequestData;
   hint?: string;
 }
+const UpdateFlagSegmentRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  6,
+) as any as S.Schema<UpdateFlagSegmentRequest>;
+
 export type UpdateFlagSegmentResponseBodyCase0DataExcludeValueValueItem =
   CreateFlagRequestEnvironmentsValueTargetsValueValueValueItem;
 export type UpdateFlagSegmentResponseBodyCase0DataExcludeValueValueList =
@@ -2760,26 +3665,59 @@ export interface UpdateFlagSegmentResponseBodyCase0 {
   usedBySegments?: UpdateFlagSegmentResponseBodyCase0UsedBySegmentsList;
 }
 export type UpdateFlagSegmentResponseBody = UpdateFlagSegmentResponseBodyCase0 | Segment;
+const UpdateFlagSegmentResponseBody = S.Unknown as any as S.Schema<UpdateFlagSegmentResponseBody>;
+
 export type UpdateFlagSegmentResponse = UpdateFlagSegmentResponseBody;
+const UpdateFlagSegmentResponse = /*@__PURE__*/ __L.at(
+  __c16,
+  7,
+) as any as S.Schema<UpdateFlagSegmentResponse>;
+
 export type UpdateFlagSettingsRequestEntitiesItemAttributesItemLabelsItem =
   GetFlagSettingsResponseEntitiesItemAttributesItemLabelsItem;
 export type UpdateFlagSettingsRequestEntitiesItemAttributesItemLabelsList =
   Array<GetFlagSettingsResponseEntitiesItemAttributesItemLabelsItem>;
+const UpdateFlagSettingsRequestEntitiesItemAttributesItemLabelsList =
+  GetFlagSettingsResponseEntitiesItemAttributesItemLabelsList as any as S.Schema<UpdateFlagSettingsRequestEntitiesItemAttributesItemLabelsList>;
+
 export interface UpdateFlagSettingsRequestEntitiesItemAttributesItem {
   key: string;
   type: string;
   labels?: UpdateFlagSettingsRequestEntitiesItemAttributesItemLabelsList;
 }
+const UpdateFlagSettingsRequestEntitiesItemAttributesItem = /*@__PURE__*/ __L.at(
+  __c17,
+  0,
+) as any as S.Schema<UpdateFlagSettingsRequestEntitiesItemAttributesItem>;
+
 export type UpdateFlagSettingsRequestEntitiesItemAttributesList =
   Array<UpdateFlagSettingsRequestEntitiesItemAttributesItem>;
+const UpdateFlagSettingsRequestEntitiesItemAttributesList = /*@__PURE__*/ __L.at(
+  __c17,
+  1,
+) as any as S.Schema<UpdateFlagSettingsRequestEntitiesItemAttributesList>;
+
 export interface UpdateFlagSettingsRequestEntitiesItem {
   kind: string;
   label: string;
   attributes: UpdateFlagSettingsRequestEntitiesItemAttributesList;
 }
+const UpdateFlagSettingsRequestEntitiesItem = /*@__PURE__*/ __L.at(
+  __c17,
+  2,
+) as any as S.Schema<UpdateFlagSettingsRequestEntitiesItem>;
+
 export type UpdateFlagSettingsRequestEntitiesList = Array<UpdateFlagSettingsRequestEntitiesItem>;
+const UpdateFlagSettingsRequestEntitiesList = /*@__PURE__*/ __L.at(
+  __c17,
+  3,
+) as any as S.Schema<UpdateFlagSettingsRequestEntitiesList>;
+
 /** The environments to sync */
 export type UpdateFlagSettingsRequestEnvironmentsList = Array<string>;
+const UpdateFlagSettingsRequestEnvironmentsList =
+  CreateFlagRequestMaintainerIdsList as any as S.Schema<UpdateFlagSettingsRequestEnvironmentsList>;
+
 export interface UpdateFlagSettingsRequest {
   /** The project id or name */
   projectIdOrName: string;
@@ -2792,6 +3730,11 @@ export interface UpdateFlagSettingsRequest {
   /** The environments to sync */
   environments?: UpdateFlagSettingsRequestEnvironmentsList;
 }
+const UpdateFlagSettingsRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  4,
+) as any as S.Schema<UpdateFlagSettingsRequest>;
+
 export type UpdateFlagSettingsResponseEntitiesItemAttributesItemLabelsItem =
   GetFlagSettingsResponseEntitiesItemAttributesItemLabelsItem;
 export type UpdateFlagSettingsResponseEntitiesItemAttributesItemLabelsList =
@@ -2809,9 +3752,17 @@ export interface UpdateFlagSettingsResponseEntitiesItem {
   label: string;
 }
 export type UpdateFlagSettingsResponseEntitiesList = Array<UpdateFlagSettingsResponseEntitiesItem>;
+const UpdateFlagSettingsResponseEntitiesList =
+  GetFlagSettingsResponseEntitiesList as any as S.Schema<UpdateFlagSettingsResponseEntitiesList>;
+
 export type UpdateFlagSettingsResponseEnvironmentsList = Array<string>;
+const UpdateFlagSettingsResponseEnvironmentsList =
+  CreateFlagRequestMaintainerIdsList as any as S.Schema<UpdateFlagSettingsResponseEnvironmentsList>;
+
 export type UpdateFlagSettingsResponseMetadata = GetFlagSettingsResponseMetadata;
 export type UpdateFlagSettingsResponseTypeName = "settings";
+const UpdateFlagSettingsResponseTypeName = S.String;
+
 export interface UpdateFlagSettingsResponse {
   createdAt?: number;
   enabled: boolean;
@@ -2823,6 +3774,11 @@ export interface UpdateFlagSettingsResponse {
   typeName: UpdateFlagSettingsResponseTypeName;
   updatedAt?: number;
 }
+const UpdateFlagSettingsResponse = /*@__PURE__*/ __L.at(
+  __c17,
+  5,
+) as any as S.Schema<UpdateFlagSettingsResponse>;
+
 export type CreateFlagError =
   | BadRequest
   | PaymentRequired
@@ -2837,8 +3793,8 @@ export const createFlag: API.OperationMethod<
   CreateFlagError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18) as any as S.Schema<CreateFlagRequest>,
-  output: __S(28) as any as S.Schema<CreateFlagResponse>,
+  input: CreateFlagRequest,
+  output: CreateFlagResponse,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound, Conflict],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -2858,8 +3814,8 @@ export const createFlagSegment: API.OperationMethod<
   CreateFlagSegmentError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34) as any as S.Schema<CreateFlagSegmentRequest>,
-  output: __S(40) as any as S.Schema<CreateFlagSegmentResponse>,
+  input: CreateFlagSegmentRequest,
+  output: CreateFlagSegmentResponse,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound, Conflict],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -2879,8 +3835,8 @@ export const createSdkKey: API.OperationMethod<
   CreateSdkKeyError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41) as any as S.Schema<CreateSdkKeyRequest>,
-  output: __S(42) as any as S.Schema<FlagsSdkKeyWithSecrets>,
+  input: CreateSdkKeyRequest,
+  output: FlagsSdkKeyWithSecrets,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound, Conflict],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -2900,8 +3856,8 @@ export const deleteFlag: API.OperationMethod<
   DeleteFlagError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43) as any as S.Schema<DeleteFlagRequest>,
-  output: __S(44) as any as S.Schema<DeleteFlagResponse>,
+  input: DeleteFlagRequest,
+  output: DeleteFlagResponse,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound, Conflict],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -2921,8 +3877,8 @@ export const deleteFlagSegment: API.OperationMethod<
   DeleteFlagSegmentError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45) as any as S.Schema<DeleteFlagSegmentRequest>,
-  output: __S(44) as any as S.Schema<DeleteFlagSegmentResponse>,
+  input: DeleteFlagSegmentRequest,
+  output: DeleteFlagSegmentResponse,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound, Conflict],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -2942,8 +3898,8 @@ export const deleteSdkKey: API.OperationMethod<
   DeleteSdkKeyError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(46) as any as S.Schema<DeleteSdkKeyRequest>,
-  output: __S(44) as any as S.Schema<DeleteSdkKeyResponse>,
+  input: DeleteSdkKeyRequest,
+  output: DeleteSdkKeyResponse,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound, Conflict],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -2957,8 +3913,8 @@ export const getDeploymentFeatureFlags: API.OperationMethod<
   GetDeploymentFeatureFlagsError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47) as any as S.Schema<GetDeploymentFeatureFlagsRequest>,
-  output: __S(49) as any as S.Schema<GetDeploymentFeatureFlagsResponse>,
+  input: GetDeploymentFeatureFlagsRequest,
+  output: GetDeploymentFeatureFlagsResponse,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -2968,8 +3924,8 @@ export type GetFlagError = BadRequest | PaymentRequired | Forbidden | NotFound |
 /** Get a flag Retrieve a specific feature flag by its ID or slug. */
 export const getFlag: API.OperationMethod<GetFlagRequest, Flag, GetFlagError, VercelOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(50) as any as S.Schema<GetFlagRequest>,
-    output: __S(62) as any as S.Schema<Flag>,
+    input: GetFlagRequest,
+    output: Flag,
     errors: [BadRequest, PaymentRequired, Forbidden, NotFound],
     protocol: VercelProtocol,
     retry: Retry.Retry,
@@ -2988,8 +3944,8 @@ export const getFlagSegment: API.OperationMethod<
   GetFlagSegmentError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(63) as any as S.Schema<GetFlagSegmentRequest>,
-  output: __S(69) as any as S.Schema<Segment>,
+  input: GetFlagSegmentRequest,
+  output: Segment,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -3008,8 +3964,8 @@ export const getFlagSettings: API.OperationMethod<
   GetFlagSettingsError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(70) as any as S.Schema<GetFlagSettingsRequest>,
-  output: __S(78) as any as S.Schema<GetFlagSettingsResponse>,
+  input: GetFlagSettingsRequest,
+  output: GetFlagSettingsResponse,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -3023,8 +3979,8 @@ export const getSdkKeys: API.OperationMethod<
   GetSdkKeysError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(79) as any as S.Schema<GetSdkKeysRequest>,
-  output: __S(82) as any as S.Schema<GetSdkKeysResponse>,
+  input: GetSdkKeysRequest,
+  output: GetSdkKeysResponse,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -3038,8 +3994,8 @@ export const listFlags: API.OperationMethod<
   ListFlagsError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(83) as any as S.Schema<ListFlagsRequest>,
-  output: __S(86) as any as S.Schema<ListFlagsResponse>,
+  input: ListFlagsRequest,
+  output: ListFlagsResponse,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -3058,8 +4014,8 @@ export const listFlagSegments: API.OperationMethod<
   ListFlagSegmentsError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(87) as any as S.Schema<ListFlagSegmentsRequest>,
-  output: __S(89) as any as S.Schema<ListFlagSegmentsResponse>,
+  input: ListFlagSegmentsRequest,
+  output: ListFlagSegmentsResponse,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -3073,8 +4029,8 @@ export const listFlagsV2: API.OperationMethod<
   ListFlagsV2Error,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(90) as any as S.Schema<ListFlagsV2Request>,
-  output: __S(92) as any as S.Schema<ListFlagsV2Response>,
+  input: ListFlagsV2Request,
+  output: ListFlagsV2Response,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -3093,8 +4049,8 @@ export const listFlagVersions: API.OperationMethod<
   ListFlagVersionsError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(93) as any as S.Schema<ListFlagVersionsRequest>,
-  output: __S(110) as any as S.Schema<ListFlagVersionsResponse>,
+  input: ListFlagVersionsRequest,
+  output: ListFlagVersionsResponse,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -3108,8 +4064,8 @@ export const listTeamFlags: API.OperationMethod<
   ListTeamFlagsError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(111) as any as S.Schema<ListTeamFlagsRequest>,
-  output: __S(86) as any as S.Schema<ListTeamFlagsResponse>,
+  input: ListTeamFlagsRequest,
+  output: ListTeamFlagsResponse,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -3123,8 +4079,8 @@ export const listTeamFlagSettings: API.OperationMethod<
   ListTeamFlagSettingsError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(112) as any as S.Schema<ListTeamFlagSettingsRequest>,
-  output: __S(113) as any as S.Schema<ListTeamFlagSettingsResponse>,
+  input: ListTeamFlagSettingsRequest,
+  output: ListTeamFlagSettingsResponse,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -3138,8 +4094,8 @@ export const listTeamFlagsV2: API.OperationMethod<
   ListTeamFlagsV2Error,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(114) as any as S.Schema<ListTeamFlagsV2Request>,
-  output: __S(116) as any as S.Schema<ListTeamFlagsV2Response>,
+  input: ListTeamFlagsV2Request,
+  output: ListTeamFlagsV2Response,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -3159,8 +4115,8 @@ export const updateFlag: API.OperationMethod<
   UpdateFlagError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(125) as any as S.Schema<UpdateFlagRequest>,
-  output: __S(126) as any as S.Schema<UpdateFlagResponse>,
+  input: UpdateFlagRequest,
+  output: UpdateFlagResponse,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound, Conflict],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -3180,8 +4136,8 @@ export const updateFlagSegment: API.OperationMethod<
   UpdateFlagSegmentError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(134) as any as S.Schema<UpdateFlagSegmentRequest>,
-  output: __S(135) as any as S.Schema<UpdateFlagSegmentResponse>,
+  input: UpdateFlagSegmentRequest,
+  output: UpdateFlagSegmentResponse,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound, Conflict],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -3201,8 +4157,8 @@ export const updateFlagSettings: API.OperationMethod<
   UpdateFlagSettingsError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(140) as any as S.Schema<UpdateFlagSettingsRequest>,
-  output: __S(141) as any as S.Schema<UpdateFlagSettingsResponse>,
+  input: UpdateFlagSettingsRequest,
+  output: UpdateFlagSettingsResponse,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound, Conflict],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -3219,13 +4175,13 @@ function __c0(j: number): any {
           id: S.String,
           label: S.optional(S.String),
           description: S.optional(S.String),
-          value: S.Unknown,
+          value: CreateFlagRequestVariantsItemValue,
         }),
       ).annotate({
         identifier: "CreateFlagRequestVariantsItem",
       });
     case 2:
-      return S.Array(__S(1));
+      return S.Array(CreateFlagRequestVariantsItem);
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -3245,17 +4201,17 @@ function __c0(j: number): any {
         identifier: "CreateFlagRequestEnvironmentsValueTargetsValueValueValueItem",
       });
     case 5:
-      return S.Array(__S(4));
+      return S.Array(CreateFlagRequestEnvironmentsValueTargetsValueValueValueItem);
     case 6:
-      return S.Record(S.String, __S(5));
+      return S.Record(S.String, CreateFlagRequestEnvironmentsValueTargetsValueValueValueList);
     case 7:
-      return S.Record(S.String, __S(6));
+      return S.Record(S.String, CreateFlagRequestEnvironmentsValueTargetsValueValueMap);
   }
 }
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, __S(7));
+      return S.Record(S.String, CreateFlagRequestEnvironmentsValueTargetsValueMap);
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -3276,37 +4232,39 @@ function __c1(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          lhs: S.Unknown,
-          cmp: S.String,
-          rhs: S.optional(S.Unknown),
-          cmpOptions: S.optional(__S(10)),
+          lhs: CreateFlagRequestEnvironmentsValueRulesItemConditionsItemLhs,
+          cmp: CreateFlagRequestEnvironmentsValueRulesItemConditionsItemCmp,
+          rhs: S.optional(CreateFlagRequestEnvironmentsValueRulesItemConditionsItemRhs),
+          cmpOptions: S.optional(
+            CreateFlagRequestEnvironmentsValueRulesItemConditionsItemCmpOptions,
+          ),
         }),
       ).annotate({
         identifier: "CreateFlagRequestEnvironmentsValueRulesItemConditionsItem",
       });
     case 4:
-      return S.Array(__S(11));
+      return S.Array(CreateFlagRequestEnvironmentsValueRulesItemConditionsItem);
     case 5:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          conditions: __S(12),
-          outcome: S.Unknown,
+          conditions: CreateFlagRequestEnvironmentsValueRulesItemConditionsList,
+          outcome: CreateFlagRequestEnvironmentsValueRulesItemOutcome,
         }),
       ).annotate({
         identifier: "CreateFlagRequestEnvironmentsValueRulesItem",
       });
     case 6:
-      return S.Array(__S(13));
+      return S.Array(CreateFlagRequestEnvironmentsValueRulesItem);
     case 7:
       return S.suspend(() =>
         S.Struct({
           active: S.Boolean,
-          reuse: S.optional(__S(3)),
-          targets: S.optional(__S(8)),
-          pausedOutcome: __S(9),
-          rules: __S(14),
-          fallthrough: S.Unknown,
+          reuse: S.optional(CreateFlagRequestEnvironmentsValueReuse),
+          targets: S.optional(CreateFlagRequestEnvironmentsValueTargetsMap),
+          pausedOutcome: CreateFlagRequestEnvironmentsValuePausedOutcome,
+          rules: CreateFlagRequestEnvironmentsValueRulesList,
+          fallthrough: CreateFlagRequestEnvironmentsValueFallthrough,
           revision: S.optional(S.Number),
         }),
       ).annotate({
@@ -3317,7 +4275,7 @@ function __c1(j: number): any {
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, __S(15));
+      return S.Record(S.String, CreateFlagRequestEnvironmentsValue);
     case 1:
       return S.Array(S.String);
     case 2:
@@ -3326,15 +4284,15 @@ function __c2(j: number): any {
           projectIdOrName: S.String.pipe(T.Label()),
           teamId: S.optional(S.String.pipe(T.Query())),
           slug: S.optional(S.String.pipe(T.Query())),
-          kind: S.String,
-          variants: S.optional(__S(2)),
-          environments: __S(16),
+          kind: CreateFlagRequestKind,
+          variants: S.optional(CreateFlagRequestVariantsList),
+          environments: CreateFlagRequestEnvironmentsMap,
           seed: S.optional(S.Number),
           description: S.optional(S.String),
-          state: S.optional(S.String),
-          maintainerIds: S.optional(__S(17)),
+          state: S.optional(CreateFlagRequestState),
+          maintainerIds: S.optional(CreateFlagRequestMaintainerIdsList),
           permanent: S.optional(S.Boolean),
-          tags: S.optional(__S(17)),
+          tags: S.optional(CreateFlagRequestTagsList),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -3346,7 +4304,7 @@ function __c2(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          type: S.String,
+          type: CreateFlagResponseEnvironmentsValueFallthroughCase0Type,
           variantId: S.String,
         }),
       ).annotate({
@@ -3355,28 +4313,30 @@ function __c2(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          cmp: S.String,
-          cmpOptions: S.optional(__S(10)),
-          lhs: S.Unknown,
-          rhs: S.optional(S.Unknown),
+          cmp: CreateFlagResponseEnvironmentsValueRulesItemConditionsItemCmp,
+          cmpOptions: S.optional(
+            CreateFlagRequestEnvironmentsValueRulesItemConditionsItemCmpOptions,
+          ),
+          lhs: CreateFlagResponseEnvironmentsValueRulesItemConditionsItemLhs,
+          rhs: S.optional(CreateFlagResponseEnvironmentsValueRulesItemConditionsItemRhs),
         }),
       ).annotate({
         identifier: "CreateFlagResponseEnvironmentsValueRulesItemConditionsItem",
       });
     case 5:
-      return S.Array(__S(20));
+      return S.Array(CreateFlagResponseEnvironmentsValueRulesItemConditionsItem);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          conditions: __S(21),
+          conditions: CreateFlagResponseEnvironmentsValueRulesItemConditionsList,
           id: S.String,
-          outcome: S.Unknown,
+          outcome: CreateFlagResponseEnvironmentsValueRulesItemOutcome,
         }),
       ).annotate({
         identifier: "CreateFlagResponseEnvironmentsValueRulesItem",
       });
     case 7:
-      return S.Array(__S(22));
+      return S.Array(CreateFlagResponseEnvironmentsValueRulesItem);
   }
 }
 function __c3(j: number): any {
@@ -3385,74 +4345,76 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           active: S.Boolean,
-          fallthrough: S.Unknown,
-          pausedOutcome: __S(19),
-          reuse: S.optional(__S(3)),
+          fallthrough: CreateFlagResponseEnvironmentsValueFallthrough,
+          pausedOutcome: CreateFlagResponseEnvironmentsValuePausedOutcome,
+          reuse: S.optional(CreateFlagResponseEnvironmentsValueReuse),
           revision: S.optional(S.Number),
-          rules: __S(23),
-          targets: S.optional(__S(8)),
+          rules: CreateFlagResponseEnvironmentsValueRulesList,
+          targets: S.optional(CreateFlagResponseEnvironmentsValueTargetsMap),
         }),
       ).annotate({
         identifier: "CreateFlagResponseEnvironmentsValue",
       });
     case 1:
-      return S.Record(S.String, __S(24));
+      return S.Record(S.String, CreateFlagResponseEnvironmentsValue);
     case 2:
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
           id: S.String,
           label: S.optional(S.String),
-          value: S.NullOr(S.Unknown),
+          value: S.NullOr(CreateFlagResponseVariantsItemValue),
         }),
       ).annotate({
         identifier: "CreateFlagResponseVariantsItem",
       });
     case 3:
-      return S.Array(__S(26));
+      return S.Array(CreateFlagResponseVariantsItem);
     case 4:
       return S.suspend(() =>
         S.Struct({
           createdAt: S.Number,
           createdBy: S.String,
           description: S.optional(S.String),
-          environments: __S(25),
+          environments: CreateFlagResponseEnvironmentsMap,
           id: S.String,
-          kind: S.String,
-          maintainerIds: S.optional(__S(17)),
+          kind: CreateFlagResponseKind,
+          maintainerIds: S.optional(CreateFlagResponseMaintainerIdsList),
           ownerId: S.String,
           permanent: S.optional(S.Boolean),
           projectId: S.String,
           revision: S.Number,
           seed: S.Number,
           slug: S.String,
-          state: S.String,
-          tags: S.optional(__S(17)),
-          typeName: S.String,
+          state: CreateFlagResponseState,
+          tags: S.optional(CreateFlagResponseTagsList),
+          typeName: CreateFlagResponseTypeName,
           updatedAt: S.Number,
           updatedBy: S.optional(S.String),
-          variants: __S(27),
+          variants: CreateFlagResponseVariantsList,
         }),
       ).annotate({ identifier: "CreateFlagResponse" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          lhs: S.Unknown,
-          cmp: S.String,
-          rhs: S.optional(S.Unknown),
-          cmpOptions: S.optional(__S(10)),
+          lhs: CreateFlagSegmentRequestDataRulesItemConditionsItemLhs,
+          cmp: CreateFlagSegmentRequestDataRulesItemConditionsItemCmp,
+          rhs: S.optional(CreateFlagSegmentRequestDataRulesItemConditionsItemRhs),
+          cmpOptions: S.optional(
+            CreateFlagRequestEnvironmentsValueRulesItemConditionsItemCmpOptions,
+          ),
         }),
       ).annotate({
         identifier: "CreateFlagSegmentRequestDataRulesItemConditionsItem",
       });
     case 6:
-      return S.Array(__S(29));
+      return S.Array(CreateFlagSegmentRequestDataRulesItemConditionsItem);
     case 7:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          conditions: __S(30),
-          outcome: S.Unknown,
+          conditions: CreateFlagSegmentRequestDataRulesItemConditionsList,
+          outcome: CreateFlagSegmentRequestDataRulesItemOutcome,
         }),
       ).annotate({
         identifier: "CreateFlagSegmentRequestDataRulesItem",
@@ -3462,13 +4424,13 @@ function __c3(j: number): any {
 function __c4(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(31));
+      return S.Array(CreateFlagSegmentRequestDataRulesItem);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          rules: S.optional(__S(32)),
-          include: S.optional(__S(7)),
-          exclude: S.optional(__S(7)),
+          rules: S.optional(CreateFlagSegmentRequestDataRulesList),
+          include: S.optional(CreateFlagSegmentRequestDataIncludeMap),
+          exclude: S.optional(CreateFlagSegmentRequestDataExcludeMap),
         }),
       ).annotate({
         identifier: "CreateFlagSegmentRequestData",
@@ -3482,7 +4444,7 @@ function __c4(j: number): any {
           createdBy: S.optional(S.String),
           label: S.String,
           description: S.optional(S.String),
-          data: __S(33),
+          data: CreateFlagSegmentRequestData,
           hint: S.String,
         }).pipe(
           T.Http({
@@ -3495,34 +4457,36 @@ function __c4(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          cmp: S.String,
-          cmpOptions: S.optional(__S(10)),
-          lhs: S.Unknown,
-          rhs: S.optional(S.Unknown),
+          cmp: CreateFlagSegmentResponseDataRulesItemConditionsItemCmp,
+          cmpOptions: S.optional(
+            CreateFlagRequestEnvironmentsValueRulesItemConditionsItemCmpOptions,
+          ),
+          lhs: CreateFlagSegmentResponseDataRulesItemConditionsItemLhs,
+          rhs: S.optional(CreateFlagSegmentResponseDataRulesItemConditionsItemRhs),
         }),
       ).annotate({
         identifier: "CreateFlagSegmentResponseDataRulesItemConditionsItem",
       });
     case 4:
-      return S.Array(__S(35));
+      return S.Array(CreateFlagSegmentResponseDataRulesItemConditionsItem);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          conditions: __S(36),
+          conditions: CreateFlagSegmentResponseDataRulesItemConditionsList,
           id: S.String,
-          outcome: S.Unknown,
+          outcome: CreateFlagSegmentResponseDataRulesItemOutcome,
         }),
       ).annotate({
         identifier: "CreateFlagSegmentResponseDataRulesItem",
       });
     case 6:
-      return S.Array(__S(37));
+      return S.Array(CreateFlagSegmentResponseDataRulesItem);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          exclude: S.optional(__S(7)),
-          include: S.optional(__S(7)),
-          rules: S.optional(__S(38)),
+          exclude: S.optional(CreateFlagSegmentResponseDataExcludeMap),
+          include: S.optional(CreateFlagSegmentResponseDataIncludeMap),
+          rules: S.optional(CreateFlagSegmentResponseDataRulesList),
         }),
       ).annotate({
         identifier: "CreateFlagSegmentResponseData",
@@ -3536,17 +4500,17 @@ function __c5(j: number): any {
         S.Struct({
           createdAt: S.Number,
           createdBy: S.optional(S.String),
-          data: __S(39),
+          data: CreateFlagSegmentResponseData,
           description: S.optional(S.String),
           hint: S.String,
           id: S.String,
           label: S.String,
           projectId: S.String,
           slug: S.String,
-          typeName: S.String,
+          typeName: CreateFlagSegmentResponseTypeName,
           updatedAt: S.Number,
-          usedByFlags: S.optional(__S(17)),
-          usedBySegments: S.optional(__S(17)),
+          usedByFlags: S.optional(CreateFlagSegmentResponseUsedByFlagsList),
+          usedBySegments: S.optional(CreateFlagSegmentResponseUsedBySegmentsList),
         }),
       ).annotate({
         identifier: "CreateFlagSegmentResponse",
@@ -3557,7 +4521,7 @@ function __c5(j: number): any {
           projectIdOrName: S.String.pipe(T.Label()),
           teamId: S.optional(S.String.pipe(T.Query())),
           slug: S.optional(S.String.pipe(T.Query())),
-          sdkKeyType: S.String,
+          sdkKeyType: CreateSdkKeyRequestSdkKeyType,
           environment: S.String,
           label: S.optional(S.String),
         }).pipe(
@@ -3579,7 +4543,7 @@ function __c5(j: number): any {
           label: S.optional(S.String),
           partialKeyValue: S.String,
           projectId: S.String,
-          type: S.String,
+          type: FlagsSdkKeyWithSecretsType,
           updatedAt: S.Number,
           keyValue: S.String,
           tokenValue: S.optional(S.String),
@@ -3668,8 +4632,8 @@ function __c6(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          flags: __S(0),
-          status: S.NullOr(__S(48)),
+          flags: GetDeploymentFeatureFlagsResponseFlagsList,
+          status: S.NullOr(GetDeploymentFeatureFlagsResponseStatus),
         }),
       ).annotate({
         identifier: "GetDeploymentFeatureFlagsResponse",
@@ -3694,38 +4658,40 @@ function __c6(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          cmp: S.String,
-          cmpOptions: S.optional(__S(10)),
-          lhs: S.Unknown,
-          rhs: S.optional(S.Unknown),
+          cmp: FlagEnvironmentsValueRulesItemConditionsItemCmp,
+          cmpOptions: S.optional(
+            CreateFlagRequestEnvironmentsValueRulesItemConditionsItemCmpOptions,
+          ),
+          lhs: FlagEnvironmentsValueRulesItemConditionsItemLhs,
+          rhs: S.optional(FlagEnvironmentsValueRulesItemConditionsItemRhs),
         }),
       ).annotate({
         identifier: "FlagEnvironmentsValueRulesItemConditionsItem",
       });
     case 4:
-      return S.Array(__S(51));
+      return S.Array(FlagEnvironmentsValueRulesItemConditionsItem);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          conditions: __S(52),
+          conditions: FlagEnvironmentsValueRulesItemConditionsList,
           id: S.String,
-          outcome: S.Unknown,
+          outcome: FlagEnvironmentsValueRulesItemOutcome,
         }),
       ).annotate({
         identifier: "FlagEnvironmentsValueRulesItem",
       });
     case 6:
-      return S.Array(__S(53));
+      return S.Array(FlagEnvironmentsValueRulesItem);
     case 7:
       return S.suspend(() =>
         S.Struct({
           active: S.Boolean,
-          fallthrough: S.Unknown,
-          pausedOutcome: __S(19),
-          reuse: S.optional(__S(3)),
+          fallthrough: FlagEnvironmentsValueFallthrough,
+          pausedOutcome: FlagEnvironmentsValuePausedOutcome,
+          reuse: S.optional(CreateFlagResponseEnvironmentsValueReuse),
           revision: S.optional(S.Number),
-          rules: __S(54),
-          targets: S.optional(__S(8)),
+          rules: FlagEnvironmentsValueRulesList,
+          targets: S.optional(FlagEnvironmentsValueTargetsMap),
         }),
       ).annotate({ identifier: "FlagEnvironmentsValue" });
   }
@@ -3733,7 +4699,7 @@ function __c6(j: number): any {
 function __c7(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, __S(55));
+      return S.Record(S.String, FlagEnvironmentsValue);
     case 1:
       return S.Array(S.String);
     case 2:
@@ -3742,11 +4708,11 @@ function __c7(j: number): any {
           description: S.optional(S.String),
           id: S.String,
           label: S.optional(S.String),
-          value: S.NullOr(S.Unknown),
+          value: S.NullOr(FlagVariantsItemValue),
         }),
       ).annotate({ identifier: "FlagVariantsItem" });
     case 3:
-      return S.Array(__S(58));
+      return S.Array(FlagVariantsItem);
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -3757,7 +4723,7 @@ function __c7(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          creator: S.optional(__S(60)),
+          creator: S.optional(FlagMetadataCreator),
         }),
       ).annotate({ identifier: "FlagMetadata" });
     case 6:
@@ -3766,23 +4732,23 @@ function __c7(j: number): any {
           createdAt: S.Number,
           createdBy: S.String,
           description: S.optional(S.String),
-          environments: __S(56),
+          environments: FlagEnvironmentsMap,
           id: S.String,
-          kind: S.String,
-          maintainerIds: S.optional(__S(17)),
+          kind: FlagKind,
+          maintainerIds: S.optional(FlagMaintainerIdsList),
           ownerId: S.String,
           permanent: S.optional(S.Boolean),
           projectId: S.String,
           revision: S.Number,
           seed: S.Number,
           slug: S.String,
-          state: S.String,
-          tags: S.optional(__S(57)),
-          typeName: S.String,
+          state: FlagState,
+          tags: S.optional(FlagTagsList),
+          typeName: FlagTypeName,
           updatedAt: S.Number,
           updatedBy: S.optional(S.String),
-          variants: __S(59),
-          metadata: S.optional(__S(61)),
+          variants: FlagVariantsList,
+          metadata: S.optional(FlagMetadata),
         }),
       ).annotate({ identifier: "Flag" });
     case 7:
@@ -3808,32 +4774,34 @@ function __c8(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          cmp: S.String,
-          cmpOptions: S.optional(__S(10)),
-          lhs: S.Unknown,
-          rhs: S.optional(S.Unknown),
+          cmp: SegmentDataRulesItemConditionsItemCmp,
+          cmpOptions: S.optional(
+            CreateFlagRequestEnvironmentsValueRulesItemConditionsItemCmpOptions,
+          ),
+          lhs: SegmentDataRulesItemConditionsItemLhs,
+          rhs: S.optional(SegmentDataRulesItemConditionsItemRhs),
         }),
       ).annotate({
         identifier: "SegmentDataRulesItemConditionsItem",
       });
     case 1:
-      return S.Array(__S(64));
+      return S.Array(SegmentDataRulesItemConditionsItem);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          conditions: __S(65),
+          conditions: SegmentDataRulesItemConditionsList,
           id: S.String,
-          outcome: S.Unknown,
+          outcome: SegmentDataRulesItemOutcome,
         }),
       ).annotate({ identifier: "SegmentDataRulesItem" });
     case 3:
-      return S.Array(__S(66));
+      return S.Array(SegmentDataRulesItem);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          exclude: S.optional(__S(7)),
-          include: S.optional(__S(7)),
-          rules: S.optional(__S(67)),
+          exclude: S.optional(SegmentDataExcludeMap),
+          include: S.optional(SegmentDataIncludeMap),
+          rules: S.optional(SegmentDataRulesList),
         }),
       ).annotate({ identifier: "SegmentData" });
     case 5:
@@ -3841,18 +4809,18 @@ function __c8(j: number): any {
         S.Struct({
           createdAt: S.Number,
           createdBy: S.optional(S.String),
-          data: __S(68),
+          data: SegmentData,
           description: S.optional(S.String),
           hint: S.String,
           id: S.String,
           label: S.String,
           projectId: S.String,
           slug: S.String,
-          typeName: S.String,
+          typeName: SegmentTypeName,
           updatedAt: S.Number,
-          usedByFlags: S.optional(__S(17)),
-          usedBySegments: S.optional(__S(17)),
-          metadata: S.optional(__S(61)),
+          usedByFlags: S.optional(SegmentUsedByFlagsList),
+          usedBySegments: S.optional(SegmentUsedBySegmentsList),
+          metadata: S.optional(FlagMetadata),
         }),
       ).annotate({ identifier: "Segment" });
     case 6:
@@ -3883,23 +4851,23 @@ function __c8(j: number): any {
 function __c9(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(71));
+      return S.Array(GetFlagSettingsResponseEntitiesItemAttributesItemLabelsItem);
     case 1:
       return S.suspend(() =>
         S.Struct({
           key: S.String,
-          labels: S.optional(__S(72)),
+          labels: S.optional(GetFlagSettingsResponseEntitiesItemAttributesItemLabelsList),
           type: S.String,
         }),
       ).annotate({
         identifier: "GetFlagSettingsResponseEntitiesItemAttributesItem",
       });
     case 2:
-      return S.Array(__S(73));
+      return S.Array(GetFlagSettingsResponseEntitiesItemAttributesItem);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          attributes: __S(74),
+          attributes: GetFlagSettingsResponseEntitiesItemAttributesList,
           kind: S.String,
           label: S.String,
         }),
@@ -3907,7 +4875,7 @@ function __c9(j: number): any {
         identifier: "GetFlagSettingsResponseEntitiesItem",
       });
     case 4:
-      return S.Array(__S(75));
+      return S.Array(GetFlagSettingsResponseEntitiesItem);
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -3926,12 +4894,12 @@ function __c9(j: number): any {
         S.Struct({
           createdAt: S.optional(S.Number),
           enabled: S.Boolean,
-          entities: __S(76),
-          environments: __S(17),
-          metadata: __S(77),
+          entities: GetFlagSettingsResponseEntitiesList,
+          environments: GetFlagSettingsResponseEnvironmentsList,
+          metadata: GetFlagSettingsResponseMetadata,
           ownerId: S.optional(S.String),
           projectId: S.String,
-          typeName: S.String,
+          typeName: GetFlagSettingsResponseTypeName,
           updatedAt: S.optional(S.Number),
         }),
       ).annotate({ identifier: "GetFlagSettingsResponse" });
@@ -3964,30 +4932,30 @@ function __c10(j: number): any {
           label: S.optional(S.String),
           partialKeyValue: S.String,
           projectId: S.String,
-          type: S.String,
+          type: GetSdkKeysResponseDataItemType,
           updatedAt: S.Number,
         }),
       ).annotate({
         identifier: "GetSdkKeysResponseDataItem",
       });
     case 1:
-      return S.Array(__S(80));
+      return S.Array(GetSdkKeysResponseDataItem);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          data: __S(81),
+          data: GetSdkKeysResponseDataList,
         }),
       ).annotate({ identifier: "GetSdkKeysResponse" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           projectIdOrName: S.String.pipe(T.Label()),
-          state: S.optional(S.String.pipe(T.Query())),
+          state: S.optional(ListFlagsRequestState.pipe(T.Query())),
           withMetadata: S.optional(S.Boolean.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
           cursor: S.optional(S.String.pipe(T.Query())),
           search: S.optional(S.String.pipe(T.Query())),
-          tags: S.optional(__S(17).pipe(T.Query())),
+          tags: S.optional(ListFlagsRequestTagsList.pipe(T.Query())),
           teamId: S.optional(S.String.pipe(T.Query())),
           slug: S.optional(S.String.pipe(T.Query())),
         }).pipe(
@@ -3999,7 +4967,7 @@ function __c10(j: number): any {
         ),
       ).annotate({ identifier: "ListFlagsRequest" });
     case 4:
-      return S.Array(__S(62));
+      return S.Array(Flag);
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -4011,8 +4979,8 @@ function __c10(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          data: __S(84),
-          pagination: __S(85),
+          data: ListFlagsResponseDataList,
+          pagination: ListFlagsResponsePagination,
         }),
       ).annotate({ identifier: "ListFlagsResponse" });
     case 7:
@@ -4035,24 +5003,24 @@ function __c10(j: number): any {
 function __c11(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(69));
+      return S.Array(Segment);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          data: __S(88),
+          data: ListFlagSegmentsResponseDataList,
         }),
       ).annotate({ identifier: "ListFlagSegmentsResponse" });
     case 2:
       return S.suspend(() =>
         S.Struct({
           projectIdOrName: S.String.pipe(T.Label()),
-          state: S.optional(S.String.pipe(T.Query())),
+          state: S.optional(ListFlagsV2RequestState.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
           cursor: S.optional(S.String.pipe(T.Query())),
           search: S.optional(S.String.pipe(T.Query())),
-          tags: S.optional(__S(17).pipe(T.Query())),
+          tags: S.optional(ListFlagsV2RequestTagsList.pipe(T.Query())),
           createdBy: S.optional(S.String.pipe(T.Query())),
-          maintainerIds: S.optional(__S(17).pipe(T.Query())),
+          maintainerIds: S.optional(ListFlagsV2RequestMaintainerIdsList.pipe(T.Query())),
           includeMarketplaceFlags: S.optional(S.Boolean.pipe(T.Query())),
           teamId: S.optional(S.String.pipe(T.Query())),
           slug: S.optional(S.String.pipe(T.Query())),
@@ -4065,12 +5033,12 @@ function __c11(j: number): any {
         ),
       ).annotate({ identifier: "ListFlagsV2Request" });
     case 3:
-      return S.Array(S.Unknown);
+      return S.Array(ListFlagsV2ResponseDataItem);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          pagination: __S(85),
-          data: __S(91),
+          pagination: ListFlagsResponsePagination,
+          data: ListFlagsV2ResponseDataList,
         }),
       ).annotate({ identifier: "ListFlagsV2Response" });
     case 5:
@@ -4095,7 +5063,7 @@ function __c11(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          type: S.String,
+          type: ListFlagVersionsResponseVersionsItemDataEnvironmentsValueFallthroughCase0Type,
           variantId: S.String,
         }),
       ).annotate({
@@ -4104,10 +5072,14 @@ function __c11(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          cmp: S.String,
-          cmpOptions: S.optional(__S(10)),
-          lhs: S.Unknown,
-          rhs: S.optional(S.Unknown),
+          cmp: ListFlagVersionsResponseVersionsItemDataEnvironmentsValueRulesItemConditionsItemCmp,
+          cmpOptions: S.optional(
+            CreateFlagRequestEnvironmentsValueRulesItemConditionsItemCmpOptions,
+          ),
+          lhs: ListFlagVersionsResponseVersionsItemDataEnvironmentsValueRulesItemConditionsItemLhs,
+          rhs: S.optional(
+            ListFlagVersionsResponseVersionsItemDataEnvironmentsValueRulesItemConditionsItemRhs,
+          ),
         }),
       ).annotate({
         identifier:
@@ -4118,37 +5090,49 @@ function __c11(j: number): any {
 function __c12(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(95));
+      return S.Array(
+        ListFlagVersionsResponseVersionsItemDataEnvironmentsValueRulesItemConditionsItem,
+      );
     case 1:
       return S.suspend(() =>
         S.Struct({
-          conditions: __S(96),
+          conditions:
+            ListFlagVersionsResponseVersionsItemDataEnvironmentsValueRulesItemConditionsList,
           id: S.String,
-          outcome: S.Unknown,
+          outcome: ListFlagVersionsResponseVersionsItemDataEnvironmentsValueRulesItemOutcome,
         }),
       ).annotate({
         identifier: "ListFlagVersionsResponseVersionsItemDataEnvironmentsValueRulesItem",
       });
     case 2:
-      return S.Array(__S(97));
+      return S.Array(ListFlagVersionsResponseVersionsItemDataEnvironmentsValueRulesItem);
     case 3:
-      return S.Array(__S(4));
+      return S.Array(CreateFlagRequestEnvironmentsValueTargetsValueValueValueItem);
     case 4:
-      return S.Record(S.String, __S(99));
+      return S.Record(
+        S.String,
+        ListFlagVersionsResponseVersionsItemDataEnvironmentsValueTargetsValueValueValueList,
+      );
     case 5:
-      return S.Record(S.String, __S(100));
+      return S.Record(
+        S.String,
+        ListFlagVersionsResponseVersionsItemDataEnvironmentsValueTargetsValueValueMap,
+      );
     case 6:
-      return S.Record(S.String, __S(101));
+      return S.Record(
+        S.String,
+        ListFlagVersionsResponseVersionsItemDataEnvironmentsValueTargetsValueMap,
+      );
     case 7:
       return S.suspend(() =>
         S.Struct({
           active: S.Boolean,
-          fallthrough: S.Unknown,
-          pausedOutcome: __S(94),
-          reuse: S.optional(__S(3)),
+          fallthrough: ListFlagVersionsResponseVersionsItemDataEnvironmentsValueFallthrough,
+          pausedOutcome: ListFlagVersionsResponseVersionsItemDataEnvironmentsValuePausedOutcome,
+          reuse: S.optional(CreateFlagResponseEnvironmentsValueReuse),
           revision: S.optional(S.Number),
-          rules: __S(98),
-          targets: S.optional(__S(102)),
+          rules: ListFlagVersionsResponseVersionsItemDataEnvironmentsValueRulesList,
+          targets: S.optional(ListFlagVersionsResponseVersionsItemDataEnvironmentsValueTargetsMap),
         }),
       ).annotate({
         identifier: "ListFlagVersionsResponseVersionsItemDataEnvironmentsValue",
@@ -4158,31 +5142,31 @@ function __c12(j: number): any {
 function __c13(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, __S(103));
+      return S.Record(S.String, ListFlagVersionsResponseVersionsItemDataEnvironmentsValue);
     case 1:
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
           id: S.String,
           label: S.optional(S.String),
-          value: S.NullOr(S.Unknown),
+          value: S.NullOr(ListFlagVersionsResponseVersionsItemDataVariantsItemValue),
         }),
       ).annotate({
         identifier: "ListFlagVersionsResponseVersionsItemDataVariantsItem",
       });
     case 2:
-      return S.Array(__S(105));
+      return S.Array(ListFlagVersionsResponseVersionsItemDataVariantsItem);
     case 3:
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
-          environments: __S(104),
-          maintainerIds: S.optional(__S(17)),
+          environments: ListFlagVersionsResponseVersionsItemDataEnvironmentsMap,
+          maintainerIds: S.optional(ListFlagVersionsResponseVersionsItemDataMaintainerIdsList),
           permanent: S.optional(S.Boolean),
           seed: S.Number,
-          state: S.String,
-          tags: S.optional(__S(17)),
-          variants: __S(106),
+          state: ListFlagVersionsResponseVersionsItemDataState,
+          tags: S.optional(ListFlagVersionsResponseVersionsItemDataTagsList),
+          variants: ListFlagVersionsResponseVersionsItemDataVariantsList,
         }),
       ).annotate({
         identifier: "ListFlagVersionsResponseVersionsItemData",
@@ -4190,39 +5174,39 @@ function __c13(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          changedEnvironments: __S(17),
+          changedEnvironments: ListFlagVersionsResponseVersionsItemChangedEnvironmentsList,
           createdAt: S.Number,
           createdBy: S.optional(S.String),
           flagId: S.String,
           id: S.String,
           message: S.optional(S.String),
           revision: S.Number,
-          data: __S(107),
-          metadata: S.optional(__S(61)),
+          data: ListFlagVersionsResponseVersionsItemData,
+          metadata: S.optional(FlagMetadata),
         }),
       ).annotate({
         identifier: "ListFlagVersionsResponseVersionsItem",
       });
     case 5:
-      return S.Array(__S(108));
+      return S.Array(ListFlagVersionsResponseVersionsItem);
     case 6:
       return S.suspend(() =>
         S.Struct({
           pagination: S.Unknown,
-          versions: __S(109),
+          versions: ListFlagVersionsResponseVersionsList,
         }),
       ).annotate({ identifier: "ListFlagVersionsResponse" });
     case 7:
       return S.suspend(() =>
         S.Struct({
           teamId: S.String.pipe(T.Label()),
-          state: S.optional(S.String.pipe(T.Query())),
+          state: S.optional(ListTeamFlagsRequestState.pipe(T.Query())),
           withMetadata: S.optional(S.Boolean.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
           cursor: S.optional(S.String.pipe(T.Query())),
           search: S.optional(S.String.pipe(T.Query())),
-          kind: S.optional(S.String.pipe(T.Query())),
-          tags: S.optional(__S(17).pipe(T.Query())),
+          kind: S.optional(ListTeamFlagsRequestKind.pipe(T.Query())),
+          tags: S.optional(ListTeamFlagsRequestTagsList.pipe(T.Query())),
           slug: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({ method: "GET", uri: "/v1/teams/{teamId}/feature-flags/flags", code: 200 }),
@@ -4246,21 +5230,21 @@ function __c14(j: number): any {
         identifier: "ListTeamFlagSettingsRequest",
       });
     case 1:
-      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => ListTeamFlagSettingsResponseBody.pipe(T.RawResponseRoot())).annotate({
         identifier: "ListTeamFlagSettingsResponse",
       });
     case 2:
       return S.suspend(() =>
         S.Struct({
           teamId: S.String.pipe(T.Label()),
-          state: S.optional(S.String.pipe(T.Query())),
+          state: S.optional(ListTeamFlagsV2RequestState.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
           cursor: S.optional(S.String.pipe(T.Query())),
           search: S.optional(S.String.pipe(T.Query())),
-          kind: S.optional(S.String.pipe(T.Query())),
-          tags: S.optional(__S(17).pipe(T.Query())),
+          kind: S.optional(ListTeamFlagsV2RequestKind.pipe(T.Query())),
+          tags: S.optional(ListTeamFlagsV2RequestTagsList.pipe(T.Query())),
           createdBy: S.optional(S.String.pipe(T.Query())),
-          maintainerIds: S.optional(__S(17).pipe(T.Query())),
+          maintainerIds: S.optional(ListTeamFlagsV2RequestMaintainerIdsList.pipe(T.Query())),
           includeMarketplaceFlags: S.optional(S.Boolean.pipe(T.Query())),
           slug: S.optional(S.String.pipe(T.Query())),
         }).pipe(
@@ -4268,12 +5252,12 @@ function __c14(j: number): any {
         ),
       ).annotate({ identifier: "ListTeamFlagsV2Request" });
     case 3:
-      return S.Array(S.Unknown);
+      return S.Array(ListTeamFlagsV2ResponseDataItem);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          pagination: __S(85),
-          data: __S(115),
+          pagination: ListFlagsResponsePagination,
+          data: ListTeamFlagsV2ResponseDataList,
         }),
       ).annotate({ identifier: "ListTeamFlagsV2Response" });
     case 5:
@@ -4282,20 +5266,22 @@ function __c14(j: number): any {
           id: S.String,
           label: S.optional(S.String),
           description: S.optional(S.String),
-          value: S.Unknown,
+          value: UpdateFlagRequestVariantsItemValue,
         }),
       ).annotate({
         identifier: "UpdateFlagRequestVariantsItem",
       });
     case 6:
-      return S.Array(__S(117));
+      return S.Array(UpdateFlagRequestVariantsItem);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          lhs: S.Unknown,
-          cmp: S.String,
-          rhs: S.optional(S.Unknown),
-          cmpOptions: S.optional(__S(10)),
+          lhs: UpdateFlagRequestEnvironmentsValueRulesItemConditionsItemLhs,
+          cmp: UpdateFlagRequestEnvironmentsValueRulesItemConditionsItemCmp,
+          rhs: S.optional(UpdateFlagRequestEnvironmentsValueRulesItemConditionsItemRhs),
+          cmpOptions: S.optional(
+            CreateFlagRequestEnvironmentsValueRulesItemConditionsItemCmpOptions,
+          ),
         }),
       ).annotate({
         identifier: "UpdateFlagRequestEnvironmentsValueRulesItemConditionsItem",
@@ -4305,35 +5291,35 @@ function __c14(j: number): any {
 function __c15(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(119));
+      return S.Array(UpdateFlagRequestEnvironmentsValueRulesItemConditionsItem);
     case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          conditions: __S(120),
-          outcome: S.Unknown,
+          conditions: UpdateFlagRequestEnvironmentsValueRulesItemConditionsList,
+          outcome: UpdateFlagRequestEnvironmentsValueRulesItemOutcome,
         }),
       ).annotate({
         identifier: "UpdateFlagRequestEnvironmentsValueRulesItem",
       });
     case 2:
-      return S.Array(__S(121));
+      return S.Array(UpdateFlagRequestEnvironmentsValueRulesItem);
     case 3:
       return S.suspend(() =>
         S.Struct({
           active: S.Boolean,
-          reuse: S.optional(__S(3)),
-          targets: S.optional(__S(8)),
-          pausedOutcome: __S(9),
-          rules: __S(122),
-          fallthrough: S.Unknown,
+          reuse: S.optional(CreateFlagRequestEnvironmentsValueReuse),
+          targets: S.optional(UpdateFlagRequestEnvironmentsValueTargetsMap),
+          pausedOutcome: CreateFlagRequestEnvironmentsValuePausedOutcome,
+          rules: UpdateFlagRequestEnvironmentsValueRulesList,
+          fallthrough: UpdateFlagRequestEnvironmentsValueFallthrough,
           revision: S.optional(S.Number),
         }),
       ).annotate({
         identifier: "UpdateFlagRequestEnvironmentsValue",
       });
     case 4:
-      return S.Record(S.String, __S(123));
+      return S.Record(S.String, UpdateFlagRequestEnvironmentsValue);
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -4345,14 +5331,14 @@ function __c15(j: number): any {
           slug: S.optional(S.String.pipe(T.Query())),
           createdBy: S.optional(S.String),
           message: S.optional(S.String),
-          variants: S.optional(__S(118)),
-          environments: S.optional(__S(124)),
+          variants: S.optional(UpdateFlagRequestVariantsList),
+          environments: S.optional(UpdateFlagRequestEnvironmentsMap),
           seed: S.optional(S.Number),
           description: S.optional(S.String),
-          state: S.optional(S.String),
-          maintainerIds: S.optional(__S(17)),
+          state: S.optional(UpdateFlagRequestState),
+          maintainerIds: S.optional(UpdateFlagRequestMaintainerIdsList),
           permanent: S.optional(S.Boolean),
-          tags: S.optional(__S(17)),
+          tags: S.optional(UpdateFlagRequestTagsList),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -4362,17 +5348,17 @@ function __c15(j: number): any {
         ),
       ).annotate({ identifier: "UpdateFlagRequest" });
     case 6:
-      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => UpdateFlagResponseBody.pipe(T.RawResponseRoot())).annotate({
         identifier: "UpdateFlagResponse",
       });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          action: S.String,
-          field: S.String,
+          action: UpdateFlagSegmentRequestOperationsItemAction,
+          field: UpdateFlagSegmentRequestOperationsItemField,
           entity: S.String,
           attribute: S.String,
-          value: __S(4),
+          value: CreateFlagRequestEnvironmentsValueTargetsValueValueValueItem,
         }),
       ).annotate({
         identifier: "UpdateFlagSegmentRequestOperationsItem",
@@ -4382,38 +5368,40 @@ function __c15(j: number): any {
 function __c16(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(127));
+      return S.Array(UpdateFlagSegmentRequestOperationsItem);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          lhs: S.Unknown,
-          cmp: S.String,
-          rhs: S.optional(S.Unknown),
-          cmpOptions: S.optional(__S(10)),
+          lhs: UpdateFlagSegmentRequestDataRulesItemConditionsItemLhs,
+          cmp: UpdateFlagSegmentRequestDataRulesItemConditionsItemCmp,
+          rhs: S.optional(UpdateFlagSegmentRequestDataRulesItemConditionsItemRhs),
+          cmpOptions: S.optional(
+            CreateFlagRequestEnvironmentsValueRulesItemConditionsItemCmpOptions,
+          ),
         }),
       ).annotate({
         identifier: "UpdateFlagSegmentRequestDataRulesItemConditionsItem",
       });
     case 2:
-      return S.Array(__S(129));
+      return S.Array(UpdateFlagSegmentRequestDataRulesItemConditionsItem);
     case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          conditions: __S(130),
-          outcome: S.Unknown,
+          conditions: UpdateFlagSegmentRequestDataRulesItemConditionsList,
+          outcome: UpdateFlagSegmentRequestDataRulesItemOutcome,
         }),
       ).annotate({
         identifier: "UpdateFlagSegmentRequestDataRulesItem",
       });
     case 4:
-      return S.Array(__S(131));
+      return S.Array(UpdateFlagSegmentRequestDataRulesItem);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          rules: S.optional(__S(132)),
-          include: S.optional(__S(7)),
-          exclude: S.optional(__S(7)),
+          rules: S.optional(UpdateFlagSegmentRequestDataRulesList),
+          include: S.optional(UpdateFlagSegmentRequestDataIncludeMap),
+          exclude: S.optional(UpdateFlagSegmentRequestDataExcludeMap),
         }),
       ).annotate({
         identifier: "UpdateFlagSegmentRequestData",
@@ -4426,10 +5414,10 @@ function __c16(j: number): any {
           withMetadata: S.optional(S.Boolean.pipe(T.Query())),
           teamId: S.optional(S.String.pipe(T.Query())),
           slug: S.optional(S.String.pipe(T.Query())),
-          operations: S.optional(__S(128)),
+          operations: S.optional(UpdateFlagSegmentRequestOperationsList),
           label: S.optional(S.String),
           description: S.optional(S.String),
-          data: S.optional(__S(133)),
+          data: S.optional(UpdateFlagSegmentRequestData),
           hint: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -4440,7 +5428,7 @@ function __c16(j: number): any {
         ),
       ).annotate({ identifier: "UpdateFlagSegmentRequest" });
     case 7:
-      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => UpdateFlagSegmentResponseBody.pipe(T.RawResponseRoot())).annotate({
         identifier: "UpdateFlagSegmentResponse",
       });
   }
@@ -4452,25 +5440,25 @@ function __c17(j: number): any {
         S.Struct({
           key: S.String,
           type: S.String,
-          labels: S.optional(__S(72)),
+          labels: S.optional(UpdateFlagSettingsRequestEntitiesItemAttributesItemLabelsList),
         }),
       ).annotate({
         identifier: "UpdateFlagSettingsRequestEntitiesItemAttributesItem",
       });
     case 1:
-      return S.Array(__S(136));
+      return S.Array(UpdateFlagSettingsRequestEntitiesItemAttributesItem);
     case 2:
       return S.suspend(() =>
         S.Struct({
           kind: S.String,
           label: S.String,
-          attributes: __S(137),
+          attributes: UpdateFlagSettingsRequestEntitiesItemAttributesList,
         }),
       ).annotate({
         identifier: "UpdateFlagSettingsRequestEntitiesItem",
       });
     case 3:
-      return S.Array(__S(138));
+      return S.Array(UpdateFlagSettingsRequestEntitiesItem);
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -4478,8 +5466,8 @@ function __c17(j: number): any {
           teamId: S.optional(S.String.pipe(T.Query())),
           slug: S.optional(S.String.pipe(T.Query())),
           enabled: S.optional(S.Boolean),
-          entities: S.optional(__S(139)),
-          environments: S.optional(__S(17)),
+          entities: S.optional(UpdateFlagSettingsRequestEntitiesList),
+          environments: S.optional(UpdateFlagSettingsRequestEnvironmentsList),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -4495,61 +5483,16 @@ function __c17(j: number): any {
         S.Struct({
           createdAt: S.optional(S.Number),
           enabled: S.Boolean,
-          entities: __S(76),
-          environments: __S(17),
-          metadata: __S(77),
+          entities: UpdateFlagSettingsResponseEntitiesList,
+          environments: UpdateFlagSettingsResponseEnvironmentsList,
+          metadata: GetFlagSettingsResponseMetadata,
           ownerId: S.optional(S.String),
           projectId: S.String,
-          typeName: S.String,
+          typeName: UpdateFlagSettingsResponseTypeName,
           updatedAt: S.optional(S.Number),
         }),
       ).annotate({
         identifier: "UpdateFlagSettingsResponse",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
-    case 9:
-      return __c9(i & 7);
-    case 10:
-      return __c10(i & 7);
-    case 11:
-      return __c11(i & 7);
-    case 12:
-      return __c12(i & 7);
-    case 13:
-      return __c13(i & 7);
-    case 14:
-      return __c14(i & 7);
-    case 15:
-      return __c15(i & 7);
-    case 16:
-      return __c16(i & 7);
-    case 17:
-      return __c17(i & 7);
   }
 }

@@ -7,8 +7,6 @@ import { UnknownPaypalError } from "../errors.ts";
 import { PaypalProtocol, type PaypalOpError, type PaypalOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { PaypalOpError, PaypalOpContext };
 
@@ -36,12 +34,16 @@ export interface GetBalanceRequest {
   /** Filters the transactions in the response by a [three-character ISO-4217 currency code](/api/rest/reference/currency-codes/) for the PayPal transaction currency. */
   currency_code?: string;
 }
+const GetBalanceRequest = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<GetBalanceRequest>;
+
 /** The currency and amount for a financial transaction, such as a balance or payment due. */
 export interface Money {
   currency_code: string;
   /** The value, which might be:<ul><li>An integer for currencies like `JPY` that are not typically fractional.</li><li>A decimal fraction for currencies like `TND` that are subdivided into thousandths.</li></ul>For the required number of decimal places for a currency code, see [Currency Codes](/docs/integration/direct/rest/currency-codes/). */
   value: string;
 }
+const Money = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<Money>;
+
 /** The Balance information. */
 export interface BalanceDetail {
   /** Currency Code of the balances listed. */
@@ -55,8 +57,12 @@ export interface BalanceDetail {
   /** Balance withheld in the account. The portion of funds that PayPal holds for the customer that is not currently at the customer's disposal. */
   withheld_balance?: Money;
 }
+const BalanceDetail = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<BalanceDetail>;
+
 /** An array of balance detail objects. */
 export type BalanceDetailList = Array<BalanceDetail>;
+const BalanceDetailList = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<BalanceDetailList>;
+
 /** The balances response information. */
 export interface BalancesResponse {
   balances?: BalanceDetailList;
@@ -66,6 +72,8 @@ export interface BalancesResponse {
   /** The date and time when the balances was last refreshed, in [Internet date and time format](https://tools.ietf.org/html/rfc3339#section-5.6). */
   last_refresh_time?: string;
 }
+const BalancesResponse = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<BalancesResponse>;
+
 export interface SearchGetRequest {
   /** Filters the transactions in the response by a PayPal transaction ID. A valid transaction ID is 17 characters long, except for an <a href="/docs/api/payments/v1/#definition-order">order ID</a>, which is 19 characters long.<blockquote><strong>Note:</strong> A transaction ID is not unique in the reporting system. The response can list two transactions with the same ID. One transaction can be balance affecting while the other is non-balance affecting.</blockquote> */
   transaction_id?: string;
@@ -96,8 +104,12 @@ export interface SearchGetRequest {
   /** The zero-relative start index of the entire list of items that are returned in the response. So, the combination of `page=1` and `page_size=20` returns the first 20 items. */
   page?: number;
 }
+const SearchGetRequest = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<SearchGetRequest>;
+
 /** The PayPal reference ID type. */
 export type TransactionInfoPaypalReferenceIdType = "ODR" | "TXN" | "SUB" | "PAP";
+const TransactionInfoPaypalReferenceIdType = S.String;
+
 /** The transaction information. */
 export interface TransactionInfo {
   /** The ID of the PayPal account of the counterparty. */
@@ -169,6 +181,8 @@ export interface TransactionInfo {
   /** A finer-grained classification of the financial instrument that was used to fund a payment. For example, `Visa card` or a `Mastercard` for a credit card, BANKCARD ,DISCOVER etc. The pattern is not provided because the value is defined by an external party. */
   instrument_sub_type?: string;
 }
+const TransactionInfo = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<TransactionInfo>;
+
 /** The phone number, in its canonical international [E.164 numbering plan format](https://www.itu.int/rec/T-REC-E.164/en). */
 export interface Phone {
   /** The country calling code (CC), in its canonical international [E.164 numbering plan format](https://www.itu.int/rec/T-REC-E.164/en). The combined length of the CC and the national number must not be greater than 15 digits. The national number consists of a national destination code (NDC) and subscriber number (SN). */
@@ -178,6 +192,8 @@ export interface Phone {
   /** The extension number. */
   extension_number?: string;
 }
+const Phone = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<Phone>;
+
 /** The name of the party. */
 export interface Name {
   /** The prefix, or title, to the party's name. */
@@ -195,6 +211,8 @@ export interface Name {
   /** When the party is a person, the party's full name. */
   full_name?: string;
 }
+const Name = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<Name>;
+
 /** A simple postal address with coarse-grained fields. Do not use for an international address. Use for backward compatibility only. Does not contain phone. */
 export interface Address {
   /** The first line of the address. For example, number or street. */
@@ -209,6 +227,8 @@ export interface Address {
   /** The postal code, which is the zip code or equivalent. Typically required for countries with a postal code or an equivalent. See [postal code](https://en.wikipedia.org/wiki/Postal_code). */
   postal_code?: string;
 }
+const Address = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<Address>;
+
 /** The payer information. */
 export interface PayerInfo {
   /** The PayPal` customer account ID. */
@@ -228,6 +248,8 @@ export interface PayerInfo {
   /** The payer address. */
   address?: Address;
 }
+const PayerInfo = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<PayerInfo>;
+
 /** The shipping information. */
 export interface ShippingInfo {
   /** The recipient's name. */
@@ -239,13 +261,22 @@ export interface ShippingInfo {
   /** The secondary shipping address that is associated with this order. */
   secondary_shipping_address?: Address;
 }
+const ShippingInfo = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<ShippingInfo>;
+
 /** The tax levied by a government on the purchase of goods or services. */
 export interface ItemDetailTaxAmount {
   /** The tax levied by a government on the purchase of goods or services. */
   tax_amount?: Money;
 }
+const ItemDetailTaxAmount = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<ItemDetailTaxAmount>;
+
 /** An array of tax amounts levied by a government on the purchase of goods or services. */
 export type ItemDetailTaxAmountList = Array<ItemDetailTaxAmount>;
+const ItemDetailTaxAmountList = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<ItemDetailTaxAmountList>;
+
 /** A checkout option as a name-and-value pair. */
 export interface CheckoutOption {
   /** The checkout option name, such as `color` or `texture`. */
@@ -253,8 +284,12 @@ export interface CheckoutOption {
   /** The checkout option value. For example, the checkout option `color` might be `blue` or `red` while the checkout option `texture` might be `smooth` or `rippled`. */
   checkout_option_value?: string;
 }
+const CheckoutOption = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<CheckoutOption>;
+
 /** An array of checkout options. Each option has a name and value. */
 export type CheckoutOptionList = Array<CheckoutOption>;
+const CheckoutOptionList = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<CheckoutOptionList>;
+
 /** The item details. */
 export interface ItemDetail {
   /** An item code that identifies a merchant's goods or service. */
@@ -294,8 +329,12 @@ export interface ItemDetail {
   invoice_number?: string;
   checkout_options?: CheckoutOptionList;
 }
+const ItemDetail = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<ItemDetail>;
+
 /** An array of item details. */
 export type ItemDetailList = Array<ItemDetail>;
+const ItemDetailList = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<ItemDetailList>;
+
 /** The cart information. */
 export interface CartInfo {
   item_details?: ItemDetailList;
@@ -304,6 +343,8 @@ export interface CartInfo {
   /** The ID of the invoice. Appears for only PayPal-generated invoices. */
   paypal_invoice_id?: string;
 }
+const CartInfo = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<CartInfo>;
+
 /** The store information. */
 export interface StoreInfo {
   /** The ID of a store for a merchant in the system of record. */
@@ -311,6 +352,8 @@ export interface StoreInfo {
   /** The terminal ID for the checkout stand in a merchant store. */
   terminal_id?: string;
 }
+const StoreInfo = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<StoreInfo>;
+
 /** The auction information. */
 export interface AuctionInfo {
   /** The name of the auction site. */
@@ -322,6 +365,8 @@ export interface AuctionInfo {
   /** The date and time when the auction closes, in [Internet date and time format](https://tools.ietf.org/html/rfc3339#section-5.6). */
   auction_closing_date?: string;
 }
+const AuctionInfo = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<AuctionInfo>;
+
 /** The incentive details. */
 export interface IncentiveDetail {
   /** The type of incentive, such as a special offer or coupon. */
@@ -333,12 +378,18 @@ export interface IncentiveDetail {
   /** The incentive program code that identifies a merchant loyalty or incentive program. */
   incentive_program_code?: string;
 }
+const IncentiveDetail = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<IncentiveDetail>;
+
 /** An array of incentive details. */
 export type IncentiveDetailList = Array<IncentiveDetail>;
+const IncentiveDetailList = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<IncentiveDetailList>;
+
 /** The incentive details. */
 export interface IncentiveInfo {
   incentive_details?: IncentiveDetailList;
 }
+const IncentiveInfo = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<IncentiveInfo>;
+
 /** The transaction details. */
 export interface TransactionDetail {
   /** The transaction information. */
@@ -356,8 +407,15 @@ export interface TransactionDetail {
   /** The incentive information. */
   incentive_info?: IncentiveInfo;
 }
+const TransactionDetail = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<TransactionDetail>;
+
 /** An array of transaction detail objects. */
 export type TransactionDetailList = Array<TransactionDetail>;
+const TransactionDetailList = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<TransactionDetailList>;
+
 /** The HTTP method required to make the related call. */
 export type LinkDescriptionMethod =
   | "GET"
@@ -368,6 +426,8 @@ export type LinkDescriptionMethod =
   | "CONNECT"
   | "OPTIONS"
   | "PATCH";
+const LinkDescriptionMethod = S.String;
+
 /** The request-related [HATEOAS link](/docs/api/reference/api-responses/#hateoas-links) information. */
 export interface LinkDescription {
   /** The complete target URL. To make the related call, combine the method with this [URI Template-formatted](https://tools.ietf.org/html/rfc6570) link. For pre-processing, include the `$`, `(`, and `)` characters. The `href` is the key HATEOAS component that links a completed call with a subsequent call. */
@@ -377,8 +437,12 @@ export interface LinkDescription {
   /** The HTTP method required to make the related call. */
   method?: LinkDescriptionMethod;
 }
+const LinkDescription = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<LinkDescription>;
+
 /** An array of request-related [HATEOAS links](/api/rest/responses/#hateoas-links). */
 export type LinkDescriptionList = Array<LinkDescription>;
+const LinkDescriptionList = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<LinkDescriptionList>;
+
 /** The search response information. */
 export interface SearchResponse {
   transaction_details?: TransactionDetailList;
@@ -398,6 +462,8 @@ export interface SearchResponse {
   total_pages?: number;
   links?: LinkDescriptionList;
 }
+const SearchResponse = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<SearchResponse>;
+
 export type GetBalanceError = BadRequest | Forbidden | PaypalOpError;
 /** List all balances List all balances. Specify date time to list balances for that time that appear in the response.<blockquote><strong>Notes:</strong> <ul><li>It takes a maximum of three hours for balances to appear in the list balances call.</li><li>This call lists balances upto the previous three years.</li></ul></blockquote> */
 export const getBalance: API.OperationMethod<
@@ -406,8 +472,8 @@ export const getBalance: API.OperationMethod<
   GetBalanceError,
   PaypalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<GetBalanceRequest>,
-  output: __S(4) as any as S.Schema<BalancesResponse>,
+  input: GetBalanceRequest,
+  output: BalancesResponse,
   errors: [BadRequest, Forbidden, UnknownPaypalError],
   protocol: PaypalProtocol,
   retry: Retry.Retry,
@@ -421,8 +487,8 @@ export const searchGet: API.OperationMethod<
   SearchGetError,
   PaypalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5) as any as S.Schema<SearchGetRequest>,
-  output: __S(28) as any as S.Schema<SearchResponse>,
+  input: SearchGetRequest,
+  output: SearchResponse,
   errors: [UnknownPaypalError],
   protocol: PaypalProtocol,
   retry: Retry.Retry,
@@ -450,17 +516,17 @@ function __c0(j: number): any {
         S.Struct({
           currency: S.String,
           primary: S.optional(S.Boolean),
-          total_balance: __S(1),
-          available_balance: S.optional(__S(1)),
-          withheld_balance: S.optional(__S(1)),
+          total_balance: Money,
+          available_balance: S.optional(Money),
+          withheld_balance: S.optional(Money),
         }),
       ).annotate({ identifier: "BalanceDetail" });
     case 3:
-      return S.Array(__S(2));
+      return S.Array(BalanceDetail);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          balances: S.optional(__S(3)),
+          balances: S.optional(BalanceDetailList),
           account_id: S.optional(S.String),
           as_of_time: S.optional(S.String),
           last_refresh_time: S.optional(S.String),
@@ -491,33 +557,33 @@ function __c0(j: number): any {
           paypal_account_id: S.optional(S.String),
           transaction_id: S.optional(S.String),
           paypal_reference_id: S.optional(S.String),
-          paypal_reference_id_type: S.optional(S.String),
+          paypal_reference_id_type: S.optional(TransactionInfoPaypalReferenceIdType),
           transaction_event_code: S.optional(S.String),
           transaction_initiation_date: S.optional(S.String),
           transaction_updated_date: S.optional(S.String),
-          transaction_amount: S.optional(__S(1)),
-          fee_amount: S.optional(__S(1)),
-          discount_amount: S.optional(__S(1)),
-          insurance_amount: S.optional(__S(1)),
-          sales_tax_amount: S.optional(__S(1)),
-          shipping_amount: S.optional(__S(1)),
-          shipping_discount_amount: S.optional(__S(1)),
-          shipping_tax_amount: S.optional(__S(1)),
-          other_amount: S.optional(__S(1)),
-          tip_amount: S.optional(__S(1)),
+          transaction_amount: S.optional(Money),
+          fee_amount: S.optional(Money),
+          discount_amount: S.optional(Money),
+          insurance_amount: S.optional(Money),
+          sales_tax_amount: S.optional(Money),
+          shipping_amount: S.optional(Money),
+          shipping_discount_amount: S.optional(Money),
+          shipping_tax_amount: S.optional(Money),
+          other_amount: S.optional(Money),
+          tip_amount: S.optional(Money),
           transaction_status: S.optional(S.String),
           transaction_subject: S.optional(S.String),
           transaction_note: S.optional(S.String),
           payment_tracking_id: S.optional(S.String),
           bank_reference_id: S.optional(S.String),
-          ending_balance: S.optional(__S(1)),
-          available_balance: S.optional(__S(1)),
+          ending_balance: S.optional(Money),
+          available_balance: S.optional(Money),
           invoice_id: S.optional(S.String),
           custom_field: S.optional(S.String),
           protection_eligibility: S.optional(S.String),
           credit_term: S.optional(S.String),
-          credit_transactional_fee: S.optional(__S(1)),
-          credit_promotional_fee: S.optional(__S(1)),
+          credit_transactional_fee: S.optional(Money),
+          credit_promotional_fee: S.optional(Money),
           annual_percentage_rate: S.optional(S.String),
           payment_method_type: S.optional(S.String),
           instrument_type: S.optional(S.String),
@@ -564,12 +630,12 @@ function __c1(j: number): any {
         S.Struct({
           account_id: S.optional(S.String),
           email_address: S.optional(S.String),
-          phone_number: S.optional(__S(7)),
+          phone_number: S.optional(Phone),
           address_status: S.optional(S.String),
           payer_status: S.optional(S.String),
-          payer_name: S.optional(__S(8)),
+          payer_name: S.optional(Name),
           country_code: S.optional(S.String),
-          address: S.optional(__S(9)),
+          address: S.optional(Address),
         }),
       ).annotate({ identifier: "PayerInfo" });
     case 3:
@@ -577,18 +643,18 @@ function __c1(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           method: S.optional(S.String),
-          address: S.optional(__S(9)),
-          secondary_shipping_address: S.optional(__S(9)),
+          address: S.optional(Address),
+          secondary_shipping_address: S.optional(Address),
         }),
       ).annotate({ identifier: "ShippingInfo" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          tax_amount: S.optional(__S(1)),
+          tax_amount: S.optional(Money),
         }),
       ).annotate({ identifier: "ItemDetailTaxAmount" });
     case 5:
-      return S.Array(__S(12));
+      return S.Array(ItemDetailTaxAmount);
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -597,7 +663,7 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "CheckoutOption" });
     case 7:
-      return S.Array(__S(14));
+      return S.Array(CheckoutOption);
   }
 }
 function __c2(j: number): any {
@@ -610,28 +676,28 @@ function __c2(j: number): any {
           item_description: S.optional(S.String),
           item_options: S.optional(S.String),
           item_quantity: S.optional(S.String),
-          item_unit_price: S.optional(__S(1)),
-          item_amount: S.optional(__S(1)),
-          discount_amount: S.optional(__S(1)),
-          adjustment_amount: S.optional(__S(1)),
-          gift_wrap_amount: S.optional(__S(1)),
+          item_unit_price: S.optional(Money),
+          item_amount: S.optional(Money),
+          discount_amount: S.optional(Money),
+          adjustment_amount: S.optional(Money),
+          gift_wrap_amount: S.optional(Money),
           tax_percentage: S.optional(S.String),
-          tax_amounts: S.optional(__S(13)),
-          basic_shipping_amount: S.optional(__S(1)),
-          extra_shipping_amount: S.optional(__S(1)),
-          handling_amount: S.optional(__S(1)),
-          insurance_amount: S.optional(__S(1)),
-          total_item_amount: S.optional(__S(1)),
+          tax_amounts: S.optional(ItemDetailTaxAmountList),
+          basic_shipping_amount: S.optional(Money),
+          extra_shipping_amount: S.optional(Money),
+          handling_amount: S.optional(Money),
+          insurance_amount: S.optional(Money),
+          total_item_amount: S.optional(Money),
           invoice_number: S.optional(S.String),
-          checkout_options: S.optional(__S(15)),
+          checkout_options: S.optional(CheckoutOptionList),
         }),
       ).annotate({ identifier: "ItemDetail" });
     case 1:
-      return S.Array(__S(16));
+      return S.Array(ItemDetail);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          item_details: S.optional(__S(17)),
+          item_details: S.optional(ItemDetailList),
           tax_inclusive: S.optional(S.Boolean),
           paypal_invoice_id: S.optional(S.String),
         }),
@@ -657,16 +723,16 @@ function __c2(j: number): any {
         S.Struct({
           incentive_type: S.optional(S.String),
           incentive_code: S.optional(S.String),
-          incentive_amount: S.optional(__S(1)),
+          incentive_amount: S.optional(Money),
           incentive_program_code: S.optional(S.String),
         }),
       ).annotate({ identifier: "IncentiveDetail" });
     case 6:
-      return S.Array(__S(21));
+      return S.Array(IncentiveDetail);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          incentive_details: S.optional(__S(22)),
+          incentive_details: S.optional(IncentiveDetailList),
         }),
       ).annotate({ identifier: "IncentiveInfo" });
   }
@@ -676,31 +742,31 @@ function __c3(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          transaction_info: S.optional(__S(6)),
-          payer_info: S.optional(__S(10)),
-          shipping_info: S.optional(__S(11)),
-          cart_info: S.optional(__S(18)),
-          store_info: S.optional(__S(19)),
-          auction_info: S.optional(__S(20)),
-          incentive_info: S.optional(__S(23)),
+          transaction_info: S.optional(TransactionInfo),
+          payer_info: S.optional(PayerInfo),
+          shipping_info: S.optional(ShippingInfo),
+          cart_info: S.optional(CartInfo),
+          store_info: S.optional(StoreInfo),
+          auction_info: S.optional(AuctionInfo),
+          incentive_info: S.optional(IncentiveInfo),
         }),
       ).annotate({ identifier: "TransactionDetail" });
     case 1:
-      return S.Array(__S(24));
+      return S.Array(TransactionDetail);
     case 2:
       return S.suspend(() =>
         S.Struct({
           href: S.String,
           rel: S.String,
-          method: S.optional(S.String),
+          method: S.optional(LinkDescriptionMethod),
         }),
       ).annotate({ identifier: "LinkDescription" });
     case 3:
-      return S.Array(__S(26));
+      return S.Array(LinkDescription);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          transaction_details: S.optional(__S(25)),
+          transaction_details: S.optional(TransactionDetailList),
           account_number: S.optional(S.String),
           start_date: S.optional(S.String),
           end_date: S.optional(S.String),
@@ -708,25 +774,8 @@ function __c3(j: number): any {
           page: S.optional(S.Number),
           total_items: S.optional(S.Number),
           total_pages: S.optional(S.Number),
-          links: S.optional(__S(27)),
+          links: S.optional(LinkDescriptionList),
         }),
       ).annotate({ identifier: "SearchResponse" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
   }
 }

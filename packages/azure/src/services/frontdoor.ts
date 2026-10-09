@@ -6,8 +6,6 @@ import { UnknownAzureError } from "../errors.ts";
 import { AzureProtocol, type AzureOpError, type AzureOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { AzureOpError, AzureOpContext };
 
@@ -15,14 +13,23 @@ export type { AzureOpError, AzureOpContext };
 export type ResourceType =
   | "Microsoft.Network/frontDoors"
   | "Microsoft.Network/frontDoors/frontendEndpoints";
+const ResourceType = S.String;
+
 export interface CheckFrontDoorNameAvailabilityRequest {
   /** The resource name to validate. */
   name: string;
   /** The type of the resource whose name is to be validated. */
   type: ResourceType | (string & {});
 }
+const CheckFrontDoorNameAvailabilityRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<CheckFrontDoorNameAvailabilityRequest>;
+
 /** Indicates whether the name is available. */
 export type Availability = "Available" | "Unavailable";
+const Availability = S.String;
+
 /** Output of check name availability API. */
 export interface CheckNameAvailabilityOutput {
   /** Indicates whether the name is available. */
@@ -32,6 +39,11 @@ export interface CheckNameAvailabilityOutput {
   /** The detailed error message describing why the name is not available. */
   message?: string;
 }
+const CheckNameAvailabilityOutput = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<CheckNameAvailabilityOutput>;
+
 export interface CheckFrontDoorNameAvailabilityWithSubscriptionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -40,6 +52,11 @@ export interface CheckFrontDoorNameAvailabilityWithSubscriptionRequest {
   /** The type of the resource whose name is to be validated. */
   type: ResourceType | (string & {});
 }
+const CheckFrontDoorNameAvailabilityWithSubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<CheckFrontDoorNameAvailabilityWithSubscriptionRequest>;
+
 export interface DeleteExperimentRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -50,7 +67,17 @@ export interface DeleteExperimentRequest {
   /** The Experiment identifier associated with the Experiment */
   experimentName: string;
 }
+const DeleteExperimentRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<DeleteExperimentRequest>;
+
 export interface DeleteExperimentResponse {}
+const DeleteExperimentResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<DeleteExperimentResponse>;
+
 export interface DeleteFrontDoorRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -59,7 +86,15 @@ export interface DeleteFrontDoorRequest {
   /** Name of the Front Door which is globally unique. */
   frontDoorName: string;
 }
+const DeleteFrontDoorRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<DeleteFrontDoorRequest>;
+
 export interface DeleteFrontDoorResponse {}
+const DeleteFrontDoorResponse =
+  DeleteExperimentResponse as any as S.Schema<DeleteFrontDoorResponse>;
+
 export interface DeleteNetworkExperimentProfileRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -68,7 +103,17 @@ export interface DeleteNetworkExperimentProfileRequest {
   /** The Profile identifier associated with the Tenant and Partner */
   profileName: string;
 }
+const DeleteNetworkExperimentProfileRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<DeleteNetworkExperimentProfileRequest>;
+
 export interface DeleteNetworkExperimentProfileResponse {}
+const DeleteNetworkExperimentProfileResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<DeleteNetworkExperimentProfileResponse>;
+
 export interface DeletePolicyRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -77,7 +122,11 @@ export interface DeletePolicyRequest {
   /** The name of the Web Application Firewall Policy. */
   policyName: string;
 }
+const DeletePolicyRequest = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<DeletePolicyRequest>;
+
 export interface DeletePolicyResponse {}
+const DeletePolicyResponse = DeleteExperimentResponse as any as S.Schema<DeletePolicyResponse>;
+
 export interface DeleteRulesEngineRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -88,7 +137,15 @@ export interface DeleteRulesEngineRequest {
   /** Name of the Rules Engine which is unique within the Front Door. */
   rulesEngineName: string;
 }
+const DeleteRulesEngineRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<DeleteRulesEngineRequest>;
+
 export interface DeleteRulesEngineResponse {}
+const DeleteRulesEngineResponse =
+  DeleteExperimentResponse as any as S.Schema<DeleteRulesEngineResponse>;
+
 export interface DisableFrontendEndpointHttpsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -99,18 +156,37 @@ export interface DisableFrontendEndpointHttpsRequest {
   /** Name of the Frontend endpoint which is unique within the Front Door. */
   frontendEndpointName: string;
 }
+const DisableFrontendEndpointHttpsRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<DisableFrontendEndpointHttpsRequest>;
+
 export interface DisableFrontendEndpointHttpsResponse {}
+const DisableFrontendEndpointHttpsResponse =
+  DeleteNetworkExperimentProfileResponse as any as S.Schema<DisableFrontendEndpointHttpsResponse>;
+
 /** Defines the source of the SSL certificate */
 export type FrontDoorCertificateSource = "AzureKeyVault" | "FrontDoor";
+const FrontDoorCertificateSource = S.String;
+
 /** Defines the TLS extension protocol that is used for secure delivery */
 export type FrontDoorTlsProtocolType = "ServerNameIndication";
+const FrontDoorTlsProtocolType = S.String;
+
 /** The minimum TLS version required from the clients to establish an SSL handshake with Front Door. */
 export type MinimumTLSVersion = "1.0" | "1.2";
+const MinimumTLSVersion = S.String;
+
 /** The Key Vault containing the SSL certificate */
 export interface KeyVaultCertificateSourceParametersVault {
   /** Resource ID. */
   id?: string;
 }
+const KeyVaultCertificateSourceParametersVault = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<KeyVaultCertificateSourceParametersVault>;
+
 /** Parameters required for bring-your-own-certification via Key Vault */
 export interface KeyVaultCertificateSourceParameters {
   /** The Key Vault containing the SSL certificate */
@@ -120,13 +196,25 @@ export interface KeyVaultCertificateSourceParameters {
   /** The version of the Key Vault secret representing the full certificate PFX */
   secretVersion?: string;
 }
+const KeyVaultCertificateSourceParameters = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<KeyVaultCertificateSourceParameters>;
+
 /** Defines the type of the certificate used for secure connections to a frontendEndpoint */
 export type FrontDoorCertificateType = "Dedicated";
+const FrontDoorCertificateType = S.String;
+
 /** Parameters required for enabling SSL with Front Door-managed certificates */
 export interface FrontDoorCertificateSourceParameters {
   /** Defines the type of the certificate used for secure connections to a frontendEndpoint */
   certificateType?: FrontDoorCertificateType | (string & {});
 }
+const FrontDoorCertificateSourceParameters = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<FrontDoorCertificateSourceParameters>;
+
 export interface EnableFrontendEndpointHttpsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -147,9 +235,22 @@ export interface EnableFrontendEndpointHttpsRequest {
   /** Parameters required for enabling SSL with Front Door-managed certificates (if certificateSource=FrontDoor) */
   frontDoorCertificateSourceParameters?: FrontDoorCertificateSourceParameters;
 }
+const EnableFrontendEndpointHttpsRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<EnableFrontendEndpointHttpsRequest>;
+
 export interface EnableFrontendEndpointHttpsResponse {}
+const EnableFrontendEndpointHttpsResponse =
+  DeleteNetworkExperimentProfileResponse as any as S.Schema<EnableFrontendEndpointHttpsResponse>;
+
 /** Resource tags. */
 export type ExperimentsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
+const ExperimentsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<ExperimentsCreateOrUpdateRequestTagsMap>;
+
 /** Defines the endpoint properties */
 export interface Endpoint {
   /** The name of the endpoint */
@@ -157,8 +258,12 @@ export interface Endpoint {
   /** The endpoint URL */
   endpoint?: string;
 }
+const Endpoint = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<Endpoint>;
+
 /** The state of the Experiment */
 export type State = "Enabled" | "Disabled";
+const State = S.String;
+
 /** Defines the properties of an experiment */
 export interface ExperimentPropertiesInput {
   /** The description of the details or intents of the Experiment */
@@ -170,6 +275,11 @@ export interface ExperimentPropertiesInput {
   /** The state of the Experiment */
   enabledState?: State | (string & {});
 }
+const ExperimentPropertiesInput = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<ExperimentPropertiesInput>;
+
 export interface ExperimentsCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -186,8 +296,16 @@ export interface ExperimentsCreateOrUpdateRequest {
   /** The properties of an Experiment */
   properties?: ExperimentPropertiesInput;
 }
+const ExperimentsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<ExperimentsCreateOrUpdateRequest>;
+
 /** Resource tags. */
 export type ExperimentsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
+const ExperimentsCreateOrUpdateResponseTagsMap =
+  ExperimentsCreateOrUpdateRequestTagsMap as any as S.Schema<ExperimentsCreateOrUpdateResponseTagsMap>;
+
 /** Defines the server side resource status */
 export type NetworkExperimentResourceState =
   | "Creating"
@@ -196,6 +314,8 @@ export type NetworkExperimentResourceState =
   | "Disabling"
   | "Disabled"
   | "Deleting";
+const NetworkExperimentResourceState = S.String;
+
 /** Defines the properties of an experiment */
 export interface ExperimentProperties {
   /** The description of the details or intents of the Experiment */
@@ -213,6 +333,8 @@ export interface ExperimentProperties {
   /** The uri to the Script used in the Experiment */
   scriptFileUri?: string;
 }
+const ExperimentProperties = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<ExperimentProperties>;
+
 export interface ExperimentsCreateOrUpdateResponse {
   /** Resource ID. */
   id?: string;
@@ -227,25 +349,54 @@ export interface ExperimentsCreateOrUpdateResponse {
   /** The properties of an Experiment */
   properties?: ExperimentProperties;
 }
+const ExperimentsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<ExperimentsCreateOrUpdateResponse>;
+
 /** Resource tags. */
 export type FrontDoorsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
+const FrontDoorsCreateOrUpdateRequestTagsMap =
+  ExperimentsCreateOrUpdateRequestTagsMap as any as S.Schema<FrontDoorsCreateOrUpdateRequestTagsMap>;
+
 /** Reference to another subresource. */
 export type SubResource = KeyVaultCertificateSourceParametersVault;
 /** Frontend endpoints associated with this rule */
 export type RoutingRulePropertiesFrontendEndpointsList =
   Array<KeyVaultCertificateSourceParametersVault>;
+const RoutingRulePropertiesFrontendEndpointsList = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<RoutingRulePropertiesFrontendEndpointsList>;
+
 /** Accepted protocol schemes. */
 export type FrontDoorProtocol = "Http" | "Https";
+const FrontDoorProtocol = S.String;
+
 /** Protocol schemes to match for this rule */
 export type RoutingRulePropertiesAcceptedProtocolsList = Array<FrontDoorProtocol | (string & {})>;
+const RoutingRulePropertiesAcceptedProtocolsList = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<RoutingRulePropertiesAcceptedProtocolsList>;
+
 /** The route patterns of the rule. */
 export type RoutingRulePropertiesPatternsToMatchList = Array<string>;
+const RoutingRulePropertiesPatternsToMatchList = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<RoutingRulePropertiesPatternsToMatchList>;
+
 /** Whether to enable use of this rule. Permitted values are 'Enabled' or 'Disabled' */
 export type RoutingRuleEnabledState = "Enabled" | "Disabled";
+const RoutingRuleEnabledState = S.String;
+
 /** Base class for all types of Route. */
 export interface RouteConfiguration {
   _odata_type: string;
 }
+const RouteConfiguration = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<RouteConfiguration>;
+
 /** Defines the Web Application Firewall policy for each routing rule (if applicable) */
 export type RoutingRuleUpdateParametersWebApplicationFirewallPolicyLink =
   KeyVaultCertificateSourceParametersVault;
@@ -259,6 +410,8 @@ export type FrontDoorResourceState =
   | "Deleting"
   | "Migrating"
   | "Migrated";
+const FrontDoorResourceState = S.String;
+
 /** The JSON object that contains the properties required to create a routing rule. */
 export interface RoutingRuleProperties {
   /** Frontend endpoints associated with this rule */
@@ -278,6 +431,11 @@ export interface RoutingRuleProperties {
   /** Resource status. */
   resourceState?: FrontDoorResourceState | (string & {});
 }
+const RoutingRuleProperties = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<RoutingRuleProperties>;
+
 /** A routing rule represents a specification for traffic to treat and where to send it, along with health probe information. */
 export interface RoutingRuleInput {
   /** Resource ID. */
@@ -287,8 +445,15 @@ export interface RoutingRuleInput {
   /** Resource name. */
   name?: string;
 }
+const RoutingRuleInput = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<RoutingRuleInput>;
+
 /** Routing rules associated with this Front Door. */
 export type FrontDoorPropertiesInputRoutingRulesList = Array<RoutingRuleInput>;
+const FrontDoorPropertiesInputRoutingRulesList = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<FrontDoorPropertiesInputRoutingRulesList>;
+
 /** The JSON object that contains the properties required to create load balancing settings */
 export interface LoadBalancingSettingsProperties {
   /** The number of samples to consider for load balancing decisions */
@@ -300,6 +465,11 @@ export interface LoadBalancingSettingsProperties {
   /** Resource status. */
   resourceState?: FrontDoorResourceState | (string & {});
 }
+const LoadBalancingSettingsProperties = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<LoadBalancingSettingsProperties>;
+
 /** Load balancing settings for a backend pool */
 export interface LoadBalancingSettingsModelInput {
   /** Resource ID. */
@@ -309,13 +479,27 @@ export interface LoadBalancingSettingsModelInput {
   /** Resource name. */
   name?: string;
 }
+const LoadBalancingSettingsModelInput = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<LoadBalancingSettingsModelInput>;
+
 /** Load balancing settings associated with this Front Door instance. */
 export type FrontDoorPropertiesInputLoadBalancingSettingsList =
   Array<LoadBalancingSettingsModelInput>;
+const FrontDoorPropertiesInputLoadBalancingSettingsList = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<FrontDoorPropertiesInputLoadBalancingSettingsList>;
+
 /** Configures which HTTP method to use to probe the backends defined under backendPools. */
 export type HealthProbeSettingsPropertiesHealthProbeMethod = "GET" | "HEAD";
+const HealthProbeSettingsPropertiesHealthProbeMethod = S.String;
+
 /** Whether to enable health probes to be made against backends defined under backendPools. Health probes can only be disabled if there is a single enabled backend in single enabled backend pool. */
 export type HealthProbeEnabled = "Enabled" | "Disabled";
+const HealthProbeEnabled = S.String;
+
 /** The JSON object that contains the properties required to create a health probe settings. */
 export interface HealthProbeSettingsProperties {
   /** The path to use for the health probe. Default is / */
@@ -331,6 +515,11 @@ export interface HealthProbeSettingsProperties {
   /** Resource status. */
   resourceState?: FrontDoorResourceState | (string & {});
 }
+const HealthProbeSettingsProperties = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<HealthProbeSettingsProperties>;
+
 /** Load balancing settings for a backend pool */
 export interface HealthProbeSettingsModelInput {
   /** Resource ID. */
@@ -340,8 +529,18 @@ export interface HealthProbeSettingsModelInput {
   /** Resource name. */
   name?: string;
 }
+const HealthProbeSettingsModelInput = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<HealthProbeSettingsModelInput>;
+
 /** Health probe settings associated with this Front Door instance. */
 export type FrontDoorPropertiesInputHealthProbeSettingsList = Array<HealthProbeSettingsModelInput>;
+const FrontDoorPropertiesInputHealthProbeSettingsList = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<FrontDoorPropertiesInputHealthProbeSettingsList>;
+
 /** The Approval status for the connection to the Private Link */
 export type PrivateEndpointStatus =
   | "Pending"
@@ -349,8 +548,12 @@ export type PrivateEndpointStatus =
   | "Rejected"
   | "Disconnected"
   | "Timeout";
+const PrivateEndpointStatus = S.String;
+
 /** Whether to enable use of this backend. Permitted values are 'Enabled' or 'Disabled' */
 export type BackendEnabledState = "Enabled" | "Disabled";
+const BackendEnabledState = S.String;
+
 /** Backend address of a frontDoor load balancer. */
 export interface Backend {
   /** Location of the backend (IP address or FQDN) */
@@ -378,8 +581,15 @@ export interface Backend {
   /** The value to use as the host header sent to the backend. If blank or unspecified, this defaults to the incoming host. */
   backendHostHeader?: string;
 }
+const Backend = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<Backend>;
+
 /** The set of backends for this pool */
 export type BackendPoolPropertiesBackendsList = Array<Backend>;
+const BackendPoolPropertiesBackendsList = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<BackendPoolPropertiesBackendsList>;
+
 /** The JSON object that contains the properties required to create a Backend Pool. */
 export interface BackendPoolProperties {
   /** The set of backends for this pool */
@@ -391,6 +601,11 @@ export interface BackendPoolProperties {
   /** Resource status. */
   resourceState?: FrontDoorResourceState | (string & {});
 }
+const BackendPoolProperties = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<BackendPoolProperties>;
+
 /** A backend pool is a collection of backends that can be routed to. */
 export interface BackendPoolInput {
   /** Resource ID. */
@@ -400,10 +615,19 @@ export interface BackendPoolInput {
   /** Resource name. */
   name?: string;
 }
+const BackendPoolInput = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<BackendPoolInput>;
+
 /** Backend pools available to routing rules. */
 export type FrontDoorPropertiesInputBackendPoolsList = Array<BackendPoolInput>;
+const FrontDoorPropertiesInputBackendPoolsList = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<FrontDoorPropertiesInputBackendPoolsList>;
+
 /** Whether to allow session affinity on this host. Valid options are 'Enabled' or 'Disabled' */
 export type SessionAffinityEnabledState = "Enabled" | "Disabled";
+const SessionAffinityEnabledState = S.String;
+
 /** Defines the Web Application Firewall policy for each host (if applicable) */
 export type FrontendEndpointUpdateParametersWebApplicationFirewallPolicyLink =
   KeyVaultCertificateSourceParametersVault;
@@ -414,6 +638,8 @@ export type CustomHttpsProvisioningState =
   | "Disabling"
   | "Disabled"
   | "Failed";
+const CustomHttpsProvisioningState = S.String;
+
 /** Provisioning substate shows the progress of custom HTTPS enabling/disabling process step by step. */
 export type CustomHttpsProvisioningSubstate =
   | "SubmittingDomainControlValidationRequest"
@@ -426,6 +652,8 @@ export type CustomHttpsProvisioningSubstate =
   | "CertificateDeployed"
   | "DeletingCertificate"
   | "CertificateDeleted";
+const CustomHttpsProvisioningSubstate = S.String;
+
 /** Https settings for a domain */
 export interface CustomHttpsConfiguration {
   /** Defines the source of the SSL certificate */
@@ -439,6 +667,11 @@ export interface CustomHttpsConfiguration {
   /** Parameters required for enabling SSL with Front Door-managed certificates (if certificateSource=FrontDoor) */
   frontDoorCertificateSourceParameters?: FrontDoorCertificateSourceParameters;
 }
+const CustomHttpsConfiguration = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<CustomHttpsConfiguration>;
+
 /** The JSON object that contains the properties required to create a frontend endpoint. */
 export interface FrontendEndpointProperties {
   /** The host name of the frontendEndpoint. Must be a domain name. */
@@ -458,6 +691,11 @@ export interface FrontendEndpointProperties {
   /** The configuration specifying how to enable HTTPS */
   customHttpsConfiguration?: CustomHttpsConfiguration;
 }
+const FrontendEndpointProperties = /*@__PURE__*/ __L.at(
+  __c5,
+  0,
+) as any as S.Schema<FrontendEndpointProperties>;
+
 /** A frontend endpoint used for routing. */
 export interface FrontendEndpointInput {
   /** Resource ID. */
@@ -467,10 +705,22 @@ export interface FrontendEndpointInput {
   /** Properties of the Frontend endpoint */
   properties?: FrontendEndpointProperties;
 }
+const FrontendEndpointInput = /*@__PURE__*/ __L.at(
+  __c5,
+  1,
+) as any as S.Schema<FrontendEndpointInput>;
+
 /** Frontend endpoints available to routing rules. */
 export type FrontDoorPropertiesInputFrontendEndpointsList = Array<FrontendEndpointInput>;
+const FrontDoorPropertiesInputFrontendEndpointsList = /*@__PURE__*/ __L.at(
+  __c5,
+  2,
+) as any as S.Schema<FrontDoorPropertiesInputFrontendEndpointsList>;
+
 /** Whether to enforce certificate name check on HTTPS requests to all backend pools. No effect on non-HTTPS requests. */
 export type BackendPoolsSettingsEnforceCertificateNameCheck = "Enabled" | "Disabled";
+const BackendPoolsSettingsEnforceCertificateNameCheck = S.String;
+
 /** Settings that apply to all backend pools. */
 export interface BackendPoolsSettings {
   /** Whether to enforce certificate name check on HTTPS requests to all backend pools. No effect on non-HTTPS requests. */
@@ -478,8 +728,12 @@ export interface BackendPoolsSettings {
   /** Send and receive timeout on forwarding request to the backend. When timeout is reached, the request fails and returns. */
   sendRecvTimeoutSeconds?: number;
 }
+const BackendPoolsSettings = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<BackendPoolsSettings>;
+
 /** Operational status of the Front Door load balancer. Permitted values are 'Enabled' or 'Disabled' */
 export type FrontDoorEnabledState = "Enabled" | "Disabled";
+const FrontDoorEnabledState = S.String;
+
 /** The JSON object that contains the properties required to create an endpoint. */
 export interface FrontDoorPropertiesInput {
   /** A friendly name for the frontDoor */
@@ -499,6 +753,11 @@ export interface FrontDoorPropertiesInput {
   /** Operational status of the Front Door load balancer. Permitted values are 'Enabled' or 'Disabled' */
   enabledState?: FrontDoorEnabledState | (string & {});
 }
+const FrontDoorPropertiesInput = /*@__PURE__*/ __L.at(
+  __c5,
+  4,
+) as any as S.Schema<FrontDoorPropertiesInput>;
+
 export interface FrontDoorsCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -513,8 +772,16 @@ export interface FrontDoorsCreateOrUpdateRequest {
   /** Properties of the Front Door Load Balancer */
   properties?: FrontDoorPropertiesInput;
 }
+const FrontDoorsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  5,
+) as any as S.Schema<FrontDoorsCreateOrUpdateRequest>;
+
 /** Resource tags. */
 export type FrontDoorsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
+const FrontDoorsCreateOrUpdateResponseTagsMap =
+  ExperimentsCreateOrUpdateRequestTagsMap as any as S.Schema<FrontDoorsCreateOrUpdateResponseTagsMap>;
+
 /** A routing rule represents a specification for traffic to treat and where to send it, along with health probe information. */
 export interface RoutingRule {
   /** Resource ID. */
@@ -526,8 +793,15 @@ export interface RoutingRule {
   /** Resource type. */
   type?: string;
 }
+const RoutingRule = /*@__PURE__*/ __L.at(__c5, 6) as any as S.Schema<RoutingRule>;
+
 /** Routing rules associated with this Front Door. */
 export type FrontDoorPropertiesRoutingRulesList = Array<RoutingRule>;
+const FrontDoorPropertiesRoutingRulesList = /*@__PURE__*/ __L.at(
+  __c5,
+  7,
+) as any as S.Schema<FrontDoorPropertiesRoutingRulesList>;
+
 /** Load balancing settings for a backend pool */
 export interface LoadBalancingSettingsModel {
   /** Resource ID. */
@@ -539,8 +813,18 @@ export interface LoadBalancingSettingsModel {
   /** Resource type. */
   type?: string;
 }
+const LoadBalancingSettingsModel = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<LoadBalancingSettingsModel>;
+
 /** Load balancing settings associated with this Front Door instance. */
 export type FrontDoorPropertiesLoadBalancingSettingsList = Array<LoadBalancingSettingsModel>;
+const FrontDoorPropertiesLoadBalancingSettingsList = /*@__PURE__*/ __L.at(
+  __c6,
+  1,
+) as any as S.Schema<FrontDoorPropertiesLoadBalancingSettingsList>;
+
 /** Load balancing settings for a backend pool */
 export interface HealthProbeSettingsModel {
   /** Resource ID. */
@@ -552,8 +836,18 @@ export interface HealthProbeSettingsModel {
   /** Resource type. */
   type?: string;
 }
+const HealthProbeSettingsModel = /*@__PURE__*/ __L.at(
+  __c6,
+  2,
+) as any as S.Schema<HealthProbeSettingsModel>;
+
 /** Health probe settings associated with this Front Door instance. */
 export type FrontDoorPropertiesHealthProbeSettingsList = Array<HealthProbeSettingsModel>;
+const FrontDoorPropertiesHealthProbeSettingsList = /*@__PURE__*/ __L.at(
+  __c6,
+  3,
+) as any as S.Schema<FrontDoorPropertiesHealthProbeSettingsList>;
+
 /** A backend pool is a collection of backends that can be routed to. */
 export interface BackendPool {
   /** Resource ID. */
@@ -565,8 +859,15 @@ export interface BackendPool {
   /** Resource type. */
   type?: string;
 }
+const BackendPool = /*@__PURE__*/ __L.at(__c6, 4) as any as S.Schema<BackendPool>;
+
 /** Backend pools available to routing rules. */
 export type FrontDoorPropertiesBackendPoolsList = Array<BackendPool>;
+const FrontDoorPropertiesBackendPoolsList = /*@__PURE__*/ __L.at(
+  __c6,
+  5,
+) as any as S.Schema<FrontDoorPropertiesBackendPoolsList>;
+
 /** A frontend endpoint used for routing. */
 export interface FrontendEndpoint {
   /** Resource ID. */
@@ -578,10 +879,19 @@ export interface FrontendEndpoint {
   /** Properties of the Frontend endpoint */
   properties?: FrontendEndpointProperties;
 }
+const FrontendEndpoint = /*@__PURE__*/ __L.at(__c6, 6) as any as S.Schema<FrontendEndpoint>;
+
 /** Frontend endpoints available to routing rules. */
 export type FrontDoorPropertiesFrontendEndpointsList = Array<FrontendEndpoint>;
+const FrontDoorPropertiesFrontendEndpointsList = /*@__PURE__*/ __L.at(
+  __c6,
+  7,
+) as any as S.Schema<FrontDoorPropertiesFrontendEndpointsList>;
+
 /** Which type of manipulation to apply to the header. */
 export type HeaderActionType = "Append" | "Delete" | "Overwrite";
+const HeaderActionType = S.String;
+
 /** An action that can manipulate an http header. */
 export interface HeaderAction {
   /** Which type of manipulation to apply to the header. */
@@ -591,10 +901,20 @@ export interface HeaderAction {
   /** The value to update the given header name with. This value is not used if the actionType is Delete. */
   value?: string;
 }
+const HeaderAction = /*@__PURE__*/ __L.at(__c7, 0) as any as S.Schema<HeaderAction>;
+
 /** A list of header actions to apply from the request from AFD to the origin. */
 export type RulesEngineActionRequestHeaderActionsList = Array<HeaderAction>;
+const RulesEngineActionRequestHeaderActionsList = /*@__PURE__*/ __L.at(
+  __c7,
+  1,
+) as any as S.Schema<RulesEngineActionRequestHeaderActionsList>;
+
 /** A list of header actions to apply from the response from AFD to the client. */
 export type RulesEngineActionResponseHeaderActionsList = Array<HeaderAction>;
+const RulesEngineActionResponseHeaderActionsList =
+  RulesEngineActionRequestHeaderActionsList as any as S.Schema<RulesEngineActionResponseHeaderActionsList>;
+
 /** One or more actions that will execute, modifying the request and/or response. */
 export interface RulesEngineAction {
   /** A list of header actions to apply from the request from AFD to the origin. */
@@ -604,6 +924,8 @@ export interface RulesEngineAction {
   /** Override the route configuration. */
   routeConfigurationOverride?: RouteConfiguration;
 }
+const RulesEngineAction = /*@__PURE__*/ __L.at(__c7, 2) as any as S.Schema<RulesEngineAction>;
+
 /** Match Variable */
 export type RulesEngineMatchVariable =
   | "IsMobile"
@@ -618,6 +940,8 @@ export type RulesEngineMatchVariable =
   | "RequestHeader"
   | "RequestBody"
   | "RequestScheme";
+const RulesEngineMatchVariable = S.String;
+
 /** Describes operator to apply to the match condition. */
 export type RulesEngineOperator =
   | "Any"
@@ -631,8 +955,13 @@ export type RulesEngineOperator =
   | "GreaterThanOrEqual"
   | "BeginsWith"
   | "EndsWith";
+const RulesEngineOperator = S.String;
+
 /** Match values to match against. The operator will apply to each value in here with OR semantics. If any of them match the variable with the given operator this match condition is considered a match. */
 export type RulesEngineMatchConditionRulesEngineMatchValueList = Array<string>;
+const RulesEngineMatchConditionRulesEngineMatchValueList =
+  RoutingRulePropertiesPatternsToMatchList as any as S.Schema<RulesEngineMatchConditionRulesEngineMatchValueList>;
+
 /** Describes what transforms are applied before matching */
 export type Transform =
   | "Lowercase"
@@ -643,6 +972,9 @@ export type Transform =
   | "RemoveNulls";
 /** List of transforms */
 export type RulesEngineMatchConditionTransformsList = Array<Transform | (string & {})>;
+const RulesEngineMatchConditionTransformsList =
+  RoutingRulePropertiesAcceptedProtocolsList as any as S.Schema<RulesEngineMatchConditionTransformsList>;
+
 /** Define a match condition */
 export interface RulesEngineMatchCondition {
   /** Match Variable */
@@ -658,10 +990,22 @@ export interface RulesEngineMatchCondition {
   /** List of transforms */
   transforms?: RulesEngineMatchConditionTransformsList;
 }
+const RulesEngineMatchCondition = /*@__PURE__*/ __L.at(
+  __c7,
+  3,
+) as any as S.Schema<RulesEngineMatchCondition>;
+
 /** A list of match conditions that must meet in order for the actions of this rule to run. Having no match conditions means the actions will always run. */
 export type RulesEngineRuleMatchConditionsList = Array<RulesEngineMatchCondition>;
+const RulesEngineRuleMatchConditionsList = /*@__PURE__*/ __L.at(
+  __c7,
+  4,
+) as any as S.Schema<RulesEngineRuleMatchConditionsList>;
+
 /** If this rule is a match should the rules engine continue running the remaining rules or stop. If not present, defaults to Continue. */
 export type MatchProcessingBehavior = "Continue" | "Stop";
+const MatchProcessingBehavior = S.String;
+
 /** Contains a list of match conditions, and an action on how to modify the request/response. If multiple rules match, the actions from one rule that conflict with a previous rule overwrite for a singular action, or append in the case of headers manipulation. */
 export interface RulesEngineRule {
   /** A name to refer to this specific rule. */
@@ -675,8 +1019,15 @@ export interface RulesEngineRule {
   /** If this rule is a match should the rules engine continue running the remaining rules or stop. If not present, defaults to Continue. */
   matchProcessingBehavior?: MatchProcessingBehavior | (string & {});
 }
+const RulesEngineRule = /*@__PURE__*/ __L.at(__c7, 5) as any as S.Schema<RulesEngineRule>;
+
 /** A list of rules that define a particular Rules Engine Configuration. */
 export type RulesEnginePropertiesRulesList = Array<RulesEngineRule>;
+const RulesEnginePropertiesRulesList = /*@__PURE__*/ __L.at(
+  __c7,
+  6,
+) as any as S.Schema<RulesEnginePropertiesRulesList>;
+
 /** The JSON object that contains the properties required to create a Rules Engine Configuration. */
 export interface RulesEngineProperties {
   /** A list of rules that define a particular Rules Engine Configuration. */
@@ -684,6 +1035,11 @@ export interface RulesEngineProperties {
   /** Resource status. */
   resourceState?: FrontDoorResourceState | (string & {});
 }
+const RulesEngineProperties = /*@__PURE__*/ __L.at(
+  __c7,
+  7,
+) as any as S.Schema<RulesEngineProperties>;
+
 /** A rules engine configuration containing a list of rules that will run to modify the runtime behavior of the request and response. */
 export interface RulesEngine {
   /** Resource ID. */
@@ -695,10 +1051,20 @@ export interface RulesEngine {
   /** Properties of the Rules Engine Configuration. */
   properties?: RulesEngineProperties;
 }
+const RulesEngine = /*@__PURE__*/ __L.at(__c8, 0) as any as S.Schema<RulesEngine>;
+
 /** Rules Engine Configurations available to routing rules. */
 export type FrontDoorPropertiesRulesEnginesList = Array<RulesEngine>;
+const FrontDoorPropertiesRulesEnginesList = /*@__PURE__*/ __L.at(
+  __c8,
+  1,
+) as any as S.Schema<FrontDoorPropertiesRulesEnginesList>;
+
 /** Key-Value pair representing additional properties for frontdoor. */
 export type FrontDoorPropertiesExtendedPropertiesMap = { [key: string]: string | undefined };
+const FrontDoorPropertiesExtendedPropertiesMap =
+  ExperimentsCreateOrUpdateRequestTagsMap as any as S.Schema<FrontDoorPropertiesExtendedPropertiesMap>;
+
 /** The JSON object that contains the properties required to create an endpoint. */
 export interface FrontDoorProperties {
   /** A friendly name for the frontDoor */
@@ -730,6 +1096,8 @@ export interface FrontDoorProperties {
   /** Key-Value pair representing additional properties for frontdoor. */
   extendedProperties?: FrontDoorPropertiesExtendedPropertiesMap;
 }
+const FrontDoorProperties = /*@__PURE__*/ __L.at(__c8, 2) as any as S.Schema<FrontDoorProperties>;
+
 export interface FrontDoorsCreateOrUpdateResponse {
   /** Resource ID. */
   id?: string;
@@ -744,6 +1112,11 @@ export interface FrontDoorsCreateOrUpdateResponse {
   /** Properties of the Front Door Load Balancer */
   properties?: FrontDoorProperties;
 }
+const FrontDoorsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c8,
+  3,
+) as any as S.Schema<FrontDoorsCreateOrUpdateResponse>;
+
 export interface GetExperimentRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -754,8 +1127,13 @@ export interface GetExperimentRequest {
   /** The Experiment identifier associated with the Experiment */
   experimentName: string;
 }
+const GetExperimentRequest = /*@__PURE__*/ __L.at(__c8, 4) as any as S.Schema<GetExperimentRequest>;
+
 /** Resource tags. */
 export type GetExperimentResponseTagsMap = { [key: string]: string | undefined };
+const GetExperimentResponseTagsMap =
+  ExperimentsCreateOrUpdateRequestTagsMap as any as S.Schema<GetExperimentResponseTagsMap>;
+
 export interface GetExperimentResponse {
   /** Resource ID. */
   id?: string;
@@ -770,6 +1148,11 @@ export interface GetExperimentResponse {
   /** The properties of an Experiment */
   properties?: ExperimentProperties;
 }
+const GetExperimentResponse = /*@__PURE__*/ __L.at(
+  __c8,
+  5,
+) as any as S.Schema<GetExperimentResponse>;
+
 export interface GetFrontDoorRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -778,8 +1161,13 @@ export interface GetFrontDoorRequest {
   /** Name of the Front Door which is globally unique. */
   frontDoorName: string;
 }
+const GetFrontDoorRequest = /*@__PURE__*/ __L.at(__c8, 6) as any as S.Schema<GetFrontDoorRequest>;
+
 /** Resource tags. */
 export type GetFrontDoorResponseTagsMap = { [key: string]: string | undefined };
+const GetFrontDoorResponseTagsMap =
+  ExperimentsCreateOrUpdateRequestTagsMap as any as S.Schema<GetFrontDoorResponseTagsMap>;
+
 export interface GetFrontDoorResponse {
   /** Resource ID. */
   id?: string;
@@ -794,6 +1182,8 @@ export interface GetFrontDoorResponse {
   /** Properties of the Front Door Load Balancer */
   properties?: FrontDoorProperties;
 }
+const GetFrontDoorResponse = /*@__PURE__*/ __L.at(__c8, 7) as any as S.Schema<GetFrontDoorResponse>;
+
 export interface GetFrontendEndpointRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -804,6 +1194,11 @@ export interface GetFrontendEndpointRequest {
   /** Name of the Frontend endpoint which is unique within the Front Door. */
   frontendEndpointName: string;
 }
+const GetFrontendEndpointRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  0,
+) as any as S.Schema<GetFrontendEndpointRequest>;
+
 export interface GetFrontendEndpointResponse {
   /** Resource ID. */
   id?: string;
@@ -814,6 +1209,11 @@ export interface GetFrontendEndpointResponse {
   /** Properties of the Frontend endpoint */
   properties?: FrontendEndpointProperties;
 }
+const GetFrontendEndpointResponse = /*@__PURE__*/ __L.at(
+  __c9,
+  1,
+) as any as S.Schema<GetFrontendEndpointResponse>;
+
 export interface GetNetworkExperimentProfileRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -822,8 +1222,16 @@ export interface GetNetworkExperimentProfileRequest {
   /** The Profile identifier associated with the Tenant and Partner */
   profileName: string;
 }
+const GetNetworkExperimentProfileRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  2,
+) as any as S.Schema<GetNetworkExperimentProfileRequest>;
+
 /** Resource tags. */
 export type GetNetworkExperimentProfileResponseTagsMap = { [key: string]: string | undefined };
+const GetNetworkExperimentProfileResponseTagsMap =
+  ExperimentsCreateOrUpdateRequestTagsMap as any as S.Schema<GetNetworkExperimentProfileResponseTagsMap>;
+
 /** Defines the properties of an experiment */
 export interface ProfileProperties {
   /** Resource status. */
@@ -831,6 +1239,8 @@ export interface ProfileProperties {
   /** The state of the Experiment */
   enabledState?: State | (string & {});
 }
+const ProfileProperties = /*@__PURE__*/ __L.at(__c9, 3) as any as S.Schema<ProfileProperties>;
+
 export interface GetNetworkExperimentProfileResponse {
   /** Resource ID. */
   id?: string;
@@ -847,6 +1257,11 @@ export interface GetNetworkExperimentProfileResponse {
   /** Gets a unique read-only string that changes whenever the resource is updated. */
   etag?: string;
 }
+const GetNetworkExperimentProfileResponse = /*@__PURE__*/ __L.at(
+  __c9,
+  4,
+) as any as S.Schema<GetNetworkExperimentProfileResponse>;
+
 export interface GetPolicyRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -855,16 +1270,29 @@ export interface GetPolicyRequest {
   /** The name of the Web Application Firewall Policy. */
   policyName: string;
 }
+const GetPolicyRequest = /*@__PURE__*/ __L.at(__c9, 5) as any as S.Schema<GetPolicyRequest>;
+
 /** Resource tags. */
 export type GetPolicyResponseTagsMap = { [key: string]: string | undefined };
+const GetPolicyResponseTagsMap =
+  ExperimentsCreateOrUpdateRequestTagsMap as any as S.Schema<GetPolicyResponseTagsMap>;
+
 /** Describes if the policy is in enabled or disabled state. Defaults to Enabled if not specified. */
 export type PolicyEnabledState = "Disabled" | "Enabled";
+const PolicyEnabledState = S.String;
+
 /** Describes if it is in detection mode or prevention mode at policy level. */
 export type PolicyMode = "Prevention" | "Detection";
+const PolicyMode = S.String;
+
 /** Describes if policy managed rules will inspect the request body content. */
 export type PolicyRequestBodyCheck = "Disabled" | "Enabled";
+const PolicyRequestBodyCheck = S.String;
+
 /** State of the log scrubbing config. Default value is Enabled. */
 export type WebApplicationFirewallScrubbingState = "Enabled" | "Disabled";
+const WebApplicationFirewallScrubbingState = S.String;
+
 /** The variable to be scrubbed from the logs. */
 export type ScrubbingRuleEntryMatchVariable =
   | "RequestIPAddress"
@@ -874,10 +1302,16 @@ export type ScrubbingRuleEntryMatchVariable =
   | "RequestCookieNames"
   | "RequestBodyPostArgNames"
   | "RequestBodyJsonArgNames";
+const ScrubbingRuleEntryMatchVariable = S.String;
+
 /** When matchVariable is a collection, operate on the selector to specify which elements in the collection this rule applies to. */
 export type ScrubbingRuleEntryMatchOperator = "EqualsAny" | "Equals";
+const ScrubbingRuleEntryMatchOperator = S.String;
+
 /** Defines the state of a log scrubbing rule. Default value is enabled. */
 export type ScrubbingRuleEntryState = "Enabled" | "Disabled";
+const ScrubbingRuleEntryState = S.String;
+
 /** Defines the contents of the log scrubbing rules. */
 export interface WebApplicationFirewallScrubbingRules {
   /** The variable to be scrubbed from the logs. */
@@ -889,9 +1323,19 @@ export interface WebApplicationFirewallScrubbingRules {
   /** Defines the state of a log scrubbing rule. Default value is enabled. */
   state?: ScrubbingRuleEntryState | (string & {});
 }
+const WebApplicationFirewallScrubbingRules = /*@__PURE__*/ __L.at(
+  __c9,
+  6,
+) as any as S.Schema<WebApplicationFirewallScrubbingRules>;
+
 /** List of log scrubbing rules applied to the Web Application Firewall logs. */
 export type PolicySettingsLogScrubbingScrubbingRulesList =
   Array<WebApplicationFirewallScrubbingRules>;
+const PolicySettingsLogScrubbingScrubbingRulesList = /*@__PURE__*/ __L.at(
+  __c9,
+  7,
+) as any as S.Schema<PolicySettingsLogScrubbingScrubbingRulesList>;
+
 /** Defines rules that scrub sensitive fields in the Web Application Firewall logs. */
 export interface PolicySettingsLogScrubbing {
   /** State of the log scrubbing config. Default value is Enabled. */
@@ -899,6 +1343,11 @@ export interface PolicySettingsLogScrubbing {
   /** List of log scrubbing rules applied to the Web Application Firewall logs. */
   scrubbingRules?: PolicySettingsLogScrubbingScrubbingRulesList;
 }
+const PolicySettingsLogScrubbing = /*@__PURE__*/ __L.at(
+  __c10,
+  0,
+) as any as S.Schema<PolicySettingsLogScrubbing>;
+
 /** Defines top-level WebApplicationFirewallPolicy configuration settings. */
 export interface PolicySettings {
   /** Describes if the policy is in enabled or disabled state. Defaults to Enabled if not specified. */
@@ -920,19 +1369,34 @@ export interface PolicySettings {
   /** Defines rules that scrub sensitive fields in the Web Application Firewall logs. */
   logScrubbing?: PolicySettingsLogScrubbing;
 }
+const PolicySettings = /*@__PURE__*/ __L.at(__c10, 1) as any as S.Schema<PolicySettings>;
+
 /** Describes if the custom rule is in enabled or disabled state. Defaults to Enabled if not specified. */
 export type CustomRuleEnabledState = "Disabled" | "Enabled";
+const CustomRuleEnabledState = S.String;
+
 /** Describes type of rule. */
 export type RuleType = "MatchRule" | "RateLimitRule";
+const RuleType = S.String;
+
 /** Describes the supported variable for group by */
 export type VariableName = "SocketAddr" | "GeoLocation" | "None" | "Asn" | "Ja4";
+const VariableName = S.String;
+
 /** Describes the variables available to group the rate limit requests */
 export interface GroupByVariable {
   /** Describes the supported variable for group by */
   variableName: VariableName | (string & {});
 }
+const GroupByVariable = /*@__PURE__*/ __L.at(__c10, 2) as any as S.Schema<GroupByVariable>;
+
 /** Describes the list of variables to group the rate limit requests */
 export type CustomRuleGroupByList = Array<GroupByVariable>;
+const CustomRuleGroupByList = /*@__PURE__*/ __L.at(
+  __c10,
+  3,
+) as any as S.Schema<CustomRuleGroupByList>;
+
 /** Request variable to compare with. */
 export type MatchVariable =
   | "RemoteAddr"
@@ -945,6 +1409,8 @@ export type MatchVariable =
   | "Cookies"
   | "SocketAddr"
   | "JA4";
+const MatchVariable = S.String;
+
 /** Comparison type to use for matching with the variable value. */
 export type Operator =
   | "Any"
@@ -962,8 +1428,13 @@ export type Operator =
   | "ServiceTagMatch"
   | "AsnMatch"
   | "ClientFingerprint";
+const Operator = S.String;
+
 /** List of possible match values. */
 export type MatchConditionMatchValueList = Array<string>;
+const MatchConditionMatchValueList =
+  RoutingRulePropertiesPatternsToMatchList as any as S.Schema<MatchConditionMatchValueList>;
+
 /** Describes what transforms applied before matching. */
 export type TransformType =
   | "Lowercase"
@@ -974,6 +1445,9 @@ export type TransformType =
   | "RemoveNulls";
 /** List of transforms. */
 export type MatchConditionTransformsList = Array<TransformType | (string & {})>;
+const MatchConditionTransformsList =
+  RoutingRulePropertiesAcceptedProtocolsList as any as S.Schema<MatchConditionTransformsList>;
+
 /** Define a match condition. */
 export interface MatchCondition {
   /** Request variable to compare with. */
@@ -989,8 +1463,15 @@ export interface MatchCondition {
   /** List of transforms. */
   transforms?: MatchConditionTransformsList;
 }
+const MatchCondition = /*@__PURE__*/ __L.at(__c10, 4) as any as S.Schema<MatchCondition>;
+
 /** List of match conditions. */
 export type CustomRuleMatchConditionsList = Array<MatchCondition>;
+const CustomRuleMatchConditionsList = /*@__PURE__*/ __L.at(
+  __c10,
+  5,
+) as any as S.Schema<CustomRuleMatchConditionsList>;
+
 /** Defines the action to take on rule match. */
 export type ActionType =
   | "Allow"
@@ -1000,6 +1481,8 @@ export type ActionType =
   | "AnomalyScoring"
   | "JSChallenge"
   | "CAPTCHA";
+const ActionType = S.String;
+
 /** Defines contents of a web application rule */
 export interface CustomRule {
   /** Describes the name of the rule. */
@@ -1021,15 +1504,26 @@ export interface CustomRule {
   /** Describes what action to be applied when rule matches. */
   action: ActionType | (string & {});
 }
+const CustomRule = /*@__PURE__*/ __L.at(__c10, 6) as any as S.Schema<CustomRule>;
+
 /** List of rules */
 export type CustomRuleListRulesList = Array<CustomRule>;
+const CustomRuleListRulesList = /*@__PURE__*/ __L.at(
+  __c10,
+  7,
+) as any as S.Schema<CustomRuleListRulesList>;
+
 /** Defines contents of custom rules */
 export interface CustomRuleList {
   /** List of rules */
   rules?: CustomRuleListRulesList;
 }
+const CustomRuleList = /*@__PURE__*/ __L.at(__c11, 0) as any as S.Schema<CustomRuleList>;
+
 /** Defines the action to take when a managed rule set score threshold is met. */
 export type ManagedRuleSetActionType = "Block" | "Log" | "Redirect";
+const ManagedRuleSetActionType = S.String;
+
 /** The variable type to be excluded. */
 export type ManagedRuleExclusionMatchVariable =
   | "RequestHeaderNames"
@@ -1037,6 +1531,8 @@ export type ManagedRuleExclusionMatchVariable =
   | "QueryStringArgNames"
   | "RequestBodyPostArgNames"
   | "RequestBodyJsonArgNames";
+const ManagedRuleExclusionMatchVariable = S.String;
+
 /** Comparison operator to apply to the selector when specifying which elements in the collection this exclusion applies to. */
 export type ManagedRuleExclusionSelectorMatchOperator =
   | "Equals"
@@ -1044,6 +1540,8 @@ export type ManagedRuleExclusionSelectorMatchOperator =
   | "StartsWith"
   | "EndsWith"
   | "EqualsAny";
+const ManagedRuleExclusionSelectorMatchOperator = S.String;
+
 /** Exclude variables from managed rule evaluation. */
 export interface ManagedRuleExclusion {
   /** The variable type to be excluded. */
@@ -1053,16 +1551,36 @@ export interface ManagedRuleExclusion {
   /** Selector value for which elements in the collection this exclusion applies to. */
   selector: string;
 }
+const ManagedRuleExclusion = /*@__PURE__*/ __L.at(
+  __c11,
+  1,
+) as any as S.Schema<ManagedRuleExclusion>;
+
 /** Describes the exclusions that are applied to all rules in the set. */
 export type ManagedRuleSetExclusionsList = Array<ManagedRuleExclusion>;
+const ManagedRuleSetExclusionsList = /*@__PURE__*/ __L.at(
+  __c11,
+  2,
+) as any as S.Schema<ManagedRuleSetExclusionsList>;
+
 /** Describes the exclusions that are applied to all rules in the group. */
 export type ManagedRuleGroupOverrideExclusionsList = Array<ManagedRuleExclusion>;
+const ManagedRuleGroupOverrideExclusionsList =
+  ManagedRuleSetExclusionsList as any as S.Schema<ManagedRuleGroupOverrideExclusionsList>;
+
 /** Describes if the managed rule is in enabled or disabled state. */
 export type ManagedRuleEnabledState = "Disabled" | "Enabled";
+const ManagedRuleEnabledState = S.String;
+
 /** Defines the sensitivity for the rule. */
 export type SensitivityType = "Low" | "Medium" | "High";
+const SensitivityType = S.String;
+
 /** Describes the exclusions that are applied to this specific rule. */
 export type ManagedRuleOverrideExclusionsList = Array<ManagedRuleExclusion>;
+const ManagedRuleOverrideExclusionsList =
+  ManagedRuleSetExclusionsList as any as S.Schema<ManagedRuleOverrideExclusionsList>;
+
 /** Defines a managed rule group override setting. */
 export interface ManagedRuleOverride {
   /** Identifier for the managed rule. */
@@ -1076,8 +1594,15 @@ export interface ManagedRuleOverride {
   /** Describes the exclusions that are applied to this specific rule. */
   exclusions?: ManagedRuleOverrideExclusionsList;
 }
+const ManagedRuleOverride = /*@__PURE__*/ __L.at(__c11, 3) as any as S.Schema<ManagedRuleOverride>;
+
 /** List of rules that will be disabled. If none specified, all rules in the group will be disabled. */
 export type ManagedRuleGroupOverrideRulesList = Array<ManagedRuleOverride>;
+const ManagedRuleGroupOverrideRulesList = /*@__PURE__*/ __L.at(
+  __c11,
+  4,
+) as any as S.Schema<ManagedRuleGroupOverrideRulesList>;
+
 /** Defines a managed rule group override setting. */
 export interface ManagedRuleGroupOverride {
   /** Describes the managed rule group to override. */
@@ -1087,8 +1612,18 @@ export interface ManagedRuleGroupOverride {
   /** List of rules that will be disabled. If none specified, all rules in the group will be disabled. */
   rules?: ManagedRuleGroupOverrideRulesList;
 }
+const ManagedRuleGroupOverride = /*@__PURE__*/ __L.at(
+  __c11,
+  5,
+) as any as S.Schema<ManagedRuleGroupOverride>;
+
 /** Defines the rule group overrides to apply to the rule set. */
 export type ManagedRuleSetRuleGroupOverridesList = Array<ManagedRuleGroupOverride>;
+const ManagedRuleSetRuleGroupOverridesList = /*@__PURE__*/ __L.at(
+  __c11,
+  6,
+) as any as S.Schema<ManagedRuleSetRuleGroupOverridesList>;
+
 /** Defines a managed rule set. */
 export interface ManagedRuleSet {
   /** Defines the rule set type to use. */
@@ -1102,12 +1637,23 @@ export interface ManagedRuleSet {
   /** Defines the rule group overrides to apply to the rule set. */
   ruleGroupOverrides?: ManagedRuleSetRuleGroupOverridesList;
 }
+const ManagedRuleSet = /*@__PURE__*/ __L.at(__c11, 7) as any as S.Schema<ManagedRuleSet>;
+
 /** List of rule sets. */
 export type ManagedRuleSetListManagedRuleSetsList = Array<ManagedRuleSet>;
+const ManagedRuleSetListManagedRuleSetsList = /*@__PURE__*/ __L.at(
+  __c12,
+  0,
+) as any as S.Schema<ManagedRuleSetListManagedRuleSetsList>;
+
 /** The variable to be evaluated for excluding the request. */
 export type ExceptionMatchVariable = "RequestUri" | "SocketAddr" | "RequestHeaderNames";
+const ExceptionMatchVariable = S.String;
+
 /** Comparison operator to apply to the selector when specifying which elements in the collection this exception applies to.. */
 export type ExceptionSelectorMatchOperator = "Equals";
+const ExceptionSelectorMatchOperator = S.String;
+
 /** Comparison operator to apply to the value to be matched.. */
 export type ExceptionValueMatchOperator =
   | "Equals"
@@ -1116,15 +1662,27 @@ export type ExceptionValueMatchOperator =
   | "EndsWith"
   | "EqualsAny"
   | "IPMatch";
+const ExceptionValueMatchOperator = S.String;
+
 /** List of values to be matched with. */
 export type ManagedRuleSetExceptionMatchValuesList = Array<string>;
+const ManagedRuleSetExceptionMatchValuesList =
+  RoutingRulePropertiesPatternsToMatchList as any as S.Schema<ManagedRuleSetExceptionMatchValuesList>;
+
 /** Defines the scope of the rule. */
 export interface RuleScope {
   /** Defines the rule id. */
   ruleId: string;
 }
+const RuleScope = /*@__PURE__*/ __L.at(__c12, 1) as any as S.Schema<RuleScope>;
+
 /** List of rule scopes. */
 export type RuleGroupScopeRuleScopesList = Array<RuleScope>;
+const RuleGroupScopeRuleScopesList = /*@__PURE__*/ __L.at(
+  __c12,
+  2,
+) as any as S.Schema<RuleGroupScopeRuleScopesList>;
+
 /** Defines the scope of the rule group. */
 export interface RuleGroupScope {
   /** Defines the rule group name. */
@@ -1132,8 +1690,15 @@ export interface RuleGroupScope {
   /** List of rule scopes. */
   ruleScopes?: RuleGroupScopeRuleScopesList;
 }
+const RuleGroupScope = /*@__PURE__*/ __L.at(__c12, 3) as any as S.Schema<RuleGroupScope>;
+
 /** List of rule group scopes. */
 export type ManagedRuleSetScopeRuleGroupScopesList = Array<RuleGroupScope>;
+const ManagedRuleSetScopeRuleGroupScopesList = /*@__PURE__*/ __L.at(
+  __c12,
+  4,
+) as any as S.Schema<ManagedRuleSetScopeRuleGroupScopesList>;
+
 /** Defines the scope of the managed rules. */
 export interface ManagedRuleSetScope {
   /** Defines the rule set type. Examples: DefaultRuleSet, Microsoft_DefaultRuleSet, Microsoft_BotManagerRuleSet, Microsoft_HTTPDDoSRuleSet, BotProtection */
@@ -1143,8 +1708,15 @@ export interface ManagedRuleSetScope {
   /** List of rule group scopes. */
   ruleGroupScopes?: ManagedRuleSetScopeRuleGroupScopesList;
 }
+const ManagedRuleSetScope = /*@__PURE__*/ __L.at(__c12, 5) as any as S.Schema<ManagedRuleSetScope>;
+
 /** Scope(s) of the exception. */
 export type ManagedRuleSetExceptionScopesList = Array<ManagedRuleSetScope>;
+const ManagedRuleSetExceptionScopesList = /*@__PURE__*/ __L.at(
+  __c12,
+  6,
+) as any as S.Schema<ManagedRuleSetExceptionScopesList>;
+
 /** Excludes whole requests from managed rule evaluation according to match conditions. */
 export interface ManagedRuleSetException {
   /** The variable to be evaluated for excluding the request. */
@@ -1160,13 +1732,28 @@ export interface ManagedRuleSetException {
   /** Scope(s) of the exception. */
   scopes: ManagedRuleSetExceptionScopesList;
 }
+const ManagedRuleSetException = /*@__PURE__*/ __L.at(
+  __c12,
+  7,
+) as any as S.Schema<ManagedRuleSetException>;
+
 /** List of exceptions. */
 export type ManagedRuleSetExceptionListExceptionsList = Array<ManagedRuleSetException>;
+const ManagedRuleSetExceptionListExceptionsList = /*@__PURE__*/ __L.at(
+  __c13,
+  0,
+) as any as S.Schema<ManagedRuleSetExceptionListExceptionsList>;
+
 /** Defines the list of exceptions for the managed rule sets. */
 export interface ManagedRuleSetExceptionList {
   /** List of exceptions. */
   exceptions?: ManagedRuleSetExceptionListExceptionsList;
 }
+const ManagedRuleSetExceptionList = /*@__PURE__*/ __L.at(
+  __c13,
+  1,
+) as any as S.Schema<ManagedRuleSetExceptionList>;
+
 /** Defines the list of managed rule sets for the policy. */
 export interface ManagedRuleSetList {
   /** List of rule sets. */
@@ -1174,21 +1761,34 @@ export interface ManagedRuleSetList {
   /** List of exceptions applied on the managed rule sets. */
   exceptionsList?: ManagedRuleSetExceptionList;
 }
+const ManagedRuleSetList = /*@__PURE__*/ __L.at(__c13, 2) as any as S.Schema<ManagedRuleSetList>;
+
 /** Defines the Resource ID for a Frontend Endpoint. */
 export type FrontendEndpointLink = KeyVaultCertificateSourceParametersVault;
 /** Describes Frontend Endpoints associated with this Web Application Firewall policy. */
 export type WebApplicationFirewallPolicyPropertiesFrontendEndpointLinksList =
   Array<KeyVaultCertificateSourceParametersVault>;
+const WebApplicationFirewallPolicyPropertiesFrontendEndpointLinksList = /*@__PURE__*/ __L.at(
+  __c13,
+  3,
+) as any as S.Schema<WebApplicationFirewallPolicyPropertiesFrontendEndpointLinksList>;
+
 /** Defines the Resource ID for a Routing Rule. */
 export type RoutingRuleLink = KeyVaultCertificateSourceParametersVault;
 /** Describes Routing Rules associated with this Web Application Firewall policy. */
 export type WebApplicationFirewallPolicyPropertiesRoutingRuleLinksList =
   Array<KeyVaultCertificateSourceParametersVault>;
+const WebApplicationFirewallPolicyPropertiesRoutingRuleLinksList =
+  RoutingRulePropertiesFrontendEndpointsList as any as S.Schema<WebApplicationFirewallPolicyPropertiesRoutingRuleLinksList>;
+
 /** Defines the Resource ID for a Security Policy. */
 export type SecurityPolicyLink = KeyVaultCertificateSourceParametersVault;
 /** Describes Security Policy associated with this Web Application Firewall policy. */
 export type WebApplicationFirewallPolicyPropertiesSecurityPolicyLinksList =
   Array<KeyVaultCertificateSourceParametersVault>;
+const WebApplicationFirewallPolicyPropertiesSecurityPolicyLinksList =
+  RoutingRulePropertiesFrontendEndpointsList as any as S.Schema<WebApplicationFirewallPolicyPropertiesSecurityPolicyLinksList>;
+
 /** Resource status of the policy. */
 export type PolicyResourceState =
   | "Creating"
@@ -1197,6 +1797,8 @@ export type PolicyResourceState =
   | "Disabling"
   | "Disabled"
   | "Deleting";
+const PolicyResourceState = S.String;
+
 /** Defines web application firewall policy properties. */
 export interface WebApplicationFirewallPolicyProperties {
   /** Describes settings for the policy. */
@@ -1216,16 +1818,25 @@ export interface WebApplicationFirewallPolicyProperties {
   /** Resource status of the policy. */
   resourceState?: PolicyResourceState;
 }
+const WebApplicationFirewallPolicyProperties = /*@__PURE__*/ __L.at(
+  __c13,
+  4,
+) as any as S.Schema<WebApplicationFirewallPolicyProperties>;
+
 /** Name of the pricing tier. */
 export type SkuName =
   | "Classic_AzureFrontDoor"
   | "Standard_AzureFrontDoor"
   | "Premium_AzureFrontDoor";
+const SkuName = S.String;
+
 /** The pricing tier of the web application firewall policy. */
 export interface Sku {
   /** Name of the pricing tier. */
   name?: SkuName | (string & {});
 }
+const Sku = /*@__PURE__*/ __L.at(__c13, 5) as any as S.Schema<Sku>;
+
 export interface GetPolicyResponse {
   /** Resource ID. */
   id?: string;
@@ -1244,7 +1855,11 @@ export interface GetPolicyResponse {
   /** The pricing tier of web application firewall policy. Defaults to Classic_AzureFrontDoor if not specified. */
   sku?: Sku;
 }
+const GetPolicyResponse = /*@__PURE__*/ __L.at(__c13, 6) as any as S.Schema<GetPolicyResponse>;
+
 export type GetReportLatencyScorecardsRequestAggregationInterval = "Daily" | "Weekly" | "Monthly";
+const GetReportLatencyScorecardsRequestAggregationInterval = S.String;
+
 export interface GetReportLatencyScorecardsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1261,8 +1876,16 @@ export interface GetReportLatencyScorecardsRequest {
   /** The aggregation interval of the Latency Scorecard */
   aggregationInterval: GetReportLatencyScorecardsRequestAggregationInterval | (string & {});
 }
+const GetReportLatencyScorecardsRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  7,
+) as any as S.Schema<GetReportLatencyScorecardsRequest>;
+
 /** Resource tags. */
 export type GetReportLatencyScorecardsResponseTagsMap = { [key: string]: string | undefined };
+const GetReportLatencyScorecardsResponseTagsMap =
+  ExperimentsCreateOrUpdateRequestTagsMap as any as S.Schema<GetReportLatencyScorecardsResponseTagsMap>;
+
 /** Defines the properties of a latency metric used in the latency scorecard */
 export interface LatencyMetric {
   /** The name of the Latency Metric */
@@ -1286,8 +1909,15 @@ export interface LatencyMetric {
   /** The upper end of the 95% confidence interval for endpoint B */
   bUpper95CI?: number;
 }
+const LatencyMetric = /*@__PURE__*/ __L.at(__c14, 0) as any as S.Schema<LatencyMetric>;
+
 /** The latency metrics of the Latency Scorecard */
 export type LatencyScorecardPropertiesLatencyMetricsList = Array<LatencyMetric>;
+const LatencyScorecardPropertiesLatencyMetricsList = /*@__PURE__*/ __L.at(
+  __c14,
+  1,
+) as any as S.Schema<LatencyScorecardPropertiesLatencyMetricsList>;
+
 /** Defines a the properties of a Latency Scorecard */
 export interface LatencyScorecardProperties {
   /** The unique identifier of the Latency Scorecard */
@@ -1309,6 +1939,11 @@ export interface LatencyScorecardProperties {
   /** The latency metrics of the Latency Scorecard */
   latencyMetrics?: LatencyScorecardPropertiesLatencyMetricsList;
 }
+const LatencyScorecardProperties = /*@__PURE__*/ __L.at(
+  __c14,
+  2,
+) as any as S.Schema<LatencyScorecardProperties>;
+
 export interface GetReportLatencyScorecardsResponse {
   /** Resource ID. */
   id?: string;
@@ -1323,12 +1958,21 @@ export interface GetReportLatencyScorecardsResponse {
   /** The properties of a latency scorecard */
   properties?: LatencyScorecardProperties;
 }
+const GetReportLatencyScorecardsResponse = /*@__PURE__*/ __L.at(
+  __c14,
+  3,
+) as any as S.Schema<GetReportLatencyScorecardsResponse>;
+
 export type GetReportTimeseriesRequestAggregationInterval = "Hourly" | "Daily";
+const GetReportTimeseriesRequestAggregationInterval = S.String;
+
 export type GetReportTimeseriesRequestTimeseriesType =
   | "MeasurementCounts"
   | "LatencyP50"
   | "LatencyP75"
   | "LatencyP95";
+const GetReportTimeseriesRequestTimeseriesType = S.String;
+
 export interface GetReportTimeseriesRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1351,12 +1995,24 @@ export interface GetReportTimeseriesRequest {
   /** The country associated with the Timeseries. Values are country ISO codes as specified here- https://www.iso.org/iso-3166-country-codes.html */
   country?: string;
 }
+const GetReportTimeseriesRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  4,
+) as any as S.Schema<GetReportTimeseriesRequest>;
+
 /** Resource tags. */
 export type GetReportTimeseriesResponseTagsMap = { [key: string]: string | undefined };
+const GetReportTimeseriesResponseTagsMap =
+  ExperimentsCreateOrUpdateRequestTagsMap as any as S.Schema<GetReportTimeseriesResponseTagsMap>;
+
 /** The aggregation interval of the Timeseries */
 export type AggregationInterval = "Hourly" | "Daily";
+const AggregationInterval = S.String;
+
 /** The type of Timeseries */
 export type TimeseriesType = "MeasurementCounts" | "LatencyP50" | "LatencyP75" | "LatencyP95";
+const TimeseriesType = S.String;
+
 /** Defines a timeseries datapoint used in a timeseries */
 export interface TimeseriesDataPoint {
   /** The DateTime of the Timeseries data point in UTC */
@@ -1364,8 +2020,15 @@ export interface TimeseriesDataPoint {
   /** The Value of the Timeseries data point */
   value?: number;
 }
+const TimeseriesDataPoint = /*@__PURE__*/ __L.at(__c14, 5) as any as S.Schema<TimeseriesDataPoint>;
+
 /** The set of data points for the timeseries */
 export type TimeseriesPropertiesTimeseriesDataList = Array<TimeseriesDataPoint>;
+const TimeseriesPropertiesTimeseriesDataList = /*@__PURE__*/ __L.at(
+  __c14,
+  6,
+) as any as S.Schema<TimeseriesPropertiesTimeseriesDataList>;
+
 /** Defines the properties of a timeseries */
 export interface TimeseriesProperties {
   /** The endpoint associated with the Timeseries data point */
@@ -1383,6 +2046,11 @@ export interface TimeseriesProperties {
   /** The set of data points for the timeseries */
   timeseriesData?: TimeseriesPropertiesTimeseriesDataList;
 }
+const TimeseriesProperties = /*@__PURE__*/ __L.at(
+  __c14,
+  7,
+) as any as S.Schema<TimeseriesProperties>;
+
 export interface GetReportTimeseriesResponse {
   /** Resource ID. */
   id?: string;
@@ -1397,6 +2065,11 @@ export interface GetReportTimeseriesResponse {
   /** The properties of a Timeseries */
   properties?: TimeseriesProperties;
 }
+const GetReportTimeseriesResponse = /*@__PURE__*/ __L.at(
+  __c15,
+  0,
+) as any as S.Schema<GetReportTimeseriesResponse>;
+
 export interface GetRulesEngineRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1407,6 +2080,11 @@ export interface GetRulesEngineRequest {
   /** Name of the Rules Engine which is unique within the Front Door. */
   rulesEngineName: string;
 }
+const GetRulesEngineRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  1,
+) as any as S.Schema<GetRulesEngineRequest>;
+
 export interface GetRulesEngineResponse {
   /** Resource ID. */
   id?: string;
@@ -1417,6 +2095,8 @@ export interface GetRulesEngineResponse {
   /** Properties of the Rules Engine Configuration. */
   properties?: RulesEngineProperties;
 }
+const GetRulesEngineResponse = RulesEngine as any as S.Schema<GetRulesEngineResponse>;
+
 export interface ListExperimentByProfileRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1425,6 +2105,11 @@ export interface ListExperimentByProfileRequest {
   /** The Profile identifier associated with the Tenant and Partner */
   profileName: string;
 }
+const ListExperimentByProfileRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  2,
+) as any as S.Schema<ListExperimentByProfileRequest>;
+
 /** Resource tags. */
 export type ExperimentTagsMap = { [key: string]: string | undefined };
 /** Defines the properties of an Experiment */
@@ -1442,8 +2127,15 @@ export interface Experiment {
   /** The properties of an Experiment */
   properties?: ExperimentProperties;
 }
+const Experiment = GetExperimentResponse as any as S.Schema<Experiment>;
+
 /** The Experiment items on this page */
 export type ExperimentListValueList = Array<Experiment>;
+const ExperimentListValueList = /*@__PURE__*/ __L.at(
+  __c15,
+  3,
+) as any as S.Schema<ExperimentListValueList>;
+
 /** Defines a list of Experiments. It contains a list of Experiment objects and a URL link to get the next set of results. */
 export interface ExperimentList {
   /** The Experiment items on this page */
@@ -1451,12 +2143,19 @@ export interface ExperimentList {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const ExperimentList = /*@__PURE__*/ __L.at(__c15, 4) as any as S.Schema<ExperimentList>;
+
 export interface ListFrontDoorByResourceGroupRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
+const ListFrontDoorByResourceGroupRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  5,
+) as any as S.Schema<ListFrontDoorByResourceGroupRequest>;
+
 /** Resource tags. */
 export type FrontDoorTagsMap = { [key: string]: string | undefined };
 /** Front Door represents a collection of backend endpoints to route traffic to along with rules that specify how traffic is sent there. */
@@ -1474,8 +2173,15 @@ export interface FrontDoor {
   /** Properties of the Front Door Load Balancer */
   properties?: FrontDoorProperties;
 }
+const FrontDoor = GetFrontDoorResponse as any as S.Schema<FrontDoor>;
+
 /** The FrontDoor items on this page */
 export type FrontDoorListResultValueList = Array<FrontDoor>;
+const FrontDoorListResultValueList = /*@__PURE__*/ __L.at(
+  __c15,
+  6,
+) as any as S.Schema<FrontDoorListResultValueList>;
+
 /** Paged collection of FrontDoor items */
 export interface FrontDoorListResult {
   /** The FrontDoor items on this page */
@@ -1483,10 +2189,17 @@ export interface FrontDoorListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const FrontDoorListResult = /*@__PURE__*/ __L.at(__c15, 7) as any as S.Schema<FrontDoorListResult>;
+
 export interface ListFrontDoorsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
 }
+const ListFrontDoorsRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  0,
+) as any as S.Schema<ListFrontDoorsRequest>;
+
 export interface ListFrontendEndpointByFrontDoorRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1495,8 +2208,16 @@ export interface ListFrontendEndpointByFrontDoorRequest {
   /** Name of the Front Door which is globally unique. */
   frontDoorName: string;
 }
+const ListFrontendEndpointByFrontDoorRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  1,
+) as any as S.Schema<ListFrontendEndpointByFrontDoorRequest>;
+
 /** The FrontendEndpoint items on this page */
 export type FrontendEndpointsListResultValueList = Array<FrontendEndpoint>;
+const FrontendEndpointsListResultValueList =
+  FrontDoorPropertiesFrontendEndpointsList as any as S.Schema<FrontendEndpointsListResultValueList>;
+
 /** Paged collection of FrontendEndpoint items */
 export interface FrontendEndpointsListResult {
   /** The FrontendEndpoint items on this page */
@@ -1504,14 +2225,29 @@ export interface FrontendEndpointsListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const FrontendEndpointsListResult = /*@__PURE__*/ __L.at(
+  __c16,
+  2,
+) as any as S.Schema<FrontendEndpointsListResult>;
+
 export interface ListManagedRuleSetsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
 }
+const ListManagedRuleSetsRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  3,
+) as any as S.Schema<ListManagedRuleSetsRequest>;
+
 /** Resource tags. */
 export type ManagedRuleSetDefinitionTagsMap = { [key: string]: string | undefined };
+const ManagedRuleSetDefinitionTagsMap =
+  ExperimentsCreateOrUpdateRequestTagsMap as any as S.Schema<ManagedRuleSetDefinitionTagsMap>;
+
 /** OWASP CRS paranoia level of a managed rule. Applicable only for DRS rules. */
 export type ParanoiaLevel = "PL1" | "PL2" | "PL3" | "PL4";
+const ParanoiaLevel = S.String;
+
 /** Describes a managed rule definition. */
 export interface ManagedRuleDefinition {
   /** Identifier for the managed rule. */
@@ -1527,8 +2263,18 @@ export interface ManagedRuleDefinition {
   /** Describes the paranoia level of the managed rule. Applicable only for DRS rules. Omitted for Bot Manager, DDoS, and AI rules. */
   paranoiaLevel?: ParanoiaLevel;
 }
+const ManagedRuleDefinition = /*@__PURE__*/ __L.at(
+  __c16,
+  4,
+) as any as S.Schema<ManagedRuleDefinition>;
+
 /** List of rules within the managed rule group. */
 export type ManagedRuleGroupDefinitionRulesList = Array<ManagedRuleDefinition>;
+const ManagedRuleGroupDefinitionRulesList = /*@__PURE__*/ __L.at(
+  __c16,
+  5,
+) as any as S.Schema<ManagedRuleGroupDefinitionRulesList>;
+
 /** Describes a managed rule group. */
 export interface ManagedRuleGroupDefinition {
   /** Name of the managed rule group. */
@@ -1538,10 +2284,22 @@ export interface ManagedRuleGroupDefinition {
   /** List of rules within the managed rule group. */
   rules?: ManagedRuleGroupDefinitionRulesList;
 }
+const ManagedRuleGroupDefinition = /*@__PURE__*/ __L.at(
+  __c16,
+  6,
+) as any as S.Schema<ManagedRuleGroupDefinition>;
+
 /** Rule groups of the managed rule set. */
 export type ManagedRuleSetDefinitionPropertiesRuleGroupsList = Array<ManagedRuleGroupDefinition>;
+const ManagedRuleSetDefinitionPropertiesRuleGroupsList = /*@__PURE__*/ __L.at(
+  __c16,
+  7,
+) as any as S.Schema<ManagedRuleSetDefinitionPropertiesRuleGroupsList>;
+
 /** Status of a managed rule set. */
 export type ManagedRuleSetStatus = "Preview" | "GA" | "Deprecated" | "Supported";
+const ManagedRuleSetStatus = S.String;
+
 /** Properties for a managed rule set definition. */
 export interface ManagedRuleSetDefinitionProperties {
   /** Provisioning state of the managed rule set. */
@@ -1559,6 +2317,11 @@ export interface ManagedRuleSetDefinitionProperties {
   /** Describes the lifecycle status of the managed rule set version. */
   status?: ManagedRuleSetStatus;
 }
+const ManagedRuleSetDefinitionProperties = /*@__PURE__*/ __L.at(
+  __c17,
+  0,
+) as any as S.Schema<ManagedRuleSetDefinitionProperties>;
+
 /** Describes the a managed rule set definition. */
 export interface ManagedRuleSetDefinition {
   /** Resource ID. */
@@ -1574,8 +2337,18 @@ export interface ManagedRuleSetDefinition {
   /** Properties for a managed rule set definition. */
   properties?: ManagedRuleSetDefinitionProperties;
 }
+const ManagedRuleSetDefinition = /*@__PURE__*/ __L.at(
+  __c17,
+  1,
+) as any as S.Schema<ManagedRuleSetDefinition>;
+
 /** The ManagedRuleSetDefinition items on this page */
 export type ManagedRuleSetDefinitionListValueList = Array<ManagedRuleSetDefinition>;
+const ManagedRuleSetDefinitionListValueList = /*@__PURE__*/ __L.at(
+  __c17,
+  2,
+) as any as S.Schema<ManagedRuleSetDefinitionListValueList>;
+
 /** List of managed rule set definitions available for use in a policy. */
 export interface ManagedRuleSetDefinitionList {
   /** The ManagedRuleSetDefinition items on this page */
@@ -1583,14 +2356,26 @@ export interface ManagedRuleSetDefinitionList {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const ManagedRuleSetDefinitionList = /*@__PURE__*/ __L.at(
+  __c17,
+  3,
+) as any as S.Schema<ManagedRuleSetDefinitionList>;
+
 export interface ListNetworkExperimentProfileByResourceGroupRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
+const ListNetworkExperimentProfileByResourceGroupRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  4,
+) as any as S.Schema<ListNetworkExperimentProfileByResourceGroupRequest>;
+
 /** Resource tags. */
 export type ProfileTagsMap = { [key: string]: string | undefined };
+const ProfileTagsMap = ExperimentsCreateOrUpdateRequestTagsMap as any as S.Schema<ProfileTagsMap>;
+
 /** Defines an Network Experiment Profile and lists of Experiments */
 export interface Profile {
   /** Resource ID. */
@@ -1608,8 +2393,15 @@ export interface Profile {
   /** Gets a unique read-only string that changes whenever the resource is updated. */
   etag?: string;
 }
+const Profile = /*@__PURE__*/ __L.at(__c17, 5) as any as S.Schema<Profile>;
+
 /** The Profile items on this page */
 export type ProfileListValueList = Array<Profile>;
+const ProfileListValueList = /*@__PURE__*/ __L.at(
+  __c17,
+  6,
+) as any as S.Schema<ProfileListValueList>;
+
 /** Defines a list of Profiles. It contains a list of Profile objects and a URL link to get the next set of results. */
 export interface ProfileList {
   /** The Profile items on this page */
@@ -1617,18 +2409,30 @@ export interface ProfileList {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const ProfileList = /*@__PURE__*/ __L.at(__c17, 7) as any as S.Schema<ProfileList>;
+
 export interface ListNetworkExperimentProfilesRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
 }
+const ListNetworkExperimentProfilesRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  0,
+) as any as S.Schema<ListNetworkExperimentProfilesRequest>;
+
 export interface ListPoliciesRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
+const ListPoliciesRequest = /*@__PURE__*/ __L.at(__c18, 1) as any as S.Schema<ListPoliciesRequest>;
+
 /** Resource tags. */
 export type WebApplicationFirewallPolicyTagsMap = { [key: string]: string | undefined };
+const WebApplicationFirewallPolicyTagsMap =
+  ExperimentsCreateOrUpdateRequestTagsMap as any as S.Schema<WebApplicationFirewallPolicyTagsMap>;
+
 /** Defines web application firewall policy. */
 export interface WebApplicationFirewallPolicy {
   /** Resource ID. */
@@ -1648,8 +2452,18 @@ export interface WebApplicationFirewallPolicy {
   /** The pricing tier of web application firewall policy. Defaults to Classic_AzureFrontDoor if not specified. */
   sku?: Sku;
 }
+const WebApplicationFirewallPolicy = /*@__PURE__*/ __L.at(
+  __c18,
+  2,
+) as any as S.Schema<WebApplicationFirewallPolicy>;
+
 /** The WebApplicationFirewallPolicy items on this page */
 export type WebApplicationFirewallPolicyListValueList = Array<WebApplicationFirewallPolicy>;
+const WebApplicationFirewallPolicyListValueList = /*@__PURE__*/ __L.at(
+  __c18,
+  3,
+) as any as S.Schema<WebApplicationFirewallPolicyListValueList>;
+
 /** Defines a list of WebApplicationFirewallPolicies. It contains a list of WebApplicationFirewallPolicy objects and a URL link to get the next set of results. */
 export interface WebApplicationFirewallPolicyList {
   /** The WebApplicationFirewallPolicy items on this page */
@@ -1657,10 +2471,20 @@ export interface WebApplicationFirewallPolicyList {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const WebApplicationFirewallPolicyList = /*@__PURE__*/ __L.at(
+  __c18,
+  4,
+) as any as S.Schema<WebApplicationFirewallPolicyList>;
+
 export interface ListPolicyBySubscriptionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
 }
+const ListPolicyBySubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  5,
+) as any as S.Schema<ListPolicyBySubscriptionRequest>;
+
 export interface ListPreconfiguredEndpointsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1669,10 +2493,20 @@ export interface ListPreconfiguredEndpointsRequest {
   /** The Profile identifier associated with the Tenant and Partner */
   profileName: string;
 }
+const ListPreconfiguredEndpointsRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  6,
+) as any as S.Schema<ListPreconfiguredEndpointsRequest>;
+
 /** Resource tags. */
 export type PreconfiguredEndpointTagsMap = { [key: string]: string | undefined };
+const PreconfiguredEndpointTagsMap =
+  ExperimentsCreateOrUpdateRequestTagsMap as any as S.Schema<PreconfiguredEndpointTagsMap>;
+
 /** The type of endpoint */
 export type EndpointType = "AFD" | "AzureRegion" | "CDN" | "ATM";
+const EndpointType = S.String;
+
 /** Defines the properties of a preconfigured endpoint */
 export interface PreconfiguredEndpointProperties {
   /** The description of the endpoint */
@@ -1684,6 +2518,11 @@ export interface PreconfiguredEndpointProperties {
   /** The preconfigured endpoint backend */
   backend?: string;
 }
+const PreconfiguredEndpointProperties = /*@__PURE__*/ __L.at(
+  __c18,
+  7,
+) as any as S.Schema<PreconfiguredEndpointProperties>;
+
 /** Defines the properties of a preconfigured endpoint */
 export interface PreconfiguredEndpoint {
   /** Resource ID. */
@@ -1699,8 +2538,18 @@ export interface PreconfiguredEndpoint {
   /** The properties of a preconfiguredEndpoint */
   properties?: PreconfiguredEndpointProperties;
 }
+const PreconfiguredEndpoint = /*@__PURE__*/ __L.at(
+  __c19,
+  0,
+) as any as S.Schema<PreconfiguredEndpoint>;
+
 /** The PreconfiguredEndpoint items on this page */
 export type PreconfiguredEndpointListValueList = Array<PreconfiguredEndpoint>;
+const PreconfiguredEndpointListValueList = /*@__PURE__*/ __L.at(
+  __c19,
+  1,
+) as any as S.Schema<PreconfiguredEndpointListValueList>;
+
 /** Defines a list of preconfigured endpoints. */
 export interface PreconfiguredEndpointList {
   /** The PreconfiguredEndpoint items on this page */
@@ -1708,6 +2557,11 @@ export interface PreconfiguredEndpointList {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const PreconfiguredEndpointList = /*@__PURE__*/ __L.at(
+  __c19,
+  2,
+) as any as S.Schema<PreconfiguredEndpointList>;
+
 export interface ListRulesEngineByFrontDoorRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1716,8 +2570,16 @@ export interface ListRulesEngineByFrontDoorRequest {
   /** Name of the Front Door which is globally unique. */
   frontDoorName: string;
 }
+const ListRulesEngineByFrontDoorRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  3,
+) as any as S.Schema<ListRulesEngineByFrontDoorRequest>;
+
 /** The RulesEngine items on this page */
 export type RulesEngineListResultValueList = Array<RulesEngine>;
+const RulesEngineListResultValueList =
+  FrontDoorPropertiesRulesEnginesList as any as S.Schema<RulesEngineListResultValueList>;
+
 /** Paged collection of RulesEngine items */
 export interface RulesEngineListResult {
   /** The RulesEngine items on this page */
@@ -1725,10 +2587,18 @@ export interface RulesEngineListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const RulesEngineListResult = /*@__PURE__*/ __L.at(
+  __c19,
+  4,
+) as any as S.Schema<RulesEngineListResult>;
+
 /** Resource tags. */
 export type NetworkExperimentProfilesCreateOrUpdateRequestTagsMap = {
   [key: string]: string | undefined;
 };
+const NetworkExperimentProfilesCreateOrUpdateRequestTagsMap =
+  ExperimentsCreateOrUpdateRequestTagsMap as any as S.Schema<NetworkExperimentProfilesCreateOrUpdateRequestTagsMap>;
+
 export interface NetworkExperimentProfilesCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1745,6 +2615,11 @@ export interface NetworkExperimentProfilesCreateOrUpdateRequest {
   /** Gets a unique read-only string that changes whenever the resource is updated. */
   etag?: string;
 }
+const NetworkExperimentProfilesCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  5,
+) as any as S.Schema<NetworkExperimentProfilesCreateOrUpdateRequest>;
+
 /** Resource tags. */
 export type NetworkExperimentProfilesCreateOrUpdateResponseTagsMap = {
   [key: string]: string | undefined;
@@ -1765,8 +2640,14 @@ export interface NetworkExperimentProfilesCreateOrUpdateResponse {
   /** Gets a unique read-only string that changes whenever the resource is updated. */
   etag?: string;
 }
+const NetworkExperimentProfilesCreateOrUpdateResponse =
+  GetNetworkExperimentProfileResponse as any as S.Schema<NetworkExperimentProfilesCreateOrUpdateResponse>;
+
 /** Resource tags. */
 export type PoliciesCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
+const PoliciesCreateOrUpdateRequestTagsMap =
+  ExperimentsCreateOrUpdateRequestTagsMap as any as S.Schema<PoliciesCreateOrUpdateRequestTagsMap>;
+
 /** Defines web application firewall policy properties. */
 export interface WebApplicationFirewallPolicyPropertiesInput {
   /** Describes settings for the policy. */
@@ -1776,6 +2657,11 @@ export interface WebApplicationFirewallPolicyPropertiesInput {
   /** Describes managed rules inside the policy. */
   managedRules?: ManagedRuleSetList;
 }
+const WebApplicationFirewallPolicyPropertiesInput = /*@__PURE__*/ __L.at(
+  __c19,
+  6,
+) as any as S.Schema<WebApplicationFirewallPolicyPropertiesInput>;
+
 export interface PoliciesCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1794,6 +2680,11 @@ export interface PoliciesCreateOrUpdateRequest {
   /** The pricing tier of web application firewall policy. Defaults to Classic_AzureFrontDoor if not specified. */
   sku?: Sku;
 }
+const PoliciesCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  7,
+) as any as S.Schema<PoliciesCreateOrUpdateRequest>;
+
 /** Resource tags. */
 export type PoliciesCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
 export interface PoliciesCreateOrUpdateResponse {
@@ -1814,8 +2705,14 @@ export interface PoliciesCreateOrUpdateResponse {
   /** The pricing tier of web application firewall policy. Defaults to Classic_AzureFrontDoor if not specified. */
   sku?: Sku;
 }
+const PoliciesCreateOrUpdateResponse =
+  WebApplicationFirewallPolicy as any as S.Schema<PoliciesCreateOrUpdateResponse>;
+
 /** The path to the content to be purged. Can describe a file path or a wild card directory. */
 export type PurgeEndpointContentRequestContentPathsList = Array<string>;
+const PurgeEndpointContentRequestContentPathsList =
+  RoutingRulePropertiesPatternsToMatchList as any as S.Schema<PurgeEndpointContentRequestContentPathsList>;
+
 export interface PurgeEndpointContentRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1826,7 +2723,15 @@ export interface PurgeEndpointContentRequest {
   /** The path to the content to be purged. Can describe a file path or a wild card directory. */
   contentPaths: PurgeEndpointContentRequestContentPathsList;
 }
+const PurgeEndpointContentRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  0,
+) as any as S.Schema<PurgeEndpointContentRequest>;
+
 export interface PurgeEndpointContentResponse {}
+const PurgeEndpointContentResponse =
+  DeleteExperimentResponse as any as S.Schema<PurgeEndpointContentResponse>;
+
 export interface RulesEnginesCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1839,6 +2744,11 @@ export interface RulesEnginesCreateOrUpdateRequest {
   /** Properties of the Rules Engine Configuration. */
   properties?: RulesEngineProperties;
 }
+const RulesEnginesCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  1,
+) as any as S.Schema<RulesEnginesCreateOrUpdateRequest>;
+
 export interface RulesEnginesCreateOrUpdateResponse {
   /** Resource ID. */
   id?: string;
@@ -1849,8 +2759,16 @@ export interface RulesEnginesCreateOrUpdateResponse {
   /** Properties of the Rules Engine Configuration. */
   properties?: RulesEngineProperties;
 }
+const RulesEnginesCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c20,
+  2,
+) as any as S.Schema<RulesEnginesCreateOrUpdateResponse>;
+
 /** Resource tags. */
 export type UpdateExperimentRequestTagsMap = { [key: string]: string | undefined };
+const UpdateExperimentRequestTagsMap =
+  ExperimentsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateExperimentRequestTagsMap>;
+
 /** Defines the properties of an experiment */
 export interface ExperimentUpdateProperties {
   /** The description of the intent or details of the Experiment */
@@ -1858,6 +2776,11 @@ export interface ExperimentUpdateProperties {
   /** The state of the Experiment */
   enabledState?: State | (string & {});
 }
+const ExperimentUpdateProperties = /*@__PURE__*/ __L.at(
+  __c20,
+  3,
+) as any as S.Schema<ExperimentUpdateProperties>;
+
 export interface UpdateExperimentRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1872,6 +2795,11 @@ export interface UpdateExperimentRequest {
   /** The properties of a Profile */
   properties?: ExperimentUpdateProperties;
 }
+const UpdateExperimentRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  4,
+) as any as S.Schema<UpdateExperimentRequest>;
+
 /** Resource tags. */
 export type UpdateExperimentResponseTagsMap = { [key: string]: string | undefined };
 export interface UpdateExperimentResponse {
@@ -1888,13 +2816,23 @@ export interface UpdateExperimentResponse {
   /** The properties of an Experiment */
   properties?: ExperimentProperties;
 }
+const UpdateExperimentResponse = GetExperimentResponse as any as S.Schema<UpdateExperimentResponse>;
+
 /** Defines the properties of an experiment */
 export interface ProfileUpdateProperties {
   /** The enabled state of the Profile */
   enabledState?: State | (string & {});
 }
+const ProfileUpdateProperties = /*@__PURE__*/ __L.at(
+  __c20,
+  5,
+) as any as S.Schema<ProfileUpdateProperties>;
+
 /** Resource tags. */
 export type UpdateNetworkExperimentProfileRequestTagsMap = { [key: string]: string | undefined };
+const UpdateNetworkExperimentProfileRequestTagsMap =
+  ExperimentsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateNetworkExperimentProfileRequestTagsMap>;
+
 export interface UpdateNetworkExperimentProfileRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1907,6 +2845,11 @@ export interface UpdateNetworkExperimentProfileRequest {
   /** Resource tags. */
   tags?: UpdateNetworkExperimentProfileRequestTagsMap;
 }
+const UpdateNetworkExperimentProfileRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  6,
+) as any as S.Schema<UpdateNetworkExperimentProfileRequest>;
+
 /** Resource tags. */
 export type UpdateNetworkExperimentProfileResponseTagsMap = { [key: string]: string | undefined };
 export interface UpdateNetworkExperimentProfileResponse {
@@ -1925,8 +2868,14 @@ export interface UpdateNetworkExperimentProfileResponse {
   /** Gets a unique read-only string that changes whenever the resource is updated. */
   etag?: string;
 }
+const UpdateNetworkExperimentProfileResponse =
+  GetNetworkExperimentProfileResponse as any as S.Schema<UpdateNetworkExperimentProfileResponse>;
+
 /** Resource tags. */
 export type UpdatePolicyRequestTagsMap = { [key: string]: string | undefined };
+const UpdatePolicyRequestTagsMap =
+  ExperimentsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdatePolicyRequestTagsMap>;
+
 export interface UpdatePolicyRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1937,6 +2886,8 @@ export interface UpdatePolicyRequest {
   /** Resource tags. */
   tags?: UpdatePolicyRequestTagsMap;
 }
+const UpdatePolicyRequest = /*@__PURE__*/ __L.at(__c20, 7) as any as S.Schema<UpdatePolicyRequest>;
+
 /** Resource tags. */
 export type UpdatePolicyResponseTagsMap = { [key: string]: string | undefined };
 export interface UpdatePolicyResponse {
@@ -1957,6 +2908,8 @@ export interface UpdatePolicyResponse {
   /** The pricing tier of web application firewall policy. Defaults to Classic_AzureFrontDoor if not specified. */
   sku?: Sku;
 }
+const UpdatePolicyResponse = GetPolicyResponse as any as S.Schema<UpdatePolicyResponse>;
+
 export interface ValidateFrontDoorCustomDomainRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1967,6 +2920,11 @@ export interface ValidateFrontDoorCustomDomainRequest {
   /** The host name of the custom domain. Must be a domain name. */
   hostName: string;
 }
+const ValidateFrontDoorCustomDomainRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  0,
+) as any as S.Schema<ValidateFrontDoorCustomDomainRequest>;
+
 /** Output of custom domain validation. */
 export interface ValidateCustomDomainOutput {
   /** Indicates whether the custom domain is valid or not. */
@@ -1976,6 +2934,11 @@ export interface ValidateCustomDomainOutput {
   /** Error message describing why the custom domain is not valid. */
   message?: string;
 }
+const ValidateCustomDomainOutput = /*@__PURE__*/ __L.at(
+  __c21,
+  1,
+) as any as S.Schema<ValidateCustomDomainOutput>;
+
 export type CheckFrontDoorNameAvailabilityError = AzureOpError;
 /** Check the availability of a Front Door resource name. */
 export const CheckFrontDoorNameAvailability: API.OperationMethod<
@@ -1984,8 +2947,8 @@ export const CheckFrontDoorNameAvailability: API.OperationMethod<
   CheckFrontDoorNameAvailabilityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<CheckFrontDoorNameAvailabilityRequest>,
-  output: __S(1) as any as S.Schema<CheckNameAvailabilityOutput>,
+  input: CheckFrontDoorNameAvailabilityRequest,
+  output: CheckNameAvailabilityOutput,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1999,8 +2962,8 @@ export const CheckFrontDoorNameAvailabilityWithSubscription: API.OperationMethod
   CheckFrontDoorNameAvailabilityWithSubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2) as any as S.Schema<CheckFrontDoorNameAvailabilityWithSubscriptionRequest>,
-  output: __S(1) as any as S.Schema<CheckNameAvailabilityOutput>,
+  input: CheckFrontDoorNameAvailabilityWithSubscriptionRequest,
+  output: CheckNameAvailabilityOutput,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2014,8 +2977,8 @@ export const DeleteExperiment: API.OperationMethod<
   DeleteExperimentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3) as any as S.Schema<DeleteExperimentRequest>,
-  output: __S(4) as any as S.Schema<DeleteExperimentResponse>,
+  input: DeleteExperimentRequest,
+  output: DeleteExperimentResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2029,8 +2992,8 @@ export const DeleteFrontDoor: API.OperationMethod<
   DeleteFrontDoorError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5) as any as S.Schema<DeleteFrontDoorRequest>,
-  output: __S(4) as any as S.Schema<DeleteFrontDoorResponse>,
+  input: DeleteFrontDoorRequest,
+  output: DeleteFrontDoorResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2044,8 +3007,8 @@ export const DeleteNetworkExperimentProfile: API.OperationMethod<
   DeleteNetworkExperimentProfileError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6) as any as S.Schema<DeleteNetworkExperimentProfileRequest>,
-  output: __S(7) as any as S.Schema<DeleteNetworkExperimentProfileResponse>,
+  input: DeleteNetworkExperimentProfileRequest,
+  output: DeleteNetworkExperimentProfileResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2059,8 +3022,8 @@ export const DeletePolicy: API.OperationMethod<
   DeletePolicyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8) as any as S.Schema<DeletePolicyRequest>,
-  output: __S(4) as any as S.Schema<DeletePolicyResponse>,
+  input: DeletePolicyRequest,
+  output: DeletePolicyResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2074,8 +3037,8 @@ export const DeleteRulesEngine: API.OperationMethod<
   DeleteRulesEngineError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9) as any as S.Schema<DeleteRulesEngineRequest>,
-  output: __S(4) as any as S.Schema<DeleteRulesEngineResponse>,
+  input: DeleteRulesEngineRequest,
+  output: DeleteRulesEngineResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2089,8 +3052,8 @@ export const DisableFrontendEndpointHttps: API.OperationMethod<
   DisableFrontendEndpointHttpsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10) as any as S.Schema<DisableFrontendEndpointHttpsRequest>,
-  output: __S(7) as any as S.Schema<DisableFrontendEndpointHttpsResponse>,
+  input: DisableFrontendEndpointHttpsRequest,
+  output: DisableFrontendEndpointHttpsResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2104,8 +3067,8 @@ export const EnableFrontendEndpointHttps: API.OperationMethod<
   EnableFrontendEndpointHttpsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14) as any as S.Schema<EnableFrontendEndpointHttpsRequest>,
-  output: __S(7) as any as S.Schema<EnableFrontendEndpointHttpsResponse>,
+  input: EnableFrontendEndpointHttpsRequest,
+  output: EnableFrontendEndpointHttpsResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2119,8 +3082,8 @@ export const ExperimentsCreateOrUpdate: API.OperationMethod<
   ExperimentsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18) as any as S.Schema<ExperimentsCreateOrUpdateRequest>,
-  output: __S(20) as any as S.Schema<ExperimentsCreateOrUpdateResponse>,
+  input: ExperimentsCreateOrUpdateRequest,
+  output: ExperimentsCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2134,8 +3097,8 @@ export const FrontDoorsCreateOrUpdate: API.OperationMethod<
   FrontDoorsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45) as any as S.Schema<FrontDoorsCreateOrUpdateRequest>,
-  output: __S(67) as any as S.Schema<FrontDoorsCreateOrUpdateResponse>,
+  input: FrontDoorsCreateOrUpdateRequest,
+  output: FrontDoorsCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2149,8 +3112,8 @@ export const GetExperiment: API.OperationMethod<
   GetExperimentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(68) as any as S.Schema<GetExperimentRequest>,
-  output: __S(69) as any as S.Schema<GetExperimentResponse>,
+  input: GetExperimentRequest,
+  output: GetExperimentResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2164,8 +3127,8 @@ export const GetFrontDoor: API.OperationMethod<
   GetFrontDoorError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(70) as any as S.Schema<GetFrontDoorRequest>,
-  output: __S(71) as any as S.Schema<GetFrontDoorResponse>,
+  input: GetFrontDoorRequest,
+  output: GetFrontDoorResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2179,8 +3142,8 @@ export const GetFrontendEndpoint: API.OperationMethod<
   GetFrontendEndpointError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(72) as any as S.Schema<GetFrontendEndpointRequest>,
-  output: __S(73) as any as S.Schema<GetFrontendEndpointResponse>,
+  input: GetFrontendEndpointRequest,
+  output: GetFrontendEndpointResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2194,8 +3157,8 @@ export const GetNetworkExperimentProfile: API.OperationMethod<
   GetNetworkExperimentProfileError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(74) as any as S.Schema<GetNetworkExperimentProfileRequest>,
-  output: __S(76) as any as S.Schema<GetNetworkExperimentProfileResponse>,
+  input: GetNetworkExperimentProfileRequest,
+  output: GetNetworkExperimentProfileResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2209,8 +3172,8 @@ export const GetPolicy: API.OperationMethod<
   GetPolicyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(77) as any as S.Schema<GetPolicyRequest>,
-  output: __S(110) as any as S.Schema<GetPolicyResponse>,
+  input: GetPolicyRequest,
+  output: GetPolicyResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2224,8 +3187,8 @@ export const GetReportLatencyScorecards: API.OperationMethod<
   GetReportLatencyScorecardsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(111) as any as S.Schema<GetReportLatencyScorecardsRequest>,
-  output: __S(115) as any as S.Schema<GetReportLatencyScorecardsResponse>,
+  input: GetReportLatencyScorecardsRequest,
+  output: GetReportLatencyScorecardsResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2239,8 +3202,8 @@ export const GetReportTimeseries: API.OperationMethod<
   GetReportTimeseriesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(116) as any as S.Schema<GetReportTimeseriesRequest>,
-  output: __S(120) as any as S.Schema<GetReportTimeseriesResponse>,
+  input: GetReportTimeseriesRequest,
+  output: GetReportTimeseriesResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2254,8 +3217,8 @@ export const GetRulesEngine: API.OperationMethod<
   GetRulesEngineError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(121) as any as S.Schema<GetRulesEngineRequest>,
-  output: __S(64) as any as S.Schema<GetRulesEngineResponse>,
+  input: GetRulesEngineRequest,
+  output: GetRulesEngineResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2269,8 +3232,8 @@ export const ListExperimentByProfile: API.OperationMethod<
   ListExperimentByProfileError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(122) as any as S.Schema<ListExperimentByProfileRequest>,
-  output: __S(124) as any as S.Schema<ExperimentList>,
+  input: ListExperimentByProfileRequest,
+  output: ExperimentList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2284,8 +3247,8 @@ export const ListFrontDoorByResourceGroup: API.OperationMethod<
   ListFrontDoorByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(125) as any as S.Schema<ListFrontDoorByResourceGroupRequest>,
-  output: __S(127) as any as S.Schema<FrontDoorListResult>,
+  input: ListFrontDoorByResourceGroupRequest,
+  output: FrontDoorListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2299,8 +3262,8 @@ export const ListFrontDoors: API.OperationMethod<
   ListFrontDoorsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(128) as any as S.Schema<ListFrontDoorsRequest>,
-  output: __S(127) as any as S.Schema<FrontDoorListResult>,
+  input: ListFrontDoorsRequest,
+  output: FrontDoorListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2314,8 +3277,8 @@ export const ListFrontendEndpointByFrontDoor: API.OperationMethod<
   ListFrontendEndpointByFrontDoorError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(129) as any as S.Schema<ListFrontendEndpointByFrontDoorRequest>,
-  output: __S(130) as any as S.Schema<FrontendEndpointsListResult>,
+  input: ListFrontendEndpointByFrontDoorRequest,
+  output: FrontendEndpointsListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2329,8 +3292,8 @@ export const ListManagedRuleSets: API.OperationMethod<
   ListManagedRuleSetsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(131) as any as S.Schema<ListManagedRuleSetsRequest>,
-  output: __S(139) as any as S.Schema<ManagedRuleSetDefinitionList>,
+  input: ListManagedRuleSetsRequest,
+  output: ManagedRuleSetDefinitionList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2344,8 +3307,8 @@ export const ListNetworkExperimentProfileByResourceGroup: API.OperationMethod<
   ListNetworkExperimentProfileByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(140) as any as S.Schema<ListNetworkExperimentProfileByResourceGroupRequest>,
-  output: __S(143) as any as S.Schema<ProfileList>,
+  input: ListNetworkExperimentProfileByResourceGroupRequest,
+  output: ProfileList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2359,8 +3322,8 @@ export const ListNetworkExperimentProfiles: API.OperationMethod<
   ListNetworkExperimentProfilesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(144) as any as S.Schema<ListNetworkExperimentProfilesRequest>,
-  output: __S(143) as any as S.Schema<ProfileList>,
+  input: ListNetworkExperimentProfilesRequest,
+  output: ProfileList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2374,8 +3337,8 @@ export const ListPolicies: API.OperationMethod<
   ListPoliciesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(145) as any as S.Schema<ListPoliciesRequest>,
-  output: __S(148) as any as S.Schema<WebApplicationFirewallPolicyList>,
+  input: ListPoliciesRequest,
+  output: WebApplicationFirewallPolicyList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2389,8 +3352,8 @@ export const ListPolicyBySubscription: API.OperationMethod<
   ListPolicyBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(149) as any as S.Schema<ListPolicyBySubscriptionRequest>,
-  output: __S(148) as any as S.Schema<WebApplicationFirewallPolicyList>,
+  input: ListPolicyBySubscriptionRequest,
+  output: WebApplicationFirewallPolicyList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2404,8 +3367,8 @@ export const ListPreconfiguredEndpoints: API.OperationMethod<
   ListPreconfiguredEndpointsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(150) as any as S.Schema<ListPreconfiguredEndpointsRequest>,
-  output: __S(154) as any as S.Schema<PreconfiguredEndpointList>,
+  input: ListPreconfiguredEndpointsRequest,
+  output: PreconfiguredEndpointList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2419,8 +3382,8 @@ export const ListRulesEngineByFrontDoor: API.OperationMethod<
   ListRulesEngineByFrontDoorError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(155) as any as S.Schema<ListRulesEngineByFrontDoorRequest>,
-  output: __S(156) as any as S.Schema<RulesEngineListResult>,
+  input: ListRulesEngineByFrontDoorRequest,
+  output: RulesEngineListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2434,8 +3397,8 @@ export const NetworkExperimentProfilesCreateOrUpdate: API.OperationMethod<
   NetworkExperimentProfilesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(157) as any as S.Schema<NetworkExperimentProfilesCreateOrUpdateRequest>,
-  output: __S(76) as any as S.Schema<NetworkExperimentProfilesCreateOrUpdateResponse>,
+  input: NetworkExperimentProfilesCreateOrUpdateRequest,
+  output: NetworkExperimentProfilesCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2449,8 +3412,8 @@ export const PoliciesCreateOrUpdate: API.OperationMethod<
   PoliciesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(159) as any as S.Schema<PoliciesCreateOrUpdateRequest>,
-  output: __S(146) as any as S.Schema<PoliciesCreateOrUpdateResponse>,
+  input: PoliciesCreateOrUpdateRequest,
+  output: PoliciesCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2464,8 +3427,8 @@ export const PurgeEndpointContent: API.OperationMethod<
   PurgeEndpointContentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(160) as any as S.Schema<PurgeEndpointContentRequest>,
-  output: __S(4) as any as S.Schema<PurgeEndpointContentResponse>,
+  input: PurgeEndpointContentRequest,
+  output: PurgeEndpointContentResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2479,8 +3442,8 @@ export const RulesEnginesCreateOrUpdate: API.OperationMethod<
   RulesEnginesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(161) as any as S.Schema<RulesEnginesCreateOrUpdateRequest>,
-  output: __S(162) as any as S.Schema<RulesEnginesCreateOrUpdateResponse>,
+  input: RulesEnginesCreateOrUpdateRequest,
+  output: RulesEnginesCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2494,8 +3457,8 @@ export const UpdateExperiment: API.OperationMethod<
   UpdateExperimentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(164) as any as S.Schema<UpdateExperimentRequest>,
-  output: __S(69) as any as S.Schema<UpdateExperimentResponse>,
+  input: UpdateExperimentRequest,
+  output: UpdateExperimentResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2509,8 +3472,8 @@ export const UpdateNetworkExperimentProfile: API.OperationMethod<
   UpdateNetworkExperimentProfileError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(166) as any as S.Schema<UpdateNetworkExperimentProfileRequest>,
-  output: __S(76) as any as S.Schema<UpdateNetworkExperimentProfileResponse>,
+  input: UpdateNetworkExperimentProfileRequest,
+  output: UpdateNetworkExperimentProfileResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2524,8 +3487,8 @@ export const UpdatePolicy: API.OperationMethod<
   UpdatePolicyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(167) as any as S.Schema<UpdatePolicyRequest>,
-  output: __S(110) as any as S.Schema<UpdatePolicyResponse>,
+  input: UpdatePolicyRequest,
+  output: UpdatePolicyResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2539,8 +3502,8 @@ export const ValidateFrontDoorCustomDomain: API.OperationMethod<
   ValidateFrontDoorCustomDomainError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(168) as any as S.Schema<ValidateFrontDoorCustomDomainRequest>,
-  output: __S(169) as any as S.Schema<ValidateCustomDomainOutput>,
+  input: ValidateFrontDoorCustomDomainRequest,
+  output: ValidateCustomDomainOutput,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2553,7 +3516,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          type: S.String,
+          type: ResourceType,
         }).pipe(
           T.Http({
             method: "POST",
@@ -2568,7 +3531,7 @@ function __c0(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          nameAvailability: S.optional(S.String),
+          nameAvailability: S.optional(Availability),
           reason: S.optional(S.String),
           message: S.optional(S.String),
         }),
@@ -2580,7 +3543,7 @@ function __c0(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           name: S.String,
-          type: S.String,
+          type: ResourceType,
         }).pipe(
           T.Http({
             method: "POST",
@@ -2712,7 +3675,7 @@ function __c1(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          vault: S.optional(__S(11)),
+          vault: S.optional(KeyVaultCertificateSourceParametersVault),
           secretName: S.optional(S.String),
           secretVersion: S.optional(S.String),
         }),
@@ -2722,7 +3685,7 @@ function __c1(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          certificateType: S.optional(S.String),
+          certificateType: S.optional(FrontDoorCertificateType),
         }),
       ).annotate({
         identifier: "FrontDoorCertificateSourceParameters",
@@ -2734,11 +3697,11 @@ function __c1(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           frontDoorName: S.String.pipe(T.Label()),
           frontendEndpointName: S.String.pipe(T.Label()),
-          certificateSource: S.String,
-          protocolType: S.String,
-          minimumTlsVersion: S.String,
-          keyVaultCertificateSourceParameters: S.optional(__S(12)),
-          frontDoorCertificateSourceParameters: S.optional(__S(13)),
+          certificateSource: FrontDoorCertificateSource,
+          protocolType: FrontDoorTlsProtocolType,
+          minimumTlsVersion: MinimumTLSVersion,
+          keyVaultCertificateSourceParameters: S.optional(KeyVaultCertificateSourceParameters),
+          frontDoorCertificateSourceParameters: S.optional(FrontDoorCertificateSourceParameters),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2767,9 +3730,9 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
-          endpointA: S.optional(__S(16)),
-          endpointB: S.optional(__S(16)),
-          enabledState: S.optional(S.String),
+          endpointA: S.optional(Endpoint),
+          endpointB: S.optional(Endpoint),
+          enabledState: S.optional(State),
         }),
       ).annotate({
         identifier: "ExperimentPropertiesInput",
@@ -2782,8 +3745,8 @@ function __c2(j: number): any {
           profileName: S.String.pipe(T.Label()),
           experimentName: S.String.pipe(T.Label()),
           location: S.optional(S.String),
-          tags: S.optional(__S(15)),
-          properties: S.optional(__S(17)),
+          tags: S.optional(ExperimentsCreateOrUpdateRequestTagsMap),
+          properties: S.optional(ExperimentPropertiesInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2799,10 +3762,10 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
-          endpointA: S.optional(__S(16)),
-          endpointB: S.optional(__S(16)),
-          enabledState: S.optional(S.String),
-          resourceState: S.optional(S.String),
+          endpointA: S.optional(Endpoint),
+          endpointB: S.optional(Endpoint),
+          enabledState: S.optional(State),
+          resourceState: S.optional(NetworkExperimentResourceState),
           status: S.optional(S.String),
           scriptFileUri: S.optional(S.String),
         }),
@@ -2814,16 +3777,16 @@ function __c2(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           location: S.optional(S.String),
-          tags: S.optional(__S(15)),
-          properties: S.optional(__S(19)),
+          tags: S.optional(ExperimentsCreateOrUpdateResponseTagsMap),
+          properties: S.optional(ExperimentProperties),
         }),
       ).annotate({
         identifier: "ExperimentsCreateOrUpdateResponse",
       });
     case 5:
-      return S.Array(__S(11));
+      return S.Array(KeyVaultCertificateSourceParametersVault);
     case 6:
-      return S.Array(S.String);
+      return S.Array(FrontDoorProtocol);
     case 7:
       return S.Array(S.String);
   }
@@ -2839,33 +3802,33 @@ function __c3(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          frontendEndpoints: S.optional(__S(21)),
-          acceptedProtocols: S.optional(__S(22)),
-          patternsToMatch: S.optional(__S(23)),
-          enabledState: S.optional(S.String),
-          routeConfiguration: S.optional(__S(24)),
-          rulesEngine: S.optional(__S(11)),
-          webApplicationFirewallPolicyLink: S.optional(__S(11)),
-          resourceState: S.optional(S.String),
+          frontendEndpoints: S.optional(RoutingRulePropertiesFrontendEndpointsList),
+          acceptedProtocols: S.optional(RoutingRulePropertiesAcceptedProtocolsList),
+          patternsToMatch: S.optional(RoutingRulePropertiesPatternsToMatchList),
+          enabledState: S.optional(RoutingRuleEnabledState),
+          routeConfiguration: S.optional(RouteConfiguration),
+          rulesEngine: S.optional(KeyVaultCertificateSourceParametersVault),
+          webApplicationFirewallPolicyLink: S.optional(KeyVaultCertificateSourceParametersVault),
+          resourceState: S.optional(FrontDoorResourceState),
         }),
       ).annotate({ identifier: "RoutingRuleProperties" });
     case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
-          properties: S.optional(__S(25)),
+          properties: S.optional(RoutingRuleProperties),
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "RoutingRuleInput" });
     case 3:
-      return S.Array(__S(26));
+      return S.Array(RoutingRuleInput);
     case 4:
       return S.suspend(() =>
         S.Struct({
           sampleSize: S.optional(S.Number),
           successfulSamplesRequired: S.optional(S.Number),
           additionalLatencyMilliseconds: S.optional(S.Number),
-          resourceState: S.optional(S.String),
+          resourceState: S.optional(FrontDoorResourceState),
         }),
       ).annotate({
         identifier: "LoadBalancingSettingsProperties",
@@ -2874,23 +3837,23 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
-          properties: S.optional(__S(28)),
+          properties: S.optional(LoadBalancingSettingsProperties),
           name: S.optional(S.String),
         }),
       ).annotate({
         identifier: "LoadBalancingSettingsModelInput",
       });
     case 6:
-      return S.Array(__S(29));
+      return S.Array(LoadBalancingSettingsModelInput);
     case 7:
       return S.suspend(() =>
         S.Struct({
           path: S.optional(S.String),
-          protocol: S.optional(S.String),
+          protocol: S.optional(FrontDoorProtocol),
           intervalInSeconds: S.optional(S.Number),
-          healthProbeMethod: S.optional(S.String),
-          enabledState: S.optional(S.String),
-          resourceState: S.optional(S.String),
+          healthProbeMethod: S.optional(HealthProbeSettingsPropertiesHealthProbeMethod),
+          enabledState: S.optional(HealthProbeEnabled),
+          resourceState: S.optional(FrontDoorResourceState),
         }),
       ).annotate({
         identifier: "HealthProbeSettingsProperties",
@@ -2903,14 +3866,14 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
-          properties: S.optional(__S(31)),
+          properties: S.optional(HealthProbeSettingsProperties),
           name: S.optional(S.String),
         }),
       ).annotate({
         identifier: "HealthProbeSettingsModelInput",
       });
     case 1:
-      return S.Array(__S(32));
+      return S.Array(HealthProbeSettingsModelInput);
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -2918,45 +3881,45 @@ function __c4(j: number): any {
           privateLinkAlias: S.optional(S.String),
           privateLinkResourceId: S.optional(S.String),
           privateLinkLocation: S.optional(S.String),
-          privateEndpointStatus: S.optional(S.String),
+          privateEndpointStatus: S.optional(PrivateEndpointStatus),
           privateLinkApprovalMessage: S.optional(S.String),
           httpPort: S.optional(S.Number),
           httpsPort: S.optional(S.Number),
-          enabledState: S.optional(S.String),
+          enabledState: S.optional(BackendEnabledState),
           priority: S.optional(S.Number),
           weight: S.optional(S.Number),
           backendHostHeader: S.optional(S.String),
         }),
       ).annotate({ identifier: "Backend" });
     case 3:
-      return S.Array(__S(34));
+      return S.Array(Backend);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          backends: S.optional(__S(35)),
-          loadBalancingSettings: S.optional(__S(11)),
-          healthProbeSettings: S.optional(__S(11)),
-          resourceState: S.optional(S.String),
+          backends: S.optional(BackendPoolPropertiesBackendsList),
+          loadBalancingSettings: S.optional(KeyVaultCertificateSourceParametersVault),
+          healthProbeSettings: S.optional(KeyVaultCertificateSourceParametersVault),
+          resourceState: S.optional(FrontDoorResourceState),
         }),
       ).annotate({ identifier: "BackendPoolProperties" });
     case 5:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
-          properties: S.optional(__S(36)),
+          properties: S.optional(BackendPoolProperties),
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "BackendPoolInput" });
     case 6:
-      return S.Array(__S(37));
+      return S.Array(BackendPoolInput);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          certificateSource: S.String,
-          protocolType: S.String,
-          minimumTlsVersion: S.String,
-          keyVaultCertificateSourceParameters: S.optional(__S(12)),
-          frontDoorCertificateSourceParameters: S.optional(__S(13)),
+          certificateSource: FrontDoorCertificateSource,
+          protocolType: FrontDoorTlsProtocolType,
+          minimumTlsVersion: MinimumTLSVersion,
+          keyVaultCertificateSourceParameters: S.optional(KeyVaultCertificateSourceParameters),
+          frontDoorCertificateSourceParameters: S.optional(FrontDoorCertificateSourceParameters),
         }),
       ).annotate({ identifier: "CustomHttpsConfiguration" });
   }
@@ -2967,13 +3930,13 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           hostName: S.optional(S.String),
-          sessionAffinityEnabledState: S.optional(S.String),
+          sessionAffinityEnabledState: S.optional(SessionAffinityEnabledState),
           sessionAffinityTtlSeconds: S.optional(S.Number),
-          webApplicationFirewallPolicyLink: S.optional(__S(11)),
-          resourceState: S.optional(S.String),
-          customHttpsProvisioningState: S.optional(S.String),
-          customHttpsProvisioningSubstate: S.optional(S.String),
-          customHttpsConfiguration: S.optional(__S(39)),
+          webApplicationFirewallPolicyLink: S.optional(KeyVaultCertificateSourceParametersVault),
+          resourceState: S.optional(FrontDoorResourceState),
+          customHttpsProvisioningState: S.optional(CustomHttpsProvisioningState),
+          customHttpsProvisioningSubstate: S.optional(CustomHttpsProvisioningSubstate),
+          customHttpsConfiguration: S.optional(CustomHttpsConfiguration),
         }),
       ).annotate({
         identifier: "FrontendEndpointProperties",
@@ -2983,15 +3946,15 @@ function __c5(j: number): any {
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
-          properties: S.optional(__S(40)),
+          properties: S.optional(FrontendEndpointProperties),
         }),
       ).annotate({ identifier: "FrontendEndpointInput" });
     case 2:
-      return S.Array(__S(41));
+      return S.Array(FrontendEndpointInput);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          enforceCertificateNameCheck: S.optional(S.String),
+          enforceCertificateNameCheck: S.optional(BackendPoolsSettingsEnforceCertificateNameCheck),
           sendRecvTimeoutSeconds: S.optional(S.Number),
         }),
       ).annotate({ identifier: "BackendPoolsSettings" });
@@ -2999,13 +3962,13 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           friendlyName: S.optional(S.String),
-          routingRules: S.optional(__S(27)),
-          loadBalancingSettings: S.optional(__S(30)),
-          healthProbeSettings: S.optional(__S(33)),
-          backendPools: S.optional(__S(38)),
-          frontendEndpoints: S.optional(__S(42)),
-          backendPoolsSettings: S.optional(__S(43)),
-          enabledState: S.optional(S.String),
+          routingRules: S.optional(FrontDoorPropertiesInputRoutingRulesList),
+          loadBalancingSettings: S.optional(FrontDoorPropertiesInputLoadBalancingSettingsList),
+          healthProbeSettings: S.optional(FrontDoorPropertiesInputHealthProbeSettingsList),
+          backendPools: S.optional(FrontDoorPropertiesInputBackendPoolsList),
+          frontendEndpoints: S.optional(FrontDoorPropertiesInputFrontendEndpointsList),
+          backendPoolsSettings: S.optional(BackendPoolsSettings),
+          enabledState: S.optional(FrontDoorEnabledState),
         }),
       ).annotate({ identifier: "FrontDoorPropertiesInput" });
     case 5:
@@ -3015,8 +3978,8 @@ function __c5(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           frontDoorName: S.String.pipe(T.Label()),
           location: S.optional(S.String),
-          tags: S.optional(__S(15)),
-          properties: S.optional(__S(44)),
+          tags: S.optional(FrontDoorsCreateOrUpdateRequestTagsMap),
+          properties: S.optional(FrontDoorPropertiesInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -3032,13 +3995,13 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
-          properties: S.optional(__S(25)),
+          properties: S.optional(RoutingRuleProperties),
           name: S.optional(S.String),
           type: S.optional(S.String),
         }),
       ).annotate({ identifier: "RoutingRule" });
     case 7:
-      return S.Array(__S(46));
+      return S.Array(RoutingRule);
   }
 }
 function __c6(j: number): any {
@@ -3047,7 +4010,7 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
-          properties: S.optional(__S(28)),
+          properties: S.optional(LoadBalancingSettingsProperties),
           name: S.optional(S.String),
           type: S.optional(S.String),
         }),
@@ -3055,40 +4018,40 @@ function __c6(j: number): any {
         identifier: "LoadBalancingSettingsModel",
       });
     case 1:
-      return S.Array(__S(48));
+      return S.Array(LoadBalancingSettingsModel);
     case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
-          properties: S.optional(__S(31)),
+          properties: S.optional(HealthProbeSettingsProperties),
           name: S.optional(S.String),
           type: S.optional(S.String),
         }),
       ).annotate({ identifier: "HealthProbeSettingsModel" });
     case 3:
-      return S.Array(__S(50));
+      return S.Array(HealthProbeSettingsModel);
     case 4:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
-          properties: S.optional(__S(36)),
+          properties: S.optional(BackendPoolProperties),
           name: S.optional(S.String),
           type: S.optional(S.String),
         }),
       ).annotate({ identifier: "BackendPool" });
     case 5:
-      return S.Array(__S(52));
+      return S.Array(BackendPool);
     case 6:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(__S(40)),
+          properties: S.optional(FrontendEndpointProperties),
         }),
       ).annotate({ identifier: "FrontendEndpoint" });
     case 7:
-      return S.Array(__S(54));
+      return S.Array(FrontendEndpoint);
   }
 }
 function __c7(j: number): any {
@@ -3096,53 +4059,53 @@ function __c7(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          headerActionType: S.String,
+          headerActionType: HeaderActionType,
           headerName: S.String,
           value: S.optional(S.String),
         }),
       ).annotate({ identifier: "HeaderAction" });
     case 1:
-      return S.Array(__S(56));
+      return S.Array(HeaderAction);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          requestHeaderActions: S.optional(__S(57)),
-          responseHeaderActions: S.optional(__S(57)),
-          routeConfigurationOverride: S.optional(__S(24)),
+          requestHeaderActions: S.optional(RulesEngineActionRequestHeaderActionsList),
+          responseHeaderActions: S.optional(RulesEngineActionResponseHeaderActionsList),
+          routeConfigurationOverride: S.optional(RouteConfiguration),
         }),
       ).annotate({ identifier: "RulesEngineAction" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          rulesEngineMatchVariable: S.String,
+          rulesEngineMatchVariable: RulesEngineMatchVariable,
           selector: S.optional(S.String),
-          rulesEngineOperator: S.String,
+          rulesEngineOperator: RulesEngineOperator,
           negateCondition: S.optional(S.Boolean),
-          rulesEngineMatchValue: __S(23),
-          transforms: S.optional(__S(22)),
+          rulesEngineMatchValue: RulesEngineMatchConditionRulesEngineMatchValueList,
+          transforms: S.optional(RulesEngineMatchConditionTransformsList),
         }),
       ).annotate({
         identifier: "RulesEngineMatchCondition",
       });
     case 4:
-      return S.Array(__S(59));
+      return S.Array(RulesEngineMatchCondition);
     case 5:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
           priority: S.Number,
-          action: __S(58),
-          matchConditions: S.optional(__S(60)),
-          matchProcessingBehavior: S.optional(S.String),
+          action: RulesEngineAction,
+          matchConditions: S.optional(RulesEngineRuleMatchConditionsList),
+          matchProcessingBehavior: S.optional(MatchProcessingBehavior),
         }),
       ).annotate({ identifier: "RulesEngineRule" });
     case 6:
-      return S.Array(__S(61));
+      return S.Array(RulesEngineRule);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          rules: S.optional(__S(62)),
-          resourceState: S.optional(S.String),
+          rules: S.optional(RulesEnginePropertiesRulesList),
+          resourceState: S.optional(FrontDoorResourceState),
         }),
       ).annotate({ identifier: "RulesEngineProperties" });
   }
@@ -3155,28 +4118,28 @@ function __c8(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(__S(63)),
+          properties: S.optional(RulesEngineProperties),
         }),
       ).annotate({ identifier: "RulesEngine" });
     case 1:
-      return S.Array(__S(64));
+      return S.Array(RulesEngine);
     case 2:
       return S.suspend(() =>
         S.Struct({
           friendlyName: S.optional(S.String),
-          routingRules: S.optional(__S(47)),
-          loadBalancingSettings: S.optional(__S(49)),
-          healthProbeSettings: S.optional(__S(51)),
-          backendPools: S.optional(__S(53)),
-          frontendEndpoints: S.optional(__S(55)),
-          backendPoolsSettings: S.optional(__S(43)),
-          enabledState: S.optional(S.String),
-          resourceState: S.optional(S.String),
+          routingRules: S.optional(FrontDoorPropertiesRoutingRulesList),
+          loadBalancingSettings: S.optional(FrontDoorPropertiesLoadBalancingSettingsList),
+          healthProbeSettings: S.optional(FrontDoorPropertiesHealthProbeSettingsList),
+          backendPools: S.optional(FrontDoorPropertiesBackendPoolsList),
+          frontendEndpoints: S.optional(FrontDoorPropertiesFrontendEndpointsList),
+          backendPoolsSettings: S.optional(BackendPoolsSettings),
+          enabledState: S.optional(FrontDoorEnabledState),
+          resourceState: S.optional(FrontDoorResourceState),
           provisioningState: S.optional(S.String),
           cname: S.optional(S.String),
           frontdoorId: S.optional(S.String),
-          rulesEngines: S.optional(__S(65)),
-          extendedProperties: S.optional(__S(15)),
+          rulesEngines: S.optional(FrontDoorPropertiesRulesEnginesList),
+          extendedProperties: S.optional(FrontDoorPropertiesExtendedPropertiesMap),
         }),
       ).annotate({ identifier: "FrontDoorProperties" });
     case 3:
@@ -3186,8 +4149,8 @@ function __c8(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           location: S.optional(S.String),
-          tags: S.optional(__S(15)),
-          properties: S.optional(__S(66)),
+          tags: S.optional(FrontDoorsCreateOrUpdateResponseTagsMap),
+          properties: S.optional(FrontDoorProperties),
         }),
       ).annotate({
         identifier: "FrontDoorsCreateOrUpdateResponse",
@@ -3215,8 +4178,8 @@ function __c8(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           location: S.optional(S.String),
-          tags: S.optional(__S(15)),
-          properties: S.optional(__S(19)),
+          tags: S.optional(GetExperimentResponseTagsMap),
+          properties: S.optional(ExperimentProperties),
         }),
       ).annotate({ identifier: "GetExperimentResponse" });
     case 6:
@@ -3241,8 +4204,8 @@ function __c8(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           location: S.optional(S.String),
-          tags: S.optional(__S(15)),
-          properties: S.optional(__S(66)),
+          tags: S.optional(GetFrontDoorResponseTagsMap),
+          properties: S.optional(FrontDoorProperties),
         }),
       ).annotate({ identifier: "GetFrontDoorResponse" });
   }
@@ -3273,7 +4236,7 @@ function __c9(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(__S(40)),
+          properties: S.optional(FrontendEndpointProperties),
         }),
       ).annotate({
         identifier: "GetFrontendEndpointResponse",
@@ -3298,8 +4261,8 @@ function __c9(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          resourceState: S.optional(S.String),
-          enabledState: S.optional(S.String),
+          resourceState: S.optional(NetworkExperimentResourceState),
+          enabledState: S.optional(State),
         }),
       ).annotate({ identifier: "ProfileProperties" });
     case 4:
@@ -3309,8 +4272,8 @@ function __c9(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           location: S.optional(S.String),
-          tags: S.optional(__S(15)),
-          properties: S.optional(__S(75)),
+          tags: S.optional(GetNetworkExperimentProfileResponseTagsMap),
+          properties: S.optional(ProfileProperties),
           etag: S.optional(S.String),
         }),
       ).annotate({
@@ -3334,16 +4297,16 @@ function __c9(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          matchVariable: S.String,
-          selectorMatchOperator: S.String,
+          matchVariable: ScrubbingRuleEntryMatchVariable,
+          selectorMatchOperator: ScrubbingRuleEntryMatchOperator,
           selector: S.optional(S.String),
-          state: S.optional(S.String),
+          state: S.optional(ScrubbingRuleEntryState),
         }),
       ).annotate({
         identifier: "WebApplicationFirewallScrubbingRules",
       });
     case 7:
-      return S.Array(__S(78));
+      return S.Array(WebApplicationFirewallScrubbingRules);
   }
 }
 function __c10(j: number): any {
@@ -3351,8 +4314,8 @@ function __c10(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          state: S.optional(S.String),
-          scrubbingRules: S.optional(__S(79)),
+          state: S.optional(WebApplicationFirewallScrubbingState),
+          scrubbingRules: S.optional(PolicySettingsLogScrubbingScrubbingRulesList),
         }),
       ).annotate({
         identifier: "PolicySettingsLogScrubbing",
@@ -3360,54 +4323,54 @@ function __c10(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          enabledState: S.optional(S.String),
-          mode: S.optional(S.String),
+          enabledState: S.optional(PolicyEnabledState),
+          mode: S.optional(PolicyMode),
           redirectUrl: S.optional(S.String),
           customBlockResponseStatusCode: S.optional(S.Number),
           customBlockResponseBody: S.optional(S.String),
-          requestBodyCheck: S.optional(S.String),
+          requestBodyCheck: S.optional(PolicyRequestBodyCheck),
           javascriptChallengeExpirationInMinutes: S.optional(S.Number),
           captchaExpirationInMinutes: S.optional(S.Number),
-          logScrubbing: S.optional(__S(80)),
+          logScrubbing: S.optional(PolicySettingsLogScrubbing),
         }),
       ).annotate({ identifier: "PolicySettings" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          variableName: S.String,
+          variableName: VariableName,
         }),
       ).annotate({ identifier: "GroupByVariable" });
     case 3:
-      return S.Array(__S(82));
+      return S.Array(GroupByVariable);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          matchVariable: S.String,
+          matchVariable: MatchVariable,
           selector: S.optional(S.String),
-          operator: S.String,
+          operator: Operator,
           negateCondition: S.optional(S.Boolean),
-          matchValue: __S(23),
-          transforms: S.optional(__S(22)),
+          matchValue: MatchConditionMatchValueList,
+          transforms: S.optional(MatchConditionTransformsList),
         }),
       ).annotate({ identifier: "MatchCondition" });
     case 5:
-      return S.Array(__S(84));
+      return S.Array(MatchCondition);
     case 6:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           priority: S.Number,
-          enabledState: S.optional(S.String),
-          ruleType: S.String,
+          enabledState: S.optional(CustomRuleEnabledState),
+          ruleType: RuleType,
           rateLimitDurationInMinutes: S.optional(S.Number),
           rateLimitThreshold: S.optional(S.Number),
-          groupBy: S.optional(__S(83)),
-          matchConditions: __S(85),
-          action: S.String,
+          groupBy: S.optional(CustomRuleGroupByList),
+          matchConditions: CustomRuleMatchConditionsList,
+          action: ActionType,
         }),
       ).annotate({ identifier: "CustomRule" });
     case 7:
-      return S.Array(__S(86));
+      return S.Array(CustomRule);
   }
 }
 function __c11(j: number): any {
@@ -3415,49 +4378,49 @@ function __c11(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          rules: S.optional(__S(87)),
+          rules: S.optional(CustomRuleListRulesList),
         }),
       ).annotate({ identifier: "CustomRuleList" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          matchVariable: S.String,
-          selectorMatchOperator: S.String,
+          matchVariable: ManagedRuleExclusionMatchVariable,
+          selectorMatchOperator: ManagedRuleExclusionSelectorMatchOperator,
           selector: S.String,
         }),
       ).annotate({ identifier: "ManagedRuleExclusion" });
     case 2:
-      return S.Array(__S(89));
+      return S.Array(ManagedRuleExclusion);
     case 3:
       return S.suspend(() =>
         S.Struct({
           ruleId: S.String,
-          enabledState: S.optional(S.String),
-          action: S.optional(S.String),
-          sensitivity: S.optional(S.String),
-          exclusions: S.optional(__S(90)),
+          enabledState: S.optional(ManagedRuleEnabledState),
+          action: S.optional(ActionType),
+          sensitivity: S.optional(SensitivityType),
+          exclusions: S.optional(ManagedRuleOverrideExclusionsList),
         }),
       ).annotate({ identifier: "ManagedRuleOverride" });
     case 4:
-      return S.Array(__S(91));
+      return S.Array(ManagedRuleOverride);
     case 5:
       return S.suspend(() =>
         S.Struct({
           ruleGroupName: S.String,
-          exclusions: S.optional(__S(90)),
-          rules: S.optional(__S(92)),
+          exclusions: S.optional(ManagedRuleGroupOverrideExclusionsList),
+          rules: S.optional(ManagedRuleGroupOverrideRulesList),
         }),
       ).annotate({ identifier: "ManagedRuleGroupOverride" });
     case 6:
-      return S.Array(__S(93));
+      return S.Array(ManagedRuleGroupOverride);
     case 7:
       return S.suspend(() =>
         S.Struct({
           ruleSetType: S.String,
           ruleSetVersion: S.String,
-          ruleSetAction: S.optional(S.String),
-          exclusions: S.optional(__S(90)),
-          ruleGroupOverrides: S.optional(__S(94)),
+          ruleSetAction: S.optional(ManagedRuleSetActionType),
+          exclusions: S.optional(ManagedRuleSetExclusionsList),
+          ruleGroupOverrides: S.optional(ManagedRuleSetRuleGroupOverridesList),
         }),
       ).annotate({ identifier: "ManagedRuleSet" });
   }
@@ -3465,7 +4428,7 @@ function __c11(j: number): any {
 function __c12(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(95));
+      return S.Array(ManagedRuleSet);
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -3473,35 +4436,35 @@ function __c12(j: number): any {
         }),
       ).annotate({ identifier: "RuleScope" });
     case 2:
-      return S.Array(__S(97));
+      return S.Array(RuleScope);
     case 3:
       return S.suspend(() =>
         S.Struct({
           ruleGroupName: S.String,
-          ruleScopes: S.optional(__S(98)),
+          ruleScopes: S.optional(RuleGroupScopeRuleScopesList),
         }),
       ).annotate({ identifier: "RuleGroupScope" });
     case 4:
-      return S.Array(__S(99));
+      return S.Array(RuleGroupScope);
     case 5:
       return S.suspend(() =>
         S.Struct({
           ruleSetType: S.String,
           ruleSetVersion: S.String,
-          ruleGroupScopes: S.optional(__S(100)),
+          ruleGroupScopes: S.optional(ManagedRuleSetScopeRuleGroupScopesList),
         }),
       ).annotate({ identifier: "ManagedRuleSetScope" });
     case 6:
-      return S.Array(__S(101));
+      return S.Array(ManagedRuleSetScope);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          matchVariable: S.String,
-          selectorMatchOperator: S.optional(S.String),
+          matchVariable: ExceptionMatchVariable,
+          selectorMatchOperator: S.optional(ExceptionSelectorMatchOperator),
           selector: S.optional(S.String),
-          valueMatchOperator: S.String,
-          matchValues: __S(23),
-          scopes: __S(102),
+          valueMatchOperator: ExceptionValueMatchOperator,
+          matchValues: ManagedRuleSetExceptionMatchValuesList,
+          scopes: ManagedRuleSetExceptionScopesList,
         }),
       ).annotate({ identifier: "ManagedRuleSetException" });
   }
@@ -3509,11 +4472,11 @@ function __c12(j: number): any {
 function __c13(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(103));
+      return S.Array(ManagedRuleSetException);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          exceptions: S.optional(__S(104)),
+          exceptions: S.optional(ManagedRuleSetExceptionListExceptionsList),
         }),
       ).annotate({
         identifier: "ManagedRuleSetExceptionList",
@@ -3521,23 +4484,27 @@ function __c13(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          managedRuleSets: S.optional(__S(96)),
-          exceptionsList: S.optional(__S(105)),
+          managedRuleSets: S.optional(ManagedRuleSetListManagedRuleSetsList),
+          exceptionsList: S.optional(ManagedRuleSetExceptionList),
         }),
       ).annotate({ identifier: "ManagedRuleSetList" });
     case 3:
-      return S.Array(__S(11));
+      return S.Array(KeyVaultCertificateSourceParametersVault);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          policySettings: S.optional(__S(81)),
-          customRules: S.optional(__S(88)),
-          managedRules: S.optional(__S(106)),
-          frontendEndpointLinks: S.optional(__S(107)),
-          routingRuleLinks: S.optional(__S(21)),
-          securityPolicyLinks: S.optional(__S(21)),
+          policySettings: S.optional(PolicySettings),
+          customRules: S.optional(CustomRuleList),
+          managedRules: S.optional(ManagedRuleSetList),
+          frontendEndpointLinks: S.optional(
+            WebApplicationFirewallPolicyPropertiesFrontendEndpointLinksList,
+          ),
+          routingRuleLinks: S.optional(WebApplicationFirewallPolicyPropertiesRoutingRuleLinksList),
+          securityPolicyLinks: S.optional(
+            WebApplicationFirewallPolicyPropertiesSecurityPolicyLinksList,
+          ),
           provisioningState: S.optional(S.String),
-          resourceState: S.optional(S.String),
+          resourceState: S.optional(PolicyResourceState),
         }),
       ).annotate({
         identifier: "WebApplicationFirewallPolicyProperties",
@@ -3545,7 +4512,7 @@ function __c13(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          name: S.optional(S.String),
+          name: S.optional(SkuName),
         }),
       ).annotate({ identifier: "Sku" });
     case 6:
@@ -3555,10 +4522,10 @@ function __c13(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           location: S.optional(S.String),
-          tags: S.optional(__S(15)),
-          properties: S.optional(__S(108)),
+          tags: S.optional(GetPolicyResponseTagsMap),
+          properties: S.optional(WebApplicationFirewallPolicyProperties),
           etag: S.optional(S.String),
-          sku: S.optional(__S(109)),
+          sku: S.optional(Sku),
         }),
       ).annotate({ identifier: "GetPolicyResponse" });
     case 7:
@@ -3570,7 +4537,7 @@ function __c13(j: number): any {
           experimentName: S.String.pipe(T.Label()),
           endDateTimeUTC: S.optional(S.String.pipe(T.Query())),
           country: S.optional(S.String.pipe(T.Query())),
-          aggregationInterval: S.String.pipe(T.Query()),
+          aggregationInterval: GetReportLatencyScorecardsRequestAggregationInterval.pipe(T.Query()),
         }).pipe(
           T.Http({
             method: "GET",
@@ -3602,7 +4569,7 @@ function __c14(j: number): any {
         }),
       ).annotate({ identifier: "LatencyMetric" });
     case 1:
-      return S.Array(__S(112));
+      return S.Array(LatencyMetric);
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -3614,7 +4581,7 @@ function __c14(j: number): any {
           startDateTimeUTC: S.optional(S.String),
           endDateTimeUTC: S.optional(S.String),
           country: S.optional(S.String),
-          latencyMetrics: S.optional(__S(113)),
+          latencyMetrics: S.optional(LatencyScorecardPropertiesLatencyMetricsList),
         }),
       ).annotate({
         identifier: "LatencyScorecardProperties",
@@ -3626,8 +4593,8 @@ function __c14(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           location: S.optional(S.String),
-          tags: S.optional(__S(15)),
-          properties: S.optional(__S(114)),
+          tags: S.optional(GetReportLatencyScorecardsResponseTagsMap),
+          properties: S.optional(LatencyScorecardProperties),
         }),
       ).annotate({
         identifier: "GetReportLatencyScorecardsResponse",
@@ -3641,8 +4608,8 @@ function __c14(j: number): any {
           experimentName: S.String.pipe(T.Label()),
           startDateTimeUTC: S.String.pipe(T.Query()),
           endDateTimeUTC: S.String.pipe(T.Query()),
-          aggregationInterval: S.String.pipe(T.Query()),
-          timeseriesType: S.String.pipe(T.Query()),
+          aggregationInterval: GetReportTimeseriesRequestAggregationInterval.pipe(T.Query()),
+          timeseriesType: GetReportTimeseriesRequestTimeseriesType.pipe(T.Query()),
           endpoint: S.optional(S.String.pipe(T.Query())),
           country: S.optional(S.String.pipe(T.Query())),
         }).pipe(
@@ -3664,17 +4631,17 @@ function __c14(j: number): any {
         }),
       ).annotate({ identifier: "TimeseriesDataPoint" });
     case 6:
-      return S.Array(__S(117));
+      return S.Array(TimeseriesDataPoint);
     case 7:
       return S.suspend(() =>
         S.Struct({
           endpoint: S.optional(S.String),
           startDateTimeUTC: S.optional(S.String),
           endDateTimeUTC: S.optional(S.String),
-          aggregationInterval: S.optional(S.String),
-          timeseriesType: S.optional(S.String),
+          aggregationInterval: S.optional(AggregationInterval),
+          timeseriesType: S.optional(TimeseriesType),
           country: S.optional(S.String),
-          timeseriesData: S.optional(__S(118)),
+          timeseriesData: S.optional(TimeseriesPropertiesTimeseriesDataList),
         }),
       ).annotate({ identifier: "TimeseriesProperties" });
   }
@@ -3688,8 +4655,8 @@ function __c15(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           location: S.optional(S.String),
-          tags: S.optional(__S(15)),
-          properties: S.optional(__S(119)),
+          tags: S.optional(GetReportTimeseriesResponseTagsMap),
+          properties: S.optional(TimeseriesProperties),
         }),
       ).annotate({
         identifier: "GetReportTimeseriesResponse",
@@ -3728,11 +4695,11 @@ function __c15(j: number): any {
         identifier: "ListExperimentByProfileRequest",
       });
     case 3:
-      return S.Array(__S(69));
+      return S.Array(Experiment);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: __S(123),
+          value: ExperimentListValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ExperimentList" });
@@ -3753,11 +4720,11 @@ function __c15(j: number): any {
         identifier: "ListFrontDoorByResourceGroupRequest",
       });
     case 6:
-      return S.Array(__S(71));
+      return S.Array(FrontDoor);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          value: __S(126),
+          value: FrontDoorListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "FrontDoorListResult" });
@@ -3798,7 +4765,7 @@ function __c16(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(55),
+          value: FrontendEndpointsListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -3823,27 +4790,27 @@ function __c16(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ruleId: S.optional(S.String),
-          defaultState: S.optional(S.String),
-          defaultAction: S.optional(S.String),
-          defaultSensitivity: S.optional(S.String),
+          defaultState: S.optional(ManagedRuleEnabledState),
+          defaultAction: S.optional(ActionType),
+          defaultSensitivity: S.optional(SensitivityType),
           description: S.optional(S.String),
-          paranoiaLevel: S.optional(S.String),
+          paranoiaLevel: S.optional(ParanoiaLevel),
         }),
       ).annotate({ identifier: "ManagedRuleDefinition" });
     case 5:
-      return S.Array(__S(132));
+      return S.Array(ManagedRuleDefinition);
     case 6:
       return S.suspend(() =>
         S.Struct({
           ruleGroupName: S.optional(S.String),
           description: S.optional(S.String),
-          rules: S.optional(__S(133)),
+          rules: S.optional(ManagedRuleGroupDefinitionRulesList),
         }),
       ).annotate({
         identifier: "ManagedRuleGroupDefinition",
       });
     case 7:
-      return S.Array(__S(134));
+      return S.Array(ManagedRuleGroupDefinition);
   }
 }
 function __c17(j: number): any {
@@ -3855,9 +4822,9 @@ function __c17(j: number): any {
           ruleSetId: S.optional(S.String),
           ruleSetType: S.optional(S.String),
           ruleSetVersion: S.optional(S.String),
-          ruleGroups: S.optional(__S(135)),
+          ruleGroups: S.optional(ManagedRuleSetDefinitionPropertiesRuleGroupsList),
           displayName: S.optional(S.String),
-          status: S.optional(S.String),
+          status: S.optional(ManagedRuleSetStatus),
         }),
       ).annotate({
         identifier: "ManagedRuleSetDefinitionProperties",
@@ -3869,16 +4836,16 @@ function __c17(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           location: S.optional(S.String),
-          tags: S.optional(__S(15)),
-          properties: S.optional(__S(136)),
+          tags: S.optional(ManagedRuleSetDefinitionTagsMap),
+          properties: S.optional(ManagedRuleSetDefinitionProperties),
         }),
       ).annotate({ identifier: "ManagedRuleSetDefinition" });
     case 2:
-      return S.Array(__S(137));
+      return S.Array(ManagedRuleSetDefinition);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: __S(138),
+          value: ManagedRuleSetDefinitionListValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -3907,17 +4874,17 @@ function __c17(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           location: S.optional(S.String),
-          tags: S.optional(__S(15)),
-          properties: S.optional(__S(75)),
+          tags: S.optional(ProfileTagsMap),
+          properties: S.optional(ProfileProperties),
           etag: S.optional(S.String),
         }),
       ).annotate({ identifier: "Profile" });
     case 6:
-      return S.Array(__S(141));
+      return S.Array(Profile);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          value: __S(142),
+          value: ProfileListValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ProfileList" });
@@ -3961,20 +4928,20 @@ function __c18(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           location: S.optional(S.String),
-          tags: S.optional(__S(15)),
-          properties: S.optional(__S(108)),
+          tags: S.optional(WebApplicationFirewallPolicyTagsMap),
+          properties: S.optional(WebApplicationFirewallPolicyProperties),
           etag: S.optional(S.String),
-          sku: S.optional(__S(109)),
+          sku: S.optional(Sku),
         }),
       ).annotate({
         identifier: "WebApplicationFirewallPolicy",
       });
     case 3:
-      return S.Array(__S(146));
+      return S.Array(WebApplicationFirewallPolicy);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: __S(147),
+          value: WebApplicationFirewallPolicyListValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -4017,7 +4984,7 @@ function __c18(j: number): any {
         S.Struct({
           description: S.optional(S.String),
           endpoint: S.optional(S.String),
-          endpointType: S.optional(S.String),
+          endpointType: S.optional(EndpointType),
           backend: S.optional(S.String),
         }),
       ).annotate({
@@ -4034,16 +5001,16 @@ function __c19(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           location: S.optional(S.String),
-          tags: S.optional(__S(15)),
-          properties: S.optional(__S(151)),
+          tags: S.optional(PreconfiguredEndpointTagsMap),
+          properties: S.optional(PreconfiguredEndpointProperties),
         }),
       ).annotate({ identifier: "PreconfiguredEndpoint" });
     case 1:
-      return S.Array(__S(152));
+      return S.Array(PreconfiguredEndpoint);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(153),
+          value: PreconfiguredEndpointListValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -4069,7 +5036,7 @@ function __c19(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: __S(65),
+          value: RulesEngineListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "RulesEngineListResult" });
@@ -4080,8 +5047,8 @@ function __c19(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           profileName: S.String.pipe(T.Label()),
           location: S.optional(S.String),
-          tags: S.optional(__S(15)),
-          properties: S.optional(__S(75)),
+          tags: S.optional(NetworkExperimentProfilesCreateOrUpdateRequestTagsMap),
+          properties: S.optional(ProfileProperties),
           etag: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -4097,9 +5064,9 @@ function __c19(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          policySettings: S.optional(__S(81)),
-          customRules: S.optional(__S(88)),
-          managedRules: S.optional(__S(106)),
+          policySettings: S.optional(PolicySettings),
+          customRules: S.optional(CustomRuleList),
+          managedRules: S.optional(ManagedRuleSetList),
         }),
       ).annotate({
         identifier: "WebApplicationFirewallPolicyPropertiesInput",
@@ -4111,10 +5078,10 @@ function __c19(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           policyName: S.String.pipe(T.Label()),
           location: S.optional(S.String),
-          tags: S.optional(__S(15)),
-          properties: S.optional(__S(158)),
+          tags: S.optional(PoliciesCreateOrUpdateRequestTagsMap),
+          properties: S.optional(WebApplicationFirewallPolicyPropertiesInput),
           etag: S.optional(S.String),
-          sku: S.optional(__S(109)),
+          sku: S.optional(Sku),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -4136,7 +5103,7 @@ function __c20(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           frontDoorName: S.String.pipe(T.Label()),
-          contentPaths: __S(23),
+          contentPaths: PurgeEndpointContentRequestContentPathsList,
         }).pipe(
           T.Http({
             method: "POST",
@@ -4155,7 +5122,7 @@ function __c20(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           frontDoorName: S.String.pipe(T.Label()),
           rulesEngineName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(63)),
+          properties: S.optional(RulesEngineProperties),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -4173,7 +5140,7 @@ function __c20(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(__S(63)),
+          properties: S.optional(RulesEngineProperties),
         }),
       ).annotate({
         identifier: "RulesEnginesCreateOrUpdateResponse",
@@ -4182,7 +5149,7 @@ function __c20(j: number): any {
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
-          enabledState: S.optional(S.String),
+          enabledState: S.optional(State),
         }),
       ).annotate({
         identifier: "ExperimentUpdateProperties",
@@ -4194,8 +5161,8 @@ function __c20(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           profileName: S.String.pipe(T.Label()),
           experimentName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(15)),
-          properties: S.optional(__S(163)),
+          tags: S.optional(UpdateExperimentRequestTagsMap),
+          properties: S.optional(ExperimentUpdateProperties),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -4208,7 +5175,7 @@ function __c20(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          enabledState: S.optional(S.String),
+          enabledState: S.optional(State),
         }),
       ).annotate({ identifier: "ProfileUpdateProperties" });
     case 6:
@@ -4217,8 +5184,8 @@ function __c20(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           profileName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(165)),
-          tags: S.optional(__S(15)),
+          properties: S.optional(ProfileUpdateProperties),
+          tags: S.optional(UpdateNetworkExperimentProfileRequestTagsMap),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -4236,7 +5203,7 @@ function __c20(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           policyName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(15)),
+          tags: S.optional(UpdatePolicyRequestTagsMap),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -4278,58 +5245,5 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "ValidateCustomDomainOutput",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
-    case 9:
-      return __c9(i & 7);
-    case 10:
-      return __c10(i & 7);
-    case 11:
-      return __c11(i & 7);
-    case 12:
-      return __c12(i & 7);
-    case 13:
-      return __c13(i & 7);
-    case 14:
-      return __c14(i & 7);
-    case 15:
-      return __c15(i & 7);
-    case 16:
-      return __c16(i & 7);
-    case 17:
-      return __c17(i & 7);
-    case 18:
-      return __c18(i & 7);
-    case 19:
-      return __c19(i & 7);
-    case 20:
-      return __c20(i & 7);
-    case 21:
-      return __c21(i & 7);
   }
 }

@@ -6,8 +6,6 @@ import * as S from "@distilled.cloud/core/schema";
 import { VercelProtocol, type VercelOpError, type VercelOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { VercelOpError, VercelOpContext };
 
@@ -57,6 +55,11 @@ export class PaymentRequired
   ) {}
 
 export type CreateNetworkRequestAwsAvailabilityZoneIdsList = Array<string>;
+const CreateNetworkRequestAwsAvailabilityZoneIdsList = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<CreateNetworkRequestAwsAvailabilityZoneIdsList>;
+
 export interface CreateNetworkRequest {
   /** The Team identifier to perform the request on behalf of. */
   teamId?: string;
@@ -70,24 +73,41 @@ export interface CreateNetworkRequest {
   /** The region where the network will be created */
   region: string;
 }
+const CreateNetworkRequest = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<CreateNetworkRequest>;
+
 /** The IDs of the AWS Availability Zones in which the network exists, if specified during creation. */
 export type NetworkAwsAvailabilityZoneIdsList = Array<string>;
+const NetworkAwsAvailabilityZoneIdsList =
+  CreateNetworkRequestAwsAvailabilityZoneIdsList as any as S.Schema<NetworkAwsAvailabilityZoneIdsList>;
+
 export type NetworkEgressIpAddressesList = Array<string>;
+const NetworkEgressIpAddressesList =
+  CreateNetworkRequestAwsAvailabilityZoneIdsList as any as S.Schema<NetworkEgressIpAddressesList>;
+
 /** Metadata about any AWS Route53 Hosted Zones associated with the Network. */
 export interface NetworkHostedZones {
   /** The number of AWS Route53 Hosted Zones associated with the Network. */
   count: number;
 }
+const NetworkHostedZones = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<NetworkHostedZones>;
+
 /** Metadata about any AWS Route53 Hosted Zones associated with the Network. */
 export type NetworkPeeringConnections = NetworkHostedZones;
 export type NetworkProjectsIdsList = Array<string>;
+const NetworkProjectsIdsList =
+  CreateNetworkRequestAwsAvailabilityZoneIdsList as any as S.Schema<NetworkProjectsIdsList>;
+
 /** Metadata about any projects associated with the Network. */
 export interface NetworkProjects {
   count: number;
   ids: NetworkProjectsIdsList;
 }
+const NetworkProjects = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<NetworkProjects>;
+
 /** The status of the Network. */
 export type NetworkStatus = "create_in_progress" | "delete_in_progress" | "error" | "ready";
+const NetworkStatus = S.String;
+
 export interface Network {
   /** The ID of the AWS Account in which the network exists. */
   awsAccountId: string;
@@ -119,6 +139,8 @@ export interface Network {
   /** The ID of the VPC which hosts the network. */
   vpcId?: string;
 }
+const Network = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<Network>;
+
 export interface CreatePrivateLinkEndpointRequest {
   /** The Team identifier to perform the request on behalf of. */
   teamId?: string;
@@ -135,10 +157,21 @@ export interface CreatePrivateLinkEndpointRequest {
   /** Whether to resolve the endpoint service through its private DNS names, which are then returned in `privateDnsNames`. Defaults to `false`, in which case the endpoint is reachable through the DNS names in `awsDnsEntries`. */
   enablePrivateDns?: boolean;
 }
+const CreatePrivateLinkEndpointRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<CreatePrivateLinkEndpointRequest>;
+
 /** The regional DNS names assigned to the endpoint by AWS. Use these to reach the service when private DNS is not enabled. */
 export type PrivateLinkEndpointAwsDnsEntriesList = Array<string>;
+const PrivateLinkEndpointAwsDnsEntriesList =
+  CreateNetworkRequestAwsAvailabilityZoneIdsList as any as S.Schema<PrivateLinkEndpointAwsDnsEntriesList>;
+
 /** The private DNS names of the endpoint service, populated when private DNS is enabled for the endpoint. */
 export type PrivateLinkEndpointPrivateDnsNamesList = Array<string>;
+const PrivateLinkEndpointPrivateDnsNamesList =
+  CreateNetworkRequestAwsAvailabilityZoneIdsList as any as S.Schema<PrivateLinkEndpointPrivateDnsNamesList>;
+
 /** The current state of the endpoint. - `creating`: the endpoint is being created. - `pending-acceptance`: waiting for the endpoint service owner to accept the connection. Only occurs for services that require manual acceptance. - `provisioning`: the connection was accepted and AWS is finishing setup. - `available`: the endpoint is fully provisioned and ready to use. - `rejected`: the endpoint service owner rejected the connection. - `failed`: the endpoint could not be provisioned. - `deleting`: the endpoint is being deleted. */
 export type PrivateLinkEndpointStatus =
   | "available"
@@ -148,6 +181,8 @@ export type PrivateLinkEndpointStatus =
   | "pending-acceptance"
   | "provisioning"
   | "rejected";
+const PrivateLinkEndpointStatus = S.String;
+
 /** A PrivateLink endpoint, which connects a project to an AWS VPC endpoint service in a single region so that traffic reaches the service over AWS PrivateLink rather than the public internet. */
 export interface PrivateLinkEndpoint {
   /** The regional DNS names assigned to the endpoint by AWS. Use these to reach the service when private DNS is not enabled. */
@@ -177,6 +212,8 @@ export interface PrivateLinkEndpoint {
   /** The identifier of the underlying AWS VPC endpoint. Absent until AWS has created the endpoint. */
   vpcEndpointId?: string;
 }
+const PrivateLinkEndpoint = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<PrivateLinkEndpoint>;
+
 export interface DeleteNetworkRequest {
   /** The ID of the network to delete */
   networkId: string;
@@ -185,7 +222,14 @@ export interface DeleteNetworkRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
+const DeleteNetworkRequest = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<DeleteNetworkRequest>;
+
 export interface DeleteNetworkResponse {}
+const DeleteNetworkResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<DeleteNetworkResponse>;
+
 export interface DeletePrivateLinkEndpointRequest {
   /** The unique identifier of the PrivateLink endpoint. */
   endpointId: string;
@@ -196,7 +240,17 @@ export interface DeletePrivateLinkEndpointRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
+const DeletePrivateLinkEndpointRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<DeletePrivateLinkEndpointRequest>;
+
 export type DeletePrivateLinkEndpointResponse = unknown;
+const DeletePrivateLinkEndpointResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<DeletePrivateLinkEndpointResponse>;
+
 export interface ListNetworksRequest {
   /** Whether to include Hosted Zones in the response */
   includeHostedZones?: boolean;
@@ -211,8 +265,17 @@ export interface ListNetworksRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
+const ListNetworksRequest = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<ListNetworksRequest>;
+
 export type ListNetworksResponseBodyList = Array<Network>;
+const ListNetworksResponseBodyList = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<ListNetworksResponseBodyList>;
+
 export type ListNetworksResponse = ListNetworksResponseBodyList;
+const ListNetworksResponse = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<ListNetworksResponse>;
+
 export interface ListPrivateLinkEndpointsRequest {
   /** The project ID to list PrivateLink endpoints for. */
   projectId: string;
@@ -221,8 +284,23 @@ export interface ListPrivateLinkEndpointsRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
+const ListPrivateLinkEndpointsRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<ListPrivateLinkEndpointsRequest>;
+
 export type ListPrivateLinkEndpointsResponseBodyList = Array<PrivateLinkEndpoint>;
+const ListPrivateLinkEndpointsResponseBodyList = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<ListPrivateLinkEndpointsResponseBodyList>;
+
 export type ListPrivateLinkEndpointsResponse = ListPrivateLinkEndpointsResponseBodyList;
+const ListPrivateLinkEndpointsResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<ListPrivateLinkEndpointsResponse>;
+
 export interface ReadNetworkRequest {
   /** The unique identifier of the Secure Compute network */
   networkId: string;
@@ -231,6 +309,8 @@ export interface ReadNetworkRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
+const ReadNetworkRequest = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<ReadNetworkRequest>;
+
 export interface ReadPrivateLinkEndpointRequest {
   /** The unique identifier of the PrivateLink endpoint. */
   endpointId: string;
@@ -241,6 +321,11 @@ export interface ReadPrivateLinkEndpointRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
+const ReadPrivateLinkEndpointRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<ReadPrivateLinkEndpointRequest>;
+
 export interface UpdateNetworkRequest {
   /** The unique identifier of the Secure Compute network */
   networkId: string;
@@ -251,6 +336,8 @@ export interface UpdateNetworkRequest {
   /** The name of the Secure Compute network */
   name: string;
 }
+const UpdateNetworkRequest = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<UpdateNetworkRequest>;
+
 export interface UpdatePrivateLinkEndpointRequest {
   /** The unique identifier of the PrivateLink endpoint. */
   endpointId: string;
@@ -265,7 +352,15 @@ export interface UpdatePrivateLinkEndpointRequest {
   /** When `true`, resolves the endpoint service through its private DNS names, which are then returned in `privateDnsNames`. When `false`, clears them. When omitted, the current setting is kept. At least one of `name` or `enablePrivateDns` must be provided. */
   enablePrivateDns?: boolean;
 }
+const UpdatePrivateLinkEndpointRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<UpdatePrivateLinkEndpointRequest>;
+
 export type UpdateStaticIpsRequestRegionsList = Array<string>;
+const UpdateStaticIpsRequestRegionsList =
+  CreateNetworkRequestAwsAvailabilityZoneIdsList as any as S.Schema<UpdateStaticIpsRequestRegionsList>;
+
 export interface UpdateStaticIpsRequest {
   /** The unique project identifier or the project name */
   idOrName: string;
@@ -277,15 +372,31 @@ export interface UpdateStaticIpsRequest {
   builds?: boolean;
   regions?: UpdateStaticIpsRequestRegionsList;
 }
+const UpdateStaticIpsRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<UpdateStaticIpsRequest>;
+
 export type UpdateStaticIpsResponseBodyItemAwsSubnetIdsList = Array<string>;
+const UpdateStaticIpsResponseBodyItemAwsSubnetIdsList =
+  CreateNetworkRequestAwsAvailabilityZoneIdsList as any as S.Schema<UpdateStaticIpsResponseBodyItemAwsSubnetIdsList>;
+
 export interface UpdateStaticIpsResponseBodyItemAws {
   securityGroupId?: string;
   subnetIds: UpdateStaticIpsResponseBodyItemAwsSubnetIdsList;
 }
+const UpdateStaticIpsResponseBodyItemAws = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<UpdateStaticIpsResponseBodyItemAws>;
+
 export type UpdateStaticIpsResponseBodyItemEnvIdCase1 = "preview" | "production";
 export type UpdateStaticIpsResponseBodyItemEnvId =
   | string
   | UpdateStaticIpsResponseBodyItemEnvIdCase1;
+const UpdateStaticIpsResponseBodyItemEnvId =
+  S.Unknown as any as S.Schema<UpdateStaticIpsResponseBodyItemEnvId>;
+
 export interface UpdateStaticIpsResponseBodyItem {
   aws?: UpdateStaticIpsResponseBodyItemAws;
   buildsEnabled: boolean;
@@ -296,8 +407,23 @@ export interface UpdateStaticIpsResponseBodyItem {
   passive: boolean;
   updatedAt: number;
 }
+const UpdateStaticIpsResponseBodyItem = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<UpdateStaticIpsResponseBodyItem>;
+
 export type UpdateStaticIpsResponseBodyList = Array<UpdateStaticIpsResponseBodyItem>;
+const UpdateStaticIpsResponseBodyList = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<UpdateStaticIpsResponseBodyList>;
+
 export type UpdateStaticIpsResponse = UpdateStaticIpsResponseBodyList;
+const UpdateStaticIpsResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<UpdateStaticIpsResponse>;
+
 export type CreateNetworkError =
   | BadRequest
   | PaymentRequired
@@ -312,8 +438,8 @@ export const createNetwork: API.OperationMethod<
   CreateNetworkError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1) as any as S.Schema<CreateNetworkRequest>,
-  output: __S(4) as any as S.Schema<Network>,
+  input: CreateNetworkRequest,
+  output: Network,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound, Conflict],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -332,8 +458,8 @@ export const createPrivateLinkEndpoint: API.OperationMethod<
   CreatePrivateLinkEndpointError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5) as any as S.Schema<CreatePrivateLinkEndpointRequest>,
-  output: __S(6) as any as S.Schema<PrivateLinkEndpoint>,
+  input: CreatePrivateLinkEndpointRequest,
+  output: PrivateLinkEndpoint,
   errors: [BadRequest, Forbidden, NotFound, Conflict],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -353,8 +479,8 @@ export const deleteNetwork: API.OperationMethod<
   DeleteNetworkError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7) as any as S.Schema<DeleteNetworkRequest>,
-  output: __S(8) as any as S.Schema<DeleteNetworkResponse>,
+  input: DeleteNetworkRequest,
+  output: DeleteNetworkResponse,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound, Conflict],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -373,8 +499,8 @@ export const deletePrivateLinkEndpoint: API.OperationMethod<
   DeletePrivateLinkEndpointError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9) as any as S.Schema<DeletePrivateLinkEndpointRequest>,
-  output: __S(10) as any as S.Schema<DeletePrivateLinkEndpointResponse>,
+  input: DeletePrivateLinkEndpointRequest,
+  output: DeletePrivateLinkEndpointResponse,
   errors: [BadRequest, Forbidden, NotFound, Conflict],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -388,8 +514,8 @@ export const listNetworks: API.OperationMethod<
   ListNetworksError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11) as any as S.Schema<ListNetworksRequest>,
-  output: __S(13) as any as S.Schema<ListNetworksResponse>,
+  input: ListNetworksRequest,
+  output: ListNetworksResponse,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -403,8 +529,8 @@ export const listPrivateLinkEndpoints: API.OperationMethod<
   ListPrivateLinkEndpointsError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14) as any as S.Schema<ListPrivateLinkEndpointsRequest>,
-  output: __S(16) as any as S.Schema<ListPrivateLinkEndpointsResponse>,
+  input: ListPrivateLinkEndpointsRequest,
+  output: ListPrivateLinkEndpointsResponse,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -418,8 +544,8 @@ export const readNetwork: API.OperationMethod<
   ReadNetworkError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17) as any as S.Schema<ReadNetworkRequest>,
-  output: __S(4) as any as S.Schema<Network>,
+  input: ReadNetworkRequest,
+  output: Network,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -433,8 +559,8 @@ export const readPrivateLinkEndpoint: API.OperationMethod<
   ReadPrivateLinkEndpointError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18) as any as S.Schema<ReadPrivateLinkEndpointRequest>,
-  output: __S(6) as any as S.Schema<PrivateLinkEndpoint>,
+  input: ReadPrivateLinkEndpointRequest,
+  output: PrivateLinkEndpoint,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -448,8 +574,8 @@ export const updateNetwork: API.OperationMethod<
   UpdateNetworkError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19) as any as S.Schema<UpdateNetworkRequest>,
-  output: __S(4) as any as S.Schema<Network>,
+  input: UpdateNetworkRequest,
+  output: Network,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -468,8 +594,8 @@ export const updatePrivateLinkEndpoint: API.OperationMethod<
   UpdatePrivateLinkEndpointError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20) as any as S.Schema<UpdatePrivateLinkEndpointRequest>,
-  output: __S(6) as any as S.Schema<PrivateLinkEndpoint>,
+  input: UpdatePrivateLinkEndpointRequest,
+  output: PrivateLinkEndpoint,
   errors: [BadRequest, Forbidden, NotFound, Conflict],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -489,8 +615,8 @@ export const updateStaticIps: API.OperationMethod<
   UpdateStaticIpsError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21) as any as S.Schema<UpdateStaticIpsRequest>,
-  output: __S(25) as any as S.Schema<UpdateStaticIpsResponse>,
+  input: UpdateStaticIpsRequest,
+  output: UpdateStaticIpsResponse,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound, Conflict],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -506,7 +632,7 @@ function __c0(j: number): any {
         S.Struct({
           teamId: S.optional(S.String.pipe(T.Query())),
           slug: S.optional(S.String.pipe(T.Query())),
-          awsAvailabilityZoneIds: S.optional(__S(0)),
+          awsAvailabilityZoneIds: S.optional(CreateNetworkRequestAwsAvailabilityZoneIdsList),
           cidr: S.String,
           name: S.String,
           region: S.String,
@@ -522,25 +648,25 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           count: S.Number,
-          ids: __S(0),
+          ids: NetworkProjectsIdsList,
         }),
       ).annotate({ identifier: "NetworkProjects" });
     case 4:
       return S.suspend(() =>
         S.Struct({
           awsAccountId: S.String,
-          awsAvailabilityZoneIds: S.optional(__S(0)),
+          awsAvailabilityZoneIds: S.optional(NetworkAwsAvailabilityZoneIdsList),
           awsRegion: S.String,
           cidr: S.String,
           createdAt: S.Number,
-          egressIpAddresses: S.optional(__S(0)),
-          hostedZones: S.optional(__S(2)),
+          egressIpAddresses: S.optional(NetworkEgressIpAddressesList),
+          hostedZones: S.optional(NetworkHostedZones),
           id: S.String,
           name: S.String,
-          peeringConnections: S.optional(__S(2)),
-          projects: S.optional(__S(3)),
+          peeringConnections: S.optional(NetworkHostedZones),
+          projects: S.optional(NetworkProjects),
           region: S.optional(S.String),
-          status: S.String,
+          status: NetworkStatus,
           teamId: S.String,
           vpcId: S.optional(S.String),
         }),
@@ -562,14 +688,14 @@ function __c0(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          awsDnsEntries: S.optional(__S(0)),
+          awsDnsEntries: S.optional(PrivateLinkEndpointAwsDnsEntriesList),
           awsServiceName: S.String,
           createdAt: S.Number,
           endpointId: S.String,
           name: S.String,
-          privateDnsNames: S.optional(__S(0)),
+          privateDnsNames: S.optional(PrivateLinkEndpointPrivateDnsNamesList),
           projectId: S.String,
-          status: S.String,
+          status: PrivateLinkEndpointStatus,
           statusMessage: S.optional(S.String),
           teamId: S.String,
           updatedAt: S.Number,
@@ -626,9 +752,9 @@ function __c1(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/v1/connect/networks", code: 200 })),
       ).annotate({ identifier: "ListNetworksRequest" });
     case 4:
-      return S.Array(__S(4));
+      return S.Array(Network);
     case 5:
-      return S.suspend(() => __S(12).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => ListNetworksResponseBodyList.pipe(T.RawResponseRoot())).annotate({
         identifier: "ListNetworksResponse",
       });
     case 6:
@@ -642,13 +768,15 @@ function __c1(j: number): any {
         identifier: "ListPrivateLinkEndpointsRequest",
       });
     case 7:
-      return S.Array(__S(6));
+      return S.Array(PrivateLinkEndpoint);
   }
 }
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => __S(15).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        ListPrivateLinkEndpointsResponseBodyList.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "ListPrivateLinkEndpointsResponse",
       });
     case 1:
@@ -711,7 +839,7 @@ function __c2(j: number): any {
           teamId: S.optional(S.String.pipe(T.Query())),
           slug: S.optional(S.String.pipe(T.Query())),
           builds: S.optional(S.Boolean),
-          regions: S.optional(__S(0)),
+          regions: S.optional(UpdateStaticIpsRequestRegionsList),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -724,7 +852,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           securityGroupId: S.optional(S.String),
-          subnetIds: __S(0),
+          subnetIds: UpdateStaticIpsResponseBodyItemAwsSubnetIdsList,
         }),
       ).annotate({
         identifier: "UpdateStaticIpsResponseBodyItemAws",
@@ -732,12 +860,12 @@ function __c2(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          aws: S.optional(__S(22)),
+          aws: S.optional(UpdateStaticIpsResponseBodyItemAws),
           buildsEnabled: S.Boolean,
           connectConfigurationId: S.String,
           createdAt: S.Number,
           dc: S.optional(S.String),
-          envId: S.Unknown,
+          envId: UpdateStaticIpsResponseBodyItemEnvId,
           passive: S.Boolean,
           updatedAt: S.Number,
         }),
@@ -749,27 +877,10 @@ function __c2(j: number): any {
 function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(23));
+      return S.Array(UpdateStaticIpsResponseBodyItem);
     case 1:
-      return S.suspend(() => __S(24).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => UpdateStaticIpsResponseBodyList.pipe(T.RawResponseRoot())).annotate({
         identifier: "UpdateStaticIpsResponse",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
   }
 }

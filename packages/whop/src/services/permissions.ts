@@ -6,8 +6,6 @@ import * as S from "@distilled.cloud/core/schema";
 import { WhopProtocol, type WhopOpError, type WhopOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { WhopOpError, WhopOpContext };
 
@@ -26,6 +24,11 @@ export interface ListPermissionsRequest {
   /** Comma-separated permission actions to check, for example `stats:read,payment:basic:read`. Every action is returned when omitted. */
   actions?: string;
 }
+const ListPermissionsRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<ListPermissionsRequest>;
+
 /** A permission action identifier, such as `company:basic:read`. */
 export type PermissionAction =
   | "waitlist_entry:read"
@@ -300,15 +303,32 @@ export type PermissionAction =
   | "user:notifications:read"
   | "user:notifications:update"
   | "user:profile:update";
+const PermissionAction = S.String;
+
 export interface ListPermissionsResponseDataItem {
   action: PermissionAction;
   /** Whether the credential is granted the action for the resource. */
   granted: boolean;
 }
+const ListPermissionsResponseDataItem = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<ListPermissionsResponseDataItem>;
+
 export type ListPermissionsResponseDataList = Array<ListPermissionsResponseDataItem>;
+const ListPermissionsResponseDataList = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<ListPermissionsResponseDataList>;
+
 export interface ListPermissionsResponse {
   data: ListPermissionsResponseDataList;
 }
+const ListPermissionsResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<ListPermissionsResponse>;
+
 export type ListPermissionsError = BadRequest | WhopOpError;
 /** Check Permissions Lists permission actions and whether the calling credential is granted each one for a resource. Answers for whichever identity authenticated the request -- a user session, an OAuth token, or an account or app API key -- so it never describes who else can reach the resource. */
 export const listPermissions: API.OperationMethod<
@@ -317,8 +337,8 @@ export const listPermissions: API.OperationMethod<
   ListPermissionsError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<ListPermissionsRequest>,
-  output: __S(3) as any as S.Schema<ListPermissionsResponse>,
+  input: ListPermissionsRequest,
+  output: ListPermissionsResponse,
   errors: [BadRequest],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -337,30 +357,19 @@ function __c0(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          action: S.String,
+          action: PermissionAction,
           granted: S.Boolean,
         }),
       ).annotate({
         identifier: "ListPermissionsResponseDataItem",
       });
     case 2:
-      return S.Array(__S(1));
+      return S.Array(ListPermissionsResponseDataItem);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          data: __S(2),
+          data: ListPermissionsResponseDataList,
         }),
       ).annotate({ identifier: "ListPermissionsResponse" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 2) {
-    case 0:
-      return __c0(i & 3);
   }
 }

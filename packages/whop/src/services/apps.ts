@@ -8,8 +8,6 @@ import { paginateRelay } from "../pagination.ts";
 import { WhopProtocol, type WhopOpError, type WhopOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { WhopOpError, WhopOpContext };
 
@@ -65,6 +63,8 @@ export type CreateAppRequestAppType =
   | "company_app"
   | "component"
   | "website";
+const CreateAppRequestAppType = S.String;
+
 /** The icon image for the app in PNG, JPEG, or GIF format, referencing an uploaded file: `{ id }` for an existing attachment or `{ direct_upload_id }` for a new direct upload. */
 export interface CreateAppRequestIcon {
   /** The signed id of a completed direct upload. */
@@ -72,8 +72,15 @@ export interface CreateAppRequestIcon {
   /** The tag of an already-uploaded attachment. */
   id?: string;
 }
+const CreateAppRequestIcon = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<CreateAppRequestIcon>;
+
 /** The whitelisted OAuth callback URLs that users are redirected to after authorizing the app. */
 export type CreateAppRequestRedirectUrisList = Array<string>;
+const CreateAppRequestRedirectUrisList = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<CreateAppRequestRedirectUrisList>;
+
 export interface CreateAppRequest {
   /** The account to create the app for (`biz_` tag). Defaults to the account behind the presented credential. */
   account_id?: string;
@@ -92,14 +99,23 @@ export interface CreateAppRequest {
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
+const CreateAppRequest = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<CreateAppRequest>;
+
 export interface AccountParentFeesValue {
   /** Fixed markup in US dollars per transaction. */
   fixed_fee_usd: number;
   /** Percentage of the transaction charged as markup. */
   percentage_fee: number;
 }
+const AccountParentFeesValue = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<AccountParentFeesValue>;
+
 /** Markup rates this parent charges the connected account being read, keyed by fee type (for example `crypto_deposit_markup`), each with `percentage_fee` and `fixed_fee_usd`. Resolved with the connected account's own overrides winning over the platform default. */
 export type AccountParentFeesMap = { [key: string]: AccountParentFeesValue | undefined };
+const AccountParentFeesMap = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<AccountParentFeesMap>;
+
 export interface AccountParent {
   /** Markup rates this parent charges the connected account being read, keyed by fee type (for example `crypto_deposit_markup`), each with `percentage_fee` and `fixed_fee_usd`. Resolved with the connected account's own overrides winning over the platform default. */
   fees?: AccountParentFeesMap;
@@ -112,19 +128,30 @@ export interface AccountParent {
   /** Account display name. */
   title: string;
 }
+const AccountParent = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<AccountParent>;
+
 export interface AppApiKey {
   /** When the key was created, as an ISO 8601 timestamp. */
   created_at: string;
   /** The key's secret token, sent as a bearer token to authenticate requests on the app's behalf. */
   token: string;
 }
+const AppApiKey = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<AppApiKey>;
+
 /** The type of end-user the app is built for. */
 export type AppAppType = "b2b_app" | "b2c_app" | "company_app" | "component" | "website";
+const AppAppType = S.String;
+
 export interface AppBannerImage {
   /** Banner image URL, taken from the app's product listing. */
   url: string;
 }
+const AppBannerImage = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<AppBannerImage>;
+
 export type AppBusinessesCreatedLogoUrlsList = Array<string>;
+const AppBusinessesCreatedLogoUrlsList =
+  CreateAppRequestRedirectUrisList as any as S.Schema<AppBusinessesCreatedLogoUrlsList>;
+
 export interface AppCreator {
   /** User ID, prefixed `user_`. */
   id: string;
@@ -133,6 +160,8 @@ export interface AppCreator {
   /** Public username. */
   username: string;
 }
+const AppCreator = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<AppCreator>;
+
 export interface AppDefaultApiKey {
   /** API key ID, prefixed `apik_`. */
   id: string;
@@ -143,6 +172,8 @@ export interface AppDefaultApiKey {
   /** The full secret used to authenticate requests. `null` unless the caller could have created the key themselves. */
   secret_key: string | Redacted.Redacted<string> | null;
 }
+const AppDefaultApiKey = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<AppDefaultApiKey>;
+
 /** The stage a running deployment has reached, or `null` when none is running. Later phases dominate the wall clock: `process_archive` waits on the upload pipeline and `promote` waits for the build to go live. */
 export type AppDeploymentPhase =
   | "install"
@@ -153,6 +184,8 @@ export type AppDeploymentPhase =
   | "process_archive"
   | "create_build"
   | "promote";
+const AppDeploymentPhase = S.String;
+
 /** Whether the app has anything to publish, and what a publish in flight is doing. `unpublished` means publishing would ship something new; `no_source` means the sandbox holds no copy of this app, so there is nothing to publish from. */
 export type AppDeploymentStatus =
   | "published"
@@ -160,6 +193,8 @@ export type AppDeploymentStatus =
   | "publishing"
   | "failed"
   | "no_source";
+const AppDeploymentStatus = S.String;
+
 export interface AppDeployment {
   /** The app being deployed, prefixed `app_`. */
   app_id: string;
@@ -186,6 +221,8 @@ export interface AppDeployment {
   /** Where the deployed site is served, or `null` unless the deployment went live. */
   url: string | null;
 }
+const AppDeployment = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<AppDeployment>;
+
 /** Domain lifecycle status, matching the domain resource. */
 export type AppDomainStatus =
   | "pending_verification"
@@ -194,6 +231,8 @@ export type AppDomainStatus =
   | "action_required"
   | "deleting"
   | "removed";
+const AppDomainStatus = S.String;
+
 export interface AppDomain {
   /** Normalized hostname assigned to this app. */
   domain: string;
@@ -202,7 +241,11 @@ export interface AppDomain {
   /** Domain lifecycle status, matching the domain resource. */
   status: AppDomainStatus;
 }
+const AppDomain = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<AppDomain>;
+
 export type AppDomainsList = Array<AppDomain>;
+const AppDomainsList = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<AppDomainsList>;
+
 /** Whop Elements the app's production web build mounts, as `<namespace>.<element>` keys (sub-controller children take a third segment, e.g. `payments.cardFields.cardNumber`). A bare namespace means the build reaches that namespace but the individual elements could not be resolved. Empty when the build mounts none, when it has not been scanned yet, or when the app has no production web build. */
 export type AppElementsUsedItem =
   | "ads"
@@ -240,18 +283,33 @@ export type AppElementsUsedItem =
   | "websites"
   | "websites.pixel-setup"
   | "websites.websites";
+const AppElementsUsedItem = S.String;
+
 export type AppElementsUsedList = Array<AppElementsUsedItem>;
+const AppElementsUsedList = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<AppElementsUsedList>;
+
 export interface AppIcon {
   /** Icon image URL. Always present -- the default app icon when none is uploaded. */
   url: string;
 }
+const AppIcon = AppBannerImage as any as S.Schema<AppIcon>;
+
 /** Approval status of the app's product listing on the Whop app store, or `null` when the app has no associated product. */
 export type AppMarketplaceStatus = "not_available" | "pending_review" | "live_marketplace";
+const AppMarketplaceStatus = S.String;
+
 /** How the app authenticates at the OAuth token endpoint. */
 export type AppOauthClientType = "public" | "confidential";
+const AppOauthClientType = S.String;
+
 export type AppPreviousHostedUrlsList = Array<string>;
+const AppPreviousHostedUrlsList =
+  CreateAppRequestRedirectUrisList as any as S.Schema<AppPreviousHostedUrlsList>;
+
 /** The build's review status. */
 export type AppProductionBuildStatus = "draft" | "pending" | "approved" | "rejected";
+const AppProductionBuildStatus = S.String;
+
 export interface AppProductionBuild {
   /** Client-generated checksum of the build file, used to verify file integrity. */
   checksum: string | null;
@@ -264,13 +322,23 @@ export interface AppProductionBuild {
   /** The build's review status. */
   status: AppProductionBuildStatus;
 }
+const AppProductionBuild = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<AppProductionBuild>;
+
 export type AppRedirectUrisList = Array<string>;
+const AppRedirectUrisList =
+  CreateAppRequestRedirectUrisList as any as S.Schema<AppRedirectUrisList>;
+
 export interface AppRequestedPermissionAction {
   /** The permission action's identifier, for example `company:basic:read`. */
   action: string;
   /** Human-readable name of the action. */
   name: string;
 }
+const AppRequestedPermissionAction = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<AppRequestedPermissionAction>;
+
 export interface AppRequestedPermission {
   /** Whether the app requires the permission to be granted on install, as opposed to requesting it optionally. */
   is_required: boolean;
@@ -279,12 +347,26 @@ export interface AppRequestedPermission {
   /** The permission action the app requests. */
   permission_action: AppRequestedPermissionAction;
 }
+const AppRequestedPermission = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<AppRequestedPermission>;
+
 export type AppRequestedPermissionsList = Array<AppRequestedPermission>;
+const AppRequestedPermissionsList = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<AppRequestedPermissionsList>;
+
 /** Scopes the app asks a user to grant when they authorize it, shown on the consent screen. */
 export type AppRequiredScopesItem = "read_user";
 export type AppRequiredScopesList = Array<AppRequiredScopesItem>;
+const AppRequiredScopesList = AppElementsUsedList as any as S.Schema<AppRequiredScopesList>;
+
 /** Visibility on the Whop app store: `live` is publicly discoverable, `unlisted` is accessible only via direct link, `hidden` is not visible anywhere. */
 export type AppStatus = "live" | "unlisted" | "hidden";
+const AppStatus = S.String;
+
 export interface App {
   /** The account that owns the app. */
   account: AccountParent;
@@ -360,16 +442,22 @@ export interface App {
   /** Whether the app has been verified by Whop and is eligible for the featured apps section. */
   verified: boolean;
 }
+const App = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<App>;
+
 export interface DeleteAppRequest {
   /** App ID (prefixed `app_`). Retrieval also accepts the app's claimed route, an active verified custom hostname, or its proxy domain id. */
   id: string;
 }
+const DeleteAppRequest = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<DeleteAppRequest>;
+
 export interface DeleteAppResponse {
   /** Always true. */
   deleted: boolean;
   /** ID of the deleted app. */
   id: string;
 }
+const DeleteAppResponse = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<DeleteAppResponse>;
+
 export interface DeployAppRequest {
   /** The app to deploy, prefixed `app_`. */
   id: string;
@@ -378,11 +466,17 @@ export interface DeployAppRequest {
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
+const DeployAppRequest = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<DeployAppRequest>;
+
 export interface GetAppRequest {
   /** App ID (prefixed `app_`). Retrieval also accepts the app's claimed route, an active verified custom hostname, or its proxy domain id. */
   id: string;
 }
+const GetAppRequest = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<GetAppRequest>;
+
 export type ListAppLogsRequestLevel = "log" | "debug" | "info" | "warn" | "error";
+const ListAppLogsRequestLevel = S.String;
+
 export interface ListAppLogsRequest {
   /** The ID of the app, which will look like app_*************. */
   id: string;
@@ -403,8 +497,14 @@ export interface ListAppLogsRequest {
   /** Return results before this cursor. Use `page_info.start_cursor` from the previous response to fetch the previous page. */
   before?: string;
 }
+const ListAppLogsRequest = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<ListAppLogsRequest>;
+
 export type ListAppLogsResponseDataItemLevel = "log" | "debug" | "info" | "warn" | "error";
+const ListAppLogsResponseDataItemLevel = S.String;
+
 export type ListAppLogsResponseDataItemSource = "console" | "exception" | "request";
+const ListAppLogsResponseDataItemSource = S.String;
+
 export interface ListAppLogsResponseDataItem {
   app_build_id: string;
   app_id: string;
@@ -422,23 +522,42 @@ export interface ListAppLogsResponseDataItem {
   truncated?: boolean;
   wall_time_ms?: number;
 }
+const ListAppLogsResponseDataItem = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<ListAppLogsResponseDataItem>;
+
 export type ListAppLogsResponseDataList = Array<ListAppLogsResponseDataItem>;
+const ListAppLogsResponseDataList = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<ListAppLogsResponseDataList>;
+
 export interface ListAppLogsResponsePageInfo {
   end_cursor?: string | null;
   has_next_page: boolean;
   has_previous_page: boolean;
   start_cursor?: string | null;
 }
+const ListAppLogsResponsePageInfo = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<ListAppLogsResponsePageInfo>;
+
 export interface ListAppLogsResponse {
   data: ListAppLogsResponseDataList;
   page_info: ListAppLogsResponsePageInfo;
 }
+const ListAppLogsResponse = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<ListAppLogsResponse>;
+
 export type ListAppsRequestAppType =
   | "b2b_app"
   | "b2c_app"
   | "company_app"
   | "component"
   | "website";
+const ListAppsRequestAppType = S.String;
+
 export type ListAppsRequestViewType =
   | "hub"
   | "discover"
@@ -447,13 +566,19 @@ export type ListAppsRequestViewType =
   | "analytics"
   | "skills"
   | "openapi";
+const ListAppsRequestViewType = S.String;
+
 export type ListAppsRequestOrder =
   | "created_at"
   | "discoverable_at"
   | "template_usage"
   | "total_installs_last_30_days"
   | "total_installs_last_7_days";
+const ListAppsRequestOrder = S.String;
+
 export type ListAppsRequestDirection = "asc" | "desc";
+const ListAppsRequestDirection = S.String;
+
 export interface ListAppsRequest {
   /** Only return apps created by this account (`biz_` tag). With developer access to the account this includes its unlisted and hidden apps. */
   account_id?: string;
@@ -482,13 +607,30 @@ export interface ListAppsRequest {
   /** Return results before this cursor. Use `page_info.start_cursor` from the previous response to fetch the previous page. */
   before?: string;
 }
+const ListAppsRequest = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<ListAppsRequest>;
+
 /** The type of end-user the app is built for. */
 export type AppListItemAppType = "b2b_app" | "b2c_app" | "company_app" | "component" | "website";
+const AppListItemAppType = S.String;
+
 export type AppListItemBusinessesCreatedLogoUrlsList = Array<string>;
+const AppListItemBusinessesCreatedLogoUrlsList =
+  CreateAppRequestRedirectUrisList as any as S.Schema<AppListItemBusinessesCreatedLogoUrlsList>;
+
 export type AppListItemDomainsList = Array<AppDomain>;
+const AppListItemDomainsList = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<AppListItemDomainsList>;
+
 export type AppListItemPreviousHostedUrlsList = Array<string>;
+const AppListItemPreviousHostedUrlsList =
+  CreateAppRequestRedirectUrisList as any as S.Schema<AppListItemPreviousHostedUrlsList>;
+
 /** Visibility on the Whop app store: `live` is publicly discoverable, `unlisted` is accessible only via direct link, `hidden` is not visible anywhere. */
 export type AppListItemStatus = "live" | "unlisted" | "hidden";
+const AppListItemStatus = S.String;
+
 export interface AppListItem {
   /** The account that owns the app. */
   account: AccountParent;
@@ -536,17 +678,31 @@ export interface AppListItem {
   /** Whether the app has been verified by Whop and is eligible for the featured apps section. */
   verified: boolean;
 }
+const AppListItem = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<AppListItem>;
+
 export type ListAppsResponseDataList = Array<AppListItem>;
+const ListAppsResponseDataList = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<ListAppsResponseDataList>;
+
 export interface ListAppsResponsePageInfo {
   end_cursor: string | null;
   has_next_page: boolean;
   has_previous_page: boolean;
   start_cursor: string | null;
 }
+const ListAppsResponsePageInfo = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<ListAppsResponsePageInfo>;
+
 export interface ListAppsResponse {
   data: ListAppsResponseDataList;
   page_info: ListAppsResponsePageInfo;
 }
+const ListAppsResponse = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<ListAppsResponse>;
+
 /** The type of end-user the app is built for. Cannot be changed on an app whose type is already `website`. */
 export type UpdateAppRequestAppType =
   | "b2b_app"
@@ -554,16 +710,28 @@ export type UpdateAppRequestAppType =
   | "company_app"
   | "component"
   | "website";
+const UpdateAppRequestAppType = S.String;
+
 /** The icon image for the app in PNG, JPEG, or GIF format, referencing an uploaded file: `{ id }` for an existing attachment or `{ direct_upload_id }` for a new direct upload. */
 export type UpdateAppRequestIcon = CreateAppRequestIcon;
 /** How the app authenticates at the OAuth token endpoint. */
 export type UpdateAppRequestOauthClientType = "public" | "confidential";
+const UpdateAppRequestOauthClientType = S.String;
+
 /** The whitelisted OAuth callback URLs users are redirected to after authorizing the app. */
 export type UpdateAppRequestRedirectUrisList = Array<string>;
+const UpdateAppRequestRedirectUrisList =
+  CreateAppRequestRedirectUrisList as any as S.Schema<UpdateAppRequestRedirectUrisList>;
+
 /** The OAuth scopes the app requests from users when they install it. */
 export type UpdateAppRequestRequiredScopesList = Array<string>;
+const UpdateAppRequestRequiredScopesList =
+  CreateAppRequestRedirectUrisList as any as S.Schema<UpdateAppRequestRequiredScopesList>;
+
 /** Controls whether the app is published on Whop discovery or accessible only through its direct link. Publishing requires a name, icon, and description. */
 export type UpdateAppRequestStatus = "live" | "unlisted" | "hidden";
+const UpdateAppRequestStatus = S.String;
+
 export interface UpdateAppRequest {
   /** App ID (prefixed `app_`). Retrieval also accepts the app's claimed route, an active verified custom hostname, or its proxy domain id. */
   id: string;
@@ -608,6 +776,8 @@ export interface UpdateAppRequest {
   /** Controls whether the app is published on Whop discovery or accessible only through its direct link. Publishing requires a name, icon, and description. */
   status?: UpdateAppRequestStatus | (string & {});
 }
+const UpdateAppRequest = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<UpdateAppRequest>;
+
 export interface UpdateAppPermissionsRequestRequestedPermissionsItem {
   /** The permission action, for example `company:basic:read`. */
   action: string;
@@ -616,15 +786,30 @@ export interface UpdateAppPermissionsRequestRequestedPermissionsItem {
   /** Why the app needs this permission (20-512 characters), shown to the installing user. */
   justification: string;
 }
+const UpdateAppPermissionsRequestRequestedPermissionsItem = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<UpdateAppPermissionsRequestRequestedPermissionsItem>;
+
 /** The full set of permissions the app requests on install; permissions not listed are removed. */
 export type UpdateAppPermissionsRequestRequestedPermissionsList =
   Array<UpdateAppPermissionsRequestRequestedPermissionsItem>;
+const UpdateAppPermissionsRequestRequestedPermissionsList = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<UpdateAppPermissionsRequestRequestedPermissionsList>;
+
 export interface UpdateAppPermissionsRequest {
   /** App ID, prefixed `app_`. */
   id: string;
   /** The full set of permissions the app requests on install; permissions not listed are removed. */
   requested_permissions: UpdateAppPermissionsRequestRequestedPermissionsList;
 }
+const UpdateAppPermissionsRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<UpdateAppPermissionsRequest>;
+
 /** Input for creating a requested permission */
 export interface UpdatePermissionsAppRequestRequestedPermissionsItem {
   /** The action that the app will request off of users when a user installs the app. */
@@ -637,19 +822,32 @@ export interface UpdatePermissionsAppRequestRequestedPermissionsItem {
 /** The permissions that the app will request off of users when a user installs the app. */
 export type UpdatePermissionsAppRequestRequestedPermissionsList =
   Array<UpdatePermissionsAppRequestRequestedPermissionsItem>;
+const UpdatePermissionsAppRequestRequestedPermissionsList =
+  UpdateAppPermissionsRequestRequestedPermissionsList as any as S.Schema<UpdatePermissionsAppRequestRequestedPermissionsList>;
+
 export interface UpdatePermissionsAppRequest {
   /** The ID of the app the permission requirements are being updated for */
   app_id: string;
   /** The permissions that the app will request off of users when a user installs the app. */
   requested_permissions: UpdatePermissionsAppRequestRequestedPermissionsList;
 }
+const UpdatePermissionsAppRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<UpdatePermissionsAppRequest>;
+
 export type UpdatePermissionsAppResponse = boolean;
+const UpdatePermissionsAppResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<UpdatePermissionsAppResponse>;
+
 export type CreateAppError = BadRequest | Forbidden | NotFound | Conflict | WhopOpError;
 /** Create App Registers a new app on the Whop developer platform. Apps provide custom experiences that can be added to products. */
 export const createApp: API.OperationMethod<CreateAppRequest, App, CreateAppError, WhopOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(2) as any as S.Schema<CreateAppRequest>,
-    output: __S(18) as any as S.Schema<App>,
+    input: CreateAppRequest,
+    output: App,
     errors: [BadRequest, Forbidden, NotFound, Conflict],
     protocol: WhopProtocol,
     retry: Retry.Retry,
@@ -663,8 +861,8 @@ export const deleteApp: API.OperationMethod<
   DeleteAppError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19) as any as S.Schema<DeleteAppRequest>,
-  output: __S(20) as any as S.Schema<DeleteAppResponse>,
+  input: DeleteAppRequest,
+  output: DeleteAppResponse,
   errors: [Forbidden, NotFound],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -678,8 +876,8 @@ export const deployApp: API.OperationMethod<
   DeployAppError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21) as any as S.Schema<DeployAppRequest>,
-  output: __S(10) as any as S.Schema<AppDeployment>,
+  input: DeployAppRequest,
+  output: AppDeployment,
   errors: [NotFound, Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -689,8 +887,8 @@ export type GetAppError = NotFound | WhopOpError;
 /** Retrieve App Retrieves an app by ID, claimed route, active verified custom hostname, or proxy domain id. Custom hostnames return 404 for inactive assignments, suspended accounts, or deleted apps. Credential fields (api_key, default_api_key, secrets) render `null` unless the caller has the corresponding developer permission on the owning account. */
 export const getApp: API.OperationMethod<GetAppRequest, App, GetAppError, WhopOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(22) as any as S.Schema<GetAppRequest>,
-    output: __S(18) as any as S.Schema<App>,
+    input: GetAppRequest,
+    output: App,
     errors: [NotFound],
     protocol: WhopProtocol,
     retry: Retry.Retry,
@@ -706,8 +904,8 @@ export const listAppLogs: API.PaginatedOperationMethod<
   ListAppLogsResponseDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(23) as any as S.Schema<ListAppLogsRequest>,
-    output: __S(27) as any as S.Schema<ListAppLogsResponse>,
+    input: ListAppLogsRequest,
+    output: ListAppLogsResponse,
     errors: [Forbidden, NotFound],
     protocol: WhopProtocol,
     retry: Retry.Retry,
@@ -733,8 +931,8 @@ export const listApps: API.PaginatedOperationMethod<
   AppListItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(28) as any as S.Schema<ListAppsRequest>,
-    output: __S(33) as any as S.Schema<ListAppsResponse>,
+    input: ListAppsRequest,
+    output: ListAppsResponse,
     errors: [BadRequest],
     protocol: WhopProtocol,
     retry: Retry.Retry,
@@ -754,8 +952,8 @@ export type UpdateAppError = BadRequest | Forbidden | NotFound | WhopOpError;
 /** Update App Updates the settings, metadata, or status of an app. Fields that are omitted keep their current value. */
 export const updateApp: API.OperationMethod<UpdateAppRequest, App, UpdateAppError, WhopOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(34) as any as S.Schema<UpdateAppRequest>,
-    output: __S(18) as any as S.Schema<App>,
+    input: UpdateAppRequest,
+    output: App,
     errors: [BadRequest, Forbidden, NotFound],
     protocol: WhopProtocol,
     retry: Retry.Retry,
@@ -769,8 +967,8 @@ export const updateAppPermissions: API.OperationMethod<
   UpdateAppPermissionsError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37) as any as S.Schema<UpdateAppPermissionsRequest>,
-  output: __S(18) as any as S.Schema<App>,
+  input: UpdateAppPermissionsRequest,
+  output: App,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -789,8 +987,8 @@ export const updatePermissionsApp: API.OperationMethod<
   UpdatePermissionsAppError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38) as any as S.Schema<UpdatePermissionsAppRequest>,
-  output: __S(39) as any as S.Schema<UpdatePermissionsAppResponse>,
+  input: UpdatePermissionsAppRequest,
+  output: UpdatePermissionsAppResponse,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -812,11 +1010,11 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           account_id: S.optional(S.String),
-          app_type: S.optional(S.String),
+          app_type: S.optional(CreateAppRequestAppType),
           base_url: S.optional(S.NullOr(S.String)),
-          icon: S.optional(__S(0)),
+          icon: S.optional(CreateAppRequestIcon),
           name: S.String,
-          redirect_uris: S.optional(__S(1)),
+          redirect_uris: S.optional(CreateAppRequestRedirectUrisList),
           route: S.optional(S.NullOr(S.String)),
           idempotency_key: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
         }).pipe(T.Http({ method: "POST", uri: "/apps", code: 200 })),
@@ -829,11 +1027,11 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "AccountParentFeesValue" });
     case 4:
-      return S.Record(S.String, __S(3));
+      return S.Record(S.String, AccountParentFeesValue);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          fees: S.optional(__S(4)),
+          fees: S.optional(AccountParentFeesMap),
           id: S.String,
           logo_url: S.NullOr(S.String),
           route: S.String,
@@ -884,10 +1082,10 @@ function __c1(j: number): any {
           estimated_duration_ms: S.NullOr(S.Number),
           estimated_remaining_ms: S.NullOr(S.Number),
           finished_at: S.NullOr(S.Number),
-          phase: S.NullOr(S.String),
+          phase: S.NullOr(AppDeploymentPhase),
           progress: S.NullOr(S.Number),
           started_at: S.NullOr(S.Number),
-          status: S.String,
+          status: AppDeploymentStatus,
           url: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "AppDeployment" });
@@ -896,13 +1094,13 @@ function __c1(j: number): any {
         S.Struct({
           domain: S.String,
           id: S.String,
-          status: S.String,
+          status: AppDomainStatus,
         }),
       ).annotate({ identifier: "AppDomain" });
     case 4:
-      return S.Array(__S(11));
+      return S.Array(AppDomain);
     case 5:
-      return S.Array(S.String);
+      return S.Array(AppElementsUsedItem);
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -910,7 +1108,7 @@ function __c1(j: number): any {
           file_url: S.NullOr(S.String),
           id: S.String,
           source_url: S.NullOr(S.String),
-          status: S.String,
+          status: AppProductionBuildStatus,
         }),
       ).annotate({ identifier: "AppProductionBuild" });
     case 7:
@@ -931,53 +1129,53 @@ function __c2(j: number): any {
         S.Struct({
           is_required: S.Boolean,
           justification: S.NullOr(S.String),
-          permission_action: __S(15),
+          permission_action: AppRequestedPermissionAction,
         }),
       ).annotate({ identifier: "AppRequestedPermission" });
     case 1:
-      return S.Array(__S(16));
+      return S.Array(AppRequestedPermission);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          account: __S(5),
-          api_key: S.NullOr(__S(6)),
+          account: AccountParent,
+          api_key: S.NullOr(AppApiKey),
           app_store_description: S.NullOr(S.String),
-          app_type: S.String,
-          banner_image: S.NullOr(__S(7)),
+          app_type: AppAppType,
+          banner_image: S.NullOr(AppBannerImage),
           base_url: S.NullOr(S.String),
           businesses_created_count: S.Number,
-          businesses_created_logo_urls: __S(1),
-          creator: __S(8),
+          businesses_created_logo_urls: AppBusinessesCreatedLogoUrlsList,
+          creator: AppCreator,
           dashboard_path: S.NullOr(S.String),
-          default_api_key: S.NullOr(__S(9)),
-          deployment: S.NullOr(__S(10)),
+          default_api_key: S.NullOr(AppDefaultApiKey),
+          deployment: S.NullOr(AppDeployment),
           description: S.NullOr(S.String),
           discover_path: S.NullOr(S.String),
           domain_id: S.String,
-          domains: S.NullOr(__S(12)),
-          elements_used: __S(13),
+          domains: S.NullOr(AppDomainsList),
+          elements_used: AppElementsUsedList,
           experience_path: S.NullOr(S.String),
           hosted_url: S.NullOr(S.String),
-          icon: __S(7),
+          icon: AppIcon,
           id: S.String,
-          marketplace_status: S.NullOr(S.String),
+          marketplace_status: S.NullOr(AppMarketplaceStatus),
           name: S.String,
-          oauth_client_type: S.String,
+          oauth_client_type: AppOauthClientType,
           openapi_path: S.NullOr(S.String),
           origin: S.NullOr(S.String),
           preview_token: S.NullOr(S.String),
-          previous_hosted_urls: __S(1),
+          previous_hosted_urls: AppPreviousHostedUrlsList,
           product_id: S.NullOr(S.String),
-          production_android_build: S.NullOr(__S(14)),
-          production_ios_build: S.NullOr(__S(14)),
-          production_web_build: S.NullOr(__S(14)),
-          redirect_uris: __S(1),
-          requested_permissions: __S(17),
-          required_scopes: __S(13),
+          production_android_build: S.NullOr(AppProductionBuild),
+          production_ios_build: S.NullOr(AppProductionBuild),
+          production_web_build: S.NullOr(AppProductionBuild),
+          redirect_uris: AppRedirectUrisList,
+          requested_permissions: AppRequestedPermissionsList,
+          required_scopes: AppRequiredScopesList,
           route: S.NullOr(S.String),
           secrets: S.NullOr(S.Unknown),
           skills_path: S.NullOr(S.String),
-          status: S.String,
+          status: AppStatus,
           verified: S.Boolean,
         }),
       ).annotate({ identifier: "App" });
@@ -1013,7 +1211,7 @@ function __c2(j: number): any {
         S.Struct({
           id: S.String.pipe(T.Label()),
           app_build_id: S.optional(S.String.pipe(T.Query())),
-          level: S.optional(S.String.pipe(T.Query())),
+          level: S.optional(ListAppLogsRequestLevel.pipe(T.Query())),
           query: S.optional(S.String.pipe(T.Query())),
           created_after: S.optional(S.String.pipe(T.Query())),
           created_before: S.optional(S.String.pipe(T.Query())),
@@ -1033,14 +1231,14 @@ function __c3(j: number): any {
           app_id: S.String,
           cpu_time_ms: S.optional(S.Number),
           created_at: S.String,
-          level: S.String,
+          level: ListAppLogsResponseDataItemLevel,
           message: S.String,
           outcome: S.optional(S.NullOr(S.String)),
           request_id: S.String,
           request_method: S.optional(S.NullOr(S.String)),
           request_path: S.optional(S.NullOr(S.String)),
           response_status: S.optional(S.NullOr(S.Number)),
-          source: S.String,
+          source: ListAppLogsResponseDataItemSource,
           stack: S.optional(S.NullOr(S.String)),
           truncated: S.optional(S.Boolean),
           wall_time_ms: S.optional(S.Number),
@@ -1049,7 +1247,7 @@ function __c3(j: number): any {
         identifier: "ListAppLogsResponseDataItem",
       });
     case 1:
-      return S.Array(__S(24));
+      return S.Array(ListAppLogsResponseDataItem);
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -1064,22 +1262,22 @@ function __c3(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          data: __S(25),
-          page_info: __S(26),
+          data: ListAppLogsResponseDataList,
+          page_info: ListAppLogsResponsePageInfo,
         }),
       ).annotate({ identifier: "ListAppLogsResponse" });
     case 4:
       return S.suspend(() =>
         S.Struct({
           account_id: S.optional(S.String.pipe(T.Query())),
-          app_type: S.optional(S.String.pipe(T.Query())),
-          view_type: S.optional(S.String.pipe(T.Query())),
+          app_type: S.optional(ListAppsRequestAppType.pipe(T.Query())),
+          view_type: S.optional(ListAppsRequestViewType.pipe(T.Query())),
           verified: S.optional(S.Boolean.pipe(T.Query())),
           verified_apps_only: S.optional(S.Boolean.pipe(T.Query())),
           recommended: S.optional(S.Boolean.pipe(T.Query())),
           query: S.optional(S.String.pipe(T.Query())),
-          order: S.optional(S.String.pipe(T.Query())),
-          direction: S.optional(S.String.pipe(T.Query())),
+          order: S.optional(ListAppsRequestOrder.pipe(T.Query())),
+          direction: S.optional(ListAppsRequestDirection.pipe(T.Query())),
           first: S.optional(S.Number.pipe(T.Query())),
           after: S.optional(S.String.pipe(T.Query())),
           last: S.optional(S.Number.pipe(T.Query())),
@@ -1087,38 +1285,38 @@ function __c3(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/apps", code: 200 })),
       ).annotate({ identifier: "ListAppsRequest" });
     case 5:
-      return S.Array(__S(11));
+      return S.Array(AppDomain);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          account: __S(5),
-          app_type: S.String,
-          banner_image: S.NullOr(__S(7)),
+          account: AccountParent,
+          app_type: AppListItemAppType,
+          banner_image: S.NullOr(AppBannerImage),
           base_url: S.NullOr(S.String),
           businesses_created_count: S.Number,
-          businesses_created_logo_urls: __S(1),
-          creator: __S(8),
+          businesses_created_logo_urls: AppListItemBusinessesCreatedLogoUrlsList,
+          creator: AppCreator,
           dashboard_path: S.NullOr(S.String),
           description: S.NullOr(S.String),
           discover_path: S.NullOr(S.String),
           domain_id: S.String,
-          domains: S.NullOr(__S(29)),
+          domains: S.NullOr(AppListItemDomainsList),
           experience_path: S.NullOr(S.String),
           hosted_url: S.NullOr(S.String),
-          icon: __S(7),
+          icon: AppIcon,
           id: S.String,
           name: S.String,
           openapi_path: S.NullOr(S.String),
           origin: S.NullOr(S.String),
-          previous_hosted_urls: __S(1),
+          previous_hosted_urls: AppListItemPreviousHostedUrlsList,
           route: S.NullOr(S.String),
           skills_path: S.NullOr(S.String),
-          status: S.String,
+          status: AppListItemStatus,
           verified: S.Boolean,
         }),
       ).annotate({ identifier: "AppListItem" });
     case 7:
-      return S.Array(__S(30));
+      return S.Array(AppListItem);
   }
 }
 function __c4(j: number): any {
@@ -1135,8 +1333,8 @@ function __c4(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          data: __S(31),
-          page_info: __S(32),
+          data: ListAppsResponseDataList,
+          page_info: ListAppsResponsePageInfo,
         }),
       ).annotate({ identifier: "ListAppsResponse" });
     case 2:
@@ -1144,25 +1342,25 @@ function __c4(j: number): any {
         S.Struct({
           id: S.String.pipe(T.Label()),
           app_store_description: S.optional(S.String),
-          app_type: S.optional(S.String),
+          app_type: S.optional(UpdateAppRequestAppType),
           base_url: S.optional(S.NullOr(S.String)),
           dashboard_path: S.optional(S.NullOr(S.String)),
           description: S.optional(S.String),
           discover_path: S.optional(S.NullOr(S.String)),
           experience_path: S.optional(S.NullOr(S.String)),
-          icon: S.optional(__S(0)),
+          icon: S.optional(CreateAppRequestIcon),
           name: S.optional(S.String),
-          oauth_client_type: S.optional(S.String),
+          oauth_client_type: S.optional(UpdateAppRequestOauthClientType),
           openapi_path: S.optional(S.NullOr(S.String)),
           production_android_build_id: S.optional(S.NullOr(S.String)),
           production_ios_build_id: S.optional(S.NullOr(S.String)),
           production_web_build_id: S.optional(S.NullOr(S.String)),
-          redirect_uris: S.optional(__S(1)),
-          required_scopes: S.optional(__S(1)),
+          redirect_uris: S.optional(UpdateAppRequestRedirectUrisList),
+          required_scopes: S.optional(UpdateAppRequestRequiredScopesList),
           route: S.optional(S.String),
           secrets: S.optional(S.Unknown),
           skills_path: S.optional(S.NullOr(S.String)),
-          status: S.optional(S.String),
+          status: S.optional(UpdateAppRequestStatus),
         }).pipe(T.Http({ method: "PATCH", uri: "/apps/{id}", code: 200 })),
       ).annotate({ identifier: "UpdateAppRequest" });
     case 3:
@@ -1176,12 +1374,12 @@ function __c4(j: number): any {
         identifier: "UpdateAppPermissionsRequestRequestedPermissionsItem",
       });
     case 4:
-      return S.Array(__S(35));
+      return S.Array(UpdateAppPermissionsRequestRequestedPermissionsItem);
     case 5:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
-          requested_permissions: __S(36),
+          requested_permissions: UpdateAppPermissionsRequestRequestedPermissionsList,
         }).pipe(T.Http({ method: "PATCH", uri: "/apps/{id}/permissions", code: 200 })),
       ).annotate({
         identifier: "UpdateAppPermissionsRequest",
@@ -1190,7 +1388,7 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           app_id: S.String.pipe(T.Label()),
-          requested_permissions: __S(36),
+          requested_permissions: UpdatePermissionsAppRequestRequestedPermissionsList,
         }).pipe(T.Http({ method: "PATCH", uri: "/apps/{app_id}/permissions", code: 200 })),
       ).annotate({
         identifier: "UpdatePermissionsAppRequest",
@@ -1199,24 +1397,5 @@ function __c4(j: number): any {
       return S.suspend(() => S.Boolean.pipe(T.RawResponseRoot())).annotate({
         identifier: "UpdatePermissionsAppResponse",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
   }
 }

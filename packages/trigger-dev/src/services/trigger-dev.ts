@@ -11,8 +11,6 @@ import {
 } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { TriggerDevOpError, TriggerDevOpContext };
 
@@ -56,7 +54,14 @@ export interface ActivateScheduleV1Request {
   /** The ID of the schedule. */
   schedule_id: string;
 }
+const ActivateScheduleV1Request = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<ActivateScheduleV1Request>;
+
 export type ScheduleObjectGeneratorType = "CRON";
+const ScheduleObjectGeneratorType = S.String;
+
 export interface ScheduleObjectGenerator {
   type?: ScheduleObjectGeneratorType;
   /** The cron expression used to generate the schedule */
@@ -64,8 +69,15 @@ export interface ScheduleObjectGenerator {
   /** The description of the generator in plain english */
   description?: string;
 }
+const ScheduleObjectGenerator = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<ScheduleObjectGenerator>;
+
 /** Why the minimum window is applied. */
 export type ScheduleObjectAppliedSchedulePolicyReason = "free_schedule";
+const ScheduleObjectAppliedSchedulePolicyReason = S.String;
+
 /** Present only when a non-overridable plan policy applies a minimum window to this schedule (for example, a free-plan schedule's minimum run interval). The configured `window` is returned separately and unchanged. */
 export interface ScheduleObjectAppliedSchedulePolicy {
   /** The minimum window, in seconds, applied on top of the configured window. */
@@ -73,12 +85,24 @@ export interface ScheduleObjectAppliedSchedulePolicy {
   /** Why the minimum window is applied. */
   reason?: ScheduleObjectAppliedSchedulePolicyReason;
 }
+const ScheduleObjectAppliedSchedulePolicy = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<ScheduleObjectAppliedSchedulePolicy>;
+
 export interface ScheduleEnvironment {
   id?: string;
   type?: string;
   userName?: string;
 }
+const ScheduleEnvironment = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<ScheduleEnvironment>;
+
 export type ScheduleObjectEnvironmentsList = Array<ScheduleEnvironment>;
+const ScheduleObjectEnvironmentsList = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<ScheduleObjectEnvironmentsList>;
+
 export interface ScheduleObject {
   /** The unique ID of the schedule, prefixed with 'sched_' */
   id?: string;
@@ -101,42 +125,79 @@ export interface ScheduleObject {
   appliedSchedulePolicy?: ScheduleObjectAppliedSchedulePolicy;
   environments?: ScheduleObjectEnvironmentsList;
 }
+const ScheduleObject = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<ScheduleObject>;
+
 export type RunTagsCase1List = Array<string>;
+const RunTagsCase1List = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<RunTagsCase1List>;
+
 /** One or more tags to attach to a run. Runs can have a maximum of 10 tags. */
 export type RunTags = string | RunTagsCase1List;
+const RunTags = S.Unknown as any as S.Schema<RunTags>;
+
 export interface AddRunTagsV1Request {
   /** The ID of an run, starts with `run_`. The run ID will be returned when you trigger a run on a task. */
   runId: string;
   tags: RunTags;
 }
+const AddRunTagsV1Request = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<AddRunTagsV1Request>;
+
 export interface AddRunTagsV1Response {
   message?: string;
 }
+const AddRunTagsV1Response = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<AddRunTagsV1Response>;
+
 export interface BulkAbortActionV1Request {
   /** The ID of a bulk action, starts with `bulk_`. */
   bulkActionId: string;
 }
+const BulkAbortActionV1Request = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<BulkAbortActionV1Request>;
+
 export interface AbortBulkActionResponse {
   id: string;
 }
+const AbortBulkActionResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<AbortBulkActionResponse>;
+
 export interface CancelRunV1Request {
   /** The ID of an run, starts with `run_`. The run ID will be returned when you trigger a run on a task. */
   runId: string;
 }
+const CancelRunV1Request = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<CancelRunV1Request>;
+
 export interface CancelRunV1Response {
   /** The ID of the run that was canceled. */
   id?: string;
 }
+const CancelRunV1Response = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<CancelRunV1Response>;
+
 export interface CloseSessionV1Request {
   /** The session's friendly ID (`session_...`) or your `externalId`. The server disambiguates by the `session_` prefix. */
   session: string;
   /** Optional reason recorded on the session row. */
   reason?: string;
 }
+const CloseSessionV1Request = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<CloseSessionV1Request>;
+
 /** Base payload passed to every run this session triggers. For `chat.agent` this carries `{ chatId, ...clientData }`. */
 export type SessionTriggerConfigBasePayloadMap = { [key: string]: unknown | undefined };
+const SessionTriggerConfigBasePayloadMap = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<SessionTriggerConfigBasePayloadMap>;
+
 /** Tags applied to every run this session triggers. */
 export type SessionTriggerConfigTagsList = Array<string>;
+const SessionTriggerConfigTagsList =
+  RunTagsCase1List as any as S.Schema<SessionTriggerConfigTagsList>;
+
 /** Trigger options applied to every run a session schedules. `basePayload` is the wire payload merged into each run; the remaining fields map onto the standard trigger options. */
 export interface SessionTriggerConfig {
   /** Base payload passed to every run this session triggers. For `chat.agent` this carries `{ chatId, ...clientData }`. */
@@ -158,10 +219,17 @@ export interface SessionTriggerConfig {
   /** Idle timeout surfaced to `chat.agent` via the wire payload. */
   idleTimeoutInSeconds?: number;
 }
+const SessionTriggerConfig = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<SessionTriggerConfig>;
+
 /** Tags on the session row. */
 export type SessionObjectTagsList = Array<string>;
+const SessionObjectTagsList = RunTagsCase1List as any as S.Schema<SessionObjectTagsList>;
+
 /** Arbitrary JSON metadata, or `null` if unset. */
 export type SessionObjectMetadataMap = { [key: string]: unknown | undefined };
+const SessionObjectMetadataMap =
+  SessionTriggerConfigBasePayloadMap as any as S.Schema<SessionObjectMetadataMap>;
+
 /** A session row. */
 export interface SessionObject {
   /** The session's friendly ID, prefixed with `session_`. */
@@ -188,22 +256,39 @@ export interface SessionObject {
   createdAt: string;
   updatedAt: string;
 }
+const SessionObject = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<SessionObject>;
+
 export interface CompleteWaitpointTokenCallbackV1Request {
   /** The ID of the waitpoint token. */
   waitpointId: string;
   /** The HMAC hash that authenticates the request. This is embedded in the `url` returned when creating the token -- do not construct it manually. */
   callbackHash: string;
 }
+const CompleteWaitpointTokenCallbackV1Request = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<CompleteWaitpointTokenCallbackV1Request>;
+
 export interface CompleteWaitpointTokenResponse {
   /** Always `true` when the request succeeds. */
   success: boolean;
 }
+const CompleteWaitpointTokenResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<CompleteWaitpointTokenResponse>;
+
 export interface CompleteWaitpointTokenV1Request {
   /** The ID of the waitpoint token to complete. */
   waitpointId: string;
   /** Any JSON-serializable value to pass back to the run waiting on this token. The data will be returned from `wait.forToken()` as the result payload. */
   data?: unknown;
 }
+const CompleteWaitpointTokenV1Request = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<CompleteWaitpointTokenV1Request>;
+
 export type CreateBulkActionRequestBodyCase0Action = "cancel";
 export type BulkActionFilterStatusCase0 =
   | "PENDING_VERSION"
@@ -229,9 +314,16 @@ export type BulkActionFilterStatusCase1Item =
   | "CRASHED"
   | "INTERRUPTED"
   | "SYSTEM_FAILURE";
+const BulkActionFilterStatusCase1Item = S.String;
+
 export type BulkActionFilterStatusCase1List = Array<
   BulkActionFilterStatusCase1Item | (string & {})
 >;
+const BulkActionFilterStatusCase1List = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<BulkActionFilterStatusCase1List>;
+
 export type BulkActionFilterStatus = BulkActionFilterStatusCase0 | BulkActionFilterStatusCase1List;
 export type BulkActionFilterTaskIdentifierCase1List = Array<string>;
 /** The identifier of the task that was run. */
@@ -322,11 +414,25 @@ export type CreateBulkActionRequestBody =
   | CreateBulkActionRequestBodyCase1
   | CreateBulkActionRequestBodyCase2
   | CreateBulkActionRequestBodyCase3;
+const CreateBulkActionRequestBody = S.Unknown as any as S.Schema<CreateBulkActionRequestBody>;
+
 export interface CreateBulkActionV1Request {
   body: CreateBulkActionRequestBody;
 }
+const CreateBulkActionV1Request = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<CreateBulkActionV1Request>;
+
 export interface CreateBulkActionV1Response {}
+const CreateBulkActionV1Response = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<CreateBulkActionV1Response>;
+
 export type CreateProjectEnvvarV1RequestEnv = "dev" | "staging" | "prod";
+const CreateProjectEnvvarV1RequestEnv = S.String;
+
 export interface CreateProjectEnvvarV1Request {
   /** The external ref of the project. You can find this in the project settings. Starts with `proj_`. */
   projectRef: string;
@@ -335,9 +441,16 @@ export interface CreateProjectEnvvarV1Request {
   name: string;
   value: string;
 }
+const CreateProjectEnvvarV1Request = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<CreateProjectEnvvarV1Request>;
+
 export interface SucceedResponse {
   success: boolean;
 }
+const SucceedResponse = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<SucceedResponse>;
+
 export interface CreateScheduleV1Request {
   task: string;
   cron: string;
@@ -346,10 +459,21 @@ export interface CreateScheduleV1Request {
   /** Defaults to "UTC". In IANA format ("America/New_York"). If set then it will trigger at the CRON frequency in that timezone and respect daylight savings time. */
   timezone?: string;
 }
+const CreateScheduleV1Request = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<CreateScheduleV1Request>;
+
 /** Up to 10 tags on the session row, for dashboard filtering. */
 export type CreateSessionV1RequestTagsList = Array<string>;
+const CreateSessionV1RequestTagsList =
+  RunTagsCase1List as any as S.Schema<CreateSessionV1RequestTagsList>;
+
 /** Arbitrary JSON metadata. */
 export type CreateSessionV1RequestMetadataMap = { [key: string]: unknown | undefined };
+const CreateSessionV1RequestMetadataMap =
+  SessionTriggerConfigBasePayloadMap as any as S.Schema<CreateSessionV1RequestMetadataMap>;
+
 export interface CreateSessionV1Request {
   /** Free-form discriminator for the session, e.g. `chat.agent`. Not validated against an enum. */
   type: string;
@@ -365,10 +489,21 @@ export interface CreateSessionV1Request {
   /** Absolute expiry timestamp for retention. */
   expiresAt?: string;
 }
+const CreateSessionV1Request = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<CreateSessionV1Request>;
+
 /** Tags on the session row. */
 export type CreateSessionV1ResponseTagsList = Array<string>;
+const CreateSessionV1ResponseTagsList =
+  RunTagsCase1List as any as S.Schema<CreateSessionV1ResponseTagsList>;
+
 /** Arbitrary JSON metadata, or `null` if unset. */
 export type CreateSessionV1ResponseMetadataMap = { [key: string]: unknown | undefined };
+const CreateSessionV1ResponseMetadataMap =
+  SessionTriggerConfigBasePayloadMap as any as S.Schema<CreateSessionV1ResponseMetadataMap>;
+
 export interface CreateSessionV1Response {
   /** The session's friendly ID, prefixed with `session_`. */
   id: string;
@@ -400,9 +535,17 @@ export interface CreateSessionV1Response {
   /** `true` if an open session already existed for this `externalId` (idempotent upsert), `false` if newly created. */
   isCached: boolean;
 }
+const CreateSessionV1Response = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<CreateSessionV1Response>;
+
 export type CreateWaitpointTokenV1RequestTagsCase1List = Array<string>;
 /** Tags to attach to the waitpoint. You can set up to 10 tags, each under 128 characters. We recommend namespacing tags with a prefix like `user:1234567` or `org_9876543`. */
 export type CreateWaitpointTokenV1RequestTags = string | CreateWaitpointTokenV1RequestTagsCase1List;
+const CreateWaitpointTokenV1RequestTags =
+  S.Unknown as any as S.Schema<CreateWaitpointTokenV1RequestTags>;
+
 export interface CreateWaitpointTokenV1Request {
   /** An optional idempotency key. If you pass the same key twice before it expires, you will receive the original token back. The returned token may already be completed, in which case `wait.forToken()` will continue immediately. */
   idempotencyKey?: string;
@@ -413,6 +556,11 @@ export interface CreateWaitpointTokenV1Request {
   /** Tags to attach to the waitpoint. You can set up to 10 tags, each under 128 characters. We recommend namespacing tags with a prefix like `user:1234567` or `org_9876543`. */
   tags?: CreateWaitpointTokenV1RequestTags;
 }
+const CreateWaitpointTokenV1Request = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<CreateWaitpointTokenV1Request>;
+
 export interface CreateWaitpointTokenResponse {
   /** The unique ID of the waitpoint token. */
   id: string;
@@ -421,11 +569,23 @@ export interface CreateWaitpointTokenResponse {
   /** An HTTP callback URL. A POST request to this URL (with an optional JSON body) will complete the waitpoint without needing an API key. */
   url: string;
 }
+const CreateWaitpointTokenResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<CreateWaitpointTokenResponse>;
+
 export interface DeactivateScheduleV1Request {
   /** The ID of the schedule. */
   schedule_id: string;
 }
+const DeactivateScheduleV1Request = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<DeactivateScheduleV1Request>;
+
 export type DeleteProjectEnvvarV1RequestEnv = "dev" | "staging" | "prod";
+const DeleteProjectEnvvarV1RequestEnv = S.String;
+
 export interface DeleteProjectEnvvarV1Request {
   /** The external ref of the project. You can find this in the project settings. Starts with `proj_`. */
   projectRef: string;
@@ -434,15 +594,32 @@ export interface DeleteProjectEnvvarV1Request {
   /** The name of the environment variable. */
   name: string;
 }
+const DeleteProjectEnvvarV1Request = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<DeleteProjectEnvvarV1Request>;
+
 export interface DeleteScheduleV1Request {
   /** The ID of the schedule. */
   schedule_id: string;
 }
+const DeleteScheduleV1Request = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<DeleteScheduleV1Request>;
+
 export interface DeleteScheduleV1Response {}
+const DeleteScheduleV1Response =
+  CreateBulkActionV1Response as any as S.Schema<DeleteScheduleV1Response>;
+
 /** The scope of data to query - environment (default), project, or organization */
 export type ExecuteQueryV1RequestScope = "environment" | "project" | "organization";
+const ExecuteQueryV1RequestScope = S.String;
+
 /** Response format - "json" returns structured data (default), "csv" returns CSV string */
 export type ExecuteQueryV1RequestFormat = "json" | "csv";
+const ExecuteQueryV1RequestFormat = S.String;
+
 export interface ExecuteQueryV1Request {
   /** The TRQL query to execute */
   query: string;
@@ -457,6 +634,11 @@ export interface ExecuteQueryV1Request {
   /** Response format - "json" returns structured data (default), "csv" returns CSV string */
   format?: ExecuteQueryV1RequestFormat | (string & {});
 }
+const ExecuteQueryV1Request = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<ExecuteQueryV1Request>;
+
 export type ExecuteQueryResponseCase0Format = "json";
 /** Array of result rows */
 export type ExecuteQueryResponseCase0ResultsList = Array<unknown>;
@@ -474,15 +656,32 @@ export interface ExecuteQueryResponseCase1 {
   results?: string;
 }
 export type ExecuteQueryResponse = ExecuteQueryResponseCase0 | ExecuteQueryResponseCase1;
+const ExecuteQueryResponse = S.Unknown as any as S.Schema<ExecuteQueryResponse>;
+
 export type ExecuteQueryV1Response = ExecuteQueryResponse;
+const ExecuteQueryV1Response = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<ExecuteQueryV1Response>;
+
 export interface GetBatchResultsV1Request {
   /** The ID of the batch, starts with `batch_`. */
   batchId: string;
 }
+const GetBatchResultsV1Request = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<GetBatchResultsV1Request>;
+
 export interface GetBatchResultsV1ResponseItemsItemUsage {
   /** Duration of the run in milliseconds. */
   durationMs?: number;
 }
+const GetBatchResultsV1ResponseItemsItemUsage = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<GetBatchResultsV1ResponseItemsItemUsage>;
+
 export interface GetBatchResultsV1ResponseItemsItem {
   /** Whether this run completed successfully. */
   ok: boolean;
@@ -498,18 +697,35 @@ export interface GetBatchResultsV1ResponseItemsItem {
   /** The task identifier. */
   taskIdentifier?: string;
 }
+const GetBatchResultsV1ResponseItemsItem = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<GetBatchResultsV1ResponseItemsItem>;
+
 /** Execution results for each run in the batch. */
 export type GetBatchResultsV1ResponseItemsList = Array<GetBatchResultsV1ResponseItemsItem>;
+const GetBatchResultsV1ResponseItemsList = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<GetBatchResultsV1ResponseItemsList>;
+
 export interface GetBatchResultsV1Response {
   /** The batch ID. */
   id?: string;
   /** Execution results for each run in the batch. */
   items?: GetBatchResultsV1ResponseItemsList;
 }
+const GetBatchResultsV1Response = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<GetBatchResultsV1Response>;
+
 export interface GetBatchV1Request {
   /** The ID of the batch, starts with `batch_`. */
   batchId: string;
 }
+const GetBatchV1Request = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<GetBatchV1Request>;
+
 /** The current status of the batch. */
 export type GetBatchV1ResponseStatus =
   | "PENDING"
@@ -517,8 +733,12 @@ export type GetBatchV1ResponseStatus =
   | "COMPLETED"
   | "PARTIAL_FAILED"
   | "ABORTED";
+const GetBatchV1ResponseStatus = S.String;
+
 /** Array of run IDs in the batch. */
 export type GetBatchV1ResponseRunsList = Array<string>;
+const GetBatchV1ResponseRunsList = RunTagsCase1List as any as S.Schema<GetBatchV1ResponseRunsList>;
+
 export interface GetBatchV1ResponseErrorsItem {
   /** The index of the failed item. */
   index?: number;
@@ -529,8 +749,18 @@ export interface GetBatchV1ResponseErrorsItem {
   /** An optional error code. */
   errorCode?: string | null;
 }
+const GetBatchV1ResponseErrorsItem = /*@__PURE__*/ __L.at(
+  __c5,
+  1,
+) as any as S.Schema<GetBatchV1ResponseErrorsItem>;
+
 /** Error details for failed items (present for PARTIAL_FAILED batches). */
 export type GetBatchV1ResponseErrorsList = Array<GetBatchV1ResponseErrorsItem>;
+const GetBatchV1ResponseErrorsList = /*@__PURE__*/ __L.at(
+  __c5,
+  2,
+) as any as S.Schema<GetBatchV1ResponseErrorsList>;
+
 export interface GetBatchV1Response {
   /** The batch ID. */
   id?: string;
@@ -551,12 +781,23 @@ export interface GetBatchV1Response {
   /** Error details for failed items (present for PARTIAL_FAILED batches). */
   errors?: GetBatchV1ResponseErrorsList | null;
 }
+const GetBatchV1Response = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<GetBatchV1Response>;
+
 export interface GetBulkActionV1Request {
   /** The ID of a bulk action, starts with `bulk_`. */
   bulkActionId: string;
 }
+const GetBulkActionV1Request = /*@__PURE__*/ __L.at(
+  __c5,
+  4,
+) as any as S.Schema<GetBulkActionV1Request>;
+
 export type BulkActionObjectType = "CANCEL" | "REPLAY";
+const BulkActionObjectType = S.String;
+
 export type BulkActionObjectStatus = "PENDING" | "COMPLETED" | "ABORTED";
+const BulkActionObjectStatus = S.String;
+
 export interface BulkActionObjectCounts {
   /** The number of runs selected when the bulk action was created. */
   total: number;
@@ -565,6 +806,11 @@ export interface BulkActionObjectCounts {
   /** The number of runs that could not be processed. */
   failure: number;
 }
+const BulkActionObjectCounts = /*@__PURE__*/ __L.at(
+  __c5,
+  5,
+) as any as S.Schema<BulkActionObjectCounts>;
+
 export interface BulkActionObject {
   /** The bulk action ID, prefixed with `bulk_`. */
   id: string;
@@ -576,10 +822,17 @@ export interface BulkActionObject {
   createdAt: string;
   completedAt?: string;
 }
+const BulkActionObject = /*@__PURE__*/ __L.at(__c5, 6) as any as S.Schema<BulkActionObject>;
+
 export interface GetConcurrencyLimitV1Request {
   /** The limit's name, as declared with `concurrencyLimit()` */
   name: string;
 }
+const GetConcurrencyLimitV1Request = /*@__PURE__*/ __L.at(
+  __c5,
+  7,
+) as any as S.Schema<GetConcurrencyLimitV1Request>;
+
 /** Caps each concurrencyKey pool; runs without a key share one pool */
 export interface ConcurrencyLimitObjectPerKey {
   /** Enforced right now (null = no per-key bound). Enforcement clamps it to the environment concurrency limit at admit time. */
@@ -591,6 +844,11 @@ export interface ConcurrencyLimitObjectPerKey {
   /** When the override was applied */
   overriddenAt?: string | null;
 }
+const ConcurrencyLimitObjectPerKey = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<ConcurrencyLimitObjectPerKey>;
+
 /** Caps every run holding this limit, keys or not */
 export interface ConcurrencyLimitObjectTotal {
   /** Enforced right now (null = no total bound). Enforcement clamps it to the environment concurrency limit at admit time. */
@@ -602,6 +860,9 @@ export interface ConcurrencyLimitObjectTotal {
   /** When the override was applied */
   overriddenAt?: string | null;
 }
+const ConcurrencyLimitObjectTotal =
+  ConcurrencyLimitObjectPerKey as any as S.Schema<ConcurrencyLimitObjectTotal>;
+
 export interface ConcurrencyLimitObject {
   /** The limit's id, starting with `climit_` */
   id: string;
@@ -618,10 +879,20 @@ export interface ConcurrencyLimitObject {
   /** Whether the limit is paused. A paused limit admits no runs until resumed; its configured bounds are kept. */
   paused?: boolean;
 }
+const ConcurrencyLimitObject = /*@__PURE__*/ __L.at(
+  __c6,
+  1,
+) as any as S.Schema<ConcurrencyLimitObject>;
+
 export interface GetDeploymentV1Request {
   /** The deployment ID. */
   deploymentId: string;
 }
+const GetDeploymentV1Request = /*@__PURE__*/ __L.at(
+  __c6,
+  2,
+) as any as S.Schema<GetDeploymentV1Request>;
+
 /** The current status of the deployment */
 export type GetDeploymentV1ResponseStatus =
   | "PENDING"
@@ -632,19 +903,36 @@ export type GetDeploymentV1ResponseStatus =
   | "FAILED"
   | "CANCELED"
   | "TIMED_OUT";
+const GetDeploymentV1ResponseStatus = S.String;
+
 export interface GetDeploymentV1ResponseWorkerTasksItem {
   id?: string;
   slug?: string;
   filePath?: string;
   exportName?: string;
 }
+const GetDeploymentV1ResponseWorkerTasksItem = /*@__PURE__*/ __L.at(
+  __c6,
+  3,
+) as any as S.Schema<GetDeploymentV1ResponseWorkerTasksItem>;
+
 export type GetDeploymentV1ResponseWorkerTasksList = Array<GetDeploymentV1ResponseWorkerTasksItem>;
+const GetDeploymentV1ResponseWorkerTasksList = /*@__PURE__*/ __L.at(
+  __c6,
+  4,
+) as any as S.Schema<GetDeploymentV1ResponseWorkerTasksList>;
+
 /** Worker information if available */
 export interface GetDeploymentV1ResponseWorker {
   id?: string;
   version?: string;
   tasks?: GetDeploymentV1ResponseWorkerTasksList;
 }
+const GetDeploymentV1ResponseWorker = /*@__PURE__*/ __L.at(
+  __c6,
+  5,
+) as any as S.Schema<GetDeploymentV1ResponseWorker>;
+
 export interface GetDeploymentV1Response {
   /** The deployment ID */
   id?: string;
@@ -669,13 +957,25 @@ export interface GetDeploymentV1Response {
   /** Worker information if available */
   worker?: GetDeploymentV1ResponseWorker | null;
 }
+const GetDeploymentV1Response = /*@__PURE__*/ __L.at(
+  __c6,
+  6,
+) as any as S.Schema<GetDeploymentV1Response>;
+
 export interface GetErrorV1Request {
   /** The ID of an error group, starts with `error_`. */
   errorId: string;
 }
+const GetErrorV1Request = /*@__PURE__*/ __L.at(__c6, 7) as any as S.Schema<GetErrorV1Request>;
+
 /** The most recent worker versions the error has occurred in (up to five) */
 export type ErrorObjectAffectedVersionsList = Array<string>;
+const ErrorObjectAffectedVersionsList =
+  RunTagsCase1List as any as S.Schema<ErrorObjectAffectedVersionsList>;
+
 export type ErrorObjectStatus = "unresolved" | "resolved" | "ignored";
+const ErrorObjectStatus = S.String;
+
 export interface ErrorObject {
   /** The unique ID of the error group, prefixed with `error_` */
   id: string;
@@ -705,7 +1005,14 @@ export interface ErrorObject {
   ignoredUntilOccurrenceRate?: number | null;
   ignoredUntilTotalOccurrences?: number | null;
 }
+const ErrorObject = /*@__PURE__*/ __L.at(__c7, 0) as any as S.Schema<ErrorObject>;
+
 export interface GetLatestDeploymentV1Request {}
+const GetLatestDeploymentV1Request = /*@__PURE__*/ __L.at(
+  __c7,
+  1,
+) as any as S.Schema<GetLatestDeploymentV1Request>;
+
 /** The current status of the deployment */
 export type GetLatestDeploymentV1ResponseStatus =
   | "PENDING"
@@ -716,6 +1023,8 @@ export type GetLatestDeploymentV1ResponseStatus =
   | "FAILED"
   | "CANCELED"
   | "TIMED_OUT";
+const GetLatestDeploymentV1ResponseStatus = S.String;
+
 export interface GetLatestDeploymentV1Response {
   /** The deployment ID */
   id?: string;
@@ -732,7 +1041,14 @@ export interface GetLatestDeploymentV1Response {
   /** Error data if the deployment failed */
   errorData?: unknown | null;
 }
+const GetLatestDeploymentV1Response = /*@__PURE__*/ __L.at(
+  __c7,
+  2,
+) as any as S.Schema<GetLatestDeploymentV1Response>;
+
 export type GetProjectEnvvarV1RequestEnv = "dev" | "staging" | "prod";
+const GetProjectEnvvarV1RequestEnv = S.String;
+
 export interface GetProjectEnvvarV1Request {
   /** The external ref of the project. You can find this in the project settings. Starts with `proj_`. */
   projectRef: string;
@@ -741,13 +1057,28 @@ export interface GetProjectEnvvarV1Request {
   /** The name of the environment variable. */
   name: string;
 }
+const GetProjectEnvvarV1Request = /*@__PURE__*/ __L.at(
+  __c7,
+  3,
+) as any as S.Schema<GetProjectEnvvarV1Request>;
+
 export interface EnvVarValue {
   /** The value to store. An empty string is valid and is stored as-is, not treated as a deletion. */
   value: string;
 }
+const EnvVarValue = /*@__PURE__*/ __L.at(__c7, 4) as any as S.Schema<EnvVarValue>;
+
 export interface GetQuerySchemaV1Request {}
+const GetQuerySchemaV1Request = /*@__PURE__*/ __L.at(
+  __c7,
+  5,
+) as any as S.Schema<GetQuerySchemaV1Request>;
+
 /** Allowed values for enum-like columns */
 export type GetQuerySchemaV1ResponseTablesItemColumnsItemAllowedValuesList = Array<string>;
+const GetQuerySchemaV1ResponseTablesItemColumnsItemAllowedValuesList =
+  RunTagsCase1List as any as S.Schema<GetQuerySchemaV1ResponseTablesItemColumnsItemAllowedValuesList>;
+
 export interface GetQuerySchemaV1ResponseTablesItemColumnsItem {
   /** Column name */
   name?: string;
@@ -762,8 +1093,18 @@ export interface GetQuerySchemaV1ResponseTablesItemColumnsItem {
   /** Whether this is a core column included in default queries */
   coreColumn?: boolean;
 }
+const GetQuerySchemaV1ResponseTablesItemColumnsItem = /*@__PURE__*/ __L.at(
+  __c7,
+  6,
+) as any as S.Schema<GetQuerySchemaV1ResponseTablesItemColumnsItem>;
+
 export type GetQuerySchemaV1ResponseTablesItemColumnsList =
   Array<GetQuerySchemaV1ResponseTablesItemColumnsItem>;
+const GetQuerySchemaV1ResponseTablesItemColumnsList = /*@__PURE__*/ __L.at(
+  __c7,
+  7,
+) as any as S.Schema<GetQuerySchemaV1ResponseTablesItemColumnsList>;
+
 export interface GetQuerySchemaV1ResponseTablesItem {
   /** Table name used in TRQL queries */
   name?: string;
@@ -773,21 +1114,44 @@ export interface GetQuerySchemaV1ResponseTablesItem {
   timeColumn?: string;
   columns?: GetQuerySchemaV1ResponseTablesItemColumnsList;
 }
+const GetQuerySchemaV1ResponseTablesItem = /*@__PURE__*/ __L.at(
+  __c8,
+  0,
+) as any as S.Schema<GetQuerySchemaV1ResponseTablesItem>;
+
 export type GetQuerySchemaV1ResponseTablesList = Array<GetQuerySchemaV1ResponseTablesItem>;
+const GetQuerySchemaV1ResponseTablesList = /*@__PURE__*/ __L.at(
+  __c8,
+  1,
+) as any as S.Schema<GetQuerySchemaV1ResponseTablesList>;
+
 export interface GetQuerySchemaV1Response {
   tables?: GetQuerySchemaV1ResponseTablesList;
 }
+const GetQuerySchemaV1Response = /*@__PURE__*/ __L.at(
+  __c8,
+  2,
+) as any as S.Schema<GetQuerySchemaV1Response>;
+
 export type GetQueueV1RequestType = "id" | "task" | "custom";
+const GetQueueV1RequestType = S.String;
+
 export interface GetQueueV1Request {
   /** The queue ID (e.g., `queue_1234`), or the name of the queue when using the `type` query parameter. */
   queueParam: string;
   /** How to interpret the `queueParam` path parameter: - `id`: Treat as a queue ID (default) - `task`: Treat as a task ID to get the task's default queue - `custom`: Treat as a custom queue name */
   type?: GetQueueV1RequestType | (string & {});
 }
+const GetQueueV1Request = /*@__PURE__*/ __L.at(__c8, 3) as any as S.Schema<GetQueueV1Request>;
+
 /** The type of queue: - `task`: Created automatically for each task - `custom`: Created explicitly in your code using `queue()` */
 export type QueueObjectType = "task" | "custom";
+const QueueObjectType = S.String;
+
 /** Discriminates the shape: - `V1`: the queue carries its own `concurrencyLimit` (applied per key when runs pass a `concurrencyKey`, to the whole queue when they don't) and its `concurrency` override state - `V2`: the queue is only the line runs wait in; concurrency is declared with the task `concurrency` option and managed through the concurrency-limits endpoints. `concurrencyLimit` is always null and `concurrency` is absent. */
 export type QueueObjectVersion = "V1" | "V2";
+const QueueObjectVersion = S.String;
+
 /** Detailed concurrency information. V1 queues only. */
 export interface QueueObjectConcurrency {
   /** The effective/current concurrency limit */
@@ -801,6 +1165,11 @@ export interface QueueObjectConcurrency {
   /** Who overrode the concurrency limit (null if via API) */
   overriddenBy?: string | null;
 }
+const QueueObjectConcurrency = /*@__PURE__*/ __L.at(
+  __c8,
+  4,
+) as any as S.Schema<QueueObjectConcurrency>;
+
 export interface QueueObject {
   /** The queue ID, e.g., `queue_1234` */
   id: string;
@@ -821,10 +1190,17 @@ export interface QueueObject {
   /** Detailed concurrency information. V1 queues only. */
   concurrency?: QueueObjectConcurrency;
 }
+const QueueObject = /*@__PURE__*/ __L.at(__c8, 5) as any as S.Schema<QueueObject>;
+
 export interface GetRunEventsV1Request {
   /** The ID of an run, starts with `run_`. The run ID will be returned when you trigger a run on a task. */
   runId: string;
 }
+const GetRunEventsV1Request = /*@__PURE__*/ __L.at(
+  __c8,
+  6,
+) as any as S.Schema<GetRunEventsV1Request>;
+
 /** The log level of the event. */
 export type GetRunEventsV1ResponseEventsItemLevel =
   | "TRACE"
@@ -833,6 +1209,8 @@ export type GetRunEventsV1ResponseEventsItemLevel =
   | "INFO"
   | "WARN"
   | "ERROR";
+const GetRunEventsV1ResponseEventsItemLevel = S.String;
+
 /** The kind of span event. */
 export type GetRunEventsV1ResponseEventsItemKind =
   | "UNSPECIFIED"
@@ -843,6 +1221,8 @@ export type GetRunEventsV1ResponseEventsItemKind =
   | "CONSUMER"
   | "UNRECOGNIZED"
   | "LOG";
+const GetRunEventsV1ResponseEventsItemKind = S.String;
+
 export interface GetRunEventsV1ResponseEventsItemEventsItem {
   /** The event name (e.g. "exception", "cancellation", "attempt_failed"). */
   name?: string;
@@ -851,15 +1231,32 @@ export interface GetRunEventsV1ResponseEventsItemEventsItem {
   /** Event-specific properties. */
   properties?: unknown;
 }
+const GetRunEventsV1ResponseEventsItemEventsItem = /*@__PURE__*/ __L.at(
+  __c8,
+  7,
+) as any as S.Schema<GetRunEventsV1ResponseEventsItemEventsItem>;
+
 /** Span events (e.g. exceptions, cancellations) that occurred during this event. */
 export type GetRunEventsV1ResponseEventsItemEventsList =
   Array<GetRunEventsV1ResponseEventsItemEventsItem>;
+const GetRunEventsV1ResponseEventsItemEventsList = /*@__PURE__*/ __L.at(
+  __c9,
+  0,
+) as any as S.Schema<GetRunEventsV1ResponseEventsItemEventsList>;
+
 export type GetRunEventsV1ResponseEventsItemStyleAccessoryStyle = "codepath";
+const GetRunEventsV1ResponseEventsItemStyleAccessoryStyle = S.String;
+
 /** Accessory display element. */
 export interface GetRunEventsV1ResponseEventsItemStyleAccessory {
   text?: string;
   style?: GetRunEventsV1ResponseEventsItemStyleAccessoryStyle;
 }
+const GetRunEventsV1ResponseEventsItemStyleAccessory = /*@__PURE__*/ __L.at(
+  __c9,
+  1,
+) as any as S.Schema<GetRunEventsV1ResponseEventsItemStyleAccessory>;
+
 /** Display style metadata for the event. */
 export interface GetRunEventsV1ResponseEventsItemStyle {
   /** Icon identifier for display. */
@@ -869,6 +1266,11 @@ export interface GetRunEventsV1ResponseEventsItemStyle {
   /** Accessory display element. */
   accessory?: GetRunEventsV1ResponseEventsItemStyleAccessory;
 }
+const GetRunEventsV1ResponseEventsItemStyle = /*@__PURE__*/ __L.at(
+  __c9,
+  2,
+) as any as S.Schema<GetRunEventsV1ResponseEventsItemStyle>;
+
 export interface GetRunEventsV1ResponseEventsItem {
   /** The span ID of the event. */
   spanId?: string;
@@ -901,14 +1303,34 @@ export interface GetRunEventsV1ResponseEventsItem {
   /** Display style metadata for the event. */
   style?: GetRunEventsV1ResponseEventsItemStyle;
 }
+const GetRunEventsV1ResponseEventsItem = /*@__PURE__*/ __L.at(
+  __c9,
+  3,
+) as any as S.Schema<GetRunEventsV1ResponseEventsItem>;
+
 export type GetRunEventsV1ResponseEventsList = Array<GetRunEventsV1ResponseEventsItem>;
+const GetRunEventsV1ResponseEventsList = /*@__PURE__*/ __L.at(
+  __c9,
+  4,
+) as any as S.Schema<GetRunEventsV1ResponseEventsList>;
+
 export interface GetRunEventsV1Response {
   events?: GetRunEventsV1ResponseEventsList;
 }
+const GetRunEventsV1Response = /*@__PURE__*/ __L.at(
+  __c9,
+  5,
+) as any as S.Schema<GetRunEventsV1Response>;
+
 export interface GetRunResultV1Request {
   /** The ID of an run, starts with `run_`. The run ID will be returned when you trigger a run on a task. */
   runId: string;
 }
+const GetRunResultV1Request = /*@__PURE__*/ __L.at(
+  __c9,
+  6,
+) as any as S.Schema<GetRunResultV1Request>;
+
 /** Execution usage stats. */
 export type GetRunResultV1ResponseUsage = GetBatchResultsV1ResponseItemsItemUsage;
 export interface GetRunResultV1Response {
@@ -927,14 +1349,29 @@ export interface GetRunResultV1Response {
   /** The task identifier. */
   taskIdentifier?: string;
 }
+const GetRunResultV1Response = /*@__PURE__*/ __L.at(
+  __c9,
+  7,
+) as any as S.Schema<GetRunResultV1Response>;
+
 export interface GetRunTraceV1Request {
   /** The ID of an run, starts with `run_`. The run ID will be returned when you trigger a run on a task. */
   runId: string;
 }
+const GetRunTraceV1Request = /*@__PURE__*/ __L.at(
+  __c10,
+  0,
+) as any as S.Schema<GetRunTraceV1Request>;
+
 export type SpanDetailedSummaryDataLevel = "TRACE" | "DEBUG" | "LOG" | "INFO" | "WARN" | "ERROR";
+const SpanDetailedSummaryDataLevel = S.String;
+
 export type SpanDetailedSummaryDataEventsItem = GetRunEventsV1ResponseEventsItemEventsItem;
 /** Span events (e.g. exceptions, cancellations) that occurred during this span. */
 export type SpanDetailedSummaryDataEventsList = Array<GetRunEventsV1ResponseEventsItemEventsItem>;
+const SpanDetailedSummaryDataEventsList =
+  GetRunEventsV1ResponseEventsItemEventsList as any as S.Schema<SpanDetailedSummaryDataEventsList>;
+
 export interface SpanDetailedSummaryData {
   /** The span message. */
   message?: string;
@@ -954,8 +1391,18 @@ export interface SpanDetailedSummaryData {
   /** Span events (e.g. exceptions, cancellations) that occurred during this span. */
   events?: SpanDetailedSummaryDataEventsList;
 }
+const SpanDetailedSummaryData = /*@__PURE__*/ __L.at(
+  __c10,
+  1,
+) as any as S.Schema<SpanDetailedSummaryData>;
+
 /** Nested child spans. Each child has the same structure as the parent span. */
 export type SpanDetailedSummaryChildrenList = Array<SpanDetailedSummary>;
+const SpanDetailedSummaryChildrenList = /*@__PURE__*/ __L.at(
+  __c10,
+  2,
+) as any as S.Schema<SpanDetailedSummaryChildrenList>;
+
 export interface SpanDetailedSummary {
   /** The span ID. */
   id?: string;
@@ -967,19 +1414,33 @@ export interface SpanDetailedSummary {
   /** Nested child spans. Each child has the same structure as the parent span. */
   children?: SpanDetailedSummaryChildrenList;
 }
+const SpanDetailedSummary = /*@__PURE__*/ __L.at(__c10, 3) as any as S.Schema<SpanDetailedSummary>;
+
 export interface GetRunTraceV1ResponseTrace {
   /** The OTel trace ID. */
   traceId?: string;
   /** The requested run's span, with nested descendant spans as `children`. Not necessarily the trace-wide root span. */
   rootSpan?: SpanDetailedSummary;
 }
+const GetRunTraceV1ResponseTrace = /*@__PURE__*/ __L.at(
+  __c10,
+  4,
+) as any as S.Schema<GetRunTraceV1ResponseTrace>;
+
 export interface GetRunTraceV1Response {
   trace?: GetRunTraceV1ResponseTrace;
 }
+const GetRunTraceV1Response = /*@__PURE__*/ __L.at(
+  __c10,
+  5,
+) as any as S.Schema<GetRunTraceV1Response>;
+
 export interface GetRunV1Request {
   /** The ID of an run, starts with `run_`. The run ID will be returned when you trigger a run on a task. */
   runId: string;
 }
+const GetRunV1Request = /*@__PURE__*/ __L.at(__c10, 6) as any as S.Schema<GetRunV1Request>;
+
 /** The status of the run */
 export type GetRunV1ResponseStatus =
   | "PENDING_VERSION"
@@ -994,14 +1455,20 @@ export type GetRunV1ResponseStatus =
   | "CRASHED"
   | "INTERRUPTED"
   | "SYSTEM_FAILURE";
+const GetRunV1ResponseStatus = S.String;
+
 /** Tags can be attached to a run to make it easy to find runs (in the dashboard or using SDK functions like `runs.list`) */
 export type GetRunV1ResponseTagsList = Array<string>;
+const GetRunV1ResponseTagsList = RunTagsCase1List as any as S.Schema<GetRunV1ResponseTagsList>;
+
 /** The name of the function that triggered the run */
 export type GetRunV1ResponseTriggerFunction =
   | "trigger"
   | "triggerAndWait"
   | "batchTrigger"
   | "batchTriggerAndWait";
+const GetRunV1ResponseTriggerFunction = S.String;
+
 /** The status of the run */
 export type CommonRunObjectStatus =
   | "PENDING_VERSION"
@@ -1016,14 +1483,20 @@ export type CommonRunObjectStatus =
   | "CRASHED"
   | "INTERRUPTED"
   | "SYSTEM_FAILURE";
+const CommonRunObjectStatus = S.String;
+
 /** Tags can be attached to a run to make it easy to find runs (in the dashboard or using SDK functions like `runs.list`) */
 export type CommonRunObjectTagsList = Array<string>;
+const CommonRunObjectTagsList = RunTagsCase1List as any as S.Schema<CommonRunObjectTagsList>;
+
 /** The name of the function that triggered the run */
 export type CommonRunObjectTriggerFunction =
   | "trigger"
   | "triggerAndWait"
   | "batchTrigger"
   | "batchTriggerAndWait";
+const CommonRunObjectTriggerFunction = S.String;
+
 export interface CommonRunObject {
   /** The unique ID of the run, prefixed with `run_` */
   id: string;
@@ -1065,8 +1538,15 @@ export interface CommonRunObject {
   /** The name of the function that triggered the run */
   triggerFunction?: CommonRunObjectTriggerFunction;
 }
+const CommonRunObject = /*@__PURE__*/ __L.at(__c10, 7) as any as S.Schema<CommonRunObject>;
+
 /** The immediate children of the run. Will be omitted if the run has no children */
 export type GetRunV1ResponseRelatedRunsChildrenList = Array<CommonRunObject>;
+const GetRunV1ResponseRelatedRunsChildrenList = /*@__PURE__*/ __L.at(
+  __c11,
+  0,
+) as any as S.Schema<GetRunV1ResponseRelatedRunsChildrenList>;
+
 export interface GetRunV1ResponseRelatedRuns {
   /** The root run of the run hierarchy. Will be omitted if the run is the root run */
   root?: CommonRunObject;
@@ -1075,7 +1555,14 @@ export interface GetRunV1ResponseRelatedRuns {
   /** The immediate children of the run. Will be omitted if the run has no children */
   children?: GetRunV1ResponseRelatedRunsChildrenList;
 }
+const GetRunV1ResponseRelatedRuns = /*@__PURE__*/ __L.at(
+  __c11,
+  1,
+) as any as S.Schema<GetRunV1ResponseRelatedRuns>;
+
 export type GetRunV1ResponseScheduleGeneratorType = "CRON";
+const GetRunV1ResponseScheduleGeneratorType = S.String;
+
 export interface GetRunV1ResponseScheduleGenerator {
   type?: GetRunV1ResponseScheduleGeneratorType;
   /** The cron expression used to generate the schedule */
@@ -1083,6 +1570,11 @@ export interface GetRunV1ResponseScheduleGenerator {
   /** The description of the generator in plain english */
   description?: string;
 }
+const GetRunV1ResponseScheduleGenerator = /*@__PURE__*/ __L.at(
+  __c11,
+  2,
+) as any as S.Schema<GetRunV1ResponseScheduleGenerator>;
+
 /** The schedule that triggered the run. Will be omitted if the run was not triggered by a schedule */
 export interface GetRunV1ResponseSchedule {
   /** The unique ID of the schedule, prefixed with `sched_` */
@@ -1093,6 +1585,11 @@ export interface GetRunV1ResponseSchedule {
   deduplicationKey?: string;
   generator: GetRunV1ResponseScheduleGenerator;
 }
+const GetRunV1ResponseSchedule = /*@__PURE__*/ __L.at(
+  __c11,
+  3,
+) as any as S.Schema<GetRunV1ResponseSchedule>;
+
 export type GetRunV1ResponseAttemptsItemStatus =
   | "PENDING"
   | "EXECUTING"
@@ -1100,11 +1597,15 @@ export type GetRunV1ResponseAttemptsItemStatus =
   | "COMPLETED"
   | "FAILED"
   | "CANCELED";
+const GetRunV1ResponseAttemptsItemStatus = S.String;
+
 export interface SerializedError {
   message: string;
   name?: string;
   stackTrace?: string;
 }
+const SerializedError = /*@__PURE__*/ __L.at(__c11, 4) as any as S.Schema<SerializedError>;
+
 export interface GetRunV1ResponseAttemptsItem {
   /** The unique ID of the attempt, prefixed with `attempt_` */
   id: string;
@@ -1115,7 +1616,17 @@ export interface GetRunV1ResponseAttemptsItem {
   startedAt?: string;
   completedAt?: string;
 }
+const GetRunV1ResponseAttemptsItem = /*@__PURE__*/ __L.at(
+  __c11,
+  5,
+) as any as S.Schema<GetRunV1ResponseAttemptsItem>;
+
 export type GetRunV1ResponseAttemptsList = Array<GetRunV1ResponseAttemptsItem>;
+const GetRunV1ResponseAttemptsList = /*@__PURE__*/ __L.at(
+  __c11,
+  6,
+) as any as S.Schema<GetRunV1ResponseAttemptsList>;
+
 export interface GetRunV1Response {
   /** The unique ID of the run, prefixed with `run_` */
   id: string;
@@ -1169,30 +1680,59 @@ export interface GetRunV1Response {
   schedule?: GetRunV1ResponseSchedule;
   attempts: GetRunV1ResponseAttemptsList;
 }
+const GetRunV1Response = /*@__PURE__*/ __L.at(__c11, 7) as any as S.Schema<GetRunV1Response>;
+
 export interface GetScheduleV1Request {
   /** The ID of the schedule. */
   schedule_id: string;
 }
+const GetScheduleV1Request = /*@__PURE__*/ __L.at(
+  __c12,
+  0,
+) as any as S.Schema<GetScheduleV1Request>;
+
 export interface GetSessionV1Request {
   /** The session's friendly ID (`session_...`) or your `externalId`. The server disambiguates by the `session_` prefix. */
   session: string;
 }
+const GetSessionV1Request = /*@__PURE__*/ __L.at(__c12, 1) as any as S.Schema<GetSessionV1Request>;
+
 export interface GetTimezonesV1Request {
   /** Defaults to false. Whether to include UTC in the results or not. */
   excludeUtc?: boolean;
 }
+const GetTimezonesV1Request = /*@__PURE__*/ __L.at(
+  __c12,
+  2,
+) as any as S.Schema<GetTimezonesV1Request>;
+
 export type GetTimezonesResultTimezonesList = Array<string>;
+const GetTimezonesResultTimezonesList =
+  RunTagsCase1List as any as S.Schema<GetTimezonesResultTimezonesList>;
+
 export interface GetTimezonesResult {
   timezones?: GetTimezonesResultTimezonesList;
 }
+const GetTimezonesResult = /*@__PURE__*/ __L.at(__c12, 3) as any as S.Schema<GetTimezonesResult>;
+
 export interface GetWaitpointTokenV1Request {
   /** The ID of the waitpoint token. */
   waitpointId: string;
 }
+const GetWaitpointTokenV1Request = /*@__PURE__*/ __L.at(
+  __c12,
+  4,
+) as any as S.Schema<GetWaitpointTokenV1Request>;
+
 /** The current status of the waitpoint token. */
 export type WaitpointTokenObjectStatus = "WAITING" | "COMPLETED" | "TIMED_OUT";
+const WaitpointTokenObjectStatus = S.String;
+
 /** Tags attached to the waitpoint. */
 export type WaitpointTokenObjectTagsList = Array<string>;
+const WaitpointTokenObjectTagsList =
+  RunTagsCase1List as any as S.Schema<WaitpointTokenObjectTagsList>;
+
 export interface WaitpointTokenObject {
   /** The unique ID of the waitpoint token. */
   id: string;
@@ -1219,6 +1759,11 @@ export interface WaitpointTokenObject {
   /** When the waitpoint token was created. */
   createdAt: string;
 }
+const WaitpointTokenObject = /*@__PURE__*/ __L.at(
+  __c12,
+  5,
+) as any as S.Schema<WaitpointTokenObject>;
+
 export interface IgnoreErrorV1Request {
   /** The ID of an error group, starts with `error_`. */
   errorId: string;
@@ -1231,6 +1776,11 @@ export interface IgnoreErrorV1Request {
   /** An optional human-readable reason for ignoring the error. */
   reason?: string;
 }
+const IgnoreErrorV1Request = /*@__PURE__*/ __L.at(
+  __c12,
+  6,
+) as any as S.Schema<IgnoreErrorV1Request>;
+
 export interface ListBulkActionsV1RequestPage {
   /** Number of bulk actions per page. Maximum is 100. */
   size?: number;
@@ -1239,38 +1789,90 @@ export interface ListBulkActionsV1RequestPage {
   /** The cursor to start the page before. */
   before?: string;
 }
+const ListBulkActionsV1RequestPage = /*@__PURE__*/ __L.at(
+  __c12,
+  7,
+) as any as S.Schema<ListBulkActionsV1RequestPage>;
+
 export interface ListBulkActionsV1Request {
   /** Use this parameter to paginate bulk actions. Pass `page[after]` or `page[before]` using the cursor returned in the previous response. */
   page?: ListBulkActionsV1RequestPage;
 }
+const ListBulkActionsV1Request = /*@__PURE__*/ __L.at(
+  __c13,
+  0,
+) as any as S.Schema<ListBulkActionsV1Request>;
+
 export type ListBulkActionsResultDataList = Array<BulkActionObject>;
+const ListBulkActionsResultDataList = /*@__PURE__*/ __L.at(
+  __c13,
+  1,
+) as any as S.Schema<ListBulkActionsResultDataList>;
+
 export interface ListBulkActionsResultPagination {
   /** Pass this cursor as `page[after]` to retrieve the next page. */
   next?: string;
   /** Pass this cursor as `page[before]` to retrieve the previous page. */
   previous?: string;
 }
+const ListBulkActionsResultPagination = /*@__PURE__*/ __L.at(
+  __c13,
+  2,
+) as any as S.Schema<ListBulkActionsResultPagination>;
+
 export interface ListBulkActionsResult {
   data: ListBulkActionsResultDataList;
   pagination: ListBulkActionsResultPagination;
 }
+const ListBulkActionsResult = /*@__PURE__*/ __L.at(
+  __c13,
+  3,
+) as any as S.Schema<ListBulkActionsResult>;
+
 export interface ListConcurrencyLimitsV1Request {
   page?: number;
   perPage?: number;
 }
+const ListConcurrencyLimitsV1Request = /*@__PURE__*/ __L.at(
+  __c13,
+  4,
+) as any as S.Schema<ListConcurrencyLimitsV1Request>;
+
 export type ListConcurrencyLimitsV1ResponseDataList = Array<ConcurrencyLimitObject>;
+const ListConcurrencyLimitsV1ResponseDataList = /*@__PURE__*/ __L.at(
+  __c13,
+  5,
+) as any as S.Schema<ListConcurrencyLimitsV1ResponseDataList>;
+
 export interface ListConcurrencyLimitsV1ResponsePagination {
   currentPage?: number;
   totalPages?: number;
   count?: number;
 }
+const ListConcurrencyLimitsV1ResponsePagination = /*@__PURE__*/ __L.at(
+  __c13,
+  6,
+) as any as S.Schema<ListConcurrencyLimitsV1ResponsePagination>;
+
 export interface ListConcurrencyLimitsV1Response {
   data?: ListConcurrencyLimitsV1ResponseDataList;
   pagination?: ListConcurrencyLimitsV1ResponsePagination;
 }
+const ListConcurrencyLimitsV1Response = /*@__PURE__*/ __L.at(
+  __c13,
+  7,
+) as any as S.Schema<ListConcurrencyLimitsV1Response>;
+
 export interface ListDashboardsV1Request {}
+const ListDashboardsV1Request = /*@__PURE__*/ __L.at(
+  __c14,
+  0,
+) as any as S.Schema<ListDashboardsV1Request>;
+
 /** Widget display type */
 export type ListDashboardsV1ResponseDashboardsItemWidgetsItemType = "bignumber" | "chart" | "table";
+const ListDashboardsV1ResponseDashboardsItemWidgetsItemType = S.String;
+
 export interface ListDashboardsV1ResponseDashboardsItemWidgetsItem {
   /** Widget identifier */
   id?: string;
@@ -1281,8 +1883,18 @@ export interface ListDashboardsV1ResponseDashboardsItemWidgetsItem {
   /** Widget display type */
   type?: ListDashboardsV1ResponseDashboardsItemWidgetsItemType;
 }
+const ListDashboardsV1ResponseDashboardsItemWidgetsItem = /*@__PURE__*/ __L.at(
+  __c14,
+  1,
+) as any as S.Schema<ListDashboardsV1ResponseDashboardsItemWidgetsItem>;
+
 export type ListDashboardsV1ResponseDashboardsItemWidgetsList =
   Array<ListDashboardsV1ResponseDashboardsItemWidgetsItem>;
+const ListDashboardsV1ResponseDashboardsItemWidgetsList = /*@__PURE__*/ __L.at(
+  __c14,
+  2,
+) as any as S.Schema<ListDashboardsV1ResponseDashboardsItemWidgetsList>;
+
 export interface ListDashboardsV1ResponseDashboardsItem {
   /** Dashboard identifier (e.g. "overview", "llm") */
   key?: string;
@@ -1290,10 +1902,25 @@ export interface ListDashboardsV1ResponseDashboardsItem {
   title?: string;
   widgets?: ListDashboardsV1ResponseDashboardsItemWidgetsList;
 }
+const ListDashboardsV1ResponseDashboardsItem = /*@__PURE__*/ __L.at(
+  __c14,
+  3,
+) as any as S.Schema<ListDashboardsV1ResponseDashboardsItem>;
+
 export type ListDashboardsV1ResponseDashboardsList = Array<ListDashboardsV1ResponseDashboardsItem>;
+const ListDashboardsV1ResponseDashboardsList = /*@__PURE__*/ __L.at(
+  __c14,
+  4,
+) as any as S.Schema<ListDashboardsV1ResponseDashboardsList>;
+
 export interface ListDashboardsV1Response {
   dashboards?: ListDashboardsV1ResponseDashboardsList;
 }
+const ListDashboardsV1Response = /*@__PURE__*/ __L.at(
+  __c14,
+  5,
+) as any as S.Schema<ListDashboardsV1Response>;
+
 export type ListDeploymentsV1RequestStatus =
   | "PENDING"
   | "BUILDING"
@@ -1302,6 +1929,8 @@ export type ListDeploymentsV1RequestStatus =
   | "FAILED"
   | "CANCELED"
   | "TIMED_OUT";
+const ListDeploymentsV1RequestStatus = S.String;
+
 export interface ListDeploymentsV1Request {
   /** The deployment ID to start the search from, to get the next page. */
   page_after_?: string;
@@ -1316,6 +1945,11 @@ export interface ListDeploymentsV1Request {
   /** Filter deployments created on or before this date (ISO 8601). Only applied when `from` is also provided. */
   to?: string;
 }
+const ListDeploymentsV1Request = /*@__PURE__*/ __L.at(
+  __c14,
+  6,
+) as any as S.Schema<ListDeploymentsV1Request>;
+
 /** The current status of the deployment */
 export type ListDeploymentsV1ResponseDataItemStatus =
   | "PENDING"
@@ -1325,6 +1959,8 @@ export type ListDeploymentsV1ResponseDataItemStatus =
   | "FAILED"
   | "CANCELED"
   | "TIMED_OUT";
+const ListDeploymentsV1ResponseDataItemStatus = S.String;
+
 export interface ListDeploymentsV1ResponseDataItem {
   /** The deployment ID */
   id?: string;
@@ -1349,15 +1985,35 @@ export interface ListDeploymentsV1ResponseDataItem {
   /** The external deployment id this deployment was deployed under (`--external-id`), used by version skew protection to pin runs. Absent if the deployment was deployed without one */
   externalId?: string;
 }
+const ListDeploymentsV1ResponseDataItem = /*@__PURE__*/ __L.at(
+  __c14,
+  7,
+) as any as S.Schema<ListDeploymentsV1ResponseDataItem>;
+
 export type ListDeploymentsV1ResponseDataList = Array<ListDeploymentsV1ResponseDataItem>;
+const ListDeploymentsV1ResponseDataList = /*@__PURE__*/ __L.at(
+  __c15,
+  0,
+) as any as S.Schema<ListDeploymentsV1ResponseDataList>;
+
 export interface ListDeploymentsV1ResponsePagination {
   /** Cursor for the next page. Pass as `page[after]` to get the next page. Omitted if there are no more results. */
   next?: string;
 }
+const ListDeploymentsV1ResponsePagination = /*@__PURE__*/ __L.at(
+  __c15,
+  1,
+) as any as S.Schema<ListDeploymentsV1ResponsePagination>;
+
 export interface ListDeploymentsV1Response {
   data?: ListDeploymentsV1ResponseDataList;
   pagination?: ListDeploymentsV1ResponsePagination;
 }
+const ListDeploymentsV1Response = /*@__PURE__*/ __L.at(
+  __c15,
+  2,
+) as any as S.Schema<ListDeploymentsV1Response>;
+
 export interface ListErrorsV1RequestPage {
   /** Number of errors per page. Maximum is 100. */
   size?: number;
@@ -1366,13 +2022,26 @@ export interface ListErrorsV1RequestPage {
   /** The ID of the error to start the page before. Sets the pagination direction to backward. */
   before?: string;
 }
+const ListErrorsV1RequestPage = /*@__PURE__*/ __L.at(
+  __c15,
+  3,
+) as any as S.Schema<ListErrorsV1RequestPage>;
+
 /** The identifier of the task the error belongs to */
 export type ErrorsFilterTaskIdentifierList = Array<string>;
+const ErrorsFilterTaskIdentifierList =
+  RunTagsCase1List as any as S.Schema<ErrorsFilterTaskIdentifierList>;
+
 /** The worker version the error occurred in */
 export type ErrorsFilterVersionList = Array<string>;
+const ErrorsFilterVersionList = RunTagsCase1List as any as S.Schema<ErrorsFilterVersionList>;
+
 export type ErrorsFilterStatusItem = "unresolved" | "resolved" | "ignored";
 /** The lifecycle status of the error group */
 export type ErrorsFilterStatusList = Array<ErrorsFilterStatusItem | (string & {})>;
+const ErrorsFilterStatusList =
+  BulkActionFilterStatusCase1List as any as S.Schema<ErrorsFilterStatusList>;
+
 export interface ErrorsFilter {
   /** The identifier of the task the error belongs to */
   taskIdentifier?: ErrorsFilterTaskIdentifierList;
@@ -1389,13 +2058,19 @@ export interface ErrorsFilter {
   /** A relative time range to count occurrences within */
   period?: string;
 }
+const ErrorsFilter = /*@__PURE__*/ __L.at(__c15, 4) as any as S.Schema<ErrorsFilter>;
+
 export interface ListErrorsV1Request {
   /** Paginate the results. Specify the number of errors per page, and the ID of the error to start the page after or before. For object fields like `page`, use the "form" encoding style. For example, to get the next page, use `page[after]=error_1234`. */
   page?: ListErrorsV1RequestPage;
   /** Filter the error groups. Filter by task identifier, version, status, search text, and time range. For array fields, provide multiple values as a comma-separated list. For example, to get unresolved and ignored errors, use `filter[status]=unresolved,ignored`. For the time range, use `filter[period]` (e.g. `filter[period]=7d`) or `filter[from]` / `filter[to]` with ISO timestamps. */
   filter?: ErrorsFilter;
 }
+const ListErrorsV1Request = /*@__PURE__*/ __L.at(__c15, 5) as any as S.Schema<ListErrorsV1Request>;
+
 export type ErrorListItemStatus = "unresolved" | "resolved" | "ignored";
+const ErrorListItemStatus = S.String;
+
 export interface ErrorListItem {
   /** The unique ID of the error group, prefixed with `error_` */
   id: string;
@@ -1417,30 +2092,61 @@ export interface ErrorListItem {
   resolvedAt?: string | null;
   ignoredUntil?: string | null;
 }
+const ErrorListItem = /*@__PURE__*/ __L.at(__c15, 6) as any as S.Schema<ErrorListItem>;
+
 export type ListErrorsResultDataList = Array<ErrorListItem>;
+const ListErrorsResultDataList = /*@__PURE__*/ __L.at(
+  __c15,
+  7,
+) as any as S.Schema<ListErrorsResultDataList>;
+
 export interface ListErrorsResultPagination {
   /** The error ID to start the next page after. Pass it as `page[after]`. */
   next?: string;
   /** The error ID to start the previous page before. Pass it as `page[before]`. */
   previous?: string;
 }
+const ListErrorsResultPagination =
+  ListBulkActionsResultPagination as any as S.Schema<ListErrorsResultPagination>;
+
 export interface ListErrorsResult {
   data?: ListErrorsResultDataList;
   pagination?: ListErrorsResultPagination;
 }
+const ListErrorsResult = /*@__PURE__*/ __L.at(__c16, 0) as any as S.Schema<ListErrorsResult>;
+
 export type ListProjectEnvvarsV1RequestEnv = "dev" | "staging" | "prod";
+const ListProjectEnvvarsV1RequestEnv = S.String;
+
 export interface ListProjectEnvvarsV1Request {
   /** The external ref of the project. You can find this in the project settings. Starts with `proj_`. */
   projectRef: string;
   /** The environment of the project to list variables for. */
   env: ListProjectEnvvarsV1RequestEnv | (string & {});
 }
+const ListProjectEnvvarsV1Request = /*@__PURE__*/ __L.at(
+  __c16,
+  1,
+) as any as S.Schema<ListProjectEnvvarsV1Request>;
+
 export interface EnvVar {
   name: string;
   value: string;
 }
+const EnvVar = /*@__PURE__*/ __L.at(__c16, 2) as any as S.Schema<EnvVar>;
+
 export type ListEnvironmentVariablesResponse = Array<EnvVar>;
+const ListEnvironmentVariablesResponse = /*@__PURE__*/ __L.at(
+  __c16,
+  3,
+) as any as S.Schema<ListEnvironmentVariablesResponse>;
+
 export type ListProjectEnvvarsV1Response = ListEnvironmentVariablesResponse;
+const ListProjectEnvvarsV1Response = /*@__PURE__*/ __L.at(
+  __c16,
+  4,
+) as any as S.Schema<ListProjectEnvvarsV1Response>;
+
 export interface ListProjectRunsV1RequestPage {
   /** Number of runs per page. Maximum is 100. */
   size?: number;
@@ -1449,6 +2155,9 @@ export interface ListProjectRunsV1RequestPage {
   /** The ID of the run to start the page before. This will set the direction of the pagination to backward. */
   before?: string;
 }
+const ListProjectRunsV1RequestPage =
+  ListBulkActionsV1RequestPage as any as S.Schema<ListProjectRunsV1RequestPage>;
+
 export interface ListProjectRunsV1RequestFilterCreatedAt {
   /** The start date to filter the runs by */
   from?: string;
@@ -1457,6 +2166,11 @@ export interface ListProjectRunsV1RequestFilterCreatedAt {
   /** The period to filter the runs by */
   period?: string;
 }
+const ListProjectRunsV1RequestFilterCreatedAt = /*@__PURE__*/ __L.at(
+  __c16,
+  5,
+) as any as S.Schema<ListProjectRunsV1RequestFilterCreatedAt>;
+
 /** The status of the run */
 export type ListProjectRunsV1RequestFilterStatusItem =
   | "PENDING_VERSION"
@@ -1473,17 +2187,32 @@ export type ListProjectRunsV1RequestFilterStatusItem =
 export type ListProjectRunsV1RequestFilterStatusList = Array<
   ListProjectRunsV1RequestFilterStatusItem | (string & {})
 >;
+const ListProjectRunsV1RequestFilterStatusList =
+  BulkActionFilterStatusCase1List as any as S.Schema<ListProjectRunsV1RequestFilterStatusList>;
+
 /** The identifier of the task that was run */
 export type ListProjectRunsV1RequestFilterTaskIdentifierList = Array<string>;
+const ListProjectRunsV1RequestFilterTaskIdentifierList =
+  RunTagsCase1List as any as S.Schema<ListProjectRunsV1RequestFilterTaskIdentifierList>;
+
 /** The version of the worker that executed the run */
 export type ListProjectRunsV1RequestFilterVersionList = Array<string>;
+const ListProjectRunsV1RequestFilterVersionList =
+  RunTagsCase1List as any as S.Schema<ListProjectRunsV1RequestFilterVersionList>;
+
 /** The tags that are attached to the run */
 export type ListProjectRunsV1RequestFilterTagList = Array<string>;
+const ListProjectRunsV1RequestFilterTagList =
+  RunTagsCase1List as any as S.Schema<ListProjectRunsV1RequestFilterTagList>;
+
 /** The environment of the project */
 export type ListProjectRunsV1RequestFilterEnvItem = "dev" | "staging" | "prod";
 export type ListProjectRunsV1RequestFilterEnvList = Array<
   ListProjectRunsV1RequestFilterEnvItem | (string & {})
 >;
+const ListProjectRunsV1RequestFilterEnvList =
+  BulkActionFilterStatusCase1List as any as S.Schema<ListProjectRunsV1RequestFilterEnvList>;
+
 export interface ListProjectRunsV1RequestFilter {
   createdAt?: ListProjectRunsV1RequestFilterCreatedAt;
   status?: ListProjectRunsV1RequestFilterStatusList;
@@ -1503,6 +2232,11 @@ export interface ListProjectRunsV1RequestFilter {
   error?: string;
   env?: ListProjectRunsV1RequestFilterEnvList;
 }
+const ListProjectRunsV1RequestFilter = /*@__PURE__*/ __L.at(
+  __c16,
+  6,
+) as any as S.Schema<ListProjectRunsV1RequestFilter>;
+
 export interface ListProjectRunsV1Request {
   /** The external ref of the project. You can find this in the project settings. Starts with `proj_`. */
   projectRef: string;
@@ -1511,6 +2245,11 @@ export interface ListProjectRunsV1Request {
   /** Use this parameter to filter the runs. You can filter by created at, environment, status, task identifier, and version. For array fields, you can provide multiple values to filter by using a comma-separated list. For example, to get QUEUED and EXECUTING runs, you can use `filter[status]=QUEUED,EXECUTING`. For object fields, you should use the "form" encoding style. For example, to filter by the period, you can use `filter[createdAt][period]=1d`. */
   filter?: ListProjectRunsV1RequestFilter;
 }
+const ListProjectRunsV1Request = /*@__PURE__*/ __L.at(
+  __c16,
+  7,
+) as any as S.Schema<ListProjectRunsV1Request>;
+
 /** The status of the run */
 export type ListRunItemStatus =
   | "PENDING_VERSION"
@@ -1524,6 +2263,8 @@ export type ListRunItemStatus =
   | "CRASHED"
   | "INTERRUPTED"
   | "SYSTEM_FAILURE";
+const ListRunItemStatus = S.String;
+
 /** The environment of the run */
 export interface ListRunItemEnv {
   /** The unique ID of the environment */
@@ -1533,8 +2274,12 @@ export interface ListRunItemEnv {
   /** If this is a dev environment, the username of the user represented by this environment */
   user?: string;
 }
+const ListRunItemEnv = /*@__PURE__*/ __L.at(__c17, 0) as any as S.Schema<ListRunItemEnv>;
+
 /** Tags can be attached to a run to make it easy to find runs (in the dashboard or using SDK functions like `runs.list`) */
 export type ListRunItemTagsList = Array<string>;
+const ListRunItemTagsList = RunTagsCase1List as any as S.Schema<ListRunItemTagsList>;
+
 export interface ListRunItem {
   /** The unique ID of the run, prefixed with `run_` */
   id: string;
@@ -1570,25 +2315,46 @@ export interface ListRunItem {
   /** The duration of compute (so far) in milliseconds. This does not include waits. */
   durationMs?: number;
 }
+const ListRunItem = /*@__PURE__*/ __L.at(__c17, 1) as any as S.Schema<ListRunItem>;
+
 export type ListRunsResultDataList = Array<ListRunItem>;
+const ListRunsResultDataList = /*@__PURE__*/ __L.at(
+  __c17,
+  2,
+) as any as S.Schema<ListRunsResultDataList>;
+
 export interface ListRunsResultPagination {
   /** The run ID to start the next page after. This should be used as the `page[after]` parameter in the next request. */
   next?: string;
   /** The run ID to start the previous page before. This should be used as the `page[before]` parameter in the next request. */
   previous?: string;
 }
+const ListRunsResultPagination = /*@__PURE__*/ __L.at(
+  __c17,
+  3,
+) as any as S.Schema<ListRunsResultPagination>;
+
 export interface ListRunsResult {
   data?: ListRunsResultDataList;
   pagination?: ListRunsResultPagination;
 }
+const ListRunsResult = /*@__PURE__*/ __L.at(__c17, 4) as any as S.Schema<ListRunsResult>;
+
 export interface ListQueuesV1Request {
   /** Page number of the queue listing (1-based) */
   page?: number;
   /** Number of queues per page */
   perPage?: number;
 }
+const ListQueuesV1Request = /*@__PURE__*/ __L.at(__c17, 5) as any as S.Schema<ListQueuesV1Request>;
+
 /** An array of queue objects */
 export type ListQueuesResultDataList = Array<QueueObject>;
+const ListQueuesResultDataList = /*@__PURE__*/ __L.at(
+  __c17,
+  6,
+) as any as S.Schema<ListQueuesResultDataList>;
+
 export interface ListQueuesResultPagination {
   /** The current page number */
   currentPage?: number;
@@ -1597,11 +2363,16 @@ export interface ListQueuesResultPagination {
   /** The total number of queues */
   count?: number;
 }
+const ListQueuesResultPagination =
+  ListConcurrencyLimitsV1ResponsePagination as any as S.Schema<ListQueuesResultPagination>;
+
 export interface ListQueuesResult {
   /** An array of queue objects */
   data: ListQueuesResultDataList;
   pagination: ListQueuesResultPagination;
 }
+const ListQueuesResult = /*@__PURE__*/ __L.at(__c17, 7) as any as S.Schema<ListQueuesResult>;
+
 export type ListRunsV1RequestPage = ListProjectRunsV1RequestPage;
 export type CommonRunsFilterCreatedAt = ListProjectRunsV1RequestFilterCreatedAt;
 /** The status of the run */
@@ -1618,12 +2389,23 @@ export type CommonRunsFilterStatusItem =
   | "INTERRUPTED"
   | "SYSTEM_FAILURE";
 export type CommonRunsFilterStatusList = Array<CommonRunsFilterStatusItem | (string & {})>;
+const CommonRunsFilterStatusList =
+  BulkActionFilterStatusCase1List as any as S.Schema<CommonRunsFilterStatusList>;
+
 /** The identifier of the task that was run */
 export type CommonRunsFilterTaskIdentifierList = Array<string>;
+const CommonRunsFilterTaskIdentifierList =
+  RunTagsCase1List as any as S.Schema<CommonRunsFilterTaskIdentifierList>;
+
 /** The version of the worker that executed the run */
 export type CommonRunsFilterVersionList = Array<string>;
+const CommonRunsFilterVersionList =
+  RunTagsCase1List as any as S.Schema<CommonRunsFilterVersionList>;
+
 /** The tags that are attached to the run */
 export type CommonRunsFilterTagList = Array<string>;
+const CommonRunsFilterTagList = RunTagsCase1List as any as S.Schema<CommonRunsFilterTagList>;
+
 export interface CommonRunsFilter {
   createdAt?: ListProjectRunsV1RequestFilterCreatedAt;
   status?: CommonRunsFilterStatusList;
@@ -1642,24 +2424,40 @@ export interface CommonRunsFilter {
   /** An error group ID (starts with `error_`). Lists the runs behind that error group. */
   error?: string;
 }
+const CommonRunsFilter = /*@__PURE__*/ __L.at(__c18, 0) as any as S.Schema<CommonRunsFilter>;
+
 export interface ListRunsV1Request {
   /** Use this parameter to paginate the results. You can specify the number of runs per page, and the ID of the run to start the page after or before. For object fields like `page`, you should use the "form" encoding style. For example, to get the next page of runs, you can use `page[after]=run_1234`. */
   page?: ListProjectRunsV1RequestPage;
   /** Use this parameter to filter the runs. You can filter by created at, status, task identifier, and version. For array fields, you can provide multiple values to filter by using a comma-separated list. For example, to get QUEUED and EXECUTING runs, you can use `filter[status]=QUEUED,EXECUTING`. For object fields, you should use the "form" encoding style. For example, to filter by the period, you can use `filter[createdAt][period]=1d`. */
   filter?: CommonRunsFilter;
 }
+const ListRunsV1Request = /*@__PURE__*/ __L.at(__c18, 1) as any as S.Schema<ListRunsV1Request>;
+
 export interface ListSchedulesV1Request {
   /** Page number of the schedule listing */
   page?: number;
   /** Number of schedules per page */
   perPage?: number;
 }
+const ListSchedulesV1Request = /*@__PURE__*/ __L.at(
+  __c18,
+  2,
+) as any as S.Schema<ListSchedulesV1Request>;
+
 export type ListSchedulesResultDataList = Array<ScheduleObject>;
+const ListSchedulesResultDataList = /*@__PURE__*/ __L.at(
+  __c18,
+  3,
+) as any as S.Schema<ListSchedulesResultDataList>;
+
 export type ListSchedulesResultPagination = ListConcurrencyLimitsV1ResponsePagination;
 export interface ListSchedulesResult {
   data?: ListSchedulesResultDataList;
   pagination?: ListConcurrencyLimitsV1ResponsePagination;
 }
+const ListSchedulesResult = /*@__PURE__*/ __L.at(__c18, 4) as any as S.Schema<ListSchedulesResult>;
+
 export interface ListSessionsV1RequestPage {
   /** Number of sessions per page. Maximum is 100. */
   size?: number;
@@ -1668,15 +2466,28 @@ export interface ListSessionsV1RequestPage {
   /** The ID of the session to start the page before. Sets the pagination direction to backward. */
   before?: string;
 }
+const ListSessionsV1RequestPage =
+  ListBulkActionsV1RequestPage as any as S.Schema<ListSessionsV1RequestPage>;
+
 /** The session type(s) to filter by. */
 export type SessionsFilterTypeList = Array<string>;
+const SessionsFilterTypeList = RunTagsCase1List as any as S.Schema<SessionsFilterTypeList>;
+
 /** The tags to filter by. */
 export type SessionsFilterTagsList = Array<string>;
+const SessionsFilterTagsList = RunTagsCase1List as any as S.Schema<SessionsFilterTagsList>;
+
 /** The task identifier(s) to filter by. */
 export type SessionsFilterTaskIdentifierList = Array<string>;
+const SessionsFilterTaskIdentifierList =
+  RunTagsCase1List as any as S.Schema<SessionsFilterTaskIdentifierList>;
+
 export type SessionsFilterStatusItem = "ACTIVE" | "CLOSED" | "EXPIRED";
 /** The lifecycle status(es) to filter by. */
 export type SessionsFilterStatusList = Array<SessionsFilterStatusItem | (string & {})>;
+const SessionsFilterStatusList =
+  BulkActionFilterStatusCase1List as any as S.Schema<SessionsFilterStatusList>;
+
 export interface SessionsFilterCreatedAt {
   /** The start date to filter the sessions by. */
   from?: string;
@@ -1685,6 +2496,11 @@ export interface SessionsFilterCreatedAt {
   /** The period to filter the sessions by. */
   period?: string;
 }
+const SessionsFilterCreatedAt = /*@__PURE__*/ __L.at(
+  __c18,
+  5,
+) as any as S.Schema<SessionsFilterCreatedAt>;
+
 export interface SessionsFilter {
   /** The session type(s) to filter by. */
   type?: SessionsFilterTypeList;
@@ -1698,23 +2514,40 @@ export interface SessionsFilter {
   status?: SessionsFilterStatusList;
   createdAt?: SessionsFilterCreatedAt;
 }
+const SessionsFilter = /*@__PURE__*/ __L.at(__c18, 6) as any as S.Schema<SessionsFilter>;
+
 export interface ListSessionsV1Request {
   /** Paginate the results. Specify the number of sessions per page, and the ID of the session to start the page after or before. For object fields like `page`, use the "form" encoding style. For example, to get the next page, use `page[after]=session_1234`. */
   page?: ListSessionsV1RequestPage;
   /** Use this parameter to filter the sessions. You can filter by type, tags, task identifier, external id, status, and created at. For array fields, you can provide multiple values to filter by using a comma-separated list. For example, to get ACTIVE and CLOSED sessions, you can use `filter[status]=ACTIVE,CLOSED`. For object fields, you should use the "form" encoding style. For example, to filter by the period, you can use `filter[createdAt][period]=1d`. */
   filter?: SessionsFilter;
 }
+const ListSessionsV1Request = /*@__PURE__*/ __L.at(
+  __c18,
+  7,
+) as any as S.Schema<ListSessionsV1Request>;
+
 export type ListSessionsResultDataList = Array<SessionObject>;
+const ListSessionsResultDataList = /*@__PURE__*/ __L.at(
+  __c19,
+  0,
+) as any as S.Schema<ListSessionsResultDataList>;
+
 export interface ListSessionsResultPagination {
   /** The session ID to start the next page after. Pass it as the `page[after]` parameter on the next request. */
   next?: string;
   /** The session ID to start the previous page before. Pass it as the `page[before]` parameter on the next request. */
   previous?: string;
 }
+const ListSessionsResultPagination =
+  ListBulkActionsResultPagination as any as S.Schema<ListSessionsResultPagination>;
+
 export interface ListSessionsResult {
   data?: ListSessionsResultDataList;
   pagination?: ListSessionsResultPagination;
 }
+const ListSessionsResult = /*@__PURE__*/ __L.at(__c19, 1) as any as S.Schema<ListSessionsResult>;
+
 export interface ListWaitpointTokensV1Request {
   /** Number of tokens to return per page (1-100). */
   page_size_?: number;
@@ -1735,19 +2568,39 @@ export interface ListWaitpointTokensV1Request {
   /** Filter tokens created at or before this ISO 8601 timestamp. */
   filter_createdAt__to_?: string;
 }
+const ListWaitpointTokensV1Request = /*@__PURE__*/ __L.at(
+  __c19,
+  2,
+) as any as S.Schema<ListWaitpointTokensV1Request>;
+
 /** An array of waitpoint token objects. */
 export type ListWaitpointTokensResultDataList = Array<WaitpointTokenObject>;
+const ListWaitpointTokensResultDataList = /*@__PURE__*/ __L.at(
+  __c19,
+  3,
+) as any as S.Schema<ListWaitpointTokensResultDataList>;
+
 export interface ListWaitpointTokensResultPagination {
   /** Cursor for the next page. Pass as `page[after]` in the next request. */
   next?: string | null;
   /** Cursor for the previous page. Pass as `page[before]` in the next request. */
   previous?: string | null;
 }
+const ListWaitpointTokensResultPagination = /*@__PURE__*/ __L.at(
+  __c19,
+  4,
+) as any as S.Schema<ListWaitpointTokensResultPagination>;
+
 export interface ListWaitpointTokensResult {
   /** An array of waitpoint token objects. */
   data: ListWaitpointTokensResultDataList;
   pagination: ListWaitpointTokensResultPagination;
 }
+const ListWaitpointTokensResult = /*@__PURE__*/ __L.at(
+  __c19,
+  5,
+) as any as S.Schema<ListWaitpointTokensResult>;
+
 export interface OverrideConcurrencyLimitV1Request {
   /** The limit's name */
   name: string;
@@ -1756,8 +2609,15 @@ export interface OverrideConcurrencyLimitV1Request {
   /** Caps every run holding this limit, keys or not. May not exceed the environment concurrency limit. */
   total?: number;
 }
+const OverrideConcurrencyLimitV1Request = /*@__PURE__*/ __L.at(
+  __c19,
+  6,
+) as any as S.Schema<OverrideConcurrencyLimitV1Request>;
+
 /** How to interpret the `queueParam` path parameter: - `id`: Treat as a queue ID (default) - `task`: Treat as a task ID to get the task's default queue - `custom`: Treat as a custom queue name */
 export type OverrideQueueConcurrencyV1RequestType = "id" | "task" | "custom";
+const OverrideQueueConcurrencyV1RequestType = S.String;
+
 export interface OverrideQueueConcurrencyV1Request {
   /** The queue ID (e.g., `queue_1234`), or the name of the queue when using the `type` body parameter. */
   queueParam: string;
@@ -1766,18 +2626,34 @@ export interface OverrideQueueConcurrencyV1Request {
   /** The new concurrency limit to set for the queue. It may not exceed your environment's maximum concurrency limit: a higher value is rejected with a 400, not capped to the maximum. */
   concurrencyLimit: number;
 }
+const OverrideQueueConcurrencyV1Request = /*@__PURE__*/ __L.at(
+  __c19,
+  7,
+) as any as S.Schema<OverrideQueueConcurrencyV1Request>;
+
 /** Whether to pause or resume the limit */
 export type PauseConcurrencyLimitV1RequestAction = "pause" | "resume";
+const PauseConcurrencyLimitV1RequestAction = S.String;
+
 export interface PauseConcurrencyLimitV1Request {
   /** The limit's name */
   name: string;
   /** Whether to pause or resume the limit */
   action: PauseConcurrencyLimitV1RequestAction | (string & {});
 }
+const PauseConcurrencyLimitV1Request = /*@__PURE__*/ __L.at(
+  __c20,
+  0,
+) as any as S.Schema<PauseConcurrencyLimitV1Request>;
+
 /** How to interpret the `queueParam` path parameter: - `id`: Treat as a queue ID (default) - `task`: Treat as a task ID to get the task's default queue - `custom`: Treat as a custom queue name */
 export type PauseQueueV1RequestType = "id" | "task" | "custom";
+const PauseQueueV1RequestType = S.String;
+
 /** Whether to pause or resume the queue */
 export type PauseQueueV1RequestAction = "pause" | "resume";
+const PauseQueueV1RequestAction = S.String;
+
 export interface PauseQueueV1Request {
   /** The queue ID (e.g., `queue_1234`), or the name of the queue when using the `type` body parameter. */
   queueParam: string;
@@ -1786,10 +2662,17 @@ export interface PauseQueueV1Request {
   /** Whether to pause or resume the queue */
   action: PauseQueueV1RequestAction | (string & {});
 }
+const PauseQueueV1Request = /*@__PURE__*/ __L.at(__c20, 1) as any as S.Schema<PauseQueueV1Request>;
+
 export interface PromoteDeploymentV1Request {
   /** The deployment version to promote (e.g., "20250228.1"). */
   version: string;
 }
+const PromoteDeploymentV1Request = /*@__PURE__*/ __L.at(
+  __c20,
+  2,
+) as any as S.Schema<PromoteDeploymentV1Request>;
+
 export interface PromoteDeploymentV1Response {
   /** The deployment ID */
   id?: string;
@@ -1798,37 +2681,68 @@ export interface PromoteDeploymentV1Response {
   /** The short code for the deployment */
   shortCode?: string;
 }
+const PromoteDeploymentV1Response = /*@__PURE__*/ __L.at(
+  __c20,
+  3,
+) as any as S.Schema<PromoteDeploymentV1Response>;
+
 export interface ResetConcurrencyLimitV1Request {
   /** The limit's name */
   name: string;
 }
+const ResetConcurrencyLimitV1Request = /*@__PURE__*/ __L.at(
+  __c20,
+  4,
+) as any as S.Schema<ResetConcurrencyLimitV1Request>;
+
 /** How to interpret the `queueParam` path parameter: - `id`: Treat as a queue ID (default) - `task`: Treat as a task ID to get the task's default queue - `custom`: Treat as a custom queue name */
 export type ResetQueueConcurrencyV1RequestType = "id" | "task" | "custom";
+const ResetQueueConcurrencyV1RequestType = S.String;
+
 export interface ResetQueueConcurrencyV1Request {
   /** The queue ID (e.g., `queue_1234`), or the name of the queue when using the `type` body parameter. */
   queueParam: string;
   /** How to interpret the `queueParam` path parameter: - `id`: Treat as a queue ID (default) - `task`: Treat as a task ID to get the task's default queue - `custom`: Treat as a custom queue name */
   type?: ResetQueueConcurrencyV1RequestType | (string & {});
 }
+const ResetQueueConcurrencyV1Request = /*@__PURE__*/ __L.at(
+  __c20,
+  5,
+) as any as S.Schema<ResetQueueConcurrencyV1Request>;
+
 export interface ResolveErrorV1Request {
   /** The ID of an error group, starts with `error_`. */
   errorId: string;
   /** The worker version the error was resolved in. */
   resolvedInVersion?: string;
 }
+const ResolveErrorV1Request = /*@__PURE__*/ __L.at(
+  __c20,
+  6,
+) as any as S.Schema<ResolveErrorV1Request>;
+
 export interface RunReplayV1Request {
   /** The ID of an run, starts with `run_`. The run ID will be returned when you trigger a run on a task. */
   runId: string;
 }
+const RunReplayV1Request = /*@__PURE__*/ __L.at(__c20, 7) as any as S.Schema<RunReplayV1Request>;
+
 export interface RunReplayV1Response {
   /** The ID of the new run. */
   id?: string;
 }
+const RunReplayV1Response = CancelRunV1Response as any as S.Schema<RunReplayV1Response>;
+
 export interface RunRescheduleV1Request {
   /** The ID of an run, starts with `run_`. The run ID will be returned when you trigger a run on a task. */
   runId: string;
   delay?: string;
 }
+const RunRescheduleV1Request = /*@__PURE__*/ __L.at(
+  __c21,
+  0,
+) as any as S.Schema<RunRescheduleV1Request>;
+
 /** The status of the run */
 export type RunRescheduleV1ResponseStatus =
   | "PENDING_VERSION"
@@ -1843,14 +2757,21 @@ export type RunRescheduleV1ResponseStatus =
   | "CRASHED"
   | "INTERRUPTED"
   | "SYSTEM_FAILURE";
+const RunRescheduleV1ResponseStatus = S.String;
+
 /** Tags can be attached to a run to make it easy to find runs (in the dashboard or using SDK functions like `runs.list`) */
 export type RunRescheduleV1ResponseTagsList = Array<string>;
+const RunRescheduleV1ResponseTagsList =
+  RunTagsCase1List as any as S.Schema<RunRescheduleV1ResponseTagsList>;
+
 /** The name of the function that triggered the run */
 export type RunRescheduleV1ResponseTriggerFunction =
   | "trigger"
   | "triggerAndWait"
   | "batchTrigger"
   | "batchTriggerAndWait";
+const RunRescheduleV1ResponseTriggerFunction = S.String;
+
 /** The immediate children of the run. Will be omitted if the run has no children */
 export type RunRescheduleV1ResponseRelatedRunsChildrenList = Array<CommonRunObject>;
 export interface RunRescheduleV1ResponseRelatedRuns {
@@ -1861,6 +2782,9 @@ export interface RunRescheduleV1ResponseRelatedRuns {
   /** The immediate children of the run. Will be omitted if the run has no children */
   children?: RunRescheduleV1ResponseRelatedRunsChildrenList;
 }
+const RunRescheduleV1ResponseRelatedRuns =
+  GetRunV1ResponseRelatedRuns as any as S.Schema<RunRescheduleV1ResponseRelatedRuns>;
+
 export type RunRescheduleV1ResponseScheduleGeneratorType = "CRON";
 export interface RunRescheduleV1ResponseScheduleGenerator {
   type?: RunRescheduleV1ResponseScheduleGeneratorType;
@@ -1869,6 +2793,9 @@ export interface RunRescheduleV1ResponseScheduleGenerator {
   /** The description of the generator in plain english */
   description?: string;
 }
+const RunRescheduleV1ResponseScheduleGenerator =
+  GetRunV1ResponseScheduleGenerator as any as S.Schema<RunRescheduleV1ResponseScheduleGenerator>;
+
 /** The schedule that triggered the run. Will be omitted if the run was not triggered by a schedule */
 export interface RunRescheduleV1ResponseSchedule {
   /** The unique ID of the schedule, prefixed with `sched_` */
@@ -1879,6 +2806,11 @@ export interface RunRescheduleV1ResponseSchedule {
   deduplicationKey?: string;
   generator: RunRescheduleV1ResponseScheduleGenerator;
 }
+const RunRescheduleV1ResponseSchedule = /*@__PURE__*/ __L.at(
+  __c21,
+  1,
+) as any as S.Schema<RunRescheduleV1ResponseSchedule>;
+
 export type RunRescheduleV1ResponseAttemptsItemStatus =
   | "PENDING"
   | "EXECUTING"
@@ -1897,6 +2829,9 @@ export interface RunRescheduleV1ResponseAttemptsItem {
   completedAt?: string;
 }
 export type RunRescheduleV1ResponseAttemptsList = Array<RunRescheduleV1ResponseAttemptsItem>;
+const RunRescheduleV1ResponseAttemptsList =
+  GetRunV1ResponseAttemptsList as any as S.Schema<RunRescheduleV1ResponseAttemptsList>;
+
 export interface RunRescheduleV1Response {
   /** The unique ID of the run, prefixed with `run_` */
   id: string;
@@ -1950,12 +2885,19 @@ export interface RunRescheduleV1Response {
   schedule?: RunRescheduleV1ResponseSchedule;
   attempts: RunRescheduleV1ResponseAttemptsList;
 }
+const RunRescheduleV1Response = /*@__PURE__*/ __L.at(
+  __c21,
+  2,
+) as any as S.Schema<RunRescheduleV1Response>;
+
 export interface QueueOptions {
   /** You can define a shared queue and then pass the name in to your task. */
   name?: string;
   /** An optional property that specifies the maximum number of concurrent run executions. If this property is omitted, the task can potentially use up the full concurrency of an environment. */
   concurrencyLimit?: number;
 }
+const QueueOptions = /*@__PURE__*/ __L.at(__c21, 3) as any as S.Schema<QueueOptions>;
+
 /** The machine preset to use for this run. This will override the task's machine preset and any defaults. */
 export type TriggerTaskRequestBodyOptionsMachine =
   | "micro"
@@ -1965,6 +2907,8 @@ export type TriggerTaskRequestBodyOptionsMachine =
   | "medium-2x"
   | "large-1x"
   | "large-2x";
+const TriggerTaskRequestBodyOptionsMachine = S.String;
+
 export interface TriggerTaskRequestBodyOptions {
   queue?: QueueOptions;
   /** Scope the concurrency limit to a specific key. */
@@ -1978,6 +2922,11 @@ export interface TriggerTaskRequestBodyOptions {
   /** The machine preset to use for this run. This will override the task's machine preset and any defaults. */
   machine?: TriggerTaskRequestBodyOptionsMachine | (string & {});
 }
+const TriggerTaskRequestBodyOptions = /*@__PURE__*/ __L.at(
+  __c21,
+  4,
+) as any as S.Schema<TriggerTaskRequestBodyOptions>;
+
 export interface TriggerTaskRequestBody {
   /** The payload can include any valid JSON */
   payload?: unknown;
@@ -1985,22 +2934,45 @@ export interface TriggerTaskRequestBody {
   context?: unknown;
   options?: TriggerTaskRequestBodyOptions;
 }
+const TriggerTaskRequestBody = /*@__PURE__*/ __L.at(
+  __c21,
+  5,
+) as any as S.Schema<TriggerTaskRequestBody>;
+
 /** An array of payloads to trigger the task with (max 1,000 items). */
 export type TriggerBatchTaskByIdV1RequestItemsList = Array<TriggerTaskRequestBody>;
+const TriggerBatchTaskByIdV1RequestItemsList = /*@__PURE__*/ __L.at(
+  __c21,
+  6,
+) as any as S.Schema<TriggerBatchTaskByIdV1RequestItemsList>;
+
 export interface TriggerBatchTaskByIdV1Request {
   /** The id of a task. If the id contains characters that are reserved in a URL path, such as a slash (`/`), percent-encode it when building the request path (e.g. `types/zod` becomes `types%2Fzod`). */
   taskIdentifier: string;
   /** An array of payloads to trigger the task with (max 1,000 items). */
   items: TriggerBatchTaskByIdV1RequestItemsList;
 }
+const TriggerBatchTaskByIdV1Request = /*@__PURE__*/ __L.at(
+  __c21,
+  7,
+) as any as S.Schema<TriggerBatchTaskByIdV1Request>;
+
 /** An array of run IDs that were triggered */
 export type BatchTriggerTaskResponseRunsList = Array<string>;
+const BatchTriggerTaskResponseRunsList =
+  RunTagsCase1List as any as S.Schema<BatchTriggerTaskResponseRunsList>;
+
 export interface BatchTriggerTaskResponse {
   /** The ID of the batch that was triggered */
   batchId: string;
   /** An array of run IDs that were triggered */
   runs: BatchTriggerTaskResponseRunsList;
 }
+const BatchTriggerTaskResponse = /*@__PURE__*/ __L.at(
+  __c22,
+  0,
+) as any as S.Schema<BatchTriggerTaskResponse>;
+
 /** The machine preset to use for this run. This will override the task's machine preset and any defaults. */
 export type BatchTriggerTaskRequestBodyItemOptionsMachine =
   | "micro"
@@ -2023,6 +2995,9 @@ export interface BatchTriggerTaskRequestBodyItemOptions {
   /** The machine preset to use for this run. This will override the task's machine preset and any defaults. */
   machine?: BatchTriggerTaskRequestBodyItemOptionsMachine | (string & {});
 }
+const BatchTriggerTaskRequestBodyItemOptions =
+  TriggerTaskRequestBodyOptions as any as S.Schema<BatchTriggerTaskRequestBodyItemOptions>;
+
 export interface BatchTriggerTaskRequestBodyItem {
   /** The payload can include any valid JSON */
   payload?: unknown;
@@ -2032,12 +3007,27 @@ export interface BatchTriggerTaskRequestBodyItem {
   /** The task identifier to trigger. This is the `id` set in your `task()` functions. */
   task: string;
 }
+const BatchTriggerTaskRequestBodyItem = /*@__PURE__*/ __L.at(
+  __c22,
+  1,
+) as any as S.Schema<BatchTriggerTaskRequestBodyItem>;
+
 /** An array of payloads to trigger the task with */
 export type TriggerBatchTaskV1RequestItemsList = Array<BatchTriggerTaskRequestBodyItem>;
+const TriggerBatchTaskV1RequestItemsList = /*@__PURE__*/ __L.at(
+  __c22,
+  2,
+) as any as S.Schema<TriggerBatchTaskV1RequestItemsList>;
+
 export interface TriggerBatchTaskV1Request {
   /** An array of payloads to trigger the task with */
   items: TriggerBatchTaskV1RequestItemsList;
 }
+const TriggerBatchTaskV1Request = /*@__PURE__*/ __L.at(
+  __c22,
+  3,
+) as any as S.Schema<TriggerBatchTaskV1Request>;
+
 /** The machine preset to use for this run. This will override the task's machine preset and any defaults. */
 export type TriggerTaskV1RequestOptionsMachine =
   | "micro"
@@ -2060,6 +3050,9 @@ export interface TriggerTaskV1RequestOptions {
   /** The machine preset to use for this run. This will override the task's machine preset and any defaults. */
   machine?: TriggerTaskV1RequestOptionsMachine | (string & {});
 }
+const TriggerTaskV1RequestOptions =
+  TriggerTaskRequestBodyOptions as any as S.Schema<TriggerTaskV1RequestOptions>;
+
 export interface TriggerTaskV1Request {
   /** The id of a task. If the id contains characters that are reserved in a URL path, such as a slash (`/`), percent-encode it when building the request path (e.g. `types/zod` becomes `types%2Fzod`). */
   taskIdentifier: string;
@@ -2069,15 +3062,29 @@ export interface TriggerTaskV1Request {
   context?: unknown;
   options?: TriggerTaskV1RequestOptions;
 }
+const TriggerTaskV1Request = /*@__PURE__*/ __L.at(
+  __c22,
+  4,
+) as any as S.Schema<TriggerTaskV1Request>;
+
 export interface TriggerTaskResponse {
   /** The ID of the run that was triggered. */
   id?: string;
 }
+const TriggerTaskResponse = CancelRunV1Response as any as S.Schema<TriggerTaskResponse>;
+
 export interface UnresolveErrorV1Request {
   /** The ID of an error group, starts with `error_`. */
   errorId: string;
 }
+const UnresolveErrorV1Request = /*@__PURE__*/ __L.at(
+  __c22,
+  5,
+) as any as S.Schema<UnresolveErrorV1Request>;
+
 export type UpdateProjectEnvvarV1RequestEnv = "dev" | "staging" | "prod";
+const UpdateProjectEnvvarV1RequestEnv = S.String;
+
 export interface UpdateProjectEnvvarV1Request {
   /** The external ref of the project. You can find this in the project settings. Starts with `proj_`. */
   projectRef: string;
@@ -2088,16 +3095,31 @@ export interface UpdateProjectEnvvarV1Request {
   /** The value to store. An empty string is valid and is stored as-is, not treated as a deletion. */
   value: string;
 }
+const UpdateProjectEnvvarV1Request = /*@__PURE__*/ __L.at(
+  __c22,
+  6,
+) as any as S.Schema<UpdateProjectEnvvarV1Request>;
+
 export interface UpdateRunMetadataV1Request {
   /** The ID of an run, starts with `run_`. The run ID will be returned when you trigger a run on a task. */
   runId: string;
   /** The new metadata to set on the run. */
   metadata?: unknown;
 }
+const UpdateRunMetadataV1Request = /*@__PURE__*/ __L.at(
+  __c22,
+  7,
+) as any as S.Schema<UpdateRunMetadataV1Request>;
+
 export interface UpdateRunMetadataV1Response {
   /** The updated metadata of the run. */
   metadata?: unknown;
 }
+const UpdateRunMetadataV1Response = /*@__PURE__*/ __L.at(
+  __c23,
+  0,
+) as any as S.Schema<UpdateRunMetadataV1Response>;
+
 export interface UpdateScheduleV1Request {
   /** The ID of the schedule. */
   schedule_id: string;
@@ -2107,10 +3129,21 @@ export interface UpdateScheduleV1Request {
   /** Defaults to "UTC". In IANA format ("America/New_York"). If set then it will trigger at the CRON frequency in that timezone and respect daylight savings time. */
   timezone?: string;
 }
+const UpdateScheduleV1Request = /*@__PURE__*/ __L.at(
+  __c23,
+  1,
+) as any as S.Schema<UpdateScheduleV1Request>;
+
 /** Replaces the tags on the session row. */
 export type UpdateSessionV1RequestTagsList = Array<string>;
+const UpdateSessionV1RequestTagsList =
+  RunTagsCase1List as any as S.Schema<UpdateSessionV1RequestTagsList>;
+
 /** Replaces the metadata. Pass `null` to clear it. */
 export type UpdateSessionV1RequestMetadataMap = { [key: string]: unknown | undefined };
+const UpdateSessionV1RequestMetadataMap =
+  SessionTriggerConfigBasePayloadMap as any as S.Schema<UpdateSessionV1RequestMetadataMap>;
+
 export interface UpdateSessionV1Request {
   /** The session's friendly ID (`session_...`) or your `externalId`. The server disambiguates by the `session_` prefix. */
   session: string;
@@ -2121,8 +3154,18 @@ export interface UpdateSessionV1Request {
   /** Read-only after create: cannot be changed or cleared. Sending a value different from the current one (including `null` when one is set) returns `422`; sending the same value is idempotent. */
   externalId?: string | null;
 }
+const UpdateSessionV1Request = /*@__PURE__*/ __L.at(
+  __c23,
+  2,
+) as any as S.Schema<UpdateSessionV1Request>;
+
 export type UploadProjectEnvvarsV1RequestEnv = "dev" | "staging" | "prod";
+const UploadProjectEnvvarsV1RequestEnv = S.String;
+
 export type UploadProjectEnvvarsV1RequestVariablesList = Array<EnvVar>;
+const UploadProjectEnvvarsV1RequestVariablesList =
+  ListEnvironmentVariablesResponse as any as S.Schema<UploadProjectEnvvarsV1RequestVariablesList>;
+
 export interface UploadProjectEnvvarsV1Request {
   /** The external ref of the project. You can find this in the project settings. Starts with `proj_`. */
   projectRef: string;
@@ -2132,6 +3175,11 @@ export interface UploadProjectEnvvarsV1Request {
   /** Whether to override existing variables or not */
   override?: boolean;
 }
+const UploadProjectEnvvarsV1Request = /*@__PURE__*/ __L.at(
+  __c23,
+  3,
+) as any as S.Schema<UploadProjectEnvvarsV1Request>;
+
 export type ActivateScheduleV1Error = NotFound | TriggerDevOpError;
 /** Activate Schedule Activate a schedule by its ID. This will only work on `IMPERATIVE` schedules that were created in the dashboard or using the imperative SDK functions like `schedules.create()`. */
 export const activateScheduleV1: API.OperationMethod<
@@ -2140,8 +3188,8 @@ export const activateScheduleV1: API.OperationMethod<
   ActivateScheduleV1Error,
   TriggerDevOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<ActivateScheduleV1Request>,
-  output: __S(5) as any as S.Schema<ScheduleObject>,
+  input: ActivateScheduleV1Request,
+  output: ScheduleObject,
   errors: [NotFound, UnknownTriggerDevError],
   protocol: TriggerDevProtocol,
   retry: Retry.Retry,
@@ -2155,8 +3203,8 @@ export const addRunTagsV1: API.OperationMethod<
   AddRunTagsV1Error,
   TriggerDevOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7) as any as S.Schema<AddRunTagsV1Request>,
-  output: __S(8) as any as S.Schema<AddRunTagsV1Response>,
+  input: AddRunTagsV1Request,
+  output: AddRunTagsV1Response,
   errors: [BadRequest, UnprocessableEntity, UnknownTriggerDevError],
   protocol: TriggerDevProtocol,
   retry: Retry.Retry,
@@ -2170,8 +3218,8 @@ export const bulkAbortActionV1: API.OperationMethod<
   BulkAbortActionV1Error,
   TriggerDevOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9) as any as S.Schema<BulkAbortActionV1Request>,
-  output: __S(10) as any as S.Schema<AbortBulkActionResponse>,
+  input: BulkAbortActionV1Request,
+  output: AbortBulkActionResponse,
   errors: [BadRequest, NotFound, UnknownTriggerDevError],
   protocol: TriggerDevProtocol,
   retry: Retry.Retry,
@@ -2185,8 +3233,8 @@ export const cancelRunV1: API.OperationMethod<
   CancelRunV1Error,
   TriggerDevOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11) as any as S.Schema<CancelRunV1Request>,
-  output: __S(12) as any as S.Schema<CancelRunV1Response>,
+  input: CancelRunV1Request,
+  output: CancelRunV1Response,
   errors: [BadRequest, NotFound, UnknownTriggerDevError],
   protocol: TriggerDevProtocol,
   retry: Retry.Retry,
@@ -2200,8 +3248,8 @@ export const closeSessionV1: API.OperationMethod<
   CloseSessionV1Error,
   TriggerDevOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13) as any as S.Schema<CloseSessionV1Request>,
-  output: __S(16) as any as S.Schema<SessionObject>,
+  input: CloseSessionV1Request,
+  output: SessionObject,
   errors: [NotFound, UnknownTriggerDevError],
   protocol: TriggerDevProtocol,
   retry: Retry.Retry,
@@ -2215,8 +3263,8 @@ export const completeWaitpointTokenCallbackV1: API.OperationMethod<
   CompleteWaitpointTokenCallbackV1Error,
   TriggerDevOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17) as any as S.Schema<CompleteWaitpointTokenCallbackV1Request>,
-  output: __S(18) as any as S.Schema<CompleteWaitpointTokenResponse>,
+  input: CompleteWaitpointTokenCallbackV1Request,
+  output: CompleteWaitpointTokenResponse,
   errors: [NotFound, UnknownTriggerDevError],
   protocol: TriggerDevProtocol,
   retry: Retry.Retry,
@@ -2230,8 +3278,8 @@ export const completeWaitpointTokenV1: API.OperationMethod<
   CompleteWaitpointTokenV1Error,
   TriggerDevOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19) as any as S.Schema<CompleteWaitpointTokenV1Request>,
-  output: __S(18) as any as S.Schema<CompleteWaitpointTokenResponse>,
+  input: CompleteWaitpointTokenV1Request,
+  output: CompleteWaitpointTokenResponse,
   errors: [NotFound, UnknownTriggerDevError],
   protocol: TriggerDevProtocol,
   retry: Retry.Retry,
@@ -2245,8 +3293,8 @@ export const createBulkActionV1: API.OperationMethod<
   CreateBulkActionV1Error,
   TriggerDevOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21) as any as S.Schema<CreateBulkActionV1Request>,
-  output: __S(22) as any as S.Schema<CreateBulkActionV1Response>,
+  input: CreateBulkActionV1Request,
+  output: CreateBulkActionV1Response,
   errors: [BadRequest, UnprocessableEntity, UnknownTriggerDevError],
   protocol: TriggerDevProtocol,
   retry: Retry.Retry,
@@ -2260,8 +3308,8 @@ export const createProjectEnvvarV1: API.OperationMethod<
   CreateProjectEnvvarV1Error,
   TriggerDevOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23) as any as S.Schema<CreateProjectEnvvarV1Request>,
-  output: __S(24) as any as S.Schema<SucceedResponse>,
+  input: CreateProjectEnvvarV1Request,
+  output: SucceedResponse,
   errors: [BadRequest, NotFound, UnknownTriggerDevError],
   protocol: TriggerDevProtocol,
   retry: Retry.Retry,
@@ -2275,8 +3323,8 @@ export const createScheduleV1: API.OperationMethod<
   CreateScheduleV1Error,
   TriggerDevOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25) as any as S.Schema<CreateScheduleV1Request>,
-  output: __S(5) as any as S.Schema<ScheduleObject>,
+  input: CreateScheduleV1Request,
+  output: ScheduleObject,
   errors: [BadRequest, UnprocessableEntity, UnknownTriggerDevError],
   protocol: TriggerDevProtocol,
   retry: Retry.Retry,
@@ -2290,8 +3338,8 @@ export const createSessionV1: API.OperationMethod<
   CreateSessionV1Error,
   TriggerDevOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26) as any as S.Schema<CreateSessionV1Request>,
-  output: __S(27) as any as S.Schema<CreateSessionV1Response>,
+  input: CreateSessionV1Request,
+  output: CreateSessionV1Response,
   errors: [Conflict, UnprocessableEntity, UnknownTriggerDevError],
   protocol: TriggerDevProtocol,
   retry: Retry.Retry,
@@ -2305,8 +3353,8 @@ export const createWaitpointTokenV1: API.OperationMethod<
   CreateWaitpointTokenV1Error,
   TriggerDevOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28) as any as S.Schema<CreateWaitpointTokenV1Request>,
-  output: __S(29) as any as S.Schema<CreateWaitpointTokenResponse>,
+  input: CreateWaitpointTokenV1Request,
+  output: CreateWaitpointTokenResponse,
   errors: [UnprocessableEntity, UnknownTriggerDevError],
   protocol: TriggerDevProtocol,
   retry: Retry.Retry,
@@ -2320,8 +3368,8 @@ export const deactivateScheduleV1: API.OperationMethod<
   DeactivateScheduleV1Error,
   TriggerDevOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30) as any as S.Schema<DeactivateScheduleV1Request>,
-  output: __S(5) as any as S.Schema<ScheduleObject>,
+  input: DeactivateScheduleV1Request,
+  output: ScheduleObject,
   errors: [NotFound, UnknownTriggerDevError],
   protocol: TriggerDevProtocol,
   retry: Retry.Retry,
@@ -2335,8 +3383,8 @@ export const deleteProjectEnvvarV1: API.OperationMethod<
   DeleteProjectEnvvarV1Error,
   TriggerDevOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31) as any as S.Schema<DeleteProjectEnvvarV1Request>,
-  output: __S(24) as any as S.Schema<SucceedResponse>,
+  input: DeleteProjectEnvvarV1Request,
+  output: SucceedResponse,
   errors: [BadRequest, NotFound, UnknownTriggerDevError],
   protocol: TriggerDevProtocol,
   retry: Retry.Retry,
@@ -2350,8 +3398,8 @@ export const deleteScheduleV1: API.OperationMethod<
   DeleteScheduleV1Error,
   TriggerDevOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32) as any as S.Schema<DeleteScheduleV1Request>,
-  output: __S(22) as any as S.Schema<DeleteScheduleV1Response>,
+  input: DeleteScheduleV1Request,
+  output: DeleteScheduleV1Response,
   errors: [NotFound, UnknownTriggerDevError],
   protocol: TriggerDevProtocol,
   retry: Retry.Retry,
@@ -2365,8 +3413,8 @@ export const executeQueryV1: API.OperationMethod<
   ExecuteQueryV1Error,
   TriggerDevOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33) as any as S.Schema<ExecuteQueryV1Request>,
-  output: __S(34) as any as S.Schema<ExecuteQueryV1Response>,
+  input: ExecuteQueryV1Request,
+  output: ExecuteQueryV1Response,
   errors: [BadRequest, UnknownTriggerDevError],
   protocol: TriggerDevProtocol,
   retry: Retry.Retry,
@@ -2380,8 +3428,8 @@ export const getBatchResultsV1: API.OperationMethod<
   GetBatchResultsV1Error,
   TriggerDevOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35) as any as S.Schema<GetBatchResultsV1Request>,
-  output: __S(39) as any as S.Schema<GetBatchResultsV1Response>,
+  input: GetBatchResultsV1Request,
+  output: GetBatchResultsV1Response,
   errors: [NotFound, UnknownTriggerDevError],
   protocol: TriggerDevProtocol,
   retry: Retry.Retry,
@@ -2395,8 +3443,8 @@ export const getBatchV1: API.OperationMethod<
   GetBatchV1Error,
   TriggerDevOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40) as any as S.Schema<GetBatchV1Request>,
-  output: __S(43) as any as S.Schema<GetBatchV1Response>,
+  input: GetBatchV1Request,
+  output: GetBatchV1Response,
   errors: [NotFound, UnknownTriggerDevError],
   protocol: TriggerDevProtocol,
   retry: Retry.Retry,
@@ -2410,8 +3458,8 @@ export const getBulkActionV1: API.OperationMethod<
   GetBulkActionV1Error,
   TriggerDevOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44) as any as S.Schema<GetBulkActionV1Request>,
-  output: __S(46) as any as S.Schema<BulkActionObject>,
+  input: GetBulkActionV1Request,
+  output: BulkActionObject,
   errors: [NotFound, UnknownTriggerDevError],
   protocol: TriggerDevProtocol,
   retry: Retry.Retry,
@@ -2425,8 +3473,8 @@ export const getConcurrencyLimitV1: API.OperationMethod<
   GetConcurrencyLimitV1Error,
   TriggerDevOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47) as any as S.Schema<GetConcurrencyLimitV1Request>,
-  output: __S(49) as any as S.Schema<ConcurrencyLimitObject>,
+  input: GetConcurrencyLimitV1Request,
+  output: ConcurrencyLimitObject,
   errors: [NotFound, UnknownTriggerDevError],
   protocol: TriggerDevProtocol,
   retry: Retry.Retry,
@@ -2440,8 +3488,8 @@ export const getDeploymentV1: API.OperationMethod<
   GetDeploymentV1Error,
   TriggerDevOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(50) as any as S.Schema<GetDeploymentV1Request>,
-  output: __S(54) as any as S.Schema<GetDeploymentV1Response>,
+  input: GetDeploymentV1Request,
+  output: GetDeploymentV1Response,
   errors: [NotFound, UnknownTriggerDevError],
   protocol: TriggerDevProtocol,
   retry: Retry.Retry,
@@ -2455,8 +3503,8 @@ export const getErrorV1: API.OperationMethod<
   GetErrorV1Error,
   TriggerDevOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(55) as any as S.Schema<GetErrorV1Request>,
-  output: __S(56) as any as S.Schema<ErrorObject>,
+  input: GetErrorV1Request,
+  output: ErrorObject,
   errors: [NotFound, UnknownTriggerDevError],
   protocol: TriggerDevProtocol,
   retry: Retry.Retry,
@@ -2470,8 +3518,8 @@ export const getLatestDeploymentV1: API.OperationMethod<
   GetLatestDeploymentV1Error,
   TriggerDevOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57) as any as S.Schema<GetLatestDeploymentV1Request>,
-  output: __S(58) as any as S.Schema<GetLatestDeploymentV1Response>,
+  input: GetLatestDeploymentV1Request,
+  output: GetLatestDeploymentV1Response,
   errors: [NotFound, UnknownTriggerDevError],
   protocol: TriggerDevProtocol,
   retry: Retry.Retry,
@@ -2485,8 +3533,8 @@ export const getProjectEnvvarV1: API.OperationMethod<
   GetProjectEnvvarV1Error,
   TriggerDevOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(59) as any as S.Schema<GetProjectEnvvarV1Request>,
-  output: __S(60) as any as S.Schema<EnvVarValue>,
+  input: GetProjectEnvvarV1Request,
+  output: EnvVarValue,
   errors: [BadRequest, NotFound, UnknownTriggerDevError],
   protocol: TriggerDevProtocol,
   retry: Retry.Retry,
@@ -2500,8 +3548,8 @@ export const getQuerySchemaV1: API.OperationMethod<
   GetQuerySchemaV1Error,
   TriggerDevOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(61) as any as S.Schema<GetQuerySchemaV1Request>,
-  output: __S(66) as any as S.Schema<GetQuerySchemaV1Response>,
+  input: GetQuerySchemaV1Request,
+  output: GetQuerySchemaV1Response,
   errors: [UnknownTriggerDevError],
   protocol: TriggerDevProtocol,
   retry: Retry.Retry,
@@ -2515,8 +3563,8 @@ export const getQueueV1: API.OperationMethod<
   GetQueueV1Error,
   TriggerDevOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(67) as any as S.Schema<GetQueueV1Request>,
-  output: __S(69) as any as S.Schema<QueueObject>,
+  input: GetQueueV1Request,
+  output: QueueObject,
   errors: [NotFound, UnknownTriggerDevError],
   protocol: TriggerDevProtocol,
   retry: Retry.Retry,
@@ -2530,8 +3578,8 @@ export const getRunEventsV1: API.OperationMethod<
   GetRunEventsV1Error,
   TriggerDevOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(70) as any as S.Schema<GetRunEventsV1Request>,
-  output: __S(77) as any as S.Schema<GetRunEventsV1Response>,
+  input: GetRunEventsV1Request,
+  output: GetRunEventsV1Response,
   errors: [NotFound, UnknownTriggerDevError],
   protocol: TriggerDevProtocol,
   retry: Retry.Retry,
@@ -2545,8 +3593,8 @@ export const getRunResultV1: API.OperationMethod<
   GetRunResultV1Error,
   TriggerDevOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(78) as any as S.Schema<GetRunResultV1Request>,
-  output: __S(79) as any as S.Schema<GetRunResultV1Response>,
+  input: GetRunResultV1Request,
+  output: GetRunResultV1Response,
   errors: [NotFound, UnknownTriggerDevError],
   protocol: TriggerDevProtocol,
   retry: Retry.Retry,
@@ -2560,8 +3608,8 @@ export const getRunTraceV1: API.OperationMethod<
   GetRunTraceV1Error,
   TriggerDevOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(80) as any as S.Schema<GetRunTraceV1Request>,
-  output: __S(85) as any as S.Schema<GetRunTraceV1Response>,
+  input: GetRunTraceV1Request,
+  output: GetRunTraceV1Response,
   errors: [NotFound, UnknownTriggerDevError],
   protocol: TriggerDevProtocol,
   retry: Retry.Retry,
@@ -2575,8 +3623,8 @@ export const getRunV1: API.OperationMethod<
   GetRunV1Error,
   TriggerDevOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(86) as any as S.Schema<GetRunV1Request>,
-  output: __S(95) as any as S.Schema<GetRunV1Response>,
+  input: GetRunV1Request,
+  output: GetRunV1Response,
   errors: [BadRequest, NotFound, UnknownTriggerDevError],
   protocol: TriggerDevProtocol,
   retry: Retry.Retry,
@@ -2590,8 +3638,8 @@ export const getScheduleV1: API.OperationMethod<
   GetScheduleV1Error,
   TriggerDevOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(96) as any as S.Schema<GetScheduleV1Request>,
-  output: __S(5) as any as S.Schema<ScheduleObject>,
+  input: GetScheduleV1Request,
+  output: ScheduleObject,
   errors: [NotFound, UnknownTriggerDevError],
   protocol: TriggerDevProtocol,
   retry: Retry.Retry,
@@ -2605,8 +3653,8 @@ export const getSessionV1: API.OperationMethod<
   GetSessionV1Error,
   TriggerDevOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(97) as any as S.Schema<GetSessionV1Request>,
-  output: __S(16) as any as S.Schema<SessionObject>,
+  input: GetSessionV1Request,
+  output: SessionObject,
   errors: [NotFound, UnknownTriggerDevError],
   protocol: TriggerDevProtocol,
   retry: Retry.Retry,
@@ -2620,8 +3668,8 @@ export const getTimezonesV1: API.OperationMethod<
   GetTimezonesV1Error,
   TriggerDevOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(98) as any as S.Schema<GetTimezonesV1Request>,
-  output: __S(99) as any as S.Schema<GetTimezonesResult>,
+  input: GetTimezonesV1Request,
+  output: GetTimezonesResult,
   errors: [UnknownTriggerDevError],
   protocol: TriggerDevProtocol,
   retry: Retry.Retry,
@@ -2635,8 +3683,8 @@ export const getWaitpointTokenV1: API.OperationMethod<
   GetWaitpointTokenV1Error,
   TriggerDevOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(100) as any as S.Schema<GetWaitpointTokenV1Request>,
-  output: __S(101) as any as S.Schema<WaitpointTokenObject>,
+  input: GetWaitpointTokenV1Request,
+  output: WaitpointTokenObject,
   errors: [NotFound, UnknownTriggerDevError],
   protocol: TriggerDevProtocol,
   retry: Retry.Retry,
@@ -2650,8 +3698,8 @@ export const ignoreErrorV1: API.OperationMethod<
   IgnoreErrorV1Error,
   TriggerDevOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(102) as any as S.Schema<IgnoreErrorV1Request>,
-  output: __S(56) as any as S.Schema<ErrorObject>,
+  input: IgnoreErrorV1Request,
+  output: ErrorObject,
   errors: [NotFound, UnknownTriggerDevError],
   protocol: TriggerDevProtocol,
   retry: Retry.Retry,
@@ -2665,8 +3713,8 @@ export const listBulkActionsV1: API.OperationMethod<
   ListBulkActionsV1Error,
   TriggerDevOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(104) as any as S.Schema<ListBulkActionsV1Request>,
-  output: __S(107) as any as S.Schema<ListBulkActionsResult>,
+  input: ListBulkActionsV1Request,
+  output: ListBulkActionsResult,
   errors: [BadRequest, UnknownTriggerDevError],
   protocol: TriggerDevProtocol,
   retry: Retry.Retry,
@@ -2680,8 +3728,8 @@ export const listConcurrencyLimitsV1: API.OperationMethod<
   ListConcurrencyLimitsV1Error,
   TriggerDevOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(108) as any as S.Schema<ListConcurrencyLimitsV1Request>,
-  output: __S(111) as any as S.Schema<ListConcurrencyLimitsV1Response>,
+  input: ListConcurrencyLimitsV1Request,
+  output: ListConcurrencyLimitsV1Response,
   errors: [UnknownTriggerDevError],
   protocol: TriggerDevProtocol,
   retry: Retry.Retry,
@@ -2695,8 +3743,8 @@ export const listDashboardsV1: API.OperationMethod<
   ListDashboardsV1Error,
   TriggerDevOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(112) as any as S.Schema<ListDashboardsV1Request>,
-  output: __S(117) as any as S.Schema<ListDashboardsV1Response>,
+  input: ListDashboardsV1Request,
+  output: ListDashboardsV1Response,
   errors: [UnknownTriggerDevError],
   protocol: TriggerDevProtocol,
   retry: Retry.Retry,
@@ -2710,8 +3758,8 @@ export const listDeploymentsV1: API.OperationMethod<
   ListDeploymentsV1Error,
   TriggerDevOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(118) as any as S.Schema<ListDeploymentsV1Request>,
-  output: __S(122) as any as S.Schema<ListDeploymentsV1Response>,
+  input: ListDeploymentsV1Request,
+  output: ListDeploymentsV1Response,
   errors: [UnknownTriggerDevError],
   protocol: TriggerDevProtocol,
   retry: Retry.Retry,
@@ -2725,8 +3773,8 @@ export const listErrorsV1: API.OperationMethod<
   ListErrorsV1Error,
   TriggerDevOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(125) as any as S.Schema<ListErrorsV1Request>,
-  output: __S(128) as any as S.Schema<ListErrorsResult>,
+  input: ListErrorsV1Request,
+  output: ListErrorsResult,
   errors: [BadRequest, UnknownTriggerDevError],
   protocol: TriggerDevProtocol,
   retry: Retry.Retry,
@@ -2740,8 +3788,8 @@ export const listProjectEnvvarsV1: API.OperationMethod<
   ListProjectEnvvarsV1Error,
   TriggerDevOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(129) as any as S.Schema<ListProjectEnvvarsV1Request>,
-  output: __S(132) as any as S.Schema<ListProjectEnvvarsV1Response>,
+  input: ListProjectEnvvarsV1Request,
+  output: ListProjectEnvvarsV1Response,
   errors: [BadRequest, NotFound, UnknownTriggerDevError],
   protocol: TriggerDevProtocol,
   retry: Retry.Retry,
@@ -2755,8 +3803,8 @@ export const listProjectRunsV1: API.OperationMethod<
   ListProjectRunsV1Error,
   TriggerDevOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(135) as any as S.Schema<ListProjectRunsV1Request>,
-  output: __S(140) as any as S.Schema<ListRunsResult>,
+  input: ListProjectRunsV1Request,
+  output: ListRunsResult,
   errors: [BadRequest, UnknownTriggerDevError],
   protocol: TriggerDevProtocol,
   retry: Retry.Retry,
@@ -2770,8 +3818,8 @@ export const listQueuesV1: API.OperationMethod<
   ListQueuesV1Error,
   TriggerDevOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(141) as any as S.Schema<ListQueuesV1Request>,
-  output: __S(143) as any as S.Schema<ListQueuesResult>,
+  input: ListQueuesV1Request,
+  output: ListQueuesResult,
   errors: [UnknownTriggerDevError],
   protocol: TriggerDevProtocol,
   retry: Retry.Retry,
@@ -2785,8 +3833,8 @@ export const listRunsV1: API.OperationMethod<
   ListRunsV1Error,
   TriggerDevOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(145) as any as S.Schema<ListRunsV1Request>,
-  output: __S(140) as any as S.Schema<ListRunsResult>,
+  input: ListRunsV1Request,
+  output: ListRunsResult,
   errors: [BadRequest, UnknownTriggerDevError],
   protocol: TriggerDevProtocol,
   retry: Retry.Retry,
@@ -2800,8 +3848,8 @@ export const listSchedulesV1: API.OperationMethod<
   ListSchedulesV1Error,
   TriggerDevOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(146) as any as S.Schema<ListSchedulesV1Request>,
-  output: __S(148) as any as S.Schema<ListSchedulesResult>,
+  input: ListSchedulesV1Request,
+  output: ListSchedulesResult,
   errors: [UnknownTriggerDevError],
   protocol: TriggerDevProtocol,
   retry: Retry.Retry,
@@ -2815,8 +3863,8 @@ export const listSessionsV1: API.OperationMethod<
   ListSessionsV1Error,
   TriggerDevOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(151) as any as S.Schema<ListSessionsV1Request>,
-  output: __S(153) as any as S.Schema<ListSessionsResult>,
+  input: ListSessionsV1Request,
+  output: ListSessionsResult,
   errors: [BadRequest, UnknownTriggerDevError],
   protocol: TriggerDevProtocol,
   retry: Retry.Retry,
@@ -2830,8 +3878,8 @@ export const listWaitpointTokensV1: API.OperationMethod<
   ListWaitpointTokensV1Error,
   TriggerDevOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(154) as any as S.Schema<ListWaitpointTokensV1Request>,
-  output: __S(157) as any as S.Schema<ListWaitpointTokensResult>,
+  input: ListWaitpointTokensV1Request,
+  output: ListWaitpointTokensResult,
   errors: [UnprocessableEntity, UnknownTriggerDevError],
   protocol: TriggerDevProtocol,
   retry: Retry.Retry,
@@ -2845,8 +3893,8 @@ export const overrideConcurrencyLimitV1: API.OperationMethod<
   OverrideConcurrencyLimitV1Error,
   TriggerDevOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(158) as any as S.Schema<OverrideConcurrencyLimitV1Request>,
-  output: __S(49) as any as S.Schema<ConcurrencyLimitObject>,
+  input: OverrideConcurrencyLimitV1Request,
+  output: ConcurrencyLimitObject,
   errors: [BadRequest, NotFound, Conflict, UnknownTriggerDevError],
   protocol: TriggerDevProtocol,
   retry: Retry.Retry,
@@ -2860,8 +3908,8 @@ export const overrideQueueConcurrencyV1: API.OperationMethod<
   OverrideQueueConcurrencyV1Error,
   TriggerDevOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(159) as any as S.Schema<OverrideQueueConcurrencyV1Request>,
-  output: __S(69) as any as S.Schema<QueueObject>,
+  input: OverrideQueueConcurrencyV1Request,
+  output: QueueObject,
   errors: [BadRequest, NotFound, UnknownTriggerDevError],
   protocol: TriggerDevProtocol,
   retry: Retry.Retry,
@@ -2875,8 +3923,8 @@ export const pauseConcurrencyLimitV1: API.OperationMethod<
   PauseConcurrencyLimitV1Error,
   TriggerDevOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(160) as any as S.Schema<PauseConcurrencyLimitV1Request>,
-  output: __S(49) as any as S.Schema<ConcurrencyLimitObject>,
+  input: PauseConcurrencyLimitV1Request,
+  output: ConcurrencyLimitObject,
   errors: [BadRequest, NotFound, Conflict, UnknownTriggerDevError],
   protocol: TriggerDevProtocol,
   retry: Retry.Retry,
@@ -2890,8 +3938,8 @@ export const pauseQueueV1: API.OperationMethod<
   PauseQueueV1Error,
   TriggerDevOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(161) as any as S.Schema<PauseQueueV1Request>,
-  output: __S(69) as any as S.Schema<QueueObject>,
+  input: PauseQueueV1Request,
+  output: QueueObject,
   errors: [BadRequest, NotFound, UnknownTriggerDevError],
   protocol: TriggerDevProtocol,
   retry: Retry.Retry,
@@ -2905,8 +3953,8 @@ export const promoteDeploymentV1: API.OperationMethod<
   PromoteDeploymentV1Error,
   TriggerDevOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(162) as any as S.Schema<PromoteDeploymentV1Request>,
-  output: __S(163) as any as S.Schema<PromoteDeploymentV1Response>,
+  input: PromoteDeploymentV1Request,
+  output: PromoteDeploymentV1Response,
   errors: [BadRequest, NotFound, UnknownTriggerDevError],
   protocol: TriggerDevProtocol,
   retry: Retry.Retry,
@@ -2920,8 +3968,8 @@ export const resetConcurrencyLimitV1: API.OperationMethod<
   ResetConcurrencyLimitV1Error,
   TriggerDevOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(164) as any as S.Schema<ResetConcurrencyLimitV1Request>,
-  output: __S(49) as any as S.Schema<ConcurrencyLimitObject>,
+  input: ResetConcurrencyLimitV1Request,
+  output: ConcurrencyLimitObject,
   errors: [BadRequest, NotFound, Conflict, UnknownTriggerDevError],
   protocol: TriggerDevProtocol,
   retry: Retry.Retry,
@@ -2935,8 +3983,8 @@ export const resetQueueConcurrencyV1: API.OperationMethod<
   ResetQueueConcurrencyV1Error,
   TriggerDevOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(165) as any as S.Schema<ResetQueueConcurrencyV1Request>,
-  output: __S(69) as any as S.Schema<QueueObject>,
+  input: ResetQueueConcurrencyV1Request,
+  output: QueueObject,
   errors: [BadRequest, NotFound, UnknownTriggerDevError],
   protocol: TriggerDevProtocol,
   retry: Retry.Retry,
@@ -2950,8 +3998,8 @@ export const resolveErrorV1: API.OperationMethod<
   ResolveErrorV1Error,
   TriggerDevOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(166) as any as S.Schema<ResolveErrorV1Request>,
-  output: __S(56) as any as S.Schema<ErrorObject>,
+  input: ResolveErrorV1Request,
+  output: ErrorObject,
   errors: [NotFound, UnknownTriggerDevError],
   protocol: TriggerDevProtocol,
   retry: Retry.Retry,
@@ -2965,8 +4013,8 @@ export const runReplayV1: API.OperationMethod<
   RunReplayV1Error,
   TriggerDevOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(167) as any as S.Schema<RunReplayV1Request>,
-  output: __S(12) as any as S.Schema<RunReplayV1Response>,
+  input: RunReplayV1Request,
+  output: RunReplayV1Response,
   errors: [BadRequest, NotFound, UnknownTriggerDevError],
   protocol: TriggerDevProtocol,
   retry: Retry.Retry,
@@ -2980,8 +4028,8 @@ export const runRescheduleV1: API.OperationMethod<
   RunRescheduleV1Error,
   TriggerDevOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(168) as any as S.Schema<RunRescheduleV1Request>,
-  output: __S(170) as any as S.Schema<RunRescheduleV1Response>,
+  input: RunRescheduleV1Request,
+  output: RunRescheduleV1Response,
   errors: [BadRequest, NotFound, UnknownTriggerDevError],
   protocol: TriggerDevProtocol,
   retry: Retry.Retry,
@@ -2995,8 +4043,8 @@ export const triggerBatchTaskByIdV1: API.OperationMethod<
   TriggerBatchTaskByIdV1Error,
   TriggerDevOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(175) as any as S.Schema<TriggerBatchTaskByIdV1Request>,
-  output: __S(176) as any as S.Schema<BatchTriggerTaskResponse>,
+  input: TriggerBatchTaskByIdV1Request,
+  output: BatchTriggerTaskResponse,
   errors: [BadRequest, NotFound, UnknownTriggerDevError],
   protocol: TriggerDevProtocol,
   retry: Retry.Retry,
@@ -3010,8 +4058,8 @@ export const triggerBatchTaskV1: API.OperationMethod<
   TriggerBatchTaskV1Error,
   TriggerDevOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(179) as any as S.Schema<TriggerBatchTaskV1Request>,
-  output: __S(176) as any as S.Schema<BatchTriggerTaskResponse>,
+  input: TriggerBatchTaskV1Request,
+  output: BatchTriggerTaskResponse,
   errors: [BadRequest, NotFound, UnknownTriggerDevError],
   protocol: TriggerDevProtocol,
   retry: Retry.Retry,
@@ -3025,8 +4073,8 @@ export const triggerTaskV1: API.OperationMethod<
   TriggerTaskV1Error,
   TriggerDevOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(180) as any as S.Schema<TriggerTaskV1Request>,
-  output: __S(12) as any as S.Schema<TriggerTaskResponse>,
+  input: TriggerTaskV1Request,
+  output: TriggerTaskResponse,
   errors: [BadRequest, NotFound, UnknownTriggerDevError],
   protocol: TriggerDevProtocol,
   retry: Retry.Retry,
@@ -3040,8 +4088,8 @@ export const unresolveErrorV1: API.OperationMethod<
   UnresolveErrorV1Error,
   TriggerDevOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(181) as any as S.Schema<UnresolveErrorV1Request>,
-  output: __S(56) as any as S.Schema<ErrorObject>,
+  input: UnresolveErrorV1Request,
+  output: ErrorObject,
   errors: [NotFound, UnknownTriggerDevError],
   protocol: TriggerDevProtocol,
   retry: Retry.Retry,
@@ -3055,8 +4103,8 @@ export const updateProjectEnvvarV1: API.OperationMethod<
   UpdateProjectEnvvarV1Error,
   TriggerDevOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(182) as any as S.Schema<UpdateProjectEnvvarV1Request>,
-  output: __S(24) as any as S.Schema<SucceedResponse>,
+  input: UpdateProjectEnvvarV1Request,
+  output: SucceedResponse,
   errors: [BadRequest, NotFound, UnknownTriggerDevError],
   protocol: TriggerDevProtocol,
   retry: Retry.Retry,
@@ -3070,8 +4118,8 @@ export const updateRunMetadataV1: API.OperationMethod<
   UpdateRunMetadataV1Error,
   TriggerDevOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(183) as any as S.Schema<UpdateRunMetadataV1Request>,
-  output: __S(184) as any as S.Schema<UpdateRunMetadataV1Response>,
+  input: UpdateRunMetadataV1Request,
+  output: UpdateRunMetadataV1Response,
   errors: [BadRequest, NotFound, UnknownTriggerDevError],
   protocol: TriggerDevProtocol,
   retry: Retry.Retry,
@@ -3085,8 +4133,8 @@ export const updateScheduleV1: API.OperationMethod<
   UpdateScheduleV1Error,
   TriggerDevOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(185) as any as S.Schema<UpdateScheduleV1Request>,
-  output: __S(5) as any as S.Schema<ScheduleObject>,
+  input: UpdateScheduleV1Request,
+  output: ScheduleObject,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownTriggerDevError],
   protocol: TriggerDevProtocol,
   retry: Retry.Retry,
@@ -3100,8 +4148,8 @@ export const updateSessionV1: API.OperationMethod<
   UpdateSessionV1Error,
   TriggerDevOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(186) as any as S.Schema<UpdateSessionV1Request>,
-  output: __S(16) as any as S.Schema<SessionObject>,
+  input: UpdateSessionV1Request,
+  output: SessionObject,
   errors: [NotFound, UnprocessableEntity, UnknownTriggerDevError],
   protocol: TriggerDevProtocol,
   retry: Retry.Retry,
@@ -3115,8 +4163,8 @@ export const uploadProjectEnvvarsV1: API.OperationMethod<
   UploadProjectEnvvarsV1Error,
   TriggerDevOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(187) as any as S.Schema<UploadProjectEnvvarsV1Request>,
-  output: __S(24) as any as S.Schema<SucceedResponse>,
+  input: UploadProjectEnvvarsV1Request,
+  output: SucceedResponse,
   errors: [BadRequest, NotFound, UnknownTriggerDevError],
   protocol: TriggerDevProtocol,
   retry: Retry.Retry,
@@ -3138,7 +4186,7 @@ function __c0(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(S.String),
+          type: S.optional(ScheduleObjectGeneratorType),
           expression: S.optional(S.String),
           description: S.optional(S.String),
         }),
@@ -3147,7 +4195,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           minimumWindowSeconds: S.optional(S.Number),
-          reason: S.optional(S.String),
+          reason: S.optional(ScheduleObjectAppliedSchedulePolicyReason),
         }),
       ).annotate({
         identifier: "ScheduleObjectAppliedSchedulePolicy",
@@ -3161,7 +4209,7 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "ScheduleEnvironment" });
     case 4:
-      return S.Array(__S(3));
+      return S.Array(ScheduleEnvironment);
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -3171,11 +4219,11 @@ function __c0(j: number): any {
           active: S.optional(S.Boolean),
           deduplicationKey: S.optional(S.String),
           externalId: S.optional(S.String),
-          generator: S.optional(__S(1)),
+          generator: S.optional(ScheduleObjectGenerator),
           timezone: S.optional(S.String),
           nextRun: S.optional(S.String),
-          appliedSchedulePolicy: S.optional(__S(2)),
-          environments: S.optional(__S(4)),
+          appliedSchedulePolicy: S.optional(ScheduleObjectAppliedSchedulePolicy),
+          environments: S.optional(ScheduleObjectEnvironmentsList),
         }),
       ).annotate({ identifier: "ScheduleObject" });
     case 6:
@@ -3184,7 +4232,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           runId: S.String.pipe(T.Label()),
-          tags: S.Unknown,
+          tags: RunTags,
         }).pipe(T.Http({ method: "POST", uri: "/api/v1/runs/{runId}/tags", code: 200 })),
       ).annotate({ identifier: "AddRunTagsV1Request" });
   }
@@ -3235,10 +4283,10 @@ function __c1(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          basePayload: __S(14),
+          basePayload: SessionTriggerConfigBasePayloadMap,
           machine: S.optional(S.String),
           queue: S.optional(S.String),
-          tags: S.optional(__S(6)),
+          tags: S.optional(SessionTriggerConfigTagsList),
           maxAttempts: S.optional(S.Number),
           maxDuration: S.optional(S.Number),
           lockToVersion: S.optional(S.String),
@@ -3257,10 +4305,10 @@ function __c2(j: number): any {
           externalId: S.optional(S.NullOr(S.String)),
           type: S.String,
           taskIdentifier: S.String,
-          triggerConfig: S.optional(__S(15)),
+          triggerConfig: S.optional(SessionTriggerConfig),
           currentRunId: S.optional(S.NullOr(S.String)),
-          tags: __S(6),
-          metadata: S.optional(S.NullOr(__S(14))),
+          tags: SessionObjectTagsList,
+          metadata: S.optional(S.NullOr(SessionObjectMetadataMap)),
           closedAt: S.optional(S.NullOr(S.String)),
           closedReason: S.optional(S.NullOr(S.String)),
           expiresAt: S.optional(S.NullOr(S.String)),
@@ -3307,11 +4355,11 @@ function __c2(j: number): any {
         identifier: "CompleteWaitpointTokenV1Request",
       });
     case 4:
-      return S.Array(S.String);
+      return S.Array(BulkActionFilterStatusCase1Item);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          body: S.Unknown.pipe(T.HttpBody()),
+          body: CreateBulkActionRequestBody.pipe(T.HttpBody()),
         }).pipe(T.Http({ method: "POST", uri: "/api/v1/bulk-actions", code: 200 })),
       ).annotate({
         identifier: "CreateBulkActionV1Request",
@@ -3324,7 +4372,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           projectRef: S.String.pipe(T.Label()),
-          env: S.String.pipe(T.Label()),
+          env: CreateProjectEnvvarV1RequestEnv.pipe(T.Label()),
           name: S.String,
           value: S.String,
         }).pipe(
@@ -3358,10 +4406,10 @@ function __c3(j: number): any {
         S.Struct({
           type: S.String,
           taskIdentifier: S.String,
-          triggerConfig: __S(15),
+          triggerConfig: SessionTriggerConfig,
           externalId: S.optional(S.String),
-          tags: S.optional(__S(6)),
-          metadata: S.optional(__S(14)),
+          tags: S.optional(CreateSessionV1RequestTagsList),
+          metadata: S.optional(CreateSessionV1RequestMetadataMap),
           expiresAt: S.optional(S.String),
         }).pipe(T.Http({ method: "POST", uri: "/api/v1/sessions", code: 200 })),
       ).annotate({ identifier: "CreateSessionV1Request" });
@@ -3372,10 +4420,10 @@ function __c3(j: number): any {
           externalId: S.optional(S.NullOr(S.String)),
           type: S.String,
           taskIdentifier: S.String,
-          triggerConfig: S.optional(__S(15)),
+          triggerConfig: S.optional(SessionTriggerConfig),
           currentRunId: S.optional(S.NullOr(S.String)),
-          tags: __S(6),
-          metadata: S.optional(S.NullOr(__S(14))),
+          tags: CreateSessionV1ResponseTagsList,
+          metadata: S.optional(S.NullOr(CreateSessionV1ResponseMetadataMap)),
           closedAt: S.optional(S.NullOr(S.String)),
           closedReason: S.optional(S.NullOr(S.String)),
           expiresAt: S.optional(S.NullOr(S.String)),
@@ -3392,7 +4440,7 @@ function __c3(j: number): any {
           idempotencyKey: S.optional(S.String),
           idempotencyKeyTTL: S.optional(S.String),
           timeout: S.optional(S.String),
-          tags: S.optional(S.Unknown),
+          tags: S.optional(CreateWaitpointTokenV1RequestTags),
         }).pipe(T.Http({ method: "POST", uri: "/api/v1/waitpoints/tokens", code: 200 })),
       ).annotate({
         identifier: "CreateWaitpointTokenV1Request",
@@ -3421,7 +4469,7 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           projectRef: S.String.pipe(T.Label()),
-          env: S.String.pipe(T.Label()),
+          env: DeleteProjectEnvvarV1RequestEnv.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
         }).pipe(
           T.Http({
@@ -3447,15 +4495,15 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           query: S.String,
-          scope: S.optional(S.String),
+          scope: S.optional(ExecuteQueryV1RequestScope),
           period: S.optional(S.NullOr(S.String)),
           from: S.optional(S.NullOr(S.String)),
           to: S.optional(S.NullOr(S.String)),
-          format: S.optional(S.String),
+          format: S.optional(ExecuteQueryV1RequestFormat),
         }).pipe(T.Http({ method: "POST", uri: "/api/v1/query", code: 200 })),
       ).annotate({ identifier: "ExecuteQueryV1Request" });
     case 2:
-      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => ExecuteQueryResponse.pipe(T.RawResponseRoot())).annotate({
         identifier: "ExecuteQueryV1Response",
       });
     case 3:
@@ -3480,19 +4528,19 @@ function __c4(j: number): any {
           output: S.optional(S.String),
           outputType: S.optional(S.String),
           error: S.optional(S.Unknown),
-          usage: S.optional(__S(36)),
+          usage: S.optional(GetBatchResultsV1ResponseItemsItemUsage),
           taskIdentifier: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GetBatchResultsV1ResponseItemsItem",
       });
     case 6:
-      return S.Array(__S(37));
+      return S.Array(GetBatchResultsV1ResponseItemsItem);
     case 7:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
-          items: S.optional(__S(38)),
+          items: S.optional(GetBatchResultsV1ResponseItemsList),
         }),
       ).annotate({
         identifier: "GetBatchResultsV1Response",
@@ -3519,20 +4567,20 @@ function __c5(j: number): any {
         identifier: "GetBatchV1ResponseErrorsItem",
       });
     case 2:
-      return S.Array(__S(41));
+      return S.Array(GetBatchV1ResponseErrorsItem);
     case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
-          status: S.optional(S.String),
+          status: S.optional(GetBatchV1ResponseStatus),
           idempotencyKey: S.optional(S.NullOr(S.String)),
           createdAt: S.optional(S.String),
           updatedAt: S.optional(S.String),
           runCount: S.optional(S.Number),
-          runs: S.optional(__S(6)),
+          runs: S.optional(GetBatchV1ResponseRunsList),
           successfulRunCount: S.optional(S.NullOr(S.Number)),
           failedRunCount: S.optional(S.NullOr(S.Number)),
-          errors: S.optional(S.NullOr(__S(42))),
+          errors: S.optional(S.NullOr(GetBatchV1ResponseErrorsList)),
         }),
       ).annotate({ identifier: "GetBatchV1Response" });
     case 4:
@@ -3554,9 +4602,9 @@ function __c5(j: number): any {
         S.Struct({
           id: S.String,
           name: S.optional(S.String),
-          type: S.String,
-          status: S.String,
-          counts: __S(45),
+          type: BulkActionObjectType,
+          status: BulkActionObjectStatus,
+          counts: BulkActionObjectCounts,
           createdAt: S.String,
           completedAt: S.optional(S.String),
         }),
@@ -3589,8 +4637,8 @@ function __c6(j: number): any {
         S.Struct({
           id: S.String,
           name: S.String,
-          perKey: __S(48),
-          total: __S(48),
+          perKey: ConcurrencyLimitObjectPerKey,
+          total: ConcurrencyLimitObjectTotal,
           running: S.Number,
           queued: S.Number,
           paused: S.optional(S.Boolean),
@@ -3614,13 +4662,13 @@ function __c6(j: number): any {
         identifier: "GetDeploymentV1ResponseWorkerTasksItem",
       });
     case 4:
-      return S.Array(__S(51));
+      return S.Array(GetDeploymentV1ResponseWorkerTasksItem);
     case 5:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           version: S.optional(S.String),
-          tasks: S.optional(__S(52)),
+          tasks: S.optional(GetDeploymentV1ResponseWorkerTasksList),
         }),
       ).annotate({
         identifier: "GetDeploymentV1ResponseWorker",
@@ -3629,7 +4677,7 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
-          status: S.optional(S.String),
+          status: S.optional(GetDeploymentV1ResponseStatus),
           contentHash: S.optional(S.String),
           shortCode: S.optional(S.String),
           version: S.optional(S.String),
@@ -3638,7 +4686,7 @@ function __c6(j: number): any {
           externalId: S.optional(S.String),
           externalBuildData: S.optional(S.NullOr(S.Unknown)),
           errorData: S.optional(S.NullOr(S.Unknown)),
-          worker: S.optional(S.NullOr(__S(53))),
+          worker: S.optional(S.NullOr(GetDeploymentV1ResponseWorker)),
         }),
       ).annotate({ identifier: "GetDeploymentV1Response" });
     case 7:
@@ -3662,8 +4710,8 @@ function __c7(j: number): any {
           count: S.Number,
           firstSeen: S.String,
           lastSeen: S.String,
-          affectedVersions: __S(6),
-          status: S.String,
+          affectedVersions: ErrorObjectAffectedVersionsList,
+          status: ErrorObjectStatus,
           resolvedAt: S.optional(S.NullOr(S.String)),
           resolvedInVersion: S.optional(S.NullOr(S.String)),
           resolvedBy: S.optional(S.NullOr(S.String)),
@@ -3685,7 +4733,7 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
-          status: S.optional(S.String),
+          status: S.optional(GetLatestDeploymentV1ResponseStatus),
           contentHash: S.optional(S.String),
           shortCode: S.optional(S.String),
           version: S.optional(S.String),
@@ -3699,7 +4747,7 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           projectRef: S.String.pipe(T.Label()),
-          env: S.String.pipe(T.Label()),
+          env: GetProjectEnvvarV1RequestEnv.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
         }).pipe(
           T.Http({
@@ -3728,14 +4776,14 @@ function __c7(j: number): any {
           type: S.optional(S.String),
           description: S.optional(S.String),
           example: S.optional(S.String),
-          allowedValues: S.optional(__S(6)),
+          allowedValues: S.optional(GetQuerySchemaV1ResponseTablesItemColumnsItemAllowedValuesList),
           coreColumn: S.optional(S.Boolean),
         }),
       ).annotate({
         identifier: "GetQuerySchemaV1ResponseTablesItemColumnsItem",
       });
     case 7:
-      return S.Array(__S(62));
+      return S.Array(GetQuerySchemaV1ResponseTablesItemColumnsItem);
   }
 }
 function __c8(j: number): any {
@@ -3746,24 +4794,24 @@ function __c8(j: number): any {
           name: S.optional(S.String),
           description: S.optional(S.String),
           timeColumn: S.optional(S.String),
-          columns: S.optional(__S(63)),
+          columns: S.optional(GetQuerySchemaV1ResponseTablesItemColumnsList),
         }),
       ).annotate({
         identifier: "GetQuerySchemaV1ResponseTablesItem",
       });
     case 1:
-      return S.Array(__S(64));
+      return S.Array(GetQuerySchemaV1ResponseTablesItem);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          tables: S.optional(__S(65)),
+          tables: S.optional(GetQuerySchemaV1ResponseTablesList),
         }),
       ).annotate({ identifier: "GetQuerySchemaV1Response" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           queueParam: S.String.pipe(T.Label()),
-          type: S.optional(S.String.pipe(T.Query())),
+          type: S.optional(GetQueueV1RequestType.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/api/v1/queues/{queueParam}", code: 200 })),
       ).annotate({ identifier: "GetQueueV1Request" });
     case 4:
@@ -3781,13 +4829,13 @@ function __c8(j: number): any {
         S.Struct({
           id: S.String,
           name: S.String,
-          type: S.String,
-          version: S.String,
+          type: QueueObjectType,
+          version: QueueObjectVersion,
           running: S.Number,
           queued: S.Number,
           paused: S.Boolean,
           concurrencyLimit: S.optional(S.NullOr(S.Number)),
-          concurrency: S.optional(__S(68)),
+          concurrency: S.optional(QueueObjectConcurrency),
         }),
       ).annotate({ identifier: "QueueObject" });
     case 6:
@@ -3811,12 +4859,12 @@ function __c8(j: number): any {
 function __c9(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(71));
+      return S.Array(GetRunEventsV1ResponseEventsItemEventsItem);
     case 1:
       return S.suspend(() =>
         S.Struct({
           text: S.optional(S.String),
-          style: S.optional(S.String),
+          style: S.optional(GetRunEventsV1ResponseEventsItemStyleAccessoryStyle),
         }),
       ).annotate({
         identifier: "GetRunEventsV1ResponseEventsItemStyleAccessory",
@@ -3826,7 +4874,7 @@ function __c9(j: number): any {
         S.Struct({
           icon: S.optional(S.String),
           variant: S.optional(S.String),
-          accessory: S.optional(__S(73)),
+          accessory: S.optional(GetRunEventsV1ResponseEventsItemStyleAccessory),
         }),
       ).annotate({
         identifier: "GetRunEventsV1ResponseEventsItemStyle",
@@ -3843,22 +4891,22 @@ function __c9(j: number): any {
           isError: S.optional(S.Boolean),
           isPartial: S.optional(S.Boolean),
           isCancelled: S.optional(S.Boolean),
-          level: S.optional(S.String),
-          kind: S.optional(S.String),
+          level: S.optional(GetRunEventsV1ResponseEventsItemLevel),
+          kind: S.optional(GetRunEventsV1ResponseEventsItemKind),
           attemptNumber: S.optional(S.NullOr(S.Number)),
           taskSlug: S.optional(S.String),
-          events: S.optional(__S(72)),
-          style: S.optional(__S(74)),
+          events: S.optional(GetRunEventsV1ResponseEventsItemEventsList),
+          style: S.optional(GetRunEventsV1ResponseEventsItemStyle),
         }),
       ).annotate({
         identifier: "GetRunEventsV1ResponseEventsItem",
       });
     case 4:
-      return S.Array(__S(75));
+      return S.Array(GetRunEventsV1ResponseEventsItem);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          events: S.optional(__S(76)),
+          events: S.optional(GetRunEventsV1ResponseEventsList),
         }),
       ).annotate({ identifier: "GetRunEventsV1Response" });
     case 6:
@@ -3875,7 +4923,7 @@ function __c9(j: number): any {
           output: S.optional(S.String),
           outputType: S.optional(S.String),
           error: S.optional(S.Unknown),
-          usage: S.optional(__S(36)),
+          usage: S.optional(GetBatchResultsV1ResponseItemsItemUsage),
           taskIdentifier: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetRunResultV1Response" });
@@ -3899,29 +4947,29 @@ function __c10(j: number): any {
           isError: S.optional(S.Boolean),
           isPartial: S.optional(S.Boolean),
           isCancelled: S.optional(S.Boolean),
-          level: S.optional(S.String),
+          level: S.optional(SpanDetailedSummaryDataLevel),
           attemptNumber: S.optional(S.NullOr(S.Number)),
           properties: S.optional(S.Unknown),
-          events: S.optional(__S(72)),
+          events: S.optional(SpanDetailedSummaryDataEventsList),
         }),
       ).annotate({ identifier: "SpanDetailedSummaryData" });
     case 2:
-      return S.Array(/*@__PURE__*/ S.suspend(() => __S(83)));
+      return S.Array(/*@__PURE__*/ S.suspend(() => SpanDetailedSummary));
     case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           parentId: S.optional(S.NullOr(S.String)),
           runId: S.optional(S.String),
-          data: S.optional(__S(81)),
-          children: S.optional(__S(82)),
+          data: S.optional(SpanDetailedSummaryData),
+          children: S.optional(SpanDetailedSummaryChildrenList),
         }),
       ).annotate({ identifier: "SpanDetailedSummary" });
     case 4:
       return S.suspend(() =>
         S.Struct({
           traceId: S.optional(S.String),
-          rootSpan: S.optional(__S(83)),
+          rootSpan: S.optional(SpanDetailedSummary),
         }),
       ).annotate({
         identifier: "GetRunTraceV1ResponseTrace",
@@ -3929,7 +4977,7 @@ function __c10(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          trace: S.optional(__S(84)),
+          trace: S.optional(GetRunTraceV1ResponseTrace),
         }),
       ).annotate({ identifier: "GetRunTraceV1Response" });
     case 6:
@@ -3942,7 +4990,7 @@ function __c10(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          status: S.String,
+          status: CommonRunObjectStatus,
           taskIdentifier: S.String,
           version: S.optional(S.String),
           idempotencyKey: S.optional(S.String),
@@ -3954,14 +5002,14 @@ function __c10(j: number): any {
           delayedUntil: S.optional(S.String),
           ttl: S.optional(S.Unknown),
           expiredAt: S.optional(S.String),
-          tags: S.optional(__S(6)),
+          tags: S.optional(CommonRunObjectTagsList),
           metadata: S.optional(S.Unknown),
           costInCents: S.optional(S.Number),
           baseCostInCents: S.optional(S.Number),
           durationMs: S.optional(S.Number),
           depth: S.optional(S.Number),
           batchId: S.optional(S.String),
-          triggerFunction: S.optional(S.String),
+          triggerFunction: S.optional(CommonRunObjectTriggerFunction),
         }),
       ).annotate({ identifier: "CommonRunObject" });
   }
@@ -3969,13 +5017,13 @@ function __c10(j: number): any {
 function __c11(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(87));
+      return S.Array(CommonRunObject);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          root: S.optional(__S(87)),
-          parent: S.optional(__S(87)),
-          children: S.optional(__S(88)),
+          root: S.optional(CommonRunObject),
+          parent: S.optional(CommonRunObject),
+          children: S.optional(GetRunV1ResponseRelatedRunsChildrenList),
         }),
       ).annotate({
         identifier: "GetRunV1ResponseRelatedRuns",
@@ -3983,7 +5031,7 @@ function __c11(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(S.String),
+          type: S.optional(GetRunV1ResponseScheduleGeneratorType),
           expression: S.optional(S.String),
           description: S.optional(S.String),
         }),
@@ -3996,7 +5044,7 @@ function __c11(j: number): any {
           id: S.String,
           externalId: S.optional(S.String),
           deduplicationKey: S.optional(S.String),
-          generator: __S(90),
+          generator: GetRunV1ResponseScheduleGenerator,
         }),
       ).annotate({ identifier: "GetRunV1ResponseSchedule" });
     case 4:
@@ -4011,8 +5059,8 @@ function __c11(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          status: S.String,
-          error: S.optional(__S(92)),
+          status: GetRunV1ResponseAttemptsItemStatus,
+          error: S.optional(SerializedError),
           createdAt: S.String,
           updatedAt: S.String,
           startedAt: S.optional(S.String),
@@ -4022,12 +5070,12 @@ function __c11(j: number): any {
         identifier: "GetRunV1ResponseAttemptsItem",
       });
     case 6:
-      return S.Array(__S(93));
+      return S.Array(GetRunV1ResponseAttemptsItem);
     case 7:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          status: S.String,
+          status: GetRunV1ResponseStatus,
           taskIdentifier: S.String,
           version: S.optional(S.String),
           idempotencyKey: S.optional(S.String),
@@ -4039,21 +5087,21 @@ function __c11(j: number): any {
           delayedUntil: S.optional(S.String),
           ttl: S.optional(S.Unknown),
           expiredAt: S.optional(S.String),
-          tags: S.optional(__S(6)),
+          tags: S.optional(GetRunV1ResponseTagsList),
           metadata: S.optional(S.Unknown),
           costInCents: S.optional(S.Number),
           baseCostInCents: S.optional(S.Number),
           durationMs: S.optional(S.Number),
           depth: S.optional(S.Number),
           batchId: S.optional(S.String),
-          triggerFunction: S.optional(S.String),
+          triggerFunction: S.optional(GetRunV1ResponseTriggerFunction),
           payload: S.optional(S.Unknown),
           payloadPresignedUrl: S.optional(S.String),
           output: S.optional(S.Unknown),
           outputPresignedUrl: S.optional(S.String),
-          relatedRuns: S.optional(__S(89)),
-          schedule: S.optional(__S(91)),
-          attempts: __S(94),
+          relatedRuns: S.optional(GetRunV1ResponseRelatedRuns),
+          schedule: S.optional(GetRunV1ResponseSchedule),
+          attempts: GetRunV1ResponseAttemptsList,
         }),
       ).annotate({ identifier: "GetRunV1Response" });
   }
@@ -4081,7 +5129,7 @@ function __c12(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          timezones: S.optional(__S(6)),
+          timezones: S.optional(GetTimezonesResultTimezonesList),
         }),
       ).annotate({ identifier: "GetTimezonesResult" });
     case 4:
@@ -4099,7 +5147,7 @@ function __c12(j: number): any {
         S.Struct({
           id: S.String,
           url: S.String,
-          status: S.String,
+          status: WaitpointTokenObjectStatus,
           idempotencyKey: S.optional(S.NullOr(S.String)),
           idempotencyKeyExpiresAt: S.optional(S.NullOr(S.String)),
           timeoutAt: S.optional(S.NullOr(S.String)),
@@ -4107,7 +5155,7 @@ function __c12(j: number): any {
           output: S.optional(S.NullOr(S.String)),
           outputType: S.optional(S.NullOr(S.String)),
           outputIsError: S.optional(S.NullOr(S.Boolean)),
-          tags: __S(6),
+          tags: WaitpointTokenObjectTagsList,
           createdAt: S.String,
         }),
       ).annotate({ identifier: "WaitpointTokenObject" });
@@ -4138,11 +5186,11 @@ function __c13(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          page: S.optional(__S(103).pipe(T.Query())),
+          page: S.optional(ListBulkActionsV1RequestPage.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/api/v1/bulk-actions", code: 200 })),
       ).annotate({ identifier: "ListBulkActionsV1Request" });
     case 1:
-      return S.Array(__S(46));
+      return S.Array(BulkActionObject);
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -4155,8 +5203,8 @@ function __c13(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          data: __S(105),
-          pagination: __S(106),
+          data: ListBulkActionsResultDataList,
+          pagination: ListBulkActionsResultPagination,
         }),
       ).annotate({ identifier: "ListBulkActionsResult" });
     case 4:
@@ -4169,7 +5217,7 @@ function __c13(j: number): any {
         identifier: "ListConcurrencyLimitsV1Request",
       });
     case 5:
-      return S.Array(__S(49));
+      return S.Array(ConcurrencyLimitObject);
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -4183,8 +5231,8 @@ function __c13(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(__S(109)),
-          pagination: S.optional(__S(110)),
+          data: S.optional(ListConcurrencyLimitsV1ResponseDataList),
+          pagination: S.optional(ListConcurrencyLimitsV1ResponsePagination),
         }),
       ).annotate({
         identifier: "ListConcurrencyLimitsV1Response",
@@ -4203,29 +5251,29 @@ function __c14(j: number): any {
           id: S.optional(S.String),
           title: S.optional(S.String),
           query: S.optional(S.String),
-          type: S.optional(S.String),
+          type: S.optional(ListDashboardsV1ResponseDashboardsItemWidgetsItemType),
         }),
       ).annotate({
         identifier: "ListDashboardsV1ResponseDashboardsItemWidgetsItem",
       });
     case 2:
-      return S.Array(__S(113));
+      return S.Array(ListDashboardsV1ResponseDashboardsItemWidgetsItem);
     case 3:
       return S.suspend(() =>
         S.Struct({
           key: S.optional(S.String),
           title: S.optional(S.String),
-          widgets: S.optional(__S(114)),
+          widgets: S.optional(ListDashboardsV1ResponseDashboardsItemWidgetsList),
         }),
       ).annotate({
         identifier: "ListDashboardsV1ResponseDashboardsItem",
       });
     case 4:
-      return S.Array(__S(115));
+      return S.Array(ListDashboardsV1ResponseDashboardsItem);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          dashboards: S.optional(__S(116)),
+          dashboards: S.optional(ListDashboardsV1ResponseDashboardsList),
         }),
       ).annotate({ identifier: "ListDashboardsV1Response" });
     case 6:
@@ -4233,7 +5281,7 @@ function __c14(j: number): any {
         S.Struct({
           page_after_: S.optional(S.String.pipe(T.Query("page[after]"))),
           page_size_: S.optional(S.Number.pipe(T.Query("page[size]"))),
-          status: S.optional(S.String.pipe(T.Query())),
+          status: S.optional(ListDeploymentsV1RequestStatus.pipe(T.Query())),
           period: S.optional(S.String.pipe(T.Query())),
           from: S.optional(S.String.pipe(T.Query())),
           to: S.optional(S.String.pipe(T.Query())),
@@ -4248,7 +5296,7 @@ function __c14(j: number): any {
           version: S.optional(S.String),
           runtime: S.optional(S.NullOr(S.String)),
           runtimeVersion: S.optional(S.NullOr(S.String)),
-          status: S.optional(S.String),
+          status: S.optional(ListDeploymentsV1ResponseDataItemStatus),
           deployedAt: S.optional(S.NullOr(S.String)),
           git: S.optional(S.NullOr(S.Unknown)),
           error: S.optional(S.NullOr(S.Unknown)),
@@ -4262,7 +5310,7 @@ function __c14(j: number): any {
 function __c15(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(119));
+      return S.Array(ListDeploymentsV1ResponseDataItem);
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -4274,8 +5322,8 @@ function __c15(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(__S(120)),
-          pagination: S.optional(__S(121)),
+          data: S.optional(ListDeploymentsV1ResponseDataList),
+          pagination: S.optional(ListDeploymentsV1ResponsePagination),
         }),
       ).annotate({
         identifier: "ListDeploymentsV1Response",
@@ -4291,9 +5339,9 @@ function __c15(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          taskIdentifier: S.optional(__S(6)),
-          version: S.optional(__S(6)),
-          status: S.optional(__S(20)),
+          taskIdentifier: S.optional(ErrorsFilterTaskIdentifierList),
+          version: S.optional(ErrorsFilterVersionList),
+          status: S.optional(ErrorsFilterStatusList),
           search: S.optional(S.String),
           from: S.optional(S.String),
           to: S.optional(S.String),
@@ -4303,8 +5351,8 @@ function __c15(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          page: S.optional(__S(123).pipe(T.Query())),
-          filter: S.optional(__S(124).pipe(T.Query())),
+          page: S.optional(ListErrorsV1RequestPage.pipe(T.Query())),
+          filter: S.optional(ErrorsFilter.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/api/v1/errors", code: 200 })),
       ).annotate({ identifier: "ListErrorsV1Request" });
     case 6:
@@ -4315,7 +5363,7 @@ function __c15(j: number): any {
           taskIdentifier: S.String,
           errorType: S.String,
           errorMessage: S.String,
-          status: S.String,
+          status: ErrorListItemStatus,
           count: S.Number,
           firstSeen: S.String,
           lastSeen: S.String,
@@ -4324,7 +5372,7 @@ function __c15(j: number): any {
         }),
       ).annotate({ identifier: "ErrorListItem" });
     case 7:
-      return S.Array(__S(126));
+      return S.Array(ErrorListItem);
   }
 }
 function __c16(j: number): any {
@@ -4332,15 +5380,15 @@ function __c16(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(__S(127)),
-          pagination: S.optional(__S(106)),
+          data: S.optional(ListErrorsResultDataList),
+          pagination: S.optional(ListErrorsResultPagination),
         }),
       ).annotate({ identifier: "ListErrorsResult" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           projectRef: S.String.pipe(T.Label()),
-          env: S.String.pipe(T.Label()),
+          env: ListProjectEnvvarsV1RequestEnv.pipe(T.Label()),
         }).pipe(
           T.Http({ method: "GET", uri: "/api/v1/projects/{projectRef}/envvars/{env}", code: 200 }),
         ),
@@ -4355,9 +5403,9 @@ function __c16(j: number): any {
         }),
       ).annotate({ identifier: "EnvVar" });
     case 3:
-      return S.Array(__S(130));
+      return S.Array(EnvVar);
     case 4:
-      return S.suspend(() => __S(131).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => ListEnvironmentVariablesResponse.pipe(T.RawResponseRoot())).annotate({
         identifier: "ListProjectEnvvarsV1Response",
       });
     case 5:
@@ -4373,16 +5421,16 @@ function __c16(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          createdAt: S.optional(__S(133)),
-          status: S.optional(__S(20)),
-          taskIdentifier: S.optional(__S(6)),
-          version: S.optional(__S(6)),
+          createdAt: S.optional(ListProjectRunsV1RequestFilterCreatedAt),
+          status: S.optional(ListProjectRunsV1RequestFilterStatusList),
+          taskIdentifier: S.optional(ListProjectRunsV1RequestFilterTaskIdentifierList),
+          version: S.optional(ListProjectRunsV1RequestFilterVersionList),
           bulkAction: S.optional(S.String),
           schedule: S.optional(S.String),
           isTest: S.optional(S.Boolean),
-          tag: S.optional(__S(6)),
+          tag: S.optional(ListProjectRunsV1RequestFilterTagList),
           error: S.optional(S.String),
-          env: S.optional(__S(20)),
+          env: S.optional(ListProjectRunsV1RequestFilterEnvList),
         }),
       ).annotate({
         identifier: "ListProjectRunsV1RequestFilter",
@@ -4391,8 +5439,8 @@ function __c16(j: number): any {
       return S.suspend(() =>
         S.Struct({
           projectRef: S.String.pipe(T.Label()),
-          page: S.optional(__S(103).pipe(T.Query())),
-          filter: S.optional(__S(134).pipe(T.Query())),
+          page: S.optional(ListProjectRunsV1RequestPage.pipe(T.Query())),
+          filter: S.optional(ListProjectRunsV1RequestFilter.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/api/v1/projects/{projectRef}/runs", code: 200 })),
       ).annotate({ identifier: "ListProjectRunsV1Request" });
   }
@@ -4411,10 +5459,10 @@ function __c17(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          status: S.String,
+          status: ListRunItemStatus,
           taskIdentifier: S.String,
           version: S.optional(S.String),
-          env: __S(136),
+          env: ListRunItemEnv,
           idempotencyKey: S.optional(S.String),
           isTest: S.Boolean,
           createdAt: S.String,
@@ -4424,14 +5472,14 @@ function __c17(j: number): any {
           delayedUntil: S.optional(S.String),
           ttl: S.optional(S.Unknown),
           expiredAt: S.optional(S.String),
-          tags: S.optional(__S(6)),
+          tags: S.optional(ListRunItemTagsList),
           costInCents: S.optional(S.Number),
           baseCostInCents: S.optional(S.Number),
           durationMs: S.optional(S.Number),
         }),
       ).annotate({ identifier: "ListRunItem" });
     case 2:
-      return S.Array(__S(137));
+      return S.Array(ListRunItem);
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -4442,8 +5490,8 @@ function __c17(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(__S(138)),
-          pagination: S.optional(__S(139)),
+          data: S.optional(ListRunsResultDataList),
+          pagination: S.optional(ListRunsResultPagination),
         }),
       ).annotate({ identifier: "ListRunsResult" });
     case 5:
@@ -4454,12 +5502,12 @@ function __c17(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/api/v1/queues", code: 200 })),
       ).annotate({ identifier: "ListQueuesV1Request" });
     case 6:
-      return S.Array(__S(69));
+      return S.Array(QueueObject);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          data: __S(142),
-          pagination: __S(110),
+          data: ListQueuesResultDataList,
+          pagination: ListQueuesResultPagination,
         }),
       ).annotate({ identifier: "ListQueuesResult" });
   }
@@ -4469,22 +5517,22 @@ function __c18(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          createdAt: S.optional(__S(133)),
-          status: S.optional(__S(20)),
-          taskIdentifier: S.optional(__S(6)),
-          version: S.optional(__S(6)),
+          createdAt: S.optional(ListProjectRunsV1RequestFilterCreatedAt),
+          status: S.optional(CommonRunsFilterStatusList),
+          taskIdentifier: S.optional(CommonRunsFilterTaskIdentifierList),
+          version: S.optional(CommonRunsFilterVersionList),
           bulkAction: S.optional(S.String),
           schedule: S.optional(S.String),
           isTest: S.optional(S.Boolean),
-          tag: S.optional(__S(6)),
+          tag: S.optional(CommonRunsFilterTagList),
           error: S.optional(S.String),
         }),
       ).annotate({ identifier: "CommonRunsFilter" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          page: S.optional(__S(103).pipe(T.Query())),
-          filter: S.optional(__S(144).pipe(T.Query())),
+          page: S.optional(ListProjectRunsV1RequestPage.pipe(T.Query())),
+          filter: S.optional(CommonRunsFilter.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/api/v1/runs", code: 200 })),
       ).annotate({ identifier: "ListRunsV1Request" });
     case 2:
@@ -4495,12 +5543,12 @@ function __c18(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/api/v1/schedules", code: 200 })),
       ).annotate({ identifier: "ListSchedulesV1Request" });
     case 3:
-      return S.Array(__S(5));
+      return S.Array(ScheduleObject);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(__S(147)),
-          pagination: S.optional(__S(110)),
+          data: S.optional(ListSchedulesResultDataList),
+          pagination: S.optional(ListConcurrencyLimitsV1ResponsePagination),
         }),
       ).annotate({ identifier: "ListSchedulesResult" });
     case 5:
@@ -4514,19 +5562,19 @@ function __c18(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(__S(6)),
-          tags: S.optional(__S(6)),
-          taskIdentifier: S.optional(__S(6)),
+          type: S.optional(SessionsFilterTypeList),
+          tags: S.optional(SessionsFilterTagsList),
+          taskIdentifier: S.optional(SessionsFilterTaskIdentifierList),
           externalId: S.optional(S.String),
-          status: S.optional(__S(20)),
-          createdAt: S.optional(__S(149)),
+          status: S.optional(SessionsFilterStatusList),
+          createdAt: S.optional(SessionsFilterCreatedAt),
         }),
       ).annotate({ identifier: "SessionsFilter" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          page: S.optional(__S(103).pipe(T.Query())),
-          filter: S.optional(__S(150).pipe(T.Query())),
+          page: S.optional(ListSessionsV1RequestPage.pipe(T.Query())),
+          filter: S.optional(SessionsFilter.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/api/v1/sessions", code: 200 })),
       ).annotate({ identifier: "ListSessionsV1Request" });
   }
@@ -4534,12 +5582,12 @@ function __c18(j: number): any {
 function __c19(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(16));
+      return S.Array(SessionObject);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(__S(152)),
-          pagination: S.optional(__S(106)),
+          data: S.optional(ListSessionsResultDataList),
+          pagination: S.optional(ListSessionsResultPagination),
         }),
       ).annotate({ identifier: "ListSessionsResult" });
     case 2:
@@ -4561,7 +5609,7 @@ function __c19(j: number): any {
         identifier: "ListWaitpointTokensV1Request",
       });
     case 3:
-      return S.Array(__S(101));
+      return S.Array(WaitpointTokenObject);
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -4574,8 +5622,8 @@ function __c19(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          data: __S(155),
-          pagination: __S(156),
+          data: ListWaitpointTokensResultDataList,
+          pagination: ListWaitpointTokensResultPagination,
         }),
       ).annotate({
         identifier: "ListWaitpointTokensResult",
@@ -4596,7 +5644,7 @@ function __c19(j: number): any {
       return S.suspend(() =>
         S.Struct({
           queueParam: S.String.pipe(T.Label()),
-          type: S.optional(S.String),
+          type: S.optional(OverrideQueueConcurrencyV1RequestType),
           concurrencyLimit: S.Number,
         }).pipe(
           T.Http({
@@ -4616,7 +5664,7 @@ function __c20(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          action: S.String,
+          action: PauseConcurrencyLimitV1RequestAction,
         }).pipe(
           T.Http({ method: "POST", uri: "/api/v1/concurrency-limits/{name}/pause", code: 200 }),
         ),
@@ -4627,8 +5675,8 @@ function __c20(j: number): any {
       return S.suspend(() =>
         S.Struct({
           queueParam: S.String.pipe(T.Label()),
-          type: S.optional(S.String),
-          action: S.String,
+          type: S.optional(PauseQueueV1RequestType),
+          action: PauseQueueV1RequestAction,
         }).pipe(T.Http({ method: "POST", uri: "/api/v1/queues/{queueParam}/pause", code: 200 })),
       ).annotate({ identifier: "PauseQueueV1Request" });
     case 2:
@@ -4665,7 +5713,7 @@ function __c20(j: number): any {
       return S.suspend(() =>
         S.Struct({
           queueParam: S.String.pipe(T.Label()),
-          type: S.optional(S.String),
+          type: S.optional(ResetQueueConcurrencyV1RequestType),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4706,7 +5754,7 @@ function __c21(j: number): any {
           id: S.String,
           externalId: S.optional(S.String),
           deduplicationKey: S.optional(S.String),
-          generator: __S(90),
+          generator: RunRescheduleV1ResponseScheduleGenerator,
         }),
       ).annotate({
         identifier: "RunRescheduleV1ResponseSchedule",
@@ -4715,7 +5763,7 @@ function __c21(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          status: S.String,
+          status: RunRescheduleV1ResponseStatus,
           taskIdentifier: S.String,
           version: S.optional(S.String),
           idempotencyKey: S.optional(S.String),
@@ -4727,21 +5775,21 @@ function __c21(j: number): any {
           delayedUntil: S.optional(S.String),
           ttl: S.optional(S.Unknown),
           expiredAt: S.optional(S.String),
-          tags: S.optional(__S(6)),
+          tags: S.optional(RunRescheduleV1ResponseTagsList),
           metadata: S.optional(S.Unknown),
           costInCents: S.optional(S.Number),
           baseCostInCents: S.optional(S.Number),
           durationMs: S.optional(S.Number),
           depth: S.optional(S.Number),
           batchId: S.optional(S.String),
-          triggerFunction: S.optional(S.String),
+          triggerFunction: S.optional(RunRescheduleV1ResponseTriggerFunction),
           payload: S.optional(S.Unknown),
           payloadPresignedUrl: S.optional(S.String),
           output: S.optional(S.Unknown),
           outputPresignedUrl: S.optional(S.String),
-          relatedRuns: S.optional(__S(89)),
-          schedule: S.optional(__S(169)),
-          attempts: __S(94),
+          relatedRuns: S.optional(RunRescheduleV1ResponseRelatedRuns),
+          schedule: S.optional(RunRescheduleV1ResponseSchedule),
+          attempts: RunRescheduleV1ResponseAttemptsList,
         }),
       ).annotate({ identifier: "RunRescheduleV1Response" });
     case 3:
@@ -4754,13 +5802,13 @@ function __c21(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          queue: S.optional(__S(171)),
+          queue: S.optional(QueueOptions),
           concurrencyKey: S.optional(S.String),
           idempotencyKey: S.optional(S.String),
           ttl: S.optional(S.Unknown),
           delay: S.optional(S.String),
-          tags: S.optional(S.Unknown),
-          machine: S.optional(S.String),
+          tags: S.optional(RunTags),
+          machine: S.optional(TriggerTaskRequestBodyOptionsMachine),
         }),
       ).annotate({
         identifier: "TriggerTaskRequestBodyOptions",
@@ -4770,16 +5818,16 @@ function __c21(j: number): any {
         S.Struct({
           payload: S.optional(S.Unknown),
           context: S.optional(S.Unknown),
-          options: S.optional(__S(172)),
+          options: S.optional(TriggerTaskRequestBodyOptions),
         }),
       ).annotate({ identifier: "TriggerTaskRequestBody" });
     case 6:
-      return S.Array(__S(173));
+      return S.Array(TriggerTaskRequestBody);
     case 7:
       return S.suspend(() =>
         S.Struct({
           taskIdentifier: S.String.pipe(T.Label()),
-          items: __S(174),
+          items: TriggerBatchTaskByIdV1RequestItemsList,
         }).pipe(T.Http({ method: "POST", uri: "/api/v1/tasks/{taskIdentifier}/batch", code: 200 })),
       ).annotate({
         identifier: "TriggerBatchTaskByIdV1Request",
@@ -4792,7 +5840,7 @@ function __c22(j: number): any {
       return S.suspend(() =>
         S.Struct({
           batchId: S.String,
-          runs: __S(6),
+          runs: BatchTriggerTaskResponseRunsList,
         }),
       ).annotate({ identifier: "BatchTriggerTaskResponse" });
     case 1:
@@ -4800,18 +5848,18 @@ function __c22(j: number): any {
         S.Struct({
           payload: S.optional(S.Unknown),
           context: S.optional(S.Unknown),
-          options: S.optional(__S(172)),
+          options: S.optional(BatchTriggerTaskRequestBodyItemOptions),
           task: S.String,
         }),
       ).annotate({
         identifier: "BatchTriggerTaskRequestBodyItem",
       });
     case 2:
-      return S.Array(__S(177));
+      return S.Array(BatchTriggerTaskRequestBodyItem);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          items: __S(178),
+          items: TriggerBatchTaskV1RequestItemsList,
         }).pipe(T.Http({ method: "POST", uri: "/api/v1/tasks/batch", code: 200 })),
       ).annotate({
         identifier: "TriggerBatchTaskV1Request",
@@ -4822,7 +5870,7 @@ function __c22(j: number): any {
           taskIdentifier: S.String.pipe(T.Label()),
           payload: S.optional(S.Unknown),
           context: S.optional(S.Unknown),
-          options: S.optional(__S(172)),
+          options: S.optional(TriggerTaskV1RequestOptions),
         }).pipe(
           T.Http({ method: "POST", uri: "/api/v1/tasks/{taskIdentifier}/trigger", code: 200 }),
         ),
@@ -4837,7 +5885,7 @@ function __c22(j: number): any {
       return S.suspend(() =>
         S.Struct({
           projectRef: S.String.pipe(T.Label()),
-          env: S.String.pipe(T.Label()),
+          env: UpdateProjectEnvvarV1RequestEnv.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
           value: S.String,
         }).pipe(
@@ -4885,8 +5933,8 @@ function __c23(j: number): any {
       return S.suspend(() =>
         S.Struct({
           session: S.String.pipe(T.Label()),
-          tags: S.optional(__S(6)),
-          metadata: S.optional(S.NullOr(__S(14))),
+          tags: S.optional(UpdateSessionV1RequestTagsList),
+          metadata: S.optional(S.NullOr(UpdateSessionV1RequestMetadataMap)),
           externalId: S.optional(S.NullOr(S.String)),
         }).pipe(T.Http({ method: "PATCH", uri: "/api/v1/sessions/{session}", code: 200 })),
       ).annotate({ identifier: "UpdateSessionV1Request" });
@@ -4894,8 +5942,8 @@ function __c23(j: number): any {
       return S.suspend(() =>
         S.Struct({
           projectRef: S.String.pipe(T.Label()),
-          env: S.String.pipe(T.Label()),
-          variables: __S(131),
+          env: UploadProjectEnvvarsV1RequestEnv.pipe(T.Label()),
+          variables: UploadProjectEnvvarsV1RequestVariablesList,
           override: S.optional(S.Boolean),
         }).pipe(
           T.Http({
@@ -4907,62 +5955,5 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "UploadProjectEnvvarsV1Request",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
-    case 9:
-      return __c9(i & 7);
-    case 10:
-      return __c10(i & 7);
-    case 11:
-      return __c11(i & 7);
-    case 12:
-      return __c12(i & 7);
-    case 13:
-      return __c13(i & 7);
-    case 14:
-      return __c14(i & 7);
-    case 15:
-      return __c15(i & 7);
-    case 16:
-      return __c16(i & 7);
-    case 17:
-      return __c17(i & 7);
-    case 18:
-      return __c18(i & 7);
-    case 19:
-      return __c19(i & 7);
-    case 20:
-      return __c20(i & 7);
-    case 21:
-      return __c21(i & 7);
-    case 22:
-      return __c22(i & 7);
-    case 23:
-      return __c23(i & 7);
   }
 }

@@ -8,8 +8,6 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "Snow Device Management",
   serviceShapeName: "SnowDeviceManagement",
@@ -121,15 +119,22 @@ export type TaskId = string;
 export interface CancelTaskInput {
   taskId: string;
 }
+const CancelTaskInput = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<CancelTaskInput>;
 export interface CancelTaskOutput {
   taskId?: string;
 }
+const CancelTaskOutput = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<CancelTaskOutput>;
 export type TargetList = string[];
+const TargetList = /*@__PURE__*/ __L.at(__c0, 2);
 export interface Unlock {}
+const Unlock = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<Unlock>;
 export interface Reboot {}
+const Reboot = Unlock as any as S.Schema<Reboot>;
 export type Command = { unlock: Unlock; reboot?: never } | { unlock?: never; reboot: Reboot };
+const Command = /*@__PURE__*/ __L.at(__c0, 4);
 export type TaskDescriptionString = string;
 export type TagMap = { [key: string]: string | undefined };
+const TagMap = /*@__PURE__*/ __L.at(__c0, 5);
 export type IdempotencyToken = string;
 export interface CreateTaskInput {
   targets: string[];
@@ -138,14 +143,17 @@ export interface CreateTaskInput {
   tags?: { [key: string]: string | undefined };
   clientToken?: string;
 }
+const CreateTaskInput = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<CreateTaskInput>;
 export interface CreateTaskOutput {
   taskId?: string;
   taskArn?: string;
 }
+const CreateTaskOutput = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<CreateTaskOutput>;
 export type ManagedDeviceId = string;
 export interface DescribeDeviceInput {
   managedDeviceId: string;
 }
+const DescribeDeviceInput = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<DescribeDeviceInput>;
 export type UnlockState = string;
 export type PhysicalConnectorType = string;
 export type IpAddressAssignment = string;
@@ -158,7 +166,12 @@ export interface PhysicalNetworkInterface {
   defaultGateway?: string;
   macAddress?: string;
 }
+const PhysicalNetworkInterface = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<PhysicalNetworkInterface>;
 export type PhysicalNetworkInterfaceList = PhysicalNetworkInterface[];
+const PhysicalNetworkInterfaceList = /*@__PURE__*/ __L.at(__c1, 2);
 export interface Capacity {
   name?: string;
   unit?: string;
@@ -166,12 +179,15 @@ export interface Capacity {
   used?: number;
   available?: number;
 }
+const Capacity = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<Capacity>;
 export type CapacityList = Capacity[];
+const CapacityList = /*@__PURE__*/ __L.at(__c1, 4);
 export interface SoftwareInformation {
   installedVersion?: string;
   installingVersion?: string;
   installState?: string;
 }
+const SoftwareInformation = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<SoftwareInformation>;
 export interface DescribeDeviceOutput {
   lastReachedOutAt?: Date;
   lastUpdatedAt?: Date;
@@ -185,16 +201,23 @@ export interface DescribeDeviceOutput {
   deviceCapacities?: Capacity[];
   software?: SoftwareInformation;
 }
+const DescribeDeviceOutput = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<DescribeDeviceOutput>;
 export type InstanceIdsList = string[];
+const InstanceIdsList = TargetList as any as S.Schema<InstanceIdsList>;
 export interface DescribeDeviceEc2Input {
   managedDeviceId: string;
   instanceIds: string[];
 }
+const DescribeDeviceEc2Input = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<DescribeDeviceEc2Input>;
 export type InstanceStateName = string;
 export interface InstanceState {
   code?: number;
   name?: string;
 }
+const InstanceState = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<InstanceState>;
 export type AttachmentStatus = string;
 export interface EbsInstanceBlockDevice {
   attachTime?: Date;
@@ -202,20 +225,35 @@ export interface EbsInstanceBlockDevice {
   status?: string;
   volumeId?: string;
 }
+const EbsInstanceBlockDevice = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<EbsInstanceBlockDevice>;
 export interface InstanceBlockDeviceMapping {
   deviceName?: string;
   ebs?: EbsInstanceBlockDevice;
 }
+const InstanceBlockDeviceMapping = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<InstanceBlockDeviceMapping>;
 export type InstanceBlockDeviceMappingList = InstanceBlockDeviceMapping[];
+const InstanceBlockDeviceMappingList = /*@__PURE__*/ __L.at(__c2, 3);
 export interface SecurityGroupIdentifier {
   groupId?: string;
   groupName?: string;
 }
+const SecurityGroupIdentifier = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<SecurityGroupIdentifier>;
 export type SecurityGroupIdentifierList = SecurityGroupIdentifier[];
+const SecurityGroupIdentifierList = /*@__PURE__*/ __L.at(__c2, 5);
 export interface CpuOptions {
   coreCount?: number;
   threadsPerCore?: number;
 }
+const CpuOptions = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<CpuOptions>;
 export interface Instance {
   imageId?: string;
   amiLaunchIndex?: number;
@@ -231,18 +269,29 @@ export interface Instance {
   cpuOptions?: CpuOptions;
   rootDeviceName?: string;
 }
+const Instance = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<Instance>;
 export interface InstanceSummary {
   instance?: Instance;
   lastUpdatedAt?: Date;
 }
+const InstanceSummary = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<InstanceSummary>;
 export type InstanceSummaryList = InstanceSummary[];
+const InstanceSummaryList = /*@__PURE__*/ __L.at(__c3, 1);
 export interface DescribeDeviceEc2Output {
   instances?: InstanceSummary[];
 }
+const DescribeDeviceEc2Output = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<DescribeDeviceEc2Output>;
 export interface DescribeExecutionInput {
   taskId: string;
   managedDeviceId: string;
 }
+const DescribeExecutionInput = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<DescribeExecutionInput>;
 export type ExecutionId = string;
 export type ExecutionState = string;
 export interface DescribeExecutionOutput {
@@ -253,9 +302,14 @@ export interface DescribeExecutionOutput {
   startedAt?: Date;
   lastUpdatedAt?: Date;
 }
+const DescribeExecutionOutput = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<DescribeExecutionOutput>;
 export interface DescribeTaskInput {
   taskId: string;
 }
+const DescribeTaskInput = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<DescribeTaskInput>;
 export type TaskState = string;
 export interface DescribeTaskOutput {
   taskId?: string;
@@ -268,6 +322,7 @@ export interface DescribeTaskOutput {
   description?: string;
   tags?: { [key: string]: string | undefined };
 }
+const DescribeTaskOutput = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<DescribeTaskOutput>;
 export type MaxResults = number;
 export type NextToken = string;
 export interface ListDeviceResourcesInput {
@@ -276,83 +331,118 @@ export interface ListDeviceResourcesInput {
   maxResults?: number;
   nextToken?: string;
 }
+const ListDeviceResourcesInput = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<ListDeviceResourcesInput>;
 export interface ResourceSummary {
   resourceType: string;
   arn?: string;
   id?: string;
 }
+const ResourceSummary = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<ResourceSummary>;
 export type ResourceSummaryList = ResourceSummary[];
+const ResourceSummaryList = /*@__PURE__*/ __L.at(__c4, 1);
 export interface ListDeviceResourcesOutput {
   resources?: ResourceSummary[];
   nextToken?: string;
 }
+const ListDeviceResourcesOutput = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<ListDeviceResourcesOutput>;
 export type JobId = string;
 export interface ListDevicesInput {
   jobId?: string;
   maxResults?: number;
   nextToken?: string;
 }
+const ListDevicesInput = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<ListDevicesInput>;
 export interface DeviceSummary {
   managedDeviceId?: string;
   managedDeviceArn?: string;
   associatedWithJob?: string;
   tags?: { [key: string]: string | undefined };
 }
+const DeviceSummary = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<DeviceSummary>;
 export type DeviceSummaryList = DeviceSummary[];
+const DeviceSummaryList = /*@__PURE__*/ __L.at(__c4, 5);
 export interface ListDevicesOutput {
   devices?: DeviceSummary[];
   nextToken?: string;
 }
+const ListDevicesOutput = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<ListDevicesOutput>;
 export interface ListExecutionsInput {
   taskId: string;
   state?: string;
   maxResults?: number;
   nextToken?: string;
 }
+const ListExecutionsInput = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<ListExecutionsInput>;
 export interface ExecutionSummary {
   taskId?: string;
   executionId?: string;
   managedDeviceId?: string;
   state?: string;
 }
+const ExecutionSummary = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<ExecutionSummary>;
 export type ExecutionSummaryList = ExecutionSummary[];
+const ExecutionSummaryList = /*@__PURE__*/ __L.at(__c5, 1);
 export interface ListExecutionsOutput {
   executions?: ExecutionSummary[];
   nextToken?: string;
 }
+const ListExecutionsOutput = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<ListExecutionsOutput>;
 export interface ListTagsForResourceInput {
   resourceArn: string;
 }
+const ListTagsForResourceInput = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<ListTagsForResourceInput>;
 export interface ListTagsForResourceOutput {
   tags?: { [key: string]: string | undefined };
 }
+const ListTagsForResourceOutput = /*@__PURE__*/ __L.at(
+  __c5,
+  4,
+) as any as S.Schema<ListTagsForResourceOutput>;
 export interface ListTasksInput {
   state?: string;
   maxResults?: number;
   nextToken?: string;
 }
+const ListTasksInput = /*@__PURE__*/ __L.at(__c5, 5) as any as S.Schema<ListTasksInput>;
 export interface TaskSummary {
   taskId: string;
   taskArn?: string;
   state?: string;
   tags?: { [key: string]: string | undefined };
 }
+const TaskSummary = /*@__PURE__*/ __L.at(__c5, 6) as any as S.Schema<TaskSummary>;
 export type TaskSummaryList = TaskSummary[];
+const TaskSummaryList = /*@__PURE__*/ __L.at(__c5, 7);
 export interface ListTasksOutput {
   tasks?: TaskSummary[];
   nextToken?: string;
 }
+const ListTasksOutput = /*@__PURE__*/ __L.at(__c6, 0) as any as S.Schema<ListTasksOutput>;
 export interface TagResourceInput {
   resourceArn: string;
   tags: { [key: string]: string | undefined };
 }
+const TagResourceInput = /*@__PURE__*/ __L.at(__c6, 1) as any as S.Schema<TagResourceInput>;
 export interface TagResourceResponse {}
+const TagResourceResponse = Unlock as any as S.Schema<TagResourceResponse>;
 export type TagKeys = string[];
+const TagKeys = TargetList as any as S.Schema<TagKeys>;
 export interface UntagResourceInput {
   resourceArn: string;
   tagKeys: string[];
 }
+const UntagResourceInput = /*@__PURE__*/ __L.at(__c6, 2) as any as S.Schema<UntagResourceInput>;
 export interface UntagResourceResponse {}
+const UntagResourceResponse = Unlock as any as S.Schema<UntagResourceResponse>;
 export type CancelTaskError =
   | AccessDeniedException
   | InternalServerException
@@ -373,8 +463,8 @@ export const cancelTask: API.OperationMethod<
   CancelTaskError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<CancelTaskInput>,
-  output: __S(1) as any as S.Schema<CancelTaskOutput>,
+  input: CancelTaskInput,
+  output: CancelTaskOutput,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -404,8 +494,8 @@ export const createTask: API.OperationMethod<
   CreateTaskError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6) as any as S.Schema<CreateTaskInput>,
-  output: __S(7) as any as S.Schema<CreateTaskOutput>,
+  input: CreateTaskInput,
+  output: CreateTaskOutput,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -436,8 +526,8 @@ export const describeDevice: API.OperationMethod<
   DescribeDeviceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8) as any as S.Schema<DescribeDeviceInput>,
-  output: __S(14) as any as S.Schema<DescribeDeviceOutput>,
+  input: DescribeDeviceInput,
+  output: DescribeDeviceOutput,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -468,8 +558,8 @@ export const describeDeviceEc2Instances: API.OperationMethod<
   DescribeDeviceEc2InstancesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15) as any as S.Schema<DescribeDeviceEc2Input>,
-  output: __S(26) as any as S.Schema<DescribeDeviceEc2Output>,
+  input: DescribeDeviceEc2Input,
+  output: DescribeDeviceEc2Output,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -498,8 +588,8 @@ export const describeExecution: API.OperationMethod<
   DescribeExecutionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27) as any as S.Schema<DescribeExecutionInput>,
-  output: __S(28) as any as S.Schema<DescribeExecutionOutput>,
+  input: DescribeExecutionInput,
+  output: DescribeExecutionOutput,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -528,8 +618,8 @@ export const describeTask: API.OperationMethod<
   DescribeTaskError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29) as any as S.Schema<DescribeTaskInput>,
-  output: __S(30) as any as S.Schema<DescribeTaskOutput>,
+  input: DescribeTaskInput,
+  output: DescribeTaskOutput,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -559,8 +649,8 @@ export const listDeviceResources: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ResourceSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(31) as any as S.Schema<ListDeviceResourcesInput>,
-  output: __S(34) as any as S.Schema<ListDeviceResourcesOutput>,
+  input: ListDeviceResourcesInput,
+  output: ListDeviceResourcesOutput,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -596,8 +686,8 @@ export const listDevices: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   DeviceSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(35) as any as S.Schema<ListDevicesInput>,
-  output: __S(38) as any as S.Schema<ListDevicesOutput>,
+  input: ListDevicesInput,
+  output: ListDevicesOutput,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -632,8 +722,8 @@ export const listExecutions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ExecutionSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(39) as any as S.Schema<ListExecutionsInput>,
-  output: __S(42) as any as S.Schema<ListExecutionsOutput>,
+  input: ListExecutionsInput,
+  output: ListExecutionsOutput,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -666,8 +756,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43) as any as S.Schema<ListTagsForResourceInput>,
-  output: __S(44) as any as S.Schema<ListTagsForResourceOutput>,
+  input: ListTagsForResourceInput,
+  output: ListTagsForResourceOutput,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -690,8 +780,8 @@ export const listTasks: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   TaskSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(45) as any as S.Schema<ListTasksInput>,
-  output: __S(48) as any as S.Schema<ListTasksOutput>,
+  input: ListTasksInput,
+  output: ListTasksOutput,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -723,8 +813,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49) as any as S.Schema<TagResourceInput>,
-  output: __S(3) as any as S.Schema<TagResourceResponse>,
+  input: TagResourceInput,
+  output: TagResourceResponse,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -745,8 +835,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(50) as any as S.Schema<UntagResourceInput>,
-  output: __S(3) as any as S.Schema<UntagResourceResponse>,
+  input: UntagResourceInput,
+  output: UntagResourceResponse,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -781,18 +871,18 @@ function __c0(j: number): any {
       });
     case 4:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ unlock: __S(3) }),
-        /*@__PURE__*/ S.Struct({ reboot: __S(3) }),
+        /*@__PURE__*/ S.Struct({ unlock: Unlock }),
+        /*@__PURE__*/ S.Struct({ reboot: Reboot }),
       ]);
     case 5:
       return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          targets: __S(2),
-          command: __S(4),
+          targets: TargetList,
+          command: Command,
           description: S.optional(S.String),
-          tags: S.optional(__S(5)),
+          tags: S.optional(TagMap),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/task" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateTaskInput" });
@@ -830,7 +920,7 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "PhysicalNetworkInterface" });
     case 2:
-      return S.Array(__S(9));
+      return S.Array(PhysicalNetworkInterface);
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -842,7 +932,7 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "Capacity" });
     case 4:
-      return S.Array(__S(11));
+      return S.Array(Capacity);
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -856,22 +946,22 @@ function __c1(j: number): any {
         S.Struct({
           lastReachedOutAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           lastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          tags: S.optional(__S(5)),
+          tags: S.optional(TagMap),
           managedDeviceId: S.optional(S.String),
           managedDeviceArn: S.optional(S.String),
           deviceType: S.optional(S.String),
           associatedWithJob: S.optional(S.String),
           deviceState: S.optional(S.String),
-          physicalNetworkInterfaces: S.optional(__S(10)),
-          deviceCapacities: S.optional(__S(12)),
-          software: S.optional(__S(13)),
+          physicalNetworkInterfaces: S.optional(PhysicalNetworkInterfaceList),
+          deviceCapacities: S.optional(CapacityList),
+          software: S.optional(SoftwareInformation),
         }),
       ).annotate({ identifier: "DescribeDeviceOutput" });
     case 7:
       return S.suspend(() =>
         S.Struct({
           managedDeviceId: S.String.pipe(T.HttpLabel("managedDeviceId")),
-          instanceIds: __S(2),
+          instanceIds: InstanceIdsList,
         }).pipe(
           T.all(
             T.Http({
@@ -905,18 +995,18 @@ function __c2(j: number): any {
       ).annotate({ identifier: "EbsInstanceBlockDevice" });
     case 2:
       return S.suspend(() =>
-        S.Struct({ deviceName: S.optional(S.String), ebs: S.optional(__S(17)) }),
+        S.Struct({ deviceName: S.optional(S.String), ebs: S.optional(EbsInstanceBlockDevice) }),
       ).annotate({
         identifier: "InstanceBlockDeviceMapping",
       });
     case 3:
-      return S.Array(__S(18));
+      return S.Array(InstanceBlockDeviceMapping);
     case 4:
       return S.suspend(() =>
         S.Struct({ groupId: S.optional(S.String), groupName: S.optional(S.String) }),
       ).annotate({ identifier: "SecurityGroupIdentifier" });
     case 5:
-      return S.Array(__S(20));
+      return S.Array(SecurityGroupIdentifier);
     case 6:
       return S.suspend(() =>
         S.Struct({ coreCount: S.optional(S.Number), threadsPerCore: S.optional(S.Number) }),
@@ -927,15 +1017,15 @@ function __c2(j: number): any {
           imageId: S.optional(S.String),
           amiLaunchIndex: S.optional(S.Number),
           instanceId: S.optional(S.String),
-          state: S.optional(__S(16)),
+          state: S.optional(InstanceState),
           instanceType: S.optional(S.String),
           privateIpAddress: S.optional(S.String),
           publicIpAddress: S.optional(S.String),
           createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          blockDeviceMappings: S.optional(__S(19)),
-          securityGroups: S.optional(__S(21)),
-          cpuOptions: S.optional(__S(22)),
+          blockDeviceMappings: S.optional(InstanceBlockDeviceMappingList),
+          securityGroups: S.optional(SecurityGroupIdentifierList),
+          cpuOptions: S.optional(CpuOptions),
           rootDeviceName: S.optional(S.String),
         }),
       ).annotate({ identifier: "Instance" });
@@ -946,14 +1036,14 @@ function __c3(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          instance: S.optional(__S(23)),
+          instance: S.optional(Instance),
           lastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "InstanceSummary" });
     case 1:
-      return S.Array(__S(24));
+      return S.Array(InstanceSummary);
     case 2:
-      return S.suspend(() => S.Struct({ instances: S.optional(__S(25)) })).annotate({
+      return S.suspend(() => S.Struct({ instances: S.optional(InstanceSummaryList) })).annotate({
         identifier: "DescribeDeviceEc2Output",
       });
     case 3:
@@ -994,13 +1084,13 @@ function __c3(j: number): any {
         S.Struct({
           taskId: S.optional(S.String),
           taskArn: S.optional(S.String),
-          targets: S.optional(__S(2)),
+          targets: S.optional(TargetList),
           state: S.optional(S.String),
           createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           lastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           completedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           description: S.optional(S.String),
-          tags: S.optional(__S(5)),
+          tags: S.optional(TagMap),
         }),
       ).annotate({ identifier: "DescribeTaskOutput" });
     case 7:
@@ -1030,10 +1120,10 @@ function __c4(j: number): any {
         S.Struct({ resourceType: S.String, arn: S.optional(S.String), id: S.optional(S.String) }),
       ).annotate({ identifier: "ResourceSummary" });
     case 1:
-      return S.Array(__S(32));
+      return S.Array(ResourceSummary);
     case 2:
       return S.suspend(() =>
-        S.Struct({ resources: S.optional(__S(33)), nextToken: S.optional(S.String) }),
+        S.Struct({ resources: S.optional(ResourceSummaryList), nextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListDeviceResourcesOutput",
       });
@@ -1053,14 +1143,14 @@ function __c4(j: number): any {
           managedDeviceId: S.optional(S.String),
           managedDeviceArn: S.optional(S.String),
           associatedWithJob: S.optional(S.String),
-          tags: S.optional(__S(5)),
+          tags: S.optional(TagMap),
         }),
       ).annotate({ identifier: "DeviceSummary" });
     case 5:
-      return S.Array(__S(36));
+      return S.Array(DeviceSummary);
     case 6:
       return S.suspend(() =>
-        S.Struct({ devices: S.optional(__S(37)), nextToken: S.optional(S.String) }),
+        S.Struct({ devices: S.optional(DeviceSummaryList), nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListDevicesOutput" });
     case 7:
       return S.suspend(() =>
@@ -1085,10 +1175,10 @@ function __c5(j: number): any {
         }),
       ).annotate({ identifier: "ExecutionSummary" });
     case 1:
-      return S.Array(__S(40));
+      return S.Array(ExecutionSummary);
     case 2:
       return S.suspend(() =>
-        S.Struct({ executions: S.optional(__S(41)), nextToken: S.optional(S.String) }),
+        S.Struct({ executions: S.optional(ExecutionSummaryList), nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListExecutionsOutput" });
     case 3:
       return S.suspend(() =>
@@ -1104,7 +1194,7 @@ function __c5(j: number): any {
         ),
       ).annotate({ identifier: "ListTagsForResourceInput" });
     case 4:
-      return S.suspend(() => S.Struct({ tags: S.optional(__S(5)) })).annotate({
+      return S.suspend(() => S.Struct({ tags: S.optional(TagMap) })).annotate({
         identifier: "ListTagsForResourceOutput",
       });
     case 5:
@@ -1121,22 +1211,22 @@ function __c5(j: number): any {
           taskId: S.String,
           taskArn: S.optional(S.String),
           state: S.optional(S.String),
-          tags: S.optional(__S(5)),
+          tags: S.optional(TagMap),
         }),
       ).annotate({ identifier: "TaskSummary" });
     case 7:
-      return S.Array(__S(46));
+      return S.Array(TaskSummary);
   }
 }
 function __c6(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ tasks: S.optional(__S(47)), nextToken: S.optional(S.String) }),
+        S.Struct({ tasks: S.optional(TaskSummaryList), nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListTasksOutput" });
     case 1:
       return S.suspend(() =>
-        S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")), tags: __S(5) }).pipe(
+        S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")), tags: TagMap }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/tags/{resourceArn}" }),
             svc,
@@ -1151,7 +1241,7 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
-          tagKeys: __S(2).pipe(T.HttpQuery("tagKeys")),
+          tagKeys: TagKeys.pipe(T.HttpQuery("tagKeys")),
         }).pipe(
           T.all(
             T.Http({ method: "DELETE", uri: "/tags/{resourceArn}" }),
@@ -1163,28 +1253,5 @@ function __c6(j: number): any {
           ),
         ),
       ).annotate({ identifier: "UntagResourceInput" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
   }
 }

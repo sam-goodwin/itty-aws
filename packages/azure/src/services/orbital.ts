@@ -6,13 +6,16 @@ import { UnknownAzureError } from "../errors.ts";
 import { AzureProtocol, type AzureOpError, type AzureOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { AzureOpError, AzureOpContext };
 
 /** Resource tags. */
 export type ContactProfilesCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
+const ContactProfilesCreateOrUpdateRequestTagsMap = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<ContactProfilesCreateOrUpdateRequestTagsMap>;
+
 /** The current state of the resource's creation, deletion, or modification. */
 export type ProvisioningStateInput =
   | "creating"
@@ -21,16 +24,25 @@ export type ProvisioningStateInput =
   | "canceled"
   | "updating"
   | "deleting";
+const ProvisioningStateInput = S.String;
+
 /** Auto-tracking configuration. */
 export type ContactProfilesPropertiesInputAutoTrackingConfiguration =
   | "disabled"
   | "xBand"
   | "sBand";
+const ContactProfilesPropertiesInputAutoTrackingConfiguration = S.String;
+
 /** Network configuration of customer virtual network. */
 export interface ContactProfilesPropertiesInputNetworkConfiguration {
   /** ARM resource identifier of the subnet delegated to the Microsoft.Orbital/orbitalGateways. Needs to be at least a class C subnet, and should not have any IP created in it. */
   subnetId: string;
 }
+const ContactProfilesPropertiesInputNetworkConfiguration = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<ContactProfilesPropertiesInputNetworkConfiguration>;
+
 /** Contact Profile third-party partner configuration. */
 export interface ContactProfileThirdPartyConfiguration {
   /** Name of the third-party provider. */
@@ -38,19 +50,35 @@ export interface ContactProfileThirdPartyConfiguration {
   /** Name of string referencing the configuration describing contact set-up for a particular mission. Expected values are those which have been created in collaboration with the partner network. */
   missionConfiguration: string;
 }
+const ContactProfileThirdPartyConfiguration = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<ContactProfileThirdPartyConfiguration>;
+
 /** Third-party mission configuration of the Contact Profile. Describes RF links, modem processing, and IP endpoints. */
 export type ContactProfilesPropertiesInputThirdPartyConfigurationsList =
   Array<ContactProfileThirdPartyConfiguration>;
+const ContactProfilesPropertiesInputThirdPartyConfigurationsList = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<ContactProfilesPropertiesInputThirdPartyConfigurationsList>;
+
 /** Polarization. e.g. (RHCP, LHCP). */
 export type ContactProfileLinkPolarization =
   | "RHCP"
   | "LHCP"
   | "linearVertical"
   | "linearHorizontal";
+const ContactProfileLinkPolarization = S.String;
+
 /** Direction (Uplink or Downlink). */
 export type ContactProfileLinkDirection = "Uplink" | "Downlink";
+const ContactProfileLinkDirection = S.String;
+
 /** Protocol either UDP or TCP. */
 export type EndPointProtocol = "TCP" | "UDP";
+const EndPointProtocol = S.String;
+
 /** Customer end point to store and retrieve data during a contact with the spacecraft. */
 export interface EndPoint {
   /** IP Address (IPv4). */
@@ -62,6 +90,8 @@ export interface EndPoint {
   /** Protocol either UDP or TCP. */
   protocol: EndPointProtocol | (string & {});
 }
+const EndPoint = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<EndPoint>;
+
 /** Contact Profile Link Channel. */
 export interface ContactProfileLinkChannel {
   /** Channel name. */
@@ -80,8 +110,18 @@ export interface ContactProfileLinkChannel {
   /** Currently unused. */
   decodingConfiguration?: string;
 }
+const ContactProfileLinkChannel = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<ContactProfileLinkChannel>;
+
 /** Contact Profile Link Channel. */
 export type ContactProfileLinkChannelsList = Array<ContactProfileLinkChannel>;
+const ContactProfileLinkChannelsList = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<ContactProfileLinkChannelsList>;
+
 /** Contact Profile Link. */
 export interface ContactProfileLink {
   /** Link name. */
@@ -97,8 +137,15 @@ export interface ContactProfileLink {
   /** Contact Profile Link Channel. */
   channels: ContactProfileLinkChannelsList;
 }
+const ContactProfileLink = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<ContactProfileLink>;
+
 /** Links of the Contact Profile. Describes RF links, modem processing, and IP endpoints. */
 export type ContactProfilesPropertiesInputLinksList = Array<ContactProfileLink>;
+const ContactProfilesPropertiesInputLinksList = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<ContactProfilesPropertiesInputLinksList>;
+
 /** List of Contact Profile Resource Properties. */
 export interface ContactProfilesPropertiesInput {
   /** The current state of the resource's creation, deletion, or modification. */
@@ -120,6 +167,11 @@ export interface ContactProfilesPropertiesInput {
   /** Links of the Contact Profile. Describes RF links, modem processing, and IP endpoints. */
   links: ContactProfilesPropertiesInputLinksList;
 }
+const ContactProfilesPropertiesInput = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<ContactProfilesPropertiesInput>;
+
 export interface ContactProfilesCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -134,10 +186,19 @@ export interface ContactProfilesCreateOrUpdateRequest {
   /** Properties of the contact profile resource. */
   properties: ContactProfilesPropertiesInput;
 }
+const ContactProfilesCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<ContactProfilesCreateOrUpdateRequest>;
+
 /** The type of identity that created the resource. */
 export type SystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
+const SystemDataCreatedByType = S.String;
+
 /** The type of identity that last modified the resource. */
 export type SystemDataLastModifiedByType = "User" | "Application" | "ManagedIdentity" | "Key";
+const SystemDataLastModifiedByType = S.String;
+
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface SystemData {
   /** The identity that created the resource. */
@@ -153,8 +214,13 @@ export interface SystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const SystemData = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<SystemData>;
+
 /** Resource tags. */
 export type ContactProfilesCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
+const ContactProfilesCreateOrUpdateResponseTagsMap =
+  ContactProfilesCreateOrUpdateRequestTagsMap as any as S.Schema<ContactProfilesCreateOrUpdateResponseTagsMap>;
+
 /** The current state of the resource's creation, deletion, or modification. */
 export type ProvisioningState =
   | "creating"
@@ -163,16 +229,26 @@ export type ProvisioningState =
   | "canceled"
   | "updating"
   | "deleting";
+const ProvisioningState = S.String;
+
 /** Auto-tracking configuration. */
 export type ContactProfilesPropertiesAutoTrackingConfiguration = "disabled" | "xBand" | "sBand";
+const ContactProfilesPropertiesAutoTrackingConfiguration = S.String;
+
 /** Network configuration of customer virtual network. */
 export type ContactProfilesPropertiesNetworkConfiguration =
   ContactProfilesPropertiesInputNetworkConfiguration;
 /** Third-party mission configuration of the Contact Profile. Describes RF links, modem processing, and IP endpoints. */
 export type ContactProfilesPropertiesThirdPartyConfigurationsList =
   Array<ContactProfileThirdPartyConfiguration>;
+const ContactProfilesPropertiesThirdPartyConfigurationsList =
+  ContactProfilesPropertiesInputThirdPartyConfigurationsList as any as S.Schema<ContactProfilesPropertiesThirdPartyConfigurationsList>;
+
 /** Links of the Contact Profile. Describes RF links, modem processing, and IP endpoints. */
 export type ContactProfilesPropertiesLinksList = Array<ContactProfileLink>;
+const ContactProfilesPropertiesLinksList =
+  ContactProfilesPropertiesInputLinksList as any as S.Schema<ContactProfilesPropertiesLinksList>;
+
 /** List of Contact Profile Resource Properties. */
 export interface ContactProfilesProperties {
   /** The current state of the resource's creation, deletion, or modification. */
@@ -192,6 +268,11 @@ export interface ContactProfilesProperties {
   /** Links of the Contact Profile. Describes RF links, modem processing, and IP endpoints. */
   links: ContactProfilesPropertiesLinksList;
 }
+const ContactProfilesProperties = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<ContactProfilesProperties>;
+
 export interface ContactProfilesCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -208,11 +289,18 @@ export interface ContactProfilesCreateOrUpdateResponse {
   /** Properties of the contact profile resource. */
   properties: ContactProfilesProperties;
 }
+const ContactProfilesCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<ContactProfilesCreateOrUpdateResponse>;
+
 /** Resource Reference. */
 export interface ResourceReference {
   /** Resource ID. */
   id: string;
 }
+const ResourceReference = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<ResourceReference>;
+
 /** Properties of the Contact Resource. */
 export interface ContactsPropertiesInput {
   /** The current state of the resource's creation, deletion, or modification. */
@@ -226,6 +314,11 @@ export interface ContactsPropertiesInput {
   /** The reference to the contact profile resource. */
   contactProfile: ResourceReference;
 }
+const ContactsPropertiesInput = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<ContactsPropertiesInput>;
+
 export interface CreateContactRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -237,6 +330,8 @@ export interface CreateContactRequest {
   contactName: string;
   properties: ContactsPropertiesInput;
 }
+const CreateContactRequest = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<CreateContactRequest>;
+
 /** Status of a contact. */
 export type ContactsPropertiesStatus =
   | "scheduled"
@@ -244,8 +339,15 @@ export type ContactsPropertiesStatus =
   | "succeeded"
   | "failed"
   | "providerCancelled";
+const ContactsPropertiesStatus = S.String;
+
 /** List of Source IP */
 export type ContactsPropertiesAntennaConfigurationSourceIpsList = Array<string>;
+const ContactsPropertiesAntennaConfigurationSourceIpsList = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<ContactsPropertiesAntennaConfigurationSourceIpsList>;
+
 /** The configuration associated with the allocated antenna. */
 export interface ContactsPropertiesAntennaConfiguration {
   /** The destination IP a packet can be sent to. This would for example be the TCP endpoint you would send data to. */
@@ -253,6 +355,11 @@ export interface ContactsPropertiesAntennaConfiguration {
   /** List of Source IP */
   sourceIps?: ContactsPropertiesAntennaConfigurationSourceIpsList;
 }
+const ContactsPropertiesAntennaConfiguration = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<ContactsPropertiesAntennaConfiguration>;
+
 /** Properties of the Contact Resource. */
 export interface ContactsProperties {
   /** The current state of the resource's creation, deletion, or modification. */
@@ -290,6 +397,8 @@ export interface ContactsProperties {
   /** The reference to the contact profile resource. */
   contactProfile: ResourceReference;
 }
+const ContactsProperties = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<ContactsProperties>;
+
 export interface CreateContactResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -301,6 +410,11 @@ export interface CreateContactResponse {
   systemData?: SystemData;
   properties: ContactsProperties;
 }
+const CreateContactResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<CreateContactResponse>;
+
 export interface DeleteContactRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -311,7 +425,14 @@ export interface DeleteContactRequest {
   /** Contact name. */
   contactName: string;
 }
+const DeleteContactRequest = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<DeleteContactRequest>;
+
 export interface DeleteContactResponse {}
+const DeleteContactResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<DeleteContactResponse>;
+
 export interface DeleteContactProfileRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -320,7 +441,15 @@ export interface DeleteContactProfileRequest {
   /** Contact Profile name. */
   contactProfileName: string;
 }
+const DeleteContactProfileRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<DeleteContactProfileRequest>;
+
 export interface DeleteContactProfileResponse {}
+const DeleteContactProfileResponse =
+  DeleteContactResponse as any as S.Schema<DeleteContactProfileResponse>;
+
 export interface DeleteEdgeSiteRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -329,7 +458,14 @@ export interface DeleteEdgeSiteRequest {
   /** Edge site name. */
   edgeSiteName: string;
 }
+const DeleteEdgeSiteRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<DeleteEdgeSiteRequest>;
+
 export interface DeleteEdgeSiteResponse {}
+const DeleteEdgeSiteResponse = DeleteContactResponse as any as S.Schema<DeleteEdgeSiteResponse>;
+
 export interface DeleteGroundStationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -338,7 +474,15 @@ export interface DeleteGroundStationRequest {
   /** Ground Station name. */
   groundStationName: string;
 }
+const DeleteGroundStationRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<DeleteGroundStationRequest>;
+
 export interface DeleteGroundStationResponse {}
+const DeleteGroundStationResponse =
+  DeleteContactResponse as any as S.Schema<DeleteGroundStationResponse>;
+
 export interface DeleteL2ConnectionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -347,7 +491,15 @@ export interface DeleteL2ConnectionRequest {
   /** L2 Connection name. */
   l2ConnectionName: string;
 }
+const DeleteL2ConnectionRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<DeleteL2ConnectionRequest>;
+
 export interface DeleteL2ConnectionResponse {}
+const DeleteL2ConnectionResponse =
+  DeleteContactResponse as any as S.Schema<DeleteL2ConnectionResponse>;
+
 export interface DeleteSpacecraftRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -356,14 +508,26 @@ export interface DeleteSpacecraftRequest {
   /** Spacecraft ID. */
   spacecraftName: string;
 }
+const DeleteSpacecraftRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<DeleteSpacecraftRequest>;
+
 export interface DeleteSpacecraftResponse {}
+const DeleteSpacecraftResponse = DeleteContactResponse as any as S.Schema<DeleteSpacecraftResponse>;
+
 /** Resource tags. */
 export type EdgeSitesCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
+const EdgeSitesCreateOrUpdateRequestTagsMap =
+  ContactProfilesCreateOrUpdateRequestTagsMap as any as S.Schema<EdgeSitesCreateOrUpdateRequestTagsMap>;
+
 /** Properties object for an edge site. */
 export interface EdgeSitesProperties {
   /** A reference to global communications site. */
   globalCommunicationsSite: ResourceReference;
 }
+const EdgeSitesProperties = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<EdgeSitesProperties>;
+
 export interface EdgeSitesCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -378,8 +542,16 @@ export interface EdgeSitesCreateOrUpdateRequest {
   /** The properties bag for this resource. */
   properties: EdgeSitesProperties;
 }
+const EdgeSitesCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<EdgeSitesCreateOrUpdateRequest>;
+
 /** Resource tags. */
 export type EdgeSitesCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
+const EdgeSitesCreateOrUpdateResponseTagsMap =
+  ContactProfilesCreateOrUpdateRequestTagsMap as any as S.Schema<EdgeSitesCreateOrUpdateResponseTagsMap>;
+
 export interface EdgeSitesCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -396,6 +568,11 @@ export interface EdgeSitesCreateOrUpdateResponse {
   /** The properties bag for this resource. */
   properties: EdgeSitesProperties;
 }
+const EdgeSitesCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<EdgeSitesCreateOrUpdateResponse>;
+
 export interface GetContactRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -406,6 +583,8 @@ export interface GetContactRequest {
   /** Contact name. */
   contactName: string;
 }
+const GetContactRequest = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<GetContactRequest>;
+
 export interface GetContactResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -417,6 +596,8 @@ export interface GetContactResponse {
   systemData?: SystemData;
   properties: ContactsProperties;
 }
+const GetContactResponse = CreateContactResponse as any as S.Schema<GetContactResponse>;
+
 export interface GetContactProfileRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -425,6 +606,11 @@ export interface GetContactProfileRequest {
   /** Contact Profile name. */
   contactProfileName: string;
 }
+const GetContactProfileRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<GetContactProfileRequest>;
+
 /** Resource tags. */
 export type GetContactProfileResponseTagsMap = { [key: string]: string | undefined };
 export interface GetContactProfileResponse {
@@ -443,6 +629,9 @@ export interface GetContactProfileResponse {
   /** Properties of the contact profile resource. */
   properties: ContactProfilesProperties;
 }
+const GetContactProfileResponse =
+  ContactProfilesCreateOrUpdateResponse as any as S.Schema<GetContactProfileResponse>;
+
 export interface GetEdgeSiteRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -451,8 +640,13 @@ export interface GetEdgeSiteRequest {
   /** Edge site name. */
   edgeSiteName: string;
 }
+const GetEdgeSiteRequest = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<GetEdgeSiteRequest>;
+
 /** Resource tags. */
 export type GetEdgeSiteResponseTagsMap = { [key: string]: string | undefined };
+const GetEdgeSiteResponseTagsMap =
+  ContactProfilesCreateOrUpdateRequestTagsMap as any as S.Schema<GetEdgeSiteResponseTagsMap>;
+
 export interface GetEdgeSiteResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -469,6 +663,8 @@ export interface GetEdgeSiteResponse {
   /** The properties bag for this resource. */
   properties: EdgeSitesProperties;
 }
+const GetEdgeSiteResponse = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<GetEdgeSiteResponse>;
+
 export interface GetGroundStationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -477,14 +673,31 @@ export interface GetGroundStationRequest {
   /** Ground Station name. */
   groundStationName: string;
 }
+const GetGroundStationRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<GetGroundStationRequest>;
+
 /** Resource tags. */
 export type GetGroundStationResponseTagsMap = { [key: string]: string | undefined };
+const GetGroundStationResponseTagsMap =
+  ContactProfilesCreateOrUpdateRequestTagsMap as any as S.Schema<GetGroundStationResponseTagsMap>;
+
 /** Capability of the Ground Station. */
 export type Capability = "EarthObservation" | "Communication";
+const Capability = S.String;
+
 /** Ground station capabilities. */
 export type GroundStationsPropertiesCapabilitiesList = Array<Capability>;
+const GroundStationsPropertiesCapabilitiesList = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<GroundStationsPropertiesCapabilitiesList>;
+
 /** Release Status of a ground station. */
 export type GroundStationsPropertiesReleaseMode = "Preview" | "GA";
+const GroundStationsPropertiesReleaseMode = S.String;
+
 /** List of ground station resource properties. */
 export interface GroundStationsProperties {
   /** City of ground station. */
@@ -504,6 +717,11 @@ export interface GroundStationsProperties {
   /** A reference to global communications site. */
   globalCommunicationsSite: ResourceReference;
 }
+const GroundStationsProperties = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<GroundStationsProperties>;
+
 export interface GetGroundStationResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -520,6 +738,11 @@ export interface GetGroundStationResponse {
   /** Properties of the Ground Station. */
   properties?: GroundStationsProperties;
 }
+const GetGroundStationResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<GetGroundStationResponse>;
+
 export interface GetL2ConnectionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -528,8 +751,16 @@ export interface GetL2ConnectionRequest {
   /** L2 Connection name. */
   l2ConnectionName: string;
 }
+const GetL2ConnectionRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<GetL2ConnectionRequest>;
+
 /** Resource tags. */
 export type GetL2ConnectionResponseTagsMap = { [key: string]: string | undefined };
+const GetL2ConnectionResponseTagsMap =
+  ContactProfilesCreateOrUpdateRequestTagsMap as any as S.Schema<GetL2ConnectionResponseTagsMap>;
+
 /** The current state of the resource's creation, deletion, or modification. */
 export type ProvisioningState_2 =
   | "Creating"
@@ -538,16 +769,26 @@ export type ProvisioningState_2 =
   | "Canceled"
   | "Updating"
   | "Deleting";
+const ProvisioningState_2 = S.String;
+
 /** The name of the partner router that cross-connects with the Orbital Edge Router at the edge site. */
 export interface L2ConnectionsPropertiesEdgeSitePartnerRouter {
   /** The unique name of the partner router that cross-connects with the Orbital Edge Router at the edge site. */
   name: string;
 }
+const L2ConnectionsPropertiesEdgeSitePartnerRouter = /*@__PURE__*/ __L.at(
+  __c5,
+  0,
+) as any as S.Schema<L2ConnectionsPropertiesEdgeSitePartnerRouter>;
+
 /** The name of the partner router to establish a connection to within the ground station. */
 export interface L2ConnectionsPropertiesGroundStationPartnerRouter {
   /** The unique name of the partner router that cross-connects with the Orbital Edge Router at the ground station site. */
   name: string;
 }
+const L2ConnectionsPropertiesGroundStationPartnerRouter =
+  L2ConnectionsPropertiesEdgeSitePartnerRouter as any as S.Schema<L2ConnectionsPropertiesGroundStationPartnerRouter>;
+
 /** Properties object for an L2 Connection. */
 export interface L2ConnectionsProperties {
   /** The current state of the resource's creation, deletion, or modification. */
@@ -565,6 +806,11 @@ export interface L2ConnectionsProperties {
   /** The VLAN ID for the L2 connection. */
   vlanId: number;
 }
+const L2ConnectionsProperties = /*@__PURE__*/ __L.at(
+  __c5,
+  1,
+) as any as S.Schema<L2ConnectionsProperties>;
+
 export interface GetL2ConnectionResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -581,6 +827,11 @@ export interface GetL2ConnectionResponse {
   /** The properties bag for this resource. */
   properties: L2ConnectionsProperties;
 }
+const GetL2ConnectionResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  2,
+) as any as S.Schema<GetL2ConnectionResponse>;
+
 export interface GetOperationsResultRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -589,10 +840,22 @@ export interface GetOperationsResultRequest {
   /** The ID of an ongoing async operation. */
   operationId: string;
 }
+const GetOperationsResultRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<GetOperationsResultRequest>;
+
 /** The status of operation. */
 export type Status = "Succeeded" | "Canceled" | "Failed" | "Running";
+const Status = S.String;
+
 /** A list of results when the operation returns multiple results. */
 export type OperationResultValueList = Array<unknown>;
+const OperationResultValueList = /*@__PURE__*/ __L.at(
+  __c5,
+  4,
+) as any as S.Schema<OperationResultValueList>;
+
 /** Operation result error properties. */
 export interface OperationResultErrorProperties {
   /** The code of the error. */
@@ -600,6 +863,11 @@ export interface OperationResultErrorProperties {
   /** The error message. */
   message?: string;
 }
+const OperationResultErrorProperties = /*@__PURE__*/ __L.at(
+  __c5,
+  5,
+) as any as S.Schema<OperationResultErrorProperties>;
+
 /** Operation Result Entity. */
 export interface OperationResult {
   /** ID of the resource. */
@@ -620,6 +888,8 @@ export interface OperationResult {
   properties?: unknown;
   error?: OperationResultErrorProperties;
 }
+const OperationResult = /*@__PURE__*/ __L.at(__c5, 6) as any as S.Schema<OperationResult>;
+
 export interface GetSpacecraftRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -628,12 +898,21 @@ export interface GetSpacecraftRequest {
   /** Spacecraft ID. */
   spacecraftName: string;
 }
+const GetSpacecraftRequest = /*@__PURE__*/ __L.at(__c5, 7) as any as S.Schema<GetSpacecraftRequest>;
+
 /** Resource tags. */
 export type GetSpacecraftResponseTagsMap = { [key: string]: string | undefined };
+const GetSpacecraftResponseTagsMap =
+  ContactProfilesCreateOrUpdateRequestTagsMap as any as S.Schema<GetSpacecraftResponseTagsMap>;
+
 /** Direction (Uplink or Downlink). */
 export type SpacecraftLinkDirection = "Uplink" | "Downlink";
+const SpacecraftLinkDirection = S.String;
+
 /** Polarization. e.g. (RHCP, LHCP). */
 export type SpacecraftLinkPolarization = "RHCP" | "LHCP" | "linearVertical" | "linearHorizontal";
+const SpacecraftLinkPolarization = S.String;
+
 /** Authorized groundstation. */
 export interface AuthorizedGroundstation {
   /** Groundstation name. */
@@ -641,8 +920,18 @@ export interface AuthorizedGroundstation {
   /** Date of authorization expiration. */
   expirationDate: string;
 }
+const AuthorizedGroundstation = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<AuthorizedGroundstation>;
+
 /** Authorized Ground Stations */
 export type SpacecraftLinkAuthorizationsList = Array<AuthorizedGroundstation>;
+const SpacecraftLinkAuthorizationsList = /*@__PURE__*/ __L.at(
+  __c6,
+  1,
+) as any as S.Schema<SpacecraftLinkAuthorizationsList>;
+
 /** List of authorized spacecraft links per ground station and the expiration date of the authorization. */
 export interface SpacecraftLink {
   /** Link name. */
@@ -658,8 +947,15 @@ export interface SpacecraftLink {
   /** Authorized Ground Stations */
   authorizations?: SpacecraftLinkAuthorizationsList;
 }
+const SpacecraftLink = /*@__PURE__*/ __L.at(__c6, 2) as any as S.Schema<SpacecraftLink>;
+
 /** Immutable list of Spacecraft links. */
 export type SpacecraftsPropertiesLinksList = Array<SpacecraftLink>;
+const SpacecraftsPropertiesLinksList = /*@__PURE__*/ __L.at(
+  __c6,
+  3,
+) as any as S.Schema<SpacecraftsPropertiesLinksList>;
+
 /** List of Spacecraft Resource Properties. */
 export interface SpacecraftsProperties {
   /** The current state of the resource's creation, deletion, or modification. */
@@ -675,6 +971,11 @@ export interface SpacecraftsProperties {
   /** Immutable list of Spacecraft links. */
   links: SpacecraftsPropertiesLinksList;
 }
+const SpacecraftsProperties = /*@__PURE__*/ __L.at(
+  __c6,
+  4,
+) as any as S.Schema<SpacecraftsProperties>;
+
 export interface GetSpacecraftResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -691,10 +992,21 @@ export interface GetSpacecraftResponse {
   /** Spacecraft Properties */
   properties: SpacecraftsProperties;
 }
+const GetSpacecraftResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  5,
+) as any as S.Schema<GetSpacecraftResponse>;
+
 /** Resource tags. */
 export type GroundStationsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
+const GroundStationsCreateOrUpdateRequestTagsMap =
+  ContactProfilesCreateOrUpdateRequestTagsMap as any as S.Schema<GroundStationsCreateOrUpdateRequestTagsMap>;
+
 /** Ground station capabilities. */
 export type GroundStationsPropertiesInputCapabilitiesList = Array<Capability | (string & {})>;
+const GroundStationsPropertiesInputCapabilitiesList =
+  GroundStationsPropertiesCapabilitiesList as any as S.Schema<GroundStationsPropertiesInputCapabilitiesList>;
+
 /** List of ground station resource properties. */
 export interface GroundStationsPropertiesInput {
   /** City of ground station. */
@@ -712,6 +1024,11 @@ export interface GroundStationsPropertiesInput {
   /** A reference to global communications site. */
   globalCommunicationsSite: ResourceReference;
 }
+const GroundStationsPropertiesInput = /*@__PURE__*/ __L.at(
+  __c6,
+  6,
+) as any as S.Schema<GroundStationsPropertiesInput>;
+
 export interface GroundStationsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -726,8 +1043,16 @@ export interface GroundStationsCreateOrUpdateRequest {
   /** Properties of the Ground Station. */
   properties?: GroundStationsPropertiesInput;
 }
+const GroundStationsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  7,
+) as any as S.Schema<GroundStationsCreateOrUpdateRequest>;
+
 /** Resource tags. */
 export type GroundStationsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
+const GroundStationsCreateOrUpdateResponseTagsMap =
+  ContactProfilesCreateOrUpdateRequestTagsMap as any as S.Schema<GroundStationsCreateOrUpdateResponseTagsMap>;
+
 export interface GroundStationsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -744,8 +1069,16 @@ export interface GroundStationsCreateOrUpdateResponse {
   /** Properties of the Ground Station. */
   properties?: GroundStationsProperties;
 }
+const GroundStationsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  0,
+) as any as S.Schema<GroundStationsCreateOrUpdateResponse>;
+
 /** Resource tags. */
 export type L2ConnectionsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
+const L2ConnectionsCreateOrUpdateRequestTagsMap =
+  ContactProfilesCreateOrUpdateRequestTagsMap as any as S.Schema<L2ConnectionsCreateOrUpdateRequestTagsMap>;
+
 /** The name of the partner router that cross-connects with the Orbital Edge Router at the edge site. */
 export type L2ConnectionsPropertiesInputEdgeSitePartnerRouter =
   L2ConnectionsPropertiesEdgeSitePartnerRouter;
@@ -765,6 +1098,11 @@ export interface L2ConnectionsPropertiesInput {
   /** The VLAN ID for the L2 connection. */
   vlanId: number;
 }
+const L2ConnectionsPropertiesInput = /*@__PURE__*/ __L.at(
+  __c7,
+  1,
+) as any as S.Schema<L2ConnectionsPropertiesInput>;
+
 export interface L2ConnectionsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -779,8 +1117,16 @@ export interface L2ConnectionsCreateOrUpdateRequest {
   /** The properties bag for this resource. */
   properties: L2ConnectionsPropertiesInput;
 }
+const L2ConnectionsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  2,
+) as any as S.Schema<L2ConnectionsCreateOrUpdateRequest>;
+
 /** Resource tags. */
 export type L2ConnectionsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
+const L2ConnectionsCreateOrUpdateResponseTagsMap =
+  ContactProfilesCreateOrUpdateRequestTagsMap as any as S.Schema<L2ConnectionsCreateOrUpdateResponseTagsMap>;
+
 export interface L2ConnectionsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -797,17 +1143,31 @@ export interface L2ConnectionsCreateOrUpdateResponse {
   /** The properties bag for this resource. */
   properties: L2ConnectionsProperties;
 }
+const L2ConnectionsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  3,
+) as any as S.Schema<L2ConnectionsCreateOrUpdateResponse>;
+
 export type ListAvailableGroundStationByCapabilityRequestCapability =
   | "EarthObservation"
   | "Communication";
+const ListAvailableGroundStationByCapabilityRequestCapability = S.String;
+
 export interface ListAvailableGroundStationByCapabilityRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** Ground Station Capability. */
   capability: ListAvailableGroundStationByCapabilityRequestCapability | (string & {});
 }
+const ListAvailableGroundStationByCapabilityRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  4,
+) as any as S.Schema<ListAvailableGroundStationByCapabilityRequest>;
+
 /** Release Status of a ground station. */
 export type AvailableGroundStationPropertiesReleaseMode = "Preview" | "GA";
+const AvailableGroundStationPropertiesReleaseMode = S.String;
+
 /** Properties object for Available groundstation. */
 export interface AvailableGroundStationProperties {
   /** City of ground station. */
@@ -823,6 +1183,11 @@ export interface AvailableGroundStationProperties {
   /** Release Status of a ground station. */
   releaseMode?: AvailableGroundStationPropertiesReleaseMode;
 }
+const AvailableGroundStationProperties = /*@__PURE__*/ __L.at(
+  __c7,
+  5,
+) as any as S.Schema<AvailableGroundStationProperties>;
+
 /** Ground Stations available to schedule Contacts. */
 export interface AvailableGroundStation {
   /** ID of groundStation. */
@@ -836,8 +1201,18 @@ export interface AvailableGroundStation {
   /** The properties bag for this resource. */
   properties: AvailableGroundStationProperties;
 }
+const AvailableGroundStation = /*@__PURE__*/ __L.at(
+  __c7,
+  6,
+) as any as S.Schema<AvailableGroundStation>;
+
 /** A list of ground station resources. */
 export type AvailableGroundStationListResultValueList = Array<AvailableGroundStation>;
+const AvailableGroundStationListResultValueList = /*@__PURE__*/ __L.at(
+  __c7,
+  7,
+) as any as S.Schema<AvailableGroundStationListResultValueList>;
+
 /** Response for the AvailableGroundStations API service call. */
 export interface AvailableGroundStationListResult {
   /** A list of ground station resources. */
@@ -845,14 +1220,27 @@ export interface AvailableGroundStationListResult {
   /** The URL to get the next set of results. */
   nextLink?: string;
 }
+const AvailableGroundStationListResult = /*@__PURE__*/ __L.at(
+  __c8,
+  0,
+) as any as S.Schema<AvailableGroundStationListResult>;
+
 export interface ListContactProfileBySubscriptionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** An opaque string that the resource provider uses to skip over previously-returned results. This is used when a previous list operation call returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skiptoken parameter that specifies a starting point to use for subsequent calls. */
   _skiptoken?: string;
 }
+const ListContactProfileBySubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  1,
+) as any as S.Schema<ListContactProfileBySubscriptionRequest>;
+
 /** Resource tags. */
 export type ContactProfileTagsMap = { [key: string]: string | undefined };
+const ContactProfileTagsMap =
+  ContactProfilesCreateOrUpdateRequestTagsMap as any as S.Schema<ContactProfileTagsMap>;
+
 /** Customer creates a Contact Profile Resource, which will contain all of the configurations required for scheduling a contact. */
 export interface ContactProfile {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -870,8 +1258,15 @@ export interface ContactProfile {
   /** Properties of the contact profile resource. */
   properties: ContactProfilesProperties;
 }
+const ContactProfile = /*@__PURE__*/ __L.at(__c8, 2) as any as S.Schema<ContactProfile>;
+
 /** A list of contact profile resources in a resource group. */
 export type ContactProfileListResultValueList = Array<ContactProfile>;
+const ContactProfileListResultValueList = /*@__PURE__*/ __L.at(
+  __c8,
+  3,
+) as any as S.Schema<ContactProfileListResultValueList>;
+
 /** Response for the ListContactProfiles API service call. */
 export interface ContactProfileListResult {
   /** A list of contact profile resources in a resource group. */
@@ -879,6 +1274,11 @@ export interface ContactProfileListResult {
   /** The URL to get the next set of results. */
   nextLink?: string;
 }
+const ContactProfileListResult = /*@__PURE__*/ __L.at(
+  __c8,
+  4,
+) as any as S.Schema<ContactProfileListResult>;
+
 export interface ListContactProfilesRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -887,6 +1287,11 @@ export interface ListContactProfilesRequest {
   /** An opaque string that the resource provider uses to skip over previously-returned results. This is used when a previous list operation call returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skiptoken parameter that specifies a starting point to use for subsequent calls. */
   _skiptoken?: string;
 }
+const ListContactProfilesRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  5,
+) as any as S.Schema<ListContactProfilesRequest>;
+
 export interface ListContactsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -897,6 +1302,8 @@ export interface ListContactsRequest {
   /** An opaque string that the resource provider uses to skip over previously-returned results. This is used when a previous list operation call returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skiptoken parameter that specifies a starting point to use for subsequent calls. */
   _skiptoken?: string;
 }
+const ListContactsRequest = /*@__PURE__*/ __L.at(__c8, 6) as any as S.Schema<ListContactsRequest>;
+
 /** Customer creates a contact resource for a spacecraft resource. */
 export interface Contact {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -909,8 +1316,15 @@ export interface Contact {
   systemData?: SystemData;
   properties: ContactsProperties;
 }
+const Contact = CreateContactResponse as any as S.Schema<Contact>;
+
 /** A list of contact resources in a resource group. */
 export type ContactListResultValueList = Array<Contact>;
+const ContactListResultValueList = /*@__PURE__*/ __L.at(
+  __c8,
+  7,
+) as any as S.Schema<ContactListResultValueList>;
+
 /** Response for the ListContacts API service call. */
 export interface ContactListResult {
   /** A list of contact resources in a resource group. */
@@ -918,12 +1332,19 @@ export interface ContactListResult {
   /** The URL to get the next set of results. */
   nextLink?: string;
 }
+const ContactListResult = /*@__PURE__*/ __L.at(__c9, 0) as any as S.Schema<ContactListResult>;
+
 export interface ListEdgeSiteBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** An opaque string that the resource provider uses to skip over previously-returned results. This is used when a previous list operation call returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skiptoken parameter that specifies a starting point to use for subsequent calls. */
   _skiptoken?: string;
 }
+const ListEdgeSiteBySubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  1,
+) as any as S.Schema<ListEdgeSiteBySubscriptionRequest>;
+
 /** Resource tags. */
 export type EdgeSiteTagsMap = { [key: string]: string | undefined };
 /** A customer's reference to a global communications site site. */
@@ -943,8 +1364,15 @@ export interface EdgeSite {
   /** The properties bag for this resource. */
   properties: EdgeSitesProperties;
 }
+const EdgeSite = GetEdgeSiteResponse as any as S.Schema<EdgeSite>;
+
 /** A list of edge site resources. */
 export type EdgeSiteListResultValueList = Array<EdgeSite>;
+const EdgeSiteListResultValueList = /*@__PURE__*/ __L.at(
+  __c9,
+  2,
+) as any as S.Schema<EdgeSiteListResultValueList>;
+
 /** Response for an API service call that lists Edge Sites. */
 export interface EdgeSiteListResult {
   /** A list of edge site resources. */
@@ -952,6 +1380,8 @@ export interface EdgeSiteListResult {
   /** The URL to get the next set of results. */
   nextLink?: string;
 }
+const EdgeSiteListResult = /*@__PURE__*/ __L.at(__c9, 3) as any as S.Schema<EdgeSiteListResult>;
+
 export interface ListEdgeSiteL2ConnectionsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -960,12 +1390,27 @@ export interface ListEdgeSiteL2ConnectionsRequest {
   /** Edge site name. */
   edgeSiteName: string;
 }
+const ListEdgeSiteL2ConnectionsRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  4,
+) as any as S.Schema<ListEdgeSiteL2ConnectionsRequest>;
+
 export interface ResourceIdListResultValueItem {
   /** The Azure Resource ID. */
   id?: string;
 }
+const ResourceIdListResultValueItem = /*@__PURE__*/ __L.at(
+  __c9,
+  5,
+) as any as S.Schema<ResourceIdListResultValueItem>;
+
 /** A list of Azure Resource IDs. */
 export type ResourceIdListResultValueList = Array<ResourceIdListResultValueItem>;
+const ResourceIdListResultValueList = /*@__PURE__*/ __L.at(
+  __c9,
+  6,
+) as any as S.Schema<ResourceIdListResultValueList>;
+
 /** Response for an API service call that lists the resource IDs of resources associated with another resource. */
 export interface ResourceIdListResult {
   /** A list of Azure Resource IDs. */
@@ -973,6 +1418,8 @@ export interface ResourceIdListResult {
   /** The URL to get the next set of results. */
   nextLink?: string;
 }
+const ResourceIdListResult = /*@__PURE__*/ __L.at(__c9, 7) as any as S.Schema<ResourceIdListResult>;
+
 export interface ListEdgeSitesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -981,10 +1428,20 @@ export interface ListEdgeSitesRequest {
   /** An opaque string that the resource provider uses to skip over previously-returned results. This is used when a previous list operation call returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skiptoken parameter that specifies a starting point to use for subsequent calls. */
   _skiptoken?: string;
 }
+const ListEdgeSitesRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  0,
+) as any as S.Schema<ListEdgeSitesRequest>;
+
 export interface ListGlobalCommunicationsSiteBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
+const ListGlobalCommunicationsSiteBySubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  1,
+) as any as S.Schema<ListGlobalCommunicationsSiteBySubscriptionRequest>;
+
 /** Describes a location outside of Azure. */
 export interface LocationData {
   /** The city of the location (e.g., Miami). */
@@ -998,15 +1455,26 @@ export interface LocationData {
   /** Any extra information needed to uniquely identify the location (e.g., zip code). */
   extra?: string | null;
 }
+const LocationData = /*@__PURE__*/ __L.at(__c10, 2) as any as S.Schema<LocationData>;
+
 /** The type of the global communications site. groundStations can only use sites of type GroundStation, and edgeSites can only use sites of type Edge. */
 export type GlobalCommunicationsSiteType = "Edge" | "GroundStation";
+const GlobalCommunicationsSiteType = S.String;
+
 /** One of the partner routers within a global communications site. */
 export interface PartnerRouter {
   /** The unique name of the partnerRouter. */
   name?: string;
 }
+const PartnerRouter = /*@__PURE__*/ __L.at(__c10, 3) as any as S.Schema<PartnerRouter>;
+
 /** Partner routers connected to this site. */
 export type GlobalCommunicationsSitesPropertiesPartnerRoutersList = Array<PartnerRouter>;
+const GlobalCommunicationsSitesPropertiesPartnerRoutersList = /*@__PURE__*/ __L.at(
+  __c10,
+  4,
+) as any as S.Schema<GlobalCommunicationsSitesPropertiesPartnerRoutersList>;
+
 /** Properties object for a global communications site. */
 export interface GlobalCommunicationsSitesProperties {
   /** Describes the location of the global communications site. */
@@ -1018,6 +1486,11 @@ export interface GlobalCommunicationsSitesProperties {
   /** The bandwidth per partner router cross-connection at this global communications site, measured in bits per second. */
   partnerSiteBandwidth?: number;
 }
+const GlobalCommunicationsSitesProperties = /*@__PURE__*/ __L.at(
+  __c10,
+  5,
+) as any as S.Schema<GlobalCommunicationsSitesProperties>;
+
 /** A site where the Orbital network is connected to a partner network. */
 export interface GlobalCommunicationsSite {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -1031,8 +1504,18 @@ export interface GlobalCommunicationsSite {
   /** The properties bag for this resource. */
   properties?: GlobalCommunicationsSitesProperties;
 }
+const GlobalCommunicationsSite = /*@__PURE__*/ __L.at(
+  __c10,
+  6,
+) as any as S.Schema<GlobalCommunicationsSite>;
+
 /** A list of global communications sites. */
 export type GlobalCommunicationsSiteListResultValueList = Array<GlobalCommunicationsSite>;
+const GlobalCommunicationsSiteListResultValueList = /*@__PURE__*/ __L.at(
+  __c10,
+  7,
+) as any as S.Schema<GlobalCommunicationsSiteListResultValueList>;
+
 /** Response for an API service call that lists Global Communications Sites. */
 export interface GlobalCommunicationsSiteListResult {
   /** A list of global communications sites. */
@@ -1040,12 +1523,22 @@ export interface GlobalCommunicationsSiteListResult {
   /** The URL to get the next set of results. */
   nextLink?: string;
 }
+const GlobalCommunicationsSiteListResult = /*@__PURE__*/ __L.at(
+  __c11,
+  0,
+) as any as S.Schema<GlobalCommunicationsSiteListResult>;
+
 export interface ListGroundStationBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** An opaque string that the resource provider uses to skip over previously-returned results. This is used when a previous list operation call returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skiptoken parameter that specifies a starting point to use for subsequent calls. */
   _skiptoken?: string;
 }
+const ListGroundStationBySubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  1,
+) as any as S.Schema<ListGroundStationBySubscriptionRequest>;
+
 /** Resource tags. */
 export type GroundStationTagsMap = { [key: string]: string | undefined };
 /** Ground Station contains one or more antennas. */
@@ -1065,8 +1558,15 @@ export interface GroundStation {
   /** Properties of the Ground Station. */
   properties?: GroundStationsProperties;
 }
+const GroundStation = GetGroundStationResponse as any as S.Schema<GroundStation>;
+
 /** A list of ground station resources. */
 export type GroundStationListResultValueList = Array<GroundStation>;
+const GroundStationListResultValueList = /*@__PURE__*/ __L.at(
+  __c11,
+  2,
+) as any as S.Schema<GroundStationListResultValueList>;
+
 /** Response for the ListGroundStations API service call. */
 export interface GroundStationListResult {
   /** A list of ground station resources. */
@@ -1074,6 +1574,11 @@ export interface GroundStationListResult {
   /** The URL to get the next set of results. */
   nextLink?: string;
 }
+const GroundStationListResult = /*@__PURE__*/ __L.at(
+  __c11,
+  3,
+) as any as S.Schema<GroundStationListResult>;
+
 export interface ListGroundStationL2ConnectionsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1082,6 +1587,11 @@ export interface ListGroundStationL2ConnectionsRequest {
   /** Ground Station name. */
   groundStationName: string;
 }
+const ListGroundStationL2ConnectionsRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  4,
+) as any as S.Schema<ListGroundStationL2ConnectionsRequest>;
+
 export interface ListGroundStationsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1090,12 +1600,22 @@ export interface ListGroundStationsRequest {
   /** An opaque string that the resource provider uses to skip over previously-returned results. This is used when a previous list operation call returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skiptoken parameter that specifies a starting point to use for subsequent calls. */
   _skiptoken?: string;
 }
+const ListGroundStationsRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  5,
+) as any as S.Schema<ListGroundStationsRequest>;
+
 export interface ListL2ConnectionBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** An opaque string that the resource provider uses to skip over previously-returned results. This is used when a previous list operation call returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skiptoken parameter that specifies a starting point to use for subsequent calls. */
   _skiptoken?: string;
 }
+const ListL2ConnectionBySubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  6,
+) as any as S.Schema<ListL2ConnectionBySubscriptionRequest>;
+
 /** Resource tags. */
 export type L2ConnectionTagsMap = { [key: string]: string | undefined };
 /** Connects an edge site to an orbital gateway and describes what layer 2 traffic to forward between them. */
@@ -1115,8 +1635,15 @@ export interface L2Connection {
   /** The properties bag for this resource. */
   properties: L2ConnectionsProperties;
 }
+const L2Connection = GetL2ConnectionResponse as any as S.Schema<L2Connection>;
+
 /** A list of L2 Connection resources. */
 export type L2ConnectionListResultValueList = Array<L2Connection>;
+const L2ConnectionListResultValueList = /*@__PURE__*/ __L.at(
+  __c11,
+  7,
+) as any as S.Schema<L2ConnectionListResultValueList>;
+
 /** Response for an API service call that lists L2 Connections. */
 export interface L2ConnectionListResult {
   /** A list of L2 Connection resources. */
@@ -1124,6 +1651,11 @@ export interface L2ConnectionListResult {
   /** The URL to get the next set of results. */
   nextLink?: string;
 }
+const L2ConnectionListResult = /*@__PURE__*/ __L.at(
+  __c12,
+  0,
+) as any as S.Schema<L2ConnectionListResult>;
+
 export interface ListL2ConnectionsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1132,7 +1664,17 @@ export interface ListL2ConnectionsRequest {
   /** An opaque string that the resource provider uses to skip over previously-returned results. This is used when a previous list operation call returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skiptoken parameter that specifies a starting point to use for subsequent calls. */
   _skiptoken?: string;
 }
+const ListL2ConnectionsRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  1,
+) as any as S.Schema<ListL2ConnectionsRequest>;
+
 export interface ListOperationsRequest {}
+const ListOperationsRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  2,
+) as any as S.Schema<ListOperationsRequest>;
+
 /** Localized display information for this particular operation. */
 export interface OperationDisplay {
   /** The localized friendly form of the resource provider name, e.g. "Microsoft Monitoring Insights" or "Microsoft Compute". */
@@ -1144,10 +1686,16 @@ export interface OperationDisplay {
   /** The short, localized friendly description of the operation; suitable for tool tips and detailed views. */
   description?: string;
 }
+const OperationDisplay = /*@__PURE__*/ __L.at(__c12, 3) as any as S.Schema<OperationDisplay>;
+
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
 export type OperationOrigin = "user" | "system" | "user,system";
+const OperationOrigin = S.String;
+
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
 export type OperationActionType = "Internal";
+const OperationActionType = S.String;
+
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
 export interface Operation {
   /** The name of the operation, as per Resource-Based Access Control (RBAC). Examples: "Microsoft.Compute/virtualMachines/write", "Microsoft.Compute/virtualMachines/capture/action" */
@@ -1161,14 +1709,26 @@ export interface Operation {
   /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
   actionType?: OperationActionType;
 }
+const Operation = /*@__PURE__*/ __L.at(__c12, 4) as any as S.Schema<Operation>;
+
 /** List of operations supported by the resource provider */
 export type ListOperationsResponseValueList = Array<Operation>;
+const ListOperationsResponseValueList = /*@__PURE__*/ __L.at(
+  __c12,
+  5,
+) as any as S.Schema<ListOperationsResponseValueList>;
+
 export interface ListOperationsResponse {
   /** List of operations supported by the resource provider */
   value?: ListOperationsResponseValueList;
   /** URL to get the next set of operation list results (if there are any). */
   nextLink?: string;
 }
+const ListOperationsResponse = /*@__PURE__*/ __L.at(
+  __c12,
+  6,
+) as any as S.Schema<ListOperationsResponse>;
+
 export interface ListSpacecraftAvailableContactsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1185,6 +1745,11 @@ export interface ListSpacecraftAvailableContactsRequest {
   /** End time of a contact (ISO 8601 UTC standard). */
   endTime: string;
 }
+const ListSpacecraftAvailableContactsRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  7,
+) as any as S.Schema<ListSpacecraftAvailableContactsRequest>;
+
 /** Contact Instance Properties. */
 export interface ContactInstanceProperties {
   /** Maximum elevation of the antenna during the contact in decimal degrees. */
@@ -1206,6 +1771,11 @@ export interface ContactInstanceProperties {
   /** Spacecraft elevation above the horizon at contact end. */
   endElevationDegrees?: number;
 }
+const ContactInstanceProperties = /*@__PURE__*/ __L.at(
+  __c13,
+  0,
+) as any as S.Schema<ContactInstanceProperties>;
+
 /** Customer retrieves list of Available Contacts for a spacecraft resource. Later, one of the available contact can be selected to create a contact. */
 export interface AvailableContacts {
   /** The reference to the spacecraft resource. */
@@ -1215,8 +1785,15 @@ export interface AvailableContacts {
   /** Properties of Contact resource. */
   properties?: ContactInstanceProperties;
 }
+const AvailableContacts = /*@__PURE__*/ __L.at(__c13, 1) as any as S.Schema<AvailableContacts>;
+
 /** A list of available contacts. */
 export type AvailableContactsListResultValueList = Array<AvailableContacts>;
+const AvailableContactsListResultValueList = /*@__PURE__*/ __L.at(
+  __c13,
+  2,
+) as any as S.Schema<AvailableContactsListResultValueList>;
+
 /** Response for the ListAvailableContacts API service call. */
 export interface AvailableContactsListResult {
   /** A list of available contacts. */
@@ -1224,12 +1801,22 @@ export interface AvailableContactsListResult {
   /** The URL to get the next set of results. */
   nextLink?: string;
 }
+const AvailableContactsListResult = /*@__PURE__*/ __L.at(
+  __c13,
+  3,
+) as any as S.Schema<AvailableContactsListResult>;
+
 export interface ListSpacecraftBySubscriptionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** An opaque string that the resource provider uses to skip over previously-returned results. This is used when a previous list operation call returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skiptoken parameter that specifies a starting point to use for subsequent calls. */
   _skiptoken?: string;
 }
+const ListSpacecraftBySubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  4,
+) as any as S.Schema<ListSpacecraftBySubscriptionRequest>;
+
 /** Resource tags. */
 export type SpacecraftTagsMap = { [key: string]: string | undefined };
 /** Customer creates a spacecraft resource to schedule a contact. */
@@ -1249,8 +1836,15 @@ export interface Spacecraft {
   /** Spacecraft Properties */
   properties: SpacecraftsProperties;
 }
+const Spacecraft = GetSpacecraftResponse as any as S.Schema<Spacecraft>;
+
 /** A list of spacecraft resources in a resource group. */
 export type SpacecraftListResultValueList = Array<Spacecraft>;
+const SpacecraftListResultValueList = /*@__PURE__*/ __L.at(
+  __c13,
+  5,
+) as any as S.Schema<SpacecraftListResultValueList>;
+
 /** Response for the ListSpacecrafts API service call. */
 export interface SpacecraftListResult {
   /** A list of spacecraft resources in a resource group. */
@@ -1258,6 +1852,11 @@ export interface SpacecraftListResult {
   /** The URL to get the next set of results. */
   nextLink?: string;
 }
+const SpacecraftListResult = /*@__PURE__*/ __L.at(
+  __c13,
+  6,
+) as any as S.Schema<SpacecraftListResult>;
+
 export interface ListSpacecraftsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1266,16 +1865,28 @@ export interface ListSpacecraftsRequest {
   /** An opaque string that the resource provider uses to skip over previously-returned results. This is used when a previous list operation call returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skiptoken parameter that specifies a starting point to use for subsequent calls. */
   _skiptoken?: string;
 }
+const ListSpacecraftsRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  7,
+) as any as S.Schema<ListSpacecraftsRequest>;
+
 /** Resource tags. */
 export type SpacecraftsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
+const SpacecraftsCreateOrUpdateRequestTagsMap =
+  ContactProfilesCreateOrUpdateRequestTagsMap as any as S.Schema<SpacecraftsCreateOrUpdateRequestTagsMap>;
+
 /** Direction (Uplink or Downlink). */
 export type SpacecraftLinkInputDirection = "Uplink" | "Downlink";
+const SpacecraftLinkInputDirection = S.String;
+
 /** Polarization. e.g. (RHCP, LHCP). */
 export type SpacecraftLinkInputPolarization =
   | "RHCP"
   | "LHCP"
   | "linearVertical"
   | "linearHorizontal";
+const SpacecraftLinkInputPolarization = S.String;
+
 /** List of authorized spacecraft links per ground station and the expiration date of the authorization. */
 export interface SpacecraftLinkInput {
   /** Link name. */
@@ -1289,8 +1900,15 @@ export interface SpacecraftLinkInput {
   /** Polarization. e.g. (RHCP, LHCP). */
   polarization: SpacecraftLinkInputPolarization | (string & {});
 }
+const SpacecraftLinkInput = /*@__PURE__*/ __L.at(__c14, 0) as any as S.Schema<SpacecraftLinkInput>;
+
 /** Immutable list of Spacecraft links. */
 export type SpacecraftsPropertiesInputLinksList = Array<SpacecraftLinkInput>;
+const SpacecraftsPropertiesInputLinksList = /*@__PURE__*/ __L.at(
+  __c14,
+  1,
+) as any as S.Schema<SpacecraftsPropertiesInputLinksList>;
+
 /** List of Spacecraft Resource Properties. */
 export interface SpacecraftsPropertiesInput {
   /** The current state of the resource's creation, deletion, or modification. */
@@ -1306,6 +1924,11 @@ export interface SpacecraftsPropertiesInput {
   /** Immutable list of Spacecraft links. */
   links: SpacecraftsPropertiesInputLinksList;
 }
+const SpacecraftsPropertiesInput = /*@__PURE__*/ __L.at(
+  __c14,
+  2,
+) as any as S.Schema<SpacecraftsPropertiesInput>;
+
 export interface SpacecraftsCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1320,8 +1943,16 @@ export interface SpacecraftsCreateOrUpdateRequest {
   /** Spacecraft Properties */
   properties: SpacecraftsPropertiesInput;
 }
+const SpacecraftsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  3,
+) as any as S.Schema<SpacecraftsCreateOrUpdateRequest>;
+
 /** Resource tags. */
 export type SpacecraftsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
+const SpacecraftsCreateOrUpdateResponseTagsMap =
+  ContactProfilesCreateOrUpdateRequestTagsMap as any as S.Schema<SpacecraftsCreateOrUpdateResponseTagsMap>;
+
 export interface SpacecraftsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -1338,8 +1969,16 @@ export interface SpacecraftsCreateOrUpdateResponse {
   /** Spacecraft Properties */
   properties: SpacecraftsProperties;
 }
+const SpacecraftsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c14,
+  4,
+) as any as S.Schema<SpacecraftsCreateOrUpdateResponse>;
+
 /** Resource tags. */
 export type UpdateContactProfileTagsRequestTagsMap = { [key: string]: string | undefined };
+const UpdateContactProfileTagsRequestTagsMap =
+  ContactProfilesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateContactProfileTagsRequestTagsMap>;
+
 export interface UpdateContactProfileTagsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1350,6 +1989,11 @@ export interface UpdateContactProfileTagsRequest {
   /** Resource tags. */
   tags?: UpdateContactProfileTagsRequestTagsMap;
 }
+const UpdateContactProfileTagsRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  5,
+) as any as S.Schema<UpdateContactProfileTagsRequest>;
+
 /** Resource tags. */
 export type UpdateContactProfileTagsResponseTagsMap = { [key: string]: string | undefined };
 export interface UpdateContactProfileTagsResponse {
@@ -1368,8 +2012,14 @@ export interface UpdateContactProfileTagsResponse {
   /** Properties of the contact profile resource. */
   properties: ContactProfilesProperties;
 }
+const UpdateContactProfileTagsResponse =
+  ContactProfilesCreateOrUpdateResponse as any as S.Schema<UpdateContactProfileTagsResponse>;
+
 /** Resource tags. */
 export type UpdateEdgeSiteTagsRequestTagsMap = { [key: string]: string | undefined };
+const UpdateEdgeSiteTagsRequestTagsMap =
+  ContactProfilesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateEdgeSiteTagsRequestTagsMap>;
+
 export interface UpdateEdgeSiteTagsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1380,6 +2030,11 @@ export interface UpdateEdgeSiteTagsRequest {
   /** Resource tags. */
   tags?: UpdateEdgeSiteTagsRequestTagsMap;
 }
+const UpdateEdgeSiteTagsRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  6,
+) as any as S.Schema<UpdateEdgeSiteTagsRequest>;
+
 /** Resource tags. */
 export type UpdateEdgeSiteTagsResponseTagsMap = { [key: string]: string | undefined };
 export interface UpdateEdgeSiteTagsResponse {
@@ -1398,8 +2053,14 @@ export interface UpdateEdgeSiteTagsResponse {
   /** The properties bag for this resource. */
   properties: EdgeSitesProperties;
 }
+const UpdateEdgeSiteTagsResponse =
+  EdgeSitesCreateOrUpdateResponse as any as S.Schema<UpdateEdgeSiteTagsResponse>;
+
 /** Resource tags. */
 export type UpdateGroundStationTagsRequestTagsMap = { [key: string]: string | undefined };
+const UpdateGroundStationTagsRequestTagsMap =
+  ContactProfilesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateGroundStationTagsRequestTagsMap>;
+
 export interface UpdateGroundStationTagsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1410,6 +2071,11 @@ export interface UpdateGroundStationTagsRequest {
   /** Resource tags. */
   tags?: UpdateGroundStationTagsRequestTagsMap;
 }
+const UpdateGroundStationTagsRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  7,
+) as any as S.Schema<UpdateGroundStationTagsRequest>;
+
 /** Resource tags. */
 export type UpdateGroundStationTagsResponseTagsMap = { [key: string]: string | undefined };
 export interface UpdateGroundStationTagsResponse {
@@ -1428,8 +2094,14 @@ export interface UpdateGroundStationTagsResponse {
   /** Properties of the Ground Station. */
   properties?: GroundStationsProperties;
 }
+const UpdateGroundStationTagsResponse =
+  GroundStationsCreateOrUpdateResponse as any as S.Schema<UpdateGroundStationTagsResponse>;
+
 /** Resource tags. */
 export type UpdateL2ConnectionTagsRequestTagsMap = { [key: string]: string | undefined };
+const UpdateL2ConnectionTagsRequestTagsMap =
+  ContactProfilesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateL2ConnectionTagsRequestTagsMap>;
+
 export interface UpdateL2ConnectionTagsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1440,6 +2112,11 @@ export interface UpdateL2ConnectionTagsRequest {
   /** Resource tags. */
   tags?: UpdateL2ConnectionTagsRequestTagsMap;
 }
+const UpdateL2ConnectionTagsRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  0,
+) as any as S.Schema<UpdateL2ConnectionTagsRequest>;
+
 /** Resource tags. */
 export type UpdateL2ConnectionTagsResponseTagsMap = { [key: string]: string | undefined };
 export interface UpdateL2ConnectionTagsResponse {
@@ -1458,8 +2135,14 @@ export interface UpdateL2ConnectionTagsResponse {
   /** The properties bag for this resource. */
   properties: L2ConnectionsProperties;
 }
+const UpdateL2ConnectionTagsResponse =
+  L2ConnectionsCreateOrUpdateResponse as any as S.Schema<UpdateL2ConnectionTagsResponse>;
+
 /** Resource tags. */
 export type UpdateSpacecraftTagsRequestTagsMap = { [key: string]: string | undefined };
+const UpdateSpacecraftTagsRequestTagsMap =
+  ContactProfilesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateSpacecraftTagsRequestTagsMap>;
+
 export interface UpdateSpacecraftTagsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1470,6 +2153,11 @@ export interface UpdateSpacecraftTagsRequest {
   /** Resource tags. */
   tags?: UpdateSpacecraftTagsRequestTagsMap;
 }
+const UpdateSpacecraftTagsRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  1,
+) as any as S.Schema<UpdateSpacecraftTagsRequest>;
+
 /** Resource tags. */
 export type UpdateSpacecraftTagsResponseTagsMap = { [key: string]: string | undefined };
 export interface UpdateSpacecraftTagsResponse {
@@ -1488,6 +2176,9 @@ export interface UpdateSpacecraftTagsResponse {
   /** Spacecraft Properties */
   properties: SpacecraftsProperties;
 }
+const UpdateSpacecraftTagsResponse =
+  SpacecraftsCreateOrUpdateResponse as any as S.Schema<UpdateSpacecraftTagsResponse>;
+
 export type ContactProfilesCreateOrUpdateError = AzureOpError;
 /** Creates or updates a contact profile. */
 export const ContactProfilesCreateOrUpdate: API.OperationMethod<
@@ -1496,8 +2187,8 @@ export const ContactProfilesCreateOrUpdate: API.OperationMethod<
   ContactProfilesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10) as any as S.Schema<ContactProfilesCreateOrUpdateRequest>,
-  output: __S(13) as any as S.Schema<ContactProfilesCreateOrUpdateResponse>,
+  input: ContactProfilesCreateOrUpdateRequest,
+  output: ContactProfilesCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1511,8 +2202,8 @@ export const CreateContact: API.OperationMethod<
   CreateContactError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16) as any as S.Schema<CreateContactRequest>,
-  output: __S(20) as any as S.Schema<CreateContactResponse>,
+  input: CreateContactRequest,
+  output: CreateContactResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1526,8 +2217,8 @@ export const DeleteContact: API.OperationMethod<
   DeleteContactError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21) as any as S.Schema<DeleteContactRequest>,
-  output: __S(22) as any as S.Schema<DeleteContactResponse>,
+  input: DeleteContactRequest,
+  output: DeleteContactResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1541,8 +2232,8 @@ export const DeleteContactProfile: API.OperationMethod<
   DeleteContactProfileError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23) as any as S.Schema<DeleteContactProfileRequest>,
-  output: __S(22) as any as S.Schema<DeleteContactProfileResponse>,
+  input: DeleteContactProfileRequest,
+  output: DeleteContactProfileResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1556,8 +2247,8 @@ export const DeleteEdgeSite: API.OperationMethod<
   DeleteEdgeSiteError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24) as any as S.Schema<DeleteEdgeSiteRequest>,
-  output: __S(22) as any as S.Schema<DeleteEdgeSiteResponse>,
+  input: DeleteEdgeSiteRequest,
+  output: DeleteEdgeSiteResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1571,8 +2262,8 @@ export const DeleteGroundStation: API.OperationMethod<
   DeleteGroundStationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25) as any as S.Schema<DeleteGroundStationRequest>,
-  output: __S(22) as any as S.Schema<DeleteGroundStationResponse>,
+  input: DeleteGroundStationRequest,
+  output: DeleteGroundStationResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1586,8 +2277,8 @@ export const DeleteL2Connection: API.OperationMethod<
   DeleteL2ConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26) as any as S.Schema<DeleteL2ConnectionRequest>,
-  output: __S(22) as any as S.Schema<DeleteL2ConnectionResponse>,
+  input: DeleteL2ConnectionRequest,
+  output: DeleteL2ConnectionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1601,8 +2292,8 @@ export const DeleteSpacecraft: API.OperationMethod<
   DeleteSpacecraftError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27) as any as S.Schema<DeleteSpacecraftRequest>,
-  output: __S(22) as any as S.Schema<DeleteSpacecraftResponse>,
+  input: DeleteSpacecraftRequest,
+  output: DeleteSpacecraftResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1616,8 +2307,8 @@ export const EdgeSitesCreateOrUpdate: API.OperationMethod<
   EdgeSitesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29) as any as S.Schema<EdgeSitesCreateOrUpdateRequest>,
-  output: __S(30) as any as S.Schema<EdgeSitesCreateOrUpdateResponse>,
+  input: EdgeSitesCreateOrUpdateRequest,
+  output: EdgeSitesCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1631,8 +2322,8 @@ export const GetContact: API.OperationMethod<
   GetContactError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31) as any as S.Schema<GetContactRequest>,
-  output: __S(20) as any as S.Schema<GetContactResponse>,
+  input: GetContactRequest,
+  output: GetContactResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1646,8 +2337,8 @@ export const GetContactProfile: API.OperationMethod<
   GetContactProfileError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32) as any as S.Schema<GetContactProfileRequest>,
-  output: __S(13) as any as S.Schema<GetContactProfileResponse>,
+  input: GetContactProfileRequest,
+  output: GetContactProfileResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1661,8 +2352,8 @@ export const GetEdgeSite: API.OperationMethod<
   GetEdgeSiteError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33) as any as S.Schema<GetEdgeSiteRequest>,
-  output: __S(34) as any as S.Schema<GetEdgeSiteResponse>,
+  input: GetEdgeSiteRequest,
+  output: GetEdgeSiteResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1676,8 +2367,8 @@ export const GetGroundStation: API.OperationMethod<
   GetGroundStationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35) as any as S.Schema<GetGroundStationRequest>,
-  output: __S(38) as any as S.Schema<GetGroundStationResponse>,
+  input: GetGroundStationRequest,
+  output: GetGroundStationResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1691,8 +2382,8 @@ export const GetL2Connection: API.OperationMethod<
   GetL2ConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39) as any as S.Schema<GetL2ConnectionRequest>,
-  output: __S(42) as any as S.Schema<GetL2ConnectionResponse>,
+  input: GetL2ConnectionRequest,
+  output: GetL2ConnectionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1706,8 +2397,8 @@ export const GetOperationsResult: API.OperationMethod<
   GetOperationsResultError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43) as any as S.Schema<GetOperationsResultRequest>,
-  output: __S(46) as any as S.Schema<OperationResult>,
+  input: GetOperationsResultRequest,
+  output: OperationResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1721,8 +2412,8 @@ export const GetSpacecraft: API.OperationMethod<
   GetSpacecraftError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47) as any as S.Schema<GetSpacecraftRequest>,
-  output: __S(53) as any as S.Schema<GetSpacecraftResponse>,
+  input: GetSpacecraftRequest,
+  output: GetSpacecraftResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1736,8 +2427,8 @@ export const GroundStationsCreateOrUpdate: API.OperationMethod<
   GroundStationsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(55) as any as S.Schema<GroundStationsCreateOrUpdateRequest>,
-  output: __S(56) as any as S.Schema<GroundStationsCreateOrUpdateResponse>,
+  input: GroundStationsCreateOrUpdateRequest,
+  output: GroundStationsCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1751,8 +2442,8 @@ export const L2ConnectionsCreateOrUpdate: API.OperationMethod<
   L2ConnectionsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(58) as any as S.Schema<L2ConnectionsCreateOrUpdateRequest>,
-  output: __S(59) as any as S.Schema<L2ConnectionsCreateOrUpdateResponse>,
+  input: L2ConnectionsCreateOrUpdateRequest,
+  output: L2ConnectionsCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1766,8 +2457,8 @@ export const ListAvailableGroundStationByCapability: API.OperationMethod<
   ListAvailableGroundStationByCapabilityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60) as any as S.Schema<ListAvailableGroundStationByCapabilityRequest>,
-  output: __S(64) as any as S.Schema<AvailableGroundStationListResult>,
+  input: ListAvailableGroundStationByCapabilityRequest,
+  output: AvailableGroundStationListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1781,8 +2472,8 @@ export const ListContactProfileBySubscription: API.OperationMethod<
   ListContactProfileBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65) as any as S.Schema<ListContactProfileBySubscriptionRequest>,
-  output: __S(68) as any as S.Schema<ContactProfileListResult>,
+  input: ListContactProfileBySubscriptionRequest,
+  output: ContactProfileListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1796,8 +2487,8 @@ export const ListContactProfiles: API.OperationMethod<
   ListContactProfilesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(69) as any as S.Schema<ListContactProfilesRequest>,
-  output: __S(68) as any as S.Schema<ContactProfileListResult>,
+  input: ListContactProfilesRequest,
+  output: ContactProfileListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1811,8 +2502,8 @@ export const ListContacts: API.OperationMethod<
   ListContactsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(70) as any as S.Schema<ListContactsRequest>,
-  output: __S(72) as any as S.Schema<ContactListResult>,
+  input: ListContactsRequest,
+  output: ContactListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1826,8 +2517,8 @@ export const ListEdgeSiteBySubscription: API.OperationMethod<
   ListEdgeSiteBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(73) as any as S.Schema<ListEdgeSiteBySubscriptionRequest>,
-  output: __S(75) as any as S.Schema<EdgeSiteListResult>,
+  input: ListEdgeSiteBySubscriptionRequest,
+  output: EdgeSiteListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1841,8 +2532,8 @@ export const ListEdgeSiteL2Connections: API.OperationMethod<
   ListEdgeSiteL2ConnectionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(76) as any as S.Schema<ListEdgeSiteL2ConnectionsRequest>,
-  output: __S(79) as any as S.Schema<ResourceIdListResult>,
+  input: ListEdgeSiteL2ConnectionsRequest,
+  output: ResourceIdListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1856,8 +2547,8 @@ export const ListEdgeSites: API.OperationMethod<
   ListEdgeSitesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(80) as any as S.Schema<ListEdgeSitesRequest>,
-  output: __S(75) as any as S.Schema<EdgeSiteListResult>,
+  input: ListEdgeSitesRequest,
+  output: EdgeSiteListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1871,8 +2562,8 @@ export const ListGlobalCommunicationsSiteBySubscription: API.OperationMethod<
   ListGlobalCommunicationsSiteBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(81) as any as S.Schema<ListGlobalCommunicationsSiteBySubscriptionRequest>,
-  output: __S(88) as any as S.Schema<GlobalCommunicationsSiteListResult>,
+  input: ListGlobalCommunicationsSiteBySubscriptionRequest,
+  output: GlobalCommunicationsSiteListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1886,8 +2577,8 @@ export const ListGroundStationBySubscription: API.OperationMethod<
   ListGroundStationBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(89) as any as S.Schema<ListGroundStationBySubscriptionRequest>,
-  output: __S(91) as any as S.Schema<GroundStationListResult>,
+  input: ListGroundStationBySubscriptionRequest,
+  output: GroundStationListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1901,8 +2592,8 @@ export const ListGroundStationL2Connections: API.OperationMethod<
   ListGroundStationL2ConnectionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(92) as any as S.Schema<ListGroundStationL2ConnectionsRequest>,
-  output: __S(79) as any as S.Schema<ResourceIdListResult>,
+  input: ListGroundStationL2ConnectionsRequest,
+  output: ResourceIdListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1916,8 +2607,8 @@ export const ListGroundStations: API.OperationMethod<
   ListGroundStationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(93) as any as S.Schema<ListGroundStationsRequest>,
-  output: __S(91) as any as S.Schema<GroundStationListResult>,
+  input: ListGroundStationsRequest,
+  output: GroundStationListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1931,8 +2622,8 @@ export const ListL2ConnectionBySubscription: API.OperationMethod<
   ListL2ConnectionBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(94) as any as S.Schema<ListL2ConnectionBySubscriptionRequest>,
-  output: __S(96) as any as S.Schema<L2ConnectionListResult>,
+  input: ListL2ConnectionBySubscriptionRequest,
+  output: L2ConnectionListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1946,8 +2637,8 @@ export const ListL2Connections: API.OperationMethod<
   ListL2ConnectionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(97) as any as S.Schema<ListL2ConnectionsRequest>,
-  output: __S(96) as any as S.Schema<L2ConnectionListResult>,
+  input: ListL2ConnectionsRequest,
+  output: L2ConnectionListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1961,8 +2652,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(98) as any as S.Schema<ListOperationsRequest>,
-  output: __S(102) as any as S.Schema<ListOperationsResponse>,
+  input: ListOperationsRequest,
+  output: ListOperationsResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1976,8 +2667,8 @@ export const ListSpacecraftAvailableContacts: API.OperationMethod<
   ListSpacecraftAvailableContactsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(103) as any as S.Schema<ListSpacecraftAvailableContactsRequest>,
-  output: __S(107) as any as S.Schema<AvailableContactsListResult>,
+  input: ListSpacecraftAvailableContactsRequest,
+  output: AvailableContactsListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1991,8 +2682,8 @@ export const ListSpacecraftBySubscription: API.OperationMethod<
   ListSpacecraftBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(108) as any as S.Schema<ListSpacecraftBySubscriptionRequest>,
-  output: __S(110) as any as S.Schema<SpacecraftListResult>,
+  input: ListSpacecraftBySubscriptionRequest,
+  output: SpacecraftListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2006,8 +2697,8 @@ export const ListSpacecrafts: API.OperationMethod<
   ListSpacecraftsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(111) as any as S.Schema<ListSpacecraftsRequest>,
-  output: __S(110) as any as S.Schema<SpacecraftListResult>,
+  input: ListSpacecraftsRequest,
+  output: SpacecraftListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2021,8 +2712,8 @@ export const SpacecraftsCreateOrUpdate: API.OperationMethod<
   SpacecraftsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(115) as any as S.Schema<SpacecraftsCreateOrUpdateRequest>,
-  output: __S(116) as any as S.Schema<SpacecraftsCreateOrUpdateResponse>,
+  input: SpacecraftsCreateOrUpdateRequest,
+  output: SpacecraftsCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2036,8 +2727,8 @@ export const UpdateContactProfileTags: API.OperationMethod<
   UpdateContactProfileTagsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(117) as any as S.Schema<UpdateContactProfileTagsRequest>,
-  output: __S(13) as any as S.Schema<UpdateContactProfileTagsResponse>,
+  input: UpdateContactProfileTagsRequest,
+  output: UpdateContactProfileTagsResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2051,8 +2742,8 @@ export const UpdateEdgeSiteTags: API.OperationMethod<
   UpdateEdgeSiteTagsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(118) as any as S.Schema<UpdateEdgeSiteTagsRequest>,
-  output: __S(30) as any as S.Schema<UpdateEdgeSiteTagsResponse>,
+  input: UpdateEdgeSiteTagsRequest,
+  output: UpdateEdgeSiteTagsResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2066,8 +2757,8 @@ export const UpdateGroundStationTags: API.OperationMethod<
   UpdateGroundStationTagsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(119) as any as S.Schema<UpdateGroundStationTagsRequest>,
-  output: __S(56) as any as S.Schema<UpdateGroundStationTagsResponse>,
+  input: UpdateGroundStationTagsRequest,
+  output: UpdateGroundStationTagsResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2081,8 +2772,8 @@ export const UpdateL2ConnectionTags: API.OperationMethod<
   UpdateL2ConnectionTagsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(120) as any as S.Schema<UpdateL2ConnectionTagsRequest>,
-  output: __S(59) as any as S.Schema<UpdateL2ConnectionTagsResponse>,
+  input: UpdateL2ConnectionTagsRequest,
+  output: UpdateL2ConnectionTagsResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2096,8 +2787,8 @@ export const UpdateSpacecraftTags: API.OperationMethod<
   UpdateSpacecraftTagsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(121) as any as S.Schema<UpdateSpacecraftTagsRequest>,
-  output: __S(116) as any as S.Schema<UpdateSpacecraftTagsResponse>,
+  input: UpdateSpacecraftTagsRequest,
+  output: UpdateSpacecraftTagsResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2126,14 +2817,14 @@ function __c0(j: number): any {
         identifier: "ContactProfileThirdPartyConfiguration",
       });
     case 3:
-      return S.Array(__S(2));
+      return S.Array(ContactProfileThirdPartyConfiguration);
     case 4:
       return S.suspend(() =>
         S.Struct({
           ipAddress: S.String,
           endPointName: S.String,
           port: S.String,
-          protocol: S.String,
+          protocol: EndPointProtocol,
         }),
       ).annotate({ identifier: "EndPoint" });
     case 5:
@@ -2142,7 +2833,7 @@ function __c0(j: number): any {
           name: S.String,
           centerFrequencyMHz: S.Number,
           bandwidthMHz: S.Number,
-          endPoint: __S(4),
+          endPoint: EndPoint,
           modulationConfiguration: S.optional(S.String),
           demodulationConfiguration: S.optional(S.String),
           encodingConfiguration: S.optional(S.String),
@@ -2152,16 +2843,16 @@ function __c0(j: number): any {
         identifier: "ContactProfileLinkChannel",
       });
     case 6:
-      return S.Array(__S(5));
+      return S.Array(ContactProfileLinkChannel);
     case 7:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          polarization: S.String,
-          direction: S.String,
+          polarization: ContactProfileLinkPolarization,
+          direction: ContactProfileLinkDirection,
           gainOverTemperature: S.optional(S.Number),
           eirpdBW: S.optional(S.Number),
-          channels: __S(6),
+          channels: ContactProfileLinkChannelsList,
         }),
       ).annotate({ identifier: "ContactProfileLink" });
   }
@@ -2169,18 +2860,22 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(7));
+      return S.Array(ContactProfileLink);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          provisioningState: S.optional(S.String),
+          provisioningState: S.optional(ProvisioningStateInput),
           minimumViableContactDuration: S.optional(S.String),
           minimumElevationDegrees: S.optional(S.Number),
-          autoTrackingConfiguration: S.optional(S.String),
+          autoTrackingConfiguration: S.optional(
+            ContactProfilesPropertiesInputAutoTrackingConfiguration,
+          ),
           eventHubUri: S.optional(S.String),
-          networkConfiguration: __S(1),
-          thirdPartyConfigurations: S.optional(__S(3)),
-          links: __S(8),
+          networkConfiguration: ContactProfilesPropertiesInputNetworkConfiguration,
+          thirdPartyConfigurations: S.optional(
+            ContactProfilesPropertiesInputThirdPartyConfigurationsList,
+          ),
+          links: ContactProfilesPropertiesInputLinksList,
         }),
       ).annotate({
         identifier: "ContactProfilesPropertiesInput",
@@ -2191,9 +2886,9 @@ function __c1(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           contactProfileName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(0)),
+          tags: S.optional(ContactProfilesCreateOrUpdateRequestTagsMap),
           location: S.String,
-          properties: __S(9),
+          properties: ContactProfilesPropertiesInput,
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2209,24 +2904,26 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
-          createdByType: S.optional(S.String),
+          createdByType: S.optional(SystemDataCreatedByType),
           createdAt: S.optional(S.String),
           lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(S.String),
+          lastModifiedByType: S.optional(SystemDataLastModifiedByType),
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "SystemData" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          provisioningState: S.optional(S.String),
+          provisioningState: S.optional(ProvisioningState),
           minimumViableContactDuration: S.optional(S.String),
           minimumElevationDegrees: S.optional(S.Number),
-          autoTrackingConfiguration: S.optional(S.String),
+          autoTrackingConfiguration: S.optional(ContactProfilesPropertiesAutoTrackingConfiguration),
           eventHubUri: S.optional(S.String),
-          networkConfiguration: __S(1),
-          thirdPartyConfigurations: S.optional(__S(3)),
-          links: __S(8),
+          networkConfiguration: ContactProfilesPropertiesInputNetworkConfiguration,
+          thirdPartyConfigurations: S.optional(
+            ContactProfilesPropertiesThirdPartyConfigurationsList,
+          ),
+          links: ContactProfilesPropertiesLinksList,
         }),
       ).annotate({
         identifier: "ContactProfilesProperties",
@@ -2237,10 +2934,10 @@ function __c1(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(11)),
-          tags: S.optional(__S(0)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(ContactProfilesCreateOrUpdateResponseTagsMap),
           location: S.String,
-          properties: __S(12),
+          properties: ContactProfilesProperties,
         }),
       ).annotate({
         identifier: "ContactProfilesCreateOrUpdateResponse",
@@ -2254,11 +2951,11 @@ function __c1(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          provisioningState: S.optional(S.String),
+          provisioningState: S.optional(ProvisioningStateInput),
           reservationStartTime: S.String,
           reservationEndTime: S.String,
           groundStationName: S.String,
-          contactProfile: __S(14),
+          contactProfile: ResourceReference,
         }),
       ).annotate({ identifier: "ContactsPropertiesInput" });
   }
@@ -2272,7 +2969,7 @@ function __c2(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           spacecraftName: S.String.pipe(T.Label()),
           contactName: S.String.pipe(T.Label()),
-          properties: __S(15),
+          properties: ContactsPropertiesInput,
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2288,7 +2985,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           destinationIp: S.optional(S.String),
-          sourceIps: S.optional(__S(17)),
+          sourceIps: S.optional(ContactsPropertiesAntennaConfigurationSourceIpsList),
         }),
       ).annotate({
         identifier: "ContactsPropertiesAntennaConfiguration",
@@ -2296,8 +2993,8 @@ function __c2(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          provisioningState: S.optional(S.String),
-          status: S.optional(S.String),
+          provisioningState: S.optional(ProvisioningState),
+          status: S.optional(ContactsPropertiesStatus),
           reservationStartTime: S.String,
           reservationEndTime: S.String,
           rxStartTime: S.optional(S.String),
@@ -2311,8 +3008,8 @@ function __c2(j: number): any {
           groundStationName: S.String,
           startElevationDegrees: S.optional(S.Number),
           endElevationDegrees: S.optional(S.Number),
-          antennaConfiguration: S.optional(__S(18)),
-          contactProfile: __S(14),
+          antennaConfiguration: S.optional(ContactsPropertiesAntennaConfiguration),
+          contactProfile: ResourceReference,
         }),
       ).annotate({ identifier: "ContactsProperties" });
     case 4:
@@ -2321,8 +3018,8 @@ function __c2(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(11)),
-          properties: __S(19),
+          systemData: S.optional(SystemData),
+          properties: ContactsProperties,
         }),
       ).annotate({ identifier: "CreateContactResponse" });
     case 5:
@@ -2433,7 +3130,7 @@ function __c3(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          globalCommunicationsSite: __S(14),
+          globalCommunicationsSite: ResourceReference,
         }),
       ).annotate({ identifier: "EdgeSitesProperties" });
     case 5:
@@ -2442,9 +3139,9 @@ function __c3(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           edgeSiteName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(0)),
+          tags: S.optional(EdgeSitesCreateOrUpdateRequestTagsMap),
           location: S.String,
-          properties: __S(28),
+          properties: EdgeSitesProperties,
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2462,10 +3159,10 @@ function __c3(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(11)),
-          tags: S.optional(__S(0)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(EdgeSitesCreateOrUpdateResponseTagsMap),
           location: S.String,
-          properties: __S(28),
+          properties: EdgeSitesProperties,
         }),
       ).annotate({
         identifier: "EdgeSitesCreateOrUpdateResponse",
@@ -2526,10 +3223,10 @@ function __c4(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(11)),
-          tags: S.optional(__S(0)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(GetEdgeSiteResponseTagsMap),
           location: S.String,
-          properties: __S(28),
+          properties: EdgeSitesProperties,
         }),
       ).annotate({ identifier: "GetEdgeSiteResponse" });
     case 3:
@@ -2548,18 +3245,18 @@ function __c4(j: number): any {
         ),
       ).annotate({ identifier: "GetGroundStationRequest" });
     case 4:
-      return S.Array(S.String);
+      return S.Array(Capability);
     case 5:
       return S.suspend(() =>
         S.Struct({
           city: S.optional(S.String),
-          capabilities: __S(36),
+          capabilities: GroundStationsPropertiesCapabilitiesList,
           providerName: S.optional(S.String),
           longitudeDegrees: S.optional(S.Number),
           latitudeDegrees: S.optional(S.Number),
           altitudeMeters: S.optional(S.Number),
-          releaseMode: S.optional(S.String),
-          globalCommunicationsSite: __S(14),
+          releaseMode: S.optional(GroundStationsPropertiesReleaseMode),
+          globalCommunicationsSite: ResourceReference,
         }),
       ).annotate({ identifier: "GroundStationsProperties" });
     case 6:
@@ -2568,10 +3265,10 @@ function __c4(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(11)),
-          tags: S.optional(__S(0)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(GetGroundStationResponseTagsMap),
           location: S.String,
-          properties: S.optional(__S(37)),
+          properties: S.optional(GroundStationsProperties),
         }),
       ).annotate({ identifier: "GetGroundStationResponse" });
     case 7:
@@ -2604,12 +3301,12 @@ function __c5(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          provisioningState: S.optional(S.String),
+          provisioningState: S.optional(ProvisioningState_2),
           circuitId: S.optional(S.String),
-          edgeSite: __S(14),
-          edgeSitePartnerRouter: __S(40),
-          groundStation: __S(14),
-          groundStationPartnerRouter: __S(40),
+          edgeSite: ResourceReference,
+          edgeSitePartnerRouter: L2ConnectionsPropertiesEdgeSitePartnerRouter,
+          groundStation: ResourceReference,
+          groundStationPartnerRouter: L2ConnectionsPropertiesGroundStationPartnerRouter,
           vlanId: S.Number,
         }),
       ).annotate({ identifier: "L2ConnectionsProperties" });
@@ -2619,10 +3316,10 @@ function __c5(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(11)),
-          tags: S.optional(__S(0)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(GetL2ConnectionResponseTagsMap),
           location: S.String,
-          properties: __S(41),
+          properties: L2ConnectionsProperties,
         }),
       ).annotate({ identifier: "GetL2ConnectionResponse" });
     case 3:
@@ -2658,14 +3355,14 @@ function __c5(j: number): any {
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
-          status: S.optional(S.String),
+          status: S.optional(Status),
           startTime: S.optional(S.String),
           endTime: S.optional(S.String),
           percentComplete: S.optional(S.Number),
-          value: S.optional(__S(44)),
+          value: S.optional(OperationResultValueList),
           nextLink: S.optional(S.String),
           properties: S.optional(S.Unknown),
-          error: S.optional(__S(45)),
+          error: S.optional(OperationResultErrorProperties),
         }),
       ).annotate({ identifier: "OperationResult" });
     case 7:
@@ -2695,29 +3392,29 @@ function __c6(j: number): any {
         }),
       ).annotate({ identifier: "AuthorizedGroundstation" });
     case 1:
-      return S.Array(__S(48));
+      return S.Array(AuthorizedGroundstation);
     case 2:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
           centerFrequencyMHz: S.Number,
           bandwidthMHz: S.Number,
-          direction: S.String,
-          polarization: S.String,
-          authorizations: S.optional(__S(49)),
+          direction: SpacecraftLinkDirection,
+          polarization: SpacecraftLinkPolarization,
+          authorizations: S.optional(SpacecraftLinkAuthorizationsList),
         }),
       ).annotate({ identifier: "SpacecraftLink" });
     case 3:
-      return S.Array(__S(50));
+      return S.Array(SpacecraftLink);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          provisioningState: S.optional(S.String),
+          provisioningState: S.optional(ProvisioningState),
           noradId: S.optional(S.String),
           titleLine: S.String,
           tleLine1: S.String,
           tleLine2: S.String,
-          links: __S(51),
+          links: SpacecraftsPropertiesLinksList,
         }),
       ).annotate({ identifier: "SpacecraftsProperties" });
     case 5:
@@ -2726,22 +3423,22 @@ function __c6(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(11)),
-          tags: S.optional(__S(0)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(GetSpacecraftResponseTagsMap),
           location: S.String,
-          properties: __S(52),
+          properties: SpacecraftsProperties,
         }),
       ).annotate({ identifier: "GetSpacecraftResponse" });
     case 6:
       return S.suspend(() =>
         S.Struct({
           city: S.optional(S.String),
-          capabilities: __S(36),
+          capabilities: GroundStationsPropertiesInputCapabilitiesList,
           providerName: S.optional(S.String),
           longitudeDegrees: S.optional(S.Number),
           latitudeDegrees: S.optional(S.Number),
           altitudeMeters: S.optional(S.Number),
-          globalCommunicationsSite: __S(14),
+          globalCommunicationsSite: ResourceReference,
         }),
       ).annotate({
         identifier: "GroundStationsPropertiesInput",
@@ -2752,9 +3449,9 @@ function __c6(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           groundStationName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(0)),
+          tags: S.optional(GroundStationsCreateOrUpdateRequestTagsMap),
           location: S.String,
-          properties: S.optional(__S(54)),
+          properties: S.optional(GroundStationsPropertiesInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2776,10 +3473,10 @@ function __c7(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(11)),
-          tags: S.optional(__S(0)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(GroundStationsCreateOrUpdateResponseTagsMap),
           location: S.String,
-          properties: S.optional(__S(37)),
+          properties: S.optional(GroundStationsProperties),
         }),
       ).annotate({
         identifier: "GroundStationsCreateOrUpdateResponse",
@@ -2787,10 +3484,10 @@ function __c7(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          edgeSite: __S(14),
-          edgeSitePartnerRouter: __S(40),
-          groundStation: __S(14),
-          groundStationPartnerRouter: __S(40),
+          edgeSite: ResourceReference,
+          edgeSitePartnerRouter: L2ConnectionsPropertiesEdgeSitePartnerRouter,
+          groundStation: ResourceReference,
+          groundStationPartnerRouter: L2ConnectionsPropertiesGroundStationPartnerRouter,
           vlanId: S.Number,
         }),
       ).annotate({
@@ -2802,9 +3499,9 @@ function __c7(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           l2ConnectionName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(0)),
+          tags: S.optional(L2ConnectionsCreateOrUpdateRequestTagsMap),
           location: S.String,
-          properties: __S(57),
+          properties: L2ConnectionsPropertiesInput,
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2822,10 +3519,10 @@ function __c7(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(11)),
-          tags: S.optional(__S(0)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(L2ConnectionsCreateOrUpdateResponseTagsMap),
           location: S.String,
-          properties: __S(41),
+          properties: L2ConnectionsProperties,
         }),
       ).annotate({
         identifier: "L2ConnectionsCreateOrUpdateResponse",
@@ -2834,7 +3531,7 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
-          capability: S.String.pipe(T.Query()),
+          capability: ListAvailableGroundStationByCapabilityRequestCapability.pipe(T.Query()),
         }).pipe(
           T.Http({
             method: "GET",
@@ -2854,7 +3551,7 @@ function __c7(j: number): any {
           longitudeDegrees: S.optional(S.Number),
           latitudeDegrees: S.optional(S.Number),
           altitudeMeters: S.optional(S.Number),
-          releaseMode: S.optional(S.String),
+          releaseMode: S.optional(AvailableGroundStationPropertiesReleaseMode),
         }),
       ).annotate({
         identifier: "AvailableGroundStationProperties",
@@ -2866,11 +3563,11 @@ function __c7(j: number): any {
           name: S.optional(S.String),
           location: S.optional(S.String),
           type: S.optional(S.String),
-          properties: __S(61),
+          properties: AvailableGroundStationProperties,
         }),
       ).annotate({ identifier: "AvailableGroundStation" });
     case 7:
-      return S.Array(__S(62));
+      return S.Array(AvailableGroundStation);
   }
 }
 function __c8(j: number): any {
@@ -2878,7 +3575,7 @@ function __c8(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(63)),
+          value: S.optional(AvailableGroundStationListResultValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -2906,18 +3603,18 @@ function __c8(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(11)),
-          tags: S.optional(__S(0)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(ContactProfileTagsMap),
           location: S.String,
-          properties: __S(12),
+          properties: ContactProfilesProperties,
         }),
       ).annotate({ identifier: "ContactProfile" });
     case 3:
-      return S.Array(__S(66));
+      return S.Array(ContactProfile);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(67)),
+          value: S.optional(ContactProfileListResultValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ContactProfileListResult" });
@@ -2955,7 +3652,7 @@ function __c8(j: number): any {
         ),
       ).annotate({ identifier: "ListContactsRequest" });
     case 7:
-      return S.Array(__S(20));
+      return S.Array(Contact);
   }
 }
 function __c9(j: number): any {
@@ -2963,7 +3660,7 @@ function __c9(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(71)),
+          value: S.optional(ContactListResultValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ContactListResult" });
@@ -2984,11 +3681,11 @@ function __c9(j: number): any {
         identifier: "ListEdgeSiteBySubscriptionRequest",
       });
     case 2:
-      return S.Array(__S(34));
+      return S.Array(EdgeSite);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(74)),
+          value: S.optional(EdgeSiteListResultValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "EdgeSiteListResult" });
@@ -3018,11 +3715,11 @@ function __c9(j: number): any {
         identifier: "ResourceIdListResultValueItem",
       });
     case 6:
-      return S.Array(__S(77));
+      return S.Array(ResourceIdListResultValueItem);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(78)),
+          value: S.optional(ResourceIdListResultValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ResourceIdListResult" });
@@ -3077,13 +3774,13 @@ function __c10(j: number): any {
         }),
       ).annotate({ identifier: "PartnerRouter" });
     case 4:
-      return S.Array(__S(83));
+      return S.Array(PartnerRouter);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          locationData: S.optional(__S(82)),
-          globalCommunicationsSiteType: S.optional(S.String),
-          partnerRouters: S.optional(__S(84)),
+          locationData: S.optional(LocationData),
+          globalCommunicationsSiteType: S.optional(GlobalCommunicationsSiteType),
+          partnerRouters: S.optional(GlobalCommunicationsSitesPropertiesPartnerRoutersList),
           partnerSiteBandwidth: S.optional(S.Number),
         }),
       ).annotate({
@@ -3095,12 +3792,12 @@ function __c10(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(11)),
-          properties: S.optional(__S(85)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(GlobalCommunicationsSitesProperties),
         }),
       ).annotate({ identifier: "GlobalCommunicationsSite" });
     case 7:
-      return S.Array(__S(86));
+      return S.Array(GlobalCommunicationsSite);
   }
 }
 function __c11(j: number): any {
@@ -3108,7 +3805,7 @@ function __c11(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(87)),
+          value: S.optional(GlobalCommunicationsSiteListResultValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -3131,11 +3828,11 @@ function __c11(j: number): any {
         identifier: "ListGroundStationBySubscriptionRequest",
       });
     case 2:
-      return S.Array(__S(38));
+      return S.Array(GroundStation);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(90)),
+          value: S.optional(GroundStationListResultValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "GroundStationListResult" });
@@ -3190,7 +3887,7 @@ function __c11(j: number): any {
         identifier: "ListL2ConnectionBySubscriptionRequest",
       });
     case 7:
-      return S.Array(__S(42));
+      return S.Array(L2Connection);
   }
 }
 function __c12(j: number): any {
@@ -3198,7 +3895,7 @@ function __c12(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(95)),
+          value: S.optional(L2ConnectionListResultValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "L2ConnectionListResult" });
@@ -3242,17 +3939,17 @@ function __c12(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           isDataAction: S.optional(S.Boolean),
-          display: S.optional(__S(99)),
-          origin: S.optional(S.String),
-          actionType: S.optional(S.String),
+          display: S.optional(OperationDisplay),
+          origin: S.optional(OperationOrigin),
+          actionType: S.optional(OperationActionType),
         }),
       ).annotate({ identifier: "Operation" });
     case 5:
-      return S.Array(__S(100));
+      return S.Array(Operation);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(101)),
+          value: S.optional(ListOperationsResponseValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
@@ -3262,7 +3959,7 @@ function __c12(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           spacecraftName: S.String.pipe(T.Label()),
-          contactProfile: __S(14),
+          contactProfile: ResourceReference,
           groundStationName: S.String,
           startTime: S.String,
           endTime: S.String,
@@ -3300,17 +3997,17 @@ function __c13(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          spacecraft: S.optional(__S(14)),
+          spacecraft: S.optional(ResourceReference),
           groundStationName: S.optional(S.String),
-          properties: S.optional(__S(104)),
+          properties: S.optional(ContactInstanceProperties),
         }),
       ).annotate({ identifier: "AvailableContacts" });
     case 2:
-      return S.Array(__S(105));
+      return S.Array(AvailableContacts);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(106)),
+          value: S.optional(AvailableContactsListResultValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -3333,11 +4030,11 @@ function __c13(j: number): any {
         identifier: "ListSpacecraftBySubscriptionRequest",
       });
     case 5:
-      return S.Array(__S(53));
+      return S.Array(Spacecraft);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(109)),
+          value: S.optional(SpacecraftListResultValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "SpacecraftListResult" });
@@ -3366,21 +4063,21 @@ function __c14(j: number): any {
           name: S.String,
           centerFrequencyMHz: S.Number,
           bandwidthMHz: S.Number,
-          direction: S.String,
-          polarization: S.String,
+          direction: SpacecraftLinkInputDirection,
+          polarization: SpacecraftLinkInputPolarization,
         }),
       ).annotate({ identifier: "SpacecraftLinkInput" });
     case 1:
-      return S.Array(__S(112));
+      return S.Array(SpacecraftLinkInput);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          provisioningState: S.optional(S.String),
+          provisioningState: S.optional(ProvisioningStateInput),
           noradId: S.optional(S.String),
           titleLine: S.String,
           tleLine1: S.String,
           tleLine2: S.String,
-          links: __S(113),
+          links: SpacecraftsPropertiesInputLinksList,
         }),
       ).annotate({
         identifier: "SpacecraftsPropertiesInput",
@@ -3391,9 +4088,9 @@ function __c14(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           spacecraftName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(0)),
+          tags: S.optional(SpacecraftsCreateOrUpdateRequestTagsMap),
           location: S.String,
-          properties: __S(114),
+          properties: SpacecraftsPropertiesInput,
         }).pipe(
           T.Http({
             method: "PUT",
@@ -3411,10 +4108,10 @@ function __c14(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(11)),
-          tags: S.optional(__S(0)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(SpacecraftsCreateOrUpdateResponseTagsMap),
           location: S.String,
-          properties: __S(52),
+          properties: SpacecraftsProperties,
         }),
       ).annotate({
         identifier: "SpacecraftsCreateOrUpdateResponse",
@@ -3425,7 +4122,7 @@ function __c14(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           contactProfileName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(0)),
+          tags: S.optional(UpdateContactProfileTagsRequestTagsMap),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3443,7 +4140,7 @@ function __c14(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           edgeSiteName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(0)),
+          tags: S.optional(UpdateEdgeSiteTagsRequestTagsMap),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3461,7 +4158,7 @@ function __c14(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           groundStationName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(0)),
+          tags: S.optional(UpdateGroundStationTagsRequestTagsMap),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3483,7 +4180,7 @@ function __c15(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           l2ConnectionName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(0)),
+          tags: S.optional(UpdateL2ConnectionTagsRequestTagsMap),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3501,7 +4198,7 @@ function __c15(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           spacecraftName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(0)),
+          tags: S.optional(UpdateSpacecraftTagsRequestTagsMap),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3513,46 +4210,5 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "UpdateSpacecraftTagsRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
-    case 9:
-      return __c9(i & 7);
-    case 10:
-      return __c10(i & 7);
-    case 11:
-      return __c11(i & 7);
-    case 12:
-      return __c12(i & 7);
-    case 13:
-      return __c13(i & 7);
-    case 14:
-      return __c14(i & 7);
-    case 15:
-      return __c15(i & 7);
   }
 }

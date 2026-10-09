@@ -7,8 +7,6 @@ import { paginateRelay } from "../pagination.ts";
 import { WhopProtocol, type WhopOpError, type WhopOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { WhopOpError, WhopOpContext };
 
@@ -54,6 +52,11 @@ export interface CreateCourseChapterRequest {
   /** The display title of the chapter (e.g., "Module 1: Introduction"). */
   title?: string | null;
 }
+const CreateCourseChapterRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<CreateCourseChapterRequest>;
+
 /** An individual learning unit within a chapter, which can contain text, video, PDF, or assessment content. */
 export interface CourseChapterLessonsItem {
   /** The unique identifier for the lesson. */
@@ -63,8 +66,18 @@ export interface CourseChapterLessonsItem {
   /** The display name of the lesson shown to students. Maximum 120 characters. */
   title: string;
 }
+const CourseChapterLessonsItem = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<CourseChapterLessonsItem>;
+
 /** An ordered list of lessons in this chapter, sorted by display position. Hidden lessons are excluded for non-admin users. */
 export type CourseChapterLessonsList = Array<CourseChapterLessonsItem>;
+const CourseChapterLessonsList = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<CourseChapterLessonsList>;
+
 /** A grouping of related lessons within a course, used to organize content into sections. */
 export interface CourseChapter {
   /** The unique identifier for the chapter. */
@@ -76,15 +89,32 @@ export interface CourseChapter {
   /** The display name of the chapter shown to students. Maximum 150 characters. */
   title: string;
 }
+const CourseChapter = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<CourseChapter>;
+
 export interface DeleteCourseChapterRequest {
   /** The unique identifier of the chapter to delete (e.g., "chap_XXXXX"). */
   id: string;
 }
+const DeleteCourseChapterRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<DeleteCourseChapterRequest>;
+
 export type DeleteCourseChapterResponse = boolean;
+const DeleteCourseChapterResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<DeleteCourseChapterResponse>;
+
 export interface GetCourseChapterRequest {
   /** The unique identifier of the chapter to retrieve. */
   id: string;
 }
+const GetCourseChapterRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<GetCourseChapterRequest>;
+
 export interface ListCourseChapterRequest {
   after?: string;
   before?: string;
@@ -92,6 +122,11 @@ export interface ListCourseChapterRequest {
   last?: number;
   course_id: string;
 }
+const ListCourseChapterRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<ListCourseChapterRequest>;
+
 /** A grouping of related lessons within a course, used to organize content into sections. */
 export interface CourseChapterListItem {
   /** The unique identifier for the chapter. */
@@ -103,6 +138,9 @@ export interface CourseChapterListItem {
 }
 /** A list of nodes. */
 export type ListCourseChapterResponseDataList = Array<CourseChapterListItem>;
+const ListCourseChapterResponseDataList =
+  CourseChapterLessonsList as any as S.Schema<ListCourseChapterResponseDataList>;
+
 /** Information about pagination in a connection. */
 export interface PageInfo {
   /** When paginating forwards, the cursor to continue. */
@@ -114,18 +152,30 @@ export interface PageInfo {
   /** When paginating backwards, the cursor to continue. */
   start_cursor: string | null;
 }
+const PageInfo = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<PageInfo>;
+
 export interface ListCourseChapterResponse {
   /** A list of nodes. */
   data: ListCourseChapterResponseDataList;
   /** Information to aid in pagination. */
   page_info: PageInfo;
 }
+const ListCourseChapterResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<ListCourseChapterResponse>;
+
 export interface UpdateCourseChapterRequest {
   /** The unique identifier of the chapter to update (e.g., "chap_XXXXX"). */
   id: string;
   /** The new display title of the chapter (e.g., "Module 1: Introduction"). */
   title: string;
 }
+const UpdateCourseChapterRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<UpdateCourseChapterRequest>;
+
 export type CreateCourseChapterError =
   | BadRequest
   | Forbidden
@@ -139,8 +189,8 @@ export const createCourseChapter: API.OperationMethod<
   CreateCourseChapterError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<CreateCourseChapterRequest>,
-  output: __S(3) as any as S.Schema<CourseChapter>,
+  input: CreateCourseChapterRequest,
+  output: CourseChapter,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -159,8 +209,8 @@ export const deleteCourseChapter: API.OperationMethod<
   DeleteCourseChapterError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4) as any as S.Schema<DeleteCourseChapterRequest>,
-  output: __S(5) as any as S.Schema<DeleteCourseChapterResponse>,
+  input: DeleteCourseChapterRequest,
+  output: DeleteCourseChapterResponse,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -179,8 +229,8 @@ export const getCourseChapter: API.OperationMethod<
   GetCourseChapterError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6) as any as S.Schema<GetCourseChapterRequest>,
-  output: __S(3) as any as S.Schema<CourseChapter>,
+  input: GetCourseChapterRequest,
+  output: CourseChapter,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -201,8 +251,8 @@ export const listCourseChapter: API.PaginatedOperationMethod<
   CourseChapterListItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(7) as any as S.Schema<ListCourseChapterRequest>,
-    output: __S(9) as any as S.Schema<ListCourseChapterResponse>,
+    input: ListCourseChapterRequest,
+    output: ListCourseChapterResponse,
     errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
     protocol: WhopProtocol,
     retry: Retry.Retry,
@@ -231,8 +281,8 @@ export const updateCourseChapter: API.OperationMethod<
   UpdateCourseChapterError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10) as any as S.Schema<UpdateCourseChapterRequest>,
-  output: __S(3) as any as S.Schema<CourseChapter>,
+  input: UpdateCourseChapterRequest,
+  output: CourseChapter,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -259,12 +309,12 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "CourseChapterLessonsItem" });
     case 2:
-      return S.Array(__S(1));
+      return S.Array(CourseChapterLessonsItem);
     case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          lessons: __S(2),
+          lessons: CourseChapterLessonsList,
           order: S.Number,
           title: S.String,
         }),
@@ -313,8 +363,8 @@ function __c1(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          data: __S(2),
-          page_info: __S(8),
+          data: ListCourseChapterResponseDataList,
+          page_info: PageInfo,
         }),
       ).annotate({
         identifier: "ListCourseChapterResponse",
@@ -328,18 +378,5 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "UpdateCourseChapterRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
   }
 }

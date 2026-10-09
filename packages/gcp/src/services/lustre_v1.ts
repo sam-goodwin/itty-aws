@@ -7,8 +7,6 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -68,9 +66,18 @@ export interface CancelProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be cancelled. */
   name: string;
 }
+const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<CancelProjectsLocationsOperationsRequest>;
+
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface GoogleProtobufEmpty {}
+const GoogleProtobufEmpty = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<GoogleProtobufEmpty>;
+
 export type StringMap = { [key: string]: string | undefined };
+const StringMap = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<StringMap>;
+
 /** Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: * A full date, with non-zero year, month, and day values. * A month and day, with a zero year (for example, an anniversary). * A year on its own, with a zero month and a zero day. * A year and month, with a zero day (for example, a credit card expiration date). Related types: * google.type.TimeOfDay * google.type.DateTime * google.protobuf.Timestamp */
 export interface Lustre_Date {
   /** Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day. */
@@ -80,6 +87,8 @@ export interface Lustre_Date {
   /** Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year. */
   year?: number;
 }
+const Lustre_Date = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<Lustre_Date>;
+
 /** Represents a time of day. The date and time zone are either not significant or are specified elsewhere. An API may choose to allow leap seconds. Related types are google.type.Date and `google.protobuf.Timestamp`. */
 export interface TimeOfDay {
   /** Minutes of an hour. Must be greater than or equal to 0 and less than or equal to 59. */
@@ -91,6 +100,8 @@ export interface TimeOfDay {
   /** Hours of a day in 24 hour format. Must be greater than or equal to 0 and typically must be less than or equal to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time. */
   hours?: number;
 }
+const TimeOfDay = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<TimeOfDay>;
+
 /** Exclusion period when maintenance updates should not occur. An exclusion window can be in either of the following two formats: * Non-recurring : A full date, with non-zero year, month and day values. * Recurring : A month and day value, with a zero year. Time zone is UTC. */
 export interface MaintenanceExclusionWindow {
   /** Required. End date of the exclusion period in UTC time zone. This date is inclusive. */
@@ -100,7 +111,17 @@ export interface MaintenanceExclusionWindow {
   /** Required. Time in UTC when the exclusion window starts on start_date and ends on end_date. This can be: * Full time OR * All zeros for 00:00:00 UTC */
   time?: TimeOfDay;
 }
+const MaintenanceExclusionWindow = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<MaintenanceExclusionWindow>;
+
 export type MaintenanceExclusionWindowList = Array<MaintenanceExclusionWindow>;
+const MaintenanceExclusionWindowList = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<MaintenanceExclusionWindowList>;
+
 export type WeeklyMaintenanceWindowDayOfWeekEnum =
   | "DAY_OF_WEEK_UNSPECIFIED"
   | "MONDAY"
@@ -110,6 +131,8 @@ export type WeeklyMaintenanceWindowDayOfWeekEnum =
   | "FRIDAY"
   | "SATURDAY"
   | "SUNDAY";
+const WeeklyMaintenanceWindowDayOfWeekEnum = S.String;
+
 /** Weekly time window in which maintenance updates may occur. Duration of the window is currently fixed at 1 hour. Time zone is UTC. */
 export interface WeeklyMaintenanceWindow {
   /** Required. Day of the week for the maintenance window. */
@@ -117,7 +140,17 @@ export interface WeeklyMaintenanceWindow {
   /** Required. Start time of the maintenance window in UTC time zone. */
   startTime?: TimeOfDay;
 }
+const WeeklyMaintenanceWindow = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<WeeklyMaintenanceWindow>;
+
 export type WeeklyMaintenanceWindowList = Array<WeeklyMaintenanceWindow>;
+const WeeklyMaintenanceWindowList = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<WeeklyMaintenanceWindowList>;
+
 /** Defines a maintenance policy for a resource. */
 export interface MaintenancePolicy {
   /** Optional. The exclusion windows for the instance. Currently limited to 1 window. */
@@ -125,6 +158,8 @@ export interface MaintenancePolicy {
   /** Required. The weekly maintenance windows for the instance. Currently limited to 1 window. */
   weeklyMaintenanceWindows?: WeeklyMaintenanceWindowList;
 }
+const MaintenancePolicy = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<MaintenancePolicy>;
+
 /** Represents a scheduled maintenance event. */
 export interface MaintenanceSchedule {
   /** Output only. The scheduled end time for the maintenance. */
@@ -132,6 +167,8 @@ export interface MaintenanceSchedule {
   /** Output only. The scheduled start time for the maintenance. */
   startTime?: string;
 }
+const MaintenanceSchedule = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<MaintenanceSchedule>;
+
 export type InstanceStateEnum =
   | "STATE_UNSPECIFIED"
   | "ACTIVE"
@@ -142,14 +179,24 @@ export type InstanceStateEnum =
   | "STOPPED"
   | "UPDATING"
   | "SUSPENDED";
+const InstanceStateEnum = S.String;
+
 export type DynamicTierOptionsModeEnum = "MODE_UNSPECIFIED" | "DISABLED" | "DEFAULT_CACHE";
+const DynamicTierOptionsModeEnum = S.String;
+
 /** Dynamic tier options for a Managed Lustre instance. */
 export interface DynamicTierOptions {
   /** Required. Immutable. The dynamic tier mode of the instance. */
   mode?: DynamicTierOptionsModeEnum | (string & {});
 }
+const DynamicTierOptions = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<DynamicTierOptions>;
+
 export type AccessRuleSquashModeEnum = "SQUASH_MODE_UNSPECIFIED" | "NO_SQUASH" | "ROOT_SQUASH";
+const AccessRuleSquashModeEnum = S.String;
+
 export type StringList = Array<string>;
+const StringList = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<StringList>;
+
 /** A single policy group with IP-based access rules for the Managed Lustre instance. */
 export interface AccessRule {
   /** Required. The name of the access rule policy group. Must be 16 characters or less and include only alphanumeric characters or '_'. */
@@ -159,11 +206,17 @@ export interface AccessRule {
   /** Required. The IP address ranges to which to apply this access rule. Accepts non-overlapping CIDR ranges (e.g., `192.168.1.0/24`) and IP addresses (e.g., `192.168.1.0`). */
   ipAddressRanges?: StringList;
 }
+const AccessRule = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<AccessRule>;
+
 export type AccessRuleList = Array<AccessRule>;
+const AccessRuleList = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<AccessRuleList>;
+
 export type AccessRulesOptionsDefaultSquashModeEnum =
   | "SQUASH_MODE_UNSPECIFIED"
   | "NO_SQUASH"
   | "ROOT_SQUASH";
+const AccessRulesOptionsDefaultSquashModeEnum = S.String;
+
 /** IP-based access rules for the Managed Lustre instance. These options define the root user squash configuration. */
 export interface AccessRulesOptions {
   /** Optional. The access rules for the instance. */
@@ -175,6 +228,8 @@ export interface AccessRulesOptions {
   /** Required. The squash mode for the default access rule. */
   defaultSquashMode?: AccessRulesOptionsDefaultSquashModeEnum | (string & {});
 }
+const AccessRulesOptions = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<AccessRulesOptions>;
+
 /** A Managed Lustre instance. */
 export interface Instance {
   /** Optional. The target version of the instance. Setting this field triggers a self-service update to the specified version. Format: `Lustre_YYYYMMDD.NN_pXX` or `latest` */
@@ -224,6 +279,8 @@ export interface Instance {
   /** Output only. The effective version of the instance. Format: `Lustre_YYYYMMDD.NN_pXX` */
   effectiveVersion?: string;
 }
+const Instance = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<Instance>;
+
 export interface CreateProjectsLocationsInstancesRequest {
   /** Required. The name of the Managed Lustre instance. * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. */
   instanceId?: string;
@@ -234,8 +291,17 @@ export interface CreateProjectsLocationsInstancesRequest {
   /** Request body */
   body?: Instance;
 }
+const CreateProjectsLocationsInstancesRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<CreateProjectsLocationsInstancesRequest>;
+
 export type DocumentMap = { [key: string]: unknown | undefined };
+const DocumentMap = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<DocumentMap>;
+
 export type DocumentMapList = Array<DocumentMap>;
+const DocumentMapList = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<DocumentMapList>;
+
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
   /** The status code, which should be an enum value of google.rpc.Code. */
@@ -245,6 +311,8 @@ export interface Status {
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
   details?: DocumentMapList;
 }
+const Status = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<Status>;
+
 /** This resource represents a long-running operation that is the result of a network API call. */
 export interface Operation {
   /** If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available. */
@@ -258,7 +326,11 @@ export interface Operation {
   /** The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`. */
   response?: DocumentMap;
 }
+const Operation = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<Operation>;
+
 export type DirectoryPolicyStateEnum = "STATE_UNSPECIFIED" | "CREATING" | "ACTIVE" | "DELETING";
+const DirectoryPolicyStateEnum = S.String;
+
 /** A directory policy for a Managed Lustre instance. */
 export interface DirectoryPolicy {
   /** Output only. Unique ID of the resource. */
@@ -272,6 +344,8 @@ export interface DirectoryPolicy {
   /** Immutable. Identifier. The resource name of the directory policy. DirectoryPolicy names have the form `projects/{project}/locations/{location}/instances/{instance}/directoryPolicies/{id}`. {id} is user provided. */
   name?: string;
 }
+const DirectoryPolicy = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<DirectoryPolicy>;
+
 export interface CreateProjectsLocationsInstancesDirectoryPoliciesRequest {
   /** Required. The ID for the DirectoryPolicy to create. */
   directoryPolicyId?: string;
@@ -280,6 +354,11 @@ export interface CreateProjectsLocationsInstancesDirectoryPoliciesRequest {
   /** Request body */
   body?: DirectoryPolicy;
 }
+const CreateProjectsLocationsInstancesDirectoryPoliciesRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<CreateProjectsLocationsInstancesDirectoryPoliciesRequest>;
+
 export type MirrorStateEnum =
   | "STATE_UNSPECIFIED"
   | "CREATING"
@@ -287,17 +366,25 @@ export type MirrorStateEnum =
   | "DELETING"
   | "ACTIVE"
   | "SUSPENDED";
+const MirrorStateEnum = S.String;
+
 export type MirrorDirectionEnum = "DIRECTION_UNSPECIFIED" | "FROM_CLOUD_STORAGE";
+const MirrorDirectionEnum = S.String;
+
 /** Specifies a Cloud Storage bucket and, optionally, a path inside the bucket. */
 export interface GcsPath {
   /** Required. The URI to a Cloud Storage bucket, or a path within a bucket, using the format `gs:////`. If a path inside the bucket is specified, it must end with a forward slash (`/`). */
   uri?: string;
 }
+const GcsPath = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<GcsPath>;
+
 /** The root directory path to the Lustre file system. */
 export interface LustrePath {
   /** Optional. The root directory path to the Managed Lustre file system. Must start with `/`. Default is `/`. If you're importing data into Managed Lustre, any path other than the default must already exist on the file system. */
   path?: string;
 }
+const LustrePath = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<LustrePath>;
+
 /** Represents a mirror of a Lustre instance. */
 export interface Mirror {
   /** Identifier. Name of the mirror. Format: projects/{project}/locations/{location}/instances/{instance}/mirrors/{mirror} */
@@ -323,6 +410,8 @@ export interface Mirror {
   /** Required. Can be dir/subDir. */
   lustrePath?: LustrePath;
 }
+const Mirror = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<Mirror>;
+
 export interface CreateProjectsLocationsInstancesMirrorsRequest {
   /** Required. Parent instance resource where the mirror will be created, in the format: projects/{project}/locations/{location}/instances/{instance} */
   parent: string;
@@ -333,6 +422,11 @@ export interface CreateProjectsLocationsInstancesMirrorsRequest {
   /** Request body */
   body?: Mirror;
 }
+const CreateProjectsLocationsInstancesMirrorsRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<CreateProjectsLocationsInstancesMirrorsRequest>;
+
 export interface DeleteProjectsLocationsInstancesRequest {
   /** Required. The resource name of the instance to delete, in the format `projects/{projectId}/locations/{location}/instances/{instanceId}`. */
   name: string;
@@ -341,20 +435,40 @@ export interface DeleteProjectsLocationsInstancesRequest {
   /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
 }
+const DeleteProjectsLocationsInstancesRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<DeleteProjectsLocationsInstancesRequest>;
+
 export interface DeleteProjectsLocationsInstancesDirectoryPoliciesRequest {
   /** Required. The resource name of the directory policy. DirectoryPolicy names have the form `projects/{project}/locations/{location}/instances/{instance}/directoryPolicies/{id}`. */
   name: string;
 }
+const DeleteProjectsLocationsInstancesDirectoryPoliciesRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<DeleteProjectsLocationsInstancesDirectoryPoliciesRequest>;
+
 export interface DeleteProjectsLocationsInstancesMirrorsRequest {
   /** Optional. The unique ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server guarantees that a request doesn't result in the same delete request being executed for at least 60 minutes. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. The request ID must be a valid UUID version 4 with the exception that zero UUID is not supported (`00000000-0000-0000-0000-000000000000`). This request is only idempotent if a `request_id` is provided. */
   requestId?: string;
   /** Required. Name of the mirror to delete, in the format: projects/{project}/locations/{location}/instances/{instance}/mirrors/{mirror} */
   name: string;
 }
+const DeleteProjectsLocationsInstancesMirrorsRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<DeleteProjectsLocationsInstancesMirrorsRequest>;
+
 export interface DeleteProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
+const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>;
+
 /** Export data from Managed Lustre to a Cloud Storage bucket. */
 export interface ExportDataRequest {
   /** The root directory path to the Managed Lustre file system. Must start with `/`. Default is `/`. */
@@ -366,23 +480,37 @@ export interface ExportDataRequest {
   /** Optional. User-specified service account used to perform the transfer. If unspecified, the Managed Lustre service agent is used. Use one of the following formats: * `{EMAIL_ADDRESS_OR_UNIQUE_ID}` * `projects/{PROJECT_ID}/serviceAccounts/{EMAIL_ADDRESS_OR_UNIQUE_ID}` * `projects/-/serviceAccounts/{EMAIL_ADDRESS_OR_UNIQUE_ID}` */
   serviceAccount?: string;
 }
+const ExportDataRequest = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<ExportDataRequest>;
+
 export interface ExportDataProjectsLocationsInstancesRequest {
   /** Required. The name of the Managed Lustre instance in the format `projects/{project}/locations/{location}/instances/{instance}`. */
   name: string;
   /** Request body */
   body?: ExportDataRequest;
 }
+const ExportDataProjectsLocationsInstancesRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<ExportDataProjectsLocationsInstancesRequest>;
+
 export interface GetIamPolicyProjectsLocationsInstancesRequest {
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
 }
+const GetIamPolicyProjectsLocationsInstancesRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<GetIamPolicyProjectsLocationsInstancesRequest>;
+
 export type AuditLogConfigLogTypeEnum =
   | "LOG_TYPE_UNSPECIFIED"
   | "ADMIN_READ"
   | "DATA_WRITE"
   | "DATA_READ";
+const AuditLogConfigLogTypeEnum = S.String;
+
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
 export interface AuditLogConfig {
   /** Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members. */
@@ -390,7 +518,11 @@ export interface AuditLogConfig {
   /** The log type that this config enables. */
   logType?: AuditLogConfigLogTypeEnum | (string & {});
 }
+const AuditLogConfig = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<AuditLogConfig>;
+
 export type AuditLogConfigList = Array<AuditLogConfig>;
+const AuditLogConfigList = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<AuditLogConfigList>;
+
 /** Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts `jose@example.com` from DATA_READ logging, and `aliya@example.com` from DATA_WRITE logging. */
 export interface AuditConfig {
   /** The configuration for logging of each type of permission. */
@@ -398,7 +530,11 @@ export interface AuditConfig {
   /** Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services. */
   service?: string;
 }
+const AuditConfig = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<AuditConfig>;
+
 export type AuditConfigList = Array<AuditConfig>;
+const AuditConfigList = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<AuditConfigList>;
+
 /** Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information. */
 export interface Expr {
   /** Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression. */
@@ -410,6 +546,8 @@ export interface Expr {
   /** Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file. */
   location?: string;
 }
+const Expr = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<Expr>;
+
 /** Associates `members`, or principals, with a `role`. */
 export interface Binding {
   /** Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles). */
@@ -419,7 +557,11 @@ export interface Binding {
   /** The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   condition?: Expr;
 }
+const Binding = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<Binding>;
+
 export type BindingList = Array<Binding>;
+const BindingList = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<BindingList>;
+
 /** An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single `role`. Principals can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** ``` { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } ``` **YAML example:** ``` bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/). */
 export interface Policy {
   /** Specifies cloud audit logging configuration for this policy. */
@@ -431,16 +573,28 @@ export interface Policy {
   /** Associates a list of `members`, or principals, with a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one principal. The `bindings` in a `Policy` can refer to up to 1,500 principals; up to 250 of these principals can be Google groups. Each occurrence of a principal counts towards these limits. For example, if the `bindings` grant 50 different roles to `user:alice@example.com`, and not to any other principal, then you can add another 1,450 principals to the `bindings` in the `Policy`. */
   bindings?: BindingList;
 }
+const Policy = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<Policy>;
+
 export interface GetIamPolicyProjectsLocationsInstancesDirectoryPoliciesRequest {
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
 }
+const GetIamPolicyProjectsLocationsInstancesDirectoryPoliciesRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<GetIamPolicyProjectsLocationsInstancesDirectoryPoliciesRequest>;
+
 export interface GetProjectsLocationsRequest {
   /** Resource name for the location. */
   name: string;
 }
+const GetProjectsLocationsRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  4,
+) as any as S.Schema<GetProjectsLocationsRequest>;
+
 /** A resource that represents a Google Cloud location. */
 export interface Location {
   /** Cross-service attributes for the location. For example {"cloud.googleapis.com/region": "us-east1"} */
@@ -454,22 +608,44 @@ export interface Location {
   /** The friendly name for this location, typically a nearby city name. For example, "Tokyo". */
   displayName?: string;
 }
+const Location = /*@__PURE__*/ __L.at(__c5, 5) as any as S.Schema<Location>;
+
 export interface GetProjectsLocationsInstancesRequest {
   /** Required. The instance resource name, in the format `projects/{projectId}/locations/{location}/instances/{instanceId}`. */
   name: string;
 }
+const GetProjectsLocationsInstancesRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  6,
+) as any as S.Schema<GetProjectsLocationsInstancesRequest>;
+
 export interface GetProjectsLocationsInstancesDirectoryPoliciesRequest {
   /** Required. The resource name of the directory policy. DirectoryPolicy names have the form `projects/{project}/locations/{location}/instances/{instance}/directoryPolicies/{id}`. */
   name: string;
 }
+const GetProjectsLocationsInstancesDirectoryPoliciesRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  7,
+) as any as S.Schema<GetProjectsLocationsInstancesDirectoryPoliciesRequest>;
+
 export interface GetProjectsLocationsInstancesMirrorsRequest {
   /** Required. Name of the mirror to retrieve, in the format: projects/{project}/locations/{location}/instances/{instance}/mirrors/{mirror} */
   name: string;
 }
+const GetProjectsLocationsInstancesMirrorsRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<GetProjectsLocationsInstancesMirrorsRequest>;
+
 export interface GetProjectsLocationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
+const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  1,
+) as any as S.Schema<GetProjectsLocationsOperationsRequest>;
+
 /** Message for importing data to Lustre. */
 export interface ImportDataRequest {
   /** The Cloud Storage source bucket and, optionally, path inside the bucket. If a path inside the bucket is specified, it must end with a forward slash (`/`). */
@@ -481,12 +657,19 @@ export interface ImportDataRequest {
   /** Lustre path destination. */
   lustrePath?: LustrePath;
 }
+const ImportDataRequest = /*@__PURE__*/ __L.at(__c6, 2) as any as S.Schema<ImportDataRequest>;
+
 export interface ImportDataProjectsLocationsInstancesRequest {
   /** Required. The name of the Managed Lustre instance in the format `projects/{project}/locations/{location}/instances/{instance}`. */
   name: string;
   /** Request body */
   body?: ImportDataRequest;
 }
+const ImportDataProjectsLocationsInstancesRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  3,
+) as any as S.Schema<ImportDataProjectsLocationsInstancesRequest>;
+
 export interface ListProjectsLocationsRequest {
   /** Optional. Do not use this field unless explicitly documented otherwise. This is primarily for internal usage. */
   extraLocationTypes?: StringList;
@@ -499,7 +682,14 @@ export interface ListProjectsLocationsRequest {
   /** A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. */
   pageToken?: string;
 }
+const ListProjectsLocationsRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  4,
+) as any as S.Schema<ListProjectsLocationsRequest>;
+
 export type LocationList = Array<Location>;
+const LocationList = /*@__PURE__*/ __L.at(__c6, 5) as any as S.Schema<LocationList>;
+
 /** The response message for Locations.ListLocations. */
 export interface ListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
@@ -507,6 +697,11 @@ export interface ListLocationsResponse {
   /** The standard List next-page token. */
   nextPageToken?: string;
 }
+const ListLocationsResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  6,
+) as any as S.Schema<ListLocationsResponse>;
+
 export interface ListProjectsLocationsInstancesRequest {
   /** Optional. Desired order of results. */
   orderBy?: string;
@@ -519,7 +714,14 @@ export interface ListProjectsLocationsInstancesRequest {
   /** Optional. Requested page size. Server might return fewer items than requested. If unspecified, the server will pick an appropriate default. */
   pageSize?: number;
 }
+const ListProjectsLocationsInstancesRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  7,
+) as any as S.Schema<ListProjectsLocationsInstancesRequest>;
+
 export type InstanceList = Array<Instance>;
+const InstanceList = /*@__PURE__*/ __L.at(__c7, 0) as any as S.Schema<InstanceList>;
+
 /** Message for response to listing Instances */
 export interface ListInstancesResponse {
   /** Unordered list. Locations that could not be reached. */
@@ -529,6 +731,11 @@ export interface ListInstancesResponse {
   /** Response from ListInstances. */
   instances?: InstanceList;
 }
+const ListInstancesResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  1,
+) as any as S.Schema<ListInstancesResponse>;
+
 export interface ListProjectsLocationsInstancesDirectoryPoliciesRequest {
   /** Required. The parent instance. It must be in the format of `projects/{project}/locations/{location}/instances/{instance}`. */
   parent: string;
@@ -537,7 +744,14 @@ export interface ListProjectsLocationsInstancesDirectoryPoliciesRequest {
   /** Optional. A page token, received from a previous `ListDirectoryPolicies` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListDirectoryPolicies` must match the call that provided the page token. */
   pageToken?: string;
 }
+const ListProjectsLocationsInstancesDirectoryPoliciesRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  2,
+) as any as S.Schema<ListProjectsLocationsInstancesDirectoryPoliciesRequest>;
+
 export type DirectoryPolicyList = Array<DirectoryPolicy>;
+const DirectoryPolicyList = /*@__PURE__*/ __L.at(__c7, 3) as any as S.Schema<DirectoryPolicyList>;
+
 /** Response message for ListDirectoryPolicies. */
 export interface ListDirectoryPoliciesResponse {
   /** The list of DirectoryPolicies. */
@@ -545,6 +759,11 @@ export interface ListDirectoryPoliciesResponse {
   /** A token identifying a page of results the server should return. */
   nextPageToken?: string;
 }
+const ListDirectoryPoliciesResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  4,
+) as any as S.Schema<ListDirectoryPoliciesResponse>;
+
 export interface ListProjectsLocationsInstancesMirrorsRequest {
   /** Optional. Desired order of results. */
   orderBy?: string;
@@ -557,7 +776,14 @@ export interface ListProjectsLocationsInstancesMirrorsRequest {
   /** Required. Parent instance resource where the mirrors will be listed, in the format: projects/{project}/locations/{location}/instances/{instance} */
   parent: string;
 }
+const ListProjectsLocationsInstancesMirrorsRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  5,
+) as any as S.Schema<ListProjectsLocationsInstancesMirrorsRequest>;
+
 export type MirrorList = Array<Mirror>;
+const MirrorList = /*@__PURE__*/ __L.at(__c7, 6) as any as S.Schema<MirrorList>;
+
 /** Response for ListMirrors. */
 export interface ListMirrorsResponse {
   /** A token identifying a page of results the server should return. */
@@ -567,6 +793,8 @@ export interface ListMirrorsResponse {
   /** Unordered list. Locations that could not be reached. */
   unreachable?: StringList;
 }
+const ListMirrorsResponse = /*@__PURE__*/ __L.at(__c7, 7) as any as S.Schema<ListMirrorsResponse>;
+
 export interface ListProjectsLocationsOperationsRequest {
   /** The standard list page token. */
   pageToken?: string;
@@ -579,7 +807,14 @@ export interface ListProjectsLocationsOperationsRequest {
   /** When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. */
   returnPartialSuccess?: boolean;
 }
+const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  0,
+) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
+
 export type OperationList = Array<Operation>;
+const OperationList = /*@__PURE__*/ __L.at(__c8, 1) as any as S.Schema<OperationList>;
+
 /** The response message for Operations.ListOperations. */
 export interface ListOperationsResponse {
   /** The standard List next-page token. */
@@ -589,6 +824,11 @@ export interface ListOperationsResponse {
   /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
   unreachable?: StringList;
 }
+const ListOperationsResponse = /*@__PURE__*/ __L.at(
+  __c8,
+  2,
+) as any as S.Schema<ListOperationsResponse>;
+
 export interface PatchProjectsLocationsInstancesRequest {
   /** Identifier. The name of the instance. */
   name: string;
@@ -599,6 +839,11 @@ export interface PatchProjectsLocationsInstancesRequest {
   /** Request body */
   body?: Instance;
 }
+const PatchProjectsLocationsInstancesRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  3,
+) as any as S.Schema<PatchProjectsLocationsInstancesRequest>;
+
 export interface PatchProjectsLocationsInstancesMirrorsRequest {
   /** Optional. Fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If no mask is provided then all fields present in the request are overwritten. */
   updateMask?: string;
@@ -609,11 +854,18 @@ export interface PatchProjectsLocationsInstancesMirrorsRequest {
   /** Request body */
   body?: Mirror;
 }
+const PatchProjectsLocationsInstancesMirrorsRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  4,
+) as any as S.Schema<PatchProjectsLocationsInstancesMirrorsRequest>;
+
 export type RescheduleRescheduleTypeEnum =
   | "RESCHEDULE_TYPE_UNSPECIFIED"
   | "IMMEDIATE"
   | "NEXT_AVAILABLE_WINDOW"
   | "BY_TIME";
+const RescheduleRescheduleTypeEnum = S.String;
+
 /** The desired reschedule settings. */
 export interface Reschedule {
   /** Required. The type of rescheduling. */
@@ -621,6 +873,8 @@ export interface Reschedule {
   /** Optional. Required if reschedule_type is BY_TIME. Timestamp when the maintenance shall be rescheduled to. This time must be within 28 days of the original scheduled maintenance start time. */
   scheduleTime?: string;
 }
+const Reschedule = /*@__PURE__*/ __L.at(__c8, 5) as any as S.Schema<Reschedule>;
+
 /** Message for requesting to reschedule a maintenance event for a specific instance. */
 export interface RescheduleMaintenanceRequest {
   /** Required. The desired reschedule settings. */
@@ -628,12 +882,22 @@ export interface RescheduleMaintenanceRequest {
   /** Optional. A unique identifier for this request. A random UUID is recommended. This request is only idempotent if a `request_id` is provided. */
   requestId?: string;
 }
+const RescheduleMaintenanceRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  6,
+) as any as S.Schema<RescheduleMaintenanceRequest>;
+
 export interface RescheduleMaintenanceProjectsLocationsInstancesRequest {
   /** Required. Format: projects/{project}/locations/{location}/instances/{instance} */
   name: string;
   /** Request body */
   body?: RescheduleMaintenanceRequest;
 }
+const RescheduleMaintenanceProjectsLocationsInstancesRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  7,
+) as any as S.Schema<RescheduleMaintenanceProjectsLocationsInstancesRequest>;
+
 /** Request message for `SetIamPolicy` method. */
 export interface SetIamPolicyRequest {
   /** REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Google Cloud services (such as Projects) might reject them. */
@@ -641,40 +905,70 @@ export interface SetIamPolicyRequest {
   /** OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask will be modified. If no mask is provided, the following default mask is used: `paths: "bindings, etag"` */
   updateMask?: string;
 }
+const SetIamPolicyRequest = /*@__PURE__*/ __L.at(__c9, 0) as any as S.Schema<SetIamPolicyRequest>;
+
 export interface SetIamPolicyProjectsLocationsInstancesRequest {
   /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: SetIamPolicyRequest;
 }
+const SetIamPolicyProjectsLocationsInstancesRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  1,
+) as any as S.Schema<SetIamPolicyProjectsLocationsInstancesRequest>;
+
 export interface SetIamPolicyProjectsLocationsInstancesDirectoryPoliciesRequest {
   /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: SetIamPolicyRequest;
 }
+const SetIamPolicyProjectsLocationsInstancesDirectoryPoliciesRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  2,
+) as any as S.Schema<SetIamPolicyProjectsLocationsInstancesDirectoryPoliciesRequest>;
+
 /** Request message for `TestIamPermissions` method. */
 export interface TestIamPermissionsRequest {
   /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
   permissions?: StringList;
 }
+const TestIamPermissionsRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  3,
+) as any as S.Schema<TestIamPermissionsRequest>;
+
 export interface TestIamPermissionsProjectsLocationsInstancesRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
+const TestIamPermissionsProjectsLocationsInstancesRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  4,
+) as any as S.Schema<TestIamPermissionsProjectsLocationsInstancesRequest>;
+
 /** Response message for `TestIamPermissions` method. */
 export interface TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
   permissions?: StringList;
 }
+const TestIamPermissionsResponse =
+  TestIamPermissionsRequest as any as S.Schema<TestIamPermissionsResponse>;
+
 export interface TestIamPermissionsProjectsLocationsInstancesDirectoryPoliciesRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
+const TestIamPermissionsProjectsLocationsInstancesDirectoryPoliciesRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  5,
+) as any as S.Schema<TestIamPermissionsProjectsLocationsInstancesDirectoryPoliciesRequest>;
+
 export type CancelProjectsLocationsOperationsError =
   | NotFound
   | Forbidden
@@ -688,8 +982,8 @@ export const cancelProjectsLocationsOperations: API.OperationMethod<
   CancelProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<CancelProjectsLocationsOperationsRequest>,
-  output: __S(1) as any as S.Schema<GoogleProtobufEmpty>,
+  input: CancelProjectsLocationsOperationsRequest,
+  output: GoogleProtobufEmpty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -708,8 +1002,8 @@ export const createProjectsLocationsInstances: API.OperationMethod<
   CreateProjectsLocationsInstancesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17) as any as S.Schema<CreateProjectsLocationsInstancesRequest>,
-  output: __S(21) as any as S.Schema<Operation>,
+  input: CreateProjectsLocationsInstancesRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -728,8 +1022,8 @@ export const createProjectsLocationsInstancesDirectoryPolicies: API.OperationMet
   CreateProjectsLocationsInstancesDirectoryPoliciesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23) as any as S.Schema<CreateProjectsLocationsInstancesDirectoryPoliciesRequest>,
-  output: __S(21) as any as S.Schema<Operation>,
+  input: CreateProjectsLocationsInstancesDirectoryPoliciesRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -748,8 +1042,8 @@ export const createProjectsLocationsInstancesMirrors: API.OperationMethod<
   CreateProjectsLocationsInstancesMirrorsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27) as any as S.Schema<CreateProjectsLocationsInstancesMirrorsRequest>,
-  output: __S(21) as any as S.Schema<Operation>,
+  input: CreateProjectsLocationsInstancesMirrorsRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -768,8 +1062,8 @@ export const deleteProjectsLocationsInstances: API.OperationMethod<
   DeleteProjectsLocationsInstancesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28) as any as S.Schema<DeleteProjectsLocationsInstancesRequest>,
-  output: __S(21) as any as S.Schema<Operation>,
+  input: DeleteProjectsLocationsInstancesRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -788,8 +1082,8 @@ export const deleteProjectsLocationsInstancesDirectoryPolicies: API.OperationMet
   DeleteProjectsLocationsInstancesDirectoryPoliciesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29) as any as S.Schema<DeleteProjectsLocationsInstancesDirectoryPoliciesRequest>,
-  output: __S(21) as any as S.Schema<Operation>,
+  input: DeleteProjectsLocationsInstancesDirectoryPoliciesRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -808,8 +1102,8 @@ export const deleteProjectsLocationsInstancesMirrors: API.OperationMethod<
   DeleteProjectsLocationsInstancesMirrorsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30) as any as S.Schema<DeleteProjectsLocationsInstancesMirrorsRequest>,
-  output: __S(21) as any as S.Schema<Operation>,
+  input: DeleteProjectsLocationsInstancesMirrorsRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -828,8 +1122,8 @@ export const deleteProjectsLocationsOperations: API.OperationMethod<
   DeleteProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>,
-  output: __S(1) as any as S.Schema<GoogleProtobufEmpty>,
+  input: DeleteProjectsLocationsOperationsRequest,
+  output: GoogleProtobufEmpty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -848,8 +1142,8 @@ export const exportDataProjectsLocationsInstances: API.OperationMethod<
   ExportDataProjectsLocationsInstancesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33) as any as S.Schema<ExportDataProjectsLocationsInstancesRequest>,
-  output: __S(21) as any as S.Schema<Operation>,
+  input: ExportDataProjectsLocationsInstancesRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -863,8 +1157,8 @@ export const getIamPolicyProjectsLocationsInstances: API.OperationMethod<
   GetIamPolicyProjectsLocationsInstancesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34) as any as S.Schema<GetIamPolicyProjectsLocationsInstancesRequest>,
-  output: __S(42) as any as S.Schema<Policy>,
+  input: GetIamPolicyProjectsLocationsInstancesRequest,
+  output: Policy,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -881,8 +1175,8 @@ export const getIamPolicyProjectsLocationsInstancesDirectoryPolicies: API.Operat
   GetIamPolicyProjectsLocationsInstancesDirectoryPoliciesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43) as any as S.Schema<GetIamPolicyProjectsLocationsInstancesDirectoryPoliciesRequest>,
-  output: __S(42) as any as S.Schema<Policy>,
+  input: GetIamPolicyProjectsLocationsInstancesDirectoryPoliciesRequest,
+  output: Policy,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -896,8 +1190,8 @@ export const getProjectsLocations: API.OperationMethod<
   GetProjectsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44) as any as S.Schema<GetProjectsLocationsRequest>,
-  output: __S(45) as any as S.Schema<Location>,
+  input: GetProjectsLocationsRequest,
+  output: Location,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -911,8 +1205,8 @@ export const getProjectsLocationsInstances: API.OperationMethod<
   GetProjectsLocationsInstancesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(46) as any as S.Schema<GetProjectsLocationsInstancesRequest>,
-  output: __S(16) as any as S.Schema<Instance>,
+  input: GetProjectsLocationsInstancesRequest,
+  output: Instance,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -926,8 +1220,8 @@ export const getProjectsLocationsInstancesDirectoryPolicies: API.OperationMethod
   GetProjectsLocationsInstancesDirectoryPoliciesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47) as any as S.Schema<GetProjectsLocationsInstancesDirectoryPoliciesRequest>,
-  output: __S(22) as any as S.Schema<DirectoryPolicy>,
+  input: GetProjectsLocationsInstancesDirectoryPoliciesRequest,
+  output: DirectoryPolicy,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -941,8 +1235,8 @@ export const getProjectsLocationsInstancesMirrors: API.OperationMethod<
   GetProjectsLocationsInstancesMirrorsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48) as any as S.Schema<GetProjectsLocationsInstancesMirrorsRequest>,
-  output: __S(26) as any as S.Schema<Mirror>,
+  input: GetProjectsLocationsInstancesMirrorsRequest,
+  output: Mirror,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -956,8 +1250,8 @@ export const getProjectsLocationsOperations: API.OperationMethod<
   GetProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49) as any as S.Schema<GetProjectsLocationsOperationsRequest>,
-  output: __S(21) as any as S.Schema<Operation>,
+  input: GetProjectsLocationsOperationsRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -976,8 +1270,8 @@ export const importDataProjectsLocationsInstances: API.OperationMethod<
   ImportDataProjectsLocationsInstancesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(51) as any as S.Schema<ImportDataProjectsLocationsInstancesRequest>,
-  output: __S(21) as any as S.Schema<Operation>,
+  input: ImportDataProjectsLocationsInstancesRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -992,8 +1286,8 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListLocationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(52) as any as S.Schema<ListProjectsLocationsRequest>,
-  output: __S(54) as any as S.Schema<ListLocationsResponse>,
+  input: ListProjectsLocationsRequest,
+  output: ListLocationsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1009,8 +1303,8 @@ export const listProjectsLocationsInstances: API.PaginatedOperationMethod<
   GcpOpContext,
   ListInstancesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(55) as any as S.Schema<ListProjectsLocationsInstancesRequest>,
-  output: __S(57) as any as S.Schema<ListInstancesResponse>,
+  input: ListProjectsLocationsInstancesRequest,
+  output: ListInstancesResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1029,8 +1323,8 @@ export const listProjectsLocationsInstancesDirectoryPolicies: API.PaginatedOpera
   GcpOpContext,
   ListDirectoryPoliciesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(58) as any as S.Schema<ListProjectsLocationsInstancesDirectoryPoliciesRequest>,
-  output: __S(60) as any as S.Schema<ListDirectoryPoliciesResponse>,
+  input: ListProjectsLocationsInstancesDirectoryPoliciesRequest,
+  output: ListDirectoryPoliciesResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1046,8 +1340,8 @@ export const listProjectsLocationsInstancesMirrors: API.PaginatedOperationMethod
   GcpOpContext,
   ListMirrorsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(61) as any as S.Schema<ListProjectsLocationsInstancesMirrorsRequest>,
-  output: __S(63) as any as S.Schema<ListMirrorsResponse>,
+  input: ListProjectsLocationsInstancesMirrorsRequest,
+  output: ListMirrorsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1063,8 +1357,8 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(64) as any as S.Schema<ListProjectsLocationsOperationsRequest>,
-  output: __S(66) as any as S.Schema<ListOperationsResponse>,
+  input: ListProjectsLocationsOperationsRequest,
+  output: ListOperationsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1084,8 +1378,8 @@ export const patchProjectsLocationsInstances: API.OperationMethod<
   PatchProjectsLocationsInstancesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(67) as any as S.Schema<PatchProjectsLocationsInstancesRequest>,
-  output: __S(21) as any as S.Schema<Operation>,
+  input: PatchProjectsLocationsInstancesRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1104,8 +1398,8 @@ export const patchProjectsLocationsInstancesMirrors: API.OperationMethod<
   PatchProjectsLocationsInstancesMirrorsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(68) as any as S.Schema<PatchProjectsLocationsInstancesMirrorsRequest>,
-  output: __S(21) as any as S.Schema<Operation>,
+  input: PatchProjectsLocationsInstancesMirrorsRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1124,8 +1418,8 @@ export const rescheduleMaintenanceProjectsLocationsInstances: API.OperationMetho
   RescheduleMaintenanceProjectsLocationsInstancesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(71) as any as S.Schema<RescheduleMaintenanceProjectsLocationsInstancesRequest>,
-  output: __S(21) as any as S.Schema<Operation>,
+  input: RescheduleMaintenanceProjectsLocationsInstancesRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1144,8 +1438,8 @@ export const setIamPolicyProjectsLocationsInstances: API.OperationMethod<
   SetIamPolicyProjectsLocationsInstancesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(73) as any as S.Schema<SetIamPolicyProjectsLocationsInstancesRequest>,
-  output: __S(42) as any as S.Schema<Policy>,
+  input: SetIamPolicyProjectsLocationsInstancesRequest,
+  output: Policy,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1164,8 +1458,8 @@ export const setIamPolicyProjectsLocationsInstancesDirectoryPolicies: API.Operat
   SetIamPolicyProjectsLocationsInstancesDirectoryPoliciesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(74) as any as S.Schema<SetIamPolicyProjectsLocationsInstancesDirectoryPoliciesRequest>,
-  output: __S(42) as any as S.Schema<Policy>,
+  input: SetIamPolicyProjectsLocationsInstancesDirectoryPoliciesRequest,
+  output: Policy,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1184,8 +1478,8 @@ export const testIamPermissionsProjectsLocationsInstances: API.OperationMethod<
   TestIamPermissionsProjectsLocationsInstancesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(76) as any as S.Schema<TestIamPermissionsProjectsLocationsInstancesRequest>,
-  output: __S(75) as any as S.Schema<TestIamPermissionsResponse>,
+  input: TestIamPermissionsProjectsLocationsInstancesRequest,
+  output: TestIamPermissionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1204,10 +1498,8 @@ export const testIamPermissionsProjectsLocationsInstancesDirectoryPolicies: API.
   TestIamPermissionsProjectsLocationsInstancesDirectoryPoliciesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(
-    77,
-  ) as any as S.Schema<TestIamPermissionsProjectsLocationsInstancesDirectoryPoliciesRequest>,
-  output: __S(75) as any as S.Schema<TestIamPermissionsResponse>,
+  input: TestIamPermissionsProjectsLocationsInstancesDirectoryPoliciesRequest,
+  output: TestIamPermissionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1256,20 +1548,20 @@ function __c0(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          endDate: S.optional(__S(3)),
-          startDate: S.optional(__S(3)),
-          time: S.optional(__S(4)),
+          endDate: S.optional(Lustre_Date),
+          startDate: S.optional(Lustre_Date),
+          time: S.optional(TimeOfDay),
         }),
       ).annotate({
         identifier: "MaintenanceExclusionWindow",
       });
     case 6:
-      return S.Array(__S(5));
+      return S.Array(MaintenanceExclusionWindow);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          dayOfWeek: S.optional(S.String),
-          startTime: S.optional(__S(4)),
+          dayOfWeek: S.optional(WeeklyMaintenanceWindowDayOfWeekEnum),
+          startTime: S.optional(TimeOfDay),
         }),
       ).annotate({ identifier: "WeeklyMaintenanceWindow" });
   }
@@ -1277,12 +1569,12 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(7));
+      return S.Array(WeeklyMaintenanceWindow);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          maintenanceExclusionWindow: S.optional(__S(6)),
-          weeklyMaintenanceWindows: S.optional(__S(8)),
+          maintenanceExclusionWindow: S.optional(MaintenanceExclusionWindowList),
+          weeklyMaintenanceWindows: S.optional(WeeklyMaintenanceWindowList),
         }),
       ).annotate({ identifier: "MaintenancePolicy" });
     case 2:
@@ -1295,7 +1587,7 @@ function __c1(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          mode: S.optional(S.String),
+          mode: S.optional(DynamicTierOptionsModeEnum),
         }),
       ).annotate({ identifier: "DynamicTierOptions" });
     case 4:
@@ -1304,19 +1596,19 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          squashMode: S.optional(S.String),
-          ipAddressRanges: S.optional(__S(12)),
+          squashMode: S.optional(AccessRuleSquashModeEnum),
+          ipAddressRanges: S.optional(StringList),
         }),
       ).annotate({ identifier: "AccessRule" });
     case 6:
-      return S.Array(__S(13));
+      return S.Array(AccessRule);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          accessRules: S.optional(__S(14)),
+          accessRules: S.optional(AccessRuleList),
           defaultSquashUid: S.optional(S.Number),
           defaultSquashGid: S.optional(S.Number),
-          defaultSquashMode: S.optional(S.String),
+          defaultSquashMode: S.optional(AccessRulesOptionsDefaultSquashModeEnum),
         }),
       ).annotate({ identifier: "AccessRulesOptions" });
   }
@@ -1331,19 +1623,19 @@ function __c2(j: number): any {
           uid: S.optional(S.String),
           network: S.optional(S.String),
           mountPoint: S.optional(S.String),
-          labels: S.optional(__S(2)),
+          labels: S.optional(StringMap),
           gkeSupportEnabled: S.optional(S.Boolean),
-          maintenancePolicy: S.optional(__S(9)),
-          upcomingMaintenanceSchedule: S.optional(__S(10)),
+          maintenancePolicy: S.optional(MaintenancePolicy),
+          upcomingMaintenanceSchedule: S.optional(MaintenanceSchedule),
           perUnitStorageThroughput: S.optional(S.String),
           description: S.optional(S.String),
-          state: S.optional(S.String),
+          state: S.optional(InstanceStateEnum),
           filesystem: S.optional(S.String),
           kmsKey: S.optional(S.String),
           placementPolicy: S.optional(S.String),
-          dynamicTierOptions: S.optional(__S(11)),
+          dynamicTierOptions: S.optional(DynamicTierOptions),
           stateReason: S.optional(S.String),
-          accessRulesOptions: S.optional(__S(15)),
+          accessRulesOptions: S.optional(AccessRulesOptions),
           name: S.optional(S.String),
           createTime: S.optional(S.String),
           updateTime: S.optional(S.String),
@@ -1357,7 +1649,7 @@ function __c2(j: number): any {
           instanceId: S.optional(S.String.pipe(T.Query())),
           requestId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(16).pipe(T.HttpBody())),
+          body: S.optional(Instance.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1371,23 +1663,23 @@ function __c2(j: number): any {
     case 2:
       return S.Record(S.String, S.Unknown);
     case 3:
-      return S.Array(__S(18));
+      return S.Array(DocumentMap);
     case 4:
       return S.suspend(() =>
         S.Struct({
           code: S.optional(S.Number),
           message: S.optional(S.String),
-          details: S.optional(__S(19)),
+          details: S.optional(DocumentMapList),
         }),
       ).annotate({ identifier: "Status" });
     case 5:
       return S.suspend(() =>
         S.Struct({
           done: S.optional(S.Boolean),
-          error: S.optional(__S(20)),
-          metadata: S.optional(__S(18)),
+          error: S.optional(Status),
+          metadata: S.optional(DocumentMap),
           name: S.optional(S.String),
-          response: S.optional(__S(18)),
+          response: S.optional(DocumentMap),
         }),
       ).annotate({ identifier: "Operation" });
     case 6:
@@ -1395,7 +1687,7 @@ function __c2(j: number): any {
         S.Struct({
           uid: S.optional(S.String),
           lustreProjectId: S.optional(S.String),
-          state: S.optional(S.String),
+          state: S.optional(DirectoryPolicyStateEnum),
           directoryPath: S.optional(S.String),
           name: S.optional(S.String),
         }),
@@ -1405,7 +1697,7 @@ function __c2(j: number): any {
         S.Struct({
           directoryPolicyId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(22).pipe(T.HttpBody())),
+          body: S.optional(DirectoryPolicy.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1437,15 +1729,15 @@ function __c3(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           deletedFilesRetained: S.optional(S.Boolean),
-          labels: S.optional(__S(2)),
+          labels: S.optional(StringMap),
           updateTime: S.optional(S.String),
           createTime: S.optional(S.String),
-          state: S.optional(S.String),
+          state: S.optional(MirrorStateEnum),
           description: S.optional(S.String),
-          direction: S.optional(S.String),
+          direction: S.optional(MirrorDirectionEnum),
           uid: S.optional(S.String),
-          gcsPath: S.optional(__S(24)),
-          lustrePath: S.optional(__S(25)),
+          gcsPath: S.optional(GcsPath),
+          lustrePath: S.optional(LustrePath),
         }),
       ).annotate({ identifier: "Mirror" });
     case 3:
@@ -1454,7 +1746,7 @@ function __c3(j: number): any {
           parent: S.String.pipe(T.Label()),
           mirrorId: S.optional(S.String.pipe(T.Query())),
           requestId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(26).pipe(T.HttpBody())),
+          body: S.optional(Mirror.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1531,8 +1823,8 @@ function __c4(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          lustrePath: S.optional(__S(25)),
-          gcsPath: S.optional(__S(24)),
+          lustrePath: S.optional(LustrePath),
+          gcsPath: S.optional(GcsPath),
           requestId: S.optional(S.String),
           serviceAccount: S.optional(S.String),
         }),
@@ -1541,7 +1833,7 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(32).pipe(T.HttpBody())),
+          body: S.optional(ExportDataRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1570,21 +1862,21 @@ function __c4(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          exemptedMembers: S.optional(__S(12)),
-          logType: S.optional(S.String),
+          exemptedMembers: S.optional(StringList),
+          logType: S.optional(AuditLogConfigLogTypeEnum),
         }),
       ).annotate({ identifier: "AuditLogConfig" });
     case 4:
-      return S.Array(__S(35));
+      return S.Array(AuditLogConfig);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          auditLogConfigs: S.optional(__S(36)),
+          auditLogConfigs: S.optional(AuditLogConfigList),
           service: S.optional(S.String),
         }),
       ).annotate({ identifier: "AuditConfig" });
     case 6:
-      return S.Array(__S(37));
+      return S.Array(AuditConfig);
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -1602,19 +1894,19 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           role: S.optional(S.String),
-          members: S.optional(__S(12)),
-          condition: S.optional(__S(39)),
+          members: S.optional(StringList),
+          condition: S.optional(Expr),
         }),
       ).annotate({ identifier: "Binding" });
     case 1:
-      return S.Array(__S(40));
+      return S.Array(Binding);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          auditConfigs: S.optional(__S(38)),
+          auditConfigs: S.optional(AuditConfigList),
           etag: S.optional(S.String),
           version: S.optional(S.Number),
-          bindings: S.optional(__S(41)),
+          bindings: S.optional(BindingList),
         }),
       ).annotate({ identifier: "Policy" });
     case 3:
@@ -1645,10 +1937,10 @@ function __c5(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          labels: S.optional(__S(2)),
+          labels: S.optional(StringMap),
           locationId: S.optional(S.String),
           name: S.optional(S.String),
-          metadata: S.optional(__S(18)),
+          metadata: S.optional(DocumentMap),
           displayName: S.optional(S.String),
         }),
       ).annotate({ identifier: "Location" });
@@ -1699,17 +1991,17 @@ function __c6(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          gcsPath: S.optional(__S(24)),
+          gcsPath: S.optional(GcsPath),
           requestId: S.optional(S.String),
           serviceAccount: S.optional(S.String),
-          lustrePath: S.optional(__S(25)),
+          lustrePath: S.optional(LustrePath),
         }),
       ).annotate({ identifier: "ImportDataRequest" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(50).pipe(T.HttpBody())),
+          body: S.optional(ImportDataRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1723,7 +2015,7 @@ function __c6(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          extraLocationTypes: S.optional(__S(12).pipe(T.Query())),
+          extraLocationTypes: S.optional(StringList.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
           filter: S.optional(S.String.pipe(T.Query())),
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -1739,11 +2031,11 @@ function __c6(j: number): any {
         identifier: "ListProjectsLocationsRequest",
       });
     case 5:
-      return S.Array(__S(45));
+      return S.Array(Location);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          locations: S.optional(__S(53)),
+          locations: S.optional(LocationList),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListLocationsResponse" });
@@ -1770,13 +2062,13 @@ function __c6(j: number): any {
 function __c7(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(16));
+      return S.Array(Instance);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          unreachable: S.optional(__S(12)),
+          unreachable: S.optional(StringList),
           nextPageToken: S.optional(S.String),
-          instances: S.optional(__S(56)),
+          instances: S.optional(InstanceList),
         }),
       ).annotate({ identifier: "ListInstancesResponse" });
     case 2:
@@ -1796,11 +2088,11 @@ function __c7(j: number): any {
         identifier: "ListProjectsLocationsInstancesDirectoryPoliciesRequest",
       });
     case 3:
-      return S.Array(__S(22));
+      return S.Array(DirectoryPolicy);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          directoryPolicies: S.optional(__S(59)),
+          directoryPolicies: S.optional(DirectoryPolicyList),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -1825,13 +2117,13 @@ function __c7(j: number): any {
         identifier: "ListProjectsLocationsInstancesMirrorsRequest",
       });
     case 6:
-      return S.Array(__S(26));
+      return S.Array(Mirror);
     case 7:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          mirrors: S.optional(__S(62)),
-          unreachable: S.optional(__S(12)),
+          mirrors: S.optional(MirrorList),
+          unreachable: S.optional(StringList),
         }),
       ).annotate({ identifier: "ListMirrorsResponse" });
   }
@@ -1857,13 +2149,13 @@ function __c8(j: number): any {
         identifier: "ListProjectsLocationsOperationsRequest",
       });
     case 1:
-      return S.Array(__S(21));
+      return S.Array(Operation);
     case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          operations: S.optional(__S(65)),
-          unreachable: S.optional(__S(12)),
+          operations: S.optional(OperationList),
+          unreachable: S.optional(StringList),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
     case 3:
@@ -1872,7 +2164,7 @@ function __c8(j: number): any {
           name: S.String.pipe(T.Label()),
           requestId: S.optional(S.String.pipe(T.Query())),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(16).pipe(T.HttpBody())),
+          body: S.optional(Instance.pipe(T.HttpBody())),
         }).pipe(
           T.Http({ method: "PATCH", uri: "v1/{+name}", baseUrl: "https://lustre.googleapis.com/" }),
         ),
@@ -1885,7 +2177,7 @@ function __c8(j: number): any {
           updateMask: S.optional(S.String.pipe(T.Query())),
           requestId: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(26).pipe(T.HttpBody())),
+          body: S.optional(Mirror.pipe(T.HttpBody())),
         }).pipe(
           T.Http({ method: "PATCH", uri: "v1/{+name}", baseUrl: "https://lustre.googleapis.com/" }),
         ),
@@ -1895,14 +2187,14 @@ function __c8(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          rescheduleType: S.optional(S.String),
+          rescheduleType: S.optional(RescheduleRescheduleTypeEnum),
           scheduleTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "Reschedule" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          reschedule: S.optional(__S(69)),
+          reschedule: S.optional(Reschedule),
           requestId: S.optional(S.String),
         }),
       ).annotate({
@@ -1912,7 +2204,7 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(70).pipe(T.HttpBody())),
+          body: S.optional(RescheduleMaintenanceRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1930,7 +2222,7 @@ function __c9(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          policy: S.optional(__S(42)),
+          policy: S.optional(Policy),
           updateMask: S.optional(S.String),
         }),
       ).annotate({ identifier: "SetIamPolicyRequest" });
@@ -1938,7 +2230,7 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(72).pipe(T.HttpBody())),
+          body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1953,7 +2245,7 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(72).pipe(T.HttpBody())),
+          body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1967,7 +2259,7 @@ function __c9(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          permissions: S.optional(__S(12)),
+          permissions: S.optional(StringList),
         }),
       ).annotate({
         identifier: "TestIamPermissionsRequest",
@@ -1976,7 +2268,7 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(75).pipe(T.HttpBody())),
+          body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1991,7 +2283,7 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(75).pipe(T.HttpBody())),
+          body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2002,34 +2294,5 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "TestIamPermissionsProjectsLocationsInstancesDirectoryPoliciesRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
-    case 9:
-      return __c9(i & 7);
   }
 }

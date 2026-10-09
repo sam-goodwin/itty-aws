@@ -5,8 +5,6 @@ import * as S from "@distilled.cloud/core/schema";
 import { PosthogProtocol, type PosthogOpError, type PosthogOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { PosthogOpError, PosthogOpContext };
 
@@ -30,10 +28,19 @@ export interface CreateCustomPropertySourceRequest {
   /** Whether the source syncs. Auto-disabled after repeated failures or a missing view; re-enabling resets the failure count. */
   is_enabled?: boolean;
 }
+const CreateCustomPropertySourceRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<CreateCustomPropertySourceRequest>;
+
 /** * `tracked` - tracked * `ignored` - ignored */
 export type SyncSegmentEnum = "tracked" | "ignored";
+const SyncSegmentEnum = S.String;
+
 /** * `staging` - staging * `dispatching` - dispatching * `syncing` - syncing * `completed` - completed */
 export type SyncPhaseEnum = "staging" | "dispatching" | "syncing" | "completed";
+const SyncPhaseEnum = S.String;
+
 /** One warehouse-backed custom property sync run. */
 export interface CustomPropertySyncRun {
   id: string;
@@ -74,6 +81,11 @@ export interface CustomPropertySyncRun {
   /** When the run row was recorded. */
   created_at: string;
 }
+const CustomPropertySyncRun = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<CustomPropertySyncRun>;
+
 /** Binds warehouse columns to a custom property definition. Account sources read a materialized view column and sync onto matching accounts; person and group sources read either an imported warehouse table or a materialized view, and sync onto matching persons or groups on every warehouse run of what they read. */
 export interface CustomPropertySource {
   id: string;
@@ -115,23 +127,48 @@ export interface CustomPropertySource {
   /** View-bound person and group sources only: the materialized view's name, so the UI can tell a view-backed source from a table-backed one. Null for account and table-bound sources. */
   saved_query_name: string | null;
 }
+const CustomPropertySource = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<CustomPropertySource>;
+
 export interface CustomPropertySourcesBackfillRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   id: string;
 }
+const CustomPropertySourcesBackfillRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<CustomPropertySourcesBackfillRequest>;
+
 export interface CustomPropertySourcesBackfillResponse {}
+const CustomPropertySourcesBackfillResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<CustomPropertySourcesBackfillResponse>;
+
 export interface CustomPropertySourcesDestroyRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   id: string;
 }
+const CustomPropertySourcesDestroyRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<CustomPropertySourcesDestroyRequest>;
+
 export interface CustomPropertySourcesDestroyResponse {}
+const CustomPropertySourcesDestroyResponse =
+  CustomPropertySourcesBackfillResponse as any as S.Schema<CustomPropertySourcesDestroyResponse>;
+
 export interface GetCustomPropertySourceRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   id: string;
 }
+const GetCustomPropertySourceRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<GetCustomPropertySourceRequest>;
+
 export interface ListCustomPropertySourcesRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -140,13 +177,28 @@ export interface ListCustomPropertySourcesRequest {
   /** The initial index from which to return the results. */
   offset?: number;
 }
+const ListCustomPropertySourcesRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<ListCustomPropertySourcesRequest>;
+
 export type PaginatedCustomPropertySourceListResultsList = Array<CustomPropertySource>;
+const PaginatedCustomPropertySourceListResultsList = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<PaginatedCustomPropertySourceListResultsList>;
+
 export interface PaginatedCustomPropertySourceList {
   count: number;
   next?: string | null;
   previous?: string | null;
   results: PaginatedCustomPropertySourceListResultsList;
 }
+const PaginatedCustomPropertySourceList = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<PaginatedCustomPropertySourceList>;
+
 export interface ListCustomPropertySourcesRunsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -158,19 +210,42 @@ export interface ListCustomPropertySourcesRunsRequest {
   /** Match run IDs, workflow IDs, job IDs, statuses, segments, triggers, or errors. */
   search?: string;
 }
+const ListCustomPropertySourcesRunsRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<ListCustomPropertySourcesRunsRequest>;
+
 export type PaginatedCustomPropertySyncRunListResultsList = Array<CustomPropertySyncRun>;
+const PaginatedCustomPropertySyncRunListResultsList = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<PaginatedCustomPropertySyncRunListResultsList>;
+
 export interface PaginatedCustomPropertySyncRunList {
   count: number;
   next?: string | null;
   previous?: string | null;
   results: PaginatedCustomPropertySyncRunListResultsList;
 }
+const PaginatedCustomPropertySyncRunList = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<PaginatedCustomPropertySyncRunList>;
+
 export interface SyncCustomPropertySourceRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   id: string;
 }
+const SyncCustomPropertySourceRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<SyncCustomPropertySourceRequest>;
+
 export interface SyncCustomPropertySourceResponse {}
+const SyncCustomPropertySourceResponse =
+  CustomPropertySourcesBackfillResponse as any as S.Schema<SyncCustomPropertySourceResponse>;
+
 export interface UpdateCustomPropertySourceRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -186,6 +261,11 @@ export interface UpdateCustomPropertySourceRequest {
   /** Whether the source syncs; re-enabling it resets the failure count. */
   is_enabled?: boolean;
 }
+const UpdateCustomPropertySourceRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<UpdateCustomPropertySourceRequest>;
+
 export interface UpdateCustomPropertySourcesPartialRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -201,6 +281,11 @@ export interface UpdateCustomPropertySourcesPartialRequest {
   /** Whether the source syncs; re-enabling it resets the failure count. */
   is_enabled?: boolean;
 }
+const UpdateCustomPropertySourcesPartialRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<UpdateCustomPropertySourcesPartialRequest>;
+
 export type CreateCustomPropertySourceError = PosthogOpError;
 export const createCustomPropertySource: API.OperationMethod<
   CreateCustomPropertySourceRequest,
@@ -208,8 +293,8 @@ export const createCustomPropertySource: API.OperationMethod<
   CreateCustomPropertySourceError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<CreateCustomPropertySourceRequest>,
-  output: __S(2) as any as S.Schema<CustomPropertySource>,
+  input: CreateCustomPropertySourceRequest,
+  output: CustomPropertySource,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -223,8 +308,8 @@ export const customPropertySourcesBackfill: API.OperationMethod<
   CustomPropertySourcesBackfillError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3) as any as S.Schema<CustomPropertySourcesBackfillRequest>,
-  output: __S(4) as any as S.Schema<CustomPropertySourcesBackfillResponse>,
+  input: CustomPropertySourcesBackfillRequest,
+  output: CustomPropertySourcesBackfillResponse,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -237,8 +322,8 @@ export const customPropertySourcesDestroy: API.OperationMethod<
   CustomPropertySourcesDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5) as any as S.Schema<CustomPropertySourcesDestroyRequest>,
-  output: __S(4) as any as S.Schema<CustomPropertySourcesDestroyResponse>,
+  input: CustomPropertySourcesDestroyRequest,
+  output: CustomPropertySourcesDestroyResponse,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -251,8 +336,8 @@ export const getCustomPropertySource: API.OperationMethod<
   GetCustomPropertySourceError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6) as any as S.Schema<GetCustomPropertySourceRequest>,
-  output: __S(2) as any as S.Schema<CustomPropertySource>,
+  input: GetCustomPropertySourceRequest,
+  output: CustomPropertySource,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -265,8 +350,8 @@ export const listCustomPropertySources: API.OperationMethod<
   ListCustomPropertySourcesError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7) as any as S.Schema<ListCustomPropertySourcesRequest>,
-  output: __S(9) as any as S.Schema<PaginatedCustomPropertySourceList>,
+  input: ListCustomPropertySourcesRequest,
+  output: PaginatedCustomPropertySourceList,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -280,8 +365,8 @@ export const listCustomPropertySourcesRuns: API.OperationMethod<
   ListCustomPropertySourcesRunsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10) as any as S.Schema<ListCustomPropertySourcesRunsRequest>,
-  output: __S(12) as any as S.Schema<PaginatedCustomPropertySyncRunList>,
+  input: ListCustomPropertySourcesRunsRequest,
+  output: PaginatedCustomPropertySyncRunList,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -295,8 +380,8 @@ export const syncCustomPropertySource: API.OperationMethod<
   SyncCustomPropertySourceError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13) as any as S.Schema<SyncCustomPropertySourceRequest>,
-  output: __S(4) as any as S.Schema<SyncCustomPropertySourceResponse>,
+  input: SyncCustomPropertySourceRequest,
+  output: SyncCustomPropertySourceResponse,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -309,8 +394,8 @@ export const updateCustomPropertySource: API.OperationMethod<
   UpdateCustomPropertySourceError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14) as any as S.Schema<UpdateCustomPropertySourceRequest>,
-  output: __S(2) as any as S.Schema<CustomPropertySource>,
+  input: UpdateCustomPropertySourceRequest,
+  output: CustomPropertySource,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -323,8 +408,8 @@ export const updateCustomPropertySourcesPartial: API.OperationMethod<
   UpdateCustomPropertySourcesPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15) as any as S.Schema<UpdateCustomPropertySourcesPartialRequest>,
-  output: __S(2) as any as S.Schema<CustomPropertySource>,
+  input: UpdateCustomPropertySourcesPartialRequest,
+  output: CustomPropertySource,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -360,8 +445,8 @@ function __c0(j: number): any {
         S.Struct({
           id: S.String,
           job_id: S.NullOr(S.String),
-          account_segment: S.NullOr(S.String),
-          sync_phase: S.NullOr(S.String),
+          account_segment: S.NullOr(SyncSegmentEnum),
+          sync_phase: S.NullOr(SyncPhaseEnum),
           attempt: S.NullOr(S.Number),
           workflow_id: S.NullOr(S.String),
           workflow_run_id: S.NullOr(S.String),
@@ -399,7 +484,7 @@ function __c0(j: number): any {
           updated_at: S.NullOr(S.String),
           sync_frequency_interval_seconds: S.NullOr(S.Number),
           next_sync_at: S.NullOr(S.String),
-          latest_run: S.NullOr(__S(1)),
+          latest_run: S.NullOr(CustomPropertySyncRun),
           external_data_source: S.NullOr(S.String),
           table_name: S.NullOr(S.String),
           saved_query_name: S.NullOr(S.String),
@@ -475,14 +560,14 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(2));
+      return S.Array(CustomPropertySource);
     case 1:
       return S.suspend(() =>
         S.Struct({
           count: S.Number,
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: __S(8),
+          results: PaginatedCustomPropertySourceListResultsList,
         }),
       ).annotate({
         identifier: "PaginatedCustomPropertySourceList",
@@ -506,14 +591,14 @@ function __c1(j: number): any {
         identifier: "ListCustomPropertySourcesRunsRequest",
       });
     case 3:
-      return S.Array(__S(1));
+      return S.Array(CustomPropertySyncRun);
     case 4:
       return S.suspend(() =>
         S.Struct({
           count: S.Number,
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: __S(11),
+          results: PaginatedCustomPropertySyncRunListResultsList,
         }),
       ).annotate({
         identifier: "PaginatedCustomPropertySyncRunList",
@@ -573,18 +658,5 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "UpdateCustomPropertySourcesPartialRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
   }
 }

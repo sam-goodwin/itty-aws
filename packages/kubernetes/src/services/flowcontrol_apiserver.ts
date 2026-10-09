@@ -11,8 +11,6 @@ import {
 } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { KubernetesOpError, KubernetesOpContext };
 
@@ -47,12 +45,25 @@ export class UnprocessableEntity
 export type IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap = {
   [key: string]: string | undefined;
 };
+const IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap>;
+
 /** Must be empty before the object is deleted from the registry. Each entry is an identifier for the responsible component that will remove the entry from the list. If the deletionTimestamp of the object is non-nil, entries in this list can only be removed. Finalizers may be processed and removed in any order. Order is NOT enforced because it introduces significant risk of stuck finalizers. finalizers is a shared field, any actor with permission can reorder it. If the finalizer list is processed in order, then this can lead to a situation in which the component responsible for the first finalizer in the list is waiting for a signal (field value, external system, or other) produced by a component responsible for a finalizer later in the list, resulting in a deadlock. Without enforced ordering finalizers are free to order amongst themselves and are not vulnerable to ordering changes in the list. */
 export type IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList = Array<string>;
+const IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList>;
+
 /** Map of string keys and values that can be used to organize and categorize (scope and select) objects. May match selectors of replication controllers and services. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels */
 export type IoK8sApimachineryPkgApisMetaV1ObjectMetaLabelsMap = {
   [key: string]: string | undefined;
 };
+const IoK8sApimachineryPkgApisMetaV1ObjectMetaLabelsMap =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ObjectMetaLabelsMap>;
+
 /** ManagedFieldsEntry is a workflow-id, a FieldSet and the group version of the resource that the fieldset applies to. */
 export interface IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry {
   /** APIVersion defines the version of this resource that this field set applies to. The format is "group/version" just like the top-level APIVersion field. It is necessary to track the version of a field set because it cannot be automatically converted. */
@@ -70,9 +81,19 @@ export interface IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry {
   /** Time is the timestamp of when the ManagedFields entry was added. The timestamp will also be updated if a field is added, the manager changes any of the owned fields value or removes a field. The timestamp does not update when a field is removed from the entry because another manager took it over. */
   time?: string;
 }
+const IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry>;
+
 /** ManagedFields maps workflow-id and version to the set of fields that are managed by that workflow. This is mostly for internal housekeeping, and users typically shouldn't need to set or understand this field. A workflow can be the user's name, a controller's name, or the name of a specific apply path like "ci-cd". The set of fields is always in the version that the workflow used when modifying the object. */
 export type IoK8sApimachineryPkgApisMetaV1ObjectMetaManagedFieldsList =
   Array<IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry>;
+const IoK8sApimachineryPkgApisMetaV1ObjectMetaManagedFieldsList = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ObjectMetaManagedFieldsList>;
+
 /** OwnerReference contains enough information to let you identify an owning object. An owning object must be in the same namespace as the dependent, or be cluster-scoped, so there is no namespace field. */
 export interface IoK8sApimachineryPkgApisMetaV1OwnerReference {
   /** API version of the referent. */
@@ -88,9 +109,19 @@ export interface IoK8sApimachineryPkgApisMetaV1OwnerReference {
   /** UID of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names#uids */
   uid: string;
 }
+const IoK8sApimachineryPkgApisMetaV1OwnerReference = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1OwnerReference>;
+
 /** List of objects depended by this object. If ALL objects in the list have been deleted, this object will be garbage collected. If this object is managed by a controller, then an entry in this list will point to this controller, with the controller field set to true. There cannot be more than one managing controller. */
 export type IoK8sApimachineryPkgApisMetaV1ObjectMetaOwnerReferencesList =
   Array<IoK8sApimachineryPkgApisMetaV1OwnerReference>;
+const IoK8sApimachineryPkgApisMetaV1ObjectMetaOwnerReferencesList = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ObjectMetaOwnerReferencesList>;
+
 /** ObjectMeta is metadata that all persisted resources must have, which includes all objects users must create. */
 export interface IoK8sApimachineryPkgApisMetaV1ObjectMeta {
   /** Annotations is an unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations */
@@ -124,20 +155,41 @@ export interface IoK8sApimachineryPkgApisMetaV1ObjectMeta {
   /** UID is the unique in time and space value for this object. It is typically generated by the server on successful creation of a resource and is not allowed to change on PUT operations. Populated by the system. Read-only. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names#uids */
   uid?: string;
 }
+const IoK8sApimachineryPkgApisMetaV1ObjectMeta = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ObjectMeta>;
+
 /** FlowDistinguisherMethod specifies the method of a flow distinguisher. */
 export interface IoK8sApiFlowcontrolV1FlowDistinguisherMethod {
   /** type is the type of flow distinguisher method The supported types are "ByUser" and "ByNamespace". Required. */
   type: string;
 }
+const IoK8sApiFlowcontrolV1FlowDistinguisherMethod = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<IoK8sApiFlowcontrolV1FlowDistinguisherMethod>;
+
 /** PriorityLevelConfigurationReference contains information that points to the "request-priority" being used. */
 export interface IoK8sApiFlowcontrolV1PriorityLevelConfigurationReference {
   /** name is the name of the priority level configuration being referenced Required. */
   name: string;
 }
+const IoK8sApiFlowcontrolV1PriorityLevelConfigurationReference = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<IoK8sApiFlowcontrolV1PriorityLevelConfigurationReference>;
+
 /** nonResourceURLs is a set of url prefixes that a user should have access to and may not be empty. For example: - "/healthz" is legal - "/hea*" is illegal - "/hea" is legal but matches nothing - "/hea/*" also matches nothing - "/healthz/*" matches all per-component health checks. "*" matches all non-resource urls. if it is present, it must be the only entry. Required. */
 export type IoK8sApiFlowcontrolV1NonResourcePolicyRuleNonResourceURLsList = Array<string>;
+const IoK8sApiFlowcontrolV1NonResourcePolicyRuleNonResourceURLsList =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiFlowcontrolV1NonResourcePolicyRuleNonResourceURLsList>;
+
 /** verbs is a list of matching verbs and may not be empty. "*" matches all verbs. If it is present, it must be the only entry. Required. */
 export type IoK8sApiFlowcontrolV1NonResourcePolicyRuleVerbsList = Array<string>;
+const IoK8sApiFlowcontrolV1NonResourcePolicyRuleVerbsList =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiFlowcontrolV1NonResourcePolicyRuleVerbsList>;
+
 /** NonResourcePolicyRule is a predicate that matches non-resource requests according to their verb and the target non-resource URL. A NonResourcePolicyRule matches a request if and only if both (a) at least one member of verbs matches the request and (b) at least one member of nonResourceURLs matches the request. */
 export interface IoK8sApiFlowcontrolV1NonResourcePolicyRule {
   /** nonResourceURLs is a set of url prefixes that a user should have access to and may not be empty. For example: - "/healthz" is legal - "/hea*" is illegal - "/hea" is legal but matches nothing - "/hea/*" also matches nothing - "/healthz/*" matches all per-component health checks. "*" matches all non-resource urls. if it is present, it must be the only entry. Required. */
@@ -145,17 +197,39 @@ export interface IoK8sApiFlowcontrolV1NonResourcePolicyRule {
   /** verbs is a list of matching verbs and may not be empty. "*" matches all verbs. If it is present, it must be the only entry. Required. */
   verbs: IoK8sApiFlowcontrolV1NonResourcePolicyRuleVerbsList;
 }
+const IoK8sApiFlowcontrolV1NonResourcePolicyRule = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<IoK8sApiFlowcontrolV1NonResourcePolicyRule>;
+
 /** nonResourceRules is a list of NonResourcePolicyRules that identify matching requests according to their verb and the target non-resource URL. */
 export type IoK8sApiFlowcontrolV1PolicyRulesWithSubjectsNonResourceRulesList =
   Array<IoK8sApiFlowcontrolV1NonResourcePolicyRule>;
+const IoK8sApiFlowcontrolV1PolicyRulesWithSubjectsNonResourceRulesList = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<IoK8sApiFlowcontrolV1PolicyRulesWithSubjectsNonResourceRulesList>;
+
 /** apiGroups is a list of matching API groups and may not be empty. "*" matches all API groups and, if present, must be the only entry. Required. */
 export type IoK8sApiFlowcontrolV1ResourcePolicyRuleApiGroupsList = Array<string>;
+const IoK8sApiFlowcontrolV1ResourcePolicyRuleApiGroupsList =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiFlowcontrolV1ResourcePolicyRuleApiGroupsList>;
+
 /** namespaces is a list of target namespaces that restricts matches. A request that specifies a target namespace matches only if either (a) this list contains that target namespace or (b) this list contains "*". Note that "*" matches any specified namespace but does not match a request that _does not specify_ a namespace (see the `clusterScope` field for that). This list may be empty, but only if `clusterScope` is true. */
 export type IoK8sApiFlowcontrolV1ResourcePolicyRuleNamespacesList = Array<string>;
+const IoK8sApiFlowcontrolV1ResourcePolicyRuleNamespacesList =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiFlowcontrolV1ResourcePolicyRuleNamespacesList>;
+
 /** resources is a list of matching resources (i.e., lowercase and plural) with, if desired, subresource. For example, [ "services", "nodes/status" ]. This list may not be empty. "*" matches all resources and, if present, must be the only entry. Required. */
 export type IoK8sApiFlowcontrolV1ResourcePolicyRuleResourcesList = Array<string>;
+const IoK8sApiFlowcontrolV1ResourcePolicyRuleResourcesList =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiFlowcontrolV1ResourcePolicyRuleResourcesList>;
+
 /** verbs is a list of matching verbs and may not be empty. "*" matches all verbs and, if present, must be the only entry. Required. */
 export type IoK8sApiFlowcontrolV1ResourcePolicyRuleVerbsList = Array<string>;
+const IoK8sApiFlowcontrolV1ResourcePolicyRuleVerbsList =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiFlowcontrolV1ResourcePolicyRuleVerbsList>;
+
 /** ResourcePolicyRule is a predicate that matches some resource requests, testing the request's verb and the target resource. A ResourcePolicyRule matches a resource request if and only if: (a) at least one member of verbs matches the request, (b) at least one member of apiGroups matches the request, (c) at least one member of resources matches the request, and (d) either (d1) the request does not specify a namespace (i.e., `Namespace==""`) and clusterScope is true or (d2) the request specifies a namespace and least one member of namespaces matches the request's namespace. */
 export interface IoK8sApiFlowcontrolV1ResourcePolicyRule {
   /** apiGroups is a list of matching API groups and may not be empty. "*" matches all API groups and, if present, must be the only entry. Required. */
@@ -169,14 +243,29 @@ export interface IoK8sApiFlowcontrolV1ResourcePolicyRule {
   /** verbs is a list of matching verbs and may not be empty. "*" matches all verbs and, if present, must be the only entry. Required. */
   verbs: IoK8sApiFlowcontrolV1ResourcePolicyRuleVerbsList;
 }
+const IoK8sApiFlowcontrolV1ResourcePolicyRule = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<IoK8sApiFlowcontrolV1ResourcePolicyRule>;
+
 /** resourceRules is a slice of ResourcePolicyRules that identify matching requests according to their verb and the target resource. At least one of `resourceRules` and `nonResourceRules` has to be non-empty. */
 export type IoK8sApiFlowcontrolV1PolicyRulesWithSubjectsResourceRulesList =
   Array<IoK8sApiFlowcontrolV1ResourcePolicyRule>;
+const IoK8sApiFlowcontrolV1PolicyRulesWithSubjectsResourceRulesList = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<IoK8sApiFlowcontrolV1PolicyRulesWithSubjectsResourceRulesList>;
+
 /** GroupSubject holds detailed information for group-kind subject. */
 export interface IoK8sApiFlowcontrolV1GroupSubject {
   /** name is the user group that matches, or "*" to match all user groups. See https://github.com/kubernetes/apiserver/blob/master/pkg/authentication/user/user.go for some well-known group names. Required. */
   name: string;
 }
+const IoK8sApiFlowcontrolV1GroupSubject = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<IoK8sApiFlowcontrolV1GroupSubject>;
+
 /** ServiceAccountSubject holds detailed information for service-account-kind subject. */
 export interface IoK8sApiFlowcontrolV1ServiceAccountSubject {
   /** name is the name of matching ServiceAccount objects, or "*" to match regardless of name. Required. */
@@ -184,11 +273,19 @@ export interface IoK8sApiFlowcontrolV1ServiceAccountSubject {
   /** namespace is the namespace of matching ServiceAccount objects. Required. */
   namespace: string;
 }
+const IoK8sApiFlowcontrolV1ServiceAccountSubject = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<IoK8sApiFlowcontrolV1ServiceAccountSubject>;
+
 /** UserSubject holds detailed information for user-kind subject. */
 export interface IoK8sApiFlowcontrolV1UserSubject {
   /** name is the username that matches, or "*" to match all usernames. Required. */
   name: string;
 }
+const IoK8sApiFlowcontrolV1UserSubject =
+  IoK8sApiFlowcontrolV1GroupSubject as any as S.Schema<IoK8sApiFlowcontrolV1UserSubject>;
+
 /** Subject matches the originator of a request, as identified by the request authentication system. There are three ways of matching an originator; by user, group, or service account. */
 export interface IoK8sApiFlowcontrolV1Subject {
   /** group matches based on user group name. */
@@ -200,9 +297,19 @@ export interface IoK8sApiFlowcontrolV1Subject {
   /** user matches based on username. */
   user?: IoK8sApiFlowcontrolV1UserSubject;
 }
+const IoK8sApiFlowcontrolV1Subject = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<IoK8sApiFlowcontrolV1Subject>;
+
 /** subjects is the list of normal user, serviceaccount, or group that this rule cares about. There must be at least one member in this slice. A slice that includes both the system:authenticated and system:unauthenticated user groups matches every request. Required. */
 export type IoK8sApiFlowcontrolV1PolicyRulesWithSubjectsSubjectsList =
   Array<IoK8sApiFlowcontrolV1Subject>;
+const IoK8sApiFlowcontrolV1PolicyRulesWithSubjectsSubjectsList = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<IoK8sApiFlowcontrolV1PolicyRulesWithSubjectsSubjectsList>;
+
 /** PolicyRulesWithSubjects prescribes a test that applies to a request to an apiserver. The test considers the subject making the request, the verb being requested, and the resource to be acted upon. This PolicyRulesWithSubjects matches a request if and only if both (a) at least one member of subjects matches the request and (b) at least one member of resourceRules or nonResourceRules matches the request. */
 export interface IoK8sApiFlowcontrolV1PolicyRulesWithSubjects {
   /** nonResourceRules is a list of NonResourcePolicyRules that identify matching requests according to their verb and the target non-resource URL. */
@@ -212,9 +319,19 @@ export interface IoK8sApiFlowcontrolV1PolicyRulesWithSubjects {
   /** subjects is the list of normal user, serviceaccount, or group that this rule cares about. There must be at least one member in this slice. A slice that includes both the system:authenticated and system:unauthenticated user groups matches every request. Required. */
   subjects: IoK8sApiFlowcontrolV1PolicyRulesWithSubjectsSubjectsList;
 }
+const IoK8sApiFlowcontrolV1PolicyRulesWithSubjects = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<IoK8sApiFlowcontrolV1PolicyRulesWithSubjects>;
+
 /** rules describes which requests will match this flow schema. This FlowSchema matches a request if and only if at least one member of rules matches the request. if it is an empty slice, there will be no requests matching the FlowSchema. */
 export type IoK8sApiFlowcontrolV1FlowSchemaSpecRulesList =
   Array<IoK8sApiFlowcontrolV1PolicyRulesWithSubjects>;
+const IoK8sApiFlowcontrolV1FlowSchemaSpecRulesList = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<IoK8sApiFlowcontrolV1FlowSchemaSpecRulesList>;
+
 /** FlowSchemaSpec describes how the FlowSchema's specification looks like. */
 export interface IoK8sApiFlowcontrolV1FlowSchemaSpec {
   /** distinguisherMethod defines how to compute the flow distinguisher for requests that match this schema. `nil` specifies that the distinguisher is disabled and thus will always be the empty string. */
@@ -226,6 +343,11 @@ export interface IoK8sApiFlowcontrolV1FlowSchemaSpec {
   /** rules describes which requests will match this flow schema. This FlowSchema matches a request if and only if at least one member of rules matches the request. if it is an empty slice, there will be no requests matching the FlowSchema. */
   rules?: IoK8sApiFlowcontrolV1FlowSchemaSpecRulesList;
 }
+const IoK8sApiFlowcontrolV1FlowSchemaSpec = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<IoK8sApiFlowcontrolV1FlowSchemaSpec>;
+
 /** FlowSchemaCondition describes conditions for a FlowSchema. */
 export interface IoK8sApiFlowcontrolV1FlowSchemaCondition {
   /** lastTransitionTime is the last time the condition transitioned from one status to another. */
@@ -239,14 +361,29 @@ export interface IoK8sApiFlowcontrolV1FlowSchemaCondition {
   /** type is the type of the condition. Required. */
   type: string;
 }
+const IoK8sApiFlowcontrolV1FlowSchemaCondition = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<IoK8sApiFlowcontrolV1FlowSchemaCondition>;
+
 /** `conditions` is a list of the current states of FlowSchema. */
 export type IoK8sApiFlowcontrolV1FlowSchemaStatusConditionsList =
   Array<IoK8sApiFlowcontrolV1FlowSchemaCondition>;
+const IoK8sApiFlowcontrolV1FlowSchemaStatusConditionsList = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<IoK8sApiFlowcontrolV1FlowSchemaStatusConditionsList>;
+
 /** FlowSchemaStatus represents the current state of a FlowSchema. */
 export interface IoK8sApiFlowcontrolV1FlowSchemaStatus {
   /** `conditions` is a list of the current states of FlowSchema. */
   conditions?: IoK8sApiFlowcontrolV1FlowSchemaStatusConditionsList;
 }
+const IoK8sApiFlowcontrolV1FlowSchemaStatus = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<IoK8sApiFlowcontrolV1FlowSchemaStatus>;
+
 export interface CreateFlowcontrolApiserverV1FlowSchemaRequest {
   /** If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). */
   pretty?: string;
@@ -267,6 +404,11 @@ export interface CreateFlowcontrolApiserverV1FlowSchemaRequest {
   /** status is the current status of a FlowSchema. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status */
   status?: IoK8sApiFlowcontrolV1FlowSchemaStatus;
 }
+const CreateFlowcontrolApiserverV1FlowSchemaRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<CreateFlowcontrolApiserverV1FlowSchemaRequest>;
+
 /** FlowSchema defines the schema of a group of flows. Note that a flow is made up of a set of inbound API requests with similar attributes and is identified by a pair of strings: the name of the FlowSchema and a "flow distinguisher". */
 export interface IoK8sApiFlowcontrolV1FlowSchema {
   /** APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources */
@@ -280,6 +422,11 @@ export interface IoK8sApiFlowcontrolV1FlowSchema {
   /** status is the current status of a FlowSchema. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status */
   status?: IoK8sApiFlowcontrolV1FlowSchemaStatus;
 }
+const IoK8sApiFlowcontrolV1FlowSchema = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<IoK8sApiFlowcontrolV1FlowSchema>;
+
 /** ExemptPriorityLevelConfiguration describes the configurable aspects of the handling of exempt requests. In the mandatory exempt configuration object the values in the fields here can be modified by authorized users, unlike the rest of the `spec`. */
 export interface IoK8sApiFlowcontrolV1ExemptPriorityLevelConfiguration {
   /** lendablePercent prescribes the fraction of the level's NominalCL that can be borrowed by other priority levels. This value of this field must be between 0 and 100, inclusive, and it defaults to 0. The number of seats that other levels can borrow from this level, known as this level's LendableConcurrencyLimit (LendableCL), is defined as follows. LendableCL(i) = round( NominalCL(i) * lendablePercent(i)/100.0 ) */
@@ -287,6 +434,11 @@ export interface IoK8sApiFlowcontrolV1ExemptPriorityLevelConfiguration {
   /** nominalConcurrencyShares (NCS) contributes to the computation of the NominalConcurrencyLimit (NominalCL) of this level. This is the number of execution seats nominally reserved for this priority level. This DOES NOT limit the dispatching from this priority level but affects the other priority levels through the borrowing mechanism. The server's concurrency limit (ServerCL) is divided among all the priority levels in proportion to their NCS values: NominalCL(i) = ceil( ServerCL * NCS(i) / sum_ncs ) sum_ncs = sum[priority level k] NCS(k) Bigger numbers mean a larger nominal concurrency limit, at the expense of every other priority level. This field has a default value of zero. */
   nominalConcurrencyShares?: number;
 }
+const IoK8sApiFlowcontrolV1ExemptPriorityLevelConfiguration = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<IoK8sApiFlowcontrolV1ExemptPriorityLevelConfiguration>;
+
 /** QueuingConfiguration holds the configuration parameters for queuing */
 export interface IoK8sApiFlowcontrolV1QueuingConfiguration {
   /** handSize is a small positive number that configures the shuffle sharding of requests into queues. When enqueuing a request at this priority level the request's flow identifier (a string pair) is hashed and the hash value is used to shuffle the list of queues and deal a hand of the size specified here. The request is put into one of the shortest queues in that hand. `handSize` must be no larger than `queues`, and should be significantly smaller (so that a few heavy flows do not saturate most of the queues). See the user-facing documentation for more extensive guidance on setting this field. This field has a default value of 8. */
@@ -296,6 +448,11 @@ export interface IoK8sApiFlowcontrolV1QueuingConfiguration {
   /** queues is the number of queues for this priority level. The queues exist independently at each apiserver. The value must be positive. Setting it to 1 effectively precludes shufflesharding and thus makes the distinguisher method of associated flow schemas irrelevant. This field has a default value of 64. */
   queues?: number;
 }
+const IoK8sApiFlowcontrolV1QueuingConfiguration = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<IoK8sApiFlowcontrolV1QueuingConfiguration>;
+
 /** LimitResponse defines how to handle requests that can not be executed right now. */
 export interface IoK8sApiFlowcontrolV1LimitResponse {
   /** queuing holds the configuration parameters for queuing. This field may be non-empty only if `type` is `"Queue"`. */
@@ -303,6 +460,11 @@ export interface IoK8sApiFlowcontrolV1LimitResponse {
   /** type is "Queue" or "Reject". "Queue" means that requests that can not be executed upon arrival are held in a queue until they can be executed or a queuing limit is reached. "Reject" means that requests that can not be executed upon arrival are rejected. Required. */
   type: string;
 }
+const IoK8sApiFlowcontrolV1LimitResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<IoK8sApiFlowcontrolV1LimitResponse>;
+
 /** LimitedPriorityLevelConfiguration specifies how to handle requests that are subject to limits. It addresses two issues: - How are requests for this priority level limited? - What should be done with requests that exceed the limit? */
 export interface IoK8sApiFlowcontrolV1LimitedPriorityLevelConfiguration {
   /** borrowingLimitPercent configures a limit on how many seats this priority level can borrow from other priority levels, if present. The limit is known as this level's BorrowingConcurrencyLimit (BorrowingCL) and is a limit on the total number of seats that this level may borrow at any one time. This field holds the ratio of that limit to the level's nominal concurrency limit. When this field is non-nil, it must hold a non-negative integer and the limit is calculated as follows. BorrowingCL(i) = round( NominalCL(i) * borrowingLimitPercent(i)/100.0 ) The value of this field can be more than 100, implying that this priority level can borrow a number of seats that is greater than its own nominal concurrency limit (NominalCL). When this field is left `nil`, the limit is effectively infinite. */
@@ -314,6 +476,11 @@ export interface IoK8sApiFlowcontrolV1LimitedPriorityLevelConfiguration {
   /** nominalConcurrencyShares (NCS) contributes to the computation of the NominalConcurrencyLimit (NominalCL) of this level. This is the number of execution seats available at this priority level. This is used both for requests dispatched from this priority level as well as requests dispatched from other priority levels borrowing seats from this level. The server's concurrency limit (ServerCL) is divided among the Limited priority levels in proportion to their NCS values: NominalCL(i) = ceil( ServerCL * NCS(i) / sum_ncs ) sum_ncs = sum[priority level k] NCS(k) Bigger numbers mean a larger nominal concurrency limit, at the expense of every other priority level. If not specified, this field defaults to a value of 30. Setting this field to zero supports the construction of a "jail" for this priority level that is used to hold some request(s) */
   nominalConcurrencyShares?: number;
 }
+const IoK8sApiFlowcontrolV1LimitedPriorityLevelConfiguration = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<IoK8sApiFlowcontrolV1LimitedPriorityLevelConfiguration>;
+
 /** PriorityLevelConfigurationSpec specifies the configuration of a priority level. */
 export interface IoK8sApiFlowcontrolV1PriorityLevelConfigurationSpec {
   /** exempt specifies how requests are handled for an exempt priority level. This field MUST be empty if `type` is `"Limited"`. This field MAY be non-empty if `type` is `"Exempt"`. If empty and `type` is `"Exempt"` then the default values for `ExemptPriorityLevelConfiguration` apply. */
@@ -323,17 +490,32 @@ export interface IoK8sApiFlowcontrolV1PriorityLevelConfigurationSpec {
   /** type indicates whether this priority level is subject to limitation on request execution. A value of `"Exempt"` means that requests of this priority level are not subject to a limit (and thus are never queued) and do not detract from the capacity made available to other priority levels. A value of `"Limited"` means that (a) requests of this priority level _are_ subject to limits and (b) some of the server's limited capacity is made available exclusively to this priority level. Required. */
   type: string;
 }
+const IoK8sApiFlowcontrolV1PriorityLevelConfigurationSpec = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<IoK8sApiFlowcontrolV1PriorityLevelConfigurationSpec>;
+
 /** PriorityLevelConfigurationCondition defines the condition of priority level. */
 export type IoK8sApiFlowcontrolV1PriorityLevelConfigurationCondition =
   IoK8sApiFlowcontrolV1FlowSchemaCondition;
 /** `conditions` is the current state of "request-priority". */
 export type IoK8sApiFlowcontrolV1PriorityLevelConfigurationStatusConditionsList =
   Array<IoK8sApiFlowcontrolV1FlowSchemaCondition>;
+const IoK8sApiFlowcontrolV1PriorityLevelConfigurationStatusConditionsList = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<IoK8sApiFlowcontrolV1PriorityLevelConfigurationStatusConditionsList>;
+
 /** PriorityLevelConfigurationStatus represents the current state of a "request-priority". */
 export interface IoK8sApiFlowcontrolV1PriorityLevelConfigurationStatus {
   /** `conditions` is the current state of "request-priority". */
   conditions?: IoK8sApiFlowcontrolV1PriorityLevelConfigurationStatusConditionsList;
 }
+const IoK8sApiFlowcontrolV1PriorityLevelConfigurationStatus = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<IoK8sApiFlowcontrolV1PriorityLevelConfigurationStatus>;
+
 export interface CreateFlowcontrolApiserverV1PriorityLevelConfigurationRequest {
   /** If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). */
   pretty?: string;
@@ -354,6 +536,11 @@ export interface CreateFlowcontrolApiserverV1PriorityLevelConfigurationRequest {
   /** status is the current status of a "request-priority". More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status */
   status?: IoK8sApiFlowcontrolV1PriorityLevelConfigurationStatus;
 }
+const CreateFlowcontrolApiserverV1PriorityLevelConfigurationRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<CreateFlowcontrolApiserverV1PriorityLevelConfigurationRequest>;
+
 /** PriorityLevelConfiguration represents the configuration of a priority level. */
 export interface IoK8sApiFlowcontrolV1PriorityLevelConfiguration {
   /** APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources */
@@ -367,6 +554,11 @@ export interface IoK8sApiFlowcontrolV1PriorityLevelConfiguration {
   /** status is the current status of a "request-priority". More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status */
   status?: IoK8sApiFlowcontrolV1PriorityLevelConfigurationStatus;
 }
+const IoK8sApiFlowcontrolV1PriorityLevelConfiguration = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<IoK8sApiFlowcontrolV1PriorityLevelConfiguration>;
+
 /** Preconditions must be fulfilled before an operation (update, delete, etc.) is carried out. */
 export interface IoK8sApimachineryPkgApisMetaV1Preconditions {
   /** Specifies the target ResourceVersion */
@@ -374,6 +566,11 @@ export interface IoK8sApimachineryPkgApisMetaV1Preconditions {
   /** Specifies the target UID. */
   uid?: string;
 }
+const IoK8sApimachineryPkgApisMetaV1Preconditions = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Preconditions>;
+
 export interface DeleteFlowcontrolApiserverV1CollectionFlowSchemaRequest {
   /** If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). */
   pretty?: string;
@@ -412,6 +609,11 @@ export interface DeleteFlowcontrolApiserverV1CollectionFlowSchemaRequest {
   /** Must be fulfilled before a deletion is carried out. If not possible, a 409 Conflict status will be returned. */
   preconditions?: IoK8sApimachineryPkgApisMetaV1Preconditions;
 }
+const DeleteFlowcontrolApiserverV1CollectionFlowSchemaRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<DeleteFlowcontrolApiserverV1CollectionFlowSchemaRequest>;
+
 /** StatusCause provides more information about an api.Status failure, including cases when multiple errors are encountered. */
 export interface IoK8sApimachineryPkgApisMetaV1StatusCause {
   /** The field of the resource that has caused this error, as named by its JSON serialization. May include dot and postfix notation for nested attributes. Arrays are zero-indexed. Fields may appear more than once in an array of causes due to fields having multiple errors. Optional. Examples: "name" - the field "name" on the current resource "items[0].name" - the field "name" on the first array entry in "items" */
@@ -421,9 +623,19 @@ export interface IoK8sApimachineryPkgApisMetaV1StatusCause {
   /** A machine-readable description of the cause of the error. If this value is empty there is no information available. */
   reason?: string;
 }
+const IoK8sApimachineryPkgApisMetaV1StatusCause = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1StatusCause>;
+
 /** The Causes array includes more details associated with the StatusReason failure. Not all StatusReasons may provide detailed causes. */
 export type IoK8sApimachineryPkgApisMetaV1StatusDetailsCausesList =
   Array<IoK8sApimachineryPkgApisMetaV1StatusCause>;
+const IoK8sApimachineryPkgApisMetaV1StatusDetailsCausesList = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1StatusDetailsCausesList>;
+
 /** StatusDetails is a set of additional properties that MAY be set by the server to provide additional information about a response. The Reason field of a Status object defines what attributes will be set. Clients must ignore fields that do not match the defined type of each attribute, and should assume that any attribute may be empty, invalid, or under defined. */
 export interface IoK8sApimachineryPkgApisMetaV1StatusDetails {
   /** The Causes array includes more details associated with the StatusReason failure. Not all StatusReasons may provide detailed causes. */
@@ -439,11 +651,21 @@ export interface IoK8sApimachineryPkgApisMetaV1StatusDetails {
   /** UID of the resource. (when there is a single resource which can be described). More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names#uids */
   uid?: string;
 }
+const IoK8sApimachineryPkgApisMetaV1StatusDetails = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1StatusDetails>;
+
 /** ShardInfo describes the shard selector that was applied to produce a list response. Its presence on a list response indicates the list is a filtered subset. */
 export interface IoK8sApimachineryPkgApisMetaV1ShardInfo {
   /** selector is the shard selector string from the request, echoed back so clients can verify which shard they received and merge responses from multiple shards. */
   selector: string;
 }
+const IoK8sApimachineryPkgApisMetaV1ShardInfo = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ShardInfo>;
+
 /** ListMeta describes metadata that synthetic resources must have, including lists and various status objects. A resource may have only one of {ObjectMeta, ListMeta}. */
 export interface IoK8sApimachineryPkgApisMetaV1ListMeta {
   /** continue may be set if the user set a limit on the number of items returned, and indicates that the server has more data available. The value is opaque and may be used to issue another request to the endpoint that served this list to retrieve the next set of available objects. Continuing a consistent list may not be possible if the server configuration has changed or more than a few minutes have passed. The resourceVersion field returned when using this continue value will be identical to the value in the first response, unless you have received this token from an error message. */
@@ -457,6 +679,11 @@ export interface IoK8sApimachineryPkgApisMetaV1ListMeta {
   /** shardInfo is set when the list is a filtered subset of the full collection, as selected by a shard selector on the request. It echoes back the selector so clients can verify which shard they received and merge sharded responses. Clients should not cache sharded list responses as a full representation of the collection. This is an alpha field and requires enabling the ShardedListAndWatch feature gate. */
   shardInfo?: IoK8sApimachineryPkgApisMetaV1ShardInfo;
 }
+const IoK8sApimachineryPkgApisMetaV1ListMeta = /*@__PURE__*/ __L.at(
+  __c5,
+  0,
+) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ListMeta>;
+
 /** Status is a return value for calls that don't return other objects. */
 export interface IoK8sApimachineryPkgApisMetaV1Status {
   /** APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources */
@@ -476,6 +703,11 @@ export interface IoK8sApimachineryPkgApisMetaV1Status {
   /** Status of the operation. One of: "Success" or "Failure". More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status */
   status?: string;
 }
+const IoK8sApimachineryPkgApisMetaV1Status = /*@__PURE__*/ __L.at(
+  __c5,
+  1,
+) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>;
+
 export interface DeleteFlowcontrolApiserverV1CollectionPriorityLevelConfigurationRequest {
   /** If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). */
   pretty?: string;
@@ -514,6 +746,12 @@ export interface DeleteFlowcontrolApiserverV1CollectionPriorityLevelConfiguratio
   /** Must be fulfilled before a deletion is carried out. If not possible, a 409 Conflict status will be returned. */
   preconditions?: IoK8sApimachineryPkgApisMetaV1Preconditions;
 }
+const DeleteFlowcontrolApiserverV1CollectionPriorityLevelConfigurationRequest =
+  /*@__PURE__*/ __L.at(
+    __c5,
+    2,
+  ) as any as S.Schema<DeleteFlowcontrolApiserverV1CollectionPriorityLevelConfigurationRequest>;
+
 export interface DeleteFlowcontrolApiserverV1FlowSchemaRequest {
   /** name of the FlowSchema */
   name: string;
@@ -536,6 +774,11 @@ export interface DeleteFlowcontrolApiserverV1FlowSchemaRequest {
   /** Must be fulfilled before a deletion is carried out. If not possible, a 409 Conflict status will be returned. */
   preconditions?: IoK8sApimachineryPkgApisMetaV1Preconditions;
 }
+const DeleteFlowcontrolApiserverV1FlowSchemaRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<DeleteFlowcontrolApiserverV1FlowSchemaRequest>;
+
 export interface DeleteFlowcontrolApiserverV1PriorityLevelConfigurationRequest {
   /** name of the PriorityLevelConfiguration */
   name: string;
@@ -558,7 +801,17 @@ export interface DeleteFlowcontrolApiserverV1PriorityLevelConfigurationRequest {
   /** Must be fulfilled before a deletion is carried out. If not possible, a 409 Conflict status will be returned. */
   preconditions?: IoK8sApimachineryPkgApisMetaV1Preconditions;
 }
+const DeleteFlowcontrolApiserverV1PriorityLevelConfigurationRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  4,
+) as any as S.Schema<DeleteFlowcontrolApiserverV1PriorityLevelConfigurationRequest>;
+
 export interface GetFlowcontrolApiserverAPIGroupRequest {}
+const GetFlowcontrolApiserverAPIGroupRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  5,
+) as any as S.Schema<GetFlowcontrolApiserverAPIGroupRequest>;
+
 /** GroupVersion contains the "group/version" and "version" string of a version. It is made a struct to keep extensibility. */
 export interface IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery {
   /** groupVersion specifies the API group and version in the form "group/version" */
@@ -566,6 +819,11 @@ export interface IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery {
   /** version specifies the version in the form of "version". This is to save the clients the trouble of splitting the GroupVersion. */
   version: string;
 }
+const IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery = /*@__PURE__*/ __L.at(
+  __c5,
+  6,
+) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery>;
+
 /** ServerAddressByClientCIDR helps the client to determine the server address that they should use, depending on the clientCIDR that they match. */
 export interface IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR {
   /** The CIDR with which clients can match their IP to figure out the server address that they should use. */
@@ -573,12 +831,27 @@ export interface IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR {
   /** Address of this server, suitable for a client that matches the above CIDR. This can be a hostname, hostname:port, IP or IP:port. */
   serverAddress: string;
 }
+const IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR = /*@__PURE__*/ __L.at(
+  __c5,
+  7,
+) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR>;
+
 /** a map of client CIDR to server address that is serving this group. This is to help clients reach servers in the most network-efficient way possible. Clients can use the appropriate server address as per the CIDR that they match. In case of multiple matches, clients should use the longest matching CIDR. The server returns only those CIDRs that it thinks that the client can match. For example: the master will return an internal IP CIDR only, if the client reaches the server using an internal IP. Server looks at X-Forwarded-For header or X-Real-Ip header or request.RemoteAddr (in that order) to get the client IP. */
 export type IoK8sApimachineryPkgApisMetaV1APIGroupServerAddressByClientCIDRsList =
   Array<IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR>;
+const IoK8sApimachineryPkgApisMetaV1APIGroupServerAddressByClientCIDRsList = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIGroupServerAddressByClientCIDRsList>;
+
 /** versions are the versions supported in this group. */
 export type IoK8sApimachineryPkgApisMetaV1APIGroupVersionsList =
   Array<IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery>;
+const IoK8sApimachineryPkgApisMetaV1APIGroupVersionsList = /*@__PURE__*/ __L.at(
+  __c6,
+  1,
+) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIGroupVersionsList>;
+
 /** APIGroup contains the name, the supported versions, and the preferred version of a group. */
 export interface IoK8sApimachineryPkgApisMetaV1APIGroup {
   /** APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources */
@@ -594,13 +867,32 @@ export interface IoK8sApimachineryPkgApisMetaV1APIGroup {
   /** versions are the versions supported in this group. */
   versions: IoK8sApimachineryPkgApisMetaV1APIGroupVersionsList;
 }
+const IoK8sApimachineryPkgApisMetaV1APIGroup = /*@__PURE__*/ __L.at(
+  __c6,
+  2,
+) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIGroup>;
+
 export interface GetFlowcontrolApiserverV1APIResourcesRequest {}
+const GetFlowcontrolApiserverV1APIResourcesRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  3,
+) as any as S.Schema<GetFlowcontrolApiserverV1APIResourcesRequest>;
+
 /** categories is a list of the grouped resources this resource belongs to (e.g. 'all') */
 export type IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList = Array<string>;
+const IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList>;
+
 /** shortNames is a list of suggested short names of the resource. */
 export type IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList = Array<string>;
+const IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList>;
+
 /** verbs is a list of supported kube verbs (this includes get, list, watch, create, update, patch, delete, deletecollection, and proxy) */
 export type IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList = Array<string>;
+const IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList =
+  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList>;
+
 /** APIResource specifies the name of a resource and whether it is namespaced. */
 export interface IoK8sApimachineryPkgApisMetaV1APIResource {
   /** categories is a list of the grouped resources this resource belongs to (e.g. 'all') */
@@ -624,9 +916,19 @@ export interface IoK8sApimachineryPkgApisMetaV1APIResource {
   /** version is the preferred version of the resource. Empty implies the version of the containing resource list For subresources, this may have a different value, for example: v1 (while inside a v1beta1 version of the core resource's group)". */
   version?: string;
 }
+const IoK8sApimachineryPkgApisMetaV1APIResource = /*@__PURE__*/ __L.at(
+  __c6,
+  4,
+) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResource>;
+
 /** resources contains the name of the resources and if they are namespaced. */
 export type IoK8sApimachineryPkgApisMetaV1APIResourceListResourcesList =
   Array<IoK8sApimachineryPkgApisMetaV1APIResource>;
+const IoK8sApimachineryPkgApisMetaV1APIResourceListResourcesList = /*@__PURE__*/ __L.at(
+  __c6,
+  5,
+) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceListResourcesList>;
+
 /** APIResourceList is a list of APIResource, it is used to expose the name of the resources supported in a specific group and version, and if the resource is namespaced. */
 export interface IoK8sApimachineryPkgApisMetaV1APIResourceList {
   /** APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources */
@@ -638,6 +940,11 @@ export interface IoK8sApimachineryPkgApisMetaV1APIResourceList {
   /** resources contains the name of the resources and if they are namespaced. */
   resources: IoK8sApimachineryPkgApisMetaV1APIResourceListResourcesList;
 }
+const IoK8sApimachineryPkgApisMetaV1APIResourceList = /*@__PURE__*/ __L.at(
+  __c6,
+  6,
+) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceList>;
+
 export interface ListFlowcontrolApiserverV1FlowSchemaRequest {
   /** If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). */
   pretty?: string;
@@ -664,8 +971,18 @@ export interface ListFlowcontrolApiserverV1FlowSchemaRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
+const ListFlowcontrolApiserverV1FlowSchemaRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  7,
+) as any as S.Schema<ListFlowcontrolApiserverV1FlowSchemaRequest>;
+
 /** `items` is a list of FlowSchemas. */
 export type IoK8sApiFlowcontrolV1FlowSchemaListItemsList = Array<IoK8sApiFlowcontrolV1FlowSchema>;
+const IoK8sApiFlowcontrolV1FlowSchemaListItemsList = /*@__PURE__*/ __L.at(
+  __c7,
+  0,
+) as any as S.Schema<IoK8sApiFlowcontrolV1FlowSchemaListItemsList>;
+
 /** FlowSchemaList is a list of FlowSchema objects. */
 export interface IoK8sApiFlowcontrolV1FlowSchemaList {
   /** APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources */
@@ -677,6 +994,11 @@ export interface IoK8sApiFlowcontrolV1FlowSchemaList {
   /** `metadata` is the standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata */
   metadata?: IoK8sApimachineryPkgApisMetaV1ListMeta;
 }
+const IoK8sApiFlowcontrolV1FlowSchemaList = /*@__PURE__*/ __L.at(
+  __c7,
+  1,
+) as any as S.Schema<IoK8sApiFlowcontrolV1FlowSchemaList>;
+
 export interface ListFlowcontrolApiserverV1PriorityLevelConfigurationRequest {
   /** If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). */
   pretty?: string;
@@ -703,9 +1025,19 @@ export interface ListFlowcontrolApiserverV1PriorityLevelConfigurationRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
+const ListFlowcontrolApiserverV1PriorityLevelConfigurationRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  2,
+) as any as S.Schema<ListFlowcontrolApiserverV1PriorityLevelConfigurationRequest>;
+
 /** `items` is a list of request-priorities. */
 export type IoK8sApiFlowcontrolV1PriorityLevelConfigurationListItemsList =
   Array<IoK8sApiFlowcontrolV1PriorityLevelConfiguration>;
+const IoK8sApiFlowcontrolV1PriorityLevelConfigurationListItemsList = /*@__PURE__*/ __L.at(
+  __c7,
+  3,
+) as any as S.Schema<IoK8sApiFlowcontrolV1PriorityLevelConfigurationListItemsList>;
+
 /** PriorityLevelConfigurationList is a list of PriorityLevelConfiguration objects. */
 export interface IoK8sApiFlowcontrolV1PriorityLevelConfigurationList {
   /** APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources */
@@ -717,6 +1049,11 @@ export interface IoK8sApiFlowcontrolV1PriorityLevelConfigurationList {
   /** `metadata` is the standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata */
   metadata?: IoK8sApimachineryPkgApisMetaV1ListMeta;
 }
+const IoK8sApiFlowcontrolV1PriorityLevelConfigurationList = /*@__PURE__*/ __L.at(
+  __c7,
+  4,
+) as any as S.Schema<IoK8sApiFlowcontrolV1PriorityLevelConfigurationList>;
+
 export interface PatchFlowcontrolApiserverV1FlowSchemaRequest {
   /** name of the FlowSchema */
   name: string;
@@ -731,6 +1068,11 @@ export interface PatchFlowcontrolApiserverV1FlowSchemaRequest {
   /** Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests. */
   force?: boolean;
 }
+const PatchFlowcontrolApiserverV1FlowSchemaRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  5,
+) as any as S.Schema<PatchFlowcontrolApiserverV1FlowSchemaRequest>;
+
 export interface PatchFlowcontrolApiserverV1FlowSchemaStatusRequest {
   /** name of the FlowSchema */
   name: string;
@@ -745,6 +1087,11 @@ export interface PatchFlowcontrolApiserverV1FlowSchemaStatusRequest {
   /** Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests. */
   force?: boolean;
 }
+const PatchFlowcontrolApiserverV1FlowSchemaStatusRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  6,
+) as any as S.Schema<PatchFlowcontrolApiserverV1FlowSchemaStatusRequest>;
+
 export interface PatchFlowcontrolApiserverV1PriorityLevelConfigurationRequest {
   /** name of the PriorityLevelConfiguration */
   name: string;
@@ -759,6 +1106,11 @@ export interface PatchFlowcontrolApiserverV1PriorityLevelConfigurationRequest {
   /** Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests. */
   force?: boolean;
 }
+const PatchFlowcontrolApiserverV1PriorityLevelConfigurationRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  7,
+) as any as S.Schema<PatchFlowcontrolApiserverV1PriorityLevelConfigurationRequest>;
+
 export interface PatchFlowcontrolApiserverV1PriorityLevelConfigurationStatusRequest {
   /** name of the PriorityLevelConfiguration */
   name: string;
@@ -773,30 +1125,55 @@ export interface PatchFlowcontrolApiserverV1PriorityLevelConfigurationStatusRequ
   /** Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests. */
   force?: boolean;
 }
+const PatchFlowcontrolApiserverV1PriorityLevelConfigurationStatusRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  0,
+) as any as S.Schema<PatchFlowcontrolApiserverV1PriorityLevelConfigurationStatusRequest>;
+
 export interface ReadFlowcontrolApiserverV1FlowSchemaRequest {
   /** name of the FlowSchema */
   name: string;
   /** If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). */
   pretty?: string;
 }
+const ReadFlowcontrolApiserverV1FlowSchemaRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  1,
+) as any as S.Schema<ReadFlowcontrolApiserverV1FlowSchemaRequest>;
+
 export interface ReadFlowcontrolApiserverV1FlowSchemaStatusRequest {
   /** name of the FlowSchema */
   name: string;
   /** If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). */
   pretty?: string;
 }
+const ReadFlowcontrolApiserverV1FlowSchemaStatusRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  2,
+) as any as S.Schema<ReadFlowcontrolApiserverV1FlowSchemaStatusRequest>;
+
 export interface ReadFlowcontrolApiserverV1PriorityLevelConfigurationRequest {
   /** name of the PriorityLevelConfiguration */
   name: string;
   /** If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). */
   pretty?: string;
 }
+const ReadFlowcontrolApiserverV1PriorityLevelConfigurationRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  3,
+) as any as S.Schema<ReadFlowcontrolApiserverV1PriorityLevelConfigurationRequest>;
+
 export interface ReadFlowcontrolApiserverV1PriorityLevelConfigurationStatusRequest {
   /** name of the PriorityLevelConfiguration */
   name: string;
   /** If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). */
   pretty?: string;
 }
+const ReadFlowcontrolApiserverV1PriorityLevelConfigurationStatusRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  4,
+) as any as S.Schema<ReadFlowcontrolApiserverV1PriorityLevelConfigurationStatusRequest>;
+
 export interface ReplaceFlowcontrolApiserverV1FlowSchemaRequest {
   /** name of the FlowSchema */
   name: string;
@@ -819,6 +1196,11 @@ export interface ReplaceFlowcontrolApiserverV1FlowSchemaRequest {
   /** status is the current status of a FlowSchema. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status */
   status?: IoK8sApiFlowcontrolV1FlowSchemaStatus;
 }
+const ReplaceFlowcontrolApiserverV1FlowSchemaRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  5,
+) as any as S.Schema<ReplaceFlowcontrolApiserverV1FlowSchemaRequest>;
+
 export interface ReplaceFlowcontrolApiserverV1FlowSchemaStatusRequest {
   /** name of the FlowSchema */
   name: string;
@@ -841,6 +1223,11 @@ export interface ReplaceFlowcontrolApiserverV1FlowSchemaStatusRequest {
   /** status is the current status of a FlowSchema. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status */
   status?: IoK8sApiFlowcontrolV1FlowSchemaStatus;
 }
+const ReplaceFlowcontrolApiserverV1FlowSchemaStatusRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  6,
+) as any as S.Schema<ReplaceFlowcontrolApiserverV1FlowSchemaStatusRequest>;
+
 export interface ReplaceFlowcontrolApiserverV1PriorityLevelConfigurationRequest {
   /** name of the PriorityLevelConfiguration */
   name: string;
@@ -863,6 +1250,11 @@ export interface ReplaceFlowcontrolApiserverV1PriorityLevelConfigurationRequest 
   /** status is the current status of a "request-priority". More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status */
   status?: IoK8sApiFlowcontrolV1PriorityLevelConfigurationStatus;
 }
+const ReplaceFlowcontrolApiserverV1PriorityLevelConfigurationRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  7,
+) as any as S.Schema<ReplaceFlowcontrolApiserverV1PriorityLevelConfigurationRequest>;
+
 export interface ReplaceFlowcontrolApiserverV1PriorityLevelConfigurationStatusRequest {
   /** name of the PriorityLevelConfiguration */
   name: string;
@@ -885,6 +1277,11 @@ export interface ReplaceFlowcontrolApiserverV1PriorityLevelConfigurationStatusRe
   /** status is the current status of a "request-priority". More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status */
   status?: IoK8sApiFlowcontrolV1PriorityLevelConfigurationStatus;
 }
+const ReplaceFlowcontrolApiserverV1PriorityLevelConfigurationStatusRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  0,
+) as any as S.Schema<ReplaceFlowcontrolApiserverV1PriorityLevelConfigurationStatusRequest>;
+
 export interface WatchFlowcontrolApiserverV1FlowSchemaRequest {
   /** name of the FlowSchema */
   name: string;
@@ -913,12 +1310,22 @@ export interface WatchFlowcontrolApiserverV1FlowSchemaRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
+const WatchFlowcontrolApiserverV1FlowSchemaRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  1,
+) as any as S.Schema<WatchFlowcontrolApiserverV1FlowSchemaRequest>;
+
 /** Event represents a single event to a watched resource. */
 export interface IoK8sApimachineryPkgApisMetaV1WatchEvent {
   /** Object is: * If Type is Added or Modified: the new state of the object. * If Type is Deleted: the state of the object immediately before deletion. * If Type is Error: *Status is recommended; other types may make sense depending on context. */
   object: unknown;
   type: string;
 }
+const IoK8sApimachineryPkgApisMetaV1WatchEvent = /*@__PURE__*/ __L.at(
+  __c9,
+  2,
+) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>;
+
 export interface WatchFlowcontrolApiserverV1FlowSchemaListRequest {
   /** allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should not assume bookmarks are returned at any specific interval, nor may they assume the server will send any BOOKMARK event during a session. If this is not a watch, this field is ignored. */
   allowWatchBookmarks?: boolean;
@@ -945,6 +1352,11 @@ export interface WatchFlowcontrolApiserverV1FlowSchemaListRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
+const WatchFlowcontrolApiserverV1FlowSchemaListRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  3,
+) as any as S.Schema<WatchFlowcontrolApiserverV1FlowSchemaListRequest>;
+
 export interface WatchFlowcontrolApiserverV1PriorityLevelConfigurationRequest {
   /** name of the PriorityLevelConfiguration */
   name: string;
@@ -973,6 +1385,11 @@ export interface WatchFlowcontrolApiserverV1PriorityLevelConfigurationRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
+const WatchFlowcontrolApiserverV1PriorityLevelConfigurationRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  4,
+) as any as S.Schema<WatchFlowcontrolApiserverV1PriorityLevelConfigurationRequest>;
+
 export interface WatchFlowcontrolApiserverV1PriorityLevelConfigurationListRequest {
   /** allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should not assume bookmarks are returned at any specific interval, nor may they assume the server will send any BOOKMARK event during a session. If this is not a watch, this field is ignored. */
   allowWatchBookmarks?: boolean;
@@ -999,6 +1416,11 @@ export interface WatchFlowcontrolApiserverV1PriorityLevelConfigurationListReques
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
+const WatchFlowcontrolApiserverV1PriorityLevelConfigurationListRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  5,
+) as any as S.Schema<WatchFlowcontrolApiserverV1PriorityLevelConfigurationListRequest>;
+
 export type CreateFlowcontrolApiserverV1FlowSchemaError =
   | Conflict
   | UnprocessableEntity
@@ -1010,8 +1432,8 @@ export const createFlowcontrolApiserverV1FlowSchema: API.OperationMethod<
   CreateFlowcontrolApiserverV1FlowSchemaError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23) as any as S.Schema<CreateFlowcontrolApiserverV1FlowSchemaRequest>,
-  output: __S(24) as any as S.Schema<IoK8sApiFlowcontrolV1FlowSchema>,
+  input: CreateFlowcontrolApiserverV1FlowSchemaRequest,
+  output: IoK8sApiFlowcontrolV1FlowSchema,
   errors: [Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1028,8 +1450,8 @@ export const createFlowcontrolApiserverV1PriorityLevelConfiguration: API.Operati
   CreateFlowcontrolApiserverV1PriorityLevelConfigurationError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32) as any as S.Schema<CreateFlowcontrolApiserverV1PriorityLevelConfigurationRequest>,
-  output: __S(33) as any as S.Schema<IoK8sApiFlowcontrolV1PriorityLevelConfiguration>,
+  input: CreateFlowcontrolApiserverV1PriorityLevelConfigurationRequest,
+  output: IoK8sApiFlowcontrolV1PriorityLevelConfiguration,
   errors: [Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1043,8 +1465,8 @@ export const deleteFlowcontrolApiserverV1CollectionFlowSchema: API.OperationMeth
   DeleteFlowcontrolApiserverV1CollectionFlowSchemaError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35) as any as S.Schema<DeleteFlowcontrolApiserverV1CollectionFlowSchemaRequest>,
-  output: __S(41) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
+  input: DeleteFlowcontrolApiserverV1CollectionFlowSchemaRequest,
+  output: IoK8sApimachineryPkgApisMetaV1Status,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1059,10 +1481,8 @@ export const deleteFlowcontrolApiserverV1CollectionPriorityLevelConfiguration: A
   DeleteFlowcontrolApiserverV1CollectionPriorityLevelConfigurationError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(
-    42,
-  ) as any as S.Schema<DeleteFlowcontrolApiserverV1CollectionPriorityLevelConfigurationRequest>,
-  output: __S(41) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
+  input: DeleteFlowcontrolApiserverV1CollectionPriorityLevelConfigurationRequest,
+  output: IoK8sApimachineryPkgApisMetaV1Status,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1076,8 +1496,8 @@ export const deleteFlowcontrolApiserverV1FlowSchema: API.OperationMethod<
   DeleteFlowcontrolApiserverV1FlowSchemaError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43) as any as S.Schema<DeleteFlowcontrolApiserverV1FlowSchemaRequest>,
-  output: __S(41) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
+  input: DeleteFlowcontrolApiserverV1FlowSchemaRequest,
+  output: IoK8sApimachineryPkgApisMetaV1Status,
   errors: [NotFound, Conflict, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1094,8 +1514,8 @@ export const deleteFlowcontrolApiserverV1PriorityLevelConfiguration: API.Operati
   DeleteFlowcontrolApiserverV1PriorityLevelConfigurationError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44) as any as S.Schema<DeleteFlowcontrolApiserverV1PriorityLevelConfigurationRequest>,
-  output: __S(41) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
+  input: DeleteFlowcontrolApiserverV1PriorityLevelConfigurationRequest,
+  output: IoK8sApimachineryPkgApisMetaV1Status,
   errors: [NotFound, Conflict, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1109,8 +1529,8 @@ export const getFlowcontrolApiserverAPIGroup: API.OperationMethod<
   GetFlowcontrolApiserverAPIGroupError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45) as any as S.Schema<GetFlowcontrolApiserverAPIGroupRequest>,
-  output: __S(50) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIGroup>,
+  input: GetFlowcontrolApiserverAPIGroupRequest,
+  output: IoK8sApimachineryPkgApisMetaV1APIGroup,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1124,8 +1544,8 @@ export const getFlowcontrolApiserverV1APIResources: API.OperationMethod<
   GetFlowcontrolApiserverV1APIResourcesError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(51) as any as S.Schema<GetFlowcontrolApiserverV1APIResourcesRequest>,
-  output: __S(54) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceList>,
+  input: GetFlowcontrolApiserverV1APIResourcesRequest,
+  output: IoK8sApimachineryPkgApisMetaV1APIResourceList,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1139,8 +1559,8 @@ export const listFlowcontrolApiserverV1FlowSchema: API.OperationMethod<
   ListFlowcontrolApiserverV1FlowSchemaError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(55) as any as S.Schema<ListFlowcontrolApiserverV1FlowSchemaRequest>,
-  output: __S(57) as any as S.Schema<IoK8sApiFlowcontrolV1FlowSchemaList>,
+  input: ListFlowcontrolApiserverV1FlowSchemaRequest,
+  output: IoK8sApiFlowcontrolV1FlowSchemaList,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1154,8 +1574,8 @@ export const listFlowcontrolApiserverV1PriorityLevelConfiguration: API.Operation
   ListFlowcontrolApiserverV1PriorityLevelConfigurationError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(58) as any as S.Schema<ListFlowcontrolApiserverV1PriorityLevelConfigurationRequest>,
-  output: __S(60) as any as S.Schema<IoK8sApiFlowcontrolV1PriorityLevelConfigurationList>,
+  input: ListFlowcontrolApiserverV1PriorityLevelConfigurationRequest,
+  output: IoK8sApiFlowcontrolV1PriorityLevelConfigurationList,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1173,8 +1593,8 @@ export const patchFlowcontrolApiserverV1FlowSchema: API.OperationMethod<
   PatchFlowcontrolApiserverV1FlowSchemaError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(61) as any as S.Schema<PatchFlowcontrolApiserverV1FlowSchemaRequest>,
-  output: __S(24) as any as S.Schema<IoK8sApiFlowcontrolV1FlowSchema>,
+  input: PatchFlowcontrolApiserverV1FlowSchemaRequest,
+  output: IoK8sApiFlowcontrolV1FlowSchema,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1192,8 +1612,8 @@ export const patchFlowcontrolApiserverV1FlowSchemaStatus: API.OperationMethod<
   PatchFlowcontrolApiserverV1FlowSchemaStatusError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(62) as any as S.Schema<PatchFlowcontrolApiserverV1FlowSchemaStatusRequest>,
-  output: __S(24) as any as S.Schema<IoK8sApiFlowcontrolV1FlowSchema>,
+  input: PatchFlowcontrolApiserverV1FlowSchemaStatusRequest,
+  output: IoK8sApiFlowcontrolV1FlowSchema,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1211,8 +1631,8 @@ export const patchFlowcontrolApiserverV1PriorityLevelConfiguration: API.Operatio
   PatchFlowcontrolApiserverV1PriorityLevelConfigurationError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(63) as any as S.Schema<PatchFlowcontrolApiserverV1PriorityLevelConfigurationRequest>,
-  output: __S(33) as any as S.Schema<IoK8sApiFlowcontrolV1PriorityLevelConfiguration>,
+  input: PatchFlowcontrolApiserverV1PriorityLevelConfigurationRequest,
+  output: IoK8sApiFlowcontrolV1PriorityLevelConfiguration,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1230,10 +1650,8 @@ export const patchFlowcontrolApiserverV1PriorityLevelConfigurationStatus: API.Op
   PatchFlowcontrolApiserverV1PriorityLevelConfigurationStatusError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(
-    64,
-  ) as any as S.Schema<PatchFlowcontrolApiserverV1PriorityLevelConfigurationStatusRequest>,
-  output: __S(33) as any as S.Schema<IoK8sApiFlowcontrolV1PriorityLevelConfiguration>,
+  input: PatchFlowcontrolApiserverV1PriorityLevelConfigurationStatusRequest,
+  output: IoK8sApiFlowcontrolV1PriorityLevelConfiguration,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1247,8 +1665,8 @@ export const readFlowcontrolApiserverV1FlowSchema: API.OperationMethod<
   ReadFlowcontrolApiserverV1FlowSchemaError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65) as any as S.Schema<ReadFlowcontrolApiserverV1FlowSchemaRequest>,
-  output: __S(24) as any as S.Schema<IoK8sApiFlowcontrolV1FlowSchema>,
+  input: ReadFlowcontrolApiserverV1FlowSchemaRequest,
+  output: IoK8sApiFlowcontrolV1FlowSchema,
   errors: [NotFound, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1262,8 +1680,8 @@ export const readFlowcontrolApiserverV1FlowSchemaStatus: API.OperationMethod<
   ReadFlowcontrolApiserverV1FlowSchemaStatusError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(66) as any as S.Schema<ReadFlowcontrolApiserverV1FlowSchemaStatusRequest>,
-  output: __S(24) as any as S.Schema<IoK8sApiFlowcontrolV1FlowSchema>,
+  input: ReadFlowcontrolApiserverV1FlowSchemaStatusRequest,
+  output: IoK8sApiFlowcontrolV1FlowSchema,
   errors: [NotFound, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1279,8 +1697,8 @@ export const readFlowcontrolApiserverV1PriorityLevelConfiguration: API.Operation
   ReadFlowcontrolApiserverV1PriorityLevelConfigurationError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(67) as any as S.Schema<ReadFlowcontrolApiserverV1PriorityLevelConfigurationRequest>,
-  output: __S(33) as any as S.Schema<IoK8sApiFlowcontrolV1PriorityLevelConfiguration>,
+  input: ReadFlowcontrolApiserverV1PriorityLevelConfigurationRequest,
+  output: IoK8sApiFlowcontrolV1PriorityLevelConfiguration,
   errors: [NotFound, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1296,10 +1714,8 @@ export const readFlowcontrolApiserverV1PriorityLevelConfigurationStatus: API.Ope
   ReadFlowcontrolApiserverV1PriorityLevelConfigurationStatusError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(
-    68,
-  ) as any as S.Schema<ReadFlowcontrolApiserverV1PriorityLevelConfigurationStatusRequest>,
-  output: __S(33) as any as S.Schema<IoK8sApiFlowcontrolV1PriorityLevelConfiguration>,
+  input: ReadFlowcontrolApiserverV1PriorityLevelConfigurationStatusRequest,
+  output: IoK8sApiFlowcontrolV1PriorityLevelConfiguration,
   errors: [NotFound, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1317,8 +1733,8 @@ export const replaceFlowcontrolApiserverV1FlowSchema: API.OperationMethod<
   ReplaceFlowcontrolApiserverV1FlowSchemaError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(69) as any as S.Schema<ReplaceFlowcontrolApiserverV1FlowSchemaRequest>,
-  output: __S(24) as any as S.Schema<IoK8sApiFlowcontrolV1FlowSchema>,
+  input: ReplaceFlowcontrolApiserverV1FlowSchemaRequest,
+  output: IoK8sApiFlowcontrolV1FlowSchema,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1336,8 +1752,8 @@ export const replaceFlowcontrolApiserverV1FlowSchemaStatus: API.OperationMethod<
   ReplaceFlowcontrolApiserverV1FlowSchemaStatusError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(70) as any as S.Schema<ReplaceFlowcontrolApiserverV1FlowSchemaStatusRequest>,
-  output: __S(24) as any as S.Schema<IoK8sApiFlowcontrolV1FlowSchema>,
+  input: ReplaceFlowcontrolApiserverV1FlowSchemaStatusRequest,
+  output: IoK8sApiFlowcontrolV1FlowSchema,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1355,8 +1771,8 @@ export const replaceFlowcontrolApiserverV1PriorityLevelConfiguration: API.Operat
   ReplaceFlowcontrolApiserverV1PriorityLevelConfigurationError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(71) as any as S.Schema<ReplaceFlowcontrolApiserverV1PriorityLevelConfigurationRequest>,
-  output: __S(33) as any as S.Schema<IoK8sApiFlowcontrolV1PriorityLevelConfiguration>,
+  input: ReplaceFlowcontrolApiserverV1PriorityLevelConfigurationRequest,
+  output: IoK8sApiFlowcontrolV1PriorityLevelConfiguration,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1374,10 +1790,8 @@ export const replaceFlowcontrolApiserverV1PriorityLevelConfigurationStatus: API.
   ReplaceFlowcontrolApiserverV1PriorityLevelConfigurationStatusError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(
-    72,
-  ) as any as S.Schema<ReplaceFlowcontrolApiserverV1PriorityLevelConfigurationStatusRequest>,
-  output: __S(33) as any as S.Schema<IoK8sApiFlowcontrolV1PriorityLevelConfiguration>,
+  input: ReplaceFlowcontrolApiserverV1PriorityLevelConfigurationStatusRequest,
+  output: IoK8sApiFlowcontrolV1PriorityLevelConfiguration,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1391,8 +1805,8 @@ export const watchFlowcontrolApiserverV1FlowSchema: API.OperationMethod<
   WatchFlowcontrolApiserverV1FlowSchemaError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(73) as any as S.Schema<WatchFlowcontrolApiserverV1FlowSchemaRequest>,
-  output: __S(74) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
+  input: WatchFlowcontrolApiserverV1FlowSchemaRequest,
+  output: IoK8sApimachineryPkgApisMetaV1WatchEvent,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1406,8 +1820,8 @@ export const watchFlowcontrolApiserverV1FlowSchemaList: API.OperationMethod<
   WatchFlowcontrolApiserverV1FlowSchemaListError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(75) as any as S.Schema<WatchFlowcontrolApiserverV1FlowSchemaListRequest>,
-  output: __S(74) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
+  input: WatchFlowcontrolApiserverV1FlowSchemaListRequest,
+  output: IoK8sApimachineryPkgApisMetaV1WatchEvent,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1421,8 +1835,8 @@ export const watchFlowcontrolApiserverV1PriorityLevelConfiguration: API.Operatio
   WatchFlowcontrolApiserverV1PriorityLevelConfigurationError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(76) as any as S.Schema<WatchFlowcontrolApiserverV1PriorityLevelConfigurationRequest>,
-  output: __S(74) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
+  input: WatchFlowcontrolApiserverV1PriorityLevelConfigurationRequest,
+  output: IoK8sApimachineryPkgApisMetaV1WatchEvent,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1436,10 +1850,8 @@ export const watchFlowcontrolApiserverV1PriorityLevelConfigurationList: API.Oper
   WatchFlowcontrolApiserverV1PriorityLevelConfigurationListError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(
-    77,
-  ) as any as S.Schema<WatchFlowcontrolApiserverV1PriorityLevelConfigurationListRequest>,
-  output: __S(74) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
+  input: WatchFlowcontrolApiserverV1PriorityLevelConfigurationListRequest,
+  output: IoK8sApimachineryPkgApisMetaV1WatchEvent,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1467,7 +1879,7 @@ function __c0(j: number): any {
         identifier: "IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry",
       });
     case 3:
-      return S.Array(__S(2));
+      return S.Array(IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry);
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -1482,22 +1894,22 @@ function __c0(j: number): any {
         identifier: "IoK8sApimachineryPkgApisMetaV1OwnerReference",
       });
     case 5:
-      return S.Array(__S(4));
+      return S.Array(IoK8sApimachineryPkgApisMetaV1OwnerReference);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          annotations: S.optional(__S(0)),
+          annotations: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap),
           creationTimestamp: S.optional(S.String),
           deletionGracePeriodSeconds: S.optional(S.Number),
           deletionTimestamp: S.optional(S.String),
-          finalizers: S.optional(__S(1)),
+          finalizers: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList),
           generateName: S.optional(S.String),
           generation: S.optional(S.Number),
-          labels: S.optional(__S(0)),
-          managedFields: S.optional(__S(3)),
+          labels: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMetaLabelsMap),
+          managedFields: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMetaManagedFieldsList),
           name: S.optional(S.String),
           namespace: S.optional(S.String),
-          ownerReferences: S.optional(__S(5)),
+          ownerReferences: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMetaOwnerReferencesList),
           resourceVersion: S.optional(S.String),
           selfLink: S.optional(S.String),
           uid: S.optional(S.String),
@@ -1528,28 +1940,28 @@ function __c1(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          nonResourceURLs: __S(1),
-          verbs: __S(1),
+          nonResourceURLs: IoK8sApiFlowcontrolV1NonResourcePolicyRuleNonResourceURLsList,
+          verbs: IoK8sApiFlowcontrolV1NonResourcePolicyRuleVerbsList,
         }),
       ).annotate({
         identifier: "IoK8sApiFlowcontrolV1NonResourcePolicyRule",
       });
     case 2:
-      return S.Array(__S(9));
+      return S.Array(IoK8sApiFlowcontrolV1NonResourcePolicyRule);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          apiGroups: __S(1),
+          apiGroups: IoK8sApiFlowcontrolV1ResourcePolicyRuleApiGroupsList,
           clusterScope: S.optional(S.Boolean),
-          namespaces: S.optional(__S(1)),
-          resources: __S(1),
-          verbs: __S(1),
+          namespaces: S.optional(IoK8sApiFlowcontrolV1ResourcePolicyRuleNamespacesList),
+          resources: IoK8sApiFlowcontrolV1ResourcePolicyRuleResourcesList,
+          verbs: IoK8sApiFlowcontrolV1ResourcePolicyRuleVerbsList,
         }),
       ).annotate({
         identifier: "IoK8sApiFlowcontrolV1ResourcePolicyRule",
       });
     case 4:
-      return S.Array(__S(11));
+      return S.Array(IoK8sApiFlowcontrolV1ResourcePolicyRule);
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -1570,10 +1982,10 @@ function __c1(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          group: S.optional(__S(13)),
+          group: S.optional(IoK8sApiFlowcontrolV1GroupSubject),
           kind: S.String,
-          serviceAccount: S.optional(__S(14)),
-          user: S.optional(__S(13)),
+          serviceAccount: S.optional(IoK8sApiFlowcontrolV1ServiceAccountSubject),
+          user: S.optional(IoK8sApiFlowcontrolV1UserSubject),
         }),
       ).annotate({
         identifier: "IoK8sApiFlowcontrolV1Subject",
@@ -1583,26 +1995,28 @@ function __c1(j: number): any {
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(15));
+      return S.Array(IoK8sApiFlowcontrolV1Subject);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          nonResourceRules: S.optional(__S(10)),
-          resourceRules: S.optional(__S(12)),
-          subjects: __S(16),
+          nonResourceRules: S.optional(
+            IoK8sApiFlowcontrolV1PolicyRulesWithSubjectsNonResourceRulesList,
+          ),
+          resourceRules: S.optional(IoK8sApiFlowcontrolV1PolicyRulesWithSubjectsResourceRulesList),
+          subjects: IoK8sApiFlowcontrolV1PolicyRulesWithSubjectsSubjectsList,
         }),
       ).annotate({
         identifier: "IoK8sApiFlowcontrolV1PolicyRulesWithSubjects",
       });
     case 2:
-      return S.Array(__S(17));
+      return S.Array(IoK8sApiFlowcontrolV1PolicyRulesWithSubjects);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          distinguisherMethod: S.optional(__S(7)),
+          distinguisherMethod: S.optional(IoK8sApiFlowcontrolV1FlowDistinguisherMethod),
           matchingPrecedence: S.optional(S.Number),
-          priorityLevelConfiguration: __S(8),
-          rules: S.optional(__S(18)),
+          priorityLevelConfiguration: IoK8sApiFlowcontrolV1PriorityLevelConfigurationReference,
+          rules: S.optional(IoK8sApiFlowcontrolV1FlowSchemaSpecRulesList),
         }),
       ).annotate({
         identifier: "IoK8sApiFlowcontrolV1FlowSchemaSpec",
@@ -1620,11 +2034,11 @@ function __c2(j: number): any {
         identifier: "IoK8sApiFlowcontrolV1FlowSchemaCondition",
       });
     case 5:
-      return S.Array(__S(20));
+      return S.Array(IoK8sApiFlowcontrolV1FlowSchemaCondition);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          conditions: S.optional(__S(21)),
+          conditions: S.optional(IoK8sApiFlowcontrolV1FlowSchemaStatusConditionsList),
         }),
       ).annotate({
         identifier: "IoK8sApiFlowcontrolV1FlowSchemaStatus",
@@ -1638,9 +2052,9 @@ function __c2(j: number): any {
           fieldValidation: S.optional(S.String.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          metadata: S.optional(__S(6)),
-          spec: __S(19),
-          status: S.optional(__S(22)),
+          metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
+          spec: IoK8sApiFlowcontrolV1FlowSchemaSpec,
+          status: S.optional(IoK8sApiFlowcontrolV1FlowSchemaStatus),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1660,9 +2074,9 @@ function __c3(j: number): any {
         S.Struct({
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          metadata: S.optional(__S(6)),
-          spec: __S(19),
-          status: S.optional(__S(22)),
+          metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
+          spec: IoK8sApiFlowcontrolV1FlowSchemaSpec,
+          status: S.optional(IoK8sApiFlowcontrolV1FlowSchemaStatus),
         }),
       ).annotate({
         identifier: "IoK8sApiFlowcontrolV1FlowSchema",
@@ -1689,7 +2103,7 @@ function __c3(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          queuing: S.optional(__S(26)),
+          queuing: S.optional(IoK8sApiFlowcontrolV1QueuingConfiguration),
           type: S.String,
         }),
       ).annotate({
@@ -1700,7 +2114,7 @@ function __c3(j: number): any {
         S.Struct({
           borrowingLimitPercent: S.optional(S.Number),
           lendablePercent: S.optional(S.Number),
-          limitResponse: __S(27),
+          limitResponse: IoK8sApiFlowcontrolV1LimitResponse,
           nominalConcurrencyShares: S.optional(S.Number),
         }),
       ).annotate({
@@ -1709,19 +2123,21 @@ function __c3(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          exempt: S.optional(__S(25)),
-          limited: S.optional(__S(28)),
+          exempt: S.optional(IoK8sApiFlowcontrolV1ExemptPriorityLevelConfiguration),
+          limited: S.optional(IoK8sApiFlowcontrolV1LimitedPriorityLevelConfiguration),
           type: S.String,
         }),
       ).annotate({
         identifier: "IoK8sApiFlowcontrolV1PriorityLevelConfigurationSpec",
       });
     case 6:
-      return S.Array(__S(20));
+      return S.Array(IoK8sApiFlowcontrolV1FlowSchemaCondition);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          conditions: S.optional(__S(30)),
+          conditions: S.optional(
+            IoK8sApiFlowcontrolV1PriorityLevelConfigurationStatusConditionsList,
+          ),
         }),
       ).annotate({
         identifier: "IoK8sApiFlowcontrolV1PriorityLevelConfigurationStatus",
@@ -1739,9 +2155,9 @@ function __c4(j: number): any {
           fieldValidation: S.optional(S.String.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          metadata: S.optional(__S(6)),
-          spec: __S(29),
-          status: S.optional(__S(31)),
+          metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
+          spec: IoK8sApiFlowcontrolV1PriorityLevelConfigurationSpec,
+          status: S.optional(IoK8sApiFlowcontrolV1PriorityLevelConfigurationStatus),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1757,9 +2173,9 @@ function __c4(j: number): any {
         S.Struct({
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          metadata: S.optional(__S(6)),
-          spec: __S(29),
-          status: S.optional(__S(31)),
+          metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
+          spec: IoK8sApiFlowcontrolV1PriorityLevelConfigurationSpec,
+          status: S.optional(IoK8sApiFlowcontrolV1PriorityLevelConfigurationStatus),
         }),
       ).annotate({
         identifier: "IoK8sApiFlowcontrolV1PriorityLevelConfiguration",
@@ -1793,7 +2209,7 @@ function __c4(j: number): any {
           timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          preconditions: S.optional(__S(34)),
+          preconditions: S.optional(IoK8sApimachineryPkgApisMetaV1Preconditions),
         }).pipe(
           T.Http({
             method: "DELETE",
@@ -1815,11 +2231,11 @@ function __c4(j: number): any {
         identifier: "IoK8sApimachineryPkgApisMetaV1StatusCause",
       });
     case 5:
-      return S.Array(__S(36));
+      return S.Array(IoK8sApimachineryPkgApisMetaV1StatusCause);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          causes: S.optional(__S(37)),
+          causes: S.optional(IoK8sApimachineryPkgApisMetaV1StatusDetailsCausesList),
           group: S.optional(S.String),
           kind: S.optional(S.String),
           name: S.optional(S.String),
@@ -1848,7 +2264,7 @@ function __c5(j: number): any {
           remainingItemCount: S.optional(S.Number),
           resourceVersion: S.optional(S.String),
           selfLink: S.optional(S.String),
-          shardInfo: S.optional(__S(39)),
+          shardInfo: S.optional(IoK8sApimachineryPkgApisMetaV1ShardInfo),
         }),
       ).annotate({
         identifier: "IoK8sApimachineryPkgApisMetaV1ListMeta",
@@ -1858,10 +2274,10 @@ function __c5(j: number): any {
         S.Struct({
           apiVersion: S.optional(S.String),
           code: S.optional(S.Number),
-          details: S.optional(__S(38)),
+          details: S.optional(IoK8sApimachineryPkgApisMetaV1StatusDetails),
           kind: S.optional(S.String),
           message: S.optional(S.String),
-          metadata: S.optional(__S(40)),
+          metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ListMeta),
           reason: S.optional(S.String),
           status: S.optional(S.String),
         }),
@@ -1888,7 +2304,7 @@ function __c5(j: number): any {
           timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          preconditions: S.optional(__S(34)),
+          preconditions: S.optional(IoK8sApimachineryPkgApisMetaV1Preconditions),
         }).pipe(
           T.Http({
             method: "DELETE",
@@ -1911,7 +2327,7 @@ function __c5(j: number): any {
           propagationPolicy: S.optional(S.String.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          preconditions: S.optional(__S(34)),
+          preconditions: S.optional(IoK8sApimachineryPkgApisMetaV1Preconditions),
         }).pipe(
           T.Http({
             method: "DELETE",
@@ -1934,7 +2350,7 @@ function __c5(j: number): any {
           propagationPolicy: S.optional(S.String.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          preconditions: S.optional(__S(34)),
+          preconditions: S.optional(IoK8sApimachineryPkgApisMetaV1Preconditions),
         }).pipe(
           T.Http({
             method: "DELETE",
@@ -1976,18 +2392,20 @@ function __c5(j: number): any {
 function __c6(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(47));
+      return S.Array(IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR);
     case 1:
-      return S.Array(__S(46));
+      return S.Array(IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery);
     case 2:
       return S.suspend(() =>
         S.Struct({
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
           name: S.String,
-          preferredVersion: S.optional(__S(46)),
-          serverAddressByClientCIDRs: S.optional(__S(48)),
-          versions: __S(49),
+          preferredVersion: S.optional(IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery),
+          serverAddressByClientCIDRs: S.optional(
+            IoK8sApimachineryPkgApisMetaV1APIGroupServerAddressByClientCIDRsList,
+          ),
+          versions: IoK8sApimachineryPkgApisMetaV1APIGroupVersionsList,
         }),
       ).annotate({
         identifier: "IoK8sApimachineryPkgApisMetaV1APIGroup",
@@ -2003,29 +2421,29 @@ function __c6(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          categories: S.optional(__S(1)),
+          categories: S.optional(IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList),
           group: S.optional(S.String),
           kind: S.String,
           name: S.String,
           namespaced: S.Boolean,
-          shortNames: S.optional(__S(1)),
+          shortNames: S.optional(IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList),
           singularName: S.String,
           storageVersionHash: S.optional(S.String),
-          verbs: __S(1),
+          verbs: IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList,
           version: S.optional(S.String),
         }),
       ).annotate({
         identifier: "IoK8sApimachineryPkgApisMetaV1APIResource",
       });
     case 5:
-      return S.Array(__S(52));
+      return S.Array(IoK8sApimachineryPkgApisMetaV1APIResource);
     case 6:
       return S.suspend(() =>
         S.Struct({
           apiVersion: S.optional(S.String),
           groupVersion: S.String,
           kind: S.optional(S.String),
-          resources: __S(53),
+          resources: IoK8sApimachineryPkgApisMetaV1APIResourceListResourcesList,
         }),
       ).annotate({
         identifier: "IoK8sApimachineryPkgApisMetaV1APIResourceList",
@@ -2060,14 +2478,14 @@ function __c6(j: number): any {
 function __c7(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(24));
+      return S.Array(IoK8sApiFlowcontrolV1FlowSchema);
     case 1:
       return S.suspend(() =>
         S.Struct({
           apiVersion: S.optional(S.String),
-          items: __S(56),
+          items: IoK8sApiFlowcontrolV1FlowSchemaListItemsList,
           kind: S.optional(S.String),
-          metadata: S.optional(__S(40)),
+          metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ListMeta),
         }),
       ).annotate({
         identifier: "IoK8sApiFlowcontrolV1FlowSchemaList",
@@ -2098,14 +2516,14 @@ function __c7(j: number): any {
         identifier: "ListFlowcontrolApiserverV1PriorityLevelConfigurationRequest",
       });
     case 3:
-      return S.Array(__S(33));
+      return S.Array(IoK8sApiFlowcontrolV1PriorityLevelConfiguration);
     case 4:
       return S.suspend(() =>
         S.Struct({
           apiVersion: S.optional(S.String),
-          items: __S(59),
+          items: IoK8sApiFlowcontrolV1PriorityLevelConfigurationListItemsList,
           kind: S.optional(S.String),
-          metadata: S.optional(__S(40)),
+          metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ListMeta),
         }),
       ).annotate({
         identifier: "IoK8sApiFlowcontrolV1PriorityLevelConfigurationList",
@@ -2260,9 +2678,9 @@ function __c8(j: number): any {
           fieldValidation: S.optional(S.String.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          metadata: S.optional(__S(6)),
-          spec: __S(19),
-          status: S.optional(__S(22)),
+          metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
+          spec: IoK8sApiFlowcontrolV1FlowSchemaSpec,
+          status: S.optional(IoK8sApiFlowcontrolV1FlowSchemaStatus),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2283,9 +2701,9 @@ function __c8(j: number): any {
           fieldValidation: S.optional(S.String.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          metadata: S.optional(__S(6)),
-          spec: __S(19),
-          status: S.optional(__S(22)),
+          metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
+          spec: IoK8sApiFlowcontrolV1FlowSchemaSpec,
+          status: S.optional(IoK8sApiFlowcontrolV1FlowSchemaStatus),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2306,9 +2724,9 @@ function __c8(j: number): any {
           fieldValidation: S.optional(S.String.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          metadata: S.optional(__S(6)),
-          spec: __S(29),
-          status: S.optional(__S(31)),
+          metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
+          spec: IoK8sApiFlowcontrolV1PriorityLevelConfigurationSpec,
+          status: S.optional(IoK8sApiFlowcontrolV1PriorityLevelConfigurationStatus),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2333,9 +2751,9 @@ function __c9(j: number): any {
           fieldValidation: S.optional(S.String.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          metadata: S.optional(__S(6)),
-          spec: __S(29),
-          status: S.optional(__S(31)),
+          metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
+          spec: IoK8sApiFlowcontrolV1PriorityLevelConfigurationSpec,
+          status: S.optional(IoK8sApiFlowcontrolV1PriorityLevelConfigurationStatus),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2457,34 +2875,5 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "WatchFlowcontrolApiserverV1PriorityLevelConfigurationListRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
-    case 9:
-      return __c9(i & 7);
   }
 }

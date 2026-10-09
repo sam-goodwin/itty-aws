@@ -10,8 +10,6 @@ import {
 } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { CloudflareOpError, CloudflareOpContext };
 
@@ -52,6 +50,8 @@ export class HostnameTlsSettingNotFound
   ) {}
 
 export type SettingsTlsDeleteRequestSettingId = "ciphers" | "min_tls_version" | "http2";
+const SettingsTlsDeleteRequestSettingId = S.String;
+
 export interface DeleteSettingTlsRequest {
   /** Identifier. */
   zoneId: string;
@@ -60,11 +60,18 @@ export interface DeleteSettingTlsRequest {
   /** The hostname for which the tls settings are set. */
   hostname: string;
 }
+const DeleteSettingTlsRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<DeleteSettingTlsRequest>;
+
 export type SettingsTlsDeleteResponseValueCase0 = "1.0" | "1.1" | "1.2" | "1.3" | "on" | "off";
 export type SettingsTlsDeleteResponseValueCase1List = Array<string>;
 export type SettingsTlsDeleteResponseValue =
   | SettingsTlsDeleteResponseValueCase0
   | SettingsTlsDeleteResponseValueCase1List;
+const SettingsTlsDeleteResponseValue = /*@__PURE__*/ __L.at(__c0, 1);
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DeleteSettingTlsResponse {
   /** This is the time the tls setting was originally created for this hostname. */
@@ -78,7 +85,14 @@ export interface DeleteSettingTlsResponse {
   /** The TLS setting value. The type depends on the `setting_id` used in the request path: */
   value?: SettingsTlsDeleteResponseValue | null;
 }
+const DeleteSettingTlsResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<DeleteSettingTlsResponse>;
+
 export type SettingsTlsGetRequestSettingId = "ciphers" | "min_tls_version" | "http2";
+const SettingsTlsGetRequestSettingId = S.String;
+
 export interface GetSettingTlsRequest {
   /** Identifier. */
   zoneId: string;
@@ -87,11 +101,15 @@ export interface GetSettingTlsRequest {
   /** The hostname for which the tls settings are set. */
   hostname: string;
 }
+const GetSettingTlsRequest = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<GetSettingTlsRequest>;
+
 export type SettingsTlsGetResponseValueCase0 = "1.0" | "1.1" | "1.2" | "1.3" | "on" | "off";
 export type SettingsTlsGetResponseValueCase1List = Array<string>;
 export type SettingsTlsGetResponseValue =
   | SettingsTlsGetResponseValueCase0
   | SettingsTlsGetResponseValueCase1List;
+const SettingsTlsGetResponseValue = /*@__PURE__*/ __L.at(__c0, 4);
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetSettingTlsResponse {
   /** This is the time the tls setting was originally created for this hostname. */
@@ -105,18 +123,32 @@ export interface GetSettingTlsResponse {
   /** The TLS setting value. The type depends on the `setting_id` used in the request path: */
   value?: SettingsTlsGetResponseValue | null;
 }
+const GetSettingTlsResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<GetSettingTlsResponse>;
+
 export type ListSettingsTlsRequestSettingId = "ciphers" | "min_tls_version" | "http2";
+const ListSettingsTlsRequestSettingId = S.String;
+
 export interface ListSettingsTlsRequest {
   /** Identifier. */
   zoneId: string;
   /** The TLS Setting name. The value type depends on the setting: */
   settingId: ListSettingsTlsRequestSettingId | (string & {});
 }
+const ListSettingsTlsRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<ListSettingsTlsRequest>;
+
 export type ListSettingsTlsResultItemValueCase0 = "1.0" | "1.1" | "1.2" | "1.3" | "on" | "off";
 export type ListSettingsTlsResultItemValueCase1List = Array<string>;
 export type ListSettingsTlsResultItemValue =
   | ListSettingsTlsResultItemValueCase0
   | ListSettingsTlsResultItemValueCase1List;
+const ListSettingsTlsResultItemValue = /*@__PURE__*/ __L.at(__c0, 7);
+
 export interface ListSettingsTlsResultItem {
   /** This is the time the tls setting was originally created for this hostname. */
   createdAt?: string | null;
@@ -129,15 +161,34 @@ export interface ListSettingsTlsResultItem {
   /** The TLS setting value. The type depends on the `setting_id` used in the request path: */
   value?: ListSettingsTlsResultItemValue | null;
 }
+const ListSettingsTlsResultItem = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<ListSettingsTlsResultItem>;
+
 export type ListSettingsTlsResultList = Array<ListSettingsTlsResultItem>;
+const ListSettingsTlsResultList = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<ListSettingsTlsResultList>;
+
 export type ListSettingsTlsResponse = ListSettingsTlsResultList;
+const ListSettingsTlsResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<ListSettingsTlsResponse>;
+
 export type SettingsTlsUpdateRequestSettingId = "ciphers" | "min_tls_version" | "http2";
+const SettingsTlsUpdateRequestSettingId = S.String;
+
 export type SettingsTlsUpdateRequestValueCase0 = "1.0" | "1.1" | "1.2" | "1.3" | "on" | "off";
 export type SettingsTlsUpdateRequestValueCase1List = Array<string>;
 export type SettingsTlsUpdateRequestValue =
   | SettingsTlsUpdateRequestValueCase0
   | (string & {})
   | SettingsTlsUpdateRequestValueCase1List;
+const SettingsTlsUpdateRequestValue = /*@__PURE__*/ __L.at(__c1, 3);
+
 export interface PutSettingTlsRequest {
   /** Identifier. */
   zoneId: string;
@@ -148,11 +199,15 @@ export interface PutSettingTlsRequest {
   /** The TLS setting value. The type depends on the `setting_id` used in the request path: */
   value: SettingsTlsUpdateRequestValue;
 }
+const PutSettingTlsRequest = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<PutSettingTlsRequest>;
+
 export type SettingsTlsUpdateResponseValueCase0 = "1.0" | "1.1" | "1.2" | "1.3" | "on" | "off";
 export type SettingsTlsUpdateResponseValueCase1List = Array<string>;
 export type SettingsTlsUpdateResponseValue =
   | SettingsTlsUpdateResponseValueCase0
   | SettingsTlsUpdateResponseValueCase1List;
+const SettingsTlsUpdateResponseValue = /*@__PURE__*/ __L.at(__c1, 5);
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PutSettingTlsResponse {
   /** This is the time the tls setting was originally created for this hostname. */
@@ -166,6 +221,11 @@ export interface PutSettingTlsResponse {
   /** The TLS setting value. The type depends on the `setting_id` used in the request path: */
   value?: SettingsTlsUpdateResponseValue | null;
 }
+const PutSettingTlsResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<PutSettingTlsResponse>;
+
 export type DeleteSettingTlsError =
   | AdvancedCertificateManagerRequired
   | HostnameTlsSettingNotFound
@@ -178,8 +238,8 @@ export const deleteSettingTls: API.OperationMethod<
   DeleteSettingTlsError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<DeleteSettingTlsRequest>,
-  output: __S(2) as any as S.Schema<DeleteSettingTlsResponse>,
+  input: DeleteSettingTlsRequest,
+  output: DeleteSettingTlsResponse,
   errors: [
     AdvancedCertificateManagerRequired,
     HostnameTlsSettingNotFound,
@@ -199,8 +259,8 @@ export const getSettingTls: API.OperationMethod<
   GetSettingTlsError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3) as any as S.Schema<GetSettingTlsRequest>,
-  output: __S(5) as any as S.Schema<GetSettingTlsResponse>,
+  input: GetSettingTlsRequest,
+  output: GetSettingTlsResponse,
   errors: [AdvancedCertificateManagerRequired, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -214,8 +274,8 @@ export const listSettingsTls: API.OperationMethod<
   ListSettingsTlsError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6) as any as S.Schema<ListSettingsTlsRequest>,
-  output: __S(10) as any as S.Schema<ListSettingsTlsResponse>,
+  input: ListSettingsTlsRequest,
+  output: ListSettingsTlsResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -229,8 +289,8 @@ export const putSettingTls: API.OperationMethod<
   PutSettingTlsError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12) as any as S.Schema<PutSettingTlsRequest>,
-  output: __S(14) as any as S.Schema<PutSettingTlsResponse>,
+  input: PutSettingTlsRequest,
+  output: PutSettingTlsResponse,
   errors: [AdvancedCertificateManagerRequired, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -243,7 +303,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
-          settingId: S.String.pipe(T.Label("setting_id")),
+          settingId: SettingsTlsDeleteRequestSettingId.pipe(T.Label("setting_id")),
           hostname: S.String.pipe(T.Label()),
         })
           .pipe(
@@ -264,14 +324,14 @@ function __c0(j: number): any {
           hostname: S.optional(S.NullOr(S.String)),
           status: S.optional(S.NullOr(S.String)),
           updatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("updated_at"))),
-          value: S.optional(S.NullOr(__S(1))),
+          value: S.optional(S.NullOr(SettingsTlsDeleteResponseValue)),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "DeleteSettingTlsResponse" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
-          settingId: S.String.pipe(T.Label("setting_id")),
+          settingId: SettingsTlsGetRequestSettingId.pipe(T.Label("setting_id")),
           hostname: S.String.pipe(T.Label()),
         })
           .pipe(
@@ -292,14 +352,14 @@ function __c0(j: number): any {
           hostname: S.optional(S.NullOr(S.String)),
           status: S.optional(S.NullOr(S.String)),
           updatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("updated_at"))),
-          value: S.optional(S.NullOr(__S(4))),
+          value: S.optional(S.NullOr(SettingsTlsGetResponseValue)),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetSettingTlsResponse" });
     case 6:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
-          settingId: S.String.pipe(T.Label("setting_id")),
+          settingId: ListSettingsTlsRequestSettingId.pipe(T.Label("setting_id")),
         })
           .pipe(
             T.Http({
@@ -323,16 +383,16 @@ function __c1(j: number): any {
           hostname: S.optional(S.NullOr(S.String)),
           status: S.optional(S.NullOr(S.String)),
           updatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("updated_at"))),
-          value: S.optional(S.NullOr(__S(7))),
+          value: S.optional(S.NullOr(ListSettingsTlsResultItemValue)),
         }),
       ).annotate({
         identifier: "ListSettingsTlsResultItem",
       });
     case 1:
-      return S.Array(__S(8));
+      return S.Array(ListSettingsTlsResultItem);
     case 2:
       return S.suspend(() =>
-        __S(9).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
+        ListSettingsTlsResultList.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListSettingsTlsResponse" });
     case 3:
       return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
@@ -340,9 +400,9 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
-          settingId: S.String.pipe(T.Label("setting_id")),
+          settingId: SettingsTlsUpdateRequestSettingId.pipe(T.Label("setting_id")),
           hostname: S.String.pipe(T.Label()),
-          value: __S(11),
+          value: SettingsTlsUpdateRequestValue,
         })
           .pipe(
             T.Http({
@@ -362,21 +422,8 @@ function __c1(j: number): any {
           hostname: S.optional(S.NullOr(S.String)),
           status: S.optional(S.NullOr(S.String)),
           updatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("updated_at"))),
-          value: S.optional(S.NullOr(__S(13))),
+          value: S.optional(S.NullOr(SettingsTlsUpdateResponseValue)),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "PutSettingTlsResponse" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
   }
 }

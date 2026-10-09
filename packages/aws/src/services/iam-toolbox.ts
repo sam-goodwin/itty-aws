@@ -8,8 +8,6 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "IAM Toolbox",
   serviceShapeName: "AuthRequestService",
@@ -104,19 +102,32 @@ export interface GetRequestAuthorizationDetailsInput {
   authorizationId: string;
   nextToken?: string;
 }
+const GetRequestAuthorizationDetailsInput = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<GetRequestAuthorizationDetailsInput>;
 export type AuthorizationContext = { [key: string]: any | undefined };
+const AuthorizationContext = /*@__PURE__*/ __L.at(__c0, 1);
 export type EvaluatedEffect = "ALLOW" | "EXPLICIT_DENY" | "IMPLICIT_DENY" | (string & {});
+const EvaluatedEffect = S.String;
+
 export type StatementEffect = "ALLOW" | "DENY" | (string & {});
+const StatementEffect = S.String;
+
 export interface MatchedStatement {
   sid?: string;
   evaluatedEffect?: StatementEffect;
 }
+const MatchedStatement = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<MatchedStatement>;
 export type MatchedStatementList = MatchedStatement[];
+const MatchedStatementList = /*@__PURE__*/ __L.at(__c0, 3);
 export interface MatchedPolicy {
   uri: string;
   matchedStatements?: MatchedStatement[];
 }
+const MatchedPolicy = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<MatchedPolicy>;
 export type MatchedPolicyList = MatchedPolicy[];
+const MatchedPolicyList = /*@__PURE__*/ __L.at(__c0, 5);
 export interface Evaluation {
   action: string;
   resource: string;
@@ -124,7 +135,9 @@ export interface Evaluation {
   evaluatedEffect?: EvaluatedEffect;
   matchedPolicies?: MatchedPolicy[];
 }
+const Evaluation = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<Evaluation>;
 export type Evaluations = Evaluation[];
+const Evaluations = /*@__PURE__*/ __L.at(__c0, 7);
 export type PolicyType =
   | "IDENTITY_BASED_POLICY"
   | "RESOURCE_BASED_POLICY"
@@ -134,23 +147,33 @@ export type PolicyType =
   | "RESOURCE_CONTROL_POLICY"
   | "VPC_ENDPOINT_POLICY"
   | (string & {});
+const PolicyType = S.String;
+
 export interface AttachedTo {
   arn?: string;
 }
+const AttachedTo = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<AttachedTo>;
 export type AttachedToList = AttachedTo[];
+const AttachedToList = /*@__PURE__*/ __L.at(__c1, 1);
 export interface PolicyInfo {
   type?: PolicyType;
   inline?: boolean;
   uri?: string;
   attachedTo?: AttachedTo[];
 }
+const PolicyInfo = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<PolicyInfo>;
 export type PolicyInfoList = PolicyInfo[];
+const PolicyInfoList = /*@__PURE__*/ __L.at(__c1, 3);
 export interface GetRequestAuthorizationDetailsOutput {
   requestContext: { [key: string]: any | undefined };
   evaluations: Evaluation[];
   policies: PolicyInfo[];
   nextToken?: string;
 }
+const GetRequestAuthorizationDetailsOutput = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<GetRequestAuthorizationDetailsOutput>;
 export type GetRequestAuthorizationDetailsError =
   | AccessDeniedException
   | InternalServerException
@@ -173,8 +196,8 @@ export const getRequestAuthorizationDetails: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Evaluation
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(0) as any as S.Schema<GetRequestAuthorizationDetailsInput>,
-  output: __S(12) as any as S.Schema<GetRequestAuthorizationDetailsOutput>,
+  input: GetRequestAuthorizationDetailsInput,
+  output: GetRequestAuthorizationDetailsOutput,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -212,28 +235,28 @@ function __c0(j: number): any {
       return S.Record(S.String, /*@__PURE__*/ S.Any.pipe(S.optional));
     case 2:
       return S.suspend(() =>
-        S.Struct({ sid: S.optional(S.String), evaluatedEffect: S.optional(S.String) }),
+        S.Struct({ sid: S.optional(S.String), evaluatedEffect: S.optional(StatementEffect) }),
       ).annotate({ identifier: "MatchedStatement" });
     case 3:
-      return S.Array(__S(2));
+      return S.Array(MatchedStatement);
     case 4:
       return S.suspend(() =>
-        S.Struct({ uri: S.String, matchedStatements: S.optional(__S(3)) }),
+        S.Struct({ uri: S.String, matchedStatements: S.optional(MatchedStatementList) }),
       ).annotate({ identifier: "MatchedPolicy" });
     case 5:
-      return S.Array(__S(4));
+      return S.Array(MatchedPolicy);
     case 6:
       return S.suspend(() =>
         S.Struct({
           action: S.String,
           resource: S.String,
-          context: S.optional(__S(1)),
-          evaluatedEffect: S.optional(S.String),
-          matchedPolicies: S.optional(__S(5)),
+          context: S.optional(AuthorizationContext),
+          evaluatedEffect: S.optional(EvaluatedEffect),
+          matchedPolicies: S.optional(MatchedPolicyList),
         }),
       ).annotate({ identifier: "Evaluation" });
     case 7:
-      return S.Array(__S(6));
+      return S.Array(Evaluation);
   }
 }
 function __c1(j: number): any {
@@ -243,41 +266,28 @@ function __c1(j: number): any {
         identifier: "AttachedTo",
       });
     case 1:
-      return S.Array(__S(8));
+      return S.Array(AttachedTo);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(S.String),
+          type: S.optional(PolicyType),
           inline: S.optional(S.Boolean),
           uri: S.optional(S.String),
-          attachedTo: S.optional(__S(9)),
+          attachedTo: S.optional(AttachedToList),
         }),
       ).annotate({ identifier: "PolicyInfo" });
     case 3:
-      return S.Array(__S(10));
+      return S.Array(PolicyInfo);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          requestContext: __S(1),
-          evaluations: __S(7),
-          policies: __S(11),
+          requestContext: AuthorizationContext,
+          evaluations: Evaluations,
+          policies: PolicyInfoList,
           nextToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GetRequestAuthorizationDetailsOutput",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
   }
 }

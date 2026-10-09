@@ -8,8 +8,6 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "Pinpoint SMS Voice V2",
   serviceShapeName: "PinpointSMSVoiceV2",
@@ -120,7 +118,7 @@ export class ValidationException
     message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
     Reason: /*@__PURE__*/ S.optional(S.String),
     Fields: /*@__PURE__*/ S.optional(
-      /*@__PURE__*/ S.suspend(() => __S(308)).annotate({
+      /*@__PURE__*/ S.suspend(() => ValidationExceptionFieldList).annotate({
         identifier: "ValidationExceptionFieldList",
       }),
     ),
@@ -135,6 +133,10 @@ export interface AssociateOriginationIdentityRequest {
   IsoCountryCode?: string;
   ClientToken?: string;
 }
+const AssociateOriginationIdentityRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<AssociateOriginationIdentityRequest>;
 export interface AssociateOriginationIdentityResult {
   PoolArn?: string;
   PoolId?: string;
@@ -142,12 +144,20 @@ export interface AssociateOriginationIdentityResult {
   OriginationIdentity?: string;
   IsoCountryCode?: string;
 }
+const AssociateOriginationIdentityResult = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<AssociateOriginationIdentityResult>;
 export type ProtectConfigurationIdOrArn = string;
 export type ConfigurationSetNameOrArn = string;
 export interface AssociateProtectConfigurationRequest {
   ProtectConfigurationId: string;
   ConfigurationSetName: string;
 }
+const AssociateProtectConfigurationRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<AssociateProtectConfigurationRequest>;
 export type ConfigurationSetName = string;
 export type ProtectConfigurationArn = string;
 export type ProtectConfigurationId = string;
@@ -157,11 +167,16 @@ export interface AssociateProtectConfigurationResult {
   ProtectConfigurationArn: string;
   ProtectConfigurationId: string;
 }
+const AssociateProtectConfigurationResult = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<AssociateProtectConfigurationResult>;
 export type CarrierLookupInputPhoneNumberType = string;
 export interface CarrierLookupRequest {
   PhoneNumber: string;
   EnableCleansing?: boolean;
 }
+const CarrierLookupRequest = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<CarrierLookupRequest>;
 export type E164PhoneNumberType = string;
 export type DialingCountryCodeType = string;
 export type MCCType = string;
@@ -178,42 +193,63 @@ export interface CarrierLookupResult {
   PhoneNumberType: string;
   OriginalPhoneNumber?: string;
 }
+const CarrierLookupResult = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<CarrierLookupResult>;
 export type TagKey = string;
 export type TagValue = string;
 export interface Tag {
   Key: string;
   Value: string;
 }
+const Tag = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<Tag>;
 export type TagList = Tag[];
+const TagList = /*@__PURE__*/ __L.at(__c0, 7);
 export interface CreateConfigurationSetRequest {
   ConfigurationSetName: string;
   Tags?: Tag[];
   ClientToken?: string;
 }
+const CreateConfigurationSetRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<CreateConfigurationSetRequest>;
 export interface CreateConfigurationSetResult {
   ConfigurationSetArn?: string;
   ConfigurationSetName?: string;
   Tags?: Tag[];
   CreatedTimestamp?: Date;
 }
+const CreateConfigurationSetResult = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<CreateConfigurationSetResult>;
 export type EventDestinationName = string;
 export type EventType = string;
 export type EventTypeList = string[];
+const EventTypeList = /*@__PURE__*/ __L.at(__c1, 2);
 export type IamRoleArn = string;
 export type LogGroupArn = string;
 export interface CloudWatchLogsDestination {
   IamRoleArn: string;
   LogGroupArn: string;
 }
+const CloudWatchLogsDestination = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<CloudWatchLogsDestination>;
 export type DeliveryStreamArn = string;
 export interface KinesisFirehoseDestination {
   IamRoleArn: string;
   DeliveryStreamArn: string;
 }
+const KinesisFirehoseDestination = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<KinesisFirehoseDestination>;
 export type SnsTopicArn = string;
 export interface SnsDestination {
   TopicArn: string;
 }
+const SnsDestination = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<SnsDestination>;
 export interface CreateEventDestinationRequest {
   ConfigurationSetName: string;
   EventDestinationName: string;
@@ -223,6 +259,10 @@ export interface CreateEventDestinationRequest {
   SnsDestination?: SnsDestination;
   ClientToken?: string;
 }
+const CreateEventDestinationRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<CreateEventDestinationRequest>;
 export interface EventDestination {
   EventDestinationName: string;
   Enabled: boolean;
@@ -231,17 +271,24 @@ export interface EventDestination {
   KinesisFirehoseDestination?: KinesisFirehoseDestination;
   SnsDestination?: SnsDestination;
 }
+const EventDestination = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<EventDestination>;
 export interface CreateEventDestinationResult {
   ConfigurationSetArn?: string;
   ConfigurationSetName?: string;
   EventDestination?: EventDestination;
 }
+const CreateEventDestinationResult = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<CreateEventDestinationResult>;
 export type NotifyConfigurationDisplayName = string;
 export type NotifyConfigurationUseCase = string;
 export type NotifyTemplateId = string;
 export type IsoCountryCodeList = string[];
+const IsoCountryCodeList = EventTypeList as any as S.Schema<IsoCountryCodeList>;
 export type NumberCapability = string;
 export type NotifyEnabledChannelsList = string[];
+const NotifyEnabledChannelsList = EventTypeList as any as S.Schema<NotifyEnabledChannelsList>;
 export interface CreateNotifyConfigurationRequest {
   DisplayName: string;
   UseCase: string;
@@ -253,6 +300,10 @@ export interface CreateNotifyConfigurationRequest {
   ClientToken?: string;
   Tags?: Tag[];
 }
+const CreateNotifyConfigurationRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<CreateNotifyConfigurationRequest>;
 export type NotifyConfigurationArn = string;
 export type NotifyConfigurationId = string;
 export type NotifyConfigurationTier = string;
@@ -275,18 +326,30 @@ export interface CreateNotifyConfigurationResult {
   Tags?: Tag[];
   CreatedTimestamp: Date;
 }
+const CreateNotifyConfigurationResult = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<CreateNotifyConfigurationResult>;
 export type OptOutListName = string;
 export interface CreateOptOutListRequest {
   OptOutListName: string;
   Tags?: Tag[];
   ClientToken?: string;
 }
+const CreateOptOutListRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<CreateOptOutListRequest>;
 export interface CreateOptOutListResult {
   OptOutListArn?: string;
   OptOutListName?: string;
   Tags?: Tag[];
   CreatedTimestamp?: Date;
 }
+const CreateOptOutListResult = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<CreateOptOutListResult>;
 export type MessageType = string;
 export interface CreatePoolRequest {
   OriginationIdentity: string;
@@ -296,6 +359,7 @@ export interface CreatePoolRequest {
   Tags?: Tag[];
   ClientToken?: string;
 }
+const CreatePoolRequest = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<CreatePoolRequest>;
 export type PoolStatus = string;
 export type TwoWayChannelArn = string;
 export interface CreatePoolResult {
@@ -313,11 +377,16 @@ export interface CreatePoolResult {
   Tags?: Tag[];
   CreatedTimestamp?: Date;
 }
+const CreatePoolResult = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<CreatePoolResult>;
 export interface CreateProtectConfigurationRequest {
   ClientToken?: string;
   DeletionProtectionEnabled?: boolean;
   Tags?: Tag[];
 }
+const CreateProtectConfigurationRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<CreateProtectConfigurationRequest>;
 export interface CreateProtectConfigurationResult {
   ProtectConfigurationArn: string;
   ProtectConfigurationId: string;
@@ -326,6 +395,10 @@ export interface CreateProtectConfigurationResult {
   DeletionProtectionEnabled: boolean;
   Tags?: Tag[];
 }
+const CreateProtectConfigurationResult = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<CreateProtectConfigurationResult>;
 export type OptOutListNameOrArn = string;
 export interface CreateRcsAgentRequest {
   DeletionProtectionEnabled?: boolean;
@@ -333,11 +406,16 @@ export interface CreateRcsAgentRequest {
   Tags?: Tag[];
   ClientToken?: string;
 }
+const CreateRcsAgentRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<CreateRcsAgentRequest>;
 export type RcsAgentStatus = string;
 export type TwoWayMediaS3BucketName = string;
 export type TwoWayMediaS3KeyPrefix = string;
 export type RcsEventType = string;
 export type RcsEventTypeList = string[];
+const RcsEventTypeList = EventTypeList as any as S.Schema<RcsEventTypeList>;
 export interface CreateRcsAgentResult {
   RcsAgentArn: string;
   RcsAgentId: string;
@@ -355,15 +433,21 @@ export interface CreateRcsAgentResult {
   TwoWayRcsEventsEnabled?: string[];
   Tags?: Tag[];
 }
+const CreateRcsAgentResult = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<CreateRcsAgentResult>;
 export type RegistrationType = string;
 export interface CreateRegistrationRequest {
   RegistrationType: string;
   Tags?: Tag[];
   ClientToken?: string;
 }
+const CreateRegistrationRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<CreateRegistrationRequest>;
 export type RegistrationStatus = string;
 export type RegistrationVersionNumber = number;
 export type StringMap = { [key: string]: string | undefined };
+const StringMap = /*@__PURE__*/ __L.at(__c3, 4);
 export interface CreateRegistrationResult {
   RegistrationArn: string;
   RegistrationId: string;
@@ -374,12 +458,20 @@ export interface CreateRegistrationResult {
   Tags?: Tag[];
   CreatedTimestamp: Date;
 }
+const CreateRegistrationResult = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<CreateRegistrationResult>;
 export type RegistrationIdOrArn = string;
 export type ResourceIdOrArn = string;
 export interface CreateRegistrationAssociationRequest {
   RegistrationId: string;
   ResourceId: string;
 }
+const CreateRegistrationAssociationRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<CreateRegistrationAssociationRequest>;
 export type PhoneNumber = string;
 export interface CreateRegistrationAssociationResult {
   RegistrationArn: string;
@@ -391,6 +483,10 @@ export interface CreateRegistrationAssociationResult {
   IsoCountryCode?: string;
   PhoneNumber?: string;
 }
+const CreateRegistrationAssociationResult = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<CreateRegistrationAssociationResult>;
 export type AttachmentBody = Uint8Array;
 export type AttachmentUrl = string;
 export interface CreateRegistrationAttachmentRequest {
@@ -399,6 +495,10 @@ export interface CreateRegistrationAttachmentRequest {
   Tags?: Tag[];
   ClientToken?: string;
 }
+const CreateRegistrationAttachmentRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<CreateRegistrationAttachmentRequest>;
 export type AttachmentStatus = string;
 export interface CreateRegistrationAttachmentResult {
   RegistrationAttachmentArn: string;
@@ -407,9 +507,17 @@ export interface CreateRegistrationAttachmentResult {
   Tags?: Tag[];
   CreatedTimestamp: Date;
 }
+const CreateRegistrationAttachmentResult = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<CreateRegistrationAttachmentResult>;
 export interface CreateRegistrationVersionRequest {
   RegistrationId: string;
 }
+const CreateRegistrationVersionRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<CreateRegistrationVersionRequest>;
 export type RegistrationVersionStatus = string;
 export interface RegistrationVersionStatusHistory {
   DraftTimestamp: Date;
@@ -423,6 +531,10 @@ export interface RegistrationVersionStatusHistory {
   RevokedTimestamp?: Date;
   ArchivedTimestamp?: Date;
 }
+const RegistrationVersionStatusHistory = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<RegistrationVersionStatusHistory>;
 export interface CreateRegistrationVersionResult {
   RegistrationArn: string;
   RegistrationId: string;
@@ -430,6 +542,10 @@ export interface CreateRegistrationVersionResult {
   RegistrationVersionStatus: string;
   RegistrationVersionStatusHistory: RegistrationVersionStatusHistory;
 }
+const CreateRegistrationVersionResult = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<CreateRegistrationVersionResult>;
 export type RcsAgentIdOrArn = string;
 export interface CreateVerifiedDestinationNumberRequest {
   DestinationPhoneNumber: string;
@@ -437,6 +553,10 @@ export interface CreateVerifiedDestinationNumberRequest {
   Tags?: Tag[];
   ClientToken?: string;
 }
+const CreateVerifiedDestinationNumberRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<CreateVerifiedDestinationNumberRequest>;
 export type VerificationStatus = string;
 export interface CreateVerifiedDestinationNumberResult {
   VerifiedDestinationNumberArn: string;
@@ -447,15 +567,32 @@ export interface CreateVerifiedDestinationNumberResult {
   Tags?: Tag[];
   CreatedTimestamp: Date;
 }
+const CreateVerifiedDestinationNumberResult = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<CreateVerifiedDestinationNumberResult>;
 export interface DeleteAccountDefaultProtectConfigurationRequest {}
+const DeleteAccountDefaultProtectConfigurationRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<DeleteAccountDefaultProtectConfigurationRequest>;
 export interface DeleteAccountDefaultProtectConfigurationResult {
   DefaultProtectConfigurationArn: string;
   DefaultProtectConfigurationId: string;
 }
+const DeleteAccountDefaultProtectConfigurationResult = /*@__PURE__*/ __L.at(
+  __c5,
+  0,
+) as any as S.Schema<DeleteAccountDefaultProtectConfigurationResult>;
 export interface DeleteConfigurationSetRequest {
   ConfigurationSetName: string;
 }
+const DeleteConfigurationSetRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  1,
+) as any as S.Schema<DeleteConfigurationSetRequest>;
 export type EventDestinationList = EventDestination[];
+const EventDestinationList = /*@__PURE__*/ __L.at(__c5, 2);
 export type SenderId = string;
 export interface DeleteConfigurationSetResult {
   ConfigurationSetArn?: string;
@@ -466,37 +603,64 @@ export interface DeleteConfigurationSetResult {
   DefaultMessageFeedbackEnabled?: boolean;
   CreatedTimestamp?: Date;
 }
+const DeleteConfigurationSetResult = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<DeleteConfigurationSetResult>;
 export interface DeleteDefaultMessageTypeRequest {
   ConfigurationSetName: string;
 }
+const DeleteDefaultMessageTypeRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  4,
+) as any as S.Schema<DeleteDefaultMessageTypeRequest>;
 export interface DeleteDefaultMessageTypeResult {
   ConfigurationSetArn?: string;
   ConfigurationSetName?: string;
   MessageType?: string;
 }
+const DeleteDefaultMessageTypeResult = /*@__PURE__*/ __L.at(
+  __c5,
+  5,
+) as any as S.Schema<DeleteDefaultMessageTypeResult>;
 export interface DeleteDefaultSenderIdRequest {
   ConfigurationSetName: string;
 }
+const DeleteDefaultSenderIdRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  6,
+) as any as S.Schema<DeleteDefaultSenderIdRequest>;
 export interface DeleteDefaultSenderIdResult {
   ConfigurationSetArn?: string;
   ConfigurationSetName?: string;
   SenderId?: string;
 }
+const DeleteDefaultSenderIdResult = /*@__PURE__*/ __L.at(
+  __c5,
+  7,
+) as any as S.Schema<DeleteDefaultSenderIdResult>;
 export interface DeleteEventDestinationRequest {
   ConfigurationSetName: string;
   EventDestinationName: string;
 }
+const DeleteEventDestinationRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<DeleteEventDestinationRequest>;
 export interface DeleteEventDestinationResult {
   ConfigurationSetArn?: string;
   ConfigurationSetName?: string;
   EventDestination?: EventDestination;
 }
+const DeleteEventDestinationResult =
+  CreateEventDestinationResult as any as S.Schema<DeleteEventDestinationResult>;
 export type PhoneOrPoolIdOrArn = string;
 export type Keyword = string;
 export interface DeleteKeywordRequest {
   OriginationIdentity: string;
   Keyword: string;
 }
+const DeleteKeywordRequest = /*@__PURE__*/ __L.at(__c6, 1) as any as S.Schema<DeleteKeywordRequest>;
 export type KeywordMessage = string;
 export type KeywordAction = string;
 export interface DeleteKeywordResult {
@@ -506,15 +670,28 @@ export interface DeleteKeywordResult {
   KeywordMessage?: string;
   KeywordAction?: string;
 }
+const DeleteKeywordResult = /*@__PURE__*/ __L.at(__c6, 2) as any as S.Schema<DeleteKeywordResult>;
 export interface DeleteMediaMessageSpendLimitOverrideRequest {}
+const DeleteMediaMessageSpendLimitOverrideRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  3,
+) as any as S.Schema<DeleteMediaMessageSpendLimitOverrideRequest>;
 export type MonthlyLimit = number;
 export interface DeleteMediaMessageSpendLimitOverrideResult {
   MonthlyLimit?: number;
 }
+const DeleteMediaMessageSpendLimitOverrideResult = /*@__PURE__*/ __L.at(
+  __c6,
+  4,
+) as any as S.Schema<DeleteMediaMessageSpendLimitOverrideResult>;
 export type NotifyConfigurationIdOrArn = string;
 export interface DeleteNotifyConfigurationRequest {
   NotifyConfigurationId: string;
 }
+const DeleteNotifyConfigurationRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  5,
+) as any as S.Schema<DeleteNotifyConfigurationRequest>;
 export interface DeleteNotifyConfigurationResult {
   NotifyConfigurationArn: string;
   NotifyConfigurationId: string;
@@ -531,14 +708,28 @@ export interface DeleteNotifyConfigurationResult {
   DeletionProtectionEnabled: boolean;
   CreatedTimestamp: Date;
 }
+const DeleteNotifyConfigurationResult = /*@__PURE__*/ __L.at(
+  __c6,
+  6,
+) as any as S.Schema<DeleteNotifyConfigurationResult>;
 export interface DeleteNotifyMessageSpendLimitOverrideRequest {}
+const DeleteNotifyMessageSpendLimitOverrideRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  7,
+) as any as S.Schema<DeleteNotifyMessageSpendLimitOverrideRequest>;
 export interface DeleteNotifyMessageSpendLimitOverrideResult {
   MonthlyLimit?: number;
 }
+const DeleteNotifyMessageSpendLimitOverrideResult =
+  DeleteMediaMessageSpendLimitOverrideResult as any as S.Schema<DeleteNotifyMessageSpendLimitOverrideResult>;
 export interface DeleteOptedOutNumberRequest {
   OptOutListName: string;
   OptedOutNumber: string;
 }
+const DeleteOptedOutNumberRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  0,
+) as any as S.Schema<DeleteOptedOutNumberRequest>;
 export interface DeleteOptedOutNumberResult {
   OptOutListArn?: string;
   OptOutListName?: string;
@@ -546,17 +737,30 @@ export interface DeleteOptedOutNumberResult {
   OptedOutTimestamp?: Date;
   EndUserOptedOut?: boolean;
 }
+const DeleteOptedOutNumberResult = /*@__PURE__*/ __L.at(
+  __c7,
+  1,
+) as any as S.Schema<DeleteOptedOutNumberResult>;
 export interface DeleteOptOutListRequest {
   OptOutListName: string;
 }
+const DeleteOptOutListRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  2,
+) as any as S.Schema<DeleteOptOutListRequest>;
 export interface DeleteOptOutListResult {
   OptOutListArn?: string;
   OptOutListName?: string;
   CreatedTimestamp?: Date;
 }
+const DeleteOptOutListResult = /*@__PURE__*/ __L.at(
+  __c7,
+  3,
+) as any as S.Schema<DeleteOptOutListResult>;
 export interface DeletePoolRequest {
   PoolId: string;
 }
+const DeletePoolRequest = /*@__PURE__*/ __L.at(__c7, 4) as any as S.Schema<DeletePoolRequest>;
 export interface DeletePoolResult {
   PoolArn?: string;
   PoolId?: string;
@@ -570,9 +774,14 @@ export interface DeletePoolResult {
   SharedRoutesEnabled?: boolean;
   CreatedTimestamp?: Date;
 }
+const DeletePoolResult = /*@__PURE__*/ __L.at(__c7, 5) as any as S.Schema<DeletePoolResult>;
 export interface DeleteProtectConfigurationRequest {
   ProtectConfigurationId: string;
 }
+const DeleteProtectConfigurationRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  6,
+) as any as S.Schema<DeleteProtectConfigurationRequest>;
 export interface DeleteProtectConfigurationResult {
   ProtectConfigurationArn: string;
   ProtectConfigurationId: string;
@@ -580,10 +789,18 @@ export interface DeleteProtectConfigurationResult {
   AccountDefault: boolean;
   DeletionProtectionEnabled: boolean;
 }
+const DeleteProtectConfigurationResult = /*@__PURE__*/ __L.at(
+  __c7,
+  7,
+) as any as S.Schema<DeleteProtectConfigurationResult>;
 export interface DeleteProtectConfigurationRuleSetNumberOverrideRequest {
   ProtectConfigurationId: string;
   DestinationPhoneNumber: string;
 }
+const DeleteProtectConfigurationRuleSetNumberOverrideRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  0,
+) as any as S.Schema<DeleteProtectConfigurationRuleSetNumberOverrideRequest>;
 export type ProtectConfigurationRuleOverrideAction = string;
 export interface DeleteProtectConfigurationRuleSetNumberOverrideResult {
   ProtectConfigurationArn: string;
@@ -594,9 +811,17 @@ export interface DeleteProtectConfigurationRuleSetNumberOverrideResult {
   IsoCountryCode?: string;
   ExpirationTimestamp?: Date;
 }
+const DeleteProtectConfigurationRuleSetNumberOverrideResult = /*@__PURE__*/ __L.at(
+  __c8,
+  1,
+) as any as S.Schema<DeleteProtectConfigurationRuleSetNumberOverrideResult>;
 export interface DeleteRcsAgentRequest {
   RcsAgentId: string;
 }
+const DeleteRcsAgentRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  2,
+) as any as S.Schema<DeleteRcsAgentRequest>;
 export interface DeleteRcsAgentResult {
   RcsAgentArn: string;
   RcsAgentId: string;
@@ -610,13 +835,24 @@ export interface DeleteRcsAgentResult {
   TwoWayEnabled: boolean;
   TwoWayRcsEventsEnabled?: string[];
 }
+const DeleteRcsAgentResult = /*@__PURE__*/ __L.at(__c8, 3) as any as S.Schema<DeleteRcsAgentResult>;
 export interface DeleteRcsMessageSpendLimitOverrideRequest {}
+const DeleteRcsMessageSpendLimitOverrideRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  4,
+) as any as S.Schema<DeleteRcsMessageSpendLimitOverrideRequest>;
 export interface DeleteRcsMessageSpendLimitOverrideResult {
   MonthlyLimit?: number;
 }
+const DeleteRcsMessageSpendLimitOverrideResult =
+  DeleteMediaMessageSpendLimitOverrideResult as any as S.Schema<DeleteRcsMessageSpendLimitOverrideResult>;
 export interface DeleteRegistrationRequest {
   RegistrationId: string;
 }
+const DeleteRegistrationRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  5,
+) as any as S.Schema<DeleteRegistrationRequest>;
 export interface DeleteRegistrationResult {
   RegistrationArn: string;
   RegistrationId: string;
@@ -628,10 +864,18 @@ export interface DeleteRegistrationResult {
   AdditionalAttributes?: { [key: string]: string | undefined };
   CreatedTimestamp: Date;
 }
+const DeleteRegistrationResult = /*@__PURE__*/ __L.at(
+  __c8,
+  6,
+) as any as S.Schema<DeleteRegistrationResult>;
 export type RegistrationAttachmentIdOrArn = string;
 export interface DeleteRegistrationAttachmentRequest {
   RegistrationAttachmentId: string;
 }
+const DeleteRegistrationAttachmentRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  7,
+) as any as S.Schema<DeleteRegistrationAttachmentRequest>;
 export type AttachmentUploadErrorReason = string;
 export interface DeleteRegistrationAttachmentResult {
   RegistrationAttachmentArn: string;
@@ -640,13 +884,22 @@ export interface DeleteRegistrationAttachmentResult {
   AttachmentUploadErrorReason?: string;
   CreatedTimestamp: Date;
 }
+const DeleteRegistrationAttachmentResult = /*@__PURE__*/ __L.at(
+  __c9,
+  0,
+) as any as S.Schema<DeleteRegistrationAttachmentResult>;
 export type FieldPath = string;
 export interface DeleteRegistrationFieldValueRequest {
   RegistrationId: string;
   FieldPath: string;
 }
+const DeleteRegistrationFieldValueRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  1,
+) as any as S.Schema<DeleteRegistrationFieldValueRequest>;
 export type SelectChoice = string;
 export type SelectChoiceList = string[];
+const SelectChoiceList = EventTypeList as any as S.Schema<SelectChoiceList>;
 export type TextValue = string;
 export interface DeleteRegistrationFieldValueResult {
   RegistrationArn: string;
@@ -657,80 +910,143 @@ export interface DeleteRegistrationFieldValueResult {
   TextValue?: string;
   RegistrationAttachmentId?: string;
 }
+const DeleteRegistrationFieldValueResult = /*@__PURE__*/ __L.at(
+  __c9,
+  2,
+) as any as S.Schema<DeleteRegistrationFieldValueResult>;
 export type AmazonResourceName = string;
 export interface DeleteResourcePolicyRequest {
   ResourceArn: string;
 }
+const DeleteResourcePolicyRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  3,
+) as any as S.Schema<DeleteResourcePolicyRequest>;
 export type ResourcePolicy = string;
 export interface DeleteResourcePolicyResult {
   ResourceArn?: string;
   Policy?: string;
   CreatedTimestamp?: Date;
 }
+const DeleteResourcePolicyResult = /*@__PURE__*/ __L.at(
+  __c9,
+  4,
+) as any as S.Schema<DeleteResourcePolicyResult>;
 export interface DeleteTextMessageSpendLimitOverrideRequest {}
+const DeleteTextMessageSpendLimitOverrideRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  5,
+) as any as S.Schema<DeleteTextMessageSpendLimitOverrideRequest>;
 export interface DeleteTextMessageSpendLimitOverrideResult {
   MonthlyLimit?: number;
 }
+const DeleteTextMessageSpendLimitOverrideResult =
+  DeleteMediaMessageSpendLimitOverrideResult as any as S.Schema<DeleteTextMessageSpendLimitOverrideResult>;
 export type VerifiedDestinationNumberIdOrArn = string;
 export interface DeleteVerifiedDestinationNumberRequest {
   VerifiedDestinationNumberId: string;
 }
+const DeleteVerifiedDestinationNumberRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  6,
+) as any as S.Schema<DeleteVerifiedDestinationNumberRequest>;
 export interface DeleteVerifiedDestinationNumberResult {
   VerifiedDestinationNumberArn: string;
   VerifiedDestinationNumberId: string;
   DestinationPhoneNumber: string;
   CreatedTimestamp: Date;
 }
+const DeleteVerifiedDestinationNumberResult = /*@__PURE__*/ __L.at(
+  __c9,
+  7,
+) as any as S.Schema<DeleteVerifiedDestinationNumberResult>;
 export interface DeleteVoiceMessageSpendLimitOverrideRequest {}
+const DeleteVoiceMessageSpendLimitOverrideRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  0,
+) as any as S.Schema<DeleteVoiceMessageSpendLimitOverrideRequest>;
 export interface DeleteVoiceMessageSpendLimitOverrideResult {
   MonthlyLimit?: number;
 }
+const DeleteVoiceMessageSpendLimitOverrideResult =
+  DeleteMediaMessageSpendLimitOverrideResult as any as S.Schema<DeleteVoiceMessageSpendLimitOverrideResult>;
 export type NextToken = string;
 export type MaxResults = number;
 export interface DescribeAccountAttributesRequest {
   NextToken?: string;
   MaxResults?: number;
 }
+const DescribeAccountAttributesRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  1,
+) as any as S.Schema<DescribeAccountAttributesRequest>;
 export type AccountAttributeName = string;
 export interface AccountAttribute {
   Name: string;
   Value: string;
 }
+const AccountAttribute = /*@__PURE__*/ __L.at(__c10, 2) as any as S.Schema<AccountAttribute>;
 export type AccountAttributeList = AccountAttribute[];
+const AccountAttributeList = /*@__PURE__*/ __L.at(__c10, 3);
 export interface DescribeAccountAttributesResult {
   AccountAttributes?: AccountAttribute[];
   NextToken?: string;
 }
+const DescribeAccountAttributesResult = /*@__PURE__*/ __L.at(
+  __c10,
+  4,
+) as any as S.Schema<DescribeAccountAttributesResult>;
 export interface DescribeAccountLimitsRequest {
   NextToken?: string;
   MaxResults?: number;
 }
+const DescribeAccountLimitsRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  5,
+) as any as S.Schema<DescribeAccountLimitsRequest>;
 export type AccountLimitName = string;
 export interface AccountLimit {
   Name: string;
   Used: number;
   Max: number;
 }
+const AccountLimit = /*@__PURE__*/ __L.at(__c10, 6) as any as S.Schema<AccountLimit>;
 export type AccountLimitList = AccountLimit[];
+const AccountLimitList = /*@__PURE__*/ __L.at(__c10, 7);
 export interface DescribeAccountLimitsResult {
   AccountLimits?: AccountLimit[];
   NextToken?: string;
 }
+const DescribeAccountLimitsResult = /*@__PURE__*/ __L.at(
+  __c11,
+  0,
+) as any as S.Schema<DescribeAccountLimitsResult>;
 export type ConfigurationSetNameList = string[];
+const ConfigurationSetNameList = EventTypeList as any as S.Schema<ConfigurationSetNameList>;
 export type ConfigurationSetFilterName = string;
 export type FilterValue = string;
 export type FilterValueList = string[];
+const FilterValueList = EventTypeList as any as S.Schema<FilterValueList>;
 export interface ConfigurationSetFilter {
   Name: string;
   Values: string[];
 }
+const ConfigurationSetFilter = /*@__PURE__*/ __L.at(
+  __c11,
+  1,
+) as any as S.Schema<ConfigurationSetFilter>;
 export type ConfigurationSetFilterList = ConfigurationSetFilter[];
+const ConfigurationSetFilterList = /*@__PURE__*/ __L.at(__c11, 2);
 export interface DescribeConfigurationSetsRequest {
   ConfigurationSetNames?: string[];
   Filters?: ConfigurationSetFilter[];
   NextToken?: string;
   MaxResults?: number;
 }
+const DescribeConfigurationSetsRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  3,
+) as any as S.Schema<DescribeConfigurationSetsRequest>;
 export interface ConfigurationSetInformation {
   ConfigurationSetArn: string;
   ConfigurationSetName: string;
@@ -741,18 +1057,29 @@ export interface ConfigurationSetInformation {
   CreatedTimestamp: Date;
   ProtectConfigurationId?: string;
 }
+const ConfigurationSetInformation = /*@__PURE__*/ __L.at(
+  __c11,
+  4,
+) as any as S.Schema<ConfigurationSetInformation>;
 export type ConfigurationSetInformationList = ConfigurationSetInformation[];
+const ConfigurationSetInformationList = /*@__PURE__*/ __L.at(__c11, 5);
 export interface DescribeConfigurationSetsResult {
   ConfigurationSets?: ConfigurationSetInformation[];
   NextToken?: string;
 }
+const DescribeConfigurationSetsResult = /*@__PURE__*/ __L.at(
+  __c11,
+  6,
+) as any as S.Schema<DescribeConfigurationSetsResult>;
 export type KeywordList = string[];
+const KeywordList = EventTypeList as any as S.Schema<KeywordList>;
 export type KeywordFilterName = string;
 export interface KeywordFilter {
   Name: string;
   Values: string[];
 }
 export type KeywordFilterList = KeywordFilter[];
+const KeywordFilterList = ConfigurationSetFilterList as any as S.Schema<KeywordFilterList>;
 export interface DescribeKeywordsRequest {
   OriginationIdentity: string;
   Keywords?: string[];
@@ -760,31 +1087,51 @@ export interface DescribeKeywordsRequest {
   NextToken?: string;
   MaxResults?: number;
 }
+const DescribeKeywordsRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  7,
+) as any as S.Schema<DescribeKeywordsRequest>;
 export interface KeywordInformation {
   Keyword: string;
   KeywordMessage: string;
   KeywordAction: string;
 }
+const KeywordInformation = /*@__PURE__*/ __L.at(__c12, 0) as any as S.Schema<KeywordInformation>;
 export type KeywordInformationList = KeywordInformation[];
+const KeywordInformationList = /*@__PURE__*/ __L.at(__c12, 1);
 export interface DescribeKeywordsResult {
   OriginationIdentityArn?: string;
   OriginationIdentity?: string;
   Keywords?: KeywordInformation[];
   NextToken?: string;
 }
+const DescribeKeywordsResult = /*@__PURE__*/ __L.at(
+  __c12,
+  2,
+) as any as S.Schema<DescribeKeywordsResult>;
 export type NotifyConfigurationIdList = string[];
+const NotifyConfigurationIdList = EventTypeList as any as S.Schema<NotifyConfigurationIdList>;
 export type NotifyConfigurationFilterName = string;
 export interface NotifyConfigurationFilter {
   Name: string;
   Values: string[];
 }
+const NotifyConfigurationFilter = /*@__PURE__*/ __L.at(
+  __c12,
+  3,
+) as any as S.Schema<NotifyConfigurationFilter>;
 export type NotifyConfigurationFilterList = NotifyConfigurationFilter[];
+const NotifyConfigurationFilterList = /*@__PURE__*/ __L.at(__c12, 4);
 export interface DescribeNotifyConfigurationsRequest {
   NotifyConfigurationIds?: string[];
   Filters?: NotifyConfigurationFilter[];
   NextToken?: string;
   MaxResults?: number;
 }
+const DescribeNotifyConfigurationsRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  5,
+) as any as S.Schema<DescribeNotifyConfigurationsRequest>;
 export interface NotifyConfigurationInformation {
   NotifyConfigurationArn: string;
   NotifyConfigurationId: string;
@@ -801,28 +1148,44 @@ export interface NotifyConfigurationInformation {
   DeletionProtectionEnabled: boolean;
   CreatedTimestamp: Date;
 }
+const NotifyConfigurationInformation =
+  DeleteNotifyConfigurationResult as any as S.Schema<NotifyConfigurationInformation>;
 export type NotifyConfigurationInformationList = NotifyConfigurationInformation[];
+const NotifyConfigurationInformationList = /*@__PURE__*/ __L.at(__c12, 6);
 export interface DescribeNotifyConfigurationsResult {
   NotifyConfigurations?: NotifyConfigurationInformation[];
   NextToken?: string;
 }
+const DescribeNotifyConfigurationsResult = /*@__PURE__*/ __L.at(
+  __c12,
+  7,
+) as any as S.Schema<DescribeNotifyConfigurationsResult>;
 export type NotifyTemplateIdList = string[];
+const NotifyTemplateIdList = EventTypeList as any as S.Schema<NotifyTemplateIdList>;
 export type NotifyTemplateFilterName = string;
 export interface NotifyTemplateFilter {
   Name: string;
   Values: string[];
 }
 export type NotifyTemplateFilterList = NotifyTemplateFilter[];
+const NotifyTemplateFilterList =
+  ConfigurationSetFilterList as any as S.Schema<NotifyTemplateFilterList>;
 export interface DescribeNotifyTemplatesRequest {
   TemplateIds?: string[];
   Filters?: NotifyTemplateFilter[];
   NextToken?: string;
   MaxResults?: number;
 }
+const DescribeNotifyTemplatesRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  0,
+) as any as S.Schema<DescribeNotifyTemplatesRequest>;
 export type NotifyTemplateVersion = number;
 export type NotifyTemplateType = string;
 export type NumberCapabilityList = string[];
+const NumberCapabilityList = EventTypeList as any as S.Schema<NumberCapabilityList>;
 export type NotifyConfigurationTierList = string[];
+const NotifyConfigurationTierList = EventTypeList as any as S.Schema<NotifyConfigurationTierList>;
 export type NotifyTemplateStatus = string;
 export type NotifyLanguageCode = string;
 export type TemplateContent = string;
@@ -840,9 +1203,15 @@ export interface TemplateVariableMetadata {
   Sample?: string;
   Source?: string;
 }
+const TemplateVariableMetadata = /*@__PURE__*/ __L.at(
+  __c13,
+  1,
+) as any as S.Schema<TemplateVariableMetadata>;
 export type TemplateVariablesMap = { [key: string]: TemplateVariableMetadata | undefined };
+const TemplateVariablesMap = /*@__PURE__*/ __L.at(__c13, 2);
 export type VoiceId = string;
 export type VoiceIdList = string[];
+const VoiceIdList = EventTypeList as any as S.Schema<VoiceIdList>;
 export interface NotifyTemplateInformation {
   TemplateId: string;
   Version: number;
@@ -857,18 +1226,29 @@ export interface NotifyTemplateInformation {
   SupportedVoiceIds?: string[];
   CreatedTimestamp: Date;
 }
+const NotifyTemplateInformation = /*@__PURE__*/ __L.at(
+  __c13,
+  3,
+) as any as S.Schema<NotifyTemplateInformation>;
 export type NotifyTemplateInformationList = NotifyTemplateInformation[];
+const NotifyTemplateInformationList = /*@__PURE__*/ __L.at(__c13, 4);
 export interface DescribeNotifyTemplatesResult {
   NotifyTemplates?: NotifyTemplateInformation[];
   NextToken?: string;
 }
+const DescribeNotifyTemplatesResult = /*@__PURE__*/ __L.at(
+  __c13,
+  5,
+) as any as S.Schema<DescribeNotifyTemplatesResult>;
 export type OptedOutNumberList = string[];
+const OptedOutNumberList = EventTypeList as any as S.Schema<OptedOutNumberList>;
 export type OptedOutFilterName = string;
 export interface OptedOutFilter {
   Name: string;
   Values: string[];
 }
 export type OptedOutFilterList = OptedOutFilter[];
+const OptedOutFilterList = ConfigurationSetFilterList as any as S.Schema<OptedOutFilterList>;
 export interface DescribeOptedOutNumbersRequest {
   OptOutListName: string;
   OptedOutNumbers?: string[];
@@ -876,19 +1256,33 @@ export interface DescribeOptedOutNumbersRequest {
   NextToken?: string;
   MaxResults?: number;
 }
+const DescribeOptedOutNumbersRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  6,
+) as any as S.Schema<DescribeOptedOutNumbersRequest>;
 export interface OptedOutNumberInformation {
   OptedOutNumber: string;
   OptedOutTimestamp: Date;
   EndUserOptedOut: boolean;
 }
+const OptedOutNumberInformation = /*@__PURE__*/ __L.at(
+  __c13,
+  7,
+) as any as S.Schema<OptedOutNumberInformation>;
 export type OptedOutNumberInformationList = OptedOutNumberInformation[];
+const OptedOutNumberInformationList = /*@__PURE__*/ __L.at(__c14, 0);
 export interface DescribeOptedOutNumbersResult {
   OptOutListArn?: string;
   OptOutListName?: string;
   OptedOutNumbers?: OptedOutNumberInformation[];
   NextToken?: string;
 }
+const DescribeOptedOutNumbersResult = /*@__PURE__*/ __L.at(
+  __c14,
+  1,
+) as any as S.Schema<DescribeOptedOutNumbersResult>;
 export type OptOutListNameList = string[];
+const OptOutListNameList = EventTypeList as any as S.Schema<OptOutListNameList>;
 export type Owner = string;
 export interface DescribeOptOutListsRequest {
   OptOutListNames?: string[];
@@ -896,24 +1290,39 @@ export interface DescribeOptOutListsRequest {
   MaxResults?: number;
   Owner?: string;
 }
+const DescribeOptOutListsRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  2,
+) as any as S.Schema<DescribeOptOutListsRequest>;
 export interface OptOutListInformation {
   OptOutListArn: string;
   OptOutListName: string;
   CreatedTimestamp: Date;
 }
+const OptOutListInformation = /*@__PURE__*/ __L.at(
+  __c14,
+  3,
+) as any as S.Schema<OptOutListInformation>;
 export type OptOutListInformationList = OptOutListInformation[];
+const OptOutListInformationList = /*@__PURE__*/ __L.at(__c14, 4);
 export interface DescribeOptOutListsResult {
   OptOutLists?: OptOutListInformation[];
   NextToken?: string;
 }
+const DescribeOptOutListsResult = /*@__PURE__*/ __L.at(
+  __c14,
+  5,
+) as any as S.Schema<DescribeOptOutListsResult>;
 export type PhoneNumberIdOrArn = string;
 export type PhoneNumberIdList = string[];
+const PhoneNumberIdList = EventTypeList as any as S.Schema<PhoneNumberIdList>;
 export type PhoneNumberFilterName = string;
 export interface PhoneNumberFilter {
   Name: string;
   Values: string[];
 }
 export type PhoneNumberFilterList = PhoneNumberFilter[];
+const PhoneNumberFilterList = ConfigurationSetFilterList as any as S.Schema<PhoneNumberFilterList>;
 export interface DescribePhoneNumbersRequest {
   PhoneNumberIds?: string[];
   Filters?: PhoneNumberFilter[];
@@ -921,13 +1330,19 @@ export interface DescribePhoneNumbersRequest {
   MaxResults?: number;
   Owner?: string;
 }
+const DescribePhoneNumbersRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  6,
+) as any as S.Schema<DescribePhoneNumbersRequest>;
 export type NumberStatus = string;
 export type NumberType = string;
 export type LongMap = { [key: string]: number | undefined };
+const LongMap = /*@__PURE__*/ __L.at(__c14, 7);
 export interface MessagingLimits {
   RateLimits?: { [key: string]: number | undefined };
   DailyMessageCaps?: { [key: string]: number | undefined };
 }
+const MessagingLimits = /*@__PURE__*/ __L.at(__c15, 0) as any as S.Schema<MessagingLimits>;
 export interface PhoneNumberInformation {
   PhoneNumberArn: string;
   PhoneNumberId?: string;
@@ -950,18 +1365,29 @@ export interface PhoneNumberInformation {
   MessagingLimits?: MessagingLimits;
   CreatedTimestamp: Date;
 }
+const PhoneNumberInformation = /*@__PURE__*/ __L.at(
+  __c15,
+  1,
+) as any as S.Schema<PhoneNumberInformation>;
 export type PhoneNumberInformationList = PhoneNumberInformation[];
+const PhoneNumberInformationList = /*@__PURE__*/ __L.at(__c15, 2);
 export interface DescribePhoneNumbersResult {
   PhoneNumbers?: PhoneNumberInformation[];
   NextToken?: string;
 }
+const DescribePhoneNumbersResult = /*@__PURE__*/ __L.at(
+  __c15,
+  3,
+) as any as S.Schema<DescribePhoneNumbersResult>;
 export type PoolIdList = string[];
+const PoolIdList = EventTypeList as any as S.Schema<PoolIdList>;
 export type PoolFilterName = string;
 export interface PoolFilter {
   Name: string;
   Values: string[];
 }
 export type PoolFilterList = PoolFilter[];
+const PoolFilterList = ConfigurationSetFilterList as any as S.Schema<PoolFilterList>;
 export interface DescribePoolsRequest {
   PoolIds?: string[];
   Filters?: PoolFilter[];
@@ -969,6 +1395,10 @@ export interface DescribePoolsRequest {
   MaxResults?: number;
   Owner?: string;
 }
+const DescribePoolsRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  4,
+) as any as S.Schema<DescribePoolsRequest>;
 export interface PoolInformation {
   PoolArn: string;
   PoolId: string;
@@ -983,24 +1413,34 @@ export interface PoolInformation {
   DeletionProtectionEnabled: boolean;
   CreatedTimestamp: Date;
 }
+const PoolInformation = /*@__PURE__*/ __L.at(__c15, 5) as any as S.Schema<PoolInformation>;
 export type PoolInformationList = PoolInformation[];
+const PoolInformationList = /*@__PURE__*/ __L.at(__c15, 6);
 export interface DescribePoolsResult {
   Pools?: PoolInformation[];
   NextToken?: string;
 }
+const DescribePoolsResult = /*@__PURE__*/ __L.at(__c15, 7) as any as S.Schema<DescribePoolsResult>;
 export type ProtectConfigurationIdList = string[];
+const ProtectConfigurationIdList = EventTypeList as any as S.Schema<ProtectConfigurationIdList>;
 export type ProtectConfigurationFilterName = string;
 export interface ProtectConfigurationFilter {
   Name: string;
   Values: string[];
 }
 export type ProtectConfigurationFilterList = ProtectConfigurationFilter[];
+const ProtectConfigurationFilterList =
+  NotifyConfigurationFilterList as any as S.Schema<ProtectConfigurationFilterList>;
 export interface DescribeProtectConfigurationsRequest {
   ProtectConfigurationIds?: string[];
   Filters?: ProtectConfigurationFilter[];
   NextToken?: string;
   MaxResults?: number;
 }
+const DescribeProtectConfigurationsRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  0,
+) as any as S.Schema<DescribeProtectConfigurationsRequest>;
 export interface ProtectConfigurationInformation {
   ProtectConfigurationArn: string;
   ProtectConfigurationId: string;
@@ -1008,17 +1448,26 @@ export interface ProtectConfigurationInformation {
   AccountDefault: boolean;
   DeletionProtectionEnabled: boolean;
 }
+const ProtectConfigurationInformation =
+  DeleteProtectConfigurationResult as any as S.Schema<ProtectConfigurationInformation>;
 export type ProtectConfigurationInformationList = ProtectConfigurationInformation[];
+const ProtectConfigurationInformationList = /*@__PURE__*/ __L.at(__c16, 1);
 export interface DescribeProtectConfigurationsResult {
   ProtectConfigurations?: ProtectConfigurationInformation[];
   NextToken?: string;
 }
+const DescribeProtectConfigurationsResult = /*@__PURE__*/ __L.at(
+  __c16,
+  2,
+) as any as S.Schema<DescribeProtectConfigurationsResult>;
 export type CountryLaunchStatusFilterName = string;
 export interface CountryLaunchStatusFilter {
   Name: string;
   Values: string[];
 }
 export type CountryLaunchStatusFilterList = CountryLaunchStatusFilter[];
+const CountryLaunchStatusFilterList =
+  NotifyConfigurationFilterList as any as S.Schema<CountryLaunchStatusFilterList>;
 export interface DescribeRcsAgentCountryLaunchStatusRequest {
   RcsAgentId: string;
   IsoCountryCodes?: string[];
@@ -1026,13 +1475,22 @@ export interface DescribeRcsAgentCountryLaunchStatusRequest {
   MaxResults?: number;
   NextToken?: string;
 }
+const DescribeRcsAgentCountryLaunchStatusRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  3,
+) as any as S.Schema<DescribeRcsAgentCountryLaunchStatusRequest>;
 export type CountryLaunchStatus = string;
 export type CarrierStatus = string;
 export interface CarrierStatusInformation {
   CarrierName: string;
   Status: string;
 }
+const CarrierStatusInformation = /*@__PURE__*/ __L.at(
+  __c16,
+  4,
+) as any as S.Schema<CarrierStatusInformation>;
 export type CarrierStatusInformationList = CarrierStatusInformation[];
+const CarrierStatusInformationList = /*@__PURE__*/ __L.at(__c16, 5);
 export interface CountryLaunchStatusInformation {
   IsoCountryCode: string;
   Status: string;
@@ -1040,20 +1498,31 @@ export interface CountryLaunchStatusInformation {
   RegistrationId: string;
   CarrierStatus: CarrierStatusInformation[];
 }
+const CountryLaunchStatusInformation = /*@__PURE__*/ __L.at(
+  __c16,
+  6,
+) as any as S.Schema<CountryLaunchStatusInformation>;
 export type CountryLaunchStatusInformationList = CountryLaunchStatusInformation[];
+const CountryLaunchStatusInformationList = /*@__PURE__*/ __L.at(__c16, 7);
 export interface DescribeRcsAgentCountryLaunchStatusResult {
   RcsAgentId: string;
   RcsAgentArn: string;
   CountryLaunchStatus?: CountryLaunchStatusInformation[];
   NextToken?: string;
 }
+const DescribeRcsAgentCountryLaunchStatusResult = /*@__PURE__*/ __L.at(
+  __c17,
+  0,
+) as any as S.Schema<DescribeRcsAgentCountryLaunchStatusResult>;
 export type RcsAgentIdList = string[];
+const RcsAgentIdList = EventTypeList as any as S.Schema<RcsAgentIdList>;
 export type RcsAgentFilterName = string;
 export interface RcsAgentFilter {
   Name: string;
   Values: string[];
 }
 export type RcsAgentFilterList = RcsAgentFilter[];
+const RcsAgentFilterList = ConfigurationSetFilterList as any as S.Schema<RcsAgentFilterList>;
 export interface DescribeRcsAgentsRequest {
   RcsAgentIds?: string[];
   Owner?: string;
@@ -1061,12 +1530,20 @@ export interface DescribeRcsAgentsRequest {
   NextToken?: string;
   MaxResults?: number;
 }
+const DescribeRcsAgentsRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  1,
+) as any as S.Schema<DescribeRcsAgentsRequest>;
 export type TestingAgentStatus = string;
 export interface TestingAgentInformation {
   Status: string;
   TestingAgentId?: string;
   RegistrationId: string;
 }
+const TestingAgentInformation = /*@__PURE__*/ __L.at(
+  __c17,
+  2,
+) as any as S.Schema<TestingAgentInformation>;
 export interface RcsAgentInformation {
   RcsAgentArn: string;
   RcsAgentId: string;
@@ -1086,24 +1563,37 @@ export interface RcsAgentInformation {
   TestingAgent?: TestingAgentInformation;
   MessagingLimits?: MessagingLimits;
 }
+const RcsAgentInformation = /*@__PURE__*/ __L.at(__c17, 3) as any as S.Schema<RcsAgentInformation>;
 export type RcsAgentInformationList = RcsAgentInformation[];
+const RcsAgentInformationList = /*@__PURE__*/ __L.at(__c17, 4);
 export interface DescribeRcsAgentsResult {
   RcsAgents?: RcsAgentInformation[];
   NextToken?: string;
 }
+const DescribeRcsAgentsResult = /*@__PURE__*/ __L.at(
+  __c17,
+  5,
+) as any as S.Schema<DescribeRcsAgentsResult>;
 export type RegistrationAttachmentIdList = string[];
+const RegistrationAttachmentIdList = EventTypeList as any as S.Schema<RegistrationAttachmentIdList>;
 export type RegistrationAttachmentFilterName = string;
 export interface RegistrationAttachmentFilter {
   Name: string;
   Values: string[];
 }
 export type RegistrationAttachmentFilterList = RegistrationAttachmentFilter[];
+const RegistrationAttachmentFilterList =
+  NotifyConfigurationFilterList as any as S.Schema<RegistrationAttachmentFilterList>;
 export interface DescribeRegistrationAttachmentsRequest {
   RegistrationAttachmentIds?: string[];
   Filters?: RegistrationAttachmentFilter[];
   NextToken?: string;
   MaxResults?: number;
 }
+const DescribeRegistrationAttachmentsRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  6,
+) as any as S.Schema<DescribeRegistrationAttachmentsRequest>;
 export interface RegistrationAttachmentsInformation {
   RegistrationAttachmentArn: string;
   RegistrationAttachmentId: string;
@@ -1112,13 +1602,23 @@ export interface RegistrationAttachmentsInformation {
   CreatedTimestamp: Date;
   AttachmentUrl?: string;
 }
+const RegistrationAttachmentsInformation = /*@__PURE__*/ __L.at(
+  __c17,
+  7,
+) as any as S.Schema<RegistrationAttachmentsInformation>;
 export type RegistrationAttachmentsInformationList = RegistrationAttachmentsInformation[];
+const RegistrationAttachmentsInformationList = /*@__PURE__*/ __L.at(__c18, 0);
 export interface DescribeRegistrationAttachmentsResult {
   RegistrationAttachments: RegistrationAttachmentsInformation[];
   NextToken?: string;
 }
+const DescribeRegistrationAttachmentsResult = /*@__PURE__*/ __L.at(
+  __c18,
+  1,
+) as any as S.Schema<DescribeRegistrationAttachmentsResult>;
 export type SectionPath = string;
 export type FieldPathList = string[];
+const FieldPathList = EventTypeList as any as S.Schema<FieldPathList>;
 export interface DescribeRegistrationFieldDefinitionsRequest {
   RegistrationType: string;
   SectionPath?: string;
@@ -1126,25 +1626,37 @@ export interface DescribeRegistrationFieldDefinitionsRequest {
   NextToken?: string;
   MaxResults?: number;
 }
+const DescribeRegistrationFieldDefinitionsRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  2,
+) as any as S.Schema<DescribeRegistrationFieldDefinitionsRequest>;
 export type FieldType = string;
 export type FieldRequirement = string;
 export type StringList = string[];
+const StringList = EventTypeList as any as S.Schema<StringList>;
 export interface SelectValidation {
   MinChoices: number;
   MaxChoices: number;
   Options: string[];
 }
+const SelectValidation = /*@__PURE__*/ __L.at(__c18, 3) as any as S.Schema<SelectValidation>;
 export interface TextValidation {
   MinLength: number;
   MaxLength: number;
   Pattern: string;
 }
+const TextValidation = /*@__PURE__*/ __L.at(__c18, 4) as any as S.Schema<TextValidation>;
 export interface SelectOptionDescription {
   Option: string;
   Title?: string;
   Description?: string;
 }
+const SelectOptionDescription = /*@__PURE__*/ __L.at(
+  __c18,
+  5,
+) as any as S.Schema<SelectOptionDescription>;
 export type SelectOptionDescriptionsList = SelectOptionDescription[];
+const SelectOptionDescriptionsList = /*@__PURE__*/ __L.at(__c18, 6);
 export interface RegistrationFieldDisplayHints {
   Title: string;
   ShortDescription: string;
@@ -1155,15 +1667,22 @@ export interface RegistrationFieldDisplayHints {
   TextValidationDescription?: string;
   ExampleTextValue?: string;
 }
+const RegistrationFieldDisplayHints = /*@__PURE__*/ __L.at(
+  __c18,
+  7,
+) as any as S.Schema<RegistrationFieldDisplayHints>;
 export type ConditionOperator = string;
 export type ConditionValue = string;
 export type ConditionValueList = string[];
+const ConditionValueList = EventTypeList as any as S.Schema<ConditionValueList>;
 export interface FieldCondition {
   DependsOnFieldPath: string;
   Operator: string;
   Values?: string[];
 }
+const FieldCondition = /*@__PURE__*/ __L.at(__c19, 0) as any as S.Schema<FieldCondition>;
 export type FieldConditionList = FieldCondition[];
+const FieldConditionList = /*@__PURE__*/ __L.at(__c19, 1);
 export type ConditionalFieldBehavior = string;
 export interface ConditionalValidation {
   MinLength?: number;
@@ -1171,16 +1690,23 @@ export interface ConditionalValidation {
   Pattern?: string;
   AllowedValues?: string[];
 }
+const ConditionalValidation = /*@__PURE__*/ __L.at(
+  __c19,
+  2,
+) as any as S.Schema<ConditionalValidation>;
 export interface ConditionalRule {
   Conditions: FieldCondition[];
   RuleBehavior: string;
   ConditionalValidation?: ConditionalValidation;
 }
+const ConditionalRule = /*@__PURE__*/ __L.at(__c19, 3) as any as S.Schema<ConditionalRule>;
 export type ConditionalRuleList = ConditionalRule[];
+const ConditionalRuleList = /*@__PURE__*/ __L.at(__c19, 4);
 export interface ConditionalBehavior {
   Rules: ConditionalRule[];
   DefaultBehavior: string;
 }
+const ConditionalBehavior = /*@__PURE__*/ __L.at(__c19, 5) as any as S.Schema<ConditionalBehavior>;
 export interface RegistrationFieldDefinition {
   SectionPath: string;
   FieldPath: string;
@@ -1191,12 +1717,21 @@ export interface RegistrationFieldDefinition {
   DisplayHints: RegistrationFieldDisplayHints;
   ConditionalBehavior?: ConditionalBehavior;
 }
+const RegistrationFieldDefinition = /*@__PURE__*/ __L.at(
+  __c19,
+  6,
+) as any as S.Schema<RegistrationFieldDefinition>;
 export type RegistrationFieldDefinitionList = RegistrationFieldDefinition[];
+const RegistrationFieldDefinitionList = /*@__PURE__*/ __L.at(__c19, 7);
 export interface DescribeRegistrationFieldDefinitionsResult {
   RegistrationType: string;
   RegistrationFieldDefinitions: RegistrationFieldDefinition[];
   NextToken?: string;
 }
+const DescribeRegistrationFieldDefinitionsResult = /*@__PURE__*/ __L.at(
+  __c20,
+  0,
+) as any as S.Schema<DescribeRegistrationFieldDefinitionsResult>;
 export interface DescribeRegistrationFieldValuesRequest {
   RegistrationId: string;
   VersionNumber?: number;
@@ -1205,6 +1740,10 @@ export interface DescribeRegistrationFieldValuesRequest {
   NextToken?: string;
   MaxResults?: number;
 }
+const DescribeRegistrationFieldValuesRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  1,
+) as any as S.Schema<DescribeRegistrationFieldValuesRequest>;
 export interface RegistrationFieldValueInformation {
   FieldPath: string;
   SelectChoices?: string[];
@@ -1213,7 +1752,12 @@ export interface RegistrationFieldValueInformation {
   DeniedReason?: string;
   Feedback?: string;
 }
+const RegistrationFieldValueInformation = /*@__PURE__*/ __L.at(
+  __c20,
+  2,
+) as any as S.Schema<RegistrationFieldValueInformation>;
 export type RegistrationFieldValueInformationList = RegistrationFieldValueInformation[];
+const RegistrationFieldValueInformationList = /*@__PURE__*/ __L.at(__c20, 3);
 export interface DescribeRegistrationFieldValuesResult {
   RegistrationArn: string;
   RegistrationId: string;
@@ -1221,19 +1765,30 @@ export interface DescribeRegistrationFieldValuesResult {
   RegistrationFieldValues: RegistrationFieldValueInformation[];
   NextToken?: string;
 }
+const DescribeRegistrationFieldValuesResult = /*@__PURE__*/ __L.at(
+  __c20,
+  4,
+) as any as S.Schema<DescribeRegistrationFieldValuesResult>;
 export type RegistrationIdList = string[];
+const RegistrationIdList = EventTypeList as any as S.Schema<RegistrationIdList>;
 export type RegistrationFilterName = string;
 export interface RegistrationFilter {
   Name: string;
   Values: string[];
 }
 export type RegistrationFilterList = RegistrationFilter[];
+const RegistrationFilterList =
+  ConfigurationSetFilterList as any as S.Schema<RegistrationFilterList>;
 export interface DescribeRegistrationsRequest {
   RegistrationIds?: string[];
   Filters?: RegistrationFilter[];
   NextToken?: string;
   MaxResults?: number;
 }
+const DescribeRegistrationsRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  5,
+) as any as S.Schema<DescribeRegistrationsRequest>;
 export interface RegistrationInformation {
   RegistrationArn: string;
   RegistrationId: string;
@@ -1245,18 +1800,30 @@ export interface RegistrationInformation {
   AdditionalAttributes?: { [key: string]: string | undefined };
   CreatedTimestamp: Date;
 }
+const RegistrationInformation =
+  DeleteRegistrationResult as any as S.Schema<RegistrationInformation>;
 export type RegistrationInformationList = RegistrationInformation[];
+const RegistrationInformationList = /*@__PURE__*/ __L.at(__c20, 6);
 export interface DescribeRegistrationsResult {
   Registrations: RegistrationInformation[];
   NextToken?: string;
 }
+const DescribeRegistrationsResult = /*@__PURE__*/ __L.at(
+  __c20,
+  7,
+) as any as S.Schema<DescribeRegistrationsResult>;
 export type SectionPathList = string[];
+const SectionPathList = EventTypeList as any as S.Schema<SectionPathList>;
 export interface DescribeRegistrationSectionDefinitionsRequest {
   RegistrationType: string;
   SectionPaths?: string[];
   NextToken?: string;
   MaxResults?: number;
 }
+const DescribeRegistrationSectionDefinitionsRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  0,
+) as any as S.Schema<DescribeRegistrationSectionDefinitionsRequest>;
 export interface RegistrationSectionDisplayHints {
   Title: string;
   ShortDescription: string;
@@ -1264,29 +1831,49 @@ export interface RegistrationSectionDisplayHints {
   DocumentationTitle?: string;
   DocumentationLink?: string;
 }
+const RegistrationSectionDisplayHints = /*@__PURE__*/ __L.at(
+  __c21,
+  1,
+) as any as S.Schema<RegistrationSectionDisplayHints>;
 export interface RegistrationSectionDefinition {
   SectionPath: string;
   DisplayHints: RegistrationSectionDisplayHints;
 }
+const RegistrationSectionDefinition = /*@__PURE__*/ __L.at(
+  __c21,
+  2,
+) as any as S.Schema<RegistrationSectionDefinition>;
 export type RegistrationSectionDefinitionList = RegistrationSectionDefinition[];
+const RegistrationSectionDefinitionList = /*@__PURE__*/ __L.at(__c21, 3);
 export interface DescribeRegistrationSectionDefinitionsResult {
   RegistrationType: string;
   RegistrationSectionDefinitions: RegistrationSectionDefinition[];
   NextToken?: string;
 }
+const DescribeRegistrationSectionDefinitionsResult = /*@__PURE__*/ __L.at(
+  __c21,
+  4,
+) as any as S.Schema<DescribeRegistrationSectionDefinitionsResult>;
 export type RegistrationTypeList = string[];
+const RegistrationTypeList = EventTypeList as any as S.Schema<RegistrationTypeList>;
 export type RegistrationTypeFilterName = string;
 export interface RegistrationTypeFilter {
   Name: string;
   Values: string[];
 }
 export type RegistrationTypeFilterList = RegistrationTypeFilter[];
+const RegistrationTypeFilterList =
+  ConfigurationSetFilterList as any as S.Schema<RegistrationTypeFilterList>;
 export interface DescribeRegistrationTypeDefinitionsRequest {
   RegistrationTypes?: string[];
   Filters?: RegistrationTypeFilter[];
   NextToken?: string;
   MaxResults?: number;
 }
+const DescribeRegistrationTypeDefinitionsRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  5,
+) as any as S.Schema<DescribeRegistrationTypeDefinitionsRequest>;
 export type RegistrationAssociationBehavior = string;
 export type RegistrationDisassociationBehavior = string;
 export interface SupportedAssociation {
@@ -1295,7 +1882,12 @@ export interface SupportedAssociation {
   AssociationBehavior: string;
   DisassociationBehavior: string;
 }
+const SupportedAssociation = /*@__PURE__*/ __L.at(
+  __c21,
+  6,
+) as any as S.Schema<SupportedAssociation>;
 export type SupportedAssociationList = SupportedAssociation[];
+const SupportedAssociationList = /*@__PURE__*/ __L.at(__c21, 7);
 export interface RegistrationTypeDisplayHints {
   Title: string;
   ShortDescription?: string;
@@ -1303,23 +1895,39 @@ export interface RegistrationTypeDisplayHints {
   DocumentationTitle?: string;
   DocumentationLink?: string;
 }
+const RegistrationTypeDisplayHints = /*@__PURE__*/ __L.at(
+  __c22,
+  0,
+) as any as S.Schema<RegistrationTypeDisplayHints>;
 export interface RegistrationTypeDefinition {
   RegistrationType: string;
   SupportedAssociations?: SupportedAssociation[];
   DisplayHints: RegistrationTypeDisplayHints;
 }
+const RegistrationTypeDefinition = /*@__PURE__*/ __L.at(
+  __c22,
+  1,
+) as any as S.Schema<RegistrationTypeDefinition>;
 export type RegistrationTypeDefinitionList = RegistrationTypeDefinition[];
+const RegistrationTypeDefinitionList = /*@__PURE__*/ __L.at(__c22, 2);
 export interface DescribeRegistrationTypeDefinitionsResult {
   RegistrationTypeDefinitions: RegistrationTypeDefinition[];
   NextToken?: string;
 }
+const DescribeRegistrationTypeDefinitionsResult = /*@__PURE__*/ __L.at(
+  __c22,
+  3,
+) as any as S.Schema<DescribeRegistrationTypeDefinitionsResult>;
 export type RegistrationVersionNumberList = number[];
+const RegistrationVersionNumberList = /*@__PURE__*/ __L.at(__c22, 4);
 export type RegistrationVersionFilterName = string;
 export interface RegistrationVersionFilter {
   Name: string;
   Values: string[];
 }
 export type RegistrationVersionFilterList = RegistrationVersionFilter[];
+const RegistrationVersionFilterList =
+  NotifyConfigurationFilterList as any as S.Schema<RegistrationVersionFilterList>;
 export interface DescribeRegistrationVersionsRequest {
   RegistrationId: string;
   VersionNumbers?: number[];
@@ -1327,6 +1935,10 @@ export interface DescribeRegistrationVersionsRequest {
   NextToken?: string;
   MaxResults?: number;
 }
+const DescribeRegistrationVersionsRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  5,
+) as any as S.Schema<DescribeRegistrationVersionsRequest>;
 export interface RegistrationDeniedReasonInformation {
   Reason: string;
   ShortDescription: string;
@@ -1334,7 +1946,12 @@ export interface RegistrationDeniedReasonInformation {
   DocumentationTitle?: string;
   DocumentationLink?: string;
 }
+const RegistrationDeniedReasonInformation = /*@__PURE__*/ __L.at(
+  __c22,
+  6,
+) as any as S.Schema<RegistrationDeniedReasonInformation>;
 export type RegistrationDeniedReasonInformationList = RegistrationDeniedReasonInformation[];
+const RegistrationDeniedReasonInformationList = /*@__PURE__*/ __L.at(__c22, 7);
 export interface RegistrationVersionInformation {
   VersionNumber: number;
   RegistrationVersionStatus: string;
@@ -1342,25 +1959,37 @@ export interface RegistrationVersionInformation {
   DeniedReasons?: RegistrationDeniedReasonInformation[];
   Feedback?: string;
 }
+const RegistrationVersionInformation = /*@__PURE__*/ __L.at(
+  __c23,
+  0,
+) as any as S.Schema<RegistrationVersionInformation>;
 export type RegistrationVersionInformationList = RegistrationVersionInformation[];
+const RegistrationVersionInformationList = /*@__PURE__*/ __L.at(__c23, 1);
 export interface DescribeRegistrationVersionsResult {
   RegistrationArn: string;
   RegistrationId: string;
   RegistrationVersions: RegistrationVersionInformation[];
   NextToken?: string;
 }
+const DescribeRegistrationVersionsResult = /*@__PURE__*/ __L.at(
+  __c23,
+  2,
+) as any as S.Schema<DescribeRegistrationVersionsResult>;
 export type SenderIdOrArn = string;
 export interface SenderIdAndCountry {
   SenderId: string;
   IsoCountryCode: string;
 }
+const SenderIdAndCountry = /*@__PURE__*/ __L.at(__c23, 3) as any as S.Schema<SenderIdAndCountry>;
 export type SenderIdList = SenderIdAndCountry[];
+const SenderIdList = /*@__PURE__*/ __L.at(__c23, 4);
 export type SenderIdFilterName = string;
 export interface SenderIdFilter {
   Name: string;
   Values: string[];
 }
 export type SenderIdFilterList = SenderIdFilter[];
+const SenderIdFilterList = ConfigurationSetFilterList as any as S.Schema<SenderIdFilterList>;
 export interface DescribeSenderIdsRequest {
   SenderIds?: SenderIdAndCountry[];
   Filters?: SenderIdFilter[];
@@ -1368,7 +1997,12 @@ export interface DescribeSenderIdsRequest {
   MaxResults?: number;
   Owner?: string;
 }
+const DescribeSenderIdsRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  5,
+) as any as S.Schema<DescribeSenderIdsRequest>;
 export type MessageTypeList = string[];
+const MessageTypeList = EventTypeList as any as S.Schema<MessageTypeList>;
 export interface SenderIdInformation {
   SenderIdArn: string;
   SenderId: string;
@@ -1380,15 +2014,25 @@ export interface SenderIdInformation {
   RegistrationId?: string;
   MessagingLimits?: MessagingLimits;
 }
+const SenderIdInformation = /*@__PURE__*/ __L.at(__c23, 6) as any as S.Schema<SenderIdInformation>;
 export type SenderIdInformationList = SenderIdInformation[];
+const SenderIdInformationList = /*@__PURE__*/ __L.at(__c23, 7);
 export interface DescribeSenderIdsResult {
   SenderIds?: SenderIdInformation[];
   NextToken?: string;
 }
+const DescribeSenderIdsResult = /*@__PURE__*/ __L.at(
+  __c24,
+  0,
+) as any as S.Schema<DescribeSenderIdsResult>;
 export interface DescribeSpendLimitsRequest {
   NextToken?: string;
   MaxResults?: number;
 }
+const DescribeSpendLimitsRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  1,
+) as any as S.Schema<DescribeSpendLimitsRequest>;
 export type SpendLimitName = string;
 export interface SpendLimit {
   Name: string;
@@ -1396,19 +2040,31 @@ export interface SpendLimit {
   MaxLimit: number;
   Overridden: boolean;
 }
+const SpendLimit = /*@__PURE__*/ __L.at(__c24, 2) as any as S.Schema<SpendLimit>;
 export type SpendLimitList = SpendLimit[];
+const SpendLimitList = /*@__PURE__*/ __L.at(__c24, 3);
 export interface DescribeSpendLimitsResult {
   SpendLimits?: SpendLimit[];
   NextToken?: string;
 }
+const DescribeSpendLimitsResult = /*@__PURE__*/ __L.at(
+  __c24,
+  4,
+) as any as S.Schema<DescribeSpendLimitsResult>;
 export type VerifiedDestinationNumberIdList = string[];
+const VerifiedDestinationNumberIdList =
+  EventTypeList as any as S.Schema<VerifiedDestinationNumberIdList>;
 export type DestinationPhoneNumberList = string[];
+const DestinationPhoneNumberList = EventTypeList as any as S.Schema<DestinationPhoneNumberList>;
 export type VerifiedDestinationNumberFilterName = string;
 export interface VerifiedDestinationNumberFilter {
   Name: string;
   Values: string[];
 }
+const VerifiedDestinationNumberFilter =
+  NotifyConfigurationFilter as any as S.Schema<VerifiedDestinationNumberFilter>;
 export type VerifiedDestinationNumberFilterList = VerifiedDestinationNumberFilter[];
+const VerifiedDestinationNumberFilterList = /*@__PURE__*/ __L.at(__c24, 5);
 export interface DescribeVerifiedDestinationNumbersRequest {
   VerifiedDestinationNumberIds?: string[];
   DestinationPhoneNumbers?: string[];
@@ -1416,6 +2072,10 @@ export interface DescribeVerifiedDestinationNumbersRequest {
   NextToken?: string;
   MaxResults?: number;
 }
+const DescribeVerifiedDestinationNumbersRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  6,
+) as any as S.Schema<DescribeVerifiedDestinationNumbersRequest>;
 export interface VerifiedDestinationNumberInformation {
   VerifiedDestinationNumberArn: string;
   VerifiedDestinationNumberId: string;
@@ -1424,17 +2084,30 @@ export interface VerifiedDestinationNumberInformation {
   RcsAgentId?: string;
   CreatedTimestamp: Date;
 }
+const VerifiedDestinationNumberInformation = /*@__PURE__*/ __L.at(
+  __c24,
+  7,
+) as any as S.Schema<VerifiedDestinationNumberInformation>;
 export type VerifiedDestinationNumberInformationList = VerifiedDestinationNumberInformation[];
+const VerifiedDestinationNumberInformationList = /*@__PURE__*/ __L.at(__c25, 0);
 export interface DescribeVerifiedDestinationNumbersResult {
   VerifiedDestinationNumbers: VerifiedDestinationNumberInformation[];
   NextToken?: string;
 }
+const DescribeVerifiedDestinationNumbersResult = /*@__PURE__*/ __L.at(
+  __c25,
+  1,
+) as any as S.Schema<DescribeVerifiedDestinationNumbersResult>;
 export interface DisassociateOriginationIdentityRequest {
   PoolId: string;
   OriginationIdentity: string;
   IsoCountryCode?: string;
   ClientToken?: string;
 }
+const DisassociateOriginationIdentityRequest = /*@__PURE__*/ __L.at(
+  __c25,
+  2,
+) as any as S.Schema<DisassociateOriginationIdentityRequest>;
 export interface DisassociateOriginationIdentityResult {
   PoolArn?: string;
   PoolId?: string;
@@ -1442,19 +2115,31 @@ export interface DisassociateOriginationIdentityResult {
   OriginationIdentity?: string;
   IsoCountryCode?: string;
 }
+const DisassociateOriginationIdentityResult =
+  AssociateOriginationIdentityResult as any as S.Schema<DisassociateOriginationIdentityResult>;
 export interface DisassociateProtectConfigurationRequest {
   ProtectConfigurationId: string;
   ConfigurationSetName: string;
 }
+const DisassociateProtectConfigurationRequest = /*@__PURE__*/ __L.at(
+  __c25,
+  3,
+) as any as S.Schema<DisassociateProtectConfigurationRequest>;
 export interface DisassociateProtectConfigurationResult {
   ConfigurationSetArn: string;
   ConfigurationSetName: string;
   ProtectConfigurationArn: string;
   ProtectConfigurationId: string;
 }
+const DisassociateProtectConfigurationResult =
+  AssociateProtectConfigurationResult as any as S.Schema<DisassociateProtectConfigurationResult>;
 export interface DiscardRegistrationVersionRequest {
   RegistrationId: string;
 }
+const DiscardRegistrationVersionRequest = /*@__PURE__*/ __L.at(
+  __c25,
+  4,
+) as any as S.Schema<DiscardRegistrationVersionRequest>;
 export interface DiscardRegistrationVersionResult {
   RegistrationArn: string;
   RegistrationId: string;
@@ -1462,41 +2147,71 @@ export interface DiscardRegistrationVersionResult {
   RegistrationVersionStatus: string;
   RegistrationVersionStatusHistory: RegistrationVersionStatusHistory;
 }
+const DiscardRegistrationVersionResult =
+  CreateRegistrationVersionResult as any as S.Schema<DiscardRegistrationVersionResult>;
 export interface GetProtectConfigurationCountryRuleSetRequest {
   ProtectConfigurationId: string;
   NumberCapability: string;
 }
+const GetProtectConfigurationCountryRuleSetRequest = /*@__PURE__*/ __L.at(
+  __c25,
+  5,
+) as any as S.Schema<GetProtectConfigurationCountryRuleSetRequest>;
 export type ProtectStatus = string;
 export interface ProtectConfigurationCountryRuleSetInformation {
   ProtectStatus: string;
 }
+const ProtectConfigurationCountryRuleSetInformation = /*@__PURE__*/ __L.at(
+  __c25,
+  6,
+) as any as S.Schema<ProtectConfigurationCountryRuleSetInformation>;
 export type ProtectConfigurationCountryRuleSet = {
   [key: string]: ProtectConfigurationCountryRuleSetInformation | undefined;
 };
+const ProtectConfigurationCountryRuleSet = /*@__PURE__*/ __L.at(__c25, 7);
 export interface GetProtectConfigurationCountryRuleSetResult {
   ProtectConfigurationArn: string;
   ProtectConfigurationId: string;
   NumberCapability: string;
   CountryRuleSet: { [key: string]: ProtectConfigurationCountryRuleSetInformation | undefined };
 }
+const GetProtectConfigurationCountryRuleSetResult = /*@__PURE__*/ __L.at(
+  __c26,
+  0,
+) as any as S.Schema<GetProtectConfigurationCountryRuleSetResult>;
 export interface GetResourcePolicyRequest {
   ResourceArn: string;
 }
+const GetResourcePolicyRequest = /*@__PURE__*/ __L.at(
+  __c26,
+  1,
+) as any as S.Schema<GetResourcePolicyRequest>;
 export interface GetResourcePolicyResult {
   ResourceArn?: string;
   Policy?: string;
   CreatedTimestamp?: Date;
 }
+const GetResourcePolicyResult = /*@__PURE__*/ __L.at(
+  __c26,
+  2,
+) as any as S.Schema<GetResourcePolicyResult>;
 export type SearchableNumberType = string;
 export type PreferenceType = string;
 export type PreferenceTypeList = string[];
+const PreferenceTypeList = EventTypeList as any as S.Schema<PreferenceTypeList>;
 export type NumberFilterValue = string;
 export type NumberFilterList = string[];
+const NumberFilterList = EventTypeList as any as S.Schema<NumberFilterList>;
 export interface NumberPreferenceItem {
   PreferenceType: string[];
   Filter: string[];
 }
+const NumberPreferenceItem = /*@__PURE__*/ __L.at(
+  __c26,
+  3,
+) as any as S.Schema<NumberPreferenceItem>;
 export type NumberPreferenceList = NumberPreferenceItem[];
+const NumberPreferenceList = /*@__PURE__*/ __L.at(__c26, 4);
 export type ListAvailablePhoneNumbersMaxResults = number;
 export interface ListAvailablePhoneNumbersRequest {
   IsoCountryCode: string;
@@ -1507,12 +2222,22 @@ export interface ListAvailablePhoneNumbersRequest {
   NextToken?: string;
   MaxResults?: number;
 }
+const ListAvailablePhoneNumbersRequest = /*@__PURE__*/ __L.at(
+  __c26,
+  5,
+) as any as S.Schema<ListAvailablePhoneNumbersRequest>;
 export type AvailablePhoneNumberList = string[];
+const AvailablePhoneNumberList = EventTypeList as any as S.Schema<AvailablePhoneNumberList>;
 export interface ListAvailablePhoneNumbersResult {
   AvailablePhoneNumbers: string[];
   NextToken?: string;
 }
+const ListAvailablePhoneNumbersResult = /*@__PURE__*/ __L.at(
+  __c26,
+  6,
+) as any as S.Schema<ListAvailablePhoneNumbersResult>;
 export type NotifyUseCaseList = string[];
+const NotifyUseCaseList = EventTypeList as any as S.Schema<NotifyUseCaseList>;
 export interface ListNotifyCountriesRequest {
   Channels?: string[];
   UseCases?: string[];
@@ -1520,7 +2245,12 @@ export interface ListNotifyCountriesRequest {
   NextToken?: string;
   MaxResults?: number;
 }
+const ListNotifyCountriesRequest = /*@__PURE__*/ __L.at(
+  __c26,
+  7,
+) as any as S.Schema<ListNotifyCountriesRequest>;
 export type NotifyTierList = string[];
+const NotifyTierList = EventTypeList as any as S.Schema<NotifyTierList>;
 export interface NotifyCountryInformation {
   IsoCountryCode: string;
   CountryName: string;
@@ -1529,23 +2259,38 @@ export interface NotifyCountryInformation {
   SupportedTiers: string[];
   CustomerOwnedIdentityRequired: boolean;
 }
+const NotifyCountryInformation = /*@__PURE__*/ __L.at(
+  __c27,
+  0,
+) as any as S.Schema<NotifyCountryInformation>;
 export type NotifyCountryInformationList = NotifyCountryInformation[];
+const NotifyCountryInformationList = /*@__PURE__*/ __L.at(__c27, 1);
 export interface ListNotifyCountriesResult {
   NotifyCountries?: NotifyCountryInformation[];
   NextToken?: string;
 }
+const ListNotifyCountriesResult = /*@__PURE__*/ __L.at(
+  __c27,
+  2,
+) as any as S.Schema<ListNotifyCountriesResult>;
 export type PoolOriginationIdentitiesFilterName = string;
 export interface PoolOriginationIdentitiesFilter {
   Name: string;
   Values: string[];
 }
 export type PoolOriginationIdentitiesFilterList = PoolOriginationIdentitiesFilter[];
+const PoolOriginationIdentitiesFilterList =
+  VerifiedDestinationNumberFilterList as any as S.Schema<PoolOriginationIdentitiesFilterList>;
 export interface ListPoolOriginationIdentitiesRequest {
   PoolId: string;
   Filters?: PoolOriginationIdentitiesFilter[];
   NextToken?: string;
   MaxResults?: number;
 }
+const ListPoolOriginationIdentitiesRequest = /*@__PURE__*/ __L.at(
+  __c27,
+  3,
+) as any as S.Schema<ListPoolOriginationIdentitiesRequest>;
 export interface OriginationIdentityMetadata {
   OriginationIdentityArn: string;
   OriginationIdentity: string;
@@ -1553,13 +2298,22 @@ export interface OriginationIdentityMetadata {
   NumberCapabilities: string[];
   PhoneNumber?: string;
 }
+const OriginationIdentityMetadata = /*@__PURE__*/ __L.at(
+  __c27,
+  4,
+) as any as S.Schema<OriginationIdentityMetadata>;
 export type OriginationIdentityMetadataList = OriginationIdentityMetadata[];
+const OriginationIdentityMetadataList = /*@__PURE__*/ __L.at(__c27, 5);
 export interface ListPoolOriginationIdentitiesResult {
   PoolArn?: string;
   PoolId?: string;
   OriginationIdentities?: OriginationIdentityMetadata[];
   NextToken?: string;
 }
+const ListPoolOriginationIdentitiesResult = /*@__PURE__*/ __L.at(
+  __c27,
+  6,
+) as any as S.Schema<ListPoolOriginationIdentitiesResult>;
 export type ProtectConfigurationRuleSetNumberOverrideFilterName = string;
 export interface ProtectConfigurationRuleSetNumberOverrideFilterItem {
   Name: string;
@@ -1567,12 +2321,18 @@ export interface ProtectConfigurationRuleSetNumberOverrideFilterItem {
 }
 export type ListProtectConfigurationRuleSetNumberOverrideFilter =
   ProtectConfigurationRuleSetNumberOverrideFilterItem[];
+const ListProtectConfigurationRuleSetNumberOverrideFilter =
+  VerifiedDestinationNumberFilterList as any as S.Schema<ListProtectConfigurationRuleSetNumberOverrideFilter>;
 export interface ListProtectConfigurationRuleSetNumberOverridesRequest {
   ProtectConfigurationId: string;
   Filters?: ProtectConfigurationRuleSetNumberOverrideFilterItem[];
   NextToken?: string;
   MaxResults?: number;
 }
+const ListProtectConfigurationRuleSetNumberOverridesRequest = /*@__PURE__*/ __L.at(
+  __c27,
+  7,
+) as any as S.Schema<ListProtectConfigurationRuleSetNumberOverridesRequest>;
 export interface ProtectConfigurationRuleSetNumberOverride {
   DestinationPhoneNumber: string;
   CreatedTimestamp: Date;
@@ -1580,26 +2340,41 @@ export interface ProtectConfigurationRuleSetNumberOverride {
   IsoCountryCode?: string;
   ExpirationTimestamp?: Date;
 }
+const ProtectConfigurationRuleSetNumberOverride = /*@__PURE__*/ __L.at(
+  __c28,
+  0,
+) as any as S.Schema<ProtectConfigurationRuleSetNumberOverride>;
 export type ProtectConfigurationRuleSetNumberOverrideList =
   ProtectConfigurationRuleSetNumberOverride[];
+const ProtectConfigurationRuleSetNumberOverrideList = /*@__PURE__*/ __L.at(__c28, 1);
 export interface ListProtectConfigurationRuleSetNumberOverridesResult {
   ProtectConfigurationArn: string;
   ProtectConfigurationId: string;
   RuleSetNumberOverrides?: ProtectConfigurationRuleSetNumberOverride[];
   NextToken?: string;
 }
+const ListProtectConfigurationRuleSetNumberOverridesResult = /*@__PURE__*/ __L.at(
+  __c28,
+  2,
+) as any as S.Schema<ListProtectConfigurationRuleSetNumberOverridesResult>;
 export type RegistrationAssociationFilterName = string;
 export interface RegistrationAssociationFilter {
   Name: string;
   Values: string[];
 }
 export type RegistrationAssociationFilterList = RegistrationAssociationFilter[];
+const RegistrationAssociationFilterList =
+  VerifiedDestinationNumberFilterList as any as S.Schema<RegistrationAssociationFilterList>;
 export interface ListRegistrationAssociationsRequest {
   RegistrationId: string;
   Filters?: RegistrationAssociationFilter[];
   NextToken?: string;
   MaxResults?: number;
 }
+const ListRegistrationAssociationsRequest = /*@__PURE__*/ __L.at(
+  __c28,
+  3,
+) as any as S.Schema<ListRegistrationAssociationsRequest>;
 export interface RegistrationAssociationMetadata {
   ResourceArn: string;
   ResourceId: string;
@@ -1607,7 +2382,12 @@ export interface RegistrationAssociationMetadata {
   IsoCountryCode?: string;
   PhoneNumber?: string;
 }
+const RegistrationAssociationMetadata = /*@__PURE__*/ __L.at(
+  __c28,
+  4,
+) as any as S.Schema<RegistrationAssociationMetadata>;
 export type RegistrationAssociationMetadataList = RegistrationAssociationMetadata[];
+const RegistrationAssociationMetadataList = /*@__PURE__*/ __L.at(__c28, 5);
 export interface ListRegistrationAssociationsResult {
   RegistrationArn: string;
   RegistrationId: string;
@@ -1615,19 +2395,32 @@ export interface ListRegistrationAssociationsResult {
   RegistrationAssociations: RegistrationAssociationMetadata[];
   NextToken?: string;
 }
+const ListRegistrationAssociationsResult = /*@__PURE__*/ __L.at(
+  __c28,
+  6,
+) as any as S.Schema<ListRegistrationAssociationsResult>;
 export interface ListTagsForResourceRequest {
   ResourceArn: string;
 }
+const ListTagsForResourceRequest = /*@__PURE__*/ __L.at(
+  __c28,
+  7,
+) as any as S.Schema<ListTagsForResourceRequest>;
 export interface ListTagsForResourceResult {
   ResourceArn?: string;
   Tags?: Tag[];
 }
+const ListTagsForResourceResult = /*@__PURE__*/ __L.at(
+  __c29,
+  0,
+) as any as S.Schema<ListTagsForResourceResult>;
 export interface PutKeywordRequest {
   OriginationIdentity: string;
   Keyword: string;
   KeywordMessage: string;
   KeywordAction?: string;
 }
+const PutKeywordRequest = /*@__PURE__*/ __L.at(__c29, 1) as any as S.Schema<PutKeywordRequest>;
 export interface PutKeywordResult {
   OriginationIdentityArn?: string;
   OriginationIdentity?: string;
@@ -1635,20 +2428,33 @@ export interface PutKeywordResult {
   KeywordMessage?: string;
   KeywordAction?: string;
 }
+const PutKeywordResult = DeleteKeywordResult as any as S.Schema<PutKeywordResult>;
 export type MessageId = string;
 export type MessageFeedbackStatus = string;
 export interface PutMessageFeedbackRequest {
   MessageId: string;
   MessageFeedbackStatus: string;
 }
+const PutMessageFeedbackRequest = /*@__PURE__*/ __L.at(
+  __c29,
+  2,
+) as any as S.Schema<PutMessageFeedbackRequest>;
 export interface PutMessageFeedbackResult {
   MessageId: string;
   MessageFeedbackStatus: string;
 }
+const PutMessageFeedbackResult = /*@__PURE__*/ __L.at(
+  __c29,
+  3,
+) as any as S.Schema<PutMessageFeedbackResult>;
 export interface PutOptedOutNumberRequest {
   OptOutListName: string;
   OptedOutNumber: string;
 }
+const PutOptedOutNumberRequest = /*@__PURE__*/ __L.at(
+  __c29,
+  4,
+) as any as S.Schema<PutOptedOutNumberRequest>;
 export interface PutOptedOutNumberResult {
   OptOutListArn?: string;
   OptOutListName?: string;
@@ -1656,6 +2462,10 @@ export interface PutOptedOutNumberResult {
   OptedOutTimestamp?: Date;
   EndUserOptedOut?: boolean;
 }
+const PutOptedOutNumberResult = /*@__PURE__*/ __L.at(
+  __c29,
+  5,
+) as any as S.Schema<PutOptedOutNumberResult>;
 export interface PutProtectConfigurationRuleSetNumberOverrideRequest {
   ClientToken?: string;
   ProtectConfigurationId: string;
@@ -1663,6 +2473,10 @@ export interface PutProtectConfigurationRuleSetNumberOverrideRequest {
   Action: string;
   ExpirationTimestamp?: Date;
 }
+const PutProtectConfigurationRuleSetNumberOverrideRequest = /*@__PURE__*/ __L.at(
+  __c29,
+  6,
+) as any as S.Schema<PutProtectConfigurationRuleSetNumberOverrideRequest>;
 export interface PutProtectConfigurationRuleSetNumberOverrideResult {
   ProtectConfigurationArn: string;
   ProtectConfigurationId: string;
@@ -1672,6 +2486,8 @@ export interface PutProtectConfigurationRuleSetNumberOverrideResult {
   IsoCountryCode?: string;
   ExpirationTimestamp?: Date;
 }
+const PutProtectConfigurationRuleSetNumberOverrideResult =
+  DeleteProtectConfigurationRuleSetNumberOverrideResult as any as S.Schema<PutProtectConfigurationRuleSetNumberOverrideResult>;
 export interface PutRegistrationFieldValueRequest {
   RegistrationId: string;
   FieldPath: string;
@@ -1679,6 +2495,10 @@ export interface PutRegistrationFieldValueRequest {
   TextValue?: string;
   RegistrationAttachmentId?: string;
 }
+const PutRegistrationFieldValueRequest = /*@__PURE__*/ __L.at(
+  __c29,
+  7,
+) as any as S.Schema<PutRegistrationFieldValueRequest>;
 export interface PutRegistrationFieldValueResult {
   RegistrationArn: string;
   RegistrationId: string;
@@ -1688,18 +2508,29 @@ export interface PutRegistrationFieldValueResult {
   TextValue?: string;
   RegistrationAttachmentId?: string;
 }
+const PutRegistrationFieldValueResult =
+  DeleteRegistrationFieldValueResult as any as S.Schema<PutRegistrationFieldValueResult>;
 export interface PutResourcePolicyRequest {
   ResourceArn: string;
   Policy: string;
 }
+const PutResourcePolicyRequest = /*@__PURE__*/ __L.at(
+  __c30,
+  0,
+) as any as S.Schema<PutResourcePolicyRequest>;
 export interface PutResourcePolicyResult {
   ResourceArn?: string;
   Policy?: string;
   CreatedTimestamp?: Date;
 }
+const PutResourcePolicyResult = GetResourcePolicyResult as any as S.Schema<PutResourcePolicyResult>;
 export interface ReleasePhoneNumberRequest {
   PhoneNumberId: string;
 }
+const ReleasePhoneNumberRequest = /*@__PURE__*/ __L.at(
+  __c30,
+  1,
+) as any as S.Schema<ReleasePhoneNumberRequest>;
 export interface ReleasePhoneNumberResult {
   PhoneNumberArn?: string;
   PhoneNumberId?: string;
@@ -1718,10 +2549,18 @@ export interface ReleasePhoneNumberResult {
   RegistrationId?: string;
   CreatedTimestamp?: Date;
 }
+const ReleasePhoneNumberResult = /*@__PURE__*/ __L.at(
+  __c30,
+  2,
+) as any as S.Schema<ReleasePhoneNumberResult>;
 export interface ReleaseSenderIdRequest {
   SenderId: string;
   IsoCountryCode: string;
 }
+const ReleaseSenderIdRequest = /*@__PURE__*/ __L.at(
+  __c30,
+  3,
+) as any as S.Schema<ReleaseSenderIdRequest>;
 export interface ReleaseSenderIdResult {
   SenderIdArn: string;
   SenderId: string;
@@ -1731,6 +2570,10 @@ export interface ReleaseSenderIdResult {
   Registered: boolean;
   RegistrationId?: string;
 }
+const ReleaseSenderIdResult = /*@__PURE__*/ __L.at(
+  __c30,
+  4,
+) as any as S.Schema<ReleaseSenderIdResult>;
 export type RequestableNumberType = string;
 export interface RequestPhoneNumberRequest {
   IsoCountryCode: string;
@@ -1746,6 +2589,10 @@ export interface RequestPhoneNumberRequest {
   Tags?: Tag[];
   ClientToken?: string;
 }
+const RequestPhoneNumberRequest = /*@__PURE__*/ __L.at(
+  __c30,
+  5,
+) as any as S.Schema<RequestPhoneNumberRequest>;
 export interface RequestPhoneNumberResult {
   PhoneNumberArn?: string;
   PhoneNumberId?: string;
@@ -1768,6 +2615,10 @@ export interface RequestPhoneNumberResult {
   Tags?: Tag[];
   CreatedTimestamp?: Date;
 }
+const RequestPhoneNumberResult = /*@__PURE__*/ __L.at(
+  __c30,
+  6,
+) as any as S.Schema<RequestPhoneNumberResult>;
 export interface RequestSenderIdRequest {
   SenderId: string;
   IsoCountryCode: string;
@@ -1776,6 +2627,10 @@ export interface RequestSenderIdRequest {
   Tags?: Tag[];
   ClientToken?: string;
 }
+const RequestSenderIdRequest = /*@__PURE__*/ __L.at(
+  __c30,
+  7,
+) as any as S.Schema<RequestSenderIdRequest>;
 export interface RequestSenderIdResult {
   SenderIdArn: string;
   SenderId: string;
@@ -1786,15 +2641,21 @@ export interface RequestSenderIdResult {
   Registered: boolean;
   Tags?: Tag[];
 }
+const RequestSenderIdResult = /*@__PURE__*/ __L.at(
+  __c31,
+  0,
+) as any as S.Schema<RequestSenderIdResult>;
 export type VerificationChannel = string;
 export type LanguageCode = string;
 export type VerificationMessageOriginationIdentity = string;
 export type ContextKey = string;
 export type ContextValue = string;
 export type ContextMap = { [key: string]: string | undefined };
+const ContextMap = StringMap as any as S.Schema<ContextMap>;
 export type DestinationCountryParameterKey = string;
 export type DestinationCountryParameterValue = string;
 export type DestinationCountryParameters = { [key: string]: string | undefined };
+const DestinationCountryParameters = /*@__PURE__*/ __L.at(__c31, 1);
 export interface SendDestinationNumberVerificationCodeRequest {
   VerifiedDestinationNumberId: string;
   VerificationChannel: string;
@@ -1804,13 +2665,22 @@ export interface SendDestinationNumberVerificationCodeRequest {
   Context?: { [key: string]: string | undefined };
   DestinationCountryParameters?: { [key: string]: string | undefined };
 }
+const SendDestinationNumberVerificationCodeRequest = /*@__PURE__*/ __L.at(
+  __c31,
+  2,
+) as any as S.Schema<SendDestinationNumberVerificationCodeRequest>;
 export interface SendDestinationNumberVerificationCodeResult {
   MessageId: string;
 }
+const SendDestinationNumberVerificationCodeResult = /*@__PURE__*/ __L.at(
+  __c31,
+  3,
+) as any as S.Schema<SendDestinationNumberVerificationCodeResult>;
 export type MediaMessageOriginationIdentity = string;
 export type TextMessageBody = string;
 export type MediaUrlValue = string;
 export type MediaUrlList = string[];
+const MediaUrlList = EventTypeList as any as S.Schema<MediaUrlList>;
 export type MaxPrice = string;
 export type TimeToLive = number;
 export interface SendMediaMessageRequest {
@@ -1826,12 +2696,22 @@ export interface SendMediaMessageRequest {
   ProtectConfigurationId?: string;
   MessageFeedbackEnabled?: boolean;
 }
+const SendMediaMessageRequest = /*@__PURE__*/ __L.at(
+  __c31,
+  4,
+) as any as S.Schema<SendMediaMessageRequest>;
 export interface SendMediaMessageResult {
   MessageId?: string;
 }
+const SendMediaMessageResult = /*@__PURE__*/ __L.at(
+  __c31,
+  5,
+) as any as S.Schema<SendMediaMessageResult>;
 export type TemplateVariableName = string;
 export type TemplateVariableValue = string;
 export type TemplateVariableSubstitutionMap = { [key: string]: string | undefined };
+const TemplateVariableSubstitutionMap =
+  DestinationCountryParameters as any as S.Schema<TemplateVariableSubstitutionMap>;
 export interface SendNotifyTextMessageRequest {
   NotifyConfigurationId: string;
   DestinationPhoneNumber: string;
@@ -1843,11 +2723,19 @@ export interface SendNotifyTextMessageRequest {
   DryRun?: boolean;
   MessageFeedbackEnabled?: boolean;
 }
+const SendNotifyTextMessageRequest = /*@__PURE__*/ __L.at(
+  __c31,
+  6,
+) as any as S.Schema<SendNotifyTextMessageRequest>;
 export interface SendNotifyTextMessageResult {
   MessageId?: string;
   TemplateId?: string;
   ResolvedMessageBody?: string;
 }
+const SendNotifyTextMessageResult = /*@__PURE__*/ __L.at(
+  __c31,
+  7,
+) as any as S.Schema<SendNotifyTextMessageResult>;
 export interface SendNotifyVoiceMessageRequest {
   NotifyConfigurationId: string;
   DestinationPhoneNumber: string;
@@ -1860,21 +2748,29 @@ export interface SendNotifyVoiceMessageRequest {
   DryRun?: boolean;
   MessageFeedbackEnabled?: boolean;
 }
+const SendNotifyVoiceMessageRequest = /*@__PURE__*/ __L.at(
+  __c32,
+  0,
+) as any as S.Schema<SendNotifyVoiceMessageRequest>;
 export interface SendNotifyVoiceMessageResult {
   MessageId?: string;
   TemplateId?: string;
   ResolvedMessageBody?: string;
 }
+const SendNotifyVoiceMessageResult =
+  SendNotifyTextMessageResult as any as S.Schema<SendNotifyVoiceMessageResult>;
 export type RcsMessageOriginationIdentity = string;
 export type RcsTextBody = string;
 export interface RcsTextMessage {
   Body: string;
 }
+const RcsTextMessage = /*@__PURE__*/ __L.at(__c32, 1) as any as S.Schema<RcsTextMessage>;
 export type RcsMediaUrl = string;
 export interface RcsFileMessage {
   FileUrl: string;
   ThumbnailUrl?: string;
 }
+const RcsFileMessage = /*@__PURE__*/ __L.at(__c32, 2) as any as S.Schema<RcsFileMessage>;
 export type RcsCardTitle = string;
 export type RcsCardDescription = string;
 export interface RcsCardMedia {
@@ -1882,12 +2778,14 @@ export interface RcsCardMedia {
   ThumbnailUrl?: string;
   Height?: string;
 }
+const RcsCardMedia = /*@__PURE__*/ __L.at(__c32, 3) as any as S.Schema<RcsCardMedia>;
 export type RcsSuggestedActionText = string;
 export type RcsPostbackData = string;
 export interface RcsReplyAction {
   Text: string;
   PostbackData: string;
 }
+const RcsReplyAction = /*@__PURE__*/ __L.at(__c32, 4) as any as S.Schema<RcsReplyAction>;
 export type RcsOpenUrlValue = string;
 export interface RcsOpenUrlAction {
   Text: string;
@@ -1896,11 +2794,13 @@ export interface RcsOpenUrlAction {
   Application?: string;
   WebviewViewMode?: string;
 }
+const RcsOpenUrlAction = /*@__PURE__*/ __L.at(__c32, 5) as any as S.Schema<RcsOpenUrlAction>;
 export interface RcsDialPhoneAction {
   Text: string;
   PostbackData: string;
   PhoneNumber: string;
 }
+const RcsDialPhoneAction = /*@__PURE__*/ __L.at(__c32, 6) as any as S.Schema<RcsDialPhoneAction>;
 export type RcsLocationLabel = string;
 export interface RcsShowLocationAction {
   Text: string;
@@ -1909,10 +2809,15 @@ export interface RcsShowLocationAction {
   Longitude: number;
   Label?: string;
 }
+const RcsShowLocationAction = /*@__PURE__*/ __L.at(
+  __c32,
+  7,
+) as any as S.Schema<RcsShowLocationAction>;
 export interface RcsRequestLocationAction {
   Text: string;
   PostbackData: string;
 }
+const RcsRequestLocationAction = RcsReplyAction as any as S.Schema<RcsRequestLocationAction>;
 export type RcsCalendarEventTitle = string;
 export type RcsCalendarEventDescription = string;
 export interface RcsCreateCalendarEventAction {
@@ -1923,6 +2828,10 @@ export interface RcsCreateCalendarEventAction {
   EndTime: Date;
   Description?: string;
 }
+const RcsCreateCalendarEventAction = /*@__PURE__*/ __L.at(
+  __c33,
+  0,
+) as any as S.Schema<RcsCreateCalendarEventAction>;
 export type RcsSuggestedAction =
   | {
       Reply: RcsReplyAction;
@@ -1972,18 +2881,22 @@ export type RcsSuggestedAction =
       RequestLocation?: never;
       CreateCalendarEvent: RcsCreateCalendarEventAction;
     };
+const RcsSuggestedAction = /*@__PURE__*/ __L.at(__c33, 1);
 export type RcsCardSuggestedActionList = RcsSuggestedAction[];
+const RcsCardSuggestedActionList = /*@__PURE__*/ __L.at(__c33, 2);
 export interface RcsCardContent {
   Title?: string;
   Description?: string;
   Media?: RcsCardMedia;
   Suggestions?: RcsSuggestedAction[];
 }
+const RcsCardContent = /*@__PURE__*/ __L.at(__c33, 3) as any as S.Schema<RcsCardContent>;
 export interface RcsStandaloneCard {
   CardOrientation: string;
   ThumbnailImageAlignment?: string;
   CardContent: RcsCardContent;
 }
+const RcsStandaloneCard = /*@__PURE__*/ __L.at(__c33, 4) as any as S.Schema<RcsStandaloneCard>;
 export interface RcsCarouselCardMedia {
   FileUrl: string;
   ThumbnailUrl?: string;
@@ -1995,21 +2908,28 @@ export interface RcsCarouselCardContent {
   Media?: RcsCarouselCardMedia;
   Suggestions?: RcsSuggestedAction[];
 }
+const RcsCarouselCardContent = RcsCardContent as any as S.Schema<RcsCarouselCardContent>;
 export type RcsCarouselCardContentList = RcsCarouselCardContent[];
+const RcsCarouselCardContentList = /*@__PURE__*/ __L.at(__c33, 5);
 export interface RcsCarousel {
   CardWidth: string;
   CardContents: RcsCarouselCardContent[];
 }
+const RcsCarousel = /*@__PURE__*/ __L.at(__c33, 6) as any as S.Schema<RcsCarousel>;
 export type RcsContent =
   | { TextMessage: RcsTextMessage; FileMessage?: never; RichCard?: never; Carousel?: never }
   | { TextMessage?: never; FileMessage: RcsFileMessage; RichCard?: never; Carousel?: never }
   | { TextMessage?: never; FileMessage?: never; RichCard: RcsStandaloneCard; Carousel?: never }
   | { TextMessage?: never; FileMessage?: never; RichCard?: never; Carousel: RcsCarousel };
+const RcsContent = /*@__PURE__*/ __L.at(__c33, 7);
 export type RcsSuggestedActionList = RcsSuggestedAction[];
+const RcsSuggestedActionList =
+  RcsCardSuggestedActionList as any as S.Schema<RcsSuggestedActionList>;
 export interface RcsMessageContent {
   Content: RcsContent;
   Suggestions?: RcsSuggestedAction[];
 }
+const RcsMessageContent = /*@__PURE__*/ __L.at(__c34, 0) as any as S.Schema<RcsMessageContent>;
 export type RcsTimeToLive = number;
 export type RcsMessageTrafficType = string;
 export type RcsFallbackChannel = string;
@@ -2021,6 +2941,10 @@ export interface RcsFallbackConfiguration {
   MediaUrls?: string[];
   OriginationIdentity?: string;
 }
+const RcsFallbackConfiguration = /*@__PURE__*/ __L.at(
+  __c34,
+  1,
+) as any as S.Schema<RcsFallbackConfiguration>;
 export interface SendRcsMessageRequest {
   DestinationPhoneNumber: string;
   OriginationIdentity: string;
@@ -2035,9 +2959,14 @@ export interface SendRcsMessageRequest {
   Context?: { [key: string]: string | undefined };
   MessageFeedbackEnabled?: boolean;
 }
+const SendRcsMessageRequest = /*@__PURE__*/ __L.at(
+  __c34,
+  2,
+) as any as S.Schema<SendRcsMessageRequest>;
 export interface SendRcsMessageResult {
   MessageId?: string;
 }
+const SendRcsMessageResult = SendMediaMessageResult as any as S.Schema<SendRcsMessageResult>;
 export type TextMessageOriginationIdentity = string;
 export interface SendTextMessageRequest {
   DestinationPhoneNumber: string;
@@ -2054,9 +2983,14 @@ export interface SendTextMessageRequest {
   ProtectConfigurationId?: string;
   MessageFeedbackEnabled?: boolean;
 }
+const SendTextMessageRequest = /*@__PURE__*/ __L.at(
+  __c34,
+  3,
+) as any as S.Schema<SendTextMessageRequest>;
 export interface SendTextMessageResult {
   MessageId?: string;
 }
+const SendTextMessageResult = SendMediaMessageResult as any as S.Schema<SendTextMessageResult>;
 export type VoiceMessageOriginationIdentity = string;
 export type VoiceMessageBody = string;
 export type VoiceMessageBodyTextType = string;
@@ -2074,77 +3008,144 @@ export interface SendVoiceMessageRequest {
   ProtectConfigurationId?: string;
   MessageFeedbackEnabled?: boolean;
 }
+const SendVoiceMessageRequest = /*@__PURE__*/ __L.at(
+  __c34,
+  4,
+) as any as S.Schema<SendVoiceMessageRequest>;
 export interface SendVoiceMessageResult {
   MessageId?: string;
 }
+const SendVoiceMessageResult = SendMediaMessageResult as any as S.Schema<SendVoiceMessageResult>;
 export interface SetAccountDefaultProtectConfigurationRequest {
   ProtectConfigurationId: string;
 }
+const SetAccountDefaultProtectConfigurationRequest = /*@__PURE__*/ __L.at(
+  __c34,
+  5,
+) as any as S.Schema<SetAccountDefaultProtectConfigurationRequest>;
 export interface SetAccountDefaultProtectConfigurationResult {
   DefaultProtectConfigurationArn: string;
   DefaultProtectConfigurationId: string;
 }
+const SetAccountDefaultProtectConfigurationResult =
+  DeleteAccountDefaultProtectConfigurationResult as any as S.Schema<SetAccountDefaultProtectConfigurationResult>;
 export interface SetDefaultMessageFeedbackEnabledRequest {
   ConfigurationSetName: string;
   MessageFeedbackEnabled: boolean;
 }
+const SetDefaultMessageFeedbackEnabledRequest = /*@__PURE__*/ __L.at(
+  __c34,
+  6,
+) as any as S.Schema<SetDefaultMessageFeedbackEnabledRequest>;
 export interface SetDefaultMessageFeedbackEnabledResult {
   ConfigurationSetArn?: string;
   ConfigurationSetName?: string;
   MessageFeedbackEnabled?: boolean;
 }
+const SetDefaultMessageFeedbackEnabledResult = /*@__PURE__*/ __L.at(
+  __c34,
+  7,
+) as any as S.Schema<SetDefaultMessageFeedbackEnabledResult>;
 export interface SetDefaultMessageTypeRequest {
   ConfigurationSetName: string;
   MessageType: string;
 }
+const SetDefaultMessageTypeRequest = /*@__PURE__*/ __L.at(
+  __c35,
+  0,
+) as any as S.Schema<SetDefaultMessageTypeRequest>;
 export interface SetDefaultMessageTypeResult {
   ConfigurationSetArn?: string;
   ConfigurationSetName?: string;
   MessageType?: string;
 }
+const SetDefaultMessageTypeResult =
+  DeleteDefaultMessageTypeResult as any as S.Schema<SetDefaultMessageTypeResult>;
 export interface SetDefaultSenderIdRequest {
   ConfigurationSetName: string;
   SenderId: string;
 }
+const SetDefaultSenderIdRequest = /*@__PURE__*/ __L.at(
+  __c35,
+  1,
+) as any as S.Schema<SetDefaultSenderIdRequest>;
 export interface SetDefaultSenderIdResult {
   ConfigurationSetArn?: string;
   ConfigurationSetName?: string;
   SenderId?: string;
 }
+const SetDefaultSenderIdResult = /*@__PURE__*/ __L.at(
+  __c35,
+  2,
+) as any as S.Schema<SetDefaultSenderIdResult>;
 export interface SetMediaMessageSpendLimitOverrideRequest {
   MonthlyLimit: number;
 }
+const SetMediaMessageSpendLimitOverrideRequest = /*@__PURE__*/ __L.at(
+  __c35,
+  3,
+) as any as S.Schema<SetMediaMessageSpendLimitOverrideRequest>;
 export interface SetMediaMessageSpendLimitOverrideResult {
   MonthlyLimit?: number;
 }
+const SetMediaMessageSpendLimitOverrideResult =
+  DeleteMediaMessageSpendLimitOverrideResult as any as S.Schema<SetMediaMessageSpendLimitOverrideResult>;
 export interface SetNotifyMessageSpendLimitOverrideRequest {
   MonthlyLimit: number;
 }
+const SetNotifyMessageSpendLimitOverrideRequest = /*@__PURE__*/ __L.at(
+  __c35,
+  4,
+) as any as S.Schema<SetNotifyMessageSpendLimitOverrideRequest>;
 export interface SetNotifyMessageSpendLimitOverrideResult {
   MonthlyLimit?: number;
 }
+const SetNotifyMessageSpendLimitOverrideResult =
+  DeleteMediaMessageSpendLimitOverrideResult as any as S.Schema<SetNotifyMessageSpendLimitOverrideResult>;
 export interface SetRcsMessageSpendLimitOverrideRequest {
   MonthlyLimit: number;
 }
+const SetRcsMessageSpendLimitOverrideRequest = /*@__PURE__*/ __L.at(
+  __c35,
+  5,
+) as any as S.Schema<SetRcsMessageSpendLimitOverrideRequest>;
 export interface SetRcsMessageSpendLimitOverrideResult {
   MonthlyLimit?: number;
 }
+const SetRcsMessageSpendLimitOverrideResult =
+  DeleteMediaMessageSpendLimitOverrideResult as any as S.Schema<SetRcsMessageSpendLimitOverrideResult>;
 export interface SetTextMessageSpendLimitOverrideRequest {
   MonthlyLimit: number;
 }
+const SetTextMessageSpendLimitOverrideRequest = /*@__PURE__*/ __L.at(
+  __c35,
+  6,
+) as any as S.Schema<SetTextMessageSpendLimitOverrideRequest>;
 export interface SetTextMessageSpendLimitOverrideResult {
   MonthlyLimit?: number;
 }
+const SetTextMessageSpendLimitOverrideResult =
+  DeleteMediaMessageSpendLimitOverrideResult as any as S.Schema<SetTextMessageSpendLimitOverrideResult>;
 export interface SetVoiceMessageSpendLimitOverrideRequest {
   MonthlyLimit: number;
 }
+const SetVoiceMessageSpendLimitOverrideRequest = /*@__PURE__*/ __L.at(
+  __c35,
+  7,
+) as any as S.Schema<SetVoiceMessageSpendLimitOverrideRequest>;
 export interface SetVoiceMessageSpendLimitOverrideResult {
   MonthlyLimit?: number;
 }
+const SetVoiceMessageSpendLimitOverrideResult =
+  DeleteMediaMessageSpendLimitOverrideResult as any as S.Schema<SetVoiceMessageSpendLimitOverrideResult>;
 export interface SubmitRegistrationVersionRequest {
   RegistrationId: string;
   AwsReview?: boolean;
 }
+const SubmitRegistrationVersionRequest = /*@__PURE__*/ __L.at(
+  __c36,
+  0,
+) as any as S.Schema<SubmitRegistrationVersionRequest>;
 export interface SubmitRegistrationVersionResult {
   RegistrationArn: string;
   RegistrationId: string;
@@ -2153,18 +3154,31 @@ export interface SubmitRegistrationVersionResult {
   RegistrationVersionStatusHistory: RegistrationVersionStatusHistory;
   AwsReview: boolean;
 }
+const SubmitRegistrationVersionResult = /*@__PURE__*/ __L.at(
+  __c36,
+  1,
+) as any as S.Schema<SubmitRegistrationVersionResult>;
 export type NonEmptyTagList = Tag[];
+const NonEmptyTagList = TagList as any as S.Schema<NonEmptyTagList>;
 export interface TagResourceRequest {
   ResourceArn: string;
   Tags: Tag[];
 }
+const TagResourceRequest = /*@__PURE__*/ __L.at(__c36, 2) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResult {}
+const TagResourceResult = /*@__PURE__*/ __L.at(__c36, 3) as any as S.Schema<TagResourceResult>;
 export type TagKeyList = string[];
+const TagKeyList = EventTypeList as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   ResourceArn: string;
   TagKeys: string[];
 }
+const UntagResourceRequest = /*@__PURE__*/ __L.at(
+  __c36,
+  4,
+) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResult {}
+const UntagResourceResult = TagResourceResult as any as S.Schema<UntagResourceResult>;
 export interface UpdateEventDestinationRequest {
   ConfigurationSetName: string;
   EventDestinationName: string;
@@ -2174,11 +3188,17 @@ export interface UpdateEventDestinationRequest {
   KinesisFirehoseDestination?: KinesisFirehoseDestination;
   SnsDestination?: SnsDestination;
 }
+const UpdateEventDestinationRequest = /*@__PURE__*/ __L.at(
+  __c36,
+  5,
+) as any as S.Schema<UpdateEventDestinationRequest>;
 export interface UpdateEventDestinationResult {
   ConfigurationSetArn?: string;
   ConfigurationSetName?: string;
   EventDestination?: EventDestination;
 }
+const UpdateEventDestinationResult =
+  CreateEventDestinationResult as any as S.Schema<UpdateEventDestinationResult>;
 export type NotifyPoolIdOrUnset = string;
 export interface UpdateNotifyConfigurationRequest {
   NotifyConfigurationId: string;
@@ -2188,6 +3208,10 @@ export interface UpdateNotifyConfigurationRequest {
   EnabledChannels?: string[];
   DeletionProtectionEnabled?: boolean;
 }
+const UpdateNotifyConfigurationRequest = /*@__PURE__*/ __L.at(
+  __c36,
+  6,
+) as any as S.Schema<UpdateNotifyConfigurationRequest>;
 export interface UpdateNotifyConfigurationResult {
   NotifyConfigurationArn: string;
   NotifyConfigurationId: string;
@@ -2204,6 +3228,8 @@ export interface UpdateNotifyConfigurationResult {
   DeletionProtectionEnabled: boolean;
   CreatedTimestamp: Date;
 }
+const UpdateNotifyConfigurationResult =
+  DeleteNotifyConfigurationResult as any as S.Schema<UpdateNotifyConfigurationResult>;
 export interface UpdatePhoneNumberRequest {
   PhoneNumberId: string;
   TwoWayEnabled?: boolean;
@@ -2214,6 +3240,10 @@ export interface UpdatePhoneNumberRequest {
   InternationalSendingEnabled?: boolean;
   DeletionProtectionEnabled?: boolean;
 }
+const UpdatePhoneNumberRequest = /*@__PURE__*/ __L.at(
+  __c36,
+  7,
+) as any as S.Schema<UpdatePhoneNumberRequest>;
 export interface UpdatePhoneNumberResult {
   PhoneNumberArn?: string;
   PhoneNumberId?: string;
@@ -2234,6 +3264,10 @@ export interface UpdatePhoneNumberResult {
   RegistrationId?: string;
   CreatedTimestamp?: Date;
 }
+const UpdatePhoneNumberResult = /*@__PURE__*/ __L.at(
+  __c37,
+  0,
+) as any as S.Schema<UpdatePhoneNumberResult>;
 export interface UpdatePoolRequest {
   PoolId: string;
   TwoWayEnabled?: boolean;
@@ -2244,6 +3278,7 @@ export interface UpdatePoolRequest {
   SharedRoutesEnabled?: boolean;
   DeletionProtectionEnabled?: boolean;
 }
+const UpdatePoolRequest = /*@__PURE__*/ __L.at(__c37, 1) as any as S.Schema<UpdatePoolRequest>;
 export interface UpdatePoolResult {
   PoolArn?: string;
   PoolId?: string;
@@ -2258,10 +3293,15 @@ export interface UpdatePoolResult {
   DeletionProtectionEnabled?: boolean;
   CreatedTimestamp?: Date;
 }
+const UpdatePoolResult = /*@__PURE__*/ __L.at(__c37, 2) as any as S.Schema<UpdatePoolResult>;
 export interface UpdateProtectConfigurationRequest {
   ProtectConfigurationId: string;
   DeletionProtectionEnabled?: boolean;
 }
+const UpdateProtectConfigurationRequest = /*@__PURE__*/ __L.at(
+  __c37,
+  3,
+) as any as S.Schema<UpdateProtectConfigurationRequest>;
 export interface UpdateProtectConfigurationResult {
   ProtectConfigurationArn: string;
   ProtectConfigurationId: string;
@@ -2269,6 +3309,8 @@ export interface UpdateProtectConfigurationResult {
   AccountDefault: boolean;
   DeletionProtectionEnabled: boolean;
 }
+const UpdateProtectConfigurationResult =
+  DeleteProtectConfigurationResult as any as S.Schema<UpdateProtectConfigurationResult>;
 export interface UpdateProtectConfigurationCountryRuleSetRequest {
   ProtectConfigurationId: string;
   NumberCapability: string;
@@ -2276,12 +3318,18 @@ export interface UpdateProtectConfigurationCountryRuleSetRequest {
     [key: string]: ProtectConfigurationCountryRuleSetInformation | undefined;
   };
 }
+const UpdateProtectConfigurationCountryRuleSetRequest = /*@__PURE__*/ __L.at(
+  __c37,
+  4,
+) as any as S.Schema<UpdateProtectConfigurationCountryRuleSetRequest>;
 export interface UpdateProtectConfigurationCountryRuleSetResult {
   ProtectConfigurationArn: string;
   ProtectConfigurationId: string;
   NumberCapability: string;
   CountryRuleSet: { [key: string]: ProtectConfigurationCountryRuleSetInformation | undefined };
 }
+const UpdateProtectConfigurationCountryRuleSetResult =
+  GetProtectConfigurationCountryRuleSetResult as any as S.Schema<UpdateProtectConfigurationCountryRuleSetResult>;
 export type TwoWayMediaS3BucketNameOrUnset = string;
 export type IamRoleArnOrUnset = string;
 export interface UpdateRcsAgentRequest {
@@ -2297,6 +3345,10 @@ export interface UpdateRcsAgentRequest {
   TwoWayMediaS3Role?: string;
   TwoWayRcsEventsEnabled?: string[];
 }
+const UpdateRcsAgentRequest = /*@__PURE__*/ __L.at(
+  __c37,
+  5,
+) as any as S.Schema<UpdateRcsAgentRequest>;
 export interface UpdateRcsAgentResult {
   RcsAgentArn: string;
   RcsAgentId: string;
@@ -2313,11 +3365,19 @@ export interface UpdateRcsAgentResult {
   TwoWayMediaS3Role?: string;
   TwoWayRcsEventsEnabled?: string[];
 }
+const UpdateRcsAgentResult = /*@__PURE__*/ __L.at(
+  __c37,
+  6,
+) as any as S.Schema<UpdateRcsAgentResult>;
 export interface UpdateSenderIdRequest {
   SenderId: string;
   IsoCountryCode: string;
   DeletionProtectionEnabled?: boolean;
 }
+const UpdateSenderIdRequest = /*@__PURE__*/ __L.at(
+  __c37,
+  7,
+) as any as S.Schema<UpdateSenderIdRequest>;
 export interface UpdateSenderIdResult {
   SenderIdArn: string;
   SenderId: string;
@@ -2328,11 +3388,19 @@ export interface UpdateSenderIdResult {
   Registered: boolean;
   RegistrationId?: string;
 }
+const UpdateSenderIdResult = /*@__PURE__*/ __L.at(
+  __c38,
+  0,
+) as any as S.Schema<UpdateSenderIdResult>;
 export type VerificationCode = string;
 export interface VerifyDestinationNumberRequest {
   VerifiedDestinationNumberId: string;
   VerificationCode: string;
 }
+const VerifyDestinationNumberRequest = /*@__PURE__*/ __L.at(
+  __c38,
+  1,
+) as any as S.Schema<VerifyDestinationNumberRequest>;
 export interface VerifyDestinationNumberResult {
   VerifiedDestinationNumberArn: string;
   VerifiedDestinationNumberId: string;
@@ -2340,6 +3408,10 @@ export interface VerifyDestinationNumberResult {
   Status: string;
   CreatedTimestamp: Date;
 }
+const VerifyDestinationNumberResult = /*@__PURE__*/ __L.at(
+  __c38,
+  2,
+) as any as S.Schema<VerifyDestinationNumberResult>;
 export type AccessDeniedExceptionReason = string;
 export type ConflictExceptionReason = string;
 export type ResourceType = string;
@@ -2349,7 +3421,12 @@ export interface ValidationExceptionField {
   Name: string;
   Message: string;
 }
+const ValidationExceptionField = /*@__PURE__*/ __L.at(
+  __c38,
+  3,
+) as any as S.Schema<ValidationExceptionField>;
 export type ValidationExceptionFieldList = ValidationExceptionField[];
+const ValidationExceptionFieldList = /*@__PURE__*/ __L.at(__c38, 4);
 export type AssociateOriginationIdentityError =
   | AccessDeniedException
   | ConflictException
@@ -2372,8 +3449,8 @@ export const associateOriginationIdentity: API.OperationMethod<
   AssociateOriginationIdentityError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<AssociateOriginationIdentityRequest>,
-  output: __S(1) as any as S.Schema<AssociateOriginationIdentityResult>,
+  input: AssociateOriginationIdentityRequest,
+  output: AssociateOriginationIdentityResult,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2405,8 +3482,8 @@ export const associateProtectConfiguration: API.OperationMethod<
   AssociateProtectConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2) as any as S.Schema<AssociateProtectConfigurationRequest>,
-  output: __S(3) as any as S.Schema<AssociateProtectConfigurationResult>,
+  input: AssociateProtectConfigurationRequest,
+  output: AssociateProtectConfigurationResult,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2436,8 +3513,8 @@ export const carrierLookup: API.OperationMethod<
   CarrierLookupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4) as any as S.Schema<CarrierLookupRequest>,
-  output: __S(5) as any as S.Schema<CarrierLookupResult>,
+  input: CarrierLookupRequest,
+  output: CarrierLookupResult,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2471,8 +3548,8 @@ export const createConfigurationSet: API.OperationMethod<
   CreateConfigurationSetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8) as any as S.Schema<CreateConfigurationSetRequest>,
-  output: __S(9) as any as S.Schema<CreateConfigurationSetResult>,
+  input: CreateConfigurationSetRequest,
+  output: CreateConfigurationSetResult,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2510,8 +3587,8 @@ export const createEventDestination: API.OperationMethod<
   CreateEventDestinationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14) as any as S.Schema<CreateEventDestinationRequest>,
-  output: __S(16) as any as S.Schema<CreateEventDestinationResult>,
+  input: CreateEventDestinationRequest,
+  output: CreateEventDestinationResult,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2544,8 +3621,8 @@ export const createNotifyConfiguration: API.OperationMethod<
   CreateNotifyConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17) as any as S.Schema<CreateNotifyConfigurationRequest>,
-  output: __S(18) as any as S.Schema<CreateNotifyConfigurationResult>,
+  input: CreateNotifyConfigurationRequest,
+  output: CreateNotifyConfigurationResult,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2581,8 +3658,8 @@ export const createOptOutList: API.OperationMethod<
   CreateOptOutListError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19) as any as S.Schema<CreateOptOutListRequest>,
-  output: __S(20) as any as S.Schema<CreateOptOutListResult>,
+  input: CreateOptOutListRequest,
+  output: CreateOptOutListResult,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2618,8 +3695,8 @@ export const createPool: API.OperationMethod<
   CreatePoolError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21) as any as S.Schema<CreatePoolRequest>,
-  output: __S(22) as any as S.Schema<CreatePoolResult>,
+  input: CreatePoolRequest,
+  output: CreatePoolResult,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2651,8 +3728,8 @@ export const createProtectConfiguration: API.OperationMethod<
   CreateProtectConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23) as any as S.Schema<CreateProtectConfigurationRequest>,
-  output: __S(24) as any as S.Schema<CreateProtectConfigurationResult>,
+  input: CreateProtectConfigurationRequest,
+  output: CreateProtectConfigurationResult,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2684,8 +3761,8 @@ export const createRcsAgent: API.OperationMethod<
   CreateRcsAgentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25) as any as S.Schema<CreateRcsAgentRequest>,
-  output: __S(26) as any as S.Schema<CreateRcsAgentResult>,
+  input: CreateRcsAgentRequest,
+  output: CreateRcsAgentResult,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2717,8 +3794,8 @@ export const createRegistration: API.OperationMethod<
   CreateRegistrationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27) as any as S.Schema<CreateRegistrationRequest>,
-  output: __S(29) as any as S.Schema<CreateRegistrationResult>,
+  input: CreateRegistrationRequest,
+  output: CreateRegistrationResult,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2750,8 +3827,8 @@ export const createRegistrationAssociation: API.OperationMethod<
   CreateRegistrationAssociationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30) as any as S.Schema<CreateRegistrationAssociationRequest>,
-  output: __S(31) as any as S.Schema<CreateRegistrationAssociationResult>,
+  input: CreateRegistrationAssociationRequest,
+  output: CreateRegistrationAssociationResult,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2785,8 +3862,8 @@ export const createRegistrationAttachment: API.OperationMethod<
   CreateRegistrationAttachmentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32) as any as S.Schema<CreateRegistrationAttachmentRequest>,
-  output: __S(33) as any as S.Schema<CreateRegistrationAttachmentResult>,
+  input: CreateRegistrationAttachmentRequest,
+  output: CreateRegistrationAttachmentResult,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2818,8 +3895,8 @@ export const createRegistrationVersion: API.OperationMethod<
   CreateRegistrationVersionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34) as any as S.Schema<CreateRegistrationVersionRequest>,
-  output: __S(36) as any as S.Schema<CreateRegistrationVersionResult>,
+  input: CreateRegistrationVersionRequest,
+  output: CreateRegistrationVersionResult,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2852,8 +3929,8 @@ export const createVerifiedDestinationNumber: API.OperationMethod<
   CreateVerifiedDestinationNumberError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37) as any as S.Schema<CreateVerifiedDestinationNumberRequest>,
-  output: __S(38) as any as S.Schema<CreateVerifiedDestinationNumberResult>,
+  input: CreateVerifiedDestinationNumberRequest,
+  output: CreateVerifiedDestinationNumberResult,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2884,8 +3961,8 @@ export const deleteAccountDefaultProtectConfiguration: API.OperationMethod<
   DeleteAccountDefaultProtectConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39) as any as S.Schema<DeleteAccountDefaultProtectConfigurationRequest>,
-  output: __S(40) as any as S.Schema<DeleteAccountDefaultProtectConfigurationResult>,
+  input: DeleteAccountDefaultProtectConfigurationRequest,
+  output: DeleteAccountDefaultProtectConfigurationResult,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2916,8 +3993,8 @@ export const deleteConfigurationSet: API.OperationMethod<
   DeleteConfigurationSetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41) as any as S.Schema<DeleteConfigurationSetRequest>,
-  output: __S(43) as any as S.Schema<DeleteConfigurationSetResult>,
+  input: DeleteConfigurationSetRequest,
+  output: DeleteConfigurationSetResult,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2948,8 +4025,8 @@ export const deleteDefaultMessageType: API.OperationMethod<
   DeleteDefaultMessageTypeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44) as any as S.Schema<DeleteDefaultMessageTypeRequest>,
-  output: __S(45) as any as S.Schema<DeleteDefaultMessageTypeResult>,
+  input: DeleteDefaultMessageTypeRequest,
+  output: DeleteDefaultMessageTypeResult,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2980,8 +4057,8 @@ export const deleteDefaultSenderId: API.OperationMethod<
   DeleteDefaultSenderIdError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(46) as any as S.Schema<DeleteDefaultSenderIdRequest>,
-  output: __S(47) as any as S.Schema<DeleteDefaultSenderIdResult>,
+  input: DeleteDefaultSenderIdRequest,
+  output: DeleteDefaultSenderIdResult,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3012,8 +4089,8 @@ export const deleteEventDestination: API.OperationMethod<
   DeleteEventDestinationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48) as any as S.Schema<DeleteEventDestinationRequest>,
-  output: __S(16) as any as S.Schema<DeleteEventDestinationResult>,
+  input: DeleteEventDestinationRequest,
+  output: DeleteEventDestinationResult,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3047,8 +4124,8 @@ export const deleteKeyword: API.OperationMethod<
   DeleteKeywordError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49) as any as S.Schema<DeleteKeywordRequest>,
-  output: __S(50) as any as S.Schema<DeleteKeywordResult>,
+  input: DeleteKeywordRequest,
+  output: DeleteKeywordResult,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3077,8 +4154,8 @@ export const deleteMediaMessageSpendLimitOverride: API.OperationMethod<
   DeleteMediaMessageSpendLimitOverrideError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(51) as any as S.Schema<DeleteMediaMessageSpendLimitOverrideRequest>,
-  output: __S(52) as any as S.Schema<DeleteMediaMessageSpendLimitOverrideResult>,
+  input: DeleteMediaMessageSpendLimitOverrideRequest,
+  output: DeleteMediaMessageSpendLimitOverrideResult,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3109,8 +4186,8 @@ export const deleteNotifyConfiguration: API.OperationMethod<
   DeleteNotifyConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(53) as any as S.Schema<DeleteNotifyConfigurationRequest>,
-  output: __S(54) as any as S.Schema<DeleteNotifyConfigurationResult>,
+  input: DeleteNotifyConfigurationRequest,
+  output: DeleteNotifyConfigurationResult,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3139,8 +4216,8 @@ export const deleteNotifyMessageSpendLimitOverride: API.OperationMethod<
   DeleteNotifyMessageSpendLimitOverrideError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(55) as any as S.Schema<DeleteNotifyMessageSpendLimitOverrideRequest>,
-  output: __S(52) as any as S.Schema<DeleteNotifyMessageSpendLimitOverrideResult>,
+  input: DeleteNotifyMessageSpendLimitOverrideRequest,
+  output: DeleteNotifyMessageSpendLimitOverrideResult,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3173,8 +4250,8 @@ export const deleteOptedOutNumber: API.OperationMethod<
   DeleteOptedOutNumberError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56) as any as S.Schema<DeleteOptedOutNumberRequest>,
-  output: __S(57) as any as S.Schema<DeleteOptedOutNumberResult>,
+  input: DeleteOptedOutNumberRequest,
+  output: DeleteOptedOutNumberResult,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3207,8 +4284,8 @@ export const deleteOptOutList: API.OperationMethod<
   DeleteOptOutListError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(58) as any as S.Schema<DeleteOptOutListRequest>,
-  output: __S(59) as any as S.Schema<DeleteOptOutListResult>,
+  input: DeleteOptOutListRequest,
+  output: DeleteOptOutListResult,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3243,8 +4320,8 @@ export const deletePool: API.OperationMethod<
   DeletePoolError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60) as any as S.Schema<DeletePoolRequest>,
-  output: __S(61) as any as S.Schema<DeletePoolResult>,
+  input: DeletePoolRequest,
+  output: DeletePoolResult,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3275,8 +4352,8 @@ export const deleteProtectConfiguration: API.OperationMethod<
   DeleteProtectConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(62) as any as S.Schema<DeleteProtectConfigurationRequest>,
-  output: __S(63) as any as S.Schema<DeleteProtectConfigurationResult>,
+  input: DeleteProtectConfigurationRequest,
+  output: DeleteProtectConfigurationResult,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3306,8 +4383,8 @@ export const deleteProtectConfigurationRuleSetNumberOverride: API.OperationMetho
   DeleteProtectConfigurationRuleSetNumberOverrideError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(64) as any as S.Schema<DeleteProtectConfigurationRuleSetNumberOverrideRequest>,
-  output: __S(65) as any as S.Schema<DeleteProtectConfigurationRuleSetNumberOverrideResult>,
+  input: DeleteProtectConfigurationRuleSetNumberOverrideRequest,
+  output: DeleteProtectConfigurationRuleSetNumberOverrideResult,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3337,8 +4414,8 @@ export const deleteRcsAgent: API.OperationMethod<
   DeleteRcsAgentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(66) as any as S.Schema<DeleteRcsAgentRequest>,
-  output: __S(67) as any as S.Schema<DeleteRcsAgentResult>,
+  input: DeleteRcsAgentRequest,
+  output: DeleteRcsAgentResult,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3367,8 +4444,8 @@ export const deleteRcsMessageSpendLimitOverride: API.OperationMethod<
   DeleteRcsMessageSpendLimitOverrideError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(68) as any as S.Schema<DeleteRcsMessageSpendLimitOverrideRequest>,
-  output: __S(52) as any as S.Schema<DeleteRcsMessageSpendLimitOverrideResult>,
+  input: DeleteRcsMessageSpendLimitOverrideRequest,
+  output: DeleteRcsMessageSpendLimitOverrideResult,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3397,8 +4474,8 @@ export const deleteRegistration: API.OperationMethod<
   DeleteRegistrationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(69) as any as S.Schema<DeleteRegistrationRequest>,
-  output: __S(70) as any as S.Schema<DeleteRegistrationResult>,
+  input: DeleteRegistrationRequest,
+  output: DeleteRegistrationResult,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3429,8 +4506,8 @@ export const deleteRegistrationAttachment: API.OperationMethod<
   DeleteRegistrationAttachmentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(71) as any as S.Schema<DeleteRegistrationAttachmentRequest>,
-  output: __S(72) as any as S.Schema<DeleteRegistrationAttachmentResult>,
+  input: DeleteRegistrationAttachmentRequest,
+  output: DeleteRegistrationAttachmentResult,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3461,8 +4538,8 @@ export const deleteRegistrationFieldValue: API.OperationMethod<
   DeleteRegistrationFieldValueError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(73) as any as S.Schema<DeleteRegistrationFieldValueRequest>,
-  output: __S(74) as any as S.Schema<DeleteRegistrationFieldValueResult>,
+  input: DeleteRegistrationFieldValueRequest,
+  output: DeleteRegistrationFieldValueResult,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3492,8 +4569,8 @@ export const deleteResourcePolicy: API.OperationMethod<
   DeleteResourcePolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(75) as any as S.Schema<DeleteResourcePolicyRequest>,
-  output: __S(76) as any as S.Schema<DeleteResourcePolicyResult>,
+  input: DeleteResourcePolicyRequest,
+  output: DeleteResourcePolicyResult,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3521,8 +4598,8 @@ export const deleteTextMessageSpendLimitOverride: API.OperationMethod<
   DeleteTextMessageSpendLimitOverrideError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(77) as any as S.Schema<DeleteTextMessageSpendLimitOverrideRequest>,
-  output: __S(52) as any as S.Schema<DeleteTextMessageSpendLimitOverrideResult>,
+  input: DeleteTextMessageSpendLimitOverrideRequest,
+  output: DeleteTextMessageSpendLimitOverrideResult,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3551,8 +4628,8 @@ export const deleteVerifiedDestinationNumber: API.OperationMethod<
   DeleteVerifiedDestinationNumberError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(78) as any as S.Schema<DeleteVerifiedDestinationNumberRequest>,
-  output: __S(79) as any as S.Schema<DeleteVerifiedDestinationNumberResult>,
+  input: DeleteVerifiedDestinationNumberRequest,
+  output: DeleteVerifiedDestinationNumberResult,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3581,8 +4658,8 @@ export const deleteVoiceMessageSpendLimitOverride: API.OperationMethod<
   DeleteVoiceMessageSpendLimitOverrideError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(80) as any as S.Schema<DeleteVoiceMessageSpendLimitOverrideRequest>,
-  output: __S(52) as any as S.Schema<DeleteVoiceMessageSpendLimitOverrideResult>,
+  input: DeleteVoiceMessageSpendLimitOverrideRequest,
+  output: DeleteVoiceMessageSpendLimitOverrideResult,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3612,8 +4689,8 @@ export const describeAccountAttributes: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   AccountAttribute
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(81) as any as S.Schema<DescribeAccountAttributesRequest>,
-  output: __S(84) as any as S.Schema<DescribeAccountAttributesResult>,
+  input: DescribeAccountAttributesRequest,
+  output: DescribeAccountAttributesResult,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3649,8 +4726,8 @@ export const describeAccountLimits: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   AccountLimit
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(85) as any as S.Schema<DescribeAccountLimitsRequest>,
-  output: __S(88) as any as S.Schema<DescribeAccountLimitsResult>,
+  input: DescribeAccountLimitsRequest,
+  output: DescribeAccountLimitsResult,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3689,8 +4766,8 @@ export const describeConfigurationSets: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ConfigurationSetInformation
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(91) as any as S.Schema<DescribeConfigurationSetsRequest>,
-  output: __S(94) as any as S.Schema<DescribeConfigurationSetsResult>,
+  input: DescribeConfigurationSetsRequest,
+  output: DescribeConfigurationSetsResult,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3730,8 +4807,8 @@ export const describeKeywords: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   KeywordInformation
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(95) as any as S.Schema<DescribeKeywordsRequest>,
-  output: __S(98) as any as S.Schema<DescribeKeywordsResult>,
+  input: DescribeKeywordsRequest,
+  output: DescribeKeywordsResult,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3771,8 +4848,8 @@ export const describeNotifyConfigurations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   NotifyConfigurationInformation
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(101) as any as S.Schema<DescribeNotifyConfigurationsRequest>,
-  output: __S(103) as any as S.Schema<DescribeNotifyConfigurationsResult>,
+  input: DescribeNotifyConfigurationsRequest,
+  output: DescribeNotifyConfigurationsResult,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3812,8 +4889,8 @@ export const describeNotifyTemplates: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   NotifyTemplateInformation
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(104) as any as S.Schema<DescribeNotifyTemplatesRequest>,
-  output: __S(109) as any as S.Schema<DescribeNotifyTemplatesResult>,
+  input: DescribeNotifyTemplatesRequest,
+  output: DescribeNotifyTemplatesResult,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3853,8 +4930,8 @@ export const describeOptedOutNumbers: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   OptedOutNumberInformation
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(110) as any as S.Schema<DescribeOptedOutNumbersRequest>,
-  output: __S(113) as any as S.Schema<DescribeOptedOutNumbersResult>,
+  input: DescribeOptedOutNumbersRequest,
+  output: DescribeOptedOutNumbersResult,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3894,8 +4971,8 @@ export const describeOptOutLists: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   OptOutListInformation
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(114) as any as S.Schema<DescribeOptOutListsRequest>,
-  output: __S(117) as any as S.Schema<DescribeOptOutListsResult>,
+  input: DescribeOptOutListsRequest,
+  output: DescribeOptOutListsResult,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3935,8 +5012,8 @@ export const describePhoneNumbers: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   PhoneNumberInformation
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(118) as any as S.Schema<DescribePhoneNumbersRequest>,
-  output: __S(123) as any as S.Schema<DescribePhoneNumbersResult>,
+  input: DescribePhoneNumbersRequest,
+  output: DescribePhoneNumbersResult,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3978,8 +5055,8 @@ export const describePools: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   PoolInformation
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(124) as any as S.Schema<DescribePoolsRequest>,
-  output: __S(127) as any as S.Schema<DescribePoolsResult>,
+  input: DescribePoolsRequest,
+  output: DescribePoolsResult,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4015,8 +5092,8 @@ export const describeProtectConfigurations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ProtectConfigurationInformation
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(128) as any as S.Schema<DescribeProtectConfigurationsRequest>,
-  output: __S(130) as any as S.Schema<DescribeProtectConfigurationsResult>,
+  input: DescribeProtectConfigurationsRequest,
+  output: DescribeProtectConfigurationsResult,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4052,8 +5129,8 @@ export const describeRcsAgentCountryLaunchStatus: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   CountryLaunchStatusInformation
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(131) as any as S.Schema<DescribeRcsAgentCountryLaunchStatusRequest>,
-  output: __S(136) as any as S.Schema<DescribeRcsAgentCountryLaunchStatusResult>,
+  input: DescribeRcsAgentCountryLaunchStatusRequest,
+  output: DescribeRcsAgentCountryLaunchStatusResult,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4091,8 +5168,8 @@ export const describeRcsAgents: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   RcsAgentInformation
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(137) as any as S.Schema<DescribeRcsAgentsRequest>,
-  output: __S(141) as any as S.Schema<DescribeRcsAgentsResult>,
+  input: DescribeRcsAgentsRequest,
+  output: DescribeRcsAgentsResult,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4128,8 +5205,8 @@ export const describeRegistrationAttachments: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   RegistrationAttachmentsInformation
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(142) as any as S.Schema<DescribeRegistrationAttachmentsRequest>,
-  output: __S(145) as any as S.Schema<DescribeRegistrationAttachmentsResult>,
+  input: DescribeRegistrationAttachmentsRequest,
+  output: DescribeRegistrationAttachmentsResult,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4164,8 +5241,8 @@ export const describeRegistrationFieldDefinitions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   RegistrationFieldDefinition
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(146) as any as S.Schema<DescribeRegistrationFieldDefinitionsRequest>,
-  output: __S(160) as any as S.Schema<DescribeRegistrationFieldDefinitionsResult>,
+  input: DescribeRegistrationFieldDefinitionsRequest,
+  output: DescribeRegistrationFieldDefinitionsResult,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4200,8 +5277,8 @@ export const describeRegistrationFieldValues: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   RegistrationFieldValueInformation
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(161) as any as S.Schema<DescribeRegistrationFieldValuesRequest>,
-  output: __S(164) as any as S.Schema<DescribeRegistrationFieldValuesResult>,
+  input: DescribeRegistrationFieldValuesRequest,
+  output: DescribeRegistrationFieldValuesResult,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4237,8 +5314,8 @@ export const describeRegistrations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   RegistrationInformation
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(165) as any as S.Schema<DescribeRegistrationsRequest>,
-  output: __S(167) as any as S.Schema<DescribeRegistrationsResult>,
+  input: DescribeRegistrationsRequest,
+  output: DescribeRegistrationsResult,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4273,8 +5350,8 @@ export const describeRegistrationSectionDefinitions: API.PaginatedOperationMetho
   Credentials | HttpClient.HttpClient,
   RegistrationSectionDefinition
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(168) as any as S.Schema<DescribeRegistrationSectionDefinitionsRequest>,
-  output: __S(172) as any as S.Schema<DescribeRegistrationSectionDefinitionsResult>,
+  input: DescribeRegistrationSectionDefinitionsRequest,
+  output: DescribeRegistrationSectionDefinitionsResult,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4308,8 +5385,8 @@ export const describeRegistrationTypeDefinitions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   RegistrationTypeDefinition
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(173) as any as S.Schema<DescribeRegistrationTypeDefinitionsRequest>,
-  output: __S(179) as any as S.Schema<DescribeRegistrationTypeDefinitionsResult>,
+  input: DescribeRegistrationTypeDefinitionsRequest,
+  output: DescribeRegistrationTypeDefinitionsResult,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4344,8 +5421,8 @@ export const describeRegistrationVersions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   RegistrationVersionInformation
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(181) as any as S.Schema<DescribeRegistrationVersionsRequest>,
-  output: __S(186) as any as S.Schema<DescribeRegistrationVersionsResult>,
+  input: DescribeRegistrationVersionsRequest,
+  output: DescribeRegistrationVersionsResult,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4385,8 +5462,8 @@ export const describeSenderIds: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   SenderIdInformation
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(189) as any as S.Schema<DescribeSenderIdsRequest>,
-  output: __S(192) as any as S.Schema<DescribeSenderIdsResult>,
+  input: DescribeSenderIdsRequest,
+  output: DescribeSenderIdsResult,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4423,8 +5500,8 @@ export const describeSpendLimits: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   SpendLimit
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(193) as any as S.Schema<DescribeSpendLimitsRequest>,
-  output: __S(196) as any as S.Schema<DescribeSpendLimitsResult>,
+  input: DescribeSpendLimitsRequest,
+  output: DescribeSpendLimitsResult,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4459,8 +5536,8 @@ export const describeVerifiedDestinationNumbers: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   VerifiedDestinationNumberInformation
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(198) as any as S.Schema<DescribeVerifiedDestinationNumbersRequest>,
-  output: __S(201) as any as S.Schema<DescribeVerifiedDestinationNumbersResult>,
+  input: DescribeVerifiedDestinationNumbersRequest,
+  output: DescribeVerifiedDestinationNumbersResult,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4498,8 +5575,8 @@ export const disassociateOriginationIdentity: API.OperationMethod<
   DisassociateOriginationIdentityError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(202) as any as S.Schema<DisassociateOriginationIdentityRequest>,
-  output: __S(1) as any as S.Schema<DisassociateOriginationIdentityResult>,
+  input: DisassociateOriginationIdentityRequest,
+  output: DisassociateOriginationIdentityResult,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -4530,8 +5607,8 @@ export const disassociateProtectConfiguration: API.OperationMethod<
   DisassociateProtectConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(203) as any as S.Schema<DisassociateProtectConfigurationRequest>,
-  output: __S(3) as any as S.Schema<DisassociateProtectConfigurationResult>,
+  input: DisassociateProtectConfigurationRequest,
+  output: DisassociateProtectConfigurationResult,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -4562,8 +5639,8 @@ export const discardRegistrationVersion: API.OperationMethod<
   DiscardRegistrationVersionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(204) as any as S.Schema<DiscardRegistrationVersionRequest>,
-  output: __S(36) as any as S.Schema<DiscardRegistrationVersionResult>,
+  input: DiscardRegistrationVersionRequest,
+  output: DiscardRegistrationVersionResult,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -4593,8 +5670,8 @@ export const getProtectConfigurationCountryRuleSet: API.OperationMethod<
   GetProtectConfigurationCountryRuleSetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(205) as any as S.Schema<GetProtectConfigurationCountryRuleSetRequest>,
-  output: __S(208) as any as S.Schema<GetProtectConfigurationCountryRuleSetResult>,
+  input: GetProtectConfigurationCountryRuleSetRequest,
+  output: GetProtectConfigurationCountryRuleSetResult,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4623,8 +5700,8 @@ export const getResourcePolicy: API.OperationMethod<
   GetResourcePolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(209) as any as S.Schema<GetResourcePolicyRequest>,
-  output: __S(210) as any as S.Schema<GetResourcePolicyResult>,
+  input: GetResourcePolicyRequest,
+  output: GetResourcePolicyResult,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4657,8 +5734,8 @@ export const listAvailablePhoneNumbers: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   PhoneNumber
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(213) as any as S.Schema<ListAvailablePhoneNumbersRequest>,
-  output: __S(214) as any as S.Schema<ListAvailablePhoneNumbersResult>,
+  input: ListAvailablePhoneNumbersRequest,
+  output: ListAvailablePhoneNumbersResult,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -4694,8 +5771,8 @@ export const listNotifyCountries: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   NotifyCountryInformation
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(215) as any as S.Schema<ListNotifyCountriesRequest>,
-  output: __S(218) as any as S.Schema<ListNotifyCountriesResult>,
+  input: ListNotifyCountriesRequest,
+  output: ListNotifyCountriesResult,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4732,8 +5809,8 @@ export const listPoolOriginationIdentities: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   OriginationIdentityMetadata
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(219) as any as S.Schema<ListPoolOriginationIdentitiesRequest>,
-  output: __S(222) as any as S.Schema<ListPoolOriginationIdentitiesResult>,
+  input: ListPoolOriginationIdentitiesRequest,
+  output: ListPoolOriginationIdentitiesResult,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4769,8 +5846,8 @@ export const listProtectConfigurationRuleSetNumberOverrides: API.PaginatedOperat
   Credentials | HttpClient.HttpClient,
   ProtectConfigurationRuleSetNumberOverride
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(223) as any as S.Schema<ListProtectConfigurationRuleSetNumberOverridesRequest>,
-  output: __S(226) as any as S.Schema<ListProtectConfigurationRuleSetNumberOverridesResult>,
+  input: ListProtectConfigurationRuleSetNumberOverridesRequest,
+  output: ListProtectConfigurationRuleSetNumberOverridesResult,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4806,8 +5883,8 @@ export const listRegistrationAssociations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   RegistrationAssociationMetadata
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(227) as any as S.Schema<ListRegistrationAssociationsRequest>,
-  output: __S(230) as any as S.Schema<ListRegistrationAssociationsResult>,
+  input: ListRegistrationAssociationsRequest,
+  output: ListRegistrationAssociationsResult,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4842,8 +5919,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(231) as any as S.Schema<ListTagsForResourceRequest>,
-  output: __S(232) as any as S.Schema<ListTagsForResourceResult>,
+  input: ListTagsForResourceRequest,
+  output: ListTagsForResourceResult,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4878,8 +5955,8 @@ export const putKeyword: API.OperationMethod<
   PutKeywordError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(233) as any as S.Schema<PutKeywordRequest>,
-  output: __S(50) as any as S.Schema<PutKeywordResult>,
+  input: PutKeywordRequest,
+  output: PutKeywordResult,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -4912,8 +5989,8 @@ export const putMessageFeedback: API.OperationMethod<
   PutMessageFeedbackError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(234) as any as S.Schema<PutMessageFeedbackRequest>,
-  output: __S(235) as any as S.Schema<PutMessageFeedbackResult>,
+  input: PutMessageFeedbackRequest,
+  output: PutMessageFeedbackResult,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4944,8 +6021,8 @@ export const putOptedOutNumber: API.OperationMethod<
   PutOptedOutNumberError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(236) as any as S.Schema<PutOptedOutNumberRequest>,
-  output: __S(237) as any as S.Schema<PutOptedOutNumberResult>,
+  input: PutOptedOutNumberRequest,
+  output: PutOptedOutNumberResult,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4976,8 +6053,8 @@ export const putProtectConfigurationRuleSetNumberOverride: API.OperationMethod<
   PutProtectConfigurationRuleSetNumberOverrideError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(238) as any as S.Schema<PutProtectConfigurationRuleSetNumberOverrideRequest>,
-  output: __S(65) as any as S.Schema<PutProtectConfigurationRuleSetNumberOverrideResult>,
+  input: PutProtectConfigurationRuleSetNumberOverrideRequest,
+  output: PutProtectConfigurationRuleSetNumberOverrideResult,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -5009,8 +6086,8 @@ export const putRegistrationFieldValue: API.OperationMethod<
   PutRegistrationFieldValueError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(239) as any as S.Schema<PutRegistrationFieldValueRequest>,
-  output: __S(74) as any as S.Schema<PutRegistrationFieldValueResult>,
+  input: PutRegistrationFieldValueRequest,
+  output: PutRegistrationFieldValueResult,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -5040,8 +6117,8 @@ export const putResourcePolicy: API.OperationMethod<
   PutResourcePolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(240) as any as S.Schema<PutResourcePolicyRequest>,
-  output: __S(210) as any as S.Schema<PutResourcePolicyResult>,
+  input: PutResourcePolicyRequest,
+  output: PutResourcePolicyResult,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -5073,8 +6150,8 @@ export const releasePhoneNumber: API.OperationMethod<
   ReleasePhoneNumberError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(241) as any as S.Schema<ReleasePhoneNumberRequest>,
-  output: __S(242) as any as S.Schema<ReleasePhoneNumberResult>,
+  input: ReleasePhoneNumberRequest,
+  output: ReleasePhoneNumberResult,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -5105,8 +6182,8 @@ export const releaseSenderId: API.OperationMethod<
   ReleaseSenderIdError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(243) as any as S.Schema<ReleaseSenderIdRequest>,
-  output: __S(244) as any as S.Schema<ReleaseSenderIdResult>,
+  input: ReleaseSenderIdRequest,
+  output: ReleaseSenderIdResult,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -5138,8 +6215,8 @@ export const requestPhoneNumber: API.OperationMethod<
   RequestPhoneNumberError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(245) as any as S.Schema<RequestPhoneNumberRequest>,
-  output: __S(246) as any as S.Schema<RequestPhoneNumberResult>,
+  input: RequestPhoneNumberRequest,
+  output: RequestPhoneNumberResult,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -5171,8 +6248,8 @@ export const requestSenderId: API.OperationMethod<
   RequestSenderIdError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(247) as any as S.Schema<RequestSenderIdRequest>,
-  output: __S(248) as any as S.Schema<RequestSenderIdResult>,
+  input: RequestSenderIdRequest,
+  output: RequestSenderIdResult,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -5204,8 +6281,8 @@ export const sendDestinationNumberVerificationCode: API.OperationMethod<
   SendDestinationNumberVerificationCodeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(250) as any as S.Schema<SendDestinationNumberVerificationCodeRequest>,
-  output: __S(251) as any as S.Schema<SendDestinationNumberVerificationCodeResult>,
+  input: SendDestinationNumberVerificationCodeRequest,
+  output: SendDestinationNumberVerificationCodeResult,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -5238,8 +6315,8 @@ export const sendMediaMessage: API.OperationMethod<
   SendMediaMessageError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(252) as any as S.Schema<SendMediaMessageRequest>,
-  output: __S(253) as any as S.Schema<SendMediaMessageResult>,
+  input: SendMediaMessageRequest,
+  output: SendMediaMessageResult,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -5272,8 +6349,8 @@ export const sendNotifyTextMessage: API.OperationMethod<
   SendNotifyTextMessageError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(254) as any as S.Schema<SendNotifyTextMessageRequest>,
-  output: __S(255) as any as S.Schema<SendNotifyTextMessageResult>,
+  input: SendNotifyTextMessageRequest,
+  output: SendNotifyTextMessageResult,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -5306,8 +6383,8 @@ export const sendNotifyVoiceMessage: API.OperationMethod<
   SendNotifyVoiceMessageError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(256) as any as S.Schema<SendNotifyVoiceMessageRequest>,
-  output: __S(255) as any as S.Schema<SendNotifyVoiceMessageResult>,
+  input: SendNotifyVoiceMessageRequest,
+  output: SendNotifyVoiceMessageResult,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -5340,8 +6417,8 @@ export const sendRcsMessage: API.OperationMethod<
   SendRcsMessageError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(274) as any as S.Schema<SendRcsMessageRequest>,
-  output: __S(253) as any as S.Schema<SendRcsMessageResult>,
+  input: SendRcsMessageRequest,
+  output: SendRcsMessageResult,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -5376,8 +6453,8 @@ export const sendTextMessage: API.OperationMethod<
   SendTextMessageError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(275) as any as S.Schema<SendTextMessageRequest>,
-  output: __S(253) as any as S.Schema<SendTextMessageResult>,
+  input: SendTextMessageRequest,
+  output: SendTextMessageResult,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -5410,8 +6487,8 @@ export const sendVoiceMessage: API.OperationMethod<
   SendVoiceMessageError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(276) as any as S.Schema<SendVoiceMessageRequest>,
-  output: __S(253) as any as S.Schema<SendVoiceMessageResult>,
+  input: SendVoiceMessageRequest,
+  output: SendVoiceMessageResult,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -5442,8 +6519,8 @@ export const setAccountDefaultProtectConfiguration: API.OperationMethod<
   SetAccountDefaultProtectConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(277) as any as S.Schema<SetAccountDefaultProtectConfigurationRequest>,
-  output: __S(40) as any as S.Schema<SetAccountDefaultProtectConfigurationResult>,
+  input: SetAccountDefaultProtectConfigurationRequest,
+  output: SetAccountDefaultProtectConfigurationResult,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -5472,8 +6549,8 @@ export const setDefaultMessageFeedbackEnabled: API.OperationMethod<
   SetDefaultMessageFeedbackEnabledError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(278) as any as S.Schema<SetDefaultMessageFeedbackEnabledRequest>,
-  output: __S(279) as any as S.Schema<SetDefaultMessageFeedbackEnabledResult>,
+  input: SetDefaultMessageFeedbackEnabledRequest,
+  output: SetDefaultMessageFeedbackEnabledResult,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -5504,8 +6581,8 @@ export const setDefaultMessageType: API.OperationMethod<
   SetDefaultMessageTypeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(280) as any as S.Schema<SetDefaultMessageTypeRequest>,
-  output: __S(45) as any as S.Schema<SetDefaultMessageTypeResult>,
+  input: SetDefaultMessageTypeRequest,
+  output: SetDefaultMessageTypeResult,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -5536,8 +6613,8 @@ export const setDefaultSenderId: API.OperationMethod<
   SetDefaultSenderIdError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(281) as any as S.Schema<SetDefaultSenderIdRequest>,
-  output: __S(282) as any as S.Schema<SetDefaultSenderIdResult>,
+  input: SetDefaultSenderIdRequest,
+  output: SetDefaultSenderIdResult,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -5565,8 +6642,8 @@ export const setMediaMessageSpendLimitOverride: API.OperationMethod<
   SetMediaMessageSpendLimitOverrideError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(283) as any as S.Schema<SetMediaMessageSpendLimitOverrideRequest>,
-  output: __S(52) as any as S.Schema<SetMediaMessageSpendLimitOverrideResult>,
+  input: SetMediaMessageSpendLimitOverrideRequest,
+  output: SetMediaMessageSpendLimitOverrideResult,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -5593,8 +6670,8 @@ export const setNotifyMessageSpendLimitOverride: API.OperationMethod<
   SetNotifyMessageSpendLimitOverrideError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(284) as any as S.Schema<SetNotifyMessageSpendLimitOverrideRequest>,
-  output: __S(52) as any as S.Schema<SetNotifyMessageSpendLimitOverrideResult>,
+  input: SetNotifyMessageSpendLimitOverrideRequest,
+  output: SetNotifyMessageSpendLimitOverrideResult,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -5621,8 +6698,8 @@ export const setRcsMessageSpendLimitOverride: API.OperationMethod<
   SetRcsMessageSpendLimitOverrideError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(285) as any as S.Schema<SetRcsMessageSpendLimitOverrideRequest>,
-  output: __S(52) as any as S.Schema<SetRcsMessageSpendLimitOverrideResult>,
+  input: SetRcsMessageSpendLimitOverrideRequest,
+  output: SetRcsMessageSpendLimitOverrideResult,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -5649,8 +6726,8 @@ export const setTextMessageSpendLimitOverride: API.OperationMethod<
   SetTextMessageSpendLimitOverrideError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(286) as any as S.Schema<SetTextMessageSpendLimitOverrideRequest>,
-  output: __S(52) as any as S.Schema<SetTextMessageSpendLimitOverrideResult>,
+  input: SetTextMessageSpendLimitOverrideRequest,
+  output: SetTextMessageSpendLimitOverrideResult,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -5677,8 +6754,8 @@ export const setVoiceMessageSpendLimitOverride: API.OperationMethod<
   SetVoiceMessageSpendLimitOverrideError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(287) as any as S.Schema<SetVoiceMessageSpendLimitOverrideRequest>,
-  output: __S(52) as any as S.Schema<SetVoiceMessageSpendLimitOverrideResult>,
+  input: SetVoiceMessageSpendLimitOverrideRequest,
+  output: SetVoiceMessageSpendLimitOverrideResult,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -5707,8 +6784,8 @@ export const submitRegistrationVersion: API.OperationMethod<
   SubmitRegistrationVersionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(288) as any as S.Schema<SubmitRegistrationVersionRequest>,
-  output: __S(289) as any as S.Schema<SubmitRegistrationVersionResult>,
+  input: SubmitRegistrationVersionRequest,
+  output: SubmitRegistrationVersionResult,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -5739,8 +6816,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(290) as any as S.Schema<TagResourceRequest>,
-  output: __S(291) as any as S.Schema<TagResourceResult>,
+  input: TagResourceRequest,
+  output: TagResourceResult,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -5770,8 +6847,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(292) as any as S.Schema<UntagResourceRequest>,
-  output: __S(291) as any as S.Schema<UntagResourceResult>,
+  input: UntagResourceRequest,
+  output: UntagResourceResult,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -5803,8 +6880,8 @@ export const updateEventDestination: API.OperationMethod<
   UpdateEventDestinationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(293) as any as S.Schema<UpdateEventDestinationRequest>,
-  output: __S(16) as any as S.Schema<UpdateEventDestinationResult>,
+  input: UpdateEventDestinationRequest,
+  output: UpdateEventDestinationResult,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -5835,8 +6912,8 @@ export const updateNotifyConfiguration: API.OperationMethod<
   UpdateNotifyConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(294) as any as S.Schema<UpdateNotifyConfigurationRequest>,
-  output: __S(54) as any as S.Schema<UpdateNotifyConfigurationResult>,
+  input: UpdateNotifyConfigurationRequest,
+  output: UpdateNotifyConfigurationResult,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -5869,8 +6946,8 @@ export const updatePhoneNumber: API.OperationMethod<
   UpdatePhoneNumberError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(295) as any as S.Schema<UpdatePhoneNumberRequest>,
-  output: __S(296) as any as S.Schema<UpdatePhoneNumberResult>,
+  input: UpdatePhoneNumberRequest,
+  output: UpdatePhoneNumberResult,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -5901,8 +6978,8 @@ export const updatePool: API.OperationMethod<
   UpdatePoolError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(297) as any as S.Schema<UpdatePoolRequest>,
-  output: __S(298) as any as S.Schema<UpdatePoolResult>,
+  input: UpdatePoolRequest,
+  output: UpdatePoolResult,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -5932,8 +7009,8 @@ export const updateProtectConfiguration: API.OperationMethod<
   UpdateProtectConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(299) as any as S.Schema<UpdateProtectConfigurationRequest>,
-  output: __S(63) as any as S.Schema<UpdateProtectConfigurationResult>,
+  input: UpdateProtectConfigurationRequest,
+  output: UpdateProtectConfigurationResult,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -5962,8 +7039,8 @@ export const updateProtectConfigurationCountryRuleSet: API.OperationMethod<
   UpdateProtectConfigurationCountryRuleSetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(300) as any as S.Schema<UpdateProtectConfigurationCountryRuleSetRequest>,
-  output: __S(208) as any as S.Schema<UpdateProtectConfigurationCountryRuleSetResult>,
+  input: UpdateProtectConfigurationCountryRuleSetRequest,
+  output: UpdateProtectConfigurationCountryRuleSetResult,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -5993,8 +7070,8 @@ export const updateRcsAgent: API.OperationMethod<
   UpdateRcsAgentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(301) as any as S.Schema<UpdateRcsAgentRequest>,
-  output: __S(302) as any as S.Schema<UpdateRcsAgentResult>,
+  input: UpdateRcsAgentRequest,
+  output: UpdateRcsAgentResult,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -6024,8 +7101,8 @@ export const updateSenderId: API.OperationMethod<
   UpdateSenderIdError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(303) as any as S.Schema<UpdateSenderIdRequest>,
-  output: __S(304) as any as S.Schema<UpdateSenderIdResult>,
+  input: UpdateSenderIdRequest,
+  output: UpdateSenderIdResult,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -6055,8 +7132,8 @@ export const verifyDestinationNumber: API.OperationMethod<
   VerifyDestinationNumberError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(305) as any as S.Schema<VerifyDestinationNumberRequest>,
-  output: __S(306) as any as S.Schema<VerifyDestinationNumberResult>,
+  input: VerifyDestinationNumberRequest,
+  output: VerifyDestinationNumberResult,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -6140,7 +7217,7 @@ function __c0(j: number): any {
         identifier: "Tag",
       });
     case 7:
-      return S.Array(__S(6));
+      return S.Array(Tag);
   }
 }
 function __c1(j: number): any {
@@ -6149,7 +7226,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ConfigurationSetName: S.String,
-          Tags: S.optional(__S(7)),
+          Tags: S.optional(TagList),
           ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
@@ -6160,7 +7237,7 @@ function __c1(j: number): any {
         S.Struct({
           ConfigurationSetArn: S.optional(S.String),
           ConfigurationSetName: S.optional(S.String),
-          Tags: S.optional(__S(7)),
+          Tags: S.optional(TagList),
           CreatedTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({
@@ -6187,10 +7264,10 @@ function __c1(j: number): any {
         S.Struct({
           ConfigurationSetName: S.String,
           EventDestinationName: S.String,
-          MatchingEventTypes: __S(10),
-          CloudWatchLogsDestination: S.optional(__S(11)),
-          KinesisFirehoseDestination: S.optional(__S(12)),
-          SnsDestination: S.optional(__S(13)),
+          MatchingEventTypes: EventTypeList,
+          CloudWatchLogsDestination: S.optional(CloudWatchLogsDestination),
+          KinesisFirehoseDestination: S.optional(KinesisFirehoseDestination),
+          SnsDestination: S.optional(SnsDestination),
           ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
@@ -6201,10 +7278,10 @@ function __c1(j: number): any {
         S.Struct({
           EventDestinationName: S.String,
           Enabled: S.Boolean,
-          MatchingEventTypes: __S(10),
-          CloudWatchLogsDestination: S.optional(__S(11)),
-          KinesisFirehoseDestination: S.optional(__S(12)),
-          SnsDestination: S.optional(__S(13)),
+          MatchingEventTypes: EventTypeList,
+          CloudWatchLogsDestination: S.optional(CloudWatchLogsDestination),
+          KinesisFirehoseDestination: S.optional(KinesisFirehoseDestination),
+          SnsDestination: S.optional(SnsDestination),
         }),
       ).annotate({ identifier: "EventDestination" });
   }
@@ -6216,7 +7293,7 @@ function __c2(j: number): any {
         S.Struct({
           ConfigurationSetArn: S.optional(S.String),
           ConfigurationSetName: S.optional(S.String),
-          EventDestination: S.optional(__S(15)),
+          EventDestination: S.optional(EventDestination),
         }),
       ).annotate({
         identifier: "CreateEventDestinationResult",
@@ -6228,11 +7305,11 @@ function __c2(j: number): any {
           UseCase: S.String,
           DefaultTemplateId: S.optional(S.String),
           PoolId: S.optional(S.String),
-          EnabledCountries: S.optional(__S(10)),
-          EnabledChannels: __S(10),
+          EnabledCountries: S.optional(IsoCountryCodeList),
+          EnabledChannels: NotifyEnabledChannelsList,
           DeletionProtectionEnabled: S.optional(S.Boolean),
           ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          Tags: S.optional(__S(7)),
+          Tags: S.optional(TagList),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "CreateNotifyConfigurationRequest",
@@ -6246,14 +7323,14 @@ function __c2(j: number): any {
           UseCase: S.String,
           DefaultTemplateId: S.optional(S.String),
           PoolId: S.optional(S.String),
-          EnabledCountries: S.optional(__S(10)),
-          EnabledChannels: __S(10),
+          EnabledCountries: S.optional(IsoCountryCodeList),
+          EnabledChannels: NotifyEnabledChannelsList,
           Tier: S.String,
           TierUpgradeStatus: S.String,
           Status: S.String,
           RejectionReason: S.optional(S.String),
           DeletionProtectionEnabled: S.Boolean,
-          Tags: S.optional(__S(7)),
+          Tags: S.optional(TagList),
           CreatedTimestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
         }),
       ).annotate({
@@ -6263,7 +7340,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           OptOutListName: S.String,
-          Tags: S.optional(__S(7)),
+          Tags: S.optional(TagList),
           ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateOptOutListRequest" });
@@ -6272,7 +7349,7 @@ function __c2(j: number): any {
         S.Struct({
           OptOutListArn: S.optional(S.String),
           OptOutListName: S.optional(S.String),
-          Tags: S.optional(__S(7)),
+          Tags: S.optional(TagList),
           CreatedTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "CreateOptOutListResult" });
@@ -6283,7 +7360,7 @@ function __c2(j: number): any {
           IsoCountryCode: S.optional(S.String),
           MessageType: S.String,
           DeletionProtectionEnabled: S.optional(S.Boolean),
-          Tags: S.optional(__S(7)),
+          Tags: S.optional(TagList),
           ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreatePoolRequest" });
@@ -6301,7 +7378,7 @@ function __c2(j: number): any {
           OptOutListName: S.optional(S.String),
           SharedRoutesEnabled: S.optional(S.Boolean),
           DeletionProtectionEnabled: S.optional(S.Boolean),
-          Tags: S.optional(__S(7)),
+          Tags: S.optional(TagList),
           CreatedTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "CreatePoolResult" });
@@ -6310,7 +7387,7 @@ function __c2(j: number): any {
         S.Struct({
           ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
           DeletionProtectionEnabled: S.optional(S.Boolean),
-          Tags: S.optional(__S(7)),
+          Tags: S.optional(TagList),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "CreateProtectConfigurationRequest",
@@ -6327,7 +7404,7 @@ function __c3(j: number): any {
           CreatedTimestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           AccountDefault: S.Boolean,
           DeletionProtectionEnabled: S.Boolean,
-          Tags: S.optional(__S(7)),
+          Tags: S.optional(TagList),
         }),
       ).annotate({
         identifier: "CreateProtectConfigurationResult",
@@ -6337,7 +7414,7 @@ function __c3(j: number): any {
         S.Struct({
           DeletionProtectionEnabled: S.optional(S.Boolean),
           OptOutListName: S.optional(S.String),
-          Tags: S.optional(__S(7)),
+          Tags: S.optional(TagList),
           ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateRcsAgentRequest" });
@@ -6357,15 +7434,15 @@ function __c3(j: number): any {
           TwoWayMediaS3BucketName: S.optional(S.String),
           TwoWayMediaS3KeyPrefix: S.optional(S.String),
           TwoWayMediaS3Role: S.optional(S.String),
-          TwoWayRcsEventsEnabled: S.optional(__S(10)),
-          Tags: S.optional(__S(7)),
+          TwoWayRcsEventsEnabled: S.optional(RcsEventTypeList),
+          Tags: S.optional(TagList),
         }),
       ).annotate({ identifier: "CreateRcsAgentResult" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           RegistrationType: S.String,
-          Tags: S.optional(__S(7)),
+          Tags: S.optional(TagList),
           ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
@@ -6381,8 +7458,8 @@ function __c3(j: number): any {
           RegistrationType: S.String,
           RegistrationStatus: S.String,
           CurrentVersionNumber: S.Number,
-          AdditionalAttributes: S.optional(__S(28)),
-          Tags: S.optional(__S(7)),
+          AdditionalAttributes: S.optional(StringMap),
+          Tags: S.optional(TagList),
           CreatedTimestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
         }),
       ).annotate({ identifier: "CreateRegistrationResult" });
@@ -6418,7 +7495,7 @@ function __c4(j: number): any {
         S.Struct({
           AttachmentBody: S.optional(T.Blob),
           AttachmentUrl: S.optional(S.String),
-          Tags: S.optional(__S(7)),
+          Tags: S.optional(TagList),
           ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
@@ -6430,7 +7507,7 @@ function __c4(j: number): any {
           RegistrationAttachmentArn: S.String,
           RegistrationAttachmentId: S.String,
           AttachmentStatus: S.String,
-          Tags: S.optional(__S(7)),
+          Tags: S.optional(TagList),
           CreatedTimestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
         }),
       ).annotate({
@@ -6470,7 +7547,7 @@ function __c4(j: number): any {
           RegistrationId: S.String,
           VersionNumber: S.Number,
           RegistrationVersionStatus: S.String,
-          RegistrationVersionStatusHistory: __S(35),
+          RegistrationVersionStatusHistory: RegistrationVersionStatusHistory,
         }),
       ).annotate({
         identifier: "CreateRegistrationVersionResult",
@@ -6480,7 +7557,7 @@ function __c4(j: number): any {
         S.Struct({
           DestinationPhoneNumber: S.String,
           RcsAgentId: S.optional(S.String),
-          Tags: S.optional(__S(7)),
+          Tags: S.optional(TagList),
           ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
@@ -6494,7 +7571,7 @@ function __c4(j: number): any {
           DestinationPhoneNumber: S.String,
           Status: S.String,
           RcsAgentId: S.optional(S.String),
-          Tags: S.optional(__S(7)),
+          Tags: S.optional(TagList),
           CreatedTimestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
         }),
       ).annotate({
@@ -6530,13 +7607,13 @@ function __c5(j: number): any {
         identifier: "DeleteConfigurationSetRequest",
       });
     case 2:
-      return S.Array(__S(15));
+      return S.Array(EventDestination);
     case 3:
       return S.suspend(() =>
         S.Struct({
           ConfigurationSetArn: S.optional(S.String),
           ConfigurationSetName: S.optional(S.String),
-          EventDestinations: S.optional(__S(42)),
+          EventDestinations: S.optional(EventDestinationList),
           DefaultMessageType: S.optional(S.String),
           DefaultSenderId: S.optional(S.String),
           DefaultMessageFeedbackEnabled: S.optional(S.Boolean),
@@ -6638,8 +7715,8 @@ function __c6(j: number): any {
           UseCase: S.String,
           DefaultTemplateId: S.optional(S.String),
           PoolId: S.optional(S.String),
-          EnabledCountries: S.optional(__S(10)),
-          EnabledChannels: __S(10),
+          EnabledCountries: S.optional(IsoCountryCodeList),
+          EnabledChannels: NotifyEnabledChannelsList,
           Tier: S.String,
           TierUpgradeStatus: S.String,
           Status: S.String,
@@ -6783,7 +7860,7 @@ function __c8(j: number): any {
           TwoWayChannelArn: S.optional(S.String),
           TwoWayChannelRole: S.optional(S.String),
           TwoWayEnabled: S.Boolean,
-          TwoWayRcsEventsEnabled: S.optional(__S(10)),
+          TwoWayRcsEventsEnabled: S.optional(RcsEventTypeList),
         }),
       ).annotate({ identifier: "DeleteRcsAgentResult" });
     case 4:
@@ -6812,7 +7889,7 @@ function __c8(j: number): any {
           CurrentVersionNumber: S.Number,
           ApprovedVersionNumber: S.optional(S.Number),
           LatestDeniedVersionNumber: S.optional(S.Number),
-          AdditionalAttributes: S.optional(__S(28)),
+          AdditionalAttributes: S.optional(StringMap),
           CreatedTimestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
         }),
       ).annotate({ identifier: "DeleteRegistrationResult" });
@@ -6855,7 +7932,7 @@ function __c9(j: number): any {
           RegistrationId: S.String,
           VersionNumber: S.Number,
           FieldPath: S.String,
-          SelectChoices: S.optional(__S(10)),
+          SelectChoices: S.optional(SelectChoiceList),
           TextValue: S.optional(S.String),
           RegistrationAttachmentId: S.optional(S.String),
         }),
@@ -6932,11 +8009,11 @@ function __c10(j: number): any {
         identifier: "AccountAttribute",
       });
     case 3:
-      return S.Array(__S(82));
+      return S.Array(AccountAttribute);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          AccountAttributes: S.optional(__S(83)),
+          AccountAttributes: S.optional(AccountAttributeList),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -6955,28 +8032,28 @@ function __c10(j: number): any {
         identifier: "AccountLimit",
       });
     case 7:
-      return S.Array(__S(86));
+      return S.Array(AccountLimit);
   }
 }
 function __c11(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ AccountLimits: S.optional(__S(87)), NextToken: S.optional(S.String) }),
+        S.Struct({ AccountLimits: S.optional(AccountLimitList), NextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "DescribeAccountLimitsResult",
       });
     case 1:
-      return S.suspend(() => S.Struct({ Name: S.String, Values: __S(10) })).annotate({
+      return S.suspend(() => S.Struct({ Name: S.String, Values: FilterValueList })).annotate({
         identifier: "ConfigurationSetFilter",
       });
     case 2:
-      return S.Array(__S(89));
+      return S.Array(ConfigurationSetFilter);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          ConfigurationSetNames: S.optional(__S(10)),
-          Filters: S.optional(__S(90)),
+          ConfigurationSetNames: S.optional(ConfigurationSetNameList),
+          Filters: S.optional(ConfigurationSetFilterList),
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -6988,7 +8065,7 @@ function __c11(j: number): any {
         S.Struct({
           ConfigurationSetArn: S.String,
           ConfigurationSetName: S.String,
-          EventDestinations: __S(42),
+          EventDestinations: EventDestinationList,
           DefaultMessageType: S.optional(S.String),
           DefaultSenderId: S.optional(S.String),
           DefaultMessageFeedbackEnabled: S.optional(S.Boolean),
@@ -6999,11 +8076,11 @@ function __c11(j: number): any {
         identifier: "ConfigurationSetInformation",
       });
     case 5:
-      return S.Array(__S(92));
+      return S.Array(ConfigurationSetInformation);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          ConfigurationSets: S.optional(__S(93)),
+          ConfigurationSets: S.optional(ConfigurationSetInformationList),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -7013,8 +8090,8 @@ function __c11(j: number): any {
       return S.suspend(() =>
         S.Struct({
           OriginationIdentity: S.String,
-          Keywords: S.optional(__S(10)),
-          Filters: S.optional(__S(90)),
+          Keywords: S.optional(KeywordList),
+          Filters: S.optional(KeywordFilterList),
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -7028,27 +8105,27 @@ function __c12(j: number): any {
         S.Struct({ Keyword: S.String, KeywordMessage: S.String, KeywordAction: S.String }),
       ).annotate({ identifier: "KeywordInformation" });
     case 1:
-      return S.Array(__S(96));
+      return S.Array(KeywordInformation);
     case 2:
       return S.suspend(() =>
         S.Struct({
           OriginationIdentityArn: S.optional(S.String),
           OriginationIdentity: S.optional(S.String),
-          Keywords: S.optional(__S(97)),
+          Keywords: S.optional(KeywordInformationList),
           NextToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "DescribeKeywordsResult" });
     case 3:
-      return S.suspend(() => S.Struct({ Name: S.String, Values: __S(10) })).annotate({
+      return S.suspend(() => S.Struct({ Name: S.String, Values: FilterValueList })).annotate({
         identifier: "NotifyConfigurationFilter",
       });
     case 4:
-      return S.Array(__S(99));
+      return S.Array(NotifyConfigurationFilter);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          NotifyConfigurationIds: S.optional(__S(10)),
-          Filters: S.optional(__S(100)),
+          NotifyConfigurationIds: S.optional(NotifyConfigurationIdList),
+          Filters: S.optional(NotifyConfigurationFilterList),
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -7056,11 +8133,11 @@ function __c12(j: number): any {
         identifier: "DescribeNotifyConfigurationsRequest",
       });
     case 6:
-      return S.Array(__S(54));
+      return S.Array(NotifyConfigurationInformation);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          NotifyConfigurations: S.optional(__S(102)),
+          NotifyConfigurations: S.optional(NotifyConfigurationInformationList),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -7073,8 +8150,8 @@ function __c13(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          TemplateIds: S.optional(__S(10)),
-          Filters: S.optional(__S(90)),
+          TemplateIds: S.optional(NotifyTemplateIdList),
+          Filters: S.optional(NotifyTemplateFilterList),
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -7097,32 +8174,32 @@ function __c13(j: number): any {
         }),
       ).annotate({ identifier: "TemplateVariableMetadata" });
     case 2:
-      return S.Record(S.String, /*@__PURE__*/ __S(105).pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ TemplateVariableMetadata.pipe(S.optional));
     case 3:
       return S.suspend(() =>
         S.Struct({
           TemplateId: S.String,
           Version: S.Number,
           TemplateType: S.String,
-          Channels: __S(10),
-          TierAccess: S.optional(__S(10)),
+          Channels: NumberCapabilityList,
+          TierAccess: S.optional(NotifyConfigurationTierList),
           Status: S.optional(S.String),
-          SupportedCountries: S.optional(__S(10)),
+          SupportedCountries: S.optional(IsoCountryCodeList),
           LanguageCode: S.optional(S.String),
           Content: S.optional(S.String),
-          Variables: S.optional(__S(106)),
-          SupportedVoiceIds: S.optional(__S(10)),
+          Variables: S.optional(TemplateVariablesMap),
+          SupportedVoiceIds: S.optional(VoiceIdList),
           CreatedTimestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
         }),
       ).annotate({
         identifier: "NotifyTemplateInformation",
       });
     case 4:
-      return S.Array(__S(107));
+      return S.Array(NotifyTemplateInformation);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          NotifyTemplates: S.optional(__S(108)),
+          NotifyTemplates: S.optional(NotifyTemplateInformationList),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -7132,8 +8209,8 @@ function __c13(j: number): any {
       return S.suspend(() =>
         S.Struct({
           OptOutListName: S.String,
-          OptedOutNumbers: S.optional(__S(10)),
-          Filters: S.optional(__S(90)),
+          OptedOutNumbers: S.optional(OptedOutNumberList),
+          Filters: S.optional(OptedOutFilterList),
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -7155,13 +8232,13 @@ function __c13(j: number): any {
 function __c14(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(111));
+      return S.Array(OptedOutNumberInformation);
     case 1:
       return S.suspend(() =>
         S.Struct({
           OptOutListArn: S.optional(S.String),
           OptOutListName: S.optional(S.String),
-          OptedOutNumbers: S.optional(__S(112)),
+          OptedOutNumbers: S.optional(OptedOutNumberInformationList),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -7170,7 +8247,7 @@ function __c14(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          OptOutListNames: S.optional(__S(10)),
+          OptOutListNames: S.optional(OptOutListNameList),
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
           Owner: S.optional(S.String),
@@ -7187,11 +8264,11 @@ function __c14(j: number): any {
         }),
       ).annotate({ identifier: "OptOutListInformation" });
     case 4:
-      return S.Array(__S(115));
+      return S.Array(OptOutListInformation);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          OptOutLists: S.optional(__S(116)),
+          OptOutLists: S.optional(OptOutListInformationList),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -7200,8 +8277,8 @@ function __c14(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          PhoneNumberIds: S.optional(__S(10)),
-          Filters: S.optional(__S(90)),
+          PhoneNumberIds: S.optional(PhoneNumberIdList),
+          Filters: S.optional(PhoneNumberFilterList),
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
           Owner: S.optional(S.String),
@@ -7217,7 +8294,7 @@ function __c15(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ RateLimits: S.optional(__S(119)), DailyMessageCaps: S.optional(__S(119)) }),
+        S.Struct({ RateLimits: S.optional(LongMap), DailyMessageCaps: S.optional(LongMap) }),
       ).annotate({ identifier: "MessagingLimits" });
     case 1:
       return S.suspend(() =>
@@ -7228,7 +8305,7 @@ function __c15(j: number): any {
           Status: S.String,
           IsoCountryCode: S.String,
           MessageType: S.String,
-          NumberCapabilities: __S(10),
+          NumberCapabilities: NumberCapabilityList,
           NumberType: S.String,
           MonthlyLeasingPrice: S.String,
           TwoWayEnabled: S.Boolean,
@@ -7240,16 +8317,16 @@ function __c15(j: number): any {
           DeletionProtectionEnabled: S.Boolean,
           PoolId: S.optional(S.String),
           RegistrationId: S.optional(S.String),
-          MessagingLimits: S.optional(__S(120)),
+          MessagingLimits: S.optional(MessagingLimits),
           CreatedTimestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
         }),
       ).annotate({ identifier: "PhoneNumberInformation" });
     case 2:
-      return S.Array(__S(121));
+      return S.Array(PhoneNumberInformation);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          PhoneNumbers: S.optional(__S(122)),
+          PhoneNumbers: S.optional(PhoneNumberInformationList),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -7258,8 +8335,8 @@ function __c15(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          PoolIds: S.optional(__S(10)),
-          Filters: S.optional(__S(90)),
+          PoolIds: S.optional(PoolIdList),
+          Filters: S.optional(PoolFilterList),
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
           Owner: S.optional(S.String),
@@ -7283,10 +8360,10 @@ function __c15(j: number): any {
         }),
       ).annotate({ identifier: "PoolInformation" });
     case 6:
-      return S.Array(__S(125));
+      return S.Array(PoolInformation);
     case 7:
       return S.suspend(() =>
-        S.Struct({ Pools: S.optional(__S(126)), NextToken: S.optional(S.String) }),
+        S.Struct({ Pools: S.optional(PoolInformationList), NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "DescribePoolsResult" });
   }
 }
@@ -7295,8 +8372,8 @@ function __c16(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          ProtectConfigurationIds: S.optional(__S(10)),
-          Filters: S.optional(__S(100)),
+          ProtectConfigurationIds: S.optional(ProtectConfigurationIdList),
+          Filters: S.optional(ProtectConfigurationFilterList),
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -7304,11 +8381,11 @@ function __c16(j: number): any {
         identifier: "DescribeProtectConfigurationsRequest",
       });
     case 1:
-      return S.Array(__S(63));
+      return S.Array(ProtectConfigurationInformation);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          ProtectConfigurations: S.optional(__S(129)),
+          ProtectConfigurations: S.optional(ProtectConfigurationInformationList),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -7318,8 +8395,8 @@ function __c16(j: number): any {
       return S.suspend(() =>
         S.Struct({
           RcsAgentId: S.String,
-          IsoCountryCodes: S.optional(__S(10)),
-          Filters: S.optional(__S(100)),
+          IsoCountryCodes: S.optional(IsoCountryCodeList),
+          Filters: S.optional(CountryLaunchStatusFilterList),
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -7331,7 +8408,7 @@ function __c16(j: number): any {
         identifier: "CarrierStatusInformation",
       });
     case 5:
-      return S.Array(__S(132));
+      return S.Array(CarrierStatusInformation);
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -7339,13 +8416,13 @@ function __c16(j: number): any {
           Status: S.String,
           RcsPlatformId: S.optional(S.String),
           RegistrationId: S.String,
-          CarrierStatus: __S(133),
+          CarrierStatus: CarrierStatusInformationList,
         }),
       ).annotate({
         identifier: "CountryLaunchStatusInformation",
       });
     case 7:
-      return S.Array(__S(134));
+      return S.Array(CountryLaunchStatusInformation);
   }
 }
 function __c17(j: number): any {
@@ -7355,7 +8432,7 @@ function __c17(j: number): any {
         S.Struct({
           RcsAgentId: S.String,
           RcsAgentArn: S.String,
-          CountryLaunchStatus: S.optional(__S(135)),
+          CountryLaunchStatus: S.optional(CountryLaunchStatusInformationList),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -7364,9 +8441,9 @@ function __c17(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          RcsAgentIds: S.optional(__S(10)),
+          RcsAgentIds: S.optional(RcsAgentIdList),
           Owner: S.optional(S.String),
-          Filters: S.optional(__S(90)),
+          Filters: S.optional(RcsAgentFilterList),
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -7396,25 +8473,25 @@ function __c17(j: number): any {
           TwoWayMediaS3BucketName: S.optional(S.String),
           TwoWayMediaS3KeyPrefix: S.optional(S.String),
           TwoWayMediaS3Role: S.optional(S.String),
-          TwoWayRcsEventsEnabled: S.optional(__S(10)),
-          TestingAgent: S.optional(__S(138)),
-          MessagingLimits: S.optional(__S(120)),
+          TwoWayRcsEventsEnabled: S.optional(RcsEventTypeList),
+          TestingAgent: S.optional(TestingAgentInformation),
+          MessagingLimits: S.optional(MessagingLimits),
         }),
       ).annotate({ identifier: "RcsAgentInformation" });
     case 4:
-      return S.Array(__S(139));
+      return S.Array(RcsAgentInformation);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          RcsAgents: S.optional(__S(140)),
+          RcsAgents: S.optional(RcsAgentInformationList),
           NextToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "DescribeRcsAgentsResult" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          RegistrationAttachmentIds: S.optional(__S(10)),
-          Filters: S.optional(__S(100)),
+          RegistrationAttachmentIds: S.optional(RegistrationAttachmentIdList),
+          Filters: S.optional(RegistrationAttachmentFilterList),
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -7439,11 +8516,11 @@ function __c17(j: number): any {
 function __c18(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(143));
+      return S.Array(RegistrationAttachmentsInformation);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          RegistrationAttachments: __S(144),
+          RegistrationAttachments: RegistrationAttachmentsInformationList,
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -7454,7 +8531,7 @@ function __c18(j: number): any {
         S.Struct({
           RegistrationType: S.String,
           SectionPath: S.optional(S.String),
-          FieldPaths: S.optional(__S(10)),
+          FieldPaths: S.optional(FieldPathList),
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -7463,7 +8540,7 @@ function __c18(j: number): any {
       });
     case 3:
       return S.suspend(() =>
-        S.Struct({ MinChoices: S.Number, MaxChoices: S.Number, Options: __S(10) }),
+        S.Struct({ MinChoices: S.Number, MaxChoices: S.Number, Options: StringList }),
       ).annotate({ identifier: "SelectValidation" });
     case 4:
       return S.suspend(() =>
@@ -7478,7 +8555,7 @@ function __c18(j: number): any {
         }),
       ).annotate({ identifier: "SelectOptionDescription" });
     case 6:
-      return S.Array(__S(149));
+      return S.Array(SelectOptionDescription);
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -7487,7 +8564,7 @@ function __c18(j: number): any {
           LongDescription: S.optional(S.String),
           DocumentationTitle: S.optional(S.String),
           DocumentationLink: S.optional(S.String),
-          SelectOptionDescriptions: S.optional(__S(150)),
+          SelectOptionDescriptions: S.optional(SelectOptionDescriptionsList),
           TextValidationDescription: S.optional(S.String),
           ExampleTextValue: S.optional(S.String),
         }),
@@ -7503,34 +8580,34 @@ function __c19(j: number): any {
         S.Struct({
           DependsOnFieldPath: S.String,
           Operator: S.String,
-          Values: S.optional(__S(10)),
+          Values: S.optional(ConditionValueList),
         }),
       ).annotate({ identifier: "FieldCondition" });
     case 1:
-      return S.Array(__S(152));
+      return S.Array(FieldCondition);
     case 2:
       return S.suspend(() =>
         S.Struct({
           MinLength: S.optional(S.Number),
           MaxLength: S.optional(S.Number),
           Pattern: S.optional(S.String),
-          AllowedValues: S.optional(__S(10)),
+          AllowedValues: S.optional(SelectChoiceList),
         }),
       ).annotate({ identifier: "ConditionalValidation" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          Conditions: __S(153),
+          Conditions: FieldConditionList,
           RuleBehavior: S.String,
-          ConditionalValidation: S.optional(__S(154)),
+          ConditionalValidation: S.optional(ConditionalValidation),
         }),
       ).annotate({ identifier: "ConditionalRule" });
     case 4:
-      return S.Array(__S(155));
+      return S.Array(ConditionalRule);
     case 5:
-      return S.suspend(() => S.Struct({ Rules: __S(156), DefaultBehavior: S.String })).annotate({
-        identifier: "ConditionalBehavior",
-      });
+      return S.suspend(() =>
+        S.Struct({ Rules: ConditionalRuleList, DefaultBehavior: S.String }),
+      ).annotate({ identifier: "ConditionalBehavior" });
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -7538,16 +8615,16 @@ function __c19(j: number): any {
           FieldPath: S.String,
           FieldType: S.String,
           FieldRequirement: S.String,
-          SelectValidation: S.optional(__S(147)),
-          TextValidation: S.optional(__S(148)),
-          DisplayHints: __S(151),
-          ConditionalBehavior: S.optional(__S(157)),
+          SelectValidation: S.optional(SelectValidation),
+          TextValidation: S.optional(TextValidation),
+          DisplayHints: RegistrationFieldDisplayHints,
+          ConditionalBehavior: S.optional(ConditionalBehavior),
         }),
       ).annotate({
         identifier: "RegistrationFieldDefinition",
       });
     case 7:
-      return S.Array(__S(158));
+      return S.Array(RegistrationFieldDefinition);
   }
 }
 function __c20(j: number): any {
@@ -7556,7 +8633,7 @@ function __c20(j: number): any {
       return S.suspend(() =>
         S.Struct({
           RegistrationType: S.String,
-          RegistrationFieldDefinitions: __S(159),
+          RegistrationFieldDefinitions: RegistrationFieldDefinitionList,
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -7568,7 +8645,7 @@ function __c20(j: number): any {
           RegistrationId: S.String,
           VersionNumber: S.optional(S.Number),
           SectionPath: S.optional(S.String),
-          FieldPaths: S.optional(__S(10)),
+          FieldPaths: S.optional(FieldPathList),
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -7579,7 +8656,7 @@ function __c20(j: number): any {
       return S.suspend(() =>
         S.Struct({
           FieldPath: S.String,
-          SelectChoices: S.optional(__S(10)),
+          SelectChoices: S.optional(SelectChoiceList),
           TextValue: S.optional(S.String),
           RegistrationAttachmentId: S.optional(S.String),
           DeniedReason: S.optional(S.String),
@@ -7589,14 +8666,14 @@ function __c20(j: number): any {
         identifier: "RegistrationFieldValueInformation",
       });
     case 3:
-      return S.Array(__S(162));
+      return S.Array(RegistrationFieldValueInformation);
     case 4:
       return S.suspend(() =>
         S.Struct({
           RegistrationArn: S.String,
           RegistrationId: S.String,
           VersionNumber: S.Number,
-          RegistrationFieldValues: __S(163),
+          RegistrationFieldValues: RegistrationFieldValueInformationList,
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -7605,8 +8682,8 @@ function __c20(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          RegistrationIds: S.optional(__S(10)),
-          Filters: S.optional(__S(90)),
+          RegistrationIds: S.optional(RegistrationIdList),
+          Filters: S.optional(RegistrationFilterList),
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -7614,10 +8691,10 @@ function __c20(j: number): any {
         identifier: "DescribeRegistrationsRequest",
       });
     case 6:
-      return S.Array(__S(70));
+      return S.Array(RegistrationInformation);
     case 7:
       return S.suspend(() =>
-        S.Struct({ Registrations: __S(166), NextToken: S.optional(S.String) }),
+        S.Struct({ Registrations: RegistrationInformationList, NextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "DescribeRegistrationsResult",
       });
@@ -7629,7 +8706,7 @@ function __c21(j: number): any {
       return S.suspend(() =>
         S.Struct({
           RegistrationType: S.String,
-          SectionPaths: S.optional(__S(10)),
+          SectionPaths: S.optional(SectionPathList),
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -7649,16 +8726,18 @@ function __c21(j: number): any {
         identifier: "RegistrationSectionDisplayHints",
       });
     case 2:
-      return S.suspend(() => S.Struct({ SectionPath: S.String, DisplayHints: __S(169) })).annotate({
+      return S.suspend(() =>
+        S.Struct({ SectionPath: S.String, DisplayHints: RegistrationSectionDisplayHints }),
+      ).annotate({
         identifier: "RegistrationSectionDefinition",
       });
     case 3:
-      return S.Array(__S(170));
+      return S.Array(RegistrationSectionDefinition);
     case 4:
       return S.suspend(() =>
         S.Struct({
           RegistrationType: S.String,
-          RegistrationSectionDefinitions: __S(171),
+          RegistrationSectionDefinitions: RegistrationSectionDefinitionList,
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -7667,8 +8746,8 @@ function __c21(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          RegistrationTypes: S.optional(__S(10)),
-          Filters: S.optional(__S(90)),
+          RegistrationTypes: S.optional(RegistrationTypeList),
+          Filters: S.optional(RegistrationTypeFilterList),
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -7685,7 +8764,7 @@ function __c21(j: number): any {
         }),
       ).annotate({ identifier: "SupportedAssociation" });
     case 7:
-      return S.Array(__S(174));
+      return S.Array(SupportedAssociation);
   }
 }
 function __c22(j: number): any {
@@ -7706,18 +8785,18 @@ function __c22(j: number): any {
       return S.suspend(() =>
         S.Struct({
           RegistrationType: S.String,
-          SupportedAssociations: S.optional(__S(175)),
-          DisplayHints: __S(176),
+          SupportedAssociations: S.optional(SupportedAssociationList),
+          DisplayHints: RegistrationTypeDisplayHints,
         }),
       ).annotate({
         identifier: "RegistrationTypeDefinition",
       });
     case 2:
-      return S.Array(__S(177));
+      return S.Array(RegistrationTypeDefinition);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          RegistrationTypeDefinitions: __S(178),
+          RegistrationTypeDefinitions: RegistrationTypeDefinitionList,
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -7729,8 +8808,8 @@ function __c22(j: number): any {
       return S.suspend(() =>
         S.Struct({
           RegistrationId: S.String,
-          VersionNumbers: S.optional(__S(180)),
-          Filters: S.optional(__S(100)),
+          VersionNumbers: S.optional(RegistrationVersionNumberList),
+          Filters: S.optional(RegistrationVersionFilterList),
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -7750,7 +8829,7 @@ function __c22(j: number): any {
         identifier: "RegistrationDeniedReasonInformation",
       });
     case 7:
-      return S.Array(__S(182));
+      return S.Array(RegistrationDeniedReasonInformation);
   }
 }
 function __c23(j: number): any {
@@ -7760,21 +8839,21 @@ function __c23(j: number): any {
         S.Struct({
           VersionNumber: S.Number,
           RegistrationVersionStatus: S.String,
-          RegistrationVersionStatusHistory: __S(35),
-          DeniedReasons: S.optional(__S(183)),
+          RegistrationVersionStatusHistory: RegistrationVersionStatusHistory,
+          DeniedReasons: S.optional(RegistrationDeniedReasonInformationList),
           Feedback: S.optional(S.String),
         }),
       ).annotate({
         identifier: "RegistrationVersionInformation",
       });
     case 1:
-      return S.Array(__S(184));
+      return S.Array(RegistrationVersionInformation);
     case 2:
       return S.suspend(() =>
         S.Struct({
           RegistrationArn: S.String,
           RegistrationId: S.String,
-          RegistrationVersions: __S(185),
+          RegistrationVersions: RegistrationVersionInformationList,
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -7785,12 +8864,12 @@ function __c23(j: number): any {
         identifier: "SenderIdAndCountry",
       });
     case 4:
-      return S.Array(__S(187));
+      return S.Array(SenderIdAndCountry);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          SenderIds: S.optional(__S(188)),
-          Filters: S.optional(__S(90)),
+          SenderIds: S.optional(SenderIdList),
+          Filters: S.optional(SenderIdFilterList),
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
           Owner: S.optional(S.String),
@@ -7802,16 +8881,16 @@ function __c23(j: number): any {
           SenderIdArn: S.String,
           SenderId: S.String,
           IsoCountryCode: S.String,
-          MessageTypes: __S(10),
+          MessageTypes: MessageTypeList,
           MonthlyLeasingPrice: S.String,
           DeletionProtectionEnabled: S.Boolean,
           Registered: S.Boolean,
           RegistrationId: S.optional(S.String),
-          MessagingLimits: S.optional(__S(120)),
+          MessagingLimits: S.optional(MessagingLimits),
         }),
       ).annotate({ identifier: "SenderIdInformation" });
     case 7:
-      return S.Array(__S(190));
+      return S.Array(SenderIdInformation);
   }
 }
 function __c24(j: number): any {
@@ -7819,7 +8898,7 @@ function __c24(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          SenderIds: S.optional(__S(191)),
+          SenderIds: S.optional(SenderIdInformationList),
           NextToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "DescribeSenderIdsResult" });
@@ -7841,21 +8920,21 @@ function __c24(j: number): any {
         }),
       ).annotate({ identifier: "SpendLimit" });
     case 3:
-      return S.Array(__S(194));
+      return S.Array(SpendLimit);
     case 4:
       return S.suspend(() =>
-        S.Struct({ SpendLimits: S.optional(__S(195)), NextToken: S.optional(S.String) }),
+        S.Struct({ SpendLimits: S.optional(SpendLimitList), NextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "DescribeSpendLimitsResult",
       });
     case 5:
-      return S.Array(__S(99));
+      return S.Array(VerifiedDestinationNumberFilter);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          VerifiedDestinationNumberIds: S.optional(__S(10)),
-          DestinationPhoneNumbers: S.optional(__S(10)),
-          Filters: S.optional(__S(197)),
+          VerifiedDestinationNumberIds: S.optional(VerifiedDestinationNumberIdList),
+          DestinationPhoneNumbers: S.optional(DestinationPhoneNumberList),
+          Filters: S.optional(VerifiedDestinationNumberFilterList),
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -7880,11 +8959,11 @@ function __c24(j: number): any {
 function __c25(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(199));
+      return S.Array(VerifiedDestinationNumberInformation);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          VerifiedDestinationNumbers: __S(200),
+          VerifiedDestinationNumbers: VerifiedDestinationNumberInformationList,
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -7930,7 +9009,10 @@ function __c25(j: number): any {
         identifier: "ProtectConfigurationCountryRuleSetInformation",
       });
     case 7:
-      return S.Record(S.String, /*@__PURE__*/ __S(206).pipe(S.optional));
+      return S.Record(
+        S.String,
+        /*@__PURE__*/ ProtectConfigurationCountryRuleSetInformation.pipe(S.optional),
+      );
   }
 }
 function __c26(j: number): any {
@@ -7941,7 +9023,7 @@ function __c26(j: number): any {
           ProtectConfigurationArn: S.String,
           ProtectConfigurationId: S.String,
           NumberCapability: S.String,
-          CountryRuleSet: __S(207),
+          CountryRuleSet: ProtectConfigurationCountryRuleSet,
         }),
       ).annotate({
         identifier: "GetProtectConfigurationCountryRuleSetResult",
@@ -7961,19 +9043,19 @@ function __c26(j: number): any {
         }),
       ).annotate({ identifier: "GetResourcePolicyResult" });
     case 3:
-      return S.suspend(() => S.Struct({ PreferenceType: __S(10), Filter: __S(10) })).annotate({
-        identifier: "NumberPreferenceItem",
-      });
+      return S.suspend(() =>
+        S.Struct({ PreferenceType: PreferenceTypeList, Filter: NumberFilterList }),
+      ).annotate({ identifier: "NumberPreferenceItem" });
     case 4:
-      return S.Array(__S(211));
+      return S.Array(NumberPreferenceItem);
     case 5:
       return S.suspend(() =>
         S.Struct({
           IsoCountryCode: S.String,
-          NumberCapabilities: __S(10),
+          NumberCapabilities: NumberCapabilityList,
           NumberType: S.String,
           RegistrationId: S.optional(S.String),
-          NumberPreference: S.optional(__S(212)),
+          NumberPreference: S.optional(NumberPreferenceList),
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -7983,7 +9065,7 @@ function __c26(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          AvailablePhoneNumbers: __S(10),
+          AvailablePhoneNumbers: AvailablePhoneNumberList,
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -7992,8 +9074,8 @@ function __c26(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          Channels: S.optional(__S(10)),
-          UseCases: S.optional(__S(10)),
+          Channels: S.optional(NotifyEnabledChannelsList),
+          UseCases: S.optional(NotifyUseCaseList),
           Tier: S.optional(S.String),
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
@@ -8010,18 +9092,18 @@ function __c27(j: number): any {
         S.Struct({
           IsoCountryCode: S.String,
           CountryName: S.String,
-          SupportedChannels: __S(10),
-          SupportedUseCases: __S(10),
-          SupportedTiers: __S(10),
+          SupportedChannels: NotifyEnabledChannelsList,
+          SupportedUseCases: NotifyUseCaseList,
+          SupportedTiers: NotifyTierList,
           CustomerOwnedIdentityRequired: S.Boolean,
         }),
       ).annotate({ identifier: "NotifyCountryInformation" });
     case 1:
-      return S.Array(__S(216));
+      return S.Array(NotifyCountryInformation);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          NotifyCountries: S.optional(__S(217)),
+          NotifyCountries: S.optional(NotifyCountryInformationList),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -8031,7 +9113,7 @@ function __c27(j: number): any {
       return S.suspend(() =>
         S.Struct({
           PoolId: S.String,
-          Filters: S.optional(__S(197)),
+          Filters: S.optional(PoolOriginationIdentitiesFilterList),
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -8044,20 +9126,20 @@ function __c27(j: number): any {
           OriginationIdentityArn: S.String,
           OriginationIdentity: S.String,
           IsoCountryCode: S.String,
-          NumberCapabilities: __S(10),
+          NumberCapabilities: NumberCapabilityList,
           PhoneNumber: S.optional(S.String),
         }),
       ).annotate({
         identifier: "OriginationIdentityMetadata",
       });
     case 5:
-      return S.Array(__S(220));
+      return S.Array(OriginationIdentityMetadata);
     case 6:
       return S.suspend(() =>
         S.Struct({
           PoolArn: S.optional(S.String),
           PoolId: S.optional(S.String),
-          OriginationIdentities: S.optional(__S(221)),
+          OriginationIdentities: S.optional(OriginationIdentityMetadataList),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -8067,7 +9149,7 @@ function __c27(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ProtectConfigurationId: S.String,
-          Filters: S.optional(__S(197)),
+          Filters: S.optional(ListProtectConfigurationRuleSetNumberOverrideFilter),
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -8091,13 +9173,13 @@ function __c28(j: number): any {
         identifier: "ProtectConfigurationRuleSetNumberOverride",
       });
     case 1:
-      return S.Array(__S(224));
+      return S.Array(ProtectConfigurationRuleSetNumberOverride);
     case 2:
       return S.suspend(() =>
         S.Struct({
           ProtectConfigurationArn: S.String,
           ProtectConfigurationId: S.String,
-          RuleSetNumberOverrides: S.optional(__S(225)),
+          RuleSetNumberOverrides: S.optional(ProtectConfigurationRuleSetNumberOverrideList),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -8107,7 +9189,7 @@ function __c28(j: number): any {
       return S.suspend(() =>
         S.Struct({
           RegistrationId: S.String,
-          Filters: S.optional(__S(197)),
+          Filters: S.optional(RegistrationAssociationFilterList),
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -8127,14 +9209,14 @@ function __c28(j: number): any {
         identifier: "RegistrationAssociationMetadata",
       });
     case 5:
-      return S.Array(__S(228));
+      return S.Array(RegistrationAssociationMetadata);
     case 6:
       return S.suspend(() =>
         S.Struct({
           RegistrationArn: S.String,
           RegistrationId: S.String,
           RegistrationType: S.String,
-          RegistrationAssociations: __S(229),
+          RegistrationAssociations: RegistrationAssociationMetadataList,
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -8154,7 +9236,7 @@ function __c29(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ ResourceArn: S.optional(S.String), Tags: S.optional(__S(7)) }),
+        S.Struct({ ResourceArn: S.optional(S.String), Tags: S.optional(TagList) }),
       ).annotate({
         identifier: "ListTagsForResourceResult",
       });
@@ -8212,7 +9294,7 @@ function __c29(j: number): any {
         S.Struct({
           RegistrationId: S.String,
           FieldPath: S.String,
-          SelectChoices: S.optional(__S(10)),
+          SelectChoices: S.optional(SelectChoiceList),
           TextValue: S.optional(S.String),
           RegistrationAttachmentId: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -8246,7 +9328,7 @@ function __c30(j: number): any {
           Status: S.optional(S.String),
           IsoCountryCode: S.optional(S.String),
           MessageType: S.optional(S.String),
-          NumberCapabilities: S.optional(__S(10)),
+          NumberCapabilities: S.optional(NumberCapabilityList),
           NumberType: S.optional(S.String),
           MonthlyLeasingPrice: S.optional(S.String),
           TwoWayEnabled: S.optional(S.Boolean),
@@ -8270,7 +9352,7 @@ function __c30(j: number): any {
           SenderIdArn: S.String,
           SenderId: S.String,
           IsoCountryCode: S.String,
-          MessageTypes: __S(10),
+          MessageTypes: MessageTypeList,
           MonthlyLeasingPrice: S.String,
           Registered: S.Boolean,
           RegistrationId: S.optional(S.String),
@@ -8281,15 +9363,15 @@ function __c30(j: number): any {
         S.Struct({
           IsoCountryCode: S.String,
           MessageType: S.String,
-          NumberCapabilities: __S(10),
+          NumberCapabilities: NumberCapabilityList,
           NumberType: S.String,
           OptOutListName: S.optional(S.String),
           PoolId: S.optional(S.String),
           RegistrationId: S.optional(S.String),
-          NumberPreference: S.optional(__S(212)),
+          NumberPreference: S.optional(NumberPreferenceList),
           InternationalSendingEnabled: S.optional(S.Boolean),
           DeletionProtectionEnabled: S.optional(S.Boolean),
-          Tags: S.optional(__S(7)),
+          Tags: S.optional(TagList),
           ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
@@ -8304,7 +9386,7 @@ function __c30(j: number): any {
           Status: S.optional(S.String),
           IsoCountryCode: S.optional(S.String),
           MessageType: S.optional(S.String),
-          NumberCapabilities: S.optional(__S(10)),
+          NumberCapabilities: S.optional(NumberCapabilityList),
           NumberType: S.optional(S.String),
           MonthlyLeasingPrice: S.optional(S.String),
           TwoWayEnabled: S.optional(S.Boolean),
@@ -8316,7 +9398,7 @@ function __c30(j: number): any {
           DeletionProtectionEnabled: S.optional(S.Boolean),
           PoolId: S.optional(S.String),
           RegistrationId: S.optional(S.String),
-          Tags: S.optional(__S(7)),
+          Tags: S.optional(TagList),
           CreatedTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "RequestPhoneNumberResult" });
@@ -8325,9 +9407,9 @@ function __c30(j: number): any {
         S.Struct({
           SenderId: S.String,
           IsoCountryCode: S.String,
-          MessageTypes: S.optional(__S(10)),
+          MessageTypes: S.optional(MessageTypeList),
           DeletionProtectionEnabled: S.optional(S.Boolean),
-          Tags: S.optional(__S(7)),
+          Tags: S.optional(TagList),
           ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "RequestSenderIdRequest" });
@@ -8341,11 +9423,11 @@ function __c31(j: number): any {
           SenderIdArn: S.String,
           SenderId: S.String,
           IsoCountryCode: S.String,
-          MessageTypes: __S(10),
+          MessageTypes: MessageTypeList,
           MonthlyLeasingPrice: S.String,
           DeletionProtectionEnabled: S.Boolean,
           Registered: S.Boolean,
-          Tags: S.optional(__S(7)),
+          Tags: S.optional(TagList),
         }),
       ).annotate({ identifier: "RequestSenderIdResult" });
     case 1:
@@ -8358,8 +9440,8 @@ function __c31(j: number): any {
           LanguageCode: S.optional(S.String),
           OriginationIdentity: S.optional(S.String),
           ConfigurationSetName: S.optional(S.String),
-          Context: S.optional(__S(28)),
-          DestinationCountryParameters: S.optional(__S(249)),
+          Context: S.optional(ContextMap),
+          DestinationCountryParameters: S.optional(DestinationCountryParameters),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "SendDestinationNumberVerificationCodeRequest",
@@ -8374,11 +9456,11 @@ function __c31(j: number): any {
           DestinationPhoneNumber: S.String,
           OriginationIdentity: S.String,
           MessageBody: S.optional(S.String),
-          MediaUrls: S.optional(__S(10)),
+          MediaUrls: S.optional(MediaUrlList),
           ConfigurationSetName: S.optional(S.String),
           MaxPrice: S.optional(S.String),
           TimeToLive: S.optional(S.Number),
-          Context: S.optional(__S(28)),
+          Context: S.optional(ContextMap),
           DryRun: S.optional(S.Boolean),
           ProtectConfigurationId: S.optional(S.String),
           MessageFeedbackEnabled: S.optional(S.Boolean),
@@ -8394,9 +9476,9 @@ function __c31(j: number): any {
           NotifyConfigurationId: S.String,
           DestinationPhoneNumber: S.String,
           TemplateId: S.optional(S.String),
-          TemplateVariables: __S(249),
+          TemplateVariables: TemplateVariableSubstitutionMap,
           TimeToLive: S.optional(S.Number),
-          Context: S.optional(__S(28)),
+          Context: S.optional(ContextMap),
           ConfigurationSetName: S.optional(S.String),
           DryRun: S.optional(S.Boolean),
           MessageFeedbackEnabled: S.optional(S.Boolean),
@@ -8424,10 +9506,10 @@ function __c32(j: number): any {
           NotifyConfigurationId: S.String,
           DestinationPhoneNumber: S.String,
           TemplateId: S.optional(S.String),
-          TemplateVariables: __S(249),
+          TemplateVariables: TemplateVariableSubstitutionMap,
           VoiceId: S.optional(S.String),
           TimeToLive: S.optional(S.Number),
-          Context: S.optional(__S(28)),
+          Context: S.optional(ContextMap),
           ConfigurationSetName: S.optional(S.String),
           DryRun: S.optional(S.Boolean),
           MessageFeedbackEnabled: S.optional(S.Boolean),
@@ -8498,22 +9580,22 @@ function __c33(j: number): any {
       });
     case 1:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ Reply: __S(260) }),
-        /*@__PURE__*/ S.Struct({ OpenUrl: __S(261) }),
-        /*@__PURE__*/ S.Struct({ DialPhone: __S(262) }),
-        /*@__PURE__*/ S.Struct({ ShowLocation: __S(263) }),
-        /*@__PURE__*/ S.Struct({ RequestLocation: __S(260) }),
-        /*@__PURE__*/ S.Struct({ CreateCalendarEvent: __S(264) }),
+        /*@__PURE__*/ S.Struct({ Reply: RcsReplyAction }),
+        /*@__PURE__*/ S.Struct({ OpenUrl: RcsOpenUrlAction }),
+        /*@__PURE__*/ S.Struct({ DialPhone: RcsDialPhoneAction }),
+        /*@__PURE__*/ S.Struct({ ShowLocation: RcsShowLocationAction }),
+        /*@__PURE__*/ S.Struct({ RequestLocation: RcsRequestLocationAction }),
+        /*@__PURE__*/ S.Struct({ CreateCalendarEvent: RcsCreateCalendarEventAction }),
       ]);
     case 2:
-      return S.Array(__S(265));
+      return S.Array(RcsSuggestedAction);
     case 3:
       return S.suspend(() =>
         S.Struct({
           Title: S.optional(S.String),
           Description: S.optional(S.String),
-          Media: S.optional(__S(259)),
-          Suggestions: S.optional(__S(266)),
+          Media: S.optional(RcsCardMedia),
+          Suggestions: S.optional(RcsCardSuggestedActionList),
         }),
       ).annotate({ identifier: "RcsCardContent" });
     case 4:
@@ -8521,21 +9603,21 @@ function __c33(j: number): any {
         S.Struct({
           CardOrientation: S.String,
           ThumbnailImageAlignment: S.optional(S.String),
-          CardContent: __S(267),
+          CardContent: RcsCardContent,
         }),
       ).annotate({ identifier: "RcsStandaloneCard" });
     case 5:
-      return S.Array(__S(267));
+      return S.Array(RcsCarouselCardContent);
     case 6:
-      return S.suspend(() => S.Struct({ CardWidth: S.String, CardContents: __S(269) })).annotate({
-        identifier: "RcsCarousel",
-      });
+      return S.suspend(() =>
+        S.Struct({ CardWidth: S.String, CardContents: RcsCarouselCardContentList }),
+      ).annotate({ identifier: "RcsCarousel" });
     case 7:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ TextMessage: __S(257) }),
-        /*@__PURE__*/ S.Struct({ FileMessage: __S(258) }),
-        /*@__PURE__*/ S.Struct({ RichCard: __S(268) }),
-        /*@__PURE__*/ S.Struct({ Carousel: __S(270) }),
+        /*@__PURE__*/ S.Struct({ TextMessage: RcsTextMessage }),
+        /*@__PURE__*/ S.Struct({ FileMessage: RcsFileMessage }),
+        /*@__PURE__*/ S.Struct({ RichCard: RcsStandaloneCard }),
+        /*@__PURE__*/ S.Struct({ Carousel: RcsCarousel }),
       ]);
   }
 }
@@ -8543,14 +9625,14 @@ function __c34(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ Content: __S(271), Suggestions: S.optional(__S(266)) }),
+        S.Struct({ Content: RcsContent, Suggestions: S.optional(RcsSuggestedActionList) }),
       ).annotate({ identifier: "RcsMessageContent" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           Channel: S.String,
           MessageBody: S.optional(S.String),
-          MediaUrls: S.optional(__S(10)),
+          MediaUrls: S.optional(MediaUrlList),
           OriginationIdentity: S.optional(S.String),
         }),
       ).annotate({ identifier: "RcsFallbackConfiguration" });
@@ -8559,15 +9641,15 @@ function __c34(j: number): any {
         S.Struct({
           DestinationPhoneNumber: S.String,
           OriginationIdentity: S.String,
-          RcsMessageContent: S.optional(__S(272)),
+          RcsMessageContent: S.optional(RcsMessageContent),
           TimeToLive: S.optional(S.Number),
           MessageTrafficType: S.optional(S.String),
-          FallbackConfiguration: S.optional(__S(273)),
+          FallbackConfiguration: S.optional(RcsFallbackConfiguration),
           ProtectConfigurationId: S.optional(S.String),
           ConfigurationSetName: S.optional(S.String),
           MaxPrice: S.optional(S.String),
           DryRun: S.optional(S.Boolean),
-          Context: S.optional(__S(28)),
+          Context: S.optional(ContextMap),
           MessageFeedbackEnabled: S.optional(S.Boolean),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "SendRcsMessageRequest" });
@@ -8582,8 +9664,8 @@ function __c34(j: number): any {
           ConfigurationSetName: S.optional(S.String),
           MaxPrice: S.optional(S.String),
           TimeToLive: S.optional(S.Number),
-          Context: S.optional(__S(28)),
-          DestinationCountryParameters: S.optional(__S(249)),
+          Context: S.optional(ContextMap),
+          DestinationCountryParameters: S.optional(DestinationCountryParameters),
           DryRun: S.optional(S.Boolean),
           ProtectConfigurationId: S.optional(S.String),
           MessageFeedbackEnabled: S.optional(S.Boolean),
@@ -8600,7 +9682,7 @@ function __c34(j: number): any {
           ConfigurationSetName: S.optional(S.String),
           MaxPricePerMinute: S.optional(S.String),
           TimeToLive: S.optional(S.Number),
-          Context: S.optional(__S(28)),
+          Context: S.optional(ContextMap),
           DryRun: S.optional(S.Boolean),
           ProtectConfigurationId: S.optional(S.String),
           MessageFeedbackEnabled: S.optional(S.Boolean),
@@ -8719,7 +9801,7 @@ function __c36(j: number): any {
           RegistrationId: S.String,
           VersionNumber: S.Number,
           RegistrationVersionStatus: S.String,
-          RegistrationVersionStatusHistory: __S(35),
+          RegistrationVersionStatusHistory: RegistrationVersionStatusHistory,
           AwsReview: S.Boolean,
         }),
       ).annotate({
@@ -8727,7 +9809,7 @@ function __c36(j: number): any {
       });
     case 2:
       return S.suspend(() =>
-        S.Struct({ ResourceArn: S.String, Tags: __S(7) }).pipe(
+        S.Struct({ ResourceArn: S.String, Tags: NonEmptyTagList }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "TagResourceRequest" });
@@ -8737,7 +9819,7 @@ function __c36(j: number): any {
       });
     case 4:
       return S.suspend(() =>
-        S.Struct({ ResourceArn: S.String, TagKeys: __S(10) }).pipe(
+        S.Struct({ ResourceArn: S.String, TagKeys: TagKeyList }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "UntagResourceRequest" });
@@ -8747,10 +9829,10 @@ function __c36(j: number): any {
           ConfigurationSetName: S.String,
           EventDestinationName: S.String,
           Enabled: S.optional(S.Boolean),
-          MatchingEventTypes: S.optional(__S(10)),
-          CloudWatchLogsDestination: S.optional(__S(11)),
-          KinesisFirehoseDestination: S.optional(__S(12)),
-          SnsDestination: S.optional(__S(13)),
+          MatchingEventTypes: S.optional(EventTypeList),
+          CloudWatchLogsDestination: S.optional(CloudWatchLogsDestination),
+          KinesisFirehoseDestination: S.optional(KinesisFirehoseDestination),
+          SnsDestination: S.optional(SnsDestination),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "UpdateEventDestinationRequest",
@@ -8761,8 +9843,8 @@ function __c36(j: number): any {
           NotifyConfigurationId: S.String,
           DefaultTemplateId: S.optional(S.String),
           PoolId: S.optional(S.String),
-          EnabledCountries: S.optional(__S(10)),
-          EnabledChannels: S.optional(__S(10)),
+          EnabledCountries: S.optional(IsoCountryCodeList),
+          EnabledChannels: S.optional(NotifyEnabledChannelsList),
           DeletionProtectionEnabled: S.optional(S.Boolean),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
@@ -8794,7 +9876,7 @@ function __c37(j: number): any {
           Status: S.optional(S.String),
           IsoCountryCode: S.optional(S.String),
           MessageType: S.optional(S.String),
-          NumberCapabilities: S.optional(__S(10)),
+          NumberCapabilities: S.optional(NumberCapabilityList),
           NumberType: S.optional(S.String),
           MonthlyLeasingPrice: S.optional(S.String),
           TwoWayEnabled: S.optional(S.Boolean),
@@ -8852,7 +9934,7 @@ function __c37(j: number): any {
         S.Struct({
           ProtectConfigurationId: S.String,
           NumberCapability: S.String,
-          CountryRuleSetUpdates: __S(207),
+          CountryRuleSetUpdates: ProtectConfigurationCountryRuleSet,
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "UpdateProtectConfigurationCountryRuleSetRequest",
@@ -8870,7 +9952,7 @@ function __c37(j: number): any {
           TwoWayMediaS3BucketName: S.optional(S.String),
           TwoWayMediaS3KeyPrefix: S.optional(S.String),
           TwoWayMediaS3Role: S.optional(S.String),
-          TwoWayRcsEventsEnabled: S.optional(__S(10)),
+          TwoWayRcsEventsEnabled: S.optional(RcsEventTypeList),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "UpdateRcsAgentRequest" });
     case 6:
@@ -8889,7 +9971,7 @@ function __c37(j: number): any {
           TwoWayMediaS3BucketName: S.optional(S.String),
           TwoWayMediaS3KeyPrefix: S.optional(S.String),
           TwoWayMediaS3Role: S.optional(S.String),
-          TwoWayRcsEventsEnabled: S.optional(__S(10)),
+          TwoWayRcsEventsEnabled: S.optional(RcsEventTypeList),
         }),
       ).annotate({ identifier: "UpdateRcsAgentResult" });
     case 7:
@@ -8910,7 +9992,7 @@ function __c38(j: number): any {
           SenderIdArn: S.String,
           SenderId: S.String,
           IsoCountryCode: S.String,
-          MessageTypes: __S(10),
+          MessageTypes: MessageTypeList,
           MonthlyLeasingPrice: S.String,
           DeletionProtectionEnabled: S.Boolean,
           Registered: S.Boolean,
@@ -8942,93 +10024,6 @@ function __c38(j: number): any {
         identifier: "ValidationExceptionField",
       });
     case 4:
-      return S.Array(__S(307));
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
-    case 9:
-      return __c9(i & 7);
-    case 10:
-      return __c10(i & 7);
-    case 11:
-      return __c11(i & 7);
-    case 12:
-      return __c12(i & 7);
-    case 13:
-      return __c13(i & 7);
-    case 14:
-      return __c14(i & 7);
-    case 15:
-      return __c15(i & 7);
-    case 16:
-      return __c16(i & 7);
-    case 17:
-      return __c17(i & 7);
-    case 18:
-      return __c18(i & 7);
-    case 19:
-      return __c19(i & 7);
-    case 20:
-      return __c20(i & 7);
-    case 21:
-      return __c21(i & 7);
-    case 22:
-      return __c22(i & 7);
-    case 23:
-      return __c23(i & 7);
-    case 24:
-      return __c24(i & 7);
-    case 25:
-      return __c25(i & 7);
-    case 26:
-      return __c26(i & 7);
-    case 27:
-      return __c27(i & 7);
-    case 28:
-      return __c28(i & 7);
-    case 29:
-      return __c29(i & 7);
-    case 30:
-      return __c30(i & 7);
-    case 31:
-      return __c31(i & 7);
-    case 32:
-      return __c32(i & 7);
-    case 33:
-      return __c33(i & 7);
-    case 34:
-      return __c34(i & 7);
-    case 35:
-      return __c35(i & 7);
-    case 36:
-      return __c36(i & 7);
-    case 37:
-      return __c37(i & 7);
-    case 38:
-      return __c38(i & 7);
+      return S.Array(ValidationExceptionField);
   }
 }

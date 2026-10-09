@@ -11,8 +11,6 @@ import {
 } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { GoogleWorkspaceOpError, GoogleWorkspaceOpContext };
 
@@ -76,8 +74,15 @@ export interface DeleteLicenseAssignmentsRequest {
   /** A product SKU's unique identifier. For more information about available SKUs in this version of the API, see Products and SKUs. */
   skuId: string;
 }
+const DeleteLicenseAssignmentsRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<DeleteLicenseAssignmentsRequest>;
+
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
+const Empty = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<Empty>;
+
 export interface GetLicenseAssignmentsRequest {
   /** A product's unique identifier. For more information about products in this version of the API, see Products and SKUs. */
   productId: string;
@@ -86,6 +91,11 @@ export interface GetLicenseAssignmentsRequest {
   /** The user's current primary email address. If the user's email address changes, use the new email address in your API requests. Since a `userId` is subject to change, do not use a `userId` value as a key for persistent data. This key could break if the current user's email address changes. If the `userId` is suspended, the license status changes. */
   userId: string;
 }
+const GetLicenseAssignmentsRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<GetLicenseAssignmentsRequest>;
+
 /** Representation of a license assignment. */
 export interface LicenseAssignment {
   /** A product SKU's unique identifier. For more information about available SKUs in this version of the API, see Products and SKUs. */
@@ -105,11 +115,18 @@ export interface LicenseAssignment {
   /** ETag of the resource. */
   etags?: string;
 }
+const LicenseAssignment = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<LicenseAssignment>;
+
 /** Representation of a license assignment. */
 export interface LicenseAssignmentInsert {
   /** Email id of the user */
   userId?: string;
 }
+const LicenseAssignmentInsert = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<LicenseAssignmentInsert>;
+
 export interface InsertLicenseAssignmentsRequest {
   /** A product SKU's unique identifier. For more information about available SKUs in this version of the API, see Products and SKUs. */
   skuId: string;
@@ -118,6 +135,11 @@ export interface InsertLicenseAssignmentsRequest {
   /** Request body */
   body?: LicenseAssignmentInsert;
 }
+const InsertLicenseAssignmentsRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<InsertLicenseAssignmentsRequest>;
+
 export interface ListForProductAndSkuLicenseAssignmentsRequest {
   /** Token to fetch the next page of data. The `maxResults` query string is related to the `pageToken` since `maxResults` determines how many entries are returned on each page. This is an optional query string. If not specified, the server returns the first page. */
   pageToken?: string;
@@ -130,7 +152,17 @@ export interface ListForProductAndSkuLicenseAssignmentsRequest {
   /** The `maxResults` query string determines how many entries are returned on each page of a large response. This is an optional parameter. The value must be a positive number. */
   maxResults?: number;
 }
+const ListForProductAndSkuLicenseAssignmentsRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<ListForProductAndSkuLicenseAssignmentsRequest>;
+
 export type LicenseAssignmentList_ = Array<LicenseAssignment>;
+const LicenseAssignmentList_ = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<LicenseAssignmentList_>;
+
 export interface LicenseAssignmentList {
   /** The token that you must submit in a subsequent request to retrieve additional license results matching your query parameters. The `maxResults` query string is related to the `nextPageToken` since `maxResults` determines how many entries are returned on each next page. */
   nextPageToken?: string;
@@ -141,6 +173,11 @@ export interface LicenseAssignmentList {
   /** Identifies the resource as a collection of LicenseAssignments. */
   kind?: string;
 }
+const LicenseAssignmentList = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<LicenseAssignmentList>;
+
 export interface ListForProductLicenseAssignmentsRequest {
   /** Token to fetch the next page of data. The `maxResults` query string is related to the `pageToken` since `maxResults` determines how many entries are returned on each page. This is an optional query string. If not specified, the server returns the first page. */
   pageToken?: string;
@@ -151,6 +188,11 @@ export interface ListForProductLicenseAssignmentsRequest {
   /** A product's unique identifier. For more information about products in this version of the API, see Products and SKUs. */
   productId: string;
 }
+const ListForProductLicenseAssignmentsRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<ListForProductLicenseAssignmentsRequest>;
+
 export interface PatchLicenseAssignmentsRequest {
   /** A product SKU's unique identifier. For more information about available SKUs in this version of the API, see Products and SKUs. */
   skuId: string;
@@ -161,6 +203,11 @@ export interface PatchLicenseAssignmentsRequest {
   /** Request body */
   body?: LicenseAssignment;
 }
+const PatchLicenseAssignmentsRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<PatchLicenseAssignmentsRequest>;
+
 export interface UpdateLicenseAssignmentsRequest {
   /** A product's unique identifier. For more information about products in this version of the API, see Products and SKUs. */
   productId: string;
@@ -171,6 +218,11 @@ export interface UpdateLicenseAssignmentsRequest {
   /** Request body */
   body?: LicenseAssignment;
 }
+const UpdateLicenseAssignmentsRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<UpdateLicenseAssignmentsRequest>;
+
 export type DeleteLicenseAssignmentsError =
   | NotFound
   | Forbidden
@@ -184,8 +236,8 @@ export const deleteLicenseAssignments: API.OperationMethod<
   DeleteLicenseAssignmentsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<DeleteLicenseAssignmentsRequest>,
-  output: __S(1) as any as S.Schema<Empty>,
+  input: DeleteLicenseAssignmentsRequest,
+  output: Empty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -199,8 +251,8 @@ export const getLicenseAssignments: API.OperationMethod<
   GetLicenseAssignmentsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2) as any as S.Schema<GetLicenseAssignmentsRequest>,
-  output: __S(3) as any as S.Schema<LicenseAssignment>,
+  input: GetLicenseAssignmentsRequest,
+  output: LicenseAssignment,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -219,8 +271,8 @@ export const insertLicenseAssignments: API.OperationMethod<
   InsertLicenseAssignmentsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5) as any as S.Schema<InsertLicenseAssignmentsRequest>,
-  output: __S(3) as any as S.Schema<LicenseAssignment>,
+  input: InsertLicenseAssignmentsRequest,
+  output: LicenseAssignment,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -238,8 +290,8 @@ export const listForProductAndSkuLicenseAssignments: API.PaginatedOperationMetho
   GoogleWorkspaceOpContext,
   LicenseAssignment
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(6) as any as S.Schema<ListForProductAndSkuLicenseAssignmentsRequest>,
-  output: __S(8) as any as S.Schema<LicenseAssignmentList>,
+  input: ListForProductAndSkuLicenseAssignmentsRequest,
+  output: LicenseAssignmentList,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -255,8 +307,8 @@ export const listForProductLicenseAssignments: API.PaginatedOperationMethod<
   GoogleWorkspaceOpContext,
   LicenseAssignment
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(9) as any as S.Schema<ListForProductLicenseAssignmentsRequest>,
-  output: __S(8) as any as S.Schema<LicenseAssignmentList>,
+  input: ListForProductLicenseAssignmentsRequest,
+  output: LicenseAssignmentList,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -276,8 +328,8 @@ export const patchLicenseAssignments: API.OperationMethod<
   PatchLicenseAssignmentsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10) as any as S.Schema<PatchLicenseAssignmentsRequest>,
-  output: __S(3) as any as S.Schema<LicenseAssignment>,
+  input: PatchLicenseAssignmentsRequest,
+  output: LicenseAssignment,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -296,8 +348,8 @@ export const updateLicenseAssignments: API.OperationMethod<
   UpdateLicenseAssignmentsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11) as any as S.Schema<UpdateLicenseAssignmentsRequest>,
-  output: __S(3) as any as S.Schema<LicenseAssignment>,
+  input: UpdateLicenseAssignmentsRequest,
+  output: LicenseAssignment,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -366,7 +418,7 @@ function __c0(j: number): any {
         S.Struct({
           skuId: S.String.pipe(T.Label()),
           productId: S.String.pipe(T.Label()),
-          body: S.optional(__S(4).pipe(T.HttpBody())),
+          body: S.optional(LicenseAssignmentInsert.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -396,7 +448,7 @@ function __c0(j: number): any {
         identifier: "ListForProductAndSkuLicenseAssignmentsRequest",
       });
     case 7:
-      return S.Array(__S(3));
+      return S.Array(LicenseAssignment);
   }
 }
 function __c1(j: number): any {
@@ -406,7 +458,7 @@ function __c1(j: number): any {
         S.Struct({
           nextPageToken: S.optional(S.String),
           etag: S.optional(S.String),
-          items: __S(7),
+          items: LicenseAssignmentList_,
           kind: S.optional(S.String),
         }),
       ).annotate({ identifier: "LicenseAssignmentList" });
@@ -433,7 +485,7 @@ function __c1(j: number): any {
           skuId: S.String.pipe(T.Label()),
           productId: S.String.pipe(T.Label()),
           userId: S.String.pipe(T.Label()),
-          body: S.optional(__S(3).pipe(T.HttpBody())),
+          body: S.optional(LicenseAssignment.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -450,7 +502,7 @@ function __c1(j: number): any {
           productId: S.String.pipe(T.Label()),
           skuId: S.String.pipe(T.Label()),
           userId: S.String.pipe(T.Label()),
-          body: S.optional(__S(3).pipe(T.HttpBody())),
+          body: S.optional(LicenseAssignment.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -461,18 +513,5 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "UpdateLicenseAssignmentsRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
   }
 }

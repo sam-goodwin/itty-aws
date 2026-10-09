@@ -5,8 +5,6 @@ import * as S from "@distilled.cloud/core/schema";
 import { PosthogProtocol, type PosthogOpError, type PosthogOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { PosthogOpError, PosthogOpContext };
 
@@ -14,8 +12,18 @@ export interface GetHeatmapScreenshotSettingsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
+const GetHeatmapScreenshotSettingsRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<GetHeatmapScreenshotSettingsRequest>;
+
 /** Exact DNS hostnames approved to receive the screenshot cookie. No URLs, wildcards, or IP addresses. */
 export type HeatmapScreenshotSettingsAllowedHostnamesList = Array<string>;
+const HeatmapScreenshotSettingsAllowedHostnamesList = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<HeatmapScreenshotSettingsAllowedHostnamesList>;
+
 export interface HeatmapScreenshotSettings {
   /** Exact DNS hostnames approved to receive the screenshot cookie. No URLs, wildcards, or IP addresses. */
   allowed_hostnames: HeatmapScreenshotSettingsAllowedHostnamesList;
@@ -24,14 +32,27 @@ export interface HeatmapScreenshotSettings {
   /** Whether a screenshot bypass secret has been generated. */
   has_secret: boolean;
 }
+const HeatmapScreenshotSettings = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<HeatmapScreenshotSettings>;
+
 /** Exact DNS hostnames approved to receive the screenshot cookie. No URLs, wildcards, or IP addresses. */
 export type UpdateHeatmapScreenshotSettingsRequestAllowedHostnamesList = Array<string>;
+const UpdateHeatmapScreenshotSettingsRequestAllowedHostnamesList =
+  HeatmapScreenshotSettingsAllowedHostnamesList as any as S.Schema<UpdateHeatmapScreenshotSettingsRequestAllowedHostnamesList>;
+
 export interface UpdateHeatmapScreenshotSettingsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** Exact DNS hostnames approved to receive the screenshot cookie. No URLs, wildcards, or IP addresses. */
   allowed_hostnames?: UpdateHeatmapScreenshotSettingsRequestAllowedHostnamesList;
 }
+const UpdateHeatmapScreenshotSettingsRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<UpdateHeatmapScreenshotSettingsRequest>;
+
 export type GetHeatmapScreenshotSettingsError = PosthogOpError;
 export const getHeatmapScreenshotSettings: API.OperationMethod<
   GetHeatmapScreenshotSettingsRequest,
@@ -39,8 +60,8 @@ export const getHeatmapScreenshotSettings: API.OperationMethod<
   GetHeatmapScreenshotSettingsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<GetHeatmapScreenshotSettingsRequest>,
-  output: __S(2) as any as S.Schema<HeatmapScreenshotSettings>,
+  input: GetHeatmapScreenshotSettingsRequest,
+  output: HeatmapScreenshotSettings,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -53,8 +74,8 @@ export const updateHeatmapScreenshotSettings: API.OperationMethod<
   UpdateHeatmapScreenshotSettingsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3) as any as S.Schema<UpdateHeatmapScreenshotSettingsRequest>,
-  output: __S(2) as any as S.Schema<HeatmapScreenshotSettings>,
+  input: UpdateHeatmapScreenshotSettingsRequest,
+  output: HeatmapScreenshotSettings,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -82,7 +103,7 @@ function __c0(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          allowed_hostnames: __S(1),
+          allowed_hostnames: HeatmapScreenshotSettingsAllowedHostnamesList,
           cookie_delivery_enabled: S.Boolean,
           has_secret: S.Boolean,
         }),
@@ -93,7 +114,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
-          allowed_hostnames: S.optional(__S(1)),
+          allowed_hostnames: S.optional(UpdateHeatmapScreenshotSettingsRequestAllowedHostnamesList),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -104,16 +125,5 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "UpdateHeatmapScreenshotSettingsRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 2) {
-    case 0:
-      return __c0(i & 3);
   }
 }

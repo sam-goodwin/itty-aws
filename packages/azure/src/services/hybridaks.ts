@@ -6,19 +6,31 @@ import { UnknownAzureError } from "../errors.ts";
 import { AzureProtocol, type AzureOpError, type AzureOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { AzureOpError, AzureOpContext };
 
 /** OSType to be used to specify OS type for the VMs. Choose from Linux and Windows. Default to Linux. Possible values include: 'Linux', 'Windows' */
 export type OSType = "Linux" | "Windows";
+const OSType = S.String;
+
 /** Specifies the OS SKU used by the agent pool. The default is CBLMariner if OSType is Linux. The default is Windows2019 when OSType is Windows. */
 export type OSSKU = "CBLMariner" | "Windows2019" | "Windows2022";
+const OSSKU = S.String;
+
 /** The node labels to be persisted across all nodes in agent pool. */
 export type AgentPoolPropertiesInputNodeLabelsMap = { [key: string]: string | undefined };
+const AgentPoolPropertiesInputNodeLabelsMap = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<AgentPoolPropertiesInputNodeLabelsMap>;
+
 /** Taints added to new nodes during node pool create and scale. For example, key=value:NoSchedule. */
 export type AgentPoolPropertiesInputNodeTaintsList = Array<string>;
+const AgentPoolPropertiesInputNodeTaintsList = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<AgentPoolPropertiesInputNodeTaintsList>;
+
 /** Profile for agent pool properties that can be updated */
 export interface AgentPoolUpdateProfileInput {
   /** Number of nodes in the agent pool. The default value is 1. */
@@ -26,13 +38,28 @@ export interface AgentPoolUpdateProfileInput {
   /** The VM sku size of the agent pool node VMs. */
   vmSize?: string;
 }
+const AgentPoolUpdateProfileInput = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<AgentPoolUpdateProfileInput>;
+
 export type AgentPoolPropertiesInputStatusReadyReplicasList = Array<AgentPoolUpdateProfileInput>;
+const AgentPoolPropertiesInputStatusReadyReplicasList = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<AgentPoolPropertiesInputStatusReadyReplicasList>;
+
 /** The observed status of the agent pool. */
 export interface AgentPoolPropertiesInputStatus {
   /** Error messages during an agent pool operation or steady state. */
   errorMessage?: string;
   readyReplicas?: AgentPoolPropertiesInputStatusReadyReplicasList;
 }
+const AgentPoolPropertiesInputStatus = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<AgentPoolPropertiesInputStatus>;
+
 /** Properties of the agent pool resource */
 export interface AgentPoolPropertiesInput {
   osType?: OSType | (string & {});
@@ -56,10 +83,20 @@ export interface AgentPoolPropertiesInput {
   /** The observed status of the agent pool. */
   status?: AgentPoolPropertiesInputStatus;
 }
+const AgentPoolPropertiesInput = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<AgentPoolPropertiesInput>;
+
 /** Resource tags */
 export type AgentPoolCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
+const AgentPoolCreateOrUpdateRequestTagsMap =
+  AgentPoolPropertiesInputNodeLabelsMap as any as S.Schema<AgentPoolCreateOrUpdateRequestTagsMap>;
+
 /** The extended location type. Allowed value: 'CustomLocation' */
 export type ExtendedLocationType = "CustomLocation";
+const ExtendedLocationType = S.String;
+
 /** Extended location pointing to the underlying infrastructure */
 export interface ExtendedLocation {
   /** The extended location type. Allowed value: 'CustomLocation' */
@@ -67,6 +104,8 @@ export interface ExtendedLocation {
   /** ARM Id of the extended location. */
   name?: string;
 }
+const ExtendedLocation = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<ExtendedLocation>;
+
 export interface AgentPoolCreateOrUpdateRequest {
   /** The fully qualified Azure Resource Manager identifier of the connected cluster resource. */
   connectedClusterResourceUri: string;
@@ -77,10 +116,19 @@ export interface AgentPoolCreateOrUpdateRequest {
   tags?: AgentPoolCreateOrUpdateRequestTagsMap;
   extendedLocation?: ExtendedLocation;
 }
+const AgentPoolCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<AgentPoolCreateOrUpdateRequest>;
+
 /** The type of identity that created the resource. */
 export type SystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
+const SystemDataCreatedByType = S.String;
+
 /** The type of identity that last modified the resource. */
 export type SystemDataLastModifiedByType = "User" | "Application" | "ManagedIdentity" | "Key";
+const SystemDataLastModifiedByType = S.String;
+
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface SystemData {
   /** The identity that created the resource. */
@@ -96,10 +144,18 @@ export interface SystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const SystemData = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<SystemData>;
+
 /** The node labels to be persisted across all nodes in agent pool. */
 export type AgentPoolPropertiesNodeLabelsMap = { [key: string]: string | undefined };
+const AgentPoolPropertiesNodeLabelsMap =
+  AgentPoolPropertiesInputNodeLabelsMap as any as S.Schema<AgentPoolPropertiesNodeLabelsMap>;
+
 /** Taints added to new nodes during node pool create and scale. For example, key=value:NoSchedule. */
 export type AgentPoolPropertiesNodeTaintsList = Array<string>;
+const AgentPoolPropertiesNodeTaintsList =
+  AgentPoolPropertiesInputNodeTaintsList as any as S.Schema<AgentPoolPropertiesNodeTaintsList>;
+
 /** Provisioning state of the resource */
 export type ProvisioningState =
   | "Succeeded"
@@ -111,6 +167,8 @@ export type ProvisioningState =
   | "Updating"
   | "Upgrading"
   | "Accepted";
+const ProvisioningState = S.String;
+
 /** Profile for agent pool properties that can be updated */
 export interface AgentPoolUpdateProfile {
   /** Number of nodes in the agent pool. The default value is 1. */
@@ -120,7 +178,17 @@ export interface AgentPoolUpdateProfile {
   /** Version of Kubernetes in use by the agent pool. This is inherited from the kubernetesVersion of the provisioned cluster. */
   kubernetesVersion?: string;
 }
+const AgentPoolUpdateProfile = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<AgentPoolUpdateProfile>;
+
 export type AgentPoolPropertiesStatusReadyReplicasList = Array<AgentPoolUpdateProfile>;
+const AgentPoolPropertiesStatusReadyReplicasList = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<AgentPoolPropertiesStatusReadyReplicasList>;
+
 /** The observed status of the agent pool. */
 export interface AgentPoolPropertiesStatus {
   /** The current state of the agent pool. */
@@ -129,6 +197,11 @@ export interface AgentPoolPropertiesStatus {
   errorMessage?: string;
   readyReplicas?: AgentPoolPropertiesStatusReadyReplicasList;
 }
+const AgentPoolPropertiesStatus = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<AgentPoolPropertiesStatus>;
+
 /** Properties of the agent pool resource */
 export interface AgentPoolProperties {
   osType?: OSType;
@@ -156,8 +229,13 @@ export interface AgentPoolProperties {
   /** The observed status of the agent pool. */
   status?: AgentPoolPropertiesStatus;
 }
+const AgentPoolProperties = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<AgentPoolProperties>;
+
 /** Resource tags */
 export type AgentPoolCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
+const AgentPoolCreateOrUpdateResponseTagsMap =
+  AgentPoolPropertiesInputNodeLabelsMap as any as S.Schema<AgentPoolCreateOrUpdateResponseTagsMap>;
+
 export interface AgentPoolCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -172,28 +250,69 @@ export interface AgentPoolCreateOrUpdateResponse {
   tags?: AgentPoolCreateOrUpdateResponseTagsMap;
   extendedLocation?: ExtendedLocation;
 }
+const AgentPoolCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<AgentPoolCreateOrUpdateResponse>;
+
 export interface DeleteAgentPoolRequest {
   /** The fully qualified Azure Resource Manager identifier of the connected cluster resource. */
   connectedClusterResourceUri: string;
   /** Parameter for the name of the agent pool in the provisioned cluster. */
   agentPoolName: string;
 }
+const DeleteAgentPoolRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<DeleteAgentPoolRequest>;
+
 export interface DeleteAgentPoolResponse {}
+const DeleteAgentPoolResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<DeleteAgentPoolResponse>;
+
 export interface DeleteHybridIdentityMetadataRequest {
   /** The fully qualified Azure Resource Manager identifier of the connected cluster resource. */
   connectedClusterResourceUri: string;
 }
+const DeleteHybridIdentityMetadataRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<DeleteHybridIdentityMetadataRequest>;
+
 export interface DeleteHybridIdentityMetadataResponse {}
+const DeleteHybridIdentityMetadataResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<DeleteHybridIdentityMetadataResponse>;
+
 export interface DeleteKubernetesVersionsRequest {
   /** The fully qualified Azure Resource Manager identifier of the custom location resource. */
   customLocationResourceUri: string;
 }
+const DeleteKubernetesVersionsRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<DeleteKubernetesVersionsRequest>;
+
 export interface DeleteKubernetesVersionsResponse {}
+const DeleteKubernetesVersionsResponse =
+  DeleteHybridIdentityMetadataResponse as any as S.Schema<DeleteKubernetesVersionsResponse>;
+
 export interface DeleteProvisionedClusterInstanceRequest {
   /** The fully qualified Azure Resource Manager identifier of the connected cluster resource. */
   connectedClusterResourceUri: string;
 }
+const DeleteProvisionedClusterInstanceRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<DeleteProvisionedClusterInstanceRequest>;
+
 export interface DeleteProvisionedClusterInstanceResponse {}
+const DeleteProvisionedClusterInstanceResponse =
+  DeleteHybridIdentityMetadataResponse as any as S.Schema<DeleteProvisionedClusterInstanceResponse>;
+
 export interface DeleteVirtualNetworkRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -202,20 +321,37 @@ export interface DeleteVirtualNetworkRequest {
   /** Parameter for the name of the virtual network */
   virtualNetworkName: string;
 }
+const DeleteVirtualNetworkRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<DeleteVirtualNetworkRequest>;
+
 export interface DeleteVirtualNetworkResponse {}
+const DeleteVirtualNetworkResponse =
+  DeleteAgentPoolResponse as any as S.Schema<DeleteVirtualNetworkResponse>;
+
 export interface DeleteVMSkusRequest {
   /** The fully qualified Azure Resource Manager identifier of the custom location resource. */
   customLocationResourceUri: string;
 }
+const DeleteVMSkusRequest = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<DeleteVMSkusRequest>;
+
 export interface DeleteVMSkusResponse {}
+const DeleteVMSkusResponse = DeleteAgentPoolResponse as any as S.Schema<DeleteVMSkusResponse>;
+
 export interface GetAgentPoolRequest {
   /** The fully qualified Azure Resource Manager identifier of the connected cluster resource. */
   connectedClusterResourceUri: string;
   /** Parameter for the name of the agent pool in the provisioned cluster. */
   agentPoolName: string;
 }
+const GetAgentPoolRequest = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<GetAgentPoolRequest>;
+
 /** Resource tags */
 export type GetAgentPoolResponseTagsMap = { [key: string]: string | undefined };
+const GetAgentPoolResponseTagsMap =
+  AgentPoolPropertiesInputNodeLabelsMap as any as S.Schema<GetAgentPoolResponseTagsMap>;
+
 export interface GetAgentPoolResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -230,10 +366,17 @@ export interface GetAgentPoolResponse {
   tags?: GetAgentPoolResponseTagsMap;
   extendedLocation?: ExtendedLocation;
 }
+const GetAgentPoolResponse = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<GetAgentPoolResponse>;
+
 export interface GetHybridIdentityMetadataRequest {
   /** The fully qualified Azure Resource Manager identifier of the connected cluster resource. */
   connectedClusterResourceUri: string;
 }
+const GetHybridIdentityMetadataRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<GetHybridIdentityMetadataRequest>;
+
 /** Defines the resource properties for the hybrid identity metadata. */
 export interface HybridIdentityMetadataProperties {
   /** Unique id of the parent provisioned cluster resource. */
@@ -242,6 +385,11 @@ export interface HybridIdentityMetadataProperties {
   publicKey?: string;
   provisioningState?: ProvisioningState;
 }
+const HybridIdentityMetadataProperties = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<HybridIdentityMetadataProperties>;
+
 export interface GetHybridIdentityMetadataResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -254,12 +402,24 @@ export interface GetHybridIdentityMetadataResponse {
   /** Resource properties. */
   properties: HybridIdentityMetadataProperties;
 }
+const GetHybridIdentityMetadataResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<GetHybridIdentityMetadataResponse>;
+
 export interface GetKubernetesVersionsRequest {
   /** The fully qualified Azure Resource Manager identifier of the custom location resource. */
   customLocationResourceUri: string;
 }
+const GetKubernetesVersionsRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<GetKubernetesVersionsRequest>;
+
 /** The particular KubernetesVersion Image OS Type (Linux, Windows) */
 export type KubernetesVersionReadinessOsType = "Windows" | "Linux";
+const KubernetesVersionReadinessOsType = S.String;
+
 /** Indicates whether the kubernetes version image is ready or not */
 export interface KubernetesVersionReadiness {
   /** The particular KubernetesVersion Image OS Type (Linux, Windows) */
@@ -270,10 +430,23 @@ export interface KubernetesVersionReadiness {
   /** The error message for version not being ready */
   errorMessage?: string;
 }
+const KubernetesVersionReadiness = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<KubernetesVersionReadiness>;
+
 /** Indicates whether the kubernetes version image is ready or not */
 export type KubernetesPatchVersionsReadinessList = Array<KubernetesVersionReadiness>;
+const KubernetesPatchVersionsReadinessList = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<KubernetesPatchVersionsReadinessList>;
+
 /** Possible upgrade paths for given patch version */
 export type KubernetesPatchVersionsUpgradesList = Array<string>;
+const KubernetesPatchVersionsUpgradesList =
+  AgentPoolPropertiesInputNodeTaintsList as any as S.Schema<KubernetesPatchVersionsUpgradesList>;
+
 /** Kubernetes Patch Version profile */
 export interface KubernetesPatchVersions {
   /** Indicates whether the kubernetes version image is ready or not */
@@ -281,10 +454,20 @@ export interface KubernetesPatchVersions {
   /** Possible upgrade paths for given patch version */
   upgrades?: KubernetesPatchVersionsUpgradesList;
 }
+const KubernetesPatchVersions = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<KubernetesPatchVersions>;
+
 /** Patch versions of a Kubernetes release */
 export type KubernetesVersionPropertiesPatchVersionsMap = {
   [key: string]: KubernetesPatchVersions | undefined;
 };
+const KubernetesVersionPropertiesPatchVersionsMap = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<KubernetesVersionPropertiesPatchVersionsMap>;
+
 /** Kubernetes version profile for given major.minor release */
 export interface KubernetesVersionProperties {
   /** major.minor version of Kubernetes release */
@@ -294,13 +477,28 @@ export interface KubernetesVersionProperties {
   /** Patch versions of a Kubernetes release */
   patchVersions?: KubernetesVersionPropertiesPatchVersionsMap;
 }
+const KubernetesVersionProperties = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<KubernetesVersionProperties>;
+
 /** List of supported Kubernetes versions */
 export type GetKubernetesVersionsResponsePropertiesValuesList = Array<KubernetesVersionProperties>;
+const GetKubernetesVersionsResponsePropertiesValuesList = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<GetKubernetesVersionsResponsePropertiesValuesList>;
+
 export interface GetKubernetesVersionsResponseProperties {
   provisioningState?: ProvisioningState;
   /** List of supported Kubernetes versions */
   values?: GetKubernetesVersionsResponsePropertiesValuesList;
 }
+const GetKubernetesVersionsResponseProperties = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<GetKubernetesVersionsResponseProperties>;
+
 export interface GetKubernetesVersionsResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -313,32 +511,67 @@ export interface GetKubernetesVersionsResponse {
   extendedLocation?: ExtendedLocation;
   properties?: GetKubernetesVersionsResponseProperties;
 }
+const GetKubernetesVersionsResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<GetKubernetesVersionsResponse>;
+
 export interface GetProvisionedClusterInstanceRequest {
   /** The fully qualified Azure Resource Manager identifier of the connected cluster resource. */
   connectedClusterResourceUri: string;
 }
+const GetProvisionedClusterInstanceRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<GetProvisionedClusterInstanceRequest>;
+
 export interface LinuxProfilePropertiesSshPublicKeysItem {
   /** Certificate public key used to authenticate with VMs through SSH. The certificate must be in PEM format with or without headers. */
   keyData?: string;
 }
+const LinuxProfilePropertiesSshPublicKeysItem = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<LinuxProfilePropertiesSshPublicKeysItem>;
+
 /** The list of SSH public keys used to authenticate with VMs. A maximum of 1 key may be specified. */
 export type LinuxProfilePropertiesSshPublicKeysList =
   Array<LinuxProfilePropertiesSshPublicKeysItem>;
+const LinuxProfilePropertiesSshPublicKeysList = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<LinuxProfilePropertiesSshPublicKeysList>;
+
 /** SSH configuration for VMs of the provisioned cluster. */
 export interface LinuxProfilePropertiesSsh {
   /** The list of SSH public keys used to authenticate with VMs. A maximum of 1 key may be specified. */
   publicKeys?: LinuxProfilePropertiesSshPublicKeysList;
 }
+const LinuxProfilePropertiesSsh = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<LinuxProfilePropertiesSsh>;
+
 /** SSH profile for control plane and nodepool VMs of the provisioned cluster. */
 export interface LinuxProfileProperties {
   /** SSH configuration for VMs of the provisioned cluster. */
   ssh?: LinuxProfilePropertiesSsh;
 }
+const LinuxProfileProperties = /*@__PURE__*/ __L.at(
+  __c5,
+  0,
+) as any as S.Schema<LinuxProfileProperties>;
+
 /** IP Address of the Kubernetes API server */
 export interface ControlPlaneProfileControlPlaneEndpoint {
   /** IP address of the Kubernetes API server */
   hostIP?: string;
 }
+const ControlPlaneProfileControlPlaneEndpoint = /*@__PURE__*/ __L.at(
+  __c5,
+  1,
+) as any as S.Schema<ControlPlaneProfileControlPlaneEndpoint>;
+
 /** The properties of the control plane nodes of the provisioned cluster */
 export interface ControlPlaneProfile {
   /** Number of control plane nodes. The default value is 1, and the count should be an odd number */
@@ -348,13 +581,22 @@ export interface ControlPlaneProfile {
   /** IP Address of the Kubernetes API server */
   controlPlaneEndpoint?: ControlPlaneProfileControlPlaneEndpoint;
 }
+const ControlPlaneProfile = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<ControlPlaneProfile>;
+
 /** Profile of the HA Proxy load balancer. */
 export interface NetworkProfileLoadBalancerProfile {
   /** Number of HA Proxy load balancer VMs. The default value is 0. */
   count?: number;
 }
+const NetworkProfileLoadBalancerProfile = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<NetworkProfileLoadBalancerProfile>;
+
 /** Network policy used for building Kubernetes network. Possible values include: 'calico'. */
 export type NetworkProfileNetworkPolicy = "calico";
+const NetworkProfileNetworkPolicy = S.String;
+
 /** The network configuration profile for the provisioned cluster. */
 export interface NetworkProfile {
   /** Profile of the HA Proxy load balancer. */
@@ -364,16 +606,26 @@ export interface NetworkProfile {
   /** A CIDR notation IP Address range from which to assign pod IPs. */
   podCidr?: string;
 }
+const NetworkProfile = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<NetworkProfile>;
+
 /** SMB CSI Driver settings for the storage profile. */
 export interface StorageProfileSmbCSIDriver {
   /** Indicates whether to enable SMB CSI Driver. The default value is true. */
   enabled?: boolean;
 }
+const StorageProfileSmbCSIDriver = /*@__PURE__*/ __L.at(
+  __c5,
+  5,
+) as any as S.Schema<StorageProfileSmbCSIDriver>;
+
 /** NFS CSI Driver settings for the storage profile. */
 export interface StorageProfileNfsCSIDriver {
   /** Indicates whether to enable NFS CSI Driver. The default value is true. */
   enabled?: boolean;
 }
+const StorageProfileNfsCSIDriver =
+  StorageProfileSmbCSIDriver as any as S.Schema<StorageProfileNfsCSIDriver>;
+
 /** The storage configuration profile for the provisioned cluster. */
 export interface StorageProfile {
   /** SMB CSI Driver settings for the storage profile. */
@@ -381,15 +633,28 @@ export interface StorageProfile {
   /** NFS CSI Driver settings for the storage profile. */
   nfsCsiDriver?: StorageProfileNfsCSIDriver;
 }
+const StorageProfile = /*@__PURE__*/ __L.at(__c5, 6) as any as S.Schema<StorageProfile>;
+
 /** The SSH restricted access profile for the VMs in the provisioned cluster. */
 export interface ClusterVMAccessProfile {
   /** IP Address or CIDR for SSH access to VMs in the provisioned cluster */
   authorizedIPRanges?: string;
 }
+const ClusterVMAccessProfile = /*@__PURE__*/ __L.at(
+  __c5,
+  7,
+) as any as S.Schema<ClusterVMAccessProfile>;
+
 /** The node labels to be persisted across all nodes in agent pool. */
 export type NamedAgentPoolProfileNodeLabelsMap = { [key: string]: string | undefined };
+const NamedAgentPoolProfileNodeLabelsMap =
+  AgentPoolPropertiesInputNodeLabelsMap as any as S.Schema<NamedAgentPoolProfileNodeLabelsMap>;
+
 /** Taints added to new nodes during node pool create and scale. For example, key=value:NoSchedule. */
 export type NamedAgentPoolProfileNodeTaintsList = Array<string>;
+const NamedAgentPoolProfileNodeTaintsList =
+  AgentPoolPropertiesInputNodeTaintsList as any as S.Schema<NamedAgentPoolProfileNodeTaintsList>;
+
 /** Profile of the default agent pool along with a name parameter */
 export interface NamedAgentPoolProfile {
   osType?: OSType;
@@ -415,20 +680,40 @@ export interface NamedAgentPoolProfile {
   /** Unique name of the default agent pool in the context of the provisioned cluster. Default value is <clusterName>-nodepool1 */
   name?: string;
 }
+const NamedAgentPoolProfile = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<NamedAgentPoolProfile>;
+
 /** The agent pool properties for the provisioned cluster. */
 export type ProvisionedClusterPropertiesAgentPoolProfilesList = Array<NamedAgentPoolProfile>;
+const ProvisionedClusterPropertiesAgentPoolProfilesList = /*@__PURE__*/ __L.at(
+  __c6,
+  1,
+) as any as S.Schema<ProvisionedClusterPropertiesAgentPoolProfilesList>;
+
 /** List of ARM resource Ids (maximum 1) for the infrastructure network object e.g. /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/logicalNetworks/{logicalNetworkName} */
 export type CloudProviderProfileInfraNetworkProfileVnetSubnetIdsList = Array<string>;
+const CloudProviderProfileInfraNetworkProfileVnetSubnetIdsList =
+  AgentPoolPropertiesInputNodeTaintsList as any as S.Schema<CloudProviderProfileInfraNetworkProfileVnetSubnetIdsList>;
+
 /** The profile for the infrastructure networks used by the provisioned cluster */
 export interface CloudProviderProfileInfraNetworkProfile {
   /** List of ARM resource Ids (maximum 1) for the infrastructure network object e.g. /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/logicalNetworks/{logicalNetworkName} */
   vnetSubnetIds?: CloudProviderProfileInfraNetworkProfileVnetSubnetIdsList;
 }
+const CloudProviderProfileInfraNetworkProfile = /*@__PURE__*/ __L.at(
+  __c6,
+  2,
+) as any as S.Schema<CloudProviderProfileInfraNetworkProfile>;
+
 /** The profile for the underlying cloud infrastructure provider for the provisioned cluster. */
 export interface CloudProviderProfile {
   /** The profile for the infrastructure networks used by the provisioned cluster */
   infraNetworkProfile?: CloudProviderProfileInfraNetworkProfile;
 }
+const CloudProviderProfile = /*@__PURE__*/ __L.at(__c6, 3) as any as S.Schema<CloudProviderProfile>;
+
 /** Observed phase of the addon or component on the provisioned cluster. Possible values include: 'pending', 'provisioning', 'provisioning {HelmChartInstalled}', 'provisioning {MSICertificateDownloaded}', 'provisioned', 'deleting', 'failed', 'upgrading' */
 export type AddonStatusProfilePhase =
   | "pending"
@@ -439,6 +724,8 @@ export type AddonStatusProfilePhase =
   | "deleting"
   | "failed"
   | "upgrading";
+const AddonStatusProfilePhase = S.String;
+
 /** The status profile of the addons and other kubernetes components */
 export interface AddonStatusProfile {
   /** Name of the addon or component */
@@ -450,8 +737,15 @@ export interface AddonStatusProfile {
   /** Observed error message from the addon or component */
   errorMessage?: string;
 }
+const AddonStatusProfile = /*@__PURE__*/ __L.at(__c6, 4) as any as S.Schema<AddonStatusProfile>;
+
 /** The detailed status of the provisioned cluster components including addons. */
 export type ProvisionedClusterPropertiesStatusControlPlaneStatusList = Array<AddonStatusProfile>;
+const ProvisionedClusterPropertiesStatusControlPlaneStatusList = /*@__PURE__*/ __L.at(
+  __c6,
+  5,
+) as any as S.Schema<ProvisionedClusterPropertiesStatusControlPlaneStatusList>;
+
 /** The observed status of the provisioned cluster. */
 export interface ProvisionedClusterPropertiesStatus {
   /** The detailed status of the provisioned cluster components including addons. */
@@ -461,19 +755,33 @@ export interface ProvisionedClusterPropertiesStatus {
   /** Error messages during a provisioned cluster operation or steady state. */
   errorMessage?: string;
 }
+const ProvisionedClusterPropertiesStatus = /*@__PURE__*/ __L.at(
+  __c6,
+  6,
+) as any as S.Schema<ProvisionedClusterPropertiesStatus>;
+
 /** Indicates whether Azure Hybrid Benefit is opted in. Default value is false */
 export type ProvisionedClusterLicenseProfileAzureHybridBenefit = "True" | "False" | "NotApplicable";
+const ProvisionedClusterLicenseProfileAzureHybridBenefit = S.String;
+
 /** The license profile of the provisioned cluster. */
 export interface ProvisionedClusterLicenseProfile {
   /** Indicates whether Azure Hybrid Benefit is opted in. Default value is false */
   azureHybridBenefit?: ProvisionedClusterLicenseProfileAzureHybridBenefit | (string & {});
 }
+const ProvisionedClusterLicenseProfile = /*@__PURE__*/ __L.at(
+  __c6,
+  7,
+) as any as S.Schema<ProvisionedClusterLicenseProfile>;
+
 /** If not specified, the default is 'random'. See [expanders](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/FAQ.md#what-are-expanders) for more information. */
 export type ProvisionedClusterPropertiesAutoScalerProfileExpander =
   | "least-waste"
   | "most-pods"
   | "priority"
   | "random";
+const ProvisionedClusterPropertiesAutoScalerProfileExpander = S.String;
+
 /** Parameters to be applied to the cluster-autoscaler when auto scaling is enabled for the provisioned cluster. */
 export interface ProvisionedClusterPropertiesAutoScalerProfile {
   /** Valid values are 'true' and 'false' */
@@ -511,6 +819,11 @@ export interface ProvisionedClusterPropertiesAutoScalerProfile {
   /** The default is true. */
   skip_nodes_with_system_pods?: string;
 }
+const ProvisionedClusterPropertiesAutoScalerProfile = /*@__PURE__*/ __L.at(
+  __c7,
+  0,
+) as any as S.Schema<ProvisionedClusterPropertiesAutoScalerProfile>;
+
 /** Properties of the provisioned cluster. */
 export interface ProvisionedClusterProperties {
   /** The profile for Linux VMs in the provisioned cluster. */
@@ -538,6 +851,11 @@ export interface ProvisionedClusterProperties {
   /** Parameters to be applied to the cluster-autoscaler when auto scaling is enabled for the provisioned cluster. */
   autoScalerProfile?: ProvisionedClusterPropertiesAutoScalerProfile;
 }
+const ProvisionedClusterProperties = /*@__PURE__*/ __L.at(
+  __c7,
+  1,
+) as any as S.Schema<ProvisionedClusterProperties>;
+
 export interface GetProvisionedClusterInstanceResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -550,10 +868,20 @@ export interface GetProvisionedClusterInstanceResponse {
   properties?: ProvisionedClusterProperties;
   extendedLocation?: ExtendedLocation;
 }
+const GetProvisionedClusterInstanceResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  2,
+) as any as S.Schema<GetProvisionedClusterInstanceResponse>;
+
 export interface GetProvisionedClusterInstanceUpgradeProfileRequest {
   /** The fully qualified Azure Resource Manager identifier of the connected cluster resource. */
   connectedClusterResourceUri: string;
 }
+const GetProvisionedClusterInstanceUpgradeProfileRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  3,
+) as any as S.Schema<GetProvisionedClusterInstanceUpgradeProfileRequest>;
+
 /** The upgrade properties. */
 export interface ProvisionedClusterPoolUpgradeProfileProperties {
   /** The Kubernetes version (major.minor.patch). */
@@ -561,9 +889,19 @@ export interface ProvisionedClusterPoolUpgradeProfileProperties {
   /** Whether the Kubernetes version is currently in preview. */
   isPreview?: boolean;
 }
+const ProvisionedClusterPoolUpgradeProfileProperties = /*@__PURE__*/ __L.at(
+  __c7,
+  4,
+) as any as S.Schema<ProvisionedClusterPoolUpgradeProfileProperties>;
+
 /** List of available kubernetes versions for upgrade. */
 export type ProvisionedClusterPoolUpgradeProfileUpgradesList =
   Array<ProvisionedClusterPoolUpgradeProfileProperties>;
+const ProvisionedClusterPoolUpgradeProfileUpgradesList = /*@__PURE__*/ __L.at(
+  __c7,
+  5,
+) as any as S.Schema<ProvisionedClusterPoolUpgradeProfileUpgradesList>;
+
 /** The list of available kubernetes versions for upgrade. */
 export interface ProvisionedClusterPoolUpgradeProfile {
   /** The Kubernetes version (major.minor.patch). */
@@ -572,12 +910,22 @@ export interface ProvisionedClusterPoolUpgradeProfile {
   /** List of available kubernetes versions for upgrade. */
   upgrades?: ProvisionedClusterPoolUpgradeProfileUpgradesList;
 }
+const ProvisionedClusterPoolUpgradeProfile = /*@__PURE__*/ __L.at(
+  __c7,
+  6,
+) as any as S.Schema<ProvisionedClusterPoolUpgradeProfile>;
+
 /** Control plane and agent pool upgrade profiles. */
 export interface ProvisionedClusterUpgradeProfileProperties {
   provisioningState?: ProvisioningState;
   /** The list of available kubernetes version upgrades for the control plane. */
   controlPlaneProfile: ProvisionedClusterPoolUpgradeProfile;
 }
+const ProvisionedClusterUpgradeProfileProperties = /*@__PURE__*/ __L.at(
+  __c7,
+  7,
+) as any as S.Schema<ProvisionedClusterUpgradeProfileProperties>;
+
 export interface GetProvisionedClusterInstanceUpgradeProfileResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -590,6 +938,11 @@ export interface GetProvisionedClusterInstanceUpgradeProfileResponse {
   /** The properties of the upgrade profile. */
   properties: ProvisionedClusterUpgradeProfileProperties;
 }
+const GetProvisionedClusterInstanceUpgradeProfileResponse = /*@__PURE__*/ __L.at(
+  __c8,
+  0,
+) as any as S.Schema<GetProvisionedClusterInstanceUpgradeProfileResponse>;
+
 export interface GetVirtualNetworkRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -598,8 +951,16 @@ export interface GetVirtualNetworkRequest {
   /** Parameter for the name of the virtual network */
   virtualNetworkName: string;
 }
+const GetVirtualNetworkRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  1,
+) as any as S.Schema<GetVirtualNetworkRequest>;
+
 /** Resource tags. */
 export type GetVirtualNetworkResponseTagsMap = { [key: string]: string | undefined };
+const GetVirtualNetworkResponseTagsMap =
+  AgentPoolPropertiesInputNodeLabelsMap as any as S.Schema<GetVirtualNetworkResponseTagsMap>;
+
 /** Infrastructure network profile for HCI platform */
 export interface VirtualNetworkPropertiesInfraVnetProfileHci {
   /** Group in MOC(Microsoft On-premises Cloud) */
@@ -609,23 +970,49 @@ export interface VirtualNetworkPropertiesInfraVnetProfileHci {
   /** Virtual Network name in MOC(Microsoft On-premises Cloud) */
   mocVnetName?: string;
 }
+const VirtualNetworkPropertiesInfraVnetProfileHci = /*@__PURE__*/ __L.at(
+  __c8,
+  2,
+) as any as S.Schema<VirtualNetworkPropertiesInfraVnetProfileHci>;
+
 export interface VirtualNetworkPropertiesInfraVnetProfile {
   /** Infrastructure network profile for HCI platform */
   hci?: VirtualNetworkPropertiesInfraVnetProfileHci;
 }
+const VirtualNetworkPropertiesInfraVnetProfile = /*@__PURE__*/ __L.at(
+  __c8,
+  3,
+) as any as S.Schema<VirtualNetworkPropertiesInfraVnetProfile>;
+
 export interface VirtualNetworkPropertiesVipPoolItem {
   /** Ending IP address for the IP Pool */
   endIP?: string;
   /** Starting IP address for the IP Pool */
   startIP?: string;
 }
+const VirtualNetworkPropertiesVipPoolItem = /*@__PURE__*/ __L.at(
+  __c8,
+  4,
+) as any as S.Schema<VirtualNetworkPropertiesVipPoolItem>;
+
 /** Range of IP Addresses for Kubernetes API Server and services if using HA Proxy load balancer */
 export type VirtualNetworkPropertiesVipPoolList = Array<VirtualNetworkPropertiesVipPoolItem>;
+const VirtualNetworkPropertiesVipPoolList = /*@__PURE__*/ __L.at(
+  __c8,
+  5,
+) as any as S.Schema<VirtualNetworkPropertiesVipPoolList>;
+
 export type VirtualNetworkPropertiesVmipPoolItem = VirtualNetworkPropertiesVipPoolItem;
 /** Range of IP Addresses for Kubernetes node VMs */
 export type VirtualNetworkPropertiesVmipPoolList = Array<VirtualNetworkPropertiesVipPoolItem>;
+const VirtualNetworkPropertiesVmipPoolList =
+  VirtualNetworkPropertiesVipPoolList as any as S.Schema<VirtualNetworkPropertiesVmipPoolList>;
+
 /** List of DNS server IP Addresses associated with the network */
 export type VirtualNetworkPropertiesDnsServersList = Array<string>;
+const VirtualNetworkPropertiesDnsServersList =
+  AgentPoolPropertiesInputNodeTaintsList as any as S.Schema<VirtualNetworkPropertiesDnsServersList>;
+
 export type VirtualNetworkPropertiesProvisioningState =
   | "Succeeded"
   | "Failed"
@@ -635,6 +1022,8 @@ export type VirtualNetworkPropertiesProvisioningState =
   | "Deleting"
   | "Updating"
   | "Accepted";
+const VirtualNetworkPropertiesProvisioningState = S.String;
+
 /** The error if any from the operation. */
 export interface VirtualNetworkPropertiesStatusOperationStatusError {
   /** The error code from the operation. */
@@ -642,6 +1031,11 @@ export interface VirtualNetworkPropertiesStatusOperationStatusError {
   /** The error message from the operation. */
   message?: string;
 }
+const VirtualNetworkPropertiesStatusOperationStatusError = /*@__PURE__*/ __L.at(
+  __c8,
+  6,
+) as any as S.Schema<VirtualNetworkPropertiesStatusOperationStatusError>;
+
 /** The detailed status of the long running operation. */
 export interface VirtualNetworkPropertiesStatusOperationStatus {
   /** The error if any from the operation. */
@@ -651,11 +1045,21 @@ export interface VirtualNetworkPropertiesStatusOperationStatus {
   /** The status of the operation. */
   status?: string;
 }
+const VirtualNetworkPropertiesStatusOperationStatus = /*@__PURE__*/ __L.at(
+  __c8,
+  7,
+) as any as S.Schema<VirtualNetworkPropertiesStatusOperationStatus>;
+
 /** Status of the virtual network resource */
 export interface VirtualNetworkPropertiesStatus {
   /** The detailed status of the long running operation. */
   operationStatus?: VirtualNetworkPropertiesStatusOperationStatus;
 }
+const VirtualNetworkPropertiesStatus = /*@__PURE__*/ __L.at(
+  __c9,
+  0,
+) as any as S.Schema<VirtualNetworkPropertiesStatus>;
+
 /** Properties of the virtual network resource */
 export interface VirtualNetworkProperties {
   infraVnetProfile?: VirtualNetworkPropertiesInfraVnetProfile;
@@ -675,8 +1079,15 @@ export interface VirtualNetworkProperties {
   /** Status of the virtual network resource */
   status?: VirtualNetworkPropertiesStatus;
 }
+const VirtualNetworkProperties = /*@__PURE__*/ __L.at(
+  __c9,
+  1,
+) as any as S.Schema<VirtualNetworkProperties>;
+
 /** The extended location type. Allowed value: 'CustomLocation' */
 export type GetVirtualNetworkResponseExtendedLocationType = "CustomLocation";
+const GetVirtualNetworkResponseExtendedLocationType = S.String;
+
 /** Extended location pointing to the underlying infrastructure */
 export interface GetVirtualNetworkResponseExtendedLocation {
   /** The extended location type. Allowed value: 'CustomLocation' */
@@ -684,6 +1095,11 @@ export interface GetVirtualNetworkResponseExtendedLocation {
   /** ARM Id of the extended location. */
   name?: string;
 }
+const GetVirtualNetworkResponseExtendedLocation = /*@__PURE__*/ __L.at(
+  __c9,
+  2,
+) as any as S.Schema<GetVirtualNetworkResponseExtendedLocation>;
+
 export interface GetVirtualNetworkResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -701,10 +1117,17 @@ export interface GetVirtualNetworkResponse {
   /** Extended location pointing to the underlying infrastructure */
   extendedLocation?: GetVirtualNetworkResponseExtendedLocation;
 }
+const GetVirtualNetworkResponse = /*@__PURE__*/ __L.at(
+  __c9,
+  3,
+) as any as S.Schema<GetVirtualNetworkResponse>;
+
 export interface GetVMSkusRequest {
   /** The fully qualified Azure Resource Manager identifier of the custom location resource. */
   customLocationResourceUri: string;
 }
+const GetVMSkusRequest = /*@__PURE__*/ __L.at(__c9, 4) as any as S.Schema<GetVMSkusRequest>;
+
 /** Describes the VM SKU capabilities like MemoryGB, vCPUs, etc. */
 export interface VmSkuCapabilities {
   /** Name of the VM SKU capability */
@@ -712,8 +1135,15 @@ export interface VmSkuCapabilities {
   /** Value of the VM SKU capability */
   value?: string;
 }
+const VmSkuCapabilities = /*@__PURE__*/ __L.at(__c9, 5) as any as S.Schema<VmSkuCapabilities>;
+
 /** The list of name-value pairs to describe VM SKU capabilities like MemoryGB, vCPUs, etc. */
 export type VmSkuPropertiesCapabilitiesList = Array<VmSkuCapabilities>;
+const VmSkuPropertiesCapabilitiesList = /*@__PURE__*/ __L.at(
+  __c9,
+  6,
+) as any as S.Schema<VmSkuPropertiesCapabilitiesList>;
+
 /** The profile for supported VM SKUs */
 export interface VmSkuProperties {
   /** The type of resource the SKU applies to. */
@@ -727,13 +1157,25 @@ export interface VmSkuProperties {
   /** The size of the VM SKU */
   size?: string;
 }
+const VmSkuProperties = /*@__PURE__*/ __L.at(__c9, 7) as any as S.Schema<VmSkuProperties>;
+
 /** List of supported VM SKUs. */
 export type GetVMSkusResponsePropertiesValuesList = Array<VmSkuProperties>;
+const GetVMSkusResponsePropertiesValuesList = /*@__PURE__*/ __L.at(
+  __c10,
+  0,
+) as any as S.Schema<GetVMSkusResponsePropertiesValuesList>;
+
 export interface GetVMSkusResponseProperties {
   provisioningState?: ProvisioningState;
   /** List of supported VM SKUs. */
   values?: GetVMSkusResponsePropertiesValuesList;
 }
+const GetVMSkusResponseProperties = /*@__PURE__*/ __L.at(
+  __c10,
+  1,
+) as any as S.Schema<GetVMSkusResponseProperties>;
+
 export interface GetVMSkusResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -746,10 +1188,17 @@ export interface GetVMSkusResponse {
   extendedLocation?: ExtendedLocation;
   properties?: GetVMSkusResponseProperties;
 }
+const GetVMSkusResponse = /*@__PURE__*/ __L.at(__c10, 2) as any as S.Schema<GetVMSkusResponse>;
+
 export interface ListAgentPoolByProvisionedClusterRequest {
   /** The fully qualified Azure Resource Manager identifier of the connected cluster resource. */
   connectedClusterResourceUri: string;
 }
+const ListAgentPoolByProvisionedClusterRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  3,
+) as any as S.Schema<ListAgentPoolByProvisionedClusterRequest>;
+
 /** Resource tags */
 export type AgentPoolTagsMap = { [key: string]: string | undefined };
 /** The agentPool resource definition */
@@ -767,16 +1216,30 @@ export interface AgentPool {
   tags?: AgentPoolTagsMap;
   extendedLocation?: ExtendedLocation;
 }
+const AgentPool = GetAgentPoolResponse as any as S.Schema<AgentPool>;
+
 export type AgentPoolListResultValueList = Array<AgentPool>;
+const AgentPoolListResultValueList = /*@__PURE__*/ __L.at(
+  __c10,
+  4,
+) as any as S.Schema<AgentPoolListResultValueList>;
+
 /** List of all agent pool resources associated with the provisioned cluster. */
 export interface AgentPoolListResult {
   value?: AgentPoolListResultValueList;
   nextLink?: string;
 }
+const AgentPoolListResult = /*@__PURE__*/ __L.at(__c10, 5) as any as S.Schema<AgentPoolListResult>;
+
 export interface ListHybridIdentityMetadataByClusterRequest {
   /** The fully qualified Azure Resource Manager identifier of the connected cluster resource. */
   connectedClusterResourceUri: string;
 }
+const ListHybridIdentityMetadataByClusterRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  6,
+) as any as S.Schema<ListHybridIdentityMetadataByClusterRequest>;
+
 /** Defines the hybridIdentityMetadata. */
 export interface HybridIdentityMetadata {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -790,8 +1253,18 @@ export interface HybridIdentityMetadata {
   /** Resource properties. */
   properties: HybridIdentityMetadataProperties;
 }
+const HybridIdentityMetadata = /*@__PURE__*/ __L.at(
+  __c10,
+  7,
+) as any as S.Schema<HybridIdentityMetadata>;
+
 /** Array of hybridIdentityMetadata */
 export type HybridIdentityMetadataListValueList = Array<HybridIdentityMetadata>;
+const HybridIdentityMetadataListValueList = /*@__PURE__*/ __L.at(
+  __c11,
+  0,
+) as any as S.Schema<HybridIdentityMetadataListValueList>;
+
 /** List of hybridIdentityMetadata. */
 export interface HybridIdentityMetadataList {
   /** Url to follow for getting next page of hybridIdentityMetadata. */
@@ -799,10 +1272,20 @@ export interface HybridIdentityMetadataList {
   /** Array of hybridIdentityMetadata */
   value: HybridIdentityMetadataListValueList;
 }
+const HybridIdentityMetadataList = /*@__PURE__*/ __L.at(
+  __c11,
+  1,
+) as any as S.Schema<HybridIdentityMetadataList>;
+
 export interface ListKubernetesVersionsRequest {
   /** The fully qualified Azure Resource Manager identifier of the custom location resource. */
   customLocationResourceUri: string;
 }
+const ListKubernetesVersionsRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  2,
+) as any as S.Schema<ListKubernetesVersionsRequest>;
+
 /** List of supported Kubernetes versions */
 export type KubernetesVersionProfilePropertiesValuesList = Array<KubernetesVersionProperties>;
 export interface KubernetesVersionProfileProperties {
@@ -810,6 +1293,9 @@ export interface KubernetesVersionProfileProperties {
   /** List of supported Kubernetes versions */
   values?: KubernetesVersionProfilePropertiesValuesList;
 }
+const KubernetesVersionProfileProperties =
+  GetKubernetesVersionsResponseProperties as any as S.Schema<KubernetesVersionProfileProperties>;
+
 /** The supported kubernetes versions. */
 export interface KubernetesVersionProfile {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -823,13 +1309,33 @@ export interface KubernetesVersionProfile {
   extendedLocation?: ExtendedLocation;
   properties?: KubernetesVersionProfileProperties;
 }
+const KubernetesVersionProfile = /*@__PURE__*/ __L.at(
+  __c11,
+  3,
+) as any as S.Schema<KubernetesVersionProfile>;
+
 export type KubernetesVersionProfileListValueList = Array<KubernetesVersionProfile>;
+const KubernetesVersionProfileListValueList = /*@__PURE__*/ __L.at(
+  __c11,
+  4,
+) as any as S.Schema<KubernetesVersionProfileListValueList>;
+
 /** List of supported kubernetes versions. */
 export interface KubernetesVersionProfileList {
   value?: KubernetesVersionProfileListValueList;
   nextLink?: string;
 }
+const KubernetesVersionProfileList = /*@__PURE__*/ __L.at(
+  __c11,
+  5,
+) as any as S.Schema<KubernetesVersionProfileList>;
+
 export interface ListOperationsRequest {}
+const ListOperationsRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  6,
+) as any as S.Schema<ListOperationsRequest>;
+
 /** Localized display information for this particular operation. */
 export interface OperationDisplay {
   /** The localized friendly form of the resource provider name, e.g. "Microsoft Monitoring Insights" or "Microsoft Compute". */
@@ -841,10 +1347,16 @@ export interface OperationDisplay {
   /** The short, localized friendly description of the operation; suitable for tool tips and detailed views. */
   description?: string;
 }
+const OperationDisplay = /*@__PURE__*/ __L.at(__c11, 7) as any as S.Schema<OperationDisplay>;
+
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
 export type OperationOrigin = "user" | "system" | "user,system";
+const OperationOrigin = S.String;
+
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
 export type OperationActionType = "Internal";
+const OperationActionType = S.String;
+
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
 export interface Operation {
   /** The name of the operation, as per Resource-Based Access Control (RBAC). Examples: "Microsoft.Compute/virtualMachines/write", "Microsoft.Compute/virtualMachines/capture/action" */
@@ -858,22 +1370,42 @@ export interface Operation {
   /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
   actionType?: OperationActionType;
 }
+const Operation = /*@__PURE__*/ __L.at(__c12, 0) as any as S.Schema<Operation>;
+
 /** List of operations supported by the resource provider */
 export type ListOperationsResponseValueList = Array<Operation>;
+const ListOperationsResponseValueList = /*@__PURE__*/ __L.at(
+  __c12,
+  1,
+) as any as S.Schema<ListOperationsResponseValueList>;
+
 export interface ListOperationsResponse {
   /** List of operations supported by the resource provider */
   value?: ListOperationsResponseValueList;
   /** URL to get the next set of operation list results (if there are any). */
   nextLink?: string;
 }
+const ListOperationsResponse = /*@__PURE__*/ __L.at(
+  __c12,
+  2,
+) as any as S.Schema<ListOperationsResponse>;
+
 export interface ListProvisionedClusterInstanceAdminKubeconfigRequest {
   /** The fully qualified Azure Resource Manager identifier of the connected cluster resource. */
   connectedClusterResourceUri: string;
 }
+const ListProvisionedClusterInstanceAdminKubeconfigRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  3,
+) as any as S.Schema<ListProvisionedClusterInstanceAdminKubeconfigRequest>;
+
 export interface ListCredentialResponseError {
   code?: string;
   message?: string;
 }
+const ListCredentialResponseError =
+  VirtualNetworkPropertiesStatusOperationStatusError as any as S.Schema<ListCredentialResponseError>;
+
 /** The credential result response. */
 export interface CredentialResult {
   /** The name of the credential. */
@@ -883,10 +1415,18 @@ export interface CredentialResult {
 }
 /** Base64-encoded Kubernetes configuration file. */
 export type ListCredentialResponsePropertiesKubeconfigsList = Array<CredentialResult>;
+const ListCredentialResponsePropertiesKubeconfigsList =
+  VmSkuPropertiesCapabilitiesList as any as S.Schema<ListCredentialResponsePropertiesKubeconfigsList>;
+
 export interface ListCredentialResponseProperties {
   /** Base64-encoded Kubernetes configuration file. */
   kubeconfigs?: ListCredentialResponsePropertiesKubeconfigsList;
 }
+const ListCredentialResponseProperties = /*@__PURE__*/ __L.at(
+  __c12,
+  4,
+) as any as S.Schema<ListCredentialResponseProperties>;
+
 /** The list kubeconfig result response. */
 export interface ListCredentialResponse {
   /** Operation Id */
@@ -899,10 +1439,20 @@ export interface ListCredentialResponse {
   error?: ListCredentialResponseError;
   properties?: ListCredentialResponseProperties;
 }
+const ListCredentialResponse = /*@__PURE__*/ __L.at(
+  __c12,
+  5,
+) as any as S.Schema<ListCredentialResponse>;
+
 export interface ListProvisionedClusterInstancesRequest {
   /** The fully qualified Azure Resource Manager identifier of the connected cluster resource. */
   connectedClusterResourceUri: string;
 }
+const ListProvisionedClusterInstancesRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  6,
+) as any as S.Schema<ListProvisionedClusterInstancesRequest>;
+
 /** The provisioned cluster resource definition. */
 export interface ProvisionedCluster {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -916,24 +1466,49 @@ export interface ProvisionedCluster {
   properties?: ProvisionedClusterProperties;
   extendedLocation?: ExtendedLocation;
 }
+const ProvisionedCluster = /*@__PURE__*/ __L.at(__c12, 7) as any as S.Schema<ProvisionedCluster>;
+
 export type ProvisionedClusterListResultValueList = Array<ProvisionedCluster>;
+const ProvisionedClusterListResultValueList = /*@__PURE__*/ __L.at(
+  __c13,
+  0,
+) as any as S.Schema<ProvisionedClusterListResultValueList>;
+
 /** Lists the ProvisionedClusterInstance resource associated with the ConnectedCluster. */
 export interface ProvisionedClusterListResult {
   value?: ProvisionedClusterListResultValueList;
   nextLink?: string;
 }
+const ProvisionedClusterListResult = /*@__PURE__*/ __L.at(
+  __c13,
+  1,
+) as any as S.Schema<ProvisionedClusterListResult>;
+
 export interface ListProvisionedClusterInstanceUserKubeconfigRequest {
   /** The fully qualified Azure Resource Manager identifier of the connected cluster resource. */
   connectedClusterResourceUri: string;
 }
+const ListProvisionedClusterInstanceUserKubeconfigRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  2,
+) as any as S.Schema<ListProvisionedClusterInstanceUserKubeconfigRequest>;
+
 export interface ListVirtualNetworkByResourceGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
+const ListVirtualNetworkByResourceGroupRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  3,
+) as any as S.Schema<ListVirtualNetworkByResourceGroupRequest>;
+
 /** Resource tags. */
 export type VirtualNetworkTagsMap = { [key: string]: string | undefined };
+const VirtualNetworkTagsMap =
+  AgentPoolPropertiesInputNodeLabelsMap as any as S.Schema<VirtualNetworkTagsMap>;
+
 /** The extended location type. Allowed value: 'CustomLocation' */
 export type VirtualNetworkExtendedLocationType = "CustomLocation";
 /** Extended location pointing to the underlying infrastructure */
@@ -943,6 +1518,9 @@ export interface VirtualNetworkExtendedLocation {
   /** ARM Id of the extended location. */
   name?: string;
 }
+const VirtualNetworkExtendedLocation =
+  GetVirtualNetworkResponseExtendedLocation as any as S.Schema<VirtualNetworkExtendedLocation>;
+
 /** The Virtual Network resource definition. */
 export interface VirtualNetwork {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -961,27 +1539,54 @@ export interface VirtualNetwork {
   /** Extended location pointing to the underlying infrastructure */
   extendedLocation?: VirtualNetworkExtendedLocation;
 }
+const VirtualNetwork = /*@__PURE__*/ __L.at(__c13, 4) as any as S.Schema<VirtualNetwork>;
+
 export type VirtualNetworksListResultValueList = Array<VirtualNetwork>;
+const VirtualNetworksListResultValueList = /*@__PURE__*/ __L.at(
+  __c13,
+  5,
+) as any as S.Schema<VirtualNetworksListResultValueList>;
+
 /** A list of virtual network resources. */
 export interface VirtualNetworksListResult {
   value?: VirtualNetworksListResultValueList;
   nextLink?: string;
 }
+const VirtualNetworksListResult = /*@__PURE__*/ __L.at(
+  __c13,
+  6,
+) as any as S.Schema<VirtualNetworksListResult>;
+
 export interface ListVirtualNetworkBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
+const ListVirtualNetworkBySubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  7,
+) as any as S.Schema<ListVirtualNetworkBySubscriptionRequest>;
+
 export interface ListVMSkusRequest {
   /** The fully qualified Azure Resource Manager identifier of the custom location resource. */
   customLocationResourceUri: string;
 }
+const ListVMSkusRequest = /*@__PURE__*/ __L.at(__c14, 0) as any as S.Schema<ListVMSkusRequest>;
+
 /** List of supported VM SKUs. */
 export type VmSkuProfilePropertiesValuesList = Array<VmSkuProperties>;
+const VmSkuProfilePropertiesValuesList =
+  GetVMSkusResponsePropertiesValuesList as any as S.Schema<VmSkuProfilePropertiesValuesList>;
+
 export interface VmSkuProfileProperties {
   provisioningState?: ProvisioningState;
   /** List of supported VM SKUs. */
   values?: VmSkuProfilePropertiesValuesList;
 }
+const VmSkuProfileProperties = /*@__PURE__*/ __L.at(
+  __c14,
+  1,
+) as any as S.Schema<VmSkuProfileProperties>;
+
 /** The list of supported VM SKUs. */
 export interface VmSkuProfile {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -995,16 +1600,31 @@ export interface VmSkuProfile {
   extendedLocation?: ExtendedLocation;
   properties?: VmSkuProfileProperties;
 }
+const VmSkuProfile = /*@__PURE__*/ __L.at(__c14, 2) as any as S.Schema<VmSkuProfile>;
+
 export type VmSkuProfileListValueList = Array<VmSkuProfile>;
+const VmSkuProfileListValueList = /*@__PURE__*/ __L.at(
+  __c14,
+  3,
+) as any as S.Schema<VmSkuProfileListValueList>;
+
 /** The list of supported VM SKUs. */
 export interface VmSkuProfileList {
   value?: VmSkuProfileListValueList;
   nextLink?: string;
 }
+const VmSkuProfileList = /*@__PURE__*/ __L.at(__c14, 4) as any as S.Schema<VmSkuProfileList>;
+
 /** The node labels to be persisted across all nodes in agent pool. */
 export type NamedAgentPoolProfileInputNodeLabelsMap = { [key: string]: string | undefined };
+const NamedAgentPoolProfileInputNodeLabelsMap =
+  AgentPoolPropertiesInputNodeLabelsMap as any as S.Schema<NamedAgentPoolProfileInputNodeLabelsMap>;
+
 /** Taints added to new nodes during node pool create and scale. For example, key=value:NoSchedule. */
 export type NamedAgentPoolProfileInputNodeTaintsList = Array<string>;
+const NamedAgentPoolProfileInputNodeTaintsList =
+  AgentPoolPropertiesInputNodeTaintsList as any as S.Schema<NamedAgentPoolProfileInputNodeTaintsList>;
+
 /** Profile of the default agent pool along with a name parameter */
 export interface NamedAgentPoolProfileInput {
   osType?: OSType | (string & {});
@@ -1028,9 +1648,19 @@ export interface NamedAgentPoolProfileInput {
   /** Unique name of the default agent pool in the context of the provisioned cluster. Default value is <clusterName>-nodepool1 */
   name?: string;
 }
+const NamedAgentPoolProfileInput = /*@__PURE__*/ __L.at(
+  __c14,
+  5,
+) as any as S.Schema<NamedAgentPoolProfileInput>;
+
 /** The agent pool properties for the provisioned cluster. */
 export type ProvisionedClusterPropertiesInputAgentPoolProfilesList =
   Array<NamedAgentPoolProfileInput>;
+const ProvisionedClusterPropertiesInputAgentPoolProfilesList = /*@__PURE__*/ __L.at(
+  __c14,
+  6,
+) as any as S.Schema<ProvisionedClusterPropertiesInputAgentPoolProfilesList>;
+
 /** If not specified, the default is 'random'. See [expanders](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/FAQ.md#what-are-expanders) for more information. */
 export type ProvisionedClusterPropertiesInputAutoScalerProfileExpander =
   | "least-waste"
@@ -1074,6 +1704,9 @@ export interface ProvisionedClusterPropertiesInputAutoScalerProfile {
   /** The default is true. */
   skip_nodes_with_system_pods?: string;
 }
+const ProvisionedClusterPropertiesInputAutoScalerProfile =
+  ProvisionedClusterPropertiesAutoScalerProfile as any as S.Schema<ProvisionedClusterPropertiesInputAutoScalerProfile>;
+
 /** Properties of the provisioned cluster. */
 export interface ProvisionedClusterPropertiesInput {
   /** The profile for Linux VMs in the provisioned cluster. */
@@ -1097,12 +1730,22 @@ export interface ProvisionedClusterPropertiesInput {
   /** Parameters to be applied to the cluster-autoscaler when auto scaling is enabled for the provisioned cluster. */
   autoScalerProfile?: ProvisionedClusterPropertiesInputAutoScalerProfile;
 }
+const ProvisionedClusterPropertiesInput = /*@__PURE__*/ __L.at(
+  __c14,
+  7,
+) as any as S.Schema<ProvisionedClusterPropertiesInput>;
+
 export interface ProvisionedClusterInstancesCreateOrUpdateRequest {
   /** The fully qualified Azure Resource Manager identifier of the connected cluster resource. */
   connectedClusterResourceUri: string;
   properties?: ProvisionedClusterPropertiesInput;
   extendedLocation?: ExtendedLocation;
 }
+const ProvisionedClusterInstancesCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  0,
+) as any as S.Schema<ProvisionedClusterInstancesCreateOrUpdateRequest>;
+
 export interface ProvisionedClusterInstancesCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1115,6 +1758,9 @@ export interface ProvisionedClusterInstancesCreateOrUpdateResponse {
   properties?: ProvisionedClusterProperties;
   extendedLocation?: ExtendedLocation;
 }
+const ProvisionedClusterInstancesCreateOrUpdateResponse =
+  GetProvisionedClusterInstanceResponse as any as S.Schema<ProvisionedClusterInstancesCreateOrUpdateResponse>;
+
 /** Defines the resource properties for the hybrid identity metadata. */
 export interface HybridIdentityMetadataPropertiesInput {
   /** Unique id of the parent provisioned cluster resource. */
@@ -1122,12 +1768,22 @@ export interface HybridIdentityMetadataPropertiesInput {
   /** Onboarding public key for provisioning the Managed identity for the connected cluster. */
   publicKey?: string;
 }
+const HybridIdentityMetadataPropertiesInput = /*@__PURE__*/ __L.at(
+  __c15,
+  1,
+) as any as S.Schema<HybridIdentityMetadataPropertiesInput>;
+
 export interface PutHybridIdentityMetadataRequest {
   /** The fully qualified Azure Resource Manager identifier of the connected cluster resource. */
   connectedClusterResourceUri: string;
   /** Resource properties. */
   properties: HybridIdentityMetadataPropertiesInput;
 }
+const PutHybridIdentityMetadataRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  2,
+) as any as S.Schema<PutHybridIdentityMetadataRequest>;
+
 export interface PutHybridIdentityMetadataResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1140,11 +1796,19 @@ export interface PutHybridIdentityMetadataResponse {
   /** Resource properties. */
   properties: HybridIdentityMetadataProperties;
 }
+const PutHybridIdentityMetadataResponse =
+  GetHybridIdentityMetadataResponse as any as S.Schema<PutHybridIdentityMetadataResponse>;
+
 export interface PutKubernetesVersionsRequest {
   /** The fully qualified Azure Resource Manager identifier of the custom location resource. */
   customLocationResourceUri: string;
   extendedLocation?: ExtendedLocation;
 }
+const PutKubernetesVersionsRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  3,
+) as any as S.Schema<PutKubernetesVersionsRequest>;
+
 /** List of supported Kubernetes versions */
 export type PutKubernetesVersionsResponsePropertiesValuesList = Array<KubernetesVersionProperties>;
 export interface PutKubernetesVersionsResponseProperties {
@@ -1164,11 +1828,16 @@ export interface PutKubernetesVersionsResponse {
   extendedLocation?: ExtendedLocation;
   properties?: PutKubernetesVersionsResponseProperties;
 }
+const PutKubernetesVersionsResponse =
+  GetKubernetesVersionsResponse as any as S.Schema<PutKubernetesVersionsResponse>;
+
 export interface PutVMSkusRequest {
   /** The fully qualified Azure Resource Manager identifier of the custom location resource. */
   customLocationResourceUri: string;
   extendedLocation?: ExtendedLocation;
 }
+const PutVMSkusRequest = /*@__PURE__*/ __L.at(__c15, 4) as any as S.Schema<PutVMSkusRequest>;
+
 /** List of supported VM SKUs. */
 export type PutVMSkusResponsePropertiesValuesList = Array<VmSkuProperties>;
 export interface PutVMSkusResponseProperties {
@@ -1188,8 +1857,13 @@ export interface PutVMSkusResponse {
   extendedLocation?: ExtendedLocation;
   properties?: PutVMSkusResponseProperties;
 }
+const PutVMSkusResponse = GetVMSkusResponse as any as S.Schema<PutVMSkusResponse>;
+
 /** Resource tags */
 export type UpdateVirtualNetworkRequestTagsMap = { [key: string]: string | undefined };
+const UpdateVirtualNetworkRequestTagsMap =
+  AgentPoolPropertiesInputNodeLabelsMap as any as S.Schema<UpdateVirtualNetworkRequestTagsMap>;
+
 export interface UpdateVirtualNetworkRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1200,8 +1874,16 @@ export interface UpdateVirtualNetworkRequest {
   /** Resource tags */
   tags?: UpdateVirtualNetworkRequestTagsMap;
 }
+const UpdateVirtualNetworkRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  5,
+) as any as S.Schema<UpdateVirtualNetworkRequest>;
+
 /** Resource tags. */
 export type UpdateVirtualNetworkResponseTagsMap = { [key: string]: string | undefined };
+const UpdateVirtualNetworkResponseTagsMap =
+  AgentPoolPropertiesInputNodeLabelsMap as any as S.Schema<UpdateVirtualNetworkResponseTagsMap>;
+
 /** The extended location type. Allowed value: 'CustomLocation' */
 export type UpdateVirtualNetworkResponseExtendedLocationType = "CustomLocation";
 /** Extended location pointing to the underlying infrastructure */
@@ -1211,6 +1893,9 @@ export interface UpdateVirtualNetworkResponseExtendedLocation {
   /** ARM Id of the extended location. */
   name?: string;
 }
+const UpdateVirtualNetworkResponseExtendedLocation =
+  GetVirtualNetworkResponseExtendedLocation as any as S.Schema<UpdateVirtualNetworkResponseExtendedLocation>;
+
 export interface UpdateVirtualNetworkResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1228,8 +1913,16 @@ export interface UpdateVirtualNetworkResponse {
   /** Extended location pointing to the underlying infrastructure */
   extendedLocation?: UpdateVirtualNetworkResponseExtendedLocation;
 }
+const UpdateVirtualNetworkResponse = /*@__PURE__*/ __L.at(
+  __c15,
+  6,
+) as any as S.Schema<UpdateVirtualNetworkResponse>;
+
 /** Resource tags. */
 export type VirtualNetworksCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
+const VirtualNetworksCreateOrUpdateRequestTagsMap =
+  AgentPoolPropertiesInputNodeLabelsMap as any as S.Schema<VirtualNetworksCreateOrUpdateRequestTagsMap>;
+
 /** Infrastructure network profile for HCI platform */
 export type VirtualNetworkPropertiesInputInfraVnetProfileHci =
   VirtualNetworkPropertiesInfraVnetProfileHci;
@@ -1238,11 +1931,20 @@ export type VirtualNetworkPropertiesInputInfraVnetProfile =
 export type VirtualNetworkPropertiesInputVipPoolItem = VirtualNetworkPropertiesVipPoolItem;
 /** Range of IP Addresses for Kubernetes API Server and services if using HA Proxy load balancer */
 export type VirtualNetworkPropertiesInputVipPoolList = Array<VirtualNetworkPropertiesVipPoolItem>;
+const VirtualNetworkPropertiesInputVipPoolList =
+  VirtualNetworkPropertiesVipPoolList as any as S.Schema<VirtualNetworkPropertiesInputVipPoolList>;
+
 export type VirtualNetworkPropertiesInputVmipPoolItem = VirtualNetworkPropertiesVipPoolItem;
 /** Range of IP Addresses for Kubernetes node VMs */
 export type VirtualNetworkPropertiesInputVmipPoolList = Array<VirtualNetworkPropertiesVipPoolItem>;
+const VirtualNetworkPropertiesInputVmipPoolList =
+  VirtualNetworkPropertiesVipPoolList as any as S.Schema<VirtualNetworkPropertiesInputVmipPoolList>;
+
 /** List of DNS server IP Addresses associated with the network */
 export type VirtualNetworkPropertiesInputDnsServersList = Array<string>;
+const VirtualNetworkPropertiesInputDnsServersList =
+  AgentPoolPropertiesInputNodeTaintsList as any as S.Schema<VirtualNetworkPropertiesInputDnsServersList>;
+
 /** Properties of the virtual network resource */
 export interface VirtualNetworkPropertiesInput {
   infraVnetProfile?: VirtualNetworkPropertiesInfraVnetProfile;
@@ -1259,6 +1961,11 @@ export interface VirtualNetworkPropertiesInput {
   /** VLAN Id used by the network */
   vlanID?: number;
 }
+const VirtualNetworkPropertiesInput = /*@__PURE__*/ __L.at(
+  __c15,
+  7,
+) as any as S.Schema<VirtualNetworkPropertiesInput>;
+
 /** The extended location type. Allowed value: 'CustomLocation' */
 export type VirtualNetworksCreateOrUpdateRequestExtendedLocationType = "CustomLocation";
 /** Extended location pointing to the underlying infrastructure */
@@ -1268,6 +1975,9 @@ export interface VirtualNetworksCreateOrUpdateRequestExtendedLocation {
   /** ARM Id of the extended location. */
   name?: string;
 }
+const VirtualNetworksCreateOrUpdateRequestExtendedLocation =
+  GetVirtualNetworkResponseExtendedLocation as any as S.Schema<VirtualNetworksCreateOrUpdateRequestExtendedLocation>;
+
 export interface VirtualNetworksCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1283,8 +1993,16 @@ export interface VirtualNetworksCreateOrUpdateRequest {
   /** Extended location pointing to the underlying infrastructure */
   extendedLocation?: VirtualNetworksCreateOrUpdateRequestExtendedLocation;
 }
+const VirtualNetworksCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  0,
+) as any as S.Schema<VirtualNetworksCreateOrUpdateRequest>;
+
 /** Resource tags. */
 export type VirtualNetworksCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
+const VirtualNetworksCreateOrUpdateResponseTagsMap =
+  AgentPoolPropertiesInputNodeLabelsMap as any as S.Schema<VirtualNetworksCreateOrUpdateResponseTagsMap>;
+
 /** The extended location type. Allowed value: 'CustomLocation' */
 export type VirtualNetworksCreateOrUpdateResponseExtendedLocationType = "CustomLocation";
 /** Extended location pointing to the underlying infrastructure */
@@ -1294,6 +2012,9 @@ export interface VirtualNetworksCreateOrUpdateResponseExtendedLocation {
   /** ARM Id of the extended location. */
   name?: string;
 }
+const VirtualNetworksCreateOrUpdateResponseExtendedLocation =
+  GetVirtualNetworkResponseExtendedLocation as any as S.Schema<VirtualNetworksCreateOrUpdateResponseExtendedLocation>;
+
 export interface VirtualNetworksCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1311,6 +2032,11 @@ export interface VirtualNetworksCreateOrUpdateResponse {
   /** Extended location pointing to the underlying infrastructure */
   extendedLocation?: VirtualNetworksCreateOrUpdateResponseExtendedLocation;
 }
+const VirtualNetworksCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c16,
+  1,
+) as any as S.Schema<VirtualNetworksCreateOrUpdateResponse>;
+
 export type AgentPoolCreateOrUpdateError = AzureOpError;
 /** Creates or updates the agent pool in the provisioned cluster Creates or updates the agent pool in the provisioned cluster */
 export const AgentPoolCreateOrUpdate: API.OperationMethod<
@@ -1319,8 +2045,8 @@ export const AgentPoolCreateOrUpdate: API.OperationMethod<
   AgentPoolCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7) as any as S.Schema<AgentPoolCreateOrUpdateRequest>,
-  output: __S(13) as any as S.Schema<AgentPoolCreateOrUpdateResponse>,
+  input: AgentPoolCreateOrUpdateRequest,
+  output: AgentPoolCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1334,8 +2060,8 @@ export const DeleteAgentPool: API.OperationMethod<
   DeleteAgentPoolError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14) as any as S.Schema<DeleteAgentPoolRequest>,
-  output: __S(15) as any as S.Schema<DeleteAgentPoolResponse>,
+  input: DeleteAgentPoolRequest,
+  output: DeleteAgentPoolResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1349,8 +2075,8 @@ export const DeleteHybridIdentityMetadata: API.OperationMethod<
   DeleteHybridIdentityMetadataError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16) as any as S.Schema<DeleteHybridIdentityMetadataRequest>,
-  output: __S(17) as any as S.Schema<DeleteHybridIdentityMetadataResponse>,
+  input: DeleteHybridIdentityMetadataRequest,
+  output: DeleteHybridIdentityMetadataResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1364,8 +2090,8 @@ export const DeleteKubernetesVersions: API.OperationMethod<
   DeleteKubernetesVersionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18) as any as S.Schema<DeleteKubernetesVersionsRequest>,
-  output: __S(17) as any as S.Schema<DeleteKubernetesVersionsResponse>,
+  input: DeleteKubernetesVersionsRequest,
+  output: DeleteKubernetesVersionsResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1379,8 +2105,8 @@ export const DeleteProvisionedClusterInstance: API.OperationMethod<
   DeleteProvisionedClusterInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19) as any as S.Schema<DeleteProvisionedClusterInstanceRequest>,
-  output: __S(17) as any as S.Schema<DeleteProvisionedClusterInstanceResponse>,
+  input: DeleteProvisionedClusterInstanceRequest,
+  output: DeleteProvisionedClusterInstanceResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1394,8 +2120,8 @@ export const DeleteVirtualNetwork: API.OperationMethod<
   DeleteVirtualNetworkError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20) as any as S.Schema<DeleteVirtualNetworkRequest>,
-  output: __S(15) as any as S.Schema<DeleteVirtualNetworkResponse>,
+  input: DeleteVirtualNetworkRequest,
+  output: DeleteVirtualNetworkResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1409,8 +2135,8 @@ export const DeleteVMSkus: API.OperationMethod<
   DeleteVMSkusError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21) as any as S.Schema<DeleteVMSkusRequest>,
-  output: __S(15) as any as S.Schema<DeleteVMSkusResponse>,
+  input: DeleteVMSkusRequest,
+  output: DeleteVMSkusResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1424,8 +2150,8 @@ export const GetAgentPool: API.OperationMethod<
   GetAgentPoolError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22) as any as S.Schema<GetAgentPoolRequest>,
-  output: __S(23) as any as S.Schema<GetAgentPoolResponse>,
+  input: GetAgentPoolRequest,
+  output: GetAgentPoolResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1439,8 +2165,8 @@ export const GetHybridIdentityMetadata: API.OperationMethod<
   GetHybridIdentityMetadataError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24) as any as S.Schema<GetHybridIdentityMetadataRequest>,
-  output: __S(26) as any as S.Schema<GetHybridIdentityMetadataResponse>,
+  input: GetHybridIdentityMetadataRequest,
+  output: GetHybridIdentityMetadataResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1454,8 +2180,8 @@ export const GetKubernetesVersions: API.OperationMethod<
   GetKubernetesVersionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27) as any as S.Schema<GetKubernetesVersionsRequest>,
-  output: __S(35) as any as S.Schema<GetKubernetesVersionsResponse>,
+  input: GetKubernetesVersionsRequest,
+  output: GetKubernetesVersionsResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1469,8 +2195,8 @@ export const GetProvisionedClusterInstance: API.OperationMethod<
   GetProvisionedClusterInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36) as any as S.Schema<GetProvisionedClusterInstanceRequest>,
-  output: __S(58) as any as S.Schema<GetProvisionedClusterInstanceResponse>,
+  input: GetProvisionedClusterInstanceRequest,
+  output: GetProvisionedClusterInstanceResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1484,8 +2210,8 @@ export const GetProvisionedClusterInstanceUpgradeProfile: API.OperationMethod<
   GetProvisionedClusterInstanceUpgradeProfileError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(59) as any as S.Schema<GetProvisionedClusterInstanceUpgradeProfileRequest>,
-  output: __S(64) as any as S.Schema<GetProvisionedClusterInstanceUpgradeProfileResponse>,
+  input: GetProvisionedClusterInstanceUpgradeProfileRequest,
+  output: GetProvisionedClusterInstanceUpgradeProfileResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1499,8 +2225,8 @@ export const GetVirtualNetwork: API.OperationMethod<
   GetVirtualNetworkError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65) as any as S.Schema<GetVirtualNetworkRequest>,
-  output: __S(75) as any as S.Schema<GetVirtualNetworkResponse>,
+  input: GetVirtualNetworkRequest,
+  output: GetVirtualNetworkResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1514,8 +2240,8 @@ export const GetVMSkus: API.OperationMethod<
   GetVMSkusError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(76) as any as S.Schema<GetVMSkusRequest>,
-  output: __S(82) as any as S.Schema<GetVMSkusResponse>,
+  input: GetVMSkusRequest,
+  output: GetVMSkusResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1529,8 +2255,8 @@ export const ListAgentPoolByProvisionedCluster: API.OperationMethod<
   ListAgentPoolByProvisionedClusterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(83) as any as S.Schema<ListAgentPoolByProvisionedClusterRequest>,
-  output: __S(85) as any as S.Schema<AgentPoolListResult>,
+  input: ListAgentPoolByProvisionedClusterRequest,
+  output: AgentPoolListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1544,8 +2270,8 @@ export const ListHybridIdentityMetadataByCluster: API.OperationMethod<
   ListHybridIdentityMetadataByClusterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(86) as any as S.Schema<ListHybridIdentityMetadataByClusterRequest>,
-  output: __S(89) as any as S.Schema<HybridIdentityMetadataList>,
+  input: ListHybridIdentityMetadataByClusterRequest,
+  output: HybridIdentityMetadataList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1559,8 +2285,8 @@ export const ListKubernetesVersions: API.OperationMethod<
   ListKubernetesVersionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(90) as any as S.Schema<ListKubernetesVersionsRequest>,
-  output: __S(93) as any as S.Schema<KubernetesVersionProfileList>,
+  input: ListKubernetesVersionsRequest,
+  output: KubernetesVersionProfileList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1574,8 +2300,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(94) as any as S.Schema<ListOperationsRequest>,
-  output: __S(98) as any as S.Schema<ListOperationsResponse>,
+  input: ListOperationsRequest,
+  output: ListOperationsResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1589,8 +2315,8 @@ export const ListProvisionedClusterInstanceAdminKubeconfig: API.OperationMethod<
   ListProvisionedClusterInstanceAdminKubeconfigError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(99) as any as S.Schema<ListProvisionedClusterInstanceAdminKubeconfigRequest>,
-  output: __S(101) as any as S.Schema<ListCredentialResponse>,
+  input: ListProvisionedClusterInstanceAdminKubeconfigRequest,
+  output: ListCredentialResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1604,8 +2330,8 @@ export const ListProvisionedClusterInstances: API.OperationMethod<
   ListProvisionedClusterInstancesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(102) as any as S.Schema<ListProvisionedClusterInstancesRequest>,
-  output: __S(105) as any as S.Schema<ProvisionedClusterListResult>,
+  input: ListProvisionedClusterInstancesRequest,
+  output: ProvisionedClusterListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1619,8 +2345,8 @@ export const ListProvisionedClusterInstanceUserKubeconfig: API.OperationMethod<
   ListProvisionedClusterInstanceUserKubeconfigError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(106) as any as S.Schema<ListProvisionedClusterInstanceUserKubeconfigRequest>,
-  output: __S(101) as any as S.Schema<ListCredentialResponse>,
+  input: ListProvisionedClusterInstanceUserKubeconfigRequest,
+  output: ListCredentialResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1634,8 +2360,8 @@ export const ListVirtualNetworkByResourceGroup: API.OperationMethod<
   ListVirtualNetworkByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(107) as any as S.Schema<ListVirtualNetworkByResourceGroupRequest>,
-  output: __S(110) as any as S.Schema<VirtualNetworksListResult>,
+  input: ListVirtualNetworkByResourceGroupRequest,
+  output: VirtualNetworksListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1649,8 +2375,8 @@ export const ListVirtualNetworkBySubscription: API.OperationMethod<
   ListVirtualNetworkBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(111) as any as S.Schema<ListVirtualNetworkBySubscriptionRequest>,
-  output: __S(110) as any as S.Schema<VirtualNetworksListResult>,
+  input: ListVirtualNetworkBySubscriptionRequest,
+  output: VirtualNetworksListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1664,8 +2390,8 @@ export const ListVMSkus: API.OperationMethod<
   ListVMSkusError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(112) as any as S.Schema<ListVMSkusRequest>,
-  output: __S(116) as any as S.Schema<VmSkuProfileList>,
+  input: ListVMSkusRequest,
+  output: VmSkuProfileList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1679,8 +2405,8 @@ export const ProvisionedClusterInstancesCreateOrUpdate: API.OperationMethod<
   ProvisionedClusterInstancesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(120) as any as S.Schema<ProvisionedClusterInstancesCreateOrUpdateRequest>,
-  output: __S(58) as any as S.Schema<ProvisionedClusterInstancesCreateOrUpdateResponse>,
+  input: ProvisionedClusterInstancesCreateOrUpdateRequest,
+  output: ProvisionedClusterInstancesCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1694,8 +2420,8 @@ export const PutHybridIdentityMetadata: API.OperationMethod<
   PutHybridIdentityMetadataError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(122) as any as S.Schema<PutHybridIdentityMetadataRequest>,
-  output: __S(26) as any as S.Schema<PutHybridIdentityMetadataResponse>,
+  input: PutHybridIdentityMetadataRequest,
+  output: PutHybridIdentityMetadataResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1709,8 +2435,8 @@ export const PutKubernetesVersions: API.OperationMethod<
   PutKubernetesVersionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(123) as any as S.Schema<PutKubernetesVersionsRequest>,
-  output: __S(35) as any as S.Schema<PutKubernetesVersionsResponse>,
+  input: PutKubernetesVersionsRequest,
+  output: PutKubernetesVersionsResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1724,8 +2450,8 @@ export const PutVMSkus: API.OperationMethod<
   PutVMSkusError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(124) as any as S.Schema<PutVMSkusRequest>,
-  output: __S(82) as any as S.Schema<PutVMSkusResponse>,
+  input: PutVMSkusRequest,
+  output: PutVMSkusResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1739,8 +2465,8 @@ export const UpdateVirtualNetwork: API.OperationMethod<
   UpdateVirtualNetworkError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(125) as any as S.Schema<UpdateVirtualNetworkRequest>,
-  output: __S(126) as any as S.Schema<UpdateVirtualNetworkResponse>,
+  input: UpdateVirtualNetworkRequest,
+  output: UpdateVirtualNetworkResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1754,8 +2480,8 @@ export const VirtualNetworksCreateOrUpdate: API.OperationMethod<
   VirtualNetworksCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(128) as any as S.Schema<VirtualNetworksCreateOrUpdateRequest>,
-  output: __S(129) as any as S.Schema<VirtualNetworksCreateOrUpdateResponse>,
+  input: VirtualNetworksCreateOrUpdateRequest,
+  output: VirtualNetworksCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1778,12 +2504,12 @@ function __c0(j: number): any {
         identifier: "AgentPoolUpdateProfileInput",
       });
     case 3:
-      return S.Array(__S(2));
+      return S.Array(AgentPoolUpdateProfileInput);
     case 4:
       return S.suspend(() =>
         S.Struct({
           errorMessage: S.optional(S.String),
-          readyReplicas: S.optional(__S(3)),
+          readyReplicas: S.optional(AgentPoolPropertiesInputStatusReadyReplicasList),
         }),
       ).annotate({
         identifier: "AgentPoolPropertiesInputStatus",
@@ -1791,23 +2517,23 @@ function __c0(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          osType: S.optional(S.String),
-          osSKU: S.optional(S.String),
-          nodeLabels: S.optional(__S(0)),
-          nodeTaints: S.optional(__S(1)),
+          osType: S.optional(OSType),
+          osSKU: S.optional(OSSKU),
+          nodeLabels: S.optional(AgentPoolPropertiesInputNodeLabelsMap),
+          nodeTaints: S.optional(AgentPoolPropertiesInputNodeTaintsList),
           maxCount: S.optional(S.Number),
           minCount: S.optional(S.Number),
           enableAutoScaling: S.optional(S.Boolean),
           maxPods: S.optional(S.Number),
           count: S.optional(S.Number),
           vmSize: S.optional(S.String),
-          status: S.optional(__S(4)),
+          status: S.optional(AgentPoolPropertiesInputStatus),
         }),
       ).annotate({ identifier: "AgentPoolPropertiesInput" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(S.String),
+          type: S.optional(ExtendedLocationType),
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "ExtendedLocation" });
@@ -1816,9 +2542,9 @@ function __c0(j: number): any {
         S.Struct({
           connectedClusterResourceUri: S.String.pipe(T.Label()),
           agentPoolName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(5)),
-          tags: S.optional(__S(0)),
-          extendedLocation: S.optional(__S(6)),
+          properties: S.optional(AgentPoolPropertiesInput),
+          tags: S.optional(AgentPoolCreateOrUpdateRequestTagsMap),
+          extendedLocation: S.optional(ExtendedLocation),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -1838,10 +2564,10 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
-          createdByType: S.optional(S.String),
+          createdByType: S.optional(SystemDataCreatedByType),
           createdAt: S.optional(S.String),
           lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(S.String),
+          lastModifiedByType: S.optional(SystemDataLastModifiedByType),
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "SystemData" });
@@ -1854,13 +2580,13 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "AgentPoolUpdateProfile" });
     case 2:
-      return S.Array(__S(9));
+      return S.Array(AgentPoolUpdateProfile);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          currentState: S.optional(S.String),
+          currentState: S.optional(ProvisioningState),
           errorMessage: S.optional(S.String),
-          readyReplicas: S.optional(__S(10)),
+          readyReplicas: S.optional(AgentPoolPropertiesStatusReadyReplicasList),
         }),
       ).annotate({
         identifier: "AgentPoolPropertiesStatus",
@@ -1868,10 +2594,10 @@ function __c1(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          osType: S.optional(S.String),
-          osSKU: S.optional(S.String),
-          nodeLabels: S.optional(__S(0)),
-          nodeTaints: S.optional(__S(1)),
+          osType: S.optional(OSType),
+          osSKU: S.optional(OSSKU),
+          nodeLabels: S.optional(AgentPoolPropertiesNodeLabelsMap),
+          nodeTaints: S.optional(AgentPoolPropertiesNodeTaintsList),
           maxCount: S.optional(S.Number),
           minCount: S.optional(S.Number),
           enableAutoScaling: S.optional(S.Boolean),
@@ -1879,8 +2605,8 @@ function __c1(j: number): any {
           count: S.optional(S.Number),
           vmSize: S.optional(S.String),
           kubernetesVersion: S.optional(S.String),
-          provisioningState: S.optional(S.String),
-          status: S.optional(__S(11)),
+          provisioningState: S.optional(ProvisioningState),
+          status: S.optional(AgentPoolPropertiesStatus),
         }),
       ).annotate({ identifier: "AgentPoolProperties" });
     case 5:
@@ -1889,10 +2615,10 @@ function __c1(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(8)),
-          properties: S.optional(__S(12)),
-          tags: S.optional(__S(0)),
-          extendedLocation: S.optional(__S(6)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(AgentPoolProperties),
+          tags: S.optional(AgentPoolCreateOrUpdateResponseTagsMap),
+          extendedLocation: S.optional(ExtendedLocation),
         }),
       ).annotate({
         identifier: "AgentPoolCreateOrUpdateResponse",
@@ -2018,10 +2744,10 @@ function __c2(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(8)),
-          properties: S.optional(__S(12)),
-          tags: S.optional(__S(0)),
-          extendedLocation: S.optional(__S(6)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(AgentPoolProperties),
+          tags: S.optional(GetAgentPoolResponseTagsMap),
+          extendedLocation: S.optional(ExtendedLocation),
         }),
       ).annotate({ identifier: "GetAgentPoolResponse" });
   }
@@ -2048,7 +2774,7 @@ function __c3(j: number): any {
         S.Struct({
           resourceUid: S.optional(S.String),
           publicKey: S.optional(S.String),
-          provisioningState: S.optional(S.String),
+          provisioningState: S.optional(ProvisioningState),
         }),
       ).annotate({
         identifier: "HybridIdentityMetadataProperties",
@@ -2059,8 +2785,8 @@ function __c3(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(8)),
-          properties: __S(25),
+          systemData: S.optional(SystemData),
+          properties: HybridIdentityMetadataProperties,
         }),
       ).annotate({
         identifier: "GetHybridIdentityMetadataResponse",
@@ -2083,8 +2809,8 @@ function __c3(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          osType: S.optional(S.String),
-          osSku: S.optional(S.String),
+          osType: S.optional(KubernetesVersionReadinessOsType),
+          osSku: S.optional(OSSKU),
           ready: S.optional(S.Boolean),
           errorMessage: S.optional(S.String),
         }),
@@ -2092,16 +2818,16 @@ function __c3(j: number): any {
         identifier: "KubernetesVersionReadiness",
       });
     case 5:
-      return S.Array(__S(28));
+      return S.Array(KubernetesVersionReadiness);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          readiness: S.optional(__S(29)),
-          upgrades: S.optional(__S(1)),
+          readiness: S.optional(KubernetesPatchVersionsReadinessList),
+          upgrades: S.optional(KubernetesPatchVersionsUpgradesList),
         }),
       ).annotate({ identifier: "KubernetesPatchVersions" });
     case 7:
-      return S.Record(S.String, __S(30));
+      return S.Record(S.String, KubernetesPatchVersions);
   }
 }
 function __c4(j: number): any {
@@ -2111,18 +2837,18 @@ function __c4(j: number): any {
         S.Struct({
           version: S.optional(S.String),
           isPreview: S.optional(S.Boolean),
-          patchVersions: S.optional(__S(31)),
+          patchVersions: S.optional(KubernetesVersionPropertiesPatchVersionsMap),
         }),
       ).annotate({
         identifier: "KubernetesVersionProperties",
       });
     case 1:
-      return S.Array(__S(32));
+      return S.Array(KubernetesVersionProperties);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          provisioningState: S.optional(S.String),
-          values: S.optional(__S(33)),
+          provisioningState: S.optional(ProvisioningState),
+          values: S.optional(GetKubernetesVersionsResponsePropertiesValuesList),
         }),
       ).annotate({
         identifier: "GetKubernetesVersionsResponseProperties",
@@ -2133,9 +2859,9 @@ function __c4(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(8)),
-          extendedLocation: S.optional(__S(6)),
-          properties: S.optional(__S(34)),
+          systemData: S.optional(SystemData),
+          extendedLocation: S.optional(ExtendedLocation),
+          properties: S.optional(GetKubernetesVersionsResponseProperties),
         }),
       ).annotate({
         identifier: "GetKubernetesVersionsResponse",
@@ -2164,11 +2890,11 @@ function __c4(j: number): any {
         identifier: "LinuxProfilePropertiesSshPublicKeysItem",
       });
     case 6:
-      return S.Array(__S(37));
+      return S.Array(LinuxProfilePropertiesSshPublicKeysItem);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          publicKeys: S.optional(__S(38)),
+          publicKeys: S.optional(LinuxProfilePropertiesSshPublicKeysList),
         }),
       ).annotate({
         identifier: "LinuxProfilePropertiesSsh",
@@ -2180,7 +2906,7 @@ function __c5(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          ssh: S.optional(__S(39)),
+          ssh: S.optional(LinuxProfilePropertiesSsh),
         }),
       ).annotate({ identifier: "LinuxProfileProperties" });
     case 1:
@@ -2196,7 +2922,7 @@ function __c5(j: number): any {
         S.Struct({
           count: S.optional(S.Number),
           vmSize: S.optional(S.String),
-          controlPlaneEndpoint: S.optional(__S(41)),
+          controlPlaneEndpoint: S.optional(ControlPlaneProfileControlPlaneEndpoint),
         }),
       ).annotate({ identifier: "ControlPlaneProfile" });
     case 3:
@@ -2210,8 +2936,8 @@ function __c5(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          loadBalancerProfile: S.optional(__S(43)),
-          networkPolicy: S.optional(S.String),
+          loadBalancerProfile: S.optional(NetworkProfileLoadBalancerProfile),
+          networkPolicy: S.optional(NetworkProfileNetworkPolicy),
           podCidr: S.optional(S.String),
         }),
       ).annotate({ identifier: "NetworkProfile" });
@@ -2226,8 +2952,8 @@ function __c5(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          smbCsiDriver: S.optional(__S(45)),
-          nfsCsiDriver: S.optional(__S(45)),
+          smbCsiDriver: S.optional(StorageProfileSmbCSIDriver),
+          nfsCsiDriver: S.optional(StorageProfileNfsCSIDriver),
         }),
       ).annotate({ identifier: "StorageProfile" });
     case 7:
@@ -2243,10 +2969,10 @@ function __c6(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          osType: S.optional(S.String),
-          osSKU: S.optional(S.String),
-          nodeLabels: S.optional(__S(0)),
-          nodeTaints: S.optional(__S(1)),
+          osType: S.optional(OSType),
+          osSKU: S.optional(OSSKU),
+          nodeLabels: S.optional(NamedAgentPoolProfileNodeLabelsMap),
+          nodeTaints: S.optional(NamedAgentPoolProfileNodeTaintsList),
           maxCount: S.optional(S.Number),
           minCount: S.optional(S.Number),
           enableAutoScaling: S.optional(S.Boolean),
@@ -2258,11 +2984,11 @@ function __c6(j: number): any {
         }),
       ).annotate({ identifier: "NamedAgentPoolProfile" });
     case 1:
-      return S.Array(__S(48));
+      return S.Array(NamedAgentPoolProfile);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          vnetSubnetIds: S.optional(__S(1)),
+          vnetSubnetIds: S.optional(CloudProviderProfileInfraNetworkProfileVnetSubnetIdsList),
         }),
       ).annotate({
         identifier: "CloudProviderProfileInfraNetworkProfile",
@@ -2270,25 +2996,25 @@ function __c6(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          infraNetworkProfile: S.optional(__S(50)),
+          infraNetworkProfile: S.optional(CloudProviderProfileInfraNetworkProfile),
         }),
       ).annotate({ identifier: "CloudProviderProfile" });
     case 4:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          phase: S.optional(S.String),
+          phase: S.optional(AddonStatusProfilePhase),
           ready: S.optional(S.Boolean),
           errorMessage: S.optional(S.String),
         }),
       ).annotate({ identifier: "AddonStatusProfile" });
     case 5:
-      return S.Array(__S(52));
+      return S.Array(AddonStatusProfile);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          controlPlaneStatus: S.optional(__S(53)),
-          currentState: S.optional(S.String),
+          controlPlaneStatus: S.optional(ProvisionedClusterPropertiesStatusControlPlaneStatusList),
+          currentState: S.optional(ProvisioningState),
           errorMessage: S.optional(S.String),
         }),
       ).annotate({
@@ -2297,7 +3023,7 @@ function __c6(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          azureHybridBenefit: S.optional(S.String),
+          azureHybridBenefit: S.optional(ProvisionedClusterLicenseProfileAzureHybridBenefit),
         }),
       ).annotate({
         identifier: "ProvisionedClusterLicenseProfile",
@@ -2312,7 +3038,7 @@ function __c7(j: number): any {
           balance_similar_node_groups: S.optional(
             S.String.pipe(T.Body("balance-similar-node-groups")),
           ),
-          expander: S.optional(S.String),
+          expander: S.optional(ProvisionedClusterPropertiesAutoScalerProfileExpander),
           max_empty_bulk_delete: S.optional(S.String.pipe(T.Body("max-empty-bulk-delete"))),
           max_graceful_termination_sec: S.optional(
             S.String.pipe(T.Body("max-graceful-termination-sec")),
@@ -2351,18 +3077,18 @@ function __c7(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          linuxProfile: S.optional(__S(40)),
-          controlPlane: S.optional(__S(42)),
+          linuxProfile: S.optional(LinuxProfileProperties),
+          controlPlane: S.optional(ControlPlaneProfile),
           kubernetesVersion: S.optional(S.String),
-          networkProfile: S.optional(__S(44)),
-          storageProfile: S.optional(__S(46)),
-          clusterVMAccessProfile: S.optional(__S(47)),
-          agentPoolProfiles: S.optional(__S(49)),
-          cloudProviderProfile: S.optional(__S(51)),
-          provisioningState: S.optional(S.String),
-          status: S.optional(__S(54)),
-          licenseProfile: S.optional(__S(55)),
-          autoScalerProfile: S.optional(__S(56)),
+          networkProfile: S.optional(NetworkProfile),
+          storageProfile: S.optional(StorageProfile),
+          clusterVMAccessProfile: S.optional(ClusterVMAccessProfile),
+          agentPoolProfiles: S.optional(ProvisionedClusterPropertiesAgentPoolProfilesList),
+          cloudProviderProfile: S.optional(CloudProviderProfile),
+          provisioningState: S.optional(ProvisioningState),
+          status: S.optional(ProvisionedClusterPropertiesStatus),
+          licenseProfile: S.optional(ProvisionedClusterLicenseProfile),
+          autoScalerProfile: S.optional(ProvisionedClusterPropertiesAutoScalerProfile),
         }),
       ).annotate({
         identifier: "ProvisionedClusterProperties",
@@ -2373,9 +3099,9 @@ function __c7(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(8)),
-          properties: S.optional(__S(57)),
-          extendedLocation: S.optional(__S(6)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(ProvisionedClusterProperties),
+          extendedLocation: S.optional(ExtendedLocation),
         }),
       ).annotate({
         identifier: "GetProvisionedClusterInstanceResponse",
@@ -2405,13 +3131,13 @@ function __c7(j: number): any {
         identifier: "ProvisionedClusterPoolUpgradeProfileProperties",
       });
     case 5:
-      return S.Array(__S(60));
+      return S.Array(ProvisionedClusterPoolUpgradeProfileProperties);
     case 6:
       return S.suspend(() =>
         S.Struct({
           kubernetesVersion: S.optional(S.String),
-          osType: S.optional(S.String),
-          upgrades: S.optional(__S(61)),
+          osType: S.optional(OSType),
+          upgrades: S.optional(ProvisionedClusterPoolUpgradeProfileUpgradesList),
         }),
       ).annotate({
         identifier: "ProvisionedClusterPoolUpgradeProfile",
@@ -2419,8 +3145,8 @@ function __c7(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          provisioningState: S.optional(S.String),
-          controlPlaneProfile: __S(62),
+          provisioningState: S.optional(ProvisioningState),
+          controlPlaneProfile: ProvisionedClusterPoolUpgradeProfile,
         }),
       ).annotate({
         identifier: "ProvisionedClusterUpgradeProfileProperties",
@@ -2435,8 +3161,8 @@ function __c8(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(8)),
-          properties: __S(63),
+          systemData: S.optional(SystemData),
+          properties: ProvisionedClusterUpgradeProfileProperties,
         }),
       ).annotate({
         identifier: "GetProvisionedClusterInstanceUpgradeProfileResponse",
@@ -2469,7 +3195,7 @@ function __c8(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          hci: S.optional(__S(66)),
+          hci: S.optional(VirtualNetworkPropertiesInfraVnetProfileHci),
         }),
       ).annotate({
         identifier: "VirtualNetworkPropertiesInfraVnetProfile",
@@ -2484,7 +3210,7 @@ function __c8(j: number): any {
         identifier: "VirtualNetworkPropertiesVipPoolItem",
       });
     case 5:
-      return S.Array(__S(68));
+      return S.Array(VirtualNetworkPropertiesVipPoolItem);
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -2497,7 +3223,7 @@ function __c8(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          error: S.optional(__S(70)),
+          error: S.optional(VirtualNetworkPropertiesStatusOperationStatusError),
           operationId: S.optional(S.String),
           status: S.optional(S.String),
         }),
@@ -2511,7 +3237,7 @@ function __c9(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          operationStatus: S.optional(__S(71)),
+          operationStatus: S.optional(VirtualNetworkPropertiesStatusOperationStatus),
         }),
       ).annotate({
         identifier: "VirtualNetworkPropertiesStatus",
@@ -2519,21 +3245,21 @@ function __c9(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          infraVnetProfile: S.optional(__S(67)),
-          vipPool: S.optional(__S(69)),
-          vmipPool: S.optional(__S(69)),
-          dnsServers: S.optional(__S(1)),
+          infraVnetProfile: S.optional(VirtualNetworkPropertiesInfraVnetProfile),
+          vipPool: S.optional(VirtualNetworkPropertiesVipPoolList),
+          vmipPool: S.optional(VirtualNetworkPropertiesVmipPoolList),
+          dnsServers: S.optional(VirtualNetworkPropertiesDnsServersList),
           gateway: S.optional(S.String),
           ipAddressPrefix: S.optional(S.String),
           vlanID: S.optional(S.Number),
-          provisioningState: S.optional(S.String),
-          status: S.optional(__S(72)),
+          provisioningState: S.optional(VirtualNetworkPropertiesProvisioningState),
+          status: S.optional(VirtualNetworkPropertiesStatus),
         }),
       ).annotate({ identifier: "VirtualNetworkProperties" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(S.String),
+          type: S.optional(GetVirtualNetworkResponseExtendedLocationType),
           name: S.optional(S.String),
         }),
       ).annotate({
@@ -2545,11 +3271,11 @@ function __c9(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(8)),
-          tags: S.optional(__S(0)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(GetVirtualNetworkResponseTagsMap),
           location: S.String,
-          properties: S.optional(__S(73)),
-          extendedLocation: S.optional(__S(74)),
+          properties: S.optional(VirtualNetworkProperties),
+          extendedLocation: S.optional(GetVirtualNetworkResponseExtendedLocation),
         }),
       ).annotate({
         identifier: "GetVirtualNetworkResponse",
@@ -2575,12 +3301,12 @@ function __c9(j: number): any {
         }),
       ).annotate({ identifier: "VmSkuCapabilities" });
     case 6:
-      return S.Array(__S(77));
+      return S.Array(VmSkuCapabilities);
     case 7:
       return S.suspend(() =>
         S.Struct({
           resourceType: S.optional(S.String),
-          capabilities: S.optional(__S(78)),
+          capabilities: S.optional(VmSkuPropertiesCapabilitiesList),
           name: S.optional(S.String),
           tier: S.optional(S.String),
           size: S.optional(S.String),
@@ -2591,12 +3317,12 @@ function __c9(j: number): any {
 function __c10(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(79));
+      return S.Array(VmSkuProperties);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          provisioningState: S.optional(S.String),
-          values: S.optional(__S(80)),
+          provisioningState: S.optional(ProvisioningState),
+          values: S.optional(GetVMSkusResponsePropertiesValuesList),
         }),
       ).annotate({
         identifier: "GetVMSkusResponseProperties",
@@ -2607,9 +3333,9 @@ function __c10(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(8)),
-          extendedLocation: S.optional(__S(6)),
-          properties: S.optional(__S(81)),
+          systemData: S.optional(SystemData),
+          extendedLocation: S.optional(ExtendedLocation),
+          properties: S.optional(GetVMSkusResponseProperties),
         }),
       ).annotate({ identifier: "GetVMSkusResponse" });
     case 3:
@@ -2628,11 +3354,11 @@ function __c10(j: number): any {
         identifier: "ListAgentPoolByProvisionedClusterRequest",
       });
     case 4:
-      return S.Array(__S(23));
+      return S.Array(AgentPool);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(84)),
+          value: S.optional(AgentPoolListResultValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "AgentPoolListResult" });
@@ -2657,8 +3383,8 @@ function __c10(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(8)),
-          properties: __S(25),
+          systemData: S.optional(SystemData),
+          properties: HybridIdentityMetadataProperties,
         }),
       ).annotate({ identifier: "HybridIdentityMetadata" });
   }
@@ -2666,12 +3392,12 @@ function __c10(j: number): any {
 function __c11(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(87));
+      return S.Array(HybridIdentityMetadata);
     case 1:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: __S(88),
+          value: HybridIdentityMetadataListValueList,
         }),
       ).annotate({
         identifier: "HybridIdentityMetadataList",
@@ -2697,17 +3423,17 @@ function __c11(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(8)),
-          extendedLocation: S.optional(__S(6)),
-          properties: S.optional(__S(34)),
+          systemData: S.optional(SystemData),
+          extendedLocation: S.optional(ExtendedLocation),
+          properties: S.optional(KubernetesVersionProfileProperties),
         }),
       ).annotate({ identifier: "KubernetesVersionProfile" });
     case 4:
-      return S.Array(__S(91));
+      return S.Array(KubernetesVersionProfile);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(92)),
+          value: S.optional(KubernetesVersionProfileListValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -2742,17 +3468,17 @@ function __c12(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           isDataAction: S.optional(S.Boolean),
-          display: S.optional(__S(95)),
-          origin: S.optional(S.String),
-          actionType: S.optional(S.String),
+          display: S.optional(OperationDisplay),
+          origin: S.optional(OperationOrigin),
+          actionType: S.optional(OperationActionType),
         }),
       ).annotate({ identifier: "Operation" });
     case 1:
-      return S.Array(__S(96));
+      return S.Array(Operation);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(97)),
+          value: S.optional(ListOperationsResponseValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
@@ -2774,7 +3500,7 @@ function __c12(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          kubeconfigs: S.optional(__S(78)),
+          kubeconfigs: S.optional(ListCredentialResponsePropertiesKubeconfigsList),
         }),
       ).annotate({
         identifier: "ListCredentialResponseProperties",
@@ -2785,9 +3511,9 @@ function __c12(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           resourceId: S.optional(S.String),
-          status: S.optional(S.String),
-          error: S.optional(__S(70)),
-          properties: S.optional(__S(100)),
+          status: S.optional(ProvisioningState),
+          error: S.optional(ListCredentialResponseError),
+          properties: S.optional(ListCredentialResponseProperties),
         }),
       ).annotate({ identifier: "ListCredentialResponse" });
     case 6:
@@ -2811,9 +3537,9 @@ function __c12(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(8)),
-          properties: S.optional(__S(57)),
-          extendedLocation: S.optional(__S(6)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(ProvisionedClusterProperties),
+          extendedLocation: S.optional(ExtendedLocation),
         }),
       ).annotate({ identifier: "ProvisionedCluster" });
   }
@@ -2821,11 +3547,11 @@ function __c12(j: number): any {
 function __c13(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(103));
+      return S.Array(ProvisionedCluster);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(104)),
+          value: S.optional(ProvisionedClusterListResultValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -2868,19 +3594,19 @@ function __c13(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(8)),
-          tags: S.optional(__S(0)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(VirtualNetworkTagsMap),
           location: S.String,
-          properties: S.optional(__S(73)),
-          extendedLocation: S.optional(__S(74)),
+          properties: S.optional(VirtualNetworkProperties),
+          extendedLocation: S.optional(VirtualNetworkExtendedLocation),
         }),
       ).annotate({ identifier: "VirtualNetwork" });
     case 5:
-      return S.Array(__S(108));
+      return S.Array(VirtualNetwork);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(109)),
+          value: S.optional(VirtualNetworksListResultValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -2921,8 +3647,8 @@ function __c14(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          provisioningState: S.optional(S.String),
-          values: S.optional(__S(80)),
+          provisioningState: S.optional(ProvisioningState),
+          values: S.optional(VmSkuProfilePropertiesValuesList),
         }),
       ).annotate({ identifier: "VmSkuProfileProperties" });
     case 2:
@@ -2931,27 +3657,27 @@ function __c14(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(8)),
-          extendedLocation: S.optional(__S(6)),
-          properties: S.optional(__S(113)),
+          systemData: S.optional(SystemData),
+          extendedLocation: S.optional(ExtendedLocation),
+          properties: S.optional(VmSkuProfileProperties),
         }),
       ).annotate({ identifier: "VmSkuProfile" });
     case 3:
-      return S.Array(__S(114));
+      return S.Array(VmSkuProfile);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(115)),
+          value: S.optional(VmSkuProfileListValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "VmSkuProfileList" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          osType: S.optional(S.String),
-          osSKU: S.optional(S.String),
-          nodeLabels: S.optional(__S(0)),
-          nodeTaints: S.optional(__S(1)),
+          osType: S.optional(OSType),
+          osSKU: S.optional(OSSKU),
+          nodeLabels: S.optional(NamedAgentPoolProfileInputNodeLabelsMap),
+          nodeTaints: S.optional(NamedAgentPoolProfileInputNodeTaintsList),
           maxCount: S.optional(S.Number),
           minCount: S.optional(S.Number),
           enableAutoScaling: S.optional(S.Boolean),
@@ -2964,20 +3690,20 @@ function __c14(j: number): any {
         identifier: "NamedAgentPoolProfileInput",
       });
     case 6:
-      return S.Array(__S(117));
+      return S.Array(NamedAgentPoolProfileInput);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          linuxProfile: S.optional(__S(40)),
-          controlPlane: S.optional(__S(42)),
+          linuxProfile: S.optional(LinuxProfileProperties),
+          controlPlane: S.optional(ControlPlaneProfile),
           kubernetesVersion: S.optional(S.String),
-          networkProfile: S.optional(__S(44)),
-          storageProfile: S.optional(__S(46)),
-          clusterVMAccessProfile: S.optional(__S(47)),
-          agentPoolProfiles: S.optional(__S(118)),
-          cloudProviderProfile: S.optional(__S(51)),
-          licenseProfile: S.optional(__S(55)),
-          autoScalerProfile: S.optional(__S(56)),
+          networkProfile: S.optional(NetworkProfile),
+          storageProfile: S.optional(StorageProfile),
+          clusterVMAccessProfile: S.optional(ClusterVMAccessProfile),
+          agentPoolProfiles: S.optional(ProvisionedClusterPropertiesInputAgentPoolProfilesList),
+          cloudProviderProfile: S.optional(CloudProviderProfile),
+          licenseProfile: S.optional(ProvisionedClusterLicenseProfile),
+          autoScalerProfile: S.optional(ProvisionedClusterPropertiesInputAutoScalerProfile),
         }),
       ).annotate({
         identifier: "ProvisionedClusterPropertiesInput",
@@ -2990,8 +3716,8 @@ function __c15(j: number): any {
       return S.suspend(() =>
         S.Struct({
           connectedClusterResourceUri: S.String.pipe(T.Label()),
-          properties: S.optional(__S(119)),
-          extendedLocation: S.optional(__S(6)),
+          properties: S.optional(ProvisionedClusterPropertiesInput),
+          extendedLocation: S.optional(ExtendedLocation),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -3016,7 +3742,7 @@ function __c15(j: number): any {
       return S.suspend(() =>
         S.Struct({
           connectedClusterResourceUri: S.String.pipe(T.Label()),
-          properties: __S(121),
+          properties: HybridIdentityMetadataPropertiesInput,
         }).pipe(
           T.Http({
             method: "PUT",
@@ -3032,7 +3758,7 @@ function __c15(j: number): any {
       return S.suspend(() =>
         S.Struct({
           customLocationResourceUri: S.String.pipe(T.Label()),
-          extendedLocation: S.optional(__S(6)),
+          extendedLocation: S.optional(ExtendedLocation),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -3048,7 +3774,7 @@ function __c15(j: number): any {
       return S.suspend(() =>
         S.Struct({
           customLocationResourceUri: S.String.pipe(T.Label()),
-          extendedLocation: S.optional(__S(6)),
+          extendedLocation: S.optional(ExtendedLocation),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -3064,7 +3790,7 @@ function __c15(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           virtualNetworkName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(0)),
+          tags: S.optional(UpdateVirtualNetworkRequestTagsMap),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3082,11 +3808,11 @@ function __c15(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(8)),
-          tags: S.optional(__S(0)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(UpdateVirtualNetworkResponseTagsMap),
           location: S.String,
-          properties: S.optional(__S(73)),
-          extendedLocation: S.optional(__S(74)),
+          properties: S.optional(VirtualNetworkProperties),
+          extendedLocation: S.optional(UpdateVirtualNetworkResponseExtendedLocation),
         }),
       ).annotate({
         identifier: "UpdateVirtualNetworkResponse",
@@ -3094,10 +3820,10 @@ function __c15(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          infraVnetProfile: S.optional(__S(67)),
-          vipPool: S.optional(__S(69)),
-          vmipPool: S.optional(__S(69)),
-          dnsServers: S.optional(__S(1)),
+          infraVnetProfile: S.optional(VirtualNetworkPropertiesInfraVnetProfile),
+          vipPool: S.optional(VirtualNetworkPropertiesInputVipPoolList),
+          vmipPool: S.optional(VirtualNetworkPropertiesInputVmipPoolList),
+          dnsServers: S.optional(VirtualNetworkPropertiesInputDnsServersList),
           gateway: S.optional(S.String),
           ipAddressPrefix: S.optional(S.String),
           vlanID: S.optional(S.Number),
@@ -3115,10 +3841,10 @@ function __c16(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           virtualNetworkName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(0)),
+          tags: S.optional(VirtualNetworksCreateOrUpdateRequestTagsMap),
           location: S.String,
-          properties: S.optional(__S(127)),
-          extendedLocation: S.optional(__S(74)),
+          properties: S.optional(VirtualNetworkPropertiesInput),
+          extendedLocation: S.optional(VirtualNetworksCreateOrUpdateRequestExtendedLocation),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -3136,57 +3862,14 @@ function __c16(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(8)),
-          tags: S.optional(__S(0)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(VirtualNetworksCreateOrUpdateResponseTagsMap),
           location: S.String,
-          properties: S.optional(__S(73)),
-          extendedLocation: S.optional(__S(74)),
+          properties: S.optional(VirtualNetworkProperties),
+          extendedLocation: S.optional(VirtualNetworksCreateOrUpdateResponseExtendedLocation),
         }),
       ).annotate({
         identifier: "VirtualNetworksCreateOrUpdateResponse",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
-    case 9:
-      return __c9(i & 7);
-    case 10:
-      return __c10(i & 7);
-    case 11:
-      return __c11(i & 7);
-    case 12:
-      return __c12(i & 7);
-    case 13:
-      return __c13(i & 7);
-    case 14:
-      return __c14(i & 7);
-    case 15:
-      return __c15(i & 7);
-    case 16:
-      return __c16(i & 7);
   }
 }

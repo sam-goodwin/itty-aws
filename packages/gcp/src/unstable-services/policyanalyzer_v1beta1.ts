@@ -7,8 +7,6 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -48,7 +46,14 @@ export interface QueryFoldersLocationsActivityTypesActivitiesRequest {
   /** Optional. The maximum number of results to return from this request. Max limit is 1000. Non-positive values are ignored. The presence of `nextPageToken` in the response indicates that more results might be available. */
   pageSize?: number;
 }
+const QueryFoldersLocationsActivityTypesActivitiesRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<QueryFoldersLocationsActivityTypesActivitiesRequest>;
+
 export type DocumentMap = { [key: string]: unknown | undefined };
+const DocumentMap = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<DocumentMap>;
+
 /** Represents data observation period. */
 export interface GoogleCloudPolicyanalyzerV1beta1ObservationPeriod {
   /** The observation start time. */
@@ -56,6 +61,11 @@ export interface GoogleCloudPolicyanalyzerV1beta1ObservationPeriod {
   /** The observation end time. */
   endTime?: string;
 }
+const GoogleCloudPolicyanalyzerV1beta1ObservationPeriod = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<GoogleCloudPolicyanalyzerV1beta1ObservationPeriod>;
+
 /** Represents Activity on a GCP resource over specific observation period. */
 export interface GoogleCloudPolicyanalyzerV1beta1Activity {
   /** The type of the activity. */
@@ -67,8 +77,18 @@ export interface GoogleCloudPolicyanalyzerV1beta1Activity {
   /** The data observation period to build the activity. */
   observationPeriod?: GoogleCloudPolicyanalyzerV1beta1ObservationPeriod;
 }
+const GoogleCloudPolicyanalyzerV1beta1Activity = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<GoogleCloudPolicyanalyzerV1beta1Activity>;
+
 export type GoogleCloudPolicyanalyzerV1beta1ActivityList =
   Array<GoogleCloudPolicyanalyzerV1beta1Activity>;
+const GoogleCloudPolicyanalyzerV1beta1ActivityList = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<GoogleCloudPolicyanalyzerV1beta1ActivityList>;
+
 /** Response to the `QueryActivity` method. */
 export interface GoogleCloudPolicyanalyzerV1beta1QueryActivityResponse {
   /** If there might be more results than those appearing in this response, then `nextPageToken` is included. To get the next set of results, call this method again using the value of `nextPageToken` as `pageToken`. */
@@ -76,6 +96,11 @@ export interface GoogleCloudPolicyanalyzerV1beta1QueryActivityResponse {
   /** The set of activities that match the filter included in the request. */
   activities?: GoogleCloudPolicyanalyzerV1beta1ActivityList;
 }
+const GoogleCloudPolicyanalyzerV1beta1QueryActivityResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<GoogleCloudPolicyanalyzerV1beta1QueryActivityResponse>;
+
 export interface QueryOrganizationsLocationsActivityTypesActivitiesRequest {
   /** Optional. Optional filter expression to restrict the activities returned. Supported filters are: - service_account_last_authn.full_resource_name {=} - service_account_key_last_authn.full_resource_name {=} */
   filter?: string;
@@ -86,6 +111,11 @@ export interface QueryOrganizationsLocationsActivityTypesActivitiesRequest {
   /** Optional. The maximum number of results to return from this request. Max limit is 1000. Non-positive values are ignored. The presence of `nextPageToken` in the response indicates that more results might be available. */
   pageSize?: number;
 }
+const QueryOrganizationsLocationsActivityTypesActivitiesRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<QueryOrganizationsLocationsActivityTypesActivitiesRequest>;
+
 export interface QueryProjectsLocationsActivityTypesActivitiesRequest {
   /** Optional. If present, then retrieve the next batch of results from the preceding call to this method. `pageToken` must be the value of `nextPageToken` from the previous response. The values of other method parameters should be identical to those in the previous call. */
   pageToken?: string;
@@ -96,6 +126,11 @@ export interface QueryProjectsLocationsActivityTypesActivitiesRequest {
   /** Optional. Optional filter expression to restrict the activities returned. Supported filters are: - service_account_last_authn.full_resource_name {=} - service_account_key_last_authn.full_resource_name {=} */
   filter?: string;
 }
+const QueryProjectsLocationsActivityTypesActivitiesRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<QueryProjectsLocationsActivityTypesActivitiesRequest>;
+
 export type QueryFoldersLocationsActivityTypesActivitiesError = NotFound | Forbidden | GcpOpError;
 /** Queries policy activities on GCP resources. */
 export const queryFoldersLocationsActivityTypesActivities: API.PaginatedOperationMethod<
@@ -105,8 +140,8 @@ export const queryFoldersLocationsActivityTypesActivities: API.PaginatedOperatio
   GcpOpContext,
   GoogleCloudPolicyanalyzerV1beta1QueryActivityResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(0) as any as S.Schema<QueryFoldersLocationsActivityTypesActivitiesRequest>,
-  output: __S(5) as any as S.Schema<GoogleCloudPolicyanalyzerV1beta1QueryActivityResponse>,
+  input: QueryFoldersLocationsActivityTypesActivitiesRequest,
+  output: GoogleCloudPolicyanalyzerV1beta1QueryActivityResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -125,8 +160,8 @@ export const queryOrganizationsLocationsActivityTypesActivities: API.PaginatedOp
   GcpOpContext,
   GoogleCloudPolicyanalyzerV1beta1QueryActivityResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(6) as any as S.Schema<QueryOrganizationsLocationsActivityTypesActivitiesRequest>,
-  output: __S(5) as any as S.Schema<GoogleCloudPolicyanalyzerV1beta1QueryActivityResponse>,
+  input: QueryOrganizationsLocationsActivityTypesActivitiesRequest,
+  output: GoogleCloudPolicyanalyzerV1beta1QueryActivityResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -142,8 +177,8 @@ export const queryProjectsLocationsActivityTypesActivities: API.PaginatedOperati
   GcpOpContext,
   GoogleCloudPolicyanalyzerV1beta1QueryActivityResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(7) as any as S.Schema<QueryProjectsLocationsActivityTypesActivitiesRequest>,
-  output: __S(5) as any as S.Schema<GoogleCloudPolicyanalyzerV1beta1QueryActivityResponse>,
+  input: QueryProjectsLocationsActivityTypesActivitiesRequest,
+  output: GoogleCloudPolicyanalyzerV1beta1QueryActivityResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -185,20 +220,20 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           activityType: S.optional(S.String),
-          activity: S.optional(__S(1)),
+          activity: S.optional(DocumentMap),
           fullResourceName: S.optional(S.String),
-          observationPeriod: S.optional(__S(2)),
+          observationPeriod: S.optional(GoogleCloudPolicyanalyzerV1beta1ObservationPeriod),
         }),
       ).annotate({
         identifier: "GoogleCloudPolicyanalyzerV1beta1Activity",
       });
     case 4:
-      return S.Array(__S(3));
+      return S.Array(GoogleCloudPolicyanalyzerV1beta1Activity);
     case 5:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          activities: S.optional(__S(4)),
+          activities: S.optional(GoogleCloudPolicyanalyzerV1beta1ActivityList),
         }),
       ).annotate({
         identifier: "GoogleCloudPolicyanalyzerV1beta1QueryActivityResponse",
@@ -237,16 +272,5 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "QueryProjectsLocationsActivityTypesActivitiesRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
   }
 }

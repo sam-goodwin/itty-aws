@@ -8,8 +8,6 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "CodeGuruProfiler",
   serviceShapeName: "CodeGuruProfiler",
@@ -117,32 +115,50 @@ export type ChannelId = string;
 export type ChannelUri = string;
 export type EventPublisher = string;
 export type EventPublishers = string[];
+const EventPublishers = /*@__PURE__*/ __L.at(__c0, 0);
 export interface Channel {
   id?: string;
   uri: string;
   eventPublishers: string[];
 }
+const Channel = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<Channel>;
 export type Channels = Channel[];
+const Channels = /*@__PURE__*/ __L.at(__c0, 2);
 export interface AddNotificationChannelsRequest {
   profilingGroupName: string;
   channels: Channel[];
 }
+const AddNotificationChannelsRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<AddNotificationChannelsRequest>;
 export interface NotificationConfiguration {
   channels?: Channel[];
 }
+const NotificationConfiguration = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<NotificationConfiguration>;
 export interface AddNotificationChannelsResponse {
   notificationConfiguration?: NotificationConfiguration;
 }
+const AddNotificationChannelsResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<AddNotificationChannelsResponse>;
 export type Period = string;
 export type AggregationPeriod = string;
 export type MetricType = string;
 export type ThreadStates = string[];
+const ThreadStates = EventPublishers as any as S.Schema<ThreadStates>;
 export interface FrameMetric {
   frameName: string;
   type: string;
   threadStates: string[];
 }
+const FrameMetric = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<FrameMetric>;
 export type FrameMetrics = FrameMetric[];
+const FrameMetrics = /*@__PURE__*/ __L.at(__c0, 7);
 export interface BatchGetFrameMetricDataRequest {
   profilingGroupName: string;
   startTime?: Date;
@@ -151,18 +167,28 @@ export interface BatchGetFrameMetricDataRequest {
   targetResolution?: string;
   frameMetrics?: FrameMetric[];
 }
+const BatchGetFrameMetricDataRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<BatchGetFrameMetricDataRequest>;
 export interface TimestampStructure {
   value: Date;
 }
+const TimestampStructure = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<TimestampStructure>;
 export type ListOfTimestamps = TimestampStructure[];
+const ListOfTimestamps = /*@__PURE__*/ __L.at(__c1, 2);
 export type UnprocessedEndTimeMap = { [key: string]: TimestampStructure[] | undefined };
+const UnprocessedEndTimeMap = /*@__PURE__*/ __L.at(__c1, 3);
 export type FrameMetricValue = number;
 export type FrameMetricValues = number[];
+const FrameMetricValues = /*@__PURE__*/ __L.at(__c1, 4);
 export interface FrameMetricDatum {
   frameMetric: FrameMetric;
   values: number[];
 }
+const FrameMetricDatum = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<FrameMetricDatum>;
 export type FrameMetricData = FrameMetricDatum[];
+const FrameMetricData = /*@__PURE__*/ __L.at(__c1, 6);
 export interface BatchGetFrameMetricDataResponse {
   startTime: Date;
   endTime: Date;
@@ -171,30 +197,50 @@ export interface BatchGetFrameMetricDataResponse {
   unprocessedEndTimes: { [key: string]: TimestampStructure[] | undefined };
   frameMetricData: FrameMetricDatum[];
 }
+const BatchGetFrameMetricDataResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<BatchGetFrameMetricDataResponse>;
 export type FleetInstanceId = string;
 export type MetadataField = string;
 export type Metadata = { [key: string]: string | undefined };
+const Metadata = /*@__PURE__*/ __L.at(__c2, 0);
 export interface ConfigureAgentRequest {
   profilingGroupName: string;
   fleetInstanceId?: string;
   metadata?: { [key: string]: string | undefined };
 }
+const ConfigureAgentRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<ConfigureAgentRequest>;
 export type AgentParameterField = string;
 export type AgentParameters = { [key: string]: string | undefined };
+const AgentParameters = /*@__PURE__*/ __L.at(__c2, 2);
 export interface AgentConfiguration {
   shouldProfile: boolean;
   periodInSeconds: number;
   agentParameters?: { [key: string]: string | undefined };
 }
+const AgentConfiguration = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<AgentConfiguration>;
 export interface ConfigureAgentResponse {
   configuration: AgentConfiguration;
 }
+const ConfigureAgentResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<ConfigureAgentResponse>;
 export type ComputePlatform = string;
 export type ClientToken = string;
 export interface AgentOrchestrationConfig {
   profilingEnabled: boolean;
 }
+const AgentOrchestrationConfig = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<AgentOrchestrationConfig>;
 export type TagsMap = { [key: string]: string | undefined };
+const TagsMap = Metadata as any as S.Schema<TagsMap>;
 export interface CreateProfilingGroupRequest {
   profilingGroupName: string;
   computePlatform?: string;
@@ -202,16 +248,25 @@ export interface CreateProfilingGroupRequest {
   agentOrchestrationConfig?: AgentOrchestrationConfig;
   tags?: { [key: string]: string | undefined };
 }
+const CreateProfilingGroupRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<CreateProfilingGroupRequest>;
 export type ProfilingGroupArn = string;
 export interface AggregatedProfileTime {
   start?: Date;
   period?: string;
 }
+const AggregatedProfileTime = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<AggregatedProfileTime>;
 export interface ProfilingStatus {
   latestAgentProfileReportedAt?: Date;
   latestAggregatedProfile?: AggregatedProfileTime;
   latestAgentOrchestratedAt?: Date;
 }
+const ProfilingStatus = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<ProfilingStatus>;
 export interface ProfilingGroupDescription {
   name?: string;
   agentOrchestrationConfig?: AgentOrchestrationConfig;
@@ -222,19 +277,41 @@ export interface ProfilingGroupDescription {
   computePlatform?: string;
   tags?: { [key: string]: string | undefined };
 }
+const ProfilingGroupDescription = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<ProfilingGroupDescription>;
 export interface CreateProfilingGroupResponse {
   profilingGroup: ProfilingGroupDescription;
 }
+const CreateProfilingGroupResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<CreateProfilingGroupResponse>;
 export interface DeleteProfilingGroupRequest {
   profilingGroupName: string;
 }
+const DeleteProfilingGroupRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<DeleteProfilingGroupRequest>;
 export interface DeleteProfilingGroupResponse {}
+const DeleteProfilingGroupResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<DeleteProfilingGroupResponse>;
 export interface DescribeProfilingGroupRequest {
   profilingGroupName: string;
 }
+const DescribeProfilingGroupRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<DescribeProfilingGroupRequest>;
 export interface DescribeProfilingGroupResponse {
   profilingGroup: ProfilingGroupDescription;
 }
+const DescribeProfilingGroupResponse =
+  CreateProfilingGroupResponse as any as S.Schema<DescribeProfilingGroupResponse>;
 export type PaginationToken = string;
 export type MaxResults = number;
 export interface GetFindingsReportAccountSummaryRequest {
@@ -242,6 +319,10 @@ export interface GetFindingsReportAccountSummaryRequest {
   maxResults?: number;
   dailyReportsOnly?: boolean;
 }
+const GetFindingsReportAccountSummaryRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<GetFindingsReportAccountSummaryRequest>;
 export type FindingsReportId = string;
 export interface FindingsReportSummary {
   id?: string;
@@ -250,25 +331,44 @@ export interface FindingsReportSummary {
   profileEndTime?: Date;
   totalNumberOfFindings?: number;
 }
+const FindingsReportSummary = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<FindingsReportSummary>;
 export type FindingsReportSummaries = FindingsReportSummary[];
+const FindingsReportSummaries = /*@__PURE__*/ __L.at(__c4, 0);
 export interface GetFindingsReportAccountSummaryResponse {
   reportSummaries: FindingsReportSummary[];
   nextToken?: string;
 }
+const GetFindingsReportAccountSummaryResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<GetFindingsReportAccountSummaryResponse>;
 export interface GetNotificationConfigurationRequest {
   profilingGroupName: string;
 }
+const GetNotificationConfigurationRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<GetNotificationConfigurationRequest>;
 export interface GetNotificationConfigurationResponse {
   notificationConfiguration: NotificationConfiguration;
 }
+const GetNotificationConfigurationResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<GetNotificationConfigurationResponse>;
 export interface GetPolicyRequest {
   profilingGroupName: string;
 }
+const GetPolicyRequest = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<GetPolicyRequest>;
 export type RevisionId = string;
 export interface GetPolicyResponse {
   policy: string;
   revisionId: string;
 }
+const GetPolicyResponse = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<GetPolicyResponse>;
 export type MaxDepth = number;
 export interface GetProfileRequest {
   profilingGroupName: string;
@@ -278,11 +378,13 @@ export interface GetProfileRequest {
   maxDepth?: number;
   accept?: string;
 }
+const GetProfileRequest = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<GetProfileRequest>;
 export interface GetProfileResponse {
   profile: T.StreamingOutputBody;
   contentType: string;
   contentEncoding?: string;
 }
+const GetProfileResponse = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<GetProfileResponse>;
 export type Locale = string;
 export interface GetRecommendationsRequest {
   profilingGroupName: string;
@@ -290,10 +392,17 @@ export interface GetRecommendationsRequest {
   endTime: Date;
   locale?: string;
 }
+const GetRecommendationsRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  0,
+) as any as S.Schema<GetRecommendationsRequest>;
 export type TargetFrame = string[];
+const TargetFrame = EventPublishers as any as S.Schema<TargetFrame>;
 export type TargetFrames = string[][];
+const TargetFrames = /*@__PURE__*/ __L.at(__c5, 1);
 export type Percentage = number;
 export type Strings = string[];
+const Strings = EventPublishers as any as S.Schema<Strings>;
 export interface Pattern {
   id?: string;
   name?: string;
@@ -303,12 +412,15 @@ export interface Pattern {
   thresholdPercent?: number;
   countersToAggregate?: string[];
 }
+const Pattern = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<Pattern>;
 export interface Match {
   targetFramesIndex?: number;
   frameAddress?: string;
   thresholdBreachValue?: number;
 }
+const Match = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<Match>;
 export type Matches = Match[];
+const Matches = /*@__PURE__*/ __L.at(__c5, 4);
 export interface Recommendation {
   allMatchesCount: number;
   allMatchesSum: number;
@@ -317,29 +429,37 @@ export interface Recommendation {
   startTime: Date;
   endTime: Date;
 }
+const Recommendation = /*@__PURE__*/ __L.at(__c5, 5) as any as S.Schema<Recommendation>;
 export type Recommendations = Recommendation[];
+const Recommendations = /*@__PURE__*/ __L.at(__c5, 6);
 export interface Metric {
   frameName: string;
   type: string;
   threadStates: string[];
 }
+const Metric = FrameMetric as any as S.Schema<Metric>;
 export type FeedbackType = string;
 export interface UserFeedback {
   type: string;
 }
+const UserFeedback = /*@__PURE__*/ __L.at(__c5, 7) as any as S.Schema<UserFeedback>;
 export interface AnomalyInstance {
   id: string;
   startTime: Date;
   endTime?: Date;
   userFeedback?: UserFeedback;
 }
+const AnomalyInstance = /*@__PURE__*/ __L.at(__c6, 0) as any as S.Schema<AnomalyInstance>;
 export type AnomalyInstances = AnomalyInstance[];
+const AnomalyInstances = /*@__PURE__*/ __L.at(__c6, 1);
 export interface Anomaly {
   metric: Metric;
   reason: string;
   instances: AnomalyInstance[];
 }
+const Anomaly = /*@__PURE__*/ __L.at(__c6, 2) as any as S.Schema<Anomaly>;
 export type Anomalies = Anomaly[];
+const Anomalies = /*@__PURE__*/ __L.at(__c6, 3);
 export interface GetRecommendationsResponse {
   profilingGroupName: string;
   profileStartTime: Date;
@@ -347,6 +467,10 @@ export interface GetRecommendationsResponse {
   recommendations: Recommendation[];
   anomalies: Anomaly[];
 }
+const GetRecommendationsResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  4,
+) as any as S.Schema<GetRecommendationsResponse>;
 export interface ListFindingsReportsRequest {
   profilingGroupName: string;
   startTime: Date;
@@ -355,10 +479,18 @@ export interface ListFindingsReportsRequest {
   maxResults?: number;
   dailyReportsOnly?: boolean;
 }
+const ListFindingsReportsRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  5,
+) as any as S.Schema<ListFindingsReportsRequest>;
 export interface ListFindingsReportsResponse {
   findingsReportSummaries: FindingsReportSummary[];
   nextToken?: string;
 }
+const ListFindingsReportsResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  6,
+) as any as S.Schema<ListFindingsReportsResponse>;
 export type OrderBy = string;
 export interface ListProfileTimesRequest {
   profilingGroupName: string;
@@ -369,68 +501,116 @@ export interface ListProfileTimesRequest {
   maxResults?: number;
   nextToken?: string;
 }
+const ListProfileTimesRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  7,
+) as any as S.Schema<ListProfileTimesRequest>;
 export interface ProfileTime {
   start?: Date;
 }
+const ProfileTime = /*@__PURE__*/ __L.at(__c7, 0) as any as S.Schema<ProfileTime>;
 export type ProfileTimes = ProfileTime[];
+const ProfileTimes = /*@__PURE__*/ __L.at(__c7, 1);
 export interface ListProfileTimesResponse {
   profileTimes: ProfileTime[];
   nextToken?: string;
 }
+const ListProfileTimesResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  2,
+) as any as S.Schema<ListProfileTimesResponse>;
 export interface ListProfilingGroupsRequest {
   nextToken?: string;
   maxResults?: number;
   includeDescription?: boolean;
 }
+const ListProfilingGroupsRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  3,
+) as any as S.Schema<ListProfilingGroupsRequest>;
 export type ProfilingGroupNames = string[];
+const ProfilingGroupNames = EventPublishers as any as S.Schema<ProfilingGroupNames>;
 export type ProfilingGroupDescriptions = ProfilingGroupDescription[];
+const ProfilingGroupDescriptions = /*@__PURE__*/ __L.at(__c7, 4);
 export interface ListProfilingGroupsResponse {
   profilingGroupNames: string[];
   profilingGroups?: ProfilingGroupDescription[];
   nextToken?: string;
 }
+const ListProfilingGroupsResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  5,
+) as any as S.Schema<ListProfilingGroupsResponse>;
 export interface ListTagsForResourceRequest {
   resourceArn: string;
 }
+const ListTagsForResourceRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  6,
+) as any as S.Schema<ListTagsForResourceRequest>;
 export interface ListTagsForResourceResponse {
   tags?: { [key: string]: string | undefined };
 }
+const ListTagsForResourceResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  7,
+) as any as S.Schema<ListTagsForResourceResponse>;
 export interface PostAgentProfileRequest {
   profilingGroupName: string;
   agentProfile: T.StreamingInputBody;
   profileToken?: string;
   contentType: string;
 }
+const PostAgentProfileRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  0,
+) as any as S.Schema<PostAgentProfileRequest>;
 export interface PostAgentProfileResponse {}
+const PostAgentProfileResponse =
+  DeleteProfilingGroupResponse as any as S.Schema<PostAgentProfileResponse>;
 export type ActionGroup = string;
 export type Principal = string;
 export type Principals = string[];
+const Principals = EventPublishers as any as S.Schema<Principals>;
 export interface PutPermissionRequest {
   profilingGroupName: string;
   actionGroup: string;
   principals: string[];
   revisionId?: string;
 }
+const PutPermissionRequest = /*@__PURE__*/ __L.at(__c8, 1) as any as S.Schema<PutPermissionRequest>;
 export interface PutPermissionResponse {
   policy: string;
   revisionId: string;
 }
+const PutPermissionResponse = GetPolicyResponse as any as S.Schema<PutPermissionResponse>;
 export interface RemoveNotificationChannelRequest {
   profilingGroupName: string;
   channelId: string;
 }
+const RemoveNotificationChannelRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  2,
+) as any as S.Schema<RemoveNotificationChannelRequest>;
 export interface RemoveNotificationChannelResponse {
   notificationConfiguration?: NotificationConfiguration;
 }
+const RemoveNotificationChannelResponse =
+  AddNotificationChannelsResponse as any as S.Schema<RemoveNotificationChannelResponse>;
 export interface RemovePermissionRequest {
   profilingGroupName: string;
   actionGroup: string;
   revisionId: string;
 }
+const RemovePermissionRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  3,
+) as any as S.Schema<RemovePermissionRequest>;
 export interface RemovePermissionResponse {
   policy: string;
   revisionId: string;
 }
+const RemovePermissionResponse = GetPolicyResponse as any as S.Schema<RemovePermissionResponse>;
 export type AnomalyInstanceId = string;
 export interface SubmitFeedbackRequest {
   profilingGroupName: string;
@@ -438,25 +618,43 @@ export interface SubmitFeedbackRequest {
   type: string;
   comment?: string;
 }
+const SubmitFeedbackRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  4,
+) as any as S.Schema<SubmitFeedbackRequest>;
 export interface SubmitFeedbackResponse {}
+const SubmitFeedbackResponse =
+  DeleteProfilingGroupResponse as any as S.Schema<SubmitFeedbackResponse>;
 export interface TagResourceRequest {
   resourceArn: string;
   tags: { [key: string]: string | undefined };
 }
+const TagResourceRequest = /*@__PURE__*/ __L.at(__c8, 5) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
+const TagResourceResponse = DeleteProfilingGroupResponse as any as S.Schema<TagResourceResponse>;
 export type TagKeys = string[];
+const TagKeys = EventPublishers as any as S.Schema<TagKeys>;
 export interface UntagResourceRequest {
   resourceArn: string;
   tagKeys: string[];
 }
+const UntagResourceRequest = /*@__PURE__*/ __L.at(__c8, 6) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
+const UntagResourceResponse =
+  DeleteProfilingGroupResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateProfilingGroupRequest {
   profilingGroupName: string;
   agentOrchestrationConfig: AgentOrchestrationConfig;
 }
+const UpdateProfilingGroupRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  7,
+) as any as S.Schema<UpdateProfilingGroupRequest>;
 export interface UpdateProfilingGroupResponse {
   profilingGroup: ProfilingGroupDescription;
 }
+const UpdateProfilingGroupResponse =
+  CreateProfilingGroupResponse as any as S.Schema<UpdateProfilingGroupResponse>;
 export type AddNotificationChannelsError =
   | ConflictException
   | InternalServerException
@@ -474,8 +672,8 @@ export const addNotificationChannels: API.OperationMethod<
   AddNotificationChannelsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3) as any as S.Schema<AddNotificationChannelsRequest>,
-  output: __S(5) as any as S.Schema<AddNotificationChannelsResponse>,
+  input: AddNotificationChannelsRequest,
+  output: AddNotificationChannelsResponse,
   errors: [
     ConflictException,
     InternalServerException,
@@ -505,8 +703,8 @@ export const batchGetFrameMetricData: API.OperationMethod<
   BatchGetFrameMetricDataError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8) as any as S.Schema<BatchGetFrameMetricDataRequest>,
-  output: __S(15) as any as S.Schema<BatchGetFrameMetricDataResponse>,
+  input: BatchGetFrameMetricDataRequest,
+  output: BatchGetFrameMetricDataResponse,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -535,8 +733,8 @@ export const configureAgent: API.OperationMethod<
   ConfigureAgentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17) as any as S.Schema<ConfigureAgentRequest>,
-  output: __S(20) as any as S.Schema<ConfigureAgentResponse>,
+  input: ConfigureAgentRequest,
+  output: ConfigureAgentResponse,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -564,8 +762,8 @@ export const createProfilingGroup: API.OperationMethod<
   CreateProfilingGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22) as any as S.Schema<CreateProfilingGroupRequest>,
-  output: __S(26) as any as S.Schema<CreateProfilingGroupResponse>,
+  input: CreateProfilingGroupRequest,
+  output: CreateProfilingGroupResponse,
   errors: [
     ConflictException,
     InternalServerException,
@@ -594,8 +792,8 @@ export const deleteProfilingGroup: API.OperationMethod<
   DeleteProfilingGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27) as any as S.Schema<DeleteProfilingGroupRequest>,
-  output: __S(28) as any as S.Schema<DeleteProfilingGroupResponse>,
+  input: DeleteProfilingGroupRequest,
+  output: DeleteProfilingGroupResponse,
   errors: [
     ConflictException,
     InternalServerException,
@@ -626,8 +824,8 @@ export const describeProfilingGroup: API.OperationMethod<
   DescribeProfilingGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29) as any as S.Schema<DescribeProfilingGroupRequest>,
-  output: __S(26) as any as S.Schema<DescribeProfilingGroupResponse>,
+  input: DescribeProfilingGroupRequest,
+  output: DescribeProfilingGroupResponse,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -658,8 +856,8 @@ export const getFindingsReportAccountSummary: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(30) as any as S.Schema<GetFindingsReportAccountSummaryRequest>,
-  output: __S(33) as any as S.Schema<GetFindingsReportAccountSummaryResponse>,
+  input: GetFindingsReportAccountSummaryRequest,
+  output: GetFindingsReportAccountSummaryResponse,
   errors: [InternalServerException, ThrottlingException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -686,8 +884,8 @@ export const getNotificationConfiguration: API.OperationMethod<
   GetNotificationConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34) as any as S.Schema<GetNotificationConfigurationRequest>,
-  output: __S(35) as any as S.Schema<GetNotificationConfigurationResponse>,
+  input: GetNotificationConfigurationRequest,
+  output: GetNotificationConfigurationResponse,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -713,8 +911,8 @@ export const getPolicy: API.OperationMethod<
   GetPolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36) as any as S.Schema<GetPolicyRequest>,
-  output: __S(37) as any as S.Schema<GetPolicyResponse>,
+  input: GetPolicyRequest,
+  output: GetPolicyResponse,
   errors: [InternalServerException, ResourceNotFoundException, ThrottlingException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -775,8 +973,8 @@ export const getProfile: API.OperationMethod<
   GetProfileError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38) as any as S.Schema<GetProfileRequest>,
-  output: __S(39) as any as S.Schema<GetProfileResponse>,
+  input: GetProfileRequest,
+  output: GetProfileResponse,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -812,8 +1010,8 @@ export const getRecommendations: API.OperationMethod<
   GetRecommendationsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40) as any as S.Schema<GetRecommendationsRequest>,
-  output: __S(52) as any as S.Schema<GetRecommendationsResponse>,
+  input: GetRecommendationsRequest,
+  output: GetRecommendationsResponse,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -841,8 +1039,8 @@ export const listFindingsReports: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(53) as any as S.Schema<ListFindingsReportsRequest>,
-  output: __S(54) as any as S.Schema<ListFindingsReportsResponse>,
+  input: ListFindingsReportsRequest,
+  output: ListFindingsReportsResponse,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -876,8 +1074,8 @@ export const listProfileTimes: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ProfileTime
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(55) as any as S.Schema<ListProfileTimesRequest>,
-  output: __S(58) as any as S.Schema<ListProfileTimesResponse>,
+  input: ListProfileTimesRequest,
+  output: ListProfileTimesResponse,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -910,8 +1108,8 @@ export const listProfilingGroups: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(59) as any as S.Schema<ListProfilingGroupsRequest>,
-  output: __S(61) as any as S.Schema<ListProfilingGroupsResponse>,
+  input: ListProfilingGroupsRequest,
+  output: ListProfilingGroupsResponse,
   errors: [InternalServerException, ThrottlingException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -937,8 +1135,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(62) as any as S.Schema<ListTagsForResourceRequest>,
-  output: __S(63) as any as S.Schema<ListTagsForResourceResponse>,
+  input: ListTagsForResourceRequest,
+  output: ListTagsForResourceResponse,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -964,8 +1162,8 @@ export const postAgentProfile: API.OperationMethod<
   PostAgentProfileError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(64) as any as S.Schema<PostAgentProfileRequest>,
-  output: __S(28) as any as S.Schema<PostAgentProfileResponse>,
+  input: PostAgentProfileRequest,
+  output: PostAgentProfileResponse,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -1012,8 +1210,8 @@ export const putPermission: API.OperationMethod<
   PutPermissionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65) as any as S.Schema<PutPermissionRequest>,
-  output: __S(37) as any as S.Schema<PutPermissionResponse>,
+  input: PutPermissionRequest,
+  output: PutPermissionResponse,
   errors: [
     ConflictException,
     InternalServerException,
@@ -1041,8 +1239,8 @@ export const removeNotificationChannel: API.OperationMethod<
   RemoveNotificationChannelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(66) as any as S.Schema<RemoveNotificationChannelRequest>,
-  output: __S(5) as any as S.Schema<RemoveNotificationChannelResponse>,
+  input: RemoveNotificationChannelRequest,
+  output: RemoveNotificationChannelResponse,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -1078,8 +1276,8 @@ export const removePermission: API.OperationMethod<
   RemovePermissionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(67) as any as S.Schema<RemovePermissionRequest>,
-  output: __S(37) as any as S.Schema<RemovePermissionResponse>,
+  input: RemovePermissionRequest,
+  output: RemovePermissionResponse,
   errors: [
     ConflictException,
     InternalServerException,
@@ -1108,8 +1306,8 @@ export const submitFeedback: API.OperationMethod<
   SubmitFeedbackError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(68) as any as S.Schema<SubmitFeedbackRequest>,
-  output: __S(28) as any as S.Schema<SubmitFeedbackResponse>,
+  input: SubmitFeedbackRequest,
+  output: SubmitFeedbackResponse,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -1135,8 +1333,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(69) as any as S.Schema<TagResourceRequest>,
-  output: __S(28) as any as S.Schema<TagResourceResponse>,
+  input: TagResourceRequest,
+  output: TagResourceResponse,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1157,8 +1355,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(70) as any as S.Schema<UntagResourceRequest>,
-  output: __S(28) as any as S.Schema<UntagResourceResponse>,
+  input: UntagResourceRequest,
+  output: UntagResourceResponse,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1181,8 +1379,8 @@ export const updateProfilingGroup: API.OperationMethod<
   UpdateProfilingGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(71) as any as S.Schema<UpdateProfilingGroupRequest>,
-  output: __S(26) as any as S.Schema<UpdateProfilingGroupResponse>,
+  input: UpdateProfilingGroupRequest,
+  output: UpdateProfilingGroupResponse,
   errors: [
     ConflictException,
     InternalServerException,
@@ -1202,15 +1400,15 @@ function __c0(j: number): any {
       return S.Array(S.String);
     case 1:
       return S.suspend(() =>
-        S.Struct({ id: S.optional(S.String), uri: S.String, eventPublishers: __S(0) }),
+        S.Struct({ id: S.optional(S.String), uri: S.String, eventPublishers: EventPublishers }),
       ).annotate({ identifier: "Channel" });
     case 2:
-      return S.Array(__S(1));
+      return S.Array(Channel);
     case 3:
       return S.suspend(() =>
         S.Struct({
           profilingGroupName: S.String.pipe(T.HttpLabel("profilingGroupName")),
-          channels: __S(2),
+          channels: Channels,
         }).pipe(
           T.all(
             T.Http({
@@ -1228,19 +1426,21 @@ function __c0(j: number): any {
         identifier: "AddNotificationChannelsRequest",
       });
     case 4:
-      return S.suspend(() => S.Struct({ channels: S.optional(__S(2)) })).annotate({
+      return S.suspend(() => S.Struct({ channels: S.optional(Channels) })).annotate({
         identifier: "NotificationConfiguration",
       });
     case 5:
-      return S.suspend(() => S.Struct({ notificationConfiguration: S.optional(__S(4)) })).annotate({
+      return S.suspend(() =>
+        S.Struct({ notificationConfiguration: S.optional(NotificationConfiguration) }),
+      ).annotate({
         identifier: "AddNotificationChannelsResponse",
       });
     case 6:
       return S.suspend(() =>
-        S.Struct({ frameName: S.String, type: S.String, threadStates: __S(0) }),
+        S.Struct({ frameName: S.String, type: S.String, threadStates: ThreadStates }),
       ).annotate({ identifier: "FrameMetric" });
     case 7:
-      return S.Array(__S(6));
+      return S.Array(FrameMetric);
   }
 }
 function __c1(j: number): any {
@@ -1257,7 +1457,7 @@ function __c1(j: number): any {
           ),
           period: S.optional(S.String).pipe(T.HttpQuery("period")),
           targetResolution: S.optional(S.String).pipe(T.HttpQuery("targetResolution")),
-          frameMetrics: S.optional(__S(7)),
+          frameMetrics: S.optional(FrameMetrics),
         }).pipe(
           T.all(
             T.Http({
@@ -1279,26 +1479,26 @@ function __c1(j: number): any {
         S.Struct({ value: T.DateFromString.pipe(T.TimestampFormat("date-time")) }),
       ).annotate({ identifier: "TimestampStructure" });
     case 2:
-      return S.Array(__S(9));
+      return S.Array(TimestampStructure);
     case 3:
-      return S.Record(S.String, /*@__PURE__*/ __S(10).pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ ListOfTimestamps.pipe(S.optional));
     case 4:
       return S.Array(S.Number);
     case 5:
-      return S.suspend(() => S.Struct({ frameMetric: __S(6), values: __S(12) })).annotate({
-        identifier: "FrameMetricDatum",
-      });
+      return S.suspend(() =>
+        S.Struct({ frameMetric: FrameMetric, values: FrameMetricValues }),
+      ).annotate({ identifier: "FrameMetricDatum" });
     case 6:
-      return S.Array(__S(13));
+      return S.Array(FrameMetricDatum);
     case 7:
       return S.suspend(() =>
         S.Struct({
           startTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           endTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           resolution: S.String,
-          endTimes: __S(10),
-          unprocessedEndTimes: __S(11),
-          frameMetricData: __S(14),
+          endTimes: ListOfTimestamps,
+          unprocessedEndTimes: UnprocessedEndTimeMap,
+          frameMetricData: FrameMetricData,
         }),
       ).annotate({
         identifier: "BatchGetFrameMetricDataResponse",
@@ -1314,7 +1514,7 @@ function __c2(j: number): any {
         S.Struct({
           profilingGroupName: S.String.pipe(T.HttpLabel("profilingGroupName")),
           fleetInstanceId: S.optional(S.String),
-          metadata: S.optional(__S(16)),
+          metadata: S.optional(Metadata),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/profilingGroups/{profilingGroupName}/configureAgent" }),
@@ -1333,13 +1533,13 @@ function __c2(j: number): any {
         S.Struct({
           shouldProfile: S.Boolean,
           periodInSeconds: S.Number,
-          agentParameters: S.optional(__S(18)),
+          agentParameters: S.optional(AgentParameters),
         }),
       ).annotate({ identifier: "AgentConfiguration" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          configuration: __S(19).pipe(T.HttpPayload()).annotate({
+          configuration: AgentConfiguration.pipe(T.HttpPayload()).annotate({
             identifier: "AgentConfiguration",
           }),
         }),
@@ -1354,8 +1554,8 @@ function __c2(j: number): any {
           profilingGroupName: S.String,
           computePlatform: S.optional(S.String),
           clientToken: S.String.pipe(T.HttpQuery("clientToken"), T.IdempotencyToken()),
-          agentOrchestrationConfig: S.optional(__S(21)),
-          tags: S.optional(__S(16)),
+          agentOrchestrationConfig: S.optional(AgentOrchestrationConfig),
+          tags: S.optional(TagsMap),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/profilingGroups" }), svc, auth, proto, ver, rules),
         ),
@@ -1379,7 +1579,7 @@ function __c3(j: number): any {
           latestAgentProfileReportedAt: S.optional(
             T.DateFromString.pipe(T.TimestampFormat("date-time")),
           ),
-          latestAggregatedProfile: S.optional(__S(23)),
+          latestAggregatedProfile: S.optional(AggregatedProfileTime),
           latestAgentOrchestratedAt: S.optional(
             T.DateFromString.pipe(T.TimestampFormat("date-time")),
           ),
@@ -1389,13 +1589,13 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          agentOrchestrationConfig: S.optional(__S(21)),
+          agentOrchestrationConfig: S.optional(AgentOrchestrationConfig),
           arn: S.optional(S.String),
           createdAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           updatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          profilingStatus: S.optional(__S(24)),
+          profilingStatus: S.optional(ProfilingStatus),
           computePlatform: S.optional(S.String),
-          tags: S.optional(__S(16)),
+          tags: S.optional(TagsMap),
         }),
       ).annotate({
         identifier: "ProfilingGroupDescription",
@@ -1403,7 +1603,7 @@ function __c3(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          profilingGroup: __S(25).pipe(T.HttpPayload()).annotate({
+          profilingGroup: ProfilingGroupDescription.pipe(T.HttpPayload()).annotate({
             identifier: "ProfilingGroupDescription",
           }),
         }),
@@ -1478,10 +1678,10 @@ function __c3(j: number): any {
 function __c4(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(31));
+      return S.Array(FindingsReportSummary);
     case 1:
       return S.suspend(() =>
-        S.Struct({ reportSummaries: __S(32), nextToken: S.optional(S.String) }),
+        S.Struct({ reportSummaries: FindingsReportSummaries, nextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "GetFindingsReportAccountSummaryResponse",
       });
@@ -1504,7 +1704,9 @@ function __c4(j: number): any {
         identifier: "GetNotificationConfigurationRequest",
       });
     case 3:
-      return S.suspend(() => S.Struct({ notificationConfiguration: __S(4) })).annotate({
+      return S.suspend(() =>
+        S.Struct({ notificationConfiguration: NotificationConfiguration }),
+      ).annotate({
         identifier: "GetNotificationConfigurationResponse",
       });
     case 4:
@@ -1588,7 +1790,7 @@ function __c5(j: number): any {
         identifier: "GetRecommendationsRequest",
       });
     case 1:
-      return S.Array(__S(0));
+      return S.Array(TargetFrame);
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -1596,9 +1798,9 @@ function __c5(j: number): any {
           name: S.optional(S.String),
           description: S.optional(S.String),
           resolutionSteps: S.optional(S.String),
-          targetFrames: S.optional(__S(41)),
+          targetFrames: S.optional(TargetFrames),
           thresholdPercent: S.optional(S.Number),
-          countersToAggregate: S.optional(__S(0)),
+          countersToAggregate: S.optional(Strings),
         }),
       ).annotate({ identifier: "Pattern" });
     case 3:
@@ -1610,20 +1812,20 @@ function __c5(j: number): any {
         }),
       ).annotate({ identifier: "Match" });
     case 4:
-      return S.Array(__S(43));
+      return S.Array(Match);
     case 5:
       return S.suspend(() =>
         S.Struct({
           allMatchesCount: S.Number,
           allMatchesSum: S.Number,
-          pattern: __S(42),
-          topMatches: __S(44),
+          pattern: Pattern,
+          topMatches: Matches,
           startTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           endTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
         }),
       ).annotate({ identifier: "Recommendation" });
     case 6:
-      return S.Array(__S(45));
+      return S.Array(Recommendation);
     case 7:
       return S.suspend(() => S.Struct({ type: S.String })).annotate({
         identifier: "UserFeedback",
@@ -1638,25 +1840,25 @@ function __c6(j: number): any {
           id: S.String,
           startTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           endTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          userFeedback: S.optional(__S(47)),
+          userFeedback: S.optional(UserFeedback),
         }),
       ).annotate({ identifier: "AnomalyInstance" });
     case 1:
-      return S.Array(__S(48));
+      return S.Array(AnomalyInstance);
     case 2:
       return S.suspend(() =>
-        S.Struct({ metric: __S(6), reason: S.String, instances: __S(49) }),
+        S.Struct({ metric: Metric, reason: S.String, instances: AnomalyInstances }),
       ).annotate({ identifier: "Anomaly" });
     case 3:
-      return S.Array(__S(50));
+      return S.Array(Anomaly);
     case 4:
       return S.suspend(() =>
         S.Struct({
           profilingGroupName: S.String,
           profileStartTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           profileEndTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-          recommendations: __S(46),
-          anomalies: __S(51),
+          recommendations: Recommendations,
+          anomalies: Anomalies,
         }),
       ).annotate({
         identifier: "GetRecommendationsResponse",
@@ -1693,7 +1895,7 @@ function __c6(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          findingsReportSummaries: __S(32),
+          findingsReportSummaries: FindingsReportSummaries,
           nextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -1733,10 +1935,10 @@ function __c7(j: number): any {
         S.Struct({ start: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))) }),
       ).annotate({ identifier: "ProfileTime" });
     case 1:
-      return S.Array(__S(56));
+      return S.Array(ProfileTime);
     case 2:
       return S.suspend(() =>
-        S.Struct({ profileTimes: __S(57), nextToken: S.optional(S.String) }),
+        S.Struct({ profileTimes: ProfileTimes, nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListProfileTimesResponse" });
     case 3:
       return S.suspend(() =>
@@ -1751,12 +1953,12 @@ function __c7(j: number): any {
         identifier: "ListProfilingGroupsRequest",
       });
     case 4:
-      return S.Array(__S(25));
+      return S.Array(ProfilingGroupDescription);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          profilingGroupNames: __S(0),
-          profilingGroups: S.optional(__S(60)),
+          profilingGroupNames: ProfilingGroupNames,
+          profilingGroups: S.optional(ProfilingGroupDescriptions),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -1778,7 +1980,7 @@ function __c7(j: number): any {
         identifier: "ListTagsForResourceRequest",
       });
     case 7:
-      return S.suspend(() => S.Struct({ tags: S.optional(__S(16)) })).annotate({
+      return S.suspend(() => S.Struct({ tags: S.optional(TagsMap) })).annotate({
         identifier: "ListTagsForResourceResponse",
       });
   }
@@ -1811,7 +2013,7 @@ function __c8(j: number): any {
         S.Struct({
           profilingGroupName: S.String.pipe(T.HttpLabel("profilingGroupName")),
           actionGroup: S.String.pipe(T.HttpLabel("actionGroup")),
-          principals: __S(0),
+          principals: Principals,
           revisionId: S.optional(S.String),
         }).pipe(
           T.all(
@@ -1891,7 +2093,7 @@ function __c8(j: number): any {
       ).annotate({ identifier: "SubmitFeedbackRequest" });
     case 5:
       return S.suspend(() =>
-        S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")), tags: __S(16) }).pipe(
+        S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")), tags: TagsMap }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/tags/{resourceArn}" }),
             svc,
@@ -1906,7 +2108,7 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
-          tagKeys: __S(0).pipe(T.HttpQuery("tagKeys")),
+          tagKeys: TagKeys.pipe(T.HttpQuery("tagKeys")),
         }).pipe(
           T.all(
             T.Http({ method: "DELETE", uri: "/tags/{resourceArn}" }),
@@ -1922,7 +2124,7 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           profilingGroupName: S.String.pipe(T.HttpLabel("profilingGroupName")),
-          agentOrchestrationConfig: __S(21),
+          agentOrchestrationConfig: AgentOrchestrationConfig,
         }).pipe(
           T.all(
             T.Http({ method: "PUT", uri: "/profilingGroups/{profilingGroupName}" }),
@@ -1936,32 +2138,5 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "UpdateProfilingGroupRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
   }
 }

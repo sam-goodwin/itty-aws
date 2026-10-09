@@ -7,8 +7,6 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -70,8 +68,17 @@ export interface GetProjectsTracesRequest {
   /** Required. ID of the trace to return. */
   traceId: string;
 }
+const GetProjectsTracesRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<GetProjectsTracesRequest>;
+
 export type StringMap = { [key: string]: string | undefined };
+const StringMap = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<StringMap>;
+
 export type TraceSpanKindEnum = "SPAN_KIND_UNSPECIFIED" | "RPC_SERVER" | "RPC_CLIENT";
+const TraceSpanKindEnum = S.String;
+
 /** A span represents a single timed event within a trace. Spans can be nested and form a trace tree. Often, a trace contains a root span that describes the end-to-end latency of an operation and, optionally, one or more subspans for its suboperations. Spans do not need to be contiguous. There may be gaps between spans in a trace. */
 export interface TraceSpan {
   /** Required. Start time of the span in seconds and nanoseconds from the UNIX epoch. */
@@ -89,7 +96,11 @@ export interface TraceSpan {
   /** Optional. ID of the parent span, if any. */
   parentSpanId?: string;
 }
+const TraceSpan = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<TraceSpan>;
+
 export type TraceSpanList = Array<TraceSpan>;
+const TraceSpanList = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<TraceSpanList>;
+
 /** A trace describes how long it takes for an application to perform an operation. It consists of a set of spans, each of which represent a single timed event within the operation. */
 export interface Trace {
   /** Collection of spans in the trace. */
@@ -99,11 +110,15 @@ export interface Trace {
   /** Required. Project ID of the Cloud project where the trace data is stored. */
   projectId?: string;
 }
+const Trace = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<Trace>;
+
 export type ListProjectsTracesViewEnum =
   | "VIEW_TYPE_UNSPECIFIED"
   | "MINIMAL"
   | "ROOTSPAN"
   | "COMPLETE";
+const ListProjectsTracesViewEnum = S.String;
+
 export interface ListProjectsTracesRequest {
   /** Required. End of the time interval (inclusive) during which the trace data was collected from the application. */
   endTime?: string;
@@ -122,7 +137,14 @@ export interface ListProjectsTracesRequest {
   /** Required. Start of the time interval (inclusive) during which the trace data was collected from the application. */
   startTime?: string;
 }
+const ListProjectsTracesRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<ListProjectsTracesRequest>;
+
 export type TraceList = Array<Trace>;
+const TraceList = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<TraceList>;
+
 /** The response message for the `ListTraces` method. */
 export interface ListTracesResponse {
   /** If defined, indicates that there are more traces that match the request and that this value should be passed to the next request to continue retrieving additional traces. */
@@ -130,19 +152,30 @@ export interface ListTracesResponse {
   /** List of trace records as specified by the view parameter. */
   traces?: TraceList;
 }
+const ListTracesResponse = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<ListTracesResponse>;
+
 /** List of new or updated traces. */
 export interface Traces {
   /** List of traces. */
   traces?: TraceList;
 }
+const Traces = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<Traces>;
+
 export interface PatchTracesProjectsRequest {
   /** Required. ID of the Cloud project where the trace data is stored. */
   projectId: string;
   /** Request body */
   body?: Traces;
 }
+const PatchTracesProjectsRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<PatchTracesProjectsRequest>;
+
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
+const Empty = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<Empty>;
+
 export type GetProjectsTracesError = NotFound | Forbidden | GcpOpError;
 /** Gets a single trace by its ID. */
 export const getProjectsTraces: API.OperationMethod<
@@ -151,8 +184,8 @@ export const getProjectsTraces: API.OperationMethod<
   GetProjectsTracesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<GetProjectsTracesRequest>,
-  output: __S(4) as any as S.Schema<Trace>,
+  input: GetProjectsTracesRequest,
+  output: Trace,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -167,8 +200,8 @@ export const listProjectsTraces: API.PaginatedOperationMethod<
   GcpOpContext,
   ListTracesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(5) as any as S.Schema<ListProjectsTracesRequest>,
-  output: __S(7) as any as S.Schema<ListTracesResponse>,
+  input: ListProjectsTracesRequest,
+  output: ListTracesResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -183,8 +216,8 @@ export const patchTracesProjects: API.OperationMethod<
   PatchTracesProjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9) as any as S.Schema<PatchTracesProjectsRequest>,
-  output: __S(10) as any as S.Schema<Empty>,
+  input: PatchTracesProjectsRequest,
+  output: Empty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -212,20 +245,20 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           startTime: S.optional(S.String),
-          labels: S.optional(__S(1)),
+          labels: S.optional(StringMap),
           spanId: S.optional(S.String),
           endTime: S.optional(S.String),
           name: S.optional(S.String),
-          kind: S.optional(S.String),
+          kind: S.optional(TraceSpanKindEnum),
           parentSpanId: S.optional(S.String),
         }),
       ).annotate({ identifier: "TraceSpan" });
     case 3:
-      return S.Array(__S(2));
+      return S.Array(TraceSpan);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          spans: S.optional(__S(3)),
+          spans: S.optional(TraceSpanList),
           traceId: S.optional(S.String),
           projectId: S.optional(S.String),
         }),
@@ -239,7 +272,7 @@ function __c0(j: number): any {
           pageToken: S.optional(S.String.pipe(T.Query())),
           pageSize: S.optional(S.Number.pipe(T.Query())),
           filter: S.optional(S.String.pipe(T.Query())),
-          view: S.optional(S.String.pipe(T.Query())),
+          view: S.optional(ListProjectsTracesViewEnum.pipe(T.Query())),
           startTime: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
@@ -252,12 +285,12 @@ function __c0(j: number): any {
         identifier: "ListProjectsTracesRequest",
       });
     case 6:
-      return S.Array(__S(4));
+      return S.Array(Trace);
     case 7:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          traces: S.optional(__S(6)),
+          traces: S.optional(TraceList),
         }),
       ).annotate({ identifier: "ListTracesResponse" });
   }
@@ -267,14 +300,14 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          traces: S.optional(__S(6)),
+          traces: S.optional(TraceList),
         }),
       ).annotate({ identifier: "Traces" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
-          body: S.optional(__S(8).pipe(T.HttpBody())),
+          body: S.optional(Traces.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -289,18 +322,5 @@ function __c1(j: number): any {
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "Empty",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
   }
 }

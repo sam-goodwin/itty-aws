@@ -6,8 +6,6 @@ import { UnknownDaytonaError } from "../errors.ts";
 import { DaytonaProtocol, type DaytonaOpError, type DaytonaOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { DaytonaOpError, DaytonaOpContext };
 
@@ -33,10 +31,17 @@ export type CreateApiKeyRequestPermissionsItem =
   | "manage:sso"
   | "read:billing"
   | "manage:billing";
+const CreateApiKeyRequestPermissionsItem = S.String;
+
 /** The list of organization resource permissions explicitly assigned to the API key */
 export type CreateApiKeyRequestPermissionsList = Array<
   CreateApiKeyRequestPermissionsItem | (string & {})
 >;
+const CreateApiKeyRequestPermissionsList = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<CreateApiKeyRequestPermissionsList>;
+
 export interface CreateApiKeyRequest {
   /** Use with JWT to specify the organization ID */
   xDaytonaOrganizationID?: string;
@@ -47,6 +52,8 @@ export interface CreateApiKeyRequest {
   /** When the API key expires */
   expiresAt?: string | null;
 }
+const CreateApiKeyRequest = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<CreateApiKeyRequest>;
+
 export type ApiKeyResponsePermissionsItem =
   | "write:registries"
   | "delete:registries"
@@ -71,6 +78,9 @@ export type ApiKeyResponsePermissionsItem =
   | "manage:billing";
 /** The list of organization resource permissions assigned to the API key */
 export type ApiKeyResponsePermissionsList = Array<ApiKeyResponsePermissionsItem>;
+const ApiKeyResponsePermissionsList =
+  CreateApiKeyRequestPermissionsList as any as S.Schema<ApiKeyResponsePermissionsList>;
+
 export interface ApiKeyResponse {
   /** The name of the API key */
   name: string;
@@ -83,24 +93,40 @@ export interface ApiKeyResponse {
   /** When the API key expires */
   expiresAt: string | null;
 }
+const ApiKeyResponse = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<ApiKeyResponse>;
+
 export interface DeleteApiKeyRequest {
   name: string;
   /** Use with JWT to specify the organization ID */
   xDaytonaOrganizationID?: string;
 }
+const DeleteApiKeyRequest = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<DeleteApiKeyRequest>;
+
 export interface DeleteApiKeyResponse {}
+const DeleteApiKeyResponse = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<DeleteApiKeyResponse>;
+
 export interface DeleteApiKeyForUserRequest {
   userId: string;
   name: string;
   /** Use with JWT to specify the organization ID */
   xDaytonaOrganizationID?: string;
 }
+const DeleteApiKeyForUserRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<DeleteApiKeyForUserRequest>;
+
 export interface DeleteApiKeyForUserResponse {}
+const DeleteApiKeyForUserResponse =
+  DeleteApiKeyResponse as any as S.Schema<DeleteApiKeyForUserResponse>;
+
 export interface GetApiKeyRequest {
   name: string;
   /** Use with JWT to specify the organization ID */
   xDaytonaOrganizationID?: string;
 }
+const GetApiKeyRequest = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<GetApiKeyRequest>;
+
 export type ApiKeyListPermissionsItem =
   | "write:registries"
   | "delete:registries"
@@ -125,6 +151,9 @@ export type ApiKeyListPermissionsItem =
   | "manage:billing";
 /** The list of organization resource permissions assigned to the API key */
 export type ApiKeyListPermissionsList = Array<ApiKeyListPermissionsItem>;
+const ApiKeyListPermissionsList =
+  CreateApiKeyRequestPermissionsList as any as S.Schema<ApiKeyListPermissionsList>;
+
 export interface ApiKeyList {
   /** The name of the API key */
   name: string;
@@ -143,16 +172,32 @@ export interface ApiKeyList {
   /** The organization ID associated with the API key */
   organizationId?: string;
 }
+const ApiKeyList = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<ApiKeyList>;
+
 export interface GetCurrentApiKeyRequest {
   /** Use with JWT to specify the organization ID */
   xDaytonaOrganizationID?: string;
 }
+const GetCurrentApiKeyRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<GetCurrentApiKeyRequest>;
+
 export interface ListApiKeysRequest {
   /** Use with JWT to specify the organization ID */
   xDaytonaOrganizationID?: string;
 }
+const ListApiKeysRequest = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<ListApiKeysRequest>;
+
 export type ListApiKeysResponseBodyList = Array<ApiKeyList>;
+const ListApiKeysResponseBodyList = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<ListApiKeysResponseBodyList>;
+
 export type ListApiKeysResponse = ListApiKeysResponseBodyList;
+const ListApiKeysResponse = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<ListApiKeysResponse>;
+
 export type CreateApiKeyError = DaytonaOpError;
 /** Create API key */
 export const createApiKey: API.OperationMethod<
@@ -161,8 +206,8 @@ export const createApiKey: API.OperationMethod<
   CreateApiKeyError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1) as any as S.Schema<CreateApiKeyRequest>,
-  output: __S(2) as any as S.Schema<ApiKeyResponse>,
+  input: CreateApiKeyRequest,
+  output: ApiKeyResponse,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -176,8 +221,8 @@ export const deleteApiKey: API.OperationMethod<
   DeleteApiKeyError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3) as any as S.Schema<DeleteApiKeyRequest>,
-  output: __S(4) as any as S.Schema<DeleteApiKeyResponse>,
+  input: DeleteApiKeyRequest,
+  output: DeleteApiKeyResponse,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -191,8 +236,8 @@ export const deleteApiKeyForUser: API.OperationMethod<
   DeleteApiKeyForUserError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5) as any as S.Schema<DeleteApiKeyForUserRequest>,
-  output: __S(4) as any as S.Schema<DeleteApiKeyForUserResponse>,
+  input: DeleteApiKeyForUserRequest,
+  output: DeleteApiKeyForUserResponse,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -206,8 +251,8 @@ export const getApiKey: API.OperationMethod<
   GetApiKeyError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6) as any as S.Schema<GetApiKeyRequest>,
-  output: __S(7) as any as S.Schema<ApiKeyList>,
+  input: GetApiKeyRequest,
+  output: ApiKeyList,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -221,8 +266,8 @@ export const getCurrentApiKey: API.OperationMethod<
   GetCurrentApiKeyError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8) as any as S.Schema<GetCurrentApiKeyRequest>,
-  output: __S(7) as any as S.Schema<ApiKeyList>,
+  input: GetCurrentApiKeyRequest,
+  output: ApiKeyList,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -236,8 +281,8 @@ export const listApiKeys: API.OperationMethod<
   ListApiKeysError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9) as any as S.Schema<ListApiKeysRequest>,
-  output: __S(11) as any as S.Schema<ListApiKeysResponse>,
+  input: ListApiKeysRequest,
+  output: ListApiKeysResponse,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -247,13 +292,13 @@ export const listApiKeys: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
+      return S.Array(CreateApiKeyRequestPermissionsItem);
     case 1:
       return S.suspend(() =>
         S.Struct({
           xDaytonaOrganizationID: S.optional(S.String.pipe(T.Header("X-Daytona-Organization-ID"))),
           name: S.String,
-          permissions: __S(0),
+          permissions: CreateApiKeyRequestPermissionsList,
           expiresAt: S.optional(S.NullOr(S.String)),
         }).pipe(T.Http({ method: "POST", uri: "/api-keys", code: 200 })),
       ).annotate({ identifier: "CreateApiKeyRequest" });
@@ -263,7 +308,7 @@ function __c0(j: number): any {
           name: S.String,
           value: S.String,
           createdAt: S.String,
-          permissions: __S(0),
+          permissions: ApiKeyResponsePermissionsList,
           expiresAt: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "ApiKeyResponse" });
@@ -301,7 +346,7 @@ function __c0(j: number): any {
           name: S.String,
           value: S.String,
           createdAt: S.String,
-          permissions: __S(0),
+          permissions: ApiKeyListPermissionsList,
           lastUsedAt: S.NullOr(S.String),
           expiresAt: S.NullOr(S.String),
           userId: S.String,
@@ -325,23 +370,10 @@ function __c1(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/api-keys", code: 200 })),
       ).annotate({ identifier: "ListApiKeysRequest" });
     case 2:
-      return S.Array(__S(7));
+      return S.Array(ApiKeyList);
     case 3:
-      return S.suspend(() => __S(10).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => ListApiKeysResponseBodyList.pipe(T.RawResponseRoot())).annotate({
         identifier: "ListApiKeysResponse",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
   }
 }

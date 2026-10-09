@@ -7,8 +7,6 @@ import * as Redacted from "effect/Redacted";
 import { PosthogProtocol, type PosthogOpError, type PosthogOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { PosthogOpError, PosthogOpContext };
 
@@ -40,9 +38,13 @@ export class NotFound
   ) {}
 
 export type CreateInsightRequestFormat = "csv" | "json";
+const CreateInsightRequestFormat = S.String;
+
 export type BreakdownFilterBreakdownCase1Item = string | number;
 export type BreakdownFilterBreakdownCase1List = Array<BreakdownFilterBreakdownCase1Item>;
 export type BreakdownFilterBreakdown = string | BreakdownFilterBreakdownCase1List | number;
+const BreakdownFilterBreakdown = S.Unknown as any as S.Schema<BreakdownFilterBreakdown>;
+
 export type BreakdownType =
   | "cohort"
   | "person"
@@ -54,7 +56,11 @@ export type BreakdownType =
   | "data_warehouse"
   | "data_warehouse_person_property"
   | "revenue_analytics";
+const BreakdownType = S.String;
+
 export type BreakdownProperty = string | number;
+const BreakdownProperty = S.Unknown as any as S.Schema<BreakdownProperty>;
+
 export type MultipleBreakdownType =
   | "person"
   | "event"
@@ -66,6 +72,8 @@ export type MultipleBreakdownType =
   | "revenue_analytics"
   | "data_warehouse"
   | "data_warehouse_person_property";
+const MultipleBreakdownType = S.String;
+
 export interface Breakdown {
   group_type_index?: number | null;
   histogram_bin_count?: number | null;
@@ -73,7 +81,14 @@ export interface Breakdown {
   property?: BreakdownProperty;
   type?: MultipleBreakdownType | (string & {}) | null;
 }
+const Breakdown = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<Breakdown>;
+
 export type BreakdownFilterBreakdownsList = Array<Breakdown>;
+const BreakdownFilterBreakdownsList = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<BreakdownFilterBreakdownsList>;
+
 export interface BreakdownFilter {
   breakdown?: BreakdownFilterBreakdown | null;
   breakdown_group_type_index?: number | null;
@@ -85,6 +100,8 @@ export interface BreakdownFilter {
   breakdown_type?: BreakdownType | (string & {}) | null;
   breakdowns?: BreakdownFilterBreakdownsList | null;
 }
+const BreakdownFilter = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<BreakdownFilter>;
+
 export interface CalendarHeatmapFilter {
   /** When true and the series math is `dau`/`unique_users`, each user contributes to the (day-of-week, hour) bucket of their session's first event only -- matching the web overview session-start attribution. When false (default), the user contributes to every bucket they have any event in. No effect on `total` math (event counts are unchanged either way). */
   bucketBySessionStart?: boolean | null;
@@ -232,6 +249,8 @@ export type IntervalType =
   | "month"
   | "quarter"
   | "year";
+const IntervalType = S.String;
+
 export type BounceRatePageViewMode =
   | "count_pageviews"
   | "uniq_urls"
@@ -291,6 +310,11 @@ export type CustomChannelOperator =
   | "regex"
   | "not_regex";
 export type CustomChannelConditionValueCase1List = Array<string>;
+const CustomChannelConditionValueCase1List = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<CustomChannelConditionValueCase1List>;
+
 export type CustomChannelConditionValue = string | CustomChannelConditionValueCase1List;
 export interface CustomChannelCondition {
   id?: string;
@@ -468,6 +492,11 @@ export interface LogEntryPropertyFilter {
   value?: LogEntryPropertyFilterValue | null;
 }
 export type GroupPropertyFilterGroupKeyNamesMap = { [key: string]: string | undefined };
+const GroupPropertyFilterGroupKeyNamesMap = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<GroupPropertyFilterGroupKeyNamesMap>;
+
 export type GroupPropertyFilterValueCase0Item = string | number | boolean;
 export type GroupPropertyFilterValueCase0List = Array<GroupPropertyFilterValueCase0Item>;
 export type GroupPropertyFilterValue =
@@ -856,7 +885,17 @@ export interface ResolvedDateRangeResponse {
   date_from?: string;
   date_to?: string;
 }
+const ResolvedDateRangeResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<ResolvedDateRangeResponse>;
+
 export type TrendsQueryResponseResultsItemMap = { [key: string]: unknown | undefined };
+const TrendsQueryResponseResultsItemMap = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<TrendsQueryResponseResultsItemMap>;
+
 export type TrendsQueryResponseResultsList = Array<TrendsQueryResponseResultsItemMap>;
 export interface QueryTiming {
   /** Key. Shortened to 'k' to save on data. */
@@ -1549,6 +1588,11 @@ export interface GoalLine {
 }
 export type TrendsFilterGoalLinesList = Array<GoalLine>;
 export type TrendsFilterHiddenLegendIndexesList = Array<number>;
+const TrendsFilterHiddenLegendIndexesList = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<TrendsFilterHiddenLegendIndexesList>;
+
 export type LegendPosition = "top" | "bottom" | "left" | "right";
 export type MetricSummary = "total" | "average" | "latest";
 export type ResultCustomizationBy = "value" | "position";
@@ -2988,6 +3032,11 @@ export type WebStatsTableQueryPropertiesItem =
   | CohortPropertyFilter;
 export type WebStatsTableQueryPropertiesList = Array<WebStatsTableQueryPropertiesItem>;
 export type WebStatsTableQueryResponseColumnsList = Array<unknown>;
+const WebStatsTableQueryResponseColumnsList = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<WebStatsTableQueryResponseColumnsList>;
+
 export type WebAnalyticsPreComputeStrategy = "pre_aggregated" | "lazy_precompute" | "live";
 export type WebStatsTableQueryResponseResultsList = Array<unknown>;
 export interface SamplingRate {
@@ -7772,9 +7821,17 @@ export interface HogQuery {
 }
 /** The query definition for this insight. The `kind` field determines the query type: - `InsightVizNode` -- product analytics (trends, funnels, retention, paths, stickiness, lifecycle) - `DataVisualizationNode` -- SQL insights using HogQL - `DataTableNode` -- raw data tables - `HogQuery` -- Hog language queries */
 export type InsightQuerySchema = InsightVizNode | DataTableNode | DataVisualizationNode | HogQuery;
+const InsightQuerySchema = S.Unknown as any as S.Schema<InsightQuerySchema>;
+
 /** DEPRECATED. Will be removed in a future release. Use dashboard_tiles instead. A dashboard ID for each of the dashboards that this insight is displayed on. This field is omitted from session-authenticated responses unless `include_dashboards=true` is passed. Once opt-in enforcement is enabled, API-token callers (personal API keys, OAuth) must opt in the same way. Do not rely on it being present. */
 export type CreateInsightRequestDashboardsList = Array<number>;
+const CreateInsightRequestDashboardsList =
+  TrendsFilterHiddenLegendIndexesList as any as S.Schema<CreateInsightRequestDashboardsList>;
+
 export type CreateInsightRequestTagsList = Array<unknown>;
+const CreateInsightRequestTagsList =
+  WebStatsTableQueryResponseColumnsList as any as S.Schema<CreateInsightRequestTagsList>;
+
 export interface CreateInsightRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -7793,17 +7850,35 @@ export interface CreateInsightRequest {
   favorited?: boolean;
   _create_in_folder?: string;
 }
+const CreateInsightRequest = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<CreateInsightRequest>;
+
 /** DEPRECATED. Will be removed in a future release. Use dashboard_tiles instead. A dashboard ID for each of the dashboards that this insight is displayed on. This field is omitted from session-authenticated responses unless `include_dashboards=true` is passed. Once opt-in enforcement is enabled, API-token callers (personal API keys, OAuth) must opt in the same way. Do not rely on it being present. */
 export type InsightOutputDashboardsList = Array<number>;
+const InsightOutputDashboardsList =
+  TrendsFilterHiddenLegendIndexesList as any as S.Schema<InsightOutputDashboardsList>;
+
 export interface DashboardTileBasic {
   id?: number;
   dashboard_id?: number;
   deleted?: boolean | null;
 }
+const DashboardTileBasic = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<DashboardTileBasic>;
+
 /** A dashboard tile ID and dashboard_id for each of the dashboards that this insight is displayed on. */
 export type InsightOutputDashboardTilesList = Array<DashboardTileBasic>;
+const InsightOutputDashboardTilesList = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<InsightOutputDashboardTilesList>;
+
 export type InsightOutputColumnsList = Array<string>;
+const InsightOutputColumnsList =
+  CustomChannelConditionValueCase1List as any as S.Schema<InsightOutputColumnsList>;
+
 export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
+const UserBasicHedgehogConfigMap =
+  TrendsQueryResponseResultsItemMap as any as S.Schema<UserBasicHedgehogConfigMap>;
+
 /** * `engineering` - Engineering * `data` - Data * `product` - Product Management * `founder` - Founder * `leadership` - Leadership * `marketing` - Marketing * `sales` - Sales / Success * `student` - Student * `other` - Other */
 export type RoleAtOrganizationEnum =
   | "engineering"
@@ -7817,6 +7892,8 @@ export type RoleAtOrganizationEnum =
   | "other";
 export type BlankEnum = "";
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
+const UserBasicRoleAtOrganization = S.Unknown as any as S.Schema<UserBasicRoleAtOrganization>;
+
 export interface UserBasic {
   id?: number;
   uuid?: string;
@@ -7828,17 +7905,39 @@ export interface UserBasic {
   hedgehog_config?: UserBasicHedgehogConfigMap | null;
   role_at_organization?: UserBasicRoleAtOrganization | null;
 }
+const UserBasic = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<UserBasic>;
+
 export type InsightOutputTagsList = Array<unknown>;
+const InsightOutputTagsList =
+  WebStatsTableQueryResponseColumnsList as any as S.Schema<InsightOutputTagsList>;
+
 /** * `21` - Everyone in the project can edit * `37` - Only those invited to this dashboard can edit */
 export type RestrictionLevelEnum = 21 | 37;
+const RestrictionLevelEnum = S.Number;
+
 /** * `21` - Can view dashboard * `37` - Can edit dashboard */
 export type PrivilegeLevelEnum = 21 | 37;
+const PrivilegeLevelEnum = S.Number;
+
 export type InsightOutputTypesList = Array<unknown>;
+const InsightOutputTypesList =
+  WebStatsTableQueryResponseColumnsList as any as S.Schema<InsightOutputTypesList>;
+
 export type InsightOutputResolvedDateRange = ResolvedDateRangeResponse;
 export type InsightResultWarningsItem = DataWarehouseSyncWarning | AccessControlFilterWarning;
+const InsightResultWarningsItem = S.Unknown as any as S.Schema<InsightResultWarningsItem>;
+
 /** Warnings attached to the query response that produced an insight's results. */
 export type InsightResultWarnings = Array<InsightResultWarningsItem>;
+const InsightResultWarnings = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<InsightResultWarnings>;
+
 export type InsightOutputAlertsList = Array<unknown>;
+const InsightOutputAlertsList =
+  WebStatsTableQueryResponseColumnsList as any as S.Schema<InsightOutputAlertsList>;
+
 export type DashboardFilterPropertiesItem =
   | EventPropertyFilter
   | PersonPropertyFilter
@@ -7864,7 +7963,14 @@ export type DashboardFilterPropertiesItem =
   | AccountCustomPropertyFilter
   | WorkflowVariablePropertyFilter
   | BehavioralPropertyFilter;
+const DashboardFilterPropertiesItem = S.Unknown as any as S.Schema<DashboardFilterPropertiesItem>;
+
 export type DashboardFilterPropertiesList = Array<DashboardFilterPropertiesItem>;
+const DashboardFilterPropertiesList = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<DashboardFilterPropertiesList>;
+
 export interface DashboardFilter {
   breakdown_filter?: BreakdownFilter | null;
   date_from?: string | null;
@@ -7876,6 +7982,8 @@ export interface DashboardFilter {
   interval?: IntervalType | null;
   properties?: DashboardFilterPropertiesList | null;
 }
+const DashboardFilter = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<DashboardFilter>;
+
 export type TileFiltersPropertiesItem =
   | EventPropertyFilter
   | PersonPropertyFilter
@@ -7901,7 +8009,14 @@ export type TileFiltersPropertiesItem =
   | AccountCustomPropertyFilter
   | WorkflowVariablePropertyFilter
   | BehavioralPropertyFilter;
+const TileFiltersPropertiesItem = S.Unknown as any as S.Schema<TileFiltersPropertiesItem>;
+
 export type TileFiltersPropertiesList = Array<TileFiltersPropertiesItem>;
+const TileFiltersPropertiesList = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<TileFiltersPropertiesList>;
+
 export interface TileFilters {
   breakdown_filter?: BreakdownFilter | null;
   date_from?: string | null;
@@ -7913,6 +8028,8 @@ export interface TileFilters {
   interval?: IntervalType | null;
   properties?: TileFiltersPropertiesList | null;
 }
+const TileFilters = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<TileFilters>;
+
 export interface InsightFilterOverrideContext {
   /** Dashboard filters that remain active after applying tile precedence. */
   dashboard?: DashboardFilter | null;
@@ -7921,7 +8038,14 @@ export interface InsightFilterOverrideContext {
   /** Dashboard filters replaced by the tile filters. */
   overridden_dashboard?: DashboardFilter | null;
 }
+const InsightFilterOverrideContext = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<InsightFilterOverrideContext>;
+
 export type SearchMatchTypeEnum = "exact" | "similar";
+const SearchMatchTypeEnum = S.String;
+
 /** Simplified serializer to speed response times when loading large amounts of objects. */
 export interface InsightOutput {
   id?: number;
@@ -7975,6 +8099,8 @@ export interface InsightOutput {
   /** How this row matched the `search` query parameter: `exact` (the term is a case-insensitive substring of a searched field) or `similar` (a fuzzy trigram match, returned only when no exact match exists). Null when the list is not filtered by `search`. */
   search_match_type?: SearchMatchTypeEnum | null;
 }
+const InsightOutput = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<InsightOutput>;
+
 export interface CreateInsightsSharingPasswordRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -7983,6 +8109,11 @@ export interface CreateInsightsSharingPasswordRequest {
   settings?: unknown;
   password_required?: boolean;
 }
+const CreateInsightsSharingPasswordRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<CreateInsightsSharingPasswordRequest>;
+
 export interface SharePassword {
   id?: number;
   created_at?: string;
@@ -7990,7 +8121,14 @@ export interface SharePassword {
   created_by_email?: string;
   is_active?: boolean;
 }
+const SharePassword = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<SharePassword>;
+
 export type SharingConfigurationSharePasswordsList = Array<SharePassword>;
+const SharingConfigurationSharePasswordsList = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<SharingConfigurationSharePasswordsList>;
+
 /** Mixin for serializers to add user access control fields */
 export interface SharingConfiguration {
   created_at?: string;
@@ -8002,9 +8140,16 @@ export interface SharingConfiguration {
   /** The effective access level the user has for this object */
   user_access_level?: string | null;
 }
+const SharingConfiguration = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<SharingConfiguration>;
+
 export type CreateInsightsViewedRequestFormat = "csv" | "json";
+const CreateInsightsViewedRequestFormat = S.String;
+
 /** Insight IDs that were just viewed by the current user. At most 2500 ids per request. */
 export type CreateInsightsViewedRequestInsightIdsList = Array<number>;
+const CreateInsightsViewedRequestInsightIdsList =
+  TrendsFilterHiddenLegendIndexesList as any as S.Schema<CreateInsightsViewedRequestInsightIdsList>;
+
 export interface CreateInsightsViewedRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -8012,8 +8157,20 @@ export interface CreateInsightsViewedRequest {
   /** Insight IDs that were just viewed by the current user. At most 2500 ids per request. */
   insight_ids: CreateInsightsViewedRequestInsightIdsList;
 }
+const CreateInsightsViewedRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<CreateInsightsViewedRequest>;
+
 export interface CreateInsightsViewedResponse {}
+const CreateInsightsViewedResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<CreateInsightsViewedResponse>;
+
 export type GetInsightRequestFormat = "csv" | "json";
+const GetInsightRequestFormat = S.String;
+
 export type GetInsightRequestRefresh =
   | "async"
   | "async_except_on_cache_miss"
@@ -8022,6 +8179,8 @@ export type GetInsightRequestRefresh =
   | "force_blocking"
   | "force_cache"
   | "lazy_async";
+const GetInsightRequestRefresh = S.String;
+
 export interface GetInsightRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -8039,7 +8198,11 @@ export interface GetInsightRequest {
   /** Object (or pre-encoded JSON string) to override the insight's HogQL variables for this request only (not persisted). Format: {"<variable_id>": {"code_name": "<code_name>", "variableId": "<variable_id>", "value": <new_value>}}. Each entry must include `code_name` -- partial entries are silently dropped. The simplest workflow is to call `insight-get` first, copy the matching entry from the response, and mutate `value`. Top-level keys replace; nested values are not deep-merged. Ignored when accessed via a sharing token. */
   variables_override?: string;
 }
+const GetInsightRequest = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<GetInsightRequest>;
+
 export type GetInsightsActivityRequestFormat = "csv" | "json";
+const GetInsightsActivityRequestFormat = S.String;
+
 export interface GetInsightsActivityRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -8051,6 +8214,11 @@ export interface GetInsightsActivityRequest {
   /** 1-indexed page number. Defaults to 1. */
   page?: number;
 }
+const GetInsightsActivityRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<GetInsightsActivityRequest>;
+
 export interface Change {
   type?: string;
   action?: string;
@@ -8058,17 +8226,25 @@ export interface Change {
   before?: unknown;
   after?: unknown;
 }
+const Change = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<Change>;
+
 export type DetailChangesList = Array<Change>;
+const DetailChangesList = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<DetailChangesList>;
+
 export interface Merge {
   type?: string;
   source?: unknown;
   target?: unknown;
 }
+const Merge = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<Merge>;
+
 export interface Trigger {
   job_type?: string;
   job_id?: string;
   payload?: unknown;
 }
+const Trigger = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<Trigger>;
+
 export interface Detail {
   id?: string;
   changes?: DetailChangesList;
@@ -8078,6 +8254,8 @@ export interface Detail {
   short_id?: string;
   type?: string;
 }
+const Detail = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<Detail>;
+
 export interface ActivityLogEntry {
   id?: string;
   user?: unknown | null;
@@ -8093,7 +8271,14 @@ export interface ActivityLogEntry {
   /** API client that triggered the activity. Self-reported through the x-posthog-client request header (e.g. 'mcp'), or 'scout:<skill_name>' when a scout run made the change, which the server derives from the run's own token. Null for requests that did neither. */
   client?: string | null;
 }
+const ActivityLogEntry = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<ActivityLogEntry>;
+
 export type ActivityLogPaginatedResponseResultsList = Array<ActivityLogEntry>;
+const ActivityLogPaginatedResponseResultsList = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<ActivityLogPaginatedResponseResultsList>;
+
 /** Response shape for paginated activity log endpoints. */
 export interface ActivityLogPaginatedResponse {
   results?: ActivityLogPaginatedResponseResultsList;
@@ -8101,7 +8286,14 @@ export interface ActivityLogPaginatedResponse {
   previous?: string | null;
   total_count?: number;
 }
+const ActivityLogPaginatedResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<ActivityLogPaginatedResponse>;
+
 export type GetInsightsAllActivityRequestFormat = "csv" | "json";
+const GetInsightsAllActivityRequestFormat = S.String;
+
 export interface GetInsightsAllActivityRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -8111,13 +8303,30 @@ export interface GetInsightsAllActivityRequest {
   /** 1-indexed page number. Defaults to 1. */
   page?: number;
 }
+const GetInsightsAllActivityRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<GetInsightsAllActivityRequest>;
+
 export type GetInsightsMyLastViewedRequestFormat = "csv" | "json";
+const GetInsightsMyLastViewedRequestFormat = S.String;
+
 export interface GetInsightsMyLastViewedRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   format?: GetInsightsMyLastViewedRequestFormat | (string & {});
 }
+const GetInsightsMyLastViewedRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<GetInsightsMyLastViewedRequest>;
+
 export interface GetInsightsMyLastViewedResponse {}
+const GetInsightsMyLastViewedResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<GetInsightsMyLastViewedResponse>;
+
 export interface GetInsightsThresholdRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -8125,20 +8334,37 @@ export interface GetInsightsThresholdRequest {
   /** A UUID string identifying this threshold. */
   id: string;
 }
+const GetInsightsThresholdRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<GetInsightsThresholdRequest>;
+
 export interface InsightsThresholdBounds {
   /** Alert fires when the value drops below this number. */
   lower?: number | null;
   /** Alert fires when the value exceeds this number. */
   upper?: number | null;
 }
+const InsightsThresholdBounds = /*@__PURE__*/ __L.at(
+  __c5,
+  0,
+) as any as S.Schema<InsightsThresholdBounds>;
+
 export type InsightThresholdType = "absolute" | "percentage";
+const InsightThresholdType = S.String;
+
 export interface InsightThreshold {
   bounds?: InsightsThresholdBounds | null;
   /** Whether bounds are compared as absolute values or as percentage change from the previous interval. */
   type?: InsightThresholdType;
 }
+const InsightThreshold = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<InsightThreshold>;
+
 /** User IDs to subscribe to this alert. Note: Response returns full UserBasicSerializer object. */
 export type AlertSubscribedUsersList = Array<number>;
+const AlertSubscribedUsersList =
+  TrendsFilterHiddenLegendIndexesList as any as S.Schema<AlertSubscribedUsersList>;
+
 export interface Threshold {
   id?: string;
   created_at?: string;
@@ -8147,17 +8373,32 @@ export interface Threshold {
   /** Threshold bounds and type. Includes bounds (lower/upper floats) and type (absolute or percentage). For threshold-based alerts (no detector_config), at least one of lower or upper must be set. */
   configuration?: InsightThreshold;
 }
+const Threshold = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<Threshold>;
+
 export type AlertConditionType = "absolute_value" | "relative_increase" | "relative_decrease";
+const AlertConditionType = S.String;
+
 export interface AlertCondition {
   type?: AlertConditionType;
 }
+const AlertCondition = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<AlertCondition>;
+
 /** * `Firing` - Firing * `Not firing` - Not firing * `Errored` - Errored * `Snoozed` - Snoozed */
 export type AlertCheckStateEnum = "Firing" | "Not firing" | "Errored" | "Snoozed";
+const AlertCheckStateEnum = S.String;
+
 export type AlertCheckErrorMap = { [key: string]: string | undefined };
+const AlertCheckErrorMap =
+  GroupPropertyFilterGroupKeyNamesMap as any as S.Schema<AlertCheckErrorMap>;
+
 /** * `pending` - pending * `running` - running * `done` - done * `failed` - failed * `skipped` - skipped */
 export type InvestigationStatusEnum = "pending" | "running" | "done" | "failed" | "skipped";
+const InvestigationStatusEnum = S.String;
+
 /** * `true_positive` - true_positive * `false_positive` - false_positive * `inconclusive` - inconclusive */
 export type InvestigationVerdictEnum = "true_positive" | "false_positive" | "inconclusive";
+const InvestigationVerdictEnum = S.String;
+
 export interface AlertDelivery {
   /** Delivery channel: 'email' or 'hog_function' (destinations). */
   channel: string;
@@ -8174,8 +8415,15 @@ export interface AlertDelivery {
   /** Ready-to-display description of the delivery, e.g. 'Email: a@example.com' or 'Slack #eng-alerts'. */
   display_label: string;
 }
+const AlertDelivery = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<AlertDelivery>;
+
 /** Destinations that accepted this check's notification, one record per destination (channel, target, status, at). Null when no delivery receipt was recorded, which covers checks that notified nobody and checks predating delivery receipts. */
 export type AlertCheckDeliveriesList = Array<AlertDelivery>;
+const AlertCheckDeliveriesList = /*@__PURE__*/ __L.at(
+  __c5,
+  5,
+) as any as S.Schema<AlertCheckDeliveriesList>;
+
 export interface AlertCheck {
   id?: string;
   created_at?: string;
@@ -8198,8 +8446,12 @@ export interface AlertCheck {
   /** Destinations that accepted this check's notification, one record per destination (channel, target, status, at). Null when no delivery receipt was recorded, which covers checks that notified nobody and checks predating delivery receipts. */
   deliveries?: AlertCheckDeliveriesList | null;
 }
+const AlertCheck = /*@__PURE__*/ __L.at(__c5, 6) as any as S.Schema<AlertCheck>;
+
 /** Alert check results. By default returns the last 5. Use checks_date_from and checks_date_to (e.g. '-24h', '-7d') to get checks within a time window, checks_limit to cap how many are returned (default 5, max 500), and checks_offset to skip the newest N checks for pagination (0-based). Newest checks first. Only populated on retrieve. */
 export type AlertChecksList = Array<AlertCheck>;
+const AlertChecksList = /*@__PURE__*/ __L.at(__c5, 7) as any as S.Schema<AlertChecksList>;
+
 export interface TrendsAlertConfig {
   /** When true, evaluate the current (still incomplete) time interval in addition to completed ones. */
   check_ongoing_interval?: boolean | null;
@@ -8237,6 +8489,8 @@ export type AlertConfigUnion =
   | HogQLAlertConfig
   | FunnelsAlertConfig
   | MetricsAlertConfig;
+const AlertConfigUnion = S.Unknown as any as S.Schema<AlertConfigUnion>;
+
 export interface PreprocessingConfig {
   /** Order of differencing. 0 = raw values, 1 = first-order diffs (default: 0) */
   diffs_n?: number | null;
@@ -8400,6 +8654,8 @@ export type DetectorConfig =
   | OCSVMDetectorConfig
   | ECODDetectorConfig
   | LLMDetectorConfig;
+const DetectorConfig = S.Unknown as any as S.Schema<DetectorConfig>;
+
 /** * `real_time` - real_time * `every_15_minutes` - every_15_minutes * `hourly` - hourly * `daily` - daily * `weekly` - weekly * `monthly` - monthly */
 export type CalculationIntervalEnum =
   | "real_time"
@@ -8408,20 +8664,39 @@ export type CalculationIntervalEnum =
   | "daily"
   | "weekly"
   | "monthly";
+const CalculationIntervalEnum = S.String;
+
 export interface AlertScheduleRestrictionWindow {
   /** Start time HH:MM (24-hour, project timezone). Inclusive. Each window must span >= 30 minutes on the local daily timeline (half-open [start, end)). */
   start?: string;
   /** End time HH:MM (24-hour). Exclusive (half-open interval). Each window must span >= 30 minutes locally. */
   end?: string;
 }
+const AlertScheduleRestrictionWindow = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<AlertScheduleRestrictionWindow>;
+
 /** Blocked local time windows when the alert must not run. Overlapping or identical windows are merged when saved. At most five windows before normalization; empty array clears quiet hours. */
 export type AlertScheduleRestrictionBlockedWindowsList = Array<AlertScheduleRestrictionWindow>;
+const AlertScheduleRestrictionBlockedWindowsList = /*@__PURE__*/ __L.at(
+  __c6,
+  1,
+) as any as S.Schema<AlertScheduleRestrictionBlockedWindowsList>;
+
 export interface AlertScheduleRestriction {
   /** Blocked local time windows when the alert must not run. Overlapping or identical windows are merged when saved. At most five windows before normalization; empty array clears quiet hours. */
   blocked_windows?: AlertScheduleRestrictionBlockedWindowsList;
 }
+const AlertScheduleRestriction = /*@__PURE__*/ __L.at(
+  __c6,
+  2,
+) as any as S.Schema<AlertScheduleRestriction>;
+
 /** * `notify` - Notify * `suppress` - Suppress */
 export type InvestigationInconclusiveActionEnum = "notify" | "suppress";
+const InvestigationInconclusiveActionEnum = S.String;
+
 export interface Alert {
   id?: string;
   created_by?: UserBasic | null;
@@ -8479,7 +8754,14 @@ export interface Alert {
   /** How this row matched the `search` query parameter: `exact` (the term is a case-insensitive substring of a searched field) or `similar` (a fuzzy trigram match, returned only when no exact match exists). Null when the list is not filtered by `search`. */
   search_match_type?: SearchMatchTypeEnum | null;
 }
+const Alert = /*@__PURE__*/ __L.at(__c6, 3) as any as S.Schema<Alert>;
+
 export type ThresholdWithAlertAlertsList = Array<Alert>;
+const ThresholdWithAlertAlertsList = /*@__PURE__*/ __L.at(
+  __c6,
+  4,
+) as any as S.Schema<ThresholdWithAlertAlertsList>;
+
 export interface ThresholdWithAlert {
   id?: string;
   created_at?: string;
@@ -8489,7 +8771,11 @@ export interface ThresholdWithAlert {
   configuration?: InsightThreshold;
   alerts?: ThresholdWithAlertAlertsList;
 }
+const ThresholdWithAlert = /*@__PURE__*/ __L.at(__c6, 5) as any as S.Schema<ThresholdWithAlert>;
+
 export type GetInsightsTrendingRequestFormat = "csv" | "json";
+const GetInsightsTrendingRequestFormat = S.String;
+
 export interface GetInsightsTrendingRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -8503,11 +8789,30 @@ export interface GetInsightsTrendingRequest {
   /** The initial index from which to return the results. */
   offset?: number;
 }
+const GetInsightsTrendingRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  6,
+) as any as S.Schema<GetInsightsTrendingRequest>;
+
 export type TrendingInsightDashboardsList = Array<number>;
+const TrendingInsightDashboardsList =
+  TrendsFilterHiddenLegendIndexesList as any as S.Schema<TrendingInsightDashboardsList>;
+
 export type TrendingInsightDashboardTilesList = Array<DashboardTileBasic>;
+const TrendingInsightDashboardTilesList =
+  InsightOutputDashboardTilesList as any as S.Schema<TrendingInsightDashboardTilesList>;
+
 export type TrendingInsightTagsList = Array<unknown>;
+const TrendingInsightTagsList =
+  WebStatsTableQueryResponseColumnsList as any as S.Schema<TrendingInsightTagsList>;
+
 /** Up to 3 of the most recent users who viewed this insight in the time window. */
 export type TrendingInsightViewersList = Array<UserBasic>;
+const TrendingInsightViewersList = /*@__PURE__*/ __L.at(
+  __c6,
+  7,
+) as any as S.Schema<TrendingInsightViewersList>;
+
 /** Insight enriched with view-count and recent-viewer fields, used by the trending action. */
 export interface TrendingInsight {
   id: number;
@@ -8538,16 +8843,33 @@ export interface TrendingInsight {
   /** User who last modified this insight, or null if never modified after creation. */
   last_modified_by: UserBasic;
 }
+const TrendingInsight = /*@__PURE__*/ __L.at(__c7, 0) as any as S.Schema<TrendingInsight>;
+
 export type PaginatedTrendingInsightListResultsList = Array<TrendingInsight>;
+const PaginatedTrendingInsightListResultsList = /*@__PURE__*/ __L.at(
+  __c7,
+  1,
+) as any as S.Schema<PaginatedTrendingInsightListResultsList>;
+
 export interface PaginatedTrendingInsightList {
   count: number;
   next?: string | null;
   previous?: string | null;
   results: PaginatedTrendingInsightListResultsList;
 }
+const PaginatedTrendingInsightList = /*@__PURE__*/ __L.at(
+  __c7,
+  2,
+) as any as S.Schema<PaginatedTrendingInsightList>;
+
 export type InsightsBulkDeleteCreateRequestFormat = "csv" | "json";
+const InsightsBulkDeleteCreateRequestFormat = S.String;
+
 /** Insight IDs to soft-delete (or restore). At most 1000 ids per request. Soft-deleted insights can be brought back via the bulk_restore endpoint. */
 export type InsightsBulkDeleteCreateRequestIdsList = Array<number>;
+const InsightsBulkDeleteCreateRequestIdsList =
+  TrendsFilterHiddenLegendIndexesList as any as S.Schema<InsightsBulkDeleteCreateRequestIdsList>;
+
 export interface InsightsBulkDeleteCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -8555,31 +8877,66 @@ export interface InsightsBulkDeleteCreateRequest {
   /** Insight IDs to soft-delete (or restore). At most 1000 ids per request. Soft-deleted insights can be brought back via the bulk_restore endpoint. */
   ids: InsightsBulkDeleteCreateRequestIdsList;
 }
+const InsightsBulkDeleteCreateRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  3,
+) as any as S.Schema<InsightsBulkDeleteCreateRequest>;
+
 export interface InsightBulkOperationResult {
   /** ID of the insight that was soft-deleted or restored. */
   id: number;
   /** The insight's name (or derived name) at the time of the operation; null when it has neither. */
   name: string | null;
 }
+const InsightBulkOperationResult = /*@__PURE__*/ __L.at(
+  __c7,
+  4,
+) as any as S.Schema<InsightBulkOperationResult>;
+
 /** Insights that were successfully soft-deleted. */
 export type InsightBulkDeleteResponseDeletedList = Array<InsightBulkOperationResult>;
+const InsightBulkDeleteResponseDeletedList = /*@__PURE__*/ __L.at(
+  __c7,
+  5,
+) as any as S.Schema<InsightBulkDeleteResponseDeletedList>;
+
 export interface InsightBulkOperationSkipped {
   /** ID of the insight that was skipped. */
   id: number;
   /** Human-readable reason the insight was skipped (for example, not found or no edit permission). */
   reason: string;
 }
+const InsightBulkOperationSkipped = /*@__PURE__*/ __L.at(
+  __c7,
+  6,
+) as any as S.Schema<InsightBulkOperationSkipped>;
+
 /** Insights that were not deleted, with the reason for each. */
 export type InsightBulkDeleteResponseSkippedList = Array<InsightBulkOperationSkipped>;
+const InsightBulkDeleteResponseSkippedList = /*@__PURE__*/ __L.at(
+  __c7,
+  7,
+) as any as S.Schema<InsightBulkDeleteResponseSkippedList>;
+
 export interface InsightBulkDeleteResponse {
   /** Insights that were successfully soft-deleted. */
   deleted: InsightBulkDeleteResponseDeletedList;
   /** Insights that were not deleted, with the reason for each. */
   skipped: InsightBulkDeleteResponseSkippedList;
 }
+const InsightBulkDeleteResponse = /*@__PURE__*/ __L.at(
+  __c8,
+  0,
+) as any as S.Schema<InsightBulkDeleteResponse>;
+
 export type InsightsBulkRestoreCreateRequestFormat = "csv" | "json";
+const InsightsBulkRestoreCreateRequestFormat = S.String;
+
 /** Insight IDs to soft-delete (or restore). At most 1000 ids per request. Soft-deleted insights can be brought back via the bulk_restore endpoint. */
 export type InsightsBulkRestoreCreateRequestIdsList = Array<number>;
+const InsightsBulkRestoreCreateRequestIdsList =
+  TrendsFilterHiddenLegendIndexesList as any as S.Schema<InsightsBulkRestoreCreateRequestIdsList>;
+
 export interface InsightsBulkRestoreCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -8587,17 +8944,35 @@ export interface InsightsBulkRestoreCreateRequest {
   /** Insight IDs to soft-delete (or restore). At most 1000 ids per request. Soft-deleted insights can be brought back via the bulk_restore endpoint. */
   ids: InsightsBulkRestoreCreateRequestIdsList;
 }
+const InsightsBulkRestoreCreateRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  1,
+) as any as S.Schema<InsightsBulkRestoreCreateRequest>;
+
 /** Insights that were successfully restored. */
 export type InsightBulkRestoreResponseRestoredList = Array<InsightBulkOperationResult>;
+const InsightBulkRestoreResponseRestoredList =
+  InsightBulkDeleteResponseDeletedList as any as S.Schema<InsightBulkRestoreResponseRestoredList>;
+
 /** Insights that were not restored, with the reason for each. */
 export type InsightBulkRestoreResponseSkippedList = Array<InsightBulkOperationSkipped>;
+const InsightBulkRestoreResponseSkippedList =
+  InsightBulkDeleteResponseSkippedList as any as S.Schema<InsightBulkRestoreResponseSkippedList>;
+
 export interface InsightBulkRestoreResponse {
   /** Insights that were successfully restored. */
   restored: InsightBulkRestoreResponseRestoredList;
   /** Insights that were not restored, with the reason for each. */
   skipped: InsightBulkRestoreResponseSkippedList;
 }
+const InsightBulkRestoreResponse = /*@__PURE__*/ __L.at(
+  __c8,
+  2,
+) as any as S.Schema<InsightBulkRestoreResponse>;
+
 export type InsightsBulkSetTestAccountFilterCreateRequestFormat = "csv" | "json";
+const InsightsBulkSetTestAccountFilterCreateRequestFormat = S.String;
+
 export interface InsightsBulkSetTestAccountFilterCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -8605,6 +8980,11 @@ export interface InsightsBulkSetTestAccountFilterCreateRequest {
   /** Whether every existing insight should filter out internal and test users. */
   enabled: boolean;
 }
+const InsightsBulkSetTestAccountFilterCreateRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  3,
+) as any as S.Schema<InsightsBulkSetTestAccountFilterCreateRequest>;
+
 export interface InsightBulkSetTestAccountFilterResponse {
   /** Number of insights whose test account filter was changed. */
   updated: number;
@@ -8617,13 +8997,28 @@ export interface InsightBulkSetTestAccountFilterResponse {
   /** Number of insights left as they are because they still store legacy `filters` rather than a query. They keep whatever value they already had. Opening and saving one converts it, after which this endpoint covers it. */
   legacy: number;
 }
+const InsightBulkSetTestAccountFilterResponse = /*@__PURE__*/ __L.at(
+  __c8,
+  4,
+) as any as S.Schema<InsightBulkSetTestAccountFilterResponse>;
+
 export type InsightsBulkUpdateTagsCreateRequestFormat = "csv" | "json";
+const InsightsBulkUpdateTagsCreateRequestFormat = S.String;
+
 /** List of object IDs to update tags on. */
 export type InsightsBulkUpdateTagsCreateRequestIdsList = Array<number>;
+const InsightsBulkUpdateTagsCreateRequestIdsList =
+  TrendsFilterHiddenLegendIndexesList as any as S.Schema<InsightsBulkUpdateTagsCreateRequestIdsList>;
+
 /** * `add` - add * `remove` - remove * `set` - set */
 export type BulkUpdateTagsActionEnum = "add" | "remove" | "set";
+const BulkUpdateTagsActionEnum = S.String;
+
 /** Tag names to add, remove, or set (up to 100 per request, 255 characters each). */
 export type InsightsBulkUpdateTagsCreateRequestTagsList = Array<string>;
+const InsightsBulkUpdateTagsCreateRequestTagsList =
+  CustomChannelConditionValueCase1List as any as S.Schema<InsightsBulkUpdateTagsCreateRequestTagsList>;
+
 export interface InsightsBulkUpdateTagsCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -8635,25 +9030,60 @@ export interface InsightsBulkUpdateTagsCreateRequest {
   /** Tag names to add, remove, or set (up to 100 per request, 255 characters each). */
   tags?: InsightsBulkUpdateTagsCreateRequestTagsList;
 }
+const InsightsBulkUpdateTagsCreateRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  5,
+) as any as S.Schema<InsightsBulkUpdateTagsCreateRequest>;
+
 export type BulkUpdateTagsItemTagsList = Array<string>;
+const BulkUpdateTagsItemTagsList =
+  CustomChannelConditionValueCase1List as any as S.Schema<BulkUpdateTagsItemTagsList>;
+
 export interface BulkUpdateTagsItem {
   id?: number;
   tags?: BulkUpdateTagsItemTagsList;
 }
+const BulkUpdateTagsItem = /*@__PURE__*/ __L.at(__c8, 6) as any as S.Schema<BulkUpdateTagsItem>;
+
 export type BulkUpdateTagsResponseUpdatedList = Array<BulkUpdateTagsItem>;
+const BulkUpdateTagsResponseUpdatedList = /*@__PURE__*/ __L.at(
+  __c8,
+  7,
+) as any as S.Schema<BulkUpdateTagsResponseUpdatedList>;
+
 export interface BulkUpdateTagsError {
   id?: number;
   reason?: string;
 }
+const BulkUpdateTagsError = /*@__PURE__*/ __L.at(__c9, 0) as any as S.Schema<BulkUpdateTagsError>;
+
 export type BulkUpdateTagsResponseSkippedList = Array<BulkUpdateTagsError>;
+const BulkUpdateTagsResponseSkippedList = /*@__PURE__*/ __L.at(
+  __c9,
+  1,
+) as any as S.Schema<BulkUpdateTagsResponseSkippedList>;
+
 export interface BulkUpdateTagsResponse {
   updated?: BulkUpdateTagsResponseUpdatedList;
   skipped?: BulkUpdateTagsResponseSkippedList;
 }
+const BulkUpdateTagsResponse = /*@__PURE__*/ __L.at(
+  __c9,
+  2,
+) as any as S.Schema<BulkUpdateTagsResponse>;
+
 export type InsightsCancelCreateRequestFormat = "csv" | "json";
+const InsightsCancelCreateRequestFormat = S.String;
+
 /** DEPRECATED. Will be removed in a future release. Use dashboard_tiles instead. A dashboard ID for each of the dashboards that this insight is displayed on. This field is omitted from session-authenticated responses unless `include_dashboards=true` is passed. Once opt-in enforcement is enabled, API-token callers (personal API keys, OAuth) must opt in the same way. Do not rely on it being present. */
 export type InsightsCancelCreateRequestDashboardsList = Array<number>;
+const InsightsCancelCreateRequestDashboardsList =
+  TrendsFilterHiddenLegendIndexesList as any as S.Schema<InsightsCancelCreateRequestDashboardsList>;
+
 export type InsightsCancelCreateRequestTagsList = Array<unknown>;
+const InsightsCancelCreateRequestTagsList =
+  WebStatsTableQueryResponseColumnsList as any as S.Schema<InsightsCancelCreateRequestTagsList>;
+
 export interface InsightsCancelCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -8670,8 +9100,18 @@ export interface InsightsCancelCreateRequest {
   favorited?: boolean;
   _create_in_folder?: string;
 }
+const InsightsCancelCreateRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  3,
+) as any as S.Schema<InsightsCancelCreateRequest>;
+
 export interface InsightsCancelCreateResponse {}
+const InsightsCancelCreateResponse =
+  CreateInsightsViewedResponse as any as S.Schema<InsightsCancelCreateResponse>;
+
 export type InsightsDestroyRequestFormat = "csv" | "json";
+const InsightsDestroyRequestFormat = S.String;
+
 export interface InsightsDestroyRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -8679,11 +9119,27 @@ export interface InsightsDestroyRequest {
   id: string;
   format?: InsightsDestroyRequestFormat | (string & {});
 }
+const InsightsDestroyRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  4,
+) as any as S.Schema<InsightsDestroyRequest>;
+
 export interface InsightsDestroyResponse {}
+const InsightsDestroyResponse =
+  CreateInsightsViewedResponse as any as S.Schema<InsightsDestroyResponse>;
+
 export type InsightsGenerateMetadataCreateRequestFormat = "csv" | "json";
+const InsightsGenerateMetadataCreateRequestFormat = S.String;
+
 /** DEPRECATED. Will be removed in a future release. Use dashboard_tiles instead. A dashboard ID for each of the dashboards that this insight is displayed on. This field is omitted from session-authenticated responses unless `include_dashboards=true` is passed. Once opt-in enforcement is enabled, API-token callers (personal API keys, OAuth) must opt in the same way. Do not rely on it being present. */
 export type InsightsGenerateMetadataCreateRequestDashboardsList = Array<number>;
+const InsightsGenerateMetadataCreateRequestDashboardsList =
+  TrendsFilterHiddenLegendIndexesList as any as S.Schema<InsightsGenerateMetadataCreateRequestDashboardsList>;
+
 export type InsightsGenerateMetadataCreateRequestTagsList = Array<unknown>;
+const InsightsGenerateMetadataCreateRequestTagsList =
+  WebStatsTableQueryResponseColumnsList as any as S.Schema<InsightsGenerateMetadataCreateRequestTagsList>;
+
 export interface InsightsGenerateMetadataCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -8700,14 +9156,32 @@ export interface InsightsGenerateMetadataCreateRequest {
   favorited?: boolean;
   _create_in_folder?: string;
 }
+const InsightsGenerateMetadataCreateRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  5,
+) as any as S.Schema<InsightsGenerateMetadataCreateRequest>;
+
 export interface InsightsGenerateMetadataCreateResponse {}
+const InsightsGenerateMetadataCreateResponse = /*@__PURE__*/ __L.at(
+  __c9,
+  6,
+) as any as S.Schema<InsightsGenerateMetadataCreateResponse>;
+
 export interface InsightsSharingPasswordsDestroyRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   insight_id: number;
   password_id: string;
 }
+const InsightsSharingPasswordsDestroyRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  7,
+) as any as S.Schema<InsightsSharingPasswordsDestroyRequest>;
+
 export interface InsightsSharingPasswordsDestroyResponse {}
+const InsightsSharingPasswordsDestroyResponse =
+  InsightsGenerateMetadataCreateResponse as any as S.Schema<InsightsSharingPasswordsDestroyResponse>;
+
 export interface InsightsSharingRefreshCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -8716,7 +9190,14 @@ export interface InsightsSharingRefreshCreateRequest {
   settings?: unknown;
   password_required?: boolean;
 }
+const InsightsSharingRefreshCreateRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  0,
+) as any as S.Schema<InsightsSharingRefreshCreateRequest>;
+
 export type ListInsightsRequestFormat = "csv" | "json";
+const ListInsightsRequestFormat = S.String;
+
 export type ListInsightsRequestInsight =
   | "FUNNELS"
   | "JOURNEYS"
@@ -8727,6 +9208,8 @@ export type ListInsightsRequestInsight =
   | "SQL"
   | "STICKINESS"
   | "TRENDS";
+const ListInsightsRequestInsight = S.String;
+
 export type ListInsightsRequestRefresh =
   | "async"
   | "async_except_on_cache_miss"
@@ -8735,6 +9218,8 @@ export type ListInsightsRequestRefresh =
   | "force_blocking"
   | "force_cache"
   | "lazy_async";
+const ListInsightsRequestRefresh = S.String;
+
 export interface ListInsightsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -8779,20 +9264,47 @@ export interface ListInsightsRequest {
   /** Include this parameter (any value) to restrict results to insights created by the authenticated user. */
   user?: boolean;
 }
+const ListInsightsRequest = /*@__PURE__*/ __L.at(__c10, 1) as any as S.Schema<ListInsightsRequest>;
+
 export type PaginatedInsightListOutputResultsList = Array<InsightOutput>;
+const PaginatedInsightListOutputResultsList = /*@__PURE__*/ __L.at(
+  __c10,
+  2,
+) as any as S.Schema<PaginatedInsightListOutputResultsList>;
+
 export interface PaginatedInsightListOutput {
   count?: number;
   next?: string | null;
   previous?: string | null;
   results?: PaginatedInsightListOutputResultsList;
 }
+const PaginatedInsightListOutput = /*@__PURE__*/ __L.at(
+  __c10,
+  3,
+) as any as S.Schema<PaginatedInsightListOutput>;
+
 export interface ListInsightsSharingRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   insight_id: number;
 }
+const ListInsightsSharingRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  4,
+) as any as S.Schema<ListInsightsSharingRequest>;
+
 export type ListInsightsSharingResponseBodyList = Array<SharingConfiguration>;
+const ListInsightsSharingResponseBodyList = /*@__PURE__*/ __L.at(
+  __c10,
+  5,
+) as any as S.Schema<ListInsightsSharingResponseBodyList>;
+
 export type ListInsightsSharingResponse = ListInsightsSharingResponseBodyList;
+const ListInsightsSharingResponse = /*@__PURE__*/ __L.at(
+  __c10,
+  6,
+) as any as S.Schema<ListInsightsSharingResponse>;
+
 export interface ListInsightsThresholdsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -8802,17 +9314,40 @@ export interface ListInsightsThresholdsRequest {
   /** The initial index from which to return the results. */
   offset?: number;
 }
+const ListInsightsThresholdsRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  7,
+) as any as S.Schema<ListInsightsThresholdsRequest>;
+
 export type PaginatedThresholdWithAlertListResultsList = Array<ThresholdWithAlert>;
+const PaginatedThresholdWithAlertListResultsList = /*@__PURE__*/ __L.at(
+  __c11,
+  0,
+) as any as S.Schema<PaginatedThresholdWithAlertListResultsList>;
+
 export interface PaginatedThresholdWithAlertList {
   count?: number;
   next?: string | null;
   previous?: string | null;
   results?: PaginatedThresholdWithAlertListResultsList;
 }
+const PaginatedThresholdWithAlertList = /*@__PURE__*/ __L.at(
+  __c11,
+  1,
+) as any as S.Schema<PaginatedThresholdWithAlertList>;
+
 export type UpdateInsightRequestFormat = "csv" | "json";
+const UpdateInsightRequestFormat = S.String;
+
 /** DEPRECATED. Will be removed in a future release. Use dashboard_tiles instead. A dashboard ID for each of the dashboards that this insight is displayed on. This field is omitted from session-authenticated responses unless `include_dashboards=true` is passed. Once opt-in enforcement is enabled, API-token callers (personal API keys, OAuth) must opt in the same way. Do not rely on it being present. */
 export type UpdateInsightRequestDashboardsList = Array<number>;
+const UpdateInsightRequestDashboardsList =
+  TrendsFilterHiddenLegendIndexesList as any as S.Schema<UpdateInsightRequestDashboardsList>;
+
 export type UpdateInsightRequestTagsList = Array<unknown>;
+const UpdateInsightRequestTagsList =
+  WebStatsTableQueryResponseColumnsList as any as S.Schema<UpdateInsightRequestTagsList>;
+
 export interface UpdateInsightRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -8833,10 +9368,23 @@ export interface UpdateInsightRequest {
   favorited?: boolean;
   _create_in_folder?: string;
 }
+const UpdateInsightRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  2,
+) as any as S.Schema<UpdateInsightRequest>;
+
 export type UpdateInsightsPartialRequestFormat = "csv" | "json";
+const UpdateInsightsPartialRequestFormat = S.String;
+
 /** DEPRECATED. Will be removed in a future release. Use dashboard_tiles instead. A dashboard ID for each of the dashboards that this insight is displayed on. This field is omitted from session-authenticated responses unless `include_dashboards=true` is passed. Once opt-in enforcement is enabled, API-token callers (personal API keys, OAuth) must opt in the same way. Do not rely on it being present. */
 export type UpdateInsightsPartialRequestDashboardsList = Array<number>;
+const UpdateInsightsPartialRequestDashboardsList =
+  TrendsFilterHiddenLegendIndexesList as any as S.Schema<UpdateInsightsPartialRequestDashboardsList>;
+
 export type UpdateInsightsPartialRequestTagsList = Array<unknown>;
+const UpdateInsightsPartialRequestTagsList =
+  WebStatsTableQueryResponseColumnsList as any as S.Schema<UpdateInsightsPartialRequestTagsList>;
+
 export interface UpdateInsightsPartialRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -8857,6 +9405,11 @@ export interface UpdateInsightsPartialRequest {
   favorited?: boolean;
   _create_in_folder?: string;
 }
+const UpdateInsightsPartialRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  3,
+) as any as S.Schema<UpdateInsightsPartialRequest>;
+
 export type CreateInsightError = BadRequest | Forbidden | NotFound | PosthogOpError;
 export const createInsight: API.OperationMethod<
   CreateInsightRequest,
@@ -8864,8 +9417,8 @@ export const createInsight: API.OperationMethod<
   CreateInsightError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9) as any as S.Schema<CreateInsightRequest>,
-  output: __S(19) as any as S.Schema<InsightOutput>,
+  input: CreateInsightRequest,
+  output: InsightOutput,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -8879,8 +9432,8 @@ export const createInsightsSharingPassword: API.OperationMethod<
   CreateInsightsSharingPasswordError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20) as any as S.Schema<CreateInsightsSharingPasswordRequest>,
-  output: __S(23) as any as S.Schema<SharingConfiguration>,
+  input: CreateInsightsSharingPasswordRequest,
+  output: SharingConfiguration,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -8894,8 +9447,8 @@ export const createInsightsViewed: API.OperationMethod<
   CreateInsightsViewedError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24) as any as S.Schema<CreateInsightsViewedRequest>,
-  output: __S(25) as any as S.Schema<CreateInsightsViewedResponse>,
+  input: CreateInsightsViewedRequest,
+  output: CreateInsightsViewedResponse,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -8908,8 +9461,8 @@ export const getInsight: API.OperationMethod<
   GetInsightError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26) as any as S.Schema<GetInsightRequest>,
-  output: __S(19) as any as S.Schema<InsightOutput>,
+  input: GetInsightRequest,
+  output: InsightOutput,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -8923,8 +9476,8 @@ export const getInsightsActivity: API.OperationMethod<
   GetInsightsActivityError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27) as any as S.Schema<GetInsightsActivityRequest>,
-  output: __S(35) as any as S.Schema<ActivityLogPaginatedResponse>,
+  input: GetInsightsActivityRequest,
+  output: ActivityLogPaginatedResponse,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -8938,8 +9491,8 @@ export const getInsightsAllActivity: API.OperationMethod<
   GetInsightsAllActivityError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36) as any as S.Schema<GetInsightsAllActivityRequest>,
-  output: __S(35) as any as S.Schema<ActivityLogPaginatedResponse>,
+  input: GetInsightsAllActivityRequest,
+  output: ActivityLogPaginatedResponse,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -8953,8 +9506,8 @@ export const getInsightsMyLastViewed: API.OperationMethod<
   GetInsightsMyLastViewedError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37) as any as S.Schema<GetInsightsMyLastViewedRequest>,
-  output: __S(38) as any as S.Schema<GetInsightsMyLastViewedResponse>,
+  input: GetInsightsMyLastViewedRequest,
+  output: GetInsightsMyLastViewedResponse,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -8967,8 +9520,8 @@ export const getInsightsThreshold: API.OperationMethod<
   GetInsightsThresholdError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39) as any as S.Schema<GetInsightsThresholdRequest>,
-  output: __S(53) as any as S.Schema<ThresholdWithAlert>,
+  input: GetInsightsThresholdRequest,
+  output: ThresholdWithAlert,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -8982,8 +9535,8 @@ export const getInsightsTrending: API.OperationMethod<
   GetInsightsTrendingError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(54) as any as S.Schema<GetInsightsTrendingRequest>,
-  output: __S(58) as any as S.Schema<PaginatedTrendingInsightList>,
+  input: GetInsightsTrendingRequest,
+  output: PaginatedTrendingInsightList,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -8997,8 +9550,8 @@ export const insightsBulkDeleteCreate: API.OperationMethod<
   InsightsBulkDeleteCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(59) as any as S.Schema<InsightsBulkDeleteCreateRequest>,
-  output: __S(64) as any as S.Schema<InsightBulkDeleteResponse>,
+  input: InsightsBulkDeleteCreateRequest,
+  output: InsightBulkDeleteResponse,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -9012,8 +9565,8 @@ export const insightsBulkRestoreCreate: API.OperationMethod<
   InsightsBulkRestoreCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65) as any as S.Schema<InsightsBulkRestoreCreateRequest>,
-  output: __S(66) as any as S.Schema<InsightBulkRestoreResponse>,
+  input: InsightsBulkRestoreCreateRequest,
+  output: InsightBulkRestoreResponse,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -9027,8 +9580,8 @@ export const insightsBulkSetTestAccountFilterCreate: API.OperationMethod<
   InsightsBulkSetTestAccountFilterCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(67) as any as S.Schema<InsightsBulkSetTestAccountFilterCreateRequest>,
-  output: __S(68) as any as S.Schema<InsightBulkSetTestAccountFilterResponse>,
+  input: InsightsBulkSetTestAccountFilterCreateRequest,
+  output: InsightBulkSetTestAccountFilterResponse,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -9042,8 +9595,8 @@ export const insightsBulkUpdateTagsCreate: API.OperationMethod<
   InsightsBulkUpdateTagsCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(69) as any as S.Schema<InsightsBulkUpdateTagsCreateRequest>,
-  output: __S(74) as any as S.Schema<BulkUpdateTagsResponse>,
+  input: InsightsBulkUpdateTagsCreateRequest,
+  output: BulkUpdateTagsResponse,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -9056,8 +9609,8 @@ export const insightsCancelCreate: API.OperationMethod<
   InsightsCancelCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(75) as any as S.Schema<InsightsCancelCreateRequest>,
-  output: __S(25) as any as S.Schema<InsightsCancelCreateResponse>,
+  input: InsightsCancelCreateRequest,
+  output: InsightsCancelCreateResponse,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -9071,8 +9624,8 @@ export const insightsDestroy: API.OperationMethod<
   InsightsDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(76) as any as S.Schema<InsightsDestroyRequest>,
-  output: __S(25) as any as S.Schema<InsightsDestroyResponse>,
+  input: InsightsDestroyRequest,
+  output: InsightsDestroyResponse,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -9090,8 +9643,8 @@ export const insightsGenerateMetadataCreate: API.OperationMethod<
   InsightsGenerateMetadataCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(77) as any as S.Schema<InsightsGenerateMetadataCreateRequest>,
-  output: __S(78) as any as S.Schema<InsightsGenerateMetadataCreateResponse>,
+  input: InsightsGenerateMetadataCreateRequest,
+  output: InsightsGenerateMetadataCreateResponse,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -9105,8 +9658,8 @@ export const insightsSharingPasswordsDestroy: API.OperationMethod<
   InsightsSharingPasswordsDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(79) as any as S.Schema<InsightsSharingPasswordsDestroyRequest>,
-  output: __S(78) as any as S.Schema<InsightsSharingPasswordsDestroyResponse>,
+  input: InsightsSharingPasswordsDestroyRequest,
+  output: InsightsSharingPasswordsDestroyResponse,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -9119,8 +9672,8 @@ export const insightsSharingRefreshCreate: API.OperationMethod<
   InsightsSharingRefreshCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(80) as any as S.Schema<InsightsSharingRefreshCreateRequest>,
-  output: __S(23) as any as S.Schema<SharingConfiguration>,
+  input: InsightsSharingRefreshCreateRequest,
+  output: SharingConfiguration,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -9133,8 +9686,8 @@ export const listInsights: API.OperationMethod<
   ListInsightsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(81) as any as S.Schema<ListInsightsRequest>,
-  output: __S(83) as any as S.Schema<PaginatedInsightListOutput>,
+  input: ListInsightsRequest,
+  output: PaginatedInsightListOutput,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -9147,8 +9700,8 @@ export const listInsightsSharing: API.OperationMethod<
   ListInsightsSharingError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(84) as any as S.Schema<ListInsightsSharingRequest>,
-  output: __S(86) as any as S.Schema<ListInsightsSharingResponse>,
+  input: ListInsightsSharingRequest,
+  output: ListInsightsSharingResponse,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -9161,8 +9714,8 @@ export const listInsightsThresholds: API.OperationMethod<
   ListInsightsThresholdsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(87) as any as S.Schema<ListInsightsThresholdsRequest>,
-  output: __S(89) as any as S.Schema<PaginatedThresholdWithAlertList>,
+  input: ListInsightsThresholdsRequest,
+  output: PaginatedThresholdWithAlertList,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -9175,8 +9728,8 @@ export const updateInsight: API.OperationMethod<
   UpdateInsightError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(90) as any as S.Schema<UpdateInsightRequest>,
-  output: __S(19) as any as S.Schema<InsightOutput>,
+  input: UpdateInsightRequest,
+  output: InsightOutput,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -9189,8 +9742,8 @@ export const updateInsightsPartial: API.OperationMethod<
   UpdateInsightsPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(91) as any as S.Schema<UpdateInsightsPartialRequest>,
-  output: __S(19) as any as S.Schema<InsightOutput>,
+  input: UpdateInsightsPartialRequest,
+  output: InsightOutput,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -9205,24 +9758,24 @@ function __c0(j: number): any {
           group_type_index: S.optional(S.NullOr(S.Number)),
           histogram_bin_count: S.optional(S.NullOr(S.Number)),
           normalize_url: S.optional(S.NullOr(S.Boolean)),
-          property: S.optional(S.Unknown),
-          type: S.optional(S.NullOr(S.String)),
+          property: S.optional(BreakdownProperty),
+          type: S.optional(S.NullOr(MultipleBreakdownType)),
         }),
       ).annotate({ identifier: "Breakdown" });
     case 1:
-      return S.Array(__S(0));
+      return S.Array(Breakdown);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          breakdown: S.optional(S.NullOr(S.Unknown)),
+          breakdown: S.optional(S.NullOr(BreakdownFilterBreakdown)),
           breakdown_group_type_index: S.optional(S.NullOr(S.Number)),
           breakdown_hide_other_aggregation: S.optional(S.NullOr(S.Boolean)),
           breakdown_histogram_bin_count: S.optional(S.NullOr(S.Number)),
           breakdown_limit: S.optional(S.NullOr(S.Number)),
           breakdown_normalize_url: S.optional(S.NullOr(S.Boolean)),
           breakdown_path_cleaning: S.optional(S.NullOr(S.Boolean)),
-          breakdown_type: S.optional(S.NullOr(S.String)),
-          breakdowns: S.optional(S.NullOr(__S(1))),
+          breakdown_type: S.optional(S.NullOr(BreakdownType)),
+          breakdowns: S.optional(S.NullOr(BreakdownFilterBreakdownsList)),
         }),
       ).annotate({ identifier: "BreakdownFilter" });
     case 3:
@@ -9252,16 +9805,16 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
-          format: S.optional(S.String.pipe(T.Query())),
+          format: S.optional(CreateInsightRequestFormat.pipe(T.Query())),
           include_dashboards: S.optional(S.Boolean.pipe(T.Query())),
           name: S.optional(S.NullOr(S.String)),
           derived_name: S.optional(S.NullOr(S.String)),
-          query: S.optional(S.NullOr(S.Unknown)),
+          query: S.optional(S.NullOr(InsightQuerySchema)),
           order: S.optional(S.NullOr(S.Number)),
           deleted: S.optional(S.Boolean),
-          dashboards: S.optional(__S(7)),
+          dashboards: S.optional(CreateInsightRequestDashboardsList),
           description: S.optional(S.NullOr(S.String)),
-          tags: S.optional(__S(8)),
+          tags: S.optional(CreateInsightRequestTagsList),
           favorited: S.optional(S.Boolean),
           _create_in_folder: S.optional(S.String),
         }).pipe(T.Http({ method: "POST", uri: "/api/projects/{project_id}/insights/", code: 200 })),
@@ -9275,7 +9828,7 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "DashboardTileBasic" });
     case 3:
-      return S.Array(__S(10));
+      return S.Array(DashboardTileBasic);
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -9286,24 +9839,24 @@ function __c1(j: number): any {
           last_name: S.optional(S.String),
           email: S.optional(S.String),
           is_email_verified: S.optional(S.NullOr(S.Boolean)),
-          hedgehog_config: S.optional(S.NullOr(__S(6))),
-          role_at_organization: S.optional(S.NullOr(S.Unknown)),
+          hedgehog_config: S.optional(S.NullOr(UserBasicHedgehogConfigMap)),
+          role_at_organization: S.optional(S.NullOr(UserBasicRoleAtOrganization)),
         }),
       ).annotate({ identifier: "UserBasic" });
     case 5:
-      return S.Array(S.Unknown);
+      return S.Array(InsightResultWarningsItem);
     case 6:
-      return S.Array(S.Unknown);
+      return S.Array(DashboardFilterPropertiesItem);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          breakdown_filter: S.optional(S.NullOr(__S(2))),
+          breakdown_filter: S.optional(S.NullOr(BreakdownFilter)),
           date_from: S.optional(S.NullOr(S.String)),
           date_to: S.optional(S.NullOr(S.String)),
           explicitDate: S.optional(S.NullOr(S.Boolean)),
           filterTestAccounts: S.optional(S.NullOr(S.Boolean)),
-          interval: S.optional(S.NullOr(S.String)),
-          properties: S.optional(S.NullOr(__S(14))),
+          interval: S.optional(S.NullOr(IntervalType)),
+          properties: S.optional(S.NullOr(DashboardFilterPropertiesList)),
         }),
       ).annotate({ identifier: "DashboardFilter" });
   }
@@ -9311,26 +9864,26 @@ function __c1(j: number): any {
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.Unknown);
+      return S.Array(TileFiltersPropertiesItem);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          breakdown_filter: S.optional(S.NullOr(__S(2))),
+          breakdown_filter: S.optional(S.NullOr(BreakdownFilter)),
           date_from: S.optional(S.NullOr(S.String)),
           date_to: S.optional(S.NullOr(S.String)),
           explicitDate: S.optional(S.NullOr(S.Boolean)),
           filterTestAccounts: S.optional(S.NullOr(S.Boolean)),
           ignoreDashboardFilters: S.optional(S.NullOr(S.Boolean)),
-          interval: S.optional(S.NullOr(S.String)),
-          properties: S.optional(S.NullOr(__S(16))),
+          interval: S.optional(S.NullOr(IntervalType)),
+          properties: S.optional(S.NullOr(TileFiltersPropertiesList)),
         }),
       ).annotate({ identifier: "TileFilters" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          dashboard: S.optional(S.NullOr(__S(15))),
-          tile: S.optional(S.NullOr(__S(17))),
-          overridden_dashboard: S.optional(S.NullOr(__S(15))),
+          dashboard: S.optional(S.NullOr(DashboardFilter)),
+          tile: S.optional(S.NullOr(TileFilters)),
+          overridden_dashboard: S.optional(S.NullOr(DashboardFilter)),
         }),
       ).annotate({
         identifier: "InsightFilterOverrideContext",
@@ -9342,41 +9895,41 @@ function __c2(j: number): any {
           short_id: S.optional(S.String),
           name: S.optional(S.NullOr(S.String)),
           derived_name: S.optional(S.NullOr(S.String)),
-          query: S.optional(S.NullOr(S.Unknown)),
+          query: S.optional(S.NullOr(InsightQuerySchema)),
           order: S.optional(S.NullOr(S.Number)),
           deleted: S.optional(S.Boolean),
-          dashboards: S.optional(__S(7)),
-          dashboard_tiles: S.optional(__S(11)),
+          dashboards: S.optional(InsightOutputDashboardsList),
+          dashboard_tiles: S.optional(InsightOutputDashboardTilesList),
           last_refresh: S.optional(S.NullOr(S.String)),
           cache_target_age: S.optional(S.NullOr(S.String)),
           next_allowed_client_refresh: S.optional(S.NullOr(S.String)),
           result: S.optional(S.Unknown),
           hasMore: S.optional(S.NullOr(S.Boolean)),
-          columns: S.optional(S.NullOr(__S(3))),
+          columns: S.optional(S.NullOr(InsightOutputColumnsList)),
           created_at: S.optional(S.NullOr(S.String)),
-          created_by: S.optional(S.NullOr(__S(12))),
+          created_by: S.optional(S.NullOr(UserBasic)),
           description: S.optional(S.NullOr(S.String)),
           updated_at: S.optional(S.String),
-          tags: S.optional(__S(8)),
+          tags: S.optional(InsightOutputTagsList),
           favorited: S.optional(S.Boolean),
           last_modified_at: S.optional(S.String),
-          last_modified_by: S.optional(S.NullOr(__S(12))),
+          last_modified_by: S.optional(S.NullOr(UserBasic)),
           is_sample: S.optional(S.Boolean),
-          effective_restriction_level: S.optional(S.Number),
-          effective_privilege_level: S.optional(S.Number),
+          effective_restriction_level: S.optional(RestrictionLevelEnum),
+          effective_privilege_level: S.optional(PrivilegeLevelEnum),
           user_access_level: S.optional(S.NullOr(S.String)),
           timezone: S.optional(S.NullOr(S.String)),
           is_cached: S.optional(S.Boolean),
           query_status: S.optional(S.Unknown),
           hogql: S.optional(S.NullOr(S.String)),
-          types: S.optional(S.NullOr(__S(8))),
-          resolved_date_range: S.optional(S.NullOr(__S(5))),
+          types: S.optional(S.NullOr(InsightOutputTypesList)),
+          resolved_date_range: S.optional(S.NullOr(ResolvedDateRangeResponse)),
           query_scan: S.optional(S.Unknown),
-          warnings: S.optional(S.NullOr(__S(13))),
-          alerts: S.optional(__S(8)),
-          filter_override_context: S.optional(S.NullOr(__S(18))),
+          warnings: S.optional(S.NullOr(InsightResultWarnings)),
+          alerts: S.optional(InsightOutputAlertsList),
+          filter_override_context: S.optional(S.NullOr(InsightFilterOverrideContext)),
           last_viewed_at: S.optional(S.NullOr(S.String)),
-          search_match_type: S.optional(S.NullOr(S.String)),
+          search_match_type: S.optional(S.NullOr(SearchMatchTypeEnum)),
         }),
       ).annotate({ identifier: "InsightOutput" });
     case 4:
@@ -9408,7 +9961,7 @@ function __c2(j: number): any {
         }),
       ).annotate({ identifier: "SharePassword" });
     case 6:
-      return S.Array(__S(21));
+      return S.Array(SharePassword);
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -9417,7 +9970,7 @@ function __c2(j: number): any {
           access_token: S.optional(S.NullOr(S.String).pipe(T.SensitiveValue({}))),
           settings: S.optional(S.Unknown),
           password_required: S.optional(S.Boolean),
-          share_passwords: S.optional(__S(22)),
+          share_passwords: S.optional(SharingConfigurationSharePasswordsList),
           user_access_level: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "SharingConfiguration" });
@@ -9429,8 +9982,8 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
-          format: S.optional(S.String.pipe(T.Query())),
-          insight_ids: __S(7),
+          format: S.optional(CreateInsightsViewedRequestFormat.pipe(T.Query())),
+          insight_ids: CreateInsightsViewedRequestInsightIdsList,
         }).pipe(
           T.Http({ method: "POST", uri: "/api/projects/{project_id}/insights/viewed/", code: 200 }),
         ),
@@ -9447,10 +10000,10 @@ function __c3(j: number): any {
           project_id: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
           filters_override: S.optional(S.String.pipe(T.Query())),
-          format: S.optional(S.String.pipe(T.Query())),
+          format: S.optional(GetInsightRequestFormat.pipe(T.Query())),
           from_dashboard: S.optional(S.Number.pipe(T.Query())),
           include_dashboards: S.optional(S.Boolean.pipe(T.Query())),
-          refresh: S.optional(S.String.pipe(T.Query())),
+          refresh: S.optional(GetInsightRequestRefresh.pipe(T.Query())),
           variables_override: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({ method: "GET", uri: "/api/projects/{project_id}/insights/{id}/", code: 200 }),
@@ -9461,7 +10014,7 @@ function __c3(j: number): any {
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           id: S.Number.pipe(T.Label()),
-          format: S.optional(S.String.pipe(T.Query())),
+          format: S.optional(GetInsightsActivityRequestFormat.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
         }).pipe(
@@ -9485,7 +10038,7 @@ function __c3(j: number): any {
         }),
       ).annotate({ identifier: "Change" });
     case 5:
-      return S.Array(__S(28));
+      return S.Array(Change);
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -9510,9 +10063,9 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
-          changes: S.optional(__S(29)),
-          merge: S.optional(__S(30)),
-          trigger: S.optional(__S(31)),
+          changes: S.optional(DetailChangesList),
+          merge: S.optional(Merge),
+          trigger: S.optional(Trigger),
           name: S.optional(S.String),
           short_id: S.optional(S.String),
           type: S.optional(S.String),
@@ -9526,7 +10079,7 @@ function __c4(j: number): any {
           activity: S.optional(S.String),
           scope: S.optional(S.String),
           item_id: S.optional(S.String),
-          detail: S.optional(__S(32)),
+          detail: S.optional(Detail),
           created_at: S.optional(S.String),
           is_system: S.optional(S.Boolean),
           was_impersonated: S.optional(S.Boolean),
@@ -9534,11 +10087,11 @@ function __c4(j: number): any {
         }),
       ).annotate({ identifier: "ActivityLogEntry" });
     case 2:
-      return S.Array(__S(33));
+      return S.Array(ActivityLogEntry);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          results: S.optional(__S(34)),
+          results: S.optional(ActivityLogPaginatedResponseResultsList),
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
           total_count: S.optional(S.Number),
@@ -9550,7 +10103,7 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
-          format: S.optional(S.String.pipe(T.Query())),
+          format: S.optional(GetInsightsAllActivityRequestFormat.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
         }).pipe(
@@ -9567,7 +10120,7 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
-          format: S.optional(S.String.pipe(T.Query())),
+          format: S.optional(GetInsightsMyLastViewedRequestFormat.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -9612,8 +10165,8 @@ function __c5(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          bounds: S.optional(S.NullOr(__S(40))),
-          type: S.optional(S.String),
+          bounds: S.optional(S.NullOr(InsightsThresholdBounds)),
+          type: S.optional(InsightThresholdType),
         }),
       ).annotate({ identifier: "InsightThreshold" });
     case 2:
@@ -9622,13 +10175,13 @@ function __c5(j: number): any {
           id: S.optional(S.String),
           created_at: S.optional(S.String),
           name: S.optional(S.String),
-          configuration: S.optional(__S(41)),
+          configuration: S.optional(InsightThreshold),
         }),
       ).annotate({ identifier: "Threshold" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(S.String),
+          type: S.optional(AlertConditionType),
         }),
       ).annotate({ identifier: "AlertCondition" });
     case 4:
@@ -9644,32 +10197,32 @@ function __c5(j: number): any {
         }),
       ).annotate({ identifier: "AlertDelivery" });
     case 5:
-      return S.Array(__S(44));
+      return S.Array(AlertDelivery);
     case 6:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           created_at: S.optional(S.String),
           calculated_value: S.optional(S.NullOr(S.Number)),
-          state: S.optional(S.String),
-          error: S.optional(S.NullOr(__S(4))),
+          state: S.optional(AlertCheckStateEnum),
+          error: S.optional(S.NullOr(AlertCheckErrorMap)),
           targets_notified: S.optional(S.Boolean),
           anomaly_scores: S.optional(S.Unknown),
           triggered_points: S.optional(S.Unknown),
           triggered_dates: S.optional(S.Unknown),
           interval: S.optional(S.NullOr(S.String)),
           triggered_metadata: S.optional(S.Unknown),
-          investigation_status: S.optional(S.NullOr(S.String)),
-          investigation_verdict: S.optional(S.NullOr(S.String)),
+          investigation_status: S.optional(S.NullOr(InvestigationStatusEnum)),
+          investigation_verdict: S.optional(S.NullOr(InvestigationVerdictEnum)),
           investigation_summary: S.optional(S.NullOr(S.String)),
           investigation_notebook_short_id: S.optional(S.NullOr(S.String)),
           notification_sent_at: S.optional(S.NullOr(S.String)),
           notification_suppressed_by_agent: S.optional(S.Boolean),
-          deliveries: S.optional(S.NullOr(__S(45))),
+          deliveries: S.optional(S.NullOr(AlertCheckDeliveriesList)),
         }),
       ).annotate({ identifier: "AlertCheck" });
     case 7:
-      return S.Array(__S(46));
+      return S.Array(AlertCheck);
   }
 }
 function __c6(j: number): any {
@@ -9684,59 +10237,59 @@ function __c6(j: number): any {
         identifier: "AlertScheduleRestrictionWindow",
       });
     case 1:
-      return S.Array(__S(48));
+      return S.Array(AlertScheduleRestrictionWindow);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          blocked_windows: S.optional(__S(49)),
+          blocked_windows: S.optional(AlertScheduleRestrictionBlockedWindowsList),
         }),
       ).annotate({ identifier: "AlertScheduleRestriction" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
-          created_by: S.optional(S.NullOr(__S(12))),
+          created_by: S.optional(S.NullOr(UserBasic)),
           created_at: S.optional(S.String),
           insight: S.optional(S.Number),
           insight_short_id: S.optional(S.String),
           insight_display_name: S.optional(S.String),
           llm_detector_available: S.optional(S.NullOr(S.Boolean)),
           name: S.optional(S.String),
-          subscribed_users: S.optional(__S(7)),
-          threshold: S.optional(__S(42)),
-          condition: S.optional(S.NullOr(__S(43))),
+          subscribed_users: S.optional(AlertSubscribedUsersList),
+          threshold: S.optional(Threshold),
+          condition: S.optional(S.NullOr(AlertCondition)),
           state: S.optional(S.String),
           enabled: S.optional(S.Boolean),
           last_notified_at: S.optional(S.NullOr(S.String)),
           last_checked_at: S.optional(S.NullOr(S.String)),
           schedule_start_time: S.optional(S.NullOr(S.String)),
           next_check_at: S.optional(S.NullOr(S.String)),
-          checks: S.optional(__S(47)),
+          checks: S.optional(AlertChecksList),
           checks_total: S.optional(S.NullOr(S.Number)),
-          config: S.optional(S.NullOr(S.Unknown)),
-          detector_config: S.optional(S.NullOr(S.Unknown)),
+          config: S.optional(S.NullOr(AlertConfigUnion)),
+          detector_config: S.optional(S.NullOr(DetectorConfig)),
           evaluation_delay_intervals: S.optional(S.Number),
-          calculation_interval: S.optional(S.String),
+          calculation_interval: S.optional(CalculationIntervalEnum),
           snoozed_until: S.optional(S.NullOr(S.String)),
           skip_weekend: S.optional(S.NullOr(S.Boolean)),
-          schedule_restriction: S.optional(S.NullOr(__S(50))),
+          schedule_restriction: S.optional(S.NullOr(AlertScheduleRestriction)),
           last_value: S.optional(S.NullOr(S.Number)),
           investigation_agent_enabled: S.optional(S.Boolean),
           investigation_gates_notifications: S.optional(S.Boolean),
-          investigation_inconclusive_action: S.optional(S.String),
-          search_match_type: S.optional(S.NullOr(S.String)),
+          investigation_inconclusive_action: S.optional(InvestigationInconclusiveActionEnum),
+          search_match_type: S.optional(S.NullOr(SearchMatchTypeEnum)),
         }),
       ).annotate({ identifier: "Alert" });
     case 4:
-      return S.Array(__S(51));
+      return S.Array(Alert);
     case 5:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           created_at: S.optional(S.String),
           name: S.optional(S.String),
-          configuration: S.optional(__S(41)),
-          alerts: S.optional(__S(52)),
+          configuration: S.optional(InsightThreshold),
+          alerts: S.optional(ThresholdWithAlertAlertsList),
         }),
       ).annotate({ identifier: "ThresholdWithAlert" });
     case 6:
@@ -9744,7 +10297,7 @@ function __c6(j: number): any {
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           days: S.optional(S.Number.pipe(T.Query())),
-          format: S.optional(S.String.pipe(T.Query())),
+          format: S.optional(GetInsightsTrendingRequestFormat.pipe(T.Query())),
           include_dashboards: S.optional(S.Boolean.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
           offset: S.optional(S.Number.pipe(T.Query())),
@@ -9759,7 +10312,7 @@ function __c6(j: number): any {
         identifier: "GetInsightsTrendingRequest",
       });
     case 7:
-      return S.Array(__S(12));
+      return S.Array(UserBasic);
   }
 }
 function __c7(j: number): any {
@@ -9772,34 +10325,34 @@ function __c7(j: number): any {
           name: S.optional(S.NullOr(S.String)),
           derived_name: S.optional(S.NullOr(S.String)),
           query: S.optional(S.Unknown),
-          dashboards: S.optional(__S(7)),
-          dashboard_tiles: __S(11),
+          dashboards: S.optional(TrendingInsightDashboardsList),
+          dashboard_tiles: TrendingInsightDashboardTilesList,
           description: S.optional(S.NullOr(S.String)),
           last_refresh: S.NullOr(S.String),
           refreshing: S.Boolean,
-          tags: S.optional(__S(8)),
+          tags: S.optional(TrendingInsightTagsList),
           updated_at: S.String,
-          created_by: __S(12),
+          created_by: UserBasic,
           created_at: S.NullOr(S.String),
           last_modified_at: S.optional(S.String),
           favorited: S.optional(S.Boolean),
           user_access_level: S.NullOr(S.String),
           last_viewed_at: S.NullOr(S.String),
-          search_match_type: S.NullOr(S.String),
+          search_match_type: S.NullOr(SearchMatchTypeEnum),
           view_count: S.Number,
-          viewers: __S(55),
-          last_modified_by: __S(12),
+          viewers: TrendingInsightViewersList,
+          last_modified_by: UserBasic,
         }),
       ).annotate({ identifier: "TrendingInsight" });
     case 1:
-      return S.Array(__S(56));
+      return S.Array(TrendingInsight);
     case 2:
       return S.suspend(() =>
         S.Struct({
           count: S.Number,
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: __S(57),
+          results: PaginatedTrendingInsightListResultsList,
         }),
       ).annotate({
         identifier: "PaginatedTrendingInsightList",
@@ -9808,8 +10361,8 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
-          format: S.optional(S.String.pipe(T.Query())),
-          ids: __S(7),
+          format: S.optional(InsightsBulkDeleteCreateRequestFormat.pipe(T.Query())),
+          ids: InsightsBulkDeleteCreateRequestIdsList,
         }).pipe(
           T.Http({
             method: "POST",
@@ -9830,7 +10383,7 @@ function __c7(j: number): any {
         identifier: "InsightBulkOperationResult",
       });
     case 5:
-      return S.Array(__S(60));
+      return S.Array(InsightBulkOperationResult);
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -9841,7 +10394,7 @@ function __c7(j: number): any {
         identifier: "InsightBulkOperationSkipped",
       });
     case 7:
-      return S.Array(__S(62));
+      return S.Array(InsightBulkOperationSkipped);
   }
 }
 function __c8(j: number): any {
@@ -9849,8 +10402,8 @@ function __c8(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          deleted: __S(61),
-          skipped: __S(63),
+          deleted: InsightBulkDeleteResponseDeletedList,
+          skipped: InsightBulkDeleteResponseSkippedList,
         }),
       ).annotate({
         identifier: "InsightBulkDeleteResponse",
@@ -9859,8 +10412,8 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
-          format: S.optional(S.String.pipe(T.Query())),
-          ids: __S(7),
+          format: S.optional(InsightsBulkRestoreCreateRequestFormat.pipe(T.Query())),
+          ids: InsightsBulkRestoreCreateRequestIdsList,
         }).pipe(
           T.Http({
             method: "POST",
@@ -9874,8 +10427,8 @@ function __c8(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          restored: __S(61),
-          skipped: __S(63),
+          restored: InsightBulkRestoreResponseRestoredList,
+          skipped: InsightBulkRestoreResponseSkippedList,
         }),
       ).annotate({
         identifier: "InsightBulkRestoreResponse",
@@ -9884,7 +10437,7 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
-          format: S.optional(S.String.pipe(T.Query())),
+          format: S.optional(InsightsBulkSetTestAccountFilterCreateRequestFormat.pipe(T.Query())),
           enabled: S.Boolean,
         }).pipe(
           T.Http({
@@ -9912,10 +10465,10 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
-          format: S.optional(S.String.pipe(T.Query())),
-          ids: S.optional(__S(7)),
-          action: S.optional(S.String),
-          tags: S.optional(__S(3)),
+          format: S.optional(InsightsBulkUpdateTagsCreateRequestFormat.pipe(T.Query())),
+          ids: S.optional(InsightsBulkUpdateTagsCreateRequestIdsList),
+          action: S.optional(BulkUpdateTagsActionEnum),
+          tags: S.optional(InsightsBulkUpdateTagsCreateRequestTagsList),
         }).pipe(
           T.Http({
             method: "POST",
@@ -9930,11 +10483,11 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.Number),
-          tags: S.optional(__S(3)),
+          tags: S.optional(BulkUpdateTagsItemTagsList),
         }),
       ).annotate({ identifier: "BulkUpdateTagsItem" });
     case 7:
-      return S.Array(__S(70));
+      return S.Array(BulkUpdateTagsItem);
   }
 }
 function __c9(j: number): any {
@@ -9947,27 +10500,27 @@ function __c9(j: number): any {
         }),
       ).annotate({ identifier: "BulkUpdateTagsError" });
     case 1:
-      return S.Array(__S(72));
+      return S.Array(BulkUpdateTagsError);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          updated: S.optional(__S(71)),
-          skipped: S.optional(__S(73)),
+          updated: S.optional(BulkUpdateTagsResponseUpdatedList),
+          skipped: S.optional(BulkUpdateTagsResponseSkippedList),
         }),
       ).annotate({ identifier: "BulkUpdateTagsResponse" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
-          format: S.optional(S.String.pipe(T.Query())),
+          format: S.optional(InsightsCancelCreateRequestFormat.pipe(T.Query())),
           name: S.optional(S.NullOr(S.String)),
           derived_name: S.optional(S.NullOr(S.String)),
-          query: S.optional(S.NullOr(S.Unknown)),
+          query: S.optional(S.NullOr(InsightQuerySchema)),
           order: S.optional(S.NullOr(S.Number)),
           deleted: S.optional(S.Boolean),
-          dashboards: S.optional(__S(7)),
+          dashboards: S.optional(InsightsCancelCreateRequestDashboardsList),
           description: S.optional(S.NullOr(S.String)),
-          tags: S.optional(__S(8)),
+          tags: S.optional(InsightsCancelCreateRequestTagsList),
           favorited: S.optional(S.Boolean),
           _create_in_folder: S.optional(S.String),
         }).pipe(
@@ -9981,7 +10534,7 @@ function __c9(j: number): any {
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
-          format: S.optional(S.String.pipe(T.Query())),
+          format: S.optional(InsightsDestroyRequestFormat.pipe(T.Query())),
         }).pipe(
           T.Http({ method: "DELETE", uri: "/api/projects/{project_id}/insights/{id}/", code: 200 }),
         ),
@@ -9990,15 +10543,15 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
-          format: S.optional(S.String.pipe(T.Query())),
+          format: S.optional(InsightsGenerateMetadataCreateRequestFormat.pipe(T.Query())),
           name: S.optional(S.NullOr(S.String)),
           derived_name: S.optional(S.NullOr(S.String)),
-          query: S.optional(S.NullOr(S.Unknown)),
+          query: S.optional(S.NullOr(InsightQuerySchema)),
           order: S.optional(S.NullOr(S.Number)),
           deleted: S.optional(S.Boolean),
-          dashboards: S.optional(__S(7)),
+          dashboards: S.optional(InsightsGenerateMetadataCreateRequestDashboardsList),
           description: S.optional(S.NullOr(S.String)),
-          tags: S.optional(__S(8)),
+          tags: S.optional(InsightsGenerateMetadataCreateRequestTagsList),
           favorited: S.optional(S.Boolean),
           _create_in_folder: S.optional(S.String),
         }).pipe(
@@ -10065,14 +10618,14 @@ function __c10(j: number): any {
           date_from: S.optional(S.String.pipe(T.Query())),
           date_to: S.optional(S.String.pipe(T.Query())),
           favorited: S.optional(S.Boolean.pipe(T.Query())),
-          format: S.optional(S.String.pipe(T.Query())),
+          format: S.optional(ListInsightsRequestFormat.pipe(T.Query())),
           include_dashboards: S.optional(S.Boolean.pipe(T.Query())),
-          insight: S.optional(S.String.pipe(T.Query())),
+          insight: S.optional(ListInsightsRequestInsight.pipe(T.Query())),
           last_viewed_date_from: S.optional(S.String.pipe(T.Query())),
           last_viewed_date_to: S.optional(S.String.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
           offset: S.optional(S.Number.pipe(T.Query())),
-          refresh: S.optional(S.String.pipe(T.Query())),
+          refresh: S.optional(ListInsightsRequestRefresh.pipe(T.Query())),
           saved: S.optional(S.Boolean.pipe(T.Query())),
           search: S.optional(S.String.pipe(T.Query())),
           short_id: S.optional(S.String.pipe(T.Query())),
@@ -10081,14 +10634,14 @@ function __c10(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/api/projects/{project_id}/insights/", code: 200 })),
       ).annotate({ identifier: "ListInsightsRequest" });
     case 2:
-      return S.Array(__S(19));
+      return S.Array(InsightOutput);
     case 3:
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.Number),
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: S.optional(__S(82)),
+          results: S.optional(PaginatedInsightListOutputResultsList),
         }),
       ).annotate({
         identifier: "PaginatedInsightListOutput",
@@ -10109,9 +10662,11 @@ function __c10(j: number): any {
         identifier: "ListInsightsSharingRequest",
       });
     case 5:
-      return S.Array(__S(23));
+      return S.Array(SharingConfiguration);
     case 6:
-      return S.suspend(() => __S(85).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        ListInsightsSharingResponseBodyList.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "ListInsightsSharingResponse",
       });
     case 7:
@@ -10136,14 +10691,14 @@ function __c10(j: number): any {
 function __c11(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(53));
+      return S.Array(ThresholdWithAlert);
     case 1:
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.Number),
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: S.optional(__S(88)),
+          results: S.optional(PaginatedThresholdWithAlertListResultsList),
         }),
       ).annotate({
         identifier: "PaginatedThresholdWithAlertList",
@@ -10153,16 +10708,16 @@ function __c11(j: number): any {
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
-          format: S.optional(S.String.pipe(T.Query())),
+          format: S.optional(UpdateInsightRequestFormat.pipe(T.Query())),
           include_dashboards: S.optional(S.Boolean.pipe(T.Query())),
           name: S.optional(S.NullOr(S.String)),
           derived_name: S.optional(S.NullOr(S.String)),
-          query: S.optional(S.NullOr(S.Unknown)),
+          query: S.optional(S.NullOr(InsightQuerySchema)),
           order: S.optional(S.NullOr(S.Number)),
           deleted: S.optional(S.Boolean),
-          dashboards: S.optional(__S(7)),
+          dashboards: S.optional(UpdateInsightRequestDashboardsList),
           description: S.optional(S.NullOr(S.String)),
-          tags: S.optional(__S(8)),
+          tags: S.optional(UpdateInsightRequestTagsList),
           favorited: S.optional(S.Boolean),
           _create_in_folder: S.optional(S.String),
         }).pipe(
@@ -10174,16 +10729,16 @@ function __c11(j: number): any {
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
-          format: S.optional(S.String.pipe(T.Query())),
+          format: S.optional(UpdateInsightsPartialRequestFormat.pipe(T.Query())),
           include_dashboards: S.optional(S.Boolean.pipe(T.Query())),
           name: S.optional(S.NullOr(S.String)),
           derived_name: S.optional(S.NullOr(S.String)),
-          query: S.optional(S.NullOr(S.Unknown)),
+          query: S.optional(S.NullOr(InsightQuerySchema)),
           order: S.optional(S.NullOr(S.Number)),
           deleted: S.optional(S.Boolean),
-          dashboards: S.optional(__S(7)),
+          dashboards: S.optional(UpdateInsightsPartialRequestDashboardsList),
           description: S.optional(S.NullOr(S.String)),
-          tags: S.optional(__S(8)),
+          tags: S.optional(UpdateInsightsPartialRequestTagsList),
           favorited: S.optional(S.Boolean),
           _create_in_folder: S.optional(S.String),
         }).pipe(
@@ -10192,38 +10747,5 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "UpdateInsightsPartialRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
-    case 9:
-      return __c9(i & 7);
-    case 10:
-      return __c10(i & 7);
-    case 11:
-      return __c11(i & 7);
   }
 }

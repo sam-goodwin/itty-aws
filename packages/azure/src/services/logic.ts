@@ -7,8 +7,6 @@ import { UnknownAzureError } from "../errors.ts";
 import { AzureProtocol, type AzureOpError, type AzureOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { AzureOpError, AzureOpContext };
 
@@ -22,7 +20,17 @@ export interface CancelWorkflowRunRequest {
   /** The workflow run name. */
   runName: string;
 }
+const CancelWorkflowRunRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<CancelWorkflowRunRequest>;
+
 export interface CancelWorkflowRunResponse {}
+const CancelWorkflowRunResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<CancelWorkflowRunResponse>;
+
 export interface DeleteIntegrationAccountRequest {
   /** The subscription id. */
   subscriptionId: string;
@@ -31,7 +39,17 @@ export interface DeleteIntegrationAccountRequest {
   /** The integration account name. */
   integrationAccountName: string;
 }
+const DeleteIntegrationAccountRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<DeleteIntegrationAccountRequest>;
+
 export interface DeleteIntegrationAccountResponse {}
+const DeleteIntegrationAccountResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<DeleteIntegrationAccountResponse>;
+
 export interface DeleteIntegrationAccountAgreementRequest {
   /** The subscription id. */
   subscriptionId: string;
@@ -42,7 +60,15 @@ export interface DeleteIntegrationAccountAgreementRequest {
   /** The integration account agreement name. */
   agreementName: string;
 }
+const DeleteIntegrationAccountAgreementRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<DeleteIntegrationAccountAgreementRequest>;
+
 export interface DeleteIntegrationAccountAgreementResponse {}
+const DeleteIntegrationAccountAgreementResponse =
+  DeleteIntegrationAccountResponse as any as S.Schema<DeleteIntegrationAccountAgreementResponse>;
+
 export interface DeleteIntegrationAccountAssemblyRequest {
   /** The subscription id. */
   subscriptionId: string;
@@ -53,7 +79,15 @@ export interface DeleteIntegrationAccountAssemblyRequest {
   /** The assembly artifact name. */
   assemblyArtifactName: string;
 }
+const DeleteIntegrationAccountAssemblyRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<DeleteIntegrationAccountAssemblyRequest>;
+
 export interface DeleteIntegrationAccountAssemblyResponse {}
+const DeleteIntegrationAccountAssemblyResponse =
+  DeleteIntegrationAccountResponse as any as S.Schema<DeleteIntegrationAccountAssemblyResponse>;
+
 export interface DeleteIntegrationAccountBatchConfigurationRequest {
   /** The subscription id. */
   subscriptionId: string;
@@ -64,7 +98,15 @@ export interface DeleteIntegrationAccountBatchConfigurationRequest {
   /** The batch configuration name. */
   batchConfigurationName: string;
 }
+const DeleteIntegrationAccountBatchConfigurationRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<DeleteIntegrationAccountBatchConfigurationRequest>;
+
 export interface DeleteIntegrationAccountBatchConfigurationResponse {}
+const DeleteIntegrationAccountBatchConfigurationResponse =
+  DeleteIntegrationAccountResponse as any as S.Schema<DeleteIntegrationAccountBatchConfigurationResponse>;
+
 export interface DeleteIntegrationAccountCertificateRequest {
   /** The subscription id. */
   subscriptionId: string;
@@ -75,7 +117,15 @@ export interface DeleteIntegrationAccountCertificateRequest {
   /** The integration account certificate name. */
   certificateName: string;
 }
+const DeleteIntegrationAccountCertificateRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<DeleteIntegrationAccountCertificateRequest>;
+
 export interface DeleteIntegrationAccountCertificateResponse {}
+const DeleteIntegrationAccountCertificateResponse =
+  DeleteIntegrationAccountResponse as any as S.Schema<DeleteIntegrationAccountCertificateResponse>;
+
 export interface DeleteIntegrationAccountMapRequest {
   /** The subscription id. */
   subscriptionId: string;
@@ -86,7 +136,15 @@ export interface DeleteIntegrationAccountMapRequest {
   /** The integration account map name. */
   mapName: string;
 }
+const DeleteIntegrationAccountMapRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<DeleteIntegrationAccountMapRequest>;
+
 export interface DeleteIntegrationAccountMapResponse {}
+const DeleteIntegrationAccountMapResponse =
+  DeleteIntegrationAccountResponse as any as S.Schema<DeleteIntegrationAccountMapResponse>;
+
 export interface DeleteIntegrationAccountPartnerRequest {
   /** The subscription id. */
   subscriptionId: string;
@@ -97,7 +155,15 @@ export interface DeleteIntegrationAccountPartnerRequest {
   /** The integration account partner name. */
   partnerName: string;
 }
+const DeleteIntegrationAccountPartnerRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<DeleteIntegrationAccountPartnerRequest>;
+
 export interface DeleteIntegrationAccountPartnerResponse {}
+const DeleteIntegrationAccountPartnerResponse =
+  DeleteIntegrationAccountResponse as any as S.Schema<DeleteIntegrationAccountPartnerResponse>;
+
 export interface DeleteIntegrationAccountSchemaRequest {
   /** The subscription id. */
   subscriptionId: string;
@@ -108,7 +174,15 @@ export interface DeleteIntegrationAccountSchemaRequest {
   /** The integration account schema name. */
   schemaName: string;
 }
+const DeleteIntegrationAccountSchemaRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<DeleteIntegrationAccountSchemaRequest>;
+
 export interface DeleteIntegrationAccountSchemaResponse {}
+const DeleteIntegrationAccountSchemaResponse =
+  DeleteIntegrationAccountResponse as any as S.Schema<DeleteIntegrationAccountSchemaResponse>;
+
 export interface DeleteIntegrationAccountSessionRequest {
   /** The subscription id. */
   subscriptionId: string;
@@ -119,7 +193,15 @@ export interface DeleteIntegrationAccountSessionRequest {
   /** The integration account session name. */
   sessionName: string;
 }
+const DeleteIntegrationAccountSessionRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<DeleteIntegrationAccountSessionRequest>;
+
 export interface DeleteIntegrationAccountSessionResponse {}
+const DeleteIntegrationAccountSessionResponse =
+  DeleteIntegrationAccountResponse as any as S.Schema<DeleteIntegrationAccountSessionResponse>;
+
 export interface DeleteIntegrationServiceEnvironmentRequest {
   /** The subscription id. */
   subscriptionId: string;
@@ -128,7 +210,15 @@ export interface DeleteIntegrationServiceEnvironmentRequest {
   /** The integration service environment name. */
   integrationServiceEnvironmentName: string;
 }
+const DeleteIntegrationServiceEnvironmentRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<DeleteIntegrationServiceEnvironmentRequest>;
+
 export interface DeleteIntegrationServiceEnvironmentResponse {}
+const DeleteIntegrationServiceEnvironmentResponse =
+  DeleteIntegrationAccountResponse as any as S.Schema<DeleteIntegrationServiceEnvironmentResponse>;
+
 export interface DeleteIntegrationServiceEnvironmentManagedApisRequest {
   /** The subscription id. */
   subscriptionId: string;
@@ -139,7 +229,15 @@ export interface DeleteIntegrationServiceEnvironmentManagedApisRequest {
   /** The api name. */
   apiName: string;
 }
+const DeleteIntegrationServiceEnvironmentManagedApisRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<DeleteIntegrationServiceEnvironmentManagedApisRequest>;
+
 export interface DeleteIntegrationServiceEnvironmentManagedApisResponse {}
+const DeleteIntegrationServiceEnvironmentManagedApisResponse =
+  DeleteIntegrationAccountResponse as any as S.Schema<DeleteIntegrationServiceEnvironmentManagedApisResponse>;
+
 export interface DeleteWorkflowRequest {
   /** The subscription id. */
   subscriptionId: string;
@@ -148,7 +246,14 @@ export interface DeleteWorkflowRequest {
   /** The workflow name. */
   workflowName: string;
 }
+const DeleteWorkflowRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<DeleteWorkflowRequest>;
+
 export interface DeleteWorkflowResponse {}
+const DeleteWorkflowResponse = CancelWorkflowRunResponse as any as S.Schema<DeleteWorkflowResponse>;
+
 export interface DisableWorkflowRequest {
   /** The subscription id. */
   subscriptionId: string;
@@ -157,7 +262,15 @@ export interface DisableWorkflowRequest {
   /** The workflow name. */
   workflowName: string;
 }
+const DisableWorkflowRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<DisableWorkflowRequest>;
+
 export interface DisableWorkflowResponse {}
+const DisableWorkflowResponse =
+  CancelWorkflowRunResponse as any as S.Schema<DisableWorkflowResponse>;
+
 export interface EnableWorkflowRequest {
   /** The subscription id. */
   subscriptionId: string;
@@ -166,7 +279,14 @@ export interface EnableWorkflowRequest {
   /** The workflow name. */
   workflowName: string;
 }
+const EnableWorkflowRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<EnableWorkflowRequest>;
+
 export interface EnableWorkflowResponse {}
+const EnableWorkflowResponse = CancelWorkflowRunResponse as any as S.Schema<EnableWorkflowResponse>;
+
 export interface GenerateWorkflowUpgradedDefinitionRequest {
   /** The subscription id. */
   subscriptionId: string;
@@ -177,7 +297,17 @@ export interface GenerateWorkflowUpgradedDefinitionRequest {
   /** The target schema version. */
   targetSchemaVersion?: string;
 }
+const GenerateWorkflowUpgradedDefinitionRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<GenerateWorkflowUpgradedDefinitionRequest>;
+
 export type GenerateWorkflowUpgradedDefinitionResponse = unknown;
+const GenerateWorkflowUpgradedDefinitionResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<GenerateWorkflowUpgradedDefinitionResponse>;
+
 export interface GetIntegrationAccountRequest {
   /** The subscription id. */
   subscriptionId: string;
@@ -186,8 +316,18 @@ export interface GetIntegrationAccountRequest {
   /** The integration account name. */
   integrationAccountName: string;
 }
+const GetIntegrationAccountRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<GetIntegrationAccountRequest>;
+
 /** The resource tags. */
 export type GetIntegrationAccountResponseTagsMap = { [key: string]: string | undefined };
+const GetIntegrationAccountResponseTagsMap = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<GetIntegrationAccountResponseTagsMap>;
+
 /** The resource reference. */
 export interface ResourceReference {
   /** The resource id. */
@@ -197,6 +337,8 @@ export interface ResourceReference {
   /** Gets the resource type. */
   type?: string;
 }
+const ResourceReference = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<ResourceReference>;
+
 /** The workflow state. */
 export type WorkflowState =
   | "NotSpecified"
@@ -205,6 +347,8 @@ export type WorkflowState =
   | "Disabled"
   | "Deleted"
   | "Suspended";
+const WorkflowState = S.String;
+
 /** The integration account properties. */
 export interface IntegrationAccountProperties {
   /** The integration service environment. */
@@ -212,13 +356,25 @@ export interface IntegrationAccountProperties {
   /** The workflow state. */
   state?: WorkflowState;
 }
+const IntegrationAccountProperties = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<IntegrationAccountProperties>;
+
 /** The integration account sku name. */
 export type IntegrationAccountSkuName = "NotSpecified" | "Free" | "Basic" | "Standard";
+const IntegrationAccountSkuName = S.String;
+
 /** The integration account sku. */
 export interface IntegrationAccountSku {
   /** The sku name. */
   name: IntegrationAccountSkuName | (string & {});
 }
+const IntegrationAccountSku = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<IntegrationAccountSku>;
+
 export interface GetIntegrationAccountResponse {
   /** The resource id. */
   id?: string;
@@ -235,6 +391,11 @@ export interface GetIntegrationAccountResponse {
   /** The sku. */
   sku?: IntegrationAccountSku;
 }
+const GetIntegrationAccountResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<GetIntegrationAccountResponse>;
+
 export interface GetIntegrationAccountAgreementRequest {
   /** The subscription id. */
   subscriptionId: string;
@@ -245,10 +406,20 @@ export interface GetIntegrationAccountAgreementRequest {
   /** The integration account agreement name. */
   agreementName: string;
 }
+const GetIntegrationAccountAgreementRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<GetIntegrationAccountAgreementRequest>;
+
 /** The resource tags. */
 export type GetIntegrationAccountAgreementResponseTagsMap = { [key: string]: string | undefined };
+const GetIntegrationAccountAgreementResponseTagsMap =
+  GetIntegrationAccountResponseTagsMap as any as S.Schema<GetIntegrationAccountAgreementResponseTagsMap>;
+
 /** The agreement type. */
 export type AgreementType = "NotSpecified" | "AS2" | "X12" | "Edifact";
+const AgreementType = S.String;
+
 /** The integration account partner's business identity. */
 export interface BusinessIdentity {
   /** The business identity qualifier e.g. as2identity, ZZ, ZZZ, 31, 32 */
@@ -256,6 +427,8 @@ export interface BusinessIdentity {
   /** The user defined business identity value. */
   value: string;
 }
+const BusinessIdentity = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<BusinessIdentity>;
+
 /** The AS2 agreement message connection settings. */
 export interface AS2MessageConnectionSettings {
   /** The value indicating whether to ignore mismatch in certificate name. */
@@ -267,6 +440,11 @@ export interface AS2MessageConnectionSettings {
   /** The value indicating whether to unfold the HTTP headers. */
   unfoldHttpHeaders: boolean;
 }
+const AS2MessageConnectionSettings = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<AS2MessageConnectionSettings>;
+
 /** The AS2 agreement acknowledgement connection settings. */
 export interface AS2AcknowledgementConnectionSettings {
   /** Indicates whether to ignore mismatch in certificate name. */
@@ -278,6 +456,9 @@ export interface AS2AcknowledgementConnectionSettings {
   /** Indicates whether to unfold the HTTP headers. */
   unfoldHttpHeaders: boolean;
 }
+const AS2AcknowledgementConnectionSettings =
+  AS2MessageConnectionSettings as any as S.Schema<AS2AcknowledgementConnectionSettings>;
+
 /** The signing or hashing algorithm. */
 export type HashingAlgorithm =
   | "NotSpecified"
@@ -287,6 +468,8 @@ export type HashingAlgorithm =
   | "SHA2256"
   | "SHA2384"
   | "SHA2512";
+const HashingAlgorithm = S.String;
+
 /** The AS2 agreement mdn settings. */
 export interface AS2MdnSettings {
   /** The value indicating whether to send or request a MDN. */
@@ -308,6 +491,8 @@ export interface AS2MdnSettings {
   /** The signing or hashing algorithm. */
   micHashingAlgorithm: HashingAlgorithm | (string & {});
 }
+const AS2MdnSettings = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<AS2MdnSettings>;
+
 /** The AS2 agreement security settings. */
 export interface AS2SecuritySettings {
   /** The value indicating whether to send or request a MDN. */
@@ -331,6 +516,8 @@ export interface AS2SecuritySettings {
   /** The Sha2 algorithm format. Valid values are Sha2, ShaHashSize, ShaHyphenHashSize, Sha2UnderscoreHashSize. */
   sha2AlgorithmFormat?: string;
 }
+const AS2SecuritySettings = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<AS2SecuritySettings>;
+
 /** The encryption algorithm. */
 export type EncryptionAlgorithm =
   | "NotSpecified"
@@ -340,6 +527,8 @@ export type EncryptionAlgorithm =
   | "AES128"
   | "AES192"
   | "AES256";
+const EncryptionAlgorithm = S.String;
+
 /** The signing or hashing algorithm. */
 export type SigningAlgorithm =
   | "NotSpecified"
@@ -348,6 +537,8 @@ export type SigningAlgorithm =
   | "SHA2256"
   | "SHA2384"
   | "SHA2512";
+const SigningAlgorithm = S.String;
+
 /** The AS2 agreement validation settings. */
 export interface AS2ValidationSettings {
   /** The value indicating whether to override incoming message properties with those in agreement. */
@@ -371,6 +562,11 @@ export interface AS2ValidationSettings {
   /** The signing algorithm. */
   signingAlgorithm?: SigningAlgorithm | (string & {});
 }
+const AS2ValidationSettings = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<AS2ValidationSettings>;
+
 /** The AS2 agreement envelope settings. */
 export interface AS2EnvelopeSettings {
   /** The message content type. */
@@ -384,6 +580,8 @@ export interface AS2EnvelopeSettings {
   /** The value indicating whether to auto generate file name. */
   autogenerateFileName: boolean;
 }
+const AS2EnvelopeSettings = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<AS2EnvelopeSettings>;
+
 /** The AS2 agreement error settings. */
 export interface AS2ErrorSettings {
   /** The value indicating whether to suspend duplicate message. */
@@ -391,6 +589,8 @@ export interface AS2ErrorSettings {
   /** The value indicating whether to resend message If MDN is not received. */
   resendIfMDNNotReceived: boolean;
 }
+const AS2ErrorSettings = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<AS2ErrorSettings>;
+
 /** The AS2 agreement protocol settings. */
 export interface AS2ProtocolSettings {
   /** The message connection settings. */
@@ -408,6 +608,8 @@ export interface AS2ProtocolSettings {
   /** The error settings. */
   errorSettings: AS2ErrorSettings;
 }
+const AS2ProtocolSettings = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<AS2ProtocolSettings>;
+
 /** The integration account AS2 one-way agreement. */
 export interface AS2OneWayAgreement {
   /** The sender business identity */
@@ -417,6 +619,8 @@ export interface AS2OneWayAgreement {
   /** The AS2 protocol settings. */
   protocolSettings: AS2ProtocolSettings;
 }
+const AS2OneWayAgreement = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<AS2OneWayAgreement>;
+
 /** The integration account AS2 agreement content. */
 export interface AS2AgreementContent {
   /** The AS2 one-way receive agreement. */
@@ -424,8 +628,12 @@ export interface AS2AgreementContent {
   /** The AS2 one-way send agreement. */
   sendAgreement: AS2OneWayAgreement;
 }
+const AS2AgreementContent = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<AS2AgreementContent>;
+
 /** The trailing separator policy. */
 export type TrailingSeparatorPolicy = "NotSpecified" | "NotAllowed" | "Optional" | "Mandatory";
+const TrailingSeparatorPolicy = S.String;
+
 /** The X12 agreement validation settings. */
 export interface X12ValidationSettings {
   /** The value indicating whether to validate character set in the message. */
@@ -449,10 +657,19 @@ export interface X12ValidationSettings {
   /** The trailing separator policy. */
   trailingSeparatorPolicy: TrailingSeparatorPolicy | (string & {});
 }
+const X12ValidationSettings = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<X12ValidationSettings>;
+
 /** The X12 character set. */
 export type X12CharacterSet = "NotSpecified" | "Basic" | "Extended" | "UTF8";
+const X12CharacterSet = S.String;
+
 /** The segment terminator suffix. */
 export type SegmentTerminatorSuffix = "NotSpecified" | "None" | "CR" | "LF" | "CRLF";
+const SegmentTerminatorSuffix = S.String;
+
 /** The X12 agreement framing settings. */
 export interface X12FramingSettings {
   /** The data element separator. */
@@ -470,12 +687,20 @@ export interface X12FramingSettings {
   /** The segment terminator suffix. */
   segmentTerminatorSuffix: SegmentTerminatorSuffix | (string & {});
 }
+const X12FramingSettings = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<X12FramingSettings>;
+
 /** The x12 date format. */
 export type X12DateFormat = "NotSpecified" | "CCYYMMDD" | "YYMMDD";
+const X12DateFormat = S.String;
+
 /** The x12 time format. */
 export type X12TimeFormat = "NotSpecified" | "HHMM" | "HHMMSS" | "HHMMSSdd" | "HHMMSSd";
+const X12TimeFormat = S.String;
+
 /** The usage indicator. */
 export type UsageIndicator = "NotSpecified" | "Test" | "Information" | "Production";
+const UsageIndicator = S.String;
+
 /** The X12 agreement envelope settings. */
 export interface X12EnvelopeSettings {
   /** The controls standards id. */
@@ -527,6 +752,8 @@ export interface X12EnvelopeSettings {
   /** The usage indicator. */
   usageIndicator: UsageIndicator | (string & {});
 }
+const X12EnvelopeSettings = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<X12EnvelopeSettings>;
+
 /** The X12 agreement acknowledgement settings. */
 export interface X12AcknowledgementSettings {
   /** The value indicating whether technical acknowledgement is needed. */
@@ -560,13 +787,22 @@ export interface X12AcknowledgementSettings {
   /** The value indicating whether to rollover acknowledgement control number. */
   rolloverAcknowledgementControlNumber: boolean;
 }
+const X12AcknowledgementSettings = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<X12AcknowledgementSettings>;
+
 /** The message filter type. */
 export type MessageFilterType = "NotSpecified" | "Include" | "Exclude";
+const MessageFilterType = S.String;
+
 /** The X12 message filter for odata query. */
 export interface X12MessageFilter {
   /** The message filter type. */
   messageFilterType: MessageFilterType | (string & {});
 }
+const X12MessageFilter = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<X12MessageFilter>;
+
 /** The X12 agreement security settings. */
 export interface X12SecuritySettings {
   /** The authorization qualifier. */
@@ -578,6 +814,8 @@ export interface X12SecuritySettings {
   /** The password value. */
   passwordValue?: string | Redacted.Redacted<string>;
 }
+const X12SecuritySettings = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<X12SecuritySettings>;
+
 /** The X12 processing settings. */
 export interface X12ProcessingSettings {
   /** The value indicating whether to mask security information. */
@@ -593,6 +831,11 @@ export interface X12ProcessingSettings {
   /** The value indicating whether to use dot as decimal separator. */
   useDotAsDecimalSeparator: boolean;
 }
+const X12ProcessingSettings = /*@__PURE__*/ __L.at(
+  __c5,
+  2,
+) as any as S.Schema<X12ProcessingSettings>;
+
 /** The X12 envelope override settings. */
 export interface X12EnvelopeOverride {
   /** The target namespace on which this envelope settings has to be applied. */
@@ -616,8 +859,15 @@ export interface X12EnvelopeOverride {
   /** The time format. */
   timeFormat: X12TimeFormat | (string & {});
 }
+const X12EnvelopeOverride = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<X12EnvelopeOverride>;
+
 /** The X12 envelope override settings. */
 export type X12ProtocolSettingsEnvelopeOverridesList = Array<X12EnvelopeOverride>;
+const X12ProtocolSettingsEnvelopeOverridesList = /*@__PURE__*/ __L.at(
+  __c5,
+  4,
+) as any as S.Schema<X12ProtocolSettingsEnvelopeOverridesList>;
+
 /** The X12 validation override settings. */
 export interface X12ValidationOverride {
   /** The message id on which the validation settings has to be applied. */
@@ -635,15 +885,32 @@ export interface X12ValidationOverride {
   /** The trailing separator policy. */
   trailingSeparatorPolicy: TrailingSeparatorPolicy | (string & {});
 }
+const X12ValidationOverride = /*@__PURE__*/ __L.at(
+  __c5,
+  5,
+) as any as S.Schema<X12ValidationOverride>;
+
 /** The X12 validation override settings. */
 export type X12ProtocolSettingsValidationOverridesList = Array<X12ValidationOverride>;
+const X12ProtocolSettingsValidationOverridesList = /*@__PURE__*/ __L.at(
+  __c5,
+  6,
+) as any as S.Schema<X12ProtocolSettingsValidationOverridesList>;
+
 /** The X12 message identifier. */
 export interface X12MessageIdentifier {
   /** The message id. */
   messageId: string;
 }
+const X12MessageIdentifier = /*@__PURE__*/ __L.at(__c5, 7) as any as S.Schema<X12MessageIdentifier>;
+
 /** The X12 message filter list. */
 export type X12ProtocolSettingsMessageFilterListList = Array<X12MessageIdentifier>;
+const X12ProtocolSettingsMessageFilterListList = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<X12ProtocolSettingsMessageFilterListList>;
+
 /** The X12 schema reference. */
 export interface X12SchemaReference {
   /** The message id. */
@@ -655,8 +922,15 @@ export interface X12SchemaReference {
   /** The schema name. */
   schemaName: string;
 }
+const X12SchemaReference = /*@__PURE__*/ __L.at(__c6, 1) as any as S.Schema<X12SchemaReference>;
+
 /** The X12 schema references. */
 export type X12ProtocolSettingsSchemaReferencesList = Array<X12SchemaReference>;
+const X12ProtocolSettingsSchemaReferencesList = /*@__PURE__*/ __L.at(
+  __c6,
+  2,
+) as any as S.Schema<X12ProtocolSettingsSchemaReferencesList>;
+
 /** The X12 delimiter override settings. */
 export interface X12DelimiterOverrides {
   /** The protocol version. */
@@ -678,8 +952,18 @@ export interface X12DelimiterOverrides {
   /** The target namespace on which this delimiter settings has to be applied. */
   targetNamespace?: string;
 }
+const X12DelimiterOverrides = /*@__PURE__*/ __L.at(
+  __c6,
+  3,
+) as any as S.Schema<X12DelimiterOverrides>;
+
 /** The X12 delimiter override settings. */
 export type X12ProtocolSettingsX12DelimiterOverridesList = Array<X12DelimiterOverrides>;
+const X12ProtocolSettingsX12DelimiterOverridesList = /*@__PURE__*/ __L.at(
+  __c6,
+  4,
+) as any as S.Schema<X12ProtocolSettingsX12DelimiterOverridesList>;
+
 /** The X12 agreement protocol settings. */
 export interface X12ProtocolSettings {
   /** The X12 validation settings. */
@@ -707,6 +991,8 @@ export interface X12ProtocolSettings {
   /** The X12 delimiter override settings. */
   x12DelimiterOverrides?: X12ProtocolSettingsX12DelimiterOverridesList;
 }
+const X12ProtocolSettings = /*@__PURE__*/ __L.at(__c6, 5) as any as S.Schema<X12ProtocolSettings>;
+
 /** The X12 one-way agreement. */
 export interface X12OneWayAgreement {
   /** The sender business identity */
@@ -716,6 +1002,8 @@ export interface X12OneWayAgreement {
   /** The X12 protocol settings. */
   protocolSettings: X12ProtocolSettings;
 }
+const X12OneWayAgreement = /*@__PURE__*/ __L.at(__c6, 6) as any as S.Schema<X12OneWayAgreement>;
+
 /** The X12 agreement content. */
 export interface X12AgreementContent {
   /** The X12 one-way receive agreement. */
@@ -723,6 +1011,8 @@ export interface X12AgreementContent {
   /** The X12 one-way send agreement. */
   sendAgreement: X12OneWayAgreement;
 }
+const X12AgreementContent = /*@__PURE__*/ __L.at(__c6, 7) as any as S.Schema<X12AgreementContent>;
+
 /** The Edifact agreement validation settings. */
 export type EdifactValidationSettings = X12ValidationSettings;
 /** The edifact character set. */
@@ -742,8 +1032,12 @@ export type EdifactCharacterSet =
   | "UNOX"
   | "UNOY"
   | "KECA";
+const EdifactCharacterSet = S.String;
+
 /** The edifact decimal indicator. */
 export type EdifactDecimalIndicator = "NotSpecified" | "Comma" | "Decimal";
+const EdifactDecimalIndicator = S.String;
+
 /** The Edifact agreement framing settings. */
 export interface EdifactFramingSettings {
   /** The service code list directory version. */
@@ -769,6 +1063,11 @@ export interface EdifactFramingSettings {
   /** The EDIFACT frame setting segment terminator suffix. */
   segmentTerminatorSuffix: SegmentTerminatorSuffix | (string & {});
 }
+const EdifactFramingSettings = /*@__PURE__*/ __L.at(
+  __c7,
+  0,
+) as any as S.Schema<EdifactFramingSettings>;
+
 /** The Edifact agreement envelope settings. */
 export interface EdifactEnvelopeSettings {
   /** The group association assigned code. */
@@ -854,6 +1153,11 @@ export interface EdifactEnvelopeSettings {
   /** The receiver internal sub identification. */
   receiverInternalSubIdentification?: string;
 }
+const EdifactEnvelopeSettings = /*@__PURE__*/ __L.at(
+  __c7,
+  1,
+) as any as S.Schema<EdifactEnvelopeSettings>;
+
 /** The Edifact agreement acknowledgement settings. */
 export interface EdifactAcknowledgementSettings {
   /** The value indicating whether technical acknowledgement is needed. */
@@ -879,6 +1183,11 @@ export interface EdifactAcknowledgementSettings {
   /** The value indicating whether to rollover acknowledgement control number. */
   rolloverAcknowledgementControlNumber: boolean;
 }
+const EdifactAcknowledgementSettings = /*@__PURE__*/ __L.at(
+  __c7,
+  2,
+) as any as S.Schema<EdifactAcknowledgementSettings>;
+
 /** The Edifact message filter for odata query. */
 export type EdifactMessageFilter = X12MessageFilter;
 /** The Edifact agreement protocol settings. */
@@ -894,6 +1203,11 @@ export interface EdifactProcessingSettings {
   /** The value indicating whether to use dot as decimal separator. */
   useDotAsDecimalSeparator: boolean;
 }
+const EdifactProcessingSettings = /*@__PURE__*/ __L.at(
+  __c7,
+  3,
+) as any as S.Schema<EdifactProcessingSettings>;
+
 /** The Edifact envelope override settings. */
 export interface EdifactEnvelopeOverride {
   /** The message id on which this envelope settings has to be applied. */
@@ -927,8 +1241,18 @@ export interface EdifactEnvelopeOverride {
   /** The application password. */
   applicationPassword?: string | Redacted.Redacted<string>;
 }
+const EdifactEnvelopeOverride = /*@__PURE__*/ __L.at(
+  __c7,
+  4,
+) as any as S.Schema<EdifactEnvelopeOverride>;
+
 /** The EDIFACT envelope override settings. */
 export type EdifactProtocolSettingsEnvelopeOverridesList = Array<EdifactEnvelopeOverride>;
+const EdifactProtocolSettingsEnvelopeOverridesList = /*@__PURE__*/ __L.at(
+  __c7,
+  5,
+) as any as S.Schema<EdifactProtocolSettingsEnvelopeOverridesList>;
+
 /** The Edifact message identifier. */
 export interface EdifactMessageIdentifier {
   /** The message id on which this envelope settings has to be applied. */
@@ -936,6 +1260,9 @@ export interface EdifactMessageIdentifier {
 }
 /** The EDIFACT message filter list. */
 export type EdifactProtocolSettingsMessageFilterListList = Array<EdifactMessageIdentifier>;
+const EdifactProtocolSettingsMessageFilterListList =
+  X12ProtocolSettingsMessageFilterListList as any as S.Schema<EdifactProtocolSettingsMessageFilterListList>;
+
 /** The Edifact schema reference. */
 export interface EdifactSchemaReference {
   /** The message id. */
@@ -953,8 +1280,18 @@ export interface EdifactSchemaReference {
   /** The schema name. */
   schemaName: string;
 }
+const EdifactSchemaReference = /*@__PURE__*/ __L.at(
+  __c7,
+  6,
+) as any as S.Schema<EdifactSchemaReference>;
+
 /** The EDIFACT schema references. */
 export type EdifactProtocolSettingsSchemaReferencesList = Array<EdifactSchemaReference>;
+const EdifactProtocolSettingsSchemaReferencesList = /*@__PURE__*/ __L.at(
+  __c7,
+  7,
+) as any as S.Schema<EdifactProtocolSettingsSchemaReferencesList>;
+
 /** The Edifact validation override settings. */
 export interface EdifactValidationOverride {
   /** The message id on which the validation settings has to be applied. */
@@ -972,8 +1309,18 @@ export interface EdifactValidationOverride {
   /** The value indicating whether to trim leading and trailing spaces and zeroes. */
   trimLeadingAndTrailingSpacesAndZeroes: boolean;
 }
+const EdifactValidationOverride = /*@__PURE__*/ __L.at(
+  __c8,
+  0,
+) as any as S.Schema<EdifactValidationOverride>;
+
 /** The EDIFACT validation override settings. */
 export type EdifactProtocolSettingsValidationOverridesList = Array<EdifactValidationOverride>;
+const EdifactProtocolSettingsValidationOverridesList = /*@__PURE__*/ __L.at(
+  __c8,
+  1,
+) as any as S.Schema<EdifactProtocolSettingsValidationOverridesList>;
+
 /** The Edifact delimiter override settings. */
 export interface EdifactDelimiterOverride {
   /** The message id. */
@@ -1001,8 +1348,18 @@ export interface EdifactDelimiterOverride {
   /** The target namespace on which this delimiter settings has to be applied. */
   targetNamespace?: string;
 }
+const EdifactDelimiterOverride = /*@__PURE__*/ __L.at(
+  __c8,
+  2,
+) as any as S.Schema<EdifactDelimiterOverride>;
+
 /** The EDIFACT delimiter override settings. */
 export type EdifactProtocolSettingsEdifactDelimiterOverridesList = Array<EdifactDelimiterOverride>;
+const EdifactProtocolSettingsEdifactDelimiterOverridesList = /*@__PURE__*/ __L.at(
+  __c8,
+  3,
+) as any as S.Schema<EdifactProtocolSettingsEdifactDelimiterOverridesList>;
+
 /** The Edifact agreement protocol settings. */
 export interface EdifactProtocolSettings {
   /** The EDIFACT validation settings. */
@@ -1028,6 +1385,11 @@ export interface EdifactProtocolSettings {
   /** The EDIFACT delimiter override settings. */
   edifactDelimiterOverrides?: EdifactProtocolSettingsEdifactDelimiterOverridesList;
 }
+const EdifactProtocolSettings = /*@__PURE__*/ __L.at(
+  __c8,
+  4,
+) as any as S.Schema<EdifactProtocolSettings>;
+
 /** The Edifact one way agreement. */
 export interface EdifactOneWayAgreement {
   /** The sender business identity */
@@ -1037,6 +1399,11 @@ export interface EdifactOneWayAgreement {
   /** The EDIFACT protocol settings. */
   protocolSettings: EdifactProtocolSettings;
 }
+const EdifactOneWayAgreement = /*@__PURE__*/ __L.at(
+  __c8,
+  5,
+) as any as S.Schema<EdifactOneWayAgreement>;
+
 /** The Edifact agreement content. */
 export interface EdifactAgreementContent {
   /** The EDIFACT one-way receive agreement. */
@@ -1044,6 +1411,11 @@ export interface EdifactAgreementContent {
   /** The EDIFACT one-way send agreement. */
   sendAgreement: EdifactOneWayAgreement;
 }
+const EdifactAgreementContent = /*@__PURE__*/ __L.at(
+  __c8,
+  6,
+) as any as S.Schema<EdifactAgreementContent>;
+
 /** The integration account agreement content. */
 export interface AgreementContent {
   /** The AS2 agreement content. */
@@ -1053,6 +1425,8 @@ export interface AgreementContent {
   /** The EDIFACT agreement content. */
   edifact?: EdifactAgreementContent;
 }
+const AgreementContent = /*@__PURE__*/ __L.at(__c8, 7) as any as S.Schema<AgreementContent>;
+
 /** The integration account agreement properties. */
 export interface IntegrationAccountAgreementProperties {
   /** The created time. */
@@ -1074,6 +1448,11 @@ export interface IntegrationAccountAgreementProperties {
   /** The agreement content. */
   content: AgreementContent;
 }
+const IntegrationAccountAgreementProperties = /*@__PURE__*/ __L.at(
+  __c9,
+  0,
+) as any as S.Schema<IntegrationAccountAgreementProperties>;
+
 export interface GetIntegrationAccountAgreementResponse {
   /** The resource id. */
   id?: string;
@@ -1088,6 +1467,11 @@ export interface GetIntegrationAccountAgreementResponse {
   /** The integration account agreement properties. */
   properties: IntegrationAccountAgreementProperties;
 }
+const GetIntegrationAccountAgreementResponse = /*@__PURE__*/ __L.at(
+  __c9,
+  1,
+) as any as S.Schema<GetIntegrationAccountAgreementResponse>;
+
 export interface GetIntegrationAccountAssemblyRequest {
   /** The subscription id. */
   subscriptionId: string;
@@ -1098,8 +1482,16 @@ export interface GetIntegrationAccountAssemblyRequest {
   /** The assembly artifact name. */
   assemblyArtifactName: string;
 }
+const GetIntegrationAccountAssemblyRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  2,
+) as any as S.Schema<GetIntegrationAccountAssemblyRequest>;
+
 /** The resource tags. */
 export type GetIntegrationAccountAssemblyResponseTagsMap = { [key: string]: string | undefined };
+const GetIntegrationAccountAssemblyResponseTagsMap =
+  GetIntegrationAccountResponseTagsMap as any as S.Schema<GetIntegrationAccountAssemblyResponseTagsMap>;
+
 /** The content hash. */
 export interface ContentHash {
   /** The algorithm of the content hash. */
@@ -1107,6 +1499,8 @@ export interface ContentHash {
   /** The value of the content hash. */
   value?: string;
 }
+const ContentHash = /*@__PURE__*/ __L.at(__c9, 3) as any as S.Schema<ContentHash>;
+
 /** The content link. */
 export interface ContentLink {
   /** The content link URI. */
@@ -1120,6 +1514,8 @@ export interface ContentLink {
   /** The metadata. */
   metadata?: unknown;
 }
+const ContentLink = /*@__PURE__*/ __L.at(__c9, 4) as any as S.Schema<ContentLink>;
+
 /** The assembly properties definition. */
 export interface AssemblyProperties {
   /** The artifact creation time. */
@@ -1141,6 +1537,8 @@ export interface AssemblyProperties {
   /** The assembly public key token. */
   assemblyPublicKeyToken?: string;
 }
+const AssemblyProperties = /*@__PURE__*/ __L.at(__c9, 5) as any as S.Schema<AssemblyProperties>;
+
 export interface GetIntegrationAccountAssemblyResponse {
   /** The resource id. */
   id?: string;
@@ -1155,6 +1553,11 @@ export interface GetIntegrationAccountAssemblyResponse {
   /** The assembly properties. */
   properties: AssemblyProperties;
 }
+const GetIntegrationAccountAssemblyResponse = /*@__PURE__*/ __L.at(
+  __c9,
+  6,
+) as any as S.Schema<GetIntegrationAccountAssemblyResponse>;
+
 export interface GetIntegrationAccountBatchConfigurationRequest {
   /** The subscription id. */
   subscriptionId: string;
@@ -1165,10 +1568,18 @@ export interface GetIntegrationAccountBatchConfigurationRequest {
   /** The batch configuration name. */
   batchConfigurationName: string;
 }
+const GetIntegrationAccountBatchConfigurationRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  7,
+) as any as S.Schema<GetIntegrationAccountBatchConfigurationRequest>;
+
 /** The resource tags. */
 export type GetIntegrationAccountBatchConfigurationResponseTagsMap = {
   [key: string]: string | undefined;
 };
+const GetIntegrationAccountBatchConfigurationResponseTagsMap =
+  GetIntegrationAccountResponseTagsMap as any as S.Schema<GetIntegrationAccountBatchConfigurationResponseTagsMap>;
+
 /** The recurrence frequency. */
 export type RecurrenceFrequency =
   | "NotSpecified"
@@ -1179,10 +1590,20 @@ export type RecurrenceFrequency =
   | "Week"
   | "Month"
   | "Year";
+const RecurrenceFrequency = S.String;
+
 /** The minutes. */
 export type RecurrenceScheduleMinutesList = Array<number>;
+const RecurrenceScheduleMinutesList = /*@__PURE__*/ __L.at(
+  __c10,
+  0,
+) as any as S.Schema<RecurrenceScheduleMinutesList>;
+
 /** The hours. */
 export type RecurrenceScheduleHoursList = Array<number>;
+const RecurrenceScheduleHoursList =
+  RecurrenceScheduleMinutesList as any as S.Schema<RecurrenceScheduleHoursList>;
+
 export type RecurrenceScheduleWeekDaysItem =
   | "Sunday"
   | "Monday"
@@ -1191,10 +1612,20 @@ export type RecurrenceScheduleWeekDaysItem =
   | "Thursday"
   | "Friday"
   | "Saturday";
+const RecurrenceScheduleWeekDaysItem = S.String;
+
 /** The days of the week. */
 export type RecurrenceScheduleWeekDaysList = Array<RecurrenceScheduleWeekDaysItem | (string & {})>;
+const RecurrenceScheduleWeekDaysList = /*@__PURE__*/ __L.at(
+  __c10,
+  1,
+) as any as S.Schema<RecurrenceScheduleWeekDaysList>;
+
 /** The month days. */
 export type RecurrenceScheduleMonthDaysList = Array<number>;
+const RecurrenceScheduleMonthDaysList =
+  RecurrenceScheduleMinutesList as any as S.Schema<RecurrenceScheduleMonthDaysList>;
+
 /** The day of the week. */
 export type DayOfWeek =
   | "Sunday"
@@ -1204,6 +1635,8 @@ export type DayOfWeek =
   | "Thursday"
   | "Friday"
   | "Saturday";
+const DayOfWeek = S.String;
+
 /** The recurrence schedule occurrence. */
 export interface RecurrenceScheduleOccurrence {
   /** The day of the week. */
@@ -1211,8 +1644,18 @@ export interface RecurrenceScheduleOccurrence {
   /** The occurrence. */
   occurrence?: number;
 }
+const RecurrenceScheduleOccurrence = /*@__PURE__*/ __L.at(
+  __c10,
+  2,
+) as any as S.Schema<RecurrenceScheduleOccurrence>;
+
 /** The monthly occurrences. */
 export type RecurrenceScheduleMonthlyOccurrencesList = Array<RecurrenceScheduleOccurrence>;
+const RecurrenceScheduleMonthlyOccurrencesList = /*@__PURE__*/ __L.at(
+  __c10,
+  3,
+) as any as S.Schema<RecurrenceScheduleMonthlyOccurrencesList>;
+
 /** The recurrence schedule. */
 export interface RecurrenceSchedule {
   /** The minutes. */
@@ -1226,6 +1669,8 @@ export interface RecurrenceSchedule {
   /** The monthly occurrences. */
   monthlyOccurrences?: RecurrenceScheduleMonthlyOccurrencesList;
 }
+const RecurrenceSchedule = /*@__PURE__*/ __L.at(__c10, 4) as any as S.Schema<RecurrenceSchedule>;
+
 /** The workflow trigger recurrence. */
 export interface WorkflowTriggerRecurrence {
   /** The frequency. */
@@ -1241,6 +1686,11 @@ export interface WorkflowTriggerRecurrence {
   /** The recurrence schedule. */
   schedule?: RecurrenceSchedule;
 }
+const WorkflowTriggerRecurrence = /*@__PURE__*/ __L.at(
+  __c10,
+  5,
+) as any as S.Schema<WorkflowTriggerRecurrence>;
+
 /** The batch release criteria. */
 export interface BatchReleaseCriteria {
   /** The message count. */
@@ -1250,6 +1700,11 @@ export interface BatchReleaseCriteria {
   /** The recurrence. */
   recurrence?: WorkflowTriggerRecurrence;
 }
+const BatchReleaseCriteria = /*@__PURE__*/ __L.at(
+  __c10,
+  6,
+) as any as S.Schema<BatchReleaseCriteria>;
+
 /** The batch configuration properties definition. */
 export interface BatchConfigurationProperties {
   /** The artifact creation time. */
@@ -1262,6 +1717,11 @@ export interface BatchConfigurationProperties {
   /** The batch release criteria. */
   releaseCriteria: BatchReleaseCriteria;
 }
+const BatchConfigurationProperties = /*@__PURE__*/ __L.at(
+  __c10,
+  7,
+) as any as S.Schema<BatchConfigurationProperties>;
+
 export interface GetIntegrationAccountBatchConfigurationResponse {
   /** The resource id. */
   id?: string;
@@ -1276,6 +1736,11 @@ export interface GetIntegrationAccountBatchConfigurationResponse {
   /** The batch configuration properties. */
   properties: BatchConfigurationProperties;
 }
+const GetIntegrationAccountBatchConfigurationResponse = /*@__PURE__*/ __L.at(
+  __c11,
+  0,
+) as any as S.Schema<GetIntegrationAccountBatchConfigurationResponse>;
+
 export interface GetIntegrationAccountCertificateRequest {
   /** The subscription id. */
   subscriptionId: string;
@@ -1286,8 +1751,16 @@ export interface GetIntegrationAccountCertificateRequest {
   /** The integration account certificate name. */
   certificateName: string;
 }
+const GetIntegrationAccountCertificateRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  1,
+) as any as S.Schema<GetIntegrationAccountCertificateRequest>;
+
 /** The resource tags. */
 export type GetIntegrationAccountCertificateResponseTagsMap = { [key: string]: string | undefined };
+const GetIntegrationAccountCertificateResponseTagsMap =
+  GetIntegrationAccountResponseTagsMap as any as S.Schema<GetIntegrationAccountCertificateResponseTagsMap>;
+
 /** The key vault reference. */
 export interface KeyVaultKeyReferenceKeyVault {
   /** The resource id. */
@@ -1297,6 +1770,11 @@ export interface KeyVaultKeyReferenceKeyVault {
   /** The resource type. */
   type?: string;
 }
+const KeyVaultKeyReferenceKeyVault = /*@__PURE__*/ __L.at(
+  __c11,
+  2,
+) as any as S.Schema<KeyVaultKeyReferenceKeyVault>;
+
 /** The reference to the key vault key. */
 export interface KeyVaultKeyReference {
   /** The key vault reference. */
@@ -1306,6 +1784,11 @@ export interface KeyVaultKeyReference {
   /** The private key version in key vault. */
   keyVersion?: string;
 }
+const KeyVaultKeyReference = /*@__PURE__*/ __L.at(
+  __c11,
+  3,
+) as any as S.Schema<KeyVaultKeyReference>;
+
 /** The integration account certificate properties. */
 export interface IntegrationAccountCertificateProperties {
   /** The created time. */
@@ -1319,6 +1802,11 @@ export interface IntegrationAccountCertificateProperties {
   /** The public certificate. */
   publicCertificate?: string;
 }
+const IntegrationAccountCertificateProperties = /*@__PURE__*/ __L.at(
+  __c11,
+  4,
+) as any as S.Schema<IntegrationAccountCertificateProperties>;
+
 export interface GetIntegrationAccountCertificateResponse {
   /** The resource id. */
   id?: string;
@@ -1333,6 +1821,11 @@ export interface GetIntegrationAccountCertificateResponse {
   /** The integration account certificate properties. */
   properties: IntegrationAccountCertificateProperties;
 }
+const GetIntegrationAccountCertificateResponse = /*@__PURE__*/ __L.at(
+  __c11,
+  5,
+) as any as S.Schema<GetIntegrationAccountCertificateResponse>;
+
 export interface GetIntegrationAccountMapRequest {
   /** The subscription id. */
   subscriptionId: string;
@@ -1343,15 +1836,30 @@ export interface GetIntegrationAccountMapRequest {
   /** The integration account map name. */
   mapName: string;
 }
+const GetIntegrationAccountMapRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  6,
+) as any as S.Schema<GetIntegrationAccountMapRequest>;
+
 /** The resource tags. */
 export type GetIntegrationAccountMapResponseTagsMap = { [key: string]: string | undefined };
+const GetIntegrationAccountMapResponseTagsMap =
+  GetIntegrationAccountResponseTagsMap as any as S.Schema<GetIntegrationAccountMapResponseTagsMap>;
+
 /** The map type. */
 export type MapType = "NotSpecified" | "Xslt" | "Xslt20" | "Xslt30" | "Liquid";
+const MapType = S.String;
+
 /** The parameters schema of integration account map. */
 export interface IntegrationAccountMapPropertiesParametersSchema {
   /** The reference name. */
   ref?: string;
 }
+const IntegrationAccountMapPropertiesParametersSchema = /*@__PURE__*/ __L.at(
+  __c11,
+  7,
+) as any as S.Schema<IntegrationAccountMapPropertiesParametersSchema>;
+
 /** The integration account map. */
 export interface IntegrationAccountMapProperties {
   /** The map type. */
@@ -1371,6 +1879,11 @@ export interface IntegrationAccountMapProperties {
   /** The metadata. */
   metadata?: unknown;
 }
+const IntegrationAccountMapProperties = /*@__PURE__*/ __L.at(
+  __c12,
+  0,
+) as any as S.Schema<IntegrationAccountMapProperties>;
+
 export interface GetIntegrationAccountMapResponse {
   /** The resource id. */
   id?: string;
@@ -1385,6 +1898,11 @@ export interface GetIntegrationAccountMapResponse {
   /** The integration account map properties. */
   properties: IntegrationAccountMapProperties;
 }
+const GetIntegrationAccountMapResponse = /*@__PURE__*/ __L.at(
+  __c12,
+  1,
+) as any as S.Schema<GetIntegrationAccountMapResponse>;
+
 export interface GetIntegrationAccountPartnerRequest {
   /** The subscription id. */
   subscriptionId: string;
@@ -1395,22 +1913,41 @@ export interface GetIntegrationAccountPartnerRequest {
   /** The integration account partner name. */
   partnerName: string;
 }
+const GetIntegrationAccountPartnerRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  2,
+) as any as S.Schema<GetIntegrationAccountPartnerRequest>;
+
 /** The resource tags. */
 export type GetIntegrationAccountPartnerResponseTagsMap = { [key: string]: string | undefined };
+const GetIntegrationAccountPartnerResponseTagsMap =
+  GetIntegrationAccountResponseTagsMap as any as S.Schema<GetIntegrationAccountPartnerResponseTagsMap>;
+
 /** The partner type. */
 export type PartnerType = "NotSpecified" | "B2B";
+const PartnerType = S.String;
+
 /** The list of partner business identities. */
 export type B2BPartnerContentBusinessIdentitiesList = Array<BusinessIdentity>;
+const B2BPartnerContentBusinessIdentitiesList = /*@__PURE__*/ __L.at(
+  __c12,
+  3,
+) as any as S.Schema<B2BPartnerContentBusinessIdentitiesList>;
+
 /** The B2B partner content. */
 export interface B2BPartnerContent {
   /** The list of partner business identities. */
   businessIdentities?: B2BPartnerContentBusinessIdentitiesList;
 }
+const B2BPartnerContent = /*@__PURE__*/ __L.at(__c12, 4) as any as S.Schema<B2BPartnerContent>;
+
 /** The integration account partner content. */
 export interface PartnerContent {
   /** The B2B partner content. */
   b2b?: B2BPartnerContent;
 }
+const PartnerContent = /*@__PURE__*/ __L.at(__c12, 5) as any as S.Schema<PartnerContent>;
+
 /** The integration account partner properties. */
 export interface IntegrationAccountPartnerProperties {
   /** The partner type. */
@@ -1424,6 +1961,11 @@ export interface IntegrationAccountPartnerProperties {
   /** The partner content. */
   content: PartnerContent;
 }
+const IntegrationAccountPartnerProperties = /*@__PURE__*/ __L.at(
+  __c12,
+  6,
+) as any as S.Schema<IntegrationAccountPartnerProperties>;
+
 export interface GetIntegrationAccountPartnerResponse {
   /** The resource id. */
   id?: string;
@@ -1438,6 +1980,11 @@ export interface GetIntegrationAccountPartnerResponse {
   /** The integration account partner properties. */
   properties: IntegrationAccountPartnerProperties;
 }
+const GetIntegrationAccountPartnerResponse = /*@__PURE__*/ __L.at(
+  __c12,
+  7,
+) as any as S.Schema<GetIntegrationAccountPartnerResponse>;
+
 export interface GetIntegrationAccountSchemaRequest {
   /** The subscription id. */
   subscriptionId: string;
@@ -1448,10 +1995,20 @@ export interface GetIntegrationAccountSchemaRequest {
   /** The integration account schema name. */
   schemaName: string;
 }
+const GetIntegrationAccountSchemaRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  0,
+) as any as S.Schema<GetIntegrationAccountSchemaRequest>;
+
 /** The resource tags. */
 export type GetIntegrationAccountSchemaResponseTagsMap = { [key: string]: string | undefined };
+const GetIntegrationAccountSchemaResponseTagsMap =
+  GetIntegrationAccountResponseTagsMap as any as S.Schema<GetIntegrationAccountSchemaResponseTagsMap>;
+
 /** The schema type. */
 export type SchemaType = "NotSpecified" | "Xml";
+const SchemaType = S.String;
+
 /** The integration account schema properties. */
 export interface IntegrationAccountSchemaProperties {
   /** The schema type. */
@@ -1475,6 +2032,11 @@ export interface IntegrationAccountSchemaProperties {
   /** The content link. */
   contentLink?: ContentLink;
 }
+const IntegrationAccountSchemaProperties = /*@__PURE__*/ __L.at(
+  __c13,
+  1,
+) as any as S.Schema<IntegrationAccountSchemaProperties>;
+
 export interface GetIntegrationAccountSchemaResponse {
   /** The resource id. */
   id?: string;
@@ -1489,6 +2051,11 @@ export interface GetIntegrationAccountSchemaResponse {
   /** The integration account schema properties. */
   properties: IntegrationAccountSchemaProperties;
 }
+const GetIntegrationAccountSchemaResponse = /*@__PURE__*/ __L.at(
+  __c13,
+  2,
+) as any as S.Schema<GetIntegrationAccountSchemaResponse>;
+
 export interface GetIntegrationAccountSessionRequest {
   /** The subscription id. */
   subscriptionId: string;
@@ -1499,8 +2066,16 @@ export interface GetIntegrationAccountSessionRequest {
   /** The integration account session name. */
   sessionName: string;
 }
+const GetIntegrationAccountSessionRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  3,
+) as any as S.Schema<GetIntegrationAccountSessionRequest>;
+
 /** The resource tags. */
 export type GetIntegrationAccountSessionResponseTagsMap = { [key: string]: string | undefined };
+const GetIntegrationAccountSessionResponseTagsMap =
+  GetIntegrationAccountResponseTagsMap as any as S.Schema<GetIntegrationAccountSessionResponseTagsMap>;
+
 /** The integration account session properties. */
 export interface IntegrationAccountSessionProperties {
   /** The created time. */
@@ -1510,6 +2085,11 @@ export interface IntegrationAccountSessionProperties {
   /** The session content. */
   content?: unknown;
 }
+const IntegrationAccountSessionProperties = /*@__PURE__*/ __L.at(
+  __c13,
+  4,
+) as any as S.Schema<IntegrationAccountSessionProperties>;
+
 export interface GetIntegrationAccountSessionResponse {
   /** The resource id. */
   id?: string;
@@ -1524,6 +2104,11 @@ export interface GetIntegrationAccountSessionResponse {
   /** The integration account session properties. */
   properties: IntegrationAccountSessionProperties;
 }
+const GetIntegrationAccountSessionResponse = /*@__PURE__*/ __L.at(
+  __c13,
+  5,
+) as any as S.Schema<GetIntegrationAccountSessionResponse>;
+
 export interface GetIntegrationServiceEnvironmentRequest {
   /** The subscription id. */
   subscriptionId: string;
@@ -1532,8 +2117,16 @@ export interface GetIntegrationServiceEnvironmentRequest {
   /** The integration service environment name. */
   integrationServiceEnvironmentName: string;
 }
+const GetIntegrationServiceEnvironmentRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  6,
+) as any as S.Schema<GetIntegrationServiceEnvironmentRequest>;
+
 /** The resource tags. */
 export type GetIntegrationServiceEnvironmentResponseTagsMap = { [key: string]: string | undefined };
+const GetIntegrationServiceEnvironmentResponseTagsMap =
+  GetIntegrationAccountResponseTagsMap as any as S.Schema<GetIntegrationServiceEnvironmentResponseTagsMap>;
+
 /** The workflow provisioning state. */
 export type WorkflowProvisioningState =
   | "NotSpecified"
@@ -1558,15 +2151,27 @@ export type WorkflowProvisioningState =
   | "Pending"
   | "Waiting"
   | "InProgress";
+const WorkflowProvisioningState = S.String;
+
 /** The ip address. */
 export interface IpAddress {
   /** The address. */
   address?: string;
 }
+const IpAddress = /*@__PURE__*/ __L.at(__c13, 7) as any as S.Schema<IpAddress>;
+
 /** The outgoing ip address. */
 export type FlowEndpointsOutgoingIpAddressesList = Array<IpAddress>;
+const FlowEndpointsOutgoingIpAddressesList = /*@__PURE__*/ __L.at(
+  __c14,
+  0,
+) as any as S.Schema<FlowEndpointsOutgoingIpAddressesList>;
+
 /** The access endpoint ip address. */
 export type FlowEndpointsAccessEndpointIpAddressesList = Array<IpAddress>;
+const FlowEndpointsAccessEndpointIpAddressesList =
+  FlowEndpointsOutgoingIpAddressesList as any as S.Schema<FlowEndpointsAccessEndpointIpAddressesList>;
+
 /** The flow endpoints configuration. */
 export interface FlowEndpoints {
   /** The outgoing ip address. */
@@ -1574,6 +2179,8 @@ export interface FlowEndpoints {
   /** The access endpoint ip address. */
   accessEndpointIpAddresses?: FlowEndpointsAccessEndpointIpAddressesList;
 }
+const FlowEndpoints = /*@__PURE__*/ __L.at(__c14, 1) as any as S.Schema<FlowEndpoints>;
+
 /** The endpoints configuration. */
 export interface FlowEndpointsConfiguration {
   /** The workflow endpoints. */
@@ -1581,18 +2188,35 @@ export interface FlowEndpointsConfiguration {
   /** The connector endpoints. */
   connector?: FlowEndpoints;
 }
+const FlowEndpointsConfiguration = /*@__PURE__*/ __L.at(
+  __c14,
+  2,
+) as any as S.Schema<FlowEndpointsConfiguration>;
+
 /** The integration service environment access endpoint type. */
 export type IntegrationServiceEnvironmentAccessEndpointType =
   | "NotSpecified"
   | "External"
   | "Internal";
+const IntegrationServiceEnvironmentAccessEndpointType = S.String;
+
 /** The integration service environment access endpoint. */
 export interface IntegrationServiceEnvironmentAccessEndpoint {
   /** The access endpoint type. */
   type?: IntegrationServiceEnvironmentAccessEndpointType | (string & {});
 }
+const IntegrationServiceEnvironmentAccessEndpoint = /*@__PURE__*/ __L.at(
+  __c14,
+  3,
+) as any as S.Schema<IntegrationServiceEnvironmentAccessEndpoint>;
+
 /** The subnets. */
 export type NetworkConfigurationSubnetsList = Array<ResourceReference>;
+const NetworkConfigurationSubnetsList = /*@__PURE__*/ __L.at(
+  __c14,
+  4,
+) as any as S.Schema<NetworkConfigurationSubnetsList>;
+
 /** The network configuration. */
 export interface NetworkConfiguration {
   /** Gets the virtual network address space. */
@@ -1602,6 +2226,11 @@ export interface NetworkConfiguration {
   /** The subnets. */
   subnets?: NetworkConfigurationSubnetsList;
 }
+const NetworkConfiguration = /*@__PURE__*/ __L.at(
+  __c14,
+  5,
+) as any as S.Schema<NetworkConfiguration>;
+
 /** The encryption key details for the integration service environment. */
 export interface IntegrationServiceEnvironmenEncryptionKeyReference {
   /** The key vault reference. */
@@ -1611,11 +2240,21 @@ export interface IntegrationServiceEnvironmenEncryptionKeyReference {
   /** Gets the version of the key specified in the keyName property. */
   keyVersion?: string;
 }
+const IntegrationServiceEnvironmenEncryptionKeyReference = /*@__PURE__*/ __L.at(
+  __c14,
+  6,
+) as any as S.Schema<IntegrationServiceEnvironmenEncryptionKeyReference>;
+
 /** The encryption configuration for the integration service environment. */
 export interface IntegrationServiceEnvironmenEncryptionConfiguration {
   /** The encryption key reference. */
   encryptionKeyReference?: IntegrationServiceEnvironmenEncryptionKeyReference;
 }
+const IntegrationServiceEnvironmenEncryptionConfiguration = /*@__PURE__*/ __L.at(
+  __c14,
+  7,
+) as any as S.Schema<IntegrationServiceEnvironmenEncryptionConfiguration>;
+
 /** The integration service environment properties. */
 export interface IntegrationServiceEnvironmentProperties {
   /** The provisioning state. */
@@ -1631,8 +2270,15 @@ export interface IntegrationServiceEnvironmentProperties {
   /** The encryption configuration. */
   encryptionConfiguration?: IntegrationServiceEnvironmenEncryptionConfiguration;
 }
+const IntegrationServiceEnvironmentProperties = /*@__PURE__*/ __L.at(
+  __c15,
+  0,
+) as any as S.Schema<IntegrationServiceEnvironmentProperties>;
+
 /** The integration service environment sku name. */
 export type IntegrationServiceEnvironmentSkuName = "NotSpecified" | "Premium" | "Developer";
+const IntegrationServiceEnvironmentSkuName = S.String;
+
 /** The integration service environment sku. */
 export interface IntegrationServiceEnvironmentSku {
   /** The sku name. */
@@ -1640,8 +2286,15 @@ export interface IntegrationServiceEnvironmentSku {
   /** The sku capacity. */
   capacity?: number;
 }
+const IntegrationServiceEnvironmentSku = /*@__PURE__*/ __L.at(
+  __c15,
+  1,
+) as any as S.Schema<IntegrationServiceEnvironmentSku>;
+
 /** Type of managed service identity. The type 'SystemAssigned' includes an implicitly created identity. The type 'None' will remove any identities from the resource. */
 export type ManagedServiceIdentityType = "SystemAssigned" | "UserAssigned" | "None";
+const ManagedServiceIdentityType = S.String;
+
 /** User Assigned identity properties. */
 export interface UserAssignedIdentity {
   /** Principal Id of user assigned identity */
@@ -1649,10 +2302,20 @@ export interface UserAssignedIdentity {
   /** Client Id of user assigned identity */
   clientId?: string;
 }
+const UserAssignedIdentity = /*@__PURE__*/ __L.at(
+  __c15,
+  2,
+) as any as S.Schema<UserAssignedIdentity>;
+
 /** The list of user assigned identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName} */
 export type ManagedServiceIdentityUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentity | undefined;
 };
+const ManagedServiceIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ __L.at(
+  __c15,
+  3,
+) as any as S.Schema<ManagedServiceIdentityUserAssignedIdentitiesMap>;
+
 /** Managed service identity properties. */
 export interface ManagedServiceIdentity {
   /** Type of managed service identity. The type 'SystemAssigned' includes an implicitly created identity. The type 'None' will remove any identities from the resource. */
@@ -1664,6 +2327,11 @@ export interface ManagedServiceIdentity {
   /** The list of user assigned identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName} */
   userAssignedIdentities?: ManagedServiceIdentityUserAssignedIdentitiesMap;
 }
+const ManagedServiceIdentity = /*@__PURE__*/ __L.at(
+  __c15,
+  4,
+) as any as S.Schema<ManagedServiceIdentity>;
+
 export interface GetIntegrationServiceEnvironmentResponse {
   /** The resource id. */
   id?: string;
@@ -1681,6 +2349,11 @@ export interface GetIntegrationServiceEnvironmentResponse {
   sku?: IntegrationServiceEnvironmentSku;
   identity?: ManagedServiceIdentity;
 }
+const GetIntegrationServiceEnvironmentResponse = /*@__PURE__*/ __L.at(
+  __c15,
+  5,
+) as any as S.Schema<GetIntegrationServiceEnvironmentResponse>;
+
 export interface GetIntegrationServiceEnvironmentManagedApisRequest {
   /** The subscription id. */
   subscriptionId: string;
@@ -1691,19 +2364,43 @@ export interface GetIntegrationServiceEnvironmentManagedApisRequest {
   /** The api name. */
   apiName: string;
 }
+const GetIntegrationServiceEnvironmentManagedApisRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  6,
+) as any as S.Schema<GetIntegrationServiceEnvironmentManagedApisRequest>;
+
 /** The resource tags. */
 export type GetIntegrationServiceEnvironmentManagedApisResponseTagsMap = {
   [key: string]: string | undefined;
 };
+const GetIntegrationServiceEnvironmentManagedApisResponseTagsMap =
+  GetIntegrationAccountResponseTagsMap as any as S.Schema<GetIntegrationServiceEnvironmentManagedApisResponseTagsMap>;
+
 /** The connection parameters. */
 export type IntegrationServiceEnvironmentManagedApiPropertiesConnectionParametersMap = {
   [key: string]: unknown | undefined;
 };
+const IntegrationServiceEnvironmentManagedApiPropertiesConnectionParametersMap =
+  /*@__PURE__*/ __L.at(
+    __c15,
+    7,
+  ) as any as S.Schema<IntegrationServiceEnvironmentManagedApiPropertiesConnectionParametersMap>;
+
 /** The tags. */
 export type ApiResourceMetadataTagsMap = { [key: string]: string | undefined };
+const ApiResourceMetadataTagsMap =
+  GetIntegrationAccountResponseTagsMap as any as S.Schema<ApiResourceMetadataTagsMap>;
+
 export type ApiType = "NotSpecified" | "Rest" | "Soap";
+const ApiType = S.String;
+
 /** The list of endpoints' qualified names. */
 export type WsdlServiceEndpointQualifiedNamesList = Array<string>;
+const WsdlServiceEndpointQualifiedNamesList = /*@__PURE__*/ __L.at(
+  __c16,
+  0,
+) as any as S.Schema<WsdlServiceEndpointQualifiedNamesList>;
+
 /** The WSDL service. */
 export interface WsdlService {
   /** The qualified name. */
@@ -1711,10 +2408,16 @@ export interface WsdlService {
   /** The list of endpoints' qualified names. */
   EndpointQualifiedNames?: WsdlServiceEndpointQualifiedNamesList;
 }
+const WsdlService = /*@__PURE__*/ __L.at(__c16, 1) as any as S.Schema<WsdlService>;
+
 /** The WSDL import method. */
 export type WsdlImportMethod = "NotSpecified" | "SoapToRest" | "SoapPassThrough";
+const WsdlImportMethod = S.String;
+
 /** The Api deployment parameter visibility. */
 export type ApiDeploymentParameterVisibility = "NotSpecified" | "Default" | "Internal";
+const ApiDeploymentParameterVisibility = S.String;
+
 /** The API deployment parameter metadata. */
 export interface ApiDeploymentParameterMetadata {
   /** The type. */
@@ -1728,6 +2431,11 @@ export interface ApiDeploymentParameterMetadata {
   /** The visibility. */
   visibility?: ApiDeploymentParameterVisibility;
 }
+const ApiDeploymentParameterMetadata = /*@__PURE__*/ __L.at(
+  __c16,
+  2,
+) as any as S.Schema<ApiDeploymentParameterMetadata>;
+
 /** The API deployment parameters metadata. */
 export interface ApiDeploymentParameterMetadataSet {
   /** The package content link parameter. */
@@ -1735,6 +2443,11 @@ export interface ApiDeploymentParameterMetadataSet {
   /** The package content link parameter. */
   redisCacheConnectionString?: ApiDeploymentParameterMetadata;
 }
+const ApiDeploymentParameterMetadataSet = /*@__PURE__*/ __L.at(
+  __c16,
+  3,
+) as any as S.Schema<ApiDeploymentParameterMetadataSet>;
+
 /** The api resource metadata. */
 export interface ApiResourceMetadata {
   /** The source. */
@@ -1758,10 +2471,19 @@ export interface ApiResourceMetadata {
   /** The connector deployment parameters metadata. */
   deploymentParameters?: ApiDeploymentParameterMetadataSet;
 }
+const ApiResourceMetadata = /*@__PURE__*/ __L.at(__c16, 4) as any as S.Schema<ApiResourceMetadata>;
+
 /** The runtime urls. */
 export type IntegrationServiceEnvironmentManagedApiPropertiesRuntimeUrlsList = Array<string>;
+const IntegrationServiceEnvironmentManagedApiPropertiesRuntimeUrlsList = /*@__PURE__*/ __L.at(
+  __c16,
+  5,
+) as any as S.Schema<IntegrationServiceEnvironmentManagedApiPropertiesRuntimeUrlsList>;
+
 /** The Api tier. */
 export type ApiTier = "NotSpecified" | "Enterprise" | "Standard" | "Premium";
+const ApiTier = S.String;
+
 /** The API general information. */
 export interface ApiResourceGeneralInformation {
   /** The icon url. */
@@ -1777,13 +2499,26 @@ export interface ApiResourceGeneralInformation {
   /** The tier. */
   tier?: ApiTier;
 }
+const ApiResourceGeneralInformation = /*@__PURE__*/ __L.at(
+  __c16,
+  6,
+) as any as S.Schema<ApiResourceGeneralInformation>;
+
 /** The capabilities. */
 export type IntegrationServiceEnvironmentManagedApiPropertiesCapabilitiesList = Array<string>;
+const IntegrationServiceEnvironmentManagedApiPropertiesCapabilitiesList =
+  IntegrationServiceEnvironmentManagedApiPropertiesRuntimeUrlsList as any as S.Schema<IntegrationServiceEnvironmentManagedApiPropertiesCapabilitiesList>;
+
 /** The API backend service. */
 export interface ApiResourceBackendService {
   /** The service URL. */
   serviceUrl?: string;
 }
+const ApiResourceBackendService = /*@__PURE__*/ __L.at(
+  __c16,
+  7,
+) as any as S.Schema<ApiResourceBackendService>;
+
 /** The API resource policies. */
 export interface ApiResourcePolicies {
   /** The API level only policies XML as embedded content. */
@@ -1791,6 +2526,8 @@ export interface ApiResourcePolicies {
   /** The content link to the policies. */
   contentLink?: string;
 }
+const ApiResourcePolicies = /*@__PURE__*/ __L.at(__c17, 0) as any as S.Schema<ApiResourcePolicies>;
+
 /** The Api resource definition. */
 export interface ApiResourceDefinitions {
   /** The original swagger url. */
@@ -1798,11 +2535,21 @@ export interface ApiResourceDefinitions {
   /** The modified swagger url. */
   modifiedSwaggerUrl?: string;
 }
+const ApiResourceDefinitions = /*@__PURE__*/ __L.at(
+  __c17,
+  1,
+) as any as S.Schema<ApiResourceDefinitions>;
+
 /** The integration service environment managed api deployment parameters. */
 export interface IntegrationServiceEnvironmentManagedApiDeploymentParameters {
   /** The integration service environment managed api content link for deployment. */
   contentLinkDefinition?: ContentLink;
 }
+const IntegrationServiceEnvironmentManagedApiDeploymentParameters = /*@__PURE__*/ __L.at(
+  __c17,
+  2,
+) as any as S.Schema<IntegrationServiceEnvironmentManagedApiDeploymentParameters>;
+
 /** The integration service environment managed api properties. */
 export interface IntegrationServiceEnvironmentManagedApiProperties {
   /** The name */
@@ -1834,6 +2581,11 @@ export interface IntegrationServiceEnvironmentManagedApiProperties {
   /** The integration service environment managed api deployment parameters. */
   deploymentParameters?: IntegrationServiceEnvironmentManagedApiDeploymentParameters;
 }
+const IntegrationServiceEnvironmentManagedApiProperties = /*@__PURE__*/ __L.at(
+  __c17,
+  3,
+) as any as S.Schema<IntegrationServiceEnvironmentManagedApiProperties>;
+
 export interface GetIntegrationServiceEnvironmentManagedApisResponse {
   /** The resource id. */
   id?: string;
@@ -1848,6 +2600,11 @@ export interface GetIntegrationServiceEnvironmentManagedApisResponse {
   /** The integration service environment managed api properties. */
   properties?: IntegrationServiceEnvironmentManagedApiProperties;
 }
+const GetIntegrationServiceEnvironmentManagedApisResponse = /*@__PURE__*/ __L.at(
+  __c17,
+  4,
+) as any as S.Schema<GetIntegrationServiceEnvironmentManagedApisResponse>;
+
 export interface GetIntegrationServiceEnvironmentNetworkHealthRequest {
   /** The subscription id. */
   subscriptionId: string;
@@ -1856,6 +2613,11 @@ export interface GetIntegrationServiceEnvironmentNetworkHealthRequest {
   /** The integration service environment name. */
   integrationServiceEnvironmentName: string;
 }
+const GetIntegrationServiceEnvironmentNetworkHealthRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  5,
+) as any as S.Schema<GetIntegrationServiceEnvironmentNetworkHealthRequest>;
+
 /** The integration service environment network dependency category type. */
 export type IntegrationServiceEnvironmentNetworkDependencyCategoryType =
   | "NotSpecified"
@@ -1870,14 +2632,21 @@ export type IntegrationServiceEnvironmentNetworkDependencyCategoryType =
   | "RecoveryService"
   | "SQL"
   | "RegionalService";
+const IntegrationServiceEnvironmentNetworkDependencyCategoryType = S.String;
+
 /** The integration service environment network endpoint accessibility state. */
 export type IntegrationServiceEnvironmentNetworkEndPointAccessibilityState =
   | "NotSpecified"
   | "Unknown"
   | "Available"
   | "NotAvailable";
+const IntegrationServiceEnvironmentNetworkEndPointAccessibilityState = S.String;
+
 /** The ports. */
 export type IntegrationServiceEnvironmentNetworkEndpointPortsList = Array<string>;
+const IntegrationServiceEnvironmentNetworkEndpointPortsList =
+  WsdlServiceEndpointQualifiedNamesList as any as S.Schema<IntegrationServiceEnvironmentNetworkEndpointPortsList>;
+
 /** The network endpoint. */
 export interface IntegrationServiceEnvironmentNetworkEndpoint {
   /** The accessibility state. */
@@ -1887,9 +2656,19 @@ export interface IntegrationServiceEnvironmentNetworkEndpoint {
   /** The ports. */
   ports?: IntegrationServiceEnvironmentNetworkEndpointPortsList;
 }
+const IntegrationServiceEnvironmentNetworkEndpoint = /*@__PURE__*/ __L.at(
+  __c17,
+  6,
+) as any as S.Schema<IntegrationServiceEnvironmentNetworkEndpoint>;
+
 /** The endpoints. */
 export type IntegrationServiceEnvironmentNetworkDependencyEndpointsList =
   Array<IntegrationServiceEnvironmentNetworkEndpoint>;
+const IntegrationServiceEnvironmentNetworkDependencyEndpointsList = /*@__PURE__*/ __L.at(
+  __c17,
+  7,
+) as any as S.Schema<IntegrationServiceEnvironmentNetworkDependencyEndpointsList>;
+
 /** The azure async operation resource. */
 export interface IntegrationServiceEnvironmentNetworkDependency {
   /** The network dependency category type. */
@@ -1899,17 +2678,35 @@ export interface IntegrationServiceEnvironmentNetworkDependency {
   /** The endpoints. */
   endpoints?: IntegrationServiceEnvironmentNetworkDependencyEndpointsList;
 }
+const IntegrationServiceEnvironmentNetworkDependency = /*@__PURE__*/ __L.at(
+  __c18,
+  0,
+) as any as S.Schema<IntegrationServiceEnvironmentNetworkDependency>;
+
 /** The outbound network dependencies. */
 export type IntegrationServiceEnvironmentSubnetNetworkHealthOutboundNetworkDependenciesList =
   Array<IntegrationServiceEnvironmentNetworkDependency>;
+const IntegrationServiceEnvironmentSubnetNetworkHealthOutboundNetworkDependenciesList =
+  /*@__PURE__*/ __L.at(
+    __c18,
+    1,
+  ) as any as S.Schema<IntegrationServiceEnvironmentSubnetNetworkHealthOutboundNetworkDependenciesList>;
+
 /** The error response code. */
 export type ErrorResponseCode =
   | "NotSpecified"
   | "IntegrationServiceEnvironmentNotFound"
   | "InternalServerError"
   | "InvalidOperationId";
+const ErrorResponseCode = S.String;
+
 /** The error message details. */
 export type ExtendedErrorInfoDetailsList = Array<ExtendedErrorInfo>;
+const ExtendedErrorInfoDetailsList = /*@__PURE__*/ __L.at(
+  __c18,
+  2,
+) as any as S.Schema<ExtendedErrorInfoDetailsList>;
+
 /** The extended error info. */
 export interface ExtendedErrorInfo {
   /** The error code. */
@@ -1921,12 +2718,16 @@ export interface ExtendedErrorInfo {
   /** The inner error. */
   innerError?: unknown;
 }
+const ExtendedErrorInfo = /*@__PURE__*/ __L.at(__c18, 3) as any as S.Schema<ExtendedErrorInfo>;
+
 /** The integration service environment network dependency health state. */
 export type IntegrationServiceEnvironmentNetworkDependencyHealthState =
   | "NotSpecified"
   | "Healthy"
   | "Unhealthy"
   | "Unknown";
+const IntegrationServiceEnvironmentNetworkDependencyHealthState = S.String;
+
 /** The integration service environment subnet network health. */
 export interface IntegrationServiceEnvironmentNetworkDependencyHealth {
   /** The error if any occurred during the operation. */
@@ -1934,6 +2735,11 @@ export interface IntegrationServiceEnvironmentNetworkDependencyHealth {
   /** The network dependency health state. */
   state?: IntegrationServiceEnvironmentNetworkDependencyHealthState;
 }
+const IntegrationServiceEnvironmentNetworkDependencyHealth = /*@__PURE__*/ __L.at(
+  __c18,
+  4,
+) as any as S.Schema<IntegrationServiceEnvironmentNetworkDependencyHealth>;
+
 /** The integration service environment subnet network health. */
 export interface IntegrationServiceEnvironmentSubnetNetworkHealth {
   /** The outbound network dependencies. */
@@ -1943,12 +2749,27 @@ export interface IntegrationServiceEnvironmentSubnetNetworkHealth {
   /** The integration service environment network health state. */
   networkDependencyHealthState: IntegrationServiceEnvironmentNetworkEndPointAccessibilityState;
 }
+const IntegrationServiceEnvironmentSubnetNetworkHealth = /*@__PURE__*/ __L.at(
+  __c18,
+  5,
+) as any as S.Schema<IntegrationServiceEnvironmentSubnetNetworkHealth>;
+
 /** The integration service environment network health of all the subnets. */
 export type IntegrationServiceEnvironmentNetworkHealth = {
   [key: string]: IntegrationServiceEnvironmentSubnetNetworkHealth | undefined;
 };
+const IntegrationServiceEnvironmentNetworkHealth = /*@__PURE__*/ __L.at(
+  __c18,
+  6,
+) as any as S.Schema<IntegrationServiceEnvironmentNetworkHealth>;
+
 export type GetIntegrationServiceEnvironmentNetworkHealthResponse =
   IntegrationServiceEnvironmentNetworkHealth;
+const GetIntegrationServiceEnvironmentNetworkHealthResponse = /*@__PURE__*/ __L.at(
+  __c18,
+  7,
+) as any as S.Schema<GetIntegrationServiceEnvironmentNetworkHealthResponse>;
+
 export interface GetWorkflowRequest {
   /** The subscription id. */
   subscriptionId: string;
@@ -1957,18 +2778,32 @@ export interface GetWorkflowRequest {
   /** The workflow name. */
   workflowName: string;
 }
+const GetWorkflowRequest = /*@__PURE__*/ __L.at(__c19, 0) as any as S.Schema<GetWorkflowRequest>;
+
 /** The resource tags. */
 export type GetWorkflowResponseTagsMap = { [key: string]: string | undefined };
+const GetWorkflowResponseTagsMap =
+  GetIntegrationAccountResponseTagsMap as any as S.Schema<GetWorkflowResponseTagsMap>;
+
 /** The ip address range. */
 export interface IpAddressRange {
   /** The IP address range. */
   addressRange?: string;
 }
+const IpAddressRange = /*@__PURE__*/ __L.at(__c19, 1) as any as S.Schema<IpAddressRange>;
+
 /** The allowed caller IP address ranges. */
 export type FlowAccessControlConfigurationPolicyAllowedCallerIpAddressesList =
   Array<IpAddressRange>;
+const FlowAccessControlConfigurationPolicyAllowedCallerIpAddressesList = /*@__PURE__*/ __L.at(
+  __c19,
+  2,
+) as any as S.Schema<FlowAccessControlConfigurationPolicyAllowedCallerIpAddressesList>;
+
 /** Open authentication policy provider type. */
 export type OpenAuthenticationProviderType = "AAD";
+const OpenAuthenticationProviderType = S.String;
+
 /** Open authentication policy claim. */
 export interface OpenAuthenticationPolicyClaim {
   /** The name of the claim. */
@@ -1976,8 +2811,18 @@ export interface OpenAuthenticationPolicyClaim {
   /** The value of the claim. */
   value?: string;
 }
+const OpenAuthenticationPolicyClaim = /*@__PURE__*/ __L.at(
+  __c19,
+  3,
+) as any as S.Schema<OpenAuthenticationPolicyClaim>;
+
 /** The access policy claims. */
 export type OpenAuthenticationAccessPolicyClaimsList = Array<OpenAuthenticationPolicyClaim>;
+const OpenAuthenticationAccessPolicyClaimsList = /*@__PURE__*/ __L.at(
+  __c19,
+  4,
+) as any as S.Schema<OpenAuthenticationAccessPolicyClaimsList>;
+
 /** Open authentication access policy defined by user. */
 export interface OpenAuthenticationAccessPolicy {
   /** Type of provider for OAuth. */
@@ -1985,15 +2830,30 @@ export interface OpenAuthenticationAccessPolicy {
   /** The access policy claims. */
   claims?: OpenAuthenticationAccessPolicyClaimsList;
 }
+const OpenAuthenticationAccessPolicy = /*@__PURE__*/ __L.at(
+  __c19,
+  5,
+) as any as S.Schema<OpenAuthenticationAccessPolicy>;
+
 /** Open authentication policies. */
 export type OpenAuthenticationAccessPoliciesPoliciesMap = {
   [key: string]: OpenAuthenticationAccessPolicy | undefined;
 };
+const OpenAuthenticationAccessPoliciesPoliciesMap = /*@__PURE__*/ __L.at(
+  __c19,
+  6,
+) as any as S.Schema<OpenAuthenticationAccessPoliciesPoliciesMap>;
+
 /** AuthenticationPolicy of type Open. */
 export interface OpenAuthenticationAccessPolicies {
   /** Open authentication policies. */
   policies?: OpenAuthenticationAccessPoliciesPoliciesMap;
 }
+const OpenAuthenticationAccessPolicies = /*@__PURE__*/ __L.at(
+  __c19,
+  7,
+) as any as S.Schema<OpenAuthenticationAccessPolicies>;
+
 /** The access control configuration policy. */
 export interface FlowAccessControlConfigurationPolicy {
   /** The allowed caller IP address ranges. */
@@ -2001,6 +2861,11 @@ export interface FlowAccessControlConfigurationPolicy {
   /** The authentication policies for workflow. */
   openAuthenticationPolicies?: OpenAuthenticationAccessPolicies;
 }
+const FlowAccessControlConfigurationPolicy = /*@__PURE__*/ __L.at(
+  __c20,
+  0,
+) as any as S.Schema<FlowAccessControlConfigurationPolicy>;
+
 /** The access control configuration. */
 export interface FlowAccessControlConfiguration {
   /** The access control configuration for invoking workflow triggers. */
@@ -2012,8 +2877,15 @@ export interface FlowAccessControlConfiguration {
   /** The access control configuration for workflow management. */
   workflowManagement?: FlowAccessControlConfigurationPolicy;
 }
+const FlowAccessControlConfiguration = /*@__PURE__*/ __L.at(
+  __c20,
+  1,
+) as any as S.Schema<FlowAccessControlConfiguration>;
+
 /** The sku name. */
 export type SkuName = "NotSpecified" | "Free" | "Shared" | "Basic" | "Standard" | "Premium";
+const SkuName = S.String;
+
 /** The sku type. */
 export interface Sku {
   /** The name. */
@@ -2021,6 +2893,8 @@ export interface Sku {
   /** The reference to plan. */
   plan?: ResourceReference;
 }
+const Sku = /*@__PURE__*/ __L.at(__c20, 2) as any as S.Schema<Sku>;
+
 /** The parameter type. */
 export type ParameterType =
   | "NotSpecified"
@@ -2032,6 +2906,8 @@ export type ParameterType =
   | "Array"
   | "Object"
   | "SecureObject";
+const ParameterType = S.String;
+
 /** The workflow parameters. */
 export interface WorkflowParameter {
   /** The type. */
@@ -2043,8 +2919,15 @@ export interface WorkflowParameter {
   /** The description. */
   description?: string;
 }
+const WorkflowParameter = /*@__PURE__*/ __L.at(__c20, 3) as any as S.Schema<WorkflowParameter>;
+
 /** The parameters. */
 export type WorkflowPropertiesParametersMap = { [key: string]: WorkflowParameter | undefined };
+const WorkflowPropertiesParametersMap = /*@__PURE__*/ __L.at(
+  __c20,
+  4,
+) as any as S.Schema<WorkflowPropertiesParametersMap>;
+
 /** The workflow properties. */
 export interface WorkflowProperties {
   /** Gets the provisioning state. */
@@ -2074,6 +2957,8 @@ export interface WorkflowProperties {
   /** The parameters. */
   parameters?: WorkflowPropertiesParametersMap;
 }
+const WorkflowProperties = /*@__PURE__*/ __L.at(__c20, 5) as any as S.Schema<WorkflowProperties>;
+
 export interface GetWorkflowResponse {
   /** The resource id. */
   id?: string;
@@ -2089,6 +2974,8 @@ export interface GetWorkflowResponse {
   properties?: WorkflowProperties;
   identity?: ManagedServiceIdentity;
 }
+const GetWorkflowResponse = /*@__PURE__*/ __L.at(__c20, 6) as any as S.Schema<GetWorkflowResponse>;
+
 export interface GetWorkflowRunRequest {
   /** The subscription id. */
   subscriptionId: string;
@@ -2099,6 +2986,11 @@ export interface GetWorkflowRunRequest {
   /** The workflow run name. */
   runName: string;
 }
+const GetWorkflowRunRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  7,
+) as any as S.Schema<GetWorkflowRunRequest>;
+
 /** The workflow status. */
 export type WorkflowStatus =
   | "NotSpecified"
@@ -2114,11 +3006,15 @@ export type WorkflowStatus =
   | "TimedOut"
   | "Aborted"
   | "Ignored";
+const WorkflowStatus = S.String;
+
 /** The correlation property. */
 export interface Correlation {
   /** The client tracking id. */
   clientTrackingId?: string;
 }
+const Correlation = /*@__PURE__*/ __L.at(__c21, 0) as any as S.Schema<Correlation>;
+
 /** The workflow run trigger. */
 export interface WorkflowRunTrigger {
   /** Gets the name. */
@@ -2150,6 +3046,8 @@ export interface WorkflowRunTrigger {
   /** Gets the tracked properties. */
   trackedProperties?: unknown;
 }
+const WorkflowRunTrigger = /*@__PURE__*/ __L.at(__c21, 1) as any as S.Schema<WorkflowRunTrigger>;
+
 /** The workflow output parameter. */
 export interface WorkflowOutputParameter {
   /** The type. */
@@ -2163,10 +3061,20 @@ export interface WorkflowOutputParameter {
   /** Gets the error. */
   error?: unknown;
 }
+const WorkflowOutputParameter = /*@__PURE__*/ __L.at(
+  __c21,
+  2,
+) as any as S.Schema<WorkflowOutputParameter>;
+
 /** Gets the outputs. */
 export type WorkflowRunPropertiesOutputsMap = {
   [key: string]: WorkflowOutputParameter | undefined;
 };
+const WorkflowRunPropertiesOutputsMap = /*@__PURE__*/ __L.at(
+  __c21,
+  3,
+) as any as S.Schema<WorkflowRunPropertiesOutputsMap>;
+
 /** The workflow run properties. */
 export interface WorkflowRunProperties {
   /** Gets the wait end time. */
@@ -2194,6 +3102,11 @@ export interface WorkflowRunProperties {
   /** Gets the response of the flow run. */
   response?: WorkflowRunTrigger;
 }
+const WorkflowRunProperties = /*@__PURE__*/ __L.at(
+  __c21,
+  4,
+) as any as S.Schema<WorkflowRunProperties>;
+
 export interface GetWorkflowRunResponse {
   /** The resource id. */
   id?: string;
@@ -2204,6 +3117,11 @@ export interface GetWorkflowRunResponse {
   /** Gets the workflow run type. */
   type?: string;
 }
+const GetWorkflowRunResponse = /*@__PURE__*/ __L.at(
+  __c21,
+  5,
+) as any as S.Schema<GetWorkflowRunResponse>;
+
 export interface GetWorkflowRunActionRequest {
   /** The subscription id. */
   subscriptionId: string;
@@ -2216,8 +3134,16 @@ export interface GetWorkflowRunActionRequest {
   /** The workflow action name. */
   actionName: string;
 }
+const GetWorkflowRunActionRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  6,
+) as any as S.Schema<GetWorkflowRunActionRequest>;
+
 /** The client keywords. */
 export type RunActionCorrelationClientKeywordsList = Array<string>;
+const RunActionCorrelationClientKeywordsList =
+  WsdlServiceEndpointQualifiedNamesList as any as S.Schema<RunActionCorrelationClientKeywordsList>;
+
 /** The workflow run action correlation properties. */
 export interface RunActionCorrelation {
   /** The client tracking identifier. */
@@ -2227,6 +3153,11 @@ export interface RunActionCorrelation {
   /** The action tracking identifier. */
   actionTrackingId?: string;
 }
+const RunActionCorrelation = /*@__PURE__*/ __L.at(
+  __c21,
+  7,
+) as any as S.Schema<RunActionCorrelation>;
+
 /** Error properties indicate why the Logic service was not able to process the incoming request. The reason is provided in the error message. */
 export interface ErrorProperties {
   /** Error code. */
@@ -2234,11 +3165,15 @@ export interface ErrorProperties {
   /** Error message indicating why the operation failed. */
   message?: string;
 }
+const ErrorProperties = /*@__PURE__*/ __L.at(__c22, 0) as any as S.Schema<ErrorProperties>;
+
 /** Error response indicates Logic service is not able to process the incoming request. The error property contains the error details. */
 export interface ErrorResponse {
   /** The error properties. */
   error?: ErrorProperties;
 }
+const ErrorResponse = /*@__PURE__*/ __L.at(__c22, 1) as any as S.Schema<ErrorResponse>;
+
 /** The retry history. */
 export interface RetryHistory {
   /** Gets the start time. */
@@ -2254,8 +3189,15 @@ export interface RetryHistory {
   /** Gets the error response. */
   error?: ErrorResponse;
 }
+const RetryHistory = /*@__PURE__*/ __L.at(__c22, 2) as any as S.Schema<RetryHistory>;
+
 /** Gets the retry histories. */
 export type WorkflowRunActionPropertiesRetryHistoryList = Array<RetryHistory>;
+const WorkflowRunActionPropertiesRetryHistoryList = /*@__PURE__*/ __L.at(
+  __c22,
+  3,
+) as any as S.Schema<WorkflowRunActionPropertiesRetryHistoryList>;
+
 /** The workflow run action properties. */
 export interface WorkflowRunActionProperties {
   /** Gets the start time. */
@@ -2281,6 +3223,11 @@ export interface WorkflowRunActionProperties {
   /** Gets the retry histories. */
   retryHistory?: WorkflowRunActionPropertiesRetryHistoryList;
 }
+const WorkflowRunActionProperties = /*@__PURE__*/ __L.at(
+  __c22,
+  4,
+) as any as S.Schema<WorkflowRunActionProperties>;
+
 export interface GetWorkflowRunActionResponse {
   /** The resource id. */
   id?: string;
@@ -2291,6 +3238,11 @@ export interface GetWorkflowRunActionResponse {
   /** Gets the workflow run action type. */
   type?: string;
 }
+const GetWorkflowRunActionResponse = /*@__PURE__*/ __L.at(
+  __c22,
+  5,
+) as any as S.Schema<GetWorkflowRunActionResponse>;
+
 export interface GetWorkflowRunActionRepetitionRequest {
   /** The subscription id. */
   subscriptionId: string;
@@ -2305,10 +3257,21 @@ export interface GetWorkflowRunActionRepetitionRequest {
   /** The workflow repetition. */
   repetitionName: string;
 }
+const GetWorkflowRunActionRepetitionRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  6,
+) as any as S.Schema<GetWorkflowRunActionRepetitionRequest>;
+
 /** The resource tags. */
 export type GetWorkflowRunActionRepetitionResponseTagsMap = { [key: string]: string | undefined };
+const GetWorkflowRunActionRepetitionResponseTagsMap =
+  GetIntegrationAccountResponseTagsMap as any as S.Schema<GetWorkflowRunActionRepetitionResponseTagsMap>;
+
 /** Gets the retry histories. */
 export type WorkflowRunActionRepetitionPropertiesRetryHistoryList = Array<RetryHistory>;
+const WorkflowRunActionRepetitionPropertiesRetryHistoryList =
+  WorkflowRunActionPropertiesRetryHistoryList as any as S.Schema<WorkflowRunActionRepetitionPropertiesRetryHistoryList>;
+
 /** The workflow run action repetition index. */
 export interface RepetitionIndex {
   /** The scope. */
@@ -2316,8 +3279,15 @@ export interface RepetitionIndex {
   /** The index. */
   itemIndex: number;
 }
+const RepetitionIndex = /*@__PURE__*/ __L.at(__c22, 7) as any as S.Schema<RepetitionIndex>;
+
 /** The repetition indexes. */
 export type WorkflowRunActionRepetitionPropertiesRepetitionIndexesList = Array<RepetitionIndex>;
+const WorkflowRunActionRepetitionPropertiesRepetitionIndexesList = /*@__PURE__*/ __L.at(
+  __c23,
+  0,
+) as any as S.Schema<WorkflowRunActionRepetitionPropertiesRepetitionIndexesList>;
+
 /** The workflow run action repetition properties definition. */
 export interface WorkflowRunActionRepetitionProperties {
   /** The start time of the workflow scope repetition. */
@@ -2349,6 +3319,11 @@ export interface WorkflowRunActionRepetitionProperties {
   /** The repetition indexes. */
   repetitionIndexes?: WorkflowRunActionRepetitionPropertiesRepetitionIndexesList;
 }
+const WorkflowRunActionRepetitionProperties = /*@__PURE__*/ __L.at(
+  __c23,
+  1,
+) as any as S.Schema<WorkflowRunActionRepetitionProperties>;
+
 export interface GetWorkflowRunActionRepetitionResponse {
   /** The resource id. */
   id?: string;
@@ -2363,6 +3338,11 @@ export interface GetWorkflowRunActionRepetitionResponse {
   /** The workflow run action repetition properties definition. */
   properties: WorkflowRunActionRepetitionProperties;
 }
+const GetWorkflowRunActionRepetitionResponse = /*@__PURE__*/ __L.at(
+  __c23,
+  2,
+) as any as S.Schema<GetWorkflowRunActionRepetitionResponse>;
+
 export interface GetWorkflowRunActionRepetitionsRequestHistoryRequest {
   /** The subscription id. */
   subscriptionId: string;
@@ -2379,10 +3359,18 @@ export interface GetWorkflowRunActionRepetitionsRequestHistoryRequest {
   /** The request history name. */
   requestHistoryName: string;
 }
+const GetWorkflowRunActionRepetitionsRequestHistoryRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  3,
+) as any as S.Schema<GetWorkflowRunActionRepetitionsRequestHistoryRequest>;
+
 /** The resource tags. */
 export type GetWorkflowRunActionRepetitionsRequestHistoryResponseTagsMap = {
   [key: string]: string | undefined;
 };
+const GetWorkflowRunActionRepetitionsRequestHistoryResponseTagsMap =
+  GetIntegrationAccountResponseTagsMap as any as S.Schema<GetWorkflowRunActionRepetitionsRequestHistoryResponseTagsMap>;
+
 /** A request. */
 export interface Request {
   /** A list of all the headers attached to the request. */
@@ -2392,6 +3380,8 @@ export interface Request {
   /** The HTTP method used for the request. */
   method?: string;
 }
+const Request = /*@__PURE__*/ __L.at(__c23, 4) as any as S.Schema<Request>;
+
 /** A response. */
 export interface Response {
   /** A list of all the headers attached to the response. */
@@ -2401,6 +3391,8 @@ export interface Response {
   /** Details on the location of the body content. */
   bodyLink?: ContentLink;
 }
+const Response = /*@__PURE__*/ __L.at(__c23, 5) as any as S.Schema<Response>;
+
 /** The request history. */
 export interface RequestHistoryProperties {
   /** The time the request started. */
@@ -2412,6 +3404,11 @@ export interface RequestHistoryProperties {
   /** The response. */
   response?: Response;
 }
+const RequestHistoryProperties = /*@__PURE__*/ __L.at(
+  __c23,
+  6,
+) as any as S.Schema<RequestHistoryProperties>;
+
 export interface GetWorkflowRunActionRepetitionsRequestHistoryResponse {
   /** The resource id. */
   id?: string;
@@ -2426,6 +3423,11 @@ export interface GetWorkflowRunActionRepetitionsRequestHistoryResponse {
   /** The request history properties. */
   properties?: RequestHistoryProperties;
 }
+const GetWorkflowRunActionRepetitionsRequestHistoryResponse = /*@__PURE__*/ __L.at(
+  __c23,
+  7,
+) as any as S.Schema<GetWorkflowRunActionRepetitionsRequestHistoryResponse>;
+
 export interface GetWorkflowRunActionRequestHistoryRequest {
   /** The subscription id. */
   subscriptionId: string;
@@ -2440,6 +3442,11 @@ export interface GetWorkflowRunActionRequestHistoryRequest {
   /** The request history name. */
   requestHistoryName: string;
 }
+const GetWorkflowRunActionRequestHistoryRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  0,
+) as any as S.Schema<GetWorkflowRunActionRequestHistoryRequest>;
+
 /** The resource tags. */
 export type GetWorkflowRunActionRequestHistoryResponseTagsMap = {
   [key: string]: string | undefined;
@@ -2458,6 +3465,9 @@ export interface GetWorkflowRunActionRequestHistoryResponse {
   /** The request history properties. */
   properties?: RequestHistoryProperties;
 }
+const GetWorkflowRunActionRequestHistoryResponse =
+  GetWorkflowRunActionRepetitionsRequestHistoryResponse as any as S.Schema<GetWorkflowRunActionRequestHistoryResponse>;
+
 export interface GetWorkflowRunActionScopeRepetitionRequest {
   /** The subscription id. */
   subscriptionId: string;
@@ -2472,6 +3482,11 @@ export interface GetWorkflowRunActionScopeRepetitionRequest {
   /** The workflow repetition. */
   repetitionName: string;
 }
+const GetWorkflowRunActionScopeRepetitionRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  1,
+) as any as S.Schema<GetWorkflowRunActionScopeRepetitionRequest>;
+
 /** The resource tags. */
 export type GetWorkflowRunActionScopeRepetitionResponseTagsMap = {
   [key: string]: string | undefined;
@@ -2490,6 +3505,9 @@ export interface GetWorkflowRunActionScopeRepetitionResponse {
   /** The workflow run action repetition properties definition. */
   properties: WorkflowRunActionRepetitionProperties;
 }
+const GetWorkflowRunActionScopeRepetitionResponse =
+  GetWorkflowRunActionRepetitionResponse as any as S.Schema<GetWorkflowRunActionScopeRepetitionResponse>;
+
 export interface GetWorkflowRunOperationRequest {
   /** The subscription id. */
   subscriptionId: string;
@@ -2502,6 +3520,11 @@ export interface GetWorkflowRunOperationRequest {
   /** The workflow operation id. */
   operationId: string;
 }
+const GetWorkflowRunOperationRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  2,
+) as any as S.Schema<GetWorkflowRunOperationRequest>;
+
 export interface GetWorkflowRunOperationResponse {
   /** The resource id. */
   id?: string;
@@ -2512,6 +3535,11 @@ export interface GetWorkflowRunOperationResponse {
   /** Gets the workflow run type. */
   type?: string;
 }
+const GetWorkflowRunOperationResponse = /*@__PURE__*/ __L.at(
+  __c24,
+  3,
+) as any as S.Schema<GetWorkflowRunOperationResponse>;
+
 export interface GetWorkflowTriggerRequest {
   /** The subscription id. */
   subscriptionId: string;
@@ -2522,6 +3550,11 @@ export interface GetWorkflowTriggerRequest {
   /** The workflow trigger name. */
   triggerName: string;
 }
+const GetWorkflowTriggerRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  4,
+) as any as S.Schema<GetWorkflowTriggerRequest>;
+
 /** The workflow trigger provisioning state. */
 export type WorkflowTriggerProvisioningState =
   | "NotSpecified"
@@ -2542,6 +3575,8 @@ export type WorkflowTriggerProvisioningState =
   | "Unregistering"
   | "Unregistered"
   | "Completed";
+const WorkflowTriggerProvisioningState = S.String;
+
 /** The workflow trigger properties. */
 export interface WorkflowTriggerProperties {
   /** Gets the provisioning state. */
@@ -2563,6 +3598,11 @@ export interface WorkflowTriggerProperties {
   /** Gets the reference to workflow. */
   workflow?: ResourceReference;
 }
+const WorkflowTriggerProperties = /*@__PURE__*/ __L.at(
+  __c24,
+  5,
+) as any as S.Schema<WorkflowTriggerProperties>;
+
 export interface GetWorkflowTriggerResponse {
   /** The resource id. */
   id?: string;
@@ -2573,6 +3613,11 @@ export interface GetWorkflowTriggerResponse {
   /** Gets the workflow trigger type. */
   type?: string;
 }
+const GetWorkflowTriggerResponse = /*@__PURE__*/ __L.at(
+  __c24,
+  6,
+) as any as S.Schema<GetWorkflowTriggerResponse>;
+
 export interface GetWorkflowTriggerHistoryRequest {
   /** The subscription id. */
   subscriptionId: string;
@@ -2585,6 +3630,11 @@ export interface GetWorkflowTriggerHistoryRequest {
   /** The workflow trigger history name. Corresponds to the run name for triggers that resulted in a run. */
   historyName: string;
 }
+const GetWorkflowTriggerHistoryRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  7,
+) as any as S.Schema<GetWorkflowTriggerHistoryRequest>;
+
 /** The workflow trigger history properties. */
 export interface WorkflowTriggerHistoryProperties {
   /** Gets the start time. */
@@ -2612,6 +3662,11 @@ export interface WorkflowTriggerHistoryProperties {
   /** Gets the reference to workflow run. */
   run?: ResourceReference;
 }
+const WorkflowTriggerHistoryProperties = /*@__PURE__*/ __L.at(
+  __c25,
+  0,
+) as any as S.Schema<WorkflowTriggerHistoryProperties>;
+
 export interface GetWorkflowTriggerHistoryResponse {
   /** The resource id. */
   id?: string;
@@ -2622,6 +3677,11 @@ export interface GetWorkflowTriggerHistoryResponse {
   /** Gets the workflow trigger history type. */
   type?: string;
 }
+const GetWorkflowTriggerHistoryResponse = /*@__PURE__*/ __L.at(
+  __c25,
+  1,
+) as any as S.Schema<GetWorkflowTriggerHistoryResponse>;
+
 export interface GetWorkflowTriggerSchemaJsonRequest {
   /** The subscription id. */
   subscriptionId: string;
@@ -2632,6 +3692,11 @@ export interface GetWorkflowTriggerSchemaJsonRequest {
   /** The workflow trigger name. */
   triggerName: string;
 }
+const GetWorkflowTriggerSchemaJsonRequest = /*@__PURE__*/ __L.at(
+  __c25,
+  2,
+) as any as S.Schema<GetWorkflowTriggerSchemaJsonRequest>;
+
 /** The JSON schema. */
 export interface JsonSchema {
   /** The JSON title. */
@@ -2639,6 +3704,8 @@ export interface JsonSchema {
   /** The JSON content. */
   content?: string;
 }
+const JsonSchema = /*@__PURE__*/ __L.at(__c25, 3) as any as S.Schema<JsonSchema>;
+
 export interface GetWorkflowVersionRequest {
   /** The subscription id. */
   subscriptionId: string;
@@ -2649,12 +3716,23 @@ export interface GetWorkflowVersionRequest {
   /** The workflow versionId. */
   versionId: string;
 }
+const GetWorkflowVersionRequest = /*@__PURE__*/ __L.at(
+  __c25,
+  4,
+) as any as S.Schema<GetWorkflowVersionRequest>;
+
 /** The resource tags. */
 export type GetWorkflowVersionResponseTagsMap = { [key: string]: string | undefined };
+const GetWorkflowVersionResponseTagsMap =
+  GetIntegrationAccountResponseTagsMap as any as S.Schema<GetWorkflowVersionResponseTagsMap>;
+
 /** The parameters. */
 export type WorkflowVersionPropertiesParametersMap = {
   [key: string]: WorkflowParameter | undefined;
 };
+const WorkflowVersionPropertiesParametersMap =
+  WorkflowPropertiesParametersMap as any as S.Schema<WorkflowVersionPropertiesParametersMap>;
+
 /** The workflow version properties. */
 export interface WorkflowVersionProperties {
   /** The provisioning state. */
@@ -2682,6 +3760,11 @@ export interface WorkflowVersionProperties {
   /** The parameters. */
   parameters?: WorkflowVersionPropertiesParametersMap;
 }
+const WorkflowVersionProperties = /*@__PURE__*/ __L.at(
+  __c25,
+  5,
+) as any as S.Schema<WorkflowVersionProperties>;
+
 export interface GetWorkflowVersionResponse {
   /** The resource id. */
   id?: string;
@@ -2696,10 +3779,18 @@ export interface GetWorkflowVersionResponse {
   /** The workflow version properties. */
   properties?: WorkflowVersionProperties;
 }
+const GetWorkflowVersionResponse = /*@__PURE__*/ __L.at(
+  __c25,
+  6,
+) as any as S.Schema<GetWorkflowVersionResponse>;
+
 /** The resource tags. */
 export type IntegrationAccountAgreementsCreateOrUpdateRequestTagsMap = {
   [key: string]: string | undefined;
 };
+const IntegrationAccountAgreementsCreateOrUpdateRequestTagsMap =
+  GetIntegrationAccountResponseTagsMap as any as S.Schema<IntegrationAccountAgreementsCreateOrUpdateRequestTagsMap>;
+
 /** The integration account agreement properties. */
 export interface IntegrationAccountAgreementPropertiesInput {
   /** The metadata. */
@@ -2717,6 +3808,11 @@ export interface IntegrationAccountAgreementPropertiesInput {
   /** The agreement content. */
   content: AgreementContent;
 }
+const IntegrationAccountAgreementPropertiesInput = /*@__PURE__*/ __L.at(
+  __c25,
+  7,
+) as any as S.Schema<IntegrationAccountAgreementPropertiesInput>;
+
 export interface IntegrationAccountAgreementsCreateOrUpdateRequest {
   /** The subscription id. */
   subscriptionId: string;
@@ -2733,6 +3829,11 @@ export interface IntegrationAccountAgreementsCreateOrUpdateRequest {
   /** The integration account agreement properties. */
   properties: IntegrationAccountAgreementPropertiesInput;
 }
+const IntegrationAccountAgreementsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c26,
+  0,
+) as any as S.Schema<IntegrationAccountAgreementsCreateOrUpdateRequest>;
+
 /** The resource tags. */
 export type IntegrationAccountAgreementsCreateOrUpdateResponseTagsMap = {
   [key: string]: string | undefined;
@@ -2751,15 +3852,23 @@ export interface IntegrationAccountAgreementsCreateOrUpdateResponse {
   /** The integration account agreement properties. */
   properties: IntegrationAccountAgreementProperties;
 }
+const IntegrationAccountAgreementsCreateOrUpdateResponse =
+  GetIntegrationAccountAgreementResponse as any as S.Schema<IntegrationAccountAgreementsCreateOrUpdateResponse>;
+
 /** The resource tags. */
 export type IntegrationAccountAssembliesCreateOrUpdateRequestTagsMap = {
   [key: string]: string | undefined;
 };
+const IntegrationAccountAssembliesCreateOrUpdateRequestTagsMap =
+  GetIntegrationAccountResponseTagsMap as any as S.Schema<IntegrationAccountAssembliesCreateOrUpdateRequestTagsMap>;
+
 /** The content link. */
 export interface ContentLinkInput {
   /** The content link URI. */
   uri?: string;
 }
+const ContentLinkInput = /*@__PURE__*/ __L.at(__c26, 1) as any as S.Schema<ContentLinkInput>;
+
 /** The assembly properties definition. */
 export interface AssemblyPropertiesInput {
   /** The artifact creation time. */
@@ -2781,6 +3890,11 @@ export interface AssemblyPropertiesInput {
   /** The assembly public key token. */
   assemblyPublicKeyToken?: string;
 }
+const AssemblyPropertiesInput = /*@__PURE__*/ __L.at(
+  __c26,
+  2,
+) as any as S.Schema<AssemblyPropertiesInput>;
+
 export interface IntegrationAccountAssembliesCreateOrUpdateRequest {
   /** The subscription id. */
   subscriptionId: string;
@@ -2797,6 +3911,11 @@ export interface IntegrationAccountAssembliesCreateOrUpdateRequest {
   /** The assembly properties. */
   properties: AssemblyPropertiesInput;
 }
+const IntegrationAccountAssembliesCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c26,
+  3,
+) as any as S.Schema<IntegrationAccountAssembliesCreateOrUpdateRequest>;
+
 /** The resource tags. */
 export type IntegrationAccountAssembliesCreateOrUpdateResponseTagsMap = {
   [key: string]: string | undefined;
@@ -2815,10 +3934,18 @@ export interface IntegrationAccountAssembliesCreateOrUpdateResponse {
   /** The assembly properties. */
   properties: AssemblyProperties;
 }
+const IntegrationAccountAssembliesCreateOrUpdateResponse =
+  GetIntegrationAccountAssemblyResponse as any as S.Schema<IntegrationAccountAssembliesCreateOrUpdateResponse>;
+
 /** The resource tags. */
 export type IntegrationAccountBatchConfigurationsCreateOrUpdateRequestTagsMap = {
   [key: string]: string | undefined;
 };
+const IntegrationAccountBatchConfigurationsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ __L.at(
+  __c26,
+  4,
+) as any as S.Schema<IntegrationAccountBatchConfigurationsCreateOrUpdateRequestTagsMap>;
+
 export interface IntegrationAccountBatchConfigurationsCreateOrUpdateRequest {
   /** The subscription id. */
   subscriptionId: string;
@@ -2835,10 +3962,18 @@ export interface IntegrationAccountBatchConfigurationsCreateOrUpdateRequest {
   /** The batch configuration properties. */
   properties: BatchConfigurationProperties;
 }
+const IntegrationAccountBatchConfigurationsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c26,
+  5,
+) as any as S.Schema<IntegrationAccountBatchConfigurationsCreateOrUpdateRequest>;
+
 /** The resource tags. */
 export type IntegrationAccountBatchConfigurationsCreateOrUpdateResponseTagsMap = {
   [key: string]: string | undefined;
 };
+const IntegrationAccountBatchConfigurationsCreateOrUpdateResponseTagsMap =
+  IntegrationAccountBatchConfigurationsCreateOrUpdateRequestTagsMap as any as S.Schema<IntegrationAccountBatchConfigurationsCreateOrUpdateResponseTagsMap>;
+
 export interface IntegrationAccountBatchConfigurationsCreateOrUpdateResponse {
   /** The resource id. */
   id?: string;
@@ -2853,15 +3988,28 @@ export interface IntegrationAccountBatchConfigurationsCreateOrUpdateResponse {
   /** The batch configuration properties. */
   properties: BatchConfigurationProperties;
 }
+const IntegrationAccountBatchConfigurationsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c26,
+  6,
+) as any as S.Schema<IntegrationAccountBatchConfigurationsCreateOrUpdateResponse>;
+
 /** The resource tags. */
 export type IntegrationAccountCertificatesCreateOrUpdateRequestTagsMap = {
   [key: string]: string | undefined;
 };
+const IntegrationAccountCertificatesCreateOrUpdateRequestTagsMap =
+  GetIntegrationAccountResponseTagsMap as any as S.Schema<IntegrationAccountCertificatesCreateOrUpdateRequestTagsMap>;
+
 /** The key vault reference. */
 export interface KeyVaultKeyReferenceInputKeyVault {
   /** The resource id. */
   id?: string;
 }
+const KeyVaultKeyReferenceInputKeyVault = /*@__PURE__*/ __L.at(
+  __c26,
+  7,
+) as any as S.Schema<KeyVaultKeyReferenceInputKeyVault>;
+
 /** The reference to the key vault key. */
 export interface KeyVaultKeyReferenceInput {
   /** The key vault reference. */
@@ -2871,6 +4019,11 @@ export interface KeyVaultKeyReferenceInput {
   /** The private key version in key vault. */
   keyVersion?: string;
 }
+const KeyVaultKeyReferenceInput = /*@__PURE__*/ __L.at(
+  __c27,
+  0,
+) as any as S.Schema<KeyVaultKeyReferenceInput>;
+
 /** The integration account certificate properties. */
 export interface IntegrationAccountCertificatePropertiesInput {
   /** The metadata. */
@@ -2880,6 +4033,11 @@ export interface IntegrationAccountCertificatePropertiesInput {
   /** The public certificate. */
   publicCertificate?: string;
 }
+const IntegrationAccountCertificatePropertiesInput = /*@__PURE__*/ __L.at(
+  __c27,
+  1,
+) as any as S.Schema<IntegrationAccountCertificatePropertiesInput>;
+
 export interface IntegrationAccountCertificatesCreateOrUpdateRequest {
   /** The subscription id. */
   subscriptionId: string;
@@ -2896,6 +4054,11 @@ export interface IntegrationAccountCertificatesCreateOrUpdateRequest {
   /** The integration account certificate properties. */
   properties: IntegrationAccountCertificatePropertiesInput;
 }
+const IntegrationAccountCertificatesCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c27,
+  2,
+) as any as S.Schema<IntegrationAccountCertificatesCreateOrUpdateRequest>;
+
 /** The resource tags. */
 export type IntegrationAccountCertificatesCreateOrUpdateResponseTagsMap = {
   [key: string]: string | undefined;
@@ -2914,10 +4077,16 @@ export interface IntegrationAccountCertificatesCreateOrUpdateResponse {
   /** The integration account certificate properties. */
   properties: IntegrationAccountCertificateProperties;
 }
+const IntegrationAccountCertificatesCreateOrUpdateResponse =
+  GetIntegrationAccountCertificateResponse as any as S.Schema<IntegrationAccountCertificatesCreateOrUpdateResponse>;
+
 /** The resource tags. */
 export type IntegrationAccountMapsCreateOrUpdateRequestTagsMap = {
   [key: string]: string | undefined;
 };
+const IntegrationAccountMapsCreateOrUpdateRequestTagsMap =
+  GetIntegrationAccountResponseTagsMap as any as S.Schema<IntegrationAccountMapsCreateOrUpdateRequestTagsMap>;
+
 /** The parameters schema of integration account map. */
 export type IntegrationAccountMapPropertiesInputParametersSchema =
   IntegrationAccountMapPropertiesParametersSchema;
@@ -2934,6 +4103,11 @@ export interface IntegrationAccountMapPropertiesInput {
   /** The metadata. */
   metadata?: unknown;
 }
+const IntegrationAccountMapPropertiesInput = /*@__PURE__*/ __L.at(
+  __c27,
+  3,
+) as any as S.Schema<IntegrationAccountMapPropertiesInput>;
+
 export interface IntegrationAccountMapsCreateOrUpdateRequest {
   /** The subscription id. */
   subscriptionId: string;
@@ -2950,6 +4124,11 @@ export interface IntegrationAccountMapsCreateOrUpdateRequest {
   /** The integration account map properties. */
   properties: IntegrationAccountMapPropertiesInput;
 }
+const IntegrationAccountMapsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c27,
+  4,
+) as any as S.Schema<IntegrationAccountMapsCreateOrUpdateRequest>;
+
 /** The resource tags. */
 export type IntegrationAccountMapsCreateOrUpdateResponseTagsMap = {
   [key: string]: string | undefined;
@@ -2968,10 +4147,16 @@ export interface IntegrationAccountMapsCreateOrUpdateResponse {
   /** The integration account map properties. */
   properties: IntegrationAccountMapProperties;
 }
+const IntegrationAccountMapsCreateOrUpdateResponse =
+  GetIntegrationAccountMapResponse as any as S.Schema<IntegrationAccountMapsCreateOrUpdateResponse>;
+
 /** The resource tags. */
 export type IntegrationAccountPartnersCreateOrUpdateRequestTagsMap = {
   [key: string]: string | undefined;
 };
+const IntegrationAccountPartnersCreateOrUpdateRequestTagsMap =
+  GetIntegrationAccountResponseTagsMap as any as S.Schema<IntegrationAccountPartnersCreateOrUpdateRequestTagsMap>;
+
 /** The integration account partner properties. */
 export interface IntegrationAccountPartnerPropertiesInput {
   /** The partner type. */
@@ -2981,6 +4166,11 @@ export interface IntegrationAccountPartnerPropertiesInput {
   /** The partner content. */
   content: PartnerContent;
 }
+const IntegrationAccountPartnerPropertiesInput = /*@__PURE__*/ __L.at(
+  __c27,
+  5,
+) as any as S.Schema<IntegrationAccountPartnerPropertiesInput>;
+
 export interface IntegrationAccountPartnersCreateOrUpdateRequest {
   /** The subscription id. */
   subscriptionId: string;
@@ -2997,6 +4187,11 @@ export interface IntegrationAccountPartnersCreateOrUpdateRequest {
   /** The integration account partner properties. */
   properties: IntegrationAccountPartnerPropertiesInput;
 }
+const IntegrationAccountPartnersCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c27,
+  6,
+) as any as S.Schema<IntegrationAccountPartnersCreateOrUpdateRequest>;
+
 /** The resource tags. */
 export type IntegrationAccountPartnersCreateOrUpdateResponseTagsMap = {
   [key: string]: string | undefined;
@@ -3015,10 +4210,16 @@ export interface IntegrationAccountPartnersCreateOrUpdateResponse {
   /** The integration account partner properties. */
   properties: IntegrationAccountPartnerProperties;
 }
+const IntegrationAccountPartnersCreateOrUpdateResponse =
+  GetIntegrationAccountPartnerResponse as any as S.Schema<IntegrationAccountPartnersCreateOrUpdateResponse>;
+
 /** The resource tags. */
 export type IntegrationAccountSchemasCreateOrUpdateRequestTagsMap = {
   [key: string]: string | undefined;
 };
+const IntegrationAccountSchemasCreateOrUpdateRequestTagsMap =
+  GetIntegrationAccountResponseTagsMap as any as S.Schema<IntegrationAccountSchemasCreateOrUpdateRequestTagsMap>;
+
 /** The integration account schema properties. */
 export interface IntegrationAccountSchemaPropertiesInput {
   /** The schema type. */
@@ -3036,6 +4237,11 @@ export interface IntegrationAccountSchemaPropertiesInput {
   /** The content type. */
   contentType?: string;
 }
+const IntegrationAccountSchemaPropertiesInput = /*@__PURE__*/ __L.at(
+  __c27,
+  7,
+) as any as S.Schema<IntegrationAccountSchemaPropertiesInput>;
+
 export interface IntegrationAccountSchemasCreateOrUpdateRequest {
   /** The subscription id. */
   subscriptionId: string;
@@ -3052,6 +4258,11 @@ export interface IntegrationAccountSchemasCreateOrUpdateRequest {
   /** The integration account schema properties. */
   properties: IntegrationAccountSchemaPropertiesInput;
 }
+const IntegrationAccountSchemasCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c28,
+  0,
+) as any as S.Schema<IntegrationAccountSchemasCreateOrUpdateRequest>;
+
 /** The resource tags. */
 export type IntegrationAccountSchemasCreateOrUpdateResponseTagsMap = {
   [key: string]: string | undefined;
@@ -3070,8 +4281,14 @@ export interface IntegrationAccountSchemasCreateOrUpdateResponse {
   /** The integration account schema properties. */
   properties: IntegrationAccountSchemaProperties;
 }
+const IntegrationAccountSchemasCreateOrUpdateResponse =
+  GetIntegrationAccountSchemaResponse as any as S.Schema<IntegrationAccountSchemasCreateOrUpdateResponse>;
+
 /** The resource tags. */
 export type IntegrationAccountsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
+const IntegrationAccountsCreateOrUpdateRequestTagsMap =
+  GetIntegrationAccountResponseTagsMap as any as S.Schema<IntegrationAccountsCreateOrUpdateRequestTagsMap>;
+
 /** The resource reference. */
 export type ResourceReferenceInput = KeyVaultKeyReferenceInputKeyVault;
 /** The integration account properties. */
@@ -3081,6 +4298,11 @@ export interface IntegrationAccountPropertiesInput {
   /** The workflow state. */
   state?: WorkflowState | (string & {});
 }
+const IntegrationAccountPropertiesInput = /*@__PURE__*/ __L.at(
+  __c28,
+  1,
+) as any as S.Schema<IntegrationAccountPropertiesInput>;
+
 export interface IntegrationAccountsCreateOrUpdateRequest {
   /** The subscription id. */
   subscriptionId: string;
@@ -3097,6 +4319,11 @@ export interface IntegrationAccountsCreateOrUpdateRequest {
   /** The sku. */
   sku?: IntegrationAccountSku;
 }
+const IntegrationAccountsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c28,
+  2,
+) as any as S.Schema<IntegrationAccountsCreateOrUpdateRequest>;
+
 /** The resource tags. */
 export type IntegrationAccountsCreateOrUpdateResponseTagsMap = {
   [key: string]: string | undefined;
@@ -3117,15 +4344,26 @@ export interface IntegrationAccountsCreateOrUpdateResponse {
   /** The sku. */
   sku?: IntegrationAccountSku;
 }
+const IntegrationAccountsCreateOrUpdateResponse =
+  GetIntegrationAccountResponse as any as S.Schema<IntegrationAccountsCreateOrUpdateResponse>;
+
 /** The resource tags. */
 export type IntegrationAccountSessionsCreateOrUpdateRequestTagsMap = {
   [key: string]: string | undefined;
 };
+const IntegrationAccountSessionsCreateOrUpdateRequestTagsMap =
+  GetIntegrationAccountResponseTagsMap as any as S.Schema<IntegrationAccountSessionsCreateOrUpdateRequestTagsMap>;
+
 /** The integration account session properties. */
 export interface IntegrationAccountSessionPropertiesInput {
   /** The session content. */
   content?: unknown;
 }
+const IntegrationAccountSessionPropertiesInput = /*@__PURE__*/ __L.at(
+  __c28,
+  3,
+) as any as S.Schema<IntegrationAccountSessionPropertiesInput>;
+
 export interface IntegrationAccountSessionsCreateOrUpdateRequest {
   /** The subscription id. */
   subscriptionId: string;
@@ -3142,6 +4380,11 @@ export interface IntegrationAccountSessionsCreateOrUpdateRequest {
   /** The integration account session properties. */
   properties: IntegrationAccountSessionPropertiesInput;
 }
+const IntegrationAccountSessionsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c28,
+  4,
+) as any as S.Schema<IntegrationAccountSessionsCreateOrUpdateRequest>;
+
 /** The resource tags. */
 export type IntegrationAccountSessionsCreateOrUpdateResponseTagsMap = {
   [key: string]: string | undefined;
@@ -3160,8 +4403,13 @@ export interface IntegrationAccountSessionsCreateOrUpdateResponse {
   /** The integration account session properties. */
   properties: IntegrationAccountSessionProperties;
 }
+const IntegrationAccountSessionsCreateOrUpdateResponse =
+  GetIntegrationAccountSessionResponse as any as S.Schema<IntegrationAccountSessionsCreateOrUpdateResponse>;
+
 /** The track events operation options. */
 export type TrackEventsOperationOptions = "None" | "DisableSourceInfoEnrich";
+const TrackEventsOperationOptions = S.String;
+
 /** The event level. */
 export type EventLevel =
   | "LogAlways"
@@ -3170,6 +4418,8 @@ export type EventLevel =
   | "Warning"
   | "Informational"
   | "Verbose";
+const EventLevel = S.String;
+
 /** The tracking record type. */
 export type TrackingRecordType =
   | "NotSpecified"
@@ -3188,6 +4438,8 @@ export type TrackingRecordType =
   | "EdifactInterchangeAcknowledgment"
   | "EdifactFunctionalGroupAcknowledgment"
   | "EdifactTransactionSetAcknowledgment";
+const TrackingRecordType = S.String;
+
 /** The tracking event error info. */
 export interface TrackingEventErrorInfo {
   /** The message. */
@@ -3195,6 +4447,11 @@ export interface TrackingEventErrorInfo {
   /** The code. */
   code?: string;
 }
+const TrackingEventErrorInfo = /*@__PURE__*/ __L.at(
+  __c28,
+  5,
+) as any as S.Schema<TrackingEventErrorInfo>;
+
 /** The tracking event. */
 export interface TrackingEvent {
   /** The event level. */
@@ -3208,8 +4465,15 @@ export interface TrackingEvent {
   /** The error. */
   error?: TrackingEventErrorInfo;
 }
+const TrackingEvent = /*@__PURE__*/ __L.at(__c28, 6) as any as S.Schema<TrackingEvent>;
+
 /** The events. */
 export type IntegrationAccountsLogTrackingEventsRequestEventsList = Array<TrackingEvent>;
+const IntegrationAccountsLogTrackingEventsRequestEventsList = /*@__PURE__*/ __L.at(
+  __c28,
+  7,
+) as any as S.Schema<IntegrationAccountsLogTrackingEventsRequestEventsList>;
+
 export interface IntegrationAccountsLogTrackingEventsRequest {
   /** The subscription id. */
   subscriptionId: string;
@@ -3224,13 +4488,29 @@ export interface IntegrationAccountsLogTrackingEventsRequest {
   /** The events. */
   events: IntegrationAccountsLogTrackingEventsRequestEventsList;
 }
+const IntegrationAccountsLogTrackingEventsRequest = /*@__PURE__*/ __L.at(
+  __c29,
+  0,
+) as any as S.Schema<IntegrationAccountsLogTrackingEventsRequest>;
+
 export interface IntegrationAccountsLogTrackingEventsResponse {}
+const IntegrationAccountsLogTrackingEventsResponse =
+  DeleteIntegrationAccountResponse as any as S.Schema<IntegrationAccountsLogTrackingEventsResponse>;
+
 /** The resource tags. */
 export type IntegrationServiceEnvironmentsCreateOrUpdateRequestTagsMap = {
   [key: string]: string | undefined;
 };
+const IntegrationServiceEnvironmentsCreateOrUpdateRequestTagsMap =
+  GetIntegrationAccountResponseTagsMap as any as S.Schema<IntegrationServiceEnvironmentsCreateOrUpdateRequestTagsMap>;
+
 /** The subnets. */
 export type NetworkConfigurationInputSubnetsList = Array<KeyVaultKeyReferenceInputKeyVault>;
+const NetworkConfigurationInputSubnetsList = /*@__PURE__*/ __L.at(
+  __c29,
+  1,
+) as any as S.Schema<NetworkConfigurationInputSubnetsList>;
+
 /** The network configuration. */
 export interface NetworkConfigurationInput {
   /** Gets the virtual network address space. */
@@ -3240,6 +4520,11 @@ export interface NetworkConfigurationInput {
   /** The subnets. */
   subnets?: NetworkConfigurationInputSubnetsList;
 }
+const NetworkConfigurationInput = /*@__PURE__*/ __L.at(
+  __c29,
+  2,
+) as any as S.Schema<NetworkConfigurationInput>;
+
 /** The encryption key details for the integration service environment. */
 export interface IntegrationServiceEnvironmenEncryptionKeyReferenceInput {
   /** The key vault reference. */
@@ -3249,11 +4534,21 @@ export interface IntegrationServiceEnvironmenEncryptionKeyReferenceInput {
   /** Gets the version of the key specified in the keyName property. */
   keyVersion?: string;
 }
+const IntegrationServiceEnvironmenEncryptionKeyReferenceInput = /*@__PURE__*/ __L.at(
+  __c29,
+  3,
+) as any as S.Schema<IntegrationServiceEnvironmenEncryptionKeyReferenceInput>;
+
 /** The encryption configuration for the integration service environment. */
 export interface IntegrationServiceEnvironmenEncryptionConfigurationInput {
   /** The encryption key reference. */
   encryptionKeyReference?: IntegrationServiceEnvironmenEncryptionKeyReferenceInput;
 }
+const IntegrationServiceEnvironmenEncryptionConfigurationInput = /*@__PURE__*/ __L.at(
+  __c29,
+  4,
+) as any as S.Schema<IntegrationServiceEnvironmenEncryptionConfigurationInput>;
+
 /** The integration service environment properties. */
 export interface IntegrationServiceEnvironmentPropertiesInput {
   /** The provisioning state. */
@@ -3269,14 +4564,29 @@ export interface IntegrationServiceEnvironmentPropertiesInput {
   /** The encryption configuration. */
   encryptionConfiguration?: IntegrationServiceEnvironmenEncryptionConfigurationInput;
 }
+const IntegrationServiceEnvironmentPropertiesInput = /*@__PURE__*/ __L.at(
+  __c29,
+  5,
+) as any as S.Schema<IntegrationServiceEnvironmentPropertiesInput>;
+
 /** Type of managed service identity. The type 'SystemAssigned' includes an implicitly created identity. The type 'None' will remove any identities from the resource. */
 export type ManagedServiceIdentityInputType = "SystemAssigned" | "UserAssigned" | "None";
+const ManagedServiceIdentityInputType = S.String;
+
 /** User Assigned identity properties. */
 export interface UserAssignedIdentityInput {}
+const UserAssignedIdentityInput =
+  CancelWorkflowRunResponse as any as S.Schema<UserAssignedIdentityInput>;
+
 /** The list of user assigned identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName} */
 export type ManagedServiceIdentityInputUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentityInput | undefined;
 };
+const ManagedServiceIdentityInputUserAssignedIdentitiesMap = /*@__PURE__*/ __L.at(
+  __c29,
+  6,
+) as any as S.Schema<ManagedServiceIdentityInputUserAssignedIdentitiesMap>;
+
 /** Managed service identity properties. */
 export interface ManagedServiceIdentityInput {
   /** Type of managed service identity. The type 'SystemAssigned' includes an implicitly created identity. The type 'None' will remove any identities from the resource. */
@@ -3284,6 +4594,11 @@ export interface ManagedServiceIdentityInput {
   /** The list of user assigned identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName} */
   userAssignedIdentities?: ManagedServiceIdentityInputUserAssignedIdentitiesMap;
 }
+const ManagedServiceIdentityInput = /*@__PURE__*/ __L.at(
+  __c29,
+  7,
+) as any as S.Schema<ManagedServiceIdentityInput>;
+
 export interface IntegrationServiceEnvironmentsCreateOrUpdateRequest {
   /** The subscription id. */
   subscriptionId: string;
@@ -3301,6 +4616,11 @@ export interface IntegrationServiceEnvironmentsCreateOrUpdateRequest {
   sku?: IntegrationServiceEnvironmentSku;
   identity?: ManagedServiceIdentityInput;
 }
+const IntegrationServiceEnvironmentsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c30,
+  0,
+) as any as S.Schema<IntegrationServiceEnvironmentsCreateOrUpdateRequest>;
+
 /** The resource tags. */
 export type IntegrationServiceEnvironmentsCreateOrUpdateResponseTagsMap = {
   [key: string]: string | undefined;
@@ -3322,8 +4642,13 @@ export interface IntegrationServiceEnvironmentsCreateOrUpdateResponse {
   sku?: IntegrationServiceEnvironmentSku;
   identity?: ManagedServiceIdentity;
 }
+const IntegrationServiceEnvironmentsCreateOrUpdateResponse =
+  GetIntegrationServiceEnvironmentResponse as any as S.Schema<IntegrationServiceEnvironmentsCreateOrUpdateResponse>;
+
 /** The key type. */
 export type KeyType = "NotSpecified" | "Primary" | "Secondary";
+const KeyType = S.String;
+
 export interface ListIntegrationAccountAgreementContentCallbackUrlRequest {
   /** The subscription id. */
   subscriptionId: string;
@@ -3338,8 +4663,16 @@ export interface ListIntegrationAccountAgreementContentCallbackUrlRequest {
   /** The key type. */
   keyType?: KeyType | (string & {});
 }
+const ListIntegrationAccountAgreementContentCallbackUrlRequest = /*@__PURE__*/ __L.at(
+  __c30,
+  1,
+) as any as S.Schema<ListIntegrationAccountAgreementContentCallbackUrlRequest>;
+
 /** Gets the workflow trigger callback URL relative path parameters. */
 export type WorkflowTriggerCallbackUrlRelativePathParametersList = Array<string>;
+const WorkflowTriggerCallbackUrlRelativePathParametersList =
+  WsdlServiceEndpointQualifiedNamesList as any as S.Schema<WorkflowTriggerCallbackUrlRelativePathParametersList>;
+
 /** Gets the workflow trigger callback URL query parameters. */
 export interface WorkflowTriggerListCallbackUrlQueries {
   /** The api version. */
@@ -3353,6 +4686,11 @@ export interface WorkflowTriggerListCallbackUrlQueries {
   /** The SAS timestamp. */
   se?: string;
 }
+const WorkflowTriggerListCallbackUrlQueries = /*@__PURE__*/ __L.at(
+  __c30,
+  2,
+) as any as S.Schema<WorkflowTriggerListCallbackUrlQueries>;
+
 /** The workflow trigger callback URL. */
 export interface WorkflowTriggerCallbackUrl {
   /** Gets the workflow trigger callback URL. */
@@ -3368,6 +4706,11 @@ export interface WorkflowTriggerCallbackUrl {
   /** Gets the workflow trigger callback URL query parameters. */
   queries?: WorkflowTriggerListCallbackUrlQueries;
 }
+const WorkflowTriggerCallbackUrl = /*@__PURE__*/ __L.at(
+  __c30,
+  3,
+) as any as S.Schema<WorkflowTriggerCallbackUrl>;
+
 export interface ListIntegrationAccountAgreementsRequest {
   /** The subscription id. */
   subscriptionId: string;
@@ -3380,6 +4723,11 @@ export interface ListIntegrationAccountAgreementsRequest {
   /** The filter to apply on the operation. Options for filters include: AgreementType. */
   _filter?: string;
 }
+const ListIntegrationAccountAgreementsRequest = /*@__PURE__*/ __L.at(
+  __c30,
+  4,
+) as any as S.Schema<ListIntegrationAccountAgreementsRequest>;
+
 /** The resource tags. */
 export type IntegrationAccountAgreementTagsMap = { [key: string]: string | undefined };
 /** The integration account agreement. */
@@ -3397,8 +4745,16 @@ export interface IntegrationAccountAgreement {
   /** The integration account agreement properties. */
   properties: IntegrationAccountAgreementProperties;
 }
+const IntegrationAccountAgreement =
+  GetIntegrationAccountAgreementResponse as any as S.Schema<IntegrationAccountAgreement>;
+
 /** The list of integration account agreements. */
 export type IntegrationAccountAgreementListResultValueList = Array<IntegrationAccountAgreement>;
+const IntegrationAccountAgreementListResultValueList = /*@__PURE__*/ __L.at(
+  __c30,
+  5,
+) as any as S.Schema<IntegrationAccountAgreementListResultValueList>;
+
 /** The list of integration account agreements. */
 export interface IntegrationAccountAgreementListResult {
   /** The list of integration account agreements. */
@@ -3406,6 +4762,11 @@ export interface IntegrationAccountAgreementListResult {
   /** The URL to get the next set of results. */
   nextLink?: string;
 }
+const IntegrationAccountAgreementListResult = /*@__PURE__*/ __L.at(
+  __c30,
+  6,
+) as any as S.Schema<IntegrationAccountAgreementListResult>;
+
 export interface ListIntegrationAccountAssembliesRequest {
   /** The subscription id. */
   subscriptionId: string;
@@ -3414,8 +4775,16 @@ export interface ListIntegrationAccountAssembliesRequest {
   /** The integration account name. */
   integrationAccountName: string;
 }
+const ListIntegrationAccountAssembliesRequest = /*@__PURE__*/ __L.at(
+  __c30,
+  7,
+) as any as S.Schema<ListIntegrationAccountAssembliesRequest>;
+
 /** The resource tags. */
 export type AssemblyDefinitionTagsMap = { [key: string]: string | undefined };
+const AssemblyDefinitionTagsMap =
+  GetIntegrationAccountResponseTagsMap as any as S.Schema<AssemblyDefinitionTagsMap>;
+
 /** The assembly definition. */
 export interface AssemblyDefinition {
   /** The resource id. */
@@ -3431,11 +4800,20 @@ export interface AssemblyDefinition {
   /** The assembly properties. */
   properties: AssemblyProperties;
 }
+const AssemblyDefinition = /*@__PURE__*/ __L.at(__c31, 0) as any as S.Schema<AssemblyDefinition>;
+
 export type AssemblyCollectionValueList = Array<AssemblyDefinition>;
+const AssemblyCollectionValueList = /*@__PURE__*/ __L.at(
+  __c31,
+  1,
+) as any as S.Schema<AssemblyCollectionValueList>;
+
 /** A collection of assembly definitions. */
 export interface AssemblyCollection {
   value?: AssemblyCollectionValueList;
 }
+const AssemblyCollection = /*@__PURE__*/ __L.at(__c31, 2) as any as S.Schema<AssemblyCollection>;
+
 export interface ListIntegrationAccountAssemblyContentCallbackUrlRequest {
   /** The subscription id. */
   subscriptionId: string;
@@ -3446,6 +4824,11 @@ export interface ListIntegrationAccountAssemblyContentCallbackUrlRequest {
   /** The assembly artifact name. */
   assemblyArtifactName: string;
 }
+const ListIntegrationAccountAssemblyContentCallbackUrlRequest = /*@__PURE__*/ __L.at(
+  __c31,
+  3,
+) as any as S.Schema<ListIntegrationAccountAssemblyContentCallbackUrlRequest>;
+
 export interface ListIntegrationAccountBatchConfigurationsRequest {
   /** The subscription id. */
   subscriptionId: string;
@@ -3454,8 +4837,16 @@ export interface ListIntegrationAccountBatchConfigurationsRequest {
   /** The integration account name. */
   integrationAccountName: string;
 }
+const ListIntegrationAccountBatchConfigurationsRequest = /*@__PURE__*/ __L.at(
+  __c31,
+  4,
+) as any as S.Schema<ListIntegrationAccountBatchConfigurationsRequest>;
+
 /** The resource tags. */
 export type BatchConfigurationTagsMap = { [key: string]: string | undefined };
+const BatchConfigurationTagsMap =
+  GetIntegrationAccountResponseTagsMap as any as S.Schema<BatchConfigurationTagsMap>;
+
 /** The batch configuration resource definition. */
 export interface BatchConfiguration {
   /** The resource id. */
@@ -3471,11 +4862,23 @@ export interface BatchConfiguration {
   /** The batch configuration properties. */
   properties: BatchConfigurationProperties;
 }
+const BatchConfiguration = /*@__PURE__*/ __L.at(__c31, 5) as any as S.Schema<BatchConfiguration>;
+
 export type BatchConfigurationCollectionValueList = Array<BatchConfiguration>;
+const BatchConfigurationCollectionValueList = /*@__PURE__*/ __L.at(
+  __c31,
+  6,
+) as any as S.Schema<BatchConfigurationCollectionValueList>;
+
 /** A collection of batch configurations. */
 export interface BatchConfigurationCollection {
   value?: BatchConfigurationCollectionValueList;
 }
+const BatchConfigurationCollection = /*@__PURE__*/ __L.at(
+  __c31,
+  7,
+) as any as S.Schema<BatchConfigurationCollection>;
+
 export interface ListIntegrationAccountByResourceGroupRequest {
   /** The subscription id. */
   subscriptionId: string;
@@ -3484,8 +4887,16 @@ export interface ListIntegrationAccountByResourceGroupRequest {
   /** The number of items to be included in the result. */
   _top?: number;
 }
+const ListIntegrationAccountByResourceGroupRequest = /*@__PURE__*/ __L.at(
+  __c32,
+  0,
+) as any as S.Schema<ListIntegrationAccountByResourceGroupRequest>;
+
 /** The resource tags. */
 export type IntegrationAccountTagsMap = { [key: string]: string | undefined };
+const IntegrationAccountTagsMap =
+  GetIntegrationAccountResponseTagsMap as any as S.Schema<IntegrationAccountTagsMap>;
+
 /** The integration account. */
 export interface IntegrationAccount {
   /** The resource id. */
@@ -3503,8 +4914,15 @@ export interface IntegrationAccount {
   /** The sku. */
   sku?: IntegrationAccountSku;
 }
+const IntegrationAccount = /*@__PURE__*/ __L.at(__c32, 1) as any as S.Schema<IntegrationAccount>;
+
 /** The list of integration accounts. */
 export type IntegrationAccountListResultValueList = Array<IntegrationAccount>;
+const IntegrationAccountListResultValueList = /*@__PURE__*/ __L.at(
+  __c32,
+  2,
+) as any as S.Schema<IntegrationAccountListResultValueList>;
+
 /** The list of integration accounts. */
 export interface IntegrationAccountListResult {
   /** The list of integration accounts. */
@@ -3512,12 +4930,22 @@ export interface IntegrationAccountListResult {
   /** The URL to get the next set of results. */
   nextLink?: string;
 }
+const IntegrationAccountListResult = /*@__PURE__*/ __L.at(
+  __c32,
+  3,
+) as any as S.Schema<IntegrationAccountListResult>;
+
 export interface ListIntegrationAccountBySubscriptionRequest {
   /** The subscription id. */
   subscriptionId: string;
   /** The number of items to be included in the result. */
   _top?: number;
 }
+const ListIntegrationAccountBySubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c32,
+  4,
+) as any as S.Schema<ListIntegrationAccountBySubscriptionRequest>;
+
 export interface ListIntegrationAccountCallbackUrlRequest {
   /** The subscription id. */
   subscriptionId: string;
@@ -3530,11 +4958,18 @@ export interface ListIntegrationAccountCallbackUrlRequest {
   /** The key type. */
   keyType?: KeyType | (string & {});
 }
+const ListIntegrationAccountCallbackUrlRequest = /*@__PURE__*/ __L.at(
+  __c32,
+  5,
+) as any as S.Schema<ListIntegrationAccountCallbackUrlRequest>;
+
 /** The callback url. */
 export interface CallbackUrl {
   /** The URL value. */
   value?: string;
 }
+const CallbackUrl = /*@__PURE__*/ __L.at(__c32, 6) as any as S.Schema<CallbackUrl>;
+
 export interface ListIntegrationAccountCertificatesRequest {
   /** The subscription id. */
   subscriptionId: string;
@@ -3545,6 +4980,11 @@ export interface ListIntegrationAccountCertificatesRequest {
   /** The number of items to be included in the result. */
   _top?: number;
 }
+const ListIntegrationAccountCertificatesRequest = /*@__PURE__*/ __L.at(
+  __c32,
+  7,
+) as any as S.Schema<ListIntegrationAccountCertificatesRequest>;
+
 /** The resource tags. */
 export type IntegrationAccountCertificateTagsMap = { [key: string]: string | undefined };
 /** The integration account certificate. */
@@ -3562,8 +5002,16 @@ export interface IntegrationAccountCertificate {
   /** The integration account certificate properties. */
   properties: IntegrationAccountCertificateProperties;
 }
+const IntegrationAccountCertificate =
+  GetIntegrationAccountCertificateResponse as any as S.Schema<IntegrationAccountCertificate>;
+
 /** The list of integration account certificates. */
 export type IntegrationAccountCertificateListResultValueList = Array<IntegrationAccountCertificate>;
+const IntegrationAccountCertificateListResultValueList = /*@__PURE__*/ __L.at(
+  __c33,
+  0,
+) as any as S.Schema<IntegrationAccountCertificateListResultValueList>;
+
 /** The list of integration account certificates. */
 export interface IntegrationAccountCertificateListResult {
   /** The list of integration account certificates. */
@@ -3571,6 +5019,11 @@ export interface IntegrationAccountCertificateListResult {
   /** The URL to get the next set of results. */
   nextLink?: string;
 }
+const IntegrationAccountCertificateListResult = /*@__PURE__*/ __L.at(
+  __c33,
+  1,
+) as any as S.Schema<IntegrationAccountCertificateListResult>;
+
 /** The key vault reference. */
 export type KeyVaultReferenceInput = KeyVaultKeyReferenceInputKeyVault;
 export interface ListIntegrationAccountKeyVaultKeysRequest {
@@ -3585,6 +5038,11 @@ export interface ListIntegrationAccountKeyVaultKeysRequest {
   /** The skip token. */
   skipToken?: string;
 }
+const ListIntegrationAccountKeyVaultKeysRequest = /*@__PURE__*/ __L.at(
+  __c33,
+  2,
+) as any as S.Schema<ListIntegrationAccountKeyVaultKeysRequest>;
+
 /** The key attributes. */
 export interface KeyVaultKeyAttributes {
   /** Whether the key is enabled or not. */
@@ -3594,6 +5052,11 @@ export interface KeyVaultKeyAttributes {
   /** When the key was updated. */
   updated?: number;
 }
+const KeyVaultKeyAttributes = /*@__PURE__*/ __L.at(
+  __c33,
+  3,
+) as any as S.Schema<KeyVaultKeyAttributes>;
+
 /** The key vault key. */
 export interface KeyVaultKey {
   /** The key id. */
@@ -3601,8 +5064,15 @@ export interface KeyVaultKey {
   /** The key attributes. */
   attributes?: KeyVaultKeyAttributes;
 }
+const KeyVaultKey = /*@__PURE__*/ __L.at(__c33, 4) as any as S.Schema<KeyVaultKey>;
+
 /** The key vault keys. */
 export type KeyVaultKeyCollectionValueList = Array<KeyVaultKey>;
+const KeyVaultKeyCollectionValueList = /*@__PURE__*/ __L.at(
+  __c33,
+  5,
+) as any as S.Schema<KeyVaultKeyCollectionValueList>;
+
 /** Collection of key vault keys. */
 export interface KeyVaultKeyCollection {
   /** The key vault keys. */
@@ -3610,6 +5080,11 @@ export interface KeyVaultKeyCollection {
   /** The skip token. */
   skipToken?: string;
 }
+const KeyVaultKeyCollection = /*@__PURE__*/ __L.at(
+  __c33,
+  6,
+) as any as S.Schema<KeyVaultKeyCollection>;
+
 export interface ListIntegrationAccountMapContentCallbackUrlRequest {
   /** The subscription id. */
   subscriptionId: string;
@@ -3624,6 +5099,11 @@ export interface ListIntegrationAccountMapContentCallbackUrlRequest {
   /** The key type. */
   keyType?: KeyType | (string & {});
 }
+const ListIntegrationAccountMapContentCallbackUrlRequest = /*@__PURE__*/ __L.at(
+  __c33,
+  7,
+) as any as S.Schema<ListIntegrationAccountMapContentCallbackUrlRequest>;
+
 export interface ListIntegrationAccountMapsRequest {
   /** The subscription id. */
   subscriptionId: string;
@@ -3636,8 +5116,16 @@ export interface ListIntegrationAccountMapsRequest {
   /** The filter to apply on the operation. Options for filters include: MapType. */
   _filter?: string;
 }
+const ListIntegrationAccountMapsRequest = /*@__PURE__*/ __L.at(
+  __c34,
+  0,
+) as any as S.Schema<ListIntegrationAccountMapsRequest>;
+
 /** The resource tags. */
 export type IntegrationAccountMapTagsMap = { [key: string]: string | undefined };
+const IntegrationAccountMapTagsMap =
+  GetIntegrationAccountResponseTagsMap as any as S.Schema<IntegrationAccountMapTagsMap>;
+
 /** The integration account map. */
 export interface IntegrationAccountMap {
   /** The resource id. */
@@ -3653,8 +5141,18 @@ export interface IntegrationAccountMap {
   /** The integration account map properties. */
   properties: IntegrationAccountMapProperties;
 }
+const IntegrationAccountMap = /*@__PURE__*/ __L.at(
+  __c34,
+  1,
+) as any as S.Schema<IntegrationAccountMap>;
+
 /** The list of integration account maps. */
 export type IntegrationAccountMapListResultValueList = Array<IntegrationAccountMap>;
+const IntegrationAccountMapListResultValueList = /*@__PURE__*/ __L.at(
+  __c34,
+  2,
+) as any as S.Schema<IntegrationAccountMapListResultValueList>;
+
 /** The list of integration account maps. */
 export interface IntegrationAccountMapListResult {
   /** The list of integration account maps. */
@@ -3662,6 +5160,11 @@ export interface IntegrationAccountMapListResult {
   /** The URL to get the next set of results. */
   nextLink?: string;
 }
+const IntegrationAccountMapListResult = /*@__PURE__*/ __L.at(
+  __c34,
+  3,
+) as any as S.Schema<IntegrationAccountMapListResult>;
+
 export interface ListIntegrationAccountPartnerContentCallbackUrlRequest {
   /** The subscription id. */
   subscriptionId: string;
@@ -3676,6 +5179,11 @@ export interface ListIntegrationAccountPartnerContentCallbackUrlRequest {
   /** The key type. */
   keyType?: KeyType | (string & {});
 }
+const ListIntegrationAccountPartnerContentCallbackUrlRequest = /*@__PURE__*/ __L.at(
+  __c34,
+  4,
+) as any as S.Schema<ListIntegrationAccountPartnerContentCallbackUrlRequest>;
+
 export interface ListIntegrationAccountPartnersRequest {
   /** The subscription id. */
   subscriptionId: string;
@@ -3688,6 +5196,11 @@ export interface ListIntegrationAccountPartnersRequest {
   /** The filter to apply on the operation. Options for filters include: PartnerType. */
   _filter?: string;
 }
+const ListIntegrationAccountPartnersRequest = /*@__PURE__*/ __L.at(
+  __c34,
+  5,
+) as any as S.Schema<ListIntegrationAccountPartnersRequest>;
+
 /** The resource tags. */
 export type IntegrationAccountPartnerTagsMap = { [key: string]: string | undefined };
 /** The integration account partner. */
@@ -3705,8 +5218,16 @@ export interface IntegrationAccountPartner {
   /** The integration account partner properties. */
   properties: IntegrationAccountPartnerProperties;
 }
+const IntegrationAccountPartner =
+  GetIntegrationAccountPartnerResponse as any as S.Schema<IntegrationAccountPartner>;
+
 /** The list of integration account partners. */
 export type IntegrationAccountPartnerListResultValueList = Array<IntegrationAccountPartner>;
+const IntegrationAccountPartnerListResultValueList = /*@__PURE__*/ __L.at(
+  __c34,
+  6,
+) as any as S.Schema<IntegrationAccountPartnerListResultValueList>;
+
 /** The list of integration account partners. */
 export interface IntegrationAccountPartnerListResult {
   /** The list of integration account partners. */
@@ -3714,6 +5235,11 @@ export interface IntegrationAccountPartnerListResult {
   /** The URL to get the next set of results. */
   nextLink?: string;
 }
+const IntegrationAccountPartnerListResult = /*@__PURE__*/ __L.at(
+  __c34,
+  7,
+) as any as S.Schema<IntegrationAccountPartnerListResult>;
+
 export interface ListIntegrationAccountSchemaContentCallbackUrlRequest {
   /** The subscription id. */
   subscriptionId: string;
@@ -3728,6 +5254,11 @@ export interface ListIntegrationAccountSchemaContentCallbackUrlRequest {
   /** The key type. */
   keyType?: KeyType | (string & {});
 }
+const ListIntegrationAccountSchemaContentCallbackUrlRequest = /*@__PURE__*/ __L.at(
+  __c35,
+  0,
+) as any as S.Schema<ListIntegrationAccountSchemaContentCallbackUrlRequest>;
+
 export interface ListIntegrationAccountSchemasRequest {
   /** The subscription id. */
   subscriptionId: string;
@@ -3740,8 +5271,16 @@ export interface ListIntegrationAccountSchemasRequest {
   /** The filter to apply on the operation. Options for filters include: SchemaType. */
   _filter?: string;
 }
+const ListIntegrationAccountSchemasRequest = /*@__PURE__*/ __L.at(
+  __c35,
+  1,
+) as any as S.Schema<ListIntegrationAccountSchemasRequest>;
+
 /** The resource tags. */
 export type IntegrationAccountSchemaTagsMap = { [key: string]: string | undefined };
+const IntegrationAccountSchemaTagsMap =
+  GetIntegrationAccountResponseTagsMap as any as S.Schema<IntegrationAccountSchemaTagsMap>;
+
 /** The integration account schema. */
 export interface IntegrationAccountSchema {
   /** The resource id. */
@@ -3757,8 +5296,18 @@ export interface IntegrationAccountSchema {
   /** The integration account schema properties. */
   properties: IntegrationAccountSchemaProperties;
 }
+const IntegrationAccountSchema = /*@__PURE__*/ __L.at(
+  __c35,
+  2,
+) as any as S.Schema<IntegrationAccountSchema>;
+
 /** The list of integration account schemas. */
 export type IntegrationAccountSchemaListResultValueList = Array<IntegrationAccountSchema>;
+const IntegrationAccountSchemaListResultValueList = /*@__PURE__*/ __L.at(
+  __c35,
+  3,
+) as any as S.Schema<IntegrationAccountSchemaListResultValueList>;
+
 /** The list of integration account schemas. */
 export interface IntegrationAccountSchemaListResult {
   /** The list of integration account schemas. */
@@ -3766,6 +5315,11 @@ export interface IntegrationAccountSchemaListResult {
   /** The URL to get the next set of results. */
   nextLink?: string;
 }
+const IntegrationAccountSchemaListResult = /*@__PURE__*/ __L.at(
+  __c35,
+  4,
+) as any as S.Schema<IntegrationAccountSchemaListResult>;
+
 export interface ListIntegrationAccountSessionsRequest {
   /** The subscription id. */
   subscriptionId: string;
@@ -3778,6 +5332,11 @@ export interface ListIntegrationAccountSessionsRequest {
   /** The filter to apply on the operation. Options for filters include: ChangedTime. */
   _filter?: string;
 }
+const ListIntegrationAccountSessionsRequest = /*@__PURE__*/ __L.at(
+  __c35,
+  5,
+) as any as S.Schema<ListIntegrationAccountSessionsRequest>;
+
 /** The resource tags. */
 export type IntegrationAccountSessionTagsMap = { [key: string]: string | undefined };
 /** The integration account session. */
@@ -3795,8 +5354,16 @@ export interface IntegrationAccountSession {
   /** The integration account session properties. */
   properties: IntegrationAccountSessionProperties;
 }
+const IntegrationAccountSession =
+  GetIntegrationAccountSessionResponse as any as S.Schema<IntegrationAccountSession>;
+
 /** The list of integration account sessions. */
 export type IntegrationAccountSessionListResultValueList = Array<IntegrationAccountSession>;
+const IntegrationAccountSessionListResultValueList = /*@__PURE__*/ __L.at(
+  __c35,
+  6,
+) as any as S.Schema<IntegrationAccountSessionListResultValueList>;
+
 /** The list of integration account sessions. */
 export interface IntegrationAccountSessionListResult {
   /** The list of integration account sessions. */
@@ -3804,6 +5371,11 @@ export interface IntegrationAccountSessionListResult {
   /** The URL to get the next set of results. */
   nextLink?: string;
 }
+const IntegrationAccountSessionListResult = /*@__PURE__*/ __L.at(
+  __c35,
+  7,
+) as any as S.Schema<IntegrationAccountSessionListResult>;
+
 export interface ListIntegrationServiceEnvironmentByResourceGroupRequest {
   /** The subscription id. */
   subscriptionId: string;
@@ -3812,6 +5384,11 @@ export interface ListIntegrationServiceEnvironmentByResourceGroupRequest {
   /** The number of items to be included in the result. */
   _top?: number;
 }
+const ListIntegrationServiceEnvironmentByResourceGroupRequest = /*@__PURE__*/ __L.at(
+  __c36,
+  0,
+) as any as S.Schema<ListIntegrationServiceEnvironmentByResourceGroupRequest>;
+
 /** The resource tags. */
 export type IntegrationServiceEnvironmentTagsMap = { [key: string]: string | undefined };
 /** The integration service environment. */
@@ -3832,19 +5409,37 @@ export interface IntegrationServiceEnvironment {
   sku?: IntegrationServiceEnvironmentSku;
   identity?: ManagedServiceIdentity;
 }
+const IntegrationServiceEnvironment =
+  GetIntegrationServiceEnvironmentResponse as any as S.Schema<IntegrationServiceEnvironment>;
+
 export type IntegrationServiceEnvironmentListResultValueList = Array<IntegrationServiceEnvironment>;
+const IntegrationServiceEnvironmentListResultValueList = /*@__PURE__*/ __L.at(
+  __c36,
+  1,
+) as any as S.Schema<IntegrationServiceEnvironmentListResultValueList>;
+
 /** The list of integration service environments. */
 export interface IntegrationServiceEnvironmentListResult {
   value?: IntegrationServiceEnvironmentListResultValueList;
   /** The URL to get the next set of results. */
   nextLink?: string;
 }
+const IntegrationServiceEnvironmentListResult = /*@__PURE__*/ __L.at(
+  __c36,
+  2,
+) as any as S.Schema<IntegrationServiceEnvironmentListResult>;
+
 export interface ListIntegrationServiceEnvironmentBySubscriptionRequest {
   /** The subscription id. */
   subscriptionId: string;
   /** The number of items to be included in the result. */
   _top?: number;
 }
+const ListIntegrationServiceEnvironmentBySubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c36,
+  3,
+) as any as S.Schema<ListIntegrationServiceEnvironmentBySubscriptionRequest>;
+
 export interface ListIntegrationServiceEnvironmentManagedApiOperationsRequest {
   /** The subscription id. */
   subscriptionId: string;
@@ -3855,10 +5450,20 @@ export interface ListIntegrationServiceEnvironmentManagedApiOperationsRequest {
   /** The api name. */
   apiName: string;
 }
+const ListIntegrationServiceEnvironmentManagedApiOperationsRequest = /*@__PURE__*/ __L.at(
+  __c36,
+  4,
+) as any as S.Schema<ListIntegrationServiceEnvironmentManagedApiOperationsRequest>;
+
 /** The resource tags. */
 export type ApiOperationTagsMap = { [key: string]: string | undefined };
+const ApiOperationTagsMap =
+  GetIntegrationAccountResponseTagsMap as any as S.Schema<ApiOperationTagsMap>;
+
 /** The status annotation. */
 export type StatusAnnotation = "NotSpecified" | "Preview" | "Production";
+const StatusAnnotation = S.String;
+
 /** The Api Operation Annotation. */
 export interface ApiOperationAnnotation {
   status?: StatusAnnotation;
@@ -3867,6 +5472,11 @@ export interface ApiOperationAnnotation {
   /** The revision. */
   revision?: number;
 }
+const ApiOperationAnnotation = /*@__PURE__*/ __L.at(
+  __c36,
+  5,
+) as any as S.Schema<ApiOperationAnnotation>;
+
 /** The Api reference. */
 export interface ApiReference {
   /** The resource id. */
@@ -3890,6 +5500,8 @@ export interface ApiReference {
   /** The integration service environment reference. */
   integrationServiceEnvironment?: ResourceReference;
 }
+const ApiReference = /*@__PURE__*/ __L.at(__c36, 6) as any as S.Schema<ApiReference>;
+
 /** The swagger schema type. */
 export type SwaggerSchemaType =
   | "String"
@@ -3900,14 +5512,34 @@ export type SwaggerSchemaType =
   | "File"
   | "Object"
   | "Null";
+const SwaggerSchemaType = S.String;
+
 /** The object properties */
 export type SwaggerSchemaPropertiesMap = { [key: string]: SwaggerSchema | undefined };
+const SwaggerSchemaPropertiesMap = /*@__PURE__*/ __L.at(
+  __c36,
+  7,
+) as any as S.Schema<SwaggerSchemaPropertiesMap>;
+
 /** The object required properties. */
 export type SwaggerSchemaRequiredList = Array<string>;
+const SwaggerSchemaRequiredList =
+  WsdlServiceEndpointQualifiedNamesList as any as S.Schema<SwaggerSchemaRequiredList>;
+
 /** The schemas which must pass validation when this schema is used. */
 export type SwaggerSchemaAllOfList = Array<SwaggerSchema>;
+const SwaggerSchemaAllOfList = /*@__PURE__*/ __L.at(
+  __c37,
+  0,
+) as any as S.Schema<SwaggerSchemaAllOfList>;
+
 /** The vendor extensions. */
 export type SwaggerXmlExtensionsMap = { [key: string]: unknown | undefined };
+const SwaggerXmlExtensionsMap = /*@__PURE__*/ __L.at(
+  __c37,
+  1,
+) as any as S.Schema<SwaggerXmlExtensionsMap>;
+
 /** The Swagger XML. */
 export interface SwaggerXml {
   /** The xml element or attribute name. */
@@ -3923,8 +5555,13 @@ export interface SwaggerXml {
   /** The vendor extensions. */
   extensions?: SwaggerXmlExtensionsMap;
 }
+const SwaggerXml = /*@__PURE__*/ __L.at(__c37, 2) as any as S.Schema<SwaggerXml>;
+
 /** The vendor extensions. */
 export type SwaggerExternalDocumentationExtensionsMap = { [key: string]: unknown | undefined };
+const SwaggerExternalDocumentationExtensionsMap =
+  SwaggerXmlExtensionsMap as any as S.Schema<SwaggerExternalDocumentationExtensionsMap>;
+
 /** The swagger external documentation */
 export interface SwaggerExternalDocumentation {
   /** The document description. */
@@ -3934,8 +5571,16 @@ export interface SwaggerExternalDocumentation {
   /** The vendor extensions. */
   extensions?: SwaggerExternalDocumentationExtensionsMap;
 }
+const SwaggerExternalDocumentation = /*@__PURE__*/ __L.at(
+  __c37,
+  3,
+) as any as S.Schema<SwaggerExternalDocumentation>;
+
 /** The operation parameters. */
 export type SwaggerCustomDynamicSchemaParametersMap = { [key: string]: unknown | undefined };
+const SwaggerCustomDynamicSchemaParametersMap =
+  SwaggerXmlExtensionsMap as any as S.Schema<SwaggerCustomDynamicSchemaParametersMap>;
+
 /** The swagger custom dynamic schema. */
 export interface SwaggerCustomDynamicSchema {
   /** The operation id to fetch dynamic schema. */
@@ -3945,10 +5590,20 @@ export interface SwaggerCustomDynamicSchema {
   /** The operation parameters. */
   parameters?: SwaggerCustomDynamicSchemaParametersMap;
 }
+const SwaggerCustomDynamicSchema = /*@__PURE__*/ __L.at(
+  __c37,
+  4,
+) as any as S.Schema<SwaggerCustomDynamicSchema>;
+
 /** The operation parameters. */
 export type SwaggerCustomDynamicPropertiesParametersMap = {
   [key: string]: SwaggerCustomDynamicProperties | undefined;
 };
+const SwaggerCustomDynamicPropertiesParametersMap = /*@__PURE__*/ __L.at(
+  __c37,
+  5,
+) as any as S.Schema<SwaggerCustomDynamicPropertiesParametersMap>;
+
 /** The swagger custom dynamic properties. */
 export interface SwaggerCustomDynamicProperties {
   /** The operation id to fetch dynamic schema. */
@@ -3958,10 +5613,20 @@ export interface SwaggerCustomDynamicProperties {
   /** The operation parameters. */
   parameters?: SwaggerCustomDynamicPropertiesParametersMap;
 }
+const SwaggerCustomDynamicProperties = /*@__PURE__*/ __L.at(
+  __c37,
+  6,
+) as any as S.Schema<SwaggerCustomDynamicProperties>;
+
 /** The parameters. */
 export type SwaggerCustomDynamicListParametersMap = {
   [key: string]: SwaggerCustomDynamicProperties | undefined;
 };
+const SwaggerCustomDynamicListParametersMap = /*@__PURE__*/ __L.at(
+  __c37,
+  7,
+) as any as S.Schema<SwaggerCustomDynamicListParametersMap>;
+
 /** The swagger custom dynamic list. */
 export interface SwaggerCustomDynamicList {
   /** The operation id to fetch dynamic schema. */
@@ -3977,6 +5642,11 @@ export interface SwaggerCustomDynamicList {
   /** The parameters. */
   parameters?: SwaggerCustomDynamicListParametersMap;
 }
+const SwaggerCustomDynamicList = /*@__PURE__*/ __L.at(
+  __c38,
+  0,
+) as any as S.Schema<SwaggerCustomDynamicList>;
+
 /** The swagger custom dynamic tree settings. */
 export interface SwaggerCustomDynamicTreeSettings {
   /** Indicates whether parent nodes can be selected. */
@@ -3984,6 +5654,11 @@ export interface SwaggerCustomDynamicTreeSettings {
   /** Indicates whether leaf nodes can be selected. */
   CanSelectLeafNodes?: boolean;
 }
+const SwaggerCustomDynamicTreeSettings = /*@__PURE__*/ __L.at(
+  __c38,
+  1,
+) as any as S.Schema<SwaggerCustomDynamicTreeSettings>;
+
 /** The swagger custom dynamic tree parameter. */
 export interface SwaggerCustomDynamicTreeParameter {
   /** Gets or sets a path to a property in the currently selected item to pass as a value to a parameter for the given operation. */
@@ -3995,9 +5670,19 @@ export interface SwaggerCustomDynamicTreeParameter {
   /** Indicates whether the parameter is required. */
   required?: boolean;
 }
+const SwaggerCustomDynamicTreeParameter = /*@__PURE__*/ __L.at(
+  __c38,
+  2,
+) as any as S.Schema<SwaggerCustomDynamicTreeParameter>;
+
 export type SwaggerCustomDynamicTreeCommandParametersMap = {
   [key: string]: SwaggerCustomDynamicTreeParameter | undefined;
 };
+const SwaggerCustomDynamicTreeCommandParametersMap = /*@__PURE__*/ __L.at(
+  __c38,
+  3,
+) as any as S.Schema<SwaggerCustomDynamicTreeCommandParametersMap>;
+
 /** The swagger tree command. */
 export interface SwaggerCustomDynamicTreeCommand {
   /** The path to an item property which defines the display name of the item. */
@@ -4016,6 +5701,11 @@ export interface SwaggerCustomDynamicTreeCommand {
   selectableFilter?: string;
   parameters?: SwaggerCustomDynamicTreeCommandParametersMap;
 }
+const SwaggerCustomDynamicTreeCommand = /*@__PURE__*/ __L.at(
+  __c38,
+  4,
+) as any as S.Schema<SwaggerCustomDynamicTreeCommand>;
+
 /** The swagger custom dynamic tree. */
 export interface SwaggerCustomDynamicTree {
   /** The tree settings */
@@ -4025,6 +5715,11 @@ export interface SwaggerCustomDynamicTree {
   /** The tree on-browse configuration */
   browse?: SwaggerCustomDynamicTreeCommand;
 }
+const SwaggerCustomDynamicTree = /*@__PURE__*/ __L.at(
+  __c38,
+  5,
+) as any as S.Schema<SwaggerCustomDynamicTree>;
+
 /** The swagger schema. */
 export interface SwaggerSchema {
   /** The reference. */
@@ -4068,10 +5763,17 @@ export interface SwaggerSchema {
   /** The dynamic values tree configuration. */
   dynamicTree?: SwaggerCustomDynamicTree;
 }
+const SwaggerSchema = /*@__PURE__*/ __L.at(__c38, 6) as any as S.Schema<SwaggerSchema>;
+
 /** The operation responses definition schemas. */
 export type ApiOperationPropertiesDefinitionResponsesDefinitionMap = {
   [key: string]: SwaggerSchema | undefined;
 };
+const ApiOperationPropertiesDefinitionResponsesDefinitionMap = /*@__PURE__*/ __L.at(
+  __c38,
+  7,
+) as any as S.Schema<ApiOperationPropertiesDefinitionResponsesDefinitionMap>;
+
 /** The api operations properties */
 export interface ApiOperationPropertiesDefinition {
   /** The summary of the api operation. */
@@ -4099,6 +5801,11 @@ export interface ApiOperationPropertiesDefinition {
   /** Indicates whether the API operation is notification or not. */
   isNotification?: boolean;
 }
+const ApiOperationPropertiesDefinition = /*@__PURE__*/ __L.at(
+  __c39,
+  0,
+) as any as S.Schema<ApiOperationPropertiesDefinition>;
+
 /** The api operation. */
 export interface ApiOperation {
   /** The resource id. */
@@ -4113,8 +5820,15 @@ export interface ApiOperation {
   tags?: ApiOperationTagsMap;
   properties?: ApiOperationPropertiesDefinition;
 }
+const ApiOperation = /*@__PURE__*/ __L.at(__c39, 1) as any as S.Schema<ApiOperation>;
+
 /** The api operation definitions for an API. */
 export type ApiOperationListResultValueList = Array<ApiOperation>;
+const ApiOperationListResultValueList = /*@__PURE__*/ __L.at(
+  __c39,
+  2,
+) as any as S.Schema<ApiOperationListResultValueList>;
+
 /** The list of managed API operations. */
 export interface ApiOperationListResult {
   /** The api operation definitions for an API. */
@@ -4122,6 +5836,11 @@ export interface ApiOperationListResult {
   /** The URL to get the next set of results. */
   nextLink?: string;
 }
+const ApiOperationListResult = /*@__PURE__*/ __L.at(
+  __c39,
+  3,
+) as any as S.Schema<ApiOperationListResult>;
+
 export interface ListIntegrationServiceEnvironmentManagedApisRequest {
   /** The subscription id. */
   subscriptionId: string;
@@ -4130,6 +5849,11 @@ export interface ListIntegrationServiceEnvironmentManagedApisRequest {
   /** The integration service environment name. */
   integrationServiceEnvironmentName: string;
 }
+const ListIntegrationServiceEnvironmentManagedApisRequest = /*@__PURE__*/ __L.at(
+  __c39,
+  4,
+) as any as S.Schema<ListIntegrationServiceEnvironmentManagedApisRequest>;
+
 /** The resource tags. */
 export type IntegrationServiceEnvironmentManagedApiTagsMap = { [key: string]: string | undefined };
 /** The integration service environment managed api. */
@@ -4147,9 +5871,17 @@ export interface IntegrationServiceEnvironmentManagedApi {
   /** The integration service environment managed api properties. */
   properties?: IntegrationServiceEnvironmentManagedApiProperties;
 }
+const IntegrationServiceEnvironmentManagedApi =
+  GetIntegrationServiceEnvironmentManagedApisResponse as any as S.Schema<IntegrationServiceEnvironmentManagedApi>;
+
 /** The integration service environment managed APIs. */
 export type IntegrationServiceEnvironmentManagedApiListResultValueList =
   Array<IntegrationServiceEnvironmentManagedApi>;
+const IntegrationServiceEnvironmentManagedApiListResultValueList = /*@__PURE__*/ __L.at(
+  __c39,
+  5,
+) as any as S.Schema<IntegrationServiceEnvironmentManagedApiListResultValueList>;
+
 /** The list of integration service environment managed APIs. */
 export interface IntegrationServiceEnvironmentManagedApiListResult {
   /** The integration service environment managed APIs. */
@@ -4157,6 +5889,11 @@ export interface IntegrationServiceEnvironmentManagedApiListResult {
   /** The URL to get the next set of results. */
   nextLink?: string;
 }
+const IntegrationServiceEnvironmentManagedApiListResult = /*@__PURE__*/ __L.at(
+  __c39,
+  6,
+) as any as S.Schema<IntegrationServiceEnvironmentManagedApiListResult>;
+
 export interface ListIntegrationServiceEnvironmentSkusRequest {
   /** The subscription id. */
   subscriptionId: string;
@@ -4165,6 +5902,11 @@ export interface ListIntegrationServiceEnvironmentSkusRequest {
   /** The integration service environment name. */
   integrationServiceEnvironmentName: string;
 }
+const ListIntegrationServiceEnvironmentSkusRequest = /*@__PURE__*/ __L.at(
+  __c39,
+  7,
+) as any as S.Schema<ListIntegrationServiceEnvironmentSkusRequest>;
+
 /** The sku. */
 export interface IntegrationServiceEnvironmentSkuDefinitionSku {
   /** The sku name. */
@@ -4172,8 +5914,15 @@ export interface IntegrationServiceEnvironmentSkuDefinitionSku {
   /** The sku tier. */
   tier?: string;
 }
+const IntegrationServiceEnvironmentSkuDefinitionSku = /*@__PURE__*/ __L.at(
+  __c40,
+  0,
+) as any as S.Schema<IntegrationServiceEnvironmentSkuDefinitionSku>;
+
 /** The integration service environment sku scale type. */
 export type IntegrationServiceEnvironmentSkuScaleType = "Manual" | "Automatic" | "None";
+const IntegrationServiceEnvironmentSkuScaleType = S.String;
+
 /** The integration service environment sku capacity. */
 export interface IntegrationServiceEnvironmentSkuCapacity {
   /** The minimum capacity. */
@@ -4185,6 +5934,11 @@ export interface IntegrationServiceEnvironmentSkuCapacity {
   /** The sku scale type. */
   scaleType?: IntegrationServiceEnvironmentSkuScaleType;
 }
+const IntegrationServiceEnvironmentSkuCapacity = /*@__PURE__*/ __L.at(
+  __c40,
+  1,
+) as any as S.Schema<IntegrationServiceEnvironmentSkuCapacity>;
+
 /** The integration service environment sku definition. */
 export interface IntegrationServiceEnvironmentSkuDefinition {
   /** The resource type. */
@@ -4194,9 +5948,19 @@ export interface IntegrationServiceEnvironmentSkuDefinition {
   /** The sku capacity. */
   capacity?: IntegrationServiceEnvironmentSkuCapacity;
 }
+const IntegrationServiceEnvironmentSkuDefinition = /*@__PURE__*/ __L.at(
+  __c40,
+  2,
+) as any as S.Schema<IntegrationServiceEnvironmentSkuDefinition>;
+
 /** The list of integration service environment skus. */
 export type IntegrationServiceEnvironmentSkuListValueList =
   Array<IntegrationServiceEnvironmentSkuDefinition>;
+const IntegrationServiceEnvironmentSkuListValueList = /*@__PURE__*/ __L.at(
+  __c40,
+  3,
+) as any as S.Schema<IntegrationServiceEnvironmentSkuListValueList>;
+
 /** The list of integration service environment skus. */
 export interface IntegrationServiceEnvironmentSkuList {
   /** The list of integration service environment skus. */
@@ -4204,7 +5968,17 @@ export interface IntegrationServiceEnvironmentSkuList {
   /** The URL to get the next set of results. */
   nextLink?: string;
 }
+const IntegrationServiceEnvironmentSkuList = /*@__PURE__*/ __L.at(
+  __c40,
+  4,
+) as any as S.Schema<IntegrationServiceEnvironmentSkuList>;
+
 export interface ListOperationsRequest {}
+const ListOperationsRequest = /*@__PURE__*/ __L.at(
+  __c40,
+  5,
+) as any as S.Schema<ListOperationsRequest>;
+
 /** The object that represents the operation. */
 export interface OperationDisplay {
   /** Service provider: Microsoft.Logic */
@@ -4216,6 +5990,8 @@ export interface OperationDisplay {
   /** Operation: description. */
   description?: string;
 }
+const OperationDisplay = /*@__PURE__*/ __L.at(__c40, 6) as any as S.Schema<OperationDisplay>;
+
 /** Logic REST API operation */
 export interface Operation {
   /** Operation: origin */
@@ -4227,8 +6003,15 @@ export interface Operation {
   /** The properties. */
   properties?: unknown;
 }
+const Operation = /*@__PURE__*/ __L.at(__c40, 7) as any as S.Schema<Operation>;
+
 /** List of Logic operations supported by the Logic resource provider. */
 export type OperationListResultValueList = Array<Operation>;
+const OperationListResultValueList = /*@__PURE__*/ __L.at(
+  __c41,
+  0,
+) as any as S.Schema<OperationListResultValueList>;
+
 /** Result of the request to list Logic operations. It contains a list of operations and a URL link to get the next set of results. */
 export interface OperationListResult {
   /** List of Logic operations supported by the Logic resource provider. */
@@ -4236,6 +6019,8 @@ export interface OperationListResult {
   /** URL to get the next set of operation list results if there are any. */
   nextLink?: string;
 }
+const OperationListResult = /*@__PURE__*/ __L.at(__c41, 1) as any as S.Schema<OperationListResult>;
+
 export interface ListWorkflowByResourceGroupRequest {
   /** The subscription id. */
   subscriptionId: string;
@@ -4246,6 +6031,11 @@ export interface ListWorkflowByResourceGroupRequest {
   /** The filter to apply on the operation. Options for filters include: State, Trigger, and ReferencedResourceId. */
   _filter?: string;
 }
+const ListWorkflowByResourceGroupRequest = /*@__PURE__*/ __L.at(
+  __c41,
+  2,
+) as any as S.Schema<ListWorkflowByResourceGroupRequest>;
+
 /** The resource tags. */
 export type WorkflowTagsMap = { [key: string]: string | undefined };
 /** The workflow type. */
@@ -4264,8 +6054,15 @@ export interface Workflow {
   properties?: WorkflowProperties;
   identity?: ManagedServiceIdentity;
 }
+const Workflow = GetWorkflowResponse as any as S.Schema<Workflow>;
+
 /** The list of workflows. */
 export type WorkflowListResultValueList = Array<Workflow>;
+const WorkflowListResultValueList = /*@__PURE__*/ __L.at(
+  __c41,
+  3,
+) as any as S.Schema<WorkflowListResultValueList>;
+
 /** The list of workflows. */
 export interface WorkflowListResult {
   /** The list of workflows. */
@@ -4273,6 +6070,8 @@ export interface WorkflowListResult {
   /** The URL to get the next set of results. */
   nextLink?: string;
 }
+const WorkflowListResult = /*@__PURE__*/ __L.at(__c41, 4) as any as S.Schema<WorkflowListResult>;
+
 export interface ListWorkflowBySubscriptionRequest {
   /** The subscription id. */
   subscriptionId: string;
@@ -4281,6 +6080,11 @@ export interface ListWorkflowBySubscriptionRequest {
   /** The filter to apply on the operation. Options for filters include: State, Trigger, and ReferencedResourceId. */
   _filter?: string;
 }
+const ListWorkflowBySubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c41,
+  5,
+) as any as S.Schema<ListWorkflowBySubscriptionRequest>;
+
 export interface ListWorkflowCallbackUrlRequest {
   /** The subscription id. */
   subscriptionId: string;
@@ -4293,6 +6097,11 @@ export interface ListWorkflowCallbackUrlRequest {
   /** The key type. */
   keyType?: KeyType | (string & {});
 }
+const ListWorkflowCallbackUrlRequest = /*@__PURE__*/ __L.at(
+  __c41,
+  6,
+) as any as S.Schema<ListWorkflowCallbackUrlRequest>;
+
 export interface ListWorkflowRunActionExpressionTracesRequest {
   /** The subscription id. */
   subscriptionId: string;
@@ -4305,10 +6114,25 @@ export interface ListWorkflowRunActionExpressionTracesRequest {
   /** The workflow action name. */
   actionName: string;
 }
+const ListWorkflowRunActionExpressionTracesRequest = /*@__PURE__*/ __L.at(
+  __c41,
+  7,
+) as any as S.Schema<ListWorkflowRunActionExpressionTracesRequest>;
+
 /** The sub expressions. */
 export type ExpressionSubexpressionsList = Array<Expression>;
+const ExpressionSubexpressionsList = /*@__PURE__*/ __L.at(
+  __c42,
+  0,
+) as any as S.Schema<ExpressionSubexpressionsList>;
+
 /** The error details. */
 export type AzureResourceErrorInfoDetailsList = Array<AzureResourceErrorInfo>;
+const AzureResourceErrorInfoDetailsList = /*@__PURE__*/ __L.at(
+  __c42,
+  1,
+) as any as S.Schema<AzureResourceErrorInfoDetailsList>;
+
 /** The azure resource error info. */
 export interface AzureResourceErrorInfo {
   /** The error code. */
@@ -4318,6 +6142,11 @@ export interface AzureResourceErrorInfo {
   /** The error details. */
   details?: AzureResourceErrorInfoDetailsList;
 }
+const AzureResourceErrorInfo = /*@__PURE__*/ __L.at(
+  __c42,
+  2,
+) as any as S.Schema<AzureResourceErrorInfo>;
+
 /** The expression. */
 export interface Expression {
   /** The text. */
@@ -4327,8 +6156,15 @@ export interface Expression {
   subexpressions?: ExpressionSubexpressionsList;
   error?: AzureResourceErrorInfo;
 }
+const Expression = /*@__PURE__*/ __L.at(__c42, 3) as any as S.Schema<Expression>;
+
 /** The sub expressions. */
 export type ExpressionRootSubexpressionsList = Array<Expression>;
+const ExpressionRootSubexpressionsList = /*@__PURE__*/ __L.at(
+  __c42,
+  4,
+) as any as S.Schema<ExpressionRootSubexpressionsList>;
+
 /** The expression root. */
 export interface ExpressionRoot {
   /** The text. */
@@ -4340,11 +6176,20 @@ export interface ExpressionRoot {
   /** The path. */
   path?: string;
 }
+const ExpressionRoot = /*@__PURE__*/ __L.at(__c42, 5) as any as S.Schema<ExpressionRoot>;
+
 export type ExpressionTracesInputsList = Array<ExpressionRoot>;
+const ExpressionTracesInputsList = /*@__PURE__*/ __L.at(
+  __c42,
+  6,
+) as any as S.Schema<ExpressionTracesInputsList>;
+
 /** The expression traces. */
 export interface ExpressionTraces {
   inputs?: ExpressionTracesInputsList;
 }
+const ExpressionTraces = /*@__PURE__*/ __L.at(__c42, 7) as any as S.Schema<ExpressionTraces>;
+
 export interface ListWorkflowRunActionRepetitionExpressionTracesRequest {
   /** The subscription id. */
   subscriptionId: string;
@@ -4359,6 +6204,11 @@ export interface ListWorkflowRunActionRepetitionExpressionTracesRequest {
   /** The workflow repetition. */
   repetitionName: string;
 }
+const ListWorkflowRunActionRepetitionExpressionTracesRequest = /*@__PURE__*/ __L.at(
+  __c43,
+  0,
+) as any as S.Schema<ListWorkflowRunActionRepetitionExpressionTracesRequest>;
+
 export interface ListWorkflowRunActionRepetitionsRequest {
   /** The subscription id. */
   subscriptionId: string;
@@ -4371,6 +6221,11 @@ export interface ListWorkflowRunActionRepetitionsRequest {
   /** The workflow action name. */
   actionName: string;
 }
+const ListWorkflowRunActionRepetitionsRequest = /*@__PURE__*/ __L.at(
+  __c43,
+  1,
+) as any as S.Schema<ListWorkflowRunActionRepetitionsRequest>;
+
 /** The resource tags. */
 export type WorkflowRunActionRepetitionDefinitionTagsMap = { [key: string]: string | undefined };
 /** The workflow run action repetition definition. */
@@ -4388,14 +6243,27 @@ export interface WorkflowRunActionRepetitionDefinition {
   /** The workflow run action repetition properties definition. */
   properties: WorkflowRunActionRepetitionProperties;
 }
+const WorkflowRunActionRepetitionDefinition =
+  GetWorkflowRunActionRepetitionResponse as any as S.Schema<WorkflowRunActionRepetitionDefinition>;
+
 export type WorkflowRunActionRepetitionDefinitionCollectionValueList =
   Array<WorkflowRunActionRepetitionDefinition>;
+const WorkflowRunActionRepetitionDefinitionCollectionValueList = /*@__PURE__*/ __L.at(
+  __c43,
+  2,
+) as any as S.Schema<WorkflowRunActionRepetitionDefinitionCollectionValueList>;
+
 /** A collection of workflow run action repetitions. */
 export interface WorkflowRunActionRepetitionDefinitionCollection {
   /** The link used to get the next page of recommendations. */
   nextLink?: string;
   value?: WorkflowRunActionRepetitionDefinitionCollectionValueList;
 }
+const WorkflowRunActionRepetitionDefinitionCollection = /*@__PURE__*/ __L.at(
+  __c43,
+  3,
+) as any as S.Schema<WorkflowRunActionRepetitionDefinitionCollection>;
+
 export interface ListWorkflowRunActionRepetitionsRequestHistoriesRequest {
   /** The subscription id. */
   subscriptionId: string;
@@ -4410,8 +6278,16 @@ export interface ListWorkflowRunActionRepetitionsRequestHistoriesRequest {
   /** The workflow repetition. */
   repetitionName: string;
 }
+const ListWorkflowRunActionRepetitionsRequestHistoriesRequest = /*@__PURE__*/ __L.at(
+  __c43,
+  4,
+) as any as S.Schema<ListWorkflowRunActionRepetitionsRequestHistoriesRequest>;
+
 /** The resource tags. */
 export type RequestHistoryTagsMap = { [key: string]: string | undefined };
+const RequestHistoryTagsMap =
+  GetIntegrationAccountResponseTagsMap as any as S.Schema<RequestHistoryTagsMap>;
+
 /** The request history. */
 export interface RequestHistory {
   /** The resource id. */
@@ -4427,8 +6303,15 @@ export interface RequestHistory {
   /** The request history properties. */
   properties?: RequestHistoryProperties;
 }
+const RequestHistory = /*@__PURE__*/ __L.at(__c43, 5) as any as S.Schema<RequestHistory>;
+
 /** A list of workflow request histories. */
 export type RequestHistoryListResultValueList = Array<RequestHistory>;
+const RequestHistoryListResultValueList = /*@__PURE__*/ __L.at(
+  __c43,
+  6,
+) as any as S.Schema<RequestHistoryListResultValueList>;
+
 /** The list of workflow request histories. */
 export interface RequestHistoryListResult {
   /** A list of workflow request histories. */
@@ -4436,6 +6319,11 @@ export interface RequestHistoryListResult {
   /** The URL to get the next set of results. */
   nextLink?: string;
 }
+const RequestHistoryListResult = /*@__PURE__*/ __L.at(
+  __c43,
+  7,
+) as any as S.Schema<RequestHistoryListResult>;
+
 export interface ListWorkflowRunActionRequestHistoriesRequest {
   /** The subscription id. */
   subscriptionId: string;
@@ -4448,6 +6336,11 @@ export interface ListWorkflowRunActionRequestHistoriesRequest {
   /** The workflow action name. */
   actionName: string;
 }
+const ListWorkflowRunActionRequestHistoriesRequest = /*@__PURE__*/ __L.at(
+  __c44,
+  0,
+) as any as S.Schema<ListWorkflowRunActionRequestHistoriesRequest>;
+
 export interface ListWorkflowRunActionsRequest {
   /** The subscription id. */
   subscriptionId: string;
@@ -4462,6 +6355,11 @@ export interface ListWorkflowRunActionsRequest {
   /** The filter to apply on the operation. Options for filters include: Status. */
   _filter?: string;
 }
+const ListWorkflowRunActionsRequest = /*@__PURE__*/ __L.at(
+  __c44,
+  1,
+) as any as S.Schema<ListWorkflowRunActionsRequest>;
+
 /** The workflow run action. */
 export interface WorkflowRunAction {
   /** The resource id. */
@@ -4473,8 +6371,15 @@ export interface WorkflowRunAction {
   /** Gets the workflow run action type. */
   type?: string;
 }
+const WorkflowRunAction = /*@__PURE__*/ __L.at(__c44, 2) as any as S.Schema<WorkflowRunAction>;
+
 /** A list of workflow run actions. */
 export type WorkflowRunActionListResultValueList = Array<WorkflowRunAction>;
+const WorkflowRunActionListResultValueList = /*@__PURE__*/ __L.at(
+  __c44,
+  3,
+) as any as S.Schema<WorkflowRunActionListResultValueList>;
+
 /** The list of workflow run actions. */
 export interface WorkflowRunActionListResult {
   /** A list of workflow run actions. */
@@ -4482,6 +6387,11 @@ export interface WorkflowRunActionListResult {
   /** The URL to get the next set of results. */
   nextLink?: string;
 }
+const WorkflowRunActionListResult = /*@__PURE__*/ __L.at(
+  __c44,
+  4,
+) as any as S.Schema<WorkflowRunActionListResult>;
+
 export interface ListWorkflowRunActionScopeRepetitionsRequest {
   /** The subscription id. */
   subscriptionId: string;
@@ -4494,6 +6404,11 @@ export interface ListWorkflowRunActionScopeRepetitionsRequest {
   /** The workflow action name. */
   actionName: string;
 }
+const ListWorkflowRunActionScopeRepetitionsRequest = /*@__PURE__*/ __L.at(
+  __c44,
+  5,
+) as any as S.Schema<ListWorkflowRunActionScopeRepetitionsRequest>;
+
 export interface ListWorkflowRunsRequest {
   /** The subscription id. */
   subscriptionId: string;
@@ -4506,6 +6421,11 @@ export interface ListWorkflowRunsRequest {
   /** The filter to apply on the operation. Options for filters include: Status, StartTime, and ClientTrackingId. */
   _filter?: string;
 }
+const ListWorkflowRunsRequest = /*@__PURE__*/ __L.at(
+  __c44,
+  6,
+) as any as S.Schema<ListWorkflowRunsRequest>;
+
 /** The workflow run. */
 export interface WorkflowRun {
   /** The resource id. */
@@ -4517,8 +6437,15 @@ export interface WorkflowRun {
   /** Gets the workflow run type. */
   type?: string;
 }
+const WorkflowRun = GetWorkflowRunResponse as any as S.Schema<WorkflowRun>;
+
 /** A list of workflow runs. */
 export type WorkflowRunListResultValueList = Array<WorkflowRun>;
+const WorkflowRunListResultValueList = /*@__PURE__*/ __L.at(
+  __c44,
+  7,
+) as any as S.Schema<WorkflowRunListResultValueList>;
+
 /** The list of workflow runs. */
 export interface WorkflowRunListResult {
   /** A list of workflow runs. */
@@ -4526,6 +6453,11 @@ export interface WorkflowRunListResult {
   /** The URL to get the next set of results. */
   nextLink?: string;
 }
+const WorkflowRunListResult = /*@__PURE__*/ __L.at(
+  __c45,
+  0,
+) as any as S.Schema<WorkflowRunListResult>;
+
 export interface ListWorkflowSwaggerRequest {
   /** The subscription id. */
   subscriptionId: string;
@@ -4534,7 +6466,15 @@ export interface ListWorkflowSwaggerRequest {
   /** The workflow name. */
   workflowName: string;
 }
+const ListWorkflowSwaggerRequest = /*@__PURE__*/ __L.at(
+  __c45,
+  1,
+) as any as S.Schema<ListWorkflowSwaggerRequest>;
+
 export type ListWorkflowSwaggerResponse = unknown;
+const ListWorkflowSwaggerResponse =
+  GenerateWorkflowUpgradedDefinitionResponse as any as S.Schema<ListWorkflowSwaggerResponse>;
+
 export interface ListWorkflowTriggerCallbackUrlRequest {
   /** The subscription id. */
   subscriptionId: string;
@@ -4545,6 +6485,11 @@ export interface ListWorkflowTriggerCallbackUrlRequest {
   /** The workflow trigger name. */
   triggerName: string;
 }
+const ListWorkflowTriggerCallbackUrlRequest = /*@__PURE__*/ __L.at(
+  __c45,
+  2,
+) as any as S.Schema<ListWorkflowTriggerCallbackUrlRequest>;
+
 export interface ListWorkflowTriggerHistoriesRequest {
   /** The subscription id. */
   subscriptionId: string;
@@ -4559,6 +6504,11 @@ export interface ListWorkflowTriggerHistoriesRequest {
   /** The filter to apply on the operation. Options for filters include: Status, StartTime, and ClientTrackingId. */
   _filter?: string;
 }
+const ListWorkflowTriggerHistoriesRequest = /*@__PURE__*/ __L.at(
+  __c45,
+  3,
+) as any as S.Schema<ListWorkflowTriggerHistoriesRequest>;
+
 /** The workflow trigger history. */
 export interface WorkflowTriggerHistory {
   /** The resource id. */
@@ -4570,8 +6520,18 @@ export interface WorkflowTriggerHistory {
   /** Gets the workflow trigger history type. */
   type?: string;
 }
+const WorkflowTriggerHistory = /*@__PURE__*/ __L.at(
+  __c45,
+  4,
+) as any as S.Schema<WorkflowTriggerHistory>;
+
 /** A list of workflow trigger histories. */
 export type WorkflowTriggerHistoryListResultValueList = Array<WorkflowTriggerHistory>;
+const WorkflowTriggerHistoryListResultValueList = /*@__PURE__*/ __L.at(
+  __c45,
+  5,
+) as any as S.Schema<WorkflowTriggerHistoryListResultValueList>;
+
 /** The list of workflow trigger histories. */
 export interface WorkflowTriggerHistoryListResult {
   /** A list of workflow trigger histories. */
@@ -4579,6 +6539,11 @@ export interface WorkflowTriggerHistoryListResult {
   /** The URL to get the next set of results. */
   nextLink?: string;
 }
+const WorkflowTriggerHistoryListResult = /*@__PURE__*/ __L.at(
+  __c45,
+  6,
+) as any as S.Schema<WorkflowTriggerHistoryListResult>;
+
 export interface ListWorkflowTriggersRequest {
   /** The subscription id. */
   subscriptionId: string;
@@ -4591,6 +6556,11 @@ export interface ListWorkflowTriggersRequest {
   /** The filter to apply on the operation. */
   _filter?: string;
 }
+const ListWorkflowTriggersRequest = /*@__PURE__*/ __L.at(
+  __c45,
+  7,
+) as any as S.Schema<ListWorkflowTriggersRequest>;
+
 /** The workflow trigger. */
 export interface WorkflowTrigger {
   /** The resource id. */
@@ -4602,8 +6572,15 @@ export interface WorkflowTrigger {
   /** Gets the workflow trigger type. */
   type?: string;
 }
+const WorkflowTrigger = /*@__PURE__*/ __L.at(__c46, 0) as any as S.Schema<WorkflowTrigger>;
+
 /** A list of workflow triggers. */
 export type WorkflowTriggerListResultValueList = Array<WorkflowTrigger>;
+const WorkflowTriggerListResultValueList = /*@__PURE__*/ __L.at(
+  __c46,
+  1,
+) as any as S.Schema<WorkflowTriggerListResultValueList>;
+
 /** The list of workflow triggers. */
 export interface WorkflowTriggerListResult {
   /** A list of workflow triggers. */
@@ -4611,6 +6588,11 @@ export interface WorkflowTriggerListResult {
   /** The URL to get the next set of results. */
   nextLink?: string;
 }
+const WorkflowTriggerListResult = /*@__PURE__*/ __L.at(
+  __c46,
+  2,
+) as any as S.Schema<WorkflowTriggerListResult>;
+
 export interface ListWorkflowVersionsRequest {
   /** The subscription id. */
   subscriptionId: string;
@@ -4621,8 +6603,16 @@ export interface ListWorkflowVersionsRequest {
   /** The number of items to be included in the result. */
   _top?: number;
 }
+const ListWorkflowVersionsRequest = /*@__PURE__*/ __L.at(
+  __c46,
+  3,
+) as any as S.Schema<ListWorkflowVersionsRequest>;
+
 /** The resource tags. */
 export type WorkflowVersionTagsMap = { [key: string]: string | undefined };
+const WorkflowVersionTagsMap =
+  GetIntegrationAccountResponseTagsMap as any as S.Schema<WorkflowVersionTagsMap>;
+
 /** The workflow version. */
 export interface WorkflowVersion {
   /** The resource id. */
@@ -4638,8 +6628,15 @@ export interface WorkflowVersion {
   /** The workflow version properties. */
   properties?: WorkflowVersionProperties;
 }
+const WorkflowVersion = /*@__PURE__*/ __L.at(__c46, 4) as any as S.Schema<WorkflowVersion>;
+
 /** A list of workflow versions. */
 export type WorkflowVersionListResultValueList = Array<WorkflowVersion>;
+const WorkflowVersionListResultValueList = /*@__PURE__*/ __L.at(
+  __c46,
+  5,
+) as any as S.Schema<WorkflowVersionListResultValueList>;
+
 /** The list of workflow versions. */
 export interface WorkflowVersionListResult {
   /** A list of workflow versions. */
@@ -4647,6 +6644,11 @@ export interface WorkflowVersionListResult {
   /** The URL to get the next set of results. */
   nextLink?: string;
 }
+const WorkflowVersionListResult = /*@__PURE__*/ __L.at(
+  __c46,
+  6,
+) as any as S.Schema<WorkflowVersionListResult>;
+
 export interface ListWorkflowVersionTriggerCallbackUrlRequest {
   /** The subscription id. */
   subscriptionId: string;
@@ -4663,6 +6665,11 @@ export interface ListWorkflowVersionTriggerCallbackUrlRequest {
   /** The key type. */
   keyType?: KeyType | (string & {});
 }
+const ListWorkflowVersionTriggerCallbackUrlRequest = /*@__PURE__*/ __L.at(
+  __c46,
+  7,
+) as any as S.Schema<ListWorkflowVersionTriggerCallbackUrlRequest>;
+
 export interface MoveWorkflowRequest {
   /** The subscription id. */
   subscriptionId: string;
@@ -4673,16 +6680,28 @@ export interface MoveWorkflowRequest {
   /** The resource id. */
   id?: string;
 }
+const MoveWorkflowRequest = /*@__PURE__*/ __L.at(__c47, 0) as any as S.Schema<MoveWorkflowRequest>;
+
 export interface MoveWorkflowResponse {}
+const MoveWorkflowResponse = CancelWorkflowRunResponse as any as S.Schema<MoveWorkflowResponse>;
+
 /** The resource tags. */
 export type PutIntegrationServiceEnvironmentManagedApisRequestTagsMap = {
   [key: string]: string | undefined;
 };
+const PutIntegrationServiceEnvironmentManagedApisRequestTagsMap =
+  GetIntegrationAccountResponseTagsMap as any as S.Schema<PutIntegrationServiceEnvironmentManagedApisRequestTagsMap>;
+
 /** The integration service environment managed api deployment parameters. */
 export interface IntegrationServiceEnvironmentManagedApiDeploymentParametersInput {
   /** The integration service environment managed api content link for deployment. */
   contentLinkDefinition?: ContentLinkInput;
 }
+const IntegrationServiceEnvironmentManagedApiDeploymentParametersInput = /*@__PURE__*/ __L.at(
+  __c47,
+  1,
+) as any as S.Schema<IntegrationServiceEnvironmentManagedApiDeploymentParametersInput>;
+
 /** The integration service environment managed api properties. */
 export interface IntegrationServiceEnvironmentManagedApiPropertiesInput {
   /** The integration service environment reference. */
@@ -4690,6 +6709,11 @@ export interface IntegrationServiceEnvironmentManagedApiPropertiesInput {
   /** The integration service environment managed api deployment parameters. */
   deploymentParameters?: IntegrationServiceEnvironmentManagedApiDeploymentParametersInput;
 }
+const IntegrationServiceEnvironmentManagedApiPropertiesInput = /*@__PURE__*/ __L.at(
+  __c47,
+  2,
+) as any as S.Schema<IntegrationServiceEnvironmentManagedApiPropertiesInput>;
+
 export interface PutIntegrationServiceEnvironmentManagedApisRequest {
   /** The subscription id. */
   subscriptionId: string;
@@ -4706,6 +6730,11 @@ export interface PutIntegrationServiceEnvironmentManagedApisRequest {
   /** The integration service environment managed api properties. */
   properties?: IntegrationServiceEnvironmentManagedApiPropertiesInput;
 }
+const PutIntegrationServiceEnvironmentManagedApisRequest = /*@__PURE__*/ __L.at(
+  __c47,
+  3,
+) as any as S.Schema<PutIntegrationServiceEnvironmentManagedApisRequest>;
+
 /** The resource tags. */
 export type PutIntegrationServiceEnvironmentManagedApisResponseTagsMap = {
   [key: string]: string | undefined;
@@ -4724,6 +6753,9 @@ export interface PutIntegrationServiceEnvironmentManagedApisResponse {
   /** The integration service environment managed api properties. */
   properties?: IntegrationServiceEnvironmentManagedApiProperties;
 }
+const PutIntegrationServiceEnvironmentManagedApisResponse =
+  GetIntegrationServiceEnvironmentManagedApisResponse as any as S.Schema<PutIntegrationServiceEnvironmentManagedApisResponse>;
+
 export interface RegenerateIntegrationAccountAccessKeyRequest {
   /** The subscription id. */
   subscriptionId: string;
@@ -4734,6 +6766,11 @@ export interface RegenerateIntegrationAccountAccessKeyRequest {
   /** The key type. */
   keyType?: KeyType | (string & {});
 }
+const RegenerateIntegrationAccountAccessKeyRequest = /*@__PURE__*/ __L.at(
+  __c47,
+  4,
+) as any as S.Schema<RegenerateIntegrationAccountAccessKeyRequest>;
+
 /** The resource tags. */
 export type RegenerateIntegrationAccountAccessKeyResponseTagsMap = {
   [key: string]: string | undefined;
@@ -4754,6 +6791,9 @@ export interface RegenerateIntegrationAccountAccessKeyResponse {
   /** The sku. */
   sku?: IntegrationAccountSku;
 }
+const RegenerateIntegrationAccountAccessKeyResponse =
+  GetIntegrationAccountResponse as any as S.Schema<RegenerateIntegrationAccountAccessKeyResponse>;
+
 export interface RegenerateWorkflowAccessKeyRequest {
   /** The subscription id. */
   subscriptionId: string;
@@ -4764,7 +6804,15 @@ export interface RegenerateWorkflowAccessKeyRequest {
   /** The key type. */
   keyType?: KeyType | (string & {});
 }
+const RegenerateWorkflowAccessKeyRequest = /*@__PURE__*/ __L.at(
+  __c47,
+  5,
+) as any as S.Schema<RegenerateWorkflowAccessKeyRequest>;
+
 export interface RegenerateWorkflowAccessKeyResponse {}
+const RegenerateWorkflowAccessKeyResponse =
+  DeleteIntegrationAccountResponse as any as S.Schema<RegenerateWorkflowAccessKeyResponse>;
+
 export interface ResetWorkflowTriggerRequest {
   /** The subscription id. */
   subscriptionId: string;
@@ -4775,7 +6823,15 @@ export interface ResetWorkflowTriggerRequest {
   /** The workflow trigger name. */
   triggerName: string;
 }
+const ResetWorkflowTriggerRequest = /*@__PURE__*/ __L.at(
+  __c47,
+  6,
+) as any as S.Schema<ResetWorkflowTriggerRequest>;
+
 export interface ResetWorkflowTriggerResponse {}
+const ResetWorkflowTriggerResponse =
+  CancelWorkflowRunResponse as any as S.Schema<ResetWorkflowTriggerResponse>;
+
 export interface RestartIntegrationServiceEnvironmentRequest {
   /** The subscription id. */
   subscriptionId: string;
@@ -4784,7 +6840,15 @@ export interface RestartIntegrationServiceEnvironmentRequest {
   /** The integration service environment name. */
   integrationServiceEnvironmentName: string;
 }
+const RestartIntegrationServiceEnvironmentRequest = /*@__PURE__*/ __L.at(
+  __c47,
+  7,
+) as any as S.Schema<RestartIntegrationServiceEnvironmentRequest>;
+
 export interface RestartIntegrationServiceEnvironmentResponse {}
+const RestartIntegrationServiceEnvironmentResponse =
+  DeleteIntegrationAccountResponse as any as S.Schema<RestartIntegrationServiceEnvironmentResponse>;
+
 /** The workflow trigger reference. */
 export interface WorkflowTriggerReferenceInput {
   /** The resource id. */
@@ -4794,6 +6858,11 @@ export interface WorkflowTriggerReferenceInput {
   /** The workflow trigger name. */
   triggerName?: string;
 }
+const WorkflowTriggerReferenceInput = /*@__PURE__*/ __L.at(
+  __c48,
+  0,
+) as any as S.Schema<WorkflowTriggerReferenceInput>;
+
 export interface SetWorkflowTriggerStateRequest {
   /** The subscription id. */
   subscriptionId: string;
@@ -4806,7 +6875,17 @@ export interface SetWorkflowTriggerStateRequest {
   /** The source. */
   source: WorkflowTriggerReferenceInput;
 }
+const SetWorkflowTriggerStateRequest = /*@__PURE__*/ __L.at(
+  __c48,
+  1,
+) as any as S.Schema<SetWorkflowTriggerStateRequest>;
+
 export interface SetWorkflowTriggerStateResponse {}
+const SetWorkflowTriggerStateResponse = /*@__PURE__*/ __L.at(
+  __c48,
+  2,
+) as any as S.Schema<SetWorkflowTriggerStateResponse>;
+
 export interface TriggerRunWorkflowRequest {
   /** The subscription id. */
   subscriptionId: string;
@@ -4817,9 +6896,20 @@ export interface TriggerRunWorkflowRequest {
   /** The workflow trigger name. */
   triggerName: string;
 }
+const TriggerRunWorkflowRequest = /*@__PURE__*/ __L.at(
+  __c48,
+  3,
+) as any as S.Schema<TriggerRunWorkflowRequest>;
+
 export interface TriggerRunWorkflowResponse {}
+const TriggerRunWorkflowResponse =
+  CancelWorkflowRunResponse as any as S.Schema<TriggerRunWorkflowResponse>;
+
 /** The resource tags. */
 export type UpdateIntegrationAccountRequestTagsMap = { [key: string]: string | undefined };
+const UpdateIntegrationAccountRequestTagsMap =
+  GetIntegrationAccountResponseTagsMap as any as S.Schema<UpdateIntegrationAccountRequestTagsMap>;
+
 export interface UpdateIntegrationAccountRequest {
   /** The subscription id. */
   subscriptionId: string;
@@ -4836,6 +6926,11 @@ export interface UpdateIntegrationAccountRequest {
   /** The sku. */
   sku?: IntegrationAccountSku;
 }
+const UpdateIntegrationAccountRequest = /*@__PURE__*/ __L.at(
+  __c48,
+  4,
+) as any as S.Schema<UpdateIntegrationAccountRequest>;
+
 /** The resource tags. */
 export type UpdateIntegrationAccountResponseTagsMap = { [key: string]: string | undefined };
 export interface UpdateIntegrationAccountResponse {
@@ -4854,10 +6949,16 @@ export interface UpdateIntegrationAccountResponse {
   /** The sku. */
   sku?: IntegrationAccountSku;
 }
+const UpdateIntegrationAccountResponse =
+  GetIntegrationAccountResponse as any as S.Schema<UpdateIntegrationAccountResponse>;
+
 /** The resource tags. */
 export type UpdateIntegrationServiceEnvironmentRequestTagsMap = {
   [key: string]: string | undefined;
 };
+const UpdateIntegrationServiceEnvironmentRequestTagsMap =
+  GetIntegrationAccountResponseTagsMap as any as S.Schema<UpdateIntegrationServiceEnvironmentRequestTagsMap>;
+
 export interface UpdateIntegrationServiceEnvironmentRequest {
   /** The subscription id. */
   subscriptionId: string;
@@ -4875,6 +6976,11 @@ export interface UpdateIntegrationServiceEnvironmentRequest {
   sku?: IntegrationServiceEnvironmentSku;
   identity?: ManagedServiceIdentityInput;
 }
+const UpdateIntegrationServiceEnvironmentRequest = /*@__PURE__*/ __L.at(
+  __c48,
+  5,
+) as any as S.Schema<UpdateIntegrationServiceEnvironmentRequest>;
+
 /** The resource tags. */
 export type UpdateIntegrationServiceEnvironmentResponseTagsMap = {
   [key: string]: string | undefined;
@@ -4896,6 +7002,9 @@ export interface UpdateIntegrationServiceEnvironmentResponse {
   sku?: IntegrationServiceEnvironmentSku;
   identity?: ManagedServiceIdentity;
 }
+const UpdateIntegrationServiceEnvironmentResponse =
+  GetIntegrationServiceEnvironmentResponse as any as S.Schema<UpdateIntegrationServiceEnvironmentResponse>;
+
 export interface UpdateWorkflowRequest {
   /** The subscription id. */
   subscriptionId: string;
@@ -4904,6 +7013,11 @@ export interface UpdateWorkflowRequest {
   /** The workflow name. */
   workflowName: string;
 }
+const UpdateWorkflowRequest = /*@__PURE__*/ __L.at(
+  __c48,
+  6,
+) as any as S.Schema<UpdateWorkflowRequest>;
+
 /** The resource tags. */
 export type UpdateWorkflowResponseTagsMap = { [key: string]: string | undefined };
 export interface UpdateWorkflowResponse {
@@ -4921,10 +7035,18 @@ export interface UpdateWorkflowResponse {
   properties?: WorkflowProperties;
   identity?: ManagedServiceIdentity;
 }
+const UpdateWorkflowResponse = GetWorkflowResponse as any as S.Schema<UpdateWorkflowResponse>;
+
 /** The resource tags. */
 export type ValidateWorkflowByLocationRequestTagsMap = { [key: string]: string | undefined };
+const ValidateWorkflowByLocationRequestTagsMap =
+  GetIntegrationAccountResponseTagsMap as any as S.Schema<ValidateWorkflowByLocationRequestTagsMap>;
+
 /** The parameters. */
 export type WorkflowPropertiesInputParametersMap = { [key: string]: WorkflowParameter | undefined };
+const WorkflowPropertiesInputParametersMap =
+  WorkflowPropertiesParametersMap as any as S.Schema<WorkflowPropertiesInputParametersMap>;
+
 /** The workflow properties. */
 export interface WorkflowPropertiesInput {
   /** The state. */
@@ -4942,6 +7064,11 @@ export interface WorkflowPropertiesInput {
   /** The parameters. */
   parameters?: WorkflowPropertiesInputParametersMap;
 }
+const WorkflowPropertiesInput = /*@__PURE__*/ __L.at(
+  __c48,
+  7,
+) as any as S.Schema<WorkflowPropertiesInput>;
+
 export interface ValidateWorkflowByLocationRequest {
   /** The subscription id. */
   subscriptionId: string;
@@ -4957,9 +7084,20 @@ export interface ValidateWorkflowByLocationRequest {
   properties?: WorkflowPropertiesInput;
   identity?: ManagedServiceIdentityInput;
 }
+const ValidateWorkflowByLocationRequest = /*@__PURE__*/ __L.at(
+  __c49,
+  0,
+) as any as S.Schema<ValidateWorkflowByLocationRequest>;
+
 export interface ValidateWorkflowByLocationResponse {}
+const ValidateWorkflowByLocationResponse =
+  DeleteIntegrationAccountResponse as any as S.Schema<ValidateWorkflowByLocationResponse>;
+
 /** The resource tags. */
 export type ValidateWorkflowByResourceGroupRequestTagsMap = { [key: string]: string | undefined };
+const ValidateWorkflowByResourceGroupRequestTagsMap =
+  GetIntegrationAccountResponseTagsMap as any as S.Schema<ValidateWorkflowByResourceGroupRequestTagsMap>;
+
 export interface ValidateWorkflowByResourceGroupRequest {
   /** The subscription id. */
   subscriptionId: string;
@@ -4975,9 +7113,20 @@ export interface ValidateWorkflowByResourceGroupRequest {
   properties?: WorkflowPropertiesInput;
   identity?: ManagedServiceIdentityInput;
 }
+const ValidateWorkflowByResourceGroupRequest = /*@__PURE__*/ __L.at(
+  __c49,
+  1,
+) as any as S.Schema<ValidateWorkflowByResourceGroupRequest>;
+
 export interface ValidateWorkflowByResourceGroupResponse {}
+const ValidateWorkflowByResourceGroupResponse =
+  DeleteIntegrationAccountResponse as any as S.Schema<ValidateWorkflowByResourceGroupResponse>;
+
 /** The resource tags. */
 export type WorkflowsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
+const WorkflowsCreateOrUpdateRequestTagsMap =
+  GetIntegrationAccountResponseTagsMap as any as S.Schema<WorkflowsCreateOrUpdateRequestTagsMap>;
+
 export interface WorkflowsCreateOrUpdateRequest {
   /** The subscription id. */
   subscriptionId: string;
@@ -4993,8 +7142,16 @@ export interface WorkflowsCreateOrUpdateRequest {
   properties?: WorkflowPropertiesInput;
   identity?: ManagedServiceIdentityInput;
 }
+const WorkflowsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c49,
+  2,
+) as any as S.Schema<WorkflowsCreateOrUpdateRequest>;
+
 /** The resource tags. */
 export type WorkflowsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
+const WorkflowsCreateOrUpdateResponseTagsMap =
+  GetIntegrationAccountResponseTagsMap as any as S.Schema<WorkflowsCreateOrUpdateResponseTagsMap>;
+
 export interface WorkflowsCreateOrUpdateResponse {
   /** The resource id. */
   id?: string;
@@ -5010,6 +7167,11 @@ export interface WorkflowsCreateOrUpdateResponse {
   properties?: WorkflowProperties;
   identity?: ManagedServiceIdentity;
 }
+const WorkflowsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c49,
+  3,
+) as any as S.Schema<WorkflowsCreateOrUpdateResponse>;
+
 export interface WorkflowTriggerHistoriesResubmitRequest {
   /** The subscription id. */
   subscriptionId: string;
@@ -5022,7 +7184,15 @@ export interface WorkflowTriggerHistoriesResubmitRequest {
   /** The workflow trigger history name. Corresponds to the run name for triggers that resulted in a run. */
   historyName: string;
 }
+const WorkflowTriggerHistoriesResubmitRequest = /*@__PURE__*/ __L.at(
+  __c49,
+  4,
+) as any as S.Schema<WorkflowTriggerHistoriesResubmitRequest>;
+
 export interface WorkflowTriggerHistoriesResubmitResponse {}
+const WorkflowTriggerHistoriesResubmitResponse =
+  DeleteIntegrationAccountResponse as any as S.Schema<WorkflowTriggerHistoriesResubmitResponse>;
+
 export type CancelWorkflowRunError = AzureOpError;
 /** Cancels a workflow run. */
 export const CancelWorkflowRun: API.OperationMethod<
@@ -5031,8 +7201,8 @@ export const CancelWorkflowRun: API.OperationMethod<
   CancelWorkflowRunError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<CancelWorkflowRunRequest>,
-  output: __S(1) as any as S.Schema<CancelWorkflowRunResponse>,
+  input: CancelWorkflowRunRequest,
+  output: CancelWorkflowRunResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5046,8 +7216,8 @@ export const DeleteIntegrationAccount: API.OperationMethod<
   DeleteIntegrationAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2) as any as S.Schema<DeleteIntegrationAccountRequest>,
-  output: __S(3) as any as S.Schema<DeleteIntegrationAccountResponse>,
+  input: DeleteIntegrationAccountRequest,
+  output: DeleteIntegrationAccountResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5061,8 +7231,8 @@ export const DeleteIntegrationAccountAgreement: API.OperationMethod<
   DeleteIntegrationAccountAgreementError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4) as any as S.Schema<DeleteIntegrationAccountAgreementRequest>,
-  output: __S(3) as any as S.Schema<DeleteIntegrationAccountAgreementResponse>,
+  input: DeleteIntegrationAccountAgreementRequest,
+  output: DeleteIntegrationAccountAgreementResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5076,8 +7246,8 @@ export const DeleteIntegrationAccountAssembly: API.OperationMethod<
   DeleteIntegrationAccountAssemblyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5) as any as S.Schema<DeleteIntegrationAccountAssemblyRequest>,
-  output: __S(3) as any as S.Schema<DeleteIntegrationAccountAssemblyResponse>,
+  input: DeleteIntegrationAccountAssemblyRequest,
+  output: DeleteIntegrationAccountAssemblyResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5091,8 +7261,8 @@ export const DeleteIntegrationAccountBatchConfiguration: API.OperationMethod<
   DeleteIntegrationAccountBatchConfigurationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6) as any as S.Schema<DeleteIntegrationAccountBatchConfigurationRequest>,
-  output: __S(3) as any as S.Schema<DeleteIntegrationAccountBatchConfigurationResponse>,
+  input: DeleteIntegrationAccountBatchConfigurationRequest,
+  output: DeleteIntegrationAccountBatchConfigurationResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5106,8 +7276,8 @@ export const DeleteIntegrationAccountCertificate: API.OperationMethod<
   DeleteIntegrationAccountCertificateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7) as any as S.Schema<DeleteIntegrationAccountCertificateRequest>,
-  output: __S(3) as any as S.Schema<DeleteIntegrationAccountCertificateResponse>,
+  input: DeleteIntegrationAccountCertificateRequest,
+  output: DeleteIntegrationAccountCertificateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5121,8 +7291,8 @@ export const DeleteIntegrationAccountMap: API.OperationMethod<
   DeleteIntegrationAccountMapError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8) as any as S.Schema<DeleteIntegrationAccountMapRequest>,
-  output: __S(3) as any as S.Schema<DeleteIntegrationAccountMapResponse>,
+  input: DeleteIntegrationAccountMapRequest,
+  output: DeleteIntegrationAccountMapResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5136,8 +7306,8 @@ export const DeleteIntegrationAccountPartner: API.OperationMethod<
   DeleteIntegrationAccountPartnerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9) as any as S.Schema<DeleteIntegrationAccountPartnerRequest>,
-  output: __S(3) as any as S.Schema<DeleteIntegrationAccountPartnerResponse>,
+  input: DeleteIntegrationAccountPartnerRequest,
+  output: DeleteIntegrationAccountPartnerResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5151,8 +7321,8 @@ export const DeleteIntegrationAccountSchema: API.OperationMethod<
   DeleteIntegrationAccountSchemaError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10) as any as S.Schema<DeleteIntegrationAccountSchemaRequest>,
-  output: __S(3) as any as S.Schema<DeleteIntegrationAccountSchemaResponse>,
+  input: DeleteIntegrationAccountSchemaRequest,
+  output: DeleteIntegrationAccountSchemaResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5166,8 +7336,8 @@ export const DeleteIntegrationAccountSession: API.OperationMethod<
   DeleteIntegrationAccountSessionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11) as any as S.Schema<DeleteIntegrationAccountSessionRequest>,
-  output: __S(3) as any as S.Schema<DeleteIntegrationAccountSessionResponse>,
+  input: DeleteIntegrationAccountSessionRequest,
+  output: DeleteIntegrationAccountSessionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5181,8 +7351,8 @@ export const DeleteIntegrationServiceEnvironment: API.OperationMethod<
   DeleteIntegrationServiceEnvironmentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12) as any as S.Schema<DeleteIntegrationServiceEnvironmentRequest>,
-  output: __S(3) as any as S.Schema<DeleteIntegrationServiceEnvironmentResponse>,
+  input: DeleteIntegrationServiceEnvironmentRequest,
+  output: DeleteIntegrationServiceEnvironmentResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5196,8 +7366,8 @@ export const DeleteIntegrationServiceEnvironmentManagedApis: API.OperationMethod
   DeleteIntegrationServiceEnvironmentManagedApisError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13) as any as S.Schema<DeleteIntegrationServiceEnvironmentManagedApisRequest>,
-  output: __S(3) as any as S.Schema<DeleteIntegrationServiceEnvironmentManagedApisResponse>,
+  input: DeleteIntegrationServiceEnvironmentManagedApisRequest,
+  output: DeleteIntegrationServiceEnvironmentManagedApisResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5211,8 +7381,8 @@ export const DeleteWorkflow: API.OperationMethod<
   DeleteWorkflowError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14) as any as S.Schema<DeleteWorkflowRequest>,
-  output: __S(1) as any as S.Schema<DeleteWorkflowResponse>,
+  input: DeleteWorkflowRequest,
+  output: DeleteWorkflowResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5226,8 +7396,8 @@ export const DisableWorkflow: API.OperationMethod<
   DisableWorkflowError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15) as any as S.Schema<DisableWorkflowRequest>,
-  output: __S(1) as any as S.Schema<DisableWorkflowResponse>,
+  input: DisableWorkflowRequest,
+  output: DisableWorkflowResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5241,8 +7411,8 @@ export const EnableWorkflow: API.OperationMethod<
   EnableWorkflowError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16) as any as S.Schema<EnableWorkflowRequest>,
-  output: __S(1) as any as S.Schema<EnableWorkflowResponse>,
+  input: EnableWorkflowRequest,
+  output: EnableWorkflowResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5256,8 +7426,8 @@ export const GenerateWorkflowUpgradedDefinition: API.OperationMethod<
   GenerateWorkflowUpgradedDefinitionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17) as any as S.Schema<GenerateWorkflowUpgradedDefinitionRequest>,
-  output: __S(18) as any as S.Schema<GenerateWorkflowUpgradedDefinitionResponse>,
+  input: GenerateWorkflowUpgradedDefinitionRequest,
+  output: GenerateWorkflowUpgradedDefinitionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5271,8 +7441,8 @@ export const GetIntegrationAccount: API.OperationMethod<
   GetIntegrationAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19) as any as S.Schema<GetIntegrationAccountRequest>,
-  output: __S(24) as any as S.Schema<GetIntegrationAccountResponse>,
+  input: GetIntegrationAccountRequest,
+  output: GetIntegrationAccountResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5286,8 +7456,8 @@ export const GetIntegrationAccountAgreement: API.OperationMethod<
   GetIntegrationAccountAgreementError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25) as any as S.Schema<GetIntegrationAccountAgreementRequest>,
-  output: __S(73) as any as S.Schema<GetIntegrationAccountAgreementResponse>,
+  input: GetIntegrationAccountAgreementRequest,
+  output: GetIntegrationAccountAgreementResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5301,8 +7471,8 @@ export const GetIntegrationAccountAssembly: API.OperationMethod<
   GetIntegrationAccountAssemblyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(74) as any as S.Schema<GetIntegrationAccountAssemblyRequest>,
-  output: __S(78) as any as S.Schema<GetIntegrationAccountAssemblyResponse>,
+  input: GetIntegrationAccountAssemblyRequest,
+  output: GetIntegrationAccountAssemblyResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5316,8 +7486,8 @@ export const GetIntegrationAccountBatchConfiguration: API.OperationMethod<
   GetIntegrationAccountBatchConfigurationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(79) as any as S.Schema<GetIntegrationAccountBatchConfigurationRequest>,
-  output: __S(88) as any as S.Schema<GetIntegrationAccountBatchConfigurationResponse>,
+  input: GetIntegrationAccountBatchConfigurationRequest,
+  output: GetIntegrationAccountBatchConfigurationResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5331,8 +7501,8 @@ export const GetIntegrationAccountCertificate: API.OperationMethod<
   GetIntegrationAccountCertificateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(89) as any as S.Schema<GetIntegrationAccountCertificateRequest>,
-  output: __S(93) as any as S.Schema<GetIntegrationAccountCertificateResponse>,
+  input: GetIntegrationAccountCertificateRequest,
+  output: GetIntegrationAccountCertificateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5346,8 +7516,8 @@ export const GetIntegrationAccountMap: API.OperationMethod<
   GetIntegrationAccountMapError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(94) as any as S.Schema<GetIntegrationAccountMapRequest>,
-  output: __S(97) as any as S.Schema<GetIntegrationAccountMapResponse>,
+  input: GetIntegrationAccountMapRequest,
+  output: GetIntegrationAccountMapResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5361,8 +7531,8 @@ export const GetIntegrationAccountPartner: API.OperationMethod<
   GetIntegrationAccountPartnerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(98) as any as S.Schema<GetIntegrationAccountPartnerRequest>,
-  output: __S(103) as any as S.Schema<GetIntegrationAccountPartnerResponse>,
+  input: GetIntegrationAccountPartnerRequest,
+  output: GetIntegrationAccountPartnerResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5376,8 +7546,8 @@ export const GetIntegrationAccountSchema: API.OperationMethod<
   GetIntegrationAccountSchemaError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(104) as any as S.Schema<GetIntegrationAccountSchemaRequest>,
-  output: __S(106) as any as S.Schema<GetIntegrationAccountSchemaResponse>,
+  input: GetIntegrationAccountSchemaRequest,
+  output: GetIntegrationAccountSchemaResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5391,8 +7561,8 @@ export const GetIntegrationAccountSession: API.OperationMethod<
   GetIntegrationAccountSessionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(107) as any as S.Schema<GetIntegrationAccountSessionRequest>,
-  output: __S(109) as any as S.Schema<GetIntegrationAccountSessionResponse>,
+  input: GetIntegrationAccountSessionRequest,
+  output: GetIntegrationAccountSessionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5406,8 +7576,8 @@ export const GetIntegrationServiceEnvironment: API.OperationMethod<
   GetIntegrationServiceEnvironmentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(110) as any as S.Schema<GetIntegrationServiceEnvironmentRequest>,
-  output: __S(125) as any as S.Schema<GetIntegrationServiceEnvironmentResponse>,
+  input: GetIntegrationServiceEnvironmentRequest,
+  output: GetIntegrationServiceEnvironmentResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5421,8 +7591,8 @@ export const GetIntegrationServiceEnvironmentManagedApis: API.OperationMethod<
   GetIntegrationServiceEnvironmentManagedApisError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(126) as any as S.Schema<GetIntegrationServiceEnvironmentManagedApisRequest>,
-  output: __S(140) as any as S.Schema<GetIntegrationServiceEnvironmentManagedApisResponse>,
+  input: GetIntegrationServiceEnvironmentManagedApisRequest,
+  output: GetIntegrationServiceEnvironmentManagedApisResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5436,8 +7606,8 @@ export const GetIntegrationServiceEnvironmentNetworkHealth: API.OperationMethod<
   GetIntegrationServiceEnvironmentNetworkHealthError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(141) as any as S.Schema<GetIntegrationServiceEnvironmentNetworkHealthRequest>,
-  output: __S(151) as any as S.Schema<GetIntegrationServiceEnvironmentNetworkHealthResponse>,
+  input: GetIntegrationServiceEnvironmentNetworkHealthRequest,
+  output: GetIntegrationServiceEnvironmentNetworkHealthResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5451,8 +7621,8 @@ export const GetWorkflow: API.OperationMethod<
   GetWorkflowError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(152) as any as S.Schema<GetWorkflowRequest>,
-  output: __S(166) as any as S.Schema<GetWorkflowResponse>,
+  input: GetWorkflowRequest,
+  output: GetWorkflowResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5466,8 +7636,8 @@ export const GetWorkflowRun: API.OperationMethod<
   GetWorkflowRunError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(167) as any as S.Schema<GetWorkflowRunRequest>,
-  output: __S(173) as any as S.Schema<GetWorkflowRunResponse>,
+  input: GetWorkflowRunRequest,
+  output: GetWorkflowRunResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5481,8 +7651,8 @@ export const GetWorkflowRunAction: API.OperationMethod<
   GetWorkflowRunActionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(174) as any as S.Schema<GetWorkflowRunActionRequest>,
-  output: __S(181) as any as S.Schema<GetWorkflowRunActionResponse>,
+  input: GetWorkflowRunActionRequest,
+  output: GetWorkflowRunActionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5496,8 +7666,8 @@ export const GetWorkflowRunActionRepetition: API.OperationMethod<
   GetWorkflowRunActionRepetitionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(182) as any as S.Schema<GetWorkflowRunActionRepetitionRequest>,
-  output: __S(186) as any as S.Schema<GetWorkflowRunActionRepetitionResponse>,
+  input: GetWorkflowRunActionRepetitionRequest,
+  output: GetWorkflowRunActionRepetitionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5511,8 +7681,8 @@ export const GetWorkflowRunActionRepetitionsRequestHistory: API.OperationMethod<
   GetWorkflowRunActionRepetitionsRequestHistoryError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(187) as any as S.Schema<GetWorkflowRunActionRepetitionsRequestHistoryRequest>,
-  output: __S(191) as any as S.Schema<GetWorkflowRunActionRepetitionsRequestHistoryResponse>,
+  input: GetWorkflowRunActionRepetitionsRequestHistoryRequest,
+  output: GetWorkflowRunActionRepetitionsRequestHistoryResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5526,8 +7696,8 @@ export const GetWorkflowRunActionRequestHistory: API.OperationMethod<
   GetWorkflowRunActionRequestHistoryError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(192) as any as S.Schema<GetWorkflowRunActionRequestHistoryRequest>,
-  output: __S(191) as any as S.Schema<GetWorkflowRunActionRequestHistoryResponse>,
+  input: GetWorkflowRunActionRequestHistoryRequest,
+  output: GetWorkflowRunActionRequestHistoryResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5541,8 +7711,8 @@ export const GetWorkflowRunActionScopeRepetition: API.OperationMethod<
   GetWorkflowRunActionScopeRepetitionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(193) as any as S.Schema<GetWorkflowRunActionScopeRepetitionRequest>,
-  output: __S(186) as any as S.Schema<GetWorkflowRunActionScopeRepetitionResponse>,
+  input: GetWorkflowRunActionScopeRepetitionRequest,
+  output: GetWorkflowRunActionScopeRepetitionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5556,8 +7726,8 @@ export const GetWorkflowRunOperation: API.OperationMethod<
   GetWorkflowRunOperationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(194) as any as S.Schema<GetWorkflowRunOperationRequest>,
-  output: __S(195) as any as S.Schema<GetWorkflowRunOperationResponse>,
+  input: GetWorkflowRunOperationRequest,
+  output: GetWorkflowRunOperationResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5571,8 +7741,8 @@ export const GetWorkflowTrigger: API.OperationMethod<
   GetWorkflowTriggerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(196) as any as S.Schema<GetWorkflowTriggerRequest>,
-  output: __S(198) as any as S.Schema<GetWorkflowTriggerResponse>,
+  input: GetWorkflowTriggerRequest,
+  output: GetWorkflowTriggerResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5586,8 +7756,8 @@ export const GetWorkflowTriggerHistory: API.OperationMethod<
   GetWorkflowTriggerHistoryError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(199) as any as S.Schema<GetWorkflowTriggerHistoryRequest>,
-  output: __S(201) as any as S.Schema<GetWorkflowTriggerHistoryResponse>,
+  input: GetWorkflowTriggerHistoryRequest,
+  output: GetWorkflowTriggerHistoryResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5601,8 +7771,8 @@ export const GetWorkflowTriggerSchemaJson: API.OperationMethod<
   GetWorkflowTriggerSchemaJsonError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(202) as any as S.Schema<GetWorkflowTriggerSchemaJsonRequest>,
-  output: __S(203) as any as S.Schema<JsonSchema>,
+  input: GetWorkflowTriggerSchemaJsonRequest,
+  output: JsonSchema,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5616,8 +7786,8 @@ export const GetWorkflowVersion: API.OperationMethod<
   GetWorkflowVersionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(204) as any as S.Schema<GetWorkflowVersionRequest>,
-  output: __S(206) as any as S.Schema<GetWorkflowVersionResponse>,
+  input: GetWorkflowVersionRequest,
+  output: GetWorkflowVersionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5631,8 +7801,8 @@ export const IntegrationAccountAgreementsCreateOrUpdate: API.OperationMethod<
   IntegrationAccountAgreementsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(208) as any as S.Schema<IntegrationAccountAgreementsCreateOrUpdateRequest>,
-  output: __S(73) as any as S.Schema<IntegrationAccountAgreementsCreateOrUpdateResponse>,
+  input: IntegrationAccountAgreementsCreateOrUpdateRequest,
+  output: IntegrationAccountAgreementsCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5646,8 +7816,8 @@ export const IntegrationAccountAssembliesCreateOrUpdate: API.OperationMethod<
   IntegrationAccountAssembliesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(211) as any as S.Schema<IntegrationAccountAssembliesCreateOrUpdateRequest>,
-  output: __S(78) as any as S.Schema<IntegrationAccountAssembliesCreateOrUpdateResponse>,
+  input: IntegrationAccountAssembliesCreateOrUpdateRequest,
+  output: IntegrationAccountAssembliesCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5661,8 +7831,8 @@ export const IntegrationAccountBatchConfigurationsCreateOrUpdate: API.OperationM
   IntegrationAccountBatchConfigurationsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(213) as any as S.Schema<IntegrationAccountBatchConfigurationsCreateOrUpdateRequest>,
-  output: __S(214) as any as S.Schema<IntegrationAccountBatchConfigurationsCreateOrUpdateResponse>,
+  input: IntegrationAccountBatchConfigurationsCreateOrUpdateRequest,
+  output: IntegrationAccountBatchConfigurationsCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5676,8 +7846,8 @@ export const IntegrationAccountCertificatesCreateOrUpdate: API.OperationMethod<
   IntegrationAccountCertificatesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(218) as any as S.Schema<IntegrationAccountCertificatesCreateOrUpdateRequest>,
-  output: __S(93) as any as S.Schema<IntegrationAccountCertificatesCreateOrUpdateResponse>,
+  input: IntegrationAccountCertificatesCreateOrUpdateRequest,
+  output: IntegrationAccountCertificatesCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5691,8 +7861,8 @@ export const IntegrationAccountMapsCreateOrUpdate: API.OperationMethod<
   IntegrationAccountMapsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(220) as any as S.Schema<IntegrationAccountMapsCreateOrUpdateRequest>,
-  output: __S(97) as any as S.Schema<IntegrationAccountMapsCreateOrUpdateResponse>,
+  input: IntegrationAccountMapsCreateOrUpdateRequest,
+  output: IntegrationAccountMapsCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5706,8 +7876,8 @@ export const IntegrationAccountPartnersCreateOrUpdate: API.OperationMethod<
   IntegrationAccountPartnersCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(222) as any as S.Schema<IntegrationAccountPartnersCreateOrUpdateRequest>,
-  output: __S(103) as any as S.Schema<IntegrationAccountPartnersCreateOrUpdateResponse>,
+  input: IntegrationAccountPartnersCreateOrUpdateRequest,
+  output: IntegrationAccountPartnersCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5721,8 +7891,8 @@ export const IntegrationAccountSchemasCreateOrUpdate: API.OperationMethod<
   IntegrationAccountSchemasCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(224) as any as S.Schema<IntegrationAccountSchemasCreateOrUpdateRequest>,
-  output: __S(106) as any as S.Schema<IntegrationAccountSchemasCreateOrUpdateResponse>,
+  input: IntegrationAccountSchemasCreateOrUpdateRequest,
+  output: IntegrationAccountSchemasCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5736,8 +7906,8 @@ export const IntegrationAccountsCreateOrUpdate: API.OperationMethod<
   IntegrationAccountsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(226) as any as S.Schema<IntegrationAccountsCreateOrUpdateRequest>,
-  output: __S(24) as any as S.Schema<IntegrationAccountsCreateOrUpdateResponse>,
+  input: IntegrationAccountsCreateOrUpdateRequest,
+  output: IntegrationAccountsCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5751,8 +7921,8 @@ export const IntegrationAccountSessionsCreateOrUpdate: API.OperationMethod<
   IntegrationAccountSessionsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(228) as any as S.Schema<IntegrationAccountSessionsCreateOrUpdateRequest>,
-  output: __S(109) as any as S.Schema<IntegrationAccountSessionsCreateOrUpdateResponse>,
+  input: IntegrationAccountSessionsCreateOrUpdateRequest,
+  output: IntegrationAccountSessionsCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5766,8 +7936,8 @@ export const IntegrationAccountsLogTrackingEvents: API.OperationMethod<
   IntegrationAccountsLogTrackingEventsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(232) as any as S.Schema<IntegrationAccountsLogTrackingEventsRequest>,
-  output: __S(3) as any as S.Schema<IntegrationAccountsLogTrackingEventsResponse>,
+  input: IntegrationAccountsLogTrackingEventsRequest,
+  output: IntegrationAccountsLogTrackingEventsResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5781,8 +7951,8 @@ export const IntegrationServiceEnvironmentsCreateOrUpdate: API.OperationMethod<
   IntegrationServiceEnvironmentsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(240) as any as S.Schema<IntegrationServiceEnvironmentsCreateOrUpdateRequest>,
-  output: __S(125) as any as S.Schema<IntegrationServiceEnvironmentsCreateOrUpdateResponse>,
+  input: IntegrationServiceEnvironmentsCreateOrUpdateRequest,
+  output: IntegrationServiceEnvironmentsCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5796,8 +7966,8 @@ export const ListIntegrationAccountAgreementContentCallbackUrl: API.OperationMet
   ListIntegrationAccountAgreementContentCallbackUrlError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(241) as any as S.Schema<ListIntegrationAccountAgreementContentCallbackUrlRequest>,
-  output: __S(243) as any as S.Schema<WorkflowTriggerCallbackUrl>,
+  input: ListIntegrationAccountAgreementContentCallbackUrlRequest,
+  output: WorkflowTriggerCallbackUrl,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5811,8 +7981,8 @@ export const ListIntegrationAccountAgreements: API.OperationMethod<
   ListIntegrationAccountAgreementsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(244) as any as S.Schema<ListIntegrationAccountAgreementsRequest>,
-  output: __S(246) as any as S.Schema<IntegrationAccountAgreementListResult>,
+  input: ListIntegrationAccountAgreementsRequest,
+  output: IntegrationAccountAgreementListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5826,8 +7996,8 @@ export const ListIntegrationAccountAssemblies: API.OperationMethod<
   ListIntegrationAccountAssembliesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(247) as any as S.Schema<ListIntegrationAccountAssembliesRequest>,
-  output: __S(250) as any as S.Schema<AssemblyCollection>,
+  input: ListIntegrationAccountAssembliesRequest,
+  output: AssemblyCollection,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5841,8 +8011,8 @@ export const ListIntegrationAccountAssemblyContentCallbackUrl: API.OperationMeth
   ListIntegrationAccountAssemblyContentCallbackUrlError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(251) as any as S.Schema<ListIntegrationAccountAssemblyContentCallbackUrlRequest>,
-  output: __S(243) as any as S.Schema<WorkflowTriggerCallbackUrl>,
+  input: ListIntegrationAccountAssemblyContentCallbackUrlRequest,
+  output: WorkflowTriggerCallbackUrl,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5856,8 +8026,8 @@ export const ListIntegrationAccountBatchConfigurations: API.OperationMethod<
   ListIntegrationAccountBatchConfigurationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(252) as any as S.Schema<ListIntegrationAccountBatchConfigurationsRequest>,
-  output: __S(255) as any as S.Schema<BatchConfigurationCollection>,
+  input: ListIntegrationAccountBatchConfigurationsRequest,
+  output: BatchConfigurationCollection,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5871,8 +8041,8 @@ export const ListIntegrationAccountByResourceGroup: API.OperationMethod<
   ListIntegrationAccountByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(256) as any as S.Schema<ListIntegrationAccountByResourceGroupRequest>,
-  output: __S(259) as any as S.Schema<IntegrationAccountListResult>,
+  input: ListIntegrationAccountByResourceGroupRequest,
+  output: IntegrationAccountListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5886,8 +8056,8 @@ export const ListIntegrationAccountBySubscription: API.OperationMethod<
   ListIntegrationAccountBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(260) as any as S.Schema<ListIntegrationAccountBySubscriptionRequest>,
-  output: __S(259) as any as S.Schema<IntegrationAccountListResult>,
+  input: ListIntegrationAccountBySubscriptionRequest,
+  output: IntegrationAccountListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5901,8 +8071,8 @@ export const ListIntegrationAccountCallbackUrl: API.OperationMethod<
   ListIntegrationAccountCallbackUrlError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(261) as any as S.Schema<ListIntegrationAccountCallbackUrlRequest>,
-  output: __S(262) as any as S.Schema<CallbackUrl>,
+  input: ListIntegrationAccountCallbackUrlRequest,
+  output: CallbackUrl,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5916,8 +8086,8 @@ export const ListIntegrationAccountCertificates: API.OperationMethod<
   ListIntegrationAccountCertificatesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(263) as any as S.Schema<ListIntegrationAccountCertificatesRequest>,
-  output: __S(265) as any as S.Schema<IntegrationAccountCertificateListResult>,
+  input: ListIntegrationAccountCertificatesRequest,
+  output: IntegrationAccountCertificateListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5931,8 +8101,8 @@ export const ListIntegrationAccountKeyVaultKeys: API.OperationMethod<
   ListIntegrationAccountKeyVaultKeysError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(266) as any as S.Schema<ListIntegrationAccountKeyVaultKeysRequest>,
-  output: __S(270) as any as S.Schema<KeyVaultKeyCollection>,
+  input: ListIntegrationAccountKeyVaultKeysRequest,
+  output: KeyVaultKeyCollection,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5946,8 +8116,8 @@ export const ListIntegrationAccountMapContentCallbackUrl: API.OperationMethod<
   ListIntegrationAccountMapContentCallbackUrlError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(271) as any as S.Schema<ListIntegrationAccountMapContentCallbackUrlRequest>,
-  output: __S(243) as any as S.Schema<WorkflowTriggerCallbackUrl>,
+  input: ListIntegrationAccountMapContentCallbackUrlRequest,
+  output: WorkflowTriggerCallbackUrl,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5961,8 +8131,8 @@ export const ListIntegrationAccountMaps: API.OperationMethod<
   ListIntegrationAccountMapsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(272) as any as S.Schema<ListIntegrationAccountMapsRequest>,
-  output: __S(275) as any as S.Schema<IntegrationAccountMapListResult>,
+  input: ListIntegrationAccountMapsRequest,
+  output: IntegrationAccountMapListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5976,8 +8146,8 @@ export const ListIntegrationAccountPartnerContentCallbackUrl: API.OperationMetho
   ListIntegrationAccountPartnerContentCallbackUrlError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(276) as any as S.Schema<ListIntegrationAccountPartnerContentCallbackUrlRequest>,
-  output: __S(243) as any as S.Schema<WorkflowTriggerCallbackUrl>,
+  input: ListIntegrationAccountPartnerContentCallbackUrlRequest,
+  output: WorkflowTriggerCallbackUrl,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5991,8 +8161,8 @@ export const ListIntegrationAccountPartners: API.OperationMethod<
   ListIntegrationAccountPartnersError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(277) as any as S.Schema<ListIntegrationAccountPartnersRequest>,
-  output: __S(279) as any as S.Schema<IntegrationAccountPartnerListResult>,
+  input: ListIntegrationAccountPartnersRequest,
+  output: IntegrationAccountPartnerListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6006,8 +8176,8 @@ export const ListIntegrationAccountSchemaContentCallbackUrl: API.OperationMethod
   ListIntegrationAccountSchemaContentCallbackUrlError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(280) as any as S.Schema<ListIntegrationAccountSchemaContentCallbackUrlRequest>,
-  output: __S(243) as any as S.Schema<WorkflowTriggerCallbackUrl>,
+  input: ListIntegrationAccountSchemaContentCallbackUrlRequest,
+  output: WorkflowTriggerCallbackUrl,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6021,8 +8191,8 @@ export const ListIntegrationAccountSchemas: API.OperationMethod<
   ListIntegrationAccountSchemasError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(281) as any as S.Schema<ListIntegrationAccountSchemasRequest>,
-  output: __S(284) as any as S.Schema<IntegrationAccountSchemaListResult>,
+  input: ListIntegrationAccountSchemasRequest,
+  output: IntegrationAccountSchemaListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6036,8 +8206,8 @@ export const ListIntegrationAccountSessions: API.OperationMethod<
   ListIntegrationAccountSessionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(285) as any as S.Schema<ListIntegrationAccountSessionsRequest>,
-  output: __S(287) as any as S.Schema<IntegrationAccountSessionListResult>,
+  input: ListIntegrationAccountSessionsRequest,
+  output: IntegrationAccountSessionListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6051,8 +8221,8 @@ export const ListIntegrationServiceEnvironmentByResourceGroup: API.OperationMeth
   ListIntegrationServiceEnvironmentByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(288) as any as S.Schema<ListIntegrationServiceEnvironmentByResourceGroupRequest>,
-  output: __S(290) as any as S.Schema<IntegrationServiceEnvironmentListResult>,
+  input: ListIntegrationServiceEnvironmentByResourceGroupRequest,
+  output: IntegrationServiceEnvironmentListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6066,8 +8236,8 @@ export const ListIntegrationServiceEnvironmentBySubscription: API.OperationMetho
   ListIntegrationServiceEnvironmentBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(291) as any as S.Schema<ListIntegrationServiceEnvironmentBySubscriptionRequest>,
-  output: __S(290) as any as S.Schema<IntegrationServiceEnvironmentListResult>,
+  input: ListIntegrationServiceEnvironmentBySubscriptionRequest,
+  output: IntegrationServiceEnvironmentListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6081,8 +8251,8 @@ export const ListIntegrationServiceEnvironmentManagedApiOperations: API.Operatio
   ListIntegrationServiceEnvironmentManagedApiOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(292) as any as S.Schema<ListIntegrationServiceEnvironmentManagedApiOperationsRequest>,
-  output: __S(315) as any as S.Schema<ApiOperationListResult>,
+  input: ListIntegrationServiceEnvironmentManagedApiOperationsRequest,
+  output: ApiOperationListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6096,8 +8266,8 @@ export const ListIntegrationServiceEnvironmentManagedApis: API.OperationMethod<
   ListIntegrationServiceEnvironmentManagedApisError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(316) as any as S.Schema<ListIntegrationServiceEnvironmentManagedApisRequest>,
-  output: __S(318) as any as S.Schema<IntegrationServiceEnvironmentManagedApiListResult>,
+  input: ListIntegrationServiceEnvironmentManagedApisRequest,
+  output: IntegrationServiceEnvironmentManagedApiListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6111,8 +8281,8 @@ export const ListIntegrationServiceEnvironmentSkus: API.OperationMethod<
   ListIntegrationServiceEnvironmentSkusError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(319) as any as S.Schema<ListIntegrationServiceEnvironmentSkusRequest>,
-  output: __S(324) as any as S.Schema<IntegrationServiceEnvironmentSkuList>,
+  input: ListIntegrationServiceEnvironmentSkusRequest,
+  output: IntegrationServiceEnvironmentSkuList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6126,8 +8296,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(325) as any as S.Schema<ListOperationsRequest>,
-  output: __S(329) as any as S.Schema<OperationListResult>,
+  input: ListOperationsRequest,
+  output: OperationListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6141,8 +8311,8 @@ export const ListWorkflowByResourceGroup: API.OperationMethod<
   ListWorkflowByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(330) as any as S.Schema<ListWorkflowByResourceGroupRequest>,
-  output: __S(332) as any as S.Schema<WorkflowListResult>,
+  input: ListWorkflowByResourceGroupRequest,
+  output: WorkflowListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6156,8 +8326,8 @@ export const ListWorkflowBySubscription: API.OperationMethod<
   ListWorkflowBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(333) as any as S.Schema<ListWorkflowBySubscriptionRequest>,
-  output: __S(332) as any as S.Schema<WorkflowListResult>,
+  input: ListWorkflowBySubscriptionRequest,
+  output: WorkflowListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6171,8 +8341,8 @@ export const ListWorkflowCallbackUrl: API.OperationMethod<
   ListWorkflowCallbackUrlError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(334) as any as S.Schema<ListWorkflowCallbackUrlRequest>,
-  output: __S(243) as any as S.Schema<WorkflowTriggerCallbackUrl>,
+  input: ListWorkflowCallbackUrlRequest,
+  output: WorkflowTriggerCallbackUrl,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6186,8 +8356,8 @@ export const ListWorkflowRunActionExpressionTraces: API.OperationMethod<
   ListWorkflowRunActionExpressionTracesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(335) as any as S.Schema<ListWorkflowRunActionExpressionTracesRequest>,
-  output: __S(343) as any as S.Schema<ExpressionTraces>,
+  input: ListWorkflowRunActionExpressionTracesRequest,
+  output: ExpressionTraces,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6201,8 +8371,8 @@ export const ListWorkflowRunActionRepetitionExpressionTraces: API.OperationMetho
   ListWorkflowRunActionRepetitionExpressionTracesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(344) as any as S.Schema<ListWorkflowRunActionRepetitionExpressionTracesRequest>,
-  output: __S(343) as any as S.Schema<ExpressionTraces>,
+  input: ListWorkflowRunActionRepetitionExpressionTracesRequest,
+  output: ExpressionTraces,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6216,8 +8386,8 @@ export const ListWorkflowRunActionRepetitions: API.OperationMethod<
   ListWorkflowRunActionRepetitionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(345) as any as S.Schema<ListWorkflowRunActionRepetitionsRequest>,
-  output: __S(347) as any as S.Schema<WorkflowRunActionRepetitionDefinitionCollection>,
+  input: ListWorkflowRunActionRepetitionsRequest,
+  output: WorkflowRunActionRepetitionDefinitionCollection,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6231,8 +8401,8 @@ export const ListWorkflowRunActionRepetitionsRequestHistories: API.OperationMeth
   ListWorkflowRunActionRepetitionsRequestHistoriesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(348) as any as S.Schema<ListWorkflowRunActionRepetitionsRequestHistoriesRequest>,
-  output: __S(351) as any as S.Schema<RequestHistoryListResult>,
+  input: ListWorkflowRunActionRepetitionsRequestHistoriesRequest,
+  output: RequestHistoryListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6246,8 +8416,8 @@ export const ListWorkflowRunActionRequestHistories: API.OperationMethod<
   ListWorkflowRunActionRequestHistoriesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(352) as any as S.Schema<ListWorkflowRunActionRequestHistoriesRequest>,
-  output: __S(351) as any as S.Schema<RequestHistoryListResult>,
+  input: ListWorkflowRunActionRequestHistoriesRequest,
+  output: RequestHistoryListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6261,8 +8431,8 @@ export const ListWorkflowRunActions: API.OperationMethod<
   ListWorkflowRunActionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(353) as any as S.Schema<ListWorkflowRunActionsRequest>,
-  output: __S(356) as any as S.Schema<WorkflowRunActionListResult>,
+  input: ListWorkflowRunActionsRequest,
+  output: WorkflowRunActionListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6276,8 +8446,8 @@ export const ListWorkflowRunActionScopeRepetitions: API.OperationMethod<
   ListWorkflowRunActionScopeRepetitionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(357) as any as S.Schema<ListWorkflowRunActionScopeRepetitionsRequest>,
-  output: __S(347) as any as S.Schema<WorkflowRunActionRepetitionDefinitionCollection>,
+  input: ListWorkflowRunActionScopeRepetitionsRequest,
+  output: WorkflowRunActionRepetitionDefinitionCollection,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6291,8 +8461,8 @@ export const ListWorkflowRuns: API.OperationMethod<
   ListWorkflowRunsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(358) as any as S.Schema<ListWorkflowRunsRequest>,
-  output: __S(360) as any as S.Schema<WorkflowRunListResult>,
+  input: ListWorkflowRunsRequest,
+  output: WorkflowRunListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6306,8 +8476,8 @@ export const ListWorkflowSwagger: API.OperationMethod<
   ListWorkflowSwaggerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(361) as any as S.Schema<ListWorkflowSwaggerRequest>,
-  output: __S(18) as any as S.Schema<ListWorkflowSwaggerResponse>,
+  input: ListWorkflowSwaggerRequest,
+  output: ListWorkflowSwaggerResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6321,8 +8491,8 @@ export const ListWorkflowTriggerCallbackUrl: API.OperationMethod<
   ListWorkflowTriggerCallbackUrlError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(362) as any as S.Schema<ListWorkflowTriggerCallbackUrlRequest>,
-  output: __S(243) as any as S.Schema<WorkflowTriggerCallbackUrl>,
+  input: ListWorkflowTriggerCallbackUrlRequest,
+  output: WorkflowTriggerCallbackUrl,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6336,8 +8506,8 @@ export const ListWorkflowTriggerHistories: API.OperationMethod<
   ListWorkflowTriggerHistoriesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(363) as any as S.Schema<ListWorkflowTriggerHistoriesRequest>,
-  output: __S(366) as any as S.Schema<WorkflowTriggerHistoryListResult>,
+  input: ListWorkflowTriggerHistoriesRequest,
+  output: WorkflowTriggerHistoryListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6351,8 +8521,8 @@ export const ListWorkflowTriggers: API.OperationMethod<
   ListWorkflowTriggersError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(367) as any as S.Schema<ListWorkflowTriggersRequest>,
-  output: __S(370) as any as S.Schema<WorkflowTriggerListResult>,
+  input: ListWorkflowTriggersRequest,
+  output: WorkflowTriggerListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6366,8 +8536,8 @@ export const ListWorkflowVersions: API.OperationMethod<
   ListWorkflowVersionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(371) as any as S.Schema<ListWorkflowVersionsRequest>,
-  output: __S(374) as any as S.Schema<WorkflowVersionListResult>,
+  input: ListWorkflowVersionsRequest,
+  output: WorkflowVersionListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6381,8 +8551,8 @@ export const ListWorkflowVersionTriggerCallbackUrl: API.OperationMethod<
   ListWorkflowVersionTriggerCallbackUrlError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(375) as any as S.Schema<ListWorkflowVersionTriggerCallbackUrlRequest>,
-  output: __S(243) as any as S.Schema<WorkflowTriggerCallbackUrl>,
+  input: ListWorkflowVersionTriggerCallbackUrlRequest,
+  output: WorkflowTriggerCallbackUrl,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6396,8 +8566,8 @@ export const MoveWorkflow: API.OperationMethod<
   MoveWorkflowError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(376) as any as S.Schema<MoveWorkflowRequest>,
-  output: __S(1) as any as S.Schema<MoveWorkflowResponse>,
+  input: MoveWorkflowRequest,
+  output: MoveWorkflowResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6411,8 +8581,8 @@ export const PutIntegrationServiceEnvironmentManagedApis: API.OperationMethod<
   PutIntegrationServiceEnvironmentManagedApisError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(379) as any as S.Schema<PutIntegrationServiceEnvironmentManagedApisRequest>,
-  output: __S(140) as any as S.Schema<PutIntegrationServiceEnvironmentManagedApisResponse>,
+  input: PutIntegrationServiceEnvironmentManagedApisRequest,
+  output: PutIntegrationServiceEnvironmentManagedApisResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6426,8 +8596,8 @@ export const RegenerateIntegrationAccountAccessKey: API.OperationMethod<
   RegenerateIntegrationAccountAccessKeyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(380) as any as S.Schema<RegenerateIntegrationAccountAccessKeyRequest>,
-  output: __S(24) as any as S.Schema<RegenerateIntegrationAccountAccessKeyResponse>,
+  input: RegenerateIntegrationAccountAccessKeyRequest,
+  output: RegenerateIntegrationAccountAccessKeyResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6441,8 +8611,8 @@ export const RegenerateWorkflowAccessKey: API.OperationMethod<
   RegenerateWorkflowAccessKeyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(381) as any as S.Schema<RegenerateWorkflowAccessKeyRequest>,
-  output: __S(3) as any as S.Schema<RegenerateWorkflowAccessKeyResponse>,
+  input: RegenerateWorkflowAccessKeyRequest,
+  output: RegenerateWorkflowAccessKeyResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6456,8 +8626,8 @@ export const ResetWorkflowTrigger: API.OperationMethod<
   ResetWorkflowTriggerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(382) as any as S.Schema<ResetWorkflowTriggerRequest>,
-  output: __S(1) as any as S.Schema<ResetWorkflowTriggerResponse>,
+  input: ResetWorkflowTriggerRequest,
+  output: ResetWorkflowTriggerResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6471,8 +8641,8 @@ export const RestartIntegrationServiceEnvironment: API.OperationMethod<
   RestartIntegrationServiceEnvironmentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(383) as any as S.Schema<RestartIntegrationServiceEnvironmentRequest>,
-  output: __S(3) as any as S.Schema<RestartIntegrationServiceEnvironmentResponse>,
+  input: RestartIntegrationServiceEnvironmentRequest,
+  output: RestartIntegrationServiceEnvironmentResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6486,8 +8656,8 @@ export const SetWorkflowTriggerState: API.OperationMethod<
   SetWorkflowTriggerStateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(385) as any as S.Schema<SetWorkflowTriggerStateRequest>,
-  output: __S(386) as any as S.Schema<SetWorkflowTriggerStateResponse>,
+  input: SetWorkflowTriggerStateRequest,
+  output: SetWorkflowTriggerStateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6501,8 +8671,8 @@ export const TriggerRunWorkflow: API.OperationMethod<
   TriggerRunWorkflowError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(387) as any as S.Schema<TriggerRunWorkflowRequest>,
-  output: __S(1) as any as S.Schema<TriggerRunWorkflowResponse>,
+  input: TriggerRunWorkflowRequest,
+  output: TriggerRunWorkflowResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6516,8 +8686,8 @@ export const UpdateIntegrationAccount: API.OperationMethod<
   UpdateIntegrationAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(388) as any as S.Schema<UpdateIntegrationAccountRequest>,
-  output: __S(24) as any as S.Schema<UpdateIntegrationAccountResponse>,
+  input: UpdateIntegrationAccountRequest,
+  output: UpdateIntegrationAccountResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6531,8 +8701,8 @@ export const UpdateIntegrationServiceEnvironment: API.OperationMethod<
   UpdateIntegrationServiceEnvironmentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(389) as any as S.Schema<UpdateIntegrationServiceEnvironmentRequest>,
-  output: __S(125) as any as S.Schema<UpdateIntegrationServiceEnvironmentResponse>,
+  input: UpdateIntegrationServiceEnvironmentRequest,
+  output: UpdateIntegrationServiceEnvironmentResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6546,8 +8716,8 @@ export const UpdateWorkflow: API.OperationMethod<
   UpdateWorkflowError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(390) as any as S.Schema<UpdateWorkflowRequest>,
-  output: __S(166) as any as S.Schema<UpdateWorkflowResponse>,
+  input: UpdateWorkflowRequest,
+  output: UpdateWorkflowResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6561,8 +8731,8 @@ export const ValidateWorkflowByLocation: API.OperationMethod<
   ValidateWorkflowByLocationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(392) as any as S.Schema<ValidateWorkflowByLocationRequest>,
-  output: __S(3) as any as S.Schema<ValidateWorkflowByLocationResponse>,
+  input: ValidateWorkflowByLocationRequest,
+  output: ValidateWorkflowByLocationResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6576,8 +8746,8 @@ export const ValidateWorkflowByResourceGroup: API.OperationMethod<
   ValidateWorkflowByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(393) as any as S.Schema<ValidateWorkflowByResourceGroupRequest>,
-  output: __S(3) as any as S.Schema<ValidateWorkflowByResourceGroupResponse>,
+  input: ValidateWorkflowByResourceGroupRequest,
+  output: ValidateWorkflowByResourceGroupResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6591,8 +8761,8 @@ export const WorkflowsCreateOrUpdate: API.OperationMethod<
   WorkflowsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(394) as any as S.Schema<WorkflowsCreateOrUpdateRequest>,
-  output: __S(395) as any as S.Schema<WorkflowsCreateOrUpdateResponse>,
+  input: WorkflowsCreateOrUpdateRequest,
+  output: WorkflowsCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6606,8 +8776,8 @@ export const WorkflowTriggerHistoriesResubmit: API.OperationMethod<
   WorkflowTriggerHistoriesResubmitError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(396) as any as S.Schema<WorkflowTriggerHistoriesResubmitRequest>,
-  output: __S(3) as any as S.Schema<WorkflowTriggerHistoriesResubmitResponse>,
+  input: WorkflowTriggerHistoriesResubmitRequest,
+  output: WorkflowTriggerHistoriesResubmitResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6941,8 +9111,8 @@ function __c2(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          integrationServiceEnvironment: S.optional(__S(21)),
-          state: S.optional(S.String),
+          integrationServiceEnvironment: S.optional(ResourceReference),
+          state: S.optional(WorkflowState),
         }),
       ).annotate({
         identifier: "IntegrationAccountProperties",
@@ -6950,7 +9120,7 @@ function __c2(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          name: S.String,
+          name: IntegrationAccountSkuName,
         }),
       ).annotate({ identifier: "IntegrationAccountSku" });
   }
@@ -6964,9 +9134,9 @@ function __c3(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           location: S.optional(S.String),
-          tags: S.optional(__S(20)),
-          properties: S.optional(__S(22)),
-          sku: S.optional(__S(23)),
+          tags: S.optional(GetIntegrationAccountResponseTagsMap),
+          properties: S.optional(IntegrationAccountProperties),
+          sku: S.optional(IntegrationAccountSku),
         }),
       ).annotate({
         identifier: "GetIntegrationAccountResponse",
@@ -7018,7 +9188,7 @@ function __c3(j: number): any {
           signOutboundMDNIfOptional: S.Boolean,
           mdnText: S.optional(S.String),
           sendInboundMDNToMessageBox: S.Boolean,
-          micHashingAlgorithm: S.String,
+          micHashingAlgorithm: HashingAlgorithm,
         }),
       ).annotate({ identifier: "AS2MdnSettings" });
     case 5:
@@ -7047,8 +9217,8 @@ function __c3(j: number): any {
           interchangeDuplicatesValidityDays: S.Number,
           checkCertificateRevocationListOnSend: S.Boolean,
           checkCertificateRevocationListOnReceive: S.Boolean,
-          encryptionAlgorithm: S.String,
-          signingAlgorithm: S.optional(S.String),
+          encryptionAlgorithm: EncryptionAlgorithm,
+          signingAlgorithm: S.optional(SigningAlgorithm),
         }),
       ).annotate({ identifier: "AS2ValidationSettings" });
     case 7:
@@ -7075,28 +9245,28 @@ function __c4(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          messageConnectionSettings: __S(27),
-          acknowledgementConnectionSettings: __S(27),
-          mdnSettings: __S(28),
-          securitySettings: __S(29),
-          validationSettings: __S(30),
-          envelopeSettings: __S(31),
-          errorSettings: __S(32),
+          messageConnectionSettings: AS2MessageConnectionSettings,
+          acknowledgementConnectionSettings: AS2AcknowledgementConnectionSettings,
+          mdnSettings: AS2MdnSettings,
+          securitySettings: AS2SecuritySettings,
+          validationSettings: AS2ValidationSettings,
+          envelopeSettings: AS2EnvelopeSettings,
+          errorSettings: AS2ErrorSettings,
         }),
       ).annotate({ identifier: "AS2ProtocolSettings" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          senderBusinessIdentity: __S(26),
-          receiverBusinessIdentity: __S(26),
-          protocolSettings: __S(33),
+          senderBusinessIdentity: BusinessIdentity,
+          receiverBusinessIdentity: BusinessIdentity,
+          protocolSettings: AS2ProtocolSettings,
         }),
       ).annotate({ identifier: "AS2OneWayAgreement" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          receiveAgreement: __S(34),
-          sendAgreement: __S(34),
+          receiveAgreement: AS2OneWayAgreement,
+          sendAgreement: AS2OneWayAgreement,
         }),
       ).annotate({ identifier: "AS2AgreementContent" });
     case 4:
@@ -7111,7 +9281,7 @@ function __c4(j: number): any {
           validateXSDTypes: S.Boolean,
           allowLeadingAndTrailingSpacesAndZeroes: S.Boolean,
           trimLeadingAndTrailingSpacesAndZeroes: S.Boolean,
-          trailingSeparatorPolicy: S.String,
+          trailingSeparatorPolicy: TrailingSeparatorPolicy,
         }),
       ).annotate({ identifier: "X12ValidationSettings" });
     case 5:
@@ -7122,8 +9292,8 @@ function __c4(j: number): any {
           replaceSeparatorsInPayload: S.Boolean,
           replaceCharacter: S.Number,
           segmentTerminator: S.Number,
-          characterSet: S.String,
-          segmentTerminatorSuffix: S.String,
+          characterSet: X12CharacterSet,
+          segmentTerminatorSuffix: SegmentTerminatorSuffix,
         }),
       ).annotate({ identifier: "X12FramingSettings" });
     case 6:
@@ -7150,9 +9320,9 @@ function __c4(j: number): any {
           transactionSetControlNumberPrefix: S.optional(S.String),
           transactionSetControlNumberSuffix: S.optional(S.String),
           overwriteExistingTransactionSetControlNumber: S.Boolean,
-          groupHeaderDateFormat: S.String,
-          groupHeaderTimeFormat: S.String,
-          usageIndicator: S.String,
+          groupHeaderDateFormat: X12DateFormat,
+          groupHeaderTimeFormat: X12TimeFormat,
+          usageIndicator: UsageIndicator,
         }),
       ).annotate({ identifier: "X12EnvelopeSettings" });
     case 7:
@@ -7184,7 +9354,7 @@ function __c5(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          messageFilterType: S.String,
+          messageFilterType: MessageFilterType,
         }),
       ).annotate({ identifier: "X12MessageFilter" });
     case 1:
@@ -7218,12 +9388,12 @@ function __c5(j: number): any {
           senderApplicationId: S.String,
           receiverApplicationId: S.String,
           functionalIdentifierCode: S.optional(S.String),
-          dateFormat: S.String,
-          timeFormat: S.String,
+          dateFormat: X12DateFormat,
+          timeFormat: X12TimeFormat,
         }),
       ).annotate({ identifier: "X12EnvelopeOverride" });
     case 4:
-      return S.Array(__S(43));
+      return S.Array(X12EnvelopeOverride);
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -7233,11 +9403,11 @@ function __c5(j: number): any {
           allowLeadingAndTrailingSpacesAndZeroes: S.Boolean,
           validateCharacterSet: S.Boolean,
           trimLeadingAndTrailingSpacesAndZeroes: S.Boolean,
-          trailingSeparatorPolicy: S.String,
+          trailingSeparatorPolicy: TrailingSeparatorPolicy,
         }),
       ).annotate({ identifier: "X12ValidationOverride" });
     case 6:
-      return S.Array(__S(45));
+      return S.Array(X12ValidationOverride);
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -7249,7 +9419,7 @@ function __c5(j: number): any {
 function __c6(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(47));
+      return S.Array(X12MessageIdentifier);
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -7260,7 +9430,7 @@ function __c6(j: number): any {
         }),
       ).annotate({ identifier: "X12SchemaReference" });
     case 2:
-      return S.Array(__S(49));
+      return S.Array(X12SchemaReference);
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -7269,44 +9439,44 @@ function __c6(j: number): any {
           dataElementSeparator: S.Number,
           componentSeparator: S.Number,
           segmentTerminator: S.Number,
-          segmentTerminatorSuffix: S.String,
+          segmentTerminatorSuffix: SegmentTerminatorSuffix,
           replaceCharacter: S.Number,
           replaceSeparatorsInPayload: S.Boolean,
           targetNamespace: S.optional(S.String),
         }),
       ).annotate({ identifier: "X12DelimiterOverrides" });
     case 4:
-      return S.Array(__S(51));
+      return S.Array(X12DelimiterOverrides);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          validationSettings: __S(36),
-          framingSettings: __S(37),
-          envelopeSettings: __S(38),
-          acknowledgementSettings: __S(39),
-          messageFilter: __S(40),
-          securitySettings: __S(41),
-          processingSettings: __S(42),
-          envelopeOverrides: S.optional(__S(44)),
-          validationOverrides: S.optional(__S(46)),
-          messageFilterList: S.optional(__S(48)),
-          schemaReferences: __S(50),
-          x12DelimiterOverrides: S.optional(__S(52)),
+          validationSettings: X12ValidationSettings,
+          framingSettings: X12FramingSettings,
+          envelopeSettings: X12EnvelopeSettings,
+          acknowledgementSettings: X12AcknowledgementSettings,
+          messageFilter: X12MessageFilter,
+          securitySettings: X12SecuritySettings,
+          processingSettings: X12ProcessingSettings,
+          envelopeOverrides: S.optional(X12ProtocolSettingsEnvelopeOverridesList),
+          validationOverrides: S.optional(X12ProtocolSettingsValidationOverridesList),
+          messageFilterList: S.optional(X12ProtocolSettingsMessageFilterListList),
+          schemaReferences: X12ProtocolSettingsSchemaReferencesList,
+          x12DelimiterOverrides: S.optional(X12ProtocolSettingsX12DelimiterOverridesList),
         }),
       ).annotate({ identifier: "X12ProtocolSettings" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          senderBusinessIdentity: __S(26),
-          receiverBusinessIdentity: __S(26),
-          protocolSettings: __S(53),
+          senderBusinessIdentity: BusinessIdentity,
+          receiverBusinessIdentity: BusinessIdentity,
+          protocolSettings: X12ProtocolSettings,
         }),
       ).annotate({ identifier: "X12OneWayAgreement" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          receiveAgreement: __S(54),
-          sendAgreement: __S(54),
+          receiveAgreement: X12OneWayAgreement,
+          sendAgreement: X12OneWayAgreement,
         }),
       ).annotate({ identifier: "X12AgreementContent" });
   }
@@ -7324,9 +9494,9 @@ function __c7(j: number): any {
           segmentTerminator: S.Number,
           releaseIndicator: S.Number,
           repetitionSeparator: S.Number,
-          characterSet: S.String,
-          decimalPointIndicator: S.String,
-          segmentTerminatorSuffix: S.String,
+          characterSet: EdifactCharacterSet,
+          decimalPointIndicator: EdifactDecimalIndicator,
+          segmentTerminatorSuffix: SegmentTerminatorSuffix,
         }),
       ).annotate({ identifier: "EdifactFramingSettings" });
     case 1:
@@ -7426,7 +9596,7 @@ function __c7(j: number): any {
         }),
       ).annotate({ identifier: "EdifactEnvelopeOverride" });
     case 5:
-      return S.Array(__S(60));
+      return S.Array(EdifactEnvelopeOverride);
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -7440,7 +9610,7 @@ function __c7(j: number): any {
         }),
       ).annotate({ identifier: "EdifactSchemaReference" });
     case 7:
-      return S.Array(__S(62));
+      return S.Array(EdifactSchemaReference);
   }
 }
 function __c8(j: number): any {
@@ -7453,14 +9623,14 @@ function __c8(j: number): any {
           validateEDITypes: S.Boolean,
           validateXSDTypes: S.Boolean,
           allowLeadingAndTrailingSpacesAndZeroes: S.Boolean,
-          trailingSeparatorPolicy: S.String,
+          trailingSeparatorPolicy: TrailingSeparatorPolicy,
           trimLeadingAndTrailingSpacesAndZeroes: S.Boolean,
         }),
       ).annotate({
         identifier: "EdifactValidationOverride",
       });
     case 1:
-      return S.Array(__S(64));
+      return S.Array(EdifactValidationOverride);
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -7471,52 +9641,54 @@ function __c8(j: number): any {
           componentSeparator: S.Number,
           segmentTerminator: S.Number,
           repetitionSeparator: S.Number,
-          segmentTerminatorSuffix: S.String,
-          decimalPointIndicator: S.String,
+          segmentTerminatorSuffix: SegmentTerminatorSuffix,
+          decimalPointIndicator: EdifactDecimalIndicator,
           releaseIndicator: S.Number,
           messageAssociationAssignedCode: S.optional(S.String),
           targetNamespace: S.optional(S.String),
         }),
       ).annotate({ identifier: "EdifactDelimiterOverride" });
     case 3:
-      return S.Array(__S(66));
+      return S.Array(EdifactDelimiterOverride);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          validationSettings: __S(36),
-          framingSettings: __S(56),
-          envelopeSettings: __S(57),
-          acknowledgementSettings: __S(58),
-          messageFilter: __S(40),
-          processingSettings: __S(59),
-          envelopeOverrides: S.optional(__S(61)),
-          messageFilterList: S.optional(__S(48)),
-          schemaReferences: __S(63),
-          validationOverrides: S.optional(__S(65)),
-          edifactDelimiterOverrides: S.optional(__S(67)),
+          validationSettings: X12ValidationSettings,
+          framingSettings: EdifactFramingSettings,
+          envelopeSettings: EdifactEnvelopeSettings,
+          acknowledgementSettings: EdifactAcknowledgementSettings,
+          messageFilter: X12MessageFilter,
+          processingSettings: EdifactProcessingSettings,
+          envelopeOverrides: S.optional(EdifactProtocolSettingsEnvelopeOverridesList),
+          messageFilterList: S.optional(EdifactProtocolSettingsMessageFilterListList),
+          schemaReferences: EdifactProtocolSettingsSchemaReferencesList,
+          validationOverrides: S.optional(EdifactProtocolSettingsValidationOverridesList),
+          edifactDelimiterOverrides: S.optional(
+            EdifactProtocolSettingsEdifactDelimiterOverridesList,
+          ),
         }),
       ).annotate({ identifier: "EdifactProtocolSettings" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          senderBusinessIdentity: __S(26),
-          receiverBusinessIdentity: __S(26),
-          protocolSettings: __S(68),
+          senderBusinessIdentity: BusinessIdentity,
+          receiverBusinessIdentity: BusinessIdentity,
+          protocolSettings: EdifactProtocolSettings,
         }),
       ).annotate({ identifier: "EdifactOneWayAgreement" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          receiveAgreement: __S(69),
-          sendAgreement: __S(69),
+          receiveAgreement: EdifactOneWayAgreement,
+          sendAgreement: EdifactOneWayAgreement,
         }),
       ).annotate({ identifier: "EdifactAgreementContent" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          aS2: S.optional(__S(35)),
-          x12: S.optional(__S(55)),
-          edifact: S.optional(__S(70)),
+          aS2: S.optional(AS2AgreementContent),
+          x12: S.optional(X12AgreementContent),
+          edifact: S.optional(EdifactAgreementContent),
         }),
       ).annotate({ identifier: "AgreementContent" });
   }
@@ -7529,12 +9701,12 @@ function __c9(j: number): any {
           createdTime: S.optional(S.String),
           changedTime: S.optional(S.String),
           metadata: S.optional(S.Unknown),
-          agreementType: S.String,
+          agreementType: AgreementType,
           hostPartner: S.String,
           guestPartner: S.String,
-          hostIdentity: __S(26),
-          guestIdentity: __S(26),
-          content: __S(71),
+          hostIdentity: BusinessIdentity,
+          guestIdentity: BusinessIdentity,
+          content: AgreementContent,
         }),
       ).annotate({
         identifier: "IntegrationAccountAgreementProperties",
@@ -7546,8 +9718,8 @@ function __c9(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           location: S.optional(S.String),
-          tags: S.optional(__S(20)),
-          properties: __S(72),
+          tags: S.optional(GetIntegrationAccountAgreementResponseTagsMap),
+          properties: IntegrationAccountAgreementProperties,
         }),
       ).annotate({
         identifier: "GetIntegrationAccountAgreementResponse",
@@ -7583,7 +9755,7 @@ function __c9(j: number): any {
           uri: S.optional(S.String),
           contentVersion: S.optional(S.String),
           contentSize: S.optional(S.Number),
-          contentHash: S.optional(__S(75)),
+          contentHash: S.optional(ContentHash),
           metadata: S.optional(S.Unknown),
         }),
       ).annotate({ identifier: "ContentLink" });
@@ -7595,7 +9767,7 @@ function __c9(j: number): any {
           metadata: S.optional(S.Unknown),
           content: S.optional(S.Unknown),
           contentType: S.optional(S.String),
-          contentLink: S.optional(__S(76)),
+          contentLink: S.optional(ContentLink),
           assemblyName: S.String,
           assemblyVersion: S.optional(S.String),
           assemblyCulture: S.optional(S.String),
@@ -7609,8 +9781,8 @@ function __c9(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           location: S.optional(S.String),
-          tags: S.optional(__S(20)),
-          properties: __S(77),
+          tags: S.optional(GetIntegrationAccountAssemblyResponseTagsMap),
+          properties: AssemblyProperties,
         }),
       ).annotate({
         identifier: "GetIntegrationAccountAssemblyResponse",
@@ -7640,37 +9812,37 @@ function __c10(j: number): any {
     case 0:
       return S.Array(S.Number);
     case 1:
-      return S.Array(S.String);
+      return S.Array(RecurrenceScheduleWeekDaysItem);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          day: S.optional(S.String),
+          day: S.optional(DayOfWeek),
           occurrence: S.optional(S.Number),
         }),
       ).annotate({
         identifier: "RecurrenceScheduleOccurrence",
       });
     case 3:
-      return S.Array(__S(82));
+      return S.Array(RecurrenceScheduleOccurrence);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          minutes: S.optional(__S(80)),
-          hours: S.optional(__S(80)),
-          weekDays: S.optional(__S(81)),
-          monthDays: S.optional(__S(80)),
-          monthlyOccurrences: S.optional(__S(83)),
+          minutes: S.optional(RecurrenceScheduleMinutesList),
+          hours: S.optional(RecurrenceScheduleHoursList),
+          weekDays: S.optional(RecurrenceScheduleWeekDaysList),
+          monthDays: S.optional(RecurrenceScheduleMonthDaysList),
+          monthlyOccurrences: S.optional(RecurrenceScheduleMonthlyOccurrencesList),
         }),
       ).annotate({ identifier: "RecurrenceSchedule" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          frequency: S.optional(S.String),
+          frequency: S.optional(RecurrenceFrequency),
           interval: S.optional(S.Number),
           startTime: S.optional(S.String),
           endTime: S.optional(S.String),
           timeZone: S.optional(S.String),
-          schedule: S.optional(__S(84)),
+          schedule: S.optional(RecurrenceSchedule),
         }),
       ).annotate({
         identifier: "WorkflowTriggerRecurrence",
@@ -7680,7 +9852,7 @@ function __c10(j: number): any {
         S.Struct({
           messageCount: S.optional(S.Number),
           batchSize: S.optional(S.Number),
-          recurrence: S.optional(__S(85)),
+          recurrence: S.optional(WorkflowTriggerRecurrence),
         }),
       ).annotate({ identifier: "BatchReleaseCriteria" });
     case 7:
@@ -7690,7 +9862,7 @@ function __c10(j: number): any {
           changedTime: S.optional(S.String),
           metadata: S.optional(S.Unknown),
           batchGroupName: S.String,
-          releaseCriteria: __S(86),
+          releaseCriteria: BatchReleaseCriteria,
         }),
       ).annotate({
         identifier: "BatchConfigurationProperties",
@@ -7706,8 +9878,8 @@ function __c11(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           location: S.optional(S.String),
-          tags: S.optional(__S(20)),
-          properties: __S(87),
+          tags: S.optional(GetIntegrationAccountBatchConfigurationResponseTagsMap),
+          properties: BatchConfigurationProperties,
         }),
       ).annotate({
         identifier: "GetIntegrationAccountBatchConfigurationResponse",
@@ -7743,7 +9915,7 @@ function __c11(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          keyVault: __S(90),
+          keyVault: KeyVaultKeyReferenceKeyVault,
           keyName: S.String,
           keyVersion: S.optional(S.String),
         }),
@@ -7754,7 +9926,7 @@ function __c11(j: number): any {
           createdTime: S.optional(S.String),
           changedTime: S.optional(S.String),
           metadata: S.optional(S.Unknown),
-          key: S.optional(__S(91)),
+          key: S.optional(KeyVaultKeyReference),
           publicCertificate: S.optional(S.String),
         }),
       ).annotate({
@@ -7767,8 +9939,8 @@ function __c11(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           location: S.optional(S.String),
-          tags: S.optional(__S(20)),
-          properties: __S(92),
+          tags: S.optional(GetIntegrationAccountCertificateResponseTagsMap),
+          properties: IntegrationAccountCertificateProperties,
         }),
       ).annotate({
         identifier: "GetIntegrationAccountCertificateResponse",
@@ -7806,13 +9978,13 @@ function __c12(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          mapType: S.String,
-          parametersSchema: S.optional(__S(95)),
+          mapType: MapType,
+          parametersSchema: S.optional(IntegrationAccountMapPropertiesParametersSchema),
           createdTime: S.optional(S.String),
           changedTime: S.optional(S.String),
           content: S.optional(S.Unknown),
           contentType: S.optional(S.String),
-          contentLink: S.optional(__S(76)),
+          contentLink: S.optional(ContentLink),
           metadata: S.optional(S.Unknown),
         }),
       ).annotate({
@@ -7825,8 +9997,8 @@ function __c12(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           location: S.optional(S.String),
-          tags: S.optional(__S(20)),
-          properties: __S(96),
+          tags: S.optional(GetIntegrationAccountMapResponseTagsMap),
+          properties: IntegrationAccountMapProperties,
         }),
       ).annotate({
         identifier: "GetIntegrationAccountMapResponse",
@@ -7850,27 +10022,27 @@ function __c12(j: number): any {
         identifier: "GetIntegrationAccountPartnerRequest",
       });
     case 3:
-      return S.Array(__S(26));
+      return S.Array(BusinessIdentity);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          businessIdentities: S.optional(__S(99)),
+          businessIdentities: S.optional(B2BPartnerContentBusinessIdentitiesList),
         }),
       ).annotate({ identifier: "B2BPartnerContent" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          b2b: S.optional(__S(100)),
+          b2b: S.optional(B2BPartnerContent),
         }),
       ).annotate({ identifier: "PartnerContent" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          partnerType: S.String,
+          partnerType: PartnerType,
           createdTime: S.optional(S.String),
           changedTime: S.optional(S.String),
           metadata: S.optional(S.Unknown),
-          content: __S(101),
+          content: PartnerContent,
         }),
       ).annotate({
         identifier: "IntegrationAccountPartnerProperties",
@@ -7882,8 +10054,8 @@ function __c12(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           location: S.optional(S.String),
-          tags: S.optional(__S(20)),
-          properties: __S(102),
+          tags: S.optional(GetIntegrationAccountPartnerResponseTagsMap),
+          properties: IntegrationAccountPartnerProperties,
         }),
       ).annotate({
         identifier: "GetIntegrationAccountPartnerResponse",
@@ -7913,7 +10085,7 @@ function __c13(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          schemaType: S.String,
+          schemaType: SchemaType,
           targetNamespace: S.optional(S.String),
           documentName: S.optional(S.String),
           fileName: S.optional(S.String),
@@ -7922,7 +10094,7 @@ function __c13(j: number): any {
           metadata: S.optional(S.Unknown),
           content: S.optional(S.Unknown),
           contentType: S.optional(S.String),
-          contentLink: S.optional(__S(76)),
+          contentLink: S.optional(ContentLink),
         }),
       ).annotate({
         identifier: "IntegrationAccountSchemaProperties",
@@ -7934,8 +10106,8 @@ function __c13(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           location: S.optional(S.String),
-          tags: S.optional(__S(20)),
-          properties: __S(105),
+          tags: S.optional(GetIntegrationAccountSchemaResponseTagsMap),
+          properties: IntegrationAccountSchemaProperties,
         }),
       ).annotate({
         identifier: "GetIntegrationAccountSchemaResponse",
@@ -7975,8 +10147,8 @@ function __c13(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           location: S.optional(S.String),
-          tags: S.optional(__S(20)),
-          properties: __S(108),
+          tags: S.optional(GetIntegrationAccountSessionResponseTagsMap),
+          properties: IntegrationAccountSessionProperties,
         }),
       ).annotate({
         identifier: "GetIntegrationAccountSessionResponse",
@@ -8009,19 +10181,19 @@ function __c13(j: number): any {
 function __c14(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(111));
+      return S.Array(IpAddress);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          outgoingIpAddresses: S.optional(__S(112)),
-          accessEndpointIpAddresses: S.optional(__S(112)),
+          outgoingIpAddresses: S.optional(FlowEndpointsOutgoingIpAddressesList),
+          accessEndpointIpAddresses: S.optional(FlowEndpointsAccessEndpointIpAddressesList),
         }),
       ).annotate({ identifier: "FlowEndpoints" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          workflow: S.optional(__S(113)),
-          connector: S.optional(__S(113)),
+          workflow: S.optional(FlowEndpoints),
+          connector: S.optional(FlowEndpoints),
         }),
       ).annotate({
         identifier: "FlowEndpointsConfiguration",
@@ -8029,25 +10201,25 @@ function __c14(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(S.String),
+          type: S.optional(IntegrationServiceEnvironmentAccessEndpointType),
         }),
       ).annotate({
         identifier: "IntegrationServiceEnvironmentAccessEndpoint",
       });
     case 4:
-      return S.Array(__S(21));
+      return S.Array(ResourceReference);
     case 5:
       return S.suspend(() =>
         S.Struct({
           virtualNetworkAddressSpace: S.optional(S.String),
-          accessEndpoint: S.optional(__S(115)),
-          subnets: S.optional(__S(116)),
+          accessEndpoint: S.optional(IntegrationServiceEnvironmentAccessEndpoint),
+          subnets: S.optional(NetworkConfigurationSubnetsList),
         }),
       ).annotate({ identifier: "NetworkConfiguration" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          keyVault: S.optional(__S(21)),
+          keyVault: S.optional(ResourceReference),
           keyName: S.optional(S.String),
           keyVersion: S.optional(S.String),
         }),
@@ -8057,7 +10229,7 @@ function __c14(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          encryptionKeyReference: S.optional(__S(118)),
+          encryptionKeyReference: S.optional(IntegrationServiceEnvironmenEncryptionKeyReference),
         }),
       ).annotate({
         identifier: "IntegrationServiceEnvironmenEncryptionConfiguration",
@@ -8069,12 +10241,12 @@ function __c15(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          provisioningState: S.optional(S.String),
-          state: S.optional(S.String),
+          provisioningState: S.optional(WorkflowProvisioningState),
+          state: S.optional(WorkflowState),
           integrationServiceEnvironmentId: S.optional(S.String),
-          endpointsConfiguration: S.optional(__S(114)),
-          networkConfiguration: S.optional(__S(117)),
-          encryptionConfiguration: S.optional(__S(119)),
+          endpointsConfiguration: S.optional(FlowEndpointsConfiguration),
+          networkConfiguration: S.optional(NetworkConfiguration),
+          encryptionConfiguration: S.optional(IntegrationServiceEnvironmenEncryptionConfiguration),
         }),
       ).annotate({
         identifier: "IntegrationServiceEnvironmentProperties",
@@ -8082,7 +10254,7 @@ function __c15(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          name: S.optional(S.String),
+          name: S.optional(IntegrationServiceEnvironmentSkuName),
           capacity: S.optional(S.Number),
         }),
       ).annotate({
@@ -8096,14 +10268,14 @@ function __c15(j: number): any {
         }),
       ).annotate({ identifier: "UserAssignedIdentity" });
     case 3:
-      return S.Record(S.String, __S(122));
+      return S.Record(S.String, UserAssignedIdentity);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          type: S.String,
+          type: ManagedServiceIdentityType,
           tenantId: S.optional(S.String),
           principalId: S.optional(S.String),
-          userAssignedIdentities: S.optional(__S(123)),
+          userAssignedIdentities: S.optional(ManagedServiceIdentityUserAssignedIdentitiesMap),
         }),
       ).annotate({ identifier: "ManagedServiceIdentity" });
     case 5:
@@ -8113,10 +10285,10 @@ function __c15(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           location: S.optional(S.String),
-          tags: S.optional(__S(20)),
-          properties: S.optional(__S(120)),
-          sku: S.optional(__S(121)),
-          identity: S.optional(__S(124)),
+          tags: S.optional(GetIntegrationServiceEnvironmentResponseTagsMap),
+          properties: S.optional(IntegrationServiceEnvironmentProperties),
+          sku: S.optional(IntegrationServiceEnvironmentSku),
+          identity: S.optional(ManagedServiceIdentity),
         }),
       ).annotate({
         identifier: "GetIntegrationServiceEnvironmentResponse",
@@ -8151,7 +10323,7 @@ function __c16(j: number): any {
       return S.suspend(() =>
         S.Struct({
           qualifiedName: S.optional(S.String),
-          EndpointQualifiedNames: S.optional(__S(128)),
+          EndpointQualifiedNames: S.optional(WsdlServiceEndpointQualifiedNamesList),
         }),
       ).annotate({ identifier: "WsdlService" });
     case 2:
@@ -8161,7 +10333,7 @@ function __c16(j: number): any {
           isRequired: S.optional(S.Boolean),
           displayName: S.optional(S.String),
           description: S.optional(S.String),
-          visibility: S.optional(S.String),
+          visibility: S.optional(ApiDeploymentParameterVisibility),
         }),
       ).annotate({
         identifier: "ApiDeploymentParameterMetadata",
@@ -8169,8 +10341,8 @@ function __c16(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          packageContentLink: S.optional(__S(130)),
-          redisCacheConnectionString: S.optional(__S(130)),
+          packageContentLink: S.optional(ApiDeploymentParameterMetadata),
+          redisCacheConnectionString: S.optional(ApiDeploymentParameterMetadata),
         }),
       ).annotate({
         identifier: "ApiDeploymentParameterMetadataSet",
@@ -8181,13 +10353,13 @@ function __c16(j: number): any {
           source: S.optional(S.String),
           brandColor: S.optional(S.String),
           hideKey: S.optional(S.String),
-          tags: S.optional(__S(20)),
-          ApiType: S.optional(S.String),
-          wsdlService: S.optional(__S(129)),
-          wsdlImportMethod: S.optional(S.String),
+          tags: S.optional(ApiResourceMetadataTagsMap),
+          ApiType: S.optional(ApiType),
+          wsdlService: S.optional(WsdlService),
+          wsdlImportMethod: S.optional(WsdlImportMethod),
           connectionType: S.optional(S.String),
-          provisioningState: S.optional(S.String),
-          deploymentParameters: S.optional(__S(131)),
+          provisioningState: S.optional(WorkflowProvisioningState),
+          deploymentParameters: S.optional(ApiDeploymentParameterMetadataSet),
         }),
       ).annotate({ identifier: "ApiResourceMetadata" });
     case 5:
@@ -8200,7 +10372,7 @@ function __c16(j: number): any {
           description: S.optional(S.String),
           termsOfUseUrl: S.optional(S.String),
           releaseTag: S.optional(S.String),
-          tier: S.optional(S.String),
+          tier: S.optional(ApiTier),
         }),
       ).annotate({
         identifier: "ApiResourceGeneralInformation",
@@ -8234,7 +10406,7 @@ function __c17(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          contentLinkDefinition: S.optional(__S(76)),
+          contentLinkDefinition: S.optional(ContentLink),
         }),
       ).annotate({
         identifier: "IntegrationServiceEnvironmentManagedApiDeploymentParameters",
@@ -8243,19 +10415,25 @@ function __c17(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          connectionParameters: S.optional(__S(127)),
-          metadata: S.optional(__S(132)),
-          runtimeUrls: S.optional(__S(133)),
-          generalInformation: S.optional(__S(134)),
-          capabilities: S.optional(__S(133)),
-          backendService: S.optional(__S(135)),
-          policies: S.optional(__S(136)),
+          connectionParameters: S.optional(
+            IntegrationServiceEnvironmentManagedApiPropertiesConnectionParametersMap,
+          ),
+          metadata: S.optional(ApiResourceMetadata),
+          runtimeUrls: S.optional(IntegrationServiceEnvironmentManagedApiPropertiesRuntimeUrlsList),
+          generalInformation: S.optional(ApiResourceGeneralInformation),
+          capabilities: S.optional(
+            IntegrationServiceEnvironmentManagedApiPropertiesCapabilitiesList,
+          ),
+          backendService: S.optional(ApiResourceBackendService),
+          policies: S.optional(ApiResourcePolicies),
           apiDefinitionUrl: S.optional(S.String),
-          apiDefinitions: S.optional(__S(137)),
-          integrationServiceEnvironment: S.optional(__S(21)),
-          provisioningState: S.optional(S.String),
-          category: S.optional(S.String),
-          deploymentParameters: S.optional(__S(138)),
+          apiDefinitions: S.optional(ApiResourceDefinitions),
+          integrationServiceEnvironment: S.optional(ResourceReference),
+          provisioningState: S.optional(WorkflowProvisioningState),
+          category: S.optional(ApiTier),
+          deploymentParameters: S.optional(
+            IntegrationServiceEnvironmentManagedApiDeploymentParameters,
+          ),
         }),
       ).annotate({
         identifier: "IntegrationServiceEnvironmentManagedApiProperties",
@@ -8267,8 +10445,8 @@ function __c17(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           location: S.optional(S.String),
-          tags: S.optional(__S(20)),
-          properties: S.optional(__S(139)),
+          tags: S.optional(GetIntegrationServiceEnvironmentManagedApisResponseTagsMap),
+          properties: S.optional(IntegrationServiceEnvironmentManagedApiProperties),
         }),
       ).annotate({
         identifier: "GetIntegrationServiceEnvironmentManagedApisResponse",
@@ -8293,15 +10471,15 @@ function __c17(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          accessibility: S.optional(S.String),
+          accessibility: S.optional(IntegrationServiceEnvironmentNetworkEndPointAccessibilityState),
           domainName: S.optional(S.String),
-          ports: S.optional(__S(128)),
+          ports: S.optional(IntegrationServiceEnvironmentNetworkEndpointPortsList),
         }),
       ).annotate({
         identifier: "IntegrationServiceEnvironmentNetworkEndpoint",
       });
     case 7:
-      return S.Array(__S(142));
+      return S.Array(IntegrationServiceEnvironmentNetworkEndpoint);
   }
 }
 function __c18(j: number): any {
@@ -8309,31 +10487,31 @@ function __c18(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          category: S.optional(S.String),
+          category: S.optional(IntegrationServiceEnvironmentNetworkDependencyCategoryType),
           displayName: S.optional(S.String),
-          endpoints: S.optional(__S(143)),
+          endpoints: S.optional(IntegrationServiceEnvironmentNetworkDependencyEndpointsList),
         }),
       ).annotate({
         identifier: "IntegrationServiceEnvironmentNetworkDependency",
       });
     case 1:
-      return S.Array(__S(144));
+      return S.Array(IntegrationServiceEnvironmentNetworkDependency);
     case 2:
-      return S.Array(/*@__PURE__*/ S.suspend(() => __S(147)));
+      return S.Array(/*@__PURE__*/ S.suspend(() => ExtendedErrorInfo));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          code: S.String,
+          code: ErrorResponseCode,
           message: S.String,
-          details: S.optional(__S(146)),
+          details: S.optional(ExtendedErrorInfoDetailsList),
           innerError: S.optional(S.Unknown),
         }),
       ).annotate({ identifier: "ExtendedErrorInfo" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          error: S.optional(__S(147)),
-          state: S.optional(S.String),
+          error: S.optional(ExtendedErrorInfo),
+          state: S.optional(IntegrationServiceEnvironmentNetworkDependencyHealthState),
         }),
       ).annotate({
         identifier: "IntegrationServiceEnvironmentNetworkDependencyHealth",
@@ -8341,17 +10519,22 @@ function __c18(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          outboundNetworkDependencies: S.optional(__S(145)),
-          outboundNetworkHealth: S.optional(__S(148)),
-          networkDependencyHealthState: S.String,
+          outboundNetworkDependencies: S.optional(
+            IntegrationServiceEnvironmentSubnetNetworkHealthOutboundNetworkDependenciesList,
+          ),
+          outboundNetworkHealth: S.optional(IntegrationServiceEnvironmentNetworkDependencyHealth),
+          networkDependencyHealthState:
+            IntegrationServiceEnvironmentNetworkEndPointAccessibilityState,
         }),
       ).annotate({
         identifier: "IntegrationServiceEnvironmentSubnetNetworkHealth",
       });
     case 6:
-      return S.Record(S.String, __S(149));
+      return S.Record(S.String, IntegrationServiceEnvironmentSubnetNetworkHealth);
     case 7:
-      return S.suspend(() => __S(150).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        IntegrationServiceEnvironmentNetworkHealth.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "GetIntegrationServiceEnvironmentNetworkHealthResponse",
       });
   }
@@ -8380,7 +10563,7 @@ function __c19(j: number): any {
         }),
       ).annotate({ identifier: "IpAddressRange" });
     case 2:
-      return S.Array(__S(153));
+      return S.Array(IpAddressRange);
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -8391,22 +10574,22 @@ function __c19(j: number): any {
         identifier: "OpenAuthenticationPolicyClaim",
       });
     case 4:
-      return S.Array(__S(155));
+      return S.Array(OpenAuthenticationPolicyClaim);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(S.String),
-          claims: S.optional(__S(156)),
+          type: S.optional(OpenAuthenticationProviderType),
+          claims: S.optional(OpenAuthenticationAccessPolicyClaimsList),
         }),
       ).annotate({
         identifier: "OpenAuthenticationAccessPolicy",
       });
     case 6:
-      return S.Record(S.String, __S(157));
+      return S.Record(S.String, OpenAuthenticationAccessPolicy);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          policies: S.optional(__S(158)),
+          policies: S.optional(OpenAuthenticationAccessPoliciesPoliciesMap),
         }),
       ).annotate({
         identifier: "OpenAuthenticationAccessPolicies",
@@ -8418,8 +10601,10 @@ function __c20(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          allowedCallerIpAddresses: S.optional(__S(154)),
-          openAuthenticationPolicies: S.optional(__S(159)),
+          allowedCallerIpAddresses: S.optional(
+            FlowAccessControlConfigurationPolicyAllowedCallerIpAddressesList,
+          ),
+          openAuthenticationPolicies: S.optional(OpenAuthenticationAccessPolicies),
         }),
       ).annotate({
         identifier: "FlowAccessControlConfigurationPolicy",
@@ -8427,10 +10612,10 @@ function __c20(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          triggers: S.optional(__S(160)),
-          contents: S.optional(__S(160)),
-          actions: S.optional(__S(160)),
-          workflowManagement: S.optional(__S(160)),
+          triggers: S.optional(FlowAccessControlConfigurationPolicy),
+          contents: S.optional(FlowAccessControlConfigurationPolicy),
+          actions: S.optional(FlowAccessControlConfigurationPolicy),
+          workflowManagement: S.optional(FlowAccessControlConfigurationPolicy),
         }),
       ).annotate({
         identifier: "FlowAccessControlConfiguration",
@@ -8438,37 +10623,37 @@ function __c20(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          name: S.String,
-          plan: S.optional(__S(21)),
+          name: SkuName,
+          plan: S.optional(ResourceReference),
         }),
       ).annotate({ identifier: "Sku" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(S.String),
+          type: S.optional(ParameterType),
           value: S.optional(S.Unknown),
           metadata: S.optional(S.Unknown),
           description: S.optional(S.String),
         }),
       ).annotate({ identifier: "WorkflowParameter" });
     case 4:
-      return S.Record(S.String, __S(163));
+      return S.Record(S.String, WorkflowParameter);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          provisioningState: S.optional(S.String),
+          provisioningState: S.optional(WorkflowProvisioningState),
           createdTime: S.optional(S.String),
           changedTime: S.optional(S.String),
-          state: S.optional(S.String),
+          state: S.optional(WorkflowState),
           version: S.optional(S.String),
           accessEndpoint: S.optional(S.String),
-          endpointsConfiguration: S.optional(__S(114)),
-          accessControl: S.optional(__S(161)),
-          sku: S.optional(__S(162)),
-          integrationAccount: S.optional(__S(21)),
-          integrationServiceEnvironment: S.optional(__S(21)),
+          endpointsConfiguration: S.optional(FlowEndpointsConfiguration),
+          accessControl: S.optional(FlowAccessControlConfiguration),
+          sku: S.optional(Sku),
+          integrationAccount: S.optional(ResourceReference),
+          integrationServiceEnvironment: S.optional(ResourceReference),
           definition: S.optional(S.Unknown),
-          parameters: S.optional(__S(164)),
+          parameters: S.optional(WorkflowPropertiesParametersMap),
         }),
       ).annotate({ identifier: "WorkflowProperties" });
     case 6:
@@ -8478,9 +10663,9 @@ function __c20(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           location: S.optional(S.String),
-          tags: S.optional(__S(20)),
-          properties: S.optional(__S(165)),
-          identity: S.optional(__S(124)),
+          tags: S.optional(GetWorkflowResponseTagsMap),
+          properties: S.optional(WorkflowProperties),
+          identity: S.optional(ManagedServiceIdentity),
         }),
       ).annotate({ identifier: "GetWorkflowResponse" });
     case 7:
@@ -8514,16 +10699,16 @@ function __c21(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           inputs: S.optional(S.Unknown),
-          inputsLink: S.optional(__S(76)),
+          inputsLink: S.optional(ContentLink),
           outputs: S.optional(S.Unknown),
-          outputsLink: S.optional(__S(76)),
+          outputsLink: S.optional(ContentLink),
           scheduledTime: S.optional(S.String),
           startTime: S.optional(S.String),
           endTime: S.optional(S.String),
           trackingId: S.optional(S.String),
-          correlation: S.optional(__S(168)),
+          correlation: S.optional(Correlation),
           code: S.optional(S.String),
-          status: S.optional(S.String),
+          status: S.optional(WorkflowStatus),
           error: S.optional(S.Unknown),
           trackedProperties: S.optional(S.Unknown),
         }),
@@ -8531,7 +10716,7 @@ function __c21(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(S.String),
+          type: S.optional(ParameterType),
           value: S.optional(S.Unknown),
           metadata: S.optional(S.Unknown),
           description: S.optional(S.String),
@@ -8539,29 +10724,29 @@ function __c21(j: number): any {
         }),
       ).annotate({ identifier: "WorkflowOutputParameter" });
     case 3:
-      return S.Record(S.String, __S(170));
+      return S.Record(S.String, WorkflowOutputParameter);
     case 4:
       return S.suspend(() =>
         S.Struct({
           waitEndTime: S.optional(S.String),
           startTime: S.optional(S.String),
           endTime: S.optional(S.String),
-          status: S.optional(S.String),
+          status: S.optional(WorkflowStatus),
           code: S.optional(S.String),
           error: S.optional(S.Unknown),
           correlationId: S.optional(S.String),
-          correlation: S.optional(__S(168)),
-          workflow: S.optional(__S(21)),
-          trigger: S.optional(__S(169)),
-          outputs: S.optional(__S(171)),
-          response: S.optional(__S(169)),
+          correlation: S.optional(Correlation),
+          workflow: S.optional(ResourceReference),
+          trigger: S.optional(WorkflowRunTrigger),
+          outputs: S.optional(WorkflowRunPropertiesOutputsMap),
+          response: S.optional(WorkflowRunTrigger),
         }),
       ).annotate({ identifier: "WorkflowRunProperties" });
     case 5:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
-          properties: S.optional(__S(172)),
+          properties: S.optional(WorkflowRunProperties),
           name: S.optional(S.String),
           type: S.optional(S.String),
         }),
@@ -8589,7 +10774,7 @@ function __c21(j: number): any {
       return S.suspend(() =>
         S.Struct({
           clientTrackingId: S.optional(S.String),
-          clientKeywords: S.optional(__S(128)),
+          clientKeywords: S.optional(RunActionCorrelationClientKeywordsList),
           actionTrackingId: S.optional(S.String),
         }),
       ).annotate({ identifier: "RunActionCorrelation" });
@@ -8607,7 +10792,7 @@ function __c22(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          error: S.optional(__S(176)),
+          error: S.optional(ErrorProperties),
         }),
       ).annotate({ identifier: "ErrorResponse" });
     case 2:
@@ -8618,25 +10803,25 @@ function __c22(j: number): any {
           code: S.optional(S.String),
           clientRequestId: S.optional(S.String),
           serviceRequestId: S.optional(S.String),
-          error: S.optional(__S(177)),
+          error: S.optional(ErrorResponse),
         }),
       ).annotate({ identifier: "RetryHistory" });
     case 3:
-      return S.Array(__S(178));
+      return S.Array(RetryHistory);
     case 4:
       return S.suspend(() =>
         S.Struct({
           startTime: S.optional(S.String),
           endTime: S.optional(S.String),
-          status: S.optional(S.String),
+          status: S.optional(WorkflowStatus),
           code: S.optional(S.String),
           error: S.optional(S.Unknown),
           trackingId: S.optional(S.String),
-          correlation: S.optional(__S(175)),
-          inputsLink: S.optional(__S(76)),
-          outputsLink: S.optional(__S(76)),
+          correlation: S.optional(RunActionCorrelation),
+          inputsLink: S.optional(ContentLink),
+          outputsLink: S.optional(ContentLink),
           trackedProperties: S.optional(S.Unknown),
-          retryHistory: S.optional(__S(179)),
+          retryHistory: S.optional(WorkflowRunActionPropertiesRetryHistoryList),
         }),
       ).annotate({
         identifier: "WorkflowRunActionProperties",
@@ -8645,7 +10830,7 @@ function __c22(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
-          properties: S.optional(__S(180)),
+          properties: S.optional(WorkflowRunActionProperties),
           name: S.optional(S.String),
           type: S.optional(S.String),
         }),
@@ -8684,25 +10869,25 @@ function __c22(j: number): any {
 function __c23(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(183));
+      return S.Array(RepetitionIndex);
     case 1:
       return S.suspend(() =>
         S.Struct({
           startTime: S.optional(S.String),
           endTime: S.optional(S.String),
-          correlation: S.optional(__S(175)),
-          status: S.optional(S.String),
+          correlation: S.optional(RunActionCorrelation),
+          status: S.optional(WorkflowStatus),
           code: S.optional(S.String),
           error: S.optional(S.Unknown),
           trackingId: S.optional(S.String),
           inputs: S.optional(S.Unknown),
-          inputsLink: S.optional(__S(76)),
+          inputsLink: S.optional(ContentLink),
           outputs: S.optional(S.Unknown),
-          outputsLink: S.optional(__S(76)),
+          outputsLink: S.optional(ContentLink),
           trackedProperties: S.optional(S.Unknown),
-          retryHistory: S.optional(__S(179)),
+          retryHistory: S.optional(WorkflowRunActionRepetitionPropertiesRetryHistoryList),
           iterationCount: S.optional(S.Number),
-          repetitionIndexes: S.optional(__S(184)),
+          repetitionIndexes: S.optional(WorkflowRunActionRepetitionPropertiesRepetitionIndexesList),
         }),
       ).annotate({
         identifier: "WorkflowRunActionRepetitionProperties",
@@ -8714,8 +10899,8 @@ function __c23(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           location: S.optional(S.String),
-          tags: S.optional(__S(20)),
-          properties: __S(185),
+          tags: S.optional(GetWorkflowRunActionRepetitionResponseTagsMap),
+          properties: WorkflowRunActionRepetitionProperties,
         }),
       ).annotate({
         identifier: "GetWorkflowRunActionRepetitionResponse",
@@ -8754,7 +10939,7 @@ function __c23(j: number): any {
         S.Struct({
           headers: S.optional(S.Unknown),
           statusCode: S.optional(S.Number),
-          bodyLink: S.optional(__S(76)),
+          bodyLink: S.optional(ContentLink),
         }),
       ).annotate({ identifier: "Response" });
     case 6:
@@ -8762,8 +10947,8 @@ function __c23(j: number): any {
         S.Struct({
           startTime: S.optional(S.String),
           endTime: S.optional(S.String),
-          request: S.optional(__S(188)),
-          response: S.optional(__S(189)),
+          request: S.optional(Request),
+          response: S.optional(Response),
         }),
       ).annotate({ identifier: "RequestHistoryProperties" });
     case 7:
@@ -8773,8 +10958,8 @@ function __c23(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           location: S.optional(S.String),
-          tags: S.optional(__S(20)),
-          properties: S.optional(__S(190)),
+          tags: S.optional(GetWorkflowRunActionRepetitionsRequestHistoryResponseTagsMap),
+          properties: S.optional(RequestHistoryProperties),
         }),
       ).annotate({
         identifier: "GetWorkflowRunActionRepetitionsRequestHistoryResponse",
@@ -8846,7 +11031,7 @@ function __c24(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
-          properties: S.optional(__S(172)),
+          properties: S.optional(WorkflowRunProperties),
           name: S.optional(S.String),
           type: S.optional(S.String),
         }),
@@ -8874,15 +11059,15 @@ function __c24(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          provisioningState: S.optional(S.String),
+          provisioningState: S.optional(WorkflowTriggerProvisioningState),
           createdTime: S.optional(S.String),
           changedTime: S.optional(S.String),
-          state: S.optional(S.String),
-          status: S.optional(S.String),
+          state: S.optional(WorkflowState),
+          status: S.optional(WorkflowStatus),
           lastExecutionTime: S.optional(S.String),
           nextExecutionTime: S.optional(S.String),
-          recurrence: S.optional(__S(85)),
-          workflow: S.optional(__S(21)),
+          recurrence: S.optional(WorkflowTriggerRecurrence),
+          workflow: S.optional(ResourceReference),
         }),
       ).annotate({
         identifier: "WorkflowTriggerProperties",
@@ -8891,7 +11076,7 @@ function __c24(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
-          properties: S.optional(__S(197)),
+          properties: S.optional(WorkflowTriggerProperties),
           name: S.optional(S.String),
           type: S.optional(S.String),
         }),
@@ -8927,15 +11112,15 @@ function __c25(j: number): any {
           startTime: S.optional(S.String),
           endTime: S.optional(S.String),
           scheduledTime: S.optional(S.String),
-          status: S.optional(S.String),
+          status: S.optional(WorkflowStatus),
           code: S.optional(S.String),
           error: S.optional(S.Unknown),
           trackingId: S.optional(S.String),
-          correlation: S.optional(__S(168)),
-          inputsLink: S.optional(__S(76)),
-          outputsLink: S.optional(__S(76)),
+          correlation: S.optional(Correlation),
+          inputsLink: S.optional(ContentLink),
+          outputsLink: S.optional(ContentLink),
           fired: S.optional(S.Boolean),
-          run: S.optional(__S(21)),
+          run: S.optional(ResourceReference),
         }),
       ).annotate({
         identifier: "WorkflowTriggerHistoryProperties",
@@ -8944,7 +11129,7 @@ function __c25(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
-          properties: S.optional(__S(200)),
+          properties: S.optional(WorkflowTriggerHistoryProperties),
           name: S.optional(S.String),
           type: S.optional(S.String),
         }),
@@ -8997,18 +11182,18 @@ function __c25(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          provisioningState: S.optional(S.String),
+          provisioningState: S.optional(WorkflowProvisioningState),
           createdTime: S.optional(S.String),
           changedTime: S.optional(S.String),
-          state: S.optional(S.String),
+          state: S.optional(WorkflowState),
           version: S.optional(S.String),
           accessEndpoint: S.optional(S.String),
-          endpointsConfiguration: S.optional(__S(114)),
-          accessControl: S.optional(__S(161)),
-          sku: S.optional(__S(162)),
-          integrationAccount: S.optional(__S(21)),
+          endpointsConfiguration: S.optional(FlowEndpointsConfiguration),
+          accessControl: S.optional(FlowAccessControlConfiguration),
+          sku: S.optional(Sku),
+          integrationAccount: S.optional(ResourceReference),
           definition: S.optional(S.Unknown),
-          parameters: S.optional(__S(164)),
+          parameters: S.optional(WorkflowVersionPropertiesParametersMap),
         }),
       ).annotate({
         identifier: "WorkflowVersionProperties",
@@ -9020,8 +11205,8 @@ function __c25(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           location: S.optional(S.String),
-          tags: S.optional(__S(20)),
-          properties: S.optional(__S(205)),
+          tags: S.optional(GetWorkflowVersionResponseTagsMap),
+          properties: S.optional(WorkflowVersionProperties),
         }),
       ).annotate({
         identifier: "GetWorkflowVersionResponse",
@@ -9030,12 +11215,12 @@ function __c25(j: number): any {
       return S.suspend(() =>
         S.Struct({
           metadata: S.optional(S.Unknown),
-          agreementType: S.String,
+          agreementType: AgreementType,
           hostPartner: S.String,
           guestPartner: S.String,
-          hostIdentity: __S(26),
-          guestIdentity: __S(26),
-          content: __S(71),
+          hostIdentity: BusinessIdentity,
+          guestIdentity: BusinessIdentity,
+          content: AgreementContent,
         }),
       ).annotate({
         identifier: "IntegrationAccountAgreementPropertiesInput",
@@ -9052,8 +11237,8 @@ function __c26(j: number): any {
           integrationAccountName: S.String.pipe(T.Label()),
           agreementName: S.String.pipe(T.Label()),
           location: S.optional(S.String),
-          tags: S.optional(__S(20)),
-          properties: __S(207),
+          tags: S.optional(IntegrationAccountAgreementsCreateOrUpdateRequestTagsMap),
+          properties: IntegrationAccountAgreementPropertiesInput,
         }).pipe(
           T.Http({
             method: "PUT",
@@ -9079,7 +11264,7 @@ function __c26(j: number): any {
           metadata: S.optional(S.Unknown),
           content: S.optional(S.Unknown),
           contentType: S.optional(S.String),
-          contentLink: S.optional(__S(209)),
+          contentLink: S.optional(ContentLinkInput),
           assemblyName: S.String,
           assemblyVersion: S.optional(S.String),
           assemblyCulture: S.optional(S.String),
@@ -9094,8 +11279,8 @@ function __c26(j: number): any {
           integrationAccountName: S.String.pipe(T.Label()),
           assemblyArtifactName: S.String.pipe(T.Label()),
           location: S.optional(S.String),
-          tags: S.optional(__S(20)),
-          properties: __S(210),
+          tags: S.optional(IntegrationAccountAssembliesCreateOrUpdateRequestTagsMap),
+          properties: AssemblyPropertiesInput,
         }).pipe(
           T.Http({
             method: "PUT",
@@ -9117,8 +11302,8 @@ function __c26(j: number): any {
           integrationAccountName: S.String.pipe(T.Label()),
           batchConfigurationName: S.String.pipe(T.Label()),
           location: S.optional(S.String),
-          tags: S.optional(__S(212)),
-          properties: __S(87),
+          tags: S.optional(IntegrationAccountBatchConfigurationsCreateOrUpdateRequestTagsMap),
+          properties: BatchConfigurationProperties,
         }).pipe(
           T.Http({
             method: "PUT",
@@ -9137,8 +11322,8 @@ function __c26(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           location: S.optional(S.String),
-          tags: S.optional(__S(212)),
-          properties: __S(87),
+          tags: S.optional(IntegrationAccountBatchConfigurationsCreateOrUpdateResponseTagsMap),
+          properties: BatchConfigurationProperties,
         }),
       ).annotate({
         identifier: "IntegrationAccountBatchConfigurationsCreateOrUpdateResponse",
@@ -9158,7 +11343,7 @@ function __c27(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          keyVault: __S(215),
+          keyVault: KeyVaultKeyReferenceInputKeyVault,
           keyName: S.String,
           keyVersion: S.optional(S.String),
         }),
@@ -9169,7 +11354,7 @@ function __c27(j: number): any {
       return S.suspend(() =>
         S.Struct({
           metadata: S.optional(S.Unknown),
-          key: S.optional(__S(216)),
+          key: S.optional(KeyVaultKeyReferenceInput),
           publicCertificate: S.optional(S.String),
         }),
       ).annotate({
@@ -9183,8 +11368,8 @@ function __c27(j: number): any {
           integrationAccountName: S.String.pipe(T.Label()),
           certificateName: S.String.pipe(T.Label()),
           location: S.optional(S.String),
-          tags: S.optional(__S(20)),
-          properties: __S(217),
+          tags: S.optional(IntegrationAccountCertificatesCreateOrUpdateRequestTagsMap),
+          properties: IntegrationAccountCertificatePropertiesInput,
         }).pipe(
           T.Http({
             method: "PUT",
@@ -9199,8 +11384,8 @@ function __c27(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          mapType: S.String,
-          parametersSchema: S.optional(__S(95)),
+          mapType: MapType,
+          parametersSchema: S.optional(IntegrationAccountMapPropertiesParametersSchema),
           content: S.optional(S.Unknown),
           contentType: S.optional(S.String),
           metadata: S.optional(S.Unknown),
@@ -9216,8 +11401,8 @@ function __c27(j: number): any {
           integrationAccountName: S.String.pipe(T.Label()),
           mapName: S.String.pipe(T.Label()),
           location: S.optional(S.String),
-          tags: S.optional(__S(20)),
-          properties: __S(219),
+          tags: S.optional(IntegrationAccountMapsCreateOrUpdateRequestTagsMap),
+          properties: IntegrationAccountMapPropertiesInput,
         }).pipe(
           T.Http({
             method: "PUT",
@@ -9232,9 +11417,9 @@ function __c27(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          partnerType: S.String,
+          partnerType: PartnerType,
           metadata: S.optional(S.Unknown),
-          content: __S(101),
+          content: PartnerContent,
         }),
       ).annotate({
         identifier: "IntegrationAccountPartnerPropertiesInput",
@@ -9247,8 +11432,8 @@ function __c27(j: number): any {
           integrationAccountName: S.String.pipe(T.Label()),
           partnerName: S.String.pipe(T.Label()),
           location: S.optional(S.String),
-          tags: S.optional(__S(20)),
-          properties: __S(221),
+          tags: S.optional(IntegrationAccountPartnersCreateOrUpdateRequestTagsMap),
+          properties: IntegrationAccountPartnerPropertiesInput,
         }).pipe(
           T.Http({
             method: "PUT",
@@ -9263,7 +11448,7 @@ function __c27(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          schemaType: S.String,
+          schemaType: SchemaType,
           targetNamespace: S.optional(S.String),
           documentName: S.optional(S.String),
           fileName: S.optional(S.String),
@@ -9286,8 +11471,8 @@ function __c28(j: number): any {
           integrationAccountName: S.String.pipe(T.Label()),
           schemaName: S.String.pipe(T.Label()),
           location: S.optional(S.String),
-          tags: S.optional(__S(20)),
-          properties: __S(223),
+          tags: S.optional(IntegrationAccountSchemasCreateOrUpdateRequestTagsMap),
+          properties: IntegrationAccountSchemaPropertiesInput,
         }).pipe(
           T.Http({
             method: "PUT",
@@ -9302,8 +11487,8 @@ function __c28(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          integrationServiceEnvironment: S.optional(__S(215)),
-          state: S.optional(S.String),
+          integrationServiceEnvironment: S.optional(KeyVaultKeyReferenceInputKeyVault),
+          state: S.optional(WorkflowState),
         }),
       ).annotate({
         identifier: "IntegrationAccountPropertiesInput",
@@ -9315,9 +11500,9 @@ function __c28(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           integrationAccountName: S.String.pipe(T.Label()),
           location: S.optional(S.String),
-          tags: S.optional(__S(20)),
-          properties: S.optional(__S(225)),
-          sku: S.optional(__S(23)),
+          tags: S.optional(IntegrationAccountsCreateOrUpdateRequestTagsMap),
+          properties: S.optional(IntegrationAccountPropertiesInput),
+          sku: S.optional(IntegrationAccountSku),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -9345,8 +11530,8 @@ function __c28(j: number): any {
           integrationAccountName: S.String.pipe(T.Label()),
           sessionName: S.String.pipe(T.Label()),
           location: S.optional(S.String),
-          tags: S.optional(__S(20)),
-          properties: __S(227),
+          tags: S.optional(IntegrationAccountSessionsCreateOrUpdateRequestTagsMap),
+          properties: IntegrationAccountSessionPropertiesInput,
         }).pipe(
           T.Http({
             method: "PUT",
@@ -9368,15 +11553,15 @@ function __c28(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          eventLevel: S.String,
+          eventLevel: EventLevel,
           eventTime: S.String,
-          recordType: S.String,
+          recordType: TrackingRecordType,
           record: S.optional(S.Unknown),
-          error: S.optional(__S(229)),
+          error: S.optional(TrackingEventErrorInfo),
         }),
       ).annotate({ identifier: "TrackingEvent" });
     case 7:
-      return S.Array(__S(230));
+      return S.Array(TrackingEvent);
   }
 }
 function __c29(j: number): any {
@@ -9388,8 +11573,8 @@ function __c29(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           integrationAccountName: S.String.pipe(T.Label()),
           sourceType: S.String,
-          trackEventsOptions: S.optional(S.String),
-          events: __S(231),
+          trackEventsOptions: S.optional(TrackEventsOperationOptions),
+          events: IntegrationAccountsLogTrackingEventsRequestEventsList,
         }).pipe(
           T.Http({
             method: "POST",
@@ -9402,13 +11587,13 @@ function __c29(j: number): any {
         identifier: "IntegrationAccountsLogTrackingEventsRequest",
       });
     case 1:
-      return S.Array(__S(215));
+      return S.Array(KeyVaultKeyReferenceInputKeyVault);
     case 2:
       return S.suspend(() =>
         S.Struct({
           virtualNetworkAddressSpace: S.optional(S.String),
-          accessEndpoint: S.optional(__S(115)),
-          subnets: S.optional(__S(233)),
+          accessEndpoint: S.optional(IntegrationServiceEnvironmentAccessEndpoint),
+          subnets: S.optional(NetworkConfigurationInputSubnetsList),
         }),
       ).annotate({
         identifier: "NetworkConfigurationInput",
@@ -9416,7 +11601,7 @@ function __c29(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          keyVault: S.optional(__S(215)),
+          keyVault: S.optional(KeyVaultKeyReferenceInputKeyVault),
           keyName: S.optional(S.String),
           keyVersion: S.optional(S.String),
         }),
@@ -9426,7 +11611,9 @@ function __c29(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          encryptionKeyReference: S.optional(__S(235)),
+          encryptionKeyReference: S.optional(
+            IntegrationServiceEnvironmenEncryptionKeyReferenceInput,
+          ),
         }),
       ).annotate({
         identifier: "IntegrationServiceEnvironmenEncryptionConfigurationInput",
@@ -9434,23 +11621,25 @@ function __c29(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          provisioningState: S.optional(S.String),
-          state: S.optional(S.String),
+          provisioningState: S.optional(WorkflowProvisioningState),
+          state: S.optional(WorkflowState),
           integrationServiceEnvironmentId: S.optional(S.String),
-          endpointsConfiguration: S.optional(__S(114)),
-          networkConfiguration: S.optional(__S(234)),
-          encryptionConfiguration: S.optional(__S(236)),
+          endpointsConfiguration: S.optional(FlowEndpointsConfiguration),
+          networkConfiguration: S.optional(NetworkConfigurationInput),
+          encryptionConfiguration: S.optional(
+            IntegrationServiceEnvironmenEncryptionConfigurationInput,
+          ),
         }),
       ).annotate({
         identifier: "IntegrationServiceEnvironmentPropertiesInput",
       });
     case 6:
-      return S.Record(S.String, __S(1));
+      return S.Record(S.String, UserAssignedIdentityInput);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          type: S.String,
-          userAssignedIdentities: S.optional(__S(238)),
+          type: ManagedServiceIdentityInputType,
+          userAssignedIdentities: S.optional(ManagedServiceIdentityInputUserAssignedIdentitiesMap),
         }),
       ).annotate({
         identifier: "ManagedServiceIdentityInput",
@@ -9466,10 +11655,10 @@ function __c30(j: number): any {
           resourceGroup: S.String.pipe(T.Label()),
           integrationServiceEnvironmentName: S.String.pipe(T.Label()),
           location: S.optional(S.String),
-          tags: S.optional(__S(20)),
-          properties: S.optional(__S(237)),
-          sku: S.optional(__S(121)),
-          identity: S.optional(__S(239)),
+          tags: S.optional(IntegrationServiceEnvironmentsCreateOrUpdateRequestTagsMap),
+          properties: S.optional(IntegrationServiceEnvironmentPropertiesInput),
+          sku: S.optional(IntegrationServiceEnvironmentSku),
+          identity: S.optional(ManagedServiceIdentityInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -9489,7 +11678,7 @@ function __c30(j: number): any {
           integrationAccountName: S.String.pipe(T.Label()),
           agreementName: S.String.pipe(T.Label()),
           notAfter: S.optional(S.String),
-          keyType: S.optional(S.String),
+          keyType: S.optional(KeyType),
         }).pipe(
           T.Http({
             method: "POST",
@@ -9520,8 +11709,8 @@ function __c30(j: number): any {
           method: S.optional(S.String),
           basePath: S.optional(S.String),
           relativePath: S.optional(S.String),
-          relativePathParameters: S.optional(__S(128)),
-          queries: S.optional(__S(242)),
+          relativePathParameters: S.optional(WorkflowTriggerCallbackUrlRelativePathParametersList),
+          queries: S.optional(WorkflowTriggerListCallbackUrlQueries),
         }),
       ).annotate({
         identifier: "WorkflowTriggerCallbackUrl",
@@ -9546,11 +11735,11 @@ function __c30(j: number): any {
         identifier: "ListIntegrationAccountAgreementsRequest",
       });
     case 5:
-      return S.Array(__S(73));
+      return S.Array(IntegrationAccountAgreement);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(245)),
+          value: S.optional(IntegrationAccountAgreementListResultValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -9584,16 +11773,16 @@ function __c31(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           location: S.optional(S.String),
-          tags: S.optional(__S(20)),
-          properties: __S(77),
+          tags: S.optional(AssemblyDefinitionTagsMap),
+          properties: AssemblyProperties,
         }),
       ).annotate({ identifier: "AssemblyDefinition" });
     case 1:
-      return S.Array(__S(248));
+      return S.Array(AssemblyDefinition);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(249)),
+          value: S.optional(AssemblyCollectionValueList),
         }),
       ).annotate({ identifier: "AssemblyCollection" });
     case 3:
@@ -9638,16 +11827,16 @@ function __c31(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           location: S.optional(S.String),
-          tags: S.optional(__S(20)),
-          properties: __S(87),
+          tags: S.optional(BatchConfigurationTagsMap),
+          properties: BatchConfigurationProperties,
         }),
       ).annotate({ identifier: "BatchConfiguration" });
     case 6:
-      return S.Array(__S(253));
+      return S.Array(BatchConfiguration);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(254)),
+          value: S.optional(BatchConfigurationCollectionValueList),
         }),
       ).annotate({
         identifier: "BatchConfigurationCollection",
@@ -9680,17 +11869,17 @@ function __c32(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           location: S.optional(S.String),
-          tags: S.optional(__S(20)),
-          properties: S.optional(__S(22)),
-          sku: S.optional(__S(23)),
+          tags: S.optional(IntegrationAccountTagsMap),
+          properties: S.optional(IntegrationAccountProperties),
+          sku: S.optional(IntegrationAccountSku),
         }),
       ).annotate({ identifier: "IntegrationAccount" });
     case 2:
-      return S.Array(__S(257));
+      return S.Array(IntegrationAccount);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(258)),
+          value: S.optional(IntegrationAccountListResultValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -9719,7 +11908,7 @@ function __c32(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           integrationAccountName: S.String.pipe(T.Label()),
           notAfter: S.optional(S.String),
-          keyType: S.optional(S.String),
+          keyType: S.optional(KeyType),
         }).pipe(
           T.Http({
             method: "POST",
@@ -9760,11 +11949,11 @@ function __c32(j: number): any {
 function __c33(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(93));
+      return S.Array(IntegrationAccountCertificate);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(264)),
+          value: S.optional(IntegrationAccountCertificateListResultValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -9776,7 +11965,7 @@ function __c33(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           integrationAccountName: S.String.pipe(T.Label()),
-          keyVault: __S(215),
+          keyVault: KeyVaultKeyReferenceInputKeyVault,
           skipToken: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -9801,15 +11990,15 @@ function __c33(j: number): any {
       return S.suspend(() =>
         S.Struct({
           kid: S.optional(S.String),
-          attributes: S.optional(__S(267)),
+          attributes: S.optional(KeyVaultKeyAttributes),
         }),
       ).annotate({ identifier: "KeyVaultKey" });
     case 5:
-      return S.Array(__S(268));
+      return S.Array(KeyVaultKey);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(269)),
+          value: S.optional(KeyVaultKeyCollectionValueList),
           skipToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "KeyVaultKeyCollection" });
@@ -9821,7 +12010,7 @@ function __c33(j: number): any {
           integrationAccountName: S.String.pipe(T.Label()),
           mapName: S.String.pipe(T.Label()),
           notAfter: S.optional(S.String),
-          keyType: S.optional(S.String),
+          keyType: S.optional(KeyType),
         }).pipe(
           T.Http({
             method: "POST",
@@ -9863,16 +12052,16 @@ function __c34(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           location: S.optional(S.String),
-          tags: S.optional(__S(20)),
-          properties: __S(96),
+          tags: S.optional(IntegrationAccountMapTagsMap),
+          properties: IntegrationAccountMapProperties,
         }),
       ).annotate({ identifier: "IntegrationAccountMap" });
     case 2:
-      return S.Array(__S(273));
+      return S.Array(IntegrationAccountMap);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(274)),
+          value: S.optional(IntegrationAccountMapListResultValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -9886,7 +12075,7 @@ function __c34(j: number): any {
           integrationAccountName: S.String.pipe(T.Label()),
           partnerName: S.String.pipe(T.Label()),
           notAfter: S.optional(S.String),
-          keyType: S.optional(S.String),
+          keyType: S.optional(KeyType),
         }).pipe(
           T.Http({
             method: "POST",
@@ -9918,11 +12107,11 @@ function __c34(j: number): any {
         identifier: "ListIntegrationAccountPartnersRequest",
       });
     case 6:
-      return S.Array(__S(103));
+      return S.Array(IntegrationAccountPartner);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(278)),
+          value: S.optional(IntegrationAccountPartnerListResultValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -9940,7 +12129,7 @@ function __c35(j: number): any {
           integrationAccountName: S.String.pipe(T.Label()),
           schemaName: S.String.pipe(T.Label()),
           notAfter: S.optional(S.String),
-          keyType: S.optional(S.String),
+          keyType: S.optional(KeyType),
         }).pipe(
           T.Http({
             method: "POST",
@@ -9978,16 +12167,16 @@ function __c35(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           location: S.optional(S.String),
-          tags: S.optional(__S(20)),
-          properties: __S(105),
+          tags: S.optional(IntegrationAccountSchemaTagsMap),
+          properties: IntegrationAccountSchemaProperties,
         }),
       ).annotate({ identifier: "IntegrationAccountSchema" });
     case 3:
-      return S.Array(__S(282));
+      return S.Array(IntegrationAccountSchema);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(283)),
+          value: S.optional(IntegrationAccountSchemaListResultValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -10013,11 +12202,11 @@ function __c35(j: number): any {
         identifier: "ListIntegrationAccountSessionsRequest",
       });
     case 6:
-      return S.Array(__S(109));
+      return S.Array(IntegrationAccountSession);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(286)),
+          value: S.optional(IntegrationAccountSessionListResultValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -10045,11 +12234,11 @@ function __c36(j: number): any {
         identifier: "ListIntegrationServiceEnvironmentByResourceGroupRequest",
       });
     case 1:
-      return S.Array(__S(125));
+      return S.Array(IntegrationServiceEnvironment);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(289)),
+          value: S.optional(IntegrationServiceEnvironmentListResultValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -10092,7 +12281,7 @@ function __c36(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(S.String),
+          status: S.optional(StatusAnnotation),
           family: S.optional(S.String),
           revision: S.optional(S.Number),
         }),
@@ -10108,21 +12297,21 @@ function __c36(j: number): any {
           iconUri: S.optional(S.String),
           swagger: S.optional(S.Unknown),
           brandColor: S.optional(S.String),
-          category: S.optional(S.String),
-          integrationServiceEnvironment: S.optional(__S(21)),
+          category: S.optional(ApiTier),
+          integrationServiceEnvironment: S.optional(ResourceReference),
         }),
       ).annotate({ identifier: "ApiReference" });
     case 7:
       return S.Record(
         S.String,
-        /*@__PURE__*/ S.suspend(() => __S(310)),
+        /*@__PURE__*/ S.suspend(() => SwaggerSchema),
       );
   }
 }
 function __c37(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(/*@__PURE__*/ S.suspend(() => __S(310)));
+      return S.Array(/*@__PURE__*/ S.suspend(() => SwaggerSchema));
     case 1:
       return S.Record(S.String, S.Unknown);
     case 2:
@@ -10133,7 +12322,7 @@ function __c37(j: number): any {
           prefix: S.optional(S.String),
           attribute: S.optional(S.Boolean),
           wrapped: S.optional(S.Boolean),
-          extensions: S.optional(__S(297)),
+          extensions: S.optional(SwaggerXmlExtensionsMap),
         }),
       ).annotate({ identifier: "SwaggerXml" });
     case 3:
@@ -10141,7 +12330,7 @@ function __c37(j: number): any {
         S.Struct({
           description: S.optional(S.String),
           uri: S.optional(S.String),
-          extensions: S.optional(__S(297)),
+          extensions: S.optional(SwaggerExternalDocumentationExtensionsMap),
         }),
       ).annotate({
         identifier: "SwaggerExternalDocumentation",
@@ -10151,7 +12340,7 @@ function __c37(j: number): any {
         S.Struct({
           operationId: S.optional(S.String),
           valuePath: S.optional(S.String),
-          parameters: S.optional(__S(297)),
+          parameters: S.optional(SwaggerCustomDynamicSchemaParametersMap),
         }),
       ).annotate({
         identifier: "SwaggerCustomDynamicSchema",
@@ -10159,20 +12348,20 @@ function __c37(j: number): any {
     case 5:
       return S.Record(
         S.String,
-        /*@__PURE__*/ S.suspend(() => __S(302)),
+        /*@__PURE__*/ S.suspend(() => SwaggerCustomDynamicProperties),
       );
     case 6:
       return S.suspend(() =>
         S.Struct({
           operationId: S.optional(S.String),
           valuePath: S.optional(S.String),
-          parameters: S.optional(__S(301)),
+          parameters: S.optional(SwaggerCustomDynamicPropertiesParametersMap),
         }),
       ).annotate({
         identifier: "SwaggerCustomDynamicProperties",
       });
     case 7:
-      return S.Record(S.String, __S(302));
+      return S.Record(S.String, SwaggerCustomDynamicProperties);
   }
 }
 function __c38(j: number): any {
@@ -10185,7 +12374,7 @@ function __c38(j: number): any {
           itemsPath: S.optional(S.String),
           itemValuePath: S.optional(S.String),
           itemTitlePath: S.optional(S.String),
-          parameters: S.optional(__S(303)),
+          parameters: S.optional(SwaggerCustomDynamicListParametersMap),
         }),
       ).annotate({ identifier: "SwaggerCustomDynamicList" });
     case 1:
@@ -10209,7 +12398,7 @@ function __c38(j: number): any {
         identifier: "SwaggerCustomDynamicTreeParameter",
       });
     case 3:
-      return S.Record(S.String, __S(306));
+      return S.Record(S.String, SwaggerCustomDynamicTreeParameter);
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -10220,7 +12409,7 @@ function __c38(j: number): any {
           itemFullTitlePath: S.optional(S.String),
           itemIsParent: S.optional(S.String),
           selectableFilter: S.optional(S.String),
-          parameters: S.optional(__S(307)),
+          parameters: S.optional(SwaggerCustomDynamicTreeCommandParametersMap),
         }),
       ).annotate({
         identifier: "SwaggerCustomDynamicTreeCommand",
@@ -10228,38 +12417,38 @@ function __c38(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          settings: S.optional(__S(305)),
-          open: S.optional(__S(308)),
-          browse: S.optional(__S(308)),
+          settings: S.optional(SwaggerCustomDynamicTreeSettings),
+          open: S.optional(SwaggerCustomDynamicTreeCommand),
+          browse: S.optional(SwaggerCustomDynamicTreeCommand),
         }),
       ).annotate({ identifier: "SwaggerCustomDynamicTree" });
     case 6:
       return S.suspend(() =>
         S.Struct({
           ref: S.optional(S.String),
-          type: S.optional(S.String),
+          type: S.optional(SwaggerSchemaType),
           title: S.optional(S.String),
-          items: S.optional(__S(310)),
-          properties: S.optional(__S(295)),
+          items: S.optional(SwaggerSchema),
+          properties: S.optional(SwaggerSchemaPropertiesMap),
           additionalProperties: S.optional(S.Unknown),
-          required: S.optional(__S(128)),
+          required: S.optional(SwaggerSchemaRequiredList),
           maxProperties: S.optional(S.Number),
           minProperties: S.optional(S.Number),
-          allOf: S.optional(__S(296)),
+          allOf: S.optional(SwaggerSchemaAllOfList),
           discriminator: S.optional(S.String),
           readOnly: S.optional(S.Boolean),
-          xml: S.optional(__S(298)),
-          externalDocs: S.optional(__S(299)),
+          xml: S.optional(SwaggerXml),
+          externalDocs: S.optional(SwaggerExternalDocumentation),
           example: S.optional(S.Unknown),
           notificationUrlExtension: S.optional(S.Boolean),
-          dynamicSchemaOld: S.optional(__S(300)),
-          dynamicSchemaNew: S.optional(__S(302)),
-          dynamicListNew: S.optional(__S(304)),
-          dynamicTree: S.optional(__S(309)),
+          dynamicSchemaOld: S.optional(SwaggerCustomDynamicSchema),
+          dynamicSchemaNew: S.optional(SwaggerCustomDynamicProperties),
+          dynamicListNew: S.optional(SwaggerCustomDynamicList),
+          dynamicTree: S.optional(SwaggerCustomDynamicTree),
         }),
       ).annotate({ identifier: "SwaggerSchema" });
     case 7:
-      return S.Record(S.String, __S(310));
+      return S.Record(S.String, SwaggerSchema);
   }
 }
 function __c39(j: number): any {
@@ -10273,10 +12462,10 @@ function __c39(j: number): any {
           trigger: S.optional(S.String),
           triggerHint: S.optional(S.String),
           pageable: S.optional(S.Boolean),
-          annotation: S.optional(__S(293)),
-          api: S.optional(__S(294)),
-          inputsDefinition: S.optional(__S(310)),
-          responsesDefinition: S.optional(__S(311)),
+          annotation: S.optional(ApiOperationAnnotation),
+          api: S.optional(ApiReference),
+          inputsDefinition: S.optional(SwaggerSchema),
+          responsesDefinition: S.optional(ApiOperationPropertiesDefinitionResponsesDefinitionMap),
           isWebhook: S.optional(S.Boolean),
           isNotification: S.optional(S.Boolean),
         }),
@@ -10290,16 +12479,16 @@ function __c39(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           location: S.optional(S.String),
-          tags: S.optional(__S(20)),
-          properties: S.optional(__S(312)),
+          tags: S.optional(ApiOperationTagsMap),
+          properties: S.optional(ApiOperationPropertiesDefinition),
         }),
       ).annotate({ identifier: "ApiOperation" });
     case 2:
-      return S.Array(__S(313));
+      return S.Array(ApiOperation);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(314)),
+          value: S.optional(ApiOperationListResultValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ApiOperationListResult" });
@@ -10321,11 +12510,11 @@ function __c39(j: number): any {
         identifier: "ListIntegrationServiceEnvironmentManagedApisRequest",
       });
     case 5:
-      return S.Array(__S(140));
+      return S.Array(IntegrationServiceEnvironmentManagedApi);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(317)),
+          value: S.optional(IntegrationServiceEnvironmentManagedApiListResultValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -10355,7 +12544,7 @@ function __c40(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          name: S.optional(S.String),
+          name: S.optional(IntegrationServiceEnvironmentSkuName),
           tier: S.optional(S.String),
         }),
       ).annotate({
@@ -10367,7 +12556,7 @@ function __c40(j: number): any {
           minimum: S.optional(S.Number),
           maximum: S.optional(S.Number),
           default: S.optional(S.Number),
-          scaleType: S.optional(S.String),
+          scaleType: S.optional(IntegrationServiceEnvironmentSkuScaleType),
         }),
       ).annotate({
         identifier: "IntegrationServiceEnvironmentSkuCapacity",
@@ -10376,18 +12565,18 @@ function __c40(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resourceType: S.optional(S.String),
-          sku: S.optional(__S(320)),
-          capacity: S.optional(__S(321)),
+          sku: S.optional(IntegrationServiceEnvironmentSkuDefinitionSku),
+          capacity: S.optional(IntegrationServiceEnvironmentSkuCapacity),
         }),
       ).annotate({
         identifier: "IntegrationServiceEnvironmentSkuDefinition",
       });
     case 3:
-      return S.Array(__S(322));
+      return S.Array(IntegrationServiceEnvironmentSkuDefinition);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(323)),
+          value: S.optional(IntegrationServiceEnvironmentSkuListValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -10418,7 +12607,7 @@ function __c40(j: number): any {
         S.Struct({
           origin: S.optional(S.String),
           name: S.optional(S.String),
-          display: S.optional(__S(326)),
+          display: S.optional(OperationDisplay),
           properties: S.optional(S.Unknown),
         }),
       ).annotate({ identifier: "Operation" });
@@ -10427,11 +12616,11 @@ function __c40(j: number): any {
 function __c41(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(327));
+      return S.Array(Operation);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(328)),
+          value: S.optional(OperationListResultValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationListResult" });
@@ -10454,11 +12643,11 @@ function __c41(j: number): any {
         identifier: "ListWorkflowByResourceGroupRequest",
       });
     case 3:
-      return S.Array(__S(166));
+      return S.Array(Workflow);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(331)),
+          value: S.optional(WorkflowListResultValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "WorkflowListResult" });
@@ -10486,7 +12675,7 @@ function __c41(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           workflowName: S.String.pipe(T.Label()),
           notAfter: S.optional(S.String),
-          keyType: S.optional(S.String),
+          keyType: S.optional(KeyType),
         }).pipe(
           T.Http({
             method: "POST",
@@ -10522,15 +12711,15 @@ function __c41(j: number): any {
 function __c42(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(/*@__PURE__*/ S.suspend(() => __S(339)));
+      return S.Array(/*@__PURE__*/ S.suspend(() => Expression));
     case 1:
-      return S.Array(/*@__PURE__*/ S.suspend(() => __S(338)));
+      return S.Array(/*@__PURE__*/ S.suspend(() => AzureResourceErrorInfo));
     case 2:
       return S.suspend(() =>
         S.Struct({
           code: S.String,
           message: S.String,
-          details: S.optional(__S(337)),
+          details: S.optional(AzureResourceErrorInfoDetailsList),
         }),
       ).annotate({ identifier: "AzureResourceErrorInfo" });
     case 3:
@@ -10538,28 +12727,28 @@ function __c42(j: number): any {
         S.Struct({
           text: S.optional(S.String),
           value: S.optional(S.Unknown),
-          subexpressions: S.optional(__S(336)),
-          error: S.optional(__S(338)),
+          subexpressions: S.optional(ExpressionSubexpressionsList),
+          error: S.optional(AzureResourceErrorInfo),
         }),
       ).annotate({ identifier: "Expression" });
     case 4:
-      return S.Array(__S(339));
+      return S.Array(Expression);
     case 5:
       return S.suspend(() =>
         S.Struct({
           text: S.optional(S.String),
           value: S.optional(S.Unknown),
-          subexpressions: S.optional(__S(340)),
-          error: S.optional(__S(338)),
+          subexpressions: S.optional(ExpressionRootSubexpressionsList),
+          error: S.optional(AzureResourceErrorInfo),
           path: S.optional(S.String),
         }),
       ).annotate({ identifier: "ExpressionRoot" });
     case 6:
-      return S.Array(__S(341));
+      return S.Array(ExpressionRoot);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          inputs: S.optional(__S(342)),
+          inputs: S.optional(ExpressionTracesInputsList),
         }),
       ).annotate({ identifier: "ExpressionTraces" });
   }
@@ -10606,12 +12795,12 @@ function __c43(j: number): any {
         identifier: "ListWorkflowRunActionRepetitionsRequest",
       });
     case 2:
-      return S.Array(__S(186));
+      return S.Array(WorkflowRunActionRepetitionDefinition);
     case 3:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(__S(346)),
+          value: S.optional(WorkflowRunActionRepetitionDefinitionCollectionValueList),
         }),
       ).annotate({
         identifier: "WorkflowRunActionRepetitionDefinitionCollection",
@@ -10643,16 +12832,16 @@ function __c43(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           location: S.optional(S.String),
-          tags: S.optional(__S(20)),
-          properties: S.optional(__S(190)),
+          tags: S.optional(RequestHistoryTagsMap),
+          properties: S.optional(RequestHistoryProperties),
         }),
       ).annotate({ identifier: "RequestHistory" });
     case 6:
-      return S.Array(__S(349));
+      return S.Array(RequestHistory);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(350)),
+          value: S.optional(RequestHistoryListResultValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "RequestHistoryListResult" });
@@ -10703,17 +12892,17 @@ function __c44(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
-          properties: S.optional(__S(180)),
+          properties: S.optional(WorkflowRunActionProperties),
           name: S.optional(S.String),
           type: S.optional(S.String),
         }),
       ).annotate({ identifier: "WorkflowRunAction" });
     case 3:
-      return S.Array(__S(354));
+      return S.Array(WorkflowRunAction);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(355)),
+          value: S.optional(WorkflowRunActionListResultValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -10756,7 +12945,7 @@ function __c44(j: number): any {
         ),
       ).annotate({ identifier: "ListWorkflowRunsRequest" });
     case 7:
-      return S.Array(__S(173));
+      return S.Array(WorkflowRun);
   }
 }
 function __c45(j: number): any {
@@ -10764,7 +12953,7 @@ function __c45(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(359)),
+          value: S.optional(WorkflowRunListResultValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "WorkflowRunListResult" });
@@ -10827,17 +13016,17 @@ function __c45(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
-          properties: S.optional(__S(200)),
+          properties: S.optional(WorkflowTriggerHistoryProperties),
           name: S.optional(S.String),
           type: S.optional(S.String),
         }),
       ).annotate({ identifier: "WorkflowTriggerHistory" });
     case 5:
-      return S.Array(__S(364));
+      return S.Array(WorkflowTriggerHistory);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(365)),
+          value: S.optional(WorkflowTriggerHistoryListResultValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -10870,17 +13059,17 @@ function __c46(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
-          properties: S.optional(__S(197)),
+          properties: S.optional(WorkflowTriggerProperties),
           name: S.optional(S.String),
           type: S.optional(S.String),
         }),
       ).annotate({ identifier: "WorkflowTrigger" });
     case 1:
-      return S.Array(__S(368));
+      return S.Array(WorkflowTrigger);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(369)),
+          value: S.optional(WorkflowTriggerListResultValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -10911,16 +13100,16 @@ function __c46(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           location: S.optional(S.String),
-          tags: S.optional(__S(20)),
-          properties: S.optional(__S(205)),
+          tags: S.optional(WorkflowVersionTagsMap),
+          properties: S.optional(WorkflowVersionProperties),
         }),
       ).annotate({ identifier: "WorkflowVersion" });
     case 5:
-      return S.Array(__S(372));
+      return S.Array(WorkflowVersion);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(373)),
+          value: S.optional(WorkflowVersionListResultValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -10935,7 +13124,7 @@ function __c46(j: number): any {
           versionId: S.String.pipe(T.Label()),
           triggerName: S.String.pipe(T.Label()),
           notAfter: S.optional(S.String),
-          keyType: S.optional(S.String),
+          keyType: S.optional(KeyType),
         }).pipe(
           T.Http({
             method: "POST",
@@ -10970,7 +13159,7 @@ function __c47(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          contentLinkDefinition: S.optional(__S(209)),
+          contentLinkDefinition: S.optional(ContentLinkInput),
         }),
       ).annotate({
         identifier: "IntegrationServiceEnvironmentManagedApiDeploymentParametersInput",
@@ -10978,8 +13167,10 @@ function __c47(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          integrationServiceEnvironment: S.optional(__S(215)),
-          deploymentParameters: S.optional(__S(377)),
+          integrationServiceEnvironment: S.optional(KeyVaultKeyReferenceInputKeyVault),
+          deploymentParameters: S.optional(
+            IntegrationServiceEnvironmentManagedApiDeploymentParametersInput,
+          ),
         }),
       ).annotate({
         identifier: "IntegrationServiceEnvironmentManagedApiPropertiesInput",
@@ -10992,8 +13183,8 @@ function __c47(j: number): any {
           integrationServiceEnvironmentName: S.String.pipe(T.Label()),
           apiName: S.String.pipe(T.Label()),
           location: S.optional(S.String),
-          tags: S.optional(__S(20)),
-          properties: S.optional(__S(378)),
+          tags: S.optional(PutIntegrationServiceEnvironmentManagedApisRequestTagsMap),
+          properties: S.optional(IntegrationServiceEnvironmentManagedApiPropertiesInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -11011,7 +13202,7 @@ function __c47(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           integrationAccountName: S.String.pipe(T.Label()),
-          keyType: S.optional(S.String),
+          keyType: S.optional(KeyType),
         }).pipe(
           T.Http({
             method: "POST",
@@ -11029,7 +13220,7 @@ function __c47(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           workflowName: S.String.pipe(T.Label()),
-          keyType: S.optional(S.String),
+          keyType: S.optional(KeyType),
         }).pipe(
           T.Http({
             method: "POST",
@@ -11097,7 +13288,7 @@ function __c48(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           workflowName: S.String.pipe(T.Label()),
           triggerName: S.String.pipe(T.Label()),
-          source: __S(384),
+          source: WorkflowTriggerReferenceInput,
         }).pipe(
           T.Http({
             method: "POST",
@@ -11138,9 +13329,9 @@ function __c48(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           integrationAccountName: S.String.pipe(T.Label()),
           location: S.optional(S.String),
-          tags: S.optional(__S(20)),
-          properties: S.optional(__S(225)),
-          sku: S.optional(__S(23)),
+          tags: S.optional(UpdateIntegrationAccountRequestTagsMap),
+          properties: S.optional(IntegrationAccountPropertiesInput),
+          sku: S.optional(IntegrationAccountSku),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -11159,10 +13350,10 @@ function __c48(j: number): any {
           resourceGroup: S.String.pipe(T.Label()),
           integrationServiceEnvironmentName: S.String.pipe(T.Label()),
           location: S.optional(S.String),
-          tags: S.optional(__S(20)),
-          properties: S.optional(__S(237)),
-          sku: S.optional(__S(121)),
-          identity: S.optional(__S(239)),
+          tags: S.optional(UpdateIntegrationServiceEnvironmentRequestTagsMap),
+          properties: S.optional(IntegrationServiceEnvironmentPropertiesInput),
+          sku: S.optional(IntegrationServiceEnvironmentSku),
+          identity: S.optional(ManagedServiceIdentityInput),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -11192,13 +13383,13 @@ function __c48(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          state: S.optional(S.String),
-          endpointsConfiguration: S.optional(__S(114)),
-          accessControl: S.optional(__S(161)),
-          integrationAccount: S.optional(__S(215)),
-          integrationServiceEnvironment: S.optional(__S(215)),
+          state: S.optional(WorkflowState),
+          endpointsConfiguration: S.optional(FlowEndpointsConfiguration),
+          accessControl: S.optional(FlowAccessControlConfiguration),
+          integrationAccount: S.optional(KeyVaultKeyReferenceInputKeyVault),
+          integrationServiceEnvironment: S.optional(KeyVaultKeyReferenceInputKeyVault),
           definition: S.optional(S.Unknown),
-          parameters: S.optional(__S(164)),
+          parameters: S.optional(WorkflowPropertiesInputParametersMap),
         }),
       ).annotate({ identifier: "WorkflowPropertiesInput" });
   }
@@ -11212,9 +13403,9 @@ function __c49(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           location: S.String.pipe(T.Label()),
           workflowName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(20)),
-          properties: S.optional(__S(391)),
-          identity: S.optional(__S(239)),
+          tags: S.optional(ValidateWorkflowByLocationRequestTagsMap),
+          properties: S.optional(WorkflowPropertiesInput),
+          identity: S.optional(ManagedServiceIdentityInput),
         }).pipe(
           T.Http({
             method: "POST",
@@ -11233,9 +13424,9 @@ function __c49(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           workflowName: S.String.pipe(T.Label()),
           location: S.optional(S.String),
-          tags: S.optional(__S(20)),
-          properties: S.optional(__S(391)),
-          identity: S.optional(__S(239)),
+          tags: S.optional(ValidateWorkflowByResourceGroupRequestTagsMap),
+          properties: S.optional(WorkflowPropertiesInput),
+          identity: S.optional(ManagedServiceIdentityInput),
         }).pipe(
           T.Http({
             method: "POST",
@@ -11254,9 +13445,9 @@ function __c49(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           workflowName: S.String.pipe(T.Label()),
           location: S.optional(S.String),
-          tags: S.optional(__S(20)),
-          properties: S.optional(__S(391)),
-          identity: S.optional(__S(239)),
+          tags: S.optional(WorkflowsCreateOrUpdateRequestTagsMap),
+          properties: S.optional(WorkflowPropertiesInput),
+          identity: S.optional(ManagedServiceIdentityInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -11275,9 +13466,9 @@ function __c49(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           location: S.optional(S.String),
-          tags: S.optional(__S(20)),
-          properties: S.optional(__S(165)),
-          identity: S.optional(__S(124)),
+          tags: S.optional(WorkflowsCreateOrUpdateResponseTagsMap),
+          properties: S.optional(WorkflowProperties),
+          identity: S.optional(ManagedServiceIdentity),
         }),
       ).annotate({
         identifier: "WorkflowsCreateOrUpdateResponse",
@@ -11301,114 +13492,5 @@ function __c49(j: number): any {
       ).annotate({
         identifier: "WorkflowTriggerHistoriesResubmitRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
-    case 9:
-      return __c9(i & 7);
-    case 10:
-      return __c10(i & 7);
-    case 11:
-      return __c11(i & 7);
-    case 12:
-      return __c12(i & 7);
-    case 13:
-      return __c13(i & 7);
-    case 14:
-      return __c14(i & 7);
-    case 15:
-      return __c15(i & 7);
-    case 16:
-      return __c16(i & 7);
-    case 17:
-      return __c17(i & 7);
-    case 18:
-      return __c18(i & 7);
-    case 19:
-      return __c19(i & 7);
-    case 20:
-      return __c20(i & 7);
-    case 21:
-      return __c21(i & 7);
-    case 22:
-      return __c22(i & 7);
-    case 23:
-      return __c23(i & 7);
-    case 24:
-      return __c24(i & 7);
-    case 25:
-      return __c25(i & 7);
-    case 26:
-      return __c26(i & 7);
-    case 27:
-      return __c27(i & 7);
-    case 28:
-      return __c28(i & 7);
-    case 29:
-      return __c29(i & 7);
-    case 30:
-      return __c30(i & 7);
-    case 31:
-      return __c31(i & 7);
-    case 32:
-      return __c32(i & 7);
-    case 33:
-      return __c33(i & 7);
-    case 34:
-      return __c34(i & 7);
-    case 35:
-      return __c35(i & 7);
-    case 36:
-      return __c36(i & 7);
-    case 37:
-      return __c37(i & 7);
-    case 38:
-      return __c38(i & 7);
-    case 39:
-      return __c39(i & 7);
-    case 40:
-      return __c40(i & 7);
-    case 41:
-      return __c41(i & 7);
-    case 42:
-      return __c42(i & 7);
-    case 43:
-      return __c43(i & 7);
-    case 44:
-      return __c44(i & 7);
-    case 45:
-      return __c45(i & 7);
-    case 46:
-      return __c46(i & 7);
-    case 47:
-      return __c47(i & 7);
-    case 48:
-      return __c48(i & 7);
-    case 49:
-      return __c49(i & 7);
   }
 }

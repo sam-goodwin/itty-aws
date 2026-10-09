@@ -7,8 +7,6 @@ import { paginatePageNumber } from "../pagination.ts";
 import { HetznerProtocol, type HetznerOpError, type HetznerOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { HetznerOpError, HetznerOpContext };
 
@@ -18,17 +16,34 @@ export interface AssignFloatingIpRequest {
   /** [Server](#tag/servers) the [Floating IP](#tag/floating-ips) is assigned to. `null` if not assigned. */
   server: number | null;
 }
+const AssignFloatingIpRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<AssignFloatingIpRequest>;
+
 /** Status of the Action. */
 export type AssignFloatingIpResponseActionStatus = "running" | "success" | "error";
+const AssignFloatingIpResponseActionStatus = S.String;
+
 export interface AssignFloatingIpResponseActionResourcesItem {
   /** ID of the Resource. */
   id: number;
   /** Type of the Resource. */
   type: string;
 }
+const AssignFloatingIpResponseActionResourcesItem = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<AssignFloatingIpResponseActionResourcesItem>;
+
 /** Resources the Action relates to. */
 export type AssignFloatingIpResponseActionResourcesList =
   Array<AssignFloatingIpResponseActionResourcesItem>;
+const AssignFloatingIpResponseActionResourcesList = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<AssignFloatingIpResponseActionResourcesList>;
+
 /** Error message for the Action if an error occurred, otherwise null. */
 export interface AssignFloatingIpResponseActionError {
   /** Fixed error code for machines. */
@@ -36,6 +51,11 @@ export interface AssignFloatingIpResponseActionError {
   /** Error message for humans. */
   message: string;
 }
+const AssignFloatingIpResponseActionError = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<AssignFloatingIpResponseActionError>;
+
 export interface AssignFloatingIpResponseAction {
   /** ID of the [Action](#description/actions). */
   id: number;
@@ -54,9 +74,19 @@ export interface AssignFloatingIpResponseAction {
   /** Error message for the Action if an error occurred, otherwise null. */
   error: AssignFloatingIpResponseActionError | null;
 }
+const AssignFloatingIpResponseAction = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<AssignFloatingIpResponseAction>;
+
 export interface AssignFloatingIpResponse {
   action: AssignFloatingIpResponseAction;
 }
+const AssignFloatingIpResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<AssignFloatingIpResponse>;
+
 export interface ChangeFloatingIpDnsPtrRequest {
   /** ID of the Floating IP. */
   id: number;
@@ -65,13 +95,23 @@ export interface ChangeFloatingIpDnsPtrRequest {
   /** Domain Name to point to. PTR record content used for reverse DNS. Set to null to reset (IPv4) to the default value or remove (IPv6) the record. */
   dns_ptr: string | null;
 }
+const ChangeFloatingIpDnsPtrRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<ChangeFloatingIpDnsPtrRequest>;
+
 /** Status of the Action. */
 export type ChangeFloatingIpDnsPtrResponseActionStatus = "running" | "success" | "error";
+const ChangeFloatingIpDnsPtrResponseActionStatus = S.String;
+
 export type ChangeFloatingIpDnsPtrResponseActionResourcesItem =
   AssignFloatingIpResponseActionResourcesItem;
 /** Resources the Action relates to. */
 export type ChangeFloatingIpDnsPtrResponseActionResourcesList =
   Array<AssignFloatingIpResponseActionResourcesItem>;
+const ChangeFloatingIpDnsPtrResponseActionResourcesList =
+  AssignFloatingIpResponseActionResourcesList as any as S.Schema<ChangeFloatingIpDnsPtrResponseActionResourcesList>;
+
 /** Error message for the Action if an error occurred, otherwise null. */
 export type ChangeFloatingIpDnsPtrResponseActionError = AssignFloatingIpResponseActionError;
 export interface ChangeFloatingIpDnsPtrResponseAction {
@@ -92,22 +132,42 @@ export interface ChangeFloatingIpDnsPtrResponseAction {
   /** Error message for the Action if an error occurred, otherwise null. */
   error: AssignFloatingIpResponseActionError | null;
 }
+const ChangeFloatingIpDnsPtrResponseAction = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<ChangeFloatingIpDnsPtrResponseAction>;
+
 export interface ChangeFloatingIpDnsPtrResponse {
   action: ChangeFloatingIpDnsPtrResponseAction;
 }
+const ChangeFloatingIpDnsPtrResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<ChangeFloatingIpDnsPtrResponse>;
+
 export interface ChangeFloatingIpProtectionRequest {
   /** ID of the Floating IP. */
   id: number;
   /** Prevent the Resource from being deleted. */
   delete: boolean;
 }
+const ChangeFloatingIpProtectionRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<ChangeFloatingIpProtectionRequest>;
+
 /** Status of the Action. */
 export type ChangeFloatingIpProtectionResponseActionStatus = "running" | "success" | "error";
+const ChangeFloatingIpProtectionResponseActionStatus = S.String;
+
 export type ChangeFloatingIpProtectionResponseActionResourcesItem =
   AssignFloatingIpResponseActionResourcesItem;
 /** Resources the Action relates to. */
 export type ChangeFloatingIpProtectionResponseActionResourcesList =
   Array<AssignFloatingIpResponseActionResourcesItem>;
+const ChangeFloatingIpProtectionResponseActionResourcesList =
+  AssignFloatingIpResponseActionResourcesList as any as S.Schema<ChangeFloatingIpProtectionResponseActionResourcesList>;
+
 /** Error message for the Action if an error occurred, otherwise null. */
 export type ChangeFloatingIpProtectionResponseActionError = AssignFloatingIpResponseActionError;
 export interface ChangeFloatingIpProtectionResponseAction {
@@ -128,20 +188,40 @@ export interface ChangeFloatingIpProtectionResponseAction {
   /** Error message for the Action if an error occurred, otherwise null. */
   error: AssignFloatingIpResponseActionError | null;
 }
+const ChangeFloatingIpProtectionResponseAction = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<ChangeFloatingIpProtectionResponseAction>;
+
 export interface ChangeFloatingIpProtectionResponse {
   action: ChangeFloatingIpProtectionResponseAction;
 }
+const ChangeFloatingIpProtectionResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<ChangeFloatingIpProtectionResponse>;
+
 export interface GetFloatingIpsActionRequest {
   /** ID of the Action. */
   id: number;
 }
+const GetFloatingIpsActionRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<GetFloatingIpsActionRequest>;
+
 /** Status of the Action. */
 export type GetFloatingIpsActionResponseActionStatus = "running" | "success" | "error";
+const GetFloatingIpsActionResponseActionStatus = S.String;
+
 export type GetFloatingIpsActionResponseActionResourcesItem =
   AssignFloatingIpResponseActionResourcesItem;
 /** Resources the Action relates to. */
 export type GetFloatingIpsActionResponseActionResourcesList =
   Array<AssignFloatingIpResponseActionResourcesItem>;
+const GetFloatingIpsActionResponseActionResourcesList =
+  AssignFloatingIpResponseActionResourcesList as any as S.Schema<GetFloatingIpsActionResponseActionResourcesList>;
+
 /** Error message for the Action if an error occurred, otherwise null. */
 export type GetFloatingIpsActionResponseActionError = AssignFloatingIpResponseActionError;
 export interface GetFloatingIpsActionResponseAction {
@@ -162,9 +242,19 @@ export interface GetFloatingIpsActionResponseAction {
   /** Error message for the Action if an error occurred, otherwise null. */
   error: AssignFloatingIpResponseActionError | null;
 }
+const GetFloatingIpsActionResponseAction = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<GetFloatingIpsActionResponseAction>;
+
 export interface GetFloatingIpsActionResponse {
   action: GetFloatingIpsActionResponseAction;
 }
+const GetFloatingIpsActionResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<GetFloatingIpsActionResponse>;
+
 export type ListFloatingIpActionsRequestSortItem =
   | "id"
   | "id:asc"
@@ -181,14 +271,24 @@ export type ListFloatingIpActionsRequestSortItem =
   | "finished"
   | "finished:asc"
   | "finished:desc";
+const ListFloatingIpActionsRequestSortItem = S.String;
+
 export type ListFloatingIpActionsRequestSortList = Array<
   ListFloatingIpActionsRequestSortItem | (string & {})
 >;
+const ListFloatingIpActionsRequestSortList = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<ListFloatingIpActionsRequestSortList>;
+
 /** Status of the Action. */
 export type ListFloatingIpActionsRequestStatusItem = "running" | "success" | "error";
 export type ListFloatingIpActionsRequestStatusList = Array<
   ListFloatingIpActionsRequestStatusItem | (string & {})
 >;
+const ListFloatingIpActionsRequestStatusList =
+  ListFloatingIpActionsRequestSortList as any as S.Schema<ListFloatingIpActionsRequestStatusList>;
+
 export interface ListFloatingIpActionsRequest {
   /** ID of the Floating IP. */
   id: number;
@@ -201,13 +301,23 @@ export interface ListFloatingIpActionsRequest {
   /** Maximum number of entries returned per page. For more information, see "[Pagination](#description/pagination)". */
   per_page?: number;
 }
+const ListFloatingIpActionsRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<ListFloatingIpActionsRequest>;
+
 /** Status of the Action. */
 export type ListFloatingIpActionsResponseActionsItemStatus = "running" | "success" | "error";
+const ListFloatingIpActionsResponseActionsItemStatus = S.String;
+
 export type ListFloatingIpActionsResponseActionsItemResourcesItem =
   AssignFloatingIpResponseActionResourcesItem;
 /** Resources the Action relates to. */
 export type ListFloatingIpActionsResponseActionsItemResourcesList =
   Array<AssignFloatingIpResponseActionResourcesItem>;
+const ListFloatingIpActionsResponseActionsItemResourcesList =
+  AssignFloatingIpResponseActionResourcesList as any as S.Schema<ListFloatingIpActionsResponseActionsItemResourcesList>;
+
 /** Error message for the Action if an error occurred, otherwise null. */
 export type ListFloatingIpActionsResponseActionsItemError = AssignFloatingIpResponseActionError;
 export interface ListFloatingIpActionsResponseActionsItem {
@@ -228,8 +338,18 @@ export interface ListFloatingIpActionsResponseActionsItem {
   /** Error message for the Action if an error occurred, otherwise null. */
   error: AssignFloatingIpResponseActionError | null;
 }
+const ListFloatingIpActionsResponseActionsItem = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<ListFloatingIpActionsResponseActionsItem>;
+
 export type ListFloatingIpActionsResponseActionsList =
   Array<ListFloatingIpActionsResponseActionsItem>;
+const ListFloatingIpActionsResponseActionsList = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<ListFloatingIpActionsResponseActionsList>;
+
 /** See "[Pagination](#description/pagination)" for more information. */
 export interface ListFloatingIpActionsResponseMetaPagination {
   /** Current page number. */
@@ -245,15 +365,35 @@ export interface ListFloatingIpActionsResponseMetaPagination {
   /** Total number of entries that exist for this query. Can be null if unknown. */
   total_entries: number | null;
 }
+const ListFloatingIpActionsResponseMetaPagination = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<ListFloatingIpActionsResponseMetaPagination>;
+
 export interface ListFloatingIpActionsResponseMeta {
   /** See "[Pagination](#description/pagination)" for more information. */
   pagination: ListFloatingIpActionsResponseMetaPagination;
 }
+const ListFloatingIpActionsResponseMeta = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<ListFloatingIpActionsResponseMeta>;
+
 export interface ListFloatingIpActionsResponse {
   actions: ListFloatingIpActionsResponseActionsList;
   meta: ListFloatingIpActionsResponseMeta;
 }
+const ListFloatingIpActionsResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<ListFloatingIpActionsResponse>;
+
 export type ListFloatingIpsActionsRequestIdList = Array<number>;
+const ListFloatingIpsActionsRequestIdList = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<ListFloatingIpsActionsRequestIdList>;
+
 export type ListFloatingIpsActionsRequestSortItem =
   | "id"
   | "id:asc"
@@ -273,11 +413,17 @@ export type ListFloatingIpsActionsRequestSortItem =
 export type ListFloatingIpsActionsRequestSortList = Array<
   ListFloatingIpsActionsRequestSortItem | (string & {})
 >;
+const ListFloatingIpsActionsRequestSortList =
+  ListFloatingIpActionsRequestSortList as any as S.Schema<ListFloatingIpsActionsRequestSortList>;
+
 /** Status of the Action. */
 export type ListFloatingIpsActionsRequestStatusItem = "running" | "success" | "error";
 export type ListFloatingIpsActionsRequestStatusList = Array<
   ListFloatingIpsActionsRequestStatusItem | (string & {})
 >;
+const ListFloatingIpsActionsRequestStatusList =
+  ListFloatingIpActionsRequestSortList as any as S.Schema<ListFloatingIpsActionsRequestStatusList>;
+
 export interface ListFloatingIpsActionsRequest {
   /** Filter the actions by ID. May be used multiple times. The response will only contain actions matching the specified IDs. */
   id?: ListFloatingIpsActionsRequestIdList;
@@ -290,13 +436,23 @@ export interface ListFloatingIpsActionsRequest {
   /** Maximum number of entries returned per page. For more information, see "[Pagination](#description/pagination)". */
   per_page?: number;
 }
+const ListFloatingIpsActionsRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<ListFloatingIpsActionsRequest>;
+
 /** Status of the Action. */
 export type ListFloatingIpsActionsResponseActionsItemStatus = "running" | "success" | "error";
+const ListFloatingIpsActionsResponseActionsItemStatus = S.String;
+
 export type ListFloatingIpsActionsResponseActionsItemResourcesItem =
   AssignFloatingIpResponseActionResourcesItem;
 /** Resources the Action relates to. */
 export type ListFloatingIpsActionsResponseActionsItemResourcesList =
   Array<AssignFloatingIpResponseActionResourcesItem>;
+const ListFloatingIpsActionsResponseActionsItemResourcesList =
+  AssignFloatingIpResponseActionResourcesList as any as S.Schema<ListFloatingIpsActionsResponseActionsItemResourcesList>;
+
 /** Error message for the Action if an error occurred, otherwise null. */
 export type ListFloatingIpsActionsResponseActionsItemError = AssignFloatingIpResponseActionError;
 export interface ListFloatingIpsActionsResponseActionsItem {
@@ -317,8 +473,18 @@ export interface ListFloatingIpsActionsResponseActionsItem {
   /** Error message for the Action if an error occurred, otherwise null. */
   error: AssignFloatingIpResponseActionError | null;
 }
+const ListFloatingIpsActionsResponseActionsItem = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<ListFloatingIpsActionsResponseActionsItem>;
+
 export type ListFloatingIpsActionsResponseActionsList =
   Array<ListFloatingIpsActionsResponseActionsItem>;
+const ListFloatingIpsActionsResponseActionsList = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<ListFloatingIpsActionsResponseActionsList>;
+
 /** See "[Pagination](#description/pagination)" for more information. */
 export type ListFloatingIpsActionsResponseMetaPagination =
   ListFloatingIpActionsResponseMetaPagination;
@@ -327,17 +493,32 @@ export interface ListFloatingIpsActionsResponse {
   actions: ListFloatingIpsActionsResponseActionsList;
   meta: ListFloatingIpActionsResponseMeta;
 }
+const ListFloatingIpsActionsResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<ListFloatingIpsActionsResponse>;
+
 export interface UnassignFloatingIpRequest {
   /** ID of the Floating IP. */
   id: number;
 }
+const UnassignFloatingIpRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<UnassignFloatingIpRequest>;
+
 /** Status of the Action. */
 export type UnassignFloatingIpResponseActionStatus = "running" | "success" | "error";
+const UnassignFloatingIpResponseActionStatus = S.String;
+
 export type UnassignFloatingIpResponseActionResourcesItem =
   AssignFloatingIpResponseActionResourcesItem;
 /** Resources the Action relates to. */
 export type UnassignFloatingIpResponseActionResourcesList =
   Array<AssignFloatingIpResponseActionResourcesItem>;
+const UnassignFloatingIpResponseActionResourcesList =
+  AssignFloatingIpResponseActionResourcesList as any as S.Schema<UnassignFloatingIpResponseActionResourcesList>;
+
 /** Error message for the Action if an error occurred, otherwise null. */
 export type UnassignFloatingIpResponseActionError = AssignFloatingIpResponseActionError;
 export interface UnassignFloatingIpResponseAction {
@@ -358,9 +539,19 @@ export interface UnassignFloatingIpResponseAction {
   /** Error message for the Action if an error occurred, otherwise null. */
   error: AssignFloatingIpResponseActionError | null;
 }
+const UnassignFloatingIpResponseAction = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<UnassignFloatingIpResponseAction>;
+
 export interface UnassignFloatingIpResponse {
   action: UnassignFloatingIpResponseAction;
 }
+const UnassignFloatingIpResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<UnassignFloatingIpResponse>;
+
 export type AssignFloatingIpError = HetznerOpError;
 /** Assign a Floating IP to a Server Assigns a [Floating IP](#tag/floating-ips) to a [Server](#tag/servers). #### Operation specific errors */
 export const assignFloatingIp: API.OperationMethod<
@@ -369,8 +560,8 @@ export const assignFloatingIp: API.OperationMethod<
   AssignFloatingIpError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<AssignFloatingIpRequest>,
-  output: __S(5) as any as S.Schema<AssignFloatingIpResponse>,
+  input: AssignFloatingIpRequest,
+  output: AssignFloatingIpResponse,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -384,8 +575,8 @@ export const changeFloatingIpDnsPtr: API.OperationMethod<
   ChangeFloatingIpDnsPtrError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6) as any as S.Schema<ChangeFloatingIpDnsPtrRequest>,
-  output: __S(8) as any as S.Schema<ChangeFloatingIpDnsPtrResponse>,
+  input: ChangeFloatingIpDnsPtrRequest,
+  output: ChangeFloatingIpDnsPtrResponse,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -399,8 +590,8 @@ export const changeFloatingIpProtection: API.OperationMethod<
   ChangeFloatingIpProtectionError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9) as any as S.Schema<ChangeFloatingIpProtectionRequest>,
-  output: __S(11) as any as S.Schema<ChangeFloatingIpProtectionResponse>,
+  input: ChangeFloatingIpProtectionRequest,
+  output: ChangeFloatingIpProtectionResponse,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -414,8 +605,8 @@ export const getFloatingIpsAction: API.OperationMethod<
   GetFloatingIpsActionError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12) as any as S.Schema<GetFloatingIpsActionRequest>,
-  output: __S(14) as any as S.Schema<GetFloatingIpsActionResponse>,
+  input: GetFloatingIpsActionRequest,
+  output: GetFloatingIpsActionResponse,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -431,8 +622,8 @@ export const listFloatingIpActions: API.PaginatedOperationMethod<
   ListFloatingIpActionsResponseActionsItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(16) as any as S.Schema<ListFloatingIpActionsRequest>,
-    output: __S(21) as any as S.Schema<ListFloatingIpActionsResponse>,
+    input: ListFloatingIpActionsRequest,
+    output: ListFloatingIpActionsResponse,
     errors: [UnknownHetznerError],
     protocol: HetznerProtocol,
     retry: Retry.Retry,
@@ -457,8 +648,8 @@ export const listFloatingIpsActions: API.PaginatedOperationMethod<
   ListFloatingIpsActionsResponseActionsItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(23) as any as S.Schema<ListFloatingIpsActionsRequest>,
-    output: __S(26) as any as S.Schema<ListFloatingIpsActionsResponse>,
+    input: ListFloatingIpsActionsRequest,
+    output: ListFloatingIpsActionsResponse,
     errors: [UnknownHetznerError],
     protocol: HetznerProtocol,
     retry: Retry.Retry,
@@ -481,8 +672,8 @@ export const unassignFloatingIp: API.OperationMethod<
   UnassignFloatingIpError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27) as any as S.Schema<UnassignFloatingIpRequest>,
-  output: __S(29) as any as S.Schema<UnassignFloatingIpResponse>,
+  input: UnassignFloatingIpRequest,
+  output: UnassignFloatingIpResponse,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -508,7 +699,7 @@ function __c0(j: number): any {
         identifier: "AssignFloatingIpResponseActionResourcesItem",
       });
     case 2:
-      return S.Array(__S(1));
+      return S.Array(AssignFloatingIpResponseActionResourcesItem);
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -523,12 +714,12 @@ function __c0(j: number): any {
         S.Struct({
           id: S.Number,
           command: S.String,
-          status: S.String,
+          status: AssignFloatingIpResponseActionStatus,
           started: S.String,
           finished: S.NullOr(S.String),
           progress: S.Number,
-          resources: __S(2),
-          error: S.NullOr(__S(3)),
+          resources: AssignFloatingIpResponseActionResourcesList,
+          error: S.NullOr(AssignFloatingIpResponseActionError),
         }),
       ).annotate({
         identifier: "AssignFloatingIpResponseAction",
@@ -536,7 +727,7 @@ function __c0(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          action: __S(4),
+          action: AssignFloatingIpResponseAction,
         }),
       ).annotate({ identifier: "AssignFloatingIpResponse" });
     case 6:
@@ -556,12 +747,12 @@ function __c0(j: number): any {
         S.Struct({
           id: S.Number,
           command: S.String,
-          status: S.String,
+          status: ChangeFloatingIpDnsPtrResponseActionStatus,
           started: S.String,
           finished: S.NullOr(S.String),
           progress: S.Number,
-          resources: __S(2),
-          error: S.NullOr(__S(3)),
+          resources: ChangeFloatingIpDnsPtrResponseActionResourcesList,
+          error: S.NullOr(AssignFloatingIpResponseActionError),
         }),
       ).annotate({
         identifier: "ChangeFloatingIpDnsPtrResponseAction",
@@ -573,7 +764,7 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          action: __S(7),
+          action: ChangeFloatingIpDnsPtrResponseAction,
         }),
       ).annotate({
         identifier: "ChangeFloatingIpDnsPtrResponse",
@@ -598,12 +789,12 @@ function __c1(j: number): any {
         S.Struct({
           id: S.Number,
           command: S.String,
-          status: S.String,
+          status: ChangeFloatingIpProtectionResponseActionStatus,
           started: S.String,
           finished: S.NullOr(S.String),
           progress: S.Number,
-          resources: __S(2),
-          error: S.NullOr(__S(3)),
+          resources: ChangeFloatingIpProtectionResponseActionResourcesList,
+          error: S.NullOr(AssignFloatingIpResponseActionError),
         }),
       ).annotate({
         identifier: "ChangeFloatingIpProtectionResponseAction",
@@ -611,7 +802,7 @@ function __c1(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          action: __S(10),
+          action: ChangeFloatingIpProtectionResponseAction,
         }),
       ).annotate({
         identifier: "ChangeFloatingIpProtectionResponse",
@@ -629,12 +820,12 @@ function __c1(j: number): any {
         S.Struct({
           id: S.Number,
           command: S.String,
-          status: S.String,
+          status: GetFloatingIpsActionResponseActionStatus,
           started: S.String,
           finished: S.NullOr(S.String),
           progress: S.Number,
-          resources: __S(2),
-          error: S.NullOr(__S(3)),
+          resources: GetFloatingIpsActionResponseActionResourcesList,
+          error: S.NullOr(AssignFloatingIpResponseActionError),
         }),
       ).annotate({
         identifier: "GetFloatingIpsActionResponseAction",
@@ -642,13 +833,13 @@ function __c1(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          action: __S(13),
+          action: GetFloatingIpsActionResponseAction,
         }),
       ).annotate({
         identifier: "GetFloatingIpsActionResponse",
       });
     case 7:
-      return S.Array(S.String);
+      return S.Array(ListFloatingIpActionsRequestSortItem);
   }
 }
 function __c2(j: number): any {
@@ -657,8 +848,8 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
-          sort: S.optional(__S(15).pipe(T.Query())),
-          status: S.optional(__S(15).pipe(T.Query())),
+          sort: S.optional(ListFloatingIpActionsRequestSortList.pipe(T.Query())),
+          status: S.optional(ListFloatingIpActionsRequestStatusList.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
           per_page: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/floating_ips/{id}/actions", code: 200 })),
@@ -670,18 +861,18 @@ function __c2(j: number): any {
         S.Struct({
           id: S.Number,
           command: S.String,
-          status: S.String,
+          status: ListFloatingIpActionsResponseActionsItemStatus,
           started: S.String,
           finished: S.NullOr(S.String),
           progress: S.Number,
-          resources: __S(2),
-          error: S.NullOr(__S(3)),
+          resources: ListFloatingIpActionsResponseActionsItemResourcesList,
+          error: S.NullOr(AssignFloatingIpResponseActionError),
         }),
       ).annotate({
         identifier: "ListFloatingIpActionsResponseActionsItem",
       });
     case 2:
-      return S.Array(__S(17));
+      return S.Array(ListFloatingIpActionsResponseActionsItem);
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -698,7 +889,7 @@ function __c2(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          pagination: __S(19),
+          pagination: ListFloatingIpActionsResponseMetaPagination,
         }),
       ).annotate({
         identifier: "ListFloatingIpActionsResponseMeta",
@@ -706,8 +897,8 @@ function __c2(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          actions: __S(18),
-          meta: __S(20),
+          actions: ListFloatingIpActionsResponseActionsList,
+          meta: ListFloatingIpActionsResponseMeta,
         }),
       ).annotate({
         identifier: "ListFloatingIpActionsResponse",
@@ -717,9 +908,9 @@ function __c2(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          id: S.optional(__S(22).pipe(T.Query())),
-          sort: S.optional(__S(15).pipe(T.Query())),
-          status: S.optional(__S(15).pipe(T.Query())),
+          id: S.optional(ListFloatingIpsActionsRequestIdList.pipe(T.Query())),
+          sort: S.optional(ListFloatingIpsActionsRequestSortList.pipe(T.Query())),
+          status: S.optional(ListFloatingIpsActionsRequestStatusList.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
           per_page: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/floating_ips/actions", code: 200 })),
@@ -735,23 +926,23 @@ function __c3(j: number): any {
         S.Struct({
           id: S.Number,
           command: S.String,
-          status: S.String,
+          status: ListFloatingIpsActionsResponseActionsItemStatus,
           started: S.String,
           finished: S.NullOr(S.String),
           progress: S.Number,
-          resources: __S(2),
-          error: S.NullOr(__S(3)),
+          resources: ListFloatingIpsActionsResponseActionsItemResourcesList,
+          error: S.NullOr(AssignFloatingIpResponseActionError),
         }),
       ).annotate({
         identifier: "ListFloatingIpsActionsResponseActionsItem",
       });
     case 1:
-      return S.Array(__S(24));
+      return S.Array(ListFloatingIpsActionsResponseActionsItem);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          actions: __S(25),
-          meta: __S(20),
+          actions: ListFloatingIpsActionsResponseActionsList,
+          meta: ListFloatingIpActionsResponseMeta,
         }),
       ).annotate({
         identifier: "ListFloatingIpsActionsResponse",
@@ -769,12 +960,12 @@ function __c3(j: number): any {
         S.Struct({
           id: S.Number,
           command: S.String,
-          status: S.String,
+          status: UnassignFloatingIpResponseActionStatus,
           started: S.String,
           finished: S.NullOr(S.String),
           progress: S.Number,
-          resources: __S(2),
-          error: S.NullOr(__S(3)),
+          resources: UnassignFloatingIpResponseActionResourcesList,
+          error: S.NullOr(AssignFloatingIpResponseActionError),
         }),
       ).annotate({
         identifier: "UnassignFloatingIpResponseAction",
@@ -782,27 +973,10 @@ function __c3(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          action: __S(28),
+          action: UnassignFloatingIpResponseAction,
         }),
       ).annotate({
         identifier: "UnassignFloatingIpResponse",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
   }
 }

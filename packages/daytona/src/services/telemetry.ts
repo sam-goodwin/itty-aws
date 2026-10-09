@@ -6,8 +6,6 @@ import { UnknownDaytonaError } from "../errors.ts";
 import { DaytonaProtocol, type DaytonaOpError, type DaytonaOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { DaytonaOpError, DaytonaOpContext };
 
@@ -19,7 +17,17 @@ export interface GetOrganizationSandboxTelemetryTraceRequest {
   /** Trace ID */
   traceId: string;
 }
+const GetOrganizationSandboxTelemetryTraceRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<GetOrganizationSandboxTelemetryTraceRequest>;
+
 export type ModelsSpanSpanAttributesMap = { [key: string]: string | undefined };
+const ModelsSpanSpanAttributesMap = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<ModelsSpanSpanAttributesMap>;
+
 export interface ModelsSpan {
   durationMs?: number;
   parentSpanId?: string;
@@ -31,9 +39,21 @@ export interface ModelsSpan {
   timestamp?: string;
   traceId?: string;
 }
+const ModelsSpan = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<ModelsSpan>;
+
 export type GetOrganizationSandboxTelemetryTraceResponseBodyList = Array<ModelsSpan>;
+const GetOrganizationSandboxTelemetryTraceResponseBodyList = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<GetOrganizationSandboxTelemetryTraceResponseBodyList>;
+
 export type GetOrganizationSandboxTelemetryTraceResponse =
   GetOrganizationSandboxTelemetryTraceResponseBodyList;
+const GetOrganizationSandboxTelemetryTraceResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<GetOrganizationSandboxTelemetryTraceResponse>;
+
 export interface ListOrganizationSandboxTelemetryLogsRequest {
   /** Organization ID */
   organizationId: string;
@@ -52,8 +72,19 @@ export interface ListOrganizationSandboxTelemetryLogsRequest {
   /** Offset */
   offset?: number;
 }
+const ListOrganizationSandboxTelemetryLogsRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<ListOrganizationSandboxTelemetryLogsRequest>;
+
 export type ModelsLogEntryLogAttributesMap = { [key: string]: string | undefined };
+const ModelsLogEntryLogAttributesMap =
+  ModelsSpanSpanAttributesMap as any as S.Schema<ModelsLogEntryLogAttributesMap>;
+
 export type ModelsLogEntryResourceAttributesMap = { [key: string]: string | undefined };
+const ModelsLogEntryResourceAttributesMap =
+  ModelsSpanSpanAttributesMap as any as S.Schema<ModelsLogEntryResourceAttributesMap>;
+
 export interface ModelsLogEntry {
   body?: string;
   logAttributes?: ModelsLogEntryLogAttributesMap;
@@ -65,9 +96,21 @@ export interface ModelsLogEntry {
   timestamp?: string;
   traceId?: string;
 }
+const ModelsLogEntry = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<ModelsLogEntry>;
+
 export type ListOrganizationSandboxTelemetryLogsResponseBodyList = Array<ModelsLogEntry>;
+const ListOrganizationSandboxTelemetryLogsResponseBodyList = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<ListOrganizationSandboxTelemetryLogsResponseBodyList>;
+
 export type ListOrganizationSandboxTelemetryLogsResponse =
   ListOrganizationSandboxTelemetryLogsResponseBodyList;
+const ListOrganizationSandboxTelemetryLogsResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<ListOrganizationSandboxTelemetryLogsResponse>;
+
 export interface ListOrganizationSandboxTelemetryMetricsRequest {
   /** Organization ID */
   organizationId: string;
@@ -80,14 +123,31 @@ export interface ListOrganizationSandboxTelemetryMetricsRequest {
   /** Comma-separated metric names */
   metricNames?: string;
 }
+const ListOrganizationSandboxTelemetryMetricsRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<ListOrganizationSandboxTelemetryMetricsRequest>;
+
 export interface ModelsMetricPoint {
   metricName?: string;
   timestamp?: string;
   value?: number;
 }
+const ModelsMetricPoint = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<ModelsMetricPoint>;
+
 export type ListOrganizationSandboxTelemetryMetricsResponseBodyList = Array<ModelsMetricPoint>;
+const ListOrganizationSandboxTelemetryMetricsResponseBodyList = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<ListOrganizationSandboxTelemetryMetricsResponseBodyList>;
+
 export type ListOrganizationSandboxTelemetryMetricsResponse =
   ListOrganizationSandboxTelemetryMetricsResponseBodyList;
+const ListOrganizationSandboxTelemetryMetricsResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<ListOrganizationSandboxTelemetryMetricsResponse>;
+
 export interface ListOrganizationSandboxTelemetryTracesRequest {
   /** Organization ID */
   organizationId: string;
@@ -102,6 +162,11 @@ export interface ListOrganizationSandboxTelemetryTracesRequest {
   /** Offset */
   offset?: number;
 }
+const ListOrganizationSandboxTelemetryTracesRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<ListOrganizationSandboxTelemetryTracesRequest>;
+
 export interface ModelsTraceSummary {
   endTime?: string;
   rootSpanName?: string;
@@ -111,9 +176,21 @@ export interface ModelsTraceSummary {
   totalDurationMs?: number;
   traceId?: string;
 }
+const ModelsTraceSummary = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<ModelsTraceSummary>;
+
 export type ListOrganizationSandboxTelemetryTracesResponseBodyList = Array<ModelsTraceSummary>;
+const ListOrganizationSandboxTelemetryTracesResponseBodyList = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<ListOrganizationSandboxTelemetryTracesResponseBodyList>;
+
 export type ListOrganizationSandboxTelemetryTracesResponse =
   ListOrganizationSandboxTelemetryTracesResponseBodyList;
+const ListOrganizationSandboxTelemetryTracesResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<ListOrganizationSandboxTelemetryTracesResponse>;
+
 export type GetOrganizationSandboxTelemetryTraceError = DaytonaOpError;
 /** Get trace spans Returns all spans belonging to a specific trace ID */
 export const getOrganizationSandboxTelemetryTrace: API.OperationMethod<
@@ -122,8 +199,8 @@ export const getOrganizationSandboxTelemetryTrace: API.OperationMethod<
   GetOrganizationSandboxTelemetryTraceError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<GetOrganizationSandboxTelemetryTraceRequest>,
-  output: __S(4) as any as S.Schema<GetOrganizationSandboxTelemetryTraceResponse>,
+  input: GetOrganizationSandboxTelemetryTraceRequest,
+  output: GetOrganizationSandboxTelemetryTraceResponse,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -137,8 +214,8 @@ export const listOrganizationSandboxTelemetryLogs: API.OperationMethod<
   ListOrganizationSandboxTelemetryLogsError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5) as any as S.Schema<ListOrganizationSandboxTelemetryLogsRequest>,
-  output: __S(8) as any as S.Schema<ListOrganizationSandboxTelemetryLogsResponse>,
+  input: ListOrganizationSandboxTelemetryLogsRequest,
+  output: ListOrganizationSandboxTelemetryLogsResponse,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -152,8 +229,8 @@ export const listOrganizationSandboxTelemetryMetrics: API.OperationMethod<
   ListOrganizationSandboxTelemetryMetricsError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9) as any as S.Schema<ListOrganizationSandboxTelemetryMetricsRequest>,
-  output: __S(12) as any as S.Schema<ListOrganizationSandboxTelemetryMetricsResponse>,
+  input: ListOrganizationSandboxTelemetryMetricsRequest,
+  output: ListOrganizationSandboxTelemetryMetricsResponse,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -167,8 +244,8 @@ export const listOrganizationSandboxTelemetryTraces: API.OperationMethod<
   ListOrganizationSandboxTelemetryTracesError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13) as any as S.Schema<ListOrganizationSandboxTelemetryTracesRequest>,
-  output: __S(16) as any as S.Schema<ListOrganizationSandboxTelemetryTracesResponse>,
+  input: ListOrganizationSandboxTelemetryTracesRequest,
+  output: ListOrganizationSandboxTelemetryTracesResponse,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -200,7 +277,7 @@ function __c0(j: number): any {
         S.Struct({
           durationMs: S.optional(S.Number),
           parentSpanId: S.optional(S.String),
-          spanAttributes: S.optional(__S(1)),
+          spanAttributes: S.optional(ModelsSpanSpanAttributesMap),
           spanId: S.optional(S.String),
           spanName: S.optional(S.String),
           statusCode: S.optional(S.String),
@@ -210,9 +287,11 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "ModelsSpan" });
     case 3:
-      return S.Array(__S(2));
+      return S.Array(ModelsSpan);
     case 4:
-      return S.suspend(() => __S(3).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        GetOrganizationSandboxTelemetryTraceResponseBodyList.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "GetOrganizationSandboxTelemetryTraceResponse",
       });
     case 5:
@@ -240,8 +319,8 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           body: S.optional(S.String),
-          logAttributes: S.optional(__S(1)),
-          resourceAttributes: S.optional(__S(1)),
+          logAttributes: S.optional(ModelsLogEntryLogAttributesMap),
+          resourceAttributes: S.optional(ModelsLogEntryResourceAttributesMap),
           serviceName: S.optional(S.String),
           severityNumber: S.optional(S.Number),
           severityText: S.optional(S.String),
@@ -251,13 +330,15 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "ModelsLogEntry" });
     case 7:
-      return S.Array(__S(6));
+      return S.Array(ModelsLogEntry);
   }
 }
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => __S(7).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        ListOrganizationSandboxTelemetryLogsResponseBodyList.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "ListOrganizationSandboxTelemetryLogsResponse",
       });
     case 1:
@@ -287,9 +368,11 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "ModelsMetricPoint" });
     case 3:
-      return S.Array(__S(10));
+      return S.Array(ModelsMetricPoint);
     case 4:
-      return S.suspend(() => __S(11).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        ListOrganizationSandboxTelemetryMetricsResponseBodyList.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "ListOrganizationSandboxTelemetryMetricsResponse",
       });
     case 5:
@@ -324,29 +407,16 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "ModelsTraceSummary" });
     case 7:
-      return S.Array(__S(14));
+      return S.Array(ModelsTraceSummary);
   }
 }
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => __S(15).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        ListOrganizationSandboxTelemetryTracesResponseBodyList.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "ListOrganizationSandboxTelemetryTracesResponse",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
   }
 }

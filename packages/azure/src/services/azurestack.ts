@@ -6,8 +6,6 @@ import { UnknownAzureError } from "../errors.ts";
 import { AzureProtocol, type AzureOpError, type AzureOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { AzureOpError, AzureOpContext };
 
@@ -16,6 +14,11 @@ export interface CustomerSubscriptionProperties {
   /** Tenant Id. */
   tenantId?: string;
 }
+const CustomerSubscriptionProperties = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<CustomerSubscriptionProperties>;
+
 export interface CreateCustomerSubscriptionRequest {
   /** Subscription credentials that uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -30,6 +33,11 @@ export interface CreateCustomerSubscriptionRequest {
   /** Customer subscription properties. */
   properties?: CustomerSubscriptionProperties;
 }
+const CreateCustomerSubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<CreateCustomerSubscriptionRequest>;
+
 export interface CreateCustomerSubscriptionResponse {
   /** ID of the resource. */
   id?: string;
@@ -42,14 +50,29 @@ export interface CreateCustomerSubscriptionResponse {
   /** Customer subscription properties. */
   properties?: CustomerSubscriptionProperties;
 }
+const CreateCustomerSubscriptionResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<CreateCustomerSubscriptionResponse>;
+
 export interface CreateDeploymentLicenseRequest {
   /** Subscription credentials that uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
   /** Signing verification public key version. */
   verificationVersion?: string;
 }
+const CreateDeploymentLicenseRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<CreateDeploymentLicenseRequest>;
+
 /** A license chain that can be used to temporarily activate an Azure Stack device. */
 export type DeploymentLicenseResponseTemporaryLicenseChainList = Array<string>;
+const DeploymentLicenseResponseTemporaryLicenseChainList = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<DeploymentLicenseResponseTemporaryLicenseChainList>;
+
 /** A license that can be used to deploy an Azure Stack device. */
 export interface DeploymentLicenseResponse {
   /** A license chain that can be used to temporarily activate an Azure Stack device. */
@@ -57,6 +80,11 @@ export interface DeploymentLicenseResponse {
   /** Signature of the license chain. */
   signature?: string;
 }
+const DeploymentLicenseResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<DeploymentLicenseResponse>;
+
 export interface DeleteCustomerSubscriptionRequest {
   /** Subscription credentials that uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -67,7 +95,17 @@ export interface DeleteCustomerSubscriptionRequest {
   /** Name of the product. */
   customerSubscriptionName: string;
 }
+const DeleteCustomerSubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<DeleteCustomerSubscriptionRequest>;
+
 export interface DeleteCustomerSubscriptionResponse {}
+const DeleteCustomerSubscriptionResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<DeleteCustomerSubscriptionResponse>;
+
 export interface DeleteRegistrationRequest {
   /** Subscription credentials that uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -76,7 +114,17 @@ export interface DeleteRegistrationRequest {
   /** Name of the Azure Stack registration. */
   registrationName: string;
 }
+const DeleteRegistrationRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<DeleteRegistrationRequest>;
+
 export interface DeleteRegistrationResponse {}
+const DeleteRegistrationResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<DeleteRegistrationResponse>;
+
 export interface EnableRegistrationRemoteManagementRequest {
   /** Subscription credentials that uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -85,13 +133,26 @@ export interface EnableRegistrationRemoteManagementRequest {
   /** Name of the Azure Stack registration. */
   registrationName: string;
 }
+const EnableRegistrationRemoteManagementRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<EnableRegistrationRemoteManagementRequest>;
+
 export interface EnableRegistrationRemoteManagementResponse {}
+const EnableRegistrationRemoteManagementResponse =
+  DeleteCustomerSubscriptionResponse as any as S.Schema<EnableRegistrationRemoteManagementResponse>;
+
 export interface GetCloudManifestFileRequest {
   /** Signing verification key version. */
   verificationVersion: string;
   /** Signing verification key version creation date. */
   versionCreationDate?: string;
 }
+const GetCloudManifestFileRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<GetCloudManifestFileRequest>;
+
 /** Cloud specific environment endpoints for AzureStack deployment. */
 export interface CloudManifestFileEnvironmentEndpoints {
   /** ARM endpoint. */
@@ -99,6 +160,11 @@ export interface CloudManifestFileEnvironmentEndpoints {
   /** Dsms endpoint. */
   externalDsmsEndpoint?: string;
 }
+const CloudManifestFileEnvironmentEndpoints = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<CloudManifestFileEnvironmentEndpoints>;
+
 /** Cloud specific manifest data for AzureStack deployment. */
 export interface CloudManifestFileDeploymentData {
   /** Dsms external certificates. */
@@ -108,6 +174,11 @@ export interface CloudManifestFileDeploymentData {
   /** Environment endpoints. */
   customEnvironmentEndpoints?: CloudManifestFileEnvironmentEndpoints;
 }
+const CloudManifestFileDeploymentData = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<CloudManifestFileDeploymentData>;
+
 /** Cloud specific manifest JSON properties. */
 export interface CloudManifestFileProperties {
   /** Cloud specific manifest data. */
@@ -115,6 +186,11 @@ export interface CloudManifestFileProperties {
   /** Signature of the cloud specific manifest data. */
   signature?: string;
 }
+const CloudManifestFileProperties = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<CloudManifestFileProperties>;
+
 export interface GetCloudManifestFileResponse {
   /** ID of the resource. */
   id?: string;
@@ -127,6 +203,11 @@ export interface GetCloudManifestFileResponse {
   /** Cloud specific manifest data. */
   properties?: CloudManifestFileProperties;
 }
+const GetCloudManifestFileResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<GetCloudManifestFileResponse>;
+
 export interface GetCustomerSubscriptionRequest {
   /** Subscription credentials that uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -137,6 +218,11 @@ export interface GetCustomerSubscriptionRequest {
   /** Name of the product. */
   customerSubscriptionName: string;
 }
+const GetCustomerSubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<GetCustomerSubscriptionRequest>;
+
 export interface GetCustomerSubscriptionResponse {
   /** ID of the resource. */
   id?: string;
@@ -149,6 +235,9 @@ export interface GetCustomerSubscriptionResponse {
   /** Customer subscription properties. */
   properties?: CustomerSubscriptionProperties;
 }
+const GetCustomerSubscriptionResponse =
+  CreateCustomerSubscriptionResponse as any as S.Schema<GetCustomerSubscriptionResponse>;
+
 export interface GetProductRequest {
   /** Subscription credentials that uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -159,6 +248,8 @@ export interface GetProductRequest {
   /** Name of the product. */
   productName: string;
 }
+const GetProductRequest = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<GetProductRequest>;
+
 /** Links to product icons. */
 export interface IconUris {
   /** URI to large icon. */
@@ -172,6 +263,8 @@ export interface IconUris {
   /** URI to hero icon. */
   hero?: string;
 }
+const IconUris = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<IconUris>;
+
 /** Link with additional information about a product. */
 export interface ProductLink {
   /** The description of the link. */
@@ -179,13 +272,22 @@ export interface ProductLink {
   /** The URI corresponding to the link. */
   uri?: string;
 }
+const ProductLink = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<ProductLink>;
+
 /** Additional links available for this product. */
 export type ProductNestedPropertiesLinksList = Array<ProductLink>;
+const ProductNestedPropertiesLinksList = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<ProductNestedPropertiesLinksList>;
+
 /** Additional properties of the product */
 export interface ProductProperties {
   /** The version. */
   version?: string;
 }
+const ProductProperties = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<ProductProperties>;
+
 /** Compatibility issue */
 export type CompatibilityIssue =
   | "HigherDeviceVersionRequired"
@@ -198,8 +300,15 @@ export type CompatibilityIssue =
   | "ConnectionToInternetRequired"
   | "ConnectionToAzureRequired"
   | "DisconnectedEnvironmentRequired";
+const CompatibilityIssue = S.String;
+
 /** List of all issues found */
 export type CompatibilityIssuesList = Array<CompatibilityIssue>;
+const CompatibilityIssuesList = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<CompatibilityIssuesList>;
+
 /** Product compatibility */
 export interface Compatibility {
   /** Tells if product is compatible with current device */
@@ -211,6 +320,8 @@ export interface Compatibility {
   /** List of all issues found */
   issues?: CompatibilityIssuesList;
 }
+const Compatibility = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<Compatibility>;
+
 /** Properties portion of the product resource. */
 export interface ProductNestedProperties {
   /** The display name of the product. */
@@ -250,6 +361,11 @@ export interface ProductNestedProperties {
   /** Product compatibility with current device. */
   compatibility?: Compatibility;
 }
+const ProductNestedProperties = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<ProductNestedProperties>;
+
 export interface GetProductResponse {
   /** ID of the resource. */
   id?: string;
@@ -262,6 +378,8 @@ export interface GetProductResponse {
   /** Properties of the product resource. */
   properties?: ProductNestedProperties;
 }
+const GetProductResponse = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<GetProductResponse>;
+
 export interface GetProductProductRequest {
   /** Subscription credentials that uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -272,6 +390,11 @@ export interface GetProductProductRequest {
   /** Name of the product. */
   productName: string;
 }
+const GetProductProductRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<GetProductProductRequest>;
+
 export interface GetProductProductResponse {
   /** ID of the resource. */
   id?: string;
@@ -284,6 +407,11 @@ export interface GetProductProductResponse {
   /** Properties of the product resource. */
   properties?: ProductNestedProperties;
 }
+const GetProductProductResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<GetProductProductResponse>;
+
 export interface GetProductProductsRequest {
   /** Subscription credentials that uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -294,6 +422,11 @@ export interface GetProductProductsRequest {
   /** Name of the product. */
   productName: string;
 }
+const GetProductProductsRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<GetProductProductsRequest>;
+
 /** Product information. */
 export interface Product {
   /** ID of the resource. */
@@ -307,8 +440,12 @@ export interface Product {
   /** Properties of the product resource. */
   properties?: ProductNestedProperties;
 }
+const Product = GetProductResponse as any as S.Schema<Product>;
+
 /** List of products. */
 export type ProductListValueList = Array<Product>;
+const ProductListValueList = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<ProductListValueList>;
+
 /** Pageable list of products. */
 export interface ProductList {
   /** URI to the next page. */
@@ -316,6 +453,8 @@ export interface ProductList {
   /** List of products. */
   value?: ProductListValueList;
 }
+const ProductList = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<ProductList>;
+
 export interface GetRegistrationRequest {
   /** Subscription credentials that uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -324,10 +463,22 @@ export interface GetRegistrationRequest {
   /** Name of the Azure Stack registration. */
   registrationName: string;
 }
+const GetRegistrationRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<GetRegistrationRequest>;
+
 /** Location of the resource. */
 export type GetRegistrationResponseLocation = "global";
+const GetRegistrationResponseLocation = S.String;
+
 /** Custom tags for the resource. */
 export type GetRegistrationResponseTagsMap = { [key: string]: string | undefined };
+const GetRegistrationResponseTagsMap = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<GetRegistrationResponseTagsMap>;
+
 /** Properties portion of the registration resource. */
 export interface RegistrationProperties {
   /** The object identifier associated with the Azure Stack connecting to Azure. */
@@ -337,6 +488,11 @@ export interface RegistrationProperties {
   /** Specifies the billing mode for the Azure Stack registration. */
   billingModel?: string;
 }
+const RegistrationProperties = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<RegistrationProperties>;
+
 export interface GetRegistrationResponse {
   /** ID of the resource. */
   id?: string;
@@ -353,6 +509,11 @@ export interface GetRegistrationResponse {
   /** Registration resource. */
   properties?: RegistrationProperties;
 }
+const GetRegistrationResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<GetRegistrationResponse>;
+
 export interface GetRegistrationActivationKeyRequest {
   /** Subscription credentials that uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -361,12 +522,24 @@ export interface GetRegistrationActivationKeyRequest {
   /** Name of the Azure Stack registration. */
   registrationName: string;
 }
+const GetRegistrationActivationKeyRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<GetRegistrationActivationKeyRequest>;
+
 /** The resource containing the Azure Stack activation key. */
 export interface ActivationKeyResult {
   /** Azure Stack activation key. */
   activationKey?: string;
 }
+const ActivationKeyResult = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<ActivationKeyResult>;
+
 export interface ListCloudManifestFileRequest {}
+const ListCloudManifestFileRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<ListCloudManifestFileRequest>;
+
 export interface ListCloudManifestFileResponse {
   /** ID of the resource. */
   id?: string;
@@ -379,6 +552,9 @@ export interface ListCloudManifestFileResponse {
   /** Cloud specific manifest data. */
   properties?: CloudManifestFileProperties;
 }
+const ListCloudManifestFileResponse =
+  GetCloudManifestFileResponse as any as S.Schema<ListCloudManifestFileResponse>;
+
 export interface ListCustomerSubscriptionsRequest {
   /** Subscription credentials that uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -387,6 +563,11 @@ export interface ListCustomerSubscriptionsRequest {
   /** Name of the Azure Stack registration. */
   registrationName: string;
 }
+const ListCustomerSubscriptionsRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<ListCustomerSubscriptionsRequest>;
+
 /** Customer subscription. */
 export interface CustomerSubscription {
   /** ID of the resource. */
@@ -400,8 +581,15 @@ export interface CustomerSubscription {
   /** Customer subscription properties. */
   properties?: CustomerSubscriptionProperties;
 }
+const CustomerSubscription = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<CustomerSubscription>;
+
 /** List of customer subscriptions. */
 export type CustomerSubscriptionListValueList = Array<CustomerSubscription>;
+const CustomerSubscriptionListValueList = /*@__PURE__*/ __L.at(
+  __c5,
+  0,
+) as any as S.Schema<CustomerSubscriptionListValueList>;
+
 /** Pageable list of customer subscriptions. */
 export interface CustomerSubscriptionList {
   /** URI to the next page. */
@@ -409,7 +597,17 @@ export interface CustomerSubscriptionList {
   /** List of customer subscriptions. */
   value?: CustomerSubscriptionListValueList;
 }
+const CustomerSubscriptionList = /*@__PURE__*/ __L.at(
+  __c5,
+  1,
+) as any as S.Schema<CustomerSubscriptionList>;
+
 export interface ListOperationsRequest {}
+const ListOperationsRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  2,
+) as any as S.Schema<ListOperationsRequest>;
+
 /** Contains the localized display information for this particular operation or action. */
 export interface Display {
   /** The localized, friendly version of the resource provider name. */
@@ -421,6 +619,8 @@ export interface Display {
   /** The localized, friendly description for the operation. The description will be displayed to the user. It should be thorough and concise for used in both tooltips and detailed views. */
   description?: string;
 }
+const Display = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<Display>;
+
 /** Describes the supported REST operation. */
 export interface Operation {
   /** The name of the operation being performed on this particular object. */
@@ -430,8 +630,15 @@ export interface Operation {
   /** The intended executor of the operation. */
   origin?: string;
 }
+const Operation = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<Operation>;
+
 /** Array of operations */
 export type OperationListValueList = Array<Operation>;
+const OperationListValueList = /*@__PURE__*/ __L.at(
+  __c5,
+  5,
+) as any as S.Schema<OperationListValueList>;
+
 /** List of Operations */
 export interface OperationList {
   /** Array of operations */
@@ -439,6 +646,8 @@ export interface OperationList {
   /** URI to the next page of operations. */
   nextLink?: string;
 }
+const OperationList = /*@__PURE__*/ __L.at(__c5, 6) as any as S.Schema<OperationList>;
+
 export interface ListProductDetailsRequest {
   /** Subscription credentials that uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -449,15 +658,26 @@ export interface ListProductDetailsRequest {
   /** Name of the product. */
   productName: string;
 }
+const ListProductDetailsRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  7,
+) as any as S.Schema<ListProductDetailsRequest>;
+
 /** Compute role type (IaaS or PaaS). */
 export type ComputeRole = "None" | "IaaS" | "PaaS";
+const ComputeRole = S.String;
+
 /** The URI. */
 export interface Uri {
   /** The URI. */
   uri?: string;
 }
+const Uri = /*@__PURE__*/ __L.at(__c6, 0) as any as S.Schema<Uri>;
+
 /** Operating system type (Windows or Linux). */
 export type OperatingSystem = "None" | "Windows" | "Linux";
+const OperatingSystem = S.String;
+
 /** OS disk image. */
 export interface OsDiskImage {
   /** OS operating system type. */
@@ -465,6 +685,8 @@ export interface OsDiskImage {
   /** SAS key for source blob. */
   sourceBlobSasUri?: string;
 }
+const OsDiskImage = /*@__PURE__*/ __L.at(__c6, 1) as any as S.Schema<OsDiskImage>;
+
 /** Data disk image. */
 export interface DataDiskImage {
   /** The LUN. */
@@ -472,8 +694,15 @@ export interface DataDiskImage {
   /** SAS key for source blob. */
   sourceBlobSasUri?: string;
 }
+const DataDiskImage = /*@__PURE__*/ __L.at(__c6, 2) as any as S.Schema<DataDiskImage>;
+
 /** List of attached data disks. */
 export type ExtendedProductPropertiesDataDiskImagesList = Array<DataDiskImage>;
+const ExtendedProductPropertiesDataDiskImagesList = /*@__PURE__*/ __L.at(
+  __c6,
+  3,
+) as any as S.Schema<ExtendedProductPropertiesDataDiskImagesList>;
+
 /** Product information. */
 export interface ExtendedProductProperties {
   /** Specifies kind of compute role included in the package. */
@@ -495,6 +724,11 @@ export interface ExtendedProductProperties {
   /** List of attached data disks. */
   dataDiskImages?: ExtendedProductPropertiesDataDiskImagesList;
 }
+const ExtendedProductProperties = /*@__PURE__*/ __L.at(
+  __c6,
+  4,
+) as any as S.Schema<ExtendedProductProperties>;
+
 /** Extended description about the product required for installing it into Azure Stack. */
 export interface ExtendedProduct {
   /** The URI to the .azpkg file that provides information required for showing product in the gallery. */
@@ -504,6 +738,8 @@ export interface ExtendedProduct {
   /** Specifies additional properties describing the product. */
   properties?: ExtendedProductProperties;
 }
+const ExtendedProduct = /*@__PURE__*/ __L.at(__c6, 5) as any as S.Schema<ExtendedProduct>;
+
 export interface ListProductProductsRequest {
   /** Subscription credentials that uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -514,6 +750,11 @@ export interface ListProductProductsRequest {
   /** Name of the product. */
   productName: string;
 }
+const ListProductProductsRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  6,
+) as any as S.Schema<ListProductProductsRequest>;
+
 export interface ListProductsRequest {
   /** Subscription credentials that uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -522,14 +763,25 @@ export interface ListProductsRequest {
   /** Name of the Azure Stack registration. */
   registrationName: string;
 }
+const ListProductsRequest = /*@__PURE__*/ __L.at(__c6, 7) as any as S.Schema<ListProductsRequest>;
+
 export interface ListRegistrationBySubscriptionRequest {
   /** Subscription credentials that uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
 }
+const ListRegistrationBySubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  0,
+) as any as S.Schema<ListRegistrationBySubscriptionRequest>;
+
 /** Location of the resource. */
 export type RegistrationLocation = "global";
+const RegistrationLocation = S.String;
+
 /** Custom tags for the resource. */
 export type RegistrationTagsMap = { [key: string]: string | undefined };
+const RegistrationTagsMap = GetRegistrationResponseTagsMap as any as S.Schema<RegistrationTagsMap>;
+
 /** Registration information. */
 export interface Registration {
   /** ID of the resource. */
@@ -547,8 +799,15 @@ export interface Registration {
   /** Registration resource. */
   properties?: RegistrationProperties;
 }
+const Registration = /*@__PURE__*/ __L.at(__c7, 1) as any as S.Schema<Registration>;
+
 /** List of Registrations */
 export type RegistrationListValueList = Array<Registration>;
+const RegistrationListValueList = /*@__PURE__*/ __L.at(
+  __c7,
+  2,
+) as any as S.Schema<RegistrationListValueList>;
+
 /** Pageable list of registrations. */
 export interface RegistrationList {
   /** URI to the next page. */
@@ -556,19 +815,33 @@ export interface RegistrationList {
   /** List of Registrations */
   value?: RegistrationListValueList;
 }
+const RegistrationList = /*@__PURE__*/ __L.at(__c7, 3) as any as S.Schema<RegistrationList>;
+
 export interface ListRegistrationsRequest {
   /** Subscription credentials that uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
   /** Name of the resource group. */
   resourceGroup: string;
 }
+const ListRegistrationsRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  4,
+) as any as S.Schema<ListRegistrationsRequest>;
+
 /** Properties of the Azure Stack registration resource */
 export interface RegistrationParameterProperties {
   /** The token identifying registered Azure Stack */
   registrationToken: string;
 }
+const RegistrationParameterProperties = /*@__PURE__*/ __L.at(
+  __c7,
+  5,
+) as any as S.Schema<RegistrationParameterProperties>;
+
 /** Location of the resource. */
 export type RegistrationsCreateOrUpdateRequestLocation = "global";
+const RegistrationsCreateOrUpdateRequestLocation = S.String;
+
 export interface RegistrationsCreateOrUpdateRequest {
   /** Subscription credentials that uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -581,10 +854,20 @@ export interface RegistrationsCreateOrUpdateRequest {
   /** Location of the resource. */
   location: RegistrationsCreateOrUpdateRequestLocation | (string & {});
 }
+const RegistrationsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  6,
+) as any as S.Schema<RegistrationsCreateOrUpdateRequest>;
+
 /** Location of the resource. */
 export type RegistrationsCreateOrUpdateResponseLocation = "global";
+const RegistrationsCreateOrUpdateResponseLocation = S.String;
+
 /** Custom tags for the resource. */
 export type RegistrationsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
+const RegistrationsCreateOrUpdateResponseTagsMap =
+  GetRegistrationResponseTagsMap as any as S.Schema<RegistrationsCreateOrUpdateResponseTagsMap>;
+
 export interface RegistrationsCreateOrUpdateResponse {
   /** ID of the resource. */
   id?: string;
@@ -601,8 +884,15 @@ export interface RegistrationsCreateOrUpdateResponse {
   /** Registration resource. */
   properties?: RegistrationProperties;
 }
+const RegistrationsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  7,
+) as any as S.Schema<RegistrationsCreateOrUpdateResponse>;
+
 /** Location of the resource. */
 export type UpdateRegistrationRequestLocation = "global";
+const UpdateRegistrationRequestLocation = S.String;
+
 export interface UpdateRegistrationRequest {
   /** Subscription credentials that uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -615,10 +905,20 @@ export interface UpdateRegistrationRequest {
   /** Location of the resource. */
   location: UpdateRegistrationRequestLocation | (string & {});
 }
+const UpdateRegistrationRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  0,
+) as any as S.Schema<UpdateRegistrationRequest>;
+
 /** Location of the resource. */
 export type UpdateRegistrationResponseLocation = "global";
+const UpdateRegistrationResponseLocation = S.String;
+
 /** Custom tags for the resource. */
 export type UpdateRegistrationResponseTagsMap = { [key: string]: string | undefined };
+const UpdateRegistrationResponseTagsMap =
+  GetRegistrationResponseTagsMap as any as S.Schema<UpdateRegistrationResponseTagsMap>;
+
 export interface UpdateRegistrationResponse {
   /** ID of the resource. */
   id?: string;
@@ -635,6 +935,11 @@ export interface UpdateRegistrationResponse {
   /** Registration resource. */
   properties?: RegistrationProperties;
 }
+const UpdateRegistrationResponse = /*@__PURE__*/ __L.at(
+  __c8,
+  1,
+) as any as S.Schema<UpdateRegistrationResponse>;
+
 export interface UploadProductLogRequest {
   /** Subscription credentials that uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -645,6 +950,11 @@ export interface UploadProductLogRequest {
   /** Name of the product. */
   productName: string;
 }
+const UploadProductLogRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  2,
+) as any as S.Schema<UploadProductLogRequest>;
+
 /** Product action log. */
 export interface ProductLog {
   /** Log ID. */
@@ -670,6 +980,8 @@ export interface ProductLog {
   /** Operation error details. */
   details?: string;
 }
+const ProductLog = /*@__PURE__*/ __L.at(__c8, 3) as any as S.Schema<ProductLog>;
+
 export type CreateCustomerSubscriptionError = AzureOpError;
 /** Creates a new customer subscription under a registration. */
 export const CreateCustomerSubscription: API.OperationMethod<
@@ -678,8 +990,8 @@ export const CreateCustomerSubscription: API.OperationMethod<
   CreateCustomerSubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1) as any as S.Schema<CreateCustomerSubscriptionRequest>,
-  output: __S(2) as any as S.Schema<CreateCustomerSubscriptionResponse>,
+  input: CreateCustomerSubscriptionRequest,
+  output: CreateCustomerSubscriptionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -693,8 +1005,8 @@ export const CreateDeploymentLicense: API.OperationMethod<
   CreateDeploymentLicenseError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3) as any as S.Schema<CreateDeploymentLicenseRequest>,
-  output: __S(5) as any as S.Schema<DeploymentLicenseResponse>,
+  input: CreateDeploymentLicenseRequest,
+  output: DeploymentLicenseResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -708,8 +1020,8 @@ export const DeleteCustomerSubscription: API.OperationMethod<
   DeleteCustomerSubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6) as any as S.Schema<DeleteCustomerSubscriptionRequest>,
-  output: __S(7) as any as S.Schema<DeleteCustomerSubscriptionResponse>,
+  input: DeleteCustomerSubscriptionRequest,
+  output: DeleteCustomerSubscriptionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -723,8 +1035,8 @@ export const DeleteRegistration: API.OperationMethod<
   DeleteRegistrationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8) as any as S.Schema<DeleteRegistrationRequest>,
-  output: __S(9) as any as S.Schema<DeleteRegistrationResponse>,
+  input: DeleteRegistrationRequest,
+  output: DeleteRegistrationResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -738,8 +1050,8 @@ export const EnableRegistrationRemoteManagement: API.OperationMethod<
   EnableRegistrationRemoteManagementError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10) as any as S.Schema<EnableRegistrationRemoteManagementRequest>,
-  output: __S(7) as any as S.Schema<EnableRegistrationRemoteManagementResponse>,
+  input: EnableRegistrationRemoteManagementRequest,
+  output: EnableRegistrationRemoteManagementResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -753,8 +1065,8 @@ export const GetCloudManifestFile: API.OperationMethod<
   GetCloudManifestFileError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11) as any as S.Schema<GetCloudManifestFileRequest>,
-  output: __S(15) as any as S.Schema<GetCloudManifestFileResponse>,
+  input: GetCloudManifestFileRequest,
+  output: GetCloudManifestFileResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -768,8 +1080,8 @@ export const GetCustomerSubscription: API.OperationMethod<
   GetCustomerSubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16) as any as S.Schema<GetCustomerSubscriptionRequest>,
-  output: __S(2) as any as S.Schema<GetCustomerSubscriptionResponse>,
+  input: GetCustomerSubscriptionRequest,
+  output: GetCustomerSubscriptionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -783,8 +1095,8 @@ export const GetProduct: API.OperationMethod<
   GetProductError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17) as any as S.Schema<GetProductRequest>,
-  output: __S(25) as any as S.Schema<GetProductResponse>,
+  input: GetProductRequest,
+  output: GetProductResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -798,8 +1110,8 @@ export const GetProductProduct: API.OperationMethod<
   GetProductProductError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26) as any as S.Schema<GetProductProductRequest>,
-  output: __S(27) as any as S.Schema<GetProductProductResponse>,
+  input: GetProductProductRequest,
+  output: GetProductProductResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -813,8 +1125,8 @@ export const GetProductProducts: API.OperationMethod<
   GetProductProductsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28) as any as S.Schema<GetProductProductsRequest>,
-  output: __S(30) as any as S.Schema<ProductList>,
+  input: GetProductProductsRequest,
+  output: ProductList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -828,8 +1140,8 @@ export const GetRegistration: API.OperationMethod<
   GetRegistrationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31) as any as S.Schema<GetRegistrationRequest>,
-  output: __S(34) as any as S.Schema<GetRegistrationResponse>,
+  input: GetRegistrationRequest,
+  output: GetRegistrationResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -843,8 +1155,8 @@ export const GetRegistrationActivationKey: API.OperationMethod<
   GetRegistrationActivationKeyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35) as any as S.Schema<GetRegistrationActivationKeyRequest>,
-  output: __S(36) as any as S.Schema<ActivationKeyResult>,
+  input: GetRegistrationActivationKeyRequest,
+  output: ActivationKeyResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -858,8 +1170,8 @@ export const ListCloudManifestFile: API.OperationMethod<
   ListCloudManifestFileError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37) as any as S.Schema<ListCloudManifestFileRequest>,
-  output: __S(15) as any as S.Schema<ListCloudManifestFileResponse>,
+  input: ListCloudManifestFileRequest,
+  output: ListCloudManifestFileResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -873,8 +1185,8 @@ export const ListCustomerSubscriptions: API.OperationMethod<
   ListCustomerSubscriptionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38) as any as S.Schema<ListCustomerSubscriptionsRequest>,
-  output: __S(41) as any as S.Schema<CustomerSubscriptionList>,
+  input: ListCustomerSubscriptionsRequest,
+  output: CustomerSubscriptionList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -888,8 +1200,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42) as any as S.Schema<ListOperationsRequest>,
-  output: __S(46) as any as S.Schema<OperationList>,
+  input: ListOperationsRequest,
+  output: OperationList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -903,8 +1215,8 @@ export const ListProductDetails: API.OperationMethod<
   ListProductDetailsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47) as any as S.Schema<ListProductDetailsRequest>,
-  output: __S(53) as any as S.Schema<ExtendedProduct>,
+  input: ListProductDetailsRequest,
+  output: ExtendedProduct,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -918,8 +1230,8 @@ export const ListProductProducts: API.OperationMethod<
   ListProductProductsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(54) as any as S.Schema<ListProductProductsRequest>,
-  output: __S(30) as any as S.Schema<ProductList>,
+  input: ListProductProductsRequest,
+  output: ProductList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -933,8 +1245,8 @@ export const ListProducts: API.OperationMethod<
   ListProductsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(55) as any as S.Schema<ListProductsRequest>,
-  output: __S(30) as any as S.Schema<ProductList>,
+  input: ListProductsRequest,
+  output: ProductList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -948,8 +1260,8 @@ export const ListRegistrationBySubscription: API.OperationMethod<
   ListRegistrationBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56) as any as S.Schema<ListRegistrationBySubscriptionRequest>,
-  output: __S(59) as any as S.Schema<RegistrationList>,
+  input: ListRegistrationBySubscriptionRequest,
+  output: RegistrationList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -963,8 +1275,8 @@ export const ListRegistrations: API.OperationMethod<
   ListRegistrationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60) as any as S.Schema<ListRegistrationsRequest>,
-  output: __S(59) as any as S.Schema<RegistrationList>,
+  input: ListRegistrationsRequest,
+  output: RegistrationList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -978,8 +1290,8 @@ export const RegistrationsCreateOrUpdate: API.OperationMethod<
   RegistrationsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(62) as any as S.Schema<RegistrationsCreateOrUpdateRequest>,
-  output: __S(63) as any as S.Schema<RegistrationsCreateOrUpdateResponse>,
+  input: RegistrationsCreateOrUpdateRequest,
+  output: RegistrationsCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -993,8 +1305,8 @@ export const UpdateRegistration: API.OperationMethod<
   UpdateRegistrationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(64) as any as S.Schema<UpdateRegistrationRequest>,
-  output: __S(65) as any as S.Schema<UpdateRegistrationResponse>,
+  input: UpdateRegistrationRequest,
+  output: UpdateRegistrationResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1008,8 +1320,8 @@ export const UploadProductLog: API.OperationMethod<
   UploadProductLogError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(66) as any as S.Schema<UploadProductLogRequest>,
-  output: __S(67) as any as S.Schema<ProductLog>,
+  input: UploadProductLogRequest,
+  output: ProductLog,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1034,7 +1346,7 @@ function __c0(j: number): any {
           registrationName: S.String.pipe(T.Label()),
           customerSubscriptionName: S.String.pipe(T.Label()),
           etag: S.optional(S.String),
-          properties: S.optional(__S(0)),
+          properties: S.optional(CustomerSubscriptionProperties),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -1053,7 +1365,7 @@ function __c0(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           etag: S.optional(S.String),
-          properties: S.optional(__S(0)),
+          properties: S.optional(CustomerSubscriptionProperties),
         }),
       ).annotate({
         identifier: "CreateCustomerSubscriptionResponse",
@@ -1079,7 +1391,7 @@ function __c0(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          temporaryLicenseChain: S.optional(__S(4)),
+          temporaryLicenseChain: S.optional(DeploymentLicenseResponseTemporaryLicenseChainList),
           signature: S.optional(S.String),
         }),
       ).annotate({
@@ -1179,7 +1491,7 @@ function __c1(j: number): any {
         S.Struct({
           externalDsmsCertificates: S.optional(S.String),
           customCloudVerificationKey: S.optional(S.String),
-          customEnvironmentEndpoints: S.optional(__S(12)),
+          customEnvironmentEndpoints: S.optional(CloudManifestFileEnvironmentEndpoints),
         }),
       ).annotate({
         identifier: "CloudManifestFileDeploymentData",
@@ -1187,7 +1499,7 @@ function __c1(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          deploymentData: S.optional(__S(13)),
+          deploymentData: S.optional(CloudManifestFileDeploymentData),
           signature: S.optional(S.String),
         }),
       ).annotate({
@@ -1200,7 +1512,7 @@ function __c1(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           etag: S.optional(S.String),
-          properties: S.optional(__S(14)),
+          properties: S.optional(CloudManifestFileProperties),
         }),
       ).annotate({
         identifier: "GetCloudManifestFileResponse",
@@ -1261,7 +1573,7 @@ function __c2(j: number): any {
         }),
       ).annotate({ identifier: "ProductLink" });
     case 4:
-      return S.Array(__S(19));
+      return S.Array(ProductLink);
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -1269,14 +1581,14 @@ function __c2(j: number): any {
         }),
       ).annotate({ identifier: "ProductProperties" });
     case 6:
-      return S.Array(S.String);
+      return S.Array(CompatibilityIssue);
     case 7:
       return S.suspend(() =>
         S.Struct({
           isCompatible: S.optional(S.Boolean),
           message: S.optional(S.String),
           description: S.optional(S.String),
-          issues: S.optional(__S(22)),
+          issues: S.optional(CompatibilityIssuesList),
         }),
       ).annotate({ identifier: "Compatibility" });
   }
@@ -1296,14 +1608,14 @@ function __c3(j: number): any {
           billingPartNumber: S.optional(S.String),
           vmExtensionType: S.optional(S.String),
           galleryItemIdentity: S.optional(S.String),
-          iconUris: S.optional(__S(18)),
-          links: S.optional(__S(20)),
+          iconUris: S.optional(IconUris),
+          links: S.optional(ProductNestedPropertiesLinksList),
           legalTerms: S.optional(S.String),
           privacyPolicy: S.optional(S.String),
           payloadLength: S.optional(S.Number),
           productKind: S.optional(S.String),
-          productProperties: S.optional(__S(21)),
-          compatibility: S.optional(__S(23)),
+          productProperties: S.optional(ProductProperties),
+          compatibility: S.optional(Compatibility),
         }),
       ).annotate({ identifier: "ProductNestedProperties" });
     case 1:
@@ -1313,7 +1625,7 @@ function __c3(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           etag: S.optional(S.String),
-          properties: S.optional(__S(24)),
+          properties: S.optional(ProductNestedProperties),
         }),
       ).annotate({ identifier: "GetProductResponse" });
     case 2:
@@ -1339,7 +1651,7 @@ function __c3(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           etag: S.optional(S.String),
-          properties: S.optional(__S(24)),
+          properties: S.optional(ProductNestedProperties),
         }),
       ).annotate({
         identifier: "GetProductProductResponse",
@@ -1363,12 +1675,12 @@ function __c3(j: number): any {
         identifier: "GetProductProductsRequest",
       });
     case 5:
-      return S.Array(__S(25));
+      return S.Array(Product);
     case 6:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(__S(29)),
+          value: S.optional(ProductListValueList),
         }),
       ).annotate({ identifier: "ProductList" });
     case 7:
@@ -1406,10 +1718,10 @@ function __c4(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          location: S.String,
-          tags: S.optional(__S(32)),
+          location: GetRegistrationResponseLocation,
+          tags: S.optional(GetRegistrationResponseTagsMap),
           etag: S.optional(S.String),
-          properties: S.optional(__S(33)),
+          properties: S.optional(RegistrationProperties),
         }),
       ).annotate({ identifier: "GetRegistrationResponse" });
     case 3:
@@ -1472,7 +1784,7 @@ function __c4(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           etag: S.optional(S.String),
-          properties: S.optional(__S(0)),
+          properties: S.optional(CustomerSubscriptionProperties),
         }),
       ).annotate({ identifier: "CustomerSubscription" });
   }
@@ -1480,12 +1792,12 @@ function __c4(j: number): any {
 function __c5(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(39));
+      return S.Array(CustomerSubscription);
     case 1:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(__S(40)),
+          value: S.optional(CustomerSubscriptionListValueList),
         }),
       ).annotate({ identifier: "CustomerSubscriptionList" });
     case 2:
@@ -1512,16 +1824,16 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          display: S.optional(__S(43)),
+          display: S.optional(Display),
           origin: S.optional(S.String),
         }),
       ).annotate({ identifier: "Operation" });
     case 5:
-      return S.Array(__S(44));
+      return S.Array(Operation);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(45)),
+          value: S.optional(OperationListValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationList" });
@@ -1556,7 +1868,7 @@ function __c6(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          operatingSystem: S.optional(S.String),
+          operatingSystem: S.optional(OperatingSystem),
           sourceBlobSasUri: S.optional(S.String),
         }),
       ).annotate({ identifier: "OsDiskImage" });
@@ -1568,19 +1880,19 @@ function __c6(j: number): any {
         }),
       ).annotate({ identifier: "DataDiskImage" });
     case 3:
-      return S.Array(__S(50));
+      return S.Array(DataDiskImage);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          computeRole: S.optional(S.String),
+          computeRole: S.optional(ComputeRole),
           isSystemExtension: S.optional(S.Boolean),
-          sourceBlob: S.optional(__S(48)),
+          sourceBlob: S.optional(Uri),
           supportMultipleExtensions: S.optional(S.Boolean),
           version: S.optional(S.String),
-          vmOsType: S.optional(S.String),
+          vmOsType: S.optional(OperatingSystem),
           vmScaleSetEnabled: S.optional(S.Boolean),
-          osDiskImage: S.optional(__S(49)),
-          dataDiskImages: S.optional(__S(51)),
+          osDiskImage: S.optional(OsDiskImage),
+          dataDiskImages: S.optional(ExtendedProductPropertiesDataDiskImagesList),
         }),
       ).annotate({
         identifier: "ExtendedProductProperties",
@@ -1590,7 +1902,7 @@ function __c6(j: number): any {
         S.Struct({
           galleryPackageBlobSasUri: S.optional(S.String),
           productKind: S.optional(S.String),
-          properties: S.optional(__S(52)),
+          properties: S.optional(ExtendedProductProperties),
         }),
       ).annotate({ identifier: "ExtendedProduct" });
     case 6:
@@ -1651,19 +1963,19 @@ function __c7(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          location: S.String,
-          tags: S.optional(__S(32)),
+          location: RegistrationLocation,
+          tags: S.optional(RegistrationTagsMap),
           etag: S.optional(S.String),
-          properties: S.optional(__S(33)),
+          properties: S.optional(RegistrationProperties),
         }),
       ).annotate({ identifier: "Registration" });
     case 2:
-      return S.Array(__S(57));
+      return S.Array(Registration);
     case 3:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(__S(58)),
+          value: S.optional(RegistrationListValueList),
         }),
       ).annotate({ identifier: "RegistrationList" });
     case 4:
@@ -1694,8 +2006,8 @@ function __c7(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroup: S.String.pipe(T.Label()),
           registrationName: S.String.pipe(T.Label()),
-          properties: __S(61),
-          location: S.String,
+          properties: RegistrationParameterProperties,
+          location: RegistrationsCreateOrUpdateRequestLocation,
         }).pipe(
           T.Http({
             method: "PUT",
@@ -1713,10 +2025,10 @@ function __c7(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          location: S.String,
-          tags: S.optional(__S(32)),
+          location: RegistrationsCreateOrUpdateResponseLocation,
+          tags: S.optional(RegistrationsCreateOrUpdateResponseTagsMap),
           etag: S.optional(S.String),
-          properties: S.optional(__S(33)),
+          properties: S.optional(RegistrationProperties),
         }),
       ).annotate({
         identifier: "RegistrationsCreateOrUpdateResponse",
@@ -1731,8 +2043,8 @@ function __c8(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroup: S.String.pipe(T.Label()),
           registrationName: S.String.pipe(T.Label()),
-          properties: __S(61),
-          location: S.String,
+          properties: RegistrationParameterProperties,
+          location: UpdateRegistrationRequestLocation,
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1750,10 +2062,10 @@ function __c8(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          location: S.String,
-          tags: S.optional(__S(32)),
+          location: UpdateRegistrationResponseLocation,
+          tags: S.optional(UpdateRegistrationResponseTagsMap),
           etag: S.optional(S.String),
-          properties: S.optional(__S(33)),
+          properties: S.optional(RegistrationProperties),
         }),
       ).annotate({
         identifier: "UpdateRegistrationResponse",
@@ -1790,32 +2102,5 @@ function __c8(j: number): any {
           details: S.optional(S.String),
         }),
       ).annotate({ identifier: "ProductLog" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
   }
 }

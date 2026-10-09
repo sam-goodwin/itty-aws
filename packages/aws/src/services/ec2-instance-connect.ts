@@ -8,8 +8,6 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "EC2 Instance Connect",
   serviceShapeName: "AWSEC2InstanceConnectService",
@@ -203,12 +201,20 @@ export interface SendSerialConsoleSSHPublicKeyRequest {
   SerialPort?: number;
   SSHPublicKey: string;
 }
+const SendSerialConsoleSSHPublicKeyRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<SendSerialConsoleSSHPublicKeyRequest>;
 export type RequestId = string;
 export type Success = boolean;
 export interface SendSerialConsoleSSHPublicKeyResponse {
   RequestId?: string;
   Success?: boolean;
 }
+const SendSerialConsoleSSHPublicKeyResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<SendSerialConsoleSSHPublicKeyResponse>;
 export type InstanceOSUser = string;
 export type AvailabilityZone = string;
 export interface SendSSHPublicKeyRequest {
@@ -217,10 +223,18 @@ export interface SendSSHPublicKeyRequest {
   SSHPublicKey: string;
   AvailabilityZone?: string;
 }
+const SendSSHPublicKeyRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<SendSSHPublicKeyRequest>;
 export interface SendSSHPublicKeyResponse {
   RequestId?: string;
   Success?: boolean;
 }
+const SendSSHPublicKeyResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<SendSSHPublicKeyResponse>;
 export type SendSerialConsoleSSHPublicKeyError =
   | AuthException
   | EC2InstanceNotFoundException
@@ -247,8 +261,8 @@ export const sendSerialConsoleSSHPublicKey: API.OperationMethod<
   SendSerialConsoleSSHPublicKeyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<SendSerialConsoleSSHPublicKeyRequest>,
-  output: __S(1) as any as S.Schema<SendSerialConsoleSSHPublicKeyResponse>,
+  input: SendSerialConsoleSSHPublicKeyRequest,
+  output: SendSerialConsoleSSHPublicKeyResponse,
   errors: [
     AuthException,
     EC2InstanceNotFoundException,
@@ -289,8 +303,8 @@ export const sendSSHPublicKey: API.OperationMethod<
   SendSSHPublicKeyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2) as any as S.Schema<SendSSHPublicKeyRequest>,
-  output: __S(3) as any as S.Schema<SendSSHPublicKeyResponse>,
+  input: SendSSHPublicKeyRequest,
+  output: SendSSHPublicKeyResponse,
   errors: [
     AuthException,
     EC2InstanceNotFoundException,
@@ -337,16 +351,5 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({ RequestId: S.optional(S.String), Success: S.optional(S.Boolean) }),
       ).annotate({ identifier: "SendSSHPublicKeyResponse" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 2) {
-    case 0:
-      return __c0(i & 3);
   }
 }

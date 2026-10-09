@@ -7,8 +7,6 @@ import { paginateCursor } from "../pagination.ts";
 import { NotionProtocol, type NotionOpError, type NotionOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { NotionOpError, NotionOpContext };
 
@@ -75,18 +73,37 @@ export type BatchAgentsRequestOperationsItem =
   | BatchAgentsRequestOperationsItemCase0
   | BatchAgentsRequestOperationsItemCase1
   | BatchAgentsRequestOperationsItemCase2;
+const BatchAgentsRequestOperationsItem =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<BatchAgentsRequestOperationsItem>;
+
 /** The operations to apply, at least one and at most 100. Operations are applied in the order given, and the batch is not atomic: each operation succeeds or fails on its own, and per-operation outcomes are reported in the async task's result. */
 export type BatchAgentsRequestOperationsList = Array<BatchAgentsRequestOperationsItem>;
+const BatchAgentsRequestOperationsList = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<BatchAgentsRequestOperationsList>;
+
 export interface BatchAgentsRequest {
   /** The operations to apply, at least one and at most 100. Operations are applied in the order given, and the batch is not atomic: each operation succeeds or fails on its own, and per-operation outcomes are reported in the async task's result. */
   operations: BatchAgentsRequestOperationsList;
 }
+const BatchAgentsRequest = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<BatchAgentsRequest>;
+
 export type BatchAgentsResponseOperationSurface = "rest" | "mcp";
+const BatchAgentsResponseOperationSurface = S.String;
+
 export interface BatchAgentsResponseOperation {
   surface: BatchAgentsResponseOperationSurface;
   name: string;
 }
+const BatchAgentsResponseOperation = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<BatchAgentsResponseOperation>;
+
 export type BatchAgentsResponseStatus = "queued" | "running" | "retrying";
+const BatchAgentsResponseStatus = S.String;
+
 export interface BatchAgentsResponse {
   object: string;
   id: string;
@@ -96,9 +113,13 @@ export interface BatchAgentsResponse {
   status: BatchAgentsResponseStatus;
   poll_after_seconds: number;
 }
+const BatchAgentsResponse = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<BatchAgentsResponse>;
+
 export interface DeleteAgentRequest {
   agent_id: string;
 }
+const DeleteAgentRequest = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<DeleteAgentRequest>;
+
 export interface DeleteAgentResponse {
   agent_id: string;
   /** Always "deleted": the agent has been soft-deleted (recoverable). */
@@ -106,16 +127,22 @@ export interface DeleteAgentResponse {
   /** ISO 8601 timestamp of when the agent was deleted. */
   deleted_at: string;
 }
+const DeleteAgentResponse = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<DeleteAgentResponse>;
+
 export interface GetAgentRequest {
   agent_id: string;
   verbose?: boolean;
 }
+const GetAgentRequest = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<GetAgentRequest>;
+
 /** What kind of agent this is: "notion_ai" is the personal agent; "custom_agent" is a standalone agent you chat with; "autofill_custom_agent" fills a database property; "external" runs through an external provider. */
 export type GetAgentResponseAgentType =
   | "notion_ai"
   | "custom_agent"
   | "autofill_custom_agent"
   | "external";
+const GetAgentResponseAgentType = S.String;
+
 export interface EmojiPageIconResponse {
   /** Type of icon. In this case, an emoji. */
   type: string;
@@ -203,6 +230,8 @@ export interface GetAgentResponseIconCase1 {
   custom_agent_avatar: GetAgentResponseIconCase1CustomAgentAvatar;
 }
 export type GetAgentResponseIcon = PageIconResponse | GetAgentResponseIconCase1;
+const GetAgentResponseIcon = /*@__PURE__*/ S.Unknown as any as S.Schema<GetAgentResponseIcon>;
+
 export interface GetAgentResponseModelCase0 {
   /** Always `auto` */
   mode: string;
@@ -215,6 +244,8 @@ export interface GetAgentResponseModelCase1 {
 }
 /** The model the agent runs on: auto (Notion selects) or a pinned model. */
 export type GetAgentResponseModel = GetAgentResponseModelCase0 | GetAgentResponseModelCase1;
+const GetAgentResponseModel = /*@__PURE__*/ S.Unknown as any as S.Schema<GetAgentResponseModel>;
+
 export interface GetAgentResponseConnectionsItemCase0PermissionsItemTargetCase0 {
   /** Always `page` */
   type: string;
@@ -261,6 +292,11 @@ export type GetAgentResponseConnectionsItemCase0PermissionsItemTarget =
   | GetAgentResponseConnectionsItemCase0PermissionsItemTargetCase6;
 /** Content roles ("reader" | "comment_only" | "read_and_write" | "editor") for scoped targets, or search verbs ("allow" | "disallow") for the search targets. */
 export type GetAgentResponseConnectionsItemCase0PermissionsItemScopesList = Array<string>;
+const GetAgentResponseConnectionsItemCase0PermissionsItemScopesList = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<GetAgentResponseConnectionsItemCase0PermissionsItemScopesList>;
+
 export interface GetAgentResponseConnectionsItemCase0PermissionsItem {
   target: GetAgentResponseConnectionsItemCase0PermissionsItemTarget;
   /** Content roles ("reader" | "comment_only" | "read_and_write" | "editor") for scoped targets, or search verbs ("allow" | "disallow") for the search targets. */
@@ -490,10 +526,20 @@ export type GetAgentResponseConnectionsItem =
   | GetAgentResponseConnectionsItemCase3
   | GetAgentResponseConnectionsItemCase4
   | GetAgentResponseConnectionsItemCase5;
+const GetAgentResponseConnectionsItem =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<GetAgentResponseConnectionsItem>;
+
 /** Integrations the agent is connected to (Notion, Slack, Discord, MCP servers, and other connectors), each with an account and per-target permissions. */
 export type GetAgentResponseConnectionsList = Array<GetAgentResponseConnectionsItem>;
+const GetAgentResponseConnectionsList = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<GetAgentResponseConnectionsList>;
+
 /** "active" when the agent can run; "disabled" when it is paused (see pause_reason); "deleted" when it has been removed. */
 export type GetAgentResponseStatus = "active" | "disabled" | "deleted";
+const GetAgentResponseStatus = S.String;
+
 /** One of: `run_limit`, `credit_limit`, `runaway_credit_usage`, `workspace_credit_limit`, `failure_limit`, `mark_session_failed_autopause`, `disabled_from_workspace_settings`, `disabled_from_workspace_settings_but_resumable`, `disabled_from_api`, `disabled_from_agent_settings`, `disabled_due_to_no_members_with_access`, `disabled_due_to_lack_of_editors`, `disabled_by_notion`, `internal_error`, `needs_user_review`, `tool_unavailable` */
 export type GetAgentResponsePauseReason =
   | "run_limit"
@@ -512,6 +558,8 @@ export type GetAgentResponsePauseReason =
   | "internal_error"
   | "needs_user_review"
   | "tool_unavailable";
+const GetAgentResponsePauseReason = S.String;
+
 export interface GetAgentResponseCreatedBy {
   /** Always `user` */
   object: string;
@@ -520,6 +568,11 @@ export interface GetAgentResponseCreatedBy {
   /** The ID of the user that created this agent. */
   id: string;
 }
+const GetAgentResponseCreatedBy = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<GetAgentResponseCreatedBy>;
+
 export interface GetAgentResponseVersion {
   /** The ID of the published artifact. */
   id: string;
@@ -528,17 +581,39 @@ export interface GetAgentResponseVersion {
   /** The ISO 8601 timestamp when this version was published. */
   published_at: string;
 }
+const GetAgentResponseVersion = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<GetAgentResponseVersion>;
+
 export type GetAgentResponseAgentVersion = GetAgentResponseVersion;
 /** Whether the draft has edits not yet in the published version, or "hidden" when the caller lacks edit access to the agent. */
 export type GetAgentResponseHasUnpublishedChanges = boolean | string;
+const GetAgentResponseHasUnpublishedChanges =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<GetAgentResponseHasUnpublishedChanges>;
+
 /** The per-agent credit limit that applies to this agent, null when uncapped, or "hidden" when the caller lacks full access to the agent. This is the effective limit computed at runtime, folding in both the agent's own limit and any workspace-admin default. */
 export type GetAgentResponseCreditLimit = number | string;
+const GetAgentResponseCreditLimit =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<GetAgentResponseCreditLimit>;
+
 /** Days of the week the schedule runs (e.g. "monday"). Present for weekly cadences and monthly weekday restrictions. */
 export type GetAgentResponseTriggersItemScheduleWeekdaysList = Array<string>;
+const GetAgentResponseTriggersItemScheduleWeekdaysList =
+  GetAgentResponseConnectionsItemCase0PermissionsItemScopesList as any as S.Schema<GetAgentResponseTriggersItemScheduleWeekdaysList>;
+
 /** Days of the month the schedule runs. Present for monthly monthday restrictions. */
 export type GetAgentResponseTriggersItemScheduleMonthdaysList = Array<number>;
+const GetAgentResponseTriggersItemScheduleMonthdaysList = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<GetAgentResponseTriggersItemScheduleMonthdaysList>;
+
 /** Week-of-month ordinals for a monthly weekday restriction (e.g. [2, 3] for the 2nd and 3rd occurrence); -1 means the last week. */
 export type GetAgentResponseTriggersItemScheduleWeekNumbersList = Array<number>;
+const GetAgentResponseTriggersItemScheduleWeekNumbersList =
+  GetAgentResponseTriggersItemScheduleMonthdaysList as any as S.Schema<GetAgentResponseTriggersItemScheduleWeekNumbersList>;
+
 export interface GetAgentResponseTriggersItemScheduleEndCase0 {
   /** Always `date` */
   type: string;
@@ -555,6 +630,9 @@ export interface GetAgentResponseTriggersItemScheduleEndCase1 {
 export type GetAgentResponseTriggersItemScheduleEnd =
   | GetAgentResponseTriggersItemScheduleEndCase0
   | GetAgentResponseTriggersItemScheduleEndCase1;
+const GetAgentResponseTriggersItemScheduleEnd =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<GetAgentResponseTriggersItemScheduleEnd>;
+
 /** Structured recurrence cadence. Present only for recurrence triggers. */
 export interface GetAgentResponseTriggersItemSchedule {
   /** Base cadence unit ("hour" | "day" | "week" | "month" | "year"). */
@@ -578,8 +656,18 @@ export interface GetAgentResponseTriggersItemSchedule {
   /** When the schedule stops, when it is bounded. */
   end?: GetAgentResponseTriggersItemScheduleEnd;
 }
+const GetAgentResponseTriggersItemSchedule = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<GetAgentResponseTriggersItemSchedule>;
+
 /** Remaining per-type trigger configuration (e.g. watched channel ids, reaction config), keys in snake_case. Present only when the trigger carries such state. */
 export type GetAgentResponseTriggersItemConfigMap = { [key: string]: unknown | undefined };
+const GetAgentResponseTriggersItemConfigMap = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<GetAgentResponseTriggersItemConfigMap>;
+
 export interface GetAgentResponseTriggersItem {
   /** Machine trigger type (e.g. "notion.agent.mentioned", "recurrence", "slack.reaction.added"). */
   type: string;
@@ -590,8 +678,18 @@ export interface GetAgentResponseTriggersItem {
   /** Remaining per-type trigger configuration (e.g. watched channel ids, reaction config), keys in snake_case. Present only when the trigger carries such state. */
   config?: GetAgentResponseTriggersItemConfigMap;
 }
+const GetAgentResponseTriggersItem = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<GetAgentResponseTriggersItem>;
+
 /** The agent's configured triggers, each with a machine type, an enabled flag, and (for recurrence triggers) a structured schedule. */
 export type GetAgentResponseTriggersList = Array<GetAgentResponseTriggersItem>;
+const GetAgentResponseTriggersList = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<GetAgentResponseTriggersList>;
+
 export interface GetAgentResponse {
   /** Always `agent` */
   object: string;
@@ -632,18 +730,29 @@ export interface GetAgentResponse {
   /** The agent's inline instructions when verbose=true, or null when its instructions are stored on a page. */
   instructions?: string | null;
 }
+const GetAgentResponse = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<GetAgentResponse>;
+
 export interface GetAgentInsightsRequest {
   agent_id: string;
   start_time?: number;
   end_time?: number;
 }
+const GetAgentInsightsRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<GetAgentInsightsRequest>;
+
 /** One of: `notion_ai`, `custom_agent`, `autofill_custom_agent` */
 export type GetAgentInsightsResponseAgentType =
   | "notion_ai"
   | "custom_agent"
   | "autofill_custom_agent";
+const GetAgentInsightsResponseAgentType = S.String;
+
 /** One of: `active`, `disabled`, `deleted` */
 export type GetAgentInsightsResponseStatus = "active" | "disabled" | "deleted";
+const GetAgentInsightsResponseStatus = S.String;
+
 /** One of: `run_limit`, `credit_limit`, `runaway_credit_usage`, `workspace_credit_limit`, `failure_limit`, `mark_session_failed_autopause`, `disabled_from_workspace_settings`, `disabled_from_workspace_settings_but_resumable`, `disabled_from_api`, `disabled_from_agent_settings`, `disabled_due_to_no_members_with_access`, `disabled_due_to_lack_of_editors`, `disabled_by_notion`, `internal_error`, `needs_user_review`, `tool_unavailable` */
 export type GetAgentInsightsResponsePauseReason =
   | "run_limit"
@@ -662,15 +771,27 @@ export type GetAgentInsightsResponsePauseReason =
   | "internal_error"
   | "needs_user_review"
   | "tool_unavailable";
+const GetAgentInsightsResponsePauseReason = S.String;
+
 /** One of: `user`, `bot` */
 export type GetAgentInsightsResponseCreatedByType = "user" | "bot";
+const GetAgentInsightsResponseCreatedByType = S.String;
+
 export interface GetAgentInsightsResponseCreatedBy {
   id: string;
   /** One of: `user`, `bot` */
   type: GetAgentInsightsResponseCreatedByType;
 }
+const GetAgentInsightsResponseCreatedBy = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<GetAgentInsightsResponseCreatedBy>;
+
 /** Enforced per-agent credit limit; null when none is configured, and "hidden" when the caller lacks full access to the agent. */
 export type GetAgentInsightsResponseCreditLimit = number | string;
+const GetAgentInsightsResponseCreditLimit =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<GetAgentInsightsResponseCreditLimit>;
+
 export interface GetAgentInsightsResponse {
   /** Always `agent_insights` */
   object: string;
@@ -689,6 +810,11 @@ export interface GetAgentInsightsResponse {
   /** Number of runs recorded for this agent within the window. */
   runs_completed: number;
 }
+const GetAgentInsightsResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<GetAgentInsightsResponse>;
+
 export interface QueryAgentsRequestFilterCase0Case0Id {
   equals: string;
 }
@@ -1267,18 +1393,35 @@ export type QueryAgentsRequestFilterCase1 =
 export type QueryAgentsRequestFilter =
   | QueryAgentsRequestFilterCase0
   | QueryAgentsRequestFilterCase1;
+const QueryAgentsRequestFilter =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<QueryAgentsRequestFilter>;
+
 /** Timestamp used to sort agents. */
 export type QueryAgentsRequestSortsItemProperty = "created_time" | "last_run_at";
+const QueryAgentsRequestSortsItemProperty = S.String;
+
 /** Sort direction. */
 export type QueryAgentsRequestSortsItemDirection = "ascending" | "descending";
+const QueryAgentsRequestSortsItemDirection = S.String;
+
 export interface QueryAgentsRequestSortsItem {
   /** Timestamp used to sort agents. */
   property: QueryAgentsRequestSortsItemProperty | (string & {});
   /** Sort direction. */
   direction: QueryAgentsRequestSortsItemDirection | (string & {});
 }
+const QueryAgentsRequestSortsItem = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<QueryAgentsRequestSortsItem>;
+
 /** Ordered sort precedence. Defaults to created_time descending. */
 export type QueryAgentsRequestSortsList = Array<QueryAgentsRequestSortsItem>;
+const QueryAgentsRequestSortsList = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<QueryAgentsRequestSortsList>;
+
 export interface QueryAgentsRequest {
   /** Search agent names and descriptions using a case-insensitive substring match. */
   query?: string;
@@ -1295,6 +1438,8 @@ export interface QueryAgentsRequest {
   /** Whether to include soft-deleted agents. Defaults to false. */
   include_deleted?: boolean;
 }
+const QueryAgentsRequest = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<QueryAgentsRequest>;
+
 /** What kind of agent this is: "custom_agent" is a standalone agent you chat with; "autofill_custom_agent" fills a database property. */
 export type QueryAgentsResponseResultsItemCase0AgentType = "custom_agent" | "autofill_custom_agent";
 /** The static and animated URLs for the agent avatar. */
@@ -1987,7 +2132,15 @@ export interface QueryAgentsResponseResultsItemCase1 {
 export type QueryAgentsResponseResultsItem =
   | QueryAgentsResponseResultsItemCase0
   | QueryAgentsResponseResultsItemCase1;
+const QueryAgentsResponseResultsItem =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<QueryAgentsResponseResultsItem>;
+
 export type QueryAgentsResponseResultsList = Array<QueryAgentsResponseResultsItem>;
+const QueryAgentsResponseResultsList = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<QueryAgentsResponseResultsList>;
+
 export interface QueryAgentsResponse {
   /** Always `list` */
   object: string;
@@ -1997,11 +2150,18 @@ export interface QueryAgentsResponse {
   has_more: boolean;
   next_cursor: string | null;
 }
+const QueryAgentsResponse = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<QueryAgentsResponse>;
+
 export interface UpdateAgentCreditLimitRequest {
   agent_id: string;
   /** The per-agent credit limit as a non-negative integer, or null to clear the limit. */
   credit_limit: number | null;
 }
+const UpdateAgentCreditLimitRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<UpdateAgentCreditLimitRequest>;
+
 export interface UpdateAgentCreditLimitResponse {
   agent_id: string;
   /** The agent's editor-set per-agent credit limit; null when no limit applies. */
@@ -2009,15 +2169,29 @@ export interface UpdateAgentCreditLimitResponse {
   /** ISO 8601 timestamp of when the agent was last edited. */
   last_edited_time: string;
 }
+const UpdateAgentCreditLimitResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<UpdateAgentCreditLimitResponse>;
+
 /** Set to "active" to re-enable an agent that was disabled through this API, or "disabled" to turn off a running agent. */
 export type UpdateAgentStatusRequestStatus = "active" | "disabled";
+const UpdateAgentStatusRequestStatus = S.String;
+
 export interface UpdateAgentStatusRequest {
   agent_id: string;
   /** Set to "active" to re-enable an agent that was disabled through this API, or "disabled" to turn off a running agent. */
   status: UpdateAgentStatusRequestStatus | (string & {});
 }
+const UpdateAgentStatusRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<UpdateAgentStatusRequest>;
+
 /** "active" when the agent can run; "disabled" when it is paused (see pause_reason); "deleted" when it has been removed. */
 export type UpdateAgentStatusResponseStatus = "active" | "disabled" | "deleted";
+const UpdateAgentStatusResponseStatus = S.String;
+
 /** One of: `run_limit`, `credit_limit`, `runaway_credit_usage`, `workspace_credit_limit`, `failure_limit`, `mark_session_failed_autopause`, `disabled_from_workspace_settings`, `disabled_from_workspace_settings_but_resumable`, `disabled_from_api`, `disabled_from_agent_settings`, `disabled_due_to_no_members_with_access`, `disabled_due_to_lack_of_editors`, `disabled_by_notion`, `internal_error`, `needs_user_review`, `tool_unavailable` */
 export type UpdateAgentStatusResponsePauseReason =
   | "run_limit"
@@ -2036,6 +2210,8 @@ export type UpdateAgentStatusResponsePauseReason =
   | "internal_error"
   | "needs_user_review"
   | "tool_unavailable";
+const UpdateAgentStatusResponsePauseReason = S.String;
+
 export interface UpdateAgentStatusResponse {
   agent_id: string;
   /** "active" when the agent can run; "disabled" when it is paused (see pause_reason); "deleted" when it has been removed. */
@@ -2045,6 +2221,11 @@ export interface UpdateAgentStatusResponse {
   /** ISO 8601 timestamp of when the agent was last edited. */
   last_edited_time: string;
 }
+const UpdateAgentStatusResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<UpdateAgentStatusResponse>;
+
 export type BatchAgentsError = NotionOpError;
 /** Apply many agent operations */
 export const batchAgents: API.OperationMethod<
@@ -2053,8 +2234,8 @@ export const batchAgents: API.OperationMethod<
   BatchAgentsError,
   NotionOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1) as any as S.Schema<BatchAgentsRequest>,
-  output: __S(3) as any as S.Schema<BatchAgentsResponse>,
+  input: BatchAgentsRequest,
+  output: BatchAgentsResponse,
   errors: [UnknownNotionError],
   protocol: NotionProtocol,
   retry: Retry.Retry,
@@ -2068,8 +2249,8 @@ export const deleteAgent: API.OperationMethod<
   DeleteAgentError,
   NotionOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4) as any as S.Schema<DeleteAgentRequest>,
-  output: __S(5) as any as S.Schema<DeleteAgentResponse>,
+  input: DeleteAgentRequest,
+  output: DeleteAgentResponse,
   errors: [UnknownNotionError],
   protocol: NotionProtocol,
   retry: Retry.Retry,
@@ -2083,8 +2264,8 @@ export const getAgent: API.OperationMethod<
   GetAgentError,
   NotionOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6) as any as S.Schema<GetAgentRequest>,
-  output: __S(16) as any as S.Schema<GetAgentResponse>,
+  input: GetAgentRequest,
+  output: GetAgentResponse,
   errors: [UnknownNotionError],
   protocol: NotionProtocol,
   retry: Retry.Retry,
@@ -2098,8 +2279,8 @@ export const getAgentInsights: API.OperationMethod<
   GetAgentInsightsError,
   NotionOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17) as any as S.Schema<GetAgentInsightsRequest>,
-  output: __S(19) as any as S.Schema<GetAgentInsightsResponse>,
+  input: GetAgentInsightsRequest,
+  output: GetAgentInsightsResponse,
   errors: [UnknownNotionError],
   protocol: NotionProtocol,
   retry: Retry.Retry,
@@ -2115,8 +2296,8 @@ export const queryAgents: API.PaginatedOperationMethod<
   QueryAgentsResponseResultsItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(22) as any as S.Schema<QueryAgentsRequest>,
-    output: __S(24) as any as S.Schema<QueryAgentsResponse>,
+    input: QueryAgentsRequest,
+    output: QueryAgentsResponse,
     errors: [UnknownNotionError],
     protocol: NotionProtocol,
     retry: Retry.Retry,
@@ -2138,8 +2319,8 @@ export const updateAgentCreditLimit: API.OperationMethod<
   UpdateAgentCreditLimitError,
   NotionOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25) as any as S.Schema<UpdateAgentCreditLimitRequest>,
-  output: __S(26) as any as S.Schema<UpdateAgentCreditLimitResponse>,
+  input: UpdateAgentCreditLimitRequest,
+  output: UpdateAgentCreditLimitResponse,
   errors: [UnknownNotionError],
   protocol: NotionProtocol,
   retry: Retry.Retry,
@@ -2153,8 +2334,8 @@ export const updateAgentStatus: API.OperationMethod<
   UpdateAgentStatusError,
   NotionOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27) as any as S.Schema<UpdateAgentStatusRequest>,
-  output: __S(28) as any as S.Schema<UpdateAgentStatusResponse>,
+  input: UpdateAgentStatusRequest,
+  output: UpdateAgentStatusResponse,
   errors: [UnknownNotionError],
   protocol: NotionProtocol,
   retry: Retry.Retry,
@@ -2164,17 +2345,17 @@ export const updateAgentStatus: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.Unknown);
+      return S.Array(BatchAgentsRequestOperationsItem);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          operations: __S(0),
+          operations: BatchAgentsRequestOperationsList,
         }).pipe(T.Http({ method: "POST", uri: "/v1/agents/batch", code: 200 })),
       ).annotate({ identifier: "BatchAgentsRequest" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          surface: S.String,
+          surface: BatchAgentsResponseOperationSurface,
           name: S.String,
         }),
       ).annotate({
@@ -2187,8 +2368,8 @@ function __c0(j: number): any {
           id: S.String,
           status_url: S.String,
           created_time: S.String,
-          operation: __S(2),
-          status: S.String,
+          operation: BatchAgentsResponseOperation,
+          status: BatchAgentsResponseStatus,
           poll_after_seconds: S.Number,
         }),
       ).annotate({ identifier: "BatchAgentsResponse" });
@@ -2220,7 +2401,7 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.Unknown);
+      return S.Array(GetAgentResponseConnectionsItem);
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2246,14 +2427,14 @@ function __c1(j: number): any {
         S.Struct({
           frequency: S.String,
           interval: S.Number,
-          weekdays: S.optional(__S(7)),
-          monthdays: S.optional(__S(11)),
-          week_numbers: S.optional(__S(11)),
+          weekdays: S.optional(GetAgentResponseTriggersItemScheduleWeekdaysList),
+          monthdays: S.optional(GetAgentResponseTriggersItemScheduleMonthdaysList),
+          week_numbers: S.optional(GetAgentResponseTriggersItemScheduleWeekNumbersList),
           hour: S.optional(S.Number),
           minute: S.optional(S.Number),
           timezone: S.optional(S.String),
           start_date: S.optional(S.String),
-          end: S.optional(S.Unknown),
+          end: S.optional(GetAgentResponseTriggersItemScheduleEnd),
         }),
       ).annotate({
         identifier: "GetAgentResponseTriggersItemSchedule",
@@ -2265,14 +2446,14 @@ function __c1(j: number): any {
         S.Struct({
           type: S.String,
           enabled: S.Boolean,
-          schedule: S.optional(__S(12)),
-          config: S.optional(__S(13)),
+          schedule: S.optional(GetAgentResponseTriggersItemSchedule),
+          config: S.optional(GetAgentResponseTriggersItemConfigMap),
         }),
       ).annotate({
         identifier: "GetAgentResponseTriggersItem",
       });
     case 7:
-      return S.Array(__S(14));
+      return S.Array(GetAgentResponseTriggersItem);
   }
 }
 function __c2(j: number): any {
@@ -2282,23 +2463,23 @@ function __c2(j: number): any {
         S.Struct({
           object: S.String,
           id: S.String,
-          agent_type: S.String,
+          agent_type: GetAgentResponseAgentType,
           name: S.String,
           description: S.NullOr(S.String),
           instructions_page_id: S.NullOr(S.String),
-          icon: S.NullOr(S.Unknown),
-          model: S.Unknown,
-          connections: __S(8),
-          status: S.String,
-          pause_reason: S.NullOr(S.String),
-          created_by: S.NullOr(__S(9)),
-          version: S.NullOr(__S(10)),
-          agent_version: S.NullOr(__S(10)),
-          has_unpublished_changes: S.Unknown,
+          icon: S.NullOr(GetAgentResponseIcon),
+          model: GetAgentResponseModel,
+          connections: GetAgentResponseConnectionsList,
+          status: GetAgentResponseStatus,
+          pause_reason: S.NullOr(GetAgentResponsePauseReason),
+          created_by: S.NullOr(GetAgentResponseCreatedBy),
+          version: S.NullOr(GetAgentResponseVersion),
+          agent_version: S.NullOr(GetAgentResponseVersion),
+          has_unpublished_changes: GetAgentResponseHasUnpublishedChanges,
           last_run_time: S.NullOr(S.String),
           last_run_at: S.NullOr(S.String),
-          credit_limit: S.NullOr(S.Unknown),
-          triggers: __S(15),
+          credit_limit: S.NullOr(GetAgentResponseCreditLimit),
+          triggers: GetAgentResponseTriggersList,
           is_favorited: S.NullOr(S.Boolean),
           created_time: S.optional(S.String),
           last_edited_time: S.optional(S.String),
@@ -2317,7 +2498,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          type: S.String,
+          type: GetAgentInsightsResponseCreatedByType,
         }),
       ).annotate({
         identifier: "GetAgentInsightsResponseCreatedBy",
@@ -2328,32 +2509,32 @@ function __c2(j: number): any {
           object: S.String,
           id: S.String,
           name: S.String,
-          agent_type: S.String,
-          status: S.String,
-          pause_reason: S.NullOr(S.String),
-          created_by: S.NullOr(__S(18)),
+          agent_type: GetAgentInsightsResponseAgentType,
+          status: GetAgentInsightsResponseStatus,
+          pause_reason: S.NullOr(GetAgentInsightsResponsePauseReason),
+          created_by: S.NullOr(GetAgentInsightsResponseCreatedBy),
           total_credits_used: S.Number,
-          credit_limit: S.NullOr(S.Unknown),
+          credit_limit: S.NullOr(GetAgentInsightsResponseCreditLimit),
           runs_completed: S.Number,
         }),
       ).annotate({ identifier: "GetAgentInsightsResponse" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          property: S.String,
-          direction: S.String,
+          property: QueryAgentsRequestSortsItemProperty,
+          direction: QueryAgentsRequestSortsItemDirection,
         }),
       ).annotate({
         identifier: "QueryAgentsRequestSortsItem",
       });
     case 5:
-      return S.Array(__S(20));
+      return S.Array(QueryAgentsRequestSortsItem);
     case 6:
       return S.suspend(() =>
         S.Struct({
           query: S.optional(S.String),
-          filter: S.optional(S.Unknown),
-          sorts: S.optional(__S(21)),
+          filter: S.optional(QueryAgentsRequestFilter),
+          sorts: S.optional(QueryAgentsRequestSortsList),
           start_cursor: S.optional(S.String),
           page_size: S.optional(S.Number),
           verbose: S.optional(S.Boolean),
@@ -2361,7 +2542,7 @@ function __c2(j: number): any {
         }).pipe(T.Http({ method: "POST", uri: "/v1/agents/query", code: 200 })),
       ).annotate({ identifier: "QueryAgentsRequest" });
     case 7:
-      return S.Array(S.Unknown);
+      return S.Array(QueryAgentsResponseResultsItem);
   }
 }
 function __c3(j: number): any {
@@ -2371,7 +2552,7 @@ function __c3(j: number): any {
         S.Struct({
           object: S.String,
           type: S.String,
-          results: __S(23),
+          results: QueryAgentsResponseResultsList,
           has_more: S.Boolean,
           next_cursor: S.NullOr(S.String),
         }),
@@ -2399,36 +2580,19 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           agent_id: S.String.pipe(T.Label()),
-          status: S.String,
+          status: UpdateAgentStatusRequestStatus,
         }).pipe(T.Http({ method: "PATCH", uri: "/v1/agents/{agent_id}/status", code: 200 })),
       ).annotate({ identifier: "UpdateAgentStatusRequest" });
     case 4:
       return S.suspend(() =>
         S.Struct({
           agent_id: S.String,
-          status: S.String,
-          pause_reason: S.NullOr(S.String),
+          status: UpdateAgentStatusResponseStatus,
+          pause_reason: S.NullOr(UpdateAgentStatusResponsePauseReason),
           last_edited_time: S.String,
         }),
       ).annotate({
         identifier: "UpdateAgentStatusResponse",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
   }
 }

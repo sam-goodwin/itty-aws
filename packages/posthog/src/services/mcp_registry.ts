@@ -5,8 +5,6 @@ import * as S from "@distilled.cloud/core/schema";
 import { PosthogProtocol, type PosthogOpError, type PosthogOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { PosthogOpError, PosthogOpContext };
 
@@ -15,30 +13,74 @@ export interface GetMcpRegistryServerRequest {
   project_id: string;
   id: string;
 }
+const GetMcpRegistryServerRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<GetMcpRegistryServerRequest>;
+
 export interface MCPRegistryServerDetailRemotesItem {
   type?: string;
   url?: string;
 }
+const MCPRegistryServerDetailRemotesItem = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<MCPRegistryServerDetailRemotesItem>;
+
 /** All hosted remotes: [{type, url}]. */
 export type MCPRegistryServerDetailRemotesList = Array<MCPRegistryServerDetailRemotesItem>;
+const MCPRegistryServerDetailRemotesList = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<MCPRegistryServerDetailRemotesList>;
+
 export interface MCPRegistryServerDetailPackagesItem {
   registry_type?: string;
   identifier?: string;
 }
+const MCPRegistryServerDetailPackagesItem = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<MCPRegistryServerDetailPackagesItem>;
+
 /** Published packages: [{registry_type, identifier}]. */
 export type MCPRegistryServerDetailPackagesList = Array<MCPRegistryServerDetailPackagesItem>;
+const MCPRegistryServerDetailPackagesList = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<MCPRegistryServerDetailPackagesList>;
+
 export type MCPRegistryServerDetailToolsItemMap = { [key: string]: unknown | undefined };
+const MCPRegistryServerDetailToolsItemMap = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<MCPRegistryServerDetailToolsItemMap>;
+
 /** Known tools, fused from probes and analytics. A tool known only from another project's traffic is limited to callers who may see that project's measurements. */
 export type MCPRegistryServerDetailToolsList = Array<MCPRegistryServerDetailToolsItemMap>;
+const MCPRegistryServerDetailToolsList = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<MCPRegistryServerDetailToolsList>;
+
 export type MCPRegistryServerDetailMeasuredStatsItemMap = { [key: string]: unknown | undefined };
 /** Behavioral aggregates, one per measured MCP Analytics project. Limited to this project's own measurements unless the server is marked measured_public. */
 export type MCPRegistryServerDetailMeasuredStatsList =
   Array<MCPRegistryServerDetailMeasuredStatsItemMap>;
+const MCPRegistryServerDetailMeasuredStatsList =
+  MCPRegistryServerDetailToolsList as any as S.Schema<MCPRegistryServerDetailMeasuredStatsList>;
+
 export type MCPRegistryServerDetailScoresItemMap = { [key: string]: unknown | undefined };
 /** Latest score under every ranking version with a completed run. */
 export type MCPRegistryServerDetailScoresList = Array<MCPRegistryServerDetailScoresItemMap>;
+const MCPRegistryServerDetailScoresList =
+  MCPRegistryServerDetailToolsList as any as S.Schema<MCPRegistryServerDetailScoresList>;
+
 /** Connection instructions: methods ordered most-automated first, steps typed by actor (agent executes; human steps are narrated to the user). */
 export type MCPRegistryServerDetailConnectMap = { [key: string]: unknown | undefined };
+const MCPRegistryServerDetailConnectMap =
+  MCPRegistryServerDetailToolsItemMap as any as S.Schema<MCPRegistryServerDetailConnectMap>;
+
 export interface MCPRegistryServerDetail {
   /** Registry server id. */
   id: string;
@@ -79,6 +121,11 @@ export interface MCPRegistryServerDetail {
   /** Connection instructions: methods ordered most-automated first, steps typed by actor (agent executes; human steps are narrated to the user). */
   connect: MCPRegistryServerDetailConnectMap;
 }
+const MCPRegistryServerDetail = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<MCPRegistryServerDetail>;
+
 export interface GetMcpRegistryServersCompareRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -89,8 +136,21 @@ export interface GetMcpRegistryServersCompareRequest {
   /** Comma-separated ranking versions to compare (2+). */
   versions: string;
 }
+const GetMcpRegistryServersCompareRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<GetMcpRegistryServersCompareRequest>;
+
 export type GetMcpRegistryServersCompareResponseBodyMap = { [key: string]: unknown | undefined };
+const GetMcpRegistryServersCompareResponseBodyMap =
+  MCPRegistryServerDetailToolsItemMap as any as S.Schema<GetMcpRegistryServersCompareResponseBodyMap>;
+
 export type GetMcpRegistryServersCompareResponse = GetMcpRegistryServersCompareResponseBodyMap;
+const GetMcpRegistryServersCompareResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<GetMcpRegistryServersCompareResponse>;
+
 export interface GetMcpRegistryServersDiscoverRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -101,19 +161,43 @@ export interface GetMcpRegistryServersDiscoverRequest {
   /** Ranking version to rank candidates by. */
   version?: string;
 }
+const GetMcpRegistryServersDiscoverRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<GetMcpRegistryServersDiscoverRequest>;
+
 /** Score breakdown so an agent can explain its choice: fit, liveness, trust, and whether real usage signal contributed. */
 export type MCPDiscoverCandidateWhyMap = { [key: string]: unknown | undefined };
+const MCPDiscoverCandidateWhyMap =
+  MCPRegistryServerDetailToolsItemMap as any as S.Schema<MCPDiscoverCandidateWhyMap>;
+
 /** Real MCP Analytics aggregates when the server is measured, otherwise null: calls, sessions, error_rate_pct, intent_coverage_pct, harness_count. */
 export type MCPDiscoverCandidateMeasuredMap = { [key: string]: unknown | undefined };
+const MCPDiscoverCandidateMeasuredMap =
+  MCPRegistryServerDetailToolsItemMap as any as S.Schema<MCPDiscoverCandidateMeasuredMap>;
+
 export interface MCPDiscoverCandidateMatchedToolsItem {
   name?: string;
   description?: string;
   source?: string;
 }
+const MCPDiscoverCandidateMatchedToolsItem = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<MCPDiscoverCandidateMatchedToolsItem>;
+
 /** Tools that matched the intent: [{name, description, source}]. Empty when only the server description matched. */
 export type MCPDiscoverCandidateMatchedToolsList = Array<MCPDiscoverCandidateMatchedToolsItem>;
+const MCPDiscoverCandidateMatchedToolsList = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<MCPDiscoverCandidateMatchedToolsList>;
+
 /** Connection instructions, most-automated method first, steps typed by actor so the agent runs its own steps and narrates the human ones. */
 export type MCPDiscoverCandidateConnectMap = { [key: string]: unknown | undefined };
+const MCPDiscoverCandidateConnectMap =
+  MCPRegistryServerDetailToolsItemMap as any as S.Schema<MCPDiscoverCandidateConnectMap>;
+
 /** One ranked candidate in a discover response, with everything an agent needs to act. */
 export interface MCPDiscoverCandidate {
   /** 1-based position under the ranking version used. */
@@ -145,8 +229,15 @@ export interface MCPDiscoverCandidate {
   /** Connection instructions, most-automated method first, steps typed by actor so the agent runs its own steps and narrates the human ones. */
   connect: MCPDiscoverCandidateConnectMap;
 }
+const MCPDiscoverCandidate = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<MCPDiscoverCandidate>;
+
 /** Servers most likely to do the thing, best first. */
 export type MCPDiscoverResponseCandidatesList = Array<MCPDiscoverCandidate>;
+const MCPDiscoverResponseCandidatesList = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<MCPDiscoverResponseCandidatesList>;
+
 /** Everything an agent gets back from one discover call. */
 export interface MCPDiscoverResponse {
   /** The intent the candidates were ranked against, echoed back. */
@@ -156,6 +247,8 @@ export interface MCPDiscoverResponse {
   /** Servers most likely to do the thing, best first. */
   candidates: MCPDiscoverResponseCandidatesList;
 }
+const MCPDiscoverResponse = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<MCPDiscoverResponse>;
+
 export interface ListMcpRegistryServersRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -170,6 +263,11 @@ export interface ListMcpRegistryServersRequest {
   /** Ranking version ordering the results; defaults to the current default version. */
   version?: string;
 }
+const ListMcpRegistryServersRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<ListMcpRegistryServersRequest>;
+
 export interface MCPRegistryServerList {
   /** Registry server id. */
   id: string;
@@ -192,17 +290,37 @@ export interface MCPRegistryServerList {
   /** Static score under the requested ranking version; null when the version has no completed run. */
   rank_score: number | null;
 }
+const MCPRegistryServerList = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<MCPRegistryServerList>;
+
 export type PaginatedMCPRegistryServerListListResultsList = Array<MCPRegistryServerList>;
+const PaginatedMCPRegistryServerListListResultsList = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<PaginatedMCPRegistryServerListListResultsList>;
+
 export interface PaginatedMCPRegistryServerListList {
   count: number;
   next?: string | null;
   previous?: string | null;
   results: PaginatedMCPRegistryServerListListResultsList;
 }
+const PaginatedMCPRegistryServerListList = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<PaginatedMCPRegistryServerListList>;
+
 export interface ListMcpRegistryServersMeasuredProjectsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
+const ListMcpRegistryServersMeasuredProjectsRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<ListMcpRegistryServersMeasuredProjectsRequest>;
+
 /** One project's contribution to the measured layer, for the staff fleet view. */
 export interface MCPMeasuredProject {
   /** Project supplying the MCP Analytics signal. */
@@ -212,13 +330,30 @@ export interface MCPMeasuredProject {
   /** Tool calls this project contributes across those servers. */
   calls: number;
 }
+const MCPMeasuredProject = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<MCPMeasuredProject>;
+
 export type ListMcpRegistryServersMeasuredProjectsResponseBodyList = Array<MCPMeasuredProject>;
+const ListMcpRegistryServersMeasuredProjectsResponseBodyList = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<ListMcpRegistryServersMeasuredProjectsResponseBodyList>;
+
 export type ListMcpRegistryServersMeasuredProjectsResponse =
   ListMcpRegistryServersMeasuredProjectsResponseBodyList;
+const ListMcpRegistryServersMeasuredProjectsResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<ListMcpRegistryServersMeasuredProjectsResponse>;
+
 export interface ListMcpRegistryServersVersionsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
+const ListMcpRegistryServersVersionsRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<ListMcpRegistryServersVersionsRequest>;
+
 /** A completed ranking run. */
 export interface MCPRankingRun {
   /** Run id. */
@@ -228,6 +363,8 @@ export interface MCPRankingRun {
   /** When the run completed. */
   computed_at: string | null;
 }
+const MCPRankingRun = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<MCPRankingRun>;
+
 /** A registered ranking version and its latest completed run. */
 export interface MCPRankingVersion {
   /** Ranking version key, passed as ?version= to the list endpoint. */
@@ -239,8 +376,20 @@ export interface MCPRankingVersion {
   /** Latest completed run; null when the version never ran. */
   latest_run: MCPRankingRun | null;
 }
+const MCPRankingVersion = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<MCPRankingVersion>;
+
 export type ListMcpRegistryServersVersionsResponseBodyList = Array<MCPRankingVersion>;
+const ListMcpRegistryServersVersionsResponseBodyList = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<ListMcpRegistryServersVersionsResponseBodyList>;
+
 export type ListMcpRegistryServersVersionsResponse = ListMcpRegistryServersVersionsResponseBodyList;
+const ListMcpRegistryServersVersionsResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<ListMcpRegistryServersVersionsResponse>;
+
 export type GetMcpRegistryServerError = PosthogOpError;
 /** Full server record: tools, measured stats, per-version scores, connection instructions. */
 export const getMcpRegistryServer: API.OperationMethod<
@@ -249,8 +398,8 @@ export const getMcpRegistryServer: API.OperationMethod<
   GetMcpRegistryServerError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<GetMcpRegistryServerRequest>,
-  output: __S(7) as any as S.Schema<MCPRegistryServerDetail>,
+  input: GetMcpRegistryServerRequest,
+  output: MCPRegistryServerDetail,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -264,8 +413,8 @@ export const getMcpRegistryServersCompare: API.OperationMethod<
   GetMcpRegistryServersCompareError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8) as any as S.Schema<GetMcpRegistryServersCompareRequest>,
-  output: __S(9) as any as S.Schema<GetMcpRegistryServersCompareResponse>,
+  input: GetMcpRegistryServersCompareRequest,
+  output: GetMcpRegistryServersCompareResponse,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -279,8 +428,8 @@ export const getMcpRegistryServersDiscover: API.OperationMethod<
   GetMcpRegistryServersDiscoverError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10) as any as S.Schema<GetMcpRegistryServersDiscoverRequest>,
-  output: __S(15) as any as S.Schema<MCPDiscoverResponse>,
+  input: GetMcpRegistryServersDiscoverRequest,
+  output: MCPDiscoverResponse,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -294,8 +443,8 @@ export const listMcpRegistryServers: API.OperationMethod<
   ListMcpRegistryServersError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16) as any as S.Schema<ListMcpRegistryServersRequest>,
-  output: __S(19) as any as S.Schema<PaginatedMCPRegistryServerListList>,
+  input: ListMcpRegistryServersRequest,
+  output: PaginatedMCPRegistryServerListList,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -309,8 +458,8 @@ export const listMcpRegistryServersMeasuredProjects: API.OperationMethod<
   ListMcpRegistryServersMeasuredProjectsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20) as any as S.Schema<ListMcpRegistryServersMeasuredProjectsRequest>,
-  output: __S(23) as any as S.Schema<ListMcpRegistryServersMeasuredProjectsResponse>,
+  input: ListMcpRegistryServersMeasuredProjectsRequest,
+  output: ListMcpRegistryServersMeasuredProjectsResponse,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -324,8 +473,8 @@ export const listMcpRegistryServersVersions: API.OperationMethod<
   ListMcpRegistryServersVersionsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24) as any as S.Schema<ListMcpRegistryServersVersionsRequest>,
-  output: __S(28) as any as S.Schema<ListMcpRegistryServersVersionsResponse>,
+  input: ListMcpRegistryServersVersionsRequest,
+  output: ListMcpRegistryServersVersionsResponse,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -359,7 +508,7 @@ function __c0(j: number): any {
         identifier: "MCPRegistryServerDetailRemotesItem",
       });
     case 2:
-      return S.Array(__S(1));
+      return S.Array(MCPRegistryServerDetailRemotesItem);
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -370,11 +519,11 @@ function __c0(j: number): any {
         identifier: "MCPRegistryServerDetailPackagesItem",
       });
     case 4:
-      return S.Array(__S(3));
+      return S.Array(MCPRegistryServerDetailPackagesItem);
     case 5:
       return S.Record(S.String, S.Unknown);
     case 6:
-      return S.Array(__S(5));
+      return S.Array(MCPRegistryServerDetailToolsItemMap);
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -388,15 +537,15 @@ function __c0(j: number): any {
           listed_in_registry: S.Boolean,
           is_measured: S.Boolean,
           rank_score: S.NullOr(S.Number),
-          remotes: __S(2),
-          packages: __S(4),
+          remotes: MCPRegistryServerDetailRemotesList,
+          packages: MCPRegistryServerDetailPackagesList,
           repository_url: S.String,
           website_url: S.String,
           last_probed_at: S.NullOr(S.String),
-          tools: __S(6),
-          measured_stats: __S(6),
-          scores: __S(6),
-          connect: __S(5),
+          tools: MCPRegistryServerDetailToolsList,
+          measured_stats: MCPRegistryServerDetailMeasuredStatsList,
+          scores: MCPRegistryServerDetailScoresList,
+          connect: MCPRegistryServerDetailConnectMap,
         }),
       ).annotate({ identifier: "MCPRegistryServerDetail" });
   }
@@ -421,7 +570,9 @@ function __c1(j: number): any {
         identifier: "GetMcpRegistryServersCompareRequest",
       });
     case 1:
-      return S.suspend(() => __S(5).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        GetMcpRegistryServersCompareResponseBodyMap.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "GetMcpRegistryServersCompareResponse",
       });
     case 2:
@@ -452,7 +603,7 @@ function __c1(j: number): any {
         identifier: "MCPDiscoverCandidateMatchedToolsItem",
       });
     case 4:
-      return S.Array(__S(11));
+      return S.Array(MCPDiscoverCandidateMatchedToolsItem);
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -464,22 +615,22 @@ function __c1(j: number): any {
           score: S.Number,
           relevance: S.NullOr(S.Number),
           combined_score: S.NullOr(S.Number),
-          why: __S(5),
+          why: MCPDiscoverCandidateWhyMap,
           liveness: S.String,
           auth_method: S.String,
-          measured: S.NullOr(__S(5)),
-          matched_tools: __S(12),
-          connect: __S(5),
+          measured: S.NullOr(MCPDiscoverCandidateMeasuredMap),
+          matched_tools: MCPDiscoverCandidateMatchedToolsList,
+          connect: MCPDiscoverCandidateConnectMap,
         }),
       ).annotate({ identifier: "MCPDiscoverCandidate" });
     case 6:
-      return S.Array(__S(13));
+      return S.Array(MCPDiscoverCandidate);
     case 7:
       return S.suspend(() =>
         S.Struct({
           intent: S.String,
           ranking_version: S.String,
-          candidates: __S(14),
+          candidates: MCPDiscoverResponseCandidatesList,
         }),
       ).annotate({ identifier: "MCPDiscoverResponse" });
   }
@@ -521,14 +672,14 @@ function __c2(j: number): any {
         }),
       ).annotate({ identifier: "MCPRegistryServerList" });
     case 2:
-      return S.Array(__S(17));
+      return S.Array(MCPRegistryServerList);
     case 3:
       return S.suspend(() =>
         S.Struct({
           count: S.Number,
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: __S(18),
+          results: PaginatedMCPRegistryServerListListResultsList,
         }),
       ).annotate({
         identifier: "PaginatedMCPRegistryServerListList",
@@ -556,9 +707,11 @@ function __c2(j: number): any {
         }),
       ).annotate({ identifier: "MCPMeasuredProject" });
     case 6:
-      return S.Array(__S(21));
+      return S.Array(MCPMeasuredProject);
     case 7:
-      return S.suspend(() => __S(22).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        ListMcpRegistryServersMeasuredProjectsResponseBodyList.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "ListMcpRegistryServersMeasuredProjectsResponse",
       });
   }
@@ -593,31 +746,16 @@ function __c3(j: number): any {
           version: S.String,
           description: S.String,
           is_default: S.Boolean,
-          latest_run: S.NullOr(__S(25)),
+          latest_run: S.NullOr(MCPRankingRun),
         }),
       ).annotate({ identifier: "MCPRankingVersion" });
     case 3:
-      return S.Array(__S(26));
+      return S.Array(MCPRankingVersion);
     case 4:
-      return S.suspend(() => __S(27).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        ListMcpRegistryServersVersionsResponseBodyList.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "ListMcpRegistryServersVersionsResponse",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
   }
 }

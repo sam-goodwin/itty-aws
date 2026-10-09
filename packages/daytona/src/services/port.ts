@@ -6,23 +6,31 @@ import { UnknownDaytonaError } from "../errors.ts";
 import { DaytonaProtocol, type DaytonaOpError, type DaytonaOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { DaytonaOpError, DaytonaOpContext };
 
 export interface GetPortsRequest {}
+const GetPortsRequest = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<GetPortsRequest>;
+
 export type PortListPortsList = Array<number>;
+const PortListPortsList = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<PortListPortsList>;
+
 export interface PortList {
   ports?: PortListPortsList;
 }
+const PortList = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<PortList>;
+
 export interface IsPortInUseRequest {
   /** Port number (3000-9999) */
   port: number;
 }
+const IsPortInUseRequest = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<IsPortInUseRequest>;
+
 export interface IsPortInUseResponse {
   isInUse?: boolean;
 }
+const IsPortInUseResponse = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<IsPortInUseResponse>;
+
 export type GetPortsError = DaytonaOpError;
 /** Get active ports Get a list of all currently active ports */
 export const getPorts: API.OperationMethod<
@@ -31,8 +39,8 @@ export const getPorts: API.OperationMethod<
   GetPortsError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<GetPortsRequest>,
-  output: __S(2) as any as S.Schema<PortList>,
+  input: GetPortsRequest,
+  output: PortList,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -46,8 +54,8 @@ export const isPortInUse: API.OperationMethod<
   IsPortInUseError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3) as any as S.Schema<IsPortInUseRequest>,
-  output: __S(4) as any as S.Schema<IsPortInUseResponse>,
+  input: IsPortInUseRequest,
+  output: IsPortInUseResponse,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -65,7 +73,7 @@ function __c0(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          ports: S.optional(__S(1)),
+          ports: S.optional(PortListPortsList),
         }),
       ).annotate({ identifier: "PortList" });
     case 3:
@@ -80,16 +88,5 @@ function __c0(j: number): any {
           isInUse: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "IsPortInUseResponse" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
   }
 }

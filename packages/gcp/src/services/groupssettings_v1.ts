@@ -7,8 +7,6 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -68,6 +66,8 @@ export interface GetGroupsRequest {
   /** The group's email address. */
   groupUniqueId: string;
 }
+const GetGroupsRequest = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<GetGroupsRequest>;
+
 /** JSON template for Group resource */
 export interface Groups {
   /** Specifies moderation levels for messages detected as spam. Possible values are: - ALLOW: Post the message to the group. - MODERATE: Send the message to the moderation queue. This is the default. - SILENTLY_MODERATE: Send the message to the moderation queue, but do not send notification to moderators. - REJECT: Immediately reject the message. */
@@ -197,18 +197,24 @@ export interface Groups {
   /** Deprecated. This is merged into the new whoCanAssistContent setting. Permission to mark any other user's post as a favorite reply. Possible values are: - ALL_MEMBERS - OWNERS_AND_MANAGERS - MANAGERS_ONLY - OWNERS_ONLY - NONE */
   whoCanMarkFavoriteReplyOnAnyTopic?: string;
 }
+const Groups = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<Groups>;
+
 export interface PatchGroupsRequest {
   /** The group's email address. */
   groupUniqueId: string;
   /** Request body */
   body?: Groups;
 }
+const PatchGroupsRequest = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<PatchGroupsRequest>;
+
 export interface UpdateGroupsRequest {
   /** The group's email address. */
   groupUniqueId: string;
   /** Request body */
   body?: Groups;
 }
+const UpdateGroupsRequest = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<UpdateGroupsRequest>;
+
 export type GetGroupsError = NotFound | Forbidden | GcpOpError;
 /** Gets one resource by id. */
 export const getGroups: API.OperationMethod<
@@ -217,8 +223,8 @@ export const getGroups: API.OperationMethod<
   GetGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<GetGroupsRequest>,
-  output: __S(1) as any as S.Schema<Groups>,
+  input: GetGroupsRequest,
+  output: Groups,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -232,8 +238,8 @@ export const patchGroups: API.OperationMethod<
   PatchGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2) as any as S.Schema<PatchGroupsRequest>,
-  output: __S(1) as any as S.Schema<Groups>,
+  input: PatchGroupsRequest,
+  output: Groups,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -247,8 +253,8 @@ export const updateGroups: API.OperationMethod<
   UpdateGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3) as any as S.Schema<UpdateGroupsRequest>,
-  output: __S(1) as any as S.Schema<Groups>,
+  input: UpdateGroupsRequest,
+  output: Groups,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -341,7 +347,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           groupUniqueId: S.String.pipe(T.Label()),
-          body: S.optional(__S(1).pipe(T.HttpBody())),
+          body: S.optional(Groups.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -354,7 +360,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           groupUniqueId: S.String.pipe(T.Label()),
-          body: S.optional(__S(1).pipe(T.HttpBody())),
+          body: S.optional(Groups.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -363,16 +369,5 @@ function __c0(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateGroupsRequest" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 2) {
-    case 0:
-      return __c0(i & 3);
   }
 }

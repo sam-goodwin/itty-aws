@@ -10,8 +10,6 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 const ns = /*@__PURE__*/ T.XmlNamespace(
   "http://directoryservicedata.amazonaws.com/doc/2023-05-31/",
 );
@@ -85,7 +83,7 @@ export class AccessDeniedException
     {
       message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
       Reason: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => S.String).annotate({
+        /*@__PURE__*/ S.suspend(() => AccessDeniedReason).annotate({
           identifier: "AccessDeniedReason",
         }),
       ),
@@ -104,7 +102,7 @@ export class DirectoryUnavailableException
     {
       message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
       Reason: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => S.String).annotate({
+        /*@__PURE__*/ S.suspend(() => DirectoryUnavailableReason).annotate({
           identifier: "DirectoryUnavailableReason",
         }),
       ),
@@ -143,7 +141,7 @@ export class ValidationException
     {
       message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
       Reason: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => S.String).annotate({
+        /*@__PURE__*/ S.suspend(() => ValidationExceptionReason).annotate({
           identifier: "ValidationExceptionReason",
         }),
       ),
@@ -162,20 +160,32 @@ export interface AddGroupMemberRequest {
   MemberRealm?: string;
   ClientToken?: string;
 }
+const AddGroupMemberRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<AddGroupMemberRequest>;
 export interface AddGroupMemberResult {}
+const AddGroupMemberResult = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<AddGroupMemberResult>;
 export type GroupType = "Distribution" | "Security" | (string & {});
+const GroupType = S.String;
+
 export type GroupScope = "DomainLocal" | "Global" | "Universal" | "BuiltinLocal" | (string & {});
+const GroupScope = S.String;
+
 export type LdapDisplayName = string;
 export type StringAttributeValue = string | redacted.Redacted<string>;
 export type NumberAttributeValue = number;
 export type BooleanAttributeValue = boolean;
 export type StringSetAttributeValue = (string | redacted.Redacted<string>)[];
+const StringSetAttributeValue = /*@__PURE__*/ __L.at(__c0, 2);
 export type AttributeValue =
   | { S: string | redacted.Redacted<string>; N?: never; BOOL?: never; SS?: never }
   | { S?: never; N: number; BOOL?: never; SS?: never }
   | { S?: never; N?: never; BOOL: boolean; SS?: never }
   | { S?: never; N?: never; BOOL?: never; SS: (string | redacted.Redacted<string>)[] };
+const AttributeValue = /*@__PURE__*/ __L.at(__c0, 3);
 export type Attributes = { [key: string]: AttributeValue | undefined };
+const Attributes = /*@__PURE__*/ __L.at(__c0, 4);
 export interface CreateGroupRequest {
   DirectoryId: string;
   SAMAccountName: string;
@@ -184,12 +194,14 @@ export interface CreateGroupRequest {
   OtherAttributes?: { [key: string]: AttributeValue | undefined };
   ClientToken?: string;
 }
+const CreateGroupRequest = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<CreateGroupRequest>;
 export type SID = string;
 export interface CreateGroupResult {
   DirectoryId?: string;
   SAMAccountName?: string;
   SID?: string;
 }
+const CreateGroupResult = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<CreateGroupResult>;
 export type UserName = string;
 export type EmailAddress = string | redacted.Redacted<string>;
 export type GivenName = string | redacted.Redacted<string>;
@@ -203,30 +215,38 @@ export interface CreateUserRequest {
   OtherAttributes?: { [key: string]: AttributeValue | undefined };
   ClientToken?: string;
 }
+const CreateUserRequest = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<CreateUserRequest>;
 export interface CreateUserResult {
   DirectoryId?: string;
   SID?: string;
   SAMAccountName?: string;
 }
+const CreateUserResult = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<CreateUserResult>;
 export interface DeleteGroupRequest {
   DirectoryId: string;
   SAMAccountName: string;
   ClientToken?: string;
 }
+const DeleteGroupRequest = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<DeleteGroupRequest>;
 export interface DeleteGroupResult {}
+const DeleteGroupResult = AddGroupMemberResult as any as S.Schema<DeleteGroupResult>;
 export interface DeleteUserRequest {
   DirectoryId: string;
   SAMAccountName: string;
   ClientToken?: string;
 }
+const DeleteUserRequest = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<DeleteUserRequest>;
 export interface DeleteUserResult {}
+const DeleteUserResult = AddGroupMemberResult as any as S.Schema<DeleteUserResult>;
 export type LdapDisplayNameList = string[];
+const LdapDisplayNameList = /*@__PURE__*/ __L.at(__c1, 3);
 export interface DescribeGroupRequest {
   DirectoryId: string;
   Realm?: string;
   SAMAccountName: string;
   OtherAttributes?: string[];
 }
+const DescribeGroupRequest = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<DescribeGroupRequest>;
 export type DistinguishedName = string | redacted.Redacted<string>;
 export interface DescribeGroupResult {
   DirectoryId?: string;
@@ -238,12 +258,14 @@ export interface DescribeGroupResult {
   GroupScope?: GroupScope;
   OtherAttributes?: { [key: string]: AttributeValue | undefined };
 }
+const DescribeGroupResult = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<DescribeGroupResult>;
 export interface DescribeUserRequest {
   DirectoryId: string;
   SAMAccountName: string;
   OtherAttributes?: string[];
   Realm?: string;
 }
+const DescribeUserRequest = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<DescribeUserRequest>;
 export type UserPrincipalName = string | redacted.Redacted<string>;
 export interface DescribeUserResult {
   DirectoryId?: string;
@@ -258,12 +280,15 @@ export interface DescribeUserResult {
   Enabled?: boolean;
   OtherAttributes?: { [key: string]: AttributeValue | undefined };
 }
+const DescribeUserResult = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<DescribeUserResult>;
 export interface DisableUserRequest {
   DirectoryId: string;
   SAMAccountName: string;
   ClientToken?: string;
 }
+const DisableUserRequest = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<DisableUserRequest>;
 export interface DisableUserResult {}
+const DisableUserResult = AddGroupMemberResult as any as S.Schema<DisableUserResult>;
 export type NextToken = string | redacted.Redacted<string>;
 export type MaxResults = number;
 export interface ListGroupMembersRequest {
@@ -274,13 +299,21 @@ export interface ListGroupMembersRequest {
   NextToken?: string | redacted.Redacted<string>;
   MaxResults?: number;
 }
+const ListGroupMembersRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<ListGroupMembersRequest>;
 export type MemberType = "USER" | "GROUP" | "COMPUTER" | (string & {});
+const MemberType = S.String;
+
 export interface Member {
   SID: string;
   SAMAccountName: string;
   MemberType: MemberType;
 }
+const Member = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<Member>;
 export type MemberList = Member[];
+const MemberList = /*@__PURE__*/ __L.at(__c2, 3);
 export interface ListGroupMembersResult {
   DirectoryId?: string;
   Realm?: string;
@@ -288,25 +321,33 @@ export interface ListGroupMembersResult {
   Members?: Member[];
   NextToken?: string | redacted.Redacted<string>;
 }
+const ListGroupMembersResult = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<ListGroupMembersResult>;
 export interface ListGroupsRequest {
   DirectoryId: string;
   Realm?: string;
   NextToken?: string | redacted.Redacted<string>;
   MaxResults?: number;
 }
+const ListGroupsRequest = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<ListGroupsRequest>;
 export interface GroupSummary {
   SID: string;
   SAMAccountName: string;
   GroupType: GroupType;
   GroupScope: GroupScope;
 }
+const GroupSummary = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<GroupSummary>;
 export type GroupSummaryList = GroupSummary[];
+const GroupSummaryList = /*@__PURE__*/ __L.at(__c2, 7);
 export interface ListGroupsResult {
   DirectoryId?: string;
   Realm?: string;
   Groups?: GroupSummary[];
   NextToken?: string | redacted.Redacted<string>;
 }
+const ListGroupsResult = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<ListGroupsResult>;
 export interface ListGroupsForMemberRequest {
   DirectoryId: string;
   Realm?: string;
@@ -315,6 +356,10 @@ export interface ListGroupsForMemberRequest {
   NextToken?: string | redacted.Redacted<string>;
   MaxResults?: number;
 }
+const ListGroupsForMemberRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<ListGroupsForMemberRequest>;
 export interface ListGroupsForMemberResult {
   DirectoryId?: string;
   Realm?: string;
@@ -322,12 +367,17 @@ export interface ListGroupsForMemberResult {
   Groups?: GroupSummary[];
   NextToken?: string | redacted.Redacted<string>;
 }
+const ListGroupsForMemberResult = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<ListGroupsForMemberResult>;
 export interface ListUsersRequest {
   DirectoryId: string;
   Realm?: string;
   NextToken?: string | redacted.Redacted<string>;
   MaxResults?: number;
 }
+const ListUsersRequest = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<ListUsersRequest>;
 export interface UserSummary {
   SID: string;
   SAMAccountName: string;
@@ -335,13 +385,16 @@ export interface UserSummary {
   Surname?: string | redacted.Redacted<string>;
   Enabled: boolean;
 }
+const UserSummary = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<UserSummary>;
 export type UserSummaryList = UserSummary[];
+const UserSummaryList = /*@__PURE__*/ __L.at(__c3, 5);
 export interface ListUsersResult {
   DirectoryId?: string;
   Realm?: string;
   Users?: UserSummary[];
   NextToken?: string | redacted.Redacted<string>;
 }
+const ListUsersResult = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<ListUsersResult>;
 export interface RemoveGroupMemberRequest {
   DirectoryId: string;
   GroupName: string;
@@ -349,7 +402,15 @@ export interface RemoveGroupMemberRequest {
   MemberRealm?: string;
   ClientToken?: string;
 }
+const RemoveGroupMemberRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<RemoveGroupMemberRequest>;
 export interface RemoveGroupMemberResult {}
+const RemoveGroupMemberResult = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<RemoveGroupMemberResult>;
 export type SearchString = string | redacted.Redacted<string>;
 export interface SearchGroupsRequest {
   DirectoryId: string;
@@ -359,6 +420,7 @@ export interface SearchGroupsRequest {
   NextToken?: string | redacted.Redacted<string>;
   MaxResults?: number;
 }
+const SearchGroupsRequest = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<SearchGroupsRequest>;
 export interface Group {
   SID?: string;
   SAMAccountName: string;
@@ -367,13 +429,16 @@ export interface Group {
   GroupScope?: GroupScope;
   OtherAttributes?: { [key: string]: AttributeValue | undefined };
 }
+const Group = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<Group>;
 export type GroupList = Group[];
+const GroupList = /*@__PURE__*/ __L.at(__c4, 3);
 export interface SearchGroupsResult {
   DirectoryId?: string;
   Realm?: string;
   Groups?: Group[];
   NextToken?: string | redacted.Redacted<string>;
 }
+const SearchGroupsResult = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<SearchGroupsResult>;
 export interface SearchUsersRequest {
   DirectoryId: string;
   Realm?: string;
@@ -382,6 +447,7 @@ export interface SearchUsersRequest {
   NextToken?: string | redacted.Redacted<string>;
   MaxResults?: number;
 }
+const SearchUsersRequest = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<SearchUsersRequest>;
 export interface User {
   SID?: string;
   SAMAccountName: string;
@@ -393,14 +459,19 @@ export interface User {
   Enabled?: boolean;
   OtherAttributes?: { [key: string]: AttributeValue | undefined };
 }
+const User = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<User>;
 export type UserList = User[];
+const UserList = /*@__PURE__*/ __L.at(__c4, 7);
 export interface SearchUsersResult {
   DirectoryId?: string;
   Realm?: string;
   Users?: User[];
   NextToken?: string | redacted.Redacted<string>;
 }
+const SearchUsersResult = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<SearchUsersResult>;
 export type UpdateType = "ADD" | "REPLACE" | "REMOVE" | (string & {});
+const UpdateType = S.String;
+
 export interface UpdateGroupRequest {
   DirectoryId: string;
   SAMAccountName: string;
@@ -410,7 +481,9 @@ export interface UpdateGroupRequest {
   UpdateType?: UpdateType;
   ClientToken?: string;
 }
+const UpdateGroupRequest = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<UpdateGroupRequest>;
 export interface UpdateGroupResult {}
+const UpdateGroupResult = AddGroupMemberResult as any as S.Schema<UpdateGroupResult>;
 export interface UpdateUserRequest {
   DirectoryId: string;
   SAMAccountName: string;
@@ -421,9 +494,13 @@ export interface UpdateUserRequest {
   UpdateType?: UpdateType;
   ClientToken?: string;
 }
+const UpdateUserRequest = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<UpdateUserRequest>;
 export interface UpdateUserResult {}
+const UpdateUserResult = AddGroupMemberResult as any as S.Schema<UpdateUserResult>;
 export type ExceptionMessage = string;
 export type AccessDeniedReason = "IAM_AUTH" | "DIRECTORY_AUTH" | "DATA_DISABLED" | (string & {});
+const AccessDeniedReason = S.String;
+
 export type DirectoryUnavailableReason =
   | "INVALID_DIRECTORY_STATE"
   | "DIRECTORY_TIMEOUT"
@@ -431,6 +508,8 @@ export type DirectoryUnavailableReason =
   | "NO_DISK_SPACE"
   | "TRUST_AUTH_FAILURE"
   | (string & {});
+const DirectoryUnavailableReason = S.String;
+
 export type ValidationExceptionReason =
   | "INVALID_REALM"
   | "INVALID_DIRECTORY_TYPE"
@@ -448,6 +527,8 @@ export type ValidationExceptionReason =
   | "LDAP_SIZE_LIMIT_EXCEEDED"
   | "LDAP_UNSUPPORTED_OPERATION"
   | (string & {});
+const ValidationExceptionReason = S.String;
+
 export type AddGroupMemberError =
   | AccessDeniedException
   | ConflictException
@@ -466,8 +547,8 @@ export const addGroupMember: API.OperationMethod<
   AddGroupMemberError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<AddGroupMemberRequest>,
-  output: __S(1) as any as S.Schema<AddGroupMemberResult>,
+  input: AddGroupMemberRequest,
+  output: AddGroupMemberResult,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -499,8 +580,8 @@ export const createGroup: API.OperationMethod<
   CreateGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5) as any as S.Schema<CreateGroupRequest>,
-  output: __S(6) as any as S.Schema<CreateGroupResult>,
+  input: CreateGroupRequest,
+  output: CreateGroupResult,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -531,8 +612,8 @@ export const createUser: API.OperationMethod<
   CreateUserError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7) as any as S.Schema<CreateUserRequest>,
-  output: __S(8) as any as S.Schema<CreateUserResult>,
+  input: CreateUserRequest,
+  output: CreateUserResult,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -564,8 +645,8 @@ export const deleteGroup: API.OperationMethod<
   DeleteGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9) as any as S.Schema<DeleteGroupRequest>,
-  output: __S(1) as any as S.Schema<DeleteGroupResult>,
+  input: DeleteGroupRequest,
+  output: DeleteGroupResult,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -598,8 +679,8 @@ export const deleteUser: API.OperationMethod<
   DeleteUserError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10) as any as S.Schema<DeleteUserRequest>,
-  output: __S(1) as any as S.Schema<DeleteUserResult>,
+  input: DeleteUserRequest,
+  output: DeleteUserResult,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -631,8 +712,8 @@ export const describeGroup: API.OperationMethod<
   DescribeGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12) as any as S.Schema<DescribeGroupRequest>,
-  output: __S(13) as any as S.Schema<DescribeGroupResult>,
+  input: DescribeGroupRequest,
+  output: DescribeGroupResult,
   errors: [
     AccessDeniedException,
     DirectoryUnavailableException,
@@ -663,8 +744,8 @@ export const describeUser: API.OperationMethod<
   DescribeUserError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14) as any as S.Schema<DescribeUserRequest>,
-  output: __S(15) as any as S.Schema<DescribeUserResult>,
+  input: DescribeUserRequest,
+  output: DescribeUserResult,
   errors: [
     AccessDeniedException,
     DirectoryUnavailableException,
@@ -698,8 +779,8 @@ export const disableUser: API.OperationMethod<
   DisableUserError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16) as any as S.Schema<DisableUserRequest>,
-  output: __S(1) as any as S.Schema<DisableUserResult>,
+  input: DisableUserRequest,
+  output: DisableUserResult,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -740,8 +821,8 @@ export const listGroupMembers: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Member
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(17) as any as S.Schema<ListGroupMembersRequest>,
-  output: __S(20) as any as S.Schema<ListGroupMembersResult>,
+  input: ListGroupMembersRequest,
+  output: ListGroupMembersResult,
   errors: [
     AccessDeniedException,
     DirectoryUnavailableException,
@@ -786,8 +867,8 @@ export const listGroups: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   GroupSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(21) as any as S.Schema<ListGroupsRequest>,
-  output: __S(24) as any as S.Schema<ListGroupsResult>,
+  input: ListGroupsRequest,
+  output: ListGroupsResult,
   errors: [
     AccessDeniedException,
     DirectoryUnavailableException,
@@ -832,8 +913,8 @@ export const listGroupsForMember: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   GroupSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(25) as any as S.Schema<ListGroupsForMemberRequest>,
-  output: __S(26) as any as S.Schema<ListGroupsForMemberResult>,
+  input: ListGroupsForMemberRequest,
+  output: ListGroupsForMemberResult,
   errors: [
     AccessDeniedException,
     DirectoryUnavailableException,
@@ -878,8 +959,8 @@ export const listUsers: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   UserSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(27) as any as S.Schema<ListUsersRequest>,
-  output: __S(30) as any as S.Schema<ListUsersResult>,
+  input: ListUsersRequest,
+  output: ListUsersResult,
   errors: [
     AccessDeniedException,
     DirectoryUnavailableException,
@@ -916,8 +997,8 @@ export const removeGroupMember: API.OperationMethod<
   RemoveGroupMemberError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31) as any as S.Schema<RemoveGroupMemberRequest>,
-  output: __S(32) as any as S.Schema<RemoveGroupMemberResult>,
+  input: RemoveGroupMemberRequest,
+  output: RemoveGroupMemberResult,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -959,8 +1040,8 @@ export const searchGroups: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Group
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(33) as any as S.Schema<SearchGroupsRequest>,
-  output: __S(36) as any as S.Schema<SearchGroupsResult>,
+  input: SearchGroupsRequest,
+  output: SearchGroupsResult,
   errors: [
     AccessDeniedException,
     DirectoryUnavailableException,
@@ -1006,8 +1087,8 @@ export const searchUsers: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   User
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(37) as any as S.Schema<SearchUsersRequest>,
-  output: __S(40) as any as S.Schema<SearchUsersResult>,
+  input: SearchUsersRequest,
+  output: SearchUsersResult,
   errors: [
     AccessDeniedException,
     DirectoryUnavailableException,
@@ -1044,8 +1125,8 @@ export const updateGroup: API.OperationMethod<
   UpdateGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41) as any as S.Schema<UpdateGroupRequest>,
-  output: __S(1) as any as S.Schema<UpdateGroupResult>,
+  input: UpdateGroupRequest,
+  output: UpdateGroupResult,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1078,8 +1159,8 @@ export const updateUser: API.OperationMethod<
   UpdateUserError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42) as any as S.Schema<UpdateUserRequest>,
-  output: __S(1) as any as S.Schema<UpdateUserResult>,
+  input: UpdateUserRequest,
+  output: UpdateUserResult,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1128,18 +1209,18 @@ function __c0(j: number): any {
         /*@__PURE__*/ S.Struct({ S: SensitiveString }),
         /*@__PURE__*/ S.Struct({ N: S.Number }),
         /*@__PURE__*/ S.Struct({ BOOL: S.Boolean }),
-        /*@__PURE__*/ S.Struct({ SS: __S(2) }),
+        /*@__PURE__*/ S.Struct({ SS: StringSetAttributeValue }),
       ]);
     case 4:
-      return S.Record(S.String, /*@__PURE__*/ __S(3).pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ AttributeValue.pipe(S.optional));
     case 5:
       return S.suspend(() =>
         S.Struct({
           DirectoryId: S.String.pipe(T.HttpQuery("DirectoryId")),
           SAMAccountName: S.String,
-          GroupType: S.optional(S.String),
-          GroupScope: S.optional(S.String),
-          OtherAttributes: S.optional(__S(4)),
+          GroupType: S.optional(GroupType),
+          GroupScope: S.optional(GroupScope),
+          OtherAttributes: S.optional(Attributes),
           ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(
           T.all(
@@ -1169,7 +1250,7 @@ function __c0(j: number): any {
           EmailAddress: S.optional(SensitiveString),
           GivenName: S.optional(SensitiveString),
           Surname: S.optional(SensitiveString),
-          OtherAttributes: S.optional(__S(4)),
+          OtherAttributes: S.optional(Attributes),
           ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(
           T.all(
@@ -1239,7 +1320,7 @@ function __c1(j: number): any {
           DirectoryId: S.String.pipe(T.HttpQuery("DirectoryId")),
           Realm: S.optional(S.String),
           SAMAccountName: S.String,
-          OtherAttributes: S.optional(__S(11)),
+          OtherAttributes: S.optional(LdapDisplayNameList),
         }).pipe(
           T.all(
             ns,
@@ -1260,9 +1341,9 @@ function __c1(j: number): any {
           SID: S.optional(S.String),
           SAMAccountName: S.optional(S.String),
           DistinguishedName: S.optional(SensitiveString),
-          GroupType: S.optional(S.String),
-          GroupScope: S.optional(S.String),
-          OtherAttributes: S.optional(__S(4)),
+          GroupType: S.optional(GroupType),
+          GroupScope: S.optional(GroupScope),
+          OtherAttributes: S.optional(Attributes),
         }).pipe(ns),
       ).annotate({ identifier: "DescribeGroupResult" });
     case 6:
@@ -1270,7 +1351,7 @@ function __c1(j: number): any {
         S.Struct({
           DirectoryId: S.String.pipe(T.HttpQuery("DirectoryId")),
           SAMAccountName: S.String,
-          OtherAttributes: S.optional(__S(11)),
+          OtherAttributes: S.optional(LdapDisplayNameList),
           Realm: S.optional(S.String),
         }).pipe(
           T.all(
@@ -1297,7 +1378,7 @@ function __c1(j: number): any {
           GivenName: S.optional(SensitiveString),
           Surname: S.optional(SensitiveString),
           Enabled: S.optional(S.Boolean),
-          OtherAttributes: S.optional(__S(4)),
+          OtherAttributes: S.optional(Attributes),
         }).pipe(ns),
       ).annotate({ identifier: "DescribeUserResult" });
   }
@@ -1345,17 +1426,17 @@ function __c2(j: number): any {
       ).annotate({ identifier: "ListGroupMembersRequest" });
     case 2:
       return S.suspend(() =>
-        S.Struct({ SID: S.String, SAMAccountName: S.String, MemberType: S.String }),
+        S.Struct({ SID: S.String, SAMAccountName: S.String, MemberType: MemberType }),
       ).annotate({ identifier: "Member" });
     case 3:
-      return S.Array(__S(18));
+      return S.Array(Member);
     case 4:
       return S.suspend(() =>
         S.Struct({
           DirectoryId: S.optional(S.String),
           Realm: S.optional(S.String),
           MemberRealm: S.optional(S.String),
-          Members: S.optional(__S(19)),
+          Members: S.optional(MemberList),
           NextToken: S.optional(SensitiveString),
         }).pipe(ns),
       ).annotate({ identifier: "ListGroupMembersResult" });
@@ -1383,12 +1464,12 @@ function __c2(j: number): any {
         S.Struct({
           SID: S.String,
           SAMAccountName: S.String,
-          GroupType: S.String,
-          GroupScope: S.String,
+          GroupType: GroupType,
+          GroupScope: GroupScope,
         }),
       ).annotate({ identifier: "GroupSummary" });
     case 7:
-      return S.Array(__S(22));
+      return S.Array(GroupSummary);
   }
 }
 function __c3(j: number): any {
@@ -1398,7 +1479,7 @@ function __c3(j: number): any {
         S.Struct({
           DirectoryId: S.optional(S.String),
           Realm: S.optional(S.String),
-          Groups: S.optional(__S(23)),
+          Groups: S.optional(GroupSummaryList),
           NextToken: S.optional(SensitiveString),
         }).pipe(ns),
       ).annotate({ identifier: "ListGroupsResult" });
@@ -1431,7 +1512,7 @@ function __c3(j: number): any {
           DirectoryId: S.optional(S.String),
           Realm: S.optional(S.String),
           MemberRealm: S.optional(S.String),
-          Groups: S.optional(__S(23)),
+          Groups: S.optional(GroupSummaryList),
           NextToken: S.optional(SensitiveString),
         }).pipe(ns),
       ).annotate({
@@ -1467,13 +1548,13 @@ function __c3(j: number): any {
         }),
       ).annotate({ identifier: "UserSummary" });
     case 5:
-      return S.Array(__S(28));
+      return S.Array(UserSummary);
     case 6:
       return S.suspend(() =>
         S.Struct({
           DirectoryId: S.optional(S.String),
           Realm: S.optional(S.String),
-          Users: S.optional(__S(29)),
+          Users: S.optional(UserSummaryList),
           NextToken: S.optional(SensitiveString),
         }).pipe(ns),
       ).annotate({ identifier: "ListUsersResult" });
@@ -1510,7 +1591,7 @@ function __c4(j: number): any {
         S.Struct({
           DirectoryId: S.String.pipe(T.HttpQuery("DirectoryId")),
           SearchString: SensitiveString,
-          SearchAttributes: __S(11),
+          SearchAttributes: LdapDisplayNameList,
           Realm: S.optional(S.String),
           NextToken: S.optional(SensitiveString),
           MaxResults: S.optional(S.Number),
@@ -1532,19 +1613,19 @@ function __c4(j: number): any {
           SID: S.optional(S.String),
           SAMAccountName: S.String,
           DistinguishedName: S.optional(SensitiveString),
-          GroupType: S.optional(S.String),
-          GroupScope: S.optional(S.String),
-          OtherAttributes: S.optional(__S(4)),
+          GroupType: S.optional(GroupType),
+          GroupScope: S.optional(GroupScope),
+          OtherAttributes: S.optional(Attributes),
         }),
       ).annotate({ identifier: "Group" });
     case 3:
-      return S.Array(__S(34));
+      return S.Array(Group);
     case 4:
       return S.suspend(() =>
         S.Struct({
           DirectoryId: S.optional(S.String),
           Realm: S.optional(S.String),
-          Groups: S.optional(__S(35)),
+          Groups: S.optional(GroupList),
           NextToken: S.optional(SensitiveString),
         }).pipe(ns),
       ).annotate({ identifier: "SearchGroupsResult" });
@@ -1554,7 +1635,7 @@ function __c4(j: number): any {
           DirectoryId: S.String.pipe(T.HttpQuery("DirectoryId")),
           Realm: S.optional(S.String),
           SearchString: SensitiveString,
-          SearchAttributes: __S(11),
+          SearchAttributes: LdapDisplayNameList,
           NextToken: S.optional(SensitiveString),
           MaxResults: S.optional(S.Number),
         }).pipe(
@@ -1580,11 +1661,11 @@ function __c4(j: number): any {
           GivenName: S.optional(SensitiveString),
           Surname: S.optional(SensitiveString),
           Enabled: S.optional(S.Boolean),
-          OtherAttributes: S.optional(__S(4)),
+          OtherAttributes: S.optional(Attributes),
         }),
       ).annotate({ identifier: "User" });
     case 7:
-      return S.Array(__S(38));
+      return S.Array(User);
   }
 }
 function __c5(j: number): any {
@@ -1594,7 +1675,7 @@ function __c5(j: number): any {
         S.Struct({
           DirectoryId: S.optional(S.String),
           Realm: S.optional(S.String),
-          Users: S.optional(__S(39)),
+          Users: S.optional(UserList),
           NextToken: S.optional(SensitiveString),
         }).pipe(ns),
       ).annotate({ identifier: "SearchUsersResult" });
@@ -1603,10 +1684,10 @@ function __c5(j: number): any {
         S.Struct({
           DirectoryId: S.String.pipe(T.HttpQuery("DirectoryId")),
           SAMAccountName: S.String,
-          GroupType: S.optional(S.String),
-          GroupScope: S.optional(S.String),
-          OtherAttributes: S.optional(__S(4)),
-          UpdateType: S.optional(S.String),
+          GroupType: S.optional(GroupType),
+          GroupScope: S.optional(GroupScope),
+          OtherAttributes: S.optional(Attributes),
+          UpdateType: S.optional(UpdateType),
           ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(
           T.all(
@@ -1628,8 +1709,8 @@ function __c5(j: number): any {
           EmailAddress: S.optional(SensitiveString),
           GivenName: S.optional(SensitiveString),
           Surname: S.optional(SensitiveString),
-          OtherAttributes: S.optional(__S(4)),
-          UpdateType: S.optional(S.String),
+          OtherAttributes: S.optional(Attributes),
+          UpdateType: S.optional(UpdateType),
           ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(
           T.all(
@@ -1643,26 +1724,5 @@ function __c5(j: number): any {
           ),
         ),
       ).annotate({ identifier: "UpdateUserRequest" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
   }
 }

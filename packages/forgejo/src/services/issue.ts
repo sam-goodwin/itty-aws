@@ -6,8 +6,6 @@ import * as S from "@distilled.cloud/core/schema";
 import { ForgejoProtocol, type ForgejoOpError, type ForgejoOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { ForgejoOpError, ForgejoOpContext };
 
@@ -66,8 +64,18 @@ export class UnprocessableEntity
   ) {}
 
 export type CreateIssueRequestAssigneesList = Array<string>;
+const CreateIssueRequestAssigneesList = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<CreateIssueRequestAssigneesList>;
+
 /** list of label ids */
 export type CreateIssueRequestLabelsList = Array<number>;
+const CreateIssueRequestLabelsList = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<CreateIssueRequestLabelsList>;
+
 export interface CreateIssueRequest {
   /** owner of the repo */
   owner: string;
@@ -86,7 +94,11 @@ export interface CreateIssueRequest {
   ref?: string;
   title: string;
 }
+const CreateIssueRequest = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<CreateIssueRequest>;
+
 export type AttachmentType = "attachment" | "external";
+const AttachmentType = S.String;
+
 /** Attachment a generic attachment */
 export interface Attachment {
   browser_download_url?: string;
@@ -98,7 +110,11 @@ export interface Attachment {
   type?: AttachmentType;
   uuid?: string;
 }
+const Attachment = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<Attachment>;
+
 export type IssueAssetsList = Array<Attachment>;
+const IssueAssetsList = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<IssueAssetsList>;
+
 /** User represents a user */
 export interface User {
   /** Is user active */
@@ -143,7 +159,11 @@ export interface User {
   /** the user's website */
   website?: string;
 }
+const User = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<User>;
+
 export type IssueAssigneesList = Array<User>;
+const IssueAssigneesList = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<IssueAssigneesList>;
+
 /** Label a label to an issue or a pr */
 export interface Label {
   color: string;
@@ -154,7 +174,11 @@ export interface Label {
   name: string;
   url?: string;
 }
+const Label = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<Label>;
+
 export type IssueLabelsList = Array<Label>;
+const IssueLabelsList = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<IssueLabelsList>;
+
 /** Milestone milestone is a collection of issues on one repository */
 export interface Milestone {
   closed_at?: string;
@@ -168,6 +192,8 @@ export interface Milestone {
   title?: string;
   updated_at?: string;
 }
+const Milestone = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<Milestone>;
+
 /** PullRequestMeta PR info if an issue is a PR */
 export interface PullRequestMeta {
   draft?: boolean;
@@ -175,6 +201,8 @@ export interface PullRequestMeta {
   merged?: boolean;
   merged_at?: string;
 }
+const PullRequestMeta = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<PullRequestMeta>;
+
 /** RepositoryMeta basic repository information */
 export interface RepositoryMeta {
   full_name?: string;
@@ -182,6 +210,8 @@ export interface RepositoryMeta {
   name?: string;
   owner?: string;
 }
+const RepositoryMeta = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<RepositoryMeta>;
+
 /** Issue represents an issue in a repository */
 export interface Issue {
   assets?: IssueAssetsList;
@@ -210,6 +240,8 @@ export interface Issue {
   url?: string;
   user?: User;
 }
+const Issue = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<Issue>;
+
 export interface CreateIssueAttachmentRequest {
   /** owner of the repo */
   owner: string;
@@ -222,6 +254,11 @@ export interface CreateIssueAttachmentRequest {
   /** time of the attachment's creation. This is a timestamp in RFC 3339 format */
   updated_at?: string;
 }
+const CreateIssueAttachmentRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<CreateIssueAttachmentRequest>;
+
 export interface CreateIssueBlockingRequest {
   /** owner of the repo */
   owner: string;
@@ -230,6 +267,11 @@ export interface CreateIssueBlockingRequest {
   /** index of the issue */
   index: number;
 }
+const CreateIssueBlockingRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<CreateIssueBlockingRequest>;
+
 export interface CreateIssueCommentAttachmentRequest {
   /** owner of the repo */
   owner: string;
@@ -242,6 +284,11 @@ export interface CreateIssueCommentAttachmentRequest {
   /** time of the attachment's creation. This is a timestamp in RFC 3339 format */
   updated_at?: string;
 }
+const CreateIssueCommentAttachmentRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<CreateIssueCommentAttachmentRequest>;
+
 export interface CreateIssueDependenciesRequest {
   /** owner of the repo */
   owner: string;
@@ -250,6 +297,11 @@ export interface CreateIssueDependenciesRequest {
   /** index of the issue */
   index: number;
 }
+const CreateIssueDependenciesRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<CreateIssueDependenciesRequest>;
+
 export interface DeleteIssueRequest {
   /** owner of the repo */
   owner: string;
@@ -258,7 +310,11 @@ export interface DeleteIssueRequest {
   /** index of issue to delete */
   index: number;
 }
+const DeleteIssueRequest = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<DeleteIssueRequest>;
+
 export interface DeleteIssueResponse {}
+const DeleteIssueResponse = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<DeleteIssueResponse>;
+
 export interface DeleteIssueAttachmentRequest {
   /** owner of the repo */
   owner: string;
@@ -269,7 +325,15 @@ export interface DeleteIssueAttachmentRequest {
   /** id of the attachment to delete */
   attachment_id: number;
 }
+const DeleteIssueAttachmentRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<DeleteIssueAttachmentRequest>;
+
 export interface DeleteIssueAttachmentResponse {}
+const DeleteIssueAttachmentResponse =
+  DeleteIssueResponse as any as S.Schema<DeleteIssueAttachmentResponse>;
+
 export interface DeleteIssueCommentAttachmentRequest {
   /** owner of the repo */
   owner: string;
@@ -280,7 +344,17 @@ export interface DeleteIssueCommentAttachmentRequest {
   /** id of the attachment to delete */
   attachment_id: number;
 }
+const DeleteIssueCommentAttachmentRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<DeleteIssueCommentAttachmentRequest>;
+
 export interface DeleteIssueCommentAttachmentResponse {}
+const DeleteIssueCommentAttachmentResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<DeleteIssueCommentAttachmentResponse>;
+
 export interface DeleteIssueReactionRequest {
   /** owner of the repo */
   owner: string;
@@ -290,8 +364,19 @@ export interface DeleteIssueReactionRequest {
   index: number;
   content?: string;
 }
+const DeleteIssueReactionRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<DeleteIssueReactionRequest>;
+
 export interface DeleteIssueReactionResponse {}
+const DeleteIssueReactionResponse =
+  DeleteIssueResponse as any as S.Schema<DeleteIssueReactionResponse>;
+
 export type EditIssueRequestAssigneesList = Array<string>;
+const EditIssueRequestAssigneesList =
+  CreateIssueRequestAssigneesList as any as S.Schema<EditIssueRequestAssigneesList>;
+
 export interface EditIssueRequest {
   /** owner of the repo */
   owner: string;
@@ -311,6 +396,8 @@ export interface EditIssueRequest {
   unset_due_date?: boolean;
   updated_at?: string;
 }
+const EditIssueRequest = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<EditIssueRequest>;
+
 export interface EditIssueAttachmentRequest {
   /** owner of the repo */
   owner: string;
@@ -324,6 +411,11 @@ export interface EditIssueAttachmentRequest {
   browser_download_url?: string;
   name?: string;
 }
+const EditIssueAttachmentRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<EditIssueAttachmentRequest>;
+
 export interface EditIssueCommentAttachmentRequest {
   /** owner of the repo */
   owner: string;
@@ -337,6 +429,11 @@ export interface EditIssueCommentAttachmentRequest {
   browser_download_url?: string;
   name?: string;
 }
+const EditIssueCommentAttachmentRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<EditIssueCommentAttachmentRequest>;
+
 export interface EditIssueDeadlineRequest {
   /** owner of the repo */
   owner: string;
@@ -346,10 +443,17 @@ export interface EditIssueDeadlineRequest {
   index: number;
   due_date: string;
 }
+const EditIssueDeadlineRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<EditIssueDeadlineRequest>;
+
 /** IssueDeadline represents an issue deadline */
 export interface IssueDeadline {
   due_date?: string;
 }
+const IssueDeadline = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<IssueDeadline>;
+
 export interface GetIssueRequest {
   /** owner of the repo */
   owner: string;
@@ -358,6 +462,8 @@ export interface GetIssueRequest {
   /** index of the issue to get */
   index: number;
 }
+const GetIssueRequest = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<GetIssueRequest>;
+
 export interface GetIssueAttachmentRequest {
   /** owner of the repo */
   owner: string;
@@ -368,6 +474,11 @@ export interface GetIssueAttachmentRequest {
   /** id of the attachment to get */
   attachment_id: number;
 }
+const GetIssueAttachmentRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<GetIssueAttachmentRequest>;
+
 export interface GetIssueCommentAttachmentRequest {
   /** owner of the repo */
   owner: string;
@@ -378,6 +489,11 @@ export interface GetIssueCommentAttachmentRequest {
   /** id of the attachment to get */
   attachment_id: number;
 }
+const GetIssueCommentAttachmentRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<GetIssueCommentAttachmentRequest>;
+
 export interface GetIssueReactionsRequest {
   /** owner of the repo */
   owner: string;
@@ -390,16 +506,38 @@ export interface GetIssueReactionsRequest {
   /** page size of results */
   limit?: number;
 }
+const GetIssueReactionsRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<GetIssueReactionsRequest>;
+
 /** Reaction contain one reaction */
 export interface Reaction {
   content?: string;
   created_at?: string;
   user?: User;
 }
+const Reaction = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<Reaction>;
+
 export type GetIssueReactionsResponseBodyList = Array<Reaction>;
+const GetIssueReactionsResponseBodyList = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<GetIssueReactionsResponseBodyList>;
+
 export type GetIssueReactionsResponse = GetIssueReactionsResponseBodyList;
+const GetIssueReactionsResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<GetIssueReactionsResponse>;
+
 /** Labels can be a list of integers representing label IDs or a list of strings representing label names */
 export type IssueAddLabelRequestLabelsList = Array<unknown>;
+const IssueAddLabelRequestLabelsList = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<IssueAddLabelRequestLabelsList>;
+
 export interface IssueAddLabelRequest {
   /** owner of the repo */
   owner: string;
@@ -411,8 +549,20 @@ export interface IssueAddLabelRequest {
   labels?: IssueAddLabelRequestLabelsList;
   updated_at?: string;
 }
+const IssueAddLabelRequest = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<IssueAddLabelRequest>;
+
 export type IssueAddLabelResponseBodyList = Array<Label>;
+const IssueAddLabelResponseBodyList = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<IssueAddLabelResponseBodyList>;
+
 export type IssueAddLabelResponse = IssueAddLabelResponseBodyList;
+const IssueAddLabelResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<IssueAddLabelResponse>;
+
 export interface IssueAddSubscriptionRequest {
   /** owner of the repo */
   owner: string;
@@ -423,7 +573,15 @@ export interface IssueAddSubscriptionRequest {
   /** user to subscribe */
   user: string;
 }
+const IssueAddSubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<IssueAddSubscriptionRequest>;
+
 export interface IssueAddSubscriptionResponse {}
+const IssueAddSubscriptionResponse =
+  DeleteIssueResponse as any as S.Schema<IssueAddSubscriptionResponse>;
+
 export interface IssueAddTimeRequest {
   /** owner of the repo */
   owner: string;
@@ -437,6 +595,8 @@ export interface IssueAddTimeRequest {
   /** User who spent the time (optional) */
   user_name?: string;
 }
+const IssueAddTimeRequest = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<IssueAddTimeRequest>;
+
 /** TrackedTime worked time for an issue / pr */
 export interface TrackedTime {
   created?: string;
@@ -450,6 +610,8 @@ export interface TrackedTime {
   user_id?: number;
   user_name?: string;
 }
+const TrackedTime = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<TrackedTime>;
+
 export interface IssueCheckSubscriptionRequest {
   /** owner of the repo */
   owner: string;
@@ -458,6 +620,11 @@ export interface IssueCheckSubscriptionRequest {
   /** index of the issue */
   index: number;
 }
+const IssueCheckSubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  2,
+) as any as S.Schema<IssueCheckSubscriptionRequest>;
+
 /** WatchInfo represents an API watch status of one repository */
 export interface WatchInfo {
   created_at?: string;
@@ -467,6 +634,8 @@ export interface WatchInfo {
   subscribed?: boolean;
   url?: string;
 }
+const WatchInfo = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<WatchInfo>;
+
 export interface IssueClearLabelsRequest {
   /** owner of the repo */
   owner: string;
@@ -476,7 +645,14 @@ export interface IssueClearLabelsRequest {
   index: number;
   updated_at?: string;
 }
+const IssueClearLabelsRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  4,
+) as any as S.Schema<IssueClearLabelsRequest>;
+
 export interface IssueClearLabelsResponse {}
+const IssueClearLabelsResponse = DeleteIssueResponse as any as S.Schema<IssueClearLabelsResponse>;
+
 export interface IssueCreateCommentRequest {
   /** owner of the repo */
   owner: string;
@@ -489,8 +665,15 @@ export interface IssueCreateCommentRequest {
   /** The time of the comment's update, needs admin or repository owner permission */
   updated_at?: string;
 }
+const IssueCreateCommentRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  5,
+) as any as S.Schema<IssueCreateCommentRequest>;
+
 /** The attachments to the comment */
 export type CommentAssetsList = Array<Attachment>;
+const CommentAssetsList = IssueAssetsList as any as S.Schema<CommentAssetsList>;
+
 /** Comment represents a comment on a commit or issue */
 export interface Comment {
   /** The attachments to the comment */
@@ -515,6 +698,8 @@ export interface Comment {
   updated_at?: string;
   user?: User;
 }
+const Comment = /*@__PURE__*/ __L.at(__c5, 6) as any as S.Schema<Comment>;
+
 export interface IssueCreateLabelRequest {
   /** owner of the repo */
   owner: string;
@@ -526,7 +711,14 @@ export interface IssueCreateLabelRequest {
   is_archived?: boolean;
   name: string;
 }
+const IssueCreateLabelRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  7,
+) as any as S.Schema<IssueCreateLabelRequest>;
+
 export type IssueCreateMilestoneRequestState = "open" | "closed";
+const IssueCreateMilestoneRequestState = S.String;
+
 export interface IssueCreateMilestoneRequest {
   /** owner of the repo */
   owner: string;
@@ -537,6 +729,11 @@ export interface IssueCreateMilestoneRequest {
   state?: IssueCreateMilestoneRequestState | (string & {});
   title?: string;
 }
+const IssueCreateMilestoneRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<IssueCreateMilestoneRequest>;
+
 export interface IssueDeleteCommentRequest {
   /** owner of the repo */
   owner: string;
@@ -545,7 +742,15 @@ export interface IssueDeleteCommentRequest {
   /** id of comment to delete */
   id: number;
 }
+const IssueDeleteCommentRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  1,
+) as any as S.Schema<IssueDeleteCommentRequest>;
+
 export interface IssueDeleteCommentResponse {}
+const IssueDeleteCommentResponse =
+  DeleteIssueResponse as any as S.Schema<IssueDeleteCommentResponse>;
+
 export interface IssueDeleteCommentReactionRequest {
   /** owner of the repo */
   owner: string;
@@ -555,7 +760,15 @@ export interface IssueDeleteCommentReactionRequest {
   id: number;
   content?: string;
 }
+const IssueDeleteCommentReactionRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  2,
+) as any as S.Schema<IssueDeleteCommentReactionRequest>;
+
 export interface IssueDeleteCommentReactionResponse {}
+const IssueDeleteCommentReactionResponse =
+  DeleteIssueCommentAttachmentResponse as any as S.Schema<IssueDeleteCommentReactionResponse>;
+
 export interface IssueDeleteLabelRequest {
   /** owner of the repo */
   owner: string;
@@ -564,7 +777,14 @@ export interface IssueDeleteLabelRequest {
   /** id of the label to delete */
   id: number;
 }
+const IssueDeleteLabelRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  3,
+) as any as S.Schema<IssueDeleteLabelRequest>;
+
 export interface IssueDeleteLabelResponse {}
+const IssueDeleteLabelResponse = DeleteIssueResponse as any as S.Schema<IssueDeleteLabelResponse>;
+
 export interface IssueDeleteMilestoneRequest {
   /** owner of the repo */
   owner: string;
@@ -573,7 +793,15 @@ export interface IssueDeleteMilestoneRequest {
   /** the milestone to delete, identified by ID and if not available by name */
   id: number;
 }
+const IssueDeleteMilestoneRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  4,
+) as any as S.Schema<IssueDeleteMilestoneRequest>;
+
 export interface IssueDeleteMilestoneResponse {}
+const IssueDeleteMilestoneResponse =
+  DeleteIssueResponse as any as S.Schema<IssueDeleteMilestoneResponse>;
+
 export interface IssueDeleteStopWatchRequest {
   /** owner of the repo */
   owner: string;
@@ -582,7 +810,15 @@ export interface IssueDeleteStopWatchRequest {
   /** index of the issue to stop the stopwatch on */
   index: number;
 }
+const IssueDeleteStopWatchRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  5,
+) as any as S.Schema<IssueDeleteStopWatchRequest>;
+
 export interface IssueDeleteStopWatchResponse {}
+const IssueDeleteStopWatchResponse =
+  DeleteIssueResponse as any as S.Schema<IssueDeleteStopWatchResponse>;
+
 export interface IssueDeleteSubscriptionRequest {
   /** owner of the repo */
   owner: string;
@@ -593,7 +829,17 @@ export interface IssueDeleteSubscriptionRequest {
   /** user witch unsubscribe */
   user: string;
 }
+const IssueDeleteSubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  6,
+) as any as S.Schema<IssueDeleteSubscriptionRequest>;
+
 export interface IssueDeleteSubscriptionResponse {}
+const IssueDeleteSubscriptionResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  7,
+) as any as S.Schema<IssueDeleteSubscriptionResponse>;
+
 export interface IssueDeleteTimeRequest {
   /** owner of the repo */
   owner: string;
@@ -604,7 +850,14 @@ export interface IssueDeleteTimeRequest {
   /** id of time to delete */
   id: number;
 }
+const IssueDeleteTimeRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  0,
+) as any as S.Schema<IssueDeleteTimeRequest>;
+
 export interface IssueDeleteTimeResponse {}
+const IssueDeleteTimeResponse = DeleteIssueResponse as any as S.Schema<IssueDeleteTimeResponse>;
+
 export interface IssueEditCommentRequest {
   /** owner of the repo */
   owner: string;
@@ -617,6 +870,11 @@ export interface IssueEditCommentRequest {
   /** The time of the comment's update, needs admin or repository owner permission */
   updated_at?: string;
 }
+const IssueEditCommentRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  1,
+) as any as S.Schema<IssueEditCommentRequest>;
+
 export interface IssueEditLabelRequest {
   /** owner of the repo */
   owner: string;
@@ -630,6 +888,11 @@ export interface IssueEditLabelRequest {
   is_archived?: boolean;
   name?: string;
 }
+const IssueEditLabelRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  2,
+) as any as S.Schema<IssueEditLabelRequest>;
+
 export interface IssueEditMilestoneRequest {
   /** owner of the repo */
   owner: string;
@@ -642,6 +905,11 @@ export interface IssueEditMilestoneRequest {
   state?: string;
   title?: string;
 }
+const IssueEditMilestoneRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  3,
+) as any as S.Schema<IssueEditMilestoneRequest>;
+
 export interface IssueGetCommentRequest {
   /** owner of the repo */
   owner: string;
@@ -650,6 +918,11 @@ export interface IssueGetCommentRequest {
   /** id of the comment */
   id: number;
 }
+const IssueGetCommentRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  4,
+) as any as S.Schema<IssueGetCommentRequest>;
+
 export interface IssueGetCommentReactionsRequest {
   /** owner of the repo */
   owner: string;
@@ -658,8 +931,16 @@ export interface IssueGetCommentReactionsRequest {
   /** id of the comment to edit */
   id: number;
 }
+const IssueGetCommentReactionsRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  5,
+) as any as S.Schema<IssueGetCommentReactionsRequest>;
+
 export type IssueGetCommentReactionsResponseBodyList = Array<Reaction>;
 export type IssueGetCommentReactionsResponse = IssueGetCommentReactionsResponseBodyList;
+const IssueGetCommentReactionsResponse =
+  GetIssueReactionsResponse as any as S.Schema<IssueGetCommentReactionsResponse>;
+
 export interface IssueGetCommentsRequest {
   /** owner of the repo */
   owner: string;
@@ -672,8 +953,23 @@ export interface IssueGetCommentsRequest {
   /** if provided, only comments updated before the provided time are returned. */
   before?: string;
 }
+const IssueGetCommentsRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  6,
+) as any as S.Schema<IssueGetCommentsRequest>;
+
 export type IssueGetCommentsResponseBodyList = Array<Comment>;
+const IssueGetCommentsResponseBodyList = /*@__PURE__*/ __L.at(
+  __c7,
+  7,
+) as any as S.Schema<IssueGetCommentsResponseBodyList>;
+
 export type IssueGetCommentsResponse = IssueGetCommentsResponseBodyList;
+const IssueGetCommentsResponse = /*@__PURE__*/ __L.at(
+  __c8,
+  0,
+) as any as S.Schema<IssueGetCommentsResponse>;
+
 export interface IssueGetCommentsAndTimelineRequest {
   /** owner of the repo */
   owner: string;
@@ -690,6 +986,11 @@ export interface IssueGetCommentsAndTimelineRequest {
   /** if provided, only comments updated before the provided time are returned. */
   before?: string;
 }
+const IssueGetCommentsAndTimelineRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  1,
+) as any as S.Schema<IssueGetCommentsAndTimelineRequest>;
+
 /** Organization represents an organization */
 export interface Organization {
   avatar_url?: string;
@@ -706,9 +1007,17 @@ export interface Organization {
   visibility?: string;
   website?: string;
 }
+const Organization = /*@__PURE__*/ __L.at(__c8, 2) as any as S.Schema<Organization>;
+
 export type TeamPermission = "none" | "read" | "write" | "admin" | "owner";
+const TeamPermission = S.String;
+
 export type TeamUnitsList = Array<string>;
+const TeamUnitsList = /*@__PURE__*/ __L.at(__c8, 3) as any as S.Schema<TeamUnitsList>;
+
 export type TeamUnitsMapMap = { [key: string]: string | undefined };
+const TeamUnitsMapMap = /*@__PURE__*/ __L.at(__c8, 4) as any as S.Schema<TeamUnitsMapMap>;
+
 /** Team represents a team in an organization */
 export interface Team {
   can_create_org_repo?: boolean;
@@ -721,6 +1030,8 @@ export interface Team {
   units?: TeamUnitsList;
   units_map?: TeamUnitsMapMap;
 }
+const Team = /*@__PURE__*/ __L.at(__c8, 5) as any as S.Schema<Team>;
+
 /** TimelineComment represents a timeline comment (comment of any type) on a commit or issue */
 export interface TimelineComment {
   assignee?: User;
@@ -755,8 +1066,20 @@ export interface TimelineComment {
   updated_at?: string;
   user?: User;
 }
+const TimelineComment = /*@__PURE__*/ __L.at(__c8, 6) as any as S.Schema<TimelineComment>;
+
 export type IssueGetCommentsAndTimelineResponseBodyList = Array<TimelineComment>;
+const IssueGetCommentsAndTimelineResponseBodyList = /*@__PURE__*/ __L.at(
+  __c8,
+  7,
+) as any as S.Schema<IssueGetCommentsAndTimelineResponseBodyList>;
+
 export type IssueGetCommentsAndTimelineResponse = IssueGetCommentsAndTimelineResponseBodyList;
+const IssueGetCommentsAndTimelineResponse = /*@__PURE__*/ __L.at(
+  __c9,
+  0,
+) as any as S.Schema<IssueGetCommentsAndTimelineResponse>;
+
 export interface IssueGetLabelRequest {
   /** owner of the repo */
   owner: string;
@@ -765,6 +1088,8 @@ export interface IssueGetLabelRequest {
   /** id of the label to get */
   id: number;
 }
+const IssueGetLabelRequest = /*@__PURE__*/ __L.at(__c9, 1) as any as S.Schema<IssueGetLabelRequest>;
+
 export interface IssueGetLabelsRequest {
   /** owner of the repo */
   owner: string;
@@ -773,8 +1098,15 @@ export interface IssueGetLabelsRequest {
   /** index of the issue */
   index: number;
 }
+const IssueGetLabelsRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  2,
+) as any as S.Schema<IssueGetLabelsRequest>;
+
 export type IssueGetLabelsResponseBodyList = Array<Label>;
 export type IssueGetLabelsResponse = IssueGetLabelsResponseBodyList;
+const IssueGetLabelsResponse = IssueAddLabelResponse as any as S.Schema<IssueGetLabelsResponse>;
+
 export interface IssueGetMilestoneRequest {
   /** owner of the repo */
   owner: string;
@@ -783,6 +1115,11 @@ export interface IssueGetMilestoneRequest {
   /** the milestone to get, identified by ID and if not available by name */
   id: number;
 }
+const IssueGetMilestoneRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  3,
+) as any as S.Schema<IssueGetMilestoneRequest>;
+
 export interface IssueGetMilestonesListRequest {
   /** owner of the repo */
   owner: string;
@@ -797,8 +1134,23 @@ export interface IssueGetMilestonesListRequest {
   /** page size of results */
   limit?: number;
 }
+const IssueGetMilestonesListRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  4,
+) as any as S.Schema<IssueGetMilestonesListRequest>;
+
 export type IssueGetMilestonesListResponseBodyList = Array<Milestone>;
+const IssueGetMilestonesListResponseBodyList = /*@__PURE__*/ __L.at(
+  __c9,
+  5,
+) as any as S.Schema<IssueGetMilestonesListResponseBodyList>;
+
 export type IssueGetMilestonesListResponse = IssueGetMilestonesListResponseBodyList;
+const IssueGetMilestonesListResponse = /*@__PURE__*/ __L.at(
+  __c9,
+  6,
+) as any as S.Schema<IssueGetMilestonesListResponse>;
+
 export interface IssueGetRepoCommentsRequest {
   /** owner of the repo */
   owner: string;
@@ -813,8 +1165,21 @@ export interface IssueGetRepoCommentsRequest {
   /** page size of results */
   limit?: number;
 }
+const IssueGetRepoCommentsRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  7,
+) as any as S.Schema<IssueGetRepoCommentsRequest>;
+
 export type IssueGetRepoCommentsResponseBodyList = Array<Comment>;
+const IssueGetRepoCommentsResponseBodyList =
+  IssueGetCommentsResponseBodyList as any as S.Schema<IssueGetRepoCommentsResponseBodyList>;
+
 export type IssueGetRepoCommentsResponse = IssueGetRepoCommentsResponseBodyList;
+const IssueGetRepoCommentsResponse = /*@__PURE__*/ __L.at(
+  __c10,
+  0,
+) as any as S.Schema<IssueGetRepoCommentsResponse>;
+
 export interface IssueListBlocksRequest {
   /** owner of the repo */
   owner: string;
@@ -827,9 +1192,26 @@ export interface IssueListBlocksRequest {
   /** page size of results */
   limit?: number;
 }
+const IssueListBlocksRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  1,
+) as any as S.Schema<IssueListBlocksRequest>;
+
 export type IssueListBlocksResponseBodyList = Array<Issue>;
+const IssueListBlocksResponseBodyList = /*@__PURE__*/ __L.at(
+  __c10,
+  2,
+) as any as S.Schema<IssueListBlocksResponseBodyList>;
+
 export type IssueListBlocksResponse = IssueListBlocksResponseBodyList;
+const IssueListBlocksResponse = /*@__PURE__*/ __L.at(
+  __c10,
+  3,
+) as any as S.Schema<IssueListBlocksResponse>;
+
 export type IssueListLabelsRequestSort = "mostissues" | "leastissues" | "reversealphabetically";
+const IssueListLabelsRequestSort = S.String;
+
 export interface IssueListLabelsRequest {
   /** owner of the repo */
   owner: string;
@@ -842,8 +1224,15 @@ export interface IssueListLabelsRequest {
   /** page size of results */
   limit?: number;
 }
+const IssueListLabelsRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  4,
+) as any as S.Schema<IssueListLabelsRequest>;
+
 export type IssueListLabelsResponseBodyList = Array<Label>;
 export type IssueListLabelsResponse = IssueListLabelsResponseBodyList;
+const IssueListLabelsResponse = IssueAddLabelResponse as any as S.Schema<IssueListLabelsResponse>;
+
 export interface IssuePostCommentReactionRequest {
   /** owner of the repo */
   owner: string;
@@ -853,6 +1242,11 @@ export interface IssuePostCommentReactionRequest {
   id: number;
   content?: string;
 }
+const IssuePostCommentReactionRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  5,
+) as any as S.Schema<IssuePostCommentReactionRequest>;
+
 export interface IssueRemoveLabelRequest {
   /** owner of the repo */
   owner: string;
@@ -864,9 +1258,19 @@ export interface IssueRemoveLabelRequest {
   identifier: string;
   updated_at?: string;
 }
+const IssueRemoveLabelRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  6,
+) as any as S.Schema<IssueRemoveLabelRequest>;
+
 export interface IssueRemoveLabelResponse {}
+const IssueRemoveLabelResponse = DeleteIssueResponse as any as S.Schema<IssueRemoveLabelResponse>;
+
 /** Labels can be a list of integers representing label IDs or a list of strings representing label names */
 export type IssueReplaceLabelsRequestLabelsList = Array<unknown>;
+const IssueReplaceLabelsRequestLabelsList =
+  IssueAddLabelRequestLabelsList as any as S.Schema<IssueReplaceLabelsRequestLabelsList>;
+
 export interface IssueReplaceLabelsRequest {
   /** owner of the repo */
   owner: string;
@@ -878,8 +1282,21 @@ export interface IssueReplaceLabelsRequest {
   labels?: IssueReplaceLabelsRequestLabelsList;
   updated_at?: string;
 }
+const IssueReplaceLabelsRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  7,
+) as any as S.Schema<IssueReplaceLabelsRequest>;
+
 export type IssueReplaceLabelsResponseBodyList = Array<Label>;
+const IssueReplaceLabelsResponseBodyList =
+  IssueAddLabelResponseBodyList as any as S.Schema<IssueReplaceLabelsResponseBodyList>;
+
 export type IssueReplaceLabelsResponse = IssueReplaceLabelsResponseBodyList;
+const IssueReplaceLabelsResponse = /*@__PURE__*/ __L.at(
+  __c11,
+  0,
+) as any as S.Schema<IssueReplaceLabelsResponse>;
+
 export interface IssueResetTimeRequest {
   /** owner of the repo */
   owner: string;
@@ -888,7 +1305,14 @@ export interface IssueResetTimeRequest {
   /** index of the issue to add tracked time to */
   index: number;
 }
+const IssueResetTimeRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  1,
+) as any as S.Schema<IssueResetTimeRequest>;
+
 export interface IssueResetTimeResponse {}
+const IssueResetTimeResponse = DeleteIssueResponse as any as S.Schema<IssueResetTimeResponse>;
+
 export interface IssueStartStopWatchRequest {
   /** owner of the repo */
   owner: string;
@@ -897,7 +1321,15 @@ export interface IssueStartStopWatchRequest {
   /** index of the issue to create the stopwatch on */
   index: number;
 }
+const IssueStartStopWatchRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  2,
+) as any as S.Schema<IssueStartStopWatchRequest>;
+
 export interface IssueStartStopWatchResponse {}
+const IssueStartStopWatchResponse =
+  DeleteIssueResponse as any as S.Schema<IssueStartStopWatchResponse>;
+
 export interface IssueStopStopWatchRequest {
   /** owner of the repo */
   owner: string;
@@ -906,7 +1338,15 @@ export interface IssueStopStopWatchRequest {
   /** index of the issue to stop the stopwatch on */
   index: number;
 }
+const IssueStopStopWatchRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  3,
+) as any as S.Schema<IssueStopStopWatchRequest>;
+
 export interface IssueStopStopWatchResponse {}
+const IssueStopStopWatchResponse =
+  DeleteIssueResponse as any as S.Schema<IssueStopStopWatchResponse>;
+
 export interface IssueSubscriptionsRequest {
   /** owner of the repo */
   owner: string;
@@ -919,8 +1359,21 @@ export interface IssueSubscriptionsRequest {
   /** page size of results */
   limit?: number;
 }
+const IssueSubscriptionsRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  4,
+) as any as S.Schema<IssueSubscriptionsRequest>;
+
 export type IssueSubscriptionsResponseBodyList = Array<User>;
+const IssueSubscriptionsResponseBodyList =
+  IssueAssigneesList as any as S.Schema<IssueSubscriptionsResponseBodyList>;
+
 export type IssueSubscriptionsResponse = IssueSubscriptionsResponseBodyList;
+const IssueSubscriptionsResponse = /*@__PURE__*/ __L.at(
+  __c11,
+  5,
+) as any as S.Schema<IssueSubscriptionsResponse>;
+
 export interface IssueTrackedTimesRequest {
   /** owner of the repo */
   owner: string;
@@ -939,8 +1392,23 @@ export interface IssueTrackedTimesRequest {
   /** page size of results */
   limit?: number;
 }
+const IssueTrackedTimesRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  6,
+) as any as S.Schema<IssueTrackedTimesRequest>;
+
 export type IssueTrackedTimesResponseBodyList = Array<TrackedTime>;
+const IssueTrackedTimesResponseBodyList = /*@__PURE__*/ __L.at(
+  __c11,
+  7,
+) as any as S.Schema<IssueTrackedTimesResponseBodyList>;
+
 export type IssueTrackedTimesResponse = IssueTrackedTimesResponseBodyList;
+const IssueTrackedTimesResponse = /*@__PURE__*/ __L.at(
+  __c12,
+  0,
+) as any as S.Schema<IssueTrackedTimesResponse>;
+
 export interface ListIssueAttachmentsRequest {
   /** owner of the repo */
   owner: string;
@@ -949,8 +1417,21 @@ export interface ListIssueAttachmentsRequest {
   /** index of the issue */
   index: number;
 }
+const ListIssueAttachmentsRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  1,
+) as any as S.Schema<ListIssueAttachmentsRequest>;
+
 export type ListIssueAttachmentsResponseBodyList = Array<Attachment>;
+const ListIssueAttachmentsResponseBodyList =
+  IssueAssetsList as any as S.Schema<ListIssueAttachmentsResponseBodyList>;
+
 export type ListIssueAttachmentsResponse = ListIssueAttachmentsResponseBodyList;
+const ListIssueAttachmentsResponse = /*@__PURE__*/ __L.at(
+  __c12,
+  2,
+) as any as S.Schema<ListIssueAttachmentsResponse>;
+
 export interface ListIssueCommentAttachmentsRequest {
   /** owner of the repo */
   owner: string;
@@ -959,8 +1440,16 @@ export interface ListIssueCommentAttachmentsRequest {
   /** id of the comment */
   id: number;
 }
+const ListIssueCommentAttachmentsRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  3,
+) as any as S.Schema<ListIssueCommentAttachmentsRequest>;
+
 export type ListIssueCommentAttachmentsResponseBodyList = Array<Attachment>;
 export type ListIssueCommentAttachmentsResponse = ListIssueCommentAttachmentsResponseBodyList;
+const ListIssueCommentAttachmentsResponse =
+  ListIssueAttachmentsResponse as any as S.Schema<ListIssueCommentAttachmentsResponse>;
+
 export interface ListIssueDependenciesRequest {
   /** owner of the repo */
   owner: string;
@@ -973,10 +1462,27 @@ export interface ListIssueDependenciesRequest {
   /** page size of results */
   limit?: number;
 }
+const ListIssueDependenciesRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  4,
+) as any as S.Schema<ListIssueDependenciesRequest>;
+
 export type ListIssueDependenciesResponseBodyList = Array<Issue>;
+const ListIssueDependenciesResponseBodyList =
+  IssueListBlocksResponseBodyList as any as S.Schema<ListIssueDependenciesResponseBodyList>;
+
 export type ListIssueDependenciesResponse = ListIssueDependenciesResponseBodyList;
+const ListIssueDependenciesResponse = /*@__PURE__*/ __L.at(
+  __c12,
+  5,
+) as any as S.Schema<ListIssueDependenciesResponse>;
+
 export type ListIssuesRequestState = "closed" | "open" | "all";
+const ListIssuesRequestState = S.String;
+
 export type ListIssuesRequestType = "issues" | "pulls";
+const ListIssuesRequestType = S.String;
+
 export type ListIssuesRequestSort =
   | "relevance"
   | "latest"
@@ -987,6 +1493,8 @@ export type ListIssuesRequestSort =
   | "leastcomment"
   | "nearduedate"
   | "farduedate";
+const ListIssuesRequestSort = S.String;
+
 export interface ListIssuesRequest {
   /** owner of the repo */
   owner: string;
@@ -1019,8 +1527,12 @@ export interface ListIssuesRequest {
   /** Type of sort */
   sort?: ListIssuesRequestSort | (string & {});
 }
+const ListIssuesRequest = /*@__PURE__*/ __L.at(__c12, 6) as any as S.Schema<ListIssuesRequest>;
+
 export type ListIssuesResponseBodyList = Array<Issue>;
 export type ListIssuesResponse = ListIssuesResponseBodyList;
+const ListIssuesResponse = IssueListBlocksResponse as any as S.Schema<ListIssuesResponse>;
+
 export interface MoveIssuePinRequest {
   /** owner of the repo */
   owner: string;
@@ -1031,7 +1543,11 @@ export interface MoveIssuePinRequest {
   /** the new position */
   position: number;
 }
+const MoveIssuePinRequest = /*@__PURE__*/ __L.at(__c12, 7) as any as S.Schema<MoveIssuePinRequest>;
+
 export interface MoveIssuePinResponse {}
+const MoveIssuePinResponse = DeleteIssueResponse as any as S.Schema<MoveIssuePinResponse>;
+
 export interface PinIssueRequest {
   /** owner of the repo */
   owner: string;
@@ -1040,7 +1556,11 @@ export interface PinIssueRequest {
   /** index of issue to pin */
   index: number;
 }
+const PinIssueRequest = /*@__PURE__*/ __L.at(__c13, 0) as any as S.Schema<PinIssueRequest>;
+
 export interface PinIssueResponse {}
+const PinIssueResponse = DeleteIssueResponse as any as S.Schema<PinIssueResponse>;
+
 export interface PostIssueReactionRequest {
   /** owner of the repo */
   owner: string;
@@ -1050,6 +1570,11 @@ export interface PostIssueReactionRequest {
   index: number;
   content?: string;
 }
+const PostIssueReactionRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  1,
+) as any as S.Schema<PostIssueReactionRequest>;
+
 export interface RemoveIssueBlockingRequest {
   /** owner of the repo */
   owner: string;
@@ -1058,6 +1583,11 @@ export interface RemoveIssueBlockingRequest {
   /** index of the issue */
   index: number;
 }
+const RemoveIssueBlockingRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  2,
+) as any as S.Schema<RemoveIssueBlockingRequest>;
+
 export interface RemoveIssueDependenciesRequest {
   /** owner of the repo */
   owner: string;
@@ -1066,8 +1596,17 @@ export interface RemoveIssueDependenciesRequest {
   /** index of the issue */
   index: number;
 }
+const RemoveIssueDependenciesRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  3,
+) as any as S.Schema<RemoveIssueDependenciesRequest>;
+
 export type SearchIssuesRequestState = "open" | "closed" | "all";
+const SearchIssuesRequestState = S.String;
+
 export type SearchIssuesRequestType = "issues" | "pulls";
+const SearchIssuesRequestType = S.String;
+
 export type SearchIssuesRequestSort =
   | "relevance"
   | "latest"
@@ -1078,6 +1617,8 @@ export type SearchIssuesRequestSort =
   | "leastcomment"
   | "nearduedate"
   | "farduedate";
+const SearchIssuesRequestSort = S.String;
+
 export interface SearchIssuesRequest {
   /** State of the issue */
   state?: SearchIssuesRequestState | (string & {});
@@ -1116,8 +1657,12 @@ export interface SearchIssuesRequest {
   /** Type of sort */
   sort?: SearchIssuesRequestSort | (string & {});
 }
+const SearchIssuesRequest = /*@__PURE__*/ __L.at(__c13, 4) as any as S.Schema<SearchIssuesRequest>;
+
 export type SearchIssuesResponseBodyList = Array<Issue>;
 export type SearchIssuesResponse = SearchIssuesResponseBodyList;
+const SearchIssuesResponse = IssueListBlocksResponse as any as S.Schema<SearchIssuesResponse>;
+
 export interface UnpinIssueRequest {
   /** owner of the repo */
   owner: string;
@@ -1126,7 +1671,11 @@ export interface UnpinIssueRequest {
   /** index of issue to unpin */
   index: number;
 }
+const UnpinIssueRequest = /*@__PURE__*/ __L.at(__c13, 5) as any as S.Schema<UnpinIssueRequest>;
+
 export interface UnpinIssueResponse {}
+const UnpinIssueResponse = DeleteIssueResponse as any as S.Schema<UnpinIssueResponse>;
+
 export type CreateIssueError = Forbidden | NotFound | UnprocessableEntity | Locked | ForgejoOpError;
 /** Create an issue. If using deadline only the date will be taken into account, and time of day ignored. */
 export const createIssue: API.OperationMethod<
@@ -1135,8 +1684,8 @@ export const createIssue: API.OperationMethod<
   CreateIssueError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2) as any as S.Schema<CreateIssueRequest>,
-  output: __S(12) as any as S.Schema<Issue>,
+  input: CreateIssueRequest,
+  output: Issue,
   errors: [Forbidden, NotFound, UnprocessableEntity, Locked],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1155,8 +1704,8 @@ export const createIssueAttachment: API.OperationMethod<
   CreateIssueAttachmentError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13) as any as S.Schema<CreateIssueAttachmentRequest>,
-  output: __S(3) as any as S.Schema<Attachment>,
+  input: CreateIssueAttachmentRequest,
+  output: Attachment,
   errors: [BadRequest, NotFound, UnprocessableEntity, Locked],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1170,8 +1719,8 @@ export const createIssueBlocking: API.OperationMethod<
   CreateIssueBlockingError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14) as any as S.Schema<CreateIssueBlockingRequest>,
-  output: __S(12) as any as S.Schema<Issue>,
+  input: CreateIssueBlockingRequest,
+  output: Issue,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1190,8 +1739,8 @@ export const createIssueCommentAttachment: API.OperationMethod<
   CreateIssueCommentAttachmentError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15) as any as S.Schema<CreateIssueCommentAttachmentRequest>,
-  output: __S(3) as any as S.Schema<Attachment>,
+  input: CreateIssueCommentAttachmentRequest,
+  output: Attachment,
   errors: [BadRequest, NotFound, UnprocessableEntity, Locked],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1205,8 +1754,8 @@ export const createIssueDependencies: API.OperationMethod<
   CreateIssueDependenciesError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16) as any as S.Schema<CreateIssueDependenciesRequest>,
-  output: __S(12) as any as S.Schema<Issue>,
+  input: CreateIssueDependenciesRequest,
+  output: Issue,
   errors: [NotFound, Locked],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1220,8 +1769,8 @@ export const deleteIssue: API.OperationMethod<
   DeleteIssueError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17) as any as S.Schema<DeleteIssueRequest>,
-  output: __S(18) as any as S.Schema<DeleteIssueResponse>,
+  input: DeleteIssueRequest,
+  output: DeleteIssueResponse,
   errors: [Forbidden, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1235,8 +1784,8 @@ export const deleteIssueAttachment: API.OperationMethod<
   DeleteIssueAttachmentError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19) as any as S.Schema<DeleteIssueAttachmentRequest>,
-  output: __S(18) as any as S.Schema<DeleteIssueAttachmentResponse>,
+  input: DeleteIssueAttachmentRequest,
+  output: DeleteIssueAttachmentResponse,
   errors: [NotFound, Locked],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1250,8 +1799,8 @@ export const deleteIssueCommentAttachment: API.OperationMethod<
   DeleteIssueCommentAttachmentError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20) as any as S.Schema<DeleteIssueCommentAttachmentRequest>,
-  output: __S(21) as any as S.Schema<DeleteIssueCommentAttachmentResponse>,
+  input: DeleteIssueCommentAttachmentRequest,
+  output: DeleteIssueCommentAttachmentResponse,
   errors: [NotFound, Locked],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1265,8 +1814,8 @@ export const deleteIssueReaction: API.OperationMethod<
   DeleteIssueReactionError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22) as any as S.Schema<DeleteIssueReactionRequest>,
-  output: __S(18) as any as S.Schema<DeleteIssueReactionResponse>,
+  input: DeleteIssueReactionRequest,
+  output: DeleteIssueReactionResponse,
   errors: [Forbidden, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1280,8 +1829,8 @@ export const editIssue: API.OperationMethod<
   EditIssueError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23) as any as S.Schema<EditIssueRequest>,
-  output: __S(12) as any as S.Schema<Issue>,
+  input: EditIssueRequest,
+  output: Issue,
   errors: [Forbidden, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1295,8 +1844,8 @@ export const editIssueAttachment: API.OperationMethod<
   EditIssueAttachmentError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24) as any as S.Schema<EditIssueAttachmentRequest>,
-  output: __S(3) as any as S.Schema<Attachment>,
+  input: EditIssueAttachmentRequest,
+  output: Attachment,
   errors: [NotFound, Locked],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1310,8 +1859,8 @@ export const editIssueCommentAttachment: API.OperationMethod<
   EditIssueCommentAttachmentError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25) as any as S.Schema<EditIssueCommentAttachmentRequest>,
-  output: __S(3) as any as S.Schema<Attachment>,
+  input: EditIssueCommentAttachmentRequest,
+  output: Attachment,
   errors: [NotFound, Locked],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1325,8 +1874,8 @@ export const editIssueDeadline: API.OperationMethod<
   EditIssueDeadlineError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26) as any as S.Schema<EditIssueDeadlineRequest>,
-  output: __S(27) as any as S.Schema<IssueDeadline>,
+  input: EditIssueDeadlineRequest,
+  output: IssueDeadline,
   errors: [Forbidden, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1340,8 +1889,8 @@ export const getIssue: API.OperationMethod<
   GetIssueError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28) as any as S.Schema<GetIssueRequest>,
-  output: __S(12) as any as S.Schema<Issue>,
+  input: GetIssueRequest,
+  output: Issue,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1355,8 +1904,8 @@ export const getIssueAttachment: API.OperationMethod<
   GetIssueAttachmentError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29) as any as S.Schema<GetIssueAttachmentRequest>,
-  output: __S(3) as any as S.Schema<Attachment>,
+  input: GetIssueAttachmentRequest,
+  output: Attachment,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1370,8 +1919,8 @@ export const getIssueCommentAttachment: API.OperationMethod<
   GetIssueCommentAttachmentError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30) as any as S.Schema<GetIssueCommentAttachmentRequest>,
-  output: __S(3) as any as S.Schema<Attachment>,
+  input: GetIssueCommentAttachmentRequest,
+  output: Attachment,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1385,8 +1934,8 @@ export const getIssueReactions: API.OperationMethod<
   GetIssueReactionsError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31) as any as S.Schema<GetIssueReactionsRequest>,
-  output: __S(34) as any as S.Schema<GetIssueReactionsResponse>,
+  input: GetIssueReactionsRequest,
+  output: GetIssueReactionsResponse,
   errors: [Forbidden, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1400,8 +1949,8 @@ export const issueAddLabel: API.OperationMethod<
   IssueAddLabelError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36) as any as S.Schema<IssueAddLabelRequest>,
-  output: __S(38) as any as S.Schema<IssueAddLabelResponse>,
+  input: IssueAddLabelRequest,
+  output: IssueAddLabelResponse,
   errors: [Forbidden, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1415,8 +1964,8 @@ export const issueAddSubscription: API.OperationMethod<
   IssueAddSubscriptionError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39) as any as S.Schema<IssueAddSubscriptionRequest>,
-  output: __S(18) as any as S.Schema<IssueAddSubscriptionResponse>,
+  input: IssueAddSubscriptionRequest,
+  output: IssueAddSubscriptionResponse,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1430,8 +1979,8 @@ export const issueAddTime: API.OperationMethod<
   IssueAddTimeError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40) as any as S.Schema<IssueAddTimeRequest>,
-  output: __S(41) as any as S.Schema<TrackedTime>,
+  input: IssueAddTimeRequest,
+  output: TrackedTime,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1445,8 +1994,8 @@ export const issueCheckSubscription: API.OperationMethod<
   IssueCheckSubscriptionError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42) as any as S.Schema<IssueCheckSubscriptionRequest>,
-  output: __S(43) as any as S.Schema<WatchInfo>,
+  input: IssueCheckSubscriptionRequest,
+  output: WatchInfo,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1460,8 +2009,8 @@ export const issueClearLabels: API.OperationMethod<
   IssueClearLabelsError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44) as any as S.Schema<IssueClearLabelsRequest>,
-  output: __S(18) as any as S.Schema<IssueClearLabelsResponse>,
+  input: IssueClearLabelsRequest,
+  output: IssueClearLabelsResponse,
   errors: [Forbidden, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1475,8 +2024,8 @@ export const issueCreateComment: API.OperationMethod<
   IssueCreateCommentError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45) as any as S.Schema<IssueCreateCommentRequest>,
-  output: __S(46) as any as S.Schema<Comment>,
+  input: IssueCreateCommentRequest,
+  output: Comment,
   errors: [Forbidden, NotFound, Locked],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1490,8 +2039,8 @@ export const issueCreateLabel: API.OperationMethod<
   IssueCreateLabelError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47) as any as S.Schema<IssueCreateLabelRequest>,
-  output: __S(7) as any as S.Schema<Label>,
+  input: IssueCreateLabelRequest,
+  output: Label,
   errors: [NotFound, UnprocessableEntity],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1505,8 +2054,8 @@ export const issueCreateMilestone: API.OperationMethod<
   IssueCreateMilestoneError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48) as any as S.Schema<IssueCreateMilestoneRequest>,
-  output: __S(9) as any as S.Schema<Milestone>,
+  input: IssueCreateMilestoneRequest,
+  output: Milestone,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1520,8 +2069,8 @@ export const issueDeleteComment: API.OperationMethod<
   IssueDeleteCommentError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49) as any as S.Schema<IssueDeleteCommentRequest>,
-  output: __S(18) as any as S.Schema<IssueDeleteCommentResponse>,
+  input: IssueDeleteCommentRequest,
+  output: IssueDeleteCommentResponse,
   errors: [Forbidden],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1535,8 +2084,8 @@ export const issueDeleteCommentReaction: API.OperationMethod<
   IssueDeleteCommentReactionError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(50) as any as S.Schema<IssueDeleteCommentReactionRequest>,
-  output: __S(21) as any as S.Schema<IssueDeleteCommentReactionResponse>,
+  input: IssueDeleteCommentReactionRequest,
+  output: IssueDeleteCommentReactionResponse,
   errors: [Forbidden, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1550,8 +2099,8 @@ export const issueDeleteLabel: API.OperationMethod<
   IssueDeleteLabelError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(51) as any as S.Schema<IssueDeleteLabelRequest>,
-  output: __S(18) as any as S.Schema<IssueDeleteLabelResponse>,
+  input: IssueDeleteLabelRequest,
+  output: IssueDeleteLabelResponse,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1565,8 +2114,8 @@ export const issueDeleteMilestone: API.OperationMethod<
   IssueDeleteMilestoneError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(52) as any as S.Schema<IssueDeleteMilestoneRequest>,
-  output: __S(18) as any as S.Schema<IssueDeleteMilestoneResponse>,
+  input: IssueDeleteMilestoneRequest,
+  output: IssueDeleteMilestoneResponse,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1580,8 +2129,8 @@ export const issueDeleteStopWatch: API.OperationMethod<
   IssueDeleteStopWatchError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(53) as any as S.Schema<IssueDeleteStopWatchRequest>,
-  output: __S(18) as any as S.Schema<IssueDeleteStopWatchResponse>,
+  input: IssueDeleteStopWatchRequest,
+  output: IssueDeleteStopWatchResponse,
   errors: [Forbidden, NotFound, Conflict],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1595,8 +2144,8 @@ export const issueDeleteSubscription: API.OperationMethod<
   IssueDeleteSubscriptionError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(54) as any as S.Schema<IssueDeleteSubscriptionRequest>,
-  output: __S(55) as any as S.Schema<IssueDeleteSubscriptionResponse>,
+  input: IssueDeleteSubscriptionRequest,
+  output: IssueDeleteSubscriptionResponse,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1610,8 +2159,8 @@ export const issueDeleteTime: API.OperationMethod<
   IssueDeleteTimeError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56) as any as S.Schema<IssueDeleteTimeRequest>,
-  output: __S(18) as any as S.Schema<IssueDeleteTimeResponse>,
+  input: IssueDeleteTimeRequest,
+  output: IssueDeleteTimeResponse,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1625,8 +2174,8 @@ export const issueEditComment: API.OperationMethod<
   IssueEditCommentError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57) as any as S.Schema<IssueEditCommentRequest>,
-  output: __S(46) as any as S.Schema<Comment>,
+  input: IssueEditCommentRequest,
+  output: Comment,
   errors: [Forbidden, NotFound, Locked],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1640,8 +2189,8 @@ export const issueEditLabel: API.OperationMethod<
   IssueEditLabelError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(58) as any as S.Schema<IssueEditLabelRequest>,
-  output: __S(7) as any as S.Schema<Label>,
+  input: IssueEditLabelRequest,
+  output: Label,
   errors: [NotFound, UnprocessableEntity],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1655,8 +2204,8 @@ export const issueEditMilestone: API.OperationMethod<
   IssueEditMilestoneError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(59) as any as S.Schema<IssueEditMilestoneRequest>,
-  output: __S(9) as any as S.Schema<Milestone>,
+  input: IssueEditMilestoneRequest,
+  output: Milestone,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1670,8 +2219,8 @@ export const issueGetComment: API.OperationMethod<
   IssueGetCommentError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60) as any as S.Schema<IssueGetCommentRequest>,
-  output: __S(46) as any as S.Schema<Comment>,
+  input: IssueGetCommentRequest,
+  output: Comment,
   errors: [Forbidden, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1685,8 +2234,8 @@ export const issueGetCommentReactions: API.OperationMethod<
   IssueGetCommentReactionsError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(61) as any as S.Schema<IssueGetCommentReactionsRequest>,
-  output: __S(34) as any as S.Schema<IssueGetCommentReactionsResponse>,
+  input: IssueGetCommentReactionsRequest,
+  output: IssueGetCommentReactionsResponse,
   errors: [Forbidden, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1700,8 +2249,8 @@ export const issueGetComments: API.OperationMethod<
   IssueGetCommentsError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(62) as any as S.Schema<IssueGetCommentsRequest>,
-  output: __S(64) as any as S.Schema<IssueGetCommentsResponse>,
+  input: IssueGetCommentsRequest,
+  output: IssueGetCommentsResponse,
   errors: [NotFound, UnprocessableEntity],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1715,8 +2264,8 @@ export const issueGetCommentsAndTimeline: API.OperationMethod<
   IssueGetCommentsAndTimelineError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65) as any as S.Schema<IssueGetCommentsAndTimelineRequest>,
-  output: __S(72) as any as S.Schema<IssueGetCommentsAndTimelineResponse>,
+  input: IssueGetCommentsAndTimelineRequest,
+  output: IssueGetCommentsAndTimelineResponse,
   errors: [NotFound, UnprocessableEntity],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1730,8 +2279,8 @@ export const issueGetLabel: API.OperationMethod<
   IssueGetLabelError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(73) as any as S.Schema<IssueGetLabelRequest>,
-  output: __S(7) as any as S.Schema<Label>,
+  input: IssueGetLabelRequest,
+  output: Label,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1745,8 +2294,8 @@ export const issueGetLabels: API.OperationMethod<
   IssueGetLabelsError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(74) as any as S.Schema<IssueGetLabelsRequest>,
-  output: __S(38) as any as S.Schema<IssueGetLabelsResponse>,
+  input: IssueGetLabelsRequest,
+  output: IssueGetLabelsResponse,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1760,8 +2309,8 @@ export const issueGetMilestone: API.OperationMethod<
   IssueGetMilestoneError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(75) as any as S.Schema<IssueGetMilestoneRequest>,
-  output: __S(9) as any as S.Schema<Milestone>,
+  input: IssueGetMilestoneRequest,
+  output: Milestone,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1775,8 +2324,8 @@ export const issueGetMilestonesList: API.OperationMethod<
   IssueGetMilestonesListError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(76) as any as S.Schema<IssueGetMilestonesListRequest>,
-  output: __S(78) as any as S.Schema<IssueGetMilestonesListResponse>,
+  input: IssueGetMilestonesListRequest,
+  output: IssueGetMilestonesListResponse,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1790,8 +2339,8 @@ export const issueGetRepoComments: API.OperationMethod<
   IssueGetRepoCommentsError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(79) as any as S.Schema<IssueGetRepoCommentsRequest>,
-  output: __S(80) as any as S.Schema<IssueGetRepoCommentsResponse>,
+  input: IssueGetRepoCommentsRequest,
+  output: IssueGetRepoCommentsResponse,
   errors: [NotFound, UnprocessableEntity],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1805,8 +2354,8 @@ export const issueListBlocks: API.OperationMethod<
   IssueListBlocksError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(81) as any as S.Schema<IssueListBlocksRequest>,
-  output: __S(83) as any as S.Schema<IssueListBlocksResponse>,
+  input: IssueListBlocksRequest,
+  output: IssueListBlocksResponse,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1820,8 +2369,8 @@ export const issueListLabels: API.OperationMethod<
   IssueListLabelsError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(84) as any as S.Schema<IssueListLabelsRequest>,
-  output: __S(38) as any as S.Schema<IssueListLabelsResponse>,
+  input: IssueListLabelsRequest,
+  output: IssueListLabelsResponse,
   errors: [Forbidden, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1835,8 +2384,8 @@ export const issuePostCommentReaction: API.OperationMethod<
   IssuePostCommentReactionError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(85) as any as S.Schema<IssuePostCommentReactionRequest>,
-  output: __S(32) as any as S.Schema<Reaction>,
+  input: IssuePostCommentReactionRequest,
+  output: Reaction,
   errors: [Forbidden, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1850,8 +2399,8 @@ export const issueRemoveLabel: API.OperationMethod<
   IssueRemoveLabelError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(86) as any as S.Schema<IssueRemoveLabelRequest>,
-  output: __S(18) as any as S.Schema<IssueRemoveLabelResponse>,
+  input: IssueRemoveLabelRequest,
+  output: IssueRemoveLabelResponse,
   errors: [Forbidden, NotFound, UnprocessableEntity],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1865,8 +2414,8 @@ export const issueReplaceLabels: API.OperationMethod<
   IssueReplaceLabelsError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(87) as any as S.Schema<IssueReplaceLabelsRequest>,
-  output: __S(88) as any as S.Schema<IssueReplaceLabelsResponse>,
+  input: IssueReplaceLabelsRequest,
+  output: IssueReplaceLabelsResponse,
   errors: [Forbidden, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1880,8 +2429,8 @@ export const issueResetTime: API.OperationMethod<
   IssueResetTimeError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(89) as any as S.Schema<IssueResetTimeRequest>,
-  output: __S(18) as any as S.Schema<IssueResetTimeResponse>,
+  input: IssueResetTimeRequest,
+  output: IssueResetTimeResponse,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1895,8 +2444,8 @@ export const issueStartStopWatch: API.OperationMethod<
   IssueStartStopWatchError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(90) as any as S.Schema<IssueStartStopWatchRequest>,
-  output: __S(18) as any as S.Schema<IssueStartStopWatchResponse>,
+  input: IssueStartStopWatchRequest,
+  output: IssueStartStopWatchResponse,
   errors: [Forbidden, NotFound, Conflict],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1910,8 +2459,8 @@ export const issueStopStopWatch: API.OperationMethod<
   IssueStopStopWatchError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(91) as any as S.Schema<IssueStopStopWatchRequest>,
-  output: __S(18) as any as S.Schema<IssueStopStopWatchResponse>,
+  input: IssueStopStopWatchRequest,
+  output: IssueStopStopWatchResponse,
   errors: [Forbidden, NotFound, Conflict],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1925,8 +2474,8 @@ export const issueSubscriptions: API.OperationMethod<
   IssueSubscriptionsError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(92) as any as S.Schema<IssueSubscriptionsRequest>,
-  output: __S(93) as any as S.Schema<IssueSubscriptionsResponse>,
+  input: IssueSubscriptionsRequest,
+  output: IssueSubscriptionsResponse,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1940,8 +2489,8 @@ export const issueTrackedTimes: API.OperationMethod<
   IssueTrackedTimesError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(94) as any as S.Schema<IssueTrackedTimesRequest>,
-  output: __S(96) as any as S.Schema<IssueTrackedTimesResponse>,
+  input: IssueTrackedTimesRequest,
+  output: IssueTrackedTimesResponse,
   errors: [Forbidden, NotFound, UnprocessableEntity],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1955,8 +2504,8 @@ export const listIssueAttachments: API.OperationMethod<
   ListIssueAttachmentsError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(97) as any as S.Schema<ListIssueAttachmentsRequest>,
-  output: __S(98) as any as S.Schema<ListIssueAttachmentsResponse>,
+  input: ListIssueAttachmentsRequest,
+  output: ListIssueAttachmentsResponse,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1970,8 +2519,8 @@ export const listIssueCommentAttachments: API.OperationMethod<
   ListIssueCommentAttachmentsError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(99) as any as S.Schema<ListIssueCommentAttachmentsRequest>,
-  output: __S(98) as any as S.Schema<ListIssueCommentAttachmentsResponse>,
+  input: ListIssueCommentAttachmentsRequest,
+  output: ListIssueCommentAttachmentsResponse,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1985,8 +2534,8 @@ export const listIssueDependencies: API.OperationMethod<
   ListIssueDependenciesError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(100) as any as S.Schema<ListIssueDependenciesRequest>,
-  output: __S(101) as any as S.Schema<ListIssueDependenciesResponse>,
+  input: ListIssueDependenciesRequest,
+  output: ListIssueDependenciesResponse,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -2000,8 +2549,8 @@ export const listIssues: API.OperationMethod<
   ListIssuesError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(102) as any as S.Schema<ListIssuesRequest>,
-  output: __S(83) as any as S.Schema<ListIssuesResponse>,
+  input: ListIssuesRequest,
+  output: ListIssuesResponse,
   errors: [NotFound, UnprocessableEntity],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -2015,8 +2564,8 @@ export const moveIssuePin: API.OperationMethod<
   MoveIssuePinError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(103) as any as S.Schema<MoveIssuePinRequest>,
-  output: __S(18) as any as S.Schema<MoveIssuePinResponse>,
+  input: MoveIssuePinRequest,
+  output: MoveIssuePinResponse,
   errors: [Forbidden, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -2030,8 +2579,8 @@ export const pinIssue: API.OperationMethod<
   PinIssueError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(104) as any as S.Schema<PinIssueRequest>,
-  output: __S(18) as any as S.Schema<PinIssueResponse>,
+  input: PinIssueRequest,
+  output: PinIssueResponse,
   errors: [Forbidden, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -2045,8 +2594,8 @@ export const postIssueReaction: API.OperationMethod<
   PostIssueReactionError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(105) as any as S.Schema<PostIssueReactionRequest>,
-  output: __S(32) as any as S.Schema<Reaction>,
+  input: PostIssueReactionRequest,
+  output: Reaction,
   errors: [Forbidden, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -2060,8 +2609,8 @@ export const removeIssueBlocking: API.OperationMethod<
   RemoveIssueBlockingError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(106) as any as S.Schema<RemoveIssueBlockingRequest>,
-  output: __S(12) as any as S.Schema<Issue>,
+  input: RemoveIssueBlockingRequest,
+  output: Issue,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -2075,8 +2624,8 @@ export const removeIssueDependencies: API.OperationMethod<
   RemoveIssueDependenciesError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(107) as any as S.Schema<RemoveIssueDependenciesRequest>,
-  output: __S(12) as any as S.Schema<Issue>,
+  input: RemoveIssueDependenciesRequest,
+  output: Issue,
   errors: [NotFound, Locked],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -2090,8 +2639,8 @@ export const searchIssues: API.OperationMethod<
   SearchIssuesError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(108) as any as S.Schema<SearchIssuesRequest>,
-  output: __S(83) as any as S.Schema<SearchIssuesResponse>,
+  input: SearchIssuesRequest,
+  output: SearchIssuesResponse,
   errors: [BadRequest, UnprocessableEntity],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -2105,8 +2654,8 @@ export const unpinIssue: API.OperationMethod<
   UnpinIssueError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(109) as any as S.Schema<UnpinIssueRequest>,
-  output: __S(18) as any as S.Schema<UnpinIssueResponse>,
+  input: UnpinIssueRequest,
+  output: UnpinIssueResponse,
   errors: [Forbidden, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -2125,11 +2674,11 @@ function __c0(j: number): any {
           owner: S.String.pipe(T.Label()),
           repo: S.String.pipe(T.Label()),
           assignee: S.optional(S.String),
-          assignees: S.optional(__S(0)),
+          assignees: S.optional(CreateIssueRequestAssigneesList),
           body: S.optional(S.String),
           closed: S.optional(S.Boolean),
           due_date: S.optional(S.String),
-          labels: S.optional(__S(1)),
+          labels: S.optional(CreateIssueRequestLabelsList),
           milestone: S.optional(S.Number),
           ref: S.optional(S.String),
           title: S.String,
@@ -2144,12 +2693,12 @@ function __c0(j: number): any {
           id: S.optional(S.Number),
           name: S.optional(S.String),
           size: S.optional(S.Number),
-          type: S.optional(S.String),
+          type: S.optional(AttachmentType),
           uuid: S.optional(S.String),
         }),
       ).annotate({ identifier: "Attachment" });
     case 4:
-      return S.Array(__S(3));
+      return S.Array(Attachment);
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -2179,7 +2728,7 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "User" });
     case 6:
-      return S.Array(__S(5));
+      return S.Array(User);
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -2197,7 +2746,7 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(7));
+      return S.Array(Label);
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2234,9 +2783,9 @@ function __c1(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          assets: S.optional(__S(4)),
-          assignee: S.optional(__S(5)),
-          assignees: S.optional(__S(6)),
+          assets: S.optional(IssueAssetsList),
+          assignee: S.optional(User),
+          assignees: S.optional(IssueAssigneesList),
           body: S.optional(S.String),
           closed_at: S.optional(S.String),
           comments: S.optional(S.Number),
@@ -2245,20 +2794,20 @@ function __c1(j: number): any {
           html_url: S.optional(S.String),
           id: S.optional(S.Number),
           is_locked: S.optional(S.Boolean),
-          labels: S.optional(__S(8)),
-          milestone: S.optional(__S(9)),
+          labels: S.optional(IssueLabelsList),
+          milestone: S.optional(Milestone),
           number: S.optional(S.Number),
           original_author: S.optional(S.String),
           original_author_id: S.optional(S.Number),
           pin_order: S.optional(S.Number),
-          pull_request: S.optional(__S(10)),
+          pull_request: S.optional(PullRequestMeta),
           ref: S.optional(S.String),
-          repository: S.optional(__S(11)),
+          repository: S.optional(RepositoryMeta),
           state: S.optional(S.String),
           title: S.optional(S.String),
           updated_at: S.optional(S.String),
           url: S.optional(S.String),
-          user: S.optional(__S(5)),
+          user: S.optional(User),
         }),
       ).annotate({ identifier: "Issue" });
     case 5:
@@ -2401,7 +2950,7 @@ function __c2(j: number): any {
           repo: S.String.pipe(T.Label()),
           index: S.Number.pipe(T.Label()),
           assignee: S.optional(S.String),
-          assignees: S.optional(__S(0)),
+          assignees: S.optional(EditIssueRequestAssigneesList),
           body: S.optional(S.String),
           due_date: S.optional(S.String),
           milestone: S.optional(S.Number),
@@ -2544,13 +3093,13 @@ function __c4(j: number): any {
         S.Struct({
           content: S.optional(S.String),
           created_at: S.optional(S.String),
-          user: S.optional(__S(5)),
+          user: S.optional(User),
         }),
       ).annotate({ identifier: "Reaction" });
     case 1:
-      return S.Array(__S(32));
+      return S.Array(Reaction);
     case 2:
-      return S.suspend(() => __S(33).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => GetIssueReactionsResponseBodyList.pipe(T.RawResponseRoot())).annotate({
         identifier: "GetIssueReactionsResponse",
       });
     case 3:
@@ -2561,16 +3110,16 @@ function __c4(j: number): any {
           owner: S.String.pipe(T.Label()),
           repo: S.String.pipe(T.Label()),
           index: S.Number.pipe(T.Label()),
-          labels: S.optional(__S(35)),
+          labels: S.optional(IssueAddLabelRequestLabelsList),
           updated_at: S.optional(S.String),
         }).pipe(
           T.Http({ method: "POST", uri: "/repos/{owner}/{repo}/issues/{index}/labels", code: 200 }),
         ),
       ).annotate({ identifier: "IssueAddLabelRequest" });
     case 5:
-      return S.Array(__S(7));
+      return S.Array(Label);
     case 6:
-      return S.suspend(() => __S(37).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => IssueAddLabelResponseBodyList.pipe(T.RawResponseRoot())).annotate({
         identifier: "IssueAddLabelResponse",
       });
     case 7:
@@ -2612,7 +3161,7 @@ function __c5(j: number): any {
         S.Struct({
           created: S.optional(S.String),
           id: S.optional(S.Number),
-          issue: S.optional(__S(12)),
+          issue: S.optional(Issue),
           issue_id: S.optional(S.Number),
           time: S.optional(S.Number),
           user_id: S.optional(S.Number),
@@ -2682,7 +3231,7 @@ function __c5(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          assets: S.optional(__S(4)),
+          assets: S.optional(CommentAssetsList),
           body: S.optional(S.String),
           created_at: S.optional(S.String),
           html_url: S.optional(S.String),
@@ -2692,7 +3241,7 @@ function __c5(j: number): any {
           original_author_id: S.optional(S.Number),
           pull_request_url: S.optional(S.String),
           updated_at: S.optional(S.String),
-          user: S.optional(__S(5)),
+          user: S.optional(User),
         }),
       ).annotate({ identifier: "Comment" });
     case 7:
@@ -2718,7 +3267,7 @@ function __c6(j: number): any {
           repo: S.String.pipe(T.Label()),
           description: S.optional(S.String),
           due_on: S.optional(S.String),
-          state: S.optional(S.String),
+          state: S.optional(IssueCreateMilestoneRequestState),
           title: S.optional(S.String),
         }).pipe(T.Http({ method: "POST", uri: "/repos/{owner}/{repo}/milestones", code: 200 })),
       ).annotate({
@@ -2917,13 +3466,13 @@ function __c7(j: number): any {
         ),
       ).annotate({ identifier: "IssueGetCommentsRequest" });
     case 7:
-      return S.Array(__S(46));
+      return S.Array(Comment);
   }
 }
 function __c8(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => __S(63).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => IssueGetCommentsResponseBodyList.pipe(T.RawResponseRoot())).annotate({
         identifier: "IssueGetCommentsResponse",
       });
     case 1:
@@ -2975,54 +3524,56 @@ function __c8(j: number): any {
           id: S.Number,
           includes_all_repositories: S.optional(S.Boolean),
           name: S.String,
-          organization: S.optional(__S(66)),
-          permission: S.optional(S.String),
-          units: S.optional(__S(67)),
-          units_map: S.optional(__S(68)),
+          organization: S.optional(Organization),
+          permission: S.optional(TeamPermission),
+          units: S.optional(TeamUnitsList),
+          units_map: S.optional(TeamUnitsMapMap),
         }),
       ).annotate({ identifier: "Team" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          assignee: S.optional(__S(5)),
-          assignee_team: S.optional(__S(69)),
+          assignee: S.optional(User),
+          assignee_team: S.optional(Team),
           body: S.optional(S.String),
           created_at: S.optional(S.String),
-          dependent_issue: S.optional(__S(12)),
+          dependent_issue: S.optional(Issue),
           html_url: S.optional(S.String),
           id: S.optional(S.Number),
           issue_url: S.optional(S.String),
-          label: S.optional(__S(7)),
-          milestone: S.optional(__S(9)),
+          label: S.optional(Label),
+          milestone: S.optional(Milestone),
           new_ref: S.optional(S.String),
           new_title: S.optional(S.String),
-          old_milestone: S.optional(__S(9)),
+          old_milestone: S.optional(Milestone),
           old_project_id: S.optional(S.Number),
           old_ref: S.optional(S.String),
           old_title: S.optional(S.String),
           project_id: S.optional(S.Number),
           pull_request_url: S.optional(S.String),
           ref_action: S.optional(S.String),
-          ref_comment: S.optional(__S(46)),
+          ref_comment: S.optional(Comment),
           ref_commit_sha: S.optional(S.String),
-          ref_issue: S.optional(__S(12)),
+          ref_issue: S.optional(Issue),
           removed_assignee: S.optional(S.Boolean),
-          resolve_doer: S.optional(__S(5)),
+          resolve_doer: S.optional(User),
           review_id: S.optional(S.Number),
-          tracked_time: S.optional(__S(41)),
+          tracked_time: S.optional(TrackedTime),
           type: S.optional(S.String),
           updated_at: S.optional(S.String),
-          user: S.optional(__S(5)),
+          user: S.optional(User),
         }),
       ).annotate({ identifier: "TimelineComment" });
     case 7:
-      return S.Array(__S(70));
+      return S.Array(TimelineComment);
   }
 }
 function __c9(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => __S(71).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        IssueGetCommentsAndTimelineResponseBodyList.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "IssueGetCommentsAndTimelineResponse",
       });
     case 1:
@@ -3065,9 +3616,11 @@ function __c9(j: number): any {
         identifier: "IssueGetMilestonesListRequest",
       });
     case 5:
-      return S.Array(__S(9));
+      return S.Array(Milestone);
     case 6:
-      return S.suspend(() => __S(77).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        IssueGetMilestonesListResponseBodyList.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "IssueGetMilestonesListResponse",
       });
     case 7:
@@ -3088,7 +3641,9 @@ function __c9(j: number): any {
 function __c10(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => __S(63).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        IssueGetRepoCommentsResponseBodyList.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "IssueGetRepoCommentsResponse",
       });
     case 1:
@@ -3104,9 +3659,9 @@ function __c10(j: number): any {
         ),
       ).annotate({ identifier: "IssueListBlocksRequest" });
     case 2:
-      return S.Array(__S(12));
+      return S.Array(Issue);
     case 3:
-      return S.suspend(() => __S(82).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => IssueListBlocksResponseBodyList.pipe(T.RawResponseRoot())).annotate({
         identifier: "IssueListBlocksResponse",
       });
     case 4:
@@ -3114,7 +3669,7 @@ function __c10(j: number): any {
         S.Struct({
           owner: S.String.pipe(T.Label()),
           repo: S.String.pipe(T.Label()),
-          sort: S.optional(S.String.pipe(T.Query())),
+          sort: S.optional(IssueListLabelsRequestSort.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/repos/{owner}/{repo}/labels", code: 200 })),
@@ -3158,7 +3713,7 @@ function __c10(j: number): any {
           owner: S.String.pipe(T.Label()),
           repo: S.String.pipe(T.Label()),
           index: S.Number.pipe(T.Label()),
-          labels: S.optional(__S(35)),
+          labels: S.optional(IssueReplaceLabelsRequestLabelsList),
           updated_at: S.optional(S.String),
         }).pipe(
           T.Http({ method: "PUT", uri: "/repos/{owner}/{repo}/issues/{index}/labels", code: 200 }),
@@ -3171,9 +3726,11 @@ function __c10(j: number): any {
 function __c11(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => __S(37).pipe(T.RawResponseRoot())).annotate({
-        identifier: "IssueReplaceLabelsResponse",
-      });
+      return S.suspend(() => IssueReplaceLabelsResponseBodyList.pipe(T.RawResponseRoot())).annotate(
+        {
+          identifier: "IssueReplaceLabelsResponse",
+        },
+      );
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -3239,9 +3796,11 @@ function __c11(j: number): any {
         identifier: "IssueSubscriptionsRequest",
       });
     case 5:
-      return S.suspend(() => __S(6).pipe(T.RawResponseRoot())).annotate({
-        identifier: "IssueSubscriptionsResponse",
-      });
+      return S.suspend(() => IssueSubscriptionsResponseBodyList.pipe(T.RawResponseRoot())).annotate(
+        {
+          identifier: "IssueSubscriptionsResponse",
+        },
+      );
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -3258,13 +3817,13 @@ function __c11(j: number): any {
         ),
       ).annotate({ identifier: "IssueTrackedTimesRequest" });
     case 7:
-      return S.Array(__S(41));
+      return S.Array(TrackedTime);
   }
 }
 function __c12(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => __S(95).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => IssueTrackedTimesResponseBodyList.pipe(T.RawResponseRoot())).annotate({
         identifier: "IssueTrackedTimesResponse",
       });
     case 1:
@@ -3280,7 +3839,9 @@ function __c12(j: number): any {
         identifier: "ListIssueAttachmentsRequest",
       });
     case 2:
-      return S.suspend(() => __S(4).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        ListIssueAttachmentsResponseBodyList.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "ListIssueAttachmentsResponse",
       });
     case 3:
@@ -3318,7 +3879,9 @@ function __c12(j: number): any {
         identifier: "ListIssueDependenciesRequest",
       });
     case 5:
-      return S.suspend(() => __S(82).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        ListIssueDependenciesResponseBodyList.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "ListIssueDependenciesResponse",
       });
     case 6:
@@ -3326,10 +3889,10 @@ function __c12(j: number): any {
         S.Struct({
           owner: S.String.pipe(T.Label()),
           repo: S.String.pipe(T.Label()),
-          state: S.optional(S.String.pipe(T.Query())),
+          state: S.optional(ListIssuesRequestState.pipe(T.Query())),
           labels: S.optional(S.String.pipe(T.Query())),
           q: S.optional(S.String.pipe(T.Query())),
-          type: S.optional(S.String.pipe(T.Query())),
+          type: S.optional(ListIssuesRequestType.pipe(T.Query())),
           milestones: S.optional(S.String.pipe(T.Query())),
           since: S.optional(S.String.pipe(T.Query())),
           before: S.optional(S.String.pipe(T.Query())),
@@ -3338,7 +3901,7 @@ function __c12(j: number): any {
           mentioned_by: S.optional(S.String.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
-          sort: S.optional(S.String.pipe(T.Query())),
+          sort: S.optional(ListIssuesRequestSort.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/repos/{owner}/{repo}/issues", code: 200 })),
       ).annotate({ identifier: "ListIssuesRequest" });
     case 7:
@@ -3420,12 +3983,12 @@ function __c13(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          state: S.optional(S.String.pipe(T.Query())),
+          state: S.optional(SearchIssuesRequestState.pipe(T.Query())),
           labels: S.optional(S.String.pipe(T.Query())),
           milestones: S.optional(S.String.pipe(T.Query())),
           q: S.optional(S.String.pipe(T.Query())),
           priority_repo_id: S.optional(S.Number.pipe(T.Query())),
-          type: S.optional(S.String.pipe(T.Query())),
+          type: S.optional(SearchIssuesRequestType.pipe(T.Query())),
           since: S.optional(S.String.pipe(T.Query())),
           before: S.optional(S.String.pipe(T.Query())),
           assigned: S.optional(S.Boolean.pipe(T.Query())),
@@ -3437,7 +4000,7 @@ function __c13(j: number): any {
           team: S.optional(S.String.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
-          sort: S.optional(S.String.pipe(T.Query())),
+          sort: S.optional(SearchIssuesRequestSort.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/repos/issues/search", code: 200 })),
       ).annotate({ identifier: "SearchIssuesRequest" });
     case 5:
@@ -3450,42 +4013,5 @@ function __c13(j: number): any {
           T.Http({ method: "DELETE", uri: "/repos/{owner}/{repo}/issues/{index}/pin", code: 200 }),
         ),
       ).annotate({ identifier: "UnpinIssueRequest" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
-    case 9:
-      return __c9(i & 7);
-    case 10:
-      return __c10(i & 7);
-    case 11:
-      return __c11(i & 7);
-    case 12:
-      return __c12(i & 7);
-    case 13:
-      return __c13(i & 7);
   }
 }

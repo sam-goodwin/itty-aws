@@ -7,8 +7,6 @@ import { UnknownPaypalError } from "../errors.ts";
 import { PaypalProtocol, type PaypalOpError, type PaypalOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { PaypalOpError, PaypalOpContext };
 
@@ -50,6 +48,8 @@ export class UnprocessableEntity
 
 /** The product type. Indicates whether the product is physical or digital goods, or a service. */
 export type CreateProductRequestType = "PHYSICAL" | "DIGITAL" | "SERVICE";
+const CreateProductRequestType = S.String;
+
 /** The product category. */
 export type ProductCategory =
   | "AC_REFRIGERATION_REPAIR"
@@ -498,6 +498,8 @@ export type ProductCategory =
   | "WIRE_TRANSFER_AND_MONEY_ORDER"
   | "WOMEN_ACCESSORY_SPECIALITY"
   | "WOMEN_CLOTHING";
+const ProductCategory = S.String;
+
 export interface CreateProductRequest {
   /** The preferred server response upon successful completion of the request. Value is:<ul><li><code>return=minimal</code>. The server returns a minimal response to optimize communication between the API caller and the server. A minimal response includes the <code>id</code>, <code>status</code> and HATEOAS links.</li><li><code>return=representation</code>. The server returns a complete resource representation, including the current state of the resource.</li></ul> */
   prefer?: string;
@@ -517,8 +519,12 @@ export interface CreateProductRequest {
   /** The home page URL for the product. */
   home_url?: string;
 }
+const CreateProductRequest = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<CreateProductRequest>;
+
 /** The product type. Indicates whether the product is physical or digital goods, or a service. */
 export type ProductType = "PHYSICAL" | "DIGITAL" | "SERVICE";
+const ProductType = S.String;
+
 /** The HTTP method required to make the related call. */
 export type LinkDescriptionMethod =
   | "GET"
@@ -529,6 +535,8 @@ export type LinkDescriptionMethod =
   | "CONNECT"
   | "OPTIONS"
   | "PATCH";
+const LinkDescriptionMethod = S.String;
+
 /** The request-related [HATEOAS link](/docs/api/reference/api-responses/#hateoas-links) information. */
 export interface LinkDescription {
   /** The complete target URL. To make the related call, combine the method with this [URI Template-formatted](https://tools.ietf.org/html/rfc6570) link. For pre-processing, include the `$`, `(`, and `)` characters. The `href` is the key HATEOAS component that links a completed call with a subsequent call. */
@@ -538,8 +546,12 @@ export interface LinkDescription {
   /** The HTTP method required to make the related call. */
   method?: LinkDescriptionMethod;
 }
+const LinkDescription = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<LinkDescription>;
+
 /** An array of request-related [HATEOAS links](/docs/api/overview/#hateoas-links). */
 export type LinkDescriptionList = Array<LinkDescription>;
+const LinkDescriptionList = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<LinkDescriptionList>;
+
 /** The product details. */
 export interface Product {
   /** The ID of the product. */
@@ -561,10 +573,14 @@ export interface Product {
   update_time?: string;
   links?: LinkDescriptionList;
 }
+const Product = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<Product>;
+
 export interface GetProductRequest {
   /** The product ID. */
   product_id: string;
 }
+const GetProductRequest = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<GetProductRequest>;
+
 export interface ListProductsRequest {
   /** The number of items to return in the response. */
   page_size?: number;
@@ -573,6 +589,8 @@ export interface ListProductsRequest {
   /** Indicates whether to show the total items and total pages in the response. */
   total_required?: boolean;
 }
+const ListProductsRequest = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<ListProductsRequest>;
+
 /** The details for a product in the collection response. */
 export interface ProductCollectionElement {
   /** The ID of the product. */
@@ -585,8 +603,18 @@ export interface ProductCollectionElement {
   create_time?: string;
   links?: LinkDescriptionList;
 }
+const ProductCollectionElement = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<ProductCollectionElement>;
+
 /** An array of products. */
 export type ProductCollectionElementList = Array<ProductCollectionElement>;
+const ProductCollectionElementList = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<ProductCollectionElementList>;
+
 /** The list of products, with details. */
 export interface ProductCollection {
   products?: ProductCollectionElementList;
@@ -596,8 +624,12 @@ export interface ProductCollection {
   total_pages?: number;
   links?: LinkDescriptionList;
 }
+const ProductCollection = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<ProductCollection>;
+
 /** The operation. */
 export type PatchOp = "add" | "remove" | "replace" | "move" | "copy" | "test";
+const PatchOp = S.String;
+
 /** The JSON patch object to apply partial updates to resources. */
 export interface Patch {
   /** The operation. */
@@ -609,14 +641,22 @@ export interface Patch {
   /** The <a href="https://tools.ietf.org/html/rfc6901">JSON Pointer</a> to the target document location from which to move the value. Required for the <code>move</code> operation. */
   from?: string;
 }
+const Patch = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<Patch>;
+
 /** An array of JSON patch objects to apply partial updates to resources. */
 export type PatchRequest = Array<Patch>;
+const PatchRequest = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<PatchRequest>;
+
 export interface PatchProductRequest {
   /** The product ID. */
   product_id: string;
   body?: PatchRequest;
 }
+const PatchProductRequest = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<PatchProductRequest>;
+
 export interface PatchProductResponse {}
+const PatchProductResponse = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<PatchProductResponse>;
+
 export type CreateProductError = BadRequest | Forbidden | UnprocessableEntity | PaypalOpError;
 /** Create product Creates a product. */
 export const createProduct: API.OperationMethod<
@@ -625,8 +665,8 @@ export const createProduct: API.OperationMethod<
   CreateProductError,
   PaypalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<CreateProductRequest>,
-  output: __S(3) as any as S.Schema<Product>,
+  input: CreateProductRequest,
+  output: Product,
   errors: [BadRequest, Forbidden, UnprocessableEntity, UnknownPaypalError],
   protocol: PaypalProtocol,
   retry: Retry.Retry,
@@ -640,8 +680,8 @@ export const getProduct: API.OperationMethod<
   GetProductError,
   PaypalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4) as any as S.Schema<GetProductRequest>,
-  output: __S(3) as any as S.Schema<Product>,
+  input: GetProductRequest,
+  output: Product,
   errors: [Forbidden, NotFound, UnknownPaypalError],
   protocol: PaypalProtocol,
   retry: Retry.Retry,
@@ -655,8 +695,8 @@ export const listProducts: API.OperationMethod<
   ListProductsError,
   PaypalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5) as any as S.Schema<ListProductsRequest>,
-  output: __S(8) as any as S.Schema<ProductCollection>,
+  input: ListProductsRequest,
+  output: ProductCollection,
   errors: [BadRequest, Forbidden, UnknownPaypalError],
   protocol: PaypalProtocol,
   retry: Retry.Retry,
@@ -675,8 +715,8 @@ export const patchProduct: API.OperationMethod<
   PatchProductError,
   PaypalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11) as any as S.Schema<PatchProductRequest>,
-  output: __S(12) as any as S.Schema<PatchProductResponse>,
+  input: PatchProductRequest,
+  output: PatchProductResponse,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownPaypalError],
   protocol: PaypalProtocol,
   retry: Retry.Retry,
@@ -693,8 +733,8 @@ function __c0(j: number): any {
           id: S.optional(S.String),
           name: S.String,
           description: S.optional(S.String),
-          type: S.String,
-          category: S.optional(S.String),
+          type: CreateProductRequestType,
+          category: S.optional(ProductCategory),
           image_url: S.optional(S.String),
           home_url: S.optional(S.String),
         }).pipe(T.Http({ method: "POST", uri: "/v1/catalogs/products", code: 200 })),
@@ -704,24 +744,24 @@ function __c0(j: number): any {
         S.Struct({
           href: S.String,
           rel: S.String,
-          method: S.optional(S.String),
+          method: S.optional(LinkDescriptionMethod),
         }),
       ).annotate({ identifier: "LinkDescription" });
     case 2:
-      return S.Array(__S(1));
+      return S.Array(LinkDescription);
     case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           description: S.optional(S.String),
-          type: S.optional(S.String),
-          category: S.optional(S.String),
+          type: S.optional(ProductType),
+          category: S.optional(ProductCategory),
           image_url: S.optional(S.String),
           home_url: S.optional(S.String),
           create_time: S.optional(S.String),
           update_time: S.optional(S.String),
-          links: S.optional(__S(2)),
+          links: S.optional(LinkDescriptionList),
         }),
       ).annotate({ identifier: "Product" });
     case 4:
@@ -745,11 +785,11 @@ function __c0(j: number): any {
           name: S.optional(S.String),
           description: S.optional(S.String),
           create_time: S.optional(S.String),
-          links: S.optional(__S(2)),
+          links: S.optional(LinkDescriptionList),
         }),
       ).annotate({ identifier: "ProductCollectionElement" });
     case 7:
-      return S.Array(__S(6));
+      return S.Array(ProductCollectionElement);
   }
 }
 function __c1(j: number): any {
@@ -757,46 +797,33 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          products: S.optional(__S(7)),
+          products: S.optional(ProductCollectionElementList),
           total_items: S.optional(S.Number),
           total_pages: S.optional(S.Number),
-          links: S.optional(__S(2)),
+          links: S.optional(LinkDescriptionList),
         }),
       ).annotate({ identifier: "ProductCollection" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          op: S.String,
+          op: PatchOp,
           path: S.optional(S.String),
           value: S.optional(S.NullOr(S.Unknown)),
           from: S.optional(S.String),
         }),
       ).annotate({ identifier: "Patch" });
     case 2:
-      return S.Array(__S(9));
+      return S.Array(Patch);
     case 3:
       return S.suspend(() =>
         S.Struct({
           product_id: S.String.pipe(T.Label()),
-          body: S.optional(__S(10).pipe(T.HttpBody())),
+          body: S.optional(PatchRequest.pipe(T.HttpBody())),
         }).pipe(T.Http({ method: "PATCH", uri: "/v1/catalogs/products/{product_id}", code: 200 })),
       ).annotate({ identifier: "PatchProductRequest" });
     case 4:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "PatchProductResponse",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
   }
 }

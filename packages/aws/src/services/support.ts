@@ -8,8 +8,6 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 const ns = /*@__PURE__*/ T.XmlNamespace("http://support.amazonaws.com/doc/2013-04-15/");
 const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "Support",
@@ -196,7 +194,7 @@ export class ThrottlingException
     {
       message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
       throttlingReasons: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => __S(83)).annotate({
+        /*@__PURE__*/ S.suspend(() => ThrottlingReasonList).annotate({
           identifier: "ThrottlingReasonList",
         }),
       ),
@@ -217,24 +215,36 @@ export interface Attachment {
   fileName?: string;
   data?: Uint8Array;
 }
+const Attachment = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<Attachment>;
 export type Attachments = Attachment[];
+const Attachments = /*@__PURE__*/ __L.at(__c0, 1);
 export type NullableBooleanType = boolean;
 export interface AddAttachmentsToSetRequest {
   attachmentSetId?: string;
   attachments: Attachment[];
   dryRun?: boolean;
 }
+const AddAttachmentsToSetRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<AddAttachmentsToSetRequest>;
 export type ExpiryTime = string;
 export interface AddAttachmentsToSetResponse {
   attachmentSetId?: string;
   expiryTime?: string;
 }
+const AddAttachmentsToSetResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<AddAttachmentsToSetResponse>;
 export type CaseId = string;
 export type CommunicationBody = string;
 export type CcEmailAddress = string;
 export type CcEmailAddressList = string[];
+const CcEmailAddressList = /*@__PURE__*/ __L.at(__c0, 4);
 export type UploadId = string;
 export type UploadIds = string[];
+const UploadIds = CcEmailAddressList as any as S.Schema<UploadIds>;
 export interface AddCommunicationToCaseRequest {
   caseId?: string;
   communicationBody: string;
@@ -243,26 +253,46 @@ export interface AddCommunicationToCaseRequest {
   uploadIds?: string[];
   dryRun?: boolean;
 }
+const AddCommunicationToCaseRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<AddCommunicationToCaseRequest>;
 export type Result = boolean;
 export interface AddCommunicationToCaseResponse {
   result?: boolean;
 }
+const AddCommunicationToCaseResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<AddCommunicationToCaseResponse>;
 export type FieldIntegerValue = number;
 export type ETag = string;
 export interface CompletedUpload {
   partIndex: number;
   eTag: string;
 }
+const CompletedUpload = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<CompletedUpload>;
 export type CompletedUploadList = CompletedUpload[];
+const CompletedUploadList = /*@__PURE__*/ __L.at(__c1, 0);
 export interface CompleteAttachmentUploadRequest {
   uploadId: string;
   completedUploads: CompletedUpload[];
   dryRun?: boolean;
 }
+const CompleteAttachmentUploadRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<CompleteAttachmentUploadRequest>;
 export type UploadStatus = "attachment-ready" | "attachment-not-ready" | "failed" | (string & {});
+const UploadStatus = S.String;
+
 export interface CompleteAttachmentUploadResponse {
   uploadStatus: UploadStatus;
 }
+const CompleteAttachmentUploadResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<CompleteAttachmentUploadResponse>;
 export type Subject = string;
 export type ServiceCode2 = string;
 export type SeverityCode = string;
@@ -282,31 +312,51 @@ export interface CreateCaseRequest {
   uploadIds?: string[];
   dryRun?: boolean;
 }
+const CreateCaseRequest = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<CreateCaseRequest>;
 export interface CreateCaseResponse {
   caseId?: string;
 }
+const CreateCaseResponse = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<CreateCaseResponse>;
 export type AttachmentId = string;
 export interface DescribeAttachmentRequest {
   attachmentId: string;
   dryRun?: boolean;
 }
+const DescribeAttachmentRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<DescribeAttachmentRequest>;
 export interface DescribeAttachmentResponse {
   attachment?: Attachment;
 }
+const DescribeAttachmentResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<DescribeAttachmentResponse>;
 export interface DescribeAttachmentUploadStatusRequest {
   uploadId: string;
   dryRun?: boolean;
 }
+const DescribeAttachmentUploadStatusRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<DescribeAttachmentUploadStatusRequest>;
 export interface UploadProgress {
   totalParts?: number;
   completedPartsCount?: number;
 }
+const UploadProgress = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<UploadProgress>;
 export interface DescribeAttachmentUploadStatusResponse {
   uploadStatus: UploadStatus;
   fileName: string;
   uploadProgress?: UploadProgress;
 }
+const DescribeAttachmentUploadStatusResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<DescribeAttachmentUploadStatusResponse>;
 export type CaseIdList = string[];
+const CaseIdList = CcEmailAddressList as any as S.Schema<CaseIdList>;
 export type DisplayId = string;
 export type AfterTime = string;
 export type BeforeTime = string;
@@ -326,6 +376,7 @@ export interface DescribeCasesRequest {
   includeCommunications?: boolean;
   dryRun?: boolean;
 }
+const DescribeCasesRequest = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<DescribeCasesRequest>;
 export type Status = string;
 export type ServiceCode = string;
 export type SubmittedBy = string;
@@ -335,7 +386,9 @@ export interface AttachmentDetails {
   attachmentId?: string;
   fileName?: string;
 }
+const AttachmentDetails = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<AttachmentDetails>;
 export type AttachmentSet = AttachmentDetails[];
+const AttachmentSet = /*@__PURE__*/ __L.at(__c2, 4);
 export interface Communication {
   caseId?: string;
   body?: string;
@@ -344,11 +397,17 @@ export interface Communication {
   attachments?: AttachmentDetails[];
   attachmentSet?: AttachmentDetails[];
 }
+const Communication = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<Communication>;
 export type CommunicationList = Communication[];
+const CommunicationList = /*@__PURE__*/ __L.at(__c2, 6);
 export interface RecentCaseCommunications {
   communications?: Communication[];
   nextToken?: string;
 }
+const RecentCaseCommunications = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<RecentCaseCommunications>;
 export interface CaseDetails {
   caseId?: string;
   displayId?: string;
@@ -363,11 +422,17 @@ export interface CaseDetails {
   ccEmailAddresses?: string[];
   language?: string;
 }
+const CaseDetails = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<CaseDetails>;
 export type CaseList = CaseDetails[];
+const CaseList = /*@__PURE__*/ __L.at(__c3, 1);
 export interface DescribeCasesResponse {
   cases?: CaseDetails[];
   nextToken?: string;
 }
+const DescribeCasesResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<DescribeCasesResponse>;
 export interface DescribeCommunicationsRequest {
   caseId: string;
   beforeTime?: string;
@@ -376,10 +441,18 @@ export interface DescribeCommunicationsRequest {
   maxResults?: number;
   dryRun?: boolean;
 }
+const DescribeCommunicationsRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<DescribeCommunicationsRequest>;
 export interface DescribeCommunicationsResponse {
   communications?: Communication[];
   nextToken?: string;
 }
+const DescribeCommunicationsResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<DescribeCommunicationsResponse>;
 export interface DescribeCreateCaseOptionsRequest {
   issueType: string;
   serviceCode: string;
@@ -387,6 +460,10 @@ export interface DescribeCreateCaseOptionsRequest {
   categoryCode: string;
   dryRun?: boolean;
 }
+const DescribeCreateCaseOptionsRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<DescribeCreateCaseOptionsRequest>;
 export type ValidatedLanguageAvailability = string;
 export type Type = string;
 export type StartTime = string;
@@ -395,49 +472,79 @@ export interface SupportedHour {
   startTime?: string;
   endTime?: string;
 }
+const SupportedHour = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<SupportedHour>;
 export type SupportedHoursList = SupportedHour[];
+const SupportedHoursList = /*@__PURE__*/ __L.at(__c3, 7);
 export type ValidatedDateTime = string;
 export interface DateInterval {
   startDateTime?: string;
   endDateTime?: string;
 }
+const DateInterval = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<DateInterval>;
 export type DatesWithoutSupportList = DateInterval[];
+const DatesWithoutSupportList = /*@__PURE__*/ __L.at(__c4, 1);
 export interface CommunicationTypeOptions {
   type?: string;
   supportedHours?: SupportedHour[];
   datesWithoutSupport?: DateInterval[];
 }
+const CommunicationTypeOptions = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<CommunicationTypeOptions>;
 export type CommunicationTypeOptionsList = CommunicationTypeOptions[];
+const CommunicationTypeOptionsList = /*@__PURE__*/ __L.at(__c4, 3);
 export interface DescribeCreateCaseOptionsResponse {
   languageAvailability?: string;
   communicationTypes?: CommunicationTypeOptions[];
 }
+const DescribeCreateCaseOptionsResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<DescribeCreateCaseOptionsResponse>;
 export type ServiceCodeList = string[];
+const ServiceCodeList = CcEmailAddressList as any as S.Schema<ServiceCodeList>;
 export interface DescribeServicesRequest {
   serviceCodeList?: string[];
   language?: string;
   dryRun?: boolean;
 }
+const DescribeServicesRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<DescribeServicesRequest>;
 export type ServiceName = string;
 export type CategoryName = string;
 export interface Category {
   code?: string;
   name?: string;
 }
+const Category = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<Category>;
 export type CategoryList = Category[];
+const CategoryList = /*@__PURE__*/ __L.at(__c4, 7);
 export interface Service {
   code?: string;
   name?: string;
   categories?: Category[];
 }
+const Service = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<Service>;
 export type ServiceList = Service[];
+const ServiceList = /*@__PURE__*/ __L.at(__c5, 1);
 export interface DescribeServicesResponse {
   services?: Service[];
 }
+const DescribeServicesResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  2,
+) as any as S.Schema<DescribeServicesResponse>;
 export interface DescribeSeverityLevelsRequest {
   language?: string;
   dryRun?: boolean;
 }
+const DescribeSeverityLevelsRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<DescribeSeverityLevelsRequest>;
 export type SeverityLevelCode = string;
 export type SeverityLevelName = string;
 export interface SeverityLevel {
@@ -445,9 +552,14 @@ export interface SeverityLevel {
   name?: string;
 }
 export type SeverityLevelsList = SeverityLevel[];
+const SeverityLevelsList = CategoryList as any as S.Schema<SeverityLevelsList>;
 export interface DescribeSeverityLevelsResponse {
   severityLevels?: SeverityLevel[];
 }
+const DescribeSeverityLevelsResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  4,
+) as any as S.Schema<DescribeSeverityLevelsResponse>;
 export type ValidatedIssueTypeString = string;
 export type ValidatedServiceCode = string;
 export type ValidatedCategoryCode = string;
@@ -457,6 +569,10 @@ export interface DescribeSupportedLanguagesRequest {
   categoryCode: string;
   dryRun?: boolean;
 }
+const DescribeSupportedLanguagesRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  5,
+) as any as S.Schema<DescribeSupportedLanguagesRequest>;
 export type Code = string;
 export type Display = string;
 export interface SupportedLanguage {
@@ -464,40 +580,76 @@ export interface SupportedLanguage {
   language?: string;
   display?: string;
 }
+const SupportedLanguage = /*@__PURE__*/ __L.at(__c5, 6) as any as S.Schema<SupportedLanguage>;
 export type SupportedLanguagesList = SupportedLanguage[];
+const SupportedLanguagesList = /*@__PURE__*/ __L.at(__c5, 7);
 export interface DescribeSupportedLanguagesResponse {
   supportedLanguages?: SupportedLanguage[];
 }
+const DescribeSupportedLanguagesResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<DescribeSupportedLanguagesResponse>;
 export type StringList = string[];
+const StringList = /*@__PURE__*/ __L.at(__c6, 1);
 export interface DescribeTrustedAdvisorCheckRefreshStatusesRequest {
   checkIds: string[];
 }
+const DescribeTrustedAdvisorCheckRefreshStatusesRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  2,
+) as any as S.Schema<DescribeTrustedAdvisorCheckRefreshStatusesRequest>;
 export interface TrustedAdvisorCheckRefreshStatus {
   checkId: string;
   status: string;
   millisUntilNextRefreshable: number;
 }
+const TrustedAdvisorCheckRefreshStatus = /*@__PURE__*/ __L.at(
+  __c6,
+  3,
+) as any as S.Schema<TrustedAdvisorCheckRefreshStatus>;
 export type TrustedAdvisorCheckRefreshStatusList = TrustedAdvisorCheckRefreshStatus[];
+const TrustedAdvisorCheckRefreshStatusList = /*@__PURE__*/ __L.at(__c6, 4);
 export interface DescribeTrustedAdvisorCheckRefreshStatusesResponse {
   statuses: TrustedAdvisorCheckRefreshStatus[];
 }
+const DescribeTrustedAdvisorCheckRefreshStatusesResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  5,
+) as any as S.Schema<DescribeTrustedAdvisorCheckRefreshStatusesResponse>;
 export interface DescribeTrustedAdvisorCheckResultRequest {
   checkId: string;
   language?: string;
 }
+const DescribeTrustedAdvisorCheckResultRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  6,
+) as any as S.Schema<DescribeTrustedAdvisorCheckResultRequest>;
 export interface TrustedAdvisorResourcesSummary {
   resourcesProcessed: number;
   resourcesFlagged: number;
   resourcesIgnored: number;
   resourcesSuppressed: number;
 }
+const TrustedAdvisorResourcesSummary = /*@__PURE__*/ __L.at(
+  __c6,
+  7,
+) as any as S.Schema<TrustedAdvisorResourcesSummary>;
 export interface TrustedAdvisorCostOptimizingSummary {
   estimatedMonthlySavings: number;
   estimatedPercentMonthlySavings: number;
 }
+const TrustedAdvisorCostOptimizingSummary = /*@__PURE__*/ __L.at(
+  __c7,
+  0,
+) as any as S.Schema<TrustedAdvisorCostOptimizingSummary>;
 export interface TrustedAdvisorCategorySpecificSummary {
   costOptimizing?: TrustedAdvisorCostOptimizingSummary;
 }
+const TrustedAdvisorCategorySpecificSummary = /*@__PURE__*/ __L.at(
+  __c7,
+  1,
+) as any as S.Schema<TrustedAdvisorCategorySpecificSummary>;
 export interface TrustedAdvisorResourceDetail {
   status: string;
   region?: string;
@@ -505,7 +657,12 @@ export interface TrustedAdvisorResourceDetail {
   isSuppressed?: boolean;
   metadata: string[];
 }
+const TrustedAdvisorResourceDetail = /*@__PURE__*/ __L.at(
+  __c7,
+  2,
+) as any as S.Schema<TrustedAdvisorResourceDetail>;
 export type TrustedAdvisorResourceDetailList = TrustedAdvisorResourceDetail[];
+const TrustedAdvisorResourceDetailList = /*@__PURE__*/ __L.at(__c7, 3);
 export interface TrustedAdvisorCheckResult {
   checkId: string;
   timestamp: string;
@@ -514,12 +671,24 @@ export interface TrustedAdvisorCheckResult {
   categorySpecificSummary: TrustedAdvisorCategorySpecificSummary;
   flaggedResources: TrustedAdvisorResourceDetail[];
 }
+const TrustedAdvisorCheckResult = /*@__PURE__*/ __L.at(
+  __c7,
+  4,
+) as any as S.Schema<TrustedAdvisorCheckResult>;
 export interface DescribeTrustedAdvisorCheckResultResponse {
   result?: TrustedAdvisorCheckResult;
 }
+const DescribeTrustedAdvisorCheckResultResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  5,
+) as any as S.Schema<DescribeTrustedAdvisorCheckResultResponse>;
 export interface DescribeTrustedAdvisorChecksRequest {
   language: string;
 }
+const DescribeTrustedAdvisorChecksRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  6,
+) as any as S.Schema<DescribeTrustedAdvisorChecksRequest>;
 export interface TrustedAdvisorCheckDescription {
   id: string;
   name: string;
@@ -527,13 +696,26 @@ export interface TrustedAdvisorCheckDescription {
   category: string;
   metadata: string[];
 }
+const TrustedAdvisorCheckDescription = /*@__PURE__*/ __L.at(
+  __c7,
+  7,
+) as any as S.Schema<TrustedAdvisorCheckDescription>;
 export type TrustedAdvisorCheckList = TrustedAdvisorCheckDescription[];
+const TrustedAdvisorCheckList = /*@__PURE__*/ __L.at(__c8, 0);
 export interface DescribeTrustedAdvisorChecksResponse {
   checks: TrustedAdvisorCheckDescription[];
 }
+const DescribeTrustedAdvisorChecksResponse = /*@__PURE__*/ __L.at(
+  __c8,
+  1,
+) as any as S.Schema<DescribeTrustedAdvisorChecksResponse>;
 export interface DescribeTrustedAdvisorCheckSummariesRequest {
   checkIds: string[];
 }
+const DescribeTrustedAdvisorCheckSummariesRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  2,
+) as any as S.Schema<DescribeTrustedAdvisorCheckSummariesRequest>;
 export interface TrustedAdvisorCheckSummary {
   checkId: string;
   timestamp: string;
@@ -542,23 +724,41 @@ export interface TrustedAdvisorCheckSummary {
   resourcesSummary: TrustedAdvisorResourcesSummary;
   categorySpecificSummary: TrustedAdvisorCategorySpecificSummary;
 }
+const TrustedAdvisorCheckSummary = /*@__PURE__*/ __L.at(
+  __c8,
+  3,
+) as any as S.Schema<TrustedAdvisorCheckSummary>;
 export type TrustedAdvisorCheckSummaryList = TrustedAdvisorCheckSummary[];
+const TrustedAdvisorCheckSummaryList = /*@__PURE__*/ __L.at(__c8, 4);
 export interface DescribeTrustedAdvisorCheckSummariesResponse {
   summaries: TrustedAdvisorCheckSummary[];
 }
+const DescribeTrustedAdvisorCheckSummariesResponse = /*@__PURE__*/ __L.at(
+  __c8,
+  5,
+) as any as S.Schema<DescribeTrustedAdvisorCheckSummariesResponse>;
 export interface GetAttachmentDownloadLinkRequest {
   attachmentId: string;
   dryRun?: boolean;
 }
+const GetAttachmentDownloadLinkRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  6,
+) as any as S.Schema<GetAttachmentDownloadLinkRequest>;
 export type HttpsUrl = string;
 export interface DownloadUrl {
   url: string;
   expiryDate: string;
 }
+const DownloadUrl = /*@__PURE__*/ __L.at(__c8, 7) as any as S.Schema<DownloadUrl>;
 export interface GetAttachmentDownloadLinkResponse {
   fileName: string;
   downloadUrl: DownloadUrl;
 }
+const GetAttachmentDownloadLinkResponse = /*@__PURE__*/ __L.at(
+  __c9,
+  0,
+) as any as S.Schema<GetAttachmentDownloadLinkResponse>;
 export type FileSize = number;
 export type StartIndex = number;
 export type EndIndex = number;
@@ -566,6 +766,7 @@ export interface UploadRange {
   startIndex: number;
   endIndex?: number;
 }
+const UploadRange = /*@__PURE__*/ __L.at(__c9, 1) as any as S.Schema<UploadRange>;
 export interface GetAttachmentUploadLinksRequest {
   fileName: string;
   fileSizeBytes?: number;
@@ -573,13 +774,19 @@ export interface GetAttachmentUploadLinksRequest {
   uploadRange?: UploadRange;
   dryRun?: boolean;
 }
+const GetAttachmentUploadLinksRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  2,
+) as any as S.Schema<GetAttachmentUploadLinksRequest>;
 export type PartSizeBytes = number;
 export interface UploadUrl {
   url: string;
   partIndex: number;
   expiryDate: string;
 }
+const UploadUrl = /*@__PURE__*/ __L.at(__c9, 3) as any as S.Schema<UploadUrl>;
 export type UploadUrlList = UploadUrl[];
+const UploadUrlList = /*@__PURE__*/ __L.at(__c9, 4);
 export interface GetAttachmentUploadLinksResponse {
   uploadId: string;
   partSizeBytes: number;
@@ -587,21 +794,35 @@ export interface GetAttachmentUploadLinksResponse {
   nextIndex?: number;
   uploadUrls: UploadUrl[];
 }
+const GetAttachmentUploadLinksResponse = /*@__PURE__*/ __L.at(
+  __c9,
+  5,
+) as any as S.Schema<GetAttachmentUploadLinksResponse>;
 export interface RefreshTrustedAdvisorCheckRequest {
   checkId: string;
 }
+const RefreshTrustedAdvisorCheckRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  6,
+) as any as S.Schema<RefreshTrustedAdvisorCheckRequest>;
 export interface RefreshTrustedAdvisorCheckResponse {
   status: TrustedAdvisorCheckRefreshStatus;
 }
+const RefreshTrustedAdvisorCheckResponse = /*@__PURE__*/ __L.at(
+  __c9,
+  7,
+) as any as S.Schema<RefreshTrustedAdvisorCheckResponse>;
 export interface ResolveCaseRequest {
   caseId?: string;
   dryRun?: boolean;
 }
+const ResolveCaseRequest = /*@__PURE__*/ __L.at(__c10, 0) as any as S.Schema<ResolveCaseRequest>;
 export type CaseStatus = string;
 export interface ResolveCaseResponse {
   initialCaseStatus?: string;
   finalCaseStatus?: string;
 }
+const ResolveCaseResponse = /*@__PURE__*/ __L.at(__c10, 1) as any as S.Schema<ResolveCaseResponse>;
 export type ErrorMessage = string;
 export type AvailabilityErrorMessage = string;
 export type CoralAvailabilityThrottlingReason = string;
@@ -610,7 +831,9 @@ export interface ThrottlingReason {
   reason?: string;
   resource?: string;
 }
+const ThrottlingReason = /*@__PURE__*/ __L.at(__c10, 2) as any as S.Schema<ThrottlingReason>;
 export type ThrottlingReasonList = ThrottlingReason[];
+const ThrottlingReasonList = /*@__PURE__*/ __L.at(__c10, 3);
 export type AddAttachmentsToSetError =
   | AttachmentLimitExceeded
   | AttachmentSetExpired
@@ -640,8 +863,8 @@ export const addAttachmentsToSet: API.OperationMethod<
   AddAttachmentsToSetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2) as any as S.Schema<AddAttachmentsToSetRequest>,
-  output: __S(3) as any as S.Schema<AddAttachmentsToSetResponse>,
+  input: AddAttachmentsToSetRequest,
+  output: AddAttachmentsToSetResponse,
   errors: [
     AttachmentLimitExceeded,
     AttachmentSetExpired,
@@ -695,8 +918,8 @@ export const addCommunicationToCase: API.OperationMethod<
   AddCommunicationToCaseError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5) as any as S.Schema<AddCommunicationToCaseRequest>,
-  output: __S(6) as any as S.Schema<AddCommunicationToCaseResponse>,
+  input: AddCommunicationToCaseRequest,
+  output: AddCommunicationToCaseResponse,
   errors: [
     AttachmentSetExpired,
     AttachmentSetIdNotFound,
@@ -729,8 +952,8 @@ export const completeAttachmentUpload: API.OperationMethod<
   CompleteAttachmentUploadError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9) as any as S.Schema<CompleteAttachmentUploadRequest>,
-  output: __S(10) as any as S.Schema<CompleteAttachmentUploadResponse>,
+  input: CompleteAttachmentUploadRequest,
+  output: CompleteAttachmentUploadResponse,
   errors: [DryRunOperationException, InternalServerError, UploadIdNotFound],
   protocol: AwsProtocol,
   retry: Retry,
@@ -788,8 +1011,8 @@ export const createCase: API.OperationMethod<
   CreateCaseError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11) as any as S.Schema<CreateCaseRequest>,
-  output: __S(12) as any as S.Schema<CreateCaseResponse>,
+  input: CreateCaseRequest,
+  output: CreateCaseResponse,
   errors: [
     AttachmentSetExpired,
     AttachmentSetIdNotFound,
@@ -838,8 +1061,8 @@ export const describeAttachment: API.OperationMethod<
   DescribeAttachmentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13) as any as S.Schema<DescribeAttachmentRequest>,
-  output: __S(14) as any as S.Schema<DescribeAttachmentResponse>,
+  input: DescribeAttachmentRequest,
+  output: DescribeAttachmentResponse,
   errors: [
     AttachmentIdNotFound,
     DescribeAttachmentLimitExceeded,
@@ -881,8 +1104,8 @@ export const describeAttachmentUploadStatus: API.OperationMethod<
   DescribeAttachmentUploadStatusError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15) as any as S.Schema<DescribeAttachmentUploadStatusRequest>,
-  output: __S(17) as any as S.Schema<DescribeAttachmentUploadStatusResponse>,
+  input: DescribeAttachmentUploadStatusRequest,
+  output: DescribeAttachmentUploadStatusResponse,
   errors: [DryRunOperationException, InternalServerError, UploadIdNotFound],
   protocol: AwsProtocol,
   retry: Retry,
@@ -939,8 +1162,8 @@ export const describeCases: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   CaseDetails
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(18) as any as S.Schema<DescribeCasesRequest>,
-  output: __S(26) as any as S.Schema<DescribeCasesResponse>,
+  input: DescribeCasesRequest,
+  output: DescribeCasesResponse,
   errors: [CaseIdNotFound, DryRunOperationException, InternalServerError],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1000,8 +1223,8 @@ export const describeCommunications: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Communication
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(27) as any as S.Schema<DescribeCommunicationsRequest>,
-  output: __S(28) as any as S.Schema<DescribeCommunicationsResponse>,
+  input: DescribeCommunicationsRequest,
+  output: DescribeCommunicationsResponse,
   errors: [CaseIdNotFound, DryRunOperationException, InternalServerError],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1039,8 +1262,8 @@ export const describeCreateCaseOptions: API.OperationMethod<
   DescribeCreateCaseOptionsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29) as any as S.Schema<DescribeCreateCaseOptionsRequest>,
-  output: __S(36) as any as S.Schema<DescribeCreateCaseOptionsResponse>,
+  input: DescribeCreateCaseOptionsRequest,
+  output: DescribeCreateCaseOptionsResponse,
   errors: [DryRunOperationException, InternalServerError, ThrottlingException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1074,8 +1297,8 @@ export const describeServices: API.OperationMethod<
   DescribeServicesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37) as any as S.Schema<DescribeServicesRequest>,
-  output: __S(42) as any as S.Schema<DescribeServicesResponse>,
+  input: DescribeServicesRequest,
+  output: DescribeServicesResponse,
   errors: [DryRunOperationException, InternalServerError],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1105,8 +1328,8 @@ export const describeSeverityLevels: API.OperationMethod<
   DescribeSeverityLevelsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43) as any as S.Schema<DescribeSeverityLevelsRequest>,
-  output: __S(44) as any as S.Schema<DescribeSeverityLevelsResponse>,
+  input: DescribeSeverityLevelsRequest,
+  output: DescribeSeverityLevelsResponse,
   errors: [DryRunOperationException, InternalServerError],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1137,8 +1360,8 @@ export const describeSupportedLanguages: API.OperationMethod<
   DescribeSupportedLanguagesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45) as any as S.Schema<DescribeSupportedLanguagesRequest>,
-  output: __S(48) as any as S.Schema<DescribeSupportedLanguagesResponse>,
+  input: DescribeSupportedLanguagesRequest,
+  output: DescribeSupportedLanguagesResponse,
   errors: [DryRunOperationException, InternalServerError, ThrottlingException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1177,8 +1400,8 @@ export const describeTrustedAdvisorCheckRefreshStatuses: API.OperationMethod<
   DescribeTrustedAdvisorCheckRefreshStatusesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(50) as any as S.Schema<DescribeTrustedAdvisorCheckRefreshStatusesRequest>,
-  output: __S(53) as any as S.Schema<DescribeTrustedAdvisorCheckRefreshStatusesResponse>,
+  input: DescribeTrustedAdvisorCheckRefreshStatusesRequest,
+  output: DescribeTrustedAdvisorCheckRefreshStatusesResponse,
   errors: [InternalServerError, ThrottlingException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1234,8 +1457,8 @@ export const describeTrustedAdvisorCheckResult: API.OperationMethod<
   DescribeTrustedAdvisorCheckResultError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(54) as any as S.Schema<DescribeTrustedAdvisorCheckResultRequest>,
-  output: __S(61) as any as S.Schema<DescribeTrustedAdvisorCheckResultResponse>,
+  input: DescribeTrustedAdvisorCheckResultRequest,
+  output: DescribeTrustedAdvisorCheckResultResponse,
   errors: [InternalServerError, ThrottlingException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1275,8 +1498,8 @@ export const describeTrustedAdvisorChecks: API.OperationMethod<
   DescribeTrustedAdvisorChecksError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(62) as any as S.Schema<DescribeTrustedAdvisorChecksRequest>,
-  output: __S(65) as any as S.Schema<DescribeTrustedAdvisorChecksResponse>,
+  input: DescribeTrustedAdvisorChecksRequest,
+  output: DescribeTrustedAdvisorChecksResponse,
   errors: [InternalServerError, ThrottlingException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1317,8 +1540,8 @@ export const describeTrustedAdvisorCheckSummaries: API.OperationMethod<
   DescribeTrustedAdvisorCheckSummariesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(66) as any as S.Schema<DescribeTrustedAdvisorCheckSummariesRequest>,
-  output: __S(69) as any as S.Schema<DescribeTrustedAdvisorCheckSummariesResponse>,
+  input: DescribeTrustedAdvisorCheckSummariesRequest,
+  output: DescribeTrustedAdvisorCheckSummariesResponse,
   errors: [InternalServerError, ThrottlingException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1351,8 +1574,8 @@ export const getAttachmentDownloadLink: API.OperationMethod<
   GetAttachmentDownloadLinkError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(70) as any as S.Schema<GetAttachmentDownloadLinkRequest>,
-  output: __S(72) as any as S.Schema<GetAttachmentDownloadLinkResponse>,
+  input: GetAttachmentDownloadLinkRequest,
+  output: GetAttachmentDownloadLinkResponse,
   errors: [AttachmentIdNotFound, DryRunOperationException, InternalServerError],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1395,8 +1618,8 @@ export const getAttachmentUploadLinks: API.OperationMethod<
   GetAttachmentUploadLinksError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(74) as any as S.Schema<GetAttachmentUploadLinksRequest>,
-  output: __S(77) as any as S.Schema<GetAttachmentUploadLinksResponse>,
+  input: GetAttachmentUploadLinksRequest,
+  output: GetAttachmentUploadLinksResponse,
   errors: [DryRunOperationException, InternalServerError, UploadIdNotFound],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1435,8 +1658,8 @@ export const refreshTrustedAdvisorCheck: API.OperationMethod<
   RefreshTrustedAdvisorCheckError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(78) as any as S.Schema<RefreshTrustedAdvisorCheckRequest>,
-  output: __S(79) as any as S.Schema<RefreshTrustedAdvisorCheckResponse>,
+  input: RefreshTrustedAdvisorCheckRequest,
+  output: RefreshTrustedAdvisorCheckResponse,
   errors: [InternalServerError],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1466,8 +1689,8 @@ export const resolveCase: API.OperationMethod<
   ResolveCaseError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(80) as any as S.Schema<ResolveCaseRequest>,
-  output: __S(81) as any as S.Schema<ResolveCaseResponse>,
+  input: ResolveCaseRequest,
+  output: ResolveCaseResponse,
   errors: [CaseIdNotFound, DryRunOperationException, InternalServerError],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1482,12 +1705,12 @@ function __c0(j: number): any {
         S.Struct({ fileName: S.optional(S.String), data: S.optional(T.Blob) }),
       ).annotate({ identifier: "Attachment" });
     case 1:
-      return S.Array(__S(0));
+      return S.Array(Attachment);
     case 2:
       return S.suspend(() =>
         S.Struct({
           attachmentSetId: S.optional(S.String),
-          attachments: __S(1),
+          attachments: Attachments,
           dryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
@@ -1508,9 +1731,9 @@ function __c0(j: number): any {
         S.Struct({
           caseId: S.optional(S.String),
           communicationBody: S.String,
-          ccEmailAddresses: S.optional(__S(4)),
+          ccEmailAddresses: S.optional(CcEmailAddressList),
           attachmentSetId: S.optional(S.String),
-          uploadIds: S.optional(__S(4)),
+          uploadIds: S.optional(UploadIds),
           dryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
@@ -1529,19 +1752,19 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(7));
+      return S.Array(CompletedUpload);
     case 1:
       return S.suspend(() =>
         S.Struct({
           uploadId: S.String,
-          completedUploads: __S(8),
+          completedUploads: CompletedUploadList,
           dryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "CompleteAttachmentUploadRequest",
       });
     case 2:
-      return S.suspend(() => S.Struct({ uploadStatus: S.String }).pipe(ns)).annotate({
+      return S.suspend(() => S.Struct({ uploadStatus: UploadStatus }).pipe(ns)).annotate({
         identifier: "CompleteAttachmentUploadResponse",
       });
     case 3:
@@ -1552,11 +1775,11 @@ function __c1(j: number): any {
           severityCode: S.optional(S.String),
           categoryCode: S.optional(S.String),
           communicationBody: S.String,
-          ccEmailAddresses: S.optional(__S(4)),
+          ccEmailAddresses: S.optional(CcEmailAddressList),
           language: S.optional(S.String),
           issueType: S.optional(S.String),
           attachmentSetId: S.optional(S.String),
-          uploadIds: S.optional(__S(4)),
+          uploadIds: S.optional(UploadIds),
           dryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateCaseRequest" });
@@ -1573,7 +1796,7 @@ function __c1(j: number): any {
         identifier: "DescribeAttachmentRequest",
       });
     case 6:
-      return S.suspend(() => S.Struct({ attachment: S.optional(__S(0)) }).pipe(ns)).annotate({
+      return S.suspend(() => S.Struct({ attachment: S.optional(Attachment) }).pipe(ns)).annotate({
         identifier: "DescribeAttachmentResponse",
       });
     case 7:
@@ -1595,9 +1818,9 @@ function __c2(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          uploadStatus: S.String,
+          uploadStatus: UploadStatus,
           fileName: S.String,
-          uploadProgress: S.optional(__S(16)),
+          uploadProgress: S.optional(UploadProgress),
         }).pipe(ns),
       ).annotate({
         identifier: "DescribeAttachmentUploadStatusResponse",
@@ -1605,7 +1828,7 @@ function __c2(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          caseIdList: S.optional(__S(4)),
+          caseIdList: S.optional(CaseIdList),
           displayId: S.optional(S.String),
           afterTime: S.optional(S.String),
           beforeTime: S.optional(S.String),
@@ -1622,7 +1845,7 @@ function __c2(j: number): any {
         S.Struct({ attachmentId: S.optional(S.String), fileName: S.optional(S.String) }),
       ).annotate({ identifier: "AttachmentDetails" });
     case 4:
-      return S.Array(__S(19));
+      return S.Array(AttachmentDetails);
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -1630,16 +1853,16 @@ function __c2(j: number): any {
           body: S.optional(S.String),
           submittedBy: S.optional(S.String),
           timeCreated: S.optional(S.String),
-          attachments: S.optional(__S(20)),
-          attachmentSet: S.optional(__S(20)),
+          attachments: S.optional(AttachmentSet),
+          attachmentSet: S.optional(AttachmentSet),
         }),
       ).annotate({ identifier: "Communication" });
     case 6:
-      return S.Array(__S(21));
+      return S.Array(Communication);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          communications: S.optional(__S(22)),
+          communications: S.optional(CommunicationList),
           nextToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "RecentCaseCommunications" });
@@ -1659,16 +1882,16 @@ function __c3(j: number): any {
           severityCode: S.optional(S.String),
           submittedBy: S.optional(S.String),
           timeCreated: S.optional(S.String),
-          recentCommunications: S.optional(__S(23)),
-          ccEmailAddresses: S.optional(__S(4)),
+          recentCommunications: S.optional(RecentCaseCommunications),
+          ccEmailAddresses: S.optional(CcEmailAddressList),
           language: S.optional(S.String),
         }),
       ).annotate({ identifier: "CaseDetails" });
     case 1:
-      return S.Array(__S(24));
+      return S.Array(CaseDetails);
     case 2:
       return S.suspend(() =>
-        S.Struct({ cases: S.optional(__S(25)), nextToken: S.optional(S.String) }).pipe(ns),
+        S.Struct({ cases: S.optional(CaseList), nextToken: S.optional(S.String) }).pipe(ns),
       ).annotate({ identifier: "DescribeCasesResponse" });
     case 3:
       return S.suspend(() =>
@@ -1686,7 +1909,7 @@ function __c3(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          communications: S.optional(__S(22)),
+          communications: S.optional(CommunicationList),
           nextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
@@ -1709,7 +1932,7 @@ function __c3(j: number): any {
         S.Struct({ startTime: S.optional(S.String), endTime: S.optional(S.String) }),
       ).annotate({ identifier: "SupportedHour" });
     case 7:
-      return S.Array(__S(30));
+      return S.Array(SupportedHour);
   }
 }
 function __c4(j: number): any {
@@ -1719,22 +1942,22 @@ function __c4(j: number): any {
         S.Struct({ startDateTime: S.optional(S.String), endDateTime: S.optional(S.String) }),
       ).annotate({ identifier: "DateInterval" });
     case 1:
-      return S.Array(__S(32));
+      return S.Array(DateInterval);
     case 2:
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String),
-          supportedHours: S.optional(__S(31)),
-          datesWithoutSupport: S.optional(__S(33)),
+          supportedHours: S.optional(SupportedHoursList),
+          datesWithoutSupport: S.optional(DatesWithoutSupportList),
         }),
       ).annotate({ identifier: "CommunicationTypeOptions" });
     case 3:
-      return S.Array(__S(34));
+      return S.Array(CommunicationTypeOptions);
     case 4:
       return S.suspend(() =>
         S.Struct({
           languageAvailability: S.optional(S.String),
-          communicationTypes: S.optional(__S(35)),
+          communicationTypes: S.optional(CommunicationTypeOptionsList),
         }).pipe(ns),
       ).annotate({
         identifier: "DescribeCreateCaseOptionsResponse",
@@ -1742,7 +1965,7 @@ function __c4(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          serviceCodeList: S.optional(__S(4)),
+          serviceCodeList: S.optional(ServiceCodeList),
           language: S.optional(S.String),
           dryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -1752,7 +1975,7 @@ function __c4(j: number): any {
         S.Struct({ code: S.optional(S.String), name: S.optional(S.String) }),
       ).annotate({ identifier: "Category" });
     case 7:
-      return S.Array(__S(38));
+      return S.Array(Category);
   }
 }
 function __c5(j: number): any {
@@ -1762,13 +1985,13 @@ function __c5(j: number): any {
         S.Struct({
           code: S.optional(S.String),
           name: S.optional(S.String),
-          categories: S.optional(__S(39)),
+          categories: S.optional(CategoryList),
         }),
       ).annotate({ identifier: "Service" });
     case 1:
-      return S.Array(__S(40));
+      return S.Array(Service);
     case 2:
-      return S.suspend(() => S.Struct({ services: S.optional(__S(41)) }).pipe(ns)).annotate({
+      return S.suspend(() => S.Struct({ services: S.optional(ServiceList) }).pipe(ns)).annotate({
         identifier: "DescribeServicesResponse",
       });
     case 3:
@@ -1780,7 +2003,9 @@ function __c5(j: number): any {
         identifier: "DescribeSeverityLevelsRequest",
       });
     case 4:
-      return S.suspend(() => S.Struct({ severityLevels: S.optional(__S(39)) }).pipe(ns)).annotate({
+      return S.suspend(() =>
+        S.Struct({ severityLevels: S.optional(SeverityLevelsList) }).pipe(ns),
+      ).annotate({
         identifier: "DescribeSeverityLevelsResponse",
       });
     case 5:
@@ -1803,14 +2028,14 @@ function __c5(j: number): any {
         }),
       ).annotate({ identifier: "SupportedLanguage" });
     case 7:
-      return S.Array(__S(46));
+      return S.Array(SupportedLanguage);
   }
 }
 function __c6(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ supportedLanguages: S.optional(__S(47)) }).pipe(ns),
+        S.Struct({ supportedLanguages: S.optional(SupportedLanguagesList) }).pipe(ns),
       ).annotate({
         identifier: "DescribeSupportedLanguagesResponse",
       });
@@ -1818,7 +2043,7 @@ function __c6(j: number): any {
       return S.Array(S.String).pipe(/*@__PURE__*/ T.Sparse());
     case 2:
       return S.suspend(() =>
-        S.Struct({ checkIds: __S(49) }).pipe(
+        S.Struct({ checkIds: StringList }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
@@ -1831,9 +2056,11 @@ function __c6(j: number): any {
         identifier: "TrustedAdvisorCheckRefreshStatus",
       });
     case 4:
-      return S.Array(__S(51));
+      return S.Array(TrustedAdvisorCheckRefreshStatus);
     case 5:
-      return S.suspend(() => S.Struct({ statuses: __S(52) }).pipe(ns)).annotate({
+      return S.suspend(() =>
+        S.Struct({ statuses: TrustedAdvisorCheckRefreshStatusList }).pipe(ns),
+      ).annotate({
         identifier: "DescribeTrustedAdvisorCheckRefreshStatusesResponse",
       });
     case 6:
@@ -1866,7 +2093,9 @@ function __c7(j: number): any {
         identifier: "TrustedAdvisorCostOptimizingSummary",
       });
     case 1:
-      return S.suspend(() => S.Struct({ costOptimizing: S.optional(__S(56)) })).annotate({
+      return S.suspend(() =>
+        S.Struct({ costOptimizing: S.optional(TrustedAdvisorCostOptimizingSummary) }),
+      ).annotate({
         identifier: "TrustedAdvisorCategorySpecificSummary",
       });
     case 2:
@@ -1876,28 +2105,30 @@ function __c7(j: number): any {
           region: S.optional(S.String),
           resourceId: S.String,
           isSuppressed: S.optional(S.Boolean),
-          metadata: __S(49),
+          metadata: StringList,
         }),
       ).annotate({
         identifier: "TrustedAdvisorResourceDetail",
       });
     case 3:
-      return S.Array(__S(58));
+      return S.Array(TrustedAdvisorResourceDetail);
     case 4:
       return S.suspend(() =>
         S.Struct({
           checkId: S.String,
           timestamp: S.String,
           status: S.String,
-          resourcesSummary: __S(55),
-          categorySpecificSummary: __S(57),
-          flaggedResources: __S(59),
+          resourcesSummary: TrustedAdvisorResourcesSummary,
+          categorySpecificSummary: TrustedAdvisorCategorySpecificSummary,
+          flaggedResources: TrustedAdvisorResourceDetailList,
         }),
       ).annotate({
         identifier: "TrustedAdvisorCheckResult",
       });
     case 5:
-      return S.suspend(() => S.Struct({ result: S.optional(__S(60)) }).pipe(ns)).annotate({
+      return S.suspend(() =>
+        S.Struct({ result: S.optional(TrustedAdvisorCheckResult) }).pipe(ns),
+      ).annotate({
         identifier: "DescribeTrustedAdvisorCheckResultResponse",
       });
     case 6:
@@ -1915,7 +2146,7 @@ function __c7(j: number): any {
           name: S.String,
           description: S.String,
           category: S.String,
-          metadata: __S(49),
+          metadata: StringList,
         }),
       ).annotate({
         identifier: "TrustedAdvisorCheckDescription",
@@ -1925,14 +2156,14 @@ function __c7(j: number): any {
 function __c8(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(63));
+      return S.Array(TrustedAdvisorCheckDescription);
     case 1:
-      return S.suspend(() => S.Struct({ checks: __S(64) }).pipe(ns)).annotate({
+      return S.suspend(() => S.Struct({ checks: TrustedAdvisorCheckList }).pipe(ns)).annotate({
         identifier: "DescribeTrustedAdvisorChecksResponse",
       });
     case 2:
       return S.suspend(() =>
-        S.Struct({ checkIds: __S(49) }).pipe(
+        S.Struct({ checkIds: StringList }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
@@ -1945,16 +2176,18 @@ function __c8(j: number): any {
           timestamp: S.String,
           status: S.String,
           hasFlaggedResources: S.optional(S.Boolean),
-          resourcesSummary: __S(55),
-          categorySpecificSummary: __S(57),
+          resourcesSummary: TrustedAdvisorResourcesSummary,
+          categorySpecificSummary: TrustedAdvisorCategorySpecificSummary,
         }),
       ).annotate({
         identifier: "TrustedAdvisorCheckSummary",
       });
     case 4:
-      return S.Array(__S(67));
+      return S.Array(TrustedAdvisorCheckSummary);
     case 5:
-      return S.suspend(() => S.Struct({ summaries: __S(68) }).pipe(ns)).annotate({
+      return S.suspend(() =>
+        S.Struct({ summaries: TrustedAdvisorCheckSummaryList }).pipe(ns),
+      ).annotate({
         identifier: "DescribeTrustedAdvisorCheckSummariesResponse",
       });
     case 6:
@@ -1975,7 +2208,7 @@ function __c9(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ fileName: S.String, downloadUrl: __S(71) }).pipe(ns),
+        S.Struct({ fileName: S.String, downloadUrl: DownloadUrl }).pipe(ns),
       ).annotate({
         identifier: "GetAttachmentDownloadLinkResponse",
       });
@@ -1989,7 +2222,7 @@ function __c9(j: number): any {
           fileName: S.String,
           fileSizeBytes: S.optional(S.Number),
           uploadId: S.optional(S.String),
-          uploadRange: S.optional(__S(73)),
+          uploadRange: S.optional(UploadRange),
           dryRun: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
@@ -2000,7 +2233,7 @@ function __c9(j: number): any {
         S.Struct({ url: S.String, partIndex: S.Number, expiryDate: S.String }),
       ).annotate({ identifier: "UploadUrl" });
     case 4:
-      return S.Array(__S(75));
+      return S.Array(UploadUrl);
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -2008,7 +2241,7 @@ function __c9(j: number): any {
           partSizeBytes: S.Number,
           totalParts: S.Number,
           nextIndex: S.optional(S.Number),
-          uploadUrls: __S(76),
+          uploadUrls: UploadUrlList,
         }).pipe(ns),
       ).annotate({
         identifier: "GetAttachmentUploadLinksResponse",
@@ -2022,7 +2255,9 @@ function __c9(j: number): any {
         identifier: "RefreshTrustedAdvisorCheckRequest",
       });
     case 7:
-      return S.suspend(() => S.Struct({ status: __S(51) }).pipe(ns)).annotate({
+      return S.suspend(() =>
+        S.Struct({ status: TrustedAdvisorCheckRefreshStatus }).pipe(ns),
+      ).annotate({
         identifier: "RefreshTrustedAdvisorCheckResponse",
       });
   }
@@ -2047,37 +2282,6 @@ function __c10(j: number): any {
         S.Struct({ reason: S.optional(S.String), resource: S.optional(S.String) }),
       ).annotate({ identifier: "ThrottlingReason" });
     case 3:
-      return S.Array(__S(82));
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
-    case 9:
-      return __c9(i & 7);
-    case 10:
-      return __c10(i & 7);
+      return S.Array(ThrottlingReason);
   }
 }

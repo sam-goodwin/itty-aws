@@ -10,8 +10,6 @@ import {
 } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { CloudflareOpError, CloudflareOpContext };
 
@@ -104,7 +102,17 @@ export interface CreateCredentialRequest {
   /** Provides the Cloudflare API token for accessing R2. */
   token: string;
 }
+const CreateCredentialRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<CreateCredentialRequest>;
+
 export type CreateCredentialResponse = unknown;
+const CreateCredentialResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<CreateCredentialResponse>;
+
 export interface DeleteRequest {
   /** Use this to identify the account. */
   accountId: string;
@@ -113,20 +121,39 @@ export interface DeleteRequest {
   /** Remove child metadata before deleting the catalog. */
   force?: boolean;
 }
+const DeleteRequest = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<DeleteRequest>;
+
 export interface DeleteResponse {}
+const DeleteResponse = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<DeleteResponse>;
+
 export interface DisableR2DataCatalogRequest {
   /** Use this to identify the account. */
   accountId: string;
   /** Specifies the R2 bucket name. */
   bucketName: string;
 }
+const DisableR2DataCatalogRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<DisableR2DataCatalogRequest>;
+
 export interface DisableR2DataCatalogResponse {}
+const DisableR2DataCatalogResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<DisableR2DataCatalogResponse>;
+
 export interface EnableR2DataCatalogRequest {
   /** Use this to identify the account. */
   accountId: string;
   /** Specifies the R2 bucket name. */
   bucketName: string;
 }
+const EnableR2DataCatalogRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<EnableR2DataCatalogRequest>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface EnableR2DataCatalogResponse {
   /** Use this to uniquely identify the activated catalog. */
@@ -134,28 +161,51 @@ export interface EnableR2DataCatalogResponse {
   /** Specifies the name of the activated catalog. */
   name: string;
 }
+const EnableR2DataCatalogResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<EnableR2DataCatalogResponse>;
+
 export interface GetMaintenanceConfigRequest {
   /** Use this to identify the account. */
   accountId: string;
   /** Specifies the R2 bucket name. */
   bucketName: string;
 }
+const GetMaintenanceConfigRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<GetMaintenanceConfigRequest>;
+
 export type MaintenanceConfigsGetResponseCredentialStatus = "present" | "absent";
+const MaintenanceConfigsGetResponseCredentialStatus = S.String;
+
 export type MaintenanceConfigsGetResponseMaintenanceConfigCompactionState = "enabled" | "disabled";
+const MaintenanceConfigsGetResponseMaintenanceConfigCompactionState = S.String;
+
 export type MaintenanceConfigsGetResponseMaintenanceConfigCompactionTargetSizeMb =
   | "64"
   | "128"
   | "256"
   | "512";
+const MaintenanceConfigsGetResponseMaintenanceConfigCompactionTargetSizeMb = S.String;
+
 export interface MaintenanceConfigsGetResponseMaintenanceConfigCompaction {
   /** Specifies the state of maintenance operations. */
   state: MaintenanceConfigsGetResponseMaintenanceConfigCompactionState;
   /** Sets the target file size for compaction in megabytes. Defaults to "128". */
   targetSizeMb: MaintenanceConfigsGetResponseMaintenanceConfigCompactionTargetSizeMb;
 }
+const MaintenanceConfigsGetResponseMaintenanceConfigCompaction = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<MaintenanceConfigsGetResponseMaintenanceConfigCompaction>;
+
 export type MaintenanceConfigsGetResponseMaintenanceConfigSnapshotExpirationState =
   | "enabled"
   | "disabled";
+const MaintenanceConfigsGetResponseMaintenanceConfigSnapshotExpirationState = S.String;
+
 export interface MaintenanceConfigsGetResponseMaintenanceConfigSnapshotExpiration {
   /** Specifies the maximum age for snapshots. The system deletes snapshots older than this age. Format: where unit is d (days), h (hours), m (minutes), or s (seconds). Examples: "7d" (7 days), "48h" (48 hours), "2880m" (2,880 minutes). Defaults to "7d". */
   maxSnapshotAge: string;
@@ -164,6 +214,11 @@ export interface MaintenanceConfigsGetResponseMaintenanceConfigSnapshotExpiratio
   /** Specifies the state of maintenance operations. */
   state: MaintenanceConfigsGetResponseMaintenanceConfigSnapshotExpirationState;
 }
+const MaintenanceConfigsGetResponseMaintenanceConfigSnapshotExpiration = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<MaintenanceConfigsGetResponseMaintenanceConfigSnapshotExpiration>;
+
 export interface MaintenanceConfigsGetResponseMaintenanceConfig {
   /** Configures compaction for catalog maintenance. */
   compaction?: MaintenanceConfigsGetResponseMaintenanceConfigCompaction | null;
@@ -172,6 +227,11 @@ export interface MaintenanceConfigsGetResponseMaintenanceConfig {
   /** Configures snapshot expiration settings. */
   snapshotExpiration?: MaintenanceConfigsGetResponseMaintenanceConfigSnapshotExpiration | null;
 }
+const MaintenanceConfigsGetResponseMaintenanceConfig = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<MaintenanceConfigsGetResponseMaintenanceConfig>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetMaintenanceConfigResponse {
   /** Shows the credential configuration status. */
@@ -179,6 +239,11 @@ export interface GetMaintenanceConfigResponse {
   /** Configures maintenance for the catalog. */
   maintenanceConfig: MaintenanceConfigsGetResponseMaintenanceConfig;
 }
+const GetMaintenanceConfigResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<GetMaintenanceConfigResponse>;
+
 export interface GetNamespaceTableMaintenanceConfigRequest {
   /** Use this to identify the account. */
   accountId: string;
@@ -187,14 +252,24 @@ export interface GetNamespaceTableMaintenanceConfigRequest {
   namespace: string;
   tableName: string;
 }
+const GetNamespaceTableMaintenanceConfigRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<GetNamespaceTableMaintenanceConfigRequest>;
+
 export type NamespacesTablesMaintenanceConfigsGetResponseMaintenanceConfigCompactionState =
   | "enabled"
   | "disabled";
+const NamespacesTablesMaintenanceConfigsGetResponseMaintenanceConfigCompactionState = S.String;
+
 export type NamespacesTablesMaintenanceConfigsGetResponseMaintenanceConfigCompactionTargetSizeMb =
   | "64"
   | "128"
   | "256"
   | "512";
+const NamespacesTablesMaintenanceConfigsGetResponseMaintenanceConfigCompactionTargetSizeMb =
+  S.String;
+
 export interface NamespacesTablesMaintenanceConfigsGetResponseMaintenanceConfigCompaction {
   /** Specifies the state of maintenance operations. */
   state: NamespacesTablesMaintenanceConfigsGetResponseMaintenanceConfigCompactionState;
@@ -203,9 +278,18 @@ export interface NamespacesTablesMaintenanceConfigsGetResponseMaintenanceConfigC
   /** Earliest time when the scheduler can claim this operation. Null when disabled. */
   nextEligibleAt?: string | null;
 }
+const NamespacesTablesMaintenanceConfigsGetResponseMaintenanceConfigCompaction =
+  /*@__PURE__*/ __L.at(
+    __c1,
+    6,
+  ) as any as S.Schema<NamespacesTablesMaintenanceConfigsGetResponseMaintenanceConfigCompaction>;
+
 export type NamespacesTablesMaintenanceConfigsGetResponseMaintenanceConfigSnapshotExpirationState =
   | "enabled"
   | "disabled";
+const NamespacesTablesMaintenanceConfigsGetResponseMaintenanceConfigSnapshotExpirationState =
+  S.String;
+
 export interface NamespacesTablesMaintenanceConfigsGetResponseMaintenanceConfigSnapshotExpiration {
   /** Specifies the maximum age for snapshots. */
   maxSnapshotAge: string;
@@ -216,6 +300,12 @@ export interface NamespacesTablesMaintenanceConfigsGetResponseMaintenanceConfigS
   /** Earliest time when the scheduler can claim this operation. Null when disabled. */
   nextEligibleAt?: string | null;
 }
+const NamespacesTablesMaintenanceConfigsGetResponseMaintenanceConfigSnapshotExpiration =
+  /*@__PURE__*/ __L.at(
+    __c1,
+    7,
+  ) as any as S.Schema<NamespacesTablesMaintenanceConfigsGetResponseMaintenanceConfigSnapshotExpiration>;
+
 export interface NamespacesTablesMaintenanceConfigsGetResponseMaintenanceConfig {
   /** Configures compaction settings for table optimization. */
   compaction?: NamespacesTablesMaintenanceConfigsGetResponseMaintenanceConfigCompaction | null;
@@ -223,28 +313,58 @@ export interface NamespacesTablesMaintenanceConfigsGetResponseMaintenanceConfig 
   interval?: string | null;
   snapshotExpiration?: NamespacesTablesMaintenanceConfigsGetResponseMaintenanceConfigSnapshotExpiration | null;
 }
+const NamespacesTablesMaintenanceConfigsGetResponseMaintenanceConfig = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<NamespacesTablesMaintenanceConfigsGetResponseMaintenanceConfig>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetNamespaceTableMaintenanceConfigResponse {
   /** Configures maintenance for the table. */
   maintenanceConfig: NamespacesTablesMaintenanceConfigsGetResponseMaintenanceConfig;
 }
+const GetNamespaceTableMaintenanceConfigResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<GetNamespaceTableMaintenanceConfigResponse>;
+
 export interface GetR2DataCatalogRequest {
   /** Use this to identify the account. */
   accountId: string;
   /** Specifies the R2 bucket name. */
   bucketName: string;
 }
+const GetR2DataCatalogRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<GetR2DataCatalogRequest>;
+
 export type GetResponseStatus = "active" | "inactive";
+const GetResponseStatus = S.String;
+
 export type GetResponseCredentialStatus = "present" | "absent";
+const GetResponseCredentialStatus = S.String;
+
 export type GetResponseMaintenanceConfigCompactionState = "enabled" | "disabled";
+const GetResponseMaintenanceConfigCompactionState = S.String;
+
 export type GetResponseMaintenanceConfigCompactionTargetSizeMb = "64" | "128" | "256" | "512";
+const GetResponseMaintenanceConfigCompactionTargetSizeMb = S.String;
+
 export interface GetResponseMaintenanceConfigCompaction {
   /** Specifies the state of maintenance operations. */
   state: GetResponseMaintenanceConfigCompactionState;
   /** Sets the target file size for compaction in megabytes. Defaults to "128". */
   targetSizeMb: GetResponseMaintenanceConfigCompactionTargetSizeMb;
 }
+const GetResponseMaintenanceConfigCompaction = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<GetResponseMaintenanceConfigCompaction>;
+
 export type GetResponseMaintenanceConfigSnapshotExpirationState = "enabled" | "disabled";
+const GetResponseMaintenanceConfigSnapshotExpirationState = S.String;
+
 export interface GetResponseMaintenanceConfigSnapshotExpiration {
   /** Specifies the maximum age for snapshots. The system deletes snapshots older than this age. Format: where unit is d (days), h (hours), m (minutes), or s (seconds). Examples: "7d" (7 days), "48h" (48 hours), "2880m" (2,880 minutes). Defaults to "7d". */
   maxSnapshotAge: string;
@@ -253,6 +373,11 @@ export interface GetResponseMaintenanceConfigSnapshotExpiration {
   /** Specifies the state of maintenance operations. */
   state: GetResponseMaintenanceConfigSnapshotExpirationState;
 }
+const GetResponseMaintenanceConfigSnapshotExpiration = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<GetResponseMaintenanceConfigSnapshotExpiration>;
+
 export interface GetResponseMaintenanceConfig {
   /** Configures compaction for catalog maintenance. */
   compaction?: GetResponseMaintenanceConfigCompaction | null;
@@ -261,6 +386,11 @@ export interface GetResponseMaintenanceConfig {
   /** Configures snapshot expiration settings. */
   snapshotExpiration?: GetResponseMaintenanceConfigSnapshotExpiration | null;
 }
+const GetResponseMaintenanceConfig = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<GetResponseMaintenanceConfig>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetR2DataCatalogResponse {
   /** Use this to uniquely identify the catalog. */
@@ -276,6 +406,11 @@ export interface GetR2DataCatalogResponse {
   /** Configures maintenance for the catalog. */
   maintenanceConfig?: GetResponseMaintenanceConfig | null;
 }
+const GetR2DataCatalogResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<GetR2DataCatalogResponse>;
+
 export interface ListNamespacesRequest {
   /** Use this to identify the account. */
   accountId: string;
@@ -292,9 +427,27 @@ export interface ListNamespacesRequest {
   /** Whether to include namespace UUIDs in the response. Set to true to receive the namespace_uuids array. */
   returnUuids?: boolean;
 }
+const ListNamespacesRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<ListNamespacesRequest>;
+
 export type NamespacesListResponseNamespacesItemList = Array<string>;
+const NamespacesListResponseNamespacesItemList = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<NamespacesListResponseNamespacesItemList>;
+
 export type NamespacesListResponseNamespacesList = Array<NamespacesListResponseNamespacesItemList>;
+const NamespacesListResponseNamespacesList = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<NamespacesListResponseNamespacesList>;
+
 export type NamespacesListResponseDetailsItemNamespaceList = Array<string>;
+const NamespacesListResponseDetailsItemNamespaceList =
+  NamespacesListResponseNamespacesItemList as any as S.Schema<NamespacesListResponseDetailsItemNamespaceList>;
+
 export interface NamespacesListResponseDetailsItem {
   /** Specifies the hierarchical namespace parts as an array of strings. For example, ["bronze", "analytics"] represents the namespace "bronze.analytics". */
   namespace: NamespacesListResponseDetailsItemNamespaceList;
@@ -305,8 +458,21 @@ export interface NamespacesListResponseDetailsItem {
   /** Shows the last update timestamp in ISO 8601 format. Null if never updated. */
   updatedAt?: string | null;
 }
+const NamespacesListResponseDetailsItem = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<NamespacesListResponseDetailsItem>;
+
 export type NamespacesListResponseDetailsList = Array<NamespacesListResponseDetailsItem>;
+const NamespacesListResponseDetailsList = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<NamespacesListResponseDetailsList>;
+
 export type NamespacesListResponseNamespaceUuidsList = Array<string>;
+const NamespacesListResponseNamespaceUuidsList =
+  NamespacesListResponseNamespacesItemList as any as S.Schema<NamespacesListResponseNamespaceUuidsList>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface ListNamespacesResponse {
   /** Lists namespaces in the catalog. */
@@ -318,6 +484,11 @@ export interface ListNamespacesResponse {
   /** Use this opaque token to fetch the next page of results. A null or absent value indicates the last page. */
   nextPageToken?: string | null;
 }
+const ListNamespacesResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<ListNamespacesResponse>;
+
 export interface ListNamespaceTablesRequest {
   /** Use this to identify the account. */
   accountId: string;
@@ -333,15 +504,33 @@ export interface ListNamespaceTablesRequest {
   /** Whether to include table UUIDs in the response. Set to true to receive the table_uuids array. */
   returnUuids?: boolean;
 }
+const ListNamespaceTablesRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<ListNamespaceTablesRequest>;
+
 export type NamespacesTablesListResponseIdentifiersItemNamespaceList = Array<string>;
+const NamespacesTablesListResponseIdentifiersItemNamespaceList =
+  NamespacesListResponseNamespacesItemList as any as S.Schema<NamespacesTablesListResponseIdentifiersItemNamespaceList>;
+
 export interface NamespacesTablesListResponseIdentifiersItem {
   /** Specifies the table name. */
   name: string;
   /** Specifies the hierarchical namespace parts as an array of strings. For example, ["bronze", "analytics"] represents the namespace "bronze.analytics". */
   namespace: NamespacesTablesListResponseIdentifiersItemNamespaceList;
 }
+const NamespacesTablesListResponseIdentifiersItem = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<NamespacesTablesListResponseIdentifiersItem>;
+
 export type NamespacesTablesListResponseIdentifiersList =
   Array<NamespacesTablesListResponseIdentifiersItem>;
+const NamespacesTablesListResponseIdentifiersList = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<NamespacesTablesListResponseIdentifiersList>;
+
 export type NamespacesTablesListResponseDetailsItemIdentifierNamespaceList = Array<string>;
 export interface NamespacesTablesListResponseDetailsItemIdentifier {
   /** Specifies the table name. */
@@ -349,6 +538,9 @@ export interface NamespacesTablesListResponseDetailsItemIdentifier {
   /** Specifies the hierarchical namespace parts as an array of strings. For example, ["bronze", "analytics"] represents the namespace "bronze.analytics". */
   namespace: NamespacesTablesListResponseDetailsItemIdentifierNamespaceList;
 }
+const NamespacesTablesListResponseDetailsItemIdentifier =
+  NamespacesTablesListResponseIdentifiersItem as any as S.Schema<NamespacesTablesListResponseDetailsItemIdentifier>;
+
 export interface NamespacesTablesListResponseDetailsItem {
   /** Specifies a unique table identifier within a catalog. */
   identifier: NamespacesTablesListResponseDetailsItemIdentifier;
@@ -363,9 +555,22 @@ export interface NamespacesTablesListResponseDetailsItem {
   /** Shows the last update timestamp in ISO 8601 format. Null if never updated. */
   updatedAt?: string | null;
 }
+const NamespacesTablesListResponseDetailsItem = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<NamespacesTablesListResponseDetailsItem>;
+
 export type NamespacesTablesListResponseDetailsList =
   Array<NamespacesTablesListResponseDetailsItem>;
+const NamespacesTablesListResponseDetailsList = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<NamespacesTablesListResponseDetailsList>;
+
 export type NamespacesTablesListResponseTableUuidsList = Array<string>;
+const NamespacesTablesListResponseTableUuidsList =
+  NamespacesListResponseNamespacesItemList as any as S.Schema<NamespacesTablesListResponseTableUuidsList>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface ListNamespaceTablesResponse {
   /** Lists tables in the namespace. */
@@ -377,24 +582,47 @@ export interface ListNamespaceTablesResponse {
   /** Contains UUIDs for each table when return_uuids is true. The order corresponds to the identifiers array. */
   tableUuids?: NamespacesTablesListResponseTableUuidsList | null;
 }
+const ListNamespaceTablesResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<ListNamespaceTablesResponse>;
+
 export interface ListR2DataCatalogsRequest {
   /** Use this to identify the account. */
   accountId: string;
 }
+const ListR2DataCatalogsRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<ListR2DataCatalogsRequest>;
+
 export type ListResponseWarehousesItemStatus = "active" | "inactive";
+const ListResponseWarehousesItemStatus = S.String;
+
 export type ListResponseWarehousesItemCredentialStatus = "present" | "absent";
+const ListResponseWarehousesItemCredentialStatus = S.String;
+
 export type ListResponseWarehousesItemMaintenanceConfigCompactionState = "enabled" | "disabled";
+const ListResponseWarehousesItemMaintenanceConfigCompactionState = S.String;
+
 export type ListResponseWarehousesItemMaintenanceConfigCompactionTargetSizeMb =
   | "64"
   | "128"
   | "256"
   | "512";
+const ListResponseWarehousesItemMaintenanceConfigCompactionTargetSizeMb = S.String;
+
 export interface ListResponseWarehousesItemMaintenanceConfigCompaction {
   /** Specifies the state of maintenance operations. */
   state: ListResponseWarehousesItemMaintenanceConfigCompactionState;
   /** Sets the target file size for compaction in megabytes. Defaults to "128". */
   targetSizeMb: ListResponseWarehousesItemMaintenanceConfigCompactionTargetSizeMb;
 }
+const ListResponseWarehousesItemMaintenanceConfigCompaction = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<ListResponseWarehousesItemMaintenanceConfigCompaction>;
+
 export type ListResponseWarehousesItemMaintenanceConfigSnapshotExpirationState =
   | "enabled"
   | "disabled";
@@ -406,6 +634,9 @@ export interface ListResponseWarehousesItemMaintenanceConfigSnapshotExpiration {
   /** Specifies the state of maintenance operations. */
   state: ListResponseWarehousesItemMaintenanceConfigSnapshotExpirationState;
 }
+const ListResponseWarehousesItemMaintenanceConfigSnapshotExpiration =
+  MaintenanceConfigsGetResponseMaintenanceConfigSnapshotExpiration as any as S.Schema<ListResponseWarehousesItemMaintenanceConfigSnapshotExpiration>;
+
 export interface ListResponseWarehousesItemMaintenanceConfig {
   /** Configures compaction for catalog maintenance. */
   compaction?: ListResponseWarehousesItemMaintenanceConfigCompaction | null;
@@ -414,6 +645,11 @@ export interface ListResponseWarehousesItemMaintenanceConfig {
   /** Configures snapshot expiration settings. */
   snapshotExpiration?: ListResponseWarehousesItemMaintenanceConfigSnapshotExpiration | null;
 }
+const ListResponseWarehousesItemMaintenanceConfig = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<ListResponseWarehousesItemMaintenanceConfig>;
+
 export interface ListResponseWarehousesItem {
   /** Use this to uniquely identify the catalog. */
   id: string;
@@ -428,21 +664,47 @@ export interface ListResponseWarehousesItem {
   /** Configures maintenance for the catalog. */
   maintenanceConfig?: ListResponseWarehousesItemMaintenanceConfig | null;
 }
+const ListResponseWarehousesItem = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<ListResponseWarehousesItem>;
+
 export type ListResponseWarehousesList = Array<ListResponseWarehousesItem>;
+const ListResponseWarehousesList = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<ListResponseWarehousesList>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface ListR2DataCatalogsResponse {
   /** Lists catalogs in the account. */
   warehouses: ListResponseWarehousesList;
 }
+const ListR2DataCatalogsResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  0,
+) as any as S.Schema<ListR2DataCatalogsResponse>;
+
 export type MaintenanceConfigsUpdateRequestCompactionState = "enabled" | "disabled";
+const MaintenanceConfigsUpdateRequestCompactionState = S.String;
+
 export type MaintenanceConfigsUpdateRequestCompactionTargetSizeMb = "64" | "128" | "256" | "512";
+const MaintenanceConfigsUpdateRequestCompactionTargetSizeMb = S.String;
+
 export interface MaintenanceConfigsUpdateRequestCompaction {
   /** Specifies the state of maintenance operations. */
   state?: MaintenanceConfigsUpdateRequestCompactionState | (string & {});
   /** Sets the target file size for compaction in megabytes. Defaults to "128". */
   targetSizeMb?: MaintenanceConfigsUpdateRequestCompactionTargetSizeMb | (string & {});
 }
+const MaintenanceConfigsUpdateRequestCompaction = /*@__PURE__*/ __L.at(
+  __c5,
+  1,
+) as any as S.Schema<MaintenanceConfigsUpdateRequestCompaction>;
+
 export type MaintenanceConfigsUpdateRequestSnapshotExpirationState = "enabled" | "disabled";
+const MaintenanceConfigsUpdateRequestSnapshotExpirationState = S.String;
+
 export interface MaintenanceConfigsUpdateRequestSnapshotExpiration {
   /** Updates the maximum age for snapshots optionally. */
   maxSnapshotAge?: string;
@@ -451,6 +713,11 @@ export interface MaintenanceConfigsUpdateRequestSnapshotExpiration {
   /** Specifies the state of maintenance operations. */
   state?: MaintenanceConfigsUpdateRequestSnapshotExpirationState | (string & {});
 }
+const MaintenanceConfigsUpdateRequestSnapshotExpiration = /*@__PURE__*/ __L.at(
+  __c5,
+  2,
+) as any as S.Schema<MaintenanceConfigsUpdateRequestSnapshotExpiration>;
+
 export interface UpdateMaintenanceConfigRequest {
   /** Use this to identify the account. */
   accountId: string;
@@ -461,6 +728,11 @@ export interface UpdateMaintenanceConfigRequest {
   /** Updates snapshot expiration configuration (all fields optional). */
   snapshotExpiration?: MaintenanceConfigsUpdateRequestSnapshotExpiration;
 }
+const UpdateMaintenanceConfigRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<UpdateMaintenanceConfigRequest>;
+
 export type MaintenanceConfigsUpdateResponseCompactionState = "enabled" | "disabled";
 export type MaintenanceConfigsUpdateResponseCompactionTargetSizeMb = "64" | "128" | "256" | "512";
 export interface MaintenanceConfigsUpdateResponseCompaction {
@@ -469,6 +741,9 @@ export interface MaintenanceConfigsUpdateResponseCompaction {
   /** Sets the target file size for compaction in megabytes. Defaults to "128". */
   targetSizeMb: MaintenanceConfigsUpdateResponseCompactionTargetSizeMb;
 }
+const MaintenanceConfigsUpdateResponseCompaction =
+  ListResponseWarehousesItemMaintenanceConfigCompaction as any as S.Schema<MaintenanceConfigsUpdateResponseCompaction>;
+
 export type MaintenanceConfigsUpdateResponseSnapshotExpirationState = "enabled" | "disabled";
 export interface MaintenanceConfigsUpdateResponseSnapshotExpiration {
   /** Specifies the maximum age for snapshots. The system deletes snapshots older than this age. Format: where unit is d (days), h (hours), m (minutes), or s (seconds). Examples: "7d" (7 days), "48h" (48 hours), "2880m" (2,880 minutes). Defaults to "7d". */
@@ -478,6 +753,9 @@ export interface MaintenanceConfigsUpdateResponseSnapshotExpiration {
   /** Specifies the state of maintenance operations. */
   state: MaintenanceConfigsUpdateResponseSnapshotExpirationState;
 }
+const MaintenanceConfigsUpdateResponseSnapshotExpiration =
+  GetResponseMaintenanceConfigSnapshotExpiration as any as S.Schema<MaintenanceConfigsUpdateResponseSnapshotExpiration>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UpdateMaintenanceConfigResponse {
   /** Configures compaction for catalog maintenance. */
@@ -487,12 +765,21 @@ export interface UpdateMaintenanceConfigResponse {
   /** Configures snapshot expiration settings. */
   snapshotExpiration?: MaintenanceConfigsUpdateResponseSnapshotExpiration | null;
 }
+const UpdateMaintenanceConfigResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  4,
+) as any as S.Schema<UpdateMaintenanceConfigResponse>;
+
 export type NamespacesTablesMaintenanceConfigsUpdateRequestCompactionState = "enabled" | "disabled";
+const NamespacesTablesMaintenanceConfigsUpdateRequestCompactionState = S.String;
+
 export type NamespacesTablesMaintenanceConfigsUpdateRequestCompactionTargetSizeMb =
   | "64"
   | "128"
   | "256"
   | "512";
+const NamespacesTablesMaintenanceConfigsUpdateRequestCompactionTargetSizeMb = S.String;
+
 export interface NamespacesTablesMaintenanceConfigsUpdateRequestCompaction {
   /** Specifies the state of maintenance operations. */
   state?: NamespacesTablesMaintenanceConfigsUpdateRequestCompactionState | (string & {});
@@ -501,9 +788,16 @@ export interface NamespacesTablesMaintenanceConfigsUpdateRequestCompaction {
     | NamespacesTablesMaintenanceConfigsUpdateRequestCompactionTargetSizeMb
     | (string & {});
 }
+const NamespacesTablesMaintenanceConfigsUpdateRequestCompaction = /*@__PURE__*/ __L.at(
+  __c5,
+  5,
+) as any as S.Schema<NamespacesTablesMaintenanceConfigsUpdateRequestCompaction>;
+
 export type NamespacesTablesMaintenanceConfigsUpdateRequestSnapshotExpirationState =
   | "enabled"
   | "disabled";
+const NamespacesTablesMaintenanceConfigsUpdateRequestSnapshotExpirationState = S.String;
+
 export interface NamespacesTablesMaintenanceConfigsUpdateRequestSnapshotExpiration {
   /** Updates the maximum age for snapshots optionally. */
   maxSnapshotAge?: string;
@@ -512,6 +806,11 @@ export interface NamespacesTablesMaintenanceConfigsUpdateRequestSnapshotExpirati
   /** Specifies the state of maintenance operations. */
   state?: NamespacesTablesMaintenanceConfigsUpdateRequestSnapshotExpirationState | (string & {});
 }
+const NamespacesTablesMaintenanceConfigsUpdateRequestSnapshotExpiration = /*@__PURE__*/ __L.at(
+  __c5,
+  6,
+) as any as S.Schema<NamespacesTablesMaintenanceConfigsUpdateRequestSnapshotExpiration>;
+
 export interface UpdateNamespaceTableMaintenanceConfigRequest {
   /** Use this to identify the account. */
   accountId: string;
@@ -524,14 +823,23 @@ export interface UpdateNamespaceTableMaintenanceConfigRequest {
   /** Updates snapshot expiration configuration (all fields optional). */
   snapshotExpiration?: NamespacesTablesMaintenanceConfigsUpdateRequestSnapshotExpiration;
 }
+const UpdateNamespaceTableMaintenanceConfigRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  7,
+) as any as S.Schema<UpdateNamespaceTableMaintenanceConfigRequest>;
+
 export type NamespacesTablesMaintenanceConfigsUpdateResponseCompactionState =
   | "enabled"
   | "disabled";
+const NamespacesTablesMaintenanceConfigsUpdateResponseCompactionState = S.String;
+
 export type NamespacesTablesMaintenanceConfigsUpdateResponseCompactionTargetSizeMb =
   | "64"
   | "128"
   | "256"
   | "512";
+const NamespacesTablesMaintenanceConfigsUpdateResponseCompactionTargetSizeMb = S.String;
+
 export interface NamespacesTablesMaintenanceConfigsUpdateResponseCompaction {
   /** Specifies the state of maintenance operations. */
   state: NamespacesTablesMaintenanceConfigsUpdateResponseCompactionState;
@@ -540,6 +848,11 @@ export interface NamespacesTablesMaintenanceConfigsUpdateResponseCompaction {
   /** Earliest time when the scheduler can claim this operation. Null when disabled. */
   nextEligibleAt?: string | null;
 }
+const NamespacesTablesMaintenanceConfigsUpdateResponseCompaction = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<NamespacesTablesMaintenanceConfigsUpdateResponseCompaction>;
+
 export type NamespacesTablesMaintenanceConfigsUpdateResponseSnapshotExpirationState =
   | "enabled"
   | "disabled";
@@ -553,6 +866,9 @@ export interface NamespacesTablesMaintenanceConfigsUpdateResponseSnapshotExpirat
   /** Earliest time when the scheduler can claim this operation. Null when disabled. */
   nextEligibleAt?: string | null;
 }
+const NamespacesTablesMaintenanceConfigsUpdateResponseSnapshotExpiration =
+  NamespacesTablesMaintenanceConfigsGetResponseMaintenanceConfigSnapshotExpiration as any as S.Schema<NamespacesTablesMaintenanceConfigsUpdateResponseSnapshotExpiration>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UpdateNamespaceTableMaintenanceConfigResponse {
   /** Configures compaction settings for table optimization. */
@@ -561,6 +877,11 @@ export interface UpdateNamespaceTableMaintenanceConfigResponse {
   interval?: string | null;
   snapshotExpiration?: NamespacesTablesMaintenanceConfigsUpdateResponseSnapshotExpiration | null;
 }
+const UpdateNamespaceTableMaintenanceConfigResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  1,
+) as any as S.Schema<UpdateNamespaceTableMaintenanceConfigResponse>;
+
 export type CreateCredentialError = InvalidRoute | InvalidCredential | CloudflareOpError;
 /** Store authentication credentials for a catalog. These credentials are used to authenticate with R2 storage when performing catalog operations. */
 export const createCredential: API.OperationMethod<
@@ -569,8 +890,8 @@ export const createCredential: API.OperationMethod<
   CreateCredentialError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<CreateCredentialRequest>,
-  output: __S(1) as any as S.Schema<CreateCredentialResponse>,
+  input: CreateCredentialRequest,
+  output: CreateCredentialResponse,
   errors: [InvalidRoute, InvalidCredential, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -584,8 +905,8 @@ export const Delete: API.OperationMethod<
   DeleteError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2) as any as S.Schema<DeleteRequest>,
-  output: __S(3) as any as S.Schema<DeleteResponse>,
+  input: DeleteRequest,
+  output: DeleteResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -604,8 +925,8 @@ export const disableR2DataCatalog: API.OperationMethod<
   DisableR2DataCatalogError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4) as any as S.Schema<DisableR2DataCatalogRequest>,
-  output: __S(5) as any as S.Schema<DisableR2DataCatalogResponse>,
+  input: DisableR2DataCatalogRequest,
+  output: DisableR2DataCatalogResponse,
   errors: [
     NoSuchBucket,
     InvalidRoute,
@@ -626,8 +947,8 @@ export const enableR2DataCatalog: API.OperationMethod<
   EnableR2DataCatalogError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6) as any as S.Schema<EnableR2DataCatalogRequest>,
-  output: __S(7) as any as S.Schema<EnableR2DataCatalogResponse>,
+  input: EnableR2DataCatalogRequest,
+  output: EnableR2DataCatalogResponse,
   errors: [NoSuchBucket, InvalidRoute, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -645,8 +966,8 @@ export const getMaintenanceConfig: API.OperationMethod<
   GetMaintenanceConfigError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8) as any as S.Schema<GetMaintenanceConfigRequest>,
-  output: __S(12) as any as S.Schema<GetMaintenanceConfigResponse>,
+  input: GetMaintenanceConfigRequest,
+  output: GetMaintenanceConfigResponse,
   errors: [
     InvalidRoute,
     WarehouseInactive,
@@ -670,8 +991,8 @@ export const getNamespaceTableMaintenanceConfig: API.OperationMethod<
   GetNamespaceTableMaintenanceConfigError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13) as any as S.Schema<GetNamespaceTableMaintenanceConfigRequest>,
-  output: __S(17) as any as S.Schema<GetNamespaceTableMaintenanceConfigResponse>,
+  input: GetNamespaceTableMaintenanceConfigRequest,
+  output: GetNamespaceTableMaintenanceConfigResponse,
   errors: [TableNotFound, InvalidRoute, WarehouseInactive, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -690,8 +1011,8 @@ export const getR2DataCatalog: API.OperationMethod<
   GetR2DataCatalogError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18) as any as S.Schema<GetR2DataCatalogRequest>,
-  output: __S(22) as any as S.Schema<GetR2DataCatalogResponse>,
+  input: GetR2DataCatalogRequest,
+  output: GetR2DataCatalogResponse,
   errors: [
     NoSuchBucket,
     InvalidRoute,
@@ -716,8 +1037,8 @@ export const listNamespaces: API.OperationMethod<
   ListNamespacesError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23) as any as S.Schema<ListNamespacesRequest>,
-  output: __S(28) as any as S.Schema<ListNamespacesResponse>,
+  input: ListNamespacesRequest,
+  output: ListNamespacesResponse,
   errors: [
     InvalidRoute,
     WarehouseInactive,
@@ -737,8 +1058,8 @@ export const listNamespaceTables: API.OperationMethod<
   ListNamespaceTablesError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29) as any as S.Schema<ListNamespaceTablesRequest>,
-  output: __S(34) as any as S.Schema<ListNamespaceTablesResponse>,
+  input: ListNamespaceTablesRequest,
+  output: ListNamespaceTablesResponse,
   errors: [InvalidRoute, WarehouseInactive, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -752,8 +1073,8 @@ export const listR2DataCatalogs: API.OperationMethod<
   ListR2DataCatalogsError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35) as any as S.Schema<ListR2DataCatalogsRequest>,
-  output: __S(40) as any as S.Schema<ListR2DataCatalogsResponse>,
+  input: ListR2DataCatalogsRequest,
+  output: ListR2DataCatalogsResponse,
   errors: [InvalidRoute, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -767,8 +1088,8 @@ export const updateMaintenanceConfig: API.OperationMethod<
   UpdateMaintenanceConfigError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43) as any as S.Schema<UpdateMaintenanceConfigRequest>,
-  output: __S(44) as any as S.Schema<UpdateMaintenanceConfigResponse>,
+  input: UpdateMaintenanceConfigRequest,
+  output: UpdateMaintenanceConfigResponse,
   errors: [InvalidRoute, WarehouseInactive, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -786,8 +1107,8 @@ export const updateNamespaceTableMaintenanceConfig: API.OperationMethod<
   UpdateNamespaceTableMaintenanceConfigError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47) as any as S.Schema<UpdateNamespaceTableMaintenanceConfigRequest>,
-  output: __S(49) as any as S.Schema<UpdateNamespaceTableMaintenanceConfigResponse>,
+  input: UpdateNamespaceTableMaintenanceConfigRequest,
+  output: UpdateNamespaceTableMaintenanceConfigResponse,
   errors: [TableNotFound, InvalidRoute, WarehouseInactive, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -907,8 +1228,10 @@ function __c1(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          state: S.String,
-          targetSizeMb: S.String.pipe(T.Body("target_size_mb")),
+          state: MaintenanceConfigsGetResponseMaintenanceConfigCompactionState,
+          targetSizeMb: MaintenanceConfigsGetResponseMaintenanceConfigCompactionTargetSizeMb.pipe(
+            T.Body("target_size_mb"),
+          ),
         }),
       ).annotate({
         identifier: "MaintenanceConfigsGetResponseMaintenanceConfigCompaction",
@@ -918,7 +1241,7 @@ function __c1(j: number): any {
         S.Struct({
           maxSnapshotAge: S.String.pipe(T.Body("max_snapshot_age")),
           minSnapshotsToKeep: S.Number.pipe(T.Body("min_snapshots_to_keep")),
-          state: S.String,
+          state: MaintenanceConfigsGetResponseMaintenanceConfigSnapshotExpirationState,
         }),
       ).annotate({
         identifier: "MaintenanceConfigsGetResponseMaintenanceConfigSnapshotExpiration",
@@ -926,9 +1249,15 @@ function __c1(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          compaction: S.optional(S.NullOr(__S(9))),
+          compaction: S.optional(
+            S.NullOr(MaintenanceConfigsGetResponseMaintenanceConfigCompaction),
+          ),
           interval: S.optional(S.NullOr(S.String)),
-          snapshotExpiration: S.optional(S.NullOr(__S(10)).pipe(T.Body("snapshot_expiration"))),
+          snapshotExpiration: S.optional(
+            S.NullOr(MaintenanceConfigsGetResponseMaintenanceConfigSnapshotExpiration).pipe(
+              T.Body("snapshot_expiration"),
+            ),
+          ),
         }),
       ).annotate({
         identifier: "MaintenanceConfigsGetResponseMaintenanceConfig",
@@ -936,8 +1265,12 @@ function __c1(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          credentialStatus: S.String.pipe(T.Body("credential_status")),
-          maintenanceConfig: __S(11).pipe(T.Body("maintenance_config")),
+          credentialStatus: MaintenanceConfigsGetResponseCredentialStatus.pipe(
+            T.Body("credential_status"),
+          ),
+          maintenanceConfig: MaintenanceConfigsGetResponseMaintenanceConfig.pipe(
+            T.Body("maintenance_config"),
+          ),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "GetMaintenanceConfigResponse",
@@ -964,8 +1297,11 @@ function __c1(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          state: S.String,
-          targetSizeMb: S.String.pipe(T.Body("target_size_mb")),
+          state: NamespacesTablesMaintenanceConfigsGetResponseMaintenanceConfigCompactionState,
+          targetSizeMb:
+            NamespacesTablesMaintenanceConfigsGetResponseMaintenanceConfigCompactionTargetSizeMb.pipe(
+              T.Body("target_size_mb"),
+            ),
           nextEligibleAt: S.optional(S.NullOr(S.String).pipe(T.Body("next_eligible_at"))),
         }),
       ).annotate({
@@ -976,7 +1312,8 @@ function __c1(j: number): any {
         S.Struct({
           maxSnapshotAge: S.String.pipe(T.Body("max_snapshot_age")),
           minSnapshotsToKeep: S.Number.pipe(T.Body("min_snapshots_to_keep")),
-          state: S.String,
+          state:
+            NamespacesTablesMaintenanceConfigsGetResponseMaintenanceConfigSnapshotExpirationState,
           nextEligibleAt: S.optional(S.NullOr(S.String).pipe(T.Body("next_eligible_at"))),
         }),
       ).annotate({
@@ -990,9 +1327,15 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          compaction: S.optional(S.NullOr(__S(14))),
+          compaction: S.optional(
+            S.NullOr(NamespacesTablesMaintenanceConfigsGetResponseMaintenanceConfigCompaction),
+          ),
           interval: S.optional(S.NullOr(S.String)),
-          snapshotExpiration: S.optional(S.NullOr(__S(15)).pipe(T.Body("snapshot_expiration"))),
+          snapshotExpiration: S.optional(
+            S.NullOr(
+              NamespacesTablesMaintenanceConfigsGetResponseMaintenanceConfigSnapshotExpiration,
+            ).pipe(T.Body("snapshot_expiration")),
+          ),
         }),
       ).annotate({
         identifier: "NamespacesTablesMaintenanceConfigsGetResponseMaintenanceConfig",
@@ -1000,7 +1343,9 @@ function __c2(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          maintenanceConfig: __S(16).pipe(T.Body("maintenance_config")),
+          maintenanceConfig: NamespacesTablesMaintenanceConfigsGetResponseMaintenanceConfig.pipe(
+            T.Body("maintenance_config"),
+          ),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "GetNamespaceTableMaintenanceConfigResponse",
@@ -1023,8 +1368,10 @@ function __c2(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          state: S.String,
-          targetSizeMb: S.String.pipe(T.Body("target_size_mb")),
+          state: GetResponseMaintenanceConfigCompactionState,
+          targetSizeMb: GetResponseMaintenanceConfigCompactionTargetSizeMb.pipe(
+            T.Body("target_size_mb"),
+          ),
         }),
       ).annotate({
         identifier: "GetResponseMaintenanceConfigCompaction",
@@ -1034,7 +1381,7 @@ function __c2(j: number): any {
         S.Struct({
           maxSnapshotAge: S.String.pipe(T.Body("max_snapshot_age")),
           minSnapshotsToKeep: S.Number.pipe(T.Body("min_snapshots_to_keep")),
-          state: S.String,
+          state: GetResponseMaintenanceConfigSnapshotExpirationState,
         }),
       ).annotate({
         identifier: "GetResponseMaintenanceConfigSnapshotExpiration",
@@ -1042,9 +1389,13 @@ function __c2(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          compaction: S.optional(S.NullOr(__S(19))),
+          compaction: S.optional(S.NullOr(GetResponseMaintenanceConfigCompaction)),
           interval: S.optional(S.NullOr(S.String)),
-          snapshotExpiration: S.optional(S.NullOr(__S(20)).pipe(T.Body("snapshot_expiration"))),
+          snapshotExpiration: S.optional(
+            S.NullOr(GetResponseMaintenanceConfigSnapshotExpiration).pipe(
+              T.Body("snapshot_expiration"),
+            ),
+          ),
         }),
       ).annotate({
         identifier: "GetResponseMaintenanceConfig",
@@ -1055,9 +1406,13 @@ function __c2(j: number): any {
           id: S.String,
           bucket: S.String,
           name: S.String,
-          status: S.String,
-          credentialStatus: S.optional(S.NullOr(S.String).pipe(T.Body("credential_status"))),
-          maintenanceConfig: S.optional(S.NullOr(__S(21)).pipe(T.Body("maintenance_config"))),
+          status: GetResponseStatus,
+          credentialStatus: S.optional(
+            S.NullOr(GetResponseCredentialStatus).pipe(T.Body("credential_status")),
+          ),
+          maintenanceConfig: S.optional(
+            S.NullOr(GetResponseMaintenanceConfig).pipe(T.Body("maintenance_config")),
+          ),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetR2DataCatalogResponse" });
     case 7:
@@ -1087,11 +1442,11 @@ function __c3(j: number): any {
     case 0:
       return S.Array(S.String);
     case 1:
-      return S.Array(__S(24));
+      return S.Array(NamespacesListResponseNamespacesItemList);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          namespace: __S(24),
+          namespace: NamespacesListResponseDetailsItemNamespaceList,
           namespaceUuid: S.String.pipe(T.Body("namespace_uuid")),
           createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
           updatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("updated_at"))),
@@ -1100,13 +1455,15 @@ function __c3(j: number): any {
         identifier: "NamespacesListResponseDetailsItem",
       });
     case 3:
-      return S.Array(__S(26));
+      return S.Array(NamespacesListResponseDetailsItem);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          namespaces: __S(25),
-          details: S.optional(S.NullOr(__S(27))),
-          namespaceUuids: S.optional(S.NullOr(__S(24)).pipe(T.Body("namespace_uuids"))),
+          namespaces: NamespacesListResponseNamespacesList,
+          details: S.optional(S.NullOr(NamespacesListResponseDetailsList)),
+          namespaceUuids: S.optional(
+            S.NullOr(NamespacesListResponseNamespaceUuidsList).pipe(T.Body("namespace_uuids")),
+          ),
           nextPageToken: S.optional(S.NullOr(S.String).pipe(T.Body("next_page_token"))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListNamespacesResponse" });
@@ -1136,13 +1493,13 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          namespace: __S(24),
+          namespace: NamespacesTablesListResponseIdentifiersItemNamespaceList,
         }),
       ).annotate({
         identifier: "NamespacesTablesListResponseIdentifiersItem",
       });
     case 7:
-      return S.Array(__S(30));
+      return S.Array(NamespacesTablesListResponseIdentifiersItem);
   }
 }
 function __c4(j: number): any {
@@ -1150,7 +1507,7 @@ function __c4(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          identifier: __S(30),
+          identifier: NamespacesTablesListResponseDetailsItemIdentifier,
           tableUuid: S.String.pipe(T.Body("table_uuid")),
           createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
           location: S.optional(S.NullOr(S.String)),
@@ -1161,14 +1518,16 @@ function __c4(j: number): any {
         identifier: "NamespacesTablesListResponseDetailsItem",
       });
     case 1:
-      return S.Array(__S(32));
+      return S.Array(NamespacesTablesListResponseDetailsItem);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          identifiers: __S(31),
-          details: S.optional(S.NullOr(__S(33))),
+          identifiers: NamespacesTablesListResponseIdentifiersList,
+          details: S.optional(S.NullOr(NamespacesTablesListResponseDetailsList)),
           nextPageToken: S.optional(S.NullOr(S.String).pipe(T.Body("next_page_token"))),
-          tableUuids: S.optional(S.NullOr(__S(24)).pipe(T.Body("table_uuids"))),
+          tableUuids: S.optional(
+            S.NullOr(NamespacesTablesListResponseTableUuidsList).pipe(T.Body("table_uuids")),
+          ),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "ListNamespaceTablesResponse",
@@ -1186,8 +1545,10 @@ function __c4(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          state: S.String,
-          targetSizeMb: S.String.pipe(T.Body("target_size_mb")),
+          state: ListResponseWarehousesItemMaintenanceConfigCompactionState,
+          targetSizeMb: ListResponseWarehousesItemMaintenanceConfigCompactionTargetSizeMb.pipe(
+            T.Body("target_size_mb"),
+          ),
         }),
       ).annotate({
         identifier: "ListResponseWarehousesItemMaintenanceConfigCompaction",
@@ -1195,9 +1556,13 @@ function __c4(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          compaction: S.optional(S.NullOr(__S(36))),
+          compaction: S.optional(S.NullOr(ListResponseWarehousesItemMaintenanceConfigCompaction)),
           interval: S.optional(S.NullOr(S.String)),
-          snapshotExpiration: S.optional(S.NullOr(__S(10)).pipe(T.Body("snapshot_expiration"))),
+          snapshotExpiration: S.optional(
+            S.NullOr(ListResponseWarehousesItemMaintenanceConfigSnapshotExpiration).pipe(
+              T.Body("snapshot_expiration"),
+            ),
+          ),
         }),
       ).annotate({
         identifier: "ListResponseWarehousesItemMaintenanceConfig",
@@ -1208,15 +1573,21 @@ function __c4(j: number): any {
           id: S.String,
           bucket: S.String,
           name: S.String,
-          status: S.String,
-          credentialStatus: S.optional(S.NullOr(S.String).pipe(T.Body("credential_status"))),
-          maintenanceConfig: S.optional(S.NullOr(__S(37)).pipe(T.Body("maintenance_config"))),
+          status: ListResponseWarehousesItemStatus,
+          credentialStatus: S.optional(
+            S.NullOr(ListResponseWarehousesItemCredentialStatus).pipe(T.Body("credential_status")),
+          ),
+          maintenanceConfig: S.optional(
+            S.NullOr(ListResponseWarehousesItemMaintenanceConfig).pipe(
+              T.Body("maintenance_config"),
+            ),
+          ),
         }),
       ).annotate({
         identifier: "ListResponseWarehousesItem",
       });
     case 7:
-      return S.Array(__S(38));
+      return S.Array(ListResponseWarehousesItem);
   }
 }
 function __c5(j: number): any {
@@ -1224,7 +1595,7 @@ function __c5(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          warehouses: __S(39),
+          warehouses: ListResponseWarehousesList,
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "ListR2DataCatalogsResponse",
@@ -1232,8 +1603,10 @@ function __c5(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          state: S.optional(S.String),
-          targetSizeMb: S.optional(S.String.pipe(T.Body("target_size_mb"))),
+          state: S.optional(MaintenanceConfigsUpdateRequestCompactionState),
+          targetSizeMb: S.optional(
+            MaintenanceConfigsUpdateRequestCompactionTargetSizeMb.pipe(T.Body("target_size_mb")),
+          ),
         }),
       ).annotate({
         identifier: "MaintenanceConfigsUpdateRequestCompaction",
@@ -1243,7 +1616,7 @@ function __c5(j: number): any {
         S.Struct({
           maxSnapshotAge: S.optional(S.String.pipe(T.Body("max_snapshot_age"))),
           minSnapshotsToKeep: S.optional(S.Number.pipe(T.Body("min_snapshots_to_keep"))),
-          state: S.optional(S.String),
+          state: S.optional(MaintenanceConfigsUpdateRequestSnapshotExpirationState),
         }),
       ).annotate({
         identifier: "MaintenanceConfigsUpdateRequestSnapshotExpiration",
@@ -1253,8 +1626,10 @@ function __c5(j: number): any {
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           bucketName: S.String.pipe(T.Label("bucket_name")),
-          compaction: S.optional(__S(41)),
-          snapshotExpiration: S.optional(__S(42).pipe(T.Body("snapshot_expiration"))),
+          compaction: S.optional(MaintenanceConfigsUpdateRequestCompaction),
+          snapshotExpiration: S.optional(
+            MaintenanceConfigsUpdateRequestSnapshotExpiration.pipe(T.Body("snapshot_expiration")),
+          ),
         })
           .pipe(
             T.Http({
@@ -1270,9 +1645,13 @@ function __c5(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          compaction: S.optional(S.NullOr(__S(36))),
+          compaction: S.optional(S.NullOr(MaintenanceConfigsUpdateResponseCompaction)),
           interval: S.optional(S.NullOr(S.String)),
-          snapshotExpiration: S.optional(S.NullOr(__S(20)).pipe(T.Body("snapshot_expiration"))),
+          snapshotExpiration: S.optional(
+            S.NullOr(MaintenanceConfigsUpdateResponseSnapshotExpiration).pipe(
+              T.Body("snapshot_expiration"),
+            ),
+          ),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "UpdateMaintenanceConfigResponse",
@@ -1280,8 +1659,12 @@ function __c5(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          state: S.optional(S.String),
-          targetSizeMb: S.optional(S.String.pipe(T.Body("target_size_mb"))),
+          state: S.optional(NamespacesTablesMaintenanceConfigsUpdateRequestCompactionState),
+          targetSizeMb: S.optional(
+            NamespacesTablesMaintenanceConfigsUpdateRequestCompactionTargetSizeMb.pipe(
+              T.Body("target_size_mb"),
+            ),
+          ),
         }),
       ).annotate({
         identifier: "NamespacesTablesMaintenanceConfigsUpdateRequestCompaction",
@@ -1291,7 +1674,7 @@ function __c5(j: number): any {
         S.Struct({
           maxSnapshotAge: S.optional(S.String.pipe(T.Body("max_snapshot_age"))),
           minSnapshotsToKeep: S.optional(S.Number.pipe(T.Body("min_snapshots_to_keep"))),
-          state: S.optional(S.String),
+          state: S.optional(NamespacesTablesMaintenanceConfigsUpdateRequestSnapshotExpirationState),
         }),
       ).annotate({
         identifier: "NamespacesTablesMaintenanceConfigsUpdateRequestSnapshotExpiration",
@@ -1303,8 +1686,12 @@ function __c5(j: number): any {
           bucketName: S.String.pipe(T.Label("bucket_name")),
           namespace: S.String.pipe(T.Label()),
           tableName: S.String.pipe(T.Label("table_name")),
-          compaction: S.optional(__S(45)),
-          snapshotExpiration: S.optional(__S(46).pipe(T.Body("snapshot_expiration"))),
+          compaction: S.optional(NamespacesTablesMaintenanceConfigsUpdateRequestCompaction),
+          snapshotExpiration: S.optional(
+            NamespacesTablesMaintenanceConfigsUpdateRequestSnapshotExpiration.pipe(
+              T.Body("snapshot_expiration"),
+            ),
+          ),
         })
           .pipe(
             T.Http({
@@ -1324,8 +1711,10 @@ function __c6(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          state: S.String,
-          targetSizeMb: S.String.pipe(T.Body("target_size_mb")),
+          state: NamespacesTablesMaintenanceConfigsUpdateResponseCompactionState,
+          targetSizeMb: NamespacesTablesMaintenanceConfigsUpdateResponseCompactionTargetSizeMb.pipe(
+            T.Body("target_size_mb"),
+          ),
           nextEligibleAt: S.optional(S.NullOr(S.String).pipe(T.Body("next_eligible_at"))),
         }),
       ).annotate({
@@ -1334,35 +1723,18 @@ function __c6(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          compaction: S.optional(S.NullOr(__S(48))),
+          compaction: S.optional(
+            S.NullOr(NamespacesTablesMaintenanceConfigsUpdateResponseCompaction),
+          ),
           interval: S.optional(S.NullOr(S.String)),
-          snapshotExpiration: S.optional(S.NullOr(__S(15)).pipe(T.Body("snapshot_expiration"))),
+          snapshotExpiration: S.optional(
+            S.NullOr(NamespacesTablesMaintenanceConfigsUpdateResponseSnapshotExpiration).pipe(
+              T.Body("snapshot_expiration"),
+            ),
+          ),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "UpdateNamespaceTableMaintenanceConfigResponse",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
   }
 }

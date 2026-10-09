@@ -7,19 +7,26 @@ import { UnknownDaytonaError } from "../errors.ts";
 import { DaytonaProtocol, type DaytonaOpError, type DaytonaOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { DaytonaOpError, DaytonaOpContext };
 
 /** files to add (use . for all files) */
 export type AddFilesRequestFilesList = Array<string>;
+const AddFilesRequestFilesList = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<AddFilesRequestFilesList>;
+
 export interface AddFilesRequest {
   /** files to add (use . for all files) */
   files: AddFilesRequestFilesList;
   path: string;
 }
+const AddFilesRequest = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<AddFilesRequest>;
+
 export interface AddFilesResponse {}
+const AddFilesResponse = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<AddFilesResponse>;
+
 export interface AddRemoteRequest {
   /** Fetch fetches from the remote immediately after adding it. */
   fetch?: boolean;
@@ -29,7 +36,11 @@ export interface AddRemoteRequest {
   path: string;
   url: string;
 }
+const AddRemoteRequest = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<AddRemoteRequest>;
+
 export interface AddRemoteResponse {}
+const AddRemoteResponse = AddFilesResponse as any as S.Schema<AddRemoteResponse>;
+
 export interface AuthenticateRequest {
   /** Host defaults to github.com. */
   host?: string;
@@ -38,12 +49,23 @@ export interface AuthenticateRequest {
   protocol?: string;
   username: string;
 }
+const AuthenticateRequest = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<AuthenticateRequest>;
+
 export interface AuthenticateResponse {}
+const AuthenticateResponse = AddFilesResponse as any as S.Schema<AuthenticateResponse>;
+
 export interface CheckoutBranchRequest {
   branch: string;
   path: string;
 }
+const CheckoutBranchRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<CheckoutBranchRequest>;
+
 export interface CheckoutBranchResponse {}
+const CheckoutBranchResponse = AddFilesResponse as any as S.Schema<CheckoutBranchResponse>;
+
 export interface CloneRepositoryRequest {
   branch?: string;
   commit_id?: string;
@@ -56,7 +78,14 @@ export interface CloneRepositoryRequest {
   url: string;
   username?: string;
 }
+const CloneRepositoryRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<CloneRepositoryRequest>;
+
 export interface CloneRepositoryResponse {}
+const CloneRepositoryResponse = AddFilesResponse as any as S.Schema<CloneRepositoryResponse>;
+
 export interface CommitChangesRequest {
   allow_empty?: boolean;
   author: string;
@@ -64,9 +93,13 @@ export interface CommitChangesRequest {
   message: string;
   path: string;
 }
+const CommitChangesRequest = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<CommitChangesRequest>;
+
 export interface GitCommitResponse {
   hash: string;
 }
+const GitCommitResponse = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<GitCommitResponse>;
+
 export interface ConfigureUserRequest {
   email: string;
   name: string;
@@ -75,21 +108,38 @@ export interface ConfigureUserRequest {
   /** Scope is one of global (default), local or system. */
   scope?: string;
 }
+const ConfigureUserRequest = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<ConfigureUserRequest>;
+
 export interface ConfigureUserResponse {}
+const ConfigureUserResponse = AddFilesResponse as any as S.Schema<ConfigureUserResponse>;
+
 export interface CreateBranchRequest {
   name: string;
   path: string;
 }
+const CreateBranchRequest = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<CreateBranchRequest>;
+
 export interface CreateBranchResponse {}
+const CreateBranchResponse = AddFilesResponse as any as S.Schema<CreateBranchResponse>;
+
 export interface DeleteBranchRequest {
   name: string;
   path: string;
 }
+const DeleteBranchRequest = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<DeleteBranchRequest>;
+
 export interface DeleteBranchResponse {}
+const DeleteBranchResponse = AddFilesResponse as any as S.Schema<DeleteBranchResponse>;
+
 export interface GetCommitHistoryRequest {
   /** Repository path */
   path: string;
 }
+const GetCommitHistoryRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<GetCommitHistoryRequest>;
+
 export interface GitCommitInfo {
   author: string;
   email: string;
@@ -97,8 +147,20 @@ export interface GitCommitInfo {
   message: string;
   timestamp: string;
 }
+const GitCommitInfo = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<GitCommitInfo>;
+
 export type GetCommitHistoryResponseBodyList = Array<GitCommitInfo>;
+const GetCommitHistoryResponseBodyList = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<GetCommitHistoryResponseBodyList>;
+
 export type GetCommitHistoryResponse = GetCommitHistoryResponseBodyList;
+const GetCommitHistoryResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<GetCommitHistoryResponse>;
+
 export interface GetGitConfigRequest {
   /** Config key (e.g. user.name) */
   key: string;
@@ -107,14 +169,20 @@ export interface GetGitConfigRequest {
   /** Config scope: global (default), local or system */
   scope?: string;
 }
+const GetGitConfigRequest = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<GetGitConfigRequest>;
+
 export interface GitConfigResponse {
   /** Value is the config value, null when the key is not set. */
   value?: string;
 }
+const GitConfigResponse = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<GitConfigResponse>;
+
 export interface GetStatusRequest {
   /** Repository path */
   path: string;
 }
+const GetStatusRequest = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<GetStatusRequest>;
+
 export type Status =
   | "Unmodified"
   | "Untracked"
@@ -124,13 +192,22 @@ export type Status =
   | "Renamed"
   | "Copied"
   | "Updated but unmerged";
+const Status = S.String;
+
 export interface FileStatus {
   extra: string;
   name: string;
   staging: Status;
   worktree: Status;
 }
+const FileStatus = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<FileStatus>;
+
 export type GitStatusFileStatusList = Array<FileStatus>;
+const GitStatusFileStatusList = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<GitStatusFileStatusList>;
+
 export interface GitStatus {
   ahead?: number;
   behind?: number;
@@ -142,6 +219,8 @@ export interface GitStatus {
   /** Upstream is the upstream tracking branch (e.g. "origin/main"), empty when unset. */
   upstream?: string;
 }
+const GitStatus = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<GitStatus>;
+
 export interface InitRepositoryRequest {
   /** Bare creates a repository without a working tree. */
   bare?: boolean;
@@ -149,29 +228,54 @@ export interface InitRepositoryRequest {
   initial_branch?: string;
   path: string;
 }
+const InitRepositoryRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<InitRepositoryRequest>;
+
 export interface InitRepositoryResponse {}
+const InitRepositoryResponse = AddFilesResponse as any as S.Schema<InitRepositoryResponse>;
+
 export interface ListBranchesRequest {
   /** Repository path */
   path: string;
 }
+const ListBranchesRequest = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<ListBranchesRequest>;
+
 export type ListBranchResponseBranchesList = Array<string>;
+const ListBranchResponseBranchesList =
+  AddFilesRequestFilesList as any as S.Schema<ListBranchResponseBranchesList>;
+
 export interface ListBranchResponse {
   branches: ListBranchResponseBranchesList;
   /** Current is the name of the checked out branch (empty when HEAD is detached). */
   current?: string;
 }
+const ListBranchResponse = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<ListBranchResponse>;
+
 export interface ListRemotesRequest {
   /** Repository path */
   path: string;
 }
+const ListRemotesRequest = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<ListRemotesRequest>;
+
 export interface GitRemote {
   name: string;
   url: string;
 }
+const GitRemote = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<GitRemote>;
+
 export type ListRemotesResponseRemotesList = Array<GitRemote>;
+const ListRemotesResponseRemotesList = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<ListRemotesResponseRemotesList>;
+
 export interface ListRemotesResponse {
   remotes: ListRemotesResponseRemotesList;
 }
+const ListRemotesResponse = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<ListRemotesResponse>;
+
 export interface PullChangesRequest {
   /** Branch to pull (defaults to the current branch's upstream). */
   branch?: string;
@@ -181,7 +285,11 @@ export interface PullChangesRequest {
   remote?: string;
   username?: string;
 }
+const PullChangesRequest = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<PullChangesRequest>;
+
 export interface PullChangesResponse {}
+const PullChangesResponse = AddFilesResponse as any as S.Schema<PullChangesResponse>;
+
 export interface PushChangesRequest {
   /** Branch to push (defaults to the current branch). */
   branch?: string;
@@ -193,9 +301,16 @@ export interface PushChangesRequest {
   set_upstream?: boolean;
   username?: string;
 }
+const PushChangesRequest = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<PushChangesRequest>;
+
 export interface PushChangesResponse {}
+const PushChangesResponse = AddFilesResponse as any as S.Schema<PushChangesResponse>;
+
 /** Files constrains the reset to the given paths. */
 export type ResetChangesRequestFilesList = Array<string>;
+const ResetChangesRequestFilesList =
+  AddFilesRequestFilesList as any as S.Schema<ResetChangesRequestFilesList>;
+
 export interface ResetChangesRequest {
   /** Files constrains the reset to the given paths. */
   files?: ResetChangesRequestFilesList;
@@ -205,8 +320,15 @@ export interface ResetChangesRequest {
   /** Target is the revision to reset to (defaults to HEAD). */
   target?: string;
 }
+const ResetChangesRequest = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<ResetChangesRequest>;
+
 export interface ResetChangesResponse {}
+const ResetChangesResponse = AddFilesResponse as any as S.Schema<ResetChangesResponse>;
+
 export type RestoreFilesRequestFilesList = Array<string>;
+const RestoreFilesRequestFilesList =
+  AddFilesRequestFilesList as any as S.Schema<RestoreFilesRequestFilesList>;
+
 export interface RestoreFilesRequest {
   files: RestoreFilesRequestFilesList;
   path: string;
@@ -217,7 +339,11 @@ export interface RestoreFilesRequest {
   /** Worktree restores the working tree for the given files. */
   worktree?: boolean;
 }
+const RestoreFilesRequest = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<RestoreFilesRequest>;
+
 export interface RestoreFilesResponse {}
+const RestoreFilesResponse = AddFilesResponse as any as S.Schema<RestoreFilesResponse>;
+
 export interface SetGitConfigRequest {
   key: string;
   /** Path is the repository path, required when scope is "local". */
@@ -226,7 +352,11 @@ export interface SetGitConfigRequest {
   scope?: string;
   value: string;
 }
+const SetGitConfigRequest = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<SetGitConfigRequest>;
+
 export interface SetGitConfigResponse {}
+const SetGitConfigResponse = AddFilesResponse as any as S.Schema<SetGitConfigResponse>;
+
 export type AddFilesError = DaytonaOpError;
 /** Add files to Git staging Add files to the Git staging area */
 export const addFiles: API.OperationMethod<
@@ -235,8 +365,8 @@ export const addFiles: API.OperationMethod<
   AddFilesError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1) as any as S.Schema<AddFilesRequest>,
-  output: __S(2) as any as S.Schema<AddFilesResponse>,
+  input: AddFilesRequest,
+  output: AddFilesResponse,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -250,8 +380,8 @@ export const addRemote: API.OperationMethod<
   AddRemoteError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3) as any as S.Schema<AddRemoteRequest>,
-  output: __S(2) as any as S.Schema<AddRemoteResponse>,
+  input: AddRemoteRequest,
+  output: AddRemoteResponse,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -265,8 +395,8 @@ export const authenticate: API.OperationMethod<
   AuthenticateError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4) as any as S.Schema<AuthenticateRequest>,
-  output: __S(2) as any as S.Schema<AuthenticateResponse>,
+  input: AuthenticateRequest,
+  output: AuthenticateResponse,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -280,8 +410,8 @@ export const checkoutBranch: API.OperationMethod<
   CheckoutBranchError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5) as any as S.Schema<CheckoutBranchRequest>,
-  output: __S(2) as any as S.Schema<CheckoutBranchResponse>,
+  input: CheckoutBranchRequest,
+  output: CheckoutBranchResponse,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -295,8 +425,8 @@ export const cloneRepository: API.OperationMethod<
   CloneRepositoryError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6) as any as S.Schema<CloneRepositoryRequest>,
-  output: __S(2) as any as S.Schema<CloneRepositoryResponse>,
+  input: CloneRepositoryRequest,
+  output: CloneRepositoryResponse,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -310,8 +440,8 @@ export const commitChanges: API.OperationMethod<
   CommitChangesError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7) as any as S.Schema<CommitChangesRequest>,
-  output: __S(8) as any as S.Schema<GitCommitResponse>,
+  input: CommitChangesRequest,
+  output: GitCommitResponse,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -325,8 +455,8 @@ export const configureUser: API.OperationMethod<
   ConfigureUserError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9) as any as S.Schema<ConfigureUserRequest>,
-  output: __S(2) as any as S.Schema<ConfigureUserResponse>,
+  input: ConfigureUserRequest,
+  output: ConfigureUserResponse,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -340,8 +470,8 @@ export const createBranch: API.OperationMethod<
   CreateBranchError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10) as any as S.Schema<CreateBranchRequest>,
-  output: __S(2) as any as S.Schema<CreateBranchResponse>,
+  input: CreateBranchRequest,
+  output: CreateBranchResponse,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -355,8 +485,8 @@ export const deleteBranch: API.OperationMethod<
   DeleteBranchError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11) as any as S.Schema<DeleteBranchRequest>,
-  output: __S(2) as any as S.Schema<DeleteBranchResponse>,
+  input: DeleteBranchRequest,
+  output: DeleteBranchResponse,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -370,8 +500,8 @@ export const getCommitHistory: API.OperationMethod<
   GetCommitHistoryError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12) as any as S.Schema<GetCommitHistoryRequest>,
-  output: __S(15) as any as S.Schema<GetCommitHistoryResponse>,
+  input: GetCommitHistoryRequest,
+  output: GetCommitHistoryResponse,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -385,8 +515,8 @@ export const getGitConfig: API.OperationMethod<
   GetGitConfigError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16) as any as S.Schema<GetGitConfigRequest>,
-  output: __S(17) as any as S.Schema<GitConfigResponse>,
+  input: GetGitConfigRequest,
+  output: GitConfigResponse,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -400,8 +530,8 @@ export const getStatus: API.OperationMethod<
   GetStatusError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18) as any as S.Schema<GetStatusRequest>,
-  output: __S(21) as any as S.Schema<GitStatus>,
+  input: GetStatusRequest,
+  output: GitStatus,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -415,8 +545,8 @@ export const initRepository: API.OperationMethod<
   InitRepositoryError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22) as any as S.Schema<InitRepositoryRequest>,
-  output: __S(2) as any as S.Schema<InitRepositoryResponse>,
+  input: InitRepositoryRequest,
+  output: InitRepositoryResponse,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -430,8 +560,8 @@ export const listBranches: API.OperationMethod<
   ListBranchesError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23) as any as S.Schema<ListBranchesRequest>,
-  output: __S(24) as any as S.Schema<ListBranchResponse>,
+  input: ListBranchesRequest,
+  output: ListBranchResponse,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -445,8 +575,8 @@ export const listRemotes: API.OperationMethod<
   ListRemotesError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25) as any as S.Schema<ListRemotesRequest>,
-  output: __S(28) as any as S.Schema<ListRemotesResponse>,
+  input: ListRemotesRequest,
+  output: ListRemotesResponse,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -460,8 +590,8 @@ export const pullChanges: API.OperationMethod<
   PullChangesError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29) as any as S.Schema<PullChangesRequest>,
-  output: __S(2) as any as S.Schema<PullChangesResponse>,
+  input: PullChangesRequest,
+  output: PullChangesResponse,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -475,8 +605,8 @@ export const pushChanges: API.OperationMethod<
   PushChangesError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30) as any as S.Schema<PushChangesRequest>,
-  output: __S(2) as any as S.Schema<PushChangesResponse>,
+  input: PushChangesRequest,
+  output: PushChangesResponse,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -490,8 +620,8 @@ export const resetChanges: API.OperationMethod<
   ResetChangesError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31) as any as S.Schema<ResetChangesRequest>,
-  output: __S(2) as any as S.Schema<ResetChangesResponse>,
+  input: ResetChangesRequest,
+  output: ResetChangesResponse,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -505,8 +635,8 @@ export const restoreFiles: API.OperationMethod<
   RestoreFilesError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32) as any as S.Schema<RestoreFilesRequest>,
-  output: __S(2) as any as S.Schema<RestoreFilesResponse>,
+  input: RestoreFilesRequest,
+  output: RestoreFilesResponse,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -520,8 +650,8 @@ export const setGitConfig: API.OperationMethod<
   SetGitConfigError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33) as any as S.Schema<SetGitConfigRequest>,
-  output: __S(2) as any as S.Schema<SetGitConfigResponse>,
+  input: SetGitConfigRequest,
+  output: SetGitConfigResponse,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -535,7 +665,7 @@ function __c0(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          files: __S(0),
+          files: AddFilesRequestFilesList,
           path: S.String,
         }).pipe(T.Http({ method: "POST", uri: "/git/add", code: 200 })),
       ).annotate({ identifier: "AddFilesRequest" });
@@ -642,9 +772,9 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "GitCommitInfo" });
     case 6:
-      return S.Array(__S(13));
+      return S.Array(GitCommitInfo);
     case 7:
-      return S.suspend(() => __S(14).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => GetCommitHistoryResponseBodyList.pipe(T.RawResponseRoot())).annotate({
         identifier: "GetCommitHistoryResponse",
       });
   }
@@ -676,12 +806,12 @@ function __c2(j: number): any {
         S.Struct({
           extra: S.String,
           name: S.String,
-          staging: S.String,
-          worktree: S.String,
+          staging: Status,
+          worktree: Status,
         }),
       ).annotate({ identifier: "FileStatus" });
     case 4:
-      return S.Array(__S(19));
+      return S.Array(FileStatus);
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -690,7 +820,7 @@ function __c2(j: number): any {
           branchPublished: S.optional(S.Boolean),
           currentBranch: S.String,
           detached: S.optional(S.Boolean),
-          fileStatus: __S(20),
+          fileStatus: GitStatusFileStatusList,
           upstream: S.optional(S.String),
         }),
       ).annotate({ identifier: "GitStatus" });
@@ -715,7 +845,7 @@ function __c3(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          branches: __S(0),
+          branches: ListBranchResponseBranchesList,
           current: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListBranchResponse" });
@@ -733,11 +863,11 @@ function __c3(j: number): any {
         }),
       ).annotate({ identifier: "GitRemote" });
     case 3:
-      return S.Array(__S(26));
+      return S.Array(GitRemote);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          remotes: __S(27),
+          remotes: ListRemotesResponseRemotesList,
         }),
       ).annotate({ identifier: "ListRemotesResponse" });
     case 5:
@@ -764,7 +894,7 @@ function __c3(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          files: S.optional(__S(0)),
+          files: S.optional(ResetChangesRequestFilesList),
           mode: S.optional(S.String),
           path: S.String,
           target: S.optional(S.String),
@@ -777,7 +907,7 @@ function __c4(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          files: __S(0),
+          files: RestoreFilesRequestFilesList,
           path: S.String,
           source: S.optional(S.String),
           staged: S.optional(S.Boolean),
@@ -793,24 +923,5 @@ function __c4(j: number): any {
           value: S.String,
         }).pipe(T.Http({ method: "POST", uri: "/git/config", code: 200 })),
       ).annotate({ identifier: "SetGitConfigRequest" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
   }
 }

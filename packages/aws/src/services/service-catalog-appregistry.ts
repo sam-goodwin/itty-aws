@@ -8,8 +8,6 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "Service Catalog AppRegistry",
   serviceShapeName: "AWS242AppRegistry",
@@ -126,33 +124,55 @@ export interface AssociateAttributeGroupRequest {
   application: string;
   attributeGroup: string;
 }
+const AssociateAttributeGroupRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<AssociateAttributeGroupRequest>;
 export type ApplicationArn = string;
 export type AttributeGroupArn = string;
 export interface AssociateAttributeGroupResponse {
   applicationArn?: string;
   attributeGroupArn?: string;
 }
+const AssociateAttributeGroupResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<AssociateAttributeGroupResponse>;
 export type ResourceType = "CFN_STACK" | "RESOURCE_TAG_VALUE" | (string & {});
+const ResourceType = S.String;
+
 export type ResourceSpecifier = string;
 export type AssociationOption = "APPLY_APPLICATION_TAG" | "SKIP_APPLICATION_TAG" | (string & {});
+const AssociationOption = S.String;
+
 export type Options = AssociationOption[];
+const Options = /*@__PURE__*/ __L.at(__c0, 2);
 export interface AssociateResourceRequest {
   application: string;
   resourceType: ResourceType;
   resource: string;
   options?: AssociationOption[];
 }
+const AssociateResourceRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<AssociateResourceRequest>;
 export type Arn = string;
 export interface AssociateResourceResponse {
   applicationArn?: string;
   resourceArn?: string;
   options?: AssociationOption[];
 }
+const AssociateResourceResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<AssociateResourceResponse>;
 export type Name = string;
 export type Description = string;
 export type TagKey = string;
 export type TagValue = string;
 export type Tags = { [key: string]: string | undefined };
+const Tags = /*@__PURE__*/ __L.at(__c0, 5);
 export type ClientToken = string;
 export interface CreateApplicationRequest {
   name: string;
@@ -160,8 +180,13 @@ export interface CreateApplicationRequest {
   tags?: { [key: string]: string | undefined };
   clientToken: string;
 }
+const CreateApplicationRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<CreateApplicationRequest>;
 export type ApplicationId = string;
 export type ApplicationTagDefinition = { [key: string]: string | undefined };
+const ApplicationTagDefinition = /*@__PURE__*/ __L.at(__c0, 7);
 export interface Application {
   id?: string;
   arn?: string;
@@ -172,9 +197,14 @@ export interface Application {
   tags?: { [key: string]: string | undefined };
   applicationTag?: { [key: string]: string | undefined };
 }
+const Application = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<Application>;
 export interface CreateApplicationResponse {
   application?: Application;
 }
+const CreateApplicationResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<CreateApplicationResponse>;
 export type Attributes = string;
 export interface CreateAttributeGroupRequest {
   name: string;
@@ -183,6 +213,10 @@ export interface CreateAttributeGroupRequest {
   tags?: { [key: string]: string | undefined };
   clientToken: string;
 }
+const CreateAttributeGroupRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<CreateAttributeGroupRequest>;
 export type AttributeGroupId = string;
 export interface AttributeGroup {
   id?: string;
@@ -193,12 +227,21 @@ export interface AttributeGroup {
   lastUpdateTime?: Date;
   tags?: { [key: string]: string | undefined };
 }
+const AttributeGroup = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<AttributeGroup>;
 export interface CreateAttributeGroupResponse {
   attributeGroup?: AttributeGroup;
 }
+const CreateAttributeGroupResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<CreateAttributeGroupResponse>;
 export interface DeleteApplicationRequest {
   application: string;
 }
+const DeleteApplicationRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<DeleteApplicationRequest>;
 export interface ApplicationSummary {
   id?: string;
   arn?: string;
@@ -207,12 +250,21 @@ export interface ApplicationSummary {
   creationTime?: Date;
   lastUpdateTime?: Date;
 }
+const ApplicationSummary = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<ApplicationSummary>;
 export interface DeleteApplicationResponse {
   application?: ApplicationSummary;
 }
+const DeleteApplicationResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<DeleteApplicationResponse>;
 export interface DeleteAttributeGroupRequest {
   attributeGroup: string;
 }
+const DeleteAttributeGroupRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<DeleteAttributeGroupRequest>;
 export type CreatedBy = string;
 export interface AttributeGroupSummary {
   id?: string;
@@ -223,29 +275,55 @@ export interface AttributeGroupSummary {
   lastUpdateTime?: Date;
   createdBy?: string;
 }
+const AttributeGroupSummary = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<AttributeGroupSummary>;
 export interface DeleteAttributeGroupResponse {
   attributeGroup?: AttributeGroupSummary;
 }
+const DeleteAttributeGroupResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<DeleteAttributeGroupResponse>;
 export interface DisassociateAttributeGroupRequest {
   application: string;
   attributeGroup: string;
 }
+const DisassociateAttributeGroupRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<DisassociateAttributeGroupRequest>;
 export interface DisassociateAttributeGroupResponse {
   applicationArn?: string;
   attributeGroupArn?: string;
 }
+const DisassociateAttributeGroupResponse =
+  AssociateAttributeGroupResponse as any as S.Schema<DisassociateAttributeGroupResponse>;
 export interface DisassociateResourceRequest {
   application: string;
   resourceType: ResourceType;
   resource: string;
 }
+const DisassociateResourceRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<DisassociateResourceRequest>;
 export interface DisassociateResourceResponse {
   applicationArn?: string;
   resourceArn?: string;
 }
+const DisassociateResourceResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<DisassociateResourceResponse>;
 export interface GetApplicationRequest {
   application: string;
 }
+const GetApplicationRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<GetApplicationRequest>;
 export type AssociationCount = number;
 export type ResourceGroupState =
   | "CREATING"
@@ -255,15 +333,19 @@ export type ResourceGroupState =
   | "UPDATE_COMPLETE"
   | "UPDATE_FAILED"
   | (string & {});
+const ResourceGroupState = S.String;
+
 export interface ResourceGroup {
   state?: ResourceGroupState;
   arn?: string;
   errorMessage?: string;
 }
+const ResourceGroup = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<ResourceGroup>;
 export interface Integrations {
   resourceGroup?: ResourceGroup;
   applicationTagResourceGroup?: ResourceGroup;
 }
+const Integrations = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<Integrations>;
 export interface GetApplicationResponse {
   id?: string;
   arn?: string;
@@ -276,9 +358,14 @@ export interface GetApplicationResponse {
   integrations?: Integrations;
   applicationTag?: { [key: string]: string | undefined };
 }
+const GetApplicationResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<GetApplicationResponse>;
 export type NextToken = string;
 export type ResourceItemStatus = "SUCCESS" | "FAILED" | "IN_PROGRESS" | "SKIPPED" | (string & {});
 export type GetAssociatedResourceFilter = ResourceItemStatus[];
+const GetAssociatedResourceFilter = Options as any as S.Schema<GetAssociatedResourceFilter>;
 export type MaxResults = number;
 export interface GetAssociatedResourceRequest {
   application: string;
@@ -288,16 +375,24 @@ export interface GetAssociatedResourceRequest {
   resourceTagStatus?: ResourceItemStatus[];
   maxResults?: number;
 }
+const GetAssociatedResourceRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<GetAssociatedResourceRequest>;
 export interface ResourceIntegrations {
   resourceGroup?: ResourceGroup;
 }
+const ResourceIntegrations = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<ResourceIntegrations>;
 export interface Resource {
   name?: string;
   arn?: string;
   associationTime?: Date;
   integrations?: ResourceIntegrations;
 }
+const Resource = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<Resource>;
 export type ApplicationTagStatus = "IN_PROGRESS" | "SUCCESS" | "FAILURE" | (string & {});
+const ApplicationTagStatus = S.String;
+
 export type ResourcesListItemErrorMessage = string;
 export type ResourceItemType = string;
 export interface ResourcesListItem {
@@ -306,21 +401,32 @@ export interface ResourcesListItem {
   status?: string;
   resourceType?: string;
 }
+const ResourcesListItem = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<ResourcesListItem>;
 export type ResourcesList = ResourcesListItem[];
+const ResourcesList = /*@__PURE__*/ __L.at(__c3, 6);
 export interface ApplicationTagResult {
   applicationTagStatus?: ApplicationTagStatus;
   errorMessage?: string;
   resources?: ResourcesListItem[];
   nextToken?: string;
 }
+const ApplicationTagResult = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<ApplicationTagResult>;
 export interface GetAssociatedResourceResponse {
   resource?: Resource;
   options?: AssociationOption[];
   applicationTagResult?: ApplicationTagResult;
 }
+const GetAssociatedResourceResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<GetAssociatedResourceResponse>;
 export interface GetAttributeGroupRequest {
   attributeGroup: string;
 }
+const GetAttributeGroupRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<GetAttributeGroupRequest>;
 export interface GetAttributeGroupResponse {
   id?: string;
   arn?: string;
@@ -332,44 +438,87 @@ export interface GetAttributeGroupResponse {
   tags?: { [key: string]: string | undefined };
   createdBy?: string;
 }
+const GetAttributeGroupResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<GetAttributeGroupResponse>;
 export interface GetConfigurationRequest {}
+const GetConfigurationRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<GetConfigurationRequest>;
 export type TagKeyConfig = string;
 export interface TagQueryConfiguration {
   tagKey?: string;
 }
+const TagQueryConfiguration = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<TagQueryConfiguration>;
 export interface AppRegistryConfiguration {
   tagQueryConfiguration?: TagQueryConfiguration;
 }
+const AppRegistryConfiguration = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<AppRegistryConfiguration>;
 export interface GetConfigurationResponse {
   configuration?: AppRegistryConfiguration;
 }
+const GetConfigurationResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<GetConfigurationResponse>;
 export interface ListApplicationsRequest {
   nextToken?: string;
   maxResults?: number;
 }
+const ListApplicationsRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<ListApplicationsRequest>;
 export type ApplicationSummaries = ApplicationSummary[];
+const ApplicationSummaries = /*@__PURE__*/ __L.at(__c5, 0);
 export interface ListApplicationsResponse {
   applications?: ApplicationSummary[];
   nextToken?: string;
 }
+const ListApplicationsResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  1,
+) as any as S.Schema<ListApplicationsResponse>;
 export interface ListAssociatedAttributeGroupsRequest {
   application: string;
   nextToken?: string;
   maxResults?: number;
 }
+const ListAssociatedAttributeGroupsRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  2,
+) as any as S.Schema<ListAssociatedAttributeGroupsRequest>;
 export type AttributeGroupIds = string[];
+const AttributeGroupIds = /*@__PURE__*/ __L.at(__c5, 3);
 export interface ListAssociatedAttributeGroupsResponse {
   attributeGroups?: string[];
   nextToken?: string;
 }
+const ListAssociatedAttributeGroupsResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  4,
+) as any as S.Schema<ListAssociatedAttributeGroupsResponse>;
 export interface ListAssociatedResourcesRequest {
   application: string;
   nextToken?: string;
   maxResults?: number;
 }
+const ListAssociatedResourcesRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  5,
+) as any as S.Schema<ListAssociatedResourcesRequest>;
 export interface ResourceDetails {
   tagValue?: string;
 }
+const ResourceDetails = /*@__PURE__*/ __L.at(__c5, 6) as any as S.Schema<ResourceDetails>;
 export interface ResourceInfo {
   name?: string;
   arn?: string;
@@ -377,84 +526,149 @@ export interface ResourceInfo {
   resourceDetails?: ResourceDetails;
   options?: AssociationOption[];
 }
+const ResourceInfo = /*@__PURE__*/ __L.at(__c5, 7) as any as S.Schema<ResourceInfo>;
 export type Resources = ResourceInfo[];
+const Resources = /*@__PURE__*/ __L.at(__c6, 0);
 export interface ListAssociatedResourcesResponse {
   resources?: ResourceInfo[];
   nextToken?: string;
 }
+const ListAssociatedResourcesResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  1,
+) as any as S.Schema<ListAssociatedResourcesResponse>;
 export interface ListAttributeGroupsRequest {
   nextToken?: string;
   maxResults?: number;
 }
+const ListAttributeGroupsRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  2,
+) as any as S.Schema<ListAttributeGroupsRequest>;
 export type AttributeGroupSummaries = AttributeGroupSummary[];
+const AttributeGroupSummaries = /*@__PURE__*/ __L.at(__c6, 3);
 export interface ListAttributeGroupsResponse {
   attributeGroups?: AttributeGroupSummary[];
   nextToken?: string;
 }
+const ListAttributeGroupsResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  4,
+) as any as S.Schema<ListAttributeGroupsResponse>;
 export interface ListAttributeGroupsForApplicationRequest {
   application: string;
   nextToken?: string;
   maxResults?: number;
 }
+const ListAttributeGroupsForApplicationRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  5,
+) as any as S.Schema<ListAttributeGroupsForApplicationRequest>;
 export interface AttributeGroupDetails {
   id?: string;
   arn?: string;
   name?: string;
   createdBy?: string;
 }
+const AttributeGroupDetails = /*@__PURE__*/ __L.at(
+  __c6,
+  6,
+) as any as S.Schema<AttributeGroupDetails>;
 export type AttributeGroupDetailsList = AttributeGroupDetails[];
+const AttributeGroupDetailsList = /*@__PURE__*/ __L.at(__c6, 7);
 export interface ListAttributeGroupsForApplicationResponse {
   attributeGroupsDetails?: AttributeGroupDetails[];
   nextToken?: string;
 }
+const ListAttributeGroupsForApplicationResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  0,
+) as any as S.Schema<ListAttributeGroupsForApplicationResponse>;
 export interface ListTagsForResourceRequest {
   resourceArn: string;
 }
+const ListTagsForResourceRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  1,
+) as any as S.Schema<ListTagsForResourceRequest>;
 export interface ListTagsForResourceResponse {
   tags?: { [key: string]: string | undefined };
 }
+const ListTagsForResourceResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  2,
+) as any as S.Schema<ListTagsForResourceResponse>;
 export interface PutConfigurationRequest {
   configuration: AppRegistryConfiguration;
 }
+const PutConfigurationRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  3,
+) as any as S.Schema<PutConfigurationRequest>;
 export interface PutConfigurationResponse {}
+const PutConfigurationResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  4,
+) as any as S.Schema<PutConfigurationResponse>;
 export interface SyncResourceRequest {
   resourceType: ResourceType;
   resource: string;
 }
+const SyncResourceRequest = /*@__PURE__*/ __L.at(__c7, 5) as any as S.Schema<SyncResourceRequest>;
 export type SyncAction = "START_SYNC" | "NO_ACTION" | (string & {});
+const SyncAction = S.String;
+
 export interface SyncResourceResponse {
   applicationArn?: string;
   resourceArn?: string;
   actionTaken?: SyncAction;
 }
+const SyncResourceResponse = /*@__PURE__*/ __L.at(__c7, 6) as any as S.Schema<SyncResourceResponse>;
 export interface TagResourceRequest {
   resourceArn: string;
   tags: { [key: string]: string | undefined };
 }
+const TagResourceRequest = /*@__PURE__*/ __L.at(__c7, 7) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
+const TagResourceResponse = PutConfigurationResponse as any as S.Schema<TagResourceResponse>;
 export type TagKeys = string[];
+const TagKeys = AttributeGroupIds as any as S.Schema<TagKeys>;
 export interface UntagResourceRequest {
   resourceArn: string;
   tagKeys: string[];
 }
+const UntagResourceRequest = /*@__PURE__*/ __L.at(__c8, 0) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
+const UntagResourceResponse = PutConfigurationResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateApplicationRequest {
   application: string;
   name?: string;
   description?: string;
 }
+const UpdateApplicationRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  1,
+) as any as S.Schema<UpdateApplicationRequest>;
 export interface UpdateApplicationResponse {
   application?: Application;
 }
+const UpdateApplicationResponse =
+  CreateApplicationResponse as any as S.Schema<UpdateApplicationResponse>;
 export interface UpdateAttributeGroupRequest {
   attributeGroup: string;
   name?: string;
   description?: string;
   attributes?: string;
 }
+const UpdateAttributeGroupRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  2,
+) as any as S.Schema<UpdateAttributeGroupRequest>;
 export interface UpdateAttributeGroupResponse {
   attributeGroup?: AttributeGroup;
 }
+const UpdateAttributeGroupResponse =
+  CreateAttributeGroupResponse as any as S.Schema<UpdateAttributeGroupResponse>;
 export type AssociateAttributeGroupError =
   | ConflictException
   | InternalServerException
@@ -474,8 +688,8 @@ export const associateAttributeGroup: API.OperationMethod<
   AssociateAttributeGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<AssociateAttributeGroupRequest>,
-  output: __S(1) as any as S.Schema<AssociateAttributeGroupResponse>,
+  input: AssociateAttributeGroupRequest,
+  output: AssociateAttributeGroupResponse,
   errors: [
     ConflictException,
     InternalServerException,
@@ -528,8 +742,8 @@ export const associateResource: API.OperationMethod<
   AssociateResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3) as any as S.Schema<AssociateResourceRequest>,
-  output: __S(4) as any as S.Schema<AssociateResourceResponse>,
+  input: AssociateResourceRequest,
+  output: AssociateResourceResponse,
   errors: [
     ConflictException,
     InternalServerException,
@@ -559,8 +773,8 @@ export const createApplication: API.OperationMethod<
   CreateApplicationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6) as any as S.Schema<CreateApplicationRequest>,
-  output: __S(9) as any as S.Schema<CreateApplicationResponse>,
+  input: CreateApplicationRequest,
+  output: CreateApplicationResponse,
   errors: [
     ConflictException,
     InternalServerException,
@@ -591,8 +805,8 @@ export const createAttributeGroup: API.OperationMethod<
   CreateAttributeGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10) as any as S.Schema<CreateAttributeGroupRequest>,
-  output: __S(12) as any as S.Schema<CreateAttributeGroupResponse>,
+  input: CreateAttributeGroupRequest,
+  output: CreateAttributeGroupResponse,
   errors: [
     ConflictException,
     InternalServerException,
@@ -618,8 +832,8 @@ export const deleteApplication: API.OperationMethod<
   DeleteApplicationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13) as any as S.Schema<DeleteApplicationRequest>,
-  output: __S(15) as any as S.Schema<DeleteApplicationResponse>,
+  input: DeleteApplicationRequest,
+  output: DeleteApplicationResponse,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -640,8 +854,8 @@ export const deleteAttributeGroup: API.OperationMethod<
   DeleteAttributeGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16) as any as S.Schema<DeleteAttributeGroupRequest>,
-  output: __S(18) as any as S.Schema<DeleteAttributeGroupResponse>,
+  input: DeleteAttributeGroupRequest,
+  output: DeleteAttributeGroupResponse,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -662,8 +876,8 @@ export const disassociateAttributeGroup: API.OperationMethod<
   DisassociateAttributeGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19) as any as S.Schema<DisassociateAttributeGroupRequest>,
-  output: __S(1) as any as S.Schema<DisassociateAttributeGroupResponse>,
+  input: DisassociateAttributeGroupRequest,
+  output: DisassociateAttributeGroupResponse,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -706,8 +920,8 @@ export const disassociateResource: API.OperationMethod<
   DisassociateResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20) as any as S.Schema<DisassociateResourceRequest>,
-  output: __S(21) as any as S.Schema<DisassociateResourceResponse>,
+  input: DisassociateResourceRequest,
+  output: DisassociateResourceResponse,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -750,8 +964,8 @@ export const getApplication: API.OperationMethod<
   GetApplicationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22) as any as S.Schema<GetApplicationRequest>,
-  output: __S(25) as any as S.Schema<GetApplicationResponse>,
+  input: GetApplicationRequest,
+  output: GetApplicationResponse,
   errors: [
     ConflictException,
     InternalServerException,
@@ -777,8 +991,8 @@ export const getAssociatedResource: API.OperationMethod<
   GetAssociatedResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26) as any as S.Schema<GetAssociatedResourceRequest>,
-  output: __S(32) as any as S.Schema<GetAssociatedResourceResponse>,
+  input: GetAssociatedResourceRequest,
+  output: GetAssociatedResourceResponse,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -803,8 +1017,8 @@ export const getAttributeGroup: API.OperationMethod<
   GetAttributeGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33) as any as S.Schema<GetAttributeGroupRequest>,
-  output: __S(34) as any as S.Schema<GetAttributeGroupResponse>,
+  input: GetAttributeGroupRequest,
+  output: GetAttributeGroupResponse,
   errors: [
     ConflictException,
     InternalServerException,
@@ -827,8 +1041,8 @@ export const getConfiguration: API.OperationMethod<
   GetConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35) as any as S.Schema<GetConfigurationRequest>,
-  output: __S(38) as any as S.Schema<GetConfigurationResponse>,
+  input: GetConfigurationRequest,
+  output: GetConfigurationResponse,
   errors: [InternalServerException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -846,8 +1060,8 @@ export const listApplications: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ApplicationSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(39) as any as S.Schema<ListApplicationsRequest>,
-  output: __S(41) as any as S.Schema<ListApplicationsResponse>,
+  input: ListApplicationsRequest,
+  output: ListApplicationsResponse,
   errors: [InternalServerException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -875,8 +1089,8 @@ export const listAssociatedAttributeGroups: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   AttributeGroupId
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(42) as any as S.Schema<ListAssociatedAttributeGroupsRequest>,
-  output: __S(44) as any as S.Schema<ListAssociatedAttributeGroupsResponse>,
+  input: ListAssociatedAttributeGroupsRequest,
+  output: ListAssociatedAttributeGroupsResponse,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -919,8 +1133,8 @@ export const listAssociatedResources: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ResourceInfo
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(45) as any as S.Schema<ListAssociatedResourcesRequest>,
-  output: __S(49) as any as S.Schema<ListAssociatedResourcesResponse>,
+  input: ListAssociatedResourcesRequest,
+  output: ListAssociatedResourcesResponse,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -944,8 +1158,8 @@ export const listAttributeGroups: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   AttributeGroupSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(50) as any as S.Schema<ListAttributeGroupsRequest>,
-  output: __S(52) as any as S.Schema<ListAttributeGroupsResponse>,
+  input: ListAttributeGroupsRequest,
+  output: ListAttributeGroupsResponse,
   errors: [InternalServerException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -973,8 +1187,8 @@ export const listAttributeGroupsForApplication: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   AttributeGroupDetails
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(53) as any as S.Schema<ListAttributeGroupsForApplicationRequest>,
-  output: __S(56) as any as S.Schema<ListAttributeGroupsForApplicationResponse>,
+  input: ListAttributeGroupsForApplicationRequest,
+  output: ListAttributeGroupsForApplicationResponse,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1001,8 +1215,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57) as any as S.Schema<ListTagsForResourceRequest>,
-  output: __S(58) as any as S.Schema<ListTagsForResourceResponse>,
+  input: ListTagsForResourceRequest,
+  output: ListTagsForResourceResponse,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1024,8 +1238,8 @@ export const putConfiguration: API.OperationMethod<
   PutConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(59) as any as S.Schema<PutConfigurationRequest>,
-  output: __S(60) as any as S.Schema<PutConfigurationResponse>,
+  input: PutConfigurationRequest,
+  output: PutConfigurationResponse,
   errors: [ConflictException, InternalServerException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1050,8 +1264,8 @@ export const syncResource: API.OperationMethod<
   SyncResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(61) as any as S.Schema<SyncResourceRequest>,
-  output: __S(62) as any as S.Schema<SyncResourceResponse>,
+  input: SyncResourceRequest,
+  output: SyncResourceResponse,
   errors: [
     ConflictException,
     InternalServerException,
@@ -1082,8 +1296,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(63) as any as S.Schema<TagResourceRequest>,
-  output: __S(60) as any as S.Schema<TagResourceResponse>,
+  input: TagResourceRequest,
+  output: TagResourceResponse,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1106,8 +1320,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(64) as any as S.Schema<UntagResourceRequest>,
-  output: __S(60) as any as S.Schema<UntagResourceResponse>,
+  input: UntagResourceRequest,
+  output: UntagResourceResponse,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1130,8 +1344,8 @@ export const updateApplication: API.OperationMethod<
   UpdateApplicationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65) as any as S.Schema<UpdateApplicationRequest>,
-  output: __S(9) as any as S.Schema<UpdateApplicationResponse>,
+  input: UpdateApplicationRequest,
+  output: UpdateApplicationResponse,
   errors: [
     ConflictException,
     InternalServerException,
@@ -1159,8 +1373,8 @@ export const updateAttributeGroup: API.OperationMethod<
   UpdateAttributeGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(66) as any as S.Schema<UpdateAttributeGroupRequest>,
-  output: __S(12) as any as S.Schema<UpdateAttributeGroupResponse>,
+  input: UpdateAttributeGroupRequest,
+  output: UpdateAttributeGroupResponse,
   errors: [
     ConflictException,
     InternalServerException,
@@ -1203,14 +1417,14 @@ function __c0(j: number): any {
         identifier: "AssociateAttributeGroupResponse",
       });
     case 2:
-      return S.Array(S.String);
+      return S.Array(AssociationOption);
     case 3:
       return S.suspend(() =>
         S.Struct({
           application: S.String.pipe(T.HttpLabel("application")),
-          resourceType: S.String.pipe(T.HttpLabel("resourceType")),
+          resourceType: ResourceType.pipe(T.HttpLabel("resourceType")),
           resource: S.String.pipe(T.HttpLabel("resource")),
-          options: S.optional(__S(2)),
+          options: S.optional(Options),
         }).pipe(
           T.all(
             T.Http({
@@ -1230,7 +1444,7 @@ function __c0(j: number): any {
         S.Struct({
           applicationArn: S.optional(S.String),
           resourceArn: S.optional(S.String),
-          options: S.optional(__S(2)),
+          options: S.optional(Options),
         }),
       ).annotate({
         identifier: "AssociateResourceResponse",
@@ -1242,7 +1456,7 @@ function __c0(j: number): any {
         S.Struct({
           name: S.String,
           description: S.optional(S.String),
-          tags: S.optional(__S(5)),
+          tags: S.optional(Tags),
           clientToken: S.String.pipe(T.IdempotencyToken()),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/applications" }), svc, auth, proto, ver, rules),
@@ -1263,12 +1477,12 @@ function __c1(j: number): any {
           description: S.optional(S.String),
           creationTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           lastUpdateTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          tags: S.optional(__S(5)),
-          applicationTag: S.optional(__S(7)),
+          tags: S.optional(Tags),
+          applicationTag: S.optional(ApplicationTagDefinition),
         }),
       ).annotate({ identifier: "Application" });
     case 1:
-      return S.suspend(() => S.Struct({ application: S.optional(__S(8)) })).annotate({
+      return S.suspend(() => S.Struct({ application: S.optional(Application) })).annotate({
         identifier: "CreateApplicationResponse",
       });
     case 2:
@@ -1277,7 +1491,7 @@ function __c1(j: number): any {
           name: S.String,
           description: S.optional(S.String),
           attributes: S.String,
-          tags: S.optional(__S(5)),
+          tags: S.optional(Tags),
           clientToken: S.String.pipe(T.IdempotencyToken()),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/attribute-groups" }), svc, auth, proto, ver, rules),
@@ -1294,11 +1508,11 @@ function __c1(j: number): any {
           description: S.optional(S.String),
           creationTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           lastUpdateTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          tags: S.optional(__S(5)),
+          tags: S.optional(Tags),
         }),
       ).annotate({ identifier: "AttributeGroup" });
     case 4:
-      return S.suspend(() => S.Struct({ attributeGroup: S.optional(__S(11)) })).annotate({
+      return S.suspend(() => S.Struct({ attributeGroup: S.optional(AttributeGroup) })).annotate({
         identifier: "CreateAttributeGroupResponse",
       });
     case 5:
@@ -1326,7 +1540,7 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "ApplicationSummary" });
     case 7:
-      return S.suspend(() => S.Struct({ application: S.optional(__S(14)) })).annotate({
+      return S.suspend(() => S.Struct({ application: S.optional(ApplicationSummary) })).annotate({
         identifier: "DeleteApplicationResponse",
       });
   }
@@ -1361,7 +1575,9 @@ function __c2(j: number): any {
         }),
       ).annotate({ identifier: "AttributeGroupSummary" });
     case 2:
-      return S.suspend(() => S.Struct({ attributeGroup: S.optional(__S(17)) })).annotate({
+      return S.suspend(() =>
+        S.Struct({ attributeGroup: S.optional(AttributeGroupSummary) }),
+      ).annotate({
         identifier: "DeleteAttributeGroupResponse",
       });
     case 3:
@@ -1389,7 +1605,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           application: S.String.pipe(T.HttpLabel("application")),
-          resourceType: S.String.pipe(T.HttpLabel("resourceType")),
+          resourceType: ResourceType.pipe(T.HttpLabel("resourceType")),
           resource: S.String.pipe(T.HttpLabel("resource")),
         }).pipe(
           T.all(
@@ -1429,7 +1645,7 @@ function __c2(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          state: S.optional(S.String),
+          state: S.optional(ResourceGroupState),
           arn: S.optional(S.String),
           errorMessage: S.optional(S.String),
         }),
@@ -1441,8 +1657,8 @@ function __c3(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          resourceGroup: S.optional(__S(23)),
-          applicationTagResourceGroup: S.optional(__S(23)),
+          resourceGroup: S.optional(ResourceGroup),
+          applicationTagResourceGroup: S.optional(ResourceGroup),
         }),
       ).annotate({ identifier: "Integrations" });
     case 1:
@@ -1455,19 +1671,21 @@ function __c3(j: number): any {
           creationTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           lastUpdateTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           associatedResourceCount: S.optional(S.Number),
-          tags: S.optional(__S(5)),
-          integrations: S.optional(__S(24)),
-          applicationTag: S.optional(__S(7)),
+          tags: S.optional(Tags),
+          integrations: S.optional(Integrations),
+          applicationTag: S.optional(ApplicationTagDefinition),
         }),
       ).annotate({ identifier: "GetApplicationResponse" });
     case 2:
       return S.suspend(() =>
         S.Struct({
           application: S.String.pipe(T.HttpLabel("application")),
-          resourceType: S.String.pipe(T.HttpLabel("resourceType")),
+          resourceType: ResourceType.pipe(T.HttpLabel("resourceType")),
           resource: S.String.pipe(T.HttpLabel("resource")),
           nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-          resourceTagStatus: S.optional(__S(2)).pipe(T.HttpQuery("resourceTagStatus")),
+          resourceTagStatus: S.optional(GetAssociatedResourceFilter).pipe(
+            T.HttpQuery("resourceTagStatus"),
+          ),
           maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
         }).pipe(
           T.all(
@@ -1486,7 +1704,7 @@ function __c3(j: number): any {
         identifier: "GetAssociatedResourceRequest",
       });
     case 3:
-      return S.suspend(() => S.Struct({ resourceGroup: S.optional(__S(23)) })).annotate({
+      return S.suspend(() => S.Struct({ resourceGroup: S.optional(ResourceGroup) })).annotate({
         identifier: "ResourceIntegrations",
       });
     case 4:
@@ -1495,7 +1713,7 @@ function __c3(j: number): any {
           name: S.optional(S.String),
           arn: S.optional(S.String),
           associationTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          integrations: S.optional(__S(27)),
+          integrations: S.optional(ResourceIntegrations),
         }),
       ).annotate({ identifier: "Resource" });
     case 5:
@@ -1508,13 +1726,13 @@ function __c3(j: number): any {
         }),
       ).annotate({ identifier: "ResourcesListItem" });
     case 6:
-      return S.Array(__S(29));
+      return S.Array(ResourcesListItem);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          applicationTagStatus: S.optional(S.String),
+          applicationTagStatus: S.optional(ApplicationTagStatus),
           errorMessage: S.optional(S.String),
-          resources: S.optional(__S(30)),
+          resources: S.optional(ResourcesList),
           nextToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ApplicationTagResult" });
@@ -1525,9 +1743,9 @@ function __c4(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          resource: S.optional(__S(28)),
-          options: S.optional(__S(2)),
-          applicationTagResult: S.optional(__S(31)),
+          resource: S.optional(Resource),
+          options: S.optional(Options),
+          applicationTagResult: S.optional(ApplicationTagResult),
         }),
       ).annotate({
         identifier: "GetAssociatedResourceResponse",
@@ -1555,7 +1773,7 @@ function __c4(j: number): any {
           attributes: S.optional(S.String),
           creationTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           lastUpdateTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          tags: S.optional(__S(5)),
+          tags: S.optional(Tags),
           createdBy: S.optional(S.String),
         }),
       ).annotate({
@@ -1572,13 +1790,13 @@ function __c4(j: number): any {
         identifier: "TagQueryConfiguration",
       });
     case 5:
-      return S.suspend(() => S.Struct({ tagQueryConfiguration: S.optional(__S(36)) })).annotate({
-        identifier: "AppRegistryConfiguration",
-      });
+      return S.suspend(() =>
+        S.Struct({ tagQueryConfiguration: S.optional(TagQueryConfiguration) }),
+      ).annotate({ identifier: "AppRegistryConfiguration" });
     case 6:
-      return S.suspend(() => S.Struct({ configuration: S.optional(__S(37)) })).annotate({
-        identifier: "GetConfigurationResponse",
-      });
+      return S.suspend(() =>
+        S.Struct({ configuration: S.optional(AppRegistryConfiguration) }),
+      ).annotate({ identifier: "GetConfigurationResponse" });
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -1593,11 +1811,11 @@ function __c4(j: number): any {
 function __c5(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(14));
+      return S.Array(ApplicationSummary);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          applications: S.optional(__S(40)),
+          applications: S.optional(ApplicationSummaries),
           nextToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListApplicationsResponse" });
@@ -1625,7 +1843,7 @@ function __c5(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          attributeGroups: S.optional(__S(43)),
+          attributeGroups: S.optional(AttributeGroupIds),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -1659,9 +1877,9 @@ function __c5(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           arn: S.optional(S.String),
-          resourceType: S.optional(S.String),
-          resourceDetails: S.optional(__S(46)),
-          options: S.optional(__S(2)),
+          resourceType: S.optional(ResourceType),
+          resourceDetails: S.optional(ResourceDetails),
+          options: S.optional(Options),
         }),
       ).annotate({ identifier: "ResourceInfo" });
   }
@@ -1669,10 +1887,10 @@ function __c5(j: number): any {
 function __c6(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(47));
+      return S.Array(ResourceInfo);
     case 1:
       return S.suspend(() =>
-        S.Struct({ resources: S.optional(__S(48)), nextToken: S.optional(S.String) }),
+        S.Struct({ resources: S.optional(Resources), nextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListAssociatedResourcesResponse",
       });
@@ -1688,11 +1906,11 @@ function __c6(j: number): any {
         identifier: "ListAttributeGroupsRequest",
       });
     case 3:
-      return S.Array(__S(17));
+      return S.Array(AttributeGroupSummary);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          attributeGroups: S.optional(__S(51)),
+          attributeGroups: S.optional(AttributeGroupSummaries),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -1727,7 +1945,7 @@ function __c6(j: number): any {
         }),
       ).annotate({ identifier: "AttributeGroupDetails" });
     case 7:
-      return S.Array(__S(54));
+      return S.Array(AttributeGroupDetails);
   }
 }
 function __c7(j: number): any {
@@ -1735,7 +1953,7 @@ function __c7(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          attributeGroupsDetails: S.optional(__S(55)),
+          attributeGroupsDetails: S.optional(AttributeGroupDetailsList),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -1757,12 +1975,12 @@ function __c7(j: number): any {
         identifier: "ListTagsForResourceRequest",
       });
     case 2:
-      return S.suspend(() => S.Struct({ tags: S.optional(__S(5)) })).annotate({
+      return S.suspend(() => S.Struct({ tags: S.optional(Tags) })).annotate({
         identifier: "ListTagsForResourceResponse",
       });
     case 3:
       return S.suspend(() =>
-        S.Struct({ configuration: __S(37) }).pipe(
+        S.Struct({ configuration: AppRegistryConfiguration }).pipe(
           T.all(T.Http({ method: "PUT", uri: "/configuration" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "PutConfigurationRequest" });
@@ -1773,7 +1991,7 @@ function __c7(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          resourceType: S.String.pipe(T.HttpLabel("resourceType")),
+          resourceType: ResourceType.pipe(T.HttpLabel("resourceType")),
           resource: S.String.pipe(T.HttpLabel("resource")),
         }).pipe(
           T.all(
@@ -1791,12 +2009,12 @@ function __c7(j: number): any {
         S.Struct({
           applicationArn: S.optional(S.String),
           resourceArn: S.optional(S.String),
-          actionTaken: S.optional(S.String),
+          actionTaken: S.optional(SyncAction),
         }),
       ).annotate({ identifier: "SyncResourceResponse" });
     case 7:
       return S.suspend(() =>
-        S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")), tags: __S(5) }).pipe(
+        S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")), tags: Tags }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/tags/{resourceArn}" }),
             svc,
@@ -1815,7 +2033,7 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
-          tagKeys: __S(43).pipe(T.HttpQuery("tagKeys")),
+          tagKeys: TagKeys.pipe(T.HttpQuery("tagKeys")),
         }).pipe(
           T.all(
             T.Http({ method: "DELETE", uri: "/tags/{resourceArn}" }),
@@ -1864,32 +2082,5 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "UpdateAttributeGroupRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
   }
 }

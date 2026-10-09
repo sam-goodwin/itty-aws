@@ -8,8 +8,6 @@ import { paginateCursor } from "../pagination.ts";
 import { SpritesProtocol, type SpritesOpError, type SpritesOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { SpritesOpError, SpritesOpContext };
 
@@ -24,6 +22,11 @@ export interface AuthorizeOAuthConnectionRequest {
   /** Optional state value. If omitted, Sprites generates one that ties the callback to the organization. */
   state?: string;
 }
+const AuthorizeOAuthConnectionRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<AuthorizeOAuthConnectionRequest>;
+
 /** OAuth authorization response */
 export interface OAuthAuthorizeResponse {
   /** Provider URL where the user grants access. */
@@ -31,6 +34,11 @@ export interface OAuthAuthorizeResponse {
   /** State value that must be sent back to the callback. */
   state: string;
 }
+const OAuthAuthorizeResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<OAuthAuthorizeResponse>;
+
 export interface ChangeFileModeRequest {
   name: string;
   asRoot: boolean;
@@ -39,15 +47,29 @@ export interface ChangeFileModeRequest {
   recursive: boolean;
   workingDir: string;
 }
+const ChangeFileModeRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<ChangeFileModeRequest>;
+
 export interface ChmodResult {
   mode: string;
   path: string;
 }
+const ChmodResult = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<ChmodResult>;
+
 export type ChmodResponseAffectedList = Array<ChmodResult>;
+const ChmodResponseAffectedList = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<ChmodResponseAffectedList>;
+
 export interface ChmodResponse {
   affected: ChmodResponseAffectedList;
   count: number;
 }
+const ChmodResponse = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<ChmodResponse>;
+
 export interface ChangeFileOwnerRequest {
   name: string;
   asRoot: boolean;
@@ -57,16 +79,30 @@ export interface ChangeFileOwnerRequest {
   uid: unknown;
   workingDir: string;
 }
+const ChangeFileOwnerRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<ChangeFileOwnerRequest>;
+
 export interface ChownResult {
   gid: number;
   path: string;
   uid: number;
 }
+const ChownResult = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<ChownResult>;
+
 export type ChownResponseAffectedList = Array<ChownResult>;
+const ChownResponseAffectedList = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<ChownResponseAffectedList>;
+
 export interface ChownResponse {
   affected: ChownResponseAffectedList;
   count: number;
 }
+const ChownResponse = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<ChownResponse>;
+
 export interface CopyFileRequest {
   name: string;
   asRoot: boolean;
@@ -76,27 +112,59 @@ export interface CopyFileRequest {
   source: string;
   workingDir: string;
 }
+const CopyFileRequest = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<CopyFileRequest>;
+
 export interface CopyResult {
   dest: string;
   source: string;
 }
+const CopyResult = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<CopyResult>;
+
 export type CopyResponseCopiedList = Array<CopyResult>;
+const CopyResponseCopiedList = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<CopyResponseCopiedList>;
+
 export interface CopyResponse {
   copied: CopyResponseCopiedList;
   count: number;
   totalBytes: number;
 }
+const CopyResponse = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<CopyResponse>;
+
 export interface CreateCheckpointRequest {
   name: string;
   comment?: string;
 }
+const CreateCheckpointRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<CreateCheckpointRequest>;
+
 export interface CreateCheckpointResponse {}
+const CreateCheckpointResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<CreateCheckpointResponse>;
+
 /** Provider API paths the connector may call. Supports exact paths and trailing `*` prefix wildcards. */
 export type AccessPolicyAllowedEndpointsList = Array<string>;
+const AccessPolicyAllowedEndpointsList = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<AccessPolicyAllowedEndpointsList>;
+
 /** Provider API paths the connector may not call. Block rules are checked before allow rules. */
 export type AccessPolicyBlockedEndpointsList = Array<string>;
+const AccessPolicyBlockedEndpointsList =
+  AccessPolicyAllowedEndpointsList as any as S.Schema<AccessPolicyBlockedEndpointsList>;
+
 /** Labels the calling sprite must have. All listed labels are required. */
 export type AccessPolicySpriteLabelsList = Array<string>;
+const AccessPolicySpriteLabelsList =
+  AccessPolicyAllowedEndpointsList as any as S.Schema<AccessPolicySpriteLabelsList>;
+
 /** Connector access policy */
 export interface AccessPolicy {
   /** When true, all sprites in the organization may use this connector. */
@@ -110,6 +178,8 @@ export interface AccessPolicy {
   /** Labels the calling sprite must have. All listed labels are required. */
   sprite_labels?: AccessPolicySpriteLabelsList;
 }
+const AccessPolicy = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<AccessPolicy>;
+
 export interface CreateOAuthApiKeyConnectionRequest {
   /** Initial access policy. Empty or missing policies deny sprite use until updated. */
   access_policy?: AccessPolicy;
@@ -120,10 +190,19 @@ export interface CreateOAuthApiKeyConnectionRequest {
   /** API-key provider. */
   provider: string;
 }
+const CreateOAuthApiKeyConnectionRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<CreateOAuthApiKeyConnectionRequest>;
+
 /** How the connector was created. */
 export type ConnectionConnectionType = "oauth" | "api_key" | "provisioned" | "internal";
+const ConnectionConnectionType = S.String;
+
 /** Provider notes about this connection, derived from its saved settings. Each has a nullable `title` and a `body`; backticks mark inline code. */
 export type ConnectionNotesList = Array<unknown>;
+const ConnectionNotesList = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<ConnectionNotesList>;
+
 /** Connector */
 export interface Connection {
   /** Policy controlling which sprites and provider endpoints may use this connector. */
@@ -155,11 +234,15 @@ export interface Connection {
   /** Sprites user ID that created or owns the connector. */
   user_id?: string;
 }
+const Connection = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<Connection>;
+
 /** Connector response */
 export interface ConnectionResponse {
   /** Sanitized connector. Secrets and encrypted token fields are never returned. */
   connection: Connection;
 }
+const ConnectionResponse = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<ConnectionResponse>;
+
 export interface CreateOrganizationTokenRequest {
   /** Fly organization slug */
   org: string;
@@ -168,31 +251,56 @@ export interface CreateOrganizationTokenRequest {
   /** Optional Sprites invite code */
   invite_code?: string;
 }
+const CreateOrganizationTokenRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<CreateOrganizationTokenRequest>;
+
 export interface CreateOrganizationTokenResponse {
   /** Sprites bearer token. Send as Authorization: Bearer on subsequent sprite ops. */
   token: string | Redacted.Redacted<string>;
 }
+const CreateOrganizationTokenResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<CreateOrganizationTokenResponse>;
+
 /** Authentication type (default: sprite) */
 export type UrlSettingsRequestAuth = "sprite" | "public";
+const UrlSettingsRequestAuth = S.String;
+
 /** URL settings request */
 export interface UrlSettingsRequest {
   /** Authentication type (default: sprite) */
   auth?: UrlSettingsRequestAuth | (string & {});
 }
+const UrlSettingsRequest = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<UrlSettingsRequest>;
+
 export interface CreateSpriteRequest {
   /** Unique name for the sprite within the organization */
   name: string;
   /** URL access configuration */
   url_settings?: UrlSettingsRequest;
 }
+const CreateSpriteRequest = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<CreateSpriteRequest>;
+
 /** Labels assigned to the sprite. Omitted when empty. */
 export type SpriteResponseLabelsList = Array<string>;
+const SpriteResponseLabelsList =
+  AccessPolicyAllowedEndpointsList as any as S.Schema<SpriteResponseLabelsList>;
+
 /** Runtime status */
 export type SpriteResponseStatus = "cold" | "warm" | "running";
+const SpriteResponseStatus = S.String;
+
 /** Authentication type */
 export type UrlSettingsAuth = "sprite" | "public";
+const UrlSettingsAuth = S.String;
+
 /** Who may access a sprite-authenticated URL. */
 export type UrlSettingsPrivateAccess = "admins" | "organization";
+const UrlSettingsPrivateAccess = S.String;
+
 /** URL access settings */
 export interface UrlSettings {
   /** Authentication type */
@@ -200,6 +308,8 @@ export interface UrlSettings {
   /** Who may access a sprite-authenticated URL. */
   private_access?: UrlSettingsPrivateAccess;
 }
+const UrlSettings = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<UrlSettings>;
+
 /** Sprite resource */
 export interface SpriteResponse {
   /** Creation timestamp (ISO 8601) */
@@ -229,6 +339,8 @@ export interface SpriteResponse {
   /** Version configured for or currently running on the sprite. */
   version?: string | null;
 }
+const SpriteResponse = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<SpriteResponse>;
+
 export interface DeleteFileRequest {
   name: string;
   asRoot: boolean;
@@ -236,27 +348,62 @@ export interface DeleteFileRequest {
   recursive: boolean;
   workingDir: string;
 }
+const DeleteFileRequest = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<DeleteFileRequest>;
+
 export type DeleteResponseDeletedList = Array<string>;
+const DeleteResponseDeletedList =
+  AccessPolicyAllowedEndpointsList as any as S.Schema<DeleteResponseDeletedList>;
+
 export interface DeleteResponse {
   count: number;
   deleted: DeleteResponseDeletedList;
 }
+const DeleteResponse = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<DeleteResponse>;
+
 export interface DeleteOAuthConnectionRequest {
   id: string;
 }
+const DeleteOAuthConnectionRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<DeleteOAuthConnectionRequest>;
+
 export interface DeleteOAuthConnectionResponse {}
+const DeleteOAuthConnectionResponse =
+  CreateCheckpointResponse as any as S.Schema<DeleteOAuthConnectionResponse>;
+
 export interface DeletePrivilegesPolicyRequest {
   name: string;
 }
+const DeletePrivilegesPolicyRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<DeletePrivilegesPolicyRequest>;
+
 export interface DeletePrivilegesPolicyResponse {}
+const DeletePrivilegesPolicyResponse =
+  CreateCheckpointResponse as any as S.Schema<DeletePrivilegesPolicyResponse>;
+
 export interface DeleteResourcesPolicyRequest {
   name: string;
 }
+const DeleteResourcesPolicyRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<DeleteResourcesPolicyRequest>;
+
 export interface DeleteResourcesPolicyResponse {}
+const DeleteResourcesPolicyResponse =
+  CreateCheckpointResponse as any as S.Schema<DeleteResourcesPolicyResponse>;
+
 export interface DeleteSpriteRequest {
   name: string;
 }
+const DeleteSpriteRequest = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<DeleteSpriteRequest>;
+
 export interface DeleteSpriteResponse {}
+const DeleteSpriteResponse = CreateCheckpointResponse as any as S.Schema<DeleteSpriteResponse>;
+
 export interface ExecCommandRequest {
   name: string;
   /** Command to execute (can be repeated for command + args) */
@@ -271,11 +418,17 @@ export interface ExecCommandRequest {
   dir?: string;
   body?: Uint8Array | string;
 }
+const ExecCommandRequest = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<ExecCommandRequest>;
+
 export interface ExecCommandResponse {}
+const ExecCommandResponse = CreateCheckpointResponse as any as S.Schema<ExecCommandResponse>;
+
 export interface GetCheckpointRequest {
   name: string;
   checkpoint_id: string;
 }
+const GetCheckpointRequest = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<GetCheckpointRequest>;
+
 export interface CheckpointInfo {
   /** User-provided description */
   comment?: string;
@@ -288,9 +441,16 @@ export interface CheckpointInfo {
   /** Parent checkpoint ID */
   source_id?: string;
 }
+const CheckpointInfo = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<CheckpointInfo>;
+
 export interface GetNetworkPolicyRequest {
   name: string;
 }
+const GetNetworkPolicyRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<GetNetworkPolicyRequest>;
+
 export interface NetworkPolicyRule {
   /** `allow` or `deny` */
   action?: string;
@@ -299,31 +459,69 @@ export interface NetworkPolicyRule {
   /** Include rules from preset */
   include?: string;
 }
+const NetworkPolicyRule = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<NetworkPolicyRule>;
+
 /** List of network policy rules */
 export type NetworkPolicyRequestRulesList = Array<NetworkPolicyRule>;
+const NetworkPolicyRequestRulesList = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<NetworkPolicyRequestRulesList>;
+
 export interface NetworkPolicyRequest {
   /** List of network policy rules */
   rules: NetworkPolicyRequestRulesList;
 }
+const NetworkPolicyRequest = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<NetworkPolicyRequest>;
+
 export interface GetOAuthConnectionRequest {
   id: string;
 }
+const GetOAuthConnectionRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  1,
+) as any as S.Schema<GetOAuthConnectionRequest>;
+
 export interface GetPrivilegesPolicyRequest {
   name: string;
 }
+const GetPrivilegesPolicyRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  2,
+) as any as S.Schema<GetPrivilegesPolicyRequest>;
+
 export interface GetPrivilegesPolicyResponse {}
+const GetPrivilegesPolicyResponse =
+  CreateCheckpointResponse as any as S.Schema<GetPrivilegesPolicyResponse>;
+
 export interface GetResourcesPolicyRequest {
   name: string;
 }
+const GetResourcesPolicyRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<GetResourcesPolicyRequest>;
+
 export interface GetResourcesPolicyResponse {}
+const GetResourcesPolicyResponse =
+  CreateCheckpointResponse as any as S.Schema<GetResourcesPolicyResponse>;
+
 export interface GetServiceRequest {
   name: string;
   service_name: string;
 }
+const GetServiceRequest = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<GetServiceRequest>;
+
 /** Command arguments */
 export type ServiceResponseArgsList = Array<string>;
+const ServiceResponseArgsList =
+  AccessPolicyAllowedEndpointsList as any as S.Schema<ServiceResponseArgsList>;
+
 /** Service dependencies */
 export type ServiceResponseNeedsList = Array<string>;
+const ServiceResponseNeedsList =
+  AccessPolicyAllowedEndpointsList as any as S.Schema<ServiceResponseNeedsList>;
+
 export interface ServiceState {
   /** Error message if failed */
   error?: string;
@@ -336,6 +534,8 @@ export interface ServiceState {
   /** `stopped`, `starting`, `running`, `stopping`, or `failed` */
   status: string;
 }
+const ServiceState = /*@__PURE__*/ __L.at(__c5, 5) as any as S.Schema<ServiceState>;
+
 export interface ServiceResponse {
   /** Command arguments */
   args: ServiceResponseArgsList;
@@ -350,6 +550,8 @@ export interface ServiceResponse {
   /** Current runtime state */
   state?: ServiceState | null;
 }
+const ServiceResponse = /*@__PURE__*/ __L.at(__c5, 6) as any as S.Schema<ServiceResponse>;
+
 export interface GetServiceLogsRequest {
   name: string;
   service_name: string;
@@ -358,10 +560,19 @@ export interface GetServiceLogsRequest {
   /** Time to follow new logs (default: `0`, no follow) */
   duration?: number;
 }
+const GetServiceLogsRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  7,
+) as any as S.Schema<GetServiceLogsRequest>;
+
 export interface GetServiceLogsResponse {}
+const GetServiceLogsResponse = CreateCheckpointResponse as any as S.Schema<GetServiceLogsResponse>;
+
 export interface GetSpriteRequest {
   name: string;
 }
+const GetSpriteRequest = /*@__PURE__*/ __L.at(__c6, 0) as any as S.Schema<GetSpriteRequest>;
+
 export interface KillExecSessionRequest {
   name: string;
   session_id: string;
@@ -370,12 +581,35 @@ export interface KillExecSessionRequest {
   /** Timeout waiting for process to exit (default: `10s`) */
   timeout?: number;
 }
+const KillExecSessionRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  1,
+) as any as S.Schema<KillExecSessionRequest>;
+
 export interface KillExecSessionResponse {}
+const KillExecSessionResponse =
+  CreateCheckpointResponse as any as S.Schema<KillExecSessionResponse>;
+
 export interface ListCheckpointsRequest {
   name: string;
 }
+const ListCheckpointsRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  2,
+) as any as S.Schema<ListCheckpointsRequest>;
+
 export type ListCheckpointsResponseBodyList = Array<CheckpointInfo>;
+const ListCheckpointsResponseBodyList = /*@__PURE__*/ __L.at(
+  __c6,
+  3,
+) as any as S.Schema<ListCheckpointsResponseBodyList>;
+
 export type ListCheckpointsResponse = ListCheckpointsResponseBodyList;
+const ListCheckpointsResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  4,
+) as any as S.Schema<ListCheckpointsResponse>;
+
 export interface ListDirectoryRequest {
   name: string;
   /** Path to the directory to list */
@@ -383,6 +617,8 @@ export interface ListDirectoryRequest {
   /** Working directory for resolving relative paths */
   workingDir: string;
 }
+const ListDirectoryRequest = /*@__PURE__*/ __L.at(__c6, 5) as any as S.Schema<ListDirectoryRequest>;
+
 export interface Entry {
   isDir: boolean;
   modTime: string;
@@ -392,32 +628,73 @@ export interface Entry {
   size: number;
   type: string;
 }
+const Entry = /*@__PURE__*/ __L.at(__c6, 6) as any as S.Schema<Entry>;
+
 export type ListResponseEntriesList = Array<Entry>;
+const ListResponseEntriesList = /*@__PURE__*/ __L.at(
+  __c6,
+  7,
+) as any as S.Schema<ListResponseEntriesList>;
+
 export interface ListResponse {
   count: number;
   entries: ListResponseEntriesList;
   path: string;
 }
+const ListResponse = /*@__PURE__*/ __L.at(__c7, 0) as any as S.Schema<ListResponse>;
+
 export interface ListExecSessionsRequest {
   name: string;
 }
+const ListExecSessionsRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  1,
+) as any as S.Schema<ListExecSessionsRequest>;
+
 export interface ListExecSessionsResponse {}
+const ListExecSessionsResponse =
+  CreateCheckpointResponse as any as S.Schema<ListExecSessionsResponse>;
+
 export interface ListOAuthConnectionsRequest {
   /** Optional provider filter. */
   provider?: string;
 }
+const ListOAuthConnectionsRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  2,
+) as any as S.Schema<ListOAuthConnectionsRequest>;
+
 /** Connectors configured for the organization. */
 export type ConnectionListResponseConnectionsList = Array<Connection>;
+const ConnectionListResponseConnectionsList = /*@__PURE__*/ __L.at(
+  __c7,
+  3,
+) as any as S.Schema<ConnectionListResponseConnectionsList>;
+
 /** Connector list response */
 export interface ConnectionListResponse {
   /** Connectors configured for the organization. */
   connections: ConnectionListResponseConnectionsList;
 }
+const ConnectionListResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  4,
+) as any as S.Schema<ConnectionListResponse>;
+
 export interface ListServicesRequest {
   name: string;
 }
+const ListServicesRequest = /*@__PURE__*/ __L.at(__c7, 5) as any as S.Schema<ListServicesRequest>;
+
 export type ListServicesResponseBodyList = Array<ServiceResponse>;
+const ListServicesResponseBodyList = /*@__PURE__*/ __L.at(
+  __c7,
+  6,
+) as any as S.Schema<ListServicesResponseBodyList>;
+
 export type ListServicesResponse = ListServicesResponseBodyList;
+const ListServicesResponse = /*@__PURE__*/ __L.at(__c7, 7) as any as S.Schema<ListServicesResponse>;
+
 export interface ListSpritesRequest {
   /** Filter sprites by name prefix */
   prefix?: string;
@@ -426,8 +703,15 @@ export interface ListSpritesRequest {
   /** Token from previous response for pagination */
   continuation_token?: string;
 }
+const ListSpritesRequest = /*@__PURE__*/ __L.at(__c8, 0) as any as S.Schema<ListSpritesRequest>;
+
 /** List of sprite resources */
 export type SpriteListResponseSpritesList = Array<SpriteResponse>;
+const SpriteListResponseSpritesList = /*@__PURE__*/ __L.at(
+  __c8,
+  1,
+) as any as S.Schema<SpriteListResponseSpritesList>;
+
 /** Paginated sprite list */
 export interface SpriteListResponse {
   /** Number of returned sprites currently cold. */
@@ -449,6 +733,8 @@ export interface SpriteListResponse {
   /** Organization-wide warm sprite limit. */
   warm_limit?: number;
 }
+const SpriteListResponse = /*@__PURE__*/ __L.at(__c8, 2) as any as S.Schema<SpriteListResponse>;
+
 export interface OauthConnectionCallbackRequest {
   provider: string;
   /** Initial access policy. Empty or missing policies deny sprite use until updated. */
@@ -460,19 +746,40 @@ export interface OauthConnectionCallbackRequest {
   /** State value from the authorize response. */
   state?: string;
 }
+const OauthConnectionCallbackRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  3,
+) as any as S.Schema<OauthConnectionCallbackRequest>;
+
 export interface PatchOAuthConnectionRequest {
   id: string;
   /** Replacement access policy. */
   access_policy: AccessPolicy;
 }
+const PatchOAuthConnectionRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  4,
+) as any as S.Schema<PatchOAuthConnectionRequest>;
+
 export interface ProvisionOAuthConnectionRequest {
   /** Provider to provision. */
   provider: string;
 }
+const ProvisionOAuthConnectionRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  5,
+) as any as S.Schema<ProvisionOAuthConnectionRequest>;
+
 /** Command arguments */
 export type PutServiceRequestArgsList = Array<string>;
+const PutServiceRequestArgsList =
+  AccessPolicyAllowedEndpointsList as any as S.Schema<PutServiceRequestArgsList>;
+
 /** Service dependencies (started first) */
 export type PutServiceRequestNeedsList = Array<string>;
+const PutServiceRequestNeedsList =
+  AccessPolicyAllowedEndpointsList as any as S.Schema<PutServiceRequestNeedsList>;
+
 export interface PutServiceRequest {
   name: string;
   service_name: string;
@@ -491,6 +798,8 @@ export interface PutServiceRequest {
   /** Service dependencies (started first) */
   needs: PutServiceRequestNeedsList;
 }
+const PutServiceRequest = /*@__PURE__*/ __L.at(__c8, 6) as any as S.Schema<PutServiceRequest>;
+
 export interface ReadFileRequest {
   name: string;
   /** Path to the file to read */
@@ -498,7 +807,11 @@ export interface ReadFileRequest {
   /** Working directory for resolving relative paths */
   workingDir: string;
 }
+const ReadFileRequest = /*@__PURE__*/ __L.at(__c8, 7) as any as S.Schema<ReadFileRequest>;
+
 export interface ReadFileResponse {}
+const ReadFileResponse = CreateCheckpointResponse as any as S.Schema<ReadFileResponse>;
+
 export interface RenameFileRequest {
   name: string;
   asRoot: boolean;
@@ -506,62 +819,123 @@ export interface RenameFileRequest {
   source: string;
   workingDir: string;
 }
+const RenameFileRequest = /*@__PURE__*/ __L.at(__c9, 0) as any as S.Schema<RenameFileRequest>;
+
 export interface RenameResponse {
   dest: string;
   source: string;
 }
+const RenameResponse = CopyResult as any as S.Schema<RenameResponse>;
+
 export interface RestartServiceRequest {
   name: string;
   service_name: string;
   /** Time to monitor logs after starting (default: `5s`) */
   duration?: number;
 }
+const RestartServiceRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  1,
+) as any as S.Schema<RestartServiceRequest>;
+
 export interface RestartServiceResponse {}
+const RestartServiceResponse = CreateCheckpointResponse as any as S.Schema<RestartServiceResponse>;
+
 export interface RestoreCheckpointRequest {
   name: string;
   checkpoint_id: string;
 }
+const RestoreCheckpointRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  2,
+) as any as S.Schema<RestoreCheckpointRequest>;
+
 export interface RestoreCheckpointResponse {}
+const RestoreCheckpointResponse =
+  CreateCheckpointResponse as any as S.Schema<RestoreCheckpointResponse>;
+
 /** List of network policy rules */
 export type SetNetworkPolicyRequestRulesList = Array<NetworkPolicyRule>;
+const SetNetworkPolicyRequestRulesList =
+  NetworkPolicyRequestRulesList as any as S.Schema<SetNetworkPolicyRequestRulesList>;
+
 export interface SetNetworkPolicyRequest {
   name: string;
   /** List of network policy rules */
   rules: SetNetworkPolicyRequestRulesList;
 }
+const SetNetworkPolicyRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  3,
+) as any as S.Schema<SetNetworkPolicyRequest>;
+
 export interface SetNetworkPolicyResponse {}
+const SetNetworkPolicyResponse =
+  CreateCheckpointResponse as any as S.Schema<SetNetworkPolicyResponse>;
+
 export interface SetPrivilegesPolicyRequest {
   name: string;
 }
+const SetPrivilegesPolicyRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  4,
+) as any as S.Schema<SetPrivilegesPolicyRequest>;
+
 export interface SetPrivilegesPolicyResponse {}
+const SetPrivilegesPolicyResponse =
+  CreateCheckpointResponse as any as S.Schema<SetPrivilegesPolicyResponse>;
+
 export interface SetResourcesPolicyRequest {
   name: string;
 }
+const SetResourcesPolicyRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  5,
+) as any as S.Schema<SetResourcesPolicyRequest>;
+
 export interface SetResourcesPolicyResponse {}
+const SetResourcesPolicyResponse =
+  CreateCheckpointResponse as any as S.Schema<SetResourcesPolicyResponse>;
+
 export interface StartServiceRequest {
   name: string;
   service_name: string;
   /** Time to monitor logs after starting (default: `5s`) */
   duration?: number;
 }
+const StartServiceRequest = /*@__PURE__*/ __L.at(__c9, 6) as any as S.Schema<StartServiceRequest>;
+
 export interface StartServiceResponse {}
+const StartServiceResponse = CreateCheckpointResponse as any as S.Schema<StartServiceResponse>;
+
 export interface StopServiceRequest {
   name: string;
   service_name: string;
   /** Timeout waiting for service to stop (default: `10s`) */
   timeout?: number;
 }
+const StopServiceRequest = /*@__PURE__*/ __L.at(__c9, 7) as any as S.Schema<StopServiceRequest>;
+
 export interface StopServiceResponse {}
+const StopServiceResponse = CreateCheckpointResponse as any as S.Schema<StopServiceResponse>;
+
 export interface UpdateOAuthConnectionRequest {
   id: string;
   /** Replacement access policy. */
   access_policy: AccessPolicy;
 }
+const UpdateOAuthConnectionRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  0,
+) as any as S.Schema<UpdateOAuthConnectionRequest>;
+
 export interface UpdateSpriteRequest {
   name: string;
   /** URL access configuration to update */
   url_settings: UrlSettingsRequest;
 }
+const UpdateSpriteRequest = /*@__PURE__*/ __L.at(__c10, 1) as any as S.Schema<UpdateSpriteRequest>;
+
 export interface WriteFileRequest {
   name: string;
   /** Path to the file to write */
@@ -574,11 +948,15 @@ export interface WriteFileRequest {
   mkdir?: boolean;
   body: Uint8Array | string;
 }
+const WriteFileRequest = /*@__PURE__*/ __L.at(__c10, 2) as any as S.Schema<WriteFileRequest>;
+
 export interface WriteResponse {
   mode: string;
   path: string;
   size: number;
 }
+const WriteResponse = /*@__PURE__*/ __L.at(__c10, 3) as any as S.Schema<WriteResponse>;
+
 export type AuthorizeOAuthConnectionError = BadRequest | SpritesNotEnabled | SpritesOpError;
 /** Authorize an OAuth connector Create an OAuth authorization URL for a provider. Use this to start a browser-based consent flow. */
 export const authorizeOAuthConnection: API.OperationMethod<
@@ -587,8 +965,8 @@ export const authorizeOAuthConnection: API.OperationMethod<
   AuthorizeOAuthConnectionError,
   SpritesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<AuthorizeOAuthConnectionRequest>,
-  output: __S(1) as any as S.Schema<OAuthAuthorizeResponse>,
+  input: AuthorizeOAuthConnectionRequest,
+  output: OAuthAuthorizeResponse,
   errors: [BadRequest, SpritesNotEnabled],
   protocol: SpritesProtocol,
   retry: Retry.Retry,
@@ -602,8 +980,8 @@ export const changeFileMode: API.OperationMethod<
   ChangeFileModeError,
   SpritesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2) as any as S.Schema<ChangeFileModeRequest>,
-  output: __S(5) as any as S.Schema<ChmodResponse>,
+  input: ChangeFileModeRequest,
+  output: ChmodResponse,
   errors: [BadRequest, NotFound],
   protocol: SpritesProtocol,
   retry: Retry.Retry,
@@ -617,8 +995,8 @@ export const changeFileOwner: API.OperationMethod<
   ChangeFileOwnerError,
   SpritesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6) as any as S.Schema<ChangeFileOwnerRequest>,
-  output: __S(9) as any as S.Schema<ChownResponse>,
+  input: ChangeFileOwnerRequest,
+  output: ChownResponse,
   errors: [BadRequest, NotFound],
   protocol: SpritesProtocol,
   retry: Retry.Retry,
@@ -632,8 +1010,8 @@ export const copyFile: API.OperationMethod<
   CopyFileError,
   SpritesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10) as any as S.Schema<CopyFileRequest>,
-  output: __S(13) as any as S.Schema<CopyResponse>,
+  input: CopyFileRequest,
+  output: CopyResponse,
   errors: [BadRequest, NotFound],
   protocol: SpritesProtocol,
   retry: Retry.Retry,
@@ -647,8 +1025,8 @@ export const createCheckpoint: API.OperationMethod<
   CreateCheckpointError,
   SpritesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14) as any as S.Schema<CreateCheckpointRequest>,
-  output: __S(15) as any as S.Schema<CreateCheckpointResponse>,
+  input: CreateCheckpointRequest,
+  output: CreateCheckpointResponse,
   errors: [NotFound],
   protocol: SpritesProtocol,
   retry: Retry.Retry,
@@ -662,8 +1040,8 @@ export const createOAuthApiKeyConnection: API.OperationMethod<
   CreateOAuthApiKeyConnectionError,
   SpritesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18) as any as S.Schema<CreateOAuthApiKeyConnectionRequest>,
-  output: __S(21) as any as S.Schema<ConnectionResponse>,
+  input: CreateOAuthApiKeyConnectionRequest,
+  output: ConnectionResponse,
   errors: [BadRequest, SpritesNotEnabled],
   protocol: SpritesProtocol,
   retry: Retry.Retry,
@@ -677,8 +1055,8 @@ export const createOrganizationToken: API.OperationMethod<
   CreateOrganizationTokenError,
   SpritesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22) as any as S.Schema<CreateOrganizationTokenRequest>,
-  output: __S(23) as any as S.Schema<CreateOrganizationTokenResponse>,
+  input: CreateOrganizationTokenRequest,
+  output: CreateOrganizationTokenResponse,
   errors: [SpritesNotEnabled],
   protocol: SpritesProtocol,
   retry: Retry.Retry,
@@ -692,8 +1070,8 @@ export const createSprite: API.OperationMethod<
   CreateSpriteError,
   SpritesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25) as any as S.Schema<CreateSpriteRequest>,
-  output: __S(27) as any as S.Schema<SpriteResponse>,
+  input: CreateSpriteRequest,
+  output: SpriteResponse,
   errors: [BadRequest, SpritesNotEnabled],
   protocol: SpritesProtocol,
   retry: Retry.Retry,
@@ -707,8 +1085,8 @@ export const deleteFile: API.OperationMethod<
   DeleteFileError,
   SpritesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28) as any as S.Schema<DeleteFileRequest>,
-  output: __S(29) as any as S.Schema<DeleteResponse>,
+  input: DeleteFileRequest,
+  output: DeleteResponse,
   errors: [BadRequest, NotFound],
   protocol: SpritesProtocol,
   retry: Retry.Retry,
@@ -722,8 +1100,8 @@ export const deleteOAuthConnection: API.OperationMethod<
   DeleteOAuthConnectionError,
   SpritesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30) as any as S.Schema<DeleteOAuthConnectionRequest>,
-  output: __S(15) as any as S.Schema<DeleteOAuthConnectionResponse>,
+  input: DeleteOAuthConnectionRequest,
+  output: DeleteOAuthConnectionResponse,
   errors: [SpritesNotEnabled, NotFound],
   protocol: SpritesProtocol,
   retry: Retry.Retry,
@@ -737,8 +1115,8 @@ export const deletePrivilegesPolicy: API.OperationMethod<
   DeletePrivilegesPolicyError,
   SpritesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31) as any as S.Schema<DeletePrivilegesPolicyRequest>,
-  output: __S(15) as any as S.Schema<DeletePrivilegesPolicyResponse>,
+  input: DeletePrivilegesPolicyRequest,
+  output: DeletePrivilegesPolicyResponse,
   errors: [BadRequest, NotFound],
   protocol: SpritesProtocol,
   retry: Retry.Retry,
@@ -752,8 +1130,8 @@ export const deleteResourcesPolicy: API.OperationMethod<
   DeleteResourcesPolicyError,
   SpritesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32) as any as S.Schema<DeleteResourcesPolicyRequest>,
-  output: __S(15) as any as S.Schema<DeleteResourcesPolicyResponse>,
+  input: DeleteResourcesPolicyRequest,
+  output: DeleteResourcesPolicyResponse,
   errors: [BadRequest, NotFound],
   protocol: SpritesProtocol,
   retry: Retry.Retry,
@@ -767,8 +1145,8 @@ export const deleteSprite: API.OperationMethod<
   DeleteSpriteError,
   SpritesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33) as any as S.Schema<DeleteSpriteRequest>,
-  output: __S(15) as any as S.Schema<DeleteSpriteResponse>,
+  input: DeleteSpriteRequest,
+  output: DeleteSpriteResponse,
   errors: [SpritesNotEnabled, NotFound],
   protocol: SpritesProtocol,
   retry: Retry.Retry,
@@ -782,8 +1160,8 @@ export const execCommand: API.OperationMethod<
   ExecCommandError,
   SpritesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34) as any as S.Schema<ExecCommandRequest>,
-  output: __S(15) as any as S.Schema<ExecCommandResponse>,
+  input: ExecCommandRequest,
+  output: ExecCommandResponse,
   errors: [BadRequest, NotFound],
   protocol: SpritesProtocol,
   retry: Retry.Retry,
@@ -797,8 +1175,8 @@ export const getCheckpoint: API.OperationMethod<
   GetCheckpointError,
   SpritesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35) as any as S.Schema<GetCheckpointRequest>,
-  output: __S(36) as any as S.Schema<CheckpointInfo>,
+  input: GetCheckpointRequest,
+  output: CheckpointInfo,
   errors: [NotFound],
   protocol: SpritesProtocol,
   retry: Retry.Retry,
@@ -812,8 +1190,8 @@ export const getNetworkPolicy: API.OperationMethod<
   GetNetworkPolicyError,
   SpritesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37) as any as S.Schema<GetNetworkPolicyRequest>,
-  output: __S(40) as any as S.Schema<NetworkPolicyRequest>,
+  input: GetNetworkPolicyRequest,
+  output: NetworkPolicyRequest,
   errors: [NotFound],
   protocol: SpritesProtocol,
   retry: Retry.Retry,
@@ -827,8 +1205,8 @@ export const getOAuthConnection: API.OperationMethod<
   GetOAuthConnectionError,
   SpritesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41) as any as S.Schema<GetOAuthConnectionRequest>,
-  output: __S(21) as any as S.Schema<ConnectionResponse>,
+  input: GetOAuthConnectionRequest,
+  output: ConnectionResponse,
   errors: [SpritesNotEnabled, NotFound],
   protocol: SpritesProtocol,
   retry: Retry.Retry,
@@ -842,8 +1220,8 @@ export const getPrivilegesPolicy: API.OperationMethod<
   GetPrivilegesPolicyError,
   SpritesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42) as any as S.Schema<GetPrivilegesPolicyRequest>,
-  output: __S(15) as any as S.Schema<GetPrivilegesPolicyResponse>,
+  input: GetPrivilegesPolicyRequest,
+  output: GetPrivilegesPolicyResponse,
   errors: [NotFound],
   protocol: SpritesProtocol,
   retry: Retry.Retry,
@@ -857,8 +1235,8 @@ export const getResourcesPolicy: API.OperationMethod<
   GetResourcesPolicyError,
   SpritesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43) as any as S.Schema<GetResourcesPolicyRequest>,
-  output: __S(15) as any as S.Schema<GetResourcesPolicyResponse>,
+  input: GetResourcesPolicyRequest,
+  output: GetResourcesPolicyResponse,
   errors: [NotFound],
   protocol: SpritesProtocol,
   retry: Retry.Retry,
@@ -872,8 +1250,8 @@ export const getService: API.OperationMethod<
   GetServiceError,
   SpritesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44) as any as S.Schema<GetServiceRequest>,
-  output: __S(46) as any as S.Schema<ServiceResponse>,
+  input: GetServiceRequest,
+  output: ServiceResponse,
   errors: [NotFound],
   protocol: SpritesProtocol,
   retry: Retry.Retry,
@@ -887,8 +1265,8 @@ export const getServiceLogs: API.OperationMethod<
   GetServiceLogsError,
   SpritesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47) as any as S.Schema<GetServiceLogsRequest>,
-  output: __S(15) as any as S.Schema<GetServiceLogsResponse>,
+  input: GetServiceLogsRequest,
+  output: GetServiceLogsResponse,
   errors: [NotFound],
   protocol: SpritesProtocol,
   retry: Retry.Retry,
@@ -902,8 +1280,8 @@ export const getSprite: API.OperationMethod<
   GetSpriteError,
   SpritesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48) as any as S.Schema<GetSpriteRequest>,
-  output: __S(27) as any as S.Schema<SpriteResponse>,
+  input: GetSpriteRequest,
+  output: SpriteResponse,
   errors: [SpritesNotEnabled, NotFound],
   protocol: SpritesProtocol,
   retry: Retry.Retry,
@@ -917,8 +1295,8 @@ export const killExecSession: API.OperationMethod<
   KillExecSessionError,
   SpritesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49) as any as S.Schema<KillExecSessionRequest>,
-  output: __S(15) as any as S.Schema<KillExecSessionResponse>,
+  input: KillExecSessionRequest,
+  output: KillExecSessionResponse,
   errors: [NotFound],
   protocol: SpritesProtocol,
   retry: Retry.Retry,
@@ -932,8 +1310,8 @@ export const listCheckpoints: API.OperationMethod<
   ListCheckpointsError,
   SpritesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(50) as any as S.Schema<ListCheckpointsRequest>,
-  output: __S(52) as any as S.Schema<ListCheckpointsResponse>,
+  input: ListCheckpointsRequest,
+  output: ListCheckpointsResponse,
   errors: [NotFound],
   protocol: SpritesProtocol,
   retry: Retry.Retry,
@@ -947,8 +1325,8 @@ export const listDirectory: API.OperationMethod<
   ListDirectoryError,
   SpritesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(53) as any as S.Schema<ListDirectoryRequest>,
-  output: __S(56) as any as S.Schema<ListResponse>,
+  input: ListDirectoryRequest,
+  output: ListResponse,
   errors: [NotFound],
   protocol: SpritesProtocol,
   retry: Retry.Retry,
@@ -962,8 +1340,8 @@ export const listExecSessions: API.OperationMethod<
   ListExecSessionsError,
   SpritesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57) as any as S.Schema<ListExecSessionsRequest>,
-  output: __S(15) as any as S.Schema<ListExecSessionsResponse>,
+  input: ListExecSessionsRequest,
+  output: ListExecSessionsResponse,
   errors: [NotFound],
   protocol: SpritesProtocol,
   retry: Retry.Retry,
@@ -977,8 +1355,8 @@ export const listOAuthConnections: API.OperationMethod<
   ListOAuthConnectionsError,
   SpritesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(58) as any as S.Schema<ListOAuthConnectionsRequest>,
-  output: __S(60) as any as S.Schema<ConnectionListResponse>,
+  input: ListOAuthConnectionsRequest,
+  output: ConnectionListResponse,
   errors: [SpritesNotEnabled],
   protocol: SpritesProtocol,
   retry: Retry.Retry,
@@ -992,8 +1370,8 @@ export const listServices: API.OperationMethod<
   ListServicesError,
   SpritesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(61) as any as S.Schema<ListServicesRequest>,
-  output: __S(63) as any as S.Schema<ListServicesResponse>,
+  input: ListServicesRequest,
+  output: ListServicesResponse,
   errors: [NotFound],
   protocol: SpritesProtocol,
   retry: Retry.Retry,
@@ -1009,8 +1387,8 @@ export const listSprites: API.PaginatedOperationMethod<
   SpriteResponse
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(64) as any as S.Schema<ListSpritesRequest>,
-    output: __S(66) as any as S.Schema<SpriteListResponse>,
+    input: ListSpritesRequest,
+    output: SpriteListResponse,
     errors: [SpritesNotEnabled],
     protocol: SpritesProtocol,
     retry: Retry.Retry,
@@ -1033,8 +1411,8 @@ export const oauthConnectionCallback: API.OperationMethod<
   OauthConnectionCallbackError,
   SpritesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(67) as any as S.Schema<OauthConnectionCallbackRequest>,
-  output: __S(21) as any as S.Schema<ConnectionResponse>,
+  input: OauthConnectionCallbackRequest,
+  output: ConnectionResponse,
   errors: [BadRequest, SpritesNotEnabled],
   protocol: SpritesProtocol,
   retry: Retry.Retry,
@@ -1048,8 +1426,8 @@ export const patchOAuthConnection: API.OperationMethod<
   PatchOAuthConnectionError,
   SpritesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(68) as any as S.Schema<PatchOAuthConnectionRequest>,
-  output: __S(21) as any as S.Schema<ConnectionResponse>,
+  input: PatchOAuthConnectionRequest,
+  output: ConnectionResponse,
   errors: [BadRequest, SpritesNotEnabled, NotFound],
   protocol: SpritesProtocol,
   retry: Retry.Retry,
@@ -1063,8 +1441,8 @@ export const provisionOAuthConnection: API.OperationMethod<
   ProvisionOAuthConnectionError,
   SpritesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(69) as any as S.Schema<ProvisionOAuthConnectionRequest>,
-  output: __S(21) as any as S.Schema<ConnectionResponse>,
+  input: ProvisionOAuthConnectionRequest,
+  output: ConnectionResponse,
   errors: [BadRequest, SpritesNotEnabled],
   protocol: SpritesProtocol,
   retry: Retry.Retry,
@@ -1078,8 +1456,8 @@ export const putService: API.OperationMethod<
   PutServiceError,
   SpritesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(70) as any as S.Schema<PutServiceRequest>,
-  output: __S(46) as any as S.Schema<ServiceResponse>,
+  input: PutServiceRequest,
+  output: ServiceResponse,
   errors: [BadRequest, NotFound],
   protocol: SpritesProtocol,
   retry: Retry.Retry,
@@ -1093,8 +1471,8 @@ export const readFile: API.OperationMethod<
   ReadFileError,
   SpritesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(71) as any as S.Schema<ReadFileRequest>,
-  output: __S(15) as any as S.Schema<ReadFileResponse>,
+  input: ReadFileRequest,
+  output: ReadFileResponse,
   errors: [NotFound],
   protocol: SpritesProtocol,
   retry: Retry.Retry,
@@ -1108,8 +1486,8 @@ export const renameFile: API.OperationMethod<
   RenameFileError,
   SpritesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(72) as any as S.Schema<RenameFileRequest>,
-  output: __S(11) as any as S.Schema<RenameResponse>,
+  input: RenameFileRequest,
+  output: RenameResponse,
   errors: [BadRequest, NotFound],
   protocol: SpritesProtocol,
   retry: Retry.Retry,
@@ -1123,8 +1501,8 @@ export const restartService: API.OperationMethod<
   RestartServiceError,
   SpritesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(73) as any as S.Schema<RestartServiceRequest>,
-  output: __S(15) as any as S.Schema<RestartServiceResponse>,
+  input: RestartServiceRequest,
+  output: RestartServiceResponse,
   errors: [NotFound],
   protocol: SpritesProtocol,
   retry: Retry.Retry,
@@ -1138,8 +1516,8 @@ export const restoreCheckpoint: API.OperationMethod<
   RestoreCheckpointError,
   SpritesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(74) as any as S.Schema<RestoreCheckpointRequest>,
-  output: __S(15) as any as S.Schema<RestoreCheckpointResponse>,
+  input: RestoreCheckpointRequest,
+  output: RestoreCheckpointResponse,
   errors: [NotFound],
   protocol: SpritesProtocol,
   retry: Retry.Retry,
@@ -1153,8 +1531,8 @@ export const setNetworkPolicy: API.OperationMethod<
   SetNetworkPolicyError,
   SpritesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(75) as any as S.Schema<SetNetworkPolicyRequest>,
-  output: __S(15) as any as S.Schema<SetNetworkPolicyResponse>,
+  input: SetNetworkPolicyRequest,
+  output: SetNetworkPolicyResponse,
   errors: [BadRequest, NotFound],
   protocol: SpritesProtocol,
   retry: Retry.Retry,
@@ -1168,8 +1546,8 @@ export const setPrivilegesPolicy: API.OperationMethod<
   SetPrivilegesPolicyError,
   SpritesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(76) as any as S.Schema<SetPrivilegesPolicyRequest>,
-  output: __S(15) as any as S.Schema<SetPrivilegesPolicyResponse>,
+  input: SetPrivilegesPolicyRequest,
+  output: SetPrivilegesPolicyResponse,
   errors: [BadRequest, NotFound],
   protocol: SpritesProtocol,
   retry: Retry.Retry,
@@ -1183,8 +1561,8 @@ export const setResourcesPolicy: API.OperationMethod<
   SetResourcesPolicyError,
   SpritesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(77) as any as S.Schema<SetResourcesPolicyRequest>,
-  output: __S(15) as any as S.Schema<SetResourcesPolicyResponse>,
+  input: SetResourcesPolicyRequest,
+  output: SetResourcesPolicyResponse,
   errors: [BadRequest, NotFound],
   protocol: SpritesProtocol,
   retry: Retry.Retry,
@@ -1198,8 +1576,8 @@ export const startService: API.OperationMethod<
   StartServiceError,
   SpritesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(78) as any as S.Schema<StartServiceRequest>,
-  output: __S(15) as any as S.Schema<StartServiceResponse>,
+  input: StartServiceRequest,
+  output: StartServiceResponse,
   errors: [NotFound],
   protocol: SpritesProtocol,
   retry: Retry.Retry,
@@ -1213,8 +1591,8 @@ export const stopService: API.OperationMethod<
   StopServiceError,
   SpritesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(79) as any as S.Schema<StopServiceRequest>,
-  output: __S(15) as any as S.Schema<StopServiceResponse>,
+  input: StopServiceRequest,
+  output: StopServiceResponse,
   errors: [NotFound],
   protocol: SpritesProtocol,
   retry: Retry.Retry,
@@ -1228,8 +1606,8 @@ export const updateOAuthConnection: API.OperationMethod<
   UpdateOAuthConnectionError,
   SpritesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(80) as any as S.Schema<UpdateOAuthConnectionRequest>,
-  output: __S(21) as any as S.Schema<ConnectionResponse>,
+  input: UpdateOAuthConnectionRequest,
+  output: ConnectionResponse,
   errors: [BadRequest, SpritesNotEnabled, NotFound],
   protocol: SpritesProtocol,
   retry: Retry.Retry,
@@ -1243,8 +1621,8 @@ export const updateSprite: API.OperationMethod<
   UpdateSpriteError,
   SpritesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(81) as any as S.Schema<UpdateSpriteRequest>,
-  output: __S(27) as any as S.Schema<SpriteResponse>,
+  input: UpdateSpriteRequest,
+  output: SpriteResponse,
   errors: [BadRequest, SpritesNotEnabled, NotFound],
   protocol: SpritesProtocol,
   retry: Retry.Retry,
@@ -1258,8 +1636,8 @@ export const writeFile: API.OperationMethod<
   WriteFileError,
   SpritesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(82) as any as S.Schema<WriteFileRequest>,
-  output: __S(83) as any as S.Schema<WriteResponse>,
+  input: WriteFileRequest,
+  output: WriteResponse,
   errors: [BadRequest, NotFound],
   protocol: SpritesProtocol,
   retry: Retry.Retry,
@@ -1306,11 +1684,11 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "ChmodResult" });
     case 4:
-      return S.Array(__S(3));
+      return S.Array(ChmodResult);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          affected: __S(4),
+          affected: ChmodResponseAffectedList,
           count: S.Number,
         }),
       ).annotate({ identifier: "ChmodResponse" });
@@ -1339,11 +1717,11 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(7));
+      return S.Array(ChownResult);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          affected: __S(8),
+          affected: ChownResponseAffectedList,
           count: S.Number,
         }),
       ).annotate({ identifier: "ChownResponse" });
@@ -1367,11 +1745,11 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "CopyResult" });
     case 4:
-      return S.Array(__S(11));
+      return S.Array(CopyResult);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          copied: __S(12),
+          copied: CopyResponseCopiedList,
           count: S.Number,
           totalBytes: S.Number,
         }),
@@ -1397,16 +1775,16 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           allow_all: S.optional(S.Boolean),
-          allowed_endpoints: S.optional(__S(16)),
-          blocked_endpoints: S.optional(__S(16)),
+          allowed_endpoints: S.optional(AccessPolicyAllowedEndpointsList),
+          blocked_endpoints: S.optional(AccessPolicyBlockedEndpointsList),
           name_prefix: S.optional(S.String),
-          sprite_labels: S.optional(__S(16)),
+          sprite_labels: S.optional(AccessPolicySpriteLabelsList),
         }),
       ).annotate({ identifier: "AccessPolicy" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          access_policy: S.optional(__S(17)),
+          access_policy: S.optional(AccessPolicy),
           api_key: S.String.pipe(T.SensitiveValue({})),
           base_api_url: S.optional(S.String),
           provider: S.String,
@@ -1419,11 +1797,11 @@ function __c2(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          access_policy: S.optional(__S(17)),
-          connection_type: S.optional(S.String),
+          access_policy: S.optional(AccessPolicy),
+          connection_type: S.optional(ConnectionConnectionType),
           id: S.String,
           inserted_at: S.optional(S.String),
-          notes: S.optional(__S(19)),
+          notes: S.optional(ConnectionNotesList),
           provider: S.String,
           provider_account_id: S.String,
           provider_account_name: S.optional(S.String),
@@ -1438,7 +1816,7 @@ function __c2(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          connection: __S(20),
+          connection: Connection,
         }),
       ).annotate({ identifier: "ConnectionResponse" });
     case 6:
@@ -1466,21 +1844,21 @@ function __c3(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          auth: S.optional(S.String),
+          auth: S.optional(UrlSettingsRequestAuth),
         }),
       ).annotate({ identifier: "UrlSettingsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          url_settings: S.optional(__S(24)),
+          url_settings: S.optional(UrlSettingsRequest),
         }).pipe(T.Http({ method: "POST", uri: "/sprites", code: 200 })),
       ).annotate({ identifier: "CreateSpriteRequest" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          auth: S.String,
-          private_access: S.optional(S.String),
+          auth: UrlSettingsAuth,
+          private_access: S.optional(UrlSettingsPrivateAccess),
         }),
       ).annotate({ identifier: "UrlSettings" });
     case 3:
@@ -1489,15 +1867,15 @@ function __c3(j: number): any {
           created_at: S.String,
           environment_version: S.optional(S.NullOr(S.String)),
           id: S.String,
-          labels: S.optional(__S(16)),
+          labels: S.optional(SpriteResponseLabelsList),
           last_running_at: S.optional(S.NullOr(S.String)),
           last_warming_at: S.optional(S.NullOr(S.String)),
           name: S.String,
           organization: S.String,
-          status: S.String,
+          status: SpriteResponseStatus,
           updated_at: S.String,
           url: S.String,
-          url_settings: S.optional(S.NullOr(__S(26))),
+          url_settings: S.optional(S.NullOr(UrlSettings)),
           version: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "SpriteResponse" });
@@ -1515,7 +1893,7 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           count: S.Number,
-          deleted: __S(16),
+          deleted: DeleteResponseDeletedList,
         }),
       ).annotate({ identifier: "DeleteResponse" });
     case 6:
@@ -1605,7 +1983,7 @@ function __c4(j: number): any {
         }),
       ).annotate({ identifier: "NetworkPolicyRule" });
     case 7:
-      return S.Array(__S(38));
+      return S.Array(NetworkPolicyRule);
   }
 }
 function __c5(j: number): any {
@@ -1613,7 +1991,7 @@ function __c5(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          rules: __S(39),
+          rules: NetworkPolicyRequestRulesList,
         }),
       ).annotate({ identifier: "NetworkPolicyRequest" });
     case 1:
@@ -1662,12 +2040,12 @@ function __c5(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          args: __S(16),
+          args: ServiceResponseArgsList,
           cmd: S.String,
           http_port: S.optional(S.NullOr(S.Number)),
           name: S.String,
-          needs: __S(16),
-          state: S.optional(S.NullOr(__S(45))),
+          needs: ServiceResponseNeedsList,
+          state: S.optional(S.NullOr(ServiceState)),
         }),
       ).annotate({ identifier: "ServiceResponse" });
     case 7:
@@ -1709,9 +2087,9 @@ function __c6(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/sprites/{name}/checkpoints", code: 200 })),
       ).annotate({ identifier: "ListCheckpointsRequest" });
     case 3:
-      return S.Array(__S(36));
+      return S.Array(CheckpointInfo);
     case 4:
-      return S.suspend(() => __S(51).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => ListCheckpointsResponseBodyList.pipe(T.RawResponseRoot())).annotate({
         identifier: "ListCheckpointsResponse",
       });
     case 5:
@@ -1735,7 +2113,7 @@ function __c6(j: number): any {
         }),
       ).annotate({ identifier: "Entry" });
     case 7:
-      return S.Array(__S(54));
+      return S.Array(Entry);
   }
 }
 function __c7(j: number): any {
@@ -1744,7 +2122,7 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           count: S.Number,
-          entries: __S(55),
+          entries: ListResponseEntriesList,
           path: S.String,
         }),
       ).annotate({ identifier: "ListResponse" });
@@ -1763,11 +2141,11 @@ function __c7(j: number): any {
         identifier: "ListOAuthConnectionsRequest",
       });
     case 3:
-      return S.Array(__S(20));
+      return S.Array(Connection);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          connections: __S(59),
+          connections: ConnectionListResponseConnectionsList,
         }),
       ).annotate({ identifier: "ConnectionListResponse" });
     case 5:
@@ -1777,9 +2155,9 @@ function __c7(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/sprites/{name}/services", code: 200 })),
       ).annotate({ identifier: "ListServicesRequest" });
     case 6:
-      return S.Array(__S(46));
+      return S.Array(ServiceResponse);
     case 7:
-      return S.suspend(() => __S(62).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => ListServicesResponseBodyList.pipe(T.RawResponseRoot())).annotate({
         identifier: "ListServicesResponse",
       });
   }
@@ -1795,7 +2173,7 @@ function __c8(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/sprites", code: 200 })),
       ).annotate({ identifier: "ListSpritesRequest" });
     case 1:
-      return S.Array(__S(27));
+      return S.Array(SpriteResponse);
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -1805,7 +2183,7 @@ function __c8(j: number): any {
           next_continuation_token: S.optional(S.String),
           running: S.Number,
           running_limit: S.optional(S.Number),
-          sprites: __S(65),
+          sprites: SpriteListResponseSpritesList,
           warm: S.Number,
           warm_limit: S.optional(S.Number),
         }),
@@ -1814,7 +2192,7 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           provider: S.String.pipe(T.Label()),
-          access_policy: S.optional(__S(17)),
+          access_policy: S.optional(AccessPolicy),
           code: S.String,
           redirect_uri: S.optional(S.String),
           state: S.optional(S.String),
@@ -1826,7 +2204,7 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
-          access_policy: __S(17),
+          access_policy: AccessPolicy,
         }).pipe(T.Http({ method: "PATCH", uri: "/oauth/connections/{id}", code: 200 })),
       ).annotate({
         identifier: "PatchOAuthConnectionRequest",
@@ -1845,12 +2223,12 @@ function __c8(j: number): any {
           name: S.String.pipe(T.Label()),
           service_name: S.String.pipe(T.Label()),
           duration: S.optional(S.Number.pipe(T.Query())),
-          args: __S(16),
+          args: PutServiceRequestArgsList,
           cmd: S.String,
           dir: S.optional(S.String),
           env: S.optional(S.Unknown),
           http_port: S.optional(S.NullOr(S.Number)),
-          needs: __S(16),
+          needs: PutServiceRequestNeedsList,
         }).pipe(
           T.Http({ method: "PUT", uri: "/sprites/{name}/services/{service_name}", code: 200 }),
         ),
@@ -1908,7 +2286,7 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          rules: __S(39),
+          rules: SetNetworkPolicyRequestRulesList,
         }).pipe(T.Http({ method: "POST", uri: "/sprites/{name}/policy/network", code: 200 })),
       ).annotate({ identifier: "SetNetworkPolicyRequest" });
     case 4:
@@ -1963,7 +2341,7 @@ function __c10(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
-          access_policy: __S(17),
+          access_policy: AccessPolicy,
         }).pipe(T.Http({ method: "PUT", uri: "/oauth/connections/{id}", code: 200 })),
       ).annotate({
         identifier: "UpdateOAuthConnectionRequest",
@@ -1972,7 +2350,7 @@ function __c10(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          url_settings: __S(24),
+          url_settings: UrlSettingsRequest,
         }).pipe(T.Http({ method: "PUT", uri: "/sprites/{name}", code: 200 })),
       ).annotate({ identifier: "UpdateSpriteRequest" });
     case 2:
@@ -2001,36 +2379,5 @@ function __c10(j: number): any {
           size: S.Number,
         }),
       ).annotate({ identifier: "WriteResponse" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
-    case 9:
-      return __c9(i & 7);
-    case 10:
-      return __c10(i & 7);
   }
 }

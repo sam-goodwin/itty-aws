@@ -8,8 +8,6 @@ import { paginateRelay } from "../pagination.ts";
 import { WhopProtocol, type WhopOpError, type WhopOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { WhopOpError, WhopOpContext };
 
@@ -51,8 +49,15 @@ export class NotFound
 
 /** Custom metadata to attach to the setup intent. Returned on the setup intent and its webhooks. */
 export type CreateSetupIntentRequestMetadataMap = { [key: string]: string | undefined };
+const CreateSetupIntentRequestMetadataMap = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<CreateSetupIntentRequestMetadataMap>;
+
 /** What the saved payment method will pay for. Set to `ads_billing` when saving a card to pay for Whop Ads on `account_id`: the card is verified by Whop Ads, the merchant that charges it, which helps minimize security declines on ad payments, and it requires `ad_campaign:create` on `account_id`. Omit it for any other payment method. */
 export type CreateSetupIntentRequestPurpose = "ads_billing";
+const CreateSetupIntentRequestPurpose = S.String;
+
 export interface CreateSetupIntentRequest {
   /** The account to save the payment method for, prefixed `biz_`. */
   account_id: string;
@@ -73,12 +78,19 @@ export interface CreateSetupIntentRequest {
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
+const CreateSetupIntentRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<CreateSetupIntentRequest>;
+
 export interface SetupLastSetupError {
   /** A machine-readable classification of the failure, e.g. `enrollment_declined`. Absent when the buyer simply abandoned the setup. */
   code: string | null;
   /** A human-readable explanation of the failure. */
   message: string | null;
 }
+const SetupLastSetupError = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<SetupLastSetupError>;
+
 export interface PaymentInstrumentCard {
   /** The network identifier (`visa`, `amex`, ...), matching `card.networks` entries and saved card payment methods. Null when the vault did not record the network. */
   brand: string | null;
@@ -91,6 +103,11 @@ export interface PaymentInstrumentCard {
   /** The card's last four digits, when captured. */
   last4: string | null;
 }
+const PaymentInstrumentCard = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<PaymentInstrumentCard>;
+
 export interface PaymentMethodIconFiles {
   /** Raster fallback at the shape's native size. */
   png_1x: string;
@@ -101,18 +118,30 @@ export interface PaymentMethodIconFiles {
   /** The vector file. Prefer this everywhere SVG renders. */
   svg: string;
 }
+const PaymentMethodIconFiles = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<PaymentMethodIconFiles>;
+
 export interface PaymentMethodIconVariants {
   /** The colorway for dark surfaces. */
   dark: PaymentMethodIconFiles;
   /** The colorway for light surfaces. */
   light: PaymentMethodIconFiles;
 }
+const PaymentMethodIconVariants = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<PaymentMethodIconVariants>;
+
 export interface PaymentMethodIcons {
   /** The credit-card-proportioned tile (48x30). */
   card: PaymentMethodIconVariants;
   /** The square tile (32x32). */
   square: PaymentMethodIconVariants;
 }
+const PaymentMethodIcons = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<PaymentMethodIcons>;
+
 export interface PaymentInstrument {
   /** Card payments only: the card's network, last four, and issuer identification number. */
   card: PaymentInstrumentCard | null;
@@ -125,6 +154,8 @@ export interface PaymentInstrument {
   /** The payment method type identifier, e.g. `card`, `klarna`, `apple_pay`. */
   payment_method_type: string;
 }
+const PaymentInstrument = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<PaymentInstrument>;
+
 /** The different types of payment methods that can be used. */
 export type PaymentMethodTypes =
   | "acss_debit"
@@ -256,12 +287,18 @@ export type PaymentMethodTypes =
   | "zip"
   | "coinflow"
   | "unknown";
+const PaymentMethodTypes = S.String;
+
 /** How far the setup has got. **A 201 or 200 means we answered, not that the method was saved -- always branch on this.** `requires_action` -- the buyer has a step outstanding; hand `client_secret` to the elements or poll Retrieve setup status. `processing` -- the processor is deciding. `succeeded` -- the method is saved, and only this one means saved. `canceled` -- abandoned or refused; see `last_setup_error`. */
 export type SetupIntentStatus = "processing" | "succeeded" | "canceled" | "requires_action";
+const SetupIntentStatus = S.String;
+
 export interface UserProfilePicture {
   /** Avatar image URL. Always present -- a generated placeholder when the user set no picture. */
   url: string;
 }
+const UserProfilePicture = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<UserProfilePicture>;
+
 export interface UserSummary {
   /** User ID, prefixed `user_`. */
   id: string;
@@ -272,6 +309,8 @@ export interface UserSummary {
   /** Public username. */
   username: string;
 }
+const UserSummary = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<UserSummary>;
+
 export interface SetupIntent {
   /** The account the payment method is saved for, prefixed `biz_`. */
   account_id: string | null;
@@ -306,14 +345,26 @@ export interface SetupIntent {
   /** The user saving the payment method. Null when the buyer is a company rather than a user. */
   user: UserSummary | null;
 }
+const SetupIntent = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<SetupIntent>;
+
 export interface GetSetupIntentRequest {
   /** The setup intent to retrieve, prefixed `sint_`. */
   id: string;
 }
+const GetSetupIntentRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<GetSetupIntentRequest>;
+
 export interface GetStatusSetupIntentRequest {
   /** The unique identifier of the setup intent. */
   setup_intent_id: string;
 }
+const GetStatusSetupIntentRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<GetStatusSetupIntentRequest>;
+
 export interface PaymentNextActionRedirectData {
   /** The widest the provider's page lays out usefully, in CSS pixels -- cap a frame or dialog presenting it at this width. `null` when the page fills whatever width it is given. */
   frame_max_width: number | null;
@@ -480,8 +531,12 @@ export type PaymentNextAction =
   | PaymentNextActionRedirect
   | PaymentNextActionDisplayInstructions
   | PaymentNextActionAwaitConfirmation;
+const PaymentNextAction = S.Unknown as any as S.Schema<PaymentNextAction>;
+
 /** How far the setup has got. **A 200 means we answered, not that the method was saved -- always branch on this.** `requires_action` -- the buyer has a step outstanding; see `next_action`. `processing` -- the buyer has done their part and the processor is deciding. `succeeded` -- the payment method is saved, and only this one means saved. `canceled` -- abandoned or refused; see `last_setup_error` to tell which. */
 export type SetupStatusStatus = "processing" | "succeeded" | "canceled" | "requires_action";
+const SetupStatusStatus = S.String;
+
 export interface SetupStatus {
   /** The setup this status describes, prefixed `sint_`. */
   id: string;
@@ -496,13 +551,21 @@ export interface SetupStatus {
   /** How far the setup has got. **A 200 means we answered, not that the method was saved -- always branch on this.** `requires_action` -- the buyer has a step outstanding; see `next_action`. `processing` -- the buyer has done their part and the processor is deciding. `succeeded` -- the payment method is saved, and only this one means saved. `canceled` -- abandoned or refused; see `last_setup_error` to tell which. */
   status: SetupStatusStatus;
 }
+const SetupStatus = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<SetupStatus>;
+
 export type ListSetupIntentsRequestStatus =
   | "processing"
   | "succeeded"
   | "canceled"
   | "requires_action";
+const ListSetupIntentsRequestStatus = S.String;
+
 export type ListSetupIntentsRequestOrder = "created_at";
+const ListSetupIntentsRequestOrder = S.String;
+
 export type ListSetupIntentsRequestDirection = "asc" | "desc";
+const ListSetupIntentsRequestDirection = S.String;
+
 export interface ListSetupIntentsRequest {
   /** Only setup intents for this account, prefixed `biz_`. */
   account_id?: string;
@@ -525,23 +588,48 @@ export interface ListSetupIntentsRequest {
   /** Return results before this cursor. Use `page_info.start_cursor` from the previous response to fetch the previous page. */
   before?: string;
 }
+const ListSetupIntentsRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<ListSetupIntentsRequest>;
+
 export type ListSetupIntentsResponseDataList = Array<SetupIntent>;
+const ListSetupIntentsResponseDataList = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<ListSetupIntentsResponseDataList>;
+
 export interface ListSetupIntentsResponsePageInfo {
   end_cursor: string | null;
   has_next_page: boolean;
   has_previous_page: boolean;
   start_cursor: string | null;
 }
+const ListSetupIntentsResponsePageInfo = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<ListSetupIntentsResponsePageInfo>;
+
 export interface ListSetupIntentsResponse {
   data: ListSetupIntentsResponseDataList;
   page_info: ListSetupIntentsResponsePageInfo;
 }
+const ListSetupIntentsResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<ListSetupIntentsResponse>;
+
 export interface UpdateReturnUrlSetupIntentRequest {
   /** The unique identifier of the setup intent. */
   setup_intent_id: string;
   /** Where the buyer continues after completing an off-site step. Must be an absolute https URL without credentials (http is allowed for localhost), at most 2,048 characters. */
   return_url: string;
 }
+const UpdateReturnUrlSetupIntentRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<UpdateReturnUrlSetupIntentRequest>;
+
 export type CreateSetupIntentError = BadRequest | Forbidden | NotFound | Conflict | WhopOpError;
 /** Create Setup Intent Saves a buyer's payment method for later without charging it. Pass a `confirmation_token` for a method the buyer just supplied through the payment elements in setup mode, or a `payment_method_id` already on file to re-verify it. The response is the setup intent as created, not its outcome: while it is `requires_action` the buyer still has a step, so hand `client_secret` to the elements' `handleNextAction` or poll Retrieve setup status. A buyer's own token holding `member:payment_methods:use` may create a setup intent for itself from a confirmation token. */
 export const createSetupIntent: API.OperationMethod<
@@ -550,8 +638,8 @@ export const createSetupIntent: API.OperationMethod<
   CreateSetupIntentError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1) as any as S.Schema<CreateSetupIntentRequest>,
-  output: __S(10) as any as S.Schema<SetupIntent>,
+  input: CreateSetupIntentRequest,
+  output: SetupIntent,
   errors: [BadRequest, Forbidden, NotFound, Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -565,8 +653,8 @@ export const getSetupIntent: API.OperationMethod<
   GetSetupIntentError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11) as any as S.Schema<GetSetupIntentRequest>,
-  output: __S(10) as any as S.Schema<SetupIntent>,
+  input: GetSetupIntentRequest,
+  output: SetupIntent,
   errors: [Forbidden, NotFound],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -580,8 +668,8 @@ export const getStatusSetupIntent: API.OperationMethod<
   GetStatusSetupIntentError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12) as any as S.Schema<GetStatusSetupIntentRequest>,
-  output: __S(13) as any as S.Schema<SetupStatus>,
+  input: GetStatusSetupIntentRequest,
+  output: SetupStatus,
   errors: [Forbidden, NotFound],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -597,8 +685,8 @@ export const listSetupIntents: API.PaginatedOperationMethod<
   SetupIntent
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(14) as any as S.Schema<ListSetupIntentsRequest>,
-    output: __S(17) as any as S.Schema<ListSetupIntentsResponse>,
+    input: ListSetupIntentsRequest,
+    output: ListSetupIntentsResponse,
     errors: [BadRequest, Forbidden],
     protocol: WhopProtocol,
     retry: Retry.Retry,
@@ -622,8 +710,8 @@ export const updateReturnUrlSetupIntent: API.OperationMethod<
   UpdateReturnUrlSetupIntentError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18) as any as S.Schema<UpdateReturnUrlSetupIntentRequest>,
-  output: __S(13) as any as S.Schema<SetupStatus>,
+  input: UpdateReturnUrlSetupIntentRequest,
+  output: SetupStatus,
   errors: [BadRequest, Forbidden],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -641,9 +729,9 @@ function __c0(j: number): any {
           confirmation_token: S.optional(S.NullOr(S.String)),
           currency: S.optional(S.NullOr(S.String)),
           email: S.optional(S.NullOr(S.String)),
-          metadata: S.optional(S.NullOr(__S(0))),
+          metadata: S.optional(S.NullOr(CreateSetupIntentRequestMetadataMap)),
           payment_method_id: S.optional(S.NullOr(S.String)),
-          purpose: S.optional(S.NullOr(S.String)),
+          purpose: S.optional(S.NullOr(CreateSetupIntentRequestPurpose)),
           return_url: S.optional(S.NullOr(S.String)),
           idempotency_key: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
         }).pipe(T.Http({ method: "POST", uri: "/setup_intents", code: 200 })),
@@ -677,8 +765,8 @@ function __c0(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          dark: __S(4),
-          light: __S(4),
+          dark: PaymentMethodIconFiles,
+          light: PaymentMethodIconFiles,
         }),
       ).annotate({
         identifier: "PaymentMethodIconVariants",
@@ -686,16 +774,16 @@ function __c0(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          card: __S(5),
-          square: __S(5),
+          card: PaymentMethodIconVariants,
+          square: PaymentMethodIconVariants,
         }),
       ).annotate({ identifier: "PaymentMethodIcons" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          card: S.NullOr(__S(3)),
+          card: S.NullOr(PaymentInstrumentCard),
           display_name: S.String,
-          icons: __S(6),
+          icons: PaymentMethodIcons,
           installment_count: S.NullOr(S.Number),
           payment_method_type: S.String,
         }),
@@ -715,7 +803,7 @@ function __c1(j: number): any {
         S.Struct({
           id: S.String,
           name: S.NullOr(S.String),
-          profile_picture: __S(8),
+          profile_picture: UserProfilePicture,
           username: S.String,
         }),
       ).annotate({ identifier: "UserSummary" });
@@ -727,17 +815,17 @@ function __c1(j: number): any {
           client_secret: S.NullOr(S.String).pipe(T.SensitiveValue({})),
           created_at: S.String,
           id: S.String,
-          last_setup_error: S.NullOr(__S(2)),
+          last_setup_error: S.NullOr(SetupLastSetupError),
           member_id: S.NullOr(S.String),
           metadata: S.NullOr(S.Unknown),
-          payment_instrument: S.NullOr(__S(7)),
+          payment_instrument: S.NullOr(PaymentInstrument),
           payment_method_id: S.NullOr(S.String),
-          payment_method_type: S.NullOr(S.String),
+          payment_method_type: S.NullOr(PaymentMethodTypes),
           return_url: S.NullOr(S.String),
-          status: S.String,
+          status: SetupIntentStatus,
           three_ds_verified: S.Boolean,
           updated_at: S.String,
-          user: S.NullOr(__S(9)),
+          user: S.NullOr(UserSummary),
         }),
       ).annotate({ identifier: "SetupIntent" });
     case 3:
@@ -760,22 +848,22 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          last_setup_error: S.NullOr(__S(2)),
-          next_action: S.NullOr(S.Unknown),
+          last_setup_error: S.NullOr(SetupLastSetupError),
+          next_action: S.NullOr(PaymentNextAction),
           object: S.String,
           return_url: S.NullOr(S.String),
-          status: S.String,
+          status: SetupStatusStatus,
         }),
       ).annotate({ identifier: "SetupStatus" });
     case 6:
       return S.suspend(() =>
         S.Struct({
           account_id: S.optional(S.String.pipe(T.Query())),
-          status: S.optional(S.String.pipe(T.Query())),
+          status: S.optional(ListSetupIntentsRequestStatus.pipe(T.Query())),
           created_before: S.optional(S.String.pipe(T.Query())),
           created_after: S.optional(S.String.pipe(T.Query())),
-          order: S.optional(S.String.pipe(T.Query())),
-          direction: S.optional(S.String.pipe(T.Query())),
+          order: S.optional(ListSetupIntentsRequestOrder.pipe(T.Query())),
+          direction: S.optional(ListSetupIntentsRequestDirection.pipe(T.Query())),
           first: S.optional(S.Number.pipe(T.Query())),
           after: S.optional(S.String.pipe(T.Query())),
           last: S.optional(S.Number.pipe(T.Query())),
@@ -783,7 +871,7 @@ function __c1(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/setup_intents", code: 200 })),
       ).annotate({ identifier: "ListSetupIntentsRequest" });
     case 7:
-      return S.Array(__S(10));
+      return S.Array(SetupIntent);
   }
 }
 function __c2(j: number): any {
@@ -802,8 +890,8 @@ function __c2(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          data: __S(15),
-          page_info: __S(16),
+          data: ListSetupIntentsResponseDataList,
+          page_info: ListSetupIntentsResponsePageInfo,
         }),
       ).annotate({ identifier: "ListSetupIntentsResponse" });
     case 2:
@@ -821,20 +909,5 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "UpdateReturnUrlSetupIntentRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
   }
 }

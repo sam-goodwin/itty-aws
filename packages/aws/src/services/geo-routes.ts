@@ -10,8 +10,6 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "Geo Routes",
   serviceShapeName: "RoutesService",
@@ -169,10 +167,10 @@ export class ValidationException
     "ValidationException",
     {
       message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
-      Reason: /*@__PURE__*/ S.suspend(() => S.String).annotate({
+      Reason: /*@__PURE__*/ S.suspend(() => ValidationExceptionReason).annotate({
         identifier: "ValidationExceptionReason",
       }),
-      FieldList: /*@__PURE__*/ S.suspend(() => __S(258)).annotate({
+      FieldList: /*@__PURE__*/ S.suspend(() => ValidationExceptionFieldList).annotate({
         identifier: "ValidationExceptionFieldList",
       }),
     },
@@ -183,23 +181,32 @@ export interface IsolineAllowOptions {
   Hot?: boolean;
   Hov?: boolean;
 }
+const IsolineAllowOptions = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<IsolineAllowOptions>;
 export type TimestampWithTimezoneOffset = string | redacted.Redacted<string>;
 export type BoundingBox = number[];
+const BoundingBox = /*@__PURE__*/ __L.at(__c0, 1);
 export type Position = number[];
+const Position = BoundingBox as any as S.Schema<Position>;
 export type LineString = number[][];
+const LineString = /*@__PURE__*/ __L.at(__c0, 2);
 export interface Corridor {
   LineString: number[][];
   Radius: number;
 }
+const Corridor = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<Corridor>;
 export type LinearRing = number[][];
+const LinearRing = LineString as any as S.Schema<LinearRing>;
 export type LinearRings = number[][][];
+const LinearRings = /*@__PURE__*/ __L.at(__c0, 4);
 export type Polyline = string | redacted.Redacted<string>;
 export interface PolylineCorridor {
   Polyline: string | redacted.Redacted<string>;
   Radius: number;
 }
+const PolylineCorridor = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<PolylineCorridor>;
 export type PolylineRing = string | redacted.Redacted<string>;
 export type PolylineRingList = (string | redacted.Redacted<string>)[];
+const PolylineRingList = /*@__PURE__*/ __L.at(__c0, 6);
 export interface IsolineAvoidanceAreaGeometry {
   BoundingBox?: number[];
   Corridor?: Corridor;
@@ -207,23 +214,38 @@ export interface IsolineAvoidanceAreaGeometry {
   PolylineCorridor?: PolylineCorridor;
   PolylinePolygon?: (string | redacted.Redacted<string>)[];
 }
+const IsolineAvoidanceAreaGeometry = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<IsolineAvoidanceAreaGeometry>;
 export type IsolineAvoidanceAreaGeometryList = IsolineAvoidanceAreaGeometry[];
+const IsolineAvoidanceAreaGeometryList = /*@__PURE__*/ __L.at(__c1, 0);
 export interface IsolineAvoidanceArea {
   Except?: IsolineAvoidanceAreaGeometry[];
   Geometry: IsolineAvoidanceAreaGeometry;
 }
+const IsolineAvoidanceArea = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<IsolineAvoidanceArea>;
 export type IsolineAvoidanceAreaList = IsolineAvoidanceArea[];
+const IsolineAvoidanceAreaList = /*@__PURE__*/ __L.at(__c1, 2);
 export type TruckRoadType = string | redacted.Redacted<string>;
 export type TruckRoadTypeList = (string | redacted.Redacted<string>)[];
+const TruckRoadTypeList = PolylineRingList as any as S.Schema<TruckRoadTypeList>;
 export type IsolineZoneCategory =
   | "CongestionPricing"
   | "Environmental"
   | "Vignette"
   | (string & {});
+const IsolineZoneCategory = S.String;
+
 export interface IsolineAvoidanceZoneCategory {
   Category?: IsolineZoneCategory;
 }
+const IsolineAvoidanceZoneCategory = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<IsolineAvoidanceZoneCategory>;
 export type IsolineAvoidanceZoneCategoryList = IsolineAvoidanceZoneCategory[];
+const IsolineAvoidanceZoneCategoryList = /*@__PURE__*/ __L.at(__c1, 4);
 export interface IsolineAvoidanceOptions {
   Areas?: IsolineAvoidanceArea[];
   CarShuttleTrains?: boolean;
@@ -238,62 +260,110 @@ export interface IsolineAvoidanceOptions {
   UTurns?: boolean;
   ZoneCategories?: IsolineAvoidanceZoneCategory[];
 }
+const IsolineAvoidanceOptions = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<IsolineAvoidanceOptions>;
 export type DistanceMeters = number;
 export type Heading = number;
 export type SensitiveString = string | redacted.Redacted<string>;
 export type MatchingStrategy = "MatchAny" | "MatchMostSignificantRoad" | (string & {});
+const MatchingStrategy = S.String;
+
 export interface IsolineMatchingOptions {
   NameHint?: string | redacted.Redacted<string>;
   OnRoadThreshold?: number;
   Radius?: number;
   Strategy?: MatchingStrategy;
 }
+const IsolineMatchingOptions = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<IsolineMatchingOptions>;
 export type SideOfStreetMatchingStrategy = "AnyStreet" | "DividedStreetOnly" | (string & {});
+const SideOfStreetMatchingStrategy = S.String;
+
 export interface IsolineSideOfStreetOptions {
   Position: number[];
   UseWith?: SideOfStreetMatchingStrategy;
 }
+const IsolineSideOfStreetOptions = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<IsolineSideOfStreetOptions>;
 export interface IsolineDestinationOptions {
   AvoidActionsForDistance?: number;
   Heading?: number;
   Matching?: IsolineMatchingOptions;
   SideOfStreet?: IsolineSideOfStreetOptions;
 }
+const IsolineDestinationOptions = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<IsolineDestinationOptions>;
 export type GeometryFormat = "FlexiblePolyline" | "Simple" | (string & {});
+const GeometryFormat = S.String;
+
 export interface IsolineGranularityOptions {
   MaxPoints?: number;
   MaxResolution?: number;
 }
+const IsolineGranularityOptions = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<IsolineGranularityOptions>;
 export type ApiKey = string | redacted.Redacted<string>;
 export type IsolineOptimizationObjective =
   | "AccurateCalculation"
   | "BalancedCalculation"
   | "FastCalculation"
   | (string & {});
+const IsolineOptimizationObjective = S.String;
+
 export type RoutingObjective = "FastestRoute" | "ShortestRoute" | (string & {});
+const RoutingObjective = S.String;
+
 export interface IsolineOriginOptions {
   AvoidActionsForDistance?: number;
   Heading?: number;
   Matching?: IsolineMatchingOptions;
   SideOfStreet?: IsolineSideOfStreetOptions;
 }
+const IsolineOriginOptions = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<IsolineOriginOptions>;
 export type DistanceThresholdList = number[];
+const DistanceThresholdList = BoundingBox as any as S.Schema<DistanceThresholdList>;
 export type DurationSeconds = number;
 export type TimeThresholdList = number[];
+const TimeThresholdList = BoundingBox as any as S.Schema<TimeThresholdList>;
 export interface IsolineThresholds {
   Distance?: number[];
   Time?: number[];
 }
+const IsolineThresholds = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<IsolineThresholds>;
 export type TrafficUsage = "IgnoreTrafficData" | "UseTrafficData" | (string & {});
+const TrafficUsage = S.String;
+
 export interface IsolineTrafficOptions {
   FlowEventThresholdOverride?: number;
   Usage?: TrafficUsage;
 }
+const IsolineTrafficOptions = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<IsolineTrafficOptions>;
 export type IsolineTravelMode = "Car" | "Pedestrian" | "Scooter" | "Truck" | (string & {});
+const IsolineTravelMode = S.String;
+
 export type IsolineEngineType = "Electric" | "InternalCombustion" | "PluginHybrid" | (string & {});
+const IsolineEngineType = S.String;
+
 export interface IsolineVehicleLicensePlate {
   LastCharacter?: string;
 }
+const IsolineVehicleLicensePlate = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<IsolineVehicleLicensePlate>;
 export type SpeedKilometersPerHour = number;
 export type SensitiveInteger = number;
 export interface IsolineCarOptions {
@@ -302,12 +372,14 @@ export interface IsolineCarOptions {
   MaxSpeed?: number;
   Occupancy?: number;
 }
+const IsolineCarOptions = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<IsolineCarOptions>;
 export interface IsolineScooterOptions {
   EngineType?: IsolineEngineType;
   LicensePlate?: IsolineVehicleLicensePlate;
   MaxSpeed?: number;
   Occupancy?: number;
 }
+const IsolineScooterOptions = IsolineCarOptions as any as S.Schema<IsolineScooterOptions>;
 export type WeightKilograms = number;
 export type IsolineHazardousCargoType =
   | "Combustible"
@@ -322,13 +394,22 @@ export type IsolineHazardousCargoType =
   | "PoisonousInhalation"
   | "Radioactive"
   | (string & {});
+const IsolineHazardousCargoType = S.String;
+
 export type IsolineHazardousCargoTypeList = IsolineHazardousCargoType[];
+const IsolineHazardousCargoTypeList = /*@__PURE__*/ __L.at(__c2, 7);
 export type DimensionCentimeters = number;
 export interface IsolineTrailerOptions {
   AxleCount?: number;
   TrailerCount?: number;
 }
+const IsolineTrailerOptions = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<IsolineTrailerOptions>;
 export type IsolineTruckType = "LightTruck" | "StraightTruck" | "Tractor" | (string & {});
+const IsolineTruckType = S.String;
+
 export type TunnelRestrictionCode = string | redacted.Redacted<string>;
 export interface WeightPerAxleGroup {
   Single?: number;
@@ -337,6 +418,7 @@ export interface WeightPerAxleGroup {
   Quad?: number;
   Quint?: number;
 }
+const WeightPerAxleGroup = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<WeightPerAxleGroup>;
 export interface IsolineTruckOptions {
   AxleCount?: number;
   EngineType?: IsolineEngineType;
@@ -358,11 +440,16 @@ export interface IsolineTruckOptions {
   WeightPerAxleGroup?: WeightPerAxleGroup;
   Width?: number;
 }
+const IsolineTruckOptions = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<IsolineTruckOptions>;
 export interface IsolineTravelModeOptions {
   Car?: IsolineCarOptions;
   Scooter?: IsolineScooterOptions;
   Truck?: IsolineTruckOptions;
 }
+const IsolineTravelModeOptions = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<IsolineTravelModeOptions>;
 export interface CalculateIsolinesRequest {
   Allow?: IsolineAllowOptions;
   ArrivalTime?: string | redacted.Redacted<string>;
@@ -383,28 +470,42 @@ export interface CalculateIsolinesRequest {
   TravelMode?: IsolineTravelMode;
   TravelModeOptions?: IsolineTravelModeOptions;
 }
+const CalculateIsolinesRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<CalculateIsolinesRequest>;
 export interface IsolineConnectionGeometry {
   LineString?: number[][];
   Polyline?: string | redacted.Redacted<string>;
 }
+const IsolineConnectionGeometry = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<IsolineConnectionGeometry>;
 export interface IsolineConnection {
   FromPolygonIndex: number;
   Geometry: IsolineConnectionGeometry;
   ToPolygonIndex: number;
 }
+const IsolineConnection = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<IsolineConnection>;
 export type IsolineConnectionList = IsolineConnection[];
+const IsolineConnectionList = /*@__PURE__*/ __L.at(__c3, 7);
 export interface IsolineShapeGeometry {
   Polygon?: number[][][];
   PolylinePolygon?: (string | redacted.Redacted<string>)[];
 }
+const IsolineShapeGeometry = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<IsolineShapeGeometry>;
 export type IsolineShapeGeometryList = IsolineShapeGeometry[];
+const IsolineShapeGeometryList = /*@__PURE__*/ __L.at(__c4, 1);
 export interface Isoline {
   Connections: IsolineConnection[];
   DistanceThreshold?: number;
   Geometries: IsolineShapeGeometry[];
   TimeThreshold?: number;
 }
+const Isoline = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<Isoline>;
 export type IsolineList = Isoline[];
+const IsolineList = /*@__PURE__*/ __L.at(__c4, 3);
 export interface CalculateIsolinesResponse {
   ArrivalTime?: string | redacted.Redacted<string>;
   DepartureTime?: string | redacted.Redacted<string>;
@@ -414,19 +515,33 @@ export interface CalculateIsolinesResponse {
   SnappedDestination?: number[];
   SnappedOrigin?: number[];
 }
+const CalculateIsolinesResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<CalculateIsolinesResponse>;
 export interface RouteMatrixAllowOptions {
   Hot?: boolean;
   Hov?: boolean;
 }
+const RouteMatrixAllowOptions = IsolineAllowOptions as any as S.Schema<RouteMatrixAllowOptions>;
 export interface RouteMatrixAvoidanceAreaGeometry {
   BoundingBox?: number[];
   Polygon?: number[][][];
   PolylinePolygon?: (string | redacted.Redacted<string>)[];
 }
+const RouteMatrixAvoidanceAreaGeometry = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<RouteMatrixAvoidanceAreaGeometry>;
 export interface RouteMatrixAvoidanceArea {
   Geometry: RouteMatrixAvoidanceAreaGeometry;
 }
+const RouteMatrixAvoidanceArea = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<RouteMatrixAvoidanceArea>;
 export type RouteMatrixAvoidanceAreaList = RouteMatrixAvoidanceArea[];
+const RouteMatrixAvoidanceAreaList = /*@__PURE__*/ __L.at(__c4, 7);
 export type RouteMatrixZoneCategory =
   | "CongestionPricing"
   | "Environmental"
@@ -435,7 +550,10 @@ export type RouteMatrixZoneCategory =
 export interface RouteMatrixAvoidanceZoneCategory {
   Category?: RouteMatrixZoneCategory;
 }
+const RouteMatrixAvoidanceZoneCategory =
+  IsolineAvoidanceZoneCategory as any as S.Schema<RouteMatrixAvoidanceZoneCategory>;
 export type RouteMatrixAvoidanceZoneCategoryList = RouteMatrixAvoidanceZoneCategory[];
+const RouteMatrixAvoidanceZoneCategoryList = /*@__PURE__*/ __L.at(__c5, 0);
 export interface RouteMatrixAvoidanceOptions {
   Areas?: RouteMatrixAvoidanceArea[];
   CarShuttleTrains?: boolean;
@@ -449,80 +567,136 @@ export interface RouteMatrixAvoidanceOptions {
   UTurns?: boolean;
   ZoneCategories?: RouteMatrixAvoidanceZoneCategory[];
 }
+const RouteMatrixAvoidanceOptions = /*@__PURE__*/ __L.at(
+  __c5,
+  1,
+) as any as S.Schema<RouteMatrixAvoidanceOptions>;
 export interface RouteMatrixMatchingOptions {
   NameHint?: string | redacted.Redacted<string>;
   OnRoadThreshold?: number;
   Radius?: number;
   Strategy?: MatchingStrategy;
 }
+const RouteMatrixMatchingOptions = /*@__PURE__*/ __L.at(
+  __c5,
+  2,
+) as any as S.Schema<RouteMatrixMatchingOptions>;
 export interface RouteMatrixSideOfStreetOptions {
   Position: number[];
   UseWith?: SideOfStreetMatchingStrategy;
 }
+const RouteMatrixSideOfStreetOptions =
+  IsolineSideOfStreetOptions as any as S.Schema<RouteMatrixSideOfStreetOptions>;
 export interface RouteMatrixDestinationOptions {
   AvoidActionsForDistance?: number;
   Heading?: number;
   Matching?: RouteMatrixMatchingOptions;
   SideOfStreet?: RouteMatrixSideOfStreetOptions;
 }
+const RouteMatrixDestinationOptions = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<RouteMatrixDestinationOptions>;
 export interface RouteMatrixDestination {
   Options?: RouteMatrixDestinationOptions;
   Position: number[];
 }
+const RouteMatrixDestination = /*@__PURE__*/ __L.at(
+  __c5,
+  4,
+) as any as S.Schema<RouteMatrixDestination>;
 export type RouteMatrixDestinationList = RouteMatrixDestination[];
+const RouteMatrixDestinationList = /*@__PURE__*/ __L.at(__c5, 5);
 export type CountryCode = string | redacted.Redacted<string>;
 export type CountryCodeList = (string | redacted.Redacted<string>)[];
+const CountryCodeList = PolylineRingList as any as S.Schema<CountryCodeList>;
 export interface RouteMatrixExclusionOptions {
   Countries: (string | redacted.Redacted<string>)[];
 }
+const RouteMatrixExclusionOptions = /*@__PURE__*/ __L.at(
+  __c5,
+  6,
+) as any as S.Schema<RouteMatrixExclusionOptions>;
 export interface RouteMatrixOriginOptions {
   AvoidActionsForDistance?: number;
   Heading?: number;
   Matching?: RouteMatrixMatchingOptions;
   SideOfStreet?: RouteMatrixSideOfStreetOptions;
 }
+const RouteMatrixOriginOptions = /*@__PURE__*/ __L.at(
+  __c5,
+  7,
+) as any as S.Schema<RouteMatrixOriginOptions>;
 export interface RouteMatrixOrigin {
   Options?: RouteMatrixOriginOptions;
   Position: number[];
 }
+const RouteMatrixOrigin = /*@__PURE__*/ __L.at(__c6, 0) as any as S.Schema<RouteMatrixOrigin>;
 export type RouteMatrixOriginList = RouteMatrixOrigin[];
+const RouteMatrixOriginList = /*@__PURE__*/ __L.at(__c6, 1);
 export interface RouteMatrixAutoCircle {
   Margin?: number;
   MaxRadius?: number;
 }
+const RouteMatrixAutoCircle = /*@__PURE__*/ __L.at(
+  __c6,
+  2,
+) as any as S.Schema<RouteMatrixAutoCircle>;
 export type SensitiveDouble = number;
 export interface Circle {
   Center: number[];
   Radius: number;
 }
+const Circle = /*@__PURE__*/ __L.at(__c6, 3) as any as S.Schema<Circle>;
 export interface RouteMatrixBoundaryGeometry {
   AutoCircle?: RouteMatrixAutoCircle;
   Circle?: Circle;
   BoundingBox?: number[];
   Polygon?: number[][][];
 }
+const RouteMatrixBoundaryGeometry = /*@__PURE__*/ __L.at(
+  __c6,
+  4,
+) as any as S.Schema<RouteMatrixBoundaryGeometry>;
 export interface RouteMatrixBoundary {
   Geometry?: RouteMatrixBoundaryGeometry;
   Unbounded?: boolean;
 }
+const RouteMatrixBoundary = /*@__PURE__*/ __L.at(__c6, 5) as any as S.Schema<RouteMatrixBoundary>;
 export interface RouteMatrixTrafficOptions {
   FlowEventThresholdOverride?: number;
   Usage?: TrafficUsage;
 }
+const RouteMatrixTrafficOptions = /*@__PURE__*/ __L.at(
+  __c6,
+  6,
+) as any as S.Schema<RouteMatrixTrafficOptions>;
 export type RouteMatrixTravelMode = "Car" | "Pedestrian" | "Scooter" | "Truck" | (string & {});
+const RouteMatrixTravelMode = S.String;
+
 export interface RouteMatrixVehicleLicensePlate {
   LastCharacter?: string;
 }
+const RouteMatrixVehicleLicensePlate =
+  IsolineVehicleLicensePlate as any as S.Schema<RouteMatrixVehicleLicensePlate>;
 export interface RouteMatrixCarOptions {
   LicensePlate?: RouteMatrixVehicleLicensePlate;
   MaxSpeed?: number;
   Occupancy?: number;
 }
+const RouteMatrixCarOptions = /*@__PURE__*/ __L.at(
+  __c6,
+  7,
+) as any as S.Schema<RouteMatrixCarOptions>;
 export interface RouteMatrixScooterOptions {
   LicensePlate?: RouteMatrixVehicleLicensePlate;
   MaxSpeed?: number;
   Occupancy?: number;
 }
+const RouteMatrixScooterOptions = /*@__PURE__*/ __L.at(
+  __c7,
+  0,
+) as any as S.Schema<RouteMatrixScooterOptions>;
 export type RouteMatrixHazardousCargoType =
   | "Combustible"
   | "Corrosive"
@@ -536,11 +710,20 @@ export type RouteMatrixHazardousCargoType =
   | "PoisonousInhalation"
   | "Radioactive"
   | (string & {});
+const RouteMatrixHazardousCargoType = S.String;
+
 export type RouteMatrixHazardousCargoTypeList = RouteMatrixHazardousCargoType[];
+const RouteMatrixHazardousCargoTypeList = /*@__PURE__*/ __L.at(__c7, 1);
 export interface RouteMatrixTrailerOptions {
   TrailerCount?: number;
 }
+const RouteMatrixTrailerOptions = /*@__PURE__*/ __L.at(
+  __c7,
+  2,
+) as any as S.Schema<RouteMatrixTrailerOptions>;
 export type RouteMatrixTruckType = "LightTruck" | "StraightTruck" | "Tractor" | (string & {});
+const RouteMatrixTruckType = S.String;
+
 export interface RouteMatrixTruckOptions {
   AxleCount?: number;
   GrossWeight?: number;
@@ -559,11 +742,19 @@ export interface RouteMatrixTruckOptions {
   WeightPerAxleGroup?: WeightPerAxleGroup;
   Width?: number;
 }
+const RouteMatrixTruckOptions = /*@__PURE__*/ __L.at(
+  __c7,
+  3,
+) as any as S.Schema<RouteMatrixTruckOptions>;
 export interface RouteMatrixTravelModeOptions {
   Car?: RouteMatrixCarOptions;
   Scooter?: RouteMatrixScooterOptions;
   Truck?: RouteMatrixTruckOptions;
 }
+const RouteMatrixTravelModeOptions = /*@__PURE__*/ __L.at(
+  __c7,
+  4,
+) as any as S.Schema<RouteMatrixTravelModeOptions>;
 export interface CalculateRouteMatrixRequest {
   Allow?: RouteMatrixAllowOptions;
   Avoid?: RouteMatrixAvoidanceOptions;
@@ -579,6 +770,10 @@ export interface CalculateRouteMatrixRequest {
   TravelMode?: RouteMatrixTravelMode;
   TravelModeOptions?: RouteMatrixTravelModeOptions;
 }
+const CalculateRouteMatrixRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  5,
+) as any as S.Schema<CalculateRouteMatrixRequest>;
 export type RouteMatrixErrorCode =
   | "NoMatch"
   | "NoMatchDestination"
@@ -590,23 +785,33 @@ export type RouteMatrixErrorCode =
   | "Other"
   | "Violation"
   | (string & {});
+const RouteMatrixErrorCode = S.String;
+
 export interface RouteMatrixEntry {
   Distance: number;
   Duration: number;
   Error?: RouteMatrixErrorCode;
 }
+const RouteMatrixEntry = /*@__PURE__*/ __L.at(__c7, 6) as any as S.Schema<RouteMatrixEntry>;
 export type RouteMatrixRow = RouteMatrixEntry[];
+const RouteMatrixRow = /*@__PURE__*/ __L.at(__c7, 7);
 export type RouteMatrix = RouteMatrixEntry[][];
+const RouteMatrix = /*@__PURE__*/ __L.at(__c8, 0);
 export interface CalculateRouteMatrixResponse {
   ErrorCount: number;
   PricingBucket: string;
   RouteMatrix: RouteMatrixEntry[][];
   RoutingBoundary: RouteMatrixBoundary;
 }
+const CalculateRouteMatrixResponse = /*@__PURE__*/ __L.at(
+  __c8,
+  1,
+) as any as S.Schema<CalculateRouteMatrixResponse>;
 export interface RouteAllowOptions {
   Hot?: boolean;
   Hov?: boolean;
 }
+const RouteAllowOptions = IsolineAllowOptions as any as S.Schema<RouteAllowOptions>;
 export interface RouteAvoidanceAreaGeometry {
   Corridor?: Corridor;
   BoundingBox?: number[];
@@ -614,17 +819,31 @@ export interface RouteAvoidanceAreaGeometry {
   PolylineCorridor?: PolylineCorridor;
   PolylinePolygon?: (string | redacted.Redacted<string>)[];
 }
+const RouteAvoidanceAreaGeometry = /*@__PURE__*/ __L.at(
+  __c8,
+  2,
+) as any as S.Schema<RouteAvoidanceAreaGeometry>;
 export type RouteAvoidanceAreaGeometryList = RouteAvoidanceAreaGeometry[];
+const RouteAvoidanceAreaGeometryList = /*@__PURE__*/ __L.at(__c8, 3);
 export interface RouteAvoidanceArea {
   Except?: RouteAvoidanceAreaGeometry[];
   Geometry: RouteAvoidanceAreaGeometry;
 }
+const RouteAvoidanceArea = /*@__PURE__*/ __L.at(__c8, 4) as any as S.Schema<RouteAvoidanceArea>;
 export type RouteAvoidanceAreaList = RouteAvoidanceArea[];
+const RouteAvoidanceAreaList = /*@__PURE__*/ __L.at(__c8, 5);
 export type RouteZoneCategory = "CongestionPricing" | "Environmental" | "Vignette" | (string & {});
+const RouteZoneCategory = S.String;
+
 export interface RouteAvoidanceZoneCategory {
   Category: RouteZoneCategory;
 }
+const RouteAvoidanceZoneCategory = /*@__PURE__*/ __L.at(
+  __c8,
+  6,
+) as any as S.Schema<RouteAvoidanceZoneCategory>;
 export type RouteAvoidanceZoneCategoryList = RouteAvoidanceZoneCategory[];
+const RouteAvoidanceZoneCategoryList = /*@__PURE__*/ __L.at(__c8, 7);
 export interface RouteAvoidanceOptions {
   Areas?: RouteAvoidanceArea[];
   CarShuttleTrains?: boolean;
@@ -639,16 +858,25 @@ export interface RouteAvoidanceOptions {
   UTurns?: boolean;
   ZoneCategories?: RouteAvoidanceZoneCategory[];
 }
+const RouteAvoidanceOptions = /*@__PURE__*/ __L.at(
+  __c9,
+  0,
+) as any as S.Schema<RouteAvoidanceOptions>;
 export interface RouteMatchingOptions {
   NameHint?: string | redacted.Redacted<string>;
   OnRoadThreshold?: number;
   Radius?: number;
   Strategy?: MatchingStrategy;
 }
+const RouteMatchingOptions = IsolineMatchingOptions as any as S.Schema<RouteMatchingOptions>;
 export interface RouteSideOfStreetOptions {
   Position: number[];
   UseWith?: SideOfStreetMatchingStrategy;
 }
+const RouteSideOfStreetOptions = /*@__PURE__*/ __L.at(
+  __c9,
+  1,
+) as any as S.Schema<RouteSideOfStreetOptions>;
 export interface RouteDestinationOptions {
   AvoidActionsForDistance?: number;
   AvoidUTurns?: boolean;
@@ -657,20 +885,37 @@ export interface RouteDestinationOptions {
   SideOfStreet?: RouteSideOfStreetOptions;
   StopDuration?: number;
 }
+const RouteDestinationOptions = /*@__PURE__*/ __L.at(
+  __c9,
+  2,
+) as any as S.Schema<RouteDestinationOptions>;
 export interface RouteDriverScheduleInterval {
   DriveDuration: number;
   RestDuration: number;
 }
+const RouteDriverScheduleInterval = /*@__PURE__*/ __L.at(
+  __c9,
+  3,
+) as any as S.Schema<RouteDriverScheduleInterval>;
 export type RouteDriverScheduleIntervalList = RouteDriverScheduleInterval[];
+const RouteDriverScheduleIntervalList = /*@__PURE__*/ __L.at(__c9, 4);
 export interface RouteDriverOptions {
   Schedule?: RouteDriverScheduleInterval[];
 }
+const RouteDriverOptions = /*@__PURE__*/ __L.at(__c9, 5) as any as S.Schema<RouteDriverOptions>;
 export interface RouteExclusionOptions {
   Countries: (string | redacted.Redacted<string>)[];
 }
+const RouteExclusionOptions = /*@__PURE__*/ __L.at(
+  __c9,
+  6,
+) as any as S.Schema<RouteExclusionOptions>;
 export type MeasurementSystem = "Metric" | "Imperial" | (string & {});
+const MeasurementSystem = S.String;
+
 export type LanguageTag = string;
 export type LanguageTagList = string[];
+const LanguageTagList = /*@__PURE__*/ __L.at(__c9, 7);
 export type RouteLegAdditionalFeature =
   | "Elevation"
   | "Incidents"
@@ -686,6 +931,8 @@ export type RouteLegAdditionalFeature =
   | "NextDepartures"
   | (string & {});
 export type RouteLegAdditionalFeatureList = RouteLegAdditionalFeature[];
+const RouteLegAdditionalFeatureList =
+  IsolineHazardousCargoTypeList as any as S.Schema<RouteLegAdditionalFeatureList>;
 export interface RouteOriginOptions {
   AvoidActionsForDistance?: number;
   AvoidUTurns?: boolean;
@@ -693,6 +940,7 @@ export interface RouteOriginOptions {
   Matching?: RouteMatchingOptions;
   SideOfStreet?: RouteSideOfStreetOptions;
 }
+const RouteOriginOptions = /*@__PURE__*/ __L.at(__c10, 0) as any as S.Schema<RouteOriginOptions>;
 export type RouteSpanAdditionalFeature =
   | "BestCaseDuration"
   | "CarAccess"
@@ -720,12 +968,17 @@ export type RouteSpanAdditionalFeature =
   | "Consumption"
   | (string & {});
 export type RouteSpanAdditionalFeatureList = RouteSpanAdditionalFeature[];
+const RouteSpanAdditionalFeatureList =
+  IsolineHazardousCargoTypeList as any as S.Schema<RouteSpanAdditionalFeatureList>;
 export type CurrencyCode = string;
 export interface RouteEmissionType {
   Co2EmissionClass?: string | redacted.Redacted<string>;
   Type: string | redacted.Redacted<string>;
 }
+const RouteEmissionType = /*@__PURE__*/ __L.at(__c10, 1) as any as S.Schema<RouteEmissionType>;
 export type RouteTollVehicleCategory = "Minibus" | (string & {});
+const RouteTollVehicleCategory = S.String;
+
 export interface RouteTollOptions {
   AllTransponders?: boolean;
   AllVignettes?: boolean;
@@ -733,10 +986,12 @@ export interface RouteTollOptions {
   EmissionType?: RouteEmissionType;
   VehicleCategory?: RouteTollVehicleCategory;
 }
+const RouteTollOptions = /*@__PURE__*/ __L.at(__c10, 2) as any as S.Schema<RouteTollOptions>;
 export interface RouteTrafficOptions {
   FlowEventThresholdOverride?: number;
   Usage?: TrafficUsage;
 }
+const RouteTrafficOptions = IsolineTrafficOptions as any as S.Schema<RouteTrafficOptions>;
 export type RouteTravelMode =
   | "Car"
   | "Pedestrian"
@@ -745,25 +1000,39 @@ export type RouteTravelMode =
   | "Intermodal"
   | "Transit"
   | (string & {});
+const RouteTravelMode = S.String;
+
 export type RouteEngineType = "Electric" | "InternalCombustion" | "PluginHybrid" | (string & {});
+const RouteEngineType = S.String;
+
 export interface RouteVehicleLicensePlate {
   LastCharacter?: string | redacted.Redacted<string>;
 }
+const RouteVehicleLicensePlate = /*@__PURE__*/ __L.at(
+  __c10,
+  3,
+) as any as S.Schema<RouteVehicleLicensePlate>;
 export interface RouteCarOptions {
   EngineType?: RouteEngineType;
   LicensePlate?: RouteVehicleLicensePlate;
   MaxSpeed?: number;
   Occupancy?: number;
 }
+const RouteCarOptions = /*@__PURE__*/ __L.at(__c10, 4) as any as S.Schema<RouteCarOptions>;
 export interface RoutePedestrianOptions {
   Speed?: number;
 }
+const RoutePedestrianOptions = /*@__PURE__*/ __L.at(
+  __c10,
+  5,
+) as any as S.Schema<RoutePedestrianOptions>;
 export interface RouteScooterOptions {
   EngineType?: RouteEngineType;
   LicensePlate?: RouteVehicleLicensePlate;
   MaxSpeed?: number;
   Occupancy?: number;
 }
+const RouteScooterOptions = RouteCarOptions as any as S.Schema<RouteScooterOptions>;
 export type RouteHazardousCargoType =
   | "Combustible"
   | "Corrosive"
@@ -778,11 +1047,16 @@ export type RouteHazardousCargoType =
   | "Radioactive"
   | (string & {});
 export type RouteHazardousCargoTypeList = RouteHazardousCargoType[];
+const RouteHazardousCargoTypeList =
+  IsolineHazardousCargoTypeList as any as S.Schema<RouteHazardousCargoTypeList>;
 export interface RouteTrailerOptions {
   AxleCount?: number;
   TrailerCount?: number;
 }
+const RouteTrailerOptions = IsolineTrailerOptions as any as S.Schema<RouteTrailerOptions>;
 export type RouteTruckType = "LightTruck" | "StraightTruck" | "Tractor" | (string & {});
+const RouteTruckType = S.String;
+
 export interface RouteTruckOptions {
   AxleCount?: number;
   EngineType?: RouteEngineType;
@@ -804,14 +1078,24 @@ export interface RouteTruckOptions {
   WeightPerAxleGroup?: WeightPerAxleGroup;
   Width?: number;
 }
+const RouteTruckOptions = /*@__PURE__*/ __L.at(__c10, 6) as any as S.Schema<RouteTruckOptions>;
 export type RouteAccessibilityAttribute = "Wheelchair" | (string & {});
 export type RouteAccessibilityAttributeList = RouteAccessibilityAttribute[];
+const RouteAccessibilityAttributeList =
+  IsolineHazardousCargoTypeList as any as S.Schema<RouteAccessibilityAttributeList>;
 export interface RouteIntermodalPedestrianOptions {
   MaxDistance?: number;
   Speed?: number;
 }
+const RouteIntermodalPedestrianOptions = /*@__PURE__*/ __L.at(
+  __c10,
+  7,
+) as any as S.Schema<RouteIntermodalPedestrianOptions>;
 export type RouteRentalMode = "All" | "Car" | (string & {});
+const RouteRentalMode = S.String;
+
 export type RouteRentalModeList = RouteRentalMode[];
+const RouteRentalModeList = IsolineHazardousCargoTypeList as any as S.Schema<RouteRentalModeList>;
 export type RouteIntermodalEnabledLegs =
   | "FirstLeg"
   | "LastLeg"
@@ -819,11 +1103,17 @@ export type RouteIntermodalEnabledLegs =
   | "None"
   | (string & {});
 export type RouteIntermodalEnabledLegsList = RouteIntermodalEnabledLegs[];
+const RouteIntermodalEnabledLegsList =
+  IsolineHazardousCargoTypeList as any as S.Schema<RouteIntermodalEnabledLegsList>;
 export interface RouteIntermodalRentalOptions {
   AllowedModes?: RouteRentalMode[];
   EnabledFor?: RouteIntermodalEnabledLegs[];
   ExcludedModes?: RouteRentalMode[];
 }
+const RouteIntermodalRentalOptions = /*@__PURE__*/ __L.at(
+  __c11,
+  0,
+) as any as S.Schema<RouteIntermodalRentalOptions>;
 export type RouteTaxiMode = "All" | "Car" | (string & {});
 export type RouteTaxiModeList = RouteTaxiMode[];
 export interface RouteIntermodalTaxiOptions {
@@ -831,6 +1121,8 @@ export interface RouteIntermodalTaxiOptions {
   EnabledFor?: RouteIntermodalEnabledLegs[];
   ExcludedModes?: RouteTaxiMode[];
 }
+const RouteIntermodalTaxiOptions =
+  RouteIntermodalRentalOptions as any as S.Schema<RouteIntermodalTaxiOptions>;
 export type RouteTransitMode =
   | "AerialTramway"
   | "Airplane"
@@ -849,12 +1141,17 @@ export type RouteTransitMode =
   | "RegionalTrain"
   | "Subway"
   | (string & {});
+const RouteTransitMode = S.String;
+
 export type RouteTransitModeList = RouteTransitMode[];
+const RouteTransitModeList = IsolineHazardousCargoTypeList as any as S.Schema<RouteTransitModeList>;
 export interface RouteIntermodalTransitOptions {
   AllowedModes?: RouteTransitMode[];
   EnabledFor?: RouteIntermodalEnabledLegs[];
   ExcludedModes?: RouteTransitMode[];
 }
+const RouteIntermodalTransitOptions =
+  RouteIntermodalRentalOptions as any as S.Schema<RouteIntermodalTransitOptions>;
 export type RouteVehicleMode = "All" | "Car" | (string & {});
 export type RouteVehicleModeList = RouteVehicleMode[];
 export interface RouteIntermodalVehicleOptions {
@@ -862,6 +1159,8 @@ export interface RouteIntermodalVehicleOptions {
   EnabledFor?: RouteIntermodalEnabledLegs[];
   ExcludedModes?: RouteVehicleMode[];
 }
+const RouteIntermodalVehicleOptions =
+  RouteIntermodalRentalOptions as any as S.Schema<RouteIntermodalVehicleOptions>;
 export interface RouteIntermodalOptions {
   AccessibilityAttributes?: RouteAccessibilityAttribute[];
   MaxTransfers?: number;
@@ -871,10 +1170,16 @@ export interface RouteIntermodalOptions {
   Transit?: RouteIntermodalTransitOptions;
   Vehicle?: RouteIntermodalVehicleOptions;
 }
+const RouteIntermodalOptions = /*@__PURE__*/ __L.at(
+  __c11,
+  1,
+) as any as S.Schema<RouteIntermodalOptions>;
 export interface RouteTransitPedestrianOptions {
   MaxDistance?: number;
   Speed?: number;
 }
+const RouteTransitPedestrianOptions =
+  RouteIntermodalPedestrianOptions as any as S.Schema<RouteTransitPedestrianOptions>;
 export interface RouteTransitOptions {
   AccessibilityAttributes?: RouteAccessibilityAttribute[];
   AllowedModes?: RouteTransitMode[];
@@ -882,6 +1187,7 @@ export interface RouteTransitOptions {
   MaxTransfers?: number;
   Pedestrian?: RouteTransitPedestrianOptions;
 }
+const RouteTransitOptions = /*@__PURE__*/ __L.at(__c11, 2) as any as S.Schema<RouteTransitOptions>;
 export interface RouteTravelModeOptions {
   Car?: RouteCarOptions;
   Pedestrian?: RoutePedestrianOptions;
@@ -890,7 +1196,13 @@ export interface RouteTravelModeOptions {
   Intermodal?: RouteIntermodalOptions;
   Transit?: RouteTransitOptions;
 }
+const RouteTravelModeOptions = /*@__PURE__*/ __L.at(
+  __c11,
+  3,
+) as any as S.Schema<RouteTravelModeOptions>;
 export type RouteTravelStepType = "Default" | "TurnByTurn" | (string & {});
+const RouteTravelStepType = S.String;
+
 export interface RouteWaypoint {
   AvoidActionsForDistance?: number;
   AvoidUTurns?: boolean;
@@ -901,7 +1213,9 @@ export interface RouteWaypoint {
   SideOfStreet?: RouteSideOfStreetOptions;
   StopDuration?: number;
 }
+const RouteWaypoint = /*@__PURE__*/ __L.at(__c11, 4) as any as S.Schema<RouteWaypoint>;
 export type RouteWaypointList = RouteWaypoint[];
+const RouteWaypointList = /*@__PURE__*/ __L.at(__c11, 5);
 export interface CalculateRoutesRequest {
   Allow?: RouteAllowOptions;
   ArrivalTime?: string | redacted.Redacted<string>;
@@ -929,6 +1243,10 @@ export interface CalculateRoutesRequest {
   TravelStepType?: RouteTravelStepType;
   Waypoints?: RouteWaypoint[];
 }
+const CalculateRoutesRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  6,
+) as any as S.Schema<CalculateRoutesRequest>;
 export type RouteResponseNoticeCode =
   | "MainLanguageNotFound"
   | "Other"
@@ -937,30 +1255,46 @@ export type RouteResponseNoticeCode =
   | "TransitRouteUnavailable"
   | "NoTransitStationsFound"
   | (string & {});
+const RouteResponseNoticeCode = S.String;
+
 export type RouteNoticeImpact = "High" | "Low" | (string & {});
+const RouteNoticeImpact = S.String;
+
 export interface RouteResponseNotice {
   Code: RouteResponseNoticeCode;
   Impact?: RouteNoticeImpact;
 }
+const RouteResponseNotice = /*@__PURE__*/ __L.at(__c11, 7) as any as S.Schema<RouteResponseNotice>;
 export type RouteResponseNoticeList = RouteResponseNotice[];
+const RouteResponseNoticeList = /*@__PURE__*/ __L.at(__c12, 0);
 export type RouteFerryAfterTravelStepType = "Deboard" | (string & {});
+const RouteFerryAfterTravelStepType = S.String;
+
 export interface RouteFerryAfterTravelStep {
   Duration: number;
   Instruction?: string | redacted.Redacted<string>;
   Type: RouteFerryAfterTravelStepType;
 }
+const RouteFerryAfterTravelStep = /*@__PURE__*/ __L.at(
+  __c12,
+  1,
+) as any as S.Schema<RouteFerryAfterTravelStep>;
 export type RouteFerryAfterTravelStepList = RouteFerryAfterTravelStep[];
+const RouteFerryAfterTravelStepList = /*@__PURE__*/ __L.at(__c12, 2);
 export type Position23 = number[];
+const Position23 = BoundingBox as any as S.Schema<Position23>;
 export interface RouteFerryPlace {
   Name?: string | redacted.Redacted<string>;
   OriginalPosition?: number[];
   Position: number[];
   WaypointIndex?: number;
 }
+const RouteFerryPlace = /*@__PURE__*/ __L.at(__c12, 3) as any as S.Schema<RouteFerryPlace>;
 export interface RouteFerryArrival {
   Place: RouteFerryPlace;
   Time?: string | redacted.Redacted<string>;
 }
+const RouteFerryArrival = /*@__PURE__*/ __L.at(__c12, 4) as any as S.Schema<RouteFerryArrival>;
 export type RouteFerryBeforeTravelStepType = "Board" | (string & {});
 export interface RouteFerryBeforeTravelStep {
   Duration: number;
@@ -968,10 +1302,13 @@ export interface RouteFerryBeforeTravelStep {
   Type: RouteFerryBeforeTravelStepType;
 }
 export type RouteFerryBeforeTravelStepList = RouteFerryBeforeTravelStep[];
+const RouteFerryBeforeTravelStepList =
+  RouteFerryAfterTravelStepList as any as S.Schema<RouteFerryBeforeTravelStepList>;
 export interface RouteFerryDeparture {
   Place: RouteFerryPlace;
   Time?: string | redacted.Redacted<string>;
 }
+const RouteFerryDeparture = RouteFerryArrival as any as S.Schema<RouteFerryDeparture>;
 export type RouteFerryNoticeCode =
   | "AccuratePolylineUnavailable"
   | "NoSchedule"
@@ -988,22 +1325,34 @@ export interface RouteFerryNotice {
   Impact?: RouteNoticeImpact;
 }
 export type RouteFerryNoticeList = RouteFerryNotice[];
+const RouteFerryNoticeList = RouteResponseNoticeList as any as S.Schema<RouteFerryNoticeList>;
 export interface RoutePassThroughPlace {
   OriginalPosition?: number[];
   Position: number[];
   WaypointIndex?: number;
 }
+const RoutePassThroughPlace = /*@__PURE__*/ __L.at(
+  __c12,
+  5,
+) as any as S.Schema<RoutePassThroughPlace>;
 export interface RoutePassThroughWaypoint {
   GeometryOffset?: number;
   Place: RoutePassThroughPlace;
 }
+const RoutePassThroughWaypoint = /*@__PURE__*/ __L.at(
+  __c12,
+  6,
+) as any as S.Schema<RoutePassThroughWaypoint>;
 export type RoutePassThroughWaypointList = RoutePassThroughWaypoint[];
+const RoutePassThroughWaypointList = /*@__PURE__*/ __L.at(__c12, 7);
 export type CountryCode3 = string | redacted.Redacted<string>;
 export interface LocalizedString {
   Language?: string;
   Value: string | redacted.Redacted<string>;
 }
+const LocalizedString = /*@__PURE__*/ __L.at(__c13, 0) as any as S.Schema<LocalizedString>;
 export type LocalizedStringList = LocalizedString[];
+const LocalizedStringList = /*@__PURE__*/ __L.at(__c13, 1);
 export interface RouteFerrySpan {
   Country?: string | redacted.Redacted<string>;
   Distance?: number;
@@ -1012,19 +1361,32 @@ export interface RouteFerrySpan {
   Names?: LocalizedString[];
   Region?: string | redacted.Redacted<string>;
 }
+const RouteFerrySpan = /*@__PURE__*/ __L.at(__c13, 2) as any as S.Schema<RouteFerrySpan>;
 export type RouteFerrySpanList = RouteFerrySpan[];
+const RouteFerrySpanList = /*@__PURE__*/ __L.at(__c13, 3);
 export interface RouteFerryOverviewSummary {
   Distance: number;
   Duration: number;
 }
+const RouteFerryOverviewSummary = /*@__PURE__*/ __L.at(
+  __c13,
+  4,
+) as any as S.Schema<RouteFerryOverviewSummary>;
 export interface RouteFerryTravelOnlySummary {
   Duration: number;
 }
+const RouteFerryTravelOnlySummary = /*@__PURE__*/ __L.at(
+  __c13,
+  5,
+) as any as S.Schema<RouteFerryTravelOnlySummary>;
 export interface RouteFerrySummary {
   Overview?: RouteFerryOverviewSummary;
   TravelOnly?: RouteFerryTravelOnlySummary;
 }
+const RouteFerrySummary = /*@__PURE__*/ __L.at(__c13, 6) as any as S.Schema<RouteFerrySummary>;
 export type RouteFerryTravelStepType = "Depart" | "Continue" | "Arrive" | (string & {});
+const RouteFerryTravelStepType = S.String;
+
 export interface RouteFerryTravelStep {
   Distance?: number;
   Duration: number;
@@ -1032,7 +1394,12 @@ export interface RouteFerryTravelStep {
   Instruction?: string | redacted.Redacted<string>;
   Type: RouteFerryTravelStepType;
 }
+const RouteFerryTravelStep = /*@__PURE__*/ __L.at(
+  __c13,
+  7,
+) as any as S.Schema<RouteFerryTravelStep>;
 export type RouteFerryTravelStepList = RouteFerryTravelStep[];
+const RouteFerryTravelStepList = /*@__PURE__*/ __L.at(__c14, 0);
 export interface RouteFerryLegDetails {
   AfterTravelSteps?: RouteFerryAfterTravelStep[];
   Arrival: RouteFerryArrival;
@@ -1045,41 +1412,64 @@ export interface RouteFerryLegDetails {
   Summary?: RouteFerrySummary;
   TravelSteps?: RouteFerryTravelStep[];
 }
+const RouteFerryLegDetails = /*@__PURE__*/ __L.at(
+  __c14,
+  1,
+) as any as S.Schema<RouteFerryLegDetails>;
 export interface RouteLegGeometry {
   LineString?: number[][];
   Polyline?: string | redacted.Redacted<string>;
 }
+const RouteLegGeometry = /*@__PURE__*/ __L.at(__c14, 2) as any as S.Schema<RouteLegGeometry>;
 export type RoutePedestrianAfterTravelStepType = "Wait" | (string & {});
 export interface RoutePedestrianAfterTravelStep {
   Duration: number;
   Instruction?: string | redacted.Redacted<string>;
   Type: RoutePedestrianAfterTravelStepType;
 }
+const RoutePedestrianAfterTravelStep =
+  RouteFerryAfterTravelStep as any as S.Schema<RoutePedestrianAfterTravelStep>;
 export type RoutePedestrianAfterTravelStepList = RoutePedestrianAfterTravelStep[];
+const RoutePedestrianAfterTravelStepList = /*@__PURE__*/ __L.at(__c14, 3);
 export type RouteAccessibilityAvailability =
   | "Available"
   | "Limited"
   | "Unavailable"
   | "Unknown"
   | (string & {});
+const RouteAccessibilityAvailability = S.String;
+
 export interface RouteAccessibilityAvailabilityDetails {
   Wheelchair?: RouteAccessibilityAvailability;
 }
+const RouteAccessibilityAvailabilityDetails = /*@__PURE__*/ __L.at(
+  __c14,
+  4,
+) as any as S.Schema<RouteAccessibilityAvailabilityDetails>;
 export interface RouteAccessPointDetails {
   Accessibility?: RouteAccessibilityAvailabilityDetails;
 }
+const RouteAccessPointDetails = /*@__PURE__*/ __L.at(
+  __c14,
+  5,
+) as any as S.Schema<RouteAccessPointDetails>;
 export type RouteSideOfStreet = "Left" | "Right" | (string & {});
+const RouteSideOfStreet = S.String;
+
 export interface RouteStationDetails {
   Accessibility?: RouteAccessibilityAvailabilityDetails;
   PlatformName?: string | redacted.Redacted<string>;
   ShortName?: string | redacted.Redacted<string>;
 }
+const RouteStationDetails = /*@__PURE__*/ __L.at(__c14, 6) as any as S.Schema<RouteStationDetails>;
 export type RoutePedestrianPlaceType =
   | "AccessPoint"
   | "DockingStation"
   | "ParkingLot"
   | "Station"
   | (string & {});
+const RoutePedestrianPlaceType = S.String;
+
 export interface RoutePedestrianPlace {
   AccessPointDetails?: RouteAccessPointDetails;
   Name?: string | redacted.Redacted<string>;
@@ -1090,14 +1480,24 @@ export interface RoutePedestrianPlace {
   Type?: RoutePedestrianPlaceType;
   WaypointIndex?: number;
 }
+const RoutePedestrianPlace = /*@__PURE__*/ __L.at(
+  __c14,
+  7,
+) as any as S.Schema<RoutePedestrianPlace>;
 export interface RoutePedestrianArrival {
   Place: RoutePedestrianPlace;
   Time?: string | redacted.Redacted<string>;
 }
+const RoutePedestrianArrival = /*@__PURE__*/ __L.at(
+  __c15,
+  0,
+) as any as S.Schema<RoutePedestrianArrival>;
 export interface RoutePedestrianDeparture {
   Place: RoutePedestrianPlace;
   Time?: string | redacted.Redacted<string>;
 }
+const RoutePedestrianDeparture =
+  RoutePedestrianArrival as any as S.Schema<RoutePedestrianDeparture>;
 export type RoutePedestrianNoticeCode =
   | "AccuratePolylineUnavailable"
   | "Other"
@@ -1111,12 +1511,19 @@ export interface RoutePedestrianNotice {
   Impact?: RouteNoticeImpact;
 }
 export type RoutePedestrianNoticeList = RoutePedestrianNotice[];
+const RoutePedestrianNoticeList =
+  RouteResponseNoticeList as any as S.Schema<RoutePedestrianNoticeList>;
 export interface RouteSpanDynamicSpeedDetails {
   BestCaseSpeed?: number;
   TurnDuration?: number;
   TypicalSpeed?: number;
 }
+const RouteSpanDynamicSpeedDetails = /*@__PURE__*/ __L.at(
+  __c15,
+  1,
+) as any as S.Schema<RouteSpanDynamicSpeedDetails>;
 export type IndexList = number[];
+const IndexList = BoundingBox as any as S.Schema<IndexList>;
 export type RouteSpanPedestrianAccessAttribute =
   | "Allowed"
   | "Indoors"
@@ -1126,6 +1533,8 @@ export type RouteSpanPedestrianAccessAttribute =
   | "TollRoad"
   | (string & {});
 export type RouteSpanPedestrianAccessAttributeList = RouteSpanPedestrianAccessAttribute[];
+const RouteSpanPedestrianAccessAttributeList =
+  RouteMatrixHazardousCargoTypeList as any as S.Schema<RouteSpanPedestrianAccessAttributeList>;
 export type RouteSpanRoadAttribute =
   | "Bridge"
   | "BuiltUpArea"
@@ -1141,17 +1550,27 @@ export type RouteSpanRoadAttribute =
   | "UnderConstruction"
   | (string & {});
 export type RouteSpanRoadAttributeList = RouteSpanRoadAttribute[];
+const RouteSpanRoadAttributeList =
+  IsolineHazardousCargoTypeList as any as S.Schema<RouteSpanRoadAttributeList>;
 export type RouteDirection = "East" | "North" | "South" | "West" | (string & {});
+const RouteDirection = S.String;
+
 export interface RouteNumber {
   Direction?: RouteDirection;
   Language?: string;
   Value: string | redacted.Redacted<string>;
 }
+const RouteNumber = /*@__PURE__*/ __L.at(__c15, 2) as any as S.Schema<RouteNumber>;
 export type RouteNumberList = RouteNumber[];
+const RouteNumberList = /*@__PURE__*/ __L.at(__c15, 3);
 export interface RouteSpanSpeedLimitDetails {
   MaxSpeed?: number;
   Unlimited?: boolean;
 }
+const RouteSpanSpeedLimitDetails = /*@__PURE__*/ __L.at(
+  __c15,
+  4,
+) as any as S.Schema<RouteSpanSpeedLimitDetails>;
 export interface RoutePedestrianSpan {
   BestCaseDuration?: number;
   Country?: string | redacted.Redacted<string>;
@@ -1169,7 +1588,9 @@ export interface RoutePedestrianSpan {
   SpeedLimit?: RouteSpanSpeedLimitDetails;
   TypicalDuration?: number;
 }
+const RoutePedestrianSpan = /*@__PURE__*/ __L.at(__c15, 5) as any as S.Schema<RoutePedestrianSpan>;
 export type RoutePedestrianSpanList = RoutePedestrianSpan[];
+const RoutePedestrianSpanList = /*@__PURE__*/ __L.at(__c15, 6);
 export interface RoutePedestrianOverviewSummary {
   Distance: number;
   Duration: number;
@@ -1181,31 +1602,51 @@ export interface RoutePedestrianSummary {
   Overview?: RoutePedestrianOverviewSummary;
   TravelOnly?: RoutePedestrianTravelOnlySummary;
 }
+const RoutePedestrianSummary = RouteFerrySummary as any as S.Schema<RoutePedestrianSummary>;
 export interface RouteContinueStepDetails {
   Intersection: LocalizedString[];
 }
+const RouteContinueStepDetails = /*@__PURE__*/ __L.at(
+  __c15,
+  7,
+) as any as S.Schema<RouteContinueStepDetails>;
 export type RouteRoadType = "Highway" | "Rural" | "Urban" | (string & {});
+const RouteRoadType = S.String;
+
 export interface RouteRoad {
   RoadName: LocalizedString[];
   RouteNumber: RouteNumber[];
   Towards: LocalizedString[];
   Type?: RouteRoadType;
 }
+const RouteRoad = /*@__PURE__*/ __L.at(__c16, 0) as any as S.Schema<RouteRoad>;
 export type RouteSteeringDirection = "Left" | "Right" | "Straight" | (string & {});
+const RouteSteeringDirection = S.String;
+
 export type TurnAngle = number;
 export type RouteTurnIntensity = "Sharp" | "Slight" | "Typical" | (string & {});
+const RouteTurnIntensity = S.String;
+
 export interface RouteKeepStepDetails {
   Intersection: LocalizedString[];
   SteeringDirection?: RouteSteeringDirection;
   TurnAngle?: number;
   TurnIntensity?: RouteTurnIntensity;
 }
+const RouteKeepStepDetails = /*@__PURE__*/ __L.at(
+  __c16,
+  1,
+) as any as S.Schema<RouteKeepStepDetails>;
 export interface RouteRoundaboutEnterStepDetails {
   Intersection: LocalizedString[];
   SteeringDirection?: RouteSteeringDirection;
   TurnAngle?: number;
   TurnIntensity?: RouteTurnIntensity;
 }
+const RouteRoundaboutEnterStepDetails = /*@__PURE__*/ __L.at(
+  __c16,
+  2,
+) as any as S.Schema<RouteRoundaboutEnterStepDetails>;
 export type RoundaboutAngle = number;
 export interface RouteRoundaboutExitStepDetails {
   Intersection: LocalizedString[];
@@ -1213,26 +1654,36 @@ export interface RouteRoundaboutExitStepDetails {
   RoundaboutAngle?: number;
   SteeringDirection?: RouteSteeringDirection;
 }
+const RouteRoundaboutExitStepDetails = /*@__PURE__*/ __L.at(
+  __c16,
+  3,
+) as any as S.Schema<RouteRoundaboutExitStepDetails>;
 export interface RouteRoundaboutPassStepDetails {
   Intersection: LocalizedString[];
   SteeringDirection?: RouteSteeringDirection;
   TurnAngle?: number;
   TurnIntensity?: RouteTurnIntensity;
 }
+const RouteRoundaboutPassStepDetails =
+  RouteRoundaboutEnterStepDetails as any as S.Schema<RouteRoundaboutPassStepDetails>;
 export interface RouteSignpostLabel {
   RouteNumber?: RouteNumber;
   Text?: LocalizedString;
 }
+const RouteSignpostLabel = /*@__PURE__*/ __L.at(__c16, 4) as any as S.Schema<RouteSignpostLabel>;
 export type RouteSignpostLabelList = RouteSignpostLabel[];
+const RouteSignpostLabelList = /*@__PURE__*/ __L.at(__c16, 5);
 export interface RouteSignpost {
   Labels: RouteSignpostLabel[];
 }
+const RouteSignpost = /*@__PURE__*/ __L.at(__c16, 6) as any as S.Schema<RouteSignpost>;
 export interface RouteTurnStepDetails {
   Intersection: LocalizedString[];
   SteeringDirection?: RouteSteeringDirection;
   TurnAngle?: number;
   TurnIntensity?: RouteTurnIntensity;
 }
+const RouteTurnStepDetails = RouteKeepStepDetails as any as S.Schema<RouteTurnStepDetails>;
 export type RoutePedestrianTravelStepType =
   | "Arrive"
   | "Continue"
@@ -1243,6 +1694,8 @@ export type RoutePedestrianTravelStepType =
   | "RoundaboutPass"
   | "Turn"
   | (string & {});
+const RoutePedestrianTravelStepType = S.String;
+
 export interface RoutePedestrianTravelStep {
   ContinueStepDetails?: RouteContinueStepDetails;
   CurrentRoad?: RouteRoad;
@@ -1260,7 +1713,12 @@ export interface RoutePedestrianTravelStep {
   TurnStepDetails?: RouteTurnStepDetails;
   Type: RoutePedestrianTravelStepType;
 }
+const RoutePedestrianTravelStep = /*@__PURE__*/ __L.at(
+  __c16,
+  7,
+) as any as S.Schema<RoutePedestrianTravelStep>;
 export type RoutePedestrianTravelStepList = RoutePedestrianTravelStep[];
+const RoutePedestrianTravelStepList = /*@__PURE__*/ __L.at(__c17, 0);
 export interface RoutePedestrianLegDetails {
   AfterTravelSteps?: RoutePedestrianAfterTravelStep[];
   Arrival: RoutePedestrianArrival;
@@ -1271,6 +1729,10 @@ export interface RoutePedestrianLegDetails {
   Summary?: RoutePedestrianSummary;
   TravelSteps?: RoutePedestrianTravelStep[];
 }
+const RoutePedestrianLegDetails = /*@__PURE__*/ __L.at(
+  __c17,
+  1,
+) as any as S.Schema<RoutePedestrianLegDetails>;
 export type RouteLegTravelMode =
   | "Car"
   | "Ferry"
@@ -1293,6 +1755,8 @@ export type RouteLegTravelMode =
   | "RegionalTrain"
   | "Subway"
   | (string & {});
+const RouteLegTravelMode = S.String;
+
 export type RouteLegType =
   | "Ferry"
   | "Pedestrian"
@@ -1301,6 +1765,8 @@ export type RouteLegType =
   | "Taxi"
   | "Transit"
   | (string & {});
+const RouteLegType = S.String;
+
 export type EnergyKilowattHours = number;
 export type PowerKilowatts = number;
 export interface RouteChargeStepDetails {
@@ -1308,20 +1774,33 @@ export interface RouteChargeStepDetails {
   ConsumablePower?: number;
   DesiredCharge?: number;
 }
+const RouteChargeStepDetails = /*@__PURE__*/ __L.at(
+  __c17,
+  2,
+) as any as S.Schema<RouteChargeStepDetails>;
 export type RouteVehicleAfterTravelStepType = "Park" | (string & {});
+const RouteVehicleAfterTravelStepType = S.String;
+
 export interface RouteVehicleAfterTravelStep {
   ChargeStepDetails?: RouteChargeStepDetails;
   Duration: number;
   Instruction?: string | redacted.Redacted<string>;
   Type: RouteVehicleAfterTravelStepType;
 }
+const RouteVehicleAfterTravelStep = /*@__PURE__*/ __L.at(
+  __c17,
+  3,
+) as any as S.Schema<RouteVehicleAfterTravelStep>;
 export type RouteVehicleAfterTravelStepList = RouteVehicleAfterTravelStep[];
+const RouteVehicleAfterTravelStepList = /*@__PURE__*/ __L.at(__c17, 4);
 export type RouteVehiclePlaceType =
   | "AccessPoint"
   | "DockingStation"
   | "ParkingLot"
   | "Station"
   | (string & {});
+const RouteVehiclePlaceType = S.String;
+
 export interface RouteVehiclePlace {
   Name?: string | redacted.Redacted<string>;
   OriginalPosition?: number[];
@@ -1332,15 +1811,20 @@ export interface RouteVehiclePlace {
   StationDetails?: RouteStationDetails;
   Type?: RouteVehiclePlaceType;
 }
+const RouteVehiclePlace = /*@__PURE__*/ __L.at(__c17, 5) as any as S.Schema<RouteVehiclePlace>;
 export interface RouteVehicleArrival {
   Place: RouteVehiclePlace;
   Time?: string | redacted.Redacted<string>;
 }
+const RouteVehicleArrival = /*@__PURE__*/ __L.at(__c17, 6) as any as S.Schema<RouteVehicleArrival>;
 export interface RouteVehicleDeparture {
   Place: RouteVehiclePlace;
   Time?: string | redacted.Redacted<string>;
 }
+const RouteVehicleDeparture = RouteVehicleArrival as any as S.Schema<RouteVehicleDeparture>;
 export type RouteVehicleIncidentSeverity = "Critical" | "High" | "Medium" | "Low" | (string & {});
+const RouteVehicleIncidentSeverity = S.String;
+
 export type RouteVehicleIncidentType =
   | "Accident"
   | "Congestion"
@@ -1354,6 +1838,8 @@ export type RouteVehicleIncidentType =
   | "RoadHazard"
   | "Weather"
   | (string & {});
+const RouteVehicleIncidentType = S.String;
+
 export interface RouteVehicleIncident {
   Description?: string | redacted.Redacted<string>;
   EndTime?: string | redacted.Redacted<string>;
@@ -1361,7 +1847,12 @@ export interface RouteVehicleIncident {
   StartTime?: string | redacted.Redacted<string>;
   Type?: RouteVehicleIncidentType;
 }
+const RouteVehicleIncident = /*@__PURE__*/ __L.at(
+  __c17,
+  7,
+) as any as S.Schema<RouteVehicleIncident>;
 export type RouteVehicleIncidentList = RouteVehicleIncident[];
+const RouteVehicleIncidentList = /*@__PURE__*/ __L.at(__c18, 0);
 export type RouteVehicleNoticeCode =
   | "AccuratePolylineUnavailable"
   | "Other"
@@ -1392,15 +1883,27 @@ export type RouteVehicleNoticeCode =
   | "ViolatedZoneRestriction"
   | "TravelTimeExceedsDriverWorkHours"
   | (string & {});
+const RouteVehicleNoticeCode = S.String;
+
 export interface RouteNoticeDetailRange {
   Min?: number;
   Max?: number;
 }
+const RouteNoticeDetailRange = /*@__PURE__*/ __L.at(
+  __c18,
+  1,
+) as any as S.Schema<RouteNoticeDetailRange>;
 export type RouteWeightConstraintType = "Current" | "Gross" | "Unknown" | (string & {});
+const RouteWeightConstraintType = S.String;
+
 export interface RouteWeightConstraint {
   Type: RouteWeightConstraintType;
   Value: number;
 }
+const RouteWeightConstraint = /*@__PURE__*/ __L.at(
+  __c18,
+  2,
+) as any as S.Schema<RouteWeightConstraint>;
 export interface RouteViolatedConstraints {
   AllHazardsRestricted?: boolean;
   AxleCount?: RouteNoticeDetailRange;
@@ -1422,41 +1925,62 @@ export interface RouteViolatedConstraints {
   TruckType?: RouteTruckType;
   TunnelRestrictionCode?: string | redacted.Redacted<string>;
 }
+const RouteViolatedConstraints = /*@__PURE__*/ __L.at(
+  __c18,
+  3,
+) as any as S.Schema<RouteViolatedConstraints>;
 export interface RouteVehicleNoticeDetail {
   Title?: string | redacted.Redacted<string>;
   ViolatedConstraints?: RouteViolatedConstraints;
 }
+const RouteVehicleNoticeDetail = /*@__PURE__*/ __L.at(
+  __c18,
+  4,
+) as any as S.Schema<RouteVehicleNoticeDetail>;
 export type RouteVehicleNoticeDetailList = RouteVehicleNoticeDetail[];
+const RouteVehicleNoticeDetailList = /*@__PURE__*/ __L.at(__c18, 5);
 export interface RouteVehicleNotice {
   Code: RouteVehicleNoticeCode;
   Details: RouteVehicleNoticeDetail[];
   Impact?: RouteNoticeImpact;
 }
+const RouteVehicleNotice = /*@__PURE__*/ __L.at(__c18, 6) as any as S.Schema<RouteVehicleNotice>;
 export type RouteVehicleNoticeList = RouteVehicleNotice[];
+const RouteVehicleNoticeList = /*@__PURE__*/ __L.at(__c18, 7);
 export type RouteSpanCarAccessAttribute =
   | "Allowed"
   | "NoThroughTraffic"
   | "TollRoad"
   | (string & {});
 export type RouteSpanCarAccessAttributeList = RouteSpanCarAccessAttribute[];
+const RouteSpanCarAccessAttributeList =
+  IsolineHazardousCargoTypeList as any as S.Schema<RouteSpanCarAccessAttributeList>;
 export type RouteSpanGateAttribute =
   | "Emergency"
   | "KeyAccess"
   | "PermissionRequired"
   | (string & {});
+const RouteSpanGateAttribute = S.String;
+
 export type RouteSpanRailwayCrossingAttribute = "Protected" | "Unprotected" | (string & {});
+const RouteSpanRailwayCrossingAttribute = S.String;
+
 export type RouteSpanScooterAccessAttribute =
   | "Allowed"
   | "NoThroughTraffic"
   | "TollRoad"
   | (string & {});
 export type RouteSpanScooterAccessAttributeList = RouteSpanScooterAccessAttribute[];
+const RouteSpanScooterAccessAttributeList =
+  RouteMatrixHazardousCargoTypeList as any as S.Schema<RouteSpanScooterAccessAttributeList>;
 export type RouteSpanTruckAccessAttribute =
   | "Allowed"
   | "NoThroughTraffic"
   | "TollRoad"
   | (string & {});
 export type RouteSpanTruckAccessAttributeList = RouteSpanTruckAccessAttribute[];
+const RouteSpanTruckAccessAttributeList =
+  RouteMatrixHazardousCargoTypeList as any as S.Schema<RouteSpanTruckAccessAttributeList>;
 export interface RouteVehicleSpan {
   BestCaseDuration?: number;
   CarAccess?: RouteSpanCarAccessAttribute[];
@@ -1482,31 +2006,51 @@ export interface RouteVehicleSpan {
   TypicalDuration?: number;
   Zones?: number[];
 }
+const RouteVehicleSpan = /*@__PURE__*/ __L.at(__c19, 0) as any as S.Schema<RouteVehicleSpan>;
 export type RouteVehicleSpanList = RouteVehicleSpan[];
+const RouteVehicleSpanList = /*@__PURE__*/ __L.at(__c19, 1);
 export interface RouteVehicleOverviewSummary {
   BestCaseDuration?: number;
   Distance: number;
   Duration: number;
   TypicalDuration?: number;
 }
+const RouteVehicleOverviewSummary = /*@__PURE__*/ __L.at(
+  __c19,
+  2,
+) as any as S.Schema<RouteVehicleOverviewSummary>;
 export interface RouteVehicleTravelOnlySummary {
   BestCaseDuration?: number;
   Duration: number;
   TypicalDuration?: number;
 }
+const RouteVehicleTravelOnlySummary = /*@__PURE__*/ __L.at(
+  __c19,
+  3,
+) as any as S.Schema<RouteVehicleTravelOnlySummary>;
 export interface RouteVehicleSummary {
   Overview?: RouteVehicleOverviewSummary;
   TravelOnly?: RouteVehicleTravelOnlySummary;
 }
+const RouteVehicleSummary = /*@__PURE__*/ __L.at(__c19, 4) as any as S.Schema<RouteVehicleSummary>;
 export interface RouteTollPaymentSite {
   Name?: string;
   Position: number[];
 }
+const RouteTollPaymentSite = /*@__PURE__*/ __L.at(
+  __c19,
+  5,
+) as any as S.Schema<RouteTollPaymentSite>;
 export type RouteTollPaymentSiteList = RouteTollPaymentSite[];
+const RouteTollPaymentSiteList = /*@__PURE__*/ __L.at(__c19, 6);
 export interface RouteTollPriceValueRange {
   Min: number;
   Max: number;
 }
+const RouteTollPriceValueRange = /*@__PURE__*/ __L.at(
+  __c19,
+  7,
+) as any as S.Schema<RouteTollPriceValueRange>;
 export interface RouteTollPrice {
   Currency: string;
   Estimate: boolean;
@@ -1515,6 +2059,7 @@ export interface RouteTollPrice {
   RangeValue?: RouteTollPriceValueRange;
   Value: number;
 }
+const RouteTollPrice = /*@__PURE__*/ __L.at(__c20, 0) as any as S.Schema<RouteTollPrice>;
 export type RouteTollPassValidityPeriodType =
   | "Annual"
   | "Days"
@@ -1522,10 +2067,16 @@ export type RouteTollPassValidityPeriodType =
   | "Minutes"
   | "Months"
   | (string & {});
+const RouteTollPassValidityPeriodType = S.String;
+
 export interface RouteTollPassValidityPeriod {
   Period: RouteTollPassValidityPeriodType;
   PeriodCount?: number;
 }
+const RouteTollPassValidityPeriod = /*@__PURE__*/ __L.at(
+  __c20,
+  1,
+) as any as S.Schema<RouteTollPassValidityPeriod>;
 export interface RouteTollPass {
   IncludesReturnTrip?: boolean;
   SeniorPass?: boolean;
@@ -1533,6 +2084,7 @@ export interface RouteTollPass {
   TripCount?: number;
   ValidityPeriod?: RouteTollPassValidityPeriod;
 }
+const RouteTollPass = /*@__PURE__*/ __L.at(__c20, 2) as any as S.Schema<RouteTollPass>;
 export type RouteTollPaymentMethod =
   | "BankCard"
   | "Cash"
@@ -1544,10 +2096,14 @@ export type RouteTollPaymentMethod =
   | "VideoToll"
   | (string & {});
 export type RouteTollPaymentMethodList = RouteTollPaymentMethod[];
+const RouteTollPaymentMethodList =
+  IsolineHazardousCargoTypeList as any as S.Schema<RouteTollPaymentMethodList>;
 export interface RouteTransponder {
   SystemName?: string | redacted.Redacted<string>;
 }
+const RouteTransponder = /*@__PURE__*/ __L.at(__c20, 3) as any as S.Schema<RouteTransponder>;
 export type RouteTransponderList = RouteTransponder[];
+const RouteTransponderList = /*@__PURE__*/ __L.at(__c20, 4);
 export interface RouteTollRate {
   ApplicableTimes?: string | redacted.Redacted<string>;
   ConvertedPrice?: RouteTollPrice;
@@ -1558,30 +2114,40 @@ export interface RouteTollRate {
   PaymentMethods: RouteTollPaymentMethod[];
   Transponders: RouteTransponder[];
 }
+const RouteTollRate = /*@__PURE__*/ __L.at(__c20, 5) as any as S.Schema<RouteTollRate>;
 export type RouteTollRateList = RouteTollRate[];
+const RouteTollRateList = /*@__PURE__*/ __L.at(__c20, 6);
 export interface RouteToll {
   Country?: string | redacted.Redacted<string>;
   PaymentSites: RouteTollPaymentSite[];
   Rates: RouteTollRate[];
   Systems: number[];
 }
+const RouteToll = /*@__PURE__*/ __L.at(__c20, 7) as any as S.Schema<RouteToll>;
 export type RouteTollList = RouteToll[];
+const RouteTollList = /*@__PURE__*/ __L.at(__c21, 0);
 export interface RouteTollSystem {
   Name?: string | redacted.Redacted<string>;
 }
+const RouteTollSystem = /*@__PURE__*/ __L.at(__c21, 1) as any as S.Schema<RouteTollSystem>;
 export type RouteTollSystemList = RouteTollSystem[];
+const RouteTollSystemList = /*@__PURE__*/ __L.at(__c21, 2);
 export interface RouteContinueHighwayStepDetails {
   Intersection: LocalizedString[];
   SteeringDirection?: RouteSteeringDirection;
   TurnAngle?: number;
   TurnIntensity?: RouteTurnIntensity;
 }
+const RouteContinueHighwayStepDetails =
+  RouteRoundaboutEnterStepDetails as any as S.Schema<RouteContinueHighwayStepDetails>;
 export interface RouteEnterHighwayStepDetails {
   Intersection: LocalizedString[];
   SteeringDirection?: RouteSteeringDirection;
   TurnAngle?: number;
   TurnIntensity?: RouteTurnIntensity;
 }
+const RouteEnterHighwayStepDetails =
+  RouteRoundaboutEnterStepDetails as any as S.Schema<RouteEnterHighwayStepDetails>;
 export interface RouteExitStepDetails {
   Intersection: LocalizedString[];
   RelativeExit?: number;
@@ -1589,12 +2155,17 @@ export interface RouteExitStepDetails {
   TurnAngle?: number;
   TurnIntensity?: RouteTurnIntensity;
 }
+const RouteExitStepDetails = /*@__PURE__*/ __L.at(
+  __c21,
+  3,
+) as any as S.Schema<RouteExitStepDetails>;
 export interface RouteRampStepDetails {
   Intersection: LocalizedString[];
   SteeringDirection?: RouteSteeringDirection;
   TurnAngle?: number;
   TurnIntensity?: RouteTurnIntensity;
 }
+const RouteRampStepDetails = RouteKeepStepDetails as any as S.Schema<RouteRampStepDetails>;
 export type RouteVehicleTravelStepType =
   | "Arrive"
   | "Continue"
@@ -1610,12 +2181,15 @@ export type RouteVehicleTravelStepType =
   | "Turn"
   | "UTurn"
   | (string & {});
+const RouteVehicleTravelStepType = S.String;
+
 export interface RouteUTurnStepDetails {
   Intersection: LocalizedString[];
   SteeringDirection?: RouteSteeringDirection;
   TurnAngle?: number;
   TurnIntensity?: RouteTurnIntensity;
 }
+const RouteUTurnStepDetails = RouteKeepStepDetails as any as S.Schema<RouteUTurnStepDetails>;
 export interface RouteVehicleTravelStep {
   ContinueHighwayStepDetails?: RouteContinueHighwayStepDetails;
   ContinueStepDetails?: RouteContinueStepDetails;
@@ -1638,12 +2212,19 @@ export interface RouteVehicleTravelStep {
   Type: RouteVehicleTravelStepType;
   UTurnStepDetails?: RouteUTurnStepDetails;
 }
+const RouteVehicleTravelStep = /*@__PURE__*/ __L.at(
+  __c21,
+  4,
+) as any as S.Schema<RouteVehicleTravelStep>;
 export type RouteVehicleTravelStepList = RouteVehicleTravelStep[];
+const RouteVehicleTravelStepList = /*@__PURE__*/ __L.at(__c21, 5);
 export interface RouteZone {
   Category?: RouteZoneCategory;
   Name?: string | redacted.Redacted<string>;
 }
+const RouteZone = /*@__PURE__*/ __L.at(__c21, 6) as any as S.Schema<RouteZone>;
 export type RouteZoneList = RouteZone[];
+const RouteZoneList = /*@__PURE__*/ __L.at(__c21, 7);
 export interface RouteVehicleLegDetails {
   AfterTravelSteps?: RouteVehicleAfterTravelStep[];
   Arrival: RouteVehicleArrival;
@@ -1659,6 +2240,10 @@ export interface RouteVehicleLegDetails {
   TruckRoadTypes?: (string | redacted.Redacted<string>)[];
   Zones?: RouteZone[];
 }
+const RouteVehicleLegDetails = /*@__PURE__*/ __L.at(
+  __c22,
+  0,
+) as any as S.Schema<RouteVehicleLegDetails>;
 export type RouteRentalAfterTravelStepType = "Park" | (string & {});
 export interface RouteRentalAfterTravelStep {
   Duration: number;
@@ -1666,16 +2251,21 @@ export interface RouteRentalAfterTravelStep {
   Type: RouteRentalAfterTravelStepType;
 }
 export type RouteRentalAfterTravelStepList = RouteRentalAfterTravelStep[];
+const RouteRentalAfterTravelStepList =
+  RouteFerryAfterTravelStepList as any as S.Schema<RouteRentalAfterTravelStepList>;
 export interface RouteRentalAgency {
   Name: string | redacted.Redacted<string>;
   Url?: string | redacted.Redacted<string>;
 }
+const RouteRentalAgency = /*@__PURE__*/ __L.at(__c22, 1) as any as S.Schema<RouteRentalAgency>;
 export type RouteRentalPlaceType =
   | "AccessPoint"
   | "DockingStation"
   | "ParkingLot"
   | "Station"
   | (string & {});
+const RouteRentalPlaceType = S.String;
+
 export interface RouteRentalPlace {
   AccessPointDetails?: RouteAccessPointDetails;
   Name?: string | redacted.Redacted<string>;
@@ -1685,23 +2275,32 @@ export interface RouteRentalPlace {
   Type?: RouteRentalPlaceType;
   WaypointIndex?: number;
 }
+const RouteRentalPlace = /*@__PURE__*/ __L.at(__c22, 2) as any as S.Schema<RouteRentalPlace>;
 export interface RouteRentalArrival {
   Place: RouteRentalPlace;
   Time?: string | redacted.Redacted<string>;
 }
+const RouteRentalArrival = /*@__PURE__*/ __L.at(__c22, 3) as any as S.Schema<RouteRentalArrival>;
 export type RouteAttributionType = "Disclaimer" | "Tariff" | (string & {});
+const RouteAttributionType = S.String;
+
 export type RouteWebLinkDeviceType = "Android" | "Ios" | "Web" | (string & {});
+const RouteWebLinkDeviceType = S.String;
+
 export interface RouteWebLink {
   AnchorText?: string | redacted.Redacted<string>;
   Description: string | redacted.Redacted<string>;
   DeviceType?: RouteWebLinkDeviceType;
   Url?: string | redacted.Redacted<string>;
 }
+const RouteWebLink = /*@__PURE__*/ __L.at(__c22, 4) as any as S.Schema<RouteWebLink>;
 export interface RouteAttribution {
   AttributionType?: RouteAttributionType;
   WebLink: RouteWebLink;
 }
+const RouteAttribution = /*@__PURE__*/ __L.at(__c22, 5) as any as S.Schema<RouteAttribution>;
 export type RouteAttributionList = RouteAttribution[];
+const RouteAttributionList = /*@__PURE__*/ __L.at(__c22, 6);
 export type RouteRentalBeforeTravelStepType = "Setup" | (string & {});
 export interface RouteRentalBeforeTravelStep {
   Duration: number;
@@ -1709,22 +2308,33 @@ export interface RouteRentalBeforeTravelStep {
   Type: RouteRentalBeforeTravelStepType;
 }
 export type RouteRentalBeforeTravelStepList = RouteRentalBeforeTravelStep[];
+const RouteRentalBeforeTravelStepList =
+  RouteFerryAfterTravelStepList as any as S.Schema<RouteRentalBeforeTravelStepList>;
 export type RouteWebLinkList = RouteWebLink[];
+const RouteWebLinkList = /*@__PURE__*/ __L.at(__c22, 7);
 export interface RouteRentalDeparture {
   Place: RouteRentalPlace;
   Time?: string | redacted.Redacted<string>;
 }
+const RouteRentalDeparture = RouteRentalArrival as any as S.Schema<RouteRentalDeparture>;
 export interface RouteRentalOverviewSummary {
   Duration: number;
   Distance: number;
 }
+const RouteRentalOverviewSummary = /*@__PURE__*/ __L.at(
+  __c23,
+  0,
+) as any as S.Schema<RouteRentalOverviewSummary>;
 export interface RouteRentalTravelOnlySummary {
   Duration: number;
 }
+const RouteRentalTravelOnlySummary =
+  RouteFerryTravelOnlySummary as any as S.Schema<RouteRentalTravelOnlySummary>;
 export interface RouteRentalSummary {
   Overview?: RouteRentalOverviewSummary;
   TravelOnly?: RouteRentalTravelOnlySummary;
 }
+const RouteRentalSummary = /*@__PURE__*/ __L.at(__c23, 1) as any as S.Schema<RouteRentalSummary>;
 export interface RouteRentalTransportModeDetails {
   AvailableSeats?: number;
   Category?: string | redacted.Redacted<string>;
@@ -1736,6 +2346,10 @@ export interface RouteRentalTransportModeDetails {
   Name?: string | redacted.Redacted<string>;
   TextColor?: string | redacted.Redacted<string>;
 }
+const RouteRentalTransportModeDetails = /*@__PURE__*/ __L.at(
+  __c23,
+  2,
+) as any as S.Schema<RouteRentalTransportModeDetails>;
 export type RouteRentalTravelStepType =
   | "Arrive"
   | "Continue"
@@ -1749,6 +2363,8 @@ export type RouteRentalTravelStepType =
   | "Turn"
   | "UTurn"
   | (string & {});
+const RouteRentalTravelStepType = S.String;
+
 export interface RouteRentalTravelStep {
   ContinueStepDetails?: RouteContinueStepDetails;
   Distance?: number;
@@ -1765,7 +2381,12 @@ export interface RouteRentalTravelStep {
   Type: RouteRentalTravelStepType;
   UTurnStepDetails?: RouteUTurnStepDetails;
 }
+const RouteRentalTravelStep = /*@__PURE__*/ __L.at(
+  __c23,
+  3,
+) as any as S.Schema<RouteRentalTravelStep>;
 export type RouteRentalTravelStepList = RouteRentalTravelStep[];
+const RouteRentalTravelStepList = /*@__PURE__*/ __L.at(__c23, 4);
 export interface RouteRentalLegDetails {
   AfterTravelSteps?: RouteRentalAfterTravelStep[];
   Agency: RouteRentalAgency;
@@ -1778,17 +2399,29 @@ export interface RouteRentalLegDetails {
   Transport: RouteRentalTransportModeDetails;
   TravelSteps?: RouteRentalTravelStep[];
 }
+const RouteRentalLegDetails = /*@__PURE__*/ __L.at(
+  __c23,
+  5,
+) as any as S.Schema<RouteRentalLegDetails>;
 export type RouteTaxiAfterTravelStepType = "Park" | (string & {});
+const RouteTaxiAfterTravelStepType = S.String;
+
 export interface RouteTaxiAfterTravelStep {
   Duration: number;
   Instruction?: string | redacted.Redacted<string>;
   Type: RouteTaxiAfterTravelStepType;
 }
+const RouteTaxiAfterTravelStep = /*@__PURE__*/ __L.at(
+  __c23,
+  6,
+) as any as S.Schema<RouteTaxiAfterTravelStep>;
 export type RouteTaxiAfterTravelStepList = RouteTaxiAfterTravelStep[];
+const RouteTaxiAfterTravelStepList = /*@__PURE__*/ __L.at(__c23, 7);
 export interface RouteTaxiAgency {
   Name: string | redacted.Redacted<string>;
   Url?: string | redacted.Redacted<string>;
 }
+const RouteTaxiAgency = RouteRentalAgency as any as S.Schema<RouteTaxiAgency>;
 export type RouteTaxiPlaceType = "AccessPoint" | "Station" | (string & {});
 export interface RouteTaxiPlace {
   AccessPointDetails?: RouteAccessPointDetails;
@@ -1803,6 +2436,7 @@ export interface RouteTaxiArrival {
   Place: RouteTaxiPlace;
   Time?: string | redacted.Redacted<string>;
 }
+const RouteTaxiArrival = RouteRentalArrival as any as S.Schema<RouteTaxiArrival>;
 export type RouteTaxiBeforeTravelStepType = "Wait" | (string & {});
 export interface RouteTaxiBeforeTravelStep {
   Duration: number;
@@ -1810,27 +2444,38 @@ export interface RouteTaxiBeforeTravelStep {
   Type: RouteTaxiBeforeTravelStepType;
 }
 export type RouteTaxiBeforeTravelStepList = RouteTaxiBeforeTravelStep[];
+const RouteTaxiBeforeTravelStepList =
+  RouteFerryAfterTravelStepList as any as S.Schema<RouteTaxiBeforeTravelStepList>;
 export interface RouteTaxiDeparture {
   Place: RouteTaxiPlace;
   Time?: string | redacted.Redacted<string>;
 }
+const RouteTaxiDeparture = RouteTaxiArrival as any as S.Schema<RouteTaxiDeparture>;
 export type RouteTaxiNoticeCode = "AccuratePolylineUnavailable" | "Other" | (string & {});
 export interface RouteTaxiNotice {
   Code: RouteTaxiNoticeCode;
   Impact?: RouteNoticeImpact;
 }
 export type RouteTaxiNoticeList = RouteTaxiNotice[];
+const RouteTaxiNoticeList = RouteResponseNoticeList as any as S.Schema<RouteTaxiNoticeList>;
 export interface RouteTaxiOverviewSummary {
   Duration: number;
   Distance: number;
 }
+const RouteTaxiOverviewSummary = /*@__PURE__*/ __L.at(
+  __c24,
+  0,
+) as any as S.Schema<RouteTaxiOverviewSummary>;
 export interface RouteTaxiTravelOnlySummary {
   Duration: number;
 }
+const RouteTaxiTravelOnlySummary =
+  RouteFerryTravelOnlySummary as any as S.Schema<RouteTaxiTravelOnlySummary>;
 export interface RouteTaxiSummary {
   Overview?: RouteTaxiOverviewSummary;
   TravelOnly?: RouteTaxiTravelOnlySummary;
 }
+const RouteTaxiSummary = /*@__PURE__*/ __L.at(__c24, 1) as any as S.Schema<RouteTaxiSummary>;
 export interface RouteTaxiTransportModeDetails {
   AvailableSeats?: number;
   Category?: string | redacted.Redacted<string>;
@@ -1842,6 +2487,8 @@ export interface RouteTaxiTransportModeDetails {
   Name?: string | redacted.Redacted<string>;
   TextColor?: string | redacted.Redacted<string>;
 }
+const RouteTaxiTransportModeDetails =
+  RouteRentalTransportModeDetails as any as S.Schema<RouteTaxiTransportModeDetails>;
 export type RouteTaxiTravelStepType =
   | "Arrive"
   | "Continue"
@@ -1872,6 +2519,8 @@ export interface RouteTaxiTravelStep {
   UTurnStepDetails?: RouteUTurnStepDetails;
 }
 export type RouteTaxiTravelStepList = RouteTaxiTravelStep[];
+const RouteTaxiTravelStepList =
+  RouteRentalTravelStepList as any as S.Schema<RouteTaxiTravelStepList>;
 export interface RouteTaxiLegDetails {
   AfterTravelSteps?: RouteTaxiAfterTravelStep[];
   Agency: RouteTaxiAgency;
@@ -1885,6 +2534,7 @@ export interface RouteTaxiLegDetails {
   Transport: RouteTaxiTransportModeDetails;
   TravelSteps?: RouteTaxiTravelStep[];
 }
+const RouteTaxiLegDetails = /*@__PURE__*/ __L.at(__c24, 2) as any as S.Schema<RouteTaxiLegDetails>;
 export type RouteTransitAfterTravelStepType = "Deboard" | (string & {});
 export interface RouteTransitAfterTravelStep {
   Duration: number;
@@ -1892,11 +2542,16 @@ export interface RouteTransitAfterTravelStep {
   Type: RouteTransitAfterTravelStepType;
 }
 export type RouteTransitAfterTravelStepList = RouteTransitAfterTravelStep[];
+const RouteTransitAfterTravelStepList =
+  RouteFerryAfterTravelStepList as any as S.Schema<RouteTransitAfterTravelStepList>;
 export interface RouteTransitAgency {
   Name: string | redacted.Redacted<string>;
   Url?: string | redacted.Redacted<string>;
 }
+const RouteTransitAgency = RouteRentalAgency as any as S.Schema<RouteTransitAgency>;
 export type RouteTransitPlaceType = "Station" | (string & {});
+const RouteTransitPlaceType = S.String;
+
 export interface RouteTransitPlace {
   Name?: string | redacted.Redacted<string>;
   OriginalPosition?: number[];
@@ -1905,18 +2560,22 @@ export interface RouteTransitPlace {
   Type?: RouteTransitPlaceType;
   WaypointIndex?: number;
 }
+const RouteTransitPlace = /*@__PURE__*/ __L.at(__c24, 3) as any as S.Schema<RouteTransitPlace>;
 export type RouteTransitTripStatus =
   | "Added"
   | "Cancelled"
   | "Replaced"
   | "Scheduled"
   | (string & {});
+const RouteTransitTripStatus = S.String;
+
 export interface RouteTransitArrival {
   Delay?: number;
   Place: RouteTransitPlace;
   Status?: RouteTransitTripStatus;
   Time?: string | redacted.Redacted<string>;
 }
+const RouteTransitArrival = /*@__PURE__*/ __L.at(__c24, 4) as any as S.Schema<RouteTransitArrival>;
 export type RouteTransitBeforeTravelStepType = "Board" | (string & {});
 export interface RouteTransitBeforeTravelStep {
   Duration: number;
@@ -1924,12 +2583,15 @@ export interface RouteTransitBeforeTravelStep {
   Type: RouteTransitBeforeTravelStepType;
 }
 export type RouteTransitBeforeTravelStepList = RouteTransitBeforeTravelStep[];
+const RouteTransitBeforeTravelStepList =
+  RouteFerryAfterTravelStepList as any as S.Schema<RouteTransitBeforeTravelStepList>;
 export interface RouteTransitDeparture {
   Delay?: number;
   Place: RouteTransitPlace;
   Status?: RouteTransitTripStatus;
   Time?: string | redacted.Redacted<string>;
 }
+const RouteTransitDeparture = RouteTransitArrival as any as S.Schema<RouteTransitDeparture>;
 export type RouteTransitIncidentEffect =
   | "Delayed"
   | "Detoured"
@@ -1940,6 +2602,8 @@ export type RouteTransitIncidentEffect =
   | "ServiceReduced"
   | "StopMoved"
   | (string & {});
+const RouteTransitIncidentEffect = S.String;
+
 export type RouteTransitIncidentType =
   | "Accident"
   | "Construction"
@@ -1953,6 +2617,8 @@ export type RouteTransitIncidentType =
   | "TechnicalProblem"
   | "Weather"
   | (string & {});
+const RouteTransitIncidentType = S.String;
+
 export interface RouteTransitIncident {
   Description?: string | redacted.Redacted<string>;
   Effect: RouteTransitIncidentEffect;
@@ -1961,9 +2627,16 @@ export interface RouteTransitIncident {
   Type: RouteTransitIncidentType;
   Url?: string | redacted.Redacted<string>;
 }
+const RouteTransitIncident = /*@__PURE__*/ __L.at(
+  __c24,
+  5,
+) as any as S.Schema<RouteTransitIncident>;
 export type RouteTransitIncidentList = RouteTransitIncident[];
+const RouteTransitIncidentList = /*@__PURE__*/ __L.at(__c24, 6);
 export type RouteTransitIntermediateStopAttribute = "NoEntry" | "NoExit" | (string & {});
 export type RouteTransitIntermediateStopAttributeList = RouteTransitIntermediateStopAttribute[];
+const RouteTransitIntermediateStopAttributeList =
+  RouteMatrixHazardousCargoTypeList as any as S.Schema<RouteTransitIntermediateStopAttributeList>;
 export type HexColor = string | redacted.Redacted<string>;
 export interface RouteTransitTransportModeDetails {
   Accessibility?: RouteAccessibilityAvailabilityDetails;
@@ -1975,6 +2648,10 @@ export interface RouteTransitTransportModeDetails {
   ShortRouteName?: string | redacted.Redacted<string>;
   TextColor?: string | redacted.Redacted<string>;
 }
+const RouteTransitTransportModeDetails = /*@__PURE__*/ __L.at(
+  __c24,
+  7,
+) as any as S.Schema<RouteTransitTransportModeDetails>;
 export interface RouteTransitIntermediateStop {
   Attributes?: RouteTransitIntermediateStopAttribute[];
   Departure: RouteTransitDeparture;
@@ -1982,7 +2659,12 @@ export interface RouteTransitIntermediateStop {
   GeometryOffset?: number;
   Transport?: RouteTransitTransportModeDetails;
 }
+const RouteTransitIntermediateStop = /*@__PURE__*/ __L.at(
+  __c25,
+  0,
+) as any as S.Schema<RouteTransitIntermediateStop>;
 export type RouteTransitIntermediateStopList = RouteTransitIntermediateStop[];
+const RouteTransitIntermediateStopList = /*@__PURE__*/ __L.at(__c25, 1);
 export interface RouteTransitNextDeparture {
   Delay?: number;
   PlatformName?: string | redacted.Redacted<string>;
@@ -1990,7 +2672,12 @@ export interface RouteTransitNextDeparture {
   Time: string | redacted.Redacted<string>;
   Transport?: RouteTransitTransportModeDetails;
 }
+const RouteTransitNextDeparture = /*@__PURE__*/ __L.at(
+  __c25,
+  2,
+) as any as S.Schema<RouteTransitNextDeparture>;
 export type RouteTransitNextDepartureList = RouteTransitNextDeparture[];
+const RouteTransitNextDepartureList = /*@__PURE__*/ __L.at(__c25, 3);
 export type RouteTransitNoticeCode =
   | "AccuratePolylineUnavailable"
   | "IntermediateStopsUnavailable"
@@ -2010,6 +2697,7 @@ export interface RouteTransitNotice {
   Impact?: RouteNoticeImpact;
 }
 export type RouteTransitNoticeList = RouteTransitNotice[];
+const RouteTransitNoticeList = RouteResponseNoticeList as any as S.Schema<RouteTransitNoticeList>;
 export interface RouteTransitSpan {
   Country?: string | redacted.Redacted<string>;
   Distance?: number;
@@ -2019,6 +2707,7 @@ export interface RouteTransitSpan {
   Region?: string | redacted.Redacted<string>;
 }
 export type RouteTransitSpanList = RouteTransitSpan[];
+const RouteTransitSpanList = RouteFerrySpanList as any as S.Schema<RouteTransitSpanList>;
 export interface RouteTransitOverviewSummary {
   Distance: number;
   Duration: number;
@@ -2030,6 +2719,7 @@ export interface RouteTransitSummary {
   Overview?: RouteTransitOverviewSummary;
   TravelOnly?: RouteTransitTravelOnlySummary;
 }
+const RouteTransitSummary = RouteFerrySummary as any as S.Schema<RouteTransitSummary>;
 export type RouteTransitTravelStepType = "Depart" | (string & {});
 export interface RouteTransitTravelStep {
   Distance?: number;
@@ -2039,6 +2729,8 @@ export interface RouteTransitTravelStep {
   Type: RouteTransitTravelStepType;
 }
 export type RouteTransitTravelStepList = RouteTransitTravelStep[];
+const RouteTransitTravelStepList =
+  RouteFerryTravelStepList as any as S.Schema<RouteTransitTravelStepList>;
 export interface RouteTransitLegDetails {
   AfterTravelSteps?: RouteTransitAfterTravelStep[];
   Agency?: RouteTransitAgency;
@@ -2057,6 +2749,10 @@ export interface RouteTransitLegDetails {
   Transport: RouteTransitTransportModeDetails;
   TravelSteps?: RouteTransitTravelStep[];
 }
+const RouteTransitLegDetails = /*@__PURE__*/ __L.at(
+  __c25,
+  4,
+) as any as S.Schema<RouteTransitLegDetails>;
 export interface RouteLeg {
   FerryLegDetails?: RouteFerryLegDetails;
   Geometry: RouteLegGeometry;
@@ -2069,12 +2765,16 @@ export interface RouteLeg {
   TaxiLegDetails?: RouteTaxiLegDetails;
   TransitLegDetails?: RouteTransitLegDetails;
 }
+const RouteLeg = /*@__PURE__*/ __L.at(__c25, 5) as any as S.Schema<RouteLeg>;
 export type RouteLegList = RouteLeg[];
+const RouteLegList = /*@__PURE__*/ __L.at(__c25, 6);
 export interface RouteMajorRoadLabel {
   RoadName?: LocalizedString;
   RouteNumber?: RouteNumber;
 }
+const RouteMajorRoadLabel = /*@__PURE__*/ __L.at(__c25, 7) as any as S.Schema<RouteMajorRoadLabel>;
 export type RouteMajorRoadLabelList = RouteMajorRoadLabel[];
+const RouteMajorRoadLabelList = /*@__PURE__*/ __L.at(__c26, 0);
 export interface RouteTollPriceSummary {
   Currency: string;
   Estimate: boolean;
@@ -2082,33 +2782,54 @@ export interface RouteTollPriceSummary {
   RangeValue?: RouteTollPriceValueRange;
   Value: number;
 }
+const RouteTollPriceSummary = /*@__PURE__*/ __L.at(
+  __c26,
+  1,
+) as any as S.Schema<RouteTollPriceSummary>;
 export interface RouteTollSummary {
   Total?: RouteTollPriceSummary;
 }
+const RouteTollSummary = /*@__PURE__*/ __L.at(__c26, 2) as any as S.Schema<RouteTollSummary>;
 export interface RouteSummary {
   Distance?: number;
   Duration?: number;
   Tolls?: RouteTollSummary;
 }
+const RouteSummary = /*@__PURE__*/ __L.at(__c26, 3) as any as S.Schema<RouteSummary>;
 export interface Route {
   Legs: RouteLeg[];
   MajorRoadLabels: RouteMajorRoadLabel[];
   Summary?: RouteSummary;
 }
+const Route = /*@__PURE__*/ __L.at(__c26, 4) as any as S.Schema<Route>;
 export type RouteList = Route[];
+const RouteList = /*@__PURE__*/ __L.at(__c26, 5);
 export interface CalculateRoutesResponse {
   LegGeometryFormat: GeometryFormat;
   Notices: RouteResponseNotice[];
   PricingBucket: string;
   Routes: Route[];
 }
+const CalculateRoutesResponse = /*@__PURE__*/ __L.at(
+  __c26,
+  6,
+) as any as S.Schema<CalculateRoutesResponse>;
 export interface WaypointOptimizationAvoidanceAreaGeometry {
   BoundingBox?: number[];
 }
+const WaypointOptimizationAvoidanceAreaGeometry = /*@__PURE__*/ __L.at(
+  __c26,
+  7,
+) as any as S.Schema<WaypointOptimizationAvoidanceAreaGeometry>;
 export interface WaypointOptimizationAvoidanceArea {
   Geometry: WaypointOptimizationAvoidanceAreaGeometry;
 }
+const WaypointOptimizationAvoidanceArea = /*@__PURE__*/ __L.at(
+  __c27,
+  0,
+) as any as S.Schema<WaypointOptimizationAvoidanceArea>;
 export type WaypointOptimizationAvoidanceAreaList = WaypointOptimizationAvoidanceArea[];
+const WaypointOptimizationAvoidanceAreaList = /*@__PURE__*/ __L.at(__c27, 1);
 export interface WaypointOptimizationAvoidanceOptions {
   Areas?: WaypointOptimizationAvoidanceArea[];
   CarShuttleTrains?: boolean;
@@ -2119,18 +2840,32 @@ export interface WaypointOptimizationAvoidanceOptions {
   Tunnels?: boolean;
   UTurns?: boolean;
 }
+const WaypointOptimizationAvoidanceOptions = /*@__PURE__*/ __L.at(
+  __c27,
+  2,
+) as any as S.Schema<WaypointOptimizationAvoidanceOptions>;
 export type WaypointOptimizationClusteringAlgorithm =
   | "DrivingDistance"
   | "TopologySegment"
   | (string & {});
+const WaypointOptimizationClusteringAlgorithm = S.String;
+
 export type WaypointOptimizationDrivingDistance = number;
 export interface WaypointOptimizationDrivingDistanceOptions {
   DrivingDistance: number;
 }
+const WaypointOptimizationDrivingDistanceOptions = /*@__PURE__*/ __L.at(
+  __c27,
+  3,
+) as any as S.Schema<WaypointOptimizationDrivingDistanceOptions>;
 export interface WaypointOptimizationClusteringOptions {
   Algorithm: WaypointOptimizationClusteringAlgorithm;
   DrivingDistanceOptions?: WaypointOptimizationDrivingDistanceOptions;
 }
+const WaypointOptimizationClusteringOptions = /*@__PURE__*/ __L.at(
+  __c27,
+  4,
+) as any as S.Schema<WaypointOptimizationClusteringOptions>;
 export type DayOfWeek =
   | "Monday"
   | "Tuesday"
@@ -2140,20 +2875,32 @@ export type DayOfWeek =
   | "Saturday"
   | "Sunday"
   | (string & {});
+const DayOfWeek = S.String;
+
 export type TimeOfDay = string | redacted.Redacted<string>;
 export interface WaypointOptimizationAccessHoursEntry {
   DayOfWeek: DayOfWeek;
   TimeOfDay: string | redacted.Redacted<string>;
 }
+const WaypointOptimizationAccessHoursEntry = /*@__PURE__*/ __L.at(
+  __c27,
+  5,
+) as any as S.Schema<WaypointOptimizationAccessHoursEntry>;
 export interface WaypointOptimizationAccessHours {
   From: WaypointOptimizationAccessHoursEntry;
   To: WaypointOptimizationAccessHoursEntry;
 }
+const WaypointOptimizationAccessHours = /*@__PURE__*/ __L.at(
+  __c27,
+  6,
+) as any as S.Schema<WaypointOptimizationAccessHours>;
 export type WaypointId = string;
 export interface WaypointOptimizationSideOfStreetOptions {
   Position: number[];
   UseWith?: SideOfStreetMatchingStrategy;
 }
+const WaypointOptimizationSideOfStreetOptions =
+  IsolineSideOfStreetOptions as any as S.Schema<WaypointOptimizationSideOfStreetOptions>;
 export interface WaypointOptimizationDestinationOptions {
   AccessHours?: WaypointOptimizationAccessHours;
   AppointmentTime?: string | redacted.Redacted<string>;
@@ -2162,45 +2909,85 @@ export interface WaypointOptimizationDestinationOptions {
   ServiceDuration?: number;
   SideOfStreet?: WaypointOptimizationSideOfStreetOptions;
 }
+const WaypointOptimizationDestinationOptions = /*@__PURE__*/ __L.at(
+  __c27,
+  7,
+) as any as S.Schema<WaypointOptimizationDestinationOptions>;
 export interface WaypointOptimizationRestCycleDurations {
   RestDuration: number;
   WorkDuration: number;
 }
+const WaypointOptimizationRestCycleDurations = /*@__PURE__*/ __L.at(
+  __c28,
+  0,
+) as any as S.Schema<WaypointOptimizationRestCycleDurations>;
 export interface WaypointOptimizationRestCycles {
   LongCycle: WaypointOptimizationRestCycleDurations;
   ShortCycle: WaypointOptimizationRestCycleDurations;
 }
+const WaypointOptimizationRestCycles = /*@__PURE__*/ __L.at(
+  __c28,
+  1,
+) as any as S.Schema<WaypointOptimizationRestCycles>;
 export interface WaypointOptimizationRestProfile {
   Profile: string | redacted.Redacted<string>;
 }
+const WaypointOptimizationRestProfile = /*@__PURE__*/ __L.at(
+  __c28,
+  2,
+) as any as S.Schema<WaypointOptimizationRestProfile>;
 export type WaypointOptimizationServiceTimeTreatment = "Rest" | "Work" | (string & {});
+const WaypointOptimizationServiceTimeTreatment = S.String;
+
 export interface WaypointOptimizationDriverOptions {
   RestCycles?: WaypointOptimizationRestCycles;
   RestProfile?: WaypointOptimizationRestProfile;
   TreatServiceTimeAs?: WaypointOptimizationServiceTimeTreatment;
 }
+const WaypointOptimizationDriverOptions = /*@__PURE__*/ __L.at(
+  __c28,
+  3,
+) as any as S.Schema<WaypointOptimizationDriverOptions>;
 export interface WaypointOptimizationExclusionOptions {
   Countries: (string | redacted.Redacted<string>)[];
 }
+const WaypointOptimizationExclusionOptions =
+  RouteMatrixExclusionOptions as any as S.Schema<WaypointOptimizationExclusionOptions>;
 export type WaypointOptimizationSequencingObjective =
   | "FastestRoute"
   | "ShortestRoute"
   | (string & {});
+const WaypointOptimizationSequencingObjective = S.String;
+
 export interface WaypointOptimizationOriginOptions {
   Id?: string;
 }
+const WaypointOptimizationOriginOptions = /*@__PURE__*/ __L.at(
+  __c28,
+  4,
+) as any as S.Schema<WaypointOptimizationOriginOptions>;
 export interface WaypointOptimizationTrafficOptions {
   Usage?: TrafficUsage;
 }
+const WaypointOptimizationTrafficOptions = /*@__PURE__*/ __L.at(
+  __c28,
+  5,
+) as any as S.Schema<WaypointOptimizationTrafficOptions>;
 export type WaypointOptimizationTravelMode =
   | "Car"
   | "Pedestrian"
   | "Scooter"
   | "Truck"
   | (string & {});
+const WaypointOptimizationTravelMode = S.String;
+
 export interface WaypointOptimizationPedestrianOptions {
   Speed?: number;
 }
+const WaypointOptimizationPedestrianOptions = /*@__PURE__*/ __L.at(
+  __c28,
+  6,
+) as any as S.Schema<WaypointOptimizationPedestrianOptions>;
 export type WaypointOptimizationHazardousCargoType =
   | "Combustible"
   | "Corrosive"
@@ -2215,10 +3002,16 @@ export type WaypointOptimizationHazardousCargoType =
   | "Radioactive"
   | (string & {});
 export type WaypointOptimizationHazardousCargoTypeList = WaypointOptimizationHazardousCargoType[];
+const WaypointOptimizationHazardousCargoTypeList =
+  RouteMatrixHazardousCargoTypeList as any as S.Schema<WaypointOptimizationHazardousCargoTypeList>;
 export interface WaypointOptimizationTrailerOptions {
   TrailerCount?: number;
 }
+const WaypointOptimizationTrailerOptions =
+  RouteMatrixTrailerOptions as any as S.Schema<WaypointOptimizationTrailerOptions>;
 export type WaypointOptimizationTruckType = "StraightTruck" | "Tractor" | (string & {});
+const WaypointOptimizationTruckType = S.String;
+
 export interface WaypointOptimizationTruckOptions {
   GrossWeight?: number;
   HazardousCargos?: WaypointOptimizationHazardousCargoType[];
@@ -2230,12 +3023,21 @@ export interface WaypointOptimizationTruckOptions {
   WeightPerAxle?: number;
   Width?: number;
 }
+const WaypointOptimizationTruckOptions = /*@__PURE__*/ __L.at(
+  __c28,
+  7,
+) as any as S.Schema<WaypointOptimizationTruckOptions>;
 export interface WaypointOptimizationTravelModeOptions {
   Pedestrian?: WaypointOptimizationPedestrianOptions;
   Truck?: WaypointOptimizationTruckOptions;
 }
+const WaypointOptimizationTravelModeOptions = /*@__PURE__*/ __L.at(
+  __c29,
+  0,
+) as any as S.Schema<WaypointOptimizationTravelModeOptions>;
 export type WaypointIndex = number;
 export type BeforeWaypointsList = number[];
+const BeforeWaypointsList = BoundingBox as any as S.Schema<BeforeWaypointsList>;
 export interface WaypointOptimizationWaypoint {
   AccessHours?: WaypointOptimizationAccessHours;
   AppointmentTime?: string | redacted.Redacted<string>;
@@ -2246,7 +3048,12 @@ export interface WaypointOptimizationWaypoint {
   ServiceDuration?: number;
   SideOfStreet?: WaypointOptimizationSideOfStreetOptions;
 }
+const WaypointOptimizationWaypoint = /*@__PURE__*/ __L.at(
+  __c29,
+  1,
+) as any as S.Schema<WaypointOptimizationWaypoint>;
 export type WaypointOptimizationWaypointList = WaypointOptimizationWaypoint[];
+const WaypointOptimizationWaypointList = /*@__PURE__*/ __L.at(__c29, 2);
 export interface OptimizeWaypointsRequest {
   Avoid?: WaypointOptimizationAvoidanceOptions;
   Clustering?: WaypointOptimizationClusteringOptions;
@@ -2264,6 +3071,10 @@ export interface OptimizeWaypointsRequest {
   TravelModeOptions?: WaypointOptimizationTravelModeOptions;
   Waypoints?: WaypointOptimizationWaypoint[];
 }
+const OptimizeWaypointsRequest = /*@__PURE__*/ __L.at(
+  __c29,
+  3,
+) as any as S.Schema<OptimizeWaypointsRequest>;
 export interface WaypointOptimizationConnection {
   Distance: number;
   From: string;
@@ -2272,7 +3083,12 @@ export interface WaypointOptimizationConnection {
   TravelDuration: number;
   WaitDuration: number;
 }
+const WaypointOptimizationConnection = /*@__PURE__*/ __L.at(
+  __c29,
+  4,
+) as any as S.Schema<WaypointOptimizationConnection>;
 export type WaypointOptimizationConnectionList = WaypointOptimizationConnection[];
+const WaypointOptimizationConnectionList = /*@__PURE__*/ __L.at(__c29, 5);
 export type WaypointOptimizationConstraint =
   | "AccessHours"
   | "AppointmentTime"
@@ -2281,17 +3097,29 @@ export type WaypointOptimizationConstraint =
   | "ServiceDuration"
   | "SideOfStreet"
   | (string & {});
+const WaypointOptimizationConstraint = S.String;
+
 export interface WaypointOptimizationFailedConstraint {
   Constraint?: WaypointOptimizationConstraint;
   Reason?: string | redacted.Redacted<string>;
 }
+const WaypointOptimizationFailedConstraint = /*@__PURE__*/ __L.at(
+  __c29,
+  6,
+) as any as S.Schema<WaypointOptimizationFailedConstraint>;
 export type WaypointOptimizationFailedConstraintList = WaypointOptimizationFailedConstraint[];
+const WaypointOptimizationFailedConstraintList = /*@__PURE__*/ __L.at(__c29, 7);
 export interface WaypointOptimizationImpedingWaypoint {
   FailedConstraints: WaypointOptimizationFailedConstraint[];
   Id: string;
   Position: number[];
 }
+const WaypointOptimizationImpedingWaypoint = /*@__PURE__*/ __L.at(
+  __c30,
+  0,
+) as any as S.Schema<WaypointOptimizationImpedingWaypoint>;
 export type WaypointOptimizationImpedingWaypointList = WaypointOptimizationImpedingWaypoint[];
+const WaypointOptimizationImpedingWaypointList = /*@__PURE__*/ __L.at(__c30, 1);
 export type ClusterIndex = number;
 export interface WaypointOptimizationOptimizedWaypoint {
   ArrivalTime?: string | redacted.Redacted<string>;
@@ -2300,13 +3128,22 @@ export interface WaypointOptimizationOptimizedWaypoint {
   Id: string;
   Position: number[];
 }
+const WaypointOptimizationOptimizedWaypoint = /*@__PURE__*/ __L.at(
+  __c30,
+  2,
+) as any as S.Schema<WaypointOptimizationOptimizedWaypoint>;
 export type WaypointOptimizationOptimizedWaypointList = WaypointOptimizationOptimizedWaypoint[];
+const WaypointOptimizationOptimizedWaypointList = /*@__PURE__*/ __L.at(__c30, 3);
 export interface WaypointOptimizationTimeBreakdown {
   RestDuration: number;
   ServiceDuration: number;
   TravelDuration: number;
   WaitDuration: number;
 }
+const WaypointOptimizationTimeBreakdown = /*@__PURE__*/ __L.at(
+  __c30,
+  4,
+) as any as S.Schema<WaypointOptimizationTimeBreakdown>;
 export interface OptimizeWaypointsResponse {
   Connections: WaypointOptimizationConnection[];
   Distance: number;
@@ -2316,14 +3153,22 @@ export interface OptimizeWaypointsResponse {
   PricingBucket: string;
   TimeBreakdown: WaypointOptimizationTimeBreakdown;
 }
+const OptimizeWaypointsResponse = /*@__PURE__*/ __L.at(
+  __c30,
+  5,
+) as any as S.Schema<OptimizeWaypointsResponse>;
 export interface RoadSnapTracePoint {
   Heading?: number;
   Position: number[];
   Speed?: number;
   Timestamp?: string | redacted.Redacted<string>;
 }
+const RoadSnapTracePoint = /*@__PURE__*/ __L.at(__c30, 6) as any as S.Schema<RoadSnapTracePoint>;
 export type RoadSnapTracePointList = RoadSnapTracePoint[];
+const RoadSnapTracePointList = /*@__PURE__*/ __L.at(__c30, 7);
 export type RoadSnapTravelMode = "Car" | "Pedestrian" | "Scooter" | "Truck" | (string & {});
+const RoadSnapTravelMode = S.String;
+
 export type RoadSnapHazardousCargoType =
   | "Combustible"
   | "Corrosive"
@@ -2338,9 +3183,15 @@ export type RoadSnapHazardousCargoType =
   | "Radioactive"
   | (string & {});
 export type RoadSnapHazardousCargoTypeList = RoadSnapHazardousCargoType[];
+const RoadSnapHazardousCargoTypeList =
+  IsolineHazardousCargoTypeList as any as S.Schema<RoadSnapHazardousCargoTypeList>;
 export interface RoadSnapTrailerOptions {
   TrailerCount?: number;
 }
+const RoadSnapTrailerOptions = /*@__PURE__*/ __L.at(
+  __c31,
+  0,
+) as any as S.Schema<RoadSnapTrailerOptions>;
 export interface RoadSnapTruckOptions {
   GrossWeight?: number;
   HazardousCargos?: RoadSnapHazardousCargoType[];
@@ -2350,9 +3201,17 @@ export interface RoadSnapTruckOptions {
   TunnelRestrictionCode?: string | redacted.Redacted<string>;
   Width?: number;
 }
+const RoadSnapTruckOptions = /*@__PURE__*/ __L.at(
+  __c31,
+  1,
+) as any as S.Schema<RoadSnapTruckOptions>;
 export interface RoadSnapTravelModeOptions {
   Truck?: RoadSnapTruckOptions;
 }
+const RoadSnapTravelModeOptions = /*@__PURE__*/ __L.at(
+  __c31,
+  2,
+) as any as S.Schema<RoadSnapTravelModeOptions>;
 export interface SnapToRoadsRequest {
   Key?: string | redacted.Redacted<string>;
   SnappedGeometryFormat?: GeometryFormat;
@@ -2361,6 +3220,7 @@ export interface SnapToRoadsRequest {
   TravelMode?: RoadSnapTravelMode;
   TravelModeOptions?: RoadSnapTravelModeOptions;
 }
+const SnapToRoadsRequest = /*@__PURE__*/ __L.at(__c31, 3) as any as S.Schema<SnapToRoadsRequest>;
 export type RoadSnapNoticeCode =
   | "TracePointsHeadingIgnored"
   | "TracePointsIgnored"
@@ -2370,23 +3230,34 @@ export type RoadSnapNoticeCode =
   | "TracePointsSpeedEstimated"
   | "TracePointsSpeedIgnored"
   | (string & {});
+const RoadSnapNoticeCode = S.String;
+
 export type RoadSnapTracePointIndexList = number[];
+const RoadSnapTracePointIndexList = BoundingBox as any as S.Schema<RoadSnapTracePointIndexList>;
 export interface RoadSnapNotice {
   Code: RoadSnapNoticeCode;
   Title: string | redacted.Redacted<string>;
   TracePointIndexes: number[];
 }
+const RoadSnapNotice = /*@__PURE__*/ __L.at(__c31, 4) as any as S.Schema<RoadSnapNotice>;
 export type RoadSnapNoticeList = RoadSnapNotice[];
+const RoadSnapNoticeList = /*@__PURE__*/ __L.at(__c31, 5);
 export interface RoadSnapSnappedGeometry {
   LineString?: number[][];
   Polyline?: string | redacted.Redacted<string>;
 }
+const RoadSnapSnappedGeometry = RouteLegGeometry as any as S.Schema<RoadSnapSnappedGeometry>;
 export interface RoadSnapSnappedTracePoint {
   Confidence: number;
   OriginalPosition: number[];
   SnappedPosition: number[];
 }
+const RoadSnapSnappedTracePoint = /*@__PURE__*/ __L.at(
+  __c31,
+  6,
+) as any as S.Schema<RoadSnapSnappedTracePoint>;
 export type RoadSnapSnappedTracePointList = RoadSnapSnappedTracePoint[];
+const RoadSnapSnappedTracePointList = /*@__PURE__*/ __L.at(__c31, 7);
 export interface SnapToRoadsResponse {
   Notices: RoadSnapNotice[];
   PricingBucket: string;
@@ -2394,6 +3265,7 @@ export interface SnapToRoadsResponse {
   SnappedGeometryFormat: GeometryFormat;
   SnappedTracePoints: RoadSnapSnappedTracePoint[];
 }
+const SnapToRoadsResponse = /*@__PURE__*/ __L.at(__c32, 0) as any as S.Schema<SnapToRoadsResponse>;
 export type ValidationExceptionReason =
   | "UnknownOperation"
   | "Missing"
@@ -2402,11 +3274,18 @@ export type ValidationExceptionReason =
   | "Other"
   | "UnknownField"
   | (string & {});
+const ValidationExceptionReason = S.String;
+
 export interface ValidationExceptionField {
   Name: string;
   Message: string;
 }
+const ValidationExceptionField = /*@__PURE__*/ __L.at(
+  __c32,
+  1,
+) as any as S.Schema<ValidationExceptionField>;
 export type ValidationExceptionFieldList = ValidationExceptionField[];
+const ValidationExceptionFieldList = /*@__PURE__*/ __L.at(__c32, 2);
 export type CalculateIsolinesError =
   | AccessDeniedException
   | InternalServerException
@@ -2434,8 +3313,8 @@ export const calculateIsolines: API.OperationMethod<
   CalculateIsolinesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28) as any as S.Schema<CalculateIsolinesRequest>,
-  output: __S(36) as any as S.Schema<CalculateIsolinesResponse>,
+  input: CalculateIsolinesRequest,
+  output: CalculateIsolinesResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2464,8 +3343,8 @@ export const calculateRouteMatrix: API.OperationMethod<
   CalculateRouteMatrixError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(61) as any as S.Schema<CalculateRouteMatrixRequest>,
-  output: __S(65) as any as S.Schema<CalculateRouteMatrixResponse>,
+  input: CalculateRouteMatrixRequest,
+  output: CalculateRouteMatrixResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2494,8 +3373,8 @@ export const calculateRoutes: API.OperationMethod<
   CalculateRoutesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(94) as any as S.Schema<CalculateRoutesRequest>,
-  output: __S(214) as any as S.Schema<CalculateRoutesResponse>,
+  input: CalculateRoutesRequest,
+  output: CalculateRoutesResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2524,8 +3403,8 @@ export const optimizeWaypoints: API.OperationMethod<
   OptimizeWaypointsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(235) as any as S.Schema<OptimizeWaypointsRequest>,
-  output: __S(245) as any as S.Schema<OptimizeWaypointsResponse>,
+  input: OptimizeWaypointsRequest,
+  output: OptimizeWaypointsResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2554,8 +3433,8 @@ export const snapToRoads: API.OperationMethod<
   SnapToRoadsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(251) as any as S.Schema<SnapToRoadsRequest>,
-  output: __S(256) as any as S.Schema<SnapToRoadsResponse>,
+  input: SnapToRoadsRequest,
+  output: SnapToRoadsResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2577,13 +3456,13 @@ function __c0(j: number): any {
     case 1:
       return S.Array(S.Number);
     case 2:
-      return S.Array(__S(1));
+      return S.Array(Position);
     case 3:
-      return S.suspend(() => S.Struct({ LineString: __S(2), Radius: S.Number })).annotate({
+      return S.suspend(() => S.Struct({ LineString: LineString, Radius: S.Number })).annotate({
         identifier: "Corridor",
       });
     case 4:
-      return S.Array(__S(2));
+      return S.Array(LinearRing);
     case 5:
       return S.suspend(() => S.Struct({ Polyline: SensitiveString, Radius: S.Number })).annotate({
         identifier: "PolylineCorridor",
@@ -2593,11 +3472,11 @@ function __c0(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          BoundingBox: S.optional(__S(1)),
-          Corridor: S.optional(__S(3)),
-          Polygon: S.optional(__S(4)),
-          PolylineCorridor: S.optional(__S(5)),
-          PolylinePolygon: S.optional(__S(6)),
+          BoundingBox: S.optional(BoundingBox),
+          Corridor: S.optional(Corridor),
+          Polygon: S.optional(LinearRings),
+          PolylineCorridor: S.optional(PolylineCorridor),
+          PolylinePolygon: S.optional(PolylineRingList),
         }),
       ).annotate({
         identifier: "IsolineAvoidanceAreaGeometry",
@@ -2607,26 +3486,26 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(7));
+      return S.Array(IsolineAvoidanceAreaGeometry);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          Except: S.optional(__S(8)),
-          Geometry: __S(7),
+          Except: S.optional(IsolineAvoidanceAreaGeometryList),
+          Geometry: IsolineAvoidanceAreaGeometry,
         }),
       ).annotate({ identifier: "IsolineAvoidanceArea" });
     case 2:
-      return S.Array(__S(9));
+      return S.Array(IsolineAvoidanceArea);
     case 3:
-      return S.suspend(() => S.Struct({ Category: S.optional(S.String) })).annotate({
+      return S.suspend(() => S.Struct({ Category: S.optional(IsolineZoneCategory) })).annotate({
         identifier: "IsolineAvoidanceZoneCategory",
       });
     case 4:
-      return S.Array(__S(11));
+      return S.Array(IsolineAvoidanceZoneCategory);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          Areas: S.optional(__S(10)),
+          Areas: S.optional(IsolineAvoidanceAreaList),
           CarShuttleTrains: S.optional(S.Boolean),
           ControlledAccessHighways: S.optional(S.Boolean),
           DirtRoads: S.optional(S.Boolean),
@@ -2634,10 +3513,10 @@ function __c1(j: number): any {
           SeasonalClosure: S.optional(S.Boolean),
           TollRoads: S.optional(S.Boolean),
           TollTransponders: S.optional(S.Boolean),
-          TruckRoadTypes: S.optional(__S(6)),
+          TruckRoadTypes: S.optional(TruckRoadTypeList),
           Tunnels: S.optional(S.Boolean),
           UTurns: S.optional(S.Boolean),
-          ZoneCategories: S.optional(__S(12)),
+          ZoneCategories: S.optional(IsolineAvoidanceZoneCategoryList),
         }),
       ).annotate({ identifier: "IsolineAvoidanceOptions" });
     case 6:
@@ -2646,12 +3525,12 @@ function __c1(j: number): any {
           NameHint: S.optional(SensitiveString),
           OnRoadThreshold: S.optional(S.Number),
           Radius: S.optional(S.Number),
-          Strategy: S.optional(S.String),
+          Strategy: S.optional(MatchingStrategy),
         }),
       ).annotate({ identifier: "IsolineMatchingOptions" });
     case 7:
       return S.suspend(() =>
-        S.Struct({ Position: __S(1), UseWith: S.optional(S.String) }),
+        S.Struct({ Position: Position, UseWith: S.optional(SideOfStreetMatchingStrategy) }),
       ).annotate({
         identifier: "IsolineSideOfStreetOptions",
       });
@@ -2664,8 +3543,8 @@ function __c2(j: number): any {
         S.Struct({
           AvoidActionsForDistance: S.optional(S.Number),
           Heading: S.optional(S.Number),
-          Matching: S.optional(__S(14)),
-          SideOfStreet: S.optional(__S(15)),
+          Matching: S.optional(IsolineMatchingOptions),
+          SideOfStreet: S.optional(IsolineSideOfStreetOptions),
         }),
       ).annotate({
         identifier: "IsolineDestinationOptions",
@@ -2681,22 +3560,22 @@ function __c2(j: number): any {
         S.Struct({
           AvoidActionsForDistance: S.optional(S.Number),
           Heading: S.optional(S.Number),
-          Matching: S.optional(__S(14)),
-          SideOfStreet: S.optional(__S(15)),
+          Matching: S.optional(IsolineMatchingOptions),
+          SideOfStreet: S.optional(IsolineSideOfStreetOptions),
         }),
       ).annotate({ identifier: "IsolineOriginOptions" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          Distance: S.optional(__S(1)),
-          Time: S.optional(__S(1)),
+          Distance: S.optional(DistanceThresholdList),
+          Time: S.optional(TimeThresholdList),
         }),
       ).annotate({ identifier: "IsolineThresholds" });
     case 4:
       return S.suspend(() =>
         S.Struct({
           FlowEventThresholdOverride: S.optional(S.Number),
-          Usage: S.optional(S.String),
+          Usage: S.optional(TrafficUsage),
         }),
       ).annotate({ identifier: "IsolineTrafficOptions" });
     case 5:
@@ -2706,14 +3585,14 @@ function __c2(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          EngineType: S.optional(S.String),
-          LicensePlate: S.optional(__S(21)),
+          EngineType: S.optional(IsolineEngineType),
+          LicensePlate: S.optional(IsolineVehicleLicensePlate),
           MaxSpeed: S.optional(S.Number),
           Occupancy: S.optional(S.Number),
         }),
       ).annotate({ identifier: "IsolineCarOptions" });
     case 7:
-      return S.Array(S.String);
+      return S.Array(IsolineHazardousCargoType);
   }
 }
 function __c3(j: number): any {
@@ -2736,62 +3615,62 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           AxleCount: S.optional(S.Number),
-          EngineType: S.optional(S.String),
+          EngineType: S.optional(IsolineEngineType),
           GrossWeight: S.optional(S.Number),
-          HazardousCargos: S.optional(__S(23)),
+          HazardousCargos: S.optional(IsolineHazardousCargoTypeList),
           Height: S.optional(S.Number),
           HeightAboveFirstAxle: S.optional(S.Number),
           KpraLength: S.optional(S.Number),
           Length: S.optional(S.Number),
-          LicensePlate: S.optional(__S(21)),
+          LicensePlate: S.optional(IsolineVehicleLicensePlate),
           MaxSpeed: S.optional(S.Number),
           Occupancy: S.optional(S.Number),
           PayloadCapacity: S.optional(S.Number),
           TireCount: S.optional(S.Number),
-          Trailer: S.optional(__S(24)),
-          TruckType: S.optional(S.String),
+          Trailer: S.optional(IsolineTrailerOptions),
+          TruckType: S.optional(IsolineTruckType),
           TunnelRestrictionCode: S.optional(SensitiveString),
           WeightPerAxle: S.optional(S.Number),
-          WeightPerAxleGroup: S.optional(__S(25)),
+          WeightPerAxleGroup: S.optional(WeightPerAxleGroup),
           Width: S.optional(S.Number),
         }),
       ).annotate({ identifier: "IsolineTruckOptions" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          Car: S.optional(__S(22)),
-          Scooter: S.optional(__S(22)),
-          Truck: S.optional(__S(26)),
+          Car: S.optional(IsolineCarOptions),
+          Scooter: S.optional(IsolineScooterOptions),
+          Truck: S.optional(IsolineTruckOptions),
         }),
       ).annotate({ identifier: "IsolineTravelModeOptions" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          Allow: S.optional(__S(0)),
+          Allow: S.optional(IsolineAllowOptions),
           ArrivalTime: S.optional(SensitiveString),
-          Avoid: S.optional(__S(13)),
+          Avoid: S.optional(IsolineAvoidanceOptions),
           DepartNow: S.optional(S.Boolean),
           DepartureTime: S.optional(SensitiveString),
-          Destination: S.optional(__S(1)),
-          DestinationOptions: S.optional(__S(16)),
-          IsolineGeometryFormat: S.optional(S.String),
-          IsolineGranularity: S.optional(__S(17)),
+          Destination: S.optional(Position),
+          DestinationOptions: S.optional(IsolineDestinationOptions),
+          IsolineGeometryFormat: S.optional(GeometryFormat),
+          IsolineGranularity: S.optional(IsolineGranularityOptions),
           Key: S.optional(SensitiveString).pipe(T.HttpQuery("key")),
-          OptimizeIsolineFor: S.optional(S.String),
-          OptimizeRoutingFor: S.optional(S.String),
-          Origin: S.optional(__S(1)),
-          OriginOptions: S.optional(__S(18)),
-          Thresholds: __S(19),
-          Traffic: S.optional(__S(20)),
-          TravelMode: S.optional(S.String),
-          TravelModeOptions: S.optional(__S(27)),
+          OptimizeIsolineFor: S.optional(IsolineOptimizationObjective),
+          OptimizeRoutingFor: S.optional(RoutingObjective),
+          Origin: S.optional(Position),
+          OriginOptions: S.optional(IsolineOriginOptions),
+          Thresholds: IsolineThresholds,
+          Traffic: S.optional(IsolineTrafficOptions),
+          TravelMode: S.optional(IsolineTravelMode),
+          TravelModeOptions: S.optional(IsolineTravelModeOptions),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/v2/isolines" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "CalculateIsolinesRequest" });
     case 5:
       return S.suspend(() =>
-        S.Struct({ LineString: S.optional(__S(2)), Polyline: S.optional(SensitiveString) }),
+        S.Struct({ LineString: S.optional(LineString), Polyline: S.optional(SensitiveString) }),
       ).annotate({
         identifier: "IsolineConnectionGeometry",
       });
@@ -2799,12 +3678,12 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           FromPolygonIndex: S.Number,
-          Geometry: __S(29),
+          Geometry: IsolineConnectionGeometry,
           ToPolygonIndex: S.Number,
         }),
       ).annotate({ identifier: "IsolineConnection" });
     case 7:
-      return S.Array(__S(30));
+      return S.Array(IsolineConnection);
   }
 }
 function __c4(j: number): any {
@@ -2812,33 +3691,33 @@ function __c4(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          Polygon: S.optional(__S(4)),
-          PolylinePolygon: S.optional(__S(6)),
+          Polygon: S.optional(LinearRings),
+          PolylinePolygon: S.optional(PolylineRingList),
         }),
       ).annotate({ identifier: "IsolineShapeGeometry" });
     case 1:
-      return S.Array(__S(32));
+      return S.Array(IsolineShapeGeometry);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          Connections: __S(31),
+          Connections: IsolineConnectionList,
           DistanceThreshold: S.optional(S.Number),
-          Geometries: __S(33),
+          Geometries: IsolineShapeGeometryList,
           TimeThreshold: S.optional(S.Number),
         }),
       ).annotate({ identifier: "Isoline" });
     case 3:
-      return S.Array(__S(34));
+      return S.Array(Isoline);
     case 4:
       return S.suspend(() =>
         S.Struct({
           ArrivalTime: S.optional(SensitiveString),
           DepartureTime: S.optional(SensitiveString),
-          IsolineGeometryFormat: S.String,
-          Isolines: __S(35),
+          IsolineGeometryFormat: GeometryFormat,
+          Isolines: IsolineList,
           PricingBucket: S.String.pipe(T.HttpHeader("x-amz-geo-pricing-bucket")),
-          SnappedDestination: S.optional(__S(1)),
-          SnappedOrigin: S.optional(__S(1)),
+          SnappedDestination: S.optional(Position),
+          SnappedOrigin: S.optional(Position),
         }),
       ).annotate({
         identifier: "CalculateIsolinesResponse",
@@ -2846,39 +3725,39 @@ function __c4(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          BoundingBox: S.optional(__S(1)),
-          Polygon: S.optional(__S(4)),
-          PolylinePolygon: S.optional(__S(6)),
+          BoundingBox: S.optional(BoundingBox),
+          Polygon: S.optional(LinearRings),
+          PolylinePolygon: S.optional(PolylineRingList),
         }),
       ).annotate({
         identifier: "RouteMatrixAvoidanceAreaGeometry",
       });
     case 6:
-      return S.suspend(() => S.Struct({ Geometry: __S(37) })).annotate({
+      return S.suspend(() => S.Struct({ Geometry: RouteMatrixAvoidanceAreaGeometry })).annotate({
         identifier: "RouteMatrixAvoidanceArea",
       });
     case 7:
-      return S.Array(__S(38));
+      return S.Array(RouteMatrixAvoidanceArea);
   }
 }
 function __c5(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(11));
+      return S.Array(RouteMatrixAvoidanceZoneCategory);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          Areas: S.optional(__S(39)),
+          Areas: S.optional(RouteMatrixAvoidanceAreaList),
           CarShuttleTrains: S.optional(S.Boolean),
           ControlledAccessHighways: S.optional(S.Boolean),
           DirtRoads: S.optional(S.Boolean),
           Ferries: S.optional(S.Boolean),
           TollRoads: S.optional(S.Boolean),
           TollTransponders: S.optional(S.Boolean),
-          TruckRoadTypes: S.optional(__S(6)),
+          TruckRoadTypes: S.optional(TruckRoadTypeList),
           Tunnels: S.optional(S.Boolean),
           UTurns: S.optional(S.Boolean),
-          ZoneCategories: S.optional(__S(40)),
+          ZoneCategories: S.optional(RouteMatrixAvoidanceZoneCategoryList),
         }),
       ).annotate({
         identifier: "RouteMatrixAvoidanceOptions",
@@ -2889,7 +3768,7 @@ function __c5(j: number): any {
           NameHint: S.optional(SensitiveString),
           OnRoadThreshold: S.optional(S.Number),
           Radius: S.optional(S.Number),
-          Strategy: S.optional(S.String),
+          Strategy: S.optional(MatchingStrategy),
         }),
       ).annotate({
         identifier: "RouteMatrixMatchingOptions",
@@ -2899,20 +3778,20 @@ function __c5(j: number): any {
         S.Struct({
           AvoidActionsForDistance: S.optional(S.Number),
           Heading: S.optional(S.Number),
-          Matching: S.optional(__S(42)),
-          SideOfStreet: S.optional(__S(15)),
+          Matching: S.optional(RouteMatrixMatchingOptions),
+          SideOfStreet: S.optional(RouteMatrixSideOfStreetOptions),
         }),
       ).annotate({
         identifier: "RouteMatrixDestinationOptions",
       });
     case 4:
-      return S.suspend(() => S.Struct({ Options: S.optional(__S(43)), Position: __S(1) })).annotate(
-        { identifier: "RouteMatrixDestination" },
-      );
+      return S.suspend(() =>
+        S.Struct({ Options: S.optional(RouteMatrixDestinationOptions), Position: Position }),
+      ).annotate({ identifier: "RouteMatrixDestination" });
     case 5:
-      return S.Array(__S(44));
+      return S.Array(RouteMatrixDestination);
     case 6:
-      return S.suspend(() => S.Struct({ Countries: __S(6) })).annotate({
+      return S.suspend(() => S.Struct({ Countries: CountryCodeList })).annotate({
         identifier: "RouteMatrixExclusionOptions",
       });
     case 7:
@@ -2920,8 +3799,8 @@ function __c5(j: number): any {
         S.Struct({
           AvoidActionsForDistance: S.optional(S.Number),
           Heading: S.optional(S.Number),
-          Matching: S.optional(__S(42)),
-          SideOfStreet: S.optional(__S(15)),
+          Matching: S.optional(RouteMatrixMatchingOptions),
+          SideOfStreet: S.optional(RouteMatrixSideOfStreetOptions),
         }),
       ).annotate({ identifier: "RouteMatrixOriginOptions" });
   }
@@ -2929,26 +3808,26 @@ function __c5(j: number): any {
 function __c6(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ Options: S.optional(__S(47)), Position: __S(1) })).annotate(
-        { identifier: "RouteMatrixOrigin" },
-      );
+      return S.suspend(() =>
+        S.Struct({ Options: S.optional(RouteMatrixOriginOptions), Position: Position }),
+      ).annotate({ identifier: "RouteMatrixOrigin" });
     case 1:
-      return S.Array(__S(48));
+      return S.Array(RouteMatrixOrigin);
     case 2:
       return S.suspend(() =>
         S.Struct({ Margin: S.optional(S.Number), MaxRadius: S.optional(S.Number) }),
       ).annotate({ identifier: "RouteMatrixAutoCircle" });
     case 3:
-      return S.suspend(() => S.Struct({ Center: __S(1), Radius: S.Number })).annotate({
+      return S.suspend(() => S.Struct({ Center: Position, Radius: S.Number })).annotate({
         identifier: "Circle",
       });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          AutoCircle: S.optional(__S(50)),
-          Circle: S.optional(__S(51)),
-          BoundingBox: S.optional(__S(1)),
-          Polygon: S.optional(__S(4)),
+          AutoCircle: S.optional(RouteMatrixAutoCircle),
+          Circle: S.optional(Circle),
+          BoundingBox: S.optional(BoundingBox),
+          Polygon: S.optional(LinearRings),
         }),
       ).annotate({
         identifier: "RouteMatrixBoundaryGeometry",
@@ -2956,7 +3835,7 @@ function __c6(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          Geometry: S.optional(__S(52)),
+          Geometry: S.optional(RouteMatrixBoundaryGeometry),
           Unbounded: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "RouteMatrixBoundary" });
@@ -2964,7 +3843,7 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           FlowEventThresholdOverride: S.optional(S.Number),
-          Usage: S.optional(S.String),
+          Usage: S.optional(TrafficUsage),
         }),
       ).annotate({
         identifier: "RouteMatrixTrafficOptions",
@@ -2972,7 +3851,7 @@ function __c6(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          LicensePlate: S.optional(__S(21)),
+          LicensePlate: S.optional(RouteMatrixVehicleLicensePlate),
           MaxSpeed: S.optional(S.Number),
           Occupancy: S.optional(S.Number),
         }),
@@ -2984,7 +3863,7 @@ function __c7(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          LicensePlate: S.optional(__S(21)),
+          LicensePlate: S.optional(RouteMatrixVehicleLicensePlate),
           MaxSpeed: S.optional(S.Number),
           Occupancy: S.optional(S.Number),
         }),
@@ -2992,7 +3871,7 @@ function __c7(j: number): any {
         identifier: "RouteMatrixScooterOptions",
       });
     case 1:
-      return S.Array(S.String);
+      return S.Array(RouteMatrixHazardousCargoType);
     case 2:
       return S.suspend(() => S.Struct({ TrailerCount: S.optional(S.Number) })).annotate({
         identifier: "RouteMatrixTrailerOptions",
@@ -3002,28 +3881,28 @@ function __c7(j: number): any {
         S.Struct({
           AxleCount: S.optional(S.Number),
           GrossWeight: S.optional(S.Number),
-          HazardousCargos: S.optional(__S(57)),
+          HazardousCargos: S.optional(RouteMatrixHazardousCargoTypeList),
           Height: S.optional(S.Number),
           KpraLength: S.optional(S.Number),
           Length: S.optional(S.Number),
-          LicensePlate: S.optional(__S(21)),
+          LicensePlate: S.optional(RouteMatrixVehicleLicensePlate),
           MaxSpeed: S.optional(S.Number),
           Occupancy: S.optional(S.Number),
           PayloadCapacity: S.optional(S.Number),
-          Trailer: S.optional(__S(58)),
-          TruckType: S.optional(S.String),
+          Trailer: S.optional(RouteMatrixTrailerOptions),
+          TruckType: S.optional(RouteMatrixTruckType),
           TunnelRestrictionCode: S.optional(SensitiveString),
           WeightPerAxle: S.optional(S.Number),
-          WeightPerAxleGroup: S.optional(__S(25)),
+          WeightPerAxleGroup: S.optional(WeightPerAxleGroup),
           Width: S.optional(S.Number),
         }),
       ).annotate({ identifier: "RouteMatrixTruckOptions" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          Car: S.optional(__S(55)),
-          Scooter: S.optional(__S(56)),
-          Truck: S.optional(__S(59)),
+          Car: S.optional(RouteMatrixCarOptions),
+          Scooter: S.optional(RouteMatrixScooterOptions),
+          Truck: S.optional(RouteMatrixTruckOptions),
         }),
       ).annotate({
         identifier: "RouteMatrixTravelModeOptions",
@@ -3031,19 +3910,19 @@ function __c7(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          Allow: S.optional(__S(0)),
-          Avoid: S.optional(__S(41)),
+          Allow: S.optional(RouteMatrixAllowOptions),
+          Avoid: S.optional(RouteMatrixAvoidanceOptions),
           DepartNow: S.optional(S.Boolean),
           DepartureTime: S.optional(SensitiveString),
-          Destinations: __S(45),
-          Exclude: S.optional(__S(46)),
+          Destinations: RouteMatrixDestinationList,
+          Exclude: S.optional(RouteMatrixExclusionOptions),
           Key: S.optional(SensitiveString).pipe(T.HttpQuery("key")),
-          OptimizeRoutingFor: S.optional(S.String),
-          Origins: __S(49),
-          RoutingBoundary: S.optional(__S(53)),
-          Traffic: S.optional(__S(54)),
-          TravelMode: S.optional(S.String),
-          TravelModeOptions: S.optional(__S(60)),
+          OptimizeRoutingFor: S.optional(RoutingObjective),
+          Origins: RouteMatrixOriginList,
+          RoutingBoundary: S.optional(RouteMatrixBoundary),
+          Traffic: S.optional(RouteMatrixTrafficOptions),
+          TravelMode: S.optional(RouteMatrixTravelMode),
+          TravelModeOptions: S.optional(RouteMatrixTravelModeOptions),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/v2/route-matrix" }), svc, auth, proto, ver, rules),
         ),
@@ -3055,24 +3934,24 @@ function __c7(j: number): any {
         S.Struct({
           Distance: S.Number,
           Duration: S.Number,
-          Error: S.optional(S.String),
+          Error: S.optional(RouteMatrixErrorCode),
         }),
       ).annotate({ identifier: "RouteMatrixEntry" });
     case 7:
-      return S.Array(__S(62));
+      return S.Array(RouteMatrixEntry);
   }
 }
 function __c8(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(63));
+      return S.Array(RouteMatrixRow);
     case 1:
       return S.suspend(() =>
         S.Struct({
           ErrorCount: S.Number,
           PricingBucket: S.String.pipe(T.HttpHeader("x-amz-geo-pricing-bucket")),
-          RouteMatrix: __S(64),
-          RoutingBoundary: __S(53),
+          RouteMatrix: RouteMatrix,
+          RoutingBoundary: RouteMatrixBoundary,
         }),
       ).annotate({
         identifier: "CalculateRouteMatrixResponse",
@@ -3080,32 +3959,32 @@ function __c8(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          Corridor: S.optional(__S(3)),
-          BoundingBox: S.optional(__S(1)),
-          Polygon: S.optional(__S(4)),
-          PolylineCorridor: S.optional(__S(5)),
-          PolylinePolygon: S.optional(__S(6)),
+          Corridor: S.optional(Corridor),
+          BoundingBox: S.optional(BoundingBox),
+          Polygon: S.optional(LinearRings),
+          PolylineCorridor: S.optional(PolylineCorridor),
+          PolylinePolygon: S.optional(PolylineRingList),
         }),
       ).annotate({
         identifier: "RouteAvoidanceAreaGeometry",
       });
     case 3:
-      return S.Array(__S(66));
+      return S.Array(RouteAvoidanceAreaGeometry);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          Except: S.optional(__S(67)),
-          Geometry: __S(66),
+          Except: S.optional(RouteAvoidanceAreaGeometryList),
+          Geometry: RouteAvoidanceAreaGeometry,
         }),
       ).annotate({ identifier: "RouteAvoidanceArea" });
     case 5:
-      return S.Array(__S(68));
+      return S.Array(RouteAvoidanceArea);
     case 6:
-      return S.suspend(() => S.Struct({ Category: S.String })).annotate({
+      return S.suspend(() => S.Struct({ Category: RouteZoneCategory })).annotate({
         identifier: "RouteAvoidanceZoneCategory",
       });
     case 7:
-      return S.Array(__S(70));
+      return S.Array(RouteAvoidanceZoneCategory);
   }
 }
 function __c9(j: number): any {
@@ -3113,7 +3992,7 @@ function __c9(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          Areas: S.optional(__S(69)),
+          Areas: S.optional(RouteAvoidanceAreaList),
           CarShuttleTrains: S.optional(S.Boolean),
           ControlledAccessHighways: S.optional(S.Boolean),
           DirtRoads: S.optional(S.Boolean),
@@ -3121,15 +4000,15 @@ function __c9(j: number): any {
           SeasonalClosure: S.optional(S.Boolean),
           TollRoads: S.optional(S.Boolean),
           TollTransponders: S.optional(S.Boolean),
-          TruckRoadTypes: S.optional(__S(6)),
+          TruckRoadTypes: S.optional(TruckRoadTypeList),
           Tunnels: S.optional(S.Boolean),
           UTurns: S.optional(S.Boolean),
-          ZoneCategories: S.optional(__S(71)),
+          ZoneCategories: S.optional(RouteAvoidanceZoneCategoryList),
         }),
       ).annotate({ identifier: "RouteAvoidanceOptions" });
     case 1:
       return S.suspend(() =>
-        S.Struct({ Position: __S(1), UseWith: S.optional(S.String) }),
+        S.Struct({ Position: Position, UseWith: S.optional(SideOfStreetMatchingStrategy) }),
       ).annotate({ identifier: "RouteSideOfStreetOptions" });
     case 2:
       return S.suspend(() =>
@@ -3137,8 +4016,8 @@ function __c9(j: number): any {
           AvoidActionsForDistance: S.optional(S.Number),
           AvoidUTurns: S.optional(S.Boolean),
           Heading: S.optional(S.Number),
-          Matching: S.optional(__S(14)),
-          SideOfStreet: S.optional(__S(73)),
+          Matching: S.optional(RouteMatchingOptions),
+          SideOfStreet: S.optional(RouteSideOfStreetOptions),
           StopDuration: S.optional(S.Number),
         }),
       ).annotate({ identifier: "RouteDestinationOptions" });
@@ -3149,13 +4028,13 @@ function __c9(j: number): any {
         identifier: "RouteDriverScheduleInterval",
       });
     case 4:
-      return S.Array(__S(75));
+      return S.Array(RouteDriverScheduleInterval);
     case 5:
-      return S.suspend(() => S.Struct({ Schedule: S.optional(__S(76)) })).annotate({
-        identifier: "RouteDriverOptions",
-      });
+      return S.suspend(() =>
+        S.Struct({ Schedule: S.optional(RouteDriverScheduleIntervalList) }),
+      ).annotate({ identifier: "RouteDriverOptions" });
     case 6:
-      return S.suspend(() => S.Struct({ Countries: __S(6) })).annotate({
+      return S.suspend(() => S.Struct({ Countries: CountryCodeList })).annotate({
         identifier: "RouteExclusionOptions",
       });
     case 7:
@@ -3170,8 +4049,8 @@ function __c10(j: number): any {
           AvoidActionsForDistance: S.optional(S.Number),
           AvoidUTurns: S.optional(S.Boolean),
           Heading: S.optional(S.Number),
-          Matching: S.optional(__S(14)),
-          SideOfStreet: S.optional(__S(73)),
+          Matching: S.optional(RouteMatchingOptions),
+          SideOfStreet: S.optional(RouteSideOfStreetOptions),
         }),
       ).annotate({ identifier: "RouteOriginOptions" });
     case 1:
@@ -3184,8 +4063,8 @@ function __c10(j: number): any {
           AllTransponders: S.optional(S.Boolean),
           AllVignettes: S.optional(S.Boolean),
           Currency: S.optional(S.String),
-          EmissionType: S.optional(__S(81)),
-          VehicleCategory: S.optional(S.String),
+          EmissionType: S.optional(RouteEmissionType),
+          VehicleCategory: S.optional(RouteTollVehicleCategory),
         }),
       ).annotate({ identifier: "RouteTollOptions" });
     case 3:
@@ -3195,8 +4074,8 @@ function __c10(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          EngineType: S.optional(S.String),
-          LicensePlate: S.optional(__S(83)),
+          EngineType: S.optional(RouteEngineType),
+          LicensePlate: S.optional(RouteVehicleLicensePlate),
           MaxSpeed: S.optional(S.Number),
           Occupancy: S.optional(S.Number),
         }),
@@ -3209,23 +4088,23 @@ function __c10(j: number): any {
       return S.suspend(() =>
         S.Struct({
           AxleCount: S.optional(S.Number),
-          EngineType: S.optional(S.String),
+          EngineType: S.optional(RouteEngineType),
           GrossWeight: S.optional(S.Number),
-          HazardousCargos: S.optional(__S(23)),
+          HazardousCargos: S.optional(RouteHazardousCargoTypeList),
           Height: S.optional(S.Number),
           HeightAboveFirstAxle: S.optional(S.Number),
           KpraLength: S.optional(S.Number),
           Length: S.optional(S.Number),
-          LicensePlate: S.optional(__S(83)),
+          LicensePlate: S.optional(RouteVehicleLicensePlate),
           MaxSpeed: S.optional(S.Number),
           Occupancy: S.optional(S.Number),
           PayloadCapacity: S.optional(S.Number),
           TireCount: S.optional(S.Number),
-          Trailer: S.optional(__S(24)),
-          TruckType: S.optional(S.String),
+          Trailer: S.optional(RouteTrailerOptions),
+          TruckType: S.optional(RouteTruckType),
           TunnelRestrictionCode: S.optional(SensitiveString),
           WeightPerAxle: S.optional(S.Number),
-          WeightPerAxleGroup: S.optional(__S(25)),
+          WeightPerAxleGroup: S.optional(WeightPerAxleGroup),
           Width: S.optional(S.Number),
         }),
       ).annotate({ identifier: "RouteTruckOptions" });
@@ -3242,9 +4121,9 @@ function __c11(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          AllowedModes: S.optional(__S(23)),
-          EnabledFor: S.optional(__S(23)),
-          ExcludedModes: S.optional(__S(23)),
+          AllowedModes: S.optional(RouteRentalModeList),
+          EnabledFor: S.optional(RouteIntermodalEnabledLegsList),
+          ExcludedModes: S.optional(RouteRentalModeList),
         }),
       ).annotate({
         identifier: "RouteIntermodalRentalOptions",
@@ -3252,34 +4131,34 @@ function __c11(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          AccessibilityAttributes: S.optional(__S(23)),
+          AccessibilityAttributes: S.optional(RouteAccessibilityAttributeList),
           MaxTransfers: S.optional(S.Number),
-          Pedestrian: S.optional(__S(87)),
-          Rental: S.optional(__S(88)),
-          Taxi: S.optional(__S(88)),
-          Transit: S.optional(__S(88)),
-          Vehicle: S.optional(__S(88)),
+          Pedestrian: S.optional(RouteIntermodalPedestrianOptions),
+          Rental: S.optional(RouteIntermodalRentalOptions),
+          Taxi: S.optional(RouteIntermodalTaxiOptions),
+          Transit: S.optional(RouteIntermodalTransitOptions),
+          Vehicle: S.optional(RouteIntermodalVehicleOptions),
         }),
       ).annotate({ identifier: "RouteIntermodalOptions" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          AccessibilityAttributes: S.optional(__S(23)),
-          AllowedModes: S.optional(__S(23)),
-          ExcludedModes: S.optional(__S(23)),
+          AccessibilityAttributes: S.optional(RouteAccessibilityAttributeList),
+          AllowedModes: S.optional(RouteTransitModeList),
+          ExcludedModes: S.optional(RouteTransitModeList),
           MaxTransfers: S.optional(S.Number),
-          Pedestrian: S.optional(__S(87)),
+          Pedestrian: S.optional(RouteTransitPedestrianOptions),
         }),
       ).annotate({ identifier: "RouteTransitOptions" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          Car: S.optional(__S(84)),
-          Pedestrian: S.optional(__S(85)),
-          Scooter: S.optional(__S(84)),
-          Truck: S.optional(__S(86)),
-          Intermodal: S.optional(__S(89)),
-          Transit: S.optional(__S(90)),
+          Car: S.optional(RouteCarOptions),
+          Pedestrian: S.optional(RoutePedestrianOptions),
+          Scooter: S.optional(RouteScooterOptions),
+          Truck: S.optional(RouteTruckOptions),
+          Intermodal: S.optional(RouteIntermodalOptions),
+          Transit: S.optional(RouteTransitOptions),
         }),
       ).annotate({ identifier: "RouteTravelModeOptions" });
     case 4:
@@ -3288,94 +4167,94 @@ function __c11(j: number): any {
           AvoidActionsForDistance: S.optional(S.Number),
           AvoidUTurns: S.optional(S.Boolean),
           Heading: S.optional(S.Number),
-          Matching: S.optional(__S(14)),
+          Matching: S.optional(RouteMatchingOptions),
           PassThrough: S.optional(S.Boolean),
-          Position: __S(1),
-          SideOfStreet: S.optional(__S(73)),
+          Position: Position,
+          SideOfStreet: S.optional(RouteSideOfStreetOptions),
           StopDuration: S.optional(S.Number),
         }),
       ).annotate({ identifier: "RouteWaypoint" });
     case 5:
-      return S.Array(__S(92));
+      return S.Array(RouteWaypoint);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          Allow: S.optional(__S(0)),
+          Allow: S.optional(RouteAllowOptions),
           ArrivalTime: S.optional(SensitiveString),
-          Avoid: S.optional(__S(72)),
+          Avoid: S.optional(RouteAvoidanceOptions),
           DepartNow: S.optional(S.Boolean),
           DepartureTime: S.optional(SensitiveString),
-          Destination: __S(1),
-          DestinationOptions: S.optional(__S(74)),
-          Driver: S.optional(__S(77)),
-          Exclude: S.optional(__S(78)),
-          InstructionsMeasurementSystem: S.optional(S.String),
+          Destination: Position,
+          DestinationOptions: S.optional(RouteDestinationOptions),
+          Driver: S.optional(RouteDriverOptions),
+          Exclude: S.optional(RouteExclusionOptions),
+          InstructionsMeasurementSystem: S.optional(MeasurementSystem),
           Key: S.optional(SensitiveString).pipe(T.HttpQuery("key")),
-          Languages: S.optional(__S(79)),
-          LegAdditionalFeatures: S.optional(__S(23)),
-          LegGeometryFormat: S.optional(S.String),
+          Languages: S.optional(LanguageTagList),
+          LegAdditionalFeatures: S.optional(RouteLegAdditionalFeatureList),
+          LegGeometryFormat: S.optional(GeometryFormat),
           MaxAlternatives: S.optional(S.Number),
-          OptimizeRoutingFor: S.optional(S.String),
-          Origin: __S(1),
-          OriginOptions: S.optional(__S(80)),
-          SpanAdditionalFeatures: S.optional(__S(23)),
-          Tolls: S.optional(__S(82)),
-          Traffic: S.optional(__S(20)),
-          TravelMode: S.optional(S.String),
-          TravelModeOptions: S.optional(__S(91)),
-          TravelStepType: S.optional(S.String),
-          Waypoints: S.optional(__S(93)),
+          OptimizeRoutingFor: S.optional(RoutingObjective),
+          Origin: Position,
+          OriginOptions: S.optional(RouteOriginOptions),
+          SpanAdditionalFeatures: S.optional(RouteSpanAdditionalFeatureList),
+          Tolls: S.optional(RouteTollOptions),
+          Traffic: S.optional(RouteTrafficOptions),
+          TravelMode: S.optional(RouteTravelMode),
+          TravelModeOptions: S.optional(RouteTravelModeOptions),
+          TravelStepType: S.optional(RouteTravelStepType),
+          Waypoints: S.optional(RouteWaypointList),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/v2/routes" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CalculateRoutesRequest" });
     case 7:
-      return S.suspend(() => S.Struct({ Code: S.String, Impact: S.optional(S.String) })).annotate({
-        identifier: "RouteResponseNotice",
-      });
+      return S.suspend(() =>
+        S.Struct({ Code: RouteResponseNoticeCode, Impact: S.optional(RouteNoticeImpact) }),
+      ).annotate({ identifier: "RouteResponseNotice" });
   }
 }
 function __c12(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(95));
+      return S.Array(RouteResponseNotice);
     case 1:
       return S.suspend(() =>
         S.Struct({
           Duration: S.Number,
           Instruction: S.optional(SensitiveString),
-          Type: S.String,
+          Type: RouteFerryAfterTravelStepType,
         }),
       ).annotate({
         identifier: "RouteFerryAfterTravelStep",
       });
     case 2:
-      return S.Array(__S(97));
+      return S.Array(RouteFerryAfterTravelStep);
     case 3:
       return S.suspend(() =>
         S.Struct({
           Name: S.optional(SensitiveString),
-          OriginalPosition: S.optional(__S(1)),
-          Position: __S(1),
+          OriginalPosition: S.optional(Position23),
+          Position: Position23,
           WaypointIndex: S.optional(S.Number),
         }),
       ).annotate({ identifier: "RouteFerryPlace" });
     case 4:
       return S.suspend(() =>
-        S.Struct({ Place: __S(99), Time: S.optional(SensitiveString) }),
+        S.Struct({ Place: RouteFerryPlace, Time: S.optional(SensitiveString) }),
       ).annotate({ identifier: "RouteFerryArrival" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          OriginalPosition: S.optional(__S(1)),
-          Position: __S(1),
+          OriginalPosition: S.optional(Position23),
+          Position: Position23,
           WaypointIndex: S.optional(S.Number),
         }),
       ).annotate({ identifier: "RoutePassThroughPlace" });
     case 6:
       return S.suspend(() =>
-        S.Struct({ GeometryOffset: S.optional(S.Number), Place: __S(101) }),
+        S.Struct({ GeometryOffset: S.optional(S.Number), Place: RoutePassThroughPlace }),
       ).annotate({ identifier: "RoutePassThroughWaypoint" });
     case 7:
-      return S.Array(__S(102));
+      return S.Array(RoutePassThroughWaypoint);
   }
 }
 function __c13(j: number): any {
@@ -3385,7 +4264,7 @@ function __c13(j: number): any {
         S.Struct({ Language: S.optional(S.String), Value: SensitiveString }),
       ).annotate({ identifier: "LocalizedString" });
     case 1:
-      return S.Array(__S(104));
+      return S.Array(LocalizedString);
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -3393,12 +4272,12 @@ function __c13(j: number): any {
           Distance: S.optional(S.Number),
           Duration: S.optional(S.Number),
           GeometryOffset: S.optional(S.Number),
-          Names: S.optional(__S(105)),
+          Names: S.optional(LocalizedStringList),
           Region: S.optional(SensitiveString),
         }),
       ).annotate({ identifier: "RouteFerrySpan" });
     case 3:
-      return S.Array(__S(106));
+      return S.Array(RouteFerrySpan);
     case 4:
       return S.suspend(() => S.Struct({ Distance: S.Number, Duration: S.Number })).annotate({
         identifier: "RouteFerryOverviewSummary",
@@ -3410,8 +4289,8 @@ function __c13(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          Overview: S.optional(__S(108)),
-          TravelOnly: S.optional(__S(109)),
+          Overview: S.optional(RouteFerryOverviewSummary),
+          TravelOnly: S.optional(RouteFerryTravelOnlySummary),
         }),
       ).annotate({ identifier: "RouteFerrySummary" });
     case 7:
@@ -3421,7 +4300,7 @@ function __c13(j: number): any {
           Duration: S.Number,
           GeometryOffset: S.optional(S.Number),
           Instruction: S.optional(SensitiveString),
-          Type: S.String,
+          Type: RouteFerryTravelStepType,
         }),
       ).annotate({ identifier: "RouteFerryTravelStep" });
   }
@@ -3429,40 +4308,42 @@ function __c13(j: number): any {
 function __c14(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(111));
+      return S.Array(RouteFerryTravelStep);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          AfterTravelSteps: S.optional(__S(98)),
-          Arrival: __S(100),
-          BeforeTravelSteps: S.optional(__S(98)),
-          Departure: __S(100),
-          Notices: S.optional(__S(96)),
-          PassThroughWaypoints: S.optional(__S(103)),
+          AfterTravelSteps: S.optional(RouteFerryAfterTravelStepList),
+          Arrival: RouteFerryArrival,
+          BeforeTravelSteps: S.optional(RouteFerryBeforeTravelStepList),
+          Departure: RouteFerryDeparture,
+          Notices: S.optional(RouteFerryNoticeList),
+          PassThroughWaypoints: S.optional(RoutePassThroughWaypointList),
           RouteName: S.optional(SensitiveString),
-          Spans: S.optional(__S(107)),
-          Summary: S.optional(__S(110)),
-          TravelSteps: S.optional(__S(112)),
+          Spans: S.optional(RouteFerrySpanList),
+          Summary: S.optional(RouteFerrySummary),
+          TravelSteps: S.optional(RouteFerryTravelStepList),
         }),
       ).annotate({ identifier: "RouteFerryLegDetails" });
     case 2:
       return S.suspend(() =>
-        S.Struct({ LineString: S.optional(__S(2)), Polyline: S.optional(SensitiveString) }),
+        S.Struct({ LineString: S.optional(LineString), Polyline: S.optional(SensitiveString) }),
       ).annotate({ identifier: "RouteLegGeometry" });
     case 3:
-      return S.Array(__S(97));
+      return S.Array(RoutePedestrianAfterTravelStep);
     case 4:
-      return S.suspend(() => S.Struct({ Wheelchair: S.optional(S.String) })).annotate({
+      return S.suspend(() =>
+        S.Struct({ Wheelchair: S.optional(RouteAccessibilityAvailability) }),
+      ).annotate({
         identifier: "RouteAccessibilityAvailabilityDetails",
       });
     case 5:
-      return S.suspend(() => S.Struct({ Accessibility: S.optional(__S(116)) })).annotate({
-        identifier: "RouteAccessPointDetails",
-      });
+      return S.suspend(() =>
+        S.Struct({ Accessibility: S.optional(RouteAccessibilityAvailabilityDetails) }),
+      ).annotate({ identifier: "RouteAccessPointDetails" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          Accessibility: S.optional(__S(116)),
+          Accessibility: S.optional(RouteAccessibilityAvailabilityDetails),
           PlatformName: S.optional(SensitiveString),
           ShortName: S.optional(SensitiveString),
         }),
@@ -3470,13 +4351,13 @@ function __c14(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          AccessPointDetails: S.optional(__S(117)),
+          AccessPointDetails: S.optional(RouteAccessPointDetails),
           Name: S.optional(SensitiveString),
-          OriginalPosition: S.optional(__S(1)),
-          Position: __S(1),
-          SideOfStreet: S.optional(S.String),
-          StationDetails: S.optional(__S(118)),
-          Type: S.optional(S.String),
+          OriginalPosition: S.optional(Position23),
+          Position: Position23,
+          SideOfStreet: S.optional(RouteSideOfStreet),
+          StationDetails: S.optional(RouteStationDetails),
+          Type: S.optional(RoutePedestrianPlaceType),
           WaypointIndex: S.optional(S.Number),
         }),
       ).annotate({ identifier: "RoutePedestrianPlace" });
@@ -3486,7 +4367,7 @@ function __c15(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ Place: __S(119), Time: S.optional(SensitiveString) }),
+        S.Struct({ Place: RoutePedestrianPlace, Time: S.optional(SensitiveString) }),
       ).annotate({ identifier: "RoutePedestrianArrival" });
     case 1:
       return S.suspend(() =>
@@ -3501,13 +4382,13 @@ function __c15(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          Direction: S.optional(S.String),
+          Direction: S.optional(RouteDirection),
           Language: S.optional(S.String),
           Value: SensitiveString,
         }),
       ).annotate({ identifier: "RouteNumber" });
     case 3:
-      return S.Array(__S(122));
+      return S.Array(RouteNumber);
     case 4:
       return S.suspend(() =>
         S.Struct({ MaxSpeed: S.optional(S.Number), Unlimited: S.optional(S.Boolean) }),
@@ -3521,23 +4402,23 @@ function __c15(j: number): any {
           Country: S.optional(SensitiveString),
           Distance: S.optional(S.Number),
           Duration: S.optional(S.Number),
-          DynamicSpeed: S.optional(__S(121)),
+          DynamicSpeed: S.optional(RouteSpanDynamicSpeedDetails),
           FunctionalClassification: S.optional(S.Number),
           GeometryOffset: S.optional(S.Number),
-          Incidents: S.optional(__S(1)),
-          Names: S.optional(__S(105)),
-          PedestrianAccess: S.optional(__S(57)),
+          Incidents: S.optional(IndexList),
+          Names: S.optional(LocalizedStringList),
+          PedestrianAccess: S.optional(RouteSpanPedestrianAccessAttributeList),
           Region: S.optional(SensitiveString),
-          RoadAttributes: S.optional(__S(23)),
-          RouteNumbers: S.optional(__S(123)),
-          SpeedLimit: S.optional(__S(124)),
+          RoadAttributes: S.optional(RouteSpanRoadAttributeList),
+          RouteNumbers: S.optional(RouteNumberList),
+          SpeedLimit: S.optional(RouteSpanSpeedLimitDetails),
           TypicalDuration: S.optional(S.Number),
         }),
       ).annotate({ identifier: "RoutePedestrianSpan" });
     case 6:
-      return S.Array(__S(125));
+      return S.Array(RoutePedestrianSpan);
     case 7:
-      return S.suspend(() => S.Struct({ Intersection: __S(105) })).annotate({
+      return S.suspend(() => S.Struct({ Intersection: LocalizedStringList })).annotate({
         identifier: "RouteContinueStepDetails",
       });
   }
@@ -3547,28 +4428,28 @@ function __c16(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          RoadName: __S(105),
-          RouteNumber: __S(123),
-          Towards: __S(105),
-          Type: S.optional(S.String),
+          RoadName: LocalizedStringList,
+          RouteNumber: RouteNumberList,
+          Towards: LocalizedStringList,
+          Type: S.optional(RouteRoadType),
         }),
       ).annotate({ identifier: "RouteRoad" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          Intersection: __S(105),
-          SteeringDirection: S.optional(S.String),
+          Intersection: LocalizedStringList,
+          SteeringDirection: S.optional(RouteSteeringDirection),
           TurnAngle: S.optional(S.Number),
-          TurnIntensity: S.optional(S.String),
+          TurnIntensity: S.optional(RouteTurnIntensity),
         }),
       ).annotate({ identifier: "RouteKeepStepDetails" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          Intersection: __S(105),
-          SteeringDirection: S.optional(S.String),
+          Intersection: LocalizedStringList,
+          SteeringDirection: S.optional(RouteSteeringDirection),
           TurnAngle: S.optional(S.Number),
-          TurnIntensity: S.optional(S.String),
+          TurnIntensity: S.optional(RouteTurnIntensity),
         }),
       ).annotate({
         identifier: "RouteRoundaboutEnterStepDetails",
@@ -3576,42 +4457,42 @@ function __c16(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          Intersection: __S(105),
+          Intersection: LocalizedStringList,
           RelativeExit: S.optional(S.Number),
           RoundaboutAngle: S.optional(S.Number),
-          SteeringDirection: S.optional(S.String),
+          SteeringDirection: S.optional(RouteSteeringDirection),
         }),
       ).annotate({
         identifier: "RouteRoundaboutExitStepDetails",
       });
     case 4:
       return S.suspend(() =>
-        S.Struct({ RouteNumber: S.optional(__S(122)), Text: S.optional(__S(104)) }),
+        S.Struct({ RouteNumber: S.optional(RouteNumber), Text: S.optional(LocalizedString) }),
       ).annotate({ identifier: "RouteSignpostLabel" });
     case 5:
-      return S.Array(__S(132));
+      return S.Array(RouteSignpostLabel);
     case 6:
-      return S.suspend(() => S.Struct({ Labels: __S(133) })).annotate({
+      return S.suspend(() => S.Struct({ Labels: RouteSignpostLabelList })).annotate({
         identifier: "RouteSignpost",
       });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          ContinueStepDetails: S.optional(__S(127)),
-          CurrentRoad: S.optional(__S(128)),
+          ContinueStepDetails: S.optional(RouteContinueStepDetails),
+          CurrentRoad: S.optional(RouteRoad),
           Distance: S.optional(S.Number),
           Duration: S.Number,
-          ExitNumber: S.optional(__S(105)),
+          ExitNumber: S.optional(LocalizedStringList),
           GeometryOffset: S.optional(S.Number),
           Instruction: S.optional(SensitiveString),
-          KeepStepDetails: S.optional(__S(129)),
-          NextRoad: S.optional(__S(128)),
-          RoundaboutEnterStepDetails: S.optional(__S(130)),
-          RoundaboutExitStepDetails: S.optional(__S(131)),
-          RoundaboutPassStepDetails: S.optional(__S(130)),
-          Signpost: S.optional(__S(134)),
-          TurnStepDetails: S.optional(__S(129)),
-          Type: S.String,
+          KeepStepDetails: S.optional(RouteKeepStepDetails),
+          NextRoad: S.optional(RouteRoad),
+          RoundaboutEnterStepDetails: S.optional(RouteRoundaboutEnterStepDetails),
+          RoundaboutExitStepDetails: S.optional(RouteRoundaboutExitStepDetails),
+          RoundaboutPassStepDetails: S.optional(RouteRoundaboutPassStepDetails),
+          Signpost: S.optional(RouteSignpost),
+          TurnStepDetails: S.optional(RouteTurnStepDetails),
+          Type: RoutePedestrianTravelStepType,
         }),
       ).annotate({
         identifier: "RoutePedestrianTravelStep",
@@ -3621,18 +4502,18 @@ function __c16(j: number): any {
 function __c17(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(135));
+      return S.Array(RoutePedestrianTravelStep);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          AfterTravelSteps: S.optional(__S(115)),
-          Arrival: __S(120),
-          Departure: __S(120),
-          Notices: S.optional(__S(96)),
-          PassThroughWaypoints: S.optional(__S(103)),
-          Spans: S.optional(__S(126)),
-          Summary: S.optional(__S(110)),
-          TravelSteps: S.optional(__S(136)),
+          AfterTravelSteps: S.optional(RoutePedestrianAfterTravelStepList),
+          Arrival: RoutePedestrianArrival,
+          Departure: RoutePedestrianDeparture,
+          Notices: S.optional(RoutePedestrianNoticeList),
+          PassThroughWaypoints: S.optional(RoutePassThroughWaypointList),
+          Spans: S.optional(RoutePedestrianSpanList),
+          Summary: S.optional(RoutePedestrianSummary),
+          TravelSteps: S.optional(RoutePedestrianTravelStepList),
         }),
       ).annotate({
         identifier: "RoutePedestrianLegDetails",
@@ -3648,41 +4529,41 @@ function __c17(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          ChargeStepDetails: S.optional(__S(138)),
+          ChargeStepDetails: S.optional(RouteChargeStepDetails),
           Duration: S.Number,
           Instruction: S.optional(SensitiveString),
-          Type: S.String,
+          Type: RouteVehicleAfterTravelStepType,
         }),
       ).annotate({
         identifier: "RouteVehicleAfterTravelStep",
       });
     case 4:
-      return S.Array(__S(139));
+      return S.Array(RouteVehicleAfterTravelStep);
     case 5:
       return S.suspend(() =>
         S.Struct({
           Name: S.optional(SensitiveString),
-          OriginalPosition: S.optional(__S(1)),
-          Position: __S(1),
-          SideOfStreet: S.optional(S.String),
+          OriginalPosition: S.optional(Position23),
+          Position: Position23,
+          SideOfStreet: S.optional(RouteSideOfStreet),
           WaypointIndex: S.optional(S.Number),
-          AccessPointDetails: S.optional(__S(117)),
-          StationDetails: S.optional(__S(118)),
-          Type: S.optional(S.String),
+          AccessPointDetails: S.optional(RouteAccessPointDetails),
+          StationDetails: S.optional(RouteStationDetails),
+          Type: S.optional(RouteVehiclePlaceType),
         }),
       ).annotate({ identifier: "RouteVehiclePlace" });
     case 6:
       return S.suspend(() =>
-        S.Struct({ Place: __S(141), Time: S.optional(SensitiveString) }),
+        S.Struct({ Place: RouteVehiclePlace, Time: S.optional(SensitiveString) }),
       ).annotate({ identifier: "RouteVehicleArrival" });
     case 7:
       return S.suspend(() =>
         S.Struct({
           Description: S.optional(SensitiveString),
           EndTime: S.optional(SensitiveString),
-          Severity: S.optional(S.String),
+          Severity: S.optional(RouteVehicleIncidentSeverity),
           StartTime: S.optional(SensitiveString),
-          Type: S.optional(S.String),
+          Type: S.optional(RouteVehicleIncidentType),
         }),
       ).annotate({ identifier: "RouteVehicleIncident" });
   }
@@ -3690,36 +4571,36 @@ function __c17(j: number): any {
 function __c18(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(143));
+      return S.Array(RouteVehicleIncident);
     case 1:
       return S.suspend(() =>
         S.Struct({ Min: S.optional(S.Number), Max: S.optional(S.Number) }),
       ).annotate({ identifier: "RouteNoticeDetailRange" });
     case 2:
-      return S.suspend(() => S.Struct({ Type: S.String, Value: S.Number })).annotate({
-        identifier: "RouteWeightConstraint",
-      });
+      return S.suspend(() =>
+        S.Struct({ Type: RouteWeightConstraintType, Value: S.Number }),
+      ).annotate({ identifier: "RouteWeightConstraint" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           AllHazardsRestricted: S.optional(S.Boolean),
-          AxleCount: S.optional(__S(145)),
-          HazardousCargos: __S(23),
+          AxleCount: S.optional(RouteNoticeDetailRange),
+          HazardousCargos: RouteHazardousCargoTypeList,
           MaxHeight: S.optional(S.Number),
           MaxKpraLength: S.optional(S.Number),
           MaxLength: S.optional(S.Number),
           MaxPayloadCapacity: S.optional(S.Number),
-          MaxWeight: S.optional(__S(146)),
+          MaxWeight: S.optional(RouteWeightConstraint),
           MaxWeightPerAxle: S.optional(S.Number),
-          MaxWeightPerAxleGroup: S.optional(__S(25)),
+          MaxWeightPerAxleGroup: S.optional(WeightPerAxleGroup),
           MaxWidth: S.optional(S.Number),
-          Occupancy: S.optional(__S(145)),
+          Occupancy: S.optional(RouteNoticeDetailRange),
           RestrictedTimes: S.optional(S.String),
           TimeDependent: S.optional(S.Boolean),
-          TrailerCount: S.optional(__S(145)),
+          TrailerCount: S.optional(RouteNoticeDetailRange),
           TravelMode: S.optional(S.Boolean),
           TruckRoadType: S.optional(S.String),
-          TruckType: S.optional(S.String),
+          TruckType: S.optional(RouteTruckType),
           TunnelRestrictionCode: S.optional(SensitiveString),
         }),
       ).annotate({ identifier: "RouteViolatedConstraints" });
@@ -3727,21 +4608,21 @@ function __c18(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Title: S.optional(SensitiveString),
-          ViolatedConstraints: S.optional(__S(147)),
+          ViolatedConstraints: S.optional(RouteViolatedConstraints),
         }),
       ).annotate({ identifier: "RouteVehicleNoticeDetail" });
     case 5:
-      return S.Array(__S(148));
+      return S.Array(RouteVehicleNoticeDetail);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          Code: S.String,
-          Details: __S(149),
-          Impact: S.optional(S.String),
+          Code: RouteVehicleNoticeCode,
+          Details: RouteVehicleNoticeDetailList,
+          Impact: S.optional(RouteNoticeImpact),
         }),
       ).annotate({ identifier: "RouteVehicleNotice" });
     case 7:
-      return S.Array(__S(150));
+      return S.Array(RouteVehicleNotice);
   }
 }
 function __c19(j: number): any {
@@ -3750,32 +4631,32 @@ function __c19(j: number): any {
       return S.suspend(() =>
         S.Struct({
           BestCaseDuration: S.optional(S.Number),
-          CarAccess: S.optional(__S(23)),
+          CarAccess: S.optional(RouteSpanCarAccessAttributeList),
           Country: S.optional(SensitiveString),
           Distance: S.optional(S.Number),
           Duration: S.optional(S.Number),
-          DynamicSpeed: S.optional(__S(121)),
+          DynamicSpeed: S.optional(RouteSpanDynamicSpeedDetails),
           FunctionalClassification: S.optional(S.Number),
-          Gate: S.optional(S.String),
+          Gate: S.optional(RouteSpanGateAttribute),
           GeometryOffset: S.optional(S.Number),
-          Incidents: S.optional(__S(1)),
-          Names: S.optional(__S(105)),
-          Notices: S.optional(__S(1)),
-          RailwayCrossing: S.optional(S.String),
+          Incidents: S.optional(IndexList),
+          Names: S.optional(LocalizedStringList),
+          Notices: S.optional(IndexList),
+          RailwayCrossing: S.optional(RouteSpanRailwayCrossingAttribute),
           Region: S.optional(SensitiveString),
-          RoadAttributes: S.optional(__S(23)),
-          RouteNumbers: S.optional(__S(123)),
-          ScooterAccess: S.optional(__S(57)),
-          SpeedLimit: S.optional(__S(124)),
-          TollSystems: S.optional(__S(1)),
-          TruckAccess: S.optional(__S(57)),
-          TruckRoadTypes: S.optional(__S(1)),
+          RoadAttributes: S.optional(RouteSpanRoadAttributeList),
+          RouteNumbers: S.optional(RouteNumberList),
+          ScooterAccess: S.optional(RouteSpanScooterAccessAttributeList),
+          SpeedLimit: S.optional(RouteSpanSpeedLimitDetails),
+          TollSystems: S.optional(IndexList),
+          TruckAccess: S.optional(RouteSpanTruckAccessAttributeList),
+          TruckRoadTypes: S.optional(IndexList),
           TypicalDuration: S.optional(S.Number),
-          Zones: S.optional(__S(1)),
+          Zones: S.optional(IndexList),
         }),
       ).annotate({ identifier: "RouteVehicleSpan" });
     case 1:
-      return S.Array(__S(152));
+      return S.Array(RouteVehicleSpan);
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -3800,16 +4681,16 @@ function __c19(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          Overview: S.optional(__S(154)),
-          TravelOnly: S.optional(__S(155)),
+          Overview: S.optional(RouteVehicleOverviewSummary),
+          TravelOnly: S.optional(RouteVehicleTravelOnlySummary),
         }),
       ).annotate({ identifier: "RouteVehicleSummary" });
     case 5:
-      return S.suspend(() => S.Struct({ Name: S.optional(S.String), Position: __S(1) })).annotate({
-        identifier: "RouteTollPaymentSite",
-      });
+      return S.suspend(() =>
+        S.Struct({ Name: S.optional(S.String), Position: Position23 }),
+      ).annotate({ identifier: "RouteTollPaymentSite" });
     case 6:
-      return S.Array(__S(157));
+      return S.Array(RouteTollPaymentSite);
     case 7:
       return S.suspend(() => S.Struct({ Min: S.Number, Max: S.Number })).annotate({
         identifier: "RouteTollPriceValueRange",
@@ -3825,13 +4706,13 @@ function __c20(j: number): any {
           Estimate: S.Boolean,
           PerDuration: S.optional(S.Number),
           Range: S.Boolean,
-          RangeValue: S.optional(__S(159)),
+          RangeValue: S.optional(RouteTollPriceValueRange),
           Value: S.Number,
         }),
       ).annotate({ identifier: "RouteTollPrice" });
     case 1:
       return S.suspend(() =>
-        S.Struct({ Period: S.String, PeriodCount: S.optional(S.Number) }),
+        S.Struct({ Period: RouteTollPassValidityPeriodType, PeriodCount: S.optional(S.Number) }),
       ).annotate({
         identifier: "RouteTollPassValidityPeriod",
       });
@@ -3842,7 +4723,7 @@ function __c20(j: number): any {
           SeniorPass: S.optional(S.Boolean),
           TransferCount: S.optional(S.Number),
           TripCount: S.optional(S.Number),
-          ValidityPeriod: S.optional(__S(161)),
+          ValidityPeriod: S.optional(RouteTollPassValidityPeriod),
         }),
       ).annotate({ identifier: "RouteTollPass" });
     case 3:
@@ -3850,29 +4731,29 @@ function __c20(j: number): any {
         identifier: "RouteTransponder",
       });
     case 4:
-      return S.Array(__S(163));
+      return S.Array(RouteTransponder);
     case 5:
       return S.suspend(() =>
         S.Struct({
           ApplicableTimes: S.optional(SensitiveString),
-          ConvertedPrice: S.optional(__S(160)),
+          ConvertedPrice: S.optional(RouteTollPrice),
           Id: SensitiveString,
-          LocalPrice: __S(160),
+          LocalPrice: RouteTollPrice,
           Name: SensitiveString,
-          Pass: S.optional(__S(162)),
-          PaymentMethods: __S(23),
-          Transponders: __S(164),
+          Pass: S.optional(RouteTollPass),
+          PaymentMethods: RouteTollPaymentMethodList,
+          Transponders: RouteTransponderList,
         }),
       ).annotate({ identifier: "RouteTollRate" });
     case 6:
-      return S.Array(__S(165));
+      return S.Array(RouteTollRate);
     case 7:
       return S.suspend(() =>
         S.Struct({
           Country: S.optional(SensitiveString),
-          PaymentSites: __S(158),
-          Rates: __S(166),
-          Systems: __S(1),
+          PaymentSites: RouteTollPaymentSiteList,
+          Rates: RouteTollRateList,
+          Systems: IndexList,
         }),
       ).annotate({ identifier: "RouteToll" });
   }
@@ -3880,56 +4761,56 @@ function __c20(j: number): any {
 function __c21(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(167));
+      return S.Array(RouteToll);
     case 1:
       return S.suspend(() => S.Struct({ Name: S.optional(SensitiveString) })).annotate({
         identifier: "RouteTollSystem",
       });
     case 2:
-      return S.Array(__S(169));
+      return S.Array(RouteTollSystem);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          Intersection: __S(105),
+          Intersection: LocalizedStringList,
           RelativeExit: S.optional(S.Number),
-          SteeringDirection: S.optional(S.String),
+          SteeringDirection: S.optional(RouteSteeringDirection),
           TurnAngle: S.optional(S.Number),
-          TurnIntensity: S.optional(S.String),
+          TurnIntensity: S.optional(RouteTurnIntensity),
         }),
       ).annotate({ identifier: "RouteExitStepDetails" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          ContinueHighwayStepDetails: S.optional(__S(130)),
-          ContinueStepDetails: S.optional(__S(127)),
-          CurrentRoad: S.optional(__S(128)),
+          ContinueHighwayStepDetails: S.optional(RouteContinueHighwayStepDetails),
+          ContinueStepDetails: S.optional(RouteContinueStepDetails),
+          CurrentRoad: S.optional(RouteRoad),
           Distance: S.optional(S.Number),
           Duration: S.Number,
-          EnterHighwayStepDetails: S.optional(__S(130)),
-          ExitNumber: S.optional(__S(105)),
-          ExitStepDetails: S.optional(__S(171)),
+          EnterHighwayStepDetails: S.optional(RouteEnterHighwayStepDetails),
+          ExitNumber: S.optional(LocalizedStringList),
+          ExitStepDetails: S.optional(RouteExitStepDetails),
           GeometryOffset: S.optional(S.Number),
           Instruction: S.optional(SensitiveString),
-          KeepStepDetails: S.optional(__S(129)),
-          NextRoad: S.optional(__S(128)),
-          RampStepDetails: S.optional(__S(129)),
-          RoundaboutEnterStepDetails: S.optional(__S(130)),
-          RoundaboutExitStepDetails: S.optional(__S(131)),
-          RoundaboutPassStepDetails: S.optional(__S(130)),
-          Signpost: S.optional(__S(134)),
-          TurnStepDetails: S.optional(__S(129)),
-          Type: S.String,
-          UTurnStepDetails: S.optional(__S(129)),
+          KeepStepDetails: S.optional(RouteKeepStepDetails),
+          NextRoad: S.optional(RouteRoad),
+          RampStepDetails: S.optional(RouteRampStepDetails),
+          RoundaboutEnterStepDetails: S.optional(RouteRoundaboutEnterStepDetails),
+          RoundaboutExitStepDetails: S.optional(RouteRoundaboutExitStepDetails),
+          RoundaboutPassStepDetails: S.optional(RouteRoundaboutPassStepDetails),
+          Signpost: S.optional(RouteSignpost),
+          TurnStepDetails: S.optional(RouteTurnStepDetails),
+          Type: RouteVehicleTravelStepType,
+          UTurnStepDetails: S.optional(RouteUTurnStepDetails),
         }),
       ).annotate({ identifier: "RouteVehicleTravelStep" });
     case 5:
-      return S.Array(__S(172));
+      return S.Array(RouteVehicleTravelStep);
     case 6:
       return S.suspend(() =>
-        S.Struct({ Category: S.optional(S.String), Name: S.optional(SensitiveString) }),
+        S.Struct({ Category: S.optional(RouteZoneCategory), Name: S.optional(SensitiveString) }),
       ).annotate({ identifier: "RouteZone" });
     case 7:
-      return S.Array(__S(174));
+      return S.Array(RouteZone);
   }
 }
 function __c22(j: number): any {
@@ -3937,19 +4818,19 @@ function __c22(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          AfterTravelSteps: S.optional(__S(140)),
-          Arrival: __S(142),
-          Departure: __S(142),
-          Incidents: S.optional(__S(144)),
-          Notices: S.optional(__S(151)),
-          PassThroughWaypoints: S.optional(__S(103)),
-          Spans: S.optional(__S(153)),
-          Summary: S.optional(__S(156)),
-          Tolls: S.optional(__S(168)),
-          TollSystems: S.optional(__S(170)),
-          TravelSteps: S.optional(__S(173)),
-          TruckRoadTypes: S.optional(__S(6)),
-          Zones: S.optional(__S(175)),
+          AfterTravelSteps: S.optional(RouteVehicleAfterTravelStepList),
+          Arrival: RouteVehicleArrival,
+          Departure: RouteVehicleDeparture,
+          Incidents: S.optional(RouteVehicleIncidentList),
+          Notices: S.optional(RouteVehicleNoticeList),
+          PassThroughWaypoints: S.optional(RoutePassThroughWaypointList),
+          Spans: S.optional(RouteVehicleSpanList),
+          Summary: S.optional(RouteVehicleSummary),
+          Tolls: S.optional(RouteTollList),
+          TollSystems: S.optional(RouteTollSystemList),
+          TravelSteps: S.optional(RouteVehicleTravelStepList),
+          TruckRoadTypes: S.optional(TruckRoadTypeList),
+          Zones: S.optional(RouteZoneList),
         }),
       ).annotate({ identifier: "RouteVehicleLegDetails" });
     case 1:
@@ -3959,36 +4840,36 @@ function __c22(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          AccessPointDetails: S.optional(__S(117)),
+          AccessPointDetails: S.optional(RouteAccessPointDetails),
           Name: S.optional(SensitiveString),
-          OriginalPosition: S.optional(__S(1)),
-          Position: __S(1),
-          StationDetails: S.optional(__S(118)),
-          Type: S.optional(S.String),
+          OriginalPosition: S.optional(Position23),
+          Position: Position23,
+          StationDetails: S.optional(RouteStationDetails),
+          Type: S.optional(RouteRentalPlaceType),
           WaypointIndex: S.optional(S.Number),
         }),
       ).annotate({ identifier: "RouteRentalPlace" });
     case 3:
       return S.suspend(() =>
-        S.Struct({ Place: __S(178), Time: S.optional(SensitiveString) }),
+        S.Struct({ Place: RouteRentalPlace, Time: S.optional(SensitiveString) }),
       ).annotate({ identifier: "RouteRentalArrival" });
     case 4:
       return S.suspend(() =>
         S.Struct({
           AnchorText: S.optional(SensitiveString),
           Description: SensitiveString,
-          DeviceType: S.optional(S.String),
+          DeviceType: S.optional(RouteWebLinkDeviceType),
           Url: S.optional(SensitiveString),
         }),
       ).annotate({ identifier: "RouteWebLink" });
     case 5:
       return S.suspend(() =>
-        S.Struct({ AttributionType: S.optional(S.String), WebLink: __S(180) }),
+        S.Struct({ AttributionType: S.optional(RouteAttributionType), WebLink: RouteWebLink }),
       ).annotate({ identifier: "RouteAttribution" });
     case 6:
-      return S.Array(__S(181));
+      return S.Array(RouteAttribution);
     case 7:
-      return S.Array(__S(180));
+      return S.Array(RouteWebLink);
   }
 }
 function __c23(j: number): any {
@@ -4000,8 +4881,8 @@ function __c23(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          Overview: S.optional(__S(184)),
-          TravelOnly: S.optional(__S(109)),
+          Overview: S.optional(RouteRentalOverviewSummary),
+          TravelOnly: S.optional(RouteRentalTravelOnlySummary),
         }),
       ).annotate({ identifier: "RouteRentalSummary" });
     case 2:
@@ -4010,9 +4891,9 @@ function __c23(j: number): any {
           AvailableSeats: S.optional(S.Number),
           Category: S.optional(SensitiveString),
           Color: S.optional(SensitiveString),
-          Engine: S.optional(S.String),
+          Engine: S.optional(RouteEngineType),
           LicensePlate: S.optional(SensitiveString),
-          Mode: S.String,
+          Mode: RouteRentalMode,
           Model: S.optional(SensitiveString),
           Name: S.optional(SensitiveString),
           TextColor: S.optional(SensitiveString),
@@ -4023,37 +4904,37 @@ function __c23(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          ContinueStepDetails: S.optional(__S(127)),
+          ContinueStepDetails: S.optional(RouteContinueStepDetails),
           Distance: S.optional(S.Number),
           Duration: S.Number,
-          ExitStepDetails: S.optional(__S(171)),
+          ExitStepDetails: S.optional(RouteExitStepDetails),
           GeometryOffset: S.optional(S.Number),
           Instruction: S.optional(SensitiveString),
-          KeepStepDetails: S.optional(__S(129)),
-          RampStepDetails: S.optional(__S(129)),
-          RoundaboutEnterStepDetails: S.optional(__S(130)),
-          RoundaboutExitStepDetails: S.optional(__S(131)),
-          RoundaboutPassStepDetails: S.optional(__S(130)),
-          TurnStepDetails: S.optional(__S(129)),
-          Type: S.String,
-          UTurnStepDetails: S.optional(__S(129)),
+          KeepStepDetails: S.optional(RouteKeepStepDetails),
+          RampStepDetails: S.optional(RouteRampStepDetails),
+          RoundaboutEnterStepDetails: S.optional(RouteRoundaboutEnterStepDetails),
+          RoundaboutExitStepDetails: S.optional(RouteRoundaboutExitStepDetails),
+          RoundaboutPassStepDetails: S.optional(RouteRoundaboutPassStepDetails),
+          TurnStepDetails: S.optional(RouteTurnStepDetails),
+          Type: RouteRentalTravelStepType,
+          UTurnStepDetails: S.optional(RouteUTurnStepDetails),
         }),
       ).annotate({ identifier: "RouteRentalTravelStep" });
     case 4:
-      return S.Array(__S(187));
+      return S.Array(RouteRentalTravelStep);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          AfterTravelSteps: S.optional(__S(98)),
-          Agency: __S(177),
-          Arrival: __S(179),
-          Attributions: S.optional(__S(182)),
-          BeforeTravelSteps: S.optional(__S(98)),
-          BookingWebLinks: S.optional(__S(183)),
-          Departure: __S(179),
-          Summary: S.optional(__S(185)),
-          Transport: __S(186),
-          TravelSteps: S.optional(__S(188)),
+          AfterTravelSteps: S.optional(RouteRentalAfterTravelStepList),
+          Agency: RouteRentalAgency,
+          Arrival: RouteRentalArrival,
+          Attributions: S.optional(RouteAttributionList),
+          BeforeTravelSteps: S.optional(RouteRentalBeforeTravelStepList),
+          BookingWebLinks: S.optional(RouteWebLinkList),
+          Departure: RouteRentalDeparture,
+          Summary: S.optional(RouteRentalSummary),
+          Transport: RouteRentalTransportModeDetails,
+          TravelSteps: S.optional(RouteRentalTravelStepList),
         }),
       ).annotate({ identifier: "RouteRentalLegDetails" });
     case 6:
@@ -4061,11 +4942,11 @@ function __c23(j: number): any {
         S.Struct({
           Duration: S.Number,
           Instruction: S.optional(SensitiveString),
-          Type: S.String,
+          Type: RouteTaxiAfterTravelStepType,
         }),
       ).annotate({ identifier: "RouteTaxiAfterTravelStep" });
     case 7:
-      return S.Array(__S(190));
+      return S.Array(RouteTaxiAfterTravelStep);
   }
 }
 function __c24(j: number): any {
@@ -4077,34 +4958,34 @@ function __c24(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          Overview: S.optional(__S(192)),
-          TravelOnly: S.optional(__S(109)),
+          Overview: S.optional(RouteTaxiOverviewSummary),
+          TravelOnly: S.optional(RouteTaxiTravelOnlySummary),
         }),
       ).annotate({ identifier: "RouteTaxiSummary" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          AfterTravelSteps: S.optional(__S(191)),
-          Agency: __S(177),
-          Arrival: __S(179),
-          Attributions: S.optional(__S(182)),
-          BeforeTravelSteps: S.optional(__S(98)),
-          BookingWebLinks: S.optional(__S(183)),
-          Departure: __S(179),
-          Notices: S.optional(__S(96)),
-          Summary: S.optional(__S(193)),
-          Transport: __S(186),
-          TravelSteps: S.optional(__S(188)),
+          AfterTravelSteps: S.optional(RouteTaxiAfterTravelStepList),
+          Agency: RouteTaxiAgency,
+          Arrival: RouteTaxiArrival,
+          Attributions: S.optional(RouteAttributionList),
+          BeforeTravelSteps: S.optional(RouteTaxiBeforeTravelStepList),
+          BookingWebLinks: S.optional(RouteWebLinkList),
+          Departure: RouteTaxiDeparture,
+          Notices: S.optional(RouteTaxiNoticeList),
+          Summary: S.optional(RouteTaxiSummary),
+          Transport: RouteTaxiTransportModeDetails,
+          TravelSteps: S.optional(RouteTaxiTravelStepList),
         }),
       ).annotate({ identifier: "RouteTaxiLegDetails" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           Name: S.optional(SensitiveString),
-          OriginalPosition: S.optional(__S(1)),
-          Position: __S(1),
-          StationDetails: S.optional(__S(118)),
-          Type: S.optional(S.String),
+          OriginalPosition: S.optional(Position23),
+          Position: Position23,
+          StationDetails: S.optional(RouteStationDetails),
+          Type: S.optional(RouteTransitPlaceType),
           WaypointIndex: S.optional(S.Number),
         }),
       ).annotate({ identifier: "RouteTransitPlace" });
@@ -4112,8 +4993,8 @@ function __c24(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Delay: S.optional(S.Number),
-          Place: __S(195),
-          Status: S.optional(S.String),
+          Place: RouteTransitPlace,
+          Status: S.optional(RouteTransitTripStatus),
           Time: S.optional(SensitiveString),
         }),
       ).annotate({ identifier: "RouteTransitArrival" });
@@ -4121,23 +5002,23 @@ function __c24(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Description: S.optional(SensitiveString),
-          Effect: S.String,
+          Effect: RouteTransitIncidentEffect,
           EndTime: S.optional(SensitiveString),
           StartTime: S.optional(SensitiveString),
-          Type: S.String,
+          Type: RouteTransitIncidentType,
           Url: S.optional(SensitiveString),
         }),
       ).annotate({ identifier: "RouteTransitIncident" });
     case 6:
-      return S.Array(__S(197));
+      return S.Array(RouteTransitIncident);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          Accessibility: S.optional(__S(116)),
+          Accessibility: S.optional(RouteAccessibilityAvailabilityDetails),
           Color: S.optional(SensitiveString),
           Headsign: S.optional(SensitiveString),
           LongRouteName: S.optional(SensitiveString),
-          Mode: S.String,
+          Mode: RouteTransitMode,
           RouteName: S.optional(SensitiveString),
           ShortRouteName: S.optional(SensitiveString),
           TextColor: S.optional(SensitiveString),
@@ -4152,91 +5033,91 @@ function __c25(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          Attributes: S.optional(__S(57)),
-          Departure: __S(196),
+          Attributes: S.optional(RouteTransitIntermediateStopAttributeList),
+          Departure: RouteTransitDeparture,
           Duration: S.Number,
           GeometryOffset: S.optional(S.Number),
-          Transport: S.optional(__S(199)),
+          Transport: S.optional(RouteTransitTransportModeDetails),
         }),
       ).annotate({
         identifier: "RouteTransitIntermediateStop",
       });
     case 1:
-      return S.Array(__S(200));
+      return S.Array(RouteTransitIntermediateStop);
     case 2:
       return S.suspend(() =>
         S.Struct({
           Delay: S.optional(S.Number),
           PlatformName: S.optional(SensitiveString),
-          Status: S.optional(S.String),
+          Status: S.optional(RouteTransitTripStatus),
           Time: SensitiveString,
-          Transport: S.optional(__S(199)),
+          Transport: S.optional(RouteTransitTransportModeDetails),
         }),
       ).annotate({
         identifier: "RouteTransitNextDeparture",
       });
     case 3:
-      return S.Array(__S(202));
+      return S.Array(RouteTransitNextDeparture);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          AfterTravelSteps: S.optional(__S(98)),
-          Agency: S.optional(__S(177)),
-          Arrival: __S(196),
-          Attributions: S.optional(__S(182)),
-          BeforeTravelSteps: S.optional(__S(98)),
-          BookingWebLinks: S.optional(__S(183)),
-          Departure: __S(196),
-          Incidents: S.optional(__S(198)),
-          IntermediateStops: S.optional(__S(201)),
-          NextDepartures: S.optional(__S(203)),
-          Notices: S.optional(__S(96)),
-          PassThroughWaypoints: S.optional(__S(103)),
-          Spans: S.optional(__S(107)),
-          Summary: S.optional(__S(110)),
-          Transport: __S(199),
-          TravelSteps: S.optional(__S(112)),
+          AfterTravelSteps: S.optional(RouteTransitAfterTravelStepList),
+          Agency: S.optional(RouteTransitAgency),
+          Arrival: RouteTransitArrival,
+          Attributions: S.optional(RouteAttributionList),
+          BeforeTravelSteps: S.optional(RouteTransitBeforeTravelStepList),
+          BookingWebLinks: S.optional(RouteWebLinkList),
+          Departure: RouteTransitDeparture,
+          Incidents: S.optional(RouteTransitIncidentList),
+          IntermediateStops: S.optional(RouteTransitIntermediateStopList),
+          NextDepartures: S.optional(RouteTransitNextDepartureList),
+          Notices: S.optional(RouteTransitNoticeList),
+          PassThroughWaypoints: S.optional(RoutePassThroughWaypointList),
+          Spans: S.optional(RouteTransitSpanList),
+          Summary: S.optional(RouteTransitSummary),
+          Transport: RouteTransitTransportModeDetails,
+          TravelSteps: S.optional(RouteTransitTravelStepList),
         }),
       ).annotate({ identifier: "RouteTransitLegDetails" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          FerryLegDetails: S.optional(__S(113)),
-          Geometry: __S(114),
+          FerryLegDetails: S.optional(RouteFerryLegDetails),
+          Geometry: RouteLegGeometry,
           Language: S.optional(S.String),
-          PedestrianLegDetails: S.optional(__S(137)),
-          TravelMode: S.String,
-          Type: S.String,
-          VehicleLegDetails: S.optional(__S(176)),
-          RentalLegDetails: S.optional(__S(189)),
-          TaxiLegDetails: S.optional(__S(194)),
-          TransitLegDetails: S.optional(__S(204)),
+          PedestrianLegDetails: S.optional(RoutePedestrianLegDetails),
+          TravelMode: RouteLegTravelMode,
+          Type: RouteLegType,
+          VehicleLegDetails: S.optional(RouteVehicleLegDetails),
+          RentalLegDetails: S.optional(RouteRentalLegDetails),
+          TaxiLegDetails: S.optional(RouteTaxiLegDetails),
+          TransitLegDetails: S.optional(RouteTransitLegDetails),
         }),
       ).annotate({ identifier: "RouteLeg" });
     case 6:
-      return S.Array(__S(205));
+      return S.Array(RouteLeg);
     case 7:
       return S.suspend(() =>
-        S.Struct({ RoadName: S.optional(__S(104)), RouteNumber: S.optional(__S(122)) }),
+        S.Struct({ RoadName: S.optional(LocalizedString), RouteNumber: S.optional(RouteNumber) }),
       ).annotate({ identifier: "RouteMajorRoadLabel" });
   }
 }
 function __c26(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(207));
+      return S.Array(RouteMajorRoadLabel);
     case 1:
       return S.suspend(() =>
         S.Struct({
           Currency: S.String,
           Estimate: S.Boolean,
           Range: S.Boolean,
-          RangeValue: S.optional(__S(159)),
+          RangeValue: S.optional(RouteTollPriceValueRange),
           Value: S.Number,
         }),
       ).annotate({ identifier: "RouteTollPriceSummary" });
     case 2:
-      return S.suspend(() => S.Struct({ Total: S.optional(__S(209)) })).annotate({
+      return S.suspend(() => S.Struct({ Total: S.optional(RouteTollPriceSummary) })).annotate({
         identifier: "RouteTollSummary",
       });
     case 3:
@@ -4244,30 +5125,30 @@ function __c26(j: number): any {
         S.Struct({
           Distance: S.optional(S.Number),
           Duration: S.optional(S.Number),
-          Tolls: S.optional(__S(210)),
+          Tolls: S.optional(RouteTollSummary),
         }),
       ).annotate({ identifier: "RouteSummary" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          Legs: __S(206),
-          MajorRoadLabels: __S(208),
-          Summary: S.optional(__S(211)),
+          Legs: RouteLegList,
+          MajorRoadLabels: RouteMajorRoadLabelList,
+          Summary: S.optional(RouteSummary),
         }),
       ).annotate({ identifier: "Route" });
     case 5:
-      return S.Array(__S(212));
+      return S.Array(Route);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          LegGeometryFormat: S.String,
-          Notices: __S(96),
+          LegGeometryFormat: GeometryFormat,
+          Notices: RouteResponseNoticeList,
           PricingBucket: S.String.pipe(T.HttpHeader("x-amz-geo-pricing-bucket")),
-          Routes: __S(213),
+          Routes: RouteList,
         }),
       ).annotate({ identifier: "CalculateRoutesResponse" });
     case 7:
-      return S.suspend(() => S.Struct({ BoundingBox: S.optional(__S(1)) })).annotate({
+      return S.suspend(() => S.Struct({ BoundingBox: S.optional(BoundingBox) })).annotate({
         identifier: "WaypointOptimizationAvoidanceAreaGeometry",
       });
   }
@@ -4275,15 +5156,17 @@ function __c26(j: number): any {
 function __c27(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ Geometry: __S(215) })).annotate({
+      return S.suspend(() =>
+        S.Struct({ Geometry: WaypointOptimizationAvoidanceAreaGeometry }),
+      ).annotate({
         identifier: "WaypointOptimizationAvoidanceArea",
       });
     case 1:
-      return S.Array(__S(216));
+      return S.Array(WaypointOptimizationAvoidanceArea);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          Areas: S.optional(__S(217)),
+          Areas: S.optional(WaypointOptimizationAvoidanceAreaList),
           CarShuttleTrains: S.optional(S.Boolean),
           ControlledAccessHighways: S.optional(S.Boolean),
           DirtRoads: S.optional(S.Boolean),
@@ -4302,23 +5185,23 @@ function __c27(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          Algorithm: S.String,
-          DrivingDistanceOptions: S.optional(__S(219)),
+          Algorithm: WaypointOptimizationClusteringAlgorithm,
+          DrivingDistanceOptions: S.optional(WaypointOptimizationDrivingDistanceOptions),
         }),
       ).annotate({
         identifier: "WaypointOptimizationClusteringOptions",
       });
     case 5:
       return S.suspend(() =>
-        S.Struct({ DayOfWeek: S.String, TimeOfDay: SensitiveString }),
+        S.Struct({ DayOfWeek: DayOfWeek, TimeOfDay: SensitiveString }),
       ).annotate({
         identifier: "WaypointOptimizationAccessHoursEntry",
       });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          From: __S(221),
-          To: __S(221),
+          From: WaypointOptimizationAccessHoursEntry,
+          To: WaypointOptimizationAccessHoursEntry,
         }),
       ).annotate({
         identifier: "WaypointOptimizationAccessHours",
@@ -4326,12 +5209,12 @@ function __c27(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          AccessHours: S.optional(__S(222)),
+          AccessHours: S.optional(WaypointOptimizationAccessHours),
           AppointmentTime: S.optional(SensitiveString),
           Heading: S.optional(S.Number),
           Id: S.optional(S.String),
           ServiceDuration: S.optional(S.Number),
-          SideOfStreet: S.optional(__S(15)),
+          SideOfStreet: S.optional(WaypointOptimizationSideOfStreetOptions),
         }),
       ).annotate({
         identifier: "WaypointOptimizationDestinationOptions",
@@ -4349,8 +5232,8 @@ function __c28(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          LongCycle: __S(224),
-          ShortCycle: __S(224),
+          LongCycle: WaypointOptimizationRestCycleDurations,
+          ShortCycle: WaypointOptimizationRestCycleDurations,
         }),
       ).annotate({
         identifier: "WaypointOptimizationRestCycles",
@@ -4362,9 +5245,9 @@ function __c28(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          RestCycles: S.optional(__S(225)),
-          RestProfile: S.optional(__S(226)),
-          TreatServiceTimeAs: S.optional(S.String),
+          RestCycles: S.optional(WaypointOptimizationRestCycles),
+          RestProfile: S.optional(WaypointOptimizationRestProfile),
+          TreatServiceTimeAs: S.optional(WaypointOptimizationServiceTimeTreatment),
         }),
       ).annotate({
         identifier: "WaypointOptimizationDriverOptions",
@@ -4374,7 +5257,7 @@ function __c28(j: number): any {
         identifier: "WaypointOptimizationOriginOptions",
       });
     case 5:
-      return S.suspend(() => S.Struct({ Usage: S.optional(S.String) })).annotate({
+      return S.suspend(() => S.Struct({ Usage: S.optional(TrafficUsage) })).annotate({
         identifier: "WaypointOptimizationTrafficOptions",
       });
     case 6:
@@ -4385,11 +5268,11 @@ function __c28(j: number): any {
       return S.suspend(() =>
         S.Struct({
           GrossWeight: S.optional(S.Number),
-          HazardousCargos: S.optional(__S(57)),
+          HazardousCargos: S.optional(WaypointOptimizationHazardousCargoTypeList),
           Height: S.optional(S.Number),
           Length: S.optional(S.Number),
-          Trailer: S.optional(__S(58)),
-          TruckType: S.optional(S.String),
+          Trailer: S.optional(WaypointOptimizationTrailerOptions),
+          TruckType: S.optional(WaypointOptimizationTruckType),
           TunnelRestrictionCode: S.optional(SensitiveString),
           WeightPerAxle: S.optional(S.Number),
           Width: S.optional(S.Number),
@@ -4404,8 +5287,8 @@ function __c29(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          Pedestrian: S.optional(__S(230)),
-          Truck: S.optional(__S(231)),
+          Pedestrian: S.optional(WaypointOptimizationPedestrianOptions),
+          Truck: S.optional(WaypointOptimizationTruckOptions),
         }),
       ).annotate({
         identifier: "WaypointOptimizationTravelModeOptions",
@@ -4413,38 +5296,38 @@ function __c29(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          AccessHours: S.optional(__S(222)),
+          AccessHours: S.optional(WaypointOptimizationAccessHours),
           AppointmentTime: S.optional(SensitiveString),
-          Before: S.optional(__S(1)),
+          Before: S.optional(BeforeWaypointsList),
           Heading: S.optional(S.Number),
           Id: S.optional(S.String),
-          Position: __S(1),
+          Position: Position,
           ServiceDuration: S.optional(S.Number),
-          SideOfStreet: S.optional(__S(15)),
+          SideOfStreet: S.optional(WaypointOptimizationSideOfStreetOptions),
         }),
       ).annotate({
         identifier: "WaypointOptimizationWaypoint",
       });
     case 2:
-      return S.Array(__S(233));
+      return S.Array(WaypointOptimizationWaypoint);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          Avoid: S.optional(__S(218)),
-          Clustering: S.optional(__S(220)),
+          Avoid: S.optional(WaypointOptimizationAvoidanceOptions),
+          Clustering: S.optional(WaypointOptimizationClusteringOptions),
           DepartureTime: S.optional(SensitiveString),
-          Destination: S.optional(__S(1)),
-          DestinationOptions: S.optional(__S(223)),
-          Driver: S.optional(__S(227)),
-          Exclude: S.optional(__S(46)),
+          Destination: S.optional(Position),
+          DestinationOptions: S.optional(WaypointOptimizationDestinationOptions),
+          Driver: S.optional(WaypointOptimizationDriverOptions),
+          Exclude: S.optional(WaypointOptimizationExclusionOptions),
           Key: S.optional(SensitiveString).pipe(T.HttpQuery("key")),
-          OptimizeSequencingFor: S.optional(S.String),
-          Origin: __S(1),
-          OriginOptions: S.optional(__S(228)),
-          Traffic: S.optional(__S(229)),
-          TravelMode: S.optional(S.String),
-          TravelModeOptions: S.optional(__S(232)),
-          Waypoints: S.optional(__S(234)),
+          OptimizeSequencingFor: S.optional(WaypointOptimizationSequencingObjective),
+          Origin: Position,
+          OriginOptions: S.optional(WaypointOptimizationOriginOptions),
+          Traffic: S.optional(WaypointOptimizationTrafficOptions),
+          TravelMode: S.optional(WaypointOptimizationTravelMode),
+          TravelModeOptions: S.optional(WaypointOptimizationTravelModeOptions),
+          Waypoints: S.optional(WaypointOptimizationWaypointList),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/v2/optimize-waypoints" }),
@@ -4470,18 +5353,18 @@ function __c29(j: number): any {
         identifier: "WaypointOptimizationConnection",
       });
     case 5:
-      return S.Array(__S(236));
+      return S.Array(WaypointOptimizationConnection);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          Constraint: S.optional(S.String),
+          Constraint: S.optional(WaypointOptimizationConstraint),
           Reason: S.optional(SensitiveString),
         }),
       ).annotate({
         identifier: "WaypointOptimizationFailedConstraint",
       });
     case 7:
-      return S.Array(__S(238));
+      return S.Array(WaypointOptimizationFailedConstraint);
   }
 }
 function __c30(j: number): any {
@@ -4489,15 +5372,15 @@ function __c30(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          FailedConstraints: __S(239),
+          FailedConstraints: WaypointOptimizationFailedConstraintList,
           Id: S.String,
-          Position: __S(1),
+          Position: Position,
         }),
       ).annotate({
         identifier: "WaypointOptimizationImpedingWaypoint",
       });
     case 1:
-      return S.Array(__S(240));
+      return S.Array(WaypointOptimizationImpedingWaypoint);
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -4505,13 +5388,13 @@ function __c30(j: number): any {
           ClusterIndex: S.optional(S.Number),
           DepartureTime: S.optional(SensitiveString),
           Id: S.String,
-          Position: __S(1),
+          Position: Position,
         }),
       ).annotate({
         identifier: "WaypointOptimizationOptimizedWaypoint",
       });
     case 3:
-      return S.Array(__S(242));
+      return S.Array(WaypointOptimizationOptimizedWaypoint);
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -4526,13 +5409,13 @@ function __c30(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          Connections: __S(237),
+          Connections: WaypointOptimizationConnectionList,
           Distance: S.Number,
           Duration: S.Number,
-          ImpedingWaypoints: __S(241),
-          OptimizedWaypoints: __S(243),
+          ImpedingWaypoints: WaypointOptimizationImpedingWaypointList,
+          OptimizedWaypoints: WaypointOptimizationOptimizedWaypointList,
           PricingBucket: S.String.pipe(T.HttpHeader("x-amz-geo-pricing-bucket")),
-          TimeBreakdown: __S(244),
+          TimeBreakdown: WaypointOptimizationTimeBreakdown,
         }),
       ).annotate({
         identifier: "OptimizeWaypointsResponse",
@@ -4541,13 +5424,13 @@ function __c30(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Heading: S.optional(S.Number),
-          Position: __S(1),
+          Position: Position,
           Speed: S.optional(S.Number),
           Timestamp: S.optional(SensitiveString),
         }),
       ).annotate({ identifier: "RoadSnapTracePoint" });
     case 7:
-      return S.Array(__S(246));
+      return S.Array(RoadSnapTracePoint);
   }
 }
 function __c31(j: number): any {
@@ -4560,27 +5443,27 @@ function __c31(j: number): any {
       return S.suspend(() =>
         S.Struct({
           GrossWeight: S.optional(S.Number),
-          HazardousCargos: S.optional(__S(23)),
+          HazardousCargos: S.optional(RoadSnapHazardousCargoTypeList),
           Height: S.optional(S.Number),
           Length: S.optional(S.Number),
-          Trailer: S.optional(__S(248)),
+          Trailer: S.optional(RoadSnapTrailerOptions),
           TunnelRestrictionCode: S.optional(SensitiveString),
           Width: S.optional(S.Number),
         }),
       ).annotate({ identifier: "RoadSnapTruckOptions" });
     case 2:
-      return S.suspend(() => S.Struct({ Truck: S.optional(__S(249)) })).annotate({
+      return S.suspend(() => S.Struct({ Truck: S.optional(RoadSnapTruckOptions) })).annotate({
         identifier: "RoadSnapTravelModeOptions",
       });
     case 3:
       return S.suspend(() =>
         S.Struct({
           Key: S.optional(SensitiveString).pipe(T.HttpQuery("key")),
-          SnappedGeometryFormat: S.optional(S.String),
+          SnappedGeometryFormat: S.optional(GeometryFormat),
           SnapRadius: S.optional(S.Number),
-          TracePoints: __S(247),
-          TravelMode: S.optional(S.String),
-          TravelModeOptions: S.optional(__S(250)),
+          TracePoints: RoadSnapTracePointList,
+          TravelMode: S.optional(RoadSnapTravelMode),
+          TravelModeOptions: S.optional(RoadSnapTravelModeOptions),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/v2/snap-to-roads" }), svc, auth, proto, ver, rules),
         ),
@@ -4588,21 +5471,21 @@ function __c31(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          Code: S.String,
+          Code: RoadSnapNoticeCode,
           Title: SensitiveString,
-          TracePointIndexes: __S(1),
+          TracePointIndexes: RoadSnapTracePointIndexList,
         }),
       ).annotate({ identifier: "RoadSnapNotice" });
     case 5:
-      return S.Array(__S(252));
+      return S.Array(RoadSnapNotice);
     case 6:
       return S.suspend(() =>
-        S.Struct({ Confidence: S.Number, OriginalPosition: __S(1), SnappedPosition: __S(1) }),
+        S.Struct({ Confidence: S.Number, OriginalPosition: Position, SnappedPosition: Position }),
       ).annotate({
         identifier: "RoadSnapSnappedTracePoint",
       });
     case 7:
-      return S.Array(__S(254));
+      return S.Array(RoadSnapSnappedTracePoint);
   }
 }
 function __c32(j: number): any {
@@ -4610,11 +5493,11 @@ function __c32(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          Notices: __S(253),
+          Notices: RoadSnapNoticeList,
           PricingBucket: S.String.pipe(T.HttpHeader("x-amz-geo-pricing-bucket")),
-          SnappedGeometry: S.optional(__S(114)),
-          SnappedGeometryFormat: S.String,
-          SnappedTracePoints: __S(255),
+          SnappedGeometry: S.optional(RoadSnapSnappedGeometry),
+          SnappedGeometryFormat: GeometryFormat,
+          SnappedTracePoints: RoadSnapSnappedTracePointList,
         }),
       ).annotate({ identifier: "SnapToRoadsResponse" });
     case 1:
@@ -4624,81 +5507,6 @@ function __c32(j: number): any {
         ),
       ).annotate({ identifier: "ValidationExceptionField" });
     case 2:
-      return S.Array(__S(257));
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
-    case 9:
-      return __c9(i & 7);
-    case 10:
-      return __c10(i & 7);
-    case 11:
-      return __c11(i & 7);
-    case 12:
-      return __c12(i & 7);
-    case 13:
-      return __c13(i & 7);
-    case 14:
-      return __c14(i & 7);
-    case 15:
-      return __c15(i & 7);
-    case 16:
-      return __c16(i & 7);
-    case 17:
-      return __c17(i & 7);
-    case 18:
-      return __c18(i & 7);
-    case 19:
-      return __c19(i & 7);
-    case 20:
-      return __c20(i & 7);
-    case 21:
-      return __c21(i & 7);
-    case 22:
-      return __c22(i & 7);
-    case 23:
-      return __c23(i & 7);
-    case 24:
-      return __c24(i & 7);
-    case 25:
-      return __c25(i & 7);
-    case 26:
-      return __c26(i & 7);
-    case 27:
-      return __c27(i & 7);
-    case 28:
-      return __c28(i & 7);
-    case 29:
-      return __c29(i & 7);
-    case 30:
-      return __c30(i & 7);
-    case 31:
-      return __c31(i & 7);
-    case 32:
-      return __c32(i & 7);
+      return S.Array(ValidationExceptionField);
   }
 }

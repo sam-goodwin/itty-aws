@@ -7,8 +7,6 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -66,15 +64,24 @@ export class NotFound
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
+const Empty = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<Empty>;
+
 export interface GenerateChallengeRequest {
   /** Request body */
   body?: Empty;
 }
+const GenerateChallengeRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<GenerateChallengeRequest>;
+
 /** Result message for VerifiedAccess.GenerateChallenge. */
 export interface Challenge {
   /** Generated challenge, the bytes representation of SignedData. */
   challenge?: string;
 }
+const Challenge = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<Challenge>;
+
 /** Signed ChallengeResponse. */
 export interface VerifyChallengeResponseRequest {
   /** Optional. Service can optionally provide identity information about the device or user associated with the key. For an EMK, this value is the enrolled domain. For an EUK, this value is the user's email address. If present, this value will be checked against contents of the response, and verification will fail if there is no match. */
@@ -82,10 +89,20 @@ export interface VerifyChallengeResponseRequest {
   /** Required. The generated response to the challenge, the bytes representation of SignedData. */
   challengeResponse?: string;
 }
+const VerifyChallengeResponseRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<VerifyChallengeResponseRequest>;
+
 export interface VerifyChallengeRequest {
   /** Request body */
   body?: VerifyChallengeResponseRequest;
 }
+const VerifyChallengeRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<VerifyChallengeRequest>;
+
 export type VerifyChallengeResponseResultProfileKeyTrustLevelEnum =
   | "KEY_TRUST_LEVEL_UNSPECIFIED"
   | "CHROME_OS_VERIFIED_MODE"
@@ -94,27 +111,41 @@ export type VerifyChallengeResponseResultProfileKeyTrustLevelEnum =
   | "CHROME_BROWSER_OS_KEY"
   | "CHROME_BROWSER_NO_KEY"
   | "CHROME_OS_NO_KEY";
+const VerifyChallengeResponseResultProfileKeyTrustLevelEnum = S.String;
+
 export type StringList = Array<string>;
+const StringList = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<StringList>;
+
 export type DeviceSignalsOsFirewallEnum =
   | "OS_FIREWALL_UNSPECIFIED"
   | "OS_FIREWALL_UNKNOWN"
   | "OS_FIREWALL_DISABLED"
   | "OS_FIREWALL_ENABLED";
+const DeviceSignalsOsFirewallEnum = S.String;
+
 export type DeviceSignalsSafeBrowsingProtectionLevelEnum =
   | "SAFE_BROWSING_PROTECTION_LEVEL_UNSPECIFIED"
   | "INACTIVE"
   | "STANDARD"
   | "ENHANCED";
+const DeviceSignalsSafeBrowsingProtectionLevelEnum = S.String;
+
 export type AntivirusStateEnum = "STATE_UNSPECIFIED" | "MISSING" | "DISABLED" | "ENABLED";
+const AntivirusStateEnum = S.String;
+
 /** Antivirus information on a device. */
 export interface Antivirus {
   /** Output only. The state of the antivirus on the device. Introduced in Chrome M136. */
   state?: AntivirusStateEnum;
 }
+const Antivirus = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<Antivirus>;
+
 export type DeviceSignalsTriggerEnum =
   | "TRIGGER_UNSPECIFIED"
   | "TRIGGER_BROWSER_NAVIGATION"
   | "TRIGGER_LOGIN_SCREEN";
+const DeviceSignalsTriggerEnum = S.String;
+
 export type DeviceSignalsOperatingSystemEnum =
   | "OPERATING_SYSTEM_UNSPECIFIED"
   | "CHROME_OS"
@@ -122,6 +153,8 @@ export type DeviceSignalsOperatingSystemEnum =
   | "WINDOWS"
   | "MAC_OS_X"
   | "LINUX";
+const DeviceSignalsOperatingSystemEnum = S.String;
+
 /** Properties of the CrowdStrike agent installed on a device. */
 export interface CrowdStrikeAgent {
   /** Output only. The Agent ID of the Crowdstrike agent. */
@@ -129,31 +162,43 @@ export interface CrowdStrikeAgent {
   /** Output only. The Customer ID to which the agent belongs to. */
   customerId?: string;
 }
+const CrowdStrikeAgent = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<CrowdStrikeAgent>;
+
 export type DeviceSignalsRealtimeUrlCheckModeEnum =
   | "REALTIME_URL_CHECK_MODE_UNSPECIFIED"
   | "REALTIME_URL_CHECK_MODE_DISABLED"
   | "REALTIME_URL_CHECK_MODE_ENABLED_MAIN_FRAME";
+const DeviceSignalsRealtimeUrlCheckModeEnum = S.String;
+
 export type DeviceSignalsSecureBootModeEnum =
   | "SECURE_BOOT_MODE_UNSPECIFIED"
   | "SECURE_BOOT_MODE_UNKNOWN"
   | "SECURE_BOOT_MODE_DISABLED"
   | "SECURE_BOOT_MODE_ENABLED";
+const DeviceSignalsSecureBootModeEnum = S.String;
+
 export type DeviceSignalsScreenLockSecuredEnum =
   | "SCREEN_LOCK_SECURED_UNSPECIFIED"
   | "SCREEN_LOCK_SECURED_UNKNOWN"
   | "SCREEN_LOCK_SECURED_DISABLED"
   | "SCREEN_LOCK_SECURED_ENABLED";
+const DeviceSignalsScreenLockSecuredEnum = S.String;
+
 export type DeviceSignalsDiskEncryptionEnum =
   | "DISK_ENCRYPTION_UNSPECIFIED"
   | "DISK_ENCRYPTION_UNKNOWN"
   | "DISK_ENCRYPTION_DISABLED"
   | "DISK_ENCRYPTION_ENCRYPTED";
+const DeviceSignalsDiskEncryptionEnum = S.String;
+
 export type DeviceSignalsPasswordProtectionWarningTriggerEnum =
   | "PASSWORD_PROTECTION_WARNING_TRIGGER_UNSPECIFIED"
   | "POLICY_UNSET"
   | "PASSWORD_PROTECTION_OFF"
   | "PASSWORD_REUSE"
   | "PHISHING_REUSE";
+const DeviceSignalsPasswordProtectionWarningTriggerEnum = S.String;
+
 /** The device signals as reported by Chrome. Unless otherwise specified, signals are available on all platforms. */
 export interface DeviceSignals {
   /** Output only. Affiliation IDs of the organizations that are affiliated with the organization that is currently managing the Chrome Profile's user or ChromeOS user. */
@@ -223,6 +268,8 @@ export interface DeviceSignals {
   /** Output only. The current version of the Operating System. On Windows and linux, the value will also include the security patch information. */
   osVersion?: string;
 }
+const DeviceSignals = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<DeviceSignals>;
+
 export type VerifyChallengeResponseResultKeyTrustLevelEnum =
   | "KEY_TRUST_LEVEL_UNSPECIFIED"
   | "CHROME_OS_VERIFIED_MODE"
@@ -231,6 +278,8 @@ export type VerifyChallengeResponseResultKeyTrustLevelEnum =
   | "CHROME_BROWSER_OS_KEY"
   | "CHROME_BROWSER_NO_KEY"
   | "CHROME_OS_NO_KEY";
+const VerifyChallengeResponseResultKeyTrustLevelEnum = S.String;
+
 /** Result message for VerifiedAccess.VerifyChallengeResponse. The response returned when successful for Managed profiles on Unmanaged browsers will NOT have devicePermanentId, keyTrustLevel, virtualDeviceId and customerId fields. Managed profiles will INSTEAD have the profileCustomerId, virtualProfileId, profilePermanentId and profileKeyTrustLevel fields. */
 export interface VerifyChallengeResponseResult {
   /** Output only. The client-provided ID of a profile on the device. */
@@ -260,6 +309,11 @@ export interface VerifyChallengeResponseResult {
   /** Output only. Device attested key trust level. */
   keyTrustLevel?: VerifyChallengeResponseResultKeyTrustLevelEnum;
 }
+const VerifyChallengeResponseResult = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<VerifyChallengeResponseResult>;
+
 export type GenerateChallengeError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Generates a new challenge. */
 export const generateChallenge: API.OperationMethod<
@@ -268,8 +322,8 @@ export const generateChallenge: API.OperationMethod<
   GenerateChallengeError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1) as any as S.Schema<GenerateChallengeRequest>,
-  output: __S(2) as any as S.Schema<Challenge>,
+  input: GenerateChallengeRequest,
+  output: Challenge,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -283,8 +337,8 @@ export const verifyChallenge: API.OperationMethod<
   VerifyChallengeError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4) as any as S.Schema<VerifyChallengeRequest>,
-  output: __S(9) as any as S.Schema<VerifyChallengeResponseResult>,
+  input: VerifyChallengeRequest,
+  output: VerifyChallengeResponseResult,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -300,7 +354,7 @@ function __c0(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(__S(0).pipe(T.HttpBody())),
+          body: S.optional(Empty.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -327,7 +381,7 @@ function __c0(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(__S(3).pipe(T.HttpBody())),
+          body: S.optional(VerifyChallengeResponseRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -341,7 +395,7 @@ function __c0(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          state: S.optional(S.String),
+          state: S.optional(AntivirusStateEnum),
         }),
       ).annotate({ identifier: "Antivirus" });
     case 7:
@@ -358,36 +412,38 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          profileAffiliationIds: S.optional(__S(5)),
+          profileAffiliationIds: S.optional(StringList),
           allowScreenLock: S.optional(S.Boolean),
           browserVersion: S.optional(S.String),
           displayName: S.optional(S.String),
           deviceModel: S.optional(S.String),
-          meid: S.optional(__S(5)),
+          meid: S.optional(StringList),
           hostname: S.optional(S.String),
-          osFirewall: S.optional(S.String),
-          systemDnsServers: S.optional(__S(5)),
+          osFirewall: S.optional(DeviceSignalsOsFirewallEnum),
+          systemDnsServers: S.optional(StringList),
           siteIsolationEnabled: S.optional(S.Boolean),
           chromeRemoteDesktopAppBlocked: S.optional(S.Boolean),
           builtInDnsClientEnabled: S.optional(S.Boolean),
-          safeBrowsingProtectionLevel: S.optional(S.String),
-          antivirus: S.optional(__S(6)),
-          trigger: S.optional(S.String),
-          imei: S.optional(__S(5)),
-          operatingSystem: S.optional(S.String),
+          safeBrowsingProtectionLevel: S.optional(DeviceSignalsSafeBrowsingProtectionLevelEnum),
+          antivirus: S.optional(Antivirus),
+          trigger: S.optional(DeviceSignalsTriggerEnum),
+          imei: S.optional(StringList),
+          operatingSystem: S.optional(DeviceSignalsOperatingSystemEnum),
           deviceEnrollmentDomain: S.optional(S.String),
-          deviceAffiliationIds: S.optional(__S(5)),
-          macAddresses: S.optional(__S(5)),
-          crowdStrikeAgent: S.optional(__S(7)),
+          deviceAffiliationIds: S.optional(StringList),
+          macAddresses: S.optional(StringList),
+          crowdStrikeAgent: S.optional(CrowdStrikeAgent),
           windowsUserDomain: S.optional(S.String),
-          realtimeUrlCheckMode: S.optional(S.String),
+          realtimeUrlCheckMode: S.optional(DeviceSignalsRealtimeUrlCheckModeEnum),
           deviceManufacturer: S.optional(S.String),
           windowsMachineDomain: S.optional(S.String),
-          secureBootMode: S.optional(S.String),
-          screenLockSecured: S.optional(S.String),
-          diskEncryption: S.optional(S.String),
+          secureBootMode: S.optional(DeviceSignalsSecureBootModeEnum),
+          screenLockSecured: S.optional(DeviceSignalsScreenLockSecuredEnum),
+          diskEncryption: S.optional(DeviceSignalsDiskEncryptionEnum),
           thirdPartyBlockingEnabled: S.optional(S.Boolean),
-          passwordProtectionWarningTrigger: S.optional(S.String),
+          passwordProtectionWarningTrigger: S.optional(
+            DeviceSignalsPasswordProtectionWarningTriggerEnum,
+          ),
           serialNumber: S.optional(S.String),
           profileEnrollmentDomain: S.optional(S.String),
           osVersion: S.optional(S.String),
@@ -403,28 +459,15 @@ function __c1(j: number): any {
           signedPublicKeyAndChallenge: S.optional(S.String),
           devicePermanentId: S.optional(S.String),
           attestedDeviceId: S.optional(S.String),
-          profileKeyTrustLevel: S.optional(S.String),
+          profileKeyTrustLevel: S.optional(VerifyChallengeResponseResultProfileKeyTrustLevelEnum),
           customerId: S.optional(S.String),
           deviceSignal: S.optional(S.String),
-          deviceSignals: S.optional(__S(8)),
+          deviceSignals: S.optional(DeviceSignals),
           profilePermanentId: S.optional(S.String),
-          keyTrustLevel: S.optional(S.String),
+          keyTrustLevel: S.optional(VerifyChallengeResponseResultKeyTrustLevelEnum),
         }),
       ).annotate({
         identifier: "VerifyChallengeResponseResult",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
   }
 }

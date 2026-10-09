@@ -8,8 +8,6 @@ import { paginateResend } from "../pagination.ts";
 import { ResendProtocol, type ResendOpError, type ResendOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { ResendOpError, ResendOpContext };
 
@@ -17,13 +15,23 @@ export interface CancelEmailRequest {
   /** The ID of the email. */
   email_id: string;
 }
+const CancelEmailRequest = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<CancelEmailRequest>;
+
 export type EmailToList = Array<string>;
+const EmailToList = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<EmailToList>;
+
 /** The email addresses of the blind carbon copy recipients. */
 export type EmailBccList = Array<string>;
+const EmailBccList = EmailToList as any as S.Schema<EmailBccList>;
+
 /** The email addresses of the carbon copy recipients. */
 export type EmailCcList = Array<string>;
+const EmailCcList = EmailToList as any as S.Schema<EmailCcList>;
+
 /** The email addresses to which replies should be sent. */
 export type EmailReplyToList = Array<string>;
+const EmailReplyToList = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<EmailReplyToList>;
+
 export interface Email {
   /** The type of object. */
   object?: string;
@@ -49,8 +57,12 @@ export interface Email {
   /** The status of the email. */
   last_event?: string;
 }
+const Email = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<Email>;
+
 /** The API key can have full access to Resend's API or be only restricted to send emails. * full_access - Can create, delete, get, and update any resource. * sending_access - Can only send emails. */
 export type CreateApiKeyRequestPermission = "full_access" | "sending_access";
+const CreateApiKeyRequestPermission = S.String;
+
 export interface CreateApiKeyRequest {
   /** The API key name. */
   name: string;
@@ -59,14 +71,20 @@ export interface CreateApiKeyRequest {
   /** Restrict an API key to send emails only from a specific domain. Only used when the permission is sending_access. */
   domain_id?: string;
 }
+const CreateApiKeyRequest = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<CreateApiKeyRequest>;
+
 export interface CreateApiKeyResponse {
   /** The ID of the API key. */
   id?: string;
   /** The token of the API key. */
   token?: string;
 }
+const CreateApiKeyResponse = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<CreateApiKeyResponse>;
+
 /** The initial status of the automation. Defaults to `disabled`. */
 export type CreateAutomationRequestStatus = "enabled" | "disabled";
+const CreateAutomationRequestStatus = S.String;
+
 /** The type of automation step. */
 export type AutomationStepType =
   | "trigger"
@@ -77,6 +95,8 @@ export type AutomationStepType =
   | "contact_update"
   | "contact_delete"
   | "add_to_segment";
+const AutomationStepType = S.String;
+
 /** A step in an automation workflow. The `config` object varies based on the step `type`. */
 export interface AutomationStep {
   /** A unique key for this step within the automation graph. */
@@ -86,8 +106,15 @@ export interface AutomationStep {
   /** Configuration for the step. Shape depends on `type`: - **trigger**: `{ event_name: string }` - **send_email**: `{ template: { id: string, variables?: object }, subject?: string, from?: string, reply_to?: string }` - **delay**: `{ duration: string }` -- a human-readable duration (e.g. `"30 minutes"`) - **wait_for_event**: `{ event_name: string, timeout?: string, filter_rule?: object }` -- `timeout` is a human-readable duration (e.g. `"1 hour"`) - **condition**: A rule tree with `type` (`rule`, `and`, `or`), `field`, `operator`, and `value` - **contact_update**: `{ first_name?: string|object, last_name?: string|object, unsubscribed?: boolean|object, properties?: object }` - **contact_delete**: `{}` - **add_to_segment**: `{ segment_id: string }` */
   config: unknown;
 }
+const AutomationStep = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<AutomationStep>;
+
 /** The steps that compose the automation workflow. Must include at least one `trigger` step. */
 export type CreateAutomationRequestStepsList = Array<AutomationStep>;
+const CreateAutomationRequestStepsList = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<CreateAutomationRequestStepsList>;
+
 /** The type of connection. Defaults to `default`. */
 export type AutomationConnectionType =
   | "default"
@@ -95,6 +122,8 @@ export type AutomationConnectionType =
   | "condition_not_met"
   | "timeout"
   | "event_received";
+const AutomationConnectionType = S.String;
+
 /** A connection between two steps in the automation graph. */
 export interface AutomationConnection {
   /** The `key` of the source step. */
@@ -104,8 +133,15 @@ export interface AutomationConnection {
   /** The type of connection. Defaults to `default`. */
   type?: AutomationConnectionType | (string & {});
 }
+const AutomationConnection = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<AutomationConnection>;
+
 /** The connections between steps in the automation graph. */
 export type CreateAutomationRequestConnectionsList = Array<AutomationConnection>;
+const CreateAutomationRequestConnectionsList = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<CreateAutomationRequestConnectionsList>;
+
 export interface CreateAutomationRequest {
   /** The name of the automation. */
   name: string;
@@ -116,14 +152,27 @@ export interface CreateAutomationRequest {
   /** The connections between steps in the automation graph. */
   connections: CreateAutomationRequestConnectionsList;
 }
+const CreateAutomationRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<CreateAutomationRequest>;
+
 export interface CreateAutomationResponse {
   /** Type of the response object. */
   object?: string;
   /** The ID of the created automation. */
   id?: string;
 }
+const CreateAutomationResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<CreateAutomationResponse>;
+
 /** The email addresses to which replies should be sent. */
 export type CreateBroadcastRequestReplyToList = Array<string>;
+const CreateBroadcastRequestReplyToList =
+  EmailReplyToList as any as S.Schema<CreateBroadcastRequestReplyToList>;
+
 export interface CreateBroadcastRequest {
   /** Name of the broadcast. */
   name?: string;
@@ -150,26 +199,56 @@ export interface CreateBroadcastRequest {
   /** Schedule time to send the broadcast. Can only be used if `send` is true. */
   scheduled_at?: string;
 }
+const CreateBroadcastRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<CreateBroadcastRequest>;
+
 export interface CreateBroadcastResponseSuccess {
   /** The ID of the broadcast. */
   id?: string;
   /** The object type of the response. */
   object?: string;
 }
+const CreateBroadcastResponseSuccess = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<CreateBroadcastResponseSuccess>;
+
 /** A map of custom property keys and values to create. */
 export type CreateContactRequestPropertiesMap = { [key: string]: unknown | undefined };
+const CreateContactRequestPropertiesMap = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<CreateContactRequestPropertiesMap>;
+
 /** Array of segment IDs to add the contact to. */
 export type CreateContactRequestSegmentsList = Array<string>;
+const CreateContactRequestSegmentsList =
+  EmailReplyToList as any as S.Schema<CreateContactRequestSegmentsList>;
+
 /** The subscription status for this topic. */
 export type CreateContactRequestTopicsItemSubscription = "opt_in" | "opt_out";
+const CreateContactRequestTopicsItemSubscription = S.String;
+
 export interface CreateContactRequestTopicsItem {
   /** The topic ID. */
   id?: string;
   /** The subscription status for this topic. */
   subscription?: CreateContactRequestTopicsItemSubscription | (string & {});
 }
+const CreateContactRequestTopicsItem = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<CreateContactRequestTopicsItem>;
+
 /** Array of topic subscriptions for the contact. */
 export type CreateContactRequestTopicsList = Array<CreateContactRequestTopicsItem>;
+const CreateContactRequestTopicsList = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<CreateContactRequestTopicsList>;
+
 export interface CreateContactRequest {
   /** Email address of the contact. */
   email: string;
@@ -188,16 +267,28 @@ export interface CreateContactRequest {
   /** Unique identifier of the audience to which the contact belongs. */
   audience_id?: string;
 }
+const CreateContactRequest = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<CreateContactRequest>;
+
 export interface CreateContactResponseSuccess {
   /** Type of the response object. */
   object?: string;
   /** Unique identifier for the created contact. */
   id?: string;
 }
+const CreateContactResponseSuccess = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<CreateContactResponseSuccess>;
+
 /** The property type. */
 export type CreateContactPropertyRequestType = "string" | "number";
+const CreateContactPropertyRequestType = S.String;
+
 /** The default value to use when the property is not set for a contact. Must match the type specified in the type field. */
 export type CreateContactPropertyRequestFallbackValue = string | number;
+const CreateContactPropertyRequestFallbackValue =
+  S.Unknown as any as S.Schema<CreateContactPropertyRequestFallbackValue>;
+
 export interface CreateContactPropertyRequest {
   /** The property key. Max length is 50 characters. Only alphanumeric characters and underscores are allowed. */
   key: string;
@@ -206,20 +297,36 @@ export interface CreateContactPropertyRequest {
   /** The default value to use when the property is not set for a contact. Must match the type specified in the type field. */
   fallback_value?: CreateContactPropertyRequestFallbackValue;
 }
+const CreateContactPropertyRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<CreateContactPropertyRequest>;
+
 export interface CreateContactPropertyResponseSuccess {
   /** The ID of the contact property. */
   id?: string;
   /** The object type of the response. */
   object?: string;
 }
+const CreateContactPropertyResponseSuccess =
+  CreateBroadcastResponseSuccess as any as S.Schema<CreateContactPropertyResponseSuccess>;
+
 /** The region where emails will be sent from. Possible values are us-east-1 | eu-west-1 | sa-east-1 | ap-northeast-1 */
 export type CreateDomainRequestRegion = "us-east-1" | "eu-west-1" | "sa-east-1" | "ap-northeast-1";
+const CreateDomainRequestRegion = S.String;
+
 /** TLS mode. Opportunistic attempts secure connection but falls back to unencrypted. Enforced requires TLS or email won't be sent. */
 export type CreateDomainRequestTls = "opportunistic" | "enforced";
+const CreateDomainRequestTls = S.String;
+
 /** Enable or disable sending emails from this domain. */
 export type DomainCapabilitiesSending = "enabled" | "disabled";
+const DomainCapabilitiesSending = S.String;
+
 /** Enable or disable receiving emails to this domain. */
 export type DomainCapabilitiesReceiving = "enabled" | "disabled";
+const DomainCapabilitiesReceiving = S.String;
+
 /** Configure the domain capabilities for sending and receiving emails. At least one capability must be enabled. */
 export interface DomainCapabilities {
   /** Enable or disable sending emails from this domain. */
@@ -227,6 +334,8 @@ export interface DomainCapabilities {
   /** Enable or disable receiving emails to this domain. */
   receiving?: DomainCapabilitiesReceiving | (string & {});
 }
+const DomainCapabilities = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<DomainCapabilities>;
+
 export interface CreateDomainRequest {
   /** The name of the domain you want to create. */
   name: string;
@@ -244,10 +353,16 @@ export interface CreateDomainRequest {
   /** The subdomain to use for click and open tracking. */
   tracking_subdomain?: string;
 }
+const CreateDomainRequest = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<CreateDomainRequest>;
+
 /** The type of record (SPF for sending, DKIM for sending, Receiving for inbound emails, Tracking for click and open tracking). */
 export type DomainRecordRecord = "SPF" | "DKIM" | "Receiving" | "Tracking";
+const DomainRecordRecord = S.String;
+
 /** The DNS record type. */
 export type DomainRecordType = "MX" | "TXT" | "CNAME";
+const DomainRecordType = S.String;
+
 /** The status of the record. */
 export type DomainRecordStatus =
   | "pending"
@@ -255,6 +370,8 @@ export type DomainRecordStatus =
   | "failed"
   | "temporary_failure"
   | "not_started";
+const DomainRecordStatus = S.String;
+
 export interface DomainRecord {
   /** The type of record (SPF for sending, DKIM for sending, Receiving for inbound emails, Tracking for click and open tracking). */
   record?: DomainRecordRecord;
@@ -271,7 +388,14 @@ export interface DomainRecord {
   /** The priority of the record (only applicable for MX records). */
   priority?: number;
 }
+const DomainRecord = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<DomainRecord>;
+
 export type CreateDomainResponseRecordsList = Array<DomainRecord>;
+const CreateDomainResponseRecordsList = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<CreateDomainResponseRecordsList>;
+
 export interface CreateDomainResponse {
   /** The ID of the domain. */
   id?: string;
@@ -292,29 +416,52 @@ export interface CreateDomainResponse {
   /** The subdomain used for click and open tracking. */
   tracking_subdomain?: string;
 }
+const CreateDomainResponse = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<CreateDomainResponse>;
+
 export type CreateEmailRequestToCase1List = Array<string>;
 /** Recipient email address. For multiple addresses, send as an array of strings. Max 50. */
 export type CreateEmailRequestTo = string | CreateEmailRequestToCase1List;
+const CreateEmailRequestTo = S.Unknown as any as S.Schema<CreateEmailRequestTo>;
+
 export type CreateEmailRequestBccCase1List = Array<string>;
 /** Bcc recipient email address. For multiple addresses, send as an array of strings. */
 export type CreateEmailRequestBcc = string | CreateEmailRequestBccCase1List;
+const CreateEmailRequestBcc = S.Unknown as any as S.Schema<CreateEmailRequestBcc>;
+
 export type CreateEmailRequestCcCase1List = Array<string>;
 /** Cc recipient email address. For multiple addresses, send as an array of strings. */
 export type CreateEmailRequestCc = string | CreateEmailRequestCcCase1List;
+const CreateEmailRequestCc = S.Unknown as any as S.Schema<CreateEmailRequestCc>;
+
 export type CreateEmailRequestReplyToCase1List = Array<string>;
 /** Reply-to email address. For multiple addresses, send as an array of strings. */
 export type CreateEmailRequestReplyTo = string | CreateEmailRequestReplyToCase1List;
+const CreateEmailRequestReplyTo = S.Unknown as any as S.Schema<CreateEmailRequestReplyTo>;
+
 export type CreateEmailRequestTemplateVariablesValue = string | number;
+const CreateEmailRequestTemplateVariablesValue =
+  S.Unknown as any as S.Schema<CreateEmailRequestTemplateVariablesValue>;
+
 /** Template variables object with key/value pairs. */
 export type CreateEmailRequestTemplateVariablesMap = {
   [key: string]: CreateEmailRequestTemplateVariablesValue | undefined;
 };
+const CreateEmailRequestTemplateVariablesMap = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<CreateEmailRequestTemplateVariablesMap>;
+
 export interface CreateEmailRequestTemplate {
   /** The id of the published email template. */
   id: string;
   /** Template variables object with key/value pairs. */
   variables?: CreateEmailRequestTemplateVariablesMap;
 }
+const CreateEmailRequestTemplate = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<CreateEmailRequestTemplate>;
+
 export interface Attachment {
   /** Content of an attached file. */
   content?: string;
@@ -327,14 +474,28 @@ export interface Attachment {
   /** Content ID for embedding inline images using cid references (e.g., cid:image001). */
   content_id?: string;
 }
+const Attachment = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<Attachment>;
+
 export type CreateEmailRequestAttachmentsList = Array<Attachment>;
+const CreateEmailRequestAttachmentsList = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<CreateEmailRequestAttachmentsList>;
+
 export interface Tag {
   /** The name of the email tag. It can only contain ASCII letters (a-z, A-Z), numbers (0-9), underscores (_), or dashes (-). It can contain no more than 256 characters. */
   name?: string;
   /** The value of the email tag.It can only contain ASCII letters (a-z, A-Z), numbers (0-9), underscores (_), or dashes (-). It can contain no more than 256 characters. */
   value?: string;
 }
+const Tag = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<Tag>;
+
 export type CreateEmailRequestTagsList = Array<Tag>;
+const CreateEmailRequestTagsList = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<CreateEmailRequestTagsList>;
+
 export interface CreateEmailRequest {
   /** Sender email address. To include a friendly name, use the format "Your Name <sender@domain.com>". */
   from: string;
@@ -362,35 +523,66 @@ export interface CreateEmailRequest {
   /** The topic ID to scope the email to. If the recipient is a contact and opted-in to the topic, the email is sent. If opted-out, the email is not sent. If the recipient is not a contact, the email is sent if the topic's default subscription is opt_in. */
   topic_id?: string;
 }
+const CreateEmailRequest = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<CreateEmailRequest>;
+
 export interface SendEmailResponse {
   /** The ID of the sent email. */
   id?: string;
 }
+const SendEmailResponse = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<SendEmailResponse>;
+
 export type SendEmailRequestToCase1List = Array<string>;
 /** Recipient email address. For multiple addresses, send as an array of strings. Max 50. */
 export type SendEmailRequestTo = string | SendEmailRequestToCase1List;
+const SendEmailRequestTo = S.Unknown as any as S.Schema<SendEmailRequestTo>;
+
 export type SendEmailRequestBccCase1List = Array<string>;
 /** Bcc recipient email address. For multiple addresses, send as an array of strings. */
 export type SendEmailRequestBcc = string | SendEmailRequestBccCase1List;
+const SendEmailRequestBcc = S.Unknown as any as S.Schema<SendEmailRequestBcc>;
+
 export type SendEmailRequestCcCase1List = Array<string>;
 /** Cc recipient email address. For multiple addresses, send as an array of strings. */
 export type SendEmailRequestCc = string | SendEmailRequestCcCase1List;
+const SendEmailRequestCc = S.Unknown as any as S.Schema<SendEmailRequestCc>;
+
 export type SendEmailRequestReplyToCase1List = Array<string>;
 /** Reply-to email address. For multiple addresses, send as an array of strings. */
 export type SendEmailRequestReplyTo = string | SendEmailRequestReplyToCase1List;
+const SendEmailRequestReplyTo = S.Unknown as any as S.Schema<SendEmailRequestReplyTo>;
+
 export type SendEmailRequestTemplateVariablesValue = string | number;
+const SendEmailRequestTemplateVariablesValue =
+  S.Unknown as any as S.Schema<SendEmailRequestTemplateVariablesValue>;
+
 /** Template variables object with key/value pairs. */
 export type SendEmailRequestTemplateVariablesMap = {
   [key: string]: SendEmailRequestTemplateVariablesValue | undefined;
 };
+const SendEmailRequestTemplateVariablesMap = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<SendEmailRequestTemplateVariablesMap>;
+
 export interface SendEmailRequestTemplate {
   /** The id of the published email template. */
   id: string;
   /** Template variables object with key/value pairs. */
   variables?: SendEmailRequestTemplateVariablesMap;
 }
+const SendEmailRequestTemplate = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<SendEmailRequestTemplate>;
+
 export type SendEmailRequestAttachmentsList = Array<Attachment>;
+const SendEmailRequestAttachmentsList =
+  CreateEmailRequestAttachmentsList as any as S.Schema<SendEmailRequestAttachmentsList>;
+
 export type SendEmailRequestTagsList = Array<Tag>;
+const SendEmailRequestTagsList =
+  CreateEmailRequestTagsList as any as S.Schema<SendEmailRequestTagsList>;
+
 export interface SendEmailRequest {
   /** Sender email address. To include a friendly name, use the format "Your Name <sender@domain.com>". */
   from: string;
@@ -418,30 +610,61 @@ export interface SendEmailRequest {
   /** The topic ID to scope the email to. If the recipient is a contact and opted-in to the topic, the email is sent. If opted-out, the email is not sent. If the recipient is not a contact, the email is sent if the topic's default subscription is opt_in. */
   topic_id?: string;
 }
+const SendEmailRequest = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<SendEmailRequest>;
+
 export type CreateEmailBatchRequestBodyList = Array<SendEmailRequest>;
+const CreateEmailBatchRequestBodyList = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<CreateEmailBatchRequestBodyList>;
+
 export interface CreateEmailBatchRequest {
   body?: CreateEmailBatchRequestBodyList;
 }
+const CreateEmailBatchRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<CreateEmailBatchRequest>;
+
 export interface CreateBatchEmailsResponseDataItem {
   /** The ID of the sent email. */
   id?: string;
 }
+const CreateBatchEmailsResponseDataItem = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<CreateBatchEmailsResponseDataItem>;
+
 export type CreateBatchEmailsResponseDataList = Array<CreateBatchEmailsResponseDataItem>;
+const CreateBatchEmailsResponseDataList = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<CreateBatchEmailsResponseDataList>;
+
 export interface CreateBatchEmailsResponse {
   data?: CreateBatchEmailsResponseDataList;
 }
+const CreateBatchEmailsResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  0,
+) as any as S.Schema<CreateBatchEmailsResponse>;
+
 export interface CreateEventRequest {
   /** The name of the event. Cannot start with the reserved `resend:` prefix. */
   name: string;
   /** An optional flat key/type map defining the event payload schema. Supported types are `string`, `number`, `boolean`, and `date`. */
   schema?: unknown | null;
 }
+const CreateEventRequest = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<CreateEventRequest>;
+
 export interface CreateEventResponse {
   /** Type of the response object. */
   object?: string;
   /** The ID of the created event. */
   id?: string;
 }
+const CreateEventResponse = CreateAutomationResponse as any as S.Schema<CreateEventResponse>;
+
 export interface CreateSegmentRequest {
   /** The name of the segment. */
   name: string;
@@ -450,16 +673,26 @@ export interface CreateSegmentRequest {
   /** Filter conditions for the segment. */
   filter?: unknown;
 }
+const CreateSegmentRequest = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<CreateSegmentRequest>;
+
 export interface CreateSegmentResponseSuccess {
   /** The ID of the segment. */
   id?: string;
   /** The object type of the response. */
   object?: string;
 }
+const CreateSegmentResponseSuccess =
+  CreateBroadcastResponseSuccess as any as S.Schema<CreateSegmentResponseSuccess>;
+
 /** Reply-to email addresses. */
 export type CreateTemplateRequestReplyToList = Array<string>;
+const CreateTemplateRequestReplyToList =
+  EmailReplyToList as any as S.Schema<CreateTemplateRequestReplyToList>;
+
 /** The type of the variable. */
 export type TemplateVariableInputType = "string" | "number" | "boolean" | "object" | "list";
+const TemplateVariableInputType = S.String;
+
 export type TemplateVariableInputFallbackValueCase4List = Array<unknown>;
 /** The fallback value of the variable. */
 export type TemplateVariableInputFallbackValue =
@@ -468,6 +701,9 @@ export type TemplateVariableInputFallbackValue =
   | boolean
   | unknown
   | TemplateVariableInputFallbackValueCase4List;
+const TemplateVariableInputFallbackValue =
+  S.Unknown as any as S.Schema<TemplateVariableInputFallbackValue>;
+
 export interface TemplateVariableInput {
   /** The key of the variable. */
   key: string;
@@ -476,7 +712,17 @@ export interface TemplateVariableInput {
   /** The fallback value of the variable. */
   fallback_value?: TemplateVariableInputFallbackValue;
 }
+const TemplateVariableInput = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<TemplateVariableInput>;
+
 export type CreateTemplateRequestVariablesList = Array<TemplateVariableInput>;
+const CreateTemplateRequestVariablesList = /*@__PURE__*/ __L.at(
+  __c5,
+  4,
+) as any as S.Schema<CreateTemplateRequestVariablesList>;
+
 export interface CreateTemplateRequest {
   /** The name of the template. */
   name: string;
@@ -494,16 +740,28 @@ export interface CreateTemplateRequest {
   text?: string;
   variables?: CreateTemplateRequestVariablesList;
 }
+const CreateTemplateRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  5,
+) as any as S.Schema<CreateTemplateRequest>;
+
 export interface CreateTemplateResponseSuccess {
   /** The ID of the template. */
   id?: string;
   /** The object type of the response. */
   object?: string;
 }
+const CreateTemplateResponseSuccess =
+  CreateBroadcastResponseSuccess as any as S.Schema<CreateTemplateResponseSuccess>;
+
 /** The default subscription status for the topic. Cannot be changed after creation. */
 export type CreateTopicRequestDefaultSubscription = "opt_in" | "opt_out";
+const CreateTopicRequestDefaultSubscription = S.String;
+
 /** The visibility of the topic. Public topics are visible to all contacts on the unsubscribe page. Private topics are only visible to opted-in contacts. */
 export type CreateTopicRequestVisibility = "public" | "private";
+const CreateTopicRequestVisibility = S.String;
+
 export interface CreateTopicRequest {
   /** The name of the topic. Max 50 characters. */
   name: string;
@@ -514,20 +772,30 @@ export interface CreateTopicRequest {
   /** The visibility of the topic. Public topics are visible to all contacts on the unsubscribe page. Private topics are only visible to opted-in contacts. */
   visibility?: CreateTopicRequestVisibility | (string & {});
 }
+const CreateTopicRequest = /*@__PURE__*/ __L.at(__c5, 6) as any as S.Schema<CreateTopicRequest>;
+
 export interface CreateTopicResponseSuccess {
   /** The ID of the topic. */
   id?: string;
   /** The object type of the response. */
   object?: string;
 }
+const CreateTopicResponseSuccess =
+  CreateBroadcastResponseSuccess as any as S.Schema<CreateTopicResponseSuccess>;
+
 /** Array of event types to subscribe to. */
 export type CreateWebhookRequestEventsList = Array<string>;
+const CreateWebhookRequestEventsList =
+  EmailReplyToList as any as S.Schema<CreateWebhookRequestEventsList>;
+
 export interface CreateWebhookRequest {
   /** The URL where webhook events will be sent. */
   endpoint: string;
   /** Array of event types to subscribe to. */
   events: CreateWebhookRequestEventsList;
 }
+const CreateWebhookRequest = /*@__PURE__*/ __L.at(__c5, 7) as any as S.Schema<CreateWebhookRequest>;
+
 export interface CreateWebhookResponse {
   /** The type of object. */
   object?: string;
@@ -536,10 +804,17 @@ export interface CreateWebhookResponse {
   /** The secret key used to verify webhook payloads. */
   signing_secret?: string | Redacted.Redacted<string>;
 }
+const CreateWebhookResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<CreateWebhookResponse>;
+
 export interface DeleteApiKeyRequest {
   /** The API key ID. */
   api_key_id: string;
 }
+const DeleteApiKeyRequest = /*@__PURE__*/ __L.at(__c6, 1) as any as S.Schema<DeleteApiKeyRequest>;
+
 export interface DeleteApiKeyResponse {
   /** The type of object. */
   object?: string;
@@ -548,10 +823,17 @@ export interface DeleteApiKeyResponse {
   /** Indicates whether the API key was successfully deleted. */
   deleted?: boolean;
 }
+const DeleteApiKeyResponse = /*@__PURE__*/ __L.at(__c6, 2) as any as S.Schema<DeleteApiKeyResponse>;
+
 export interface DeleteAutomationRequest {
   /** The ID of the automation. */
   automation_id: string;
 }
+const DeleteAutomationRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  3,
+) as any as S.Schema<DeleteAutomationRequest>;
+
 export interface DeleteAutomationResponse {
   /** Type of the response object. */
   object?: string;
@@ -560,10 +842,17 @@ export interface DeleteAutomationResponse {
   /** Indicates whether the automation was successfully deleted. */
   deleted?: boolean;
 }
+const DeleteAutomationResponse = DeleteApiKeyResponse as any as S.Schema<DeleteAutomationResponse>;
+
 export interface DeleteBroadcastRequest {
   /** The Broadcast ID. */
   id: string;
 }
+const DeleteBroadcastRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  4,
+) as any as S.Schema<DeleteBroadcastRequest>;
+
 export interface RemoveBroadcastResponseSuccess {
   /** The ID of the broadcast. */
   id?: string;
@@ -572,10 +861,17 @@ export interface RemoveBroadcastResponseSuccess {
   /** The deleted attribute indicates that the corresponding broadcast has been deleted. */
   deleted?: boolean;
 }
+const RemoveBroadcastResponseSuccess = /*@__PURE__*/ __L.at(
+  __c6,
+  5,
+) as any as S.Schema<RemoveBroadcastResponseSuccess>;
+
 export interface DeleteContactRequest {
   /** The Contact ID or email address. */
   id: string;
 }
+const DeleteContactRequest = /*@__PURE__*/ __L.at(__c6, 6) as any as S.Schema<DeleteContactRequest>;
+
 export interface RemoveContactResponseSuccess {
   /** Type of the response object. */
   object?: string;
@@ -584,10 +880,20 @@ export interface RemoveContactResponseSuccess {
   /** Indicates whether the contact was successfully deleted. */
   deleted?: boolean;
 }
+const RemoveContactResponseSuccess = /*@__PURE__*/ __L.at(
+  __c6,
+  7,
+) as any as S.Schema<RemoveContactResponseSuccess>;
+
 export interface DeleteContactPropertyRequest {
   /** The Contact Property ID. */
   id: string;
 }
+const DeleteContactPropertyRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  0,
+) as any as S.Schema<DeleteContactPropertyRequest>;
+
 export interface RemoveContactPropertyResponseSuccess {
   /** The ID of the contact property. */
   id?: string;
@@ -596,12 +902,20 @@ export interface RemoveContactPropertyResponseSuccess {
   /** Indicates whether the contact property was successfully deleted. */
   deleted?: boolean;
 }
+const RemoveContactPropertyResponseSuccess =
+  RemoveBroadcastResponseSuccess as any as S.Schema<RemoveContactPropertyResponseSuccess>;
+
 export interface DeleteContactSegmentRequest {
   /** The Contact ID or email address. */
   contact_id: string;
   /** The Segment ID. */
   segment_id: string;
 }
+const DeleteContactSegmentRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  1,
+) as any as S.Schema<DeleteContactSegmentRequest>;
+
 export interface RemoveContactFromSegmentResponseSuccess {
   /** The object type. */
   object?: string;
@@ -612,10 +926,17 @@ export interface RemoveContactFromSegmentResponseSuccess {
   /** Indicates whether the contact was successfully removed from the segment. */
   deleted?: boolean;
 }
+const RemoveContactFromSegmentResponseSuccess = /*@__PURE__*/ __L.at(
+  __c7,
+  2,
+) as any as S.Schema<RemoveContactFromSegmentResponseSuccess>;
+
 export interface DeleteDomainRequest {
   /** The ID of the domain. */
   domain_id: string;
 }
+const DeleteDomainRequest = /*@__PURE__*/ __L.at(__c7, 3) as any as S.Schema<DeleteDomainRequest>;
+
 export interface DeleteDomainResponse {
   /** The type of object. */
   object?: string;
@@ -624,10 +945,14 @@ export interface DeleteDomainResponse {
   /** Indicates whether the domain was deleted successfully. */
   deleted?: boolean;
 }
+const DeleteDomainResponse = DeleteApiKeyResponse as any as S.Schema<DeleteDomainResponse>;
+
 export interface DeleteEventRequest {
   /** The event ID (UUID) or event name. */
   identifier: string;
 }
+const DeleteEventRequest = /*@__PURE__*/ __L.at(__c7, 4) as any as S.Schema<DeleteEventRequest>;
+
 export interface RemoveEventResponse {
   /** Type of the response object. */
   object?: string;
@@ -636,10 +961,14 @@ export interface RemoveEventResponse {
   /** Indicates whether the event was deleted. */
   deleted?: boolean;
 }
+const RemoveEventResponse = DeleteApiKeyResponse as any as S.Schema<RemoveEventResponse>;
+
 export interface DeleteSegmentRequest {
   /** The Segment ID. */
   id: string;
 }
+const DeleteSegmentRequest = /*@__PURE__*/ __L.at(__c7, 5) as any as S.Schema<DeleteSegmentRequest>;
+
 export interface RemoveSegmentResponseSuccess {
   /** The ID of the segment. */
   id?: string;
@@ -648,10 +977,18 @@ export interface RemoveSegmentResponseSuccess {
   /** Indicates whether the segment was successfully deleted. */
   deleted?: boolean;
 }
+const RemoveSegmentResponseSuccess =
+  RemoveBroadcastResponseSuccess as any as S.Schema<RemoveSegmentResponseSuccess>;
+
 export interface DeleteTemplateRequest {
   /** The Template ID or alias. */
   id: string;
 }
+const DeleteTemplateRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  6,
+) as any as S.Schema<DeleteTemplateRequest>;
+
 export interface RemoveTemplateResponseSuccess {
   /** Type of the response object. */
   object?: string;
@@ -660,10 +997,15 @@ export interface RemoveTemplateResponseSuccess {
   /** Indicates whether the template was successfully deleted. */
   deleted?: boolean;
 }
+const RemoveTemplateResponseSuccess =
+  RemoveContactResponseSuccess as any as S.Schema<RemoveTemplateResponseSuccess>;
+
 export interface DeleteTopicRequest {
   /** The Topic ID. */
   id: string;
 }
+const DeleteTopicRequest = /*@__PURE__*/ __L.at(__c7, 7) as any as S.Schema<DeleteTopicRequest>;
+
 export interface RemoveTopicResponseSuccess {
   /** The ID of the topic. */
   id?: string;
@@ -672,10 +1014,15 @@ export interface RemoveTopicResponseSuccess {
   /** Indicates whether the topic was successfully deleted. */
   deleted?: boolean;
 }
+const RemoveTopicResponseSuccess =
+  RemoveBroadcastResponseSuccess as any as S.Schema<RemoveTopicResponseSuccess>;
+
 export interface DeleteWebhookRequest {
   /** The Webhook ID. */
   webhook_id: string;
 }
+const DeleteWebhookRequest = /*@__PURE__*/ __L.at(__c8, 0) as any as S.Schema<DeleteWebhookRequest>;
+
 export interface DeleteWebhookResponse {
   /** The type of object. */
   object?: string;
@@ -684,22 +1031,36 @@ export interface DeleteWebhookResponse {
   /** Indicates whether the webhook was successfully deleted. */
   deleted?: boolean;
 }
+const DeleteWebhookResponse = DeleteApiKeyResponse as any as S.Schema<DeleteWebhookResponse>;
+
 export interface DuplicateTemplateRequest {
   /** The Template ID or alias. */
   id: string;
 }
+const DuplicateTemplateRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  1,
+) as any as S.Schema<DuplicateTemplateRequest>;
+
 export interface DuplicateTemplateResponseSuccess {
   /** The ID of the duplicated template. */
   id?: string;
   /** The object type of the response. */
   object?: string;
 }
+const DuplicateTemplateResponseSuccess =
+  CreateBroadcastResponseSuccess as any as S.Schema<DuplicateTemplateResponseSuccess>;
+
 export interface GetAutomationRequest {
   /** The ID of the automation. */
   automation_id: string;
 }
+const GetAutomationRequest = /*@__PURE__*/ __L.at(__c8, 2) as any as S.Schema<GetAutomationRequest>;
+
 /** The current status of the automation. */
 export type AutomationStatus = "enabled" | "disabled";
+const AutomationStatus = S.String;
+
 /** The type of automation step. */
 export type AutomationStepResponseType =
   | "trigger"
@@ -710,6 +1071,8 @@ export type AutomationStepResponseType =
   | "contact_update"
   | "contact_delete"
   | "add_to_segment";
+const AutomationStepResponseType = S.String;
+
 /** A step as returned when retrieving an automation. */
 export interface AutomationStepResponse {
   /** The unique key of this step within the automation graph. */
@@ -719,10 +1082,20 @@ export interface AutomationStepResponse {
   /** Configuration for the step. Shape depends on `type`. For `delay` steps, config contains `{ duration: string }` with a human-readable duration (e.g. `"30 minutes"`). For `wait_for_event` steps, config contains `{ event_name: string, timeout?: string, filter_rule?: object }` where `timeout` is a human-readable duration. */
   config?: unknown;
 }
+const AutomationStepResponse = /*@__PURE__*/ __L.at(
+  __c8,
+  3,
+) as any as S.Schema<AutomationStepResponse>;
+
 /** The steps in the active version of the automation. */
 export type AutomationStepsList = Array<AutomationStepResponse>;
+const AutomationStepsList = /*@__PURE__*/ __L.at(__c8, 4) as any as S.Schema<AutomationStepsList>;
+
 /** The connections between steps in the active version of the automation. */
 export type AutomationConnectionsList = Array<AutomationConnection>;
+const AutomationConnectionsList =
+  CreateAutomationRequestConnectionsList as any as S.Schema<AutomationConnectionsList>;
+
 export interface Automation {
   /** Type of the response object. */
   object?: string;
@@ -741,14 +1114,23 @@ export interface Automation {
   /** The connections between steps in the active version of the automation. */
   connections?: AutomationConnectionsList;
 }
+const Automation = /*@__PURE__*/ __L.at(__c8, 5) as any as S.Schema<Automation>;
+
 export interface GetAutomationRunRequest {
   /** The ID of the automation. */
   automation_id: string;
   /** The ID of the automation run. */
   run_id: string;
 }
+const GetAutomationRunRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  6,
+) as any as S.Schema<GetAutomationRunRequest>;
+
 /** The current status of the automation run. */
 export type AutomationRunStatus = "running" | "completed" | "failed" | "cancelled";
+const AutomationRunStatus = S.String;
+
 /** The type of automation step. */
 export type AutomationRunStepType =
   | "trigger"
@@ -759,6 +1141,8 @@ export type AutomationRunStepType =
   | "contact_update"
   | "contact_delete"
   | "add_to_segment";
+const AutomationRunStepType = S.String;
+
 /** A step execution within an automation run. */
 export interface AutomationRunStep {
   /** The key of the automation step. */
@@ -778,8 +1162,15 @@ export interface AutomationRunStep {
   /** The date and time the step record was created. */
   created_at?: string;
 }
+const AutomationRunStep = /*@__PURE__*/ __L.at(__c8, 7) as any as S.Schema<AutomationRunStep>;
+
 /** The steps executed in this run, sorted in graph order. */
 export type AutomationRunStepsList = Array<AutomationRunStep>;
+const AutomationRunStepsList = /*@__PURE__*/ __L.at(
+  __c9,
+  0,
+) as any as S.Schema<AutomationRunStepsList>;
+
 export interface AutomationRun {
   /** Type of the response object. */
   object?: string;
@@ -796,12 +1187,19 @@ export interface AutomationRun {
   /** The steps executed in this run, sorted in graph order. */
   steps?: AutomationRunStepsList;
 }
+const AutomationRun = /*@__PURE__*/ __L.at(__c9, 1) as any as S.Schema<AutomationRun>;
+
 export interface GetBroadcastRequest {
   /** The Broadcast ID. */
   id: string;
 }
+const GetBroadcastRequest = /*@__PURE__*/ __L.at(__c9, 2) as any as S.Schema<GetBroadcastRequest>;
+
 /** The email addresses to which replies should be sent. */
 export type GetBroadcastResponseSuccessReplyToList = Array<string>;
+const GetBroadcastResponseSuccessReplyToList =
+  EmailReplyToList as any as S.Schema<GetBroadcastResponseSuccessReplyToList>;
+
 export interface GetBroadcastResponseSuccess {
   /** Unique identifier for the broadcast. */
   id?: string;
@@ -834,12 +1232,22 @@ export interface GetBroadcastResponseSuccess {
   /** The topic ID that the broadcast is scoped to. */
   topic_id?: string | null;
 }
+const GetBroadcastResponseSuccess = /*@__PURE__*/ __L.at(
+  __c9,
+  3,
+) as any as S.Schema<GetBroadcastResponseSuccess>;
+
 export interface GetContactRequest {
   /** The Contact ID or email address. */
   id: string;
 }
+const GetContactRequest = /*@__PURE__*/ __L.at(__c9, 4) as any as S.Schema<GetContactRequest>;
+
 /** A map of custom property keys and values. */
 export type GetContactResponseSuccessPropertiesMap = { [key: string]: unknown | undefined };
+const GetContactResponseSuccessPropertiesMap =
+  CreateContactRequestPropertiesMap as any as S.Schema<GetContactResponseSuccessPropertiesMap>;
+
 export interface GetContactResponseSuccess {
   /** Type of the response object. */
   object?: string;
@@ -858,12 +1266,25 @@ export interface GetContactResponseSuccess {
   /** A map of custom property keys and values. */
   properties?: GetContactResponseSuccessPropertiesMap;
 }
+const GetContactResponseSuccess = /*@__PURE__*/ __L.at(
+  __c9,
+  5,
+) as any as S.Schema<GetContactResponseSuccess>;
+
 export interface GetContactPropertyRequest {
   /** The Contact Property ID. */
   id: string;
 }
+const GetContactPropertyRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  6,
+) as any as S.Schema<GetContactPropertyRequest>;
+
 /** The default value when the property is not set for a contact. */
 export type GetContactPropertyResponseSuccessFallbackValue = string | number;
+const GetContactPropertyResponseSuccessFallbackValue =
+  S.Unknown as any as S.Schema<GetContactPropertyResponseSuccessFallbackValue>;
+
 export interface GetContactPropertyResponseSuccess {
   /** The object type. */
   object?: string;
@@ -878,11 +1299,20 @@ export interface GetContactPropertyResponseSuccess {
   /** Timestamp indicating when the contact property was created. */
   created_at?: string;
 }
+const GetContactPropertyResponseSuccess = /*@__PURE__*/ __L.at(
+  __c9,
+  7,
+) as any as S.Schema<GetContactPropertyResponseSuccess>;
+
 export interface GetDomainRequest {
   /** The ID of the domain. */
   domain_id: string;
 }
+const GetDomainRequest = /*@__PURE__*/ __L.at(__c10, 0) as any as S.Schema<GetDomainRequest>;
+
 export type DomainRecordsList = Array<DomainRecord>;
+const DomainRecordsList = CreateDomainResponseRecordsList as any as S.Schema<DomainRecordsList>;
+
 export interface Domain {
   /** The type of object. */
   object?: string;
@@ -905,18 +1335,29 @@ export interface Domain {
   capabilities?: DomainCapabilities;
   records?: DomainRecordsList;
 }
+const Domain = /*@__PURE__*/ __L.at(__c10, 1) as any as S.Schema<Domain>;
+
 export interface GetEmailRequest {
   /** The ID of the email. */
   email_id: string;
 }
+const GetEmailRequest = /*@__PURE__*/ __L.at(__c10, 2) as any as S.Schema<GetEmailRequest>;
+
 export interface GetEmailAttachmentRequest {
   /** The ID of the email. */
   email_id: string;
   /** The ID of the attachment. */
   attachment_id: string;
 }
+const GetEmailAttachmentRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  3,
+) as any as S.Schema<GetEmailAttachmentRequest>;
+
 /** How the attachment should be displayed. */
 export type RetrievedAttachmentContentDisposition = "inline" | "attachment";
+const RetrievedAttachmentContentDisposition = S.String;
+
 export interface RetrievedAttachment {
   /** The type of object. */
   object?: string;
@@ -937,20 +1378,41 @@ export interface RetrievedAttachment {
   /** Size of the attachment in bytes. */
   size?: number;
 }
+const RetrievedAttachment = /*@__PURE__*/ __L.at(__c10, 4) as any as S.Schema<RetrievedAttachment>;
+
 export interface GetEmailReceivingRequest {
   /** The ID of the received email. */
   email_id: string;
 }
+const GetEmailReceivingRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  5,
+) as any as S.Schema<GetEmailReceivingRequest>;
+
 /** The recipient email addresses. */
 export type GetReceivedEmailResponseToList = Array<string>;
+const GetReceivedEmailResponseToList =
+  EmailReplyToList as any as S.Schema<GetReceivedEmailResponseToList>;
+
 /** The BCC recipients. */
 export type GetReceivedEmailResponseBccList = Array<string>;
+const GetReceivedEmailResponseBccList =
+  EmailReplyToList as any as S.Schema<GetReceivedEmailResponseBccList>;
+
 /** The CC recipients. */
 export type GetReceivedEmailResponseCcList = Array<string>;
+const GetReceivedEmailResponseCcList =
+  EmailReplyToList as any as S.Schema<GetReceivedEmailResponseCcList>;
+
 /** The reply-to addresses. */
 export type GetReceivedEmailResponseReplyToList = Array<string>;
+const GetReceivedEmailResponseReplyToList =
+  EmailReplyToList as any as S.Schema<GetReceivedEmailResponseReplyToList>;
+
 /** How the attachment should be displayed. */
 export type GetReceivedEmailResponseAttachmentsItemContentDisposition = "inline" | "attachment";
+const GetReceivedEmailResponseAttachmentsItemContentDisposition = S.String;
+
 export interface GetReceivedEmailResponseAttachmentsItem {
   /** The ID of the attachment. */
   id?: string;
@@ -965,9 +1427,19 @@ export interface GetReceivedEmailResponseAttachmentsItem {
   /** Size of the attachment in bytes. */
   size?: number;
 }
+const GetReceivedEmailResponseAttachmentsItem = /*@__PURE__*/ __L.at(
+  __c10,
+  6,
+) as any as S.Schema<GetReceivedEmailResponseAttachmentsItem>;
+
 /** Array of attachments. */
 export type GetReceivedEmailResponseAttachmentsList =
   Array<GetReceivedEmailResponseAttachmentsItem>;
+const GetReceivedEmailResponseAttachmentsList = /*@__PURE__*/ __L.at(
+  __c10,
+  7,
+) as any as S.Schema<GetReceivedEmailResponseAttachmentsList>;
+
 export interface GetReceivedEmailResponse {
   /** The type of object. */
   object?: string;
@@ -998,16 +1470,28 @@ export interface GetReceivedEmailResponse {
   /** Array of attachments. */
   attachments?: GetReceivedEmailResponseAttachmentsList;
 }
+const GetReceivedEmailResponse = /*@__PURE__*/ __L.at(
+  __c11,
+  0,
+) as any as S.Schema<GetReceivedEmailResponse>;
+
 export interface GetEmailReceivingAttachmentRequest {
   /** The ID of the received email. */
   email_id: string;
   /** The ID of the attachment. */
   attachment_id: string;
 }
+const GetEmailReceivingAttachmentRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  1,
+) as any as S.Schema<GetEmailReceivingAttachmentRequest>;
+
 export interface GetEventRequest {
   /** The event ID (UUID) or event name. */
   identifier: string;
 }
+const GetEventRequest = /*@__PURE__*/ __L.at(__c11, 2) as any as S.Schema<GetEventRequest>;
+
 export interface Event {
   /** Type of the response object. */
   object?: string;
@@ -1022,12 +1506,18 @@ export interface Event {
   /** The date and time the event was last updated. */
   updated_at?: string | null;
 }
+const Event = /*@__PURE__*/ __L.at(__c11, 3) as any as S.Schema<Event>;
+
 export interface GetLogRequest {
   /** The ID of the log. */
   log_id: string;
 }
+const GetLogRequest = /*@__PURE__*/ __L.at(__c11, 4) as any as S.Schema<GetLogRequest>;
+
 /** The HTTP method used. */
 export type LogMethod = "GET" | "POST" | "PUT" | "DELETE" | "PATCH" | "OPTIONS";
+const LogMethod = S.String;
+
 export interface Log {
   /** Type of the response object. */
   object?: string;
@@ -1048,10 +1538,14 @@ export interface Log {
   /** The response body returned by the API. */
   response_body?: unknown | null;
 }
+const Log = /*@__PURE__*/ __L.at(__c11, 5) as any as S.Schema<Log>;
+
 export interface GetSegmentRequest {
   /** The Segment ID. */
   id: string;
 }
+const GetSegmentRequest = /*@__PURE__*/ __L.at(__c11, 6) as any as S.Schema<GetSegmentRequest>;
+
 export interface GetSegmentResponseSuccess {
   /** The ID of the segment. */
   id?: string;
@@ -1066,14 +1560,25 @@ export interface GetSegmentResponseSuccess {
   /** Timestamp indicating when the segment was created. */
   created_at?: string;
 }
+const GetSegmentResponseSuccess = /*@__PURE__*/ __L.at(
+  __c11,
+  7,
+) as any as S.Schema<GetSegmentResponseSuccess>;
+
 export interface GetTemplateRequest {
   /** The Template ID or alias. */
   id: string;
 }
+const GetTemplateRequest = /*@__PURE__*/ __L.at(__c12, 0) as any as S.Schema<GetTemplateRequest>;
+
 /** Reply-to email addresses. */
 export type TemplateReplyToList = Array<string>;
+const TemplateReplyToList = EmailReplyToList as any as S.Schema<TemplateReplyToList>;
+
 /** The type of the variable. */
 export type TemplateVariableType = "string" | "number" | "boolean" | "object" | "list";
+const TemplateVariableType = S.String;
+
 export type TemplateVariableFallbackValueCase4List = Array<unknown>;
 /** The fallback value of the variable. */
 export type TemplateVariableFallbackValue =
@@ -1082,6 +1587,8 @@ export type TemplateVariableFallbackValue =
   | boolean
   | unknown
   | TemplateVariableFallbackValueCase4List;
+const TemplateVariableFallbackValue = S.Unknown as any as S.Schema<TemplateVariableFallbackValue>;
+
 export interface TemplateVariable {
   /** The ID of the template variable. */
   id?: string;
@@ -1096,9 +1603,18 @@ export interface TemplateVariable {
   /** Timestamp indicating when the variable was last updated. */
   updated_at?: string;
 }
+const TemplateVariable = /*@__PURE__*/ __L.at(__c12, 1) as any as S.Schema<TemplateVariable>;
+
 export type TemplateVariablesList = Array<TemplateVariable>;
+const TemplateVariablesList = /*@__PURE__*/ __L.at(
+  __c12,
+  2,
+) as any as S.Schema<TemplateVariablesList>;
+
 /** The publication status of the template. */
 export type TemplateStatus = "draft" | "published";
+const TemplateStatus = S.String;
+
 export interface Template {
   /** The type of object. */
   object?: string;
@@ -1132,14 +1648,22 @@ export interface Template {
   /** Indicates whether the template has unpublished versions. */
   has_unpublished_versions?: boolean;
 }
+const Template = /*@__PURE__*/ __L.at(__c12, 3) as any as S.Schema<Template>;
+
 export interface GetTopicRequest {
   /** The Topic ID. */
   id: string;
 }
+const GetTopicRequest = /*@__PURE__*/ __L.at(__c12, 4) as any as S.Schema<GetTopicRequest>;
+
 /** The default subscription status for the topic. */
 export type GetTopicResponseSuccessDefaultSubscription = "opt_in" | "opt_out";
+const GetTopicResponseSuccessDefaultSubscription = S.String;
+
 /** The visibility of the topic. */
 export type GetTopicResponseSuccessVisibility = "public" | "private";
+const GetTopicResponseSuccessVisibility = S.String;
+
 export interface GetTopicResponseSuccess {
   /** The ID of the topic. */
   id?: string;
@@ -1156,12 +1680,22 @@ export interface GetTopicResponseSuccess {
   /** Timestamp indicating when the topic was created. */
   created_at?: string;
 }
+const GetTopicResponseSuccess = /*@__PURE__*/ __L.at(
+  __c12,
+  5,
+) as any as S.Schema<GetTopicResponseSuccess>;
+
 export interface GetWebhookRequest {
   /** The Webhook ID. */
   webhook_id: string;
 }
+const GetWebhookRequest = /*@__PURE__*/ __L.at(__c12, 6) as any as S.Schema<GetWebhookRequest>;
+
 /** Array of event types subscribed to. */
 export type GetWebhookResponseEventsList = Array<string>;
+const GetWebhookResponseEventsList =
+  EmailReplyToList as any as S.Schema<GetWebhookResponseEventsList>;
+
 export interface GetWebhookResponse {
   /** The type of object. */
   object?: string;
@@ -1178,6 +1712,8 @@ export interface GetWebhookResponse {
   /** The secret key used to verify webhook payloads. */
   signing_secret?: string | Redacted.Redacted<string>;
 }
+const GetWebhookResponse = /*@__PURE__*/ __L.at(__c12, 7) as any as S.Schema<GetWebhookResponse>;
+
 export interface ListApiKeysRequest {
   /** Number of items to return. */
   limit?: number;
@@ -1186,6 +1722,8 @@ export interface ListApiKeysRequest {
   /** Return items before this cursor. */
   before?: string;
 }
+const ListApiKeysRequest = /*@__PURE__*/ __L.at(__c13, 0) as any as S.Schema<ListApiKeysRequest>;
+
 export interface ApiKey {
   /** The ID of the API key. */
   id?: string;
@@ -1196,7 +1734,14 @@ export interface ApiKey {
   /** The date and time the API key was last used. */
   last_used_at?: string | null;
 }
+const ApiKey = /*@__PURE__*/ __L.at(__c13, 1) as any as S.Schema<ApiKey>;
+
 export type ListApiKeysResponseDataList = Array<ApiKey>;
+const ListApiKeysResponseDataList = /*@__PURE__*/ __L.at(
+  __c13,
+  2,
+) as any as S.Schema<ListApiKeysResponseDataList>;
+
 export interface ListApiKeysResponse {
   /** Type of the response object. */
   object?: string;
@@ -1204,6 +1749,8 @@ export interface ListApiKeysResponse {
   has_more?: boolean;
   data: ListApiKeysResponseDataList;
 }
+const ListApiKeysResponse = /*@__PURE__*/ __L.at(__c13, 3) as any as S.Schema<ListApiKeysResponse>;
+
 export interface ListAutomationRunsRequest {
   /** The ID of the automation. */
   automation_id: string;
@@ -1216,8 +1763,15 @@ export interface ListAutomationRunsRequest {
   /** Return items before this cursor. */
   before?: string;
 }
+const ListAutomationRunsRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  4,
+) as any as S.Schema<ListAutomationRunsRequest>;
+
 /** The current status of the automation run. */
 export type AutomationRunListItemStatus = "running" | "completed" | "failed" | "cancelled";
+const AutomationRunListItemStatus = S.String;
+
 export interface AutomationRunListItem {
   /** The ID of the automation run. */
   id?: string;
@@ -1230,8 +1784,18 @@ export interface AutomationRunListItem {
   /** The date and time the run was created. */
   created_at?: string;
 }
+const AutomationRunListItem = /*@__PURE__*/ __L.at(
+  __c13,
+  5,
+) as any as S.Schema<AutomationRunListItem>;
+
 /** Array of automation runs. */
 export type ListAutomationRunsResponseDataList = Array<AutomationRunListItem>;
+const ListAutomationRunsResponseDataList = /*@__PURE__*/ __L.at(
+  __c13,
+  6,
+) as any as S.Schema<ListAutomationRunsResponseDataList>;
+
 export interface ListAutomationRunsResponse {
   /** Type of the response object. */
   object?: string;
@@ -1240,7 +1804,14 @@ export interface ListAutomationRunsResponse {
   /** Array of automation runs. */
   data: ListAutomationRunsResponseDataList;
 }
+const ListAutomationRunsResponse = /*@__PURE__*/ __L.at(
+  __c13,
+  7,
+) as any as S.Schema<ListAutomationRunsResponse>;
+
 export type ListAutomationsRequestStatus = "enabled" | "disabled";
+const ListAutomationsRequestStatus = S.String;
+
 export interface ListAutomationsRequest {
   /** Filter automations by status. */
   status?: ListAutomationsRequestStatus | (string & {});
@@ -1251,8 +1822,15 @@ export interface ListAutomationsRequest {
   /** Return items before this cursor. */
   before?: string;
 }
+const ListAutomationsRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  0,
+) as any as S.Schema<ListAutomationsRequest>;
+
 /** The current status of the automation. */
 export type AutomationListItemStatus = "enabled" | "disabled";
+const AutomationListItemStatus = S.String;
+
 export interface AutomationListItem {
   /** The ID of the automation. */
   id?: string;
@@ -1265,8 +1843,15 @@ export interface AutomationListItem {
   /** The date and time the automation was last updated. */
   updated_at?: string;
 }
+const AutomationListItem = /*@__PURE__*/ __L.at(__c14, 1) as any as S.Schema<AutomationListItem>;
+
 /** Array of automations. */
 export type ListAutomationsResponseDataList = Array<AutomationListItem>;
+const ListAutomationsResponseDataList = /*@__PURE__*/ __L.at(
+  __c14,
+  2,
+) as any as S.Schema<ListAutomationsResponseDataList>;
+
 export interface ListAutomationsResponse {
   /** Type of the response object. */
   object?: string;
@@ -1275,6 +1860,11 @@ export interface ListAutomationsResponse {
   /** Array of automations. */
   data: ListAutomationsResponseDataList;
 }
+const ListAutomationsResponse = /*@__PURE__*/ __L.at(
+  __c14,
+  3,
+) as any as S.Schema<ListAutomationsResponse>;
+
 export interface ListBroadcastsRequest {
   /** Number of items to return. */
   limit?: number;
@@ -1283,6 +1873,11 @@ export interface ListBroadcastsRequest {
   /** Return items before this cursor. */
   before?: string;
 }
+const ListBroadcastsRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  4,
+) as any as S.Schema<ListBroadcastsRequest>;
+
 export interface ListBroadcastsResponseSuccessDataItem {
   /** Unique identifier for the broadcast. */
   id?: string;
@@ -1303,8 +1898,18 @@ export interface ListBroadcastsResponseSuccessDataItem {
   /** The topic ID that the broadcast is scoped to. */
   topic_id?: string;
 }
+const ListBroadcastsResponseSuccessDataItem = /*@__PURE__*/ __L.at(
+  __c14,
+  5,
+) as any as S.Schema<ListBroadcastsResponseSuccessDataItem>;
+
 /** Array containing broadcast information. */
 export type ListBroadcastsResponseSuccessDataList = Array<ListBroadcastsResponseSuccessDataItem>;
+const ListBroadcastsResponseSuccessDataList = /*@__PURE__*/ __L.at(
+  __c14,
+  6,
+) as any as S.Schema<ListBroadcastsResponseSuccessDataList>;
+
 export interface ListBroadcastsResponseSuccess {
   /** Type of the response object. */
   object?: string;
@@ -1313,6 +1918,11 @@ export interface ListBroadcastsResponseSuccess {
   /** Array containing broadcast information. */
   data: ListBroadcastsResponseSuccessDataList;
 }
+const ListBroadcastsResponseSuccess = /*@__PURE__*/ __L.at(
+  __c14,
+  7,
+) as any as S.Schema<ListBroadcastsResponseSuccess>;
+
 export interface ListContactPropertiesRequest {
   /** Number of items to return. */
   limit?: number;
@@ -1321,8 +1931,16 @@ export interface ListContactPropertiesRequest {
   /** Return items before this cursor. */
   before?: string;
 }
+const ListContactPropertiesRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  0,
+) as any as S.Schema<ListContactPropertiesRequest>;
+
 /** The default value when the property is not set for a contact. */
 export type ListContactPropertiesResponseSuccessDataItemFallbackValue = string | number;
+const ListContactPropertiesResponseSuccessDataItemFallbackValue =
+  S.Unknown as any as S.Schema<ListContactPropertiesResponseSuccessDataItemFallbackValue>;
+
 export interface ListContactPropertiesResponseSuccessDataItem {
   /** Unique identifier for the contact property. */
   id?: string;
@@ -1335,9 +1953,19 @@ export interface ListContactPropertiesResponseSuccessDataItem {
   /** Timestamp indicating when the contact property was created. */
   created_at?: string;
 }
+const ListContactPropertiesResponseSuccessDataItem = /*@__PURE__*/ __L.at(
+  __c15,
+  1,
+) as any as S.Schema<ListContactPropertiesResponseSuccessDataItem>;
+
 /** Array containing contact property information. */
 export type ListContactPropertiesResponseSuccessDataList =
   Array<ListContactPropertiesResponseSuccessDataItem>;
+const ListContactPropertiesResponseSuccessDataList = /*@__PURE__*/ __L.at(
+  __c15,
+  2,
+) as any as S.Schema<ListContactPropertiesResponseSuccessDataList>;
+
 export interface ListContactPropertiesResponseSuccess {
   /** Type of the response object. */
   object?: string;
@@ -1346,6 +1974,11 @@ export interface ListContactPropertiesResponseSuccess {
   /** Array containing contact property information. */
   data: ListContactPropertiesResponseSuccessDataList;
 }
+const ListContactPropertiesResponseSuccess = /*@__PURE__*/ __L.at(
+  __c15,
+  3,
+) as any as S.Schema<ListContactPropertiesResponseSuccess>;
+
 export interface ListContactsRequest {
   /** Filter contacts by segment ID. */
   segment_id?: string;
@@ -1356,6 +1989,8 @@ export interface ListContactsRequest {
   /** Return items before this cursor. */
   before?: string;
 }
+const ListContactsRequest = /*@__PURE__*/ __L.at(__c15, 4) as any as S.Schema<ListContactsRequest>;
+
 export interface ListContactsResponseSuccessDataItem {
   /** Unique identifier for the contact. */
   id?: string;
@@ -1370,14 +2005,29 @@ export interface ListContactsResponseSuccessDataItem {
   /** Indicates if the contact is unsubscribed. */
   unsubscribed?: boolean;
 }
+const ListContactsResponseSuccessDataItem = /*@__PURE__*/ __L.at(
+  __c15,
+  5,
+) as any as S.Schema<ListContactsResponseSuccessDataItem>;
+
 /** Array containing contact information. */
 export type ListContactsResponseSuccessDataList = Array<ListContactsResponseSuccessDataItem>;
+const ListContactsResponseSuccessDataList = /*@__PURE__*/ __L.at(
+  __c15,
+  6,
+) as any as S.Schema<ListContactsResponseSuccessDataList>;
+
 export interface ListContactsResponseSuccess {
   /** Type of the response object. */
   object?: string;
   /** Array containing contact information. */
   data?: ListContactsResponseSuccessDataList;
 }
+const ListContactsResponseSuccess = /*@__PURE__*/ __L.at(
+  __c15,
+  7,
+) as any as S.Schema<ListContactsResponseSuccess>;
+
 export interface ListContactSegmentsRequest {
   /** The Contact ID or email address. */
   contact_id: string;
@@ -1388,6 +2038,11 @@ export interface ListContactSegmentsRequest {
   /** Return items before this cursor. */
   before?: string;
 }
+const ListContactSegmentsRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  0,
+) as any as S.Schema<ListContactSegmentsRequest>;
+
 export interface ListContactSegmentsResponseSuccessDataItem {
   /** Unique identifier for the segment. */
   id?: string;
@@ -1396,9 +2051,19 @@ export interface ListContactSegmentsResponseSuccessDataItem {
   /** Timestamp indicating when the contact was added to the segment. */
   created_at?: string;
 }
+const ListContactSegmentsResponseSuccessDataItem = /*@__PURE__*/ __L.at(
+  __c16,
+  1,
+) as any as S.Schema<ListContactSegmentsResponseSuccessDataItem>;
+
 /** Array containing segment information for this contact. */
 export type ListContactSegmentsResponseSuccessDataList =
   Array<ListContactSegmentsResponseSuccessDataItem>;
+const ListContactSegmentsResponseSuccessDataList = /*@__PURE__*/ __L.at(
+  __c16,
+  2,
+) as any as S.Schema<ListContactSegmentsResponseSuccessDataList>;
+
 export interface ListContactSegmentsResponseSuccess {
   /** Type of the response object. */
   object?: string;
@@ -1407,6 +2072,11 @@ export interface ListContactSegmentsResponseSuccess {
   /** Array containing segment information for this contact. */
   data: ListContactSegmentsResponseSuccessDataList;
 }
+const ListContactSegmentsResponseSuccess = /*@__PURE__*/ __L.at(
+  __c16,
+  3,
+) as any as S.Schema<ListContactSegmentsResponseSuccess>;
+
 export interface ListContactTopicsRequest {
   /** The Contact ID or email address. */
   contact_id: string;
@@ -1417,8 +2087,15 @@ export interface ListContactTopicsRequest {
   /** Return items before this cursor. */
   before?: string;
 }
+const ListContactTopicsRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  4,
+) as any as S.Schema<ListContactTopicsRequest>;
+
 /** The subscription status for this topic. */
 export type GetContactTopicsResponseSuccessDataItemSubscription = "opt_in" | "opt_out";
+const GetContactTopicsResponseSuccessDataItemSubscription = S.String;
+
 export interface GetContactTopicsResponseSuccessDataItem {
   /** Unique identifier for the topic. */
   id?: string;
@@ -1429,9 +2106,19 @@ export interface GetContactTopicsResponseSuccessDataItem {
   /** The subscription status for this topic. */
   subscription?: GetContactTopicsResponseSuccessDataItemSubscription;
 }
+const GetContactTopicsResponseSuccessDataItem = /*@__PURE__*/ __L.at(
+  __c16,
+  5,
+) as any as S.Schema<GetContactTopicsResponseSuccessDataItem>;
+
 /** Array containing topic subscriptions for this contact. */
 export type GetContactTopicsResponseSuccessDataList =
   Array<GetContactTopicsResponseSuccessDataItem>;
+const GetContactTopicsResponseSuccessDataList = /*@__PURE__*/ __L.at(
+  __c16,
+  6,
+) as any as S.Schema<GetContactTopicsResponseSuccessDataList>;
+
 export interface GetContactTopicsResponseSuccess {
   /** Type of the response object. */
   object?: string;
@@ -1440,6 +2127,11 @@ export interface GetContactTopicsResponseSuccess {
   /** Array containing topic subscriptions for this contact. */
   data: GetContactTopicsResponseSuccessDataList;
 }
+const GetContactTopicsResponseSuccess = /*@__PURE__*/ __L.at(
+  __c16,
+  7,
+) as any as S.Schema<GetContactTopicsResponseSuccess>;
+
 export interface ListDomainsRequest {
   /** Number of items to return. */
   limit?: number;
@@ -1448,6 +2140,8 @@ export interface ListDomainsRequest {
   /** Return items before this cursor. */
   before?: string;
 }
+const ListDomainsRequest = /*@__PURE__*/ __L.at(__c17, 0) as any as S.Schema<ListDomainsRequest>;
+
 export interface ListDomainsItem {
   /** The ID of the domain. */
   id?: string;
@@ -1461,7 +2155,14 @@ export interface ListDomainsItem {
   region?: string;
   capabilities?: DomainCapabilities;
 }
+const ListDomainsItem = /*@__PURE__*/ __L.at(__c17, 1) as any as S.Schema<ListDomainsItem>;
+
 export type ListDomainsResponseDataList = Array<ListDomainsItem>;
+const ListDomainsResponseDataList = /*@__PURE__*/ __L.at(
+  __c17,
+  2,
+) as any as S.Schema<ListDomainsResponseDataList>;
+
 export interface ListDomainsResponse {
   /** Type of the response object. */
   object?: string;
@@ -1469,6 +2170,8 @@ export interface ListDomainsResponse {
   has_more?: boolean;
   data: ListDomainsResponseDataList;
 }
+const ListDomainsResponse = /*@__PURE__*/ __L.at(__c17, 3) as any as S.Schema<ListDomainsResponse>;
+
 export interface ListEmailAttachmentsRequest {
   /** The ID of the email. */
   email_id: string;
@@ -1479,8 +2182,15 @@ export interface ListEmailAttachmentsRequest {
   /** Pagination cursor to fetch results before this attachment ID. Cannot be used with 'after'. */
   before?: string;
 }
+const ListEmailAttachmentsRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  4,
+) as any as S.Schema<ListEmailAttachmentsRequest>;
+
 /** How the attachment should be displayed. */
 export type ListAttachmentsResponseDataItemContentDisposition = "inline" | "attachment";
+const ListAttachmentsResponseDataItemContentDisposition = S.String;
+
 export interface ListAttachmentsResponseDataItem {
   /** The ID of the attachment. */
   id?: string;
@@ -1499,8 +2209,18 @@ export interface ListAttachmentsResponseDataItem {
   /** Size of the attachment in bytes. */
   size?: number;
 }
+const ListAttachmentsResponseDataItem = /*@__PURE__*/ __L.at(
+  __c17,
+  5,
+) as any as S.Schema<ListAttachmentsResponseDataItem>;
+
 /** Array containing attachment information. */
 export type ListAttachmentsResponseDataList = Array<ListAttachmentsResponseDataItem>;
+const ListAttachmentsResponseDataList = /*@__PURE__*/ __L.at(
+  __c17,
+  6,
+) as any as S.Schema<ListAttachmentsResponseDataList>;
+
 export interface ListAttachmentsResponse {
   /** Type of the response object. */
   object?: string;
@@ -1509,6 +2229,11 @@ export interface ListAttachmentsResponse {
   /** Array containing attachment information. */
   data: ListAttachmentsResponseDataList;
 }
+const ListAttachmentsResponse = /*@__PURE__*/ __L.at(
+  __c17,
+  7,
+) as any as S.Schema<ListAttachmentsResponse>;
+
 export interface ListEmailReceivingRequest {
   /** Maximum number of received emails to return. */
   limit?: number;
@@ -1517,18 +2242,37 @@ export interface ListEmailReceivingRequest {
   /** Pagination cursor to fetch results before this email ID. Cannot be used with 'after'. */
   before?: string;
 }
+const ListEmailReceivingRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  0,
+) as any as S.Schema<ListEmailReceivingRequest>;
+
 /** The recipient email addresses. */
 export type ListReceivedEmailsResponseDataItemToList = Array<string>;
+const ListReceivedEmailsResponseDataItemToList =
+  EmailReplyToList as any as S.Schema<ListReceivedEmailsResponseDataItemToList>;
+
 /** The BCC recipients. */
 export type ListReceivedEmailsResponseDataItemBccList = Array<string>;
+const ListReceivedEmailsResponseDataItemBccList =
+  EmailReplyToList as any as S.Schema<ListReceivedEmailsResponseDataItemBccList>;
+
 /** The CC recipients. */
 export type ListReceivedEmailsResponseDataItemCcList = Array<string>;
+const ListReceivedEmailsResponseDataItemCcList =
+  EmailReplyToList as any as S.Schema<ListReceivedEmailsResponseDataItemCcList>;
+
 /** The reply-to addresses. */
 export type ListReceivedEmailsResponseDataItemReplyToList = Array<string>;
+const ListReceivedEmailsResponseDataItemReplyToList =
+  EmailReplyToList as any as S.Schema<ListReceivedEmailsResponseDataItemReplyToList>;
+
 /** How the attachment should be displayed. */
 export type ListReceivedEmailsResponseDataItemAttachmentsItemContentDisposition =
   | "inline"
   | "attachment";
+const ListReceivedEmailsResponseDataItemAttachmentsItemContentDisposition = S.String;
+
 export interface ListReceivedEmailsResponseDataItemAttachmentsItem {
   /** The ID of the attachment. */
   id?: string;
@@ -1543,9 +2287,19 @@ export interface ListReceivedEmailsResponseDataItemAttachmentsItem {
   /** Size of the attachment in bytes. */
   size?: number;
 }
+const ListReceivedEmailsResponseDataItemAttachmentsItem = /*@__PURE__*/ __L.at(
+  __c18,
+  1,
+) as any as S.Schema<ListReceivedEmailsResponseDataItemAttachmentsItem>;
+
 /** Array of attachments for this email. */
 export type ListReceivedEmailsResponseDataItemAttachmentsList =
   Array<ListReceivedEmailsResponseDataItemAttachmentsItem>;
+const ListReceivedEmailsResponseDataItemAttachmentsList = /*@__PURE__*/ __L.at(
+  __c18,
+  2,
+) as any as S.Schema<ListReceivedEmailsResponseDataItemAttachmentsList>;
+
 export interface ListReceivedEmailsResponseDataItem {
   /** The ID of the received email. */
   id?: string;
@@ -1568,8 +2322,18 @@ export interface ListReceivedEmailsResponseDataItem {
   /** Array of attachments for this email. */
   attachments?: ListReceivedEmailsResponseDataItemAttachmentsList;
 }
+const ListReceivedEmailsResponseDataItem = /*@__PURE__*/ __L.at(
+  __c18,
+  3,
+) as any as S.Schema<ListReceivedEmailsResponseDataItem>;
+
 /** Array containing received email information. */
 export type ListReceivedEmailsResponseDataList = Array<ListReceivedEmailsResponseDataItem>;
+const ListReceivedEmailsResponseDataList = /*@__PURE__*/ __L.at(
+  __c18,
+  4,
+) as any as S.Schema<ListReceivedEmailsResponseDataList>;
+
 export interface ListReceivedEmailsResponse {
   /** Type of the response object. */
   object?: string;
@@ -1578,6 +2342,11 @@ export interface ListReceivedEmailsResponse {
   /** Array containing received email information. */
   data: ListReceivedEmailsResponseDataList;
 }
+const ListReceivedEmailsResponse = /*@__PURE__*/ __L.at(
+  __c18,
+  5,
+) as any as S.Schema<ListReceivedEmailsResponse>;
+
 export interface ListEmailReceivingAttachmentsRequest {
   /** The ID of the received email. */
   email_id: string;
@@ -1588,6 +2357,11 @@ export interface ListEmailReceivingAttachmentsRequest {
   /** Pagination cursor to fetch results before this attachment ID. Cannot be used with 'after'. */
   before?: string;
 }
+const ListEmailReceivingAttachmentsRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  6,
+) as any as S.Schema<ListEmailReceivingAttachmentsRequest>;
+
 export interface ListEmailsRequest {
   /** Number of items to return. */
   limit?: number;
@@ -1596,8 +2370,15 @@ export interface ListEmailsRequest {
   /** Return items before this cursor. */
   before?: string;
 }
+const ListEmailsRequest = /*@__PURE__*/ __L.at(__c18, 7) as any as S.Schema<ListEmailsRequest>;
+
 /** Array containing email information. */
 export type ListEmailsResponseDataList = Array<Email>;
+const ListEmailsResponseDataList = /*@__PURE__*/ __L.at(
+  __c19,
+  0,
+) as any as S.Schema<ListEmailsResponseDataList>;
+
 export interface ListEmailsResponse {
   /** Type of the response object. */
   object?: string;
@@ -1606,6 +2387,8 @@ export interface ListEmailsResponse {
   /** Array containing email information. */
   data: ListEmailsResponseDataList;
 }
+const ListEmailsResponse = /*@__PURE__*/ __L.at(__c19, 1) as any as S.Schema<ListEmailsResponse>;
+
 export interface ListEventsRequest {
   /** Number of items to return. */
   limit?: number;
@@ -1614,6 +2397,8 @@ export interface ListEventsRequest {
   /** Return items before this cursor. */
   before?: string;
 }
+const ListEventsRequest = /*@__PURE__*/ __L.at(__c19, 2) as any as S.Schema<ListEventsRequest>;
+
 export interface EventSummary {
   /** The event ID. */
   id?: string;
@@ -1626,8 +2411,15 @@ export interface EventSummary {
   /** The date and time the event was last updated. */
   updated_at?: string | null;
 }
+const EventSummary = /*@__PURE__*/ __L.at(__c19, 3) as any as S.Schema<EventSummary>;
+
 /** Array containing event information. */
 export type ListEventsResponseDataList = Array<EventSummary>;
+const ListEventsResponseDataList = /*@__PURE__*/ __L.at(
+  __c19,
+  4,
+) as any as S.Schema<ListEventsResponseDataList>;
+
 export interface ListEventsResponse {
   /** Type of the response object. */
   object?: string;
@@ -1636,6 +2428,8 @@ export interface ListEventsResponse {
   /** Array containing event information. */
   data: ListEventsResponseDataList;
 }
+const ListEventsResponse = /*@__PURE__*/ __L.at(__c19, 5) as any as S.Schema<ListEventsResponse>;
+
 export interface ListLogsRequest {
   /** Number of items to return. */
   limit?: number;
@@ -1644,8 +2438,12 @@ export interface ListLogsRequest {
   /** Return items before this cursor. */
   before?: string;
 }
+const ListLogsRequest = /*@__PURE__*/ __L.at(__c19, 6) as any as S.Schema<ListLogsRequest>;
+
 /** The HTTP method used. */
 export type LogSummaryMethod = "GET" | "POST" | "PUT" | "DELETE" | "PATCH" | "OPTIONS";
+const LogSummaryMethod = S.String;
+
 export interface LogSummary {
   /** The log ID. */
   id?: string;
@@ -1660,8 +2458,15 @@ export interface LogSummary {
   /** The user agent of the request. */
   user_agent?: string | null;
 }
+const LogSummary = /*@__PURE__*/ __L.at(__c19, 7) as any as S.Schema<LogSummary>;
+
 /** Array containing log information. */
 export type ListLogsResponseDataList = Array<LogSummary>;
+const ListLogsResponseDataList = /*@__PURE__*/ __L.at(
+  __c20,
+  0,
+) as any as S.Schema<ListLogsResponseDataList>;
+
 export interface ListLogsResponse {
   /** Type of the response object. */
   object?: string;
@@ -1670,6 +2475,8 @@ export interface ListLogsResponse {
   /** Array containing log information. */
   data: ListLogsResponseDataList;
 }
+const ListLogsResponse = /*@__PURE__*/ __L.at(__c20, 1) as any as S.Schema<ListLogsResponse>;
+
 export interface ListSegmentsRequest {
   /** Number of items to return. */
   limit?: number;
@@ -1678,6 +2485,8 @@ export interface ListSegmentsRequest {
   /** Return items before this cursor. */
   before?: string;
 }
+const ListSegmentsRequest = /*@__PURE__*/ __L.at(__c20, 2) as any as S.Schema<ListSegmentsRequest>;
+
 export interface ListSegmentsResponseSuccessDataItem {
   /** Unique identifier for the segment. */
   id?: string;
@@ -1688,8 +2497,18 @@ export interface ListSegmentsResponseSuccessDataItem {
   /** Timestamp indicating when the segment was created. */
   created_at?: string;
 }
+const ListSegmentsResponseSuccessDataItem = /*@__PURE__*/ __L.at(
+  __c20,
+  3,
+) as any as S.Schema<ListSegmentsResponseSuccessDataItem>;
+
 /** Array containing segment information. */
 export type ListSegmentsResponseSuccessDataList = Array<ListSegmentsResponseSuccessDataItem>;
+const ListSegmentsResponseSuccessDataList = /*@__PURE__*/ __L.at(
+  __c20,
+  4,
+) as any as S.Schema<ListSegmentsResponseSuccessDataList>;
+
 export interface ListSegmentsResponseSuccess {
   /** Type of the response object. */
   object?: string;
@@ -1698,6 +2517,11 @@ export interface ListSegmentsResponseSuccess {
   /** Array containing segment information. */
   data: ListSegmentsResponseSuccessDataList;
 }
+const ListSegmentsResponseSuccess = /*@__PURE__*/ __L.at(
+  __c20,
+  5,
+) as any as S.Schema<ListSegmentsResponseSuccess>;
+
 export interface ListTemplatesRequest {
   /** Number of items to return. */
   limit?: number;
@@ -1706,8 +2530,15 @@ export interface ListTemplatesRequest {
   /** Return items before this cursor. */
   before?: string;
 }
+const ListTemplatesRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  6,
+) as any as S.Schema<ListTemplatesRequest>;
+
 /** The publication status of the template. */
 export type TemplateListItemStatus = "draft" | "published";
+const TemplateListItemStatus = S.String;
+
 export interface TemplateListItem {
   /** The ID of the template. */
   id?: string;
@@ -1724,8 +2555,15 @@ export interface TemplateListItem {
   /** The alias of the template. */
   alias?: string;
 }
+const TemplateListItem = /*@__PURE__*/ __L.at(__c20, 7) as any as S.Schema<TemplateListItem>;
+
 /** Array containing templates information. */
 export type ListTemplatesResponseSuccessDataList = Array<TemplateListItem>;
+const ListTemplatesResponseSuccessDataList = /*@__PURE__*/ __L.at(
+  __c21,
+  0,
+) as any as S.Schema<ListTemplatesResponseSuccessDataList>;
+
 export interface ListTemplatesResponseSuccess {
   /** Type of the response object. */
   object?: string;
@@ -1734,6 +2572,11 @@ export interface ListTemplatesResponseSuccess {
   /** Indicates if there are more templates to retrieve. */
   has_more?: boolean;
 }
+const ListTemplatesResponseSuccess = /*@__PURE__*/ __L.at(
+  __c21,
+  1,
+) as any as S.Schema<ListTemplatesResponseSuccess>;
+
 export interface ListTopicsRequest {
   /** Number of items to return. */
   limit?: number;
@@ -1742,10 +2585,16 @@ export interface ListTopicsRequest {
   /** Return items before this cursor. */
   before?: string;
 }
+const ListTopicsRequest = /*@__PURE__*/ __L.at(__c21, 2) as any as S.Schema<ListTopicsRequest>;
+
 /** The default subscription status for the topic. */
 export type ListTopicsResponseSuccessDataItemDefaultSubscription = "opt_in" | "opt_out";
+const ListTopicsResponseSuccessDataItemDefaultSubscription = S.String;
+
 /** The visibility of the topic. */
 export type ListTopicsResponseSuccessDataItemVisibility = "public" | "private";
+const ListTopicsResponseSuccessDataItemVisibility = S.String;
+
 export interface ListTopicsResponseSuccessDataItem {
   /** Unique identifier for the topic. */
   id?: string;
@@ -1760,8 +2609,18 @@ export interface ListTopicsResponseSuccessDataItem {
   /** Timestamp indicating when the topic was created. */
   created_at?: string;
 }
+const ListTopicsResponseSuccessDataItem = /*@__PURE__*/ __L.at(
+  __c21,
+  3,
+) as any as S.Schema<ListTopicsResponseSuccessDataItem>;
+
 /** Array containing topic information. */
 export type ListTopicsResponseSuccessDataList = Array<ListTopicsResponseSuccessDataItem>;
+const ListTopicsResponseSuccessDataList = /*@__PURE__*/ __L.at(
+  __c21,
+  4,
+) as any as S.Schema<ListTopicsResponseSuccessDataList>;
+
 export interface ListTopicsResponseSuccess {
   /** Type of the response object. */
   object?: string;
@@ -1770,6 +2629,11 @@ export interface ListTopicsResponseSuccess {
   /** Array containing topic information. */
   data: ListTopicsResponseSuccessDataList;
 }
+const ListTopicsResponseSuccess = /*@__PURE__*/ __L.at(
+  __c21,
+  5,
+) as any as S.Schema<ListTopicsResponseSuccess>;
+
 export interface ListWebhooksRequest {
   /** Maximum number of webhooks to return. */
   limit?: number;
@@ -1778,8 +2642,13 @@ export interface ListWebhooksRequest {
   /** Pagination cursor to fetch results before this webhook ID. Cannot be used with 'after'. */
   before?: string;
 }
+const ListWebhooksRequest = /*@__PURE__*/ __L.at(__c21, 6) as any as S.Schema<ListWebhooksRequest>;
+
 /** Array of event types subscribed to. */
 export type ListWebhooksResponseDataItemEventsList = Array<string>;
+const ListWebhooksResponseDataItemEventsList =
+  EmailReplyToList as any as S.Schema<ListWebhooksResponseDataItemEventsList>;
+
 export interface ListWebhooksResponseDataItem {
   /** The ID of the webhook. */
   id?: string;
@@ -1792,8 +2661,18 @@ export interface ListWebhooksResponseDataItem {
   /** Timestamp indicating when the webhook was created. */
   created_at?: string;
 }
+const ListWebhooksResponseDataItem = /*@__PURE__*/ __L.at(
+  __c21,
+  7,
+) as any as S.Schema<ListWebhooksResponseDataItem>;
+
 /** Array containing webhook information. */
 export type ListWebhooksResponseDataList = Array<ListWebhooksResponseDataItem>;
+const ListWebhooksResponseDataList = /*@__PURE__*/ __L.at(
+  __c22,
+  0,
+) as any as S.Schema<ListWebhooksResponseDataList>;
+
 export interface ListWebhooksResponse {
   /** Type of the response object. */
   object?: string;
@@ -1802,28 +2681,52 @@ export interface ListWebhooksResponse {
   /** Array containing webhook information. */
   data: ListWebhooksResponseDataList;
 }
+const ListWebhooksResponse = /*@__PURE__*/ __L.at(
+  __c22,
+  1,
+) as any as S.Schema<ListWebhooksResponse>;
+
 export interface PublishTemplateRequest {
   /** The Template ID or alias. */
   id: string;
 }
+const PublishTemplateRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  2,
+) as any as S.Schema<PublishTemplateRequest>;
+
 export interface PublishTemplateResponseSuccess {
   /** The ID of the template. */
   id?: string;
   /** The object type of the response. */
   object?: string;
 }
+const PublishTemplateResponseSuccess =
+  CreateBroadcastResponseSuccess as any as S.Schema<PublishTemplateResponseSuccess>;
+
 export interface SendBroadcastRequest {
   /** The Broadcast ID. */
   id: string;
   /** Schedule email to be sent later. The date should be in ISO 8601 format. */
   scheduled_at?: string;
 }
+const SendBroadcastRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  3,
+) as any as S.Schema<SendBroadcastRequest>;
+
 export interface SendBroadcastResponseSuccess {
   /** The ID of the broadcast. */
   id?: string;
 }
+const SendBroadcastResponseSuccess =
+  CreateBatchEmailsResponseDataItem as any as S.Schema<SendBroadcastResponseSuccess>;
+
 /** An optional payload of key/value pairs to include with the event. */
 export type SendEventRequestPayloadMap = { [key: string]: unknown | undefined };
+const SendEventRequestPayloadMap =
+  CreateContactRequestPropertiesMap as any as S.Schema<SendEventRequestPayloadMap>;
+
 export interface SendEventRequest {
   /** The name of the event to send. */
   event: string;
@@ -1834,11 +2737,20 @@ export interface SendEventRequest {
   /** An optional payload of key/value pairs to include with the event. */
   payload?: SendEventRequestPayloadMap;
 }
+const SendEventRequest = /*@__PURE__*/ __L.at(__c22, 4) as any as S.Schema<SendEventRequest>;
+
 export interface SendEventResponse {}
+const SendEventResponse = /*@__PURE__*/ __L.at(__c22, 5) as any as S.Schema<SendEventResponse>;
+
 export interface StopAutomationRequest {
   /** The ID of the automation. */
   automation_id: string;
 }
+const StopAutomationRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  6,
+) as any as S.Schema<StopAutomationRequest>;
+
 export interface StopAutomationResponse {
   /** Type of the response object. */
   object?: string;
@@ -1847,12 +2759,25 @@ export interface StopAutomationResponse {
   /** The status of the automation after stopping. */
   status?: string;
 }
+const StopAutomationResponse = /*@__PURE__*/ __L.at(
+  __c22,
+  7,
+) as any as S.Schema<StopAutomationResponse>;
+
 /** The status of the automation. */
 export type UpdateAutomationRequestStatus = "enabled" | "disabled";
+const UpdateAutomationRequestStatus = S.String;
+
 /** The steps that compose the automation workflow. Must be provided together with `connections`. */
 export type UpdateAutomationRequestStepsList = Array<AutomationStep>;
+const UpdateAutomationRequestStepsList =
+  CreateAutomationRequestStepsList as any as S.Schema<UpdateAutomationRequestStepsList>;
+
 /** The connections between steps in the automation graph. Must be provided together with `steps`. */
 export type UpdateAutomationRequestConnectionsList = Array<AutomationConnection>;
+const UpdateAutomationRequestConnectionsList =
+  CreateAutomationRequestConnectionsList as any as S.Schema<UpdateAutomationRequestConnectionsList>;
+
 export interface UpdateAutomationRequest {
   /** The ID of the automation. */
   automation_id: string;
@@ -1865,14 +2790,25 @@ export interface UpdateAutomationRequest {
   /** The connections between steps in the automation graph. Must be provided together with `steps`. */
   connections?: UpdateAutomationRequestConnectionsList;
 }
+const UpdateAutomationRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  0,
+) as any as S.Schema<UpdateAutomationRequest>;
+
 export interface PatchAutomationResponse {
   /** Type of the response object. */
   object?: string;
   /** The ID of the updated automation. */
   id?: string;
 }
+const PatchAutomationResponse =
+  CreateAutomationResponse as any as S.Schema<PatchAutomationResponse>;
+
 /** The email addresses to which replies should be sent. */
 export type UpdateBroadcastRequestReplyToList = Array<string>;
+const UpdateBroadcastRequestReplyToList =
+  EmailReplyToList as any as S.Schema<UpdateBroadcastRequestReplyToList>;
+
 export interface UpdateBroadcastRequest {
   /** The Broadcast ID. */
   id: string;
@@ -1897,14 +2833,25 @@ export interface UpdateBroadcastRequest {
   /** The topic ID that the broadcast will be scoped to. */
   topic_id?: string;
 }
+const UpdateBroadcastRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  1,
+) as any as S.Schema<UpdateBroadcastRequest>;
+
 export interface UpdateBroadcastResponseSuccess {
   /** The ID of the broadcast. */
   id?: string;
   /** The object type of the response. */
   object?: string;
 }
+const UpdateBroadcastResponseSuccess =
+  CreateBroadcastResponseSuccess as any as S.Schema<UpdateBroadcastResponseSuccess>;
+
 /** A map of custom property keys and values to update. */
 export type UpdateContactRequestPropertiesMap = { [key: string]: unknown | undefined };
+const UpdateContactRequestPropertiesMap =
+  CreateContactRequestPropertiesMap as any as S.Schema<UpdateContactRequestPropertiesMap>;
+
 export interface UpdateContactRequest {
   /** The Contact ID or email address. */
   id: string;
@@ -1919,32 +2866,56 @@ export interface UpdateContactRequest {
   /** A map of custom property keys and values to update. */
   properties?: UpdateContactRequestPropertiesMap;
 }
+const UpdateContactRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  2,
+) as any as S.Schema<UpdateContactRequest>;
+
 export interface UpdateContactResponseSuccess {
   /** Type of the response object. */
   object?: string;
   /** Unique identifier for the updated contact. */
   id?: string;
 }
+const UpdateContactResponseSuccess =
+  CreateContactResponseSuccess as any as S.Schema<UpdateContactResponseSuccess>;
+
 /** The default value to use when the property is not set for a contact. Must match the type of the property. */
 export type UpdateContactPropertyRequestFallbackValue = string | number;
+const UpdateContactPropertyRequestFallbackValue =
+  S.Unknown as any as S.Schema<UpdateContactPropertyRequestFallbackValue>;
+
 export interface UpdateContactPropertyRequest {
   /** The Contact Property ID. */
   id: string;
   /** The default value to use when the property is not set for a contact. Must match the type of the property. */
   fallback_value?: UpdateContactPropertyRequestFallbackValue;
 }
+const UpdateContactPropertyRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  3,
+) as any as S.Schema<UpdateContactPropertyRequest>;
+
 export interface UpdateContactPropertyResponseSuccess {
   /** The ID of the contact property. */
   id?: string;
   /** The object type. */
   object?: string;
 }
+const UpdateContactPropertyResponseSuccess =
+  CreateBroadcastResponseSuccess as any as S.Schema<UpdateContactPropertyResponseSuccess>;
+
 export interface UpdateContactSegmentRequest {
   /** The Contact ID or email address. */
   contact_id: string;
   /** The Segment ID. */
   segment_id: string;
 }
+const UpdateContactSegmentRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  4,
+) as any as S.Schema<UpdateContactSegmentRequest>;
+
 export interface AddContactToSegmentResponseSuccess {
   /** The object type. */
   object?: string;
@@ -1953,6 +2924,11 @@ export interface AddContactToSegmentResponseSuccess {
   /** The ID of the segment. */
   segment_id?: string;
 }
+const AddContactToSegmentResponseSuccess = /*@__PURE__*/ __L.at(
+  __c23,
+  5,
+) as any as S.Schema<AddContactToSegmentResponseSuccess>;
+
 /** The subscription status (opt_in or opt_out). */
 export type UpdateContactTopicsRequestTopicsItemSubscription = "opt_in" | "opt_out";
 export interface UpdateContactTopicsRequestTopicsItem {
@@ -1962,11 +2938,19 @@ export interface UpdateContactTopicsRequestTopicsItem {
   subscription?: UpdateContactTopicsRequestTopicsItemSubscription | (string & {});
 }
 export type UpdateContactTopicsRequestTopicsList = Array<UpdateContactTopicsRequestTopicsItem>;
+const UpdateContactTopicsRequestTopicsList =
+  CreateContactRequestTopicsList as any as S.Schema<UpdateContactTopicsRequestTopicsList>;
+
 export interface UpdateContactTopicsRequest {
   /** The Contact ID or email address. */
   contact_id: string;
   topics: UpdateContactTopicsRequestTopicsList;
 }
+const UpdateContactTopicsRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  6,
+) as any as S.Schema<UpdateContactTopicsRequest>;
+
 /** The subscription status. */
 export type UpdateContactTopicsResponseSuccessTopicsItemSubscription = "opt_in" | "opt_out";
 export interface UpdateContactTopicsResponseSuccessTopicsItem {
@@ -1978,6 +2962,9 @@ export interface UpdateContactTopicsResponseSuccessTopicsItem {
 /** Array of updated topic subscriptions. */
 export type UpdateContactTopicsResponseSuccessTopicsList =
   Array<UpdateContactTopicsResponseSuccessTopicsItem>;
+const UpdateContactTopicsResponseSuccessTopicsList =
+  CreateContactRequestTopicsList as any as S.Schema<UpdateContactTopicsResponseSuccessTopicsList>;
+
 export interface UpdateContactTopicsResponseSuccess {
   /** The object type. */
   object?: string;
@@ -1986,6 +2973,11 @@ export interface UpdateContactTopicsResponseSuccess {
   /** Array of updated topic subscriptions. */
   topics?: UpdateContactTopicsResponseSuccessTopicsList;
 }
+const UpdateContactTopicsResponseSuccess = /*@__PURE__*/ __L.at(
+  __c23,
+  7,
+) as any as S.Schema<UpdateContactTopicsResponseSuccess>;
+
 export interface UpdateDomainRequest {
   /** The ID of the domain. */
   domain_id: string;
@@ -1999,35 +2991,54 @@ export interface UpdateDomainRequest {
   /** The subdomain to use for click and open tracking. */
   tracking_subdomain?: string;
 }
+const UpdateDomainRequest = /*@__PURE__*/ __L.at(__c24, 0) as any as S.Schema<UpdateDomainRequest>;
+
 export interface UpdateDomainResponseSuccess {
   /** The ID of the updated domain. */
   id?: string;
   /** The object type representing the updated domain. */
   object?: string;
 }
+const UpdateDomainResponseSuccess =
+  CreateBroadcastResponseSuccess as any as S.Schema<UpdateDomainResponseSuccess>;
+
 export interface UpdateEmailRequest {
   /** The ID of the email. */
   email_id: string;
 }
+const UpdateEmailRequest = /*@__PURE__*/ __L.at(__c24, 1) as any as S.Schema<UpdateEmailRequest>;
+
 export interface UpdateEmailOptions {
   /** Schedule email to be sent later. The date should be in ISO 8601 format. */
   scheduled_at?: string;
 }
+const UpdateEmailOptions = /*@__PURE__*/ __L.at(__c24, 2) as any as S.Schema<UpdateEmailOptions>;
+
 export interface UpdateEventRequest {
   /** The event ID (UUID) or event name. */
   identifier: string;
   /** A flat key/type map defining the event payload schema. Set to `null` to clear the schema. Supported types are `string`, `number`, `boolean`, and `date`. */
   schema: unknown | null;
 }
+const UpdateEventRequest = /*@__PURE__*/ __L.at(__c24, 3) as any as S.Schema<UpdateEventRequest>;
+
 export interface UpdateEventResponse {
   /** Type of the response object. */
   object?: string;
   /** The ID of the updated event. */
   id?: string;
 }
+const UpdateEventResponse = CreateAutomationResponse as any as S.Schema<UpdateEventResponse>;
+
 /** Reply-to email addresses. */
 export type UpdateTemplateRequestReplyToList = Array<string>;
+const UpdateTemplateRequestReplyToList =
+  EmailReplyToList as any as S.Schema<UpdateTemplateRequestReplyToList>;
+
 export type UpdateTemplateRequestVariablesList = Array<TemplateVariableInput>;
+const UpdateTemplateRequestVariablesList =
+  CreateTemplateRequestVariablesList as any as S.Schema<UpdateTemplateRequestVariablesList>;
+
 export interface UpdateTemplateRequest {
   /** The Template ID or alias. */
   id: string;
@@ -2047,14 +3058,24 @@ export interface UpdateTemplateRequest {
   text?: string;
   variables?: UpdateTemplateRequestVariablesList;
 }
+const UpdateTemplateRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  4,
+) as any as S.Schema<UpdateTemplateRequest>;
+
 export interface UpdateTemplateResponseSuccess {
   /** The ID of the template. */
   id?: string;
   /** The object type of the response. */
   object?: string;
 }
+const UpdateTemplateResponseSuccess =
+  CreateBroadcastResponseSuccess as any as S.Schema<UpdateTemplateResponseSuccess>;
+
 /** The visibility of the topic. */
 export type UpdateTopicRequestVisibility = "public" | "private";
+const UpdateTopicRequestVisibility = S.String;
+
 export interface UpdateTopicRequest {
   /** The Topic ID. */
   id: string;
@@ -2065,16 +3086,26 @@ export interface UpdateTopicRequest {
   /** The visibility of the topic. */
   visibility?: UpdateTopicRequestVisibility | (string & {});
 }
+const UpdateTopicRequest = /*@__PURE__*/ __L.at(__c24, 5) as any as S.Schema<UpdateTopicRequest>;
+
 export interface UpdateTopicResponseSuccess {
   /** The ID of the topic. */
   id?: string;
   /** The object type. */
   object?: string;
 }
+const UpdateTopicResponseSuccess =
+  CreateBroadcastResponseSuccess as any as S.Schema<UpdateTopicResponseSuccess>;
+
 /** Array of event types to subscribe to. */
 export type UpdateWebhookRequestEventsList = Array<string>;
+const UpdateWebhookRequestEventsList =
+  EmailReplyToList as any as S.Schema<UpdateWebhookRequestEventsList>;
+
 /** The status of the webhook. */
 export type UpdateWebhookRequestStatus = "enabled" | "disabled";
+const UpdateWebhookRequestStatus = S.String;
+
 export interface UpdateWebhookRequest {
   /** The Webhook ID. */
   webhook_id: string;
@@ -2085,22 +3116,33 @@ export interface UpdateWebhookRequest {
   /** The status of the webhook. */
   status?: UpdateWebhookRequestStatus | (string & {});
 }
+const UpdateWebhookRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  6,
+) as any as S.Schema<UpdateWebhookRequest>;
+
 export interface UpdateWebhookResponse {
   /** The type of object. */
   object?: string;
   /** The ID of the updated webhook. */
   id?: string;
 }
+const UpdateWebhookResponse = CreateAutomationResponse as any as S.Schema<UpdateWebhookResponse>;
+
 export interface VerifyDomainRequest {
   /** The ID of the domain. */
   domain_id: string;
 }
+const VerifyDomainRequest = /*@__PURE__*/ __L.at(__c24, 7) as any as S.Schema<VerifyDomainRequest>;
+
 export interface VerifyDomainResponse {
   /** The type of object. */
   object?: string;
   /** The ID of the domain. */
   id?: string;
 }
+const VerifyDomainResponse = CreateAutomationResponse as any as S.Schema<VerifyDomainResponse>;
+
 export type CancelEmailError = ResendOpError;
 /** Cancel the schedule of the e-mail. */
 export const cancelEmail: API.OperationMethod<
@@ -2109,8 +3151,8 @@ export const cancelEmail: API.OperationMethod<
   CancelEmailError,
   ResendOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<CancelEmailRequest>,
-  output: __S(3) as any as S.Schema<Email>,
+  input: CancelEmailRequest,
+  output: Email,
   errors: [UnknownResendError],
   protocol: ResendProtocol,
   retry: Retry.Retry,
@@ -2124,8 +3166,8 @@ export const createApiKey: API.OperationMethod<
   CreateApiKeyError,
   ResendOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4) as any as S.Schema<CreateApiKeyRequest>,
-  output: __S(5) as any as S.Schema<CreateApiKeyResponse>,
+  input: CreateApiKeyRequest,
+  output: CreateApiKeyResponse,
   errors: [UnknownResendError],
   protocol: ResendProtocol,
   retry: Retry.Retry,
@@ -2139,8 +3181,8 @@ export const createAutomation: API.OperationMethod<
   CreateAutomationError,
   ResendOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10) as any as S.Schema<CreateAutomationRequest>,
-  output: __S(11) as any as S.Schema<CreateAutomationResponse>,
+  input: CreateAutomationRequest,
+  output: CreateAutomationResponse,
   errors: [UnknownResendError],
   protocol: ResendProtocol,
   retry: Retry.Retry,
@@ -2154,8 +3196,8 @@ export const createBroadcast: API.OperationMethod<
   CreateBroadcastError,
   ResendOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12) as any as S.Schema<CreateBroadcastRequest>,
-  output: __S(13) as any as S.Schema<CreateBroadcastResponseSuccess>,
+  input: CreateBroadcastRequest,
+  output: CreateBroadcastResponseSuccess,
   errors: [UnknownResendError],
   protocol: ResendProtocol,
   retry: Retry.Retry,
@@ -2169,8 +3211,8 @@ export const createContact: API.OperationMethod<
   CreateContactError,
   ResendOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17) as any as S.Schema<CreateContactRequest>,
-  output: __S(18) as any as S.Schema<CreateContactResponseSuccess>,
+  input: CreateContactRequest,
+  output: CreateContactResponseSuccess,
   errors: [UnknownResendError],
   protocol: ResendProtocol,
   retry: Retry.Retry,
@@ -2184,8 +3226,8 @@ export const createContactProperty: API.OperationMethod<
   CreateContactPropertyError,
   ResendOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19) as any as S.Schema<CreateContactPropertyRequest>,
-  output: __S(13) as any as S.Schema<CreateContactPropertyResponseSuccess>,
+  input: CreateContactPropertyRequest,
+  output: CreateContactPropertyResponseSuccess,
   errors: [UnknownResendError],
   protocol: ResendProtocol,
   retry: Retry.Retry,
@@ -2199,8 +3241,8 @@ export const createDomain: API.OperationMethod<
   CreateDomainError,
   ResendOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21) as any as S.Schema<CreateDomainRequest>,
-  output: __S(24) as any as S.Schema<CreateDomainResponse>,
+  input: CreateDomainRequest,
+  output: CreateDomainResponse,
   errors: [UnknownResendError],
   protocol: ResendProtocol,
   retry: Retry.Retry,
@@ -2214,8 +3256,8 @@ export const createEmail: API.OperationMethod<
   CreateEmailError,
   ResendOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31) as any as S.Schema<CreateEmailRequest>,
-  output: __S(32) as any as S.Schema<SendEmailResponse>,
+  input: CreateEmailRequest,
+  output: SendEmailResponse,
   errors: [UnknownResendError],
   protocol: ResendProtocol,
   retry: Retry.Retry,
@@ -2229,8 +3271,8 @@ export const createEmailBatch: API.OperationMethod<
   CreateEmailBatchError,
   ResendOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37) as any as S.Schema<CreateEmailBatchRequest>,
-  output: __S(40) as any as S.Schema<CreateBatchEmailsResponse>,
+  input: CreateEmailBatchRequest,
+  output: CreateBatchEmailsResponse,
   errors: [UnknownResendError],
   protocol: ResendProtocol,
   retry: Retry.Retry,
@@ -2244,8 +3286,8 @@ export const createEvent: API.OperationMethod<
   CreateEventError,
   ResendOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41) as any as S.Schema<CreateEventRequest>,
-  output: __S(11) as any as S.Schema<CreateEventResponse>,
+  input: CreateEventRequest,
+  output: CreateEventResponse,
   errors: [UnknownResendError],
   protocol: ResendProtocol,
   retry: Retry.Retry,
@@ -2259,8 +3301,8 @@ export const createSegment: API.OperationMethod<
   CreateSegmentError,
   ResendOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42) as any as S.Schema<CreateSegmentRequest>,
-  output: __S(13) as any as S.Schema<CreateSegmentResponseSuccess>,
+  input: CreateSegmentRequest,
+  output: CreateSegmentResponseSuccess,
   errors: [UnknownResendError],
   protocol: ResendProtocol,
   retry: Retry.Retry,
@@ -2274,8 +3316,8 @@ export const createTemplate: API.OperationMethod<
   CreateTemplateError,
   ResendOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45) as any as S.Schema<CreateTemplateRequest>,
-  output: __S(13) as any as S.Schema<CreateTemplateResponseSuccess>,
+  input: CreateTemplateRequest,
+  output: CreateTemplateResponseSuccess,
   errors: [UnknownResendError],
   protocol: ResendProtocol,
   retry: Retry.Retry,
@@ -2289,8 +3331,8 @@ export const createTopic: API.OperationMethod<
   CreateTopicError,
   ResendOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(46) as any as S.Schema<CreateTopicRequest>,
-  output: __S(13) as any as S.Schema<CreateTopicResponseSuccess>,
+  input: CreateTopicRequest,
+  output: CreateTopicResponseSuccess,
   errors: [UnknownResendError],
   protocol: ResendProtocol,
   retry: Retry.Retry,
@@ -2304,8 +3346,8 @@ export const createWebhook: API.OperationMethod<
   CreateWebhookError,
   ResendOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47) as any as S.Schema<CreateWebhookRequest>,
-  output: __S(48) as any as S.Schema<CreateWebhookResponse>,
+  input: CreateWebhookRequest,
+  output: CreateWebhookResponse,
   errors: [UnknownResendError],
   protocol: ResendProtocol,
   retry: Retry.Retry,
@@ -2319,8 +3361,8 @@ export const deleteApiKey: API.OperationMethod<
   DeleteApiKeyError,
   ResendOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49) as any as S.Schema<DeleteApiKeyRequest>,
-  output: __S(50) as any as S.Schema<DeleteApiKeyResponse>,
+  input: DeleteApiKeyRequest,
+  output: DeleteApiKeyResponse,
   errors: [UnknownResendError],
   protocol: ResendProtocol,
   retry: Retry.Retry,
@@ -2334,8 +3376,8 @@ export const deleteAutomation: API.OperationMethod<
   DeleteAutomationError,
   ResendOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(51) as any as S.Schema<DeleteAutomationRequest>,
-  output: __S(50) as any as S.Schema<DeleteAutomationResponse>,
+  input: DeleteAutomationRequest,
+  output: DeleteAutomationResponse,
   errors: [UnknownResendError],
   protocol: ResendProtocol,
   retry: Retry.Retry,
@@ -2349,8 +3391,8 @@ export const deleteBroadcast: API.OperationMethod<
   DeleteBroadcastError,
   ResendOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(52) as any as S.Schema<DeleteBroadcastRequest>,
-  output: __S(53) as any as S.Schema<RemoveBroadcastResponseSuccess>,
+  input: DeleteBroadcastRequest,
+  output: RemoveBroadcastResponseSuccess,
   errors: [UnknownResendError],
   protocol: ResendProtocol,
   retry: Retry.Retry,
@@ -2364,8 +3406,8 @@ export const deleteContact: API.OperationMethod<
   DeleteContactError,
   ResendOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(54) as any as S.Schema<DeleteContactRequest>,
-  output: __S(55) as any as S.Schema<RemoveContactResponseSuccess>,
+  input: DeleteContactRequest,
+  output: RemoveContactResponseSuccess,
   errors: [UnknownResendError],
   protocol: ResendProtocol,
   retry: Retry.Retry,
@@ -2379,8 +3421,8 @@ export const deleteContactProperty: API.OperationMethod<
   DeleteContactPropertyError,
   ResendOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56) as any as S.Schema<DeleteContactPropertyRequest>,
-  output: __S(53) as any as S.Schema<RemoveContactPropertyResponseSuccess>,
+  input: DeleteContactPropertyRequest,
+  output: RemoveContactPropertyResponseSuccess,
   errors: [UnknownResendError],
   protocol: ResendProtocol,
   retry: Retry.Retry,
@@ -2394,8 +3436,8 @@ export const deleteContactSegment: API.OperationMethod<
   DeleteContactSegmentError,
   ResendOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57) as any as S.Schema<DeleteContactSegmentRequest>,
-  output: __S(58) as any as S.Schema<RemoveContactFromSegmentResponseSuccess>,
+  input: DeleteContactSegmentRequest,
+  output: RemoveContactFromSegmentResponseSuccess,
   errors: [UnknownResendError],
   protocol: ResendProtocol,
   retry: Retry.Retry,
@@ -2409,8 +3451,8 @@ export const deleteDomain: API.OperationMethod<
   DeleteDomainError,
   ResendOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(59) as any as S.Schema<DeleteDomainRequest>,
-  output: __S(50) as any as S.Schema<DeleteDomainResponse>,
+  input: DeleteDomainRequest,
+  output: DeleteDomainResponse,
   errors: [UnknownResendError],
   protocol: ResendProtocol,
   retry: Retry.Retry,
@@ -2424,8 +3466,8 @@ export const deleteEvent: API.OperationMethod<
   DeleteEventError,
   ResendOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60) as any as S.Schema<DeleteEventRequest>,
-  output: __S(50) as any as S.Schema<RemoveEventResponse>,
+  input: DeleteEventRequest,
+  output: RemoveEventResponse,
   errors: [UnknownResendError],
   protocol: ResendProtocol,
   retry: Retry.Retry,
@@ -2439,8 +3481,8 @@ export const deleteSegment: API.OperationMethod<
   DeleteSegmentError,
   ResendOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(61) as any as S.Schema<DeleteSegmentRequest>,
-  output: __S(53) as any as S.Schema<RemoveSegmentResponseSuccess>,
+  input: DeleteSegmentRequest,
+  output: RemoveSegmentResponseSuccess,
   errors: [UnknownResendError],
   protocol: ResendProtocol,
   retry: Retry.Retry,
@@ -2454,8 +3496,8 @@ export const deleteTemplate: API.OperationMethod<
   DeleteTemplateError,
   ResendOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(62) as any as S.Schema<DeleteTemplateRequest>,
-  output: __S(55) as any as S.Schema<RemoveTemplateResponseSuccess>,
+  input: DeleteTemplateRequest,
+  output: RemoveTemplateResponseSuccess,
   errors: [UnknownResendError],
   protocol: ResendProtocol,
   retry: Retry.Retry,
@@ -2469,8 +3511,8 @@ export const deleteTopic: API.OperationMethod<
   DeleteTopicError,
   ResendOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(63) as any as S.Schema<DeleteTopicRequest>,
-  output: __S(53) as any as S.Schema<RemoveTopicResponseSuccess>,
+  input: DeleteTopicRequest,
+  output: RemoveTopicResponseSuccess,
   errors: [UnknownResendError],
   protocol: ResendProtocol,
   retry: Retry.Retry,
@@ -2484,8 +3526,8 @@ export const deleteWebhook: API.OperationMethod<
   DeleteWebhookError,
   ResendOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(64) as any as S.Schema<DeleteWebhookRequest>,
-  output: __S(50) as any as S.Schema<DeleteWebhookResponse>,
+  input: DeleteWebhookRequest,
+  output: DeleteWebhookResponse,
   errors: [UnknownResendError],
   protocol: ResendProtocol,
   retry: Retry.Retry,
@@ -2499,8 +3541,8 @@ export const duplicateTemplate: API.OperationMethod<
   DuplicateTemplateError,
   ResendOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65) as any as S.Schema<DuplicateTemplateRequest>,
-  output: __S(13) as any as S.Schema<DuplicateTemplateResponseSuccess>,
+  input: DuplicateTemplateRequest,
+  output: DuplicateTemplateResponseSuccess,
   errors: [UnknownResendError],
   protocol: ResendProtocol,
   retry: Retry.Retry,
@@ -2514,8 +3556,8 @@ export const getAutomation: API.OperationMethod<
   GetAutomationError,
   ResendOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(66) as any as S.Schema<GetAutomationRequest>,
-  output: __S(69) as any as S.Schema<Automation>,
+  input: GetAutomationRequest,
+  output: Automation,
   errors: [UnknownResendError],
   protocol: ResendProtocol,
   retry: Retry.Retry,
@@ -2529,8 +3571,8 @@ export const getAutomationRun: API.OperationMethod<
   GetAutomationRunError,
   ResendOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(70) as any as S.Schema<GetAutomationRunRequest>,
-  output: __S(73) as any as S.Schema<AutomationRun>,
+  input: GetAutomationRunRequest,
+  output: AutomationRun,
   errors: [UnknownResendError],
   protocol: ResendProtocol,
   retry: Retry.Retry,
@@ -2544,8 +3586,8 @@ export const getBroadcast: API.OperationMethod<
   GetBroadcastError,
   ResendOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(74) as any as S.Schema<GetBroadcastRequest>,
-  output: __S(75) as any as S.Schema<GetBroadcastResponseSuccess>,
+  input: GetBroadcastRequest,
+  output: GetBroadcastResponseSuccess,
   errors: [UnknownResendError],
   protocol: ResendProtocol,
   retry: Retry.Retry,
@@ -2559,8 +3601,8 @@ export const getContact: API.OperationMethod<
   GetContactError,
   ResendOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(76) as any as S.Schema<GetContactRequest>,
-  output: __S(77) as any as S.Schema<GetContactResponseSuccess>,
+  input: GetContactRequest,
+  output: GetContactResponseSuccess,
   errors: [UnknownResendError],
   protocol: ResendProtocol,
   retry: Retry.Retry,
@@ -2574,8 +3616,8 @@ export const getContactProperty: API.OperationMethod<
   GetContactPropertyError,
   ResendOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(78) as any as S.Schema<GetContactPropertyRequest>,
-  output: __S(79) as any as S.Schema<GetContactPropertyResponseSuccess>,
+  input: GetContactPropertyRequest,
+  output: GetContactPropertyResponseSuccess,
   errors: [UnknownResendError],
   protocol: ResendProtocol,
   retry: Retry.Retry,
@@ -2589,8 +3631,8 @@ export const getDomain: API.OperationMethod<
   GetDomainError,
   ResendOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(80) as any as S.Schema<GetDomainRequest>,
-  output: __S(81) as any as S.Schema<Domain>,
+  input: GetDomainRequest,
+  output: Domain,
   errors: [UnknownResendError],
   protocol: ResendProtocol,
   retry: Retry.Retry,
@@ -2600,8 +3642,8 @@ export type GetEmailError = ResendOpError;
 /** Retrieve a single email */
 export const getEmail: API.OperationMethod<GetEmailRequest, Email, GetEmailError, ResendOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(82) as any as S.Schema<GetEmailRequest>,
-    output: __S(3) as any as S.Schema<Email>,
+    input: GetEmailRequest,
+    output: Email,
     errors: [UnknownResendError],
     protocol: ResendProtocol,
     retry: Retry.Retry,
@@ -2615,8 +3657,8 @@ export const getEmailAttachment: API.OperationMethod<
   GetEmailAttachmentError,
   ResendOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(83) as any as S.Schema<GetEmailAttachmentRequest>,
-  output: __S(84) as any as S.Schema<RetrievedAttachment>,
+  input: GetEmailAttachmentRequest,
+  output: RetrievedAttachment,
   errors: [UnknownResendError],
   protocol: ResendProtocol,
   retry: Retry.Retry,
@@ -2630,8 +3672,8 @@ export const getEmailReceiving: API.OperationMethod<
   GetEmailReceivingError,
   ResendOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(85) as any as S.Schema<GetEmailReceivingRequest>,
-  output: __S(88) as any as S.Schema<GetReceivedEmailResponse>,
+  input: GetEmailReceivingRequest,
+  output: GetReceivedEmailResponse,
   errors: [UnknownResendError],
   protocol: ResendProtocol,
   retry: Retry.Retry,
@@ -2645,8 +3687,8 @@ export const getEmailReceivingAttachment: API.OperationMethod<
   GetEmailReceivingAttachmentError,
   ResendOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(89) as any as S.Schema<GetEmailReceivingAttachmentRequest>,
-  output: __S(84) as any as S.Schema<RetrievedAttachment>,
+  input: GetEmailReceivingAttachmentRequest,
+  output: RetrievedAttachment,
   errors: [UnknownResendError],
   protocol: ResendProtocol,
   retry: Retry.Retry,
@@ -2656,8 +3698,8 @@ export type GetEventError = ResendOpError;
 /** Retrieve a single event */
 export const getEvent: API.OperationMethod<GetEventRequest, Event, GetEventError, ResendOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(90) as any as S.Schema<GetEventRequest>,
-    output: __S(91) as any as S.Schema<Event>,
+    input: GetEventRequest,
+    output: Event,
     errors: [UnknownResendError],
     protocol: ResendProtocol,
     retry: Retry.Retry,
@@ -2667,8 +3709,8 @@ export type GetLogError = ResendOpError;
 /** Retrieve a single log */
 export const getLog: API.OperationMethod<GetLogRequest, Log, GetLogError, ResendOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(92) as any as S.Schema<GetLogRequest>,
-    output: __S(93) as any as S.Schema<Log>,
+    input: GetLogRequest,
+    output: Log,
     errors: [UnknownResendError],
     protocol: ResendProtocol,
     retry: Retry.Retry,
@@ -2682,8 +3724,8 @@ export const getSegment: API.OperationMethod<
   GetSegmentError,
   ResendOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(94) as any as S.Schema<GetSegmentRequest>,
-  output: __S(95) as any as S.Schema<GetSegmentResponseSuccess>,
+  input: GetSegmentRequest,
+  output: GetSegmentResponseSuccess,
   errors: [UnknownResendError],
   protocol: ResendProtocol,
   retry: Retry.Retry,
@@ -2697,8 +3739,8 @@ export const getTemplate: API.OperationMethod<
   GetTemplateError,
   ResendOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(96) as any as S.Schema<GetTemplateRequest>,
-  output: __S(99) as any as S.Schema<Template>,
+  input: GetTemplateRequest,
+  output: Template,
   errors: [UnknownResendError],
   protocol: ResendProtocol,
   retry: Retry.Retry,
@@ -2712,8 +3754,8 @@ export const getTopic: API.OperationMethod<
   GetTopicError,
   ResendOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(100) as any as S.Schema<GetTopicRequest>,
-  output: __S(101) as any as S.Schema<GetTopicResponseSuccess>,
+  input: GetTopicRequest,
+  output: GetTopicResponseSuccess,
   errors: [UnknownResendError],
   protocol: ResendProtocol,
   retry: Retry.Retry,
@@ -2727,8 +3769,8 @@ export const getWebhook: API.OperationMethod<
   GetWebhookError,
   ResendOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(102) as any as S.Schema<GetWebhookRequest>,
-  output: __S(103) as any as S.Schema<GetWebhookResponse>,
+  input: GetWebhookRequest,
+  output: GetWebhookResponse,
   errors: [UnknownResendError],
   protocol: ResendProtocol,
   retry: Retry.Retry,
@@ -2744,8 +3786,8 @@ export const listApiKeys: API.PaginatedOperationMethod<
   ApiKey
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(104) as any as S.Schema<ListApiKeysRequest>,
-    output: __S(107) as any as S.Schema<ListApiKeysResponse>,
+    input: ListApiKeysRequest,
+    output: ListApiKeysResponse,
     errors: [UnknownResendError],
     protocol: ResendProtocol,
     retry: Retry.Retry,
@@ -2770,8 +3812,8 @@ export const listAutomationRuns: API.PaginatedOperationMethod<
   AutomationRunListItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(108) as any as S.Schema<ListAutomationRunsRequest>,
-    output: __S(111) as any as S.Schema<ListAutomationRunsResponse>,
+    input: ListAutomationRunsRequest,
+    output: ListAutomationRunsResponse,
     errors: [UnknownResendError],
     protocol: ResendProtocol,
     retry: Retry.Retry,
@@ -2796,8 +3838,8 @@ export const listAutomations: API.PaginatedOperationMethod<
   AutomationListItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(112) as any as S.Schema<ListAutomationsRequest>,
-    output: __S(115) as any as S.Schema<ListAutomationsResponse>,
+    input: ListAutomationsRequest,
+    output: ListAutomationsResponse,
     errors: [UnknownResendError],
     protocol: ResendProtocol,
     retry: Retry.Retry,
@@ -2822,8 +3864,8 @@ export const listBroadcasts: API.PaginatedOperationMethod<
   ListBroadcastsResponseSuccessDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(116) as any as S.Schema<ListBroadcastsRequest>,
-    output: __S(119) as any as S.Schema<ListBroadcastsResponseSuccess>,
+    input: ListBroadcastsRequest,
+    output: ListBroadcastsResponseSuccess,
     errors: [UnknownResendError],
     protocol: ResendProtocol,
     retry: Retry.Retry,
@@ -2848,8 +3890,8 @@ export const listContactProperties: API.PaginatedOperationMethod<
   ListContactPropertiesResponseSuccessDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(120) as any as S.Schema<ListContactPropertiesRequest>,
-    output: __S(123) as any as S.Schema<ListContactPropertiesResponseSuccess>,
+    input: ListContactPropertiesRequest,
+    output: ListContactPropertiesResponseSuccess,
     errors: [UnknownResendError],
     protocol: ResendProtocol,
     retry: Retry.Retry,
@@ -2872,8 +3914,8 @@ export const listContacts: API.OperationMethod<
   ListContactsError,
   ResendOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(124) as any as S.Schema<ListContactsRequest>,
-  output: __S(127) as any as S.Schema<ListContactsResponseSuccess>,
+  input: ListContactsRequest,
+  output: ListContactsResponseSuccess,
   errors: [UnknownResendError],
   protocol: ResendProtocol,
   retry: Retry.Retry,
@@ -2889,8 +3931,8 @@ export const listContactSegments: API.PaginatedOperationMethod<
   ListContactSegmentsResponseSuccessDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(128) as any as S.Schema<ListContactSegmentsRequest>,
-    output: __S(131) as any as S.Schema<ListContactSegmentsResponseSuccess>,
+    input: ListContactSegmentsRequest,
+    output: ListContactSegmentsResponseSuccess,
     errors: [UnknownResendError],
     protocol: ResendProtocol,
     retry: Retry.Retry,
@@ -2915,8 +3957,8 @@ export const listContactTopics: API.PaginatedOperationMethod<
   GetContactTopicsResponseSuccessDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(132) as any as S.Schema<ListContactTopicsRequest>,
-    output: __S(135) as any as S.Schema<GetContactTopicsResponseSuccess>,
+    input: ListContactTopicsRequest,
+    output: GetContactTopicsResponseSuccess,
     errors: [UnknownResendError],
     protocol: ResendProtocol,
     retry: Retry.Retry,
@@ -2941,8 +3983,8 @@ export const listDomains: API.PaginatedOperationMethod<
   ListDomainsItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(136) as any as S.Schema<ListDomainsRequest>,
-    output: __S(139) as any as S.Schema<ListDomainsResponse>,
+    input: ListDomainsRequest,
+    output: ListDomainsResponse,
     errors: [UnknownResendError],
     protocol: ResendProtocol,
     retry: Retry.Retry,
@@ -2967,8 +4009,8 @@ export const listEmailAttachments: API.PaginatedOperationMethod<
   ListAttachmentsResponseDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(140) as any as S.Schema<ListEmailAttachmentsRequest>,
-    output: __S(143) as any as S.Schema<ListAttachmentsResponse>,
+    input: ListEmailAttachmentsRequest,
+    output: ListAttachmentsResponse,
     errors: [UnknownResendError],
     protocol: ResendProtocol,
     retry: Retry.Retry,
@@ -2993,8 +4035,8 @@ export const listEmailReceiving: API.PaginatedOperationMethod<
   ListReceivedEmailsResponseDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(144) as any as S.Schema<ListEmailReceivingRequest>,
-    output: __S(149) as any as S.Schema<ListReceivedEmailsResponse>,
+    input: ListEmailReceivingRequest,
+    output: ListReceivedEmailsResponse,
     errors: [UnknownResendError],
     protocol: ResendProtocol,
     retry: Retry.Retry,
@@ -3019,8 +4061,8 @@ export const listEmailReceivingAttachments: API.PaginatedOperationMethod<
   ListAttachmentsResponseDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(150) as any as S.Schema<ListEmailReceivingAttachmentsRequest>,
-    output: __S(143) as any as S.Schema<ListAttachmentsResponse>,
+    input: ListEmailReceivingAttachmentsRequest,
+    output: ListAttachmentsResponse,
     errors: [UnknownResendError],
     protocol: ResendProtocol,
     retry: Retry.Retry,
@@ -3045,8 +4087,8 @@ export const listEmails: API.PaginatedOperationMethod<
   Email
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(151) as any as S.Schema<ListEmailsRequest>,
-    output: __S(153) as any as S.Schema<ListEmailsResponse>,
+    input: ListEmailsRequest,
+    output: ListEmailsResponse,
     errors: [UnknownResendError],
     protocol: ResendProtocol,
     retry: Retry.Retry,
@@ -3071,8 +4113,8 @@ export const listEvents: API.PaginatedOperationMethod<
   EventSummary
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(154) as any as S.Schema<ListEventsRequest>,
-    output: __S(157) as any as S.Schema<ListEventsResponse>,
+    input: ListEventsRequest,
+    output: ListEventsResponse,
     errors: [UnknownResendError],
     protocol: ResendProtocol,
     retry: Retry.Retry,
@@ -3097,8 +4139,8 @@ export const listLogs: API.PaginatedOperationMethod<
   LogSummary
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(158) as any as S.Schema<ListLogsRequest>,
-    output: __S(161) as any as S.Schema<ListLogsResponse>,
+    input: ListLogsRequest,
+    output: ListLogsResponse,
     errors: [UnknownResendError],
     protocol: ResendProtocol,
     retry: Retry.Retry,
@@ -3123,8 +4165,8 @@ export const listSegments: API.PaginatedOperationMethod<
   ListSegmentsResponseSuccessDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(162) as any as S.Schema<ListSegmentsRequest>,
-    output: __S(165) as any as S.Schema<ListSegmentsResponseSuccess>,
+    input: ListSegmentsRequest,
+    output: ListSegmentsResponseSuccess,
     errors: [UnknownResendError],
     protocol: ResendProtocol,
     retry: Retry.Retry,
@@ -3149,8 +4191,8 @@ export const listTemplates: API.PaginatedOperationMethod<
   TemplateListItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(166) as any as S.Schema<ListTemplatesRequest>,
-    output: __S(169) as any as S.Schema<ListTemplatesResponseSuccess>,
+    input: ListTemplatesRequest,
+    output: ListTemplatesResponseSuccess,
     errors: [UnknownResendError],
     protocol: ResendProtocol,
     retry: Retry.Retry,
@@ -3175,8 +4217,8 @@ export const listTopics: API.PaginatedOperationMethod<
   ListTopicsResponseSuccessDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(170) as any as S.Schema<ListTopicsRequest>,
-    output: __S(173) as any as S.Schema<ListTopicsResponseSuccess>,
+    input: ListTopicsRequest,
+    output: ListTopicsResponseSuccess,
     errors: [UnknownResendError],
     protocol: ResendProtocol,
     retry: Retry.Retry,
@@ -3201,8 +4243,8 @@ export const listWebhooks: API.PaginatedOperationMethod<
   ListWebhooksResponseDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(174) as any as S.Schema<ListWebhooksRequest>,
-    output: __S(177) as any as S.Schema<ListWebhooksResponse>,
+    input: ListWebhooksRequest,
+    output: ListWebhooksResponse,
     errors: [UnknownResendError],
     protocol: ResendProtocol,
     retry: Retry.Retry,
@@ -3225,8 +4267,8 @@ export const publishTemplate: API.OperationMethod<
   PublishTemplateError,
   ResendOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(178) as any as S.Schema<PublishTemplateRequest>,
-  output: __S(13) as any as S.Schema<PublishTemplateResponseSuccess>,
+  input: PublishTemplateRequest,
+  output: PublishTemplateResponseSuccess,
   errors: [UnknownResendError],
   protocol: ResendProtocol,
   retry: Retry.Retry,
@@ -3240,8 +4282,8 @@ export const sendBroadcast: API.OperationMethod<
   SendBroadcastError,
   ResendOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(179) as any as S.Schema<SendBroadcastRequest>,
-  output: __S(38) as any as S.Schema<SendBroadcastResponseSuccess>,
+  input: SendBroadcastRequest,
+  output: SendBroadcastResponseSuccess,
   errors: [UnknownResendError],
   protocol: ResendProtocol,
   retry: Retry.Retry,
@@ -3255,8 +4297,8 @@ export const sendEvent: API.OperationMethod<
   SendEventError,
   ResendOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(180) as any as S.Schema<SendEventRequest>,
-  output: __S(181) as any as S.Schema<SendEventResponse>,
+  input: SendEventRequest,
+  output: SendEventResponse,
   errors: [UnknownResendError],
   protocol: ResendProtocol,
   retry: Retry.Retry,
@@ -3270,8 +4312,8 @@ export const stopAutomation: API.OperationMethod<
   StopAutomationError,
   ResendOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(182) as any as S.Schema<StopAutomationRequest>,
-  output: __S(183) as any as S.Schema<StopAutomationResponse>,
+  input: StopAutomationRequest,
+  output: StopAutomationResponse,
   errors: [UnknownResendError],
   protocol: ResendProtocol,
   retry: Retry.Retry,
@@ -3285,8 +4327,8 @@ export const updateAutomation: API.OperationMethod<
   UpdateAutomationError,
   ResendOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(184) as any as S.Schema<UpdateAutomationRequest>,
-  output: __S(11) as any as S.Schema<PatchAutomationResponse>,
+  input: UpdateAutomationRequest,
+  output: PatchAutomationResponse,
   errors: [UnknownResendError],
   protocol: ResendProtocol,
   retry: Retry.Retry,
@@ -3300,8 +4342,8 @@ export const updateBroadcast: API.OperationMethod<
   UpdateBroadcastError,
   ResendOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(185) as any as S.Schema<UpdateBroadcastRequest>,
-  output: __S(13) as any as S.Schema<UpdateBroadcastResponseSuccess>,
+  input: UpdateBroadcastRequest,
+  output: UpdateBroadcastResponseSuccess,
   errors: [UnknownResendError],
   protocol: ResendProtocol,
   retry: Retry.Retry,
@@ -3315,8 +4357,8 @@ export const updateContact: API.OperationMethod<
   UpdateContactError,
   ResendOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(186) as any as S.Schema<UpdateContactRequest>,
-  output: __S(18) as any as S.Schema<UpdateContactResponseSuccess>,
+  input: UpdateContactRequest,
+  output: UpdateContactResponseSuccess,
   errors: [UnknownResendError],
   protocol: ResendProtocol,
   retry: Retry.Retry,
@@ -3330,8 +4372,8 @@ export const updateContactProperty: API.OperationMethod<
   UpdateContactPropertyError,
   ResendOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(187) as any as S.Schema<UpdateContactPropertyRequest>,
-  output: __S(13) as any as S.Schema<UpdateContactPropertyResponseSuccess>,
+  input: UpdateContactPropertyRequest,
+  output: UpdateContactPropertyResponseSuccess,
   errors: [UnknownResendError],
   protocol: ResendProtocol,
   retry: Retry.Retry,
@@ -3345,8 +4387,8 @@ export const updateContactSegment: API.OperationMethod<
   UpdateContactSegmentError,
   ResendOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(188) as any as S.Schema<UpdateContactSegmentRequest>,
-  output: __S(189) as any as S.Schema<AddContactToSegmentResponseSuccess>,
+  input: UpdateContactSegmentRequest,
+  output: AddContactToSegmentResponseSuccess,
   errors: [UnknownResendError],
   protocol: ResendProtocol,
   retry: Retry.Retry,
@@ -3360,8 +4402,8 @@ export const updateContactTopics: API.OperationMethod<
   UpdateContactTopicsError,
   ResendOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(190) as any as S.Schema<UpdateContactTopicsRequest>,
-  output: __S(191) as any as S.Schema<UpdateContactTopicsResponseSuccess>,
+  input: UpdateContactTopicsRequest,
+  output: UpdateContactTopicsResponseSuccess,
   errors: [UnknownResendError],
   protocol: ResendProtocol,
   retry: Retry.Retry,
@@ -3375,8 +4417,8 @@ export const updateDomain: API.OperationMethod<
   UpdateDomainError,
   ResendOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(192) as any as S.Schema<UpdateDomainRequest>,
-  output: __S(13) as any as S.Schema<UpdateDomainResponseSuccess>,
+  input: UpdateDomainRequest,
+  output: UpdateDomainResponseSuccess,
   errors: [UnknownResendError],
   protocol: ResendProtocol,
   retry: Retry.Retry,
@@ -3390,8 +4432,8 @@ export const updateEmail: API.OperationMethod<
   UpdateEmailError,
   ResendOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(193) as any as S.Schema<UpdateEmailRequest>,
-  output: __S(194) as any as S.Schema<UpdateEmailOptions>,
+  input: UpdateEmailRequest,
+  output: UpdateEmailOptions,
   errors: [UnknownResendError],
   protocol: ResendProtocol,
   retry: Retry.Retry,
@@ -3405,8 +4447,8 @@ export const updateEvent: API.OperationMethod<
   UpdateEventError,
   ResendOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(195) as any as S.Schema<UpdateEventRequest>,
-  output: __S(11) as any as S.Schema<UpdateEventResponse>,
+  input: UpdateEventRequest,
+  output: UpdateEventResponse,
   errors: [UnknownResendError],
   protocol: ResendProtocol,
   retry: Retry.Retry,
@@ -3420,8 +4462,8 @@ export const updateTemplate: API.OperationMethod<
   UpdateTemplateError,
   ResendOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(196) as any as S.Schema<UpdateTemplateRequest>,
-  output: __S(13) as any as S.Schema<UpdateTemplateResponseSuccess>,
+  input: UpdateTemplateRequest,
+  output: UpdateTemplateResponseSuccess,
   errors: [UnknownResendError],
   protocol: ResendProtocol,
   retry: Retry.Retry,
@@ -3435,8 +4477,8 @@ export const updateTopic: API.OperationMethod<
   UpdateTopicError,
   ResendOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(197) as any as S.Schema<UpdateTopicRequest>,
-  output: __S(13) as any as S.Schema<UpdateTopicResponseSuccess>,
+  input: UpdateTopicRequest,
+  output: UpdateTopicResponseSuccess,
   errors: [UnknownResendError],
   protocol: ResendProtocol,
   retry: Retry.Retry,
@@ -3450,8 +4492,8 @@ export const updateWebhook: API.OperationMethod<
   UpdateWebhookError,
   ResendOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(198) as any as S.Schema<UpdateWebhookRequest>,
-  output: __S(11) as any as S.Schema<UpdateWebhookResponse>,
+  input: UpdateWebhookRequest,
+  output: UpdateWebhookResponse,
   errors: [UnknownResendError],
   protocol: ResendProtocol,
   retry: Retry.Retry,
@@ -3465,8 +4507,8 @@ export const verifyDomain: API.OperationMethod<
   VerifyDomainError,
   ResendOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(199) as any as S.Schema<VerifyDomainRequest>,
-  output: __S(11) as any as S.Schema<VerifyDomainResponse>,
+  input: VerifyDomainRequest,
+  output: VerifyDomainResponse,
   errors: [UnknownResendError],
   protocol: ResendProtocol,
   retry: Retry.Retry,
@@ -3490,15 +4532,15 @@ function __c0(j: number): any {
         S.Struct({
           object: S.optional(S.String),
           id: S.optional(S.String),
-          to: S.optional(__S(1)),
+          to: S.optional(EmailToList),
           from: S.optional(S.String),
           created_at: S.optional(S.String),
           subject: S.optional(S.String),
           html: S.optional(S.String),
           text: S.optional(S.String),
-          bcc: S.optional(__S(1)),
-          cc: S.optional(__S(1)),
-          reply_to: S.optional(__S(2)),
+          bcc: S.optional(EmailBccList),
+          cc: S.optional(EmailCcList),
+          reply_to: S.optional(EmailReplyToList),
           last_event: S.optional(S.String),
         }),
       ).annotate({ identifier: "Email" });
@@ -3506,7 +4548,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          permission: S.optional(S.String),
+          permission: S.optional(CreateApiKeyRequestPermission),
           domain_id: S.optional(S.String),
         }).pipe(T.Http({ method: "POST", uri: "/api-keys", code: 200 })),
       ).annotate({ identifier: "CreateApiKeyRequest" });
@@ -3521,12 +4563,12 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           key: S.String,
-          type: S.String,
+          type: AutomationStepType,
           config: S.Unknown,
         }),
       ).annotate({ identifier: "AutomationStep" });
     case 7:
-      return S.Array(__S(6));
+      return S.Array(AutomationStep);
   }
 }
 function __c1(j: number): any {
@@ -3536,18 +4578,18 @@ function __c1(j: number): any {
         S.Struct({
           from: S.String,
           to: S.String,
-          type: S.optional(S.String),
+          type: S.optional(AutomationConnectionType),
         }),
       ).annotate({ identifier: "AutomationConnection" });
     case 1:
-      return S.Array(__S(8));
+      return S.Array(AutomationConnection);
     case 2:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          status: S.optional(S.String),
-          steps: __S(7),
-          connections: __S(9),
+          status: S.optional(CreateAutomationRequestStatus),
+          steps: CreateAutomationRequestStepsList,
+          connections: CreateAutomationRequestConnectionsList,
         }).pipe(T.Http({ method: "POST", uri: "/automations", code: 200 })),
       ).annotate({ identifier: "CreateAutomationRequest" });
     case 3:
@@ -3565,7 +4607,7 @@ function __c1(j: number): any {
           audience_id: S.optional(S.String),
           from: S.String,
           subject: S.String,
-          reply_to: S.optional(__S(2)),
+          reply_to: S.optional(CreateBroadcastRequestReplyToList),
           preview_text: S.optional(S.String),
           html: S.optional(S.String),
           text: S.optional(S.String),
@@ -3589,7 +4631,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
-          subscription: S.optional(S.String),
+          subscription: S.optional(CreateContactRequestTopicsItemSubscription),
         }),
       ).annotate({
         identifier: "CreateContactRequestTopicsItem",
@@ -3599,7 +4641,7 @@ function __c1(j: number): any {
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(15));
+      return S.Array(CreateContactRequestTopicsItem);
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -3607,9 +4649,9 @@ function __c2(j: number): any {
           first_name: S.optional(S.String),
           last_name: S.optional(S.String),
           unsubscribed: S.optional(S.Boolean),
-          properties: S.optional(__S(14)),
-          segments: S.optional(__S(2)),
-          topics: S.optional(__S(16)),
+          properties: S.optional(CreateContactRequestPropertiesMap),
+          segments: S.optional(CreateContactRequestSegmentsList),
+          topics: S.optional(CreateContactRequestTopicsList),
           audience_id: S.optional(S.String),
         }).pipe(T.Http({ method: "POST", uri: "/contacts", code: 200 })),
       ).annotate({ identifier: "CreateContactRequest" });
@@ -3626,8 +4668,8 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           key: S.String,
-          type: S.String,
-          fallback_value: S.optional(S.Unknown),
+          type: CreateContactPropertyRequestType,
+          fallback_value: S.optional(CreateContactPropertyRequestFallbackValue),
         }).pipe(T.Http({ method: "POST", uri: "/contact-properties", code: 200 })),
       ).annotate({
         identifier: "CreateContactPropertyRequest",
@@ -3635,37 +4677,37 @@ function __c2(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          sending: S.optional(S.String),
-          receiving: S.optional(S.String),
+          sending: S.optional(DomainCapabilitiesSending),
+          receiving: S.optional(DomainCapabilitiesReceiving),
         }),
       ).annotate({ identifier: "DomainCapabilities" });
     case 5:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          region: S.optional(S.String),
+          region: S.optional(CreateDomainRequestRegion),
           custom_return_path: S.optional(S.String),
           open_tracking: S.optional(S.Boolean),
           click_tracking: S.optional(S.Boolean),
-          tls: S.optional(S.String),
-          capabilities: S.optional(__S(20)),
+          tls: S.optional(CreateDomainRequestTls),
+          capabilities: S.optional(DomainCapabilities),
           tracking_subdomain: S.optional(S.String),
         }).pipe(T.Http({ method: "POST", uri: "/domains", code: 200 })),
       ).annotate({ identifier: "CreateDomainRequest" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          record: S.optional(S.String),
+          record: S.optional(DomainRecordRecord),
           name: S.optional(S.String),
-          type: S.optional(S.String),
+          type: S.optional(DomainRecordType),
           ttl: S.optional(S.String),
-          status: S.optional(S.String),
+          status: S.optional(DomainRecordStatus),
           value: S.optional(S.String),
           priority: S.optional(S.Number),
         }),
       ).annotate({ identifier: "DomainRecord" });
     case 7:
-      return S.Array(__S(22));
+      return S.Array(DomainRecord);
   }
 }
 function __c3(j: number): any {
@@ -3677,8 +4719,8 @@ function __c3(j: number): any {
           name: S.optional(S.String),
           created_at: S.optional(S.String),
           status: S.optional(S.String),
-          capabilities: S.optional(__S(20)),
-          records: S.optional(__S(23)),
+          capabilities: S.optional(DomainCapabilities),
+          records: S.optional(CreateDomainResponseRecordsList),
           region: S.optional(S.String),
           open_tracking: S.optional(S.Boolean),
           click_tracking: S.optional(S.Boolean),
@@ -3686,12 +4728,12 @@ function __c3(j: number): any {
         }),
       ).annotate({ identifier: "CreateDomainResponse" });
     case 1:
-      return S.Record(S.String, S.Unknown);
+      return S.Record(S.String, CreateEmailRequestTemplateVariablesValue);
     case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          variables: S.optional(__S(25)),
+          variables: S.optional(CreateEmailRequestTemplateVariablesMap),
         }),
       ).annotate({
         identifier: "CreateEmailRequestTemplate",
@@ -3707,7 +4749,7 @@ function __c3(j: number): any {
         }),
       ).annotate({ identifier: "Attachment" });
     case 4:
-      return S.Array(__S(27));
+      return S.Array(Attachment);
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -3716,23 +4758,23 @@ function __c3(j: number): any {
         }),
       ).annotate({ identifier: "Tag" });
     case 6:
-      return S.Array(__S(29));
+      return S.Array(Tag);
     case 7:
       return S.suspend(() =>
         S.Struct({
           from: S.String,
-          to: S.Unknown,
+          to: CreateEmailRequestTo,
           subject: S.String,
-          bcc: S.optional(S.Unknown),
-          cc: S.optional(S.Unknown),
-          reply_to: S.optional(S.Unknown),
+          bcc: S.optional(CreateEmailRequestBcc),
+          cc: S.optional(CreateEmailRequestCc),
+          reply_to: S.optional(CreateEmailRequestReplyTo),
           html: S.optional(S.String),
           text: S.optional(S.String),
-          template: S.optional(__S(26)),
+          template: S.optional(CreateEmailRequestTemplate),
           headers: S.optional(S.Unknown),
           scheduled_at: S.optional(S.String),
-          attachments: S.optional(__S(28)),
-          tags: S.optional(__S(30)),
+          attachments: S.optional(CreateEmailRequestAttachmentsList),
+          tags: S.optional(CreateEmailRequestTagsList),
           topic_id: S.optional(S.String),
         }).pipe(T.Http({ method: "POST", uri: "/emails", code: 200 })),
       ).annotate({ identifier: "CreateEmailRequest" });
@@ -3747,39 +4789,39 @@ function __c4(j: number): any {
         }),
       ).annotate({ identifier: "SendEmailResponse" });
     case 1:
-      return S.Record(S.String, S.Unknown);
+      return S.Record(S.String, SendEmailRequestTemplateVariablesValue);
     case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          variables: S.optional(__S(33)),
+          variables: S.optional(SendEmailRequestTemplateVariablesMap),
         }),
       ).annotate({ identifier: "SendEmailRequestTemplate" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           from: S.String,
-          to: S.Unknown,
+          to: SendEmailRequestTo,
           subject: S.String,
-          bcc: S.optional(S.Unknown),
-          cc: S.optional(S.Unknown),
-          reply_to: S.optional(S.Unknown),
+          bcc: S.optional(SendEmailRequestBcc),
+          cc: S.optional(SendEmailRequestCc),
+          reply_to: S.optional(SendEmailRequestReplyTo),
           html: S.optional(S.String),
           text: S.optional(S.String),
-          template: S.optional(__S(34)),
+          template: S.optional(SendEmailRequestTemplate),
           headers: S.optional(S.Unknown),
           scheduled_at: S.optional(S.String),
-          attachments: S.optional(__S(28)),
-          tags: S.optional(__S(30)),
+          attachments: S.optional(SendEmailRequestAttachmentsList),
+          tags: S.optional(SendEmailRequestTagsList),
           topic_id: S.optional(S.String),
         }),
       ).annotate({ identifier: "SendEmailRequest" });
     case 4:
-      return S.Array(__S(35));
+      return S.Array(SendEmailRequest);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(__S(36).pipe(T.HttpBody())),
+          body: S.optional(CreateEmailBatchRequestBodyList.pipe(T.HttpBody())),
         }).pipe(T.Http({ method: "POST", uri: "/emails/batch", code: 200 })),
       ).annotate({ identifier: "CreateEmailBatchRequest" });
     case 6:
@@ -3791,7 +4833,7 @@ function __c4(j: number): any {
         identifier: "CreateBatchEmailsResponseDataItem",
       });
     case 7:
-      return S.Array(__S(38));
+      return S.Array(CreateBatchEmailsResponseDataItem);
   }
 }
 function __c5(j: number): any {
@@ -3799,7 +4841,7 @@ function __c5(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(__S(39)),
+          data: S.optional(CreateBatchEmailsResponseDataList),
         }),
       ).annotate({
         identifier: "CreateBatchEmailsResponse",
@@ -3823,12 +4865,12 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           key: S.String,
-          type: S.String,
-          fallback_value: S.optional(S.Unknown),
+          type: TemplateVariableInputType,
+          fallback_value: S.optional(TemplateVariableInputFallbackValue),
         }),
       ).annotate({ identifier: "TemplateVariableInput" });
     case 4:
-      return S.Array(__S(43));
+      return S.Array(TemplateVariableInput);
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -3836,26 +4878,26 @@ function __c5(j: number): any {
           alias: S.optional(S.String),
           from: S.optional(S.String),
           subject: S.optional(S.String),
-          reply_to: S.optional(__S(2)),
+          reply_to: S.optional(CreateTemplateRequestReplyToList),
           html: S.String,
           text: S.optional(S.String),
-          variables: S.optional(__S(44)),
+          variables: S.optional(CreateTemplateRequestVariablesList),
         }).pipe(T.Http({ method: "POST", uri: "/templates", code: 200 })),
       ).annotate({ identifier: "CreateTemplateRequest" });
     case 6:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          default_subscription: S.String,
+          default_subscription: CreateTopicRequestDefaultSubscription,
           description: S.optional(S.String),
-          visibility: S.optional(S.String),
+          visibility: S.optional(CreateTopicRequestVisibility),
         }).pipe(T.Http({ method: "POST", uri: "/topics", code: 200 })),
       ).annotate({ identifier: "CreateTopicRequest" });
     case 7:
       return S.suspend(() =>
         S.Struct({
           endpoint: S.String,
-          events: __S(2),
+          events: CreateWebhookRequestEventsList,
         }).pipe(T.Http({ method: "POST", uri: "/webhooks", code: 200 })),
       ).annotate({ identifier: "CreateWebhookRequest" });
   }
@@ -4016,23 +5058,23 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           key: S.optional(S.String),
-          type: S.optional(S.String),
+          type: S.optional(AutomationStepResponseType),
           config: S.optional(S.Unknown),
         }),
       ).annotate({ identifier: "AutomationStepResponse" });
     case 4:
-      return S.Array(__S(67));
+      return S.Array(AutomationStepResponse);
     case 5:
       return S.suspend(() =>
         S.Struct({
           object: S.optional(S.String),
           id: S.optional(S.String),
           name: S.optional(S.String),
-          status: S.optional(S.String),
+          status: S.optional(AutomationStatus),
           created_at: S.optional(S.String),
           updated_at: S.optional(S.String),
-          steps: S.optional(__S(68)),
-          connections: S.optional(__S(9)),
+          steps: S.optional(AutomationStepsList),
+          connections: S.optional(AutomationConnectionsList),
         }),
       ).annotate({ identifier: "Automation" });
     case 6:
@@ -4048,7 +5090,7 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           key: S.optional(S.String),
-          type: S.optional(S.String),
+          type: S.optional(AutomationRunStepType),
           status: S.optional(S.String),
           started_at: S.optional(S.NullOr(S.String)),
           completed_at: S.optional(S.NullOr(S.String)),
@@ -4062,17 +5104,17 @@ function __c8(j: number): any {
 function __c9(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(71));
+      return S.Array(AutomationRunStep);
     case 1:
       return S.suspend(() =>
         S.Struct({
           object: S.optional(S.String),
           id: S.optional(S.String),
-          status: S.optional(S.String),
+          status: S.optional(AutomationRunStatus),
           started_at: S.optional(S.NullOr(S.String)),
           completed_at: S.optional(S.NullOr(S.String)),
           created_at: S.optional(S.String),
-          steps: S.optional(__S(72)),
+          steps: S.optional(AutomationRunStepsList),
         }),
       ).annotate({ identifier: "AutomationRun" });
     case 2:
@@ -4090,7 +5132,7 @@ function __c9(j: number): any {
           segment_id: S.optional(S.NullOr(S.String)),
           from: S.optional(S.String),
           subject: S.optional(S.String),
-          reply_to: S.optional(__S(2)),
+          reply_to: S.optional(GetBroadcastResponseSuccessReplyToList),
           preview_text: S.optional(S.String),
           status: S.optional(S.String),
           created_at: S.optional(S.String),
@@ -4119,7 +5161,7 @@ function __c9(j: number): any {
           last_name: S.optional(S.String),
           created_at: S.optional(S.String),
           unsubscribed: S.optional(S.Boolean),
-          properties: S.optional(__S(14)),
+          properties: S.optional(GetContactResponseSuccessPropertiesMap),
         }),
       ).annotate({
         identifier: "GetContactResponseSuccess",
@@ -4139,7 +5181,7 @@ function __c9(j: number): any {
           id: S.optional(S.String),
           key: S.optional(S.String),
           type: S.optional(S.String),
-          fallback_value: S.optional(S.Unknown),
+          fallback_value: S.optional(GetContactPropertyResponseSuccessFallbackValue),
           created_at: S.optional(S.String),
         }),
       ).annotate({
@@ -4167,8 +5209,8 @@ function __c10(j: number): any {
           open_tracking: S.optional(S.Boolean),
           click_tracking: S.optional(S.Boolean),
           tracking_subdomain: S.optional(S.String),
-          capabilities: S.optional(__S(20)),
-          records: S.optional(__S(23)),
+          capabilities: S.optional(DomainCapabilities),
+          records: S.optional(DomainRecordsList),
         }),
       ).annotate({ identifier: "Domain" });
     case 2:
@@ -4200,7 +5242,7 @@ function __c10(j: number): any {
           filename: S.optional(S.String),
           content_type: S.optional(S.String),
           content_id: S.optional(S.String),
-          content_disposition: S.optional(S.String),
+          content_disposition: S.optional(RetrievedAttachmentContentDisposition),
           download_url: S.optional(S.String),
           expires_at: S.optional(S.String),
           size: S.optional(S.Number),
@@ -4219,14 +5261,16 @@ function __c10(j: number): any {
           filename: S.optional(S.String),
           content_type: S.optional(S.String),
           content_id: S.optional(S.String),
-          content_disposition: S.optional(S.String),
+          content_disposition: S.optional(
+            GetReceivedEmailResponseAttachmentsItemContentDisposition,
+          ),
           size: S.optional(S.Number),
         }),
       ).annotate({
         identifier: "GetReceivedEmailResponseAttachmentsItem",
       });
     case 7:
-      return S.Array(__S(86));
+      return S.Array(GetReceivedEmailResponseAttachmentsItem);
   }
 }
 function __c11(j: number): any {
@@ -4236,18 +5280,18 @@ function __c11(j: number): any {
         S.Struct({
           object: S.optional(S.String),
           id: S.optional(S.String),
-          to: S.optional(__S(2)),
+          to: S.optional(GetReceivedEmailResponseToList),
           from: S.optional(S.String),
           subject: S.optional(S.String),
           message_id: S.optional(S.String),
-          bcc: S.optional(S.NullOr(__S(2))),
-          cc: S.optional(S.NullOr(__S(2))),
-          reply_to: S.optional(S.NullOr(__S(2))),
+          bcc: S.optional(S.NullOr(GetReceivedEmailResponseBccList)),
+          cc: S.optional(S.NullOr(GetReceivedEmailResponseCcList)),
+          reply_to: S.optional(S.NullOr(GetReceivedEmailResponseReplyToList)),
           html: S.optional(S.NullOr(S.String)),
           text: S.optional(S.NullOr(S.String)),
           headers: S.optional(S.NullOr(S.Unknown)),
           created_at: S.optional(S.String),
-          attachments: S.optional(__S(87)),
+          attachments: S.optional(GetReceivedEmailResponseAttachmentsList),
         }),
       ).annotate({ identifier: "GetReceivedEmailResponse" });
     case 1:
@@ -4295,7 +5339,7 @@ function __c11(j: number): any {
           id: S.optional(S.String),
           created_at: S.optional(S.String),
           endpoint: S.optional(S.String),
-          method: S.optional(S.String),
+          method: S.optional(LogMethod),
           response_status: S.optional(S.Number),
           user_agent: S.optional(S.NullOr(S.String)),
           request_body: S.optional(S.NullOr(S.Unknown)),
@@ -4336,14 +5380,14 @@ function __c12(j: number): any {
         S.Struct({
           id: S.optional(S.String),
           key: S.String,
-          type: S.String,
-          fallback_value: S.optional(S.Unknown),
+          type: TemplateVariableType,
+          fallback_value: S.optional(TemplateVariableFallbackValue),
           created_at: S.optional(S.String),
           updated_at: S.optional(S.String),
         }),
       ).annotate({ identifier: "TemplateVariable" });
     case 2:
-      return S.Array(__S(97));
+      return S.Array(TemplateVariable);
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -4354,13 +5398,13 @@ function __c12(j: number): any {
           alias: S.optional(S.String),
           from: S.optional(S.String),
           subject: S.optional(S.String),
-          reply_to: S.optional(S.NullOr(__S(2))),
+          reply_to: S.optional(S.NullOr(TemplateReplyToList)),
           html: S.optional(S.String),
           text: S.optional(S.String),
-          variables: S.optional(__S(98)),
+          variables: S.optional(TemplateVariablesList),
           created_at: S.optional(S.String),
           updated_at: S.optional(S.String),
-          status: S.optional(S.String),
+          status: S.optional(TemplateStatus),
           published_at: S.optional(S.NullOr(S.String)),
           has_unpublished_versions: S.optional(S.Boolean),
         }),
@@ -4378,8 +5422,8 @@ function __c12(j: number): any {
           object: S.optional(S.String),
           name: S.optional(S.String),
           description: S.optional(S.String),
-          default_subscription: S.optional(S.String),
-          visibility: S.optional(S.String),
+          default_subscription: S.optional(GetTopicResponseSuccessDefaultSubscription),
+          visibility: S.optional(GetTopicResponseSuccessVisibility),
           created_at: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetTopicResponseSuccess" });
@@ -4395,7 +5439,7 @@ function __c12(j: number): any {
           object: S.optional(S.String),
           id: S.optional(S.String),
           endpoint: S.optional(S.String),
-          events: S.optional(S.NullOr(__S(2))),
+          events: S.optional(S.NullOr(GetWebhookResponseEventsList)),
           status: S.optional(S.String),
           created_at: S.optional(S.String),
           signing_secret: S.optional(S.String.pipe(T.SensitiveValue({}))),
@@ -4423,13 +5467,13 @@ function __c13(j: number): any {
         }),
       ).annotate({ identifier: "ApiKey" });
     case 2:
-      return S.Array(__S(105));
+      return S.Array(ApiKey);
     case 3:
       return S.suspend(() =>
         S.Struct({
           object: S.optional(S.String),
           has_more: S.optional(S.Boolean),
-          data: __S(106),
+          data: ListApiKeysResponseDataList,
         }),
       ).annotate({ identifier: "ListApiKeysResponse" });
     case 4:
@@ -4448,20 +5492,20 @@ function __c13(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
-          status: S.optional(S.String),
+          status: S.optional(AutomationRunListItemStatus),
           started_at: S.optional(S.NullOr(S.String)),
           completed_at: S.optional(S.NullOr(S.String)),
           created_at: S.optional(S.String),
         }),
       ).annotate({ identifier: "AutomationRunListItem" });
     case 6:
-      return S.Array(__S(109));
+      return S.Array(AutomationRunListItem);
     case 7:
       return S.suspend(() =>
         S.Struct({
           object: S.optional(S.String),
           has_more: S.optional(S.Boolean),
-          data: __S(110),
+          data: ListAutomationRunsResponseDataList,
         }),
       ).annotate({
         identifier: "ListAutomationRunsResponse",
@@ -4473,7 +5517,7 @@ function __c14(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(S.String.pipe(T.Query())),
+          status: S.optional(ListAutomationsRequestStatus.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
           after: S.optional(S.String.pipe(T.Query())),
           before: S.optional(S.String.pipe(T.Query())),
@@ -4484,19 +5528,19 @@ function __c14(j: number): any {
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
-          status: S.optional(S.String),
+          status: S.optional(AutomationListItemStatus),
           created_at: S.optional(S.String),
           updated_at: S.optional(S.String),
         }),
       ).annotate({ identifier: "AutomationListItem" });
     case 2:
-      return S.Array(__S(113));
+      return S.Array(AutomationListItem);
     case 3:
       return S.suspend(() =>
         S.Struct({
           object: S.optional(S.String),
           has_more: S.optional(S.Boolean),
-          data: __S(114),
+          data: ListAutomationsResponseDataList,
         }),
       ).annotate({ identifier: "ListAutomationsResponse" });
     case 4:
@@ -4524,13 +5568,13 @@ function __c14(j: number): any {
         identifier: "ListBroadcastsResponseSuccessDataItem",
       });
     case 6:
-      return S.Array(__S(117));
+      return S.Array(ListBroadcastsResponseSuccessDataItem);
     case 7:
       return S.suspend(() =>
         S.Struct({
           object: S.optional(S.String),
           has_more: S.optional(S.Boolean),
-          data: __S(118),
+          data: ListBroadcastsResponseSuccessDataList,
         }),
       ).annotate({
         identifier: "ListBroadcastsResponseSuccess",
@@ -4555,20 +5599,20 @@ function __c15(j: number): any {
           id: S.optional(S.String),
           key: S.optional(S.String),
           type: S.optional(S.String),
-          fallback_value: S.optional(S.Unknown),
+          fallback_value: S.optional(ListContactPropertiesResponseSuccessDataItemFallbackValue),
           created_at: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListContactPropertiesResponseSuccessDataItem",
       });
     case 2:
-      return S.Array(__S(121));
+      return S.Array(ListContactPropertiesResponseSuccessDataItem);
     case 3:
       return S.suspend(() =>
         S.Struct({
           object: S.optional(S.String),
           has_more: S.optional(S.Boolean),
-          data: __S(122),
+          data: ListContactPropertiesResponseSuccessDataList,
         }),
       ).annotate({
         identifier: "ListContactPropertiesResponseSuccess",
@@ -4596,12 +5640,12 @@ function __c15(j: number): any {
         identifier: "ListContactsResponseSuccessDataItem",
       });
     case 6:
-      return S.Array(__S(125));
+      return S.Array(ListContactsResponseSuccessDataItem);
     case 7:
       return S.suspend(() =>
         S.Struct({
           object: S.optional(S.String),
-          data: S.optional(__S(126)),
+          data: S.optional(ListContactsResponseSuccessDataList),
         }),
       ).annotate({
         identifier: "ListContactsResponseSuccess",
@@ -4632,13 +5676,13 @@ function __c16(j: number): any {
         identifier: "ListContactSegmentsResponseSuccessDataItem",
       });
     case 2:
-      return S.Array(__S(129));
+      return S.Array(ListContactSegmentsResponseSuccessDataItem);
     case 3:
       return S.suspend(() =>
         S.Struct({
           object: S.optional(S.String),
           has_more: S.optional(S.Boolean),
-          data: __S(130),
+          data: ListContactSegmentsResponseSuccessDataList,
         }),
       ).annotate({
         identifier: "ListContactSegmentsResponseSuccess",
@@ -4658,19 +5702,19 @@ function __c16(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           description: S.optional(S.String),
-          subscription: S.optional(S.String),
+          subscription: S.optional(GetContactTopicsResponseSuccessDataItemSubscription),
         }),
       ).annotate({
         identifier: "GetContactTopicsResponseSuccessDataItem",
       });
     case 6:
-      return S.Array(__S(133));
+      return S.Array(GetContactTopicsResponseSuccessDataItem);
     case 7:
       return S.suspend(() =>
         S.Struct({
           object: S.optional(S.String),
           has_more: S.optional(S.Boolean),
-          data: __S(134),
+          data: GetContactTopicsResponseSuccessDataList,
         }),
       ).annotate({
         identifier: "GetContactTopicsResponseSuccess",
@@ -4695,17 +5739,17 @@ function __c17(j: number): any {
           status: S.optional(S.String),
           created_at: S.optional(S.String),
           region: S.optional(S.String),
-          capabilities: S.optional(__S(20)),
+          capabilities: S.optional(DomainCapabilities),
         }),
       ).annotate({ identifier: "ListDomainsItem" });
     case 2:
-      return S.Array(__S(137));
+      return S.Array(ListDomainsItem);
     case 3:
       return S.suspend(() =>
         S.Struct({
           object: S.optional(S.String),
           has_more: S.optional(S.Boolean),
-          data: __S(138),
+          data: ListDomainsResponseDataList,
         }),
       ).annotate({ identifier: "ListDomainsResponse" });
     case 4:
@@ -4726,7 +5770,7 @@ function __c17(j: number): any {
           filename: S.optional(S.String),
           content_type: S.optional(S.String),
           content_id: S.optional(S.String),
-          content_disposition: S.optional(S.String),
+          content_disposition: S.optional(ListAttachmentsResponseDataItemContentDisposition),
           download_url: S.optional(S.String),
           expires_at: S.optional(S.String),
           size: S.optional(S.Number),
@@ -4735,13 +5779,13 @@ function __c17(j: number): any {
         identifier: "ListAttachmentsResponseDataItem",
       });
     case 6:
-      return S.Array(__S(141));
+      return S.Array(ListAttachmentsResponseDataItem);
     case 7:
       return S.suspend(() =>
         S.Struct({
           object: S.optional(S.String),
           has_more: S.optional(S.Boolean),
-          data: __S(142),
+          data: ListAttachmentsResponseDataList,
         }),
       ).annotate({ identifier: "ListAttachmentsResponse" });
   }
@@ -4765,39 +5809,41 @@ function __c18(j: number): any {
           filename: S.optional(S.String),
           content_type: S.optional(S.String),
           content_id: S.optional(S.String),
-          content_disposition: S.optional(S.String),
+          content_disposition: S.optional(
+            ListReceivedEmailsResponseDataItemAttachmentsItemContentDisposition,
+          ),
           size: S.optional(S.Number),
         }),
       ).annotate({
         identifier: "ListReceivedEmailsResponseDataItemAttachmentsItem",
       });
     case 2:
-      return S.Array(__S(145));
+      return S.Array(ListReceivedEmailsResponseDataItemAttachmentsItem);
     case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
-          to: S.optional(__S(2)),
+          to: S.optional(ListReceivedEmailsResponseDataItemToList),
           from: S.optional(S.String),
           subject: S.optional(S.NullOr(S.String)),
           message_id: S.optional(S.String),
-          bcc: S.optional(S.NullOr(__S(2))),
-          cc: S.optional(S.NullOr(__S(2))),
-          reply_to: S.optional(S.NullOr(__S(2))),
+          bcc: S.optional(S.NullOr(ListReceivedEmailsResponseDataItemBccList)),
+          cc: S.optional(S.NullOr(ListReceivedEmailsResponseDataItemCcList)),
+          reply_to: S.optional(S.NullOr(ListReceivedEmailsResponseDataItemReplyToList)),
           created_at: S.optional(S.String),
-          attachments: S.optional(__S(146)),
+          attachments: S.optional(ListReceivedEmailsResponseDataItemAttachmentsList),
         }),
       ).annotate({
         identifier: "ListReceivedEmailsResponseDataItem",
       });
     case 4:
-      return S.Array(__S(147));
+      return S.Array(ListReceivedEmailsResponseDataItem);
     case 5:
       return S.suspend(() =>
         S.Struct({
           object: S.optional(S.String),
           has_more: S.optional(S.Boolean),
-          data: __S(148),
+          data: ListReceivedEmailsResponseDataList,
         }),
       ).annotate({
         identifier: "ListReceivedEmailsResponse",
@@ -4828,13 +5874,13 @@ function __c18(j: number): any {
 function __c19(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(3));
+      return S.Array(Email);
     case 1:
       return S.suspend(() =>
         S.Struct({
           object: S.optional(S.String),
           has_more: S.optional(S.Boolean),
-          data: __S(152),
+          data: ListEmailsResponseDataList,
         }),
       ).annotate({ identifier: "ListEmailsResponse" });
     case 2:
@@ -4856,13 +5902,13 @@ function __c19(j: number): any {
         }),
       ).annotate({ identifier: "EventSummary" });
     case 4:
-      return S.Array(__S(155));
+      return S.Array(EventSummary);
     case 5:
       return S.suspend(() =>
         S.Struct({
           object: S.optional(S.String),
           has_more: S.optional(S.Boolean),
-          data: __S(156),
+          data: ListEventsResponseDataList,
         }),
       ).annotate({ identifier: "ListEventsResponse" });
     case 6:
@@ -4879,7 +5925,7 @@ function __c19(j: number): any {
           id: S.optional(S.String),
           created_at: S.optional(S.String),
           endpoint: S.optional(S.String),
-          method: S.optional(S.String),
+          method: S.optional(LogSummaryMethod),
           response_status: S.optional(S.Number),
           user_agent: S.optional(S.NullOr(S.String)),
         }),
@@ -4889,13 +5935,13 @@ function __c19(j: number): any {
 function __c20(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(159));
+      return S.Array(LogSummary);
     case 1:
       return S.suspend(() =>
         S.Struct({
           object: S.optional(S.String),
           has_more: S.optional(S.Boolean),
-          data: __S(160),
+          data: ListLogsResponseDataList,
         }),
       ).annotate({ identifier: "ListLogsResponse" });
     case 2:
@@ -4918,13 +5964,13 @@ function __c20(j: number): any {
         identifier: "ListSegmentsResponseSuccessDataItem",
       });
     case 4:
-      return S.Array(__S(163));
+      return S.Array(ListSegmentsResponseSuccessDataItem);
     case 5:
       return S.suspend(() =>
         S.Struct({
           object: S.optional(S.String),
           has_more: S.optional(S.Boolean),
-          data: __S(164),
+          data: ListSegmentsResponseSuccessDataList,
         }),
       ).annotate({
         identifier: "ListSegmentsResponseSuccess",
@@ -4942,7 +5988,7 @@ function __c20(j: number): any {
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
-          status: S.optional(S.String),
+          status: S.optional(TemplateListItemStatus),
           published_at: S.optional(S.NullOr(S.String)),
           created_at: S.optional(S.String),
           updated_at: S.optional(S.String),
@@ -4954,12 +6000,12 @@ function __c20(j: number): any {
 function __c21(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(167));
+      return S.Array(TemplateListItem);
     case 1:
       return S.suspend(() =>
         S.Struct({
           object: S.optional(S.String),
-          data: __S(168),
+          data: ListTemplatesResponseSuccessDataList,
           has_more: S.optional(S.Boolean),
         }),
       ).annotate({
@@ -4979,21 +6025,21 @@ function __c21(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           description: S.optional(S.String),
-          default_subscription: S.optional(S.String),
-          visibility: S.optional(S.String),
+          default_subscription: S.optional(ListTopicsResponseSuccessDataItemDefaultSubscription),
+          visibility: S.optional(ListTopicsResponseSuccessDataItemVisibility),
           created_at: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListTopicsResponseSuccessDataItem",
       });
     case 4:
-      return S.Array(__S(171));
+      return S.Array(ListTopicsResponseSuccessDataItem);
     case 5:
       return S.suspend(() =>
         S.Struct({
           object: S.optional(S.String),
           has_more: S.optional(S.Boolean),
-          data: __S(172),
+          data: ListTopicsResponseSuccessDataList,
         }),
       ).annotate({
         identifier: "ListTopicsResponseSuccess",
@@ -5011,7 +6057,7 @@ function __c21(j: number): any {
         S.Struct({
           id: S.optional(S.String),
           endpoint: S.optional(S.String),
-          events: S.optional(S.NullOr(__S(2))),
+          events: S.optional(S.NullOr(ListWebhooksResponseDataItemEventsList)),
           status: S.optional(S.String),
           created_at: S.optional(S.String),
         }),
@@ -5023,13 +6069,13 @@ function __c21(j: number): any {
 function __c22(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(175));
+      return S.Array(ListWebhooksResponseDataItem);
     case 1:
       return S.suspend(() =>
         S.Struct({
           object: S.optional(S.String),
           has_more: S.optional(S.Boolean),
-          data: __S(176),
+          data: ListWebhooksResponseDataList,
         }),
       ).annotate({ identifier: "ListWebhooksResponse" });
     case 2:
@@ -5051,7 +6097,7 @@ function __c22(j: number): any {
           event: S.String,
           contact_id: S.optional(S.String),
           email: S.optional(S.String),
-          payload: S.optional(__S(14)),
+          payload: S.optional(SendEventRequestPayloadMap),
         }).pipe(T.Http({ method: "POST", uri: "/events/send", code: 200 })),
       ).annotate({ identifier: "SendEventRequest" });
     case 5:
@@ -5081,9 +6127,9 @@ function __c23(j: number): any {
         S.Struct({
           automation_id: S.String.pipe(T.Label()),
           name: S.optional(S.String),
-          status: S.optional(S.String),
-          steps: S.optional(__S(7)),
-          connections: S.optional(__S(9)),
+          status: S.optional(UpdateAutomationRequestStatus),
+          steps: S.optional(UpdateAutomationRequestStepsList),
+          connections: S.optional(UpdateAutomationRequestConnectionsList),
         }).pipe(T.Http({ method: "PATCH", uri: "/automations/{automation_id}", code: 200 })),
       ).annotate({ identifier: "UpdateAutomationRequest" });
     case 1:
@@ -5095,7 +6141,7 @@ function __c23(j: number): any {
           segment_id: S.optional(S.String),
           from: S.optional(S.String),
           subject: S.optional(S.String),
-          reply_to: S.optional(__S(2)),
+          reply_to: S.optional(UpdateBroadcastRequestReplyToList),
           preview_text: S.optional(S.String),
           html: S.optional(S.String),
           text: S.optional(S.String),
@@ -5110,14 +6156,14 @@ function __c23(j: number): any {
           first_name: S.optional(S.String),
           last_name: S.optional(S.String),
           unsubscribed: S.optional(S.Boolean),
-          properties: S.optional(__S(14)),
+          properties: S.optional(UpdateContactRequestPropertiesMap),
         }).pipe(T.Http({ method: "PATCH", uri: "/contacts/{id}", code: 200 })),
       ).annotate({ identifier: "UpdateContactRequest" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
-          fallback_value: S.optional(S.Unknown),
+          fallback_value: S.optional(UpdateContactPropertyRequestFallbackValue),
         }).pipe(T.Http({ method: "PATCH", uri: "/contact-properties/{id}", code: 200 })),
       ).annotate({
         identifier: "UpdateContactPropertyRequest",
@@ -5151,7 +6197,7 @@ function __c23(j: number): any {
       return S.suspend(() =>
         S.Struct({
           contact_id: S.String.pipe(T.Label()),
-          topics: __S(16),
+          topics: UpdateContactTopicsRequestTopicsList,
         }).pipe(T.Http({ method: "PATCH", uri: "/contacts/{contact_id}/topics", code: 200 })),
       ).annotate({
         identifier: "UpdateContactTopicsRequest",
@@ -5161,7 +6207,7 @@ function __c23(j: number): any {
         S.Struct({
           object: S.optional(S.String),
           contact_id: S.optional(S.String),
-          topics: S.optional(__S(16)),
+          topics: S.optional(UpdateContactTopicsResponseSuccessTopicsList),
         }),
       ).annotate({
         identifier: "UpdateContactTopicsResponseSuccess",
@@ -5177,7 +6223,7 @@ function __c24(j: number): any {
           open_tracking: S.optional(S.Boolean),
           click_tracking: S.optional(S.Boolean),
           tls: S.optional(S.String),
-          capabilities: S.optional(__S(20)),
+          capabilities: S.optional(DomainCapabilities),
           tracking_subdomain: S.optional(S.String),
         }).pipe(T.Http({ method: "PATCH", uri: "/domains/{domain_id}", code: 200 })),
       ).annotate({ identifier: "UpdateDomainRequest" });
@@ -5208,10 +6254,10 @@ function __c24(j: number): any {
           alias: S.optional(S.String),
           from: S.optional(S.String),
           subject: S.optional(S.String),
-          reply_to: S.optional(__S(2)),
+          reply_to: S.optional(UpdateTemplateRequestReplyToList),
           html: S.optional(S.String),
           text: S.optional(S.String),
-          variables: S.optional(__S(44)),
+          variables: S.optional(UpdateTemplateRequestVariablesList),
         }).pipe(T.Http({ method: "PATCH", uri: "/templates/{id}", code: 200 })),
       ).annotate({ identifier: "UpdateTemplateRequest" });
     case 5:
@@ -5220,7 +6266,7 @@ function __c24(j: number): any {
           id: S.String.pipe(T.Label()),
           name: S.optional(S.String),
           description: S.optional(S.String),
-          visibility: S.optional(S.String),
+          visibility: S.optional(UpdateTopicRequestVisibility),
         }).pipe(T.Http({ method: "PATCH", uri: "/topics/{id}", code: 200 })),
       ).annotate({ identifier: "UpdateTopicRequest" });
     case 6:
@@ -5228,8 +6274,8 @@ function __c24(j: number): any {
         S.Struct({
           webhook_id: S.String.pipe(T.Label()),
           endpoint: S.optional(S.String),
-          events: S.optional(__S(2)),
-          status: S.optional(S.String),
+          events: S.optional(UpdateWebhookRequestEventsList),
+          status: S.optional(UpdateWebhookRequestStatus),
         }).pipe(T.Http({ method: "PATCH", uri: "/webhooks/{webhook_id}", code: 200 })),
       ).annotate({ identifier: "UpdateWebhookRequest" });
     case 7:
@@ -5238,64 +6284,5 @@ function __c24(j: number): any {
           domain_id: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "POST", uri: "/domains/{domain_id}/verify", code: 200 })),
       ).annotate({ identifier: "VerifyDomainRequest" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
-    case 9:
-      return __c9(i & 7);
-    case 10:
-      return __c10(i & 7);
-    case 11:
-      return __c11(i & 7);
-    case 12:
-      return __c12(i & 7);
-    case 13:
-      return __c13(i & 7);
-    case 14:
-      return __c14(i & 7);
-    case 15:
-      return __c15(i & 7);
-    case 16:
-      return __c16(i & 7);
-    case 17:
-      return __c17(i & 7);
-    case 18:
-      return __c18(i & 7);
-    case 19:
-      return __c19(i & 7);
-    case 20:
-      return __c20(i & 7);
-    case 21:
-      return __c21(i & 7);
-    case 22:
-      return __c22(i & 7);
-    case 23:
-      return __c23(i & 7);
-    case 24:
-      return __c24(i & 7);
   }
 }

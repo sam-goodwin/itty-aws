@@ -8,8 +8,6 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "SSM Contacts",
   serviceShapeName: "SSMContacts",
@@ -90,7 +88,7 @@ export class ConflictException
       ResourceId: S.String,
       ResourceType: S.String,
       DependentEntities: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => __S(110)).annotate({
+        /*@__PURE__*/ S.suspend(() => DependentEntityList).annotate({
           identifier: "DependentEntityList",
         }),
       ),
@@ -109,12 +107,12 @@ export class IncidentManagerNotOnboarded
     {
       message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
       Reason: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => S.String).annotate({
+        /*@__PURE__*/ S.suspend(() => ValidationExceptionReason).annotate({
           identifier: "ValidationExceptionReason",
         }),
       ),
       Fields: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => __S(108)).annotate({
+        /*@__PURE__*/ S.suspend(() => ValidationExceptionFieldList).annotate({
           identifier: "ValidationExceptionFieldList",
         }),
       ),
@@ -141,12 +139,12 @@ export class InvalidRotationArn
     {
       message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
       Reason: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => S.String).annotate({
+        /*@__PURE__*/ S.suspend(() => ValidationExceptionReason).annotate({
           identifier: "ValidationExceptionReason",
         }),
       ),
       Fields: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => __S(108)).annotate({
+        /*@__PURE__*/ S.suspend(() => ValidationExceptionFieldList).annotate({
           identifier: "ValidationExceptionFieldList",
         }),
       ),
@@ -197,12 +195,12 @@ export class ValidationException
     {
       message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
       Reason: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => S.String).annotate({
+        /*@__PURE__*/ S.suspend(() => ValidationExceptionReason).annotate({
           identifier: "ValidationExceptionReason",
         }),
       ),
       Fields: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => __S(108)).annotate({
+        /*@__PURE__*/ S.suspend(() => ValidationExceptionFieldList).annotate({
           identifier: "ValidationExceptionFieldList",
         }),
       ),
@@ -211,9 +209,13 @@ export class ValidationException
   ).pipe(C.withBadRequestError) {}
 export type SsmContactsArn = string;
 export type AcceptType = "DELIVERED" | "READ" | (string & {});
+const AcceptType = S.String;
+
 export type ReceiptInfo = string;
 export type AcceptCode = string;
 export type AcceptCodeValidation = "IGNORE" | "ENFORCE" | (string & {});
+const AcceptCodeValidation = S.String;
+
 export interface AcceptPageRequest {
   PageId: string;
   ContactChannelId?: string;
@@ -222,49 +224,69 @@ export interface AcceptPageRequest {
   AcceptCode: string;
   AcceptCodeValidation?: AcceptCodeValidation;
 }
+const AcceptPageRequest = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<AcceptPageRequest>;
 export interface AcceptPageResult {}
+const AcceptPageResult = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<AcceptPageResult>;
 export type ActivationCode = string;
 export interface ActivateContactChannelRequest {
   ContactChannelId: string;
   ActivationCode: string;
 }
+const ActivateContactChannelRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<ActivateContactChannelRequest>;
 export interface ActivateContactChannelResult {}
+const ActivateContactChannelResult =
+  AcceptPageResult as any as S.Schema<ActivateContactChannelResult>;
 export type ContactAlias = string;
 export type ContactName = string;
 export type ContactType = "PERSONAL" | "ESCALATION" | "ONCALL_SCHEDULE" | (string & {});
+const ContactType = S.String;
+
 export type StageDurationInMins = number;
 export type RetryIntervalInMinutes = number;
 export interface ChannelTargetInfo {
   ContactChannelId: string;
   RetryIntervalInMinutes?: number;
 }
+const ChannelTargetInfo = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<ChannelTargetInfo>;
 export type IsEssential = boolean;
 export interface ContactTargetInfo {
   ContactId?: string;
   IsEssential: boolean;
 }
+const ContactTargetInfo = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<ContactTargetInfo>;
 export interface Target {
   ChannelTargetInfo?: ChannelTargetInfo;
   ContactTargetInfo?: ContactTargetInfo;
 }
+const Target = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<Target>;
 export type TargetsList = Target[];
+const TargetsList = /*@__PURE__*/ __L.at(__c0, 6);
 export interface Stage {
   DurationInMinutes: number;
   Targets: Target[];
 }
+const Stage = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<Stage>;
 export type StagesList = Stage[];
+const StagesList = /*@__PURE__*/ __L.at(__c1, 0);
 export type SsmContactsArnList = string[];
+const SsmContactsArnList = /*@__PURE__*/ __L.at(__c1, 1);
 export interface Plan {
   Stages?: Stage[];
   RotationIds?: string[];
 }
+const Plan = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<Plan>;
 export type TagKey = string;
 export type TagValue = string;
 export interface Tag {
   Key?: string;
   Value?: string;
 }
+const Tag = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<Tag>;
 export type TagsList = Tag[];
+const TagsList = /*@__PURE__*/ __L.at(__c1, 4);
 export type IdempotencyToken = string;
 export interface CreateContactRequest {
   Alias: string;
@@ -274,15 +296,23 @@ export interface CreateContactRequest {
   Tags?: Tag[];
   IdempotencyToken?: string;
 }
+const CreateContactRequest = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<CreateContactRequest>;
 export interface CreateContactResult {
   ContactArn: string;
 }
+const CreateContactResult = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<CreateContactResult>;
 export type ChannelName = string;
 export type ChannelType = "SMS" | "VOICE" | "EMAIL" | (string & {});
+const ChannelType = S.String;
+
 export type SimpleAddress = string;
 export interface ContactChannelAddress {
   SimpleAddress?: string;
 }
+const ContactChannelAddress = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<ContactChannelAddress>;
 export type DeferActivation = boolean;
 export interface CreateContactChannelRequest {
   ContactId: string;
@@ -292,11 +322,20 @@ export interface CreateContactChannelRequest {
   DeferActivation?: boolean;
   IdempotencyToken?: string;
 }
+const CreateContactChannelRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<CreateContactChannelRequest>;
 export interface CreateContactChannelResult {
   ContactChannelArn: string;
 }
+const CreateContactChannelResult = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<CreateContactChannelResult>;
 export type RotationName = string;
 export type RotationContactsArnList = string[];
+const RotationContactsArnList = SsmContactsArnList as any as S.Schema<RotationContactsArnList>;
 export type TimeZoneId = string;
 export type DayOfMonth = number;
 export type HourOfDay = number;
@@ -305,25 +344,36 @@ export interface HandOffTime {
   HourOfDay: number;
   MinuteOfHour: number;
 }
+const HandOffTime = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<HandOffTime>;
 export interface MonthlySetting {
   DayOfMonth: number;
   HandOffTime: HandOffTime;
 }
+const MonthlySetting = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<MonthlySetting>;
 export type MonthlySettings = MonthlySetting[];
+const MonthlySettings = /*@__PURE__*/ __L.at(__c2, 4);
 export type DayOfWeek = "MON" | "TUE" | "WED" | "THU" | "FRI" | "SAT" | "SUN" | (string & {});
+const DayOfWeek = S.String;
+
 export interface WeeklySetting {
   DayOfWeek: DayOfWeek;
   HandOffTime: HandOffTime;
 }
+const WeeklySetting = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<WeeklySetting>;
 export type WeeklySettings = WeeklySetting[];
+const WeeklySettings = /*@__PURE__*/ __L.at(__c2, 6);
 export type DailySettings = HandOffTime[];
+const DailySettings = /*@__PURE__*/ __L.at(__c2, 7);
 export type NumberOfOnCalls = number;
 export interface CoverageTime {
   Start?: HandOffTime;
   End?: HandOffTime;
 }
+const CoverageTime = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<CoverageTime>;
 export type CoverageTimes = CoverageTime[];
+const CoverageTimes = /*@__PURE__*/ __L.at(__c3, 1);
 export type ShiftCoveragesMap = { [key in DayOfWeek]?: CoverageTime[] };
+const ShiftCoveragesMap = /*@__PURE__*/ __L.at(__c3, 2);
 export type RecurrenceMultiplier = number;
 export interface RecurrenceSettings {
   MonthlySettings?: MonthlySetting[];
@@ -333,6 +383,7 @@ export interface RecurrenceSettings {
   ShiftCoverages?: { [key: string]: CoverageTime[] | undefined };
   RecurrenceMultiplier: number;
 }
+const RecurrenceSettings = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<RecurrenceSettings>;
 export interface CreateRotationRequest {
   Name: string;
   ContactIds: string[];
@@ -342,10 +393,17 @@ export interface CreateRotationRequest {
   Tags?: Tag[];
   IdempotencyToken?: string;
 }
+const CreateRotationRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<CreateRotationRequest>;
 export interface CreateRotationResult {
   RotationArn: string;
 }
+const CreateRotationResult = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<CreateRotationResult>;
 export type RotationOverrideContactsArnList = string[];
+const RotationOverrideContactsArnList =
+  SsmContactsArnList as any as S.Schema<RotationOverrideContactsArnList>;
 export interface CreateRotationOverrideRequest {
   RotationId: string;
   NewContactIds: string[];
@@ -353,34 +411,70 @@ export interface CreateRotationOverrideRequest {
   EndTime: Date;
   IdempotencyToken?: string;
 }
+const CreateRotationOverrideRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<CreateRotationOverrideRequest>;
 export type Uuid = string;
 export interface CreateRotationOverrideResult {
   RotationOverrideId: string;
 }
+const CreateRotationOverrideResult = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<CreateRotationOverrideResult>;
 export interface DeactivateContactChannelRequest {
   ContactChannelId: string;
 }
+const DeactivateContactChannelRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<DeactivateContactChannelRequest>;
 export interface DeactivateContactChannelResult {}
+const DeactivateContactChannelResult =
+  AcceptPageResult as any as S.Schema<DeactivateContactChannelResult>;
 export interface DeleteContactRequest {
   ContactId: string;
 }
+const DeleteContactRequest = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<DeleteContactRequest>;
 export interface DeleteContactResult {}
+const DeleteContactResult = AcceptPageResult as any as S.Schema<DeleteContactResult>;
 export interface DeleteContactChannelRequest {
   ContactChannelId: string;
 }
+const DeleteContactChannelRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<DeleteContactChannelRequest>;
 export interface DeleteContactChannelResult {}
+const DeleteContactChannelResult = AcceptPageResult as any as S.Schema<DeleteContactChannelResult>;
 export interface DeleteRotationRequest {
   RotationId: string;
 }
+const DeleteRotationRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<DeleteRotationRequest>;
 export interface DeleteRotationResult {}
+const DeleteRotationResult = AcceptPageResult as any as S.Schema<DeleteRotationResult>;
 export interface DeleteRotationOverrideRequest {
   RotationId: string;
   RotationOverrideId: string;
 }
+const DeleteRotationOverrideRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<DeleteRotationOverrideRequest>;
 export interface DeleteRotationOverrideResult {}
+const DeleteRotationOverrideResult =
+  AcceptPageResult as any as S.Schema<DeleteRotationOverrideResult>;
 export interface DescribeEngagementRequest {
   EngagementId: string;
 }
+const DescribeEngagementRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<DescribeEngagementRequest>;
 export type Sender = string;
 export type Subject = string;
 export type Content = string;
@@ -399,9 +493,14 @@ export interface DescribeEngagementResult {
   StartTime?: Date;
   StopTime?: Date;
 }
+const DescribeEngagementResult = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<DescribeEngagementResult>;
 export interface DescribePageRequest {
   PageId: string;
 }
+const DescribePageRequest = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<DescribePageRequest>;
 export interface DescribePageResult {
   PageArn: string;
   EngagementArn: string;
@@ -416,9 +515,11 @@ export interface DescribePageResult {
   ReadTime?: Date;
   DeliveryTime?: Date;
 }
+const DescribePageResult = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<DescribePageResult>;
 export interface GetContactRequest {
   ContactId: string;
 }
+const GetContactRequest = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<GetContactRequest>;
 export interface GetContactResult {
   ContactArn: string;
   Alias: string;
@@ -426,10 +527,17 @@ export interface GetContactResult {
   Type: ContactType;
   Plan: Plan;
 }
+const GetContactResult = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<GetContactResult>;
 export interface GetContactChannelRequest {
   ContactChannelId: string;
 }
+const GetContactChannelRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<GetContactChannelRequest>;
 export type ActivationStatus = "ACTIVATED" | "NOT_ACTIVATED" | (string & {});
+const ActivationStatus = S.String;
+
 export interface GetContactChannelResult {
   ContactArn: string;
   ContactChannelArn: string;
@@ -438,17 +546,30 @@ export interface GetContactChannelResult {
   DeliveryAddress: ContactChannelAddress;
   ActivationStatus?: ActivationStatus;
 }
+const GetContactChannelResult = /*@__PURE__*/ __L.at(
+  __c5,
+  4,
+) as any as S.Schema<GetContactChannelResult>;
 export interface GetContactPolicyRequest {
   ContactArn: string;
 }
+const GetContactPolicyRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  5,
+) as any as S.Schema<GetContactPolicyRequest>;
 export type Policy = string;
 export interface GetContactPolicyResult {
   ContactArn?: string;
   Policy?: string;
 }
+const GetContactPolicyResult = /*@__PURE__*/ __L.at(
+  __c5,
+  6,
+) as any as S.Schema<GetContactPolicyResult>;
 export interface GetRotationRequest {
   RotationId: string;
 }
+const GetRotationRequest = /*@__PURE__*/ __L.at(__c5, 7) as any as S.Schema<GetRotationRequest>;
 export interface GetRotationResult {
   RotationArn: string;
   Name: string;
@@ -457,10 +578,15 @@ export interface GetRotationResult {
   TimeZoneId: string;
   Recurrence: RecurrenceSettings;
 }
+const GetRotationResult = /*@__PURE__*/ __L.at(__c6, 0) as any as S.Schema<GetRotationResult>;
 export interface GetRotationOverrideRequest {
   RotationId: string;
   RotationOverrideId: string;
 }
+const GetRotationOverrideRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  1,
+) as any as S.Schema<GetRotationOverrideRequest>;
 export interface GetRotationOverrideResult {
   RotationOverrideId?: string;
   RotationArn?: string;
@@ -469,6 +595,10 @@ export interface GetRotationOverrideResult {
   EndTime?: Date;
   CreateTime?: Date;
 }
+const GetRotationOverrideResult = /*@__PURE__*/ __L.at(
+  __c6,
+  2,
+) as any as S.Schema<GetRotationOverrideResult>;
 export type PaginationToken = string;
 export type MaxResults = number;
 export interface ListContactChannelsRequest {
@@ -476,6 +606,10 @@ export interface ListContactChannelsRequest {
   NextToken?: string;
   MaxResults?: number;
 }
+const ListContactChannelsRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  3,
+) as any as S.Schema<ListContactChannelsRequest>;
 export interface ContactChannel {
   ContactChannelArn: string;
   ContactArn: string;
@@ -484,38 +618,53 @@ export interface ContactChannel {
   DeliveryAddress: ContactChannelAddress;
   ActivationStatus: ActivationStatus;
 }
+const ContactChannel = /*@__PURE__*/ __L.at(__c6, 4) as any as S.Schema<ContactChannel>;
 export type ContactChannelList = ContactChannel[];
+const ContactChannelList = /*@__PURE__*/ __L.at(__c6, 5);
 export interface ListContactChannelsResult {
   NextToken?: string;
   ContactChannels: ContactChannel[];
 }
+const ListContactChannelsResult = /*@__PURE__*/ __L.at(
+  __c6,
+  6,
+) as any as S.Schema<ListContactChannelsResult>;
 export interface ListContactsRequest {
   NextToken?: string;
   MaxResults?: number;
   AliasPrefix?: string;
   Type?: ContactType;
 }
+const ListContactsRequest = /*@__PURE__*/ __L.at(__c6, 7) as any as S.Schema<ListContactsRequest>;
 export interface Contact {
   ContactArn: string;
   Alias: string;
   DisplayName?: string;
   Type: ContactType;
 }
+const Contact = /*@__PURE__*/ __L.at(__c7, 0) as any as S.Schema<Contact>;
 export type ContactsList = Contact[];
+const ContactsList = /*@__PURE__*/ __L.at(__c7, 1);
 export interface ListContactsResult {
   NextToken?: string;
   Contacts?: Contact[];
 }
+const ListContactsResult = /*@__PURE__*/ __L.at(__c7, 2) as any as S.Schema<ListContactsResult>;
 export interface TimeRange {
   StartTime?: Date;
   EndTime?: Date;
 }
+const TimeRange = /*@__PURE__*/ __L.at(__c7, 3) as any as S.Schema<TimeRange>;
 export interface ListEngagementsRequest {
   NextToken?: string;
   MaxResults?: number;
   IncidentId?: string;
   TimeRangeValue?: TimeRange;
 }
+const ListEngagementsRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  4,
+) as any as S.Schema<ListEngagementsRequest>;
 export interface Engagement {
   EngagementArn: string;
   ContactArn: string;
@@ -524,48 +673,80 @@ export interface Engagement {
   StartTime?: Date;
   StopTime?: Date;
 }
+const Engagement = /*@__PURE__*/ __L.at(__c7, 5) as any as S.Schema<Engagement>;
 export type EngagementsList = Engagement[];
+const EngagementsList = /*@__PURE__*/ __L.at(__c7, 6);
 export interface ListEngagementsResult {
   NextToken?: string;
   Engagements: Engagement[];
 }
+const ListEngagementsResult = /*@__PURE__*/ __L.at(
+  __c7,
+  7,
+) as any as S.Schema<ListEngagementsResult>;
 export interface ListPageReceiptsRequest {
   PageId: string;
   NextToken?: string;
   MaxResults?: number;
 }
+const ListPageReceiptsRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  0,
+) as any as S.Schema<ListPageReceiptsRequest>;
 export type ReceiptType = "DELIVERED" | "ERROR" | "READ" | "SENT" | "STOP" | (string & {});
+const ReceiptType = S.String;
+
 export interface Receipt {
   ContactChannelArn?: string;
   ReceiptType: ReceiptType;
   ReceiptInfo?: string;
   ReceiptTime: Date;
 }
+const Receipt = /*@__PURE__*/ __L.at(__c8, 1) as any as S.Schema<Receipt>;
 export type ReceiptsList = Receipt[];
+const ReceiptsList = /*@__PURE__*/ __L.at(__c8, 2);
 export interface ListPageReceiptsResult {
   NextToken?: string;
   Receipts?: Receipt[];
 }
+const ListPageReceiptsResult = /*@__PURE__*/ __L.at(
+  __c8,
+  3,
+) as any as S.Schema<ListPageReceiptsResult>;
 export interface ListPageResolutionsRequest {
   NextToken?: string;
   PageId: string;
 }
+const ListPageResolutionsRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  4,
+) as any as S.Schema<ListPageResolutionsRequest>;
 export type StageIndex = number;
 export interface ResolutionContact {
   ContactArn: string;
   Type: ContactType;
   StageIndex?: number;
 }
+const ResolutionContact = /*@__PURE__*/ __L.at(__c8, 5) as any as S.Schema<ResolutionContact>;
 export type ResolutionList = ResolutionContact[];
+const ResolutionList = /*@__PURE__*/ __L.at(__c8, 6);
 export interface ListPageResolutionsResult {
   NextToken?: string;
   PageResolutions: ResolutionContact[];
 }
+const ListPageResolutionsResult = /*@__PURE__*/ __L.at(
+  __c8,
+  7,
+) as any as S.Schema<ListPageResolutionsResult>;
 export interface ListPagesByContactRequest {
   ContactId: string;
   NextToken?: string;
   MaxResults?: number;
 }
+const ListPagesByContactRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  0,
+) as any as S.Schema<ListPagesByContactRequest>;
 export interface Page {
   PageArn: string;
   EngagementArn: string;
@@ -576,29 +757,48 @@ export interface Page {
   DeliveryTime?: Date;
   ReadTime?: Date;
 }
+const Page = /*@__PURE__*/ __L.at(__c9, 1) as any as S.Schema<Page>;
 export type PagesList = Page[];
+const PagesList = /*@__PURE__*/ __L.at(__c9, 2);
 export interface ListPagesByContactResult {
   NextToken?: string;
   Pages: Page[];
 }
+const ListPagesByContactResult = /*@__PURE__*/ __L.at(
+  __c9,
+  3,
+) as any as S.Schema<ListPagesByContactResult>;
 export interface ListPagesByEngagementRequest {
   EngagementId: string;
   NextToken?: string;
   MaxResults?: number;
 }
+const ListPagesByEngagementRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  4,
+) as any as S.Schema<ListPagesByEngagementRequest>;
 export interface ListPagesByEngagementResult {
   NextToken?: string;
   Pages: Page[];
 }
+const ListPagesByEngagementResult = /*@__PURE__*/ __L.at(
+  __c9,
+  5,
+) as any as S.Schema<ListPagesByEngagementResult>;
 export type Member = string;
 export type RotationPreviewMemberList = string[];
+const RotationPreviewMemberList = SsmContactsArnList as any as S.Schema<RotationPreviewMemberList>;
 export type RotationOverridePreviewMemberList = string[];
+const RotationOverridePreviewMemberList =
+  SsmContactsArnList as any as S.Schema<RotationOverridePreviewMemberList>;
 export interface PreviewOverride {
   NewMembers?: string[];
   StartTime?: Date;
   EndTime?: Date;
 }
+const PreviewOverride = /*@__PURE__*/ __L.at(__c9, 6) as any as S.Schema<PreviewOverride>;
 export type OverrideList = PreviewOverride[];
+const OverrideList = /*@__PURE__*/ __L.at(__c9, 7);
 export interface ListPreviewRotationShiftsRequest {
   RotationStartTime?: Date;
   StartTime?: Date;
@@ -610,10 +810,17 @@ export interface ListPreviewRotationShiftsRequest {
   NextToken?: string;
   MaxResults?: number;
 }
+const ListPreviewRotationShiftsRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  0,
+) as any as S.Schema<ListPreviewRotationShiftsRequest>;
 export type ShiftType = "REGULAR" | "OVERRIDDEN" | (string & {});
+const ShiftType = S.String;
+
 export interface ShiftDetails {
   OverriddenContactIds: string[];
 }
+const ShiftDetails = /*@__PURE__*/ __L.at(__c10, 1) as any as S.Schema<ShiftDetails>;
 export interface RotationShift {
   ContactIds?: string[];
   StartTime: Date;
@@ -621,11 +828,17 @@ export interface RotationShift {
   Type?: ShiftType;
   ShiftDetails?: ShiftDetails;
 }
+const RotationShift = /*@__PURE__*/ __L.at(__c10, 2) as any as S.Schema<RotationShift>;
 export type RotationShifts = RotationShift[];
+const RotationShifts = /*@__PURE__*/ __L.at(__c10, 3);
 export interface ListPreviewRotationShiftsResult {
   RotationShifts?: RotationShift[];
   NextToken?: string;
 }
+const ListPreviewRotationShiftsResult = /*@__PURE__*/ __L.at(
+  __c10,
+  4,
+) as any as S.Schema<ListPreviewRotationShiftsResult>;
 export interface ListRotationOverridesRequest {
   RotationId: string;
   StartTime: Date;
@@ -633,6 +846,10 @@ export interface ListRotationOverridesRequest {
   NextToken?: string;
   MaxResults?: number;
 }
+const ListRotationOverridesRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  5,
+) as any as S.Schema<ListRotationOverridesRequest>;
 export interface RotationOverride {
   RotationOverrideId: string;
   NewContactIds: string[];
@@ -640,16 +857,26 @@ export interface RotationOverride {
   EndTime: Date;
   CreateTime: Date;
 }
+const RotationOverride = /*@__PURE__*/ __L.at(__c10, 6) as any as S.Schema<RotationOverride>;
 export type RotationOverrides = RotationOverride[];
+const RotationOverrides = /*@__PURE__*/ __L.at(__c10, 7);
 export interface ListRotationOverridesResult {
   RotationOverrides?: RotationOverride[];
   NextToken?: string;
 }
+const ListRotationOverridesResult = /*@__PURE__*/ __L.at(
+  __c11,
+  0,
+) as any as S.Schema<ListRotationOverridesResult>;
 export interface ListRotationsRequest {
   RotationNamePrefix?: string;
   NextToken?: string;
   MaxResults?: number;
 }
+const ListRotationsRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  1,
+) as any as S.Schema<ListRotationsRequest>;
 export interface Rotation {
   RotationArn: string;
   Name: string;
@@ -658,11 +885,14 @@ export interface Rotation {
   TimeZoneId?: string;
   Recurrence?: RecurrenceSettings;
 }
+const Rotation = /*@__PURE__*/ __L.at(__c11, 2) as any as S.Schema<Rotation>;
 export type Rotations = Rotation[];
+const Rotations = /*@__PURE__*/ __L.at(__c11, 3);
 export interface ListRotationsResult {
   NextToken?: string;
   Rotations: Rotation[];
 }
+const ListRotationsResult = /*@__PURE__*/ __L.at(__c11, 4) as any as S.Schema<ListRotationsResult>;
 export interface ListRotationShiftsRequest {
   RotationId: string;
   StartTime?: Date;
@@ -670,26 +900,52 @@ export interface ListRotationShiftsRequest {
   NextToken?: string;
   MaxResults?: number;
 }
+const ListRotationShiftsRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  5,
+) as any as S.Schema<ListRotationShiftsRequest>;
 export interface ListRotationShiftsResult {
   RotationShifts?: RotationShift[];
   NextToken?: string;
 }
+const ListRotationShiftsResult = /*@__PURE__*/ __L.at(
+  __c11,
+  6,
+) as any as S.Schema<ListRotationShiftsResult>;
 export type AmazonResourceName = string;
 export interface ListTagsForResourceRequest {
   ResourceARN: string;
 }
+const ListTagsForResourceRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  7,
+) as any as S.Schema<ListTagsForResourceRequest>;
 export interface ListTagsForResourceResult {
   Tags?: Tag[];
 }
+const ListTagsForResourceResult = /*@__PURE__*/ __L.at(
+  __c12,
+  0,
+) as any as S.Schema<ListTagsForResourceResult>;
 export interface PutContactPolicyRequest {
   ContactArn: string;
   Policy: string;
 }
+const PutContactPolicyRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  1,
+) as any as S.Schema<PutContactPolicyRequest>;
 export interface PutContactPolicyResult {}
+const PutContactPolicyResult = AcceptPageResult as any as S.Schema<PutContactPolicyResult>;
 export interface SendActivationCodeRequest {
   ContactChannelId: string;
 }
+const SendActivationCodeRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  2,
+) as any as S.Schema<SendActivationCodeRequest>;
 export interface SendActivationCodeResult {}
+const SendActivationCodeResult = AcceptPageResult as any as S.Schema<SendActivationCodeResult>;
 export interface StartEngagementRequest {
   ContactId: string;
   Sender: string;
@@ -700,38 +956,69 @@ export interface StartEngagementRequest {
   IncidentId?: string;
   IdempotencyToken?: string;
 }
+const StartEngagementRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  3,
+) as any as S.Schema<StartEngagementRequest>;
 export interface StartEngagementResult {
   EngagementArn: string;
 }
+const StartEngagementResult = /*@__PURE__*/ __L.at(
+  __c12,
+  4,
+) as any as S.Schema<StartEngagementResult>;
 export type StopReason = string;
 export interface StopEngagementRequest {
   EngagementId: string;
   Reason?: string;
 }
+const StopEngagementRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  5,
+) as any as S.Schema<StopEngagementRequest>;
 export interface StopEngagementResult {}
+const StopEngagementResult = AcceptPageResult as any as S.Schema<StopEngagementResult>;
 export interface TagResourceRequest {
   ResourceARN: string;
   Tags: Tag[];
 }
+const TagResourceRequest = /*@__PURE__*/ __L.at(__c12, 6) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResult {}
+const TagResourceResult = AcceptPageResult as any as S.Schema<TagResourceResult>;
 export type TagKeyList = string[];
+const TagKeyList = SsmContactsArnList as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   ResourceARN: string;
   TagKeys: string[];
 }
+const UntagResourceRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  7,
+) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResult {}
+const UntagResourceResult = AcceptPageResult as any as S.Schema<UntagResourceResult>;
 export interface UpdateContactRequest {
   ContactId: string;
   DisplayName?: string;
   Plan?: Plan;
 }
+const UpdateContactRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  0,
+) as any as S.Schema<UpdateContactRequest>;
 export interface UpdateContactResult {}
+const UpdateContactResult = AcceptPageResult as any as S.Schema<UpdateContactResult>;
 export interface UpdateContactChannelRequest {
   ContactChannelId: string;
   Name?: string;
   DeliveryAddress?: ContactChannelAddress;
 }
+const UpdateContactChannelRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  1,
+) as any as S.Schema<UpdateContactChannelRequest>;
 export interface UpdateContactChannelResult {}
+const UpdateContactChannelResult = AcceptPageResult as any as S.Schema<UpdateContactChannelResult>;
 export interface UpdateRotationRequest {
   RotationId: string;
   ContactIds?: string[];
@@ -739,7 +1026,12 @@ export interface UpdateRotationRequest {
   TimeZoneId?: string;
   Recurrence: RecurrenceSettings;
 }
+const UpdateRotationRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  2,
+) as any as S.Schema<UpdateRotationRequest>;
 export interface UpdateRotationResult {}
+const UpdateRotationResult = AcceptPageResult as any as S.Schema<UpdateRotationResult>;
 export type RetryAfterSeconds = number;
 export type ValidationExceptionReason =
   | "UNKNOWN_OPERATION"
@@ -747,16 +1039,25 @@ export type ValidationExceptionReason =
   | "FIELD_VALIDATION_FAILED"
   | "OTHER"
   | (string & {});
+const ValidationExceptionReason = S.String;
+
 export interface ValidationExceptionField {
   Name: string;
   Message: string;
 }
+const ValidationExceptionField = /*@__PURE__*/ __L.at(
+  __c13,
+  3,
+) as any as S.Schema<ValidationExceptionField>;
 export type ValidationExceptionFieldList = ValidationExceptionField[];
+const ValidationExceptionFieldList = /*@__PURE__*/ __L.at(__c13, 4);
 export interface DependentEntity {
   RelationType: string;
   DependentResourceIds: string[];
 }
+const DependentEntity = /*@__PURE__*/ __L.at(__c13, 5) as any as S.Schema<DependentEntity>;
 export type DependentEntityList = DependentEntity[];
+const DependentEntityList = /*@__PURE__*/ __L.at(__c13, 6);
 export type AcceptPageError =
   | AccessDeniedException
   | InternalServerException
@@ -774,8 +1075,8 @@ export const acceptPage: API.OperationMethod<
   AcceptPageError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<AcceptPageRequest>,
-  output: __S(1) as any as S.Schema<AcceptPageResult>,
+  input: AcceptPageRequest,
+  output: AcceptPageResult,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -807,8 +1108,8 @@ export const activateContactChannel: API.OperationMethod<
   ActivateContactChannelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2) as any as S.Schema<ActivateContactChannelRequest>,
-  output: __S(1) as any as S.Schema<ActivateContactChannelResult>,
+  input: ActivateContactChannelRequest,
+  output: ActivateContactChannelResult,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -843,8 +1144,8 @@ export const createContact: API.OperationMethod<
   CreateContactError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13) as any as S.Schema<CreateContactRequest>,
-  output: __S(14) as any as S.Schema<CreateContactResult>,
+  input: CreateContactRequest,
+  output: CreateContactResult,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -878,8 +1179,8 @@ export const createContactChannel: API.OperationMethod<
   CreateContactChannelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16) as any as S.Schema<CreateContactChannelRequest>,
-  output: __S(17) as any as S.Schema<CreateContactChannelResult>,
+  input: CreateContactChannelRequest,
+  output: CreateContactChannelResult,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -913,8 +1214,8 @@ export const createRotation: API.OperationMethod<
   CreateRotationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28) as any as S.Schema<CreateRotationRequest>,
-  output: __S(29) as any as S.Schema<CreateRotationResult>,
+  input: CreateRotationRequest,
+  output: CreateRotationResult,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -949,8 +1250,8 @@ export const createRotationOverride: API.OperationMethod<
   CreateRotationOverrideError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30) as any as S.Schema<CreateRotationOverrideRequest>,
-  output: __S(31) as any as S.Schema<CreateRotationOverrideResult>,
+  input: CreateRotationOverrideRequest,
+  output: CreateRotationOverrideResult,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -984,8 +1285,8 @@ export const deactivateContactChannel: API.OperationMethod<
   DeactivateContactChannelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32) as any as S.Schema<DeactivateContactChannelRequest>,
-  output: __S(1) as any as S.Schema<DeactivateContactChannelResult>,
+  input: DeactivateContactChannelRequest,
+  output: DeactivateContactChannelResult,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1021,8 +1322,8 @@ export const deleteContact: API.OperationMethod<
   DeleteContactError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33) as any as S.Schema<DeleteContactRequest>,
-  output: __S(1) as any as S.Schema<DeleteContactResult>,
+  input: DeleteContactRequest,
+  output: DeleteContactResult,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1058,8 +1359,8 @@ export const deleteContactChannel: API.OperationMethod<
   DeleteContactChannelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34) as any as S.Schema<DeleteContactChannelRequest>,
-  output: __S(1) as any as S.Schema<DeleteContactChannelResult>,
+  input: DeleteContactChannelRequest,
+  output: DeleteContactChannelResult,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1093,8 +1394,8 @@ export const deleteRotation: API.OperationMethod<
   DeleteRotationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35) as any as S.Schema<DeleteRotationRequest>,
-  output: __S(1) as any as S.Schema<DeleteRotationResult>,
+  input: DeleteRotationRequest,
+  output: DeleteRotationResult,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1128,8 +1429,8 @@ export const deleteRotationOverride: API.OperationMethod<
   DeleteRotationOverrideError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36) as any as S.Schema<DeleteRotationOverrideRequest>,
-  output: __S(1) as any as S.Schema<DeleteRotationOverrideResult>,
+  input: DeleteRotationOverrideRequest,
+  output: DeleteRotationOverrideResult,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1163,8 +1464,8 @@ export const describeEngagement: API.OperationMethod<
   DescribeEngagementError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37) as any as S.Schema<DescribeEngagementRequest>,
-  output: __S(38) as any as S.Schema<DescribeEngagementResult>,
+  input: DescribeEngagementRequest,
+  output: DescribeEngagementResult,
   errors: [
     AccessDeniedException,
     DataEncryptionException,
@@ -1197,8 +1498,8 @@ export const describePage: API.OperationMethod<
   DescribePageError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39) as any as S.Schema<DescribePageRequest>,
-  output: __S(40) as any as S.Schema<DescribePageResult>,
+  input: DescribePageRequest,
+  output: DescribePageResult,
   errors: [
     AccessDeniedException,
     DataEncryptionException,
@@ -1231,8 +1532,8 @@ export const getContact: API.OperationMethod<
   GetContactError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41) as any as S.Schema<GetContactRequest>,
-  output: __S(42) as any as S.Schema<GetContactResult>,
+  input: GetContactRequest,
+  output: GetContactResult,
   errors: [
     AccessDeniedException,
     DataEncryptionException,
@@ -1265,8 +1566,8 @@ export const getContactChannel: API.OperationMethod<
   GetContactChannelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43) as any as S.Schema<GetContactChannelRequest>,
-  output: __S(44) as any as S.Schema<GetContactChannelResult>,
+  input: GetContactChannelRequest,
+  output: GetContactChannelResult,
   errors: [
     AccessDeniedException,
     DataEncryptionException,
@@ -1299,8 +1600,8 @@ export const getContactPolicy: API.OperationMethod<
   GetContactPolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45) as any as S.Schema<GetContactPolicyRequest>,
-  output: __S(46) as any as S.Schema<GetContactPolicyResult>,
+  input: GetContactPolicyRequest,
+  output: GetContactPolicyResult,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1332,8 +1633,8 @@ export const getRotation: API.OperationMethod<
   GetRotationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47) as any as S.Schema<GetRotationRequest>,
-  output: __S(48) as any as S.Schema<GetRotationResult>,
+  input: GetRotationRequest,
+  output: GetRotationResult,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1366,8 +1667,8 @@ export const getRotationOverride: API.OperationMethod<
   GetRotationOverrideError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49) as any as S.Schema<GetRotationOverrideRequest>,
-  output: __S(50) as any as S.Schema<GetRotationOverrideResult>,
+  input: GetRotationOverrideRequest,
+  output: GetRotationOverrideResult,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1401,8 +1702,8 @@ export const listContactChannels: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ContactChannel
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(51) as any as S.Schema<ListContactChannelsRequest>,
-  output: __S(54) as any as S.Schema<ListContactChannelsResult>,
+  input: ListContactChannelsRequest,
+  output: ListContactChannelsResult,
   errors: [
     AccessDeniedException,
     DataEncryptionException,
@@ -1440,8 +1741,8 @@ export const listContacts: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Contact
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(55) as any as S.Schema<ListContactsRequest>,
-  output: __S(58) as any as S.Schema<ListContactsResult>,
+  input: ListContactsRequest,
+  output: ListContactsResult,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1477,8 +1778,8 @@ export const listEngagements: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Engagement
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(60) as any as S.Schema<ListEngagementsRequest>,
-  output: __S(63) as any as S.Schema<ListEngagementsResult>,
+  input: ListEngagementsRequest,
+  output: ListEngagementsResult,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1515,8 +1816,8 @@ export const listPageReceipts: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Receipt
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(64) as any as S.Schema<ListPageReceiptsRequest>,
-  output: __S(67) as any as S.Schema<ListPageReceiptsResult>,
+  input: ListPageReceiptsRequest,
+  output: ListPageReceiptsResult,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1558,8 +1859,8 @@ export const listPageResolutions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ResolutionContact
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(68) as any as S.Schema<ListPageResolutionsRequest>,
-  output: __S(71) as any as S.Schema<ListPageResolutionsResult>,
+  input: ListPageResolutionsRequest,
+  output: ListPageResolutionsResult,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1596,8 +1897,8 @@ export const listPagesByContact: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Page
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(72) as any as S.Schema<ListPagesByContactRequest>,
-  output: __S(75) as any as S.Schema<ListPagesByContactResult>,
+  input: ListPagesByContactRequest,
+  output: ListPagesByContactResult,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1635,8 +1936,8 @@ export const listPagesByEngagement: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Page
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(76) as any as S.Schema<ListPagesByEngagementRequest>,
-  output: __S(77) as any as S.Schema<ListPagesByEngagementResult>,
+  input: ListPagesByEngagementRequest,
+  output: ListPagesByEngagementResult,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1675,8 +1976,8 @@ export const listPreviewRotationShifts: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   RotationShift
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(80) as any as S.Schema<ListPreviewRotationShiftsRequest>,
-  output: __S(84) as any as S.Schema<ListPreviewRotationShiftsResult>,
+  input: ListPreviewRotationShiftsRequest,
+  output: ListPreviewRotationShiftsResult,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1714,8 +2015,8 @@ export const listRotationOverrides: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   RotationOverride
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(85) as any as S.Schema<ListRotationOverridesRequest>,
-  output: __S(88) as any as S.Schema<ListRotationOverridesResult>,
+  input: ListRotationOverridesRequest,
+  output: ListRotationOverridesResult,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1754,8 +2055,8 @@ export const listRotations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Rotation
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(89) as any as S.Schema<ListRotationsRequest>,
-  output: __S(92) as any as S.Schema<ListRotationsResult>,
+  input: ListRotationsRequest,
+  output: ListRotationsResult,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1795,8 +2096,8 @@ export const listRotationShifts: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   RotationShift
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(93) as any as S.Schema<ListRotationShiftsRequest>,
-  output: __S(94) as any as S.Schema<ListRotationShiftsResult>,
+  input: ListRotationShiftsRequest,
+  output: ListRotationShiftsResult,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1835,8 +2136,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(95) as any as S.Schema<ListTagsForResourceRequest>,
-  output: __S(96) as any as S.Schema<ListTagsForResourceResult>,
+  input: ListTagsForResourceRequest,
+  output: ListTagsForResourceResult,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1870,8 +2171,8 @@ export const putContactPolicy: API.OperationMethod<
   PutContactPolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(97) as any as S.Schema<PutContactPolicyRequest>,
-  output: __S(1) as any as S.Schema<PutContactPolicyResult>,
+  input: PutContactPolicyRequest,
+  output: PutContactPolicyResult,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1907,8 +2208,8 @@ export const sendActivationCode: API.OperationMethod<
   SendActivationCodeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(98) as any as S.Schema<SendActivationCodeRequest>,
-  output: __S(1) as any as S.Schema<SendActivationCodeResult>,
+  input: SendActivationCodeRequest,
+  output: SendActivationCodeResult,
   errors: [
     AccessDeniedException,
     DataEncryptionException,
@@ -1943,8 +2244,8 @@ export const startEngagement: API.OperationMethod<
   StartEngagementError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(99) as any as S.Schema<StartEngagementRequest>,
-  output: __S(100) as any as S.Schema<StartEngagementResult>,
+  input: StartEngagementRequest,
+  output: StartEngagementResult,
   errors: [
     AccessDeniedException,
     DataEncryptionException,
@@ -1977,8 +2278,8 @@ export const stopEngagement: API.OperationMethod<
   StopEngagementError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(101) as any as S.Schema<StopEngagementRequest>,
-  output: __S(1) as any as S.Schema<StopEngagementResult>,
+  input: StopEngagementRequest,
+  output: StopEngagementResult,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2011,8 +2312,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(102) as any as S.Schema<TagResourceRequest>,
-  output: __S(1) as any as S.Schema<TagResourceResult>,
+  input: TagResourceRequest,
+  output: TagResourceResult,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2044,8 +2345,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(103) as any as S.Schema<UntagResourceRequest>,
-  output: __S(1) as any as S.Schema<UntagResourceResult>,
+  input: UntagResourceRequest,
+  output: UntagResourceResult,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2078,8 +2379,8 @@ export const updateContact: API.OperationMethod<
   UpdateContactError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(104) as any as S.Schema<UpdateContactRequest>,
-  output: __S(1) as any as S.Schema<UpdateContactResult>,
+  input: UpdateContactRequest,
+  output: UpdateContactResult,
   errors: [
     AccessDeniedException,
     DataEncryptionException,
@@ -2114,8 +2415,8 @@ export const updateContactChannel: API.OperationMethod<
   UpdateContactChannelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(105) as any as S.Schema<UpdateContactChannelRequest>,
-  output: __S(1) as any as S.Schema<UpdateContactChannelResult>,
+  input: UpdateContactChannelRequest,
+  output: UpdateContactChannelResult,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2150,8 +2451,8 @@ export const updateRotation: API.OperationMethod<
   UpdateRotationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(106) as any as S.Schema<UpdateRotationRequest>,
-  output: __S(1) as any as S.Schema<UpdateRotationResult>,
+  input: UpdateRotationRequest,
+  output: UpdateRotationResult,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2175,10 +2476,10 @@ function __c0(j: number): any {
         S.Struct({
           PageId: S.String,
           ContactChannelId: S.optional(S.String),
-          AcceptType: S.String,
+          AcceptType: AcceptType,
           Note: S.optional(S.String),
           AcceptCode: S.String,
-          AcceptCodeValidation: S.optional(S.String),
+          AcceptCodeValidation: S.optional(AcceptCodeValidation),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "AcceptPageRequest" });
     case 1:
@@ -2204,42 +2505,42 @@ function __c0(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          ChannelTargetInfo: S.optional(__S(3)),
-          ContactTargetInfo: S.optional(__S(4)),
+          ChannelTargetInfo: S.optional(ChannelTargetInfo),
+          ContactTargetInfo: S.optional(ContactTargetInfo),
         }),
       ).annotate({ identifier: "Target" });
     case 6:
-      return S.Array(__S(5));
+      return S.Array(Target);
     case 7:
-      return S.suspend(() => S.Struct({ DurationInMinutes: S.Number, Targets: __S(6) })).annotate({
-        identifier: "Stage",
-      });
+      return S.suspend(() =>
+        S.Struct({ DurationInMinutes: S.Number, Targets: TargetsList }),
+      ).annotate({ identifier: "Stage" });
   }
 }
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(7));
+      return S.Array(Stage);
     case 1:
       return S.Array(S.String);
     case 2:
       return S.suspend(() =>
-        S.Struct({ Stages: S.optional(__S(8)), RotationIds: S.optional(__S(9)) }),
+        S.Struct({ Stages: S.optional(StagesList), RotationIds: S.optional(SsmContactsArnList) }),
       ).annotate({ identifier: "Plan" });
     case 3:
       return S.suspend(() =>
         S.Struct({ Key: S.optional(S.String), Value: S.optional(S.String) }),
       ).annotate({ identifier: "Tag" });
     case 4:
-      return S.Array(__S(11));
+      return S.Array(Tag);
     case 5:
       return S.suspend(() =>
         S.Struct({
           Alias: S.String,
           DisplayName: S.optional(S.String),
-          Type: S.String,
-          Plan: __S(10),
-          Tags: S.optional(__S(12)),
+          Type: ContactType,
+          Plan: Plan,
+          Tags: S.optional(TagsList),
           IdempotencyToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateContactRequest" });
@@ -2260,8 +2561,8 @@ function __c2(j: number): any {
         S.Struct({
           ContactId: S.String,
           Name: S.String,
-          Type: S.String,
-          DeliveryAddress: __S(15),
+          Type: ChannelType,
+          DeliveryAddress: ContactChannelAddress,
           DeferActivation: S.optional(S.Boolean),
           IdempotencyToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -2277,39 +2578,39 @@ function __c2(j: number): any {
         identifier: "HandOffTime",
       });
     case 3:
-      return S.suspend(() => S.Struct({ DayOfMonth: S.Number, HandOffTime: __S(18) })).annotate({
-        identifier: "MonthlySetting",
-      });
+      return S.suspend(() => S.Struct({ DayOfMonth: S.Number, HandOffTime: HandOffTime })).annotate(
+        { identifier: "MonthlySetting" },
+      );
     case 4:
-      return S.Array(__S(19));
+      return S.Array(MonthlySetting);
     case 5:
-      return S.suspend(() => S.Struct({ DayOfWeek: S.String, HandOffTime: __S(18) })).annotate({
-        identifier: "WeeklySetting",
-      });
+      return S.suspend(() => S.Struct({ DayOfWeek: DayOfWeek, HandOffTime: HandOffTime })).annotate(
+        { identifier: "WeeklySetting" },
+      );
     case 6:
-      return S.Array(__S(21));
+      return S.Array(WeeklySetting);
     case 7:
-      return S.Array(__S(18));
+      return S.Array(HandOffTime);
   }
 }
 function __c3(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ Start: S.optional(__S(18)), End: S.optional(__S(18)) }),
+        S.Struct({ Start: S.optional(HandOffTime), End: S.optional(HandOffTime) }),
       ).annotate({ identifier: "CoverageTime" });
     case 1:
-      return S.Array(__S(24));
+      return S.Array(CoverageTime);
     case 2:
-      return S.Record(S.String, /*@__PURE__*/ __S(25).pipe(S.optional));
+      return S.Record(DayOfWeek, /*@__PURE__*/ CoverageTimes.pipe(S.optional));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          MonthlySettings: S.optional(__S(20)),
-          WeeklySettings: S.optional(__S(22)),
-          DailySettings: S.optional(__S(23)),
+          MonthlySettings: S.optional(MonthlySettings),
+          WeeklySettings: S.optional(WeeklySettings),
+          DailySettings: S.optional(DailySettings),
           NumberOfOnCalls: S.Number,
-          ShiftCoverages: S.optional(__S(26)),
+          ShiftCoverages: S.optional(ShiftCoveragesMap),
           RecurrenceMultiplier: S.Number,
         }),
       ).annotate({ identifier: "RecurrenceSettings" });
@@ -2317,11 +2618,11 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Name: S.String,
-          ContactIds: __S(9),
+          ContactIds: RotationContactsArnList,
           StartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           TimeZoneId: S.String,
-          Recurrence: __S(27),
-          Tags: S.optional(__S(12)),
+          Recurrence: RecurrenceSettings,
+          Tags: S.optional(TagsList),
           IdempotencyToken: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateRotationRequest" });
@@ -2333,7 +2634,7 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           RotationId: S.String,
-          NewContactIds: __S(9),
+          NewContactIds: RotationOverrideContactsArnList,
           StartTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           EndTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           IdempotencyToken: S.optional(S.String),
@@ -2447,8 +2748,8 @@ function __c5(j: number): any {
           ContactArn: S.String,
           Alias: S.String,
           DisplayName: S.optional(S.String),
-          Type: S.String,
-          Plan: __S(10),
+          Type: ContactType,
+          Plan: Plan,
         }),
       ).annotate({ identifier: "GetContactResult" });
     case 3:
@@ -2463,9 +2764,9 @@ function __c5(j: number): any {
           ContactArn: S.String,
           ContactChannelArn: S.String,
           Name: S.String,
-          Type: S.String,
-          DeliveryAddress: __S(15),
-          ActivationStatus: S.optional(S.String),
+          Type: ChannelType,
+          DeliveryAddress: ContactChannelAddress,
+          ActivationStatus: S.optional(ActivationStatus),
         }),
       ).annotate({ identifier: "GetContactChannelResult" });
     case 5:
@@ -2493,10 +2794,10 @@ function __c6(j: number): any {
         S.Struct({
           RotationArn: S.String,
           Name: S.String,
-          ContactIds: __S(9),
+          ContactIds: RotationContactsArnList,
           StartTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           TimeZoneId: S.String,
-          Recurrence: __S(27),
+          Recurrence: RecurrenceSettings,
         }),
       ).annotate({ identifier: "GetRotationResult" });
     case 1:
@@ -2512,7 +2813,7 @@ function __c6(j: number): any {
         S.Struct({
           RotationOverrideId: S.optional(S.String),
           RotationArn: S.optional(S.String),
-          NewContactIds: S.optional(__S(9)),
+          NewContactIds: S.optional(SsmContactsArnList),
           StartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           EndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           CreateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
@@ -2536,16 +2837,16 @@ function __c6(j: number): any {
           ContactChannelArn: S.String,
           ContactArn: S.String,
           Name: S.String,
-          Type: S.optional(S.String),
-          DeliveryAddress: __S(15),
-          ActivationStatus: S.String,
+          Type: S.optional(ChannelType),
+          DeliveryAddress: ContactChannelAddress,
+          ActivationStatus: ActivationStatus,
         }),
       ).annotate({ identifier: "ContactChannel" });
     case 5:
-      return S.Array(__S(52));
+      return S.Array(ContactChannel);
     case 6:
       return S.suspend(() =>
-        S.Struct({ NextToken: S.optional(S.String), ContactChannels: __S(53) }),
+        S.Struct({ NextToken: S.optional(S.String), ContactChannels: ContactChannelList }),
       ).annotate({
         identifier: "ListContactChannelsResult",
       });
@@ -2555,7 +2856,7 @@ function __c6(j: number): any {
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
           AliasPrefix: S.optional(S.String),
-          Type: S.optional(S.String),
+          Type: S.optional(ContactType),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListContactsRequest" });
   }
@@ -2568,14 +2869,14 @@ function __c7(j: number): any {
           ContactArn: S.String,
           Alias: S.String,
           DisplayName: S.optional(S.String),
-          Type: S.String,
+          Type: ContactType,
         }),
       ).annotate({ identifier: "Contact" });
     case 1:
-      return S.Array(__S(56));
+      return S.Array(Contact);
     case 2:
       return S.suspend(() =>
-        S.Struct({ NextToken: S.optional(S.String), Contacts: S.optional(__S(57)) }),
+        S.Struct({ NextToken: S.optional(S.String), Contacts: S.optional(ContactsList) }),
       ).annotate({ identifier: "ListContactsResult" });
     case 3:
       return S.suspend(() =>
@@ -2590,7 +2891,7 @@ function __c7(j: number): any {
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
           IncidentId: S.optional(S.String),
-          TimeRangeValue: S.optional(__S(59)),
+          TimeRangeValue: S.optional(TimeRange),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListEngagementsRequest" });
     case 5:
@@ -2605,10 +2906,10 @@ function __c7(j: number): any {
         }),
       ).annotate({ identifier: "Engagement" });
     case 6:
-      return S.Array(__S(61));
+      return S.Array(Engagement);
     case 7:
       return S.suspend(() =>
-        S.Struct({ NextToken: S.optional(S.String), Engagements: __S(62) }),
+        S.Struct({ NextToken: S.optional(S.String), Engagements: EngagementsList }),
       ).annotate({ identifier: "ListEngagementsResult" });
   }
 }
@@ -2626,16 +2927,16 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ContactChannelArn: S.optional(S.String),
-          ReceiptType: S.String,
+          ReceiptType: ReceiptType,
           ReceiptInfo: S.optional(S.String),
           ReceiptTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
         }),
       ).annotate({ identifier: "Receipt" });
     case 2:
-      return S.Array(__S(65));
+      return S.Array(Receipt);
     case 3:
       return S.suspend(() =>
-        S.Struct({ NextToken: S.optional(S.String), Receipts: S.optional(__S(66)) }),
+        S.Struct({ NextToken: S.optional(S.String), Receipts: S.optional(ReceiptsList) }),
       ).annotate({ identifier: "ListPageReceiptsResult" });
     case 4:
       return S.suspend(() =>
@@ -2647,13 +2948,13 @@ function __c8(j: number): any {
       });
     case 5:
       return S.suspend(() =>
-        S.Struct({ ContactArn: S.String, Type: S.String, StageIndex: S.optional(S.Number) }),
+        S.Struct({ ContactArn: S.String, Type: ContactType, StageIndex: S.optional(S.Number) }),
       ).annotate({ identifier: "ResolutionContact" });
     case 6:
-      return S.Array(__S(69));
+      return S.Array(ResolutionContact);
     case 7:
       return S.suspend(() =>
-        S.Struct({ NextToken: S.optional(S.String), PageResolutions: __S(70) }),
+        S.Struct({ NextToken: S.optional(S.String), PageResolutions: ResolutionList }),
       ).annotate({
         identifier: "ListPageResolutionsResult",
       });
@@ -2685,10 +2986,10 @@ function __c9(j: number): any {
         }),
       ).annotate({ identifier: "Page" });
     case 2:
-      return S.Array(__S(73));
+      return S.Array(Page);
     case 3:
       return S.suspend(() =>
-        S.Struct({ NextToken: S.optional(S.String), Pages: __S(74) }),
+        S.Struct({ NextToken: S.optional(S.String), Pages: PagesList }),
       ).annotate({ identifier: "ListPagesByContactResult" });
     case 4:
       return S.suspend(() =>
@@ -2702,20 +3003,20 @@ function __c9(j: number): any {
       });
     case 5:
       return S.suspend(() =>
-        S.Struct({ NextToken: S.optional(S.String), Pages: __S(74) }),
+        S.Struct({ NextToken: S.optional(S.String), Pages: PagesList }),
       ).annotate({
         identifier: "ListPagesByEngagementResult",
       });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          NewMembers: S.optional(__S(9)),
+          NewMembers: S.optional(RotationOverridePreviewMemberList),
           StartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           EndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "PreviewOverride" });
     case 7:
-      return S.Array(__S(78));
+      return S.Array(PreviewOverride);
   }
 }
 function __c10(j: number): any {
@@ -2726,10 +3027,10 @@ function __c10(j: number): any {
           RotationStartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           StartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           EndTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          Members: __S(9),
+          Members: RotationPreviewMemberList,
           TimeZoneId: S.String,
-          Recurrence: __S(27),
-          Overrides: S.optional(__S(79)),
+          Recurrence: RecurrenceSettings,
+          Overrides: S.optional(OverrideList),
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -2737,24 +3038,24 @@ function __c10(j: number): any {
         identifier: "ListPreviewRotationShiftsRequest",
       });
     case 1:
-      return S.suspend(() => S.Struct({ OverriddenContactIds: __S(9) })).annotate({
+      return S.suspend(() => S.Struct({ OverriddenContactIds: SsmContactsArnList })).annotate({
         identifier: "ShiftDetails",
       });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          ContactIds: S.optional(__S(9)),
+          ContactIds: S.optional(SsmContactsArnList),
           StartTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           EndTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          Type: S.optional(S.String),
-          ShiftDetails: S.optional(__S(81)),
+          Type: S.optional(ShiftType),
+          ShiftDetails: S.optional(ShiftDetails),
         }),
       ).annotate({ identifier: "RotationShift" });
     case 3:
-      return S.Array(__S(82));
+      return S.Array(RotationShift);
     case 4:
       return S.suspend(() =>
-        S.Struct({ RotationShifts: S.optional(__S(83)), NextToken: S.optional(S.String) }),
+        S.Struct({ RotationShifts: S.optional(RotationShifts), NextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListPreviewRotationShiftsResult",
       });
@@ -2774,14 +3075,14 @@ function __c10(j: number): any {
       return S.suspend(() =>
         S.Struct({
           RotationOverrideId: S.String,
-          NewContactIds: __S(9),
+          NewContactIds: SsmContactsArnList,
           StartTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           EndTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           CreateTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
         }),
       ).annotate({ identifier: "RotationOverride" });
     case 7:
-      return S.Array(__S(86));
+      return S.Array(RotationOverride);
   }
 }
 function __c11(j: number): any {
@@ -2789,7 +3090,7 @@ function __c11(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          RotationOverrides: S.optional(__S(87)),
+          RotationOverrides: S.optional(RotationOverrides),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -2808,17 +3109,17 @@ function __c11(j: number): any {
         S.Struct({
           RotationArn: S.String,
           Name: S.String,
-          ContactIds: S.optional(__S(9)),
+          ContactIds: S.optional(SsmContactsArnList),
           StartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           TimeZoneId: S.optional(S.String),
-          Recurrence: S.optional(__S(27)),
+          Recurrence: S.optional(RecurrenceSettings),
         }),
       ).annotate({ identifier: "Rotation" });
     case 3:
-      return S.Array(__S(90));
+      return S.Array(Rotation);
     case 4:
       return S.suspend(() =>
-        S.Struct({ NextToken: S.optional(S.String), Rotations: __S(91) }),
+        S.Struct({ NextToken: S.optional(S.String), Rotations: Rotations }),
       ).annotate({ identifier: "ListRotationsResult" });
     case 5:
       return S.suspend(() =>
@@ -2834,7 +3135,7 @@ function __c11(j: number): any {
       });
     case 6:
       return S.suspend(() =>
-        S.Struct({ RotationShifts: S.optional(__S(83)), NextToken: S.optional(S.String) }),
+        S.Struct({ RotationShifts: S.optional(RotationShifts), NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListRotationShiftsResult" });
     case 7:
       return S.suspend(() =>
@@ -2849,7 +3150,7 @@ function __c11(j: number): any {
 function __c12(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ Tags: S.optional(__S(12)) })).annotate({
+      return S.suspend(() => S.Struct({ Tags: S.optional(TagsList) })).annotate({
         identifier: "ListTagsForResourceResult",
       });
     case 1:
@@ -2891,13 +3192,13 @@ function __c12(j: number): any {
       ).annotate({ identifier: "StopEngagementRequest" });
     case 6:
       return S.suspend(() =>
-        S.Struct({ ResourceARN: S.String, Tags: __S(12) }).pipe(
+        S.Struct({ ResourceARN: S.String, Tags: TagsList }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "TagResourceRequest" });
     case 7:
       return S.suspend(() =>
-        S.Struct({ ResourceARN: S.String, TagKeys: __S(9) }).pipe(
+        S.Struct({ ResourceARN: S.String, TagKeys: TagKeyList }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "UntagResourceRequest" });
@@ -2910,7 +3211,7 @@ function __c13(j: number): any {
         S.Struct({
           ContactId: S.String,
           DisplayName: S.optional(S.String),
-          Plan: S.optional(__S(10)),
+          Plan: S.optional(Plan),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "UpdateContactRequest" });
     case 1:
@@ -2918,7 +3219,7 @@ function __c13(j: number): any {
         S.Struct({
           ContactChannelId: S.String,
           Name: S.optional(S.String),
-          DeliveryAddress: S.optional(__S(15)),
+          DeliveryAddress: S.optional(ContactChannelAddress),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "UpdateContactChannelRequest",
@@ -2927,10 +3228,10 @@ function __c13(j: number): any {
       return S.suspend(() =>
         S.Struct({
           RotationId: S.String,
-          ContactIds: S.optional(__S(9)),
+          ContactIds: S.optional(RotationContactsArnList),
           StartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           TimeZoneId: S.optional(S.String),
-          Recurrence: __S(27),
+          Recurrence: RecurrenceSettings,
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "UpdateRotationRequest" });
     case 3:
@@ -2938,49 +3239,12 @@ function __c13(j: number): any {
         identifier: "ValidationExceptionField",
       });
     case 4:
-      return S.Array(__S(107));
+      return S.Array(ValidationExceptionField);
     case 5:
       return S.suspend(() =>
-        S.Struct({ RelationType: S.String, DependentResourceIds: __S(9) }),
+        S.Struct({ RelationType: S.String, DependentResourceIds: SsmContactsArnList }),
       ).annotate({ identifier: "DependentEntity" });
     case 6:
-      return S.Array(__S(109));
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
-    case 9:
-      return __c9(i & 7);
-    case 10:
-      return __c10(i & 7);
-    case 11:
-      return __c11(i & 7);
-    case 12:
-      return __c12(i & 7);
-    case 13:
-      return __c13(i & 7);
+      return S.Array(DependentEntity);
   }
 }

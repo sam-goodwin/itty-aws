@@ -7,8 +7,6 @@ import { paginateRelay } from "../pagination.ts";
 import { WhopProtocol, type WhopOpError, type WhopOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { WhopOpError, WhopOpContext };
 
@@ -50,6 +48,11 @@ export class NotFound
 
 /** Free-form string-to-string annotations stored on the trade. */
 export type CancelTradeRequestMetadataMap = { [key: string]: string | undefined };
+const CancelTradeRequestMetadataMap = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<CancelTradeRequestMetadataMap>;
+
 export interface CancelTradeRequest {
   /** ID of the order trade to cancel, prefixed `trop_`. */
   id: string;
@@ -58,8 +61,12 @@ export interface CancelTradeRequest {
   /** Required. Reuse the same key when retrying, including after a `submission_unknown` outcome; a new key submits a new trade. */
   idempotency_key: string;
 }
+const CancelTradeRequest = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<CancelTradeRequest>;
+
 /** `canceled` when the provider canceled the order; `rejected` when it refused, for example because the order had already filled. */
 export type TradeCancellationResultStatus = "canceled" | "rejected";
+const TradeCancellationResultStatus = S.String;
+
 export interface TradeCancellationResult {
   /** The provider's rejection reason, or `null` when the order was canceled. */
   error: string | null;
@@ -68,20 +75,38 @@ export interface TradeCancellationResult {
   /** `canceled` when the provider canceled the order; `rejected` when it refused, for example because the order had already filled. */
   status: TradeCancellationResultStatus;
 }
+const TradeCancellationResult = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<TradeCancellationResult>;
+
 export type TradeCancellationsList = Array<TradeCancellationResult>;
+const TradeCancellationsList = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<TradeCancellationsList>;
+
 /** Why the trade failed or has an unknown outcome, or `null` otherwise. */
 export type TradeFailureCode =
   | "pre_submission_error"
   | "provider_rejected"
   | "provider_outcome_unknown";
+const TradeFailureCode = S.String;
+
 export interface TradeHyperliquid {
   /** Builder fee Whop charged on the submitted orders, in basis points as a decimal string, or `null` for trades that place no orders. */
   builder_fee_bps: string | null;
 }
+const TradeHyperliquid = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<TradeHyperliquid>;
+
 /** The kind of instrument traded. */
 export type TradeInstrumentType = "perpetual";
+const TradeInstrumentType = S.String;
+
 /** `cross` shares margin across positions; `isolated` limits margin to this market's position. `null` if the request didn't contain a supported mode. */
 export type TradeLeverageMarginMode = "cross" | "isolated";
+const TradeLeverageMarginMode = S.String;
+
 export interface TradeLeverage {
   /** Requested leverage multiplier, such as `10` for 10x, or `null` if the request didn't contain a whole number. */
   leverage: number | null;
@@ -90,9 +115,15 @@ export interface TradeLeverage {
   /** Market symbol, such as `ETH`. */
   market: string;
 }
+const TradeLeverage = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<TradeLeverage>;
+
 export type TradeObject = "trade";
+const TradeObject = S.String;
+
 /** `create_orders` places orders, `cancel_orders` cancels a submitted batch, and `update_leverage` sets a market's leverage. */
 export type TradeOperationType = "create_orders" | "cancel_orders" | "update_leverage";
+const TradeOperationType = S.String;
+
 export interface Money {
   /** The amount in major units, as an exact decimal string -- `"10.00"` is ten dollars. A string so no float rounds it in transit. */
   amount: string;
@@ -103,17 +134,32 @@ export interface Money {
   /** How many decimal places to SHOW. Usually equal to `decimals`, and deliberately not always: COP is charged in centavos but written in whole pesos, so it is `2` and `0`. Format the number in your own locale using this. */
   display_decimals: number;
 }
+const Money = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<Money>;
+
 export interface TradingHyperliquidOrder {
   /** Whether the order can only reduce an existing position, or `null` when Hyperliquid omits it. */
   reduce_only: boolean | null;
   /** Trigger price in USD for take-profit and stop-loss orders, or `null` for orders without a trigger. */
   trigger_price: Money | null;
 }
+const TradingHyperliquidOrder = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<TradingHyperliquidOrder>;
+
 export type TradeOrderResultObject = "trading_order";
+const TradeOrderResultObject = S.String;
+
 export type TradeOrderResultOrderType = "limit" | "market" | "take_profit" | "stop_loss";
+const TradeOrderResultOrderType = S.String;
+
 export type TradeOrderResultSide = "buy" | "sell";
+const TradeOrderResultSide = S.String;
+
 /** The provider's acknowledgement at submission time, not the current fill status. */
 export type TradeOrderResultStatus = "open" | "filled" | "rejected";
+const TradeOrderResultStatus = S.String;
+
 export interface TradeOrderResult {
   /** Average fill price in USD for an immediate fill, or `null` when nothing filled. */
   average_price: Money | null;
@@ -143,13 +189,23 @@ export interface TradeOrderResult {
   /** The provider's acknowledgement at submission time, not the current fill status. */
   status: TradeOrderResultStatus;
 }
+const TradeOrderResult = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<TradeOrderResult>;
+
 export type TradeOrdersList = Array<TradeOrderResult>;
+const TradeOrdersList = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<TradeOrdersList>;
+
 /** Trading venue the trade was submitted to. */
 export type TradeProvider = "hyperliquid";
+const TradeProvider = S.String;
+
 /** Submitted order type, or `null` if the request didn't contain a supported type. */
 export type TradeRequestedOrderOrderType = "limit" | "market" | "take_profit" | "stop_loss";
+const TradeRequestedOrderOrderType = S.String;
+
 /** Submitted side, or `null` if the request didn't contain a supported side. */
 export type TradeRequestedOrderSide = "buy" | "sell";
+const TradeRequestedOrderSide = S.String;
+
 export interface TradeRequestedOrder {
   /** Client order ID Whop assigned to the order, prefixed `trdcloid_`. Matches the order in `orders` and on the provider. */
   client_order_id: string;
@@ -168,9 +224,18 @@ export interface TradeRequestedOrder {
   /** Submitted trigger price in USD, or `null` for orders without a trigger. */
   trigger_price: Money | null;
 }
+const TradeRequestedOrder = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<TradeRequestedOrder>;
+
 export type TradeRequestedOrdersList = Array<TradeRequestedOrder>;
+const TradeRequestedOrdersList = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<TradeRequestedOrdersList>;
+
 /** Submission status, not fill status. `completed` means the provider response was recorded, even if individual orders were rejected. Never resubmit a `submission_unknown` trade with a new idempotency key. */
 export type TradeStatus = "pending" | "submitted" | "completed" | "failed" | "submission_unknown";
+const TradeStatus = S.String;
+
 export interface Trade {
   /** The account that owns the trading wallet, prefixed `biz_`. `null` when a user owns it. */
   account_id: string | null;
@@ -207,28 +272,46 @@ export interface Trade {
   /** The user who owns the trading wallet, prefixed `user_`. `null` when an account owns it. */
   user_id: string | null;
 }
+const Trade = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<Trade>;
+
 /** The kind of instrument to trade. */
 export type CreateTradeRequestInstrumentType = "perpetual";
+const CreateTradeRequestInstrumentType = S.String;
+
 /** Free-form string-to-string annotations stored on the trade. */
 export type CreateTradeRequestMetadataMap = { [key: string]: string | undefined };
+const CreateTradeRequestMetadataMap =
+  CancelTradeRequestMetadataMap as any as S.Schema<CreateTradeRequestMetadataMap>;
+
 export type CreateTradeRequestOrdersItemOrderType =
   | "limit"
   | "market"
   | "take_profit"
   | "stop_loss";
+const CreateTradeRequestOrdersItemOrderType = S.String;
+
 export type CreateTradeRequestOrdersItemSide = "buy" | "sell";
+const CreateTradeRequestOrdersItemSide = S.String;
+
 export interface CreateTradeRequestOrdersItemStopLoss {
   /** Limit price once triggered, as a decimal string. Omit or pass `null` for a market order with the request's slippage cap. */
   limit_price?: string | null;
   /** Price that triggers the order, as a decimal string. */
   trigger_price: string;
 }
+const CreateTradeRequestOrdersItemStopLoss = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<CreateTradeRequestOrdersItemStopLoss>;
+
 export type CreateTradeRequestOrdersItemTakeProfit = CreateTradeRequestOrdersItemStopLoss;
 /** How long a limit order stays active. Ignored for other order types. */
 export type CreateTradeRequestOrdersItemTimeInForce =
   | "add_liquidity_only"
   | "good_til_canceled"
   | "immediate_or_cancel";
+const CreateTradeRequestOrdersItemTimeInForce = S.String;
+
 export interface CreateTradeRequestOrdersItem {
   /** Perpetual market on the selected provider, such as `ETH`. */
   market: string;
@@ -251,9 +334,21 @@ export interface CreateTradeRequestOrdersItem {
   /** Trigger price as a decimal string. Required for standalone take-profit and stop-loss orders. */
   trigger_price?: string | null;
 }
+const CreateTradeRequestOrdersItem = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<CreateTradeRequestOrdersItem>;
+
 /** Orders to submit together. Attached take-profit and stop-loss are supported only with a single entry order. */
 export type CreateTradeRequestOrdersList = Array<CreateTradeRequestOrdersItem>;
+const CreateTradeRequestOrdersList = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<CreateTradeRequestOrdersList>;
+
 export type CreateTradeRequestProvider = "hyperliquid";
+const CreateTradeRequestProvider = S.String;
+
 export interface CreateTradeRequest {
   /** The account or user that owns the trading wallet, prefixed `biz_` or `user_`. */
   account_id: string;
@@ -269,19 +364,31 @@ export interface CreateTradeRequest {
   /** Required. Reuse the same key when retrying, including after a `submission_unknown` outcome; a new key submits a new trade. */
   idempotency_key: string;
 }
+const CreateTradeRequest = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<CreateTradeRequest>;
+
 export interface GetTradeRequest {
   /** Trade ID, prefixed `trop_`. */
   id: string;
 }
+const GetTradeRequest = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<GetTradeRequest>;
+
 export type ListTradesRequestStatus =
   | "pending"
   | "submitted"
   | "completed"
   | "failed"
   | "submission_unknown";
+const ListTradesRequestStatus = S.String;
+
 export type ListTradesRequestOperationType = "create_orders" | "cancel_orders" | "update_leverage";
+const ListTradesRequestOperationType = S.String;
+
 export type ListTradesRequestOrder = "created_at" | "updated_at";
+const ListTradesRequestOrder = S.String;
+
 export type ListTradesRequestDirection = "asc" | "desc";
+const ListTradesRequestDirection = S.String;
+
 export interface ListTradesRequest {
   /** Only return trades for this account or user, prefixed `biz_` or `user_`. */
   account_id?: string;
@@ -302,22 +409,43 @@ export interface ListTradesRequest {
   /** Return results before this cursor. Use `page_info.start_cursor` from the previous response to fetch the previous page. */
   before?: string;
 }
+const ListTradesRequest = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<ListTradesRequest>;
+
 export type ListTradesResponseDataList = Array<Trade>;
+const ListTradesResponseDataList = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<ListTradesResponseDataList>;
+
 export interface ListTradesResponsePageInfo {
   end_cursor: string | null;
   has_next_page: boolean;
   has_previous_page: boolean;
   start_cursor: string | null;
 }
+const ListTradesResponsePageInfo = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<ListTradesResponsePageInfo>;
+
 export interface ListTradesResponse {
   data: ListTradesResponseDataList;
   page_info: ListTradesResponsePageInfo;
 }
+const ListTradesResponse = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<ListTradesResponse>;
+
 /** `cross` shares margin across positions; `isolated` limits margin to this market's position. */
 export type UpdateTradeLeverageRequestMarginMode = "cross" | "isolated";
+const UpdateTradeLeverageRequestMarginMode = S.String;
+
 /** Free-form string-to-string annotations stored on the trade. */
 export type UpdateTradeLeverageRequestMetadataMap = { [key: string]: string | undefined };
+const UpdateTradeLeverageRequestMetadataMap =
+  CancelTradeRequestMetadataMap as any as S.Schema<UpdateTradeLeverageRequestMetadataMap>;
+
 export type UpdateTradeLeverageRequestProvider = "hyperliquid";
+const UpdateTradeLeverageRequestProvider = S.String;
+
 export interface UpdateTradeLeverageRequest {
   /** The account or user that owns the trading wallet, prefixed `biz_` or `user_`. */
   account_id: string;
@@ -333,6 +461,11 @@ export interface UpdateTradeLeverageRequest {
   /** Required. Reuse the same key when retrying, including after a `submission_unknown` outcome; a new key submits a new trade. */
   idempotency_key: string;
 }
+const UpdateTradeLeverageRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<UpdateTradeLeverageRequest>;
+
 export type CancelTradeError = BadRequest | Forbidden | NotFound | Conflict | WhopOpError;
 /** Cancel Trade Cancels every order in an order trade, including attached take-profit and stop-loss. This doesn't close filled positions. Returns a new cancellation trade whose `trade_id` points to the original, which is left unchanged. Cancellation works even while opening new positions is disabled. Requires an `Idempotency-Key`. */
 export const cancelTrade: API.OperationMethod<
@@ -341,8 +474,8 @@ export const cancelTrade: API.OperationMethod<
   CancelTradeError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1) as any as S.Schema<CancelTradeRequest>,
-  output: __S(12) as any as S.Schema<Trade>,
+  input: CancelTradeRequest,
+  output: Trade,
   errors: [BadRequest, Forbidden, NotFound, Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -356,8 +489,8 @@ export const createTrade: API.OperationMethod<
   CreateTradeError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16) as any as S.Schema<CreateTradeRequest>,
-  output: __S(12) as any as S.Schema<Trade>,
+  input: CreateTradeRequest,
+  output: Trade,
   errors: [BadRequest, Forbidden, NotFound, Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -367,8 +500,8 @@ export type GetTradeError = Forbidden | NotFound | WhopOpError;
 /** Retrieve Trade Retrieves a trade. Order acknowledgements don't update as orders fill; read live orders and positions from the account's `trading` field. Never resubmit a `submission_unknown` trade with a new idempotency key. */
 export const getTrade: API.OperationMethod<GetTradeRequest, Trade, GetTradeError, WhopOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(17) as any as S.Schema<GetTradeRequest>,
-    output: __S(12) as any as S.Schema<Trade>,
+    input: GetTradeRequest,
+    output: Trade,
     errors: [Forbidden, NotFound],
     protocol: WhopProtocol,
     retry: Retry.Retry,
@@ -384,8 +517,8 @@ export const listTrades: API.PaginatedOperationMethod<
   Trade
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(18) as any as S.Schema<ListTradesRequest>,
-    output: __S(21) as any as S.Schema<ListTradesResponse>,
+    input: ListTradesRequest,
+    output: ListTradesResponse,
     errors: [BadRequest, Forbidden],
     protocol: WhopProtocol,
     retry: Retry.Retry,
@@ -409,8 +542,8 @@ export const updateTradeLeverage: API.OperationMethod<
   UpdateTradeLeverageError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22) as any as S.Schema<UpdateTradeLeverageRequest>,
-  output: __S(12) as any as S.Schema<Trade>,
+  input: UpdateTradeLeverageRequest,
+  output: Trade,
   errors: [BadRequest, Forbidden, Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -425,7 +558,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
-          metadata: S.optional(S.NullOr(__S(0))),
+          metadata: S.optional(S.NullOr(CancelTradeRequestMetadataMap)),
           idempotency_key: S.String.pipe(T.Header("Idempotency-Key")),
         }).pipe(T.Http({ method: "POST", uri: "/trades/{id}/cancel", code: 200 })),
       ).annotate({ identifier: "CancelTradeRequest" });
@@ -434,11 +567,11 @@ function __c0(j: number): any {
         S.Struct({
           error: S.NullOr(S.String),
           id: S.String,
-          status: S.String,
+          status: TradeCancellationResultStatus,
         }),
       ).annotate({ identifier: "TradeCancellationResult" });
     case 3:
-      return S.Array(__S(2));
+      return S.Array(TradeCancellationResult);
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -449,7 +582,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           leverage: S.NullOr(S.Number),
-          margin_mode: S.NullOr(S.String),
+          margin_mode: S.NullOr(TradeLeverageMarginMode),
           market: S.String,
         }),
       ).annotate({ identifier: "TradeLeverage" });
@@ -466,7 +599,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           reduce_only: S.NullOr(S.Boolean),
-          trigger_price: S.NullOr(__S(6)),
+          trigger_price: S.NullOr(Money),
         }),
       ).annotate({ identifier: "TradingHyperliquidOrder" });
   }
@@ -476,59 +609,59 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          average_price: S.NullOr(__S(6)),
+          average_price: S.NullOr(Money),
           client_order_id: S.String,
           error: S.NullOr(S.String),
           filled_size: S.NullOr(S.String),
-          hyperliquid: S.NullOr(__S(7)),
+          hyperliquid: S.NullOr(TradingHyperliquidOrder),
           id: S.String,
           market: S.String,
-          object: S.String,
-          order_type: S.String,
+          object: TradeOrderResultObject,
+          order_type: TradeOrderResultOrderType,
           parent_client_order_id: S.NullOr(S.String),
-          price: __S(6),
+          price: Money,
           provider_order_id: S.NullOr(S.String),
-          side: S.String,
+          side: TradeOrderResultSide,
           size: S.String,
-          status: S.String,
+          status: TradeOrderResultStatus,
         }),
       ).annotate({ identifier: "TradeOrderResult" });
     case 1:
-      return S.Array(__S(8));
+      return S.Array(TradeOrderResult);
     case 2:
       return S.suspend(() =>
         S.Struct({
           client_order_id: S.String,
           market: S.String,
-          order_type: S.NullOr(S.String),
+          order_type: S.NullOr(TradeRequestedOrderOrderType),
           parent_client_order_id: S.NullOr(S.String),
-          price: S.NullOr(__S(6)),
-          side: S.NullOr(S.String),
+          price: S.NullOr(Money),
+          side: S.NullOr(TradeRequestedOrderSide),
           size: S.String,
-          trigger_price: S.NullOr(__S(6)),
+          trigger_price: S.NullOr(Money),
         }),
       ).annotate({ identifier: "TradeRequestedOrder" });
     case 3:
-      return S.Array(__S(10));
+      return S.Array(TradeRequestedOrder);
     case 4:
       return S.suspend(() =>
         S.Struct({
           account_id: S.NullOr(S.String),
-          cancellations: S.NullOr(__S(3)),
+          cancellations: S.NullOr(TradeCancellationsList),
           completed_at: S.NullOr(S.String),
           created_at: S.String,
-          failure_code: S.NullOr(S.String),
-          hyperliquid: S.NullOr(__S(4)),
+          failure_code: S.NullOr(TradeFailureCode),
+          hyperliquid: S.NullOr(TradeHyperliquid),
           id: S.String,
-          instrument_type: S.String,
-          leverage: S.NullOr(__S(5)),
+          instrument_type: TradeInstrumentType,
+          leverage: S.NullOr(TradeLeverage),
           metadata: S.Unknown,
-          object: S.String,
-          operation_type: S.String,
-          orders: S.NullOr(__S(9)),
-          provider: S.String,
-          requested_orders: S.NullOr(__S(11)),
-          status: S.String,
+          object: TradeObject,
+          operation_type: TradeOperationType,
+          orders: S.NullOr(TradeOrdersList),
+          provider: TradeProvider,
+          requested_orders: S.NullOr(TradeRequestedOrdersList),
+          status: TradeStatus,
           trade_id: S.NullOr(S.String),
           updated_at: S.String,
           user_id: S.NullOr(S.String),
@@ -547,22 +680,22 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           market: S.String,
-          order_type: S.optional(S.String),
+          order_type: S.optional(CreateTradeRequestOrdersItemOrderType),
           price: S.optional(S.NullOr(S.String)),
           reduce_only: S.optional(S.Boolean),
-          side: S.String,
+          side: CreateTradeRequestOrdersItemSide,
           size: S.String,
           slippage_bps: S.optional(S.NullOr(S.Number)),
-          stop_loss: S.optional(S.NullOr(__S(13))),
-          take_profit: S.optional(S.NullOr(__S(13))),
-          time_in_force: S.optional(S.String),
+          stop_loss: S.optional(S.NullOr(CreateTradeRequestOrdersItemStopLoss)),
+          take_profit: S.optional(S.NullOr(CreateTradeRequestOrdersItemStopLoss)),
+          time_in_force: S.optional(CreateTradeRequestOrdersItemTimeInForce),
           trigger_price: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
         identifier: "CreateTradeRequestOrdersItem",
       });
     case 7:
-      return S.Array(__S(14));
+      return S.Array(CreateTradeRequestOrdersItem);
   }
 }
 function __c2(j: number): any {
@@ -571,10 +704,10 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           account_id: S.String,
-          instrument_type: S.String,
-          metadata: S.optional(S.NullOr(__S(0))),
-          orders: __S(15),
-          provider: S.String,
+          instrument_type: CreateTradeRequestInstrumentType,
+          metadata: S.optional(S.NullOr(CreateTradeRequestMetadataMap)),
+          orders: CreateTradeRequestOrdersList,
+          provider: CreateTradeRequestProvider,
           slippage_bps: S.optional(S.NullOr(S.Number)),
           idempotency_key: S.String.pipe(T.Header("Idempotency-Key")),
         }).pipe(T.Http({ method: "POST", uri: "/trades", code: 200 })),
@@ -589,10 +722,10 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           account_id: S.optional(S.String.pipe(T.Query())),
-          status: S.optional(S.String.pipe(T.Query())),
-          operation_type: S.optional(S.String.pipe(T.Query())),
-          order: S.optional(S.String.pipe(T.Query())),
-          direction: S.optional(S.String.pipe(T.Query())),
+          status: S.optional(ListTradesRequestStatus.pipe(T.Query())),
+          operation_type: S.optional(ListTradesRequestOperationType.pipe(T.Query())),
+          order: S.optional(ListTradesRequestOrder.pipe(T.Query())),
+          direction: S.optional(ListTradesRequestDirection.pipe(T.Query())),
           first: S.optional(S.Number.pipe(T.Query())),
           after: S.optional(S.String.pipe(T.Query())),
           last: S.optional(S.Number.pipe(T.Query())),
@@ -600,7 +733,7 @@ function __c2(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/trades", code: 200 })),
       ).annotate({ identifier: "ListTradesRequest" });
     case 3:
-      return S.Array(__S(12));
+      return S.Array(Trade);
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -615,8 +748,8 @@ function __c2(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          data: __S(19),
-          page_info: __S(20),
+          data: ListTradesResponseDataList,
+          page_info: ListTradesResponsePageInfo,
         }),
       ).annotate({ identifier: "ListTradesResponse" });
     case 6:
@@ -624,29 +757,14 @@ function __c2(j: number): any {
         S.Struct({
           account_id: S.String,
           leverage: S.Number,
-          margin_mode: S.String,
+          margin_mode: UpdateTradeLeverageRequestMarginMode,
           market: S.String,
-          metadata: S.optional(S.NullOr(__S(0))),
-          provider: S.String,
+          metadata: S.optional(S.NullOr(UpdateTradeLeverageRequestMetadataMap)),
+          provider: UpdateTradeLeverageRequestProvider,
           idempotency_key: S.String.pipe(T.Header("Idempotency-Key")),
         }).pipe(T.Http({ method: "POST", uri: "/trades/leverage", code: 200 })),
       ).annotate({
         identifier: "UpdateTradeLeverageRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
   }
 }

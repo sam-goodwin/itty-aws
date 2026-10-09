@@ -6,8 +6,6 @@ import * as S from "@distilled.cloud/core/schema";
 import { PosthogProtocol, type PosthogOpError, type PosthogOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { PosthogOpError, PosthogOpContext };
 
@@ -40,6 +38,8 @@ export class NotFound
 
 /** * `app` - app * `toolbar` - toolbar */
 export type ProductTourSerializerCreateUpdateOnlyCreationContextEnum = "app" | "toolbar";
+const ProductTourSerializerCreateUpdateOnlyCreationContextEnum = S.String;
+
 export interface CreateProductTourRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -55,17 +55,38 @@ export interface CreateProductTourRequest {
   /** Where the tour was created/updated from * `app` - app * `toolbar` - toolbar */
   creation_context?: ProductTourSerializerCreateUpdateOnlyCreationContextEnum | (string & {});
 }
+const CreateProductTourRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<CreateProductTourRequest>;
+
 export type MinimalFeatureFlagFiltersMap = { [key: string]: unknown | undefined };
+const MinimalFeatureFlagFiltersMap = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<MinimalFeatureFlagFiltersMap>;
+
 /** * `server` - Server * `client` - Client * `all` - All */
 export type EvaluationRuntimeEnum = "server" | "client" | "all";
 export type BlankEnum = "";
 /** Specifies where this feature flag should be evaluated * `server` - Server * `client` - Client * `all` - All */
 export type MinimalFeatureFlagEvaluationRuntime = EvaluationRuntimeEnum | BlankEnum;
+const MinimalFeatureFlagEvaluationRuntime =
+  S.Unknown as any as S.Schema<MinimalFeatureFlagEvaluationRuntime>;
+
 /** * `distinct_id` - User ID (default) * `device_id` - Device ID */
 export type BucketingIdentifierEnum = "distinct_id" | "device_id";
 /** Identifier used for bucketing users into rollout and variants * `distinct_id` - User ID (default) * `device_id` - Device ID */
 export type MinimalFeatureFlagBucketingIdentifier = BucketingIdentifierEnum | BlankEnum;
+const MinimalFeatureFlagBucketingIdentifier =
+  S.Unknown as any as S.Schema<MinimalFeatureFlagBucketingIdentifier>;
+
 export type MinimalFeatureFlagEvaluationContextsList = Array<string>;
+const MinimalFeatureFlagEvaluationContextsList = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<MinimalFeatureFlagEvaluationContextsList>;
+
 export interface MinimalFeatureFlag {
   id?: number;
   team_id?: number;
@@ -82,7 +103,12 @@ export interface MinimalFeatureFlag {
   bucketing_identifier?: MinimalFeatureFlagBucketingIdentifier | null;
   evaluation_contexts?: MinimalFeatureFlagEvaluationContextsList;
 }
+const MinimalFeatureFlag = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<MinimalFeatureFlag>;
+
 export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
+const UserBasicHedgehogConfigMap =
+  MinimalFeatureFlagFiltersMap as any as S.Schema<UserBasicHedgehogConfigMap>;
+
 /** * `engineering` - Engineering * `data` - Data * `product` - Product Management * `founder` - Founder * `leadership` - Leadership * `marketing` - Marketing * `sales` - Sales / Success * `student` - Student * `other` - Other */
 export type RoleAtOrganizationEnum =
   | "engineering"
@@ -95,6 +121,8 @@ export type RoleAtOrganizationEnum =
   | "student"
   | "other";
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
+const UserBasicRoleAtOrganization = S.Unknown as any as S.Schema<UserBasicRoleAtOrganization>;
+
 export interface UserBasic {
   id?: number;
   uuid?: string;
@@ -106,6 +134,8 @@ export interface UserBasic {
   hedgehog_config?: UserBasicHedgehogConfigMap | null;
   role_at_organization?: UserBasicRoleAtOrganization | null;
 }
+const UserBasic = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<UserBasic>;
+
 /** Serializer for creating and updating ProductTour. */
 export interface ProductTourSerializerCreateUpdateOnlyOutput {
   id?: string;
@@ -122,15 +152,30 @@ export interface ProductTourSerializerCreateUpdateOnlyOutput {
   updated_at?: string;
   archived?: boolean;
 }
+const ProductTourSerializerCreateUpdateOnlyOutput = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<ProductTourSerializerCreateUpdateOnlyOutput>;
+
 export interface GetProductTourRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A UUID string identifying this product tour. */
   id: string;
 }
+const GetProductTourRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<GetProductTourRequest>;
+
 /** Return the targeting flag filters, excluding the base exclusion properties. */
 export type ProductTourTargetingFlagFiltersMap = { [key: string]: unknown | undefined };
+const ProductTourTargetingFlagFiltersMap =
+  MinimalFeatureFlagFiltersMap as any as S.Schema<ProductTourTargetingFlagFiltersMap>;
+
 export type SearchMatchTypeEnum = "exact" | "similar";
+const SearchMatchTypeEnum = S.String;
+
 /** Read-only serializer for ProductTour. */
 export interface ProductTour {
   id?: string;
@@ -153,16 +198,25 @@ export interface ProductTour {
   /** How this row matched the `search` query parameter: `exact` (the term is a case-insensitive substring of a searched field) or `similar` (a fuzzy trigram match, returned only when no exact match exists). Null when the list is not filtered by `search`. */
   search_match_type?: SearchMatchTypeEnum | null;
 }
+const ProductTour = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<ProductTour>;
+
 export interface GetProductToursDraftStatusRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A UUID string identifying this product tour. */
   id: string;
 }
+const GetProductToursDraftStatusRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<GetProductToursDraftStatusRequest>;
+
 export interface DraftStatusResponse {
   updated_at?: string;
   has_draft?: boolean;
 }
+const DraftStatusResponse = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<DraftStatusResponse>;
+
 export interface ListProductToursRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -173,29 +227,67 @@ export interface ListProductToursRequest {
   /** Match against product tour `name` and `description`. Returns exact (case-insensitive substring) matches only; if no exact match exists, returns similar (fuzzy trigram -- typos, prefix-as-you-type) matches instead. Each result's `search_match_type` is `exact` or `similar`. */
   search?: string;
 }
+const ListProductToursRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<ListProductToursRequest>;
+
 export type PaginatedProductTourListResultsList = Array<ProductTour>;
+const PaginatedProductTourListResultsList = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<PaginatedProductTourListResultsList>;
+
 export interface PaginatedProductTourList {
   count?: number;
   next?: string | null;
   previous?: string | null;
   results?: PaginatedProductTourListResultsList;
 }
+const PaginatedProductTourList = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<PaginatedProductTourList>;
+
 export interface ProductToursDestroyRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A UUID string identifying this product tour. */
   id: string;
 }
+const ProductToursDestroyRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<ProductToursDestroyRequest>;
+
 export interface ProductToursDestroyResponse {}
+const ProductToursDestroyResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<ProductToursDestroyResponse>;
+
 export interface ProductToursDiscardDraftDestroyRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A UUID string identifying this product tour. */
   id: string;
 }
+const ProductToursDiscardDraftDestroyRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<ProductToursDiscardDraftDestroyRequest>;
+
 export type ProductToursGenerateCreateRequestStepsItemMap = { [key: string]: unknown | undefined };
+const ProductToursGenerateCreateRequestStepsItemMap =
+  MinimalFeatureFlagFiltersMap as any as S.Schema<ProductToursGenerateCreateRequestStepsItemMap>;
+
 export type ProductToursGenerateCreateRequestStepsList =
   Array<ProductToursGenerateCreateRequestStepsItemMap>;
+const ProductToursGenerateCreateRequestStepsList = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<ProductToursGenerateCreateRequestStepsList>;
+
 export interface ProductToursGenerateCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -205,15 +297,29 @@ export interface ProductToursGenerateCreateRequest {
   goal?: string;
   steps?: ProductToursGenerateCreateRequestStepsList;
 }
+const ProductToursGenerateCreateRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<ProductToursGenerateCreateRequest>;
+
 export interface GenerateStepResponse {
   step_id?: string;
   title?: string;
   description?: string;
 }
+const GenerateStepResponse = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<GenerateStepResponse>;
+
 export type GenerateResponseStepsList = Array<GenerateStepResponse>;
+const GenerateResponseStepsList = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<GenerateResponseStepsList>;
+
 export interface GenerateResponse {
   steps?: GenerateResponseStepsList;
 }
+const GenerateResponse = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<GenerateResponse>;
+
 export interface ProductToursPublishDraftCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -231,6 +337,11 @@ export interface ProductToursPublishDraftCreateRequest {
   /** Where the tour was created/updated from * `app` - app * `toolbar` - toolbar */
   creation_context?: ProductTourSerializerCreateUpdateOnlyCreationContextEnum | (string & {});
 }
+const ProductToursPublishDraftCreateRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<ProductToursPublishDraftCreateRequest>;
+
 export interface UpdateProductTourRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -244,6 +355,11 @@ export interface UpdateProductTourRequest {
   end_date?: string | null;
   archived?: boolean;
 }
+const UpdateProductTourRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<UpdateProductTourRequest>;
+
 export interface UpdateProductToursDraftPartialRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -261,6 +377,11 @@ export interface UpdateProductToursDraftPartialRequest {
   /** Where the tour was created/updated from * `app` - app * `toolbar` - toolbar */
   creation_context?: ProductTourSerializerCreateUpdateOnlyCreationContextEnum | (string & {});
 }
+const UpdateProductToursDraftPartialRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<UpdateProductToursDraftPartialRequest>;
+
 export interface UpdateProductToursPartialRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -278,6 +399,11 @@ export interface UpdateProductToursPartialRequest {
   /** Where the tour was created/updated from * `app` - app * `toolbar` - toolbar */
   creation_context?: ProductTourSerializerCreateUpdateOnlyCreationContextEnum | (string & {});
 }
+const UpdateProductToursPartialRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<UpdateProductToursPartialRequest>;
+
 export type CreateProductTourError = BadRequest | Forbidden | NotFound | PosthogOpError;
 /** Create, read, update, and manage product tours and their targeting. */
 export const createProductTour: API.OperationMethod<
@@ -286,8 +412,8 @@ export const createProductTour: API.OperationMethod<
   CreateProductTourError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<CreateProductTourRequest>,
-  output: __S(5) as any as S.Schema<ProductTourSerializerCreateUpdateOnlyOutput>,
+  input: CreateProductTourRequest,
+  output: ProductTourSerializerCreateUpdateOnlyOutput,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -301,8 +427,8 @@ export const getProductTour: API.OperationMethod<
   GetProductTourError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6) as any as S.Schema<GetProductTourRequest>,
-  output: __S(7) as any as S.Schema<ProductTour>,
+  input: GetProductTourRequest,
+  output: ProductTour,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -316,8 +442,8 @@ export const getProductToursDraftStatus: API.OperationMethod<
   GetProductToursDraftStatusError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8) as any as S.Schema<GetProductToursDraftStatusRequest>,
-  output: __S(9) as any as S.Schema<DraftStatusResponse>,
+  input: GetProductToursDraftStatusRequest,
+  output: DraftStatusResponse,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -331,8 +457,8 @@ export const listProductTours: API.OperationMethod<
   ListProductToursError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10) as any as S.Schema<ListProductToursRequest>,
-  output: __S(12) as any as S.Schema<PaginatedProductTourList>,
+  input: ListProductToursRequest,
+  output: PaginatedProductTourList,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -346,8 +472,8 @@ export const productToursDestroy: API.OperationMethod<
   ProductToursDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13) as any as S.Schema<ProductToursDestroyRequest>,
-  output: __S(14) as any as S.Schema<ProductToursDestroyResponse>,
+  input: ProductToursDestroyRequest,
+  output: ProductToursDestroyResponse,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -361,8 +487,8 @@ export const productToursDiscardDraftDestroy: API.OperationMethod<
   ProductToursDiscardDraftDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15) as any as S.Schema<ProductToursDiscardDraftDestroyRequest>,
-  output: __S(7) as any as S.Schema<ProductTour>,
+  input: ProductToursDiscardDraftDestroyRequest,
+  output: ProductTour,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -376,8 +502,8 @@ export const productToursGenerateCreate: API.OperationMethod<
   ProductToursGenerateCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17) as any as S.Schema<ProductToursGenerateCreateRequest>,
-  output: __S(20) as any as S.Schema<GenerateResponse>,
+  input: ProductToursGenerateCreateRequest,
+  output: GenerateResponse,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -395,8 +521,8 @@ export const productToursPublishDraftCreate: API.OperationMethod<
   ProductToursPublishDraftCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21) as any as S.Schema<ProductToursPublishDraftCreateRequest>,
-  output: __S(7) as any as S.Schema<ProductTour>,
+  input: ProductToursPublishDraftCreateRequest,
+  output: ProductTour,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -410,8 +536,8 @@ export const updateProductTour: API.OperationMethod<
   UpdateProductTourError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22) as any as S.Schema<UpdateProductTourRequest>,
-  output: __S(7) as any as S.Schema<ProductTour>,
+  input: UpdateProductTourRequest,
+  output: ProductTour,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -429,8 +555,8 @@ export const updateProductToursDraftPartial: API.OperationMethod<
   UpdateProductToursDraftPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23) as any as S.Schema<UpdateProductToursDraftPartialRequest>,
-  output: __S(7) as any as S.Schema<ProductTour>,
+  input: UpdateProductToursDraftPartialRequest,
+  output: ProductTour,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -444,8 +570,8 @@ export const updateProductToursPartial: API.OperationMethod<
   UpdateProductToursPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24) as any as S.Schema<UpdateProductToursPartialRequest>,
-  output: __S(5) as any as S.Schema<ProductTourSerializerCreateUpdateOnlyOutput>,
+  input: UpdateProductToursPartialRequest,
+  output: ProductTourSerializerCreateUpdateOnlyOutput,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -467,7 +593,7 @@ function __c0(j: number): any {
           start_date: S.optional(S.NullOr(S.String)),
           end_date: S.optional(S.NullOr(S.String)),
           archived: S.optional(S.Boolean),
-          creation_context: S.optional(S.String),
+          creation_context: S.optional(ProductTourSerializerCreateUpdateOnlyCreationContextEnum),
         }).pipe(
           T.Http({ method: "POST", uri: "/api/projects/{project_id}/product_tours/", code: 200 }),
         ),
@@ -483,14 +609,14 @@ function __c0(j: number): any {
           team_id: S.optional(S.Number),
           name: S.optional(S.String),
           key: S.optional(S.String),
-          filters: S.optional(__S(1)),
+          filters: S.optional(MinimalFeatureFlagFiltersMap),
           deleted: S.optional(S.Boolean),
           active: S.optional(S.Boolean),
           ensure_experience_continuity: S.optional(S.NullOr(S.Boolean)),
           version: S.optional(S.NullOr(S.Number)),
-          evaluation_runtime: S.optional(S.NullOr(S.Unknown)),
-          bucketing_identifier: S.optional(S.NullOr(S.Unknown)),
-          evaluation_contexts: S.optional(__S(2)),
+          evaluation_runtime: S.optional(S.NullOr(MinimalFeatureFlagEvaluationRuntime)),
+          bucketing_identifier: S.optional(S.NullOr(MinimalFeatureFlagBucketingIdentifier)),
+          evaluation_contexts: S.optional(MinimalFeatureFlagEvaluationContextsList),
         }),
       ).annotate({ identifier: "MinimalFeatureFlag" });
     case 4:
@@ -503,8 +629,8 @@ function __c0(j: number): any {
           last_name: S.optional(S.String),
           email: S.optional(S.String),
           is_email_verified: S.optional(S.NullOr(S.Boolean)),
-          hedgehog_config: S.optional(S.NullOr(__S(1))),
-          role_at_organization: S.optional(S.NullOr(S.Unknown)),
+          hedgehog_config: S.optional(S.NullOr(UserBasicHedgehogConfigMap)),
+          role_at_organization: S.optional(S.NullOr(UserBasicRoleAtOrganization)),
         }),
       ).annotate({ identifier: "UserBasic" });
     case 5:
@@ -513,14 +639,14 @@ function __c0(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           description: S.optional(S.String),
-          internal_targeting_flag: S.optional(__S(3)),
-          linked_flag: S.optional(__S(3)),
+          internal_targeting_flag: S.optional(MinimalFeatureFlag),
+          linked_flag: S.optional(MinimalFeatureFlag),
           content: S.optional(S.Unknown),
           auto_launch: S.optional(S.Boolean),
           start_date: S.optional(S.NullOr(S.String)),
           end_date: S.optional(S.NullOr(S.String)),
           created_at: S.optional(S.String),
-          created_by: S.optional(S.NullOr(__S(4))),
+          created_by: S.optional(S.NullOr(UserBasic)),
           updated_at: S.optional(S.String),
           archived: S.optional(S.Boolean),
         }),
@@ -546,9 +672,9 @@ function __c0(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           description: S.optional(S.String),
-          internal_targeting_flag: S.optional(__S(3)),
-          linked_flag: S.optional(__S(3)),
-          targeting_flag_filters: S.optional(S.NullOr(__S(1))),
+          internal_targeting_flag: S.optional(MinimalFeatureFlag),
+          linked_flag: S.optional(MinimalFeatureFlag),
+          targeting_flag_filters: S.optional(S.NullOr(ProductTourTargetingFlagFiltersMap)),
           content: S.optional(S.Unknown),
           draft_content: S.optional(S.Unknown),
           has_draft: S.optional(S.Boolean),
@@ -556,10 +682,10 @@ function __c0(j: number): any {
           start_date: S.optional(S.NullOr(S.String)),
           end_date: S.optional(S.NullOr(S.String)),
           created_at: S.optional(S.String),
-          created_by: S.optional(S.NullOr(__S(4))),
+          created_by: S.optional(S.NullOr(UserBasic)),
           updated_at: S.optional(S.String),
           archived: S.optional(S.Boolean),
-          search_match_type: S.optional(S.NullOr(S.String)),
+          search_match_type: S.optional(S.NullOr(SearchMatchTypeEnum)),
         }),
       ).annotate({ identifier: "ProductTour" });
   }
@@ -600,14 +726,14 @@ function __c1(j: number): any {
         ),
       ).annotate({ identifier: "ListProductToursRequest" });
     case 3:
-      return S.Array(__S(7));
+      return S.Array(ProductTour);
     case 4:
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.Number),
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: S.optional(__S(11)),
+          results: S.optional(PaginatedProductTourListResultsList),
         }),
       ).annotate({ identifier: "PaginatedProductTourList" });
     case 5:
@@ -649,7 +775,7 @@ function __c1(j: number): any {
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(1));
+      return S.Array(ProductToursGenerateCreateRequestStepsItemMap);
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -657,7 +783,7 @@ function __c2(j: number): any {
           id: S.String.pipe(T.Label()),
           title: S.optional(S.String),
           goal: S.optional(S.String),
-          steps: S.optional(__S(16)),
+          steps: S.optional(ProductToursGenerateCreateRequestStepsList),
         }).pipe(
           T.Http({
             method: "POST",
@@ -677,11 +803,11 @@ function __c2(j: number): any {
         }),
       ).annotate({ identifier: "GenerateStepResponse" });
     case 3:
-      return S.Array(__S(18));
+      return S.Array(GenerateStepResponse);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          steps: S.optional(__S(19)),
+          steps: S.optional(GenerateResponseStepsList),
         }),
       ).annotate({ identifier: "GenerateResponse" });
     case 5:
@@ -698,7 +824,7 @@ function __c2(j: number): any {
           start_date: S.optional(S.NullOr(S.String)),
           end_date: S.optional(S.NullOr(S.String)),
           archived: S.optional(S.Boolean),
-          creation_context: S.optional(S.String),
+          creation_context: S.optional(ProductTourSerializerCreateUpdateOnlyCreationContextEnum),
         }).pipe(
           T.Http({
             method: "POST",
@@ -743,7 +869,7 @@ function __c2(j: number): any {
           start_date: S.optional(S.NullOr(S.String)),
           end_date: S.optional(S.NullOr(S.String)),
           archived: S.optional(S.Boolean),
-          creation_context: S.optional(S.String),
+          creation_context: S.optional(ProductTourSerializerCreateUpdateOnlyCreationContextEnum),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -772,7 +898,7 @@ function __c3(j: number): any {
           start_date: S.optional(S.NullOr(S.String)),
           end_date: S.optional(S.NullOr(S.String)),
           archived: S.optional(S.Boolean),
-          creation_context: S.optional(S.String),
+          creation_context: S.optional(ProductTourSerializerCreateUpdateOnlyCreationContextEnum),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -783,22 +909,5 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "UpdateProductToursPartialRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
   }
 }

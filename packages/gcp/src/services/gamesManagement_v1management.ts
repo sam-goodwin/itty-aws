@@ -7,8 +7,6 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -70,7 +68,11 @@ export interface HidePlayersRequest {
   /** A player ID. A value of `me` may be used in place of the authenticated player's ID. */
   playerId: string;
 }
+const HidePlayersRequest = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<HidePlayersRequest>;
+
 export interface HidePlayersResponse {}
+const HidePlayersResponse = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<HidePlayersResponse>;
+
 export interface ListHiddenApplicationsRequest {
   /** The maximum number of player resources to return in the response, used for paging. For any response, the actual number of player resources returned may be less than the specified `maxResults`. */
   maxResults?: number;
@@ -79,6 +81,11 @@ export interface ListHiddenApplicationsRequest {
   /** The application ID from the Google Play developer console. */
   applicationId: string;
 }
+const ListHiddenApplicationsRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<ListHiddenApplicationsRequest>;
+
 /** 1P/3P metadata about a user's level. */
 export interface GamesPlayerLevelResource {
   /** The minimum experience points for this level. */
@@ -88,6 +95,11 @@ export interface GamesPlayerLevelResource {
   /** The level for the user. */
   level?: number;
 }
+const GamesPlayerLevelResource = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<GamesPlayerLevelResource>;
+
 /** 1P/3P metadata about the player's experience. */
 export interface GamesPlayerExperienceInfoResource {
   /** The current number of experience points for the player. */
@@ -99,18 +111,27 @@ export interface GamesPlayerExperienceInfoResource {
   /** The next level of the player. If the current level is the maximum level, this should be same as the current level. */
   nextLevel?: GamesPlayerLevelResource;
 }
+const GamesPlayerExperienceInfoResource = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<GamesPlayerExperienceInfoResource>;
+
 export interface PlayerName {
   /** The family name of this player. In some places, this is known as the last name. */
   familyName?: string;
   /** The given name of this player. In some places, this is known as the first name. */
   givenName?: string;
 }
+const PlayerName = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<PlayerName>;
+
 /** Profile settings */
 export interface ProfileSettings {
   profileVisible?: boolean;
   /** Uniquely identifies the type of this resource. Value is always the fixed string `gamesManagement#profileSettings`. */
   kind?: string;
 }
+const ProfileSettings = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<ProfileSettings>;
+
 /** A Player resource. */
 export interface Player {
   /** An object to represent Play Game experience information for the player. */
@@ -136,6 +157,8 @@ export interface Player {
   /** The ID of the player. */
   playerId?: string;
 }
+const Player = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<Player>;
+
 /** The HiddenPlayer resource. */
 export interface HiddenPlayer {
   /** Output only. The player information. */
@@ -145,7 +168,11 @@ export interface HiddenPlayer {
   /** Output only. Uniquely identifies the type of this resource. Value is always the fixed string `gamesManagement#hiddenPlayer`. */
   kind?: string;
 }
+const HiddenPlayer = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<HiddenPlayer>;
+
 export type HiddenPlayerList_ = Array<HiddenPlayer>;
+const HiddenPlayerList_ = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<HiddenPlayerList_>;
+
 /** A list of hidden players. */
 export interface HiddenPlayerList {
   /** Uniquely identifies the type of this resource. Value is always the fixed string `gamesManagement#hiddenPlayerList`. */
@@ -155,10 +182,17 @@ export interface HiddenPlayerList {
   /** The pagination token for the next page of results. */
   nextPageToken?: string;
 }
+const HiddenPlayerList = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<HiddenPlayerList>;
+
 export interface ResetAchievementsRequest {
   /** The ID of the achievement used by this method. */
   achievementId: string;
 }
+const ResetAchievementsRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<ResetAchievementsRequest>;
+
 /** An achievement reset response. */
 export interface AchievementResetResponse {
   /** The ID of an achievement for which player state has been updated. */
@@ -170,8 +204,23 @@ export interface AchievementResetResponse {
   /** The current state of the achievement. This is the same as the initial state of the achievement. Possible values are: - "`HIDDEN`"- Achievement is hidden. - "`REVEALED`" - Achievement is revealed. - "`UNLOCKED`" - Achievement is unlocked. */
   currentState?: string;
 }
+const AchievementResetResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<AchievementResetResponse>;
+
 export interface ResetAllAchievementsRequest {}
+const ResetAllAchievementsRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<ResetAllAchievementsRequest>;
+
 export type AchievementResetResponseList = Array<AchievementResetResponse>;
+const AchievementResetResponseList = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<AchievementResetResponseList>;
+
 /** Achievement reset all response. */
 export interface AchievementResetAllResponse {
   /** The achievement reset results. */
@@ -179,16 +228,61 @@ export interface AchievementResetAllResponse {
   /** Uniquely identifies the type of this resource. Value is always the fixed string `gamesManagement#achievementResetAllResponse`. */
   kind?: string;
 }
+const AchievementResetAllResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<AchievementResetAllResponse>;
+
 export interface ResetAllEventsRequest {}
+const ResetAllEventsRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<ResetAllEventsRequest>;
+
 export interface ResetAllEventsResponse {}
+const ResetAllEventsResponse = HidePlayersResponse as any as S.Schema<ResetAllEventsResponse>;
+
 export interface ResetAllForAllPlayersAchievementsRequest {}
+const ResetAllForAllPlayersAchievementsRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<ResetAllForAllPlayersAchievementsRequest>;
+
 export interface ResetAllForAllPlayersAchievementsResponse {}
+const ResetAllForAllPlayersAchievementsResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<ResetAllForAllPlayersAchievementsResponse>;
+
 export interface ResetAllForAllPlayersEventsRequest {}
+const ResetAllForAllPlayersEventsRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<ResetAllForAllPlayersEventsRequest>;
+
 export interface ResetAllForAllPlayersEventsResponse {}
+const ResetAllForAllPlayersEventsResponse =
+  ResetAllForAllPlayersAchievementsResponse as any as S.Schema<ResetAllForAllPlayersEventsResponse>;
+
 export interface ResetAllForAllPlayersScoresRequest {}
+const ResetAllForAllPlayersScoresRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<ResetAllForAllPlayersScoresRequest>;
+
 export interface ResetAllForAllPlayersScoresResponse {}
+const ResetAllForAllPlayersScoresResponse =
+  ResetAllForAllPlayersAchievementsResponse as any as S.Schema<ResetAllForAllPlayersScoresResponse>;
+
 export interface ResetAllScoresRequest {}
+const ResetAllScoresRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<ResetAllScoresRequest>;
+
 export type StringList = Array<string>;
+const StringList = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<StringList>;
+
 /** A list of reset leaderboard entry resources. */
 export interface PlayerScoreResetResponse {
   /** The ID of an leaderboard for which player state has been updated. */
@@ -198,7 +292,17 @@ export interface PlayerScoreResetResponse {
   /** Uniquely identifies the type of this resource. Value is always the fixed string `gamesManagement#playerScoreResetResponse`. */
   kind?: string;
 }
+const PlayerScoreResetResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<PlayerScoreResetResponse>;
+
 export type PlayerScoreResetResponseList = Array<PlayerScoreResetResponse>;
+const PlayerScoreResetResponseList = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<PlayerScoreResetResponseList>;
+
 /** A list of leaderboard reset resources. */
 export interface PlayerScoreResetAllResponse {
   /** Uniquely identifies the type of this resource. Value is always the fixed string `gamesManagement#playerScoreResetAllResponse`. */
@@ -206,37 +310,83 @@ export interface PlayerScoreResetAllResponse {
   /** The leaderboard reset results. */
   results?: PlayerScoreResetResponseList;
 }
+const PlayerScoreResetAllResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<PlayerScoreResetAllResponse>;
+
 export interface ResetEventsRequest {
   /** The ID of the event. */
   eventId: string;
 }
+const ResetEventsRequest = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<ResetEventsRequest>;
+
 export interface ResetEventsResponse {}
+const ResetEventsResponse = HidePlayersResponse as any as S.Schema<ResetEventsResponse>;
+
 export interface ResetForAllPlayersAchievementsRequest {
   /** The ID of the achievement used by this method. */
   achievementId: string;
 }
+const ResetForAllPlayersAchievementsRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<ResetForAllPlayersAchievementsRequest>;
+
 export interface ResetForAllPlayersAchievementsResponse {}
+const ResetForAllPlayersAchievementsResponse =
+  ResetAllForAllPlayersAchievementsResponse as any as S.Schema<ResetForAllPlayersAchievementsResponse>;
+
 export interface ResetForAllPlayersEventsRequest {
   /** The ID of the event. */
   eventId: string;
 }
+const ResetForAllPlayersEventsRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<ResetForAllPlayersEventsRequest>;
+
 export interface ResetForAllPlayersEventsResponse {}
+const ResetForAllPlayersEventsResponse =
+  ResetAllForAllPlayersAchievementsResponse as any as S.Schema<ResetForAllPlayersEventsResponse>;
+
 export interface ResetForAllPlayersScoresRequest {
   /** The ID of the leaderboard. */
   leaderboardId: string;
 }
+const ResetForAllPlayersScoresRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<ResetForAllPlayersScoresRequest>;
+
 export interface ResetForAllPlayersScoresResponse {}
+const ResetForAllPlayersScoresResponse =
+  ResetAllForAllPlayersAchievementsResponse as any as S.Schema<ResetForAllPlayersScoresResponse>;
+
 export interface AchievementResetMultipleForAllRequest {
   /** Uniquely identifies the type of this resource. Value is always the fixed string `gamesManagement#achievementResetMultipleForAllRequest`. */
   kind?: string;
   /** The IDs of achievements to reset. */
   achievement_ids?: StringList;
 }
+const AchievementResetMultipleForAllRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<AchievementResetMultipleForAllRequest>;
+
 export interface ResetMultipleForAllPlayersAchievementsRequest {
   /** Request body */
   body?: AchievementResetMultipleForAllRequest;
 }
+const ResetMultipleForAllPlayersAchievementsRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<ResetMultipleForAllPlayersAchievementsRequest>;
+
 export interface ResetMultipleForAllPlayersAchievementsResponse {}
+const ResetMultipleForAllPlayersAchievementsResponse =
+  ResetAllForAllPlayersAchievementsResponse as any as S.Schema<ResetMultipleForAllPlayersAchievementsResponse>;
+
 /** Multiple events reset all request. */
 export interface EventsResetMultipleForAllRequest {
   /** Uniquely identifies the type of this resource. Value is always the fixed string `gamesManagement#eventsResetMultipleForAllRequest`. */
@@ -244,33 +394,65 @@ export interface EventsResetMultipleForAllRequest {
   /** The IDs of events to reset. */
   event_ids?: StringList;
 }
+const EventsResetMultipleForAllRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<EventsResetMultipleForAllRequest>;
+
 export interface ResetMultipleForAllPlayersEventsRequest {
   /** Request body */
   body?: EventsResetMultipleForAllRequest;
 }
+const ResetMultipleForAllPlayersEventsRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<ResetMultipleForAllPlayersEventsRequest>;
+
 export interface ResetMultipleForAllPlayersEventsResponse {}
+const ResetMultipleForAllPlayersEventsResponse =
+  ResetAllForAllPlayersAchievementsResponse as any as S.Schema<ResetMultipleForAllPlayersEventsResponse>;
+
 export interface ScoresResetMultipleForAllRequest {
   /** Uniquely identifies the type of this resource. Value is always the fixed string `gamesManagement#scoresResetMultipleForAllRequest`. */
   kind?: string;
   /** The IDs of leaderboards to reset. */
   leaderboard_ids?: StringList;
 }
+const ScoresResetMultipleForAllRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<ScoresResetMultipleForAllRequest>;
+
 export interface ResetMultipleForAllPlayersScoresRequest {
   /** Request body */
   body?: ScoresResetMultipleForAllRequest;
 }
+const ResetMultipleForAllPlayersScoresRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<ResetMultipleForAllPlayersScoresRequest>;
+
 export interface ResetMultipleForAllPlayersScoresResponse {}
+const ResetMultipleForAllPlayersScoresResponse =
+  ResetAllForAllPlayersAchievementsResponse as any as S.Schema<ResetMultipleForAllPlayersScoresResponse>;
+
 export interface ResetScoresRequest {
   /** The ID of the leaderboard. */
   leaderboardId: string;
 }
+const ResetScoresRequest = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<ResetScoresRequest>;
+
 export interface UnhidePlayersRequest {
   /** The application ID from the Google Play developer console. */
   applicationId: string;
   /** A player ID. A value of `me` may be used in place of the authenticated player's ID. */
   playerId: string;
 }
+const UnhidePlayersRequest = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<UnhidePlayersRequest>;
+
 export interface UnhidePlayersResponse {}
+const UnhidePlayersResponse = HidePlayersResponse as any as S.Schema<UnhidePlayersResponse>;
+
 export type HidePlayersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Hide the given player's leaderboard scores from the given application. This method is only available to user accounts for your developer console. */
 export const hidePlayers: API.OperationMethod<
@@ -279,8 +461,8 @@ export const hidePlayers: API.OperationMethod<
   HidePlayersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<HidePlayersRequest>,
-  output: __S(1) as any as S.Schema<HidePlayersResponse>,
+  input: HidePlayersRequest,
+  output: HidePlayersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -295,8 +477,8 @@ export const listHiddenApplications: API.PaginatedOperationMethod<
   GcpOpContext,
   HiddenPlayer
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(2) as any as S.Schema<ListHiddenApplicationsRequest>,
-  output: __S(10) as any as S.Schema<HiddenPlayerList>,
+  input: ListHiddenApplicationsRequest,
+  output: HiddenPlayerList,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -311,8 +493,8 @@ export const resetAchievements: API.OperationMethod<
   ResetAchievementsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11) as any as S.Schema<ResetAchievementsRequest>,
-  output: __S(12) as any as S.Schema<AchievementResetResponse>,
+  input: ResetAchievementsRequest,
+  output: AchievementResetResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -326,8 +508,8 @@ export const resetAllAchievements: API.OperationMethod<
   ResetAllAchievementsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13) as any as S.Schema<ResetAllAchievementsRequest>,
-  output: __S(15) as any as S.Schema<AchievementResetAllResponse>,
+  input: ResetAllAchievementsRequest,
+  output: AchievementResetAllResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -341,8 +523,8 @@ export const resetAllEvents: API.OperationMethod<
   ResetAllEventsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16) as any as S.Schema<ResetAllEventsRequest>,
-  output: __S(1) as any as S.Schema<ResetAllEventsResponse>,
+  input: ResetAllEventsRequest,
+  output: ResetAllEventsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -361,8 +543,8 @@ export const resetAllForAllPlayersAchievements: API.OperationMethod<
   ResetAllForAllPlayersAchievementsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17) as any as S.Schema<ResetAllForAllPlayersAchievementsRequest>,
-  output: __S(18) as any as S.Schema<ResetAllForAllPlayersAchievementsResponse>,
+  input: ResetAllForAllPlayersAchievementsRequest,
+  output: ResetAllForAllPlayersAchievementsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -381,8 +563,8 @@ export const resetAllForAllPlayersEvents: API.OperationMethod<
   ResetAllForAllPlayersEventsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19) as any as S.Schema<ResetAllForAllPlayersEventsRequest>,
-  output: __S(18) as any as S.Schema<ResetAllForAllPlayersEventsResponse>,
+  input: ResetAllForAllPlayersEventsRequest,
+  output: ResetAllForAllPlayersEventsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -401,8 +583,8 @@ export const resetAllForAllPlayersScores: API.OperationMethod<
   ResetAllForAllPlayersScoresError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20) as any as S.Schema<ResetAllForAllPlayersScoresRequest>,
-  output: __S(18) as any as S.Schema<ResetAllForAllPlayersScoresResponse>,
+  input: ResetAllForAllPlayersScoresRequest,
+  output: ResetAllForAllPlayersScoresResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -416,8 +598,8 @@ export const resetAllScores: API.OperationMethod<
   ResetAllScoresError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21) as any as S.Schema<ResetAllScoresRequest>,
-  output: __S(25) as any as S.Schema<PlayerScoreResetAllResponse>,
+  input: ResetAllScoresRequest,
+  output: PlayerScoreResetAllResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -431,8 +613,8 @@ export const resetEvents: API.OperationMethod<
   ResetEventsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26) as any as S.Schema<ResetEventsRequest>,
-  output: __S(1) as any as S.Schema<ResetEventsResponse>,
+  input: ResetEventsRequest,
+  output: ResetEventsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -451,8 +633,8 @@ export const resetForAllPlayersAchievements: API.OperationMethod<
   ResetForAllPlayersAchievementsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27) as any as S.Schema<ResetForAllPlayersAchievementsRequest>,
-  output: __S(18) as any as S.Schema<ResetForAllPlayersAchievementsResponse>,
+  input: ResetForAllPlayersAchievementsRequest,
+  output: ResetForAllPlayersAchievementsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -471,8 +653,8 @@ export const resetForAllPlayersEvents: API.OperationMethod<
   ResetForAllPlayersEventsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28) as any as S.Schema<ResetForAllPlayersEventsRequest>,
-  output: __S(18) as any as S.Schema<ResetForAllPlayersEventsResponse>,
+  input: ResetForAllPlayersEventsRequest,
+  output: ResetForAllPlayersEventsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -491,8 +673,8 @@ export const resetForAllPlayersScores: API.OperationMethod<
   ResetForAllPlayersScoresError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29) as any as S.Schema<ResetForAllPlayersScoresRequest>,
-  output: __S(18) as any as S.Schema<ResetForAllPlayersScoresResponse>,
+  input: ResetForAllPlayersScoresRequest,
+  output: ResetForAllPlayersScoresResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -511,8 +693,8 @@ export const resetMultipleForAllPlayersAchievements: API.OperationMethod<
   ResetMultipleForAllPlayersAchievementsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31) as any as S.Schema<ResetMultipleForAllPlayersAchievementsRequest>,
-  output: __S(18) as any as S.Schema<ResetMultipleForAllPlayersAchievementsResponse>,
+  input: ResetMultipleForAllPlayersAchievementsRequest,
+  output: ResetMultipleForAllPlayersAchievementsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -531,8 +713,8 @@ export const resetMultipleForAllPlayersEvents: API.OperationMethod<
   ResetMultipleForAllPlayersEventsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33) as any as S.Schema<ResetMultipleForAllPlayersEventsRequest>,
-  output: __S(18) as any as S.Schema<ResetMultipleForAllPlayersEventsResponse>,
+  input: ResetMultipleForAllPlayersEventsRequest,
+  output: ResetMultipleForAllPlayersEventsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -551,8 +733,8 @@ export const resetMultipleForAllPlayersScores: API.OperationMethod<
   ResetMultipleForAllPlayersScoresError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35) as any as S.Schema<ResetMultipleForAllPlayersScoresRequest>,
-  output: __S(18) as any as S.Schema<ResetMultipleForAllPlayersScoresResponse>,
+  input: ResetMultipleForAllPlayersScoresRequest,
+  output: ResetMultipleForAllPlayersScoresResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -566,8 +748,8 @@ export const resetScores: API.OperationMethod<
   ResetScoresError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36) as any as S.Schema<ResetScoresRequest>,
-  output: __S(23) as any as S.Schema<PlayerScoreResetResponse>,
+  input: ResetScoresRequest,
+  output: PlayerScoreResetResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -581,8 +763,8 @@ export const unhidePlayers: API.OperationMethod<
   UnhidePlayersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37) as any as S.Schema<UnhidePlayersRequest>,
-  output: __S(1) as any as S.Schema<UnhidePlayersResponse>,
+  input: UnhidePlayersRequest,
+  output: UnhidePlayersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -637,8 +819,8 @@ function __c0(j: number): any {
         S.Struct({
           currentExperiencePoints: S.optional(S.String),
           lastLevelUpTimestampMillis: S.optional(S.String),
-          currentLevel: S.optional(__S(3)),
-          nextLevel: S.optional(__S(3)),
+          currentLevel: S.optional(GamesPlayerLevelResource),
+          nextLevel: S.optional(GamesPlayerLevelResource),
         }),
       ).annotate({
         identifier: "GamesPlayerExperienceInfoResource",
@@ -660,7 +842,7 @@ function __c0(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          experienceInfo: S.optional(__S(4)),
+          experienceInfo: S.optional(GamesPlayerExperienceInfoResource),
           bannerUrlLandscape: S.optional(S.String),
           bannerUrlPortrait: S.optional(S.String),
           title: S.optional(S.String),
@@ -668,8 +850,8 @@ function __c0(j: number): any {
           kind: S.optional(S.String),
           displayName: S.optional(S.String),
           originalPlayerId: S.optional(S.String),
-          name: S.optional(__S(5)),
-          profileSettings: S.optional(__S(6)),
+          name: S.optional(PlayerName),
+          profileSettings: S.optional(ProfileSettings),
           playerId: S.optional(S.String),
         }),
       ).annotate({ identifier: "Player" });
@@ -680,18 +862,18 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          player: S.optional(__S(7)),
+          player: S.optional(Player),
           hiddenTimeMillis: S.optional(S.String),
           kind: S.optional(S.String),
         }),
       ).annotate({ identifier: "HiddenPlayer" });
     case 1:
-      return S.Array(__S(8));
+      return S.Array(HiddenPlayer);
     case 2:
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
-          items: __S(9),
+          items: HiddenPlayerList_,
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "HiddenPlayerList" });
@@ -729,11 +911,11 @@ function __c1(j: number): any {
         identifier: "ResetAllAchievementsRequest",
       });
     case 6:
-      return S.Array(__S(12));
+      return S.Array(AchievementResetResponse);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          results: S.optional(__S(14)),
+          results: S.optional(AchievementResetResponseList),
           kind: S.optional(S.String),
         }),
       ).annotate({
@@ -809,7 +991,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           definitionId: S.optional(S.String),
-          resetScoreTimeSpans: S.optional(__S(22)),
+          resetScoreTimeSpans: S.optional(StringList),
           kind: S.optional(S.String),
         }),
       ).annotate({ identifier: "PlayerScoreResetResponse" });
@@ -818,12 +1000,12 @@ function __c2(j: number): any {
 function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(23));
+      return S.Array(PlayerScoreResetResponse);
     case 1:
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
-          results: S.optional(__S(24)),
+          results: S.optional(PlayerScoreResetResponseList),
         }),
       ).annotate({
         identifier: "PlayerScoreResetAllResponse",
@@ -886,7 +1068,7 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
-          achievement_ids: S.optional(__S(22)),
+          achievement_ids: S.optional(StringList),
         }),
       ).annotate({
         identifier: "AchievementResetMultipleForAllRequest",
@@ -894,7 +1076,7 @@ function __c3(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(__S(30).pipe(T.HttpBody())),
+          body: S.optional(AchievementResetMultipleForAllRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -913,7 +1095,7 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
-          event_ids: S.optional(__S(22)),
+          event_ids: S.optional(StringList),
         }),
       ).annotate({
         identifier: "EventsResetMultipleForAllRequest",
@@ -921,7 +1103,7 @@ function __c4(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(__S(32).pipe(T.HttpBody())),
+          body: S.optional(EventsResetMultipleForAllRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -936,7 +1118,7 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
-          leaderboard_ids: S.optional(__S(22)),
+          leaderboard_ids: S.optional(StringList),
         }),
       ).annotate({
         identifier: "ScoresResetMultipleForAllRequest",
@@ -944,7 +1126,7 @@ function __c4(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(__S(34).pipe(T.HttpBody())),
+          body: S.optional(ScoresResetMultipleForAllRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -980,24 +1162,5 @@ function __c4(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UnhidePlayersRequest" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
   }
 }

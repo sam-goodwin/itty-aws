@@ -7,23 +7,33 @@ import { paginatePageNumber } from "../pagination.ts";
 import { HetznerProtocol, type HetznerOpError, type HetznerOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { HetznerOpError, HetznerOpContext };
 
 /** Type of the resource. */
 export type ApplyFirewallToResourcesRequestApplyToItemType = "server" | "label_selector";
+const ApplyFirewallToResourcesRequestApplyToItemType = S.String;
+
 /** [Server](#tag/servers) the [Firewall](#tag/firewalls) is applied to. Only set for `type` `server`, otherwise `null`. */
 export interface ApplyFirewallToResourcesRequestApplyToItemServer {
   /** ID of the [Server](#tag/servers). */
   id: number;
 }
+const ApplyFirewallToResourcesRequestApplyToItemServer = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<ApplyFirewallToResourcesRequestApplyToItemServer>;
+
 /** [Label Selector](#description/label-selector) the [Firewall](#tag/firewalls) is applied to. Only set for `type` `label_selector`, otherwise `null`. */
 export interface ApplyFirewallToResourcesRequestApplyToItemLabelSelector {
   /** The selector. */
   selector: string;
 }
+const ApplyFirewallToResourcesRequestApplyToItemLabelSelector = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<ApplyFirewallToResourcesRequestApplyToItemLabelSelector>;
+
 export interface ApplyFirewallToResourcesRequestApplyToItem {
   /** Type of the resource. */
   type: ApplyFirewallToResourcesRequestApplyToItemType | (string & {});
@@ -32,26 +42,53 @@ export interface ApplyFirewallToResourcesRequestApplyToItem {
   /** [Label Selector](#description/label-selector) the [Firewall](#tag/firewalls) is applied to. Only set for `type` `label_selector`, otherwise `null`. */
   label_selector?: ApplyFirewallToResourcesRequestApplyToItemLabelSelector;
 }
+const ApplyFirewallToResourcesRequestApplyToItem = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<ApplyFirewallToResourcesRequestApplyToItem>;
+
 /** Resources to apply the [Firewall](#tag/firewalls) to. Extends existing resources. */
 export type ApplyFirewallToResourcesRequestApplyToList =
   Array<ApplyFirewallToResourcesRequestApplyToItem>;
+const ApplyFirewallToResourcesRequestApplyToList = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<ApplyFirewallToResourcesRequestApplyToList>;
+
 export interface ApplyFirewallToResourcesRequest {
   /** ID of the Firewall. */
   id: number;
   /** Resources to apply the [Firewall](#tag/firewalls) to. Extends existing resources. */
   apply_to: ApplyFirewallToResourcesRequestApplyToList;
 }
+const ApplyFirewallToResourcesRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<ApplyFirewallToResourcesRequest>;
+
 /** Status of the Action. */
 export type ApplyFirewallToResourcesResponseActionsItemStatus = "running" | "success" | "error";
+const ApplyFirewallToResourcesResponseActionsItemStatus = S.String;
+
 export interface ApplyFirewallToResourcesResponseActionsItemResourcesItem {
   /** ID of the Resource. */
   id: number;
   /** Type of the Resource. */
   type: string;
 }
+const ApplyFirewallToResourcesResponseActionsItemResourcesItem = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<ApplyFirewallToResourcesResponseActionsItemResourcesItem>;
+
 /** Resources the Action relates to. */
 export type ApplyFirewallToResourcesResponseActionsItemResourcesList =
   Array<ApplyFirewallToResourcesResponseActionsItemResourcesItem>;
+const ApplyFirewallToResourcesResponseActionsItemResourcesList = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<ApplyFirewallToResourcesResponseActionsItemResourcesList>;
+
 /** Error message for the Action if an error occurred, otherwise null. */
 export interface ApplyFirewallToResourcesResponseActionsItemError {
   /** Fixed error code for machines. */
@@ -59,6 +96,11 @@ export interface ApplyFirewallToResourcesResponseActionsItemError {
   /** Error message for humans. */
   message: string;
 }
+const ApplyFirewallToResourcesResponseActionsItemError = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<ApplyFirewallToResourcesResponseActionsItemError>;
+
 export interface ApplyFirewallToResourcesResponseActionsItem {
   /** ID of the [Action](#description/actions). */
   id: number;
@@ -77,22 +119,47 @@ export interface ApplyFirewallToResourcesResponseActionsItem {
   /** Error message for the Action if an error occurred, otherwise null. */
   error: ApplyFirewallToResourcesResponseActionsItemError | null;
 }
+const ApplyFirewallToResourcesResponseActionsItem = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<ApplyFirewallToResourcesResponseActionsItem>;
+
 export type ApplyFirewallToResourcesResponseActionsList =
   Array<ApplyFirewallToResourcesResponseActionsItem>;
+const ApplyFirewallToResourcesResponseActionsList = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<ApplyFirewallToResourcesResponseActionsList>;
+
 export interface ApplyFirewallToResourcesResponse {
   actions: ApplyFirewallToResourcesResponseActionsList;
 }
+const ApplyFirewallToResourcesResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<ApplyFirewallToResourcesResponse>;
+
 export interface GetFirewallsActionRequest {
   /** ID of the Action. */
   id: number;
 }
+const GetFirewallsActionRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<GetFirewallsActionRequest>;
+
 /** Status of the Action. */
 export type GetFirewallsActionResponseActionStatus = "running" | "success" | "error";
+const GetFirewallsActionResponseActionStatus = S.String;
+
 export type GetFirewallsActionResponseActionResourcesItem =
   ApplyFirewallToResourcesResponseActionsItemResourcesItem;
 /** Resources the Action relates to. */
 export type GetFirewallsActionResponseActionResourcesList =
   Array<ApplyFirewallToResourcesResponseActionsItemResourcesItem>;
+const GetFirewallsActionResponseActionResourcesList =
+  ApplyFirewallToResourcesResponseActionsItemResourcesList as any as S.Schema<GetFirewallsActionResponseActionResourcesList>;
+
 /** Error message for the Action if an error occurred, otherwise null. */
 export type GetFirewallsActionResponseActionError =
   ApplyFirewallToResourcesResponseActionsItemError;
@@ -114,9 +181,19 @@ export interface GetFirewallsActionResponseAction {
   /** Error message for the Action if an error occurred, otherwise null. */
   error: ApplyFirewallToResourcesResponseActionsItemError | null;
 }
+const GetFirewallsActionResponseAction = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<GetFirewallsActionResponseAction>;
+
 export interface GetFirewallsActionResponse {
   action: GetFirewallsActionResponseAction;
 }
+const GetFirewallsActionResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<GetFirewallsActionResponse>;
+
 export type ListFirewallActionsRequestSortItem =
   | "id"
   | "id:asc"
@@ -133,14 +210,24 @@ export type ListFirewallActionsRequestSortItem =
   | "finished"
   | "finished:asc"
   | "finished:desc";
+const ListFirewallActionsRequestSortItem = S.String;
+
 export type ListFirewallActionsRequestSortList = Array<
   ListFirewallActionsRequestSortItem | (string & {})
 >;
+const ListFirewallActionsRequestSortList = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<ListFirewallActionsRequestSortList>;
+
 /** Status of the Action. */
 export type ListFirewallActionsRequestStatusItem = "running" | "success" | "error";
 export type ListFirewallActionsRequestStatusList = Array<
   ListFirewallActionsRequestStatusItem | (string & {})
 >;
+const ListFirewallActionsRequestStatusList =
+  ListFirewallActionsRequestSortList as any as S.Schema<ListFirewallActionsRequestStatusList>;
+
 export interface ListFirewallActionsRequest {
   /** ID of the Firewall. */
   id: number;
@@ -153,13 +240,23 @@ export interface ListFirewallActionsRequest {
   /** Maximum number of entries returned per page. For more information, see "[Pagination](#description/pagination)". */
   per_page?: number;
 }
+const ListFirewallActionsRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<ListFirewallActionsRequest>;
+
 /** Status of the Action. */
 export type ListFirewallActionsResponseActionsItemStatus = "running" | "success" | "error";
+const ListFirewallActionsResponseActionsItemStatus = S.String;
+
 export type ListFirewallActionsResponseActionsItemResourcesItem =
   ApplyFirewallToResourcesResponseActionsItemResourcesItem;
 /** Resources the Action relates to. */
 export type ListFirewallActionsResponseActionsItemResourcesList =
   Array<ApplyFirewallToResourcesResponseActionsItemResourcesItem>;
+const ListFirewallActionsResponseActionsItemResourcesList =
+  ApplyFirewallToResourcesResponseActionsItemResourcesList as any as S.Schema<ListFirewallActionsResponseActionsItemResourcesList>;
+
 /** Error message for the Action if an error occurred, otherwise null. */
 export type ListFirewallActionsResponseActionsItemError =
   ApplyFirewallToResourcesResponseActionsItemError;
@@ -181,7 +278,17 @@ export interface ListFirewallActionsResponseActionsItem {
   /** Error message for the Action if an error occurred, otherwise null. */
   error: ApplyFirewallToResourcesResponseActionsItemError | null;
 }
+const ListFirewallActionsResponseActionsItem = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<ListFirewallActionsResponseActionsItem>;
+
 export type ListFirewallActionsResponseActionsList = Array<ListFirewallActionsResponseActionsItem>;
+const ListFirewallActionsResponseActionsList = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<ListFirewallActionsResponseActionsList>;
+
 /** See "[Pagination](#description/pagination)" for more information. */
 export interface ListFirewallActionsResponseMetaPagination {
   /** Current page number. */
@@ -197,15 +304,35 @@ export interface ListFirewallActionsResponseMetaPagination {
   /** Total number of entries that exist for this query. Can be null if unknown. */
   total_entries: number | null;
 }
+const ListFirewallActionsResponseMetaPagination = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<ListFirewallActionsResponseMetaPagination>;
+
 export interface ListFirewallActionsResponseMeta {
   /** See "[Pagination](#description/pagination)" for more information. */
   pagination: ListFirewallActionsResponseMetaPagination;
 }
+const ListFirewallActionsResponseMeta = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<ListFirewallActionsResponseMeta>;
+
 export interface ListFirewallActionsResponse {
   actions: ListFirewallActionsResponseActionsList;
   meta: ListFirewallActionsResponseMeta;
 }
+const ListFirewallActionsResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<ListFirewallActionsResponse>;
+
 export type ListFirewallsActionsRequestIdList = Array<number>;
+const ListFirewallsActionsRequestIdList = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<ListFirewallsActionsRequestIdList>;
+
 export type ListFirewallsActionsRequestSortItem =
   | "id"
   | "id:asc"
@@ -225,11 +352,17 @@ export type ListFirewallsActionsRequestSortItem =
 export type ListFirewallsActionsRequestSortList = Array<
   ListFirewallsActionsRequestSortItem | (string & {})
 >;
+const ListFirewallsActionsRequestSortList =
+  ListFirewallActionsRequestSortList as any as S.Schema<ListFirewallsActionsRequestSortList>;
+
 /** Status of the Action. */
 export type ListFirewallsActionsRequestStatusItem = "running" | "success" | "error";
 export type ListFirewallsActionsRequestStatusList = Array<
   ListFirewallsActionsRequestStatusItem | (string & {})
 >;
+const ListFirewallsActionsRequestStatusList =
+  ListFirewallActionsRequestSortList as any as S.Schema<ListFirewallsActionsRequestStatusList>;
+
 export interface ListFirewallsActionsRequest {
   /** Filter the actions by ID. May be used multiple times. The response will only contain actions matching the specified IDs. */
   id?: ListFirewallsActionsRequestIdList;
@@ -242,13 +375,23 @@ export interface ListFirewallsActionsRequest {
   /** Maximum number of entries returned per page. For more information, see "[Pagination](#description/pagination)". */
   per_page?: number;
 }
+const ListFirewallsActionsRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<ListFirewallsActionsRequest>;
+
 /** Status of the Action. */
 export type ListFirewallsActionsResponseActionsItemStatus = "running" | "success" | "error";
+const ListFirewallsActionsResponseActionsItemStatus = S.String;
+
 export type ListFirewallsActionsResponseActionsItemResourcesItem =
   ApplyFirewallToResourcesResponseActionsItemResourcesItem;
 /** Resources the Action relates to. */
 export type ListFirewallsActionsResponseActionsItemResourcesList =
   Array<ApplyFirewallToResourcesResponseActionsItemResourcesItem>;
+const ListFirewallsActionsResponseActionsItemResourcesList =
+  ApplyFirewallToResourcesResponseActionsItemResourcesList as any as S.Schema<ListFirewallsActionsResponseActionsItemResourcesList>;
+
 /** Error message for the Action if an error occurred, otherwise null. */
 export type ListFirewallsActionsResponseActionsItemError =
   ApplyFirewallToResourcesResponseActionsItemError;
@@ -270,8 +413,18 @@ export interface ListFirewallsActionsResponseActionsItem {
   /** Error message for the Action if an error occurred, otherwise null. */
   error: ApplyFirewallToResourcesResponseActionsItemError | null;
 }
+const ListFirewallsActionsResponseActionsItem = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<ListFirewallsActionsResponseActionsItem>;
+
 export type ListFirewallsActionsResponseActionsList =
   Array<ListFirewallsActionsResponseActionsItem>;
+const ListFirewallsActionsResponseActionsList = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<ListFirewallsActionsResponseActionsList>;
+
 /** See "[Pagination](#description/pagination)" for more information. */
 export type ListFirewallsActionsResponseMetaPagination = ListFirewallActionsResponseMetaPagination;
 export type ListFirewallsActionsResponseMeta = ListFirewallActionsResponseMeta;
@@ -279,6 +432,11 @@ export interface ListFirewallsActionsResponse {
   actions: ListFirewallsActionsResponseActionsList;
   meta: ListFirewallActionsResponseMeta;
 }
+const ListFirewallsActionsResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<ListFirewallsActionsResponse>;
+
 /** Type of the resource. */
 export type RemoveFirewallFromResourcesRequestRemoveFromItemType = "server" | "label_selector";
 /** [Server](#tag/servers) the [Firewall](#tag/firewalls) is applied to. Only set for `type` `server`, otherwise `null`. */
@@ -298,19 +456,32 @@ export interface RemoveFirewallFromResourcesRequestRemoveFromItem {
 /** Resources to remove the [Firewall](#tag/firewalls) from. */
 export type RemoveFirewallFromResourcesRequestRemoveFromList =
   Array<RemoveFirewallFromResourcesRequestRemoveFromItem>;
+const RemoveFirewallFromResourcesRequestRemoveFromList =
+  ApplyFirewallToResourcesRequestApplyToList as any as S.Schema<RemoveFirewallFromResourcesRequestRemoveFromList>;
+
 export interface RemoveFirewallFromResourcesRequest {
   /** ID of the Firewall. */
   id: number;
   /** Resources to remove the [Firewall](#tag/firewalls) from. */
   remove_from: RemoveFirewallFromResourcesRequestRemoveFromList;
 }
+const RemoveFirewallFromResourcesRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<RemoveFirewallFromResourcesRequest>;
+
 /** Status of the Action. */
 export type RemoveFirewallFromResourcesResponseActionsItemStatus = "running" | "success" | "error";
+const RemoveFirewallFromResourcesResponseActionsItemStatus = S.String;
+
 export type RemoveFirewallFromResourcesResponseActionsItemResourcesItem =
   ApplyFirewallToResourcesResponseActionsItemResourcesItem;
 /** Resources the Action relates to. */
 export type RemoveFirewallFromResourcesResponseActionsItemResourcesList =
   Array<ApplyFirewallToResourcesResponseActionsItemResourcesItem>;
+const RemoveFirewallFromResourcesResponseActionsItemResourcesList =
+  ApplyFirewallToResourcesResponseActionsItemResourcesList as any as S.Schema<RemoveFirewallFromResourcesResponseActionsItemResourcesList>;
+
 /** Error message for the Action if an error occurred, otherwise null. */
 export type RemoveFirewallFromResourcesResponseActionsItemError =
   ApplyFirewallToResourcesResponseActionsItemError;
@@ -332,19 +503,46 @@ export interface RemoveFirewallFromResourcesResponseActionsItem {
   /** Error message for the Action if an error occurred, otherwise null. */
   error: ApplyFirewallToResourcesResponseActionsItemError | null;
 }
+const RemoveFirewallFromResourcesResponseActionsItem = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<RemoveFirewallFromResourcesResponseActionsItem>;
+
 export type RemoveFirewallFromResourcesResponseActionsList =
   Array<RemoveFirewallFromResourcesResponseActionsItem>;
+const RemoveFirewallFromResourcesResponseActionsList = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<RemoveFirewallFromResourcesResponseActionsList>;
+
 export interface RemoveFirewallFromResourcesResponse {
   actions: RemoveFirewallFromResourcesResponseActionsList;
 }
+const RemoveFirewallFromResourcesResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<RemoveFirewallFromResourcesResponse>;
+
 /** Traffic direction in which the rule should be applied to. Use `source_ips` for direction `in` and `destination_ips` for direction `out` to specify IPs. */
 export type SetFirewallRulesRequestRulesItemDirection = "in" | "out";
+const SetFirewallRulesRequestRulesItemDirection = S.String;
+
 /** List of permitted IPv4/IPv6 addresses for incoming traffic. The `direction` must be set to `in`. IPs must be provided in [CIDR block notation](https://wikipedia.org/wiki/CIDR). You can specify 100 CIDR blocks at most. The CIDR blocks may refer to networks (with empty host bits) or single hosts. For example, a network could be defined with `10.0.1.0/24` or `2001:db8:ff00:42::/64`, and a single host with `10.0.1.1/32` or `2001:db8:ff00:42::8329/128`. Use `0.0.0.0/0` to allow any IPv4 addresses and `::/0` to allow any IPv6 addresses. IPv6 CIDRs will be transformed to their canonical form according to [RFC5952](https://datatracker.ietf.org/doc/html/rfc5952#section-4). */
 export type SetFirewallRulesRequestRulesItemSourceIpsList = Array<string>;
+const SetFirewallRulesRequestRulesItemSourceIpsList = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<SetFirewallRulesRequestRulesItemSourceIpsList>;
+
 /** List of permitted IPv4/IPv6 addresses for outgoing traffic. The `direction` must be set to `out`. IPs must be in [CIDR block notation](https://wikipedia.org/wiki/CIDR). You can specify 100 CIDR blocks at most. The CIDR blocks may refer to networks (with empty host bits) or single hosts. For example, a network could be defined with `10.0.1.0/24` or `2001:db8:ff00:42::/64`, and a single host with `10.0.1.1/32` or `2001:db8:ff00:42::8329/128`. Use `0.0.0.0/0` to allow any IPv4 addresses and `::/0` to allow any IPv6 addresses. IPv6 CIDRs will be transformed to their canonical form according to [RFC5952](https://datatracker.ietf.org/doc/html/rfc5952#section-4). */
 export type SetFirewallRulesRequestRulesItemDestinationIpsList = Array<string>;
+const SetFirewallRulesRequestRulesItemDestinationIpsList =
+  SetFirewallRulesRequestRulesItemSourceIpsList as any as S.Schema<SetFirewallRulesRequestRulesItemDestinationIpsList>;
+
 /** Network protocol to apply the rule for. */
 export type SetFirewallRulesRequestRulesItemProtocol = "tcp" | "udp" | "icmp" | "esp" | "gre";
+const SetFirewallRulesRequestRulesItemProtocol = S.String;
+
 export interface SetFirewallRulesRequestRulesItem {
   /** Description of the rule. */
   description?: string | null;
@@ -359,21 +557,41 @@ export interface SetFirewallRulesRequestRulesItem {
   /** Port or port range to apply the rule for. Only applicable for protocols `tcp` and `udp`. A port range can be specified by separating lower and upper bounds with a dash. `1024-5000` will include all ports starting from 1024 up to port 5000. */
   port?: string;
 }
+const SetFirewallRulesRequestRulesItem = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<SetFirewallRulesRequestRulesItem>;
+
 /** Array of rules. Rules are limited to 50 entries per [Firewall](#tag/firewalls) and [500 effective rules](https://docs.hetzner.com/cloud/firewalls/overview#limits). Existing rules will be replaced. */
 export type SetFirewallRulesRequestRulesList = Array<SetFirewallRulesRequestRulesItem>;
+const SetFirewallRulesRequestRulesList = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<SetFirewallRulesRequestRulesList>;
+
 export interface SetFirewallRulesRequest {
   /** ID of the Firewall. */
   id: number;
   /** Array of rules. Rules are limited to 50 entries per [Firewall](#tag/firewalls) and [500 effective rules](https://docs.hetzner.com/cloud/firewalls/overview#limits). Existing rules will be replaced. */
   rules: SetFirewallRulesRequestRulesList;
 }
+const SetFirewallRulesRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<SetFirewallRulesRequest>;
+
 /** Status of the Action. */
 export type SetFirewallRulesResponseActionsItemStatus = "running" | "success" | "error";
+const SetFirewallRulesResponseActionsItemStatus = S.String;
+
 export type SetFirewallRulesResponseActionsItemResourcesItem =
   ApplyFirewallToResourcesResponseActionsItemResourcesItem;
 /** Resources the Action relates to. */
 export type SetFirewallRulesResponseActionsItemResourcesList =
   Array<ApplyFirewallToResourcesResponseActionsItemResourcesItem>;
+const SetFirewallRulesResponseActionsItemResourcesList =
+  ApplyFirewallToResourcesResponseActionsItemResourcesList as any as S.Schema<SetFirewallRulesResponseActionsItemResourcesList>;
+
 /** Error message for the Action if an error occurred, otherwise null. */
 export type SetFirewallRulesResponseActionsItemError =
   ApplyFirewallToResourcesResponseActionsItemError;
@@ -395,10 +613,25 @@ export interface SetFirewallRulesResponseActionsItem {
   /** Error message for the Action if an error occurred, otherwise null. */
   error: ApplyFirewallToResourcesResponseActionsItemError | null;
 }
+const SetFirewallRulesResponseActionsItem = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<SetFirewallRulesResponseActionsItem>;
+
 export type SetFirewallRulesResponseActionsList = Array<SetFirewallRulesResponseActionsItem>;
+const SetFirewallRulesResponseActionsList = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<SetFirewallRulesResponseActionsList>;
+
 export interface SetFirewallRulesResponse {
   actions: SetFirewallRulesResponseActionsList;
 }
+const SetFirewallRulesResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<SetFirewallRulesResponse>;
+
 export type ApplyFirewallToResourcesError = HetznerOpError;
 /** Apply to Resources Applies a [Firewall](#tag/firewalls) to multiple resources. Supported resources: - [Servers](#tag/servers) (with a public network interface) - [Label Selectors](#description/label-selector) A [Server](#tag/servers) can be applied to [a maximum of 5 Firewalls](https://docs.hetzner.com/cloud/firewalls/overview#limits). This limit applies to [Servers](#tag/servers) applied via a matching [Label Selector](#description/label-selector) as well. Updates to resources matching or no longer matching a [Label Selector](#description/label-selector) can take up to a few seconds to be processed. A [Firewall](#tag/firewalls) is applied to a resource once the related [Action](#tag/actions) with command `apply_firewall` successfully finished. #### Operation specific errors */
 export const applyFirewallToResources: API.OperationMethod<
@@ -407,8 +640,8 @@ export const applyFirewallToResources: API.OperationMethod<
   ApplyFirewallToResourcesError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4) as any as S.Schema<ApplyFirewallToResourcesRequest>,
-  output: __S(10) as any as S.Schema<ApplyFirewallToResourcesResponse>,
+  input: ApplyFirewallToResourcesRequest,
+  output: ApplyFirewallToResourcesResponse,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -422,8 +655,8 @@ export const getFirewallsAction: API.OperationMethod<
   GetFirewallsActionError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11) as any as S.Schema<GetFirewallsActionRequest>,
-  output: __S(13) as any as S.Schema<GetFirewallsActionResponse>,
+  input: GetFirewallsActionRequest,
+  output: GetFirewallsActionResponse,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -439,8 +672,8 @@ export const listFirewallActions: API.PaginatedOperationMethod<
   ListFirewallActionsResponseActionsItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(15) as any as S.Schema<ListFirewallActionsRequest>,
-    output: __S(20) as any as S.Schema<ListFirewallActionsResponse>,
+    input: ListFirewallActionsRequest,
+    output: ListFirewallActionsResponse,
     errors: [UnknownHetznerError],
     protocol: HetznerProtocol,
     retry: Retry.Retry,
@@ -465,8 +698,8 @@ export const listFirewallsActions: API.PaginatedOperationMethod<
   ListFirewallsActionsResponseActionsItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(22) as any as S.Schema<ListFirewallsActionsRequest>,
-    output: __S(25) as any as S.Schema<ListFirewallsActionsResponse>,
+    input: ListFirewallsActionsRequest,
+    output: ListFirewallsActionsResponse,
     errors: [UnknownHetznerError],
     protocol: HetznerProtocol,
     retry: Retry.Retry,
@@ -489,8 +722,8 @@ export const removeFirewallFromResources: API.OperationMethod<
   RemoveFirewallFromResourcesError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26) as any as S.Schema<RemoveFirewallFromResourcesRequest>,
-  output: __S(29) as any as S.Schema<RemoveFirewallFromResourcesResponse>,
+  input: RemoveFirewallFromResourcesRequest,
+  output: RemoveFirewallFromResourcesResponse,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -504,8 +737,8 @@ export const setFirewallRules: API.OperationMethod<
   SetFirewallRulesError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33) as any as S.Schema<SetFirewallRulesRequest>,
-  output: __S(36) as any as S.Schema<SetFirewallRulesResponse>,
+  input: SetFirewallRulesRequest,
+  output: SetFirewallRulesResponse,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -533,20 +766,20 @@ function __c0(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          type: S.String,
-          server: S.optional(__S(0)),
-          label_selector: S.optional(__S(1)),
+          type: ApplyFirewallToResourcesRequestApplyToItemType,
+          server: S.optional(ApplyFirewallToResourcesRequestApplyToItemServer),
+          label_selector: S.optional(ApplyFirewallToResourcesRequestApplyToItemLabelSelector),
         }),
       ).annotate({
         identifier: "ApplyFirewallToResourcesRequestApplyToItem",
       });
     case 3:
-      return S.Array(__S(2));
+      return S.Array(ApplyFirewallToResourcesRequestApplyToItem);
     case 4:
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
-          apply_to: __S(3),
+          apply_to: ApplyFirewallToResourcesRequestApplyToList,
         }).pipe(
           T.Http({ method: "POST", uri: "/firewalls/{id}/actions/apply_to_resources", code: 200 }),
         ),
@@ -563,7 +796,7 @@ function __c0(j: number): any {
         identifier: "ApplyFirewallToResourcesResponseActionsItemResourcesItem",
       });
     case 6:
-      return S.Array(__S(5));
+      return S.Array(ApplyFirewallToResourcesResponseActionsItemResourcesItem);
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -582,22 +815,22 @@ function __c1(j: number): any {
         S.Struct({
           id: S.Number,
           command: S.String,
-          status: S.String,
+          status: ApplyFirewallToResourcesResponseActionsItemStatus,
           started: S.String,
           finished: S.NullOr(S.String),
           progress: S.Number,
-          resources: __S(6),
-          error: S.NullOr(__S(7)),
+          resources: ApplyFirewallToResourcesResponseActionsItemResourcesList,
+          error: S.NullOr(ApplyFirewallToResourcesResponseActionsItemError),
         }),
       ).annotate({
         identifier: "ApplyFirewallToResourcesResponseActionsItem",
       });
     case 1:
-      return S.Array(__S(8));
+      return S.Array(ApplyFirewallToResourcesResponseActionsItem);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          actions: __S(9),
+          actions: ApplyFirewallToResourcesResponseActionsList,
         }),
       ).annotate({
         identifier: "ApplyFirewallToResourcesResponse",
@@ -615,12 +848,12 @@ function __c1(j: number): any {
         S.Struct({
           id: S.Number,
           command: S.String,
-          status: S.String,
+          status: GetFirewallsActionResponseActionStatus,
           started: S.String,
           finished: S.NullOr(S.String),
           progress: S.Number,
-          resources: __S(6),
-          error: S.NullOr(__S(7)),
+          resources: GetFirewallsActionResponseActionResourcesList,
+          error: S.NullOr(ApplyFirewallToResourcesResponseActionsItemError),
         }),
       ).annotate({
         identifier: "GetFirewallsActionResponseAction",
@@ -628,19 +861,19 @@ function __c1(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          action: __S(12),
+          action: GetFirewallsActionResponseAction,
         }),
       ).annotate({
         identifier: "GetFirewallsActionResponse",
       });
     case 6:
-      return S.Array(S.String);
+      return S.Array(ListFirewallActionsRequestSortItem);
     case 7:
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
-          sort: S.optional(__S(14).pipe(T.Query())),
-          status: S.optional(__S(14).pipe(T.Query())),
+          sort: S.optional(ListFirewallActionsRequestSortList.pipe(T.Query())),
+          status: S.optional(ListFirewallActionsRequestStatusList.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
           per_page: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/firewalls/{id}/actions", code: 200 })),
@@ -656,18 +889,18 @@ function __c2(j: number): any {
         S.Struct({
           id: S.Number,
           command: S.String,
-          status: S.String,
+          status: ListFirewallActionsResponseActionsItemStatus,
           started: S.String,
           finished: S.NullOr(S.String),
           progress: S.Number,
-          resources: __S(6),
-          error: S.NullOr(__S(7)),
+          resources: ListFirewallActionsResponseActionsItemResourcesList,
+          error: S.NullOr(ApplyFirewallToResourcesResponseActionsItemError),
         }),
       ).annotate({
         identifier: "ListFirewallActionsResponseActionsItem",
       });
     case 1:
-      return S.Array(__S(16));
+      return S.Array(ListFirewallActionsResponseActionsItem);
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -684,7 +917,7 @@ function __c2(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          pagination: __S(18),
+          pagination: ListFirewallActionsResponseMetaPagination,
         }),
       ).annotate({
         identifier: "ListFirewallActionsResponseMeta",
@@ -692,8 +925,8 @@ function __c2(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          actions: __S(17),
-          meta: __S(19),
+          actions: ListFirewallActionsResponseActionsList,
+          meta: ListFirewallActionsResponseMeta,
         }),
       ).annotate({
         identifier: "ListFirewallActionsResponse",
@@ -703,9 +936,9 @@ function __c2(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          id: S.optional(__S(21).pipe(T.Query())),
-          sort: S.optional(__S(14).pipe(T.Query())),
-          status: S.optional(__S(14).pipe(T.Query())),
+          id: S.optional(ListFirewallsActionsRequestIdList.pipe(T.Query())),
+          sort: S.optional(ListFirewallsActionsRequestSortList.pipe(T.Query())),
+          status: S.optional(ListFirewallsActionsRequestStatusList.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
           per_page: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/firewalls/actions", code: 200 })),
@@ -717,12 +950,12 @@ function __c2(j: number): any {
         S.Struct({
           id: S.Number,
           command: S.String,
-          status: S.String,
+          status: ListFirewallsActionsResponseActionsItemStatus,
           started: S.String,
           finished: S.NullOr(S.String),
           progress: S.Number,
-          resources: __S(6),
-          error: S.NullOr(__S(7)),
+          resources: ListFirewallsActionsResponseActionsItemResourcesList,
+          error: S.NullOr(ApplyFirewallToResourcesResponseActionsItemError),
         }),
       ).annotate({
         identifier: "ListFirewallsActionsResponseActionsItem",
@@ -732,12 +965,12 @@ function __c2(j: number): any {
 function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(23));
+      return S.Array(ListFirewallsActionsResponseActionsItem);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          actions: __S(24),
-          meta: __S(19),
+          actions: ListFirewallsActionsResponseActionsList,
+          meta: ListFirewallActionsResponseMeta,
         }),
       ).annotate({
         identifier: "ListFirewallsActionsResponse",
@@ -746,7 +979,7 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
-          remove_from: __S(3),
+          remove_from: RemoveFirewallFromResourcesRequestRemoveFromList,
         }).pipe(
           T.Http({
             method: "POST",
@@ -762,22 +995,22 @@ function __c3(j: number): any {
         S.Struct({
           id: S.Number,
           command: S.String,
-          status: S.String,
+          status: RemoveFirewallFromResourcesResponseActionsItemStatus,
           started: S.String,
           finished: S.NullOr(S.String),
           progress: S.Number,
-          resources: __S(6),
-          error: S.NullOr(__S(7)),
+          resources: RemoveFirewallFromResourcesResponseActionsItemResourcesList,
+          error: S.NullOr(ApplyFirewallToResourcesResponseActionsItemError),
         }),
       ).annotate({
         identifier: "RemoveFirewallFromResourcesResponseActionsItem",
       });
     case 4:
-      return S.Array(__S(27));
+      return S.Array(RemoveFirewallFromResourcesResponseActionsItem);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          actions: __S(28),
+          actions: RemoveFirewallFromResourcesResponseActionsList,
         }),
       ).annotate({
         identifier: "RemoveFirewallFromResourcesResponse",
@@ -788,10 +1021,10 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.NullOr(S.String)),
-          direction: S.String,
-          source_ips: S.optional(__S(30)),
-          destination_ips: S.optional(__S(30)),
-          protocol: S.String,
+          direction: SetFirewallRulesRequestRulesItemDirection,
+          source_ips: S.optional(SetFirewallRulesRequestRulesItemSourceIpsList),
+          destination_ips: S.optional(SetFirewallRulesRequestRulesItemDestinationIpsList),
+          protocol: SetFirewallRulesRequestRulesItemProtocol,
           port: S.optional(S.String),
         }),
       ).annotate({
@@ -802,12 +1035,12 @@ function __c3(j: number): any {
 function __c4(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(31));
+      return S.Array(SetFirewallRulesRequestRulesItem);
     case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
-          rules: __S(32),
+          rules: SetFirewallRulesRequestRulesList,
         }).pipe(T.Http({ method: "POST", uri: "/firewalls/{id}/actions/set_rules", code: 200 })),
       ).annotate({ identifier: "SetFirewallRulesRequest" });
     case 2:
@@ -815,42 +1048,23 @@ function __c4(j: number): any {
         S.Struct({
           id: S.Number,
           command: S.String,
-          status: S.String,
+          status: SetFirewallRulesResponseActionsItemStatus,
           started: S.String,
           finished: S.NullOr(S.String),
           progress: S.Number,
-          resources: __S(6),
-          error: S.NullOr(__S(7)),
+          resources: SetFirewallRulesResponseActionsItemResourcesList,
+          error: S.NullOr(ApplyFirewallToResourcesResponseActionsItemError),
         }),
       ).annotate({
         identifier: "SetFirewallRulesResponseActionsItem",
       });
     case 3:
-      return S.Array(__S(34));
+      return S.Array(SetFirewallRulesResponseActionsItem);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          actions: __S(35),
+          actions: SetFirewallRulesResponseActionsList,
         }),
       ).annotate({ identifier: "SetFirewallRulesResponse" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
   }
 }

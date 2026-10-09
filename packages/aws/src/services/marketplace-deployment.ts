@@ -10,8 +10,6 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "Marketplace Deployment",
   serviceShapeName: "AWSMPDeploymentParametersService",
@@ -128,10 +126,19 @@ export class ValidationException
 export interface ListTagsForResourceRequest {
   resourceArn: string;
 }
+const ListTagsForResourceRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<ListTagsForResourceRequest>;
 export type Tags = { [key: string]: string | undefined };
+const Tags = /*@__PURE__*/ __L.at(__c0, 1);
 export interface ListTagsForResourceResponse {
   tags?: { [key: string]: string | undefined };
 }
+const ListTagsForResourceResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<ListTagsForResourceResponse>;
 export type Catalog = string;
 export type ResourceId = string;
 export type DeploymentParameterName = string;
@@ -140,9 +147,14 @@ export interface DeploymentParameterInput {
   name: string;
   secretString: string | redacted.Redacted<string>;
 }
+const DeploymentParameterInput = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<DeploymentParameterInput>;
 export type TagKey = string;
 export type TagValue = string;
 export type TagsMap = { [key: string]: string | undefined };
+const TagsMap = Tags as any as S.Schema<TagsMap>;
 export type ClientToken = string;
 export interface PutDeploymentParameterRequest {
   catalog: string;
@@ -153,6 +165,10 @@ export interface PutDeploymentParameterRequest {
   expirationDate?: Date;
   clientToken?: string;
 }
+const PutDeploymentParameterRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<PutDeploymentParameterRequest>;
 export type ResourceArn = string;
 export type DeploymentParameterResourceIdentifier = string;
 export interface PutDeploymentParameterResponse {
@@ -161,17 +177,26 @@ export interface PutDeploymentParameterResponse {
   deploymentParameterId: string;
   tags?: { [key: string]: string | undefined };
 }
+const PutDeploymentParameterResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<PutDeploymentParameterResponse>;
 export interface TagResourceRequest {
   resourceArn: string;
   tags?: { [key: string]: string | undefined };
 }
+const TagResourceRequest = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
+const TagResourceResponse = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<TagResourceResponse>;
 export type StringList = string[];
+const StringList = /*@__PURE__*/ __L.at(__c1, 0);
 export interface UntagResourceRequest {
   resourceArn: string;
   tagKeys: string[];
 }
+const UntagResourceRequest = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
+const UntagResourceResponse = TagResourceResponse as any as S.Schema<UntagResourceResponse>;
 export type ListTagsForResourceError =
   | AccessDeniedException
   | InternalServerException
@@ -188,8 +213,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<ListTagsForResourceRequest>,
-  output: __S(2) as any as S.Schema<ListTagsForResourceResponse>,
+  input: ListTagsForResourceRequest,
+  output: ListTagsForResourceResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -220,8 +245,8 @@ export const putDeploymentParameter: API.OperationMethod<
   PutDeploymentParameterError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4) as any as S.Schema<PutDeploymentParameterRequest>,
-  output: __S(5) as any as S.Schema<PutDeploymentParameterResponse>,
+  input: PutDeploymentParameterRequest,
+  output: PutDeploymentParameterResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -253,8 +278,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6) as any as S.Schema<TagResourceRequest>,
-  output: __S(7) as any as S.Schema<TagResourceResponse>,
+  input: TagResourceRequest,
+  output: TagResourceResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -285,8 +310,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9) as any as S.Schema<UntagResourceRequest>,
-  output: __S(7) as any as S.Schema<UntagResourceResponse>,
+  input: UntagResourceRequest,
+  output: UntagResourceResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -321,7 +346,7 @@ function __c0(j: number): any {
     case 1:
       return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
     case 2:
-      return S.suspend(() => S.Struct({ tags: S.optional(__S(1)) })).annotate({
+      return S.suspend(() => S.Struct({ tags: S.optional(Tags) })).annotate({
         identifier: "ListTagsForResourceResponse",
       });
     case 3:
@@ -334,8 +359,8 @@ function __c0(j: number): any {
           catalog: S.String.pipe(T.HttpLabel("catalog")),
           productId: S.String.pipe(T.HttpLabel("productId")),
           agreementId: S.String,
-          deploymentParameter: __S(3),
-          tags: S.optional(__S(1)),
+          deploymentParameter: DeploymentParameterInput,
+          tags: S.optional(TagsMap),
           expirationDate: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(
@@ -360,7 +385,7 @@ function __c0(j: number): any {
           resourceArn: S.String,
           agreementId: S.String,
           deploymentParameterId: S.String,
-          tags: S.optional(__S(1)),
+          tags: S.optional(TagsMap),
         }),
       ).annotate({
         identifier: "PutDeploymentParameterResponse",
@@ -369,7 +394,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
-          tags: S.optional(__S(1)),
+          tags: S.optional(Tags),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/tags/{resourceArn}" }),
@@ -395,7 +420,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
-          tagKeys: __S(8).pipe(T.HttpQuery("tagKeys")),
+          tagKeys: StringList.pipe(T.HttpQuery("tagKeys")),
         }).pipe(
           T.all(
             T.Http({ method: "DELETE", uri: "/tags/{resourceArn}" }),
@@ -407,18 +432,5 @@ function __c1(j: number): any {
           ),
         ),
       ).annotate({ identifier: "UntagResourceRequest" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
   }
 }

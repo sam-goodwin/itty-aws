@@ -8,8 +8,6 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "VPC Lattice",
   serviceShapeName: "MercuryControlPlane",
@@ -148,7 +146,7 @@ export class ValidationException
       message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
       reason: S.String,
       fieldList: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => __S(199)).annotate({
+        /*@__PURE__*/ S.suspend(() => ValidationExceptionFieldList).annotate({
           identifier: "ValidationExceptionFieldList",
         }),
       ),
@@ -162,10 +160,12 @@ export type HttpMethod = string;
 export type PathMatchExact = string;
 export type PathMatchPrefix = string;
 export type PathMatchType = { exact: string; prefix?: never } | { exact?: never; prefix: string };
+const PathMatchType = /*@__PURE__*/ __L.at(__c0, 0);
 export interface PathMatch {
   match: PathMatchType;
   caseSensitive?: boolean;
 }
+const PathMatch = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<PathMatch>;
 export type HeaderMatchName = string;
 export type HeaderMatchExact = string;
 export type HeaderMatchPrefix = string;
@@ -174,18 +174,23 @@ export type HeaderMatchType =
   | { exact: string; prefix?: never; contains?: never }
   | { exact?: never; prefix: string; contains?: never }
   | { exact?: never; prefix?: never; contains: string };
+const HeaderMatchType = /*@__PURE__*/ __L.at(__c0, 2);
 export interface HeaderMatch {
   name: string;
   match: HeaderMatchType;
   caseSensitive?: boolean;
 }
+const HeaderMatch = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<HeaderMatch>;
 export type HeaderMatchList = HeaderMatch[];
+const HeaderMatchList = /*@__PURE__*/ __L.at(__c0, 4);
 export interface HttpMatch {
   method?: string;
   pathMatch?: PathMatch;
   headerMatches?: HeaderMatch[];
 }
+const HttpMatch = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<HttpMatch>;
 export type RuleMatch = { httpMatch: HttpMatch };
+const RuleMatch = /*@__PURE__*/ __L.at(__c0, 6);
 export type RulePriority = number;
 export type TargetGroupIdentifier = string;
 export type TargetGroupWeight = number;
@@ -193,29 +198,40 @@ export interface WeightedTargetGroup {
   targetGroupIdentifier: string;
   weight?: number;
 }
+const WeightedTargetGroup = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<WeightedTargetGroup>;
 export type WeightedTargetGroupList = WeightedTargetGroup[];
+const WeightedTargetGroupList = /*@__PURE__*/ __L.at(__c1, 0);
 export interface ForwardAction {
   targetGroups: WeightedTargetGroup[];
 }
+const ForwardAction = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<ForwardAction>;
 export type HttpStatusCode = number;
 export interface FixedResponseAction {
   statusCode: number;
 }
+const FixedResponseAction = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<FixedResponseAction>;
 export type RuleAction =
   | { forward: ForwardAction; fixedResponse?: never }
   | { forward?: never; fixedResponse: FixedResponseAction };
+const RuleAction = /*@__PURE__*/ __L.at(__c1, 3);
 export interface RuleUpdate {
   ruleIdentifier: string;
   match?: RuleMatch;
   priority?: number;
   action?: RuleAction;
 }
+const RuleUpdate = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<RuleUpdate>;
 export type RuleUpdateList = RuleUpdate[];
+const RuleUpdateList = /*@__PURE__*/ __L.at(__c1, 5);
 export interface BatchUpdateRuleRequest {
   serviceIdentifier: string;
   listenerIdentifier: string;
   rules: RuleUpdate[];
 }
+const BatchUpdateRuleRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<BatchUpdateRuleRequest>;
 export type RuleArn = string;
 export type RuleId = string;
 export type RuleName = string;
@@ -228,7 +244,9 @@ export interface RuleUpdateSuccess {
   priority?: number;
   action?: RuleAction;
 }
+const RuleUpdateSuccess = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<RuleUpdateSuccess>;
 export type RuleUpdateSuccessList = RuleUpdateSuccess[];
+const RuleUpdateSuccessList = /*@__PURE__*/ __L.at(__c2, 0);
 export type FailureCode = string;
 export type FailureMessage = string;
 export interface RuleUpdateFailure {
@@ -236,11 +254,17 @@ export interface RuleUpdateFailure {
   failureCode?: string;
   failureMessage?: string;
 }
+const RuleUpdateFailure = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<RuleUpdateFailure>;
 export type RuleUpdateFailureList = RuleUpdateFailure[];
+const RuleUpdateFailureList = /*@__PURE__*/ __L.at(__c2, 2);
 export interface BatchUpdateRuleResponse {
   successful?: RuleUpdateSuccess[];
   unsuccessful?: RuleUpdateFailure[];
 }
+const BatchUpdateRuleResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<BatchUpdateRuleResponse>;
 export type ClientToken = string;
 export type ResourceIdentifier = string;
 export type AccessLogDestinationArn = string;
@@ -248,6 +272,7 @@ export type ServiceNetworkLogType = string;
 export type TagKey = string;
 export type TagValue = string;
 export type TagMap = { [key: string]: string | undefined };
+const TagMap = /*@__PURE__*/ __L.at(__c2, 4);
 export interface CreateAccessLogSubscriptionRequest {
   clientToken?: string;
   resourceIdentifier: string;
@@ -255,6 +280,10 @@ export interface CreateAccessLogSubscriptionRequest {
   serviceNetworkLogType?: string;
   tags?: { [key: string]: string | undefined };
 }
+const CreateAccessLogSubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<CreateAccessLogSubscriptionRequest>;
 export type AccessLogSubscriptionId = string;
 export type AccessLogSubscriptionArn = string;
 export type ResourceId = string;
@@ -267,6 +296,10 @@ export interface CreateAccessLogSubscriptionResponse {
   serviceNetworkLogType?: string;
   destinationArn: string;
 }
+const CreateAccessLogSubscriptionResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<CreateAccessLogSubscriptionResponse>;
 export type ListenerName = string;
 export type ListenerProtocol = string;
 export type Port = number;
@@ -279,6 +312,10 @@ export interface CreateListenerRequest {
   clientToken?: string;
   tags?: { [key: string]: string | undefined };
 }
+const CreateListenerRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<CreateListenerRequest>;
 export type ListenerArn = string;
 export type ListenerId = string;
 export type ServiceArn = string;
@@ -293,6 +330,10 @@ export interface CreateListenerResponse {
   serviceId?: string;
   defaultAction?: RuleAction;
 }
+const CreateListenerResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<CreateListenerResponse>;
 export type ResourceConfigurationName = string;
 export type ResourceConfigurationType =
   | "GROUP"
@@ -301,9 +342,14 @@ export type ResourceConfigurationType =
   | "ARN"
   | "CIDR"
   | (string & {});
+const ResourceConfigurationType = S.String;
+
 export type PortRange = string;
 export type PortRangeList = string[];
+const PortRangeList = /*@__PURE__*/ __L.at(__c3, 1);
 export type ProtocolType = "TCP" | "TCP_UDP" | (string & {});
+const ProtocolType = S.String;
+
 export type ResourceGatewayIdentifier = string;
 export type ResourceConfigurationIdentifier = string;
 export type DomainName = string;
@@ -312,24 +358,30 @@ export interface DnsResource {
   domainName?: string;
   ipAddressType?: string;
 }
+const DnsResource = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<DnsResource>;
 export type IpAddress = string;
 export interface IpResource {
   ipAddress?: string;
 }
+const IpResource = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<IpResource>;
 export type WildcardArn = string;
 export interface ArnResource {
   arn?: string;
 }
+const ArnResource = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<ArnResource>;
 export type CidrRange = string;
 export type CidrRangeList = string[];
+const CidrRangeList = PortRangeList as any as S.Schema<CidrRangeList>;
 export interface CidrResource {
   cidrRanges?: string[];
 }
+const CidrResource = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<CidrResource>;
 export type ResourceConfigurationDefinition =
   | { dnsResource: DnsResource; ipResource?: never; arnResource?: never; cidrResource?: never }
   | { dnsResource?: never; ipResource: IpResource; arnResource?: never; cidrResource?: never }
   | { dnsResource?: never; ipResource?: never; arnResource: ArnResource; cidrResource?: never }
   | { dnsResource?: never; ipResource?: never; arnResource?: never; cidrResource: CidrResource };
+const ResourceConfigurationDefinition = /*@__PURE__*/ __L.at(__c3, 6);
 export type DomainVerificationIdentifier = string;
 export interface CreateResourceConfigurationRequest {
   name: string;
@@ -346,6 +398,10 @@ export interface CreateResourceConfigurationRequest {
   clientToken?: string;
   tags?: { [key: string]: string | undefined };
 }
+const CreateResourceConfigurationRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<CreateResourceConfigurationRequest>;
 export type ResourceConfigurationId = string;
 export type ResourceConfigurationArn = string;
 export type ResourceGatewayId = string;
@@ -371,12 +427,18 @@ export interface CreateResourceConfigurationResponse {
   groupDomain?: string;
   domainVerificationArn?: string;
 }
+const CreateResourceConfigurationResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<CreateResourceConfigurationResponse>;
 export type ResourceGatewayName = string;
 export type VpcId = string;
 export type SubnetId = string;
 export type SubnetList = string[];
+const SubnetList = PortRangeList as any as S.Schema<SubnetList>;
 export type SecurityGroupId = string;
 export type SecurityGroupList = string[];
+const SecurityGroupList = PortRangeList as any as S.Schema<SecurityGroupList>;
 export type ResourceGatewayIpAddressType = string;
 export type Ipv4AddressesPerEni = number;
 export type ResourceConfigDnsResolution = string;
@@ -391,6 +453,10 @@ export interface CreateResourceGatewayRequest {
   resourceConfigDnsResolution?: string;
   tags?: { [key: string]: string | undefined };
 }
+const CreateResourceGatewayRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<CreateResourceGatewayRequest>;
 export type ResourceGatewayArn = string;
 export type ResourceGatewayStatus = string;
 export interface CreateResourceGatewayResponse {
@@ -405,6 +471,10 @@ export interface CreateResourceGatewayResponse {
   ipv4AddressesPerEni?: number;
   resourceConfigDnsResolution?: string;
 }
+const CreateResourceGatewayResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<CreateResourceGatewayResponse>;
 export interface CreateRuleRequest {
   serviceIdentifier: string;
   listenerIdentifier: string;
@@ -415,6 +485,7 @@ export interface CreateRuleRequest {
   clientToken?: string;
   tags?: { [key: string]: string | undefined };
 }
+const CreateRuleRequest = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<CreateRuleRequest>;
 export interface CreateRuleResponse {
   arn?: string;
   id?: string;
@@ -423,6 +494,7 @@ export interface CreateRuleResponse {
   priority?: number;
   action?: RuleAction;
 }
+const CreateRuleResponse = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<CreateRuleResponse>;
 export type ServiceName = string;
 export type ServiceCustomDomainName = string;
 export type CertificateArn = string;
@@ -437,11 +509,13 @@ export interface CreateServiceRequest {
   authType?: string;
   idleTimeoutSeconds?: number;
 }
+const CreateServiceRequest = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<CreateServiceRequest>;
 export type ServiceStatus = string;
 export interface DnsEntry {
   domainName?: string;
   hostedZoneId?: string;
 }
+const DnsEntry = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<DnsEntry>;
 export interface CreateServiceResponse {
   id?: string;
   arn?: string;
@@ -453,10 +527,15 @@ export interface CreateServiceResponse {
   idleTimeoutSeconds?: number;
   dnsEntry?: DnsEntry;
 }
+const CreateServiceResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<CreateServiceResponse>;
 export type ServiceNetworkName = string;
 export interface SharingConfig {
   enabled?: boolean;
 }
+const SharingConfig = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<SharingConfig>;
 export interface CreateServiceNetworkRequest {
   clientToken?: string;
   name: string;
@@ -464,6 +543,10 @@ export interface CreateServiceNetworkRequest {
   tags?: { [key: string]: string | undefined };
   sharingConfig?: SharingConfig;
 }
+const CreateServiceNetworkRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  1,
+) as any as S.Schema<CreateServiceNetworkRequest>;
 export type ServiceNetworkId = string;
 export type ServiceNetworkArn = string;
 export interface CreateServiceNetworkResponse {
@@ -473,6 +556,10 @@ export interface CreateServiceNetworkResponse {
   sharingConfig?: SharingConfig;
   authType?: string;
 }
+const CreateServiceNetworkResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  2,
+) as any as S.Schema<CreateServiceNetworkResponse>;
 export type ServiceNetworkIdentifierWithoutRegex = string;
 export interface CreateServiceNetworkResourceAssociationRequest {
   clientToken?: string;
@@ -481,6 +568,10 @@ export interface CreateServiceNetworkResourceAssociationRequest {
   privateDnsEnabled?: boolean;
   tags?: { [key: string]: string | undefined };
 }
+const CreateServiceNetworkResourceAssociationRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<CreateServiceNetworkResourceAssociationRequest>;
 export type ServiceNetworkResourceAssociationId = string;
 export type ServiceNetworkResourceAssociationArn = string;
 export type ServiceNetworkResourceAssociationStatus = string;
@@ -492,6 +583,10 @@ export interface CreateServiceNetworkResourceAssociationResponse {
   createdBy?: string;
   privateDnsEnabled?: boolean;
 }
+const CreateServiceNetworkResourceAssociationResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  4,
+) as any as S.Schema<CreateServiceNetworkResourceAssociationResponse>;
 export type ServiceNetworkIdentifier = string;
 export interface CreateServiceNetworkServiceAssociationRequest {
   clientToken?: string;
@@ -499,6 +594,10 @@ export interface CreateServiceNetworkServiceAssociationRequest {
   serviceNetworkIdentifier: string;
   tags?: { [key: string]: string | undefined };
 }
+const CreateServiceNetworkServiceAssociationRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  5,
+) as any as S.Schema<CreateServiceNetworkServiceAssociationRequest>;
 export type ServiceNetworkServiceAssociationIdentifier = string;
 export type ServiceNetworkServiceAssociationStatus = string;
 export type ServiceNetworkServiceAssociationArn = string;
@@ -510,13 +609,20 @@ export interface CreateServiceNetworkServiceAssociationResponse {
   customDomainName?: string;
   dnsEntry?: DnsEntry;
 }
+const CreateServiceNetworkServiceAssociationResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  6,
+) as any as S.Schema<CreateServiceNetworkServiceAssociationResponse>;
 export type PrivateDnsPreference = string;
 export type PrivateDnsSpecifiedDomain = string;
 export type PrivateDnsSpecifiedDomainsList = string[];
+const PrivateDnsSpecifiedDomainsList =
+  PortRangeList as any as S.Schema<PrivateDnsSpecifiedDomainsList>;
 export interface DnsOptions {
   privateDnsPreference?: string;
   privateDnsSpecifiedDomains?: string[];
 }
+const DnsOptions = /*@__PURE__*/ __L.at(__c5, 7) as any as S.Schema<DnsOptions>;
 export interface CreateServiceNetworkVpcAssociationRequest {
   clientToken?: string;
   serviceNetworkIdentifier: string;
@@ -526,6 +632,10 @@ export interface CreateServiceNetworkVpcAssociationRequest {
   tags?: { [key: string]: string | undefined };
   dnsOptions?: DnsOptions;
 }
+const CreateServiceNetworkVpcAssociationRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<CreateServiceNetworkVpcAssociationRequest>;
 export type ServiceNetworkVpcAssociationId = string;
 export type ServiceNetworkVpcAssociationStatus = string;
 export type ServiceNetworkVpcAssociationArn = string;
@@ -538,6 +648,10 @@ export interface CreateServiceNetworkVpcAssociationResponse {
   privateDnsEnabled?: boolean;
   dnsOptions?: DnsOptions;
 }
+const CreateServiceNetworkVpcAssociationResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  1,
+) as any as S.Schema<CreateServiceNetworkVpcAssociationResponse>;
 export type TargetGroupName = string;
 export type TargetGroupType = string;
 export type TargetGroupProtocol = string;
@@ -552,6 +666,7 @@ export type HealthyThresholdCount = number;
 export type UnhealthyThresholdCount = number;
 export type HttpCodeMatcher = string;
 export type Matcher = { httpCode: string };
+const Matcher = /*@__PURE__*/ __L.at(__c6, 2);
 export interface HealthCheckConfig {
   enabled?: boolean;
   protocol?: string;
@@ -564,6 +679,7 @@ export interface HealthCheckConfig {
   unhealthyThresholdCount?: number;
   matcher?: Matcher;
 }
+const HealthCheckConfig = /*@__PURE__*/ __L.at(__c6, 3) as any as S.Schema<HealthCheckConfig>;
 export type LambdaEventStructureVersion = string;
 export interface TargetGroupConfig {
   port?: number;
@@ -574,6 +690,7 @@ export interface TargetGroupConfig {
   healthCheck?: HealthCheckConfig;
   lambdaEventStructureVersion?: string;
 }
+const TargetGroupConfig = /*@__PURE__*/ __L.at(__c6, 4) as any as S.Schema<TargetGroupConfig>;
 export interface CreateTargetGroupRequest {
   name: string;
   type: string;
@@ -581,6 +698,10 @@ export interface CreateTargetGroupRequest {
   clientToken?: string;
   tags?: { [key: string]: string | undefined };
 }
+const CreateTargetGroupRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  5,
+) as any as S.Schema<CreateTargetGroupRequest>;
 export type TargetGroupId = string;
 export type TargetGroupArn = string;
 export type TargetGroupStatus = string;
@@ -592,32 +713,73 @@ export interface CreateTargetGroupResponse {
   config?: TargetGroupConfig;
   status?: string;
 }
+const CreateTargetGroupResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  6,
+) as any as S.Schema<CreateTargetGroupResponse>;
 export type AccessLogSubscriptionIdentifier = string;
 export interface DeleteAccessLogSubscriptionRequest {
   accessLogSubscriptionIdentifier: string;
 }
+const DeleteAccessLogSubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  7,
+) as any as S.Schema<DeleteAccessLogSubscriptionRequest>;
 export interface DeleteAccessLogSubscriptionResponse {}
+const DeleteAccessLogSubscriptionResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  0,
+) as any as S.Schema<DeleteAccessLogSubscriptionResponse>;
 export interface DeleteAuthPolicyRequest {
   resourceIdentifier: string;
 }
+const DeleteAuthPolicyRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  1,
+) as any as S.Schema<DeleteAuthPolicyRequest>;
 export interface DeleteAuthPolicyResponse {}
+const DeleteAuthPolicyResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  2,
+) as any as S.Schema<DeleteAuthPolicyResponse>;
 export interface DeleteDomainVerificationRequest {
   domainVerificationIdentifier: string;
 }
+const DeleteDomainVerificationRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  3,
+) as any as S.Schema<DeleteDomainVerificationRequest>;
 export interface DeleteDomainVerificationResponse {}
+const DeleteDomainVerificationResponse =
+  DeleteAccessLogSubscriptionResponse as any as S.Schema<DeleteDomainVerificationResponse>;
 export interface DeleteListenerRequest {
   serviceIdentifier: string;
   listenerIdentifier: string;
 }
+const DeleteListenerRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  4,
+) as any as S.Schema<DeleteListenerRequest>;
 export interface DeleteListenerResponse {}
+const DeleteListenerResponse = DeleteAuthPolicyResponse as any as S.Schema<DeleteListenerResponse>;
 export interface DeleteResourceConfigurationRequest {
   resourceConfigurationIdentifier: string;
 }
+const DeleteResourceConfigurationRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  5,
+) as any as S.Schema<DeleteResourceConfigurationRequest>;
 export interface DeleteResourceConfigurationResponse {}
+const DeleteResourceConfigurationResponse =
+  DeleteAccessLogSubscriptionResponse as any as S.Schema<DeleteResourceConfigurationResponse>;
 export type ResourceEndpointAssociationIdentifier = string;
 export interface DeleteResourceEndpointAssociationRequest {
   resourceEndpointAssociationIdentifier: string;
 }
+const DeleteResourceEndpointAssociationRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  6,
+) as any as S.Schema<DeleteResourceEndpointAssociationRequest>;
 export type ResourceEndpointAssociationId = string;
 export type ResourceEndpointAssociationArn = string;
 export type VpcEndpointId = string;
@@ -628,95 +790,170 @@ export interface DeleteResourceEndpointAssociationResponse {
   resourceConfigurationArn?: string;
   vpcEndpointId?: string;
 }
+const DeleteResourceEndpointAssociationResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  7,
+) as any as S.Schema<DeleteResourceEndpointAssociationResponse>;
 export interface DeleteResourceGatewayRequest {
   resourceGatewayIdentifier: string;
 }
+const DeleteResourceGatewayRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  0,
+) as any as S.Schema<DeleteResourceGatewayRequest>;
 export interface DeleteResourceGatewayResponse {
   id?: string;
   arn?: string;
   name?: string;
   status?: string;
 }
+const DeleteResourceGatewayResponse = /*@__PURE__*/ __L.at(
+  __c8,
+  1,
+) as any as S.Schema<DeleteResourceGatewayResponse>;
 export interface DeleteResourcePolicyRequest {
   resourceArn: string;
 }
+const DeleteResourcePolicyRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  2,
+) as any as S.Schema<DeleteResourcePolicyRequest>;
 export interface DeleteResourcePolicyResponse {}
+const DeleteResourcePolicyResponse =
+  DeleteAuthPolicyResponse as any as S.Schema<DeleteResourcePolicyResponse>;
 export interface DeleteRuleRequest {
   serviceIdentifier: string;
   listenerIdentifier: string;
   ruleIdentifier: string;
 }
+const DeleteRuleRequest = /*@__PURE__*/ __L.at(__c8, 3) as any as S.Schema<DeleteRuleRequest>;
 export interface DeleteRuleResponse {}
+const DeleteRuleResponse = DeleteAuthPolicyResponse as any as S.Schema<DeleteRuleResponse>;
 export interface DeleteServiceRequest {
   serviceIdentifier: string;
 }
+const DeleteServiceRequest = /*@__PURE__*/ __L.at(__c8, 4) as any as S.Schema<DeleteServiceRequest>;
 export interface DeleteServiceResponse {
   id?: string;
   arn?: string;
   name?: string;
   status?: string;
 }
+const DeleteServiceResponse = /*@__PURE__*/ __L.at(
+  __c8,
+  5,
+) as any as S.Schema<DeleteServiceResponse>;
 export interface DeleteServiceNetworkRequest {
   serviceNetworkIdentifier: string;
 }
+const DeleteServiceNetworkRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  6,
+) as any as S.Schema<DeleteServiceNetworkRequest>;
 export interface DeleteServiceNetworkResponse {}
+const DeleteServiceNetworkResponse =
+  DeleteAuthPolicyResponse as any as S.Schema<DeleteServiceNetworkResponse>;
 export type ServiceNetworkResourceAssociationIdentifier = string;
 export interface DeleteServiceNetworkResourceAssociationRequest {
   serviceNetworkResourceAssociationIdentifier: string;
 }
+const DeleteServiceNetworkResourceAssociationRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  7,
+) as any as S.Schema<DeleteServiceNetworkResourceAssociationRequest>;
 export interface DeleteServiceNetworkResourceAssociationResponse {
   id?: string;
   arn?: string;
   status?: string;
 }
+const DeleteServiceNetworkResourceAssociationResponse = /*@__PURE__*/ __L.at(
+  __c9,
+  0,
+) as any as S.Schema<DeleteServiceNetworkResourceAssociationResponse>;
 export interface DeleteServiceNetworkServiceAssociationRequest {
   serviceNetworkServiceAssociationIdentifier: string;
 }
+const DeleteServiceNetworkServiceAssociationRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  1,
+) as any as S.Schema<DeleteServiceNetworkServiceAssociationRequest>;
 export interface DeleteServiceNetworkServiceAssociationResponse {
   id?: string;
   status?: string;
   arn?: string;
 }
+const DeleteServiceNetworkServiceAssociationResponse = /*@__PURE__*/ __L.at(
+  __c9,
+  2,
+) as any as S.Schema<DeleteServiceNetworkServiceAssociationResponse>;
 export type ServiceNetworkVpcAssociationIdentifier = string;
 export interface DeleteServiceNetworkVpcAssociationRequest {
   serviceNetworkVpcAssociationIdentifier: string;
 }
+const DeleteServiceNetworkVpcAssociationRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  3,
+) as any as S.Schema<DeleteServiceNetworkVpcAssociationRequest>;
 export interface DeleteServiceNetworkVpcAssociationResponse {
   id?: string;
   status?: string;
   arn?: string;
 }
+const DeleteServiceNetworkVpcAssociationResponse =
+  DeleteServiceNetworkServiceAssociationResponse as any as S.Schema<DeleteServiceNetworkVpcAssociationResponse>;
 export interface DeleteTargetGroupRequest {
   targetGroupIdentifier: string;
 }
+const DeleteTargetGroupRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  4,
+) as any as S.Schema<DeleteTargetGroupRequest>;
 export interface DeleteTargetGroupResponse {
   id?: string;
   arn?: string;
   status?: string;
 }
+const DeleteTargetGroupResponse =
+  DeleteServiceNetworkResourceAssociationResponse as any as S.Schema<DeleteTargetGroupResponse>;
 export interface Target {
   id: string;
   port?: number;
 }
+const Target = /*@__PURE__*/ __L.at(__c9, 5) as any as S.Schema<Target>;
 export type TargetList = Target[];
+const TargetList = /*@__PURE__*/ __L.at(__c9, 6);
 export interface DeregisterTargetsRequest {
   targetGroupIdentifier: string;
   targets: Target[];
 }
+const DeregisterTargetsRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  7,
+) as any as S.Schema<DeregisterTargetsRequest>;
 export interface TargetFailure {
   id?: string;
   port?: number;
   failureCode?: string;
   failureMessage?: string;
 }
+const TargetFailure = /*@__PURE__*/ __L.at(__c10, 0) as any as S.Schema<TargetFailure>;
 export type TargetFailureList = TargetFailure[];
+const TargetFailureList = /*@__PURE__*/ __L.at(__c10, 1);
 export interface DeregisterTargetsResponse {
   successful?: Target[];
   unsuccessful?: TargetFailure[];
 }
+const DeregisterTargetsResponse = /*@__PURE__*/ __L.at(
+  __c10,
+  2,
+) as any as S.Schema<DeregisterTargetsResponse>;
 export interface GetAccessLogSubscriptionRequest {
   accessLogSubscriptionIdentifier: string;
 }
+const GetAccessLogSubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  3,
+) as any as S.Schema<GetAccessLogSubscriptionRequest>;
 export interface GetAccessLogSubscriptionResponse {
   id: string;
   arn: string;
@@ -727,9 +964,17 @@ export interface GetAccessLogSubscriptionResponse {
   createdAt: Date;
   lastUpdatedAt: Date;
 }
+const GetAccessLogSubscriptionResponse = /*@__PURE__*/ __L.at(
+  __c10,
+  4,
+) as any as S.Schema<GetAccessLogSubscriptionResponse>;
 export interface GetAuthPolicyRequest {
   resourceIdentifier: string;
 }
+const GetAuthPolicyRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  5,
+) as any as S.Schema<GetAuthPolicyRequest>;
 export type AuthPolicyString = string;
 export type AuthPolicyState = string;
 export interface GetAuthPolicyResponse {
@@ -738,14 +983,23 @@ export interface GetAuthPolicyResponse {
   createdAt?: Date;
   lastUpdatedAt?: Date;
 }
+const GetAuthPolicyResponse = /*@__PURE__*/ __L.at(
+  __c10,
+  6,
+) as any as S.Schema<GetAuthPolicyResponse>;
 export interface GetDomainVerificationRequest {
   domainVerificationIdentifier: string;
 }
+const GetDomainVerificationRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  7,
+) as any as S.Schema<GetDomainVerificationRequest>;
 export type VerificationStatus = string;
 export interface TxtMethodConfig {
   value: string;
   name: string;
 }
+const TxtMethodConfig = /*@__PURE__*/ __L.at(__c11, 0) as any as S.Schema<TxtMethodConfig>;
 export interface GetDomainVerificationResponse {
   id: string;
   arn: string;
@@ -756,10 +1010,15 @@ export interface GetDomainVerificationResponse {
   lastVerifiedTime?: Date;
   tags?: { [key: string]: string | undefined };
 }
+const GetDomainVerificationResponse = /*@__PURE__*/ __L.at(
+  __c11,
+  1,
+) as any as S.Schema<GetDomainVerificationResponse>;
 export interface GetListenerRequest {
   serviceIdentifier: string;
   listenerIdentifier: string;
 }
+const GetListenerRequest = /*@__PURE__*/ __L.at(__c11, 2) as any as S.Schema<GetListenerRequest>;
 export interface GetListenerResponse {
   arn?: string;
   id?: string;
@@ -772,9 +1031,14 @@ export interface GetListenerResponse {
   createdAt?: Date;
   lastUpdatedAt?: Date;
 }
+const GetListenerResponse = /*@__PURE__*/ __L.at(__c11, 3) as any as S.Schema<GetListenerResponse>;
 export interface GetResourceConfigurationRequest {
   resourceConfigurationIdentifier: string;
 }
+const GetResourceConfigurationRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  4,
+) as any as S.Schema<GetResourceConfigurationRequest>;
 export interface GetResourceConfigurationResponse {
   id?: string;
   name?: string;
@@ -797,9 +1061,17 @@ export interface GetResourceConfigurationResponse {
   domainVerificationStatus?: string;
   groupDomain?: string;
 }
+const GetResourceConfigurationResponse = /*@__PURE__*/ __L.at(
+  __c11,
+  5,
+) as any as S.Schema<GetResourceConfigurationResponse>;
 export interface GetResourceGatewayRequest {
   resourceGatewayIdentifier: string;
 }
+const GetResourceGatewayRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  6,
+) as any as S.Schema<GetResourceGatewayRequest>;
 export interface GetResourceGatewayResponse {
   name?: string;
   id?: string;
@@ -816,18 +1088,31 @@ export interface GetResourceGatewayResponse {
   createdAt?: Date;
   lastUpdatedAt?: Date;
 }
+const GetResourceGatewayResponse = /*@__PURE__*/ __L.at(
+  __c11,
+  7,
+) as any as S.Schema<GetResourceGatewayResponse>;
 export interface GetResourcePolicyRequest {
   resourceArn: string;
 }
+const GetResourcePolicyRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  0,
+) as any as S.Schema<GetResourcePolicyRequest>;
 export type PolicyString = string;
 export interface GetResourcePolicyResponse {
   policy?: string;
 }
+const GetResourcePolicyResponse = /*@__PURE__*/ __L.at(
+  __c12,
+  1,
+) as any as S.Schema<GetResourcePolicyResponse>;
 export interface GetRuleRequest {
   serviceIdentifier: string;
   listenerIdentifier: string;
   ruleIdentifier: string;
 }
+const GetRuleRequest = /*@__PURE__*/ __L.at(__c12, 2) as any as S.Schema<GetRuleRequest>;
 export interface GetRuleResponse {
   arn?: string;
   id?: string;
@@ -839,9 +1124,11 @@ export interface GetRuleResponse {
   createdAt?: Date;
   lastUpdatedAt?: Date;
 }
+const GetRuleResponse = /*@__PURE__*/ __L.at(__c12, 3) as any as S.Schema<GetRuleResponse>;
 export interface GetServiceRequest {
   serviceIdentifier: string;
 }
+const GetServiceRequest = /*@__PURE__*/ __L.at(__c12, 4) as any as S.Schema<GetServiceRequest>;
 export interface GetServiceResponse {
   id?: string;
   name?: string;
@@ -857,9 +1144,14 @@ export interface GetServiceResponse {
   failureCode?: string;
   failureMessage?: string;
 }
+const GetServiceResponse = /*@__PURE__*/ __L.at(__c12, 5) as any as S.Schema<GetServiceResponse>;
 export interface GetServiceNetworkRequest {
   serviceNetworkIdentifier: string;
 }
+const GetServiceNetworkRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  6,
+) as any as S.Schema<GetServiceNetworkRequest>;
 export interface GetServiceNetworkResponse {
   id?: string;
   name?: string;
@@ -871,9 +1163,17 @@ export interface GetServiceNetworkResponse {
   numberOfAssociatedVPCs?: number;
   numberOfAssociatedServices?: number;
 }
+const GetServiceNetworkResponse = /*@__PURE__*/ __L.at(
+  __c12,
+  7,
+) as any as S.Schema<GetServiceNetworkResponse>;
 export interface GetServiceNetworkResourceAssociationRequest {
   serviceNetworkResourceAssociationIdentifier: string;
 }
+const GetServiceNetworkResourceAssociationRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  0,
+) as any as S.Schema<GetServiceNetworkResourceAssociationRequest>;
 export type ServiceNetworkNameWithoutRegex = string;
 export interface GetServiceNetworkResourceAssociationResponse {
   id?: string;
@@ -896,9 +1196,17 @@ export interface GetServiceNetworkResourceAssociationResponse {
   isManagedAssociation?: boolean;
   domainVerificationStatus?: string;
 }
+const GetServiceNetworkResourceAssociationResponse = /*@__PURE__*/ __L.at(
+  __c13,
+  1,
+) as any as S.Schema<GetServiceNetworkResourceAssociationResponse>;
 export interface GetServiceNetworkServiceAssociationRequest {
   serviceNetworkServiceAssociationIdentifier: string;
 }
+const GetServiceNetworkServiceAssociationRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  2,
+) as any as S.Schema<GetServiceNetworkServiceAssociationRequest>;
 export interface GetServiceNetworkServiceAssociationResponse {
   id?: string;
   status?: string;
@@ -916,9 +1224,17 @@ export interface GetServiceNetworkServiceAssociationResponse {
   failureMessage?: string;
   failureCode?: string;
 }
+const GetServiceNetworkServiceAssociationResponse = /*@__PURE__*/ __L.at(
+  __c13,
+  3,
+) as any as S.Schema<GetServiceNetworkServiceAssociationResponse>;
 export interface GetServiceNetworkVpcAssociationRequest {
   serviceNetworkVpcAssociationIdentifier: string;
 }
+const GetServiceNetworkVpcAssociationRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  4,
+) as any as S.Schema<GetServiceNetworkVpcAssociationRequest>;
 export interface GetServiceNetworkVpcAssociationResponse {
   id?: string;
   status?: string;
@@ -936,10 +1252,19 @@ export interface GetServiceNetworkVpcAssociationResponse {
   lastUpdatedAt?: Date;
   dnsOptions?: DnsOptions;
 }
+const GetServiceNetworkVpcAssociationResponse = /*@__PURE__*/ __L.at(
+  __c13,
+  5,
+) as any as S.Schema<GetServiceNetworkVpcAssociationResponse>;
 export interface GetTargetGroupRequest {
   targetGroupIdentifier: string;
 }
+const GetTargetGroupRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  6,
+) as any as S.Schema<GetTargetGroupRequest>;
 export type ServiceArnList = string[];
+const ServiceArnList = PortRangeList as any as S.Schema<ServiceArnList>;
 export interface GetTargetGroupResponse {
   id?: string;
   arn?: string;
@@ -953,6 +1278,10 @@ export interface GetTargetGroupResponse {
   failureMessage?: string;
   failureCode?: string;
 }
+const GetTargetGroupResponse = /*@__PURE__*/ __L.at(
+  __c13,
+  7,
+) as any as S.Schema<GetTargetGroupResponse>;
 export type MaxResults = number;
 export type NextToken = string;
 export interface ListAccessLogSubscriptionsRequest {
@@ -960,6 +1289,10 @@ export interface ListAccessLogSubscriptionsRequest {
   maxResults?: number;
   nextToken?: string;
 }
+const ListAccessLogSubscriptionsRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  0,
+) as any as S.Schema<ListAccessLogSubscriptionsRequest>;
 export interface AccessLogSubscriptionSummary {
   id: string;
   arn: string;
@@ -970,15 +1303,26 @@ export interface AccessLogSubscriptionSummary {
   createdAt: Date;
   lastUpdatedAt: Date;
 }
+const AccessLogSubscriptionSummary =
+  GetAccessLogSubscriptionResponse as any as S.Schema<AccessLogSubscriptionSummary>;
 export type AccessLogSubscriptionList = AccessLogSubscriptionSummary[];
+const AccessLogSubscriptionList = /*@__PURE__*/ __L.at(__c14, 1);
 export interface ListAccessLogSubscriptionsResponse {
   items: AccessLogSubscriptionSummary[];
   nextToken?: string;
 }
+const ListAccessLogSubscriptionsResponse = /*@__PURE__*/ __L.at(
+  __c14,
+  2,
+) as any as S.Schema<ListAccessLogSubscriptionsResponse>;
 export interface ListDomainVerificationsRequest {
   maxResults?: number;
   nextToken?: string;
 }
+const ListDomainVerificationsRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  3,
+) as any as S.Schema<ListDomainVerificationsRequest>;
 export interface DomainVerificationSummary {
   id: string;
   arn: string;
@@ -989,16 +1333,27 @@ export interface DomainVerificationSummary {
   lastVerifiedTime?: Date;
   tags?: { [key: string]: string | undefined };
 }
+const DomainVerificationSummary =
+  GetDomainVerificationResponse as any as S.Schema<DomainVerificationSummary>;
 export type DomainVerificationList = DomainVerificationSummary[];
+const DomainVerificationList = /*@__PURE__*/ __L.at(__c14, 4);
 export interface ListDomainVerificationsResponse {
   items: DomainVerificationSummary[];
   nextToken?: string;
 }
+const ListDomainVerificationsResponse = /*@__PURE__*/ __L.at(
+  __c14,
+  5,
+) as any as S.Schema<ListDomainVerificationsResponse>;
 export interface ListListenersRequest {
   serviceIdentifier: string;
   maxResults?: number;
   nextToken?: string;
 }
+const ListListenersRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  6,
+) as any as S.Schema<ListListenersRequest>;
 export interface ListenerSummary {
   arn?: string;
   id?: string;
@@ -1008,11 +1363,17 @@ export interface ListenerSummary {
   createdAt?: Date;
   lastUpdatedAt?: Date;
 }
+const ListenerSummary = /*@__PURE__*/ __L.at(__c14, 7) as any as S.Schema<ListenerSummary>;
 export type ListenerSummaryList = ListenerSummary[];
+const ListenerSummaryList = /*@__PURE__*/ __L.at(__c15, 0);
 export interface ListListenersResponse {
   items: ListenerSummary[];
   nextToken?: string;
 }
+const ListListenersResponse = /*@__PURE__*/ __L.at(
+  __c15,
+  1,
+) as any as S.Schema<ListListenersResponse>;
 export interface ListResourceConfigurationsRequest {
   resourceGatewayIdentifier?: string;
   resourceConfigurationGroupIdentifier?: string;
@@ -1020,6 +1381,10 @@ export interface ListResourceConfigurationsRequest {
   maxResults?: number;
   nextToken?: string;
 }
+const ListResourceConfigurationsRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  2,
+) as any as S.Schema<ListResourceConfigurationsRequest>;
 export interface ResourceConfigurationSummary {
   id?: string;
   name?: string;
@@ -1035,11 +1400,20 @@ export interface ResourceConfigurationSummary {
   domainVerificationId?: string;
   groupDomain?: string;
 }
+const ResourceConfigurationSummary = /*@__PURE__*/ __L.at(
+  __c15,
+  3,
+) as any as S.Schema<ResourceConfigurationSummary>;
 export type ResourceConfigurationSummaryList = ResourceConfigurationSummary[];
+const ResourceConfigurationSummaryList = /*@__PURE__*/ __L.at(__c15, 4);
 export interface ListResourceConfigurationsResponse {
   items?: ResourceConfigurationSummary[];
   nextToken?: string;
 }
+const ListResourceConfigurationsResponse = /*@__PURE__*/ __L.at(
+  __c15,
+  5,
+) as any as S.Schema<ListResourceConfigurationsResponse>;
 export type VpcEndpointOwner = string;
 export interface ListResourceEndpointAssociationsRequest {
   resourceConfigurationIdentifier: string;
@@ -1049,16 +1423,29 @@ export interface ListResourceEndpointAssociationsRequest {
   maxResults?: number;
   nextToken?: string;
 }
+const ListResourceEndpointAssociationsRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  6,
+) as any as S.Schema<ListResourceEndpointAssociationsRequest>;
 export type PayerResponsibilityScope = "ResourceGatewayCharges" | (string & {});
+const PayerResponsibilityScope = S.String;
+
 export type PayerResponsibilityPayer =
   | "VpcEndpointAccount"
   | "ResourceGatewayAccount"
   | (string & {});
+const PayerResponsibilityPayer = S.String;
+
 export interface PayerResponsibilityEntry {
   scope?: PayerResponsibilityScope;
   payerResponsibilityType?: PayerResponsibilityPayer;
 }
+const PayerResponsibilityEntry = /*@__PURE__*/ __L.at(
+  __c15,
+  7,
+) as any as S.Schema<PayerResponsibilityEntry>;
 export type PayerResponsibilityList = PayerResponsibilityEntry[];
+const PayerResponsibilityList = /*@__PURE__*/ __L.at(__c16, 0);
 export interface ResourceEndpointAssociationSummary {
   id?: string;
   arn?: string;
@@ -1071,15 +1458,28 @@ export interface ResourceEndpointAssociationSummary {
   createdAt?: Date;
   payerResponsibility?: PayerResponsibilityEntry[];
 }
+const ResourceEndpointAssociationSummary = /*@__PURE__*/ __L.at(
+  __c16,
+  1,
+) as any as S.Schema<ResourceEndpointAssociationSummary>;
 export type ResourceEndpointAssociationList = ResourceEndpointAssociationSummary[];
+const ResourceEndpointAssociationList = /*@__PURE__*/ __L.at(__c16, 2);
 export interface ListResourceEndpointAssociationsResponse {
   items: ResourceEndpointAssociationSummary[];
   nextToken?: string;
 }
+const ListResourceEndpointAssociationsResponse = /*@__PURE__*/ __L.at(
+  __c16,
+  3,
+) as any as S.Schema<ListResourceEndpointAssociationsResponse>;
 export interface ListResourceGatewaysRequest {
   maxResults?: number;
   nextToken?: string;
 }
+const ListResourceGatewaysRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  4,
+) as any as S.Schema<ListResourceGatewaysRequest>;
 export interface ResourceGatewaySummary {
   name?: string;
   id?: string;
@@ -1094,17 +1494,27 @@ export interface ResourceGatewaySummary {
   createdAt?: Date;
   lastUpdatedAt?: Date;
 }
+const ResourceGatewaySummary = /*@__PURE__*/ __L.at(
+  __c16,
+  5,
+) as any as S.Schema<ResourceGatewaySummary>;
 export type ResourceGatewayList = ResourceGatewaySummary[];
+const ResourceGatewayList = /*@__PURE__*/ __L.at(__c16, 6);
 export interface ListResourceGatewaysResponse {
   items?: ResourceGatewaySummary[];
   nextToken?: string;
 }
+const ListResourceGatewaysResponse = /*@__PURE__*/ __L.at(
+  __c16,
+  7,
+) as any as S.Schema<ListResourceGatewaysResponse>;
 export interface ListRulesRequest {
   serviceIdentifier: string;
   listenerIdentifier: string;
   maxResults?: number;
   nextToken?: string;
 }
+const ListRulesRequest = /*@__PURE__*/ __L.at(__c17, 0) as any as S.Schema<ListRulesRequest>;
 export interface RuleSummary {
   arn?: string;
   id?: string;
@@ -1114,11 +1524,14 @@ export interface RuleSummary {
   createdAt?: Date;
   lastUpdatedAt?: Date;
 }
+const RuleSummary = /*@__PURE__*/ __L.at(__c17, 1) as any as S.Schema<RuleSummary>;
 export type RuleSummaryList = RuleSummary[];
+const RuleSummaryList = /*@__PURE__*/ __L.at(__c17, 2);
 export interface ListRulesResponse {
   items: RuleSummary[];
   nextToken?: string;
 }
+const ListRulesResponse = /*@__PURE__*/ __L.at(__c17, 3) as any as S.Schema<ListRulesResponse>;
 export interface ListServiceNetworkResourceAssociationsRequest {
   serviceNetworkIdentifier?: string;
   resourceConfigurationIdentifier?: string;
@@ -1126,6 +1539,10 @@ export interface ListServiceNetworkResourceAssociationsRequest {
   nextToken?: string;
   includeChildren?: boolean;
 }
+const ListServiceNetworkResourceAssociationsRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  4,
+) as any as S.Schema<ListServiceNetworkResourceAssociationsRequest>;
 export type ServiceNetworkArnWithoutRegex = string;
 export interface ServiceNetworkResourceAssociationSummary {
   id?: string;
@@ -1145,15 +1562,28 @@ export interface ServiceNetworkResourceAssociationSummary {
   failureCode?: string;
   privateDnsEnabled?: boolean;
 }
+const ServiceNetworkResourceAssociationSummary = /*@__PURE__*/ __L.at(
+  __c17,
+  5,
+) as any as S.Schema<ServiceNetworkResourceAssociationSummary>;
 export type ServiceNetworkResourceAssociationList = ServiceNetworkResourceAssociationSummary[];
+const ServiceNetworkResourceAssociationList = /*@__PURE__*/ __L.at(__c17, 6);
 export interface ListServiceNetworkResourceAssociationsResponse {
   items: ServiceNetworkResourceAssociationSummary[];
   nextToken?: string;
 }
+const ListServiceNetworkResourceAssociationsResponse = /*@__PURE__*/ __L.at(
+  __c17,
+  7,
+) as any as S.Schema<ListServiceNetworkResourceAssociationsResponse>;
 export interface ListServiceNetworksRequest {
   maxResults?: number;
   nextToken?: string;
 }
+const ListServiceNetworksRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  0,
+) as any as S.Schema<ListServiceNetworksRequest>;
 export interface ServiceNetworkSummary {
   id?: string;
   name?: string;
@@ -1164,17 +1594,30 @@ export interface ServiceNetworkSummary {
   numberOfAssociatedServices?: number;
   numberOfAssociatedResourceConfigurations?: number;
 }
+const ServiceNetworkSummary = /*@__PURE__*/ __L.at(
+  __c18,
+  1,
+) as any as S.Schema<ServiceNetworkSummary>;
 export type ServiceNetworkList = ServiceNetworkSummary[];
+const ServiceNetworkList = /*@__PURE__*/ __L.at(__c18, 2);
 export interface ListServiceNetworksResponse {
   items: ServiceNetworkSummary[];
   nextToken?: string;
 }
+const ListServiceNetworksResponse = /*@__PURE__*/ __L.at(
+  __c18,
+  3,
+) as any as S.Schema<ListServiceNetworksResponse>;
 export interface ListServiceNetworkServiceAssociationsRequest {
   serviceNetworkIdentifier?: string;
   serviceIdentifier?: string;
   maxResults?: number;
   nextToken?: string;
 }
+const ListServiceNetworkServiceAssociationsRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  4,
+) as any as S.Schema<ListServiceNetworkServiceAssociationsRequest>;
 export interface ServiceNetworkServiceAssociationSummary {
   id?: string;
   status?: string;
@@ -1190,17 +1633,30 @@ export interface ServiceNetworkServiceAssociationSummary {
   dnsEntry?: DnsEntry;
   customDomainName?: string;
 }
+const ServiceNetworkServiceAssociationSummary = /*@__PURE__*/ __L.at(
+  __c18,
+  5,
+) as any as S.Schema<ServiceNetworkServiceAssociationSummary>;
 export type ServiceNetworkServiceAssociationList = ServiceNetworkServiceAssociationSummary[];
+const ServiceNetworkServiceAssociationList = /*@__PURE__*/ __L.at(__c18, 6);
 export interface ListServiceNetworkServiceAssociationsResponse {
   items: ServiceNetworkServiceAssociationSummary[];
   nextToken?: string;
 }
+const ListServiceNetworkServiceAssociationsResponse = /*@__PURE__*/ __L.at(
+  __c18,
+  7,
+) as any as S.Schema<ListServiceNetworkServiceAssociationsResponse>;
 export interface ListServiceNetworkVpcAssociationsRequest {
   serviceNetworkIdentifier?: string;
   vpcIdentifier?: string;
   maxResults?: number;
   nextToken?: string;
 }
+const ListServiceNetworkVpcAssociationsRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  0,
+) as any as S.Schema<ListServiceNetworkVpcAssociationsRequest>;
 export interface ServiceNetworkVpcAssociationSummary {
   id?: string;
   arn?: string;
@@ -1215,16 +1671,29 @@ export interface ServiceNetworkVpcAssociationSummary {
   vpcId?: string;
   lastUpdatedAt?: Date;
 }
+const ServiceNetworkVpcAssociationSummary = /*@__PURE__*/ __L.at(
+  __c19,
+  1,
+) as any as S.Schema<ServiceNetworkVpcAssociationSummary>;
 export type ServiceNetworkVpcAssociationList = ServiceNetworkVpcAssociationSummary[];
+const ServiceNetworkVpcAssociationList = /*@__PURE__*/ __L.at(__c19, 2);
 export interface ListServiceNetworkVpcAssociationsResponse {
   items: ServiceNetworkVpcAssociationSummary[];
   nextToken?: string;
 }
+const ListServiceNetworkVpcAssociationsResponse = /*@__PURE__*/ __L.at(
+  __c19,
+  3,
+) as any as S.Schema<ListServiceNetworkVpcAssociationsResponse>;
 export interface ListServiceNetworkVpcEndpointAssociationsRequest {
   serviceNetworkIdentifier: string;
   maxResults?: number;
   nextToken?: string;
 }
+const ListServiceNetworkVpcEndpointAssociationsRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  4,
+) as any as S.Schema<ListServiceNetworkVpcEndpointAssociationsRequest>;
 export interface ServiceNetworkEndpointAssociation {
   vpcEndpointId?: string;
   vpcId?: string;
@@ -1234,15 +1703,25 @@ export interface ServiceNetworkEndpointAssociation {
   serviceNetworkArn?: string;
   createdAt?: Date;
 }
+const ServiceNetworkEndpointAssociation = /*@__PURE__*/ __L.at(
+  __c19,
+  5,
+) as any as S.Schema<ServiceNetworkEndpointAssociation>;
 export type ServiceNetworkVpcEndpointAssociationList = ServiceNetworkEndpointAssociation[];
+const ServiceNetworkVpcEndpointAssociationList = /*@__PURE__*/ __L.at(__c19, 6);
 export interface ListServiceNetworkVpcEndpointAssociationsResponse {
   items: ServiceNetworkEndpointAssociation[];
   nextToken?: string;
 }
+const ListServiceNetworkVpcEndpointAssociationsResponse = /*@__PURE__*/ __L.at(
+  __c19,
+  7,
+) as any as S.Schema<ListServiceNetworkVpcEndpointAssociationsResponse>;
 export interface ListServicesRequest {
   maxResults?: number;
   nextToken?: string;
 }
+const ListServicesRequest = /*@__PURE__*/ __L.at(__c20, 0) as any as S.Schema<ListServicesRequest>;
 export interface ServiceSummary {
   id?: string;
   name?: string;
@@ -1253,24 +1732,42 @@ export interface ServiceSummary {
   customDomainName?: string;
   status?: string;
 }
+const ServiceSummary = /*@__PURE__*/ __L.at(__c20, 1) as any as S.Schema<ServiceSummary>;
 export type ServiceList = ServiceSummary[];
+const ServiceList = /*@__PURE__*/ __L.at(__c20, 2);
 export interface ListServicesResponse {
   items?: ServiceSummary[];
   nextToken?: string;
 }
+const ListServicesResponse = /*@__PURE__*/ __L.at(
+  __c20,
+  3,
+) as any as S.Schema<ListServicesResponse>;
 export type Arn = string;
 export interface ListTagsForResourceRequest {
   resourceArn: string;
 }
+const ListTagsForResourceRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  4,
+) as any as S.Schema<ListTagsForResourceRequest>;
 export interface ListTagsForResourceResponse {
   tags?: { [key: string]: string | undefined };
 }
+const ListTagsForResourceResponse = /*@__PURE__*/ __L.at(
+  __c20,
+  5,
+) as any as S.Schema<ListTagsForResourceResponse>;
 export interface ListTargetGroupsRequest {
   maxResults?: number;
   nextToken?: string;
   vpcIdentifier?: string;
   targetGroupType?: string;
 }
+const ListTargetGroupsRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  6,
+) as any as S.Schema<ListTargetGroupsRequest>;
 export interface TargetGroupSummary {
   id?: string;
   arn?: string;
@@ -1286,17 +1783,24 @@ export interface TargetGroupSummary {
   serviceArns?: string[];
   lambdaEventStructureVersion?: string;
 }
+const TargetGroupSummary = /*@__PURE__*/ __L.at(__c20, 7) as any as S.Schema<TargetGroupSummary>;
 export type TargetGroupList = TargetGroupSummary[];
+const TargetGroupList = /*@__PURE__*/ __L.at(__c21, 0);
 export interface ListTargetGroupsResponse {
   items?: TargetGroupSummary[];
   nextToken?: string;
 }
+const ListTargetGroupsResponse = /*@__PURE__*/ __L.at(
+  __c21,
+  1,
+) as any as S.Schema<ListTargetGroupsResponse>;
 export interface ListTargetsRequest {
   targetGroupIdentifier: string;
   maxResults?: number;
   nextToken?: string;
   targets?: Target[];
 }
+const ListTargetsRequest = /*@__PURE__*/ __L.at(__c21, 2) as any as S.Schema<ListTargetsRequest>;
 export type TargetStatus = string;
 export interface TargetSummary {
   id?: string;
@@ -1304,37 +1808,66 @@ export interface TargetSummary {
   status?: string;
   reasonCode?: string;
 }
+const TargetSummary = /*@__PURE__*/ __L.at(__c21, 3) as any as S.Schema<TargetSummary>;
 export type TargetSummaryList = TargetSummary[];
+const TargetSummaryList = /*@__PURE__*/ __L.at(__c21, 4);
 export interface ListTargetsResponse {
   items: TargetSummary[];
   nextToken?: string;
 }
+const ListTargetsResponse = /*@__PURE__*/ __L.at(__c21, 5) as any as S.Schema<ListTargetsResponse>;
 export interface PutAuthPolicyRequest {
   resourceIdentifier: string;
   policy: string;
 }
+const PutAuthPolicyRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  6,
+) as any as S.Schema<PutAuthPolicyRequest>;
 export interface PutAuthPolicyResponse {
   policy?: string;
   state?: string;
 }
+const PutAuthPolicyResponse = /*@__PURE__*/ __L.at(
+  __c21,
+  7,
+) as any as S.Schema<PutAuthPolicyResponse>;
 export interface PutResourcePolicyRequest {
   resourceArn: string;
   policy: string;
 }
+const PutResourcePolicyRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  0,
+) as any as S.Schema<PutResourcePolicyRequest>;
 export interface PutResourcePolicyResponse {}
+const PutResourcePolicyResponse =
+  DeleteAuthPolicyResponse as any as S.Schema<PutResourcePolicyResponse>;
 export interface RegisterTargetsRequest {
   targetGroupIdentifier: string;
   targets: Target[];
 }
+const RegisterTargetsRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  1,
+) as any as S.Schema<RegisterTargetsRequest>;
 export interface RegisterTargetsResponse {
   successful?: Target[];
   unsuccessful?: TargetFailure[];
 }
+const RegisterTargetsResponse = /*@__PURE__*/ __L.at(
+  __c22,
+  2,
+) as any as S.Schema<RegisterTargetsResponse>;
 export interface StartDomainVerificationRequest {
   clientToken?: string;
   domainName: string;
   tags?: { [key: string]: string | undefined };
 }
+const StartDomainVerificationRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  3,
+) as any as S.Schema<StartDomainVerificationRequest>;
 export interface StartDomainVerificationResponse {
   id: string;
   arn: string;
@@ -1342,21 +1875,37 @@ export interface StartDomainVerificationResponse {
   status: string;
   txtMethodConfig?: TxtMethodConfig;
 }
+const StartDomainVerificationResponse = /*@__PURE__*/ __L.at(
+  __c22,
+  4,
+) as any as S.Schema<StartDomainVerificationResponse>;
 export interface TagResourceRequest {
   resourceArn: string;
   tags: { [key: string]: string | undefined };
 }
+const TagResourceRequest = /*@__PURE__*/ __L.at(__c22, 5) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
+const TagResourceResponse = DeleteAuthPolicyResponse as any as S.Schema<TagResourceResponse>;
 export type TagKeys = string[];
+const TagKeys = PortRangeList as any as S.Schema<TagKeys>;
 export interface UntagResourceRequest {
   resourceArn: string;
   tagKeys: string[];
 }
+const UntagResourceRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  6,
+) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
+const UntagResourceResponse = DeleteAuthPolicyResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateAccessLogSubscriptionRequest {
   accessLogSubscriptionIdentifier: string;
   destinationArn: string;
 }
+const UpdateAccessLogSubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  7,
+) as any as S.Schema<UpdateAccessLogSubscriptionRequest>;
 export interface UpdateAccessLogSubscriptionResponse {
   id: string;
   arn: string;
@@ -1364,11 +1913,19 @@ export interface UpdateAccessLogSubscriptionResponse {
   resourceArn: string;
   destinationArn: string;
 }
+const UpdateAccessLogSubscriptionResponse = /*@__PURE__*/ __L.at(
+  __c23,
+  0,
+) as any as S.Schema<UpdateAccessLogSubscriptionResponse>;
 export interface UpdateListenerRequest {
   serviceIdentifier: string;
   listenerIdentifier: string;
   defaultAction: RuleAction;
 }
+const UpdateListenerRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  1,
+) as any as S.Schema<UpdateListenerRequest>;
 export interface UpdateListenerResponse {
   arn?: string;
   id?: string;
@@ -1379,12 +1936,17 @@ export interface UpdateListenerResponse {
   serviceId?: string;
   defaultAction?: RuleAction;
 }
+const UpdateListenerResponse = CreateListenerResponse as any as S.Schema<UpdateListenerResponse>;
 export interface UpdateResourceConfigurationRequest {
   resourceConfigurationIdentifier: string;
   resourceConfigurationDefinition?: ResourceConfigurationDefinition;
   allowAssociationToShareableServiceNetwork?: boolean;
   portRanges?: string[];
 }
+const UpdateResourceConfigurationRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  2,
+) as any as S.Schema<UpdateResourceConfigurationRequest>;
 export interface UpdateResourceConfigurationResponse {
   id?: string;
   name?: string;
@@ -1398,10 +1960,18 @@ export interface UpdateResourceConfigurationResponse {
   status?: string;
   resourceConfigurationDefinition?: ResourceConfigurationDefinition;
 }
+const UpdateResourceConfigurationResponse = /*@__PURE__*/ __L.at(
+  __c23,
+  3,
+) as any as S.Schema<UpdateResourceConfigurationResponse>;
 export interface UpdateResourceGatewayRequest {
   resourceGatewayIdentifier: string;
   securityGroupIds?: string[];
 }
+const UpdateResourceGatewayRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  4,
+) as any as S.Schema<UpdateResourceGatewayRequest>;
 export interface UpdateResourceGatewayResponse {
   name?: string;
   id?: string;
@@ -1412,6 +1982,10 @@ export interface UpdateResourceGatewayResponse {
   securityGroupIds?: string[];
   ipAddressType?: string;
 }
+const UpdateResourceGatewayResponse = /*@__PURE__*/ __L.at(
+  __c23,
+  5,
+) as any as S.Schema<UpdateResourceGatewayResponse>;
 export interface UpdateRuleRequest {
   serviceIdentifier: string;
   listenerIdentifier: string;
@@ -1420,6 +1994,7 @@ export interface UpdateRuleRequest {
   priority?: number;
   action?: RuleAction;
 }
+const UpdateRuleRequest = /*@__PURE__*/ __L.at(__c23, 6) as any as S.Schema<UpdateRuleRequest>;
 export interface UpdateRuleResponse {
   arn?: string;
   id?: string;
@@ -1429,12 +2004,17 @@ export interface UpdateRuleResponse {
   priority?: number;
   action?: RuleAction;
 }
+const UpdateRuleResponse = RuleUpdateSuccess as any as S.Schema<UpdateRuleResponse>;
 export interface UpdateServiceRequest {
   serviceIdentifier: string;
   certificateArn?: string;
   authType?: string;
   idleTimeoutSeconds?: number;
 }
+const UpdateServiceRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  7,
+) as any as S.Schema<UpdateServiceRequest>;
 export interface UpdateServiceResponse {
   id?: string;
   arn?: string;
@@ -1444,22 +2024,38 @@ export interface UpdateServiceResponse {
   authType?: string;
   idleTimeoutSeconds?: number;
 }
+const UpdateServiceResponse = /*@__PURE__*/ __L.at(
+  __c24,
+  0,
+) as any as S.Schema<UpdateServiceResponse>;
 export interface UpdateServiceNetworkRequest {
   serviceNetworkIdentifier: string;
   authType: string;
 }
+const UpdateServiceNetworkRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  1,
+) as any as S.Schema<UpdateServiceNetworkRequest>;
 export interface UpdateServiceNetworkResponse {
   id?: string;
   name?: string;
   arn?: string;
   authType?: string;
 }
+const UpdateServiceNetworkResponse = /*@__PURE__*/ __L.at(
+  __c24,
+  2,
+) as any as S.Schema<UpdateServiceNetworkResponse>;
 export interface UpdateServiceNetworkVpcAssociationRequest {
   serviceNetworkVpcAssociationIdentifier: string;
   securityGroupIds?: string[];
   privateDnsEnabled?: boolean;
   dnsOptions?: DnsOptions;
 }
+const UpdateServiceNetworkVpcAssociationRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  3,
+) as any as S.Schema<UpdateServiceNetworkVpcAssociationRequest>;
 export interface UpdateServiceNetworkVpcAssociationResponse {
   id?: string;
   arn?: string;
@@ -1469,10 +2065,18 @@ export interface UpdateServiceNetworkVpcAssociationResponse {
   privateDnsEnabled?: boolean;
   dnsOptions?: DnsOptions;
 }
+const UpdateServiceNetworkVpcAssociationResponse = /*@__PURE__*/ __L.at(
+  __c24,
+  4,
+) as any as S.Schema<UpdateServiceNetworkVpcAssociationResponse>;
 export interface UpdateTargetGroupRequest {
   targetGroupIdentifier: string;
   healthCheck: HealthCheckConfig;
 }
+const UpdateTargetGroupRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  5,
+) as any as S.Schema<UpdateTargetGroupRequest>;
 export interface UpdateTargetGroupResponse {
   id?: string;
   arn?: string;
@@ -1481,12 +2085,19 @@ export interface UpdateTargetGroupResponse {
   config?: TargetGroupConfig;
   status?: string;
 }
+const UpdateTargetGroupResponse =
+  CreateTargetGroupResponse as any as S.Schema<UpdateTargetGroupResponse>;
 export type ValidationExceptionReason = string;
 export interface ValidationExceptionField {
   name: string;
   message: string;
 }
+const ValidationExceptionField = /*@__PURE__*/ __L.at(
+  __c24,
+  6,
+) as any as S.Schema<ValidationExceptionField>;
 export type ValidationExceptionFieldList = ValidationExceptionField[];
+const ValidationExceptionFieldList = /*@__PURE__*/ __L.at(__c24, 7);
 export type BatchUpdateRuleError =
   | AccessDeniedException
   | ConflictException
@@ -1508,8 +2119,8 @@ export const batchUpdateRule: API.OperationMethod<
   BatchUpdateRuleError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14) as any as S.Schema<BatchUpdateRuleRequest>,
-  output: __S(19) as any as S.Schema<BatchUpdateRuleResponse>,
+  input: BatchUpdateRuleRequest,
+  output: BatchUpdateRuleResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1540,8 +2151,8 @@ export const createAccessLogSubscription: API.OperationMethod<
   CreateAccessLogSubscriptionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21) as any as S.Schema<CreateAccessLogSubscriptionRequest>,
-  output: __S(22) as any as S.Schema<CreateAccessLogSubscriptionResponse>,
+  input: CreateAccessLogSubscriptionRequest,
+  output: CreateAccessLogSubscriptionResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1573,8 +2184,8 @@ export const createListener: API.OperationMethod<
   CreateListenerError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23) as any as S.Schema<CreateListenerRequest>,
-  output: __S(24) as any as S.Schema<CreateListenerResponse>,
+  input: CreateListenerRequest,
+  output: CreateListenerResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1607,8 +2218,8 @@ export const createResourceConfiguration: API.OperationMethod<
   CreateResourceConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31) as any as S.Schema<CreateResourceConfigurationRequest>,
-  output: __S(32) as any as S.Schema<CreateResourceConfigurationResponse>,
+  input: CreateResourceConfigurationRequest,
+  output: CreateResourceConfigurationResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1641,8 +2252,8 @@ export const createResourceGateway: API.OperationMethod<
   CreateResourceGatewayError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33) as any as S.Schema<CreateResourceGatewayRequest>,
-  output: __S(34) as any as S.Schema<CreateResourceGatewayResponse>,
+  input: CreateResourceGatewayRequest,
+  output: CreateResourceGatewayResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1675,8 +2286,8 @@ export const createRule: API.OperationMethod<
   CreateRuleError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35) as any as S.Schema<CreateRuleRequest>,
-  output: __S(36) as any as S.Schema<CreateRuleResponse>,
+  input: CreateRuleRequest,
+  output: CreateRuleResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1711,8 +2322,8 @@ export const createService: API.OperationMethod<
   CreateServiceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37) as any as S.Schema<CreateServiceRequest>,
-  output: __S(39) as any as S.Schema<CreateServiceResponse>,
+  input: CreateServiceRequest,
+  output: CreateServiceResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1747,8 +2358,8 @@ export const createServiceNetwork: API.OperationMethod<
   CreateServiceNetworkError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41) as any as S.Schema<CreateServiceNetworkRequest>,
-  output: __S(42) as any as S.Schema<CreateServiceNetworkResponse>,
+  input: CreateServiceNetworkRequest,
+  output: CreateServiceNetworkResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1781,8 +2392,8 @@ export const createServiceNetworkResourceAssociation: API.OperationMethod<
   CreateServiceNetworkResourceAssociationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43) as any as S.Schema<CreateServiceNetworkResourceAssociationRequest>,
-  output: __S(44) as any as S.Schema<CreateServiceNetworkResourceAssociationResponse>,
+  input: CreateServiceNetworkResourceAssociationRequest,
+  output: CreateServiceNetworkResourceAssociationResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1821,8 +2432,8 @@ export const createServiceNetworkServiceAssociation: API.OperationMethod<
   CreateServiceNetworkServiceAssociationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45) as any as S.Schema<CreateServiceNetworkServiceAssociationRequest>,
-  output: __S(46) as any as S.Schema<CreateServiceNetworkServiceAssociationResponse>,
+  input: CreateServiceNetworkServiceAssociationRequest,
+  output: CreateServiceNetworkServiceAssociationResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1861,8 +2472,8 @@ export const createServiceNetworkVpcAssociation: API.OperationMethod<
   CreateServiceNetworkVpcAssociationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48) as any as S.Schema<CreateServiceNetworkVpcAssociationRequest>,
-  output: __S(49) as any as S.Schema<CreateServiceNetworkVpcAssociationResponse>,
+  input: CreateServiceNetworkVpcAssociationRequest,
+  output: CreateServiceNetworkVpcAssociationResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1897,8 +2508,8 @@ export const createTargetGroup: API.OperationMethod<
   CreateTargetGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(53) as any as S.Schema<CreateTargetGroupRequest>,
-  output: __S(54) as any as S.Schema<CreateTargetGroupResponse>,
+  input: CreateTargetGroupRequest,
+  output: CreateTargetGroupResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1929,8 +2540,8 @@ export const deleteAccessLogSubscription: API.OperationMethod<
   DeleteAccessLogSubscriptionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(55) as any as S.Schema<DeleteAccessLogSubscriptionRequest>,
-  output: __S(56) as any as S.Schema<DeleteAccessLogSubscriptionResponse>,
+  input: DeleteAccessLogSubscriptionRequest,
+  output: DeleteAccessLogSubscriptionResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1959,8 +2570,8 @@ export const deleteAuthPolicy: API.OperationMethod<
   DeleteAuthPolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57) as any as S.Schema<DeleteAuthPolicyRequest>,
-  output: __S(58) as any as S.Schema<DeleteAuthPolicyResponse>,
+  input: DeleteAuthPolicyRequest,
+  output: DeleteAuthPolicyResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1989,8 +2600,8 @@ export const deleteDomainVerification: API.OperationMethod<
   DeleteDomainVerificationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(59) as any as S.Schema<DeleteDomainVerificationRequest>,
-  output: __S(56) as any as S.Schema<DeleteDomainVerificationResponse>,
+  input: DeleteDomainVerificationRequest,
+  output: DeleteDomainVerificationResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2020,8 +2631,8 @@ export const deleteListener: API.OperationMethod<
   DeleteListenerError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60) as any as S.Schema<DeleteListenerRequest>,
-  output: __S(58) as any as S.Schema<DeleteListenerResponse>,
+  input: DeleteListenerRequest,
+  output: DeleteListenerResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2052,8 +2663,8 @@ export const deleteResourceConfiguration: API.OperationMethod<
   DeleteResourceConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(61) as any as S.Schema<DeleteResourceConfigurationRequest>,
-  output: __S(56) as any as S.Schema<DeleteResourceConfigurationResponse>,
+  input: DeleteResourceConfigurationRequest,
+  output: DeleteResourceConfigurationResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2083,8 +2694,8 @@ export const deleteResourceEndpointAssociation: API.OperationMethod<
   DeleteResourceEndpointAssociationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(62) as any as S.Schema<DeleteResourceEndpointAssociationRequest>,
-  output: __S(63) as any as S.Schema<DeleteResourceEndpointAssociationResponse>,
+  input: DeleteResourceEndpointAssociationRequest,
+  output: DeleteResourceEndpointAssociationResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2114,8 +2725,8 @@ export const deleteResourceGateway: API.OperationMethod<
   DeleteResourceGatewayError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(64) as any as S.Schema<DeleteResourceGatewayRequest>,
-  output: __S(65) as any as S.Schema<DeleteResourceGatewayResponse>,
+  input: DeleteResourceGatewayRequest,
+  output: DeleteResourceGatewayResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2145,8 +2756,8 @@ export const deleteResourcePolicy: API.OperationMethod<
   DeleteResourcePolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(66) as any as S.Schema<DeleteResourcePolicyRequest>,
-  output: __S(58) as any as S.Schema<DeleteResourcePolicyResponse>,
+  input: DeleteResourcePolicyRequest,
+  output: DeleteResourcePolicyResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2178,8 +2789,8 @@ export const deleteRule: API.OperationMethod<
   DeleteRuleError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(67) as any as S.Schema<DeleteRuleRequest>,
-  output: __S(58) as any as S.Schema<DeleteRuleResponse>,
+  input: DeleteRuleRequest,
+  output: DeleteRuleResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2210,8 +2821,8 @@ export const deleteService: API.OperationMethod<
   DeleteServiceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(68) as any as S.Schema<DeleteServiceRequest>,
-  output: __S(69) as any as S.Schema<DeleteServiceResponse>,
+  input: DeleteServiceRequest,
+  output: DeleteServiceResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2242,8 +2853,8 @@ export const deleteServiceNetwork: API.OperationMethod<
   DeleteServiceNetworkError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(70) as any as S.Schema<DeleteServiceNetworkRequest>,
-  output: __S(58) as any as S.Schema<DeleteServiceNetworkResponse>,
+  input: DeleteServiceNetworkRequest,
+  output: DeleteServiceNetworkResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2274,8 +2885,8 @@ export const deleteServiceNetworkResourceAssociation: API.OperationMethod<
   DeleteServiceNetworkResourceAssociationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(71) as any as S.Schema<DeleteServiceNetworkResourceAssociationRequest>,
-  output: __S(72) as any as S.Schema<DeleteServiceNetworkResourceAssociationResponse>,
+  input: DeleteServiceNetworkResourceAssociationRequest,
+  output: DeleteServiceNetworkResourceAssociationResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2306,8 +2917,8 @@ export const deleteServiceNetworkServiceAssociation: API.OperationMethod<
   DeleteServiceNetworkServiceAssociationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(73) as any as S.Schema<DeleteServiceNetworkServiceAssociationRequest>,
-  output: __S(74) as any as S.Schema<DeleteServiceNetworkServiceAssociationResponse>,
+  input: DeleteServiceNetworkServiceAssociationRequest,
+  output: DeleteServiceNetworkServiceAssociationResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2338,8 +2949,8 @@ export const deleteServiceNetworkVpcAssociation: API.OperationMethod<
   DeleteServiceNetworkVpcAssociationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(75) as any as S.Schema<DeleteServiceNetworkVpcAssociationRequest>,
-  output: __S(74) as any as S.Schema<DeleteServiceNetworkVpcAssociationResponse>,
+  input: DeleteServiceNetworkVpcAssociationRequest,
+  output: DeleteServiceNetworkVpcAssociationResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2369,8 +2980,8 @@ export const deleteTargetGroup: API.OperationMethod<
   DeleteTargetGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(76) as any as S.Schema<DeleteTargetGroupRequest>,
-  output: __S(72) as any as S.Schema<DeleteTargetGroupResponse>,
+  input: DeleteTargetGroupRequest,
+  output: DeleteTargetGroupResponse,
   errors: [
     ConflictException,
     InternalServerException,
@@ -2400,8 +3011,8 @@ export const deregisterTargets: API.OperationMethod<
   DeregisterTargetsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(79) as any as S.Schema<DeregisterTargetsRequest>,
-  output: __S(82) as any as S.Schema<DeregisterTargetsResponse>,
+  input: DeregisterTargetsRequest,
+  output: DeregisterTargetsResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2431,8 +3042,8 @@ export const getAccessLogSubscription: API.OperationMethod<
   GetAccessLogSubscriptionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(83) as any as S.Schema<GetAccessLogSubscriptionRequest>,
-  output: __S(84) as any as S.Schema<GetAccessLogSubscriptionResponse>,
+  input: GetAccessLogSubscriptionRequest,
+  output: GetAccessLogSubscriptionResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2461,8 +3072,8 @@ export const getAuthPolicy: API.OperationMethod<
   GetAuthPolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(85) as any as S.Schema<GetAuthPolicyRequest>,
-  output: __S(86) as any as S.Schema<GetAuthPolicyResponse>,
+  input: GetAuthPolicyRequest,
+  output: GetAuthPolicyResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2491,8 +3102,8 @@ export const getDomainVerification: API.OperationMethod<
   GetDomainVerificationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(87) as any as S.Schema<GetDomainVerificationRequest>,
-  output: __S(89) as any as S.Schema<GetDomainVerificationResponse>,
+  input: GetDomainVerificationRequest,
+  output: GetDomainVerificationResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2521,8 +3132,8 @@ export const getListener: API.OperationMethod<
   GetListenerError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(90) as any as S.Schema<GetListenerRequest>,
-  output: __S(91) as any as S.Schema<GetListenerResponse>,
+  input: GetListenerRequest,
+  output: GetListenerResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2551,8 +3162,8 @@ export const getResourceConfiguration: API.OperationMethod<
   GetResourceConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(92) as any as S.Schema<GetResourceConfigurationRequest>,
-  output: __S(93) as any as S.Schema<GetResourceConfigurationResponse>,
+  input: GetResourceConfigurationRequest,
+  output: GetResourceConfigurationResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2581,8 +3192,8 @@ export const getResourceGateway: API.OperationMethod<
   GetResourceGatewayError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(94) as any as S.Schema<GetResourceGatewayRequest>,
-  output: __S(95) as any as S.Schema<GetResourceGatewayResponse>,
+  input: GetResourceGatewayRequest,
+  output: GetResourceGatewayResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2611,8 +3222,8 @@ export const getResourcePolicy: API.OperationMethod<
   GetResourcePolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(96) as any as S.Schema<GetResourcePolicyRequest>,
-  output: __S(97) as any as S.Schema<GetResourcePolicyResponse>,
+  input: GetResourcePolicyRequest,
+  output: GetResourcePolicyResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2641,8 +3252,8 @@ export const getRule: API.OperationMethod<
   GetRuleError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(98) as any as S.Schema<GetRuleRequest>,
-  output: __S(99) as any as S.Schema<GetRuleResponse>,
+  input: GetRuleRequest,
+  output: GetRuleResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2671,8 +3282,8 @@ export const getService: API.OperationMethod<
   GetServiceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(100) as any as S.Schema<GetServiceRequest>,
-  output: __S(101) as any as S.Schema<GetServiceResponse>,
+  input: GetServiceRequest,
+  output: GetServiceResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2701,8 +3312,8 @@ export const getServiceNetwork: API.OperationMethod<
   GetServiceNetworkError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(102) as any as S.Schema<GetServiceNetworkRequest>,
-  output: __S(103) as any as S.Schema<GetServiceNetworkResponse>,
+  input: GetServiceNetworkRequest,
+  output: GetServiceNetworkResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2731,8 +3342,8 @@ export const getServiceNetworkResourceAssociation: API.OperationMethod<
   GetServiceNetworkResourceAssociationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(104) as any as S.Schema<GetServiceNetworkResourceAssociationRequest>,
-  output: __S(105) as any as S.Schema<GetServiceNetworkResourceAssociationResponse>,
+  input: GetServiceNetworkResourceAssociationRequest,
+  output: GetServiceNetworkResourceAssociationResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2761,8 +3372,8 @@ export const getServiceNetworkServiceAssociation: API.OperationMethod<
   GetServiceNetworkServiceAssociationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(106) as any as S.Schema<GetServiceNetworkServiceAssociationRequest>,
-  output: __S(107) as any as S.Schema<GetServiceNetworkServiceAssociationResponse>,
+  input: GetServiceNetworkServiceAssociationRequest,
+  output: GetServiceNetworkServiceAssociationResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2791,8 +3402,8 @@ export const getServiceNetworkVpcAssociation: API.OperationMethod<
   GetServiceNetworkVpcAssociationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(108) as any as S.Schema<GetServiceNetworkVpcAssociationRequest>,
-  output: __S(109) as any as S.Schema<GetServiceNetworkVpcAssociationResponse>,
+  input: GetServiceNetworkVpcAssociationRequest,
+  output: GetServiceNetworkVpcAssociationResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2821,8 +3432,8 @@ export const getTargetGroup: API.OperationMethod<
   GetTargetGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(110) as any as S.Schema<GetTargetGroupRequest>,
-  output: __S(111) as any as S.Schema<GetTargetGroupResponse>,
+  input: GetTargetGroupRequest,
+  output: GetTargetGroupResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2852,8 +3463,8 @@ export const listAccessLogSubscriptions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   AccessLogSubscriptionSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(112) as any as S.Schema<ListAccessLogSubscriptionsRequest>,
-  output: __S(114) as any as S.Schema<ListAccessLogSubscriptionsResponse>,
+  input: ListAccessLogSubscriptionsRequest,
+  output: ListAccessLogSubscriptionsResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2889,8 +3500,8 @@ export const listDomainVerifications: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   DomainVerificationSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(115) as any as S.Schema<ListDomainVerificationsRequest>,
-  output: __S(117) as any as S.Schema<ListDomainVerificationsResponse>,
+  input: ListDomainVerificationsRequest,
+  output: ListDomainVerificationsResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2926,8 +3537,8 @@ export const listListeners: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ListenerSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(118) as any as S.Schema<ListListenersRequest>,
-  output: __S(121) as any as S.Schema<ListListenersResponse>,
+  input: ListListenersRequest,
+  output: ListListenersResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2962,8 +3573,8 @@ export const listResourceConfigurations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ResourceConfigurationSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(122) as any as S.Schema<ListResourceConfigurationsRequest>,
-  output: __S(125) as any as S.Schema<ListResourceConfigurationsResponse>,
+  input: ListResourceConfigurationsRequest,
+  output: ListResourceConfigurationsResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2997,8 +3608,8 @@ export const listResourceEndpointAssociations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ResourceEndpointAssociationSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(126) as any as S.Schema<ListResourceEndpointAssociationsRequest>,
-  output: __S(131) as any as S.Schema<ListResourceEndpointAssociationsResponse>,
+  input: ListResourceEndpointAssociationsRequest,
+  output: ListResourceEndpointAssociationsResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3032,8 +3643,8 @@ export const listResourceGateways: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ResourceGatewaySummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(132) as any as S.Schema<ListResourceGatewaysRequest>,
-  output: __S(135) as any as S.Schema<ListResourceGatewaysResponse>,
+  input: ListResourceGatewaysRequest,
+  output: ListResourceGatewaysResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3068,8 +3679,8 @@ export const listRules: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   RuleSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(136) as any as S.Schema<ListRulesRequest>,
-  output: __S(139) as any as S.Schema<ListRulesResponse>,
+  input: ListRulesRequest,
+  output: ListRulesResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3104,8 +3715,8 @@ export const listServiceNetworkResourceAssociations: API.PaginatedOperationMetho
   Credentials | HttpClient.HttpClient,
   ServiceNetworkResourceAssociationSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(140) as any as S.Schema<ListServiceNetworkResourceAssociationsRequest>,
-  output: __S(143) as any as S.Schema<ListServiceNetworkResourceAssociationsResponse>,
+  input: ListServiceNetworkResourceAssociationsRequest,
+  output: ListServiceNetworkResourceAssociationsResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3139,8 +3750,8 @@ export const listServiceNetworks: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ServiceNetworkSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(144) as any as S.Schema<ListServiceNetworksRequest>,
-  output: __S(147) as any as S.Schema<ListServiceNetworksResponse>,
+  input: ListServiceNetworksRequest,
+  output: ListServiceNetworksResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3176,8 +3787,8 @@ export const listServiceNetworkServiceAssociations: API.PaginatedOperationMethod
   Credentials | HttpClient.HttpClient,
   ServiceNetworkServiceAssociationSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(148) as any as S.Schema<ListServiceNetworkServiceAssociationsRequest>,
-  output: __S(151) as any as S.Schema<ListServiceNetworkServiceAssociationsResponse>,
+  input: ListServiceNetworkServiceAssociationsRequest,
+  output: ListServiceNetworkServiceAssociationsResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3211,8 +3822,8 @@ export const listServiceNetworkVpcAssociations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ServiceNetworkVpcAssociationSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(152) as any as S.Schema<ListServiceNetworkVpcAssociationsRequest>,
-  output: __S(155) as any as S.Schema<ListServiceNetworkVpcAssociationsResponse>,
+  input: ListServiceNetworkVpcAssociationsRequest,
+  output: ListServiceNetworkVpcAssociationsResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3246,8 +3857,8 @@ export const listServiceNetworkVpcEndpointAssociations: API.PaginatedOperationMe
   Credentials | HttpClient.HttpClient,
   ServiceNetworkEndpointAssociation
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(156) as any as S.Schema<ListServiceNetworkVpcEndpointAssociationsRequest>,
-  output: __S(159) as any as S.Schema<ListServiceNetworkVpcEndpointAssociationsResponse>,
+  input: ListServiceNetworkVpcEndpointAssociationsRequest,
+  output: ListServiceNetworkVpcEndpointAssociationsResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3281,8 +3892,8 @@ export const listServices: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ServiceSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(160) as any as S.Schema<ListServicesRequest>,
-  output: __S(163) as any as S.Schema<ListServicesResponse>,
+  input: ListServicesRequest,
+  output: ListServicesResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3315,8 +3926,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(164) as any as S.Schema<ListTagsForResourceRequest>,
-  output: __S(165) as any as S.Schema<ListTagsForResourceResponse>,
+  input: ListTagsForResourceRequest,
+  output: ListTagsForResourceResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3344,8 +3955,8 @@ export const listTargetGroups: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   TargetGroupSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(166) as any as S.Schema<ListTargetGroupsRequest>,
-  output: __S(169) as any as S.Schema<ListTargetGroupsResponse>,
+  input: ListTargetGroupsRequest,
+  output: ListTargetGroupsResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3380,8 +3991,8 @@ export const listTargets: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   TargetSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(170) as any as S.Schema<ListTargetsRequest>,
-  output: __S(173) as any as S.Schema<ListTargetsResponse>,
+  input: ListTargetsRequest,
+  output: ListTargetsResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3418,8 +4029,8 @@ export const putAuthPolicy: API.OperationMethod<
   PutAuthPolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(174) as any as S.Schema<PutAuthPolicyRequest>,
-  output: __S(175) as any as S.Schema<PutAuthPolicyResponse>,
+  input: PutAuthPolicyRequest,
+  output: PutAuthPolicyResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3448,8 +4059,8 @@ export const putResourcePolicy: API.OperationMethod<
   PutResourcePolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(176) as any as S.Schema<PutResourcePolicyRequest>,
-  output: __S(58) as any as S.Schema<PutResourcePolicyResponse>,
+  input: PutResourcePolicyRequest,
+  output: PutResourcePolicyResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3480,8 +4091,8 @@ export const registerTargets: API.OperationMethod<
   RegisterTargetsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(177) as any as S.Schema<RegisterTargetsRequest>,
-  output: __S(178) as any as S.Schema<RegisterTargetsResponse>,
+  input: RegisterTargetsRequest,
+  output: RegisterTargetsResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3513,8 +4124,8 @@ export const startDomainVerification: API.OperationMethod<
   StartDomainVerificationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(179) as any as S.Schema<StartDomainVerificationRequest>,
-  output: __S(180) as any as S.Schema<StartDomainVerificationResponse>,
+  input: StartDomainVerificationRequest,
+  output: StartDomainVerificationResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3544,8 +4155,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(181) as any as S.Schema<TagResourceRequest>,
-  output: __S(58) as any as S.Schema<TagResourceResponse>,
+  input: TagResourceRequest,
+  output: TagResourceResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3573,8 +4184,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(182) as any as S.Schema<UntagResourceRequest>,
-  output: __S(58) as any as S.Schema<UntagResourceResponse>,
+  input: UntagResourceRequest,
+  output: UntagResourceResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3603,8 +4214,8 @@ export const updateAccessLogSubscription: API.OperationMethod<
   UpdateAccessLogSubscriptionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(183) as any as S.Schema<UpdateAccessLogSubscriptionRequest>,
-  output: __S(184) as any as S.Schema<UpdateAccessLogSubscriptionResponse>,
+  input: UpdateAccessLogSubscriptionRequest,
+  output: UpdateAccessLogSubscriptionResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3636,8 +4247,8 @@ export const updateListener: API.OperationMethod<
   UpdateListenerError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(185) as any as S.Schema<UpdateListenerRequest>,
-  output: __S(24) as any as S.Schema<UpdateListenerResponse>,
+  input: UpdateListenerRequest,
+  output: UpdateListenerResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3669,8 +4280,8 @@ export const updateResourceConfiguration: API.OperationMethod<
   UpdateResourceConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(186) as any as S.Schema<UpdateResourceConfigurationRequest>,
-  output: __S(187) as any as S.Schema<UpdateResourceConfigurationResponse>,
+  input: UpdateResourceConfigurationRequest,
+  output: UpdateResourceConfigurationResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3701,8 +4312,8 @@ export const updateResourceGateway: API.OperationMethod<
   UpdateResourceGatewayError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(188) as any as S.Schema<UpdateResourceGatewayRequest>,
-  output: __S(189) as any as S.Schema<UpdateResourceGatewayResponse>,
+  input: UpdateResourceGatewayRequest,
+  output: UpdateResourceGatewayResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3734,8 +4345,8 @@ export const updateRule: API.OperationMethod<
   UpdateRuleError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(190) as any as S.Schema<UpdateRuleRequest>,
-  output: __S(15) as any as S.Schema<UpdateRuleResponse>,
+  input: UpdateRuleRequest,
+  output: UpdateRuleResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3768,8 +4379,8 @@ export const updateService: API.OperationMethod<
   UpdateServiceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(191) as any as S.Schema<UpdateServiceRequest>,
-  output: __S(192) as any as S.Schema<UpdateServiceResponse>,
+  input: UpdateServiceRequest,
+  output: UpdateServiceResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3801,8 +4412,8 @@ export const updateServiceNetwork: API.OperationMethod<
   UpdateServiceNetworkError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(193) as any as S.Schema<UpdateServiceNetworkRequest>,
-  output: __S(194) as any as S.Schema<UpdateServiceNetworkResponse>,
+  input: UpdateServiceNetworkRequest,
+  output: UpdateServiceNetworkResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3833,8 +4444,8 @@ export const updateServiceNetworkVpcAssociation: API.OperationMethod<
   UpdateServiceNetworkVpcAssociationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(195) as any as S.Schema<UpdateServiceNetworkVpcAssociationRequest>,
-  output: __S(196) as any as S.Schema<UpdateServiceNetworkVpcAssociationResponse>,
+  input: UpdateServiceNetworkVpcAssociationRequest,
+  output: UpdateServiceNetworkVpcAssociationResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3866,8 +4477,8 @@ export const updateTargetGroup: API.OperationMethod<
   UpdateTargetGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(197) as any as S.Schema<UpdateTargetGroupRequest>,
-  output: __S(54) as any as S.Schema<UpdateTargetGroupResponse>,
+  input: UpdateTargetGroupRequest,
+  output: UpdateTargetGroupResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3892,7 +4503,7 @@ function __c0(j: number): any {
       ]);
     case 1:
       return S.suspend(() =>
-        S.Struct({ match: __S(0), caseSensitive: S.optional(S.Boolean) }),
+        S.Struct({ match: PathMatchType, caseSensitive: S.optional(S.Boolean) }),
       ).annotate({ identifier: "PathMatch" });
     case 2:
       return S.Union([
@@ -3902,20 +4513,20 @@ function __c0(j: number): any {
       ]);
     case 3:
       return S.suspend(() =>
-        S.Struct({ name: S.String, match: __S(2), caseSensitive: S.optional(S.Boolean) }),
+        S.Struct({ name: S.String, match: HeaderMatchType, caseSensitive: S.optional(S.Boolean) }),
       ).annotate({ identifier: "HeaderMatch" });
     case 4:
-      return S.Array(__S(3));
+      return S.Array(HeaderMatch);
     case 5:
       return S.suspend(() =>
         S.Struct({
           method: S.optional(S.String),
-          pathMatch: S.optional(__S(1)),
-          headerMatches: S.optional(__S(4)),
+          pathMatch: S.optional(PathMatch),
+          headerMatches: S.optional(HeaderMatchList),
         }),
       ).annotate({ identifier: "HttpMatch" });
     case 6:
-      return S.Union([/*@__PURE__*/ S.Struct({ httpMatch: __S(5) })]);
+      return S.Union([/*@__PURE__*/ S.Struct({ httpMatch: HttpMatch })]);
     case 7:
       return S.suspend(() =>
         S.Struct({ targetGroupIdentifier: S.String, weight: S.optional(S.Number) }),
@@ -3925,9 +4536,9 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(7));
+      return S.Array(WeightedTargetGroup);
     case 1:
-      return S.suspend(() => S.Struct({ targetGroups: __S(8) })).annotate({
+      return S.suspend(() => S.Struct({ targetGroups: WeightedTargetGroupList })).annotate({
         identifier: "ForwardAction",
       });
     case 2:
@@ -3936,26 +4547,26 @@ function __c1(j: number): any {
       });
     case 3:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ forward: __S(9) }),
-        /*@__PURE__*/ S.Struct({ fixedResponse: __S(10) }),
+        /*@__PURE__*/ S.Struct({ forward: ForwardAction }),
+        /*@__PURE__*/ S.Struct({ fixedResponse: FixedResponseAction }),
       ]);
     case 4:
       return S.suspend(() =>
         S.Struct({
           ruleIdentifier: S.String,
-          match: S.optional(__S(6)),
+          match: S.optional(RuleMatch),
           priority: S.optional(S.Number),
-          action: S.optional(__S(11)),
+          action: S.optional(RuleAction),
         }),
       ).annotate({ identifier: "RuleUpdate" });
     case 5:
-      return S.Array(__S(12));
+      return S.Array(RuleUpdate);
     case 6:
       return S.suspend(() =>
         S.Struct({
           serviceIdentifier: S.String.pipe(T.HttpLabel("serviceIdentifier")),
           listenerIdentifier: S.String.pipe(T.HttpLabel("listenerIdentifier")),
-          rules: __S(13),
+          rules: RuleUpdateList,
         }).pipe(
           T.all(
             T.Http({
@@ -3977,9 +4588,9 @@ function __c1(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           isDefault: S.optional(S.Boolean),
-          match: S.optional(__S(6)),
+          match: S.optional(RuleMatch),
           priority: S.optional(S.Number),
-          action: S.optional(__S(11)),
+          action: S.optional(RuleAction),
         }),
       ).annotate({ identifier: "RuleUpdateSuccess" });
   }
@@ -3987,7 +4598,7 @@ function __c1(j: number): any {
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(15));
+      return S.Array(RuleUpdateSuccess);
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -3997,12 +4608,12 @@ function __c2(j: number): any {
         }),
       ).annotate({ identifier: "RuleUpdateFailure" });
     case 2:
-      return S.Array(__S(17));
+      return S.Array(RuleUpdateFailure);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          successful: S.optional(__S(16)),
-          unsuccessful: S.optional(__S(18)),
+          successful: S.optional(RuleUpdateSuccessList),
+          unsuccessful: S.optional(RuleUpdateFailureList),
         }),
       ).annotate({ identifier: "BatchUpdateRuleResponse" });
     case 4:
@@ -4014,7 +4625,7 @@ function __c2(j: number): any {
           resourceIdentifier: S.String,
           destinationArn: S.String,
           serviceNetworkLogType: S.optional(S.String),
-          tags: S.optional(__S(20)),
+          tags: S.optional(TagMap),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/accesslogsubscriptions" }),
@@ -4048,9 +4659,9 @@ function __c2(j: number): any {
           name: S.String,
           protocol: S.String,
           port: S.optional(S.Number),
-          defaultAction: __S(11),
+          defaultAction: RuleAction,
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          tags: S.optional(__S(20)),
+          tags: S.optional(TagMap),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/services/{serviceIdentifier}/listeners" }),
@@ -4076,7 +4687,7 @@ function __c3(j: number): any {
           port: S.optional(S.Number),
           serviceArn: S.optional(S.String),
           serviceId: S.optional(S.String),
-          defaultAction: S.optional(__S(11)),
+          defaultAction: S.optional(RuleAction),
         }),
       ).annotate({ identifier: "CreateListenerResponse" });
     case 1:
@@ -4094,32 +4705,32 @@ function __c3(j: number): any {
         identifier: "ArnResource",
       });
     case 5:
-      return S.suspend(() => S.Struct({ cidrRanges: S.optional(__S(25)) })).annotate({
+      return S.suspend(() => S.Struct({ cidrRanges: S.optional(CidrRangeList) })).annotate({
         identifier: "CidrResource",
       });
     case 6:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ dnsResource: __S(26) }),
-        /*@__PURE__*/ S.Struct({ ipResource: __S(27) }),
-        /*@__PURE__*/ S.Struct({ arnResource: __S(28) }),
-        /*@__PURE__*/ S.Struct({ cidrResource: __S(29) }),
+        /*@__PURE__*/ S.Struct({ dnsResource: DnsResource }),
+        /*@__PURE__*/ S.Struct({ ipResource: IpResource }),
+        /*@__PURE__*/ S.Struct({ arnResource: ArnResource }),
+        /*@__PURE__*/ S.Struct({ cidrResource: CidrResource }),
       ]);
     case 7:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          type: S.String,
-          portRanges: S.optional(__S(25)),
-          protocol: S.optional(S.String),
+          type: ResourceConfigurationType,
+          portRanges: S.optional(PortRangeList),
+          protocol: S.optional(ProtocolType),
           resourceGatewayIdentifier: S.optional(S.String),
           resourceConfigurationGroupIdentifier: S.optional(S.String),
-          resourceConfigurationDefinition: S.optional(__S(30)),
+          resourceConfigurationDefinition: S.optional(ResourceConfigurationDefinition),
           allowAssociationToShareableServiceNetwork: S.optional(S.Boolean),
           customDomainName: S.optional(S.String),
           groupDomain: S.optional(S.String),
           domainVerificationIdentifier: S.optional(S.String),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          tags: S.optional(__S(20)),
+          tags: S.optional(TagMap),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/resourceconfigurations" }),
@@ -4145,11 +4756,11 @@ function __c4(j: number): any {
           arn: S.optional(S.String),
           resourceGatewayId: S.optional(S.String),
           resourceConfigurationGroupId: S.optional(S.String),
-          type: S.optional(S.String),
-          portRanges: S.optional(__S(25)),
-          protocol: S.optional(S.String),
+          type: S.optional(ResourceConfigurationType),
+          portRanges: S.optional(PortRangeList),
+          protocol: S.optional(ProtocolType),
           status: S.optional(S.String),
-          resourceConfigurationDefinition: S.optional(__S(30)),
+          resourceConfigurationDefinition: S.optional(ResourceConfigurationDefinition),
           allowAssociationToShareableServiceNetwork: S.optional(S.Boolean),
           createdAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           failureReason: S.optional(S.String),
@@ -4167,12 +4778,12 @@ function __c4(j: number): any {
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
           name: S.String,
           vpcIdentifier: S.optional(S.String),
-          subnetIds: S.optional(__S(25)),
-          securityGroupIds: S.optional(__S(25)),
+          subnetIds: S.optional(SubnetList),
+          securityGroupIds: S.optional(SecurityGroupList),
           ipAddressType: S.optional(S.String),
           ipv4AddressesPerEni: S.optional(S.Number),
           resourceConfigDnsResolution: S.optional(S.String),
-          tags: S.optional(__S(20)),
+          tags: S.optional(TagMap),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/resourcegateways" }), svc, auth, proto, ver, rules),
         ),
@@ -4187,8 +4798,8 @@ function __c4(j: number): any {
           arn: S.optional(S.String),
           status: S.optional(S.String),
           vpcIdentifier: S.optional(S.String),
-          subnetIds: S.optional(__S(25)),
-          securityGroupIds: S.optional(__S(25)),
+          subnetIds: S.optional(SubnetList),
+          securityGroupIds: S.optional(SecurityGroupList),
           ipAddressType: S.optional(S.String),
           ipv4AddressesPerEni: S.optional(S.Number),
           resourceConfigDnsResolution: S.optional(S.String),
@@ -4202,11 +4813,11 @@ function __c4(j: number): any {
           serviceIdentifier: S.String.pipe(T.HttpLabel("serviceIdentifier")),
           listenerIdentifier: S.String.pipe(T.HttpLabel("listenerIdentifier")),
           name: S.String,
-          match: __S(6),
+          match: RuleMatch,
           priority: S.Number,
-          action: __S(11),
+          action: RuleAction,
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          tags: S.optional(__S(20)),
+          tags: S.optional(TagMap),
         }).pipe(
           T.all(
             T.Http({
@@ -4227,9 +4838,9 @@ function __c4(j: number): any {
           arn: S.optional(S.String),
           id: S.optional(S.String),
           name: S.optional(S.String),
-          match: S.optional(__S(6)),
+          match: S.optional(RuleMatch),
           priority: S.optional(S.Number),
-          action: S.optional(__S(11)),
+          action: S.optional(RuleAction),
         }),
       ).annotate({ identifier: "CreateRuleResponse" });
     case 5:
@@ -4237,7 +4848,7 @@ function __c4(j: number): any {
         S.Struct({
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
           name: S.String,
-          tags: S.optional(__S(20)),
+          tags: S.optional(TagMap),
           customDomainName: S.optional(S.String),
           certificateArn: S.optional(S.String),
           authType: S.optional(S.String),
@@ -4259,7 +4870,7 @@ function __c4(j: number): any {
           status: S.optional(S.String),
           authType: S.optional(S.String),
           idleTimeoutSeconds: S.optional(S.Number),
-          dnsEntry: S.optional(__S(38)),
+          dnsEntry: S.optional(DnsEntry),
         }),
       ).annotate({ identifier: "CreateServiceResponse" });
   }
@@ -4276,8 +4887,8 @@ function __c5(j: number): any {
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
           name: S.String,
           authType: S.optional(S.String),
-          tags: S.optional(__S(20)),
-          sharingConfig: S.optional(__S(40)),
+          tags: S.optional(TagMap),
+          sharingConfig: S.optional(SharingConfig),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/servicenetworks" }), svc, auth, proto, ver, rules),
         ),
@@ -4290,7 +4901,7 @@ function __c5(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           arn: S.optional(S.String),
-          sharingConfig: S.optional(__S(40)),
+          sharingConfig: S.optional(SharingConfig),
           authType: S.optional(S.String),
         }),
       ).annotate({
@@ -4303,7 +4914,7 @@ function __c5(j: number): any {
           resourceConfigurationIdentifier: S.String,
           serviceNetworkIdentifier: S.String,
           privateDnsEnabled: S.optional(S.Boolean),
-          tags: S.optional(__S(20)),
+          tags: S.optional(TagMap),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/servicenetworkresourceassociations" }),
@@ -4335,7 +4946,7 @@ function __c5(j: number): any {
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
           serviceIdentifier: S.String,
           serviceNetworkIdentifier: S.String,
-          tags: S.optional(__S(20)),
+          tags: S.optional(TagMap),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/servicenetworkserviceassociations" }),
@@ -4357,7 +4968,7 @@ function __c5(j: number): any {
           arn: S.optional(S.String),
           createdBy: S.optional(S.String),
           customDomainName: S.optional(S.String),
-          dnsEntry: S.optional(__S(38)),
+          dnsEntry: S.optional(DnsEntry),
         }),
       ).annotate({
         identifier: "CreateServiceNetworkServiceAssociationResponse",
@@ -4366,7 +4977,7 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           privateDnsPreference: S.optional(S.String),
-          privateDnsSpecifiedDomains: S.optional(__S(25)),
+          privateDnsSpecifiedDomains: S.optional(PrivateDnsSpecifiedDomainsList),
         }),
       ).annotate({ identifier: "DnsOptions" });
   }
@@ -4380,9 +4991,9 @@ function __c6(j: number): any {
           serviceNetworkIdentifier: S.String,
           vpcIdentifier: S.String,
           privateDnsEnabled: S.optional(S.Boolean),
-          securityGroupIds: S.optional(__S(25)),
-          tags: S.optional(__S(20)),
-          dnsOptions: S.optional(__S(47)),
+          securityGroupIds: S.optional(SecurityGroupList),
+          tags: S.optional(TagMap),
+          dnsOptions: S.optional(DnsOptions),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/servicenetworkvpcassociations" }),
@@ -4403,9 +5014,9 @@ function __c6(j: number): any {
           status: S.optional(S.String),
           arn: S.optional(S.String),
           createdBy: S.optional(S.String),
-          securityGroupIds: S.optional(__S(25)),
+          securityGroupIds: S.optional(SecurityGroupList),
           privateDnsEnabled: S.optional(S.Boolean),
-          dnsOptions: S.optional(__S(47)),
+          dnsOptions: S.optional(DnsOptions),
         }),
       ).annotate({
         identifier: "CreateServiceNetworkVpcAssociationResponse",
@@ -4424,7 +5035,7 @@ function __c6(j: number): any {
           healthCheckTimeoutSeconds: S.optional(S.Number),
           healthyThresholdCount: S.optional(S.Number),
           unhealthyThresholdCount: S.optional(S.Number),
-          matcher: S.optional(__S(50)),
+          matcher: S.optional(Matcher),
         }),
       ).annotate({ identifier: "HealthCheckConfig" });
     case 4:
@@ -4435,7 +5046,7 @@ function __c6(j: number): any {
           protocolVersion: S.optional(S.String),
           ipAddressType: S.optional(S.String),
           vpcIdentifier: S.optional(S.String),
-          healthCheck: S.optional(__S(51)),
+          healthCheck: S.optional(HealthCheckConfig),
           lambdaEventStructureVersion: S.optional(S.String),
         }),
       ).annotate({ identifier: "TargetGroupConfig" });
@@ -4444,9 +5055,9 @@ function __c6(j: number): any {
         S.Struct({
           name: S.String,
           type: S.String,
-          config: S.optional(__S(52)),
+          config: S.optional(TargetGroupConfig),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          tags: S.optional(__S(20)),
+          tags: S.optional(TagMap),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/targetgroups" }), svc, auth, proto, ver, rules),
         ),
@@ -4458,7 +5069,7 @@ function __c6(j: number): any {
           arn: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          config: S.optional(__S(52)),
+          config: S.optional(TargetGroupConfig),
           status: S.optional(S.String),
         }),
       ).annotate({
@@ -4822,12 +5433,12 @@ function __c9(j: number): any {
         identifier: "Target",
       });
     case 6:
-      return S.Array(__S(77));
+      return S.Array(Target);
     case 7:
       return S.suspend(() =>
         S.Struct({
           targetGroupIdentifier: S.String.pipe(T.HttpLabel("targetGroupIdentifier")),
-          targets: __S(78),
+          targets: TargetList,
         }).pipe(
           T.all(
             T.Http({
@@ -4856,12 +5467,12 @@ function __c10(j: number): any {
         }),
       ).annotate({ identifier: "TargetFailure" });
     case 1:
-      return S.Array(__S(80));
+      return S.Array(TargetFailure);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          successful: S.optional(__S(78)),
-          unsuccessful: S.optional(__S(81)),
+          successful: S.optional(TargetList),
+          unsuccessful: S.optional(TargetFailureList),
         }),
       ).annotate({
         identifier: "DeregisterTargetsResponse",
@@ -4957,10 +5568,10 @@ function __c11(j: number): any {
           arn: S.String,
           domainName: S.String,
           status: S.String,
-          txtMethodConfig: S.optional(__S(88)),
+          txtMethodConfig: S.optional(TxtMethodConfig),
           createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           lastVerifiedTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          tags: S.optional(__S(20)),
+          tags: S.optional(TagMap),
         }),
       ).annotate({
         identifier: "GetDomainVerificationResponse",
@@ -4994,7 +5605,7 @@ function __c11(j: number): any {
           port: S.optional(S.Number),
           serviceArn: S.optional(S.String),
           serviceId: S.optional(S.String),
-          defaultAction: S.optional(__S(11)),
+          defaultAction: S.optional(RuleAction),
           createdAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           lastUpdatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
         }),
@@ -5029,13 +5640,13 @@ function __c11(j: number): any {
           arn: S.optional(S.String),
           resourceGatewayId: S.optional(S.String),
           resourceConfigurationGroupId: S.optional(S.String),
-          type: S.optional(S.String),
+          type: S.optional(ResourceConfigurationType),
           allowAssociationToShareableServiceNetwork: S.optional(S.Boolean),
-          portRanges: S.optional(__S(25)),
-          protocol: S.optional(S.String),
+          portRanges: S.optional(PortRangeList),
+          protocol: S.optional(ProtocolType),
           customDomainName: S.optional(S.String),
           status: S.optional(S.String),
-          resourceConfigurationDefinition: S.optional(__S(30)),
+          resourceConfigurationDefinition: S.optional(ResourceConfigurationDefinition),
           createdAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           amazonManaged: S.optional(S.Boolean),
           failureReason: S.optional(S.String),
@@ -5073,10 +5684,10 @@ function __c11(j: number): any {
           arn: S.optional(S.String),
           status: S.optional(S.String),
           vpcId: S.optional(S.String),
-          subnetIds: S.optional(__S(25)),
+          subnetIds: S.optional(SubnetList),
           serviceManaged: S.optional(S.Boolean),
           managedBy: S.optional(S.String),
-          securityGroupIds: S.optional(__S(25)),
+          securityGroupIds: S.optional(SecurityGroupList),
           ipAddressType: S.optional(S.String),
           ipv4AddressesPerEni: S.optional(S.Number),
           resourceConfigDnsResolution: S.optional(S.String),
@@ -5134,9 +5745,9 @@ function __c12(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           isDefault: S.optional(S.Boolean),
-          match: S.optional(__S(6)),
+          match: S.optional(RuleMatch),
           priority: S.optional(S.Number),
-          action: S.optional(__S(11)),
+          action: S.optional(RuleAction),
           createdAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           lastUpdatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
         }),
@@ -5162,7 +5773,7 @@ function __c12(j: number): any {
           arn: S.optional(S.String),
           createdAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           lastUpdatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          dnsEntry: S.optional(__S(38)),
+          dnsEntry: S.optional(DnsEntry),
           customDomainName: S.optional(S.String),
           certificateArn: S.optional(S.String),
           status: S.optional(S.String),
@@ -5196,7 +5807,7 @@ function __c12(j: number): any {
           lastUpdatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           arn: S.optional(S.String),
           authType: S.optional(S.String),
-          sharingConfig: S.optional(__S(40)),
+          sharingConfig: S.optional(SharingConfig),
           numberOfAssociatedVPCs: S.optional(S.Number),
           numberOfAssociatedServices: S.optional(S.Number),
         }),
@@ -5246,9 +5857,9 @@ function __c13(j: number): any {
           failureReason: S.optional(S.String),
           failureCode: S.optional(S.String),
           lastUpdatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          privateDnsEntry: S.optional(__S(38)),
+          privateDnsEntry: S.optional(DnsEntry),
           privateDnsEnabled: S.optional(S.Boolean),
-          dnsEntry: S.optional(__S(38)),
+          dnsEntry: S.optional(DnsEntry),
           isManagedAssociation: S.optional(S.Boolean),
           domainVerificationStatus: S.optional(S.String),
         }),
@@ -5291,7 +5902,7 @@ function __c13(j: number): any {
           serviceNetworkId: S.optional(S.String),
           serviceNetworkName: S.optional(S.String),
           serviceNetworkArn: S.optional(S.String),
-          dnsEntry: S.optional(__S(38)),
+          dnsEntry: S.optional(DnsEntry),
           customDomainName: S.optional(S.String),
           failureMessage: S.optional(S.String),
           failureCode: S.optional(S.String),
@@ -5333,12 +5944,12 @@ function __c13(j: number): any {
           serviceNetworkName: S.optional(S.String),
           serviceNetworkArn: S.optional(S.String),
           vpcId: S.optional(S.String),
-          securityGroupIds: S.optional(__S(25)),
+          securityGroupIds: S.optional(SecurityGroupList),
           privateDnsEnabled: S.optional(S.Boolean),
           failureMessage: S.optional(S.String),
           failureCode: S.optional(S.String),
           lastUpdatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          dnsOptions: S.optional(__S(47)),
+          dnsOptions: S.optional(DnsOptions),
         }),
       ).annotate({
         identifier: "GetServiceNetworkVpcAssociationResponse",
@@ -5365,11 +5976,11 @@ function __c13(j: number): any {
           arn: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          config: S.optional(__S(52)),
+          config: S.optional(TargetGroupConfig),
           createdAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           lastUpdatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           status: S.optional(S.String),
-          serviceArns: S.optional(__S(25)),
+          serviceArns: S.optional(ServiceArnList),
           failureMessage: S.optional(S.String),
           failureCode: S.optional(S.String),
         }),
@@ -5398,10 +6009,10 @@ function __c14(j: number): any {
         identifier: "ListAccessLogSubscriptionsRequest",
       });
     case 1:
-      return S.Array(__S(84));
+      return S.Array(AccessLogSubscriptionSummary);
     case 2:
       return S.suspend(() =>
-        S.Struct({ items: __S(113), nextToken: S.optional(S.String) }),
+        S.Struct({ items: AccessLogSubscriptionList, nextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListAccessLogSubscriptionsResponse",
       });
@@ -5424,10 +6035,10 @@ function __c14(j: number): any {
         identifier: "ListDomainVerificationsRequest",
       });
     case 4:
-      return S.Array(__S(89));
+      return S.Array(DomainVerificationSummary);
     case 5:
       return S.suspend(() =>
-        S.Struct({ items: __S(116), nextToken: S.optional(S.String) }),
+        S.Struct({ items: DomainVerificationList, nextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListDomainVerificationsResponse",
       });
@@ -5465,10 +6076,10 @@ function __c14(j: number): any {
 function __c15(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(119));
+      return S.Array(ListenerSummary);
     case 1:
       return S.suspend(() =>
-        S.Struct({ items: __S(120), nextToken: S.optional(S.String) }),
+        S.Struct({ items: ListenerSummaryList, nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListListenersResponse" });
     case 2:
       return S.suspend(() =>
@@ -5505,7 +6116,7 @@ function __c15(j: number): any {
           arn: S.optional(S.String),
           resourceGatewayId: S.optional(S.String),
           resourceConfigurationGroupId: S.optional(S.String),
-          type: S.optional(S.String),
+          type: S.optional(ResourceConfigurationType),
           status: S.optional(S.String),
           amazonManaged: S.optional(S.Boolean),
           createdAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
@@ -5518,11 +6129,11 @@ function __c15(j: number): any {
         identifier: "ResourceConfigurationSummary",
       });
     case 4:
-      return S.Array(__S(123));
+      return S.Array(ResourceConfigurationSummary);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          items: S.optional(__S(124)),
+          items: S.optional(ResourceConfigurationSummaryList),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -5557,8 +6168,8 @@ function __c15(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          scope: S.optional(S.String),
-          payerResponsibilityType: S.optional(S.String),
+          scope: S.optional(PayerResponsibilityScope),
+          payerResponsibilityType: S.optional(PayerResponsibilityPayer),
         }),
       ).annotate({ identifier: "PayerResponsibilityEntry" });
   }
@@ -5566,7 +6177,7 @@ function __c15(j: number): any {
 function __c16(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(127));
+      return S.Array(PayerResponsibilityEntry);
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -5579,16 +6190,16 @@ function __c16(j: number): any {
           vpcEndpointOwner: S.optional(S.String),
           createdBy: S.optional(S.String),
           createdAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          payerResponsibility: S.optional(__S(128)),
+          payerResponsibility: S.optional(PayerResponsibilityList),
         }),
       ).annotate({
         identifier: "ResourceEndpointAssociationSummary",
       });
     case 2:
-      return S.Array(__S(129));
+      return S.Array(ResourceEndpointAssociationSummary);
     case 3:
       return S.suspend(() =>
-        S.Struct({ items: __S(130), nextToken: S.optional(S.String) }),
+        S.Struct({ items: ResourceEndpointAssociationList, nextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListResourceEndpointAssociationsResponse",
       });
@@ -5611,8 +6222,8 @@ function __c16(j: number): any {
           arn: S.optional(S.String),
           status: S.optional(S.String),
           vpcIdentifier: S.optional(S.String),
-          subnetIds: S.optional(__S(25)),
-          securityGroupIds: S.optional(__S(25)),
+          subnetIds: S.optional(SubnetList),
+          securityGroupIds: S.optional(SecurityGroupList),
           ipAddressType: S.optional(S.String),
           ipv4AddressesPerEni: S.optional(S.Number),
           resourceConfigDnsResolution: S.optional(S.String),
@@ -5621,10 +6232,10 @@ function __c16(j: number): any {
         }),
       ).annotate({ identifier: "ResourceGatewaySummary" });
     case 6:
-      return S.Array(__S(133));
+      return S.Array(ResourceGatewaySummary);
     case 7:
       return S.suspend(() =>
-        S.Struct({ items: S.optional(__S(134)), nextToken: S.optional(S.String) }),
+        S.Struct({ items: S.optional(ResourceGatewayList), nextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListResourceGatewaysResponse",
       });
@@ -5666,10 +6277,10 @@ function __c17(j: number): any {
         }),
       ).annotate({ identifier: "RuleSummary" });
     case 2:
-      return S.Array(__S(137));
+      return S.Array(RuleSummary);
     case 3:
       return S.suspend(() =>
-        S.Struct({ items: __S(138), nextToken: S.optional(S.String) }),
+        S.Struct({ items: RuleSummaryList, nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListRulesResponse" });
     case 4:
       return S.suspend(() =>
@@ -5710,8 +6321,8 @@ function __c17(j: number): any {
           serviceNetworkId: S.optional(S.String),
           serviceNetworkArn: S.optional(S.String),
           serviceNetworkName: S.optional(S.String),
-          dnsEntry: S.optional(__S(38)),
-          privateDnsEntry: S.optional(__S(38)),
+          dnsEntry: S.optional(DnsEntry),
+          privateDnsEntry: S.optional(DnsEntry),
           isManagedAssociation: S.optional(S.Boolean),
           failureCode: S.optional(S.String),
           privateDnsEnabled: S.optional(S.Boolean),
@@ -5720,10 +6331,10 @@ function __c17(j: number): any {
         identifier: "ServiceNetworkResourceAssociationSummary",
       });
     case 6:
-      return S.Array(__S(141));
+      return S.Array(ServiceNetworkResourceAssociationSummary);
     case 7:
       return S.suspend(() =>
-        S.Struct({ items: __S(142), nextToken: S.optional(S.String) }),
+        S.Struct({ items: ServiceNetworkResourceAssociationList, nextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListServiceNetworkResourceAssociationsResponse",
       });
@@ -5756,10 +6367,10 @@ function __c18(j: number): any {
         }),
       ).annotate({ identifier: "ServiceNetworkSummary" });
     case 2:
-      return S.Array(__S(145));
+      return S.Array(ServiceNetworkSummary);
     case 3:
       return S.suspend(() =>
-        S.Struct({ items: __S(146), nextToken: S.optional(S.String) }),
+        S.Struct({ items: ServiceNetworkList, nextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListServiceNetworksResponse",
       });
@@ -5799,17 +6410,17 @@ function __c18(j: number): any {
           serviceNetworkId: S.optional(S.String),
           serviceNetworkName: S.optional(S.String),
           serviceNetworkArn: S.optional(S.String),
-          dnsEntry: S.optional(__S(38)),
+          dnsEntry: S.optional(DnsEntry),
           customDomainName: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ServiceNetworkServiceAssociationSummary",
       });
     case 6:
-      return S.Array(__S(149));
+      return S.Array(ServiceNetworkServiceAssociationSummary);
     case 7:
       return S.suspend(() =>
-        S.Struct({ items: __S(150), nextToken: S.optional(S.String) }),
+        S.Struct({ items: ServiceNetworkServiceAssociationList, nextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListServiceNetworkServiceAssociationsResponse",
       });
@@ -5851,7 +6462,7 @@ function __c19(j: number): any {
           serviceNetworkName: S.optional(S.String),
           serviceNetworkArn: S.optional(S.String),
           privateDnsEnabled: S.optional(S.Boolean),
-          dnsOptions: S.optional(__S(47)),
+          dnsOptions: S.optional(DnsOptions),
           vpcId: S.optional(S.String),
           lastUpdatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
         }),
@@ -5859,10 +6470,10 @@ function __c19(j: number): any {
         identifier: "ServiceNetworkVpcAssociationSummary",
       });
     case 2:
-      return S.Array(__S(153));
+      return S.Array(ServiceNetworkVpcAssociationSummary);
     case 3:
       return S.suspend(() =>
-        S.Struct({ items: __S(154), nextToken: S.optional(S.String) }),
+        S.Struct({ items: ServiceNetworkVpcAssociationList, nextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListServiceNetworkVpcAssociationsResponse",
       });
@@ -5900,11 +6511,11 @@ function __c19(j: number): any {
         identifier: "ServiceNetworkEndpointAssociation",
       });
     case 6:
-      return S.Array(__S(157));
+      return S.Array(ServiceNetworkEndpointAssociation);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          items: __S(158),
+          items: ServiceNetworkVpcEndpointAssociationList,
           nextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -5929,16 +6540,16 @@ function __c20(j: number): any {
           arn: S.optional(S.String),
           createdAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           lastUpdatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          dnsEntry: S.optional(__S(38)),
+          dnsEntry: S.optional(DnsEntry),
           customDomainName: S.optional(S.String),
           status: S.optional(S.String),
         }),
       ).annotate({ identifier: "ServiceSummary" });
     case 2:
-      return S.Array(__S(161));
+      return S.Array(ServiceSummary);
     case 3:
       return S.suspend(() =>
-        S.Struct({ items: S.optional(__S(162)), nextToken: S.optional(S.String) }),
+        S.Struct({ items: S.optional(ServiceList), nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListServicesResponse" });
     case 4:
       return S.suspend(() =>
@@ -5956,7 +6567,7 @@ function __c20(j: number): any {
         identifier: "ListTagsForResourceRequest",
       });
     case 5:
-      return S.suspend(() => S.Struct({ tags: S.optional(__S(20)) })).annotate({
+      return S.suspend(() => S.Struct({ tags: S.optional(TagMap) })).annotate({
         identifier: "ListTagsForResourceResponse",
       });
     case 6:
@@ -5984,7 +6595,7 @@ function __c20(j: number): any {
           vpcIdentifier: S.optional(S.String),
           lastUpdatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           status: S.optional(S.String),
-          serviceArns: S.optional(__S(25)),
+          serviceArns: S.optional(ServiceArnList),
           lambdaEventStructureVersion: S.optional(S.String),
         }),
       ).annotate({ identifier: "TargetGroupSummary" });
@@ -5993,10 +6604,10 @@ function __c20(j: number): any {
 function __c21(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(167));
+      return S.Array(TargetGroupSummary);
     case 1:
       return S.suspend(() =>
-        S.Struct({ items: S.optional(__S(168)), nextToken: S.optional(S.String) }),
+        S.Struct({ items: S.optional(TargetGroupList), nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListTargetGroupsResponse" });
     case 2:
       return S.suspend(() =>
@@ -6004,7 +6615,7 @@ function __c21(j: number): any {
           targetGroupIdentifier: S.String.pipe(T.HttpLabel("targetGroupIdentifier")),
           maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
           nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-          targets: S.optional(__S(78)),
+          targets: S.optional(TargetList),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/targetgroups/{targetGroupIdentifier}/listtargets" }),
@@ -6026,10 +6637,10 @@ function __c21(j: number): any {
         }),
       ).annotate({ identifier: "TargetSummary" });
     case 4:
-      return S.Array(__S(171));
+      return S.Array(TargetSummary);
     case 5:
       return S.suspend(() =>
-        S.Struct({ items: __S(172), nextToken: S.optional(S.String) }),
+        S.Struct({ items: TargetSummaryList, nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListTargetsResponse" });
     case 6:
       return S.suspend(() =>
@@ -6072,7 +6683,7 @@ function __c22(j: number): any {
       return S.suspend(() =>
         S.Struct({
           targetGroupIdentifier: S.String.pipe(T.HttpLabel("targetGroupIdentifier")),
-          targets: __S(78),
+          targets: TargetList,
         }).pipe(
           T.all(
             T.Http({
@@ -6090,8 +6701,8 @@ function __c22(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          successful: S.optional(__S(78)),
-          unsuccessful: S.optional(__S(81)),
+          successful: S.optional(TargetList),
+          unsuccessful: S.optional(TargetFailureList),
         }),
       ).annotate({ identifier: "RegisterTargetsResponse" });
     case 3:
@@ -6099,7 +6710,7 @@ function __c22(j: number): any {
         S.Struct({
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
           domainName: S.String,
-          tags: S.optional(__S(20)),
+          tags: S.optional(TagMap),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/domainverifications" }),
@@ -6120,14 +6731,14 @@ function __c22(j: number): any {
           arn: S.String,
           domainName: S.String,
           status: S.String,
-          txtMethodConfig: S.optional(__S(88)),
+          txtMethodConfig: S.optional(TxtMethodConfig),
         }),
       ).annotate({
         identifier: "StartDomainVerificationResponse",
       });
     case 5:
       return S.suspend(() =>
-        S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")), tags: __S(20) }).pipe(
+        S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")), tags: TagMap }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/tags/{resourceArn}" }),
             svc,
@@ -6142,7 +6753,7 @@ function __c22(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
-          tagKeys: __S(25).pipe(T.HttpQuery("tagKeys")),
+          tagKeys: TagKeys.pipe(T.HttpQuery("tagKeys")),
         }).pipe(
           T.all(
             T.Http({ method: "DELETE", uri: "/tags/{resourceArn}" }),
@@ -6198,7 +6809,7 @@ function __c23(j: number): any {
         S.Struct({
           serviceIdentifier: S.String.pipe(T.HttpLabel("serviceIdentifier")),
           listenerIdentifier: S.String.pipe(T.HttpLabel("listenerIdentifier")),
-          defaultAction: __S(11),
+          defaultAction: RuleAction,
         }).pipe(
           T.all(
             T.Http({
@@ -6219,9 +6830,9 @@ function __c23(j: number): any {
           resourceConfigurationIdentifier: S.String.pipe(
             T.HttpLabel("resourceConfigurationIdentifier"),
           ),
-          resourceConfigurationDefinition: S.optional(__S(30)),
+          resourceConfigurationDefinition: S.optional(ResourceConfigurationDefinition),
           allowAssociationToShareableServiceNetwork: S.optional(S.Boolean),
-          portRanges: S.optional(__S(25)),
+          portRanges: S.optional(PortRangeList),
         }).pipe(
           T.all(
             T.Http({
@@ -6246,12 +6857,12 @@ function __c23(j: number): any {
           arn: S.optional(S.String),
           resourceGatewayId: S.optional(S.String),
           resourceConfigurationGroupId: S.optional(S.String),
-          type: S.optional(S.String),
-          portRanges: S.optional(__S(25)),
+          type: S.optional(ResourceConfigurationType),
+          portRanges: S.optional(PortRangeList),
           allowAssociationToShareableServiceNetwork: S.optional(S.Boolean),
-          protocol: S.optional(S.String),
+          protocol: S.optional(ProtocolType),
           status: S.optional(S.String),
-          resourceConfigurationDefinition: S.optional(__S(30)),
+          resourceConfigurationDefinition: S.optional(ResourceConfigurationDefinition),
         }),
       ).annotate({
         identifier: "UpdateResourceConfigurationResponse",
@@ -6260,7 +6871,7 @@ function __c23(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resourceGatewayIdentifier: S.String.pipe(T.HttpLabel("resourceGatewayIdentifier")),
-          securityGroupIds: S.optional(__S(25)),
+          securityGroupIds: S.optional(SecurityGroupList),
         }).pipe(
           T.all(
             T.Http({ method: "PATCH", uri: "/resourcegateways/{resourceGatewayIdentifier}" }),
@@ -6282,8 +6893,8 @@ function __c23(j: number): any {
           arn: S.optional(S.String),
           status: S.optional(S.String),
           vpcId: S.optional(S.String),
-          subnetIds: S.optional(__S(25)),
-          securityGroupIds: S.optional(__S(25)),
+          subnetIds: S.optional(SubnetList),
+          securityGroupIds: S.optional(SecurityGroupList),
           ipAddressType: S.optional(S.String),
         }),
       ).annotate({
@@ -6295,9 +6906,9 @@ function __c23(j: number): any {
           serviceIdentifier: S.String.pipe(T.HttpLabel("serviceIdentifier")),
           listenerIdentifier: S.String.pipe(T.HttpLabel("listenerIdentifier")),
           ruleIdentifier: S.String.pipe(T.HttpLabel("ruleIdentifier")),
-          match: S.optional(__S(6)),
+          match: S.optional(RuleMatch),
           priority: S.optional(S.Number),
-          action: S.optional(__S(11)),
+          action: S.optional(RuleAction),
         }).pipe(
           T.all(
             T.Http({
@@ -6381,9 +6992,9 @@ function __c24(j: number): any {
           serviceNetworkVpcAssociationIdentifier: S.String.pipe(
             T.HttpLabel("serviceNetworkVpcAssociationIdentifier"),
           ),
-          securityGroupIds: S.optional(__S(25)),
+          securityGroupIds: S.optional(SecurityGroupList),
           privateDnsEnabled: S.optional(S.Boolean),
-          dnsOptions: S.optional(__S(47)),
+          dnsOptions: S.optional(DnsOptions),
         }).pipe(
           T.all(
             T.Http({
@@ -6407,9 +7018,9 @@ function __c24(j: number): any {
           arn: S.optional(S.String),
           status: S.optional(S.String),
           createdBy: S.optional(S.String),
-          securityGroupIds: S.optional(__S(25)),
+          securityGroupIds: S.optional(SecurityGroupList),
           privateDnsEnabled: S.optional(S.Boolean),
-          dnsOptions: S.optional(__S(47)),
+          dnsOptions: S.optional(DnsOptions),
         }),
       ).annotate({
         identifier: "UpdateServiceNetworkVpcAssociationResponse",
@@ -6418,7 +7029,7 @@ function __c24(j: number): any {
       return S.suspend(() =>
         S.Struct({
           targetGroupIdentifier: S.String.pipe(T.HttpLabel("targetGroupIdentifier")),
-          healthCheck: __S(51),
+          healthCheck: HealthCheckConfig,
         }).pipe(
           T.all(
             T.Http({ method: "PATCH", uri: "/targetgroups/{targetGroupIdentifier}" }),
@@ -6435,65 +7046,6 @@ function __c24(j: number): any {
         identifier: "ValidationExceptionField",
       });
     case 7:
-      return S.Array(__S(198));
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
-    case 9:
-      return __c9(i & 7);
-    case 10:
-      return __c10(i & 7);
-    case 11:
-      return __c11(i & 7);
-    case 12:
-      return __c12(i & 7);
-    case 13:
-      return __c13(i & 7);
-    case 14:
-      return __c14(i & 7);
-    case 15:
-      return __c15(i & 7);
-    case 16:
-      return __c16(i & 7);
-    case 17:
-      return __c17(i & 7);
-    case 18:
-      return __c18(i & 7);
-    case 19:
-      return __c19(i & 7);
-    case 20:
-      return __c20(i & 7);
-    case 21:
-      return __c21(i & 7);
-    case 22:
-      return __c22(i & 7);
-    case 23:
-      return __c23(i & 7);
-    case 24:
-      return __c24(i & 7);
+      return S.Array(ValidationExceptionField);
   }
 }

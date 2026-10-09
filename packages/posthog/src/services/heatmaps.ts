@@ -6,8 +6,6 @@ import * as S from "@distilled.cloud/core/schema";
 import { PosthogProtocol, type PosthogOpError, type PosthogOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { PosthogOpError, PosthogOpContext };
 
@@ -39,6 +37,8 @@ export class NotFound
   ) {}
 
 export type GetHeatmapsEventRequestAggregation = "unique_visitors" | "total_count";
+const GetHeatmapsEventRequestAggregation = S.String;
+
 export interface GetHeatmapsEventRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -73,6 +73,11 @@ export interface GetHeatmapsEventRequest {
   /** Only include interactions captured at a viewport at least this wide, in CSS pixels. Use with viewport_width_max to isolate a device class (e.g. 360-768 for mobile). */
   viewport_width_min?: number;
 }
+const GetHeatmapsEventRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<GetHeatmapsEventRequest>;
+
 export interface HeatmapEventItem {
   session_id?: string | null;
   distinct_id: string;
@@ -82,13 +87,27 @@ export interface HeatmapEventItem {
   current_url: string;
   type: string;
 }
+const HeatmapEventItem = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<HeatmapEventItem>;
+
 export type HeatmapEventsResponseResultsList = Array<HeatmapEventItem>;
+const HeatmapEventsResponseResultsList = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<HeatmapEventsResponseResultsList>;
+
 export interface HeatmapEventsResponse {
   results: HeatmapEventsResponseResultsList;
   total_count: number;
   has_more: boolean;
 }
+const HeatmapEventsResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<HeatmapEventsResponse>;
+
 export type ListHeatmapsRequestAggregation = "unique_visitors" | "total_count";
+const ListHeatmapsRequestAggregation = S.String;
+
 export interface ListHeatmapsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -121,13 +140,22 @@ export interface ListHeatmapsRequest {
   /** Only include interactions captured at a viewport at least this wide, in CSS pixels. Use with viewport_width_max to isolate a device class (e.g. 360-768 for mobile). */
   viewport_width_min?: number;
 }
+const ListHeatmapsRequest = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<ListHeatmapsRequest>;
+
 export interface HeatmapResponseItem {
   count?: number;
   pointer_y?: number;
   pointer_relative_x?: number;
   pointer_target_fixed?: boolean;
 }
+const HeatmapResponseItem = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<HeatmapResponseItem>;
+
 export type HeatmapsResponseResultsList = Array<HeatmapResponseItem>;
+const HeatmapsResponseResultsList = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<HeatmapsResponseResultsList>;
+
 export interface HeatmapFoldSummary {
   /** Number of non-fixed interactions of this type on the page in the window (the population the above/below-the-fold split applies to; fixed-position elements are excluded since they're always on screen). */
   total_count: number;
@@ -138,6 +166,8 @@ export interface HeatmapFoldSummary {
   /** Median viewport height in CSS pixels across the matched interactions -- the typical fold line to recommend against. Null when there are no interactions. */
   median_viewport_height: number | null;
 }
+const HeatmapFoldSummary = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<HeatmapFoldSummary>;
+
 export interface HeatmapsResponse {
   results?: HeatmapsResponseResultsList;
   /** Above/below-the-fold summary for the returned interactions. Present for click/rageclick/mousemove; omitted for scrolldepth. */
@@ -145,8 +175,17 @@ export interface HeatmapsResponse {
   /** True when more coordinate points exist beyond the returned page. Raise 'limit' or page with 'offset' to fetch them. Always false for scrolldepth, which returns every bucket. */
   has_more?: boolean;
 }
+const HeatmapsResponse = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<HeatmapsResponse>;
+
 export type ListHeatmapsResponseBodyList = Array<HeatmapsResponse>;
+const ListHeatmapsResponseBodyList = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<ListHeatmapsResponseBodyList>;
+
 export type ListHeatmapsResponse = ListHeatmapsResponseBodyList;
+const ListHeatmapsResponse = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<ListHeatmapsResponse>;
+
 export type GetHeatmapsEventError = Forbidden | NotFound | PosthogOpError;
 /** Drill into the individual session interactions behind one or more heatmap coordinates. Pass the 'points' you want to inspect (from the heatmaps list response) to get the underlying per-session events, so you can jump to the session recordings that produced a hotspot. */
 export const getHeatmapsEvent: API.OperationMethod<
@@ -155,8 +194,8 @@ export const getHeatmapsEvent: API.OperationMethod<
   GetHeatmapsEventError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<GetHeatmapsEventRequest>,
-  output: __S(3) as any as S.Schema<HeatmapEventsResponse>,
+  input: GetHeatmapsEventRequest,
+  output: HeatmapEventsResponse,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -170,8 +209,8 @@ export const listHeatmaps: API.OperationMethod<
   ListHeatmapsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4) as any as S.Schema<ListHeatmapsRequest>,
-  output: __S(10) as any as S.Schema<ListHeatmapsResponse>,
+  input: ListHeatmapsRequest,
+  output: ListHeatmapsResponse,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -184,7 +223,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
-          aggregation: S.optional(S.String.pipe(T.Query())),
+          aggregation: S.optional(GetHeatmapsEventRequestAggregation.pipe(T.Query())),
           cohort_ids: S.optional(S.String.pipe(T.Query())),
           date_from: S.optional(S.String.pipe(T.Query())),
           date_to: S.optional(S.String.pipe(T.Query())),
@@ -216,11 +255,11 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "HeatmapEventItem" });
     case 2:
-      return S.Array(__S(1));
+      return S.Array(HeatmapEventItem);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          results: __S(2),
+          results: HeatmapEventsResponseResultsList,
           total_count: S.Number,
           has_more: S.Boolean,
         }),
@@ -229,7 +268,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
-          aggregation: S.optional(S.String.pipe(T.Query())),
+          aggregation: S.optional(ListHeatmapsRequestAggregation.pipe(T.Query())),
           cohort_ids: S.optional(S.String.pipe(T.Query())),
           date_from: S.optional(S.String.pipe(T.Query())),
           date_to: S.optional(S.String.pipe(T.Query())),
@@ -255,7 +294,7 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "HeatmapResponseItem" });
     case 6:
-      return S.Array(__S(5));
+      return S.Array(HeatmapResponseItem);
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -272,29 +311,16 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          results: S.optional(__S(6)),
-          fold: S.optional(S.NullOr(__S(7))),
+          results: S.optional(HeatmapsResponseResultsList),
+          fold: S.optional(S.NullOr(HeatmapFoldSummary)),
           has_more: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "HeatmapsResponse" });
     case 1:
-      return S.Array(__S(8));
+      return S.Array(HeatmapsResponse);
     case 2:
-      return S.suspend(() => __S(9).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => ListHeatmapsResponseBodyList.pipe(T.RawResponseRoot())).annotate({
         identifier: "ListHeatmapsResponse",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
   }
 }

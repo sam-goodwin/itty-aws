@@ -6,8 +6,6 @@ import * as S from "@distilled.cloud/core/schema";
 import { VercelProtocol, type VercelOpError, type VercelOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { VercelOpError, VercelOpContext };
 
@@ -67,6 +65,11 @@ export interface AddRepositoryPermissionRequest {
   /** Slug of a team that is granted access to a repository. */
   teamSlug?: string;
 }
+const AddRepositoryPermissionRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<AddRepositoryPermissionRequest>;
+
 /** A team's access grant to a Vercel Container Registry repository. */
 export interface VcrRepositoryPermission {
   /** ISO 8601 timestamp of when the permission was created. */
@@ -78,9 +81,19 @@ export interface VcrRepositoryPermission {
   /** Slug of the team that is granted access to the repository. */
   teamSlug: string;
 }
+const VcrRepositoryPermission = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<VcrRepositoryPermission>;
+
 export interface AddRepositoryPermissionResponse {
   permission: VcrRepositoryPermission;
 }
+const AddRepositoryPermissionResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<AddRepositoryPermissionResponse>;
+
 export interface ClearRepositoryPermissionsRequest {
   idOrName: string;
   /** Project ID or name (slug) within the authenticated team. IDs take precedence over names. Missing or empty values return HTTP 400. */
@@ -90,7 +103,17 @@ export interface ClearRepositoryPermissionsRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
+const ClearRepositoryPermissionsRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<ClearRepositoryPermissionsRequest>;
+
 export type ClearRepositoryPermissionsResponse = unknown;
+const ClearRepositoryPermissionsResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<ClearRepositoryPermissionsResponse>;
+
 export interface CreateByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsRequest {
   /** Single Docker repository team slug component. */
   teamSlug: string;
@@ -103,7 +126,17 @@ export interface CreateByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsReques
   /** Source repository to mount the blob from. */
   from?: string;
 }
+const CreateByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<CreateByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsRequest>;
+
 export type CreateByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsResponse = unknown;
+const CreateByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<CreateByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsResponse>;
+
 export interface CreateRepositoryRequest {
   /** The Team identifier to perform the request on behalf of. */
   teamId?: string;
@@ -114,6 +147,11 @@ export interface CreateRepositoryRequest {
   /** Single Docker repository name component. */
   name: string;
 }
+const CreateRepositoryRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<CreateRepositoryRequest>;
+
 /** A Vercel Container Registry repository. */
 export interface VcrRepository {
   /** ISO 8601 timestamp of when the repository was created. */
@@ -129,9 +167,16 @@ export interface VcrRepository {
   /** ISO 8601 timestamp of when the repository was last updated. */
   updatedAt: string;
 }
+const VcrRepository = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<VcrRepository>;
+
 export interface CreateRepositoryResponse {
   repository: VcrRepository;
 }
+const CreateRepositoryResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<CreateRepositoryResponse>;
+
 export interface DeleteBlobRequest {
   /** Single Docker repository team slug component. */
   teamSlug: string;
@@ -142,7 +187,11 @@ export interface DeleteBlobRequest {
   /** Content-addressable digest (algorithm:hex). */
   digest: string;
 }
+const DeleteBlobRequest = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<DeleteBlobRequest>;
+
 export interface DeleteBlobResponse {}
+const DeleteBlobResponse = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<DeleteBlobResponse>;
+
 export interface DeleteBlobsUploadRequest {
   /** Single Docker repository team slug component. */
   teamSlug: string;
@@ -153,7 +202,15 @@ export interface DeleteBlobsUploadRequest {
   /** Blob upload session identifier. */
   uuid: string;
 }
+const DeleteBlobsUploadRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<DeleteBlobsUploadRequest>;
+
 export type DeleteBlobsUploadResponse = unknown;
+const DeleteBlobsUploadResponse =
+  ClearRepositoryPermissionsResponse as any as S.Schema<DeleteBlobsUploadResponse>;
+
 export interface DeleteManifestRequest {
   /** Single Docker repository team slug component. */
   teamSlug: string;
@@ -164,7 +221,17 @@ export interface DeleteManifestRequest {
   /** Content-addressable digest (algorithm:hex). */
   reference: string;
 }
+const DeleteManifestRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<DeleteManifestRequest>;
+
 export type DeleteManifestResponse = unknown;
+const DeleteManifestResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<DeleteManifestResponse>;
+
 export interface DeleteRepositoryRequest {
   idOrName: string;
   /** Project ID or name (slug) within the authenticated team. IDs take precedence over names. Missing or empty values return HTTP 400. */
@@ -174,7 +241,15 @@ export interface DeleteRepositoryRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
+const DeleteRepositoryRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<DeleteRepositoryRequest>;
+
 export type DeleteRepositoryResponse = unknown;
+const DeleteRepositoryResponse =
+  DeleteManifestResponse as any as S.Schema<DeleteRepositoryResponse>;
+
 export interface DeleteRepositoryImageRequest {
   idOrName: string;
   imageId: string;
@@ -185,7 +260,15 @@ export interface DeleteRepositoryImageRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
+const DeleteRepositoryImageRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<DeleteRepositoryImageRequest>;
+
 export type DeleteRepositoryImageResponse = unknown;
+const DeleteRepositoryImageResponse =
+  ClearRepositoryPermissionsResponse as any as S.Schema<DeleteRepositoryImageResponse>;
+
 export interface GetBlobRequest {
   /** Single Docker repository team slug component. */
   teamSlug: string;
@@ -196,7 +279,11 @@ export interface GetBlobRequest {
   /** Content-addressable digest (algorithm:hex). */
   digest: string;
 }
+const GetBlobRequest = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<GetBlobRequest>;
+
 export interface GetBlobResponse {}
+const GetBlobResponse = DeleteBlobResponse as any as S.Schema<GetBlobResponse>;
+
 export interface GetBlobsUploadRequest {
   /** Single Docker repository team slug component. */
   teamSlug: string;
@@ -207,7 +294,14 @@ export interface GetBlobsUploadRequest {
   /** Blob upload session identifier. */
   uuid: string;
 }
+const GetBlobsUploadRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<GetBlobsUploadRequest>;
+
 export type GetBlobsUploadResponse = unknown;
+const GetBlobsUploadResponse = DeleteManifestResponse as any as S.Schema<GetBlobsUploadResponse>;
+
 export interface GetManifestRequest {
   /** Single Docker repository team slug component. */
   teamSlug: string;
@@ -218,7 +312,11 @@ export interface GetManifestRequest {
   /** Manifest reference: a tag or digest. */
   reference: string;
 }
+const GetManifestRequest = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<GetManifestRequest>;
+
 export interface GetManifestResponse {}
+const GetManifestResponse = DeleteBlobResponse as any as S.Schema<GetManifestResponse>;
+
 export interface GetRepositoryRequest {
   idOrName: string;
   /** Project ID or name (slug) within the authenticated team. IDs take precedence over names. Missing or empty values return HTTP 400. */
@@ -228,9 +326,13 @@ export interface GetRepositoryRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
+const GetRepositoryRequest = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<GetRepositoryRequest>;
+
 export interface GetRepositoryResponse {
   repository: VcrRepository;
 }
+const GetRepositoryResponse = CreateRepositoryResponse as any as S.Schema<GetRepositoryResponse>;
+
 export interface GetRepositoryImageRequest {
   idOrName: string;
   /** The internal image id (`image_...`) or the image manifest digest (`sha256:...`). */
@@ -242,8 +344,15 @@ export interface GetRepositoryImageRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
+const GetRepositoryImageRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<GetRepositoryImageRequest>;
+
 /** Whether the manifest is a multi-platform image index, a single-platform image manifest or an attestation. */
 export type VcrImageDetailKind = "attestation" | "index" | "manifest";
+const VcrImageDetailKind = S.String;
+
 /** Docker/OCI build instruction associated with an image layer. */
 export type VcrImageLayerCase0Operation =
   | "ADD"
@@ -265,6 +374,11 @@ export type VcrImageLayerCase0Operation =
   | "VOLUME"
   | "WORKDIR";
 export type VcrImageLayerCase0CollapsedDigestsList = Array<string>;
+const VcrImageLayerCase0CollapsedDigestsList = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<VcrImageLayerCase0CollapsedDigestsList>;
+
 export type VcrImageLayerCase0Type = "FROM";
 export interface VcrImageLayerCase0 {
   createdBy: string | null;
@@ -387,11 +501,23 @@ export type VcrImageLayer =
   | VcrImageLayerCase1
   | VcrImageLayerCase2
   | VcrImageLayerCase3;
+const VcrImageLayer = S.Unknown as any as S.Schema<VcrImageLayer>;
+
 export type VcrImageDetailLayersList = Array<VcrImageLayer>;
+const VcrImageDetailLayersList = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<VcrImageDetailLayersList>;
+
 /** VHS-readiness status, or `null` for a multi-platform index. */
 export type VcrImageDetailStatus = "errored" | "preparing" | "ready" | "unoptimized";
+const VcrImageDetailStatus = S.String;
+
 /** Tags pointing at this image's manifest. */
 export type VcrImageDetailTagsList = Array<string>;
+const VcrImageDetailTagsList =
+  VcrImageLayerCase0CollapsedDigestsList as any as S.Schema<VcrImageDetailTagsList>;
+
 /** A single image with its tags, status and resolved Dockerfile layer history. */
 export interface VcrImageDetail {
   /** CPU architecture the manifest targets. Only present for single-platform manifests. */
@@ -418,9 +544,16 @@ export interface VcrImageDetail {
   /** Tags pointing at this image's manifest. */
   tags: VcrImageDetailTagsList;
 }
+const VcrImageDetail = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<VcrImageDetail>;
+
 export interface GetRepositoryImageResponse {
   image: VcrImageDetail;
 }
+const GetRepositoryImageResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<GetRepositoryImageResponse>;
+
 export interface GetRepositoryTagRequest {
   idOrName: string;
   tag: string;
@@ -431,10 +564,19 @@ export interface GetRepositoryTagRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
+const GetRepositoryTagRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<GetRepositoryTagRequest>;
+
 /** Whether the manifest is a multi-platform image index, a single-platform image manifest or an attestation. */
 export type VcrTagKind = "attestation" | "index" | "manifest";
+const VcrTagKind = S.String;
+
 /** VHS-readiness status, or `null` for a multi-platform index. */
 export type VcrTagStatus = "errored" | "preparing" | "ready" | "unoptimized";
+const VcrTagStatus = S.String;
+
 /** A tag pointing at an image in a Vercel Container Registry repository, enriched with the backing image's metadata and VHS-readiness status. */
 export interface VcrTag {
   /** CPU architecture the manifest targets. Only present for single-platform manifests. */
@@ -460,11 +602,22 @@ export interface VcrTag {
   /** ISO 8601 timestamp of when the tag was last updated. */
   updatedAt: string;
 }
+const VcrTag = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<VcrTag>;
+
 export interface GetRepositoryTagResponse {
   tag: VcrTag;
 }
+const GetRepositoryTagResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<GetRepositoryTagResponse>;
+
 export interface GetRootRequest {}
+const GetRootRequest = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<GetRootRequest>;
+
 export type GetRootResponse = unknown;
+const GetRootResponse = DeleteManifestResponse as any as S.Schema<GetRootResponse>;
+
 export interface GetTagsListRequest {
   /** Single Docker repository team slug component. */
   teamSlug: string;
@@ -476,11 +629,18 @@ export interface GetTagsListRequest {
   /** Opaque pagination cursor returned by a previous list response. */
   last?: string;
 }
+const GetTagsListRequest = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<GetTagsListRequest>;
+
 export type GetTagsListResponseTagsList = Array<string>;
+const GetTagsListResponseTagsList =
+  VcrImageLayerCase0CollapsedDigestsList as any as S.Schema<GetTagsListResponseTagsList>;
+
 export interface GetTagsListResponse {
   name: string;
   tags: GetTagsListResponseTagsList;
 }
+const GetTagsListResponse = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<GetTagsListResponse>;
+
 export interface HeadBlobRequest {
   /** Single Docker repository team slug component. */
   teamSlug: string;
@@ -491,7 +651,11 @@ export interface HeadBlobRequest {
   /** Content-addressable digest (algorithm:hex). */
   digest: string;
 }
+const HeadBlobRequest = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<HeadBlobRequest>;
+
 export interface HeadBlobResponse {}
+const HeadBlobResponse = DeleteBlobResponse as any as S.Schema<HeadBlobResponse>;
+
 export interface HeadManifestRequest {
   /** Single Docker repository team slug component. */
   teamSlug: string;
@@ -502,7 +666,11 @@ export interface HeadManifestRequest {
   /** Manifest reference: a tag or digest. */
   reference: string;
 }
+const HeadManifestRequest = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<HeadManifestRequest>;
+
 export interface HeadManifestResponse {}
+const HeadManifestResponse = DeleteBlobResponse as any as S.Schema<HeadManifestResponse>;
+
 export interface ListRepositoriesRequest {
   /** Project ID or name (slug) within the authenticated team. IDs take precedence over names. Missing or empty values return HTTP 400. */
   projectId: string;
@@ -514,13 +682,25 @@ export interface ListRepositoriesRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
+const ListRepositoriesRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<ListRepositoriesRequest>;
+
 export type VcrRepositoryListRepositoriesList = Array<VcrRepository>;
+const VcrRepositoryListRepositoriesList = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<VcrRepositoryListRepositoriesList>;
+
 /** A paginated list of Vercel Container Registry repositories. */
 export interface VcrRepositoryList {
   /** Cursor to fetch the next page of results, when more are available. */
   nextCursor?: string;
   repositories: VcrRepositoryListRepositoriesList;
 }
+const VcrRepositoryList = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<VcrRepositoryList>;
+
 export interface ListRepositoryImagesRequest {
   idOrName: string;
   /** Project ID or name (slug) within the authenticated team. IDs take precedence over names. Missing or empty values return HTTP 400. */
@@ -534,12 +714,24 @@ export interface ListRepositoryImagesRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
+const ListRepositoryImagesRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<ListRepositoryImagesRequest>;
+
 /** Whether the manifest is a multi-platform image index, a single-platform image manifest or an attestation. */
 export type VcrImageListItemKind = "attestation" | "index" | "manifest";
+const VcrImageListItemKind = S.String;
+
 /** VHS-readiness status, or `null` for a multi-platform index. */
 export type VcrImageListItemStatus = "errored" | "preparing" | "ready" | "unoptimized";
+const VcrImageListItemStatus = S.String;
+
 /** Tags pointing at this image's manifest. */
 export type VcrImageListItemTagsList = Array<string>;
+const VcrImageListItemTagsList =
+  VcrImageLayerCase0CollapsedDigestsList as any as S.Schema<VcrImageListItemTagsList>;
+
 /** An image enriched with its tags and VHS-readiness status, as returned when listing a repository's images. */
 export interface VcrImageListItem {
   /** CPU architecture the manifest targets. Only present for single-platform manifests. */
@@ -565,13 +757,22 @@ export interface VcrImageListItem {
   /** Tags pointing at this image's manifest. */
   tags: VcrImageListItemTagsList;
 }
+const VcrImageListItem = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<VcrImageListItem>;
+
 export type VcrImageListImagesList = Array<VcrImageListItem>;
+const VcrImageListImagesList = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<VcrImageListImagesList>;
+
 /** A paginated list of images for a repository. */
 export interface VcrImageList {
   images: VcrImageListImagesList;
   /** Cursor to fetch the next page of results, when more are available. */
   nextCursor?: string;
 }
+const VcrImageList = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<VcrImageList>;
+
 export interface ListRepositoryPermissionsRequest {
   idOrName: string;
   /** Project ID or name (slug) within the authenticated team. IDs take precedence over names. Missing or empty values return HTTP 400. */
@@ -584,17 +785,36 @@ export interface ListRepositoryPermissionsRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
+const ListRepositoryPermissionsRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  1,
+) as any as S.Schema<ListRepositoryPermissionsRequest>;
+
 export type VcrRepositoryPermissionListPermissionsList = Array<VcrRepositoryPermission>;
+const VcrRepositoryPermissionListPermissionsList = /*@__PURE__*/ __L.at(
+  __c5,
+  2,
+) as any as S.Schema<VcrRepositoryPermissionListPermissionsList>;
+
 /** A paginated list of Vercel Container Registry repository permissions. */
 export interface VcrRepositoryPermissionList {
   /** Cursor to fetch the next page of results, when more are available. */
   nextCursor?: string;
   permissions: VcrRepositoryPermissionListPermissionsList;
 }
+const VcrRepositoryPermissionList = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<VcrRepositoryPermissionList>;
+
 /** Field to sort the non-pinned tags by. */
 export type ListRepositoryTagsRequestSortBy = "updatedAt" | "tag";
+const ListRepositoryTagsRequestSortBy = S.String;
+
 /** Sort direction. Defaults to desc. */
 export type ListRepositoryTagsRequestSortOrder = "asc" | "desc";
+const ListRepositoryTagsRequestSortOrder = S.String;
+
 export interface ListRepositoryTagsRequest {
   idOrName: string;
   /** Project ID or name (slug) within the authenticated team. IDs take precedence over names. Missing or empty values return HTTP 400. */
@@ -610,12 +830,21 @@ export interface ListRepositoryTagsRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
+const ListRepositoryTagsRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  4,
+) as any as S.Schema<ListRepositoryTagsRequest>;
+
 export type ListRepositoryTagsResponseTagsItemKind = "attestation" | "index" | "manifest";
+const ListRepositoryTagsResponseTagsItemKind = S.String;
+
 export type ListRepositoryTagsResponseTagsItemStatus =
   | "errored"
   | "preparing"
   | "ready"
   | "unoptimized";
+const ListRepositoryTagsResponseTagsItemStatus = S.String;
+
 export interface ListRepositoryTagsResponseTagsItem {
   arch?: string;
   createdAt: string;
@@ -629,11 +858,26 @@ export interface ListRepositoryTagsResponseTagsItem {
   tag: string;
   updatedAt: string;
 }
+const ListRepositoryTagsResponseTagsItem = /*@__PURE__*/ __L.at(
+  __c5,
+  5,
+) as any as S.Schema<ListRepositoryTagsResponseTagsItem>;
+
 export type ListRepositoryTagsResponseTagsList = Array<ListRepositoryTagsResponseTagsItem>;
+const ListRepositoryTagsResponseTagsList = /*@__PURE__*/ __L.at(
+  __c5,
+  6,
+) as any as S.Schema<ListRepositoryTagsResponseTagsList>;
+
 export interface ListRepositoryTagsResponse {
   nextCursor?: string;
   tags: ListRepositoryTagsResponseTagsList;
 }
+const ListRepositoryTagsResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  7,
+) as any as S.Schema<ListRepositoryTagsResponse>;
+
 export interface RemoveRepositoryPermissionRequest {
   idOrName: string;
   /** Project ID or name (slug) within the authenticated team. IDs take precedence over names. Missing or empty values return HTTP 400. */
@@ -645,7 +889,15 @@ export interface RemoveRepositoryPermissionRequest {
   /** Slug of a team that is granted access to a repository. */
   teamSlug?: string;
 }
+const RemoveRepositoryPermissionRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<RemoveRepositoryPermissionRequest>;
+
 export type RemoveRepositoryPermissionResponse = unknown;
+const RemoveRepositoryPermissionResponse =
+  ClearRepositoryPermissionsResponse as any as S.Schema<RemoveRepositoryPermissionResponse>;
+
 export interface ReplaceByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsByUuidRequest {
   /** Single Docker repository team slug component. */
   teamSlug: string;
@@ -658,7 +910,16 @@ export interface ReplaceByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsByUui
   /** Content-addressable digest (algorithm:hex). */
   digest: string;
 }
+const ReplaceByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsByUuidRequest =
+  /*@__PURE__*/ __L.at(
+    __c6,
+    1,
+  ) as any as S.Schema<ReplaceByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsByUuidRequest>;
+
 export type ReplaceByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsByUuidResponse = unknown;
+const ReplaceByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsByUuidResponse =
+  CreateByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsResponse as any as S.Schema<ReplaceByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsByUuidResponse>;
+
 export interface ReplaceByTeamSlugByProjectSlugByRepositoryNameManifestsByReferenceRequest {
   /** Single Docker repository team slug component. */
   teamSlug: string;
@@ -669,7 +930,16 @@ export interface ReplaceByTeamSlugByProjectSlugByRepositoryNameManifestsByRefere
   /** Manifest reference: a tag or digest. */
   reference: string;
 }
+const ReplaceByTeamSlugByProjectSlugByRepositoryNameManifestsByReferenceRequest =
+  /*@__PURE__*/ __L.at(
+    __c6,
+    2,
+  ) as any as S.Schema<ReplaceByTeamSlugByProjectSlugByRepositoryNameManifestsByReferenceRequest>;
+
 export type ReplaceByTeamSlugByProjectSlugByRepositoryNameManifestsByReferenceResponse = unknown;
+const ReplaceByTeamSlugByProjectSlugByRepositoryNameManifestsByReferenceResponse =
+  CreateByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsResponse as any as S.Schema<ReplaceByTeamSlugByProjectSlugByRepositoryNameManifestsByReferenceResponse>;
+
 export interface UpdateByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsByUuidRequest {
   /** Single Docker repository team slug component. */
   teamSlug: string;
@@ -680,7 +950,15 @@ export interface UpdateByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsByUuid
   /** Blob upload session identifier. */
   uuid: string;
 }
+const UpdateByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsByUuidRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  3,
+) as any as S.Schema<UpdateByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsByUuidRequest>;
+
 export type UpdateByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsByUuidResponse = unknown;
+const UpdateByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsByUuidResponse =
+  CreateByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsResponse as any as S.Schema<UpdateByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsByUuidResponse>;
+
 export type AddRepositoryPermissionError = BadRequest | Forbidden | NotFound | VercelOpError;
 /** Add a repository permission Grant a team access to a VCR repository. Sharing applies to the whole repository. */
 export const addRepositoryPermission: API.OperationMethod<
@@ -689,8 +967,8 @@ export const addRepositoryPermission: API.OperationMethod<
   AddRepositoryPermissionError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<AddRepositoryPermissionRequest>,
-  output: __S(2) as any as S.Schema<AddRepositoryPermissionResponse>,
+  input: AddRepositoryPermissionRequest,
+  output: AddRepositoryPermissionResponse,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -704,8 +982,8 @@ export const clearRepositoryPermissions: API.OperationMethod<
   ClearRepositoryPermissionsError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3) as any as S.Schema<ClearRepositoryPermissionsRequest>,
-  output: __S(4) as any as S.Schema<ClearRepositoryPermissionsResponse>,
+  input: ClearRepositoryPermissionsRequest,
+  output: ClearRepositoryPermissionsResponse,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -724,12 +1002,8 @@ export const createByTeamSlugByProjectSlugByRepositoryNameBlobsUploads: API.Oper
   CreateByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(
-    5,
-  ) as any as S.Schema<CreateByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsRequest>,
-  output: __S(
-    6,
-  ) as any as S.Schema<CreateByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsResponse>,
+  input: CreateByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsRequest,
+  output: CreateByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsResponse,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -749,8 +1023,8 @@ export const createRepository: API.OperationMethod<
   CreateRepositoryError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7) as any as S.Schema<CreateRepositoryRequest>,
-  output: __S(9) as any as S.Schema<CreateRepositoryResponse>,
+  input: CreateRepositoryRequest,
+  output: CreateRepositoryResponse,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound, Conflict],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -764,8 +1038,8 @@ export const deleteBlob: API.OperationMethod<
   DeleteBlobError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10) as any as S.Schema<DeleteBlobRequest>,
-  output: __S(11) as any as S.Schema<DeleteBlobResponse>,
+  input: DeleteBlobRequest,
+  output: DeleteBlobResponse,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -784,8 +1058,8 @@ export const deleteBlobsUpload: API.OperationMethod<
   DeleteBlobsUploadError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12) as any as S.Schema<DeleteBlobsUploadRequest>,
-  output: __S(4) as any as S.Schema<DeleteBlobsUploadResponse>,
+  input: DeleteBlobsUploadRequest,
+  output: DeleteBlobsUploadResponse,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -804,8 +1078,8 @@ export const deleteManifest: API.OperationMethod<
   DeleteManifestError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13) as any as S.Schema<DeleteManifestRequest>,
-  output: __S(14) as any as S.Schema<DeleteManifestResponse>,
+  input: DeleteManifestRequest,
+  output: DeleteManifestResponse,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -819,8 +1093,8 @@ export const deleteRepository: API.OperationMethod<
   DeleteRepositoryError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15) as any as S.Schema<DeleteRepositoryRequest>,
-  output: __S(14) as any as S.Schema<DeleteRepositoryResponse>,
+  input: DeleteRepositoryRequest,
+  output: DeleteRepositoryResponse,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -834,8 +1108,8 @@ export const deleteRepositoryImage: API.OperationMethod<
   DeleteRepositoryImageError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16) as any as S.Schema<DeleteRepositoryImageRequest>,
-  output: __S(4) as any as S.Schema<DeleteRepositoryImageResponse>,
+  input: DeleteRepositoryImageRequest,
+  output: DeleteRepositoryImageResponse,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -849,8 +1123,8 @@ export const getBlob: API.OperationMethod<
   GetBlobError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17) as any as S.Schema<GetBlobRequest>,
-  output: __S(11) as any as S.Schema<GetBlobResponse>,
+  input: GetBlobRequest,
+  output: GetBlobResponse,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -869,8 +1143,8 @@ export const getBlobsUpload: API.OperationMethod<
   GetBlobsUploadError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18) as any as S.Schema<GetBlobsUploadRequest>,
-  output: __S(14) as any as S.Schema<GetBlobsUploadResponse>,
+  input: GetBlobsUploadRequest,
+  output: GetBlobsUploadResponse,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -884,8 +1158,8 @@ export const getManifest: API.OperationMethod<
   GetManifestError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19) as any as S.Schema<GetManifestRequest>,
-  output: __S(11) as any as S.Schema<GetManifestResponse>,
+  input: GetManifestRequest,
+  output: GetManifestResponse,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -899,8 +1173,8 @@ export const getRepository: API.OperationMethod<
   GetRepositoryError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20) as any as S.Schema<GetRepositoryRequest>,
-  output: __S(9) as any as S.Schema<GetRepositoryResponse>,
+  input: GetRepositoryRequest,
+  output: GetRepositoryResponse,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -914,8 +1188,8 @@ export const getRepositoryImage: API.OperationMethod<
   GetRepositoryImageError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21) as any as S.Schema<GetRepositoryImageRequest>,
-  output: __S(25) as any as S.Schema<GetRepositoryImageResponse>,
+  input: GetRepositoryImageRequest,
+  output: GetRepositoryImageResponse,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -929,8 +1203,8 @@ export const getRepositoryTag: API.OperationMethod<
   GetRepositoryTagError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26) as any as S.Schema<GetRepositoryTagRequest>,
-  output: __S(28) as any as S.Schema<GetRepositoryTagResponse>,
+  input: GetRepositoryTagRequest,
+  output: GetRepositoryTagResponse,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -944,8 +1218,8 @@ export const getRoot: API.OperationMethod<
   GetRootError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29) as any as S.Schema<GetRootRequest>,
-  output: __S(14) as any as S.Schema<GetRootResponse>,
+  input: GetRootRequest,
+  output: GetRootResponse,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -959,8 +1233,8 @@ export const getTagsList: API.OperationMethod<
   GetTagsListError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30) as any as S.Schema<GetTagsListRequest>,
-  output: __S(31) as any as S.Schema<GetTagsListResponse>,
+  input: GetTagsListRequest,
+  output: GetTagsListResponse,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -974,8 +1248,8 @@ export const headBlob: API.OperationMethod<
   HeadBlobError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32) as any as S.Schema<HeadBlobRequest>,
-  output: __S(11) as any as S.Schema<HeadBlobResponse>,
+  input: HeadBlobRequest,
+  output: HeadBlobResponse,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -989,8 +1263,8 @@ export const headManifest: API.OperationMethod<
   HeadManifestError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33) as any as S.Schema<HeadManifestRequest>,
-  output: __S(11) as any as S.Schema<HeadManifestResponse>,
+  input: HeadManifestRequest,
+  output: HeadManifestResponse,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -1004,8 +1278,8 @@ export const listRepositories: API.OperationMethod<
   ListRepositoriesError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34) as any as S.Schema<ListRepositoriesRequest>,
-  output: __S(36) as any as S.Schema<VcrRepositoryList>,
+  input: ListRepositoriesRequest,
+  output: VcrRepositoryList,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -1019,8 +1293,8 @@ export const listRepositoryImages: API.OperationMethod<
   ListRepositoryImagesError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37) as any as S.Schema<ListRepositoryImagesRequest>,
-  output: __S(40) as any as S.Schema<VcrImageList>,
+  input: ListRepositoryImagesRequest,
+  output: VcrImageList,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -1034,8 +1308,8 @@ export const listRepositoryPermissions: API.OperationMethod<
   ListRepositoryPermissionsError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41) as any as S.Schema<ListRepositoryPermissionsRequest>,
-  output: __S(43) as any as S.Schema<VcrRepositoryPermissionList>,
+  input: ListRepositoryPermissionsRequest,
+  output: VcrRepositoryPermissionList,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -1049,8 +1323,8 @@ export const listRepositoryTags: API.OperationMethod<
   ListRepositoryTagsError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44) as any as S.Schema<ListRepositoryTagsRequest>,
-  output: __S(47) as any as S.Schema<ListRepositoryTagsResponse>,
+  input: ListRepositoryTagsRequest,
+  output: ListRepositoryTagsResponse,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -1064,8 +1338,8 @@ export const removeRepositoryPermission: API.OperationMethod<
   RemoveRepositoryPermissionError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48) as any as S.Schema<RemoveRepositoryPermissionRequest>,
-  output: __S(4) as any as S.Schema<RemoveRepositoryPermissionResponse>,
+  input: RemoveRepositoryPermissionRequest,
+  output: RemoveRepositoryPermissionResponse,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -1084,12 +1358,8 @@ export const replaceByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsByUuid: A
   ReplaceByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsByUuidError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(
-    49,
-  ) as any as S.Schema<ReplaceByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsByUuidRequest>,
-  output: __S(
-    6,
-  ) as any as S.Schema<ReplaceByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsByUuidResponse>,
+  input: ReplaceByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsByUuidRequest,
+  output: ReplaceByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsByUuidResponse,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -1108,12 +1378,8 @@ export const replaceByTeamSlugByProjectSlugByRepositoryNameManifestsByReference:
   ReplaceByTeamSlugByProjectSlugByRepositoryNameManifestsByReferenceError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(
-    50,
-  ) as any as S.Schema<ReplaceByTeamSlugByProjectSlugByRepositoryNameManifestsByReferenceRequest>,
-  output: __S(
-    6,
-  ) as any as S.Schema<ReplaceByTeamSlugByProjectSlugByRepositoryNameManifestsByReferenceResponse>,
+  input: ReplaceByTeamSlugByProjectSlugByRepositoryNameManifestsByReferenceRequest,
+  output: ReplaceByTeamSlugByProjectSlugByRepositoryNameManifestsByReferenceResponse,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -1132,12 +1398,8 @@ export const updateByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsByUuid: AP
   UpdateByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsByUuidError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(
-    51,
-  ) as any as S.Schema<UpdateByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsByUuidRequest>,
-  output: __S(
-    6,
-  ) as any as S.Schema<UpdateByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsByUuidResponse>,
+  input: UpdateByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsByUuidRequest,
+  output: UpdateByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsByUuidResponse,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -1172,7 +1434,7 @@ function __c0(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          permission: __S(1),
+          permission: VcrRepositoryPermission,
         }),
       ).annotate({
         identifier: "AddRepositoryPermissionResponse",
@@ -1247,7 +1509,7 @@ function __c1(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          repository: __S(8),
+          repository: VcrRepository,
         }),
       ).annotate({ identifier: "CreateRepositoryResponse" });
     case 2:
@@ -1409,7 +1671,7 @@ function __c2(j: number): any {
     case 6:
       return S.Array(S.String);
     case 7:
-      return S.Array(S.Unknown);
+      return S.Array(VcrImageLayer);
   }
 }
 function __c3(j: number): any {
@@ -1420,21 +1682,21 @@ function __c3(j: number): any {
           arch: S.optional(S.String),
           createdAt: S.String,
           id: S.String,
-          kind: S.String,
-          layers: __S(23),
+          kind: VcrImageDetailKind,
+          layers: VcrImageDetailLayersList,
           manifestDigest: S.String,
           platform: S.optional(S.String),
           pushedBy: S.optional(S.String),
           repositoryId: S.String,
           sizeInBytes: S.Number,
-          status: S.NullOr(S.String),
-          tags: __S(22),
+          status: S.NullOr(VcrImageDetailStatus),
+          tags: VcrImageDetailTagsList,
         }),
       ).annotate({ identifier: "VcrImageDetail" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          image: __S(24),
+          image: VcrImageDetail,
         }),
       ).annotate({
         identifier: "GetRepositoryImageResponse",
@@ -1457,12 +1719,12 @@ function __c3(j: number): any {
           arch: S.optional(S.String),
           createdAt: S.String,
           imageId: S.String,
-          kind: S.String,
+          kind: VcrTagKind,
           manifestDigest: S.String,
           platform: S.optional(S.String),
           pushedBy: S.optional(S.String),
           sizeInBytes: S.Number,
-          status: S.NullOr(S.String),
+          status: S.NullOr(VcrTagStatus),
           tag: S.String,
           updatedAt: S.String,
         }),
@@ -1470,7 +1732,7 @@ function __c3(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          tag: __S(27),
+          tag: VcrTag,
         }),
       ).annotate({ identifier: "GetRepositoryTagResponse" });
     case 5:
@@ -1497,7 +1759,7 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          tags: __S(22),
+          tags: GetTagsListResponseTagsList,
         }),
       ).annotate({ identifier: "GetTagsListResponse" });
   }
@@ -1545,12 +1807,12 @@ function __c4(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/v1/vcr/repository", code: 200 })),
       ).annotate({ identifier: "ListRepositoriesRequest" });
     case 3:
-      return S.Array(__S(8));
+      return S.Array(VcrRepository);
     case 4:
       return S.suspend(() =>
         S.Struct({
           nextCursor: S.optional(S.String),
-          repositories: __S(35),
+          repositories: VcrRepositoryListRepositoriesList,
         }),
       ).annotate({ identifier: "VcrRepositoryList" });
     case 5:
@@ -1573,18 +1835,18 @@ function __c4(j: number): any {
           arch: S.optional(S.String),
           createdAt: S.String,
           id: S.String,
-          kind: S.String,
+          kind: VcrImageListItemKind,
           manifestDigest: S.String,
           platform: S.optional(S.String),
           pushedBy: S.optional(S.String),
           repositoryId: S.String,
           sizeInBytes: S.Number,
-          status: S.NullOr(S.String),
-          tags: __S(22),
+          status: S.NullOr(VcrImageListItemStatus),
+          tags: VcrImageListItemTagsList,
         }),
       ).annotate({ identifier: "VcrImageListItem" });
     case 7:
-      return S.Array(__S(38));
+      return S.Array(VcrImageListItem);
   }
 }
 function __c5(j: number): any {
@@ -1592,7 +1854,7 @@ function __c5(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          images: __S(39),
+          images: VcrImageListImagesList,
           nextCursor: S.optional(S.String),
         }),
       ).annotate({ identifier: "VcrImageList" });
@@ -1612,12 +1874,12 @@ function __c5(j: number): any {
         identifier: "ListRepositoryPermissionsRequest",
       });
     case 2:
-      return S.Array(__S(1));
+      return S.Array(VcrRepositoryPermission);
     case 3:
       return S.suspend(() =>
         S.Struct({
           nextCursor: S.optional(S.String),
-          permissions: __S(42),
+          permissions: VcrRepositoryPermissionListPermissionsList,
         }),
       ).annotate({
         identifier: "VcrRepositoryPermissionList",
@@ -1629,8 +1891,8 @@ function __c5(j: number): any {
           projectId: S.String.pipe(T.Query()),
           limit: S.optional(S.Number.pipe(T.Query())),
           cursor: S.optional(S.String.pipe(T.Query())),
-          sortBy: S.optional(S.String.pipe(T.Query())),
-          sortOrder: S.optional(S.String.pipe(T.Query())),
+          sortBy: S.optional(ListRepositoryTagsRequestSortBy.pipe(T.Query())),
+          sortOrder: S.optional(ListRepositoryTagsRequestSortOrder.pipe(T.Query())),
           teamId: S.optional(S.String.pipe(T.Query())),
           slug: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/v1/vcr/repository/{idOrName}/tags", code: 200 })),
@@ -1643,12 +1905,12 @@ function __c5(j: number): any {
           arch: S.optional(S.String),
           createdAt: S.String,
           imageId: S.String,
-          kind: S.String,
+          kind: ListRepositoryTagsResponseTagsItemKind,
           manifestDigest: S.String,
           platform: S.optional(S.String),
           pushedBy: S.optional(S.String),
           sizeInBytes: S.Number,
-          status: S.NullOr(S.String),
+          status: S.NullOr(ListRepositoryTagsResponseTagsItemStatus),
           tag: S.String,
           updatedAt: S.String,
         }),
@@ -1656,12 +1918,12 @@ function __c5(j: number): any {
         identifier: "ListRepositoryTagsResponseTagsItem",
       });
     case 6:
-      return S.Array(__S(45));
+      return S.Array(ListRepositoryTagsResponseTagsItem);
     case 7:
       return S.suspend(() =>
         S.Struct({
           nextCursor: S.optional(S.String),
-          tags: __S(46),
+          tags: ListRepositoryTagsResponseTagsList,
         }),
       ).annotate({
         identifier: "ListRepositoryTagsResponse",
@@ -1736,28 +1998,5 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "UpdateByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsByUuidRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
   }
 }

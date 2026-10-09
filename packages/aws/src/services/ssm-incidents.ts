@@ -8,8 +8,6 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "SSM Incidents",
   serviceShapeName: "SSMIncidents",
@@ -147,59 +145,92 @@ export class ValidationException
 export type Arn = string;
 export type FindingId = string;
 export type FindingIdList = string[];
+const FindingIdList = /*@__PURE__*/ __L.at(__c0, 0);
 export interface BatchGetIncidentFindingsInput {
   incidentRecordArn: string;
   findingIds: string[];
 }
+const BatchGetIncidentFindingsInput = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<BatchGetIncidentFindingsInput>;
 export interface CodeDeployDeployment {
   startTime: Date;
   endTime?: Date;
   deploymentGroupArn: string;
   deploymentId: string;
 }
+const CodeDeployDeployment = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<CodeDeployDeployment>;
 export interface CloudFormationStackUpdate {
   startTime: Date;
   endTime?: Date;
   stackArn: string;
 }
+const CloudFormationStackUpdate = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<CloudFormationStackUpdate>;
 export type FindingDetails =
   | { codeDeployDeployment: CodeDeployDeployment; cloudFormationStackUpdate?: never }
   | { codeDeployDeployment?: never; cloudFormationStackUpdate: CloudFormationStackUpdate };
+const FindingDetails = /*@__PURE__*/ __L.at(__c0, 4);
 export interface Finding {
   id: string;
   creationTime: Date;
   lastModifiedTime: Date;
   details?: FindingDetails;
 }
+const Finding = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<Finding>;
 export type FindingList = Finding[];
+const FindingList = /*@__PURE__*/ __L.at(__c0, 6);
 export interface BatchGetIncidentFindingsError_ {
   findingId: string;
   code: string;
   message: string;
 }
+const BatchGetIncidentFindingsError_ = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<BatchGetIncidentFindingsError_>;
 export type BatchGetIncidentFindingsErrorList = BatchGetIncidentFindingsError_[];
+const BatchGetIncidentFindingsErrorList = /*@__PURE__*/ __L.at(__c1, 0);
 export interface BatchGetIncidentFindingsOutput {
   findings: Finding[];
   errors: BatchGetIncidentFindingsError_[];
 }
+const BatchGetIncidentFindingsOutput = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<BatchGetIncidentFindingsOutput>;
 export type RegionName = string;
 export type SseKmsKey = string;
 export interface RegionMapInputValue {
   sseKmsKeyId?: string;
 }
+const RegionMapInputValue = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<RegionMapInputValue>;
 export type RegionMapInput = { [key: string]: RegionMapInputValue | undefined };
+const RegionMapInput = /*@__PURE__*/ __L.at(__c1, 3);
 export type ClientToken = string;
 export type TagKey = string;
 export type TagValue = string;
 export type TagMap = { [key: string]: string | undefined };
+const TagMap = /*@__PURE__*/ __L.at(__c1, 4);
 export interface CreateReplicationSetInput {
   regions: { [key: string]: RegionMapInputValue | undefined };
   clientToken?: string;
   tags?: { [key: string]: string | undefined };
 }
+const CreateReplicationSetInput = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<CreateReplicationSetInput>;
 export interface CreateReplicationSetOutput {
   arn: string;
 }
+const CreateReplicationSetOutput = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<CreateReplicationSetOutput>;
 export type ResponsePlanName = string;
 export type ResponsePlanDisplayName = string;
 export type IncidentTitle = string;
@@ -207,7 +238,9 @@ export type Impact = number;
 export type IncidentSummary = string;
 export type DedupeString = string;
 export type NotificationTargetItem = { snsTopicArn: string };
+const NotificationTargetItem = /*@__PURE__*/ __L.at(__c1, 7);
 export type NotificationTargetSet = NotificationTargetItem[];
+const NotificationTargetSet = /*@__PURE__*/ __L.at(__c2, 0);
 export interface IncidentTemplate {
   title: string;
   impact: number;
@@ -216,21 +249,30 @@ export interface IncidentTemplate {
   notificationTargets?: NotificationTargetItem[];
   incidentTags?: { [key: string]: string | undefined };
 }
+const IncidentTemplate = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<IncidentTemplate>;
 export interface EmptyChatChannel {}
+const EmptyChatChannel = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<EmptyChatChannel>;
 export type SnsArn = string;
 export type ChatbotSnsConfigurationSet = string[];
+const ChatbotSnsConfigurationSet = FindingIdList as any as S.Schema<ChatbotSnsConfigurationSet>;
 export type ChatChannel =
   | { empty: EmptyChatChannel; chatbotSns?: never }
   | { empty?: never; chatbotSns: string[] };
+const ChatChannel = /*@__PURE__*/ __L.at(__c2, 3);
 export type SsmContactsArn = string;
 export type EngagementSet = string[];
+const EngagementSet = FindingIdList as any as S.Schema<EngagementSet>;
 export type RoleArn = string;
 export type SsmTargetAccount = string;
 export type SsmParameterValues = string[];
+const SsmParameterValues = FindingIdList as any as S.Schema<SsmParameterValues>;
 export type SsmParameters = { [key: string]: string[] | undefined };
+const SsmParameters = /*@__PURE__*/ __L.at(__c2, 4);
 export type VariableType = string;
 export type DynamicSsmParameterValue = { variable: string };
+const DynamicSsmParameterValue = /*@__PURE__*/ __L.at(__c2, 5);
 export type DynamicSsmParameters = { [key: string]: DynamicSsmParameterValue | undefined };
+const DynamicSsmParameters = /*@__PURE__*/ __L.at(__c2, 6);
 export interface SsmAutomation {
   roleArn: string;
   documentName: string;
@@ -239,18 +281,31 @@ export interface SsmAutomation {
   parameters?: { [key: string]: string[] | undefined };
   dynamicParameters?: { [key: string]: DynamicSsmParameterValue | undefined };
 }
+const SsmAutomation = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<SsmAutomation>;
 export type Action = { ssmAutomation: SsmAutomation };
+const Action = /*@__PURE__*/ __L.at(__c3, 0);
 export type ActionsList = Action[];
+const ActionsList = /*@__PURE__*/ __L.at(__c3, 1);
 export interface PagerDutyIncidentConfiguration {
   serviceId: string;
 }
+const PagerDutyIncidentConfiguration = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<PagerDutyIncidentConfiguration>;
 export interface PagerDutyConfiguration {
   name: string;
   secretId: string;
   pagerDutyIncidentConfiguration: PagerDutyIncidentConfiguration;
 }
+const PagerDutyConfiguration = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<PagerDutyConfiguration>;
 export type Integration = { pagerDutyConfiguration: PagerDutyConfiguration };
+const Integration = /*@__PURE__*/ __L.at(__c3, 4);
 export type Integrations = Integration[];
+const Integrations = /*@__PURE__*/ __L.at(__c3, 5);
 export interface CreateResponsePlanInput {
   clientToken?: string;
   name: string;
@@ -262,16 +317,26 @@ export interface CreateResponsePlanInput {
   tags?: { [key: string]: string | undefined };
   integrations?: Integration[];
 }
+const CreateResponsePlanInput = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<CreateResponsePlanInput>;
 export interface CreateResponsePlanOutput {
   arn: string;
 }
+const CreateResponsePlanOutput = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<CreateResponsePlanOutput>;
 export type TimelineEventType = string;
 export type EventData = string;
 export type GeneratedId = string;
 export type EventReference =
   | { resource: string; relatedItemId?: never }
   | { resource?: never; relatedItemId: string };
+const EventReference = /*@__PURE__*/ __L.at(__c4, 0);
 export type EventReferenceList = EventReference[];
+const EventReferenceList = /*@__PURE__*/ __L.at(__c4, 1);
 export interface CreateTimelineEventInput {
   clientToken?: string;
   incidentRecordArn: string;
@@ -280,40 +345,79 @@ export interface CreateTimelineEventInput {
   eventData: string;
   eventReferences?: EventReference[];
 }
+const CreateTimelineEventInput = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<CreateTimelineEventInput>;
 export type UUID = string;
 export interface CreateTimelineEventOutput {
   incidentRecordArn: string;
   eventId: string;
 }
+const CreateTimelineEventOutput = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<CreateTimelineEventOutput>;
 export interface DeleteIncidentRecordInput {
   arn: string;
 }
+const DeleteIncidentRecordInput = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<DeleteIncidentRecordInput>;
 export interface DeleteIncidentRecordOutput {}
+const DeleteIncidentRecordOutput = EmptyChatChannel as any as S.Schema<DeleteIncidentRecordOutput>;
 export interface DeleteReplicationSetInput {
   arn: string;
 }
+const DeleteReplicationSetInput = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<DeleteReplicationSetInput>;
 export interface DeleteReplicationSetOutput {}
+const DeleteReplicationSetOutput = EmptyChatChannel as any as S.Schema<DeleteReplicationSetOutput>;
 export type PolicyId = string;
 export interface DeleteResourcePolicyInput {
   resourceArn: string;
   policyId: string;
 }
+const DeleteResourcePolicyInput = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<DeleteResourcePolicyInput>;
 export interface DeleteResourcePolicyOutput {}
+const DeleteResourcePolicyOutput = EmptyChatChannel as any as S.Schema<DeleteResourcePolicyOutput>;
 export interface DeleteResponsePlanInput {
   arn: string;
 }
+const DeleteResponsePlanInput = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<DeleteResponsePlanInput>;
 export interface DeleteResponsePlanOutput {}
+const DeleteResponsePlanOutput = EmptyChatChannel as any as S.Schema<DeleteResponsePlanOutput>;
 export interface DeleteTimelineEventInput {
   incidentRecordArn: string;
   eventId: string;
 }
+const DeleteTimelineEventInput = /*@__PURE__*/ __L.at(
+  __c5,
+  0,
+) as any as S.Schema<DeleteTimelineEventInput>;
 export interface DeleteTimelineEventOutput {}
+const DeleteTimelineEventOutput = EmptyChatChannel as any as S.Schema<DeleteTimelineEventOutput>;
 export interface GetIncidentRecordInput {
   arn: string;
 }
+const GetIncidentRecordInput = /*@__PURE__*/ __L.at(
+  __c5,
+  1,
+) as any as S.Schema<GetIncidentRecordInput>;
 export type IncidentRecordStatus = string;
 export type AutomationExecution = { ssmExecutionArn: string };
+const AutomationExecution = /*@__PURE__*/ __L.at(__c5, 2);
 export type AutomationExecutionSet = AutomationExecution[];
+const AutomationExecutionSet = /*@__PURE__*/ __L.at(__c5, 3);
 export type ServicePrincipal = string;
 export type IncidentSource = string;
 export interface IncidentRecordSource {
@@ -322,6 +426,7 @@ export interface IncidentRecordSource {
   resourceArn?: string;
   source: string;
 }
+const IncidentRecordSource = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<IncidentRecordSource>;
 export interface IncidentRecord {
   arn: string;
   title: string;
@@ -338,12 +443,21 @@ export interface IncidentRecord {
   chatChannel?: ChatChannel;
   notificationTargets?: NotificationTargetItem[];
 }
+const IncidentRecord = /*@__PURE__*/ __L.at(__c5, 5) as any as S.Schema<IncidentRecord>;
 export interface GetIncidentRecordOutput {
   incidentRecord: IncidentRecord;
 }
+const GetIncidentRecordOutput = /*@__PURE__*/ __L.at(
+  __c5,
+  6,
+) as any as S.Schema<GetIncidentRecordOutput>;
 export interface GetReplicationSetInput {
   arn: string;
 }
+const GetReplicationSetInput = /*@__PURE__*/ __L.at(
+  __c5,
+  7,
+) as any as S.Schema<GetReplicationSetInput>;
 export type RegionStatus = string;
 export interface RegionInfo {
   sseKmsKeyId?: string;
@@ -351,7 +465,9 @@ export interface RegionInfo {
   statusMessage?: string;
   statusUpdateDateTime: Date;
 }
+const RegionInfo = /*@__PURE__*/ __L.at(__c6, 0) as any as S.Schema<RegionInfo>;
 export type RegionInfoMap = { [key: string]: RegionInfo | undefined };
+const RegionInfoMap = /*@__PURE__*/ __L.at(__c6, 1);
 export type ReplicationSetStatus = string;
 export interface ReplicationSet {
   arn?: string;
@@ -363,9 +479,14 @@ export interface ReplicationSet {
   lastModifiedTime: Date;
   lastModifiedBy: string;
 }
+const ReplicationSet = /*@__PURE__*/ __L.at(__c6, 2) as any as S.Schema<ReplicationSet>;
 export interface GetReplicationSetOutput {
   replicationSet: ReplicationSet;
 }
+const GetReplicationSetOutput = /*@__PURE__*/ __L.at(
+  __c6,
+  3,
+) as any as S.Schema<GetReplicationSetOutput>;
 export type MaxResults = number;
 export type NextToken = string;
 export interface GetResourcePoliciesInput {
@@ -373,20 +494,31 @@ export interface GetResourcePoliciesInput {
   maxResults?: number;
   nextToken?: string;
 }
+const GetResourcePoliciesInput = /*@__PURE__*/ __L.at(
+  __c6,
+  4,
+) as any as S.Schema<GetResourcePoliciesInput>;
 export type Policy = string;
 export interface ResourcePolicy {
   policyDocument: string;
   policyId: string;
   ramResourceShareRegion: string;
 }
+const ResourcePolicy = /*@__PURE__*/ __L.at(__c6, 5) as any as S.Schema<ResourcePolicy>;
 export type ResourcePolicyList = ResourcePolicy[];
+const ResourcePolicyList = /*@__PURE__*/ __L.at(__c6, 6);
 export interface GetResourcePoliciesOutput {
   resourcePolicies: ResourcePolicy[];
   nextToken?: string;
 }
+const GetResourcePoliciesOutput = /*@__PURE__*/ __L.at(
+  __c6,
+  7,
+) as any as S.Schema<GetResourcePoliciesOutput>;
 export interface GetResponsePlanInput {
   arn: string;
 }
+const GetResponsePlanInput = /*@__PURE__*/ __L.at(__c7, 0) as any as S.Schema<GetResponsePlanInput>;
 export interface GetResponsePlanOutput {
   arn: string;
   name: string;
@@ -397,10 +529,18 @@ export interface GetResponsePlanOutput {
   actions?: Action[];
   integrations?: Integration[];
 }
+const GetResponsePlanOutput = /*@__PURE__*/ __L.at(
+  __c7,
+  1,
+) as any as S.Schema<GetResponsePlanOutput>;
 export interface GetTimelineEventInput {
   incidentRecordArn: string;
   eventId: string;
 }
+const GetTimelineEventInput = /*@__PURE__*/ __L.at(
+  __c7,
+  2,
+) as any as S.Schema<GetTimelineEventInput>;
 export interface TimelineEvent {
   incidentRecordArn: string;
   eventId: string;
@@ -410,42 +550,67 @@ export interface TimelineEvent {
   eventData: string;
   eventReferences?: EventReference[];
 }
+const TimelineEvent = /*@__PURE__*/ __L.at(__c7, 3) as any as S.Schema<TimelineEvent>;
 export interface GetTimelineEventOutput {
   event: TimelineEvent;
 }
+const GetTimelineEventOutput = /*@__PURE__*/ __L.at(
+  __c7,
+  4,
+) as any as S.Schema<GetTimelineEventOutput>;
 export interface ListIncidentFindingsInput {
   incidentRecordArn: string;
   maxResults?: number;
   nextToken?: string;
 }
+const ListIncidentFindingsInput = /*@__PURE__*/ __L.at(
+  __c7,
+  5,
+) as any as S.Schema<ListIncidentFindingsInput>;
 export interface FindingSummary {
   id: string;
   lastModifiedTime: Date;
 }
+const FindingSummary = /*@__PURE__*/ __L.at(__c7, 6) as any as S.Schema<FindingSummary>;
 export type FindingSummaryList = FindingSummary[];
+const FindingSummaryList = /*@__PURE__*/ __L.at(__c7, 7);
 export interface ListIncidentFindingsOutput {
   findings: FindingSummary[];
   nextToken?: string;
 }
+const ListIncidentFindingsOutput = /*@__PURE__*/ __L.at(
+  __c8,
+  0,
+) as any as S.Schema<ListIncidentFindingsOutput>;
 export type StringList = string[];
+const StringList = FindingIdList as any as S.Schema<StringList>;
 export type IntegerList = number[];
+const IntegerList = /*@__PURE__*/ __L.at(__c8, 1);
 export type AttributeValueList =
   | { stringValues: string[]; integerValues?: never }
   | { stringValues?: never; integerValues: number[] };
+const AttributeValueList = /*@__PURE__*/ __L.at(__c8, 2);
 export type Condition =
   | { before: Date; after?: never; equals?: never }
   | { before?: never; after: Date; equals?: never }
   | { before?: never; after?: never; equals: AttributeValueList };
+const Condition = /*@__PURE__*/ __L.at(__c8, 3);
 export interface Filter {
   key: string;
   condition: Condition;
 }
+const Filter = /*@__PURE__*/ __L.at(__c8, 4) as any as S.Schema<Filter>;
 export type FilterList = Filter[];
+const FilterList = /*@__PURE__*/ __L.at(__c8, 5);
 export interface ListIncidentRecordsInput {
   filters?: Filter[];
   maxResults?: number;
   nextToken?: string;
 }
+const ListIncidentRecordsInput = /*@__PURE__*/ __L.at(
+  __c8,
+  6,
+) as any as S.Schema<ListIncidentRecordsInput>;
 export interface IncidentRecordSummary {
   arn: string;
   title: string;
@@ -455,16 +620,29 @@ export interface IncidentRecordSummary {
   resolvedTime?: Date;
   incidentRecordSource: IncidentRecordSource;
 }
+const IncidentRecordSummary = /*@__PURE__*/ __L.at(
+  __c8,
+  7,
+) as any as S.Schema<IncidentRecordSummary>;
 export type IncidentRecordSummaryList = IncidentRecordSummary[];
+const IncidentRecordSummaryList = /*@__PURE__*/ __L.at(__c9, 0);
 export interface ListIncidentRecordsOutput {
   incidentRecordSummaries: IncidentRecordSummary[];
   nextToken?: string;
 }
+const ListIncidentRecordsOutput = /*@__PURE__*/ __L.at(
+  __c9,
+  1,
+) as any as S.Schema<ListIncidentRecordsOutput>;
 export interface ListRelatedItemsInput {
   incidentRecordArn: string;
   maxResults?: number;
   nextToken?: string;
 }
+const ListRelatedItemsInput = /*@__PURE__*/ __L.at(
+  __c9,
+  2,
+) as any as S.Schema<ListRelatedItemsInput>;
 export type Url = string;
 export type MetricDefinition = string;
 export interface PagerDutyIncidentDetail {
@@ -472,6 +650,10 @@ export interface PagerDutyIncidentDetail {
   autoResolve?: boolean;
   secretId?: string;
 }
+const PagerDutyIncidentDetail = /*@__PURE__*/ __L.at(
+  __c9,
+  3,
+) as any as S.Schema<PagerDutyIncidentDetail>;
 export type ItemValue =
   | { arn: string; url?: never; metricDefinition?: never; pagerDutyIncidentDetail?: never }
   | { arn?: never; url: string; metricDefinition?: never; pagerDutyIncidentDetail?: never }
@@ -482,50 +664,85 @@ export type ItemValue =
       metricDefinition?: never;
       pagerDutyIncidentDetail: PagerDutyIncidentDetail;
     };
+const ItemValue = /*@__PURE__*/ __L.at(__c9, 4);
 export type ItemType = string;
 export interface ItemIdentifier {
   value: ItemValue;
   type: string;
 }
+const ItemIdentifier = /*@__PURE__*/ __L.at(__c9, 5) as any as S.Schema<ItemIdentifier>;
 export interface RelatedItem {
   identifier: ItemIdentifier;
   title?: string;
   generatedId?: string;
 }
+const RelatedItem = /*@__PURE__*/ __L.at(__c9, 6) as any as S.Schema<RelatedItem>;
 export type RelatedItemList = RelatedItem[];
+const RelatedItemList = /*@__PURE__*/ __L.at(__c9, 7);
 export interface ListRelatedItemsOutput {
   relatedItems: RelatedItem[];
   nextToken?: string;
 }
+const ListRelatedItemsOutput = /*@__PURE__*/ __L.at(
+  __c10,
+  0,
+) as any as S.Schema<ListRelatedItemsOutput>;
 export interface ListReplicationSetsInput {
   maxResults?: number;
   nextToken?: string;
 }
+const ListReplicationSetsInput = /*@__PURE__*/ __L.at(
+  __c10,
+  1,
+) as any as S.Schema<ListReplicationSetsInput>;
 export type ReplicationSetArnList = string[];
+const ReplicationSetArnList = FindingIdList as any as S.Schema<ReplicationSetArnList>;
 export interface ListReplicationSetsOutput {
   replicationSetArns: string[];
   nextToken?: string;
 }
+const ListReplicationSetsOutput = /*@__PURE__*/ __L.at(
+  __c10,
+  2,
+) as any as S.Schema<ListReplicationSetsOutput>;
 export interface ListResponsePlansInput {
   maxResults?: number;
   nextToken?: string;
 }
+const ListResponsePlansInput = /*@__PURE__*/ __L.at(
+  __c10,
+  3,
+) as any as S.Schema<ListResponsePlansInput>;
 export interface ResponsePlanSummary {
   arn: string;
   name: string;
   displayName?: string;
 }
+const ResponsePlanSummary = /*@__PURE__*/ __L.at(__c10, 4) as any as S.Schema<ResponsePlanSummary>;
 export type ResponsePlanSummaryList = ResponsePlanSummary[];
+const ResponsePlanSummaryList = /*@__PURE__*/ __L.at(__c10, 5);
 export interface ListResponsePlansOutput {
   responsePlanSummaries: ResponsePlanSummary[];
   nextToken?: string;
 }
+const ListResponsePlansOutput = /*@__PURE__*/ __L.at(
+  __c10,
+  6,
+) as any as S.Schema<ListResponsePlansOutput>;
 export interface ListTagsForResourceRequest {
   resourceArn: string;
 }
+const ListTagsForResourceRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  7,
+) as any as S.Schema<ListTagsForResourceRequest>;
 export interface ListTagsForResourceResponse {
   tags: { [key: string]: string | undefined };
 }
+const ListTagsForResourceResponse = /*@__PURE__*/ __L.at(
+  __c11,
+  0,
+) as any as S.Schema<ListTagsForResourceResponse>;
 export type TimelineEventSort = string;
 export type SortOrder = string;
 export interface ListTimelineEventsInput {
@@ -536,6 +753,10 @@ export interface ListTimelineEventsInput {
   maxResults?: number;
   nextToken?: string;
 }
+const ListTimelineEventsInput = /*@__PURE__*/ __L.at(
+  __c11,
+  1,
+) as any as S.Schema<ListTimelineEventsInput>;
 export interface EventSummary {
   incidentRecordArn: string;
   eventId: string;
@@ -544,18 +765,32 @@ export interface EventSummary {
   eventType: string;
   eventReferences?: EventReference[];
 }
+const EventSummary = /*@__PURE__*/ __L.at(__c11, 2) as any as S.Schema<EventSummary>;
 export type EventSummaryList = EventSummary[];
+const EventSummaryList = /*@__PURE__*/ __L.at(__c11, 3);
 export interface ListTimelineEventsOutput {
   eventSummaries: EventSummary[];
   nextToken?: string;
 }
+const ListTimelineEventsOutput = /*@__PURE__*/ __L.at(
+  __c11,
+  4,
+) as any as S.Schema<ListTimelineEventsOutput>;
 export interface PutResourcePolicyInput {
   resourceArn: string;
   policy: string;
 }
+const PutResourcePolicyInput = /*@__PURE__*/ __L.at(
+  __c11,
+  5,
+) as any as S.Schema<PutResourcePolicyInput>;
 export interface PutResourcePolicyOutput {
   policyId: string;
 }
+const PutResourcePolicyOutput = /*@__PURE__*/ __L.at(
+  __c11,
+  6,
+) as any as S.Schema<PutResourcePolicyOutput>;
 export type RawData = string;
 export interface TriggerDetails {
   source: string;
@@ -563,6 +798,7 @@ export interface TriggerDetails {
   timestamp: Date;
   rawData?: string;
 }
+const TriggerDetails = /*@__PURE__*/ __L.at(__c11, 7) as any as S.Schema<TriggerDetails>;
 export interface StartIncidentInput {
   clientToken?: string;
   responsePlanArn: string;
@@ -571,26 +807,42 @@ export interface StartIncidentInput {
   triggerDetails?: TriggerDetails;
   relatedItems?: RelatedItem[];
 }
+const StartIncidentInput = /*@__PURE__*/ __L.at(__c12, 0) as any as S.Schema<StartIncidentInput>;
 export interface StartIncidentOutput {
   incidentRecordArn: string;
 }
+const StartIncidentOutput = /*@__PURE__*/ __L.at(__c12, 1) as any as S.Schema<StartIncidentOutput>;
 export interface TagResourceRequest {
   resourceArn: string;
   tags: { [key: string]: string | undefined };
 }
+const TagResourceRequest = /*@__PURE__*/ __L.at(__c12, 2) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
+const TagResourceResponse = EmptyChatChannel as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
+const TagKeyList = FindingIdList as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   resourceArn: string;
   tagKeys: string[];
 }
+const UntagResourceRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  3,
+) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
+const UntagResourceResponse = EmptyChatChannel as any as S.Schema<UntagResourceResponse>;
 export interface UpdateDeletionProtectionInput {
   arn: string;
   deletionProtected: boolean;
   clientToken?: string;
 }
+const UpdateDeletionProtectionInput = /*@__PURE__*/ __L.at(
+  __c12,
+  4,
+) as any as S.Schema<UpdateDeletionProtectionInput>;
 export interface UpdateDeletionProtectionOutput {}
+const UpdateDeletionProtectionOutput =
+  EmptyChatChannel as any as S.Schema<UpdateDeletionProtectionOutput>;
 export interface UpdateIncidentRecordInput {
   clientToken?: string;
   arn: string;
@@ -601,34 +853,55 @@ export interface UpdateIncidentRecordInput {
   chatChannel?: ChatChannel;
   notificationTargets?: NotificationTargetItem[];
 }
+const UpdateIncidentRecordInput = /*@__PURE__*/ __L.at(
+  __c12,
+  5,
+) as any as S.Schema<UpdateIncidentRecordInput>;
 export interface UpdateIncidentRecordOutput {}
+const UpdateIncidentRecordOutput = EmptyChatChannel as any as S.Schema<UpdateIncidentRecordOutput>;
 export type RelatedItemsUpdate =
   | { itemToAdd: RelatedItem; itemToRemove?: never }
   | { itemToAdd?: never; itemToRemove: ItemIdentifier };
+const RelatedItemsUpdate = /*@__PURE__*/ __L.at(__c12, 6);
 export interface UpdateRelatedItemsInput {
   clientToken?: string;
   incidentRecordArn: string;
   relatedItemsUpdate: RelatedItemsUpdate;
 }
+const UpdateRelatedItemsInput = /*@__PURE__*/ __L.at(
+  __c12,
+  7,
+) as any as S.Schema<UpdateRelatedItemsInput>;
 export interface UpdateRelatedItemsOutput {}
+const UpdateRelatedItemsOutput = EmptyChatChannel as any as S.Schema<UpdateRelatedItemsOutput>;
 export interface AddRegionAction {
   regionName: string;
   sseKmsKeyId?: string;
 }
+const AddRegionAction = /*@__PURE__*/ __L.at(__c13, 0) as any as S.Schema<AddRegionAction>;
 export interface DeleteRegionAction {
   regionName: string;
 }
+const DeleteRegionAction = /*@__PURE__*/ __L.at(__c13, 1) as any as S.Schema<DeleteRegionAction>;
 export type UpdateReplicationSetAction =
   | { addRegionAction: AddRegionAction; deleteRegionAction?: never }
   | { addRegionAction?: never; deleteRegionAction: DeleteRegionAction };
+const UpdateReplicationSetAction = /*@__PURE__*/ __L.at(__c13, 2);
 export type UpdateActionList = UpdateReplicationSetAction[];
+const UpdateActionList = /*@__PURE__*/ __L.at(__c13, 3);
 export interface UpdateReplicationSetInput {
   arn: string;
   actions: UpdateReplicationSetAction[];
   clientToken?: string;
 }
+const UpdateReplicationSetInput = /*@__PURE__*/ __L.at(
+  __c13,
+  4,
+) as any as S.Schema<UpdateReplicationSetInput>;
 export interface UpdateReplicationSetOutput {}
+const UpdateReplicationSetOutput = EmptyChatChannel as any as S.Schema<UpdateReplicationSetOutput>;
 export type TagMapUpdate = { [key: string]: string | undefined };
+const TagMapUpdate = /*@__PURE__*/ __L.at(__c13, 5);
 export interface UpdateResponsePlanInput {
   clientToken?: string;
   arn: string;
@@ -644,7 +917,12 @@ export interface UpdateResponsePlanInput {
   incidentTemplateTags?: { [key: string]: string | undefined };
   integrations?: Integration[];
 }
+const UpdateResponsePlanInput = /*@__PURE__*/ __L.at(
+  __c13,
+  6,
+) as any as S.Schema<UpdateResponsePlanInput>;
 export interface UpdateResponsePlanOutput {}
+const UpdateResponsePlanOutput = EmptyChatChannel as any as S.Schema<UpdateResponsePlanOutput>;
 export interface UpdateTimelineEventInput {
   clientToken?: string;
   incidentRecordArn: string;
@@ -654,7 +932,12 @@ export interface UpdateTimelineEventInput {
   eventData?: string;
   eventReferences?: EventReference[];
 }
+const UpdateTimelineEventInput = /*@__PURE__*/ __L.at(
+  __c13,
+  7,
+) as any as S.Schema<UpdateTimelineEventInput>;
 export interface UpdateTimelineEventOutput {}
+const UpdateTimelineEventOutput = EmptyChatChannel as any as S.Schema<UpdateTimelineEventOutput>;
 export type ExceptionMessage = string;
 export type ResourceType = string;
 export type ServiceCode = string;
@@ -677,8 +960,8 @@ export const batchGetIncidentFindings: API.OperationMethod<
   BatchGetIncidentFindingsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1) as any as S.Schema<BatchGetIncidentFindingsInput>,
-  output: __S(9) as any as S.Schema<BatchGetIncidentFindingsOutput>,
+  input: BatchGetIncidentFindingsInput,
+  output: BatchGetIncidentFindingsOutput,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -710,8 +993,8 @@ export const createReplicationSet: API.OperationMethod<
   CreateReplicationSetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13) as any as S.Schema<CreateReplicationSetInput>,
-  output: __S(14) as any as S.Schema<CreateReplicationSetOutput>,
+  input: CreateReplicationSetInput,
+  output: CreateReplicationSetOutput,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -745,8 +1028,8 @@ export const createResponsePlan: API.OperationMethod<
   CreateResponsePlanError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30) as any as S.Schema<CreateResponsePlanInput>,
-  output: __S(31) as any as S.Schema<CreateResponsePlanOutput>,
+  input: CreateResponsePlanInput,
+  output: CreateResponsePlanOutput,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -780,8 +1063,8 @@ export const createTimelineEvent: API.OperationMethod<
   CreateTimelineEventError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34) as any as S.Schema<CreateTimelineEventInput>,
-  output: __S(35) as any as S.Schema<CreateTimelineEventOutput>,
+  input: CreateTimelineEventInput,
+  output: CreateTimelineEventOutput,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -810,8 +1093,8 @@ export const deleteIncidentRecord: API.OperationMethod<
   DeleteIncidentRecordError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36) as any as S.Schema<DeleteIncidentRecordInput>,
-  output: __S(18) as any as S.Schema<DeleteIncidentRecordOutput>,
+  input: DeleteIncidentRecordInput,
+  output: DeleteIncidentRecordOutput,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -840,8 +1123,8 @@ export const deleteReplicationSet: API.OperationMethod<
   DeleteReplicationSetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37) as any as S.Schema<DeleteReplicationSetInput>,
-  output: __S(18) as any as S.Schema<DeleteReplicationSetOutput>,
+  input: DeleteReplicationSetInput,
+  output: DeleteReplicationSetOutput,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -871,8 +1154,8 @@ export const deleteResourcePolicy: API.OperationMethod<
   DeleteResourcePolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38) as any as S.Schema<DeleteResourcePolicyInput>,
-  output: __S(18) as any as S.Schema<DeleteResourcePolicyOutput>,
+  input: DeleteResourcePolicyInput,
+  output: DeleteResourcePolicyOutput,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -901,8 +1184,8 @@ export const deleteResponsePlan: API.OperationMethod<
   DeleteResponsePlanError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39) as any as S.Schema<DeleteResponsePlanInput>,
-  output: __S(18) as any as S.Schema<DeleteResponsePlanOutput>,
+  input: DeleteResponsePlanInput,
+  output: DeleteResponsePlanOutput,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -929,8 +1212,8 @@ export const deleteTimelineEvent: API.OperationMethod<
   DeleteTimelineEventError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40) as any as S.Schema<DeleteTimelineEventInput>,
-  output: __S(18) as any as S.Schema<DeleteTimelineEventOutput>,
+  input: DeleteTimelineEventInput,
+  output: DeleteTimelineEventOutput,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -958,8 +1241,8 @@ export const getIncidentRecord: API.OperationMethod<
   GetIncidentRecordError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41) as any as S.Schema<GetIncidentRecordInput>,
-  output: __S(46) as any as S.Schema<GetIncidentRecordOutput>,
+  input: GetIncidentRecordInput,
+  output: GetIncidentRecordOutput,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -988,8 +1271,8 @@ export const getReplicationSet: API.OperationMethod<
   GetReplicationSetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47) as any as S.Schema<GetReplicationSetInput>,
-  output: __S(51) as any as S.Schema<GetReplicationSetOutput>,
+  input: GetReplicationSetInput,
+  output: GetReplicationSetOutput,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1019,8 +1302,8 @@ export const getResourcePolicies: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ResourcePolicy
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(52) as any as S.Schema<GetResourcePoliciesInput>,
-  output: __S(55) as any as S.Schema<GetResourcePoliciesOutput>,
+  input: GetResourcePoliciesInput,
+  output: GetResourcePoliciesOutput,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1055,8 +1338,8 @@ export const getResponsePlan: API.OperationMethod<
   GetResponsePlanError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56) as any as S.Schema<GetResponsePlanInput>,
-  output: __S(57) as any as S.Schema<GetResponsePlanOutput>,
+  input: GetResponsePlanInput,
+  output: GetResponsePlanOutput,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1085,8 +1368,8 @@ export const getTimelineEvent: API.OperationMethod<
   GetTimelineEventError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(58) as any as S.Schema<GetTimelineEventInput>,
-  output: __S(60) as any as S.Schema<GetTimelineEventOutput>,
+  input: GetTimelineEventInput,
+  output: GetTimelineEventOutput,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1119,8 +1402,8 @@ export const listIncidentFindings: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   FindingSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(61) as any as S.Schema<ListIncidentFindingsInput>,
-  output: __S(64) as any as S.Schema<ListIncidentFindingsOutput>,
+  input: ListIncidentFindingsInput,
+  output: ListIncidentFindingsOutput,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1156,8 +1439,8 @@ export const listIncidentRecords: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   IncidentRecordSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(70) as any as S.Schema<ListIncidentRecordsInput>,
-  output: __S(73) as any as S.Schema<ListIncidentRecordsOutput>,
+  input: ListIncidentRecordsInput,
+  output: ListIncidentRecordsOutput,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1191,8 +1474,8 @@ export const listRelatedItems: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   RelatedItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(74) as any as S.Schema<ListRelatedItemsInput>,
-  output: __S(80) as any as S.Schema<ListRelatedItemsOutput>,
+  input: ListRelatedItemsInput,
+  output: ListRelatedItemsOutput,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1226,8 +1509,8 @@ export const listReplicationSets: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Arn
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(81) as any as S.Schema<ListReplicationSetsInput>,
-  output: __S(82) as any as S.Schema<ListReplicationSetsOutput>,
+  input: ListReplicationSetsInput,
+  output: ListReplicationSetsOutput,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1261,8 +1544,8 @@ export const listResponsePlans: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ResponsePlanSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(83) as any as S.Schema<ListResponsePlansInput>,
-  output: __S(86) as any as S.Schema<ListResponsePlansOutput>,
+  input: ListResponsePlansInput,
+  output: ListResponsePlansOutput,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1296,8 +1579,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(87) as any as S.Schema<ListTagsForResourceRequest>,
-  output: __S(88) as any as S.Schema<ListTagsForResourceResponse>,
+  input: ListTagsForResourceRequest,
+  output: ListTagsForResourceResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1326,8 +1609,8 @@ export const listTimelineEvents: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   EventSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(89) as any as S.Schema<ListTimelineEventsInput>,
-  output: __S(92) as any as S.Schema<ListTimelineEventsOutput>,
+  input: ListTimelineEventsInput,
+  output: ListTimelineEventsOutput,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1363,8 +1646,8 @@ export const putResourcePolicy: API.OperationMethod<
   PutResourcePolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(93) as any as S.Schema<PutResourcePolicyInput>,
-  output: __S(94) as any as S.Schema<PutResourcePolicyOutput>,
+  input: PutResourcePolicyInput,
+  output: PutResourcePolicyOutput,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1395,8 +1678,8 @@ export const startIncident: API.OperationMethod<
   StartIncidentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(96) as any as S.Schema<StartIncidentInput>,
-  output: __S(97) as any as S.Schema<StartIncidentOutput>,
+  input: StartIncidentInput,
+  output: StartIncidentOutput,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1428,8 +1711,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(98) as any as S.Schema<TagResourceRequest>,
-  output: __S(18) as any as S.Schema<TagResourceResponse>,
+  input: TagResourceRequest,
+  output: TagResourceResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1461,8 +1744,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(99) as any as S.Schema<UntagResourceRequest>,
-  output: __S(18) as any as S.Schema<UntagResourceResponse>,
+  input: UntagResourceRequest,
+  output: UntagResourceResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1493,8 +1776,8 @@ export const updateDeletionProtection: API.OperationMethod<
   UpdateDeletionProtectionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(100) as any as S.Schema<UpdateDeletionProtectionInput>,
-  output: __S(18) as any as S.Schema<UpdateDeletionProtectionOutput>,
+  input: UpdateDeletionProtectionInput,
+  output: UpdateDeletionProtectionOutput,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1526,8 +1809,8 @@ export const updateIncidentRecord: API.OperationMethod<
   UpdateIncidentRecordError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(101) as any as S.Schema<UpdateIncidentRecordInput>,
-  output: __S(18) as any as S.Schema<UpdateIncidentRecordOutput>,
+  input: UpdateIncidentRecordInput,
+  output: UpdateIncidentRecordOutput,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1558,8 +1841,8 @@ export const updateRelatedItems: API.OperationMethod<
   UpdateRelatedItemsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(103) as any as S.Schema<UpdateRelatedItemsInput>,
-  output: __S(18) as any as S.Schema<UpdateRelatedItemsOutput>,
+  input: UpdateRelatedItemsInput,
+  output: UpdateRelatedItemsOutput,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1590,8 +1873,8 @@ export const updateReplicationSet: API.OperationMethod<
   UpdateReplicationSetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(108) as any as S.Schema<UpdateReplicationSetInput>,
-  output: __S(18) as any as S.Schema<UpdateReplicationSetOutput>,
+  input: UpdateReplicationSetInput,
+  output: UpdateReplicationSetOutput,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1622,8 +1905,8 @@ export const updateResponsePlan: API.OperationMethod<
   UpdateResponsePlanError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(110) as any as S.Schema<UpdateResponsePlanInput>,
-  output: __S(18) as any as S.Schema<UpdateResponsePlanOutput>,
+  input: UpdateResponsePlanInput,
+  output: UpdateResponsePlanOutput,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1654,8 +1937,8 @@ export const updateTimelineEvent: API.OperationMethod<
   UpdateTimelineEventError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(111) as any as S.Schema<UpdateTimelineEventInput>,
-  output: __S(18) as any as S.Schema<UpdateTimelineEventOutput>,
+  input: UpdateTimelineEventInput,
+  output: UpdateTimelineEventOutput,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1676,7 +1959,7 @@ function __c0(j: number): any {
       return S.Array(S.String);
     case 1:
       return S.suspend(() =>
-        S.Struct({ incidentRecordArn: S.String, findingIds: __S(0) }).pipe(
+        S.Struct({ incidentRecordArn: S.String, findingIds: FindingIdList }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/batchGetIncidentFindings" }),
             svc,
@@ -1710,8 +1993,8 @@ function __c0(j: number): any {
       });
     case 4:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ codeDeployDeployment: __S(2) }),
-        /*@__PURE__*/ S.Struct({ cloudFormationStackUpdate: __S(3) }),
+        /*@__PURE__*/ S.Struct({ codeDeployDeployment: CodeDeployDeployment }),
+        /*@__PURE__*/ S.Struct({ cloudFormationStackUpdate: CloudFormationStackUpdate }),
       ]);
     case 5:
       return S.suspend(() =>
@@ -1719,11 +2002,11 @@ function __c0(j: number): any {
           id: S.String,
           creationTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           lastModifiedTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          details: S.optional(__S(4)),
+          details: S.optional(FindingDetails),
         }),
       ).annotate({ identifier: "Finding" });
     case 6:
-      return S.Array(__S(5));
+      return S.Array(Finding);
     case 7:
       return S.suspend(() =>
         S.Struct({ findingId: S.String, code: S.String, message: S.String }),
@@ -1735,9 +2018,11 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(7));
+      return S.Array(BatchGetIncidentFindingsError_);
     case 1:
-      return S.suspend(() => S.Struct({ findings: __S(6), errors: __S(8) })).annotate({
+      return S.suspend(() =>
+        S.Struct({ findings: FindingList, errors: BatchGetIncidentFindingsErrorList }),
+      ).annotate({
         identifier: "BatchGetIncidentFindingsOutput",
       });
     case 2:
@@ -1745,15 +2030,15 @@ function __c1(j: number): any {
         identifier: "RegionMapInputValue",
       });
     case 3:
-      return S.Record(S.String, /*@__PURE__*/ __S(10).pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ RegionMapInputValue.pipe(S.optional));
     case 4:
       return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          regions: __S(11),
+          regions: RegionMapInput,
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          tags: S.optional(__S(12)),
+          tags: S.optional(TagMap),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/createReplicationSet" }),
@@ -1778,7 +2063,7 @@ function __c1(j: number): any {
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(15));
+      return S.Array(NotificationTargetItem);
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1786,8 +2071,8 @@ function __c2(j: number): any {
           impact: S.Number,
           summary: S.optional(S.String),
           dedupeString: S.optional(S.String),
-          notificationTargets: S.optional(__S(16)),
-          incidentTags: S.optional(__S(12)),
+          notificationTargets: S.optional(NotificationTargetSet),
+          incidentTags: S.optional(TagMap),
         }),
       ).annotate({ identifier: "IncidentTemplate" });
     case 2:
@@ -1796,15 +2081,15 @@ function __c2(j: number): any {
       });
     case 3:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ empty: __S(18) }),
-        /*@__PURE__*/ S.Struct({ chatbotSns: __S(0) }),
+        /*@__PURE__*/ S.Struct({ empty: EmptyChatChannel }),
+        /*@__PURE__*/ S.Struct({ chatbotSns: ChatbotSnsConfigurationSet }),
       ]);
     case 4:
-      return S.Record(S.String, /*@__PURE__*/ __S(0).pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ SsmParameterValues.pipe(S.optional));
     case 5:
       return S.Union([/*@__PURE__*/ S.Struct({ variable: S.String })]);
     case 6:
-      return S.Record(S.String, /*@__PURE__*/ __S(21).pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ DynamicSsmParameterValue.pipe(S.optional));
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -1812,8 +2097,8 @@ function __c2(j: number): any {
           documentName: S.String,
           documentVersion: S.optional(S.String),
           targetAccount: S.optional(S.String),
-          parameters: S.optional(__S(20)),
-          dynamicParameters: S.optional(__S(22)),
+          parameters: S.optional(SsmParameters),
+          dynamicParameters: S.optional(DynamicSsmParameters),
         }),
       ).annotate({ identifier: "SsmAutomation" });
   }
@@ -1821,9 +2106,9 @@ function __c2(j: number): any {
 function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.Union([/*@__PURE__*/ S.Struct({ ssmAutomation: __S(23) })]);
+      return S.Union([/*@__PURE__*/ S.Struct({ ssmAutomation: SsmAutomation })]);
     case 1:
-      return S.Array(__S(24));
+      return S.Array(Action);
     case 2:
       return S.suspend(() => S.Struct({ serviceId: S.String })).annotate({
         identifier: "PagerDutyIncidentConfiguration",
@@ -1833,25 +2118,25 @@ function __c3(j: number): any {
         S.Struct({
           name: S.String,
           secretId: S.String,
-          pagerDutyIncidentConfiguration: __S(26),
+          pagerDutyIncidentConfiguration: PagerDutyIncidentConfiguration,
         }),
       ).annotate({ identifier: "PagerDutyConfiguration" });
     case 4:
-      return S.Union([/*@__PURE__*/ S.Struct({ pagerDutyConfiguration: __S(27) })]);
+      return S.Union([/*@__PURE__*/ S.Struct({ pagerDutyConfiguration: PagerDutyConfiguration })]);
     case 5:
-      return S.Array(__S(28));
+      return S.Array(Integration);
     case 6:
       return S.suspend(() =>
         S.Struct({
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
           name: S.String,
           displayName: S.optional(S.String),
-          incidentTemplate: __S(17),
-          chatChannel: S.optional(__S(19)),
-          engagements: S.optional(__S(0)),
-          actions: S.optional(__S(25)),
-          tags: S.optional(__S(12)),
-          integrations: S.optional(__S(29)),
+          incidentTemplate: IncidentTemplate,
+          chatChannel: S.optional(ChatChannel),
+          engagements: S.optional(EngagementSet),
+          actions: S.optional(ActionsList),
+          tags: S.optional(TagMap),
+          integrations: S.optional(Integrations),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/createResponsePlan" }),
@@ -1877,7 +2162,7 @@ function __c4(j: number): any {
         /*@__PURE__*/ S.Struct({ relatedItemId: S.String }),
       ]);
     case 1:
-      return S.Array(__S(32));
+      return S.Array(EventReference);
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -1886,7 +2171,7 @@ function __c4(j: number): any {
           eventTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           eventType: S.String,
           eventData: S.String,
-          eventReferences: S.optional(__S(33)),
+          eventReferences: S.optional(EventReferenceList),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/createTimelineEvent" }),
@@ -1988,7 +2273,7 @@ function __c5(j: number): any {
     case 2:
       return S.Union([/*@__PURE__*/ S.Struct({ ssmExecutionArn: S.String })]);
     case 3:
-      return S.Array(__S(42));
+      return S.Array(AutomationExecution);
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -2010,15 +2295,15 @@ function __c5(j: number): any {
           resolvedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           lastModifiedTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           lastModifiedBy: S.String,
-          automationExecutions: S.optional(__S(43)),
-          incidentRecordSource: __S(44),
+          automationExecutions: S.optional(AutomationExecutionSet),
+          incidentRecordSource: IncidentRecordSource,
           dedupeString: S.String,
-          chatChannel: S.optional(__S(19)),
-          notificationTargets: S.optional(__S(16)),
+          chatChannel: S.optional(ChatChannel),
+          notificationTargets: S.optional(NotificationTargetSet),
         }),
       ).annotate({ identifier: "IncidentRecord" });
     case 6:
-      return S.suspend(() => S.Struct({ incidentRecord: __S(45) })).annotate({
+      return S.suspend(() => S.Struct({ incidentRecord: IncidentRecord })).annotate({
         identifier: "GetIncidentRecordOutput",
       });
     case 7:
@@ -2041,12 +2326,12 @@ function __c6(j: number): any {
         }),
       ).annotate({ identifier: "RegionInfo" });
     case 1:
-      return S.Record(S.String, /*@__PURE__*/ __S(48).pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ RegionInfo.pipe(S.optional));
     case 2:
       return S.suspend(() =>
         S.Struct({
           arn: S.optional(S.String),
-          regionMap: __S(49),
+          regionMap: RegionInfoMap,
           status: S.String,
           deletionProtected: S.Boolean,
           createdTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
@@ -2056,7 +2341,7 @@ function __c6(j: number): any {
         }),
       ).annotate({ identifier: "ReplicationSet" });
     case 3:
-      return S.suspend(() => S.Struct({ replicationSet: __S(50) })).annotate({
+      return S.suspend(() => S.Struct({ replicationSet: ReplicationSet })).annotate({
         identifier: "GetReplicationSetOutput",
       });
     case 4:
@@ -2085,10 +2370,10 @@ function __c6(j: number): any {
         }),
       ).annotate({ identifier: "ResourcePolicy" });
     case 6:
-      return S.Array(__S(53));
+      return S.Array(ResourcePolicy);
     case 7:
       return S.suspend(() =>
-        S.Struct({ resourcePolicies: __S(54), nextToken: S.optional(S.String) }),
+        S.Struct({ resourcePolicies: ResourcePolicyList, nextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "GetResourcePoliciesOutput",
       });
@@ -2108,11 +2393,11 @@ function __c7(j: number): any {
           arn: S.String,
           name: S.String,
           displayName: S.optional(S.String),
-          incidentTemplate: __S(17),
-          chatChannel: S.optional(__S(19)),
-          engagements: S.optional(__S(0)),
-          actions: S.optional(__S(25)),
-          integrations: S.optional(__S(29)),
+          incidentTemplate: IncidentTemplate,
+          chatChannel: S.optional(ChatChannel),
+          engagements: S.optional(EngagementSet),
+          actions: S.optional(ActionsList),
+          integrations: S.optional(Integrations),
         }),
       ).annotate({ identifier: "GetResponsePlanOutput" });
     case 2:
@@ -2133,11 +2418,11 @@ function __c7(j: number): any {
           eventUpdatedTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           eventType: S.String,
           eventData: S.String,
-          eventReferences: S.optional(__S(33)),
+          eventReferences: S.optional(EventReferenceList),
         }),
       ).annotate({ identifier: "TimelineEvent" });
     case 4:
-      return S.suspend(() => S.Struct({ event: __S(59) })).annotate({
+      return S.suspend(() => S.Struct({ event: TimelineEvent })).annotate({
         identifier: "GetTimelineEventOutput",
       });
     case 5:
@@ -2167,14 +2452,14 @@ function __c7(j: number): any {
         }),
       ).annotate({ identifier: "FindingSummary" });
     case 7:
-      return S.Array(__S(62));
+      return S.Array(FindingSummary);
   }
 }
 function __c8(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ findings: __S(63), nextToken: S.optional(S.String) }),
+        S.Struct({ findings: FindingSummaryList, nextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListIncidentFindingsOutput",
       });
@@ -2182,8 +2467,8 @@ function __c8(j: number): any {
       return S.Array(S.Number);
     case 2:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ stringValues: __S(0) }),
-        /*@__PURE__*/ S.Struct({ integerValues: __S(65) }),
+        /*@__PURE__*/ S.Struct({ stringValues: StringList }),
+        /*@__PURE__*/ S.Struct({ integerValues: IntegerList }),
       ]);
     case 3:
       return S.Union([
@@ -2193,18 +2478,18 @@ function __c8(j: number): any {
         /*@__PURE__*/ S.Struct({
           after: /*@__PURE__*/ S.Date.pipe(/*@__PURE__*/ T.TimestampFormat("epoch-seconds")),
         }),
-        /*@__PURE__*/ S.Struct({ equals: __S(66) }),
+        /*@__PURE__*/ S.Struct({ equals: AttributeValueList }),
       ]);
     case 4:
-      return S.suspend(() => S.Struct({ key: S.String, condition: __S(67) })).annotate({
+      return S.suspend(() => S.Struct({ key: S.String, condition: Condition })).annotate({
         identifier: "Filter",
       });
     case 5:
-      return S.Array(__S(68));
+      return S.Array(Filter);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          filters: S.optional(__S(69)),
+          filters: S.optional(FilterList),
           maxResults: S.optional(S.Number),
           nextToken: S.optional(S.String),
         }).pipe(
@@ -2227,7 +2512,7 @@ function __c8(j: number): any {
           impact: S.Number,
           creationTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           resolvedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          incidentRecordSource: __S(44),
+          incidentRecordSource: IncidentRecordSource,
         }),
       ).annotate({ identifier: "IncidentRecordSummary" });
   }
@@ -2235,11 +2520,11 @@ function __c8(j: number): any {
 function __c9(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(71));
+      return S.Array(IncidentRecordSummary);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          incidentRecordSummaries: __S(72),
+          incidentRecordSummaries: IncidentRecordSummaryList,
           nextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -2268,29 +2553,29 @@ function __c9(j: number): any {
         /*@__PURE__*/ S.Struct({ arn: S.String }),
         /*@__PURE__*/ S.Struct({ url: S.String }),
         /*@__PURE__*/ S.Struct({ metricDefinition: S.String }),
-        /*@__PURE__*/ S.Struct({ pagerDutyIncidentDetail: __S(75) }),
+        /*@__PURE__*/ S.Struct({ pagerDutyIncidentDetail: PagerDutyIncidentDetail }),
       ]);
     case 5:
-      return S.suspend(() => S.Struct({ value: __S(76), type: S.String })).annotate({
+      return S.suspend(() => S.Struct({ value: ItemValue, type: S.String })).annotate({
         identifier: "ItemIdentifier",
       });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          identifier: __S(77),
+          identifier: ItemIdentifier,
           title: S.optional(S.String),
           generatedId: S.optional(S.String),
         }),
       ).annotate({ identifier: "RelatedItem" });
     case 7:
-      return S.Array(__S(78));
+      return S.Array(RelatedItem);
   }
 }
 function __c10(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ relatedItems: __S(79), nextToken: S.optional(S.String) }),
+        S.Struct({ relatedItems: RelatedItemList, nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListRelatedItemsOutput" });
     case 1:
       return S.suspend(() =>
@@ -2307,7 +2592,7 @@ function __c10(j: number): any {
       ).annotate({ identifier: "ListReplicationSetsInput" });
     case 2:
       return S.suspend(() =>
-        S.Struct({ replicationSetArns: __S(0), nextToken: S.optional(S.String) }),
+        S.Struct({ replicationSetArns: ReplicationSetArnList, nextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListReplicationSetsOutput",
       });
@@ -2329,11 +2614,11 @@ function __c10(j: number): any {
         S.Struct({ arn: S.String, name: S.String, displayName: S.optional(S.String) }),
       ).annotate({ identifier: "ResponsePlanSummary" });
     case 5:
-      return S.Array(__S(84));
+      return S.Array(ResponsePlanSummary);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          responsePlanSummaries: __S(85),
+          responsePlanSummaries: ResponsePlanSummaryList,
           nextToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListResponsePlansOutput" });
@@ -2357,14 +2642,14 @@ function __c10(j: number): any {
 function __c11(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ tags: __S(12) })).annotate({
+      return S.suspend(() => S.Struct({ tags: TagMap })).annotate({
         identifier: "ListTagsForResourceResponse",
       });
     case 1:
       return S.suspend(() =>
         S.Struct({
           incidentRecordArn: S.String,
-          filters: S.optional(__S(69)),
+          filters: S.optional(FilterList),
           sortBy: S.optional(S.String),
           sortOrder: S.optional(S.String),
           maxResults: S.optional(S.Number),
@@ -2388,14 +2673,14 @@ function __c11(j: number): any {
           eventTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           eventUpdatedTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           eventType: S.String,
-          eventReferences: S.optional(__S(33)),
+          eventReferences: S.optional(EventReferenceList),
         }),
       ).annotate({ identifier: "EventSummary" });
     case 3:
-      return S.Array(__S(90));
+      return S.Array(EventSummary);
     case 4:
       return S.suspend(() =>
-        S.Struct({ eventSummaries: __S(91), nextToken: S.optional(S.String) }),
+        S.Struct({ eventSummaries: EventSummaryList, nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListTimelineEventsOutput" });
     case 5:
       return S.suspend(() =>
@@ -2434,8 +2719,8 @@ function __c12(j: number): any {
           responsePlanArn: S.String,
           title: S.optional(S.String),
           impact: S.optional(S.Number),
-          triggerDetails: S.optional(__S(95)),
-          relatedItems: S.optional(__S(79)),
+          triggerDetails: S.optional(TriggerDetails),
+          relatedItems: S.optional(RelatedItemList),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/startIncident" }), svc, auth, proto, ver, rules),
         ),
@@ -2446,7 +2731,7 @@ function __c12(j: number): any {
       });
     case 2:
       return S.suspend(() =>
-        S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")), tags: __S(12) }).pipe(
+        S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")), tags: TagMap }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/tags/{resourceArn}" }),
             svc,
@@ -2461,7 +2746,7 @@ function __c12(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
-          tagKeys: __S(0).pipe(T.HttpQuery("tagKeys")),
+          tagKeys: TagKeyList.pipe(T.HttpQuery("tagKeys")),
         }).pipe(
           T.all(
             T.Http({ method: "DELETE", uri: "/tags/{resourceArn}" }),
@@ -2501,8 +2786,8 @@ function __c12(j: number): any {
           summary: S.optional(S.String),
           impact: S.optional(S.Number),
           status: S.optional(S.String),
-          chatChannel: S.optional(__S(19)),
-          notificationTargets: S.optional(__S(16)),
+          chatChannel: S.optional(ChatChannel),
+          notificationTargets: S.optional(NotificationTargetSet),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/updateIncidentRecord" }),
@@ -2518,15 +2803,15 @@ function __c12(j: number): any {
       });
     case 6:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ itemToAdd: __S(78) }),
-        /*@__PURE__*/ S.Struct({ itemToRemove: __S(77) }),
+        /*@__PURE__*/ S.Struct({ itemToAdd: RelatedItem }),
+        /*@__PURE__*/ S.Struct({ itemToRemove: ItemIdentifier }),
       ]);
     case 7:
       return S.suspend(() =>
         S.Struct({
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
           incidentRecordArn: S.String,
-          relatedItemsUpdate: __S(102),
+          relatedItemsUpdate: RelatedItemsUpdate,
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/updateRelatedItems" }),
@@ -2552,16 +2837,16 @@ function __c13(j: number): any {
       });
     case 2:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ addRegionAction: __S(104) }),
-        /*@__PURE__*/ S.Struct({ deleteRegionAction: __S(105) }),
+        /*@__PURE__*/ S.Struct({ addRegionAction: AddRegionAction }),
+        /*@__PURE__*/ S.Struct({ deleteRegionAction: DeleteRegionAction }),
       ]);
     case 3:
-      return S.Array(__S(106));
+      return S.Array(UpdateReplicationSetAction);
     case 4:
       return S.suspend(() =>
         S.Struct({
           arn: S.String,
-          actions: __S(107),
+          actions: UpdateActionList,
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(
           T.all(
@@ -2588,12 +2873,12 @@ function __c13(j: number): any {
           incidentTemplateImpact: S.optional(S.Number),
           incidentTemplateSummary: S.optional(S.String),
           incidentTemplateDedupeString: S.optional(S.String),
-          incidentTemplateNotificationTargets: S.optional(__S(16)),
-          chatChannel: S.optional(__S(19)),
-          engagements: S.optional(__S(0)),
-          actions: S.optional(__S(25)),
-          incidentTemplateTags: S.optional(__S(109)),
-          integrations: S.optional(__S(29)),
+          incidentTemplateNotificationTargets: S.optional(NotificationTargetSet),
+          chatChannel: S.optional(ChatChannel),
+          engagements: S.optional(EngagementSet),
+          actions: S.optional(ActionsList),
+          incidentTemplateTags: S.optional(TagMapUpdate),
+          integrations: S.optional(Integrations),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/updateResponsePlan" }),
@@ -2614,7 +2899,7 @@ function __c13(j: number): any {
           eventTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           eventType: S.optional(S.String),
           eventData: S.optional(S.String),
-          eventReferences: S.optional(__S(33)),
+          eventReferences: S.optional(EventReferenceList),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/updateTimelineEvent" }),
@@ -2626,42 +2911,5 @@ function __c13(j: number): any {
           ),
         ),
       ).annotate({ identifier: "UpdateTimelineEventInput" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
-    case 9:
-      return __c9(i & 7);
-    case 10:
-      return __c10(i & 7);
-    case 11:
-      return __c11(i & 7);
-    case 12:
-      return __c12(i & 7);
-    case 13:
-      return __c13(i & 7);
   }
 }

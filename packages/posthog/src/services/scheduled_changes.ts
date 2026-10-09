@@ -5,15 +5,17 @@ import * as S from "@distilled.cloud/core/schema";
 import { PosthogProtocol, type PosthogOpError, type PosthogOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { PosthogOpError, PosthogOpContext };
 
 /** * `FeatureFlag` - feature flag */
 export type ScheduledChangeAllowedModelsEnum = "FeatureFlag";
+const ScheduledChangeAllowedModelsEnum = S.String;
+
 /** * `daily` - daily * `weekly` - weekly * `monthly` - monthly * `yearly` - yearly */
 export type ScheduledChangeRecurrenceIntervalEnum = "daily" | "weekly" | "monthly" | "yearly";
+const ScheduledChangeRecurrenceIntervalEnum = S.String;
+
 export interface CreateScheduledChangeRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -33,7 +35,17 @@ export interface CreateScheduledChangeRequest {
   /** Optional ISO 8601 datetime after which a recurring schedule stops executing. */
   end_date?: string | null;
 }
+const CreateScheduledChangeRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<CreateScheduledChangeRequest>;
+
 export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
+const UserBasicHedgehogConfigMap = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<UserBasicHedgehogConfigMap>;
+
 /** * `engineering` - Engineering * `data` - Data * `product` - Product Management * `founder` - Founder * `leadership` - Leadership * `marketing` - Marketing * `sales` - Sales / Success * `student` - Student * `other` - Other */
 export type RoleAtOrganizationEnum =
   | "engineering"
@@ -47,6 +59,8 @@ export type RoleAtOrganizationEnum =
   | "other";
 export type BlankEnum = "";
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
+const UserBasicRoleAtOrganization = S.Unknown as any as S.Schema<UserBasicRoleAtOrganization>;
+
 export interface UserBasic {
   id?: number;
   uuid?: string;
@@ -58,6 +72,8 @@ export interface UserBasic {
   hedgehog_config?: UserBasicHedgehogConfigMap | null;
   role_at_organization?: UserBasicRoleAtOrganization | null;
 }
+const UserBasic = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<UserBasic>;
+
 /** * `pending` - Pending * `approved` - Approved (awaiting application) * `applied` - Applied * `rejected` - Rejected * `expired` - Expired * `failed` - Failed to apply */
 export type ChangeRequestStateEnum =
   | "pending"
@@ -66,6 +82,8 @@ export type ChangeRequestStateEnum =
   | "rejected"
   | "expired"
   | "failed";
+const ChangeRequestStateEnum = S.String;
+
 /** Minimal read-only ChangeRequest shape for embedding on resources gated by an approval, e.g. the scheduled change that carries it. Exposes just enough to show the approval state and link to the change request. */
 export interface ChangeRequestSummary {
   /** ID of the approval change request. Use it to link to the change request in the UI. */
@@ -73,6 +91,8 @@ export interface ChangeRequestSummary {
   /** Current approval state: 'pending' (awaiting approval), 'approved' (awaiting application), 'applied', 'rejected', 'expired', or 'failed'. * `pending` - Pending * `approved` - Approved (awaiting application) * `applied` - Applied * `rejected` - Rejected * `expired` - Expired * `failed` - Failed to apply */
   state: ChangeRequestStateEnum;
 }
+const ChangeRequestSummary = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<ChangeRequestSummary>;
+
 export interface ScheduledChange {
   id: number;
   team_id: number;
@@ -102,12 +122,19 @@ export interface ScheduledChange {
   /** Summary of the approval change request gating this scheduled change. Null when no approval policy applies. The change only applies at its scheduled time if the request is approved by then. */
   change_request: ChangeRequestSummary | null;
 }
+const ScheduledChange = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<ScheduledChange>;
+
 export interface GetScheduledChangeRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A unique integer value identifying this scheduled change. */
   id: number;
 }
+const GetScheduledChangeRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<GetScheduledChangeRequest>;
+
 export interface ListScheduledChangesRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -120,20 +147,45 @@ export interface ListScheduledChangesRequest {
   /** Filter by the ID of a specific feature flag. */
   record_id?: string;
 }
+const ListScheduledChangesRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<ListScheduledChangesRequest>;
+
 export type PaginatedScheduledChangeListResultsList = Array<ScheduledChange>;
+const PaginatedScheduledChangeListResultsList = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<PaginatedScheduledChangeListResultsList>;
+
 export interface PaginatedScheduledChangeList {
   count: number;
   next?: string | null;
   previous?: string | null;
   results: PaginatedScheduledChangeListResultsList;
 }
+const PaginatedScheduledChangeList = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<PaginatedScheduledChangeList>;
+
 export interface ScheduledChangesDestroyRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A unique integer value identifying this scheduled change. */
   id: number;
 }
+const ScheduledChangesDestroyRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<ScheduledChangesDestroyRequest>;
+
 export interface ScheduledChangesDestroyResponse {}
+const ScheduledChangesDestroyResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<ScheduledChangesDestroyResponse>;
+
 export interface UpdateScheduledChangeRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -155,6 +207,11 @@ export interface UpdateScheduledChangeRequest {
   /** Optional ISO 8601 datetime after which a recurring schedule stops executing. */
   end_date?: string | null;
 }
+const UpdateScheduledChangeRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<UpdateScheduledChangeRequest>;
+
 export interface UpdateScheduledChangesPartialRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -176,6 +233,11 @@ export interface UpdateScheduledChangesPartialRequest {
   /** Optional ISO 8601 datetime after which a recurring schedule stops executing. */
   end_date?: string | null;
 }
+const UpdateScheduledChangesPartialRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<UpdateScheduledChangesPartialRequest>;
+
 export type CreateScheduledChangeError = PosthogOpError;
 /** Create, read, update and delete scheduled changes. */
 export const createScheduledChange: API.OperationMethod<
@@ -184,8 +246,8 @@ export const createScheduledChange: API.OperationMethod<
   CreateScheduledChangeError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<CreateScheduledChangeRequest>,
-  output: __S(4) as any as S.Schema<ScheduledChange>,
+  input: CreateScheduledChangeRequest,
+  output: ScheduledChange,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -199,8 +261,8 @@ export const getScheduledChange: API.OperationMethod<
   GetScheduledChangeError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5) as any as S.Schema<GetScheduledChangeRequest>,
-  output: __S(4) as any as S.Schema<ScheduledChange>,
+  input: GetScheduledChangeRequest,
+  output: ScheduledChange,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -214,8 +276,8 @@ export const listScheduledChanges: API.OperationMethod<
   ListScheduledChangesError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6) as any as S.Schema<ListScheduledChangesRequest>,
-  output: __S(8) as any as S.Schema<PaginatedScheduledChangeList>,
+  input: ListScheduledChangesRequest,
+  output: PaginatedScheduledChangeList,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -229,8 +291,8 @@ export const scheduledChangesDestroy: API.OperationMethod<
   ScheduledChangesDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9) as any as S.Schema<ScheduledChangesDestroyRequest>,
-  output: __S(10) as any as S.Schema<ScheduledChangesDestroyResponse>,
+  input: ScheduledChangesDestroyRequest,
+  output: ScheduledChangesDestroyResponse,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -244,8 +306,8 @@ export const updateScheduledChange: API.OperationMethod<
   UpdateScheduledChangeError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11) as any as S.Schema<UpdateScheduledChangeRequest>,
-  output: __S(4) as any as S.Schema<ScheduledChange>,
+  input: UpdateScheduledChangeRequest,
+  output: ScheduledChange,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -259,8 +321,8 @@ export const updateScheduledChangesPartial: API.OperationMethod<
   UpdateScheduledChangesPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12) as any as S.Schema<UpdateScheduledChangesPartialRequest>,
-  output: __S(4) as any as S.Schema<ScheduledChange>,
+  input: UpdateScheduledChangesPartialRequest,
+  output: ScheduledChange,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -274,11 +336,11 @@ function __c0(j: number): any {
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           record_id: S.String,
-          model_name: S.String,
+          model_name: ScheduledChangeAllowedModelsEnum,
           payload: S.Unknown,
           scheduled_at: S.String,
           is_recurring: S.optional(S.Boolean),
-          recurrence_interval: S.optional(S.NullOr(S.String)),
+          recurrence_interval: S.optional(S.NullOr(ScheduledChangeRecurrenceIntervalEnum)),
           cron_expression: S.optional(S.NullOr(S.String)),
           end_date: S.optional(S.NullOr(S.String)),
         }).pipe(
@@ -303,15 +365,15 @@ function __c0(j: number): any {
           last_name: S.optional(S.String),
           email: S.optional(S.String),
           is_email_verified: S.optional(S.NullOr(S.Boolean)),
-          hedgehog_config: S.optional(S.NullOr(__S(1))),
-          role_at_organization: S.optional(S.NullOr(S.Unknown)),
+          hedgehog_config: S.optional(S.NullOr(UserBasicHedgehogConfigMap)),
+          role_at_organization: S.optional(S.NullOr(UserBasicRoleAtOrganization)),
         }),
       ).annotate({ identifier: "UserBasic" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          state: S.String,
+          state: ChangeRequestStateEnum,
         }),
       ).annotate({ identifier: "ChangeRequestSummary" });
     case 4:
@@ -320,21 +382,21 @@ function __c0(j: number): any {
           id: S.Number,
           team_id: S.Number,
           record_id: S.String,
-          model_name: S.String,
+          model_name: ScheduledChangeAllowedModelsEnum,
           payload: S.Unknown,
           scheduled_at: S.String,
           executed_at: S.NullOr(S.String),
           failure_reason: S.NullOr(S.String),
           created_at: S.String,
-          created_by: __S(2),
+          created_by: UserBasic,
           updated_at: S.String,
           is_recurring: S.optional(S.Boolean),
-          recurrence_interval: S.optional(S.NullOr(S.String)),
+          recurrence_interval: S.optional(S.NullOr(ScheduledChangeRecurrenceIntervalEnum)),
           cron_expression: S.optional(S.NullOr(S.String)),
           last_executed_at: S.NullOr(S.String),
           end_date: S.optional(S.NullOr(S.String)),
           timezone: S.NullOr(S.String),
-          change_request: S.NullOr(__S(3)),
+          change_request: S.NullOr(ChangeRequestSummary),
         }),
       ).annotate({ identifier: "ScheduledChange" });
     case 5:
@@ -371,7 +433,7 @@ function __c0(j: number): any {
         identifier: "ListScheduledChangesRequest",
       });
     case 7:
-      return S.Array(__S(4));
+      return S.Array(ScheduledChange);
   }
 }
 function __c1(j: number): any {
@@ -382,7 +444,7 @@ function __c1(j: number): any {
           count: S.Number,
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: __S(7),
+          results: PaginatedScheduledChangeListResultsList,
         }),
       ).annotate({
         identifier: "PaginatedScheduledChangeList",
@@ -412,11 +474,11 @@ function __c1(j: number): any {
           project_id: S.String.pipe(T.Label()),
           id: S.Number.pipe(T.Label()),
           record_id: S.String,
-          model_name: S.String,
+          model_name: ScheduledChangeAllowedModelsEnum,
           payload: S.Unknown,
           scheduled_at: S.String,
           is_recurring: S.optional(S.Boolean),
-          recurrence_interval: S.optional(S.NullOr(S.String)),
+          recurrence_interval: S.optional(S.NullOr(ScheduledChangeRecurrenceIntervalEnum)),
           cron_expression: S.optional(S.NullOr(S.String)),
           end_date: S.optional(S.NullOr(S.String)),
         }).pipe(
@@ -435,11 +497,11 @@ function __c1(j: number): any {
           project_id: S.String.pipe(T.Label()),
           id: S.Number.pipe(T.Label()),
           record_id: S.optional(S.String),
-          model_name: S.optional(S.String),
+          model_name: S.optional(ScheduledChangeAllowedModelsEnum),
           payload: S.optional(S.Unknown),
           scheduled_at: S.optional(S.String),
           is_recurring: S.optional(S.Boolean),
-          recurrence_interval: S.optional(S.NullOr(S.String)),
+          recurrence_interval: S.optional(S.NullOr(ScheduledChangeRecurrenceIntervalEnum)),
           cron_expression: S.optional(S.NullOr(S.String)),
           end_date: S.optional(S.NullOr(S.String)),
         }).pipe(
@@ -452,18 +514,5 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "UpdateScheduledChangesPartialRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
   }
 }

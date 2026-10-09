@@ -10,8 +10,6 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "PartnerCentral Benefits",
   serviceShapeName: "PartnerCentralBenefitsService",
@@ -99,11 +97,11 @@ export class ValidationException
     "ValidationException",
     {
       message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
-      Reason: /*@__PURE__*/ S.suspend(() => S.String).annotate({
+      Reason: /*@__PURE__*/ S.suspend(() => ValidationExceptionReason).annotate({
         identifier: "ValidationExceptionReason",
       }),
       FieldList: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => __S(57)).annotate({
+        /*@__PURE__*/ S.suspend(() => ValidationExceptionFieldList).annotate({
           identifier: "ValidationExceptionFieldList",
         }),
       ),
@@ -116,7 +114,9 @@ export interface Amendment {
   FieldPath: string;
   NewValue: string;
 }
+const Amendment = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<Amendment>;
 export type AmendmentList = Amendment[];
+const AmendmentList = /*@__PURE__*/ __L.at(__c0, 1);
 export interface AmendBenefitApplicationInput {
   Catalog: string;
   ClientToken: string;
@@ -125,38 +125,66 @@ export interface AmendBenefitApplicationInput {
   AmendmentReason: string;
   Amendments: Amendment[];
 }
+const AmendBenefitApplicationInput = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<AmendBenefitApplicationInput>;
 export interface AmendBenefitApplicationOutput {}
+const AmendBenefitApplicationOutput = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<AmendBenefitApplicationOutput>;
 export type Arn = string;
 export interface AssociateBenefitApplicationResourceInput {
   Catalog: string;
   BenefitApplicationIdentifier: string;
   ResourceArn: string;
 }
+const AssociateBenefitApplicationResourceInput = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<AssociateBenefitApplicationResourceInput>;
 export type BenefitApplicationId = string;
 export interface AssociateBenefitApplicationResourceOutput {
   Id?: string;
   Arn?: string;
   Revision?: string;
 }
+const AssociateBenefitApplicationResourceOutput = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<AssociateBenefitApplicationResourceOutput>;
 export interface CancelBenefitApplicationInput {
   Catalog: string;
   ClientToken: string;
   Identifier: string;
   Reason?: string;
 }
+const CancelBenefitApplicationInput = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<CancelBenefitApplicationInput>;
 export interface CancelBenefitApplicationOutput {}
+const CancelBenefitApplicationOutput =
+  AmendBenefitApplicationOutput as any as S.Schema<CancelBenefitApplicationOutput>;
 export type BenefitApplicationName = string;
 export type BenefitApplicationDescription = string;
 export type FulfillmentType = "CREDITS" | "CASH" | "ACCESS" | (string & {});
+const FulfillmentType = S.String;
+
 export type FulfillmentTypes = FulfillmentType[];
+const FulfillmentTypes = /*@__PURE__*/ __L.at(__c0, 7);
 export type TagKey = string;
 export type TagValue = string;
 export interface Tag {
   Key: string;
   Value: string;
 }
+const Tag = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<Tag>;
 export type Tags = Tag[];
+const Tags = /*@__PURE__*/ __L.at(__c1, 1);
 export type Arns = string[];
+const Arns = /*@__PURE__*/ __L.at(__c1, 2);
 export type ContactEmail = string | redacted.Redacted<string>;
 export type ContactFirstName = string | redacted.Redacted<string>;
 export type ContactLastName = string | redacted.Redacted<string>;
@@ -168,13 +196,17 @@ export interface Contact {
   BusinessTitle?: string;
   Phone?: string | redacted.Redacted<string>;
 }
+const Contact = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<Contact>;
 export type Contacts = Contact[];
+const Contacts = /*@__PURE__*/ __L.at(__c1, 4);
 export type FileURI = string;
 export interface FileInput {
   FileURI: string;
   BusinessUseCase?: string;
 }
+const FileInput = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<FileInput>;
 export type FileInputDetails = FileInput[];
+const FileInputDetails = /*@__PURE__*/ __L.at(__c1, 6);
 export interface CreateBenefitApplicationInput {
   Catalog: string;
   ClientToken: string;
@@ -188,28 +220,44 @@ export interface CreateBenefitApplicationInput {
   PartnerContacts?: Contact[];
   FileDetails?: FileInput[];
 }
+const CreateBenefitApplicationInput = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<CreateBenefitApplicationInput>;
 export interface CreateBenefitApplicationOutput {
   Id?: string;
   Arn?: string;
   Revision?: string;
 }
+const CreateBenefitApplicationOutput =
+  AssociateBenefitApplicationResourceOutput as any as S.Schema<CreateBenefitApplicationOutput>;
 export interface DisassociateBenefitApplicationResourceInput {
   Catalog: string;
   BenefitApplicationIdentifier: string;
   ResourceArn: string;
 }
+const DisassociateBenefitApplicationResourceInput = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<DisassociateBenefitApplicationResourceInput>;
 export interface DisassociateBenefitApplicationResourceOutput {
   Id?: string;
   Arn?: string;
   Revision?: string;
 }
+const DisassociateBenefitApplicationResourceOutput =
+  AssociateBenefitApplicationResourceOutput as any as S.Schema<DisassociateBenefitApplicationResourceOutput>;
 export interface GetBenefitInput {
   Catalog: string;
   Identifier: string;
 }
+const GetBenefitInput = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<GetBenefitInput>;
 export type Program = string;
 export type Programs = string[];
+const Programs = Arns as any as S.Schema<Programs>;
 export type BenefitStatus = "ACTIVE" | "INACTIVE" | (string & {});
+const BenefitStatus = S.String;
+
 export interface GetBenefitOutput {
   Id?: string;
   Catalog?: string;
@@ -221,16 +269,24 @@ export interface GetBenefitOutput {
   BenefitRequestSchema?: any;
   Status?: BenefitStatus;
 }
+const GetBenefitOutput = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<GetBenefitOutput>;
 export type BenefitAllocationIdentifier = string;
 export interface GetBenefitAllocationInput {
   Catalog: string;
   Identifier: string;
 }
+const GetBenefitAllocationInput = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<GetBenefitAllocationInput>;
 export type BenefitAllocationId = string;
 export type BenefitAllocationArn = string;
 export type BenefitAllocationStatus = "ACTIVE" | "INACTIVE" | "FULFILLED" | (string & {});
+const BenefitAllocationStatus = S.String;
+
 export type BenefitId = string;
 export type BenefitIdentifiers = string[];
+const BenefitIdentifiers = Arns as any as S.Schema<BenefitIdentifiers>;
 export type CurrencyCode =
   | "AED"
   | "AMD"
@@ -328,25 +384,31 @@ export type CurrencyCode =
   | "XPF"
   | "ZAR"
   | (string & {});
+const CurrencyCode = S.String;
+
 export interface MonetaryValue {
   Amount: string;
   CurrencyCode: CurrencyCode;
 }
+const MonetaryValue = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<MonetaryValue>;
 export interface IssuanceDetail {
   IssuanceId?: string;
   IssuanceAmount?: MonetaryValue;
   IssuedAt?: Date;
 }
+const IssuanceDetail = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<IssuanceDetail>;
 export interface DisbursementDetails {
   DisbursedAmount?: MonetaryValue;
   IssuanceDetails?: IssuanceDetail;
 }
+const DisbursementDetails = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<DisbursementDetails>;
 export interface ConsumableDetails {
   AllocatedAmount?: MonetaryValue;
   RemainingAmount?: MonetaryValue;
   UtilizedAmount?: MonetaryValue;
   IssuanceDetails?: IssuanceDetail;
 }
+const ConsumableDetails = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<ConsumableDetails>;
 export interface CreditCode {
   AwsAccountId: string;
   Value: MonetaryValue;
@@ -355,15 +417,19 @@ export interface CreditCode {
   IssuedAt: Date;
   ExpiresAt: Date;
 }
+const CreditCode = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<CreditCode>;
 export type CreditCodes = CreditCode[];
+const CreditCodes = /*@__PURE__*/ __L.at(__c3, 1);
 export interface CreditDetails {
   AllocatedAmount: MonetaryValue;
   IssuedAmount: MonetaryValue;
   Codes: CreditCode[];
 }
+const CreditDetails = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<CreditDetails>;
 export interface AccessDetails {
   Description?: string;
 }
+const AccessDetails = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<AccessDetails>;
 export type FulfillmentDetails =
   | {
       DisbursementDetails: DisbursementDetails;
@@ -389,6 +455,7 @@ export type FulfillmentDetails =
       CreditDetails?: never;
       AccessDetails: AccessDetails;
     };
+const FulfillmentDetails = /*@__PURE__*/ __L.at(__c3, 4);
 export interface GetBenefitAllocationOutput {
   Id?: string;
   Catalog?: string;
@@ -407,10 +474,18 @@ export interface GetBenefitAllocationOutput {
   StartsAt?: Date;
   ExpiresAt?: Date;
 }
+const GetBenefitAllocationOutput = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<GetBenefitAllocationOutput>;
 export interface GetBenefitApplicationInput {
   Catalog: string;
   Identifier: string;
 }
+const GetBenefitApplicationInput = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<GetBenefitApplicationInput>;
 export type BenefitApplicationStatus =
   | "PENDING_SUBMISSION"
   | "IN_REVIEW"
@@ -419,9 +494,12 @@ export type BenefitApplicationStatus =
   | "REJECTED"
   | "CANCELED"
   | (string & {});
+const BenefitApplicationStatus = S.String;
+
 export type BenefitApplicationStage = string;
 export type StatusReasonCode = string;
 export type StatusReasonCodes = string[];
+const StatusReasonCodes = Arns as any as S.Schema<StatusReasonCodes>;
 export type FileType =
   | "application/msword"
   | "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
@@ -433,6 +511,8 @@ export type FileType =
   | "image/svg+xml"
   | "text/csv"
   | (string & {});
+const FileType = S.String;
+
 export interface FileDetail {
   FileURI: string;
   BusinessUseCase?: string;
@@ -443,7 +523,9 @@ export interface FileDetail {
   CreatedBy?: string;
   CreatedAt?: Date;
 }
+const FileDetail = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<FileDetail>;
 export type FileDetails = FileDetail[];
+const FileDetails = /*@__PURE__*/ __L.at(__c4, 0);
 export interface GetBenefitApplicationOutput {
   Id?: string;
   Arn?: string;
@@ -466,8 +548,15 @@ export interface GetBenefitApplicationOutput {
   PartnerContacts?: Contact[];
   FileDetails?: FileDetail[];
 }
+const GetBenefitApplicationOutput = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<GetBenefitApplicationOutput>;
 export type BenefitApplicationIdentifierList = string[];
+const BenefitApplicationIdentifierList = Arns as any as S.Schema<BenefitApplicationIdentifierList>;
 export type BenefitAllocationStatusList = BenefitAllocationStatus[];
+const BenefitAllocationStatusList =
+  FulfillmentTypes as any as S.Schema<BenefitAllocationStatusList>;
 export interface ListBenefitAllocationsInput {
   Catalog: string;
   FulfillmentTypes?: FulfillmentType[];
@@ -477,8 +566,13 @@ export interface ListBenefitAllocationsInput {
   MaxResults?: number;
   NextToken?: string;
 }
+const ListBenefitAllocationsInput = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<ListBenefitAllocationsInput>;
 export type BenefitAllocationName = string;
 export type BenefitIds = string[];
+const BenefitIds = Arns as any as S.Schema<BenefitIds>;
 export interface BenefitAllocationSummary {
   Id?: string;
   Catalog?: string;
@@ -493,20 +587,35 @@ export interface BenefitAllocationSummary {
   ExpiresAt?: Date;
   ApplicableBenefitIds?: string[];
 }
+const BenefitAllocationSummary = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<BenefitAllocationSummary>;
 export type BenefitAllocationSummaries = BenefitAllocationSummary[];
+const BenefitAllocationSummaries = /*@__PURE__*/ __L.at(__c4, 4);
 export interface ListBenefitAllocationsOutput {
   BenefitAllocationSummaries?: BenefitAllocationSummary[];
   NextToken?: string;
 }
+const ListBenefitAllocationsOutput = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<ListBenefitAllocationsOutput>;
 export type Statuses = BenefitApplicationStatus[];
+const Statuses = FulfillmentTypes as any as S.Schema<Statuses>;
 export type Stages = string[];
+const Stages = Arns as any as S.Schema<Stages>;
 export type ResourceType = "OPPORTUNITY" | "BENEFIT_ALLOCATION" | (string & {});
+const ResourceType = S.String;
+
 export interface AssociatedResource {
   ResourceType?: ResourceType;
   ResourceIdentifier?: string;
   ResourceArn?: string;
 }
+const AssociatedResource = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<AssociatedResource>;
 export type AssociatedResources = AssociatedResource[];
+const AssociatedResources = /*@__PURE__*/ __L.at(__c4, 7);
 export interface ListBenefitApplicationsInput {
   Catalog: string;
   Programs?: string[];
@@ -519,7 +628,12 @@ export interface ListBenefitApplicationsInput {
   MaxResults?: number;
   NextToken?: string;
 }
+const ListBenefitApplicationsInput = /*@__PURE__*/ __L.at(
+  __c5,
+  0,
+) as any as S.Schema<ListBenefitApplicationsInput>;
 export type Attributes = { [key: string]: string | undefined };
+const Attributes = /*@__PURE__*/ __L.at(__c5, 1);
 export interface BenefitApplicationSummary {
   Catalog?: string;
   Name?: string;
@@ -535,12 +649,22 @@ export interface BenefitApplicationSummary {
   BenefitApplicationDetails?: { [key: string]: string | undefined };
   AssociatedResources?: string[];
 }
+const BenefitApplicationSummary = /*@__PURE__*/ __L.at(
+  __c5,
+  2,
+) as any as S.Schema<BenefitApplicationSummary>;
 export type BenefitApplicationSummaries = BenefitApplicationSummary[];
+const BenefitApplicationSummaries = /*@__PURE__*/ __L.at(__c5, 3);
 export interface ListBenefitApplicationsOutput {
   BenefitApplicationSummaries?: BenefitApplicationSummary[];
   NextToken?: string;
 }
+const ListBenefitApplicationsOutput = /*@__PURE__*/ __L.at(
+  __c5,
+  4,
+) as any as S.Schema<ListBenefitApplicationsOutput>;
 export type BenefitStatuses = BenefitStatus[];
+const BenefitStatuses = FulfillmentTypes as any as S.Schema<BenefitStatuses>;
 export interface ListBenefitsInput {
   Catalog: string;
   Programs?: string[];
@@ -549,6 +673,7 @@ export interface ListBenefitsInput {
   MaxResults?: number;
   NextToken?: string;
 }
+const ListBenefitsInput = /*@__PURE__*/ __L.at(__c5, 5) as any as S.Schema<ListBenefitsInput>;
 export interface BenefitSummary {
   Id?: string;
   Catalog?: string;
@@ -559,41 +684,70 @@ export interface BenefitSummary {
   FulfillmentTypes?: FulfillmentType[];
   Status?: BenefitStatus;
 }
+const BenefitSummary = /*@__PURE__*/ __L.at(__c5, 6) as any as S.Schema<BenefitSummary>;
 export type BenefitSummaries = BenefitSummary[];
+const BenefitSummaries = /*@__PURE__*/ __L.at(__c5, 7);
 export interface ListBenefitsOutput {
   BenefitSummaries?: BenefitSummary[];
   NextToken?: string;
 }
+const ListBenefitsOutput = /*@__PURE__*/ __L.at(__c6, 0) as any as S.Schema<ListBenefitsOutput>;
 export type TaggableResourceArn = string;
 export interface ListTagsForResourceRequest {
   resourceArn: string;
 }
+const ListTagsForResourceRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  1,
+) as any as S.Schema<ListTagsForResourceRequest>;
 export interface ListTagsForResourceResponse {
   tags?: Tag[];
 }
+const ListTagsForResourceResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  2,
+) as any as S.Schema<ListTagsForResourceResponse>;
 export interface RecallBenefitApplicationInput {
   Catalog: string;
   ClientToken?: string;
   Identifier: string;
   Reason: string;
 }
+const RecallBenefitApplicationInput = /*@__PURE__*/ __L.at(
+  __c6,
+  3,
+) as any as S.Schema<RecallBenefitApplicationInput>;
 export interface RecallBenefitApplicationOutput {}
+const RecallBenefitApplicationOutput =
+  AmendBenefitApplicationOutput as any as S.Schema<RecallBenefitApplicationOutput>;
 export interface SubmitBenefitApplicationInput {
   Catalog: string;
   Identifier: string;
 }
+const SubmitBenefitApplicationInput = /*@__PURE__*/ __L.at(
+  __c6,
+  4,
+) as any as S.Schema<SubmitBenefitApplicationInput>;
 export interface SubmitBenefitApplicationOutput {}
+const SubmitBenefitApplicationOutput =
+  AmendBenefitApplicationOutput as any as S.Schema<SubmitBenefitApplicationOutput>;
 export interface TagResourceRequest {
   resourceArn: string;
   tags: Tag[];
 }
+const TagResourceRequest = /*@__PURE__*/ __L.at(__c6, 5) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
+const TagResourceResponse = AmendBenefitApplicationOutput as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
+const TagKeyList = Arns as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   resourceArn: string;
   tagKeys: string[];
 }
+const UntagResourceRequest = /*@__PURE__*/ __L.at(__c6, 6) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
+const UntagResourceResponse =
+  AmendBenefitApplicationOutput as any as S.Schema<UntagResourceResponse>;
 export interface UpdateBenefitApplicationInput {
   Catalog: string;
   ClientToken: string;
@@ -605,11 +759,17 @@ export interface UpdateBenefitApplicationInput {
   PartnerContacts?: Contact[];
   FileDetails?: FileInput[];
 }
+const UpdateBenefitApplicationInput = /*@__PURE__*/ __L.at(
+  __c6,
+  7,
+) as any as S.Schema<UpdateBenefitApplicationInput>;
 export interface UpdateBenefitApplicationOutput {
   Id?: string;
   Arn?: string;
   Revision?: string;
 }
+const UpdateBenefitApplicationOutput =
+  AssociateBenefitApplicationResourceOutput as any as S.Schema<UpdateBenefitApplicationOutput>;
 export type ValidationExceptionReason =
   | "unknownOperation"
   | "cannotParse"
@@ -617,6 +777,8 @@ export type ValidationExceptionReason =
   | "other"
   | "BUSINESS_VALIDATION_FAILED"
   | (string & {});
+const ValidationExceptionReason = S.String;
+
 export type ValidationExceptionErrorCode =
   | "REQUIRED_FIELD_MISSING"
   | "INVALID_ENUM_VALUE"
@@ -629,12 +791,19 @@ export type ValidationExceptionErrorCode =
   | "VALUE_OUT_OF_RANGE"
   | "ACTION_NOT_PERMITTED"
   | (string & {});
+const ValidationExceptionErrorCode = S.String;
+
 export interface ValidationExceptionField {
   Name: string;
   Message: string;
   Code?: ValidationExceptionErrorCode;
 }
+const ValidationExceptionField = /*@__PURE__*/ __L.at(
+  __c7,
+  0,
+) as any as S.Schema<ValidationExceptionField>;
 export type ValidationExceptionFieldList = ValidationExceptionField[];
+const ValidationExceptionFieldList = /*@__PURE__*/ __L.at(__c7, 1);
 export type AmendBenefitApplicationError =
   | AccessDeniedException
   | ConflictException
@@ -652,8 +821,8 @@ export const amendBenefitApplication: API.OperationMethod<
   AmendBenefitApplicationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2) as any as S.Schema<AmendBenefitApplicationInput>,
-  output: __S(3) as any as S.Schema<AmendBenefitApplicationOutput>,
+  input: AmendBenefitApplicationInput,
+  output: AmendBenefitApplicationOutput,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -684,8 +853,8 @@ export const associateBenefitApplicationResource: API.OperationMethod<
   AssociateBenefitApplicationResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4) as any as S.Schema<AssociateBenefitApplicationResourceInput>,
-  output: __S(5) as any as S.Schema<AssociateBenefitApplicationResourceOutput>,
+  input: AssociateBenefitApplicationResourceInput,
+  output: AssociateBenefitApplicationResourceOutput,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -716,8 +885,8 @@ export const cancelBenefitApplication: API.OperationMethod<
   CancelBenefitApplicationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6) as any as S.Schema<CancelBenefitApplicationInput>,
-  output: __S(3) as any as S.Schema<CancelBenefitApplicationOutput>,
+  input: CancelBenefitApplicationInput,
+  output: CancelBenefitApplicationOutput,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -748,8 +917,8 @@ export const createBenefitApplication: API.OperationMethod<
   CreateBenefitApplicationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15) as any as S.Schema<CreateBenefitApplicationInput>,
-  output: __S(5) as any as S.Schema<CreateBenefitApplicationOutput>,
+  input: CreateBenefitApplicationInput,
+  output: CreateBenefitApplicationOutput,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -780,8 +949,8 @@ export const disassociateBenefitApplicationResource: API.OperationMethod<
   DisassociateBenefitApplicationResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16) as any as S.Schema<DisassociateBenefitApplicationResourceInput>,
-  output: __S(5) as any as S.Schema<DisassociateBenefitApplicationResourceOutput>,
+  input: DisassociateBenefitApplicationResourceInput,
+  output: DisassociateBenefitApplicationResourceOutput,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -811,8 +980,8 @@ export const getBenefit: API.OperationMethod<
   GetBenefitError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17) as any as S.Schema<GetBenefitInput>,
-  output: __S(18) as any as S.Schema<GetBenefitOutput>,
+  input: GetBenefitInput,
+  output: GetBenefitOutput,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -841,8 +1010,8 @@ export const getBenefitAllocation: API.OperationMethod<
   GetBenefitAllocationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19) as any as S.Schema<GetBenefitAllocationInput>,
-  output: __S(29) as any as S.Schema<GetBenefitAllocationOutput>,
+  input: GetBenefitAllocationInput,
+  output: GetBenefitAllocationOutput,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -872,8 +1041,8 @@ export const getBenefitApplication: API.OperationMethod<
   GetBenefitApplicationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30) as any as S.Schema<GetBenefitApplicationInput>,
-  output: __S(33) as any as S.Schema<GetBenefitApplicationOutput>,
+  input: GetBenefitApplicationInput,
+  output: GetBenefitApplicationOutput,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -904,8 +1073,8 @@ export const listBenefitAllocations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   BenefitAllocationSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(34) as any as S.Schema<ListBenefitAllocationsInput>,
-  output: __S(37) as any as S.Schema<ListBenefitAllocationsOutput>,
+  input: ListBenefitAllocationsInput,
+  output: ListBenefitAllocationsOutput,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -941,8 +1110,8 @@ export const listBenefitApplications: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   BenefitApplicationSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(40) as any as S.Schema<ListBenefitApplicationsInput>,
-  output: __S(44) as any as S.Schema<ListBenefitApplicationsOutput>,
+  input: ListBenefitApplicationsInput,
+  output: ListBenefitApplicationsOutput,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -978,8 +1147,8 @@ export const listBenefits: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   BenefitSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(45) as any as S.Schema<ListBenefitsInput>,
-  output: __S(48) as any as S.Schema<ListBenefitsOutput>,
+  input: ListBenefitsInput,
+  output: ListBenefitsOutput,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1014,8 +1183,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49) as any as S.Schema<ListTagsForResourceRequest>,
-  output: __S(50) as any as S.Schema<ListTagsForResourceResponse>,
+  input: ListTagsForResourceRequest,
+  output: ListTagsForResourceResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1045,8 +1214,8 @@ export const recallBenefitApplication: API.OperationMethod<
   RecallBenefitApplicationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(51) as any as S.Schema<RecallBenefitApplicationInput>,
-  output: __S(3) as any as S.Schema<RecallBenefitApplicationOutput>,
+  input: RecallBenefitApplicationInput,
+  output: RecallBenefitApplicationOutput,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1077,8 +1246,8 @@ export const submitBenefitApplication: API.OperationMethod<
   SubmitBenefitApplicationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(52) as any as S.Schema<SubmitBenefitApplicationInput>,
-  output: __S(3) as any as S.Schema<SubmitBenefitApplicationOutput>,
+  input: SubmitBenefitApplicationInput,
+  output: SubmitBenefitApplicationOutput,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1110,8 +1279,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(53) as any as S.Schema<TagResourceRequest>,
-  output: __S(3) as any as S.Schema<TagResourceResponse>,
+  input: TagResourceRequest,
+  output: TagResourceResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1144,8 +1313,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(54) as any as S.Schema<UntagResourceRequest>,
-  output: __S(3) as any as S.Schema<UntagResourceResponse>,
+  input: UntagResourceRequest,
+  output: UntagResourceResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1177,8 +1346,8 @@ export const updateBenefitApplication: API.OperationMethod<
   UpdateBenefitApplicationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(55) as any as S.Schema<UpdateBenefitApplicationInput>,
-  output: __S(5) as any as S.Schema<UpdateBenefitApplicationOutput>,
+  input: UpdateBenefitApplicationInput,
+  output: UpdateBenefitApplicationOutput,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1200,7 +1369,7 @@ function __c0(j: number): any {
         identifier: "Amendment",
       });
     case 1:
-      return S.Array(__S(0));
+      return S.Array(Amendment);
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -1209,7 +1378,7 @@ function __c0(j: number): any {
           Revision: S.String,
           Identifier: S.String,
           AmendmentReason: S.String,
-          Amendments: __S(1),
+          Amendments: AmendmentList,
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/AmendBenefitApplication" }),
@@ -1277,7 +1446,7 @@ function __c0(j: number): any {
         identifier: "CancelBenefitApplicationInput",
       });
     case 7:
-      return S.Array(S.String);
+      return S.Array(FulfillmentType);
   }
 }
 function __c1(j: number): any {
@@ -1287,7 +1456,7 @@ function __c1(j: number): any {
         identifier: "Tag",
       });
     case 1:
-      return S.Array(__S(8));
+      return S.Array(Tag);
     case 2:
       return S.Array(S.String);
     case 3:
@@ -1301,13 +1470,13 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "Contact" });
     case 4:
-      return S.Array(__S(11));
+      return S.Array(Contact);
     case 5:
       return S.suspend(() =>
         S.Struct({ FileURI: S.String, BusinessUseCase: S.optional(S.String) }),
       ).annotate({ identifier: "FileInput" });
     case 6:
-      return S.Array(__S(13));
+      return S.Array(FileInput);
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -1316,12 +1485,12 @@ function __c1(j: number): any {
           Name: S.optional(S.String),
           Description: S.optional(S.String),
           BenefitIdentifier: S.String,
-          FulfillmentTypes: S.optional(__S(7)),
+          FulfillmentTypes: S.optional(FulfillmentTypes),
           BenefitApplicationDetails: S.optional(S.Any),
-          Tags: S.optional(__S(9)),
-          AssociatedResources: S.optional(__S(10)),
-          PartnerContacts: S.optional(__S(12)),
-          FileDetails: S.optional(__S(14)),
+          Tags: S.optional(Tags),
+          AssociatedResources: S.optional(Arns),
+          PartnerContacts: S.optional(Contacts),
+          FileDetails: S.optional(FileInputDetails),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/CreateBenefitApplication" }),
@@ -1372,10 +1541,10 @@ function __c2(j: number): any {
           Arn: S.optional(S.String),
           Name: S.optional(S.String),
           Description: S.optional(S.String),
-          Programs: S.optional(__S(10)),
-          FulfillmentTypes: S.optional(__S(7)),
+          Programs: S.optional(Programs),
+          FulfillmentTypes: S.optional(FulfillmentTypes),
           BenefitRequestSchema: S.optional(S.Any),
-          Status: S.optional(S.String),
+          Status: S.optional(BenefitStatus),
         }),
       ).annotate({ identifier: "GetBenefitOutput" });
     case 3:
@@ -1394,31 +1563,31 @@ function __c2(j: number): any {
         identifier: "GetBenefitAllocationInput",
       });
     case 4:
-      return S.suspend(() => S.Struct({ Amount: S.String, CurrencyCode: S.String })).annotate({
+      return S.suspend(() => S.Struct({ Amount: S.String, CurrencyCode: CurrencyCode })).annotate({
         identifier: "MonetaryValue",
       });
     case 5:
       return S.suspend(() =>
         S.Struct({
           IssuanceId: S.optional(S.String),
-          IssuanceAmount: S.optional(__S(20)),
+          IssuanceAmount: S.optional(MonetaryValue),
           IssuedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
         }),
       ).annotate({ identifier: "IssuanceDetail" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          DisbursedAmount: S.optional(__S(20)),
-          IssuanceDetails: S.optional(__S(21)),
+          DisbursedAmount: S.optional(MonetaryValue),
+          IssuanceDetails: S.optional(IssuanceDetail),
         }),
       ).annotate({ identifier: "DisbursementDetails" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          AllocatedAmount: S.optional(__S(20)),
-          RemainingAmount: S.optional(__S(20)),
-          UtilizedAmount: S.optional(__S(20)),
-          IssuanceDetails: S.optional(__S(21)),
+          AllocatedAmount: S.optional(MonetaryValue),
+          RemainingAmount: S.optional(MonetaryValue),
+          UtilizedAmount: S.optional(MonetaryValue),
+          IssuanceDetails: S.optional(IssuanceDetail),
         }),
       ).annotate({ identifier: "ConsumableDetails" });
   }
@@ -1429,21 +1598,21 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           AwsAccountId: S.String,
-          Value: __S(20),
+          Value: MonetaryValue,
           AwsCreditCode: S.String,
-          Status: S.String,
+          Status: BenefitAllocationStatus,
           IssuedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           ExpiresAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
         }),
       ).annotate({ identifier: "CreditCode" });
     case 1:
-      return S.Array(__S(24));
+      return S.Array(CreditCode);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          AllocatedAmount: __S(20),
-          IssuedAmount: __S(20),
-          Codes: __S(25),
+          AllocatedAmount: MonetaryValue,
+          IssuedAmount: MonetaryValue,
+          Codes: CreditCodes,
         }),
       ).annotate({ identifier: "CreditDetails" });
     case 3:
@@ -1452,10 +1621,10 @@ function __c3(j: number): any {
       });
     case 4:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ DisbursementDetails: __S(22) }),
-        /*@__PURE__*/ S.Struct({ ConsumableDetails: __S(23) }),
-        /*@__PURE__*/ S.Struct({ CreditDetails: __S(26) }),
-        /*@__PURE__*/ S.Struct({ AccessDetails: __S(27) }),
+        /*@__PURE__*/ S.Struct({ DisbursementDetails: DisbursementDetails }),
+        /*@__PURE__*/ S.Struct({ ConsumableDetails: ConsumableDetails }),
+        /*@__PURE__*/ S.Struct({ CreditDetails: CreditDetails }),
+        /*@__PURE__*/ S.Struct({ AccessDetails: AccessDetails }),
       ]);
     case 5:
       return S.suspend(() =>
@@ -1465,13 +1634,13 @@ function __c3(j: number): any {
           Arn: S.optional(S.String),
           Name: S.optional(S.String),
           Description: S.optional(S.String),
-          Status: S.optional(S.String),
+          Status: S.optional(BenefitAllocationStatus),
           StatusReason: S.optional(S.String),
           BenefitApplicationId: S.optional(S.String),
           BenefitId: S.optional(S.String),
-          FulfillmentType: S.optional(S.String),
-          ApplicableBenefitIds: S.optional(__S(10)),
-          FulfillmentDetail: S.optional(__S(28)),
+          FulfillmentType: S.optional(FulfillmentType),
+          ApplicableBenefitIds: S.optional(BenefitIdentifiers),
+          FulfillmentDetail: S.optional(FulfillmentDetails),
           CreatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           UpdatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           StartsAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
@@ -1503,7 +1672,7 @@ function __c3(j: number): any {
           FileName: S.optional(S.String),
           FileStatus: S.optional(S.String),
           FileStatusReason: S.optional(S.String),
-          FileType: S.optional(S.String),
+          FileType: S.optional(FileType),
           CreatedBy: S.optional(S.String),
           CreatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
         }),
@@ -1513,7 +1682,7 @@ function __c3(j: number): any {
 function __c4(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(31));
+      return S.Array(FileDetail);
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1523,20 +1692,20 @@ function __c4(j: number): any {
           BenefitId: S.optional(S.String),
           Name: S.optional(S.String),
           Description: S.optional(S.String),
-          FulfillmentTypes: S.optional(__S(7)),
+          FulfillmentTypes: S.optional(FulfillmentTypes),
           BenefitApplicationDetails: S.optional(S.Any),
-          Programs: S.optional(__S(10)),
-          Status: S.optional(S.String),
+          Programs: S.optional(Programs),
+          Status: S.optional(BenefitApplicationStatus),
           Stage: S.optional(S.String),
           StatusReason: S.optional(S.String),
           StatusReasonCode: S.optional(S.String),
-          StatusReasonCodes: S.optional(__S(10)),
+          StatusReasonCodes: S.optional(StatusReasonCodes),
           CreatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           UpdatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           Revision: S.optional(S.String),
-          AssociatedResources: S.optional(__S(10)),
-          PartnerContacts: S.optional(__S(12)),
-          FileDetails: S.optional(__S(32)),
+          AssociatedResources: S.optional(Arns),
+          PartnerContacts: S.optional(Contacts),
+          FileDetails: S.optional(FileDetails),
         }),
       ).annotate({
         identifier: "GetBenefitApplicationOutput",
@@ -1545,10 +1714,10 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Catalog: S.String,
-          FulfillmentTypes: S.optional(__S(7)),
-          BenefitIdentifiers: S.optional(__S(10)),
-          BenefitApplicationIdentifiers: S.optional(__S(10)),
-          Status: S.optional(__S(7)),
+          FulfillmentTypes: S.optional(FulfillmentTypes),
+          BenefitIdentifiers: S.optional(BenefitIdentifiers),
+          BenefitApplicationIdentifiers: S.optional(BenefitApplicationIdentifierList),
+          Status: S.optional(BenefitAllocationStatusList),
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(
@@ -1570,23 +1739,23 @@ function __c4(j: number): any {
           Id: S.optional(S.String),
           Catalog: S.optional(S.String),
           Arn: S.optional(S.String),
-          Status: S.optional(S.String),
+          Status: S.optional(BenefitAllocationStatus),
           StatusReason: S.optional(S.String),
           Name: S.optional(S.String),
           BenefitId: S.optional(S.String),
           BenefitApplicationId: S.optional(S.String),
-          FulfillmentTypes: S.optional(__S(7)),
+          FulfillmentTypes: S.optional(FulfillmentTypes),
           CreatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           ExpiresAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          ApplicableBenefitIds: S.optional(__S(10)),
+          ApplicableBenefitIds: S.optional(BenefitIds),
         }),
       ).annotate({ identifier: "BenefitAllocationSummary" });
     case 4:
-      return S.Array(__S(35));
+      return S.Array(BenefitAllocationSummary);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          BenefitAllocationSummaries: S.optional(__S(36)),
+          BenefitAllocationSummaries: S.optional(BenefitAllocationSummaries),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -1595,13 +1764,13 @@ function __c4(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          ResourceType: S.optional(S.String),
+          ResourceType: S.optional(ResourceType),
           ResourceIdentifier: S.optional(S.String),
           ResourceArn: S.optional(S.String),
         }),
       ).annotate({ identifier: "AssociatedResource" });
     case 7:
-      return S.Array(__S(38));
+      return S.Array(AssociatedResource);
   }
 }
 function __c5(j: number): any {
@@ -1610,13 +1779,13 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Catalog: S.String,
-          Programs: S.optional(__S(10)),
-          FulfillmentTypes: S.optional(__S(7)),
-          BenefitIdentifiers: S.optional(__S(10)),
-          Status: S.optional(__S(7)),
-          Stages: S.optional(__S(10)),
-          AssociatedResources: S.optional(__S(39)),
-          AssociatedResourceArns: S.optional(__S(10)),
+          Programs: S.optional(Programs),
+          FulfillmentTypes: S.optional(FulfillmentTypes),
+          BenefitIdentifiers: S.optional(BenefitIdentifiers),
+          Status: S.optional(Statuses),
+          Stages: S.optional(Stages),
+          AssociatedResources: S.optional(AssociatedResources),
+          AssociatedResourceArns: S.optional(Arns),
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(
@@ -1642,24 +1811,24 @@ function __c5(j: number): any {
           Id: S.optional(S.String),
           Arn: S.optional(S.String),
           BenefitId: S.optional(S.String),
-          Programs: S.optional(__S(10)),
-          FulfillmentTypes: S.optional(__S(7)),
-          Status: S.optional(S.String),
+          Programs: S.optional(Programs),
+          FulfillmentTypes: S.optional(FulfillmentTypes),
+          Status: S.optional(BenefitApplicationStatus),
           Stage: S.optional(S.String),
           CreatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           UpdatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          BenefitApplicationDetails: S.optional(__S(41)),
-          AssociatedResources: S.optional(__S(10)),
+          BenefitApplicationDetails: S.optional(Attributes),
+          AssociatedResources: S.optional(Arns),
         }),
       ).annotate({
         identifier: "BenefitApplicationSummary",
       });
     case 3:
-      return S.Array(__S(42));
+      return S.Array(BenefitApplicationSummary);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          BenefitApplicationSummaries: S.optional(__S(43)),
+          BenefitApplicationSummaries: S.optional(BenefitApplicationSummaries),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -1669,9 +1838,9 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Catalog: S.String,
-          Programs: S.optional(__S(10)),
-          FulfillmentTypes: S.optional(__S(7)),
-          Status: S.optional(__S(7)),
+          Programs: S.optional(Programs),
+          FulfillmentTypes: S.optional(FulfillmentTypes),
+          Status: S.optional(BenefitStatuses),
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(
@@ -1686,13 +1855,13 @@ function __c5(j: number): any {
           Arn: S.optional(S.String),
           Name: S.optional(S.String),
           Description: S.optional(S.String),
-          Programs: S.optional(__S(10)),
-          FulfillmentTypes: S.optional(__S(7)),
-          Status: S.optional(S.String),
+          Programs: S.optional(Programs),
+          FulfillmentTypes: S.optional(FulfillmentTypes),
+          Status: S.optional(BenefitStatus),
         }),
       ).annotate({ identifier: "BenefitSummary" });
     case 7:
-      return S.Array(__S(46));
+      return S.Array(BenefitSummary);
   }
 }
 function __c6(j: number): any {
@@ -1700,7 +1869,7 @@ function __c6(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          BenefitSummaries: S.optional(__S(47)),
+          BenefitSummaries: S.optional(BenefitSummaries),
           NextToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListBenefitsOutput" });
@@ -1720,7 +1889,7 @@ function __c6(j: number): any {
         identifier: "ListTagsForResourceRequest",
       });
     case 2:
-      return S.suspend(() => S.Struct({ tags: S.optional(__S(9)) })).annotate({
+      return S.suspend(() => S.Struct({ tags: S.optional(Tags) })).annotate({
         identifier: "ListTagsForResourceResponse",
       });
     case 3:
@@ -1760,13 +1929,13 @@ function __c6(j: number): any {
       });
     case 5:
       return S.suspend(() =>
-        S.Struct({ resourceArn: S.String, tags: __S(9) }).pipe(
+        S.Struct({ resourceArn: S.String, tags: Tags }).pipe(
           T.all(T.Http({ method: "POST", uri: "/TagResource" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "TagResourceRequest" });
     case 6:
       return S.suspend(() =>
-        S.Struct({ resourceArn: S.String, tagKeys: __S(10) }).pipe(
+        S.Struct({ resourceArn: S.String, tagKeys: TagKeyList }).pipe(
           T.all(T.Http({ method: "POST", uri: "/UntagResource" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "UntagResourceRequest" });
@@ -1780,8 +1949,8 @@ function __c6(j: number): any {
           Identifier: S.String,
           Revision: S.String,
           BenefitApplicationDetails: S.optional(S.Any),
-          PartnerContacts: S.optional(__S(12)),
-          FileDetails: S.optional(__S(14)),
+          PartnerContacts: S.optional(Contacts),
+          FileDetails: S.optional(FileInputDetails),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/UpdateBenefitApplication" }),
@@ -1804,35 +1973,10 @@ function __c7(j: number): any {
         S.Struct({
           Name: S.String,
           Message: S.String,
-          Code: S.optional(S.String),
+          Code: S.optional(ValidationExceptionErrorCode),
         }),
       ).annotate({ identifier: "ValidationExceptionField" });
     case 1:
-      return S.Array(__S(56));
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
+      return S.Array(ValidationExceptionField);
   }
 }

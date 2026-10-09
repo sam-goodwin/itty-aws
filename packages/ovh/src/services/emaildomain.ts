@@ -7,8 +7,6 @@ import { UnknownOvhError } from "../errors.ts";
 import { OvhProtocol, type OvhOpError, type OvhOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { OvhOpError, OvhOpContext };
 
@@ -28,6 +26,8 @@ export type ServiceTerminationReasonEnum =
   | "TOO_EXPENSIVE"
   | "TOO_HARD_TO_USE"
   | "UNSATIFIED_BY_CUSTOMER_SUPPORT";
+const ServiceTerminationReasonEnum = S.String;
+
 export interface ConfirmEmailDomainTerminationRequest {
   /** Name of your domain name */
   domain: string;
@@ -38,7 +38,17 @@ export interface ConfirmEmailDomainTerminationRequest {
   /** The termination token sent by mail to the admin contact */
   token: string;
 }
+const ConfirmEmailDomainTerminationRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<ConfirmEmailDomainTerminationRequest>;
+
 export type ConfirmEmailDomainTerminationResponse = string;
+const ConfirmEmailDomainTerminationResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<ConfirmEmailDomainTerminationResponse>;
+
 export interface CreateEmailDomainAccountRequest {
   /** Name of your domain name */
   domain: string;
@@ -51,6 +61,11 @@ export interface CreateEmailDomainAccountRequest {
   /** Account size in bytes (default : 5000000000) (possible values : /email/domain/{domain}/allowedAccountSize ) */
   size?: number;
 }
+const CreateEmailDomainAccountRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<CreateEmailDomainAccountRequest>;
+
 /** Possible values for pop action task */
 export type DomainDomainPopActionEnum =
   | "addAccount"
@@ -61,6 +76,8 @@ export type DomainDomainPopActionEnum =
   | "migration"
   | "temporaryTask"
   | "unknown";
+const DomainDomainPopActionEnum = S.String;
+
 /** Task Pop List */
 export interface EmailDomainTaskPop {
   /** Action of task */
@@ -74,6 +91,8 @@ export interface EmailDomainTaskPop {
   /** Account name of task */
   name?: string;
 }
+const EmailDomainTaskPop = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<EmailDomainTaskPop>;
+
 export interface CreateEmailDomainAccountChangePasswordRequest {
   /** Name of your domain name */
   domain: string;
@@ -82,6 +101,11 @@ export interface CreateEmailDomainAccountChangePasswordRequest {
   /** New password */
   password: string | Redacted.Redacted<string>;
 }
+const CreateEmailDomainAccountChangePasswordRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<CreateEmailDomainAccountChangePasswordRequest>;
+
 export interface CreateEmailDomainAccountDelegationRequest {
   /** Name of your domain name */
   domain: string;
@@ -90,11 +114,23 @@ export interface CreateEmailDomainAccountDelegationRequest {
   /** OVH customer unique identifier */
   accountId: string;
 }
+const CreateEmailDomainAccountDelegationRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<CreateEmailDomainAccountDelegationRequest>;
+
 export type CreateEmailDomainAccountDelegationResponse = string;
+const CreateEmailDomainAccountDelegationResponse =
+  ConfirmEmailDomainTerminationResponse as any as S.Schema<CreateEmailDomainAccountDelegationResponse>;
+
 /** Possible values for filter action */
 export type DomainDomainFilterActionEnum = "accept" | "account" | "delete" | "redirect";
+const DomainDomainFilterActionEnum = S.String;
+
 /** Possible values for filter operation */
 export type DomainDomainFilterOperandEnum = "checkspf" | "contains" | "noContains";
+const DomainDomainFilterOperandEnum = S.String;
+
 export interface CreateEmailDomainAccountFilterRequest {
   /** Name of your domain name */
   domain: string;
@@ -117,6 +153,11 @@ export interface CreateEmailDomainAccountFilterRequest {
   /** Rule parameter of filter */
   value: string;
 }
+const CreateEmailDomainAccountFilterRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<CreateEmailDomainAccountFilterRequest>;
+
 /** Task filter List */
 export interface EmailDomainTaskFilter {
   /** Account name of task */
@@ -130,6 +171,11 @@ export interface EmailDomainTaskFilter {
   /** Creation date of task */
   timestamp?: string;
 }
+const EmailDomainTaskFilter = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<EmailDomainTaskFilter>;
+
 export interface CreateEmailDomainAccountFilterChangeActivityRequest {
   /** Name of your domain name */
   domain: string;
@@ -140,6 +186,11 @@ export interface CreateEmailDomainAccountFilterChangeActivityRequest {
   /** New activity */
   activity: boolean;
 }
+const CreateEmailDomainAccountFilterChangeActivityRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<CreateEmailDomainAccountFilterChangeActivityRequest>;
+
 export interface CreateEmailDomainAccountFilterChangePriorityRequest {
   /** Name of your domain name */
   domain: string;
@@ -150,6 +201,11 @@ export interface CreateEmailDomainAccountFilterChangePriorityRequest {
   /** New priority */
   priority: number;
 }
+const CreateEmailDomainAccountFilterChangePriorityRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<CreateEmailDomainAccountFilterChangePriorityRequest>;
+
 export interface CreateEmailDomainAccountFilterRuleRequest {
   /** Name of your domain name */
   domain: string;
@@ -164,17 +220,29 @@ export interface CreateEmailDomainAccountFilterRuleRequest {
   /** Rule parameter of filter */
   value: string;
 }
+const CreateEmailDomainAccountFilterRuleRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<CreateEmailDomainAccountFilterRuleRequest>;
+
 export interface CreateEmailDomainAclRequest {
   /** Name of your domain name */
   domain: string;
   /** Deleguates rights to */
   accountId: string;
 }
+const CreateEmailDomainAclRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<CreateEmailDomainAclRequest>;
+
 /** Email ACL */
 export interface EmailDomainAcl {
   /** OVH customer unique identifier */
   accountId?: string;
 }
+const EmailDomainAcl = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<EmailDomainAcl>;
+
 export interface CreateEmailDomainChangeContactRequest {
   /** Name of your domain name */
   domain: string;
@@ -185,8 +253,23 @@ export interface CreateEmailDomainChangeContactRequest {
   /** The contact to set as tech contact */
   contactTech?: string;
 }
+const CreateEmailDomainChangeContactRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<CreateEmailDomainChangeContactRequest>;
+
 export type CreateEmailDomainChangeContactResponseBodyList = Array<number>;
+const CreateEmailDomainChangeContactResponseBodyList = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<CreateEmailDomainChangeContactResponseBodyList>;
+
 export type CreateEmailDomainChangeContactResponse = CreateEmailDomainChangeContactResponseBodyList;
+const CreateEmailDomainChangeContactResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<CreateEmailDomainChangeContactResponse>;
+
 /** Possible values for MX filter */
 export type DomainDomainMXFilterEnum =
   | "CUSTOM"
@@ -194,6 +277,8 @@ export type DomainDomainMXFilterEnum =
   | "NO_FILTERING"
   | "REDIRECT"
   | "SIMPLE_FILTERING";
+const DomainDomainMXFilterEnum = S.String;
+
 export interface CreateEmailDomainChangeDnsMXFilterRequest {
   /** Name of your domain name */
   domain: string;
@@ -204,13 +289,28 @@ export interface CreateEmailDomainChangeDnsMXFilterRequest {
   /** Sub domain */
   subDomain?: string;
 }
+const CreateEmailDomainChangeDnsMXFilterRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<CreateEmailDomainChangeDnsMXFilterRequest>;
+
 export interface CreateEmailDomainChangeDnsMXFilterResponse {}
+const CreateEmailDomainChangeDnsMXFilterResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<CreateEmailDomainChangeDnsMXFilterResponse>;
+
 export interface CreateEmailDomainDelegatedAccountChangePasswordRequest {
   /** Email */
   email: string;
   /** New password */
   password: string | Redacted.Redacted<string>;
 }
+const CreateEmailDomainDelegatedAccountChangePasswordRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<CreateEmailDomainDelegatedAccountChangePasswordRequest>;
+
 export interface CreateEmailDomainDelegatedAccountFilterRequest {
   /** Email */
   email: string;
@@ -231,6 +331,11 @@ export interface CreateEmailDomainDelegatedAccountFilterRequest {
   /** Rule parameter of filter */
   value: string;
 }
+const CreateEmailDomainDelegatedAccountFilterRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<CreateEmailDomainDelegatedAccountFilterRequest>;
+
 export interface CreateEmailDomainDelegatedAccountFilterChangeActivityRequest {
   /** Email */
   email: string;
@@ -239,6 +344,11 @@ export interface CreateEmailDomainDelegatedAccountFilterChangeActivityRequest {
   /** New activity */
   activity: boolean;
 }
+const CreateEmailDomainDelegatedAccountFilterChangeActivityRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<CreateEmailDomainDelegatedAccountFilterChangeActivityRequest>;
+
 export interface CreateEmailDomainDelegatedAccountFilterChangePriorityRequest {
   /** Email */
   email: string;
@@ -247,6 +357,11 @@ export interface CreateEmailDomainDelegatedAccountFilterChangePriorityRequest {
   /** New priority */
   priority: number;
 }
+const CreateEmailDomainDelegatedAccountFilterChangePriorityRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<CreateEmailDomainDelegatedAccountFilterChangePriorityRequest>;
+
 export interface CreateEmailDomainDelegatedAccountFilterRuleRequest {
   /** Email */
   email: string;
@@ -259,6 +374,11 @@ export interface CreateEmailDomainDelegatedAccountFilterRuleRequest {
   /** Rule parameter of filter */
   value: string;
 }
+const CreateEmailDomainDelegatedAccountFilterRuleRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<CreateEmailDomainDelegatedAccountFilterRuleRequest>;
+
 export interface CreateEmailDomainDelegatedAccountResponderRequest {
   /** Email */
   email: string;
@@ -273,8 +393,15 @@ export interface CreateEmailDomainDelegatedAccountResponderRequest {
   /** Date of end responder */
   to?: string;
 }
+const CreateEmailDomainDelegatedAccountResponderRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<CreateEmailDomainDelegatedAccountResponderRequest>;
+
 /** Possible values for pop action task */
 export type DomainDomainSpecialAccountActionEnum = "add" | "change" | "delete";
+const DomainDomainSpecialAccountActionEnum = S.String;
+
 /** Possible type task */
 export type DomainDomainSpecialAccountTypeEnum =
   | "25g"
@@ -283,6 +410,8 @@ export type DomainDomainSpecialAccountTypeEnum =
   | "filter"
   | "forward"
   | "responder";
+const DomainDomainSpecialAccountTypeEnum = S.String;
+
 /** Task special account List */
 export interface EmailDomainTaskSpecialAccount {
   /** Account name of task */
@@ -298,10 +427,20 @@ export interface EmailDomainTaskSpecialAccount {
   /** Type of action filter */
   type?: DomainDomainSpecialAccountTypeEnum;
 }
+const EmailDomainTaskSpecialAccount = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<EmailDomainTaskSpecialAccount>;
+
 export interface CreateEmailDomainDelegatedAccountUsageRequest {
   /** Email */
   email: string;
 }
+const CreateEmailDomainDelegatedAccountUsageRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<CreateEmailDomainDelegatedAccountUsageRequest>;
+
 /** Structure of usage account */
 export interface DomainDomainUsageAccountStruct {
   /** Timestamp */
@@ -311,8 +450,15 @@ export interface DomainDomainUsageAccountStruct {
   /** Size of mailbox (bytes) */
   quota?: number | null;
 }
+const DomainDomainUsageAccountStruct = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<DomainDomainUsageAccountStruct>;
+
 /** Possible values for mailing list language */
 export type DomainDomainMlLanguageEnum = "de" | "en" | "es" | "fr" | "it" | "nl" | "pl" | "pt";
+const DomainDomainMlLanguageEnum = S.String;
+
 /** Structure of imapCopy */
 export interface DomainDomainMlOptionsStruct {
   /** If true, messages are moderate */
@@ -322,6 +468,11 @@ export interface DomainDomainMlOptionsStruct {
   /** If true, just user can post */
   usersPostOnly?: boolean;
 }
+const DomainDomainMlOptionsStruct = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<DomainDomainMlOptionsStruct>;
+
 export interface CreateEmailDomainMailingListRequest {
   /** Name of your domain name */
   domain: string;
@@ -336,6 +487,11 @@ export interface CreateEmailDomainMailingListRequest {
   /** Email to reply of mailing list */
   replyTo?: string;
 }
+const CreateEmailDomainMailingListRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<CreateEmailDomainMailingListRequest>;
+
 /** Task Mailing List */
 export interface EmailDomainTaskMl {
   account?: string;
@@ -345,6 +501,8 @@ export interface EmailDomainTaskMl {
   id?: number;
   language?: DomainDomainMlLanguageEnum;
 }
+const EmailDomainTaskMl = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<EmailDomainTaskMl>;
+
 export interface CreateEmailDomainMailingListChangeOptionRequest {
   /** Name of your domain name */
   domain: string;
@@ -353,6 +511,11 @@ export interface CreateEmailDomainMailingListChangeOptionRequest {
   /** Options of mailing list */
   options: DomainDomainMlOptionsStruct;
 }
+const CreateEmailDomainMailingListChangeOptionRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<CreateEmailDomainMailingListChangeOptionRequest>;
+
 export interface CreateEmailDomainMailingListModeratorRequest {
   /** Name of your domain name */
   domain: string;
@@ -361,6 +524,11 @@ export interface CreateEmailDomainMailingListModeratorRequest {
   /** Email of moderator */
   email: string;
 }
+const CreateEmailDomainMailingListModeratorRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<CreateEmailDomainMailingListModeratorRequest>;
+
 export interface CreateEmailDomainMailingListSubscriberRequest {
   /** Name of your domain name */
   domain: string;
@@ -369,6 +537,11 @@ export interface CreateEmailDomainMailingListSubscriberRequest {
   /** Email of subscriber */
   email: string;
 }
+const CreateEmailDomainMailingListSubscriberRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<CreateEmailDomainMailingListSubscriberRequest>;
+
 export interface CreateEmailDomainRedirectionRequest {
   /** Name of your domain name */
   domain: string;
@@ -379,6 +552,11 @@ export interface CreateEmailDomainRedirectionRequest {
   /** Target of account */
   to: string;
 }
+const CreateEmailDomainRedirectionRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<CreateEmailDomainRedirectionRequest>;
+
 export interface CreateEmailDomainRedirectionChangeRedirectionRequest {
   /** Name of your domain name */
   domain: string;
@@ -387,6 +565,11 @@ export interface CreateEmailDomainRedirectionChangeRedirectionRequest {
   /** Target of account */
   to: string;
 }
+const CreateEmailDomainRedirectionChangeRedirectionRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<CreateEmailDomainRedirectionChangeRedirectionRequest>;
+
 export interface CreateEmailDomainResponderRequest {
   /** Name of your domain name */
   domain: string;
@@ -403,12 +586,22 @@ export interface CreateEmailDomainResponderRequest {
   /** Date of end responder */
   to?: string;
 }
+const CreateEmailDomainResponderRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<CreateEmailDomainResponderRequest>;
+
 export interface DeleteEmailDomainAccountRequest {
   /** Name of your domain name */
   domain: string;
   /** Name of account */
   accountName: string;
 }
+const DeleteEmailDomainAccountRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<DeleteEmailDomainAccountRequest>;
+
 export interface DeleteEmailDomainAccountDelegationRequest {
   /** Name of your domain name */
   domain: string;
@@ -417,7 +610,15 @@ export interface DeleteEmailDomainAccountDelegationRequest {
   /** OVH customer unique identifier */
   accountId: string;
 }
+const DeleteEmailDomainAccountDelegationRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<DeleteEmailDomainAccountDelegationRequest>;
+
 export type DeleteEmailDomainAccountDelegationResponse = string;
+const DeleteEmailDomainAccountDelegationResponse =
+  ConfirmEmailDomainTerminationResponse as any as S.Schema<DeleteEmailDomainAccountDelegationResponse>;
+
 export interface DeleteEmailDomainAccountFilterRequest {
   /** Name of your domain name */
   domain: string;
@@ -426,8 +627,23 @@ export interface DeleteEmailDomainAccountFilterRequest {
   /** Filter name */
   name: string;
 }
+const DeleteEmailDomainAccountFilterRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<DeleteEmailDomainAccountFilterRequest>;
+
 export type DeleteEmailDomainAccountFilterResponseBodyList = Array<EmailDomainTaskFilter>;
+const DeleteEmailDomainAccountFilterResponseBodyList = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<DeleteEmailDomainAccountFilterResponseBodyList>;
+
 export type DeleteEmailDomainAccountFilterResponse = DeleteEmailDomainAccountFilterResponseBodyList;
+const DeleteEmailDomainAccountFilterResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  0,
+) as any as S.Schema<DeleteEmailDomainAccountFilterResponse>;
+
 export interface DeleteEmailDomainAccountFilterRuleRequest {
   /** Name of your domain name */
   domain: string;
@@ -437,25 +653,51 @@ export interface DeleteEmailDomainAccountFilterRuleRequest {
   name: string;
   id: number;
 }
+const DeleteEmailDomainAccountFilterRuleRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  1,
+) as any as S.Schema<DeleteEmailDomainAccountFilterRuleRequest>;
+
 export type DeleteEmailDomainAccountFilterRuleResponseBodyList = Array<EmailDomainTaskFilter>;
 export type DeleteEmailDomainAccountFilterRuleResponse =
   DeleteEmailDomainAccountFilterRuleResponseBodyList;
+const DeleteEmailDomainAccountFilterRuleResponse =
+  DeleteEmailDomainAccountFilterResponse as any as S.Schema<DeleteEmailDomainAccountFilterRuleResponse>;
+
 export interface DeleteEmailDomainAclRequest {
   /** Name of your domain name */
   domain: string;
   /** OVH customer unique identifier */
   accountId: string;
 }
+const DeleteEmailDomainAclRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  2,
+) as any as S.Schema<DeleteEmailDomainAclRequest>;
+
 export interface DeleteEmailDomainAclResponse {}
+const DeleteEmailDomainAclResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<DeleteEmailDomainAclResponse>;
+
 export interface DeleteEmailDomainDelegatedAccountFilterRequest {
   /** Email */
   email: string;
   /** Filter name */
   name: string;
 }
+const DeleteEmailDomainDelegatedAccountFilterRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  4,
+) as any as S.Schema<DeleteEmailDomainDelegatedAccountFilterRequest>;
+
 export type DeleteEmailDomainDelegatedAccountFilterResponseBodyList = Array<EmailDomainTaskFilter>;
 export type DeleteEmailDomainDelegatedAccountFilterResponse =
   DeleteEmailDomainDelegatedAccountFilterResponseBodyList;
+const DeleteEmailDomainDelegatedAccountFilterResponse =
+  DeleteEmailDomainAccountFilterResponse as any as S.Schema<DeleteEmailDomainDelegatedAccountFilterResponse>;
+
 export interface DeleteEmailDomainDelegatedAccountFilterRuleRequest {
   /** Email */
   email: string;
@@ -463,20 +705,38 @@ export interface DeleteEmailDomainDelegatedAccountFilterRuleRequest {
   name: string;
   id: number;
 }
+const DeleteEmailDomainDelegatedAccountFilterRuleRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  5,
+) as any as S.Schema<DeleteEmailDomainDelegatedAccountFilterRuleRequest>;
+
 export type DeleteEmailDomainDelegatedAccountFilterRuleResponseBodyList =
   Array<EmailDomainTaskFilter>;
 export type DeleteEmailDomainDelegatedAccountFilterRuleResponse =
   DeleteEmailDomainDelegatedAccountFilterRuleResponseBodyList;
+const DeleteEmailDomainDelegatedAccountFilterRuleResponse =
+  DeleteEmailDomainAccountFilterResponse as any as S.Schema<DeleteEmailDomainDelegatedAccountFilterRuleResponse>;
+
 export interface DeleteEmailDomainDelegatedAccountResponderRequest {
   /** Email */
   email: string;
 }
+const DeleteEmailDomainDelegatedAccountResponderRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  6,
+) as any as S.Schema<DeleteEmailDomainDelegatedAccountResponderRequest>;
+
 export interface DeleteEmailDomainMailingListRequest {
   /** Name of your domain name */
   domain: string;
   /** Name of mailing list */
   name: string;
 }
+const DeleteEmailDomainMailingListRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  7,
+) as any as S.Schema<DeleteEmailDomainMailingListRequest>;
+
 export interface DeleteEmailDomainMailingListModeratorRequest {
   /** Name of your domain name */
   domain: string;
@@ -484,6 +744,11 @@ export interface DeleteEmailDomainMailingListModeratorRequest {
   name: string;
   email: string;
 }
+const DeleteEmailDomainMailingListModeratorRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<DeleteEmailDomainMailingListModeratorRequest>;
+
 export interface DeleteEmailDomainMailingListSubscriberRequest {
   /** Name of your domain name */
   domain: string;
@@ -491,28 +756,58 @@ export interface DeleteEmailDomainMailingListSubscriberRequest {
   name: string;
   email: string;
 }
+const DeleteEmailDomainMailingListSubscriberRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  1,
+) as any as S.Schema<DeleteEmailDomainMailingListSubscriberRequest>;
+
 export interface DeleteEmailDomainRedirectionRequest {
   /** Name of your domain name */
   domain: string;
   /** Id */
   id: string;
 }
+const DeleteEmailDomainRedirectionRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  2,
+) as any as S.Schema<DeleteEmailDomainRedirectionRequest>;
+
 export interface DeleteEmailDomainResponderRequest {
   /** Name of your domain name */
   domain: string;
   /** Name of account */
   account: string;
 }
+const DeleteEmailDomainResponderRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  3,
+) as any as S.Schema<DeleteEmailDomainResponderRequest>;
+
 export interface GetEmailDomainRequest {
   /** Name of your domain name */
   domain: string;
 }
+const GetEmailDomainRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  4,
+) as any as S.Schema<GetEmailDomainRequest>;
+
 /** List of allowed sizes for this domain in bytes */
 export type EmailDomainDomainServiceWithIAMAllowedAccountSizeList = Array<number>;
+const EmailDomainDomainServiceWithIAMAllowedAccountSizeList =
+  CreateEmailDomainChangeContactResponseBodyList as any as S.Schema<EmailDomainDomainServiceWithIAMAllowedAccountSizeList>;
+
 /** Resource state */
 export type IamResourceMetadataStateEnum = "EXPIRED" | "IN_CREATION" | "OK" | "SUSPENDED";
+const IamResourceMetadataStateEnum = S.String;
+
 /** Resource tags. Tags that were internally computed are prefixed with ovh: */
 export type IamResourceMetadataTagsMap = { [key: string]: string | undefined };
+const IamResourceMetadataTagsMap = /*@__PURE__*/ __L.at(
+  __c6,
+  5,
+) as any as S.Schema<IamResourceMetadataTagsMap>;
+
 /** IAM resource metadata embedded in services models */
 export interface IamResourceMetadata {
   /** Resource display name */
@@ -526,10 +821,16 @@ export interface IamResourceMetadata {
   /** Unique resource name used in policies */
   urn?: string;
 }
+const IamResourceMetadata = /*@__PURE__*/ __L.at(__c6, 6) as any as S.Schema<IamResourceMetadata>;
+
 /** Result value for diagnose */
 export type EmailDomainDiagnoseEnum = "checkFail" | "invalid" | "none" | "unknown" | "valid";
+const EmailDomainDiagnoseEnum = S.String;
+
 /** Possible values for status domain */
 export type DomainDomainStatusEnum = "close" | "ok" | "readOnly" | "unknown";
+const DomainDomainStatusEnum = S.String;
+
 /** Domain service */
 export interface EmailDomainDomainServiceWithIAM {
   /** List of allowed sizes for this domain in bytes */
@@ -555,12 +856,22 @@ export interface EmailDomainDomainServiceWithIAM {
   /** Domain Status */
   status?: DomainDomainStatusEnum;
 }
+const EmailDomainDomainServiceWithIAM = /*@__PURE__*/ __L.at(
+  __c6,
+  7,
+) as any as S.Schema<EmailDomainDomainServiceWithIAM>;
+
 export interface GetEmailDomainAccountRequest {
   /** Name of your domain name */
   domain: string;
   /** Name of account */
   accountName: string;
 }
+const GetEmailDomainAccountRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  0,
+) as any as S.Schema<GetEmailDomainAccountRequest>;
+
 /** Account List */
 export interface EmailDomainAccount {
   /** Name of account */
@@ -576,6 +887,8 @@ export interface EmailDomainAccount {
   /** Size of your account in bytes */
   size?: number;
 }
+const EmailDomainAccount = /*@__PURE__*/ __L.at(__c7, 1) as any as S.Schema<EmailDomainAccount>;
+
 export interface GetEmailDomainAccountDelegationRequest {
   /** Name of your domain name */
   domain: string;
@@ -584,11 +897,18 @@ export interface GetEmailDomainAccountDelegationRequest {
   /** OVH customer unique identifier */
   accountId: string;
 }
+const GetEmailDomainAccountDelegationRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  2,
+) as any as S.Schema<GetEmailDomainAccountDelegationRequest>;
+
 /** Delegation List */
 export interface EmailDomainDelegation {
   /** OVH customer unique identifier */
   accountId?: string;
 }
+const EmailDomainDelegation = EmailDomainAcl as any as S.Schema<EmailDomainDelegation>;
+
 export interface GetEmailDomainAccountFilterRequest {
   /** Name of your domain name */
   domain: string;
@@ -597,6 +917,11 @@ export interface GetEmailDomainAccountFilterRequest {
   /** Filter name */
   name: string;
 }
+const GetEmailDomainAccountFilterRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  3,
+) as any as S.Schema<GetEmailDomainAccountFilterRequest>;
+
 /** Filter List */
 export interface EmailDomainFilter {
   /** Action of filter */
@@ -614,6 +939,8 @@ export interface EmailDomainFilter {
   /** Priority of filter */
   priority?: number;
 }
+const EmailDomainFilter = /*@__PURE__*/ __L.at(__c7, 4) as any as S.Schema<EmailDomainFilter>;
+
 export interface GetEmailDomainAccountFilterRuleRequest {
   /** Name of your domain name */
   domain: string;
@@ -623,6 +950,11 @@ export interface GetEmailDomainAccountFilterRuleRequest {
   name: string;
   id: number;
 }
+const GetEmailDomainAccountFilterRuleRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  5,
+) as any as S.Schema<GetEmailDomainAccountFilterRuleRequest>;
+
 /** Rule List */
 export interface EmailDomainRule {
   /** Header to be filtered */
@@ -633,6 +965,8 @@ export interface EmailDomainRule {
   /** Rule parameter of filter */
   value?: string;
 }
+const EmailDomainRule = /*@__PURE__*/ __L.at(__c7, 6) as any as S.Schema<EmailDomainRule>;
+
 export interface GetEmailDomainAccountMigrateRequest {
   /** Name of your domain name */
   domain: string;
@@ -641,12 +975,19 @@ export interface GetEmailDomainAccountMigrateRequest {
   /** Service name allowed as migration destination */
   destinationServiceName: string;
 }
+const GetEmailDomainAccountMigrateRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  7,
+) as any as S.Schema<GetEmailDomainAccountMigrateRequest>;
+
 /** Types of migration service */
 export type EmailDomainMigrationServiceType =
   | "EMAIL PRO"
   | "HOSTED EXCHANGE"
   | "PRIVATE EXCHANGE"
   | "PROVIDER EXCHANGE";
+const EmailDomainMigrationServiceType = S.String;
+
 /** Migration service */
 export interface EmailDomainMigrationService {
   /** Admin contact of service */
@@ -664,6 +1005,11 @@ export interface EmailDomainMigrationService {
   /** Offer type of service */
   type?: EmailDomainMigrationServiceType;
 }
+const EmailDomainMigrationService = /*@__PURE__*/ __L.at(
+  __c8,
+  0,
+) as any as S.Schema<EmailDomainMigrationService>;
+
 export interface GetEmailDomainAccountMigrateDestinationEmailAddressRequest {
   /** Name of your domain name */
   domain: string;
@@ -674,6 +1020,11 @@ export interface GetEmailDomainAccountMigrateDestinationEmailAddressRequest {
   /** Destination account name */
   destinationEmailAddress: string;
 }
+const GetEmailDomainAccountMigrateDestinationEmailAddressRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  1,
+) as any as S.Schema<GetEmailDomainAccountMigrateDestinationEmailAddressRequest>;
+
 /** Migration account */
 export interface EmailDomainMigrationAccount {
   /** Destination account name */
@@ -681,24 +1032,47 @@ export interface EmailDomainMigrationAccount {
   /** Account maximum size */
   quota?: number;
 }
+const EmailDomainMigrationAccount = /*@__PURE__*/ __L.at(
+  __c8,
+  2,
+) as any as S.Schema<EmailDomainMigrationAccount>;
+
 export interface GetEmailDomainAccountUsageRequest {
   /** Name of your domain name */
   domain: string;
   /** Name of account */
   accountName: string;
 }
+const GetEmailDomainAccountUsageRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  3,
+) as any as S.Schema<GetEmailDomainAccountUsageRequest>;
+
 export interface GetEmailDomainAclRequest {
   /** Name of your domain name */
   domain: string;
   /** OVH customer unique identifier */
   accountId: string;
 }
+const GetEmailDomainAclRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  4,
+) as any as S.Schema<GetEmailDomainAclRequest>;
+
 export interface GetEmailDomainDelegatedAccountRequest {
   /** Email */
   email: string;
 }
+const GetEmailDomainDelegatedAccountRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  5,
+) as any as S.Schema<GetEmailDomainDelegatedAccountRequest>;
+
 /** List of allowed sizes for this account in bytes */
 export type EmailDomainAccountDelegatedAllowedAccountSizeList = Array<number>;
+const EmailDomainAccountDelegatedAllowedAccountSizeList =
+  CreateEmailDomainChangeContactResponseBodyList as any as S.Schema<EmailDomainAccountDelegatedAllowedAccountSizeList>;
+
 /** Account List */
 export interface EmailDomainAccountDelegated {
   /** Name of account */
@@ -716,12 +1090,22 @@ export interface EmailDomainAccountDelegated {
   /** Size of your account in bytes */
   size?: number;
 }
+const EmailDomainAccountDelegated = /*@__PURE__*/ __L.at(
+  __c8,
+  6,
+) as any as S.Schema<EmailDomainAccountDelegated>;
+
 export interface GetEmailDomainDelegatedAccountFilterRequest {
   /** Email */
   email: string;
   /** Filter name */
   name: string;
 }
+const GetEmailDomainDelegatedAccountFilterRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  7,
+) as any as S.Schema<GetEmailDomainDelegatedAccountFilterRequest>;
+
 export interface GetEmailDomainDelegatedAccountFilterRuleRequest {
   /** Email */
   email: string;
@@ -729,10 +1113,20 @@ export interface GetEmailDomainDelegatedAccountFilterRuleRequest {
   name: string;
   id: number;
 }
+const GetEmailDomainDelegatedAccountFilterRuleRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  0,
+) as any as S.Schema<GetEmailDomainDelegatedAccountFilterRuleRequest>;
+
 export interface GetEmailDomainDelegatedAccountResponderRequest {
   /** Email */
   email: string;
 }
+const GetEmailDomainDelegatedAccountResponderRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  1,
+) as any as S.Schema<GetEmailDomainDelegatedAccountResponderRequest>;
+
 /** Responder of account */
 export interface EmailDomainResponderAccount {
   /** Name of account */
@@ -748,19 +1142,39 @@ export interface EmailDomainResponderAccount {
   /** Date of end responder */
   to?: string | null;
 }
+const EmailDomainResponderAccount = /*@__PURE__*/ __L.at(
+  __c9,
+  2,
+) as any as S.Schema<EmailDomainResponderAccount>;
+
 export interface GetEmailDomainDnsMXFilterRequest {
   /** Name of your domain name */
   domain: string;
   /** Sub domain */
   subDomain?: string;
 }
+const GetEmailDomainDnsMXFilterRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  3,
+) as any as S.Schema<GetEmailDomainDnsMXFilterRequest>;
+
 export type GetEmailDomainDnsMXFilterResponse = DomainDomainMXFilterEnum;
+const GetEmailDomainDnsMXFilterResponse = /*@__PURE__*/ __L.at(
+  __c9,
+  4,
+) as any as S.Schema<GetEmailDomainDnsMXFilterResponse>;
+
 export interface GetEmailDomainMailingListRequest {
   /** Name of your domain name */
   domain: string;
   /** Name of mailing list */
   name: string;
 }
+const GetEmailDomainMailingListRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  5,
+) as any as S.Schema<GetEmailDomainMailingListRequest>;
+
 /** Mailing List */
 export interface EmailDomainMailingList {
   /** Id of mailing list */
@@ -780,15 +1194,30 @@ export interface EmailDomainMailingList {
   /** Email to reply of mailing list */
   replyTo?: string;
 }
+const EmailDomainMailingList = /*@__PURE__*/ __L.at(
+  __c9,
+  6,
+) as any as S.Schema<EmailDomainMailingList>;
+
 export interface GetEmailDomainMailingListLimitsRequest {
   /** If true, messages are moderate */
   moderatorMessage: boolean;
 }
+const GetEmailDomainMailingListLimitsRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  7,
+) as any as S.Schema<GetEmailDomainMailingListLimitsRequest>;
+
 /** Structure of mailinglist limits */
 export interface DomainDomainMlLimits {
   /** Maximum number of subscribers */
   subscribers?: number;
 }
+const DomainDomainMlLimits = /*@__PURE__*/ __L.at(
+  __c10,
+  0,
+) as any as S.Schema<DomainDomainMlLimits>;
+
 export interface GetEmailDomainMailingListModeratorRequest {
   /** Name of your domain name */
   domain: string;
@@ -796,12 +1225,22 @@ export interface GetEmailDomainMailingListModeratorRequest {
   name: string;
   email: string;
 }
+const GetEmailDomainMailingListModeratorRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  1,
+) as any as S.Schema<GetEmailDomainMailingListModeratorRequest>;
+
 /** Moderators List */
 export interface EmailDomainModerator {
   domain?: string;
   email?: string;
   mailinglist?: string;
 }
+const EmailDomainModerator = /*@__PURE__*/ __L.at(
+  __c10,
+  2,
+) as any as S.Schema<EmailDomainModerator>;
+
 export interface GetEmailDomainMailingListSubscriberRequest {
   /** Name of your domain name */
   domain: string;
@@ -809,16 +1248,28 @@ export interface GetEmailDomainMailingListSubscriberRequest {
   name: string;
   email: string;
 }
+const GetEmailDomainMailingListSubscriberRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  3,
+) as any as S.Schema<GetEmailDomainMailingListSubscriberRequest>;
+
 /** Subscribers List */
 export interface EmailDomainSubscriber {
   domain?: string;
   email?: string;
   mailinglist?: string;
 }
+const EmailDomainSubscriber = EmailDomainModerator as any as S.Schema<EmailDomainSubscriber>;
+
 export interface GetEmailDomainQuotaRequest {
   /** Name of your domain name */
   domain: string;
 }
+const GetEmailDomainQuotaRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  4,
+) as any as S.Schema<GetEmailDomainQuotaRequest>;
+
 /** Values of quota account (pop, mailing list, redirection, responder and big pop) */
 export interface DomainDomainQuota {
   /** Maximum number of mailboxes */
@@ -832,12 +1283,19 @@ export interface DomainDomainQuota {
   /** Maximum number of responders */
   responder?: number;
 }
+const DomainDomainQuota = /*@__PURE__*/ __L.at(__c10, 5) as any as S.Schema<DomainDomainQuota>;
+
 export interface GetEmailDomainRedirectionRequest {
   /** Name of your domain name */
   domain: string;
   /** Id */
   id: string;
 }
+const GetEmailDomainRedirectionRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  6,
+) as any as S.Schema<GetEmailDomainRedirectionRequest>;
+
 /** Global Redirection */
 export interface EmailDomainRedirectionGlobal {
   /** Name of redirection */
@@ -847,12 +1305,22 @@ export interface EmailDomainRedirectionGlobal {
   /** Target of redirection */
   to?: string;
 }
+const EmailDomainRedirectionGlobal = /*@__PURE__*/ __L.at(
+  __c10,
+  7,
+) as any as S.Schema<EmailDomainRedirectionGlobal>;
+
 export interface GetEmailDomainResponderRequest {
   /** Name of your domain name */
   domain: string;
   /** Name of account */
   account: string;
 }
+const GetEmailDomainResponderRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  0,
+) as any as S.Schema<GetEmailDomainResponderRequest>;
+
 /** Responder */
 export interface EmailDomainResponder {
   /** Name of account */
@@ -868,12 +1336,25 @@ export interface EmailDomainResponder {
   /** Date of end responder */
   to?: string | null;
 }
+const EmailDomainResponder = /*@__PURE__*/ __L.at(
+  __c11,
+  1,
+) as any as S.Schema<EmailDomainResponder>;
+
 export interface GetEmailDomainServiceInfosRequest {
   /** Name of your domain name */
   domain: string;
 }
+const GetEmailDomainServiceInfosRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  2,
+) as any as S.Schema<GetEmailDomainServiceInfosRequest>;
+
 /** All the possible renew period of your service in month */
 export type ServicesServicePossibleRenewPeriodList = Array<number>;
+const ServicesServicePossibleRenewPeriodList =
+  CreateEmailDomainChangeContactResponseBodyList as any as S.Schema<ServicesServicePossibleRenewPeriodList>;
+
 /** Map a possible renew for a specific service */
 export interface ServiceRenewType {
   /** The service is automatically renewed */
@@ -887,6 +1368,8 @@ export interface ServiceRenewType {
   /** period of renew in month */
   period?: number | null;
 }
+const ServiceRenewType = /*@__PURE__*/ __L.at(__c11, 3) as any as S.Schema<ServiceRenewType>;
+
 /** Detailed renewal type of a service */
 export type ServiceRenewalTypeEnum =
   | "automaticForcedProduct"
@@ -897,6 +1380,8 @@ export type ServiceRenewalTypeEnum =
   | "manual"
   | "oneShot"
   | "option";
+const ServiceRenewalTypeEnum = S.String;
+
 export type ServiceStateEnum =
   | "autorenewInProgress"
   | "expired"
@@ -904,6 +1389,8 @@ export type ServiceStateEnum =
   | "ok"
   | "pendingDebt"
   | "unPaid";
+const ServiceStateEnum = S.String;
+
 /** Details about a Service */
 export interface ServicesService {
   /** Indicates that the service can be set up to be deleted at expiration */
@@ -923,10 +1410,17 @@ export interface ServicesService {
   serviceId?: number;
   status?: ServiceStateEnum;
 }
+const ServicesService = /*@__PURE__*/ __L.at(__c11, 4) as any as S.Schema<ServicesService>;
+
 export interface GetEmailDomainSummaryRequest {
   /** Name of your domain name */
   domain: string;
 }
+const GetEmailDomainSummaryRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  5,
+) as any as S.Schema<GetEmailDomainSummaryRequest>;
+
 /** Values of number account (account, mailing list, redirection and responder) */
 export interface DomainDomainSummary {
   /** Number of mailboxes */
@@ -938,18 +1432,30 @@ export interface DomainDomainSummary {
   /** Number of responders */
   responder?: number;
 }
+const DomainDomainSummary = /*@__PURE__*/ __L.at(__c11, 6) as any as S.Schema<DomainDomainSummary>;
+
 export interface GetEmailDomainTaskAccountRequest {
   /** Name of your domain name */
   domain: string;
   /** Id of task */
   id: number;
 }
+const GetEmailDomainTaskAccountRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  7,
+) as any as S.Schema<GetEmailDomainTaskAccountRequest>;
+
 export interface GetEmailDomainTaskAllRequest {
   /** Name of your domain name */
   domain: string;
   /** Id of the task */
   id: number;
 }
+const GetEmailDomainTaskAllRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  0,
+) as any as S.Schema<GetEmailDomainTaskAllRequest>;
+
 /** Possible values for domain task status */
 export type EmailDomainTaskStatusEnum =
   | "cancelled"
@@ -959,6 +1465,8 @@ export type EmailDomainTaskStatusEnum =
   | "init"
   | "ovhError"
   | "todo";
+const EmailDomainTaskStatusEnum = S.String;
+
 /** Tasks */
 export interface EmailDomainTask {
   /** Domain name of the task */
@@ -970,41 +1478,91 @@ export interface EmailDomainTask {
   /** Status of the task */
   status?: EmailDomainTaskStatusEnum;
 }
+const EmailDomainTask = /*@__PURE__*/ __L.at(__c12, 1) as any as S.Schema<EmailDomainTask>;
+
 export interface GetEmailDomainTaskFilterRequest {
   /** Name of your domain name */
   domain: string;
   /** Id of task */
   id: number;
 }
+const GetEmailDomainTaskFilterRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  2,
+) as any as S.Schema<GetEmailDomainTaskFilterRequest>;
+
 export interface GetEmailDomainTaskMailinglistRequest {
   /** Name of your domain name */
   domain: string;
   id: number;
 }
+const GetEmailDomainTaskMailinglistRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  3,
+) as any as S.Schema<GetEmailDomainTaskMailinglistRequest>;
+
 export interface GetEmailDomainTaskRedirectionRequest {
   /** Name of your domain name */
   domain: string;
   /** Id */
   id: string;
 }
+const GetEmailDomainTaskRedirectionRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  4,
+) as any as S.Schema<GetEmailDomainTaskRedirectionRequest>;
+
 export interface GetEmailDomainTaskResponderRequest {
   /** Name of your domain name */
   domain: string;
   /** Id of task */
   id: number;
 }
+const GetEmailDomainTaskResponderRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  5,
+) as any as S.Schema<GetEmailDomainTaskResponderRequest>;
+
 /** Resource tag filter */
 export interface IamResourceTagFilterInput {}
+const IamResourceTagFilterInput =
+  DeleteEmailDomainAclResponse as any as S.Schema<IamResourceTagFilterInput>;
+
 export type ListEmailDomainRequestIamTagsValueList = Array<IamResourceTagFilterInput>;
+const ListEmailDomainRequestIamTagsValueList = /*@__PURE__*/ __L.at(
+  __c12,
+  6,
+) as any as S.Schema<ListEmailDomainRequestIamTagsValueList>;
+
 export type ListEmailDomainRequestIamTagsMap = {
   [key: string]: ListEmailDomainRequestIamTagsValueList | undefined;
 };
+const ListEmailDomainRequestIamTagsMap = /*@__PURE__*/ __L.at(
+  __c12,
+  7,
+) as any as S.Schema<ListEmailDomainRequestIamTagsMap>;
+
 export interface ListEmailDomainRequest {
   /** Filter resources on IAM tags */
   iamTags?: ListEmailDomainRequestIamTagsMap;
 }
+const ListEmailDomainRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  0,
+) as any as S.Schema<ListEmailDomainRequest>;
+
 export type ListEmailDomainResponseBodyList = Array<string>;
+const ListEmailDomainResponseBodyList = /*@__PURE__*/ __L.at(
+  __c13,
+  1,
+) as any as S.Schema<ListEmailDomainResponseBodyList>;
+
 export type ListEmailDomainResponse = ListEmailDomainResponseBodyList;
+const ListEmailDomainResponse = /*@__PURE__*/ __L.at(
+  __c13,
+  2,
+) as any as S.Schema<ListEmailDomainResponse>;
+
 export interface ListEmailDomainAccountRequest {
   /** Name of your domain name */
   domain: string;
@@ -1013,25 +1571,54 @@ export interface ListEmailDomainAccountRequest {
   /** Account description */
   description?: string;
 }
+const ListEmailDomainAccountRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  3,
+) as any as S.Schema<ListEmailDomainAccountRequest>;
+
 export type ListEmailDomainAccountResponseBodyList = Array<string>;
+const ListEmailDomainAccountResponseBodyList =
+  ListEmailDomainResponseBodyList as any as S.Schema<ListEmailDomainAccountResponseBodyList>;
+
 export type ListEmailDomainAccountResponse = ListEmailDomainAccountResponseBodyList;
+const ListEmailDomainAccountResponse = /*@__PURE__*/ __L.at(
+  __c13,
+  4,
+) as any as S.Schema<ListEmailDomainAccountResponse>;
+
 export interface ListEmailDomainAccountDelegationRequest {
   /** Name of your domain name */
   domain: string;
   /** Name of account */
   accountName: string;
 }
+const ListEmailDomainAccountDelegationRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  5,
+) as any as S.Schema<ListEmailDomainAccountDelegationRequest>;
+
 export type ListEmailDomainAccountDelegationResponseBodyList = Array<string>;
 export type ListEmailDomainAccountDelegationResponse =
   ListEmailDomainAccountDelegationResponseBodyList;
+const ListEmailDomainAccountDelegationResponse =
+  ListEmailDomainAccountResponse as any as S.Schema<ListEmailDomainAccountDelegationResponse>;
+
 export interface ListEmailDomainAccountFilterRequest {
   /** Name of your domain name */
   domain: string;
   /** Name of account */
   accountName: string;
 }
+const ListEmailDomainAccountFilterRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  6,
+) as any as S.Schema<ListEmailDomainAccountFilterRequest>;
+
 export type ListEmailDomainAccountFilterResponseBodyList = Array<string>;
 export type ListEmailDomainAccountFilterResponse = ListEmailDomainAccountFilterResponseBodyList;
+const ListEmailDomainAccountFilterResponse =
+  ListEmailDomainAccountResponse as any as S.Schema<ListEmailDomainAccountFilterResponse>;
+
 export interface ListEmailDomainAccountFilterRuleRequest {
   /** Name of your domain name */
   domain: string;
@@ -1040,9 +1627,17 @@ export interface ListEmailDomainAccountFilterRuleRequest {
   /** Filter name */
   name: string;
 }
+const ListEmailDomainAccountFilterRuleRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  7,
+) as any as S.Schema<ListEmailDomainAccountFilterRuleRequest>;
+
 export type ListEmailDomainAccountFilterRuleResponseBodyList = Array<number>;
 export type ListEmailDomainAccountFilterRuleResponse =
   ListEmailDomainAccountFilterRuleResponseBodyList;
+const ListEmailDomainAccountFilterRuleResponse =
+  CreateEmailDomainChangeContactResponse as any as S.Schema<ListEmailDomainAccountFilterRuleResponse>;
+
 export interface ListEmailDomainAccountMigrateRequest {
   /** Name of your domain name */
   domain: string;
@@ -1051,8 +1646,16 @@ export interface ListEmailDomainAccountMigrateRequest {
   /** Type of migration service */
   type?: EmailDomainMigrationServiceType | (string & {});
 }
+const ListEmailDomainAccountMigrateRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  0,
+) as any as S.Schema<ListEmailDomainAccountMigrateRequest>;
+
 export type ListEmailDomainAccountMigrateResponseBodyList = Array<string>;
 export type ListEmailDomainAccountMigrateResponse = ListEmailDomainAccountMigrateResponseBodyList;
+const ListEmailDomainAccountMigrateResponse =
+  ListEmailDomainAccountResponse as any as S.Schema<ListEmailDomainAccountMigrateResponse>;
+
 export interface ListEmailDomainAccountMigrateDestinationEmailAddressRequest {
   /** Name of your domain name */
   domain: string;
@@ -1063,9 +1666,24 @@ export interface ListEmailDomainAccountMigrateDestinationEmailAddressRequest {
   /** Account maximum size */
   quota?: number;
 }
+const ListEmailDomainAccountMigrateDestinationEmailAddressRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  1,
+) as any as S.Schema<ListEmailDomainAccountMigrateDestinationEmailAddressRequest>;
+
 export type ListEmailDomainAccountMigrateDestinationEmailAddressResponseBodyList = Array<string>;
+const ListEmailDomainAccountMigrateDestinationEmailAddressResponseBodyList = /*@__PURE__*/ __L.at(
+  __c14,
+  2,
+) as any as S.Schema<ListEmailDomainAccountMigrateDestinationEmailAddressResponseBodyList>;
+
 export type ListEmailDomainAccountMigrateDestinationEmailAddressResponse =
   ListEmailDomainAccountMigrateDestinationEmailAddressResponseBodyList;
+const ListEmailDomainAccountMigrateDestinationEmailAddressResponse = /*@__PURE__*/ __L.at(
+  __c14,
+  3,
+) as any as S.Schema<ListEmailDomainAccountMigrateDestinationEmailAddressResponse>;
+
 export interface ListEmailDomainAccountMigrateDestinationEmailAddressCheckMigrateRequest {
   /** Name of your domain name */
   domain: string;
@@ -1076,8 +1694,17 @@ export interface ListEmailDomainAccountMigrateDestinationEmailAddressCheckMigrat
   /** Destination account name */
   destinationEmailAddress: string;
 }
+const ListEmailDomainAccountMigrateDestinationEmailAddressCheckMigrateRequest =
+  /*@__PURE__*/ __L.at(
+    __c14,
+    4,
+  ) as any as S.Schema<ListEmailDomainAccountMigrateDestinationEmailAddressCheckMigrateRequest>;
+
 /** List of aliases */
 export type EmailDomainMigrationCheckStructAliasList = Array<string>;
+const EmailDomainMigrationCheckStructAliasList =
+  ListEmailDomainResponseBodyList as any as S.Schema<EmailDomainMigrationCheckStructAliasList>;
+
 /** Result code of check migration */
 export type EmailDomainMigrationCheckCodeEnum =
   | "ACCOUNT_EMPTY"
@@ -1097,6 +1724,8 @@ export type EmailDomainMigrationCheckCodeEnum =
   | "RESPONDER_EXIST"
   | "RESPONDER_INPROGRESS"
   | "UNKNOW";
+const EmailDomainMigrationCheckCodeEnum = S.String;
+
 /** Check Migration result */
 export interface EmailDomainMigrationCheckResultStruct {
   /** Result code of check migration */
@@ -1104,15 +1733,34 @@ export interface EmailDomainMigrationCheckResultStruct {
   /** Details of result code */
   details?: string | null;
 }
+const EmailDomainMigrationCheckResultStruct = /*@__PURE__*/ __L.at(
+  __c14,
+  5,
+) as any as S.Schema<EmailDomainMigrationCheckResultStruct>;
+
 /** List of errors */
 export type EmailDomainMigrationCheckStructErrorList = Array<EmailDomainMigrationCheckResultStruct>;
+const EmailDomainMigrationCheckStructErrorList = /*@__PURE__*/ __L.at(
+  __c14,
+  6,
+) as any as S.Schema<EmailDomainMigrationCheckStructErrorList>;
+
 /** List of filters */
 export type EmailDomainMigrationCheckStructFilterList = Array<string>;
+const EmailDomainMigrationCheckStructFilterList =
+  ListEmailDomainResponseBodyList as any as S.Schema<EmailDomainMigrationCheckStructFilterList>;
+
 /** List of forwards */
 export type EmailDomainMigrationCheckStructForwardList = Array<string>;
+const EmailDomainMigrationCheckStructForwardList =
+  ListEmailDomainResponseBodyList as any as S.Schema<EmailDomainMigrationCheckStructForwardList>;
+
 /** List of warnings */
 export type EmailDomainMigrationCheckStructWarningList =
   Array<EmailDomainMigrationCheckResultStruct>;
+const EmailDomainMigrationCheckStructWarningList =
+  EmailDomainMigrationCheckStructErrorList as any as S.Schema<EmailDomainMigrationCheckStructWarningList>;
+
 /** Check Migration result */
 export interface EmailDomainMigrationCheckStruct {
   /** List of aliases */
@@ -1126,43 +1774,87 @@ export interface EmailDomainMigrationCheckStruct {
   /** List of warnings */
   warning?: EmailDomainMigrationCheckStructWarningList | null;
 }
+const EmailDomainMigrationCheckStruct = /*@__PURE__*/ __L.at(
+  __c14,
+  7,
+) as any as S.Schema<EmailDomainMigrationCheckStruct>;
+
 export interface ListEmailDomainAclRequest {
   /** Name of your domain name */
   domain: string;
 }
+const ListEmailDomainAclRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  0,
+) as any as S.Schema<ListEmailDomainAclRequest>;
+
 export type ListEmailDomainAclResponseBodyList = Array<string>;
 export type ListEmailDomainAclResponse = ListEmailDomainAclResponseBodyList;
+const ListEmailDomainAclResponse =
+  ListEmailDomainAccountResponse as any as S.Schema<ListEmailDomainAclResponse>;
+
 export interface ListEmailDomainDelegatedAccountRequest {
   /** Name of email address */
   accountName?: string;
   /** Domain of email address */
   domain?: string;
 }
+const ListEmailDomainDelegatedAccountRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  1,
+) as any as S.Schema<ListEmailDomainDelegatedAccountRequest>;
+
 export type ListEmailDomainDelegatedAccountResponseBodyList = Array<string>;
 export type ListEmailDomainDelegatedAccountResponse =
   ListEmailDomainDelegatedAccountResponseBodyList;
+const ListEmailDomainDelegatedAccountResponse =
+  ListEmailDomainAccountResponse as any as S.Schema<ListEmailDomainDelegatedAccountResponse>;
+
 export interface ListEmailDomainDelegatedAccountFilterRequest {
   /** Email */
   email: string;
 }
+const ListEmailDomainDelegatedAccountFilterRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  2,
+) as any as S.Schema<ListEmailDomainDelegatedAccountFilterRequest>;
+
 export type ListEmailDomainDelegatedAccountFilterResponseBodyList = Array<string>;
 export type ListEmailDomainDelegatedAccountFilterResponse =
   ListEmailDomainDelegatedAccountFilterResponseBodyList;
+const ListEmailDomainDelegatedAccountFilterResponse =
+  ListEmailDomainAccountResponse as any as S.Schema<ListEmailDomainDelegatedAccountFilterResponse>;
+
 export interface ListEmailDomainDelegatedAccountFilterRuleRequest {
   /** Email */
   email: string;
   /** Filter name */
   name: string;
 }
+const ListEmailDomainDelegatedAccountFilterRuleRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  3,
+) as any as S.Schema<ListEmailDomainDelegatedAccountFilterRuleRequest>;
+
 export type ListEmailDomainDelegatedAccountFilterRuleResponseBodyList = Array<number>;
 export type ListEmailDomainDelegatedAccountFilterRuleResponse =
   ListEmailDomainDelegatedAccountFilterRuleResponseBodyList;
+const ListEmailDomainDelegatedAccountFilterRuleResponse =
+  CreateEmailDomainChangeContactResponse as any as S.Schema<ListEmailDomainDelegatedAccountFilterRuleResponse>;
+
 export interface ListEmailDomainDkimRequest {
   /** Name of your domain name */
   domain: string;
 }
+const ListEmailDomainDkimRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  4,
+) as any as S.Schema<ListEmailDomainDkimRequest>;
+
 /** Status of DKIM selector */
 export type EmailDomainDKIMSelectorStatusEnum = "set" | "toFix" | "toSet";
+const EmailDomainDKIMSelectorStatusEnum = S.String;
+
 /** DKIM selector data for a domain */
 export interface EmailDomainDKIMSelector {
   /** CNAME record */
@@ -1172,8 +1864,18 @@ export interface EmailDomainDKIMSelector {
   /** Status of selector */
   status?: EmailDomainDKIMSelectorStatusEnum;
 }
+const EmailDomainDKIMSelector = /*@__PURE__*/ __L.at(
+  __c15,
+  5,
+) as any as S.Schema<EmailDomainDKIMSelector>;
+
 /** DKIM status */
 export type EmailDomainDkimSimplifiedSelectorsList = Array<EmailDomainDKIMSelector>;
+const EmailDomainDkimSimplifiedSelectorsList = /*@__PURE__*/ __L.at(
+  __c15,
+  6,
+) as any as S.Schema<EmailDomainDkimSimplifiedSelectorsList>;
+
 /** Status of DKIM deployment */
 export type EmailDomainDKIMStatusEnum =
   | "disabled"
@@ -1181,6 +1883,8 @@ export type EmailDomainDKIMStatusEnum =
   | "error"
   | "modifying"
   | "toConfigure";
+const EmailDomainDKIMStatusEnum = S.String;
+
 /** DKIM for a domain */
 export interface EmailDomainDkimSimplified {
   /** activeSelector */
@@ -1192,22 +1896,43 @@ export interface EmailDomainDkimSimplified {
   /** DKIM status */
   status?: EmailDomainDKIMStatusEnum;
 }
+const EmailDomainDkimSimplified = /*@__PURE__*/ __L.at(
+  __c15,
+  7,
+) as any as S.Schema<EmailDomainDkimSimplified>;
+
 export interface ListEmailDomainDnsMXRecordsRequest {
   /** Name of your domain name */
   domain: string;
   /** Sub domain */
   subDomain?: string;
 }
+const ListEmailDomainDnsMXRecordsRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  0,
+) as any as S.Schema<ListEmailDomainDnsMXRecordsRequest>;
+
 export type ListEmailDomainDnsMXRecordsResponseBodyList = Array<string>;
 export type ListEmailDomainDnsMXRecordsResponse = ListEmailDomainDnsMXRecordsResponseBodyList;
+const ListEmailDomainDnsMXRecordsResponse =
+  ListEmailDomainAccountResponse as any as S.Schema<ListEmailDomainDnsMXRecordsResponse>;
+
 export interface ListEmailDomainMailingListRequest {
   /** Name of your domain name */
   domain: string;
   /** Mailing list name */
   name?: string;
 }
+const ListEmailDomainMailingListRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  1,
+) as any as S.Schema<ListEmailDomainMailingListRequest>;
+
 export type ListEmailDomainMailingListResponseBodyList = Array<string>;
 export type ListEmailDomainMailingListResponse = ListEmailDomainMailingListResponseBodyList;
+const ListEmailDomainMailingListResponse =
+  ListEmailDomainAccountResponse as any as S.Schema<ListEmailDomainMailingListResponse>;
+
 export interface ListEmailDomainMailingListModeratorRequest {
   /** Name of your domain name */
   domain: string;
@@ -1216,9 +1941,17 @@ export interface ListEmailDomainMailingListModeratorRequest {
   /** Moderator email */
   email?: string;
 }
+const ListEmailDomainMailingListModeratorRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  2,
+) as any as S.Schema<ListEmailDomainMailingListModeratorRequest>;
+
 export type ListEmailDomainMailingListModeratorResponseBodyList = Array<string>;
 export type ListEmailDomainMailingListModeratorResponse =
   ListEmailDomainMailingListModeratorResponseBodyList;
+const ListEmailDomainMailingListModeratorResponse =
+  ListEmailDomainAccountResponse as any as S.Schema<ListEmailDomainMailingListModeratorResponse>;
+
 export interface ListEmailDomainMailingListSubscriberRequest {
   /** Name of your domain name */
   domain: string;
@@ -1227,13 +1960,26 @@ export interface ListEmailDomainMailingListSubscriberRequest {
   /** Subscriber email */
   email?: string;
 }
+const ListEmailDomainMailingListSubscriberRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  3,
+) as any as S.Schema<ListEmailDomainMailingListSubscriberRequest>;
+
 export type ListEmailDomainMailingListSubscriberResponseBodyList = Array<string>;
 export type ListEmailDomainMailingListSubscriberResponse =
   ListEmailDomainMailingListSubscriberResponseBodyList;
+const ListEmailDomainMailingListSubscriberResponse =
+  ListEmailDomainAccountResponse as any as S.Schema<ListEmailDomainMailingListSubscriberResponse>;
+
 export interface ListEmailDomainRecommendedDNSRecordsRequest {
   /** Name of your domain name */
   domain: string;
 }
+const ListEmailDomainRecommendedDNSRecordsRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  4,
+) as any as S.Schema<ListEmailDomainRecommendedDNSRecordsRequest>;
+
 /** Types of DNS record for fieldType */
 export type EmailDomainDnsRecordTypeEnum =
   | "A"
@@ -1253,6 +1999,8 @@ export type EmailDomainDnsRecordTypeEnum =
   | "SSHFP"
   | "TLSA"
   | "TXT";
+const EmailDomainDnsRecordTypeEnum = S.String;
+
 /** DNS record for email services */
 export interface EmailDomainRecord {
   /** Type of DNS record */
@@ -1268,9 +2016,21 @@ export interface EmailDomainRecord {
   /** Name of DNS zone */
   zone?: string;
 }
+const EmailDomainRecord = /*@__PURE__*/ __L.at(__c16, 5) as any as S.Schema<EmailDomainRecord>;
+
 export type ListEmailDomainRecommendedDNSRecordsResponseBodyList = Array<EmailDomainRecord>;
+const ListEmailDomainRecommendedDNSRecordsResponseBodyList = /*@__PURE__*/ __L.at(
+  __c16,
+  6,
+) as any as S.Schema<ListEmailDomainRecommendedDNSRecordsResponseBodyList>;
+
 export type ListEmailDomainRecommendedDNSRecordsResponse =
   ListEmailDomainRecommendedDNSRecordsResponseBodyList;
+const ListEmailDomainRecommendedDNSRecordsResponse = /*@__PURE__*/ __L.at(
+  __c16,
+  7,
+) as any as S.Schema<ListEmailDomainRecommendedDNSRecordsResponse>;
+
 export interface ListEmailDomainRedirectionRequest {
   /** Name of your domain name */
   domain: string;
@@ -1279,62 +2039,126 @@ export interface ListEmailDomainRedirectionRequest {
   /** Email of redirection target */
   to?: string;
 }
+const ListEmailDomainRedirectionRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  0,
+) as any as S.Schema<ListEmailDomainRedirectionRequest>;
+
 export type ListEmailDomainRedirectionResponseBodyList = Array<string>;
 export type ListEmailDomainRedirectionResponse = ListEmailDomainRedirectionResponseBodyList;
+const ListEmailDomainRedirectionResponse =
+  ListEmailDomainAccountResponse as any as S.Schema<ListEmailDomainRedirectionResponse>;
+
 export interface ListEmailDomainResponderRequest {
   /** Name of your domain name */
   domain: string;
   /** Responder name */
   account?: string;
 }
+const ListEmailDomainResponderRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  1,
+) as any as S.Schema<ListEmailDomainResponderRequest>;
+
 export type ListEmailDomainResponderResponseBodyList = Array<string>;
 export type ListEmailDomainResponderResponse = ListEmailDomainResponderResponseBodyList;
+const ListEmailDomainResponderResponse =
+  ListEmailDomainAccountResponse as any as S.Schema<ListEmailDomainResponderResponse>;
+
 export interface ListEmailDomainTaskAccountRequest {
   /** Name of your domain name */
   domain: string;
   /** Account name */
   name?: string;
 }
+const ListEmailDomainTaskAccountRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  2,
+) as any as S.Schema<ListEmailDomainTaskAccountRequest>;
+
 export type ListEmailDomainTaskAccountResponseBodyList = Array<number>;
 export type ListEmailDomainTaskAccountResponse = ListEmailDomainTaskAccountResponseBodyList;
+const ListEmailDomainTaskAccountResponse =
+  CreateEmailDomainChangeContactResponse as any as S.Schema<ListEmailDomainTaskAccountResponse>;
+
 export interface ListEmailDomainTaskAllRequest {
   /** Name of your domain name */
   domain: string;
 }
+const ListEmailDomainTaskAllRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  3,
+) as any as S.Schema<ListEmailDomainTaskAllRequest>;
+
 export type ListEmailDomainTaskAllResponseBodyList = Array<number>;
 export type ListEmailDomainTaskAllResponse = ListEmailDomainTaskAllResponseBodyList;
+const ListEmailDomainTaskAllResponse =
+  CreateEmailDomainChangeContactResponse as any as S.Schema<ListEmailDomainTaskAllResponse>;
+
 export interface ListEmailDomainTaskFilterRequest {
   /** Name of your domain name */
   domain: string;
   /** Account name */
   account?: string;
 }
+const ListEmailDomainTaskFilterRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  4,
+) as any as S.Schema<ListEmailDomainTaskFilterRequest>;
+
 export type ListEmailDomainTaskFilterResponseBodyList = Array<number>;
 export type ListEmailDomainTaskFilterResponse = ListEmailDomainTaskFilterResponseBodyList;
+const ListEmailDomainTaskFilterResponse =
+  CreateEmailDomainChangeContactResponse as any as S.Schema<ListEmailDomainTaskFilterResponse>;
+
 export interface ListEmailDomainTaskMailinglistRequest {
   /** Name of your domain name */
   domain: string;
   /** Account name */
   account?: string;
 }
+const ListEmailDomainTaskMailinglistRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  5,
+) as any as S.Schema<ListEmailDomainTaskMailinglistRequest>;
+
 export type ListEmailDomainTaskMailinglistResponseBodyList = Array<number>;
 export type ListEmailDomainTaskMailinglistResponse = ListEmailDomainTaskMailinglistResponseBodyList;
+const ListEmailDomainTaskMailinglistResponse =
+  CreateEmailDomainChangeContactResponse as any as S.Schema<ListEmailDomainTaskMailinglistResponse>;
+
 export interface ListEmailDomainTaskRedirectionRequest {
   /** Name of your domain name */
   domain: string;
   /** Account name */
   account?: string;
 }
+const ListEmailDomainTaskRedirectionRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  6,
+) as any as S.Schema<ListEmailDomainTaskRedirectionRequest>;
+
 export type ListEmailDomainTaskRedirectionResponseBodyList = Array<string>;
 export type ListEmailDomainTaskRedirectionResponse = ListEmailDomainTaskRedirectionResponseBodyList;
+const ListEmailDomainTaskRedirectionResponse =
+  ListEmailDomainAccountResponse as any as S.Schema<ListEmailDomainTaskRedirectionResponse>;
+
 export interface ListEmailDomainTaskResponderRequest {
   /** Name of your domain name */
   domain: string;
   /** Name of responder */
   account?: string;
 }
+const ListEmailDomainTaskResponderRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  7,
+) as any as S.Schema<ListEmailDomainTaskResponderRequest>;
+
 export type ListEmailDomainTaskResponderResponseBodyList = Array<number>;
 export type ListEmailDomainTaskResponderResponse = ListEmailDomainTaskResponderResponseBodyList;
+const ListEmailDomainTaskResponderResponse =
+  CreateEmailDomainChangeContactResponse as any as S.Schema<ListEmailDomainTaskResponderResponse>;
+
 export interface MigrateEmailDomainAccountMigrateDestinationEmailAddressRequest {
   /** Name of your domain name */
   domain: string;
@@ -1347,11 +2171,24 @@ export interface MigrateEmailDomainAccountMigrateDestinationEmailAddressRequest 
   /** New password used for migration */
   password: string | Redacted.Redacted<string>;
 }
+const MigrateEmailDomainAccountMigrateDestinationEmailAddressRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  0,
+) as any as S.Schema<MigrateEmailDomainAccountMigrateDestinationEmailAddressRequest>;
+
 export interface MigrateEmailDomainDelegationV3toV6Request {
   /** Name of your domain name */
   domain: string;
 }
+const MigrateEmailDomainDelegationV3toV6Request = /*@__PURE__*/ __L.at(
+  __c18,
+  1,
+) as any as S.Schema<MigrateEmailDomainDelegationV3toV6Request>;
+
 export interface MigrateEmailDomainDelegationV3toV6Response {}
+const MigrateEmailDomainDelegationV3toV6Response =
+  CreateEmailDomainChangeDnsMXFilterResponse as any as S.Schema<MigrateEmailDomainDelegationV3toV6Response>;
+
 export interface PutEmailDomainAccountRequest {
   /** Name of your domain name */
   domain: string;
@@ -1362,7 +2199,15 @@ export interface PutEmailDomainAccountRequest {
   /** Size of your account in bytes */
   size?: number;
 }
+const PutEmailDomainAccountRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  2,
+) as any as S.Schema<PutEmailDomainAccountRequest>;
+
 export interface PutEmailDomainAccountResponse {}
+const PutEmailDomainAccountResponse =
+  DeleteEmailDomainAclResponse as any as S.Schema<PutEmailDomainAccountResponse>;
+
 export interface PutEmailDomainDelegatedAccountRequest {
   /** Email */
   email: string;
@@ -1371,7 +2216,15 @@ export interface PutEmailDomainDelegatedAccountRequest {
   /** Size of your account in bytes */
   size?: number;
 }
+const PutEmailDomainDelegatedAccountRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  3,
+) as any as S.Schema<PutEmailDomainDelegatedAccountRequest>;
+
 export interface PutEmailDomainDelegatedAccountResponse {}
+const PutEmailDomainDelegatedAccountResponse =
+  CreateEmailDomainChangeDnsMXFilterResponse as any as S.Schema<PutEmailDomainDelegatedAccountResponse>;
+
 export interface PutEmailDomainDelegatedAccountResponderRequest {
   /** Email */
   email: string;
@@ -1382,15 +2235,33 @@ export interface PutEmailDomainDelegatedAccountResponderRequest {
   /** Date of end responder */
   to?: string | null;
 }
+const PutEmailDomainDelegatedAccountResponderRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  4,
+) as any as S.Schema<PutEmailDomainDelegatedAccountResponderRequest>;
+
 export interface PutEmailDomainDelegatedAccountResponderResponse {}
+const PutEmailDomainDelegatedAccountResponderResponse =
+  CreateEmailDomainChangeDnsMXFilterResponse as any as S.Schema<PutEmailDomainDelegatedAccountResponderResponse>;
+
 export interface PutEmailDomainDkimDisableRequest {
   /** Name of your domain name */
   domain: string;
 }
+const PutEmailDomainDkimDisableRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  5,
+) as any as S.Schema<PutEmailDomainDkimDisableRequest>;
+
 export interface PutEmailDomainDkimEnableRequest {
   /** Name of your domain name */
   domain: string;
 }
+const PutEmailDomainDkimEnableRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  6,
+) as any as S.Schema<PutEmailDomainDkimEnableRequest>;
+
 export interface PutEmailDomainMailingListRequest {
   /** Name of your domain name */
   domain: string;
@@ -1403,7 +2274,15 @@ export interface PutEmailDomainMailingListRequest {
   /** Email to reply of mailing list */
   replyTo?: string;
 }
+const PutEmailDomainMailingListRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  7,
+) as any as S.Schema<PutEmailDomainMailingListRequest>;
+
 export interface PutEmailDomainMailingListResponse {}
+const PutEmailDomainMailingListResponse =
+  CreateEmailDomainChangeDnsMXFilterResponse as any as S.Schema<PutEmailDomainMailingListResponse>;
+
 export interface PutEmailDomainResponderRequest {
   /** Name of your domain name */
   domain: string;
@@ -1416,14 +2295,32 @@ export interface PutEmailDomainResponderRequest {
   /** Date of end responder */
   to?: string | null;
 }
+const PutEmailDomainResponderRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  0,
+) as any as S.Schema<PutEmailDomainResponderRequest>;
+
 export interface PutEmailDomainResponderResponse {}
+const PutEmailDomainResponderResponse = /*@__PURE__*/ __L.at(
+  __c19,
+  1,
+) as any as S.Schema<PutEmailDomainResponderResponse>;
+
 export interface PutEmailDomainServiceInfosRequest {
   /** Name of your domain name */
   domain: string;
   /** Way of handling the renew */
   renew?: ServiceRenewType | null;
 }
+const PutEmailDomainServiceInfosRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  2,
+) as any as S.Schema<PutEmailDomainServiceInfosRequest>;
+
 export interface PutEmailDomainServiceInfosResponse {}
+const PutEmailDomainServiceInfosResponse =
+  CreateEmailDomainChangeDnsMXFilterResponse as any as S.Schema<PutEmailDomainServiceInfosResponse>;
+
 export interface SendEmailDomainMailingListListByEmailRequest {
   /** Name of your domain name */
   domain: string;
@@ -1432,23 +2329,52 @@ export interface SendEmailDomainMailingListListByEmailRequest {
   /** Email destination */
   email: string;
 }
+const SendEmailDomainMailingListListByEmailRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  3,
+) as any as S.Schema<SendEmailDomainMailingListListByEmailRequest>;
+
 export interface TerminateEmailDomainRequest {
   /** Name of your domain name */
   domain: string;
 }
+const TerminateEmailDomainRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  4,
+) as any as S.Schema<TerminateEmailDomainRequest>;
+
 export type TerminateEmailDomainResponse = string;
+const TerminateEmailDomainResponse =
+  ConfirmEmailDomainTerminationResponse as any as S.Schema<TerminateEmailDomainResponse>;
+
 export interface UpdateEmailDomainAccountUsageRequest {
   /** Name of your domain name */
   domain: string;
   /** Name of account */
   accountName: string;
 }
+const UpdateEmailDomainAccountUsageRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  5,
+) as any as S.Schema<UpdateEmailDomainAccountUsageRequest>;
+
 export interface UpdateEmailDomainAccountUsageResponse {}
+const UpdateEmailDomainAccountUsageResponse =
+  CreateEmailDomainChangeDnsMXFilterResponse as any as S.Schema<UpdateEmailDomainAccountUsageResponse>;
+
 export interface UpdateEmailDomainDelegatedAccountUsageRequest {
   /** Email */
   email: string;
 }
+const UpdateEmailDomainDelegatedAccountUsageRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  6,
+) as any as S.Schema<UpdateEmailDomainDelegatedAccountUsageRequest>;
+
 export interface UpdateEmailDomainDelegatedAccountUsageResponse {}
+const UpdateEmailDomainDelegatedAccountUsageResponse =
+  CreateEmailDomainChangeDnsMXFilterResponse as any as S.Schema<UpdateEmailDomainDelegatedAccountUsageResponse>;
+
 export type ConfirmEmailDomainTerminationError = OvhOpError;
 /** Confirm termination of your email service */
 export const confirmEmailDomainTermination: API.OperationMethod<
@@ -1457,8 +2383,8 @@ export const confirmEmailDomainTermination: API.OperationMethod<
   ConfirmEmailDomainTerminationError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<ConfirmEmailDomainTerminationRequest>,
-  output: __S(1) as any as S.Schema<ConfirmEmailDomainTerminationResponse>,
+  input: ConfirmEmailDomainTerminationRequest,
+  output: ConfirmEmailDomainTerminationResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1472,8 +2398,8 @@ export const createEmailDomainAccount: API.OperationMethod<
   CreateEmailDomainAccountError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2) as any as S.Schema<CreateEmailDomainAccountRequest>,
-  output: __S(3) as any as S.Schema<EmailDomainTaskPop>,
+  input: CreateEmailDomainAccountRequest,
+  output: EmailDomainTaskPop,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1487,8 +2413,8 @@ export const createEmailDomainAccountChangePassword: API.OperationMethod<
   CreateEmailDomainAccountChangePasswordError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4) as any as S.Schema<CreateEmailDomainAccountChangePasswordRequest>,
-  output: __S(3) as any as S.Schema<EmailDomainTaskPop>,
+  input: CreateEmailDomainAccountChangePasswordRequest,
+  output: EmailDomainTaskPop,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1502,8 +2428,8 @@ export const createEmailDomainAccountDelegation: API.OperationMethod<
   CreateEmailDomainAccountDelegationError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5) as any as S.Schema<CreateEmailDomainAccountDelegationRequest>,
-  output: __S(1) as any as S.Schema<CreateEmailDomainAccountDelegationResponse>,
+  input: CreateEmailDomainAccountDelegationRequest,
+  output: CreateEmailDomainAccountDelegationResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1517,8 +2443,8 @@ export const createEmailDomainAccountFilter: API.OperationMethod<
   CreateEmailDomainAccountFilterError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6) as any as S.Schema<CreateEmailDomainAccountFilterRequest>,
-  output: __S(7) as any as S.Schema<EmailDomainTaskFilter>,
+  input: CreateEmailDomainAccountFilterRequest,
+  output: EmailDomainTaskFilter,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1532,8 +2458,8 @@ export const createEmailDomainAccountFilterChangeActivity: API.OperationMethod<
   CreateEmailDomainAccountFilterChangeActivityError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8) as any as S.Schema<CreateEmailDomainAccountFilterChangeActivityRequest>,
-  output: __S(7) as any as S.Schema<EmailDomainTaskFilter>,
+  input: CreateEmailDomainAccountFilterChangeActivityRequest,
+  output: EmailDomainTaskFilter,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1547,8 +2473,8 @@ export const createEmailDomainAccountFilterChangePriority: API.OperationMethod<
   CreateEmailDomainAccountFilterChangePriorityError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9) as any as S.Schema<CreateEmailDomainAccountFilterChangePriorityRequest>,
-  output: __S(7) as any as S.Schema<EmailDomainTaskFilter>,
+  input: CreateEmailDomainAccountFilterChangePriorityRequest,
+  output: EmailDomainTaskFilter,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1562,8 +2488,8 @@ export const createEmailDomainAccountFilterRule: API.OperationMethod<
   CreateEmailDomainAccountFilterRuleError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10) as any as S.Schema<CreateEmailDomainAccountFilterRuleRequest>,
-  output: __S(7) as any as S.Schema<EmailDomainTaskFilter>,
+  input: CreateEmailDomainAccountFilterRuleRequest,
+  output: EmailDomainTaskFilter,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1577,8 +2503,8 @@ export const createEmailDomainAcl: API.OperationMethod<
   CreateEmailDomainAclError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11) as any as S.Schema<CreateEmailDomainAclRequest>,
-  output: __S(12) as any as S.Schema<EmailDomainAcl>,
+  input: CreateEmailDomainAclRequest,
+  output: EmailDomainAcl,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1592,8 +2518,8 @@ export const createEmailDomainChangeContact: API.OperationMethod<
   CreateEmailDomainChangeContactError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13) as any as S.Schema<CreateEmailDomainChangeContactRequest>,
-  output: __S(15) as any as S.Schema<CreateEmailDomainChangeContactResponse>,
+  input: CreateEmailDomainChangeContactRequest,
+  output: CreateEmailDomainChangeContactResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1607,8 +2533,8 @@ export const createEmailDomainChangeDnsMXFilter: API.OperationMethod<
   CreateEmailDomainChangeDnsMXFilterError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16) as any as S.Schema<CreateEmailDomainChangeDnsMXFilterRequest>,
-  output: __S(17) as any as S.Schema<CreateEmailDomainChangeDnsMXFilterResponse>,
+  input: CreateEmailDomainChangeDnsMXFilterRequest,
+  output: CreateEmailDomainChangeDnsMXFilterResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1622,8 +2548,8 @@ export const createEmailDomainDelegatedAccountChangePassword: API.OperationMetho
   CreateEmailDomainDelegatedAccountChangePasswordError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18) as any as S.Schema<CreateEmailDomainDelegatedAccountChangePasswordRequest>,
-  output: __S(3) as any as S.Schema<EmailDomainTaskPop>,
+  input: CreateEmailDomainDelegatedAccountChangePasswordRequest,
+  output: EmailDomainTaskPop,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1637,8 +2563,8 @@ export const createEmailDomainDelegatedAccountFilter: API.OperationMethod<
   CreateEmailDomainDelegatedAccountFilterError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19) as any as S.Schema<CreateEmailDomainDelegatedAccountFilterRequest>,
-  output: __S(7) as any as S.Schema<EmailDomainTaskFilter>,
+  input: CreateEmailDomainDelegatedAccountFilterRequest,
+  output: EmailDomainTaskFilter,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1652,8 +2578,8 @@ export const createEmailDomainDelegatedAccountFilterChangeActivity: API.Operatio
   CreateEmailDomainDelegatedAccountFilterChangeActivityError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20) as any as S.Schema<CreateEmailDomainDelegatedAccountFilterChangeActivityRequest>,
-  output: __S(7) as any as S.Schema<EmailDomainTaskFilter>,
+  input: CreateEmailDomainDelegatedAccountFilterChangeActivityRequest,
+  output: EmailDomainTaskFilter,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1667,8 +2593,8 @@ export const createEmailDomainDelegatedAccountFilterChangePriority: API.Operatio
   CreateEmailDomainDelegatedAccountFilterChangePriorityError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21) as any as S.Schema<CreateEmailDomainDelegatedAccountFilterChangePriorityRequest>,
-  output: __S(7) as any as S.Schema<EmailDomainTaskFilter>,
+  input: CreateEmailDomainDelegatedAccountFilterChangePriorityRequest,
+  output: EmailDomainTaskFilter,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1682,8 +2608,8 @@ export const createEmailDomainDelegatedAccountFilterRule: API.OperationMethod<
   CreateEmailDomainDelegatedAccountFilterRuleError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22) as any as S.Schema<CreateEmailDomainDelegatedAccountFilterRuleRequest>,
-  output: __S(7) as any as S.Schema<EmailDomainTaskFilter>,
+  input: CreateEmailDomainDelegatedAccountFilterRuleRequest,
+  output: EmailDomainTaskFilter,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1697,8 +2623,8 @@ export const createEmailDomainDelegatedAccountResponder: API.OperationMethod<
   CreateEmailDomainDelegatedAccountResponderError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23) as any as S.Schema<CreateEmailDomainDelegatedAccountResponderRequest>,
-  output: __S(24) as any as S.Schema<EmailDomainTaskSpecialAccount>,
+  input: CreateEmailDomainDelegatedAccountResponderRequest,
+  output: EmailDomainTaskSpecialAccount,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1712,8 +2638,8 @@ export const createEmailDomainDelegatedAccountUsage: API.OperationMethod<
   CreateEmailDomainDelegatedAccountUsageError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25) as any as S.Schema<CreateEmailDomainDelegatedAccountUsageRequest>,
-  output: __S(26) as any as S.Schema<DomainDomainUsageAccountStruct>,
+  input: CreateEmailDomainDelegatedAccountUsageRequest,
+  output: DomainDomainUsageAccountStruct,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1727,8 +2653,8 @@ export const createEmailDomainMailingList: API.OperationMethod<
   CreateEmailDomainMailingListError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28) as any as S.Schema<CreateEmailDomainMailingListRequest>,
-  output: __S(29) as any as S.Schema<EmailDomainTaskMl>,
+  input: CreateEmailDomainMailingListRequest,
+  output: EmailDomainTaskMl,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1742,8 +2668,8 @@ export const createEmailDomainMailingListChangeOption: API.OperationMethod<
   CreateEmailDomainMailingListChangeOptionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30) as any as S.Schema<CreateEmailDomainMailingListChangeOptionRequest>,
-  output: __S(29) as any as S.Schema<EmailDomainTaskMl>,
+  input: CreateEmailDomainMailingListChangeOptionRequest,
+  output: EmailDomainTaskMl,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1757,8 +2683,8 @@ export const createEmailDomainMailingListModerator: API.OperationMethod<
   CreateEmailDomainMailingListModeratorError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31) as any as S.Schema<CreateEmailDomainMailingListModeratorRequest>,
-  output: __S(29) as any as S.Schema<EmailDomainTaskMl>,
+  input: CreateEmailDomainMailingListModeratorRequest,
+  output: EmailDomainTaskMl,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1772,8 +2698,8 @@ export const createEmailDomainMailingListSubscriber: API.OperationMethod<
   CreateEmailDomainMailingListSubscriberError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32) as any as S.Schema<CreateEmailDomainMailingListSubscriberRequest>,
-  output: __S(29) as any as S.Schema<EmailDomainTaskMl>,
+  input: CreateEmailDomainMailingListSubscriberRequest,
+  output: EmailDomainTaskMl,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1787,8 +2713,8 @@ export const createEmailDomainRedirection: API.OperationMethod<
   CreateEmailDomainRedirectionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33) as any as S.Schema<CreateEmailDomainRedirectionRequest>,
-  output: __S(24) as any as S.Schema<EmailDomainTaskSpecialAccount>,
+  input: CreateEmailDomainRedirectionRequest,
+  output: EmailDomainTaskSpecialAccount,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1802,8 +2728,8 @@ export const createEmailDomainRedirectionChangeRedirection: API.OperationMethod<
   CreateEmailDomainRedirectionChangeRedirectionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34) as any as S.Schema<CreateEmailDomainRedirectionChangeRedirectionRequest>,
-  output: __S(24) as any as S.Schema<EmailDomainTaskSpecialAccount>,
+  input: CreateEmailDomainRedirectionChangeRedirectionRequest,
+  output: EmailDomainTaskSpecialAccount,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1817,8 +2743,8 @@ export const createEmailDomainResponder: API.OperationMethod<
   CreateEmailDomainResponderError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35) as any as S.Schema<CreateEmailDomainResponderRequest>,
-  output: __S(24) as any as S.Schema<EmailDomainTaskSpecialAccount>,
+  input: CreateEmailDomainResponderRequest,
+  output: EmailDomainTaskSpecialAccount,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1832,8 +2758,8 @@ export const deleteEmailDomainAccount: API.OperationMethod<
   DeleteEmailDomainAccountError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36) as any as S.Schema<DeleteEmailDomainAccountRequest>,
-  output: __S(3) as any as S.Schema<EmailDomainTaskPop>,
+  input: DeleteEmailDomainAccountRequest,
+  output: EmailDomainTaskPop,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1847,8 +2773,8 @@ export const deleteEmailDomainAccountDelegation: API.OperationMethod<
   DeleteEmailDomainAccountDelegationError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37) as any as S.Schema<DeleteEmailDomainAccountDelegationRequest>,
-  output: __S(1) as any as S.Schema<DeleteEmailDomainAccountDelegationResponse>,
+  input: DeleteEmailDomainAccountDelegationRequest,
+  output: DeleteEmailDomainAccountDelegationResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1862,8 +2788,8 @@ export const deleteEmailDomainAccountFilter: API.OperationMethod<
   DeleteEmailDomainAccountFilterError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38) as any as S.Schema<DeleteEmailDomainAccountFilterRequest>,
-  output: __S(40) as any as S.Schema<DeleteEmailDomainAccountFilterResponse>,
+  input: DeleteEmailDomainAccountFilterRequest,
+  output: DeleteEmailDomainAccountFilterResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1877,8 +2803,8 @@ export const deleteEmailDomainAccountFilterRule: API.OperationMethod<
   DeleteEmailDomainAccountFilterRuleError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41) as any as S.Schema<DeleteEmailDomainAccountFilterRuleRequest>,
-  output: __S(40) as any as S.Schema<DeleteEmailDomainAccountFilterRuleResponse>,
+  input: DeleteEmailDomainAccountFilterRuleRequest,
+  output: DeleteEmailDomainAccountFilterRuleResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1892,8 +2818,8 @@ export const deleteEmailDomainAcl: API.OperationMethod<
   DeleteEmailDomainAclError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42) as any as S.Schema<DeleteEmailDomainAclRequest>,
-  output: __S(43) as any as S.Schema<DeleteEmailDomainAclResponse>,
+  input: DeleteEmailDomainAclRequest,
+  output: DeleteEmailDomainAclResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1907,8 +2833,8 @@ export const deleteEmailDomainDelegatedAccountFilter: API.OperationMethod<
   DeleteEmailDomainDelegatedAccountFilterError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44) as any as S.Schema<DeleteEmailDomainDelegatedAccountFilterRequest>,
-  output: __S(40) as any as S.Schema<DeleteEmailDomainDelegatedAccountFilterResponse>,
+  input: DeleteEmailDomainDelegatedAccountFilterRequest,
+  output: DeleteEmailDomainDelegatedAccountFilterResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1922,8 +2848,8 @@ export const deleteEmailDomainDelegatedAccountFilterRule: API.OperationMethod<
   DeleteEmailDomainDelegatedAccountFilterRuleError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45) as any as S.Schema<DeleteEmailDomainDelegatedAccountFilterRuleRequest>,
-  output: __S(40) as any as S.Schema<DeleteEmailDomainDelegatedAccountFilterRuleResponse>,
+  input: DeleteEmailDomainDelegatedAccountFilterRuleRequest,
+  output: DeleteEmailDomainDelegatedAccountFilterRuleResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1937,8 +2863,8 @@ export const deleteEmailDomainDelegatedAccountResponder: API.OperationMethod<
   DeleteEmailDomainDelegatedAccountResponderError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(46) as any as S.Schema<DeleteEmailDomainDelegatedAccountResponderRequest>,
-  output: __S(24) as any as S.Schema<EmailDomainTaskSpecialAccount>,
+  input: DeleteEmailDomainDelegatedAccountResponderRequest,
+  output: EmailDomainTaskSpecialAccount,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1952,8 +2878,8 @@ export const deleteEmailDomainMailingList: API.OperationMethod<
   DeleteEmailDomainMailingListError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47) as any as S.Schema<DeleteEmailDomainMailingListRequest>,
-  output: __S(29) as any as S.Schema<EmailDomainTaskMl>,
+  input: DeleteEmailDomainMailingListRequest,
+  output: EmailDomainTaskMl,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1967,8 +2893,8 @@ export const deleteEmailDomainMailingListModerator: API.OperationMethod<
   DeleteEmailDomainMailingListModeratorError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48) as any as S.Schema<DeleteEmailDomainMailingListModeratorRequest>,
-  output: __S(29) as any as S.Schema<EmailDomainTaskMl>,
+  input: DeleteEmailDomainMailingListModeratorRequest,
+  output: EmailDomainTaskMl,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1982,8 +2908,8 @@ export const deleteEmailDomainMailingListSubscriber: API.OperationMethod<
   DeleteEmailDomainMailingListSubscriberError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49) as any as S.Schema<DeleteEmailDomainMailingListSubscriberRequest>,
-  output: __S(29) as any as S.Schema<EmailDomainTaskMl>,
+  input: DeleteEmailDomainMailingListSubscriberRequest,
+  output: EmailDomainTaskMl,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1997,8 +2923,8 @@ export const deleteEmailDomainRedirection: API.OperationMethod<
   DeleteEmailDomainRedirectionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(50) as any as S.Schema<DeleteEmailDomainRedirectionRequest>,
-  output: __S(24) as any as S.Schema<EmailDomainTaskSpecialAccount>,
+  input: DeleteEmailDomainRedirectionRequest,
+  output: EmailDomainTaskSpecialAccount,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2012,8 +2938,8 @@ export const deleteEmailDomainResponder: API.OperationMethod<
   DeleteEmailDomainResponderError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(51) as any as S.Schema<DeleteEmailDomainResponderRequest>,
-  output: __S(24) as any as S.Schema<EmailDomainTaskSpecialAccount>,
+  input: DeleteEmailDomainResponderRequest,
+  output: EmailDomainTaskSpecialAccount,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2027,8 +2953,8 @@ export const getEmailDomain: API.OperationMethod<
   GetEmailDomainError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(52) as any as S.Schema<GetEmailDomainRequest>,
-  output: __S(55) as any as S.Schema<EmailDomainDomainServiceWithIAM>,
+  input: GetEmailDomainRequest,
+  output: EmailDomainDomainServiceWithIAM,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2042,8 +2968,8 @@ export const getEmailDomainAccount: API.OperationMethod<
   GetEmailDomainAccountError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56) as any as S.Schema<GetEmailDomainAccountRequest>,
-  output: __S(57) as any as S.Schema<EmailDomainAccount>,
+  input: GetEmailDomainAccountRequest,
+  output: EmailDomainAccount,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2057,8 +2983,8 @@ export const getEmailDomainAccountDelegation: API.OperationMethod<
   GetEmailDomainAccountDelegationError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(58) as any as S.Schema<GetEmailDomainAccountDelegationRequest>,
-  output: __S(12) as any as S.Schema<EmailDomainDelegation>,
+  input: GetEmailDomainAccountDelegationRequest,
+  output: EmailDomainDelegation,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2072,8 +2998,8 @@ export const getEmailDomainAccountFilter: API.OperationMethod<
   GetEmailDomainAccountFilterError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(59) as any as S.Schema<GetEmailDomainAccountFilterRequest>,
-  output: __S(60) as any as S.Schema<EmailDomainFilter>,
+  input: GetEmailDomainAccountFilterRequest,
+  output: EmailDomainFilter,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2087,8 +3013,8 @@ export const getEmailDomainAccountFilterRule: API.OperationMethod<
   GetEmailDomainAccountFilterRuleError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(61) as any as S.Schema<GetEmailDomainAccountFilterRuleRequest>,
-  output: __S(62) as any as S.Schema<EmailDomainRule>,
+  input: GetEmailDomainAccountFilterRuleRequest,
+  output: EmailDomainRule,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2102,8 +3028,8 @@ export const getEmailDomainAccountMigrate: API.OperationMethod<
   GetEmailDomainAccountMigrateError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(63) as any as S.Schema<GetEmailDomainAccountMigrateRequest>,
-  output: __S(64) as any as S.Schema<EmailDomainMigrationService>,
+  input: GetEmailDomainAccountMigrateRequest,
+  output: EmailDomainMigrationService,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2117,8 +3043,8 @@ export const getEmailDomainAccountMigrateDestinationEmailAddress: API.OperationM
   GetEmailDomainAccountMigrateDestinationEmailAddressError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65) as any as S.Schema<GetEmailDomainAccountMigrateDestinationEmailAddressRequest>,
-  output: __S(66) as any as S.Schema<EmailDomainMigrationAccount>,
+  input: GetEmailDomainAccountMigrateDestinationEmailAddressRequest,
+  output: EmailDomainMigrationAccount,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2132,8 +3058,8 @@ export const getEmailDomainAccountUsage: API.OperationMethod<
   GetEmailDomainAccountUsageError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(67) as any as S.Schema<GetEmailDomainAccountUsageRequest>,
-  output: __S(26) as any as S.Schema<DomainDomainUsageAccountStruct>,
+  input: GetEmailDomainAccountUsageRequest,
+  output: DomainDomainUsageAccountStruct,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2147,8 +3073,8 @@ export const getEmailDomainAcl: API.OperationMethod<
   GetEmailDomainAclError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(68) as any as S.Schema<GetEmailDomainAclRequest>,
-  output: __S(12) as any as S.Schema<EmailDomainAcl>,
+  input: GetEmailDomainAclRequest,
+  output: EmailDomainAcl,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2162,8 +3088,8 @@ export const getEmailDomainDelegatedAccount: API.OperationMethod<
   GetEmailDomainDelegatedAccountError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(69) as any as S.Schema<GetEmailDomainDelegatedAccountRequest>,
-  output: __S(70) as any as S.Schema<EmailDomainAccountDelegated>,
+  input: GetEmailDomainDelegatedAccountRequest,
+  output: EmailDomainAccountDelegated,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2177,8 +3103,8 @@ export const getEmailDomainDelegatedAccountFilter: API.OperationMethod<
   GetEmailDomainDelegatedAccountFilterError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(71) as any as S.Schema<GetEmailDomainDelegatedAccountFilterRequest>,
-  output: __S(60) as any as S.Schema<EmailDomainFilter>,
+  input: GetEmailDomainDelegatedAccountFilterRequest,
+  output: EmailDomainFilter,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2192,8 +3118,8 @@ export const getEmailDomainDelegatedAccountFilterRule: API.OperationMethod<
   GetEmailDomainDelegatedAccountFilterRuleError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(72) as any as S.Schema<GetEmailDomainDelegatedAccountFilterRuleRequest>,
-  output: __S(62) as any as S.Schema<EmailDomainRule>,
+  input: GetEmailDomainDelegatedAccountFilterRuleRequest,
+  output: EmailDomainRule,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2207,8 +3133,8 @@ export const getEmailDomainDelegatedAccountResponder: API.OperationMethod<
   GetEmailDomainDelegatedAccountResponderError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(73) as any as S.Schema<GetEmailDomainDelegatedAccountResponderRequest>,
-  output: __S(74) as any as S.Schema<EmailDomainResponderAccount>,
+  input: GetEmailDomainDelegatedAccountResponderRequest,
+  output: EmailDomainResponderAccount,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2222,8 +3148,8 @@ export const getEmailDomainDnsMXFilter: API.OperationMethod<
   GetEmailDomainDnsMXFilterError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(75) as any as S.Schema<GetEmailDomainDnsMXFilterRequest>,
-  output: __S(76) as any as S.Schema<GetEmailDomainDnsMXFilterResponse>,
+  input: GetEmailDomainDnsMXFilterRequest,
+  output: GetEmailDomainDnsMXFilterResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2237,8 +3163,8 @@ export const getEmailDomainMailingList: API.OperationMethod<
   GetEmailDomainMailingListError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(77) as any as S.Schema<GetEmailDomainMailingListRequest>,
-  output: __S(78) as any as S.Schema<EmailDomainMailingList>,
+  input: GetEmailDomainMailingListRequest,
+  output: EmailDomainMailingList,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2252,8 +3178,8 @@ export const getEmailDomainMailingListLimits: API.OperationMethod<
   GetEmailDomainMailingListLimitsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(79) as any as S.Schema<GetEmailDomainMailingListLimitsRequest>,
-  output: __S(80) as any as S.Schema<DomainDomainMlLimits>,
+  input: GetEmailDomainMailingListLimitsRequest,
+  output: DomainDomainMlLimits,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2267,8 +3193,8 @@ export const getEmailDomainMailingListModerator: API.OperationMethod<
   GetEmailDomainMailingListModeratorError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(81) as any as S.Schema<GetEmailDomainMailingListModeratorRequest>,
-  output: __S(82) as any as S.Schema<EmailDomainModerator>,
+  input: GetEmailDomainMailingListModeratorRequest,
+  output: EmailDomainModerator,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2282,8 +3208,8 @@ export const getEmailDomainMailingListSubscriber: API.OperationMethod<
   GetEmailDomainMailingListSubscriberError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(83) as any as S.Schema<GetEmailDomainMailingListSubscriberRequest>,
-  output: __S(82) as any as S.Schema<EmailDomainSubscriber>,
+  input: GetEmailDomainMailingListSubscriberRequest,
+  output: EmailDomainSubscriber,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2297,8 +3223,8 @@ export const getEmailDomainQuota: API.OperationMethod<
   GetEmailDomainQuotaError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(84) as any as S.Schema<GetEmailDomainQuotaRequest>,
-  output: __S(85) as any as S.Schema<DomainDomainQuota>,
+  input: GetEmailDomainQuotaRequest,
+  output: DomainDomainQuota,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2312,8 +3238,8 @@ export const getEmailDomainRedirection: API.OperationMethod<
   GetEmailDomainRedirectionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(86) as any as S.Schema<GetEmailDomainRedirectionRequest>,
-  output: __S(87) as any as S.Schema<EmailDomainRedirectionGlobal>,
+  input: GetEmailDomainRedirectionRequest,
+  output: EmailDomainRedirectionGlobal,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2327,8 +3253,8 @@ export const getEmailDomainResponder: API.OperationMethod<
   GetEmailDomainResponderError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(88) as any as S.Schema<GetEmailDomainResponderRequest>,
-  output: __S(89) as any as S.Schema<EmailDomainResponder>,
+  input: GetEmailDomainResponderRequest,
+  output: EmailDomainResponder,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2342,8 +3268,8 @@ export const getEmailDomainServiceInfos: API.OperationMethod<
   GetEmailDomainServiceInfosError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(90) as any as S.Schema<GetEmailDomainServiceInfosRequest>,
-  output: __S(92) as any as S.Schema<ServicesService>,
+  input: GetEmailDomainServiceInfosRequest,
+  output: ServicesService,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2357,8 +3283,8 @@ export const getEmailDomainSummary: API.OperationMethod<
   GetEmailDomainSummaryError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(93) as any as S.Schema<GetEmailDomainSummaryRequest>,
-  output: __S(94) as any as S.Schema<DomainDomainSummary>,
+  input: GetEmailDomainSummaryRequest,
+  output: DomainDomainSummary,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2372,8 +3298,8 @@ export const getEmailDomainTaskAccount: API.OperationMethod<
   GetEmailDomainTaskAccountError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(95) as any as S.Schema<GetEmailDomainTaskAccountRequest>,
-  output: __S(3) as any as S.Schema<EmailDomainTaskPop>,
+  input: GetEmailDomainTaskAccountRequest,
+  output: EmailDomainTaskPop,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2387,8 +3313,8 @@ export const getEmailDomainTaskAll: API.OperationMethod<
   GetEmailDomainTaskAllError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(96) as any as S.Schema<GetEmailDomainTaskAllRequest>,
-  output: __S(97) as any as S.Schema<EmailDomainTask>,
+  input: GetEmailDomainTaskAllRequest,
+  output: EmailDomainTask,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2402,8 +3328,8 @@ export const getEmailDomainTaskFilter: API.OperationMethod<
   GetEmailDomainTaskFilterError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(98) as any as S.Schema<GetEmailDomainTaskFilterRequest>,
-  output: __S(7) as any as S.Schema<EmailDomainTaskFilter>,
+  input: GetEmailDomainTaskFilterRequest,
+  output: EmailDomainTaskFilter,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2417,8 +3343,8 @@ export const getEmailDomainTaskMailinglist: API.OperationMethod<
   GetEmailDomainTaskMailinglistError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(99) as any as S.Schema<GetEmailDomainTaskMailinglistRequest>,
-  output: __S(29) as any as S.Schema<EmailDomainTaskMl>,
+  input: GetEmailDomainTaskMailinglistRequest,
+  output: EmailDomainTaskMl,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2432,8 +3358,8 @@ export const getEmailDomainTaskRedirection: API.OperationMethod<
   GetEmailDomainTaskRedirectionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(100) as any as S.Schema<GetEmailDomainTaskRedirectionRequest>,
-  output: __S(24) as any as S.Schema<EmailDomainTaskSpecialAccount>,
+  input: GetEmailDomainTaskRedirectionRequest,
+  output: EmailDomainTaskSpecialAccount,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2447,8 +3373,8 @@ export const getEmailDomainTaskResponder: API.OperationMethod<
   GetEmailDomainTaskResponderError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(101) as any as S.Schema<GetEmailDomainTaskResponderRequest>,
-  output: __S(24) as any as S.Schema<EmailDomainTaskSpecialAccount>,
+  input: GetEmailDomainTaskResponderRequest,
+  output: EmailDomainTaskSpecialAccount,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2462,8 +3388,8 @@ export const listEmailDomain: API.OperationMethod<
   ListEmailDomainError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(104) as any as S.Schema<ListEmailDomainRequest>,
-  output: __S(106) as any as S.Schema<ListEmailDomainResponse>,
+  input: ListEmailDomainRequest,
+  output: ListEmailDomainResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2477,8 +3403,8 @@ export const listEmailDomainAccount: API.OperationMethod<
   ListEmailDomainAccountError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(107) as any as S.Schema<ListEmailDomainAccountRequest>,
-  output: __S(108) as any as S.Schema<ListEmailDomainAccountResponse>,
+  input: ListEmailDomainAccountRequest,
+  output: ListEmailDomainAccountResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2492,8 +3418,8 @@ export const listEmailDomainAccountDelegation: API.OperationMethod<
   ListEmailDomainAccountDelegationError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(109) as any as S.Schema<ListEmailDomainAccountDelegationRequest>,
-  output: __S(108) as any as S.Schema<ListEmailDomainAccountDelegationResponse>,
+  input: ListEmailDomainAccountDelegationRequest,
+  output: ListEmailDomainAccountDelegationResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2507,8 +3433,8 @@ export const listEmailDomainAccountFilter: API.OperationMethod<
   ListEmailDomainAccountFilterError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(110) as any as S.Schema<ListEmailDomainAccountFilterRequest>,
-  output: __S(108) as any as S.Schema<ListEmailDomainAccountFilterResponse>,
+  input: ListEmailDomainAccountFilterRequest,
+  output: ListEmailDomainAccountFilterResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2522,8 +3448,8 @@ export const listEmailDomainAccountFilterRule: API.OperationMethod<
   ListEmailDomainAccountFilterRuleError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(111) as any as S.Schema<ListEmailDomainAccountFilterRuleRequest>,
-  output: __S(15) as any as S.Schema<ListEmailDomainAccountFilterRuleResponse>,
+  input: ListEmailDomainAccountFilterRuleRequest,
+  output: ListEmailDomainAccountFilterRuleResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2537,8 +3463,8 @@ export const listEmailDomainAccountMigrate: API.OperationMethod<
   ListEmailDomainAccountMigrateError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(112) as any as S.Schema<ListEmailDomainAccountMigrateRequest>,
-  output: __S(108) as any as S.Schema<ListEmailDomainAccountMigrateResponse>,
+  input: ListEmailDomainAccountMigrateRequest,
+  output: ListEmailDomainAccountMigrateResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2552,8 +3478,8 @@ export const listEmailDomainAccountMigrateDestinationEmailAddress: API.Operation
   ListEmailDomainAccountMigrateDestinationEmailAddressError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(113) as any as S.Schema<ListEmailDomainAccountMigrateDestinationEmailAddressRequest>,
-  output: __S(115) as any as S.Schema<ListEmailDomainAccountMigrateDestinationEmailAddressResponse>,
+  input: ListEmailDomainAccountMigrateDestinationEmailAddressRequest,
+  output: ListEmailDomainAccountMigrateDestinationEmailAddressResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2567,10 +3493,8 @@ export const listEmailDomainAccountMigrateDestinationEmailAddressCheckMigrate: A
   ListEmailDomainAccountMigrateDestinationEmailAddressCheckMigrateError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(
-    116,
-  ) as any as S.Schema<ListEmailDomainAccountMigrateDestinationEmailAddressCheckMigrateRequest>,
-  output: __S(119) as any as S.Schema<EmailDomainMigrationCheckStruct>,
+  input: ListEmailDomainAccountMigrateDestinationEmailAddressCheckMigrateRequest,
+  output: EmailDomainMigrationCheckStruct,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2584,8 +3508,8 @@ export const listEmailDomainAcl: API.OperationMethod<
   ListEmailDomainAclError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(120) as any as S.Schema<ListEmailDomainAclRequest>,
-  output: __S(108) as any as S.Schema<ListEmailDomainAclResponse>,
+  input: ListEmailDomainAclRequest,
+  output: ListEmailDomainAclResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2599,8 +3523,8 @@ export const listEmailDomainDelegatedAccount: API.OperationMethod<
   ListEmailDomainDelegatedAccountError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(121) as any as S.Schema<ListEmailDomainDelegatedAccountRequest>,
-  output: __S(108) as any as S.Schema<ListEmailDomainDelegatedAccountResponse>,
+  input: ListEmailDomainDelegatedAccountRequest,
+  output: ListEmailDomainDelegatedAccountResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2614,8 +3538,8 @@ export const listEmailDomainDelegatedAccountFilter: API.OperationMethod<
   ListEmailDomainDelegatedAccountFilterError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(122) as any as S.Schema<ListEmailDomainDelegatedAccountFilterRequest>,
-  output: __S(108) as any as S.Schema<ListEmailDomainDelegatedAccountFilterResponse>,
+  input: ListEmailDomainDelegatedAccountFilterRequest,
+  output: ListEmailDomainDelegatedAccountFilterResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2629,8 +3553,8 @@ export const listEmailDomainDelegatedAccountFilterRule: API.OperationMethod<
   ListEmailDomainDelegatedAccountFilterRuleError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(123) as any as S.Schema<ListEmailDomainDelegatedAccountFilterRuleRequest>,
-  output: __S(15) as any as S.Schema<ListEmailDomainDelegatedAccountFilterRuleResponse>,
+  input: ListEmailDomainDelegatedAccountFilterRuleRequest,
+  output: ListEmailDomainDelegatedAccountFilterRuleResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2644,8 +3568,8 @@ export const listEmailDomainDkim: API.OperationMethod<
   ListEmailDomainDkimError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(124) as any as S.Schema<ListEmailDomainDkimRequest>,
-  output: __S(127) as any as S.Schema<EmailDomainDkimSimplified>,
+  input: ListEmailDomainDkimRequest,
+  output: EmailDomainDkimSimplified,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2659,8 +3583,8 @@ export const listEmailDomainDnsMXRecords: API.OperationMethod<
   ListEmailDomainDnsMXRecordsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(128) as any as S.Schema<ListEmailDomainDnsMXRecordsRequest>,
-  output: __S(108) as any as S.Schema<ListEmailDomainDnsMXRecordsResponse>,
+  input: ListEmailDomainDnsMXRecordsRequest,
+  output: ListEmailDomainDnsMXRecordsResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2674,8 +3598,8 @@ export const listEmailDomainMailingList: API.OperationMethod<
   ListEmailDomainMailingListError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(129) as any as S.Schema<ListEmailDomainMailingListRequest>,
-  output: __S(108) as any as S.Schema<ListEmailDomainMailingListResponse>,
+  input: ListEmailDomainMailingListRequest,
+  output: ListEmailDomainMailingListResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2689,8 +3613,8 @@ export const listEmailDomainMailingListModerator: API.OperationMethod<
   ListEmailDomainMailingListModeratorError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(130) as any as S.Schema<ListEmailDomainMailingListModeratorRequest>,
-  output: __S(108) as any as S.Schema<ListEmailDomainMailingListModeratorResponse>,
+  input: ListEmailDomainMailingListModeratorRequest,
+  output: ListEmailDomainMailingListModeratorResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2704,8 +3628,8 @@ export const listEmailDomainMailingListSubscriber: API.OperationMethod<
   ListEmailDomainMailingListSubscriberError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(131) as any as S.Schema<ListEmailDomainMailingListSubscriberRequest>,
-  output: __S(108) as any as S.Schema<ListEmailDomainMailingListSubscriberResponse>,
+  input: ListEmailDomainMailingListSubscriberRequest,
+  output: ListEmailDomainMailingListSubscriberResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2719,8 +3643,8 @@ export const listEmailDomainRecommendedDNSRecords: API.OperationMethod<
   ListEmailDomainRecommendedDNSRecordsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(132) as any as S.Schema<ListEmailDomainRecommendedDNSRecordsRequest>,
-  output: __S(135) as any as S.Schema<ListEmailDomainRecommendedDNSRecordsResponse>,
+  input: ListEmailDomainRecommendedDNSRecordsRequest,
+  output: ListEmailDomainRecommendedDNSRecordsResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2734,8 +3658,8 @@ export const listEmailDomainRedirection: API.OperationMethod<
   ListEmailDomainRedirectionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(136) as any as S.Schema<ListEmailDomainRedirectionRequest>,
-  output: __S(108) as any as S.Schema<ListEmailDomainRedirectionResponse>,
+  input: ListEmailDomainRedirectionRequest,
+  output: ListEmailDomainRedirectionResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2749,8 +3673,8 @@ export const listEmailDomainResponder: API.OperationMethod<
   ListEmailDomainResponderError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(137) as any as S.Schema<ListEmailDomainResponderRequest>,
-  output: __S(108) as any as S.Schema<ListEmailDomainResponderResponse>,
+  input: ListEmailDomainResponderRequest,
+  output: ListEmailDomainResponderResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2764,8 +3688,8 @@ export const listEmailDomainTaskAccount: API.OperationMethod<
   ListEmailDomainTaskAccountError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(138) as any as S.Schema<ListEmailDomainTaskAccountRequest>,
-  output: __S(15) as any as S.Schema<ListEmailDomainTaskAccountResponse>,
+  input: ListEmailDomainTaskAccountRequest,
+  output: ListEmailDomainTaskAccountResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2779,8 +3703,8 @@ export const listEmailDomainTaskAll: API.OperationMethod<
   ListEmailDomainTaskAllError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(139) as any as S.Schema<ListEmailDomainTaskAllRequest>,
-  output: __S(15) as any as S.Schema<ListEmailDomainTaskAllResponse>,
+  input: ListEmailDomainTaskAllRequest,
+  output: ListEmailDomainTaskAllResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2794,8 +3718,8 @@ export const listEmailDomainTaskFilter: API.OperationMethod<
   ListEmailDomainTaskFilterError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(140) as any as S.Schema<ListEmailDomainTaskFilterRequest>,
-  output: __S(15) as any as S.Schema<ListEmailDomainTaskFilterResponse>,
+  input: ListEmailDomainTaskFilterRequest,
+  output: ListEmailDomainTaskFilterResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2809,8 +3733,8 @@ export const listEmailDomainTaskMailinglist: API.OperationMethod<
   ListEmailDomainTaskMailinglistError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(141) as any as S.Schema<ListEmailDomainTaskMailinglistRequest>,
-  output: __S(15) as any as S.Schema<ListEmailDomainTaskMailinglistResponse>,
+  input: ListEmailDomainTaskMailinglistRequest,
+  output: ListEmailDomainTaskMailinglistResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2824,8 +3748,8 @@ export const listEmailDomainTaskRedirection: API.OperationMethod<
   ListEmailDomainTaskRedirectionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(142) as any as S.Schema<ListEmailDomainTaskRedirectionRequest>,
-  output: __S(108) as any as S.Schema<ListEmailDomainTaskRedirectionResponse>,
+  input: ListEmailDomainTaskRedirectionRequest,
+  output: ListEmailDomainTaskRedirectionResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2839,8 +3763,8 @@ export const listEmailDomainTaskResponder: API.OperationMethod<
   ListEmailDomainTaskResponderError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(143) as any as S.Schema<ListEmailDomainTaskResponderRequest>,
-  output: __S(15) as any as S.Schema<ListEmailDomainTaskResponderResponse>,
+  input: ListEmailDomainTaskResponderRequest,
+  output: ListEmailDomainTaskResponderResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2854,10 +3778,8 @@ export const migrateEmailDomainAccountMigrateDestinationEmailAddress: API.Operat
   MigrateEmailDomainAccountMigrateDestinationEmailAddressError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(
-    144,
-  ) as any as S.Schema<MigrateEmailDomainAccountMigrateDestinationEmailAddressRequest>,
-  output: __S(3) as any as S.Schema<EmailDomainTaskPop>,
+  input: MigrateEmailDomainAccountMigrateDestinationEmailAddressRequest,
+  output: EmailDomainTaskPop,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2871,8 +3793,8 @@ export const migrateEmailDomainDelegationV3toV6: API.OperationMethod<
   MigrateEmailDomainDelegationV3toV6Error,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(145) as any as S.Schema<MigrateEmailDomainDelegationV3toV6Request>,
-  output: __S(17) as any as S.Schema<MigrateEmailDomainDelegationV3toV6Response>,
+  input: MigrateEmailDomainDelegationV3toV6Request,
+  output: MigrateEmailDomainDelegationV3toV6Response,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2886,8 +3808,8 @@ export const putEmailDomainAccount: API.OperationMethod<
   PutEmailDomainAccountError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(146) as any as S.Schema<PutEmailDomainAccountRequest>,
-  output: __S(43) as any as S.Schema<PutEmailDomainAccountResponse>,
+  input: PutEmailDomainAccountRequest,
+  output: PutEmailDomainAccountResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2901,8 +3823,8 @@ export const putEmailDomainDelegatedAccount: API.OperationMethod<
   PutEmailDomainDelegatedAccountError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(147) as any as S.Schema<PutEmailDomainDelegatedAccountRequest>,
-  output: __S(17) as any as S.Schema<PutEmailDomainDelegatedAccountResponse>,
+  input: PutEmailDomainDelegatedAccountRequest,
+  output: PutEmailDomainDelegatedAccountResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2916,8 +3838,8 @@ export const putEmailDomainDelegatedAccountResponder: API.OperationMethod<
   PutEmailDomainDelegatedAccountResponderError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(148) as any as S.Schema<PutEmailDomainDelegatedAccountResponderRequest>,
-  output: __S(17) as any as S.Schema<PutEmailDomainDelegatedAccountResponderResponse>,
+  input: PutEmailDomainDelegatedAccountResponderRequest,
+  output: PutEmailDomainDelegatedAccountResponderResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2931,8 +3853,8 @@ export const putEmailDomainDkimDisable: API.OperationMethod<
   PutEmailDomainDkimDisableError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(149) as any as S.Schema<PutEmailDomainDkimDisableRequest>,
-  output: __S(97) as any as S.Schema<EmailDomainTask>,
+  input: PutEmailDomainDkimDisableRequest,
+  output: EmailDomainTask,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2946,8 +3868,8 @@ export const putEmailDomainDkimEnable: API.OperationMethod<
   PutEmailDomainDkimEnableError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(150) as any as S.Schema<PutEmailDomainDkimEnableRequest>,
-  output: __S(97) as any as S.Schema<EmailDomainTask>,
+  input: PutEmailDomainDkimEnableRequest,
+  output: EmailDomainTask,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2961,8 +3883,8 @@ export const putEmailDomainMailingList: API.OperationMethod<
   PutEmailDomainMailingListError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(151) as any as S.Schema<PutEmailDomainMailingListRequest>,
-  output: __S(17) as any as S.Schema<PutEmailDomainMailingListResponse>,
+  input: PutEmailDomainMailingListRequest,
+  output: PutEmailDomainMailingListResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2976,8 +3898,8 @@ export const putEmailDomainResponder: API.OperationMethod<
   PutEmailDomainResponderError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(152) as any as S.Schema<PutEmailDomainResponderRequest>,
-  output: __S(153) as any as S.Schema<PutEmailDomainResponderResponse>,
+  input: PutEmailDomainResponderRequest,
+  output: PutEmailDomainResponderResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2991,8 +3913,8 @@ export const putEmailDomainServiceInfos: API.OperationMethod<
   PutEmailDomainServiceInfosError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(154) as any as S.Schema<PutEmailDomainServiceInfosRequest>,
-  output: __S(17) as any as S.Schema<PutEmailDomainServiceInfosResponse>,
+  input: PutEmailDomainServiceInfosRequest,
+  output: PutEmailDomainServiceInfosResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3006,8 +3928,8 @@ export const sendEmailDomainMailingListListByEmail: API.OperationMethod<
   SendEmailDomainMailingListListByEmailError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(155) as any as S.Schema<SendEmailDomainMailingListListByEmailRequest>,
-  output: __S(29) as any as S.Schema<EmailDomainTaskMl>,
+  input: SendEmailDomainMailingListListByEmailRequest,
+  output: EmailDomainTaskMl,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3021,8 +3943,8 @@ export const terminateEmailDomain: API.OperationMethod<
   TerminateEmailDomainError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(156) as any as S.Schema<TerminateEmailDomainRequest>,
-  output: __S(1) as any as S.Schema<TerminateEmailDomainResponse>,
+  input: TerminateEmailDomainRequest,
+  output: TerminateEmailDomainResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3036,8 +3958,8 @@ export const updateEmailDomainAccountUsage: API.OperationMethod<
   UpdateEmailDomainAccountUsageError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(157) as any as S.Schema<UpdateEmailDomainAccountUsageRequest>,
-  output: __S(17) as any as S.Schema<UpdateEmailDomainAccountUsageResponse>,
+  input: UpdateEmailDomainAccountUsageRequest,
+  output: UpdateEmailDomainAccountUsageResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3051,8 +3973,8 @@ export const updateEmailDomainDelegatedAccountUsage: API.OperationMethod<
   UpdateEmailDomainDelegatedAccountUsageError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(158) as any as S.Schema<UpdateEmailDomainDelegatedAccountUsageRequest>,
-  output: __S(17) as any as S.Schema<UpdateEmailDomainDelegatedAccountUsageResponse>,
+  input: UpdateEmailDomainDelegatedAccountUsageRequest,
+  output: UpdateEmailDomainDelegatedAccountUsageResponse,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3066,7 +3988,7 @@ function __c0(j: number): any {
         S.Struct({
           domain: S.String.pipe(T.Label()),
           commentary: S.optional(S.String),
-          reason: S.optional(S.String),
+          reason: S.optional(ServiceTerminationReasonEnum),
           token: S.String,
         }).pipe(
           T.Http({ method: "POST", uri: "/email/domain/{domain}/confirmTermination", code: 200 }),
@@ -3093,7 +4015,7 @@ function __c0(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          action: S.optional(S.String),
+          action: S.optional(DomainDomainPopActionEnum),
           date: S.optional(S.String),
           domain: S.optional(S.String),
           id: S.optional(S.Number),
@@ -3137,12 +4059,12 @@ function __c0(j: number): any {
         S.Struct({
           domain: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
-          action: S.String,
+          action: DomainDomainFilterActionEnum,
           actionParam: S.optional(S.String),
           active: S.Boolean,
           header: S.String,
           name: S.String,
-          operand: S.String,
+          operand: DomainDomainFilterOperandEnum,
           priority: S.Number,
           value: S.String,
         }).pipe(
@@ -3210,7 +4132,7 @@ function __c1(j: number): any {
           accountName: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
           header: S.String,
-          operand: S.String,
+          operand: DomainDomainFilterOperandEnum,
           value: S.String,
         }).pipe(
           T.Http({
@@ -3251,7 +4173,9 @@ function __c1(j: number): any {
     case 6:
       return S.Array(S.Number);
     case 7:
-      return S.suspend(() => __S(14).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        CreateEmailDomainChangeContactResponseBodyList.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "CreateEmailDomainChangeContactResponse",
       });
   }
@@ -3263,7 +4187,7 @@ function __c2(j: number): any {
         S.Struct({
           domain: S.String.pipe(T.Label()),
           customTarget: S.optional(S.String),
-          mxFilter: S.String,
+          mxFilter: DomainDomainMXFilterEnum,
           subDomain: S.optional(S.String),
         }).pipe(
           T.Http({ method: "POST", uri: "/email/domain/{domain}/changeDnsMXFilter", code: 200 }),
@@ -3294,12 +4218,12 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           email: S.String.pipe(T.Label()),
-          action: S.String,
+          action: DomainDomainFilterActionEnum,
           actionParam: S.optional(S.String),
           active: S.Boolean,
           header: S.String,
           name: S.String,
-          operand: S.String,
+          operand: DomainDomainFilterOperandEnum,
           priority: S.Number,
           value: S.String,
         }).pipe(
@@ -3350,7 +4274,7 @@ function __c2(j: number): any {
           email: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
           header: S.String,
-          operand: S.String,
+          operand: DomainDomainFilterOperandEnum,
           value: S.String,
         }).pipe(
           T.Http({
@@ -3389,11 +4313,11 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           account: S.optional(S.String),
-          action: S.optional(S.String),
+          action: S.optional(DomainDomainSpecialAccountActionEnum),
           date: S.optional(S.String),
           domain: S.optional(S.String),
           id: S.optional(S.String),
-          type: S.optional(S.String),
+          type: S.optional(DomainDomainSpecialAccountTypeEnum),
         }),
       ).annotate({
         identifier: "EmailDomainTaskSpecialAccount",
@@ -3436,9 +4360,9 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.Label()),
-          language: S.String,
+          language: DomainDomainMlLanguageEnum,
           name: S.String,
-          options: __S(27),
+          options: DomainDomainMlOptionsStruct,
           ownerEmail: S.String,
           replyTo: S.optional(S.String),
         }).pipe(T.Http({ method: "POST", uri: "/email/domain/{domain}/mailingList", code: 200 })),
@@ -3453,7 +4377,7 @@ function __c3(j: number): any {
           date: S.optional(S.String),
           domain: S.optional(S.String),
           id: S.optional(S.Number),
-          language: S.optional(S.String),
+          language: S.optional(DomainDomainMlLanguageEnum),
         }),
       ).annotate({ identifier: "EmailDomainTaskMl" });
     case 6:
@@ -3461,7 +4385,7 @@ function __c3(j: number): any {
         S.Struct({
           domain: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
-          options: __S(27),
+          options: DomainDomainMlOptionsStruct,
         }).pipe(
           T.Http({
             method: "POST",
@@ -3597,13 +4521,15 @@ function __c4(j: number): any {
         identifier: "DeleteEmailDomainAccountFilterRequest",
       });
     case 7:
-      return S.Array(__S(7));
+      return S.Array(EmailDomainTaskFilter);
   }
 }
 function __c5(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => __S(39).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        DeleteEmailDomainAccountFilterResponseBodyList.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "DeleteEmailDomainAccountFilterResponse",
       });
     case 1:
@@ -3769,25 +4695,27 @@ function __c6(j: number): any {
         S.Struct({
           displayName: S.optional(S.NullOr(S.String)),
           id: S.optional(S.String),
-          state: S.optional(S.NullOr(S.String)),
-          tags: S.optional(S.NullOr(__S(53))),
+          state: S.optional(S.NullOr(IamResourceMetadataStateEnum)),
+          tags: S.optional(S.NullOr(IamResourceMetadataTagsMap)),
           urn: S.optional(S.String),
         }),
       ).annotate({ identifier: "IamResourceMetadata" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          allowedAccountSize: S.optional(S.NullOr(__S(14))),
+          allowedAccountSize: S.optional(
+            S.NullOr(EmailDomainDomainServiceWithIAMAllowedAccountSizeList),
+          ),
           creationDate: S.optional(S.NullOr(S.String)),
           domain: S.optional(S.String),
           filerz: S.optional(S.NullOr(S.Number)),
-          iam: S.optional(S.NullOr(__S(54))),
-          isMXValid: S.optional(S.String),
-          isSPFValid: S.optional(S.String),
+          iam: S.optional(S.NullOr(IamResourceMetadata)),
+          isMXValid: S.optional(EmailDomainDiagnoseEnum),
+          isSPFValid: S.optional(EmailDomainDiagnoseEnum),
           linkTo: S.optional(S.NullOr(S.String)),
           migratedMXPlanServiceName: S.optional(S.NullOr(S.String)),
           offer: S.optional(S.NullOr(S.String)),
-          status: S.optional(S.String),
+          status: S.optional(DomainDomainStatusEnum),
         }),
       ).annotate({
         identifier: "EmailDomainDomainServiceWithIAM",
@@ -3853,7 +4781,7 @@ function __c7(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          action: S.optional(S.NullOr(S.String)),
+          action: S.optional(S.NullOr(DomainDomainFilterActionEnum)),
           actionParam: S.optional(S.NullOr(S.String)),
           active: S.optional(S.Boolean),
           domain: S.optional(S.String),
@@ -3884,7 +4812,7 @@ function __c7(j: number): any {
         S.Struct({
           header: S.optional(S.String),
           id: S.optional(S.Number),
-          operand: S.optional(S.String),
+          operand: S.optional(DomainDomainFilterOperandEnum),
           value: S.optional(S.String),
         }),
       ).annotate({ identifier: "EmailDomainRule" });
@@ -3917,7 +4845,7 @@ function __c8(j: number): any {
           creation: S.optional(S.String),
           destinationServiceName: S.optional(S.String),
           expiration: S.optional(S.String),
-          type: S.optional(S.String),
+          type: S.optional(EmailDomainMigrationServiceType),
         }),
       ).annotate({
         identifier: "EmailDomainMigrationService",
@@ -3986,7 +4914,9 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           accountName: S.optional(S.String),
-          allowedAccountSize: S.optional(S.NullOr(__S(14))),
+          allowedAccountSize: S.optional(
+            S.NullOr(EmailDomainAccountDelegatedAllowedAccountSizeList),
+          ),
           description: S.optional(S.String),
           domain: S.optional(S.String),
           email: S.optional(S.String),
@@ -4068,7 +4998,7 @@ function __c9(j: number): any {
         identifier: "GetEmailDomainDnsMXFilterRequest",
       });
     case 4:
-      return S.suspend(() => S.String.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => DomainDomainMXFilterEnum.pipe(T.RawResponseRoot())).annotate({
         identifier: "GetEmailDomainDnsMXFilterResponse",
       });
     case 5:
@@ -4086,11 +5016,11 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.Number),
-          language: S.optional(S.NullOr(S.String)),
+          language: S.optional(S.NullOr(DomainDomainMlLanguageEnum)),
           name: S.optional(S.String),
           nbSubscribers: S.optional(S.NullOr(S.Number)),
           nbSubscribersUpdateDate: S.optional(S.NullOr(S.String)),
-          options: S.optional(__S(27)),
+          options: S.optional(DomainDomainMlOptionsStruct),
           ownerEmail: S.optional(S.String),
           replyTo: S.optional(S.String),
         }),
@@ -4247,11 +5177,11 @@ function __c11(j: number): any {
           domain: S.optional(S.String),
           engagedUpTo: S.optional(S.NullOr(S.String)),
           expiration: S.optional(S.String),
-          possibleRenewPeriod: S.optional(S.NullOr(__S(14))),
-          renew: S.optional(S.NullOr(__S(91))),
-          renewalType: S.optional(S.String),
+          possibleRenewPeriod: S.optional(S.NullOr(ServicesServicePossibleRenewPeriodList)),
+          renew: S.optional(S.NullOr(ServiceRenewType)),
+          renewalType: S.optional(ServiceRenewalTypeEnum),
           serviceId: S.optional(S.Number),
-          status: S.optional(S.String),
+          status: S.optional(ServiceStateEnum),
         }),
       ).annotate({ identifier: "ServicesService" });
     case 5:
@@ -4301,7 +5231,7 @@ function __c12(j: number): any {
           domain: S.optional(S.String),
           function: S.optional(S.String),
           id: S.optional(S.Number),
-          status: S.optional(S.String),
+          status: S.optional(EmailDomainTaskStatusEnum),
         }),
       ).annotate({ identifier: "EmailDomainTask" });
     case 2:
@@ -4349,9 +5279,9 @@ function __c12(j: number): any {
         identifier: "GetEmailDomainTaskResponderRequest",
       });
     case 6:
-      return S.Array(__S(43));
+      return S.Array(IamResourceTagFilterInput);
     case 7:
-      return S.Record(S.String, __S(102));
+      return S.Record(S.String, ListEmailDomainRequestIamTagsValueList);
   }
 }
 function __c13(j: number): any {
@@ -4359,13 +5289,13 @@ function __c13(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          iamTags: S.optional(__S(103).pipe(T.Query())),
+          iamTags: S.optional(ListEmailDomainRequestIamTagsMap.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/email/domain", code: 200 })),
       ).annotate({ identifier: "ListEmailDomainRequest" });
     case 1:
       return S.Array(S.String);
     case 2:
-      return S.suspend(() => __S(105).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => ListEmailDomainResponseBodyList.pipe(T.RawResponseRoot())).annotate({
         identifier: "ListEmailDomainResponse",
       });
     case 3:
@@ -4379,7 +5309,9 @@ function __c13(j: number): any {
         identifier: "ListEmailDomainAccountRequest",
       });
     case 4:
-      return S.suspend(() => __S(105).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        ListEmailDomainAccountResponseBodyList.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "ListEmailDomainAccountResponse",
       });
     case 5:
@@ -4437,7 +5369,7 @@ function __c14(j: number): any {
         S.Struct({
           domain: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
-          type: S.optional(S.String.pipe(T.Query())),
+          type: S.optional(EmailDomainMigrationServiceType.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -4468,7 +5400,11 @@ function __c14(j: number): any {
     case 2:
       return S.Array(S.String);
     case 3:
-      return S.suspend(() => __S(114).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        ListEmailDomainAccountMigrateDestinationEmailAddressResponseBodyList.pipe(
+          T.RawResponseRoot(),
+        ),
+      ).annotate({
         identifier: "ListEmailDomainAccountMigrateDestinationEmailAddressResponse",
       });
     case 4:
@@ -4491,22 +5427,22 @@ function __c14(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          code: S.optional(S.String),
+          code: S.optional(EmailDomainMigrationCheckCodeEnum),
           details: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
         identifier: "EmailDomainMigrationCheckResultStruct",
       });
     case 6:
-      return S.Array(__S(117));
+      return S.Array(EmailDomainMigrationCheckResultStruct);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          alias: S.optional(S.NullOr(__S(105))),
-          error: S.optional(S.NullOr(__S(118))),
-          filter: S.optional(S.NullOr(__S(105))),
-          forward: S.optional(S.NullOr(__S(105))),
-          warning: S.optional(S.NullOr(__S(118))),
+          alias: S.optional(S.NullOr(EmailDomainMigrationCheckStructAliasList)),
+          error: S.optional(S.NullOr(EmailDomainMigrationCheckStructErrorList)),
+          filter: S.optional(S.NullOr(EmailDomainMigrationCheckStructFilterList)),
+          forward: S.optional(S.NullOr(EmailDomainMigrationCheckStructForwardList)),
+          warning: S.optional(S.NullOr(EmailDomainMigrationCheckStructWarningList)),
         }),
       ).annotate({
         identifier: "EmailDomainMigrationCheckStruct",
@@ -4574,18 +5510,18 @@ function __c15(j: number): any {
         S.Struct({
           cname: S.optional(S.String),
           selectorName: S.optional(S.String),
-          status: S.optional(S.String),
+          status: S.optional(EmailDomainDKIMSelectorStatusEnum),
         }),
       ).annotate({ identifier: "EmailDomainDKIMSelector" });
     case 6:
-      return S.Array(__S(125));
+      return S.Array(EmailDomainDKIMSelector);
     case 7:
       return S.suspend(() =>
         S.Struct({
           activeSelector: S.optional(S.NullOr(S.String)),
           autoconfig: S.optional(S.NullOr(S.Boolean)),
-          selectors: S.optional(S.NullOr(__S(126))),
-          status: S.optional(S.String),
+          selectors: S.optional(S.NullOr(EmailDomainDkimSimplifiedSelectorsList)),
+          status: S.optional(EmailDomainDKIMStatusEnum),
         }),
       ).annotate({
         identifier: "EmailDomainDkimSimplified",
@@ -4657,7 +5593,7 @@ function __c16(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          fieldType: S.optional(S.String),
+          fieldType: S.optional(EmailDomainDnsRecordTypeEnum),
           id: S.optional(S.Number),
           subDomain: S.optional(S.NullOr(S.String)),
           target: S.optional(S.String),
@@ -4666,9 +5602,11 @@ function __c16(j: number): any {
         }),
       ).annotate({ identifier: "EmailDomainRecord" });
     case 6:
-      return S.Array(__S(133));
+      return S.Array(EmailDomainRecord);
     case 7:
-      return S.suspend(() => __S(134).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        ListEmailDomainRecommendedDNSRecordsResponseBodyList.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "ListEmailDomainRecommendedDNSRecordsResponse",
       });
   }
@@ -4850,7 +5788,7 @@ function __c18(j: number): any {
         S.Struct({
           domain: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
-          language: S.optional(S.NullOr(S.String)),
+          language: S.optional(S.NullOr(DomainDomainMlLanguageEnum)),
           ownerEmail: S.optional(S.String),
           replyTo: S.optional(S.String),
         }).pipe(
@@ -4885,7 +5823,7 @@ function __c19(j: number): any {
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.Label()),
-          renew: S.optional(S.NullOr(__S(91))),
+          renew: S.optional(S.NullOr(ServiceRenewType)),
         }).pipe(T.Http({ method: "PUT", uri: "/email/domain/{domain}/serviceInfos", code: 200 })),
       ).annotate({
         identifier: "PutEmailDomainServiceInfosRequest",
@@ -4943,54 +5881,5 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "UpdateEmailDomainDelegatedAccountUsageRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
-    case 9:
-      return __c9(i & 7);
-    case 10:
-      return __c10(i & 7);
-    case 11:
-      return __c11(i & 7);
-    case 12:
-      return __c12(i & 7);
-    case 13:
-      return __c13(i & 7);
-    case 14:
-      return __c14(i & 7);
-    case 15:
-      return __c15(i & 7);
-    case 16:
-      return __c16(i & 7);
-    case 17:
-      return __c17(i & 7);
-    case 18:
-      return __c18(i & 7);
-    case 19:
-      return __c19(i & 7);
   }
 }

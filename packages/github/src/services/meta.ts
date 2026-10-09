@@ -6,8 +6,6 @@ import * as S from "@distilled.cloud/core/schema";
 import { GithubProtocol, type GithubOpError, type GithubOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { GithubOpError, GithubOpContext };
 
@@ -21,44 +19,126 @@ export class NotFound
   ) {}
 
 export interface GetRequest {}
+const GetRequest = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<GetRequest>;
+
 export interface ApiOverviewSshKeyFingerprints {
   SHA256_RSA?: string;
   SHA256_DSA?: string;
   SHA256_ECDSA?: string;
   SHA256_ED25519?: string;
 }
+const ApiOverviewSshKeyFingerprints = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<ApiOverviewSshKeyFingerprints>;
+
 export type ApiOverviewSshKeysList = Array<string>;
+const ApiOverviewSshKeysList = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<ApiOverviewSshKeysList>;
+
 export type ApiOverviewHooksList = Array<string>;
+const ApiOverviewHooksList = ApiOverviewSshKeysList as any as S.Schema<ApiOverviewHooksList>;
+
 export type ApiOverviewGithubEnterpriseImporterList = Array<string>;
+const ApiOverviewGithubEnterpriseImporterList =
+  ApiOverviewSshKeysList as any as S.Schema<ApiOverviewGithubEnterpriseImporterList>;
+
 export type ApiOverviewWebList = Array<string>;
+const ApiOverviewWebList = ApiOverviewSshKeysList as any as S.Schema<ApiOverviewWebList>;
+
 export type ApiOverviewApiList = Array<string>;
+const ApiOverviewApiList = ApiOverviewSshKeysList as any as S.Schema<ApiOverviewApiList>;
+
 export type ApiOverviewGitList = Array<string>;
+const ApiOverviewGitList = ApiOverviewSshKeysList as any as S.Schema<ApiOverviewGitList>;
+
 export type ApiOverviewPackagesList = Array<string>;
+const ApiOverviewPackagesList = ApiOverviewSshKeysList as any as S.Schema<ApiOverviewPackagesList>;
+
 export type ApiOverviewPagesList = Array<string>;
+const ApiOverviewPagesList = ApiOverviewSshKeysList as any as S.Schema<ApiOverviewPagesList>;
+
 export type ApiOverviewImporterList = Array<string>;
+const ApiOverviewImporterList = ApiOverviewSshKeysList as any as S.Schema<ApiOverviewImporterList>;
+
 export type ApiOverviewActionsList = Array<string>;
+const ApiOverviewActionsList = ApiOverviewSshKeysList as any as S.Schema<ApiOverviewActionsList>;
+
 export type ApiOverviewActionsMacosList = Array<string>;
+const ApiOverviewActionsMacosList =
+  ApiOverviewSshKeysList as any as S.Schema<ApiOverviewActionsMacosList>;
+
 export type ApiOverviewCodespacesList = Array<string>;
+const ApiOverviewCodespacesList =
+  ApiOverviewSshKeysList as any as S.Schema<ApiOverviewCodespacesList>;
+
 export type ApiOverviewDependabotList = Array<string>;
+const ApiOverviewDependabotList =
+  ApiOverviewSshKeysList as any as S.Schema<ApiOverviewDependabotList>;
+
 export type ApiOverviewCopilotList = Array<string>;
+const ApiOverviewCopilotList = ApiOverviewSshKeysList as any as S.Schema<ApiOverviewCopilotList>;
+
 export type ApiOverviewCommitSigningKeysList = Array<string>;
+const ApiOverviewCommitSigningKeysList =
+  ApiOverviewSshKeysList as any as S.Schema<ApiOverviewCommitSigningKeysList>;
+
 export type ApiOverviewDomainsWebsiteList = Array<string>;
+const ApiOverviewDomainsWebsiteList =
+  ApiOverviewSshKeysList as any as S.Schema<ApiOverviewDomainsWebsiteList>;
+
 export type ApiOverviewDomainsCodespacesList = Array<string>;
+const ApiOverviewDomainsCodespacesList =
+  ApiOverviewSshKeysList as any as S.Schema<ApiOverviewDomainsCodespacesList>;
+
 export type ApiOverviewDomainsCopilotList = Array<string>;
+const ApiOverviewDomainsCopilotList =
+  ApiOverviewSshKeysList as any as S.Schema<ApiOverviewDomainsCopilotList>;
+
 export type ApiOverviewDomainsPackagesList = Array<string>;
+const ApiOverviewDomainsPackagesList =
+  ApiOverviewSshKeysList as any as S.Schema<ApiOverviewDomainsPackagesList>;
+
 export type ApiOverviewDomainsStorageList = Array<string>;
+const ApiOverviewDomainsStorageList =
+  ApiOverviewSshKeysList as any as S.Schema<ApiOverviewDomainsStorageList>;
+
 export type ApiOverviewDomainsActionsList = Array<string>;
+const ApiOverviewDomainsActionsList =
+  ApiOverviewSshKeysList as any as S.Schema<ApiOverviewDomainsActionsList>;
+
 export type ApiOverviewDomainsActionsInboundFullDomainsList = Array<string>;
+const ApiOverviewDomainsActionsInboundFullDomainsList =
+  ApiOverviewSshKeysList as any as S.Schema<ApiOverviewDomainsActionsInboundFullDomainsList>;
+
 export type ApiOverviewDomainsActionsInboundWildcardDomainsList = Array<string>;
+const ApiOverviewDomainsActionsInboundWildcardDomainsList =
+  ApiOverviewSshKeysList as any as S.Schema<ApiOverviewDomainsActionsInboundWildcardDomainsList>;
+
 export interface ApiOverviewDomainsActionsInbound {
   full_domains?: ApiOverviewDomainsActionsInboundFullDomainsList;
   wildcard_domains?: ApiOverviewDomainsActionsInboundWildcardDomainsList;
 }
+const ApiOverviewDomainsActionsInbound = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<ApiOverviewDomainsActionsInbound>;
+
 export type ApiOverviewDomainsArtifactAttestationsServicesList = Array<string>;
+const ApiOverviewDomainsArtifactAttestationsServicesList =
+  ApiOverviewSshKeysList as any as S.Schema<ApiOverviewDomainsArtifactAttestationsServicesList>;
+
 export interface ApiOverviewDomainsArtifactAttestations {
   trust_domain?: string;
   services?: ApiOverviewDomainsArtifactAttestationsServicesList;
 }
+const ApiOverviewDomainsArtifactAttestations = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<ApiOverviewDomainsArtifactAttestations>;
+
 export interface ApiOverviewDomains {
   website?: ApiOverviewDomainsWebsiteList;
   codespaces?: ApiOverviewDomainsCodespacesList;
@@ -69,6 +149,8 @@ export interface ApiOverviewDomains {
   actions_inbound?: ApiOverviewDomainsActionsInbound;
   artifact_attestations?: ApiOverviewDomainsArtifactAttestations;
 }
+const ApiOverviewDomains = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<ApiOverviewDomains>;
+
 /** Api Overview */
 export interface ApiOverview {
   verifiable_password_authentication: boolean;
@@ -90,17 +172,42 @@ export interface ApiOverview {
   commit_signing_keys?: ApiOverviewCommitSigningKeysList;
   domains?: ApiOverviewDomains;
 }
+const ApiOverview = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<ApiOverview>;
+
 export interface GetAllVersionsRequest {}
+const GetAllVersionsRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<GetAllVersionsRequest>;
+
 export type GetAllVersionsResponseBodyList = Array<string>;
+const GetAllVersionsResponseBodyList =
+  ApiOverviewSshKeysList as any as S.Schema<GetAllVersionsResponseBodyList>;
+
 export type GetAllVersionsResponse = GetAllVersionsResponseBodyList;
+const GetAllVersionsResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<GetAllVersionsResponse>;
+
 export interface GetOctocatRequest {
   /** The words to show in Octocat's speech bubble */
   s?: string;
 }
+const GetOctocatRequest = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<GetOctocatRequest>;
+
 export interface GetOctocatResponse {}
+const GetOctocatResponse = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<GetOctocatResponse>;
+
 export interface GetZenRequest {}
+const GetZenRequest = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<GetZenRequest>;
+
 export interface GetZenResponse {}
+const GetZenResponse = GetOctocatResponse as any as S.Schema<GetZenResponse>;
+
 export interface Root2Request {}
+const Root2Request = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<Root2Request>;
+
 export interface Root {
   current_user_url: string;
   current_user_authorizations_html_url: string;
@@ -136,12 +243,14 @@ export interface Root {
   user_repositories_url: string;
   user_search_url: string;
 }
+const Root = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<Root>;
+
 export type GetError = GithubOpError;
 /** Get GitHub meta information Returns meta information about GitHub, including a list of GitHub's IP addresses. For more information, see "[About GitHub's IP addresses](https://docs.github.com/articles/about-github-s-ip-addresses/)." The API's response also includes a list of GitHub's domain names, and the public keys used by GitHub to sign commits made through the web UI. The values shown in the documentation's response are example values. You must always query the API directly to get the latest values. > [!NOTE] > This endpoint returns both IPv4 and IPv6 addresses. However, not all features support IPv6. You should refer to the specific documentation for each feature to determine if IPv6 is supported. */
 export const get: API.OperationMethod<GetRequest, ApiOverview, GetError, GithubOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(0) as any as S.Schema<GetRequest>,
-    output: __S(6) as any as S.Schema<ApiOverview>,
+    input: GetRequest,
+    output: ApiOverview,
     errors: [],
     protocol: GithubProtocol,
     retry: Retry.Retry,
@@ -155,8 +264,8 @@ export const getAllVersions: API.OperationMethod<
   GetAllVersionsError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7) as any as S.Schema<GetAllVersionsRequest>,
-  output: __S(8) as any as S.Schema<GetAllVersionsResponse>,
+  input: GetAllVersionsRequest,
+  output: GetAllVersionsResponse,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -170,8 +279,8 @@ export const getOctocat: API.OperationMethod<
   GetOctocatError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9) as any as S.Schema<GetOctocatRequest>,
-  output: __S(10) as any as S.Schema<GetOctocatResponse>,
+  input: GetOctocatRequest,
+  output: GetOctocatResponse,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -185,8 +294,8 @@ export const getZen: API.OperationMethod<
   GetZenError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11) as any as S.Schema<GetZenRequest>,
-  output: __S(10) as any as S.Schema<GetZenResponse>,
+  input: GetZenRequest,
+  output: GetZenResponse,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -196,8 +305,8 @@ export type Root2Error = GithubOpError;
 /** GitHub API Root Get Hypermedia links to resources accessible in GitHub's REST API */
 export const root2: API.OperationMethod<Root2Request, Root, Root2Error, GithubOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(12) as any as S.Schema<Root2Request>,
-    output: __S(13) as any as S.Schema<Root>,
+    input: Root2Request,
+    output: Root,
     errors: [],
     protocol: GithubProtocol,
     retry: Retry.Retry,
@@ -226,8 +335,8 @@ function __c0(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          full_domains: S.optional(__S(2)),
-          wildcard_domains: S.optional(__S(2)),
+          full_domains: S.optional(ApiOverviewDomainsActionsInboundFullDomainsList),
+          wildcard_domains: S.optional(ApiOverviewDomainsActionsInboundWildcardDomainsList),
         }),
       ).annotate({
         identifier: "ApiOverviewDomainsActionsInbound",
@@ -236,7 +345,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           trust_domain: S.optional(S.String),
-          services: S.optional(__S(2)),
+          services: S.optional(ApiOverviewDomainsArtifactAttestationsServicesList),
         }),
       ).annotate({
         identifier: "ApiOverviewDomainsArtifactAttestations",
@@ -244,37 +353,37 @@ function __c0(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          website: S.optional(__S(2)),
-          codespaces: S.optional(__S(2)),
-          copilot: S.optional(__S(2)),
-          packages: S.optional(__S(2)),
-          storage: S.optional(__S(2)),
-          actions: S.optional(__S(2)),
-          actions_inbound: S.optional(__S(3)),
-          artifact_attestations: S.optional(__S(4)),
+          website: S.optional(ApiOverviewDomainsWebsiteList),
+          codespaces: S.optional(ApiOverviewDomainsCodespacesList),
+          copilot: S.optional(ApiOverviewDomainsCopilotList),
+          packages: S.optional(ApiOverviewDomainsPackagesList),
+          storage: S.optional(ApiOverviewDomainsStorageList),
+          actions: S.optional(ApiOverviewDomainsActionsList),
+          actions_inbound: S.optional(ApiOverviewDomainsActionsInbound),
+          artifact_attestations: S.optional(ApiOverviewDomainsArtifactAttestations),
         }),
       ).annotate({ identifier: "ApiOverviewDomains" });
     case 6:
       return S.suspend(() =>
         S.Struct({
           verifiable_password_authentication: S.Boolean,
-          ssh_key_fingerprints: S.optional(__S(1)),
-          ssh_keys: S.optional(__S(2)),
-          hooks: S.optional(__S(2)),
-          github_enterprise_importer: S.optional(__S(2)),
-          web: S.optional(__S(2)),
-          api: S.optional(__S(2)),
-          git: S.optional(__S(2)),
-          packages: S.optional(__S(2)),
-          pages: S.optional(__S(2)),
-          importer: S.optional(__S(2)),
-          actions: S.optional(__S(2)),
-          actions_macos: S.optional(__S(2)),
-          codespaces: S.optional(__S(2)),
-          dependabot: S.optional(__S(2)),
-          copilot: S.optional(__S(2)),
-          commit_signing_keys: S.optional(__S(2)),
-          domains: S.optional(__S(5)),
+          ssh_key_fingerprints: S.optional(ApiOverviewSshKeyFingerprints),
+          ssh_keys: S.optional(ApiOverviewSshKeysList),
+          hooks: S.optional(ApiOverviewHooksList),
+          github_enterprise_importer: S.optional(ApiOverviewGithubEnterpriseImporterList),
+          web: S.optional(ApiOverviewWebList),
+          api: S.optional(ApiOverviewApiList),
+          git: S.optional(ApiOverviewGitList),
+          packages: S.optional(ApiOverviewPackagesList),
+          pages: S.optional(ApiOverviewPagesList),
+          importer: S.optional(ApiOverviewImporterList),
+          actions: S.optional(ApiOverviewActionsList),
+          actions_macos: S.optional(ApiOverviewActionsMacosList),
+          codespaces: S.optional(ApiOverviewCodespacesList),
+          dependabot: S.optional(ApiOverviewDependabotList),
+          copilot: S.optional(ApiOverviewCopilotList),
+          commit_signing_keys: S.optional(ApiOverviewCommitSigningKeysList),
+          domains: S.optional(ApiOverviewDomains),
         }),
       ).annotate({ identifier: "ApiOverview" });
     case 7:
@@ -286,7 +395,7 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => __S(2).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => GetAllVersionsResponseBodyList.pipe(T.RawResponseRoot())).annotate({
         identifier: "GetAllVersionsResponse",
       });
     case 1:
@@ -345,18 +454,5 @@ function __c1(j: number): any {
           user_search_url: S.String,
         }),
       ).annotate({ identifier: "Root" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
   }
 }

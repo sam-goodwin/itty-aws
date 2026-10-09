@@ -8,8 +8,6 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 const ns = /*@__PURE__*/ T.XmlNamespace("http://swf.amazonaws.com/doc/2012-01-25");
 const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "SWF",
@@ -141,20 +139,27 @@ export interface ExecutionTimeFilter {
   oldestDate: Date;
   latestDate?: Date;
 }
+const ExecutionTimeFilter = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<ExecutionTimeFilter>;
 export type WorkflowId = string;
 export interface WorkflowExecutionFilter {
   workflowId: string;
 }
+const WorkflowExecutionFilter = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<WorkflowExecutionFilter>;
 export type Name = string;
 export type VersionOptional = string;
 export interface WorkflowTypeFilter {
   name: string;
   version?: string;
 }
+const WorkflowTypeFilter = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<WorkflowTypeFilter>;
 export type Tag = string;
 export interface TagFilter {
   tag: string;
 }
+const TagFilter = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<TagFilter>;
 export type CloseStatus =
   | "COMPLETED"
   | "FAILED"
@@ -163,9 +168,12 @@ export type CloseStatus =
   | "CONTINUED_AS_NEW"
   | "TIMED_OUT"
   | (string & {});
+const CloseStatus = S.String;
+
 export interface CloseStatusFilter {
   status: CloseStatus;
 }
+const CloseStatusFilter = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<CloseStatusFilter>;
 export interface CountClosedWorkflowExecutionsInput {
   domain: string;
   startTimeFilter?: ExecutionTimeFilter;
@@ -175,12 +183,20 @@ export interface CountClosedWorkflowExecutionsInput {
   tagFilter?: TagFilter;
   closeStatusFilter?: CloseStatusFilter;
 }
+const CountClosedWorkflowExecutionsInput = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<CountClosedWorkflowExecutionsInput>;
 export type Count = number;
 export type Truncated = boolean;
 export interface WorkflowExecutionCount {
   count: number;
   truncated?: boolean;
 }
+const WorkflowExecutionCount = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<WorkflowExecutionCount>;
 export interface CountOpenWorkflowExecutionsInput {
   domain: string;
   startTimeFilter: ExecutionTimeFilter;
@@ -188,59 +204,112 @@ export interface CountOpenWorkflowExecutionsInput {
   tagFilter?: TagFilter;
   executionFilter?: WorkflowExecutionFilter;
 }
+const CountOpenWorkflowExecutionsInput = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<CountOpenWorkflowExecutionsInput>;
 export interface TaskList {
   name: string;
 }
+const TaskList = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<TaskList>;
 export interface CountPendingActivityTasksInput {
   domain: string;
   taskList: TaskList;
 }
+const CountPendingActivityTasksInput = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<CountPendingActivityTasksInput>;
 export interface PendingTaskCount {
   count: number;
   truncated?: boolean;
 }
+const PendingTaskCount = WorkflowExecutionCount as any as S.Schema<PendingTaskCount>;
 export interface CountPendingDecisionTasksInput {
   domain: string;
   taskList: TaskList;
 }
+const CountPendingDecisionTasksInput = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<CountPendingDecisionTasksInput>;
 export type Version = string;
 export interface ActivityType {
   name: string;
   version: string;
 }
+const ActivityType = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<ActivityType>;
 export interface DeleteActivityTypeInput {
   domain: string;
   activityType: ActivityType;
 }
+const DeleteActivityTypeInput = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<DeleteActivityTypeInput>;
 export interface DeleteActivityTypeResponse {}
+const DeleteActivityTypeResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<DeleteActivityTypeResponse>;
 export interface WorkflowType {
   name: string;
   version: string;
 }
+const WorkflowType = ActivityType as any as S.Schema<WorkflowType>;
 export interface DeleteWorkflowTypeInput {
   domain: string;
   workflowType: WorkflowType;
 }
+const DeleteWorkflowTypeInput = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<DeleteWorkflowTypeInput>;
 export interface DeleteWorkflowTypeResponse {}
+const DeleteWorkflowTypeResponse =
+  DeleteActivityTypeResponse as any as S.Schema<DeleteWorkflowTypeResponse>;
 export interface DeprecateActivityTypeInput {
   domain: string;
   activityType: ActivityType;
 }
+const DeprecateActivityTypeInput = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<DeprecateActivityTypeInput>;
 export interface DeprecateActivityTypeResponse {}
+const DeprecateActivityTypeResponse =
+  DeleteActivityTypeResponse as any as S.Schema<DeprecateActivityTypeResponse>;
 export interface DeprecateDomainInput {
   name: string;
 }
+const DeprecateDomainInput = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<DeprecateDomainInput>;
 export interface DeprecateDomainResponse {}
+const DeprecateDomainResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<DeprecateDomainResponse>;
 export interface DeprecateWorkflowTypeInput {
   domain: string;
   workflowType: WorkflowType;
 }
+const DeprecateWorkflowTypeInput = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<DeprecateWorkflowTypeInput>;
 export interface DeprecateWorkflowTypeResponse {}
+const DeprecateWorkflowTypeResponse =
+  DeleteActivityTypeResponse as any as S.Schema<DeprecateWorkflowTypeResponse>;
 export interface DescribeActivityTypeInput {
   domain: string;
   activityType: ActivityType;
 }
+const DescribeActivityTypeInput = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<DescribeActivityTypeInput>;
 export type RegistrationStatus = "REGISTERED" | "DEPRECATED" | (string & {});
+const RegistrationStatus = S.String;
+
 export type Description = string;
 export interface ActivityTypeInfo {
   activityType: ActivityType;
@@ -249,6 +318,7 @@ export interface ActivityTypeInfo {
   creationDate: Date;
   deprecationDate?: Date;
 }
+const ActivityTypeInfo = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<ActivityTypeInfo>;
 export type DurationInSecondsOptional = string;
 export type TaskPriority = string;
 export interface ActivityTypeConfiguration {
@@ -259,13 +329,19 @@ export interface ActivityTypeConfiguration {
   defaultTaskScheduleToStartTimeout?: string;
   defaultTaskScheduleToCloseTimeout?: string;
 }
+const ActivityTypeConfiguration = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<ActivityTypeConfiguration>;
 export interface ActivityTypeDetail {
   typeInfo: ActivityTypeInfo;
   configuration: ActivityTypeConfiguration;
 }
+const ActivityTypeDetail = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<ActivityTypeDetail>;
 export interface DescribeDomainInput {
   name: string;
 }
+const DescribeDomainInput = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<DescribeDomainInput>;
 export type Arn = string;
 export interface DomainInfo {
   name: string;
@@ -273,25 +349,36 @@ export interface DomainInfo {
   description?: string;
   arn?: string;
 }
+const DomainInfo = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<DomainInfo>;
 export type DurationInDays = string;
 export interface DomainConfiguration {
   workflowExecutionRetentionPeriodInDays: string;
 }
+const DomainConfiguration = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<DomainConfiguration>;
 export interface DomainDetail {
   domainInfo: DomainInfo;
   configuration: DomainConfiguration;
 }
+const DomainDetail = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<DomainDetail>;
 export type WorkflowRunId = string;
 export interface WorkflowExecution {
   workflowId: string;
   runId: string;
 }
+const WorkflowExecution = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<WorkflowExecution>;
 export interface DescribeWorkflowExecutionInput {
   domain: string;
   execution: WorkflowExecution;
 }
+const DescribeWorkflowExecutionInput = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<DescribeWorkflowExecutionInput>;
 export type ExecutionStatus = "OPEN" | "CLOSED" | (string & {});
+const ExecutionStatus = S.String;
+
 export type TagList = string[];
+const TagList = /*@__PURE__*/ __L.at(__c3, 5);
 export type Canceled = boolean;
 export interface WorkflowExecutionInfo {
   execution: WorkflowExecution;
@@ -304,8 +391,14 @@ export interface WorkflowExecutionInfo {
   tagList?: string[];
   cancelRequested?: boolean;
 }
+const WorkflowExecutionInfo = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<WorkflowExecutionInfo>;
 export type DurationInSeconds = string;
 export type ChildPolicy = "TERMINATE" | "REQUEST_CANCEL" | "ABANDON" | (string & {});
+const ChildPolicy = S.String;
+
 export interface WorkflowExecutionConfiguration {
   taskStartToCloseTimeout: string;
   executionStartToCloseTimeout: string;
@@ -314,6 +407,10 @@ export interface WorkflowExecutionConfiguration {
   childPolicy: ChildPolicy;
   lambdaRole?: string;
 }
+const WorkflowExecutionConfiguration = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<WorkflowExecutionConfiguration>;
 export type OpenDecisionTasksCount = number;
 export interface WorkflowExecutionOpenCounts {
   openActivityTasks: number;
@@ -322,6 +419,10 @@ export interface WorkflowExecutionOpenCounts {
   openChildWorkflowExecutions: number;
   openLambdaFunctions?: number;
 }
+const WorkflowExecutionOpenCounts = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<WorkflowExecutionOpenCounts>;
 export type Data = string;
 export interface WorkflowExecutionDetail {
   executionInfo: WorkflowExecutionInfo;
@@ -330,10 +431,18 @@ export interface WorkflowExecutionDetail {
   latestActivityTaskTimestamp?: Date;
   latestExecutionContext?: string;
 }
+const WorkflowExecutionDetail = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<WorkflowExecutionDetail>;
 export interface DescribeWorkflowTypeInput {
   domain: string;
   workflowType: WorkflowType;
 }
+const DescribeWorkflowTypeInput = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<DescribeWorkflowTypeInput>;
 export interface WorkflowTypeInfo {
   workflowType: WorkflowType;
   status: RegistrationStatus;
@@ -341,6 +450,7 @@ export interface WorkflowTypeInfo {
   creationDate: Date;
   deprecationDate?: Date;
 }
+const WorkflowTypeInfo = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<WorkflowTypeInfo>;
 export interface WorkflowTypeConfiguration {
   defaultTaskStartToCloseTimeout?: string;
   defaultExecutionStartToCloseTimeout?: string;
@@ -349,10 +459,15 @@ export interface WorkflowTypeConfiguration {
   defaultChildPolicy?: ChildPolicy;
   defaultLambdaRole?: string;
 }
+const WorkflowTypeConfiguration = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<WorkflowTypeConfiguration>;
 export interface WorkflowTypeDetail {
   typeInfo: WorkflowTypeInfo;
   configuration: WorkflowTypeConfiguration;
 }
+const WorkflowTypeDetail = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<WorkflowTypeDetail>;
 export type PageToken = string;
 export type PageSize = number;
 export type ReverseOrder = boolean;
@@ -363,6 +478,10 @@ export interface GetWorkflowExecutionHistoryInput {
   maximumPageSize?: number;
   reverseOrder?: boolean;
 }
+const GetWorkflowExecutionHistoryInput = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<GetWorkflowExecutionHistoryInput>;
 export type EventType =
   | "WorkflowExecutionStarted"
   | "WorkflowExecutionCancelRequested"
@@ -419,6 +538,8 @@ export type EventType =
   | "ScheduleLambdaFunctionFailed"
   | "StartLambdaFunctionFailed"
   | (string & {});
+const EventType = S.String;
+
 export type EventId = number;
 export type WorkflowRunIdOptional = string;
 export interface WorkflowExecutionStartedEventAttributes {
@@ -435,24 +556,42 @@ export interface WorkflowExecutionStartedEventAttributes {
   parentInitiatedEventId?: number;
   lambdaRole?: string;
 }
+const WorkflowExecutionStartedEventAttributes = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<WorkflowExecutionStartedEventAttributes>;
 export interface WorkflowExecutionCompletedEventAttributes {
   result?: string;
   decisionTaskCompletedEventId: number;
 }
+const WorkflowExecutionCompletedEventAttributes = /*@__PURE__*/ __L.at(
+  __c5,
+  0,
+) as any as S.Schema<WorkflowExecutionCompletedEventAttributes>;
 export type CompleteWorkflowExecutionFailedCause =
   | "UNHANDLED_DECISION"
   | "OPERATION_NOT_PERMITTED"
   | (string & {});
+const CompleteWorkflowExecutionFailedCause = S.String;
+
 export interface CompleteWorkflowExecutionFailedEventAttributes {
   cause: CompleteWorkflowExecutionFailedCause;
   decisionTaskCompletedEventId: number;
 }
+const CompleteWorkflowExecutionFailedEventAttributes = /*@__PURE__*/ __L.at(
+  __c5,
+  1,
+) as any as S.Schema<CompleteWorkflowExecutionFailedEventAttributes>;
 export type FailureReason = string;
 export interface WorkflowExecutionFailedEventAttributes {
   reason?: string;
   details?: string;
   decisionTaskCompletedEventId: number;
 }
+const WorkflowExecutionFailedEventAttributes = /*@__PURE__*/ __L.at(
+  __c5,
+  2,
+) as any as S.Schema<WorkflowExecutionFailedEventAttributes>;
 export type FailWorkflowExecutionFailedCause =
   | "UNHANDLED_DECISION"
   | "OPERATION_NOT_PERMITTED"
@@ -461,15 +600,27 @@ export interface FailWorkflowExecutionFailedEventAttributes {
   cause: FailWorkflowExecutionFailedCause;
   decisionTaskCompletedEventId: number;
 }
+const FailWorkflowExecutionFailedEventAttributes =
+  CompleteWorkflowExecutionFailedEventAttributes as any as S.Schema<FailWorkflowExecutionFailedEventAttributes>;
 export type WorkflowExecutionTimeoutType = "START_TO_CLOSE" | (string & {});
+const WorkflowExecutionTimeoutType = S.String;
+
 export interface WorkflowExecutionTimedOutEventAttributes {
   timeoutType: WorkflowExecutionTimeoutType;
   childPolicy: ChildPolicy;
 }
+const WorkflowExecutionTimedOutEventAttributes = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<WorkflowExecutionTimedOutEventAttributes>;
 export interface WorkflowExecutionCanceledEventAttributes {
   details?: string;
   decisionTaskCompletedEventId: number;
 }
+const WorkflowExecutionCanceledEventAttributes = /*@__PURE__*/ __L.at(
+  __c5,
+  4,
+) as any as S.Schema<WorkflowExecutionCanceledEventAttributes>;
 export type CancelWorkflowExecutionFailedCause =
   | "UNHANDLED_DECISION"
   | "OPERATION_NOT_PERMITTED"
@@ -478,6 +629,8 @@ export interface CancelWorkflowExecutionFailedEventAttributes {
   cause: CancelWorkflowExecutionFailedCause;
   decisionTaskCompletedEventId: number;
 }
+const CancelWorkflowExecutionFailedEventAttributes =
+  CompleteWorkflowExecutionFailedEventAttributes as any as S.Schema<CancelWorkflowExecutionFailedEventAttributes>;
 export interface WorkflowExecutionContinuedAsNewEventAttributes {
   input?: string;
   decisionTaskCompletedEventId: number;
@@ -491,6 +644,10 @@ export interface WorkflowExecutionContinuedAsNewEventAttributes {
   workflowType: WorkflowType;
   lambdaRole?: string;
 }
+const WorkflowExecutionContinuedAsNewEventAttributes = /*@__PURE__*/ __L.at(
+  __c5,
+  5,
+) as any as S.Schema<WorkflowExecutionContinuedAsNewEventAttributes>;
 export type ContinueAsNewWorkflowExecutionFailedCause =
   | "UNHANDLED_DECISION"
   | "WORKFLOW_TYPE_DEPRECATED"
@@ -502,39 +659,65 @@ export type ContinueAsNewWorkflowExecutionFailedCause =
   | "CONTINUE_AS_NEW_WORKFLOW_EXECUTION_RATE_EXCEEDED"
   | "OPERATION_NOT_PERMITTED"
   | (string & {});
+const ContinueAsNewWorkflowExecutionFailedCause = S.String;
+
 export interface ContinueAsNewWorkflowExecutionFailedEventAttributes {
   cause: ContinueAsNewWorkflowExecutionFailedCause;
   decisionTaskCompletedEventId: number;
 }
+const ContinueAsNewWorkflowExecutionFailedEventAttributes = /*@__PURE__*/ __L.at(
+  __c5,
+  6,
+) as any as S.Schema<ContinueAsNewWorkflowExecutionFailedEventAttributes>;
 export type TerminateReason = string;
 export type WorkflowExecutionTerminatedCause =
   | "CHILD_POLICY_APPLIED"
   | "EVENT_LIMIT_EXCEEDED"
   | "OPERATOR_INITIATED"
   | (string & {});
+const WorkflowExecutionTerminatedCause = S.String;
+
 export interface WorkflowExecutionTerminatedEventAttributes {
   reason?: string;
   details?: string;
   childPolicy: ChildPolicy;
   cause?: WorkflowExecutionTerminatedCause;
 }
+const WorkflowExecutionTerminatedEventAttributes = /*@__PURE__*/ __L.at(
+  __c5,
+  7,
+) as any as S.Schema<WorkflowExecutionTerminatedEventAttributes>;
 export type WorkflowExecutionCancelRequestedCause = "CHILD_POLICY_APPLIED" | (string & {});
+const WorkflowExecutionCancelRequestedCause = S.String;
+
 export interface WorkflowExecutionCancelRequestedEventAttributes {
   externalWorkflowExecution?: WorkflowExecution;
   externalInitiatedEventId?: number;
   cause?: WorkflowExecutionCancelRequestedCause;
 }
+const WorkflowExecutionCancelRequestedEventAttributes = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<WorkflowExecutionCancelRequestedEventAttributes>;
 export interface DecisionTaskScheduledEventAttributes {
   taskList: TaskList;
   taskPriority?: string;
   startToCloseTimeout?: string;
   scheduleToStartTimeout?: string;
 }
+const DecisionTaskScheduledEventAttributes = /*@__PURE__*/ __L.at(
+  __c6,
+  1,
+) as any as S.Schema<DecisionTaskScheduledEventAttributes>;
 export type Identity = string;
 export interface DecisionTaskStartedEventAttributes {
   identity?: string;
   scheduledEventId: number;
 }
+const DecisionTaskStartedEventAttributes = /*@__PURE__*/ __L.at(
+  __c6,
+  2,
+) as any as S.Schema<DecisionTaskStartedEventAttributes>;
 export interface DecisionTaskCompletedEventAttributes {
   executionContext?: string;
   scheduledEventId: number;
@@ -542,12 +725,22 @@ export interface DecisionTaskCompletedEventAttributes {
   taskList?: TaskList;
   taskListScheduleToStartTimeout?: string;
 }
+const DecisionTaskCompletedEventAttributes = /*@__PURE__*/ __L.at(
+  __c6,
+  3,
+) as any as S.Schema<DecisionTaskCompletedEventAttributes>;
 export type DecisionTaskTimeoutType = "START_TO_CLOSE" | "SCHEDULE_TO_START" | (string & {});
+const DecisionTaskTimeoutType = S.String;
+
 export interface DecisionTaskTimedOutEventAttributes {
   timeoutType: DecisionTaskTimeoutType;
   scheduledEventId: number;
   startedEventId: number;
 }
+const DecisionTaskTimedOutEventAttributes = /*@__PURE__*/ __L.at(
+  __c6,
+  4,
+) as any as S.Schema<DecisionTaskTimedOutEventAttributes>;
 export type ActivityId = string;
 export interface ActivityTaskScheduledEventAttributes {
   activityType: ActivityType;
@@ -562,27 +755,43 @@ export interface ActivityTaskScheduledEventAttributes {
   decisionTaskCompletedEventId: number;
   heartbeatTimeout?: string;
 }
+const ActivityTaskScheduledEventAttributes = /*@__PURE__*/ __L.at(
+  __c6,
+  5,
+) as any as S.Schema<ActivityTaskScheduledEventAttributes>;
 export interface ActivityTaskStartedEventAttributes {
   identity?: string;
   scheduledEventId: number;
 }
+const ActivityTaskStartedEventAttributes =
+  DecisionTaskStartedEventAttributes as any as S.Schema<ActivityTaskStartedEventAttributes>;
 export interface ActivityTaskCompletedEventAttributes {
   result?: string;
   scheduledEventId: number;
   startedEventId: number;
 }
+const ActivityTaskCompletedEventAttributes = /*@__PURE__*/ __L.at(
+  __c6,
+  6,
+) as any as S.Schema<ActivityTaskCompletedEventAttributes>;
 export interface ActivityTaskFailedEventAttributes {
   reason?: string;
   details?: string;
   scheduledEventId: number;
   startedEventId: number;
 }
+const ActivityTaskFailedEventAttributes = /*@__PURE__*/ __L.at(
+  __c6,
+  7,
+) as any as S.Schema<ActivityTaskFailedEventAttributes>;
 export type ActivityTaskTimeoutType =
   | "START_TO_CLOSE"
   | "SCHEDULE_TO_START"
   | "SCHEDULE_TO_CLOSE"
   | "HEARTBEAT"
   | (string & {});
+const ActivityTaskTimeoutType = S.String;
+
 export type LimitedData = string;
 export interface ActivityTaskTimedOutEventAttributes {
   timeoutType: ActivityTaskTimeoutType;
@@ -590,16 +799,28 @@ export interface ActivityTaskTimedOutEventAttributes {
   startedEventId: number;
   details?: string;
 }
+const ActivityTaskTimedOutEventAttributes = /*@__PURE__*/ __L.at(
+  __c7,
+  0,
+) as any as S.Schema<ActivityTaskTimedOutEventAttributes>;
 export interface ActivityTaskCanceledEventAttributes {
   details?: string;
   scheduledEventId: number;
   startedEventId: number;
   latestCancelRequestedEventId?: number;
 }
+const ActivityTaskCanceledEventAttributes = /*@__PURE__*/ __L.at(
+  __c7,
+  1,
+) as any as S.Schema<ActivityTaskCanceledEventAttributes>;
 export interface ActivityTaskCancelRequestedEventAttributes {
   decisionTaskCompletedEventId: number;
   activityId: string;
 }
+const ActivityTaskCancelRequestedEventAttributes = /*@__PURE__*/ __L.at(
+  __c7,
+  2,
+) as any as S.Schema<ActivityTaskCancelRequestedEventAttributes>;
 export type SignalName = string;
 export interface WorkflowExecutionSignaledEventAttributes {
   signalName: string;
@@ -607,18 +828,32 @@ export interface WorkflowExecutionSignaledEventAttributes {
   externalWorkflowExecution?: WorkflowExecution;
   externalInitiatedEventId?: number;
 }
+const WorkflowExecutionSignaledEventAttributes = /*@__PURE__*/ __L.at(
+  __c7,
+  3,
+) as any as S.Schema<WorkflowExecutionSignaledEventAttributes>;
 export type MarkerName = string;
 export interface MarkerRecordedEventAttributes {
   markerName: string;
   details?: string;
   decisionTaskCompletedEventId: number;
 }
+const MarkerRecordedEventAttributes = /*@__PURE__*/ __L.at(
+  __c7,
+  4,
+) as any as S.Schema<MarkerRecordedEventAttributes>;
 export type RecordMarkerFailedCause = "OPERATION_NOT_PERMITTED" | (string & {});
+const RecordMarkerFailedCause = S.String;
+
 export interface RecordMarkerFailedEventAttributes {
   markerName: string;
   cause: RecordMarkerFailedCause;
   decisionTaskCompletedEventId: number;
 }
+const RecordMarkerFailedEventAttributes = /*@__PURE__*/ __L.at(
+  __c7,
+  5,
+) as any as S.Schema<RecordMarkerFailedEventAttributes>;
 export type TimerId = string;
 export interface TimerStartedEventAttributes {
   timerId: string;
@@ -626,15 +861,27 @@ export interface TimerStartedEventAttributes {
   startToFireTimeout: string;
   decisionTaskCompletedEventId: number;
 }
+const TimerStartedEventAttributes = /*@__PURE__*/ __L.at(
+  __c7,
+  6,
+) as any as S.Schema<TimerStartedEventAttributes>;
 export interface TimerFiredEventAttributes {
   timerId: string;
   startedEventId: number;
 }
+const TimerFiredEventAttributes = /*@__PURE__*/ __L.at(
+  __c7,
+  7,
+) as any as S.Schema<TimerFiredEventAttributes>;
 export interface TimerCanceledEventAttributes {
   timerId: string;
   startedEventId: number;
   decisionTaskCompletedEventId: number;
 }
+const TimerCanceledEventAttributes = /*@__PURE__*/ __L.at(
+  __c8,
+  0,
+) as any as S.Schema<TimerCanceledEventAttributes>;
 export interface StartChildWorkflowExecutionInitiatedEventAttributes {
   workflowId: string;
   workflowType: WorkflowType;
@@ -649,11 +896,19 @@ export interface StartChildWorkflowExecutionInitiatedEventAttributes {
   tagList?: string[];
   lambdaRole?: string;
 }
+const StartChildWorkflowExecutionInitiatedEventAttributes = /*@__PURE__*/ __L.at(
+  __c8,
+  1,
+) as any as S.Schema<StartChildWorkflowExecutionInitiatedEventAttributes>;
 export interface ChildWorkflowExecutionStartedEventAttributes {
   workflowExecution: WorkflowExecution;
   workflowType: WorkflowType;
   initiatedEventId: number;
 }
+const ChildWorkflowExecutionStartedEventAttributes = /*@__PURE__*/ __L.at(
+  __c8,
+  2,
+) as any as S.Schema<ChildWorkflowExecutionStartedEventAttributes>;
 export interface ChildWorkflowExecutionCompletedEventAttributes {
   workflowExecution: WorkflowExecution;
   workflowType: WorkflowType;
@@ -661,6 +916,10 @@ export interface ChildWorkflowExecutionCompletedEventAttributes {
   initiatedEventId: number;
   startedEventId: number;
 }
+const ChildWorkflowExecutionCompletedEventAttributes = /*@__PURE__*/ __L.at(
+  __c8,
+  3,
+) as any as S.Schema<ChildWorkflowExecutionCompletedEventAttributes>;
 export interface ChildWorkflowExecutionFailedEventAttributes {
   workflowExecution: WorkflowExecution;
   workflowType: WorkflowType;
@@ -669,6 +928,10 @@ export interface ChildWorkflowExecutionFailedEventAttributes {
   initiatedEventId: number;
   startedEventId: number;
 }
+const ChildWorkflowExecutionFailedEventAttributes = /*@__PURE__*/ __L.at(
+  __c8,
+  4,
+) as any as S.Schema<ChildWorkflowExecutionFailedEventAttributes>;
 export interface ChildWorkflowExecutionTimedOutEventAttributes {
   workflowExecution: WorkflowExecution;
   workflowType: WorkflowType;
@@ -676,6 +939,10 @@ export interface ChildWorkflowExecutionTimedOutEventAttributes {
   initiatedEventId: number;
   startedEventId: number;
 }
+const ChildWorkflowExecutionTimedOutEventAttributes = /*@__PURE__*/ __L.at(
+  __c8,
+  5,
+) as any as S.Schema<ChildWorkflowExecutionTimedOutEventAttributes>;
 export interface ChildWorkflowExecutionCanceledEventAttributes {
   workflowExecution: WorkflowExecution;
   workflowType: WorkflowType;
@@ -683,12 +950,20 @@ export interface ChildWorkflowExecutionCanceledEventAttributes {
   initiatedEventId: number;
   startedEventId: number;
 }
+const ChildWorkflowExecutionCanceledEventAttributes = /*@__PURE__*/ __L.at(
+  __c8,
+  6,
+) as any as S.Schema<ChildWorkflowExecutionCanceledEventAttributes>;
 export interface ChildWorkflowExecutionTerminatedEventAttributes {
   workflowExecution: WorkflowExecution;
   workflowType: WorkflowType;
   initiatedEventId: number;
   startedEventId: number;
 }
+const ChildWorkflowExecutionTerminatedEventAttributes = /*@__PURE__*/ __L.at(
+  __c8,
+  7,
+) as any as S.Schema<ChildWorkflowExecutionTerminatedEventAttributes>;
 export interface SignalExternalWorkflowExecutionInitiatedEventAttributes {
   workflowId: string;
   runId?: string;
@@ -697,15 +972,25 @@ export interface SignalExternalWorkflowExecutionInitiatedEventAttributes {
   decisionTaskCompletedEventId: number;
   control?: string;
 }
+const SignalExternalWorkflowExecutionInitiatedEventAttributes = /*@__PURE__*/ __L.at(
+  __c9,
+  0,
+) as any as S.Schema<SignalExternalWorkflowExecutionInitiatedEventAttributes>;
 export interface ExternalWorkflowExecutionSignaledEventAttributes {
   workflowExecution: WorkflowExecution;
   initiatedEventId: number;
 }
+const ExternalWorkflowExecutionSignaledEventAttributes = /*@__PURE__*/ __L.at(
+  __c9,
+  1,
+) as any as S.Schema<ExternalWorkflowExecutionSignaledEventAttributes>;
 export type SignalExternalWorkflowExecutionFailedCause =
   | "UNKNOWN_EXTERNAL_WORKFLOW_EXECUTION"
   | "SIGNAL_EXTERNAL_WORKFLOW_EXECUTION_RATE_EXCEEDED"
   | "OPERATION_NOT_PERMITTED"
   | (string & {});
+const SignalExternalWorkflowExecutionFailedCause = S.String;
+
 export interface SignalExternalWorkflowExecutionFailedEventAttributes {
   workflowId: string;
   runId?: string;
@@ -714,21 +999,33 @@ export interface SignalExternalWorkflowExecutionFailedEventAttributes {
   decisionTaskCompletedEventId: number;
   control?: string;
 }
+const SignalExternalWorkflowExecutionFailedEventAttributes = /*@__PURE__*/ __L.at(
+  __c9,
+  2,
+) as any as S.Schema<SignalExternalWorkflowExecutionFailedEventAttributes>;
 export interface ExternalWorkflowExecutionCancelRequestedEventAttributes {
   workflowExecution: WorkflowExecution;
   initiatedEventId: number;
 }
+const ExternalWorkflowExecutionCancelRequestedEventAttributes =
+  ExternalWorkflowExecutionSignaledEventAttributes as any as S.Schema<ExternalWorkflowExecutionCancelRequestedEventAttributes>;
 export interface RequestCancelExternalWorkflowExecutionInitiatedEventAttributes {
   workflowId: string;
   runId?: string;
   decisionTaskCompletedEventId: number;
   control?: string;
 }
+const RequestCancelExternalWorkflowExecutionInitiatedEventAttributes = /*@__PURE__*/ __L.at(
+  __c9,
+  3,
+) as any as S.Schema<RequestCancelExternalWorkflowExecutionInitiatedEventAttributes>;
 export type RequestCancelExternalWorkflowExecutionFailedCause =
   | "UNKNOWN_EXTERNAL_WORKFLOW_EXECUTION"
   | "REQUEST_CANCEL_EXTERNAL_WORKFLOW_EXECUTION_RATE_EXCEEDED"
   | "OPERATION_NOT_PERMITTED"
   | (string & {});
+const RequestCancelExternalWorkflowExecutionFailedCause = S.String;
+
 export interface RequestCancelExternalWorkflowExecutionFailedEventAttributes {
   workflowId: string;
   runId?: string;
@@ -737,6 +1034,10 @@ export interface RequestCancelExternalWorkflowExecutionFailedEventAttributes {
   decisionTaskCompletedEventId: number;
   control?: string;
 }
+const RequestCancelExternalWorkflowExecutionFailedEventAttributes = /*@__PURE__*/ __L.at(
+  __c9,
+  4,
+) as any as S.Schema<RequestCancelExternalWorkflowExecutionFailedEventAttributes>;
 export type ScheduleActivityTaskFailedCause =
   | "ACTIVITY_TYPE_DEPRECATED"
   | "ACTIVITY_TYPE_DOES_NOT_EXIST"
@@ -750,38 +1051,58 @@ export type ScheduleActivityTaskFailedCause =
   | "DEFAULT_HEARTBEAT_TIMEOUT_UNDEFINED"
   | "OPERATION_NOT_PERMITTED"
   | (string & {});
+const ScheduleActivityTaskFailedCause = S.String;
+
 export interface ScheduleActivityTaskFailedEventAttributes {
   activityType: ActivityType;
   activityId: string;
   cause: ScheduleActivityTaskFailedCause;
   decisionTaskCompletedEventId: number;
 }
+const ScheduleActivityTaskFailedEventAttributes = /*@__PURE__*/ __L.at(
+  __c9,
+  5,
+) as any as S.Schema<ScheduleActivityTaskFailedEventAttributes>;
 export type RequestCancelActivityTaskFailedCause =
   | "ACTIVITY_ID_UNKNOWN"
   | "OPERATION_NOT_PERMITTED"
   | (string & {});
+const RequestCancelActivityTaskFailedCause = S.String;
+
 export interface RequestCancelActivityTaskFailedEventAttributes {
   activityId: string;
   cause: RequestCancelActivityTaskFailedCause;
   decisionTaskCompletedEventId: number;
 }
+const RequestCancelActivityTaskFailedEventAttributes = /*@__PURE__*/ __L.at(
+  __c9,
+  6,
+) as any as S.Schema<RequestCancelActivityTaskFailedEventAttributes>;
 export type StartTimerFailedCause =
   | "TIMER_ID_ALREADY_IN_USE"
   | "OPEN_TIMERS_LIMIT_EXCEEDED"
   | "TIMER_CREATION_RATE_EXCEEDED"
   | "OPERATION_NOT_PERMITTED"
   | (string & {});
+const StartTimerFailedCause = S.String;
+
 export interface StartTimerFailedEventAttributes {
   timerId: string;
   cause: StartTimerFailedCause;
   decisionTaskCompletedEventId: number;
 }
+const StartTimerFailedEventAttributes = /*@__PURE__*/ __L.at(
+  __c9,
+  7,
+) as any as S.Schema<StartTimerFailedEventAttributes>;
 export type CancelTimerFailedCause = "TIMER_ID_UNKNOWN" | "OPERATION_NOT_PERMITTED" | (string & {});
 export interface CancelTimerFailedEventAttributes {
   timerId: string;
   cause: CancelTimerFailedCause;
   decisionTaskCompletedEventId: number;
 }
+const CancelTimerFailedEventAttributes =
+  StartTimerFailedEventAttributes as any as S.Schema<CancelTimerFailedEventAttributes>;
 export type StartChildWorkflowExecutionFailedCause =
   | "WORKFLOW_TYPE_DOES_NOT_EXIST"
   | "WORKFLOW_TYPE_DEPRECATED"
@@ -795,6 +1116,8 @@ export type StartChildWorkflowExecutionFailedCause =
   | "DEFAULT_CHILD_POLICY_UNDEFINED"
   | "OPERATION_NOT_PERMITTED"
   | (string & {});
+const StartChildWorkflowExecutionFailedCause = S.String;
+
 export interface StartChildWorkflowExecutionFailedEventAttributes {
   workflowType: WorkflowType;
   cause: StartChildWorkflowExecutionFailedCause;
@@ -803,6 +1126,10 @@ export interface StartChildWorkflowExecutionFailedEventAttributes {
   decisionTaskCompletedEventId: number;
   control?: string;
 }
+const StartChildWorkflowExecutionFailedEventAttributes = /*@__PURE__*/ __L.at(
+  __c10,
+  0,
+) as any as S.Schema<StartChildWorkflowExecutionFailedEventAttributes>;
 export type FunctionId = string;
 export type FunctionName = string;
 export type FunctionInput = string;
@@ -814,45 +1141,79 @@ export interface LambdaFunctionScheduledEventAttributes {
   startToCloseTimeout?: string;
   decisionTaskCompletedEventId: number;
 }
+const LambdaFunctionScheduledEventAttributes = /*@__PURE__*/ __L.at(
+  __c10,
+  1,
+) as any as S.Schema<LambdaFunctionScheduledEventAttributes>;
 export interface LambdaFunctionStartedEventAttributes {
   scheduledEventId: number;
 }
+const LambdaFunctionStartedEventAttributes = /*@__PURE__*/ __L.at(
+  __c10,
+  2,
+) as any as S.Schema<LambdaFunctionStartedEventAttributes>;
 export interface LambdaFunctionCompletedEventAttributes {
   scheduledEventId: number;
   startedEventId: number;
   result?: string;
 }
+const LambdaFunctionCompletedEventAttributes = /*@__PURE__*/ __L.at(
+  __c10,
+  3,
+) as any as S.Schema<LambdaFunctionCompletedEventAttributes>;
 export interface LambdaFunctionFailedEventAttributes {
   scheduledEventId: number;
   startedEventId: number;
   reason?: string;
   details?: string;
 }
+const LambdaFunctionFailedEventAttributes = /*@__PURE__*/ __L.at(
+  __c10,
+  4,
+) as any as S.Schema<LambdaFunctionFailedEventAttributes>;
 export type LambdaFunctionTimeoutType = "START_TO_CLOSE" | (string & {});
+const LambdaFunctionTimeoutType = S.String;
+
 export interface LambdaFunctionTimedOutEventAttributes {
   scheduledEventId: number;
   startedEventId: number;
   timeoutType?: LambdaFunctionTimeoutType;
 }
+const LambdaFunctionTimedOutEventAttributes = /*@__PURE__*/ __L.at(
+  __c10,
+  5,
+) as any as S.Schema<LambdaFunctionTimedOutEventAttributes>;
 export type ScheduleLambdaFunctionFailedCause =
   | "ID_ALREADY_IN_USE"
   | "OPEN_LAMBDA_FUNCTIONS_LIMIT_EXCEEDED"
   | "LAMBDA_FUNCTION_CREATION_RATE_EXCEEDED"
   | "LAMBDA_SERVICE_NOT_AVAILABLE_IN_REGION"
   | (string & {});
+const ScheduleLambdaFunctionFailedCause = S.String;
+
 export interface ScheduleLambdaFunctionFailedEventAttributes {
   id: string;
   name: string;
   cause: ScheduleLambdaFunctionFailedCause;
   decisionTaskCompletedEventId: number;
 }
+const ScheduleLambdaFunctionFailedEventAttributes = /*@__PURE__*/ __L.at(
+  __c10,
+  6,
+) as any as S.Schema<ScheduleLambdaFunctionFailedEventAttributes>;
 export type StartLambdaFunctionFailedCause = "ASSUME_ROLE_FAILED" | (string & {});
+const StartLambdaFunctionFailedCause = S.String;
+
 export type CauseMessage = string;
 export interface StartLambdaFunctionFailedEventAttributes {
   scheduledEventId?: number;
   cause?: StartLambdaFunctionFailedCause;
   message?: string;
 }
+const StartLambdaFunctionFailedEventAttributes = /*@__PURE__*/ __L.at(
+  __c10,
+  7,
+) as any as S.Schema<StartLambdaFunctionFailedEventAttributes>;
 export interface HistoryEvent {
   eventTimestamp: Date;
   eventType: EventType;
@@ -912,11 +1273,14 @@ export interface HistoryEvent {
   scheduleLambdaFunctionFailedEventAttributes?: ScheduleLambdaFunctionFailedEventAttributes;
   startLambdaFunctionFailedEventAttributes?: StartLambdaFunctionFailedEventAttributes;
 }
+const HistoryEvent = /*@__PURE__*/ __L.at(__c11, 0) as any as S.Schema<HistoryEvent>;
 export type HistoryEventList = HistoryEvent[];
+const HistoryEventList = /*@__PURE__*/ __L.at(__c11, 1);
 export interface History {
   events: HistoryEvent[];
   nextPageToken?: string;
 }
+const History = /*@__PURE__*/ __L.at(__c11, 2) as any as S.Schema<History>;
 export interface ListActivityTypesInput {
   domain: string;
   name?: string;
@@ -925,11 +1289,17 @@ export interface ListActivityTypesInput {
   maximumPageSize?: number;
   reverseOrder?: boolean;
 }
+const ListActivityTypesInput = /*@__PURE__*/ __L.at(
+  __c11,
+  3,
+) as any as S.Schema<ListActivityTypesInput>;
 export type ActivityTypeInfoList = ActivityTypeInfo[];
+const ActivityTypeInfoList = /*@__PURE__*/ __L.at(__c11, 4);
 export interface ActivityTypeInfos {
   typeInfos: ActivityTypeInfo[];
   nextPageToken?: string;
 }
+const ActivityTypeInfos = /*@__PURE__*/ __L.at(__c11, 5) as any as S.Schema<ActivityTypeInfos>;
 export interface ListClosedWorkflowExecutionsInput {
   domain: string;
   startTimeFilter?: ExecutionTimeFilter;
@@ -942,22 +1312,34 @@ export interface ListClosedWorkflowExecutionsInput {
   maximumPageSize?: number;
   reverseOrder?: boolean;
 }
+const ListClosedWorkflowExecutionsInput = /*@__PURE__*/ __L.at(
+  __c11,
+  6,
+) as any as S.Schema<ListClosedWorkflowExecutionsInput>;
 export type WorkflowExecutionInfoList = WorkflowExecutionInfo[];
+const WorkflowExecutionInfoList = /*@__PURE__*/ __L.at(__c11, 7);
 export interface WorkflowExecutionInfos {
   executionInfos: WorkflowExecutionInfo[];
   nextPageToken?: string;
 }
+const WorkflowExecutionInfos = /*@__PURE__*/ __L.at(
+  __c12,
+  0,
+) as any as S.Schema<WorkflowExecutionInfos>;
 export interface ListDomainsInput {
   nextPageToken?: string;
   registrationStatus: RegistrationStatus;
   maximumPageSize?: number;
   reverseOrder?: boolean;
 }
+const ListDomainsInput = /*@__PURE__*/ __L.at(__c12, 1) as any as S.Schema<ListDomainsInput>;
 export type DomainInfoList = DomainInfo[];
+const DomainInfoList = /*@__PURE__*/ __L.at(__c12, 2);
 export interface DomainInfos {
   domainInfos: DomainInfo[];
   nextPageToken?: string;
 }
+const DomainInfos = /*@__PURE__*/ __L.at(__c12, 3) as any as S.Schema<DomainInfos>;
 export interface ListOpenWorkflowExecutionsInput {
   domain: string;
   startTimeFilter: ExecutionTimeFilter;
@@ -968,19 +1350,33 @@ export interface ListOpenWorkflowExecutionsInput {
   reverseOrder?: boolean;
   executionFilter?: WorkflowExecutionFilter;
 }
+const ListOpenWorkflowExecutionsInput = /*@__PURE__*/ __L.at(
+  __c12,
+  4,
+) as any as S.Schema<ListOpenWorkflowExecutionsInput>;
 export interface ListTagsForResourceInput {
   resourceArn: string;
 }
+const ListTagsForResourceInput = /*@__PURE__*/ __L.at(
+  __c12,
+  5,
+) as any as S.Schema<ListTagsForResourceInput>;
 export type ResourceTagKey = string;
 export type ResourceTagValue = string;
 export interface ResourceTag {
   key: string;
   value?: string;
 }
+const ResourceTag = /*@__PURE__*/ __L.at(__c12, 6) as any as S.Schema<ResourceTag>;
 export type ResourceTagList = ResourceTag[];
+const ResourceTagList = /*@__PURE__*/ __L.at(__c12, 7);
 export interface ListTagsForResourceOutput {
   tags?: ResourceTag[];
 }
+const ListTagsForResourceOutput = /*@__PURE__*/ __L.at(
+  __c13,
+  0,
+) as any as S.Schema<ListTagsForResourceOutput>;
 export interface ListWorkflowTypesInput {
   domain: string;
   name?: string;
@@ -989,16 +1385,26 @@ export interface ListWorkflowTypesInput {
   maximumPageSize?: number;
   reverseOrder?: boolean;
 }
+const ListWorkflowTypesInput = /*@__PURE__*/ __L.at(
+  __c13,
+  1,
+) as any as S.Schema<ListWorkflowTypesInput>;
 export type WorkflowTypeInfoList = WorkflowTypeInfo[];
+const WorkflowTypeInfoList = /*@__PURE__*/ __L.at(__c13, 2);
 export interface WorkflowTypeInfos {
   typeInfos: WorkflowTypeInfo[];
   nextPageToken?: string;
 }
+const WorkflowTypeInfos = /*@__PURE__*/ __L.at(__c13, 3) as any as S.Schema<WorkflowTypeInfos>;
 export interface PollForActivityTaskInput {
   domain: string;
   taskList: TaskList;
   identity?: string;
 }
+const PollForActivityTaskInput = /*@__PURE__*/ __L.at(
+  __c13,
+  4,
+) as any as S.Schema<PollForActivityTaskInput>;
 export type TaskToken = string;
 export interface ActivityTask {
   taskToken: string;
@@ -1008,6 +1414,7 @@ export interface ActivityTask {
   activityType: ActivityType;
   input?: string;
 }
+const ActivityTask = /*@__PURE__*/ __L.at(__c13, 5) as any as S.Schema<ActivityTask>;
 export type StartAtPreviousStartedEvent = boolean;
 export interface PollForDecisionTaskInput {
   domain: string;
@@ -1018,6 +1425,10 @@ export interface PollForDecisionTaskInput {
   reverseOrder?: boolean;
   startAtPreviousStartedEvent?: boolean;
 }
+const PollForDecisionTaskInput = /*@__PURE__*/ __L.at(
+  __c13,
+  6,
+) as any as S.Schema<PollForDecisionTaskInput>;
 export interface DecisionTask {
   taskToken: string;
   startedEventId: number;
@@ -1027,13 +1438,19 @@ export interface DecisionTask {
   nextPageToken?: string;
   previousStartedEventId?: number;
 }
+const DecisionTask = /*@__PURE__*/ __L.at(__c13, 7) as any as S.Schema<DecisionTask>;
 export interface RecordActivityTaskHeartbeatInput {
   taskToken: string;
   details?: string;
 }
+const RecordActivityTaskHeartbeatInput = /*@__PURE__*/ __L.at(
+  __c14,
+  0,
+) as any as S.Schema<RecordActivityTaskHeartbeatInput>;
 export interface ActivityTaskStatus {
   cancelRequested: boolean;
 }
+const ActivityTaskStatus = /*@__PURE__*/ __L.at(__c14, 1) as any as S.Schema<ActivityTaskStatus>;
 export interface RegisterActivityTypeInput {
   domain: string;
   name: string;
@@ -1046,14 +1463,25 @@ export interface RegisterActivityTypeInput {
   defaultTaskScheduleToStartTimeout?: string;
   defaultTaskScheduleToCloseTimeout?: string;
 }
+const RegisterActivityTypeInput = /*@__PURE__*/ __L.at(
+  __c14,
+  2,
+) as any as S.Schema<RegisterActivityTypeInput>;
 export interface RegisterActivityTypeResponse {}
+const RegisterActivityTypeResponse =
+  DeleteActivityTypeResponse as any as S.Schema<RegisterActivityTypeResponse>;
 export interface RegisterDomainInput {
   name: string;
   description?: string;
   workflowExecutionRetentionPeriodInDays: string;
   tags?: ResourceTag[];
 }
+const RegisterDomainInput = /*@__PURE__*/ __L.at(__c14, 3) as any as S.Schema<RegisterDomainInput>;
 export interface RegisterDomainResponse {}
+const RegisterDomainResponse = /*@__PURE__*/ __L.at(
+  __c14,
+  4,
+) as any as S.Schema<RegisterDomainResponse>;
 export interface RegisterWorkflowTypeInput {
   domain: string;
   name: string;
@@ -1066,29 +1494,59 @@ export interface RegisterWorkflowTypeInput {
   defaultChildPolicy?: ChildPolicy;
   defaultLambdaRole?: string;
 }
+const RegisterWorkflowTypeInput = /*@__PURE__*/ __L.at(
+  __c14,
+  5,
+) as any as S.Schema<RegisterWorkflowTypeInput>;
 export interface RegisterWorkflowTypeResponse {}
+const RegisterWorkflowTypeResponse =
+  DeleteActivityTypeResponse as any as S.Schema<RegisterWorkflowTypeResponse>;
 export interface RequestCancelWorkflowExecutionInput {
   domain: string;
   workflowId: string;
   runId?: string;
 }
+const RequestCancelWorkflowExecutionInput = /*@__PURE__*/ __L.at(
+  __c14,
+  6,
+) as any as S.Schema<RequestCancelWorkflowExecutionInput>;
 export interface RequestCancelWorkflowExecutionResponse {}
+const RequestCancelWorkflowExecutionResponse =
+  DeleteActivityTypeResponse as any as S.Schema<RequestCancelWorkflowExecutionResponse>;
 export interface RespondActivityTaskCanceledInput {
   taskToken: string;
   details?: string;
 }
+const RespondActivityTaskCanceledInput = /*@__PURE__*/ __L.at(
+  __c14,
+  7,
+) as any as S.Schema<RespondActivityTaskCanceledInput>;
 export interface RespondActivityTaskCanceledResponse {}
+const RespondActivityTaskCanceledResponse =
+  DeleteActivityTypeResponse as any as S.Schema<RespondActivityTaskCanceledResponse>;
 export interface RespondActivityTaskCompletedInput {
   taskToken: string;
   result?: string;
 }
+const RespondActivityTaskCompletedInput = /*@__PURE__*/ __L.at(
+  __c15,
+  0,
+) as any as S.Schema<RespondActivityTaskCompletedInput>;
 export interface RespondActivityTaskCompletedResponse {}
+const RespondActivityTaskCompletedResponse =
+  DeleteActivityTypeResponse as any as S.Schema<RespondActivityTaskCompletedResponse>;
 export interface RespondActivityTaskFailedInput {
   taskToken: string;
   reason?: string;
   details?: string;
 }
+const RespondActivityTaskFailedInput = /*@__PURE__*/ __L.at(
+  __c15,
+  1,
+) as any as S.Schema<RespondActivityTaskFailedInput>;
 export interface RespondActivityTaskFailedResponse {}
+const RespondActivityTaskFailedResponse =
+  DeleteActivityTypeResponse as any as S.Schema<RespondActivityTaskFailedResponse>;
 export type DecisionType =
   | "ScheduleActivityTask"
   | "RequestCancelActivityTask"
@@ -1104,6 +1562,8 @@ export type DecisionType =
   | "StartChildWorkflowExecution"
   | "ScheduleLambdaFunction"
   | (string & {});
+const DecisionType = S.String;
+
 export interface ScheduleActivityTaskDecisionAttributes {
   activityType: ActivityType;
   activityId: string;
@@ -1116,19 +1576,39 @@ export interface ScheduleActivityTaskDecisionAttributes {
   startToCloseTimeout?: string;
   heartbeatTimeout?: string;
 }
+const ScheduleActivityTaskDecisionAttributes = /*@__PURE__*/ __L.at(
+  __c15,
+  2,
+) as any as S.Schema<ScheduleActivityTaskDecisionAttributes>;
 export interface RequestCancelActivityTaskDecisionAttributes {
   activityId: string;
 }
+const RequestCancelActivityTaskDecisionAttributes = /*@__PURE__*/ __L.at(
+  __c15,
+  3,
+) as any as S.Schema<RequestCancelActivityTaskDecisionAttributes>;
 export interface CompleteWorkflowExecutionDecisionAttributes {
   result?: string;
 }
+const CompleteWorkflowExecutionDecisionAttributes = /*@__PURE__*/ __L.at(
+  __c15,
+  4,
+) as any as S.Schema<CompleteWorkflowExecutionDecisionAttributes>;
 export interface FailWorkflowExecutionDecisionAttributes {
   reason?: string;
   details?: string;
 }
+const FailWorkflowExecutionDecisionAttributes = /*@__PURE__*/ __L.at(
+  __c15,
+  5,
+) as any as S.Schema<FailWorkflowExecutionDecisionAttributes>;
 export interface CancelWorkflowExecutionDecisionAttributes {
   details?: string;
 }
+const CancelWorkflowExecutionDecisionAttributes = /*@__PURE__*/ __L.at(
+  __c15,
+  6,
+) as any as S.Schema<CancelWorkflowExecutionDecisionAttributes>;
 export interface ContinueAsNewWorkflowExecutionDecisionAttributes {
   input?: string;
   executionStartToCloseTimeout?: string;
@@ -1140,18 +1620,34 @@ export interface ContinueAsNewWorkflowExecutionDecisionAttributes {
   workflowTypeVersion?: string;
   lambdaRole?: string;
 }
+const ContinueAsNewWorkflowExecutionDecisionAttributes = /*@__PURE__*/ __L.at(
+  __c15,
+  7,
+) as any as S.Schema<ContinueAsNewWorkflowExecutionDecisionAttributes>;
 export interface RecordMarkerDecisionAttributes {
   markerName: string;
   details?: string;
 }
+const RecordMarkerDecisionAttributes = /*@__PURE__*/ __L.at(
+  __c16,
+  0,
+) as any as S.Schema<RecordMarkerDecisionAttributes>;
 export interface StartTimerDecisionAttributes {
   timerId: string;
   control?: string;
   startToFireTimeout: string;
 }
+const StartTimerDecisionAttributes = /*@__PURE__*/ __L.at(
+  __c16,
+  1,
+) as any as S.Schema<StartTimerDecisionAttributes>;
 export interface CancelTimerDecisionAttributes {
   timerId: string;
 }
+const CancelTimerDecisionAttributes = /*@__PURE__*/ __L.at(
+  __c16,
+  2,
+) as any as S.Schema<CancelTimerDecisionAttributes>;
 export interface SignalExternalWorkflowExecutionDecisionAttributes {
   workflowId: string;
   runId?: string;
@@ -1159,11 +1655,19 @@ export interface SignalExternalWorkflowExecutionDecisionAttributes {
   input?: string;
   control?: string;
 }
+const SignalExternalWorkflowExecutionDecisionAttributes = /*@__PURE__*/ __L.at(
+  __c16,
+  3,
+) as any as S.Schema<SignalExternalWorkflowExecutionDecisionAttributes>;
 export interface RequestCancelExternalWorkflowExecutionDecisionAttributes {
   workflowId: string;
   runId?: string;
   control?: string;
 }
+const RequestCancelExternalWorkflowExecutionDecisionAttributes = /*@__PURE__*/ __L.at(
+  __c16,
+  4,
+) as any as S.Schema<RequestCancelExternalWorkflowExecutionDecisionAttributes>;
 export interface StartChildWorkflowExecutionDecisionAttributes {
   workflowType: WorkflowType;
   workflowId: string;
@@ -1177,6 +1681,10 @@ export interface StartChildWorkflowExecutionDecisionAttributes {
   tagList?: string[];
   lambdaRole?: string;
 }
+const StartChildWorkflowExecutionDecisionAttributes = /*@__PURE__*/ __L.at(
+  __c16,
+  5,
+) as any as S.Schema<StartChildWorkflowExecutionDecisionAttributes>;
 export interface ScheduleLambdaFunctionDecisionAttributes {
   id: string;
   name: string;
@@ -1184,6 +1692,10 @@ export interface ScheduleLambdaFunctionDecisionAttributes {
   input?: string;
   startToCloseTimeout?: string;
 }
+const ScheduleLambdaFunctionDecisionAttributes = /*@__PURE__*/ __L.at(
+  __c16,
+  6,
+) as any as S.Schema<ScheduleLambdaFunctionDecisionAttributes>;
 export interface Decision {
   decisionType: DecisionType;
   scheduleActivityTaskDecisionAttributes?: ScheduleActivityTaskDecisionAttributes;
@@ -1200,7 +1712,9 @@ export interface Decision {
   startChildWorkflowExecutionDecisionAttributes?: StartChildWorkflowExecutionDecisionAttributes;
   scheduleLambdaFunctionDecisionAttributes?: ScheduleLambdaFunctionDecisionAttributes;
 }
+const Decision = /*@__PURE__*/ __L.at(__c16, 7) as any as S.Schema<Decision>;
 export type DecisionList = Decision[];
+const DecisionList = /*@__PURE__*/ __L.at(__c17, 0);
 export interface RespondDecisionTaskCompletedInput {
   taskToken: string;
   decisions?: Decision[];
@@ -1208,7 +1722,13 @@ export interface RespondDecisionTaskCompletedInput {
   taskList?: TaskList;
   taskListScheduleToStartTimeout?: string;
 }
+const RespondDecisionTaskCompletedInput = /*@__PURE__*/ __L.at(
+  __c17,
+  1,
+) as any as S.Schema<RespondDecisionTaskCompletedInput>;
 export interface RespondDecisionTaskCompletedResponse {}
+const RespondDecisionTaskCompletedResponse =
+  DeleteActivityTypeResponse as any as S.Schema<RespondDecisionTaskCompletedResponse>;
 export interface SignalWorkflowExecutionInput {
   domain: string;
   workflowId: string;
@@ -1216,7 +1736,13 @@ export interface SignalWorkflowExecutionInput {
   signalName: string;
   input?: string;
 }
+const SignalWorkflowExecutionInput = /*@__PURE__*/ __L.at(
+  __c17,
+  2,
+) as any as S.Schema<SignalWorkflowExecutionInput>;
 export interface SignalWorkflowExecutionResponse {}
+const SignalWorkflowExecutionResponse =
+  DeleteActivityTypeResponse as any as S.Schema<SignalWorkflowExecutionResponse>;
 export interface StartWorkflowExecutionInput {
   domain: string;
   workflowId: string;
@@ -1230,14 +1756,21 @@ export interface StartWorkflowExecutionInput {
   childPolicy?: ChildPolicy;
   lambdaRole?: string;
 }
+const StartWorkflowExecutionInput = /*@__PURE__*/ __L.at(
+  __c17,
+  3,
+) as any as S.Schema<StartWorkflowExecutionInput>;
 export interface Run {
   runId?: string;
 }
+const Run = /*@__PURE__*/ __L.at(__c17, 4) as any as S.Schema<Run>;
 export interface TagResourceInput {
   resourceArn: string;
   tags: ResourceTag[];
 }
+const TagResourceInput = /*@__PURE__*/ __L.at(__c17, 5) as any as S.Schema<TagResourceInput>;
 export interface TagResourceResponse {}
+const TagResourceResponse = /*@__PURE__*/ __L.at(__c17, 6) as any as S.Schema<TagResourceResponse>;
 export interface TerminateWorkflowExecutionInput {
   domain: string;
   workflowId: string;
@@ -1246,27 +1779,54 @@ export interface TerminateWorkflowExecutionInput {
   details?: string;
   childPolicy?: ChildPolicy;
 }
+const TerminateWorkflowExecutionInput = /*@__PURE__*/ __L.at(
+  __c17,
+  7,
+) as any as S.Schema<TerminateWorkflowExecutionInput>;
 export interface TerminateWorkflowExecutionResponse {}
+const TerminateWorkflowExecutionResponse =
+  DeleteActivityTypeResponse as any as S.Schema<TerminateWorkflowExecutionResponse>;
 export interface UndeprecateActivityTypeInput {
   domain: string;
   activityType: ActivityType;
 }
+const UndeprecateActivityTypeInput = /*@__PURE__*/ __L.at(
+  __c18,
+  0,
+) as any as S.Schema<UndeprecateActivityTypeInput>;
 export interface UndeprecateActivityTypeResponse {}
+const UndeprecateActivityTypeResponse =
+  DeleteActivityTypeResponse as any as S.Schema<UndeprecateActivityTypeResponse>;
 export interface UndeprecateDomainInput {
   name: string;
 }
+const UndeprecateDomainInput = /*@__PURE__*/ __L.at(
+  __c18,
+  1,
+) as any as S.Schema<UndeprecateDomainInput>;
 export interface UndeprecateDomainResponse {}
+const UndeprecateDomainResponse =
+  DeleteActivityTypeResponse as any as S.Schema<UndeprecateDomainResponse>;
 export interface UndeprecateWorkflowTypeInput {
   domain: string;
   workflowType: WorkflowType;
 }
+const UndeprecateWorkflowTypeInput = /*@__PURE__*/ __L.at(
+  __c18,
+  2,
+) as any as S.Schema<UndeprecateWorkflowTypeInput>;
 export interface UndeprecateWorkflowTypeResponse {}
+const UndeprecateWorkflowTypeResponse =
+  DeleteActivityTypeResponse as any as S.Schema<UndeprecateWorkflowTypeResponse>;
 export type ResourceTagKeyList = string[];
+const ResourceTagKeyList = TagList as any as S.Schema<ResourceTagKeyList>;
 export interface UntagResourceInput {
   resourceArn: string;
   tagKeys: string[];
 }
+const UntagResourceInput = /*@__PURE__*/ __L.at(__c18, 3) as any as S.Schema<UntagResourceInput>;
 export interface UntagResourceResponse {}
+const UntagResourceResponse = TagResourceResponse as any as S.Schema<UntagResourceResponse>;
 export type ErrorMessage = string;
 export type CountClosedWorkflowExecutionsError =
   | OperationNotPermittedFault
@@ -1314,8 +1874,8 @@ export const countClosedWorkflowExecutions: API.OperationMethod<
   CountClosedWorkflowExecutionsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5) as any as S.Schema<CountClosedWorkflowExecutionsInput>,
-  output: __S(6) as any as S.Schema<WorkflowExecutionCount>,
+  input: CountClosedWorkflowExecutionsInput,
+  output: WorkflowExecutionCount,
   errors: [OperationNotPermittedFault, UnknownResourceFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1368,8 +1928,8 @@ export const countOpenWorkflowExecutions: API.OperationMethod<
   CountOpenWorkflowExecutionsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7) as any as S.Schema<CountOpenWorkflowExecutionsInput>,
-  output: __S(6) as any as S.Schema<WorkflowExecutionCount>,
+  input: CountOpenWorkflowExecutionsInput,
+  output: WorkflowExecutionCount,
   errors: [OperationNotPermittedFault, UnknownResourceFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1412,8 +1972,8 @@ export const countPendingActivityTasks: API.OperationMethod<
   CountPendingActivityTasksError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9) as any as S.Schema<CountPendingActivityTasksInput>,
-  output: __S(6) as any as S.Schema<PendingTaskCount>,
+  input: CountPendingActivityTasksInput,
+  output: PendingTaskCount,
   errors: [OperationNotPermittedFault, UnknownResourceFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1456,8 +2016,8 @@ export const countPendingDecisionTasks: API.OperationMethod<
   CountPendingDecisionTasksError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10) as any as S.Schema<CountPendingDecisionTasksInput>,
-  output: __S(6) as any as S.Schema<PendingTaskCount>,
+  input: CountPendingDecisionTasksInput,
+  output: PendingTaskCount,
   errors: [OperationNotPermittedFault, UnknownResourceFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1507,8 +2067,8 @@ export const deleteActivityType: API.OperationMethod<
   DeleteActivityTypeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12) as any as S.Schema<DeleteActivityTypeInput>,
-  output: __S(13) as any as S.Schema<DeleteActivityTypeResponse>,
+  input: DeleteActivityTypeInput,
+  output: DeleteActivityTypeResponse,
   errors: [OperationNotPermittedFault, TypeNotDeprecatedFault, UnknownResourceFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1559,8 +2119,8 @@ export const deleteWorkflowType: API.OperationMethod<
   DeleteWorkflowTypeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14) as any as S.Schema<DeleteWorkflowTypeInput>,
-  output: __S(13) as any as S.Schema<DeleteWorkflowTypeResponse>,
+  input: DeleteWorkflowTypeInput,
+  output: DeleteWorkflowTypeResponse,
   errors: [OperationNotPermittedFault, TypeNotDeprecatedFault, UnknownResourceFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1609,8 +2169,8 @@ export const deprecateActivityType: API.OperationMethod<
   DeprecateActivityTypeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15) as any as S.Schema<DeprecateActivityTypeInput>,
-  output: __S(13) as any as S.Schema<DeprecateActivityTypeResponse>,
+  input: DeprecateActivityTypeInput,
+  output: DeprecateActivityTypeResponse,
   errors: [OperationNotPermittedFault, TypeDeprecatedFault, UnknownResourceFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1657,8 +2217,8 @@ export const deprecateDomain: API.OperationMethod<
   DeprecateDomainError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16) as any as S.Schema<DeprecateDomainInput>,
-  output: __S(17) as any as S.Schema<DeprecateDomainResponse>,
+  input: DeprecateDomainInput,
+  output: DeprecateDomainResponse,
   errors: [DomainDeprecatedFault, OperationNotPermittedFault, UnknownResourceFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1711,8 +2271,8 @@ export const deprecateWorkflowType: API.OperationMethod<
   DeprecateWorkflowTypeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18) as any as S.Schema<DeprecateWorkflowTypeInput>,
-  output: __S(13) as any as S.Schema<DeprecateWorkflowTypeResponse>,
+  input: DeprecateWorkflowTypeInput,
+  output: DeprecateWorkflowTypeResponse,
   errors: [OperationNotPermittedFault, TypeDeprecatedFault, UnknownResourceFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1760,8 +2320,8 @@ export const describeActivityType: API.OperationMethod<
   DescribeActivityTypeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19) as any as S.Schema<DescribeActivityTypeInput>,
-  output: __S(22) as any as S.Schema<ActivityTypeDetail>,
+  input: DescribeActivityTypeInput,
+  output: ActivityTypeDetail,
   errors: [OperationNotPermittedFault, UnknownResourceFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1798,8 +2358,8 @@ export const describeDomain: API.OperationMethod<
   DescribeDomainError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23) as any as S.Schema<DescribeDomainInput>,
-  output: __S(26) as any as S.Schema<DomainDetail>,
+  input: DescribeDomainInput,
+  output: DomainDetail,
   errors: [OperationNotPermittedFault, UnknownResourceFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1842,8 +2402,8 @@ export const describeWorkflowExecution: API.OperationMethod<
   DescribeWorkflowExecutionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28) as any as S.Schema<DescribeWorkflowExecutionInput>,
-  output: __S(33) as any as S.Schema<WorkflowExecutionDetail>,
+  input: DescribeWorkflowExecutionInput,
+  output: WorkflowExecutionDetail,
   errors: [OperationNotPermittedFault, UnknownResourceFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1891,8 +2451,8 @@ export const describeWorkflowType: API.OperationMethod<
   DescribeWorkflowTypeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34) as any as S.Schema<DescribeWorkflowTypeInput>,
-  output: __S(37) as any as S.Schema<WorkflowTypeDetail>,
+  input: DescribeWorkflowTypeInput,
+  output: WorkflowTypeDetail,
   errors: [OperationNotPermittedFault, UnknownResourceFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1937,8 +2497,8 @@ export const getWorkflowExecutionHistory: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   HistoryEvent
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(38) as any as S.Schema<GetWorkflowExecutionHistoryInput>,
-  output: __S(90) as any as S.Schema<History>,
+  input: GetWorkflowExecutionHistoryInput,
+  output: History,
   errors: [OperationNotPermittedFault, UnknownResourceFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1988,8 +2548,8 @@ export const listActivityTypes: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ActivityTypeInfo
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(91) as any as S.Schema<ListActivityTypesInput>,
-  output: __S(93) as any as S.Schema<ActivityTypeInfos>,
+  input: ListActivityTypesInput,
+  output: ActivityTypeInfos,
   errors: [OperationNotPermittedFault, UnknownResourceFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2050,8 +2610,8 @@ export const listClosedWorkflowExecutions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   WorkflowExecutionInfo
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(94) as any as S.Schema<ListClosedWorkflowExecutionsInput>,
-  output: __S(96) as any as S.Schema<WorkflowExecutionInfos>,
+  input: ListClosedWorkflowExecutionsInput,
+  output: WorkflowExecutionInfos,
   errors: [OperationNotPermittedFault, UnknownResourceFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2101,8 +2661,8 @@ export const listDomains: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   DomainInfo
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(97) as any as S.Schema<ListDomainsInput>,
-  output: __S(99) as any as S.Schema<DomainInfos>,
+  input: ListDomainsInput,
+  output: DomainInfos,
   errors: [OperationNotPermittedFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2163,8 +2723,8 @@ export const listOpenWorkflowExecutions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   WorkflowExecutionInfo
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(100) as any as S.Schema<ListOpenWorkflowExecutionsInput>,
-  output: __S(96) as any as S.Schema<WorkflowExecutionInfos>,
+  input: ListOpenWorkflowExecutionsInput,
+  output: WorkflowExecutionInfos,
   errors: [OperationNotPermittedFault, UnknownResourceFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2191,8 +2751,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(101) as any as S.Schema<ListTagsForResourceInput>,
-  output: __S(104) as any as S.Schema<ListTagsForResourceOutput>,
+  input: ListTagsForResourceInput,
+  output: ListTagsForResourceOutput,
   errors: [LimitExceededFault, OperationNotPermittedFault, UnknownResourceFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2233,8 +2793,8 @@ export const listWorkflowTypes: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   WorkflowTypeInfo
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(105) as any as S.Schema<ListWorkflowTypesInput>,
-  output: __S(107) as any as S.Schema<WorkflowTypeInfos>,
+  input: ListWorkflowTypesInput,
+  output: WorkflowTypeInfos,
   errors: [OperationNotPermittedFault, UnknownResourceFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2291,8 +2851,8 @@ export const pollForActivityTask: API.OperationMethod<
   PollForActivityTaskError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(108) as any as S.Schema<PollForActivityTaskInput>,
-  output: __S(109) as any as S.Schema<ActivityTask>,
+  input: PollForActivityTaskInput,
+  output: ActivityTask,
   errors: [LimitExceededFault, OperationNotPermittedFault, UnknownResourceFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2356,8 +2916,8 @@ export const pollForDecisionTask: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   HistoryEvent
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(110) as any as S.Schema<PollForDecisionTaskInput>,
-  output: __S(111) as any as S.Schema<DecisionTask>,
+  input: PollForDecisionTaskInput,
+  output: DecisionTask,
   errors: [LimitExceededFault, OperationNotPermittedFault, UnknownResourceFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2425,8 +2985,8 @@ export const recordActivityTaskHeartbeat: API.OperationMethod<
   RecordActivityTaskHeartbeatError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(112) as any as S.Schema<RecordActivityTaskHeartbeatInput>,
-  output: __S(113) as any as S.Schema<ActivityTaskStatus>,
+  input: RecordActivityTaskHeartbeatInput,
+  output: ActivityTaskStatus,
   errors: [OperationNotPermittedFault, UnknownResourceFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2481,8 +3041,8 @@ export const registerActivityType: API.OperationMethod<
   RegisterActivityTypeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(114) as any as S.Schema<RegisterActivityTypeInput>,
-  output: __S(13) as any as S.Schema<RegisterActivityTypeResponse>,
+  input: RegisterActivityTypeInput,
+  output: RegisterActivityTypeResponse,
   errors: [
     LimitExceededFault,
     OperationNotPermittedFault,
@@ -2528,8 +3088,8 @@ export const registerDomain: API.OperationMethod<
   RegisterDomainError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(115) as any as S.Schema<RegisterDomainInput>,
-  output: __S(116) as any as S.Schema<RegisterDomainResponse>,
+  input: RegisterDomainInput,
+  output: RegisterDomainResponse,
   errors: [
     DomainAlreadyExistsFault,
     LimitExceededFault,
@@ -2591,8 +3151,8 @@ export const registerWorkflowType: API.OperationMethod<
   RegisterWorkflowTypeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(117) as any as S.Schema<RegisterWorkflowTypeInput>,
-  output: __S(13) as any as S.Schema<RegisterWorkflowTypeResponse>,
+  input: RegisterWorkflowTypeInput,
+  output: RegisterWorkflowTypeResponse,
   errors: [
     LimitExceededFault,
     OperationNotPermittedFault,
@@ -2647,8 +3207,8 @@ export const requestCancelWorkflowExecution: API.OperationMethod<
   RequestCancelWorkflowExecutionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(118) as any as S.Schema<RequestCancelWorkflowExecutionInput>,
-  output: __S(13) as any as S.Schema<RequestCancelWorkflowExecutionResponse>,
+  input: RequestCancelWorkflowExecutionInput,
+  output: RequestCancelWorkflowExecutionResponse,
   errors: [OperationNotPermittedFault, UnknownResourceFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2702,8 +3262,8 @@ export const respondActivityTaskCanceled: API.OperationMethod<
   RespondActivityTaskCanceledError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(119) as any as S.Schema<RespondActivityTaskCanceledInput>,
-  output: __S(13) as any as S.Schema<RespondActivityTaskCanceledResponse>,
+  input: RespondActivityTaskCanceledInput,
+  output: RespondActivityTaskCanceledResponse,
   errors: [OperationNotPermittedFault, UnknownResourceFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2755,8 +3315,8 @@ export const respondActivityTaskCompleted: API.OperationMethod<
   RespondActivityTaskCompletedError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(120) as any as S.Schema<RespondActivityTaskCompletedInput>,
-  output: __S(13) as any as S.Schema<RespondActivityTaskCompletedResponse>,
+  input: RespondActivityTaskCompletedInput,
+  output: RespondActivityTaskCompletedResponse,
   errors: [OperationNotPermittedFault, UnknownResourceFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2803,8 +3363,8 @@ export const respondActivityTaskFailed: API.OperationMethod<
   RespondActivityTaskFailedError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(121) as any as S.Schema<RespondActivityTaskFailedInput>,
-  output: __S(13) as any as S.Schema<RespondActivityTaskFailedResponse>,
+  input: RespondActivityTaskFailedInput,
+  output: RespondActivityTaskFailedResponse,
   errors: [OperationNotPermittedFault, UnknownResourceFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2841,8 +3401,8 @@ export const respondDecisionTaskCompleted: API.OperationMethod<
   RespondDecisionTaskCompletedError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(137) as any as S.Schema<RespondDecisionTaskCompletedInput>,
-  output: __S(13) as any as S.Schema<RespondDecisionTaskCompletedResponse>,
+  input: RespondDecisionTaskCompletedInput,
+  output: RespondDecisionTaskCompletedResponse,
   errors: [OperationNotPermittedFault, UnknownResourceFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2891,8 +3451,8 @@ export const signalWorkflowExecution: API.OperationMethod<
   SignalWorkflowExecutionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(138) as any as S.Schema<SignalWorkflowExecutionInput>,
-  output: __S(13) as any as S.Schema<SignalWorkflowExecutionResponse>,
+  input: SignalWorkflowExecutionInput,
+  output: SignalWorkflowExecutionResponse,
   errors: [OperationNotPermittedFault, UnknownResourceFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2958,8 +3518,8 @@ export const startWorkflowExecution: API.OperationMethod<
   StartWorkflowExecutionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(139) as any as S.Schema<StartWorkflowExecutionInput>,
-  output: __S(140) as any as S.Schema<Run>,
+  input: StartWorkflowExecutionInput,
+  output: Run,
   errors: [
     DefaultUndefinedFault,
     LimitExceededFault,
@@ -2990,8 +3550,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(141) as any as S.Schema<TagResourceInput>,
-  output: __S(142) as any as S.Schema<TagResourceResponse>,
+  input: TagResourceInput,
+  output: TagResourceResponse,
   errors: [LimitExceededFault, OperationNotPermittedFault, TooManyTagsFault, UnknownResourceFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3043,8 +3603,8 @@ export const terminateWorkflowExecution: API.OperationMethod<
   TerminateWorkflowExecutionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(143) as any as S.Schema<TerminateWorkflowExecutionInput>,
-  output: __S(13) as any as S.Schema<TerminateWorkflowExecutionResponse>,
+  input: TerminateWorkflowExecutionInput,
+  output: TerminateWorkflowExecutionResponse,
   errors: [OperationNotPermittedFault, UnknownResourceFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3095,8 +3655,8 @@ export const undeprecateActivityType: API.OperationMethod<
   UndeprecateActivityTypeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(144) as any as S.Schema<UndeprecateActivityTypeInput>,
-  output: __S(13) as any as S.Schema<UndeprecateActivityTypeResponse>,
+  input: UndeprecateActivityTypeInput,
+  output: UndeprecateActivityTypeResponse,
   errors: [OperationNotPermittedFault, TypeAlreadyExistsFault, UnknownResourceFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3140,8 +3700,8 @@ export const undeprecateDomain: API.OperationMethod<
   UndeprecateDomainError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(145) as any as S.Schema<UndeprecateDomainInput>,
-  output: __S(13) as any as S.Schema<UndeprecateDomainResponse>,
+  input: UndeprecateDomainInput,
+  output: UndeprecateDomainResponse,
   errors: [DomainAlreadyExistsFault, OperationNotPermittedFault, UnknownResourceFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3192,8 +3752,8 @@ export const undeprecateWorkflowType: API.OperationMethod<
   UndeprecateWorkflowTypeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(146) as any as S.Schema<UndeprecateWorkflowTypeInput>,
-  output: __S(13) as any as S.Schema<UndeprecateWorkflowTypeResponse>,
+  input: UndeprecateWorkflowTypeInput,
+  output: UndeprecateWorkflowTypeResponse,
   errors: [OperationNotPermittedFault, TypeAlreadyExistsFault, UnknownResourceFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3214,8 +3774,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(147) as any as S.Schema<UntagResourceInput>,
-  output: __S(142) as any as S.Schema<UntagResourceResponse>,
+  input: UntagResourceInput,
+  output: UntagResourceResponse,
   errors: [LimitExceededFault, OperationNotPermittedFault, UnknownResourceFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3245,19 +3805,19 @@ function __c0(j: number): any {
         identifier: "TagFilter",
       });
     case 4:
-      return S.suspend(() => S.Struct({ status: S.String })).annotate({
+      return S.suspend(() => S.Struct({ status: CloseStatus })).annotate({
         identifier: "CloseStatusFilter",
       });
     case 5:
       return S.suspend(() =>
         S.Struct({
           domain: S.String,
-          startTimeFilter: S.optional(__S(0)),
-          closeTimeFilter: S.optional(__S(0)),
-          executionFilter: S.optional(__S(1)),
-          typeFilter: S.optional(__S(2)),
-          tagFilter: S.optional(__S(3)),
-          closeStatusFilter: S.optional(__S(4)),
+          startTimeFilter: S.optional(ExecutionTimeFilter),
+          closeTimeFilter: S.optional(ExecutionTimeFilter),
+          executionFilter: S.optional(WorkflowExecutionFilter),
+          typeFilter: S.optional(WorkflowTypeFilter),
+          tagFilter: S.optional(TagFilter),
+          closeStatusFilter: S.optional(CloseStatusFilter),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "CountClosedWorkflowExecutionsInput",
@@ -3270,10 +3830,10 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           domain: S.String,
-          startTimeFilter: __S(0),
-          typeFilter: S.optional(__S(2)),
-          tagFilter: S.optional(__S(3)),
-          executionFilter: S.optional(__S(1)),
+          startTimeFilter: ExecutionTimeFilter,
+          typeFilter: S.optional(WorkflowTypeFilter),
+          tagFilter: S.optional(TagFilter),
+          executionFilter: S.optional(WorkflowExecutionFilter),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "CountOpenWorkflowExecutionsInput",
@@ -3288,7 +3848,7 @@ function __c1(j: number): any {
       });
     case 1:
       return S.suspend(() =>
-        S.Struct({ domain: S.String, taskList: __S(8) }).pipe(
+        S.Struct({ domain: S.String, taskList: TaskList }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
@@ -3296,7 +3856,7 @@ function __c1(j: number): any {
       });
     case 2:
       return S.suspend(() =>
-        S.Struct({ domain: S.String, taskList: __S(8) }).pipe(
+        S.Struct({ domain: S.String, taskList: TaskList }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
@@ -3308,7 +3868,7 @@ function __c1(j: number): any {
       });
     case 4:
       return S.suspend(() =>
-        S.Struct({ domain: S.String, activityType: __S(11) }).pipe(
+        S.Struct({ domain: S.String, activityType: ActivityType }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "DeleteActivityTypeInput" });
@@ -3318,13 +3878,13 @@ function __c1(j: number): any {
       });
     case 6:
       return S.suspend(() =>
-        S.Struct({ domain: S.String, workflowType: __S(11) }).pipe(
+        S.Struct({ domain: S.String, workflowType: WorkflowType }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "DeleteWorkflowTypeInput" });
     case 7:
       return S.suspend(() =>
-        S.Struct({ domain: S.String, activityType: __S(11) }).pipe(
+        S.Struct({ domain: S.String, activityType: ActivityType }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
@@ -3346,7 +3906,7 @@ function __c2(j: number): any {
       });
     case 2:
       return S.suspend(() =>
-        S.Struct({ domain: S.String, workflowType: __S(11) }).pipe(
+        S.Struct({ domain: S.String, workflowType: WorkflowType }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
@@ -3354,7 +3914,7 @@ function __c2(j: number): any {
       });
     case 3:
       return S.suspend(() =>
-        S.Struct({ domain: S.String, activityType: __S(11) }).pipe(
+        S.Struct({ domain: S.String, activityType: ActivityType }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
@@ -3363,8 +3923,8 @@ function __c2(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          activityType: __S(11),
-          status: S.String,
+          activityType: ActivityType,
+          status: RegistrationStatus,
           description: S.optional(S.String),
           creationDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           deprecationDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
@@ -3375,7 +3935,7 @@ function __c2(j: number): any {
         S.Struct({
           defaultTaskStartToCloseTimeout: S.optional(S.String),
           defaultTaskHeartbeatTimeout: S.optional(S.String),
-          defaultTaskList: S.optional(__S(8)),
+          defaultTaskList: S.optional(TaskList),
           defaultTaskPriority: S.optional(S.String),
           defaultTaskScheduleToStartTimeout: S.optional(S.String),
           defaultTaskScheduleToCloseTimeout: S.optional(S.String),
@@ -3385,7 +3945,7 @@ function __c2(j: number): any {
       });
     case 6:
       return S.suspend(() =>
-        S.Struct({ typeInfo: __S(20), configuration: __S(21) }).pipe(ns),
+        S.Struct({ typeInfo: ActivityTypeInfo, configuration: ActivityTypeConfiguration }).pipe(ns),
       ).annotate({ identifier: "ActivityTypeDetail" });
     case 7:
       return S.suspend(() =>
@@ -3401,7 +3961,7 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          status: S.String,
+          status: RegistrationStatus,
           description: S.optional(S.String),
           arn: S.optional(S.String),
         }),
@@ -3412,7 +3972,7 @@ function __c3(j: number): any {
       ).annotate({ identifier: "DomainConfiguration" });
     case 2:
       return S.suspend(() =>
-        S.Struct({ domainInfo: __S(24), configuration: __S(25) }).pipe(ns),
+        S.Struct({ domainInfo: DomainInfo, configuration: DomainConfiguration }).pipe(ns),
       ).annotate({ identifier: "DomainDetail" });
     case 3:
       return S.suspend(() => S.Struct({ workflowId: S.String, runId: S.String })).annotate({
@@ -3420,7 +3980,7 @@ function __c3(j: number): any {
       });
     case 4:
       return S.suspend(() =>
-        S.Struct({ domain: S.String, execution: __S(27) }).pipe(
+        S.Struct({ domain: S.String, execution: WorkflowExecution }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
@@ -3431,14 +3991,14 @@ function __c3(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          execution: __S(27),
-          workflowType: __S(11),
+          execution: WorkflowExecution,
+          workflowType: WorkflowType,
           startTimestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           closeTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          executionStatus: S.String,
-          closeStatus: S.optional(S.String),
-          parent: S.optional(__S(27)),
-          tagList: S.optional(__S(29)),
+          executionStatus: ExecutionStatus,
+          closeStatus: S.optional(CloseStatus),
+          parent: S.optional(WorkflowExecution),
+          tagList: S.optional(TagList),
           cancelRequested: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "WorkflowExecutionInfo" });
@@ -3447,9 +4007,9 @@ function __c3(j: number): any {
         S.Struct({
           taskStartToCloseTimeout: S.String,
           executionStartToCloseTimeout: S.String,
-          taskList: __S(8),
+          taskList: TaskList,
           taskPriority: S.optional(S.String),
-          childPolicy: S.String,
+          childPolicy: ChildPolicy,
           lambdaRole: S.optional(S.String),
         }),
       ).annotate({
@@ -3474,16 +4034,16 @@ function __c4(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          executionInfo: __S(30),
-          executionConfiguration: __S(31),
-          openCounts: __S(32),
+          executionInfo: WorkflowExecutionInfo,
+          executionConfiguration: WorkflowExecutionConfiguration,
+          openCounts: WorkflowExecutionOpenCounts,
           latestActivityTaskTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           latestExecutionContext: S.optional(S.String),
         }).pipe(ns),
       ).annotate({ identifier: "WorkflowExecutionDetail" });
     case 2:
       return S.suspend(() =>
-        S.Struct({ domain: S.String, workflowType: __S(11) }).pipe(
+        S.Struct({ domain: S.String, workflowType: WorkflowType }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
@@ -3492,8 +4052,8 @@ function __c4(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          workflowType: __S(11),
-          status: S.String,
+          workflowType: WorkflowType,
+          status: RegistrationStatus,
           description: S.optional(S.String),
           creationDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           deprecationDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
@@ -3504,9 +4064,9 @@ function __c4(j: number): any {
         S.Struct({
           defaultTaskStartToCloseTimeout: S.optional(S.String),
           defaultExecutionStartToCloseTimeout: S.optional(S.String),
-          defaultTaskList: S.optional(__S(8)),
+          defaultTaskList: S.optional(TaskList),
           defaultTaskPriority: S.optional(S.String),
-          defaultChildPolicy: S.optional(S.String),
+          defaultChildPolicy: S.optional(ChildPolicy),
           defaultLambdaRole: S.optional(S.String),
         }),
       ).annotate({
@@ -3514,13 +4074,13 @@ function __c4(j: number): any {
       });
     case 5:
       return S.suspend(() =>
-        S.Struct({ typeInfo: __S(35), configuration: __S(36) }).pipe(ns),
+        S.Struct({ typeInfo: WorkflowTypeInfo, configuration: WorkflowTypeConfiguration }).pipe(ns),
       ).annotate({ identifier: "WorkflowTypeDetail" });
     case 6:
       return S.suspend(() =>
         S.Struct({
           domain: S.String,
-          execution: __S(27),
+          execution: WorkflowExecution,
           nextPageToken: S.optional(S.String),
           maximumPageSize: S.optional(S.Number),
           reverseOrder: S.optional(S.Boolean),
@@ -3534,13 +4094,13 @@ function __c4(j: number): any {
           input: S.optional(S.String),
           executionStartToCloseTimeout: S.optional(S.String),
           taskStartToCloseTimeout: S.optional(S.String),
-          childPolicy: S.String,
-          taskList: __S(8),
+          childPolicy: ChildPolicy,
+          taskList: TaskList,
           taskPriority: S.optional(S.String),
-          workflowType: __S(11),
-          tagList: S.optional(__S(29)),
+          workflowType: WorkflowType,
+          tagList: S.optional(TagList),
           continuedExecutionRunId: S.optional(S.String),
-          parentWorkflowExecution: S.optional(__S(27)),
+          parentWorkflowExecution: S.optional(WorkflowExecution),
           parentInitiatedEventId: S.optional(S.Number),
           lambdaRole: S.optional(S.String),
         }),
@@ -3560,7 +4120,7 @@ function __c5(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          cause: S.String,
+          cause: CompleteWorkflowExecutionFailedCause,
           decisionTaskCompletedEventId: S.Number,
         }),
       ).annotate({
@@ -3577,7 +4137,9 @@ function __c5(j: number): any {
         identifier: "WorkflowExecutionFailedEventAttributes",
       });
     case 3:
-      return S.suspend(() => S.Struct({ timeoutType: S.String, childPolicy: S.String })).annotate({
+      return S.suspend(() =>
+        S.Struct({ timeoutType: WorkflowExecutionTimeoutType, childPolicy: ChildPolicy }),
+      ).annotate({
         identifier: "WorkflowExecutionTimedOutEventAttributes",
       });
     case 4:
@@ -3593,12 +4155,12 @@ function __c5(j: number): any {
           decisionTaskCompletedEventId: S.Number,
           newExecutionRunId: S.String,
           executionStartToCloseTimeout: S.optional(S.String),
-          taskList: __S(8),
+          taskList: TaskList,
           taskPriority: S.optional(S.String),
           taskStartToCloseTimeout: S.optional(S.String),
-          childPolicy: S.String,
-          tagList: S.optional(__S(29)),
-          workflowType: __S(11),
+          childPolicy: ChildPolicy,
+          tagList: S.optional(TagList),
+          workflowType: WorkflowType,
           lambdaRole: S.optional(S.String),
         }),
       ).annotate({
@@ -3607,7 +4169,7 @@ function __c5(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          cause: S.String,
+          cause: ContinueAsNewWorkflowExecutionFailedCause,
           decisionTaskCompletedEventId: S.Number,
         }),
       ).annotate({
@@ -3618,8 +4180,8 @@ function __c5(j: number): any {
         S.Struct({
           reason: S.optional(S.String),
           details: S.optional(S.String),
-          childPolicy: S.String,
-          cause: S.optional(S.String),
+          childPolicy: ChildPolicy,
+          cause: S.optional(WorkflowExecutionTerminatedCause),
         }),
       ).annotate({
         identifier: "WorkflowExecutionTerminatedEventAttributes",
@@ -3631,9 +4193,9 @@ function __c6(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          externalWorkflowExecution: S.optional(__S(27)),
+          externalWorkflowExecution: S.optional(WorkflowExecution),
           externalInitiatedEventId: S.optional(S.Number),
-          cause: S.optional(S.String),
+          cause: S.optional(WorkflowExecutionCancelRequestedCause),
         }),
       ).annotate({
         identifier: "WorkflowExecutionCancelRequestedEventAttributes",
@@ -3641,7 +4203,7 @@ function __c6(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          taskList: __S(8),
+          taskList: TaskList,
           taskPriority: S.optional(S.String),
           startToCloseTimeout: S.optional(S.String),
           scheduleToStartTimeout: S.optional(S.String),
@@ -3661,7 +4223,7 @@ function __c6(j: number): any {
           executionContext: S.optional(S.String),
           scheduledEventId: S.Number,
           startedEventId: S.Number,
-          taskList: S.optional(__S(8)),
+          taskList: S.optional(TaskList),
           taskListScheduleToStartTimeout: S.optional(S.String),
         }),
       ).annotate({
@@ -3670,7 +4232,7 @@ function __c6(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          timeoutType: S.String,
+          timeoutType: DecisionTaskTimeoutType,
           scheduledEventId: S.Number,
           startedEventId: S.Number,
         }),
@@ -3680,14 +4242,14 @@ function __c6(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          activityType: __S(11),
+          activityType: ActivityType,
           activityId: S.String,
           input: S.optional(S.String),
           control: S.optional(S.String),
           scheduleToStartTimeout: S.optional(S.String),
           scheduleToCloseTimeout: S.optional(S.String),
           startToCloseTimeout: S.optional(S.String),
-          taskList: __S(8),
+          taskList: TaskList,
           taskPriority: S.optional(S.String),
           decisionTaskCompletedEventId: S.Number,
           heartbeatTimeout: S.optional(S.String),
@@ -3723,7 +4285,7 @@ function __c7(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          timeoutType: S.String,
+          timeoutType: ActivityTaskTimeoutType,
           scheduledEventId: S.Number,
           startedEventId: S.Number,
           details: S.optional(S.String),
@@ -3753,7 +4315,7 @@ function __c7(j: number): any {
         S.Struct({
           signalName: S.String,
           input: S.optional(S.String),
-          externalWorkflowExecution: S.optional(__S(27)),
+          externalWorkflowExecution: S.optional(WorkflowExecution),
           externalInitiatedEventId: S.optional(S.Number),
         }),
       ).annotate({
@@ -3773,7 +4335,7 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           markerName: S.String,
-          cause: S.String,
+          cause: RecordMarkerFailedCause,
           decisionTaskCompletedEventId: S.Number,
         }),
       ).annotate({
@@ -3812,16 +4374,16 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           workflowId: S.String,
-          workflowType: __S(11),
+          workflowType: WorkflowType,
           control: S.optional(S.String),
           input: S.optional(S.String),
           executionStartToCloseTimeout: S.optional(S.String),
-          taskList: __S(8),
+          taskList: TaskList,
           taskPriority: S.optional(S.String),
           decisionTaskCompletedEventId: S.Number,
-          childPolicy: S.String,
+          childPolicy: ChildPolicy,
           taskStartToCloseTimeout: S.optional(S.String),
-          tagList: S.optional(__S(29)),
+          tagList: S.optional(TagList),
           lambdaRole: S.optional(S.String),
         }),
       ).annotate({
@@ -3830,8 +4392,8 @@ function __c8(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          workflowExecution: __S(27),
-          workflowType: __S(11),
+          workflowExecution: WorkflowExecution,
+          workflowType: WorkflowType,
           initiatedEventId: S.Number,
         }),
       ).annotate({
@@ -3840,8 +4402,8 @@ function __c8(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          workflowExecution: __S(27),
-          workflowType: __S(11),
+          workflowExecution: WorkflowExecution,
+          workflowType: WorkflowType,
           result: S.optional(S.String),
           initiatedEventId: S.Number,
           startedEventId: S.Number,
@@ -3852,8 +4414,8 @@ function __c8(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          workflowExecution: __S(27),
-          workflowType: __S(11),
+          workflowExecution: WorkflowExecution,
+          workflowType: WorkflowType,
           reason: S.optional(S.String),
           details: S.optional(S.String),
           initiatedEventId: S.Number,
@@ -3865,9 +4427,9 @@ function __c8(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          workflowExecution: __S(27),
-          workflowType: __S(11),
-          timeoutType: S.String,
+          workflowExecution: WorkflowExecution,
+          workflowType: WorkflowType,
+          timeoutType: WorkflowExecutionTimeoutType,
           initiatedEventId: S.Number,
           startedEventId: S.Number,
         }),
@@ -3877,8 +4439,8 @@ function __c8(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          workflowExecution: __S(27),
-          workflowType: __S(11),
+          workflowExecution: WorkflowExecution,
+          workflowType: WorkflowType,
           details: S.optional(S.String),
           initiatedEventId: S.Number,
           startedEventId: S.Number,
@@ -3889,8 +4451,8 @@ function __c8(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          workflowExecution: __S(27),
-          workflowType: __S(11),
+          workflowExecution: WorkflowExecution,
+          workflowType: WorkflowType,
           initiatedEventId: S.Number,
           startedEventId: S.Number,
         }),
@@ -3916,7 +4478,7 @@ function __c9(j: number): any {
       });
     case 1:
       return S.suspend(() =>
-        S.Struct({ workflowExecution: __S(27), initiatedEventId: S.Number }),
+        S.Struct({ workflowExecution: WorkflowExecution, initiatedEventId: S.Number }),
       ).annotate({
         identifier: "ExternalWorkflowExecutionSignaledEventAttributes",
       });
@@ -3925,7 +4487,7 @@ function __c9(j: number): any {
         S.Struct({
           workflowId: S.String,
           runId: S.optional(S.String),
-          cause: S.String,
+          cause: SignalExternalWorkflowExecutionFailedCause,
           initiatedEventId: S.Number,
           decisionTaskCompletedEventId: S.Number,
           control: S.optional(S.String),
@@ -3949,7 +4511,7 @@ function __c9(j: number): any {
         S.Struct({
           workflowId: S.String,
           runId: S.optional(S.String),
-          cause: S.String,
+          cause: RequestCancelExternalWorkflowExecutionFailedCause,
           initiatedEventId: S.Number,
           decisionTaskCompletedEventId: S.Number,
           control: S.optional(S.String),
@@ -3960,9 +4522,9 @@ function __c9(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          activityType: __S(11),
+          activityType: ActivityType,
           activityId: S.String,
-          cause: S.String,
+          cause: ScheduleActivityTaskFailedCause,
           decisionTaskCompletedEventId: S.Number,
         }),
       ).annotate({
@@ -3972,7 +4534,7 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           activityId: S.String,
-          cause: S.String,
+          cause: RequestCancelActivityTaskFailedCause,
           decisionTaskCompletedEventId: S.Number,
         }),
       ).annotate({
@@ -3982,7 +4544,7 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           timerId: S.String,
-          cause: S.String,
+          cause: StartTimerFailedCause,
           decisionTaskCompletedEventId: S.Number,
         }),
       ).annotate({
@@ -3995,8 +4557,8 @@ function __c10(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          workflowType: __S(11),
-          cause: S.String,
+          workflowType: WorkflowType,
+          cause: StartChildWorkflowExecutionFailedCause,
           workflowId: S.String,
           initiatedEventId: S.Number,
           decisionTaskCompletedEventId: S.Number,
@@ -4048,7 +4610,7 @@ function __c10(j: number): any {
         S.Struct({
           scheduledEventId: S.Number,
           startedEventId: S.Number,
-          timeoutType: S.optional(S.String),
+          timeoutType: S.optional(LambdaFunctionTimeoutType),
         }),
       ).annotate({
         identifier: "LambdaFunctionTimedOutEventAttributes",
@@ -4058,7 +4620,7 @@ function __c10(j: number): any {
         S.Struct({
           id: S.String,
           name: S.String,
-          cause: S.String,
+          cause: ScheduleLambdaFunctionFailedCause,
           decisionTaskCompletedEventId: S.Number,
         }),
       ).annotate({
@@ -4068,7 +4630,7 @@ function __c10(j: number): any {
       return S.suspend(() =>
         S.Struct({
           scheduledEventId: S.optional(S.Number),
-          cause: S.optional(S.String),
+          cause: S.optional(StartLambdaFunctionFailedCause),
           message: S.optional(S.String),
         }),
       ).annotate({
@@ -4082,97 +4644,165 @@ function __c11(j: number): any {
       return S.suspend(() =>
         S.Struct({
           eventTimestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          eventType: S.String,
+          eventType: EventType,
           eventId: S.Number,
-          workflowExecutionStartedEventAttributes: S.optional(__S(39)),
-          workflowExecutionCompletedEventAttributes: S.optional(__S(40)),
-          completeWorkflowExecutionFailedEventAttributes: S.optional(__S(41)),
-          workflowExecutionFailedEventAttributes: S.optional(__S(42)),
-          failWorkflowExecutionFailedEventAttributes: S.optional(__S(41)),
-          workflowExecutionTimedOutEventAttributes: S.optional(__S(43)),
-          workflowExecutionCanceledEventAttributes: S.optional(__S(44)),
-          cancelWorkflowExecutionFailedEventAttributes: S.optional(__S(41)),
-          workflowExecutionContinuedAsNewEventAttributes: S.optional(__S(45)),
-          continueAsNewWorkflowExecutionFailedEventAttributes: S.optional(__S(46)),
-          workflowExecutionTerminatedEventAttributes: S.optional(__S(47)),
-          workflowExecutionCancelRequestedEventAttributes: S.optional(__S(48)),
-          decisionTaskScheduledEventAttributes: S.optional(__S(49)),
-          decisionTaskStartedEventAttributes: S.optional(__S(50)),
-          decisionTaskCompletedEventAttributes: S.optional(__S(51)),
-          decisionTaskTimedOutEventAttributes: S.optional(__S(52)),
-          activityTaskScheduledEventAttributes: S.optional(__S(53)),
-          activityTaskStartedEventAttributes: S.optional(__S(50)),
-          activityTaskCompletedEventAttributes: S.optional(__S(54)),
-          activityTaskFailedEventAttributes: S.optional(__S(55)),
-          activityTaskTimedOutEventAttributes: S.optional(__S(56)),
-          activityTaskCanceledEventAttributes: S.optional(__S(57)),
-          activityTaskCancelRequestedEventAttributes: S.optional(__S(58)),
-          workflowExecutionSignaledEventAttributes: S.optional(__S(59)),
-          markerRecordedEventAttributes: S.optional(__S(60)),
-          recordMarkerFailedEventAttributes: S.optional(__S(61)),
-          timerStartedEventAttributes: S.optional(__S(62)),
-          timerFiredEventAttributes: S.optional(__S(63)),
-          timerCanceledEventAttributes: S.optional(__S(64)),
-          startChildWorkflowExecutionInitiatedEventAttributes: S.optional(__S(65)),
-          childWorkflowExecutionStartedEventAttributes: S.optional(__S(66)),
-          childWorkflowExecutionCompletedEventAttributes: S.optional(__S(67)),
-          childWorkflowExecutionFailedEventAttributes: S.optional(__S(68)),
-          childWorkflowExecutionTimedOutEventAttributes: S.optional(__S(69)),
-          childWorkflowExecutionCanceledEventAttributes: S.optional(__S(70)),
-          childWorkflowExecutionTerminatedEventAttributes: S.optional(__S(71)),
-          signalExternalWorkflowExecutionInitiatedEventAttributes: S.optional(__S(72)),
-          externalWorkflowExecutionSignaledEventAttributes: S.optional(__S(73)),
-          signalExternalWorkflowExecutionFailedEventAttributes: S.optional(__S(74)),
-          externalWorkflowExecutionCancelRequestedEventAttributes: S.optional(__S(73)),
-          requestCancelExternalWorkflowExecutionInitiatedEventAttributes: S.optional(__S(75)),
-          requestCancelExternalWorkflowExecutionFailedEventAttributes: S.optional(__S(76)),
-          scheduleActivityTaskFailedEventAttributes: S.optional(__S(77)),
-          requestCancelActivityTaskFailedEventAttributes: S.optional(__S(78)),
-          startTimerFailedEventAttributes: S.optional(__S(79)),
-          cancelTimerFailedEventAttributes: S.optional(__S(79)),
-          startChildWorkflowExecutionFailedEventAttributes: S.optional(__S(80)),
-          lambdaFunctionScheduledEventAttributes: S.optional(__S(81)),
-          lambdaFunctionStartedEventAttributes: S.optional(__S(82)),
-          lambdaFunctionCompletedEventAttributes: S.optional(__S(83)),
-          lambdaFunctionFailedEventAttributes: S.optional(__S(84)),
-          lambdaFunctionTimedOutEventAttributes: S.optional(__S(85)),
-          scheduleLambdaFunctionFailedEventAttributes: S.optional(__S(86)),
-          startLambdaFunctionFailedEventAttributes: S.optional(__S(87)),
+          workflowExecutionStartedEventAttributes: S.optional(
+            WorkflowExecutionStartedEventAttributes,
+          ),
+          workflowExecutionCompletedEventAttributes: S.optional(
+            WorkflowExecutionCompletedEventAttributes,
+          ),
+          completeWorkflowExecutionFailedEventAttributes: S.optional(
+            CompleteWorkflowExecutionFailedEventAttributes,
+          ),
+          workflowExecutionFailedEventAttributes: S.optional(
+            WorkflowExecutionFailedEventAttributes,
+          ),
+          failWorkflowExecutionFailedEventAttributes: S.optional(
+            FailWorkflowExecutionFailedEventAttributes,
+          ),
+          workflowExecutionTimedOutEventAttributes: S.optional(
+            WorkflowExecutionTimedOutEventAttributes,
+          ),
+          workflowExecutionCanceledEventAttributes: S.optional(
+            WorkflowExecutionCanceledEventAttributes,
+          ),
+          cancelWorkflowExecutionFailedEventAttributes: S.optional(
+            CancelWorkflowExecutionFailedEventAttributes,
+          ),
+          workflowExecutionContinuedAsNewEventAttributes: S.optional(
+            WorkflowExecutionContinuedAsNewEventAttributes,
+          ),
+          continueAsNewWorkflowExecutionFailedEventAttributes: S.optional(
+            ContinueAsNewWorkflowExecutionFailedEventAttributes,
+          ),
+          workflowExecutionTerminatedEventAttributes: S.optional(
+            WorkflowExecutionTerminatedEventAttributes,
+          ),
+          workflowExecutionCancelRequestedEventAttributes: S.optional(
+            WorkflowExecutionCancelRequestedEventAttributes,
+          ),
+          decisionTaskScheduledEventAttributes: S.optional(DecisionTaskScheduledEventAttributes),
+          decisionTaskStartedEventAttributes: S.optional(DecisionTaskStartedEventAttributes),
+          decisionTaskCompletedEventAttributes: S.optional(DecisionTaskCompletedEventAttributes),
+          decisionTaskTimedOutEventAttributes: S.optional(DecisionTaskTimedOutEventAttributes),
+          activityTaskScheduledEventAttributes: S.optional(ActivityTaskScheduledEventAttributes),
+          activityTaskStartedEventAttributes: S.optional(ActivityTaskStartedEventAttributes),
+          activityTaskCompletedEventAttributes: S.optional(ActivityTaskCompletedEventAttributes),
+          activityTaskFailedEventAttributes: S.optional(ActivityTaskFailedEventAttributes),
+          activityTaskTimedOutEventAttributes: S.optional(ActivityTaskTimedOutEventAttributes),
+          activityTaskCanceledEventAttributes: S.optional(ActivityTaskCanceledEventAttributes),
+          activityTaskCancelRequestedEventAttributes: S.optional(
+            ActivityTaskCancelRequestedEventAttributes,
+          ),
+          workflowExecutionSignaledEventAttributes: S.optional(
+            WorkflowExecutionSignaledEventAttributes,
+          ),
+          markerRecordedEventAttributes: S.optional(MarkerRecordedEventAttributes),
+          recordMarkerFailedEventAttributes: S.optional(RecordMarkerFailedEventAttributes),
+          timerStartedEventAttributes: S.optional(TimerStartedEventAttributes),
+          timerFiredEventAttributes: S.optional(TimerFiredEventAttributes),
+          timerCanceledEventAttributes: S.optional(TimerCanceledEventAttributes),
+          startChildWorkflowExecutionInitiatedEventAttributes: S.optional(
+            StartChildWorkflowExecutionInitiatedEventAttributes,
+          ),
+          childWorkflowExecutionStartedEventAttributes: S.optional(
+            ChildWorkflowExecutionStartedEventAttributes,
+          ),
+          childWorkflowExecutionCompletedEventAttributes: S.optional(
+            ChildWorkflowExecutionCompletedEventAttributes,
+          ),
+          childWorkflowExecutionFailedEventAttributes: S.optional(
+            ChildWorkflowExecutionFailedEventAttributes,
+          ),
+          childWorkflowExecutionTimedOutEventAttributes: S.optional(
+            ChildWorkflowExecutionTimedOutEventAttributes,
+          ),
+          childWorkflowExecutionCanceledEventAttributes: S.optional(
+            ChildWorkflowExecutionCanceledEventAttributes,
+          ),
+          childWorkflowExecutionTerminatedEventAttributes: S.optional(
+            ChildWorkflowExecutionTerminatedEventAttributes,
+          ),
+          signalExternalWorkflowExecutionInitiatedEventAttributes: S.optional(
+            SignalExternalWorkflowExecutionInitiatedEventAttributes,
+          ),
+          externalWorkflowExecutionSignaledEventAttributes: S.optional(
+            ExternalWorkflowExecutionSignaledEventAttributes,
+          ),
+          signalExternalWorkflowExecutionFailedEventAttributes: S.optional(
+            SignalExternalWorkflowExecutionFailedEventAttributes,
+          ),
+          externalWorkflowExecutionCancelRequestedEventAttributes: S.optional(
+            ExternalWorkflowExecutionCancelRequestedEventAttributes,
+          ),
+          requestCancelExternalWorkflowExecutionInitiatedEventAttributes: S.optional(
+            RequestCancelExternalWorkflowExecutionInitiatedEventAttributes,
+          ),
+          requestCancelExternalWorkflowExecutionFailedEventAttributes: S.optional(
+            RequestCancelExternalWorkflowExecutionFailedEventAttributes,
+          ),
+          scheduleActivityTaskFailedEventAttributes: S.optional(
+            ScheduleActivityTaskFailedEventAttributes,
+          ),
+          requestCancelActivityTaskFailedEventAttributes: S.optional(
+            RequestCancelActivityTaskFailedEventAttributes,
+          ),
+          startTimerFailedEventAttributes: S.optional(StartTimerFailedEventAttributes),
+          cancelTimerFailedEventAttributes: S.optional(CancelTimerFailedEventAttributes),
+          startChildWorkflowExecutionFailedEventAttributes: S.optional(
+            StartChildWorkflowExecutionFailedEventAttributes,
+          ),
+          lambdaFunctionScheduledEventAttributes: S.optional(
+            LambdaFunctionScheduledEventAttributes,
+          ),
+          lambdaFunctionStartedEventAttributes: S.optional(LambdaFunctionStartedEventAttributes),
+          lambdaFunctionCompletedEventAttributes: S.optional(
+            LambdaFunctionCompletedEventAttributes,
+          ),
+          lambdaFunctionFailedEventAttributes: S.optional(LambdaFunctionFailedEventAttributes),
+          lambdaFunctionTimedOutEventAttributes: S.optional(LambdaFunctionTimedOutEventAttributes),
+          scheduleLambdaFunctionFailedEventAttributes: S.optional(
+            ScheduleLambdaFunctionFailedEventAttributes,
+          ),
+          startLambdaFunctionFailedEventAttributes: S.optional(
+            StartLambdaFunctionFailedEventAttributes,
+          ),
         }),
       ).annotate({ identifier: "HistoryEvent" });
     case 1:
-      return S.Array(__S(88));
+      return S.Array(HistoryEvent);
     case 2:
       return S.suspend(() =>
-        S.Struct({ events: __S(89), nextPageToken: S.optional(S.String) }).pipe(ns),
+        S.Struct({ events: HistoryEventList, nextPageToken: S.optional(S.String) }).pipe(ns),
       ).annotate({ identifier: "History" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           domain: S.String,
           name: S.optional(S.String),
-          registrationStatus: S.String,
+          registrationStatus: RegistrationStatus,
           nextPageToken: S.optional(S.String),
           maximumPageSize: S.optional(S.Number),
           reverseOrder: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListActivityTypesInput" });
     case 4:
-      return S.Array(__S(20));
+      return S.Array(ActivityTypeInfo);
     case 5:
       return S.suspend(() =>
-        S.Struct({ typeInfos: __S(92), nextPageToken: S.optional(S.String) }).pipe(ns),
+        S.Struct({ typeInfos: ActivityTypeInfoList, nextPageToken: S.optional(S.String) }).pipe(ns),
       ).annotate({ identifier: "ActivityTypeInfos" });
     case 6:
       return S.suspend(() =>
         S.Struct({
           domain: S.String,
-          startTimeFilter: S.optional(__S(0)),
-          closeTimeFilter: S.optional(__S(0)),
-          executionFilter: S.optional(__S(1)),
-          closeStatusFilter: S.optional(__S(4)),
-          typeFilter: S.optional(__S(2)),
-          tagFilter: S.optional(__S(3)),
+          startTimeFilter: S.optional(ExecutionTimeFilter),
+          closeTimeFilter: S.optional(ExecutionTimeFilter),
+          executionFilter: S.optional(WorkflowExecutionFilter),
+          closeStatusFilter: S.optional(CloseStatusFilter),
+          typeFilter: S.optional(WorkflowTypeFilter),
+          tagFilter: S.optional(TagFilter),
           nextPageToken: S.optional(S.String),
           maximumPageSize: S.optional(S.Number),
           reverseOrder: S.optional(S.Boolean),
@@ -4181,7 +4811,7 @@ function __c11(j: number): any {
         identifier: "ListClosedWorkflowExecutionsInput",
       });
     case 7:
-      return S.Array(__S(30));
+      return S.Array(WorkflowExecutionInfo);
   }
 }
 function __c12(j: number): any {
@@ -4189,7 +4819,7 @@ function __c12(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          executionInfos: __S(95),
+          executionInfos: WorkflowExecutionInfoList,
           nextPageToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({ identifier: "WorkflowExecutionInfos" });
@@ -4197,28 +4827,28 @@ function __c12(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          registrationStatus: S.String,
+          registrationStatus: RegistrationStatus,
           maximumPageSize: S.optional(S.Number),
           reverseOrder: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListDomainsInput" });
     case 2:
-      return S.Array(__S(24));
+      return S.Array(DomainInfo);
     case 3:
       return S.suspend(() =>
-        S.Struct({ domainInfos: __S(98), nextPageToken: S.optional(S.String) }).pipe(ns),
+        S.Struct({ domainInfos: DomainInfoList, nextPageToken: S.optional(S.String) }).pipe(ns),
       ).annotate({ identifier: "DomainInfos" });
     case 4:
       return S.suspend(() =>
         S.Struct({
           domain: S.String,
-          startTimeFilter: __S(0),
-          typeFilter: S.optional(__S(2)),
-          tagFilter: S.optional(__S(3)),
+          startTimeFilter: ExecutionTimeFilter,
+          typeFilter: S.optional(WorkflowTypeFilter),
+          tagFilter: S.optional(TagFilter),
           nextPageToken: S.optional(S.String),
           maximumPageSize: S.optional(S.Number),
           reverseOrder: S.optional(S.Boolean),
-          executionFilter: S.optional(__S(1)),
+          executionFilter: S.optional(WorkflowExecutionFilter),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "ListOpenWorkflowExecutionsInput",
@@ -4234,13 +4864,13 @@ function __c12(j: number): any {
         identifier: "ResourceTag",
       });
     case 7:
-      return S.Array(__S(102));
+      return S.Array(ResourceTag);
   }
 }
 function __c13(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ tags: S.optional(__S(103)) }).pipe(ns)).annotate({
+      return S.suspend(() => S.Struct({ tags: S.optional(ResourceTagList) }).pipe(ns)).annotate({
         identifier: "ListTagsForResourceOutput",
       });
     case 1:
@@ -4248,21 +4878,21 @@ function __c13(j: number): any {
         S.Struct({
           domain: S.String,
           name: S.optional(S.String),
-          registrationStatus: S.String,
+          registrationStatus: RegistrationStatus,
           nextPageToken: S.optional(S.String),
           maximumPageSize: S.optional(S.Number),
           reverseOrder: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListWorkflowTypesInput" });
     case 2:
-      return S.Array(__S(35));
+      return S.Array(WorkflowTypeInfo);
     case 3:
       return S.suspend(() =>
-        S.Struct({ typeInfos: __S(106), nextPageToken: S.optional(S.String) }).pipe(ns),
+        S.Struct({ typeInfos: WorkflowTypeInfoList, nextPageToken: S.optional(S.String) }).pipe(ns),
       ).annotate({ identifier: "WorkflowTypeInfos" });
     case 4:
       return S.suspend(() =>
-        S.Struct({ domain: S.String, taskList: __S(8), identity: S.optional(S.String) }).pipe(
+        S.Struct({ domain: S.String, taskList: TaskList, identity: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "PollForActivityTaskInput" });
@@ -4272,8 +4902,8 @@ function __c13(j: number): any {
           taskToken: S.String,
           activityId: S.String,
           startedEventId: S.Number,
-          workflowExecution: __S(27),
-          activityType: __S(11),
+          workflowExecution: WorkflowExecution,
+          activityType: ActivityType,
           input: S.optional(S.String),
         }).pipe(ns),
       ).annotate({ identifier: "ActivityTask" });
@@ -4281,7 +4911,7 @@ function __c13(j: number): any {
       return S.suspend(() =>
         S.Struct({
           domain: S.String,
-          taskList: __S(8),
+          taskList: TaskList,
           identity: S.optional(S.String),
           nextPageToken: S.optional(S.String),
           maximumPageSize: S.optional(S.Number),
@@ -4294,9 +4924,9 @@ function __c13(j: number): any {
         S.Struct({
           taskToken: S.String,
           startedEventId: S.Number,
-          workflowExecution: __S(27),
-          workflowType: __S(11),
-          events: __S(89),
+          workflowExecution: WorkflowExecution,
+          workflowType: WorkflowType,
+          events: HistoryEventList,
           nextPageToken: S.optional(S.String),
           previousStartedEventId: S.optional(S.Number),
         }).pipe(ns),
@@ -4326,7 +4956,7 @@ function __c14(j: number): any {
           description: S.optional(S.String),
           defaultTaskStartToCloseTimeout: S.optional(S.String),
           defaultTaskHeartbeatTimeout: S.optional(S.String),
-          defaultTaskList: S.optional(__S(8)),
+          defaultTaskList: S.optional(TaskList),
           defaultTaskPriority: S.optional(S.String),
           defaultTaskScheduleToStartTimeout: S.optional(S.String),
           defaultTaskScheduleToCloseTimeout: S.optional(S.String),
@@ -4340,7 +4970,7 @@ function __c14(j: number): any {
           name: S.String,
           description: S.optional(S.String),
           workflowExecutionRetentionPeriodInDays: S.String,
-          tags: S.optional(__S(103)),
+          tags: S.optional(ResourceTagList),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "RegisterDomainInput" });
     case 4:
@@ -4356,9 +4986,9 @@ function __c14(j: number): any {
           description: S.optional(S.String),
           defaultTaskStartToCloseTimeout: S.optional(S.String),
           defaultExecutionStartToCloseTimeout: S.optional(S.String),
-          defaultTaskList: S.optional(__S(8)),
+          defaultTaskList: S.optional(TaskList),
           defaultTaskPriority: S.optional(S.String),
-          defaultChildPolicy: S.optional(S.String),
+          defaultChildPolicy: S.optional(ChildPolicy),
           defaultLambdaRole: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
@@ -4405,12 +5035,12 @@ function __c15(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          activityType: __S(11),
+          activityType: ActivityType,
           activityId: S.String,
           control: S.optional(S.String),
           input: S.optional(S.String),
           scheduleToCloseTimeout: S.optional(S.String),
-          taskList: S.optional(__S(8)),
+          taskList: S.optional(TaskList),
           taskPriority: S.optional(S.String),
           scheduleToStartTimeout: S.optional(S.String),
           startToCloseTimeout: S.optional(S.String),
@@ -4442,11 +5072,11 @@ function __c15(j: number): any {
         S.Struct({
           input: S.optional(S.String),
           executionStartToCloseTimeout: S.optional(S.String),
-          taskList: S.optional(__S(8)),
+          taskList: S.optional(TaskList),
           taskPriority: S.optional(S.String),
           taskStartToCloseTimeout: S.optional(S.String),
-          childPolicy: S.optional(S.String),
-          tagList: S.optional(__S(29)),
+          childPolicy: S.optional(ChildPolicy),
+          tagList: S.optional(TagList),
           workflowTypeVersion: S.optional(S.String),
           lambdaRole: S.optional(S.String),
         }),
@@ -4502,16 +5132,16 @@ function __c16(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          workflowType: __S(11),
+          workflowType: WorkflowType,
           workflowId: S.String,
           control: S.optional(S.String),
           input: S.optional(S.String),
           executionStartToCloseTimeout: S.optional(S.String),
-          taskList: S.optional(__S(8)),
+          taskList: S.optional(TaskList),
           taskPriority: S.optional(S.String),
           taskStartToCloseTimeout: S.optional(S.String),
-          childPolicy: S.optional(S.String),
-          tagList: S.optional(__S(29)),
+          childPolicy: S.optional(ChildPolicy),
+          tagList: S.optional(TagList),
           lambdaRole: S.optional(S.String),
         }),
       ).annotate({
@@ -4532,20 +5162,40 @@ function __c16(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          decisionType: S.String,
-          scheduleActivityTaskDecisionAttributes: S.optional(__S(122)),
-          requestCancelActivityTaskDecisionAttributes: S.optional(__S(123)),
-          completeWorkflowExecutionDecisionAttributes: S.optional(__S(124)),
-          failWorkflowExecutionDecisionAttributes: S.optional(__S(125)),
-          cancelWorkflowExecutionDecisionAttributes: S.optional(__S(126)),
-          continueAsNewWorkflowExecutionDecisionAttributes: S.optional(__S(127)),
-          recordMarkerDecisionAttributes: S.optional(__S(128)),
-          startTimerDecisionAttributes: S.optional(__S(129)),
-          cancelTimerDecisionAttributes: S.optional(__S(130)),
-          signalExternalWorkflowExecutionDecisionAttributes: S.optional(__S(131)),
-          requestCancelExternalWorkflowExecutionDecisionAttributes: S.optional(__S(132)),
-          startChildWorkflowExecutionDecisionAttributes: S.optional(__S(133)),
-          scheduleLambdaFunctionDecisionAttributes: S.optional(__S(134)),
+          decisionType: DecisionType,
+          scheduleActivityTaskDecisionAttributes: S.optional(
+            ScheduleActivityTaskDecisionAttributes,
+          ),
+          requestCancelActivityTaskDecisionAttributes: S.optional(
+            RequestCancelActivityTaskDecisionAttributes,
+          ),
+          completeWorkflowExecutionDecisionAttributes: S.optional(
+            CompleteWorkflowExecutionDecisionAttributes,
+          ),
+          failWorkflowExecutionDecisionAttributes: S.optional(
+            FailWorkflowExecutionDecisionAttributes,
+          ),
+          cancelWorkflowExecutionDecisionAttributes: S.optional(
+            CancelWorkflowExecutionDecisionAttributes,
+          ),
+          continueAsNewWorkflowExecutionDecisionAttributes: S.optional(
+            ContinueAsNewWorkflowExecutionDecisionAttributes,
+          ),
+          recordMarkerDecisionAttributes: S.optional(RecordMarkerDecisionAttributes),
+          startTimerDecisionAttributes: S.optional(StartTimerDecisionAttributes),
+          cancelTimerDecisionAttributes: S.optional(CancelTimerDecisionAttributes),
+          signalExternalWorkflowExecutionDecisionAttributes: S.optional(
+            SignalExternalWorkflowExecutionDecisionAttributes,
+          ),
+          requestCancelExternalWorkflowExecutionDecisionAttributes: S.optional(
+            RequestCancelExternalWorkflowExecutionDecisionAttributes,
+          ),
+          startChildWorkflowExecutionDecisionAttributes: S.optional(
+            StartChildWorkflowExecutionDecisionAttributes,
+          ),
+          scheduleLambdaFunctionDecisionAttributes: S.optional(
+            ScheduleLambdaFunctionDecisionAttributes,
+          ),
         }),
       ).annotate({ identifier: "Decision" });
   }
@@ -4553,14 +5203,14 @@ function __c16(j: number): any {
 function __c17(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(135));
+      return S.Array(Decision);
     case 1:
       return S.suspend(() =>
         S.Struct({
           taskToken: S.String,
-          decisions: S.optional(__S(136)),
+          decisions: S.optional(DecisionList),
           executionContext: S.optional(S.String),
-          taskList: S.optional(__S(8)),
+          taskList: S.optional(TaskList),
           taskListScheduleToStartTimeout: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
@@ -4583,14 +5233,14 @@ function __c17(j: number): any {
         S.Struct({
           domain: S.String,
           workflowId: S.String,
-          workflowType: __S(11),
-          taskList: S.optional(__S(8)),
+          workflowType: WorkflowType,
+          taskList: S.optional(TaskList),
           taskPriority: S.optional(S.String),
           input: S.optional(S.String),
           executionStartToCloseTimeout: S.optional(S.String),
-          tagList: S.optional(__S(29)),
+          tagList: S.optional(TagList),
           taskStartToCloseTimeout: S.optional(S.String),
-          childPolicy: S.optional(S.String),
+          childPolicy: S.optional(ChildPolicy),
           lambdaRole: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
@@ -4602,7 +5252,7 @@ function __c17(j: number): any {
       });
     case 5:
       return S.suspend(() =>
-        S.Struct({ resourceArn: S.String, tags: __S(103) }).pipe(
+        S.Struct({ resourceArn: S.String, tags: ResourceTagList }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "TagResourceInput" });
@@ -4618,7 +5268,7 @@ function __c17(j: number): any {
           runId: S.optional(S.String),
           reason: S.optional(S.String),
           details: S.optional(S.String),
-          childPolicy: S.optional(S.String),
+          childPolicy: S.optional(ChildPolicy),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "TerminateWorkflowExecutionInput",
@@ -4629,7 +5279,7 @@ function __c18(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ domain: S.String, activityType: __S(11) }).pipe(
+        S.Struct({ domain: S.String, activityType: ActivityType }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
@@ -4643,7 +5293,7 @@ function __c18(j: number): any {
       ).annotate({ identifier: "UndeprecateDomainInput" });
     case 2:
       return S.suspend(() =>
-        S.Struct({ domain: S.String, workflowType: __S(11) }).pipe(
+        S.Struct({ domain: S.String, workflowType: WorkflowType }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
@@ -4651,56 +5301,9 @@ function __c18(j: number): any {
       });
     case 3:
       return S.suspend(() =>
-        S.Struct({ resourceArn: S.String, tagKeys: __S(29) }).pipe(
+        S.Struct({ resourceArn: S.String, tagKeys: ResourceTagKeyList }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "UntagResourceInput" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
-    case 9:
-      return __c9(i & 7);
-    case 10:
-      return __c10(i & 7);
-    case 11:
-      return __c11(i & 7);
-    case 12:
-      return __c12(i & 7);
-    case 13:
-      return __c13(i & 7);
-    case 14:
-      return __c14(i & 7);
-    case 15:
-      return __c15(i & 7);
-    case 16:
-      return __c16(i & 7);
-    case 17:
-      return __c17(i & 7);
-    case 18:
-      return __c18(i & 7);
   }
 }

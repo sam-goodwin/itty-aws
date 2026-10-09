@@ -8,8 +8,6 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 const ns = /*@__PURE__*/ T.XmlNamespace("http://workspaces.amazonaws.com/api/v1");
 const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "WorkSpaces",
@@ -200,6 +198,10 @@ export interface AcceptAccountLinkInvitationRequest {
   LinkId: string;
   ClientToken?: string;
 }
+const AcceptAccountLinkInvitationRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<AcceptAccountLinkInvitationRequest>;
 export type AccountLinkStatusEnum =
   | "LINKED"
   | "LINKING_FAILED"
@@ -207,6 +209,8 @@ export type AccountLinkStatusEnum =
   | "PENDING_ACCEPTANCE_BY_TARGET_ACCOUNT"
   | "REJECTED"
   | (string & {});
+const AccountLinkStatusEnum = S.String;
+
 export type AwsAccount = string;
 export interface AccountLink {
   AccountLinkId?: string;
@@ -214,34 +218,62 @@ export interface AccountLink {
   SourceAccountId?: string;
   TargetAccountId?: string;
 }
+const AccountLink = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<AccountLink>;
 export interface AcceptAccountLinkInvitationResult {
   AccountLink?: AccountLink;
 }
+const AcceptAccountLinkInvitationResult = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<AcceptAccountLinkInvitationResult>;
 export type ConnectionAliasId = string;
 export type NonEmptyString = string;
 export interface AssociateConnectionAliasRequest {
   AliasId: string;
   ResourceId: string;
 }
+const AssociateConnectionAliasRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<AssociateConnectionAliasRequest>;
 export type ConnectionIdentifier = string;
 export interface AssociateConnectionAliasResult {
   ConnectionIdentifier?: string;
 }
+const AssociateConnectionAliasResult = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<AssociateConnectionAliasResult>;
 export type DirectoryId = string;
 export type IpGroupId = string;
 export type IpGroupIdList = string[];
+const IpGroupIdList = /*@__PURE__*/ __L.at(__c0, 5);
 export interface AssociateIpGroupsRequest {
   DirectoryId: string;
   GroupIds: string[];
 }
+const AssociateIpGroupsRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<AssociateIpGroupsRequest>;
 export interface AssociateIpGroupsResult {}
+const AssociateIpGroupsResult = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<AssociateIpGroupsResult>;
 export type WorkspaceId = string;
 export type WorkSpaceApplicationId = string;
 export interface AssociateWorkspaceApplicationRequest {
   WorkspaceId: string;
   ApplicationId: string;
 }
+const AssociateWorkspaceApplicationRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<AssociateWorkspaceApplicationRequest>;
 export type WorkSpaceAssociatedResourceType = "APPLICATION" | (string & {});
+const WorkSpaceAssociatedResourceType = S.String;
+
 export type AssociationState =
   | "PENDING_INSTALL"
   | "PENDING_INSTALL_DEPLOYMENT"
@@ -253,6 +285,8 @@ export type AssociationState =
   | "COMPLETED"
   | "REMOVED"
   | (string & {});
+const AssociationState = S.String;
+
 export type AssociationErrorCode =
   | "ValidationError.InsufficientDiskSpace"
   | "ValidationError.InsufficientMemory"
@@ -261,11 +295,17 @@ export type AssociationErrorCode =
   | "DeploymentError.WorkspaceUnreachable"
   | "ValidationError.ApplicationOldVersionExists"
   | (string & {});
+const AssociationErrorCode = S.String;
+
 export type String2048 = string;
 export interface AssociationStateReason {
   ErrorCode?: AssociationErrorCode;
   ErrorMessage?: string;
 }
+const AssociationStateReason = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<AssociationStateReason>;
 export interface WorkspaceResourceAssociation {
   AssociatedResourceId?: string;
   AssociatedResourceType?: WorkSpaceAssociatedResourceType;
@@ -275,21 +315,39 @@ export interface WorkspaceResourceAssociation {
   StateReason?: AssociationStateReason;
   WorkspaceId?: string;
 }
+const WorkspaceResourceAssociation = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<WorkspaceResourceAssociation>;
 export interface AssociateWorkspaceApplicationResult {
   Association?: WorkspaceResourceAssociation;
 }
+const AssociateWorkspaceApplicationResult = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<AssociateWorkspaceApplicationResult>;
 export type IpRule = string;
 export type IpRuleDesc = string;
 export interface IpRuleItem {
   ipRule?: string;
   ruleDesc?: string;
 }
+const IpRuleItem = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<IpRuleItem>;
 export type IpRuleList = IpRuleItem[];
+const IpRuleList = /*@__PURE__*/ __L.at(__c1, 5);
 export interface AuthorizeIpRulesRequest {
   GroupId: string;
   UserRules: IpRuleItem[];
 }
+const AuthorizeIpRulesRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<AuthorizeIpRulesRequest>;
 export interface AuthorizeIpRulesResult {}
+const AuthorizeIpRulesResult = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<AuthorizeIpRulesResult>;
 export type WorkspaceImageName = string;
 export type WorkspaceImageDescription = string;
 export type WorkspaceImageId = string;
@@ -300,7 +358,9 @@ export interface Tag {
   Key: string;
   Value?: string;
 }
+const Tag = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<Tag>;
 export type TagList = Tag[];
+const TagList = /*@__PURE__*/ __L.at(__c2, 1);
 export interface CopyWorkspaceImageRequest {
   Name: string;
   Description?: string;
@@ -308,16 +368,30 @@ export interface CopyWorkspaceImageRequest {
   SourceRegion: string;
   Tags?: Tag[];
 }
+const CopyWorkspaceImageRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<CopyWorkspaceImageRequest>;
 export interface CopyWorkspaceImageResult {
   ImageId?: string;
 }
+const CopyWorkspaceImageResult = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<CopyWorkspaceImageResult>;
 export interface CreateAccountLinkInvitationRequest {
   TargetAccountId: string;
   ClientToken?: string;
 }
+const CreateAccountLinkInvitationRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<CreateAccountLinkInvitationRequest>;
 export interface CreateAccountLinkInvitationResult {
   AccountLink?: AccountLink;
 }
+const CreateAccountLinkInvitationResult =
+  AcceptAccountLinkInvitationResult as any as S.Schema<CreateAccountLinkInvitationResult>;
 export type AddInName = string;
 export type AddInUrl = string;
 export interface CreateConnectClientAddInRequest {
@@ -325,18 +399,34 @@ export interface CreateConnectClientAddInRequest {
   Name: string;
   URL: string;
 }
+const CreateConnectClientAddInRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<CreateConnectClientAddInRequest>;
 export type AmazonUuid = string;
 export interface CreateConnectClientAddInResult {
   AddInId?: string;
 }
+const CreateConnectClientAddInResult = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<CreateConnectClientAddInResult>;
 export type ConnectionString = string;
 export interface CreateConnectionAliasRequest {
   ConnectionString: string;
   Tags?: Tag[];
 }
+const CreateConnectionAliasRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<CreateConnectionAliasRequest>;
 export interface CreateConnectionAliasResult {
   AliasId?: string;
 }
+const CreateConnectionAliasResult = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<CreateConnectionAliasResult>;
 export type IpGroupName = string;
 export type IpGroupDesc = string;
 export interface CreateIpGroupRequest {
@@ -345,11 +435,15 @@ export interface CreateIpGroupRequest {
   UserRules?: IpRuleItem[];
   Tags?: Tag[];
 }
+const CreateIpGroupRequest = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<CreateIpGroupRequest>;
 export interface CreateIpGroupResult {
   GroupId?: string;
 }
+const CreateIpGroupResult = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<CreateIpGroupResult>;
 export type VolumeEncryptionKey = string;
 export type DataReplication = "NO_REPLICATION" | "PRIMARY_AS_SOURCE" | (string & {});
+const DataReplication = S.String;
+
 export interface StandbyWorkspace {
   PrimaryWorkspaceId: string;
   VolumeEncryptionKey?: string;
@@ -357,11 +451,17 @@ export interface StandbyWorkspace {
   Tags?: Tag[];
   DataReplication?: DataReplication;
 }
+const StandbyWorkspace = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<StandbyWorkspace>;
 export type StandbyWorkspacesList = StandbyWorkspace[];
+const StandbyWorkspacesList = /*@__PURE__*/ __L.at(__c3, 4);
 export interface CreateStandbyWorkspacesRequest {
   PrimaryRegion: string;
   StandbyWorkspaces: StandbyWorkspace[];
 }
+const CreateStandbyWorkspacesRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<CreateStandbyWorkspacesRequest>;
 export type WorkspaceErrorCode = string;
 export type Description = string;
 export interface FailedCreateStandbyWorkspacesRequest {
@@ -369,7 +469,12 @@ export interface FailedCreateStandbyWorkspacesRequest {
   ErrorCode?: string;
   ErrorMessage?: string;
 }
+const FailedCreateStandbyWorkspacesRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<FailedCreateStandbyWorkspacesRequest>;
 export type FailedCreateStandbyWorkspacesRequestList = FailedCreateStandbyWorkspacesRequest[];
+const FailedCreateStandbyWorkspacesRequestList = /*@__PURE__*/ __L.at(__c3, 7);
 export type UserName = string;
 export type WorkspaceState =
   | "PENDING"
@@ -390,31 +495,52 @@ export type WorkspaceState =
   | "STOPPED"
   | "ERROR"
   | (string & {});
+const WorkspaceState = S.String;
+
 export interface PendingCreateStandbyWorkspacesRequest {
   UserName?: string;
   DirectoryId?: string;
   State?: WorkspaceState;
   WorkspaceId?: string;
 }
+const PendingCreateStandbyWorkspacesRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<PendingCreateStandbyWorkspacesRequest>;
 export type PendingCreateStandbyWorkspacesRequestList = PendingCreateStandbyWorkspacesRequest[];
+const PendingCreateStandbyWorkspacesRequestList = /*@__PURE__*/ __L.at(__c4, 1);
 export interface CreateStandbyWorkspacesResult {
   FailedStandbyRequests?: FailedCreateStandbyWorkspacesRequest[];
   PendingStandbyRequests?: PendingCreateStandbyWorkspacesRequest[];
 }
+const CreateStandbyWorkspacesResult = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<CreateStandbyWorkspacesResult>;
 export interface CreateTagsRequest {
   ResourceId: string;
   Tags: Tag[];
 }
+const CreateTagsRequest = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<CreateTagsRequest>;
 export interface CreateTagsResult {}
+const CreateTagsResult = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<CreateTagsResult>;
 export interface CreateUpdatedWorkspaceImageRequest {
   Name: string;
   Description: string;
   SourceImageId: string;
   Tags?: Tag[];
 }
+const CreateUpdatedWorkspaceImageRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<CreateUpdatedWorkspaceImageRequest>;
 export interface CreateUpdatedWorkspaceImageResult {
   ImageId?: string;
 }
+const CreateUpdatedWorkspaceImageResult = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<CreateUpdatedWorkspaceImageResult>;
 export type WorkspaceBundleName = string;
 export type WorkspaceBundleDescription = string;
 export type Compute =
@@ -446,15 +572,20 @@ export type Compute =
   | "GRAPHICS_G7_8XLARGE"
   | "GRAPHICS_G7_12XLARGE"
   | (string & {});
+const Compute = S.String;
+
 export interface ComputeType {
   Name?: Compute;
 }
+const ComputeType = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<ComputeType>;
 export interface UserStorage {
   Capacity: string;
 }
+const UserStorage = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<UserStorage>;
 export interface RootStorage {
   Capacity: string;
 }
+const RootStorage = UserStorage as any as S.Schema<RootStorage>;
 export interface CreateWorkspaceBundleRequest {
   BundleName: string;
   BundleDescription: string;
@@ -464,10 +595,18 @@ export interface CreateWorkspaceBundleRequest {
   RootStorage?: RootStorage;
   Tags?: Tag[];
 }
+const CreateWorkspaceBundleRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  1,
+) as any as S.Schema<CreateWorkspaceBundleRequest>;
 export type BundleId = string;
 export type BundleOwner = string;
 export type WorkspaceBundleState = "AVAILABLE" | "PENDING" | "ERROR" | (string & {});
+const WorkspaceBundleState = S.String;
+
 export type BundleType = "REGULAR" | "STANDBY" | (string & {});
+const BundleType = S.String;
+
 export interface WorkspaceBundle {
   BundleId?: string;
   Name?: string;
@@ -482,21 +621,37 @@ export interface WorkspaceBundle {
   State?: WorkspaceBundleState;
   BundleType?: BundleType;
 }
+const WorkspaceBundle = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<WorkspaceBundle>;
 export interface CreateWorkspaceBundleResult {
   WorkspaceBundle?: WorkspaceBundle;
 }
+const CreateWorkspaceBundleResult = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<CreateWorkspaceBundleResult>;
 export interface CreateWorkspaceImageRequest {
   Name: string;
   Description: string;
   WorkspaceId: string;
   Tags?: Tag[];
 }
+const CreateWorkspaceImageRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  4,
+) as any as S.Schema<CreateWorkspaceImageRequest>;
 export type OperatingSystemType = "WINDOWS" | "LINUX" | (string & {});
+const OperatingSystemType = S.String;
+
 export interface OperatingSystem {
   Type?: OperatingSystemType;
 }
+const OperatingSystem = /*@__PURE__*/ __L.at(__c5, 5) as any as S.Schema<OperatingSystem>;
 export type WorkspaceImageState = "AVAILABLE" | "PENDING" | "ERROR" | (string & {});
+const WorkspaceImageState = S.String;
+
 export type WorkspaceImageRequiredTenancy = "DEFAULT" | "DEDICATED" | (string & {});
+const WorkspaceImageRequiredTenancy = S.String;
+
 export interface CreateWorkspaceImageResult {
   ImageId?: string;
   Name?: string;
@@ -507,12 +662,21 @@ export interface CreateWorkspaceImageResult {
   Created?: Date;
   OwnerAccountId?: string;
 }
+const CreateWorkspaceImageResult = /*@__PURE__*/ __L.at(
+  __c5,
+  6,
+) as any as S.Schema<CreateWorkspaceImageResult>;
 export type RunningMode = "AUTO_STOP" | "ALWAYS_ON" | "MANUAL" | (string & {});
+const RunningMode = S.String;
+
 export type RunningModeAutoStopTimeoutInMinutes = number;
 export type RootVolumeSizeGib = number;
 export type UserVolumeSizeGib = number;
 export type Protocol = "PCOIP" | "WSP" | (string & {});
+const Protocol = S.String;
+
 export type ProtocolList = Protocol[];
+const ProtocolList = /*@__PURE__*/ __L.at(__c5, 7);
 export type OperatingSystemName =
   | "AMAZON_LINUX_2"
   | "UBUNTU_18_04"
@@ -529,12 +693,22 @@ export type OperatingSystemName =
   | "RHEL_8"
   | "ROCKY_8"
   | (string & {});
+const OperatingSystemName = S.String;
+
 export type AGAModeForWorkSpaceEnum = "ENABLED_AUTO" | "DISABLED" | "INHERITED" | (string & {});
+const AGAModeForWorkSpaceEnum = S.String;
+
 export type AGAPreferredProtocolForWorkSpace = "TCP" | "NONE" | "INHERITED" | (string & {});
+const AGAPreferredProtocolForWorkSpace = S.String;
+
 export interface GlobalAcceleratorForWorkSpace {
   Mode: AGAModeForWorkSpaceEnum;
   PreferredProtocol?: AGAPreferredProtocolForWorkSpace;
 }
+const GlobalAcceleratorForWorkSpace = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<GlobalAcceleratorForWorkSpace>;
 export interface WorkspaceProperties {
   RunningMode?: RunningMode;
   RunningModeAutoStopTimeoutInMinutes?: number;
@@ -546,6 +720,7 @@ export interface WorkspaceProperties {
   GlobalAccelerator?: GlobalAcceleratorForWorkSpace;
   NestedVirtualizationEnabled?: boolean;
 }
+const WorkspaceProperties = /*@__PURE__*/ __L.at(__c6, 1) as any as S.Schema<WorkspaceProperties>;
 export type WorkspaceName = string;
 export type Ipv6Address = string;
 export interface WorkspaceRequest {
@@ -560,17 +735,28 @@ export interface WorkspaceRequest {
   WorkspaceName?: string;
   Ipv6Address?: string;
 }
+const WorkspaceRequest = /*@__PURE__*/ __L.at(__c6, 2) as any as S.Schema<WorkspaceRequest>;
 export type WorkspaceRequestList = WorkspaceRequest[];
+const WorkspaceRequestList = /*@__PURE__*/ __L.at(__c6, 3);
 export interface CreateWorkspacesRequest {
   Workspaces: WorkspaceRequest[];
 }
+const CreateWorkspacesRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  4,
+) as any as S.Schema<CreateWorkspacesRequest>;
 export type ErrorType = string;
 export interface FailedCreateWorkspaceRequest {
   WorkspaceRequest?: WorkspaceRequest;
   ErrorCode?: string;
   ErrorMessage?: string;
 }
+const FailedCreateWorkspaceRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  5,
+) as any as S.Schema<FailedCreateWorkspaceRequest>;
 export type FailedCreateWorkspaceRequests = FailedCreateWorkspaceRequest[];
+const FailedCreateWorkspaceRequests = /*@__PURE__*/ __L.at(__c6, 6);
 export type IpAddress = string;
 export type SubnetId = string;
 export type ComputerName = string;
@@ -581,34 +767,56 @@ export type ModificationResourceEnum =
   | "PROTOCOL"
   | "NESTED_VIRTUALIZATION"
   | (string & {});
+const ModificationResourceEnum = S.String;
+
 export type ModificationStateEnum =
   | "UPDATE_INITIATED"
   | "UPDATE_IN_PROGRESS"
   | "UPDATE_FAILED"
   | (string & {});
+const ModificationStateEnum = S.String;
+
 export interface ModificationState {
   Resource?: ModificationResourceEnum;
   State?: ModificationStateEnum;
 }
+const ModificationState = /*@__PURE__*/ __L.at(__c6, 7) as any as S.Schema<ModificationState>;
 export type ModificationStateList = ModificationState[];
+const ModificationStateList = /*@__PURE__*/ __L.at(__c7, 0);
 export type StandbyWorkspaceRelationshipType = "PRIMARY" | "STANDBY" | (string & {});
+const StandbyWorkspaceRelationshipType = S.String;
+
 export interface RelatedWorkspaceProperties {
   WorkspaceId?: string;
   Region?: string;
   State?: WorkspaceState;
   Type?: StandbyWorkspaceRelationshipType;
 }
+const RelatedWorkspaceProperties = /*@__PURE__*/ __L.at(
+  __c7,
+  1,
+) as any as S.Schema<RelatedWorkspaceProperties>;
 export type RelatedWorkspaces = RelatedWorkspaceProperties[];
+const RelatedWorkspaces = /*@__PURE__*/ __L.at(__c7, 2);
 export interface DataReplicationSettings {
   DataReplication?: DataReplication;
   RecoverySnapshotTime?: Date;
 }
+const DataReplicationSettings = /*@__PURE__*/ __L.at(
+  __c7,
+  3,
+) as any as S.Schema<DataReplicationSettings>;
 export interface StandbyWorkspacesProperties {
   StandbyWorkspaceId?: string;
   DataReplication?: DataReplication;
   RecoverySnapshotTime?: Date;
 }
+const StandbyWorkspacesProperties = /*@__PURE__*/ __L.at(
+  __c7,
+  4,
+) as any as S.Schema<StandbyWorkspacesProperties>;
 export type StandbyWorkspacesPropertiesList = StandbyWorkspacesProperties[];
+const StandbyWorkspacesPropertiesList = /*@__PURE__*/ __L.at(__c7, 5);
 export interface Workspace {
   WorkspaceId?: string;
   DirectoryId?: string;
@@ -631,23 +839,36 @@ export interface Workspace {
   DataReplicationSettings?: DataReplicationSettings;
   StandbyWorkspacesProperties?: StandbyWorkspacesProperties[];
 }
+const Workspace = /*@__PURE__*/ __L.at(__c7, 6) as any as S.Schema<Workspace>;
 export type WorkspaceList = Workspace[];
+const WorkspaceList = /*@__PURE__*/ __L.at(__c7, 7);
 export interface CreateWorkspacesResult {
   FailedRequests?: FailedCreateWorkspaceRequest[];
   PendingRequests?: Workspace[];
 }
+const CreateWorkspacesResult = /*@__PURE__*/ __L.at(
+  __c8,
+  0,
+) as any as S.Schema<CreateWorkspacesResult>;
 export type WorkspacesPoolName = string;
 export type UpdateDescription = string;
 export type DesiredUserSessions = number;
 export interface Capacity {
   DesiredUserSessions: number;
 }
+const Capacity = /*@__PURE__*/ __L.at(__c8, 1) as any as S.Schema<Capacity>;
 export type ApplicationSettingsStatusEnum = "DISABLED" | "ENABLED" | (string & {});
+const ApplicationSettingsStatusEnum = S.String;
+
 export type SettingsGroup = string;
 export interface ApplicationSettingsRequest {
   Status: ApplicationSettingsStatusEnum;
   SettingsGroup?: string;
 }
+const ApplicationSettingsRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  2,
+) as any as S.Schema<ApplicationSettingsRequest>;
 export type DisconnectTimeoutInSeconds = number;
 export type IdleDisconnectTimeoutInSeconds = number;
 export type MaxUserDurationInSeconds = number;
@@ -656,7 +877,10 @@ export interface TimeoutSettings {
   IdleDisconnectTimeoutInSeconds?: number;
   MaxUserDurationInSeconds?: number;
 }
+const TimeoutSettings = /*@__PURE__*/ __L.at(__c8, 3) as any as S.Schema<TimeoutSettings>;
 export type PoolsRunningMode = "AUTO_STOP" | "ALWAYS_ON" | (string & {});
+const PoolsRunningMode = S.String;
+
 export interface CreateWorkspacesPoolRequest {
   PoolName: string;
   Description: string;
@@ -668,6 +892,10 @@ export interface CreateWorkspacesPoolRequest {
   TimeoutSettings?: TimeoutSettings;
   RunningMode?: PoolsRunningMode;
 }
+const CreateWorkspacesPoolRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  4,
+) as any as S.Schema<CreateWorkspacesPoolRequest>;
 export type WorkspacesPoolId = string;
 export type ARN = string;
 export type AvailableUserSessions = number;
@@ -679,6 +907,7 @@ export interface CapacityStatus {
   ActualUserSessions: number;
   ActiveUserSessions: number;
 }
+const CapacityStatus = /*@__PURE__*/ __L.at(__c8, 5) as any as S.Schema<CapacityStatus>;
 export type WorkspacesPoolState =
   | "CREATING"
   | "DELETING"
@@ -688,6 +917,8 @@ export type WorkspacesPoolState =
   | "STOPPING"
   | "UPDATING"
   | (string & {});
+const WorkspacesPoolState = S.String;
+
 export type WorkspacesPoolErrorCode =
   | "IAM_SERVICE_ROLE_IS_MISSING"
   | "IAM_SERVICE_ROLE_MISSING_ENI_DESCRIBE_ACTION"
@@ -735,13 +966,19 @@ export interface WorkspacesPoolError {
   ErrorCode?: WorkspacesPoolErrorCode;
   ErrorMessage?: string;
 }
+const WorkspacesPoolError = AssociationStateReason as any as S.Schema<WorkspacesPoolError>;
 export type WorkspacesPoolErrors = WorkspacesPoolError[];
+const WorkspacesPoolErrors = /*@__PURE__*/ __L.at(__c8, 6);
 export type S3BucketName = string;
 export interface ApplicationSettingsResponse {
   Status: ApplicationSettingsStatusEnum;
   SettingsGroup?: string;
   S3BucketName?: string;
 }
+const ApplicationSettingsResponse = /*@__PURE__*/ __L.at(
+  __c8,
+  7,
+) as any as S.Schema<ApplicationSettingsResponse>;
 export interface WorkspacesPool {
   PoolId: string;
   PoolArn: string;
@@ -757,16 +994,27 @@ export interface WorkspacesPool {
   TimeoutSettings?: TimeoutSettings;
   RunningMode: PoolsRunningMode;
 }
+const WorkspacesPool = /*@__PURE__*/ __L.at(__c9, 0) as any as S.Schema<WorkspacesPool>;
 export interface CreateWorkspacesPoolResult {
   WorkspacesPool?: WorkspacesPool;
 }
+const CreateWorkspacesPoolResult = /*@__PURE__*/ __L.at(
+  __c9,
+  1,
+) as any as S.Schema<CreateWorkspacesPoolResult>;
 export interface DeleteAccountLinkInvitationRequest {
   LinkId: string;
   ClientToken?: string;
 }
+const DeleteAccountLinkInvitationRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  2,
+) as any as S.Schema<DeleteAccountLinkInvitationRequest>;
 export interface DeleteAccountLinkInvitationResult {
   AccountLink?: AccountLink;
 }
+const DeleteAccountLinkInvitationResult =
+  AcceptAccountLinkInvitationResult as any as S.Schema<DeleteAccountLinkInvitationResult>;
 export type ClientDeviceType =
   | "DeviceTypeWindows"
   | "DeviceTypeOsx"
@@ -776,57 +1024,122 @@ export type ClientDeviceType =
   | "DeviceTypeWeb"
   | (string & {});
 export type ClientDeviceTypeList = ClientDeviceType[];
+const ClientDeviceTypeList = ProtocolList as any as S.Schema<ClientDeviceTypeList>;
 export interface DeleteClientBrandingRequest {
   ResourceId: string;
   Platforms: ClientDeviceType[];
 }
+const DeleteClientBrandingRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  3,
+) as any as S.Schema<DeleteClientBrandingRequest>;
 export interface DeleteClientBrandingResult {}
+const DeleteClientBrandingResult = /*@__PURE__*/ __L.at(
+  __c9,
+  4,
+) as any as S.Schema<DeleteClientBrandingResult>;
 export interface DeleteConnectClientAddInRequest {
   AddInId: string;
   ResourceId: string;
 }
+const DeleteConnectClientAddInRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  5,
+) as any as S.Schema<DeleteConnectClientAddInRequest>;
 export interface DeleteConnectClientAddInResult {}
+const DeleteConnectClientAddInResult =
+  DeleteClientBrandingResult as any as S.Schema<DeleteConnectClientAddInResult>;
 export interface DeleteConnectionAliasRequest {
   AliasId: string;
 }
+const DeleteConnectionAliasRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  6,
+) as any as S.Schema<DeleteConnectionAliasRequest>;
 export interface DeleteConnectionAliasResult {}
+const DeleteConnectionAliasResult =
+  DeleteClientBrandingResult as any as S.Schema<DeleteConnectionAliasResult>;
 export interface DeleteIpGroupRequest {
   GroupId: string;
 }
+const DeleteIpGroupRequest = /*@__PURE__*/ __L.at(__c9, 7) as any as S.Schema<DeleteIpGroupRequest>;
 export interface DeleteIpGroupResult {}
+const DeleteIpGroupResult = CreateTagsResult as any as S.Schema<DeleteIpGroupResult>;
 export type TagKeyList = string[];
+const TagKeyList = IpGroupIdList as any as S.Schema<TagKeyList>;
 export interface DeleteTagsRequest {
   ResourceId: string;
   TagKeys: string[];
 }
+const DeleteTagsRequest = /*@__PURE__*/ __L.at(__c10, 0) as any as S.Schema<DeleteTagsRequest>;
 export interface DeleteTagsResult {}
+const DeleteTagsResult = CreateTagsResult as any as S.Schema<DeleteTagsResult>;
 export interface DeleteWorkspaceBundleRequest {
   BundleId?: string;
 }
+const DeleteWorkspaceBundleRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  1,
+) as any as S.Schema<DeleteWorkspaceBundleRequest>;
 export interface DeleteWorkspaceBundleResult {}
+const DeleteWorkspaceBundleResult =
+  DeleteClientBrandingResult as any as S.Schema<DeleteWorkspaceBundleResult>;
 export interface DeleteWorkspaceImageRequest {
   ImageId: string;
 }
+const DeleteWorkspaceImageRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  2,
+) as any as S.Schema<DeleteWorkspaceImageRequest>;
 export interface DeleteWorkspaceImageResult {}
+const DeleteWorkspaceImageResult =
+  DeleteClientBrandingResult as any as S.Schema<DeleteWorkspaceImageResult>;
 export interface DeployWorkspaceApplicationsRequest {
   WorkspaceId: string;
   Force?: boolean;
 }
+const DeployWorkspaceApplicationsRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  3,
+) as any as S.Schema<DeployWorkspaceApplicationsRequest>;
 export type WorkspaceResourceAssociationList = WorkspaceResourceAssociation[];
+const WorkspaceResourceAssociationList = /*@__PURE__*/ __L.at(__c10, 4);
 export interface WorkSpaceApplicationDeployment {
   Associations?: WorkspaceResourceAssociation[];
 }
+const WorkSpaceApplicationDeployment = /*@__PURE__*/ __L.at(
+  __c10,
+  5,
+) as any as S.Schema<WorkSpaceApplicationDeployment>;
 export interface DeployWorkspaceApplicationsResult {
   Deployment?: WorkSpaceApplicationDeployment;
 }
+const DeployWorkspaceApplicationsResult = /*@__PURE__*/ __L.at(
+  __c10,
+  6,
+) as any as S.Schema<DeployWorkspaceApplicationsResult>;
 export interface DeregisterWorkspaceDirectoryRequest {
   DirectoryId: string;
 }
+const DeregisterWorkspaceDirectoryRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  7,
+) as any as S.Schema<DeregisterWorkspaceDirectoryRequest>;
 export interface DeregisterWorkspaceDirectoryResult {}
+const DeregisterWorkspaceDirectoryResult =
+  DeleteClientBrandingResult as any as S.Schema<DeregisterWorkspaceDirectoryResult>;
 export interface DescribeAccountRequest {}
+const DescribeAccountRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  0,
+) as any as S.Schema<DescribeAccountRequest>;
 export type DedicatedTenancySupportResultEnum = "ENABLED" | "DISABLED" | (string & {});
+const DedicatedTenancySupportResultEnum = S.String;
+
 export type DedicatedTenancyManagementCidrRange = string;
 export type DedicatedTenancyAccountType = "SOURCE_ACCOUNT" | "TARGET_ACCOUNT" | (string & {});
+const DedicatedTenancyAccountType = S.String;
+
 export type Message = string;
 export interface DescribeAccountResult {
   DedicatedTenancySupport?: DedicatedTenancySupportResultEnum;
@@ -834,15 +1147,25 @@ export interface DescribeAccountResult {
   DedicatedTenancyAccountType?: DedicatedTenancyAccountType;
   Message?: string;
 }
+const DescribeAccountResult = /*@__PURE__*/ __L.at(
+  __c11,
+  1,
+) as any as S.Schema<DescribeAccountResult>;
 export type PaginationToken = string;
 export interface DescribeAccountModificationsRequest {
   NextToken?: string;
 }
+const DescribeAccountModificationsRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  2,
+) as any as S.Schema<DescribeAccountModificationsRequest>;
 export type DedicatedTenancyModificationStateEnum =
   | "PENDING"
   | "COMPLETED"
   | "FAILED"
   | (string & {});
+const DedicatedTenancyModificationStateEnum = S.String;
+
 export interface AccountModification {
   ModificationState?: DedicatedTenancyModificationStateEnum;
   DedicatedTenancySupport?: DedicatedTenancySupportResultEnum;
@@ -851,20 +1174,33 @@ export interface AccountModification {
   ErrorCode?: string;
   ErrorMessage?: string;
 }
+const AccountModification = /*@__PURE__*/ __L.at(__c11, 3) as any as S.Schema<AccountModification>;
 export type AccountModificationList = AccountModification[];
+const AccountModificationList = /*@__PURE__*/ __L.at(__c11, 4);
 export interface DescribeAccountModificationsResult {
   AccountModifications?: AccountModification[];
   NextToken?: string;
 }
+const DescribeAccountModificationsResult = /*@__PURE__*/ __L.at(
+  __c11,
+  5,
+) as any as S.Schema<DescribeAccountModificationsResult>;
 export type Limit = number;
 export type ApplicationAssociatedResourceType = "WORKSPACE" | "BUNDLE" | "IMAGE" | (string & {});
+const ApplicationAssociatedResourceType = S.String;
+
 export type ApplicationAssociatedResourceTypeList = ApplicationAssociatedResourceType[];
+const ApplicationAssociatedResourceTypeList = /*@__PURE__*/ __L.at(__c11, 6);
 export interface DescribeApplicationAssociationsRequest {
   MaxResults?: number;
   NextToken?: string;
   ApplicationId: string;
   AssociatedResourceTypes: ApplicationAssociatedResourceType[];
 }
+const DescribeApplicationAssociationsRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  7,
+) as any as S.Schema<DescribeApplicationAssociationsRequest>;
 export interface ApplicationResourceAssociation {
   ApplicationId?: string;
   AssociatedResourceId?: string;
@@ -874,15 +1210,29 @@ export interface ApplicationResourceAssociation {
   State?: AssociationState;
   StateReason?: AssociationStateReason;
 }
+const ApplicationResourceAssociation = /*@__PURE__*/ __L.at(
+  __c12,
+  0,
+) as any as S.Schema<ApplicationResourceAssociation>;
 export type ApplicationResourceAssociationList = ApplicationResourceAssociation[];
+const ApplicationResourceAssociationList = /*@__PURE__*/ __L.at(__c12, 1);
 export interface DescribeApplicationAssociationsResult {
   Associations?: ApplicationResourceAssociation[];
   NextToken?: string;
 }
+const DescribeApplicationAssociationsResult = /*@__PURE__*/ __L.at(
+  __c12,
+  2,
+) as any as S.Schema<DescribeApplicationAssociationsResult>;
 export type WorkSpaceApplicationIdList = string[];
+const WorkSpaceApplicationIdList = IpGroupIdList as any as S.Schema<WorkSpaceApplicationIdList>;
 export type ComputeList = Compute[];
+const ComputeList = ProtocolList as any as S.Schema<ComputeList>;
 export type WorkSpaceApplicationLicenseType = "LICENSED" | "UNLICENSED" | (string & {});
+const WorkSpaceApplicationLicenseType = S.String;
+
 export type OperatingSystemNameList = OperatingSystemName[];
+const OperatingSystemNameList = ProtocolList as any as S.Schema<OperatingSystemNameList>;
 export type WorkSpaceApplicationOwner = string;
 export interface DescribeApplicationsRequest {
   ApplicationIds?: string[];
@@ -893,12 +1243,18 @@ export interface DescribeApplicationsRequest {
   MaxResults?: number;
   NextToken?: string;
 }
+const DescribeApplicationsRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  3,
+) as any as S.Schema<DescribeApplicationsRequest>;
 export type WorkSpaceApplicationState =
   | "PENDING"
   | "ERROR"
   | "AVAILABLE"
   | "UNINSTALL_ONLY"
   | (string & {});
+const WorkSpaceApplicationState = S.String;
+
 export interface WorkSpaceApplication {
   ApplicationId?: string;
   Created?: Date;
@@ -910,17 +1266,34 @@ export interface WorkSpaceApplication {
   SupportedComputeTypeNames?: Compute[];
   SupportedOperatingSystemNames?: OperatingSystemName[];
 }
+const WorkSpaceApplication = /*@__PURE__*/ __L.at(
+  __c12,
+  4,
+) as any as S.Schema<WorkSpaceApplication>;
 export type WorkSpaceApplicationList = WorkSpaceApplication[];
+const WorkSpaceApplicationList = /*@__PURE__*/ __L.at(__c12, 5);
 export interface DescribeApplicationsResult {
   Applications?: WorkSpaceApplication[];
   NextToken?: string;
 }
+const DescribeApplicationsResult = /*@__PURE__*/ __L.at(
+  __c12,
+  6,
+) as any as S.Schema<DescribeApplicationsResult>;
 export type BundleAssociatedResourceType = "APPLICATION" | (string & {});
+const BundleAssociatedResourceType = S.String;
+
 export type BundleAssociatedResourceTypeList = BundleAssociatedResourceType[];
+const BundleAssociatedResourceTypeList =
+  ProtocolList as any as S.Schema<BundleAssociatedResourceTypeList>;
 export interface DescribeBundleAssociationsRequest {
   BundleId: string;
   AssociatedResourceTypes: BundleAssociatedResourceType[];
 }
+const DescribeBundleAssociationsRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  7,
+) as any as S.Schema<DescribeBundleAssociationsRequest>;
 export interface BundleResourceAssociation {
   AssociatedResourceId?: string;
   AssociatedResourceType?: BundleAssociatedResourceType;
@@ -930,18 +1303,32 @@ export interface BundleResourceAssociation {
   State?: AssociationState;
   StateReason?: AssociationStateReason;
 }
+const BundleResourceAssociation = /*@__PURE__*/ __L.at(
+  __c13,
+  0,
+) as any as S.Schema<BundleResourceAssociation>;
 export type BundleResourceAssociationList = BundleResourceAssociation[];
+const BundleResourceAssociationList = /*@__PURE__*/ __L.at(__c13, 1);
 export interface DescribeBundleAssociationsResult {
   Associations?: BundleResourceAssociation[];
 }
+const DescribeBundleAssociationsResult = /*@__PURE__*/ __L.at(
+  __c13,
+  2,
+) as any as S.Schema<DescribeBundleAssociationsResult>;
 export interface DescribeClientBrandingRequest {
   ResourceId: string;
 }
+const DescribeClientBrandingRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  3,
+) as any as S.Schema<DescribeClientBrandingRequest>;
 export type ClientUrl = string;
 export type ClientEmail = string;
 export type ClientLocale = string;
 export type ClientLoginMessage = string;
 export type LoginMessage = { [key: string]: string | undefined };
+const LoginMessage = /*@__PURE__*/ __L.at(__c13, 4);
 export interface DefaultClientBrandingAttributes {
   LogoUrl?: string;
   SupportEmail?: string;
@@ -949,6 +1336,10 @@ export interface DefaultClientBrandingAttributes {
   ForgotPasswordLink?: string;
   LoginMessage?: { [key: string]: string | undefined };
 }
+const DefaultClientBrandingAttributes = /*@__PURE__*/ __L.at(
+  __c13,
+  5,
+) as any as S.Schema<DefaultClientBrandingAttributes>;
 export interface IosClientBrandingAttributes {
   LogoUrl?: string;
   Logo2xUrl?: string;
@@ -958,6 +1349,10 @@ export interface IosClientBrandingAttributes {
   ForgotPasswordLink?: string;
   LoginMessage?: { [key: string]: string | undefined };
 }
+const IosClientBrandingAttributes = /*@__PURE__*/ __L.at(
+  __c13,
+  6,
+) as any as S.Schema<IosClientBrandingAttributes>;
 export interface DescribeClientBrandingResult {
   DeviceTypeWindows?: DefaultClientBrandingAttributes;
   DeviceTypeOsx?: DefaultClientBrandingAttributes;
@@ -966,50 +1361,90 @@ export interface DescribeClientBrandingResult {
   DeviceTypeLinux?: DefaultClientBrandingAttributes;
   DeviceTypeWeb?: DefaultClientBrandingAttributes;
 }
+const DescribeClientBrandingResult = /*@__PURE__*/ __L.at(
+  __c13,
+  7,
+) as any as S.Schema<DescribeClientBrandingResult>;
 export type ResourceIdList = string[];
+const ResourceIdList = IpGroupIdList as any as S.Schema<ResourceIdList>;
 export interface DescribeClientPropertiesRequest {
   ResourceIds: string[];
 }
+const DescribeClientPropertiesRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  0,
+) as any as S.Schema<DescribeClientPropertiesRequest>;
 export type ReconnectEnum = "ENABLED" | "DISABLED" | (string & {});
+const ReconnectEnum = S.String;
+
 export type LogUploadEnum = "ENABLED" | "DISABLED" | (string & {});
+const LogUploadEnum = S.String;
+
 export type ClientExperiencePolicy = string;
 export interface ClientProperties {
   ReconnectEnabled?: ReconnectEnum;
   LogUploadEnabled?: LogUploadEnum;
   ClientExperiencePolicy?: string;
 }
+const ClientProperties = /*@__PURE__*/ __L.at(__c14, 1) as any as S.Schema<ClientProperties>;
 export interface ClientPropertiesResult {
   ResourceId?: string;
   ClientProperties?: ClientProperties;
 }
+const ClientPropertiesResult = /*@__PURE__*/ __L.at(
+  __c14,
+  2,
+) as any as S.Schema<ClientPropertiesResult>;
 export type ClientPropertiesList = ClientPropertiesResult[];
+const ClientPropertiesList = /*@__PURE__*/ __L.at(__c14, 3);
 export interface DescribeClientPropertiesResult {
   ClientPropertiesList?: ClientPropertiesResult[];
 }
+const DescribeClientPropertiesResult = /*@__PURE__*/ __L.at(
+  __c14,
+  4,
+) as any as S.Schema<DescribeClientPropertiesResult>;
 export interface DescribeConnectClientAddInsRequest {
   ResourceId: string;
   NextToken?: string;
   MaxResults?: number;
 }
+const DescribeConnectClientAddInsRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  5,
+) as any as S.Schema<DescribeConnectClientAddInsRequest>;
 export interface ConnectClientAddIn {
   AddInId?: string;
   ResourceId?: string;
   Name?: string;
   URL?: string;
 }
+const ConnectClientAddIn = /*@__PURE__*/ __L.at(__c14, 6) as any as S.Schema<ConnectClientAddIn>;
 export type ConnectClientAddInList = ConnectClientAddIn[];
+const ConnectClientAddInList = /*@__PURE__*/ __L.at(__c14, 7);
 export interface DescribeConnectClientAddInsResult {
   AddIns?: ConnectClientAddIn[];
   NextToken?: string;
 }
+const DescribeConnectClientAddInsResult = /*@__PURE__*/ __L.at(
+  __c15,
+  0,
+) as any as S.Schema<DescribeConnectClientAddInsResult>;
 export type ConnectionAliasIdList = string[];
+const ConnectionAliasIdList = IpGroupIdList as any as S.Schema<ConnectionAliasIdList>;
 export interface DescribeConnectionAliasesRequest {
   AliasIds?: string[];
   ResourceId?: string;
   Limit?: number;
   NextToken?: string;
 }
+const DescribeConnectionAliasesRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  1,
+) as any as S.Schema<DescribeConnectionAliasesRequest>;
 export type ConnectionAliasState = "CREATING" | "CREATED" | "DELETING" | (string & {});
+const ConnectionAliasState = S.String;
+
 export type AssociationStatus =
   | "NOT_ASSOCIATED"
   | "ASSOCIATED_WITH_OWNER_ACCOUNT"
@@ -1017,13 +1452,20 @@ export type AssociationStatus =
   | "PENDING_ASSOCIATION"
   | "PENDING_DISASSOCIATION"
   | (string & {});
+const AssociationStatus = S.String;
+
 export interface ConnectionAliasAssociation {
   AssociationStatus?: AssociationStatus;
   AssociatedAccountId?: string;
   ResourceId?: string;
   ConnectionIdentifier?: string;
 }
+const ConnectionAliasAssociation = /*@__PURE__*/ __L.at(
+  __c15,
+  2,
+) as any as S.Schema<ConnectionAliasAssociation>;
 export type ConnectionAliasAssociationList = ConnectionAliasAssociation[];
+const ConnectionAliasAssociationList = /*@__PURE__*/ __L.at(__c15, 3);
 export interface ConnectionAlias {
   ConnectionString?: string;
   AliasId?: string;
@@ -1031,29 +1473,52 @@ export interface ConnectionAlias {
   OwnerAccountId?: string;
   Associations?: ConnectionAliasAssociation[];
 }
+const ConnectionAlias = /*@__PURE__*/ __L.at(__c15, 4) as any as S.Schema<ConnectionAlias>;
 export type ConnectionAliasList = ConnectionAlias[];
+const ConnectionAliasList = /*@__PURE__*/ __L.at(__c15, 5);
 export interface DescribeConnectionAliasesResult {
   ConnectionAliases?: ConnectionAlias[];
   NextToken?: string;
 }
+const DescribeConnectionAliasesResult = /*@__PURE__*/ __L.at(
+  __c15,
+  6,
+) as any as S.Schema<DescribeConnectionAliasesResult>;
 export interface DescribeConnectionAliasPermissionsRequest {
   AliasId: string;
   NextToken?: string;
   MaxResults?: number;
 }
+const DescribeConnectionAliasPermissionsRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  7,
+) as any as S.Schema<DescribeConnectionAliasPermissionsRequest>;
 export interface ConnectionAliasPermission {
   SharedAccountId: string;
   AllowAssociation: boolean;
 }
+const ConnectionAliasPermission = /*@__PURE__*/ __L.at(
+  __c16,
+  0,
+) as any as S.Schema<ConnectionAliasPermission>;
 export type ConnectionAliasPermissions = ConnectionAliasPermission[];
+const ConnectionAliasPermissions = /*@__PURE__*/ __L.at(__c16, 1);
 export interface DescribeConnectionAliasPermissionsResult {
   AliasId?: string;
   ConnectionAliasPermissions?: ConnectionAliasPermission[];
   NextToken?: string;
 }
+const DescribeConnectionAliasPermissionsResult = /*@__PURE__*/ __L.at(
+  __c16,
+  2,
+) as any as S.Schema<DescribeConnectionAliasPermissionsResult>;
 export interface DescribeCustomWorkspaceImageImportRequest {
   ImageId: string;
 }
+const DescribeCustomWorkspaceImageImportRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  3,
+) as any as S.Schema<DescribeCustomWorkspaceImageImportRequest>;
 export type InfrastructureConfigurationArn = string;
 export type CustomWorkspaceImageImportState =
   | "PENDING"
@@ -1071,6 +1536,8 @@ export type CustomWorkspaceImageImportState =
   | "COMPLETED"
   | "ERROR"
   | (string & {});
+const CustomWorkspaceImageImportState = S.String;
+
 export type WorkflowStateMessage = string;
 export type Percentage = number;
 export type Ec2ImportTaskId = string;
@@ -1080,13 +1547,19 @@ export type ImageSourceIdentifier =
   | { Ec2ImportTaskId: string; ImageBuildVersionArn?: never; Ec2ImageId?: never }
   | { Ec2ImportTaskId?: never; ImageBuildVersionArn: string; Ec2ImageId?: never }
   | { Ec2ImportTaskId?: never; ImageBuildVersionArn?: never; Ec2ImageId: string };
+const ImageSourceIdentifier = /*@__PURE__*/ __L.at(__c16, 4);
 export type ErrorCode = string;
 export type ImageErrorMessage = string;
 export interface CustomWorkspaceImageImportErrorDetails {
   ErrorCode?: string;
   ErrorMessage?: string;
 }
+const CustomWorkspaceImageImportErrorDetails = /*@__PURE__*/ __L.at(
+  __c16,
+  5,
+) as any as S.Schema<CustomWorkspaceImageImportErrorDetails>;
 export type CustomWorkspaceImageImportErrorDetailsList = CustomWorkspaceImageImportErrorDetails[];
+const CustomWorkspaceImageImportErrorDetailsList = /*@__PURE__*/ __L.at(__c16, 6);
 export interface DescribeCustomWorkspaceImageImportResult {
   ImageId?: string;
   InfrastructureConfigurationArn?: string;
@@ -1099,12 +1572,24 @@ export interface DescribeCustomWorkspaceImageImportResult {
   ImageBuilderInstanceId?: string;
   ErrorDetails?: CustomWorkspaceImageImportErrorDetails[];
 }
+const DescribeCustomWorkspaceImageImportResult = /*@__PURE__*/ __L.at(
+  __c16,
+  7,
+) as any as S.Schema<DescribeCustomWorkspaceImageImportResult>;
 export type ImageAssociatedResourceType = "APPLICATION" | (string & {});
+const ImageAssociatedResourceType = S.String;
+
 export type ImageAssociatedResourceTypeList = ImageAssociatedResourceType[];
+const ImageAssociatedResourceTypeList =
+  ProtocolList as any as S.Schema<ImageAssociatedResourceTypeList>;
 export interface DescribeImageAssociationsRequest {
   ImageId: string;
   AssociatedResourceTypes: ImageAssociatedResourceType[];
 }
+const DescribeImageAssociationsRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  0,
+) as any as S.Schema<DescribeImageAssociationsRequest>;
 export interface ImageResourceAssociation {
   AssociatedResourceId?: string;
   AssociatedResourceType?: ImageAssociatedResourceType;
@@ -1114,65 +1599,117 @@ export interface ImageResourceAssociation {
   State?: AssociationState;
   StateReason?: AssociationStateReason;
 }
+const ImageResourceAssociation = /*@__PURE__*/ __L.at(
+  __c17,
+  1,
+) as any as S.Schema<ImageResourceAssociation>;
 export type ImageResourceAssociationList = ImageResourceAssociation[];
+const ImageResourceAssociationList = /*@__PURE__*/ __L.at(__c17, 2);
 export interface DescribeImageAssociationsResult {
   Associations?: ImageResourceAssociation[];
 }
+const DescribeImageAssociationsResult = /*@__PURE__*/ __L.at(
+  __c17,
+  3,
+) as any as S.Schema<DescribeImageAssociationsResult>;
 export interface DescribeIpGroupsRequest {
   GroupIds?: string[];
   NextToken?: string;
   MaxResults?: number;
 }
+const DescribeIpGroupsRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  4,
+) as any as S.Schema<DescribeIpGroupsRequest>;
 export interface WorkspacesIpGroup {
   groupId?: string;
   groupName?: string;
   groupDesc?: string;
   userRules?: IpRuleItem[];
 }
+const WorkspacesIpGroup = /*@__PURE__*/ __L.at(__c17, 5) as any as S.Schema<WorkspacesIpGroup>;
 export type WorkspacesIpGroupsList = WorkspacesIpGroup[];
+const WorkspacesIpGroupsList = /*@__PURE__*/ __L.at(__c17, 6);
 export interface DescribeIpGroupsResult {
   Result?: WorkspacesIpGroup[];
   NextToken?: string;
 }
+const DescribeIpGroupsResult = /*@__PURE__*/ __L.at(
+  __c17,
+  7,
+) as any as S.Schema<DescribeIpGroupsResult>;
 export interface DescribeTagsRequest {
   ResourceId: string;
 }
+const DescribeTagsRequest = /*@__PURE__*/ __L.at(__c18, 0) as any as S.Schema<DescribeTagsRequest>;
 export interface DescribeTagsResult {
   TagList?: Tag[];
 }
+const DescribeTagsResult = /*@__PURE__*/ __L.at(__c18, 1) as any as S.Schema<DescribeTagsResult>;
 export type WorkSpaceAssociatedResourceTypeList = WorkSpaceAssociatedResourceType[];
+const WorkSpaceAssociatedResourceTypeList =
+  ApplicationAssociatedResourceTypeList as any as S.Schema<WorkSpaceAssociatedResourceTypeList>;
 export interface DescribeWorkspaceAssociationsRequest {
   WorkspaceId: string;
   AssociatedResourceTypes: WorkSpaceAssociatedResourceType[];
 }
+const DescribeWorkspaceAssociationsRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  2,
+) as any as S.Schema<DescribeWorkspaceAssociationsRequest>;
 export interface DescribeWorkspaceAssociationsResult {
   Associations?: WorkspaceResourceAssociation[];
 }
+const DescribeWorkspaceAssociationsResult = /*@__PURE__*/ __L.at(
+  __c18,
+  3,
+) as any as S.Schema<DescribeWorkspaceAssociationsResult>;
 export type BundleIdList = string[];
+const BundleIdList = IpGroupIdList as any as S.Schema<BundleIdList>;
 export interface DescribeWorkspaceBundlesRequest {
   BundleIds?: string[];
   Owner?: string;
   NextToken?: string;
 }
+const DescribeWorkspaceBundlesRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  4,
+) as any as S.Schema<DescribeWorkspaceBundlesRequest>;
 export type BundleList = WorkspaceBundle[];
+const BundleList = /*@__PURE__*/ __L.at(__c18, 5);
 export interface DescribeWorkspaceBundlesResult {
   Bundles?: WorkspaceBundle[];
   NextToken?: string;
 }
+const DescribeWorkspaceBundlesResult = /*@__PURE__*/ __L.at(
+  __c18,
+  6,
+) as any as S.Schema<DescribeWorkspaceBundlesResult>;
 export type DirectoryIdList = string[];
+const DirectoryIdList = IpGroupIdList as any as S.Schema<DirectoryIdList>;
 export type WorkspaceDirectoryName = string;
 export type WorkspaceDirectoryNameList = string[];
+const WorkspaceDirectoryNameList = IpGroupIdList as any as S.Schema<WorkspaceDirectoryNameList>;
 export type DescribeWorkspaceDirectoriesFilterName =
   | "USER_IDENTITY_TYPE"
   | "WORKSPACE_TYPE"
   | (string & {});
+const DescribeWorkspaceDirectoriesFilterName = S.String;
+
 export type DescribeWorkspaceDirectoriesFilterValue = string;
 export type DescribeWorkspaceDirectoriesFilterValues = string[];
+const DescribeWorkspaceDirectoriesFilterValues =
+  IpGroupIdList as any as S.Schema<DescribeWorkspaceDirectoriesFilterValues>;
 export interface DescribeWorkspaceDirectoriesFilter {
   Name: DescribeWorkspaceDirectoriesFilterName;
   Values: string[];
 }
+const DescribeWorkspaceDirectoriesFilter = /*@__PURE__*/ __L.at(
+  __c18,
+  7,
+) as any as S.Schema<DescribeWorkspaceDirectoriesFilter>;
 export type DescribeWorkspaceDirectoriesFilterList = DescribeWorkspaceDirectoriesFilter[];
+const DescribeWorkspaceDirectoriesFilterList = /*@__PURE__*/ __L.at(__c19, 0);
 export interface DescribeWorkspaceDirectoriesRequest {
   DirectoryIds?: string[];
   WorkspaceDirectoryNames?: string[];
@@ -1180,18 +1717,27 @@ export interface DescribeWorkspaceDirectoriesRequest {
   NextToken?: string;
   Filters?: DescribeWorkspaceDirectoriesFilter[];
 }
+const DescribeWorkspaceDirectoriesRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  1,
+) as any as S.Schema<DescribeWorkspaceDirectoriesRequest>;
 export type Alias = string;
 export type DirectoryName = string;
 export type RegistrationCode = string;
 export type SubnetIds = string[];
+const SubnetIds = IpGroupIdList as any as S.Schema<SubnetIds>;
 export type DnsIpAddresses = string[];
+const DnsIpAddresses = IpGroupIdList as any as S.Schema<DnsIpAddresses>;
 export type DnsIpv6Addresses = string[];
+const DnsIpv6Addresses = IpGroupIdList as any as S.Schema<DnsIpv6Addresses>;
 export type WorkspaceDirectoryType =
   | "SIMPLE_AD"
   | "AD_CONNECTOR"
   | "CUSTOMER_MANAGED"
   | "AWS_IAM_IDENTITY_CENTER"
   | (string & {});
+const WorkspaceDirectoryType = S.String;
+
 export type SecurityGroupId = string;
 export type WorkspaceDirectoryState =
   | "REGISTERING"
@@ -1200,6 +1746,8 @@ export type WorkspaceDirectoryState =
   | "DEREGISTERED"
   | "ERROR"
   | (string & {});
+const WorkspaceDirectoryState = S.String;
+
 export type DefaultOu = string;
 export interface DefaultWorkspaceCreationProperties {
   EnableInternetAccess?: boolean;
@@ -1209,20 +1757,35 @@ export interface DefaultWorkspaceCreationProperties {
   EnableMaintenanceMode?: boolean;
   InstanceIamRoleArn?: string;
 }
+const DefaultWorkspaceCreationProperties = /*@__PURE__*/ __L.at(
+  __c19,
+  2,
+) as any as S.Schema<DefaultWorkspaceCreationProperties>;
 export type AccessPropertyValue = "ALLOW" | "DENY" | (string & {});
+const AccessPropertyValue = S.String;
+
 export type AccessEndpointType = "STREAMING_WSP" | (string & {});
+const AccessEndpointType = S.String;
+
 export type AlphanumericDashUnderscoreNonEmptyString = string;
 export interface AccessEndpoint {
   AccessEndpointType?: AccessEndpointType;
   VpcEndpointId?: string;
 }
+const AccessEndpoint = /*@__PURE__*/ __L.at(__c19, 3) as any as S.Schema<AccessEndpoint>;
 export type AccessEndpointList = AccessEndpoint[];
+const AccessEndpointList = /*@__PURE__*/ __L.at(__c19, 4);
 export type InternetFallbackProtocol = "PCOIP" | (string & {});
 export type InternetFallbackProtocolList = InternetFallbackProtocol[];
+const InternetFallbackProtocolList = ProtocolList as any as S.Schema<InternetFallbackProtocolList>;
 export interface AccessEndpointConfig {
   AccessEndpoints: AccessEndpoint[];
   InternetFallbackProtocols?: InternetFallbackProtocol[];
 }
+const AccessEndpointConfig = /*@__PURE__*/ __L.at(
+  __c19,
+  5,
+) as any as S.Schema<AccessEndpointConfig>;
 export interface WorkspaceAccessProperties {
   DeviceTypeWindows?: AccessPropertyValue;
   DeviceTypeOsx?: AccessPropertyValue;
@@ -1235,7 +1798,13 @@ export interface WorkspaceAccessProperties {
   DeviceTypeWorkSpacesThinClient?: AccessPropertyValue;
   AccessEndpointConfig?: AccessEndpointConfig;
 }
+const WorkspaceAccessProperties = /*@__PURE__*/ __L.at(
+  __c19,
+  6,
+) as any as S.Schema<WorkspaceAccessProperties>;
 export type Tenancy = "DEDICATED" | "SHARED" | (string & {});
+const Tenancy = S.String;
+
 export interface SelfservicePermissions {
   RestartWorkspace?: ReconnectEnum;
   IncreaseVolumeSize?: ReconnectEnum;
@@ -1243,80 +1812,125 @@ export interface SelfservicePermissions {
   SwitchRunningMode?: ReconnectEnum;
   RebuildWorkspace?: ReconnectEnum;
 }
+const SelfservicePermissions = /*@__PURE__*/ __L.at(
+  __c19,
+  7,
+) as any as S.Schema<SelfservicePermissions>;
 export type SamlStatusEnum =
   | "DISABLED"
   | "ENABLED"
   | "ENABLED_WITH_DIRECTORY_LOGIN_FALLBACK"
   | (string & {});
+const SamlStatusEnum = S.String;
+
 export type SamlUserAccessUrl = string;
 export interface SamlProperties {
   Status?: SamlStatusEnum;
   UserAccessUrl?: string;
   RelayStateParameterName?: string;
 }
+const SamlProperties = /*@__PURE__*/ __L.at(__c20, 0) as any as S.Schema<SamlProperties>;
 export type CertificateBasedAuthStatusEnum = "DISABLED" | "ENABLED" | (string & {});
+const CertificateBasedAuthStatusEnum = S.String;
+
 export type CertificateAuthorityArn = string;
 export interface CertificateBasedAuthProperties {
   Status?: CertificateBasedAuthStatusEnum;
   CertificateAuthorityArn?: string;
 }
+const CertificateBasedAuthProperties = /*@__PURE__*/ __L.at(
+  __c20,
+  1,
+) as any as S.Schema<CertificateBasedAuthProperties>;
 export type EndpointEncryptionMode = "STANDARD_TLS" | "FIPS_VALIDATED" | (string & {});
+const EndpointEncryptionMode = S.String;
+
 export type MicrosoftEntraConfigTenantId = string;
 export type SecretsManagerArn = string;
 export interface MicrosoftEntraConfig {
   TenantId?: string;
   ApplicationConfigSecretArn?: string;
 }
+const MicrosoftEntraConfig = /*@__PURE__*/ __L.at(
+  __c20,
+  2,
+) as any as S.Schema<MicrosoftEntraConfig>;
 export type WorkspaceDirectoryDescription = string;
 export type UserIdentityType =
   | "CUSTOMER_MANAGED"
   | "AWS_DIRECTORY_SERVICE"
   | "AWS_IAM_IDENTITY_CENTER"
   | (string & {});
+const UserIdentityType = S.String;
+
 export type WorkspaceType = "PERSONAL" | "POOLS" | (string & {});
+const WorkspaceType = S.String;
+
 export interface IDCConfig {
   InstanceArn?: string;
   ApplicationArn?: string;
 }
+const IDCConfig = /*@__PURE__*/ __L.at(__c20, 3) as any as S.Schema<IDCConfig>;
 export type DomainName = string;
 export interface ActiveDirectoryConfig {
   DomainName: string;
   ServiceAccountSecretArn: string;
 }
+const ActiveDirectoryConfig = /*@__PURE__*/ __L.at(
+  __c20,
+  4,
+) as any as S.Schema<ActiveDirectoryConfig>;
 export type StreamingExperiencePreferredProtocolEnum = "TCP" | "UDP" | (string & {});
+const StreamingExperiencePreferredProtocolEnum = S.String;
+
 export type UserSettingActionEnum =
   | "CLIPBOARD_COPY_FROM_LOCAL_DEVICE"
   | "CLIPBOARD_COPY_TO_LOCAL_DEVICE"
   | "PRINTING_TO_LOCAL_DEVICE"
   | "SMART_CARD"
   | (string & {});
+const UserSettingActionEnum = S.String;
+
 export type UserSettingPermissionEnum = "ENABLED" | "DISABLED" | (string & {});
+const UserSettingPermissionEnum = S.String;
+
 export type MaximumLength = number;
 export interface UserSetting {
   Action: UserSettingActionEnum;
   Permission: UserSettingPermissionEnum;
   MaximumLength?: number;
 }
+const UserSetting = /*@__PURE__*/ __L.at(__c20, 5) as any as S.Schema<UserSetting>;
 export type UserSettings = UserSetting[];
+const UserSettings = /*@__PURE__*/ __L.at(__c20, 6);
 export type StorageConnectorTypeEnum = "HOME_FOLDER" | (string & {});
+const StorageConnectorTypeEnum = S.String;
+
 export type StorageConnectorStatusEnum = "ENABLED" | "DISABLED" | (string & {});
+const StorageConnectorStatusEnum = S.String;
+
 export interface StorageConnector {
   ConnectorType: StorageConnectorTypeEnum;
   Status: StorageConnectorStatusEnum;
 }
+const StorageConnector = /*@__PURE__*/ __L.at(__c20, 7) as any as S.Schema<StorageConnector>;
 export type StorageConnectors = StorageConnector[];
+const StorageConnectors = /*@__PURE__*/ __L.at(__c21, 0);
 export type AGAModeForDirectoryEnum = "ENABLED_AUTO" | "DISABLED" | (string & {});
 export type AGAPreferredProtocolForDirectory = "TCP" | "NONE" | (string & {});
 export interface GlobalAcceleratorForDirectory {
   Mode: AGAModeForDirectoryEnum;
   PreferredProtocol?: AGAPreferredProtocolForDirectory;
 }
+const GlobalAcceleratorForDirectory =
+  GlobalAcceleratorForWorkSpace as any as S.Schema<GlobalAcceleratorForDirectory>;
 export interface StreamingProperties {
   StreamingExperiencePreferredProtocol?: StreamingExperiencePreferredProtocolEnum;
   UserSettings?: UserSetting[];
   StorageConnectors?: StorageConnector[];
   GlobalAccelerator?: GlobalAcceleratorForDirectory;
 }
+const StreamingProperties = /*@__PURE__*/ __L.at(__c21, 1) as any as S.Schema<StreamingProperties>;
 export interface WorkspaceDirectory {
   DirectoryId?: string;
   Alias?: string;
@@ -1348,38 +1962,62 @@ export interface WorkspaceDirectory {
   StreamingProperties?: StreamingProperties;
   ErrorMessage?: string;
 }
+const WorkspaceDirectory = /*@__PURE__*/ __L.at(__c21, 2) as any as S.Schema<WorkspaceDirectory>;
 export type DirectoryList = WorkspaceDirectory[];
+const DirectoryList = /*@__PURE__*/ __L.at(__c21, 3);
 export interface DescribeWorkspaceDirectoriesResult {
   Directories?: WorkspaceDirectory[];
   NextToken?: string;
 }
+const DescribeWorkspaceDirectoriesResult = /*@__PURE__*/ __L.at(
+  __c21,
+  4,
+) as any as S.Schema<DescribeWorkspaceDirectoriesResult>;
 export interface DescribeWorkspaceImagePermissionsRequest {
   ImageId: string;
   NextToken?: string;
   MaxResults?: number;
 }
+const DescribeWorkspaceImagePermissionsRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  5,
+) as any as S.Schema<DescribeWorkspaceImagePermissionsRequest>;
 export interface ImagePermission {
   SharedAccountId?: string;
 }
+const ImagePermission = /*@__PURE__*/ __L.at(__c21, 6) as any as S.Schema<ImagePermission>;
 export type ImagePermissions = ImagePermission[];
+const ImagePermissions = /*@__PURE__*/ __L.at(__c21, 7);
 export interface DescribeWorkspaceImagePermissionsResult {
   ImageId?: string;
   ImagePermissions?: ImagePermission[];
   NextToken?: string;
 }
+const DescribeWorkspaceImagePermissionsResult = /*@__PURE__*/ __L.at(
+  __c22,
+  0,
+) as any as S.Schema<DescribeWorkspaceImagePermissionsResult>;
 export type WorkspaceImageIdList = string[];
+const WorkspaceImageIdList = IpGroupIdList as any as S.Schema<WorkspaceImageIdList>;
 export type ImageType = "OWNED" | "SHARED" | (string & {});
+const ImageType = S.String;
+
 export interface DescribeWorkspaceImagesRequest {
   ImageIds?: string[];
   ImageType?: ImageType;
   NextToken?: string;
   MaxResults?: number;
 }
+const DescribeWorkspaceImagesRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  1,
+) as any as S.Schema<DescribeWorkspaceImagesRequest>;
 export type WorkspaceImageErrorCode = string;
 export interface UpdateResult {
   UpdateAvailable?: boolean;
   Description?: string;
 }
+const UpdateResult = /*@__PURE__*/ __L.at(__c22, 2) as any as S.Schema<UpdateResult>;
 export type WorkspaceImageErrorDetailCode =
   | "OutdatedPowershellVersion"
   | "OfficeInstalled"
@@ -1430,11 +2068,15 @@ export type WorkspaceImageErrorDetailCode =
   | "MemoryIntegrityIncompatibility"
   | "RestrictedDriveLetterInUse"
   | (string & {});
+const WorkspaceImageErrorDetailCode = S.String;
+
 export interface ErrorDetails {
   ErrorCode?: WorkspaceImageErrorDetailCode;
   ErrorMessage?: string;
 }
+const ErrorDetails = /*@__PURE__*/ __L.at(__c22, 3) as any as S.Schema<ErrorDetails>;
 export type ErrorDetailsList = ErrorDetails[];
+const ErrorDetailsList = /*@__PURE__*/ __L.at(__c22, 4);
 export interface WorkspaceImage {
   ImageId?: string;
   Name?: string;
@@ -1449,12 +2091,19 @@ export interface WorkspaceImage {
   Updates?: UpdateResult;
   ErrorDetails?: ErrorDetails[];
 }
+const WorkspaceImage = /*@__PURE__*/ __L.at(__c22, 5) as any as S.Schema<WorkspaceImage>;
 export type WorkspaceImageList = WorkspaceImage[];
+const WorkspaceImageList = /*@__PURE__*/ __L.at(__c22, 6);
 export interface DescribeWorkspaceImagesResult {
   Images?: WorkspaceImage[];
   NextToken?: string;
 }
+const DescribeWorkspaceImagesResult = /*@__PURE__*/ __L.at(
+  __c22,
+  7,
+) as any as S.Schema<DescribeWorkspaceImagesResult>;
 export type WorkspaceIdList = string[];
+const WorkspaceIdList = IpGroupIdList as any as S.Schema<WorkspaceIdList>;
 export interface DescribeWorkspacesRequest {
   WorkspaceIds?: string[];
   DirectoryId?: string;
@@ -1464,64 +2113,118 @@ export interface DescribeWorkspacesRequest {
   NextToken?: string;
   WorkspaceName?: string;
 }
+const DescribeWorkspacesRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  0,
+) as any as S.Schema<DescribeWorkspacesRequest>;
 export interface DescribeWorkspacesResult {
   Workspaces?: Workspace[];
   NextToken?: string;
 }
+const DescribeWorkspacesResult = /*@__PURE__*/ __L.at(
+  __c23,
+  1,
+) as any as S.Schema<DescribeWorkspacesResult>;
 export interface DescribeWorkspacesConnectionStatusRequest {
   WorkspaceIds?: string[];
   NextToken?: string;
 }
+const DescribeWorkspacesConnectionStatusRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  2,
+) as any as S.Schema<DescribeWorkspacesConnectionStatusRequest>;
 export type ConnectionState = "CONNECTED" | "DISCONNECTED" | "UNKNOWN" | (string & {});
+const ConnectionState = S.String;
+
 export interface WorkspaceConnectionStatus {
   WorkspaceId?: string;
   ConnectionState?: ConnectionState;
   ConnectionStateCheckTimestamp?: Date;
   LastKnownUserConnectionTimestamp?: Date;
 }
+const WorkspaceConnectionStatus = /*@__PURE__*/ __L.at(
+  __c23,
+  3,
+) as any as S.Schema<WorkspaceConnectionStatus>;
 export type WorkspaceConnectionStatusList = WorkspaceConnectionStatus[];
+const WorkspaceConnectionStatusList = /*@__PURE__*/ __L.at(__c23, 4);
 export interface DescribeWorkspacesConnectionStatusResult {
   WorkspacesConnectionStatus?: WorkspaceConnectionStatus[];
   NextToken?: string;
 }
+const DescribeWorkspacesConnectionStatusResult = /*@__PURE__*/ __L.at(
+  __c23,
+  5,
+) as any as S.Schema<DescribeWorkspacesConnectionStatusResult>;
 export interface DescribeWorkspaceSnapshotsRequest {
   WorkspaceId: string;
 }
+const DescribeWorkspaceSnapshotsRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  6,
+) as any as S.Schema<DescribeWorkspaceSnapshotsRequest>;
 export interface Snapshot {
   SnapshotTime?: Date;
 }
+const Snapshot = /*@__PURE__*/ __L.at(__c23, 7) as any as S.Schema<Snapshot>;
 export type SnapshotList = Snapshot[];
+const SnapshotList = /*@__PURE__*/ __L.at(__c24, 0);
 export interface DescribeWorkspaceSnapshotsResult {
   RebuildSnapshots?: Snapshot[];
   RestoreSnapshots?: Snapshot[];
 }
+const DescribeWorkspaceSnapshotsResult = /*@__PURE__*/ __L.at(
+  __c24,
+  1,
+) as any as S.Schema<DescribeWorkspaceSnapshotsResult>;
 export type WorkspacesPoolIds = string[];
+const WorkspacesPoolIds = IpGroupIdList as any as S.Schema<WorkspacesPoolIds>;
 export type DescribeWorkspacesPoolsFilterName = "PoolName" | (string & {});
+const DescribeWorkspacesPoolsFilterName = S.String;
+
 export type DescribeWorkspacesPoolsFilterValue = string;
 export type DescribeWorkspacesPoolsFilterValues = string[];
+const DescribeWorkspacesPoolsFilterValues =
+  IpGroupIdList as any as S.Schema<DescribeWorkspacesPoolsFilterValues>;
 export type DescribeWorkspacesPoolsFilterOperator =
   | "EQUALS"
   | "NOTEQUALS"
   | "CONTAINS"
   | "NOTCONTAINS"
   | (string & {});
+const DescribeWorkspacesPoolsFilterOperator = S.String;
+
 export interface DescribeWorkspacesPoolsFilter {
   Name: DescribeWorkspacesPoolsFilterName;
   Values: string[];
   Operator: DescribeWorkspacesPoolsFilterOperator;
 }
+const DescribeWorkspacesPoolsFilter = /*@__PURE__*/ __L.at(
+  __c24,
+  2,
+) as any as S.Schema<DescribeWorkspacesPoolsFilter>;
 export type DescribeWorkspacesPoolsFilters = DescribeWorkspacesPoolsFilter[];
+const DescribeWorkspacesPoolsFilters = /*@__PURE__*/ __L.at(__c24, 3);
 export interface DescribeWorkspacesPoolsRequest {
   PoolIds?: string[];
   Filters?: DescribeWorkspacesPoolsFilter[];
   Limit?: number;
   NextToken?: string;
 }
+const DescribeWorkspacesPoolsRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  4,
+) as any as S.Schema<DescribeWorkspacesPoolsRequest>;
 export type WorkspacesPools = WorkspacesPool[];
+const WorkspacesPools = /*@__PURE__*/ __L.at(__c24, 5);
 export interface DescribeWorkspacesPoolsResult {
   WorkspacesPools?: WorkspacesPool[];
   NextToken?: string;
 }
+const DescribeWorkspacesPoolsResult = /*@__PURE__*/ __L.at(
+  __c24,
+  6,
+) as any as S.Schema<DescribeWorkspacesPoolsResult>;
 export type WorkspacesPoolUserId = string;
 export type Limit50 = number;
 export interface DescribeWorkspacesPoolSessionsRequest {
@@ -1530,13 +2233,25 @@ export interface DescribeWorkspacesPoolSessionsRequest {
   Limit?: number;
   NextToken?: string;
 }
+const DescribeWorkspacesPoolSessionsRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  7,
+) as any as S.Schema<DescribeWorkspacesPoolSessionsRequest>;
 export type AuthenticationType = "SAML" | (string & {});
+const AuthenticationType = S.String;
+
 export type SessionConnectionState = "CONNECTED" | "NOT_CONNECTED" | (string & {});
+const SessionConnectionState = S.String;
+
 export type SessionInstanceId = string;
 export interface NetworkAccessConfiguration {
   EniPrivateIpAddress?: string;
   EniId?: string;
 }
+const NetworkAccessConfiguration = /*@__PURE__*/ __L.at(
+  __c25,
+  0,
+) as any as S.Schema<NetworkAccessConfiguration>;
 export interface WorkspacesPoolSession {
   AuthenticationType?: AuthenticationType;
   ConnectionState?: SessionConnectionState;
@@ -1548,34 +2263,69 @@ export interface WorkspacesPoolSession {
   StartTime?: Date;
   UserId: string;
 }
+const WorkspacesPoolSession = /*@__PURE__*/ __L.at(
+  __c25,
+  1,
+) as any as S.Schema<WorkspacesPoolSession>;
 export type WorkspacesPoolSessions = WorkspacesPoolSession[];
+const WorkspacesPoolSessions = /*@__PURE__*/ __L.at(__c25, 2);
 export interface DescribeWorkspacesPoolSessionsResult {
   Sessions?: WorkspacesPoolSession[];
   NextToken?: string;
 }
+const DescribeWorkspacesPoolSessionsResult = /*@__PURE__*/ __L.at(
+  __c25,
+  3,
+) as any as S.Schema<DescribeWorkspacesPoolSessionsResult>;
 export interface DisassociateConnectionAliasRequest {
   AliasId: string;
 }
+const DisassociateConnectionAliasRequest = /*@__PURE__*/ __L.at(
+  __c25,
+  4,
+) as any as S.Schema<DisassociateConnectionAliasRequest>;
 export interface DisassociateConnectionAliasResult {}
+const DisassociateConnectionAliasResult =
+  DeleteClientBrandingResult as any as S.Schema<DisassociateConnectionAliasResult>;
 export interface DisassociateIpGroupsRequest {
   DirectoryId: string;
   GroupIds: string[];
 }
+const DisassociateIpGroupsRequest = /*@__PURE__*/ __L.at(
+  __c25,
+  5,
+) as any as S.Schema<DisassociateIpGroupsRequest>;
 export interface DisassociateIpGroupsResult {}
+const DisassociateIpGroupsResult =
+  DeleteClientBrandingResult as any as S.Schema<DisassociateIpGroupsResult>;
 export interface DisassociateWorkspaceApplicationRequest {
   WorkspaceId: string;
   ApplicationId: string;
 }
+const DisassociateWorkspaceApplicationRequest = /*@__PURE__*/ __L.at(
+  __c25,
+  6,
+) as any as S.Schema<DisassociateWorkspaceApplicationRequest>;
 export interface DisassociateWorkspaceApplicationResult {
   Association?: WorkspaceResourceAssociation;
 }
+const DisassociateWorkspaceApplicationResult =
+  AssociateWorkspaceApplicationResult as any as S.Schema<DisassociateWorkspaceApplicationResult>;
 export interface GetAccountLinkRequest {
   LinkId?: string;
   LinkedAccountId?: string;
 }
+const GetAccountLinkRequest = /*@__PURE__*/ __L.at(
+  __c25,
+  7,
+) as any as S.Schema<GetAccountLinkRequest>;
 export interface GetAccountLinkResult {
   AccountLink?: AccountLink;
 }
+const GetAccountLinkResult = /*@__PURE__*/ __L.at(
+  __c26,
+  0,
+) as any as S.Schema<GetAccountLinkResult>;
 export type DefaultLogo = Uint8Array;
 export interface DefaultImportClientBrandingAttributes {
   Logo?: Uint8Array;
@@ -1584,6 +2334,10 @@ export interface DefaultImportClientBrandingAttributes {
   ForgotPasswordLink?: string;
   LoginMessage?: { [key: string]: string | undefined };
 }
+const DefaultImportClientBrandingAttributes = /*@__PURE__*/ __L.at(
+  __c26,
+  1,
+) as any as S.Schema<DefaultImportClientBrandingAttributes>;
 export type IosLogo = Uint8Array;
 export type Ios2XLogo = Uint8Array;
 export type Ios3XLogo = Uint8Array;
@@ -1596,6 +2350,10 @@ export interface IosImportClientBrandingAttributes {
   ForgotPasswordLink?: string;
   LoginMessage?: { [key: string]: string | undefined };
 }
+const IosImportClientBrandingAttributes = /*@__PURE__*/ __L.at(
+  __c26,
+  2,
+) as any as S.Schema<IosImportClientBrandingAttributes>;
 export interface ImportClientBrandingRequest {
   ResourceId: string;
   DeviceTypeWindows?: DefaultImportClientBrandingAttributes;
@@ -1605,6 +2363,10 @@ export interface ImportClientBrandingRequest {
   DeviceTypeLinux?: DefaultImportClientBrandingAttributes;
   DeviceTypeWeb?: DefaultImportClientBrandingAttributes;
 }
+const ImportClientBrandingRequest = /*@__PURE__*/ __L.at(
+  __c26,
+  3,
+) as any as S.Schema<ImportClientBrandingRequest>;
 export interface ImportClientBrandingResult {
   DeviceTypeWindows?: DefaultClientBrandingAttributes;
   DeviceTypeOsx?: DefaultClientBrandingAttributes;
@@ -1613,15 +2375,25 @@ export interface ImportClientBrandingResult {
   DeviceTypeLinux?: DefaultClientBrandingAttributes;
   DeviceTypeWeb?: DefaultClientBrandingAttributes;
 }
+const ImportClientBrandingResult =
+  DescribeClientBrandingResult as any as S.Schema<ImportClientBrandingResult>;
 export type ImageComputeType =
   | "BASE"
   | "GRAPHICS_G4DN"
   | "GRAPHICS_G6"
   | "GRAPHICS_G7"
   | (string & {});
+const ImageComputeType = S.String;
+
 export type CustomImageProtocol = "PCOIP" | "DCV" | "BYOP" | (string & {});
+const CustomImageProtocol = S.String;
+
 export type Platform = "WINDOWS" | (string & {});
+const Platform = S.String;
+
 export type OSVersion = "Windows_10" | "Windows_11" | (string & {});
+const OSVersion = S.String;
+
 export interface ImportCustomWorkspaceImageRequest {
   ImageName: string;
   ImageDescription: string;
@@ -1633,10 +2405,18 @@ export interface ImportCustomWorkspaceImageRequest {
   OsVersion: OSVersion;
   Tags?: Tag[];
 }
+const ImportCustomWorkspaceImageRequest = /*@__PURE__*/ __L.at(
+  __c26,
+  4,
+) as any as S.Schema<ImportCustomWorkspaceImageRequest>;
 export interface ImportCustomWorkspaceImageResult {
   ImageId?: string;
   State?: CustomWorkspaceImageImportState;
 }
+const ImportCustomWorkspaceImageResult = /*@__PURE__*/ __L.at(
+  __c26,
+  5,
+) as any as S.Schema<ImportCustomWorkspaceImageResult>;
 export type WorkspaceImageIngestionProcess =
   | "BYOL_REGULAR"
   | "BYOL_GRAPHICS"
@@ -1647,8 +2427,11 @@ export type WorkspaceImageIngestionProcess =
   | "BYOL_REGULAR_BYOP"
   | "BYOL_GRAPHICS_G4DN_BYOP"
   | (string & {});
+const WorkspaceImageIngestionProcess = S.String;
+
 export type Application = "Microsoft_Office_2016" | "Microsoft_Office_2019" | (string & {});
 export type ApplicationList = Application[];
+const ApplicationList = ProtocolList as any as S.Schema<ApplicationList>;
 export interface ImportWorkspaceImageRequest {
   Ec2ImageId: string;
   IngestionProcess: WorkspaceImageIngestionProcess;
@@ -1657,20 +2440,36 @@ export interface ImportWorkspaceImageRequest {
   Tags?: Tag[];
   Applications?: Application[];
 }
+const ImportWorkspaceImageRequest = /*@__PURE__*/ __L.at(
+  __c26,
+  6,
+) as any as S.Schema<ImportWorkspaceImageRequest>;
 export interface ImportWorkspaceImageResult {
   ImageId?: string;
 }
+const ImportWorkspaceImageResult =
+  CreateUpdatedWorkspaceImageResult as any as S.Schema<ImportWorkspaceImageResult>;
 export type LinkStatusFilterList = AccountLinkStatusEnum[];
+const LinkStatusFilterList = ProtocolList as any as S.Schema<LinkStatusFilterList>;
 export interface ListAccountLinksRequest {
   LinkStatusFilter?: AccountLinkStatusEnum[];
   NextToken?: string;
   MaxResults?: number;
 }
+const ListAccountLinksRequest = /*@__PURE__*/ __L.at(
+  __c26,
+  7,
+) as any as S.Schema<ListAccountLinksRequest>;
 export type AccountLinkList = AccountLink[];
+const AccountLinkList = /*@__PURE__*/ __L.at(__c27, 0);
 export interface ListAccountLinksResult {
   AccountLinks?: AccountLink[];
   NextToken?: string;
 }
+const ListAccountLinksResult = /*@__PURE__*/ __L.at(
+  __c27,
+  1,
+) as any as S.Schema<ListAccountLinksResult>;
 export type ManagementCidrRangeConstraint = string;
 export type ManagementCidrRangeMaxResults = number;
 export interface ListAvailableManagementCidrRangesRequest {
@@ -1678,73 +2477,143 @@ export interface ListAvailableManagementCidrRangesRequest {
   MaxResults?: number;
   NextToken?: string;
 }
+const ListAvailableManagementCidrRangesRequest = /*@__PURE__*/ __L.at(
+  __c27,
+  2,
+) as any as S.Schema<ListAvailableManagementCidrRangesRequest>;
 export type DedicatedTenancyCidrRangeList = string[];
+const DedicatedTenancyCidrRangeList =
+  IpGroupIdList as any as S.Schema<DedicatedTenancyCidrRangeList>;
 export interface ListAvailableManagementCidrRangesResult {
   ManagementCidrRanges?: string[];
   NextToken?: string;
 }
+const ListAvailableManagementCidrRangesResult = /*@__PURE__*/ __L.at(
+  __c27,
+  3,
+) as any as S.Schema<ListAvailableManagementCidrRangesResult>;
 export interface MigrateWorkspaceRequest {
   SourceWorkspaceId: string;
   BundleId: string;
 }
+const MigrateWorkspaceRequest = /*@__PURE__*/ __L.at(
+  __c27,
+  4,
+) as any as S.Schema<MigrateWorkspaceRequest>;
 export interface MigrateWorkspaceResult {
   SourceWorkspaceId?: string;
   TargetWorkspaceId?: string;
 }
+const MigrateWorkspaceResult = /*@__PURE__*/ __L.at(
+  __c27,
+  5,
+) as any as S.Schema<MigrateWorkspaceResult>;
 export type DedicatedTenancySupportEnum = "ENABLED" | (string & {});
+const DedicatedTenancySupportEnum = S.String;
+
 export interface ModifyAccountRequest {
   DedicatedTenancySupport?: DedicatedTenancySupportEnum;
   DedicatedTenancyManagementCidrRange?: string;
 }
+const ModifyAccountRequest = /*@__PURE__*/ __L.at(
+  __c27,
+  6,
+) as any as S.Schema<ModifyAccountRequest>;
 export interface ModifyAccountResult {
   Message?: string;
 }
+const ModifyAccountResult = /*@__PURE__*/ __L.at(__c27, 7) as any as S.Schema<ModifyAccountResult>;
 export type DeletableCertificateBasedAuthProperty =
   | "CERTIFICATE_BASED_AUTH_PROPERTIES_CERTIFICATE_AUTHORITY_ARN"
   | (string & {});
 export type DeletableCertificateBasedAuthPropertiesList = DeletableCertificateBasedAuthProperty[];
+const DeletableCertificateBasedAuthPropertiesList =
+  ApplicationAssociatedResourceTypeList as any as S.Schema<DeletableCertificateBasedAuthPropertiesList>;
 export interface ModifyCertificateBasedAuthPropertiesRequest {
   ResourceId: string;
   CertificateBasedAuthProperties?: CertificateBasedAuthProperties;
   PropertiesToDelete?: DeletableCertificateBasedAuthProperty[];
 }
+const ModifyCertificateBasedAuthPropertiesRequest = /*@__PURE__*/ __L.at(
+  __c28,
+  0,
+) as any as S.Schema<ModifyCertificateBasedAuthPropertiesRequest>;
 export interface ModifyCertificateBasedAuthPropertiesResult {}
+const ModifyCertificateBasedAuthPropertiesResult =
+  DeleteClientBrandingResult as any as S.Schema<ModifyCertificateBasedAuthPropertiesResult>;
 export interface ModifyClientPropertiesRequest {
   ResourceId: string;
   ClientProperties: ClientProperties;
 }
+const ModifyClientPropertiesRequest = /*@__PURE__*/ __L.at(
+  __c28,
+  1,
+) as any as S.Schema<ModifyClientPropertiesRequest>;
 export interface ModifyClientPropertiesResult {}
+const ModifyClientPropertiesResult =
+  DeleteClientBrandingResult as any as S.Schema<ModifyClientPropertiesResult>;
 export interface ModifyEndpointEncryptionModeRequest {
   DirectoryId: string;
   EndpointEncryptionMode: EndpointEncryptionMode;
 }
+const ModifyEndpointEncryptionModeRequest = /*@__PURE__*/ __L.at(
+  __c28,
+  2,
+) as any as S.Schema<ModifyEndpointEncryptionModeRequest>;
 export interface ModifyEndpointEncryptionModeResponse {}
+const ModifyEndpointEncryptionModeResponse =
+  DeleteClientBrandingResult as any as S.Schema<ModifyEndpointEncryptionModeResponse>;
 export type DeletableSamlProperty =
   | "SAML_PROPERTIES_USER_ACCESS_URL"
   | "SAML_PROPERTIES_RELAY_STATE_PARAMETER_NAME"
   | (string & {});
 export type DeletableSamlPropertiesList = DeletableSamlProperty[];
+const DeletableSamlPropertiesList = ProtocolList as any as S.Schema<DeletableSamlPropertiesList>;
 export interface ModifySamlPropertiesRequest {
   ResourceId: string;
   SamlProperties?: SamlProperties;
   PropertiesToDelete?: DeletableSamlProperty[];
 }
+const ModifySamlPropertiesRequest = /*@__PURE__*/ __L.at(
+  __c28,
+  3,
+) as any as S.Schema<ModifySamlPropertiesRequest>;
 export interface ModifySamlPropertiesResult {}
+const ModifySamlPropertiesResult =
+  DeleteClientBrandingResult as any as S.Schema<ModifySamlPropertiesResult>;
 export interface ModifySelfservicePermissionsRequest {
   ResourceId: string;
   SelfservicePermissions: SelfservicePermissions;
 }
+const ModifySelfservicePermissionsRequest = /*@__PURE__*/ __L.at(
+  __c28,
+  4,
+) as any as S.Schema<ModifySelfservicePermissionsRequest>;
 export interface ModifySelfservicePermissionsResult {}
+const ModifySelfservicePermissionsResult =
+  DeleteClientBrandingResult as any as S.Schema<ModifySelfservicePermissionsResult>;
 export interface ModifyStreamingPropertiesRequest {
   ResourceId: string;
   StreamingProperties?: StreamingProperties;
 }
+const ModifyStreamingPropertiesRequest = /*@__PURE__*/ __L.at(
+  __c28,
+  5,
+) as any as S.Schema<ModifyStreamingPropertiesRequest>;
 export interface ModifyStreamingPropertiesResult {}
+const ModifyStreamingPropertiesResult =
+  DeleteClientBrandingResult as any as S.Schema<ModifyStreamingPropertiesResult>;
 export interface ModifyWorkspaceAccessPropertiesRequest {
   ResourceId: string;
   WorkspaceAccessProperties: WorkspaceAccessProperties;
 }
+const ModifyWorkspaceAccessPropertiesRequest = /*@__PURE__*/ __L.at(
+  __c28,
+  6,
+) as any as S.Schema<ModifyWorkspaceAccessPropertiesRequest>;
 export interface ModifyWorkspaceAccessPropertiesResult {}
+const ModifyWorkspaceAccessPropertiesResult =
+  DeleteClientBrandingResult as any as S.Schema<ModifyWorkspaceAccessPropertiesResult>;
 export interface WorkspaceCreationProperties {
   EnableInternetAccess?: boolean;
   DefaultOu?: string;
@@ -1753,50 +2622,94 @@ export interface WorkspaceCreationProperties {
   EnableMaintenanceMode?: boolean;
   InstanceIamRoleArn?: string;
 }
+const WorkspaceCreationProperties =
+  DefaultWorkspaceCreationProperties as any as S.Schema<WorkspaceCreationProperties>;
 export interface ModifyWorkspaceCreationPropertiesRequest {
   ResourceId: string;
   WorkspaceCreationProperties: WorkspaceCreationProperties;
 }
+const ModifyWorkspaceCreationPropertiesRequest = /*@__PURE__*/ __L.at(
+  __c28,
+  7,
+) as any as S.Schema<ModifyWorkspaceCreationPropertiesRequest>;
 export interface ModifyWorkspaceCreationPropertiesResult {}
+const ModifyWorkspaceCreationPropertiesResult =
+  DeleteClientBrandingResult as any as S.Schema<ModifyWorkspaceCreationPropertiesResult>;
 export interface ModifyWorkspacePropertiesRequest {
   WorkspaceId: string;
   WorkspaceProperties?: WorkspaceProperties;
   DataReplication?: DataReplication;
 }
+const ModifyWorkspacePropertiesRequest = /*@__PURE__*/ __L.at(
+  __c29,
+  0,
+) as any as S.Schema<ModifyWorkspacePropertiesRequest>;
 export interface ModifyWorkspacePropertiesResult {}
+const ModifyWorkspacePropertiesResult =
+  DeleteClientBrandingResult as any as S.Schema<ModifyWorkspacePropertiesResult>;
 export type TargetWorkspaceState = "AVAILABLE" | "ADMIN_MAINTENANCE" | (string & {});
+const TargetWorkspaceState = S.String;
+
 export interface ModifyWorkspaceStateRequest {
   WorkspaceId: string;
   WorkspaceState: TargetWorkspaceState;
 }
+const ModifyWorkspaceStateRequest = /*@__PURE__*/ __L.at(
+  __c29,
+  1,
+) as any as S.Schema<ModifyWorkspaceStateRequest>;
 export interface ModifyWorkspaceStateResult {}
+const ModifyWorkspaceStateResult =
+  DeleteClientBrandingResult as any as S.Schema<ModifyWorkspaceStateResult>;
 export interface RebootRequest {
   WorkspaceId: string;
 }
+const RebootRequest = /*@__PURE__*/ __L.at(__c29, 2) as any as S.Schema<RebootRequest>;
 export type RebootWorkspaceRequests = RebootRequest[];
+const RebootWorkspaceRequests = /*@__PURE__*/ __L.at(__c29, 3);
 export interface RebootWorkspacesRequest {
   RebootWorkspaceRequests: RebootRequest[];
 }
+const RebootWorkspacesRequest = /*@__PURE__*/ __L.at(
+  __c29,
+  4,
+) as any as S.Schema<RebootWorkspacesRequest>;
 export interface FailedWorkspaceChangeRequest {
   WorkspaceId?: string;
   ErrorCode?: string;
   ErrorMessage?: string;
 }
+const FailedWorkspaceChangeRequest = /*@__PURE__*/ __L.at(
+  __c29,
+  5,
+) as any as S.Schema<FailedWorkspaceChangeRequest>;
 export type FailedRebootWorkspaceRequests = FailedWorkspaceChangeRequest[];
+const FailedRebootWorkspaceRequests = /*@__PURE__*/ __L.at(__c29, 6);
 export interface RebootWorkspacesResult {
   FailedRequests?: FailedWorkspaceChangeRequest[];
 }
+const RebootWorkspacesResult = /*@__PURE__*/ __L.at(
+  __c29,
+  7,
+) as any as S.Schema<RebootWorkspacesResult>;
 export interface RebuildRequest {
   WorkspaceId: string;
 }
 export type RebuildWorkspaceRequests = RebuildRequest[];
+const RebuildWorkspaceRequests =
+  RebootWorkspaceRequests as any as S.Schema<RebuildWorkspaceRequests>;
 export interface RebuildWorkspacesRequest {
   RebuildWorkspaceRequests: RebuildRequest[];
 }
+const RebuildWorkspacesRequest = /*@__PURE__*/ __L.at(
+  __c30,
+  0,
+) as any as S.Schema<RebuildWorkspacesRequest>;
 export type FailedRebuildWorkspaceRequests = FailedWorkspaceChangeRequest[];
 export interface RebuildWorkspacesResult {
   FailedRequests?: FailedWorkspaceChangeRequest[];
 }
+const RebuildWorkspacesResult = RebootWorkspacesResult as any as S.Schema<RebuildWorkspacesResult>;
 export interface RegisterWorkspaceDirectoryRequest {
   DirectoryId?: string;
   SubnetIds?: string[];
@@ -1811,104 +2724,208 @@ export interface RegisterWorkspaceDirectoryRequest {
   WorkspaceType?: WorkspaceType;
   ActiveDirectoryConfig?: ActiveDirectoryConfig;
 }
+const RegisterWorkspaceDirectoryRequest = /*@__PURE__*/ __L.at(
+  __c30,
+  1,
+) as any as S.Schema<RegisterWorkspaceDirectoryRequest>;
 export interface RegisterWorkspaceDirectoryResult {
   DirectoryId?: string;
   State?: WorkspaceDirectoryState;
 }
+const RegisterWorkspaceDirectoryResult = /*@__PURE__*/ __L.at(
+  __c30,
+  2,
+) as any as S.Schema<RegisterWorkspaceDirectoryResult>;
 export interface RejectAccountLinkInvitationRequest {
   LinkId: string;
   ClientToken?: string;
 }
+const RejectAccountLinkInvitationRequest = /*@__PURE__*/ __L.at(
+  __c30,
+  3,
+) as any as S.Schema<RejectAccountLinkInvitationRequest>;
 export interface RejectAccountLinkInvitationResult {
   AccountLink?: AccountLink;
 }
+const RejectAccountLinkInvitationResult =
+  AcceptAccountLinkInvitationResult as any as S.Schema<RejectAccountLinkInvitationResult>;
 export interface RestoreWorkspaceRequest {
   WorkspaceId: string;
 }
+const RestoreWorkspaceRequest = /*@__PURE__*/ __L.at(
+  __c30,
+  4,
+) as any as S.Schema<RestoreWorkspaceRequest>;
 export interface RestoreWorkspaceResult {}
+const RestoreWorkspaceResult = AuthorizeIpRulesResult as any as S.Schema<RestoreWorkspaceResult>;
 export type IpRevokedRuleList = string[];
+const IpRevokedRuleList = IpGroupIdList as any as S.Schema<IpRevokedRuleList>;
 export interface RevokeIpRulesRequest {
   GroupId: string;
   UserRules: string[];
 }
+const RevokeIpRulesRequest = /*@__PURE__*/ __L.at(
+  __c30,
+  5,
+) as any as S.Schema<RevokeIpRulesRequest>;
 export interface RevokeIpRulesResult {}
+const RevokeIpRulesResult = CreateTagsResult as any as S.Schema<RevokeIpRulesResult>;
 export interface StartRequest {
   WorkspaceId?: string;
 }
+const StartRequest = /*@__PURE__*/ __L.at(__c30, 6) as any as S.Schema<StartRequest>;
 export type StartWorkspaceRequests = StartRequest[];
+const StartWorkspaceRequests = /*@__PURE__*/ __L.at(__c30, 7);
 export interface StartWorkspacesRequest {
   StartWorkspaceRequests: StartRequest[];
 }
+const StartWorkspacesRequest = /*@__PURE__*/ __L.at(
+  __c31,
+  0,
+) as any as S.Schema<StartWorkspacesRequest>;
 export type FailedStartWorkspaceRequests = FailedWorkspaceChangeRequest[];
 export interface StartWorkspacesResult {
   FailedRequests?: FailedWorkspaceChangeRequest[];
 }
+const StartWorkspacesResult = RebootWorkspacesResult as any as S.Schema<StartWorkspacesResult>;
 export interface StartWorkspacesPoolRequest {
   PoolId: string;
 }
+const StartWorkspacesPoolRequest = /*@__PURE__*/ __L.at(
+  __c31,
+  1,
+) as any as S.Schema<StartWorkspacesPoolRequest>;
 export interface StartWorkspacesPoolResult {}
+const StartWorkspacesPoolResult =
+  DeleteClientBrandingResult as any as S.Schema<StartWorkspacesPoolResult>;
 export interface StopRequest {
   WorkspaceId?: string;
 }
 export type StopWorkspaceRequests = StopRequest[];
+const StopWorkspaceRequests = StartWorkspaceRequests as any as S.Schema<StopWorkspaceRequests>;
 export interface StopWorkspacesRequest {
   StopWorkspaceRequests: StopRequest[];
 }
+const StopWorkspacesRequest = /*@__PURE__*/ __L.at(
+  __c31,
+  2,
+) as any as S.Schema<StopWorkspacesRequest>;
 export type FailedStopWorkspaceRequests = FailedWorkspaceChangeRequest[];
 export interface StopWorkspacesResult {
   FailedRequests?: FailedWorkspaceChangeRequest[];
 }
+const StopWorkspacesResult = RebootWorkspacesResult as any as S.Schema<StopWorkspacesResult>;
 export interface StopWorkspacesPoolRequest {
   PoolId: string;
 }
+const StopWorkspacesPoolRequest = /*@__PURE__*/ __L.at(
+  __c31,
+  3,
+) as any as S.Schema<StopWorkspacesPoolRequest>;
 export interface StopWorkspacesPoolResult {}
+const StopWorkspacesPoolResult =
+  AssociateIpGroupsResult as any as S.Schema<StopWorkspacesPoolResult>;
 export interface TerminateRequest {
   WorkspaceId: string;
 }
 export type TerminateWorkspaceRequests = TerminateRequest[];
+const TerminateWorkspaceRequests =
+  RebootWorkspaceRequests as any as S.Schema<TerminateWorkspaceRequests>;
 export interface TerminateWorkspacesRequest {
   TerminateWorkspaceRequests: TerminateRequest[];
 }
+const TerminateWorkspacesRequest = /*@__PURE__*/ __L.at(
+  __c31,
+  4,
+) as any as S.Schema<TerminateWorkspacesRequest>;
 export type FailedTerminateWorkspaceRequests = FailedWorkspaceChangeRequest[];
+const FailedTerminateWorkspaceRequests =
+  FailedRebootWorkspaceRequests as any as S.Schema<FailedTerminateWorkspaceRequests>;
 export interface TerminateWorkspacesResult {
   FailedRequests?: FailedWorkspaceChangeRequest[];
 }
+const TerminateWorkspacesResult = /*@__PURE__*/ __L.at(
+  __c31,
+  5,
+) as any as S.Schema<TerminateWorkspacesResult>;
 export interface TerminateWorkspacesPoolRequest {
   PoolId: string;
 }
+const TerminateWorkspacesPoolRequest = /*@__PURE__*/ __L.at(
+  __c31,
+  6,
+) as any as S.Schema<TerminateWorkspacesPoolRequest>;
 export interface TerminateWorkspacesPoolResult {}
+const TerminateWorkspacesPoolResult =
+  DeleteClientBrandingResult as any as S.Schema<TerminateWorkspacesPoolResult>;
 export interface TerminateWorkspacesPoolSessionRequest {
   SessionId: string;
 }
+const TerminateWorkspacesPoolSessionRequest = /*@__PURE__*/ __L.at(
+  __c31,
+  7,
+) as any as S.Schema<TerminateWorkspacesPoolSessionRequest>;
 export interface TerminateWorkspacesPoolSessionResult {}
+const TerminateWorkspacesPoolSessionResult =
+  DeleteClientBrandingResult as any as S.Schema<TerminateWorkspacesPoolSessionResult>;
 export interface UpdateConnectClientAddInRequest {
   AddInId: string;
   ResourceId: string;
   Name?: string;
   URL?: string;
 }
+const UpdateConnectClientAddInRequest = /*@__PURE__*/ __L.at(
+  __c32,
+  0,
+) as any as S.Schema<UpdateConnectClientAddInRequest>;
 export interface UpdateConnectClientAddInResult {}
+const UpdateConnectClientAddInResult =
+  DeleteClientBrandingResult as any as S.Schema<UpdateConnectClientAddInResult>;
 export interface UpdateConnectionAliasPermissionRequest {
   AliasId: string;
   ConnectionAliasPermission: ConnectionAliasPermission;
 }
+const UpdateConnectionAliasPermissionRequest = /*@__PURE__*/ __L.at(
+  __c32,
+  1,
+) as any as S.Schema<UpdateConnectionAliasPermissionRequest>;
 export interface UpdateConnectionAliasPermissionResult {}
+const UpdateConnectionAliasPermissionResult =
+  DeleteClientBrandingResult as any as S.Schema<UpdateConnectionAliasPermissionResult>;
 export interface UpdateRulesOfIpGroupRequest {
   GroupId: string;
   UserRules: IpRuleItem[];
 }
+const UpdateRulesOfIpGroupRequest = /*@__PURE__*/ __L.at(
+  __c32,
+  2,
+) as any as S.Schema<UpdateRulesOfIpGroupRequest>;
 export interface UpdateRulesOfIpGroupResult {}
+const UpdateRulesOfIpGroupResult =
+  DeleteClientBrandingResult as any as S.Schema<UpdateRulesOfIpGroupResult>;
 export interface UpdateWorkspaceBundleRequest {
   BundleId?: string;
   ImageId?: string;
 }
+const UpdateWorkspaceBundleRequest = /*@__PURE__*/ __L.at(
+  __c32,
+  3,
+) as any as S.Schema<UpdateWorkspaceBundleRequest>;
 export interface UpdateWorkspaceBundleResult {}
+const UpdateWorkspaceBundleResult =
+  DeleteClientBrandingResult as any as S.Schema<UpdateWorkspaceBundleResult>;
 export interface UpdateWorkspaceImagePermissionRequest {
   ImageId: string;
   AllowCopyImage: boolean;
   SharedAccountId: string;
 }
+const UpdateWorkspaceImagePermissionRequest = /*@__PURE__*/ __L.at(
+  __c32,
+  4,
+) as any as S.Schema<UpdateWorkspaceImagePermissionRequest>;
 export interface UpdateWorkspaceImagePermissionResult {}
+const UpdateWorkspaceImagePermissionResult =
+  DeleteClientBrandingResult as any as S.Schema<UpdateWorkspaceImagePermissionResult>;
 export interface UpdateWorkspacesPoolRequest {
   PoolId: string;
   Description?: string;
@@ -1919,9 +2936,15 @@ export interface UpdateWorkspacesPoolRequest {
   TimeoutSettings?: TimeoutSettings;
   RunningMode?: PoolsRunningMode;
 }
+const UpdateWorkspacesPoolRequest = /*@__PURE__*/ __L.at(
+  __c32,
+  5,
+) as any as S.Schema<UpdateWorkspacesPoolRequest>;
 export interface UpdateWorkspacesPoolResult {
   WorkspacesPool?: WorkspacesPool;
 }
+const UpdateWorkspacesPoolResult =
+  CreateWorkspacesPoolResult as any as S.Schema<UpdateWorkspacesPoolResult>;
 export type ExceptionMessage = string;
 export type ExceptionErrorCode = string;
 export type AcceptAccountLinkInvitationError =
@@ -1942,8 +2965,8 @@ export const acceptAccountLinkInvitation: API.OperationMethod<
   AcceptAccountLinkInvitationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<AcceptAccountLinkInvitationRequest>,
-  output: __S(2) as any as S.Schema<AcceptAccountLinkInvitationResult>,
+  input: AcceptAccountLinkInvitationRequest,
+  output: AcceptAccountLinkInvitationResult,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1979,8 +3002,8 @@ export const associateConnectionAlias: API.OperationMethod<
   AssociateConnectionAliasError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3) as any as S.Schema<AssociateConnectionAliasRequest>,
-  output: __S(4) as any as S.Schema<AssociateConnectionAliasResult>,
+  input: AssociateConnectionAliasRequest,
+  output: AssociateConnectionAliasResult,
   errors: [
     AccessDeniedException,
     InvalidParameterValuesException,
@@ -2011,8 +3034,8 @@ export const associateIpGroups: API.OperationMethod<
   AssociateIpGroupsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6) as any as S.Schema<AssociateIpGroupsRequest>,
-  output: __S(7) as any as S.Schema<AssociateIpGroupsResult>,
+  input: AssociateIpGroupsRequest,
+  output: AssociateIpGroupsResult,
   errors: [
     AccessDeniedException,
     InvalidParameterValuesException,
@@ -2047,8 +3070,8 @@ export const associateWorkspaceApplication: API.OperationMethod<
   AssociateWorkspaceApplicationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8) as any as S.Schema<AssociateWorkspaceApplicationRequest>,
-  output: __S(11) as any as S.Schema<AssociateWorkspaceApplicationResult>,
+  input: AssociateWorkspaceApplicationRequest,
+  output: AssociateWorkspaceApplicationResult,
   errors: [
     AccessDeniedException,
     ApplicationNotSupportedException,
@@ -2085,8 +3108,8 @@ export const authorizeIpRules: API.OperationMethod<
   AuthorizeIpRulesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14) as any as S.Schema<AuthorizeIpRulesRequest>,
-  output: __S(15) as any as S.Schema<AuthorizeIpRulesResult>,
+  input: AuthorizeIpRulesRequest,
+  output: AuthorizeIpRulesResult,
   errors: [
     AccessDeniedException,
     InvalidParameterValuesException,
@@ -2127,8 +3150,8 @@ export const copyWorkspaceImage: API.OperationMethod<
   CopyWorkspaceImageError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18) as any as S.Schema<CopyWorkspaceImageRequest>,
-  output: __S(19) as any as S.Schema<CopyWorkspaceImageResult>,
+  input: CopyWorkspaceImageRequest,
+  output: CopyWorkspaceImageResult,
   errors: [
     AccessDeniedException,
     InvalidParameterValuesException,
@@ -2158,8 +3181,8 @@ export const createAccountLinkInvitation: API.OperationMethod<
   CreateAccountLinkInvitationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20) as any as S.Schema<CreateAccountLinkInvitationRequest>,
-  output: __S(2) as any as S.Schema<CreateAccountLinkInvitationResult>,
+  input: CreateAccountLinkInvitationRequest,
+  output: CreateAccountLinkInvitationResult,
   errors: [AccessDeniedException, ConflictException, InternalServerException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2185,8 +3208,8 @@ export const createConnectClientAddIn: API.OperationMethod<
   CreateConnectClientAddInError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21) as any as S.Schema<CreateConnectClientAddInRequest>,
-  output: __S(22) as any as S.Schema<CreateConnectClientAddInResult>,
+  input: CreateConnectClientAddInRequest,
+  output: CreateConnectClientAddInResult,
   errors: [
     AccessDeniedException,
     InvalidParameterValuesException,
@@ -2218,8 +3241,8 @@ export const createConnectionAlias: API.OperationMethod<
   CreateConnectionAliasError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23) as any as S.Schema<CreateConnectionAliasRequest>,
-  output: __S(24) as any as S.Schema<CreateConnectionAliasResult>,
+  input: CreateConnectionAliasRequest,
+  output: CreateConnectionAliasResult,
   errors: [
     AccessDeniedException,
     InvalidParameterValuesException,
@@ -2259,8 +3282,8 @@ export const createIpGroup: API.OperationMethod<
   CreateIpGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25) as any as S.Schema<CreateIpGroupRequest>,
-  output: __S(26) as any as S.Schema<CreateIpGroupResult>,
+  input: CreateIpGroupRequest,
+  output: CreateIpGroupResult,
   errors: [
     AccessDeniedException,
     InvalidParameterValuesException,
@@ -2289,8 +3312,8 @@ export const createStandbyWorkspaces: API.OperationMethod<
   CreateStandbyWorkspacesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29) as any as S.Schema<CreateStandbyWorkspacesRequest>,
-  output: __S(34) as any as S.Schema<CreateStandbyWorkspacesResult>,
+  input: CreateStandbyWorkspacesRequest,
+  output: CreateStandbyWorkspacesResult,
   errors: [
     AccessDeniedException,
     InvalidParameterValuesException,
@@ -2317,8 +3340,8 @@ export const createTags: API.OperationMethod<
   CreateTagsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35) as any as S.Schema<CreateTagsRequest>,
-  output: __S(36) as any as S.Schema<CreateTagsResult>,
+  input: CreateTagsRequest,
+  output: CreateTagsResult,
   errors: [
     InvalidParameterValuesException,
     ResourceLimitExceededException,
@@ -2362,8 +3385,8 @@ export const createUpdatedWorkspaceImage: API.OperationMethod<
   CreateUpdatedWorkspaceImageError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37) as any as S.Schema<CreateUpdatedWorkspaceImageRequest>,
-  output: __S(38) as any as S.Schema<CreateUpdatedWorkspaceImageResult>,
+  input: CreateUpdatedWorkspaceImageRequest,
+  output: CreateUpdatedWorkspaceImageResult,
   errors: [
     AccessDeniedException,
     InvalidParameterValuesException,
@@ -2397,8 +3420,8 @@ export const createWorkspaceBundle: API.OperationMethod<
   CreateWorkspaceBundleError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41) as any as S.Schema<CreateWorkspaceBundleRequest>,
-  output: __S(43) as any as S.Schema<CreateWorkspaceBundleResult>,
+  input: CreateWorkspaceBundleRequest,
+  output: CreateWorkspaceBundleResult,
   errors: [
     AccessDeniedException,
     InvalidParameterValuesException,
@@ -2430,8 +3453,8 @@ export const createWorkspaceImage: API.OperationMethod<
   CreateWorkspaceImageError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44) as any as S.Schema<CreateWorkspaceImageRequest>,
-  output: __S(46) as any as S.Schema<CreateWorkspaceImageResult>,
+  input: CreateWorkspaceImageRequest,
+  output: CreateWorkspaceImageResult,
   errors: [
     AccessDeniedException,
     InvalidParameterValuesException,
@@ -2477,8 +3500,8 @@ export const createWorkspaces: API.OperationMethod<
   CreateWorkspacesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(52) as any as S.Schema<CreateWorkspacesRequest>,
-  output: __S(64) as any as S.Schema<CreateWorkspacesResult>,
+  input: CreateWorkspacesRequest,
+  output: CreateWorkspacesResult,
   errors: [InvalidParameterValuesException, ResourceLimitExceededException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2506,8 +3529,8 @@ export const createWorkspacesPool: API.OperationMethod<
   CreateWorkspacesPoolError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(68) as any as S.Schema<CreateWorkspacesPoolRequest>,
-  output: __S(73) as any as S.Schema<CreateWorkspacesPoolResult>,
+  input: CreateWorkspacesPoolRequest,
+  output: CreateWorkspacesPoolResult,
   errors: [
     AccessDeniedException,
     InvalidParameterValuesException,
@@ -2537,8 +3560,8 @@ export const deleteAccountLinkInvitation: API.OperationMethod<
   DeleteAccountLinkInvitationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(74) as any as S.Schema<DeleteAccountLinkInvitationRequest>,
-  output: __S(2) as any as S.Schema<DeleteAccountLinkInvitationResult>,
+  input: DeleteAccountLinkInvitationRequest,
+  output: DeleteAccountLinkInvitationResult,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2571,8 +3594,8 @@ export const deleteClientBranding: API.OperationMethod<
   DeleteClientBrandingError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(75) as any as S.Schema<DeleteClientBrandingRequest>,
-  output: __S(76) as any as S.Schema<DeleteClientBrandingResult>,
+  input: DeleteClientBrandingRequest,
+  output: DeleteClientBrandingResult,
   errors: [AccessDeniedException, InvalidParameterValuesException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2594,8 +3617,8 @@ export const deleteConnectClientAddIn: API.OperationMethod<
   DeleteConnectClientAddInError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(77) as any as S.Schema<DeleteConnectClientAddInRequest>,
-  output: __S(76) as any as S.Schema<DeleteConnectClientAddInResult>,
+  input: DeleteConnectClientAddInRequest,
+  output: DeleteConnectClientAddInResult,
   errors: [AccessDeniedException, InvalidParameterValuesException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2631,8 +3654,8 @@ export const deleteConnectionAlias: API.OperationMethod<
   DeleteConnectionAliasError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(78) as any as S.Schema<DeleteConnectionAliasRequest>,
-  output: __S(76) as any as S.Schema<DeleteConnectionAliasResult>,
+  input: DeleteConnectionAliasRequest,
+  output: DeleteConnectionAliasResult,
   errors: [
     AccessDeniedException,
     InvalidParameterValuesException,
@@ -2663,8 +3686,8 @@ export const deleteIpGroup: API.OperationMethod<
   DeleteIpGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(79) as any as S.Schema<DeleteIpGroupRequest>,
-  output: __S(36) as any as S.Schema<DeleteIpGroupResult>,
+  input: DeleteIpGroupRequest,
+  output: DeleteIpGroupResult,
   errors: [
     AccessDeniedException,
     InvalidParameterValuesException,
@@ -2689,8 +3712,8 @@ export const deleteTags: API.OperationMethod<
   DeleteTagsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(80) as any as S.Schema<DeleteTagsRequest>,
-  output: __S(36) as any as S.Schema<DeleteTagsResult>,
+  input: DeleteTagsRequest,
+  output: DeleteTagsResult,
   errors: [InvalidParameterValuesException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2714,8 +3737,8 @@ export const deleteWorkspaceBundle: API.OperationMethod<
   DeleteWorkspaceBundleError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(81) as any as S.Schema<DeleteWorkspaceBundleRequest>,
-  output: __S(76) as any as S.Schema<DeleteWorkspaceBundleResult>,
+  input: DeleteWorkspaceBundleRequest,
+  output: DeleteWorkspaceBundleResult,
   errors: [
     AccessDeniedException,
     InvalidParameterValuesException,
@@ -2743,8 +3766,8 @@ export const deleteWorkspaceImage: API.OperationMethod<
   DeleteWorkspaceImageError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(82) as any as S.Schema<DeleteWorkspaceImageRequest>,
-  output: __S(76) as any as S.Schema<DeleteWorkspaceImageResult>,
+  input: DeleteWorkspaceImageRequest,
+  output: DeleteWorkspaceImageResult,
   errors: [AccessDeniedException, InvalidResourceStateException, ResourceAssociatedException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2768,8 +3791,8 @@ export const deployWorkspaceApplications: API.OperationMethod<
   DeployWorkspaceApplicationsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(83) as any as S.Schema<DeployWorkspaceApplicationsRequest>,
-  output: __S(86) as any as S.Schema<DeployWorkspaceApplicationsResult>,
+  input: DeployWorkspaceApplicationsRequest,
+  output: DeployWorkspaceApplicationsResult,
   errors: [
     AccessDeniedException,
     IncompatibleApplicationsException,
@@ -2812,8 +3835,8 @@ export const deregisterWorkspaceDirectory: API.OperationMethod<
   DeregisterWorkspaceDirectoryError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(87) as any as S.Schema<DeregisterWorkspaceDirectoryRequest>,
-  output: __S(76) as any as S.Schema<DeregisterWorkspaceDirectoryResult>,
+  input: DeregisterWorkspaceDirectoryRequest,
+  output: DeregisterWorkspaceDirectoryResult,
   errors: [
     AccessDeniedException,
     InvalidParameterValuesException,
@@ -2837,8 +3860,8 @@ export const describeAccount: API.OperationMethod<
   DescribeAccountError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(88) as any as S.Schema<DescribeAccountRequest>,
-  output: __S(89) as any as S.Schema<DescribeAccountResult>,
+  input: DescribeAccountRequest,
+  output: DescribeAccountResult,
   errors: [AccessDeniedException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2856,8 +3879,8 @@ export const describeAccountModifications: API.OperationMethod<
   DescribeAccountModificationsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(90) as any as S.Schema<DescribeAccountModificationsRequest>,
-  output: __S(93) as any as S.Schema<DescribeAccountModificationsResult>,
+  input: DescribeAccountModificationsRequest,
+  output: DescribeAccountModificationsResult,
   errors: [AccessDeniedException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2880,8 +3903,8 @@ export const describeApplicationAssociations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(95) as any as S.Schema<DescribeApplicationAssociationsRequest>,
-  output: __S(98) as any as S.Schema<DescribeApplicationAssociationsResult>,
+  input: DescribeApplicationAssociationsRequest,
+  output: DescribeApplicationAssociationsResult,
   errors: [
     AccessDeniedException,
     InvalidParameterValuesException,
@@ -2914,8 +3937,8 @@ export const describeApplications: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(99) as any as S.Schema<DescribeApplicationsRequest>,
-  output: __S(102) as any as S.Schema<DescribeApplicationsResult>,
+  input: DescribeApplicationsRequest,
+  output: DescribeApplicationsResult,
   errors: [
     AccessDeniedException,
     InvalidParameterValuesException,
@@ -2947,8 +3970,8 @@ export const describeBundleAssociations: API.OperationMethod<
   DescribeBundleAssociationsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(103) as any as S.Schema<DescribeBundleAssociationsRequest>,
-  output: __S(106) as any as S.Schema<DescribeBundleAssociationsResult>,
+  input: DescribeBundleAssociationsRequest,
+  output: DescribeBundleAssociationsResult,
   errors: [
     AccessDeniedException,
     InvalidParameterValuesException,
@@ -2980,8 +4003,8 @@ export const describeClientBranding: API.OperationMethod<
   DescribeClientBrandingError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(107) as any as S.Schema<DescribeClientBrandingRequest>,
-  output: __S(111) as any as S.Schema<DescribeClientBrandingResult>,
+  input: DescribeClientBrandingRequest,
+  output: DescribeClientBrandingResult,
   errors: [AccessDeniedException, InvalidParameterValuesException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3002,8 +4025,8 @@ export const describeClientProperties: API.OperationMethod<
   DescribeClientPropertiesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(112) as any as S.Schema<DescribeClientPropertiesRequest>,
-  output: __S(116) as any as S.Schema<DescribeClientPropertiesResult>,
+  input: DescribeClientPropertiesRequest,
+  output: DescribeClientPropertiesResult,
   errors: [AccessDeniedException, InvalidParameterValuesException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3024,8 +4047,8 @@ export const describeConnectClientAddIns: API.OperationMethod<
   DescribeConnectClientAddInsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(117) as any as S.Schema<DescribeConnectClientAddInsRequest>,
-  output: __S(120) as any as S.Schema<DescribeConnectClientAddInsResult>,
+  input: DescribeConnectClientAddInsRequest,
+  output: DescribeConnectClientAddInsResult,
   errors: [AccessDeniedException, InvalidParameterValuesException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3048,8 +4071,8 @@ export const describeConnectionAliases: API.OperationMethod<
   DescribeConnectionAliasesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(121) as any as S.Schema<DescribeConnectionAliasesRequest>,
-  output: __S(126) as any as S.Schema<DescribeConnectionAliasesResult>,
+  input: DescribeConnectionAliasesRequest,
+  output: DescribeConnectionAliasesResult,
   errors: [AccessDeniedException, InvalidParameterValuesException, OperationNotSupportedException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3074,8 +4097,8 @@ export const describeConnectionAliasPermissions: API.OperationMethod<
   DescribeConnectionAliasPermissionsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(127) as any as S.Schema<DescribeConnectionAliasPermissionsRequest>,
-  output: __S(130) as any as S.Schema<DescribeConnectionAliasPermissionsResult>,
+  input: DescribeConnectionAliasPermissionsRequest,
+  output: DescribeConnectionAliasPermissionsResult,
   errors: [
     AccessDeniedException,
     InvalidParameterValuesException,
@@ -3100,8 +4123,8 @@ export const describeCustomWorkspaceImageImport: API.OperationMethod<
   DescribeCustomWorkspaceImageImportError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(131) as any as S.Schema<DescribeCustomWorkspaceImageImportRequest>,
-  output: __S(135) as any as S.Schema<DescribeCustomWorkspaceImageImportResult>,
+  input: DescribeCustomWorkspaceImageImportRequest,
+  output: DescribeCustomWorkspaceImageImportResult,
   errors: [AccessDeniedException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3123,8 +4146,8 @@ export const describeImageAssociations: API.OperationMethod<
   DescribeImageAssociationsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(136) as any as S.Schema<DescribeImageAssociationsRequest>,
-  output: __S(139) as any as S.Schema<DescribeImageAssociationsResult>,
+  input: DescribeImageAssociationsRequest,
+  output: DescribeImageAssociationsResult,
   errors: [
     AccessDeniedException,
     InvalidParameterValuesException,
@@ -3149,8 +4172,8 @@ export const describeIpGroups: API.OperationMethod<
   DescribeIpGroupsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(140) as any as S.Schema<DescribeIpGroupsRequest>,
-  output: __S(143) as any as S.Schema<DescribeIpGroupsResult>,
+  input: DescribeIpGroupsRequest,
+  output: DescribeIpGroupsResult,
   errors: [AccessDeniedException, InvalidParameterValuesException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3167,8 +4190,8 @@ export const describeTags: API.OperationMethod<
   DescribeTagsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(144) as any as S.Schema<DescribeTagsRequest>,
-  output: __S(145) as any as S.Schema<DescribeTagsResult>,
+  input: DescribeTagsRequest,
+  output: DescribeTagsResult,
   errors: [ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3190,8 +4213,8 @@ export const describeWorkspaceAssociations: API.OperationMethod<
   DescribeWorkspaceAssociationsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(146) as any as S.Schema<DescribeWorkspaceAssociationsRequest>,
-  output: __S(147) as any as S.Schema<DescribeWorkspaceAssociationsResult>,
+  input: DescribeWorkspaceAssociationsRequest,
+  output: DescribeWorkspaceAssociationsResult,
   errors: [
     AccessDeniedException,
     InvalidParameterValuesException,
@@ -3216,8 +4239,8 @@ export const describeWorkspaceBundles: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   WorkspaceBundle
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(148) as any as S.Schema<DescribeWorkspaceBundlesRequest>,
-  output: __S(150) as any as S.Schema<DescribeWorkspaceBundlesResult>,
+  input: DescribeWorkspaceBundlesRequest,
+  output: DescribeWorkspaceBundlesResult,
   errors: [InvalidParameterValuesException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3236,8 +4259,8 @@ export const describeWorkspaceDirectories: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   WorkspaceDirectory
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(153) as any as S.Schema<DescribeWorkspaceDirectoriesRequest>,
-  output: __S(172) as any as S.Schema<DescribeWorkspaceDirectoriesResult>,
+  input: DescribeWorkspaceDirectoriesRequest,
+  output: DescribeWorkspaceDirectoriesResult,
   errors: [InvalidParameterValuesException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3259,8 +4282,8 @@ export const describeWorkspaceImagePermissions: API.OperationMethod<
   DescribeWorkspaceImagePermissionsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(173) as any as S.Schema<DescribeWorkspaceImagePermissionsRequest>,
-  output: __S(176) as any as S.Schema<DescribeWorkspaceImagePermissionsResult>,
+  input: DescribeWorkspaceImagePermissionsRequest,
+  output: DescribeWorkspaceImagePermissionsResult,
   errors: [AccessDeniedException, InvalidParameterValuesException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3278,8 +4301,8 @@ export const describeWorkspaceImages: API.OperationMethod<
   DescribeWorkspaceImagesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(177) as any as S.Schema<DescribeWorkspaceImagesRequest>,
-  output: __S(183) as any as S.Schema<DescribeWorkspaceImagesResult>,
+  input: DescribeWorkspaceImagesRequest,
+  output: DescribeWorkspaceImagesResult,
   errors: [AccessDeniedException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3303,8 +4326,8 @@ export const describeWorkspaces: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Workspace
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(184) as any as S.Schema<DescribeWorkspacesRequest>,
-  output: __S(185) as any as S.Schema<DescribeWorkspacesResult>,
+  input: DescribeWorkspacesRequest,
+  output: DescribeWorkspacesResult,
   errors: [InvalidParameterValuesException, ResourceUnavailableException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3329,8 +4352,8 @@ export const describeWorkspacesConnectionStatus: API.OperationMethod<
   DescribeWorkspacesConnectionStatusError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(186) as any as S.Schema<DescribeWorkspacesConnectionStatusRequest>,
-  output: __S(189) as any as S.Schema<DescribeWorkspacesConnectionStatusResult>,
+  input: DescribeWorkspacesConnectionStatusRequest,
+  output: DescribeWorkspacesConnectionStatusResult,
   errors: [InvalidParameterValuesException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3351,8 +4374,8 @@ export const describeWorkspaceSnapshots: API.OperationMethod<
   DescribeWorkspaceSnapshotsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(190) as any as S.Schema<DescribeWorkspaceSnapshotsRequest>,
-  output: __S(193) as any as S.Schema<DescribeWorkspaceSnapshotsResult>,
+  input: DescribeWorkspaceSnapshotsRequest,
+  output: DescribeWorkspaceSnapshotsResult,
   errors: [AccessDeniedException, InvalidParameterValuesException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3377,8 +4400,8 @@ export const describeWorkspacesPools: API.OperationMethod<
   DescribeWorkspacesPoolsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(196) as any as S.Schema<DescribeWorkspacesPoolsRequest>,
-  output: __S(198) as any as S.Schema<DescribeWorkspacesPoolsResult>,
+  input: DescribeWorkspacesPoolsRequest,
+  output: DescribeWorkspacesPoolsResult,
   errors: [AccessDeniedException, InvalidParameterValuesException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3403,8 +4426,8 @@ export const describeWorkspacesPoolSessions: API.OperationMethod<
   DescribeWorkspacesPoolSessionsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(199) as any as S.Schema<DescribeWorkspacesPoolSessionsRequest>,
-  output: __S(203) as any as S.Schema<DescribeWorkspacesPoolSessionsResult>,
+  input: DescribeWorkspacesPoolSessionsRequest,
+  output: DescribeWorkspacesPoolSessionsResult,
   errors: [AccessDeniedException, InvalidParameterValuesException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3434,8 +4457,8 @@ export const disassociateConnectionAlias: API.OperationMethod<
   DisassociateConnectionAliasError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(204) as any as S.Schema<DisassociateConnectionAliasRequest>,
-  output: __S(76) as any as S.Schema<DisassociateConnectionAliasResult>,
+  input: DisassociateConnectionAliasRequest,
+  output: DisassociateConnectionAliasResult,
   errors: [
     AccessDeniedException,
     InvalidParameterValuesException,
@@ -3464,8 +4487,8 @@ export const disassociateIpGroups: API.OperationMethod<
   DisassociateIpGroupsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(205) as any as S.Schema<DisassociateIpGroupsRequest>,
-  output: __S(76) as any as S.Schema<DisassociateIpGroupsResult>,
+  input: DisassociateIpGroupsRequest,
+  output: DisassociateIpGroupsResult,
   errors: [
     AccessDeniedException,
     InvalidParameterValuesException,
@@ -3494,8 +4517,8 @@ export const disassociateWorkspaceApplication: API.OperationMethod<
   DisassociateWorkspaceApplicationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(206) as any as S.Schema<DisassociateWorkspaceApplicationRequest>,
-  output: __S(11) as any as S.Schema<DisassociateWorkspaceApplicationResult>,
+  input: DisassociateWorkspaceApplicationRequest,
+  output: DisassociateWorkspaceApplicationResult,
   errors: [
     AccessDeniedException,
     InvalidParameterValuesException,
@@ -3523,8 +4546,8 @@ export const getAccountLink: API.OperationMethod<
   GetAccountLinkError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(207) as any as S.Schema<GetAccountLinkRequest>,
-  output: __S(208) as any as S.Schema<GetAccountLinkResult>,
+  input: GetAccountLinkRequest,
+  output: GetAccountLinkResult,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3571,8 +4594,8 @@ export const importClientBranding: API.OperationMethod<
   ImportClientBrandingError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(211) as any as S.Schema<ImportClientBrandingRequest>,
-  output: __S(111) as any as S.Schema<ImportClientBrandingResult>,
+  input: ImportClientBrandingRequest,
+  output: ImportClientBrandingResult,
   errors: [
     AccessDeniedException,
     InvalidParameterValuesException,
@@ -3605,8 +4628,8 @@ export const importCustomWorkspaceImage: API.OperationMethod<
   ImportCustomWorkspaceImageError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(212) as any as S.Schema<ImportCustomWorkspaceImageRequest>,
-  output: __S(213) as any as S.Schema<ImportCustomWorkspaceImageResult>,
+  input: ImportCustomWorkspaceImageRequest,
+  output: ImportCustomWorkspaceImageResult,
   errors: [
     AccessDeniedException,
     InvalidParameterValuesException,
@@ -3641,8 +4664,8 @@ export const importWorkspaceImage: API.OperationMethod<
   ImportWorkspaceImageError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(214) as any as S.Schema<ImportWorkspaceImageRequest>,
-  output: __S(38) as any as S.Schema<ImportWorkspaceImageResult>,
+  input: ImportWorkspaceImageRequest,
+  output: ImportWorkspaceImageResult,
   errors: [
     AccessDeniedException,
     InvalidParameterValuesException,
@@ -3671,8 +4694,8 @@ export const listAccountLinks: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   AccountLink
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(215) as any as S.Schema<ListAccountLinksRequest>,
-  output: __S(217) as any as S.Schema<ListAccountLinksResult>,
+  input: ListAccountLinksRequest,
+  output: ListAccountLinksResult,
   errors: [AccessDeniedException, InternalServerException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3707,8 +4730,8 @@ export const listAvailableManagementCidrRanges: API.OperationMethod<
   ListAvailableManagementCidrRangesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(218) as any as S.Schema<ListAvailableManagementCidrRangesRequest>,
-  output: __S(219) as any as S.Schema<ListAvailableManagementCidrRangesResult>,
+  input: ListAvailableManagementCidrRangesRequest,
+  output: ListAvailableManagementCidrRangesResult,
   errors: [AccessDeniedException, InvalidParameterValuesException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3747,8 +4770,8 @@ export const migrateWorkspace: API.OperationMethod<
   MigrateWorkspaceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(220) as any as S.Schema<MigrateWorkspaceRequest>,
-  output: __S(221) as any as S.Schema<MigrateWorkspaceResult>,
+  input: MigrateWorkspaceRequest,
+  output: MigrateWorkspaceResult,
   errors: [
     AccessDeniedException,
     InvalidParameterValuesException,
@@ -3779,8 +4802,8 @@ export const modifyAccount: API.OperationMethod<
   ModifyAccountError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(222) as any as S.Schema<ModifyAccountRequest>,
-  output: __S(223) as any as S.Schema<ModifyAccountResult>,
+  input: ModifyAccountRequest,
+  output: ModifyAccountResult,
   errors: [
     AccessDeniedException,
     InvalidParameterValuesException,
@@ -3809,8 +4832,8 @@ export const modifyCertificateBasedAuthProperties: API.OperationMethod<
   ModifyCertificateBasedAuthPropertiesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(224) as any as S.Schema<ModifyCertificateBasedAuthPropertiesRequest>,
-  output: __S(76) as any as S.Schema<ModifyCertificateBasedAuthPropertiesResult>,
+  input: ModifyCertificateBasedAuthPropertiesRequest,
+  output: ModifyCertificateBasedAuthPropertiesResult,
   errors: [
     AccessDeniedException,
     InvalidParameterValuesException,
@@ -3837,8 +4860,8 @@ export const modifyClientProperties: API.OperationMethod<
   ModifyClientPropertiesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(225) as any as S.Schema<ModifyClientPropertiesRequest>,
-  output: __S(76) as any as S.Schema<ModifyClientPropertiesResult>,
+  input: ModifyClientPropertiesRequest,
+  output: ModifyClientPropertiesResult,
   errors: [
     AccessDeniedException,
     InvalidParameterValuesException,
@@ -3865,8 +4888,8 @@ export const modifyEndpointEncryptionMode: API.OperationMethod<
   ModifyEndpointEncryptionModeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(226) as any as S.Schema<ModifyEndpointEncryptionModeRequest>,
-  output: __S(76) as any as S.Schema<ModifyEndpointEncryptionModeResponse>,
+  input: ModifyEndpointEncryptionModeRequest,
+  output: ModifyEndpointEncryptionModeResponse,
   errors: [AccessDeniedException, OperationNotSupportedException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3890,8 +4913,8 @@ export const modifySamlProperties: API.OperationMethod<
   ModifySamlPropertiesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(227) as any as S.Schema<ModifySamlPropertiesRequest>,
-  output: __S(76) as any as S.Schema<ModifySamlPropertiesResult>,
+  input: ModifySamlPropertiesRequest,
+  output: ModifySamlPropertiesResult,
   errors: [
     AccessDeniedException,
     InvalidParameterValuesException,
@@ -3919,8 +4942,8 @@ export const modifySelfservicePermissions: API.OperationMethod<
   ModifySelfservicePermissionsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(228) as any as S.Schema<ModifySelfservicePermissionsRequest>,
-  output: __S(76) as any as S.Schema<ModifySelfservicePermissionsResult>,
+  input: ModifySelfservicePermissionsRequest,
+  output: ModifySelfservicePermissionsResult,
   errors: [
     AccessDeniedException,
     InvalidParameterValuesException,
@@ -3947,8 +4970,8 @@ export const modifyStreamingProperties: API.OperationMethod<
   ModifyStreamingPropertiesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(229) as any as S.Schema<ModifyStreamingPropertiesRequest>,
-  output: __S(76) as any as S.Schema<ModifyStreamingPropertiesResult>,
+  input: ModifyStreamingPropertiesRequest,
+  output: ModifyStreamingPropertiesResult,
   errors: [
     AccessDeniedException,
     InvalidParameterValuesException,
@@ -3978,8 +5001,8 @@ export const modifyWorkspaceAccessProperties: API.OperationMethod<
   ModifyWorkspaceAccessPropertiesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(230) as any as S.Schema<ModifyWorkspaceAccessPropertiesRequest>,
-  output: __S(76) as any as S.Schema<ModifyWorkspaceAccessPropertiesResult>,
+  input: ModifyWorkspaceAccessPropertiesRequest,
+  output: ModifyWorkspaceAccessPropertiesResult,
   errors: [
     AccessDeniedException,
     InvalidParameterCombinationException,
@@ -4007,8 +5030,8 @@ export const modifyWorkspaceCreationProperties: API.OperationMethod<
   ModifyWorkspaceCreationPropertiesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(231) as any as S.Schema<ModifyWorkspaceCreationPropertiesRequest>,
-  output: __S(76) as any as S.Schema<ModifyWorkspaceCreationPropertiesResult>,
+  input: ModifyWorkspaceCreationPropertiesRequest,
+  output: ModifyWorkspaceCreationPropertiesResult,
   errors: [
     AccessDeniedException,
     InvalidParameterValuesException,
@@ -4044,8 +5067,8 @@ export const modifyWorkspaceProperties: API.OperationMethod<
   ModifyWorkspacePropertiesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(232) as any as S.Schema<ModifyWorkspacePropertiesRequest>,
-  output: __S(76) as any as S.Schema<ModifyWorkspacePropertiesResult>,
+  input: ModifyWorkspacePropertiesRequest,
+  output: ModifyWorkspacePropertiesResult,
   errors: [
     AccessDeniedException,
     InvalidParameterValuesException,
@@ -4081,8 +5104,8 @@ export const modifyWorkspaceState: API.OperationMethod<
   ModifyWorkspaceStateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(233) as any as S.Schema<ModifyWorkspaceStateRequest>,
-  output: __S(76) as any as S.Schema<ModifyWorkspaceStateResult>,
+  input: ModifyWorkspaceStateRequest,
+  output: ModifyWorkspaceStateResult,
   errors: [
     InvalidParameterValuesException,
     InvalidResourceStateException,
@@ -4110,8 +5133,8 @@ export const rebootWorkspaces: API.OperationMethod<
   RebootWorkspacesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(236) as any as S.Schema<RebootWorkspacesRequest>,
-  output: __S(239) as any as S.Schema<RebootWorkspacesResult>,
+  input: RebootWorkspacesRequest,
+  output: RebootWorkspacesResult,
   errors: [OperationNotSupportedException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4139,8 +5162,8 @@ export const rebuildWorkspaces: API.OperationMethod<
   RebuildWorkspacesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(240) as any as S.Schema<RebuildWorkspacesRequest>,
-  output: __S(239) as any as S.Schema<RebuildWorkspacesResult>,
+  input: RebuildWorkspacesRequest,
+  output: RebuildWorkspacesResult,
   errors: [OperationNotSupportedException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4171,8 +5194,8 @@ export const registerWorkspaceDirectory: API.OperationMethod<
   RegisterWorkspaceDirectoryError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(241) as any as S.Schema<RegisterWorkspaceDirectoryRequest>,
-  output: __S(242) as any as S.Schema<RegisterWorkspaceDirectoryResult>,
+  input: RegisterWorkspaceDirectoryRequest,
+  output: RegisterWorkspaceDirectoryResult,
   errors: [
     AccessDeniedException,
     InvalidParameterValuesException,
@@ -4205,8 +5228,8 @@ export const rejectAccountLinkInvitation: API.OperationMethod<
   RejectAccountLinkInvitationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(243) as any as S.Schema<RejectAccountLinkInvitationRequest>,
-  output: __S(2) as any as S.Schema<RejectAccountLinkInvitationResult>,
+  input: RejectAccountLinkInvitationRequest,
+  output: RejectAccountLinkInvitationResult,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -4244,8 +5267,8 @@ export const restoreWorkspace: API.OperationMethod<
   RestoreWorkspaceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(244) as any as S.Schema<RestoreWorkspaceRequest>,
-  output: __S(15) as any as S.Schema<RestoreWorkspaceResult>,
+  input: RestoreWorkspaceRequest,
+  output: RestoreWorkspaceResult,
   errors: [
     AccessDeniedException,
     InvalidParameterValuesException,
@@ -4272,8 +5295,8 @@ export const revokeIpRules: API.OperationMethod<
   RevokeIpRulesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(245) as any as S.Schema<RevokeIpRulesRequest>,
-  output: __S(36) as any as S.Schema<RevokeIpRulesResult>,
+  input: RevokeIpRulesRequest,
+  output: RevokeIpRulesResult,
   errors: [
     AccessDeniedException,
     InvalidParameterValuesException,
@@ -4298,8 +5321,8 @@ export const startWorkspaces: API.OperationMethod<
   StartWorkspacesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(248) as any as S.Schema<StartWorkspacesRequest>,
-  output: __S(239) as any as S.Schema<StartWorkspacesResult>,
+  input: StartWorkspacesRequest,
+  output: StartWorkspacesResult,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4331,8 +5354,8 @@ export const startWorkspacesPool: API.OperationMethod<
   StartWorkspacesPoolError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(249) as any as S.Schema<StartWorkspacesPoolRequest>,
-  output: __S(76) as any as S.Schema<StartWorkspacesPoolResult>,
+  input: StartWorkspacesPoolRequest,
+  output: StartWorkspacesPoolResult,
   errors: [
     AccessDeniedException,
     InvalidParameterValuesException,
@@ -4361,8 +5384,8 @@ export const stopWorkspaces: API.OperationMethod<
   StopWorkspacesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(250) as any as S.Schema<StopWorkspacesRequest>,
-  output: __S(239) as any as S.Schema<StopWorkspacesResult>,
+  input: StopWorkspacesRequest,
+  output: StopWorkspacesResult,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4392,8 +5415,8 @@ export const stopWorkspacesPool: API.OperationMethod<
   StopWorkspacesPoolError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(251) as any as S.Schema<StopWorkspacesPoolRequest>,
-  output: __S(7) as any as S.Schema<StopWorkspacesPoolResult>,
+  input: StopWorkspacesPoolRequest,
+  output: StopWorkspacesPoolResult,
   errors: [
     AccessDeniedException,
     InvalidParameterValuesException,
@@ -4441,8 +5464,8 @@ export const terminateWorkspaces: API.OperationMethod<
   TerminateWorkspacesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(252) as any as S.Schema<TerminateWorkspacesRequest>,
-  output: __S(253) as any as S.Schema<TerminateWorkspacesResult>,
+  input: TerminateWorkspacesRequest,
+  output: TerminateWorkspacesResult,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4469,8 +5492,8 @@ export const terminateWorkspacesPool: API.OperationMethod<
   TerminateWorkspacesPoolError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(254) as any as S.Schema<TerminateWorkspacesPoolRequest>,
-  output: __S(76) as any as S.Schema<TerminateWorkspacesPoolResult>,
+  input: TerminateWorkspacesPoolRequest,
+  output: TerminateWorkspacesPoolResult,
   errors: [
     AccessDeniedException,
     InvalidParameterValuesException,
@@ -4503,8 +5526,8 @@ export const terminateWorkspacesPoolSession: API.OperationMethod<
   TerminateWorkspacesPoolSessionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(255) as any as S.Schema<TerminateWorkspacesPoolSessionRequest>,
-  output: __S(76) as any as S.Schema<TerminateWorkspacesPoolSessionResult>,
+  input: TerminateWorkspacesPoolSessionRequest,
+  output: TerminateWorkspacesPoolSessionResult,
   errors: [
     AccessDeniedException,
     InvalidParameterValuesException,
@@ -4532,8 +5555,8 @@ export const updateConnectClientAddIn: API.OperationMethod<
   UpdateConnectClientAddInError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(256) as any as S.Schema<UpdateConnectClientAddInRequest>,
-  output: __S(76) as any as S.Schema<UpdateConnectClientAddInResult>,
+  input: UpdateConnectClientAddInRequest,
+  output: UpdateConnectClientAddInResult,
   errors: [AccessDeniedException, InvalidParameterValuesException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4573,8 +5596,8 @@ export const updateConnectionAliasPermission: API.OperationMethod<
   UpdateConnectionAliasPermissionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(257) as any as S.Schema<UpdateConnectionAliasPermissionRequest>,
-  output: __S(76) as any as S.Schema<UpdateConnectionAliasPermissionResult>,
+  input: UpdateConnectionAliasPermissionRequest,
+  output: UpdateConnectionAliasPermissionResult,
   errors: [
     AccessDeniedException,
     InvalidParameterValuesException,
@@ -4606,8 +5629,8 @@ export const updateRulesOfIpGroup: API.OperationMethod<
   UpdateRulesOfIpGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(258) as any as S.Schema<UpdateRulesOfIpGroupRequest>,
-  output: __S(76) as any as S.Schema<UpdateRulesOfIpGroupResult>,
+  input: UpdateRulesOfIpGroupRequest,
+  output: UpdateRulesOfIpGroupResult,
   errors: [
     AccessDeniedException,
     InvalidParameterValuesException,
@@ -4642,8 +5665,8 @@ export const updateWorkspaceBundle: API.OperationMethod<
   UpdateWorkspaceBundleError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(259) as any as S.Schema<UpdateWorkspaceBundleRequest>,
-  output: __S(76) as any as S.Schema<UpdateWorkspaceBundleResult>,
+  input: UpdateWorkspaceBundleRequest,
+  output: UpdateWorkspaceBundleResult,
   errors: [
     AccessDeniedException,
     InvalidParameterValuesException,
@@ -4692,8 +5715,8 @@ export const updateWorkspaceImagePermission: API.OperationMethod<
   UpdateWorkspaceImagePermissionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(260) as any as S.Schema<UpdateWorkspaceImagePermissionRequest>,
-  output: __S(76) as any as S.Schema<UpdateWorkspaceImagePermissionResult>,
+  input: UpdateWorkspaceImagePermissionRequest,
+  output: UpdateWorkspaceImagePermissionResult,
   errors: [
     AccessDeniedException,
     InvalidParameterValuesException,
@@ -4728,8 +5751,8 @@ export const updateWorkspacesPool: API.OperationMethod<
   UpdateWorkspacesPoolError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(261) as any as S.Schema<UpdateWorkspacesPoolRequest>,
-  output: __S(73) as any as S.Schema<UpdateWorkspacesPoolResult>,
+  input: UpdateWorkspacesPoolRequest,
+  output: UpdateWorkspacesPoolResult,
   errors: [
     AccessDeniedException,
     InvalidParameterValuesException,
@@ -4759,13 +5782,13 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           AccountLinkId: S.optional(S.String),
-          AccountLinkStatus: S.optional(S.String),
+          AccountLinkStatus: S.optional(AccountLinkStatusEnum),
           SourceAccountId: S.optional(S.String),
           TargetAccountId: S.optional(S.String),
         }),
       ).annotate({ identifier: "AccountLink" });
     case 2:
-      return S.suspend(() => S.Struct({ AccountLink: S.optional(__S(1)) }).pipe(ns)).annotate({
+      return S.suspend(() => S.Struct({ AccountLink: S.optional(AccountLink) }).pipe(ns)).annotate({
         identifier: "AcceptAccountLinkInvitationResult",
       });
     case 3:
@@ -4786,7 +5809,7 @@ function __c0(j: number): any {
       return S.Array(S.String);
     case 6:
       return S.suspend(() =>
-        S.Struct({ DirectoryId: S.String, GroupIds: __S(5) }).pipe(
+        S.Struct({ DirectoryId: S.String, GroupIds: IpGroupIdList }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "AssociateIpGroupsRequest" });
@@ -4809,7 +5832,7 @@ function __c1(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          ErrorCode: S.optional(S.String),
+          ErrorCode: S.optional(AssociationErrorCode),
           ErrorMessage: S.optional(S.String),
         }),
       ).annotate({ identifier: "AssociationStateReason" });
@@ -4817,18 +5840,20 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           AssociatedResourceId: S.optional(S.String),
-          AssociatedResourceType: S.optional(S.String),
+          AssociatedResourceType: S.optional(WorkSpaceAssociatedResourceType),
           Created: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           LastUpdatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          State: S.optional(S.String),
-          StateReason: S.optional(__S(9)),
+          State: S.optional(AssociationState),
+          StateReason: S.optional(AssociationStateReason),
           WorkspaceId: S.optional(S.String),
         }),
       ).annotate({
         identifier: "WorkspaceResourceAssociation",
       });
     case 3:
-      return S.suspend(() => S.Struct({ Association: S.optional(__S(10)) }).pipe(ns)).annotate({
+      return S.suspend(() =>
+        S.Struct({ Association: S.optional(WorkspaceResourceAssociation) }).pipe(ns),
+      ).annotate({
         identifier: "AssociateWorkspaceApplicationResult",
       });
     case 4:
@@ -4836,10 +5861,10 @@ function __c1(j: number): any {
         S.Struct({ ipRule: S.optional(S.String), ruleDesc: S.optional(S.String) }),
       ).annotate({ identifier: "IpRuleItem" });
     case 5:
-      return S.Array(__S(12));
+      return S.Array(IpRuleItem);
     case 6:
       return S.suspend(() =>
-        S.Struct({ GroupId: S.String, UserRules: __S(13) }).pipe(
+        S.Struct({ GroupId: S.String, UserRules: IpRuleList }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "AuthorizeIpRulesRequest" });
@@ -4856,7 +5881,7 @@ function __c2(j: number): any {
         identifier: "Tag",
       });
     case 1:
-      return S.Array(__S(16));
+      return S.Array(Tag);
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -4864,7 +5889,7 @@ function __c2(j: number): any {
           Description: S.optional(S.String),
           SourceImageId: S.String,
           SourceRegion: S.String,
-          Tags: S.optional(__S(17)),
+          Tags: S.optional(TagList),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "CopyWorkspaceImageRequest",
@@ -4895,7 +5920,7 @@ function __c2(j: number): any {
       });
     case 7:
       return S.suspend(() =>
-        S.Struct({ ConnectionString: S.String, Tags: S.optional(__S(17)) }).pipe(
+        S.Struct({ ConnectionString: S.String, Tags: S.optional(TagList) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
@@ -4914,8 +5939,8 @@ function __c3(j: number): any {
         S.Struct({
           GroupName: S.String,
           GroupDesc: S.optional(S.String),
-          UserRules: S.optional(__S(13)),
-          Tags: S.optional(__S(17)),
+          UserRules: S.optional(IpRuleList),
+          Tags: S.optional(TagList),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateIpGroupRequest" });
     case 2:
@@ -4928,15 +5953,15 @@ function __c3(j: number): any {
           PrimaryWorkspaceId: S.String,
           VolumeEncryptionKey: S.optional(S.String),
           DirectoryId: S.String,
-          Tags: S.optional(__S(17)),
-          DataReplication: S.optional(S.String),
+          Tags: S.optional(TagList),
+          DataReplication: S.optional(DataReplication),
         }),
       ).annotate({ identifier: "StandbyWorkspace" });
     case 4:
-      return S.Array(__S(27));
+      return S.Array(StandbyWorkspace);
     case 5:
       return S.suspend(() =>
-        S.Struct({ PrimaryRegion: S.String, StandbyWorkspaces: __S(28) }).pipe(
+        S.Struct({ PrimaryRegion: S.String, StandbyWorkspaces: StandbyWorkspacesList }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
@@ -4945,7 +5970,7 @@ function __c3(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          StandbyWorkspaceRequest: S.optional(__S(27)),
+          StandbyWorkspaceRequest: S.optional(StandbyWorkspace),
           ErrorCode: S.optional(S.String),
           ErrorMessage: S.optional(S.String),
         }),
@@ -4953,7 +5978,7 @@ function __c3(j: number): any {
         identifier: "FailedCreateStandbyWorkspacesRequest",
       });
     case 7:
-      return S.Array(__S(30));
+      return S.Array(FailedCreateStandbyWorkspacesRequest);
   }
 }
 function __c4(j: number): any {
@@ -4963,26 +5988,26 @@ function __c4(j: number): any {
         S.Struct({
           UserName: S.optional(S.String),
           DirectoryId: S.optional(S.String),
-          State: S.optional(S.String),
+          State: S.optional(WorkspaceState),
           WorkspaceId: S.optional(S.String),
         }),
       ).annotate({
         identifier: "PendingCreateStandbyWorkspacesRequest",
       });
     case 1:
-      return S.Array(__S(32));
+      return S.Array(PendingCreateStandbyWorkspacesRequest);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          FailedStandbyRequests: S.optional(__S(31)),
-          PendingStandbyRequests: S.optional(__S(33)),
+          FailedStandbyRequests: S.optional(FailedCreateStandbyWorkspacesRequestList),
+          PendingStandbyRequests: S.optional(PendingCreateStandbyWorkspacesRequestList),
         }).pipe(ns),
       ).annotate({
         identifier: "CreateStandbyWorkspacesResult",
       });
     case 3:
       return S.suspend(() =>
-        S.Struct({ ResourceId: S.String, Tags: __S(17) }).pipe(
+        S.Struct({ ResourceId: S.String, Tags: TagList }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "CreateTagsRequest" });
@@ -4996,7 +6021,7 @@ function __c4(j: number): any {
           Name: S.String,
           Description: S.String,
           SourceImageId: S.String,
-          Tags: S.optional(__S(17)),
+          Tags: S.optional(TagList),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "CreateUpdatedWorkspaceImageRequest",
@@ -5006,7 +6031,7 @@ function __c4(j: number): any {
         identifier: "CreateUpdatedWorkspaceImageResult",
       });
     case 7:
-      return S.suspend(() => S.Struct({ Name: S.optional(S.String) })).annotate({
+      return S.suspend(() => S.Struct({ Name: S.optional(Compute) })).annotate({
         identifier: "ComputeType",
       });
   }
@@ -5023,10 +6048,10 @@ function __c5(j: number): any {
           BundleName: S.String,
           BundleDescription: S.String,
           ImageId: S.String,
-          ComputeType: __S(39),
-          UserStorage: __S(40),
-          RootStorage: S.optional(__S(40)),
-          Tags: S.optional(__S(17)),
+          ComputeType: ComputeType,
+          UserStorage: UserStorage,
+          RootStorage: S.optional(RootStorage),
+          Tags: S.optional(TagList),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "CreateWorkspaceBundleRequest",
@@ -5039,17 +6064,19 @@ function __c5(j: number): any {
           Owner: S.optional(S.String),
           Description: S.optional(S.String),
           ImageId: S.optional(S.String),
-          RootStorage: S.optional(__S(40)),
-          UserStorage: S.optional(__S(40)),
-          ComputeType: S.optional(__S(39)),
+          RootStorage: S.optional(RootStorage),
+          UserStorage: S.optional(UserStorage),
+          ComputeType: S.optional(ComputeType),
           LastUpdatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          State: S.optional(S.String),
-          BundleType: S.optional(S.String),
+          State: S.optional(WorkspaceBundleState),
+          BundleType: S.optional(BundleType),
         }),
       ).annotate({ identifier: "WorkspaceBundle" });
     case 3:
-      return S.suspend(() => S.Struct({ WorkspaceBundle: S.optional(__S(42)) }).pipe(ns)).annotate({
+      return S.suspend(() =>
+        S.Struct({ WorkspaceBundle: S.optional(WorkspaceBundle) }).pipe(ns),
+      ).annotate({
         identifier: "CreateWorkspaceBundleResult",
       });
     case 4:
@@ -5058,13 +6085,13 @@ function __c5(j: number): any {
           Name: S.String,
           Description: S.String,
           WorkspaceId: S.String,
-          Tags: S.optional(__S(17)),
+          Tags: S.optional(TagList),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "CreateWorkspaceImageRequest",
       });
     case 5:
-      return S.suspend(() => S.Struct({ Type: S.optional(S.String) })).annotate({
+      return S.suspend(() => S.Struct({ Type: S.optional(OperatingSystemType) })).annotate({
         identifier: "OperatingSystem",
       });
     case 6:
@@ -5073,9 +6100,9 @@ function __c5(j: number): any {
           ImageId: S.optional(S.String),
           Name: S.optional(S.String),
           Description: S.optional(S.String),
-          OperatingSystem: S.optional(__S(45)),
-          State: S.optional(S.String),
-          RequiredTenancy: S.optional(S.String),
+          OperatingSystem: S.optional(OperatingSystem),
+          State: S.optional(WorkspaceImageState),
+          RequiredTenancy: S.optional(WorkspaceImageRequiredTenancy),
           Created: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           OwnerAccountId: S.optional(S.String),
         }).pipe(ns),
@@ -5083,7 +6110,7 @@ function __c5(j: number): any {
         identifier: "CreateWorkspaceImageResult",
       });
     case 7:
-      return S.Array(S.String);
+      return S.Array(Protocol);
   }
 }
 function __c6(j: number): any {
@@ -5091,8 +6118,8 @@ function __c6(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          Mode: S.String,
-          PreferredProtocol: S.optional(S.String),
+          Mode: AGAModeForWorkSpaceEnum,
+          PreferredProtocol: S.optional(AGAPreferredProtocolForWorkSpace),
         }),
       ).annotate({
         identifier: "GlobalAcceleratorForWorkSpace",
@@ -5100,14 +6127,14 @@ function __c6(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          RunningMode: S.optional(S.String),
+          RunningMode: S.optional(RunningMode),
           RunningModeAutoStopTimeoutInMinutes: S.optional(S.Number),
           RootVolumeSizeGib: S.optional(S.Number),
           UserVolumeSizeGib: S.optional(S.Number),
-          ComputeTypeName: S.optional(S.String),
-          Protocols: S.optional(__S(47)),
-          OperatingSystemName: S.optional(S.String),
-          GlobalAccelerator: S.optional(__S(48)),
+          ComputeTypeName: S.optional(Compute),
+          Protocols: S.optional(ProtocolList),
+          OperatingSystemName: S.optional(OperatingSystemName),
+          GlobalAccelerator: S.optional(GlobalAcceleratorForWorkSpace),
           NestedVirtualizationEnabled: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "WorkspaceProperties" });
@@ -5120,24 +6147,24 @@ function __c6(j: number): any {
           VolumeEncryptionKey: S.optional(S.String),
           UserVolumeEncryptionEnabled: S.optional(S.Boolean),
           RootVolumeEncryptionEnabled: S.optional(S.Boolean),
-          WorkspaceProperties: S.optional(__S(49)),
-          Tags: S.optional(__S(17)),
+          WorkspaceProperties: S.optional(WorkspaceProperties),
+          Tags: S.optional(TagList),
           WorkspaceName: S.optional(S.String),
           Ipv6Address: S.optional(S.String),
         }),
       ).annotate({ identifier: "WorkspaceRequest" });
     case 3:
-      return S.Array(__S(50));
+      return S.Array(WorkspaceRequest);
     case 4:
       return S.suspend(() =>
-        S.Struct({ Workspaces: __S(51) }).pipe(
+        S.Struct({ Workspaces: WorkspaceRequestList }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "CreateWorkspacesRequest" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          WorkspaceRequest: S.optional(__S(50)),
+          WorkspaceRequest: S.optional(WorkspaceRequest),
           ErrorCode: S.optional(S.String),
           ErrorMessage: S.optional(S.String),
         }),
@@ -5145,12 +6172,12 @@ function __c6(j: number): any {
         identifier: "FailedCreateWorkspaceRequest",
       });
     case 6:
-      return S.Array(__S(53));
+      return S.Array(FailedCreateWorkspaceRequest);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          Resource: S.optional(S.String),
-          State: S.optional(S.String),
+          Resource: S.optional(ModificationResourceEnum),
+          State: S.optional(ModificationStateEnum),
         }),
       ).annotate({ identifier: "ModificationState" });
   }
@@ -5158,24 +6185,24 @@ function __c6(j: number): any {
 function __c7(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(55));
+      return S.Array(ModificationState);
     case 1:
       return S.suspend(() =>
         S.Struct({
           WorkspaceId: S.optional(S.String),
           Region: S.optional(S.String),
-          State: S.optional(S.String),
-          Type: S.optional(S.String),
+          State: S.optional(WorkspaceState),
+          Type: S.optional(StandbyWorkspaceRelationshipType),
         }),
       ).annotate({
         identifier: "RelatedWorkspaceProperties",
       });
     case 2:
-      return S.Array(__S(57));
+      return S.Array(RelatedWorkspaceProperties);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          DataReplication: S.optional(S.String),
+          DataReplication: S.optional(DataReplication),
           RecoverySnapshotTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "DataReplicationSettings" });
@@ -5183,14 +6210,14 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           StandbyWorkspaceId: S.optional(S.String),
-          DataReplication: S.optional(S.String),
+          DataReplication: S.optional(DataReplication),
           RecoverySnapshotTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({
         identifier: "StandbyWorkspacesProperties",
       });
     case 5:
-      return S.Array(__S(60));
+      return S.Array(StandbyWorkspacesProperties);
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -5199,7 +6226,7 @@ function __c7(j: number): any {
           UserName: S.optional(S.String),
           IpAddress: S.optional(S.String),
           Ipv6Address: S.optional(S.String),
-          State: S.optional(S.String),
+          State: S.optional(WorkspaceState),
           BundleId: S.optional(S.String),
           SubnetId: S.optional(S.String),
           ErrorMessage: S.optional(S.String),
@@ -5209,15 +6236,15 @@ function __c7(j: number): any {
           UserVolumeEncryptionEnabled: S.optional(S.Boolean),
           RootVolumeEncryptionEnabled: S.optional(S.Boolean),
           WorkspaceName: S.optional(S.String),
-          WorkspaceProperties: S.optional(__S(49)),
-          ModificationStates: S.optional(__S(56)),
-          RelatedWorkspaces: S.optional(__S(58)),
-          DataReplicationSettings: S.optional(__S(59)),
-          StandbyWorkspacesProperties: S.optional(__S(61)),
+          WorkspaceProperties: S.optional(WorkspaceProperties),
+          ModificationStates: S.optional(ModificationStateList),
+          RelatedWorkspaces: S.optional(RelatedWorkspaces),
+          DataReplicationSettings: S.optional(DataReplicationSettings),
+          StandbyWorkspacesProperties: S.optional(StandbyWorkspacesPropertiesList),
         }),
       ).annotate({ identifier: "Workspace" });
     case 7:
-      return S.Array(__S(62));
+      return S.Array(Workspace);
   }
 }
 function __c8(j: number): any {
@@ -5225,8 +6252,8 @@ function __c8(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          FailedRequests: S.optional(__S(54)),
-          PendingRequests: S.optional(__S(63)),
+          FailedRequests: S.optional(FailedCreateWorkspaceRequests),
+          PendingRequests: S.optional(WorkspaceList),
         }).pipe(ns),
       ).annotate({ identifier: "CreateWorkspacesResult" });
     case 1:
@@ -5235,7 +6262,7 @@ function __c8(j: number): any {
       });
     case 2:
       return S.suspend(() =>
-        S.Struct({ Status: S.String, SettingsGroup: S.optional(S.String) }),
+        S.Struct({ Status: ApplicationSettingsStatusEnum, SettingsGroup: S.optional(S.String) }),
       ).annotate({
         identifier: "ApplicationSettingsRequest",
       });
@@ -5254,11 +6281,11 @@ function __c8(j: number): any {
           Description: S.String,
           BundleId: S.String,
           DirectoryId: S.String,
-          Capacity: __S(65),
-          Tags: S.optional(__S(17)),
-          ApplicationSettings: S.optional(__S(66)),
-          TimeoutSettings: S.optional(__S(67)),
-          RunningMode: S.optional(S.String),
+          Capacity: Capacity,
+          Tags: S.optional(TagList),
+          ApplicationSettings: S.optional(ApplicationSettingsRequest),
+          TimeoutSettings: S.optional(TimeoutSettings),
+          RunningMode: S.optional(PoolsRunningMode),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "CreateWorkspacesPoolRequest",
@@ -5273,11 +6300,11 @@ function __c8(j: number): any {
         }),
       ).annotate({ identifier: "CapacityStatus" });
     case 6:
-      return S.Array(__S(9));
+      return S.Array(WorkspacesPoolError);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          Status: S.String,
+          Status: ApplicationSettingsStatusEnum,
           SettingsGroup: S.optional(S.String),
           S3BucketName: S.optional(S.String),
         }),
@@ -5293,21 +6320,23 @@ function __c9(j: number): any {
         S.Struct({
           PoolId: S.String,
           PoolArn: S.String,
-          CapacityStatus: __S(69),
+          CapacityStatus: CapacityStatus,
           PoolName: S.String,
           Description: S.optional(S.String),
-          State: S.String,
+          State: WorkspacesPoolState,
           CreatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           BundleId: S.String,
           DirectoryId: S.String,
-          Errors: S.optional(__S(70)),
-          ApplicationSettings: S.optional(__S(71)),
-          TimeoutSettings: S.optional(__S(67)),
-          RunningMode: S.String,
+          Errors: S.optional(WorkspacesPoolErrors),
+          ApplicationSettings: S.optional(ApplicationSettingsResponse),
+          TimeoutSettings: S.optional(TimeoutSettings),
+          RunningMode: PoolsRunningMode,
         }),
       ).annotate({ identifier: "WorkspacesPool" });
     case 1:
-      return S.suspend(() => S.Struct({ WorkspacesPool: S.optional(__S(72)) }).pipe(ns)).annotate({
+      return S.suspend(() =>
+        S.Struct({ WorkspacesPool: S.optional(WorkspacesPool) }).pipe(ns),
+      ).annotate({
         identifier: "CreateWorkspacesPoolResult",
       });
     case 2:
@@ -5320,7 +6349,7 @@ function __c9(j: number): any {
       });
     case 3:
       return S.suspend(() =>
-        S.Struct({ ResourceId: S.String, Platforms: __S(47) }).pipe(
+        S.Struct({ ResourceId: S.String, Platforms: ClientDeviceTypeList }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
@@ -5358,7 +6387,7 @@ function __c10(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ ResourceId: S.String, TagKeys: __S(5) }).pipe(
+        S.Struct({ ResourceId: S.String, TagKeys: TagKeyList }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "DeleteTagsRequest" });
@@ -5387,13 +6416,17 @@ function __c10(j: number): any {
         identifier: "DeployWorkspaceApplicationsRequest",
       });
     case 4:
-      return S.Array(__S(10));
+      return S.Array(WorkspaceResourceAssociation);
     case 5:
-      return S.suspend(() => S.Struct({ Associations: S.optional(__S(84)) })).annotate({
+      return S.suspend(() =>
+        S.Struct({ Associations: S.optional(WorkspaceResourceAssociationList) }),
+      ).annotate({
         identifier: "WorkSpaceApplicationDeployment",
       });
     case 6:
-      return S.suspend(() => S.Struct({ Deployment: S.optional(__S(85)) }).pipe(ns)).annotate({
+      return S.suspend(() =>
+        S.Struct({ Deployment: S.optional(WorkSpaceApplicationDeployment) }).pipe(ns),
+      ).annotate({
         identifier: "DeployWorkspaceApplicationsResult",
       });
     case 7:
@@ -5417,9 +6450,9 @@ function __c11(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          DedicatedTenancySupport: S.optional(S.String),
+          DedicatedTenancySupport: S.optional(DedicatedTenancySupportResultEnum),
           DedicatedTenancyManagementCidrRange: S.optional(S.String),
-          DedicatedTenancyAccountType: S.optional(S.String),
+          DedicatedTenancyAccountType: S.optional(DedicatedTenancyAccountType),
           Message: S.optional(S.String),
         }).pipe(ns),
       ).annotate({ identifier: "DescribeAccountResult" });
@@ -5434,8 +6467,8 @@ function __c11(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          ModificationState: S.optional(S.String),
-          DedicatedTenancySupport: S.optional(S.String),
+          ModificationState: S.optional(DedicatedTenancyModificationStateEnum),
+          DedicatedTenancySupport: S.optional(DedicatedTenancySupportResultEnum),
           DedicatedTenancyManagementCidrRange: S.optional(S.String),
           StartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           ErrorCode: S.optional(S.String),
@@ -5443,25 +6476,25 @@ function __c11(j: number): any {
         }),
       ).annotate({ identifier: "AccountModification" });
     case 4:
-      return S.Array(__S(91));
+      return S.Array(AccountModification);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          AccountModifications: S.optional(__S(92)),
+          AccountModifications: S.optional(AccountModificationList),
           NextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
         identifier: "DescribeAccountModificationsResult",
       });
     case 6:
-      return S.Array(S.String);
+      return S.Array(ApplicationAssociatedResourceType);
     case 7:
       return S.suspend(() =>
         S.Struct({
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
           ApplicationId: S.String,
-          AssociatedResourceTypes: __S(94),
+          AssociatedResourceTypes: ApplicationAssociatedResourceTypeList,
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "DescribeApplicationAssociationsRequest",
@@ -5475,21 +6508,21 @@ function __c12(j: number): any {
         S.Struct({
           ApplicationId: S.optional(S.String),
           AssociatedResourceId: S.optional(S.String),
-          AssociatedResourceType: S.optional(S.String),
+          AssociatedResourceType: S.optional(ApplicationAssociatedResourceType),
           Created: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           LastUpdatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          State: S.optional(S.String),
-          StateReason: S.optional(__S(9)),
+          State: S.optional(AssociationState),
+          StateReason: S.optional(AssociationStateReason),
         }),
       ).annotate({
         identifier: "ApplicationResourceAssociation",
       });
     case 1:
-      return S.Array(__S(96));
+      return S.Array(ApplicationResourceAssociation);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          Associations: S.optional(__S(97)),
+          Associations: S.optional(ApplicationResourceAssociationList),
           NextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
@@ -5498,10 +6531,10 @@ function __c12(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          ApplicationIds: S.optional(__S(5)),
-          ComputeTypeNames: S.optional(__S(47)),
-          LicenseType: S.optional(S.String),
-          OperatingSystemNames: S.optional(__S(47)),
+          ApplicationIds: S.optional(WorkSpaceApplicationIdList),
+          ComputeTypeNames: S.optional(ComputeList),
+          LicenseType: S.optional(WorkSpaceApplicationLicenseType),
+          OperatingSystemNames: S.optional(OperatingSystemNameList),
           Owner: S.optional(S.String),
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
@@ -5515,20 +6548,20 @@ function __c12(j: number): any {
           ApplicationId: S.optional(S.String),
           Created: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           Description: S.optional(S.String),
-          LicenseType: S.optional(S.String),
+          LicenseType: S.optional(WorkSpaceApplicationLicenseType),
           Name: S.optional(S.String),
           Owner: S.optional(S.String),
-          State: S.optional(S.String),
-          SupportedComputeTypeNames: S.optional(__S(47)),
-          SupportedOperatingSystemNames: S.optional(__S(47)),
+          State: S.optional(WorkSpaceApplicationState),
+          SupportedComputeTypeNames: S.optional(ComputeList),
+          SupportedOperatingSystemNames: S.optional(OperatingSystemNameList),
         }),
       ).annotate({ identifier: "WorkSpaceApplication" });
     case 5:
-      return S.Array(__S(100));
+      return S.Array(WorkSpaceApplication);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          Applications: S.optional(__S(101)),
+          Applications: S.optional(WorkSpaceApplicationList),
           NextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
@@ -5538,7 +6571,7 @@ function __c12(j: number): any {
       return S.suspend(() =>
         S.Struct({
           BundleId: S.String,
-          AssociatedResourceTypes: __S(47),
+          AssociatedResourceTypes: BundleAssociatedResourceTypeList,
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "DescribeBundleAssociationsRequest",
@@ -5551,20 +6584,22 @@ function __c13(j: number): any {
       return S.suspend(() =>
         S.Struct({
           AssociatedResourceId: S.optional(S.String),
-          AssociatedResourceType: S.optional(S.String),
+          AssociatedResourceType: S.optional(BundleAssociatedResourceType),
           BundleId: S.optional(S.String),
           Created: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           LastUpdatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          State: S.optional(S.String),
-          StateReason: S.optional(__S(9)),
+          State: S.optional(AssociationState),
+          StateReason: S.optional(AssociationStateReason),
         }),
       ).annotate({
         identifier: "BundleResourceAssociation",
       });
     case 1:
-      return S.Array(__S(104));
+      return S.Array(BundleResourceAssociation);
     case 2:
-      return S.suspend(() => S.Struct({ Associations: S.optional(__S(105)) }).pipe(ns)).annotate({
+      return S.suspend(() =>
+        S.Struct({ Associations: S.optional(BundleResourceAssociationList) }).pipe(ns),
+      ).annotate({
         identifier: "DescribeBundleAssociationsResult",
       });
     case 3:
@@ -5584,7 +6619,7 @@ function __c13(j: number): any {
           SupportEmail: S.optional(S.String),
           SupportLink: S.optional(S.String),
           ForgotPasswordLink: S.optional(S.String),
-          LoginMessage: S.optional(__S(108)),
+          LoginMessage: S.optional(LoginMessage),
         }),
       ).annotate({
         identifier: "DefaultClientBrandingAttributes",
@@ -5598,7 +6633,7 @@ function __c13(j: number): any {
           SupportEmail: S.optional(S.String),
           SupportLink: S.optional(S.String),
           ForgotPasswordLink: S.optional(S.String),
-          LoginMessage: S.optional(__S(108)),
+          LoginMessage: S.optional(LoginMessage),
         }),
       ).annotate({
         identifier: "IosClientBrandingAttributes",
@@ -5606,12 +6641,12 @@ function __c13(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          DeviceTypeWindows: S.optional(__S(109)),
-          DeviceTypeOsx: S.optional(__S(109)),
-          DeviceTypeAndroid: S.optional(__S(109)),
-          DeviceTypeIos: S.optional(__S(110)),
-          DeviceTypeLinux: S.optional(__S(109)),
-          DeviceTypeWeb: S.optional(__S(109)),
+          DeviceTypeWindows: S.optional(DefaultClientBrandingAttributes),
+          DeviceTypeOsx: S.optional(DefaultClientBrandingAttributes),
+          DeviceTypeAndroid: S.optional(DefaultClientBrandingAttributes),
+          DeviceTypeIos: S.optional(IosClientBrandingAttributes),
+          DeviceTypeLinux: S.optional(DefaultClientBrandingAttributes),
+          DeviceTypeWeb: S.optional(DefaultClientBrandingAttributes),
         }).pipe(ns),
       ).annotate({
         identifier: "DescribeClientBrandingResult",
@@ -5622,7 +6657,7 @@ function __c14(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ ResourceIds: __S(5) }).pipe(
+        S.Struct({ ResourceIds: ResourceIdList }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
@@ -5631,8 +6666,8 @@ function __c14(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          ReconnectEnabled: S.optional(S.String),
-          LogUploadEnabled: S.optional(S.String),
+          ReconnectEnabled: S.optional(ReconnectEnum),
+          LogUploadEnabled: S.optional(LogUploadEnum),
           ClientExperiencePolicy: S.optional(S.String),
         }),
       ).annotate({ identifier: "ClientProperties" });
@@ -5640,14 +6675,14 @@ function __c14(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ResourceId: S.optional(S.String),
-          ClientProperties: S.optional(__S(113)),
+          ClientProperties: S.optional(ClientProperties),
         }),
       ).annotate({ identifier: "ClientPropertiesResult" });
     case 3:
-      return S.Array(__S(114));
+      return S.Array(ClientPropertiesResult);
     case 4:
       return S.suspend(() =>
-        S.Struct({ ClientPropertiesList: S.optional(__S(115)) }).pipe(ns),
+        S.Struct({ ClientPropertiesList: S.optional(ClientPropertiesList) }).pipe(ns),
       ).annotate({
         identifier: "DescribeClientPropertiesResult",
       });
@@ -5671,7 +6706,7 @@ function __c14(j: number): any {
         }),
       ).annotate({ identifier: "ConnectClientAddIn" });
     case 7:
-      return S.Array(__S(118));
+      return S.Array(ConnectClientAddIn);
   }
 }
 function __c15(j: number): any {
@@ -5679,7 +6714,7 @@ function __c15(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          AddIns: S.optional(__S(119)),
+          AddIns: S.optional(ConnectClientAddInList),
           NextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
@@ -5688,7 +6723,7 @@ function __c15(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          AliasIds: S.optional(__S(5)),
+          AliasIds: S.optional(ConnectionAliasIdList),
           ResourceId: S.optional(S.String),
           Limit: S.optional(S.Number),
           NextToken: S.optional(S.String),
@@ -5699,7 +6734,7 @@ function __c15(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          AssociationStatus: S.optional(S.String),
+          AssociationStatus: S.optional(AssociationStatus),
           AssociatedAccountId: S.optional(S.String),
           ResourceId: S.optional(S.String),
           ConnectionIdentifier: S.optional(S.String),
@@ -5708,23 +6743,23 @@ function __c15(j: number): any {
         identifier: "ConnectionAliasAssociation",
       });
     case 3:
-      return S.Array(__S(122));
+      return S.Array(ConnectionAliasAssociation);
     case 4:
       return S.suspend(() =>
         S.Struct({
           ConnectionString: S.optional(S.String),
           AliasId: S.optional(S.String),
-          State: S.optional(S.String),
+          State: S.optional(ConnectionAliasState),
           OwnerAccountId: S.optional(S.String),
-          Associations: S.optional(__S(123)),
+          Associations: S.optional(ConnectionAliasAssociationList),
         }),
       ).annotate({ identifier: "ConnectionAlias" });
     case 5:
-      return S.Array(__S(124));
+      return S.Array(ConnectionAlias);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          ConnectionAliases: S.optional(__S(125)),
+          ConnectionAliases: S.optional(ConnectionAliasList),
           NextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
@@ -5751,12 +6786,12 @@ function __c16(j: number): any {
         identifier: "ConnectionAliasPermission",
       });
     case 1:
-      return S.Array(__S(128));
+      return S.Array(ConnectionAliasPermission);
     case 2:
       return S.suspend(() =>
         S.Struct({
           AliasId: S.optional(S.String),
-          ConnectionAliasPermissions: S.optional(__S(129)),
+          ConnectionAliasPermissions: S.optional(ConnectionAliasPermissions),
           NextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
@@ -5783,20 +6818,20 @@ function __c16(j: number): any {
         identifier: "CustomWorkspaceImageImportErrorDetails",
       });
     case 6:
-      return S.Array(__S(133));
+      return S.Array(CustomWorkspaceImageImportErrorDetails);
     case 7:
       return S.suspend(() =>
         S.Struct({
           ImageId: S.optional(S.String),
           InfrastructureConfigurationArn: S.optional(S.String),
-          State: S.optional(S.String),
+          State: S.optional(CustomWorkspaceImageImportState),
           StateMessage: S.optional(S.String),
           ProgressPercentage: S.optional(S.Number),
           Created: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           LastUpdatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          ImageSource: S.optional(__S(132)),
+          ImageSource: S.optional(ImageSourceIdentifier),
           ImageBuilderInstanceId: S.optional(S.String),
-          ErrorDetails: S.optional(__S(134)),
+          ErrorDetails: S.optional(CustomWorkspaceImageImportErrorDetailsList),
         }).pipe(ns),
       ).annotate({
         identifier: "DescribeCustomWorkspaceImageImportResult",
@@ -5809,7 +6844,7 @@ function __c17(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ImageId: S.String,
-          AssociatedResourceTypes: __S(47),
+          AssociatedResourceTypes: ImageAssociatedResourceTypeList,
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "DescribeImageAssociationsRequest",
@@ -5818,24 +6853,26 @@ function __c17(j: number): any {
       return S.suspend(() =>
         S.Struct({
           AssociatedResourceId: S.optional(S.String),
-          AssociatedResourceType: S.optional(S.String),
+          AssociatedResourceType: S.optional(ImageAssociatedResourceType),
           Created: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           LastUpdatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           ImageId: S.optional(S.String),
-          State: S.optional(S.String),
-          StateReason: S.optional(__S(9)),
+          State: S.optional(AssociationState),
+          StateReason: S.optional(AssociationStateReason),
         }),
       ).annotate({ identifier: "ImageResourceAssociation" });
     case 2:
-      return S.Array(__S(137));
+      return S.Array(ImageResourceAssociation);
     case 3:
-      return S.suspend(() => S.Struct({ Associations: S.optional(__S(138)) }).pipe(ns)).annotate({
+      return S.suspend(() =>
+        S.Struct({ Associations: S.optional(ImageResourceAssociationList) }).pipe(ns),
+      ).annotate({
         identifier: "DescribeImageAssociationsResult",
       });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          GroupIds: S.optional(__S(5)),
+          GroupIds: S.optional(IpGroupIdList),
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -5846,15 +6883,15 @@ function __c17(j: number): any {
           groupId: S.optional(S.String),
           groupName: S.optional(S.String),
           groupDesc: S.optional(S.String),
-          userRules: S.optional(__S(13)),
+          userRules: S.optional(IpRuleList),
         }),
       ).annotate({ identifier: "WorkspacesIpGroup" });
     case 6:
-      return S.Array(__S(141));
+      return S.Array(WorkspacesIpGroup);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          Result: S.optional(__S(142)),
+          Result: S.optional(WorkspacesIpGroupsList),
           NextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({ identifier: "DescribeIpGroupsResult" });
@@ -5869,26 +6906,28 @@ function __c18(j: number): any {
         ),
       ).annotate({ identifier: "DescribeTagsRequest" });
     case 1:
-      return S.suspend(() => S.Struct({ TagList: S.optional(__S(17)) }).pipe(ns)).annotate({
+      return S.suspend(() => S.Struct({ TagList: S.optional(TagList) }).pipe(ns)).annotate({
         identifier: "DescribeTagsResult",
       });
     case 2:
       return S.suspend(() =>
         S.Struct({
           WorkspaceId: S.String,
-          AssociatedResourceTypes: __S(94),
+          AssociatedResourceTypes: WorkSpaceAssociatedResourceTypeList,
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "DescribeWorkspaceAssociationsRequest",
       });
     case 3:
-      return S.suspend(() => S.Struct({ Associations: S.optional(__S(84)) }).pipe(ns)).annotate({
+      return S.suspend(() =>
+        S.Struct({ Associations: S.optional(WorkspaceResourceAssociationList) }).pipe(ns),
+      ).annotate({
         identifier: "DescribeWorkspaceAssociationsResult",
       });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          BundleIds: S.optional(__S(5)),
+          BundleIds: S.optional(BundleIdList),
           Owner: S.optional(S.String),
           NextToken: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -5896,18 +6935,18 @@ function __c18(j: number): any {
         identifier: "DescribeWorkspaceBundlesRequest",
       });
     case 5:
-      return S.Array(__S(42));
+      return S.Array(WorkspaceBundle);
     case 6:
       return S.suspend(() =>
-        S.Struct({ Bundles: S.optional(__S(149)), NextToken: S.optional(S.String) }).pipe(ns),
+        S.Struct({ Bundles: S.optional(BundleList), NextToken: S.optional(S.String) }).pipe(ns),
       ).annotate({
         identifier: "DescribeWorkspaceBundlesResult",
       });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          Name: S.String,
-          Values: __S(5),
+          Name: DescribeWorkspaceDirectoriesFilterName,
+          Values: DescribeWorkspaceDirectoriesFilterValues,
         }),
       ).annotate({
         identifier: "DescribeWorkspaceDirectoriesFilter",
@@ -5917,15 +6956,15 @@ function __c18(j: number): any {
 function __c19(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(151));
+      return S.Array(DescribeWorkspaceDirectoriesFilter);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          DirectoryIds: S.optional(__S(5)),
-          WorkspaceDirectoryNames: S.optional(__S(5)),
+          DirectoryIds: S.optional(DirectoryIdList),
+          WorkspaceDirectoryNames: S.optional(WorkspaceDirectoryNameList),
           Limit: S.optional(S.Number),
           NextToken: S.optional(S.String),
-          Filters: S.optional(__S(152)),
+          Filters: S.optional(DescribeWorkspaceDirectoriesFilterList),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "DescribeWorkspaceDirectoriesRequest",
@@ -5946,32 +6985,32 @@ function __c19(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          AccessEndpointType: S.optional(S.String),
+          AccessEndpointType: S.optional(AccessEndpointType),
           VpcEndpointId: S.optional(S.String),
         }),
       ).annotate({ identifier: "AccessEndpoint" });
     case 4:
-      return S.Array(__S(155));
+      return S.Array(AccessEndpoint);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          AccessEndpoints: __S(156),
-          InternetFallbackProtocols: S.optional(__S(47)),
+          AccessEndpoints: AccessEndpointList,
+          InternetFallbackProtocols: S.optional(InternetFallbackProtocolList),
         }),
       ).annotate({ identifier: "AccessEndpointConfig" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          DeviceTypeWindows: S.optional(S.String),
-          DeviceTypeOsx: S.optional(S.String),
-          DeviceTypeWeb: S.optional(S.String),
-          DeviceTypeIos: S.optional(S.String),
-          DeviceTypeAndroid: S.optional(S.String),
-          DeviceTypeChromeOs: S.optional(S.String),
-          DeviceTypeZeroClient: S.optional(S.String),
-          DeviceTypeLinux: S.optional(S.String),
-          DeviceTypeWorkSpacesThinClient: S.optional(S.String),
-          AccessEndpointConfig: S.optional(__S(157)),
+          DeviceTypeWindows: S.optional(AccessPropertyValue),
+          DeviceTypeOsx: S.optional(AccessPropertyValue),
+          DeviceTypeWeb: S.optional(AccessPropertyValue),
+          DeviceTypeIos: S.optional(AccessPropertyValue),
+          DeviceTypeAndroid: S.optional(AccessPropertyValue),
+          DeviceTypeChromeOs: S.optional(AccessPropertyValue),
+          DeviceTypeZeroClient: S.optional(AccessPropertyValue),
+          DeviceTypeLinux: S.optional(AccessPropertyValue),
+          DeviceTypeWorkSpacesThinClient: S.optional(AccessPropertyValue),
+          AccessEndpointConfig: S.optional(AccessEndpointConfig),
         }),
       ).annotate({
         identifier: "WorkspaceAccessProperties",
@@ -5979,11 +7018,11 @@ function __c19(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          RestartWorkspace: S.optional(S.String),
-          IncreaseVolumeSize: S.optional(S.String),
-          ChangeComputeType: S.optional(S.String),
-          SwitchRunningMode: S.optional(S.String),
-          RebuildWorkspace: S.optional(S.String),
+          RestartWorkspace: S.optional(ReconnectEnum),
+          IncreaseVolumeSize: S.optional(ReconnectEnum),
+          ChangeComputeType: S.optional(ReconnectEnum),
+          SwitchRunningMode: S.optional(ReconnectEnum),
+          RebuildWorkspace: S.optional(ReconnectEnum),
         }),
       ).annotate({ identifier: "SelfservicePermissions" });
   }
@@ -5993,7 +7032,7 @@ function __c20(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          Status: S.optional(S.String),
+          Status: S.optional(SamlStatusEnum),
           UserAccessUrl: S.optional(S.String),
           RelayStateParameterName: S.optional(S.String),
         }),
@@ -6001,7 +7040,7 @@ function __c20(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          Status: S.optional(S.String),
+          Status: S.optional(CertificateBasedAuthStatusEnum),
           CertificateAuthorityArn: S.optional(S.String),
         }),
       ).annotate({
@@ -6025,30 +7064,32 @@ function __c20(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          Action: S.String,
-          Permission: S.String,
+          Action: UserSettingActionEnum,
+          Permission: UserSettingPermissionEnum,
           MaximumLength: S.optional(S.Number),
         }),
       ).annotate({ identifier: "UserSetting" });
     case 6:
-      return S.Array(__S(165));
+      return S.Array(UserSetting);
     case 7:
-      return S.suspend(() => S.Struct({ ConnectorType: S.String, Status: S.String })).annotate({
-        identifier: "StorageConnector",
-      });
+      return S.suspend(() =>
+        S.Struct({ ConnectorType: StorageConnectorTypeEnum, Status: StorageConnectorStatusEnum }),
+      ).annotate({ identifier: "StorageConnector" });
   }
 }
 function __c21(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(167));
+      return S.Array(StorageConnector);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          StreamingExperiencePreferredProtocol: S.optional(S.String),
-          UserSettings: S.optional(__S(166)),
-          StorageConnectors: S.optional(__S(168)),
-          GlobalAccelerator: S.optional(__S(48)),
+          StreamingExperiencePreferredProtocol: S.optional(
+            StreamingExperiencePreferredProtocolEnum,
+          ),
+          UserSettings: S.optional(UserSettings),
+          StorageConnectors: S.optional(StorageConnectors),
+          GlobalAccelerator: S.optional(GlobalAcceleratorForDirectory),
         }),
       ).annotate({ identifier: "StreamingProperties" });
     case 2:
@@ -6058,38 +7099,40 @@ function __c21(j: number): any {
           Alias: S.optional(S.String),
           DirectoryName: S.optional(S.String),
           RegistrationCode: S.optional(S.String),
-          SubnetIds: S.optional(__S(5)),
-          DnsIpAddresses: S.optional(__S(5)),
-          DnsIpv6Addresses: S.optional(__S(5)),
+          SubnetIds: S.optional(SubnetIds),
+          DnsIpAddresses: S.optional(DnsIpAddresses),
+          DnsIpv6Addresses: S.optional(DnsIpv6Addresses),
           CustomerUserName: S.optional(S.String),
           IamRoleId: S.optional(S.String),
-          DirectoryType: S.optional(S.String),
+          DirectoryType: S.optional(WorkspaceDirectoryType),
           WorkspaceSecurityGroupId: S.optional(S.String),
-          State: S.optional(S.String),
-          WorkspaceCreationProperties: S.optional(__S(154)),
-          ipGroupIds: S.optional(__S(5)),
-          WorkspaceAccessProperties: S.optional(__S(158)),
-          Tenancy: S.optional(S.String),
-          SelfservicePermissions: S.optional(__S(159)),
-          SamlProperties: S.optional(__S(160)),
-          CertificateBasedAuthProperties: S.optional(__S(161)),
-          EndpointEncryptionMode: S.optional(S.String),
-          MicrosoftEntraConfig: S.optional(__S(162)),
+          State: S.optional(WorkspaceDirectoryState),
+          WorkspaceCreationProperties: S.optional(DefaultWorkspaceCreationProperties),
+          ipGroupIds: S.optional(IpGroupIdList),
+          WorkspaceAccessProperties: S.optional(WorkspaceAccessProperties),
+          Tenancy: S.optional(Tenancy),
+          SelfservicePermissions: S.optional(SelfservicePermissions),
+          SamlProperties: S.optional(SamlProperties),
+          CertificateBasedAuthProperties: S.optional(CertificateBasedAuthProperties),
+          EndpointEncryptionMode: S.optional(EndpointEncryptionMode),
+          MicrosoftEntraConfig: S.optional(MicrosoftEntraConfig),
           WorkspaceDirectoryName: S.optional(S.String),
           WorkspaceDirectoryDescription: S.optional(S.String),
-          UserIdentityType: S.optional(S.String),
-          WorkspaceType: S.optional(S.String),
-          IDCConfig: S.optional(__S(163)),
-          ActiveDirectoryConfig: S.optional(__S(164)),
-          StreamingProperties: S.optional(__S(169)),
+          UserIdentityType: S.optional(UserIdentityType),
+          WorkspaceType: S.optional(WorkspaceType),
+          IDCConfig: S.optional(IDCConfig),
+          ActiveDirectoryConfig: S.optional(ActiveDirectoryConfig),
+          StreamingProperties: S.optional(StreamingProperties),
           ErrorMessage: S.optional(S.String),
         }),
       ).annotate({ identifier: "WorkspaceDirectory" });
     case 3:
-      return S.Array(__S(170));
+      return S.Array(WorkspaceDirectory);
     case 4:
       return S.suspend(() =>
-        S.Struct({ Directories: S.optional(__S(171)), NextToken: S.optional(S.String) }).pipe(ns),
+        S.Struct({ Directories: S.optional(DirectoryList), NextToken: S.optional(S.String) }).pipe(
+          ns,
+        ),
       ).annotate({
         identifier: "DescribeWorkspaceDirectoriesResult",
       });
@@ -6108,7 +7151,7 @@ function __c21(j: number): any {
         identifier: "ImagePermission",
       });
     case 7:
-      return S.Array(__S(174));
+      return S.Array(ImagePermission);
   }
 }
 function __c22(j: number): any {
@@ -6117,7 +7160,7 @@ function __c22(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ImageId: S.optional(S.String),
-          ImagePermissions: S.optional(__S(175)),
+          ImagePermissions: S.optional(ImagePermissions),
           NextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
@@ -6126,8 +7169,8 @@ function __c22(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          ImageIds: S.optional(__S(5)),
-          ImageType: S.optional(S.String),
+          ImageIds: S.optional(WorkspaceImageIdList),
+          ImageType: S.optional(ImageType),
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -6141,34 +7184,36 @@ function __c22(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          ErrorCode: S.optional(S.String),
+          ErrorCode: S.optional(WorkspaceImageErrorDetailCode),
           ErrorMessage: S.optional(S.String),
         }),
       ).annotate({ identifier: "ErrorDetails" });
     case 4:
-      return S.Array(__S(179));
+      return S.Array(ErrorDetails);
     case 5:
       return S.suspend(() =>
         S.Struct({
           ImageId: S.optional(S.String),
           Name: S.optional(S.String),
           Description: S.optional(S.String),
-          OperatingSystem: S.optional(__S(45)),
-          State: S.optional(S.String),
-          RequiredTenancy: S.optional(S.String),
+          OperatingSystem: S.optional(OperatingSystem),
+          State: S.optional(WorkspaceImageState),
+          RequiredTenancy: S.optional(WorkspaceImageRequiredTenancy),
           ErrorCode: S.optional(S.String),
           ErrorMessage: S.optional(S.String),
           Created: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           OwnerAccountId: S.optional(S.String),
-          Updates: S.optional(__S(178)),
-          ErrorDetails: S.optional(__S(180)),
+          Updates: S.optional(UpdateResult),
+          ErrorDetails: S.optional(ErrorDetailsList),
         }),
       ).annotate({ identifier: "WorkspaceImage" });
     case 6:
-      return S.Array(__S(181));
+      return S.Array(WorkspaceImage);
     case 7:
       return S.suspend(() =>
-        S.Struct({ Images: S.optional(__S(182)), NextToken: S.optional(S.String) }).pipe(ns),
+        S.Struct({ Images: S.optional(WorkspaceImageList), NextToken: S.optional(S.String) }).pipe(
+          ns,
+        ),
       ).annotate({
         identifier: "DescribeWorkspaceImagesResult",
       });
@@ -6179,7 +7224,7 @@ function __c23(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          WorkspaceIds: S.optional(__S(5)),
+          WorkspaceIds: S.optional(WorkspaceIdList),
           DirectoryId: S.optional(S.String),
           UserName: S.optional(S.String),
           BundleId: S.optional(S.String),
@@ -6192,12 +7237,14 @@ function __c23(j: number): any {
       });
     case 1:
       return S.suspend(() =>
-        S.Struct({ Workspaces: S.optional(__S(63)), NextToken: S.optional(S.String) }).pipe(ns),
+        S.Struct({ Workspaces: S.optional(WorkspaceList), NextToken: S.optional(S.String) }).pipe(
+          ns,
+        ),
       ).annotate({ identifier: "DescribeWorkspacesResult" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          WorkspaceIds: S.optional(__S(5)),
+          WorkspaceIds: S.optional(WorkspaceIdList),
           NextToken: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
@@ -6207,7 +7254,7 @@ function __c23(j: number): any {
       return S.suspend(() =>
         S.Struct({
           WorkspaceId: S.optional(S.String),
-          ConnectionState: S.optional(S.String),
+          ConnectionState: S.optional(ConnectionState),
           ConnectionStateCheckTimestamp: S.optional(
             S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           ),
@@ -6219,11 +7266,11 @@ function __c23(j: number): any {
         identifier: "WorkspaceConnectionStatus",
       });
     case 4:
-      return S.Array(__S(187));
+      return S.Array(WorkspaceConnectionStatus);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          WorkspacesConnectionStatus: S.optional(__S(188)),
+          WorkspacesConnectionStatus: S.optional(WorkspaceConnectionStatusList),
           NextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
@@ -6246,12 +7293,12 @@ function __c23(j: number): any {
 function __c24(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(191));
+      return S.Array(Snapshot);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          RebuildSnapshots: S.optional(__S(192)),
-          RestoreSnapshots: S.optional(__S(192)),
+          RebuildSnapshots: S.optional(SnapshotList),
+          RestoreSnapshots: S.optional(SnapshotList),
         }).pipe(ns),
       ).annotate({
         identifier: "DescribeWorkspaceSnapshotsResult",
@@ -6259,20 +7306,20 @@ function __c24(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          Name: S.String,
-          Values: __S(5),
-          Operator: S.String,
+          Name: DescribeWorkspacesPoolsFilterName,
+          Values: DescribeWorkspacesPoolsFilterValues,
+          Operator: DescribeWorkspacesPoolsFilterOperator,
         }),
       ).annotate({
         identifier: "DescribeWorkspacesPoolsFilter",
       });
     case 3:
-      return S.Array(__S(194));
+      return S.Array(DescribeWorkspacesPoolsFilter);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          PoolIds: S.optional(__S(5)),
-          Filters: S.optional(__S(195)),
+          PoolIds: S.optional(WorkspacesPoolIds),
+          Filters: S.optional(DescribeWorkspacesPoolsFilters),
           Limit: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -6280,11 +7327,11 @@ function __c24(j: number): any {
         identifier: "DescribeWorkspacesPoolsRequest",
       });
     case 5:
-      return S.Array(__S(72));
+      return S.Array(WorkspacesPool);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          WorkspacesPools: S.optional(__S(197)),
+          WorkspacesPools: S.optional(WorkspacesPools),
           NextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
@@ -6314,23 +7361,23 @@ function __c25(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          AuthenticationType: S.optional(S.String),
-          ConnectionState: S.optional(S.String),
+          AuthenticationType: S.optional(AuthenticationType),
+          ConnectionState: S.optional(SessionConnectionState),
           SessionId: S.String,
           InstanceId: S.optional(S.String),
           PoolId: S.String,
           ExpirationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          NetworkAccessConfiguration: S.optional(__S(200)),
+          NetworkAccessConfiguration: S.optional(NetworkAccessConfiguration),
           StartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           UserId: S.String,
         }),
       ).annotate({ identifier: "WorkspacesPoolSession" });
     case 2:
-      return S.Array(__S(201));
+      return S.Array(WorkspacesPoolSession);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          Sessions: S.optional(__S(202)),
+          Sessions: S.optional(WorkspacesPoolSessions),
           NextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
@@ -6346,7 +7393,7 @@ function __c25(j: number): any {
       });
     case 5:
       return S.suspend(() =>
-        S.Struct({ DirectoryId: S.String, GroupIds: __S(5) }).pipe(
+        S.Struct({ DirectoryId: S.String, GroupIds: IpGroupIdList }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
@@ -6371,7 +7418,7 @@ function __c25(j: number): any {
 function __c26(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ AccountLink: S.optional(__S(1)) }).pipe(ns)).annotate({
+      return S.suspend(() => S.Struct({ AccountLink: S.optional(AccountLink) }).pipe(ns)).annotate({
         identifier: "GetAccountLinkResult",
       });
     case 1:
@@ -6381,7 +7428,7 @@ function __c26(j: number): any {
           SupportEmail: S.optional(S.String),
           SupportLink: S.optional(S.String),
           ForgotPasswordLink: S.optional(S.String),
-          LoginMessage: S.optional(__S(108)),
+          LoginMessage: S.optional(LoginMessage),
         }),
       ).annotate({
         identifier: "DefaultImportClientBrandingAttributes",
@@ -6395,7 +7442,7 @@ function __c26(j: number): any {
           SupportEmail: S.optional(S.String),
           SupportLink: S.optional(S.String),
           ForgotPasswordLink: S.optional(S.String),
-          LoginMessage: S.optional(__S(108)),
+          LoginMessage: S.optional(LoginMessage),
         }),
       ).annotate({
         identifier: "IosImportClientBrandingAttributes",
@@ -6404,12 +7451,12 @@ function __c26(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ResourceId: S.String,
-          DeviceTypeWindows: S.optional(__S(209)),
-          DeviceTypeOsx: S.optional(__S(209)),
-          DeviceTypeAndroid: S.optional(__S(209)),
-          DeviceTypeIos: S.optional(__S(210)),
-          DeviceTypeLinux: S.optional(__S(209)),
-          DeviceTypeWeb: S.optional(__S(209)),
+          DeviceTypeWindows: S.optional(DefaultImportClientBrandingAttributes),
+          DeviceTypeOsx: S.optional(DefaultImportClientBrandingAttributes),
+          DeviceTypeAndroid: S.optional(DefaultImportClientBrandingAttributes),
+          DeviceTypeIos: S.optional(IosImportClientBrandingAttributes),
+          DeviceTypeLinux: S.optional(DefaultImportClientBrandingAttributes),
+          DeviceTypeWeb: S.optional(DefaultImportClientBrandingAttributes),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "ImportClientBrandingRequest",
@@ -6419,13 +7466,13 @@ function __c26(j: number): any {
         S.Struct({
           ImageName: S.String,
           ImageDescription: S.String,
-          ComputeType: S.String,
-          Protocol: S.String,
-          ImageSource: __S(132),
+          ComputeType: ImageComputeType,
+          Protocol: CustomImageProtocol,
+          ImageSource: ImageSourceIdentifier,
           InfrastructureConfigurationArn: S.String,
-          Platform: S.String,
-          OsVersion: S.String,
-          Tags: S.optional(__S(17)),
+          Platform: Platform,
+          OsVersion: OSVersion,
+          Tags: S.optional(TagList),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "ImportCustomWorkspaceImageRequest",
@@ -6434,7 +7481,7 @@ function __c26(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ImageId: S.optional(S.String),
-          State: S.optional(S.String),
+          State: S.optional(CustomWorkspaceImageImportState),
         }).pipe(ns),
       ).annotate({
         identifier: "ImportCustomWorkspaceImageResult",
@@ -6443,11 +7490,11 @@ function __c26(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Ec2ImageId: S.String,
-          IngestionProcess: S.String,
+          IngestionProcess: WorkspaceImageIngestionProcess,
           ImageName: S.String,
           ImageDescription: S.String,
-          Tags: S.optional(__S(17)),
-          Applications: S.optional(__S(47)),
+          Tags: S.optional(TagList),
+          Applications: S.optional(ApplicationList),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "ImportWorkspaceImageRequest",
@@ -6455,7 +7502,7 @@ function __c26(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          LinkStatusFilter: S.optional(__S(47)),
+          LinkStatusFilter: S.optional(LinkStatusFilterList),
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -6465,11 +7512,11 @@ function __c26(j: number): any {
 function __c27(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(1));
+      return S.Array(AccountLink);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          AccountLinks: S.optional(__S(216)),
+          AccountLinks: S.optional(AccountLinkList),
           NextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({ identifier: "ListAccountLinksResult" });
@@ -6486,7 +7533,7 @@ function __c27(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          ManagementCidrRanges: S.optional(__S(5)),
+          ManagementCidrRanges: S.optional(DedicatedTenancyCidrRangeList),
           NextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
@@ -6508,7 +7555,7 @@ function __c27(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          DedicatedTenancySupport: S.optional(S.String),
+          DedicatedTenancySupport: S.optional(DedicatedTenancySupportEnum),
           DedicatedTenancyManagementCidrRange: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ModifyAccountRequest" });
@@ -6524,15 +7571,15 @@ function __c28(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ResourceId: S.String,
-          CertificateBasedAuthProperties: S.optional(__S(161)),
-          PropertiesToDelete: S.optional(__S(94)),
+          CertificateBasedAuthProperties: S.optional(CertificateBasedAuthProperties),
+          PropertiesToDelete: S.optional(DeletableCertificateBasedAuthPropertiesList),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "ModifyCertificateBasedAuthPropertiesRequest",
       });
     case 1:
       return S.suspend(() =>
-        S.Struct({ ResourceId: S.String, ClientProperties: __S(113) }).pipe(
+        S.Struct({ ResourceId: S.String, ClientProperties: ClientProperties }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
@@ -6540,7 +7587,7 @@ function __c28(j: number): any {
       });
     case 2:
       return S.suspend(() =>
-        S.Struct({ DirectoryId: S.String, EndpointEncryptionMode: S.String }).pipe(
+        S.Struct({ DirectoryId: S.String, EndpointEncryptionMode: EndpointEncryptionMode }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
@@ -6550,15 +7597,15 @@ function __c28(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ResourceId: S.String,
-          SamlProperties: S.optional(__S(160)),
-          PropertiesToDelete: S.optional(__S(47)),
+          SamlProperties: S.optional(SamlProperties),
+          PropertiesToDelete: S.optional(DeletableSamlPropertiesList),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "ModifySamlPropertiesRequest",
       });
     case 4:
       return S.suspend(() =>
-        S.Struct({ ResourceId: S.String, SelfservicePermissions: __S(159) }).pipe(
+        S.Struct({ ResourceId: S.String, SelfservicePermissions: SelfservicePermissions }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
@@ -6568,7 +7615,7 @@ function __c28(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ResourceId: S.String,
-          StreamingProperties: S.optional(__S(169)),
+          StreamingProperties: S.optional(StreamingProperties),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "ModifyStreamingPropertiesRequest",
@@ -6577,7 +7624,7 @@ function __c28(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ResourceId: S.String,
-          WorkspaceAccessProperties: __S(158),
+          WorkspaceAccessProperties: WorkspaceAccessProperties,
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "ModifyWorkspaceAccessPropertiesRequest",
@@ -6586,7 +7633,7 @@ function __c28(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ResourceId: S.String,
-          WorkspaceCreationProperties: __S(154),
+          WorkspaceCreationProperties: WorkspaceCreationProperties,
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "ModifyWorkspaceCreationPropertiesRequest",
@@ -6599,15 +7646,15 @@ function __c29(j: number): any {
       return S.suspend(() =>
         S.Struct({
           WorkspaceId: S.String,
-          WorkspaceProperties: S.optional(__S(49)),
-          DataReplication: S.optional(S.String),
+          WorkspaceProperties: S.optional(WorkspaceProperties),
+          DataReplication: S.optional(DataReplication),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "ModifyWorkspacePropertiesRequest",
       });
     case 1:
       return S.suspend(() =>
-        S.Struct({ WorkspaceId: S.String, WorkspaceState: S.String }).pipe(
+        S.Struct({ WorkspaceId: S.String, WorkspaceState: TargetWorkspaceState }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
@@ -6618,10 +7665,10 @@ function __c29(j: number): any {
         identifier: "RebootRequest",
       });
     case 3:
-      return S.Array(__S(234));
+      return S.Array(RebootRequest);
     case 4:
       return S.suspend(() =>
-        S.Struct({ RebootWorkspaceRequests: __S(235) }).pipe(
+        S.Struct({ RebootWorkspaceRequests: RebootWorkspaceRequests }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "RebootWorkspacesRequest" });
@@ -6636,18 +7683,18 @@ function __c29(j: number): any {
         identifier: "FailedWorkspaceChangeRequest",
       });
     case 6:
-      return S.Array(__S(237));
+      return S.Array(FailedWorkspaceChangeRequest);
     case 7:
-      return S.suspend(() => S.Struct({ FailedRequests: S.optional(__S(238)) }).pipe(ns)).annotate({
-        identifier: "RebootWorkspacesResult",
-      });
+      return S.suspend(() =>
+        S.Struct({ FailedRequests: S.optional(FailedRebootWorkspaceRequests) }).pipe(ns),
+      ).annotate({ identifier: "RebootWorkspacesResult" });
   }
 }
 function __c30(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ RebuildWorkspaceRequests: __S(235) }).pipe(
+        S.Struct({ RebuildWorkspaceRequests: RebuildWorkspaceRequests }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "RebuildWorkspacesRequest" });
@@ -6655,17 +7702,17 @@ function __c30(j: number): any {
       return S.suspend(() =>
         S.Struct({
           DirectoryId: S.optional(S.String),
-          SubnetIds: S.optional(__S(5)),
+          SubnetIds: S.optional(SubnetIds),
           EnableSelfService: S.optional(S.Boolean),
-          Tenancy: S.optional(S.String),
-          Tags: S.optional(__S(17)),
+          Tenancy: S.optional(Tenancy),
+          Tags: S.optional(TagList),
           WorkspaceDirectoryName: S.optional(S.String),
           WorkspaceDirectoryDescription: S.optional(S.String),
-          UserIdentityType: S.optional(S.String),
+          UserIdentityType: S.optional(UserIdentityType),
           IdcInstanceArn: S.optional(S.String),
-          MicrosoftEntraConfig: S.optional(__S(162)),
-          WorkspaceType: S.optional(S.String),
-          ActiveDirectoryConfig: S.optional(__S(164)),
+          MicrosoftEntraConfig: S.optional(MicrosoftEntraConfig),
+          WorkspaceType: S.optional(WorkspaceType),
+          ActiveDirectoryConfig: S.optional(ActiveDirectoryConfig),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "RegisterWorkspaceDirectoryRequest",
@@ -6674,7 +7721,7 @@ function __c30(j: number): any {
       return S.suspend(() =>
         S.Struct({
           DirectoryId: S.optional(S.String),
-          State: S.optional(S.String),
+          State: S.optional(WorkspaceDirectoryState),
         }).pipe(ns),
       ).annotate({
         identifier: "RegisterWorkspaceDirectoryResult",
@@ -6695,7 +7742,7 @@ function __c30(j: number): any {
       ).annotate({ identifier: "RestoreWorkspaceRequest" });
     case 5:
       return S.suspend(() =>
-        S.Struct({ GroupId: S.String, UserRules: __S(5) }).pipe(
+        S.Struct({ GroupId: S.String, UserRules: IpRevokedRuleList }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "RevokeIpRulesRequest" });
@@ -6704,14 +7751,14 @@ function __c30(j: number): any {
         identifier: "StartRequest",
       });
     case 7:
-      return S.Array(__S(246));
+      return S.Array(StartRequest);
   }
 }
 function __c31(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ StartWorkspaceRequests: __S(247) }).pipe(
+        S.Struct({ StartWorkspaceRequests: StartWorkspaceRequests }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "StartWorkspacesRequest" });
@@ -6725,7 +7772,7 @@ function __c31(j: number): any {
       });
     case 2:
       return S.suspend(() =>
-        S.Struct({ StopWorkspaceRequests: __S(247) }).pipe(
+        S.Struct({ StopWorkspaceRequests: StopWorkspaceRequests }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "StopWorkspacesRequest" });
@@ -6739,14 +7786,16 @@ function __c31(j: number): any {
       });
     case 4:
       return S.suspend(() =>
-        S.Struct({ TerminateWorkspaceRequests: __S(235) }).pipe(
+        S.Struct({ TerminateWorkspaceRequests: TerminateWorkspaceRequests }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
         identifier: "TerminateWorkspacesRequest",
       });
     case 5:
-      return S.suspend(() => S.Struct({ FailedRequests: S.optional(__S(238)) }).pipe(ns)).annotate({
+      return S.suspend(() =>
+        S.Struct({ FailedRequests: S.optional(FailedTerminateWorkspaceRequests) }).pipe(ns),
+      ).annotate({
         identifier: "TerminateWorkspacesResult",
       });
     case 6:
@@ -6782,7 +7831,7 @@ function __c32(j: number): any {
       });
     case 1:
       return S.suspend(() =>
-        S.Struct({ AliasId: S.String, ConnectionAliasPermission: __S(128) }).pipe(
+        S.Struct({ AliasId: S.String, ConnectionAliasPermission: ConnectionAliasPermission }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
@@ -6790,7 +7839,7 @@ function __c32(j: number): any {
       });
     case 2:
       return S.suspend(() =>
-        S.Struct({ GroupId: S.String, UserRules: __S(13) }).pipe(
+        S.Struct({ GroupId: S.String, UserRules: IpRuleList }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
@@ -6819,88 +7868,13 @@ function __c32(j: number): any {
           Description: S.optional(S.String),
           BundleId: S.optional(S.String),
           DirectoryId: S.optional(S.String),
-          Capacity: S.optional(__S(65)),
-          ApplicationSettings: S.optional(__S(66)),
-          TimeoutSettings: S.optional(__S(67)),
-          RunningMode: S.optional(S.String),
+          Capacity: S.optional(Capacity),
+          ApplicationSettings: S.optional(ApplicationSettingsRequest),
+          TimeoutSettings: S.optional(TimeoutSettings),
+          RunningMode: S.optional(PoolsRunningMode),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "UpdateWorkspacesPoolRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
-    case 9:
-      return __c9(i & 7);
-    case 10:
-      return __c10(i & 7);
-    case 11:
-      return __c11(i & 7);
-    case 12:
-      return __c12(i & 7);
-    case 13:
-      return __c13(i & 7);
-    case 14:
-      return __c14(i & 7);
-    case 15:
-      return __c15(i & 7);
-    case 16:
-      return __c16(i & 7);
-    case 17:
-      return __c17(i & 7);
-    case 18:
-      return __c18(i & 7);
-    case 19:
-      return __c19(i & 7);
-    case 20:
-      return __c20(i & 7);
-    case 21:
-      return __c21(i & 7);
-    case 22:
-      return __c22(i & 7);
-    case 23:
-      return __c23(i & 7);
-    case 24:
-      return __c24(i & 7);
-    case 25:
-      return __c25(i & 7);
-    case 26:
-      return __c26(i & 7);
-    case 27:
-      return __c27(i & 7);
-    case 28:
-      return __c28(i & 7);
-    case 29:
-      return __c29(i & 7);
-    case 30:
-      return __c30(i & 7);
-    case 31:
-      return __c31(i & 7);
-    case 32:
-      return __c32(i & 7);
   }
 }

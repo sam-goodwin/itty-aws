@@ -10,8 +10,6 @@ import {
 } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { HuggingFaceOpError, HuggingFaceOpContext };
 
@@ -34,6 +32,8 @@ export type CreateProviderMappingRequestProvider =
   | "together"
   | "wavespeed"
   | "zai-org";
+const CreateProviderMappingRequestProvider = S.String;
+
 export type CreateProviderMappingRequestBodyCase0Status = "live" | "staging" | "error";
 export type CreateProviderMappingRequestBodyCase0Task =
   | "conversational"
@@ -171,15 +171,36 @@ export interface CreateProviderMappingRequestBodyCase1 {
 export type CreateProviderMappingRequestBody =
   | CreateProviderMappingRequestBodyCase0
   | CreateProviderMappingRequestBodyCase1;
+const CreateProviderMappingRequestBody =
+  S.Unknown as any as S.Schema<CreateProviderMappingRequestBody>;
+
 export interface CreateProviderMappingRequest {
   provider: CreateProviderMappingRequestProvider | (string & {});
   body?: CreateProviderMappingRequestBody;
 }
+const CreateProviderMappingRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<CreateProviderMappingRequest>;
+
 export interface CreateProviderMappingResponse {}
+const CreateProviderMappingResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<CreateProviderMappingResponse>;
+
 export interface DefaultBillingEntityRequest {
   orgId?: string;
 }
+const DefaultBillingEntityRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<DefaultBillingEntityRequest>;
+
 export interface DefaultBillingEntityResponse {}
+const DefaultBillingEntityResponse =
+  CreateProviderMappingResponse as any as S.Schema<DefaultBillingEntityResponse>;
+
 export type ListProviderMappingsRequestProvider =
   | "baseten"
   | "cohere"
@@ -199,23 +220,55 @@ export type ListProviderMappingsRequestProvider =
   | "together"
   | "wavespeed"
   | "zai-org";
+const ListProviderMappingsRequestProvider = S.String;
+
 export type ListProviderMappingsRequestStatus = "live" | "staging" | "error";
+const ListProviderMappingsRequestStatus = S.String;
+
 export interface ListProviderMappingsRequest {
   provider: ListProviderMappingsRequestProvider | (string & {});
   status?: ListProviderMappingsRequestStatus | (string & {});
 }
+const ListProviderMappingsRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<ListProviderMappingsRequest>;
+
 export interface ListProviderMappingsResponse {}
+const ListProviderMappingsResponse =
+  CreateProviderMappingResponse as any as S.Schema<ListProviderMappingsResponse>;
+
 export interface ReorderInferenceProvidersRequestBodyValue {
   enabled: boolean;
   position: number;
 }
+const ReorderInferenceProvidersRequestBodyValue = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<ReorderInferenceProvidersRequestBodyValue>;
+
 export type ReorderInferenceProvidersRequestBodyMap = {
   [key: string]: ReorderInferenceProvidersRequestBodyValue | undefined;
 };
+const ReorderInferenceProvidersRequestBodyMap = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<ReorderInferenceProvidersRequestBodyMap>;
+
 export interface ReorderInferenceProvidersRequest {
   body?: ReorderInferenceProvidersRequestBodyMap;
 }
+const ReorderInferenceProvidersRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<ReorderInferenceProvidersRequest>;
+
 export interface ReorderInferenceProvidersResponse {}
+const ReorderInferenceProvidersResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<ReorderInferenceProvidersResponse>;
+
 export type SetProviderKeyRequestProvider =
   | "baseten"
   | "cohere"
@@ -234,15 +287,33 @@ export type SetProviderKeyRequestProvider =
   | "together"
   | "wavespeed"
   | "zai-org";
+const SetProviderKeyRequestProvider = S.String;
+
 export interface SetProviderKeyRequest {
   provider: SetProviderKeyRequestProvider | (string & {});
   apiKey: string | Redacted.Redacted<string>;
 }
+const SetProviderKeyRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<SetProviderKeyRequest>;
+
 export interface SetProviderKeyResponse {}
+const SetProviderKeyResponse =
+  CreateProviderMappingResponse as any as S.Schema<SetProviderKeyResponse>;
+
 export interface SetSpendingLimitRequest {
   spendingLimitCents: number;
 }
+const SetSpendingLimitRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<SetSpendingLimitRequest>;
+
 export interface SetSpendingLimitResponse {}
+const SetSpendingLimitResponse =
+  CreateProviderMappingResponse as any as S.Schema<SetSpendingLimitResponse>;
+
 export type UpdateMappingStatusRequestProvider =
   | "baseten"
   | "cohere"
@@ -262,13 +333,25 @@ export type UpdateMappingStatusRequestProvider =
   | "together"
   | "wavespeed"
   | "zai-org";
+const UpdateMappingStatusRequestProvider = S.String;
+
 export type UpdateMappingStatusRequestStatus = "live" | "staging" | "error";
+const UpdateMappingStatusRequestStatus = S.String;
+
 export interface UpdateMappingStatusRequest {
   provider: UpdateMappingStatusRequestProvider | (string & {});
   mappingId: string;
   status: UpdateMappingStatusRequestStatus | (string & {});
 }
+const UpdateMappingStatusRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<UpdateMappingStatusRequest>;
+
 export interface UpdateMappingStatusResponse {}
+const UpdateMappingStatusResponse =
+  CreateProviderMappingResponse as any as S.Schema<UpdateMappingStatusResponse>;
+
 export type CreateProviderMappingError = HuggingFaceOpError;
 /** Create provider mapping Register a model mapping for your inference provider. Requires a write token of the provider organization. */
 export const createProviderMapping: API.OperationMethod<
@@ -277,8 +360,8 @@ export const createProviderMapping: API.OperationMethod<
   CreateProviderMappingError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<CreateProviderMappingRequest>,
-  output: __S(1) as any as S.Schema<CreateProviderMappingResponse>,
+  input: CreateProviderMappingRequest,
+  output: CreateProviderMappingResponse,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -292,8 +375,8 @@ export const defaultBillingEntity: API.OperationMethod<
   DefaultBillingEntityError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2) as any as S.Schema<DefaultBillingEntityRequest>,
-  output: __S(1) as any as S.Schema<DefaultBillingEntityResponse>,
+  input: DefaultBillingEntityRequest,
+  output: DefaultBillingEntityResponse,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -307,8 +390,8 @@ export const listProviderMappings: API.OperationMethod<
   ListProviderMappingsError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3) as any as S.Schema<ListProviderMappingsRequest>,
-  output: __S(1) as any as S.Schema<ListProviderMappingsResponse>,
+  input: ListProviderMappingsRequest,
+  output: ListProviderMappingsResponse,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -322,8 +405,8 @@ export const reorderInferenceProviders: API.OperationMethod<
   ReorderInferenceProvidersError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6) as any as S.Schema<ReorderInferenceProvidersRequest>,
-  output: __S(7) as any as S.Schema<ReorderInferenceProvidersResponse>,
+  input: ReorderInferenceProvidersRequest,
+  output: ReorderInferenceProvidersResponse,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -337,8 +420,8 @@ export const setProviderKey: API.OperationMethod<
   SetProviderKeyError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8) as any as S.Schema<SetProviderKeyRequest>,
-  output: __S(1) as any as S.Schema<SetProviderKeyResponse>,
+  input: SetProviderKeyRequest,
+  output: SetProviderKeyResponse,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -352,8 +435,8 @@ export const setSpendingLimit: API.OperationMethod<
   SetSpendingLimitError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9) as any as S.Schema<SetSpendingLimitRequest>,
-  output: __S(1) as any as S.Schema<SetSpendingLimitResponse>,
+  input: SetSpendingLimitRequest,
+  output: SetSpendingLimitResponse,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -367,8 +450,8 @@ export const updateMappingStatus: API.OperationMethod<
   UpdateMappingStatusError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10) as any as S.Schema<UpdateMappingStatusRequest>,
-  output: __S(1) as any as S.Schema<UpdateMappingStatusResponse>,
+  input: UpdateMappingStatusRequest,
+  output: UpdateMappingStatusResponse,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -380,8 +463,8 @@ function __c0(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          provider: S.String.pipe(T.Label()),
-          body: S.optional(S.Unknown.pipe(T.HttpBody())),
+          provider: CreateProviderMappingRequestProvider.pipe(T.Label()),
+          body: S.optional(CreateProviderMappingRequestBody.pipe(T.HttpBody())),
         }).pipe(T.Http({ method: "POST", uri: "/api/partners/{provider}/models", code: 200 })),
       ).annotate({
         identifier: "CreateProviderMappingRequest",
@@ -407,8 +490,8 @@ function __c0(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          provider: S.String.pipe(T.Label()),
-          status: S.optional(S.String.pipe(T.Query())),
+          provider: ListProviderMappingsRequestProvider.pipe(T.Label()),
+          status: S.optional(ListProviderMappingsRequestStatus.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/api/partners/{provider}/models", code: 200 })),
       ).annotate({
         identifier: "ListProviderMappingsRequest",
@@ -423,11 +506,11 @@ function __c0(j: number): any {
         identifier: "ReorderInferenceProvidersRequestBodyValue",
       });
     case 5:
-      return S.Record(S.String, __S(4));
+      return S.Record(S.String, ReorderInferenceProvidersRequestBodyValue);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(__S(5).pipe(T.HttpBody())),
+          body: S.optional(ReorderInferenceProvidersRequestBodyMap.pipe(T.HttpBody())),
         }).pipe(T.Http({ method: "POST", uri: "/api/settings/inference-providers", code: 200 })),
       ).annotate({
         identifier: "ReorderInferenceProvidersRequest",
@@ -443,7 +526,7 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          provider: S.String,
+          provider: SetProviderKeyRequestProvider,
           apiKey: S.String.pipe(T.SensitiveValue({})),
         }).pipe(
           T.Http({ method: "POST", uri: "/api/settings/inference-providers/api-key", code: 200 }),
@@ -464,9 +547,9 @@ function __c1(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          provider: S.String.pipe(T.Label()),
+          provider: UpdateMappingStatusRequestProvider.pipe(T.Label()),
           mappingId: S.String.pipe(T.Label()),
-          status: S.String,
+          status: UpdateMappingStatusRequestStatus,
         }).pipe(
           T.Http({
             method: "PUT",
@@ -477,18 +560,5 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "UpdateMappingStatusRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
   }
 }

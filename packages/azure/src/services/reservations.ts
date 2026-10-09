@@ -6,8 +6,6 @@ import { UnknownAzureError } from "../errors.ts";
 import { AzureProtocol, type AzureOpError, type AzureOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { AzureOpError, AzureOpContext };
 
@@ -17,13 +15,33 @@ export interface ArchiveReservationRequest {
   /** Id of the reservation item */
   reservationId: string;
 }
+const ArchiveReservationRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<ArchiveReservationRequest>;
+
 export interface ArchiveReservationResponse {}
+const ArchiveReservationResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<ArchiveReservationResponse>;
+
 export interface GetAppliedReservationListRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
+const GetAppliedReservationListRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<GetAppliedReservationListRequest>;
+
 /** Array of reservation resource ids */
 export type AppliedReservationListValueList = Array<string>;
+const AppliedReservationListValueList = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<AppliedReservationListValueList>;
+
 /** Paginated list of applied reservations */
 export interface AppliedReservationList {
   /** Array of reservation resource ids */
@@ -31,11 +49,21 @@ export interface AppliedReservationList {
   /** Url to get the next page of reservations */
   nextLink?: string;
 }
+const AppliedReservationList = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<AppliedReservationList>;
+
 /** Properties for applied reservations returned */
 export interface AppliedReservationsProperties {
   /** Paginated list of applied reservations */
   reservationOrderIds?: AppliedReservationList;
 }
+const AppliedReservationsProperties = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<AppliedReservationsProperties>;
+
 /** The response for applied reservations api */
 export interface AppliedReservations {
   /** Identifier of the applied reservations */
@@ -47,6 +75,8 @@ export interface AppliedReservations {
   /** Properties for applied reservations returned */
   properties?: AppliedReservationsProperties;
 }
+const AppliedReservations = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<AppliedReservations>;
+
 export interface GetCatalogRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -67,16 +97,37 @@ export interface GetCatalogRequest {
   /** To number of reservations to return */
   _take?: number;
 }
+const GetCatalogRequest = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<GetCatalogRequest>;
+
 /** Represent the billing plans. */
 export type ReservationBillingPlan = "Upfront" | "Monthly";
+const ReservationBillingPlan = S.String;
+
 export type CatalogBillingPlansValueList = Array<ReservationBillingPlan>;
+const CatalogBillingPlansValueList = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<CatalogBillingPlansValueList>;
+
 /** The billing plan options available for this sku. */
 export type CatalogBillingPlansMap = { [key: string]: CatalogBillingPlansValueList | undefined };
+const CatalogBillingPlansMap = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<CatalogBillingPlansMap>;
+
 /** Represent the term of reservation. */
 export type ReservationTerm = "P1Y" | "P3Y" | "P5Y";
+const ReservationTerm = S.String;
+
 /** Available reservation terms for this resource */
 export type CatalogTermsList = Array<ReservationTerm>;
+const CatalogTermsList = CatalogBillingPlansValueList as any as S.Schema<CatalogTermsList>;
+
 export type CatalogLocationsList = Array<string>;
+const CatalogLocationsList =
+  AppliedReservationListValueList as any as S.Schema<CatalogLocationsList>;
+
 /** Property of a sku. */
 export interface SkuProperty {
   /** An invariant to describe the feature. */
@@ -84,13 +135,22 @@ export interface SkuProperty {
   /** An invariant if the feature is measured by quantity. */
   value?: string;
 }
+const SkuProperty = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<SkuProperty>;
+
 export type CatalogSkuPropertiesList = Array<SkuProperty>;
+const CatalogSkuPropertiesList = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<CatalogSkuPropertiesList>;
+
 /** Pricing information containing the amount and the currency code */
 export interface Price {
   /** The ISO 4217 3-letter currency code for the currency used by this purchase record. */
   currencyCode?: string;
   amount?: number;
 }
+const Price = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<Price>;
+
 /** Pricing information about the sku */
 export interface CatalogMsrp {
   /** Amount in pricing currency. Tax not included. */
@@ -100,8 +160,13 @@ export interface CatalogMsrp {
   /** Amount in pricing currency. Tax not included. */
   p5Y?: Price;
 }
+const CatalogMsrp = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<CatalogMsrp>;
+
 /** The value of restrictions. If the restriction type is set to location. This would be different locations where the sku is restricted. */
 export type SkuRestrictionValuesList = Array<string>;
+const SkuRestrictionValuesList =
+  AppliedReservationListValueList as any as S.Schema<SkuRestrictionValuesList>;
+
 /** Restriction of a sku. */
 export interface SkuRestriction {
   /** The type of restrictions. */
@@ -111,10 +176,20 @@ export interface SkuRestriction {
   /** The reason for restriction. */
   reasonCode?: string;
 }
+const SkuRestriction = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<SkuRestriction>;
+
 export type CatalogRestrictionsList = Array<SkuRestriction>;
+const CatalogRestrictionsList = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<CatalogRestrictionsList>;
+
 /** Capability of a sku. */
 export type SkuCapability = SkuProperty;
 export type CatalogCapabilitiesList = Array<SkuProperty>;
+const CatalogCapabilitiesList =
+  CatalogSkuPropertiesList as any as S.Schema<CatalogCapabilitiesList>;
+
 /** Product details of a type of resource. */
 export interface Catalog {
   /** The type of resource the sku applies to. */
@@ -136,8 +211,15 @@ export interface Catalog {
   size?: string;
   capabilities?: CatalogCapabilitiesList;
 }
+const Catalog = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<Catalog>;
+
 /** The Catalog items on this page */
 export type CatalogsResultValueList = Array<Catalog>;
+const CatalogsResultValueList = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<CatalogsResultValueList>;
+
 /** The list of catalogs and pagination information. */
 export interface CatalogsResult {
   /** The Catalog items on this page */
@@ -147,6 +229,8 @@ export interface CatalogsResult {
   /** The total amount of catalog items. */
   totalItems?: number;
 }
+const CatalogsResult = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<CatalogsResult>;
+
 export interface GetReservationRequest {
   /** Order Id of the reservation */
   reservationOrderId: string;
@@ -155,10 +239,19 @@ export interface GetReservationRequest {
   /** Supported value of this query is renewProperties */
   _expand?: string;
 }
+const GetReservationRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<GetReservationRequest>;
+
 /** The type of identity that created the resource. */
 export type SystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
+const SystemDataCreatedByType = S.String;
+
 /** The type of identity that last modified the resource. */
 export type SystemDataLastModifiedByType = "User" | "Application" | "ManagedIdentity" | "Key";
+const SystemDataLastModifiedByType = S.String;
+
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface SystemData {
   /** The identity that created the resource. */
@@ -174,6 +267,8 @@ export interface SystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const SystemData = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<SystemData>;
+
 /** The type of the resource that is being reserved. In addition to below types we have also added the following: OpenAIPTU, MDC, Sentinel. */
 export type ReservedResourceType =
   | "VirtualMachines"
@@ -202,12 +297,21 @@ export type ReservedResourceType =
   | "AzureFiles"
   | "SqlEdge"
   | "VirtualMachineSoftware";
+const ReservedResourceType = S.String;
+
 /** Turning this on will apply the reservation discount to other VMs in the same VM size group. Only specify for VirtualMachines reserved resource type. */
 export type InstanceFlexibility = "On" | "Off";
+const InstanceFlexibility = S.String;
+
 /** The list of applied scopes */
 export type ReservationsPropertiesAppliedScopesList = Array<string>;
+const ReservationsPropertiesAppliedScopesList =
+  AppliedReservationListValueList as any as S.Schema<ReservationsPropertiesAppliedScopesList>;
+
 /** Type of the Applied Scope. */
 export type AppliedScopeType = "Single" | "Shared" | "ManagementGroup";
+const AppliedScopeType = S.String;
+
 /** Represent the current state of the Reservation. */
 export type ProvisioningState =
   | "Creating"
@@ -223,6 +327,8 @@ export type ProvisioningState =
   | "Failed"
   | "Split"
   | "Merged";
+const ProvisioningState = S.String;
+
 export type ReservationStatusCode =
   | "None"
   | "Pending"
@@ -234,13 +340,20 @@ export type ReservationStatusCode =
   | "Merged"
   | "Expired"
   | "Succeeded";
+const ReservationStatusCode = S.String;
+
 export interface ExtendedStatusInfo {
   statusCode?: ReservationStatusCode;
   /** The message giving detailed information about the status code. */
   message?: string;
 }
+const ExtendedStatusInfo = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<ExtendedStatusInfo>;
+
 /** List of destination resource id that are created due to split. Format of the resource id is /providers/Microsoft.Capacity/reservationOrders/{reservationOrderId}/reservations/{reservationId} */
 export type ReservationSplitPropertiesSplitDestinationsList = Array<string>;
+const ReservationSplitPropertiesSplitDestinationsList =
+  AppliedReservationListValueList as any as S.Schema<ReservationSplitPropertiesSplitDestinationsList>;
+
 /** Properties of reservation split */
 export interface ReservationSplitProperties {
   /** List of destination resource id that are created due to split. Format of the resource id is /providers/Microsoft.Capacity/reservationOrders/{reservationOrderId}/reservations/{reservationId} */
@@ -248,8 +361,16 @@ export interface ReservationSplitProperties {
   /** Resource id of the reservation from which this is split. Format of the resource id is /providers/Microsoft.Capacity/reservationOrders/{reservationOrderId}/reservations/{reservationId} */
   splitSource?: string;
 }
+const ReservationSplitProperties = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<ReservationSplitProperties>;
+
 /** Resource ids of the source reservation's merged to form this reservation. Format of the resource id is /providers/Microsoft.Capacity/reservationOrders/{reservationOrderId}/reservations/{reservationId} */
 export type ReservationMergePropertiesMergeSourcesList = Array<string>;
+const ReservationMergePropertiesMergeSourcesList =
+  AppliedReservationListValueList as any as S.Schema<ReservationMergePropertiesMergeSourcesList>;
+
 /** Properties of reservation merge */
 export interface ReservationMergeProperties {
   /** Reservation resource id Created due to the merge. Format of the resource id is /providers/Microsoft.Capacity/reservationOrders/{reservationOrderId}/reservations/{reservationId} */
@@ -257,6 +378,11 @@ export interface ReservationMergeProperties {
   /** Resource ids of the source reservation's merged to form this reservation. Format of the resource id is /providers/Microsoft.Capacity/reservationOrders/{reservationOrderId}/reservations/{reservationId} */
   mergeSources?: ReservationMergePropertiesMergeSourcesList;
 }
+const ReservationMergeProperties = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<ReservationMergeProperties>;
+
 /** Properties of reservation swap */
 export interface ReservationSwapProperties {
   /** Resource id of the source reservation that gets swapped. Format of the resource id is /providers/microsoft.capacity/reservationOrders/{reservationOrderId}/reservations/{reservationId} */
@@ -264,6 +390,11 @@ export interface ReservationSwapProperties {
   /** Reservation resource id that the original resource gets swapped to. Format of the resource id is /providers/microsoft.capacity/reservationOrders/{reservationOrderId}/reservations/{reservationId} */
   swapDestination?: string;
 }
+const ReservationSwapProperties = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<ReservationSwapProperties>;
+
 /** Properties specific to applied scope type. Not required if not applicable. Required and need to provide tenantId and managementGroupId if AppliedScopeType is ManagementGroup */
 export interface AppliedScopeProperties {
   /** Tenant ID where the savings plan should apply benefit. */
@@ -277,17 +408,32 @@ export interface AppliedScopeProperties {
   /** Display name */
   displayName?: string;
 }
+const AppliedScopeProperties = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<AppliedScopeProperties>;
+
 /** The name of sku */
 export interface SkuName {
   name?: string;
 }
+const SkuName = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<SkuName>;
+
 /** List of the subscriptions that the benefit will be applied. Do not specify if AppliedScopeType is Shared. This property will be deprecated and replaced by appliedScopeProperties instead for Single AppliedScopeType. */
 export type PurchaseRequestPropertiesAppliedScopesList = Array<string>;
+const PurchaseRequestPropertiesAppliedScopesList =
+  AppliedReservationListValueList as any as S.Schema<PurchaseRequestPropertiesAppliedScopesList>;
+
 /** Properties specific to each reserved resource type. Not required if not applicable. */
 export interface PurchaseRequestPropertiesReservedResourceProperties {
   /** Turning this on will apply the reservation discount to other VMs in the same VM size group. Only specify for VirtualMachines reserved resource type. */
   instanceFlexibility?: InstanceFlexibility | (string & {});
 }
+const PurchaseRequestPropertiesReservedResourceProperties = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<PurchaseRequestPropertiesReservedResourceProperties>;
+
 /** Properties of reservation purchase request */
 export interface PurchaseRequestProperties {
   /** The type of the resource that is being reserved. In addition to below types we have also added the following: OpenAIPTU, MDC, Sentinel. */
@@ -315,6 +461,11 @@ export interface PurchaseRequestProperties {
   /** This is the date-time when the Azure hybrid benefit needs to be reviewed. */
   reviewDateTime?: string;
 }
+const PurchaseRequestProperties = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<PurchaseRequestProperties>;
+
 /** The request for reservation purchase */
 export interface PurchaseRequest {
   /** The name of sku */
@@ -324,6 +475,8 @@ export interface PurchaseRequest {
   /** Properties of reservation purchase request */
   properties?: PurchaseRequestProperties;
 }
+const PurchaseRequest = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<PurchaseRequest>;
+
 /** Amount that Microsoft uses for record. Used during refund for calculating refund limit. Tax is not included. This is locked price 30 days before expiry. */
 export type RenewPropertiesResponsePricingCurrencyTotal = Price;
 /** Currency and amount that customer will be charged in customer's local currency for renewal purchase. Tax is not included. */
@@ -337,6 +490,11 @@ export interface RenewPropertiesResponse {
   /** Currency and amount that customer will be charged in customer's local currency for renewal purchase. Tax is not included. */
   billingCurrencyTotal?: Price;
 }
+const RenewPropertiesResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<RenewPropertiesResponse>;
+
 /** The aggregate values of reservation utilization */
 export interface ReservationUtilizationAggregates {
   /** The grain of the aggregate */
@@ -348,9 +506,19 @@ export interface ReservationUtilizationAggregates {
   /** The aggregate value unit */
   valueUnit?: string;
 }
+const ReservationUtilizationAggregates = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<ReservationUtilizationAggregates>;
+
 /** The array of aggregates of a reservation's utilization */
 export type ReservationsPropertiesUtilizationAggregatesList =
   Array<ReservationUtilizationAggregates>;
+const ReservationsPropertiesUtilizationAggregatesList = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<ReservationsPropertiesUtilizationAggregatesList>;
+
 /** Reservation utilization */
 export interface ReservationsPropertiesUtilization {
   /** last 7 day utilization trend for a reservation */
@@ -358,6 +526,11 @@ export interface ReservationsPropertiesUtilization {
   /** The array of aggregates of a reservation's utilization */
   aggregates?: ReservationsPropertiesUtilizationAggregatesList;
 }
+const ReservationsPropertiesUtilization = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<ReservationsPropertiesUtilization>;
+
 /** The properties of the reservations */
 export interface ReservationsProperties {
   /** The type of the resource that is being reserved. */
@@ -431,8 +604,15 @@ export interface ReservationsProperties {
   /** Reservation utilization */
   utilization?: ReservationsPropertiesUtilization;
 }
+const ReservationsProperties = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<ReservationsProperties>;
+
 /** Resource Provider type to be reserved. */
 export type GetReservationResponseKind = "Microsoft.Compute";
+const GetReservationResponseKind = S.String;
+
 export interface GetReservationResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -452,14 +632,26 @@ export interface GetReservationResponse {
   /** Resource Provider type to be reserved. */
   kind?: GetReservationResponseKind;
 }
+const GetReservationResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<GetReservationResponse>;
+
 export interface GetReservationOrderRequest {
   /** Order Id of the reservation */
   reservationOrderId: string;
   /** May be used to expand the planInformation. */
   _expand?: string;
 }
+const GetReservationOrderRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<GetReservationOrderRequest>;
+
 /** Describes whether the payment is completed, failed, cancelled or scheduled in the future. */
 export type PaymentStatus = "Succeeded" | "Failed" | "Scheduled" | "Cancelled";
+const PaymentStatus = S.String;
+
 /** Information about payment related to a reservation order. */
 export interface PaymentDetail {
   /** Date when the payment needs to be done. */
@@ -476,7 +668,14 @@ export interface PaymentDetail {
   status?: PaymentStatus;
   extendedStatusInfo?: ExtendedStatusInfo;
 }
+const PaymentDetail = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<PaymentDetail>;
+
 export type ReservationOrderBillingPlanInformationTransactionsList = Array<PaymentDetail>;
+const ReservationOrderBillingPlanInformationTransactionsList = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<ReservationOrderBillingPlanInformationTransactionsList>;
+
 /** Information describing the type of billing plan for this reservation. */
 export interface ReservationOrderBillingPlanInformation {
   /** Amount of money to be paid for the Order. Tax is not included. */
@@ -487,6 +686,11 @@ export interface ReservationOrderBillingPlanInformation {
   nextPaymentDueDate?: string;
   transactions?: ReservationOrderBillingPlanInformationTransactionsList;
 }
+const ReservationOrderBillingPlanInformation = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<ReservationOrderBillingPlanInformation>;
+
 /** Resource Provider type to be reserved. */
 export type ReservationResponseKind = "Microsoft.Compute";
 /** The definition of the reservation. */
@@ -509,7 +713,14 @@ export interface ReservationResponse {
   /** Resource Provider type to be reserved. */
   kind?: ReservationResponseKind;
 }
+const ReservationResponse = GetReservationResponse as any as S.Schema<ReservationResponse>;
+
 export type ReservationOrderPropertiesReservationsList = Array<ReservationResponse>;
+const ReservationOrderPropertiesReservationsList = /*@__PURE__*/ __L.at(
+  __c5,
+  0,
+) as any as S.Schema<ReservationOrderPropertiesReservationsList>;
+
 /** Properties of a reservation order. */
 export interface ReservationOrderProperties {
   /** Friendly name for user to easily identified the reservation. */
@@ -538,6 +749,11 @@ export interface ReservationOrderProperties {
   /** This is the date-time when the Azure Hybrid Benefit needs to be reviewed. */
   reviewDateTime?: string;
 }
+const ReservationOrderProperties = /*@__PURE__*/ __L.at(
+  __c5,
+  1,
+) as any as S.Schema<ReservationOrderProperties>;
+
 export interface GetReservationOrderResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -551,7 +767,14 @@ export interface GetReservationOrderResponse {
   properties?: ReservationOrderProperties;
   etag?: number;
 }
+const GetReservationOrderResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  2,
+) as any as S.Schema<GetReservationOrderResponse>;
+
 export interface ListOperationRequest {}
+const ListOperationRequest = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<ListOperationRequest>;
+
 /** Information about an operation */
 export interface OperationDisplay {
   provider?: string;
@@ -559,6 +782,8 @@ export interface OperationDisplay {
   operation?: string;
   description?: string;
 }
+const OperationDisplay = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<OperationDisplay>;
+
 /** The response containing operation information */
 export interface OperationResponse {
   /** Name of the operation */
@@ -572,18 +797,35 @@ export interface OperationResponse {
   /** Properties of the operation */
   properties?: unknown;
 }
+const OperationResponse = /*@__PURE__*/ __L.at(__c5, 5) as any as S.Schema<OperationResponse>;
+
 export type OperationListValueList = Array<OperationResponse>;
+const OperationListValueList = /*@__PURE__*/ __L.at(
+  __c5,
+  6,
+) as any as S.Schema<OperationListValueList>;
+
 export interface OperationList {
   value?: OperationListValueList;
   /** Url to get the next page of items. */
   nextLink?: string;
 }
+const OperationList = /*@__PURE__*/ __L.at(__c5, 7) as any as S.Schema<OperationList>;
+
 export interface ListReservationRequest {
   /** Order Id of the reservation */
   reservationOrderId: string;
 }
+const ListReservationRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<ListReservationRequest>;
+
 /** The ReservationResponse items on this page */
 export type ReservationListValueList = Array<ReservationResponse>;
+const ReservationListValueList =
+  ReservationOrderPropertiesReservationsList as any as S.Schema<ReservationListValueList>;
+
 /** List of `Reservation`s */
 export interface ReservationList {
   /** The ReservationResponse items on this page */
@@ -591,6 +833,8 @@ export interface ReservationList {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const ReservationList = /*@__PURE__*/ __L.at(__c6, 1) as any as S.Schema<ReservationList>;
+
 export interface ListReservationAllRequest {
   /** May be used to filter by reservation properties. The filter supports 'eq', 'or', and 'and'. It does not currently support 'ne', 'gt', 'le', 'ge', or 'not'. Reservation properties include sku/name, properties/{appliedScopeType, archived, displayName, displayProvisioningState, effectiveDateTime, expiryDate, expiryDateTime, provisioningState, quantity, renew, reservedResourceType, term, userFriendlyAppliedScopeType, userFriendlyRenewState} */
   _filter?: string;
@@ -605,8 +849,16 @@ export interface ListReservationAllRequest {
   /** To number of reservations to return */
   take?: number;
 }
+const ListReservationAllRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  2,
+) as any as S.Schema<ListReservationAllRequest>;
+
 /** The list of reservations. */
 export type ReservationsListResultValueList = Array<ReservationResponse>;
+const ReservationsListResultValueList =
+  ReservationOrderPropertiesReservationsList as any as S.Schema<ReservationsListResultValueList>;
+
 /** The roll up count summary of reservations in each state */
 export interface ReservationSummary {
   /** The number of reservation in Succeeded state */
@@ -628,6 +880,8 @@ export interface ReservationSummary {
   /** The number of reservation in NoBenefit state */
   noBenefitCount?: number;
 }
+const ReservationSummary = /*@__PURE__*/ __L.at(__c6, 3) as any as S.Schema<ReservationSummary>;
+
 /** The list of reservations and summary of roll out count of reservations in each state. */
 export interface ReservationsListResult {
   /** The list of reservations. */
@@ -637,7 +891,17 @@ export interface ReservationsListResult {
   /** The roll out count summary of the reservations */
   summary?: ReservationSummary;
 }
+const ReservationsListResult = /*@__PURE__*/ __L.at(
+  __c6,
+  4,
+) as any as S.Schema<ReservationsListResult>;
+
 export interface ListReservationOrderRequest {}
+const ListReservationOrderRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  5,
+) as any as S.Schema<ListReservationOrderRequest>;
+
 /** Details of a reservation order being returned. */
 export interface ReservationOrderResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -652,8 +916,18 @@ export interface ReservationOrderResponse {
   properties?: ReservationOrderProperties;
   etag?: number;
 }
+const ReservationOrderResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  6,
+) as any as S.Schema<ReservationOrderResponse>;
+
 /** The ReservationOrderResponse items on this page */
 export type ReservationOrderListValueList = Array<ReservationOrderResponse>;
+const ReservationOrderListValueList = /*@__PURE__*/ __L.at(
+  __c6,
+  7,
+) as any as S.Schema<ReservationOrderListValueList>;
+
 /** List of `ReservationOrder`s */
 export interface ReservationOrderList {
   /** The ReservationOrderResponse items on this page */
@@ -661,35 +935,71 @@ export interface ReservationOrderList {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const ReservationOrderList = /*@__PURE__*/ __L.at(__c7, 0) as any as S.Schema<ReservationOrderList>;
+
 export interface ListReservationRevisionsRequest {
   /** Order Id of the reservation */
   reservationOrderId: string;
   /** Id of the reservation item */
   reservationId: string;
 }
+const ListReservationRevisionsRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  1,
+) as any as S.Schema<ListReservationRevisionsRequest>;
+
 /** Format of the resource id should be /providers/Microsoft.Capacity/reservationOrders/{reservationOrderId}/reservations/{reservationId} */
 export type MergePropertiesSourcesList = Array<string>;
+const MergePropertiesSourcesList =
+  AppliedReservationListValueList as any as S.Schema<MergePropertiesSourcesList>;
+
 /** Properties for reservation merge */
 export interface MergeProperties {
   /** Format of the resource id should be /providers/Microsoft.Capacity/reservationOrders/{reservationOrderId}/reservations/{reservationId} */
   sources?: MergePropertiesSourcesList;
 }
+const MergeProperties = /*@__PURE__*/ __L.at(__c7, 2) as any as S.Schema<MergeProperties>;
+
 export interface MergeReservationRequest {
   /** Order Id of the reservation */
   reservationOrderId: string;
   /** Properties for reservation merge */
   properties?: MergeProperties;
 }
+const MergeReservationRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  3,
+) as any as S.Schema<MergeReservationRequest>;
+
 export type MergeReservationResponseBodyList = Array<ReservationResponse>;
+const MergeReservationResponseBodyList =
+  ReservationOrderPropertiesReservationsList as any as S.Schema<MergeReservationResponseBodyList>;
+
 export type MergeReservationResponse = MergeReservationResponseBodyList;
+const MergeReservationResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  4,
+) as any as S.Schema<MergeReservationResponse>;
+
 /** List of reservations that are being purchased in this exchange. */
 export type CalculateExchangeRequestPropertiesReservationsToPurchaseList = Array<PurchaseRequest>;
+const CalculateExchangeRequestPropertiesReservationsToPurchaseList = /*@__PURE__*/ __L.at(
+  __c7,
+  5,
+) as any as S.Schema<CalculateExchangeRequestPropertiesReservationsToPurchaseList>;
+
 /** Represent savings plan term in ISO 8601 format. */
 export type SavingsPlanTerm = "P1Y" | "P3Y";
+const SavingsPlanTerm = S.String;
+
 /** Represents the billing plan in ISO 8601 format. Required only for monthly billing plans. */
 export type BillingPlan = "P1M";
+const BillingPlan = S.String;
+
 /** Commitment grain. */
 export type CommitmentGrain = "Hourly";
+const CommitmentGrain = S.String;
+
 /** Commitment towards the benefit. */
 export interface Commitment {
   /** The ISO 4217 3-letter currency code for the currency used by this purchase record. */
@@ -698,6 +1008,8 @@ export interface Commitment {
   /** Commitment grain. */
   grain?: CommitmentGrain | (string & {});
 }
+const Commitment = /*@__PURE__*/ __L.at(__c7, 6) as any as S.Schema<Commitment>;
+
 /** Properties of a savings plan purchase */
 export interface SavingsPlanPurchaseRequestProperties {
   /** Friendly name of the savings plan */
@@ -715,6 +1027,11 @@ export interface SavingsPlanPurchaseRequestProperties {
   /** Commitment towards the benefit. */
   commitment?: Commitment;
 }
+const SavingsPlanPurchaseRequestProperties = /*@__PURE__*/ __L.at(
+  __c7,
+  7,
+) as any as S.Schema<SavingsPlanPurchaseRequestProperties>;
+
 /** Request body for savings plan purchase */
 export interface SavingsPlanPurchaseRequest {
   /** The name of sku */
@@ -722,9 +1039,19 @@ export interface SavingsPlanPurchaseRequest {
   /** Properties of a savings plan purchase */
   properties?: SavingsPlanPurchaseRequestProperties;
 }
+const SavingsPlanPurchaseRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  0,
+) as any as S.Schema<SavingsPlanPurchaseRequest>;
+
 /** List of savings plans that are being purchased in this exchange. */
 export type CalculateExchangeRequestPropertiesSavingsPlansToPurchaseList =
   Array<SavingsPlanPurchaseRequest>;
+const CalculateExchangeRequestPropertiesSavingsPlansToPurchaseList = /*@__PURE__*/ __L.at(
+  __c8,
+  1,
+) as any as S.Schema<CalculateExchangeRequestPropertiesSavingsPlansToPurchaseList>;
+
 /** Reservation to return */
 export interface ReservationToReturn {
   /** Fully qualified identifier of the reservation being returned */
@@ -732,9 +1059,16 @@ export interface ReservationToReturn {
   /** Quantity to be returned. Must be greater than zero. */
   quantity?: number;
 }
+const ReservationToReturn = /*@__PURE__*/ __L.at(__c8, 2) as any as S.Schema<ReservationToReturn>;
+
 /** List of reservations that are being returned in this exchange. */
 export type CalculateExchangeRequestPropertiesReservationsToExchangeList =
   Array<ReservationToReturn>;
+const CalculateExchangeRequestPropertiesReservationsToExchangeList = /*@__PURE__*/ __L.at(
+  __c8,
+  3,
+) as any as S.Schema<CalculateExchangeRequestPropertiesReservationsToExchangeList>;
+
 /** Calculate exchange request properties */
 export interface CalculateExchangeRequestProperties {
   /** List of reservations that are being purchased in this exchange. */
@@ -744,16 +1078,28 @@ export interface CalculateExchangeRequestProperties {
   /** List of reservations that are being returned in this exchange. */
   reservationsToExchange?: CalculateExchangeRequestPropertiesReservationsToExchangeList;
 }
+const CalculateExchangeRequestProperties = /*@__PURE__*/ __L.at(
+  __c8,
+  4,
+) as any as S.Schema<CalculateExchangeRequestProperties>;
+
 export interface PostCalculateExchangeRequest {
   /** Calculate exchange request properties */
   properties?: CalculateExchangeRequestProperties;
 }
+const PostCalculateExchangeRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  5,
+) as any as S.Schema<PostCalculateExchangeRequest>;
+
 /** Status of the operation. */
 export type CalculateExchangeOperationResultStatus =
   | "Succeeded"
   | "Failed"
   | "Cancelled"
   | "Pending";
+const CalculateExchangeOperationResultStatus = S.String;
+
 /** Reservation purchase details */
 export interface ReservationToPurchaseCalculateExchange {
   /** The request for reservation purchase */
@@ -761,9 +1107,19 @@ export interface ReservationToPurchaseCalculateExchange {
   /** Pricing information containing the amount and the currency code */
   billingCurrencyTotal?: Price;
 }
+const ReservationToPurchaseCalculateExchange = /*@__PURE__*/ __L.at(
+  __c8,
+  6,
+) as any as S.Schema<ReservationToPurchaseCalculateExchange>;
+
 /** Details of the reservations being purchased */
 export type CalculateExchangeResponsePropertiesReservationsToPurchaseList =
   Array<ReservationToPurchaseCalculateExchange>;
+const CalculateExchangeResponsePropertiesReservationsToPurchaseList = /*@__PURE__*/ __L.at(
+  __c8,
+  7,
+) as any as S.Schema<CalculateExchangeResponsePropertiesReservationsToPurchaseList>;
+
 /** Savings plan purchase details */
 export interface SavingsPlanToPurchaseCalculateExchange {
   /** Request body for savings plan purchase */
@@ -771,9 +1127,19 @@ export interface SavingsPlanToPurchaseCalculateExchange {
   /** Pricing information containing the amount and the currency code */
   billingCurrencyTotal?: Price;
 }
+const SavingsPlanToPurchaseCalculateExchange = /*@__PURE__*/ __L.at(
+  __c9,
+  0,
+) as any as S.Schema<SavingsPlanToPurchaseCalculateExchange>;
+
 /** Details of the savings plans being purchased */
 export type CalculateExchangeResponsePropertiesSavingsPlansToPurchaseList =
   Array<SavingsPlanToPurchaseCalculateExchange>;
+const CalculateExchangeResponsePropertiesSavingsPlansToPurchaseList = /*@__PURE__*/ __L.at(
+  __c9,
+  1,
+) as any as S.Schema<CalculateExchangeResponsePropertiesSavingsPlansToPurchaseList>;
+
 /** billing information */
 export interface BillingInformation {
   /** Pricing information containing the amount and the currency code */
@@ -783,6 +1149,8 @@ export interface BillingInformation {
   /** Pricing information containing the amount and the currency code */
   billingCurrencyRemainingCommitmentAmount?: Price;
 }
+const BillingInformation = /*@__PURE__*/ __L.at(__c9, 2) as any as S.Schema<BillingInformation>;
+
 /** Reservation refund details */
 export interface ReservationToExchange {
   /** Fully qualified id of the reservation being returned. */
@@ -794,21 +1162,40 @@ export interface ReservationToExchange {
   /** billing information */
   billingInformation?: BillingInformation;
 }
+const ReservationToExchange = /*@__PURE__*/ __L.at(
+  __c9,
+  3,
+) as any as S.Schema<ReservationToExchange>;
+
 /** Details of the reservations being returned */
 export type CalculateExchangeResponsePropertiesReservationsToExchangeList =
   Array<ReservationToExchange>;
+const CalculateExchangeResponsePropertiesReservationsToExchangeList = /*@__PURE__*/ __L.at(
+  __c9,
+  4,
+) as any as S.Schema<CalculateExchangeResponsePropertiesReservationsToExchangeList>;
+
 /** error details */
 export interface ExchangePolicyError {
   code?: string;
   message?: string;
 }
+const ExchangePolicyError = /*@__PURE__*/ __L.at(__c9, 5) as any as S.Schema<ExchangePolicyError>;
+
 /** Exchange Policy errors */
 export type ExchangePolicyErrorsPolicyErrorsList = Array<ExchangePolicyError>;
+const ExchangePolicyErrorsPolicyErrorsList = /*@__PURE__*/ __L.at(
+  __c9,
+  6,
+) as any as S.Schema<ExchangePolicyErrorsPolicyErrorsList>;
+
 /** Exchange policy errors */
 export interface ExchangePolicyErrors {
   /** Exchange Policy errors */
   policyErrors?: ExchangePolicyErrorsPolicyErrorsList;
 }
+const ExchangePolicyErrors = /*@__PURE__*/ __L.at(__c9, 7) as any as S.Schema<ExchangePolicyErrors>;
+
 /** CalculateExchange response properties */
 export interface CalculateExchangeResponseProperties {
   /** Exchange session identifier */
@@ -828,6 +1215,11 @@ export interface CalculateExchangeResponseProperties {
   /** Exchange policy errors */
   policyResult?: ExchangePolicyErrors;
 }
+const CalculateExchangeResponseProperties = /*@__PURE__*/ __L.at(
+  __c10,
+  0,
+) as any as S.Schema<CalculateExchangeResponseProperties>;
+
 /** Required if status == failed or status == canceled. */
 export interface OperationResultError {
   /** Required if status == failed or status == cancelled. If status == failed, provide an invariant error code used for error troubleshooting, aggregation, and analysis. */
@@ -835,6 +1227,8 @@ export interface OperationResultError {
   /** Required if status == failed. Localized. If status == failed, provide an actionable error message indicating what error occurred, and what the user can do to address the issue. */
   message?: string;
 }
+const OperationResultError = ExchangePolicyError as any as S.Schema<OperationResultError>;
+
 /** CalculateExchange operation result */
 export interface CalculateExchangeOperationResultResponse {
   /** It should match what is used to GET the operation result. */
@@ -848,6 +1242,11 @@ export interface CalculateExchangeOperationResultResponse {
   /** Required if status == failed or status == canceled. */
   error?: OperationResultError;
 }
+const CalculateExchangeOperationResultResponse = /*@__PURE__*/ __L.at(
+  __c10,
+  1,
+) as any as S.Schema<CalculateExchangeOperationResultResponse>;
+
 /** Properties needed for calculate refund including the scope and the reservation to be returned. */
 export interface CalculateRefundRequestProperties {
   /** The scope of the refund, e.g. Reservation */
@@ -855,6 +1254,11 @@ export interface CalculateRefundRequestProperties {
   /** Reservation to return */
   reservationToReturn?: ReservationToReturn;
 }
+const CalculateRefundRequestProperties = /*@__PURE__*/ __L.at(
+  __c10,
+  2,
+) as any as S.Schema<CalculateRefundRequestProperties>;
+
 export interface PostCalculateRefundRequest {
   /** Order Id of the reservation */
   reservationOrderId: string;
@@ -863,6 +1267,11 @@ export interface PostCalculateRefundRequest {
   /** Properties needed for calculate refund including the scope and the reservation to be returned. */
   properties?: CalculateRefundRequestProperties;
 }
+const PostCalculateRefundRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  3,
+) as any as S.Schema<PostCalculateRefundRequest>;
+
 /** Error code describing the reason that service is not able to process the incoming request */
 export type ErrorResponseCode =
   | "NotSpecified"
@@ -923,14 +1332,23 @@ export type ErrorResponseCode =
   | "AppliedScopesSameAsExisting"
   | "SelfServiceRefundNotSupported"
   | "RefundLimitExceeded";
+const ErrorResponseCode = S.String;
+
 /** error details */
 export interface RefundPolicyError {
   /** Error code describing the reason that service is not able to process the incoming request */
   code?: ErrorResponseCode;
   message?: string;
 }
+const RefundPolicyError = /*@__PURE__*/ __L.at(__c10, 4) as any as S.Schema<RefundPolicyError>;
+
 /** Refund Policy errors */
 export type RefundPolicyResultPropertyPolicyErrorsList = Array<RefundPolicyError>;
+const RefundPolicyResultPropertyPolicyErrorsList = /*@__PURE__*/ __L.at(
+  __c10,
+  5,
+) as any as S.Schema<RefundPolicyResultPropertyPolicyErrorsList>;
+
 /** Refund policy result property */
 export interface RefundPolicyResultProperty {
   /** Pricing information containing the amount and the currency code */
@@ -940,11 +1358,18 @@ export interface RefundPolicyResultProperty {
   /** Refund Policy errors */
   policyErrors?: RefundPolicyResultPropertyPolicyErrorsList;
 }
+const RefundPolicyResultProperty = /*@__PURE__*/ __L.at(
+  __c10,
+  6,
+) as any as S.Schema<RefundPolicyResultProperty>;
+
 /** Refund policy result */
 export interface RefundPolicyResult {
   /** Refund policy result property */
   properties?: RefundPolicyResultProperty;
 }
+const RefundPolicyResult = /*@__PURE__*/ __L.at(__c10, 7) as any as S.Schema<RefundPolicyResult>;
+
 /** billing information */
 export interface RefundBillingInformation {
   /** Represent the billing plans. */
@@ -960,6 +1385,11 @@ export interface RefundBillingInformation {
   /** Pricing information containing the amount and the currency code */
   billingCurrencyRemainingCommitmentAmount?: Price;
 }
+const RefundBillingInformation = /*@__PURE__*/ __L.at(
+  __c11,
+  0,
+) as any as S.Schema<RefundBillingInformation>;
+
 /** The refund properties of reservation */
 export interface RefundResponseProperties {
   /** Refund session identifier */
@@ -975,6 +1405,11 @@ export interface RefundResponseProperties {
   /** billing information */
   billingInformation?: RefundBillingInformation;
 }
+const RefundResponseProperties = /*@__PURE__*/ __L.at(
+  __c11,
+  1,
+) as any as S.Schema<RefundResponseProperties>;
+
 /** The response of calculate refund containing refund information of reservation */
 export interface CalculateRefundResponse {
   /** Fully qualified identifier of the reservation being returned */
@@ -982,15 +1417,27 @@ export interface CalculateRefundResponse {
   /** The refund properties of reservation */
   properties?: RefundResponseProperties;
 }
+const CalculateRefundResponse = /*@__PURE__*/ __L.at(
+  __c11,
+  2,
+) as any as S.Schema<CalculateRefundResponse>;
+
 /** Exchange request properties */
 export interface ExchangeRequestProperties {
   /** SessionId that was returned by CalculateExchange API. */
   sessionId?: string;
 }
+const ExchangeRequestProperties = /*@__PURE__*/ __L.at(
+  __c11,
+  3,
+) as any as S.Schema<ExchangeRequestProperties>;
+
 export interface PostExchangeRequest {
   /** Exchange request properties */
   properties?: ExchangeRequestProperties;
 }
+const PostExchangeRequest = /*@__PURE__*/ __L.at(__c11, 4) as any as S.Schema<PostExchangeRequest>;
+
 /** Status of the operation. */
 export type ExchangeOperationResultStatus =
   | "Succeeded"
@@ -998,8 +1445,12 @@ export type ExchangeOperationResultStatus =
   | "Cancelled"
   | "PendingRefunds"
   | "PendingPurchases";
+const ExchangeOperationResultStatus = S.String;
+
 /** Status of the individual operation. */
 export type OperationStatus = "Succeeded" | "Failed" | "Cancelled" | "Pending";
+const OperationStatus = S.String;
+
 /** Reservation purchase details */
 export interface ReservationToPurchaseExchange {
   /** Fully qualified id of the reservationOrder being purchased */
@@ -1013,9 +1464,19 @@ export interface ReservationToPurchaseExchange {
   /** Status of the individual operation. */
   status?: OperationStatus;
 }
+const ReservationToPurchaseExchange = /*@__PURE__*/ __L.at(
+  __c11,
+  5,
+) as any as S.Schema<ReservationToPurchaseExchange>;
+
 /** Details of the reservations being purchased */
 export type ExchangeResponsePropertiesReservationsToPurchaseList =
   Array<ReservationToPurchaseExchange>;
+const ExchangeResponsePropertiesReservationsToPurchaseList = /*@__PURE__*/ __L.at(
+  __c11,
+  6,
+) as any as S.Schema<ExchangeResponsePropertiesReservationsToPurchaseList>;
+
 /** Savings plan purchase details */
 export interface SavingsPlanToPurchaseExchange {
   /** Fully qualified id of the savings plan order being purchased */
@@ -1029,9 +1490,19 @@ export interface SavingsPlanToPurchaseExchange {
   /** Status of the individual operation. */
   status?: OperationStatus;
 }
+const SavingsPlanToPurchaseExchange = /*@__PURE__*/ __L.at(
+  __c11,
+  7,
+) as any as S.Schema<SavingsPlanToPurchaseExchange>;
+
 /** Details of the savings plans being purchased */
 export type ExchangeResponsePropertiesSavingsPlansToPurchaseList =
   Array<SavingsPlanToPurchaseExchange>;
+const ExchangeResponsePropertiesSavingsPlansToPurchaseList = /*@__PURE__*/ __L.at(
+  __c12,
+  0,
+) as any as S.Schema<ExchangeResponsePropertiesSavingsPlansToPurchaseList>;
+
 /** Reservation refund details */
 export interface ReservationToReturnForExchange {
   /** Fully qualified id of the reservation being returned. */
@@ -1045,9 +1516,19 @@ export interface ReservationToReturnForExchange {
   /** Status of the individual operation. */
   status?: OperationStatus;
 }
+const ReservationToReturnForExchange = /*@__PURE__*/ __L.at(
+  __c12,
+  1,
+) as any as S.Schema<ReservationToReturnForExchange>;
+
 /** Details of the reservations being returned */
 export type ExchangeResponsePropertiesReservationsToExchangeList =
   Array<ReservationToReturnForExchange>;
+const ExchangeResponsePropertiesReservationsToExchangeList = /*@__PURE__*/ __L.at(
+  __c12,
+  2,
+) as any as S.Schema<ExchangeResponsePropertiesReservationsToExchangeList>;
+
 /** Exchange response properties */
 export interface ExchangeResponseProperties {
   /** Exchange session identifier */
@@ -1067,6 +1548,11 @@ export interface ExchangeResponseProperties {
   /** Exchange policy errors */
   policyResult?: ExchangePolicyErrors;
 }
+const ExchangeResponseProperties = /*@__PURE__*/ __L.at(
+  __c12,
+  3,
+) as any as S.Schema<ExchangeResponseProperties>;
+
 /** Exchange operation result */
 export interface ExchangeOperationResultResponse {
   /** It should match what is used to GET the operation result. */
@@ -1080,6 +1566,11 @@ export interface ExchangeOperationResultResponse {
   /** Required if status == failed or status == canceled. */
   error?: OperationResultError;
 }
+const ExchangeOperationResultResponse = /*@__PURE__*/ __L.at(
+  __c12,
+  4,
+) as any as S.Schema<ExchangeOperationResultResponse>;
+
 /** Properties needed for refund request including the session id from calculate refund, the scope, the reservation to be returned and the return reason. */
 export interface RefundRequestProperties {
   /** SessionId that was returned by CalculateRefund API. */
@@ -1091,12 +1582,19 @@ export interface RefundRequestProperties {
   /** The reason of returning the reservation */
   returnReason?: string;
 }
+const RefundRequestProperties = /*@__PURE__*/ __L.at(
+  __c12,
+  5,
+) as any as S.Schema<RefundRequestProperties>;
+
 export interface PostReturnRequest {
   /** Order Id of the reservation */
   reservationOrderId: string;
   /** Properties needed for refund request including the session id from calculate refund, the scope, the reservation to be returned and the return reason. */
   properties?: RefundRequestProperties;
 }
+const PostReturnRequest = /*@__PURE__*/ __L.at(__c12, 6) as any as S.Schema<PostReturnRequest>;
+
 export interface PostReturnResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1110,11 +1608,21 @@ export interface PostReturnResponse {
   properties?: ReservationOrderProperties;
   etag?: number;
 }
+const PostReturnResponse = ReservationOrderResponse as any as S.Schema<PostReturnResponse>;
+
 export type AvailableScopeRequestPropertiesScopesList = Array<string>;
+const AvailableScopeRequestPropertiesScopesList =
+  AppliedReservationListValueList as any as S.Schema<AvailableScopeRequestPropertiesScopesList>;
+
 /** Available scope request properties */
 export interface AvailableScopeRequestProperties {
   scopes?: AvailableScopeRequestPropertiesScopesList;
 }
+const AvailableScopeRequestProperties = /*@__PURE__*/ __L.at(
+  __c12,
+  7,
+) as any as S.Schema<AvailableScopeRequestProperties>;
+
 export interface ReservationAvailableScopesRequest {
   /** Order Id of the reservation */
   reservationOrderId: string;
@@ -1123,21 +1631,43 @@ export interface ReservationAvailableScopesRequest {
   /** Available scope request properties */
   properties?: AvailableScopeRequestProperties;
 }
+const ReservationAvailableScopesRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  0,
+) as any as S.Schema<ReservationAvailableScopesRequest>;
+
 /** The scope and whether it is valid. */
 export interface ScopeProperties {
   scope?: string;
   valid?: boolean;
 }
+const ScopeProperties = /*@__PURE__*/ __L.at(__c13, 1) as any as S.Schema<ScopeProperties>;
+
 export type SubscriptionScopePropertiesScopesList = Array<ScopeProperties>;
+const SubscriptionScopePropertiesScopesList = /*@__PURE__*/ __L.at(
+  __c13,
+  2,
+) as any as S.Schema<SubscriptionScopePropertiesScopesList>;
+
 /** The scopes checked by the available scope api. */
 export interface SubscriptionScopeProperties {
   scopes?: SubscriptionScopePropertiesScopesList;
 }
+const SubscriptionScopeProperties = /*@__PURE__*/ __L.at(
+  __c13,
+  3,
+) as any as S.Schema<SubscriptionScopeProperties>;
+
 /** The response of available scope api containing scopes and their eligibilities. */
 export interface AvailableScopeProperties {
   /** The scopes checked by the available scope api. */
   properties?: SubscriptionScopeProperties;
 }
+const AvailableScopeProperties = /*@__PURE__*/ __L.at(
+  __c13,
+  4,
+) as any as S.Schema<AvailableScopeProperties>;
+
 export interface ReservationOrderCalculateRequest {
   /** The name of sku */
   sku?: SkuName;
@@ -1146,6 +1676,11 @@ export interface ReservationOrderCalculateRequest {
   /** Properties of reservation purchase request */
   properties?: PurchaseRequestProperties;
 }
+const ReservationOrderCalculateRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  5,
+) as any as S.Schema<ReservationOrderCalculateRequest>;
+
 /** Currency and amount that customer will be charged in customer's local currency. Tax is not included. */
 export interface CalculatePriceResponsePropertiesBillingCurrencyTotal {
   /** The ISO 4217 3-letter currency code for the currency used by this purchase record. */
@@ -1153,9 +1688,17 @@ export interface CalculatePriceResponsePropertiesBillingCurrencyTotal {
   /** Amount in pricing currency. Tax is not included. */
   amount?: number;
 }
+const CalculatePriceResponsePropertiesBillingCurrencyTotal = /*@__PURE__*/ __L.at(
+  __c13,
+  6,
+) as any as S.Schema<CalculatePriceResponsePropertiesBillingCurrencyTotal>;
+
 /** Amount that Microsoft uses for record. Used during refund for calculating refund limit. Tax is not included. */
 export type CalculatePriceResponsePropertiesPricingCurrencyTotal = Price;
 export type CalculatePriceResponsePropertiesPaymentScheduleList = Array<PaymentDetail>;
+const CalculatePriceResponsePropertiesPaymentScheduleList =
+  ReservationOrderBillingPlanInformationTransactionsList as any as S.Schema<CalculatePriceResponsePropertiesPaymentScheduleList>;
+
 /** Properties for calculate price response */
 export interface CalculatePriceResponseProperties {
   /** Currency and amount that customer will be charged in customer's local currency. Tax is not included. */
@@ -1180,17 +1723,32 @@ export interface CalculatePriceResponseProperties {
   pricingCurrencyTotal?: Price;
   paymentSchedule?: CalculatePriceResponsePropertiesPaymentScheduleList;
 }
+const CalculatePriceResponseProperties = /*@__PURE__*/ __L.at(
+  __c13,
+  7,
+) as any as S.Schema<CalculatePriceResponseProperties>;
+
 /** The response of calculate price for reservation. */
 export interface CalculatePriceResponse {
   /** Properties for calculate price response */
   properties?: CalculatePriceResponseProperties;
 }
+const CalculatePriceResponse = /*@__PURE__*/ __L.at(
+  __c14,
+  0,
+) as any as S.Schema<CalculatePriceResponse>;
+
 export interface ReservationOrderChangeDirectoryRequest {
   /** Order Id of the reservation */
   reservationOrderId: string;
   /** Tenant id GUID that reservation order is to be transferred to */
   destinationTenantId?: string;
 }
+const ReservationOrderChangeDirectoryRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  1,
+) as any as S.Schema<ReservationOrderChangeDirectoryRequest>;
+
 /** Change directory result for reservation order or reservation */
 export interface ChangeDirectoryResult {
   /** Identifier of the reservation order or reservation */
@@ -1202,13 +1760,28 @@ export interface ChangeDirectoryResult {
   /** Error reason if operation failed. Null otherwise */
   error?: string;
 }
+const ChangeDirectoryResult = /*@__PURE__*/ __L.at(
+  __c14,
+  2,
+) as any as S.Schema<ChangeDirectoryResult>;
+
 export type ChangeDirectoryResponseReservationsList = Array<ChangeDirectoryResult>;
+const ChangeDirectoryResponseReservationsList = /*@__PURE__*/ __L.at(
+  __c14,
+  3,
+) as any as S.Schema<ChangeDirectoryResponseReservationsList>;
+
 /** Change directory response */
 export interface ChangeDirectoryResponse {
   /** Change directory result for reservation order or reservation */
   reservationOrder?: ChangeDirectoryResult;
   reservations?: ChangeDirectoryResponseReservationsList;
 }
+const ChangeDirectoryResponse = /*@__PURE__*/ __L.at(
+  __c14,
+  4,
+) as any as S.Schema<ChangeDirectoryResponse>;
+
 export interface ReservationOrderPurchaseRequest {
   /** Order Id of the reservation */
   reservationOrderId: string;
@@ -1219,6 +1792,11 @@ export interface ReservationOrderPurchaseRequest {
   /** Properties of reservation purchase request */
   properties?: PurchaseRequestProperties;
 }
+const ReservationOrderPurchaseRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  5,
+) as any as S.Schema<ReservationOrderPurchaseRequest>;
+
 export interface ReservationOrderPurchaseResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1232,8 +1810,16 @@ export interface ReservationOrderPurchaseResponse {
   properties?: ReservationOrderProperties;
   etag?: number;
 }
+const ReservationOrderPurchaseResponse =
+  GetReservationOrderResponse as any as S.Schema<ReservationOrderPurchaseResponse>;
+
 /** List of the quantities in the new reservations to create. */
 export type SplitPropertiesQuantitiesList = Array<number>;
+const SplitPropertiesQuantitiesList = /*@__PURE__*/ __L.at(
+  __c14,
+  6,
+) as any as S.Schema<SplitPropertiesQuantitiesList>;
+
 /** Properties for reservation split */
 export interface SplitProperties {
   /** List of the quantities in the new reservations to create. */
@@ -1241,27 +1827,53 @@ export interface SplitProperties {
   /** Resource id of the reservation to be split. Format of the resource id should be /providers/Microsoft.Capacity/reservationOrders/{reservationOrderId}/reservations/{reservationId} */
   reservationId?: string;
 }
+const SplitProperties = /*@__PURE__*/ __L.at(__c14, 7) as any as S.Schema<SplitProperties>;
+
 export interface ReservationSplitRequest {
   /** Order Id of the reservation */
   reservationOrderId: string;
   /** Properties for reservation split */
   properties?: SplitProperties;
 }
+const ReservationSplitRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  0,
+) as any as S.Schema<ReservationSplitRequest>;
+
 export type ReservationSplitResponseBodyList = Array<ReservationResponse>;
 export type ReservationSplitResponse = ReservationSplitResponseBodyList;
+const ReservationSplitResponse =
+  MergeReservationResponse as any as S.Schema<ReservationSplitResponse>;
+
 export interface UnarchiveReservationRequest {
   /** Order Id of the reservation */
   reservationOrderId: string;
   /** Id of the reservation item */
   reservationId: string;
 }
+const UnarchiveReservationRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  1,
+) as any as S.Schema<UnarchiveReservationRequest>;
+
 export interface UnarchiveReservationResponse {}
+const UnarchiveReservationResponse =
+  ArchiveReservationResponse as any as S.Schema<UnarchiveReservationResponse>;
+
 /** List of the subscriptions that the benefit will be applied. Do not specify if AppliedScopeType is Shared. This property will be deprecated and replaced by appliedScopeProperties instead for Single AppliedScopeType. */
 export type PatchPropertiesAppliedScopesList = Array<string>;
+const PatchPropertiesAppliedScopesList =
+  AppliedReservationListValueList as any as S.Schema<PatchPropertiesAppliedScopesList>;
+
 export interface PatchPropertiesRenewProperties {
   /** The request for reservation purchase */
   purchaseProperties?: PurchaseRequest;
 }
+const PatchPropertiesRenewProperties = /*@__PURE__*/ __L.at(
+  __c15,
+  2,
+) as any as S.Schema<PatchPropertiesRenewProperties>;
+
 /** Properties for reservation patch */
 export interface PatchProperties {
   /** Type of the Applied Scope. */
@@ -1280,6 +1892,8 @@ export interface PatchProperties {
   /** This is the date-time when the Azure hybrid benefit needs to be reviewed. */
   reviewDateTime?: string;
 }
+const PatchProperties = /*@__PURE__*/ __L.at(__c15, 3) as any as S.Schema<PatchProperties>;
+
 export interface UpdateReservationRequest {
   /** Order Id of the reservation */
   reservationOrderId: string;
@@ -1288,8 +1902,15 @@ export interface UpdateReservationRequest {
   /** Properties for reservation patch */
   properties?: PatchProperties;
 }
+const UpdateReservationRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  4,
+) as any as S.Schema<UpdateReservationRequest>;
+
 /** Resource Provider type to be reserved. */
 export type UpdateReservationResponseKind = "Microsoft.Compute";
+const UpdateReservationResponseKind = S.String;
+
 export interface UpdateReservationResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1309,6 +1930,11 @@ export interface UpdateReservationResponse {
   /** Resource Provider type to be reserved. */
   kind?: UpdateReservationResponseKind;
 }
+const UpdateReservationResponse = /*@__PURE__*/ __L.at(
+  __c15,
+  5,
+) as any as S.Schema<UpdateReservationResponse>;
+
 export type ArchiveReservationError = AzureOpError;
 /** Archive a `Reservation`. Archiving a `Reservation` moves it to `Archived` state. */
 export const ArchiveReservation: API.OperationMethod<
@@ -1317,8 +1943,8 @@ export const ArchiveReservation: API.OperationMethod<
   ArchiveReservationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<ArchiveReservationRequest>,
-  output: __S(1) as any as S.Schema<ArchiveReservationResponse>,
+  input: ArchiveReservationRequest,
+  output: ArchiveReservationResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1332,8 +1958,8 @@ export const GetAppliedReservationList: API.OperationMethod<
   GetAppliedReservationListError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2) as any as S.Schema<GetAppliedReservationListRequest>,
-  output: __S(6) as any as S.Schema<AppliedReservations>,
+  input: GetAppliedReservationListRequest,
+  output: AppliedReservations,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1347,8 +1973,8 @@ export const GetCatalog: API.OperationMethod<
   GetCatalogError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7) as any as S.Schema<GetCatalogRequest>,
-  output: __S(18) as any as S.Schema<CatalogsResult>,
+  input: GetCatalogRequest,
+  output: CatalogsResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1362,8 +1988,8 @@ export const GetReservation: API.OperationMethod<
   GetReservationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19) as any as S.Schema<GetReservationRequest>,
-  output: __S(35) as any as S.Schema<GetReservationResponse>,
+  input: GetReservationRequest,
+  output: GetReservationResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1377,8 +2003,8 @@ export const GetReservationOrder: API.OperationMethod<
   GetReservationOrderError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36) as any as S.Schema<GetReservationOrderRequest>,
-  output: __S(42) as any as S.Schema<GetReservationOrderResponse>,
+  input: GetReservationOrderRequest,
+  output: GetReservationOrderResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1392,8 +2018,8 @@ export const ListOperation: API.OperationMethod<
   ListOperationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43) as any as S.Schema<ListOperationRequest>,
-  output: __S(47) as any as S.Schema<OperationList>,
+  input: ListOperationRequest,
+  output: OperationList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1407,8 +2033,8 @@ export const ListReservation: API.OperationMethod<
   ListReservationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48) as any as S.Schema<ListReservationRequest>,
-  output: __S(49) as any as S.Schema<ReservationList>,
+  input: ListReservationRequest,
+  output: ReservationList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1422,8 +2048,8 @@ export const ListReservationAll: API.OperationMethod<
   ListReservationAllError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(50) as any as S.Schema<ListReservationAllRequest>,
-  output: __S(52) as any as S.Schema<ReservationsListResult>,
+  input: ListReservationAllRequest,
+  output: ReservationsListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1437,8 +2063,8 @@ export const ListReservationOrder: API.OperationMethod<
   ListReservationOrderError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(53) as any as S.Schema<ListReservationOrderRequest>,
-  output: __S(56) as any as S.Schema<ReservationOrderList>,
+  input: ListReservationOrderRequest,
+  output: ReservationOrderList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1452,8 +2078,8 @@ export const ListReservationRevisions: API.OperationMethod<
   ListReservationRevisionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57) as any as S.Schema<ListReservationRevisionsRequest>,
-  output: __S(49) as any as S.Schema<ReservationList>,
+  input: ListReservationRevisionsRequest,
+  output: ReservationList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1467,8 +2093,8 @@ export const MergeReservation: API.OperationMethod<
   MergeReservationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(59) as any as S.Schema<MergeReservationRequest>,
-  output: __S(60) as any as S.Schema<MergeReservationResponse>,
+  input: MergeReservationRequest,
+  output: MergeReservationResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1482,8 +2108,8 @@ export const PostCalculateExchange: API.OperationMethod<
   PostCalculateExchangeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(69) as any as S.Schema<PostCalculateExchangeRequest>,
-  output: __S(81) as any as S.Schema<CalculateExchangeOperationResultResponse>,
+  input: PostCalculateExchangeRequest,
+  output: CalculateExchangeOperationResultResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1497,8 +2123,8 @@ export const PostCalculateRefund: API.OperationMethod<
   PostCalculateRefundError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(83) as any as S.Schema<PostCalculateRefundRequest>,
-  output: __S(90) as any as S.Schema<CalculateRefundResponse>,
+  input: PostCalculateRefundRequest,
+  output: CalculateRefundResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1512,8 +2138,8 @@ export const PostExchange: API.OperationMethod<
   PostExchangeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(92) as any as S.Schema<PostExchangeRequest>,
-  output: __S(100) as any as S.Schema<ExchangeOperationResultResponse>,
+  input: PostExchangeRequest,
+  output: ExchangeOperationResultResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1527,8 +2153,8 @@ export const PostReturn: API.OperationMethod<
   PostReturnError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(102) as any as S.Schema<PostReturnRequest>,
-  output: __S(54) as any as S.Schema<PostReturnResponse>,
+  input: PostReturnRequest,
+  output: PostReturnResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1542,8 +2168,8 @@ export const ReservationAvailableScopes: API.OperationMethod<
   ReservationAvailableScopesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(104) as any as S.Schema<ReservationAvailableScopesRequest>,
-  output: __S(108) as any as S.Schema<AvailableScopeProperties>,
+  input: ReservationAvailableScopesRequest,
+  output: AvailableScopeProperties,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1557,8 +2183,8 @@ export const ReservationOrderCalculate: API.OperationMethod<
   ReservationOrderCalculateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(109) as any as S.Schema<ReservationOrderCalculateRequest>,
-  output: __S(112) as any as S.Schema<CalculatePriceResponse>,
+  input: ReservationOrderCalculateRequest,
+  output: CalculatePriceResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1572,8 +2198,8 @@ export const ReservationOrderChangeDirectory: API.OperationMethod<
   ReservationOrderChangeDirectoryError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(113) as any as S.Schema<ReservationOrderChangeDirectoryRequest>,
-  output: __S(116) as any as S.Schema<ChangeDirectoryResponse>,
+  input: ReservationOrderChangeDirectoryRequest,
+  output: ChangeDirectoryResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1587,8 +2213,8 @@ export const ReservationOrderPurchase: API.OperationMethod<
   ReservationOrderPurchaseError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(117) as any as S.Schema<ReservationOrderPurchaseRequest>,
-  output: __S(42) as any as S.Schema<ReservationOrderPurchaseResponse>,
+  input: ReservationOrderPurchaseRequest,
+  output: ReservationOrderPurchaseResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1602,8 +2228,8 @@ export const ReservationSplit: API.OperationMethod<
   ReservationSplitError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(120) as any as S.Schema<ReservationSplitRequest>,
-  output: __S(60) as any as S.Schema<ReservationSplitResponse>,
+  input: ReservationSplitRequest,
+  output: ReservationSplitResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1617,8 +2243,8 @@ export const UnarchiveReservation: API.OperationMethod<
   UnarchiveReservationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(121) as any as S.Schema<UnarchiveReservationRequest>,
-  output: __S(1) as any as S.Schema<UnarchiveReservationResponse>,
+  input: UnarchiveReservationRequest,
+  output: UnarchiveReservationResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1632,8 +2258,8 @@ export const UpdateReservation: API.OperationMethod<
   UpdateReservationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(124) as any as S.Schema<UpdateReservationRequest>,
-  output: __S(125) as any as S.Schema<UpdateReservationResponse>,
+  input: UpdateReservationRequest,
+  output: UpdateReservationResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1682,14 +2308,14 @@ function __c0(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(3)),
+          value: S.optional(AppliedReservationListValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "AppliedReservationList" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          reservationOrderIds: S.optional(__S(4)),
+          reservationOrderIds: S.optional(AppliedReservationList),
         }),
       ).annotate({
         identifier: "AppliedReservationsProperties",
@@ -1700,7 +2326,7 @@ function __c0(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(__S(5)),
+          properties: S.optional(AppliedReservationsProperties),
         }),
       ).annotate({ identifier: "AppliedReservations" });
     case 7:
@@ -1729,9 +2355,9 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
+      return S.Array(ReservationBillingPlan);
     case 1:
-      return S.Record(S.String, __S(8));
+      return S.Record(S.String, CatalogBillingPlansValueList);
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -1740,7 +2366,7 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "SkuProperty" });
     case 3:
-      return S.Array(__S(10));
+      return S.Array(SkuProperty);
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -1751,21 +2377,21 @@ function __c1(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          p1Y: S.optional(__S(12)),
-          p3Y: S.optional(__S(12)),
-          p5Y: S.optional(__S(12)),
+          p1Y: S.optional(Price),
+          p3Y: S.optional(Price),
+          p5Y: S.optional(Price),
         }),
       ).annotate({ identifier: "CatalogMsrp" });
     case 6:
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String),
-          values: S.optional(__S(3)),
+          values: S.optional(SkuRestrictionValuesList),
           reasonCode: S.optional(S.String),
         }),
       ).annotate({ identifier: "SkuRestriction" });
     case 7:
-      return S.Array(__S(14));
+      return S.Array(SkuRestriction);
   }
 }
 function __c2(j: number): any {
@@ -1775,23 +2401,23 @@ function __c2(j: number): any {
         S.Struct({
           resourceType: S.optional(S.String),
           name: S.optional(S.String),
-          billingPlans: S.optional(__S(9)),
-          terms: S.optional(__S(8)),
-          locations: S.optional(__S(3)),
-          skuProperties: S.optional(__S(11)),
-          msrp: S.optional(__S(13)),
-          restrictions: S.optional(__S(15)),
+          billingPlans: S.optional(CatalogBillingPlansMap),
+          terms: S.optional(CatalogTermsList),
+          locations: S.optional(CatalogLocationsList),
+          skuProperties: S.optional(CatalogSkuPropertiesList),
+          msrp: S.optional(CatalogMsrp),
+          restrictions: S.optional(CatalogRestrictionsList),
           tier: S.optional(S.String),
           size: S.optional(S.String),
-          capabilities: S.optional(__S(11)),
+          capabilities: S.optional(CatalogCapabilitiesList),
         }),
       ).annotate({ identifier: "Catalog" });
     case 1:
-      return S.Array(__S(16));
+      return S.Array(Catalog);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(17),
+          value: CatalogsResultValueList,
           nextLink: S.optional(S.String),
           totalItems: S.optional(S.Number),
         }),
@@ -1815,24 +2441,24 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
-          createdByType: S.optional(S.String),
+          createdByType: S.optional(SystemDataCreatedByType),
           createdAt: S.optional(S.String),
           lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(S.String),
+          lastModifiedByType: S.optional(SystemDataLastModifiedByType),
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "SystemData" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          statusCode: S.optional(S.String),
+          statusCode: S.optional(ReservationStatusCode),
           message: S.optional(S.String),
         }),
       ).annotate({ identifier: "ExtendedStatusInfo" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          splitDestinations: S.optional(__S(3)),
+          splitDestinations: S.optional(ReservationSplitPropertiesSplitDestinationsList),
           splitSource: S.optional(S.String),
         }),
       ).annotate({
@@ -1842,7 +2468,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           mergeDestination: S.optional(S.String),
-          mergeSources: S.optional(__S(3)),
+          mergeSources: S.optional(ReservationMergePropertiesMergeSourcesList),
         }),
       ).annotate({
         identifier: "ReservationMergeProperties",
@@ -1879,7 +2505,7 @@ function __c3(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          instanceFlexibility: S.optional(S.String),
+          instanceFlexibility: S.optional(InstanceFlexibility),
         }),
       ).annotate({
         identifier: "PurchaseRequestPropertiesReservedResourceProperties",
@@ -1887,17 +2513,19 @@ function __c3(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          reservedResourceType: S.optional(S.String),
+          reservedResourceType: S.optional(ReservedResourceType),
           billingScopeId: S.optional(S.String),
-          term: S.optional(S.String),
-          billingPlan: S.optional(S.String),
+          term: S.optional(ReservationTerm),
+          billingPlan: S.optional(ReservationBillingPlan),
           quantity: S.optional(S.Number),
           displayName: S.optional(S.String),
-          appliedScopeType: S.optional(S.String),
-          appliedScopes: S.optional(__S(3)),
-          appliedScopeProperties: S.optional(__S(25)),
+          appliedScopeType: S.optional(AppliedScopeType),
+          appliedScopes: S.optional(PurchaseRequestPropertiesAppliedScopesList),
+          appliedScopeProperties: S.optional(AppliedScopeProperties),
           renew: S.optional(S.Boolean),
-          reservedResourceProperties: S.optional(__S(27)),
+          reservedResourceProperties: S.optional(
+            PurchaseRequestPropertiesReservedResourceProperties,
+          ),
           reviewDateTime: S.optional(S.String),
         }),
       ).annotate({
@@ -1906,17 +2534,17 @@ function __c3(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          sku: S.optional(__S(26)),
+          sku: S.optional(SkuName),
           location: S.optional(S.String),
-          properties: S.optional(__S(28)),
+          properties: S.optional(PurchaseRequestProperties),
         }),
       ).annotate({ identifier: "PurchaseRequest" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          purchaseProperties: S.optional(__S(29)),
-          pricingCurrencyTotal: S.optional(__S(12)),
-          billingCurrencyTotal: S.optional(__S(12)),
+          purchaseProperties: S.optional(PurchaseRequest),
+          pricingCurrencyTotal: S.optional(Price),
+          billingCurrencyTotal: S.optional(Price),
         }),
       ).annotate({ identifier: "RenewPropertiesResponse" });
     case 7:
@@ -1935,12 +2563,12 @@ function __c3(j: number): any {
 function __c4(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(31));
+      return S.Array(ReservationUtilizationAggregates);
     case 1:
       return S.suspend(() =>
         S.Struct({
           trend: S.optional(S.String),
-          aggregates: S.optional(__S(32)),
+          aggregates: S.optional(ReservationsPropertiesUtilizationAggregatesList),
         }),
       ).annotate({
         identifier: "ReservationsPropertiesUtilization",
@@ -1948,15 +2576,15 @@ function __c4(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          reservedResourceType: S.optional(S.String),
-          instanceFlexibility: S.optional(S.String),
+          reservedResourceType: S.optional(ReservedResourceType),
+          instanceFlexibility: S.optional(InstanceFlexibility),
           displayName: S.optional(S.String),
-          appliedScopes: S.optional(__S(3)),
-          appliedScopeType: S.optional(S.String),
+          appliedScopes: S.optional(ReservationsPropertiesAppliedScopesList),
+          appliedScopeType: S.optional(AppliedScopeType),
           archived: S.optional(S.Boolean),
           capabilities: S.optional(S.String),
           quantity: S.optional(S.Number),
-          provisioningState: S.optional(S.String),
+          provisioningState: S.optional(ProvisioningState),
           effectiveDateTime: S.optional(S.String),
           benefitStartTime: S.optional(S.String),
           lastUpdatedDateTime: S.optional(S.String),
@@ -1964,25 +2592,25 @@ function __c4(j: number): any {
           expiryDateTime: S.optional(S.String),
           reviewDateTime: S.optional(S.String),
           skuDescription: S.optional(S.String),
-          extendedStatusInfo: S.optional(__S(21)),
-          billingPlan: S.optional(S.String),
+          extendedStatusInfo: S.optional(ExtendedStatusInfo),
+          billingPlan: S.optional(ReservationBillingPlan),
           displayProvisioningState: S.optional(S.String),
           provisioningSubState: S.optional(S.String),
           purchaseDate: S.optional(S.String),
           purchaseDateTime: S.optional(S.String),
-          splitProperties: S.optional(__S(22)),
-          mergeProperties: S.optional(__S(23)),
-          swapProperties: S.optional(__S(24)),
-          appliedScopeProperties: S.optional(__S(25)),
+          splitProperties: S.optional(ReservationSplitProperties),
+          mergeProperties: S.optional(ReservationMergeProperties),
+          swapProperties: S.optional(ReservationSwapProperties),
+          appliedScopeProperties: S.optional(AppliedScopeProperties),
           billingScopeId: S.optional(S.String),
           renew: S.optional(S.Boolean),
           renewSource: S.optional(S.String),
           renewDestination: S.optional(S.String),
-          renewProperties: S.optional(__S(30)),
-          term: S.optional(S.String),
+          renewProperties: S.optional(RenewPropertiesResponse),
+          term: S.optional(ReservationTerm),
           userFriendlyAppliedScopeType: S.optional(S.String),
           userFriendlyRenewState: S.optional(S.String),
-          utilization: S.optional(__S(33)),
+          utilization: S.optional(ReservationsPropertiesUtilization),
         }),
       ).annotate({ identifier: "ReservationsProperties" });
     case 3:
@@ -1991,12 +2619,12 @@ function __c4(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(20)),
-          properties: S.optional(__S(34)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(ReservationsProperties),
           location: S.optional(S.String),
           etag: S.optional(S.Number),
-          sku: S.optional(__S(26)),
-          kind: S.optional(S.String),
+          sku: S.optional(SkuName),
+          kind: S.optional(GetReservationResponseKind),
         }),
       ).annotate({ identifier: "GetReservationResponse" });
     case 4:
@@ -2020,22 +2648,22 @@ function __c4(j: number): any {
         S.Struct({
           dueDate: S.optional(S.String),
           paymentDate: S.optional(S.String),
-          pricingCurrencyTotal: S.optional(__S(12)),
-          billingCurrencyTotal: S.optional(__S(12)),
+          pricingCurrencyTotal: S.optional(Price),
+          billingCurrencyTotal: S.optional(Price),
           billingAccount: S.optional(S.String),
-          status: S.optional(S.String),
-          extendedStatusInfo: S.optional(__S(21)),
+          status: S.optional(PaymentStatus),
+          extendedStatusInfo: S.optional(ExtendedStatusInfo),
         }),
       ).annotate({ identifier: "PaymentDetail" });
     case 6:
-      return S.Array(__S(37));
+      return S.Array(PaymentDetail);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          pricingCurrencyTotal: S.optional(__S(12)),
+          pricingCurrencyTotal: S.optional(Price),
           startDate: S.optional(S.String),
           nextPaymentDueDate: S.optional(S.String),
-          transactions: S.optional(__S(38)),
+          transactions: S.optional(ReservationOrderBillingPlanInformationTransactionsList),
         }),
       ).annotate({
         identifier: "ReservationOrderBillingPlanInformation",
@@ -2045,7 +2673,7 @@ function __c4(j: number): any {
 function __c5(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(35));
+      return S.Array(ReservationResponse);
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2056,11 +2684,11 @@ function __c5(j: number): any {
           expiryDateTime: S.optional(S.String),
           benefitStartTime: S.optional(S.String),
           originalQuantity: S.optional(S.Number),
-          term: S.optional(S.String),
-          provisioningState: S.optional(S.String),
-          billingPlan: S.optional(S.String),
-          planInformation: S.optional(__S(39)),
-          reservations: S.optional(__S(40)),
+          term: S.optional(ReservationTerm),
+          provisioningState: S.optional(ProvisioningState),
+          billingPlan: S.optional(ReservationBillingPlan),
+          planInformation: S.optional(ReservationOrderBillingPlanInformation),
+          reservations: S.optional(ReservationOrderPropertiesReservationsList),
           reviewDateTime: S.optional(S.String),
         }),
       ).annotate({
@@ -2072,8 +2700,8 @@ function __c5(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(20)),
-          properties: S.optional(__S(41)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(ReservationOrderProperties),
           etag: S.optional(S.Number),
         }),
       ).annotate({
@@ -2104,17 +2732,17 @@ function __c5(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           isDataAction: S.optional(S.Boolean),
-          display: S.optional(__S(44)),
+          display: S.optional(OperationDisplay),
           origin: S.optional(S.String),
           properties: S.optional(S.Unknown),
         }),
       ).annotate({ identifier: "OperationResponse" });
     case 6:
-      return S.Array(__S(45));
+      return S.Array(OperationResponse);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(46)),
+          value: S.optional(OperationListValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationList" });
@@ -2138,7 +2766,7 @@ function __c6(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(40),
+          value: ReservationListValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ReservationList" });
@@ -2179,9 +2807,9 @@ function __c6(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(40)),
+          value: S.optional(ReservationsListResultValueList),
           nextLink: S.optional(S.String),
-          summary: S.optional(__S(51)),
+          summary: S.optional(ReservationSummary),
         }),
       ).annotate({ identifier: "ReservationsListResult" });
     case 5:
@@ -2203,13 +2831,13 @@ function __c6(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(20)),
-          properties: S.optional(__S(41)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(ReservationOrderProperties),
           etag: S.optional(S.Number),
         }),
       ).annotate({ identifier: "ReservationOrderResponse" });
     case 7:
-      return S.Array(__S(54));
+      return S.Array(ReservationOrderResponse);
   }
 }
 function __c7(j: number): any {
@@ -2217,7 +2845,7 @@ function __c7(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          value: __S(55),
+          value: ReservationOrderListValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ReservationOrderList" });
@@ -2240,14 +2868,14 @@ function __c7(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          sources: S.optional(__S(3)),
+          sources: S.optional(MergePropertiesSourcesList),
         }),
       ).annotate({ identifier: "MergeProperties" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           reservationOrderId: S.String.pipe(T.Label()),
-          properties: S.optional(__S(58)),
+          properties: S.optional(MergeProperties),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2258,17 +2886,17 @@ function __c7(j: number): any {
         ),
       ).annotate({ identifier: "MergeReservationRequest" });
     case 4:
-      return S.suspend(() => __S(40).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => MergeReservationResponseBodyList.pipe(T.RawResponseRoot())).annotate({
         identifier: "MergeReservationResponse",
       });
     case 5:
-      return S.Array(__S(29));
+      return S.Array(PurchaseRequest);
     case 6:
       return S.suspend(() =>
         S.Struct({
           currencyCode: S.optional(S.String),
           amount: S.optional(S.Number),
-          grain: S.optional(S.String),
+          grain: S.optional(CommitmentGrain),
         }),
       ).annotate({ identifier: "Commitment" });
     case 7:
@@ -2276,11 +2904,11 @@ function __c7(j: number): any {
         S.Struct({
           displayName: S.optional(S.String),
           billingScopeId: S.optional(S.String),
-          term: S.optional(S.String),
-          billingPlan: S.optional(S.String),
-          appliedScopeType: S.optional(S.String),
-          appliedScopeProperties: S.optional(__S(25)),
-          commitment: S.optional(__S(62)),
+          term: S.optional(SavingsPlanTerm),
+          billingPlan: S.optional(BillingPlan),
+          appliedScopeType: S.optional(AppliedScopeType),
+          appliedScopeProperties: S.optional(AppliedScopeProperties),
+          commitment: S.optional(Commitment),
         }),
       ).annotate({
         identifier: "SavingsPlanPurchaseRequestProperties",
@@ -2292,14 +2920,14 @@ function __c8(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          sku: S.optional(__S(26)),
-          properties: S.optional(__S(63)),
+          sku: S.optional(SkuName),
+          properties: S.optional(SavingsPlanPurchaseRequestProperties),
         }),
       ).annotate({
         identifier: "SavingsPlanPurchaseRequest",
       });
     case 1:
-      return S.Array(__S(64));
+      return S.Array(SavingsPlanPurchaseRequest);
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -2308,13 +2936,19 @@ function __c8(j: number): any {
         }),
       ).annotate({ identifier: "ReservationToReturn" });
     case 3:
-      return S.Array(__S(66));
+      return S.Array(ReservationToReturn);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          reservationsToPurchase: S.optional(__S(61)),
-          savingsPlansToPurchase: S.optional(__S(65)),
-          reservationsToExchange: S.optional(__S(67)),
+          reservationsToPurchase: S.optional(
+            CalculateExchangeRequestPropertiesReservationsToPurchaseList,
+          ),
+          savingsPlansToPurchase: S.optional(
+            CalculateExchangeRequestPropertiesSavingsPlansToPurchaseList,
+          ),
+          reservationsToExchange: S.optional(
+            CalculateExchangeRequestPropertiesReservationsToExchangeList,
+          ),
         }),
       ).annotate({
         identifier: "CalculateExchangeRequestProperties",
@@ -2322,7 +2956,7 @@ function __c8(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          properties: S.optional(__S(68)),
+          properties: S.optional(CalculateExchangeRequestProperties),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2337,14 +2971,14 @@ function __c8(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          properties: S.optional(__S(29)),
-          billingCurrencyTotal: S.optional(__S(12)),
+          properties: S.optional(PurchaseRequest),
+          billingCurrencyTotal: S.optional(Price),
         }),
       ).annotate({
         identifier: "ReservationToPurchaseCalculateExchange",
       });
     case 7:
-      return S.Array(__S(70));
+      return S.Array(ReservationToPurchaseCalculateExchange);
   }
 }
 function __c9(j: number): any {
@@ -2352,20 +2986,20 @@ function __c9(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          properties: S.optional(__S(64)),
-          billingCurrencyTotal: S.optional(__S(12)),
+          properties: S.optional(SavingsPlanPurchaseRequest),
+          billingCurrencyTotal: S.optional(Price),
         }),
       ).annotate({
         identifier: "SavingsPlanToPurchaseCalculateExchange",
       });
     case 1:
-      return S.Array(__S(72));
+      return S.Array(SavingsPlanToPurchaseCalculateExchange);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          billingCurrencyTotalPaidAmount: S.optional(__S(12)),
-          billingCurrencyProratedAmount: S.optional(__S(12)),
-          billingCurrencyRemainingCommitmentAmount: S.optional(__S(12)),
+          billingCurrencyTotalPaidAmount: S.optional(Price),
+          billingCurrencyProratedAmount: S.optional(Price),
+          billingCurrencyRemainingCommitmentAmount: S.optional(Price),
         }),
       ).annotate({ identifier: "BillingInformation" });
     case 3:
@@ -2373,12 +3007,12 @@ function __c9(j: number): any {
         S.Struct({
           reservationId: S.optional(S.String),
           quantity: S.optional(S.Number),
-          billingRefundAmount: S.optional(__S(12)),
-          billingInformation: S.optional(__S(74)),
+          billingRefundAmount: S.optional(Price),
+          billingInformation: S.optional(BillingInformation),
         }),
       ).annotate({ identifier: "ReservationToExchange" });
     case 4:
-      return S.Array(__S(75));
+      return S.Array(ReservationToExchange);
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -2387,11 +3021,11 @@ function __c9(j: number): any {
         }),
       ).annotate({ identifier: "ExchangePolicyError" });
     case 6:
-      return S.Array(__S(77));
+      return S.Array(ExchangePolicyError);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          policyErrors: S.optional(__S(78)),
+          policyErrors: S.optional(ExchangePolicyErrorsPolicyErrorsList),
         }),
       ).annotate({ identifier: "ExchangePolicyErrors" });
   }
@@ -2402,13 +3036,19 @@ function __c10(j: number): any {
       return S.suspend(() =>
         S.Struct({
           sessionId: S.optional(S.String),
-          netPayable: S.optional(__S(12)),
-          refundsTotal: S.optional(__S(12)),
-          purchasesTotal: S.optional(__S(12)),
-          reservationsToPurchase: S.optional(__S(71)),
-          savingsPlansToPurchase: S.optional(__S(73)),
-          reservationsToExchange: S.optional(__S(76)),
-          policyResult: S.optional(__S(79)),
+          netPayable: S.optional(Price),
+          refundsTotal: S.optional(Price),
+          purchasesTotal: S.optional(Price),
+          reservationsToPurchase: S.optional(
+            CalculateExchangeResponsePropertiesReservationsToPurchaseList,
+          ),
+          savingsPlansToPurchase: S.optional(
+            CalculateExchangeResponsePropertiesSavingsPlansToPurchaseList,
+          ),
+          reservationsToExchange: S.optional(
+            CalculateExchangeResponsePropertiesReservationsToExchangeList,
+          ),
+          policyResult: S.optional(ExchangePolicyErrors),
         }),
       ).annotate({
         identifier: "CalculateExchangeResponseProperties",
@@ -2418,9 +3058,9 @@ function __c10(j: number): any {
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
-          status: S.optional(S.String),
-          properties: S.optional(__S(80)),
-          error: S.optional(__S(77)),
+          status: S.optional(CalculateExchangeOperationResultStatus),
+          properties: S.optional(CalculateExchangeResponseProperties),
+          error: S.optional(OperationResultError),
         }),
       ).annotate({
         identifier: "CalculateExchangeOperationResultResponse",
@@ -2429,7 +3069,7 @@ function __c10(j: number): any {
       return S.suspend(() =>
         S.Struct({
           scope: S.optional(S.String),
-          reservationToReturn: S.optional(__S(66)),
+          reservationToReturn: S.optional(ReservationToReturn),
         }),
       ).annotate({
         identifier: "CalculateRefundRequestProperties",
@@ -2439,7 +3079,7 @@ function __c10(j: number): any {
         S.Struct({
           reservationOrderId: S.String.pipe(T.Label()),
           id: S.optional(S.String),
-          properties: S.optional(__S(82)),
+          properties: S.optional(CalculateRefundRequestProperties),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2454,18 +3094,18 @@ function __c10(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          code: S.optional(S.String),
+          code: S.optional(ErrorResponseCode),
           message: S.optional(S.String),
         }),
       ).annotate({ identifier: "RefundPolicyError" });
     case 5:
-      return S.Array(__S(84));
+      return S.Array(RefundPolicyError);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          consumedRefundsTotal: S.optional(__S(12)),
-          maxRefundLimit: S.optional(__S(12)),
-          policyErrors: S.optional(__S(85)),
+          consumedRefundsTotal: S.optional(Price),
+          maxRefundLimit: S.optional(Price),
+          policyErrors: S.optional(RefundPolicyResultPropertyPolicyErrorsList),
         }),
       ).annotate({
         identifier: "RefundPolicyResultProperty",
@@ -2473,7 +3113,7 @@ function __c10(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          properties: S.optional(__S(86)),
+          properties: S.optional(RefundPolicyResultProperty),
         }),
       ).annotate({ identifier: "RefundPolicyResult" });
   }
@@ -2483,12 +3123,12 @@ function __c11(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          billingPlan: S.optional(S.String),
+          billingPlan: S.optional(ReservationBillingPlan),
           completedTransactions: S.optional(S.Number),
           totalTransactions: S.optional(S.Number),
-          billingCurrencyTotalPaidAmount: S.optional(__S(12)),
-          billingCurrencyProratedAmount: S.optional(__S(12)),
-          billingCurrencyRemainingCommitmentAmount: S.optional(__S(12)),
+          billingCurrencyTotalPaidAmount: S.optional(Price),
+          billingCurrencyProratedAmount: S.optional(Price),
+          billingCurrencyRemainingCommitmentAmount: S.optional(Price),
         }),
       ).annotate({ identifier: "RefundBillingInformation" });
     case 1:
@@ -2496,17 +3136,17 @@ function __c11(j: number): any {
         S.Struct({
           sessionId: S.optional(S.String),
           quantity: S.optional(S.Number),
-          billingRefundAmount: S.optional(__S(12)),
-          pricingRefundAmount: S.optional(__S(12)),
-          policyResult: S.optional(__S(87)),
-          billingInformation: S.optional(__S(88)),
+          billingRefundAmount: S.optional(Price),
+          pricingRefundAmount: S.optional(Price),
+          policyResult: S.optional(RefundPolicyResult),
+          billingInformation: S.optional(RefundBillingInformation),
         }),
       ).annotate({ identifier: "RefundResponseProperties" });
     case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
-          properties: S.optional(__S(89)),
+          properties: S.optional(RefundResponseProperties),
         }),
       ).annotate({ identifier: "CalculateRefundResponse" });
     case 3:
@@ -2520,7 +3160,7 @@ function __c11(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          properties: S.optional(__S(91)),
+          properties: S.optional(ExchangeRequestProperties),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2535,23 +3175,23 @@ function __c11(j: number): any {
         S.Struct({
           reservationOrderId: S.optional(S.String),
           reservationId: S.optional(S.String),
-          properties: S.optional(__S(29)),
-          billingCurrencyTotal: S.optional(__S(12)),
-          status: S.optional(S.String),
+          properties: S.optional(PurchaseRequest),
+          billingCurrencyTotal: S.optional(Price),
+          status: S.optional(OperationStatus),
         }),
       ).annotate({
         identifier: "ReservationToPurchaseExchange",
       });
     case 6:
-      return S.Array(__S(93));
+      return S.Array(ReservationToPurchaseExchange);
     case 7:
       return S.suspend(() =>
         S.Struct({
           savingsPlanOrderId: S.optional(S.String),
           savingsPlanId: S.optional(S.String),
-          properties: S.optional(__S(64)),
-          billingCurrencyTotal: S.optional(__S(12)),
-          status: S.optional(S.String),
+          properties: S.optional(SavingsPlanPurchaseRequest),
+          billingCurrencyTotal: S.optional(Price),
+          status: S.optional(OperationStatus),
         }),
       ).annotate({
         identifier: "SavingsPlanToPurchaseExchange",
@@ -2561,32 +3201,32 @@ function __c11(j: number): any {
 function __c12(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(95));
+      return S.Array(SavingsPlanToPurchaseExchange);
     case 1:
       return S.suspend(() =>
         S.Struct({
           reservationId: S.optional(S.String),
           quantity: S.optional(S.Number),
-          billingRefundAmount: S.optional(__S(12)),
-          billingInformation: S.optional(__S(74)),
-          status: S.optional(S.String),
+          billingRefundAmount: S.optional(Price),
+          billingInformation: S.optional(BillingInformation),
+          status: S.optional(OperationStatus),
         }),
       ).annotate({
         identifier: "ReservationToReturnForExchange",
       });
     case 2:
-      return S.Array(__S(97));
+      return S.Array(ReservationToReturnForExchange);
     case 3:
       return S.suspend(() =>
         S.Struct({
           sessionId: S.optional(S.String),
-          netPayable: S.optional(__S(12)),
-          refundsTotal: S.optional(__S(12)),
-          purchasesTotal: S.optional(__S(12)),
-          reservationsToPurchase: S.optional(__S(94)),
-          savingsPlansToPurchase: S.optional(__S(96)),
-          reservationsToExchange: S.optional(__S(98)),
-          policyResult: S.optional(__S(79)),
+          netPayable: S.optional(Price),
+          refundsTotal: S.optional(Price),
+          purchasesTotal: S.optional(Price),
+          reservationsToPurchase: S.optional(ExchangeResponsePropertiesReservationsToPurchaseList),
+          savingsPlansToPurchase: S.optional(ExchangeResponsePropertiesSavingsPlansToPurchaseList),
+          reservationsToExchange: S.optional(ExchangeResponsePropertiesReservationsToExchangeList),
+          policyResult: S.optional(ExchangePolicyErrors),
         }),
       ).annotate({
         identifier: "ExchangeResponseProperties",
@@ -2596,9 +3236,9 @@ function __c12(j: number): any {
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
-          status: S.optional(S.String),
-          properties: S.optional(__S(99)),
-          error: S.optional(__S(77)),
+          status: S.optional(ExchangeOperationResultStatus),
+          properties: S.optional(ExchangeResponseProperties),
+          error: S.optional(OperationResultError),
         }),
       ).annotate({
         identifier: "ExchangeOperationResultResponse",
@@ -2608,7 +3248,7 @@ function __c12(j: number): any {
         S.Struct({
           sessionId: S.optional(S.String),
           scope: S.optional(S.String),
-          reservationToReturn: S.optional(__S(66)),
+          reservationToReturn: S.optional(ReservationToReturn),
           returnReason: S.optional(S.String),
         }),
       ).annotate({ identifier: "RefundRequestProperties" });
@@ -2616,7 +3256,7 @@ function __c12(j: number): any {
       return S.suspend(() =>
         S.Struct({
           reservationOrderId: S.String.pipe(T.Label()),
-          properties: S.optional(__S(101)),
+          properties: S.optional(RefundRequestProperties),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2629,7 +3269,7 @@ function __c12(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          scopes: S.optional(__S(3)),
+          scopes: S.optional(AvailableScopeRequestPropertiesScopesList),
         }),
       ).annotate({
         identifier: "AvailableScopeRequestProperties",
@@ -2643,7 +3283,7 @@ function __c13(j: number): any {
         S.Struct({
           reservationOrderId: S.String.pipe(T.Label()),
           reservationId: S.String.pipe(T.Label()),
-          properties: S.optional(__S(103)),
+          properties: S.optional(AvailableScopeRequestProperties),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2663,11 +3303,11 @@ function __c13(j: number): any {
         }),
       ).annotate({ identifier: "ScopeProperties" });
     case 2:
-      return S.Array(__S(105));
+      return S.Array(ScopeProperties);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          scopes: S.optional(__S(106)),
+          scopes: S.optional(SubscriptionScopePropertiesScopesList),
         }),
       ).annotate({
         identifier: "SubscriptionScopeProperties",
@@ -2675,15 +3315,15 @@ function __c13(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          properties: S.optional(__S(107)),
+          properties: S.optional(SubscriptionScopeProperties),
         }),
       ).annotate({ identifier: "AvailableScopeProperties" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          sku: S.optional(__S(26)),
+          sku: S.optional(SkuName),
           location: S.optional(S.String),
-          properties: S.optional(__S(28)),
+          properties: S.optional(PurchaseRequestProperties),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2707,7 +3347,7 @@ function __c13(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          billingCurrencyTotal: S.optional(__S(110)),
+          billingCurrencyTotal: S.optional(CalculatePriceResponsePropertiesBillingCurrencyTotal),
           netTotal: S.optional(S.Number),
           taxTotal: S.optional(S.Number),
           grandTotal: S.optional(S.Number),
@@ -2716,8 +3356,8 @@ function __c13(j: number): any {
           reservationOrderId: S.optional(S.String),
           skuTitle: S.optional(S.String),
           skuDescription: S.optional(S.String),
-          pricingCurrencyTotal: S.optional(__S(12)),
-          paymentSchedule: S.optional(__S(38)),
+          pricingCurrencyTotal: S.optional(Price),
+          paymentSchedule: S.optional(CalculatePriceResponsePropertiesPaymentScheduleList),
         }),
       ).annotate({
         identifier: "CalculatePriceResponseProperties",
@@ -2729,7 +3369,7 @@ function __c14(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          properties: S.optional(__S(111)),
+          properties: S.optional(CalculatePriceResponseProperties),
         }),
       ).annotate({ identifier: "CalculatePriceResponse" });
     case 1:
@@ -2758,21 +3398,21 @@ function __c14(j: number): any {
         }),
       ).annotate({ identifier: "ChangeDirectoryResult" });
     case 3:
-      return S.Array(__S(114));
+      return S.Array(ChangeDirectoryResult);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          reservationOrder: S.optional(__S(114)),
-          reservations: S.optional(__S(115)),
+          reservationOrder: S.optional(ChangeDirectoryResult),
+          reservations: S.optional(ChangeDirectoryResponseReservationsList),
         }),
       ).annotate({ identifier: "ChangeDirectoryResponse" });
     case 5:
       return S.suspend(() =>
         S.Struct({
           reservationOrderId: S.String.pipe(T.Label()),
-          sku: S.optional(__S(26)),
+          sku: S.optional(SkuName),
           location: S.optional(S.String),
-          properties: S.optional(__S(28)),
+          properties: S.optional(PurchaseRequestProperties),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2789,7 +3429,7 @@ function __c14(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          quantities: S.optional(__S(118)),
+          quantities: S.optional(SplitPropertiesQuantitiesList),
           reservationId: S.optional(S.String),
         }),
       ).annotate({ identifier: "SplitProperties" });
@@ -2801,7 +3441,7 @@ function __c15(j: number): any {
       return S.suspend(() =>
         S.Struct({
           reservationOrderId: S.String.pipe(T.Label()),
-          properties: S.optional(__S(119)),
+          properties: S.optional(SplitProperties),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2830,7 +3470,7 @@ function __c15(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          purchaseProperties: S.optional(__S(29)),
+          purchaseProperties: S.optional(PurchaseRequest),
         }),
       ).annotate({
         identifier: "PatchPropertiesRenewProperties",
@@ -2838,13 +3478,13 @@ function __c15(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          appliedScopeType: S.optional(S.String),
-          appliedScopes: S.optional(__S(3)),
-          appliedScopeProperties: S.optional(__S(25)),
-          instanceFlexibility: S.optional(S.String),
+          appliedScopeType: S.optional(AppliedScopeType),
+          appliedScopes: S.optional(PatchPropertiesAppliedScopesList),
+          appliedScopeProperties: S.optional(AppliedScopeProperties),
+          instanceFlexibility: S.optional(InstanceFlexibility),
           name: S.optional(S.String),
           renew: S.optional(S.Boolean),
-          renewProperties: S.optional(__S(122)),
+          renewProperties: S.optional(PatchPropertiesRenewProperties),
           reviewDateTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "PatchProperties" });
@@ -2853,7 +3493,7 @@ function __c15(j: number): any {
         S.Struct({
           reservationOrderId: S.String.pipe(T.Label()),
           reservationId: S.String.pipe(T.Label()),
-          properties: S.optional(__S(123)),
+          properties: S.optional(PatchProperties),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2869,56 +3509,15 @@ function __c15(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(20)),
-          properties: S.optional(__S(34)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(ReservationsProperties),
           location: S.optional(S.String),
           etag: S.optional(S.Number),
-          sku: S.optional(__S(26)),
-          kind: S.optional(S.String),
+          sku: S.optional(SkuName),
+          kind: S.optional(UpdateReservationResponseKind),
         }),
       ).annotate({
         identifier: "UpdateReservationResponse",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
-    case 9:
-      return __c9(i & 7);
-    case 10:
-      return __c10(i & 7);
-    case 11:
-      return __c11(i & 7);
-    case 12:
-      return __c12(i & 7);
-    case 13:
-      return __c13(i & 7);
-    case 14:
-      return __c14(i & 7);
-    case 15:
-      return __c15(i & 7);
   }
 }

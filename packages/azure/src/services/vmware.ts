@@ -7,13 +7,13 @@ import { UnknownAzureError } from "../errors.ts";
 import { AzureProtocol, type AzureOpError, type AzureOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { AzureOpError, AzureOpContext };
 
 /** Addon type */
 export type AddonType = "SRM" | "VR" | "HCX" | "Arc";
+const AddonType = S.String;
+
 /** The properties of an addon */
 export interface AddonPropertiesInput {
   /** Addon type */
@@ -27,6 +27,8 @@ export interface AddonPropertiesInput {
   /** Arc addon: the VMware vCenter resource ID. */
   vCenter?: string;
 }
+const AddonPropertiesInput = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<AddonPropertiesInput>;
+
 export interface AddonsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -39,10 +41,19 @@ export interface AddonsCreateOrUpdateRequest {
   /** The resource-specific properties for this resource. */
   properties?: AddonPropertiesInput;
 }
+const AddonsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<AddonsCreateOrUpdateRequest>;
+
 /** The type of identity that created the resource. */
 export type SystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
+const SystemDataCreatedByType = S.String;
+
 /** The type of identity that last modified the resource. */
 export type SystemDataLastModifiedByType = "User" | "Application" | "ManagedIdentity" | "Key";
+const SystemDataLastModifiedByType = S.String;
+
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface SystemData {
   /** The identity that created the resource. */
@@ -58,6 +69,8 @@ export interface SystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const SystemData = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<SystemData>;
+
 /** Addon provisioning state */
 export type AddonProvisioningState =
   | "Succeeded"
@@ -67,6 +80,8 @@ export type AddonProvisioningState =
   | "Building"
   | "Deleting"
   | "Updating";
+const AddonProvisioningState = S.String;
+
 /** The properties of an addon */
 export interface AddonProperties {
   /** Addon type */
@@ -82,6 +97,8 @@ export interface AddonProperties {
   /** Arc addon: the VMware vCenter resource ID. */
   vCenter?: string;
 }
+const AddonProperties = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<AddonProperties>;
+
 export interface AddonsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -94,11 +111,21 @@ export interface AddonsCreateOrUpdateResponse {
   /** The resource-specific properties for this resource. */
   properties?: AddonProperties;
 }
+const AddonsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<AddonsCreateOrUpdateResponse>;
+
 /** The properties of an ExpressRoute Circuit Authorization resource */
 export interface ExpressRouteAuthorizationPropertiesInput {
   /** The ID of the ExpressRoute Circuit */
   expressRouteId?: string;
 }
+const ExpressRouteAuthorizationPropertiesInput = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<ExpressRouteAuthorizationPropertiesInput>;
+
 export interface AuthorizationsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -111,12 +138,19 @@ export interface AuthorizationsCreateOrUpdateRequest {
   /** The resource-specific properties for this resource. */
   properties?: ExpressRouteAuthorizationPropertiesInput;
 }
+const AuthorizationsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<AuthorizationsCreateOrUpdateRequest>;
+
 /** Express Route Circuit Authorization provisioning state */
 export type ExpressRouteAuthorizationProvisioningState =
   | "Succeeded"
   | "Failed"
   | "Canceled"
   | "Updating";
+const ExpressRouteAuthorizationProvisioningState = S.String;
+
 /** The properties of an ExpressRoute Circuit Authorization resource */
 export interface ExpressRouteAuthorizationProperties {
   /** The state of the ExpressRoute Circuit Authorization provisioning */
@@ -128,6 +162,11 @@ export interface ExpressRouteAuthorizationProperties {
   /** The ID of the ExpressRoute Circuit */
   expressRouteId?: string;
 }
+const ExpressRouteAuthorizationProperties = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<ExpressRouteAuthorizationProperties>;
+
 export interface AuthorizationsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -140,16 +179,33 @@ export interface AuthorizationsCreateOrUpdateResponse {
   /** The resource-specific properties for this resource. */
   properties?: ExpressRouteAuthorizationProperties;
 }
+const AuthorizationsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<AuthorizationsCreateOrUpdateResponse>;
+
 export interface CheckLocationQuotaAvailabilityRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the Azure region. */
   location: string;
 }
+const CheckLocationQuotaAvailabilityRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<CheckLocationQuotaAvailabilityRequest>;
+
 /** Remaining hosts quota by sku type */
 export type QuotaHostsRemainingMap = { [key: string]: number | undefined };
+const QuotaHostsRemainingMap = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<QuotaHostsRemainingMap>;
+
 /** quota enabled */
 export type QuotaEnabled = "Enabled" | "Disabled";
+const QuotaEnabled = S.String;
+
 /** Subscription quotas */
 export interface Quota {
   /** Remaining hosts quota by sku type */
@@ -157,8 +213,12 @@ export interface Quota {
   /** Host quota is active for current subscription */
   quotaEnabled?: QuotaEnabled;
 }
+const Quota = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<Quota>;
+
 /** This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT. */
 export type SkuTier = "Free" | "Basic" | "Standard" | "Premium";
+const SkuTier = S.String;
+
 export interface CheckLocationTrialAvailabilityRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -174,8 +234,15 @@ export interface CheckLocationTrialAvailabilityRequest {
   /** If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted. */
   capacity?: number;
 }
+const CheckLocationTrialAvailabilityRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<CheckLocationTrialAvailabilityRequest>;
+
 /** trial status */
 export type TrialStatus = "TrialAvailable" | "TrialUsed" | "TrialDisabled";
+const TrialStatus = S.String;
+
 /** Subscription trial availability */
 export interface Trial {
   /** Trial status */
@@ -183,6 +250,8 @@ export interface Trial {
   /** Number of trial hosts available */
   availableHosts?: number;
 }
+const Trial = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<Trial>;
+
 export interface CheckServiceComponentAvailabilityRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -191,12 +260,27 @@ export interface CheckServiceComponentAvailabilityRequest {
   /** A service component */
   serviceComponentName: string;
 }
+const CheckServiceComponentAvailabilityRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<CheckServiceComponentAvailabilityRequest>;
+
 export interface CheckServiceComponentAvailabilityResponse {}
+const CheckServiceComponentAvailabilityResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<CheckServiceComponentAvailabilityResponse>;
+
 /** The properties of a cloud link. */
 export interface CloudLinkPropertiesInput {
   /** Identifier of the other private cloud participating in the link. */
   linkedCloud?: string;
 }
+const CloudLinkPropertiesInput = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<CloudLinkPropertiesInput>;
+
 export interface CloudLinksCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -209,10 +293,19 @@ export interface CloudLinksCreateOrUpdateRequest {
   /** The resource-specific properties for this resource. */
   properties?: CloudLinkPropertiesInput;
 }
+const CloudLinksCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<CloudLinksCreateOrUpdateRequest>;
+
 /** cloud link provisioning state */
 export type CloudLinkProvisioningState = "Succeeded" | "Failed" | "Canceled";
+const CloudLinkProvisioningState = S.String;
+
 /** Cloud Link status */
 export type CloudLinkStatus = "Active" | "Building" | "Deleting" | "Failed" | "Disconnected";
+const CloudLinkStatus = S.String;
+
 /** The properties of a cloud link. */
 export interface CloudLinkProperties {
   /** The provisioning state of the resource. */
@@ -222,6 +315,8 @@ export interface CloudLinkProperties {
   /** Identifier of the other private cloud participating in the link. */
   linkedCloud?: string;
 }
+const CloudLinkProperties = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<CloudLinkProperties>;
+
 export interface CloudLinksCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -234,8 +329,18 @@ export interface CloudLinksCreateOrUpdateResponse {
   /** The resource-specific properties for this resource. */
   properties?: CloudLinkProperties;
 }
+const CloudLinksCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<CloudLinksCreateOrUpdateResponse>;
+
 /** The hosts */
 export type ClusterPropertiesInputHostsList = Array<string>;
+const ClusterPropertiesInputHostsList = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<ClusterPropertiesInputHostsList>;
+
 /** The properties of a cluster */
 export interface ClusterPropertiesInput {
   /** The cluster size */
@@ -245,6 +350,11 @@ export interface ClusterPropertiesInput {
   /** Name of the vsan datastore associated with the cluster */
   vsanDatastoreName?: string;
 }
+const ClusterPropertiesInput = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<ClusterPropertiesInput>;
+
 /** The resource model definition representing SKU */
 export interface ClustersCreateOrUpdateRequestSku {
   /** The name of the SKU. E.g. P3. It is typically a letter+number code */
@@ -257,6 +367,11 @@ export interface ClustersCreateOrUpdateRequestSku {
   /** If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted. */
   capacity?: number;
 }
+const ClustersCreateOrUpdateRequestSku = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<ClustersCreateOrUpdateRequestSku>;
+
 export interface ClustersCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -271,6 +386,11 @@ export interface ClustersCreateOrUpdateRequest {
   /** The resource model definition representing SKU */
   sku: ClustersCreateOrUpdateRequestSku;
 }
+const ClustersCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<ClustersCreateOrUpdateRequest>;
+
 /** Cluster provisioning state */
 export type ClusterProvisioningState =
   | "Succeeded"
@@ -279,8 +399,13 @@ export type ClusterProvisioningState =
   | "Cancelled"
   | "Deleting"
   | "Updating";
+const ClusterProvisioningState = S.String;
+
 /** The hosts */
 export type ClusterPropertiesHostsList = Array<string>;
+const ClusterPropertiesHostsList =
+  ClusterPropertiesInputHostsList as any as S.Schema<ClusterPropertiesHostsList>;
+
 /** The properties of a cluster */
 export interface ClusterProperties {
   /** The cluster size */
@@ -294,6 +419,8 @@ export interface ClusterProperties {
   /** Name of the vsan datastore associated with the cluster */
   vsanDatastoreName?: string;
 }
+const ClusterProperties = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<ClusterProperties>;
+
 /** The resource model definition representing SKU */
 export interface ClustersCreateOrUpdateResponseSku {
   /** The name of the SKU. E.g. P3. It is typically a letter+number code */
@@ -306,6 +433,9 @@ export interface ClustersCreateOrUpdateResponseSku {
   /** If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted. */
   capacity?: number;
 }
+const ClustersCreateOrUpdateResponseSku =
+  ClustersCreateOrUpdateRequestSku as any as S.Schema<ClustersCreateOrUpdateResponseSku>;
+
 export interface ClustersCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -320,10 +450,20 @@ export interface ClustersCreateOrUpdateResponse {
   /** The resource model definition representing SKU */
   sku: ClustersCreateOrUpdateResponseSku;
 }
+const ClustersCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<ClustersCreateOrUpdateResponse>;
+
 /** Type of DHCP: SERVER or RELAY. */
 export type DhcpTypeEnum = "SERVER" | "RELAY";
+const DhcpTypeEnum = S.String;
+
 /** DNS Server IP array of the DNS Zone. */
 export type WorkloadNetworkDnsZonePropertiesInputDnsServerIpsList = Array<string>;
+const WorkloadNetworkDnsZonePropertiesInputDnsServerIpsList =
+  ClusterPropertiesInputHostsList as any as S.Schema<WorkloadNetworkDnsZonePropertiesInputDnsServerIpsList>;
+
 /** Base class for WorkloadNetworkDhcpServer and WorkloadNetworkDhcpRelay to inherit from */
 export interface WorkloadNetworkDhcpEntityInput {
   /** Type of DHCP: SERVER or RELAY. */
@@ -339,6 +479,11 @@ export interface WorkloadNetworkDhcpEntityInput {
   /** RELAY: DHCP relay server addresses. */
   serverAddresses?: WorkloadNetworkDnsZonePropertiesInputDnsServerIpsList;
 }
+const WorkloadNetworkDhcpEntityInput = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<WorkloadNetworkDhcpEntityInput>;
+
 export interface CreateWorkloadNetworkDhcpRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -351,8 +496,16 @@ export interface CreateWorkloadNetworkDhcpRequest {
   /** The resource-specific properties for this resource. */
   properties?: WorkloadNetworkDhcpEntityInput;
 }
+const CreateWorkloadNetworkDhcpRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<CreateWorkloadNetworkDhcpRequest>;
+
 /** NSX Segments consuming DHCP. */
 export type WorkloadNetworkDhcpEntitySegmentsList = Array<string>;
+const WorkloadNetworkDhcpEntitySegmentsList =
+  ClusterPropertiesInputHostsList as any as S.Schema<WorkloadNetworkDhcpEntitySegmentsList>;
+
 /** Workload Network DHCP provisioning state */
 export type WorkloadNetworkDhcpProvisioningState =
   | "Succeeded"
@@ -361,6 +514,8 @@ export type WorkloadNetworkDhcpProvisioningState =
   | "Building"
   | "Deleting"
   | "Updating";
+const WorkloadNetworkDhcpProvisioningState = S.String;
+
 /** Base class for WorkloadNetworkDhcpServer and WorkloadNetworkDhcpRelay to inherit from */
 export interface WorkloadNetworkDhcpEntity {
   /** Type of DHCP: SERVER or RELAY. */
@@ -380,6 +535,11 @@ export interface WorkloadNetworkDhcpEntity {
   /** RELAY: DHCP relay server addresses. */
   serverAddresses?: WorkloadNetworkDnsZonePropertiesInputDnsServerIpsList;
 }
+const WorkloadNetworkDhcpEntity = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<WorkloadNetworkDhcpEntity>;
+
 export interface CreateWorkloadNetworkDhcpResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -392,10 +552,20 @@ export interface CreateWorkloadNetworkDhcpResponse {
   /** The resource-specific properties for this resource. */
   properties?: WorkloadNetworkDhcpEntity;
 }
+const CreateWorkloadNetworkDhcpResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<CreateWorkloadNetworkDhcpResponse>;
+
 /** FQDN zones of the DNS Service. */
 export type WorkloadNetworkDnsServicePropertiesInputFqdnZonesList = Array<string>;
+const WorkloadNetworkDnsServicePropertiesInputFqdnZonesList =
+  ClusterPropertiesInputHostsList as any as S.Schema<WorkloadNetworkDnsServicePropertiesInputFqdnZonesList>;
+
 /** DNS service log level */
 export type DnsServiceLogLevelEnum = "DEBUG" | "INFO" | "WARNING" | "ERROR" | "FATAL";
+const DnsServiceLogLevelEnum = S.String;
+
 /** NSX DNS Service Properties */
 export interface WorkloadNetworkDnsServicePropertiesInput {
   /** Display name of the DNS Service. */
@@ -411,6 +581,11 @@ export interface WorkloadNetworkDnsServicePropertiesInput {
   /** NSX revision number. */
   revision?: number;
 }
+const WorkloadNetworkDnsServicePropertiesInput = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<WorkloadNetworkDnsServicePropertiesInput>;
+
 export interface CreateWorkloadNetworkDnsServiceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -423,10 +598,20 @@ export interface CreateWorkloadNetworkDnsServiceRequest {
   /** The resource-specific properties for this resource. */
   properties?: WorkloadNetworkDnsServicePropertiesInput;
 }
+const CreateWorkloadNetworkDnsServiceRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<CreateWorkloadNetworkDnsServiceRequest>;
+
 /** FQDN zones of the DNS Service. */
 export type WorkloadNetworkDnsServicePropertiesFqdnZonesList = Array<string>;
+const WorkloadNetworkDnsServicePropertiesFqdnZonesList =
+  ClusterPropertiesInputHostsList as any as S.Schema<WorkloadNetworkDnsServicePropertiesFqdnZonesList>;
+
 /** DNS service status */
 export type DnsServiceStatusEnum = "SUCCESS" | "FAILURE";
+const DnsServiceStatusEnum = S.String;
+
 /** Workload Network DNS Service provisioning state */
 export type WorkloadNetworkDnsServiceProvisioningState =
   | "Succeeded"
@@ -435,6 +620,8 @@ export type WorkloadNetworkDnsServiceProvisioningState =
   | "Building"
   | "Deleting"
   | "Updating";
+const WorkloadNetworkDnsServiceProvisioningState = S.String;
+
 /** NSX DNS Service Properties */
 export interface WorkloadNetworkDnsServiceProperties {
   /** Display name of the DNS Service. */
@@ -454,6 +641,11 @@ export interface WorkloadNetworkDnsServiceProperties {
   /** NSX revision number. */
   revision?: number;
 }
+const WorkloadNetworkDnsServiceProperties = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<WorkloadNetworkDnsServiceProperties>;
+
 export interface CreateWorkloadNetworkDnsServiceResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -466,8 +658,16 @@ export interface CreateWorkloadNetworkDnsServiceResponse {
   /** The resource-specific properties for this resource. */
   properties?: WorkloadNetworkDnsServiceProperties;
 }
+const CreateWorkloadNetworkDnsServiceResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<CreateWorkloadNetworkDnsServiceResponse>;
+
 /** Domain names of the DNS Zone. */
 export type WorkloadNetworkDnsZonePropertiesInputDomainList = Array<string>;
+const WorkloadNetworkDnsZonePropertiesInputDomainList =
+  ClusterPropertiesInputHostsList as any as S.Schema<WorkloadNetworkDnsZonePropertiesInputDomainList>;
+
 /** NSX DNS Zone Properties */
 export interface WorkloadNetworkDnsZonePropertiesInput {
   /** Display name of the DNS Zone. */
@@ -483,6 +683,11 @@ export interface WorkloadNetworkDnsZonePropertiesInput {
   /** NSX revision number. */
   revision?: number;
 }
+const WorkloadNetworkDnsZonePropertiesInput = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<WorkloadNetworkDnsZonePropertiesInput>;
+
 export interface CreateWorkloadNetworkDnsZoneRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -495,10 +700,21 @@ export interface CreateWorkloadNetworkDnsZoneRequest {
   /** The resource-specific properties for this resource. */
   properties?: WorkloadNetworkDnsZonePropertiesInput;
 }
+const CreateWorkloadNetworkDnsZoneRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<CreateWorkloadNetworkDnsZoneRequest>;
+
 /** Domain names of the DNS Zone. */
 export type WorkloadNetworkDnsZonePropertiesDomainList = Array<string>;
+const WorkloadNetworkDnsZonePropertiesDomainList =
+  ClusterPropertiesInputHostsList as any as S.Schema<WorkloadNetworkDnsZonePropertiesDomainList>;
+
 /** DNS Server IP array of the DNS Zone. */
 export type WorkloadNetworkDnsZonePropertiesDnsServerIpsList = Array<string>;
+const WorkloadNetworkDnsZonePropertiesDnsServerIpsList =
+  ClusterPropertiesInputHostsList as any as S.Schema<WorkloadNetworkDnsZonePropertiesDnsServerIpsList>;
+
 /** Workload Network DNS Zone provisioning state */
 export type WorkloadNetworkDnsZoneProvisioningState =
   | "Succeeded"
@@ -507,6 +723,8 @@ export type WorkloadNetworkDnsZoneProvisioningState =
   | "Building"
   | "Deleting"
   | "Updating";
+const WorkloadNetworkDnsZoneProvisioningState = S.String;
+
 /** NSX DNS Zone Properties */
 export interface WorkloadNetworkDnsZoneProperties {
   /** Display name of the DNS Zone. */
@@ -524,6 +742,11 @@ export interface WorkloadNetworkDnsZoneProperties {
   /** NSX revision number. */
   revision?: number;
 }
+const WorkloadNetworkDnsZoneProperties = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<WorkloadNetworkDnsZoneProperties>;
+
 export interface CreateWorkloadNetworkDnsZoneResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -536,8 +759,15 @@ export interface CreateWorkloadNetworkDnsZoneResponse {
   /** The resource-specific properties for this resource. */
   properties?: WorkloadNetworkDnsZoneProperties;
 }
+const CreateWorkloadNetworkDnsZoneResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<CreateWorkloadNetworkDnsZoneResponse>;
+
 /** Port Mirroring Direction */
 export type PortMirroringDirectionEnum = "INGRESS" | "EGRESS" | "BIDIRECTIONAL";
+const PortMirroringDirectionEnum = S.String;
+
 /** NSX Port Mirroring Properties */
 export interface WorkloadNetworkPortMirroringPropertiesInput {
   /** Display name of the port mirroring profile. */
@@ -551,6 +781,11 @@ export interface WorkloadNetworkPortMirroringPropertiesInput {
   /** NSX revision number. */
   revision?: number;
 }
+const WorkloadNetworkPortMirroringPropertiesInput = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<WorkloadNetworkPortMirroringPropertiesInput>;
+
 export interface CreateWorkloadNetworkPortMirroringRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -563,8 +798,15 @@ export interface CreateWorkloadNetworkPortMirroringRequest {
   /** The resource-specific properties for this resource. */
   properties?: WorkloadNetworkPortMirroringPropertiesInput;
 }
+const CreateWorkloadNetworkPortMirroringRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<CreateWorkloadNetworkPortMirroringRequest>;
+
 /** Port Mirroring status */
 export type PortMirroringStatusEnum = "SUCCESS" | "FAILURE";
+const PortMirroringStatusEnum = S.String;
+
 /** Workload Network Port Mirroring provisioning state */
 export type WorkloadNetworkPortMirroringProvisioningState =
   | "Succeeded"
@@ -573,6 +815,8 @@ export type WorkloadNetworkPortMirroringProvisioningState =
   | "Building"
   | "Deleting"
   | "Updating";
+const WorkloadNetworkPortMirroringProvisioningState = S.String;
+
 /** NSX Port Mirroring Properties */
 export interface WorkloadNetworkPortMirroringProperties {
   /** Display name of the port mirroring profile. */
@@ -590,6 +834,11 @@ export interface WorkloadNetworkPortMirroringProperties {
   /** NSX revision number. */
   revision?: number;
 }
+const WorkloadNetworkPortMirroringProperties = /*@__PURE__*/ __L.at(
+  __c5,
+  0,
+) as any as S.Schema<WorkloadNetworkPortMirroringProperties>;
+
 export interface CreateWorkloadNetworkPortMirroringResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -602,6 +851,11 @@ export interface CreateWorkloadNetworkPortMirroringResponse {
   /** The resource-specific properties for this resource. */
   properties?: WorkloadNetworkPortMirroringProperties;
 }
+const CreateWorkloadNetworkPortMirroringResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  1,
+) as any as S.Schema<CreateWorkloadNetworkPortMirroringResponse>;
+
 /** NSX Public IP Block Properties */
 export interface WorkloadNetworkPublicIPPropertiesInput {
   /** Display name of the Public IP Block. */
@@ -609,6 +863,11 @@ export interface WorkloadNetworkPublicIPPropertiesInput {
   /** Number of Public IPs requested. */
   numberOfPublicIPs?: number;
 }
+const WorkloadNetworkPublicIPPropertiesInput = /*@__PURE__*/ __L.at(
+  __c5,
+  2,
+) as any as S.Schema<WorkloadNetworkPublicIPPropertiesInput>;
+
 export interface CreateWorkloadNetworkPublicIPRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -621,6 +880,11 @@ export interface CreateWorkloadNetworkPublicIPRequest {
   /** The resource-specific properties for this resource. */
   properties?: WorkloadNetworkPublicIPPropertiesInput;
 }
+const CreateWorkloadNetworkPublicIPRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<CreateWorkloadNetworkPublicIPRequest>;
+
 /** Workload Network Public IP provisioning state */
 export type WorkloadNetworkPublicIPProvisioningState =
   | "Succeeded"
@@ -629,6 +893,8 @@ export type WorkloadNetworkPublicIPProvisioningState =
   | "Building"
   | "Deleting"
   | "Updating";
+const WorkloadNetworkPublicIPProvisioningState = S.String;
+
 /** NSX Public IP Block Properties */
 export interface WorkloadNetworkPublicIPProperties {
   /** Display name of the Public IP Block. */
@@ -640,6 +906,11 @@ export interface WorkloadNetworkPublicIPProperties {
   /** The provisioning state */
   provisioningState?: WorkloadNetworkPublicIPProvisioningState;
 }
+const WorkloadNetworkPublicIPProperties = /*@__PURE__*/ __L.at(
+  __c5,
+  4,
+) as any as S.Schema<WorkloadNetworkPublicIPProperties>;
+
 export interface CreateWorkloadNetworkPublicIPResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -652,8 +923,16 @@ export interface CreateWorkloadNetworkPublicIPResponse {
   /** The resource-specific properties for this resource. */
   properties?: WorkloadNetworkPublicIPProperties;
 }
+const CreateWorkloadNetworkPublicIPResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  5,
+) as any as S.Schema<CreateWorkloadNetworkPublicIPResponse>;
+
 /** DHCP Range assigned for subnet. */
 export type WorkloadNetworkSegmentSubnetDhcpRangesList = Array<string>;
+const WorkloadNetworkSegmentSubnetDhcpRangesList =
+  ClusterPropertiesInputHostsList as any as S.Schema<WorkloadNetworkSegmentSubnetDhcpRangesList>;
+
 /** Subnet configuration for segment */
 export interface WorkloadNetworkSegmentSubnet {
   /** DHCP Range assigned for subnet. */
@@ -661,6 +940,11 @@ export interface WorkloadNetworkSegmentSubnet {
   /** Gateway address. */
   gatewayAddress?: string;
 }
+const WorkloadNetworkSegmentSubnet = /*@__PURE__*/ __L.at(
+  __c5,
+  6,
+) as any as S.Schema<WorkloadNetworkSegmentSubnet>;
+
 /** NSX Segment Properties */
 export interface WorkloadNetworkSegmentPropertiesInput {
   /** Display name of the segment. */
@@ -672,6 +956,11 @@ export interface WorkloadNetworkSegmentPropertiesInput {
   /** NSX revision number. */
   revision?: number;
 }
+const WorkloadNetworkSegmentPropertiesInput = /*@__PURE__*/ __L.at(
+  __c5,
+  7,
+) as any as S.Schema<WorkloadNetworkSegmentPropertiesInput>;
+
 export interface CreateWorkloadNetworkSegmentsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -684,15 +973,32 @@ export interface CreateWorkloadNetworkSegmentsRequest {
   /** The resource-specific properties for this resource. */
   properties?: WorkloadNetworkSegmentPropertiesInput;
 }
+const CreateWorkloadNetworkSegmentsRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<CreateWorkloadNetworkSegmentsRequest>;
+
 /** Ports and any VIF attached to segment. */
 export interface WorkloadNetworkSegmentPortVif {
   /** Name of port or VIF attached to segment. */
   portName?: string;
 }
+const WorkloadNetworkSegmentPortVif = /*@__PURE__*/ __L.at(
+  __c6,
+  1,
+) as any as S.Schema<WorkloadNetworkSegmentPortVif>;
+
 /** Port Vif which segment is associated with. */
 export type WorkloadNetworkSegmentPropertiesPortVifList = Array<WorkloadNetworkSegmentPortVif>;
+const WorkloadNetworkSegmentPropertiesPortVifList = /*@__PURE__*/ __L.at(
+  __c6,
+  2,
+) as any as S.Schema<WorkloadNetworkSegmentPropertiesPortVifList>;
+
 /** Segment status */
 export type SegmentStatusEnum = "SUCCESS" | "FAILURE";
+const SegmentStatusEnum = S.String;
+
 /** Workload Network Segment provisioning state */
 export type WorkloadNetworkSegmentProvisioningState =
   | "Succeeded"
@@ -701,6 +1007,8 @@ export type WorkloadNetworkSegmentProvisioningState =
   | "Building"
   | "Deleting"
   | "Updating";
+const WorkloadNetworkSegmentProvisioningState = S.String;
+
 /** NSX Segment Properties */
 export interface WorkloadNetworkSegmentProperties {
   /** Display name of the segment. */
@@ -718,6 +1026,11 @@ export interface WorkloadNetworkSegmentProperties {
   /** NSX revision number. */
   revision?: number;
 }
+const WorkloadNetworkSegmentProperties = /*@__PURE__*/ __L.at(
+  __c6,
+  3,
+) as any as S.Schema<WorkloadNetworkSegmentProperties>;
+
 export interface CreateWorkloadNetworkSegmentsResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -730,8 +1043,16 @@ export interface CreateWorkloadNetworkSegmentsResponse {
   /** The resource-specific properties for this resource. */
   properties?: WorkloadNetworkSegmentProperties;
 }
+const CreateWorkloadNetworkSegmentsResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  4,
+) as any as S.Schema<CreateWorkloadNetworkSegmentsResponse>;
+
 /** Virtual machine members of this group. */
 export type WorkloadNetworkVMGroupPropertiesInputMembersList = Array<string>;
+const WorkloadNetworkVMGroupPropertiesInputMembersList =
+  ClusterPropertiesInputHostsList as any as S.Schema<WorkloadNetworkVMGroupPropertiesInputMembersList>;
+
 /** NSX VM Group Properties */
 export interface WorkloadNetworkVMGroupPropertiesInput {
   /** Display name of the VM group. */
@@ -741,6 +1062,11 @@ export interface WorkloadNetworkVMGroupPropertiesInput {
   /** NSX revision number. */
   revision?: number;
 }
+const WorkloadNetworkVMGroupPropertiesInput = /*@__PURE__*/ __L.at(
+  __c6,
+  5,
+) as any as S.Schema<WorkloadNetworkVMGroupPropertiesInput>;
+
 export interface CreateWorkloadNetworkVMGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -753,10 +1079,20 @@ export interface CreateWorkloadNetworkVMGroupRequest {
   /** The resource-specific properties for this resource. */
   properties?: WorkloadNetworkVMGroupPropertiesInput;
 }
+const CreateWorkloadNetworkVMGroupRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  6,
+) as any as S.Schema<CreateWorkloadNetworkVMGroupRequest>;
+
 /** Virtual machine members of this group. */
 export type WorkloadNetworkVMGroupPropertiesMembersList = Array<string>;
+const WorkloadNetworkVMGroupPropertiesMembersList =
+  ClusterPropertiesInputHostsList as any as S.Schema<WorkloadNetworkVMGroupPropertiesMembersList>;
+
 /** VM group status */
 export type VMGroupStatusEnum = "SUCCESS" | "FAILURE";
+const VMGroupStatusEnum = S.String;
+
 /** Workload Network VM Group provisioning state */
 export type WorkloadNetworkVMGroupProvisioningState =
   | "Succeeded"
@@ -765,6 +1101,8 @@ export type WorkloadNetworkVMGroupProvisioningState =
   | "Building"
   | "Deleting"
   | "Updating";
+const WorkloadNetworkVMGroupProvisioningState = S.String;
+
 /** NSX VM Group Properties */
 export interface WorkloadNetworkVMGroupProperties {
   /** Display name of the VM group. */
@@ -778,6 +1116,11 @@ export interface WorkloadNetworkVMGroupProperties {
   /** NSX revision number. */
   revision?: number;
 }
+const WorkloadNetworkVMGroupProperties = /*@__PURE__*/ __L.at(
+  __c6,
+  7,
+) as any as S.Schema<WorkloadNetworkVMGroupProperties>;
+
 export interface CreateWorkloadNetworkVMGroupResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -790,13 +1133,22 @@ export interface CreateWorkloadNetworkVMGroupResponse {
   /** The resource-specific properties for this resource. */
   properties?: WorkloadNetworkVMGroupProperties;
 }
+const CreateWorkloadNetworkVMGroupResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  0,
+) as any as S.Schema<CreateWorkloadNetworkVMGroupResponse>;
+
 /** An Azure NetApp Files volume from Microsoft.NetApp provider */
 export interface NetAppVolume {
   /** Azure resource ID of the NetApp volume */
   id: string;
 }
+const NetAppVolume = /*@__PURE__*/ __L.at(__c7, 1) as any as S.Schema<NetAppVolume>;
+
 /** Mode that describes whether the LUN has to be mounted as a datastore or attached as a LUN */
 export type DiskPoolVolumeInputMountOption = "MOUNT" | "ATTACH";
+const DiskPoolVolumeInputMountOption = S.String;
+
 /** An iSCSI volume from Microsoft.StoragePool provider */
 export interface DiskPoolVolumeInput {
   /** Azure resource ID of the iSCSI target */
@@ -806,11 +1158,15 @@ export interface DiskPoolVolumeInput {
   /** Mode that describes whether the LUN has to be mounted as a datastore or attached as a LUN */
   mountOption?: DiskPoolVolumeInputMountOption | (string & {});
 }
+const DiskPoolVolumeInput = /*@__PURE__*/ __L.at(__c7, 2) as any as S.Schema<DiskPoolVolumeInput>;
+
 /** An Elastic SAN volume from Microsoft.ElasticSan provider */
 export interface ElasticSanVolume {
   /** Azure resource ID of the Elastic SAN Volume */
   targetId: string;
 }
+const ElasticSanVolume = /*@__PURE__*/ __L.at(__c7, 3) as any as S.Schema<ElasticSanVolume>;
+
 /** A Pure Storage volume from PureStorage.Block provider */
 export interface PureStorageVolume {
   /** Azure resource ID of the Pure Storage Pool */
@@ -818,6 +1174,8 @@ export interface PureStorageVolume {
   /** Volume size to be used to create a Virtual Volumes (vVols) datastore */
   sizeGb: number;
 }
+const PureStorageVolume = /*@__PURE__*/ __L.at(__c7, 4) as any as S.Schema<PureStorageVolume>;
+
 /** The properties of a datastore */
 export interface DatastorePropertiesInput {
   /** An Azure NetApp Files volume */
@@ -829,6 +1187,11 @@ export interface DatastorePropertiesInput {
   /** A Pure Storage volume */
   pureStorageVolume?: PureStorageVolume;
 }
+const DatastorePropertiesInput = /*@__PURE__*/ __L.at(
+  __c7,
+  5,
+) as any as S.Schema<DatastorePropertiesInput>;
+
 export interface DatastoresCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -843,6 +1206,11 @@ export interface DatastoresCreateOrUpdateRequest {
   /** The resource-specific properties for this resource. */
   properties?: DatastorePropertiesInput;
 }
+const DatastoresCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  6,
+) as any as S.Schema<DatastoresCreateOrUpdateRequest>;
+
 /** datastore provisioning state */
 export type DatastoreProvisioningState =
   | "Succeeded"
@@ -853,8 +1221,12 @@ export type DatastoreProvisioningState =
   | "Creating"
   | "Updating"
   | "Deleting";
+const DatastoreProvisioningState = S.String;
+
 /** Mode that describes whether the LUN has to be mounted as a datastore or attached as a LUN */
 export type DiskPoolVolumeMountOption = "MOUNT" | "ATTACH";
+const DiskPoolVolumeMountOption = S.String;
+
 /** An iSCSI volume from Microsoft.StoragePool provider */
 export interface DiskPoolVolume {
   /** Azure resource ID of the iSCSI target */
@@ -866,6 +1238,8 @@ export interface DiskPoolVolume {
   /** Device path */
   path?: string;
 }
+const DiskPoolVolume = /*@__PURE__*/ __L.at(__c7, 7) as any as S.Schema<DiskPoolVolume>;
+
 /** datastore status */
 export type DatastoreStatus =
   | "Unknown"
@@ -875,6 +1249,8 @@ export type DatastoreStatus =
   | "Detached"
   | "LostCommunication"
   | "DeadOrError";
+const DatastoreStatus = S.String;
+
 /** The properties of a datastore */
 export interface DatastoreProperties {
   /** The state of the datastore provisioning */
@@ -890,6 +1266,8 @@ export interface DatastoreProperties {
   /** The operational status of the datastore */
   status?: DatastoreStatus;
 }
+const DatastoreProperties = /*@__PURE__*/ __L.at(__c8, 0) as any as S.Schema<DatastoreProperties>;
+
 export interface DatastoresCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -902,6 +1280,11 @@ export interface DatastoresCreateOrUpdateResponse {
   /** The resource-specific properties for this resource. */
   properties?: DatastoreProperties;
 }
+const DatastoresCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c8,
+  1,
+) as any as S.Schema<DatastoresCreateOrUpdateResponse>;
+
 export interface DeleteAddonRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -912,7 +1295,11 @@ export interface DeleteAddonRequest {
   /** Name of the addon. */
   addonName: string;
 }
+const DeleteAddonRequest = /*@__PURE__*/ __L.at(__c8, 2) as any as S.Schema<DeleteAddonRequest>;
+
 export interface DeleteAddonResponse {}
+const DeleteAddonResponse = /*@__PURE__*/ __L.at(__c8, 3) as any as S.Schema<DeleteAddonResponse>;
+
 export interface DeleteAuthorizationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -923,7 +1310,15 @@ export interface DeleteAuthorizationRequest {
   /** Name of the ExpressRoute Circuit Authorization */
   authorizationName: string;
 }
+const DeleteAuthorizationRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  4,
+) as any as S.Schema<DeleteAuthorizationRequest>;
+
 export interface DeleteAuthorizationResponse {}
+const DeleteAuthorizationResponse =
+  DeleteAddonResponse as any as S.Schema<DeleteAuthorizationResponse>;
+
 export interface DeleteCloudLinkRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -934,7 +1329,14 @@ export interface DeleteCloudLinkRequest {
   /** Name of the cloud link. */
   cloudLinkName: string;
 }
+const DeleteCloudLinkRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  5,
+) as any as S.Schema<DeleteCloudLinkRequest>;
+
 export interface DeleteCloudLinkResponse {}
+const DeleteCloudLinkResponse = DeleteAddonResponse as any as S.Schema<DeleteCloudLinkResponse>;
+
 export interface DeleteClusterRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -945,7 +1347,11 @@ export interface DeleteClusterRequest {
   /** Name of the cluster */
   clusterName: string;
 }
+const DeleteClusterRequest = /*@__PURE__*/ __L.at(__c8, 6) as any as S.Schema<DeleteClusterRequest>;
+
 export interface DeleteClusterResponse {}
+const DeleteClusterResponse = DeleteAddonResponse as any as S.Schema<DeleteClusterResponse>;
+
 export interface DeleteDatastoreRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -958,7 +1364,14 @@ export interface DeleteDatastoreRequest {
   /** Name of the datastore */
   datastoreName: string;
 }
+const DeleteDatastoreRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  7,
+) as any as S.Schema<DeleteDatastoreRequest>;
+
 export interface DeleteDatastoreResponse {}
+const DeleteDatastoreResponse = DeleteAddonResponse as any as S.Schema<DeleteDatastoreResponse>;
+
 export interface DeleteGlobalReachConnectionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -969,7 +1382,15 @@ export interface DeleteGlobalReachConnectionRequest {
   /** Name of the global reach connection */
   globalReachConnectionName: string;
 }
+const DeleteGlobalReachConnectionRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  0,
+) as any as S.Schema<DeleteGlobalReachConnectionRequest>;
+
 export interface DeleteGlobalReachConnectionResponse {}
+const DeleteGlobalReachConnectionResponse =
+  CheckServiceComponentAvailabilityResponse as any as S.Schema<DeleteGlobalReachConnectionResponse>;
+
 export interface DeleteHcxEnterpriseSiteRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -980,7 +1401,17 @@ export interface DeleteHcxEnterpriseSiteRequest {
   /** Name of the HCX Enterprise Site */
   hcxEnterpriseSiteName: string;
 }
+const DeleteHcxEnterpriseSiteRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  1,
+) as any as S.Schema<DeleteHcxEnterpriseSiteRequest>;
+
 export interface DeleteHcxEnterpriseSiteResponse {}
+const DeleteHcxEnterpriseSiteResponse = /*@__PURE__*/ __L.at(
+  __c9,
+  2,
+) as any as S.Schema<DeleteHcxEnterpriseSiteResponse>;
+
 export interface DeleteIscsiPathRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -989,8 +1420,17 @@ export interface DeleteIscsiPathRequest {
   /** Name of the private cloud */
   privateCloudName: string;
 }
+const DeleteIscsiPathRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  3,
+) as any as S.Schema<DeleteIscsiPathRequest>;
+
 export interface DeleteIscsiPathResponse {}
+const DeleteIscsiPathResponse = DeleteAddonResponse as any as S.Schema<DeleteIscsiPathResponse>;
+
 export type DeleteLicenseRequestLicenseName = "VmwareFirewall";
+const DeleteLicenseRequestLicenseName = S.String;
+
 export interface DeleteLicenseRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1001,7 +1441,11 @@ export interface DeleteLicenseRequest {
   /** Name of the license. */
   licenseName: DeleteLicenseRequestLicenseName | (string & {});
 }
+const DeleteLicenseRequest = /*@__PURE__*/ __L.at(__c9, 4) as any as S.Schema<DeleteLicenseRequest>;
+
 export interface DeleteLicenseResponse {}
+const DeleteLicenseResponse = DeleteAddonResponse as any as S.Schema<DeleteLicenseResponse>;
+
 export interface DeletePlacementPolicyRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1014,7 +1458,15 @@ export interface DeletePlacementPolicyRequest {
   /** Name of the placement policy. */
   placementPolicyName: string;
 }
+const DeletePlacementPolicyRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  5,
+) as any as S.Schema<DeletePlacementPolicyRequest>;
+
 export interface DeletePlacementPolicyResponse {}
+const DeletePlacementPolicyResponse =
+  DeleteAddonResponse as any as S.Schema<DeletePlacementPolicyResponse>;
+
 export interface DeletePrivateCloudRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1023,7 +1475,15 @@ export interface DeletePrivateCloudRequest {
   /** Name of the private cloud */
   privateCloudName: string;
 }
+const DeletePrivateCloudRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  6,
+) as any as S.Schema<DeletePrivateCloudRequest>;
+
 export interface DeletePrivateCloudResponse {}
+const DeletePrivateCloudResponse =
+  DeleteAddonResponse as any as S.Schema<DeletePrivateCloudResponse>;
+
 export interface DeletePureStoragePolicyRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1034,7 +1494,15 @@ export interface DeletePureStoragePolicyRequest {
   /** Name of the storage policy. */
   storagePolicyName: string;
 }
+const DeletePureStoragePolicyRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  7,
+) as any as S.Schema<DeletePureStoragePolicyRequest>;
+
 export interface DeletePureStoragePolicyResponse {}
+const DeletePureStoragePolicyResponse =
+  DeleteHcxEnterpriseSiteResponse as any as S.Schema<DeletePureStoragePolicyResponse>;
+
 export interface DeleteScriptExecutionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1045,7 +1513,15 @@ export interface DeleteScriptExecutionRequest {
   /** Name of the script cmdlet. */
   scriptExecutionName: string;
 }
+const DeleteScriptExecutionRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  0,
+) as any as S.Schema<DeleteScriptExecutionRequest>;
+
 export interface DeleteScriptExecutionResponse {}
+const DeleteScriptExecutionResponse =
+  DeleteAddonResponse as any as S.Schema<DeleteScriptExecutionResponse>;
+
 export interface DeleteWorkloadNetworkDhcpRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1056,7 +1532,15 @@ export interface DeleteWorkloadNetworkDhcpRequest {
   /** The ID of the DHCP configuration */
   dhcpId: string;
 }
+const DeleteWorkloadNetworkDhcpRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  1,
+) as any as S.Schema<DeleteWorkloadNetworkDhcpRequest>;
+
 export interface DeleteWorkloadNetworkDhcpResponse {}
+const DeleteWorkloadNetworkDhcpResponse =
+  CheckServiceComponentAvailabilityResponse as any as S.Schema<DeleteWorkloadNetworkDhcpResponse>;
+
 export interface DeleteWorkloadNetworkDnsServiceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1067,7 +1551,15 @@ export interface DeleteWorkloadNetworkDnsServiceRequest {
   /** ID of the DNS service. */
   dnsServiceId: string;
 }
+const DeleteWorkloadNetworkDnsServiceRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  2,
+) as any as S.Schema<DeleteWorkloadNetworkDnsServiceRequest>;
+
 export interface DeleteWorkloadNetworkDnsServiceResponse {}
+const DeleteWorkloadNetworkDnsServiceResponse =
+  CheckServiceComponentAvailabilityResponse as any as S.Schema<DeleteWorkloadNetworkDnsServiceResponse>;
+
 export interface DeleteWorkloadNetworkDnsZoneRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1078,7 +1570,15 @@ export interface DeleteWorkloadNetworkDnsZoneRequest {
   /** ID of the DNS zone. */
   dnsZoneId: string;
 }
+const DeleteWorkloadNetworkDnsZoneRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  3,
+) as any as S.Schema<DeleteWorkloadNetworkDnsZoneRequest>;
+
 export interface DeleteWorkloadNetworkDnsZoneResponse {}
+const DeleteWorkloadNetworkDnsZoneResponse =
+  CheckServiceComponentAvailabilityResponse as any as S.Schema<DeleteWorkloadNetworkDnsZoneResponse>;
+
 export interface DeleteWorkloadNetworkPortMirroringRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1089,7 +1589,15 @@ export interface DeleteWorkloadNetworkPortMirroringRequest {
   /** ID of the NSX port mirroring profile. */
   portMirroringId: string;
 }
+const DeleteWorkloadNetworkPortMirroringRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  4,
+) as any as S.Schema<DeleteWorkloadNetworkPortMirroringRequest>;
+
 export interface DeleteWorkloadNetworkPortMirroringResponse {}
+const DeleteWorkloadNetworkPortMirroringResponse =
+  CheckServiceComponentAvailabilityResponse as any as S.Schema<DeleteWorkloadNetworkPortMirroringResponse>;
+
 export interface DeleteWorkloadNetworkPublicIPRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1100,7 +1608,15 @@ export interface DeleteWorkloadNetworkPublicIPRequest {
   /** ID of the DNS zone. */
   publicIPId: string;
 }
+const DeleteWorkloadNetworkPublicIPRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  5,
+) as any as S.Schema<DeleteWorkloadNetworkPublicIPRequest>;
+
 export interface DeleteWorkloadNetworkPublicIPResponse {}
+const DeleteWorkloadNetworkPublicIPResponse =
+  CheckServiceComponentAvailabilityResponse as any as S.Schema<DeleteWorkloadNetworkPublicIPResponse>;
+
 export interface DeleteWorkloadNetworkSegmentRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1111,7 +1627,15 @@ export interface DeleteWorkloadNetworkSegmentRequest {
   /** The ID of the NSX Segment */
   segmentId: string;
 }
+const DeleteWorkloadNetworkSegmentRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  6,
+) as any as S.Schema<DeleteWorkloadNetworkSegmentRequest>;
+
 export interface DeleteWorkloadNetworkSegmentResponse {}
+const DeleteWorkloadNetworkSegmentResponse =
+  CheckServiceComponentAvailabilityResponse as any as S.Schema<DeleteWorkloadNetworkSegmentResponse>;
+
 export interface DeleteWorkloadNetworkVMGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1122,7 +1646,15 @@ export interface DeleteWorkloadNetworkVMGroupRequest {
   /** ID of the VM group. */
   vmGroupId: string;
 }
+const DeleteWorkloadNetworkVMGroupRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  7,
+) as any as S.Schema<DeleteWorkloadNetworkVMGroupRequest>;
+
 export interface DeleteWorkloadNetworkVMGroupResponse {}
+const DeleteWorkloadNetworkVMGroupResponse =
+  CheckServiceComponentAvailabilityResponse as any as S.Schema<DeleteWorkloadNetworkVMGroupResponse>;
+
 export interface GetAddonRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1133,6 +1665,8 @@ export interface GetAddonRequest {
   /** Name of the addon. */
   addonName: string;
 }
+const GetAddonRequest = /*@__PURE__*/ __L.at(__c11, 0) as any as S.Schema<GetAddonRequest>;
+
 export interface GetAddonResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1145,6 +1679,8 @@ export interface GetAddonResponse {
   /** The resource-specific properties for this resource. */
   properties?: AddonProperties;
 }
+const GetAddonResponse = /*@__PURE__*/ __L.at(__c11, 1) as any as S.Schema<GetAddonResponse>;
+
 export interface GetAuthorizationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1155,6 +1691,11 @@ export interface GetAuthorizationRequest {
   /** Name of the ExpressRoute Circuit Authorization */
   authorizationName: string;
 }
+const GetAuthorizationRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  2,
+) as any as S.Schema<GetAuthorizationRequest>;
+
 export interface GetAuthorizationResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1167,6 +1708,11 @@ export interface GetAuthorizationResponse {
   /** The resource-specific properties for this resource. */
   properties?: ExpressRouteAuthorizationProperties;
 }
+const GetAuthorizationResponse = /*@__PURE__*/ __L.at(
+  __c11,
+  3,
+) as any as S.Schema<GetAuthorizationResponse>;
+
 export interface GetCloudLinkRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1177,6 +1723,8 @@ export interface GetCloudLinkRequest {
   /** Name of the cloud link. */
   cloudLinkName: string;
 }
+const GetCloudLinkRequest = /*@__PURE__*/ __L.at(__c11, 4) as any as S.Schema<GetCloudLinkRequest>;
+
 export interface GetCloudLinkResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1189,6 +1737,11 @@ export interface GetCloudLinkResponse {
   /** The resource-specific properties for this resource. */
   properties?: CloudLinkProperties;
 }
+const GetCloudLinkResponse = /*@__PURE__*/ __L.at(
+  __c11,
+  5,
+) as any as S.Schema<GetCloudLinkResponse>;
+
 export interface GetClusterRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1199,6 +1752,8 @@ export interface GetClusterRequest {
   /** Name of the cluster */
   clusterName: string;
 }
+const GetClusterRequest = /*@__PURE__*/ __L.at(__c11, 6) as any as S.Schema<GetClusterRequest>;
+
 /** The resource model definition representing SKU */
 export type GetClusterResponseSku = ClustersCreateOrUpdateResponseSku;
 export interface GetClusterResponse {
@@ -1215,6 +1770,8 @@ export interface GetClusterResponse {
   /** The resource model definition representing SKU */
   sku: ClustersCreateOrUpdateResponseSku;
 }
+const GetClusterResponse = /*@__PURE__*/ __L.at(__c11, 7) as any as S.Schema<GetClusterResponse>;
+
 export interface GetDatastoreRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1227,6 +1784,8 @@ export interface GetDatastoreRequest {
   /** Name of the datastore */
   datastoreName: string;
 }
+const GetDatastoreRequest = /*@__PURE__*/ __L.at(__c12, 0) as any as S.Schema<GetDatastoreRequest>;
+
 export interface GetDatastoreResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1239,6 +1798,11 @@ export interface GetDatastoreResponse {
   /** The resource-specific properties for this resource. */
   properties?: DatastoreProperties;
 }
+const GetDatastoreResponse = /*@__PURE__*/ __L.at(
+  __c12,
+  1,
+) as any as S.Schema<GetDatastoreResponse>;
+
 export interface GetGlobalReachConnectionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1249,14 +1813,23 @@ export interface GetGlobalReachConnectionRequest {
   /** Name of the global reach connection */
   globalReachConnectionName: string;
 }
+const GetGlobalReachConnectionRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  2,
+) as any as S.Schema<GetGlobalReachConnectionRequest>;
+
 /** Global Reach Connection provisioning state */
 export type GlobalReachConnectionProvisioningState =
   | "Succeeded"
   | "Failed"
   | "Canceled"
   | "Updating";
+const GlobalReachConnectionProvisioningState = S.String;
+
 /** Global Reach Connection status */
 export type GlobalReachConnectionStatus = "Connected" | "Connecting" | "Disconnected";
+const GlobalReachConnectionStatus = S.String;
+
 /** The properties of a global reach connection */
 export interface GlobalReachConnectionProperties {
   /** The state of the ExpressRoute Circuit Authorization provisioning */
@@ -1272,6 +1845,11 @@ export interface GlobalReachConnectionProperties {
   /** The ID of the Private Cloud's ExpressRoute Circuit that is participating in the global reach connection */
   expressRouteId?: string;
 }
+const GlobalReachConnectionProperties = /*@__PURE__*/ __L.at(
+  __c12,
+  3,
+) as any as S.Schema<GlobalReachConnectionProperties>;
+
 export interface GetGlobalReachConnectionResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1284,6 +1862,11 @@ export interface GetGlobalReachConnectionResponse {
   /** The resource-specific properties for this resource. */
   properties?: GlobalReachConnectionProperties;
 }
+const GetGlobalReachConnectionResponse = /*@__PURE__*/ __L.at(
+  __c12,
+  4,
+) as any as S.Schema<GetGlobalReachConnectionResponse>;
+
 export interface GetHcxEnterpriseSiteRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1294,10 +1877,19 @@ export interface GetHcxEnterpriseSiteRequest {
   /** Name of the HCX Enterprise Site */
   hcxEnterpriseSiteName: string;
 }
+const GetHcxEnterpriseSiteRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  5,
+) as any as S.Schema<GetHcxEnterpriseSiteRequest>;
+
 /** HCX Enterprise Site provisioning state */
 export type HcxEnterpriseSiteProvisioningState = "Succeeded" | "Failed" | "Canceled";
+const HcxEnterpriseSiteProvisioningState = S.String;
+
 /** HCX Enterprise Site status */
 export type HcxEnterpriseSiteStatus = "Available" | "Consumed" | "Deactivated" | "Deleted";
+const HcxEnterpriseSiteStatus = S.String;
+
 /** The properties of an HCX Enterprise Site */
 export interface HcxEnterpriseSiteProperties {
   /** The provisioning state of the resource. */
@@ -1307,6 +1899,11 @@ export interface HcxEnterpriseSiteProperties {
   /** The status of the HCX Enterprise Site */
   status?: HcxEnterpriseSiteStatus;
 }
+const HcxEnterpriseSiteProperties = /*@__PURE__*/ __L.at(
+  __c12,
+  6,
+) as any as S.Schema<HcxEnterpriseSiteProperties>;
+
 export interface GetHcxEnterpriseSiteResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1319,6 +1916,11 @@ export interface GetHcxEnterpriseSiteResponse {
   /** The resource-specific properties for this resource. */
   properties?: HcxEnterpriseSiteProperties;
 }
+const GetHcxEnterpriseSiteResponse = /*@__PURE__*/ __L.at(
+  __c12,
+  7,
+) as any as S.Schema<GetHcxEnterpriseSiteResponse>;
+
 export interface GetHostRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1331,21 +1933,38 @@ export interface GetHostRequest {
   /** The host identifier. */
   hostId: string;
 }
+const GetHostRequest = /*@__PURE__*/ __L.at(__c13, 0) as any as S.Schema<GetHostRequest>;
+
 /** The kind of host. */
 export type HostKind = "General" | "Specialized";
+const HostKind = S.String;
+
 /** provisioning state of the host */
 export type HostProvisioningState = "Succeeded" | "Failed" | "Canceled";
+const HostProvisioningState = S.String;
+
 /** The reason for host maintenance. */
 export type HostMaintenance = "Replacement" | "Upgrade";
+const HostMaintenance = S.String;
+
 /** The kind of host license. */
 export type HostLicenseKind = "WindowsServer";
+const HostLicenseKind = S.String;
+
 /** A license assigned to a host. */
 export interface HostLicense {
   /** License kind */
   kind: HostLicenseKind | (string & {});
 }
+const HostLicense = /*@__PURE__*/ __L.at(__c13, 1) as any as S.Schema<HostLicense>;
+
 /** The licenses assigned to the host. */
 export type HostPropertiesLicensesList = Array<HostLicense>;
+const HostPropertiesLicensesList = /*@__PURE__*/ __L.at(
+  __c13,
+  2,
+) as any as S.Schema<HostPropertiesLicensesList>;
+
 /** The properties of a host. */
 export interface HostProperties {
   /** The kind of host */
@@ -1364,8 +1983,13 @@ export interface HostProperties {
   /** The licenses assigned to the host. */
   licenses?: HostPropertiesLicensesList;
 }
+const HostProperties = /*@__PURE__*/ __L.at(__c13, 3) as any as S.Schema<HostProperties>;
+
 /** The availability zones. */
 export type GetHostResponseZonesList = Array<string>;
+const GetHostResponseZonesList =
+  ClusterPropertiesInputHostsList as any as S.Schema<GetHostResponseZonesList>;
+
 /** The resource model definition representing SKU */
 export type GetHostResponseSku = ClustersCreateOrUpdateResponseSku;
 export interface GetHostResponse {
@@ -1384,6 +2008,8 @@ export interface GetHostResponse {
   /** The resource model definition representing SKU */
   sku?: ClustersCreateOrUpdateResponseSku;
 }
+const GetHostResponse = /*@__PURE__*/ __L.at(__c13, 4) as any as S.Schema<GetHostResponse>;
+
 export interface GetIscsiPathRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1392,6 +2018,8 @@ export interface GetIscsiPathRequest {
   /** Name of the private cloud */
   privateCloudName: string;
 }
+const GetIscsiPathRequest = /*@__PURE__*/ __L.at(__c13, 5) as any as S.Schema<GetIscsiPathRequest>;
+
 /** private cloud provisioning state */
 export type IscsiPathProvisioningState =
   | "Succeeded"
@@ -1401,6 +2029,8 @@ export type IscsiPathProvisioningState =
   | "Building"
   | "Deleting"
   | "Updating";
+const IscsiPathProvisioningState = S.String;
+
 /** The properties of an iSCSI path resource */
 export interface IscsiPathProperties {
   /** The state of the iSCSI path provisioning */
@@ -1408,6 +2038,8 @@ export interface IscsiPathProperties {
   /** CIDR Block for iSCSI path. */
   networkBlock: string;
 }
+const IscsiPathProperties = /*@__PURE__*/ __L.at(__c13, 6) as any as S.Schema<IscsiPathProperties>;
+
 export interface GetIscsiPathResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1420,7 +2052,14 @@ export interface GetIscsiPathResponse {
   /** The resource-specific properties for this resource. */
   properties?: IscsiPathProperties;
 }
+const GetIscsiPathResponse = /*@__PURE__*/ __L.at(
+  __c13,
+  7,
+) as any as S.Schema<GetIscsiPathResponse>;
+
 export type GetLicenseRequestLicenseName = "VmwareFirewall";
+const GetLicenseRequestLicenseName = S.String;
+
 export interface GetLicenseRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1431,10 +2070,16 @@ export interface GetLicenseRequest {
   /** Name of the license. */
   licenseName: GetLicenseRequestLicenseName | (string & {});
 }
+const GetLicenseRequest = /*@__PURE__*/ __L.at(__c14, 0) as any as S.Schema<GetLicenseRequest>;
+
 /** The kind of license. */
 export type LicenseKind = "VmwareFirewall";
+const LicenseKind = S.String;
+
 /** provisioning state of the license */
 export type LicenseProvisioningState = "Succeeded" | "Failed" | "Canceled";
+const LicenseProvisioningState = S.String;
+
 /** The properties of a license */
 export interface LicenseProperties {
   /** License kind */
@@ -1450,6 +2095,8 @@ export interface LicenseProperties {
   /** VmwareFirewall: the Broadcom contract number associated with the license. */
   broadcomContractNumber?: string;
 }
+const LicenseProperties = /*@__PURE__*/ __L.at(__c14, 1) as any as S.Schema<LicenseProperties>;
+
 export interface GetLicenseResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1462,7 +2109,11 @@ export interface GetLicenseResponse {
   /** The resource-specific properties for this resource. */
   properties?: LicenseProperties;
 }
+const GetLicenseResponse = /*@__PURE__*/ __L.at(__c14, 2) as any as S.Schema<GetLicenseResponse>;
+
 export type GetLicensePropertiesRequestLicenseName = "VmwareFirewall";
+const GetLicensePropertiesRequestLicenseName = S.String;
+
 export interface GetLicensePropertiesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1473,6 +2124,11 @@ export interface GetLicensePropertiesRequest {
   /** Name of the license. */
   licenseName: GetLicensePropertiesRequestLicenseName | (string & {});
 }
+const GetLicensePropertiesRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  3,
+) as any as S.Schema<GetLicensePropertiesRequest>;
+
 export interface GetMaintenanceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1483,10 +2139,19 @@ export interface GetMaintenanceRequest {
   /** Name of the maintenance */
   maintenanceName: string;
 }
+const GetMaintenanceRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  4,
+) as any as S.Schema<GetMaintenanceRequest>;
+
 /** type of the maintenance */
 export type MaintenanceType = "VCSA" | "ESXI" | "NSXT";
+const MaintenanceType = S.String;
+
 /** Defines the type of maintenance activity */
 export type MaintenanceActivityKind = "Upgrade" | "Downgrade" | "CertificateRotation" | "Backup";
+const MaintenanceActivityKind = S.String;
+
 /** Represents a maintenance activity performed as part of an operation */
 export interface MaintenanceActivity {
   /** The type of activity */
@@ -1500,10 +2165,19 @@ export interface MaintenanceActivity {
   /** Describes impact of the activity */
   impact?: string;
 }
+const MaintenanceActivity = /*@__PURE__*/ __L.at(__c14, 5) as any as S.Schema<MaintenanceActivity>;
+
 /** Activities performed as part of maintenance */
 export type MaintenancePropertiesActivitiesList = Array<MaintenanceActivity>;
+const MaintenancePropertiesActivitiesList = /*@__PURE__*/ __L.at(
+  __c14,
+  6,
+) as any as S.Schema<MaintenancePropertiesActivitiesList>;
+
 /** Defines the kind of group */
 export type MaintenanceGroupKind = "Logical" | "Consolidation";
+const MaintenanceGroupKind = S.String;
+
 /** Represents a maintenance group */
 export interface MaintenanceGroup {
   /** Unique identifier of the group */
@@ -1513,10 +2187,18 @@ export interface MaintenanceGroup {
   /** Type of the group */
   kind: MaintenanceGroupKind;
 }
+const MaintenanceGroup = /*@__PURE__*/ __L.at(__c14, 7) as any as S.Schema<MaintenanceGroup>;
+
 /** List of dependent group identifiers */
 export type MaintenanceRelationshipsDependenciesList = Array<string>;
+const MaintenanceRelationshipsDependenciesList =
+  ClusterPropertiesInputHostsList as any as S.Schema<MaintenanceRelationshipsDependenciesList>;
+
 /** List of prerequisite group identifiers */
 export type MaintenanceRelationshipsPrerequisitesList = Array<string>;
+const MaintenanceRelationshipsPrerequisitesList =
+  ClusterPropertiesInputHostsList as any as S.Schema<MaintenanceRelationshipsPrerequisitesList>;
+
 /** Defines relationship details between maintenance groups */
 export interface MaintenanceRelationships {
   /** List of dependent group identifiers */
@@ -1524,6 +2206,11 @@ export interface MaintenanceRelationships {
   /** List of prerequisite group identifiers */
   prerequisites?: MaintenanceRelationshipsPrerequisitesList;
 }
+const MaintenanceRelationships = /*@__PURE__*/ __L.at(
+  __c15,
+  0,
+) as any as S.Schema<MaintenanceRelationships>;
+
 /** Customer presentable maintenance state */
 export type MaintenanceStateName =
   | "NotScheduled"
@@ -1532,6 +2219,8 @@ export type MaintenanceStateName =
   | "Success"
   | "Failed"
   | "Canceled";
+const MaintenanceStateName = S.String;
+
 /** state of the maintenance */
 export interface MaintenanceState {
   /** Customer presentable maintenance state */
@@ -1543,30 +2232,53 @@ export interface MaintenanceState {
   /** Time when current state ended */
   endedAt?: string;
 }
+const MaintenanceState = /*@__PURE__*/ __L.at(__c15, 1) as any as S.Schema<MaintenanceState>;
+
 /** provisioning state of the maintenance */
 export type MaintenanceProvisioningState = "Succeeded" | "Failed" | "Canceled" | "Updating";
+const MaintenanceProvisioningState = S.String;
+
 /** Defines the type of operation */
 export type MaintenanceManagementOperationKind =
   | "Schedule"
   | "Reschedule"
   | "MaintenanceReadinessRefresh";
+const MaintenanceManagementOperationKind = S.String;
+
 /** Defines operations that can be performed on maintenance */
 export interface MaintenanceManagementOperation {
   /** The kind of operation */
   kind: MaintenanceManagementOperationKind;
 }
+const MaintenanceManagementOperation = /*@__PURE__*/ __L.at(
+  __c15,
+  2,
+) as any as S.Schema<MaintenanceManagementOperation>;
+
 /** Operations on maintenance */
 export type MaintenancePropertiesOperationsList = Array<MaintenanceManagementOperation>;
+const MaintenancePropertiesOperationsList = /*@__PURE__*/ __L.at(
+  __c15,
+  3,
+) as any as S.Schema<MaintenancePropertiesOperationsList>;
+
 /** Defines the type of maintenance readiness check */
 export type MaintenanceCheckType = "Precheck" | "Preflight";
+const MaintenanceCheckType = S.String;
+
 /** Defines the readiness status of maintenance */
 export type MaintenanceReadinessStatus =
   | "Ready"
   | "NotReady"
   | "DataNotAvailable"
   | "NotApplicable";
+const MaintenanceReadinessStatus = S.String;
+
 /** Steps to resolve the error */
 export type ImpactedMaintenanceResourceErrorResolutionStepsList = Array<string>;
+const ImpactedMaintenanceResourceErrorResolutionStepsList =
+  ClusterPropertiesInputHostsList as any as S.Schema<ImpactedMaintenanceResourceErrorResolutionStepsList>;
+
 /** Details about an error affecting a resource */
 export interface ImpactedMaintenanceResourceError {
   /** The error code */
@@ -1580,8 +2292,18 @@ export interface ImpactedMaintenanceResourceError {
   /** Indicates whether action is required by the customer */
   actionRequired?: boolean;
 }
+const ImpactedMaintenanceResourceError = /*@__PURE__*/ __L.at(
+  __c15,
+  4,
+) as any as S.Schema<ImpactedMaintenanceResourceError>;
+
 /** A list of errors associated with the impacted resource */
 export type ImpactedMaintenanceResourceErrorsList = Array<ImpactedMaintenanceResourceError>;
+const ImpactedMaintenanceResourceErrorsList = /*@__PURE__*/ __L.at(
+  __c15,
+  5,
+) as any as S.Schema<ImpactedMaintenanceResourceErrorsList>;
+
 /** Details about a resource impacted by a failed check */
 export interface ImpactedMaintenanceResource {
   /** The ID of the impacted resource */
@@ -1589,8 +2311,18 @@ export interface ImpactedMaintenanceResource {
   /** A list of errors associated with the impacted resource */
   errors?: ImpactedMaintenanceResourceErrorsList;
 }
+const ImpactedMaintenanceResource = /*@__PURE__*/ __L.at(
+  __c15,
+  6,
+) as any as S.Schema<ImpactedMaintenanceResource>;
+
 /** A list of resources impacted by the failed check */
 export type MaintenanceFailedCheckImpactedResourcesList = Array<ImpactedMaintenanceResource>;
+const MaintenanceFailedCheckImpactedResourcesList = /*@__PURE__*/ __L.at(
+  __c15,
+  7,
+) as any as S.Schema<MaintenanceFailedCheckImpactedResourcesList>;
+
 /** Details about a failed maintenance check */
 export interface MaintenanceFailedCheck {
   /** The name of the failed check */
@@ -1598,8 +2330,18 @@ export interface MaintenanceFailedCheck {
   /** A list of resources impacted by the failed check */
   impactedResources?: MaintenanceFailedCheckImpactedResourcesList;
 }
+const MaintenanceFailedCheck = /*@__PURE__*/ __L.at(
+  __c16,
+  0,
+) as any as S.Schema<MaintenanceFailedCheck>;
+
 /** A list of failed checks, if any */
 export type MaintenanceReadinessFailedChecksList = Array<MaintenanceFailedCheck>;
+const MaintenanceReadinessFailedChecksList = /*@__PURE__*/ __L.at(
+  __c16,
+  1,
+) as any as S.Schema<MaintenanceReadinessFailedChecksList>;
+
 /** Maintenance readiness details */
 export interface MaintenanceReadiness {
   /** The type of maintenance readiness check */
@@ -1613,6 +2355,11 @@ export interface MaintenanceReadiness {
   /** The timestamp of the last readiness update */
   lastUpdated?: string;
 }
+const MaintenanceReadiness = /*@__PURE__*/ __L.at(
+  __c16,
+  2,
+) as any as S.Schema<MaintenanceReadiness>;
+
 /** properties of a maintenance */
 export interface MaintenanceProperties {
   /** type of maintenance */
@@ -1646,6 +2393,11 @@ export interface MaintenanceProperties {
   /** Indicates whether the maintenance is ready to proceed */
   maintenanceReadiness?: MaintenanceReadiness;
 }
+const MaintenanceProperties = /*@__PURE__*/ __L.at(
+  __c16,
+  3,
+) as any as S.Schema<MaintenanceProperties>;
+
 export interface GetMaintenanceResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1658,6 +2410,11 @@ export interface GetMaintenanceResponse {
   /** The resource-specific properties for this resource. */
   properties?: MaintenanceProperties;
 }
+const GetMaintenanceResponse = /*@__PURE__*/ __L.at(
+  __c16,
+  4,
+) as any as S.Schema<GetMaintenanceResponse>;
+
 export interface GetPlacementPolicyRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1670,10 +2427,19 @@ export interface GetPlacementPolicyRequest {
   /** Name of the placement policy. */
   placementPolicyName: string;
 }
+const GetPlacementPolicyRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  5,
+) as any as S.Schema<GetPlacementPolicyRequest>;
+
 /** Placement Policy type */
 export type PlacementPolicyType = "VmVm" | "VmHost";
+const PlacementPolicyType = S.String;
+
 /** Placement Policy state */
 export type PlacementPolicyState = "Enabled" | "Disabled";
+const PlacementPolicyState = S.String;
+
 /** Placement Policy provisioning state */
 export type PlacementPolicyProvisioningState =
   | "Succeeded"
@@ -1682,16 +2448,30 @@ export type PlacementPolicyProvisioningState =
   | "Building"
   | "Deleting"
   | "Updating";
+const PlacementPolicyProvisioningState = S.String;
+
 /** Virtual machine members list */
 export type PlacementPolicyUpdatePropertiesVmMembersList = Array<string>;
+const PlacementPolicyUpdatePropertiesVmMembersList =
+  ClusterPropertiesInputHostsList as any as S.Schema<PlacementPolicyUpdatePropertiesVmMembersList>;
+
 /** Host members list */
 export type PlacementPolicyUpdatePropertiesHostMembersList = Array<string>;
+const PlacementPolicyUpdatePropertiesHostMembersList =
+  ClusterPropertiesInputHostsList as any as S.Schema<PlacementPolicyUpdatePropertiesHostMembersList>;
+
 /** Placement policy affinity type */
 export type AffinityType = "Affinity" | "AntiAffinity";
+const AffinityType = S.String;
+
 /** Affinity Strength */
 export type AffinityStrength = "Should" | "Must";
+const AffinityStrength = S.String;
+
 /** Azure Hybrid Benefit type */
 export type AzureHybridBenefitType = "SqlHost" | "None";
+const AzureHybridBenefitType = S.String;
+
 /** Abstract placement policy properties */
 export interface PlacementPolicyProperties {
   /** Placement Policy type */
@@ -1713,6 +2493,11 @@ export interface PlacementPolicyProperties {
   /** VmHost: Azure Hybrid Benefit opt-in type. */
   azureHybridBenefitType?: AzureHybridBenefitType;
 }
+const PlacementPolicyProperties = /*@__PURE__*/ __L.at(
+  __c16,
+  6,
+) as any as S.Schema<PlacementPolicyProperties>;
+
 export interface GetPlacementPolicyResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1725,6 +2510,11 @@ export interface GetPlacementPolicyResponse {
   /** The resource-specific properties for this resource. */
   properties?: PlacementPolicyProperties;
 }
+const GetPlacementPolicyResponse = /*@__PURE__*/ __L.at(
+  __c16,
+  7,
+) as any as S.Schema<GetPlacementPolicyResponse>;
+
 export interface GetPrivateCloudRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1733,8 +2523,18 @@ export interface GetPrivateCloudRequest {
   /** Name of the private cloud */
   privateCloudName: string;
 }
+const GetPrivateCloudRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  0,
+) as any as S.Schema<GetPrivateCloudRequest>;
+
 /** Resource tags. */
 export type GetPrivateCloudResponseTagsMap = { [key: string]: string | undefined };
+const GetPrivateCloudResponseTagsMap = /*@__PURE__*/ __L.at(
+  __c17,
+  1,
+) as any as S.Schema<GetPrivateCloudResponseTagsMap>;
+
 /** The hosts */
 export type ManagementClusterHostsList = Array<string>;
 /** The properties of a management cluster */
@@ -1750,10 +2550,16 @@ export interface ManagementCluster {
   /** Name of the vsan datastore associated with the cluster */
   vsanDatastoreName?: string;
 }
+const ManagementCluster = ClusterProperties as any as S.Schema<ManagementCluster>;
+
 /** Connectivity to internet is enabled or disabled */
 export type PrivateCloudPropertiesInternet = "Enabled" | "Disabled";
+const PrivateCloudPropertiesInternet = S.String;
+
 /** Whether SSL is enabled or disabled */
 export type SslEnum = "Enabled" | "Disabled";
+const SslEnum = S.String;
+
 /** vCenter Single Sign On Identity Source */
 export interface IdentitySource {
   /** The name of the identity source */
@@ -1777,10 +2583,19 @@ export interface IdentitySource {
   /** The password of the Active Directory user with a minimum of read-only access to Base DN for users and groups. */
   password?: string | Redacted.Redacted<string>;
 }
+const IdentitySource = /*@__PURE__*/ __L.at(__c17, 2) as any as S.Schema<IdentitySource>;
+
 /** vCenter Single Sign On Identity Sources */
 export type PrivateCloudPropertiesIdentitySourcesList = Array<IdentitySource>;
+const PrivateCloudPropertiesIdentitySourcesList = /*@__PURE__*/ __L.at(
+  __c17,
+  3,
+) as any as S.Schema<PrivateCloudPropertiesIdentitySourcesList>;
+
 /** Whether the private clouds is available in a single zone or two zones */
 export type AvailabilityStrategy = "SingleZone" | "DualZone";
+const AvailabilityStrategy = S.String;
+
 /** The properties describing private cloud availability zone distribution */
 export interface AvailabilityProperties {
   /** The availability strategy for the private cloud */
@@ -1790,12 +2605,23 @@ export interface AvailabilityProperties {
   /** The secondary availability zone for the private cloud */
   secondaryZone?: number;
 }
+const AvailabilityProperties = /*@__PURE__*/ __L.at(
+  __c17,
+  4,
+) as any as S.Schema<AvailabilityProperties>;
+
 /** Whether encryption is enabled or disabled */
 export type EncryptionState = "Enabled" | "Disabled";
+const EncryptionState = S.String;
+
 /** Whether the the encryption key is connected or access denied */
 export type EncryptionKeyStatus = "Connected" | "AccessDenied";
+const EncryptionKeyStatus = S.String;
+
 /** Whether the encryption version is fixed or auto-detected */
 export type EncryptionVersionType = "Fixed" | "AutoDetected";
+const EncryptionVersionType = S.String;
+
 /** An Encryption Key */
 export interface EncryptionKeyVaultProperties {
   /** The name of the key. */
@@ -1811,6 +2637,11 @@ export interface EncryptionKeyVaultProperties {
   /** Property of the key if user provided or auto detected */
   versionType?: EncryptionVersionType;
 }
+const EncryptionKeyVaultProperties = /*@__PURE__*/ __L.at(
+  __c17,
+  5,
+) as any as S.Schema<EncryptionKeyVaultProperties>;
+
 /** The properties of customer managed encryption key */
 export interface Encryption {
   /** Status of customer managed encryption key */
@@ -1818,8 +2649,13 @@ export interface Encryption {
   /** The key vault where the encryption key is stored */
   keyVaultProperties?: EncryptionKeyVaultProperties;
 }
+const Encryption = /*@__PURE__*/ __L.at(__c17, 6) as any as S.Schema<Encryption>;
+
 /** Array of additional networks noncontiguous with networkBlock. Networks must be unique and non-overlapping across VNet in your subscription, on-premise, and this privateCloud networkBlock attribute. Make sure the CIDR format conforms to (A.B.C.D/X). */
 export type PrivateCloudPropertiesExtendedNetworkBlocksList = Array<string>;
+const PrivateCloudPropertiesExtendedNetworkBlocksList =
+  ClusterPropertiesInputHostsList as any as S.Schema<PrivateCloudPropertiesExtendedNetworkBlocksList>;
+
 /** private cloud provisioning state */
 export type PrivateCloudProvisioningState =
   | "Succeeded"
@@ -1830,6 +2666,8 @@ export type PrivateCloudProvisioningState =
   | "Building"
   | "Deleting"
   | "Updating";
+const PrivateCloudProvisioningState = S.String;
+
 /** An ExpressRoute Circuit */
 export interface Circuit {
   /** CIDR of primary subnet */
@@ -1841,6 +2679,8 @@ export interface Circuit {
   /** ExpressRoute Circuit private peering identifier */
   expressRoutePrivatePeeringID?: string;
 }
+const Circuit = /*@__PURE__*/ __L.at(__c17, 7) as any as S.Schema<Circuit>;
+
 /** Endpoint addresses */
 export interface Endpoints {
   /** Endpoint FQDN for the NSX-T Data Center manager */
@@ -1856,14 +2696,25 @@ export interface Endpoints {
   /** Endpoint IP for the HCX Cloud Manager */
   hcxCloudManagerIp?: string;
 }
+const Endpoints = /*@__PURE__*/ __L.at(__c18, 0) as any as S.Schema<Endpoints>;
+
 /** Array of cloud link IDs from other clouds that connect to this one */
 export type PrivateCloudPropertiesExternalCloudLinksList = Array<string>;
+const PrivateCloudPropertiesExternalCloudLinksList =
+  ClusterPropertiesInputHostsList as any as S.Schema<PrivateCloudPropertiesExternalCloudLinksList>;
+
 /** NSX public IP quota raised */
 export type NsxPublicIpQuotaRaisedEnum = "Enabled" | "Disabled";
+const NsxPublicIpQuotaRaisedEnum = S.String;
+
 /** The type of DNS zone. */
 export type DnsZoneType = "Public" | "Private";
+const DnsZoneType = S.String;
+
 /** The kind of license. */
 export type VcfLicenseKind = "vcf5";
+const VcfLicenseKind = S.String;
+
 /** A VMware Cloud Foundation license */
 export interface VcfLicense {
   /** License kind */
@@ -1871,6 +2722,8 @@ export interface VcfLicense {
   /** The state of the license provisioning */
   provisioningState?: LicenseProvisioningState;
 }
+const VcfLicense = /*@__PURE__*/ __L.at(__c18, 1) as any as S.Schema<VcfLicense>;
+
 /** The properties of a private cloud resource */
 export interface PrivateCloudProperties {
   /** The default cluster used for management */
@@ -1920,10 +2773,17 @@ export interface PrivateCloudProperties {
   /** The private cloud license */
   vcfLicense?: VcfLicense;
 }
+const PrivateCloudProperties = /*@__PURE__*/ __L.at(
+  __c18,
+  2,
+) as any as S.Schema<PrivateCloudProperties>;
+
 /** The resource model definition representing SKU */
 export type GetPrivateCloudResponseSku = ClustersCreateOrUpdateResponseSku;
 /** Type of managed service identity (either system assigned, or none). */
 export type SystemAssignedServiceIdentityType = "None" | "SystemAssigned";
+const SystemAssignedServiceIdentityType = S.String;
+
 /** Managed service identity (either system assigned, or none) */
 export interface GetPrivateCloudResponseIdentity {
   /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
@@ -1932,8 +2792,16 @@ export interface GetPrivateCloudResponseIdentity {
   tenantId?: string;
   type: SystemAssignedServiceIdentityType;
 }
+const GetPrivateCloudResponseIdentity = /*@__PURE__*/ __L.at(
+  __c18,
+  3,
+) as any as S.Schema<GetPrivateCloudResponseIdentity>;
+
 /** The availability zones. */
 export type GetPrivateCloudResponseZonesList = Array<string>;
+const GetPrivateCloudResponseZonesList =
+  ClusterPropertiesInputHostsList as any as S.Schema<GetPrivateCloudResponseZonesList>;
+
 export interface GetPrivateCloudResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1956,6 +2824,11 @@ export interface GetPrivateCloudResponse {
   /** The availability zones. */
   zones?: GetPrivateCloudResponseZonesList;
 }
+const GetPrivateCloudResponse = /*@__PURE__*/ __L.at(
+  __c18,
+  4,
+) as any as S.Schema<GetPrivateCloudResponse>;
+
 export interface GetPrivateCloudVcfLicenseRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1964,6 +2837,11 @@ export interface GetPrivateCloudVcfLicenseRequest {
   /** Name of the private cloud */
   privateCloudName: string;
 }
+const GetPrivateCloudVcfLicenseRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  5,
+) as any as S.Schema<GetPrivateCloudVcfLicenseRequest>;
+
 export interface GetProvisionedNetworkRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1974,8 +2852,15 @@ export interface GetProvisionedNetworkRequest {
   /** Name of the cloud link. */
   provisionedNetworkName: string;
 }
+const GetProvisionedNetworkRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  6,
+) as any as S.Schema<GetProvisionedNetworkRequest>;
+
 /** provisioned network provisioning state */
 export type ProvisionedNetworkProvisioningState = "Succeeded" | "Failed" | "Canceled";
+const ProvisionedNetworkProvisioningState = S.String;
+
 /** The type of network provisioned. */
 export type ProvisionedNetworkTypes =
   | "esxManagement"
@@ -1985,6 +2870,8 @@ export type ProvisionedNetworkTypes =
   | "vcenterManagement"
   | "vmotion"
   | "vsan";
+const ProvisionedNetworkTypes = S.String;
+
 /** The properties of a provisioned network. */
 export interface ProvisionedNetworkProperties {
   /** The provisioning state of the resource. */
@@ -1994,6 +2881,11 @@ export interface ProvisionedNetworkProperties {
   /** The type of network provisioned. */
   networkType?: ProvisionedNetworkTypes;
 }
+const ProvisionedNetworkProperties = /*@__PURE__*/ __L.at(
+  __c18,
+  7,
+) as any as S.Schema<ProvisionedNetworkProperties>;
+
 export interface GetProvisionedNetworkResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2006,6 +2898,11 @@ export interface GetProvisionedNetworkResponse {
   /** The resource-specific properties for this resource. */
   properties?: ProvisionedNetworkProperties;
 }
+const GetProvisionedNetworkResponse = /*@__PURE__*/ __L.at(
+  __c19,
+  0,
+) as any as S.Schema<GetProvisionedNetworkResponse>;
+
 export interface GetPureStoragePolicyRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2016,6 +2913,11 @@ export interface GetPureStoragePolicyRequest {
   /** Name of the storage policy. */
   storagePolicyName: string;
 }
+const GetPureStoragePolicyRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  1,
+) as any as S.Schema<GetPureStoragePolicyRequest>;
+
 /** Pure Storage Policy Based Management policy provisioning state */
 export type PureStoragePolicyProvisioningState =
   | "Succeeded"
@@ -2023,6 +2925,8 @@ export type PureStoragePolicyProvisioningState =
   | "Canceled"
   | "Deleting"
   | "Updating";
+const PureStoragePolicyProvisioningState = S.String;
+
 /** Properties of a Pure Storage Policy Based Management policy */
 export interface PureStoragePolicyProperties {
   /** Definition of a Pure Storage Policy Based Management policy */
@@ -2032,6 +2936,11 @@ export interface PureStoragePolicyProperties {
   /** The state of the Pure Storage Policy Based Management policy provisioning */
   provisioningState?: PureStoragePolicyProvisioningState;
 }
+const PureStoragePolicyProperties = /*@__PURE__*/ __L.at(
+  __c19,
+  2,
+) as any as S.Schema<PureStoragePolicyProperties>;
+
 export interface GetPureStoragePolicyResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2044,6 +2953,11 @@ export interface GetPureStoragePolicyResponse {
   /** The resource-specific properties for this resource. */
   properties?: PureStoragePolicyProperties;
 }
+const GetPureStoragePolicyResponse = /*@__PURE__*/ __L.at(
+  __c19,
+  3,
+) as any as S.Schema<GetPureStoragePolicyResponse>;
+
 export interface GetScriptCmdletRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2056,10 +2970,19 @@ export interface GetScriptCmdletRequest {
   /** Name of the script cmdlet. */
   scriptCmdletName: string;
 }
+const GetScriptCmdletRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  4,
+) as any as S.Schema<GetScriptCmdletRequest>;
+
 /** A script cmdlet provisioning state */
 export type ScriptCmdletProvisioningState = "Succeeded" | "Failed" | "Canceled";
+const ScriptCmdletProvisioningState = S.String;
+
 /** Specifies whether a script cmdlet is intended to be invoked only through automation or visible to customers */
 export type ScriptCmdletAudience = "Automation" | "Any";
+const ScriptCmdletAudience = S.String;
+
 /** Script Parameter types */
 export type ScriptParameterTypes =
   | "String"
@@ -2068,10 +2991,16 @@ export type ScriptParameterTypes =
   | "Int"
   | "Bool"
   | "Float";
+const ScriptParameterTypes = S.String;
+
 /** Visibility Parameter */
 export type VisibilityParameterEnum = "Visible" | "Hidden";
+const VisibilityParameterEnum = S.String;
+
 /** Optional Param */
 export type OptionalParamEnum = "Optional" | "Required";
+const OptionalParamEnum = S.String;
+
 /** An parameter that the script will accept */
 export interface ScriptParameter {
   /** The type of parameter the script is expecting. psCredential is a PSCredentialObject */
@@ -2085,8 +3014,15 @@ export interface ScriptParameter {
   /** Is this parameter required or optional */
   optional?: OptionalParamEnum;
 }
+const ScriptParameter = /*@__PURE__*/ __L.at(__c19, 5) as any as S.Schema<ScriptParameter>;
+
 /** Parameters the script will accept */
 export type ScriptCmdletPropertiesParametersList = Array<ScriptParameter>;
+const ScriptCmdletPropertiesParametersList = /*@__PURE__*/ __L.at(
+  __c19,
+  6,
+) as any as S.Schema<ScriptCmdletPropertiesParametersList>;
+
 /** Properties of a pre-canned script */
 export interface ScriptCmdletProperties {
   /** The provisioning state of the resource. */
@@ -2100,6 +3036,11 @@ export interface ScriptCmdletProperties {
   /** Parameters the script will accept */
   parameters?: ScriptCmdletPropertiesParametersList;
 }
+const ScriptCmdletProperties = /*@__PURE__*/ __L.at(
+  __c19,
+  7,
+) as any as S.Schema<ScriptCmdletProperties>;
+
 export interface GetScriptCmdletResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2112,6 +3053,11 @@ export interface GetScriptCmdletResponse {
   /** The resource-specific properties for this resource. */
   properties?: ScriptCmdletProperties;
 }
+const GetScriptCmdletResponse = /*@__PURE__*/ __L.at(
+  __c20,
+  0,
+) as any as S.Schema<GetScriptCmdletResponse>;
+
 export interface GetScriptExecutionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2122,8 +3068,15 @@ export interface GetScriptExecutionRequest {
   /** Name of the script cmdlet. */
   scriptExecutionName: string;
 }
+const GetScriptExecutionRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  1,
+) as any as S.Schema<GetScriptExecutionRequest>;
+
 /** script execution parameter type */
 export type ScriptExecutionParameterType = "Value" | "SecureValue" | "Credential";
+const ScriptExecutionParameterType = S.String;
+
 /** The arguments passed in to the execution */
 export interface ScriptExecutionParameter {
   /** script execution parameter type */
@@ -2131,10 +3084,23 @@ export interface ScriptExecutionParameter {
   /** The parameter name */
   name: string;
 }
+const ScriptExecutionParameter = /*@__PURE__*/ __L.at(
+  __c20,
+  2,
+) as any as S.Schema<ScriptExecutionParameter>;
+
 /** Parameters the script will accept */
 export type ScriptExecutionPropertiesParametersList = Array<ScriptExecutionParameter>;
+const ScriptExecutionPropertiesParametersList = /*@__PURE__*/ __L.at(
+  __c20,
+  3,
+) as any as S.Schema<ScriptExecutionPropertiesParametersList>;
+
 /** Parameters that will be hidden/not visible to ARM, such as passwords and credentials */
 export type ScriptExecutionPropertiesHiddenParametersList = Array<ScriptExecutionParameter>;
+const ScriptExecutionPropertiesHiddenParametersList =
+  ScriptExecutionPropertiesParametersList as any as S.Schema<ScriptExecutionPropertiesHiddenParametersList>;
+
 /** Script Execution provisioning state */
 export type ScriptExecutionProvisioningState =
   | "Succeeded"
@@ -2145,16 +3111,35 @@ export type ScriptExecutionProvisioningState =
   | "Cancelling"
   | "Cancelled"
   | "Deleting";
+const ScriptExecutionProvisioningState = S.String;
+
 /** Standard output stream from the powershell execution */
 export type ScriptExecutionPropertiesOutputList = Array<string>;
+const ScriptExecutionPropertiesOutputList =
+  ClusterPropertiesInputHostsList as any as S.Schema<ScriptExecutionPropertiesOutputList>;
+
 /** User-defined dictionary. */
 export type ScriptExecutionPropertiesNamedOutputsMap = { [key: string]: unknown | undefined };
+const ScriptExecutionPropertiesNamedOutputsMap = /*@__PURE__*/ __L.at(
+  __c20,
+  4,
+) as any as S.Schema<ScriptExecutionPropertiesNamedOutputsMap>;
+
 /** Standard information out stream from the powershell execution */
 export type ScriptExecutionPropertiesInformationList = Array<string>;
+const ScriptExecutionPropertiesInformationList =
+  ClusterPropertiesInputHostsList as any as S.Schema<ScriptExecutionPropertiesInformationList>;
+
 /** Standard warning out stream from the powershell execution */
 export type ScriptExecutionPropertiesWarningsList = Array<string>;
+const ScriptExecutionPropertiesWarningsList =
+  ClusterPropertiesInputHostsList as any as S.Schema<ScriptExecutionPropertiesWarningsList>;
+
 /** Standard error output stream from the powershell execution */
 export type ScriptExecutionPropertiesErrorsList = Array<string>;
+const ScriptExecutionPropertiesErrorsList =
+  ClusterPropertiesInputHostsList as any as S.Schema<ScriptExecutionPropertiesErrorsList>;
+
 /** Properties of a user-invoked script */
 export interface ScriptExecutionProperties {
   /** A reference to the script cmdlet resource if user is running a AVS script */
@@ -2188,6 +3173,11 @@ export interface ScriptExecutionProperties {
   /** Standard error output stream from the powershell execution */
   errors?: ScriptExecutionPropertiesErrorsList;
 }
+const ScriptExecutionProperties = /*@__PURE__*/ __L.at(
+  __c20,
+  5,
+) as any as S.Schema<ScriptExecutionProperties>;
+
 export interface GetScriptExecutionResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2200,11 +3190,23 @@ export interface GetScriptExecutionResponse {
   /** The resource-specific properties for this resource. */
   properties?: ScriptExecutionProperties;
 }
+const GetScriptExecutionResponse = /*@__PURE__*/ __L.at(
+  __c20,
+  6,
+) as any as S.Schema<GetScriptExecutionResponse>;
+
 /** Script Output Stream type */
 export type ScriptOutputStreamType = "Information" | "Warning" | "Output" | "Error";
+const ScriptOutputStreamType = S.String;
+
 export type GetScriptExecutionExecutionLogsRequestBodyList = Array<
   ScriptOutputStreamType | (string & {})
 >;
+const GetScriptExecutionExecutionLogsRequestBodyList = /*@__PURE__*/ __L.at(
+  __c20,
+  7,
+) as any as S.Schema<GetScriptExecutionExecutionLogsRequestBodyList>;
+
 export interface GetScriptExecutionExecutionLogsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2216,6 +3218,11 @@ export interface GetScriptExecutionExecutionLogsRequest {
   scriptExecutionName: string;
   body?: GetScriptExecutionExecutionLogsRequestBodyList;
 }
+const GetScriptExecutionExecutionLogsRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  0,
+) as any as S.Schema<GetScriptExecutionExecutionLogsRequest>;
+
 export interface GetScriptExecutionExecutionLogsResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2228,6 +3235,9 @@ export interface GetScriptExecutionExecutionLogsResponse {
   /** The resource-specific properties for this resource. */
   properties?: ScriptExecutionProperties;
 }
+const GetScriptExecutionExecutionLogsResponse =
+  GetScriptExecutionResponse as any as S.Schema<GetScriptExecutionExecutionLogsResponse>;
+
 export interface GetScriptPackageRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2238,8 +3248,15 @@ export interface GetScriptPackageRequest {
   /** Name of the script package. */
   scriptPackageName: string;
 }
+const GetScriptPackageRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  1,
+) as any as S.Schema<GetScriptPackageRequest>;
+
 /** Script Package provisioning state */
 export type ScriptPackageProvisioningState = "Succeeded" | "Failed" | "Canceled";
+const ScriptPackageProvisioningState = S.String;
+
 /** Properties of a Script Package subresource */
 export interface ScriptPackageProperties {
   /** The provisioning state of the resource. */
@@ -2253,6 +3270,11 @@ export interface ScriptPackageProperties {
   /** Link to support by the package vendor */
   uri?: string;
 }
+const ScriptPackageProperties = /*@__PURE__*/ __L.at(
+  __c21,
+  2,
+) as any as S.Schema<ScriptPackageProperties>;
+
 export interface GetScriptPackageResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2265,6 +3287,11 @@ export interface GetScriptPackageResponse {
   /** The resource-specific properties for this resource. */
   properties?: ScriptPackageProperties;
 }
+const GetScriptPackageResponse = /*@__PURE__*/ __L.at(
+  __c21,
+  3,
+) as any as S.Schema<GetScriptPackageResponse>;
+
 export interface GetVirtualMachineRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2277,10 +3304,19 @@ export interface GetVirtualMachineRequest {
   /** ID of the virtual machine. */
   virtualMachineId: string;
 }
+const GetVirtualMachineRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  4,
+) as any as S.Schema<GetVirtualMachineRequest>;
+
 /** Virtual Machine provisioning state */
 export type VirtualMachineProvisioningState = "Succeeded" | "Failed" | "Canceled";
+const VirtualMachineProvisioningState = S.String;
+
 /** Virtual Machine Restrict Movement state */
 export type VirtualMachineRestrictMovementState = "Enabled" | "Disabled";
+const VirtualMachineRestrictMovementState = S.String;
+
 /** Virtual Machine Properties */
 export interface VirtualMachineProperties {
   /** The provisioning state of the resource. */
@@ -2294,6 +3330,11 @@ export interface VirtualMachineProperties {
   /** Whether VM DRS-driven movement is restricted (enabled) or not (disabled) */
   restrictMovement?: VirtualMachineRestrictMovementState;
 }
+const VirtualMachineProperties = /*@__PURE__*/ __L.at(
+  __c21,
+  5,
+) as any as S.Schema<VirtualMachineProperties>;
+
 export interface GetVirtualMachineResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2306,6 +3347,11 @@ export interface GetVirtualMachineResponse {
   /** The resource-specific properties for this resource. */
   properties?: VirtualMachineProperties;
 }
+const GetVirtualMachineResponse = /*@__PURE__*/ __L.at(
+  __c21,
+  6,
+) as any as S.Schema<GetVirtualMachineResponse>;
+
 export interface GetWorkloadNetworkRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2314,6 +3360,11 @@ export interface GetWorkloadNetworkRequest {
   /** Name of the private cloud */
   privateCloudName: string;
 }
+const GetWorkloadNetworkRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  7,
+) as any as S.Schema<GetWorkloadNetworkRequest>;
+
 /** base Workload Network provisioning state */
 export type WorkloadNetworkProvisioningState =
   | "Succeeded"
@@ -2322,11 +3373,18 @@ export type WorkloadNetworkProvisioningState =
   | "Building"
   | "Deleting"
   | "Updating";
+const WorkloadNetworkProvisioningState = S.String;
+
 /** The properties of a workload network */
 export interface WorkloadNetworkProperties {
   /** The provisioning state of the resource. */
   provisioningState?: WorkloadNetworkProvisioningState;
 }
+const WorkloadNetworkProperties = /*@__PURE__*/ __L.at(
+  __c22,
+  0,
+) as any as S.Schema<WorkloadNetworkProperties>;
+
 export interface GetWorkloadNetworkResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2339,6 +3397,11 @@ export interface GetWorkloadNetworkResponse {
   /** The resource-specific properties for this resource. */
   properties?: WorkloadNetworkProperties;
 }
+const GetWorkloadNetworkResponse = /*@__PURE__*/ __L.at(
+  __c22,
+  1,
+) as any as S.Schema<GetWorkloadNetworkResponse>;
+
 export interface GetWorkloadNetworkDhcpRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2349,6 +3412,11 @@ export interface GetWorkloadNetworkDhcpRequest {
   /** The ID of the DHCP configuration */
   dhcpId: string;
 }
+const GetWorkloadNetworkDhcpRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  2,
+) as any as S.Schema<GetWorkloadNetworkDhcpRequest>;
+
 export interface GetWorkloadNetworkDhcpResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2361,6 +3429,9 @@ export interface GetWorkloadNetworkDhcpResponse {
   /** The resource-specific properties for this resource. */
   properties?: WorkloadNetworkDhcpEntity;
 }
+const GetWorkloadNetworkDhcpResponse =
+  CreateWorkloadNetworkDhcpResponse as any as S.Schema<GetWorkloadNetworkDhcpResponse>;
+
 export interface GetWorkloadNetworkDnsServiceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2371,6 +3442,11 @@ export interface GetWorkloadNetworkDnsServiceRequest {
   /** ID of the DNS service. */
   dnsServiceId: string;
 }
+const GetWorkloadNetworkDnsServiceRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  3,
+) as any as S.Schema<GetWorkloadNetworkDnsServiceRequest>;
+
 export interface GetWorkloadNetworkDnsServiceResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2383,6 +3459,9 @@ export interface GetWorkloadNetworkDnsServiceResponse {
   /** The resource-specific properties for this resource. */
   properties?: WorkloadNetworkDnsServiceProperties;
 }
+const GetWorkloadNetworkDnsServiceResponse =
+  CreateWorkloadNetworkDnsServiceResponse as any as S.Schema<GetWorkloadNetworkDnsServiceResponse>;
+
 export interface GetWorkloadNetworkDnsZoneRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2393,6 +3472,11 @@ export interface GetWorkloadNetworkDnsZoneRequest {
   /** ID of the DNS zone. */
   dnsZoneId: string;
 }
+const GetWorkloadNetworkDnsZoneRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  4,
+) as any as S.Schema<GetWorkloadNetworkDnsZoneRequest>;
+
 export interface GetWorkloadNetworkDnsZoneResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2405,6 +3489,9 @@ export interface GetWorkloadNetworkDnsZoneResponse {
   /** The resource-specific properties for this resource. */
   properties?: WorkloadNetworkDnsZoneProperties;
 }
+const GetWorkloadNetworkDnsZoneResponse =
+  CreateWorkloadNetworkDnsZoneResponse as any as S.Schema<GetWorkloadNetworkDnsZoneResponse>;
+
 export interface GetWorkloadNetworkGatewayRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2415,6 +3502,11 @@ export interface GetWorkloadNetworkGatewayRequest {
   /** The ID of the NSX Gateway */
   gatewayId: string;
 }
+const GetWorkloadNetworkGatewayRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  5,
+) as any as S.Schema<GetWorkloadNetworkGatewayRequest>;
+
 /** Properties of a NSX Gateway. */
 export interface WorkloadNetworkGatewayProperties {
   /** The provisioning state of the resource. */
@@ -2424,6 +3516,11 @@ export interface WorkloadNetworkGatewayProperties {
   /** NSX Gateway Path. */
   path?: string;
 }
+const WorkloadNetworkGatewayProperties = /*@__PURE__*/ __L.at(
+  __c22,
+  6,
+) as any as S.Schema<WorkloadNetworkGatewayProperties>;
+
 export interface GetWorkloadNetworkGatewayResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2436,6 +3533,11 @@ export interface GetWorkloadNetworkGatewayResponse {
   /** The resource-specific properties for this resource. */
   properties?: WorkloadNetworkGatewayProperties;
 }
+const GetWorkloadNetworkGatewayResponse = /*@__PURE__*/ __L.at(
+  __c22,
+  7,
+) as any as S.Schema<GetWorkloadNetworkGatewayResponse>;
+
 export interface GetWorkloadNetworkPortMirroringRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2446,6 +3548,11 @@ export interface GetWorkloadNetworkPortMirroringRequest {
   /** ID of the NSX port mirroring profile. */
   portMirroringId: string;
 }
+const GetWorkloadNetworkPortMirroringRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  0,
+) as any as S.Schema<GetWorkloadNetworkPortMirroringRequest>;
+
 export interface GetWorkloadNetworkPortMirroringResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2458,6 +3565,9 @@ export interface GetWorkloadNetworkPortMirroringResponse {
   /** The resource-specific properties for this resource. */
   properties?: WorkloadNetworkPortMirroringProperties;
 }
+const GetWorkloadNetworkPortMirroringResponse =
+  CreateWorkloadNetworkPortMirroringResponse as any as S.Schema<GetWorkloadNetworkPortMirroringResponse>;
+
 export interface GetWorkloadNetworkPublicIPRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2468,6 +3578,11 @@ export interface GetWorkloadNetworkPublicIPRequest {
   /** ID of the DNS zone. */
   publicIPId: string;
 }
+const GetWorkloadNetworkPublicIPRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  1,
+) as any as S.Schema<GetWorkloadNetworkPublicIPRequest>;
+
 export interface GetWorkloadNetworkPublicIPResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2480,6 +3595,9 @@ export interface GetWorkloadNetworkPublicIPResponse {
   /** The resource-specific properties for this resource. */
   properties?: WorkloadNetworkPublicIPProperties;
 }
+const GetWorkloadNetworkPublicIPResponse =
+  CreateWorkloadNetworkPublicIPResponse as any as S.Schema<GetWorkloadNetworkPublicIPResponse>;
+
 export interface GetWorkloadNetworkSegmentRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2490,6 +3608,11 @@ export interface GetWorkloadNetworkSegmentRequest {
   /** The ID of the NSX Segment */
   segmentId: string;
 }
+const GetWorkloadNetworkSegmentRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  2,
+) as any as S.Schema<GetWorkloadNetworkSegmentRequest>;
+
 export interface GetWorkloadNetworkSegmentResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2502,6 +3625,9 @@ export interface GetWorkloadNetworkSegmentResponse {
   /** The resource-specific properties for this resource. */
   properties?: WorkloadNetworkSegmentProperties;
 }
+const GetWorkloadNetworkSegmentResponse =
+  CreateWorkloadNetworkSegmentsResponse as any as S.Schema<GetWorkloadNetworkSegmentResponse>;
+
 export interface GetWorkloadNetworkVirtualMachineRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2512,8 +3638,15 @@ export interface GetWorkloadNetworkVirtualMachineRequest {
   /** ID of the virtual machine. */
   virtualMachineId: string;
 }
+const GetWorkloadNetworkVirtualMachineRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  3,
+) as any as S.Schema<GetWorkloadNetworkVirtualMachineRequest>;
+
 /** VM type */
 export type VMTypeEnum = "REGULAR" | "EDGE" | "SERVICE";
+const VMTypeEnum = S.String;
+
 /** NSX Virtual Machine Properties */
 export interface WorkloadNetworkVirtualMachineProperties {
   /** The provisioning state of the resource. */
@@ -2523,6 +3656,11 @@ export interface WorkloadNetworkVirtualMachineProperties {
   /** Virtual machine type. */
   vmType?: VMTypeEnum;
 }
+const WorkloadNetworkVirtualMachineProperties = /*@__PURE__*/ __L.at(
+  __c23,
+  4,
+) as any as S.Schema<WorkloadNetworkVirtualMachineProperties>;
+
 export interface GetWorkloadNetworkVirtualMachineResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2535,6 +3673,11 @@ export interface GetWorkloadNetworkVirtualMachineResponse {
   /** The resource-specific properties for this resource. */
   properties?: WorkloadNetworkVirtualMachineProperties;
 }
+const GetWorkloadNetworkVirtualMachineResponse = /*@__PURE__*/ __L.at(
+  __c23,
+  5,
+) as any as S.Schema<GetWorkloadNetworkVirtualMachineResponse>;
+
 export interface GetWorkloadNetworkVMGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2545,6 +3688,11 @@ export interface GetWorkloadNetworkVMGroupRequest {
   /** ID of the VM group. */
   vmGroupId: string;
 }
+const GetWorkloadNetworkVMGroupRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  6,
+) as any as S.Schema<GetWorkloadNetworkVMGroupRequest>;
+
 export interface GetWorkloadNetworkVMGroupResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2557,6 +3705,9 @@ export interface GetWorkloadNetworkVMGroupResponse {
   /** The resource-specific properties for this resource. */
   properties?: WorkloadNetworkVMGroupProperties;
 }
+const GetWorkloadNetworkVMGroupResponse =
+  CreateWorkloadNetworkVMGroupResponse as any as S.Schema<GetWorkloadNetworkVMGroupResponse>;
+
 /** The properties of a global reach connection */
 export interface GlobalReachConnectionPropertiesInput {
   /** Authorization key from the peer express route used for the global reach connection */
@@ -2566,6 +3717,11 @@ export interface GlobalReachConnectionPropertiesInput {
   /** The ID of the Private Cloud's ExpressRoute Circuit that is participating in the global reach connection */
   expressRouteId?: string;
 }
+const GlobalReachConnectionPropertiesInput = /*@__PURE__*/ __L.at(
+  __c23,
+  7,
+) as any as S.Schema<GlobalReachConnectionPropertiesInput>;
+
 export interface GlobalReachConnectionsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2578,6 +3734,11 @@ export interface GlobalReachConnectionsCreateOrUpdateRequest {
   /** The resource-specific properties for this resource. */
   properties?: GlobalReachConnectionPropertiesInput;
 }
+const GlobalReachConnectionsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  0,
+) as any as S.Schema<GlobalReachConnectionsCreateOrUpdateRequest>;
+
 export interface GlobalReachConnectionsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2590,8 +3751,14 @@ export interface GlobalReachConnectionsCreateOrUpdateResponse {
   /** The resource-specific properties for this resource. */
   properties?: GlobalReachConnectionProperties;
 }
+const GlobalReachConnectionsCreateOrUpdateResponse =
+  GetGlobalReachConnectionResponse as any as S.Schema<GlobalReachConnectionsCreateOrUpdateResponse>;
+
 /** The properties of an HCX Enterprise Site */
 export interface HcxEnterpriseSitePropertiesInput {}
+const HcxEnterpriseSitePropertiesInput =
+  CheckServiceComponentAvailabilityResponse as any as S.Schema<HcxEnterpriseSitePropertiesInput>;
+
 export interface HcxEnterpriseSitesCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2604,6 +3771,11 @@ export interface HcxEnterpriseSitesCreateOrUpdateRequest {
   /** The resource-specific properties for this resource. */
   properties?: HcxEnterpriseSitePropertiesInput;
 }
+const HcxEnterpriseSitesCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  1,
+) as any as S.Schema<HcxEnterpriseSitesCreateOrUpdateRequest>;
+
 export interface HcxEnterpriseSitesCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2616,11 +3788,19 @@ export interface HcxEnterpriseSitesCreateOrUpdateResponse {
   /** The resource-specific properties for this resource. */
   properties?: HcxEnterpriseSiteProperties;
 }
+const HcxEnterpriseSitesCreateOrUpdateResponse =
+  GetHcxEnterpriseSiteResponse as any as S.Schema<HcxEnterpriseSitesCreateOrUpdateResponse>;
+
 /** The properties of an iSCSI path resource */
 export interface IscsiPathPropertiesInput {
   /** CIDR Block for iSCSI path. */
   networkBlock: string;
 }
+const IscsiPathPropertiesInput = /*@__PURE__*/ __L.at(
+  __c24,
+  2,
+) as any as S.Schema<IscsiPathPropertiesInput>;
+
 export interface IscsiPathsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2631,6 +3811,11 @@ export interface IscsiPathsCreateOrUpdateRequest {
   /** The resource-specific properties for this resource. */
   properties?: IscsiPathPropertiesInput;
 }
+const IscsiPathsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  3,
+) as any as S.Schema<IscsiPathsCreateOrUpdateRequest>;
+
 export interface IscsiPathsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2643,7 +3828,14 @@ export interface IscsiPathsCreateOrUpdateResponse {
   /** The resource-specific properties for this resource. */
   properties?: IscsiPathProperties;
 }
+const IscsiPathsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c24,
+  4,
+) as any as S.Schema<IscsiPathsCreateOrUpdateResponse>;
+
 export type LicensesCreateOrUpdateRequestLicenseName = "VmwareFirewall";
+const LicensesCreateOrUpdateRequestLicenseName = S.String;
+
 /** The properties of a license */
 export interface LicensePropertiesInput {
   /** License kind */
@@ -2657,6 +3849,11 @@ export interface LicensePropertiesInput {
   /** VmwareFirewall: the Broadcom contract number associated with the license. */
   broadcomContractNumber?: string;
 }
+const LicensePropertiesInput = /*@__PURE__*/ __L.at(
+  __c24,
+  5,
+) as any as S.Schema<LicensePropertiesInput>;
+
 export interface LicensesCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2669,6 +3866,11 @@ export interface LicensesCreateOrUpdateRequest {
   /** The resource-specific properties for this resource. */
   properties?: LicensePropertiesInput;
 }
+const LicensesCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  6,
+) as any as S.Schema<LicensesCreateOrUpdateRequest>;
+
 export interface LicensesCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2681,6 +3883,11 @@ export interface LicensesCreateOrUpdateResponse {
   /** The resource-specific properties for this resource. */
   properties?: LicenseProperties;
 }
+const LicensesCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c24,
+  7,
+) as any as S.Schema<LicensesCreateOrUpdateResponse>;
+
 export interface ListAddonsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2689,6 +3896,8 @@ export interface ListAddonsRequest {
   /** Name of the private cloud */
   privateCloudName: string;
 }
+const ListAddonsRequest = /*@__PURE__*/ __L.at(__c25, 0) as any as S.Schema<ListAddonsRequest>;
+
 /** An addon resource */
 export interface Addon {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -2702,8 +3911,12 @@ export interface Addon {
   /** The resource-specific properties for this resource. */
   properties?: AddonProperties;
 }
+const Addon = GetAddonResponse as any as S.Schema<Addon>;
+
 /** The Addon items on this page */
 export type AddonListValueList = Array<Addon>;
+const AddonListValueList = /*@__PURE__*/ __L.at(__c25, 1) as any as S.Schema<AddonListValueList>;
+
 /** The response of a Addon list operation. */
 export interface AddonList {
   /** The Addon items on this page */
@@ -2711,6 +3924,8 @@ export interface AddonList {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const AddonList = /*@__PURE__*/ __L.at(__c25, 2) as any as S.Schema<AddonList>;
+
 export interface ListAuthorizationsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2719,6 +3934,11 @@ export interface ListAuthorizationsRequest {
   /** Name of the private cloud */
   privateCloudName: string;
 }
+const ListAuthorizationsRequest = /*@__PURE__*/ __L.at(
+  __c25,
+  3,
+) as any as S.Schema<ListAuthorizationsRequest>;
+
 /** ExpressRoute Circuit Authorization */
 export interface ExpressRouteAuthorization {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -2732,8 +3952,16 @@ export interface ExpressRouteAuthorization {
   /** The resource-specific properties for this resource. */
   properties?: ExpressRouteAuthorizationProperties;
 }
+const ExpressRouteAuthorization =
+  AuthorizationsCreateOrUpdateResponse as any as S.Schema<ExpressRouteAuthorization>;
+
 /** The ExpressRouteAuthorization items on this page */
 export type ExpressRouteAuthorizationListValueList = Array<ExpressRouteAuthorization>;
+const ExpressRouteAuthorizationListValueList = /*@__PURE__*/ __L.at(
+  __c25,
+  4,
+) as any as S.Schema<ExpressRouteAuthorizationListValueList>;
+
 /** The response of a ExpressRouteAuthorization list operation. */
 export interface ExpressRouteAuthorizationList {
   /** The ExpressRouteAuthorization items on this page */
@@ -2741,6 +3969,11 @@ export interface ExpressRouteAuthorizationList {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const ExpressRouteAuthorizationList = /*@__PURE__*/ __L.at(
+  __c25,
+  5,
+) as any as S.Schema<ExpressRouteAuthorizationList>;
+
 export interface ListCloudLinksRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2749,6 +3982,11 @@ export interface ListCloudLinksRequest {
   /** Name of the private cloud */
   privateCloudName: string;
 }
+const ListCloudLinksRequest = /*@__PURE__*/ __L.at(
+  __c25,
+  6,
+) as any as S.Schema<ListCloudLinksRequest>;
+
 /** A cloud link resource */
 export interface CloudLink {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -2762,8 +4000,15 @@ export interface CloudLink {
   /** The resource-specific properties for this resource. */
   properties?: CloudLinkProperties;
 }
+const CloudLink = GetCloudLinkResponse as any as S.Schema<CloudLink>;
+
 /** The CloudLink items on this page */
 export type CloudLinkListValueList = Array<CloudLink>;
+const CloudLinkListValueList = /*@__PURE__*/ __L.at(
+  __c25,
+  7,
+) as any as S.Schema<CloudLinkListValueList>;
+
 /** The response of a CloudLink list operation. */
 export interface CloudLinkList {
   /** The CloudLink items on this page */
@@ -2771,6 +4016,8 @@ export interface CloudLinkList {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const CloudLinkList = /*@__PURE__*/ __L.at(__c26, 0) as any as S.Schema<CloudLinkList>;
+
 export interface ListClustersRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2779,6 +4026,8 @@ export interface ListClustersRequest {
   /** Name of the private cloud */
   privateCloudName: string;
 }
+const ListClustersRequest = /*@__PURE__*/ __L.at(__c26, 1) as any as S.Schema<ListClustersRequest>;
+
 /** The resource model definition representing SKU */
 export type ClusterSku = ClustersCreateOrUpdateResponseSku;
 /** A cluster resource */
@@ -2796,8 +4045,15 @@ export interface Cluster {
   /** The resource model definition representing SKU */
   sku: ClustersCreateOrUpdateResponseSku;
 }
+const Cluster = GetClusterResponse as any as S.Schema<Cluster>;
+
 /** The Cluster items on this page */
 export type ClusterListValueList = Array<Cluster>;
+const ClusterListValueList = /*@__PURE__*/ __L.at(
+  __c26,
+  2,
+) as any as S.Schema<ClusterListValueList>;
+
 /** The response of a Cluster list operation. */
 export interface ClusterList {
   /** The Cluster items on this page */
@@ -2805,6 +4061,8 @@ export interface ClusterList {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const ClusterList = /*@__PURE__*/ __L.at(__c26, 3) as any as S.Schema<ClusterList>;
+
 export interface ListClusterZonesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2815,8 +4073,16 @@ export interface ListClusterZonesRequest {
   /** Name of the cluster */
   clusterName: string;
 }
+const ListClusterZonesRequest = /*@__PURE__*/ __L.at(
+  __c26,
+  4,
+) as any as S.Schema<ListClusterZonesRequest>;
+
 /** List of hosts belonging to the availability zone in a cluster */
 export type ClusterZoneHostsList = Array<string>;
+const ClusterZoneHostsList =
+  ClusterPropertiesInputHostsList as any as S.Schema<ClusterZoneHostsList>;
+
 /** Zone and associated hosts info */
 export interface ClusterZone {
   /** List of hosts belonging to the availability zone in a cluster */
@@ -2824,13 +4090,22 @@ export interface ClusterZone {
   /** Availability zone identifier */
   zone?: string;
 }
+const ClusterZone = /*@__PURE__*/ __L.at(__c26, 5) as any as S.Schema<ClusterZone>;
+
 /** Zone and associated hosts info */
 export type ClusterZoneListZonesList = Array<ClusterZone>;
+const ClusterZoneListZonesList = /*@__PURE__*/ __L.at(
+  __c26,
+  6,
+) as any as S.Schema<ClusterZoneListZonesList>;
+
 /** List of all zones and associated hosts for a cluster */
 export interface ClusterZoneList {
   /** Zone and associated hosts info */
   zones?: ClusterZoneListZonesList;
 }
+const ClusterZoneList = /*@__PURE__*/ __L.at(__c26, 7) as any as S.Schema<ClusterZoneList>;
+
 export interface ListDatastoresRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2841,6 +4116,11 @@ export interface ListDatastoresRequest {
   /** Name of the cluster */
   clusterName: string;
 }
+const ListDatastoresRequest = /*@__PURE__*/ __L.at(
+  __c27,
+  0,
+) as any as S.Schema<ListDatastoresRequest>;
+
 /** A datastore resource */
 export interface Datastore {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -2854,8 +4134,15 @@ export interface Datastore {
   /** The resource-specific properties for this resource. */
   properties?: DatastoreProperties;
 }
+const Datastore = GetDatastoreResponse as any as S.Schema<Datastore>;
+
 /** The Datastore items on this page */
 export type DatastoreListValueList = Array<Datastore>;
+const DatastoreListValueList = /*@__PURE__*/ __L.at(
+  __c27,
+  1,
+) as any as S.Schema<DatastoreListValueList>;
+
 /** The response of a Datastore list operation. */
 export interface DatastoreList {
   /** The Datastore items on this page */
@@ -2863,6 +4150,8 @@ export interface DatastoreList {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const DatastoreList = /*@__PURE__*/ __L.at(__c27, 2) as any as S.Schema<DatastoreList>;
+
 export interface ListGlobalReachConnectionsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2871,6 +4160,11 @@ export interface ListGlobalReachConnectionsRequest {
   /** Name of the private cloud */
   privateCloudName: string;
 }
+const ListGlobalReachConnectionsRequest = /*@__PURE__*/ __L.at(
+  __c27,
+  3,
+) as any as S.Schema<ListGlobalReachConnectionsRequest>;
+
 /** A global reach connection resource */
 export interface GlobalReachConnection {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -2884,8 +4178,18 @@ export interface GlobalReachConnection {
   /** The resource-specific properties for this resource. */
   properties?: GlobalReachConnectionProperties;
 }
+const GlobalReachConnection = /*@__PURE__*/ __L.at(
+  __c27,
+  4,
+) as any as S.Schema<GlobalReachConnection>;
+
 /** The GlobalReachConnection items on this page */
 export type GlobalReachConnectionListValueList = Array<GlobalReachConnection>;
+const GlobalReachConnectionListValueList = /*@__PURE__*/ __L.at(
+  __c27,
+  5,
+) as any as S.Schema<GlobalReachConnectionListValueList>;
+
 /** The response of a GlobalReachConnection list operation. */
 export interface GlobalReachConnectionList {
   /** The GlobalReachConnection items on this page */
@@ -2893,6 +4197,11 @@ export interface GlobalReachConnectionList {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const GlobalReachConnectionList = /*@__PURE__*/ __L.at(
+  __c27,
+  6,
+) as any as S.Schema<GlobalReachConnectionList>;
+
 export interface ListHcxEnterpriseSitesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2901,6 +4210,11 @@ export interface ListHcxEnterpriseSitesRequest {
   /** Name of the private cloud */
   privateCloudName: string;
 }
+const ListHcxEnterpriseSitesRequest = /*@__PURE__*/ __L.at(
+  __c27,
+  7,
+) as any as S.Schema<ListHcxEnterpriseSitesRequest>;
+
 /** An HCX Enterprise Site resource */
 export interface HcxEnterpriseSite {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -2914,8 +4228,15 @@ export interface HcxEnterpriseSite {
   /** The resource-specific properties for this resource. */
   properties?: HcxEnterpriseSiteProperties;
 }
+const HcxEnterpriseSite = /*@__PURE__*/ __L.at(__c28, 0) as any as S.Schema<HcxEnterpriseSite>;
+
 /** The HcxEnterpriseSite items on this page */
 export type HcxEnterpriseSiteListValueList = Array<HcxEnterpriseSite>;
+const HcxEnterpriseSiteListValueList = /*@__PURE__*/ __L.at(
+  __c28,
+  1,
+) as any as S.Schema<HcxEnterpriseSiteListValueList>;
+
 /** The response of a HcxEnterpriseSite list operation. */
 export interface HcxEnterpriseSiteList {
   /** The HcxEnterpriseSite items on this page */
@@ -2923,6 +4244,11 @@ export interface HcxEnterpriseSiteList {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const HcxEnterpriseSiteList = /*@__PURE__*/ __L.at(
+  __c28,
+  2,
+) as any as S.Schema<HcxEnterpriseSiteList>;
+
 export interface ListHostsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2933,8 +4259,12 @@ export interface ListHostsRequest {
   /** Name of the cluster */
   clusterName: string;
 }
+const ListHostsRequest = /*@__PURE__*/ __L.at(__c28, 3) as any as S.Schema<ListHostsRequest>;
+
 /** The availability zones. */
 export type HostZonesList = Array<string>;
+const HostZonesList = /*@__PURE__*/ __L.at(__c28, 4) as any as S.Schema<HostZonesList>;
+
 /** The resource model definition representing SKU */
 export type HostSku = ClustersCreateOrUpdateResponseSku;
 /** A host resource */
@@ -2954,8 +4284,15 @@ export interface Host {
   /** The resource model definition representing SKU */
   sku?: ClustersCreateOrUpdateResponseSku;
 }
+const Host = /*@__PURE__*/ __L.at(__c28, 5) as any as S.Schema<Host>;
+
 /** The Host items on this page */
 export type HostListResultValueList = Array<Host>;
+const HostListResultValueList = /*@__PURE__*/ __L.at(
+  __c28,
+  6,
+) as any as S.Schema<HostListResultValueList>;
+
 /** The response of a Host list operation. */
 export interface HostListResult {
   /** The Host items on this page */
@@ -2963,6 +4300,8 @@ export interface HostListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const HostListResult = /*@__PURE__*/ __L.at(__c28, 7) as any as S.Schema<HostListResult>;
+
 export interface ListIscsiPathByPrivateCloudRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2971,6 +4310,11 @@ export interface ListIscsiPathByPrivateCloudRequest {
   /** Name of the private cloud */
   privateCloudName: string;
 }
+const ListIscsiPathByPrivateCloudRequest = /*@__PURE__*/ __L.at(
+  __c29,
+  0,
+) as any as S.Schema<ListIscsiPathByPrivateCloudRequest>;
+
 /** An iSCSI path resource */
 export interface IscsiPath {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -2984,8 +4328,15 @@ export interface IscsiPath {
   /** The resource-specific properties for this resource. */
   properties?: IscsiPathProperties;
 }
+const IscsiPath = GetIscsiPathResponse as any as S.Schema<IscsiPath>;
+
 /** The IscsiPath items on this page */
 export type IscsiPathListResultValueList = Array<IscsiPath>;
+const IscsiPathListResultValueList = /*@__PURE__*/ __L.at(
+  __c29,
+  1,
+) as any as S.Schema<IscsiPathListResultValueList>;
+
 /** The response of a IscsiPath list operation. */
 export interface IscsiPathListResult {
   /** The IscsiPath items on this page */
@@ -2993,6 +4344,8 @@ export interface IscsiPathListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const IscsiPathListResult = /*@__PURE__*/ __L.at(__c29, 2) as any as S.Schema<IscsiPathListResult>;
+
 export interface ListLicensesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3001,6 +4354,8 @@ export interface ListLicensesRequest {
   /** Name of the private cloud */
   privateCloudName: string;
 }
+const ListLicensesRequest = /*@__PURE__*/ __L.at(__c29, 3) as any as S.Schema<ListLicensesRequest>;
+
 /** A license resource */
 export interface License {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -3014,8 +4369,15 @@ export interface License {
   /** The resource-specific properties for this resource. */
   properties?: LicenseProperties;
 }
+const License = GetLicenseResponse as any as S.Schema<License>;
+
 /** The License items on this page */
 export type LicenseListResultValueList = Array<License>;
+const LicenseListResultValueList = /*@__PURE__*/ __L.at(
+  __c29,
+  4,
+) as any as S.Schema<LicenseListResultValueList>;
+
 /** The response of a License list operation. */
 export interface LicenseListResult {
   /** The License items on this page */
@@ -3023,6 +4385,8 @@ export interface LicenseListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const LicenseListResult = /*@__PURE__*/ __L.at(__c29, 5) as any as S.Schema<LicenseListResult>;
+
 export type ListMaintenancesRequestStateName =
   | "NotScheduled"
   | "Scheduled"
@@ -3030,7 +4394,11 @@ export type ListMaintenancesRequestStateName =
   | "Success"
   | "Failed"
   | "Canceled";
+const ListMaintenancesRequestStateName = S.String;
+
 export type ListMaintenancesRequestStatus = "Active" | "Inactive";
+const ListMaintenancesRequestStatus = S.String;
+
 export interface ListMaintenancesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3047,6 +4415,11 @@ export interface ListMaintenancesRequest {
   /** date till which result should be returned. i.e. scheduledStartTime <= to */
   to?: string;
 }
+const ListMaintenancesRequest = /*@__PURE__*/ __L.at(
+  __c29,
+  6,
+) as any as S.Schema<ListMaintenancesRequest>;
+
 /** A cluster resource */
 export interface Maintenance {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -3060,8 +4433,15 @@ export interface Maintenance {
   /** The resource-specific properties for this resource. */
   properties?: MaintenanceProperties;
 }
+const Maintenance = GetMaintenanceResponse as any as S.Schema<Maintenance>;
+
 /** The Maintenance items on this page */
 export type MaintenanceListResultValueList = Array<Maintenance>;
+const MaintenanceListResultValueList = /*@__PURE__*/ __L.at(
+  __c29,
+  7,
+) as any as S.Schema<MaintenanceListResultValueList>;
+
 /** The response of a Maintenance list operation. */
 export interface MaintenanceListResult {
   /** The Maintenance items on this page */
@@ -3069,7 +4449,17 @@ export interface MaintenanceListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const MaintenanceListResult = /*@__PURE__*/ __L.at(
+  __c30,
+  0,
+) as any as S.Schema<MaintenanceListResult>;
+
 export interface ListOperationsRequest {}
+const ListOperationsRequest = /*@__PURE__*/ __L.at(
+  __c30,
+  1,
+) as any as S.Schema<ListOperationsRequest>;
+
 /** Localized display information for this particular operation. */
 export interface OperationDisplay {
   /** The localized friendly form of the resource provider name, e.g. "Microsoft Monitoring Insights" or "Microsoft Compute". */
@@ -3081,10 +4471,16 @@ export interface OperationDisplay {
   /** The short, localized friendly description of the operation; suitable for tool tips and detailed views. */
   description?: string;
 }
+const OperationDisplay = /*@__PURE__*/ __L.at(__c30, 2) as any as S.Schema<OperationDisplay>;
+
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
 export type OperationOrigin = "user" | "system" | "user,system";
+const OperationOrigin = S.String;
+
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
 export type OperationActionType = "Internal";
+const OperationActionType = S.String;
+
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
 export interface Operation {
   /** The name of the operation, as per Resource-Based Access Control (RBAC). Examples: "Microsoft.Compute/virtualMachines/write", "Microsoft.Compute/virtualMachines/capture/action" */
@@ -3098,14 +4494,26 @@ export interface Operation {
   /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
   actionType?: OperationActionType;
 }
+const Operation = /*@__PURE__*/ __L.at(__c30, 3) as any as S.Schema<Operation>;
+
 /** List of operations supported by the resource provider */
 export type ListOperationsResponseValueList = Array<Operation>;
+const ListOperationsResponseValueList = /*@__PURE__*/ __L.at(
+  __c30,
+  4,
+) as any as S.Schema<ListOperationsResponseValueList>;
+
 export interface ListOperationsResponse {
   /** List of operations supported by the resource provider */
   value?: ListOperationsResponseValueList;
   /** URL to get the next set of operation list results (if there are any). */
   nextLink?: string;
 }
+const ListOperationsResponse = /*@__PURE__*/ __L.at(
+  __c30,
+  5,
+) as any as S.Schema<ListOperationsResponse>;
+
 export interface ListPlacementPoliciesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3116,6 +4524,11 @@ export interface ListPlacementPoliciesRequest {
   /** Name of the cluster */
   clusterName: string;
 }
+const ListPlacementPoliciesRequest = /*@__PURE__*/ __L.at(
+  __c30,
+  6,
+) as any as S.Schema<ListPlacementPoliciesRequest>;
+
 /** A vSphere Distributed Resource Scheduler (DRS) placement policy */
 export interface PlacementPolicy {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -3129,8 +4542,15 @@ export interface PlacementPolicy {
   /** The resource-specific properties for this resource. */
   properties?: PlacementPolicyProperties;
 }
+const PlacementPolicy = /*@__PURE__*/ __L.at(__c30, 7) as any as S.Schema<PlacementPolicy>;
+
 /** The PlacementPolicy items on this page */
 export type PlacementPoliciesListValueList = Array<PlacementPolicy>;
+const PlacementPoliciesListValueList = /*@__PURE__*/ __L.at(
+  __c31,
+  0,
+) as any as S.Schema<PlacementPoliciesListValueList>;
+
 /** The response of a PlacementPolicy list operation. */
 export interface PlacementPoliciesList {
   /** The PlacementPolicy items on this page */
@@ -3138,6 +4558,11 @@ export interface PlacementPoliciesList {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const PlacementPoliciesList = /*@__PURE__*/ __L.at(
+  __c31,
+  1,
+) as any as S.Schema<PlacementPoliciesList>;
+
 export interface ListPrivateCloudAdminCredentialsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3146,6 +4571,11 @@ export interface ListPrivateCloudAdminCredentialsRequest {
   /** Name of the private cloud */
   privateCloudName: string;
 }
+const ListPrivateCloudAdminCredentialsRequest = /*@__PURE__*/ __L.at(
+  __c31,
+  2,
+) as any as S.Schema<ListPrivateCloudAdminCredentialsRequest>;
+
 /** Administrative credentials for accessing vCenter and NSX-T */
 export interface AdminCredentials {
   /** NSX-T Manager username */
@@ -3157,10 +4587,17 @@ export interface AdminCredentials {
   /** vCenter admin password */
   vcenterPassword?: string | Redacted.Redacted<string>;
 }
+const AdminCredentials = /*@__PURE__*/ __L.at(__c31, 3) as any as S.Schema<AdminCredentials>;
+
 export interface ListPrivateCloudInSubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
+const ListPrivateCloudInSubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c31,
+  4,
+) as any as S.Schema<ListPrivateCloudInSubscriptionRequest>;
+
 /** Resource tags. */
 export type PrivateCloudTagsMap = { [key: string]: string | undefined };
 /** The resource model definition representing SKU */
@@ -3192,8 +4629,15 @@ export interface PrivateCloud {
   /** The availability zones. */
   zones?: PrivateCloudZonesList;
 }
+const PrivateCloud = GetPrivateCloudResponse as any as S.Schema<PrivateCloud>;
+
 /** The PrivateCloud items on this page */
 export type PrivateCloudListValueList = Array<PrivateCloud>;
+const PrivateCloudListValueList = /*@__PURE__*/ __L.at(
+  __c31,
+  5,
+) as any as S.Schema<PrivateCloudListValueList>;
+
 /** The response of a PrivateCloud list operation. */
 export interface PrivateCloudList {
   /** The PrivateCloud items on this page */
@@ -3201,12 +4645,19 @@ export interface PrivateCloudList {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const PrivateCloudList = /*@__PURE__*/ __L.at(__c31, 6) as any as S.Schema<PrivateCloudList>;
+
 export interface ListPrivateCloudsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
+const ListPrivateCloudsRequest = /*@__PURE__*/ __L.at(
+  __c31,
+  7,
+) as any as S.Schema<ListPrivateCloudsRequest>;
+
 export interface ListProvisionedNetworksRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3215,6 +4666,11 @@ export interface ListProvisionedNetworksRequest {
   /** Name of the private cloud */
   privateCloudName: string;
 }
+const ListProvisionedNetworksRequest = /*@__PURE__*/ __L.at(
+  __c32,
+  0,
+) as any as S.Schema<ListProvisionedNetworksRequest>;
+
 /** A provisioned network resource */
 export interface ProvisionedNetwork {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -3228,8 +4684,15 @@ export interface ProvisionedNetwork {
   /** The resource-specific properties for this resource. */
   properties?: ProvisionedNetworkProperties;
 }
+const ProvisionedNetwork = /*@__PURE__*/ __L.at(__c32, 1) as any as S.Schema<ProvisionedNetwork>;
+
 /** The ProvisionedNetwork items on this page */
 export type ProvisionedNetworkListResultValueList = Array<ProvisionedNetwork>;
+const ProvisionedNetworkListResultValueList = /*@__PURE__*/ __L.at(
+  __c32,
+  2,
+) as any as S.Schema<ProvisionedNetworkListResultValueList>;
+
 /** The response of a ProvisionedNetwork list operation. */
 export interface ProvisionedNetworkListResult {
   /** The ProvisionedNetwork items on this page */
@@ -3237,6 +4700,11 @@ export interface ProvisionedNetworkListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const ProvisionedNetworkListResult = /*@__PURE__*/ __L.at(
+  __c32,
+  3,
+) as any as S.Schema<ProvisionedNetworkListResult>;
+
 export interface ListPureStoragePoliciesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3245,6 +4713,11 @@ export interface ListPureStoragePoliciesRequest {
   /** Name of the private cloud */
   privateCloudName: string;
 }
+const ListPureStoragePoliciesRequest = /*@__PURE__*/ __L.at(
+  __c32,
+  4,
+) as any as S.Schema<ListPureStoragePoliciesRequest>;
+
 /** An instance describing a Pure Storage Policy Based Management policy */
 export interface PureStoragePolicy {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -3258,8 +4731,15 @@ export interface PureStoragePolicy {
   /** The resource-specific properties for this resource. */
   properties?: PureStoragePolicyProperties;
 }
+const PureStoragePolicy = /*@__PURE__*/ __L.at(__c32, 5) as any as S.Schema<PureStoragePolicy>;
+
 /** The PureStoragePolicy items on this page */
 export type PureStoragePolicyListResultValueList = Array<PureStoragePolicy>;
+const PureStoragePolicyListResultValueList = /*@__PURE__*/ __L.at(
+  __c32,
+  6,
+) as any as S.Schema<PureStoragePolicyListResultValueList>;
+
 /** The response of a PureStoragePolicy list operation. */
 export interface PureStoragePolicyListResult {
   /** The PureStoragePolicy items on this page */
@@ -3267,6 +4747,11 @@ export interface PureStoragePolicyListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const PureStoragePolicyListResult = /*@__PURE__*/ __L.at(
+  __c32,
+  7,
+) as any as S.Schema<PureStoragePolicyListResult>;
+
 export interface ListScriptCmdletsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3277,6 +4762,11 @@ export interface ListScriptCmdletsRequest {
   /** Name of the script package. */
   scriptPackageName: string;
 }
+const ListScriptCmdletsRequest = /*@__PURE__*/ __L.at(
+  __c33,
+  0,
+) as any as S.Schema<ListScriptCmdletsRequest>;
+
 /** A cmdlet available for script execution */
 export interface ScriptCmdlet {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -3290,8 +4780,15 @@ export interface ScriptCmdlet {
   /** The resource-specific properties for this resource. */
   properties?: ScriptCmdletProperties;
 }
+const ScriptCmdlet = GetScriptCmdletResponse as any as S.Schema<ScriptCmdlet>;
+
 /** The ScriptCmdlet items on this page */
 export type ScriptCmdletsListValueList = Array<ScriptCmdlet>;
+const ScriptCmdletsListValueList = /*@__PURE__*/ __L.at(
+  __c33,
+  1,
+) as any as S.Schema<ScriptCmdletsListValueList>;
+
 /** The response of a ScriptCmdlet list operation. */
 export interface ScriptCmdletsList {
   /** The ScriptCmdlet items on this page */
@@ -3299,6 +4796,8 @@ export interface ScriptCmdletsList {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const ScriptCmdletsList = /*@__PURE__*/ __L.at(__c33, 2) as any as S.Schema<ScriptCmdletsList>;
+
 export interface ListScriptExecutionsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3307,6 +4806,11 @@ export interface ListScriptExecutionsRequest {
   /** Name of the private cloud */
   privateCloudName: string;
 }
+const ListScriptExecutionsRequest = /*@__PURE__*/ __L.at(
+  __c33,
+  3,
+) as any as S.Schema<ListScriptExecutionsRequest>;
+
 /** An instance of a script executed by a user - custom or AVS */
 export interface ScriptExecution {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -3320,8 +4824,15 @@ export interface ScriptExecution {
   /** The resource-specific properties for this resource. */
   properties?: ScriptExecutionProperties;
 }
+const ScriptExecution = /*@__PURE__*/ __L.at(__c33, 4) as any as S.Schema<ScriptExecution>;
+
 /** The ScriptExecution items on this page */
 export type ScriptExecutionsListValueList = Array<ScriptExecution>;
+const ScriptExecutionsListValueList = /*@__PURE__*/ __L.at(
+  __c33,
+  5,
+) as any as S.Schema<ScriptExecutionsListValueList>;
+
 /** The response of a ScriptExecution list operation. */
 export interface ScriptExecutionsList {
   /** The ScriptExecution items on this page */
@@ -3329,6 +4840,11 @@ export interface ScriptExecutionsList {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const ScriptExecutionsList = /*@__PURE__*/ __L.at(
+  __c33,
+  6,
+) as any as S.Schema<ScriptExecutionsList>;
+
 export interface ListScriptPackagesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3337,6 +4853,11 @@ export interface ListScriptPackagesRequest {
   /** Name of the private cloud */
   privateCloudName: string;
 }
+const ListScriptPackagesRequest = /*@__PURE__*/ __L.at(
+  __c33,
+  7,
+) as any as S.Schema<ListScriptPackagesRequest>;
+
 /** Script Package resources available for execution */
 export interface ScriptPackage {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -3350,8 +4871,15 @@ export interface ScriptPackage {
   /** The resource-specific properties for this resource. */
   properties?: ScriptPackageProperties;
 }
+const ScriptPackage = GetScriptPackageResponse as any as S.Schema<ScriptPackage>;
+
 /** The ScriptPackage items on this page */
 export type ScriptPackagesListValueList = Array<ScriptPackage>;
+const ScriptPackagesListValueList = /*@__PURE__*/ __L.at(
+  __c34,
+  0,
+) as any as S.Schema<ScriptPackagesListValueList>;
+
 /** The response of a ScriptPackage list operation. */
 export interface ScriptPackagesList {
   /** The ScriptPackage items on this page */
@@ -3359,18 +4887,33 @@ export interface ScriptPackagesList {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const ScriptPackagesList = /*@__PURE__*/ __L.at(__c34, 1) as any as S.Schema<ScriptPackagesList>;
+
 export interface ListSkusRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
+const ListSkusRequest = /*@__PURE__*/ __L.at(__c34, 2) as any as S.Schema<ListSkusRequest>;
+
 /** Describes the type of resource the SKU applies to. */
 export type ResourceSkuResourceType = "privateClouds" | "privateClouds/clusters";
+const ResourceSkuResourceType = S.String;
+
 /** The set of locations that the SKU is available. */
 export type ResourceSkuLocationsList = Array<string>;
+const ResourceSkuLocationsList =
+  ClusterPropertiesInputHostsList as any as S.Schema<ResourceSkuLocationsList>;
+
 /** List of availability zones where the SKU is supported. */
 export type ResourceSkuLocationInfoZonesList = Array<string>;
+const ResourceSkuLocationInfoZonesList =
+  ClusterPropertiesInputHostsList as any as S.Schema<ResourceSkuLocationInfoZonesList>;
+
 /** Gets the set of zones that the SKU is available in with the specified capabilities. */
 export type ResourceSkuZoneDetailsNameList = Array<string>;
+const ResourceSkuZoneDetailsNameList =
+  ClusterPropertiesInputHostsList as any as S.Schema<ResourceSkuZoneDetailsNameList>;
+
 /** Describes The SKU capabilities object. */
 export interface ResourceSkuCapabilities {
   /** The name of the SKU capability. */
@@ -3378,8 +4921,18 @@ export interface ResourceSkuCapabilities {
   /** The value of the SKU capability. */
   value: string;
 }
+const ResourceSkuCapabilities = /*@__PURE__*/ __L.at(
+  __c34,
+  3,
+) as any as S.Schema<ResourceSkuCapabilities>;
+
 /** A list of capabilities that are available for the SKU in the specified list of zones. */
 export type ResourceSkuZoneDetailsCapabilitiesList = Array<ResourceSkuCapabilities>;
+const ResourceSkuZoneDetailsCapabilitiesList = /*@__PURE__*/ __L.at(
+  __c34,
+  4,
+) as any as S.Schema<ResourceSkuZoneDetailsCapabilitiesList>;
+
 /** Describes The zonal capabilities of a SKU. */
 export interface ResourceSkuZoneDetails {
   /** Gets the set of zones that the SKU is available in with the specified capabilities. */
@@ -3387,8 +4940,18 @@ export interface ResourceSkuZoneDetails {
   /** A list of capabilities that are available for the SKU in the specified list of zones. */
   capabilities: ResourceSkuZoneDetailsCapabilitiesList;
 }
+const ResourceSkuZoneDetails = /*@__PURE__*/ __L.at(
+  __c34,
+  5,
+) as any as S.Schema<ResourceSkuZoneDetails>;
+
 /** Gets details of capabilities available to a SKU in specific zones. */
 export type ResourceSkuLocationInfoZoneDetailsList = Array<ResourceSkuZoneDetails>;
+const ResourceSkuLocationInfoZoneDetailsList = /*@__PURE__*/ __L.at(
+  __c34,
+  6,
+) as any as S.Schema<ResourceSkuLocationInfoZoneDetailsList>;
+
 /** Describes an available Compute SKU Location Information. */
 export interface ResourceSkuLocationInfo {
   /** Location of the SKU */
@@ -3398,18 +4961,42 @@ export interface ResourceSkuLocationInfo {
   /** Gets details of capabilities available to a SKU in specific zones. */
   zoneDetails: ResourceSkuLocationInfoZoneDetailsList;
 }
+const ResourceSkuLocationInfo = /*@__PURE__*/ __L.at(
+  __c34,
+  7,
+) as any as S.Schema<ResourceSkuLocationInfo>;
+
 /** A list of locations and availability zones in those locations where the SKU is available */
 export type ResourceSkuLocationInfoList = Array<ResourceSkuLocationInfo>;
+const ResourceSkuLocationInfoList = /*@__PURE__*/ __L.at(
+  __c35,
+  0,
+) as any as S.Schema<ResourceSkuLocationInfoList>;
+
 /** Name value pairs to describe the capability. */
 export type ResourceSkuCapabilitiesList = Array<ResourceSkuCapabilities>;
+const ResourceSkuCapabilitiesList =
+  ResourceSkuZoneDetailsCapabilitiesList as any as S.Schema<ResourceSkuCapabilitiesList>;
+
 /** Describes the kind of SKU restrictions that can exist */
 export type ResourceSkuRestrictionsType = "Location" | "Zone";
+const ResourceSkuRestrictionsType = S.String;
+
 /** The value of restrictions. If the restriction type is set to location. This would be different locations where the SKU is restricted. */
 export type ResourceSkuRestrictionsValuesList = Array<string>;
+const ResourceSkuRestrictionsValuesList =
+  ClusterPropertiesInputHostsList as any as S.Schema<ResourceSkuRestrictionsValuesList>;
+
 /** Locations where the SKU is restricted */
 export type ResourceSkuRestrictionInfoLocationsList = Array<string>;
+const ResourceSkuRestrictionInfoLocationsList =
+  ClusterPropertiesInputHostsList as any as S.Schema<ResourceSkuRestrictionInfoLocationsList>;
+
 /** List of availability zones where the SKU is restricted. */
 export type ResourceSkuRestrictionInfoZonesList = Array<string>;
+const ResourceSkuRestrictionInfoZonesList =
+  ClusterPropertiesInputHostsList as any as S.Schema<ResourceSkuRestrictionInfoZonesList>;
+
 /** Describes an available Compute SKU Restriction Information. */
 export interface ResourceSkuRestrictionInfo {
   /** Locations where the SKU is restricted */
@@ -3417,8 +5004,15 @@ export interface ResourceSkuRestrictionInfo {
   /** List of availability zones where the SKU is restricted. */
   zones?: ResourceSkuRestrictionInfoZonesList;
 }
+const ResourceSkuRestrictionInfo = /*@__PURE__*/ __L.at(
+  __c35,
+  1,
+) as any as S.Schema<ResourceSkuRestrictionInfo>;
+
 /** Describes the reason for SKU restriction. */
 export type ResourceSkuRestrictionsReasonCode = "QuotaId" | "NotAvailableForSubscription";
+const ResourceSkuRestrictionsReasonCode = S.String;
+
 /** The restrictions of the SKU. */
 export interface ResourceSkuRestrictions {
   /** the type of restrictions. */
@@ -3430,8 +5024,18 @@ export interface ResourceSkuRestrictions {
   /** the reason for restriction. */
   reasonCode?: ResourceSkuRestrictionsReasonCode;
 }
+const ResourceSkuRestrictions = /*@__PURE__*/ __L.at(
+  __c35,
+  2,
+) as any as S.Schema<ResourceSkuRestrictions>;
+
 /** The restrictions of the SKU. */
 export type ResourceSkuRestrictionsList = Array<ResourceSkuRestrictions>;
+const ResourceSkuRestrictionsList = /*@__PURE__*/ __L.at(
+  __c35,
+  3,
+) as any as S.Schema<ResourceSkuRestrictionsList>;
+
 /** A SKU for a resource. */
 export interface ResourceSku {
   /** The type of resource the SKU applies to. */
@@ -3453,8 +5057,15 @@ export interface ResourceSku {
   /** The restrictions of the SKU. */
   restrictions: ResourceSkuRestrictionsList;
 }
+const ResourceSku = /*@__PURE__*/ __L.at(__c35, 4) as any as S.Schema<ResourceSku>;
+
 /** The ResourceSku items on this page */
 export type PagedResourceSkuValueList = Array<ResourceSku>;
+const PagedResourceSkuValueList = /*@__PURE__*/ __L.at(
+  __c35,
+  5,
+) as any as S.Schema<PagedResourceSkuValueList>;
+
 /** Paged collection of ResourceSku items */
 export interface PagedResourceSku {
   /** The ResourceSku items on this page */
@@ -3462,6 +5073,8 @@ export interface PagedResourceSku {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const PagedResourceSku = /*@__PURE__*/ __L.at(__c35, 6) as any as S.Schema<PagedResourceSku>;
+
 export interface ListVirtualMachinesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3472,6 +5085,11 @@ export interface ListVirtualMachinesRequest {
   /** Name of the cluster */
   clusterName: string;
 }
+const ListVirtualMachinesRequest = /*@__PURE__*/ __L.at(
+  __c35,
+  7,
+) as any as S.Schema<ListVirtualMachinesRequest>;
+
 /** Virtual Machine */
 export interface VirtualMachine {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -3485,8 +5103,15 @@ export interface VirtualMachine {
   /** The resource-specific properties for this resource. */
   properties?: VirtualMachineProperties;
 }
+const VirtualMachine = /*@__PURE__*/ __L.at(__c36, 0) as any as S.Schema<VirtualMachine>;
+
 /** The VirtualMachine items on this page */
 export type VirtualMachinesListValueList = Array<VirtualMachine>;
+const VirtualMachinesListValueList = /*@__PURE__*/ __L.at(
+  __c36,
+  1,
+) as any as S.Schema<VirtualMachinesListValueList>;
+
 /** The response of a VirtualMachine list operation. */
 export interface VirtualMachinesList {
   /** The VirtualMachine items on this page */
@@ -3494,6 +5119,8 @@ export interface VirtualMachinesList {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const VirtualMachinesList = /*@__PURE__*/ __L.at(__c36, 2) as any as S.Schema<VirtualMachinesList>;
+
 export interface ListWorkloadNetworkDhcpRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3502,6 +5129,11 @@ export interface ListWorkloadNetworkDhcpRequest {
   /** Name of the private cloud */
   privateCloudName: string;
 }
+const ListWorkloadNetworkDhcpRequest = /*@__PURE__*/ __L.at(
+  __c36,
+  3,
+) as any as S.Schema<ListWorkloadNetworkDhcpRequest>;
+
 /** NSX DHCP */
 export interface WorkloadNetworkDhcp {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -3515,8 +5147,15 @@ export interface WorkloadNetworkDhcp {
   /** The resource-specific properties for this resource. */
   properties?: WorkloadNetworkDhcpEntity;
 }
+const WorkloadNetworkDhcp = /*@__PURE__*/ __L.at(__c36, 4) as any as S.Schema<WorkloadNetworkDhcp>;
+
 /** The WorkloadNetworkDhcp items on this page */
 export type WorkloadNetworkDhcpListValueList = Array<WorkloadNetworkDhcp>;
+const WorkloadNetworkDhcpListValueList = /*@__PURE__*/ __L.at(
+  __c36,
+  5,
+) as any as S.Schema<WorkloadNetworkDhcpListValueList>;
+
 /** The response of a WorkloadNetworkDhcp list operation. */
 export interface WorkloadNetworkDhcpList {
   /** The WorkloadNetworkDhcp items on this page */
@@ -3524,6 +5163,11 @@ export interface WorkloadNetworkDhcpList {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const WorkloadNetworkDhcpList = /*@__PURE__*/ __L.at(
+  __c36,
+  6,
+) as any as S.Schema<WorkloadNetworkDhcpList>;
+
 export interface ListWorkloadNetworkDnsServicesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3532,6 +5176,11 @@ export interface ListWorkloadNetworkDnsServicesRequest {
   /** Name of the private cloud */
   privateCloudName: string;
 }
+const ListWorkloadNetworkDnsServicesRequest = /*@__PURE__*/ __L.at(
+  __c36,
+  7,
+) as any as S.Schema<ListWorkloadNetworkDnsServicesRequest>;
+
 /** NSX DNS Service */
 export interface WorkloadNetworkDnsService {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -3545,8 +5194,16 @@ export interface WorkloadNetworkDnsService {
   /** The resource-specific properties for this resource. */
   properties?: WorkloadNetworkDnsServiceProperties;
 }
+const WorkloadNetworkDnsService =
+  CreateWorkloadNetworkDnsServiceResponse as any as S.Schema<WorkloadNetworkDnsService>;
+
 /** The WorkloadNetworkDnsService items on this page */
 export type WorkloadNetworkDnsServicesListValueList = Array<WorkloadNetworkDnsService>;
+const WorkloadNetworkDnsServicesListValueList = /*@__PURE__*/ __L.at(
+  __c37,
+  0,
+) as any as S.Schema<WorkloadNetworkDnsServicesListValueList>;
+
 /** The response of a WorkloadNetworkDnsService list operation. */
 export interface WorkloadNetworkDnsServicesList {
   /** The WorkloadNetworkDnsService items on this page */
@@ -3554,6 +5211,11 @@ export interface WorkloadNetworkDnsServicesList {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const WorkloadNetworkDnsServicesList = /*@__PURE__*/ __L.at(
+  __c37,
+  1,
+) as any as S.Schema<WorkloadNetworkDnsServicesList>;
+
 export interface ListWorkloadNetworkDnsZonesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3562,6 +5224,11 @@ export interface ListWorkloadNetworkDnsZonesRequest {
   /** Name of the private cloud */
   privateCloudName: string;
 }
+const ListWorkloadNetworkDnsZonesRequest = /*@__PURE__*/ __L.at(
+  __c37,
+  2,
+) as any as S.Schema<ListWorkloadNetworkDnsZonesRequest>;
+
 /** NSX DNS Zone */
 export interface WorkloadNetworkDnsZone {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -3575,8 +5242,18 @@ export interface WorkloadNetworkDnsZone {
   /** The resource-specific properties for this resource. */
   properties?: WorkloadNetworkDnsZoneProperties;
 }
+const WorkloadNetworkDnsZone = /*@__PURE__*/ __L.at(
+  __c37,
+  3,
+) as any as S.Schema<WorkloadNetworkDnsZone>;
+
 /** The WorkloadNetworkDnsZone items on this page */
 export type WorkloadNetworkDnsZonesListValueList = Array<WorkloadNetworkDnsZone>;
+const WorkloadNetworkDnsZonesListValueList = /*@__PURE__*/ __L.at(
+  __c37,
+  4,
+) as any as S.Schema<WorkloadNetworkDnsZonesListValueList>;
+
 /** The response of a WorkloadNetworkDnsZone list operation. */
 export interface WorkloadNetworkDnsZonesList {
   /** The WorkloadNetworkDnsZone items on this page */
@@ -3584,6 +5261,11 @@ export interface WorkloadNetworkDnsZonesList {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const WorkloadNetworkDnsZonesList = /*@__PURE__*/ __L.at(
+  __c37,
+  5,
+) as any as S.Schema<WorkloadNetworkDnsZonesList>;
+
 export interface ListWorkloadNetworkGatewaysRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3592,6 +5274,11 @@ export interface ListWorkloadNetworkGatewaysRequest {
   /** Name of the private cloud */
   privateCloudName: string;
 }
+const ListWorkloadNetworkGatewaysRequest = /*@__PURE__*/ __L.at(
+  __c37,
+  6,
+) as any as S.Schema<ListWorkloadNetworkGatewaysRequest>;
+
 /** NSX Gateway. */
 export interface WorkloadNetworkGateway {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -3605,8 +5292,18 @@ export interface WorkloadNetworkGateway {
   /** The resource-specific properties for this resource. */
   properties?: WorkloadNetworkGatewayProperties;
 }
+const WorkloadNetworkGateway = /*@__PURE__*/ __L.at(
+  __c37,
+  7,
+) as any as S.Schema<WorkloadNetworkGateway>;
+
 /** The WorkloadNetworkGateway items on this page */
 export type WorkloadNetworkGatewayListValueList = Array<WorkloadNetworkGateway>;
+const WorkloadNetworkGatewayListValueList = /*@__PURE__*/ __L.at(
+  __c38,
+  0,
+) as any as S.Schema<WorkloadNetworkGatewayListValueList>;
+
 /** The response of a WorkloadNetworkGateway list operation. */
 export interface WorkloadNetworkGatewayList {
   /** The WorkloadNetworkGateway items on this page */
@@ -3614,6 +5311,11 @@ export interface WorkloadNetworkGatewayList {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const WorkloadNetworkGatewayList = /*@__PURE__*/ __L.at(
+  __c38,
+  1,
+) as any as S.Schema<WorkloadNetworkGatewayList>;
+
 export interface ListWorkloadNetworkPortMirroringRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3622,6 +5324,11 @@ export interface ListWorkloadNetworkPortMirroringRequest {
   /** Name of the private cloud */
   privateCloudName: string;
 }
+const ListWorkloadNetworkPortMirroringRequest = /*@__PURE__*/ __L.at(
+  __c38,
+  2,
+) as any as S.Schema<ListWorkloadNetworkPortMirroringRequest>;
+
 /** NSX Port Mirroring */
 export interface WorkloadNetworkPortMirroring {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -3635,8 +5342,16 @@ export interface WorkloadNetworkPortMirroring {
   /** The resource-specific properties for this resource. */
   properties?: WorkloadNetworkPortMirroringProperties;
 }
+const WorkloadNetworkPortMirroring =
+  CreateWorkloadNetworkPortMirroringResponse as any as S.Schema<WorkloadNetworkPortMirroring>;
+
 /** The WorkloadNetworkPortMirroring items on this page */
 export type WorkloadNetworkPortMirroringListValueList = Array<WorkloadNetworkPortMirroring>;
+const WorkloadNetworkPortMirroringListValueList = /*@__PURE__*/ __L.at(
+  __c38,
+  3,
+) as any as S.Schema<WorkloadNetworkPortMirroringListValueList>;
+
 /** The response of a WorkloadNetworkPortMirroring list operation. */
 export interface WorkloadNetworkPortMirroringList {
   /** The WorkloadNetworkPortMirroring items on this page */
@@ -3644,6 +5359,11 @@ export interface WorkloadNetworkPortMirroringList {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const WorkloadNetworkPortMirroringList = /*@__PURE__*/ __L.at(
+  __c38,
+  4,
+) as any as S.Schema<WorkloadNetworkPortMirroringList>;
+
 export interface ListWorkloadNetworkPublicIPsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3652,6 +5372,11 @@ export interface ListWorkloadNetworkPublicIPsRequest {
   /** Name of the private cloud */
   privateCloudName: string;
 }
+const ListWorkloadNetworkPublicIPsRequest = /*@__PURE__*/ __L.at(
+  __c38,
+  5,
+) as any as S.Schema<ListWorkloadNetworkPublicIPsRequest>;
+
 /** NSX Public IP Block */
 export interface WorkloadNetworkPublicIP {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -3665,8 +5390,18 @@ export interface WorkloadNetworkPublicIP {
   /** The resource-specific properties for this resource. */
   properties?: WorkloadNetworkPublicIPProperties;
 }
+const WorkloadNetworkPublicIP = /*@__PURE__*/ __L.at(
+  __c38,
+  6,
+) as any as S.Schema<WorkloadNetworkPublicIP>;
+
 /** The WorkloadNetworkPublicIP items on this page */
 export type WorkloadNetworkPublicIPsListValueList = Array<WorkloadNetworkPublicIP>;
+const WorkloadNetworkPublicIPsListValueList = /*@__PURE__*/ __L.at(
+  __c38,
+  7,
+) as any as S.Schema<WorkloadNetworkPublicIPsListValueList>;
+
 /** The response of a WorkloadNetworkPublicIP list operation. */
 export interface WorkloadNetworkPublicIPsList {
   /** The WorkloadNetworkPublicIP items on this page */
@@ -3674,6 +5409,11 @@ export interface WorkloadNetworkPublicIPsList {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const WorkloadNetworkPublicIPsList = /*@__PURE__*/ __L.at(
+  __c39,
+  0,
+) as any as S.Schema<WorkloadNetworkPublicIPsList>;
+
 export interface ListWorkloadNetworksRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3682,6 +5422,11 @@ export interface ListWorkloadNetworksRequest {
   /** Name of the private cloud */
   privateCloudName: string;
 }
+const ListWorkloadNetworksRequest = /*@__PURE__*/ __L.at(
+  __c39,
+  1,
+) as any as S.Schema<ListWorkloadNetworksRequest>;
+
 /** Workload Network */
 export interface WorkloadNetwork {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -3695,8 +5440,15 @@ export interface WorkloadNetwork {
   /** The resource-specific properties for this resource. */
   properties?: WorkloadNetworkProperties;
 }
+const WorkloadNetwork = /*@__PURE__*/ __L.at(__c39, 2) as any as S.Schema<WorkloadNetwork>;
+
 /** The WorkloadNetwork items on this page */
 export type WorkloadNetworkListValueList = Array<WorkloadNetwork>;
+const WorkloadNetworkListValueList = /*@__PURE__*/ __L.at(
+  __c39,
+  3,
+) as any as S.Schema<WorkloadNetworkListValueList>;
+
 /** The response of a WorkloadNetwork list operation. */
 export interface WorkloadNetworkList {
   /** The WorkloadNetwork items on this page */
@@ -3704,6 +5456,8 @@ export interface WorkloadNetworkList {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const WorkloadNetworkList = /*@__PURE__*/ __L.at(__c39, 4) as any as S.Schema<WorkloadNetworkList>;
+
 export interface ListWorkloadNetworkSegmentsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3712,6 +5466,11 @@ export interface ListWorkloadNetworkSegmentsRequest {
   /** Name of the private cloud */
   privateCloudName: string;
 }
+const ListWorkloadNetworkSegmentsRequest = /*@__PURE__*/ __L.at(
+  __c39,
+  5,
+) as any as S.Schema<ListWorkloadNetworkSegmentsRequest>;
+
 /** NSX Segment */
 export interface WorkloadNetworkSegment {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -3725,8 +5484,18 @@ export interface WorkloadNetworkSegment {
   /** The resource-specific properties for this resource. */
   properties?: WorkloadNetworkSegmentProperties;
 }
+const WorkloadNetworkSegment = /*@__PURE__*/ __L.at(
+  __c39,
+  6,
+) as any as S.Schema<WorkloadNetworkSegment>;
+
 /** The WorkloadNetworkSegment items on this page */
 export type WorkloadNetworkSegmentsListValueList = Array<WorkloadNetworkSegment>;
+const WorkloadNetworkSegmentsListValueList = /*@__PURE__*/ __L.at(
+  __c39,
+  7,
+) as any as S.Schema<WorkloadNetworkSegmentsListValueList>;
+
 /** The response of a WorkloadNetworkSegment list operation. */
 export interface WorkloadNetworkSegmentsList {
   /** The WorkloadNetworkSegment items on this page */
@@ -3734,6 +5503,11 @@ export interface WorkloadNetworkSegmentsList {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const WorkloadNetworkSegmentsList = /*@__PURE__*/ __L.at(
+  __c40,
+  0,
+) as any as S.Schema<WorkloadNetworkSegmentsList>;
+
 export interface ListWorkloadNetworkVirtualMachinesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3742,6 +5516,11 @@ export interface ListWorkloadNetworkVirtualMachinesRequest {
   /** Name of the private cloud */
   privateCloudName: string;
 }
+const ListWorkloadNetworkVirtualMachinesRequest = /*@__PURE__*/ __L.at(
+  __c40,
+  1,
+) as any as S.Schema<ListWorkloadNetworkVirtualMachinesRequest>;
+
 /** NSX Virtual Machine */
 export interface WorkloadNetworkVirtualMachine {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -3755,8 +5534,16 @@ export interface WorkloadNetworkVirtualMachine {
   /** The resource-specific properties for this resource. */
   properties?: WorkloadNetworkVirtualMachineProperties;
 }
+const WorkloadNetworkVirtualMachine =
+  GetWorkloadNetworkVirtualMachineResponse as any as S.Schema<WorkloadNetworkVirtualMachine>;
+
 /** The WorkloadNetworkVirtualMachine items on this page */
 export type WorkloadNetworkVirtualMachinesListValueList = Array<WorkloadNetworkVirtualMachine>;
+const WorkloadNetworkVirtualMachinesListValueList = /*@__PURE__*/ __L.at(
+  __c40,
+  2,
+) as any as S.Schema<WorkloadNetworkVirtualMachinesListValueList>;
+
 /** The response of a WorkloadNetworkVirtualMachine list operation. */
 export interface WorkloadNetworkVirtualMachinesList {
   /** The WorkloadNetworkVirtualMachine items on this page */
@@ -3764,6 +5551,11 @@ export interface WorkloadNetworkVirtualMachinesList {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const WorkloadNetworkVirtualMachinesList = /*@__PURE__*/ __L.at(
+  __c40,
+  3,
+) as any as S.Schema<WorkloadNetworkVirtualMachinesList>;
+
 export interface ListWorkloadNetworkVMGroupsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3772,6 +5564,11 @@ export interface ListWorkloadNetworkVMGroupsRequest {
   /** Name of the private cloud */
   privateCloudName: string;
 }
+const ListWorkloadNetworkVMGroupsRequest = /*@__PURE__*/ __L.at(
+  __c40,
+  4,
+) as any as S.Schema<ListWorkloadNetworkVMGroupsRequest>;
+
 /** NSX VM Group */
 export interface WorkloadNetworkVMGroup {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -3785,8 +5582,18 @@ export interface WorkloadNetworkVMGroup {
   /** The resource-specific properties for this resource. */
   properties?: WorkloadNetworkVMGroupProperties;
 }
+const WorkloadNetworkVMGroup = /*@__PURE__*/ __L.at(
+  __c40,
+  5,
+) as any as S.Schema<WorkloadNetworkVMGroup>;
+
 /** The WorkloadNetworkVMGroup items on this page */
 export type WorkloadNetworkVMGroupsListValueList = Array<WorkloadNetworkVMGroup>;
+const WorkloadNetworkVMGroupsListValueList = /*@__PURE__*/ __L.at(
+  __c40,
+  6,
+) as any as S.Schema<WorkloadNetworkVMGroupsListValueList>;
+
 /** The response of a WorkloadNetworkVMGroup list operation. */
 export interface WorkloadNetworkVMGroupsList {
   /** The WorkloadNetworkVMGroup items on this page */
@@ -3794,6 +5601,11 @@ export interface WorkloadNetworkVMGroupsList {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const WorkloadNetworkVMGroupsList = /*@__PURE__*/ __L.at(
+  __c40,
+  7,
+) as any as S.Schema<WorkloadNetworkVMGroupsList>;
+
 export interface MaintenancesInitiateChecksRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3804,6 +5616,11 @@ export interface MaintenancesInitiateChecksRequest {
   /** Name of the maintenance */
   maintenanceName: string;
 }
+const MaintenancesInitiateChecksRequest = /*@__PURE__*/ __L.at(
+  __c41,
+  0,
+) as any as S.Schema<MaintenancesInitiateChecksRequest>;
+
 export interface MaintenancesInitiateChecksResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -3816,6 +5633,11 @@ export interface MaintenancesInitiateChecksResponse {
   /** The resource-specific properties for this resource. */
   properties?: MaintenanceProperties;
 }
+const MaintenancesInitiateChecksResponse = /*@__PURE__*/ __L.at(
+  __c41,
+  1,
+) as any as S.Schema<MaintenancesInitiateChecksResponse>;
+
 export interface MaintenancesRescheduleRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3830,6 +5652,11 @@ export interface MaintenancesRescheduleRequest {
   /** rescheduling reason */
   message?: string;
 }
+const MaintenancesRescheduleRequest = /*@__PURE__*/ __L.at(
+  __c41,
+  2,
+) as any as S.Schema<MaintenancesRescheduleRequest>;
+
 export interface MaintenancesRescheduleResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -3842,6 +5669,9 @@ export interface MaintenancesRescheduleResponse {
   /** The resource-specific properties for this resource. */
   properties?: MaintenanceProperties;
 }
+const MaintenancesRescheduleResponse =
+  MaintenancesInitiateChecksResponse as any as S.Schema<MaintenancesRescheduleResponse>;
+
 export interface MaintenancesScheduleRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3856,6 +5686,11 @@ export interface MaintenancesScheduleRequest {
   /** scheduling message */
   message?: string;
 }
+const MaintenancesScheduleRequest = /*@__PURE__*/ __L.at(
+  __c41,
+  3,
+) as any as S.Schema<MaintenancesScheduleRequest>;
+
 export interface MaintenancesScheduleResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -3868,6 +5703,9 @@ export interface MaintenancesScheduleResponse {
   /** The resource-specific properties for this resource. */
   properties?: MaintenanceProperties;
 }
+const MaintenancesScheduleResponse =
+  MaintenancesInitiateChecksResponse as any as S.Schema<MaintenancesScheduleResponse>;
+
 /** Abstract placement policy properties */
 export interface PlacementPolicyPropertiesInput {
   /** Placement Policy type */
@@ -3887,6 +5725,11 @@ export interface PlacementPolicyPropertiesInput {
   /** VmHost: Azure Hybrid Benefit opt-in type. */
   azureHybridBenefitType?: AzureHybridBenefitType | (string & {});
 }
+const PlacementPolicyPropertiesInput = /*@__PURE__*/ __L.at(
+  __c41,
+  4,
+) as any as S.Schema<PlacementPolicyPropertiesInput>;
+
 export interface PlacementPoliciesCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3901,6 +5744,11 @@ export interface PlacementPoliciesCreateOrUpdateRequest {
   /** The resource-specific properties for this resource. */
   properties?: PlacementPolicyPropertiesInput;
 }
+const PlacementPoliciesCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c41,
+  5,
+) as any as S.Schema<PlacementPoliciesCreateOrUpdateRequest>;
+
 export interface PlacementPoliciesCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -3913,8 +5761,14 @@ export interface PlacementPoliciesCreateOrUpdateResponse {
   /** The resource-specific properties for this resource. */
   properties?: PlacementPolicyProperties;
 }
+const PlacementPoliciesCreateOrUpdateResponse =
+  GetPlacementPolicyResponse as any as S.Schema<PlacementPoliciesCreateOrUpdateResponse>;
+
 /** Resource tags. */
 export type PrivateCloudsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
+const PrivateCloudsCreateOrUpdateRequestTagsMap =
+  GetPrivateCloudResponseTagsMap as any as S.Schema<PrivateCloudsCreateOrUpdateRequestTagsMap>;
+
 /** The hosts */
 export type ManagementClusterInputHostsList = Array<string>;
 /** The properties of a management cluster */
@@ -3926,10 +5780,17 @@ export interface ManagementClusterInput {
   /** Name of the vsan datastore associated with the cluster */
   vsanDatastoreName?: string;
 }
+const ManagementClusterInput = ClusterPropertiesInput as any as S.Schema<ManagementClusterInput>;
+
 /** Connectivity to internet is enabled or disabled */
 export type PrivateCloudPropertiesInputInternet = "Enabled" | "Disabled";
+const PrivateCloudPropertiesInputInternet = S.String;
+
 /** vCenter Single Sign On Identity Sources */
 export type PrivateCloudPropertiesInputIdentitySourcesList = Array<IdentitySource>;
+const PrivateCloudPropertiesInputIdentitySourcesList =
+  PrivateCloudPropertiesIdentitySourcesList as any as S.Schema<PrivateCloudPropertiesInputIdentitySourcesList>;
+
 /** An Encryption Key */
 export interface EncryptionKeyVaultPropertiesInput {
   /** The name of the key. */
@@ -3939,6 +5800,11 @@ export interface EncryptionKeyVaultPropertiesInput {
   /** The URL of the vault. */
   keyVaultUrl?: string;
 }
+const EncryptionKeyVaultPropertiesInput = /*@__PURE__*/ __L.at(
+  __c41,
+  6,
+) as any as S.Schema<EncryptionKeyVaultPropertiesInput>;
+
 /** The properties of customer managed encryption key */
 export interface EncryptionInput {
   /** Status of customer managed encryption key */
@@ -3946,8 +5812,13 @@ export interface EncryptionInput {
   /** The key vault where the encryption key is stored */
   keyVaultProperties?: EncryptionKeyVaultPropertiesInput;
 }
+const EncryptionInput = /*@__PURE__*/ __L.at(__c41, 7) as any as S.Schema<EncryptionInput>;
+
 /** Array of additional networks noncontiguous with networkBlock. Networks must be unique and non-overlapping across VNet in your subscription, on-premise, and this privateCloud networkBlock attribute. Make sure the CIDR format conforms to (A.B.C.D/X). */
 export type PrivateCloudPropertiesInputExtendedNetworkBlocksList = Array<string>;
+const PrivateCloudPropertiesInputExtendedNetworkBlocksList =
+  ClusterPropertiesInputHostsList as any as S.Schema<PrivateCloudPropertiesInputExtendedNetworkBlocksList>;
+
 /** An ExpressRoute Circuit */
 export type CircuitInput = HcxEnterpriseSitePropertiesInput;
 /** A VMware Cloud Foundation license */
@@ -3955,6 +5826,8 @@ export interface VcfLicenseInput {
   /** License kind */
   kind: VcfLicenseKind | (string & {});
 }
+const VcfLicenseInput = HostLicense as any as S.Schema<VcfLicenseInput>;
+
 /** The properties of a private cloud resource */
 export interface PrivateCloudPropertiesInput {
   /** The default cluster used for management */
@@ -3986,14 +5859,27 @@ export interface PrivateCloudPropertiesInput {
   /** The private cloud license */
   vcfLicense?: VcfLicenseInput;
 }
+const PrivateCloudPropertiesInput = /*@__PURE__*/ __L.at(
+  __c42,
+  0,
+) as any as S.Schema<PrivateCloudPropertiesInput>;
+
 /** The resource model definition representing SKU */
 export type PrivateCloudsCreateOrUpdateRequestSku = ClustersCreateOrUpdateRequestSku;
 /** Managed service identity (either system assigned, or none) */
 export interface PrivateCloudsCreateOrUpdateRequestIdentity {
   type: SystemAssignedServiceIdentityType | (string & {});
 }
+const PrivateCloudsCreateOrUpdateRequestIdentity = /*@__PURE__*/ __L.at(
+  __c42,
+  1,
+) as any as S.Schema<PrivateCloudsCreateOrUpdateRequestIdentity>;
+
 /** The availability zones. */
 export type PrivateCloudsCreateOrUpdateRequestZonesList = Array<string>;
+const PrivateCloudsCreateOrUpdateRequestZonesList =
+  ClusterPropertiesInputHostsList as any as S.Schema<PrivateCloudsCreateOrUpdateRequestZonesList>;
+
 export interface PrivateCloudsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4014,14 +5900,25 @@ export interface PrivateCloudsCreateOrUpdateRequest {
   /** The availability zones. */
   zones?: PrivateCloudsCreateOrUpdateRequestZonesList;
 }
+const PrivateCloudsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c42,
+  2,
+) as any as S.Schema<PrivateCloudsCreateOrUpdateRequest>;
+
 /** Resource tags. */
 export type PrivateCloudsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
+const PrivateCloudsCreateOrUpdateResponseTagsMap =
+  GetPrivateCloudResponseTagsMap as any as S.Schema<PrivateCloudsCreateOrUpdateResponseTagsMap>;
+
 /** The resource model definition representing SKU */
 export type PrivateCloudsCreateOrUpdateResponseSku = ClustersCreateOrUpdateResponseSku;
 /** Managed service identity (either system assigned, or none) */
 export type PrivateCloudsCreateOrUpdateResponseIdentity = GetPrivateCloudResponseIdentity;
 /** The availability zones. */
 export type PrivateCloudsCreateOrUpdateResponseZonesList = Array<string>;
+const PrivateCloudsCreateOrUpdateResponseZonesList =
+  ClusterPropertiesInputHostsList as any as S.Schema<PrivateCloudsCreateOrUpdateResponseZonesList>;
+
 export interface PrivateCloudsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -4044,6 +5941,11 @@ export interface PrivateCloudsCreateOrUpdateResponse {
   /** The availability zones. */
   zones?: PrivateCloudsCreateOrUpdateResponseZonesList;
 }
+const PrivateCloudsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c42,
+  3,
+) as any as S.Schema<PrivateCloudsCreateOrUpdateResponse>;
+
 /** Properties of a Pure Storage Policy Based Management policy */
 export interface PureStoragePolicyPropertiesInput {
   /** Definition of a Pure Storage Policy Based Management policy */
@@ -4051,6 +5953,11 @@ export interface PureStoragePolicyPropertiesInput {
   /** Azure resource ID of the Pure Storage Pool associated with the storage policy */
   storagePoolId: string;
 }
+const PureStoragePolicyPropertiesInput = /*@__PURE__*/ __L.at(
+  __c42,
+  4,
+) as any as S.Schema<PureStoragePolicyPropertiesInput>;
+
 export interface PureStoragePoliciesCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4063,6 +5970,11 @@ export interface PureStoragePoliciesCreateOrUpdateRequest {
   /** The resource-specific properties for this resource. */
   properties?: PureStoragePolicyPropertiesInput;
 }
+const PureStoragePoliciesCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c42,
+  5,
+) as any as S.Schema<PureStoragePoliciesCreateOrUpdateRequest>;
+
 export interface PureStoragePoliciesCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -4075,6 +5987,9 @@ export interface PureStoragePoliciesCreateOrUpdateResponse {
   /** The resource-specific properties for this resource. */
   properties?: PureStoragePolicyProperties;
 }
+const PureStoragePoliciesCreateOrUpdateResponse =
+  GetPureStoragePolicyResponse as any as S.Schema<PureStoragePoliciesCreateOrUpdateResponse>;
+
 export interface RotatePrivateCloudNsxtPasswordRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4083,7 +5998,15 @@ export interface RotatePrivateCloudNsxtPasswordRequest {
   /** Name of the private cloud */
   privateCloudName: string;
 }
+const RotatePrivateCloudNsxtPasswordRequest = /*@__PURE__*/ __L.at(
+  __c42,
+  6,
+) as any as S.Schema<RotatePrivateCloudNsxtPasswordRequest>;
+
 export interface RotatePrivateCloudNsxtPasswordResponse {}
+const RotatePrivateCloudNsxtPasswordResponse =
+  CheckServiceComponentAvailabilityResponse as any as S.Schema<RotatePrivateCloudNsxtPasswordResponse>;
+
 export interface RotatePrivateCloudVcenterPasswordRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4092,15 +6015,35 @@ export interface RotatePrivateCloudVcenterPasswordRequest {
   /** Name of the private cloud */
   privateCloudName: string;
 }
+const RotatePrivateCloudVcenterPasswordRequest = /*@__PURE__*/ __L.at(
+  __c42,
+  7,
+) as any as S.Schema<RotatePrivateCloudVcenterPasswordRequest>;
+
 export interface RotatePrivateCloudVcenterPasswordResponse {}
+const RotatePrivateCloudVcenterPasswordResponse =
+  CheckServiceComponentAvailabilityResponse as any as S.Schema<RotatePrivateCloudVcenterPasswordResponse>;
+
 /** Parameters the script will accept */
 export type ScriptExecutionPropertiesInputParametersList = Array<ScriptExecutionParameter>;
+const ScriptExecutionPropertiesInputParametersList =
+  ScriptExecutionPropertiesParametersList as any as S.Schema<ScriptExecutionPropertiesInputParametersList>;
+
 /** Parameters that will be hidden/not visible to ARM, such as passwords and credentials */
 export type ScriptExecutionPropertiesInputHiddenParametersList = Array<ScriptExecutionParameter>;
+const ScriptExecutionPropertiesInputHiddenParametersList =
+  ScriptExecutionPropertiesParametersList as any as S.Schema<ScriptExecutionPropertiesInputHiddenParametersList>;
+
 /** Standard output stream from the powershell execution */
 export type ScriptExecutionPropertiesInputOutputList = Array<string>;
+const ScriptExecutionPropertiesInputOutputList =
+  ClusterPropertiesInputHostsList as any as S.Schema<ScriptExecutionPropertiesInputOutputList>;
+
 /** User-defined dictionary. */
 export type ScriptExecutionPropertiesInputNamedOutputsMap = { [key: string]: unknown | undefined };
+const ScriptExecutionPropertiesInputNamedOutputsMap =
+  ScriptExecutionPropertiesNamedOutputsMap as any as S.Schema<ScriptExecutionPropertiesInputNamedOutputsMap>;
+
 /** Properties of a user-invoked script */
 export interface ScriptExecutionPropertiesInput {
   /** A reference to the script cmdlet resource if user is running a AVS script */
@@ -4120,6 +6063,11 @@ export interface ScriptExecutionPropertiesInput {
   /** User-defined dictionary. */
   namedOutputs?: ScriptExecutionPropertiesInputNamedOutputsMap;
 }
+const ScriptExecutionPropertiesInput = /*@__PURE__*/ __L.at(
+  __c43,
+  0,
+) as any as S.Schema<ScriptExecutionPropertiesInput>;
+
 export interface ScriptExecutionsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4132,6 +6080,11 @@ export interface ScriptExecutionsCreateOrUpdateRequest {
   /** The resource-specific properties for this resource. */
   properties?: ScriptExecutionPropertiesInput;
 }
+const ScriptExecutionsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c43,
+  1,
+) as any as S.Schema<ScriptExecutionsCreateOrUpdateRequest>;
+
 export interface ScriptExecutionsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -4144,10 +6097,16 @@ export interface ScriptExecutionsCreateOrUpdateResponse {
   /** The resource-specific properties for this resource. */
   properties?: ScriptExecutionProperties;
 }
+const ScriptExecutionsCreateOrUpdateResponse =
+  GetScriptExecutionResponse as any as S.Schema<ScriptExecutionsCreateOrUpdateResponse>;
+
 /** The resource model definition representing SKU */
 export type UpdateClusterRequestSku = ClustersCreateOrUpdateRequestSku;
 /** The hosts */
 export type ClusterUpdatePropertiesHostsList = Array<string>;
+const ClusterUpdatePropertiesHostsList =
+  ClusterPropertiesInputHostsList as any as S.Schema<ClusterUpdatePropertiesHostsList>;
+
 /** The properties of a cluster that may be updated */
 export interface ClusterUpdateProperties {
   /** The cluster size */
@@ -4155,6 +6114,11 @@ export interface ClusterUpdateProperties {
   /** The hosts */
   hosts?: ClusterUpdatePropertiesHostsList;
 }
+const ClusterUpdateProperties = /*@__PURE__*/ __L.at(
+  __c43,
+  2,
+) as any as S.Schema<ClusterUpdateProperties>;
+
 export interface UpdateClusterRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4169,6 +6133,11 @@ export interface UpdateClusterRequest {
   /** The properties of a cluster resource that may be updated */
   properties?: ClusterUpdateProperties;
 }
+const UpdateClusterRequest = /*@__PURE__*/ __L.at(
+  __c43,
+  3,
+) as any as S.Schema<UpdateClusterRequest>;
+
 /** The resource model definition representing SKU */
 export type UpdateClusterResponseSku = ClustersCreateOrUpdateResponseSku;
 export interface UpdateClusterResponse {
@@ -4185,13 +6154,23 @@ export interface UpdateClusterResponse {
   /** The resource model definition representing SKU */
   sku: ClustersCreateOrUpdateResponseSku;
 }
+const UpdateClusterResponse = GetClusterResponse as any as S.Schema<UpdateClusterResponse>;
+
 /** The licenses assigned to the host. */
 export type HostUpdatePropertiesLicensesList = Array<HostLicense>;
+const HostUpdatePropertiesLicensesList =
+  HostPropertiesLicensesList as any as S.Schema<HostUpdatePropertiesLicensesList>;
+
 /** The properties for updating a host. */
 export interface HostUpdateProperties {
   /** The licenses assigned to the host. */
   licenses?: HostUpdatePropertiesLicensesList;
 }
+const HostUpdateProperties = /*@__PURE__*/ __L.at(
+  __c43,
+  4,
+) as any as S.Schema<HostUpdateProperties>;
+
 export interface UpdateHostRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4206,6 +6185,8 @@ export interface UpdateHostRequest {
   /** The properties of a host resource that may be updated */
   properties?: HostUpdateProperties;
 }
+const UpdateHostRequest = /*@__PURE__*/ __L.at(__c43, 5) as any as S.Schema<UpdateHostRequest>;
+
 /** The availability zones. */
 export type UpdateHostResponseZonesList = Array<string>;
 /** The resource model definition representing SKU */
@@ -4226,6 +6207,8 @@ export interface UpdateHostResponse {
   /** The resource model definition representing SKU */
   sku?: ClustersCreateOrUpdateResponseSku;
 }
+const UpdateHostResponse = GetHostResponse as any as S.Schema<UpdateHostResponse>;
+
 /** The properties of a placement policy resource that may be updated */
 export interface PlacementPolicyUpdateProperties {
   /** Whether the placement policy is enabled or disabled */
@@ -4239,6 +6222,11 @@ export interface PlacementPolicyUpdateProperties {
   /** placement policy azure hybrid benefit opt-in type */
   azureHybridBenefitType?: AzureHybridBenefitType | (string & {});
 }
+const PlacementPolicyUpdateProperties = /*@__PURE__*/ __L.at(
+  __c43,
+  6,
+) as any as S.Schema<PlacementPolicyUpdateProperties>;
+
 export interface UpdatePlacementPolicyRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4253,6 +6241,11 @@ export interface UpdatePlacementPolicyRequest {
   /** The properties of a placement policy resource that may be updated */
   properties?: PlacementPolicyUpdateProperties;
 }
+const UpdatePlacementPolicyRequest = /*@__PURE__*/ __L.at(
+  __c43,
+  7,
+) as any as S.Schema<UpdatePlacementPolicyRequest>;
+
 export interface UpdatePlacementPolicyResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -4265,18 +6258,32 @@ export interface UpdatePlacementPolicyResponse {
   /** The resource-specific properties for this resource. */
   properties?: PlacementPolicyProperties;
 }
+const UpdatePlacementPolicyResponse =
+  GetPlacementPolicyResponse as any as S.Schema<UpdatePlacementPolicyResponse>;
+
 /** Resource tags. */
 export type UpdatePrivateCloudRequestTagsMap = { [key: string]: string | undefined };
+const UpdatePrivateCloudRequestTagsMap =
+  GetPrivateCloudResponseTagsMap as any as S.Schema<UpdatePrivateCloudRequestTagsMap>;
+
 /** The resource model definition representing SKU */
 export type UpdatePrivateCloudRequestSku = ClustersCreateOrUpdateRequestSku;
 /** Managed service identity (either system assigned, or none) */
 export type UpdatePrivateCloudRequestIdentity = PrivateCloudsCreateOrUpdateRequestIdentity;
 /** Whether internet is enabled or disabled */
 export type InternetEnum = "Enabled" | "Disabled";
+const InternetEnum = S.String;
+
 /** vCenter Single Sign On Identity Sources */
 export type PrivateCloudUpdatePropertiesInputIdentitySourcesList = Array<IdentitySource>;
+const PrivateCloudUpdatePropertiesInputIdentitySourcesList =
+  PrivateCloudPropertiesIdentitySourcesList as any as S.Schema<PrivateCloudUpdatePropertiesInputIdentitySourcesList>;
+
 /** Array of additional networks noncontiguous with networkBlock. Networks must be unique and non-overlapping across VNet in your subscription, on-premise, and this privateCloud networkBlock attribute. Make sure the CIDR format conforms to (A.B.C.D/X). */
 export type PrivateCloudUpdatePropertiesInputExtendedNetworkBlocksList = Array<string>;
+const PrivateCloudUpdatePropertiesInputExtendedNetworkBlocksList =
+  ClusterPropertiesInputHostsList as any as S.Schema<PrivateCloudUpdatePropertiesInputExtendedNetworkBlocksList>;
+
 /** The properties of a private cloud resource that may be updated */
 export interface PrivateCloudUpdatePropertiesInput {
   /** The default cluster used for management */
@@ -4294,6 +6301,11 @@ export interface PrivateCloudUpdatePropertiesInput {
   /** The type of DNS zone to use. */
   dnsZoneType?: DnsZoneType | (string & {});
 }
+const PrivateCloudUpdatePropertiesInput = /*@__PURE__*/ __L.at(
+  __c44,
+  0,
+) as any as S.Schema<PrivateCloudUpdatePropertiesInput>;
+
 export interface UpdatePrivateCloudRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4310,6 +6322,11 @@ export interface UpdatePrivateCloudRequest {
   /** The updatable properties of a private cloud resource */
   properties?: PrivateCloudUpdatePropertiesInput;
 }
+const UpdatePrivateCloudRequest = /*@__PURE__*/ __L.at(
+  __c44,
+  1,
+) as any as S.Schema<UpdatePrivateCloudRequest>;
+
 /** Resource tags. */
 export type UpdatePrivateCloudResponseTagsMap = { [key: string]: string | undefined };
 /** The resource model definition representing SKU */
@@ -4340,6 +6357,9 @@ export interface UpdatePrivateCloudResponse {
   /** The availability zones. */
   zones?: UpdatePrivateCloudResponseZonesList;
 }
+const UpdatePrivateCloudResponse =
+  PrivateCloudsCreateOrUpdateResponse as any as S.Schema<UpdatePrivateCloudResponse>;
+
 export interface UpdateWorkloadNetworkDhcpRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4352,6 +6372,11 @@ export interface UpdateWorkloadNetworkDhcpRequest {
   /** The resource-specific properties for this resource. */
   properties?: WorkloadNetworkDhcpEntityInput;
 }
+const UpdateWorkloadNetworkDhcpRequest = /*@__PURE__*/ __L.at(
+  __c44,
+  2,
+) as any as S.Schema<UpdateWorkloadNetworkDhcpRequest>;
+
 export interface UpdateWorkloadNetworkDhcpResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -4364,6 +6389,9 @@ export interface UpdateWorkloadNetworkDhcpResponse {
   /** The resource-specific properties for this resource. */
   properties?: WorkloadNetworkDhcpEntity;
 }
+const UpdateWorkloadNetworkDhcpResponse =
+  CreateWorkloadNetworkDhcpResponse as any as S.Schema<UpdateWorkloadNetworkDhcpResponse>;
+
 export interface UpdateWorkloadNetworkDnsServiceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4376,6 +6404,11 @@ export interface UpdateWorkloadNetworkDnsServiceRequest {
   /** The resource-specific properties for this resource. */
   properties?: WorkloadNetworkDnsServicePropertiesInput;
 }
+const UpdateWorkloadNetworkDnsServiceRequest = /*@__PURE__*/ __L.at(
+  __c44,
+  3,
+) as any as S.Schema<UpdateWorkloadNetworkDnsServiceRequest>;
+
 export interface UpdateWorkloadNetworkDnsServiceResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -4388,6 +6421,9 @@ export interface UpdateWorkloadNetworkDnsServiceResponse {
   /** The resource-specific properties for this resource. */
   properties?: WorkloadNetworkDnsServiceProperties;
 }
+const UpdateWorkloadNetworkDnsServiceResponse =
+  CreateWorkloadNetworkDnsServiceResponse as any as S.Schema<UpdateWorkloadNetworkDnsServiceResponse>;
+
 export interface UpdateWorkloadNetworkDnsZoneRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4400,6 +6436,11 @@ export interface UpdateWorkloadNetworkDnsZoneRequest {
   /** The resource-specific properties for this resource. */
   properties?: WorkloadNetworkDnsZonePropertiesInput;
 }
+const UpdateWorkloadNetworkDnsZoneRequest = /*@__PURE__*/ __L.at(
+  __c44,
+  4,
+) as any as S.Schema<UpdateWorkloadNetworkDnsZoneRequest>;
+
 export interface UpdateWorkloadNetworkDnsZoneResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -4412,6 +6453,9 @@ export interface UpdateWorkloadNetworkDnsZoneResponse {
   /** The resource-specific properties for this resource. */
   properties?: WorkloadNetworkDnsZoneProperties;
 }
+const UpdateWorkloadNetworkDnsZoneResponse =
+  CreateWorkloadNetworkDnsZoneResponse as any as S.Schema<UpdateWorkloadNetworkDnsZoneResponse>;
+
 export interface UpdateWorkloadNetworkPortMirroringRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4424,6 +6468,11 @@ export interface UpdateWorkloadNetworkPortMirroringRequest {
   /** The resource-specific properties for this resource. */
   properties?: WorkloadNetworkPortMirroringPropertiesInput;
 }
+const UpdateWorkloadNetworkPortMirroringRequest = /*@__PURE__*/ __L.at(
+  __c44,
+  5,
+) as any as S.Schema<UpdateWorkloadNetworkPortMirroringRequest>;
+
 export interface UpdateWorkloadNetworkPortMirroringResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -4436,6 +6485,9 @@ export interface UpdateWorkloadNetworkPortMirroringResponse {
   /** The resource-specific properties for this resource. */
   properties?: WorkloadNetworkPortMirroringProperties;
 }
+const UpdateWorkloadNetworkPortMirroringResponse =
+  CreateWorkloadNetworkPortMirroringResponse as any as S.Schema<UpdateWorkloadNetworkPortMirroringResponse>;
+
 export interface UpdateWorkloadNetworkSegmentsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4448,6 +6500,11 @@ export interface UpdateWorkloadNetworkSegmentsRequest {
   /** The resource-specific properties for this resource. */
   properties?: WorkloadNetworkSegmentPropertiesInput;
 }
+const UpdateWorkloadNetworkSegmentsRequest = /*@__PURE__*/ __L.at(
+  __c44,
+  6,
+) as any as S.Schema<UpdateWorkloadNetworkSegmentsRequest>;
+
 export interface UpdateWorkloadNetworkSegmentsResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -4460,6 +6517,9 @@ export interface UpdateWorkloadNetworkSegmentsResponse {
   /** The resource-specific properties for this resource. */
   properties?: WorkloadNetworkSegmentProperties;
 }
+const UpdateWorkloadNetworkSegmentsResponse =
+  CreateWorkloadNetworkSegmentsResponse as any as S.Schema<UpdateWorkloadNetworkSegmentsResponse>;
+
 export interface UpdateWorkloadNetworkVMGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4472,6 +6532,11 @@ export interface UpdateWorkloadNetworkVMGroupRequest {
   /** The resource-specific properties for this resource. */
   properties?: WorkloadNetworkVMGroupPropertiesInput;
 }
+const UpdateWorkloadNetworkVMGroupRequest = /*@__PURE__*/ __L.at(
+  __c44,
+  7,
+) as any as S.Schema<UpdateWorkloadNetworkVMGroupRequest>;
+
 export interface UpdateWorkloadNetworkVMGroupResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -4484,6 +6549,9 @@ export interface UpdateWorkloadNetworkVMGroupResponse {
   /** The resource-specific properties for this resource. */
   properties?: WorkloadNetworkVMGroupProperties;
 }
+const UpdateWorkloadNetworkVMGroupResponse =
+  CreateWorkloadNetworkVMGroupResponse as any as S.Schema<UpdateWorkloadNetworkVMGroupResponse>;
+
 export interface VirtualMachinesRestrictMovementRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4498,7 +6566,15 @@ export interface VirtualMachinesRestrictMovementRequest {
   /** Whether VM DRS-driven movement is restricted (enabled) or not (disabled) */
   restrictMovement?: VirtualMachineRestrictMovementState | (string & {});
 }
+const VirtualMachinesRestrictMovementRequest = /*@__PURE__*/ __L.at(
+  __c45,
+  0,
+) as any as S.Schema<VirtualMachinesRestrictMovementRequest>;
+
 export interface VirtualMachinesRestrictMovementResponse {}
+const VirtualMachinesRestrictMovementResponse =
+  CheckServiceComponentAvailabilityResponse as any as S.Schema<VirtualMachinesRestrictMovementResponse>;
+
 export type AddonsCreateOrUpdateError = AzureOpError;
 /** Create a Addon */
 export const AddonsCreateOrUpdate: API.OperationMethod<
@@ -4507,8 +6583,8 @@ export const AddonsCreateOrUpdate: API.OperationMethod<
   AddonsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1) as any as S.Schema<AddonsCreateOrUpdateRequest>,
-  output: __S(4) as any as S.Schema<AddonsCreateOrUpdateResponse>,
+  input: AddonsCreateOrUpdateRequest,
+  output: AddonsCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4522,8 +6598,8 @@ export const AuthorizationsCreateOrUpdate: API.OperationMethod<
   AuthorizationsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6) as any as S.Schema<AuthorizationsCreateOrUpdateRequest>,
-  output: __S(8) as any as S.Schema<AuthorizationsCreateOrUpdateResponse>,
+  input: AuthorizationsCreateOrUpdateRequest,
+  output: AuthorizationsCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4537,8 +6613,8 @@ export const CheckLocationQuotaAvailability: API.OperationMethod<
   CheckLocationQuotaAvailabilityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9) as any as S.Schema<CheckLocationQuotaAvailabilityRequest>,
-  output: __S(11) as any as S.Schema<Quota>,
+  input: CheckLocationQuotaAvailabilityRequest,
+  output: Quota,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4552,8 +6628,8 @@ export const CheckLocationTrialAvailability: API.OperationMethod<
   CheckLocationTrialAvailabilityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12) as any as S.Schema<CheckLocationTrialAvailabilityRequest>,
-  output: __S(13) as any as S.Schema<Trial>,
+  input: CheckLocationTrialAvailabilityRequest,
+  output: Trial,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4567,8 +6643,8 @@ export const CheckServiceComponentAvailability: API.OperationMethod<
   CheckServiceComponentAvailabilityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14) as any as S.Schema<CheckServiceComponentAvailabilityRequest>,
-  output: __S(15) as any as S.Schema<CheckServiceComponentAvailabilityResponse>,
+  input: CheckServiceComponentAvailabilityRequest,
+  output: CheckServiceComponentAvailabilityResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4582,8 +6658,8 @@ export const CloudLinksCreateOrUpdate: API.OperationMethod<
   CloudLinksCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17) as any as S.Schema<CloudLinksCreateOrUpdateRequest>,
-  output: __S(19) as any as S.Schema<CloudLinksCreateOrUpdateResponse>,
+  input: CloudLinksCreateOrUpdateRequest,
+  output: CloudLinksCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4597,8 +6673,8 @@ export const ClustersCreateOrUpdate: API.OperationMethod<
   ClustersCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23) as any as S.Schema<ClustersCreateOrUpdateRequest>,
-  output: __S(25) as any as S.Schema<ClustersCreateOrUpdateResponse>,
+  input: ClustersCreateOrUpdateRequest,
+  output: ClustersCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4612,8 +6688,8 @@ export const CreateWorkloadNetworkDhcp: API.OperationMethod<
   CreateWorkloadNetworkDhcpError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27) as any as S.Schema<CreateWorkloadNetworkDhcpRequest>,
-  output: __S(29) as any as S.Schema<CreateWorkloadNetworkDhcpResponse>,
+  input: CreateWorkloadNetworkDhcpRequest,
+  output: CreateWorkloadNetworkDhcpResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4627,8 +6703,8 @@ export const CreateWorkloadNetworkDnsService: API.OperationMethod<
   CreateWorkloadNetworkDnsServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31) as any as S.Schema<CreateWorkloadNetworkDnsServiceRequest>,
-  output: __S(33) as any as S.Schema<CreateWorkloadNetworkDnsServiceResponse>,
+  input: CreateWorkloadNetworkDnsServiceRequest,
+  output: CreateWorkloadNetworkDnsServiceResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4642,8 +6718,8 @@ export const CreateWorkloadNetworkDnsZone: API.OperationMethod<
   CreateWorkloadNetworkDnsZoneError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35) as any as S.Schema<CreateWorkloadNetworkDnsZoneRequest>,
-  output: __S(37) as any as S.Schema<CreateWorkloadNetworkDnsZoneResponse>,
+  input: CreateWorkloadNetworkDnsZoneRequest,
+  output: CreateWorkloadNetworkDnsZoneResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4657,8 +6733,8 @@ export const CreateWorkloadNetworkPortMirroring: API.OperationMethod<
   CreateWorkloadNetworkPortMirroringError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39) as any as S.Schema<CreateWorkloadNetworkPortMirroringRequest>,
-  output: __S(41) as any as S.Schema<CreateWorkloadNetworkPortMirroringResponse>,
+  input: CreateWorkloadNetworkPortMirroringRequest,
+  output: CreateWorkloadNetworkPortMirroringResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4672,8 +6748,8 @@ export const CreateWorkloadNetworkPublicIP: API.OperationMethod<
   CreateWorkloadNetworkPublicIPError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43) as any as S.Schema<CreateWorkloadNetworkPublicIPRequest>,
-  output: __S(45) as any as S.Schema<CreateWorkloadNetworkPublicIPResponse>,
+  input: CreateWorkloadNetworkPublicIPRequest,
+  output: CreateWorkloadNetworkPublicIPResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4687,8 +6763,8 @@ export const CreateWorkloadNetworkSegments: API.OperationMethod<
   CreateWorkloadNetworkSegmentsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48) as any as S.Schema<CreateWorkloadNetworkSegmentsRequest>,
-  output: __S(52) as any as S.Schema<CreateWorkloadNetworkSegmentsResponse>,
+  input: CreateWorkloadNetworkSegmentsRequest,
+  output: CreateWorkloadNetworkSegmentsResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4702,8 +6778,8 @@ export const CreateWorkloadNetworkVMGroup: API.OperationMethod<
   CreateWorkloadNetworkVMGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(54) as any as S.Schema<CreateWorkloadNetworkVMGroupRequest>,
-  output: __S(56) as any as S.Schema<CreateWorkloadNetworkVMGroupResponse>,
+  input: CreateWorkloadNetworkVMGroupRequest,
+  output: CreateWorkloadNetworkVMGroupResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4717,8 +6793,8 @@ export const DatastoresCreateOrUpdate: API.OperationMethod<
   DatastoresCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(62) as any as S.Schema<DatastoresCreateOrUpdateRequest>,
-  output: __S(65) as any as S.Schema<DatastoresCreateOrUpdateResponse>,
+  input: DatastoresCreateOrUpdateRequest,
+  output: DatastoresCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4732,8 +6808,8 @@ export const DeleteAddon: API.OperationMethod<
   DeleteAddonError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(66) as any as S.Schema<DeleteAddonRequest>,
-  output: __S(67) as any as S.Schema<DeleteAddonResponse>,
+  input: DeleteAddonRequest,
+  output: DeleteAddonResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4747,8 +6823,8 @@ export const DeleteAuthorization: API.OperationMethod<
   DeleteAuthorizationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(68) as any as S.Schema<DeleteAuthorizationRequest>,
-  output: __S(67) as any as S.Schema<DeleteAuthorizationResponse>,
+  input: DeleteAuthorizationRequest,
+  output: DeleteAuthorizationResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4762,8 +6838,8 @@ export const DeleteCloudLink: API.OperationMethod<
   DeleteCloudLinkError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(69) as any as S.Schema<DeleteCloudLinkRequest>,
-  output: __S(67) as any as S.Schema<DeleteCloudLinkResponse>,
+  input: DeleteCloudLinkRequest,
+  output: DeleteCloudLinkResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4777,8 +6853,8 @@ export const DeleteCluster: API.OperationMethod<
   DeleteClusterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(70) as any as S.Schema<DeleteClusterRequest>,
-  output: __S(67) as any as S.Schema<DeleteClusterResponse>,
+  input: DeleteClusterRequest,
+  output: DeleteClusterResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4792,8 +6868,8 @@ export const DeleteDatastore: API.OperationMethod<
   DeleteDatastoreError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(71) as any as S.Schema<DeleteDatastoreRequest>,
-  output: __S(67) as any as S.Schema<DeleteDatastoreResponse>,
+  input: DeleteDatastoreRequest,
+  output: DeleteDatastoreResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4807,8 +6883,8 @@ export const DeleteGlobalReachConnection: API.OperationMethod<
   DeleteGlobalReachConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(72) as any as S.Schema<DeleteGlobalReachConnectionRequest>,
-  output: __S(15) as any as S.Schema<DeleteGlobalReachConnectionResponse>,
+  input: DeleteGlobalReachConnectionRequest,
+  output: DeleteGlobalReachConnectionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4822,8 +6898,8 @@ export const DeleteHcxEnterpriseSite: API.OperationMethod<
   DeleteHcxEnterpriseSiteError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(73) as any as S.Schema<DeleteHcxEnterpriseSiteRequest>,
-  output: __S(74) as any as S.Schema<DeleteHcxEnterpriseSiteResponse>,
+  input: DeleteHcxEnterpriseSiteRequest,
+  output: DeleteHcxEnterpriseSiteResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4837,8 +6913,8 @@ export const DeleteIscsiPath: API.OperationMethod<
   DeleteIscsiPathError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(75) as any as S.Schema<DeleteIscsiPathRequest>,
-  output: __S(67) as any as S.Schema<DeleteIscsiPathResponse>,
+  input: DeleteIscsiPathRequest,
+  output: DeleteIscsiPathResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4852,8 +6928,8 @@ export const DeleteLicense: API.OperationMethod<
   DeleteLicenseError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(76) as any as S.Schema<DeleteLicenseRequest>,
-  output: __S(67) as any as S.Schema<DeleteLicenseResponse>,
+  input: DeleteLicenseRequest,
+  output: DeleteLicenseResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4867,8 +6943,8 @@ export const DeletePlacementPolicy: API.OperationMethod<
   DeletePlacementPolicyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(77) as any as S.Schema<DeletePlacementPolicyRequest>,
-  output: __S(67) as any as S.Schema<DeletePlacementPolicyResponse>,
+  input: DeletePlacementPolicyRequest,
+  output: DeletePlacementPolicyResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4882,8 +6958,8 @@ export const DeletePrivateCloud: API.OperationMethod<
   DeletePrivateCloudError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(78) as any as S.Schema<DeletePrivateCloudRequest>,
-  output: __S(67) as any as S.Schema<DeletePrivateCloudResponse>,
+  input: DeletePrivateCloudRequest,
+  output: DeletePrivateCloudResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4897,8 +6973,8 @@ export const DeletePureStoragePolicy: API.OperationMethod<
   DeletePureStoragePolicyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(79) as any as S.Schema<DeletePureStoragePolicyRequest>,
-  output: __S(74) as any as S.Schema<DeletePureStoragePolicyResponse>,
+  input: DeletePureStoragePolicyRequest,
+  output: DeletePureStoragePolicyResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4912,8 +6988,8 @@ export const DeleteScriptExecution: API.OperationMethod<
   DeleteScriptExecutionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(80) as any as S.Schema<DeleteScriptExecutionRequest>,
-  output: __S(67) as any as S.Schema<DeleteScriptExecutionResponse>,
+  input: DeleteScriptExecutionRequest,
+  output: DeleteScriptExecutionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4927,8 +7003,8 @@ export const DeleteWorkloadNetworkDhcp: API.OperationMethod<
   DeleteWorkloadNetworkDhcpError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(81) as any as S.Schema<DeleteWorkloadNetworkDhcpRequest>,
-  output: __S(15) as any as S.Schema<DeleteWorkloadNetworkDhcpResponse>,
+  input: DeleteWorkloadNetworkDhcpRequest,
+  output: DeleteWorkloadNetworkDhcpResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4942,8 +7018,8 @@ export const DeleteWorkloadNetworkDnsService: API.OperationMethod<
   DeleteWorkloadNetworkDnsServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(82) as any as S.Schema<DeleteWorkloadNetworkDnsServiceRequest>,
-  output: __S(15) as any as S.Schema<DeleteWorkloadNetworkDnsServiceResponse>,
+  input: DeleteWorkloadNetworkDnsServiceRequest,
+  output: DeleteWorkloadNetworkDnsServiceResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4957,8 +7033,8 @@ export const DeleteWorkloadNetworkDnsZone: API.OperationMethod<
   DeleteWorkloadNetworkDnsZoneError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(83) as any as S.Schema<DeleteWorkloadNetworkDnsZoneRequest>,
-  output: __S(15) as any as S.Schema<DeleteWorkloadNetworkDnsZoneResponse>,
+  input: DeleteWorkloadNetworkDnsZoneRequest,
+  output: DeleteWorkloadNetworkDnsZoneResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4972,8 +7048,8 @@ export const DeleteWorkloadNetworkPortMirroring: API.OperationMethod<
   DeleteWorkloadNetworkPortMirroringError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(84) as any as S.Schema<DeleteWorkloadNetworkPortMirroringRequest>,
-  output: __S(15) as any as S.Schema<DeleteWorkloadNetworkPortMirroringResponse>,
+  input: DeleteWorkloadNetworkPortMirroringRequest,
+  output: DeleteWorkloadNetworkPortMirroringResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4987,8 +7063,8 @@ export const DeleteWorkloadNetworkPublicIP: API.OperationMethod<
   DeleteWorkloadNetworkPublicIPError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(85) as any as S.Schema<DeleteWorkloadNetworkPublicIPRequest>,
-  output: __S(15) as any as S.Schema<DeleteWorkloadNetworkPublicIPResponse>,
+  input: DeleteWorkloadNetworkPublicIPRequest,
+  output: DeleteWorkloadNetworkPublicIPResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5002,8 +7078,8 @@ export const DeleteWorkloadNetworkSegment: API.OperationMethod<
   DeleteWorkloadNetworkSegmentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(86) as any as S.Schema<DeleteWorkloadNetworkSegmentRequest>,
-  output: __S(15) as any as S.Schema<DeleteWorkloadNetworkSegmentResponse>,
+  input: DeleteWorkloadNetworkSegmentRequest,
+  output: DeleteWorkloadNetworkSegmentResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5017,8 +7093,8 @@ export const DeleteWorkloadNetworkVMGroup: API.OperationMethod<
   DeleteWorkloadNetworkVMGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(87) as any as S.Schema<DeleteWorkloadNetworkVMGroupRequest>,
-  output: __S(15) as any as S.Schema<DeleteWorkloadNetworkVMGroupResponse>,
+  input: DeleteWorkloadNetworkVMGroupRequest,
+  output: DeleteWorkloadNetworkVMGroupResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5032,8 +7108,8 @@ export const GetAddon: API.OperationMethod<
   GetAddonError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(88) as any as S.Schema<GetAddonRequest>,
-  output: __S(89) as any as S.Schema<GetAddonResponse>,
+  input: GetAddonRequest,
+  output: GetAddonResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5047,8 +7123,8 @@ export const GetAuthorization: API.OperationMethod<
   GetAuthorizationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(90) as any as S.Schema<GetAuthorizationRequest>,
-  output: __S(91) as any as S.Schema<GetAuthorizationResponse>,
+  input: GetAuthorizationRequest,
+  output: GetAuthorizationResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5062,8 +7138,8 @@ export const GetCloudLink: API.OperationMethod<
   GetCloudLinkError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(92) as any as S.Schema<GetCloudLinkRequest>,
-  output: __S(93) as any as S.Schema<GetCloudLinkResponse>,
+  input: GetCloudLinkRequest,
+  output: GetCloudLinkResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5077,8 +7153,8 @@ export const GetCluster: API.OperationMethod<
   GetClusterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(94) as any as S.Schema<GetClusterRequest>,
-  output: __S(95) as any as S.Schema<GetClusterResponse>,
+  input: GetClusterRequest,
+  output: GetClusterResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5092,8 +7168,8 @@ export const GetDatastore: API.OperationMethod<
   GetDatastoreError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(96) as any as S.Schema<GetDatastoreRequest>,
-  output: __S(97) as any as S.Schema<GetDatastoreResponse>,
+  input: GetDatastoreRequest,
+  output: GetDatastoreResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5107,8 +7183,8 @@ export const GetGlobalReachConnection: API.OperationMethod<
   GetGlobalReachConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(98) as any as S.Schema<GetGlobalReachConnectionRequest>,
-  output: __S(100) as any as S.Schema<GetGlobalReachConnectionResponse>,
+  input: GetGlobalReachConnectionRequest,
+  output: GetGlobalReachConnectionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5122,8 +7198,8 @@ export const GetHcxEnterpriseSite: API.OperationMethod<
   GetHcxEnterpriseSiteError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(101) as any as S.Schema<GetHcxEnterpriseSiteRequest>,
-  output: __S(103) as any as S.Schema<GetHcxEnterpriseSiteResponse>,
+  input: GetHcxEnterpriseSiteRequest,
+  output: GetHcxEnterpriseSiteResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5137,8 +7213,8 @@ export const GetHost: API.OperationMethod<
   GetHostError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(104) as any as S.Schema<GetHostRequest>,
-  output: __S(108) as any as S.Schema<GetHostResponse>,
+  input: GetHostRequest,
+  output: GetHostResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5152,8 +7228,8 @@ export const GetIscsiPath: API.OperationMethod<
   GetIscsiPathError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(109) as any as S.Schema<GetIscsiPathRequest>,
-  output: __S(111) as any as S.Schema<GetIscsiPathResponse>,
+  input: GetIscsiPathRequest,
+  output: GetIscsiPathResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5167,8 +7243,8 @@ export const GetLicense: API.OperationMethod<
   GetLicenseError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(112) as any as S.Schema<GetLicenseRequest>,
-  output: __S(114) as any as S.Schema<GetLicenseResponse>,
+  input: GetLicenseRequest,
+  output: GetLicenseResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5182,8 +7258,8 @@ export const GetLicenseProperties: API.OperationMethod<
   GetLicensePropertiesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(115) as any as S.Schema<GetLicensePropertiesRequest>,
-  output: __S(113) as any as S.Schema<LicenseProperties>,
+  input: GetLicensePropertiesRequest,
+  output: LicenseProperties,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5197,8 +7273,8 @@ export const GetMaintenance: API.OperationMethod<
   GetMaintenanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(116) as any as S.Schema<GetMaintenanceRequest>,
-  output: __S(132) as any as S.Schema<GetMaintenanceResponse>,
+  input: GetMaintenanceRequest,
+  output: GetMaintenanceResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5212,8 +7288,8 @@ export const GetPlacementPolicy: API.OperationMethod<
   GetPlacementPolicyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(133) as any as S.Schema<GetPlacementPolicyRequest>,
-  output: __S(135) as any as S.Schema<GetPlacementPolicyResponse>,
+  input: GetPlacementPolicyRequest,
+  output: GetPlacementPolicyResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5227,8 +7303,8 @@ export const GetPrivateCloud: API.OperationMethod<
   GetPrivateCloudError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(136) as any as S.Schema<GetPrivateCloudRequest>,
-  output: __S(148) as any as S.Schema<GetPrivateCloudResponse>,
+  input: GetPrivateCloudRequest,
+  output: GetPrivateCloudResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5242,8 +7318,8 @@ export const GetPrivateCloudVcfLicense: API.OperationMethod<
   GetPrivateCloudVcfLicenseError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(149) as any as S.Schema<GetPrivateCloudVcfLicenseRequest>,
-  output: __S(145) as any as S.Schema<VcfLicense>,
+  input: GetPrivateCloudVcfLicenseRequest,
+  output: VcfLicense,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5257,8 +7333,8 @@ export const GetProvisionedNetwork: API.OperationMethod<
   GetProvisionedNetworkError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(150) as any as S.Schema<GetProvisionedNetworkRequest>,
-  output: __S(152) as any as S.Schema<GetProvisionedNetworkResponse>,
+  input: GetProvisionedNetworkRequest,
+  output: GetProvisionedNetworkResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5272,8 +7348,8 @@ export const GetPureStoragePolicy: API.OperationMethod<
   GetPureStoragePolicyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(153) as any as S.Schema<GetPureStoragePolicyRequest>,
-  output: __S(155) as any as S.Schema<GetPureStoragePolicyResponse>,
+  input: GetPureStoragePolicyRequest,
+  output: GetPureStoragePolicyResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5287,8 +7363,8 @@ export const GetScriptCmdlet: API.OperationMethod<
   GetScriptCmdletError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(156) as any as S.Schema<GetScriptCmdletRequest>,
-  output: __S(160) as any as S.Schema<GetScriptCmdletResponse>,
+  input: GetScriptCmdletRequest,
+  output: GetScriptCmdletResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5302,8 +7378,8 @@ export const GetScriptExecution: API.OperationMethod<
   GetScriptExecutionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(161) as any as S.Schema<GetScriptExecutionRequest>,
-  output: __S(166) as any as S.Schema<GetScriptExecutionResponse>,
+  input: GetScriptExecutionRequest,
+  output: GetScriptExecutionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5317,8 +7393,8 @@ export const GetScriptExecutionExecutionLogs: API.OperationMethod<
   GetScriptExecutionExecutionLogsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(168) as any as S.Schema<GetScriptExecutionExecutionLogsRequest>,
-  output: __S(166) as any as S.Schema<GetScriptExecutionExecutionLogsResponse>,
+  input: GetScriptExecutionExecutionLogsRequest,
+  output: GetScriptExecutionExecutionLogsResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5332,8 +7408,8 @@ export const GetScriptPackage: API.OperationMethod<
   GetScriptPackageError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(169) as any as S.Schema<GetScriptPackageRequest>,
-  output: __S(171) as any as S.Schema<GetScriptPackageResponse>,
+  input: GetScriptPackageRequest,
+  output: GetScriptPackageResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5347,8 +7423,8 @@ export const GetVirtualMachine: API.OperationMethod<
   GetVirtualMachineError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(172) as any as S.Schema<GetVirtualMachineRequest>,
-  output: __S(174) as any as S.Schema<GetVirtualMachineResponse>,
+  input: GetVirtualMachineRequest,
+  output: GetVirtualMachineResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5362,8 +7438,8 @@ export const GetWorkloadNetwork: API.OperationMethod<
   GetWorkloadNetworkError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(175) as any as S.Schema<GetWorkloadNetworkRequest>,
-  output: __S(177) as any as S.Schema<GetWorkloadNetworkResponse>,
+  input: GetWorkloadNetworkRequest,
+  output: GetWorkloadNetworkResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5377,8 +7453,8 @@ export const GetWorkloadNetworkDhcp: API.OperationMethod<
   GetWorkloadNetworkDhcpError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(178) as any as S.Schema<GetWorkloadNetworkDhcpRequest>,
-  output: __S(29) as any as S.Schema<GetWorkloadNetworkDhcpResponse>,
+  input: GetWorkloadNetworkDhcpRequest,
+  output: GetWorkloadNetworkDhcpResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5392,8 +7468,8 @@ export const GetWorkloadNetworkDnsService: API.OperationMethod<
   GetWorkloadNetworkDnsServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(179) as any as S.Schema<GetWorkloadNetworkDnsServiceRequest>,
-  output: __S(33) as any as S.Schema<GetWorkloadNetworkDnsServiceResponse>,
+  input: GetWorkloadNetworkDnsServiceRequest,
+  output: GetWorkloadNetworkDnsServiceResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5407,8 +7483,8 @@ export const GetWorkloadNetworkDnsZone: API.OperationMethod<
   GetWorkloadNetworkDnsZoneError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(180) as any as S.Schema<GetWorkloadNetworkDnsZoneRequest>,
-  output: __S(37) as any as S.Schema<GetWorkloadNetworkDnsZoneResponse>,
+  input: GetWorkloadNetworkDnsZoneRequest,
+  output: GetWorkloadNetworkDnsZoneResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5422,8 +7498,8 @@ export const GetWorkloadNetworkGateway: API.OperationMethod<
   GetWorkloadNetworkGatewayError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(181) as any as S.Schema<GetWorkloadNetworkGatewayRequest>,
-  output: __S(183) as any as S.Schema<GetWorkloadNetworkGatewayResponse>,
+  input: GetWorkloadNetworkGatewayRequest,
+  output: GetWorkloadNetworkGatewayResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5437,8 +7513,8 @@ export const GetWorkloadNetworkPortMirroring: API.OperationMethod<
   GetWorkloadNetworkPortMirroringError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(184) as any as S.Schema<GetWorkloadNetworkPortMirroringRequest>,
-  output: __S(41) as any as S.Schema<GetWorkloadNetworkPortMirroringResponse>,
+  input: GetWorkloadNetworkPortMirroringRequest,
+  output: GetWorkloadNetworkPortMirroringResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5452,8 +7528,8 @@ export const GetWorkloadNetworkPublicIP: API.OperationMethod<
   GetWorkloadNetworkPublicIPError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(185) as any as S.Schema<GetWorkloadNetworkPublicIPRequest>,
-  output: __S(45) as any as S.Schema<GetWorkloadNetworkPublicIPResponse>,
+  input: GetWorkloadNetworkPublicIPRequest,
+  output: GetWorkloadNetworkPublicIPResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5467,8 +7543,8 @@ export const GetWorkloadNetworkSegment: API.OperationMethod<
   GetWorkloadNetworkSegmentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(186) as any as S.Schema<GetWorkloadNetworkSegmentRequest>,
-  output: __S(52) as any as S.Schema<GetWorkloadNetworkSegmentResponse>,
+  input: GetWorkloadNetworkSegmentRequest,
+  output: GetWorkloadNetworkSegmentResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5482,8 +7558,8 @@ export const GetWorkloadNetworkVirtualMachine: API.OperationMethod<
   GetWorkloadNetworkVirtualMachineError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(187) as any as S.Schema<GetWorkloadNetworkVirtualMachineRequest>,
-  output: __S(189) as any as S.Schema<GetWorkloadNetworkVirtualMachineResponse>,
+  input: GetWorkloadNetworkVirtualMachineRequest,
+  output: GetWorkloadNetworkVirtualMachineResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5497,8 +7573,8 @@ export const GetWorkloadNetworkVMGroup: API.OperationMethod<
   GetWorkloadNetworkVMGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(190) as any as S.Schema<GetWorkloadNetworkVMGroupRequest>,
-  output: __S(56) as any as S.Schema<GetWorkloadNetworkVMGroupResponse>,
+  input: GetWorkloadNetworkVMGroupRequest,
+  output: GetWorkloadNetworkVMGroupResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5512,8 +7588,8 @@ export const GlobalReachConnectionsCreateOrUpdate: API.OperationMethod<
   GlobalReachConnectionsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(192) as any as S.Schema<GlobalReachConnectionsCreateOrUpdateRequest>,
-  output: __S(100) as any as S.Schema<GlobalReachConnectionsCreateOrUpdateResponse>,
+  input: GlobalReachConnectionsCreateOrUpdateRequest,
+  output: GlobalReachConnectionsCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5527,8 +7603,8 @@ export const HcxEnterpriseSitesCreateOrUpdate: API.OperationMethod<
   HcxEnterpriseSitesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(193) as any as S.Schema<HcxEnterpriseSitesCreateOrUpdateRequest>,
-  output: __S(103) as any as S.Schema<HcxEnterpriseSitesCreateOrUpdateResponse>,
+  input: HcxEnterpriseSitesCreateOrUpdateRequest,
+  output: HcxEnterpriseSitesCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5542,8 +7618,8 @@ export const IscsiPathsCreateOrUpdate: API.OperationMethod<
   IscsiPathsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(195) as any as S.Schema<IscsiPathsCreateOrUpdateRequest>,
-  output: __S(196) as any as S.Schema<IscsiPathsCreateOrUpdateResponse>,
+  input: IscsiPathsCreateOrUpdateRequest,
+  output: IscsiPathsCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5557,8 +7633,8 @@ export const LicensesCreateOrUpdate: API.OperationMethod<
   LicensesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(198) as any as S.Schema<LicensesCreateOrUpdateRequest>,
-  output: __S(199) as any as S.Schema<LicensesCreateOrUpdateResponse>,
+  input: LicensesCreateOrUpdateRequest,
+  output: LicensesCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5572,8 +7648,8 @@ export const ListAddons: API.OperationMethod<
   ListAddonsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(200) as any as S.Schema<ListAddonsRequest>,
-  output: __S(202) as any as S.Schema<AddonList>,
+  input: ListAddonsRequest,
+  output: AddonList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5587,8 +7663,8 @@ export const ListAuthorizations: API.OperationMethod<
   ListAuthorizationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(203) as any as S.Schema<ListAuthorizationsRequest>,
-  output: __S(205) as any as S.Schema<ExpressRouteAuthorizationList>,
+  input: ListAuthorizationsRequest,
+  output: ExpressRouteAuthorizationList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5602,8 +7678,8 @@ export const ListCloudLinks: API.OperationMethod<
   ListCloudLinksError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(206) as any as S.Schema<ListCloudLinksRequest>,
-  output: __S(208) as any as S.Schema<CloudLinkList>,
+  input: ListCloudLinksRequest,
+  output: CloudLinkList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5617,8 +7693,8 @@ export const ListClusters: API.OperationMethod<
   ListClustersError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(209) as any as S.Schema<ListClustersRequest>,
-  output: __S(211) as any as S.Schema<ClusterList>,
+  input: ListClustersRequest,
+  output: ClusterList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5632,8 +7708,8 @@ export const ListClusterZones: API.OperationMethod<
   ListClusterZonesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(212) as any as S.Schema<ListClusterZonesRequest>,
-  output: __S(215) as any as S.Schema<ClusterZoneList>,
+  input: ListClusterZonesRequest,
+  output: ClusterZoneList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5647,8 +7723,8 @@ export const ListDatastores: API.OperationMethod<
   ListDatastoresError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(216) as any as S.Schema<ListDatastoresRequest>,
-  output: __S(218) as any as S.Schema<DatastoreList>,
+  input: ListDatastoresRequest,
+  output: DatastoreList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5662,8 +7738,8 @@ export const ListGlobalReachConnections: API.OperationMethod<
   ListGlobalReachConnectionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(219) as any as S.Schema<ListGlobalReachConnectionsRequest>,
-  output: __S(222) as any as S.Schema<GlobalReachConnectionList>,
+  input: ListGlobalReachConnectionsRequest,
+  output: GlobalReachConnectionList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5677,8 +7753,8 @@ export const ListHcxEnterpriseSites: API.OperationMethod<
   ListHcxEnterpriseSitesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(223) as any as S.Schema<ListHcxEnterpriseSitesRequest>,
-  output: __S(226) as any as S.Schema<HcxEnterpriseSiteList>,
+  input: ListHcxEnterpriseSitesRequest,
+  output: HcxEnterpriseSiteList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5692,8 +7768,8 @@ export const ListHosts: API.OperationMethod<
   ListHostsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(227) as any as S.Schema<ListHostsRequest>,
-  output: __S(231) as any as S.Schema<HostListResult>,
+  input: ListHostsRequest,
+  output: HostListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5707,8 +7783,8 @@ export const ListIscsiPathByPrivateCloud: API.OperationMethod<
   ListIscsiPathByPrivateCloudError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(232) as any as S.Schema<ListIscsiPathByPrivateCloudRequest>,
-  output: __S(234) as any as S.Schema<IscsiPathListResult>,
+  input: ListIscsiPathByPrivateCloudRequest,
+  output: IscsiPathListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5722,8 +7798,8 @@ export const ListLicenses: API.OperationMethod<
   ListLicensesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(235) as any as S.Schema<ListLicensesRequest>,
-  output: __S(237) as any as S.Schema<LicenseListResult>,
+  input: ListLicensesRequest,
+  output: LicenseListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5737,8 +7813,8 @@ export const ListMaintenances: API.OperationMethod<
   ListMaintenancesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(238) as any as S.Schema<ListMaintenancesRequest>,
-  output: __S(240) as any as S.Schema<MaintenanceListResult>,
+  input: ListMaintenancesRequest,
+  output: MaintenanceListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5752,8 +7828,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(241) as any as S.Schema<ListOperationsRequest>,
-  output: __S(245) as any as S.Schema<ListOperationsResponse>,
+  input: ListOperationsRequest,
+  output: ListOperationsResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5767,8 +7843,8 @@ export const ListPlacementPolicies: API.OperationMethod<
   ListPlacementPoliciesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(246) as any as S.Schema<ListPlacementPoliciesRequest>,
-  output: __S(249) as any as S.Schema<PlacementPoliciesList>,
+  input: ListPlacementPoliciesRequest,
+  output: PlacementPoliciesList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5782,8 +7858,8 @@ export const ListPrivateCloudAdminCredentials: API.OperationMethod<
   ListPrivateCloudAdminCredentialsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(250) as any as S.Schema<ListPrivateCloudAdminCredentialsRequest>,
-  output: __S(251) as any as S.Schema<AdminCredentials>,
+  input: ListPrivateCloudAdminCredentialsRequest,
+  output: AdminCredentials,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5797,8 +7873,8 @@ export const ListPrivateCloudInSubscription: API.OperationMethod<
   ListPrivateCloudInSubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(252) as any as S.Schema<ListPrivateCloudInSubscriptionRequest>,
-  output: __S(254) as any as S.Schema<PrivateCloudList>,
+  input: ListPrivateCloudInSubscriptionRequest,
+  output: PrivateCloudList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5812,8 +7888,8 @@ export const ListPrivateClouds: API.OperationMethod<
   ListPrivateCloudsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(255) as any as S.Schema<ListPrivateCloudsRequest>,
-  output: __S(254) as any as S.Schema<PrivateCloudList>,
+  input: ListPrivateCloudsRequest,
+  output: PrivateCloudList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5827,8 +7903,8 @@ export const ListProvisionedNetworks: API.OperationMethod<
   ListProvisionedNetworksError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(256) as any as S.Schema<ListProvisionedNetworksRequest>,
-  output: __S(259) as any as S.Schema<ProvisionedNetworkListResult>,
+  input: ListProvisionedNetworksRequest,
+  output: ProvisionedNetworkListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5842,8 +7918,8 @@ export const ListPureStoragePolicies: API.OperationMethod<
   ListPureStoragePoliciesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(260) as any as S.Schema<ListPureStoragePoliciesRequest>,
-  output: __S(263) as any as S.Schema<PureStoragePolicyListResult>,
+  input: ListPureStoragePoliciesRequest,
+  output: PureStoragePolicyListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5857,8 +7933,8 @@ export const ListScriptCmdlets: API.OperationMethod<
   ListScriptCmdletsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(264) as any as S.Schema<ListScriptCmdletsRequest>,
-  output: __S(266) as any as S.Schema<ScriptCmdletsList>,
+  input: ListScriptCmdletsRequest,
+  output: ScriptCmdletsList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5872,8 +7948,8 @@ export const ListScriptExecutions: API.OperationMethod<
   ListScriptExecutionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(267) as any as S.Schema<ListScriptExecutionsRequest>,
-  output: __S(270) as any as S.Schema<ScriptExecutionsList>,
+  input: ListScriptExecutionsRequest,
+  output: ScriptExecutionsList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5887,8 +7963,8 @@ export const ListScriptPackages: API.OperationMethod<
   ListScriptPackagesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(271) as any as S.Schema<ListScriptPackagesRequest>,
-  output: __S(273) as any as S.Schema<ScriptPackagesList>,
+  input: ListScriptPackagesRequest,
+  output: ScriptPackagesList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5902,8 +7978,8 @@ export const ListSkus: API.OperationMethod<
   ListSkusError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(274) as any as S.Schema<ListSkusRequest>,
-  output: __S(286) as any as S.Schema<PagedResourceSku>,
+  input: ListSkusRequest,
+  output: PagedResourceSku,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5917,8 +7993,8 @@ export const ListVirtualMachines: API.OperationMethod<
   ListVirtualMachinesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(287) as any as S.Schema<ListVirtualMachinesRequest>,
-  output: __S(290) as any as S.Schema<VirtualMachinesList>,
+  input: ListVirtualMachinesRequest,
+  output: VirtualMachinesList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5932,8 +8008,8 @@ export const ListWorkloadNetworkDhcp: API.OperationMethod<
   ListWorkloadNetworkDhcpError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(291) as any as S.Schema<ListWorkloadNetworkDhcpRequest>,
-  output: __S(294) as any as S.Schema<WorkloadNetworkDhcpList>,
+  input: ListWorkloadNetworkDhcpRequest,
+  output: WorkloadNetworkDhcpList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5947,8 +8023,8 @@ export const ListWorkloadNetworkDnsServices: API.OperationMethod<
   ListWorkloadNetworkDnsServicesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(295) as any as S.Schema<ListWorkloadNetworkDnsServicesRequest>,
-  output: __S(297) as any as S.Schema<WorkloadNetworkDnsServicesList>,
+  input: ListWorkloadNetworkDnsServicesRequest,
+  output: WorkloadNetworkDnsServicesList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5962,8 +8038,8 @@ export const ListWorkloadNetworkDnsZones: API.OperationMethod<
   ListWorkloadNetworkDnsZonesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(298) as any as S.Schema<ListWorkloadNetworkDnsZonesRequest>,
-  output: __S(301) as any as S.Schema<WorkloadNetworkDnsZonesList>,
+  input: ListWorkloadNetworkDnsZonesRequest,
+  output: WorkloadNetworkDnsZonesList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5977,8 +8053,8 @@ export const ListWorkloadNetworkGateways: API.OperationMethod<
   ListWorkloadNetworkGatewaysError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(302) as any as S.Schema<ListWorkloadNetworkGatewaysRequest>,
-  output: __S(305) as any as S.Schema<WorkloadNetworkGatewayList>,
+  input: ListWorkloadNetworkGatewaysRequest,
+  output: WorkloadNetworkGatewayList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5992,8 +8068,8 @@ export const ListWorkloadNetworkPortMirroring: API.OperationMethod<
   ListWorkloadNetworkPortMirroringError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(306) as any as S.Schema<ListWorkloadNetworkPortMirroringRequest>,
-  output: __S(308) as any as S.Schema<WorkloadNetworkPortMirroringList>,
+  input: ListWorkloadNetworkPortMirroringRequest,
+  output: WorkloadNetworkPortMirroringList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6007,8 +8083,8 @@ export const ListWorkloadNetworkPublicIPs: API.OperationMethod<
   ListWorkloadNetworkPublicIPsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(309) as any as S.Schema<ListWorkloadNetworkPublicIPsRequest>,
-  output: __S(312) as any as S.Schema<WorkloadNetworkPublicIPsList>,
+  input: ListWorkloadNetworkPublicIPsRequest,
+  output: WorkloadNetworkPublicIPsList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6022,8 +8098,8 @@ export const ListWorkloadNetworks: API.OperationMethod<
   ListWorkloadNetworksError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(313) as any as S.Schema<ListWorkloadNetworksRequest>,
-  output: __S(316) as any as S.Schema<WorkloadNetworkList>,
+  input: ListWorkloadNetworksRequest,
+  output: WorkloadNetworkList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6037,8 +8113,8 @@ export const ListWorkloadNetworkSegments: API.OperationMethod<
   ListWorkloadNetworkSegmentsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(317) as any as S.Schema<ListWorkloadNetworkSegmentsRequest>,
-  output: __S(320) as any as S.Schema<WorkloadNetworkSegmentsList>,
+  input: ListWorkloadNetworkSegmentsRequest,
+  output: WorkloadNetworkSegmentsList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6052,8 +8128,8 @@ export const ListWorkloadNetworkVirtualMachines: API.OperationMethod<
   ListWorkloadNetworkVirtualMachinesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(321) as any as S.Schema<ListWorkloadNetworkVirtualMachinesRequest>,
-  output: __S(323) as any as S.Schema<WorkloadNetworkVirtualMachinesList>,
+  input: ListWorkloadNetworkVirtualMachinesRequest,
+  output: WorkloadNetworkVirtualMachinesList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6067,8 +8143,8 @@ export const ListWorkloadNetworkVMGroups: API.OperationMethod<
   ListWorkloadNetworkVMGroupsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(324) as any as S.Schema<ListWorkloadNetworkVMGroupsRequest>,
-  output: __S(327) as any as S.Schema<WorkloadNetworkVMGroupsList>,
+  input: ListWorkloadNetworkVMGroupsRequest,
+  output: WorkloadNetworkVMGroupsList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6082,8 +8158,8 @@ export const MaintenancesInitiateChecks: API.OperationMethod<
   MaintenancesInitiateChecksError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(328) as any as S.Schema<MaintenancesInitiateChecksRequest>,
-  output: __S(329) as any as S.Schema<MaintenancesInitiateChecksResponse>,
+  input: MaintenancesInitiateChecksRequest,
+  output: MaintenancesInitiateChecksResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6097,8 +8173,8 @@ export const MaintenancesReschedule: API.OperationMethod<
   MaintenancesRescheduleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(330) as any as S.Schema<MaintenancesRescheduleRequest>,
-  output: __S(329) as any as S.Schema<MaintenancesRescheduleResponse>,
+  input: MaintenancesRescheduleRequest,
+  output: MaintenancesRescheduleResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6112,8 +8188,8 @@ export const MaintenancesSchedule: API.OperationMethod<
   MaintenancesScheduleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(331) as any as S.Schema<MaintenancesScheduleRequest>,
-  output: __S(329) as any as S.Schema<MaintenancesScheduleResponse>,
+  input: MaintenancesScheduleRequest,
+  output: MaintenancesScheduleResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6127,8 +8203,8 @@ export const PlacementPoliciesCreateOrUpdate: API.OperationMethod<
   PlacementPoliciesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(333) as any as S.Schema<PlacementPoliciesCreateOrUpdateRequest>,
-  output: __S(135) as any as S.Schema<PlacementPoliciesCreateOrUpdateResponse>,
+  input: PlacementPoliciesCreateOrUpdateRequest,
+  output: PlacementPoliciesCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6142,8 +8218,8 @@ export const PrivateCloudsCreateOrUpdate: API.OperationMethod<
   PrivateCloudsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(338) as any as S.Schema<PrivateCloudsCreateOrUpdateRequest>,
-  output: __S(339) as any as S.Schema<PrivateCloudsCreateOrUpdateResponse>,
+  input: PrivateCloudsCreateOrUpdateRequest,
+  output: PrivateCloudsCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6157,8 +8233,8 @@ export const PureStoragePoliciesCreateOrUpdate: API.OperationMethod<
   PureStoragePoliciesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(341) as any as S.Schema<PureStoragePoliciesCreateOrUpdateRequest>,
-  output: __S(155) as any as S.Schema<PureStoragePoliciesCreateOrUpdateResponse>,
+  input: PureStoragePoliciesCreateOrUpdateRequest,
+  output: PureStoragePoliciesCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6172,8 +8248,8 @@ export const RotatePrivateCloudNsxtPassword: API.OperationMethod<
   RotatePrivateCloudNsxtPasswordError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(342) as any as S.Schema<RotatePrivateCloudNsxtPasswordRequest>,
-  output: __S(15) as any as S.Schema<RotatePrivateCloudNsxtPasswordResponse>,
+  input: RotatePrivateCloudNsxtPasswordRequest,
+  output: RotatePrivateCloudNsxtPasswordResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6187,8 +8263,8 @@ export const RotatePrivateCloudVcenterPassword: API.OperationMethod<
   RotatePrivateCloudVcenterPasswordError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(343) as any as S.Schema<RotatePrivateCloudVcenterPasswordRequest>,
-  output: __S(15) as any as S.Schema<RotatePrivateCloudVcenterPasswordResponse>,
+  input: RotatePrivateCloudVcenterPasswordRequest,
+  output: RotatePrivateCloudVcenterPasswordResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6202,8 +8278,8 @@ export const ScriptExecutionsCreateOrUpdate: API.OperationMethod<
   ScriptExecutionsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(345) as any as S.Schema<ScriptExecutionsCreateOrUpdateRequest>,
-  output: __S(166) as any as S.Schema<ScriptExecutionsCreateOrUpdateResponse>,
+  input: ScriptExecutionsCreateOrUpdateRequest,
+  output: ScriptExecutionsCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6217,8 +8293,8 @@ export const UpdateCluster: API.OperationMethod<
   UpdateClusterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(347) as any as S.Schema<UpdateClusterRequest>,
-  output: __S(95) as any as S.Schema<UpdateClusterResponse>,
+  input: UpdateClusterRequest,
+  output: UpdateClusterResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6232,8 +8308,8 @@ export const UpdateHost: API.OperationMethod<
   UpdateHostError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(349) as any as S.Schema<UpdateHostRequest>,
-  output: __S(108) as any as S.Schema<UpdateHostResponse>,
+  input: UpdateHostRequest,
+  output: UpdateHostResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6247,8 +8323,8 @@ export const UpdatePlacementPolicy: API.OperationMethod<
   UpdatePlacementPolicyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(351) as any as S.Schema<UpdatePlacementPolicyRequest>,
-  output: __S(135) as any as S.Schema<UpdatePlacementPolicyResponse>,
+  input: UpdatePlacementPolicyRequest,
+  output: UpdatePlacementPolicyResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6262,8 +8338,8 @@ export const UpdatePrivateCloud: API.OperationMethod<
   UpdatePrivateCloudError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(353) as any as S.Schema<UpdatePrivateCloudRequest>,
-  output: __S(339) as any as S.Schema<UpdatePrivateCloudResponse>,
+  input: UpdatePrivateCloudRequest,
+  output: UpdatePrivateCloudResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6277,8 +8353,8 @@ export const UpdateWorkloadNetworkDhcp: API.OperationMethod<
   UpdateWorkloadNetworkDhcpError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(354) as any as S.Schema<UpdateWorkloadNetworkDhcpRequest>,
-  output: __S(29) as any as S.Schema<UpdateWorkloadNetworkDhcpResponse>,
+  input: UpdateWorkloadNetworkDhcpRequest,
+  output: UpdateWorkloadNetworkDhcpResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6292,8 +8368,8 @@ export const UpdateWorkloadNetworkDnsService: API.OperationMethod<
   UpdateWorkloadNetworkDnsServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(355) as any as S.Schema<UpdateWorkloadNetworkDnsServiceRequest>,
-  output: __S(33) as any as S.Schema<UpdateWorkloadNetworkDnsServiceResponse>,
+  input: UpdateWorkloadNetworkDnsServiceRequest,
+  output: UpdateWorkloadNetworkDnsServiceResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6307,8 +8383,8 @@ export const UpdateWorkloadNetworkDnsZone: API.OperationMethod<
   UpdateWorkloadNetworkDnsZoneError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(356) as any as S.Schema<UpdateWorkloadNetworkDnsZoneRequest>,
-  output: __S(37) as any as S.Schema<UpdateWorkloadNetworkDnsZoneResponse>,
+  input: UpdateWorkloadNetworkDnsZoneRequest,
+  output: UpdateWorkloadNetworkDnsZoneResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6322,8 +8398,8 @@ export const UpdateWorkloadNetworkPortMirroring: API.OperationMethod<
   UpdateWorkloadNetworkPortMirroringError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(357) as any as S.Schema<UpdateWorkloadNetworkPortMirroringRequest>,
-  output: __S(41) as any as S.Schema<UpdateWorkloadNetworkPortMirroringResponse>,
+  input: UpdateWorkloadNetworkPortMirroringRequest,
+  output: UpdateWorkloadNetworkPortMirroringResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6337,8 +8413,8 @@ export const UpdateWorkloadNetworkSegments: API.OperationMethod<
   UpdateWorkloadNetworkSegmentsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(358) as any as S.Schema<UpdateWorkloadNetworkSegmentsRequest>,
-  output: __S(52) as any as S.Schema<UpdateWorkloadNetworkSegmentsResponse>,
+  input: UpdateWorkloadNetworkSegmentsRequest,
+  output: UpdateWorkloadNetworkSegmentsResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6352,8 +8428,8 @@ export const UpdateWorkloadNetworkVMGroup: API.OperationMethod<
   UpdateWorkloadNetworkVMGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(359) as any as S.Schema<UpdateWorkloadNetworkVMGroupRequest>,
-  output: __S(56) as any as S.Schema<UpdateWorkloadNetworkVMGroupResponse>,
+  input: UpdateWorkloadNetworkVMGroupRequest,
+  output: UpdateWorkloadNetworkVMGroupResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6367,8 +8443,8 @@ export const VirtualMachinesRestrictMovement: API.OperationMethod<
   VirtualMachinesRestrictMovementError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(360) as any as S.Schema<VirtualMachinesRestrictMovementRequest>,
-  output: __S(15) as any as S.Schema<VirtualMachinesRestrictMovementResponse>,
+  input: VirtualMachinesRestrictMovementRequest,
+  output: VirtualMachinesRestrictMovementResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6380,7 +8456,7 @@ function __c0(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          addonType: S.String,
+          addonType: AddonType,
           licenseKey: S.optional(S.String),
           vrsCount: S.optional(S.Number),
           offer: S.optional(S.String),
@@ -6394,7 +8470,7 @@ function __c0(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           privateCloudName: S.String.pipe(T.Label()),
           addonName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(0)),
+          properties: S.optional(AddonPropertiesInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -6410,18 +8486,18 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
-          createdByType: S.optional(S.String),
+          createdByType: S.optional(SystemDataCreatedByType),
           createdAt: S.optional(S.String),
           lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(S.String),
+          lastModifiedByType: S.optional(SystemDataLastModifiedByType),
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "SystemData" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          addonType: S.String,
-          provisioningState: S.optional(S.String),
+          addonType: AddonType,
+          provisioningState: S.optional(AddonProvisioningState),
           licenseKey: S.optional(S.String),
           vrsCount: S.optional(S.Number),
           offer: S.optional(S.String),
@@ -6434,8 +8510,8 @@ function __c0(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(3)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(AddonProperties),
         }),
       ).annotate({
         identifier: "AddonsCreateOrUpdateResponse",
@@ -6455,7 +8531,7 @@ function __c0(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           privateCloudName: S.String.pipe(T.Label()),
           authorizationName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(5)),
+          properties: S.optional(ExpressRouteAuthorizationPropertiesInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -6470,7 +8546,7 @@ function __c0(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          provisioningState: S.optional(S.String),
+          provisioningState: S.optional(ExpressRouteAuthorizationProvisioningState),
           expressRouteAuthorizationId: S.optional(S.String),
           expressRouteAuthorizationKey: S.optional(S.String),
           expressRouteId: S.optional(S.String),
@@ -6488,8 +8564,8 @@ function __c1(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(7)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(ExpressRouteAuthorizationProperties),
         }),
       ).annotate({
         identifier: "AuthorizationsCreateOrUpdateResponse",
@@ -6515,8 +8591,8 @@ function __c1(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          hostsRemaining: S.optional(__S(10)),
-          quotaEnabled: S.optional(S.String),
+          hostsRemaining: S.optional(QuotaHostsRemainingMap),
+          quotaEnabled: S.optional(QuotaEnabled),
         }),
       ).annotate({ identifier: "Quota" });
     case 4:
@@ -6525,7 +8601,7 @@ function __c1(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           location: S.String.pipe(T.Label()),
           name: S.String,
-          tier: S.optional(S.String),
+          tier: S.optional(SkuTier),
           size: S.optional(S.String),
           family: S.optional(S.String),
           capacity: S.optional(S.Number),
@@ -6543,7 +8619,7 @@ function __c1(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(S.String),
+          status: S.optional(TrialStatus),
           availableHosts: S.optional(S.Number),
         }),
       ).annotate({ identifier: "Trial" });
@@ -6585,7 +8661,7 @@ function __c2(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           privateCloudName: S.String.pipe(T.Label()),
           cloudLinkName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(16)),
+          properties: S.optional(CloudLinkPropertiesInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -6600,8 +8676,8 @@ function __c2(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          provisioningState: S.optional(S.String),
-          status: S.optional(S.String),
+          provisioningState: S.optional(CloudLinkProvisioningState),
+          status: S.optional(CloudLinkStatus),
           linkedCloud: S.optional(S.String),
         }),
       ).annotate({ identifier: "CloudLinkProperties" });
@@ -6611,8 +8687,8 @@ function __c2(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(18)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(CloudLinkProperties),
         }),
       ).annotate({
         identifier: "CloudLinksCreateOrUpdateResponse",
@@ -6623,7 +8699,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           clusterSize: S.optional(S.Number),
-          hosts: S.optional(__S(20)),
+          hosts: S.optional(ClusterPropertiesInputHostsList),
           vsanDatastoreName: S.optional(S.String),
         }),
       ).annotate({ identifier: "ClusterPropertiesInput" });
@@ -6631,7 +8707,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          tier: S.optional(S.String),
+          tier: S.optional(SkuTier),
           size: S.optional(S.String),
           family: S.optional(S.String),
           capacity: S.optional(S.Number),
@@ -6646,8 +8722,8 @@ function __c2(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           privateCloudName: S.String.pipe(T.Label()),
           clusterName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(21)),
-          sku: __S(22),
+          properties: S.optional(ClusterPropertiesInput),
+          sku: ClustersCreateOrUpdateRequestSku,
         }).pipe(
           T.Http({
             method: "PUT",
@@ -6667,9 +8743,9 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           clusterSize: S.optional(S.Number),
-          provisioningState: S.optional(S.String),
+          provisioningState: S.optional(ClusterProvisioningState),
           clusterId: S.optional(S.Number),
-          hosts: S.optional(__S(20)),
+          hosts: S.optional(ClusterPropertiesHostsList),
           vsanDatastoreName: S.optional(S.String),
         }),
       ).annotate({ identifier: "ClusterProperties" });
@@ -6679,9 +8755,9 @@ function __c3(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(24)),
-          sku: __S(22),
+          systemData: S.optional(SystemData),
+          properties: S.optional(ClusterProperties),
+          sku: ClustersCreateOrUpdateResponseSku,
         }),
       ).annotate({
         identifier: "ClustersCreateOrUpdateResponse",
@@ -6689,12 +8765,12 @@ function __c3(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          dhcpType: S.String,
+          dhcpType: DhcpTypeEnum,
           displayName: S.optional(S.String),
           revision: S.optional(S.Number),
           serverAddress: S.optional(S.String),
           leaseTime: S.optional(S.Number),
-          serverAddresses: S.optional(__S(20)),
+          serverAddresses: S.optional(WorkloadNetworkDnsZonePropertiesInputDnsServerIpsList),
         }),
       ).annotate({
         identifier: "WorkloadNetworkDhcpEntityInput",
@@ -6706,7 +8782,7 @@ function __c3(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           privateCloudName: S.String.pipe(T.Label()),
           dhcpId: S.String.pipe(T.Label()),
-          properties: S.optional(__S(26)),
+          properties: S.optional(WorkloadNetworkDhcpEntityInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -6721,14 +8797,14 @@ function __c3(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          dhcpType: S.String,
+          dhcpType: DhcpTypeEnum,
           displayName: S.optional(S.String),
-          segments: S.optional(__S(20)),
-          provisioningState: S.optional(S.String),
+          segments: S.optional(WorkloadNetworkDhcpEntitySegmentsList),
+          provisioningState: S.optional(WorkloadNetworkDhcpProvisioningState),
           revision: S.optional(S.Number),
           serverAddress: S.optional(S.String),
           leaseTime: S.optional(S.Number),
-          serverAddresses: S.optional(__S(20)),
+          serverAddresses: S.optional(WorkloadNetworkDnsZonePropertiesInputDnsServerIpsList),
         }),
       ).annotate({
         identifier: "WorkloadNetworkDhcpEntity",
@@ -6739,8 +8815,8 @@ function __c3(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(28)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(WorkloadNetworkDhcpEntity),
         }),
       ).annotate({
         identifier: "CreateWorkloadNetworkDhcpResponse",
@@ -6751,8 +8827,8 @@ function __c3(j: number): any {
           displayName: S.optional(S.String),
           dnsServiceIp: S.optional(S.String),
           defaultDnsZone: S.optional(S.String),
-          fqdnZones: S.optional(__S(20)),
-          logLevel: S.optional(S.String),
+          fqdnZones: S.optional(WorkloadNetworkDnsServicePropertiesInputFqdnZonesList),
+          logLevel: S.optional(DnsServiceLogLevelEnum),
           revision: S.optional(S.Number),
         }),
       ).annotate({
@@ -6765,7 +8841,7 @@ function __c3(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           privateCloudName: S.String.pipe(T.Label()),
           dnsServiceId: S.String.pipe(T.Label()),
-          properties: S.optional(__S(30)),
+          properties: S.optional(WorkloadNetworkDnsServicePropertiesInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -6787,10 +8863,10 @@ function __c4(j: number): any {
           displayName: S.optional(S.String),
           dnsServiceIp: S.optional(S.String),
           defaultDnsZone: S.optional(S.String),
-          fqdnZones: S.optional(__S(20)),
-          logLevel: S.optional(S.String),
-          status: S.optional(S.String),
-          provisioningState: S.optional(S.String),
+          fqdnZones: S.optional(WorkloadNetworkDnsServicePropertiesFqdnZonesList),
+          logLevel: S.optional(DnsServiceLogLevelEnum),
+          status: S.optional(DnsServiceStatusEnum),
+          provisioningState: S.optional(WorkloadNetworkDnsServiceProvisioningState),
           revision: S.optional(S.Number),
         }),
       ).annotate({
@@ -6802,8 +8878,8 @@ function __c4(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(32)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(WorkloadNetworkDnsServiceProperties),
         }),
       ).annotate({
         identifier: "CreateWorkloadNetworkDnsServiceResponse",
@@ -6812,8 +8888,8 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           displayName: S.optional(S.String),
-          domain: S.optional(__S(20)),
-          dnsServerIps: S.optional(__S(20)),
+          domain: S.optional(WorkloadNetworkDnsZonePropertiesInputDomainList),
+          dnsServerIps: S.optional(WorkloadNetworkDnsZonePropertiesInputDnsServerIpsList),
           sourceIp: S.optional(S.String),
           dnsServices: S.optional(S.Number),
           revision: S.optional(S.Number),
@@ -6828,7 +8904,7 @@ function __c4(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           privateCloudName: S.String.pipe(T.Label()),
           dnsZoneId: S.String.pipe(T.Label()),
-          properties: S.optional(__S(34)),
+          properties: S.optional(WorkloadNetworkDnsZonePropertiesInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -6844,11 +8920,11 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           displayName: S.optional(S.String),
-          domain: S.optional(__S(20)),
-          dnsServerIps: S.optional(__S(20)),
+          domain: S.optional(WorkloadNetworkDnsZonePropertiesDomainList),
+          dnsServerIps: S.optional(WorkloadNetworkDnsZonePropertiesDnsServerIpsList),
           sourceIp: S.optional(S.String),
           dnsServices: S.optional(S.Number),
-          provisioningState: S.optional(S.String),
+          provisioningState: S.optional(WorkloadNetworkDnsZoneProvisioningState),
           revision: S.optional(S.Number),
         }),
       ).annotate({
@@ -6860,8 +8936,8 @@ function __c4(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(36)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(WorkloadNetworkDnsZoneProperties),
         }),
       ).annotate({
         identifier: "CreateWorkloadNetworkDnsZoneResponse",
@@ -6870,7 +8946,7 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           displayName: S.optional(S.String),
-          direction: S.optional(S.String),
+          direction: S.optional(PortMirroringDirectionEnum),
           source: S.optional(S.String),
           destination: S.optional(S.String),
           revision: S.optional(S.Number),
@@ -6885,7 +8961,7 @@ function __c4(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           privateCloudName: S.String.pipe(T.Label()),
           portMirroringId: S.String.pipe(T.Label()),
-          properties: S.optional(__S(38)),
+          properties: S.optional(WorkloadNetworkPortMirroringPropertiesInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -6905,11 +8981,11 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           displayName: S.optional(S.String),
-          direction: S.optional(S.String),
+          direction: S.optional(PortMirroringDirectionEnum),
           source: S.optional(S.String),
           destination: S.optional(S.String),
-          status: S.optional(S.String),
-          provisioningState: S.optional(S.String),
+          status: S.optional(PortMirroringStatusEnum),
+          provisioningState: S.optional(WorkloadNetworkPortMirroringProvisioningState),
           revision: S.optional(S.Number),
         }),
       ).annotate({
@@ -6921,8 +8997,8 @@ function __c5(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(40)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(WorkloadNetworkPortMirroringProperties),
         }),
       ).annotate({
         identifier: "CreateWorkloadNetworkPortMirroringResponse",
@@ -6943,7 +9019,7 @@ function __c5(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           privateCloudName: S.String.pipe(T.Label()),
           publicIPId: S.String.pipe(T.Label()),
-          properties: S.optional(__S(42)),
+          properties: S.optional(WorkloadNetworkPublicIPPropertiesInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -6961,7 +9037,7 @@ function __c5(j: number): any {
           displayName: S.optional(S.String),
           numberOfPublicIPs: S.optional(S.Number),
           publicIPBlock: S.optional(S.String),
-          provisioningState: S.optional(S.String),
+          provisioningState: S.optional(WorkloadNetworkPublicIPProvisioningState),
         }),
       ).annotate({
         identifier: "WorkloadNetworkPublicIPProperties",
@@ -6972,8 +9048,8 @@ function __c5(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(44)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(WorkloadNetworkPublicIPProperties),
         }),
       ).annotate({
         identifier: "CreateWorkloadNetworkPublicIPResponse",
@@ -6981,7 +9057,7 @@ function __c5(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          dhcpRanges: S.optional(__S(20)),
+          dhcpRanges: S.optional(WorkloadNetworkSegmentSubnetDhcpRangesList),
           gatewayAddress: S.optional(S.String),
         }),
       ).annotate({
@@ -6992,7 +9068,7 @@ function __c5(j: number): any {
         S.Struct({
           displayName: S.optional(S.String),
           connectedGateway: S.optional(S.String),
-          subnet: S.optional(__S(46)),
+          subnet: S.optional(WorkloadNetworkSegmentSubnet),
           revision: S.optional(S.Number),
         }),
       ).annotate({
@@ -7009,7 +9085,7 @@ function __c6(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           privateCloudName: S.String.pipe(T.Label()),
           segmentId: S.String.pipe(T.Label()),
-          properties: S.optional(__S(47)),
+          properties: S.optional(WorkloadNetworkSegmentPropertiesInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -7030,16 +9106,16 @@ function __c6(j: number): any {
         identifier: "WorkloadNetworkSegmentPortVif",
       });
     case 2:
-      return S.Array(__S(49));
+      return S.Array(WorkloadNetworkSegmentPortVif);
     case 3:
       return S.suspend(() =>
         S.Struct({
           displayName: S.optional(S.String),
           connectedGateway: S.optional(S.String),
-          subnet: S.optional(__S(46)),
-          portVif: S.optional(__S(50)),
-          status: S.optional(S.String),
-          provisioningState: S.optional(S.String),
+          subnet: S.optional(WorkloadNetworkSegmentSubnet),
+          portVif: S.optional(WorkloadNetworkSegmentPropertiesPortVifList),
+          status: S.optional(SegmentStatusEnum),
+          provisioningState: S.optional(WorkloadNetworkSegmentProvisioningState),
           revision: S.optional(S.Number),
         }),
       ).annotate({
@@ -7051,8 +9127,8 @@ function __c6(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(51)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(WorkloadNetworkSegmentProperties),
         }),
       ).annotate({
         identifier: "CreateWorkloadNetworkSegmentsResponse",
@@ -7061,7 +9137,7 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           displayName: S.optional(S.String),
-          members: S.optional(__S(20)),
+          members: S.optional(WorkloadNetworkVMGroupPropertiesInputMembersList),
           revision: S.optional(S.Number),
         }),
       ).annotate({
@@ -7074,7 +9150,7 @@ function __c6(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           privateCloudName: S.String.pipe(T.Label()),
           vmGroupId: S.String.pipe(T.Label()),
-          properties: S.optional(__S(53)),
+          properties: S.optional(WorkloadNetworkVMGroupPropertiesInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -7090,9 +9166,9 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           displayName: S.optional(S.String),
-          members: S.optional(__S(20)),
-          status: S.optional(S.String),
-          provisioningState: S.optional(S.String),
+          members: S.optional(WorkloadNetworkVMGroupPropertiesMembersList),
+          status: S.optional(VMGroupStatusEnum),
+          provisioningState: S.optional(WorkloadNetworkVMGroupProvisioningState),
           revision: S.optional(S.Number),
         }),
       ).annotate({
@@ -7108,8 +9184,8 @@ function __c7(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(55)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(WorkloadNetworkVMGroupProperties),
         }),
       ).annotate({
         identifier: "CreateWorkloadNetworkVMGroupResponse",
@@ -7125,7 +9201,7 @@ function __c7(j: number): any {
         S.Struct({
           targetId: S.String,
           lunName: S.String,
-          mountOption: S.optional(S.String),
+          mountOption: S.optional(DiskPoolVolumeInputMountOption),
         }),
       ).annotate({ identifier: "DiskPoolVolumeInput" });
     case 3:
@@ -7144,10 +9220,10 @@ function __c7(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          netAppVolume: S.optional(__S(57)),
-          diskPoolVolume: S.optional(__S(58)),
-          elasticSanVolume: S.optional(__S(59)),
-          pureStorageVolume: S.optional(__S(60)),
+          netAppVolume: S.optional(NetAppVolume),
+          diskPoolVolume: S.optional(DiskPoolVolumeInput),
+          elasticSanVolume: S.optional(ElasticSanVolume),
+          pureStorageVolume: S.optional(PureStorageVolume),
         }),
       ).annotate({ identifier: "DatastorePropertiesInput" });
     case 6:
@@ -7158,7 +9234,7 @@ function __c7(j: number): any {
           privateCloudName: S.String.pipe(T.Label()),
           clusterName: S.String.pipe(T.Label()),
           datastoreName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(61)),
+          properties: S.optional(DatastorePropertiesInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -7175,7 +9251,7 @@ function __c7(j: number): any {
         S.Struct({
           targetId: S.String,
           lunName: S.String,
-          mountOption: S.optional(S.String),
+          mountOption: S.optional(DiskPoolVolumeMountOption),
           path: S.optional(S.String),
         }),
       ).annotate({ identifier: "DiskPoolVolume" });
@@ -7186,12 +9262,12 @@ function __c8(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          provisioningState: S.optional(S.String),
-          netAppVolume: S.optional(__S(57)),
-          diskPoolVolume: S.optional(__S(63)),
-          elasticSanVolume: S.optional(__S(59)),
-          pureStorageVolume: S.optional(__S(60)),
-          status: S.optional(S.String),
+          provisioningState: S.optional(DatastoreProvisioningState),
+          netAppVolume: S.optional(NetAppVolume),
+          diskPoolVolume: S.optional(DiskPoolVolume),
+          elasticSanVolume: S.optional(ElasticSanVolume),
+          pureStorageVolume: S.optional(PureStorageVolume),
+          status: S.optional(DatastoreStatus),
         }),
       ).annotate({ identifier: "DatastoreProperties" });
     case 1:
@@ -7200,8 +9276,8 @@ function __c8(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(64)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(DatastoreProperties),
         }),
       ).annotate({
         identifier: "DatastoresCreateOrUpdateResponse",
@@ -7358,7 +9434,7 @@ function __c9(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           privateCloudName: S.String.pipe(T.Label()),
-          licenseName: S.String.pipe(T.Label()),
+          licenseName: DeleteLicenseRequestLicenseName.pipe(T.Label()),
         }).pipe(
           T.Http({
             method: "DELETE",
@@ -7596,8 +9672,8 @@ function __c11(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(3)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(AddonProperties),
         }),
       ).annotate({ identifier: "GetAddonResponse" });
     case 2:
@@ -7622,8 +9698,8 @@ function __c11(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(7)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(ExpressRouteAuthorizationProperties),
         }),
       ).annotate({ identifier: "GetAuthorizationResponse" });
     case 4:
@@ -7648,8 +9724,8 @@ function __c11(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(18)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(CloudLinkProperties),
         }),
       ).annotate({ identifier: "GetCloudLinkResponse" });
     case 6:
@@ -7674,9 +9750,9 @@ function __c11(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(24)),
-          sku: __S(22),
+          systemData: S.optional(SystemData),
+          properties: S.optional(ClusterProperties),
+          sku: ClustersCreateOrUpdateResponseSku,
         }),
       ).annotate({ identifier: "GetClusterResponse" });
   }
@@ -7706,8 +9782,8 @@ function __c12(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(64)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(DatastoreProperties),
         }),
       ).annotate({ identifier: "GetDatastoreResponse" });
     case 2:
@@ -7731,10 +9807,10 @@ function __c12(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          provisioningState: S.optional(S.String),
+          provisioningState: S.optional(GlobalReachConnectionProvisioningState),
           addressPrefix: S.optional(S.String),
           authorizationKey: S.optional(S.String),
-          circuitConnectionStatus: S.optional(S.String),
+          circuitConnectionStatus: S.optional(GlobalReachConnectionStatus),
           peerExpressRouteCircuit: S.optional(S.String),
           expressRouteId: S.optional(S.String),
         }),
@@ -7747,8 +9823,8 @@ function __c12(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(99)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(GlobalReachConnectionProperties),
         }),
       ).annotate({
         identifier: "GetGlobalReachConnectionResponse",
@@ -7774,9 +9850,9 @@ function __c12(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          provisioningState: S.optional(S.String),
+          provisioningState: S.optional(HcxEnterpriseSiteProvisioningState),
           activationKey: S.optional(S.String),
-          status: S.optional(S.String),
+          status: S.optional(HcxEnterpriseSiteStatus),
         }),
       ).annotate({
         identifier: "HcxEnterpriseSiteProperties",
@@ -7787,8 +9863,8 @@ function __c12(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(102)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(HcxEnterpriseSiteProperties),
         }),
       ).annotate({
         identifier: "GetHcxEnterpriseSiteResponse",
@@ -7817,22 +9893,22 @@ function __c13(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          kind: S.String,
+          kind: HostLicenseKind,
         }),
       ).annotate({ identifier: "HostLicense" });
     case 2:
-      return S.Array(__S(105));
+      return S.Array(HostLicense);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          kind: S.String,
-          provisioningState: S.optional(S.String),
+          kind: HostKind,
+          provisioningState: S.optional(HostProvisioningState),
           displayName: S.optional(S.String),
           moRefId: S.optional(S.String),
           fqdn: S.optional(S.String),
-          maintenance: S.optional(S.String),
+          maintenance: S.optional(HostMaintenance),
           faultDomain: S.optional(S.String),
-          licenses: S.optional(__S(106)),
+          licenses: S.optional(HostPropertiesLicensesList),
         }),
       ).annotate({ identifier: "HostProperties" });
     case 4:
@@ -7841,10 +9917,10 @@ function __c13(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(107)),
-          zones: S.optional(__S(20)),
-          sku: S.optional(__S(22)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(HostProperties),
+          zones: S.optional(GetHostResponseZonesList),
+          sku: S.optional(ClustersCreateOrUpdateResponseSku),
         }),
       ).annotate({ identifier: "GetHostResponse" });
     case 5:
@@ -7865,7 +9941,7 @@ function __c13(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          provisioningState: S.optional(S.String),
+          provisioningState: S.optional(IscsiPathProvisioningState),
           networkBlock: S.String,
         }),
       ).annotate({ identifier: "IscsiPathProperties" });
@@ -7875,8 +9951,8 @@ function __c13(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(110)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(IscsiPathProperties),
         }),
       ).annotate({ identifier: "GetIscsiPathResponse" });
   }
@@ -7889,7 +9965,7 @@ function __c14(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           privateCloudName: S.String.pipe(T.Label()),
-          licenseName: S.String.pipe(T.Label()),
+          licenseName: GetLicenseRequestLicenseName.pipe(T.Label()),
         }).pipe(
           T.Http({
             method: "GET",
@@ -7902,8 +9978,8 @@ function __c14(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          kind: S.String,
-          provisioningState: S.optional(S.String),
+          kind: LicenseKind,
+          provisioningState: S.optional(LicenseProvisioningState),
           licenseKey: S.optional(S.String),
           endDate: S.optional(S.String),
           broadcomSiteId: S.optional(S.String),
@@ -7916,8 +9992,8 @@ function __c14(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(113)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(LicenseProperties),
         }),
       ).annotate({ identifier: "GetLicenseResponse" });
     case 3:
@@ -7926,7 +10002,7 @@ function __c14(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           privateCloudName: S.String.pipe(T.Label()),
-          licenseName: S.String.pipe(T.Label()),
+          licenseName: GetLicensePropertiesRequestLicenseName.pipe(T.Label()),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7957,7 +10033,7 @@ function __c14(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          kind: S.String,
+          kind: MaintenanceActivityKind,
           component: S.String,
           version: S.String,
           infoLink: S.optional(S.String),
@@ -7965,13 +10041,13 @@ function __c14(j: number): any {
         }),
       ).annotate({ identifier: "MaintenanceActivity" });
     case 6:
-      return S.Array(__S(117));
+      return S.Array(MaintenanceActivity);
     case 7:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           name: S.String,
-          kind: S.String,
+          kind: MaintenanceGroupKind,
         }),
       ).annotate({ identifier: "MaintenanceGroup" });
   }
@@ -7981,14 +10057,14 @@ function __c15(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          dependencies: S.optional(__S(20)),
-          prerequisites: S.optional(__S(20)),
+          dependencies: S.optional(MaintenanceRelationshipsDependenciesList),
+          prerequisites: S.optional(MaintenanceRelationshipsPrerequisitesList),
         }),
       ).annotate({ identifier: "MaintenanceRelationships" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          name: S.optional(S.String),
+          name: S.optional(MaintenanceStateName),
           message: S.optional(S.String),
           startedAt: S.optional(S.String),
           endedAt: S.optional(S.String),
@@ -7997,38 +10073,38 @@ function __c15(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          kind: S.String,
+          kind: MaintenanceManagementOperationKind,
         }),
       ).annotate({
         identifier: "MaintenanceManagementOperation",
       });
     case 3:
-      return S.Array(__S(122));
+      return S.Array(MaintenanceManagementOperation);
     case 4:
       return S.suspend(() =>
         S.Struct({
           errorCode: S.optional(S.String),
           name: S.optional(S.String),
           details: S.optional(S.String),
-          resolutionSteps: S.optional(__S(20)),
+          resolutionSteps: S.optional(ImpactedMaintenanceResourceErrorResolutionStepsList),
           actionRequired: S.optional(S.Boolean),
         }),
       ).annotate({
         identifier: "ImpactedMaintenanceResourceError",
       });
     case 5:
-      return S.Array(__S(124));
+      return S.Array(ImpactedMaintenanceResourceError);
     case 6:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
-          errors: S.optional(__S(125)),
+          errors: S.optional(ImpactedMaintenanceResourceErrorsList),
         }),
       ).annotate({
         identifier: "ImpactedMaintenanceResource",
       });
     case 7:
-      return S.Array(__S(126));
+      return S.Array(ImpactedMaintenanceResource);
   }
 }
 function __c16(j: number): any {
@@ -8037,39 +10113,39 @@ function __c16(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          impactedResources: S.optional(__S(127)),
+          impactedResources: S.optional(MaintenanceFailedCheckImpactedResourcesList),
         }),
       ).annotate({ identifier: "MaintenanceFailedCheck" });
     case 1:
-      return S.Array(__S(128));
+      return S.Array(MaintenanceFailedCheck);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          type: S.String,
-          status: S.String,
+          type: MaintenanceCheckType,
+          status: MaintenanceReadinessStatus,
           message: S.optional(S.String),
-          failedChecks: S.optional(__S(129)),
+          failedChecks: S.optional(MaintenanceReadinessFailedChecksList),
           lastUpdated: S.optional(S.String),
         }),
       ).annotate({ identifier: "MaintenanceReadiness" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          component: S.optional(S.String),
+          component: S.optional(MaintenanceType),
           displayName: S.optional(S.String),
           clusterId: S.optional(S.Number),
-          activities: S.optional(__S(118)),
-          group: S.optional(__S(119)),
-          relationships: S.optional(__S(120)),
+          activities: S.optional(MaintenancePropertiesActivitiesList),
+          group: S.optional(MaintenanceGroup),
+          relationships: S.optional(MaintenanceRelationships),
           infoLink: S.optional(S.String),
           impact: S.optional(S.String),
           scheduledByMicrosoft: S.optional(S.Boolean),
-          state: S.optional(__S(121)),
+          state: S.optional(MaintenanceState),
           scheduledStartTime: S.optional(S.String),
           estimatedDurationInMinutes: S.optional(S.Number),
-          provisioningState: S.optional(S.String),
-          operations: S.optional(__S(123)),
-          maintenanceReadiness: S.optional(__S(130)),
+          provisioningState: S.optional(MaintenanceProvisioningState),
+          operations: S.optional(MaintenancePropertiesOperationsList),
+          maintenanceReadiness: S.optional(MaintenanceReadiness),
         }),
       ).annotate({ identifier: "MaintenanceProperties" });
     case 4:
@@ -8078,8 +10154,8 @@ function __c16(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(131)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(MaintenanceProperties),
         }),
       ).annotate({ identifier: "GetMaintenanceResponse" });
     case 5:
@@ -8104,15 +10180,15 @@ function __c16(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          type: S.String,
-          state: S.optional(S.String),
+          type: PlacementPolicyType,
+          state: S.optional(PlacementPolicyState),
           displayName: S.optional(S.String),
-          provisioningState: S.optional(S.String),
-          vmMembers: S.optional(__S(20)),
-          hostMembers: S.optional(__S(20)),
-          affinityType: S.optional(S.String),
-          affinityStrength: S.optional(S.String),
-          azureHybridBenefitType: S.optional(S.String),
+          provisioningState: S.optional(PlacementPolicyProvisioningState),
+          vmMembers: S.optional(PlacementPolicyUpdatePropertiesVmMembersList),
+          hostMembers: S.optional(PlacementPolicyUpdatePropertiesHostMembersList),
+          affinityType: S.optional(AffinityType),
+          affinityStrength: S.optional(AffinityStrength),
+          azureHybridBenefitType: S.optional(AzureHybridBenefitType),
         }),
       ).annotate({
         identifier: "PlacementPolicyProperties",
@@ -8123,8 +10199,8 @@ function __c16(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(134)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(PlacementPolicyProperties),
         }),
       ).annotate({
         identifier: "GetPlacementPolicyResponse",
@@ -8160,17 +10236,17 @@ function __c17(j: number): any {
           baseGroupDN: S.optional(S.String),
           primaryServer: S.optional(S.String),
           secondaryServer: S.optional(S.String),
-          ssl: S.optional(S.String),
+          ssl: S.optional(SslEnum),
           username: S.optional(S.String),
           password: S.optional(S.String.pipe(T.SensitiveValue({}))),
         }),
       ).annotate({ identifier: "IdentitySource" });
     case 3:
-      return S.Array(__S(138));
+      return S.Array(IdentitySource);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          strategy: S.optional(S.String),
+          strategy: S.optional(AvailabilityStrategy),
           zone: S.optional(S.Number),
           secondaryZone: S.optional(S.Number),
         }),
@@ -8182,8 +10258,8 @@ function __c17(j: number): any {
           keyVersion: S.optional(S.String),
           autoDetectedKeyVersion: S.optional(S.String),
           keyVaultUrl: S.optional(S.String),
-          keyState: S.optional(S.String),
-          versionType: S.optional(S.String),
+          keyState: S.optional(EncryptionKeyStatus),
+          versionType: S.optional(EncryptionVersionType),
         }),
       ).annotate({
         identifier: "EncryptionKeyVaultProperties",
@@ -8191,8 +10267,8 @@ function __c17(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(S.String),
-          keyVaultProperties: S.optional(__S(141)),
+          status: S.optional(EncryptionState),
+          keyVaultProperties: S.optional(EncryptionKeyVaultProperties),
         }),
       ).annotate({ identifier: "Encryption" });
     case 7:
@@ -8222,22 +10298,22 @@ function __c18(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          kind: S.String,
-          provisioningState: S.optional(S.String),
+          kind: VcfLicenseKind,
+          provisioningState: S.optional(LicenseProvisioningState),
         }),
       ).annotate({ identifier: "VcfLicense" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          managementCluster: __S(24),
-          internet: S.optional(S.String),
-          identitySources: S.optional(__S(139)),
-          availability: S.optional(__S(140)),
-          encryption: S.optional(__S(142)),
-          extendedNetworkBlocks: S.optional(__S(20)),
-          provisioningState: S.optional(S.String),
-          circuit: S.optional(__S(143)),
-          endpoints: S.optional(__S(144)),
+          managementCluster: ManagementCluster,
+          internet: S.optional(PrivateCloudPropertiesInternet),
+          identitySources: S.optional(PrivateCloudPropertiesIdentitySourcesList),
+          availability: S.optional(AvailabilityProperties),
+          encryption: S.optional(Encryption),
+          extendedNetworkBlocks: S.optional(PrivateCloudPropertiesExtendedNetworkBlocksList),
+          provisioningState: S.optional(PrivateCloudProvisioningState),
+          circuit: S.optional(Circuit),
+          endpoints: S.optional(Endpoints),
           networkBlock: S.String,
           managementNetwork: S.optional(S.String),
           provisioningNetwork: S.optional(S.String),
@@ -8246,12 +10322,12 @@ function __c18(j: number): any {
           nsxtPassword: S.optional(S.String.pipe(T.SensitiveValue({}))),
           vcenterCertificateThumbprint: S.optional(S.String),
           nsxtCertificateThumbprint: S.optional(S.String),
-          externalCloudLinks: S.optional(__S(20)),
-          secondaryCircuit: S.optional(__S(143)),
-          nsxPublicIpQuotaRaised: S.optional(S.String),
+          externalCloudLinks: S.optional(PrivateCloudPropertiesExternalCloudLinksList),
+          secondaryCircuit: S.optional(Circuit),
+          nsxPublicIpQuotaRaised: S.optional(NsxPublicIpQuotaRaisedEnum),
           virtualNetworkId: S.optional(S.String),
-          dnsZoneType: S.optional(S.String),
-          vcfLicense: S.optional(__S(145)),
+          dnsZoneType: S.optional(DnsZoneType),
+          vcfLicense: S.optional(VcfLicense),
         }),
       ).annotate({ identifier: "PrivateCloudProperties" });
     case 3:
@@ -8259,7 +10335,7 @@ function __c18(j: number): any {
         S.Struct({
           principalId: S.optional(S.String),
           tenantId: S.optional(S.String),
-          type: S.String,
+          type: SystemAssignedServiceIdentityType,
         }),
       ).annotate({
         identifier: "GetPrivateCloudResponseIdentity",
@@ -8270,13 +10346,13 @@ function __c18(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          tags: S.optional(__S(137)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(GetPrivateCloudResponseTagsMap),
           location: S.String,
-          properties: S.optional(__S(146)),
-          sku: __S(22),
-          identity: S.optional(__S(147)),
-          zones: S.optional(__S(20)),
+          properties: S.optional(PrivateCloudProperties),
+          sku: ClustersCreateOrUpdateResponseSku,
+          identity: S.optional(GetPrivateCloudResponseIdentity),
+          zones: S.optional(GetPrivateCloudResponseZonesList),
         }),
       ).annotate({ identifier: "GetPrivateCloudResponse" });
     case 5:
@@ -8317,9 +10393,9 @@ function __c18(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          provisioningState: S.optional(S.String),
+          provisioningState: S.optional(ProvisionedNetworkProvisioningState),
           addressPrefix: S.optional(S.String),
-          networkType: S.optional(S.String),
+          networkType: S.optional(ProvisionedNetworkTypes),
         }),
       ).annotate({
         identifier: "ProvisionedNetworkProperties",
@@ -8334,8 +10410,8 @@ function __c19(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(151)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(ProvisionedNetworkProperties),
         }),
       ).annotate({
         identifier: "GetProvisionedNetworkResponse",
@@ -8363,7 +10439,7 @@ function __c19(j: number): any {
         S.Struct({
           storagePolicyDefinition: S.String,
           storagePoolId: S.String,
-          provisioningState: S.optional(S.String),
+          provisioningState: S.optional(PureStoragePolicyProvisioningState),
         }),
       ).annotate({
         identifier: "PureStoragePolicyProperties",
@@ -8374,8 +10450,8 @@ function __c19(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(154)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(PureStoragePolicyProperties),
         }),
       ).annotate({
         identifier: "GetPureStoragePolicyResponse",
@@ -8400,23 +10476,23 @@ function __c19(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(S.String),
+          type: S.optional(ScriptParameterTypes),
           name: S.optional(S.String),
           description: S.optional(S.String),
-          visibility: S.optional(S.String),
-          optional: S.optional(S.String),
+          visibility: S.optional(VisibilityParameterEnum),
+          optional: S.optional(OptionalParamEnum),
         }),
       ).annotate({ identifier: "ScriptParameter" });
     case 6:
-      return S.Array(__S(157));
+      return S.Array(ScriptParameter);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          provisioningState: S.optional(S.String),
+          provisioningState: S.optional(ScriptCmdletProvisioningState),
           description: S.optional(S.String),
           timeout: S.optional(S.String),
-          audience: S.optional(S.String),
-          parameters: S.optional(__S(158)),
+          audience: S.optional(ScriptCmdletAudience),
+          parameters: S.optional(ScriptCmdletPropertiesParametersList),
         }),
       ).annotate({ identifier: "ScriptCmdletProperties" });
   }
@@ -8429,8 +10505,8 @@ function __c20(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(159)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(ScriptCmdletProperties),
         }),
       ).annotate({ identifier: "GetScriptCmdletResponse" });
     case 1:
@@ -8454,32 +10530,32 @@ function __c20(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          type: S.String,
+          type: ScriptExecutionParameterType,
           name: S.String,
         }),
       ).annotate({ identifier: "ScriptExecutionParameter" });
     case 3:
-      return S.Array(__S(162));
+      return S.Array(ScriptExecutionParameter);
     case 4:
       return S.Record(S.String, S.Unknown);
     case 5:
       return S.suspend(() =>
         S.Struct({
           scriptCmdletId: S.optional(S.String),
-          parameters: S.optional(__S(163)),
-          hiddenParameters: S.optional(__S(163)),
+          parameters: S.optional(ScriptExecutionPropertiesParametersList),
+          hiddenParameters: S.optional(ScriptExecutionPropertiesHiddenParametersList),
           failureReason: S.optional(S.String),
           timeout: S.String,
           retention: S.optional(S.String),
           submittedAt: S.optional(S.String),
           startedAt: S.optional(S.String),
           finishedAt: S.optional(S.String),
-          provisioningState: S.optional(S.String),
-          output: S.optional(__S(20)),
-          namedOutputs: S.optional(__S(164)),
-          information: S.optional(__S(20)),
-          warnings: S.optional(__S(20)),
-          errors: S.optional(__S(20)),
+          provisioningState: S.optional(ScriptExecutionProvisioningState),
+          output: S.optional(ScriptExecutionPropertiesOutputList),
+          namedOutputs: S.optional(ScriptExecutionPropertiesNamedOutputsMap),
+          information: S.optional(ScriptExecutionPropertiesInformationList),
+          warnings: S.optional(ScriptExecutionPropertiesWarningsList),
+          errors: S.optional(ScriptExecutionPropertiesErrorsList),
         }),
       ).annotate({
         identifier: "ScriptExecutionProperties",
@@ -8490,14 +10566,14 @@ function __c20(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(165)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(ScriptExecutionProperties),
         }),
       ).annotate({
         identifier: "GetScriptExecutionResponse",
       });
     case 7:
-      return S.Array(S.String);
+      return S.Array(ScriptOutputStreamType);
   }
 }
 function __c21(j: number): any {
@@ -8509,7 +10585,7 @@ function __c21(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           privateCloudName: S.String.pipe(T.Label()),
           scriptExecutionName: S.String.pipe(T.Label()),
-          body: S.optional(__S(167).pipe(T.HttpBody())),
+          body: S.optional(GetScriptExecutionExecutionLogsRequestBodyList.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -8540,7 +10616,7 @@ function __c21(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          provisioningState: S.optional(S.String),
+          provisioningState: S.optional(ScriptPackageProvisioningState),
           description: S.optional(S.String),
           version: S.optional(S.String),
           company: S.optional(S.String),
@@ -8553,8 +10629,8 @@ function __c21(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(170)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(ScriptPackageProperties),
         }),
       ).annotate({ identifier: "GetScriptPackageResponse" });
     case 4:
@@ -8577,11 +10653,11 @@ function __c21(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          provisioningState: S.optional(S.String),
+          provisioningState: S.optional(VirtualMachineProvisioningState),
           displayName: S.optional(S.String),
           moRefId: S.optional(S.String),
           folderPath: S.optional(S.String),
-          restrictMovement: S.optional(S.String),
+          restrictMovement: S.optional(VirtualMachineRestrictMovementState),
         }),
       ).annotate({ identifier: "VirtualMachineProperties" });
     case 6:
@@ -8590,8 +10666,8 @@ function __c21(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(173)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(VirtualMachineProperties),
         }),
       ).annotate({
         identifier: "GetVirtualMachineResponse",
@@ -8620,7 +10696,7 @@ function __c22(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          provisioningState: S.optional(S.String),
+          provisioningState: S.optional(WorkloadNetworkProvisioningState),
         }),
       ).annotate({
         identifier: "WorkloadNetworkProperties",
@@ -8631,8 +10707,8 @@ function __c22(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(176)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(WorkloadNetworkProperties),
         }),
       ).annotate({
         identifier: "GetWorkloadNetworkResponse",
@@ -8712,7 +10788,7 @@ function __c22(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          provisioningState: S.optional(S.String),
+          provisioningState: S.optional(WorkloadNetworkProvisioningState),
           displayName: S.optional(S.String),
           path: S.optional(S.String),
         }),
@@ -8725,8 +10801,8 @@ function __c22(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(182)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(WorkloadNetworkGatewayProperties),
         }),
       ).annotate({
         identifier: "GetWorkloadNetworkGatewayResponse",
@@ -8810,9 +10886,9 @@ function __c23(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          provisioningState: S.optional(S.String),
+          provisioningState: S.optional(WorkloadNetworkProvisioningState),
           displayName: S.optional(S.String),
-          vmType: S.optional(S.String),
+          vmType: S.optional(VMTypeEnum),
         }),
       ).annotate({
         identifier: "WorkloadNetworkVirtualMachineProperties",
@@ -8823,8 +10899,8 @@ function __c23(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(188)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(WorkloadNetworkVirtualMachineProperties),
         }),
       ).annotate({
         identifier: "GetWorkloadNetworkVirtualMachineResponse",
@@ -8868,7 +10944,7 @@ function __c24(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           privateCloudName: S.String.pipe(T.Label()),
           globalReachConnectionName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(191)),
+          properties: S.optional(GlobalReachConnectionPropertiesInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -8887,7 +10963,7 @@ function __c24(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           privateCloudName: S.String.pipe(T.Label()),
           hcxEnterpriseSiteName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(15)),
+          properties: S.optional(HcxEnterpriseSitePropertiesInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -8911,7 +10987,7 @@ function __c24(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           privateCloudName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(194)),
+          properties: S.optional(IscsiPathPropertiesInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -8929,8 +11005,8 @@ function __c24(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(110)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(IscsiPathProperties),
         }),
       ).annotate({
         identifier: "IscsiPathsCreateOrUpdateResponse",
@@ -8938,7 +11014,7 @@ function __c24(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          kind: S.String,
+          kind: LicenseKind,
           licenseKey: S.optional(S.String),
           endDate: S.optional(S.String),
           broadcomSiteId: S.optional(S.String),
@@ -8951,8 +11027,8 @@ function __c24(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           privateCloudName: S.String.pipe(T.Label()),
-          licenseName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(197)),
+          licenseName: LicensesCreateOrUpdateRequestLicenseName.pipe(T.Label()),
+          properties: S.optional(LicensePropertiesInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -8970,8 +11046,8 @@ function __c24(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(113)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(LicenseProperties),
         }),
       ).annotate({
         identifier: "LicensesCreateOrUpdateResponse",
@@ -8996,11 +11072,11 @@ function __c25(j: number): any {
         ),
       ).annotate({ identifier: "ListAddonsRequest" });
     case 1:
-      return S.Array(__S(89));
+      return S.Array(Addon);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(201),
+          value: AddonListValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "AddonList" });
@@ -9022,11 +11098,11 @@ function __c25(j: number): any {
         identifier: "ListAuthorizationsRequest",
       });
     case 4:
-      return S.Array(__S(8));
+      return S.Array(ExpressRouteAuthorization);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          value: __S(204),
+          value: ExpressRouteAuthorizationListValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -9048,7 +11124,7 @@ function __c25(j: number): any {
         ),
       ).annotate({ identifier: "ListCloudLinksRequest" });
     case 7:
-      return S.Array(__S(93));
+      return S.Array(CloudLink);
   }
 }
 function __c26(j: number): any {
@@ -9056,7 +11132,7 @@ function __c26(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          value: __S(207),
+          value: CloudLinkListValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "CloudLinkList" });
@@ -9076,11 +11152,11 @@ function __c26(j: number): any {
         ),
       ).annotate({ identifier: "ListClustersRequest" });
     case 2:
-      return S.Array(__S(95));
+      return S.Array(Cluster);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: __S(210),
+          value: ClusterListValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ClusterList" });
@@ -9103,16 +11179,16 @@ function __c26(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          hosts: S.optional(__S(20)),
+          hosts: S.optional(ClusterZoneHostsList),
           zone: S.optional(S.String),
         }),
       ).annotate({ identifier: "ClusterZone" });
     case 6:
-      return S.Array(__S(213));
+      return S.Array(ClusterZone);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          zones: S.optional(__S(214)),
+          zones: S.optional(ClusterZoneListZonesList),
         }),
       ).annotate({ identifier: "ClusterZoneList" });
   }
@@ -9136,11 +11212,11 @@ function __c27(j: number): any {
         ),
       ).annotate({ identifier: "ListDatastoresRequest" });
     case 1:
-      return S.Array(__S(97));
+      return S.Array(Datastore);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(217),
+          value: DatastoreListValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "DatastoreList" });
@@ -9167,16 +11243,16 @@ function __c27(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(99)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(GlobalReachConnectionProperties),
         }),
       ).annotate({ identifier: "GlobalReachConnection" });
     case 5:
-      return S.Array(__S(220));
+      return S.Array(GlobalReachConnection);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          value: __S(221),
+          value: GlobalReachConnectionListValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -9209,16 +11285,16 @@ function __c28(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(102)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(HcxEnterpriseSiteProperties),
         }),
       ).annotate({ identifier: "HcxEnterpriseSite" });
     case 1:
-      return S.Array(__S(224));
+      return S.Array(HcxEnterpriseSite);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(225),
+          value: HcxEnterpriseSiteListValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "HcxEnterpriseSiteList" });
@@ -9246,18 +11322,18 @@ function __c28(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(107)),
-          zones: S.optional(__S(228)),
-          sku: S.optional(__S(22)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(HostProperties),
+          zones: S.optional(HostZonesList),
+          sku: S.optional(ClustersCreateOrUpdateResponseSku),
         }),
       ).annotate({ identifier: "Host" });
     case 6:
-      return S.Array(__S(229));
+      return S.Array(Host);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          value: __S(230),
+          value: HostListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "HostListResult" });
@@ -9283,11 +11359,11 @@ function __c29(j: number): any {
         identifier: "ListIscsiPathByPrivateCloudRequest",
       });
     case 1:
-      return S.Array(__S(111));
+      return S.Array(IscsiPath);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(233),
+          value: IscsiPathListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "IscsiPathListResult" });
@@ -9307,11 +11383,11 @@ function __c29(j: number): any {
         ),
       ).annotate({ identifier: "ListLicensesRequest" });
     case 4:
-      return S.Array(__S(114));
+      return S.Array(License);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          value: __S(236),
+          value: LicenseListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "LicenseListResult" });
@@ -9321,8 +11397,8 @@ function __c29(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           privateCloudName: S.String.pipe(T.Label()),
-          stateName: S.optional(S.String.pipe(T.Query())),
-          status: S.optional(S.String.pipe(T.Query())),
+          stateName: S.optional(ListMaintenancesRequestStateName.pipe(T.Query())),
+          status: S.optional(ListMaintenancesRequestStatus.pipe(T.Query())),
           from: S.optional(S.String.pipe(T.Query())),
           to: S.optional(S.String.pipe(T.Query())),
         }).pipe(
@@ -9335,7 +11411,7 @@ function __c29(j: number): any {
         ),
       ).annotate({ identifier: "ListMaintenancesRequest" });
     case 7:
-      return S.Array(__S(132));
+      return S.Array(Maintenance);
   }
 }
 function __c30(j: number): any {
@@ -9343,7 +11419,7 @@ function __c30(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          value: __S(239),
+          value: MaintenanceListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "MaintenanceListResult" });
@@ -9372,17 +11448,17 @@ function __c30(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           isDataAction: S.optional(S.Boolean),
-          display: S.optional(__S(242)),
-          origin: S.optional(S.String),
-          actionType: S.optional(S.String),
+          display: S.optional(OperationDisplay),
+          origin: S.optional(OperationOrigin),
+          actionType: S.optional(OperationActionType),
         }),
       ).annotate({ identifier: "Operation" });
     case 4:
-      return S.Array(__S(243));
+      return S.Array(Operation);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(244)),
+          value: S.optional(ListOperationsResponseValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
@@ -9410,8 +11486,8 @@ function __c30(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(134)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(PlacementPolicyProperties),
         }),
       ).annotate({ identifier: "PlacementPolicy" });
   }
@@ -9419,11 +11495,11 @@ function __c30(j: number): any {
 function __c31(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(247));
+      return S.Array(PlacementPolicy);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(248),
+          value: PlacementPoliciesListValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "PlacementPoliciesList" });
@@ -9469,11 +11545,11 @@ function __c31(j: number): any {
         identifier: "ListPrivateCloudInSubscriptionRequest",
       });
     case 5:
-      return S.Array(__S(148));
+      return S.Array(PrivateCloud);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          value: __S(253),
+          value: PrivateCloudListValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "PrivateCloudList" });
@@ -9518,16 +11594,16 @@ function __c32(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(151)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(ProvisionedNetworkProperties),
         }),
       ).annotate({ identifier: "ProvisionedNetwork" });
     case 2:
-      return S.Array(__S(257));
+      return S.Array(ProvisionedNetwork);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: __S(258),
+          value: ProvisionedNetworkListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -9556,16 +11632,16 @@ function __c32(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(154)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(PureStoragePolicyProperties),
         }),
       ).annotate({ identifier: "PureStoragePolicy" });
     case 6:
-      return S.Array(__S(261));
+      return S.Array(PureStoragePolicy);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          value: __S(262),
+          value: PureStoragePolicyListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -9592,11 +11668,11 @@ function __c33(j: number): any {
         ),
       ).annotate({ identifier: "ListScriptCmdletsRequest" });
     case 1:
-      return S.Array(__S(160));
+      return S.Array(ScriptCmdlet);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(265),
+          value: ScriptCmdletsListValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ScriptCmdletsList" });
@@ -9623,16 +11699,16 @@ function __c33(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(165)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(ScriptExecutionProperties),
         }),
       ).annotate({ identifier: "ScriptExecution" });
     case 5:
-      return S.Array(__S(268));
+      return S.Array(ScriptExecution);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          value: __S(269),
+          value: ScriptExecutionsListValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ScriptExecutionsList" });
@@ -9658,11 +11734,11 @@ function __c33(j: number): any {
 function __c34(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(171));
+      return S.Array(ScriptPackage);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(272),
+          value: ScriptPackagesListValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ScriptPackagesList" });
@@ -9687,22 +11763,22 @@ function __c34(j: number): any {
         }),
       ).annotate({ identifier: "ResourceSkuCapabilities" });
     case 4:
-      return S.Array(__S(275));
+      return S.Array(ResourceSkuCapabilities);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          name: __S(20),
-          capabilities: __S(276),
+          name: ResourceSkuZoneDetailsNameList,
+          capabilities: ResourceSkuZoneDetailsCapabilitiesList,
         }),
       ).annotate({ identifier: "ResourceSkuZoneDetails" });
     case 6:
-      return S.Array(__S(277));
+      return S.Array(ResourceSkuZoneDetails);
     case 7:
       return S.suspend(() =>
         S.Struct({
           location: S.String,
-          zones: __S(20),
-          zoneDetails: __S(278),
+          zones: ResourceSkuLocationInfoZonesList,
+          zoneDetails: ResourceSkuLocationInfoZoneDetailsList,
         }),
       ).annotate({ identifier: "ResourceSkuLocationInfo" });
   }
@@ -9710,12 +11786,12 @@ function __c34(j: number): any {
 function __c35(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(279));
+      return S.Array(ResourceSkuLocationInfo);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          locations: S.optional(__S(20)),
-          zones: S.optional(__S(20)),
+          locations: S.optional(ResourceSkuRestrictionInfoLocationsList),
+          zones: S.optional(ResourceSkuRestrictionInfoZonesList),
         }),
       ).annotate({
         identifier: "ResourceSkuRestrictionInfo",
@@ -9723,34 +11799,34 @@ function __c35(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(S.String),
-          values: __S(20),
-          restrictionInfo: __S(281),
-          reasonCode: S.optional(S.String),
+          type: S.optional(ResourceSkuRestrictionsType),
+          values: ResourceSkuRestrictionsValuesList,
+          restrictionInfo: ResourceSkuRestrictionInfo,
+          reasonCode: S.optional(ResourceSkuRestrictionsReasonCode),
         }),
       ).annotate({ identifier: "ResourceSkuRestrictions" });
     case 3:
-      return S.Array(__S(282));
+      return S.Array(ResourceSkuRestrictions);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          resourceType: S.String,
+          resourceType: ResourceSkuResourceType,
           name: S.String,
           tier: S.optional(S.String),
           size: S.optional(S.String),
           family: S.optional(S.String),
-          locations: __S(20),
-          locationInfo: __S(280),
-          capabilities: S.optional(__S(276)),
-          restrictions: __S(283),
+          locations: ResourceSkuLocationsList,
+          locationInfo: ResourceSkuLocationInfoList,
+          capabilities: S.optional(ResourceSkuCapabilitiesList),
+          restrictions: ResourceSkuRestrictionsList,
         }),
       ).annotate({ identifier: "ResourceSku" });
     case 5:
-      return S.Array(__S(284));
+      return S.Array(ResourceSku);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          value: __S(285),
+          value: PagedResourceSkuValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "PagedResourceSku" });
@@ -9782,16 +11858,16 @@ function __c36(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(173)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(VirtualMachineProperties),
         }),
       ).annotate({ identifier: "VirtualMachine" });
     case 1:
-      return S.Array(__S(288));
+      return S.Array(VirtualMachine);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(289),
+          value: VirtualMachinesListValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "VirtualMachinesList" });
@@ -9818,16 +11894,16 @@ function __c36(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(28)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(WorkloadNetworkDhcpEntity),
         }),
       ).annotate({ identifier: "WorkloadNetworkDhcp" });
     case 5:
-      return S.Array(__S(292));
+      return S.Array(WorkloadNetworkDhcp);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          value: __S(293),
+          value: WorkloadNetworkDhcpListValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "WorkloadNetworkDhcpList" });
@@ -9853,11 +11929,11 @@ function __c36(j: number): any {
 function __c37(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(33));
+      return S.Array(WorkloadNetworkDnsService);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(296),
+          value: WorkloadNetworkDnsServicesListValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -9886,16 +11962,16 @@ function __c37(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(36)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(WorkloadNetworkDnsZoneProperties),
         }),
       ).annotate({ identifier: "WorkloadNetworkDnsZone" });
     case 4:
-      return S.Array(__S(299));
+      return S.Array(WorkloadNetworkDnsZone);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          value: __S(300),
+          value: WorkloadNetworkDnsZonesListValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -9924,8 +12000,8 @@ function __c37(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(182)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(WorkloadNetworkGatewayProperties),
         }),
       ).annotate({ identifier: "WorkloadNetworkGateway" });
   }
@@ -9933,11 +12009,11 @@ function __c37(j: number): any {
 function __c38(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(303));
+      return S.Array(WorkloadNetworkGateway);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(304),
+          value: WorkloadNetworkGatewayListValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -9961,11 +12037,11 @@ function __c38(j: number): any {
         identifier: "ListWorkloadNetworkPortMirroringRequest",
       });
     case 3:
-      return S.Array(__S(41));
+      return S.Array(WorkloadNetworkPortMirroring);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: __S(307),
+          value: WorkloadNetworkPortMirroringListValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -9994,12 +12070,12 @@ function __c38(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(44)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(WorkloadNetworkPublicIPProperties),
         }),
       ).annotate({ identifier: "WorkloadNetworkPublicIP" });
     case 7:
-      return S.Array(__S(310));
+      return S.Array(WorkloadNetworkPublicIP);
   }
 }
 function __c39(j: number): any {
@@ -10007,7 +12083,7 @@ function __c39(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          value: __S(311),
+          value: WorkloadNetworkPublicIPsListValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -10036,16 +12112,16 @@ function __c39(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(176)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(WorkloadNetworkProperties),
         }),
       ).annotate({ identifier: "WorkloadNetwork" });
     case 3:
-      return S.Array(__S(314));
+      return S.Array(WorkloadNetwork);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: __S(315),
+          value: WorkloadNetworkListValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "WorkloadNetworkList" });
@@ -10072,12 +12148,12 @@ function __c39(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(51)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(WorkloadNetworkSegmentProperties),
         }),
       ).annotate({ identifier: "WorkloadNetworkSegment" });
     case 7:
-      return S.Array(__S(318));
+      return S.Array(WorkloadNetworkSegment);
   }
 }
 function __c40(j: number): any {
@@ -10085,7 +12161,7 @@ function __c40(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          value: __S(319),
+          value: WorkloadNetworkSegmentsListValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -10109,11 +12185,11 @@ function __c40(j: number): any {
         identifier: "ListWorkloadNetworkVirtualMachinesRequest",
       });
     case 2:
-      return S.Array(__S(189));
+      return S.Array(WorkloadNetworkVirtualMachine);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: __S(322),
+          value: WorkloadNetworkVirtualMachinesListValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -10142,16 +12218,16 @@ function __c40(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(55)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(WorkloadNetworkVMGroupProperties),
         }),
       ).annotate({ identifier: "WorkloadNetworkVMGroup" });
     case 6:
-      return S.Array(__S(325));
+      return S.Array(WorkloadNetworkVMGroup);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          value: __S(326),
+          value: WorkloadNetworkVMGroupsListValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -10185,8 +12261,8 @@ function __c41(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          properties: S.optional(__S(131)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(MaintenanceProperties),
         }),
       ).annotate({
         identifier: "MaintenancesInitiateChecksResponse",
@@ -10234,14 +12310,14 @@ function __c41(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          type: S.String,
-          state: S.optional(S.String),
+          type: PlacementPolicyType,
+          state: S.optional(PlacementPolicyState),
           displayName: S.optional(S.String),
-          vmMembers: S.optional(__S(20)),
-          hostMembers: S.optional(__S(20)),
-          affinityType: S.optional(S.String),
-          affinityStrength: S.optional(S.String),
-          azureHybridBenefitType: S.optional(S.String),
+          vmMembers: S.optional(PlacementPolicyUpdatePropertiesVmMembersList),
+          hostMembers: S.optional(PlacementPolicyUpdatePropertiesHostMembersList),
+          affinityType: S.optional(AffinityType),
+          affinityStrength: S.optional(AffinityStrength),
+          azureHybridBenefitType: S.optional(AzureHybridBenefitType),
         }),
       ).annotate({
         identifier: "PlacementPolicyPropertiesInput",
@@ -10254,7 +12330,7 @@ function __c41(j: number): any {
           privateCloudName: S.String.pipe(T.Label()),
           clusterName: S.String.pipe(T.Label()),
           placementPolicyName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(332)),
+          properties: S.optional(PlacementPolicyPropertiesInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -10279,8 +12355,8 @@ function __c41(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(S.String),
-          keyVaultProperties: S.optional(__S(334)),
+          status: S.optional(EncryptionState),
+          keyVaultProperties: S.optional(EncryptionKeyVaultPropertiesInput),
         }),
       ).annotate({ identifier: "EncryptionInput" });
   }
@@ -10290,20 +12366,20 @@ function __c42(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          managementCluster: __S(21),
-          internet: S.optional(S.String),
-          identitySources: S.optional(__S(139)),
-          availability: S.optional(__S(140)),
-          encryption: S.optional(__S(335)),
-          extendedNetworkBlocks: S.optional(__S(20)),
-          circuit: S.optional(__S(15)),
+          managementCluster: ManagementClusterInput,
+          internet: S.optional(PrivateCloudPropertiesInputInternet),
+          identitySources: S.optional(PrivateCloudPropertiesInputIdentitySourcesList),
+          availability: S.optional(AvailabilityProperties),
+          encryption: S.optional(EncryptionInput),
+          extendedNetworkBlocks: S.optional(PrivateCloudPropertiesInputExtendedNetworkBlocksList),
+          circuit: S.optional(HcxEnterpriseSitePropertiesInput),
           networkBlock: S.String,
           vcenterPassword: S.optional(S.String.pipe(T.SensitiveValue({}))),
           nsxtPassword: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          secondaryCircuit: S.optional(__S(15)),
+          secondaryCircuit: S.optional(HcxEnterpriseSitePropertiesInput),
           virtualNetworkId: S.optional(S.String),
-          dnsZoneType: S.optional(S.String),
-          vcfLicense: S.optional(__S(105)),
+          dnsZoneType: S.optional(DnsZoneType),
+          vcfLicense: S.optional(VcfLicenseInput),
         }),
       ).annotate({
         identifier: "PrivateCloudPropertiesInput",
@@ -10311,7 +12387,7 @@ function __c42(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          type: S.String,
+          type: SystemAssignedServiceIdentityType,
         }),
       ).annotate({
         identifier: "PrivateCloudsCreateOrUpdateRequestIdentity",
@@ -10322,12 +12398,12 @@ function __c42(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           privateCloudName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(137)),
+          tags: S.optional(PrivateCloudsCreateOrUpdateRequestTagsMap),
           location: S.String,
-          properties: S.optional(__S(336)),
-          sku: __S(22),
-          identity: S.optional(__S(337)),
-          zones: S.optional(__S(20)),
+          properties: S.optional(PrivateCloudPropertiesInput),
+          sku: ClustersCreateOrUpdateRequestSku,
+          identity: S.optional(PrivateCloudsCreateOrUpdateRequestIdentity),
+          zones: S.optional(PrivateCloudsCreateOrUpdateRequestZonesList),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -10345,13 +12421,13 @@ function __c42(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2)),
-          tags: S.optional(__S(137)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(PrivateCloudsCreateOrUpdateResponseTagsMap),
           location: S.String,
-          properties: S.optional(__S(146)),
-          sku: __S(22),
-          identity: S.optional(__S(147)),
-          zones: S.optional(__S(20)),
+          properties: S.optional(PrivateCloudProperties),
+          sku: ClustersCreateOrUpdateResponseSku,
+          identity: S.optional(GetPrivateCloudResponseIdentity),
+          zones: S.optional(PrivateCloudsCreateOrUpdateResponseZonesList),
         }),
       ).annotate({
         identifier: "PrivateCloudsCreateOrUpdateResponse",
@@ -10372,7 +12448,7 @@ function __c42(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           privateCloudName: S.String.pipe(T.Label()),
           storagePolicyName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(340)),
+          properties: S.optional(PureStoragePolicyPropertiesInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -10426,13 +12502,13 @@ function __c43(j: number): any {
       return S.suspend(() =>
         S.Struct({
           scriptCmdletId: S.optional(S.String),
-          parameters: S.optional(__S(163)),
-          hiddenParameters: S.optional(__S(163)),
+          parameters: S.optional(ScriptExecutionPropertiesInputParametersList),
+          hiddenParameters: S.optional(ScriptExecutionPropertiesInputHiddenParametersList),
           failureReason: S.optional(S.String),
           timeout: S.String,
           retention: S.optional(S.String),
-          output: S.optional(__S(20)),
-          namedOutputs: S.optional(__S(164)),
+          output: S.optional(ScriptExecutionPropertiesInputOutputList),
+          namedOutputs: S.optional(ScriptExecutionPropertiesInputNamedOutputsMap),
         }),
       ).annotate({
         identifier: "ScriptExecutionPropertiesInput",
@@ -10444,7 +12520,7 @@ function __c43(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           privateCloudName: S.String.pipe(T.Label()),
           scriptExecutionName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(344)),
+          properties: S.optional(ScriptExecutionPropertiesInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -10460,7 +12536,7 @@ function __c43(j: number): any {
       return S.suspend(() =>
         S.Struct({
           clusterSize: S.optional(S.Number),
-          hosts: S.optional(__S(20)),
+          hosts: S.optional(ClusterUpdatePropertiesHostsList),
         }),
       ).annotate({ identifier: "ClusterUpdateProperties" });
     case 3:
@@ -10470,8 +12546,8 @@ function __c43(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           privateCloudName: S.String.pipe(T.Label()),
           clusterName: S.String.pipe(T.Label()),
-          sku: S.optional(__S(22)),
-          properties: S.optional(__S(346)),
+          sku: S.optional(ClustersCreateOrUpdateRequestSku),
+          properties: S.optional(ClusterUpdateProperties),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -10484,7 +12560,7 @@ function __c43(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          licenses: S.optional(__S(106)),
+          licenses: S.optional(HostUpdatePropertiesLicensesList),
         }),
       ).annotate({ identifier: "HostUpdateProperties" });
     case 5:
@@ -10495,7 +12571,7 @@ function __c43(j: number): any {
           privateCloudName: S.String.pipe(T.Label()),
           clusterName: S.String.pipe(T.Label()),
           hostId: S.String.pipe(T.Label()),
-          properties: S.optional(__S(348)),
+          properties: S.optional(HostUpdateProperties),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -10508,11 +12584,11 @@ function __c43(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          state: S.optional(S.String),
-          vmMembers: S.optional(__S(20)),
-          hostMembers: S.optional(__S(20)),
-          affinityStrength: S.optional(S.String),
-          azureHybridBenefitType: S.optional(S.String),
+          state: S.optional(PlacementPolicyState),
+          vmMembers: S.optional(PlacementPolicyUpdatePropertiesVmMembersList),
+          hostMembers: S.optional(PlacementPolicyUpdatePropertiesHostMembersList),
+          affinityStrength: S.optional(AffinityStrength),
+          azureHybridBenefitType: S.optional(AzureHybridBenefitType),
         }),
       ).annotate({
         identifier: "PlacementPolicyUpdateProperties",
@@ -10525,7 +12601,7 @@ function __c43(j: number): any {
           privateCloudName: S.String.pipe(T.Label()),
           clusterName: S.String.pipe(T.Label()),
           placementPolicyName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(350)),
+          properties: S.optional(PlacementPolicyUpdateProperties),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -10544,13 +12620,15 @@ function __c44(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          managementCluster: S.optional(__S(21)),
-          internet: S.optional(S.String),
-          identitySources: S.optional(__S(139)),
-          availability: S.optional(__S(140)),
-          encryption: S.optional(__S(335)),
-          extendedNetworkBlocks: S.optional(__S(20)),
-          dnsZoneType: S.optional(S.String),
+          managementCluster: S.optional(ManagementClusterInput),
+          internet: S.optional(InternetEnum),
+          identitySources: S.optional(PrivateCloudUpdatePropertiesInputIdentitySourcesList),
+          availability: S.optional(AvailabilityProperties),
+          encryption: S.optional(EncryptionInput),
+          extendedNetworkBlocks: S.optional(
+            PrivateCloudUpdatePropertiesInputExtendedNetworkBlocksList,
+          ),
+          dnsZoneType: S.optional(DnsZoneType),
         }),
       ).annotate({
         identifier: "PrivateCloudUpdatePropertiesInput",
@@ -10561,10 +12639,10 @@ function __c44(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           privateCloudName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(137)),
-          sku: S.optional(__S(22)),
-          identity: S.optional(__S(337)),
-          properties: S.optional(__S(352)),
+          tags: S.optional(UpdatePrivateCloudRequestTagsMap),
+          sku: S.optional(ClustersCreateOrUpdateRequestSku),
+          identity: S.optional(PrivateCloudsCreateOrUpdateRequestIdentity),
+          properties: S.optional(PrivateCloudUpdatePropertiesInput),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -10583,7 +12661,7 @@ function __c44(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           privateCloudName: S.String.pipe(T.Label()),
           dhcpId: S.String.pipe(T.Label()),
-          properties: S.optional(__S(26)),
+          properties: S.optional(WorkloadNetworkDhcpEntityInput),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -10602,7 +12680,7 @@ function __c44(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           privateCloudName: S.String.pipe(T.Label()),
           dnsServiceId: S.String.pipe(T.Label()),
-          properties: S.optional(__S(30)),
+          properties: S.optional(WorkloadNetworkDnsServicePropertiesInput),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -10621,7 +12699,7 @@ function __c44(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           privateCloudName: S.String.pipe(T.Label()),
           dnsZoneId: S.String.pipe(T.Label()),
-          properties: S.optional(__S(34)),
+          properties: S.optional(WorkloadNetworkDnsZonePropertiesInput),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -10640,7 +12718,7 @@ function __c44(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           privateCloudName: S.String.pipe(T.Label()),
           portMirroringId: S.String.pipe(T.Label()),
-          properties: S.optional(__S(38)),
+          properties: S.optional(WorkloadNetworkPortMirroringPropertiesInput),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -10659,7 +12737,7 @@ function __c44(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           privateCloudName: S.String.pipe(T.Label()),
           segmentId: S.String.pipe(T.Label()),
-          properties: S.optional(__S(47)),
+          properties: S.optional(WorkloadNetworkSegmentPropertiesInput),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -10678,7 +12756,7 @@ function __c44(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           privateCloudName: S.String.pipe(T.Label()),
           vmGroupId: S.String.pipe(T.Label()),
-          properties: S.optional(__S(53)),
+          properties: S.optional(WorkloadNetworkVMGroupPropertiesInput),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -10702,7 +12780,7 @@ function __c45(j: number): any {
           privateCloudName: S.String.pipe(T.Label()),
           clusterName: S.String.pipe(T.Label()),
           virtualMachineId: S.String.pipe(T.Label()),
-          restrictMovement: S.optional(S.String),
+          restrictMovement: S.optional(VirtualMachineRestrictMovementState),
         }).pipe(
           T.Http({
             method: "POST",
@@ -10714,106 +12792,5 @@ function __c45(j: number): any {
       ).annotate({
         identifier: "VirtualMachinesRestrictMovementRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
-    case 9:
-      return __c9(i & 7);
-    case 10:
-      return __c10(i & 7);
-    case 11:
-      return __c11(i & 7);
-    case 12:
-      return __c12(i & 7);
-    case 13:
-      return __c13(i & 7);
-    case 14:
-      return __c14(i & 7);
-    case 15:
-      return __c15(i & 7);
-    case 16:
-      return __c16(i & 7);
-    case 17:
-      return __c17(i & 7);
-    case 18:
-      return __c18(i & 7);
-    case 19:
-      return __c19(i & 7);
-    case 20:
-      return __c20(i & 7);
-    case 21:
-      return __c21(i & 7);
-    case 22:
-      return __c22(i & 7);
-    case 23:
-      return __c23(i & 7);
-    case 24:
-      return __c24(i & 7);
-    case 25:
-      return __c25(i & 7);
-    case 26:
-      return __c26(i & 7);
-    case 27:
-      return __c27(i & 7);
-    case 28:
-      return __c28(i & 7);
-    case 29:
-      return __c29(i & 7);
-    case 30:
-      return __c30(i & 7);
-    case 31:
-      return __c31(i & 7);
-    case 32:
-      return __c32(i & 7);
-    case 33:
-      return __c33(i & 7);
-    case 34:
-      return __c34(i & 7);
-    case 35:
-      return __c35(i & 7);
-    case 36:
-      return __c36(i & 7);
-    case 37:
-      return __c37(i & 7);
-    case 38:
-      return __c38(i & 7);
-    case 39:
-      return __c39(i & 7);
-    case 40:
-      return __c40(i & 7);
-    case 41:
-      return __c41(i & 7);
-    case 42:
-      return __c42(i & 7);
-    case 43:
-      return __c43(i & 7);
-    case 44:
-      return __c44(i & 7);
-    case 45:
-      return __c45(i & 7);
   }
 }

@@ -10,8 +10,6 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "Kinesis Video Signaling",
   serviceShapeName: "AWSAcuitySignalingService",
@@ -117,6 +115,8 @@ export class SessionExpiredException
 export type ResourceARN = string;
 export type ClientId = string;
 export type Service = "TURN" | (string & {});
+const Service = S.String;
+
 export type Username = string;
 export interface GetIceServerConfigRequest {
   ChannelARN?: string;
@@ -124,8 +124,13 @@ export interface GetIceServerConfigRequest {
   Service?: Service;
   Username?: string;
 }
+const GetIceServerConfigRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<GetIceServerConfigRequest>;
 export type Uri = string;
 export type Uris = string[];
+const Uris = /*@__PURE__*/ __L.at(__c0, 1);
 export type Password = string;
 export type Ttl = number;
 export interface IceServer {
@@ -134,20 +139,34 @@ export interface IceServer {
   Password?: string | redacted.Redacted<string>;
   Ttl?: number;
 }
+const IceServer = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<IceServer>;
 export type IceServerList = IceServer[];
+const IceServerList = /*@__PURE__*/ __L.at(__c0, 3);
 export interface GetIceServerConfigResponse {
   IceServerList?: IceServer[];
 }
+const GetIceServerConfigResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<GetIceServerConfigResponse>;
 export type MessagePayload = string;
 export interface SendAlexaOfferToMasterRequest {
   ChannelARN?: string;
   SenderClientId?: string;
   MessagePayload?: string;
 }
+const SendAlexaOfferToMasterRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<SendAlexaOfferToMasterRequest>;
 export type Answer = string;
 export interface SendAlexaOfferToMasterResponse {
   Answer?: string;
 }
+const SendAlexaOfferToMasterResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<SendAlexaOfferToMasterResponse>;
 export type ErrorMessage = string;
 export type GetIceServerConfigError =
   | ClientLimitExceededException
@@ -181,8 +200,8 @@ export const getIceServerConfig: API.OperationMethod<
   GetIceServerConfigError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<GetIceServerConfigRequest>,
-  output: __S(4) as any as S.Schema<GetIceServerConfigResponse>,
+  input: GetIceServerConfigRequest,
+  output: GetIceServerConfigResponse,
   errors: [
     ClientLimitExceededException,
     InvalidArgumentException,
@@ -216,8 +235,8 @@ export const sendAlexaOfferToMaster: API.OperationMethod<
   SendAlexaOfferToMasterError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5) as any as S.Schema<SendAlexaOfferToMasterRequest>,
-  output: __S(6) as any as S.Schema<SendAlexaOfferToMasterResponse>,
+  input: SendAlexaOfferToMasterRequest,
+  output: SendAlexaOfferToMasterResponse,
   errors: [
     ClientLimitExceededException,
     InvalidArgumentException,
@@ -237,7 +256,7 @@ function __c0(j: number): any {
         S.Struct({
           ChannelARN: S.optional(S.String),
           ClientId: S.optional(S.String),
-          Service: S.optional(S.String),
+          Service: S.optional(Service),
           Username: S.optional(S.String),
         }).pipe(
           T.all(
@@ -257,16 +276,16 @@ function __c0(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          Uris: S.optional(__S(1)),
+          Uris: S.optional(Uris),
           Username: S.optional(S.String),
           Password: S.optional(SensitiveString),
           Ttl: S.optional(S.Number),
         }),
       ).annotate({ identifier: "IceServer" });
     case 3:
-      return S.Array(__S(2));
+      return S.Array(IceServer);
     case 4:
-      return S.suspend(() => S.Struct({ IceServerList: S.optional(__S(3)) })).annotate({
+      return S.suspend(() => S.Struct({ IceServerList: S.optional(IceServerList) })).annotate({
         identifier: "GetIceServerConfigResponse",
       });
     case 5:
@@ -292,16 +311,5 @@ function __c0(j: number): any {
       return S.suspend(() => S.Struct({ Answer: S.optional(S.String) })).annotate({
         identifier: "SendAlexaOfferToMasterResponse",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
   }
 }

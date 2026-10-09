@@ -7,8 +7,6 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -71,6 +69,8 @@ export interface ChromeOsDeviceAction {
   /** Only used when the action is `deprovision`. With the `deprovision` action, this field is required. *Note*: The deprovision reason is audited because it might have implications on licenses for perpetual subscription customers. */
   deprovisionReason?: string;
 }
+const ChromeOsDeviceAction = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<ChromeOsDeviceAction>;
+
 export interface ActionChromeosdevicesRequest {
   /** The unique ID for the customer's Google Workspace account. As an account administrator, you can also use the `my_customer` alias to represent your account's `customerId`. The `customerId` is also returned as part of the [Users resource](https://developers.google.com/workspace/admin/directory/v1/reference/users). */
   customerId: string;
@@ -79,11 +79,23 @@ export interface ActionChromeosdevicesRequest {
   /** Request body */
   body?: ChromeOsDeviceAction;
 }
+const ActionChromeosdevicesRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<ActionChromeosdevicesRequest>;
+
 export interface ActionChromeosdevicesResponse {}
+const ActionChromeosdevicesResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<ActionChromeosdevicesResponse>;
+
 export interface MobileDeviceAction {
   /** The action to be performed on the device. */
   action?: string;
 }
+const MobileDeviceAction = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<MobileDeviceAction>;
+
 export interface ActionMobiledevicesRequest {
   /** The unique ID the API service uses to identify the mobile device. */
   resourceId: string;
@@ -92,7 +104,15 @@ export interface ActionMobiledevicesRequest {
   /** Request body */
   body?: MobileDeviceAction;
 }
+const ActionMobiledevicesRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<ActionMobiledevicesRequest>;
+
 export interface ActionMobiledevicesResponse {}
+const ActionMobiledevicesResponse =
+  ActionChromeosdevicesResponse as any as S.Schema<ActionMobiledevicesResponse>;
+
 export type BatchChangeChromeOsDeviceStatusRequestDeprovisionReasonEnum =
   | "DEPROVISION_REASON_UNSPECIFIED"
   | "DEPROVISION_REASON_SAME_MODEL_REPLACEMENT"
@@ -105,12 +125,18 @@ export type BatchChangeChromeOsDeviceStatusRequestDeprovisionReasonEnum =
   | "DEPROVISION_REASON_UPGRADE_TRANSFER"
   | "DEPROVISION_REASON_NOT_REQUIRED"
   | "DEPROVISION_REASON_REPAIR_CENTER";
+const BatchChangeChromeOsDeviceStatusRequestDeprovisionReasonEnum = S.String;
+
 export type BatchChangeChromeOsDeviceStatusRequestChangeChromeOsDeviceStatusActionEnum =
   | "CHANGE_CHROME_OS_DEVICE_STATUS_ACTION_UNSPECIFIED"
   | "CHANGE_CHROME_OS_DEVICE_STATUS_ACTION_DEPROVISION"
   | "CHANGE_CHROME_OS_DEVICE_STATUS_ACTION_DISABLE"
   | "CHANGE_CHROME_OS_DEVICE_STATUS_ACTION_REENABLE";
+const BatchChangeChromeOsDeviceStatusRequestChangeChromeOsDeviceStatusActionEnum = S.String;
+
 export type StringList = Array<string>;
+const StringList = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<StringList>;
+
 /** A request for changing the status of a batch of ChromeOS devices. */
 export interface BatchChangeChromeOsDeviceStatusRequest {
   /** Optional. The reason behind a device deprovision. Must be provided if 'changeChromeOsDeviceStatusAction' is set to 'CHANGE_CHROME_OS_DEVICE_STATUS_ACTION_DEPROVISION'. Otherwise, omit this field. */
@@ -122,14 +148,28 @@ export interface BatchChangeChromeOsDeviceStatusRequest {
   /** Required. List of the IDs of the ChromeOS devices to change. Maximum 50. */
   deviceIds?: StringList;
 }
+const BatchChangeChromeOsDeviceStatusRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<BatchChangeChromeOsDeviceStatusRequest>;
+
 export interface BatchChangeStatusCustomerDevicesChromeosRequest {
   /** Required. Immutable ID of the Google Workspace account. */
   customerId: string;
   /** Request body */
   body?: BatchChangeChromeOsDeviceStatusRequest;
 }
+const BatchChangeStatusCustomerDevicesChromeosRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<BatchChangeStatusCustomerDevicesChromeosRequest>;
+
 export type DocumentMap = { [key: string]: unknown | undefined };
+const DocumentMap = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<DocumentMap>;
+
 export type DocumentMapList = Array<DocumentMap>;
+const DocumentMapList = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<DocumentMapList>;
+
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
@@ -139,8 +179,15 @@ export interface Status {
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
   details?: DocumentMapList;
 }
+const Status = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<Status>;
+
 /** Response for a successful ChromeOS device status change. */
 export interface ChangeChromeOsDeviceStatusSucceeded {}
+const ChangeChromeOsDeviceStatusSucceeded = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<ChangeChromeOsDeviceStatusSucceeded>;
+
 /** The result of a single ChromeOS device for a Change state operation. */
 export interface ChangeChromeOsDeviceStatusResult {
   /** The error result of the operation in case of failure. */
@@ -150,17 +197,34 @@ export interface ChangeChromeOsDeviceStatusResult {
   /** The unique ID of the ChromeOS device. */
   deviceId?: string;
 }
+const ChangeChromeOsDeviceStatusResult = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<ChangeChromeOsDeviceStatusResult>;
+
 export type ChangeChromeOsDeviceStatusResultList = Array<ChangeChromeOsDeviceStatusResult>;
+const ChangeChromeOsDeviceStatusResultList = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<ChangeChromeOsDeviceStatusResultList>;
+
 /** The response of changing the status of a batch of ChromeOS devices. */
 export interface BatchChangeChromeOsDeviceStatusResponse {
   /** The results for each of the ChromeOS devices provided in the request. */
   changeChromeOsDeviceStatusResults?: ChangeChromeOsDeviceStatusResultList;
 }
+const BatchChangeChromeOsDeviceStatusResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<BatchChangeChromeOsDeviceStatusResponse>;
+
 export type AuxiliaryMessageSeverityEnum =
   | "SEVERITY_UNSPECIFIED"
   | "SEVERITY_INFO"
   | "SEVERITY_WARNING"
   | "SEVERITY_ERROR";
+const AuxiliaryMessageSeverityEnum = S.String;
+
 /** Auxiliary message about issues with printers or settings. Example: {message_type:AUXILIARY_MESSAGE_WARNING, field_mask:make_and_model, message:"Given printer is invalid or no longer supported."} */
 export interface AuxiliaryMessage {
   /** Message severity */
@@ -170,7 +234,11 @@ export interface AuxiliaryMessage {
   /** Field that this message concerns. */
   fieldMask?: string;
 }
+const AuxiliaryMessage = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<AuxiliaryMessage>;
+
 export type AuxiliaryMessageList = Array<AuxiliaryMessage>;
+const AuxiliaryMessageList = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<AuxiliaryMessageList>;
+
 /** Printer configuration. */
 export interface Printer {
   /** Editable. Description of printer. */
@@ -194,6 +262,8 @@ export interface Printer {
   /** Editable. Name of printer. */
   displayName?: string;
 }
+const Printer = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<Printer>;
+
 /** Request for adding a new printer. */
 export interface CreatePrinterRequest {
   /** Required. The name of the customer. Format: customers/{customer_id} */
@@ -201,19 +271,38 @@ export interface CreatePrinterRequest {
   /** Required. A printer to create. If you want to place the printer under particular OU then populate printer.org_unit_id filed. Otherwise the printer will be placed under root OU. */
   printer?: Printer;
 }
+const CreatePrinterRequest = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<CreatePrinterRequest>;
+
 export type CreatePrinterRequestList = Array<CreatePrinterRequest>;
+const CreatePrinterRequestList = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<CreatePrinterRequestList>;
+
 /** Request for adding new printers in batch. */
 export interface BatchCreatePrintersRequest {
   /** A list of Printers to be created. Max 50 at a time. */
   requests?: CreatePrinterRequestList;
 }
+const BatchCreatePrintersRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<BatchCreatePrintersRequest>;
+
 export interface BatchCreatePrintersCustomersChromePrintersRequest {
   /** Required. The name of the customer. Format: customers/{customer_id} */
   parent: string;
   /** Request body */
   body?: BatchCreatePrintersRequest;
 }
+const BatchCreatePrintersCustomersChromePrintersRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<BatchCreatePrintersCustomersChromePrintersRequest>;
+
 export type PrinterList = Array<Printer>;
+const PrinterList = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<PrinterList>;
+
 export type FailureInfoErrorCodeEnum =
   | "OK"
   | "CANCELLED"
@@ -232,6 +321,8 @@ export type FailureInfoErrorCodeEnum =
   | "INTERNAL"
   | "UNAVAILABLE"
   | "DATA_LOSS";
+const FailureInfoErrorCodeEnum = S.String;
+
 /** Info about failures */
 export interface FailureInfo {
   /** Id of a failed printer. */
@@ -243,7 +334,11 @@ export interface FailureInfo {
   /** Failure reason message. */
   errorMessage?: string;
 }
+const FailureInfo = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<FailureInfo>;
+
 export type FailureInfoList = Array<FailureInfo>;
+const FailureInfoList = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<FailureInfoList>;
+
 /** Response for adding new printers in batch. */
 export interface BatchCreatePrintersResponse {
   /** A list of successfully created printers with their IDs populated. */
@@ -251,6 +346,11 @@ export interface BatchCreatePrintersResponse {
   /** A list of create failures. Printer IDs are not populated, as printer were not created. */
   failures?: FailureInfoList;
 }
+const BatchCreatePrintersResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<BatchCreatePrintersResponse>;
+
 /** Configuration for a print server. */
 export interface PrintServer {
   /** Editable. Display name of the print server (as shown in the Admin console). */
@@ -268,6 +368,8 @@ export interface PrintServer {
   /** Output only. Time when the print server was created. */
   createTime?: string;
 }
+const PrintServer = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<PrintServer>;
+
 /** Request for adding a new print server. */
 export interface CreatePrintServerRequest {
   /** Required. The [unique ID](https://developers.google.com/workspace/admin/directory/reference/rest/v1/customers) of the customer's Google Workspace account. Format: `customers/{id}` */
@@ -275,19 +377,41 @@ export interface CreatePrintServerRequest {
   /** Required. A print server to create. If you want to place the print server under a specific organizational unit (OU), then populate the `org_unit_id`. Otherwise the print server is created under the root OU. The `org_unit_id` can be retrieved using the [Directory API](https://developers.google.com/workspace/admin/directory/v1/guides/manage-org-units). */
   printServer?: PrintServer;
 }
+const CreatePrintServerRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<CreatePrintServerRequest>;
+
 export type CreatePrintServerRequestList = Array<CreatePrintServerRequest>;
+const CreatePrintServerRequestList = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<CreatePrintServerRequestList>;
+
 /** Request to add multiple new print servers in a batch. */
 export interface BatchCreatePrintServersRequest {
   /** Required. A list of `PrintServer` resources to be created (max `50` per batch). */
   requests?: CreatePrintServerRequestList;
 }
+const BatchCreatePrintServersRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<BatchCreatePrintServersRequest>;
+
 export interface BatchCreatePrintServersCustomersChromePrintServersRequest {
   /** Required. The [unique ID](https://developers.google.com/workspace/admin/directory/reference/rest/v1/customers) of the customer's Google Workspace account. Format: `customers/{id}` */
   parent: string;
   /** Request body */
   body?: BatchCreatePrintServersRequest;
 }
+const BatchCreatePrintServersCustomersChromePrintServersRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<BatchCreatePrintServersCustomersChromePrintServersRequest>;
+
 export type PrintServerList = Array<PrintServer>;
+const PrintServerList = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<PrintServerList>;
+
 export type PrintServerFailureInfoErrorCodeEnum =
   | "OK"
   | "CANCELLED"
@@ -306,6 +430,8 @@ export type PrintServerFailureInfoErrorCodeEnum =
   | "INTERNAL"
   | "UNAVAILABLE"
   | "DATA_LOSS";
+const PrintServerFailureInfoErrorCodeEnum = S.String;
+
 /** Info about failures */
 export interface PrintServerFailureInfo {
   /** ID of a failed print server. */
@@ -317,24 +443,49 @@ export interface PrintServerFailureInfo {
   /** Canonical code for why the update failed to apply. */
   errorCode?: PrintServerFailureInfoErrorCodeEnum;
 }
+const PrintServerFailureInfo = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<PrintServerFailureInfo>;
+
 export type PrintServerFailureInfoList = Array<PrintServerFailureInfo>;
+const PrintServerFailureInfoList = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<PrintServerFailureInfoList>;
+
 export interface BatchCreatePrintServersResponse {
   /** A list of successfully created print servers with their IDs populated. */
   printServers?: PrintServerList;
   /** A list of create failures. `PrintServer` IDs are not populated, as print servers were not created. */
   failures?: PrintServerFailureInfoList;
 }
+const BatchCreatePrintServersResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<BatchCreatePrintServersResponse>;
+
 /** Request for deleting existing printers in batch. */
 export interface BatchDeletePrintersRequest {
   /** A list of Printer.id that should be deleted. Max 100 at a time. */
   printerIds?: StringList;
 }
+const BatchDeletePrintersRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<BatchDeletePrintersRequest>;
+
 export interface BatchDeletePrintersCustomersChromePrintersRequest {
   /** Required. The name of the customer. Format: customers/{customer_id} */
   parent: string;
   /** Request body */
   body?: BatchDeletePrintersRequest;
 }
+const BatchDeletePrintersCustomersChromePrintersRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<BatchDeletePrintersCustomersChromePrintersRequest>;
+
 /** Response for deleting existing printers in batch. */
 export interface BatchDeletePrintersResponse {
   /** A list of update failures. */
@@ -342,23 +493,43 @@ export interface BatchDeletePrintersResponse {
   /** A list of Printer.id that were successfully deleted. */
   printerIds?: StringList;
 }
+const BatchDeletePrintersResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<BatchDeletePrintersResponse>;
+
 /** Request to delete multiple existing print servers in a batch. */
 export interface BatchDeletePrintServersRequest {
   /** A list of print server IDs that should be deleted (max `100` per batch). */
   printServerIds?: StringList;
 }
+const BatchDeletePrintServersRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<BatchDeletePrintServersRequest>;
+
 export interface BatchDeletePrintServersCustomersChromePrintServersRequest {
   /** Required. The [unique ID](https://developers.google.com/workspace/admin/directory/reference/rest/v1/customers) of the customer's Google Workspace account. Format: `customers/{customer.id}` */
   parent: string;
   /** Request body */
   body?: BatchDeletePrintServersRequest;
 }
+const BatchDeletePrintServersCustomersChromePrintServersRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<BatchDeletePrintServersCustomersChromePrintServersRequest>;
+
 export interface BatchDeletePrintServersResponse {
   /** A list of print server IDs that were successfully deleted. */
   printServerIds?: StringList;
   /** A list of update failures. */
   failedPrintServers?: PrintServerFailureInfoList;
 }
+const BatchDeletePrintServersResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  0,
+) as any as S.Schema<BatchDeletePrintServersResponse>;
+
 export interface CountChromeOsDevicesCustomerDevicesChromeosRequest {
   /** Optional. The full path of the organizational unit (minus the leading `/`) or its unique ID. */
   orgUnitPath?: string;
@@ -369,23 +540,43 @@ export interface CountChromeOsDevicesCustomerDevicesChromeosRequest {
   /** Optional. Return devices from all child orgunits, as well as the specified org unit. If this is set to true, 'orgUnitPath' must be provided. */
   includeChildOrgunits?: boolean;
 }
+const CountChromeOsDevicesCustomerDevicesChromeosRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  1,
+) as any as S.Schema<CountChromeOsDevicesCustomerDevicesChromeosRequest>;
+
 /** A response for counting ChromeOS devices. */
 export interface CountChromeOsDevicesResponse {
   /** The total number of devices matching the request. */
   count?: string;
 }
+const CountChromeOsDevicesResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  2,
+) as any as S.Schema<CountChromeOsDevicesResponse>;
+
 export interface CreateCustomersChromePrintersRequest {
   /** Required. The name of the customer. Format: customers/{customer_id} */
   parent: string;
   /** Request body */
   body?: Printer;
 }
+const CreateCustomersChromePrintersRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<CreateCustomersChromePrintersRequest>;
+
 export interface CreateCustomersChromePrintServersRequest {
   /** Required. The [unique ID](https://developers.google.com/workspace/admin/directory/reference/rest/v1/customers) of the customer's Google Workspace account. Format: `customers/{id}` */
   parent: string;
   /** Request body */
   body?: PrintServer;
 }
+const CreateCustomersChromePrintServersRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  4,
+) as any as S.Schema<CreateCustomersChromePrintServersRequest>;
+
 /** Directory users guest creation request message. */
 export interface DirectoryUsersCreateGuestRequest {
   /** Optional. Immutable ID of the Google Workspace account. Only required when request is created by a service account. Defaults to the authenticated user's customer ID otherwise. */
@@ -393,10 +584,20 @@ export interface DirectoryUsersCreateGuestRequest {
   /** Required. External email of the guest user being created. */
   primaryGuestEmail?: string;
 }
+const DirectoryUsersCreateGuestRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  5,
+) as any as S.Schema<DirectoryUsersCreateGuestRequest>;
+
 export interface CreateGuestUsersRequest {
   /** Request body */
   body?: DirectoryUsersCreateGuestRequest;
 }
+const CreateGuestUsersRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  6,
+) as any as S.Schema<CreateGuestUsersRequest>;
+
 export interface UserName {
   /** The user's display name. Limit: 256 characters. */
   displayName?: string;
@@ -407,14 +608,25 @@ export interface UserName {
   /** The user's full name formed by concatenating the first and last name values. */
   fullName?: string;
 }
+const UserName = /*@__PURE__*/ __L.at(__c5, 7) as any as S.Schema<UserName>;
+
 /** Account info specific to Guest users. */
 export interface GuestAccountInfo {
   /** Immutable. The guest's external email. */
   primaryGuestEmail?: string;
 }
+const GuestAccountInfo = /*@__PURE__*/ __L.at(__c6, 0) as any as S.Schema<GuestAccountInfo>;
+
 /** JSON template for a set of custom properties (i.e. all fields in a particular schema) */
 export type UserCustomProperties = { [key: string]: unknown | undefined };
+const UserCustomProperties = DocumentMap as any as S.Schema<UserCustomProperties>;
+
 export type UserCustomPropertiesMap = { [key: string]: UserCustomProperties | undefined };
+const UserCustomPropertiesMap = /*@__PURE__*/ __L.at(
+  __c6,
+  1,
+) as any as S.Schema<UserCustomPropertiesMap>;
+
 /** The Directory API allows you to create and manage your account's users, user aliases, and user Google profile photos. For more information about common tasks, see the [User Accounts Developer's Guide](https://developers.google.com/workspace/admin/directory/v1/guides/manage-users.html) and the [User Aliases Developer's Guide](https://developers.google.com/workspace/admin/directory/v1/guides/manage-user-aliases.html). */
 export interface User {
   /** The user's languages. The maximum allowed data size for this field is 1KB. */
@@ -517,147 +729,288 @@ export interface User {
   /** Output only. The list of the user's non-editable alias email addresses. These are typically outside the account's primary domain or sub-domain. */
   nonEditableAliases?: StringList;
 }
+const User = /*@__PURE__*/ __L.at(__c6, 2) as any as S.Schema<User>;
+
 export interface DeleteAspsRequest {
   /** Identifies the user in the API request. The value can be the user's primary email address, alias email address, or unique user ID. */
   userKey: string;
   /** The unique ID of the ASP to be deleted. */
   codeId: number;
 }
+const DeleteAspsRequest = /*@__PURE__*/ __L.at(__c6, 3) as any as S.Schema<DeleteAspsRequest>;
+
 export interface DeleteAspsResponse {}
+const DeleteAspsResponse = ActionChromeosdevicesResponse as any as S.Schema<DeleteAspsResponse>;
+
 export interface DeleteCustomersChromePrintersRequest {
   /** Required. The name of the printer to be updated. Format: customers/{customer_id}/chrome/printers/{printer_id} */
   name: string;
 }
+const DeleteCustomersChromePrintersRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  4,
+) as any as S.Schema<DeleteCustomersChromePrintersRequest>;
+
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
+const Empty = ActionChromeosdevicesResponse as any as S.Schema<Empty>;
+
 export interface DeleteCustomersChromePrintServersRequest {
   /** Required. The name of the print server to be deleted. Format: `customers/{customer.id}/chrome/printServers/{print_server.id}` */
   name: string;
 }
+const DeleteCustomersChromePrintServersRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  5,
+) as any as S.Schema<DeleteCustomersChromePrintServersRequest>;
+
 export interface DeleteDomainAliasesRequest {
   /** Name of domain alias to be retrieved. */
   domainAliasName: string;
   /** Immutable ID of the Google Workspace account. */
   customer: string;
 }
+const DeleteDomainAliasesRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  6,
+) as any as S.Schema<DeleteDomainAliasesRequest>;
+
 export interface DeleteDomainAliasesResponse {}
+const DeleteDomainAliasesResponse =
+  ActionChromeosdevicesResponse as any as S.Schema<DeleteDomainAliasesResponse>;
+
 export interface DeleteDomainsRequest {
   /** Immutable ID of the Google Workspace account. */
   customer: string;
   /** Name of domain to be deleted */
   domainName: string;
 }
+const DeleteDomainsRequest = /*@__PURE__*/ __L.at(__c6, 7) as any as S.Schema<DeleteDomainsRequest>;
+
 export interface DeleteDomainsResponse {}
+const DeleteDomainsResponse =
+  ActionChromeosdevicesResponse as any as S.Schema<DeleteDomainsResponse>;
+
 export interface DeleteGroupsRequest {
   /** Identifies the group in the API request. The value can be the group's email address, group alias, or the unique group ID. */
   groupKey: string;
 }
+const DeleteGroupsRequest = /*@__PURE__*/ __L.at(__c7, 0) as any as S.Schema<DeleteGroupsRequest>;
+
 export interface DeleteGroupsResponse {}
+const DeleteGroupsResponse = ActionChromeosdevicesResponse as any as S.Schema<DeleteGroupsResponse>;
+
 export interface DeleteGroupsAliasesRequest {
   /** Identifies the group in the API request. The value can be the group's email address, group alias, or the unique group ID. */
   groupKey: string;
   /** The alias to be removed */
   alias: string;
 }
+const DeleteGroupsAliasesRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  1,
+) as any as S.Schema<DeleteGroupsAliasesRequest>;
+
 export interface DeleteGroupsAliasesResponse {}
+const DeleteGroupsAliasesResponse =
+  ActionChromeosdevicesResponse as any as S.Schema<DeleteGroupsAliasesResponse>;
+
 export interface DeleteMembersRequest {
   /** Identifies the group member in the API request. A group member can be a user or another group. The value can be the member's (group or user) primary email address, alias, or unique ID. */
   memberKey: string;
   /** Identifies the group in the API request. The value can be the group's email address, group alias, or the unique group ID. */
   groupKey: string;
 }
+const DeleteMembersRequest = /*@__PURE__*/ __L.at(__c7, 2) as any as S.Schema<DeleteMembersRequest>;
+
 export interface DeleteMembersResponse {}
+const DeleteMembersResponse =
+  ActionChromeosdevicesResponse as any as S.Schema<DeleteMembersResponse>;
+
 export interface DeleteMobiledevicesRequest {
   /** The unique ID the API service uses to identify the mobile device. */
   resourceId: string;
   /** The unique ID for the customer's Google Workspace account. As an account administrator, you can also use the `my_customer` alias to represent your account's `customerId`. The `customerId` is also returned as part of the [Users resource](https://developers.google.com/workspace/admin/directory/v1/reference/users). */
   customerId: string;
 }
+const DeleteMobiledevicesRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  3,
+) as any as S.Schema<DeleteMobiledevicesRequest>;
+
 export interface DeleteMobiledevicesResponse {}
+const DeleteMobiledevicesResponse =
+  ActionChromeosdevicesResponse as any as S.Schema<DeleteMobiledevicesResponse>;
+
 export interface DeleteOrgunitsRequest {
   /** The unique ID for the customer's Google Workspace account. As an account administrator, you can also use the `my_customer` alias to represent your account's `customerId`. The `customerId` is also returned as part of the [Users resource](https://developers.google.com/workspace/admin/directory/v1/reference/users). */
   customerId: string;
   /** The full path of the organizational unit (minus the leading `/`) or its unique ID. */
   orgUnitPath: string;
 }
+const DeleteOrgunitsRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  4,
+) as any as S.Schema<DeleteOrgunitsRequest>;
+
 export interface DeleteOrgunitsResponse {}
+const DeleteOrgunitsResponse =
+  ActionChromeosdevicesResponse as any as S.Schema<DeleteOrgunitsResponse>;
+
 export interface DeleteResourcesBuildingsRequest {
   /** The unique ID for the customer's Google Workspace account. As an account administrator, you can also use the `my_customer` alias to represent your account's customer ID. */
   customer: string;
   /** The id of the building to delete. */
   buildingId: string;
 }
+const DeleteResourcesBuildingsRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  5,
+) as any as S.Schema<DeleteResourcesBuildingsRequest>;
+
 export interface DeleteResourcesBuildingsResponse {}
+const DeleteResourcesBuildingsResponse =
+  ChangeChromeOsDeviceStatusSucceeded as any as S.Schema<DeleteResourcesBuildingsResponse>;
+
 export interface DeleteResourcesCalendarsRequest {
   /** The unique ID for the customer's Google Workspace account. As an account administrator, you can also use the `my_customer` alias to represent your account's customer ID. */
   customer: string;
   /** The unique ID of the calendar resource to delete. */
   calendarResourceId: string;
 }
+const DeleteResourcesCalendarsRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  6,
+) as any as S.Schema<DeleteResourcesCalendarsRequest>;
+
 export interface DeleteResourcesCalendarsResponse {}
+const DeleteResourcesCalendarsResponse =
+  ChangeChromeOsDeviceStatusSucceeded as any as S.Schema<DeleteResourcesCalendarsResponse>;
+
 export interface DeleteResourcesFeaturesRequest {
   /** The unique ID of the feature to delete. */
   featureKey: string;
   /** The unique ID for the customer's Google Workspace account. As an account administrator, you can also use the `my_customer` alias to represent your account's customer ID. */
   customer: string;
 }
+const DeleteResourcesFeaturesRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  7,
+) as any as S.Schema<DeleteResourcesFeaturesRequest>;
+
 export interface DeleteResourcesFeaturesResponse {}
+const DeleteResourcesFeaturesResponse = /*@__PURE__*/ __L.at(
+  __c8,
+  0,
+) as any as S.Schema<DeleteResourcesFeaturesResponse>;
+
 export interface DeleteRoleAssignmentsRequest {
   /** Immutable ID of the Google Workspace account. */
   customer: string;
   /** Immutable ID of the role assignment. */
   roleAssignmentId: string;
 }
+const DeleteRoleAssignmentsRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  1,
+) as any as S.Schema<DeleteRoleAssignmentsRequest>;
+
 export interface DeleteRoleAssignmentsResponse {}
+const DeleteRoleAssignmentsResponse =
+  ActionChromeosdevicesResponse as any as S.Schema<DeleteRoleAssignmentsResponse>;
+
 export interface DeleteRolesRequest {
   /** Immutable ID of the Google Workspace account. */
   customer: string;
   /** Immutable ID of the role. */
   roleId: string;
 }
+const DeleteRolesRequest = /*@__PURE__*/ __L.at(__c8, 2) as any as S.Schema<DeleteRolesRequest>;
+
 export interface DeleteRolesResponse {}
+const DeleteRolesResponse = ActionChromeosdevicesResponse as any as S.Schema<DeleteRolesResponse>;
+
 export interface DeleteSchemasRequest {
   /** Immutable ID of the Google Workspace account. */
   customerId: string;
   /** Name or immutable ID of the schema. */
   schemaKey: string;
 }
+const DeleteSchemasRequest = /*@__PURE__*/ __L.at(__c8, 3) as any as S.Schema<DeleteSchemasRequest>;
+
 export interface DeleteSchemasResponse {}
+const DeleteSchemasResponse =
+  ActionChromeosdevicesResponse as any as S.Schema<DeleteSchemasResponse>;
+
 export interface DeleteTokensRequest {
   /** Identifies the user in the API request. The value can be the user's primary email address, alias email address, or unique user ID. */
   userKey: string;
   /** The Client ID of the application the token is issued to. */
   clientId: string;
 }
+const DeleteTokensRequest = /*@__PURE__*/ __L.at(__c8, 4) as any as S.Schema<DeleteTokensRequest>;
+
 export interface DeleteTokensResponse {}
+const DeleteTokensResponse = ActionChromeosdevicesResponse as any as S.Schema<DeleteTokensResponse>;
+
 export interface DeleteUsersRequest {
   /** Identifies the user in the API request. The value can be the user's primary email address, alias email address, or unique user ID. */
   userKey: string;
 }
+const DeleteUsersRequest = /*@__PURE__*/ __L.at(__c8, 5) as any as S.Schema<DeleteUsersRequest>;
+
 export interface DeleteUsersResponse {}
+const DeleteUsersResponse = ActionChromeosdevicesResponse as any as S.Schema<DeleteUsersResponse>;
+
 export interface DeleteUsersAliasesRequest {
   /** The alias to be removed. */
   alias: string;
   /** Identifies the user in the API request. The value can be the user's primary email address, alias email address, or unique user ID. */
   userKey: string;
 }
+const DeleteUsersAliasesRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  6,
+) as any as S.Schema<DeleteUsersAliasesRequest>;
+
 export interface DeleteUsersAliasesResponse {}
+const DeleteUsersAliasesResponse =
+  ActionChromeosdevicesResponse as any as S.Schema<DeleteUsersAliasesResponse>;
+
 export interface DeleteUsersPhotosRequest {
   /** Identifies the user in the API request. The value can be the user's primary email address, alias email address, or unique user ID. */
   userKey: string;
 }
+const DeleteUsersPhotosRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  7,
+) as any as S.Schema<DeleteUsersPhotosRequest>;
+
 export interface DeleteUsersPhotosResponse {}
+const DeleteUsersPhotosResponse =
+  ActionChromeosdevicesResponse as any as S.Schema<DeleteUsersPhotosResponse>;
+
 export interface GenerateVerificationCodesRequest {
   /** Email or immutable ID of the user */
   userKey: string;
 }
+const GenerateVerificationCodesRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  0,
+) as any as S.Schema<GenerateVerificationCodesRequest>;
+
 export interface GenerateVerificationCodesResponse {}
+const GenerateVerificationCodesResponse =
+  ChangeChromeOsDeviceStatusSucceeded as any as S.Schema<GenerateVerificationCodesResponse>;
+
 export interface GetAspsRequest {
   /** Identifies the user in the API request. The value can be the user's primary email address, alias email address, or unique user ID. */
   userKey: string;
   /** The unique ID of the ASP. */
   codeId: number;
 }
+const GetAspsRequest = /*@__PURE__*/ __L.at(__c9, 1) as any as S.Schema<GetAspsRequest>;
+
 /** An application-specific password (ASP) is used with applications that do not accept a verification code when logging into the application on certain devices. The ASP access code is used instead of the login and password you commonly use when accessing an application through a browser. For more information about ASPs and how to create one, see the [help center](https://support.google.com/a/answer/2537800#asp). */
 export interface Asp {
   /** The name of the application that the user, represented by their `userId`, entered when the ASP was created. */
@@ -675,7 +1028,11 @@ export interface Asp {
   /** The type of the API resource. This is always `admin#directory#asp`. */
   kind?: string;
 }
+const Asp = /*@__PURE__*/ __L.at(__c9, 2) as any as S.Schema<Asp>;
+
 export type GetChromeosdevicesProjectionEnum = "BASIC" | "FULL";
+const GetChromeosdevicesProjectionEnum = S.String;
+
 export interface GetChromeosdevicesRequest {
   /** The unique ID of the device. The `deviceId`s are returned in the response from the [chromeosdevices.list](https://developers.google.com/workspace/admin/directory/v1/reference/chromeosdevices/list) method. */
   deviceId: string;
@@ -684,12 +1041,21 @@ export interface GetChromeosdevicesRequest {
   /** Determines whether the response contains the full list of properties or only a subset. */
   projection?: GetChromeosdevicesProjectionEnum | (string & {});
 }
+const GetChromeosdevicesRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  3,
+) as any as S.Schema<GetChromeosdevicesRequest>;
+
 /** Information about the device's fan. */
 export interface FanInfo {
   /** Output only. Fan speed in RPM. */
   speedRpm?: number;
 }
+const FanInfo = /*@__PURE__*/ __L.at(__c9, 4) as any as S.Schema<FanInfo>;
+
 export type FanInfoList = Array<FanInfo>;
+const FanInfoList = /*@__PURE__*/ __L.at(__c9, 5) as any as S.Schema<FanInfoList>;
+
 export type ChromeOsDeviceDeprovisionReasonEnum =
   | "DEPROVISION_REASON_UNSPECIFIED"
   | "DEPROVISION_REASON_SAME_MODEL_REPLACEMENT"
@@ -702,11 +1068,15 @@ export type ChromeOsDeviceDeprovisionReasonEnum =
   | "DEPROVISION_REASON_UPGRADE_TRANSFER"
   | "DEPROVISION_REASON_NOT_REQUIRED"
   | "DEPROVISION_REASON_REPAIR_CENTER";
+const ChromeOsDeviceDeprovisionReasonEnum = S.String;
+
 export type ChromeOsDeviceOsVersionComplianceEnum =
   | "complianceUnspecified"
   | "compliant"
   | "pending"
   | "notCompliant";
+const ChromeOsDeviceOsVersionComplianceEnum = S.String;
+
 export interface ChromeOsDeviceDiskVolumeReportsItemVolumeInfoItem {
   /** Free disk space [in bytes] */
   storageFree?: string;
@@ -715,13 +1085,33 @@ export interface ChromeOsDeviceDiskVolumeReportsItemVolumeInfoItem {
   /** Volume id */
   volumeId?: string;
 }
+const ChromeOsDeviceDiskVolumeReportsItemVolumeInfoItem = /*@__PURE__*/ __L.at(
+  __c9,
+  6,
+) as any as S.Schema<ChromeOsDeviceDiskVolumeReportsItemVolumeInfoItem>;
+
 export type ChromeOsDeviceDiskVolumeReportsItemVolumeInfoItemList =
   Array<ChromeOsDeviceDiskVolumeReportsItemVolumeInfoItem>;
+const ChromeOsDeviceDiskVolumeReportsItemVolumeInfoItemList = /*@__PURE__*/ __L.at(
+  __c9,
+  7,
+) as any as S.Schema<ChromeOsDeviceDiskVolumeReportsItemVolumeInfoItemList>;
+
 export interface ChromeOsDeviceDiskVolumeReportsItem {
   /** Disk volumes */
   volumeInfo?: ChromeOsDeviceDiskVolumeReportsItemVolumeInfoItemList;
 }
+const ChromeOsDeviceDiskVolumeReportsItem = /*@__PURE__*/ __L.at(
+  __c10,
+  0,
+) as any as S.Schema<ChromeOsDeviceDiskVolumeReportsItem>;
+
 export type ChromeOsDeviceDiskVolumeReportsItemList = Array<ChromeOsDeviceDiskVolumeReportsItem>;
+const ChromeOsDeviceDiskVolumeReportsItemList = /*@__PURE__*/ __L.at(
+  __c10,
+  1,
+) as any as S.Schema<ChromeOsDeviceDiskVolumeReportsItemList>;
+
 /** Information about the device's backlights. */
 export interface BacklightInfo {
   /** Output only. Path to this backlight on the system. Useful if the caller needs to correlate with other information. */
@@ -731,7 +1121,11 @@ export interface BacklightInfo {
   /** Output only. Maximum brightness for the backlight. */
   maxBrightness?: number;
 }
+const BacklightInfo = /*@__PURE__*/ __L.at(__c10, 2) as any as S.Schema<BacklightInfo>;
+
 export type BacklightInfoList = Array<BacklightInfo>;
+const BacklightInfoList = /*@__PURE__*/ __L.at(__c10, 3) as any as S.Schema<BacklightInfoList>;
+
 export interface ChromeOsDeviceScreenshotFilesItem {
   /** Date and time the file was created */
   createTime?: string;
@@ -742,7 +1136,17 @@ export interface ChromeOsDeviceScreenshotFilesItem {
   /** File download URL */
   downloadUrl?: string;
 }
+const ChromeOsDeviceScreenshotFilesItem = /*@__PURE__*/ __L.at(
+  __c10,
+  4,
+) as any as S.Schema<ChromeOsDeviceScreenshotFilesItem>;
+
 export type ChromeOsDeviceScreenshotFilesItemList = Array<ChromeOsDeviceScreenshotFilesItem>;
+const ChromeOsDeviceScreenshotFilesItemList = /*@__PURE__*/ __L.at(
+  __c10,
+  5,
+) as any as S.Schema<ChromeOsDeviceScreenshotFilesItemList>;
+
 export interface ChromeOsDeviceTpmVersionInfo {
   /** TPM manufacturer code. */
   manufacturer?: string;
@@ -757,6 +1161,11 @@ export interface ChromeOsDeviceTpmVersionInfo {
   /** Vendor-specific information such as Vendor ID. */
   vendorSpecific?: string;
 }
+const ChromeOsDeviceTpmVersionInfo = /*@__PURE__*/ __L.at(
+  __c10,
+  6,
+) as any as S.Schema<ChromeOsDeviceTpmVersionInfo>;
+
 export interface ChromeOsDeviceDeviceFilesItem {
   /** File name */
   name?: string;
@@ -767,15 +1176,35 @@ export interface ChromeOsDeviceDeviceFilesItem {
   /** File download URL */
   downloadUrl?: string;
 }
+const ChromeOsDeviceDeviceFilesItem = /*@__PURE__*/ __L.at(
+  __c10,
+  7,
+) as any as S.Schema<ChromeOsDeviceDeviceFilesItem>;
+
 export type ChromeOsDeviceDeviceFilesItemList = Array<ChromeOsDeviceDeviceFilesItem>;
+const ChromeOsDeviceDeviceFilesItemList = /*@__PURE__*/ __L.at(
+  __c11,
+  0,
+) as any as S.Schema<ChromeOsDeviceDeviceFilesItemList>;
+
 export interface ChromeOsDeviceCpuInfoItemLogicalCpusItemCStatesItem {
   /** Time spent in the state since the last reboot. */
   sessionDuration?: string;
   /** Name of the state. */
   displayName?: string;
 }
+const ChromeOsDeviceCpuInfoItemLogicalCpusItemCStatesItem = /*@__PURE__*/ __L.at(
+  __c11,
+  1,
+) as any as S.Schema<ChromeOsDeviceCpuInfoItemLogicalCpusItemCStatesItem>;
+
 export type ChromeOsDeviceCpuInfoItemLogicalCpusItemCStatesItemList =
   Array<ChromeOsDeviceCpuInfoItemLogicalCpusItemCStatesItem>;
+const ChromeOsDeviceCpuInfoItemLogicalCpusItemCStatesItemList = /*@__PURE__*/ __L.at(
+  __c11,
+  2,
+) as any as S.Schema<ChromeOsDeviceCpuInfoItemLogicalCpusItemCStatesItemList>;
+
 export interface ChromeOsDeviceCpuInfoItemLogicalCpusItem {
   /** Maximum frequency the CPU is allowed to run at, by policy. */
   maxScalingFrequencyKhz?: number;
@@ -786,8 +1215,18 @@ export interface ChromeOsDeviceCpuInfoItemLogicalCpusItem {
   /** C-States indicate the power consumption state of the CPU. For more information look at documentation published by the CPU maker. */
   cStates?: ChromeOsDeviceCpuInfoItemLogicalCpusItemCStatesItemList;
 }
+const ChromeOsDeviceCpuInfoItemLogicalCpusItem = /*@__PURE__*/ __L.at(
+  __c11,
+  3,
+) as any as S.Schema<ChromeOsDeviceCpuInfoItemLogicalCpusItem>;
+
 export type ChromeOsDeviceCpuInfoItemLogicalCpusItemList =
   Array<ChromeOsDeviceCpuInfoItemLogicalCpusItem>;
+const ChromeOsDeviceCpuInfoItemLogicalCpusItemList = /*@__PURE__*/ __L.at(
+  __c11,
+  4,
+) as any as S.Schema<ChromeOsDeviceCpuInfoItemLogicalCpusItemList>;
+
 export interface ChromeOsDeviceCpuInfoItem {
   /** The max CPU clock speed in kHz. */
   maxClockSpeedKhz?: number;
@@ -798,18 +1237,40 @@ export interface ChromeOsDeviceCpuInfoItem {
   /** The CPU architecture. */
   architecture?: string;
 }
+const ChromeOsDeviceCpuInfoItem = /*@__PURE__*/ __L.at(
+  __c11,
+  5,
+) as any as S.Schema<ChromeOsDeviceCpuInfoItem>;
+
 export type ChromeOsDeviceCpuInfoItemList = Array<ChromeOsDeviceCpuInfoItem>;
+const ChromeOsDeviceCpuInfoItemList = /*@__PURE__*/ __L.at(
+  __c11,
+  6,
+) as any as S.Schema<ChromeOsDeviceCpuInfoItemList>;
+
 export interface ChromeOsDeviceRecentUsersItem {
   /** The user's email address. This is only present if the user type is `USER_TYPE_MANAGED`. */
   email?: string;
   /** The type of the user. */
   type?: string;
 }
+const ChromeOsDeviceRecentUsersItem = /*@__PURE__*/ __L.at(
+  __c11,
+  7,
+) as any as S.Schema<ChromeOsDeviceRecentUsersItem>;
+
 export type ChromeOsDeviceRecentUsersItemList = Array<ChromeOsDeviceRecentUsersItem>;
+const ChromeOsDeviceRecentUsersItemList = /*@__PURE__*/ __L.at(
+  __c12,
+  0,
+) as any as S.Schema<ChromeOsDeviceRecentUsersItemList>;
+
 export type ChromeOsDeviceChromeOsTypeEnum =
   | "chromeOsTypeUnspecified"
   | "chromeOsFlex"
   | "chromeOs";
+const ChromeOsDeviceChromeOsTypeEnum = S.String;
+
 /** Represents a data capacity with some amount of current usage in bytes. */
 export interface ByteUsage {
   /** Output only. The current usage value, in bytes. */
@@ -817,11 +1278,15 @@ export interface ByteUsage {
   /** Output only. The total capacity value, in bytes. */
   capacityBytes?: string;
 }
+const ByteUsage = /*@__PURE__*/ __L.at(__c12, 1) as any as S.Schema<ByteUsage>;
+
 export type OsUpdateStatusStateEnum =
   | "updateStateUnspecified"
   | "updateStateNotStarted"
   | "updateStateDownloadInProgress"
   | "updateStateNeedReboot";
+const OsUpdateStatusStateEnum = S.String;
+
 /** Contains information regarding the current OS update status. */
 export interface OsUpdateStatus {
   /** The update state of an OS update. */
@@ -837,15 +1302,29 @@ export interface OsUpdateStatus {
   /** Date and time of the last update check. */
   updateCheckTime?: string;
 }
+const OsUpdateStatus = /*@__PURE__*/ __L.at(__c12, 2) as any as S.Schema<OsUpdateStatus>;
+
 export type IntegerList = Array<number>;
+const IntegerList = /*@__PURE__*/ __L.at(__c12, 3) as any as S.Schema<IntegerList>;
+
 export interface ChromeOsDeviceCpuStatusReportsItemCpuTemperatureInfoItem {
   /** Temperature in Celsius degrees. */
   temperature?: number;
   /** CPU label */
   label?: string;
 }
+const ChromeOsDeviceCpuStatusReportsItemCpuTemperatureInfoItem = /*@__PURE__*/ __L.at(
+  __c12,
+  4,
+) as any as S.Schema<ChromeOsDeviceCpuStatusReportsItemCpuTemperatureInfoItem>;
+
 export type ChromeOsDeviceCpuStatusReportsItemCpuTemperatureInfoItemList =
   Array<ChromeOsDeviceCpuStatusReportsItemCpuTemperatureInfoItem>;
+const ChromeOsDeviceCpuStatusReportsItemCpuTemperatureInfoItemList = /*@__PURE__*/ __L.at(
+  __c12,
+  5,
+) as any as S.Schema<ChromeOsDeviceCpuStatusReportsItemCpuTemperatureInfoItemList>;
+
 export interface ChromeOsDeviceCpuStatusReportsItem {
   cpuUtilizationPercentageInfo?: IntegerList;
   /** Date and time the report was received. */
@@ -853,7 +1332,17 @@ export interface ChromeOsDeviceCpuStatusReportsItem {
   /** A list of CPU temperature samples. */
   cpuTemperatureInfo?: ChromeOsDeviceCpuStatusReportsItemCpuTemperatureInfoItemList;
 }
+const ChromeOsDeviceCpuStatusReportsItem = /*@__PURE__*/ __L.at(
+  __c12,
+  6,
+) as any as S.Schema<ChromeOsDeviceCpuStatusReportsItem>;
+
 export type ChromeOsDeviceCpuStatusReportsItemList = Array<ChromeOsDeviceCpuStatusReportsItem>;
+const ChromeOsDeviceCpuStatusReportsItemList = /*@__PURE__*/ __L.at(
+  __c12,
+  7,
+) as any as S.Schema<ChromeOsDeviceCpuStatusReportsItemList>;
+
 /** Information about a device's Bluetooth adapter. */
 export interface BluetoothAdapterInfo {
   /** Output only. The MAC address of the adapter. */
@@ -861,7 +1350,17 @@ export interface BluetoothAdapterInfo {
   /** Output only. The number of devices connected to this adapter. */
   numConnectedDevices?: number;
 }
+const BluetoothAdapterInfo = /*@__PURE__*/ __L.at(
+  __c13,
+  0,
+) as any as S.Schema<BluetoothAdapterInfo>;
+
 export type BluetoothAdapterInfoList = Array<BluetoothAdapterInfo>;
+const BluetoothAdapterInfoList = /*@__PURE__*/ __L.at(
+  __c13,
+  1,
+) as any as S.Schema<BluetoothAdapterInfoList>;
+
 export type ChromeOsDeviceDeviceLicenseTypeEnum =
   | "deviceLicenseTypeUnspecified"
   | "enterprise"
@@ -873,27 +1372,59 @@ export type ChromeOsDeviceDeviceLicenseTypeEnum =
   | "enterpriseUpgradeFixedTerm"
   | "educationUpgradePerpetual"
   | "educationUpgradeFixedTerm";
+const ChromeOsDeviceDeviceLicenseTypeEnum = S.String;
+
 export interface ChromeOsDeviceActiveTimeRangesItem {
   /** Date of usage */
   date?: string;
   /** Duration of usage in milliseconds. */
   activeTime?: number;
 }
+const ChromeOsDeviceActiveTimeRangesItem = /*@__PURE__*/ __L.at(
+  __c13,
+  2,
+) as any as S.Schema<ChromeOsDeviceActiveTimeRangesItem>;
+
 export type ChromeOsDeviceActiveTimeRangesItemList = Array<ChromeOsDeviceActiveTimeRangesItem>;
+const ChromeOsDeviceActiveTimeRangesItemList = /*@__PURE__*/ __L.at(
+  __c13,
+  3,
+) as any as S.Schema<ChromeOsDeviceActiveTimeRangesItemList>;
+
 export interface ChromeOsDeviceSystemRamFreeReportsItem {
   /** Date and time the report was received. */
   reportTime?: string;
   systemRamFreeInfo?: StringList;
 }
+const ChromeOsDeviceSystemRamFreeReportsItem = /*@__PURE__*/ __L.at(
+  __c13,
+  4,
+) as any as S.Schema<ChromeOsDeviceSystemRamFreeReportsItem>;
+
 export type ChromeOsDeviceSystemRamFreeReportsItemList =
   Array<ChromeOsDeviceSystemRamFreeReportsItem>;
+const ChromeOsDeviceSystemRamFreeReportsItemList = /*@__PURE__*/ __L.at(
+  __c13,
+  5,
+) as any as S.Schema<ChromeOsDeviceSystemRamFreeReportsItemList>;
+
 export interface ChromeOsDeviceLastKnownNetworkItem {
   /** The IP address. */
   ipAddress?: string;
   /** The WAN IP address. */
   wanIpAddress?: string;
 }
+const ChromeOsDeviceLastKnownNetworkItem = /*@__PURE__*/ __L.at(
+  __c13,
+  6,
+) as any as S.Schema<ChromeOsDeviceLastKnownNetworkItem>;
+
 export type ChromeOsDeviceLastKnownNetworkItemList = Array<ChromeOsDeviceLastKnownNetworkItem>;
+const ChromeOsDeviceLastKnownNetworkItemList = /*@__PURE__*/ __L.at(
+  __c13,
+  7,
+) as any as S.Schema<ChromeOsDeviceLastKnownNetworkItemList>;
+
 /** Google Chrome devices run on the [Chrome OS](https://support.google.com/chromeos). For more information about common API tasks, see the [Developer's Guide](https://developers.google.com/workspace/admin/directory/v1/guides/manage-chrome-devices). */
 export interface ChromeOsDevice {
   /** Output only. Fan information for the device. */
@@ -1005,6 +1536,8 @@ export interface ChromeOsDevice {
   /** The user of the device as noted by the administrator. Maximum length is 100 characters. Empty values are allowed. */
   annotatedUser?: string;
 }
+const ChromeOsDevice = /*@__PURE__*/ __L.at(__c14, 0) as any as S.Schema<ChromeOsDevice>;
+
 export interface GetCustomerDevicesChromeosCommandsRequest {
   /** Immutable. ID of Chrome OS Device. */
   deviceId: string;
@@ -1013,11 +1546,18 @@ export interface GetCustomerDevicesChromeosCommandsRequest {
   /** Immutable. ID of the Google Workspace account. */
   customerId: string;
 }
+const GetCustomerDevicesChromeosCommandsRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  1,
+) as any as S.Schema<GetCustomerDevicesChromeosCommandsRequest>;
+
 export type DirectoryChromeosdevicesCommandResultResultEnum =
   | "COMMAND_RESULT_TYPE_UNSPECIFIED"
   | "IGNORED"
   | "FAILURE"
   | "SUCCESS";
+const DirectoryChromeosdevicesCommandResultResultEnum = S.String;
+
 /** The result of executing a command. */
 export interface DirectoryChromeosdevicesCommandResult {
   /** The payload for the command result. The following commands respond with a payload: * `DEVICE_START_CRD_SESSION`: Payload is a stringified JSON object in the form: { "url": url }. The provided URL links to the Chrome Remote Desktop session and requires authentication using only the `email` associated with the command's issuance. * `FETCH_CRD_AVAILABILITY_INFO`: Payload is a stringified JSON object in the form: { "deviceIdleTimeInSeconds": number, "userSessionType": string, "remoteSupportAvailability": string, "remoteAccessAvailability": string }. The "remoteSupportAvailability" field is set to "AVAILABLE" if `shared` CRD session to the device is available. The "remoteAccessAvailability" field is set to "AVAILABLE" if `private` CRD session to the device is available. */
@@ -1029,6 +1569,11 @@ export interface DirectoryChromeosdevicesCommandResult {
   /** The error message with a short explanation as to why the command failed. Only present if the command failed. */
   errorMessage?: string;
 }
+const DirectoryChromeosdevicesCommandResult = /*@__PURE__*/ __L.at(
+  __c14,
+  2,
+) as any as S.Schema<DirectoryChromeosdevicesCommandResult>;
+
 export type DirectoryChromeosdevicesCommandStateEnum =
   | "STATE_UNSPECIFIED"
   | "PENDING"
@@ -1037,6 +1582,8 @@ export type DirectoryChromeosdevicesCommandStateEnum =
   | "SENT_TO_CLIENT"
   | "ACKED_BY_CLIENT"
   | "EXECUTED_BY_CLIENT";
+const DirectoryChromeosdevicesCommandStateEnum = S.String;
+
 export type DirectoryChromeosdevicesCommandTypeEnum =
   | "COMMAND_TYPE_UNSPECIFIED"
   | "REBOOT"
@@ -1048,6 +1595,8 @@ export type DirectoryChromeosdevicesCommandTypeEnum =
   | "CAPTURE_LOGS"
   | "FETCH_CRD_AVAILABILITY_INFO"
   | "FETCH_SUPPORT_PACKET";
+const DirectoryChromeosdevicesCommandTypeEnum = S.String;
+
 /** Information regarding a command that was issued to a device. */
 export interface DirectoryChromeosdevicesCommand {
   /** The time at which the command will expire. If the device doesn't execute the command within this time the command will become expired. */
@@ -1065,10 +1614,17 @@ export interface DirectoryChromeosdevicesCommand {
   /** The timestamp when the command was issued by the admin. */
   issueTime?: string;
 }
+const DirectoryChromeosdevicesCommand = /*@__PURE__*/ __L.at(
+  __c14,
+  3,
+) as any as S.Schema<DirectoryChromeosdevicesCommand>;
+
 export interface GetCustomersRequest {
   /** Id of the customer to be retrieved */
   customerKey: string;
 }
+const GetCustomersRequest = /*@__PURE__*/ __L.at(__c14, 4) as any as S.Schema<GetCustomersRequest>;
+
 export interface CustomerPostalAddress {
   /** The postal code. A postalCode example is a postal zip code such as `10009`. This is in accordance with - http: //portablecontacts.net/draft-spec.html#address_element. */
   postalCode?: string;
@@ -1089,6 +1645,11 @@ export interface CustomerPostalAddress {
   /** The company or company division name. */
   organizationName?: string;
 }
+const CustomerPostalAddress = /*@__PURE__*/ __L.at(
+  __c14,
+  5,
+) as any as S.Schema<CustomerPostalAddress>;
+
 export interface Customer {
   /** ETag of the resource. */
   etag?: string;
@@ -1109,20 +1670,37 @@ export interface Customer {
   /** The customer's creation time (Readonly) */
   customerCreationTime?: string;
 }
+const Customer = /*@__PURE__*/ __L.at(__c14, 6) as any as S.Schema<Customer>;
+
 export interface GetCustomersChromePrintersRequest {
   /** Required. The name of the printer to retrieve. Format: customers/{customer_id}/chrome/printers/{printer_id} */
   name: string;
 }
+const GetCustomersChromePrintersRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  7,
+) as any as S.Schema<GetCustomersChromePrintersRequest>;
+
 export interface GetCustomersChromePrintServersRequest {
   /** Required. The [unique ID](https://developers.google.com/workspace/admin/directory/reference/rest/v1/customers) of the customer's Google Workspace account. Format: `customers/{id}` */
   name: string;
 }
+const GetCustomersChromePrintServersRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  0,
+) as any as S.Schema<GetCustomersChromePrintServersRequest>;
+
 export interface GetDomainAliasesRequest {
   /** The unique ID for the customer's Google Workspace account. In case of a multi-domain account, to fetch all groups for a customer, use this field instead of `domain`. You can also use the `my_customer` alias to represent your account's `customerId`. The `customerId` is also returned as part of the [Users](https://developers.google.com/workspace/admin/directory/v1/reference/users) resource. You must provide either the `customer` or the `domain` parameter. */
   customer: string;
   /** Name of domain alias to be retrieved. */
   domainAliasName: string;
 }
+const GetDomainAliasesRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  1,
+) as any as S.Schema<GetDomainAliasesRequest>;
+
 export interface DomainAlias {
   /** Indicates the verification state of a domain alias. (Read-only) */
   verified?: boolean;
@@ -1137,13 +1715,19 @@ export interface DomainAlias {
   /** The creation time of the domain alias. (Read-only). */
   creationTime?: string;
 }
+const DomainAlias = /*@__PURE__*/ __L.at(__c15, 2) as any as S.Schema<DomainAlias>;
+
 export interface GetDomainsRequest {
   /** Name of domain to be retrieved */
   domainName: string;
   /** The unique ID for the customer's Google Workspace account. In case of a multi-domain account, to fetch all groups for a customer, use this field instead of `domain`. You can also use the `my_customer` alias to represent your account's `customerId`. The `customerId` is also returned as part of the [Users](https://developers.google.com/workspace/admin/directory/v1/reference/users) resource. You must provide either the `customer` or the `domain` parameter. */
   customer: string;
 }
+const GetDomainsRequest = /*@__PURE__*/ __L.at(__c15, 3) as any as S.Schema<GetDomainsRequest>;
+
 export type DomainAliasList = Array<DomainAlias>;
+const DomainAliasList = /*@__PURE__*/ __L.at(__c15, 4) as any as S.Schema<DomainAliasList>;
+
 export interface Domains {
   /** Kind of resource this is. */
   kind?: string;
@@ -1160,10 +1744,14 @@ export interface Domains {
   /** Indicates if the domain is a primary domain (Read-only). */
   isPrimary?: boolean;
 }
+const Domains = /*@__PURE__*/ __L.at(__c15, 5) as any as S.Schema<Domains>;
+
 export interface GetGroupsRequest {
   /** Identifies the group in the API request. The value can be the group's email address, group alias, or the unique group ID. */
   groupKey: string;
 }
+const GetGroupsRequest = /*@__PURE__*/ __L.at(__c15, 6) as any as S.Schema<GetGroupsRequest>;
+
 /** External identifier used to link and identify this group across external directory systems. */
 export interface ExternalId {
   /** The unique identifier string assigned by the external provider. */
@@ -1171,7 +1759,11 @@ export interface ExternalId {
   /** The system or identity provider managing this ID. */
   namespace?: string;
 }
+const ExternalId = /*@__PURE__*/ __L.at(__c15, 7) as any as S.Schema<ExternalId>;
+
 export type ExternalIdList = Array<ExternalId>;
+const ExternalIdList = /*@__PURE__*/ __L.at(__c16, 0) as any as S.Schema<ExternalIdList>;
+
 /** Google Groups provide your users the ability to send messages to groups of people using the group's email address. For more information about common tasks, see the [Developer's Guide](https://developers.google.com/workspace/admin/directory/v1/guides/manage-groups). For information about other types of groups, see the [Cloud Identity Groups API documentation](https://cloud.google.com/identity/docs/groups). Note: The user calling the API (or being impersonated by a service account) must have an assigned [role](https://developers.google.com/workspace/admin/directory/v1/guides/manage-roles) that includes Admin API Groups permissions, such as Super Admin or Groups Admin. */
 export interface Group {
   /** The group's display name. */
@@ -1197,12 +1789,16 @@ export interface Group {
   /** Read-only. The list of a group's alias email addresses. To add, update, or remove a group's aliases, use the `groups.aliases` methods. If edited in a group's POST or PUT request, the edit is ignored. */
   aliases?: StringList;
 }
+const Group = /*@__PURE__*/ __L.at(__c16, 1) as any as S.Schema<Group>;
+
 export interface GetMembersRequest {
   /** Identifies the group member in the API request. A group member can be a user or another group. The value can be the member's (group or user) primary email address, alias, or unique ID. */
   memberKey: string;
   /** Identifies the group in the API request. The value can be the group's email address, group alias, or the unique group ID. */
   groupKey: string;
 }
+const GetMembersRequest = /*@__PURE__*/ __L.at(__c16, 2) as any as S.Schema<GetMembersRequest>;
+
 /** A Google Groups member can be a user or another group. This member can be inside or outside of your account's domains. For more information about common group member tasks, see the [Developer's Guide](https://developers.google.com/workspace/admin/directory/v1/guides/manage-group-members). */
 export interface Member {
   /** The type of the API resource. For Members resources, the value is `admin#directory#member`. */
@@ -1222,7 +1818,11 @@ export interface Member {
   /** The member's email address. A member can be a user or another group. This property is required when adding a member to a group. The `email` must be unique and cannot be an alias of another group. If the email address is changed, the API automatically reflects the email address changes. */
   email?: string;
 }
+const Member = /*@__PURE__*/ __L.at(__c16, 3) as any as S.Schema<Member>;
+
 export type GetMobiledevicesProjectionEnum = "BASIC" | "FULL";
+const GetMobiledevicesProjectionEnum = S.String;
+
 export interface GetMobiledevicesRequest {
   /** Restrict information returned to a set of selected fields. */
   projection?: GetMobiledevicesProjectionEnum | (string & {});
@@ -1231,6 +1831,11 @@ export interface GetMobiledevicesRequest {
   /** The unique ID the API service uses to identify the mobile device. */
   resourceId: string;
 }
+const GetMobiledevicesRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  4,
+) as any as S.Schema<GetMobiledevicesRequest>;
+
 export interface MobileDeviceApplicationsItem {
   /** The application's version code. An example is `13`. */
   versionCode?: number;
@@ -1243,7 +1848,17 @@ export interface MobileDeviceApplicationsItem {
   /** The application's display name. An example is `Browser`. */
   displayName?: string;
 }
+const MobileDeviceApplicationsItem = /*@__PURE__*/ __L.at(
+  __c16,
+  5,
+) as any as S.Schema<MobileDeviceApplicationsItem>;
+
 export type MobileDeviceApplicationsItemList = Array<MobileDeviceApplicationsItem>;
+const MobileDeviceApplicationsItemList = /*@__PURE__*/ __L.at(
+  __c16,
+  6,
+) as any as S.Schema<MobileDeviceApplicationsItemList>;
+
 /** Google Workspace Mobile Management includes Android, [Google Sync](https://support.google.com/a/answer/135937), and iOS devices. For more information about common group mobile device API tasks, see the [Developer's Guide](https://developers.google.com/workspace/admin/directory/v1/guides/manage-mobile-devices.html). */
 export interface MobileDevice {
   /** The device's IMEI number. */
@@ -1327,12 +1942,16 @@ export interface MobileDevice {
   /** The list of applications installed on an Android mobile device. It is not applicable to Google Sync and iOS devices. The list includes any Android applications that access Google Workspace data. When updating an applications list, it is important to note that updates replace the existing list. If the Android device has two existing applications and the API updates the list with five applications, the is now the updated list of five applications. */
   applications?: MobileDeviceApplicationsItemList;
 }
+const MobileDevice = /*@__PURE__*/ __L.at(__c16, 7) as any as S.Schema<MobileDevice>;
+
 export interface GetOrgunitsRequest {
   /** The full path of the organizational unit (minus the leading `/`) or its unique ID. */
   orgUnitPath: string;
   /** The unique ID for the customer's Google Workspace account. As an account administrator, you can also use the `my_customer` alias to represent your account's `customerId`. The `customerId` is also returned as part of the [Users resource](https://developers.google.com/workspace/admin/directory/v1/reference/users). */
   customerId: string;
 }
+const GetOrgunitsRequest = /*@__PURE__*/ __L.at(__c17, 0) as any as S.Schema<GetOrgunitsRequest>;
+
 /** Managing your account's organizational units allows you to configure your users' access to services and custom settings. For more information about common organizational unit tasks, see the [Developer's Guide](https://developers.google.com/workspace/admin/directory/v1/guides/manage-org-units.html). The customer's organizational unit hierarchy is limited to 35 levels of depth. */
 export interface OrgUnit {
   /** The organizational unit's path name. For example, an organizational unit's name within the /corp/support/sales_support parent path is sales_support. Required. */
@@ -1354,12 +1973,19 @@ export interface OrgUnit {
   /** The organizational unit's parent path. For example, /corp/sales is the parent path for /corp/sales/sales_support organizational unit. Required, unless `parentOrgUnitId` is set. */
   parentOrgUnitPath?: string;
 }
+const OrgUnit = /*@__PURE__*/ __L.at(__c17, 1) as any as S.Schema<OrgUnit>;
+
 export interface GetResourcesBuildingsRequest {
   /** The unique ID of the building to retrieve. */
   buildingId: string;
   /** The unique ID for the customer's Google Workspace account. As an account administrator, you can also use the `my_customer` alias to represent your account's customer ID. */
   customer: string;
 }
+const GetResourcesBuildingsRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  2,
+) as any as S.Schema<GetResourcesBuildingsRequest>;
+
 /** Public API: Resources.buildings */
 export interface BuildingAddress {
   /** Required. CLDR region code of the country/region of the address. */
@@ -1377,6 +2003,8 @@ export interface BuildingAddress {
   /** Optional. Sublocality of the address. */
   sublocality?: string;
 }
+const BuildingAddress = /*@__PURE__*/ __L.at(__c17, 3) as any as S.Schema<BuildingAddress>;
+
 /** Public API: Resources.buildings */
 export interface BuildingCoordinates {
   /** Longitude in decimal degrees. */
@@ -1384,6 +2012,8 @@ export interface BuildingCoordinates {
   /** Latitude in decimal degrees. */
   latitude?: number;
 }
+const BuildingCoordinates = /*@__PURE__*/ __L.at(__c17, 4) as any as S.Schema<BuildingCoordinates>;
+
 /** Public API: Resources.buildings */
 export interface Building {
   /** The building name as seen by users in Calendar. Must be unique for the customer. For example, "NYC-CHEL". The maximum length is 100 characters. */
@@ -1403,12 +2033,19 @@ export interface Building {
   /** The display names for all floors in this building. The floors are expected to be sorted in ascending order, from lowest floor to highest floor. For example, ["B2", "B1", "L", "1", "2", "2M", "3", "PH"] Must contain at least one entry. */
   floorNames?: StringList;
 }
+const Building = /*@__PURE__*/ __L.at(__c17, 5) as any as S.Schema<Building>;
+
 export interface GetResourcesCalendarsRequest {
   /** The unique ID for the customer's Google Workspace account. As an account administrator, you can also use the `my_customer` alias to represent your account's customer ID. */
   customer: string;
   /** The unique ID of the calendar resource to retrieve. */
   calendarResourceId: string;
 }
+const GetResourcesCalendarsRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  6,
+) as any as S.Schema<GetResourcesCalendarsRequest>;
+
 /** Public API: Resources.calendars */
 export interface CalendarResource {
   /** The type of the resource. For calendar resources, the value is `admin#directory#resources#calendars#CalendarResource`. */
@@ -1442,12 +2079,19 @@ export interface CalendarResource {
   /** Description of the resource, visible to users and admins. */
   userVisibleDescription?: string;
 }
+const CalendarResource = /*@__PURE__*/ __L.at(__c17, 7) as any as S.Schema<CalendarResource>;
+
 export interface GetResourcesFeaturesRequest {
   /** The unique ID for the customer's Google Workspace account. As an account administrator, you can also use the `my_customer` alias to represent your account's customer ID. */
   customer: string;
   /** The unique ID of the feature to retrieve. */
   featureKey: string;
 }
+const GetResourcesFeaturesRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  0,
+) as any as S.Schema<GetResourcesFeaturesRequest>;
+
 /** JSON template for Feature object in Directory API. */
 export interface Feature {
   /** ETag of the resource. */
@@ -1457,18 +2101,29 @@ export interface Feature {
   /** The name of the feature. */
   name?: string;
 }
+const Feature = /*@__PURE__*/ __L.at(__c18, 1) as any as S.Schema<Feature>;
+
 export interface GetRoleAssignmentsRequest {
   /** The unique ID for the customer's Google Workspace account. In case of a multi-domain account, to fetch all groups for a customer, use this field instead of `domain`. You can also use the `my_customer` alias to represent your account's `customerId`. The `customerId` is also returned as part of the [Users](https://developers.google.com/workspace/admin/directory/v1/reference/users) resource. You must provide either the `customer` or the `domain` parameter. */
   customer: string;
   /** Immutable ID of the role assignment. */
   roleAssignmentId: string;
 }
+const GetRoleAssignmentsRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  2,
+) as any as S.Schema<GetRoleAssignmentsRequest>;
+
 /** Details regarding the expiration of this role assignment. Used to automatically revoke access when the time limit is reached. */
 export interface ExpirationDetails {
   /** The specific timestamp when the role assignment expires. */
   expireTime?: string;
 }
+const ExpirationDetails = /*@__PURE__*/ __L.at(__c18, 3) as any as S.Schema<ExpirationDetails>;
+
 export type RoleAssignmentAssigneeTypeEnum = "user" | "group";
+const RoleAssignmentAssigneeTypeEnum = S.String;
+
 /** Defines an assignment of a role. */
 export interface RoleAssignment {
   /** Optional. The condition associated with this role assignment. Note: Feature is available to Enterprise Standard, Enterprise Plus, Google Workspace for Education Plus and Cloud Identity Premium customers. A `RoleAssignment` with the `condition` field set will only take effect when the resource being accessed meets the condition. If `condition` is empty, the role (`role_id`) is applied to the actor (`assigned_to`) at the scope (`scope_type`) unconditionally. Currently, the following conditions are supported: - To make the `RoleAssignment` only applicable to [Security Groups](https://cloud.google.com/identity/docs/groups#group_types): `api.getAttribute('cloudidentity.googleapis.com/groups.labels', []).hasAny(['groups.security']) && resource.type == 'cloudidentity.googleapis.com/Group'` - To make the `RoleAssignment` not applicable to [Security Groups](https://cloud.google.com/identity/docs/groups#group_types): `!api.getAttribute('cloudidentity.googleapis.com/groups.labels', []).hasAny(['groups.security']) && resource.type == 'cloudidentity.googleapis.com/Group'` Currently, the condition strings have to be verbatim and they only work with the following [pre-built administrator roles](https://support.google.com/a/answer/2405986): - Groups Editor - Groups Reader The condition follows [Cloud IAM condition syntax](https://cloud.google.com/iam/docs/conditions-overview). - To make the `RoleAssignment` not applicable to [Locked Groups](https://cloud.google.com/identity/docs/groups#group_types): `!api.getAttribute('cloudidentity.googleapis.com/groups.labels', []).hasAny(['groups.locked']) && resource.type == 'cloudidentity.googleapis.com/Group'` This condition can also be used in conjunction with a Security-related condition. */
@@ -1492,19 +2147,33 @@ export interface RoleAssignment {
   /** The scope in which this role is assigned. */
   scopeType?: string;
 }
+const RoleAssignment = /*@__PURE__*/ __L.at(__c18, 4) as any as S.Schema<RoleAssignment>;
+
 export interface GetRolesRequest {
   /** The unique ID for the customer's Google Workspace account. In case of a multi-domain account, to fetch all groups for a customer, use this field instead of `domain`. You can also use the `my_customer` alias to represent your account's `customerId`. The `customerId` is also returned as part of the [Users](https://developers.google.com/workspace/admin/directory/v1/reference/users) resource. You must provide either the `customer` or the `domain` parameter. */
   customer: string;
   /** Immutable ID of the role. */
   roleId: string;
 }
+const GetRolesRequest = /*@__PURE__*/ __L.at(__c18, 5) as any as S.Schema<GetRolesRequest>;
+
 export interface RoleRolePrivilegesItem {
   /** The name of the privilege. */
   privilegeName?: string;
   /** The obfuscated ID of the service this privilege is for. This value is returned with [`Privileges.list()`](https://developers.google.com/workspace/admin/directory/v1/reference/privileges/list). */
   serviceId?: string;
 }
+const RoleRolePrivilegesItem = /*@__PURE__*/ __L.at(
+  __c18,
+  6,
+) as any as S.Schema<RoleRolePrivilegesItem>;
+
 export type RoleRolePrivilegesItemList = Array<RoleRolePrivilegesItem>;
+const RoleRolePrivilegesItemList = /*@__PURE__*/ __L.at(
+  __c18,
+  7,
+) as any as S.Schema<RoleRolePrivilegesItemList>;
+
 export interface Role {
   /** The type of the API resource. This is always `admin#directory#role`. */
   kind?: string;
@@ -1523,18 +2192,27 @@ export interface Role {
   /** Name of the role. */
   roleName?: string;
 }
+const Role = /*@__PURE__*/ __L.at(__c19, 0) as any as S.Schema<Role>;
+
 export interface GetSchemasRequest {
   /** The unique ID for the customer's Google Workspace account. In case of a multi-domain account, to fetch all groups for a customer, use this field instead of `domain`. You can also use the `my_customer` alias to represent your account's `customerId`. The `customerId` is also returned as part of the [Users](https://developers.google.com/workspace/admin/directory/v1/reference/users) resource. You must provide either the `customer` or the `domain` parameter. */
   customerId: string;
   /** Name or immutable ID of the schema. */
   schemaKey: string;
 }
+const GetSchemasRequest = /*@__PURE__*/ __L.at(__c19, 1) as any as S.Schema<GetSchemasRequest>;
+
 export interface SchemaFieldSpecNumericIndexingSpec {
   /** Minimum value of this field. This is meant to be indicative rather than enforced. Values outside this range will still be indexed, but search may not be as performant. */
   minValue?: number;
   /** Maximum value of this field. This is meant to be indicative rather than enforced. Values outside this range will still be indexed, but search may not be as performant. */
   maxValue?: number;
 }
+const SchemaFieldSpecNumericIndexingSpec = /*@__PURE__*/ __L.at(
+  __c19,
+  2,
+) as any as S.Schema<SchemaFieldSpecNumericIndexingSpec>;
+
 /** You can use schemas to add custom fields to user profiles. You can use these fields to store information such as the projects your users work on, their physical locations, their hire dates, or whatever else fits your business needs. For more information, see [Custom User Fields](https://developers.google.com/workspace/admin/directory/v1/guides/manage-schemas). */
 export interface SchemaFieldSpec {
   /** Boolean specifying whether the field is indexed or not. Default: `true`. */
@@ -1558,7 +2236,11 @@ export interface SchemaFieldSpec {
   /** The ETag of the field. */
   etag?: string;
 }
+const SchemaFieldSpec = /*@__PURE__*/ __L.at(__c19, 3) as any as S.Schema<SchemaFieldSpec>;
+
 export type SchemaFieldSpecList = Array<SchemaFieldSpec>;
+const SchemaFieldSpecList = /*@__PURE__*/ __L.at(__c19, 4) as any as S.Schema<SchemaFieldSpecList>;
+
 /** The type of API resource. For Schema resources, this is always `admin#directory#schema`. */
 export interface Admin_Schema {
   /** The ETag of the resource. */
@@ -1574,12 +2256,16 @@ export interface Admin_Schema {
   /** Kind of resource this is. */
   kind?: string;
 }
+const Admin_Schema = /*@__PURE__*/ __L.at(__c19, 5) as any as S.Schema<Admin_Schema>;
+
 export interface GetTokensRequest {
   /** Identifies the user in the API request. The value can be the user's primary email address, alias email address, or unique user ID. */
   userKey: string;
   /** The Client ID of the application the token is issued to. */
   clientId: string;
 }
+const GetTokensRequest = /*@__PURE__*/ __L.at(__c19, 6) as any as S.Schema<GetTokensRequest>;
+
 /** JSON template for token resource in Directory API. */
 export interface Token {
   /** The Client ID of the application the token is issued to. */
@@ -1599,8 +2285,14 @@ export interface Token {
   /** A list of authorization scopes the application is granted. */
   scopes?: StringList;
 }
+const Token = /*@__PURE__*/ __L.at(__c19, 7) as any as S.Schema<Token>;
+
 export type GetUsersProjectionEnum = "basic" | "custom" | "full";
+const GetUsersProjectionEnum = S.String;
+
 export type GetUsersViewTypeEnum = "admin_view" | "domain_public";
+const GetUsersViewTypeEnum = S.String;
+
 export interface GetUsersRequest {
   /** Identifies the user in the API request. The value can be the user's primary email address, alias email address, or unique user ID. */
   userKey: string;
@@ -1611,10 +2303,17 @@ export interface GetUsersRequest {
   /** Whether to fetch the administrator-only or domain-wide public view of the user. For more information, see [Retrieve a user as a non-administrator](https://developers.google.com/workspace/admin/directory/v1/guides/manage-users#retrieve_users_non_admin). */
   viewType?: GetUsersViewTypeEnum | (string & {});
 }
+const GetUsersRequest = /*@__PURE__*/ __L.at(__c20, 0) as any as S.Schema<GetUsersRequest>;
+
 export interface GetUsersPhotosRequest {
   /** Identifies the user in the API request. The value can be the user's primary email address, alias email address, or unique user ID. */
   userKey: string;
 }
+const GetUsersPhotosRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  1,
+) as any as S.Schema<GetUsersPhotosRequest>;
+
 export interface UserPhoto {
   /** ETag of the resource. */
   etag?: string;
@@ -1633,33 +2332,54 @@ export interface UserPhoto {
   /** The type of the API resource. For Photo resources, this is `admin#directory#user#photo`. */
   kind?: string;
 }
+const UserPhoto = /*@__PURE__*/ __L.at(__c20, 2) as any as S.Schema<UserPhoto>;
+
 export interface HasMemberMembersRequest {
   /** Identifies the group in the API request. The value can be the group's email address, group alias, or the unique group ID. */
   groupKey: string;
   /** Identifies the user member in the API request. The value can be the user's primary email address, alias, or unique ID. */
   memberKey: string;
 }
+const HasMemberMembersRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  3,
+) as any as S.Schema<HasMemberMembersRequest>;
+
 /** JSON template for Has Member response in Directory API. */
 export interface MembersHasMember {
   /** Output only. Identifies whether the given user is a member of the group. Membership can be direct or nested. */
   isMember?: boolean;
 }
+const MembersHasMember = /*@__PURE__*/ __L.at(__c20, 4) as any as S.Schema<MembersHasMember>;
+
 export interface InsertDomainAliasesRequest {
   /** Immutable ID of the Google Workspace account. */
   customer: string;
   /** Request body */
   body?: DomainAlias;
 }
+const InsertDomainAliasesRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  5,
+) as any as S.Schema<InsertDomainAliasesRequest>;
+
 export interface InsertDomainsRequest {
   /** Immutable ID of the Google Workspace account. */
   customer: string;
   /** Request body */
   body?: Domains;
 }
+const InsertDomainsRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  6,
+) as any as S.Schema<InsertDomainsRequest>;
+
 export interface InsertGroupsRequest {
   /** Request body */
   body?: Group;
 }
+const InsertGroupsRequest = /*@__PURE__*/ __L.at(__c20, 7) as any as S.Schema<InsertGroupsRequest>;
+
 /** JSON template for Alias object in Directory API. */
 export interface Alias {
   alias?: string;
@@ -1668,28 +2388,47 @@ export interface Alias {
   etag?: string;
   primaryEmail?: string;
 }
+const Alias = /*@__PURE__*/ __L.at(__c21, 0) as any as S.Schema<Alias>;
+
 export interface InsertGroupsAliasesRequest {
   /** Identifies the group in the API request. The value can be the group's email address, group alias, or the unique group ID. */
   groupKey: string;
   /** Request body */
   body?: Alias;
 }
+const InsertGroupsAliasesRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  1,
+) as any as S.Schema<InsertGroupsAliasesRequest>;
+
 export interface InsertMembersRequest {
   /** Identifies the group in the API request. The value can be the group's email address, group alias, or the unique group ID. */
   groupKey: string;
   /** Request body */
   body?: Member;
 }
+const InsertMembersRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  2,
+) as any as S.Schema<InsertMembersRequest>;
+
 export interface InsertOrgunitsRequest {
   /** The unique ID for the customer's Google Workspace account. As an account administrator, you can also use the `my_customer` alias to represent your account's `customerId`. The `customerId` is also returned as part of the [Users resource](https://developers.google.com/workspace/admin/directory/v1/reference/users). */
   customerId: string;
   /** Request body */
   body?: OrgUnit;
 }
+const InsertOrgunitsRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  3,
+) as any as S.Schema<InsertOrgunitsRequest>;
+
 export type InsertResourcesBuildingsCoordinatesSourceEnum =
   | "CLIENT_SPECIFIED"
   | "RESOLVED_FROM_ADDRESS"
   | "SOURCE_UNSPECIFIED";
+const InsertResourcesBuildingsCoordinatesSourceEnum = S.String;
+
 export interface InsertResourcesBuildingsRequest {
   /** The unique ID for the customer's Google Workspace account. As an account administrator, you can also use the `my_customer` alias to represent your account's customer ID. */
   customer: string;
@@ -1698,53 +2437,95 @@ export interface InsertResourcesBuildingsRequest {
   /** Request body */
   body?: Building;
 }
+const InsertResourcesBuildingsRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  4,
+) as any as S.Schema<InsertResourcesBuildingsRequest>;
+
 export interface InsertResourcesCalendarsRequest {
   /** The unique ID for the customer's Google Workspace account. As an account administrator, you can also use the `my_customer` alias to represent your account's customer ID. */
   customer: string;
   /** Request body */
   body?: CalendarResource;
 }
+const InsertResourcesCalendarsRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  5,
+) as any as S.Schema<InsertResourcesCalendarsRequest>;
+
 export interface InsertResourcesFeaturesRequest {
   /** The unique ID for the customer's Google Workspace account. As an account administrator, you can also use the `my_customer` alias to represent your account's customer ID. */
   customer: string;
   /** Request body */
   body?: Feature;
 }
+const InsertResourcesFeaturesRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  6,
+) as any as S.Schema<InsertResourcesFeaturesRequest>;
+
 export interface InsertRoleAssignmentsRequest {
   /** Immutable ID of the Google Workspace account. */
   customer: string;
   /** Request body */
   body?: RoleAssignment;
 }
+const InsertRoleAssignmentsRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  7,
+) as any as S.Schema<InsertRoleAssignmentsRequest>;
+
 export interface InsertRolesRequest {
   /** Immutable ID of the Google Workspace account. */
   customer: string;
   /** Request body */
   body?: Role;
 }
+const InsertRolesRequest = /*@__PURE__*/ __L.at(__c22, 0) as any as S.Schema<InsertRolesRequest>;
+
 export interface InsertSchemasRequest {
   /** Immutable ID of the Google Workspace account. */
   customerId: string;
   /** Request body */
   body?: Admin_Schema;
 }
+const InsertSchemasRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  1,
+) as any as S.Schema<InsertSchemasRequest>;
+
 export interface InsertUsersRequest {
   /** Optional. Applies the option selected for [Find and add unmanaged users](https://knowledge.workspace.google.com/admin/users/find-and-add-unmanaged-users) to resolve conflicting accounts when set to `true`. Default: `false` */
   resolveConflictAccount?: boolean;
   /** Request body */
   body?: User;
 }
+const InsertUsersRequest = /*@__PURE__*/ __L.at(__c22, 2) as any as S.Schema<InsertUsersRequest>;
+
 export interface InsertUsersAliasesRequest {
   /** Identifies the user in the API request. The value can be the user's primary email address, alias email address, or unique user ID. */
   userKey: string;
   /** Request body */
   body?: Alias;
 }
+const InsertUsersAliasesRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  3,
+) as any as S.Schema<InsertUsersAliasesRequest>;
+
 export interface InvalidateVerificationCodesRequest {
   /** Email or immutable ID of the user */
   userKey: string;
 }
+const InvalidateVerificationCodesRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  4,
+) as any as S.Schema<InvalidateVerificationCodesRequest>;
+
 export interface InvalidateVerificationCodesResponse {}
+const InvalidateVerificationCodesResponse =
+  ChangeChromeOsDeviceStatusSucceeded as any as S.Schema<InvalidateVerificationCodesResponse>;
+
 export type DirectoryChromeosdevicesIssueCommandRequestCommandTypeEnum =
   | "COMMAND_TYPE_UNSPECIFIED"
   | "REBOOT"
@@ -1756,6 +2537,8 @@ export type DirectoryChromeosdevicesIssueCommandRequestCommandTypeEnum =
   | "CAPTURE_LOGS"
   | "FETCH_CRD_AVAILABILITY_INFO"
   | "FETCH_SUPPORT_PACKET";
+const DirectoryChromeosdevicesIssueCommandRequestCommandTypeEnum = S.String;
+
 /** A request for issuing a command. */
 export interface DirectoryChromeosdevicesIssueCommandRequest {
   /** The type of command. */
@@ -1763,6 +2546,11 @@ export interface DirectoryChromeosdevicesIssueCommandRequest {
   /** The payload for the command, provide it only if command supports it. The following commands support adding payload: * `SET_VOLUME`: Payload is a stringified JSON object in the form: { "volume": 50 }. The volume has to be an integer in the range [0,100]. * `DEVICE_START_CRD_SESSION`: Payload is optionally a stringified JSON object in the form: { "ackedUserPresence": true, "crdSessionType": string }. `ackedUserPresence` is a boolean. By default, `ackedUserPresence` is set to `false`. To start a Chrome Remote Desktop session for an active device, set `ackedUserPresence` to `true`. `crdSessionType` can only select from values `private` (which grants the remote admin exclusive control of the ChromeOS device) or `shared` (which allows the admin and the local user to share control of the ChromeOS device). If not set, `crdSessionType` defaults to `shared`. The `FETCH_CRD_AVAILABILITY_INFO` command can be used to determine available session types on the device. * `REBOOT`: Payload is a stringified JSON object in the form: { "user_session_delay_seconds": 300 }. The `user_session_delay_seconds` is the amount of seconds to wait before rebooting the device if a user is logged in. It has to be an integer in the range [0,300]. When payload is not present for reboot, 0 delay is the default. Note: This only applies if an actual user is logged in, including a Guest. If the device is in the login screen or in Kiosk mode the value is not respected and the device immediately reboots. * `FETCH_SUPPORT_PACKET`: Payload is optionally a stringified JSON object in the form: {"supportPacketDetails":{ "issueCaseId": optional_support_case_id_string, "issueDescription": optional_issue_description_string, "requestedDataCollectors": []}} The list of available `data_collector_enums` are as following: Chrome System Information (1), Crash IDs (2), Memory Details (3), UI Hierarchy (4), Additional ChromeOS Platform Logs (5), Device Event (6), Intel WiFi NICs Debug Dump (7), Touch Events (8), Lacros (9), Lacros System Information (10), ChromeOS Flex Logs (11), DBus Details (12), ChromeOS Network Routes (13), ChromeOS Shill (Connection Manager) Logs (14), Policies (15), ChromeOS System State and Logs (16), ChromeOS System Logs (17), ChromeOS Chrome User Logs (18), ChromeOS Bluetooth (19), ChromeOS Connected Input Devices (20), ChromeOS Traffic Counters (21), ChromeOS Virtual Keyboard (22), ChromeOS Network Health (23). See more details in [help article](https://support.google.com/chrome/a?p=remote-log). */
   payload?: string;
 }
+const DirectoryChromeosdevicesIssueCommandRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  5,
+) as any as S.Schema<DirectoryChromeosdevicesIssueCommandRequest>;
+
 export interface IssueCommandCustomerDevicesChromeosRequest {
   /** Immutable. ID of Chrome OS Device. */
   deviceId: string;
@@ -1771,16 +2559,30 @@ export interface IssueCommandCustomerDevicesChromeosRequest {
   /** Request body */
   body?: DirectoryChromeosdevicesIssueCommandRequest;
 }
+const IssueCommandCustomerDevicesChromeosRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  6,
+) as any as S.Schema<IssueCommandCustomerDevicesChromeosRequest>;
+
 /** A response for issuing a command. */
 export interface DirectoryChromeosdevicesIssueCommandResponse {
   /** The unique ID of the issued command, used to retrieve the command status. */
   commandId?: string;
 }
+const DirectoryChromeosdevicesIssueCommandResponse = /*@__PURE__*/ __L.at(
+  __c22,
+  7,
+) as any as S.Schema<DirectoryChromeosdevicesIssueCommandResponse>;
+
 export interface ListAspsRequest {
   /** Identifies the user in the API request. The value can be the user's primary email address, alias email address, or unique user ID. */
   userKey: string;
 }
+const ListAspsRequest = /*@__PURE__*/ __L.at(__c23, 0) as any as S.Schema<ListAspsRequest>;
+
 export type AspList = Array<Asp>;
+const AspList = /*@__PURE__*/ __L.at(__c23, 1) as any as S.Schema<AspList>;
+
 export interface Asps {
   /** ETag of the resource. */
   etag?: string;
@@ -1789,8 +2591,14 @@ export interface Asps {
   /** A list of ASP resources. */
   items?: AspList;
 }
+const Asps = /*@__PURE__*/ __L.at(__c23, 2) as any as S.Schema<Asps>;
+
 export type ListChromeosdevicesSortOrderEnum = "ASCENDING" | "DESCENDING";
+const ListChromeosdevicesSortOrderEnum = S.String;
+
 export type ListChromeosdevicesProjectionEnum = "BASIC" | "FULL";
+const ListChromeosdevicesProjectionEnum = S.String;
+
 export type ListChromeosdevicesOrderByEnum =
   | "annotatedLocation"
   | "annotatedUser"
@@ -1798,6 +2606,8 @@ export type ListChromeosdevicesOrderByEnum =
   | "notes"
   | "serialNumber"
   | "status";
+const ListChromeosdevicesOrderByEnum = S.String;
+
 export interface ListChromeosdevicesRequest {
   /** Return devices from all child orgunits, as well as the specified org unit. If this is set to true, 'orgUnitPath' must be provided. */
   includeChildOrgunits?: boolean;
@@ -1818,7 +2628,14 @@ export interface ListChromeosdevicesRequest {
   /** The full path of the organizational unit (minus the leading `/`) or its unique ID. */
   orgUnitPath?: string;
 }
+const ListChromeosdevicesRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  3,
+) as any as S.Schema<ListChromeosdevicesRequest>;
+
 export type ChromeOsDeviceList = Array<ChromeOsDevice>;
+const ChromeOsDeviceList = /*@__PURE__*/ __L.at(__c23, 4) as any as S.Schema<ChromeOsDeviceList>;
+
 export interface ChromeOsDevices {
   /** Kind of resource this is. */
   kind?: string;
@@ -1829,6 +2646,8 @@ export interface ChromeOsDevices {
   /** ETag of the resource. */
   etag?: string;
 }
+const ChromeOsDevices = /*@__PURE__*/ __L.at(__c23, 5) as any as S.Schema<ChromeOsDevices>;
+
 export interface ListCustomersChromePrintersRequest {
   /** A page token, received from a previous call. */
   pageToken?: string;
@@ -1843,6 +2662,11 @@ export interface ListCustomersChromePrintersRequest {
   /** The maximum number of objects to return. The service may return fewer than this value. */
   pageSize?: number;
 }
+const ListCustomersChromePrintersRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  6,
+) as any as S.Schema<ListCustomersChromePrintersRequest>;
+
 /** Response for listing printers. */
 export interface ListPrintersResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
@@ -1850,6 +2674,11 @@ export interface ListPrintersResponse {
   /** List of printers. If `org_unit_id` was given in the request, then only printers visible for this OU will be returned. If `org_unit_id` was not given in the request, then all printers will be returned. */
   printers?: PrinterList;
 }
+const ListPrintersResponse = /*@__PURE__*/ __L.at(
+  __c23,
+  7,
+) as any as S.Schema<ListPrintersResponse>;
+
 export interface ListCustomersChromePrintServersRequest {
   /** Search query in [Common Expression Language syntax](https://github.com/google/cel-spec). Supported filters are `display_name`, `description`, and `uri`. Example: `printServer.displayName=='marketing-queue'`. */
   filter?: string;
@@ -1864,18 +2693,33 @@ export interface ListCustomersChromePrintServersRequest {
   /** Sort order for results. Supported values are `display_name`, `description`, or `create_time`. Default order is ascending, but descending order can be returned by appending "desc" to the `order_by` field. For instance, `orderBy=='description desc'` returns the print servers sorted by description in descending order. */
   orderBy?: string;
 }
+const ListCustomersChromePrintServersRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  0,
+) as any as S.Schema<ListCustomersChromePrintServersRequest>;
+
 export interface ListPrintServersResponse {
   /** List of print servers. */
   printServers?: PrintServerList;
   /** A token that can be sent as `page_token` in a request to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
+const ListPrintServersResponse = /*@__PURE__*/ __L.at(
+  __c24,
+  1,
+) as any as S.Schema<ListPrintServersResponse>;
+
 export interface ListDomainAliasesRequest {
   /** The unique ID for the customer's Google Workspace account. In case of a multi-domain account, to fetch all groups for a customer, use this field instead of `domain`. You can also use the `my_customer` alias to represent your account's `customerId`. The `customerId` is also returned as part of the [Users](https://developers.google.com/workspace/admin/directory/v1/reference/users) resource. You must provide either the `customer` or the `domain` parameter. */
   customer: string;
   /** Name of the parent domain for which domain aliases are to be fetched. */
   parentDomainName?: string;
 }
+const ListDomainAliasesRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  2,
+) as any as S.Schema<ListDomainAliasesRequest>;
+
 export interface DomainAliases {
   /** Kind of resource this is. */
   kind?: string;
@@ -1884,11 +2728,17 @@ export interface DomainAliases {
   /** ETag of the resource. */
   etag?: string;
 }
+const DomainAliases = /*@__PURE__*/ __L.at(__c24, 3) as any as S.Schema<DomainAliases>;
+
 export interface ListDomainsRequest {
   /** The unique ID for the customer's Google Workspace account. In case of a multi-domain account, to fetch all groups for a customer, use this field instead of `domain`. You can also use the `my_customer` alias to represent your account's `customerId`. The `customerId` is also returned as part of the [Users](https://developers.google.com/workspace/admin/directory/v1/reference/users) resource. You must provide either the `customer` or the `domain` parameter. */
   customer: string;
 }
+const ListDomainsRequest = /*@__PURE__*/ __L.at(__c24, 4) as any as S.Schema<ListDomainsRequest>;
+
 export type DomainsList = Array<Domains>;
+const DomainsList = /*@__PURE__*/ __L.at(__c24, 5) as any as S.Schema<DomainsList>;
+
 export interface Domains2 {
   /** Kind of resource this is. */
   kind?: string;
@@ -1897,8 +2747,14 @@ export interface Domains2 {
   /** ETag of the resource. */
   etag?: string;
 }
+const Domains2 = /*@__PURE__*/ __L.at(__c24, 6) as any as S.Schema<Domains2>;
+
 export type ListGroupsOrderByEnum = "email";
+const ListGroupsOrderByEnum = S.String;
+
 export type ListGroupsSortOrderEnum = "ASCENDING" | "DESCENDING";
+const ListGroupsSortOrderEnum = S.String;
+
 export interface ListGroupsRequest {
   /** The unique ID for the customer's Google Workspace account. In case of a multi-domain account, to fetch all groups for a customer, use this field instead of `domain`. You can also use the `my_customer` alias to represent your account's `customerId`. The `customerId` is also returned as part of the [Users](https://developers.google.com/workspace/admin/directory/v1/reference/users) resource. You must provide either the `customer` or the `domain` parameter. */
   customer?: string;
@@ -1917,7 +2773,11 @@ export interface ListGroupsRequest {
   /** Email or immutable ID of the user if only those groups are to be listed, the given user is a member of. If it's an ID, it should match with the ID of the user object. Cannot be used with the `customer` parameter. */
   userKey?: string;
 }
+const ListGroupsRequest = /*@__PURE__*/ __L.at(__c24, 7) as any as S.Schema<ListGroupsRequest>;
+
 export type GroupList = Array<Group>;
+const GroupList = /*@__PURE__*/ __L.at(__c25, 0) as any as S.Schema<GroupList>;
+
 export interface Groups {
   /** Token used to access next page of this result. */
   nextPageToken?: string;
@@ -1928,17 +2788,28 @@ export interface Groups {
   /** A list of group objects. */
   groups?: GroupList;
 }
+const Groups = /*@__PURE__*/ __L.at(__c25, 1) as any as S.Schema<Groups>;
+
 export interface ListGroupsAliasesRequest {
   /** Identifies the group in the API request. The value can be the group's email address, group alias, or the unique group ID. */
   groupKey: string;
 }
+const ListGroupsAliasesRequest = /*@__PURE__*/ __L.at(
+  __c25,
+  2,
+) as any as S.Schema<ListGroupsAliasesRequest>;
+
 export type DocumentList = Array<unknown>;
+const DocumentList = /*@__PURE__*/ __L.at(__c25, 3) as any as S.Schema<DocumentList>;
+
 /** JSON response template to list aliases in Directory API. */
 export interface Aliases {
   etag?: string;
   aliases?: DocumentList;
   kind?: string;
 }
+const Aliases = /*@__PURE__*/ __L.at(__c25, 4) as any as S.Schema<Aliases>;
+
 export interface ListMembersRequest {
   /** The `roles` query parameter allows you to retrieve group members by role. Allowed values are `OWNER`, `MANAGER`, and `MEMBER`. */
   roles?: string;
@@ -1951,7 +2822,11 @@ export interface ListMembersRequest {
   /** Identifies the group in the API request. The value can be the group's email address, group alias, or the unique group ID. */
   groupKey: string;
 }
+const ListMembersRequest = /*@__PURE__*/ __L.at(__c25, 5) as any as S.Schema<ListMembersRequest>;
+
 export type MemberList = Array<Member>;
+const MemberList = /*@__PURE__*/ __L.at(__c25, 6) as any as S.Schema<MemberList>;
+
 export interface Members {
   /** ETag of the resource. */
   etag?: string;
@@ -1962,7 +2837,11 @@ export interface Members {
   /** Kind of resource this is. */
   kind?: string;
 }
+const Members = /*@__PURE__*/ __L.at(__c25, 7) as any as S.Schema<Members>;
+
 export type ListMobiledevicesSortOrderEnum = "ASCENDING" | "DESCENDING";
+const ListMobiledevicesSortOrderEnum = S.String;
+
 export type ListMobiledevicesOrderByEnum =
   | "deviceId"
   | "email"
@@ -1972,7 +2851,11 @@ export type ListMobiledevicesOrderByEnum =
   | "os"
   | "status"
   | "type";
+const ListMobiledevicesOrderByEnum = S.String;
+
 export type ListMobiledevicesProjectionEnum = "BASIC" | "FULL";
+const ListMobiledevicesProjectionEnum = S.String;
+
 export interface ListMobiledevicesRequest {
   /** Token to specify next page in the list */
   pageToken?: string;
@@ -1989,7 +2872,14 @@ export interface ListMobiledevicesRequest {
   /** Search string in the format given at https://developers.google.com/workspace/admin/directory/v1/search-operators */
   query?: string;
 }
+const ListMobiledevicesRequest = /*@__PURE__*/ __L.at(
+  __c26,
+  0,
+) as any as S.Schema<ListMobiledevicesRequest>;
+
 export type MobileDeviceList = Array<MobileDevice>;
+const MobileDeviceList = /*@__PURE__*/ __L.at(__c26, 1) as any as S.Schema<MobileDeviceList>;
+
 export interface MobileDevices {
   /** Kind of resource this is. */
   kind?: string;
@@ -2000,7 +2890,11 @@ export interface MobileDevices {
   /** ETag of the resource. */
   etag?: string;
 }
+const MobileDevices = /*@__PURE__*/ __L.at(__c26, 2) as any as S.Schema<MobileDevices>;
+
 export type ListOrgunitsTypeEnum = "all" | "children" | "allIncludingParent";
+const ListOrgunitsTypeEnum = S.String;
+
 export interface ListOrgunitsRequest {
   /** The full path to the organizational unit or its unique ID. Returns the children of the specified organizational unit. */
   orgUnitPath?: string;
@@ -2009,7 +2903,11 @@ export interface ListOrgunitsRequest {
   /** Whether to return all sub-organizations or just immediate children. */
   type?: ListOrgunitsTypeEnum | (string & {});
 }
+const ListOrgunitsRequest = /*@__PURE__*/ __L.at(__c26, 3) as any as S.Schema<ListOrgunitsRequest>;
+
 export type OrgUnitList = Array<OrgUnit>;
+const OrgUnitList = /*@__PURE__*/ __L.at(__c26, 4) as any as S.Schema<OrgUnitList>;
+
 export interface OrgUnits {
   /** ETag of the resource. */
   etag?: string;
@@ -2018,6 +2916,8 @@ export interface OrgUnits {
   /** The type of the API resource. For Org Unit resources, the type is `admin#directory#orgUnits`. */
   kind?: string;
 }
+const OrgUnits = /*@__PURE__*/ __L.at(__c26, 5) as any as S.Schema<OrgUnits>;
+
 export interface ListPrinterModelsCustomersChromePrintersRequest {
   /** Filer to list only models by a given manufacturer in format: "manufacturer:Brother". Search syntax is shared between this api and Admin Console printers pages. */
   filter?: string;
@@ -2028,6 +2928,11 @@ export interface ListPrinterModelsCustomersChromePrintersRequest {
   /** Required. The name of the customer who owns this collection of printers. Format: customers/{customer_id} */
   parent: string;
 }
+const ListPrinterModelsCustomersChromePrintersRequest = /*@__PURE__*/ __L.at(
+  __c26,
+  6,
+) as any as S.Schema<ListPrinterModelsCustomersChromePrintersRequest>;
+
 /** Printer manufacturer and model */
 export interface PrinterModel {
   /** Manufacturer. eq. "Brother" */
@@ -2037,7 +2942,11 @@ export interface PrinterModel {
   /** Display name. eq. "Brother MFC-8840D" */
   displayName?: string;
 }
+const PrinterModel = /*@__PURE__*/ __L.at(__c26, 7) as any as S.Schema<PrinterModel>;
+
 export type PrinterModelList = Array<PrinterModel>;
+const PrinterModelList = /*@__PURE__*/ __L.at(__c27, 0) as any as S.Schema<PrinterModelList>;
+
 /** Response for listing allowed printer models. */
 export interface ListPrinterModelsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
@@ -2045,10 +2954,20 @@ export interface ListPrinterModelsResponse {
   /** Printer models that are currently allowed to be configured for ChromeOs. Some printers may be added or removed over time. */
   printerModels?: PrinterModelList;
 }
+const ListPrinterModelsResponse = /*@__PURE__*/ __L.at(
+  __c27,
+  1,
+) as any as S.Schema<ListPrinterModelsResponse>;
+
 export interface ListPrivilegesRequest {
   /** The unique ID for the customer's Google Workspace account. In case of a multi-domain account, to fetch all groups for a customer, use this field instead of `domain`. You can also use the `my_customer` alias to represent your account's `customerId`. The `customerId` is also returned as part of the [Users](https://developers.google.com/workspace/admin/directory/v1/reference/users) resource. You must provide either the `customer` or the `domain` parameter. */
   customer: string;
 }
+const ListPrivilegesRequest = /*@__PURE__*/ __L.at(
+  __c27,
+  2,
+) as any as S.Schema<ListPrivilegesRequest>;
+
 export interface Privilege {
   /** The name of the privilege. */
   privilegeName?: string;
@@ -2065,7 +2984,11 @@ export interface Privilege {
   /** The type of the API resource. This is always `admin#directory#privilege`. */
   kind?: string;
 }
+const Privilege = /*@__PURE__*/ __L.at(__c27, 3) as any as S.Schema<Privilege>;
+
 export type PrivilegeList = Array<Privilege>;
+const PrivilegeList = /*@__PURE__*/ __L.at(__c27, 4) as any as S.Schema<PrivilegeList>;
+
 export interface Privileges {
   /** The type of the API resource. This is always `admin#directory#privileges`. */
   kind?: string;
@@ -2074,6 +2997,8 @@ export interface Privileges {
   /** ETag of the resource. */
   etag?: string;
 }
+const Privileges = /*@__PURE__*/ __L.at(__c27, 5) as any as S.Schema<Privileges>;
+
 export interface ListResourcesBuildingsRequest {
   /** Token to specify the next page in the list. */
   pageToken?: string;
@@ -2082,7 +3007,14 @@ export interface ListResourcesBuildingsRequest {
   /** Maximum number of results to return. */
   maxResults?: number;
 }
+const ListResourcesBuildingsRequest = /*@__PURE__*/ __L.at(
+  __c27,
+  6,
+) as any as S.Schema<ListResourcesBuildingsRequest>;
+
 export type BuildingList = Array<Building>;
+const BuildingList = /*@__PURE__*/ __L.at(__c27, 7) as any as S.Schema<BuildingList>;
+
 /** Public API: Resources.buildings */
 export interface Buildings {
   /** ETag of the resource. */
@@ -2094,6 +3026,8 @@ export interface Buildings {
   /** Kind of resource this is. */
   kind?: string;
 }
+const Buildings = /*@__PURE__*/ __L.at(__c28, 0) as any as S.Schema<Buildings>;
+
 export interface ListResourcesCalendarsRequest {
   /** The unique ID for the customer's Google Workspace account. As an account administrator, you can also use the `my_customer` alias to represent your account's customer ID. */
   customer: string;
@@ -2106,7 +3040,17 @@ export interface ListResourcesCalendarsRequest {
   /** Maximum number of results to return. */
   maxResults?: number;
 }
+const ListResourcesCalendarsRequest = /*@__PURE__*/ __L.at(
+  __c28,
+  1,
+) as any as S.Schema<ListResourcesCalendarsRequest>;
+
 export type CalendarResourceList = Array<CalendarResource>;
+const CalendarResourceList = /*@__PURE__*/ __L.at(
+  __c28,
+  2,
+) as any as S.Schema<CalendarResourceList>;
+
 /** Public API: Resources.calendars */
 export interface CalendarResources {
   /** ETag of the resource. */
@@ -2118,6 +3062,8 @@ export interface CalendarResources {
   /** The continuation token, used to page through large result sets. Provide this value in a subsequent request to return the next page of results. */
   nextPageToken?: string;
 }
+const CalendarResources = /*@__PURE__*/ __L.at(__c28, 3) as any as S.Schema<CalendarResources>;
+
 export interface ListResourcesFeaturesRequest {
   /** Token to specify the next page in the list. */
   pageToken?: string;
@@ -2126,7 +3072,14 @@ export interface ListResourcesFeaturesRequest {
   /** Maximum number of results to return. */
   maxResults?: number;
 }
+const ListResourcesFeaturesRequest = /*@__PURE__*/ __L.at(
+  __c28,
+  4,
+) as any as S.Schema<ListResourcesFeaturesRequest>;
+
 export type FeatureList = Array<Feature>;
+const FeatureList = /*@__PURE__*/ __L.at(__c28, 5) as any as S.Schema<FeatureList>;
+
 /** Public API: Resources.features */
 export interface Features {
   /** Kind of resource this is. */
@@ -2138,6 +3091,8 @@ export interface Features {
   /** The Features in this page of results. */
   features?: FeatureList;
 }
+const Features = /*@__PURE__*/ __L.at(__c28, 6) as any as S.Schema<Features>;
+
 export interface ListRoleAssignmentsRequest {
   /** When set to `true`, fetches indirect role assignments (i.e. role assignment via a group) as well as direct ones. Defaults to `false`. You must specify `user_key` or the indirect role assignments will not be included. */
   includeIndirectRoleAssignments?: boolean;
@@ -2152,7 +3107,14 @@ export interface ListRoleAssignmentsRequest {
   /** Immutable ID of a role. If included in the request, returns only role assignments containing this role ID. */
   roleId?: string;
 }
+const ListRoleAssignmentsRequest = /*@__PURE__*/ __L.at(
+  __c28,
+  7,
+) as any as S.Schema<ListRoleAssignmentsRequest>;
+
 export type RoleAssignmentList = Array<RoleAssignment>;
+const RoleAssignmentList = /*@__PURE__*/ __L.at(__c29, 0) as any as S.Schema<RoleAssignmentList>;
+
 export interface RoleAssignments {
   /** The type of the API resource. This is always `admin#directory#roleAssignments`. */
   kind?: string;
@@ -2162,6 +3124,8 @@ export interface RoleAssignments {
   /** A list of RoleAssignment resources. */
   items: RoleAssignmentList;
 }
+const RoleAssignments = /*@__PURE__*/ __L.at(__c29, 1) as any as S.Schema<RoleAssignments>;
+
 export interface ListRolesRequest {
   /** Maximum number of results to return. */
   maxResults?: number;
@@ -2170,7 +3134,11 @@ export interface ListRolesRequest {
   /** Token to specify the next page in the list. */
   pageToken?: string;
 }
+const ListRolesRequest = /*@__PURE__*/ __L.at(__c29, 2) as any as S.Schema<ListRolesRequest>;
+
 export type RoleList = Array<Role>;
+const RoleList = /*@__PURE__*/ __L.at(__c29, 3) as any as S.Schema<RoleList>;
+
 export interface Roles {
   /** The type of the API resource. This is always `admin#directory#roles`. */
   kind?: string;
@@ -2180,11 +3148,17 @@ export interface Roles {
   /** ETag of the resource. */
   etag?: string;
 }
+const Roles = /*@__PURE__*/ __L.at(__c29, 4) as any as S.Schema<Roles>;
+
 export interface ListSchemasRequest {
   /** The unique ID for the customer's Google Workspace account. In case of a multi-domain account, to fetch all groups for a customer, use this field instead of `domain`. You can also use the `my_customer` alias to represent your account's `customerId`. The `customerId` is also returned as part of the [Users](https://developers.google.com/workspace/admin/directory/v1/reference/users) resource. You must provide either the `customer` or the `domain` parameter. */
   customerId: string;
 }
+const ListSchemasRequest = /*@__PURE__*/ __L.at(__c29, 5) as any as S.Schema<ListSchemasRequest>;
+
 export type Admin_SchemaList = Array<Admin_Schema>;
+const Admin_SchemaList = /*@__PURE__*/ __L.at(__c29, 6) as any as S.Schema<Admin_SchemaList>;
+
 /** JSON response template for List Schema operation in Directory API. */
 export interface Schemas {
   /** ETag of the resource. */
@@ -2194,11 +3168,17 @@ export interface Schemas {
   /** A list of UserSchema objects. */
   schemas?: Admin_SchemaList;
 }
+const Schemas = /*@__PURE__*/ __L.at(__c29, 7) as any as S.Schema<Schemas>;
+
 export interface ListTokensRequest {
   /** Identifies the user in the API request. The value can be the user's primary email address, alias email address, or unique user ID. */
   userKey: string;
 }
+const ListTokensRequest = /*@__PURE__*/ __L.at(__c30, 0) as any as S.Schema<ListTokensRequest>;
+
 export type TokenList = Array<Token>;
+const TokenList = /*@__PURE__*/ __L.at(__c30, 1) as any as S.Schema<TokenList>;
+
 /** JSON response template for List tokens operation in Directory API. */
 export interface Tokens {
   /** ETag of the resource. */
@@ -2208,11 +3188,23 @@ export interface Tokens {
   /** The type of the API resource. This is always `admin#directory#tokenList`. */
   kind?: string;
 }
+const Tokens = /*@__PURE__*/ __L.at(__c30, 2) as any as S.Schema<Tokens>;
+
 export type ListUsersProjectionEnum = "basic" | "custom" | "full";
+const ListUsersProjectionEnum = S.String;
+
 export type ListUsersViewTypeEnum = "admin_view" | "domain_public";
+const ListUsersViewTypeEnum = S.String;
+
 export type ListUsersEventEnum = "add" | "delete" | "makeAdmin" | "undelete" | "update";
+const ListUsersEventEnum = S.String;
+
 export type ListUsersOrderByEnum = "email" | "familyName" | "givenName";
+const ListUsersOrderByEnum = S.String;
+
 export type ListUsersSortOrderEnum = "ASCENDING" | "DESCENDING";
+const ListUsersSortOrderEnum = S.String;
+
 export interface ListUsersRequest {
   /** The domain name. Use this field to get users from only one domain. To return all domains for a customer account, use the `customer` query parameter instead. Either the `customer` or the `domain` parameter must be provided. */
   domain?: string;
@@ -2239,7 +3231,11 @@ export interface ListUsersRequest {
   /** Whether to return results in ascending or descending order, ignoring case. */
   sortOrder?: ListUsersSortOrderEnum | (string & {});
 }
+const ListUsersRequest = /*@__PURE__*/ __L.at(__c30, 3) as any as S.Schema<ListUsersRequest>;
+
 export type UserList = Array<User>;
+const UserList = /*@__PURE__*/ __L.at(__c30, 4) as any as S.Schema<UserList>;
+
 export interface Users {
   /** Event that triggered this response (only used in case of Push Response) */
   trigger_event?: string;
@@ -2252,17 +3248,31 @@ export interface Users {
   /** ETag of the resource. */
   etag?: string;
 }
+const Users = /*@__PURE__*/ __L.at(__c30, 5) as any as S.Schema<Users>;
+
 export type ListUsersAliasesEventEnum = "add" | "delete";
+const ListUsersAliasesEventEnum = S.String;
+
 export interface ListUsersAliasesRequest {
   /** Identifies the user in the API request. The value can be the user's primary email address, alias email address, or unique user ID. */
   userKey: string;
   /** Events to watch for. */
   event?: ListUsersAliasesEventEnum | (string & {});
 }
+const ListUsersAliasesRequest = /*@__PURE__*/ __L.at(
+  __c30,
+  6,
+) as any as S.Schema<ListUsersAliasesRequest>;
+
 export interface ListVerificationCodesRequest {
   /** Identifies the user in the API request. The value can be the user's primary email address, alias email address, or unique user ID. */
   userKey: string;
 }
+const ListVerificationCodesRequest = /*@__PURE__*/ __L.at(
+  __c30,
+  7,
+) as any as S.Schema<ListVerificationCodesRequest>;
+
 /** The Directory API allows you to view, generate, and invalidate backup verification codes for a user. */
 export interface VerificationCode {
   /** ETag of the resource. */
@@ -2274,7 +3284,14 @@ export interface VerificationCode {
   /** A current verification code for the user. Invalidated or used verification codes are not returned as part of the result. */
   verificationCode?: string;
 }
+const VerificationCode = /*@__PURE__*/ __L.at(__c31, 0) as any as S.Schema<VerificationCode>;
+
 export type VerificationCodeList = Array<VerificationCode>;
+const VerificationCodeList = /*@__PURE__*/ __L.at(
+  __c31,
+  1,
+) as any as S.Schema<VerificationCodeList>;
+
 /** JSON response template for list verification codes operation in Directory API. */
 export interface VerificationCodes {
   /** ETag of the resource. */
@@ -2284,21 +3301,38 @@ export interface VerificationCodes {
   /** A list of verification code resources. */
   items?: VerificationCodeList;
 }
+const VerificationCodes = /*@__PURE__*/ __L.at(__c31, 2) as any as S.Schema<VerificationCodes>;
+
 export interface UserMakeAdmin {
   /** Indicates the administrator status of the user. */
   status?: boolean;
 }
+const UserMakeAdmin = /*@__PURE__*/ __L.at(__c31, 3) as any as S.Schema<UserMakeAdmin>;
+
 export interface MakeAdminUsersRequest {
   /** Identifies the user in the API request. The value can be the user's primary email address, alias email address, or unique user ID. */
   userKey: string;
   /** Request body */
   body?: UserMakeAdmin;
 }
+const MakeAdminUsersRequest = /*@__PURE__*/ __L.at(
+  __c31,
+  4,
+) as any as S.Schema<MakeAdminUsersRequest>;
+
 export interface MakeAdminUsersResponse {}
+const MakeAdminUsersResponse =
+  ActionChromeosdevicesResponse as any as S.Schema<MakeAdminUsersResponse>;
+
 export interface ChromeOsMoveDevicesToOu {
   /** Chrome OS devices to be moved to OU */
   deviceIds?: StringList;
 }
+const ChromeOsMoveDevicesToOu = /*@__PURE__*/ __L.at(
+  __c31,
+  5,
+) as any as S.Schema<ChromeOsMoveDevicesToOu>;
+
 export interface MoveDevicesToOuChromeosdevicesRequest {
   /** Full path of the target organizational unit or its ID */
   orgUnitPath: string;
@@ -2307,8 +3341,18 @@ export interface MoveDevicesToOuChromeosdevicesRequest {
   /** Request body */
   body?: ChromeOsMoveDevicesToOu;
 }
+const MoveDevicesToOuChromeosdevicesRequest = /*@__PURE__*/ __L.at(
+  __c31,
+  6,
+) as any as S.Schema<MoveDevicesToOuChromeosdevicesRequest>;
+
 export interface MoveDevicesToOuChromeosdevicesResponse {}
+const MoveDevicesToOuChromeosdevicesResponse =
+  ChangeChromeOsDeviceStatusSucceeded as any as S.Schema<MoveDevicesToOuChromeosdevicesResponse>;
+
 export type PatchChromeosdevicesProjectionEnum = "BASIC" | "FULL";
+const PatchChromeosdevicesProjectionEnum = S.String;
+
 export interface PatchChromeosdevicesRequest {
   /** Determines whether the response contains the full list of properties or only a subset. */
   projection?: PatchChromeosdevicesProjectionEnum | (string & {});
@@ -2319,12 +3363,22 @@ export interface PatchChromeosdevicesRequest {
   /** Request body */
   body?: ChromeOsDevice;
 }
+const PatchChromeosdevicesRequest = /*@__PURE__*/ __L.at(
+  __c31,
+  7,
+) as any as S.Schema<PatchChromeosdevicesRequest>;
+
 export interface PatchCustomersRequest {
   /** Id of the customer to be updated */
   customerKey: string;
   /** Request body */
   body?: Customer;
 }
+const PatchCustomersRequest = /*@__PURE__*/ __L.at(
+  __c32,
+  0,
+) as any as S.Schema<PatchCustomersRequest>;
+
 export interface PatchCustomersChromePrintersRequest {
   /** The list of fields to be cleared. Note, some of the fields are read only and cannot be updated. Values for not specified fields will be patched. */
   clearMask?: string;
@@ -2335,6 +3389,11 @@ export interface PatchCustomersChromePrintersRequest {
   /** Request body */
   body?: Printer;
 }
+const PatchCustomersChromePrintersRequest = /*@__PURE__*/ __L.at(
+  __c32,
+  1,
+) as any as S.Schema<PatchCustomersChromePrintersRequest>;
+
 export interface PatchCustomersChromePrintServersRequest {
   /** Identifier. Resource name of the print server. Leave empty when creating. Format: `customers/{customer.id}/printServers/{print_server.id}` */
   name: string;
@@ -2343,12 +3402,19 @@ export interface PatchCustomersChromePrintServersRequest {
   /** Request body */
   body?: PrintServer;
 }
+const PatchCustomersChromePrintServersRequest = /*@__PURE__*/ __L.at(
+  __c32,
+  2,
+) as any as S.Schema<PatchCustomersChromePrintServersRequest>;
+
 export interface PatchGroupsRequest {
   /** Identifies the group in the API request. The value can be the group's email address, group alias, or the unique group ID. */
   groupKey: string;
   /** Request body */
   body?: Group;
 }
+const PatchGroupsRequest = /*@__PURE__*/ __L.at(__c32, 3) as any as S.Schema<PatchGroupsRequest>;
+
 export interface PatchMembersRequest {
   /** Identifies the group in the API request. The value can be the group's email address, group alias, or the unique group ID. */
   groupKey: string;
@@ -2357,6 +3423,8 @@ export interface PatchMembersRequest {
   /** Request body */
   body?: Member;
 }
+const PatchMembersRequest = /*@__PURE__*/ __L.at(__c32, 4) as any as S.Schema<PatchMembersRequest>;
+
 export interface PatchOrgunitsRequest {
   /** The unique ID for the customer's Google Workspace account. As an account administrator, you can also use the `my_customer` alias to represent your account's `customerId`. The `customerId` is also returned as part of the [Users resource](https://developers.google.com/workspace/admin/directory/v1/reference/users). */
   customerId: string;
@@ -2365,10 +3433,17 @@ export interface PatchOrgunitsRequest {
   /** Request body */
   body?: OrgUnit;
 }
+const PatchOrgunitsRequest = /*@__PURE__*/ __L.at(
+  __c32,
+  5,
+) as any as S.Schema<PatchOrgunitsRequest>;
+
 export type PatchResourcesBuildingsCoordinatesSourceEnum =
   | "CLIENT_SPECIFIED"
   | "RESOLVED_FROM_ADDRESS"
   | "SOURCE_UNSPECIFIED";
+const PatchResourcesBuildingsCoordinatesSourceEnum = S.String;
+
 export interface PatchResourcesBuildingsRequest {
   /** The id of the building to update. */
   buildingId: string;
@@ -2379,6 +3454,11 @@ export interface PatchResourcesBuildingsRequest {
   /** Request body */
   body?: Building;
 }
+const PatchResourcesBuildingsRequest = /*@__PURE__*/ __L.at(
+  __c32,
+  6,
+) as any as S.Schema<PatchResourcesBuildingsRequest>;
+
 export interface PatchResourcesCalendarsRequest {
   /** The unique ID of the calendar resource to update. */
   calendarResourceId: string;
@@ -2387,6 +3467,11 @@ export interface PatchResourcesCalendarsRequest {
   /** Request body */
   body?: CalendarResource;
 }
+const PatchResourcesCalendarsRequest = /*@__PURE__*/ __L.at(
+  __c32,
+  7,
+) as any as S.Schema<PatchResourcesCalendarsRequest>;
+
 export interface PatchResourcesFeaturesRequest {
   /** The unique ID of the feature to update. */
   featureKey: string;
@@ -2395,6 +3480,11 @@ export interface PatchResourcesFeaturesRequest {
   /** Request body */
   body?: Feature;
 }
+const PatchResourcesFeaturesRequest = /*@__PURE__*/ __L.at(
+  __c33,
+  0,
+) as any as S.Schema<PatchResourcesFeaturesRequest>;
+
 export interface PatchRolesRequest {
   /** Immutable ID of the role. */
   roleId: string;
@@ -2403,6 +3493,8 @@ export interface PatchRolesRequest {
   /** Request body */
   body?: Role;
 }
+const PatchRolesRequest = /*@__PURE__*/ __L.at(__c33, 1) as any as S.Schema<PatchRolesRequest>;
+
 export interface PatchSchemasRequest {
   /** Immutable ID of the Google Workspace account. */
   customerId: string;
@@ -2411,22 +3503,33 @@ export interface PatchSchemasRequest {
   /** Request body */
   body?: Admin_Schema;
 }
+const PatchSchemasRequest = /*@__PURE__*/ __L.at(__c33, 2) as any as S.Schema<PatchSchemasRequest>;
+
 export interface PatchUsersRequest {
   /** Identifies the user in the API request. The value can be the user's primary email address, alias email address, or unique user ID. */
   userKey: string;
   /** Request body */
   body?: User;
 }
+const PatchUsersRequest = /*@__PURE__*/ __L.at(__c33, 3) as any as S.Schema<PatchUsersRequest>;
+
 export interface PatchUsersPhotosRequest {
   /** Identifies the user in the API request. The value can be the user's primary email address, alias email address, or unique user ID. */
   userKey: string;
   /** Request body */
   body?: UserPhoto;
 }
+const PatchUsersPhotosRequest = /*@__PURE__*/ __L.at(
+  __c33,
+  4,
+) as any as S.Schema<PatchUsersPhotosRequest>;
+
 export interface FeatureRename {
   /** New name of the feature. */
   newName?: string;
 }
+const FeatureRename = /*@__PURE__*/ __L.at(__c33, 5) as any as S.Schema<FeatureRename>;
+
 export interface RenameResourcesFeaturesRequest {
   /** The unique ID for the customer's Google Workspace account. As an account administrator, you can also use the `my_customer` alias to represent your account's customer ID. */
   customer: string;
@@ -2435,13 +3538,27 @@ export interface RenameResourcesFeaturesRequest {
   /** Request body */
   body?: FeatureRename;
 }
+const RenameResourcesFeaturesRequest = /*@__PURE__*/ __L.at(
+  __c33,
+  6,
+) as any as S.Schema<RenameResourcesFeaturesRequest>;
+
 export interface RenameResourcesFeaturesResponse {}
+const RenameResourcesFeaturesResponse =
+  DeleteResourcesFeaturesResponse as any as S.Schema<RenameResourcesFeaturesResponse>;
+
 export interface SignOutUsersRequest {
   /** Identifies the target user in the API request. The value can be the user's primary email address, alias email address, or unique user ID. */
   userKey: string;
 }
+const SignOutUsersRequest = /*@__PURE__*/ __L.at(__c33, 7) as any as S.Schema<SignOutUsersRequest>;
+
 export interface SignOutUsersResponse {}
+const SignOutUsersResponse = ActionChromeosdevicesResponse as any as S.Schema<SignOutUsersResponse>;
+
 export type StringMap = { [key: string]: string | undefined };
+const StringMap = /*@__PURE__*/ __L.at(__c34, 0) as any as S.Schema<StringMap>;
+
 /** An notification channel used to watch for resource changes. */
 export interface Channel {
   /** Additional parameters controlling delivery channel behavior. Optional. For example, `params.ttl` specifies the time-to-live in seconds for the notification channel, where the default is 2 hours and the maximum TTL is 2 days. */
@@ -2465,28 +3582,54 @@ export interface Channel {
   /** An arbitrary string delivered to the target address with each notification delivered over this channel. Optional. */
   token?: string;
 }
+const Channel = /*@__PURE__*/ __L.at(__c34, 1) as any as S.Schema<Channel>;
+
 export interface StopChannelsRequest {
   /** Request body */
   body?: Channel;
 }
+const StopChannelsRequest = /*@__PURE__*/ __L.at(__c34, 2) as any as S.Schema<StopChannelsRequest>;
+
 export interface StopChannelsResponse {}
+const StopChannelsResponse = ActionChromeosdevicesResponse as any as S.Schema<StopChannelsResponse>;
+
 export interface TurnOffTwoStepVerificationRequest {
   /** Identifies the user in the API request. The value can be the user's primary email address, alias email address, or unique user ID. */
   userKey: string;
 }
+const TurnOffTwoStepVerificationRequest = /*@__PURE__*/ __L.at(
+  __c34,
+  3,
+) as any as S.Schema<TurnOffTwoStepVerificationRequest>;
+
 export interface TurnOffTwoStepVerificationResponse {}
+const TurnOffTwoStepVerificationResponse =
+  ChangeChromeOsDeviceStatusSucceeded as any as S.Schema<TurnOffTwoStepVerificationResponse>;
+
 export interface UserUndelete {
   /** OrgUnit of User */
   orgUnitPath?: string;
 }
+const UserUndelete = /*@__PURE__*/ __L.at(__c34, 4) as any as S.Schema<UserUndelete>;
+
 export interface UndeleteUsersRequest {
   /** The immutable id of the user */
   userKey: string;
   /** Request body */
   body?: UserUndelete;
 }
+const UndeleteUsersRequest = /*@__PURE__*/ __L.at(
+  __c34,
+  5,
+) as any as S.Schema<UndeleteUsersRequest>;
+
 export interface UndeleteUsersResponse {}
+const UndeleteUsersResponse =
+  ActionChromeosdevicesResponse as any as S.Schema<UndeleteUsersResponse>;
+
 export type UpdateChromeosdevicesProjectionEnum = "BASIC" | "FULL";
+const UpdateChromeosdevicesProjectionEnum = S.String;
+
 export interface UpdateChromeosdevicesRequest {
   /** The unique ID for the customer's Google Workspace account. As an account administrator, you can also use the `my_customer` alias to represent your account's `customerId`. The `customerId` is also returned as part of the [Users resource](https://developers.google.com/workspace/admin/directory/v1/reference/users). */
   customerId: string;
@@ -2497,18 +3640,30 @@ export interface UpdateChromeosdevicesRequest {
   /** Request body */
   body?: ChromeOsDevice;
 }
+const UpdateChromeosdevicesRequest = /*@__PURE__*/ __L.at(
+  __c34,
+  6,
+) as any as S.Schema<UpdateChromeosdevicesRequest>;
+
 export interface UpdateCustomersRequest {
   /** Id of the customer to be updated */
   customerKey: string;
   /** Request body */
   body?: Customer;
 }
+const UpdateCustomersRequest = /*@__PURE__*/ __L.at(
+  __c34,
+  7,
+) as any as S.Schema<UpdateCustomersRequest>;
+
 export interface UpdateGroupsRequest {
   /** Identifies the group in the API request. The value can be the group's email address, group alias, or the unique group ID. */
   groupKey: string;
   /** Request body */
   body?: Group;
 }
+const UpdateGroupsRequest = /*@__PURE__*/ __L.at(__c35, 0) as any as S.Schema<UpdateGroupsRequest>;
+
 export interface UpdateMembersRequest {
   /** Identifies the group member in the API request. A group member can be a user or another group. The value can be the member's (group or user) primary email address, alias, or unique ID. */
   memberKey: string;
@@ -2517,6 +3672,11 @@ export interface UpdateMembersRequest {
   /** Request body */
   body?: Member;
 }
+const UpdateMembersRequest = /*@__PURE__*/ __L.at(
+  __c35,
+  1,
+) as any as S.Schema<UpdateMembersRequest>;
+
 export interface UpdateOrgunitsRequest {
   /** The unique ID for the customer's Google Workspace account. As an account administrator, you can also use the `my_customer` alias to represent your account's `customerId`. The `customerId` is also returned as part of the [Users resource](https://developers.google.com/workspace/admin/directory/v1/reference/users). */
   customerId: string;
@@ -2525,10 +3685,17 @@ export interface UpdateOrgunitsRequest {
   /** Request body */
   body?: OrgUnit;
 }
+const UpdateOrgunitsRequest = /*@__PURE__*/ __L.at(
+  __c35,
+  2,
+) as any as S.Schema<UpdateOrgunitsRequest>;
+
 export type UpdateResourcesBuildingsCoordinatesSourceEnum =
   | "CLIENT_SPECIFIED"
   | "RESOLVED_FROM_ADDRESS"
   | "SOURCE_UNSPECIFIED";
+const UpdateResourcesBuildingsCoordinatesSourceEnum = S.String;
+
 export interface UpdateResourcesBuildingsRequest {
   /** Source from which Building.coordinates are derived. */
   coordinatesSource?: UpdateResourcesBuildingsCoordinatesSourceEnum | (string & {});
@@ -2539,6 +3706,11 @@ export interface UpdateResourcesBuildingsRequest {
   /** Request body */
   body?: Building;
 }
+const UpdateResourcesBuildingsRequest = /*@__PURE__*/ __L.at(
+  __c35,
+  3,
+) as any as S.Schema<UpdateResourcesBuildingsRequest>;
+
 export interface UpdateResourcesCalendarsRequest {
   /** The unique ID for the customer's Google Workspace account. As an account administrator, you can also use the `my_customer` alias to represent your account's customer ID. */
   customer: string;
@@ -2547,6 +3719,11 @@ export interface UpdateResourcesCalendarsRequest {
   /** Request body */
   body?: CalendarResource;
 }
+const UpdateResourcesCalendarsRequest = /*@__PURE__*/ __L.at(
+  __c35,
+  4,
+) as any as S.Schema<UpdateResourcesCalendarsRequest>;
+
 export interface UpdateResourcesFeaturesRequest {
   /** The unique ID of the feature to update. */
   featureKey: string;
@@ -2555,6 +3732,11 @@ export interface UpdateResourcesFeaturesRequest {
   /** Request body */
   body?: Feature;
 }
+const UpdateResourcesFeaturesRequest = /*@__PURE__*/ __L.at(
+  __c35,
+  5,
+) as any as S.Schema<UpdateResourcesFeaturesRequest>;
+
 export interface UpdateRolesRequest {
   /** Immutable ID of the role. */
   roleId: string;
@@ -2563,6 +3745,8 @@ export interface UpdateRolesRequest {
   /** Request body */
   body?: Role;
 }
+const UpdateRolesRequest = /*@__PURE__*/ __L.at(__c35, 6) as any as S.Schema<UpdateRolesRequest>;
+
 export interface UpdateSchemasRequest {
   /** Immutable ID of the Google Workspace account. */
   customerId: string;
@@ -2571,23 +3755,45 @@ export interface UpdateSchemasRequest {
   /** Request body */
   body?: Admin_Schema;
 }
+const UpdateSchemasRequest = /*@__PURE__*/ __L.at(
+  __c35,
+  7,
+) as any as S.Schema<UpdateSchemasRequest>;
+
 export interface UpdateUsersRequest {
   /** Identifies the user in the API request. The value can be the user's primary email address, alias email address, or unique user ID. */
   userKey: string;
   /** Request body */
   body?: User;
 }
+const UpdateUsersRequest = /*@__PURE__*/ __L.at(__c36, 0) as any as S.Schema<UpdateUsersRequest>;
+
 export interface UpdateUsersPhotosRequest {
   /** Identifies the user in the API request. The value can be the user's primary email address, alias email address, or unique user ID. */
   userKey: string;
   /** Request body */
   body?: UserPhoto;
 }
+const UpdateUsersPhotosRequest = /*@__PURE__*/ __L.at(
+  __c36,
+  1,
+) as any as S.Schema<UpdateUsersPhotosRequest>;
+
 export type WatchUsersSortOrderEnum = "ASCENDING" | "DESCENDING";
+const WatchUsersSortOrderEnum = S.String;
+
 export type WatchUsersViewTypeEnum = "admin_view" | "domain_public";
+const WatchUsersViewTypeEnum = S.String;
+
 export type WatchUsersOrderByEnum = "email" | "familyName" | "givenName";
+const WatchUsersOrderByEnum = S.String;
+
 export type WatchUsersProjectionEnum = "basic" | "custom" | "full";
+const WatchUsersProjectionEnum = S.String;
+
 export type WatchUsersEventEnum = "add" | "delete" | "makeAdmin" | "undelete" | "update";
+const WatchUsersEventEnum = S.String;
+
 export interface WatchUsersRequest {
   /** If set to true, retrieves the list of deleted users. (Default: false) */
   showDeleted?: string;
@@ -2616,7 +3822,11 @@ export interface WatchUsersRequest {
   /** Request body */
   body?: Channel;
 }
+const WatchUsersRequest = /*@__PURE__*/ __L.at(__c36, 2) as any as S.Schema<WatchUsersRequest>;
+
 export type WatchUsersAliasesEventEnum = "add" | "delete";
+const WatchUsersAliasesEventEnum = S.String;
+
 export interface WatchUsersAliasesRequest {
   /** Email or immutable ID of the user */
   userKey: string;
@@ -2625,6 +3835,11 @@ export interface WatchUsersAliasesRequest {
   /** Request body */
   body?: Channel;
 }
+const WatchUsersAliasesRequest = /*@__PURE__*/ __L.at(
+  __c36,
+  3,
+) as any as S.Schema<WatchUsersAliasesRequest>;
+
 export type ActionChromeosdevicesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Use [BatchChangeChromeOsDeviceStatus](https://developers.google.com/workspace/admin/directory/reference/rest/v1/customer.devices.chromeos/batchChangeStatus) instead. Takes an action that affects a Chrome OS Device. This includes deprovisioning, disabling, and re-enabling devices. *Warning:* * Deprovisioning a device will stop device policy syncing and remove device-level printers. After a device is deprovisioned, it must be wiped before it can be re-enrolled. * Lost or stolen devices should use the disable action. * Re-enabling a disabled device will consume a device license. If you do not have sufficient licenses available when completing the re-enable action, you will receive an error. For more information about deprovisioning and disabling devices, visit the [help center](https://support.google.com/chrome/a/answer/3523633). */
 export const actionChromeosdevices: API.OperationMethod<
@@ -2633,8 +3848,8 @@ export const actionChromeosdevices: API.OperationMethod<
   ActionChromeosdevicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1) as any as S.Schema<ActionChromeosdevicesRequest>,
-  output: __S(2) as any as S.Schema<ActionChromeosdevicesResponse>,
+  input: ActionChromeosdevicesRequest,
+  output: ActionChromeosdevicesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2648,8 +3863,8 @@ export const actionMobiledevices: API.OperationMethod<
   ActionMobiledevicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4) as any as S.Schema<ActionMobiledevicesRequest>,
-  output: __S(2) as any as S.Schema<ActionMobiledevicesResponse>,
+  input: ActionMobiledevicesRequest,
+  output: ActionMobiledevicesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2668,8 +3883,8 @@ export const batchChangeStatusCustomerDevicesChromeos: API.OperationMethod<
   BatchChangeStatusCustomerDevicesChromeosError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7) as any as S.Schema<BatchChangeStatusCustomerDevicesChromeosRequest>,
-  output: __S(14) as any as S.Schema<BatchChangeChromeOsDeviceStatusResponse>,
+  input: BatchChangeStatusCustomerDevicesChromeosRequest,
+  output: BatchChangeChromeOsDeviceStatusResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2688,8 +3903,8 @@ export const batchCreatePrintersCustomersChromePrinters: API.OperationMethod<
   BatchCreatePrintersCustomersChromePrintersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21) as any as S.Schema<BatchCreatePrintersCustomersChromePrintersRequest>,
-  output: __S(25) as any as S.Schema<BatchCreatePrintersResponse>,
+  input: BatchCreatePrintersCustomersChromePrintersRequest,
+  output: BatchCreatePrintersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2708,8 +3923,8 @@ export const batchCreatePrintServersCustomersChromePrintServers: API.OperationMe
   BatchCreatePrintServersCustomersChromePrintServersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30) as any as S.Schema<BatchCreatePrintServersCustomersChromePrintServersRequest>,
-  output: __S(34) as any as S.Schema<BatchCreatePrintServersResponse>,
+  input: BatchCreatePrintServersCustomersChromePrintServersRequest,
+  output: BatchCreatePrintServersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2728,8 +3943,8 @@ export const batchDeletePrintersCustomersChromePrinters: API.OperationMethod<
   BatchDeletePrintersCustomersChromePrintersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36) as any as S.Schema<BatchDeletePrintersCustomersChromePrintersRequest>,
-  output: __S(37) as any as S.Schema<BatchDeletePrintersResponse>,
+  input: BatchDeletePrintersCustomersChromePrintersRequest,
+  output: BatchDeletePrintersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2748,8 +3963,8 @@ export const batchDeletePrintServersCustomersChromePrintServers: API.OperationMe
   BatchDeletePrintServersCustomersChromePrintServersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39) as any as S.Schema<BatchDeletePrintServersCustomersChromePrintServersRequest>,
-  output: __S(40) as any as S.Schema<BatchDeletePrintServersResponse>,
+  input: BatchDeletePrintServersCustomersChromePrintServersRequest,
+  output: BatchDeletePrintServersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2763,8 +3978,8 @@ export const countChromeOsDevicesCustomerDevicesChromeos: API.OperationMethod<
   CountChromeOsDevicesCustomerDevicesChromeosError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41) as any as S.Schema<CountChromeOsDevicesCustomerDevicesChromeosRequest>,
-  output: __S(42) as any as S.Schema<CountChromeOsDevicesResponse>,
+  input: CountChromeOsDevicesCustomerDevicesChromeosRequest,
+  output: CountChromeOsDevicesResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2783,8 +3998,8 @@ export const createCustomersChromePrinters: API.OperationMethod<
   CreateCustomersChromePrintersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43) as any as S.Schema<CreateCustomersChromePrintersRequest>,
-  output: __S(17) as any as S.Schema<Printer>,
+  input: CreateCustomersChromePrintersRequest,
+  output: Printer,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2803,8 +4018,8 @@ export const createCustomersChromePrintServers: API.OperationMethod<
   CreateCustomersChromePrintServersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44) as any as S.Schema<CreateCustomersChromePrintServersRequest>,
-  output: __S(26) as any as S.Schema<PrintServer>,
+  input: CreateCustomersChromePrintServersRequest,
+  output: PrintServer,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2818,8 +4033,8 @@ export const createGuestUsers: API.OperationMethod<
   CreateGuestUsersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(46) as any as S.Schema<CreateGuestUsersRequest>,
-  output: __S(50) as any as S.Schema<User>,
+  input: CreateGuestUsersRequest,
+  output: User,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2833,8 +4048,8 @@ export const deleteAsps: API.OperationMethod<
   DeleteAspsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(51) as any as S.Schema<DeleteAspsRequest>,
-  output: __S(2) as any as S.Schema<DeleteAspsResponse>,
+  input: DeleteAspsRequest,
+  output: DeleteAspsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2853,8 +4068,8 @@ export const deleteCustomersChromePrinters: API.OperationMethod<
   DeleteCustomersChromePrintersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(52) as any as S.Schema<DeleteCustomersChromePrintersRequest>,
-  output: __S(2) as any as S.Schema<Empty>,
+  input: DeleteCustomersChromePrintersRequest,
+  output: Empty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2873,8 +4088,8 @@ export const deleteCustomersChromePrintServers: API.OperationMethod<
   DeleteCustomersChromePrintServersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(53) as any as S.Schema<DeleteCustomersChromePrintServersRequest>,
-  output: __S(2) as any as S.Schema<Empty>,
+  input: DeleteCustomersChromePrintServersRequest,
+  output: Empty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2888,8 +4103,8 @@ export const deleteDomainAliases: API.OperationMethod<
   DeleteDomainAliasesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(54) as any as S.Schema<DeleteDomainAliasesRequest>,
-  output: __S(2) as any as S.Schema<DeleteDomainAliasesResponse>,
+  input: DeleteDomainAliasesRequest,
+  output: DeleteDomainAliasesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2903,8 +4118,8 @@ export const deleteDomains: API.OperationMethod<
   DeleteDomainsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(55) as any as S.Schema<DeleteDomainsRequest>,
-  output: __S(2) as any as S.Schema<DeleteDomainsResponse>,
+  input: DeleteDomainsRequest,
+  output: DeleteDomainsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2918,8 +4133,8 @@ export const deleteGroups: API.OperationMethod<
   DeleteGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56) as any as S.Schema<DeleteGroupsRequest>,
-  output: __S(2) as any as S.Schema<DeleteGroupsResponse>,
+  input: DeleteGroupsRequest,
+  output: DeleteGroupsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2933,8 +4148,8 @@ export const deleteGroupsAliases: API.OperationMethod<
   DeleteGroupsAliasesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57) as any as S.Schema<DeleteGroupsAliasesRequest>,
-  output: __S(2) as any as S.Schema<DeleteGroupsAliasesResponse>,
+  input: DeleteGroupsAliasesRequest,
+  output: DeleteGroupsAliasesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2948,8 +4163,8 @@ export const deleteMembers: API.OperationMethod<
   DeleteMembersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(58) as any as S.Schema<DeleteMembersRequest>,
-  output: __S(2) as any as S.Schema<DeleteMembersResponse>,
+  input: DeleteMembersRequest,
+  output: DeleteMembersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2963,8 +4178,8 @@ export const deleteMobiledevices: API.OperationMethod<
   DeleteMobiledevicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(59) as any as S.Schema<DeleteMobiledevicesRequest>,
-  output: __S(2) as any as S.Schema<DeleteMobiledevicesResponse>,
+  input: DeleteMobiledevicesRequest,
+  output: DeleteMobiledevicesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2978,8 +4193,8 @@ export const deleteOrgunits: API.OperationMethod<
   DeleteOrgunitsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60) as any as S.Schema<DeleteOrgunitsRequest>,
-  output: __S(2) as any as S.Schema<DeleteOrgunitsResponse>,
+  input: DeleteOrgunitsRequest,
+  output: DeleteOrgunitsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2998,8 +4213,8 @@ export const deleteResourcesBuildings: API.OperationMethod<
   DeleteResourcesBuildingsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(61) as any as S.Schema<DeleteResourcesBuildingsRequest>,
-  output: __S(11) as any as S.Schema<DeleteResourcesBuildingsResponse>,
+  input: DeleteResourcesBuildingsRequest,
+  output: DeleteResourcesBuildingsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3018,8 +4233,8 @@ export const deleteResourcesCalendars: API.OperationMethod<
   DeleteResourcesCalendarsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(62) as any as S.Schema<DeleteResourcesCalendarsRequest>,
-  output: __S(11) as any as S.Schema<DeleteResourcesCalendarsResponse>,
+  input: DeleteResourcesCalendarsRequest,
+  output: DeleteResourcesCalendarsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3038,8 +4253,8 @@ export const deleteResourcesFeatures: API.OperationMethod<
   DeleteResourcesFeaturesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(63) as any as S.Schema<DeleteResourcesFeaturesRequest>,
-  output: __S(64) as any as S.Schema<DeleteResourcesFeaturesResponse>,
+  input: DeleteResourcesFeaturesRequest,
+  output: DeleteResourcesFeaturesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3053,8 +4268,8 @@ export const deleteRoleAssignments: API.OperationMethod<
   DeleteRoleAssignmentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65) as any as S.Schema<DeleteRoleAssignmentsRequest>,
-  output: __S(2) as any as S.Schema<DeleteRoleAssignmentsResponse>,
+  input: DeleteRoleAssignmentsRequest,
+  output: DeleteRoleAssignmentsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3068,8 +4283,8 @@ export const deleteRoles: API.OperationMethod<
   DeleteRolesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(66) as any as S.Schema<DeleteRolesRequest>,
-  output: __S(2) as any as S.Schema<DeleteRolesResponse>,
+  input: DeleteRolesRequest,
+  output: DeleteRolesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3083,8 +4298,8 @@ export const deleteSchemas: API.OperationMethod<
   DeleteSchemasError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(67) as any as S.Schema<DeleteSchemasRequest>,
-  output: __S(2) as any as S.Schema<DeleteSchemasResponse>,
+  input: DeleteSchemasRequest,
+  output: DeleteSchemasResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3098,8 +4313,8 @@ export const deleteTokens: API.OperationMethod<
   DeleteTokensError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(68) as any as S.Schema<DeleteTokensRequest>,
-  output: __S(2) as any as S.Schema<DeleteTokensResponse>,
+  input: DeleteTokensRequest,
+  output: DeleteTokensResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3113,8 +4328,8 @@ export const deleteUsers: API.OperationMethod<
   DeleteUsersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(69) as any as S.Schema<DeleteUsersRequest>,
-  output: __S(2) as any as S.Schema<DeleteUsersResponse>,
+  input: DeleteUsersRequest,
+  output: DeleteUsersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3128,8 +4343,8 @@ export const deleteUsersAliases: API.OperationMethod<
   DeleteUsersAliasesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(70) as any as S.Schema<DeleteUsersAliasesRequest>,
-  output: __S(2) as any as S.Schema<DeleteUsersAliasesResponse>,
+  input: DeleteUsersAliasesRequest,
+  output: DeleteUsersAliasesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3143,8 +4358,8 @@ export const deleteUsersPhotos: API.OperationMethod<
   DeleteUsersPhotosError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(71) as any as S.Schema<DeleteUsersPhotosRequest>,
-  output: __S(2) as any as S.Schema<DeleteUsersPhotosResponse>,
+  input: DeleteUsersPhotosRequest,
+  output: DeleteUsersPhotosResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3163,8 +4378,8 @@ export const generateVerificationCodes: API.OperationMethod<
   GenerateVerificationCodesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(72) as any as S.Schema<GenerateVerificationCodesRequest>,
-  output: __S(11) as any as S.Schema<GenerateVerificationCodesResponse>,
+  input: GenerateVerificationCodesRequest,
+  output: GenerateVerificationCodesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3174,8 +4389,8 @@ export type GetAspsError = NotFound | Forbidden | GcpOpError;
 /** Gets information about an ASP issued by a user. */
 export const getAsps: API.OperationMethod<GetAspsRequest, Asp, GetAspsError, GcpOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(73) as any as S.Schema<GetAspsRequest>,
-    output: __S(74) as any as S.Schema<Asp>,
+    input: GetAspsRequest,
+    output: Asp,
     errors: [NotFound, Forbidden, UnknownGCPError],
     protocol: GcpProtocol,
     retry: Retry.Retry,
@@ -3189,8 +4404,8 @@ export const getChromeosdevices: API.OperationMethod<
   GetChromeosdevicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(75) as any as S.Schema<GetChromeosdevicesRequest>,
-  output: __S(112) as any as S.Schema<ChromeOsDevice>,
+  input: GetChromeosdevicesRequest,
+  output: ChromeOsDevice,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3204,8 +4419,8 @@ export const getCustomerDevicesChromeosCommands: API.OperationMethod<
   GetCustomerDevicesChromeosCommandsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(113) as any as S.Schema<GetCustomerDevicesChromeosCommandsRequest>,
-  output: __S(115) as any as S.Schema<DirectoryChromeosdevicesCommand>,
+  input: GetCustomerDevicesChromeosCommandsRequest,
+  output: DirectoryChromeosdevicesCommand,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3219,8 +4434,8 @@ export const getCustomers: API.OperationMethod<
   GetCustomersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(116) as any as S.Schema<GetCustomersRequest>,
-  output: __S(118) as any as S.Schema<Customer>,
+  input: GetCustomersRequest,
+  output: Customer,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3234,8 +4449,8 @@ export const getCustomersChromePrinters: API.OperationMethod<
   GetCustomersChromePrintersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(119) as any as S.Schema<GetCustomersChromePrintersRequest>,
-  output: __S(17) as any as S.Schema<Printer>,
+  input: GetCustomersChromePrintersRequest,
+  output: Printer,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3249,8 +4464,8 @@ export const getCustomersChromePrintServers: API.OperationMethod<
   GetCustomersChromePrintServersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(120) as any as S.Schema<GetCustomersChromePrintServersRequest>,
-  output: __S(26) as any as S.Schema<PrintServer>,
+  input: GetCustomersChromePrintServersRequest,
+  output: PrintServer,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3264,8 +4479,8 @@ export const getDomainAliases: API.OperationMethod<
   GetDomainAliasesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(121) as any as S.Schema<GetDomainAliasesRequest>,
-  output: __S(122) as any as S.Schema<DomainAlias>,
+  input: GetDomainAliasesRequest,
+  output: DomainAlias,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3279,8 +4494,8 @@ export const getDomains: API.OperationMethod<
   GetDomainsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(123) as any as S.Schema<GetDomainsRequest>,
-  output: __S(125) as any as S.Schema<Domains>,
+  input: GetDomainsRequest,
+  output: Domains,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3290,8 +4505,8 @@ export type GetGroupsError = NotFound | Forbidden | GcpOpError;
 /** Retrieves a group's properties. */
 export const getGroups: API.OperationMethod<GetGroupsRequest, Group, GetGroupsError, GcpOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(126) as any as S.Schema<GetGroupsRequest>,
-    output: __S(129) as any as S.Schema<Group>,
+    input: GetGroupsRequest,
+    output: Group,
     errors: [NotFound, Forbidden, UnknownGCPError],
     protocol: GcpProtocol,
     retry: Retry.Retry,
@@ -3305,8 +4520,8 @@ export const getMembers: API.OperationMethod<
   GetMembersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(130) as any as S.Schema<GetMembersRequest>,
-  output: __S(131) as any as S.Schema<Member>,
+  input: GetMembersRequest,
+  output: Member,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3320,8 +4535,8 @@ export const getMobiledevices: API.OperationMethod<
   GetMobiledevicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(132) as any as S.Schema<GetMobiledevicesRequest>,
-  output: __S(135) as any as S.Schema<MobileDevice>,
+  input: GetMobiledevicesRequest,
+  output: MobileDevice,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3335,8 +4550,8 @@ export const getOrgunits: API.OperationMethod<
   GetOrgunitsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(136) as any as S.Schema<GetOrgunitsRequest>,
-  output: __S(137) as any as S.Schema<OrgUnit>,
+  input: GetOrgunitsRequest,
+  output: OrgUnit,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3350,8 +4565,8 @@ export const getResourcesBuildings: API.OperationMethod<
   GetResourcesBuildingsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(138) as any as S.Schema<GetResourcesBuildingsRequest>,
-  output: __S(141) as any as S.Schema<Building>,
+  input: GetResourcesBuildingsRequest,
+  output: Building,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3365,8 +4580,8 @@ export const getResourcesCalendars: API.OperationMethod<
   GetResourcesCalendarsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(142) as any as S.Schema<GetResourcesCalendarsRequest>,
-  output: __S(143) as any as S.Schema<CalendarResource>,
+  input: GetResourcesCalendarsRequest,
+  output: CalendarResource,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3380,8 +4595,8 @@ export const getResourcesFeatures: API.OperationMethod<
   GetResourcesFeaturesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(144) as any as S.Schema<GetResourcesFeaturesRequest>,
-  output: __S(145) as any as S.Schema<Feature>,
+  input: GetResourcesFeaturesRequest,
+  output: Feature,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3395,8 +4610,8 @@ export const getRoleAssignments: API.OperationMethod<
   GetRoleAssignmentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(146) as any as S.Schema<GetRoleAssignmentsRequest>,
-  output: __S(148) as any as S.Schema<RoleAssignment>,
+  input: GetRoleAssignmentsRequest,
+  output: RoleAssignment,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3406,8 +4621,8 @@ export type GetRolesError = NotFound | Forbidden | GcpOpError;
 /** Retrieves a role. */
 export const getRoles: API.OperationMethod<GetRolesRequest, Role, GetRolesError, GcpOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(149) as any as S.Schema<GetRolesRequest>,
-    output: __S(152) as any as S.Schema<Role>,
+    input: GetRolesRequest,
+    output: Role,
     errors: [NotFound, Forbidden, UnknownGCPError],
     protocol: GcpProtocol,
     retry: Retry.Retry,
@@ -3421,8 +4636,8 @@ export const getSchemas: API.OperationMethod<
   GetSchemasError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(153) as any as S.Schema<GetSchemasRequest>,
-  output: __S(157) as any as S.Schema<Admin_Schema>,
+  input: GetSchemasRequest,
+  output: Admin_Schema,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3432,8 +4647,8 @@ export type GetTokensError = NotFound | Forbidden | GcpOpError;
 /** Gets information about an access token issued by a user. */
 export const getTokens: API.OperationMethod<GetTokensRequest, Token, GetTokensError, GcpOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(158) as any as S.Schema<GetTokensRequest>,
-    output: __S(159) as any as S.Schema<Token>,
+    input: GetTokensRequest,
+    output: Token,
     errors: [NotFound, Forbidden, UnknownGCPError],
     protocol: GcpProtocol,
     retry: Retry.Retry,
@@ -3443,8 +4658,8 @@ export type GetUsersError = NotFound | Forbidden | GcpOpError;
 /** Retrieves a user. */
 export const getUsers: API.OperationMethod<GetUsersRequest, User, GetUsersError, GcpOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(160) as any as S.Schema<GetUsersRequest>,
-    output: __S(50) as any as S.Schema<User>,
+    input: GetUsersRequest,
+    output: User,
     errors: [NotFound, Forbidden, UnknownGCPError],
     protocol: GcpProtocol,
     retry: Retry.Retry,
@@ -3458,8 +4673,8 @@ export const getUsersPhotos: API.OperationMethod<
   GetUsersPhotosError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(161) as any as S.Schema<GetUsersPhotosRequest>,
-  output: __S(162) as any as S.Schema<UserPhoto>,
+  input: GetUsersPhotosRequest,
+  output: UserPhoto,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3473,8 +4688,8 @@ export const hasMemberMembers: API.OperationMethod<
   HasMemberMembersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(163) as any as S.Schema<HasMemberMembersRequest>,
-  output: __S(164) as any as S.Schema<MembersHasMember>,
+  input: HasMemberMembersRequest,
+  output: MembersHasMember,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3488,8 +4703,8 @@ export const insertDomainAliases: API.OperationMethod<
   InsertDomainAliasesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(165) as any as S.Schema<InsertDomainAliasesRequest>,
-  output: __S(122) as any as S.Schema<DomainAlias>,
+  input: InsertDomainAliasesRequest,
+  output: DomainAlias,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3503,8 +4718,8 @@ export const insertDomains: API.OperationMethod<
   InsertDomainsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(166) as any as S.Schema<InsertDomainsRequest>,
-  output: __S(125) as any as S.Schema<Domains>,
+  input: InsertDomainsRequest,
+  output: Domains,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3518,8 +4733,8 @@ export const insertGroups: API.OperationMethod<
   InsertGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(167) as any as S.Schema<InsertGroupsRequest>,
-  output: __S(129) as any as S.Schema<Group>,
+  input: InsertGroupsRequest,
+  output: Group,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3533,8 +4748,8 @@ export const insertGroupsAliases: API.OperationMethod<
   InsertGroupsAliasesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(169) as any as S.Schema<InsertGroupsAliasesRequest>,
-  output: __S(168) as any as S.Schema<Alias>,
+  input: InsertGroupsAliasesRequest,
+  output: Alias,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3548,8 +4763,8 @@ export const insertMembers: API.OperationMethod<
   InsertMembersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(170) as any as S.Schema<InsertMembersRequest>,
-  output: __S(131) as any as S.Schema<Member>,
+  input: InsertMembersRequest,
+  output: Member,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3563,8 +4778,8 @@ export const insertOrgunits: API.OperationMethod<
   InsertOrgunitsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(171) as any as S.Schema<InsertOrgunitsRequest>,
-  output: __S(137) as any as S.Schema<OrgUnit>,
+  input: InsertOrgunitsRequest,
+  output: OrgUnit,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3583,8 +4798,8 @@ export const insertResourcesBuildings: API.OperationMethod<
   InsertResourcesBuildingsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(172) as any as S.Schema<InsertResourcesBuildingsRequest>,
-  output: __S(141) as any as S.Schema<Building>,
+  input: InsertResourcesBuildingsRequest,
+  output: Building,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3603,8 +4818,8 @@ export const insertResourcesCalendars: API.OperationMethod<
   InsertResourcesCalendarsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(173) as any as S.Schema<InsertResourcesCalendarsRequest>,
-  output: __S(143) as any as S.Schema<CalendarResource>,
+  input: InsertResourcesCalendarsRequest,
+  output: CalendarResource,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3623,8 +4838,8 @@ export const insertResourcesFeatures: API.OperationMethod<
   InsertResourcesFeaturesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(174) as any as S.Schema<InsertResourcesFeaturesRequest>,
-  output: __S(145) as any as S.Schema<Feature>,
+  input: InsertResourcesFeaturesRequest,
+  output: Feature,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3638,8 +4853,8 @@ export const insertRoleAssignments: API.OperationMethod<
   InsertRoleAssignmentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(175) as any as S.Schema<InsertRoleAssignmentsRequest>,
-  output: __S(148) as any as S.Schema<RoleAssignment>,
+  input: InsertRoleAssignmentsRequest,
+  output: RoleAssignment,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3653,8 +4868,8 @@ export const insertRoles: API.OperationMethod<
   InsertRolesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(176) as any as S.Schema<InsertRolesRequest>,
-  output: __S(152) as any as S.Schema<Role>,
+  input: InsertRolesRequest,
+  output: Role,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3668,8 +4883,8 @@ export const insertSchemas: API.OperationMethod<
   InsertSchemasError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(177) as any as S.Schema<InsertSchemasRequest>,
-  output: __S(157) as any as S.Schema<Admin_Schema>,
+  input: InsertSchemasRequest,
+  output: Admin_Schema,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3683,8 +4898,8 @@ export const insertUsers: API.OperationMethod<
   InsertUsersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(178) as any as S.Schema<InsertUsersRequest>,
-  output: __S(50) as any as S.Schema<User>,
+  input: InsertUsersRequest,
+  output: User,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3698,8 +4913,8 @@ export const insertUsersAliases: API.OperationMethod<
   InsertUsersAliasesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(179) as any as S.Schema<InsertUsersAliasesRequest>,
-  output: __S(168) as any as S.Schema<Alias>,
+  input: InsertUsersAliasesRequest,
+  output: Alias,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3718,8 +4933,8 @@ export const invalidateVerificationCodes: API.OperationMethod<
   InvalidateVerificationCodesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(180) as any as S.Schema<InvalidateVerificationCodesRequest>,
-  output: __S(11) as any as S.Schema<InvalidateVerificationCodesResponse>,
+  input: InvalidateVerificationCodesRequest,
+  output: InvalidateVerificationCodesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3738,8 +4953,8 @@ export const issueCommandCustomerDevicesChromeos: API.OperationMethod<
   IssueCommandCustomerDevicesChromeosError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(182) as any as S.Schema<IssueCommandCustomerDevicesChromeosRequest>,
-  output: __S(183) as any as S.Schema<DirectoryChromeosdevicesIssueCommandResponse>,
+  input: IssueCommandCustomerDevicesChromeosRequest,
+  output: DirectoryChromeosdevicesIssueCommandResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3749,8 +4964,8 @@ export type ListAspsError = NotFound | Forbidden | GcpOpError;
 /** Lists the ASPs issued by a user. */
 export const listAsps: API.OperationMethod<ListAspsRequest, Asps, ListAspsError, GcpOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(184) as any as S.Schema<ListAspsRequest>,
-    output: __S(186) as any as S.Schema<Asps>,
+    input: ListAspsRequest,
+    output: Asps,
     errors: [NotFound, Forbidden, UnknownGCPError],
     protocol: GcpProtocol,
     retry: Retry.Retry,
@@ -3765,8 +4980,8 @@ export const listChromeosdevices: API.PaginatedOperationMethod<
   GcpOpContext,
   ChromeOsDevices
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(187) as any as S.Schema<ListChromeosdevicesRequest>,
-  output: __S(189) as any as S.Schema<ChromeOsDevices>,
+  input: ListChromeosdevicesRequest,
+  output: ChromeOsDevices,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3782,8 +4997,8 @@ export const listCustomersChromePrinters: API.PaginatedOperationMethod<
   GcpOpContext,
   ListPrintersResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(190) as any as S.Schema<ListCustomersChromePrintersRequest>,
-  output: __S(191) as any as S.Schema<ListPrintersResponse>,
+  input: ListCustomersChromePrintersRequest,
+  output: ListPrintersResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3799,8 +5014,8 @@ export const listCustomersChromePrintServers: API.PaginatedOperationMethod<
   GcpOpContext,
   ListPrintServersResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(192) as any as S.Schema<ListCustomersChromePrintServersRequest>,
-  output: __S(193) as any as S.Schema<ListPrintServersResponse>,
+  input: ListCustomersChromePrintServersRequest,
+  output: ListPrintServersResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3815,8 +5030,8 @@ export const listDomainAliases: API.OperationMethod<
   ListDomainAliasesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(194) as any as S.Schema<ListDomainAliasesRequest>,
-  output: __S(195) as any as S.Schema<DomainAliases>,
+  input: ListDomainAliasesRequest,
+  output: DomainAliases,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3830,8 +5045,8 @@ export const listDomains: API.OperationMethod<
   ListDomainsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(196) as any as S.Schema<ListDomainsRequest>,
-  output: __S(198) as any as S.Schema<Domains2>,
+  input: ListDomainsRequest,
+  output: Domains2,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3846,8 +5061,8 @@ export const listGroups: API.PaginatedOperationMethod<
   GcpOpContext,
   Groups
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(199) as any as S.Schema<ListGroupsRequest>,
-  output: __S(201) as any as S.Schema<Groups>,
+  input: ListGroupsRequest,
+  output: Groups,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3862,8 +5077,8 @@ export const listGroupsAliases: API.OperationMethod<
   ListGroupsAliasesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(202) as any as S.Schema<ListGroupsAliasesRequest>,
-  output: __S(204) as any as S.Schema<Aliases>,
+  input: ListGroupsAliasesRequest,
+  output: Aliases,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3878,8 +5093,8 @@ export const listMembers: API.PaginatedOperationMethod<
   GcpOpContext,
   Members
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(205) as any as S.Schema<ListMembersRequest>,
-  output: __S(207) as any as S.Schema<Members>,
+  input: ListMembersRequest,
+  output: Members,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3895,8 +5110,8 @@ export const listMobiledevices: API.PaginatedOperationMethod<
   GcpOpContext,
   MobileDevices
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(208) as any as S.Schema<ListMobiledevicesRequest>,
-  output: __S(210) as any as S.Schema<MobileDevices>,
+  input: ListMobiledevicesRequest,
+  output: MobileDevices,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3911,8 +5126,8 @@ export const listOrgunits: API.OperationMethod<
   ListOrgunitsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(211) as any as S.Schema<ListOrgunitsRequest>,
-  output: __S(213) as any as S.Schema<OrgUnits>,
+  input: ListOrgunitsRequest,
+  output: OrgUnits,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3927,8 +5142,8 @@ export const listPrinterModelsCustomersChromePrinters: API.PaginatedOperationMet
   GcpOpContext,
   ListPrinterModelsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(214) as any as S.Schema<ListPrinterModelsCustomersChromePrintersRequest>,
-  output: __S(217) as any as S.Schema<ListPrinterModelsResponse>,
+  input: ListPrinterModelsCustomersChromePrintersRequest,
+  output: ListPrinterModelsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3943,8 +5158,8 @@ export const listPrivileges: API.OperationMethod<
   ListPrivilegesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(218) as any as S.Schema<ListPrivilegesRequest>,
-  output: __S(221) as any as S.Schema<Privileges>,
+  input: ListPrivilegesRequest,
+  output: Privileges,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3959,8 +5174,8 @@ export const listResourcesBuildings: API.PaginatedOperationMethod<
   GcpOpContext,
   Buildings
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(222) as any as S.Schema<ListResourcesBuildingsRequest>,
-  output: __S(224) as any as S.Schema<Buildings>,
+  input: ListResourcesBuildingsRequest,
+  output: Buildings,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3976,8 +5191,8 @@ export const listResourcesCalendars: API.PaginatedOperationMethod<
   GcpOpContext,
   CalendarResource
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(225) as any as S.Schema<ListResourcesCalendarsRequest>,
-  output: __S(227) as any as S.Schema<CalendarResources>,
+  input: ListResourcesCalendarsRequest,
+  output: CalendarResources,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3993,8 +5208,8 @@ export const listResourcesFeatures: API.PaginatedOperationMethod<
   GcpOpContext,
   Features
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(228) as any as S.Schema<ListResourcesFeaturesRequest>,
-  output: __S(230) as any as S.Schema<Features>,
+  input: ListResourcesFeaturesRequest,
+  output: Features,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4010,8 +5225,8 @@ export const listRoleAssignments: API.PaginatedOperationMethod<
   GcpOpContext,
   RoleAssignment
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(231) as any as S.Schema<ListRoleAssignmentsRequest>,
-  output: __S(233) as any as S.Schema<RoleAssignments>,
+  input: ListRoleAssignmentsRequest,
+  output: RoleAssignments,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4027,8 +5242,8 @@ export const listRoles: API.PaginatedOperationMethod<
   GcpOpContext,
   Role
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(234) as any as S.Schema<ListRolesRequest>,
-  output: __S(236) as any as S.Schema<Roles>,
+  input: ListRolesRequest,
+  output: Roles,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4043,8 +5258,8 @@ export const listSchemas: API.OperationMethod<
   ListSchemasError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(237) as any as S.Schema<ListSchemasRequest>,
-  output: __S(239) as any as S.Schema<Schemas>,
+  input: ListSchemasRequest,
+  output: Schemas,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4058,8 +5273,8 @@ export const listTokens: API.OperationMethod<
   ListTokensError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(240) as any as S.Schema<ListTokensRequest>,
-  output: __S(242) as any as S.Schema<Tokens>,
+  input: ListTokensRequest,
+  output: Tokens,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4074,8 +5289,8 @@ export const listUsers: API.PaginatedOperationMethod<
   GcpOpContext,
   Users
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(243) as any as S.Schema<ListUsersRequest>,
-  output: __S(245) as any as S.Schema<Users>,
+  input: ListUsersRequest,
+  output: Users,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4090,8 +5305,8 @@ export const listUsersAliases: API.OperationMethod<
   ListUsersAliasesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(246) as any as S.Schema<ListUsersAliasesRequest>,
-  output: __S(204) as any as S.Schema<Aliases>,
+  input: ListUsersAliasesRequest,
+  output: Aliases,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4105,8 +5320,8 @@ export const listVerificationCodes: API.OperationMethod<
   ListVerificationCodesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(247) as any as S.Schema<ListVerificationCodesRequest>,
-  output: __S(250) as any as S.Schema<VerificationCodes>,
+  input: ListVerificationCodesRequest,
+  output: VerificationCodes,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4120,8 +5335,8 @@ export const makeAdminUsers: API.OperationMethod<
   MakeAdminUsersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(252) as any as S.Schema<MakeAdminUsersRequest>,
-  output: __S(2) as any as S.Schema<MakeAdminUsersResponse>,
+  input: MakeAdminUsersRequest,
+  output: MakeAdminUsersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4140,8 +5355,8 @@ export const moveDevicesToOuChromeosdevices: API.OperationMethod<
   MoveDevicesToOuChromeosdevicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(254) as any as S.Schema<MoveDevicesToOuChromeosdevicesRequest>,
-  output: __S(11) as any as S.Schema<MoveDevicesToOuChromeosdevicesResponse>,
+  input: MoveDevicesToOuChromeosdevicesRequest,
+  output: MoveDevicesToOuChromeosdevicesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4155,8 +5370,8 @@ export const patchChromeosdevices: API.OperationMethod<
   PatchChromeosdevicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(255) as any as S.Schema<PatchChromeosdevicesRequest>,
-  output: __S(112) as any as S.Schema<ChromeOsDevice>,
+  input: PatchChromeosdevicesRequest,
+  output: ChromeOsDevice,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4170,8 +5385,8 @@ export const patchCustomers: API.OperationMethod<
   PatchCustomersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(256) as any as S.Schema<PatchCustomersRequest>,
-  output: __S(118) as any as S.Schema<Customer>,
+  input: PatchCustomersRequest,
+  output: Customer,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4190,8 +5405,8 @@ export const patchCustomersChromePrinters: API.OperationMethod<
   PatchCustomersChromePrintersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(257) as any as S.Schema<PatchCustomersChromePrintersRequest>,
-  output: __S(17) as any as S.Schema<Printer>,
+  input: PatchCustomersChromePrintersRequest,
+  output: Printer,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4210,8 +5425,8 @@ export const patchCustomersChromePrintServers: API.OperationMethod<
   PatchCustomersChromePrintServersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(258) as any as S.Schema<PatchCustomersChromePrintServersRequest>,
-  output: __S(26) as any as S.Schema<PrintServer>,
+  input: PatchCustomersChromePrintServersRequest,
+  output: PrintServer,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4225,8 +5440,8 @@ export const patchGroups: API.OperationMethod<
   PatchGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(259) as any as S.Schema<PatchGroupsRequest>,
-  output: __S(129) as any as S.Schema<Group>,
+  input: PatchGroupsRequest,
+  output: Group,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4240,8 +5455,8 @@ export const patchMembers: API.OperationMethod<
   PatchMembersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(260) as any as S.Schema<PatchMembersRequest>,
-  output: __S(131) as any as S.Schema<Member>,
+  input: PatchMembersRequest,
+  output: Member,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4255,8 +5470,8 @@ export const patchOrgunits: API.OperationMethod<
   PatchOrgunitsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(261) as any as S.Schema<PatchOrgunitsRequest>,
-  output: __S(137) as any as S.Schema<OrgUnit>,
+  input: PatchOrgunitsRequest,
+  output: OrgUnit,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4275,8 +5490,8 @@ export const patchResourcesBuildings: API.OperationMethod<
   PatchResourcesBuildingsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(262) as any as S.Schema<PatchResourcesBuildingsRequest>,
-  output: __S(141) as any as S.Schema<Building>,
+  input: PatchResourcesBuildingsRequest,
+  output: Building,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4295,8 +5510,8 @@ export const patchResourcesCalendars: API.OperationMethod<
   PatchResourcesCalendarsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(263) as any as S.Schema<PatchResourcesCalendarsRequest>,
-  output: __S(143) as any as S.Schema<CalendarResource>,
+  input: PatchResourcesCalendarsRequest,
+  output: CalendarResource,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4310,8 +5525,8 @@ export const patchResourcesFeatures: API.OperationMethod<
   PatchResourcesFeaturesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(264) as any as S.Schema<PatchResourcesFeaturesRequest>,
-  output: __S(145) as any as S.Schema<Feature>,
+  input: PatchResourcesFeaturesRequest,
+  output: Feature,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4325,8 +5540,8 @@ export const patchRoles: API.OperationMethod<
   PatchRolesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(265) as any as S.Schema<PatchRolesRequest>,
-  output: __S(152) as any as S.Schema<Role>,
+  input: PatchRolesRequest,
+  output: Role,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4340,8 +5555,8 @@ export const patchSchemas: API.OperationMethod<
   PatchSchemasError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(266) as any as S.Schema<PatchSchemasRequest>,
-  output: __S(157) as any as S.Schema<Admin_Schema>,
+  input: PatchSchemasRequest,
+  output: Admin_Schema,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4355,8 +5570,8 @@ export const patchUsers: API.OperationMethod<
   PatchUsersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(267) as any as S.Schema<PatchUsersRequest>,
-  output: __S(50) as any as S.Schema<User>,
+  input: PatchUsersRequest,
+  output: User,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4370,8 +5585,8 @@ export const patchUsersPhotos: API.OperationMethod<
   PatchUsersPhotosError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(268) as any as S.Schema<PatchUsersPhotosRequest>,
-  output: __S(162) as any as S.Schema<UserPhoto>,
+  input: PatchUsersPhotosRequest,
+  output: UserPhoto,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4390,8 +5605,8 @@ export const renameResourcesFeatures: API.OperationMethod<
   RenameResourcesFeaturesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(270) as any as S.Schema<RenameResourcesFeaturesRequest>,
-  output: __S(64) as any as S.Schema<RenameResourcesFeaturesResponse>,
+  input: RenameResourcesFeaturesRequest,
+  output: RenameResourcesFeaturesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4405,8 +5620,8 @@ export const signOutUsers: API.OperationMethod<
   SignOutUsersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(271) as any as S.Schema<SignOutUsersRequest>,
-  output: __S(2) as any as S.Schema<SignOutUsersResponse>,
+  input: SignOutUsersRequest,
+  output: SignOutUsersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4420,8 +5635,8 @@ export const stopChannels: API.OperationMethod<
   StopChannelsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(274) as any as S.Schema<StopChannelsRequest>,
-  output: __S(2) as any as S.Schema<StopChannelsResponse>,
+  input: StopChannelsRequest,
+  output: StopChannelsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4440,8 +5655,8 @@ export const turnOffTwoStepVerification: API.OperationMethod<
   TurnOffTwoStepVerificationError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(275) as any as S.Schema<TurnOffTwoStepVerificationRequest>,
-  output: __S(11) as any as S.Schema<TurnOffTwoStepVerificationResponse>,
+  input: TurnOffTwoStepVerificationRequest,
+  output: TurnOffTwoStepVerificationResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4455,8 +5670,8 @@ export const undeleteUsers: API.OperationMethod<
   UndeleteUsersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(277) as any as S.Schema<UndeleteUsersRequest>,
-  output: __S(2) as any as S.Schema<UndeleteUsersResponse>,
+  input: UndeleteUsersRequest,
+  output: UndeleteUsersResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4470,8 +5685,8 @@ export const updateChromeosdevices: API.OperationMethod<
   UpdateChromeosdevicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(278) as any as S.Schema<UpdateChromeosdevicesRequest>,
-  output: __S(112) as any as S.Schema<ChromeOsDevice>,
+  input: UpdateChromeosdevicesRequest,
+  output: ChromeOsDevice,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4485,8 +5700,8 @@ export const updateCustomers: API.OperationMethod<
   UpdateCustomersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(279) as any as S.Schema<UpdateCustomersRequest>,
-  output: __S(118) as any as S.Schema<Customer>,
+  input: UpdateCustomersRequest,
+  output: Customer,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4500,8 +5715,8 @@ export const updateGroups: API.OperationMethod<
   UpdateGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(280) as any as S.Schema<UpdateGroupsRequest>,
-  output: __S(129) as any as S.Schema<Group>,
+  input: UpdateGroupsRequest,
+  output: Group,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4515,8 +5730,8 @@ export const updateMembers: API.OperationMethod<
   UpdateMembersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(281) as any as S.Schema<UpdateMembersRequest>,
-  output: __S(131) as any as S.Schema<Member>,
+  input: UpdateMembersRequest,
+  output: Member,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4530,8 +5745,8 @@ export const updateOrgunits: API.OperationMethod<
   UpdateOrgunitsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(282) as any as S.Schema<UpdateOrgunitsRequest>,
-  output: __S(137) as any as S.Schema<OrgUnit>,
+  input: UpdateOrgunitsRequest,
+  output: OrgUnit,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4550,8 +5765,8 @@ export const updateResourcesBuildings: API.OperationMethod<
   UpdateResourcesBuildingsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(283) as any as S.Schema<UpdateResourcesBuildingsRequest>,
-  output: __S(141) as any as S.Schema<Building>,
+  input: UpdateResourcesBuildingsRequest,
+  output: Building,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4570,8 +5785,8 @@ export const updateResourcesCalendars: API.OperationMethod<
   UpdateResourcesCalendarsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(284) as any as S.Schema<UpdateResourcesCalendarsRequest>,
-  output: __S(143) as any as S.Schema<CalendarResource>,
+  input: UpdateResourcesCalendarsRequest,
+  output: CalendarResource,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4590,8 +5805,8 @@ export const updateResourcesFeatures: API.OperationMethod<
   UpdateResourcesFeaturesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(285) as any as S.Schema<UpdateResourcesFeaturesRequest>,
-  output: __S(145) as any as S.Schema<Feature>,
+  input: UpdateResourcesFeaturesRequest,
+  output: Feature,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4605,8 +5820,8 @@ export const updateRoles: API.OperationMethod<
   UpdateRolesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(286) as any as S.Schema<UpdateRolesRequest>,
-  output: __S(152) as any as S.Schema<Role>,
+  input: UpdateRolesRequest,
+  output: Role,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4620,8 +5835,8 @@ export const updateSchemas: API.OperationMethod<
   UpdateSchemasError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(287) as any as S.Schema<UpdateSchemasRequest>,
-  output: __S(157) as any as S.Schema<Admin_Schema>,
+  input: UpdateSchemasRequest,
+  output: Admin_Schema,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4635,8 +5850,8 @@ export const updateUsers: API.OperationMethod<
   UpdateUsersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(288) as any as S.Schema<UpdateUsersRequest>,
-  output: __S(50) as any as S.Schema<User>,
+  input: UpdateUsersRequest,
+  output: User,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4650,8 +5865,8 @@ export const updateUsersPhotos: API.OperationMethod<
   UpdateUsersPhotosError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(289) as any as S.Schema<UpdateUsersPhotosRequest>,
-  output: __S(162) as any as S.Schema<UserPhoto>,
+  input: UpdateUsersPhotosRequest,
+  output: UserPhoto,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4665,8 +5880,8 @@ export const watchUsers: API.OperationMethod<
   WatchUsersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(290) as any as S.Schema<WatchUsersRequest>,
-  output: __S(273) as any as S.Schema<Channel>,
+  input: WatchUsersRequest,
+  output: Channel,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4680,8 +5895,8 @@ export const watchUsersAliases: API.OperationMethod<
   WatchUsersAliasesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(291) as any as S.Schema<WatchUsersAliasesRequest>,
-  output: __S(273) as any as S.Schema<Channel>,
+  input: WatchUsersAliasesRequest,
+  output: Channel,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4702,7 +5917,7 @@ function __c0(j: number): any {
         S.Struct({
           customerId: S.String.pipe(T.Label()),
           resourceId: S.String.pipe(T.Label()),
-          body: S.optional(__S(0).pipe(T.HttpBody())),
+          body: S.optional(ChromeOsDeviceAction.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4728,7 +5943,7 @@ function __c0(j: number): any {
         S.Struct({
           resourceId: S.String.pipe(T.Label()),
           customerId: S.String.pipe(T.Label()),
-          body: S.optional(__S(3).pipe(T.HttpBody())),
+          body: S.optional(MobileDeviceAction.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4744,9 +5959,13 @@ function __c0(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          deprovisionReason: S.optional(S.String),
-          changeChromeOsDeviceStatusAction: S.optional(S.String),
-          deviceIds: S.optional(__S(5)),
+          deprovisionReason: S.optional(
+            BatchChangeChromeOsDeviceStatusRequestDeprovisionReasonEnum,
+          ),
+          changeChromeOsDeviceStatusAction: S.optional(
+            BatchChangeChromeOsDeviceStatusRequestChangeChromeOsDeviceStatusActionEnum,
+          ),
+          deviceIds: S.optional(StringList),
         }),
       ).annotate({
         identifier: "BatchChangeChromeOsDeviceStatusRequest",
@@ -4755,7 +5974,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           customerId: S.String.pipe(T.Label()),
-          body: S.optional(__S(6).pipe(T.HttpBody())),
+          body: S.optional(BatchChangeChromeOsDeviceStatusRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4773,13 +5992,13 @@ function __c1(j: number): any {
     case 0:
       return S.Record(S.String, S.Unknown);
     case 1:
-      return S.Array(__S(8));
+      return S.Array(DocumentMap);
     case 2:
       return S.suspend(() =>
         S.Struct({
           message: S.optional(S.String),
           code: S.optional(S.Number),
-          details: S.optional(__S(9)),
+          details: S.optional(DocumentMapList),
         }),
       ).annotate({ identifier: "Status" });
     case 3:
@@ -4789,19 +6008,19 @@ function __c1(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          error: S.optional(__S(10)),
-          response: S.optional(__S(11)),
+          error: S.optional(Status),
+          response: S.optional(ChangeChromeOsDeviceStatusSucceeded),
           deviceId: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ChangeChromeOsDeviceStatusResult",
       });
     case 5:
-      return S.Array(__S(12));
+      return S.Array(ChangeChromeOsDeviceStatusResult);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          changeChromeOsDeviceStatusResults: S.optional(__S(13)),
+          changeChromeOsDeviceStatusResults: S.optional(ChangeChromeOsDeviceStatusResultList),
         }),
       ).annotate({
         identifier: "BatchChangeChromeOsDeviceStatusResponse",
@@ -4809,7 +6028,7 @@ function __c1(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          severity: S.optional(S.String),
+          severity: S.optional(AuxiliaryMessageSeverityEnum),
           auxiliaryMessage: S.optional(S.String),
           fieldMask: S.optional(S.String),
         }),
@@ -4819,12 +6038,12 @@ function __c1(j: number): any {
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(15));
+      return S.Array(AuxiliaryMessage);
     case 1:
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
-          auxiliaryMessages: S.optional(__S(16)),
+          auxiliaryMessages: S.optional(AuxiliaryMessageList),
           orgUnitId: S.optional(S.String),
           name: S.optional(S.String),
           createTime: S.optional(S.String),
@@ -4839,15 +6058,15 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.optional(S.String),
-          printer: S.optional(__S(17)),
+          printer: S.optional(Printer),
         }),
       ).annotate({ identifier: "CreatePrinterRequest" });
     case 3:
-      return S.Array(__S(18));
+      return S.Array(CreatePrinterRequest);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          requests: S.optional(__S(19)),
+          requests: S.optional(CreatePrinterRequestList),
         }),
       ).annotate({
         identifier: "BatchCreatePrintersRequest",
@@ -4856,7 +6075,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(20).pipe(T.HttpBody())),
+          body: S.optional(BatchCreatePrintersRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4868,13 +6087,13 @@ function __c2(j: number): any {
         identifier: "BatchCreatePrintersCustomersChromePrintersRequest",
       });
     case 6:
-      return S.Array(__S(17));
+      return S.Array(Printer);
     case 7:
       return S.suspend(() =>
         S.Struct({
           printerId: S.optional(S.String),
-          errorCode: S.optional(S.String),
-          printer: S.optional(__S(17)),
+          errorCode: S.optional(FailureInfoErrorCodeEnum),
+          printer: S.optional(Printer),
           errorMessage: S.optional(S.String),
         }),
       ).annotate({ identifier: "FailureInfo" });
@@ -4883,12 +6102,12 @@ function __c2(j: number): any {
 function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(23));
+      return S.Array(FailureInfo);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          printers: S.optional(__S(22)),
-          failures: S.optional(__S(24)),
+          printers: S.optional(PrinterList),
+          failures: S.optional(FailureInfoList),
         }),
       ).annotate({
         identifier: "BatchCreatePrintersResponse",
@@ -4909,15 +6128,15 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.optional(S.String),
-          printServer: S.optional(__S(26)),
+          printServer: S.optional(PrintServer),
         }),
       ).annotate({ identifier: "CreatePrintServerRequest" });
     case 4:
-      return S.Array(__S(27));
+      return S.Array(CreatePrintServerRequest);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          requests: S.optional(__S(28)),
+          requests: S.optional(CreatePrintServerRequestList),
         }),
       ).annotate({
         identifier: "BatchCreatePrintServersRequest",
@@ -4926,7 +6145,7 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(29).pipe(T.HttpBody())),
+          body: S.optional(BatchCreatePrintServersRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4938,7 +6157,7 @@ function __c3(j: number): any {
         identifier: "BatchCreatePrintServersCustomersChromePrintServersRequest",
       });
     case 7:
-      return S.Array(__S(26));
+      return S.Array(PrintServer);
   }
 }
 function __c4(j: number): any {
@@ -4948,17 +6167,17 @@ function __c4(j: number): any {
         S.Struct({
           printServerId: S.optional(S.String),
           errorMessage: S.optional(S.String),
-          printServer: S.optional(__S(26)),
-          errorCode: S.optional(S.String),
+          printServer: S.optional(PrintServer),
+          errorCode: S.optional(PrintServerFailureInfoErrorCodeEnum),
         }),
       ).annotate({ identifier: "PrintServerFailureInfo" });
     case 1:
-      return S.Array(__S(32));
+      return S.Array(PrintServerFailureInfo);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          printServers: S.optional(__S(31)),
-          failures: S.optional(__S(33)),
+          printServers: S.optional(PrintServerList),
+          failures: S.optional(PrintServerFailureInfoList),
         }),
       ).annotate({
         identifier: "BatchCreatePrintServersResponse",
@@ -4966,7 +6185,7 @@ function __c4(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          printerIds: S.optional(__S(5)),
+          printerIds: S.optional(StringList),
         }),
       ).annotate({
         identifier: "BatchDeletePrintersRequest",
@@ -4975,7 +6194,7 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(35).pipe(T.HttpBody())),
+          body: S.optional(BatchDeletePrintersRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4989,8 +6208,8 @@ function __c4(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          failedPrinters: S.optional(__S(24)),
-          printerIds: S.optional(__S(5)),
+          failedPrinters: S.optional(FailureInfoList),
+          printerIds: S.optional(StringList),
         }),
       ).annotate({
         identifier: "BatchDeletePrintersResponse",
@@ -4998,7 +6217,7 @@ function __c4(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          printServerIds: S.optional(__S(5)),
+          printServerIds: S.optional(StringList),
         }),
       ).annotate({
         identifier: "BatchDeletePrintServersRequest",
@@ -5007,7 +6226,7 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(38).pipe(T.HttpBody())),
+          body: S.optional(BatchDeletePrintServersRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5025,8 +6244,8 @@ function __c5(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          printServerIds: S.optional(__S(5)),
-          failedPrintServers: S.optional(__S(33)),
+          printServerIds: S.optional(StringList),
+          failedPrintServers: S.optional(PrintServerFailureInfoList),
         }),
       ).annotate({
         identifier: "BatchDeletePrintServersResponse",
@@ -5060,7 +6279,7 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(17).pipe(T.HttpBody())),
+          body: S.optional(Printer.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5075,7 +6294,7 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(26).pipe(T.HttpBody())),
+          body: S.optional(PrintServer.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5098,7 +6317,7 @@ function __c5(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(__S(45).pipe(T.HttpBody())),
+          body: S.optional(DirectoryUsersCreateGuestRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5127,7 +6346,7 @@ function __c6(j: number): any {
         }),
       ).annotate({ identifier: "GuestAccountInfo" });
     case 1:
-      return S.Record(S.String, __S(8));
+      return S.Record(S.String, UserCustomProperties);
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -5135,9 +6354,9 @@ function __c6(j: number): any {
           password: S.optional(S.String),
           orgUnitPath: S.optional(S.String),
           creationTime: S.optional(S.String),
-          name: S.optional(__S(47)),
+          name: S.optional(UserName),
           posixAccounts: S.optional(S.Unknown),
-          guestAccountInfo: S.optional(__S(48)),
+          guestAccountInfo: S.optional(GuestAccountInfo),
           isDelegatedAdmin: S.optional(S.Boolean),
           archivalTime: S.optional(S.String),
           keywords: S.optional(S.Unknown),
@@ -5154,7 +6373,7 @@ function __c6(j: number): any {
           addresses: S.optional(S.Unknown),
           isEnforcedIn2Sv: S.optional(S.Boolean),
           isGuestUser: S.optional(S.Boolean),
-          aliases: S.optional(__S(5)),
+          aliases: S.optional(StringList),
           recoveryEmail: S.optional(S.String),
           id: S.optional(S.String),
           etag: S.optional(S.String),
@@ -5169,7 +6388,7 @@ function __c6(j: number): any {
           primaryEmail: S.optional(S.String),
           thumbnailPhotoUrl: S.optional(S.String),
           agreedToTerms: S.optional(S.Boolean),
-          customSchemas: S.optional(__S(49)),
+          customSchemas: S.optional(UserCustomPropertiesMap),
           notes: S.optional(S.Unknown),
           archived: S.optional(S.Boolean),
           isEnrolledIn2Sv: S.optional(S.Boolean),
@@ -5180,7 +6399,7 @@ function __c6(j: number): any {
           thumbnailPhotoEtag: S.optional(S.String),
           customerId: S.optional(S.String),
           deletionTime: S.optional(S.String),
-          nonEditableAliases: S.optional(__S(5)),
+          nonEditableAliases: S.optional(StringList),
         }),
       ).annotate({ identifier: "User" });
     case 3:
@@ -5518,7 +6737,7 @@ function __c9(j: number): any {
         S.Struct({
           deviceId: S.String.pipe(T.Label()),
           customerId: S.String.pipe(T.Label()),
-          projection: S.optional(S.String.pipe(T.Query())),
+          projection: S.optional(GetChromeosdevicesProjectionEnum.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -5536,7 +6755,7 @@ function __c9(j: number): any {
         }),
       ).annotate({ identifier: "FanInfo" });
     case 5:
-      return S.Array(__S(76));
+      return S.Array(FanInfo);
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -5548,7 +6767,7 @@ function __c9(j: number): any {
         identifier: "ChromeOsDeviceDiskVolumeReportsItemVolumeInfoItem",
       });
     case 7:
-      return S.Array(__S(78));
+      return S.Array(ChromeOsDeviceDiskVolumeReportsItemVolumeInfoItem);
   }
 }
 function __c10(j: number): any {
@@ -5556,13 +6775,13 @@ function __c10(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          volumeInfo: S.optional(__S(79)),
+          volumeInfo: S.optional(ChromeOsDeviceDiskVolumeReportsItemVolumeInfoItemList),
         }),
       ).annotate({
         identifier: "ChromeOsDeviceDiskVolumeReportsItem",
       });
     case 1:
-      return S.Array(__S(80));
+      return S.Array(ChromeOsDeviceDiskVolumeReportsItem);
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -5572,7 +6791,7 @@ function __c10(j: number): any {
         }),
       ).annotate({ identifier: "BacklightInfo" });
     case 3:
-      return S.Array(__S(82));
+      return S.Array(BacklightInfo);
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -5585,7 +6804,7 @@ function __c10(j: number): any {
         identifier: "ChromeOsDeviceScreenshotFilesItem",
       });
     case 5:
-      return S.Array(__S(84));
+      return S.Array(ChromeOsDeviceScreenshotFilesItem);
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -5615,7 +6834,7 @@ function __c10(j: number): any {
 function __c11(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(87));
+      return S.Array(ChromeOsDeviceDeviceFilesItem);
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -5626,25 +6845,25 @@ function __c11(j: number): any {
         identifier: "ChromeOsDeviceCpuInfoItemLogicalCpusItemCStatesItem",
       });
     case 2:
-      return S.Array(__S(89));
+      return S.Array(ChromeOsDeviceCpuInfoItemLogicalCpusItemCStatesItem);
     case 3:
       return S.suspend(() =>
         S.Struct({
           maxScalingFrequencyKhz: S.optional(S.Number),
           currentScalingFrequencyKhz: S.optional(S.Number),
           idleDuration: S.optional(S.String),
-          cStates: S.optional(__S(90)),
+          cStates: S.optional(ChromeOsDeviceCpuInfoItemLogicalCpusItemCStatesItemList),
         }),
       ).annotate({
         identifier: "ChromeOsDeviceCpuInfoItemLogicalCpusItem",
       });
     case 4:
-      return S.Array(__S(91));
+      return S.Array(ChromeOsDeviceCpuInfoItemLogicalCpusItem);
     case 5:
       return S.suspend(() =>
         S.Struct({
           maxClockSpeedKhz: S.optional(S.Number),
-          logicalCpus: S.optional(__S(92)),
+          logicalCpus: S.optional(ChromeOsDeviceCpuInfoItemLogicalCpusItemList),
           model: S.optional(S.String),
           architecture: S.optional(S.String),
         }),
@@ -5652,7 +6871,7 @@ function __c11(j: number): any {
         identifier: "ChromeOsDeviceCpuInfoItem",
       });
     case 6:
-      return S.Array(__S(93));
+      return S.Array(ChromeOsDeviceCpuInfoItem);
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -5667,7 +6886,7 @@ function __c11(j: number): any {
 function __c12(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(95));
+      return S.Array(ChromeOsDeviceRecentUsersItem);
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -5678,7 +6897,7 @@ function __c12(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          state: S.optional(S.String),
+          state: S.optional(OsUpdateStatusStateEnum),
           targetKioskAppVersion: S.optional(S.String),
           updateTime: S.optional(S.String),
           targetOsVersion: S.optional(S.String),
@@ -5698,19 +6917,21 @@ function __c12(j: number): any {
         identifier: "ChromeOsDeviceCpuStatusReportsItemCpuTemperatureInfoItem",
       });
     case 5:
-      return S.Array(__S(100));
+      return S.Array(ChromeOsDeviceCpuStatusReportsItemCpuTemperatureInfoItem);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          cpuUtilizationPercentageInfo: S.optional(__S(99)),
+          cpuUtilizationPercentageInfo: S.optional(IntegerList),
           reportTime: S.optional(S.String),
-          cpuTemperatureInfo: S.optional(__S(101)),
+          cpuTemperatureInfo: S.optional(
+            ChromeOsDeviceCpuStatusReportsItemCpuTemperatureInfoItemList,
+          ),
         }),
       ).annotate({
         identifier: "ChromeOsDeviceCpuStatusReportsItem",
       });
     case 7:
-      return S.Array(__S(102));
+      return S.Array(ChromeOsDeviceCpuStatusReportsItem);
   }
 }
 function __c13(j: number): any {
@@ -5723,7 +6944,7 @@ function __c13(j: number): any {
         }),
       ).annotate({ identifier: "BluetoothAdapterInfo" });
     case 1:
-      return S.Array(__S(104));
+      return S.Array(BluetoothAdapterInfo);
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -5734,18 +6955,18 @@ function __c13(j: number): any {
         identifier: "ChromeOsDeviceActiveTimeRangesItem",
       });
     case 3:
-      return S.Array(__S(106));
+      return S.Array(ChromeOsDeviceActiveTimeRangesItem);
     case 4:
       return S.suspend(() =>
         S.Struct({
           reportTime: S.optional(S.String),
-          systemRamFreeInfo: S.optional(__S(5)),
+          systemRamFreeInfo: S.optional(StringList),
         }),
       ).annotate({
         identifier: "ChromeOsDeviceSystemRamFreeReportsItem",
       });
     case 5:
-      return S.Array(__S(108));
+      return S.Array(ChromeOsDeviceSystemRamFreeReportsItem);
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -5756,7 +6977,7 @@ function __c13(j: number): any {
         identifier: "ChromeOsDeviceLastKnownNetworkItem",
       });
     case 7:
-      return S.Array(__S(110));
+      return S.Array(ChromeOsDeviceLastKnownNetworkItem);
   }
 }
 function __c14(j: number): any {
@@ -5764,12 +6985,12 @@ function __c14(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          fanInfo: S.optional(__S(77)),
+          fanInfo: S.optional(FanInfoList),
           lastDeprovisionTimestamp: S.optional(S.String),
-          deprovisionReason: S.optional(S.String),
-          osVersionCompliance: S.optional(S.String),
-          diskVolumeReports: S.optional(__S(81)),
-          backlightInfo: S.optional(__S(83)),
+          deprovisionReason: S.optional(ChromeOsDeviceDeprovisionReasonEnum),
+          osVersionCompliance: S.optional(ChromeOsDeviceOsVersionComplianceEnum),
+          diskVolumeReports: S.optional(ChromeOsDeviceDiskVolumeReportsItemList),
+          backlightInfo: S.optional(BacklightInfoList),
           orderNumber: S.optional(S.String),
           firmwareVersion: S.optional(S.String),
           autoUpdateThrough: S.optional(S.String),
@@ -5778,16 +6999,16 @@ function __c14(j: number): any {
           firstEnrollmentTime: S.optional(S.String),
           platformVersion: S.optional(S.String),
           model: S.optional(S.String),
-          screenshotFiles: S.optional(__S(85)),
+          screenshotFiles: S.optional(ChromeOsDeviceScreenshotFilesItemList),
           willAutoRenew: S.optional(S.Boolean),
           osVersion: S.optional(S.String),
-          tpmVersionInfo: S.optional(__S(86)),
-          deviceFiles: S.optional(__S(88)),
-          cpuInfo: S.optional(__S(94)),
+          tpmVersionInfo: S.optional(ChromeOsDeviceTpmVersionInfo),
+          deviceFiles: S.optional(ChromeOsDeviceDeviceFilesItemList),
+          cpuInfo: S.optional(ChromeOsDeviceCpuInfoItemList),
           ethernetMacAddress: S.optional(S.String),
-          recentUsers: S.optional(__S(96)),
+          recentUsers: S.optional(ChromeOsDeviceRecentUsersItemList),
           ethernetMacAddress0: S.optional(S.String),
-          chromeOsType: S.optional(S.String),
+          chromeOsType: S.optional(ChromeOsDeviceChromeOsTypeEnum),
           extendedSupportStart: S.optional(S.String),
           systemRamTotal: S.optional(S.String),
           meid: S.optional(S.String),
@@ -5796,26 +7017,26 @@ function __c14(j: number): any {
           status: S.optional(S.String),
           dockMacAddress: S.optional(S.String),
           extendedSupportEligible: S.optional(S.Boolean),
-          diskSpaceUsage: S.optional(__S(97)),
+          diskSpaceUsage: S.optional(ByteUsage),
           serialNumber: S.optional(S.String),
-          osUpdateStatus: S.optional(__S(98)),
+          osUpdateStatus: S.optional(OsUpdateStatus),
           notes: S.optional(S.String),
           macAddress: S.optional(S.String),
-          cpuStatusReports: S.optional(__S(103)),
+          cpuStatusReports: S.optional(ChromeOsDeviceCpuStatusReportsItemList),
           lastEnrollmentTime: S.optional(S.String),
           supportEndDate: S.optional(S.String),
           kind: S.optional(S.String),
-          bluetoothAdapterInfo: S.optional(__S(105)),
+          bluetoothAdapterInfo: S.optional(BluetoothAdapterInfoList),
           lastSync: S.optional(S.String),
           extendedSupportEnabled: S.optional(S.Boolean),
           deviceId: S.optional(S.String),
-          deviceLicenseType: S.optional(S.String),
-          activeTimeRanges: S.optional(__S(107)),
+          deviceLicenseType: S.optional(ChromeOsDeviceDeviceLicenseTypeEnum),
+          activeTimeRanges: S.optional(ChromeOsDeviceActiveTimeRangesItemList),
           orgUnitPath: S.optional(S.String),
-          systemRamFreeReports: S.optional(__S(109)),
+          systemRamFreeReports: S.optional(ChromeOsDeviceSystemRamFreeReportsItemList),
           annotatedAssetId: S.optional(S.String),
           orgUnitId: S.optional(S.String),
-          lastKnownNetwork: S.optional(__S(111)),
+          lastKnownNetwork: S.optional(ChromeOsDeviceLastKnownNetworkItemList),
           annotatedLocation: S.optional(S.String),
           annotatedUser: S.optional(S.String),
         }),
@@ -5840,7 +7061,7 @@ function __c14(j: number): any {
       return S.suspend(() =>
         S.Struct({
           commandResultPayload: S.optional(S.String),
-          result: S.optional(S.String),
+          result: S.optional(DirectoryChromeosdevicesCommandResultResultEnum),
           executeTime: S.optional(S.String),
           errorMessage: S.optional(S.String),
         }),
@@ -5853,9 +7074,9 @@ function __c14(j: number): any {
           commandExpireTime: S.optional(S.String),
           payload: S.optional(S.String),
           commandId: S.optional(S.String),
-          commandResult: S.optional(__S(114)),
-          state: S.optional(S.String),
-          type: S.optional(S.String),
+          commandResult: S.optional(DirectoryChromeosdevicesCommandResult),
+          state: S.optional(DirectoryChromeosdevicesCommandStateEnum),
+          type: S.optional(DirectoryChromeosdevicesCommandTypeEnum),
           issueTime: S.optional(S.String),
         }),
       ).annotate({
@@ -5891,7 +7112,7 @@ function __c14(j: number): any {
       return S.suspend(() =>
         S.Struct({
           etag: S.optional(S.String),
-          postalAddress: S.optional(__S(117)),
+          postalAddress: S.optional(CustomerPostalAddress),
           alternateEmail: S.optional(S.String),
           customerDomain: S.optional(S.String),
           kind: S.optional(S.String),
@@ -5971,14 +7192,14 @@ function __c15(j: number): any {
         ),
       ).annotate({ identifier: "GetDomainsRequest" });
     case 4:
-      return S.Array(__S(122));
+      return S.Array(DomainAlias);
     case 5:
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
           verified: S.optional(S.Boolean),
           creationTime: S.optional(S.String),
-          domainAliases: S.optional(__S(124)),
+          domainAliases: S.optional(DomainAliasList),
           domainName: S.optional(S.String),
           etag: S.optional(S.String),
           isPrimary: S.optional(S.Boolean),
@@ -6008,7 +7229,7 @@ function __c15(j: number): any {
 function __c16(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(127));
+      return S.Array(ExternalId);
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -6016,13 +7237,13 @@ function __c16(j: number): any {
           description: S.optional(S.String),
           email: S.optional(S.String),
           directMembersCount: S.optional(S.String),
-          externalIds: S.optional(__S(128)),
+          externalIds: S.optional(ExternalIdList),
           etag: S.optional(S.String),
           id: S.optional(S.String),
           adminCreated: S.optional(S.Boolean),
-          nonEditableAliases: S.optional(__S(5)),
+          nonEditableAliases: S.optional(StringList),
           kind: S.optional(S.String),
-          aliases: S.optional(__S(5)),
+          aliases: S.optional(StringList),
         }),
       ).annotate({ identifier: "Group" });
     case 2:
@@ -6054,7 +7275,7 @@ function __c16(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          projection: S.optional(S.String.pipe(T.Query())),
+          projection: S.optional(GetMobiledevicesProjectionEnum.pipe(T.Query())),
           customerId: S.String.pipe(T.Label()),
           resourceId: S.String.pipe(T.Label()),
         }).pipe(
@@ -6069,7 +7290,7 @@ function __c16(j: number): any {
       return S.suspend(() =>
         S.Struct({
           versionCode: S.optional(S.Number),
-          permission: S.optional(__S(5)),
+          permission: S.optional(StringList),
           packageName: S.optional(S.String),
           versionName: S.optional(S.String),
           displayName: S.optional(S.String),
@@ -6078,7 +7299,7 @@ function __c16(j: number): any {
         identifier: "MobileDeviceApplicationsItem",
       });
     case 6:
-      return S.Array(__S(133));
+      return S.Array(MobileDeviceApplicationsItem);
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -6086,7 +7307,7 @@ function __c16(j: number): any {
           os: S.optional(S.String),
           hardware: S.optional(S.String),
           lastSync: S.optional(S.String),
-          email: S.optional(__S(5)),
+          email: S.optional(StringList),
           defaultLanguage: S.optional(S.String),
           brand: S.optional(S.String),
           devicePasswordStatus: S.optional(S.String),
@@ -6114,14 +7335,14 @@ function __c16(j: number): any {
           resourceId: S.optional(S.String),
           kernelVersion: S.optional(S.String),
           status: S.optional(S.String),
-          name: S.optional(__S(5)),
-          otherAccountsInfo: S.optional(__S(5)),
+          name: S.optional(StringList),
+          otherAccountsInfo: S.optional(StringList),
           meid: S.optional(S.String),
           userAgent: S.optional(S.String),
           etag: S.optional(S.String),
           type: S.optional(S.String),
           manufacturer: S.optional(S.String),
-          applications: S.optional(__S(134)),
+          applications: S.optional(MobileDeviceApplicationsItemList),
         }),
       ).annotate({ identifier: "MobileDevice" });
   }
@@ -6178,7 +7399,7 @@ function __c17(j: number): any {
           postalCode: S.optional(S.String),
           administrativeArea: S.optional(S.String),
           languageCode: S.optional(S.String),
-          addressLines: S.optional(__S(5)),
+          addressLines: S.optional(StringList),
           sublocality: S.optional(S.String),
         }),
       ).annotate({ identifier: "BuildingAddress" });
@@ -6197,9 +7418,9 @@ function __c17(j: number): any {
           buildingId: S.optional(S.String),
           kind: S.optional(S.String),
           etags: S.optional(S.String),
-          address: S.optional(__S(139)),
-          coordinates: S.optional(__S(140)),
-          floorNames: S.optional(__S(5)),
+          address: S.optional(BuildingAddress),
+          coordinates: S.optional(BuildingCoordinates),
+          floorNames: S.optional(StringList),
         }),
       ).annotate({ identifier: "Building" });
     case 6:
@@ -6290,10 +7511,10 @@ function __c18(j: number): any {
         S.Struct({
           condition: S.optional(S.String),
           roleAssignmentId: S.optional(S.String),
-          expirationDetails: S.optional(__S(147)),
+          expirationDetails: S.optional(ExpirationDetails),
           assignedTo: S.optional(S.String),
           orgUnitId: S.optional(S.String),
-          assigneeType: S.optional(S.String),
+          assigneeType: S.optional(RoleAssignmentAssigneeTypeEnum),
           etag: S.optional(S.String),
           kind: S.optional(S.String),
           roleId: S.optional(S.String),
@@ -6321,7 +7542,7 @@ function __c18(j: number): any {
         }),
       ).annotate({ identifier: "RoleRolePrivilegesItem" });
     case 7:
-      return S.Array(__S(150));
+      return S.Array(RoleRolePrivilegesItem);
   }
 }
 function __c19(j: number): any {
@@ -6330,7 +7551,7 @@ function __c19(j: number): any {
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
-          rolePrivileges: S.optional(__S(151)),
+          rolePrivileges: S.optional(RoleRolePrivilegesItemList),
           isSystemRole: S.optional(S.Boolean),
           isSuperAdminRole: S.optional(S.Boolean),
           roleDescription: S.optional(S.String),
@@ -6371,19 +7592,19 @@ function __c19(j: number): any {
           fieldName: S.optional(S.String),
           readAccessType: S.optional(S.String),
           kind: S.optional(S.String),
-          numericIndexingSpec: S.optional(__S(154)),
+          numericIndexingSpec: S.optional(SchemaFieldSpecNumericIndexingSpec),
           displayName: S.optional(S.String),
           etag: S.optional(S.String),
         }),
       ).annotate({ identifier: "SchemaFieldSpec" });
     case 4:
-      return S.Array(__S(155));
+      return S.Array(SchemaFieldSpec);
     case 5:
       return S.suspend(() =>
         S.Struct({
           etag: S.optional(S.String),
           displayName: S.optional(S.String),
-          fields: S.optional(__S(156)),
+          fields: S.optional(SchemaFieldSpecList),
           schemaName: S.optional(S.String),
           schemaId: S.optional(S.String),
           kind: S.optional(S.String),
@@ -6412,7 +7633,7 @@ function __c19(j: number): any {
           anonymous: S.optional(S.Boolean),
           userKey: S.optional(S.String),
           kind: S.optional(S.String),
-          scopes: S.optional(__S(5)),
+          scopes: S.optional(StringList),
         }),
       ).annotate({ identifier: "Token" });
   }
@@ -6423,9 +7644,9 @@ function __c20(j: number): any {
       return S.suspend(() =>
         S.Struct({
           userKey: S.String.pipe(T.Label()),
-          projection: S.optional(S.String.pipe(T.Query())),
+          projection: S.optional(GetUsersProjectionEnum.pipe(T.Query())),
           customFieldMask: S.optional(S.String.pipe(T.Query())),
-          viewType: S.optional(S.String.pipe(T.Query())),
+          viewType: S.optional(GetUsersViewTypeEnum.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -6482,7 +7703,7 @@ function __c20(j: number): any {
       return S.suspend(() =>
         S.Struct({
           customer: S.String.pipe(T.Label()),
-          body: S.optional(__S(122).pipe(T.HttpBody())),
+          body: S.optional(DomainAlias.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6497,7 +7718,7 @@ function __c20(j: number): any {
       return S.suspend(() =>
         S.Struct({
           customer: S.String.pipe(T.Label()),
-          body: S.optional(__S(125).pipe(T.HttpBody())),
+          body: S.optional(Domains.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6509,7 +7730,7 @@ function __c20(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(__S(129).pipe(T.HttpBody())),
+          body: S.optional(Group.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6536,7 +7757,7 @@ function __c21(j: number): any {
       return S.suspend(() =>
         S.Struct({
           groupKey: S.String.pipe(T.Label()),
-          body: S.optional(__S(168).pipe(T.HttpBody())),
+          body: S.optional(Alias.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6551,7 +7772,7 @@ function __c21(j: number): any {
       return S.suspend(() =>
         S.Struct({
           groupKey: S.String.pipe(T.Label()),
-          body: S.optional(__S(131).pipe(T.HttpBody())),
+          body: S.optional(Member.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6564,7 +7785,7 @@ function __c21(j: number): any {
       return S.suspend(() =>
         S.Struct({
           customerId: S.String.pipe(T.Label()),
-          body: S.optional(__S(137).pipe(T.HttpBody())),
+          body: S.optional(OrgUnit.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6577,8 +7798,10 @@ function __c21(j: number): any {
       return S.suspend(() =>
         S.Struct({
           customer: S.String.pipe(T.Label()),
-          coordinatesSource: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(141).pipe(T.HttpBody())),
+          coordinatesSource: S.optional(
+            InsertResourcesBuildingsCoordinatesSourceEnum.pipe(T.Query()),
+          ),
+          body: S.optional(Building.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6593,7 +7816,7 @@ function __c21(j: number): any {
       return S.suspend(() =>
         S.Struct({
           customer: S.String.pipe(T.Label()),
-          body: S.optional(__S(143).pipe(T.HttpBody())),
+          body: S.optional(CalendarResource.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6608,7 +7831,7 @@ function __c21(j: number): any {
       return S.suspend(() =>
         S.Struct({
           customer: S.String.pipe(T.Label()),
-          body: S.optional(__S(145).pipe(T.HttpBody())),
+          body: S.optional(Feature.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6623,7 +7846,7 @@ function __c21(j: number): any {
       return S.suspend(() =>
         S.Struct({
           customer: S.String.pipe(T.Label()),
-          body: S.optional(__S(148).pipe(T.HttpBody())),
+          body: S.optional(RoleAssignment.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6642,7 +7865,7 @@ function __c22(j: number): any {
       return S.suspend(() =>
         S.Struct({
           customer: S.String.pipe(T.Label()),
-          body: S.optional(__S(152).pipe(T.HttpBody())),
+          body: S.optional(Role.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6655,7 +7878,7 @@ function __c22(j: number): any {
       return S.suspend(() =>
         S.Struct({
           customerId: S.String.pipe(T.Label()),
-          body: S.optional(__S(157).pipe(T.HttpBody())),
+          body: S.optional(Admin_Schema.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6668,7 +7891,7 @@ function __c22(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resolveConflictAccount: S.optional(S.Boolean.pipe(T.Query())),
-          body: S.optional(__S(50).pipe(T.HttpBody())),
+          body: S.optional(User.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6681,7 +7904,7 @@ function __c22(j: number): any {
       return S.suspend(() =>
         S.Struct({
           userKey: S.String.pipe(T.Label()),
-          body: S.optional(__S(168).pipe(T.HttpBody())),
+          body: S.optional(Alias.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6709,7 +7932,7 @@ function __c22(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          commandType: S.optional(S.String),
+          commandType: S.optional(DirectoryChromeosdevicesIssueCommandRequestCommandTypeEnum),
           payload: S.optional(S.String),
         }),
       ).annotate({
@@ -6720,7 +7943,7 @@ function __c22(j: number): any {
         S.Struct({
           deviceId: S.String.pipe(T.Label()),
           customerId: S.String.pipe(T.Label()),
-          body: S.optional(__S(181).pipe(T.HttpBody())),
+          body: S.optional(DirectoryChromeosdevicesIssueCommandRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6756,13 +7979,13 @@ function __c23(j: number): any {
         ),
       ).annotate({ identifier: "ListAspsRequest" });
     case 1:
-      return S.Array(__S(74));
+      return S.Array(Asp);
     case 2:
       return S.suspend(() =>
         S.Struct({
           etag: S.optional(S.String),
           kind: S.optional(S.String),
-          items: S.optional(__S(185)),
+          items: S.optional(AspList),
         }),
       ).annotate({ identifier: "Asps" });
     case 3:
@@ -6770,12 +7993,12 @@ function __c23(j: number): any {
         S.Struct({
           includeChildOrgunits: S.optional(S.Boolean.pipe(T.Query())),
           pageToken: S.optional(S.String.pipe(T.Query())),
-          sortOrder: S.optional(S.String.pipe(T.Query())),
+          sortOrder: S.optional(ListChromeosdevicesSortOrderEnum.pipe(T.Query())),
           maxResults: S.optional(S.Number.pipe(T.Query())),
           query: S.optional(S.String.pipe(T.Query())),
-          projection: S.optional(S.String.pipe(T.Query())),
+          projection: S.optional(ListChromeosdevicesProjectionEnum.pipe(T.Query())),
           customerId: S.String.pipe(T.Label()),
-          orderBy: S.optional(S.String.pipe(T.Query())),
+          orderBy: S.optional(ListChromeosdevicesOrderByEnum.pipe(T.Query())),
           orgUnitPath: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
@@ -6788,13 +8011,13 @@ function __c23(j: number): any {
         identifier: "ListChromeosdevicesRequest",
       });
     case 4:
-      return S.Array(__S(112));
+      return S.Array(ChromeOsDevice);
     case 5:
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
           nextPageToken: S.optional(S.String),
-          chromeosdevices: S.optional(__S(188)),
+          chromeosdevices: S.optional(ChromeOsDeviceList),
           etag: S.optional(S.String),
         }),
       ).annotate({ identifier: "ChromeOsDevices" });
@@ -6821,7 +8044,7 @@ function __c23(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          printers: S.optional(__S(22)),
+          printers: S.optional(PrinterList),
         }),
       ).annotate({ identifier: "ListPrintersResponse" });
   }
@@ -6850,7 +8073,7 @@ function __c24(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          printServers: S.optional(__S(31)),
+          printServers: S.optional(PrintServerList),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListPrintServersResponse" });
@@ -6871,7 +8094,7 @@ function __c24(j: number): any {
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
-          domainAliases: S.optional(__S(124)),
+          domainAliases: S.optional(DomainAliasList),
           etag: S.optional(S.String),
         }),
       ).annotate({ identifier: "DomainAliases" });
@@ -6888,12 +8111,12 @@ function __c24(j: number): any {
         ),
       ).annotate({ identifier: "ListDomainsRequest" });
     case 5:
-      return S.Array(__S(125));
+      return S.Array(Domains);
     case 6:
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
-          domains: S.optional(__S(197)),
+          domains: S.optional(DomainsList),
           etag: S.optional(S.String),
         }),
       ).annotate({ identifier: "Domains2" });
@@ -6902,10 +8125,10 @@ function __c24(j: number): any {
         S.Struct({
           customer: S.optional(S.String.pipe(T.Query())),
           maxResults: S.optional(S.Number.pipe(T.Query())),
-          orderBy: S.optional(S.String.pipe(T.Query())),
+          orderBy: S.optional(ListGroupsOrderByEnum.pipe(T.Query())),
           domain: S.optional(S.String.pipe(T.Query())),
           pageToken: S.optional(S.String.pipe(T.Query())),
-          sortOrder: S.optional(S.String.pipe(T.Query())),
+          sortOrder: S.optional(ListGroupsSortOrderEnum.pipe(T.Query())),
           query: S.optional(S.String.pipe(T.Query())),
           userKey: S.optional(S.String.pipe(T.Query())),
         }).pipe(
@@ -6921,14 +8144,14 @@ function __c24(j: number): any {
 function __c25(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(129));
+      return S.Array(Group);
     case 1:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
           kind: S.optional(S.String),
           etag: S.optional(S.String),
-          groups: S.optional(__S(200)),
+          groups: S.optional(GroupList),
         }),
       ).annotate({ identifier: "Groups" });
     case 2:
@@ -6949,7 +8172,7 @@ function __c25(j: number): any {
       return S.suspend(() =>
         S.Struct({
           etag: S.optional(S.String),
-          aliases: S.optional(__S(203)),
+          aliases: S.optional(DocumentList),
           kind: S.optional(S.String),
         }),
       ).annotate({ identifier: "Aliases" });
@@ -6970,12 +8193,12 @@ function __c25(j: number): any {
         ),
       ).annotate({ identifier: "ListMembersRequest" });
     case 6:
-      return S.Array(__S(131));
+      return S.Array(Member);
     case 7:
       return S.suspend(() =>
         S.Struct({
           etag: S.optional(S.String),
-          members: S.optional(__S(206)),
+          members: S.optional(MemberList),
           nextPageToken: S.optional(S.String),
           kind: S.optional(S.String),
         }),
@@ -6988,11 +8211,11 @@ function __c26(j: number): any {
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
-          sortOrder: S.optional(S.String.pipe(T.Query())),
+          sortOrder: S.optional(ListMobiledevicesSortOrderEnum.pipe(T.Query())),
           customerId: S.String.pipe(T.Label()),
-          orderBy: S.optional(S.String.pipe(T.Query())),
+          orderBy: S.optional(ListMobiledevicesOrderByEnum.pipe(T.Query())),
           maxResults: S.optional(S.Number.pipe(T.Query())),
-          projection: S.optional(S.String.pipe(T.Query())),
+          projection: S.optional(ListMobiledevicesProjectionEnum.pipe(T.Query())),
           query: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
@@ -7003,13 +8226,13 @@ function __c26(j: number): any {
         ),
       ).annotate({ identifier: "ListMobiledevicesRequest" });
     case 1:
-      return S.Array(__S(135));
+      return S.Array(MobileDevice);
     case 2:
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
           nextPageToken: S.optional(S.String),
-          mobiledevices: S.optional(__S(209)),
+          mobiledevices: S.optional(MobileDeviceList),
           etag: S.optional(S.String),
         }),
       ).annotate({ identifier: "MobileDevices" });
@@ -7018,7 +8241,7 @@ function __c26(j: number): any {
         S.Struct({
           orgUnitPath: S.optional(S.String.pipe(T.Query())),
           customerId: S.String.pipe(T.Label()),
-          type: S.optional(S.String.pipe(T.Query())),
+          type: S.optional(ListOrgunitsTypeEnum.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -7028,12 +8251,12 @@ function __c26(j: number): any {
         ),
       ).annotate({ identifier: "ListOrgunitsRequest" });
     case 4:
-      return S.Array(__S(137));
+      return S.Array(OrgUnit);
     case 5:
       return S.suspend(() =>
         S.Struct({
           etag: S.optional(S.String),
-          organizationUnits: S.optional(__S(212)),
+          organizationUnits: S.optional(OrgUnitList),
           kind: S.optional(S.String),
         }),
       ).annotate({ identifier: "OrgUnits" });
@@ -7067,12 +8290,12 @@ function __c26(j: number): any {
 function __c27(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(215));
+      return S.Array(PrinterModel);
     case 1:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          printerModels: S.optional(__S(216)),
+          printerModels: S.optional(PrinterModelList),
         }),
       ).annotate({
         identifier: "ListPrinterModelsResponse",
@@ -7096,18 +8319,18 @@ function __c27(j: number): any {
           serviceName: S.optional(S.String),
           isOuScopable: S.optional(S.Boolean),
           etag: S.optional(S.String),
-          childPrivileges: S.optional(S.suspend(() => __S(220))),
+          childPrivileges: S.optional(S.suspend(() => PrivilegeList)),
           serviceId: S.optional(S.String),
           kind: S.optional(S.String),
         }),
       ).annotate({ identifier: "Privilege" });
     case 4:
-      return S.Array(__S(219));
+      return S.Array(Privilege);
     case 5:
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
-          items: S.optional(__S(220)),
+          items: S.optional(PrivilegeList),
           etag: S.optional(S.String),
         }),
       ).annotate({ identifier: "Privileges" });
@@ -7128,7 +8351,7 @@ function __c27(j: number): any {
         identifier: "ListResourcesBuildingsRequest",
       });
     case 7:
-      return S.Array(__S(141));
+      return S.Array(Building);
   }
 }
 function __c28(j: number): any {
@@ -7138,7 +8361,7 @@ function __c28(j: number): any {
         S.Struct({
           etag: S.optional(S.String),
           nextPageToken: S.optional(S.String),
-          buildings: S.optional(__S(223)),
+          buildings: S.optional(BuildingList),
           kind: S.optional(S.String),
         }),
       ).annotate({ identifier: "Buildings" });
@@ -7161,13 +8384,13 @@ function __c28(j: number): any {
         identifier: "ListResourcesCalendarsRequest",
       });
     case 2:
-      return S.Array(__S(143));
+      return S.Array(CalendarResource);
     case 3:
       return S.suspend(() =>
         S.Struct({
           etag: S.optional(S.String),
           kind: S.optional(S.String),
-          items: __S(226),
+          items: CalendarResourceList,
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "CalendarResources" });
@@ -7188,14 +8411,14 @@ function __c28(j: number): any {
         identifier: "ListResourcesFeaturesRequest",
       });
     case 5:
-      return S.Array(__S(145));
+      return S.Array(Feature);
     case 6:
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
           nextPageToken: S.optional(S.String),
           etag: S.optional(S.String),
-          features: S.optional(__S(229)),
+          features: S.optional(FeatureList),
         }),
       ).annotate({ identifier: "Features" });
     case 7:
@@ -7222,14 +8445,14 @@ function __c28(j: number): any {
 function __c29(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(148));
+      return S.Array(RoleAssignment);
     case 1:
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
           nextPageToken: S.optional(S.String),
           etag: S.optional(S.String),
-          items: __S(232),
+          items: RoleAssignmentList,
         }),
       ).annotate({ identifier: "RoleAssignments" });
     case 2:
@@ -7247,12 +8470,12 @@ function __c29(j: number): any {
         ),
       ).annotate({ identifier: "ListRolesRequest" });
     case 3:
-      return S.Array(__S(152));
+      return S.Array(Role);
     case 4:
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
-          items: __S(235),
+          items: RoleList,
           nextPageToken: S.optional(S.String),
           etag: S.optional(S.String),
         }),
@@ -7270,13 +8493,13 @@ function __c29(j: number): any {
         ),
       ).annotate({ identifier: "ListSchemasRequest" });
     case 6:
-      return S.Array(__S(157));
+      return S.Array(Admin_Schema);
     case 7:
       return S.suspend(() =>
         S.Struct({
           etag: S.optional(S.String),
           kind: S.optional(S.String),
-          schemas: S.optional(__S(238)),
+          schemas: S.optional(Admin_SchemaList),
         }),
       ).annotate({ identifier: "Schemas" });
   }
@@ -7296,12 +8519,12 @@ function __c30(j: number): any {
         ),
       ).annotate({ identifier: "ListTokensRequest" });
     case 1:
-      return S.Array(__S(159));
+      return S.Array(Token);
     case 2:
       return S.suspend(() =>
         S.Struct({
           etag: S.optional(S.String),
-          items: S.optional(__S(241)),
+          items: S.optional(TokenList),
           kind: S.optional(S.String),
         }),
       ).annotate({ identifier: "Tokens" });
@@ -7309,17 +8532,17 @@ function __c30(j: number): any {
       return S.suspend(() =>
         S.Struct({
           domain: S.optional(S.String.pipe(T.Query())),
-          projection: S.optional(S.String.pipe(T.Query())),
-          viewType: S.optional(S.String.pipe(T.Query())),
-          event: S.optional(S.String.pipe(T.Query())),
+          projection: S.optional(ListUsersProjectionEnum.pipe(T.Query())),
+          viewType: S.optional(ListUsersViewTypeEnum.pipe(T.Query())),
+          event: S.optional(ListUsersEventEnum.pipe(T.Query())),
           showDeleted: S.optional(S.String.pipe(T.Query())),
           customFieldMask: S.optional(S.String.pipe(T.Query())),
           query: S.optional(S.String.pipe(T.Query())),
           customer: S.optional(S.String.pipe(T.Query())),
-          orderBy: S.optional(S.String.pipe(T.Query())),
+          orderBy: S.optional(ListUsersOrderByEnum.pipe(T.Query())),
           maxResults: S.optional(S.Number.pipe(T.Query())),
           pageToken: S.optional(S.String.pipe(T.Query())),
-          sortOrder: S.optional(S.String.pipe(T.Query())),
+          sortOrder: S.optional(ListUsersSortOrderEnum.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -7329,14 +8552,14 @@ function __c30(j: number): any {
         ),
       ).annotate({ identifier: "ListUsersRequest" });
     case 4:
-      return S.Array(__S(50));
+      return S.Array(User);
     case 5:
       return S.suspend(() =>
         S.Struct({
           trigger_event: S.optional(S.String),
           kind: S.optional(S.String),
           nextPageToken: S.optional(S.String),
-          users: S.optional(__S(244)),
+          users: S.optional(UserList),
           etag: S.optional(S.String),
         }),
       ).annotate({ identifier: "Users" });
@@ -7344,7 +8567,7 @@ function __c30(j: number): any {
       return S.suspend(() =>
         S.Struct({
           userKey: S.String.pipe(T.Label()),
-          event: S.optional(S.String.pipe(T.Query())),
+          event: S.optional(ListUsersAliasesEventEnum.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -7381,13 +8604,13 @@ function __c31(j: number): any {
         }),
       ).annotate({ identifier: "VerificationCode" });
     case 1:
-      return S.Array(__S(248));
+      return S.Array(VerificationCode);
     case 2:
       return S.suspend(() =>
         S.Struct({
           etag: S.optional(S.String),
           kind: S.optional(S.String),
-          items: S.optional(__S(249)),
+          items: S.optional(VerificationCodeList),
         }),
       ).annotate({ identifier: "VerificationCodes" });
     case 3:
@@ -7400,7 +8623,7 @@ function __c31(j: number): any {
       return S.suspend(() =>
         S.Struct({
           userKey: S.String.pipe(T.Label()),
-          body: S.optional(__S(251).pipe(T.HttpBody())),
+          body: S.optional(UserMakeAdmin.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7412,7 +8635,7 @@ function __c31(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          deviceIds: S.optional(__S(5)),
+          deviceIds: S.optional(StringList),
         }),
       ).annotate({ identifier: "ChromeOsMoveDevicesToOu" });
     case 6:
@@ -7420,7 +8643,7 @@ function __c31(j: number): any {
         S.Struct({
           orgUnitPath: S.String.pipe(T.Query()),
           customerId: S.String.pipe(T.Label()),
-          body: S.optional(__S(253).pipe(T.HttpBody())),
+          body: S.optional(ChromeOsMoveDevicesToOu.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7434,10 +8657,10 @@ function __c31(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          projection: S.optional(S.String.pipe(T.Query())),
+          projection: S.optional(PatchChromeosdevicesProjectionEnum.pipe(T.Query())),
           deviceId: S.String.pipe(T.Label()),
           customerId: S.String.pipe(T.Label()),
-          body: S.optional(__S(112).pipe(T.HttpBody())),
+          body: S.optional(ChromeOsDevice.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -7456,7 +8679,7 @@ function __c32(j: number): any {
       return S.suspend(() =>
         S.Struct({
           customerKey: S.String.pipe(T.Label()),
-          body: S.optional(__S(118).pipe(T.HttpBody())),
+          body: S.optional(Customer.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -7471,7 +8694,7 @@ function __c32(j: number): any {
           clearMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(17).pipe(T.HttpBody())),
+          body: S.optional(Printer.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -7487,7 +8710,7 @@ function __c32(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(26).pipe(T.HttpBody())),
+          body: S.optional(PrintServer.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -7502,7 +8725,7 @@ function __c32(j: number): any {
       return S.suspend(() =>
         S.Struct({
           groupKey: S.String.pipe(T.Label()),
-          body: S.optional(__S(129).pipe(T.HttpBody())),
+          body: S.optional(Group.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -7516,7 +8739,7 @@ function __c32(j: number): any {
         S.Struct({
           groupKey: S.String.pipe(T.Label()),
           memberKey: S.String.pipe(T.Label()),
-          body: S.optional(__S(131).pipe(T.HttpBody())),
+          body: S.optional(Member.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -7530,7 +8753,7 @@ function __c32(j: number): any {
         S.Struct({
           customerId: S.String.pipe(T.Label()),
           orgUnitPath: S.String.pipe(T.Label()),
-          body: S.optional(__S(137).pipe(T.HttpBody())),
+          body: S.optional(OrgUnit.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -7543,9 +8766,11 @@ function __c32(j: number): any {
       return S.suspend(() =>
         S.Struct({
           buildingId: S.String.pipe(T.Label()),
-          coordinatesSource: S.optional(S.String.pipe(T.Query())),
+          coordinatesSource: S.optional(
+            PatchResourcesBuildingsCoordinatesSourceEnum.pipe(T.Query()),
+          ),
           customer: S.String.pipe(T.Label()),
-          body: S.optional(__S(141).pipe(T.HttpBody())),
+          body: S.optional(Building.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -7561,7 +8786,7 @@ function __c32(j: number): any {
         S.Struct({
           calendarResourceId: S.String.pipe(T.Label()),
           customer: S.String.pipe(T.Label()),
-          body: S.optional(__S(143).pipe(T.HttpBody())),
+          body: S.optional(CalendarResource.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -7581,7 +8806,7 @@ function __c33(j: number): any {
         S.Struct({
           featureKey: S.String.pipe(T.Label()),
           customer: S.String.pipe(T.Label()),
-          body: S.optional(__S(145).pipe(T.HttpBody())),
+          body: S.optional(Feature.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -7597,7 +8822,7 @@ function __c33(j: number): any {
         S.Struct({
           roleId: S.String.pipe(T.Label()),
           customer: S.String.pipe(T.Label()),
-          body: S.optional(__S(152).pipe(T.HttpBody())),
+          body: S.optional(Role.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -7611,7 +8836,7 @@ function __c33(j: number): any {
         S.Struct({
           customerId: S.String.pipe(T.Label()),
           schemaKey: S.String.pipe(T.Label()),
-          body: S.optional(__S(157).pipe(T.HttpBody())),
+          body: S.optional(Admin_Schema.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -7624,7 +8849,7 @@ function __c33(j: number): any {
       return S.suspend(() =>
         S.Struct({
           userKey: S.String.pipe(T.Label()),
-          body: S.optional(__S(50).pipe(T.HttpBody())),
+          body: S.optional(User.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -7637,7 +8862,7 @@ function __c33(j: number): any {
       return S.suspend(() =>
         S.Struct({
           userKey: S.String.pipe(T.Label()),
-          body: S.optional(__S(162).pipe(T.HttpBody())),
+          body: S.optional(UserPhoto.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -7657,7 +8882,7 @@ function __c33(j: number): any {
         S.Struct({
           customer: S.String.pipe(T.Label()),
           oldName: S.String.pipe(T.Label()),
-          body: S.optional(__S(269).pipe(T.HttpBody())),
+          body: S.optional(FeatureRename.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7689,7 +8914,7 @@ function __c34(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          params: S.optional(__S(272)),
+          params: S.optional(StringMap),
           resourceId: S.optional(S.String),
           address: S.optional(S.String),
           kind: S.optional(S.String),
@@ -7704,7 +8929,7 @@ function __c34(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(__S(273).pipe(T.HttpBody())),
+          body: S.optional(Channel.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7737,7 +8962,7 @@ function __c34(j: number): any {
       return S.suspend(() =>
         S.Struct({
           userKey: S.String.pipe(T.Label()),
-          body: S.optional(__S(276).pipe(T.HttpBody())),
+          body: S.optional(UserUndelete.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7750,9 +8975,9 @@ function __c34(j: number): any {
       return S.suspend(() =>
         S.Struct({
           customerId: S.String.pipe(T.Label()),
-          projection: S.optional(S.String.pipe(T.Query())),
+          projection: S.optional(UpdateChromeosdevicesProjectionEnum.pipe(T.Query())),
           deviceId: S.String.pipe(T.Label()),
-          body: S.optional(__S(112).pipe(T.HttpBody())),
+          body: S.optional(ChromeOsDevice.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -7767,7 +8992,7 @@ function __c34(j: number): any {
       return S.suspend(() =>
         S.Struct({
           customerKey: S.String.pipe(T.Label()),
-          body: S.optional(__S(118).pipe(T.HttpBody())),
+          body: S.optional(Customer.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -7784,7 +9009,7 @@ function __c35(j: number): any {
       return S.suspend(() =>
         S.Struct({
           groupKey: S.String.pipe(T.Label()),
-          body: S.optional(__S(129).pipe(T.HttpBody())),
+          body: S.optional(Group.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -7798,7 +9023,7 @@ function __c35(j: number): any {
         S.Struct({
           memberKey: S.String.pipe(T.Label()),
           groupKey: S.String.pipe(T.Label()),
-          body: S.optional(__S(131).pipe(T.HttpBody())),
+          body: S.optional(Member.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -7812,7 +9037,7 @@ function __c35(j: number): any {
         S.Struct({
           customerId: S.String.pipe(T.Label()),
           orgUnitPath: S.String.pipe(T.Label()),
-          body: S.optional(__S(137).pipe(T.HttpBody())),
+          body: S.optional(OrgUnit.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -7824,10 +9049,12 @@ function __c35(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          coordinatesSource: S.optional(S.String.pipe(T.Query())),
+          coordinatesSource: S.optional(
+            UpdateResourcesBuildingsCoordinatesSourceEnum.pipe(T.Query()),
+          ),
           buildingId: S.String.pipe(T.Label()),
           customer: S.String.pipe(T.Label()),
-          body: S.optional(__S(141).pipe(T.HttpBody())),
+          body: S.optional(Building.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -7843,7 +9070,7 @@ function __c35(j: number): any {
         S.Struct({
           customer: S.String.pipe(T.Label()),
           calendarResourceId: S.String.pipe(T.Label()),
-          body: S.optional(__S(143).pipe(T.HttpBody())),
+          body: S.optional(CalendarResource.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -7859,7 +9086,7 @@ function __c35(j: number): any {
         S.Struct({
           featureKey: S.String.pipe(T.Label()),
           customer: S.String.pipe(T.Label()),
-          body: S.optional(__S(145).pipe(T.HttpBody())),
+          body: S.optional(Feature.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -7875,7 +9102,7 @@ function __c35(j: number): any {
         S.Struct({
           roleId: S.String.pipe(T.Label()),
           customer: S.String.pipe(T.Label()),
-          body: S.optional(__S(152).pipe(T.HttpBody())),
+          body: S.optional(Role.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -7889,7 +9116,7 @@ function __c35(j: number): any {
         S.Struct({
           customerId: S.String.pipe(T.Label()),
           schemaKey: S.String.pipe(T.Label()),
-          body: S.optional(__S(157).pipe(T.HttpBody())),
+          body: S.optional(Admin_Schema.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -7906,7 +9133,7 @@ function __c36(j: number): any {
       return S.suspend(() =>
         S.Struct({
           userKey: S.String.pipe(T.Label()),
-          body: S.optional(__S(50).pipe(T.HttpBody())),
+          body: S.optional(User.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -7919,7 +9146,7 @@ function __c36(j: number): any {
       return S.suspend(() =>
         S.Struct({
           userKey: S.String.pipe(T.Label()),
-          body: S.optional(__S(162).pipe(T.HttpBody())),
+          body: S.optional(UserPhoto.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -7935,15 +9162,15 @@ function __c36(j: number): any {
           query: S.optional(S.String.pipe(T.Query())),
           customFieldMask: S.optional(S.String.pipe(T.Query())),
           pageToken: S.optional(S.String.pipe(T.Query())),
-          sortOrder: S.optional(S.String.pipe(T.Query())),
+          sortOrder: S.optional(WatchUsersSortOrderEnum.pipe(T.Query())),
           maxResults: S.optional(S.Number.pipe(T.Query())),
-          viewType: S.optional(S.String.pipe(T.Query())),
+          viewType: S.optional(WatchUsersViewTypeEnum.pipe(T.Query())),
           customer: S.optional(S.String.pipe(T.Query())),
-          orderBy: S.optional(S.String.pipe(T.Query())),
-          projection: S.optional(S.String.pipe(T.Query())),
+          orderBy: S.optional(WatchUsersOrderByEnum.pipe(T.Query())),
+          projection: S.optional(WatchUsersProjectionEnum.pipe(T.Query())),
           domain: S.optional(S.String.pipe(T.Query())),
-          event: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(273).pipe(T.HttpBody())),
+          event: S.optional(WatchUsersEventEnum.pipe(T.Query())),
+          body: S.optional(Channel.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7956,8 +9183,8 @@ function __c36(j: number): any {
       return S.suspend(() =>
         S.Struct({
           userKey: S.String.pipe(T.Label()),
-          event: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(273).pipe(T.HttpBody())),
+          event: S.optional(WatchUsersAliasesEventEnum.pipe(T.Query())),
+          body: S.optional(Channel.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7966,88 +9193,5 @@ function __c36(j: number): any {
           }),
         ),
       ).annotate({ identifier: "WatchUsersAliasesRequest" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
-    case 9:
-      return __c9(i & 7);
-    case 10:
-      return __c10(i & 7);
-    case 11:
-      return __c11(i & 7);
-    case 12:
-      return __c12(i & 7);
-    case 13:
-      return __c13(i & 7);
-    case 14:
-      return __c14(i & 7);
-    case 15:
-      return __c15(i & 7);
-    case 16:
-      return __c16(i & 7);
-    case 17:
-      return __c17(i & 7);
-    case 18:
-      return __c18(i & 7);
-    case 19:
-      return __c19(i & 7);
-    case 20:
-      return __c20(i & 7);
-    case 21:
-      return __c21(i & 7);
-    case 22:
-      return __c22(i & 7);
-    case 23:
-      return __c23(i & 7);
-    case 24:
-      return __c24(i & 7);
-    case 25:
-      return __c25(i & 7);
-    case 26:
-      return __c26(i & 7);
-    case 27:
-      return __c27(i & 7);
-    case 28:
-      return __c28(i & 7);
-    case 29:
-      return __c29(i & 7);
-    case 30:
-      return __c30(i & 7);
-    case 31:
-      return __c31(i & 7);
-    case 32:
-      return __c32(i & 7);
-    case 33:
-      return __c33(i & 7);
-    case 34:
-      return __c34(i & 7);
-    case 35:
-      return __c35(i & 7);
-    case 36:
-      return __c36(i & 7);
   }
 }

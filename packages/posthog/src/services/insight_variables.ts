@@ -6,8 +6,6 @@ import * as S from "@distilled.cloud/core/schema";
 import { PosthogProtocol, type PosthogOpError, type PosthogOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { PosthogOpError, PosthogOpContext };
 
@@ -40,6 +38,8 @@ export class NotFound
 
 /** * `String` - String * `Number` - Number * `Boolean` - Boolean * `List` - List * `Date` - Date */
 export type InsightVariableTypeEnum = "String" | "Number" | "Boolean" | "List" | "Date";
+const InsightVariableTypeEnum = S.String;
+
 export interface CreateInsightVariableRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -58,6 +58,11 @@ export interface CreateInsightVariableRequest {
   /** ID of the external data source connection values_query runs against. Null runs it against PostHog. */
   values_query_connection_id?: string | null;
 }
+const CreateInsightVariableRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<CreateInsightVariableRequest>;
+
 export interface InsightVariable {
   /** UUID of the SQL variable. */
   id?: string;
@@ -82,32 +87,64 @@ export interface InsightVariable {
   /** ID of the external data source connection values_query runs against. Null runs it against PostHog. */
   values_query_connection_id?: string | null;
 }
+const InsightVariable = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<InsightVariable>;
+
 export interface GetInsightVariableRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A UUID string identifying this insight variable. */
   id: string;
 }
+const GetInsightVariableRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<GetInsightVariableRequest>;
+
 export interface InsightVariablesDestroyRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A UUID string identifying this insight variable. */
   id: string;
 }
+const InsightVariablesDestroyRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<InsightVariablesDestroyRequest>;
+
 export interface InsightVariablesDestroyResponse {}
+const InsightVariablesDestroyResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<InsightVariablesDestroyResponse>;
+
 export interface ListInsightVariablesRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A page number within the paginated result set. */
   page?: number;
 }
+const ListInsightVariablesRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<ListInsightVariablesRequest>;
+
 export type PaginatedInsightVariableListResultsList = Array<InsightVariable>;
+const PaginatedInsightVariableListResultsList = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<PaginatedInsightVariableListResultsList>;
+
 export interface PaginatedInsightVariableList {
   count?: number;
   next?: string | null;
   previous?: string | null;
   results?: PaginatedInsightVariableListResultsList;
 }
+const PaginatedInsightVariableList = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<PaginatedInsightVariableList>;
+
 export interface UpdateInsightVariableRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -128,6 +165,11 @@ export interface UpdateInsightVariableRequest {
   /** ID of the external data source connection values_query runs against. Null runs it against PostHog. */
   values_query_connection_id?: string | null;
 }
+const UpdateInsightVariableRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<UpdateInsightVariableRequest>;
+
 export interface UpdateInsightVariablesPartialRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -148,6 +190,11 @@ export interface UpdateInsightVariablesPartialRequest {
   /** ID of the external data source connection values_query runs against. Null runs it against PostHog. */
   values_query_connection_id?: string | null;
 }
+const UpdateInsightVariablesPartialRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<UpdateInsightVariablesPartialRequest>;
+
 export type CreateInsightVariableError = BadRequest | Forbidden | NotFound | PosthogOpError;
 export const createInsightVariable: API.OperationMethod<
   CreateInsightVariableRequest,
@@ -155,8 +202,8 @@ export const createInsightVariable: API.OperationMethod<
   CreateInsightVariableError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<CreateInsightVariableRequest>,
-  output: __S(1) as any as S.Schema<InsightVariable>,
+  input: CreateInsightVariableRequest,
+  output: InsightVariable,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -169,8 +216,8 @@ export const getInsightVariable: API.OperationMethod<
   GetInsightVariableError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2) as any as S.Schema<GetInsightVariableRequest>,
-  output: __S(1) as any as S.Schema<InsightVariable>,
+  input: GetInsightVariableRequest,
+  output: InsightVariable,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -183,8 +230,8 @@ export const insightVariablesDestroy: API.OperationMethod<
   InsightVariablesDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3) as any as S.Schema<InsightVariablesDestroyRequest>,
-  output: __S(4) as any as S.Schema<InsightVariablesDestroyResponse>,
+  input: InsightVariablesDestroyRequest,
+  output: InsightVariablesDestroyResponse,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -197,8 +244,8 @@ export const listInsightVariables: API.OperationMethod<
   ListInsightVariablesError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5) as any as S.Schema<ListInsightVariablesRequest>,
-  output: __S(7) as any as S.Schema<PaginatedInsightVariableList>,
+  input: ListInsightVariablesRequest,
+  output: PaginatedInsightVariableList,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -211,8 +258,8 @@ export const updateInsightVariable: API.OperationMethod<
   UpdateInsightVariableError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8) as any as S.Schema<UpdateInsightVariableRequest>,
-  output: __S(1) as any as S.Schema<InsightVariable>,
+  input: UpdateInsightVariableRequest,
+  output: InsightVariable,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -225,8 +272,8 @@ export const updateInsightVariablesPartial: API.OperationMethod<
   UpdateInsightVariablesPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9) as any as S.Schema<UpdateInsightVariablesPartialRequest>,
-  output: __S(1) as any as S.Schema<InsightVariable>,
+  input: UpdateInsightVariablesPartialRequest,
+  output: InsightVariable,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -240,7 +287,7 @@ function __c0(j: number): any {
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           name: S.optional(S.String),
-          type: S.optional(S.String),
+          type: S.optional(InsightVariableTypeEnum),
           default_value: S.optional(S.Unknown),
           values: S.optional(S.Unknown),
           is_multi: S.optional(S.Boolean),
@@ -261,7 +308,7 @@ function __c0(j: number): any {
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
-          type: S.optional(S.String),
+          type: S.optional(InsightVariableTypeEnum),
           default_value: S.optional(S.Unknown),
           created_by: S.optional(S.NullOr(S.Number)),
           created_at: S.optional(S.String),
@@ -322,14 +369,14 @@ function __c0(j: number): any {
         identifier: "ListInsightVariablesRequest",
       });
     case 6:
-      return S.Array(__S(1));
+      return S.Array(InsightVariable);
     case 7:
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.Number),
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: S.optional(__S(6)),
+          results: S.optional(PaginatedInsightVariableListResultsList),
         }),
       ).annotate({
         identifier: "PaginatedInsightVariableList",
@@ -344,7 +391,7 @@ function __c1(j: number): any {
           project_id: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
           name: S.optional(S.String),
-          type: S.optional(S.String),
+          type: S.optional(InsightVariableTypeEnum),
           default_value: S.optional(S.Unknown),
           values: S.optional(S.Unknown),
           is_multi: S.optional(S.Boolean),
@@ -366,7 +413,7 @@ function __c1(j: number): any {
           project_id: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
           name: S.optional(S.String),
-          type: S.optional(S.String),
+          type: S.optional(InsightVariableTypeEnum),
           default_value: S.optional(S.Unknown),
           values: S.optional(S.Unknown),
           is_multi: S.optional(S.Boolean),
@@ -382,18 +429,5 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "UpdateInsightVariablesPartialRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
   }
 }

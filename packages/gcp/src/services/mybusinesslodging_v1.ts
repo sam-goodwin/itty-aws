@@ -7,8 +7,6 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -70,81 +68,116 @@ export interface GetGoogleUpdatedLocationsLodgingRequest {
   /** Required. Google identifier for this location in the form: `locations/{location_id}/lodging` */
   name: string;
 }
+const GetGoogleUpdatedLocationsLodgingRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<GetGoogleUpdatedLocationsLodgingRequest>;
+
 /** Metadata for the Lodging. */
 export interface LodgingMetadata {
   /** Required. The latest time at which the Lodging data is asserted to be true in the real world. This is not necessarily the time at which the request is made. */
   updateTime?: string;
 }
+const LodgingMetadata = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<LodgingMetadata>;
+
 export type PoolsPoolsCountExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const PoolsPoolsCountExceptionEnum = S.String;
+
 export type PoolsWaterParkExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const PoolsWaterParkExceptionEnum = S.String;
+
 export type PoolsOutdoorPoolsCountExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const PoolsOutdoorPoolsCountExceptionEnum = S.String;
+
 export type PoolsWadingPoolExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const PoolsWadingPoolExceptionEnum = S.String;
+
 export type PoolsHotTubExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const PoolsHotTubExceptionEnum = S.String;
+
 export type PoolsWaterslideExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const PoolsWaterslideExceptionEnum = S.String;
+
 export type PoolsIndoorPoolsCountExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const PoolsIndoorPoolsCountExceptionEnum = S.String;
+
 export type PoolsWavePoolExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const PoolsWavePoolExceptionEnum = S.String;
+
 export type PoolsLazyRiverExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const PoolsLazyRiverExceptionEnum = S.String;
+
 export type PoolsAdultPoolExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const PoolsAdultPoolExceptionEnum = S.String;
+
 export type PoolsOutdoorPoolExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const PoolsOutdoorPoolExceptionEnum = S.String;
+
 export type PoolsPoolExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const PoolsPoolExceptionEnum = S.String;
+
 export type PoolsLifeguardExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const PoolsLifeguardExceptionEnum = S.String;
+
 export type PoolsIndoorPoolExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const PoolsIndoorPoolExceptionEnum = S.String;
+
 /** Swimming pool or recreational water facilities available at the hotel. */
 export interface Pools {
   /** Pools count exception. */
@@ -204,36 +237,50 @@ export interface Pools {
   /** Indoor pool exception. */
   indoorPoolException?: PoolsIndoorPoolExceptionEnum | (string & {});
 }
+const Pools = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<Pools>;
+
 export type LivingAreaLayoutPatioExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const LivingAreaLayoutPatioExceptionEnum = S.String;
+
 export type LivingAreaLayoutNonSmokingExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const LivingAreaLayoutNonSmokingExceptionEnum = S.String;
+
 export type LivingAreaLayoutStairsExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const LivingAreaLayoutStairsExceptionEnum = S.String;
+
 export type LivingAreaLayoutLoftExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const LivingAreaLayoutLoftExceptionEnum = S.String;
+
 export type LivingAreaLayoutBalconyExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const LivingAreaLayoutBalconyExceptionEnum = S.String;
+
 export type LivingAreaLayoutLivingAreaSqMetersExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const LivingAreaLayoutLivingAreaSqMetersExceptionEnum = S.String;
+
 /** Information about the layout of the living area. */
 export interface LivingAreaLayout {
   /** Patio exception. */
@@ -261,86 +308,120 @@ export interface LivingAreaLayout {
   /** Living area sq meters exception. */
   livingAreaSqMetersException?: LivingAreaLayoutLivingAreaSqMetersExceptionEnum | (string & {});
 }
+const LivingAreaLayout = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<LivingAreaLayout>;
+
 export type LivingAreaEatingKitchenAvailableExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const LivingAreaEatingKitchenAvailableExceptionEnum = S.String;
+
 export type LivingAreaEatingMicrowaveExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const LivingAreaEatingMicrowaveExceptionEnum = S.String;
+
 export type LivingAreaEatingTeaStationExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const LivingAreaEatingTeaStationExceptionEnum = S.String;
+
 export type LivingAreaEatingOutdoorGrillExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const LivingAreaEatingOutdoorGrillExceptionEnum = S.String;
+
 export type LivingAreaEatingSinkExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const LivingAreaEatingSinkExceptionEnum = S.String;
+
 export type LivingAreaEatingCookwareExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const LivingAreaEatingCookwareExceptionEnum = S.String;
+
 export type LivingAreaEatingKettleExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const LivingAreaEatingKettleExceptionEnum = S.String;
+
 export type LivingAreaEatingMinibarExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const LivingAreaEatingMinibarExceptionEnum = S.String;
+
 export type LivingAreaEatingSnackbarExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const LivingAreaEatingSnackbarExceptionEnum = S.String;
+
 export type LivingAreaEatingOvenExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const LivingAreaEatingOvenExceptionEnum = S.String;
+
 export type LivingAreaEatingCoffeeMakerExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const LivingAreaEatingCoffeeMakerExceptionEnum = S.String;
+
 export type LivingAreaEatingToasterExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const LivingAreaEatingToasterExceptionEnum = S.String;
+
 export type LivingAreaEatingStoveExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const LivingAreaEatingStoveExceptionEnum = S.String;
+
 export type LivingAreaEatingDishwasherExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const LivingAreaEatingDishwasherExceptionEnum = S.String;
+
 export type LivingAreaEatingRefrigeratorExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const LivingAreaEatingRefrigeratorExceptionEnum = S.String;
+
 export type LivingAreaEatingIndoorGrillExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const LivingAreaEatingIndoorGrillExceptionEnum = S.String;
+
 /** Information about eating features in the living area. */
 export interface LivingAreaEating {
   /** Sink. A basin with a faucet attached to a water source and used for the purpose of washing and rinsing. */
@@ -408,76 +489,106 @@ export interface LivingAreaEating {
   /** Indoor grill exception. */
   indoorGrillException?: LivingAreaEatingIndoorGrillExceptionEnum | (string & {});
 }
+const LivingAreaEating = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<LivingAreaEating>;
+
 export type LivingAreaSleepingCribsCountExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const LivingAreaSleepingCribsCountExceptionEnum = S.String;
+
 export type LivingAreaSleepingSofaBedsCountExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const LivingAreaSleepingSofaBedsCountExceptionEnum = S.String;
+
 export type LivingAreaSleepingQueenBedsCountExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const LivingAreaSleepingQueenBedsCountExceptionEnum = S.String;
+
 export type LivingAreaSleepingFeatherPillowsExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const LivingAreaSleepingFeatherPillowsExceptionEnum = S.String;
+
 export type LivingAreaSleepingDoubleBedsCountExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const LivingAreaSleepingDoubleBedsCountExceptionEnum = S.String;
+
 export type LivingAreaSleepingOtherBedsCountExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const LivingAreaSleepingOtherBedsCountExceptionEnum = S.String;
+
 export type LivingAreaSleepingRollAwayBedsCountExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const LivingAreaSleepingRollAwayBedsCountExceptionEnum = S.String;
+
 export type LivingAreaSleepingSingleOrTwinBedsCountExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const LivingAreaSleepingSingleOrTwinBedsCountExceptionEnum = S.String;
+
 export type LivingAreaSleepingHypoallergenicBeddingExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const LivingAreaSleepingHypoallergenicBeddingExceptionEnum = S.String;
+
 export type LivingAreaSleepingKingBedsCountExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const LivingAreaSleepingKingBedsCountExceptionEnum = S.String;
+
 export type LivingAreaSleepingBunkBedsCountExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const LivingAreaSleepingBunkBedsCountExceptionEnum = S.String;
+
 export type LivingAreaSleepingSyntheticPillowsExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const LivingAreaSleepingSyntheticPillowsExceptionEnum = S.String;
+
 export type LivingAreaSleepingMemoryFoamPillowsExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const LivingAreaSleepingMemoryFoamPillowsExceptionEnum = S.String;
+
 export type LivingAreaSleepingBedsCountExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const LivingAreaSleepingBedsCountExceptionEnum = S.String;
+
 /** Information about sleeping features in the living area. */
 export interface LivingAreaSleeping {
   /** Other beds count. The number of beds that are not standard mattress and boxspring setups such as Japanese tatami mats, trundle beds, air mattresses and cots. */
@@ -541,46 +652,64 @@ export interface LivingAreaSleeping {
   /** Sofa beds count. The number of specially designed sofas that can be made to serve as a bed by lowering its hinged upholstered back to horizontal position or by pulling out a concealed mattress. */
   sofaBedsCount?: number;
 }
+const LivingAreaSleeping = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<LivingAreaSleeping>;
+
 export type LivingAreaAccessibilityMobilityAccessibleShowerExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const LivingAreaAccessibilityMobilityAccessibleShowerExceptionEnum = S.String;
+
 export type LivingAreaAccessibilityHearingAccessibleFireAlarmExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const LivingAreaAccessibilityHearingAccessibleFireAlarmExceptionEnum = S.String;
+
 export type LivingAreaAccessibilityMobilityAccessibleBathtubExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const LivingAreaAccessibilityMobilityAccessibleBathtubExceptionEnum = S.String;
+
 export type LivingAreaAccessibilityAdaCompliantUnitExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const LivingAreaAccessibilityAdaCompliantUnitExceptionEnum = S.String;
+
 export type LivingAreaAccessibilityMobilityAccessibleToiletExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const LivingAreaAccessibilityMobilityAccessibleToiletExceptionEnum = S.String;
+
 export type LivingAreaAccessibilityHearingAccessibleUnitExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const LivingAreaAccessibilityHearingAccessibleUnitExceptionEnum = S.String;
+
 export type LivingAreaAccessibilityHearingAccessibleDoorbellExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const LivingAreaAccessibilityHearingAccessibleDoorbellExceptionEnum = S.String;
+
 export type LivingAreaAccessibilityMobilityAccessibleUnitExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const LivingAreaAccessibilityMobilityAccessibleUnitExceptionEnum = S.String;
+
 /** Accessibility features of the living area. */
 export interface LivingAreaAccessibility {
   /** Hearing-accessible fire alarm. A device that gives warning of a fire through flashing lights. */
@@ -630,106 +759,151 @@ export interface LivingAreaAccessibility {
     | LivingAreaAccessibilityMobilityAccessibleUnitExceptionEnum
     | (string & {});
 }
+const LivingAreaAccessibility = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<LivingAreaAccessibility>;
+
 export type LivingAreaFeaturesAirConditioningExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const LivingAreaFeaturesAirConditioningExceptionEnum = S.String;
+
 export type LivingAreaFeaturesTvStreamingExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const LivingAreaFeaturesTvStreamingExceptionEnum = S.String;
+
 export type LivingAreaFeaturesPayPerViewMoviesExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const LivingAreaFeaturesPayPerViewMoviesExceptionEnum = S.String;
+
 export type LivingAreaFeaturesHairdryerExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const LivingAreaFeaturesHairdryerExceptionEnum = S.String;
+
 export type LivingAreaFeaturesTvExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const LivingAreaFeaturesTvExceptionEnum = S.String;
+
 export type LivingAreaFeaturesToiletExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const LivingAreaFeaturesToiletExceptionEnum = S.String;
+
 export type LivingAreaFeaturesElectronicRoomKeyExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const LivingAreaFeaturesElectronicRoomKeyExceptionEnum = S.String;
+
 export type LivingAreaFeaturesInunitWifiAvailableExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const LivingAreaFeaturesInunitWifiAvailableExceptionEnum = S.String;
+
 export type LivingAreaFeaturesWasherExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const LivingAreaFeaturesWasherExceptionEnum = S.String;
+
 export type LivingAreaFeaturesShowerExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const LivingAreaFeaturesShowerExceptionEnum = S.String;
+
 export type LivingAreaFeaturesBidetExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const LivingAreaFeaturesBidetExceptionEnum = S.String;
+
 export type LivingAreaFeaturesUniversalPowerAdaptersExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const LivingAreaFeaturesUniversalPowerAdaptersExceptionEnum = S.String;
+
 export type LivingAreaFeaturesIroningEquipmentExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const LivingAreaFeaturesIroningEquipmentExceptionEnum = S.String;
+
 export type LivingAreaFeaturesFireplaceExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const LivingAreaFeaturesFireplaceExceptionEnum = S.String;
+
 export type LivingAreaFeaturesTvCastingExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const LivingAreaFeaturesTvCastingExceptionEnum = S.String;
+
 export type LivingAreaFeaturesBathtubExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const LivingAreaFeaturesBathtubExceptionEnum = S.String;
+
 export type LivingAreaFeaturesPrivateBathroomExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const LivingAreaFeaturesPrivateBathroomExceptionEnum = S.String;
+
 export type LivingAreaFeaturesDryerExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const LivingAreaFeaturesDryerExceptionEnum = S.String;
+
 export type LivingAreaFeaturesHeatingExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const LivingAreaFeaturesHeatingExceptionEnum = S.String;
+
 export type LivingAreaFeaturesInunitSafeExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const LivingAreaFeaturesInunitSafeExceptionEnum = S.String;
+
 /** Features in the living area. */
 export interface LivingAreaFeatures {
   /** Ironing equipment. A device, usually with a flat metal base, that is heated to smooth, finish, or press clothes and a flat, padded, cloth-covered surface on which the clothes are worked. */
@@ -815,6 +989,8 @@ export interface LivingAreaFeatures {
   /** Fireplace. A framed opening (aka hearth) at the base of a chimney in which logs or an electrical fire feature are burned to provide a relaxing ambiance or to heat the room. Often made of bricks or stone. */
   fireplace?: boolean;
 }
+const LivingAreaFeatures = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<LivingAreaFeatures>;
+
 /** An individual room, such as kitchen, bathroom, bedroom, within a bookable guest unit. */
 export interface LivingArea {
   /** Information about the layout of the living area. */
@@ -828,77 +1004,109 @@ export interface LivingArea {
   /** Features in the living area. */
   features?: LivingAreaFeatures;
 }
+const LivingArea = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<LivingArea>;
+
 export type GuestUnitFeaturesTierEnum = "UNIT_TIER_UNSPECIFIED" | "STANDARD_UNIT" | "DELUXE_UNIT";
+const GuestUnitFeaturesTierEnum = S.String;
+
 export type GuestUnitFeaturesMaxOccupantsCountExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const GuestUnitFeaturesMaxOccupantsCountExceptionEnum = S.String;
+
 export type GuestUnitFeaturesPrivateHomeExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const GuestUnitFeaturesPrivateHomeExceptionEnum = S.String;
+
 export type GuestUnitFeaturesBungalowOrVillaExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const GuestUnitFeaturesBungalowOrVillaExceptionEnum = S.String;
+
 export type GuestUnitFeaturesConnectingUnitAvailableExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const GuestUnitFeaturesConnectingUnitAvailableExceptionEnum = S.String;
+
 export type GuestUnitFeaturesMaxAdultOccupantsCountExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const GuestUnitFeaturesMaxAdultOccupantsCountExceptionEnum = S.String;
+
 export type GuestUnitFeaturesTierExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const GuestUnitFeaturesTierExceptionEnum = S.String;
+
 export type ViewsFromUnitPoolViewExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const ViewsFromUnitPoolViewExceptionEnum = S.String;
+
 export type ViewsFromUnitGardenViewExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const ViewsFromUnitGardenViewExceptionEnum = S.String;
+
 export type ViewsFromUnitValleyViewExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const ViewsFromUnitValleyViewExceptionEnum = S.String;
+
 export type ViewsFromUnitLakeViewExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const ViewsFromUnitLakeViewExceptionEnum = S.String;
+
 export type ViewsFromUnitCityViewExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const ViewsFromUnitCityViewExceptionEnum = S.String;
+
 export type ViewsFromUnitLandmarkViewExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const ViewsFromUnitLandmarkViewExceptionEnum = S.String;
+
 export type ViewsFromUnitBeachViewExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const ViewsFromUnitBeachViewExceptionEnum = S.String;
+
 export type ViewsFromUnitOceanViewExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const ViewsFromUnitOceanViewExceptionEnum = S.String;
+
 /** Views available from the guest unit itself. */
 export interface ViewsFromUnit {
   /** Pool view. A guestroom that features a window through which guests can see the hotel's swimming pool. */
@@ -934,21 +1142,29 @@ export interface ViewsFromUnit {
   /** Ocean view exception. */
   oceanViewException?: ViewsFromUnitOceanViewExceptionEnum | (string & {});
 }
+const ViewsFromUnit = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<ViewsFromUnit>;
+
 export type GuestUnitFeaturesExecutiveFloorExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const GuestUnitFeaturesExecutiveFloorExceptionEnum = S.String;
+
 export type GuestUnitFeaturesMaxChildOccupantsCountExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const GuestUnitFeaturesMaxChildOccupantsCountExceptionEnum = S.String;
+
 export type GuestUnitFeaturesSuiteExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const GuestUnitFeaturesSuiteExceptionEnum = S.String;
+
 /** Features and available amenities in the guest unit. */
 export interface GuestUnitFeatures {
   /** Bungalow or villa. An independent structure that is part of a hotel or resort that is rented to one party for a vacation stay. The hotel or resort may be completely comprised of bungalows or villas, or they may be one of several guestroom options. Guests in the bungalows or villas most often have the same, if not more, amenities and services offered to guests in other guestroom types. */
@@ -998,7 +1214,11 @@ export interface GuestUnitFeatures {
   /** Suite exception. */
   suiteException?: GuestUnitFeaturesSuiteExceptionEnum | (string & {});
 }
+const GuestUnitFeatures = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<GuestUnitFeatures>;
+
 export type StringList = Array<string>;
+const StringList = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<StringList>;
+
 /** A specific type of unit primarily defined by its features. */
 export interface GuestUnitType {
   /** Required. Short, English label or name of the GuestUnitType. Target <50 chars. */
@@ -1008,32 +1228,46 @@ export interface GuestUnitType {
   /** Required. Unit or room code identifiers for a single GuestUnitType. Each code must be unique within a Lodging instance. */
   codes?: StringList;
 }
+const GuestUnitType = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<GuestUnitType>;
+
 export type GuestUnitTypeList = Array<GuestUnitType>;
+const GuestUnitTypeList = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<GuestUnitTypeList>;
+
 export type IncreasedFoodSafetyDiningAreasAdditionalSanitationExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const IncreasedFoodSafetyDiningAreasAdditionalSanitationExceptionEnum = S.String;
+
 export type IncreasedFoodSafetyIndividualPackagedMealsExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const IncreasedFoodSafetyIndividualPackagedMealsExceptionEnum = S.String;
+
 export type IncreasedFoodSafetySingleUseFoodMenusExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const IncreasedFoodSafetySingleUseFoodMenusExceptionEnum = S.String;
+
 export type IncreasedFoodSafetyFoodPreparationAndServingAdditionalSafetyExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const IncreasedFoodSafetyFoodPreparationAndServingAdditionalSafetyExceptionEnum = S.String;
+
 export type IncreasedFoodSafetyDisposableFlatwareExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const IncreasedFoodSafetyDisposableFlatwareExceptionEnum = S.String;
+
 /** Increased food safety measures implemented by the hotel during COVID-19. */
 export interface IncreasedFoodSafety {
   /** Dining areas additional sanitation exception. */
@@ -1063,36 +1297,50 @@ export interface IncreasedFoodSafety {
   /** Disposable flatware exception. */
   disposableFlatwareException?: IncreasedFoodSafetyDisposableFlatwareExceptionEnum | (string & {});
 }
+const IncreasedFoodSafety = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<IncreasedFoodSafety>;
+
 export type EnhancedCleaningEmployeesTrainedCleaningProceduresExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const EnhancedCleaningEmployeesTrainedCleaningProceduresExceptionEnum = S.String;
+
 export type EnhancedCleaningEmployeesTrainedThoroughHandWashingExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const EnhancedCleaningEmployeesTrainedThoroughHandWashingExceptionEnum = S.String;
+
 export type EnhancedCleaningCommercialGradeDisinfectantCleaningExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const EnhancedCleaningCommercialGradeDisinfectantCleaningExceptionEnum = S.String;
+
 export type EnhancedCleaningCommonAreasEnhancedCleaningExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const EnhancedCleaningCommonAreasEnhancedCleaningExceptionEnum = S.String;
+
 export type EnhancedCleaningEmployeesWearProtectiveEquipmentExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const EnhancedCleaningEmployeesWearProtectiveEquipmentExceptionEnum = S.String;
+
 export type EnhancedCleaningGuestRoomsEnhancedCleaningExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const EnhancedCleaningGuestRoomsEnhancedCleaningExceptionEnum = S.String;
+
 /** Enhanced cleaning measures implemented by the hotel during COVID-19. */
 export interface EnhancedCleaning {
   /** Employees trained cleaning procedures exception. */
@@ -1132,41 +1380,57 @@ export interface EnhancedCleaning {
   /** Employees trained in COVID-19 cleaning procedures. */
   employeesTrainedCleaningProcedures?: boolean;
 }
+const EnhancedCleaning = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<EnhancedCleaning>;
+
 export type MinimizedContactContactlessCheckinCheckoutExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const MinimizedContactContactlessCheckinCheckoutExceptionEnum = S.String;
+
 export type MinimizedContactRoomBookingsBufferExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const MinimizedContactRoomBookingsBufferExceptionEnum = S.String;
+
 export type MinimizedContactNoHighTouchItemsGuestRoomsExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const MinimizedContactNoHighTouchItemsGuestRoomsExceptionEnum = S.String;
+
 export type MinimizedContactNoHighTouchItemsCommonAreasExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const MinimizedContactNoHighTouchItemsCommonAreasExceptionEnum = S.String;
+
 export type MinimizedContactHousekeepingScheduledRequestOnlyExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const MinimizedContactHousekeepingScheduledRequestOnlyExceptionEnum = S.String;
+
 export type MinimizedContactPlasticKeycardsDisinfectedExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const MinimizedContactPlasticKeycardsDisinfectedExceptionEnum = S.String;
+
 export type MinimizedContactDigitalGuestRoomKeysExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const MinimizedContactDigitalGuestRoomKeysExceptionEnum = S.String;
+
 /** Minimized contact measures implemented by the hotel during COVID-19. */
 export interface MinimizedContact {
   /** Contactless check-in check-out exception. */
@@ -1208,26 +1472,36 @@ export interface MinimizedContact {
   /** Digital guest room keys exception. */
   digitalGuestRoomKeysException?: MinimizedContactDigitalGuestRoomKeysExceptionEnum | (string & {});
 }
+const MinimizedContact = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<MinimizedContact>;
+
 export type PersonalProtectionProtectiveEquipmentAvailableExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const PersonalProtectionProtectiveEquipmentAvailableExceptionEnum = S.String;
+
 export type PersonalProtectionCommonAreasOfferSanitizingItemsExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const PersonalProtectionCommonAreasOfferSanitizingItemsExceptionEnum = S.String;
+
 export type PersonalProtectionFaceMaskRequiredExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const PersonalProtectionFaceMaskRequiredExceptionEnum = S.String;
+
 export type PersonalProtectionGuestRoomHygieneKitsAvailableExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const PersonalProtectionGuestRoomHygieneKitsAvailableExceptionEnum = S.String;
+
 /** Personal protection measures implemented by the hotel during COVID-19. */
 export interface PersonalProtection {
   /** Protective equipment available exception. */
@@ -1253,31 +1527,43 @@ export interface PersonalProtection {
   /** Masks required on the property. */
   faceMaskRequired?: boolean;
 }
+const PersonalProtection = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<PersonalProtection>;
+
 export type PhysicalDistancingCommonAreasPhysicalDistancingArrangedExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const PhysicalDistancingCommonAreasPhysicalDistancingArrangedExceptionEnum = S.String;
+
 export type PhysicalDistancingWellnessAreasHavePrivateSpacesExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const PhysicalDistancingWellnessAreasHavePrivateSpacesExceptionEnum = S.String;
+
 export type PhysicalDistancingSafetyDividersExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const PhysicalDistancingSafetyDividersExceptionEnum = S.String;
+
 export type PhysicalDistancingPhysicalDistancingRequiredExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const PhysicalDistancingPhysicalDistancingRequiredExceptionEnum = S.String;
+
 export type PhysicalDistancingSharedAreasLimitedOccupancyExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const PhysicalDistancingSharedAreasLimitedOccupancyExceptionEnum = S.String;
+
 /** Physical distancing measures implemented by the hotel during COVID-19. */
 export interface PhysicalDistancing {
   /** Guest occupancy limited within shared facilities. */
@@ -1309,6 +1595,8 @@ export interface PhysicalDistancing {
   /** Common areas arranged to maintain physical distancing. */
   commonAreasPhysicalDistancingArranged?: boolean;
 }
+const PhysicalDistancing = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<PhysicalDistancing>;
+
 /** Health and safety measures implemented by the hotel during COVID-19. */
 export interface HealthAndSafety {
   /** Increased food safety measures implemented by the hotel during COVID-19. */
@@ -1322,91 +1610,127 @@ export interface HealthAndSafety {
   /** Physical distancing measures implemented by the hotel during COVID-19. */
   physicalDistancing?: PhysicalDistancing;
 }
+const HealthAndSafety = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<HealthAndSafety>;
+
 export type ActivitiesBoutiqueStoresExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const ActivitiesBoutiqueStoresExceptionEnum = S.String;
+
 export type ActivitiesBeachFrontExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const ActivitiesBeachFrontExceptionEnum = S.String;
+
 export type ActivitiesPrivateBeachExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const ActivitiesPrivateBeachExceptionEnum = S.String;
+
 export type ActivitiesGameRoomExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const ActivitiesGameRoomExceptionEnum = S.String;
+
 export type ActivitiesHorsebackRidingExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const ActivitiesHorsebackRidingExceptionEnum = S.String;
+
 export type ActivitiesGolfExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const ActivitiesGolfExceptionEnum = S.String;
+
 export type ActivitiesNightclubExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const ActivitiesNightclubExceptionEnum = S.String;
+
 export type ActivitiesBicycleRentalExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const ActivitiesBicycleRentalExceptionEnum = S.String;
+
 export type ActivitiesFreeWatercraftRentalExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const ActivitiesFreeWatercraftRentalExceptionEnum = S.String;
+
 export type ActivitiesSnorkelingExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const ActivitiesSnorkelingExceptionEnum = S.String;
+
 export type ActivitiesTennisExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const ActivitiesTennisExceptionEnum = S.String;
+
 export type ActivitiesFreeBicycleRentalExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const ActivitiesFreeBicycleRentalExceptionEnum = S.String;
+
 export type ActivitiesScubaExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const ActivitiesScubaExceptionEnum = S.String;
+
 export type ActivitiesWatercraftRentalExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const ActivitiesWatercraftRentalExceptionEnum = S.String;
+
 export type ActivitiesBeachAccessExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const ActivitiesBeachAccessExceptionEnum = S.String;
+
 export type ActivitiesWaterSkiingExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const ActivitiesWaterSkiingExceptionEnum = S.String;
+
 export type ActivitiesCasinoExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const ActivitiesCasinoExceptionEnum = S.String;
+
 /** Amenities and features related to leisure and play. */
 export interface Activities {
   /** Nightclub. There is a room at the hotel with a bar, a dance floor, and seating where designated staffers play dance music. There may also be a designated area for the performance of live music, singing and comedy acts. */
@@ -1478,26 +1802,36 @@ export interface Activities {
   /** Casino exception. */
   casinoException?: ActivitiesCasinoExceptionEnum | (string & {});
 }
+const Activities = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<Activities>;
+
 export type FamiliesKidsFriendlyExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const FamiliesKidsFriendlyExceptionEnum = S.String;
+
 export type FamiliesKidsActivitiesExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const FamiliesKidsActivitiesExceptionEnum = S.String;
+
 export type FamiliesKidsClubExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const FamiliesKidsClubExceptionEnum = S.String;
+
 export type FamiliesBabysittingExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const FamiliesBabysittingExceptionEnum = S.String;
+
 /** Services and amenities for families and young guests. */
 export interface Families {
   /** Kids club. An organized program of group activities held at the hotel and designed for the enjoyment of children. Facilitated by hotel staff (or staff procured by the hotel) in an area(s) designated for the purpose of entertaining children without their parents. May include games, outings, water sports, team sports, arts and crafts, and films. Usually has set hours. Can be free or for a fee. Also known as Kids Camp or Kids program. */
@@ -1517,61 +1851,85 @@ export interface Families {
   /** Babysitting exception. */
   babysittingException?: FamiliesBabysittingExceptionEnum | (string & {});
 }
+const Families = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<Families>;
+
 export type WellnessWeightMachineExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const WellnessWeightMachineExceptionEnum = S.String;
+
 export type WellnessFreeFitnessCenterExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const WellnessFreeFitnessCenterExceptionEnum = S.String;
+
 export type WellnessSaunaExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const WellnessSaunaExceptionEnum = S.String;
+
 export type WellnessSalonExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const WellnessSalonExceptionEnum = S.String;
+
 export type WellnessDoctorOnCallExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const WellnessDoctorOnCallExceptionEnum = S.String;
+
 export type WellnessEllipticalMachineExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const WellnessEllipticalMachineExceptionEnum = S.String;
+
 export type WellnessFitnessCenterExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const WellnessFitnessCenterExceptionEnum = S.String;
+
 export type WellnessSpaExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const WellnessSpaExceptionEnum = S.String;
+
 export type WellnessFreeWeightsExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const WellnessFreeWeightsExceptionEnum = S.String;
+
 export type WellnessTreadmillExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const WellnessTreadmillExceptionEnum = S.String;
+
 export type WellnessMassageExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const WellnessMassageExceptionEnum = S.String;
+
 /** Guest facilities at the property to promote or maintain health, beauty, and fitness. */
 export interface Wellness {
   /** Free weights. Individual handheld fitness equipment of varied weights used for upper body strength training or bodybuilding. Also known as barbells, dumbbells, or kettlebells. Often stored on a rack with the weights arranged from light to heavy. Commonly found in a gym, fitness room, health center, or health club. */
@@ -1619,46 +1977,64 @@ export interface Wellness {
   /** Spa. A designated area, room or building at the hotel offering health and beauty treatment through such means as steam baths, exercise equipment, and massage. May also offer facials, nail care, and hair care. Services are usually available by appointment and for an additional fee. Does not apply if hotel only offers a steam room; must offer other beauty and/or health treatments as well. */
   spa?: boolean;
 }
+const Wellness = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<Wellness>;
+
 export type SustainableSourcingLocallySourcedFoodAndBeveragesExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const SustainableSourcingLocallySourcedFoodAndBeveragesExceptionEnum = S.String;
+
 export type SustainableSourcingOrganicFoodAndBeveragesExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const SustainableSourcingOrganicFoodAndBeveragesExceptionEnum = S.String;
+
 export type SustainableSourcingResponsiblePurchasingPolicyExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const SustainableSourcingResponsiblePurchasingPolicyExceptionEnum = S.String;
+
 export type SustainableSourcingVeganMealsExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const SustainableSourcingVeganMealsExceptionEnum = S.String;
+
 export type SustainableSourcingEcoFriendlyToiletriesExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const SustainableSourcingEcoFriendlyToiletriesExceptionEnum = S.String;
+
 export type SustainableSourcingResponsiblySourcesSeafoodExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const SustainableSourcingResponsiblySourcesSeafoodExceptionEnum = S.String;
+
 export type SustainableSourcingOrganicCageFreeEggsExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const SustainableSourcingOrganicCageFreeEggsExceptionEnum = S.String;
+
 export type SustainableSourcingVegetarianMealsExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const SustainableSourcingVegetarianMealsExceptionEnum = S.String;
+
 /** Sustainable sourcing practices implemented at the hotel. */
 export interface SustainableSourcing {
   /** Locally sourced food and beverages exception. */
@@ -1706,11 +2082,15 @@ export interface SustainableSourcing {
   /** Vegetarian meals exception. */
   vegetarianMealsException?: SustainableSourcingVegetarianMealsExceptionEnum | (string & {});
 }
+const SustainableSourcing = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<SustainableSourcing>;
+
 export type SustainabilityCertificationsLeedCertificationExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const SustainabilityCertificationsLeedCertificationExceptionEnum = S.String;
+
 export type SustainabilityCertificationsBreeamCertificationEnum =
   | "BREEAM_CERTIFICATION_UNSPECIFIED"
   | "NO_BREEAM_CERTIFICATION"
@@ -1719,6 +2099,8 @@ export type SustainabilityCertificationsBreeamCertificationEnum =
   | "BREEAM_VERY_GOOD"
   | "BREEAM_EXCELLENT"
   | "BREEAM_OUTSTANDING";
+const SustainabilityCertificationsBreeamCertificationEnum = S.String;
+
 export type SustainabilityCertificationsLeedCertificationEnum =
   | "LEED_CERTIFICATION_UNSPECIFIED"
   | "NO_LEED_CERTIFICATION"
@@ -1726,6 +2108,8 @@ export type SustainabilityCertificationsLeedCertificationEnum =
   | "LEED_SILVER"
   | "LEED_GOLD"
   | "LEED_PLATINUM";
+const SustainabilityCertificationsLeedCertificationEnum = S.String;
+
 export type EcoCertificationEcoCertificateEnum =
   | "ECO_CERTIFICATE_UNSPECIFIED"
   | "ISO14001"
@@ -1755,11 +2139,15 @@ export type EcoCertificationEcoCertificateEnum =
   | "TRAVELIFE"
   | "UNITED_CERTIFICATION_SYSTEMS_LIMITED"
   | "VIREO_SRL";
+const EcoCertificationEcoCertificateEnum = S.String;
+
 export type EcoCertificationAwardedExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const EcoCertificationAwardedExceptionEnum = S.String;
+
 /** An eco certificate awarded to the hotel. Deprecated: this message is no longer populated. All certification data is now provided by BeCause. */
 export interface EcoCertification {
   /** Required. The eco certificate. */
@@ -1769,12 +2157,18 @@ export interface EcoCertification {
   /** Whether the eco certificate was awarded or not. */
   awarded?: boolean;
 }
+const EcoCertification = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<EcoCertification>;
+
 export type EcoCertificationList = Array<EcoCertification>;
+const EcoCertificationList = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<EcoCertificationList>;
+
 export type SustainabilityCertificationsBreeamCertificationExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const SustainabilityCertificationsBreeamCertificationExceptionEnum = S.String;
+
 /** Sustainability certifications the hotel has been awarded. Deprecated: this message is no longer populated. All certification data is now provided by BeCause. */
 export interface SustainabilityCertifications {
   /** LEED certification exception. */
@@ -1792,86 +2186,123 @@ export interface SustainabilityCertifications {
     | SustainabilityCertificationsBreeamCertificationExceptionEnum
     | (string & {});
 }
+const SustainabilityCertifications = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<SustainabilityCertifications>;
+
 export type WasteReductionSafelyDisposesLightbulbsExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const WasteReductionSafelyDisposesLightbulbsExceptionEnum = S.String;
+
 export type WasteReductionNoSingleUsePlasticStrawsExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const WasteReductionNoSingleUsePlasticStrawsExceptionEnum = S.String;
+
 export type WasteReductionCompostableFoodContainersAndCutleryExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const WasteReductionCompostableFoodContainersAndCutleryExceptionEnum = S.String;
+
 export type WasteReductionFoodWasteReductionProgramExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const WasteReductionFoodWasteReductionProgramExceptionEnum = S.String;
+
 export type WasteReductionNoSingleUsePlasticWaterBottlesExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const WasteReductionNoSingleUsePlasticWaterBottlesExceptionEnum = S.String;
+
 export type WasteReductionRefillableToiletryContainersExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const WasteReductionRefillableToiletryContainersExceptionEnum = S.String;
+
 export type WasteReductionDonatesExcessFoodExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const WasteReductionDonatesExcessFoodExceptionEnum = S.String;
+
 export type WasteReductionSoapDonationProgramExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const WasteReductionSoapDonationProgramExceptionEnum = S.String;
+
 export type WasteReductionNoStyrofoamFoodContainersExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const WasteReductionNoStyrofoamFoodContainersExceptionEnum = S.String;
+
 export type WasteReductionToiletryDonationProgramExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const WasteReductionToiletryDonationProgramExceptionEnum = S.String;
+
 export type WasteReductionRecyclingProgramExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const WasteReductionRecyclingProgramExceptionEnum = S.String;
+
 export type WasteReductionWaterBottleFillingStationsExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const WasteReductionWaterBottleFillingStationsExceptionEnum = S.String;
+
 export type WasteReductionCompostsExcessFoodExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const WasteReductionCompostsExcessFoodExceptionEnum = S.String;
+
 export type WasteReductionSafelyDisposesElectronicsExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const WasteReductionSafelyDisposesElectronicsExceptionEnum = S.String;
+
 export type WasteReductionSafelyHandlesHazardousSubstancesExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const WasteReductionSafelyHandlesHazardousSubstancesExceptionEnum = S.String;
+
 export type WasteReductionSafelyDisposesBatteriesExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const WasteReductionSafelyDisposesBatteriesExceptionEnum = S.String;
+
 /** Waste reduction practices implemented at the hotel. */
 export interface WasteReduction {
   /** Safely disposes electronics. The property has a reputable recycling program that keeps hazardous electronic parts and chemical compounds out of landfills, dumps and other unauthorized abandonment sites, and recycles/reuses applicable materials. (e.g. certified electronics recyclers). */
@@ -1963,41 +2394,57 @@ export interface WasteReduction {
     | WasteReductionSafelyDisposesBatteriesExceptionEnum
     | (string & {});
 }
+const WasteReduction = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<WasteReduction>;
+
 export type EnergyEfficiencyEnergyConservationProgramExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const EnergyEfficiencyEnergyConservationProgramExceptionEnum = S.String;
+
 export type EnergyEfficiencyGreenBuildingDesignExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const EnergyEfficiencyGreenBuildingDesignExceptionEnum = S.String;
+
 export type EnergyEfficiencyEnergyEfficientLightingExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const EnergyEfficiencyEnergyEfficientLightingExceptionEnum = S.String;
+
 export type EnergyEfficiencyCarbonFreeEnergySourcesExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const EnergyEfficiencyCarbonFreeEnergySourcesExceptionEnum = S.String;
+
 export type EnergyEfficiencyEnergySavingThermostatsExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const EnergyEfficiencyEnergySavingThermostatsExceptionEnum = S.String;
+
 export type EnergyEfficiencyEnergyEfficientHeatingAndCoolingSystemsExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const EnergyEfficiencyEnergyEfficientHeatingAndCoolingSystemsExceptionEnum = S.String;
+
 export type EnergyEfficiencyIndependentOrganizationAuditsEnergyUseExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const EnergyEfficiencyIndependentOrganizationAuditsEnergyUseExceptionEnum = S.String;
+
 /** Energy efficiency practices implemented at the hotel. */
 export interface EnergyEfficiency {
   /** Energy efficient lighting. At least 75% of the property's lighting is energy efficient, using lighting that is more than 45 lumens per watt - typically LED or CFL lightbulbs. */
@@ -2041,36 +2488,50 @@ export interface EnergyEfficiency {
     | EnergyEfficiencyIndependentOrganizationAuditsEnergyUseExceptionEnum
     | (string & {});
 }
+const EnergyEfficiency = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<EnergyEfficiency>;
+
 export type WaterConservationTowelReuseProgramExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const WaterConservationTowelReuseProgramExceptionEnum = S.String;
+
 export type WaterConservationWaterSavingToiletsExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const WaterConservationWaterSavingToiletsExceptionEnum = S.String;
+
 export type WaterConservationIndependentOrganizationAuditsWaterUseExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const WaterConservationIndependentOrganizationAuditsWaterUseExceptionEnum = S.String;
+
 export type WaterConservationWaterSavingSinksExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const WaterConservationWaterSavingSinksExceptionEnum = S.String;
+
 export type WaterConservationWaterSavingShowersExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const WaterConservationWaterSavingShowersExceptionEnum = S.String;
+
 export type WaterConservationLinenReuseProgramExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const WaterConservationLinenReuseProgramExceptionEnum = S.String;
+
 /** Water conservation practices implemented at the hotel. */
 export interface WaterConservation {
   /** Water saving toilets. All of the property's toilets use 1.6 gallons per flush, or less. */
@@ -2100,6 +2561,8 @@ export interface WaterConservation {
   /** Water saving sinks. All of the property's guest rooms have bathroom faucets that use a maximum of 1.5 gallons per minute (gpm), public restroom faucets do not exceed 0.5 gpm, and kitchen faucets (excluding faucets used exclusively for filling operations) do not exceed 2.2 gpm. */
   waterSavingSinks?: boolean;
 }
+const WaterConservation = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<WaterConservation>;
+
 /** Sustainability practices implemented at the hotel. */
 export interface Sustainability {
   /** Sustainable sourcing practices implemented at the hotel. */
@@ -2113,41 +2576,57 @@ export interface Sustainability {
   /** Water conservation practices implemented at the hotel. */
   waterConservation?: WaterConservation;
 }
+const Sustainability = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<Sustainability>;
+
 export type ParkingSelfParkingAvailableExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const ParkingSelfParkingAvailableExceptionEnum = S.String;
+
 export type ParkingValetParkingAvailableExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const ParkingValetParkingAvailableExceptionEnum = S.String;
+
 export type ParkingFreeSelfParkingExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const ParkingFreeSelfParkingExceptionEnum = S.String;
+
 export type ParkingFreeParkingExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const ParkingFreeParkingExceptionEnum = S.String;
+
 export type ParkingParkingAvailableExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const ParkingParkingAvailableExceptionEnum = S.String;
+
 export type ParkingFreeValetParkingExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const ParkingFreeValetParkingExceptionEnum = S.String;
+
 export type ParkingElectricCarChargingStationsExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const ParkingElectricCarChargingStationsExceptionEnum = S.String;
+
 /** Parking options at the property. */
 export interface Parking {
   /** Self parking available exception. */
@@ -2181,56 +2660,78 @@ export interface Parking {
     | ParkingElectricCarChargingStationsExceptionEnum
     | (string & {});
 }
+const Parking = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<Parking>;
+
 export type ServicesTwentyFourHourFrontDeskExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const ServicesTwentyFourHourFrontDeskExceptionEnum = S.String;
+
 export type ServicesFrontDeskExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const ServicesFrontDeskExceptionEnum = S.String;
+
 export type ServicesConciergeExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const ServicesConciergeExceptionEnum = S.String;
+
 export type ServicesSelfServiceLaundryExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const ServicesSelfServiceLaundryExceptionEnum = S.String;
+
 export type ServicesConvenienceStoreExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const ServicesConvenienceStoreExceptionEnum = S.String;
+
 export type ServicesCurrencyExchangeExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const ServicesCurrencyExchangeExceptionEnum = S.String;
+
 export type ServicesElevatorExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const ServicesElevatorExceptionEnum = S.String;
+
 export type ServicesFullServiceLaundryExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const ServicesFullServiceLaundryExceptionEnum = S.String;
+
 export type ServicesGiftShopExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const ServicesGiftShopExceptionEnum = S.String;
+
 export type LanguageSpokenSpokenExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const LanguageSpokenSpokenExceptionEnum = S.String;
+
 /** Language spoken by at least one staff member. */
 export interface LanguageSpoken {
   /** At least one member of the staff can speak the language. */
@@ -2240,22 +2741,32 @@ export interface LanguageSpoken {
   /** Required. The BCP-47 language code for the spoken language. Currently accepted codes: ar, de, en, es, fil, fr, hi, id, it, ja, ko, nl, pt, ru, vi, yue, zh. */
   languageCode?: string;
 }
+const LanguageSpoken = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<LanguageSpoken>;
+
 export type LanguageSpokenList = Array<LanguageSpoken>;
+const LanguageSpokenList = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<LanguageSpokenList>;
+
 export type ServicesSocialHourExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const ServicesSocialHourExceptionEnum = S.String;
+
 export type ServicesBaggageStorageExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const ServicesBaggageStorageExceptionEnum = S.String;
+
 export type ServicesWakeUpCallsExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const ServicesWakeUpCallsExceptionEnum = S.String;
+
 /** Conveniences or help provided by the property to facilitate an easier, more comfortable stay. */
 export interface Services {
   /** Baggage storage. A provision for guests to leave their bags at the hotel when they arrive for their stay before the official check-in time. May or may not apply for guests who wish to leave their bags after check-out and before departing the locale. Also known as bag dropoff. */
@@ -2309,21 +2820,29 @@ export interface Services {
   /** Wake up calls exception. */
   wakeUpCallsException?: ServicesWakeUpCallsExceptionEnum | (string & {});
 }
+const Services = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<Services>;
+
 export type HousekeepingTurndownServiceExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const HousekeepingTurndownServiceExceptionEnum = S.String;
+
 export type HousekeepingHousekeepingAvailableExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const HousekeepingHousekeepingAvailableExceptionEnum = S.String;
+
 export type HousekeepingDailyHousekeepingExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const HousekeepingDailyHousekeepingExceptionEnum = S.String;
+
 /** Conveniences provided in guest units to facilitate an easier, more comfortable stay. */
 export interface Housekeeping {
   /** Turndown service. Hotel staff enters guest units to prepare the bed for sleep use. May or may not include some light housekeeping. May or may not include an evening snack or candy. Also known as evening service. */
@@ -2339,6 +2858,8 @@ export interface Housekeeping {
   /** Daily housekeeping exception. */
   dailyHousekeepingException?: HousekeepingDailyHousekeepingExceptionEnum | (string & {});
 }
+const Housekeeping = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<Housekeeping>;
+
 /** Represents a time of day. The date and time zone are either not significant or are specified elsewhere. An API may choose to allow leap seconds. Related types are google.type.Date and `google.protobuf.Timestamp`. */
 export interface TimeOfDay {
   /** Minutes of an hour. Must be greater than or equal to 0 and less than or equal to 59. */
@@ -2350,31 +2871,43 @@ export interface TimeOfDay {
   /** Seconds of a minute. Must be greater than or equal to 0 and typically must be less than or equal to 59. An API may allow the value 60 if it allows leap-seconds. */
   seconds?: number;
 }
+const TimeOfDay = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<TimeOfDay>;
+
 export type PaymentOptionsChequeExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const PaymentOptionsChequeExceptionEnum = S.String;
+
 export type PaymentOptionsDebitCardExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const PaymentOptionsDebitCardExceptionEnum = S.String;
+
 export type PaymentOptionsCashExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const PaymentOptionsCashExceptionEnum = S.String;
+
 export type PaymentOptionsMobileNfcExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const PaymentOptionsMobileNfcExceptionEnum = S.String;
+
 export type PaymentOptionsCreditCardExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const PaymentOptionsCreditCardExceptionEnum = S.String;
+
 /** Forms of payment accepted at the property. */
 export interface PaymentOptions {
   /** Cheque exception. */
@@ -2398,46 +2931,64 @@ export interface PaymentOptions {
   /** Credit card exception. */
   creditCardException?: PaymentOptionsCreditCardExceptionEnum | (string & {});
 }
+const PaymentOptions = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<PaymentOptions>;
+
 export type PoliciesAllInclusiveAvailableExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const PoliciesAllInclusiveAvailableExceptionEnum = S.String;
+
 export type PoliciesMaxChildAgeExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const PoliciesMaxChildAgeExceptionEnum = S.String;
+
 export type PoliciesCheckinTimeExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const PoliciesCheckinTimeExceptionEnum = S.String;
+
 export type PoliciesAllInclusiveOnlyExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const PoliciesAllInclusiveOnlyExceptionEnum = S.String;
+
 export type PoliciesCheckoutTimeExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const PoliciesCheckoutTimeExceptionEnum = S.String;
+
 export type PoliciesMaxKidsStayFreeCountExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const PoliciesMaxKidsStayFreeCountExceptionEnum = S.String;
+
 export type PoliciesKidsStayFreeExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const PoliciesKidsStayFreeExceptionEnum = S.String;
+
 export type PoliciesSmokeFreePropertyExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const PoliciesSmokeFreePropertyExceptionEnum = S.String;
+
 /** Property rules that impact guests. */
 export interface Policies {
   /** Check-in time. The time of the day at which the hotel begins providing guests access to their unit at the beginning of their stay. */
@@ -2475,21 +3026,29 @@ export interface Policies {
   /** Kids stay free. The children of guests are allowed to stay in the room/suite of a parent or adult without an additional fee. The policy may or may not stipulate a limit of the child's age or the overall number of children allowed. */
   kidsStayFree?: boolean;
 }
+const Policies = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<Policies>;
+
 export type BusinessMeetingRoomsCountExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const BusinessMeetingRoomsCountExceptionEnum = S.String;
+
 export type BusinessBusinessCenterExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const BusinessBusinessCenterExceptionEnum = S.String;
+
 export type BusinessMeetingRoomsExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const BusinessMeetingRoomsExceptionEnum = S.String;
+
 /** Features of the property of specific interest to the business traveler. */
 export interface Business {
   /** Meeting rooms count exception. */
@@ -2505,41 +3064,57 @@ export interface Business {
   /** Business center. A designated room at the hotel with one or more desks and equipped with guest-use computers, printers, fax machines and/or photocopiers. May or may not be open 24/7. May or may not require a key to access. Not a meeting room or conference room. */
   businessCenter?: boolean;
 }
+const Business = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<Business>;
+
 export type TransportationLocalShuttleExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const TransportationLocalShuttleExceptionEnum = S.String;
+
 export type TransportationTransferExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const TransportationTransferExceptionEnum = S.String;
+
 export type TransportationAirportShuttleExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const TransportationAirportShuttleExceptionEnum = S.String;
+
 export type TransportationFreeAirportShuttleExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const TransportationFreeAirportShuttleExceptionEnum = S.String;
+
 export type TransportationFreePrivateCarServiceExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const TransportationFreePrivateCarServiceExceptionEnum = S.String;
+
 export type TransportationCarRentalOnPropertyExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const TransportationCarRentalOnPropertyExceptionEnum = S.String;
+
 export type TransportationPrivateCarServiceExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const TransportationPrivateCarServiceExceptionEnum = S.String;
+
 /** Vehicles or vehicular services facilitated or owned by the property. */
 export interface Transportation {
   /** Car rental on property. A branch of a rental car company with a processing desk in the hotel. Available cars for rent may be awaiting at the hotel or in a nearby lot. */
@@ -2571,26 +3146,36 @@ export interface Transportation {
   /** Airport shuttle. The hotel provides guests with a chauffeured van or bus to and from the airport. Can be free or for a fee. Guests may share the vehicle with other guests unknown to them. Applies if the hotel has a third-party shuttle service (office/desk etc.) within the hotel. As long as hotel provides this service, it doesn't matter if it's directly with them or a third party they work with. Does not apply if guest has to coordinate with an entity outside/other than the hotel. */
   airportShuttle?: boolean;
 }
+const Transportation = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<Transportation>;
+
 export type PetsPetsAllowedExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const PetsPetsAllowedExceptionEnum = S.String;
+
 export type PetsPetsAllowedFreeExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const PetsPetsAllowedFreeExceptionEnum = S.String;
+
 export type PetsDogsAllowedExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const PetsDogsAllowedExceptionEnum = S.String;
+
 export type PetsCatsAllowedExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const PetsCatsAllowedExceptionEnum = S.String;
+
 /** Policies regarding guest-owned animals. */
 export interface Pets {
   /** Cats allowed. Domesticated felines are permitted at the property and allowed to stay in the guest room of their owner. May or may not require a fee. */
@@ -2610,26 +3195,36 @@ export interface Pets {
   /** Cats allowed exception. */
   catsAllowedException?: PetsCatsAllowedExceptionEnum | (string & {});
 }
+const Pets = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<Pets>;
+
 export type AccessibilityMobilityAccessibleElevatorExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const AccessibilityMobilityAccessibleElevatorExceptionEnum = S.String;
+
 export type AccessibilityMobilityAccessibleParkingExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const AccessibilityMobilityAccessibleParkingExceptionEnum = S.String;
+
 export type AccessibilityMobilityAccessibleExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const AccessibilityMobilityAccessibleExceptionEnum = S.String;
+
 export type AccessibilityMobilityAccessiblePoolExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const AccessibilityMobilityAccessiblePoolExceptionEnum = S.String;
+
 /** Physical adaptations made to the property in consideration of varying levels of human physical ability. */
 export interface Accessibility {
   /** Mobility accessible elevator exception. */
@@ -2655,26 +3250,36 @@ export interface Accessibility {
   /** Mobility accessible. Throughout the property there are physical adaptations to ease the stay of a person in a wheelchair, such as auto-opening doors, wide elevators, wide bathrooms or ramps. */
   mobilityAccessible?: boolean;
 }
+const Accessibility = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<Accessibility>;
+
 export type PropertyFloorsCountExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const PropertyFloorsCountExceptionEnum = S.String;
+
 export type PropertyBuiltYearExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const PropertyBuiltYearExceptionEnum = S.String;
+
 export type PropertyLastRenovatedYearExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const PropertyLastRenovatedYearExceptionEnum = S.String;
+
 export type PropertyRoomsCountExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const PropertyRoomsCountExceptionEnum = S.String;
+
 /** General factual information about the property's physical structure and important dates. */
 export interface Property {
   /** Floors count exception. */
@@ -2694,66 +3299,92 @@ export interface Property {
   /** Rooms count exception. */
   roomsCountException?: PropertyRoomsCountExceptionEnum | (string & {});
 }
+const Property = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<Property>;
+
 export type FoodAndDrinkTableServiceExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const FoodAndDrinkTableServiceExceptionEnum = S.String;
+
 export type FoodAndDrinkBreakfastAvailableExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const FoodAndDrinkBreakfastAvailableExceptionEnum = S.String;
+
 export type FoodAndDrinkBarExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const FoodAndDrinkBarExceptionEnum = S.String;
+
 export type FoodAndDrinkBreakfastBuffetExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const FoodAndDrinkBreakfastBuffetExceptionEnum = S.String;
+
 export type FoodAndDrinkVendingMachineExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const FoodAndDrinkVendingMachineExceptionEnum = S.String;
+
 export type FoodAndDrinkTwentyFourHourRoomServiceExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const FoodAndDrinkTwentyFourHourRoomServiceExceptionEnum = S.String;
+
 export type FoodAndDrinkBuffetExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const FoodAndDrinkBuffetExceptionEnum = S.String;
+
 export type FoodAndDrinkFreeBreakfastExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const FoodAndDrinkFreeBreakfastExceptionEnum = S.String;
+
 export type FoodAndDrinkRestaurantExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const FoodAndDrinkRestaurantExceptionEnum = S.String;
+
 export type FoodAndDrinkRestaurantsCountExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const FoodAndDrinkRestaurantsCountExceptionEnum = S.String;
+
 export type FoodAndDrinkDinnerBuffetExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const FoodAndDrinkDinnerBuffetExceptionEnum = S.String;
+
 export type FoodAndDrinkRoomServiceExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const FoodAndDrinkRoomServiceExceptionEnum = S.String;
+
 /** Meals, snacks, and beverages available at the property. */
 export interface FoodAndDrink {
   /** Breakfast buffet. Breakfast meal service where guests serve themselves from a variety of dishes/foods that are put out on a table. */
@@ -2807,26 +3438,36 @@ export interface FoodAndDrink {
   /** Room service exception. */
   roomServiceException?: FoodAndDrinkRoomServiceExceptionEnum | (string & {});
 }
+const FoodAndDrink = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<FoodAndDrink>;
+
 export type ConnectivityWifiAvailableExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const ConnectivityWifiAvailableExceptionEnum = S.String;
+
 export type ConnectivityPublicAreaWifiAvailableExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const ConnectivityPublicAreaWifiAvailableExceptionEnum = S.String;
+
 export type ConnectivityFreeWifiExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const ConnectivityFreeWifiExceptionEnum = S.String;
+
 export type ConnectivityPublicInternetTerminalExceptionEnum =
   | "EXCEPTION_UNSPECIFIED"
   | "UNDER_CONSTRUCTION"
   | "DEPENDENT_ON_SEASON"
   | "DEPENDENT_ON_DAY_OF_WEEK";
+const ConnectivityPublicInternetTerminalExceptionEnum = S.String;
+
 /** The ways in which the property provides guests with the ability to access the internet. */
 export interface Connectivity {
   /** Wifi available exception. */
@@ -2848,6 +3489,8 @@ export interface Connectivity {
   /** Public internet terminal exception. */
   publicInternetTerminalException?: ConnectivityPublicInternetTerminalExceptionEnum | (string & {});
 }
+const Connectivity = /*@__PURE__*/ __L.at(__c5, 5) as any as S.Schema<Connectivity>;
+
 /** Lodging of a location that provides accomodations. */
 export interface Lodging {
   /** Required. Metadata for the lodging. */
@@ -2897,6 +3540,8 @@ export interface Lodging {
   /** The ways in which the property provides guests with the ability to access the internet. */
   connectivity?: Connectivity;
 }
+const Lodging = /*@__PURE__*/ __L.at(__c5, 6) as any as S.Schema<Lodging>;
+
 /** Response message for LodgingService.GetGoogleUpdatedLodging */
 export interface GetGoogleUpdatedLodgingResponse {
   /** Required. The fields in the Lodging that have been updated by Google. Repeated field items are not individually specified. */
@@ -2904,12 +3549,22 @@ export interface GetGoogleUpdatedLodgingResponse {
   /** Required. The Google updated Lodging. */
   lodging?: Lodging;
 }
+const GetGoogleUpdatedLodgingResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  7,
+) as any as S.Schema<GetGoogleUpdatedLodgingResponse>;
+
 export interface GetLodgingLocationsRequest {
   /** Required. Google identifier for this location in the form: `locations/{location_id}/lodging` */
   name: string;
   /** Required. The specific fields to return. Use "*" to include all fields. Repeated field items cannot be individually specified. */
   readMask?: string;
 }
+const GetLodgingLocationsRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<GetLodgingLocationsRequest>;
+
 export interface UpdateLodgingLocationsRequest {
   /** Required. Google identifier for this location in the form: `locations/{location_id}/lodging` */
   name: string;
@@ -2918,6 +3573,11 @@ export interface UpdateLodgingLocationsRequest {
   /** Request body */
   body?: Lodging;
 }
+const UpdateLodgingLocationsRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  1,
+) as any as S.Schema<UpdateLodgingLocationsRequest>;
+
 export type GetGoogleUpdatedLocationsLodgingError = NotFound | Forbidden | GcpOpError;
 /** Returns the Google updated Lodging of a specific location. */
 export const getGoogleUpdatedLocationsLodging: API.OperationMethod<
@@ -2926,8 +3586,8 @@ export const getGoogleUpdatedLocationsLodging: API.OperationMethod<
   GetGoogleUpdatedLocationsLodgingError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<GetGoogleUpdatedLocationsLodgingRequest>,
-  output: __S(47) as any as S.Schema<GetGoogleUpdatedLodgingResponse>,
+  input: GetGoogleUpdatedLocationsLodgingRequest,
+  output: GetGoogleUpdatedLodgingResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2941,8 +3601,8 @@ export const getLodgingLocations: API.OperationMethod<
   GetLodgingLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48) as any as S.Schema<GetLodgingLocationsRequest>,
-  output: __S(46) as any as S.Schema<Lodging>,
+  input: GetLodgingLocationsRequest,
+  output: Lodging,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2956,8 +3616,8 @@ export const updateLodgingLocations: API.OperationMethod<
   UpdateLodgingLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49) as any as S.Schema<UpdateLodgingLocationsRequest>,
-  output: __S(46) as any as S.Schema<Lodging>,
+  input: UpdateLodgingLocationsRequest,
+  output: Lodging,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2990,51 +3650,51 @@ function __c0(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          poolsCountException: S.optional(S.String),
-          waterParkException: S.optional(S.String),
+          poolsCountException: S.optional(PoolsPoolsCountExceptionEnum),
+          waterParkException: S.optional(PoolsWaterParkExceptionEnum),
           outdoorPool: S.optional(S.Boolean),
           wadingPool: S.optional(S.Boolean),
           outdoorPoolsCount: S.optional(S.Number),
           waterslide: S.optional(S.Boolean),
-          outdoorPoolsCountException: S.optional(S.String),
-          wadingPoolException: S.optional(S.String),
+          outdoorPoolsCountException: S.optional(PoolsOutdoorPoolsCountExceptionEnum),
+          wadingPoolException: S.optional(PoolsWadingPoolExceptionEnum),
           poolsCount: S.optional(S.Number),
           adultPool: S.optional(S.Boolean),
           indoorPool: S.optional(S.Boolean),
           waterPark: S.optional(S.Boolean),
           hotTub: S.optional(S.Boolean),
           lazyRiver: S.optional(S.Boolean),
-          hotTubException: S.optional(S.String),
-          waterslideException: S.optional(S.String),
-          indoorPoolsCountException: S.optional(S.String),
-          wavePoolException: S.optional(S.String),
+          hotTubException: S.optional(PoolsHotTubExceptionEnum),
+          waterslideException: S.optional(PoolsWaterslideExceptionEnum),
+          indoorPoolsCountException: S.optional(PoolsIndoorPoolsCountExceptionEnum),
+          wavePoolException: S.optional(PoolsWavePoolExceptionEnum),
           lifeguard: S.optional(S.Boolean),
           pool: S.optional(S.Boolean),
-          lazyRiverException: S.optional(S.String),
+          lazyRiverException: S.optional(PoolsLazyRiverExceptionEnum),
           wavePool: S.optional(S.Boolean),
-          adultPoolException: S.optional(S.String),
+          adultPoolException: S.optional(PoolsAdultPoolExceptionEnum),
           indoorPoolsCount: S.optional(S.Number),
-          outdoorPoolException: S.optional(S.String),
-          poolException: S.optional(S.String),
-          lifeguardException: S.optional(S.String),
-          indoorPoolException: S.optional(S.String),
+          outdoorPoolException: S.optional(PoolsOutdoorPoolExceptionEnum),
+          poolException: S.optional(PoolsPoolExceptionEnum),
+          lifeguardException: S.optional(PoolsLifeguardExceptionEnum),
+          indoorPoolException: S.optional(PoolsIndoorPoolExceptionEnum),
         }),
       ).annotate({ identifier: "Pools" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          patioException: S.optional(S.String),
+          patioException: S.optional(LivingAreaLayoutPatioExceptionEnum),
           livingAreaSqMeters: S.optional(S.Number),
           patio: S.optional(S.Boolean),
           balcony: S.optional(S.Boolean),
           loft: S.optional(S.Boolean),
-          nonSmokingException: S.optional(S.String),
-          stairsException: S.optional(S.String),
-          loftException: S.optional(S.String),
+          nonSmokingException: S.optional(LivingAreaLayoutNonSmokingExceptionEnum),
+          stairsException: S.optional(LivingAreaLayoutStairsExceptionEnum),
+          loftException: S.optional(LivingAreaLayoutLoftExceptionEnum),
           stairs: S.optional(S.Boolean),
           nonSmoking: S.optional(S.Boolean),
-          balconyException: S.optional(S.String),
-          livingAreaSqMetersException: S.optional(S.String),
+          balconyException: S.optional(LivingAreaLayoutBalconyExceptionEnum),
+          livingAreaSqMetersException: S.optional(LivingAreaLayoutLivingAreaSqMetersExceptionEnum),
         }),
       ).annotate({ identifier: "LivingAreaLayout" });
     case 4:
@@ -3043,67 +3703,71 @@ function __c0(j: number): any {
           sink: S.optional(S.Boolean),
           snackbar: S.optional(S.Boolean),
           minibar: S.optional(S.Boolean),
-          kitchenAvailableException: S.optional(S.String),
-          microwaveException: S.optional(S.String),
+          kitchenAvailableException: S.optional(LivingAreaEatingKitchenAvailableExceptionEnum),
+          microwaveException: S.optional(LivingAreaEatingMicrowaveExceptionEnum),
           coffeeMaker: S.optional(S.Boolean),
-          teaStationException: S.optional(S.String),
+          teaStationException: S.optional(LivingAreaEatingTeaStationExceptionEnum),
           toaster: S.optional(S.Boolean),
-          outdoorGrillException: S.optional(S.String),
+          outdoorGrillException: S.optional(LivingAreaEatingOutdoorGrillExceptionEnum),
           microwave: S.optional(S.Boolean),
           stove: S.optional(S.Boolean),
           refrigerator: S.optional(S.Boolean),
-          sinkException: S.optional(S.String),
+          sinkException: S.optional(LivingAreaEatingSinkExceptionEnum),
           outdoorGrill: S.optional(S.Boolean),
-          cookwareException: S.optional(S.String),
+          cookwareException: S.optional(LivingAreaEatingCookwareExceptionEnum),
           dishwasher: S.optional(S.Boolean),
-          kettleException: S.optional(S.String),
+          kettleException: S.optional(LivingAreaEatingKettleExceptionEnum),
           cookware: S.optional(S.Boolean),
-          minibarException: S.optional(S.String),
+          minibarException: S.optional(LivingAreaEatingMinibarExceptionEnum),
           teaStation: S.optional(S.Boolean),
-          snackbarException: S.optional(S.String),
-          ovenException: S.optional(S.String),
-          coffeeMakerException: S.optional(S.String),
+          snackbarException: S.optional(LivingAreaEatingSnackbarExceptionEnum),
+          ovenException: S.optional(LivingAreaEatingOvenExceptionEnum),
+          coffeeMakerException: S.optional(LivingAreaEatingCoffeeMakerExceptionEnum),
           oven: S.optional(S.Boolean),
-          toasterException: S.optional(S.String),
-          stoveException: S.optional(S.String),
+          toasterException: S.optional(LivingAreaEatingToasterExceptionEnum),
+          stoveException: S.optional(LivingAreaEatingStoveExceptionEnum),
           kitchenAvailable: S.optional(S.Boolean),
-          dishwasherException: S.optional(S.String),
+          dishwasherException: S.optional(LivingAreaEatingDishwasherExceptionEnum),
           indoorGrill: S.optional(S.Boolean),
-          refrigeratorException: S.optional(S.String),
+          refrigeratorException: S.optional(LivingAreaEatingRefrigeratorExceptionEnum),
           kettle: S.optional(S.Boolean),
-          indoorGrillException: S.optional(S.String),
+          indoorGrillException: S.optional(LivingAreaEatingIndoorGrillExceptionEnum),
         }),
       ).annotate({ identifier: "LivingAreaEating" });
     case 5:
       return S.suspend(() =>
         S.Struct({
           otherBedsCount: S.optional(S.Number),
-          cribsCountException: S.optional(S.String),
-          sofaBedsCountException: S.optional(S.String),
+          cribsCountException: S.optional(LivingAreaSleepingCribsCountExceptionEnum),
+          sofaBedsCountException: S.optional(LivingAreaSleepingSofaBedsCountExceptionEnum),
           syntheticPillows: S.optional(S.Boolean),
-          queenBedsCountException: S.optional(S.String),
+          queenBedsCountException: S.optional(LivingAreaSleepingQueenBedsCountExceptionEnum),
           queenBedsCount: S.optional(S.Number),
           featherPillows: S.optional(S.Boolean),
-          featherPillowsException: S.optional(S.String),
-          doubleBedsCountException: S.optional(S.String),
-          otherBedsCountException: S.optional(S.String),
-          rollAwayBedsCountException: S.optional(S.String),
+          featherPillowsException: S.optional(LivingAreaSleepingFeatherPillowsExceptionEnum),
+          doubleBedsCountException: S.optional(LivingAreaSleepingDoubleBedsCountExceptionEnum),
+          otherBedsCountException: S.optional(LivingAreaSleepingOtherBedsCountExceptionEnum),
+          rollAwayBedsCountException: S.optional(LivingAreaSleepingRollAwayBedsCountExceptionEnum),
           cribsCount: S.optional(S.Number),
           doubleBedsCount: S.optional(S.Number),
           kingBedsCount: S.optional(S.Number),
           bunkBedsCount: S.optional(S.Number),
           bedsCount: S.optional(S.Number),
-          singleOrTwinBedsCountException: S.optional(S.String),
-          hypoallergenicBeddingException: S.optional(S.String),
+          singleOrTwinBedsCountException: S.optional(
+            LivingAreaSleepingSingleOrTwinBedsCountExceptionEnum,
+          ),
+          hypoallergenicBeddingException: S.optional(
+            LivingAreaSleepingHypoallergenicBeddingExceptionEnum,
+          ),
           hypoallergenicBedding: S.optional(S.Boolean),
           rollAwayBedsCount: S.optional(S.Number),
-          kingBedsCountException: S.optional(S.String),
-          bunkBedsCountException: S.optional(S.String),
+          kingBedsCountException: S.optional(LivingAreaSleepingKingBedsCountExceptionEnum),
+          bunkBedsCountException: S.optional(LivingAreaSleepingBunkBedsCountExceptionEnum),
           memoryFoamPillows: S.optional(S.Boolean),
-          syntheticPillowsException: S.optional(S.String),
+          syntheticPillowsException: S.optional(LivingAreaSleepingSyntheticPillowsExceptionEnum),
           singleOrTwinBedsCount: S.optional(S.Number),
-          memoryFoamPillowsException: S.optional(S.String),
-          bedsCountException: S.optional(S.String),
+          memoryFoamPillowsException: S.optional(LivingAreaSleepingMemoryFoamPillowsExceptionEnum),
+          bedsCountException: S.optional(LivingAreaSleepingBedsCountExceptionEnum),
           sofaBedsCount: S.optional(S.Number),
         }),
       ).annotate({ identifier: "LivingAreaSleeping" });
@@ -3112,20 +3776,36 @@ function __c0(j: number): any {
         S.Struct({
           hearingAccessibleFireAlarm: S.optional(S.Boolean),
           hearingAccessibleDoorbell: S.optional(S.Boolean),
-          mobilityAccessibleShowerException: S.optional(S.String),
-          hearingAccessibleFireAlarmException: S.optional(S.String),
-          mobilityAccessibleBathtubException: S.optional(S.String),
-          adaCompliantUnitException: S.optional(S.String),
+          mobilityAccessibleShowerException: S.optional(
+            LivingAreaAccessibilityMobilityAccessibleShowerExceptionEnum,
+          ),
+          hearingAccessibleFireAlarmException: S.optional(
+            LivingAreaAccessibilityHearingAccessibleFireAlarmExceptionEnum,
+          ),
+          mobilityAccessibleBathtubException: S.optional(
+            LivingAreaAccessibilityMobilityAccessibleBathtubExceptionEnum,
+          ),
+          adaCompliantUnitException: S.optional(
+            LivingAreaAccessibilityAdaCompliantUnitExceptionEnum,
+          ),
           mobilityAccessibleUnit: S.optional(S.Boolean),
           adaCompliantUnit: S.optional(S.Boolean),
-          mobilityAccessibleToiletException: S.optional(S.String),
+          mobilityAccessibleToiletException: S.optional(
+            LivingAreaAccessibilityMobilityAccessibleToiletExceptionEnum,
+          ),
           mobilityAccessibleShower: S.optional(S.Boolean),
           hearingAccessibleUnit: S.optional(S.Boolean),
-          hearingAccessibleUnitException: S.optional(S.String),
-          hearingAccessibleDoorbellException: S.optional(S.String),
+          hearingAccessibleUnitException: S.optional(
+            LivingAreaAccessibilityHearingAccessibleUnitExceptionEnum,
+          ),
+          hearingAccessibleDoorbellException: S.optional(
+            LivingAreaAccessibilityHearingAccessibleDoorbellExceptionEnum,
+          ),
           mobilityAccessibleToilet: S.optional(S.Boolean),
           mobilityAccessibleBathtub: S.optional(S.Boolean),
-          mobilityAccessibleUnitException: S.optional(S.String),
+          mobilityAccessibleUnitException: S.optional(
+            LivingAreaAccessibilityMobilityAccessibleUnitExceptionEnum,
+          ),
         }),
       ).annotate({ identifier: "LivingAreaAccessibility" });
     case 7:
@@ -3135,41 +3815,45 @@ function __c0(j: number): any {
           toilet: S.optional(S.Boolean),
           heating: S.optional(S.Boolean),
           dryer: S.optional(S.Boolean),
-          airConditioningException: S.optional(S.String),
+          airConditioningException: S.optional(LivingAreaFeaturesAirConditioningExceptionEnum),
           universalPowerAdapters: S.optional(S.Boolean),
           privateBathroom: S.optional(S.Boolean),
           tvCasting: S.optional(S.Boolean),
           inunitWifiAvailable: S.optional(S.Boolean),
           hairdryer: S.optional(S.Boolean),
-          tvStreamingException: S.optional(S.String),
+          tvStreamingException: S.optional(LivingAreaFeaturesTvStreamingExceptionEnum),
           tv: S.optional(S.Boolean),
           washer: S.optional(S.Boolean),
           inunitSafe: S.optional(S.Boolean),
           airConditioning: S.optional(S.Boolean),
-          payPerViewMoviesException: S.optional(S.String),
-          hairdryerException: S.optional(S.String),
-          tvException: S.optional(S.String),
-          toiletException: S.optional(S.String),
+          payPerViewMoviesException: S.optional(LivingAreaFeaturesPayPerViewMoviesExceptionEnum),
+          hairdryerException: S.optional(LivingAreaFeaturesHairdryerExceptionEnum),
+          tvException: S.optional(LivingAreaFeaturesTvExceptionEnum),
+          toiletException: S.optional(LivingAreaFeaturesToiletExceptionEnum),
           shower: S.optional(S.Boolean),
-          electronicRoomKeyException: S.optional(S.String),
-          inunitWifiAvailableException: S.optional(S.String),
+          electronicRoomKeyException: S.optional(LivingAreaFeaturesElectronicRoomKeyExceptionEnum),
+          inunitWifiAvailableException: S.optional(
+            LivingAreaFeaturesInunitWifiAvailableExceptionEnum,
+          ),
           tvStreaming: S.optional(S.Boolean),
           bathtub: S.optional(S.Boolean),
-          washerException: S.optional(S.String),
-          showerException: S.optional(S.String),
-          bidetException: S.optional(S.String),
-          universalPowerAdaptersException: S.optional(S.String),
-          ironingEquipmentException: S.optional(S.String),
-          fireplaceException: S.optional(S.String),
+          washerException: S.optional(LivingAreaFeaturesWasherExceptionEnum),
+          showerException: S.optional(LivingAreaFeaturesShowerExceptionEnum),
+          bidetException: S.optional(LivingAreaFeaturesBidetExceptionEnum),
+          universalPowerAdaptersException: S.optional(
+            LivingAreaFeaturesUniversalPowerAdaptersExceptionEnum,
+          ),
+          ironingEquipmentException: S.optional(LivingAreaFeaturesIroningEquipmentExceptionEnum),
+          fireplaceException: S.optional(LivingAreaFeaturesFireplaceExceptionEnum),
           payPerViewMovies: S.optional(S.Boolean),
-          tvCastingException: S.optional(S.String),
+          tvCastingException: S.optional(LivingAreaFeaturesTvCastingExceptionEnum),
           bidet: S.optional(S.Boolean),
-          bathtubException: S.optional(S.String),
-          privateBathroomException: S.optional(S.String),
+          bathtubException: S.optional(LivingAreaFeaturesBathtubExceptionEnum),
+          privateBathroomException: S.optional(LivingAreaFeaturesPrivateBathroomExceptionEnum),
           electronicRoomKey: S.optional(S.Boolean),
-          dryerException: S.optional(S.String),
-          heatingException: S.optional(S.String),
-          inunitSafeException: S.optional(S.String),
+          dryerException: S.optional(LivingAreaFeaturesDryerExceptionEnum),
+          heatingException: S.optional(LivingAreaFeaturesHeatingExceptionEnum),
+          inunitSafeException: S.optional(LivingAreaFeaturesInunitSafeExceptionEnum),
           fireplace: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "LivingAreaFeatures" });
@@ -3180,57 +3864,63 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          layout: S.optional(__S(3)),
-          eating: S.optional(__S(4)),
-          sleeping: S.optional(__S(5)),
-          accessibility: S.optional(__S(6)),
-          features: S.optional(__S(7)),
+          layout: S.optional(LivingAreaLayout),
+          eating: S.optional(LivingAreaEating),
+          sleeping: S.optional(LivingAreaSleeping),
+          accessibility: S.optional(LivingAreaAccessibility),
+          features: S.optional(LivingAreaFeatures),
         }),
       ).annotate({ identifier: "LivingArea" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           poolView: S.optional(S.Boolean),
-          poolViewException: S.optional(S.String),
-          gardenViewException: S.optional(S.String),
-          valleyViewException: S.optional(S.String),
+          poolViewException: S.optional(ViewsFromUnitPoolViewExceptionEnum),
+          gardenViewException: S.optional(ViewsFromUnitGardenViewExceptionEnum),
+          valleyViewException: S.optional(ViewsFromUnitValleyViewExceptionEnum),
           lakeView: S.optional(S.Boolean),
           beachView: S.optional(S.Boolean),
           gardenView: S.optional(S.Boolean),
           cityView: S.optional(S.Boolean),
-          lakeViewException: S.optional(S.String),
+          lakeViewException: S.optional(ViewsFromUnitLakeViewExceptionEnum),
           oceanView: S.optional(S.Boolean),
           valleyView: S.optional(S.Boolean),
-          cityViewException: S.optional(S.String),
-          landmarkViewException: S.optional(S.String),
+          cityViewException: S.optional(ViewsFromUnitCityViewExceptionEnum),
+          landmarkViewException: S.optional(ViewsFromUnitLandmarkViewExceptionEnum),
           landmarkView: S.optional(S.Boolean),
-          beachViewException: S.optional(S.String),
-          oceanViewException: S.optional(S.String),
+          beachViewException: S.optional(ViewsFromUnitBeachViewExceptionEnum),
+          oceanViewException: S.optional(ViewsFromUnitOceanViewExceptionEnum),
         }),
       ).annotate({ identifier: "ViewsFromUnit" });
     case 2:
       return S.suspend(() =>
         S.Struct({
           bungalowOrVilla: S.optional(S.Boolean),
-          totalLivingAreas: S.optional(__S(8)),
+          totalLivingAreas: S.optional(LivingArea),
           executiveFloor: S.optional(S.Boolean),
           suite: S.optional(S.Boolean),
           maxAdultOccupantsCount: S.optional(S.Number),
-          tier: S.optional(S.String),
+          tier: S.optional(GuestUnitFeaturesTierEnum),
           connectingUnitAvailable: S.optional(S.Boolean),
-          maxOccupantsCountException: S.optional(S.String),
-          privateHomeException: S.optional(S.String),
+          maxOccupantsCountException: S.optional(GuestUnitFeaturesMaxOccupantsCountExceptionEnum),
+          privateHomeException: S.optional(GuestUnitFeaturesPrivateHomeExceptionEnum),
           privateHome: S.optional(S.Boolean),
           maxChildOccupantsCount: S.optional(S.Number),
-          bungalowOrVillaException: S.optional(S.String),
-          connectingUnitAvailableException: S.optional(S.String),
-          maxAdultOccupantsCountException: S.optional(S.String),
+          bungalowOrVillaException: S.optional(GuestUnitFeaturesBungalowOrVillaExceptionEnum),
+          connectingUnitAvailableException: S.optional(
+            GuestUnitFeaturesConnectingUnitAvailableExceptionEnum,
+          ),
+          maxAdultOccupantsCountException: S.optional(
+            GuestUnitFeaturesMaxAdultOccupantsCountExceptionEnum,
+          ),
           maxOccupantsCount: S.optional(S.Number),
-          tierException: S.optional(S.String),
-          views: S.optional(__S(9)),
-          executiveFloorException: S.optional(S.String),
-          maxChildOccupantsCountException: S.optional(S.String),
-          suiteException: S.optional(S.String),
+          tierException: S.optional(GuestUnitFeaturesTierExceptionEnum),
+          views: S.optional(ViewsFromUnit),
+          executiveFloorException: S.optional(GuestUnitFeaturesExecutiveFloorExceptionEnum),
+          maxChildOccupantsCountException: S.optional(
+            GuestUnitFeaturesMaxChildOccupantsCountExceptionEnum,
+          ),
+          suiteException: S.optional(GuestUnitFeaturesSuiteExceptionEnum),
         }),
       ).annotate({ identifier: "GuestUnitFeatures" });
     case 3:
@@ -3239,40 +3929,62 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           label: S.optional(S.String),
-          features: S.optional(__S(10)),
-          codes: S.optional(__S(11)),
+          features: S.optional(GuestUnitFeatures),
+          codes: S.optional(StringList),
         }),
       ).annotate({ identifier: "GuestUnitType" });
     case 5:
-      return S.Array(__S(12));
+      return S.Array(GuestUnitType);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          diningAreasAdditionalSanitationException: S.optional(S.String),
-          individualPackagedMealsException: S.optional(S.String),
+          diningAreasAdditionalSanitationException: S.optional(
+            IncreasedFoodSafetyDiningAreasAdditionalSanitationExceptionEnum,
+          ),
+          individualPackagedMealsException: S.optional(
+            IncreasedFoodSafetyIndividualPackagedMealsExceptionEnum,
+          ),
           diningAreasAdditionalSanitation: S.optional(S.Boolean),
           individualPackagedMeals: S.optional(S.Boolean),
           disposableFlatware: S.optional(S.Boolean),
-          singleUseFoodMenusException: S.optional(S.String),
+          singleUseFoodMenusException: S.optional(
+            IncreasedFoodSafetySingleUseFoodMenusExceptionEnum,
+          ),
           singleUseFoodMenus: S.optional(S.Boolean),
           foodPreparationAndServingAdditionalSafety: S.optional(S.Boolean),
-          foodPreparationAndServingAdditionalSafetyException: S.optional(S.String),
-          disposableFlatwareException: S.optional(S.String),
+          foodPreparationAndServingAdditionalSafetyException: S.optional(
+            IncreasedFoodSafetyFoodPreparationAndServingAdditionalSafetyExceptionEnum,
+          ),
+          disposableFlatwareException: S.optional(
+            IncreasedFoodSafetyDisposableFlatwareExceptionEnum,
+          ),
         }),
       ).annotate({ identifier: "IncreasedFoodSafety" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          employeesTrainedCleaningProceduresException: S.optional(S.String),
-          employeesTrainedThoroughHandWashingException: S.optional(S.String),
+          employeesTrainedCleaningProceduresException: S.optional(
+            EnhancedCleaningEmployeesTrainedCleaningProceduresExceptionEnum,
+          ),
+          employeesTrainedThoroughHandWashingException: S.optional(
+            EnhancedCleaningEmployeesTrainedThoroughHandWashingExceptionEnum,
+          ),
           commercialGradeDisinfectantCleaning: S.optional(S.Boolean),
-          commercialGradeDisinfectantCleaningException: S.optional(S.String),
+          commercialGradeDisinfectantCleaningException: S.optional(
+            EnhancedCleaningCommercialGradeDisinfectantCleaningExceptionEnum,
+          ),
           guestRoomsEnhancedCleaning: S.optional(S.Boolean),
           employeesWearProtectiveEquipment: S.optional(S.Boolean),
           commonAreasEnhancedCleaning: S.optional(S.Boolean),
-          commonAreasEnhancedCleaningException: S.optional(S.String),
-          employeesWearProtectiveEquipmentException: S.optional(S.String),
-          guestRoomsEnhancedCleaningException: S.optional(S.String),
+          commonAreasEnhancedCleaningException: S.optional(
+            EnhancedCleaningCommonAreasEnhancedCleaningExceptionEnum,
+          ),
+          employeesWearProtectiveEquipmentException: S.optional(
+            EnhancedCleaningEmployeesWearProtectiveEquipmentExceptionEnum,
+          ),
+          guestRoomsEnhancedCleaningException: S.optional(
+            EnhancedCleaningGuestRoomsEnhancedCleaningExceptionEnum,
+          ),
           employeesTrainedThoroughHandWashing: S.optional(S.Boolean),
           employeesTrainedCleaningProcedures: S.optional(S.Boolean),
         }),
@@ -3284,32 +3996,50 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          contactlessCheckinCheckoutException: S.optional(S.String),
-          roomBookingsBufferException: S.optional(S.String),
+          contactlessCheckinCheckoutException: S.optional(
+            MinimizedContactContactlessCheckinCheckoutExceptionEnum,
+          ),
+          roomBookingsBufferException: S.optional(MinimizedContactRoomBookingsBufferExceptionEnum),
           contactlessCheckinCheckout: S.optional(S.Boolean),
           noHighTouchItemsGuestRooms: S.optional(S.Boolean),
           digitalGuestRoomKeys: S.optional(S.Boolean),
-          noHighTouchItemsGuestRoomsException: S.optional(S.String),
+          noHighTouchItemsGuestRoomsException: S.optional(
+            MinimizedContactNoHighTouchItemsGuestRoomsExceptionEnum,
+          ),
           roomBookingsBuffer: S.optional(S.Boolean),
-          noHighTouchItemsCommonAreasException: S.optional(S.String),
-          housekeepingScheduledRequestOnlyException: S.optional(S.String),
+          noHighTouchItemsCommonAreasException: S.optional(
+            MinimizedContactNoHighTouchItemsCommonAreasExceptionEnum,
+          ),
+          housekeepingScheduledRequestOnlyException: S.optional(
+            MinimizedContactHousekeepingScheduledRequestOnlyExceptionEnum,
+          ),
           plasticKeycardsDisinfected: S.optional(S.Boolean),
           housekeepingScheduledRequestOnly: S.optional(S.Boolean),
           noHighTouchItemsCommonAreas: S.optional(S.Boolean),
-          plasticKeycardsDisinfectedException: S.optional(S.String),
-          digitalGuestRoomKeysException: S.optional(S.String),
+          plasticKeycardsDisinfectedException: S.optional(
+            MinimizedContactPlasticKeycardsDisinfectedExceptionEnum,
+          ),
+          digitalGuestRoomKeysException: S.optional(
+            MinimizedContactDigitalGuestRoomKeysExceptionEnum,
+          ),
         }),
       ).annotate({ identifier: "MinimizedContact" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          protectiveEquipmentAvailableException: S.optional(S.String),
-          commonAreasOfferSanitizingItemsException: S.optional(S.String),
+          protectiveEquipmentAvailableException: S.optional(
+            PersonalProtectionProtectiveEquipmentAvailableExceptionEnum,
+          ),
+          commonAreasOfferSanitizingItemsException: S.optional(
+            PersonalProtectionCommonAreasOfferSanitizingItemsExceptionEnum,
+          ),
           guestRoomHygieneKitsAvailable: S.optional(S.Boolean),
           commonAreasOfferSanitizingItems: S.optional(S.Boolean),
           protectiveEquipmentAvailable: S.optional(S.Boolean),
-          faceMaskRequiredException: S.optional(S.String),
-          guestRoomHygieneKitsAvailableException: S.optional(S.String),
+          faceMaskRequiredException: S.optional(PersonalProtectionFaceMaskRequiredExceptionEnum),
+          guestRoomHygieneKitsAvailableException: S.optional(
+            PersonalProtectionGuestRoomHygieneKitsAvailableExceptionEnum,
+          ),
           faceMaskRequired: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "PersonalProtection" });
@@ -3318,24 +4048,32 @@ function __c2(j: number): any {
         S.Struct({
           sharedAreasLimitedOccupancy: S.optional(S.Boolean),
           wellnessAreasHavePrivateSpaces: S.optional(S.Boolean),
-          commonAreasPhysicalDistancingArrangedException: S.optional(S.String),
-          wellnessAreasHavePrivateSpacesException: S.optional(S.String),
+          commonAreasPhysicalDistancingArrangedException: S.optional(
+            PhysicalDistancingCommonAreasPhysicalDistancingArrangedExceptionEnum,
+          ),
+          wellnessAreasHavePrivateSpacesException: S.optional(
+            PhysicalDistancingWellnessAreasHavePrivateSpacesExceptionEnum,
+          ),
           safetyDividers: S.optional(S.Boolean),
-          safetyDividersException: S.optional(S.String),
+          safetyDividersException: S.optional(PhysicalDistancingSafetyDividersExceptionEnum),
           physicalDistancingRequired: S.optional(S.Boolean),
-          physicalDistancingRequiredException: S.optional(S.String),
-          sharedAreasLimitedOccupancyException: S.optional(S.String),
+          physicalDistancingRequiredException: S.optional(
+            PhysicalDistancingPhysicalDistancingRequiredExceptionEnum,
+          ),
+          sharedAreasLimitedOccupancyException: S.optional(
+            PhysicalDistancingSharedAreasLimitedOccupancyExceptionEnum,
+          ),
           commonAreasPhysicalDistancingArranged: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "PhysicalDistancing" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          increasedFoodSafety: S.optional(__S(14)),
-          enhancedCleaning: S.optional(__S(15)),
-          minimizedContact: S.optional(__S(16)),
-          personalProtection: S.optional(__S(17)),
-          physicalDistancing: S.optional(__S(18)),
+          increasedFoodSafety: S.optional(IncreasedFoodSafety),
+          enhancedCleaning: S.optional(EnhancedCleaning),
+          minimizedContact: S.optional(MinimizedContact),
+          personalProtection: S.optional(PersonalProtection),
+          physicalDistancing: S.optional(PhysicalDistancing),
         }),
       ).annotate({ identifier: "HealthAndSafety" });
     case 4:
@@ -3343,38 +4081,38 @@ function __c2(j: number): any {
         S.Struct({
           nightclub: S.optional(S.Boolean),
           freeWatercraftRental: S.optional(S.Boolean),
-          boutiqueStoresException: S.optional(S.String),
+          boutiqueStoresException: S.optional(ActivitiesBoutiqueStoresExceptionEnum),
           scuba: S.optional(S.Boolean),
           casino: S.optional(S.Boolean),
-          beachFrontException: S.optional(S.String),
-          privateBeachException: S.optional(S.String),
+          beachFrontException: S.optional(ActivitiesBeachFrontExceptionEnum),
+          privateBeachException: S.optional(ActivitiesPrivateBeachExceptionEnum),
           horsebackRiding: S.optional(S.Boolean),
-          gameRoomException: S.optional(S.String),
+          gameRoomException: S.optional(ActivitiesGameRoomExceptionEnum),
           waterSkiing: S.optional(S.Boolean),
-          horsebackRidingException: S.optional(S.String),
-          golfException: S.optional(S.String),
+          horsebackRidingException: S.optional(ActivitiesHorsebackRidingExceptionEnum),
+          golfException: S.optional(ActivitiesGolfExceptionEnum),
           beachAccess: S.optional(S.Boolean),
           beachFront: S.optional(S.Boolean),
           gameRoom: S.optional(S.Boolean),
           freeBicycleRental: S.optional(S.Boolean),
-          nightclubException: S.optional(S.String),
-          bicycleRentalException: S.optional(S.String),
-          freeWatercraftRentalException: S.optional(S.String),
+          nightclubException: S.optional(ActivitiesNightclubExceptionEnum),
+          bicycleRentalException: S.optional(ActivitiesBicycleRentalExceptionEnum),
+          freeWatercraftRentalException: S.optional(ActivitiesFreeWatercraftRentalExceptionEnum),
           tennis: S.optional(S.Boolean),
-          snorkelingException: S.optional(S.String),
-          tennisException: S.optional(S.String),
+          snorkelingException: S.optional(ActivitiesSnorkelingExceptionEnum),
+          tennisException: S.optional(ActivitiesTennisExceptionEnum),
           boutiqueStores: S.optional(S.Boolean),
           privateBeach: S.optional(S.Boolean),
-          freeBicycleRentalException: S.optional(S.String),
-          scubaException: S.optional(S.String),
+          freeBicycleRentalException: S.optional(ActivitiesFreeBicycleRentalExceptionEnum),
+          scubaException: S.optional(ActivitiesScubaExceptionEnum),
           golf: S.optional(S.Boolean),
           bicycleRental: S.optional(S.Boolean),
-          watercraftRentalException: S.optional(S.String),
+          watercraftRentalException: S.optional(ActivitiesWatercraftRentalExceptionEnum),
           snorkeling: S.optional(S.Boolean),
-          beachAccessException: S.optional(S.String),
+          beachAccessException: S.optional(ActivitiesBeachAccessExceptionEnum),
           watercraftRental: S.optional(S.Boolean),
-          waterSkiingException: S.optional(S.String),
-          casinoException: S.optional(S.String),
+          waterSkiingException: S.optional(ActivitiesWaterSkiingExceptionEnum),
+          casinoException: S.optional(ActivitiesCasinoExceptionEnum),
         }),
       ).annotate({ identifier: "Activities" });
     case 5:
@@ -3383,11 +4121,11 @@ function __c2(j: number): any {
           kidsClub: S.optional(S.Boolean),
           babysitting: S.optional(S.Boolean),
           kidsFriendly: S.optional(S.Boolean),
-          kidsFriendlyException: S.optional(S.String),
-          kidsActivitiesException: S.optional(S.String),
-          kidsClubException: S.optional(S.String),
+          kidsFriendlyException: S.optional(FamiliesKidsFriendlyExceptionEnum),
+          kidsActivitiesException: S.optional(FamiliesKidsActivitiesExceptionEnum),
+          kidsClubException: S.optional(FamiliesKidsClubExceptionEnum),
           kidsActivities: S.optional(S.Boolean),
-          babysittingException: S.optional(S.String),
+          babysittingException: S.optional(FamiliesBabysittingExceptionEnum),
         }),
       ).annotate({ identifier: "Families" });
     case 6:
@@ -3398,20 +4136,20 @@ function __c2(j: number): any {
           freeFitnessCenter: S.optional(S.Boolean),
           ellipticalMachine: S.optional(S.Boolean),
           weightMachine: S.optional(S.Boolean),
-          weightMachineException: S.optional(S.String),
+          weightMachineException: S.optional(WellnessWeightMachineExceptionEnum),
           salon: S.optional(S.Boolean),
-          freeFitnessCenterException: S.optional(S.String),
-          saunaException: S.optional(S.String),
-          salonException: S.optional(S.String),
+          freeFitnessCenterException: S.optional(WellnessFreeFitnessCenterExceptionEnum),
+          saunaException: S.optional(WellnessSaunaExceptionEnum),
+          salonException: S.optional(WellnessSalonExceptionEnum),
           fitnessCenter: S.optional(S.Boolean),
-          doctorOnCallException: S.optional(S.String),
-          ellipticalMachineException: S.optional(S.String),
-          fitnessCenterException: S.optional(S.String),
-          spaException: S.optional(S.String),
-          freeWeightsException: S.optional(S.String),
+          doctorOnCallException: S.optional(WellnessDoctorOnCallExceptionEnum),
+          ellipticalMachineException: S.optional(WellnessEllipticalMachineExceptionEnum),
+          fitnessCenterException: S.optional(WellnessFitnessCenterExceptionEnum),
+          spaException: S.optional(WellnessSpaExceptionEnum),
+          freeWeightsException: S.optional(WellnessFreeWeightsExceptionEnum),
           massage: S.optional(S.Boolean),
-          treadmillException: S.optional(S.String),
-          massageException: S.optional(S.String),
+          treadmillException: S.optional(WellnessTreadmillExceptionEnum),
+          massageException: S.optional(WellnessMassageExceptionEnum),
           sauna: S.optional(S.Boolean),
           treadmill: S.optional(S.Boolean),
           spa: S.optional(S.Boolean),
@@ -3420,22 +4158,34 @@ function __c2(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          locallySourcedFoodAndBeveragesException: S.optional(S.String),
+          locallySourcedFoodAndBeveragesException: S.optional(
+            SustainableSourcingLocallySourcedFoodAndBeveragesExceptionEnum,
+          ),
           responsiblySourcesSeafood: S.optional(S.Boolean),
-          organicFoodAndBeveragesException: S.optional(S.String),
+          organicFoodAndBeveragesException: S.optional(
+            SustainableSourcingOrganicFoodAndBeveragesExceptionEnum,
+          ),
           veganMeals: S.optional(S.Boolean),
           organicFoodAndBeverages: S.optional(S.Boolean),
           locallySourcedFoodAndBeverages: S.optional(S.Boolean),
           responsiblePurchasingPolicy: S.optional(S.Boolean),
           ecoFriendlyToiletries: S.optional(S.Boolean),
           vegetarianMeals: S.optional(S.Boolean),
-          responsiblePurchasingPolicyException: S.optional(S.String),
-          veganMealsException: S.optional(S.String),
-          ecoFriendlyToiletriesException: S.optional(S.String),
-          responsiblySourcesSeafoodException: S.optional(S.String),
+          responsiblePurchasingPolicyException: S.optional(
+            SustainableSourcingResponsiblePurchasingPolicyExceptionEnum,
+          ),
+          veganMealsException: S.optional(SustainableSourcingVeganMealsExceptionEnum),
+          ecoFriendlyToiletriesException: S.optional(
+            SustainableSourcingEcoFriendlyToiletriesExceptionEnum,
+          ),
+          responsiblySourcesSeafoodException: S.optional(
+            SustainableSourcingResponsiblySourcesSeafoodExceptionEnum,
+          ),
           organicCageFreeEggs: S.optional(S.Boolean),
-          organicCageFreeEggsException: S.optional(S.String),
-          vegetarianMealsException: S.optional(S.String),
+          organicCageFreeEggsException: S.optional(
+            SustainableSourcingOrganicCageFreeEggsExceptionEnum,
+          ),
+          vegetarianMealsException: S.optional(SustainableSourcingVegetarianMealsExceptionEnum),
         }),
       ).annotate({ identifier: "SustainableSourcing" });
   }
@@ -3445,21 +4195,25 @@ function __c3(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          ecoCertificate: S.optional(S.String),
-          awardedException: S.optional(S.String),
+          ecoCertificate: S.optional(EcoCertificationEcoCertificateEnum),
+          awardedException: S.optional(EcoCertificationAwardedExceptionEnum),
           awarded: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "EcoCertification" });
     case 1:
-      return S.Array(__S(24));
+      return S.Array(EcoCertification);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          leedCertificationException: S.optional(S.String),
-          breeamCertification: S.optional(S.String),
-          leedCertification: S.optional(S.String),
-          ecoCertifications: S.optional(__S(25)),
-          breeamCertificationException: S.optional(S.String),
+          leedCertificationException: S.optional(
+            SustainabilityCertificationsLeedCertificationExceptionEnum,
+          ),
+          breeamCertification: S.optional(SustainabilityCertificationsBreeamCertificationEnum),
+          leedCertification: S.optional(SustainabilityCertificationsLeedCertificationEnum),
+          ecoCertifications: S.optional(EcoCertificationList),
+          breeamCertificationException: S.optional(
+            SustainabilityCertificationsBreeamCertificationExceptionEnum,
+          ),
         }),
       ).annotate({
         identifier: "SustainabilityCertifications",
@@ -3468,37 +4222,61 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           safelyDisposesElectronics: S.optional(S.Boolean),
-          safelyDisposesLightbulbsException: S.optional(S.String),
+          safelyDisposesLightbulbsException: S.optional(
+            WasteReductionSafelyDisposesLightbulbsExceptionEnum,
+          ),
           compostableFoodContainersAndCutlery: S.optional(S.Boolean),
           toiletryDonationProgram: S.optional(S.Boolean),
           recyclingProgram: S.optional(S.Boolean),
           refillableToiletryContainers: S.optional(S.Boolean),
-          noSingleUsePlasticStrawsException: S.optional(S.String),
-          compostableFoodContainersAndCutleryException: S.optional(S.String),
-          foodWasteReductionProgramException: S.optional(S.String),
-          noSingleUsePlasticWaterBottlesException: S.optional(S.String),
+          noSingleUsePlasticStrawsException: S.optional(
+            WasteReductionNoSingleUsePlasticStrawsExceptionEnum,
+          ),
+          compostableFoodContainersAndCutleryException: S.optional(
+            WasteReductionCompostableFoodContainersAndCutleryExceptionEnum,
+          ),
+          foodWasteReductionProgramException: S.optional(
+            WasteReductionFoodWasteReductionProgramExceptionEnum,
+          ),
+          noSingleUsePlasticWaterBottlesException: S.optional(
+            WasteReductionNoSingleUsePlasticWaterBottlesExceptionEnum,
+          ),
           compostsExcessFood: S.optional(S.Boolean),
-          refillableToiletryContainersException: S.optional(S.String),
+          refillableToiletryContainersException: S.optional(
+            WasteReductionRefillableToiletryContainersExceptionEnum,
+          ),
           noStyrofoamFoodContainers: S.optional(S.Boolean),
           donatesExcessFood: S.optional(S.Boolean),
-          donatesExcessFoodException: S.optional(S.String),
-          soapDonationProgramException: S.optional(S.String),
-          noStyrofoamFoodContainersException: S.optional(S.String),
+          donatesExcessFoodException: S.optional(WasteReductionDonatesExcessFoodExceptionEnum),
+          soapDonationProgramException: S.optional(WasteReductionSoapDonationProgramExceptionEnum),
+          noStyrofoamFoodContainersException: S.optional(
+            WasteReductionNoStyrofoamFoodContainersExceptionEnum,
+          ),
           noSingleUsePlasticStraws: S.optional(S.Boolean),
           safelyHandlesHazardousSubstances: S.optional(S.Boolean),
           noSingleUsePlasticWaterBottles: S.optional(S.Boolean),
-          toiletryDonationProgramException: S.optional(S.String),
+          toiletryDonationProgramException: S.optional(
+            WasteReductionToiletryDonationProgramExceptionEnum,
+          ),
           waterBottleFillingStations: S.optional(S.Boolean),
-          recyclingProgramException: S.optional(S.String),
+          recyclingProgramException: S.optional(WasteReductionRecyclingProgramExceptionEnum),
           safelyDisposesLightbulbs: S.optional(S.Boolean),
           foodWasteReductionProgram: S.optional(S.Boolean),
-          waterBottleFillingStationsException: S.optional(S.String),
+          waterBottleFillingStationsException: S.optional(
+            WasteReductionWaterBottleFillingStationsExceptionEnum,
+          ),
           safelyDisposesBatteries: S.optional(S.Boolean),
           soapDonationProgram: S.optional(S.Boolean),
-          compostsExcessFoodException: S.optional(S.String),
-          safelyDisposesElectronicsException: S.optional(S.String),
-          safelyHandlesHazardousSubstancesException: S.optional(S.String),
-          safelyDisposesBatteriesException: S.optional(S.String),
+          compostsExcessFoodException: S.optional(WasteReductionCompostsExcessFoodExceptionEnum),
+          safelyDisposesElectronicsException: S.optional(
+            WasteReductionSafelyDisposesElectronicsExceptionEnum,
+          ),
+          safelyHandlesHazardousSubstancesException: S.optional(
+            WasteReductionSafelyHandlesHazardousSubstancesExceptionEnum,
+          ),
+          safelyDisposesBatteriesException: S.optional(
+            WasteReductionSafelyDisposesBatteriesExceptionEnum,
+          ),
         }),
       ).annotate({ identifier: "WasteReduction" });
     case 4:
@@ -3506,18 +4284,32 @@ function __c3(j: number): any {
         S.Struct({
           energyEfficientLighting: S.optional(S.Boolean),
           energyEfficientHeatingAndCoolingSystems: S.optional(S.Boolean),
-          energyConservationProgramException: S.optional(S.String),
+          energyConservationProgramException: S.optional(
+            EnergyEfficiencyEnergyConservationProgramExceptionEnum,
+          ),
           greenBuildingDesign: S.optional(S.Boolean),
-          greenBuildingDesignException: S.optional(S.String),
-          energyEfficientLightingException: S.optional(S.String),
-          carbonFreeEnergySourcesException: S.optional(S.String),
+          greenBuildingDesignException: S.optional(
+            EnergyEfficiencyGreenBuildingDesignExceptionEnum,
+          ),
+          energyEfficientLightingException: S.optional(
+            EnergyEfficiencyEnergyEfficientLightingExceptionEnum,
+          ),
+          carbonFreeEnergySourcesException: S.optional(
+            EnergyEfficiencyCarbonFreeEnergySourcesExceptionEnum,
+          ),
           energySavingThermostats: S.optional(S.Boolean),
           independentOrganizationAuditsEnergyUse: S.optional(S.Boolean),
-          energySavingThermostatsException: S.optional(S.String),
+          energySavingThermostatsException: S.optional(
+            EnergyEfficiencyEnergySavingThermostatsExceptionEnum,
+          ),
           carbonFreeEnergySources: S.optional(S.Boolean),
-          energyEfficientHeatingAndCoolingSystemsException: S.optional(S.String),
+          energyEfficientHeatingAndCoolingSystemsException: S.optional(
+            EnergyEfficiencyEnergyEfficientHeatingAndCoolingSystemsExceptionEnum,
+          ),
           energyConservationProgram: S.optional(S.Boolean),
-          independentOrganizationAuditsEnergyUseException: S.optional(S.String),
+          independentOrganizationAuditsEnergyUseException: S.optional(
+            EnergyEfficiencyIndependentOrganizationAuditsEnergyUseExceptionEnum,
+          ),
         }),
       ).annotate({ identifier: "EnergyEfficiency" });
     case 5:
@@ -3526,44 +4318,48 @@ function __c3(j: number): any {
           waterSavingToilets: S.optional(S.Boolean),
           towelReuseProgram: S.optional(S.Boolean),
           linenReuseProgram: S.optional(S.Boolean),
-          towelReuseProgramException: S.optional(S.String),
-          waterSavingToiletsException: S.optional(S.String),
-          independentOrganizationAuditsWaterUseException: S.optional(S.String),
-          waterSavingSinksException: S.optional(S.String),
+          towelReuseProgramException: S.optional(WaterConservationTowelReuseProgramExceptionEnum),
+          waterSavingToiletsException: S.optional(WaterConservationWaterSavingToiletsExceptionEnum),
+          independentOrganizationAuditsWaterUseException: S.optional(
+            WaterConservationIndependentOrganizationAuditsWaterUseExceptionEnum,
+          ),
+          waterSavingSinksException: S.optional(WaterConservationWaterSavingSinksExceptionEnum),
           waterSavingShowers: S.optional(S.Boolean),
           independentOrganizationAuditsWaterUse: S.optional(S.Boolean),
-          waterSavingShowersException: S.optional(S.String),
-          linenReuseProgramException: S.optional(S.String),
+          waterSavingShowersException: S.optional(WaterConservationWaterSavingShowersExceptionEnum),
+          linenReuseProgramException: S.optional(WaterConservationLinenReuseProgramExceptionEnum),
           waterSavingSinks: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "WaterConservation" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          sustainableSourcing: S.optional(__S(23)),
-          sustainabilityCertifications: S.optional(__S(26)),
-          wasteReduction: S.optional(__S(27)),
-          energyEfficiency: S.optional(__S(28)),
-          waterConservation: S.optional(__S(29)),
+          sustainableSourcing: S.optional(SustainableSourcing),
+          sustainabilityCertifications: S.optional(SustainabilityCertifications),
+          wasteReduction: S.optional(WasteReduction),
+          energyEfficiency: S.optional(EnergyEfficiency),
+          waterConservation: S.optional(WaterConservation),
         }),
       ).annotate({ identifier: "Sustainability" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          selfParkingAvailableException: S.optional(S.String),
+          selfParkingAvailableException: S.optional(ParkingSelfParkingAvailableExceptionEnum),
           freeParking: S.optional(S.Boolean),
-          valetParkingAvailableException: S.optional(S.String),
+          valetParkingAvailableException: S.optional(ParkingValetParkingAvailableExceptionEnum),
           electricCarChargingStations: S.optional(S.Boolean),
           selfParkingAvailable: S.optional(S.Boolean),
           valetParkingAvailable: S.optional(S.Boolean),
           freeValetParking: S.optional(S.Boolean),
-          freeSelfParkingException: S.optional(S.String),
-          freeParkingException: S.optional(S.String),
-          parkingAvailableException: S.optional(S.String),
+          freeSelfParkingException: S.optional(ParkingFreeSelfParkingExceptionEnum),
+          freeParkingException: S.optional(ParkingFreeParkingExceptionEnum),
+          parkingAvailableException: S.optional(ParkingParkingAvailableExceptionEnum),
           parkingAvailable: S.optional(S.Boolean),
-          freeValetParkingException: S.optional(S.String),
+          freeValetParkingException: S.optional(ParkingFreeValetParkingExceptionEnum),
           freeSelfParking: S.optional(S.Boolean),
-          electricCarChargingStationsException: S.optional(S.String),
+          electricCarChargingStationsException: S.optional(
+            ParkingElectricCarChargingStationsExceptionEnum,
+          ),
         }),
       ).annotate({ identifier: "Parking" });
   }
@@ -3574,12 +4370,12 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           spoken: S.optional(S.Boolean),
-          spokenException: S.optional(S.String),
+          spokenException: S.optional(LanguageSpokenSpokenExceptionEnum),
           languageCode: S.optional(S.String),
         }),
       ).annotate({ identifier: "LanguageSpoken" });
     case 1:
-      return S.Array(__S(32));
+      return S.Array(LanguageSpoken);
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -3587,27 +4383,29 @@ function __c4(j: number): any {
           selfServiceLaundry: S.optional(S.Boolean),
           convenienceStore: S.optional(S.Boolean),
           fullServiceLaundry: S.optional(S.Boolean),
-          twentyFourHourFrontDeskException: S.optional(S.String),
+          twentyFourHourFrontDeskException: S.optional(
+            ServicesTwentyFourHourFrontDeskExceptionEnum,
+          ),
           frontDesk: S.optional(S.Boolean),
-          frontDeskException: S.optional(S.String),
-          conciergeException: S.optional(S.String),
+          frontDeskException: S.optional(ServicesFrontDeskExceptionEnum),
+          conciergeException: S.optional(ServicesConciergeExceptionEnum),
           twentyFourHourFrontDesk: S.optional(S.Boolean),
-          selfServiceLaundryException: S.optional(S.String),
+          selfServiceLaundryException: S.optional(ServicesSelfServiceLaundryExceptionEnum),
           concierge: S.optional(S.Boolean),
           elevator: S.optional(S.Boolean),
-          convenienceStoreException: S.optional(S.String),
+          convenienceStoreException: S.optional(ServicesConvenienceStoreExceptionEnum),
           socialHour: S.optional(S.Boolean),
-          currencyExchangeException: S.optional(S.String),
+          currencyExchangeException: S.optional(ServicesCurrencyExchangeExceptionEnum),
           currencyExchange: S.optional(S.Boolean),
-          elevatorException: S.optional(S.String),
-          fullServiceLaundryException: S.optional(S.String),
+          elevatorException: S.optional(ServicesElevatorExceptionEnum),
+          fullServiceLaundryException: S.optional(ServicesFullServiceLaundryExceptionEnum),
           giftShop: S.optional(S.Boolean),
-          giftShopException: S.optional(S.String),
-          languagesSpoken: S.optional(__S(33)),
-          socialHourException: S.optional(S.String),
-          baggageStorageException: S.optional(S.String),
+          giftShopException: S.optional(ServicesGiftShopExceptionEnum),
+          languagesSpoken: S.optional(LanguageSpokenList),
+          socialHourException: S.optional(ServicesSocialHourExceptionEnum),
+          baggageStorageException: S.optional(ServicesBaggageStorageExceptionEnum),
           wakeUpCalls: S.optional(S.Boolean),
-          wakeUpCallsException: S.optional(S.String),
+          wakeUpCallsException: S.optional(ServicesWakeUpCallsExceptionEnum),
         }),
       ).annotate({ identifier: "Services" });
     case 3:
@@ -3615,10 +4413,12 @@ function __c4(j: number): any {
         S.Struct({
           turndownService: S.optional(S.Boolean),
           dailyHousekeeping: S.optional(S.Boolean),
-          turndownServiceException: S.optional(S.String),
+          turndownServiceException: S.optional(HousekeepingTurndownServiceExceptionEnum),
           housekeepingAvailable: S.optional(S.Boolean),
-          housekeepingAvailableException: S.optional(S.String),
-          dailyHousekeepingException: S.optional(S.String),
+          housekeepingAvailableException: S.optional(
+            HousekeepingHousekeepingAvailableExceptionEnum,
+          ),
+          dailyHousekeepingException: S.optional(HousekeepingDailyHousekeepingExceptionEnum),
         }),
       ).annotate({ identifier: "Housekeeping" });
     case 4:
@@ -3633,36 +4433,36 @@ function __c4(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          chequeException: S.optional(S.String),
+          chequeException: S.optional(PaymentOptionsChequeExceptionEnum),
           mobileNfc: S.optional(S.Boolean),
           creditCard: S.optional(S.Boolean),
           cheque: S.optional(S.Boolean),
           cash: S.optional(S.Boolean),
-          debitCardException: S.optional(S.String),
+          debitCardException: S.optional(PaymentOptionsDebitCardExceptionEnum),
           debitCard: S.optional(S.Boolean),
-          cashException: S.optional(S.String),
-          mobileNfcException: S.optional(S.String),
-          creditCardException: S.optional(S.String),
+          cashException: S.optional(PaymentOptionsCashExceptionEnum),
+          mobileNfcException: S.optional(PaymentOptionsMobileNfcExceptionEnum),
+          creditCardException: S.optional(PaymentOptionsCreditCardExceptionEnum),
         }),
       ).annotate({ identifier: "PaymentOptions" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          checkinTime: S.optional(__S(36)),
-          paymentOptions: S.optional(__S(37)),
+          checkinTime: S.optional(TimeOfDay),
+          paymentOptions: S.optional(PaymentOptions),
           smokeFreeProperty: S.optional(S.Boolean),
-          allInclusiveAvailableException: S.optional(S.String),
+          allInclusiveAvailableException: S.optional(PoliciesAllInclusiveAvailableExceptionEnum),
           allInclusiveAvailable: S.optional(S.Boolean),
           maxChildAge: S.optional(S.Number),
-          maxChildAgeException: S.optional(S.String),
-          checkinTimeException: S.optional(S.String),
-          allInclusiveOnlyException: S.optional(S.String),
+          maxChildAgeException: S.optional(PoliciesMaxChildAgeExceptionEnum),
+          checkinTimeException: S.optional(PoliciesCheckinTimeExceptionEnum),
+          allInclusiveOnlyException: S.optional(PoliciesAllInclusiveOnlyExceptionEnum),
           allInclusiveOnly: S.optional(S.Boolean),
-          checkoutTimeException: S.optional(S.String),
-          maxKidsStayFreeCountException: S.optional(S.String),
-          checkoutTime: S.optional(__S(36)),
-          kidsStayFreeException: S.optional(S.String),
-          smokeFreePropertyException: S.optional(S.String),
+          checkoutTimeException: S.optional(PoliciesCheckoutTimeExceptionEnum),
+          maxKidsStayFreeCountException: S.optional(PoliciesMaxKidsStayFreeCountExceptionEnum),
+          checkoutTime: S.optional(TimeOfDay),
+          kidsStayFreeException: S.optional(PoliciesKidsStayFreeExceptionEnum),
+          smokeFreePropertyException: S.optional(PoliciesSmokeFreePropertyExceptionEnum),
           maxKidsStayFreeCount: S.optional(S.Number),
           kidsStayFree: S.optional(S.Boolean),
         }),
@@ -3670,10 +4470,10 @@ function __c4(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          meetingRoomsCountException: S.optional(S.String),
+          meetingRoomsCountException: S.optional(BusinessMeetingRoomsCountExceptionEnum),
           meetingRooms: S.optional(S.Boolean),
-          businessCenterException: S.optional(S.String),
-          meetingRoomsException: S.optional(S.String),
+          businessCenterException: S.optional(BusinessBusinessCenterExceptionEnum),
+          meetingRoomsException: S.optional(BusinessMeetingRoomsExceptionEnum),
           meetingRoomsCount: S.optional(S.Number),
           businessCenter: S.optional(S.Boolean),
         }),
@@ -3686,18 +4486,20 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           carRentalOnProperty: S.optional(S.Boolean),
-          localShuttleException: S.optional(S.String),
-          transferException: S.optional(S.String),
+          localShuttleException: S.optional(TransportationLocalShuttleExceptionEnum),
+          transferException: S.optional(TransportationTransferExceptionEnum),
           privateCarService: S.optional(S.Boolean),
-          airportShuttleException: S.optional(S.String),
-          freeAirportShuttleException: S.optional(S.String),
+          airportShuttleException: S.optional(TransportationAirportShuttleExceptionEnum),
+          freeAirportShuttleException: S.optional(TransportationFreeAirportShuttleExceptionEnum),
           freePrivateCarService: S.optional(S.Boolean),
           freeAirportShuttle: S.optional(S.Boolean),
           transfer: S.optional(S.Boolean),
-          freePrivateCarServiceException: S.optional(S.String),
-          carRentalOnPropertyException: S.optional(S.String),
+          freePrivateCarServiceException: S.optional(
+            TransportationFreePrivateCarServiceExceptionEnum,
+          ),
+          carRentalOnPropertyException: S.optional(TransportationCarRentalOnPropertyExceptionEnum),
           localShuttle: S.optional(S.Boolean),
-          privateCarServiceException: S.optional(S.String),
+          privateCarServiceException: S.optional(TransportationPrivateCarServiceExceptionEnum),
           airportShuttle: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "Transportation" });
@@ -3706,22 +4508,28 @@ function __c5(j: number): any {
         S.Struct({
           catsAllowed: S.optional(S.Boolean),
           petsAllowedFree: S.optional(S.Boolean),
-          petsAllowedException: S.optional(S.String),
+          petsAllowedException: S.optional(PetsPetsAllowedExceptionEnum),
           dogsAllowed: S.optional(S.Boolean),
           petsAllowed: S.optional(S.Boolean),
-          petsAllowedFreeException: S.optional(S.String),
-          dogsAllowedException: S.optional(S.String),
-          catsAllowedException: S.optional(S.String),
+          petsAllowedFreeException: S.optional(PetsPetsAllowedFreeExceptionEnum),
+          dogsAllowedException: S.optional(PetsDogsAllowedExceptionEnum),
+          catsAllowedException: S.optional(PetsCatsAllowedExceptionEnum),
         }),
       ).annotate({ identifier: "Pets" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          mobilityAccessibleElevatorException: S.optional(S.String),
+          mobilityAccessibleElevatorException: S.optional(
+            AccessibilityMobilityAccessibleElevatorExceptionEnum,
+          ),
           mobilityAccessibleParking: S.optional(S.Boolean),
-          mobilityAccessibleParkingException: S.optional(S.String),
-          mobilityAccessibleException: S.optional(S.String),
-          mobilityAccessiblePoolException: S.optional(S.String),
+          mobilityAccessibleParkingException: S.optional(
+            AccessibilityMobilityAccessibleParkingExceptionEnum,
+          ),
+          mobilityAccessibleException: S.optional(AccessibilityMobilityAccessibleExceptionEnum),
+          mobilityAccessiblePoolException: S.optional(
+            AccessibilityMobilityAccessiblePoolExceptionEnum,
+          ),
           mobilityAccessibleElevator: S.optional(S.Boolean),
           mobilityAccessiblePool: S.optional(S.Boolean),
           mobilityAccessible: S.optional(S.Boolean),
@@ -3730,91 +4538,97 @@ function __c5(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          floorsCountException: S.optional(S.String),
-          builtYearException: S.optional(S.String),
+          floorsCountException: S.optional(PropertyFloorsCountExceptionEnum),
+          builtYearException: S.optional(PropertyBuiltYearExceptionEnum),
           builtYear: S.optional(S.Number),
           lastRenovatedYear: S.optional(S.Number),
           floorsCount: S.optional(S.Number),
           roomsCount: S.optional(S.Number),
-          lastRenovatedYearException: S.optional(S.String),
-          roomsCountException: S.optional(S.String),
+          lastRenovatedYearException: S.optional(PropertyLastRenovatedYearExceptionEnum),
+          roomsCountException: S.optional(PropertyRoomsCountExceptionEnum),
         }),
       ).annotate({ identifier: "Property" });
     case 4:
       return S.suspend(() =>
         S.Struct({
           breakfastBuffet: S.optional(S.Boolean),
-          tableServiceException: S.optional(S.String),
-          breakfastAvailableException: S.optional(S.String),
-          barException: S.optional(S.String),
+          tableServiceException: S.optional(FoodAndDrinkTableServiceExceptionEnum),
+          breakfastAvailableException: S.optional(FoodAndDrinkBreakfastAvailableExceptionEnum),
+          barException: S.optional(FoodAndDrinkBarExceptionEnum),
           restaurantsCount: S.optional(S.Number),
-          breakfastBuffetException: S.optional(S.String),
+          breakfastBuffetException: S.optional(FoodAndDrinkBreakfastBuffetExceptionEnum),
           roomService: S.optional(S.Boolean),
           vendingMachine: S.optional(S.Boolean),
           restaurant: S.optional(S.Boolean),
           buffet: S.optional(S.Boolean),
-          vendingMachineException: S.optional(S.String),
+          vendingMachineException: S.optional(FoodAndDrinkVendingMachineExceptionEnum),
           dinnerBuffet: S.optional(S.Boolean),
           freeBreakfast: S.optional(S.Boolean),
           bar: S.optional(S.Boolean),
-          twentyFourHourRoomServiceException: S.optional(S.String),
-          buffetException: S.optional(S.String),
+          twentyFourHourRoomServiceException: S.optional(
+            FoodAndDrinkTwentyFourHourRoomServiceExceptionEnum,
+          ),
+          buffetException: S.optional(FoodAndDrinkBuffetExceptionEnum),
           twentyFourHourRoomService: S.optional(S.Boolean),
           breakfastAvailable: S.optional(S.Boolean),
           tableService: S.optional(S.Boolean),
-          freeBreakfastException: S.optional(S.String),
-          restaurantException: S.optional(S.String),
-          restaurantsCountException: S.optional(S.String),
-          dinnerBuffetException: S.optional(S.String),
-          roomServiceException: S.optional(S.String),
+          freeBreakfastException: S.optional(FoodAndDrinkFreeBreakfastExceptionEnum),
+          restaurantException: S.optional(FoodAndDrinkRestaurantExceptionEnum),
+          restaurantsCountException: S.optional(FoodAndDrinkRestaurantsCountExceptionEnum),
+          dinnerBuffetException: S.optional(FoodAndDrinkDinnerBuffetExceptionEnum),
+          roomServiceException: S.optional(FoodAndDrinkRoomServiceExceptionEnum),
         }),
       ).annotate({ identifier: "FoodAndDrink" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          wifiAvailableException: S.optional(S.String),
-          publicAreaWifiAvailableException: S.optional(S.String),
+          wifiAvailableException: S.optional(ConnectivityWifiAvailableExceptionEnum),
+          publicAreaWifiAvailableException: S.optional(
+            ConnectivityPublicAreaWifiAvailableExceptionEnum,
+          ),
           freeWifi: S.optional(S.Boolean),
           publicInternetTerminal: S.optional(S.Boolean),
-          freeWifiException: S.optional(S.String),
+          freeWifiException: S.optional(ConnectivityFreeWifiExceptionEnum),
           publicAreaWifiAvailable: S.optional(S.Boolean),
           wifiAvailable: S.optional(S.Boolean),
-          publicInternetTerminalException: S.optional(S.String),
+          publicInternetTerminalException: S.optional(
+            ConnectivityPublicInternetTerminalExceptionEnum,
+          ),
         }),
       ).annotate({ identifier: "Connectivity" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          metadata: S.optional(__S(1)),
-          pools: S.optional(__S(2)),
-          guestUnits: S.optional(__S(13)),
-          healthAndSafety: S.optional(__S(19)),
-          someUnits: S.optional(__S(10)),
-          activities: S.optional(__S(20)),
-          families: S.optional(__S(21)),
-          wellness: S.optional(__S(22)),
-          sustainability: S.optional(__S(30)),
-          parking: S.optional(__S(31)),
-          services: S.optional(__S(34)),
-          housekeeping: S.optional(__S(35)),
-          policies: S.optional(__S(38)),
+          metadata: S.optional(LodgingMetadata),
+          pools: S.optional(Pools),
+          guestUnits: S.optional(GuestUnitTypeList),
+          healthAndSafety: S.optional(HealthAndSafety),
+          someUnits: S.optional(GuestUnitFeatures),
+          activities: S.optional(Activities),
+          families: S.optional(Families),
+          wellness: S.optional(Wellness),
+          sustainability: S.optional(Sustainability),
+          parking: S.optional(Parking),
+          services: S.optional(Services),
+          housekeeping: S.optional(Housekeeping),
+          policies: S.optional(Policies),
           name: S.optional(S.String),
-          allUnits: S.optional(__S(10)),
-          business: S.optional(__S(39)),
-          transportation: S.optional(__S(40)),
-          commonLivingArea: S.optional(__S(8)),
-          pets: S.optional(__S(41)),
-          accessibility: S.optional(__S(42)),
-          property: S.optional(__S(43)),
-          foodAndDrink: S.optional(__S(44)),
-          connectivity: S.optional(__S(45)),
+          allUnits: S.optional(GuestUnitFeatures),
+          business: S.optional(Business),
+          transportation: S.optional(Transportation),
+          commonLivingArea: S.optional(LivingArea),
+          pets: S.optional(Pets),
+          accessibility: S.optional(Accessibility),
+          property: S.optional(Property),
+          foodAndDrink: S.optional(FoodAndDrink),
+          connectivity: S.optional(Connectivity),
         }),
       ).annotate({ identifier: "Lodging" });
     case 7:
       return S.suspend(() =>
         S.Struct({
           diffMask: S.optional(S.String),
-          lodging: S.optional(__S(46)),
+          lodging: S.optional(Lodging),
         }),
       ).annotate({
         identifier: "GetGoogleUpdatedLodgingResponse",
@@ -3843,7 +4657,7 @@ function __c6(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(46).pipe(T.HttpBody())),
+          body: S.optional(Lodging.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3854,28 +4668,5 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "UpdateLodgingLocationsRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
   }
 }

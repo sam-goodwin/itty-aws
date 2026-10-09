@@ -10,8 +10,6 @@ import {
 } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { HuggingFaceOpError, HuggingFaceOpContext };
 
@@ -24,14 +22,31 @@ export type CreateWebhookRequestWatchedItemType =
   | "container"
   | "user"
   | "org";
+const CreateWebhookRequestWatchedItemType = S.String;
+
 export interface CreateWebhookRequestWatchedItem {
   type: CreateWebhookRequestWatchedItemType | (string & {});
   name: string;
 }
+const CreateWebhookRequestWatchedItem = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<CreateWebhookRequestWatchedItem>;
+
 export type CreateWebhookRequestWatchedList = Array<CreateWebhookRequestWatchedItem>;
+const CreateWebhookRequestWatchedList = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<CreateWebhookRequestWatchedList>;
+
 export type CreateWebhookRequestJobCase0ArgumentsList = Array<string>;
 export type CreateWebhookRequestJobCase0CommandList = Array<string>;
 export type CreateWebhookRequestJobCase0EnvironmentMap = { [key: string]: string | undefined };
+const CreateWebhookRequestJobCase0EnvironmentMap = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<CreateWebhookRequestJobCase0EnvironmentMap>;
+
 export type CreateWebhookRequestJobCase0SecretsMap = { [key: string]: string | undefined };
 export type CreateWebhookRequestJobCase0Flavor =
   | "cpu-basic"
@@ -228,12 +243,24 @@ export interface CreateWebhookRequestJobCase1 {
   resourceGroupId?: string;
 }
 export type CreateWebhookRequestJob = CreateWebhookRequestJobCase0 | CreateWebhookRequestJobCase1;
+const CreateWebhookRequestJob = S.Unknown as any as S.Schema<CreateWebhookRequestJob>;
+
 /** Secrets of the job started by the webhook, used together with `jobSourceId`: the source job's own secrets are never copied. On update, listed keys are replaced, an empty value removes a secret, and omitted keys keep their stored value. */
 export type CreateWebhookRequestSecretsMap = { [key: string]: string | undefined };
+const CreateWebhookRequestSecretsMap =
+  CreateWebhookRequestJobCase0EnvironmentMap as any as S.Schema<CreateWebhookRequestSecretsMap>;
+
 export type CreateWebhookRequestDomainsItem = "repo" | "discussion";
+const CreateWebhookRequestDomainsItem = S.String;
+
 export type CreateWebhookRequestDomainsList = Array<
   CreateWebhookRequestDomainsItem | (string & {})
 >;
+const CreateWebhookRequestDomainsList = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<CreateWebhookRequestDomainsList>;
+
 export interface CreateWebhookRequest {
   watched: CreateWebhookRequestWatchedList;
   url?: string;
@@ -244,6 +271,8 @@ export interface CreateWebhookRequest {
   domains: CreateWebhookRequestDomainsList;
   secret?: string | Redacted.Redacted<string>;
 }
+const CreateWebhookRequest = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<CreateWebhookRequest>;
+
 export type CreateWebhookResponseWebhookJobCase0EnvironmentMap = {
   [key: string]: string | undefined;
 };
@@ -347,7 +376,13 @@ export interface CreateWebhookResponseWebhookJobCase1 {
 export type CreateWebhookResponseWebhookJob =
   | CreateWebhookResponseWebhookJobCase0
   | CreateWebhookResponseWebhookJobCase1;
+const CreateWebhookResponseWebhookJob =
+  S.Unknown as any as S.Schema<CreateWebhookResponseWebhookJob>;
+
 export type CreateWebhookResponseWebhookDisabled = boolean | string;
+const CreateWebhookResponseWebhookDisabled =
+  S.Unknown as any as S.Schema<CreateWebhookResponseWebhookDisabled>;
+
 export type CreateWebhookResponseWebhookWatchedItemType =
   | "dataset"
   | "model"
@@ -357,16 +392,31 @@ export type CreateWebhookResponseWebhookWatchedItemType =
   | "container"
   | "user"
   | "org";
+const CreateWebhookResponseWebhookWatchedItemType = S.String;
+
 export interface CreateWebhookResponseWebhookWatchedItem {
   name: string;
   type: CreateWebhookResponseWebhookWatchedItemType;
   avatarUrl?: string;
 }
+const CreateWebhookResponseWebhookWatchedItem = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<CreateWebhookResponseWebhookWatchedItem>;
+
 export type CreateWebhookResponseWebhookWatchedList =
   Array<CreateWebhookResponseWebhookWatchedItem>;
+const CreateWebhookResponseWebhookWatchedList = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<CreateWebhookResponseWebhookWatchedList>;
+
 export type CreateWebhookResponseWebhookDomainsItem = "repo" | "discussion";
 export type CreateWebhookResponseWebhookDomainsList =
   Array<CreateWebhookResponseWebhookDomainsItem>;
+const CreateWebhookResponseWebhookDomainsList =
+  CreateWebhookRequestDomainsList as any as S.Schema<CreateWebhookResponseWebhookDomainsList>;
+
 export interface CreateWebhookResponseWebhook {
   /** A hex string of 24 characters representing an ObjectId. */
   id: string;
@@ -380,18 +430,42 @@ export interface CreateWebhookResponseWebhook {
   domains: CreateWebhookResponseWebhookDomainsList;
   lastTriggerAt?: string;
 }
+const CreateWebhookResponseWebhook = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<CreateWebhookResponseWebhook>;
+
 export interface CreateWebhookResponse {
   webhook: CreateWebhookResponseWebhook;
 }
+const CreateWebhookResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<CreateWebhookResponse>;
+
 export interface DeleteWebhookRequest {
   webhookId: string;
 }
+const DeleteWebhookRequest = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<DeleteWebhookRequest>;
+
 export type DeleteWebhookResponse = unknown;
+const DeleteWebhookResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<DeleteWebhookResponse>;
+
 export type EnableDisableWebhookRequestAction = "enable" | "disable";
+const EnableDisableWebhookRequestAction = S.String;
+
 export interface EnableDisableWebhookRequest {
   webhookId: string;
   action: EnableDisableWebhookRequestAction | (string & {});
 }
+const EnableDisableWebhookRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<EnableDisableWebhookRequest>;
+
 export type EnableDisableWebhookResponseWebhookJobCase0EnvironmentMap = {
   [key: string]: string | undefined;
 };
@@ -499,7 +573,13 @@ export interface EnableDisableWebhookResponseWebhookJobCase1 {
 export type EnableDisableWebhookResponseWebhookJob =
   | EnableDisableWebhookResponseWebhookJobCase0
   | EnableDisableWebhookResponseWebhookJobCase1;
+const EnableDisableWebhookResponseWebhookJob =
+  S.Unknown as any as S.Schema<EnableDisableWebhookResponseWebhookJob>;
+
 export type EnableDisableWebhookResponseWebhookDisabled = boolean | string;
+const EnableDisableWebhookResponseWebhookDisabled =
+  S.Unknown as any as S.Schema<EnableDisableWebhookResponseWebhookDisabled>;
+
 export type EnableDisableWebhookResponseWebhookWatchedItemType =
   | "dataset"
   | "model"
@@ -516,9 +596,15 @@ export interface EnableDisableWebhookResponseWebhookWatchedItem {
 }
 export type EnableDisableWebhookResponseWebhookWatchedList =
   Array<EnableDisableWebhookResponseWebhookWatchedItem>;
+const EnableDisableWebhookResponseWebhookWatchedList =
+  CreateWebhookResponseWebhookWatchedList as any as S.Schema<EnableDisableWebhookResponseWebhookWatchedList>;
+
 export type EnableDisableWebhookResponseWebhookDomainsItem = "repo" | "discussion";
 export type EnableDisableWebhookResponseWebhookDomainsList =
   Array<EnableDisableWebhookResponseWebhookDomainsItem>;
+const EnableDisableWebhookResponseWebhookDomainsList =
+  CreateWebhookRequestDomainsList as any as S.Schema<EnableDisableWebhookResponseWebhookDomainsList>;
+
 /** Webhook */
 export interface EnableDisableWebhookResponseWebhook {
   /** A hex string of 24 characters representing an ObjectId. */
@@ -533,13 +619,25 @@ export interface EnableDisableWebhookResponseWebhook {
   domains: EnableDisableWebhookResponseWebhookDomainsList;
   lastTriggerAt?: string;
 }
+const EnableDisableWebhookResponseWebhook = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<EnableDisableWebhookResponseWebhook>;
+
 export interface EnableDisableWebhookResponse {
   /** Webhook */
   webhook: EnableDisableWebhookResponseWebhook;
 }
+const EnableDisableWebhookResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<EnableDisableWebhookResponse>;
+
 export interface GetWebhookRequest {
   webhookId: string;
 }
+const GetWebhookRequest = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<GetWebhookRequest>;
+
 export type GetWebhookResponseWebhookJobCase0EnvironmentMap = { [key: string]: string | undefined };
 export type GetWebhookResponseWebhookJobCase0ArgumentsList = Array<string>;
 export type GetWebhookResponseWebhookJobCase0CommandList = Array<string>;
@@ -639,7 +737,12 @@ export interface GetWebhookResponseWebhookJobCase1 {
 export type GetWebhookResponseWebhookJob =
   | GetWebhookResponseWebhookJobCase0
   | GetWebhookResponseWebhookJobCase1;
+const GetWebhookResponseWebhookJob = S.Unknown as any as S.Schema<GetWebhookResponseWebhookJob>;
+
 export type GetWebhookResponseWebhookDisabled = boolean | string;
+const GetWebhookResponseWebhookDisabled =
+  S.Unknown as any as S.Schema<GetWebhookResponseWebhookDisabled>;
+
 export type GetWebhookResponseWebhookWatchedItemType =
   | "dataset"
   | "model"
@@ -655,8 +758,14 @@ export interface GetWebhookResponseWebhookWatchedItem {
   avatarUrl?: string;
 }
 export type GetWebhookResponseWebhookWatchedList = Array<GetWebhookResponseWebhookWatchedItem>;
+const GetWebhookResponseWebhookWatchedList =
+  CreateWebhookResponseWebhookWatchedList as any as S.Schema<GetWebhookResponseWebhookWatchedList>;
+
 export type GetWebhookResponseWebhookDomainsItem = "repo" | "discussion";
 export type GetWebhookResponseWebhookDomainsList = Array<GetWebhookResponseWebhookDomainsItem>;
+const GetWebhookResponseWebhookDomainsList =
+  CreateWebhookRequestDomainsList as any as S.Schema<GetWebhookResponseWebhookDomainsList>;
+
 /** Webhook */
 export interface GetWebhookResponseWebhook {
   /** A hex string of 24 characters representing an ObjectId. */
@@ -671,11 +780,20 @@ export interface GetWebhookResponseWebhook {
   domains: GetWebhookResponseWebhookDomainsList;
   lastTriggerAt?: string;
 }
+const GetWebhookResponseWebhook = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<GetWebhookResponseWebhook>;
+
 export interface GetWebhookResponse {
   /** Webhook */
   webhook: GetWebhookResponseWebhook;
 }
+const GetWebhookResponse = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<GetWebhookResponse>;
+
 export interface ListWebhooksRequest {}
+const ListWebhooksRequest = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<ListWebhooksRequest>;
+
 export type ListWebhooksResponseBodyItemJobCase0EnvironmentMap = {
   [key: string]: string | undefined;
 };
@@ -779,7 +897,13 @@ export interface ListWebhooksResponseBodyItemJobCase1 {
 export type ListWebhooksResponseBodyItemJob =
   | ListWebhooksResponseBodyItemJobCase0
   | ListWebhooksResponseBodyItemJobCase1;
+const ListWebhooksResponseBodyItemJob =
+  S.Unknown as any as S.Schema<ListWebhooksResponseBodyItemJob>;
+
 export type ListWebhooksResponseBodyItemDisabled = boolean | string;
+const ListWebhooksResponseBodyItemDisabled =
+  S.Unknown as any as S.Schema<ListWebhooksResponseBodyItemDisabled>;
+
 export type ListWebhooksResponseBodyItemWatchedItemType =
   | "dataset"
   | "model"
@@ -796,9 +920,15 @@ export interface ListWebhooksResponseBodyItemWatchedItem {
 }
 export type ListWebhooksResponseBodyItemWatchedList =
   Array<ListWebhooksResponseBodyItemWatchedItem>;
+const ListWebhooksResponseBodyItemWatchedList =
+  CreateWebhookResponseWebhookWatchedList as any as S.Schema<ListWebhooksResponseBodyItemWatchedList>;
+
 export type ListWebhooksResponseBodyItemDomainsItem = "repo" | "discussion";
 export type ListWebhooksResponseBodyItemDomainsList =
   Array<ListWebhooksResponseBodyItemDomainsItem>;
+const ListWebhooksResponseBodyItemDomainsList =
+  CreateWebhookRequestDomainsList as any as S.Schema<ListWebhooksResponseBodyItemDomainsList>;
+
 export interface ListWebhooksResponseBodyItem {
   /** A hex string of 24 characters representing an ObjectId. */
   id: string;
@@ -812,16 +942,38 @@ export interface ListWebhooksResponseBodyItem {
   domains: ListWebhooksResponseBodyItemDomainsList;
   lastTriggerAt?: string;
 }
+const ListWebhooksResponseBodyItem = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<ListWebhooksResponseBodyItem>;
+
 export type ListWebhooksResponseBodyList = Array<ListWebhooksResponseBodyItem>;
+const ListWebhooksResponseBodyList = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<ListWebhooksResponseBodyList>;
+
 export type ListWebhooksResponse = ListWebhooksResponseBodyList;
+const ListWebhooksResponse = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<ListWebhooksResponse>;
+
 export interface ReplayWebhookLogRequest {
   webhookId: string;
   logId: string;
 }
+const ReplayWebhookLogRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<ReplayWebhookLogRequest>;
+
 export interface ReplayWebhookLogResponse {
   /** Replay HTTP status */
   status: number;
 }
+const ReplayWebhookLogResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<ReplayWebhookLogResponse>;
+
 export type UpdateWebhookRequestWatchedItemType =
   | "dataset"
   | "model"
@@ -836,6 +988,9 @@ export interface UpdateWebhookRequestWatchedItem {
   name: string;
 }
 export type UpdateWebhookRequestWatchedList = Array<UpdateWebhookRequestWatchedItem>;
+const UpdateWebhookRequestWatchedList =
+  CreateWebhookRequestWatchedList as any as S.Schema<UpdateWebhookRequestWatchedList>;
+
 export type UpdateWebhookRequestJobCase0ArgumentsList = Array<string>;
 export type UpdateWebhookRequestJobCase0CommandList = Array<string>;
 export type UpdateWebhookRequestJobCase0EnvironmentMap = { [key: string]: string | undefined };
@@ -1033,12 +1188,20 @@ export interface UpdateWebhookRequestJobCase1 {
   resourceGroupId?: string;
 }
 export type UpdateWebhookRequestJob = UpdateWebhookRequestJobCase0 | UpdateWebhookRequestJobCase1;
+const UpdateWebhookRequestJob = S.Unknown as any as S.Schema<UpdateWebhookRequestJob>;
+
 /** Secrets of the job started by the webhook, used together with `jobSourceId`: the source job's own secrets are never copied. On update, listed keys are replaced, an empty value removes a secret, and omitted keys keep their stored value. */
 export type UpdateWebhookRequestSecretsMap = { [key: string]: string | undefined };
+const UpdateWebhookRequestSecretsMap =
+  CreateWebhookRequestJobCase0EnvironmentMap as any as S.Schema<UpdateWebhookRequestSecretsMap>;
+
 export type UpdateWebhookRequestDomainsItem = "repo" | "discussion";
 export type UpdateWebhookRequestDomainsList = Array<
   UpdateWebhookRequestDomainsItem | (string & {})
 >;
+const UpdateWebhookRequestDomainsList =
+  CreateWebhookRequestDomainsList as any as S.Schema<UpdateWebhookRequestDomainsList>;
+
 export interface UpdateWebhookRequest {
   webhookId: string;
   watched: UpdateWebhookRequestWatchedList;
@@ -1050,6 +1213,8 @@ export interface UpdateWebhookRequest {
   domains: UpdateWebhookRequestDomainsList;
   secret?: string | Redacted.Redacted<string>;
 }
+const UpdateWebhookRequest = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<UpdateWebhookRequest>;
+
 export type UpdateWebhookResponseWebhookJobCase0EnvironmentMap = {
   [key: string]: string | undefined;
 };
@@ -1153,7 +1318,13 @@ export interface UpdateWebhookResponseWebhookJobCase1 {
 export type UpdateWebhookResponseWebhookJob =
   | UpdateWebhookResponseWebhookJobCase0
   | UpdateWebhookResponseWebhookJobCase1;
+const UpdateWebhookResponseWebhookJob =
+  S.Unknown as any as S.Schema<UpdateWebhookResponseWebhookJob>;
+
 export type UpdateWebhookResponseWebhookDisabled = boolean | string;
+const UpdateWebhookResponseWebhookDisabled =
+  S.Unknown as any as S.Schema<UpdateWebhookResponseWebhookDisabled>;
+
 export type UpdateWebhookResponseWebhookWatchedItemType =
   | "dataset"
   | "model"
@@ -1170,9 +1341,15 @@ export interface UpdateWebhookResponseWebhookWatchedItem {
 }
 export type UpdateWebhookResponseWebhookWatchedList =
   Array<UpdateWebhookResponseWebhookWatchedItem>;
+const UpdateWebhookResponseWebhookWatchedList =
+  CreateWebhookResponseWebhookWatchedList as any as S.Schema<UpdateWebhookResponseWebhookWatchedList>;
+
 export type UpdateWebhookResponseWebhookDomainsItem = "repo" | "discussion";
 export type UpdateWebhookResponseWebhookDomainsList =
   Array<UpdateWebhookResponseWebhookDomainsItem>;
+const UpdateWebhookResponseWebhookDomainsList =
+  CreateWebhookRequestDomainsList as any as S.Schema<UpdateWebhookResponseWebhookDomainsList>;
+
 /** Webhook */
 export interface UpdateWebhookResponseWebhook {
   /** A hex string of 24 characters representing an ObjectId. */
@@ -1187,10 +1364,20 @@ export interface UpdateWebhookResponseWebhook {
   domains: UpdateWebhookResponseWebhookDomainsList;
   lastTriggerAt?: string;
 }
+const UpdateWebhookResponseWebhook = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<UpdateWebhookResponseWebhook>;
+
 export interface UpdateWebhookResponse {
   /** Webhook */
   webhook: UpdateWebhookResponseWebhook;
 }
+const UpdateWebhookResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<UpdateWebhookResponse>;
+
 export type CreateWebhookError = HuggingFaceOpError;
 /** Create webhook */
 export const createWebhook: API.OperationMethod<
@@ -1199,8 +1386,8 @@ export const createWebhook: API.OperationMethod<
   CreateWebhookError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4) as any as S.Schema<CreateWebhookRequest>,
-  output: __S(8) as any as S.Schema<CreateWebhookResponse>,
+  input: CreateWebhookRequest,
+  output: CreateWebhookResponse,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -1214,8 +1401,8 @@ export const deleteWebhook: API.OperationMethod<
   DeleteWebhookError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9) as any as S.Schema<DeleteWebhookRequest>,
-  output: __S(10) as any as S.Schema<DeleteWebhookResponse>,
+  input: DeleteWebhookRequest,
+  output: DeleteWebhookResponse,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -1229,8 +1416,8 @@ export const enableDisableWebhook: API.OperationMethod<
   EnableDisableWebhookError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11) as any as S.Schema<EnableDisableWebhookRequest>,
-  output: __S(13) as any as S.Schema<EnableDisableWebhookResponse>,
+  input: EnableDisableWebhookRequest,
+  output: EnableDisableWebhookResponse,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -1244,8 +1431,8 @@ export const getWebhook: API.OperationMethod<
   GetWebhookError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14) as any as S.Schema<GetWebhookRequest>,
-  output: __S(16) as any as S.Schema<GetWebhookResponse>,
+  input: GetWebhookRequest,
+  output: GetWebhookResponse,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -1259,8 +1446,8 @@ export const listWebhooks: API.OperationMethod<
   ListWebhooksError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17) as any as S.Schema<ListWebhooksRequest>,
-  output: __S(20) as any as S.Schema<ListWebhooksResponse>,
+  input: ListWebhooksRequest,
+  output: ListWebhooksResponse,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -1274,8 +1461,8 @@ export const replayWebhookLog: API.OperationMethod<
   ReplayWebhookLogError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21) as any as S.Schema<ReplayWebhookLogRequest>,
-  output: __S(22) as any as S.Schema<ReplayWebhookLogResponse>,
+  input: ReplayWebhookLogRequest,
+  output: ReplayWebhookLogResponse,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -1289,8 +1476,8 @@ export const updateWebhook: API.OperationMethod<
   UpdateWebhookError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23) as any as S.Schema<UpdateWebhookRequest>,
-  output: __S(25) as any as S.Schema<UpdateWebhookResponse>,
+  input: UpdateWebhookRequest,
+  output: UpdateWebhookResponse,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -1302,27 +1489,27 @@ function __c0(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          type: S.String,
+          type: CreateWebhookRequestWatchedItemType,
           name: S.String,
         }),
       ).annotate({
         identifier: "CreateWebhookRequestWatchedItem",
       });
     case 1:
-      return S.Array(__S(0));
+      return S.Array(CreateWebhookRequestWatchedItem);
     case 2:
       return S.Record(S.String, S.String);
     case 3:
-      return S.Array(S.String);
+      return S.Array(CreateWebhookRequestDomainsItem);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          watched: __S(1),
+          watched: CreateWebhookRequestWatchedList,
           url: S.optional(S.String),
-          job: S.optional(S.Unknown),
+          job: S.optional(CreateWebhookRequestJob),
           jobSourceId: S.optional(S.String),
-          secrets: S.optional(__S(2)),
-          domains: __S(3),
+          secrets: S.optional(CreateWebhookRequestSecretsMap),
+          domains: CreateWebhookRequestDomainsList,
           secret: S.optional(S.String.pipe(T.SensitiveValue({}))),
         }).pipe(T.Http({ method: "POST", uri: "/api/settings/webhooks", code: 200 })),
       ).annotate({ identifier: "CreateWebhookRequest" });
@@ -1330,25 +1517,25 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          type: S.String,
+          type: CreateWebhookResponseWebhookWatchedItemType,
           avatarUrl: S.optional(S.String),
         }),
       ).annotate({
         identifier: "CreateWebhookResponseWebhookWatchedItem",
       });
     case 6:
-      return S.Array(__S(5));
+      return S.Array(CreateWebhookResponseWebhookWatchedItem);
     case 7:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           url: S.optional(S.String),
-          job: S.optional(S.Unknown),
+          job: S.optional(CreateWebhookResponseWebhookJob),
           jobSourceId: S.optional(S.String),
-          disabled: S.Unknown,
-          watched: __S(6),
+          disabled: CreateWebhookResponseWebhookDisabled,
+          watched: CreateWebhookResponseWebhookWatchedList,
           hasSecret: S.Boolean,
-          domains: __S(3),
+          domains: CreateWebhookResponseWebhookDomainsList,
           lastTriggerAt: S.optional(S.String),
         }),
       ).annotate({
@@ -1361,7 +1548,7 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          webhook: __S(7),
+          webhook: CreateWebhookResponseWebhook,
         }),
       ).annotate({ identifier: "CreateWebhookResponse" });
     case 1:
@@ -1378,7 +1565,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           webhookId: S.String.pipe(T.Label()),
-          action: S.String.pipe(T.Label()),
+          action: EnableDisableWebhookRequestAction.pipe(T.Label()),
         }).pipe(
           T.Http({ method: "POST", uri: "/api/settings/webhooks/{webhookId}/{action}", code: 200 }),
         ),
@@ -1390,12 +1577,12 @@ function __c1(j: number): any {
         S.Struct({
           id: S.String,
           url: S.optional(S.String),
-          job: S.optional(S.Unknown),
+          job: S.optional(EnableDisableWebhookResponseWebhookJob),
           jobSourceId: S.optional(S.String),
-          disabled: S.Unknown,
-          watched: __S(6),
+          disabled: EnableDisableWebhookResponseWebhookDisabled,
+          watched: EnableDisableWebhookResponseWebhookWatchedList,
           hasSecret: S.Boolean,
-          domains: __S(3),
+          domains: EnableDisableWebhookResponseWebhookDomainsList,
           lastTriggerAt: S.optional(S.String),
         }),
       ).annotate({
@@ -1404,7 +1591,7 @@ function __c1(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          webhook: __S(12),
+          webhook: EnableDisableWebhookResponseWebhook,
         }),
       ).annotate({
         identifier: "EnableDisableWebhookResponse",
@@ -1420,12 +1607,12 @@ function __c1(j: number): any {
         S.Struct({
           id: S.String,
           url: S.optional(S.String),
-          job: S.optional(S.Unknown),
+          job: S.optional(GetWebhookResponseWebhookJob),
           jobSourceId: S.optional(S.String),
-          disabled: S.Unknown,
-          watched: __S(6),
+          disabled: GetWebhookResponseWebhookDisabled,
+          watched: GetWebhookResponseWebhookWatchedList,
           hasSecret: S.Boolean,
-          domains: __S(3),
+          domains: GetWebhookResponseWebhookDomainsList,
           lastTriggerAt: S.optional(S.String),
         }),
       ).annotate({
@@ -1438,7 +1625,7 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          webhook: __S(15),
+          webhook: GetWebhookResponseWebhook,
         }),
       ).annotate({ identifier: "GetWebhookResponse" });
     case 1:
@@ -1450,21 +1637,21 @@ function __c2(j: number): any {
         S.Struct({
           id: S.String,
           url: S.optional(S.String),
-          job: S.optional(S.Unknown),
+          job: S.optional(ListWebhooksResponseBodyItemJob),
           jobSourceId: S.optional(S.String),
-          disabled: S.Unknown,
-          watched: __S(6),
+          disabled: ListWebhooksResponseBodyItemDisabled,
+          watched: ListWebhooksResponseBodyItemWatchedList,
           hasSecret: S.Boolean,
-          domains: __S(3),
+          domains: ListWebhooksResponseBodyItemDomainsList,
           lastTriggerAt: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListWebhooksResponseBodyItem",
       });
     case 3:
-      return S.Array(__S(18));
+      return S.Array(ListWebhooksResponseBodyItem);
     case 4:
-      return S.suspend(() => __S(19).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => ListWebhooksResponseBodyList.pipe(T.RawResponseRoot())).annotate({
         identifier: "ListWebhooksResponse",
       });
     case 5:
@@ -1490,12 +1677,12 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           webhookId: S.String.pipe(T.Label()),
-          watched: __S(1),
+          watched: UpdateWebhookRequestWatchedList,
           url: S.optional(S.String),
-          job: S.optional(S.Unknown),
+          job: S.optional(UpdateWebhookRequestJob),
           jobSourceId: S.optional(S.String),
-          secrets: S.optional(__S(2)),
-          domains: __S(3),
+          secrets: S.optional(UpdateWebhookRequestSecretsMap),
+          domains: UpdateWebhookRequestDomainsList,
           secret: S.optional(S.String.pipe(T.SensitiveValue({}))),
         }).pipe(T.Http({ method: "POST", uri: "/api/settings/webhooks/{webhookId}", code: 200 })),
       ).annotate({ identifier: "UpdateWebhookRequest" });
@@ -1508,12 +1695,12 @@ function __c3(j: number): any {
         S.Struct({
           id: S.String,
           url: S.optional(S.String),
-          job: S.optional(S.Unknown),
+          job: S.optional(UpdateWebhookResponseWebhookJob),
           jobSourceId: S.optional(S.String),
-          disabled: S.Unknown,
-          watched: __S(6),
+          disabled: UpdateWebhookResponseWebhookDisabled,
+          watched: UpdateWebhookResponseWebhookWatchedList,
           hasSecret: S.Boolean,
-          domains: __S(3),
+          domains: UpdateWebhookResponseWebhookDomainsList,
           lastTriggerAt: S.optional(S.String),
         }),
       ).annotate({
@@ -1522,25 +1709,8 @@ function __c3(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          webhook: __S(24),
+          webhook: UpdateWebhookResponseWebhook,
         }),
       ).annotate({ identifier: "UpdateWebhookResponse" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
   }
 }

@@ -6,8 +6,6 @@ import * as S from "@distilled.cloud/core/schema";
 import { GithubProtocol, type GithubOpError, type GithubOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { GithubOpError, GithubOpContext };
 
@@ -40,8 +38,12 @@ export class UnprocessableEntity
 
 /** The type of actor (user or team). */
 export type AddCollaboratorForOrgRequestActorType = "User" | "Team";
+const AddCollaboratorForOrgRequestActorType = S.String;
+
 /** The role to grant to the collaborator. */
 export type AddCollaboratorForOrgRequestRole = "reader" | "writer" | "admin";
+const AddCollaboratorForOrgRequestRole = S.String;
+
 export interface AddCollaboratorForOrgRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -54,6 +56,11 @@ export interface AddCollaboratorForOrgRequest {
   /** The role to grant to the collaborator. */
   role: AddCollaboratorForOrgRequestRole | (string & {});
 }
+const AddCollaboratorForOrgRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<AddCollaboratorForOrgRequest>;
+
 /** The collaborator actor type. */
 export type CopilotSpaceCollaboratorCase0ActorType = "User";
 /** The role granted to the collaborator */
@@ -115,11 +122,22 @@ export interface CopilotSpaceCollaboratorCase1 {
 export type CopilotSpaceCollaborator =
   | CopilotSpaceCollaboratorCase0
   | CopilotSpaceCollaboratorCase1;
+const CopilotSpaceCollaborator = S.Unknown as any as S.Schema<CopilotSpaceCollaborator>;
+
 export type AddCollaboratorForOrgResponse = CopilotSpaceCollaborator;
+const AddCollaboratorForOrgResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<AddCollaboratorForOrgResponse>;
+
 /** The type of actor (must be `User` for user-owned spaces; `Team` will be rejected). */
 export type AddCollaboratorForUserRequestActorType = "User" | "Team";
+const AddCollaboratorForUserRequestActorType = S.String;
+
 /** The role to grant to the collaborator. */
 export type AddCollaboratorForUserRequestRole = "reader" | "writer" | "admin";
+const AddCollaboratorForUserRequestRole = S.String;
+
 export interface AddCollaboratorForUserRequest {
   /** The handle for the GitHub user account. */
   username: string;
@@ -132,9 +150,19 @@ export interface AddCollaboratorForUserRequest {
   /** The role to grant to the collaborator. */
   role: AddCollaboratorForUserRequestRole | (string & {});
 }
+const AddCollaboratorForUserRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<AddCollaboratorForUserRequest>;
+
 export type AddCollaboratorForUserResponse = CopilotSpaceCollaborator;
+const AddCollaboratorForUserResponse =
+  AddCollaboratorForOrgResponse as any as S.Schema<AddCollaboratorForUserResponse>;
+
 /** The base role that determines default permissions for organization members. - `no_access`: No default access (default) - `reader`: Organization members can read the space - `writer`: Organization members can read and edit the space - `admin`: Organization members have full admin access to the space */
 export type CreateForOrgRequestBaseRole = "reader" | "writer" | "admin" | "no_access";
+const CreateForOrgRequestBaseRole = S.String;
+
 /** The type of resource. */
 export type CreateForOrgRequestResourcesAttributesItemResourceType =
   | "repository"
@@ -144,6 +172,8 @@ export type CreateForOrgRequestResourcesAttributesItemResourceType =
   | "github_pull_request"
   | "media_content"
   | "uploaded_text_file";
+const CreateForOrgRequestResourcesAttributesItemResourceType = S.String;
+
 /** Metadata specific to the resource type. */
 export interface CreateForOrgRequestResourcesAttributesItemMetadata {
   /** Repository ID for repository or file resources. */
@@ -157,15 +187,30 @@ export interface CreateForOrgRequestResourcesAttributesItemMetadata {
   /** Issue or PR number. */
   number?: number;
 }
+const CreateForOrgRequestResourcesAttributesItemMetadata = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<CreateForOrgRequestResourcesAttributesItemMetadata>;
+
 export interface CreateForOrgRequestResourcesAttributesItem {
   /** The type of resource. */
   resource_type?: CreateForOrgRequestResourcesAttributesItemResourceType | (string & {});
   /** Metadata specific to the resource type. */
   metadata?: CreateForOrgRequestResourcesAttributesItemMetadata;
 }
+const CreateForOrgRequestResourcesAttributesItem = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<CreateForOrgRequestResourcesAttributesItem>;
+
 /** Resources to attach to the space. */
 export type CreateForOrgRequestResourcesAttributesList =
   Array<CreateForOrgRequestResourcesAttributesItem>;
+const CreateForOrgRequestResourcesAttributesList = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<CreateForOrgRequestResourcesAttributesList>;
+
 export interface CreateForOrgRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -180,8 +225,12 @@ export interface CreateForOrgRequest {
   /** Resources to attach to the space. */
   resources_attributes?: CreateForOrgRequestResourcesAttributesList;
 }
+const CreateForOrgRequest = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<CreateForOrgRequest>;
+
 /** The base role that determines default permissions. - `no_access`: No default access - `reader`: Default read permissions - `writer`: Default write permissions (organization spaces only) - `admin`: Default admin permissions (organization spaces only) */
 export type CopilotSpaceBaseRole = "reader" | "writer" | "admin" | "no_access";
+const CopilotSpaceBaseRole = S.String;
+
 /** A GitHub user. */
 export interface SimpleUser {
   name?: string | null;
@@ -207,6 +256,8 @@ export interface SimpleUser {
   starred_at?: string;
   user_view_type?: string;
 }
+const SimpleUser = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<SimpleUser>;
+
 /** A GitHub organization. */
 export interface OrganizationSimple {
   login: string;
@@ -224,6 +275,8 @@ export interface OrganizationSimple {
 }
 /** The user or organization that owns this space. */
 export type CopilotSpaceOwner = SimpleUser | OrganizationSimple;
+const CopilotSpaceOwner = S.Unknown as any as S.Schema<CopilotSpaceOwner>;
+
 /** The type of resource. */
 export type CopilotSpaceResourcesAttributesItemResourceType =
   | "repository"
@@ -233,6 +286,8 @@ export type CopilotSpaceResourcesAttributesItemResourceType =
   | "github_pull_request"
   | "media_content"
   | "uploaded_text_file";
+const CopilotSpaceResourcesAttributesItemResourceType = S.String;
+
 /** Metadata specific to the resource type. */
 export interface CopilotSpaceResourcesAttributesItemMetadata {
   /** Repository ID for repository or file resources. */
@@ -256,6 +311,11 @@ export interface CopilotSpaceResourcesAttributesItemMetadata {
   /** Width for media content resources. */
   width?: number;
 }
+const CopilotSpaceResourcesAttributesItemMetadata = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<CopilotSpaceResourcesAttributesItemMetadata>;
+
 export interface CopilotSpaceResourcesAttributesItem {
   /** The unique identifier of the resource. */
   id?: number;
@@ -270,8 +330,18 @@ export interface CopilotSpaceResourcesAttributesItem {
   /** Metadata specific to the resource type. */
   metadata?: CopilotSpaceResourcesAttributesItemMetadata;
 }
+const CopilotSpaceResourcesAttributesItem = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<CopilotSpaceResourcesAttributesItem>;
+
 /** Resources attached to the space. */
 export type CopilotSpaceResourcesAttributesList = Array<CopilotSpaceResourcesAttributesItem>;
+const CopilotSpaceResourcesAttributesList = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<CopilotSpaceResourcesAttributesList>;
+
 /** A GitHub Copilot Space represents an interactive AI workspace where users can ask questions and get assistance. */
 export interface CopilotSpace {
   /** The unique identifier of the space. */
@@ -300,8 +370,12 @@ export interface CopilotSpace {
   /** Resources attached to the space. */
   resources_attributes?: CopilotSpaceResourcesAttributesList;
 }
+const CopilotSpace = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<CopilotSpace>;
+
 /** The base role that determines default permissions for the space. - `no_access`: No default access (default) - `reader`: Makes the space publicly readable Note: User spaces do not support writer or admin base roles. */
 export type CreateForUserRequestBaseRole = "reader" | "no_access";
+const CreateForUserRequestBaseRole = S.String;
+
 /** The type of resource. */
 export type CreateForUserRequestResourcesAttributesItemResourceType =
   | "repository"
@@ -323,6 +397,9 @@ export interface CreateForUserRequestResourcesAttributesItem {
 /** Resources to attach to the space. */
 export type CreateForUserRequestResourcesAttributesList =
   Array<CreateForUserRequestResourcesAttributesItem>;
+const CreateForUserRequestResourcesAttributesList =
+  CreateForOrgRequestResourcesAttributesList as any as S.Schema<CreateForUserRequestResourcesAttributesList>;
+
 export interface CreateForUserRequest {
   /** The handle for the GitHub user account. */
   username: string;
@@ -337,6 +414,8 @@ export interface CreateForUserRequest {
   /** Resources to attach to the space. */
   resources_attributes?: CreateForUserRequestResourcesAttributesList;
 }
+const CreateForUserRequest = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<CreateForUserRequest>;
+
 /** The type of resource to create. */
 export type CreateResourceForOrgRequestResourceType =
   | "repository"
@@ -344,8 +423,15 @@ export type CreateResourceForOrgRequestResourceType =
   | "free_text"
   | "github_issue"
   | "github_pull_request";
+const CreateResourceForOrgRequestResourceType = S.String;
+
 /** Resource-specific metadata. */
 export type CreateResourceForOrgRequestMetadataMap = { [key: string]: unknown | undefined };
+const CreateResourceForOrgRequestMetadataMap = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<CreateResourceForOrgRequestMetadataMap>;
+
 export interface CreateResourceForOrgRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -356,6 +442,11 @@ export interface CreateResourceForOrgRequest {
   /** Resource-specific metadata. */
   metadata: CreateResourceForOrgRequestMetadataMap;
 }
+const CreateResourceForOrgRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<CreateResourceForOrgRequest>;
+
 /** The type of the resource. */
 export type CopilotSpaceResourceResourceType =
   | "repository"
@@ -365,8 +456,13 @@ export type CopilotSpaceResourceResourceType =
   | "github_pull_request"
   | "media_content"
   | "uploaded_text_file";
+const CopilotSpaceResourceResourceType = S.String;
+
 /** Resource-specific metadata. The keys and values depend on the resource type. */
 export type CopilotSpaceResourceMetadataMap = { [key: string]: unknown | undefined };
+const CopilotSpaceResourceMetadataMap =
+  CreateResourceForOrgRequestMetadataMap as any as S.Schema<CopilotSpaceResourceMetadataMap>;
+
 /** A resource attached to a Copilot Space. */
 export interface CopilotSpaceResource {
   /** The unique identifier of the resource. */
@@ -382,6 +478,8 @@ export interface CopilotSpaceResource {
   /** The date and time the resource was last updated. */
   updated_at: string;
 }
+const CopilotSpaceResource = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<CopilotSpaceResource>;
+
 /** The type of resource to create. */
 export type CreateResourceForUserRequestResourceType =
   | "repository"
@@ -389,8 +487,13 @@ export type CreateResourceForUserRequestResourceType =
   | "free_text"
   | "github_issue"
   | "github_pull_request";
+const CreateResourceForUserRequestResourceType = S.String;
+
 /** Resource-specific metadata. */
 export type CreateResourceForUserRequestMetadataMap = { [key: string]: unknown | undefined };
+const CreateResourceForUserRequestMetadataMap =
+  CreateResourceForOrgRequestMetadataMap as any as S.Schema<CreateResourceForUserRequestMetadataMap>;
+
 export interface CreateResourceForUserRequest {
   /** The handle for the GitHub user account. */
   username: string;
@@ -401,20 +504,33 @@ export interface CreateResourceForUserRequest {
   /** Resource-specific metadata. */
   metadata: CreateResourceForUserRequestMetadataMap;
 }
+const CreateResourceForUserRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<CreateResourceForUserRequest>;
+
 export interface DeleteForOrgRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
   /** The unique identifier of the Copilot Space. */
   space_number: number;
 }
+const DeleteForOrgRequest = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<DeleteForOrgRequest>;
+
 export interface DeleteForOrgResponse {}
+const DeleteForOrgResponse = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<DeleteForOrgResponse>;
+
 export interface DeleteForUserRequest {
   /** The handle for the GitHub user account. */
   username: string;
   /** The unique identifier of the Copilot Space. */
   space_number: number;
 }
+const DeleteForUserRequest = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<DeleteForUserRequest>;
+
 export interface DeleteForUserResponse {}
+const DeleteForUserResponse = DeleteForOrgResponse as any as S.Schema<DeleteForUserResponse>;
+
 export interface DeleteResourceForOrgRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -423,7 +539,15 @@ export interface DeleteResourceForOrgRequest {
   /** The unique identifier of the resource. */
   space_resource_id: number;
 }
+const DeleteResourceForOrgRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<DeleteResourceForOrgRequest>;
+
 export interface DeleteResourceForOrgResponse {}
+const DeleteResourceForOrgResponse =
+  DeleteForOrgResponse as any as S.Schema<DeleteResourceForOrgResponse>;
+
 export interface DeleteResourceForUserRequest {
   /** The handle for the GitHub user account. */
   username: string;
@@ -432,19 +556,31 @@ export interface DeleteResourceForUserRequest {
   /** The unique identifier of the resource. */
   space_resource_id: number;
 }
+const DeleteResourceForUserRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<DeleteResourceForUserRequest>;
+
 export interface DeleteResourceForUserResponse {}
+const DeleteResourceForUserResponse =
+  DeleteForOrgResponse as any as S.Schema<DeleteResourceForUserResponse>;
+
 export interface GetForOrgRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
   /** The unique identifier of the Copilot Space. */
   space_number: number;
 }
+const GetForOrgRequest = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<GetForOrgRequest>;
+
 export interface GetForUserRequest {
   /** The handle for the GitHub user account. */
   username: string;
   /** The unique identifier of the Copilot Space. */
   space_number: number;
 }
+const GetForUserRequest = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<GetForUserRequest>;
+
 export interface GetResourceForOrgRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -453,6 +589,11 @@ export interface GetResourceForOrgRequest {
   /** The unique identifier of the resource. */
   space_resource_id: number;
 }
+const GetResourceForOrgRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<GetResourceForOrgRequest>;
+
 export interface GetResourceForUserRequest {
   /** The handle for the GitHub user account. */
   username: string;
@@ -461,30 +602,58 @@ export interface GetResourceForUserRequest {
   /** The unique identifier of the resource. */
   space_resource_id: number;
 }
+const GetResourceForUserRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<GetResourceForUserRequest>;
+
 export interface ListCollaboratorsForOrgRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
   /** The unique identifier of the Copilot Space. */
   space_number: number;
 }
+const ListCollaboratorsForOrgRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<ListCollaboratorsForOrgRequest>;
+
 /** The list of collaborators for this Copilot Space. */
 export type ListCollaboratorsForOrgResponseCollaboratorsList = Array<CopilotSpaceCollaborator>;
+const ListCollaboratorsForOrgResponseCollaboratorsList = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<ListCollaboratorsForOrgResponseCollaboratorsList>;
+
 export interface ListCollaboratorsForOrgResponse {
   /** The list of collaborators for this Copilot Space. */
   collaborators: ListCollaboratorsForOrgResponseCollaboratorsList;
 }
+const ListCollaboratorsForOrgResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<ListCollaboratorsForOrgResponse>;
+
 export interface ListCollaboratorsForUserRequest {
   /** The handle for the GitHub user account. */
   username: string;
   /** The unique identifier of the Copilot Space. */
   space_number: number;
 }
+const ListCollaboratorsForUserRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<ListCollaboratorsForUserRequest>;
+
 /** The list of collaborators for this Copilot Space. */
 export type ListCollaboratorsForUserResponseCollaboratorsList = Array<CopilotSpaceCollaborator>;
 export interface ListCollaboratorsForUserResponse {
   /** The list of collaborators for this Copilot Space. */
   collaborators: ListCollaboratorsForUserResponseCollaboratorsList;
 }
+const ListCollaboratorsForUserResponse =
+  ListCollaboratorsForOrgResponse as any as S.Schema<ListCollaboratorsForUserResponse>;
+
 export interface ListForOrgRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -495,12 +664,21 @@ export interface ListForOrgRequest {
   /** A cursor, as given in the [Link header](https://docs.github.com/rest/guides/using-pagination-in-the-rest-api#using-link-headers). If specified, the query only searches for results after this cursor. */
   after?: string;
 }
+const ListForOrgRequest = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<ListForOrgRequest>;
+
 /** The list of Copilot Spaces on this page of results. */
 export type ListForOrgResponseSpacesList = Array<CopilotSpace>;
+const ListForOrgResponseSpacesList = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<ListForOrgResponseSpacesList>;
+
 export interface ListForOrgResponse {
   /** The list of Copilot Spaces on this page of results. */
   spaces: ListForOrgResponseSpacesList;
 }
+const ListForOrgResponse = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<ListForOrgResponse>;
+
 export interface ListForUserRequest {
   /** The handle for the GitHub user account. */
   username: string;
@@ -511,37 +689,66 @@ export interface ListForUserRequest {
   /** A cursor, as given in the [Link header](https://docs.github.com/rest/guides/using-pagination-in-the-rest-api#using-link-headers). If specified, the query only searches for results after this cursor. */
   after?: string;
 }
+const ListForUserRequest = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<ListForUserRequest>;
+
 /** The list of Copilot Spaces on this page of results. */
 export type ListForUserResponseSpacesList = Array<CopilotSpace>;
 export interface ListForUserResponse {
   /** The list of Copilot Spaces on this page of results. */
   spaces: ListForUserResponseSpacesList;
 }
+const ListForUserResponse = ListForOrgResponse as any as S.Schema<ListForUserResponse>;
+
 export interface ListResourcesForOrgRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
   /** The unique identifier of the Copilot Space. */
   space_number: number;
 }
+const ListResourcesForOrgRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<ListResourcesForOrgRequest>;
+
 /** The list of resources attached to this Copilot Space. */
 export type ListResourcesForOrgResponseResourcesList = Array<CopilotSpaceResource>;
+const ListResourcesForOrgResponseResourcesList = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<ListResourcesForOrgResponseResourcesList>;
+
 export interface ListResourcesForOrgResponse {
   /** The list of resources attached to this Copilot Space. */
   resources: ListResourcesForOrgResponseResourcesList;
 }
+const ListResourcesForOrgResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<ListResourcesForOrgResponse>;
+
 export interface ListResourcesForUserRequest {
   /** The handle for the GitHub user account. */
   username: string;
   /** The unique identifier of the Copilot Space. */
   space_number: number;
 }
+const ListResourcesForUserRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<ListResourcesForUserRequest>;
+
 /** The list of resources attached to this Copilot Space. */
 export type ListResourcesForUserResponseResourcesList = Array<CopilotSpaceResource>;
 export interface ListResourcesForUserResponse {
   /** The list of resources attached to this Copilot Space. */
   resources: ListResourcesForUserResponseResourcesList;
 }
+const ListResourcesForUserResponse =
+  ListResourcesForOrgResponse as any as S.Schema<ListResourcesForUserResponse>;
+
 export type RemoveCollaboratorForOrgRequestActorType = "User" | "Team";
+const RemoveCollaboratorForOrgRequestActorType = S.String;
+
 export interface RemoveCollaboratorForOrgRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -552,8 +759,20 @@ export interface RemoveCollaboratorForOrgRequest {
   /** The username (for users) or team slug (for teams). The numeric ID of a user or team is also accepted. */
   actor_identifier: string;
 }
+const RemoveCollaboratorForOrgRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<RemoveCollaboratorForOrgRequest>;
+
 export interface RemoveCollaboratorForOrgResponse {}
+const RemoveCollaboratorForOrgResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<RemoveCollaboratorForOrgResponse>;
+
 export type RemoveCollaboratorForUserRequestActorType = "User" | "Team";
+const RemoveCollaboratorForUserRequestActorType = S.String;
+
 export interface RemoveCollaboratorForUserRequest {
   /** The handle for the GitHub user account. */
   username: string;
@@ -564,10 +783,22 @@ export interface RemoveCollaboratorForUserRequest {
   /** The username of the collaborator. The numeric user ID is also accepted. */
   actor_identifier: string;
 }
+const RemoveCollaboratorForUserRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  0,
+) as any as S.Schema<RemoveCollaboratorForUserRequest>;
+
 export interface RemoveCollaboratorForUserResponse {}
+const RemoveCollaboratorForUserResponse =
+  RemoveCollaboratorForOrgResponse as any as S.Schema<RemoveCollaboratorForUserResponse>;
+
 export type UpdateCollaboratorForOrgRequestActorType = "User" | "Team";
+const UpdateCollaboratorForOrgRequestActorType = S.String;
+
 /** The new role to grant to the collaborator. Use `no_access` to remove the collaborator. */
 export type UpdateCollaboratorForOrgRequestRole = "reader" | "writer" | "admin" | "no_access";
+const UpdateCollaboratorForOrgRequestRole = S.String;
+
 export interface UpdateCollaboratorForOrgRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -580,10 +811,22 @@ export interface UpdateCollaboratorForOrgRequest {
   /** The new role to grant to the collaborator. Use `no_access` to remove the collaborator. */
   role: UpdateCollaboratorForOrgRequestRole | (string & {});
 }
+const UpdateCollaboratorForOrgRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  1,
+) as any as S.Schema<UpdateCollaboratorForOrgRequest>;
+
 export type UpdateCollaboratorForOrgResponse = CopilotSpaceCollaborator;
+const UpdateCollaboratorForOrgResponse =
+  AddCollaboratorForOrgResponse as any as S.Schema<UpdateCollaboratorForOrgResponse>;
+
 export type UpdateCollaboratorForUserRequestActorType = "User" | "Team";
+const UpdateCollaboratorForUserRequestActorType = S.String;
+
 /** The new role to grant to the collaborator. Use `no_access` to remove the collaborator. */
 export type UpdateCollaboratorForUserRequestRole = "reader" | "writer" | "admin" | "no_access";
+const UpdateCollaboratorForUserRequestRole = S.String;
+
 export interface UpdateCollaboratorForUserRequest {
   /** The handle for the GitHub user account. */
   username: string;
@@ -596,9 +839,19 @@ export interface UpdateCollaboratorForUserRequest {
   /** The new role to grant to the collaborator. Use `no_access` to remove the collaborator. */
   role: UpdateCollaboratorForUserRequestRole | (string & {});
 }
+const UpdateCollaboratorForUserRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  2,
+) as any as S.Schema<UpdateCollaboratorForUserRequest>;
+
 export type UpdateCollaboratorForUserResponse = CopilotSpaceCollaborator;
+const UpdateCollaboratorForUserResponse =
+  AddCollaboratorForOrgResponse as any as S.Schema<UpdateCollaboratorForUserResponse>;
+
 /** The base role that determines default permissions for organization members. Changing this field requires admin permissions. - `no_access`: No default access (default) - `reader`: Organization members can read the space - `writer`: Organization members can read and edit the space - `admin`: Organization members have full admin access to the space */
 export type UpdateForOrgRequestBaseRole = "reader" | "writer" | "admin" | "no_access";
+const UpdateForOrgRequestBaseRole = S.String;
+
 /** The type of resource. */
 export type UpdateForOrgRequestResourcesAttributesItemResourceType =
   | "repository"
@@ -620,6 +873,9 @@ export interface UpdateForOrgRequestResourcesAttributesItem {
 /** Resources to attach to the space. */
 export type UpdateForOrgRequestResourcesAttributesList =
   Array<UpdateForOrgRequestResourcesAttributesItem>;
+const UpdateForOrgRequestResourcesAttributesList =
+  CreateForOrgRequestResourcesAttributesList as any as S.Schema<UpdateForOrgRequestResourcesAttributesList>;
+
 export interface UpdateForOrgRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -636,8 +892,12 @@ export interface UpdateForOrgRequest {
   /** Resources to attach to the space. */
   resources_attributes?: UpdateForOrgRequestResourcesAttributesList;
 }
+const UpdateForOrgRequest = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<UpdateForOrgRequest>;
+
 /** The base role that determines default permissions for the space. Changing this field requires admin permissions. - `no_access`: No default access (default) - `reader`: Makes the space publicly readable Note: User spaces do not support writer or admin base roles. */
 export type UpdateForUserRequestBaseRole = "reader" | "no_access";
+const UpdateForUserRequestBaseRole = S.String;
+
 /** The type of resource. */
 export type UpdateForUserRequestResourcesAttributesItemResourceType =
   | "repository"
@@ -659,6 +919,9 @@ export interface UpdateForUserRequestResourcesAttributesItem {
 /** Resources to attach to the space. */
 export type UpdateForUserRequestResourcesAttributesList =
   Array<UpdateForUserRequestResourcesAttributesItem>;
+const UpdateForUserRequestResourcesAttributesList =
+  CreateForOrgRequestResourcesAttributesList as any as S.Schema<UpdateForUserRequestResourcesAttributesList>;
+
 export interface UpdateForUserRequest {
   /** The handle for the GitHub user account. */
   username: string;
@@ -675,8 +938,13 @@ export interface UpdateForUserRequest {
   /** Resources to attach to the space. */
   resources_attributes?: UpdateForUserRequestResourcesAttributesList;
 }
+const UpdateForUserRequest = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<UpdateForUserRequest>;
+
 /** Updated resource-specific metadata. */
 export type UpdateResourceForOrgRequestMetadataMap = { [key: string]: unknown | undefined };
+const UpdateResourceForOrgRequestMetadataMap =
+  CreateResourceForOrgRequestMetadataMap as any as S.Schema<UpdateResourceForOrgRequestMetadataMap>;
+
 export interface UpdateResourceForOrgRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -687,8 +955,16 @@ export interface UpdateResourceForOrgRequest {
   /** Updated resource-specific metadata. */
   metadata?: UpdateResourceForOrgRequestMetadataMap;
 }
+const UpdateResourceForOrgRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  5,
+) as any as S.Schema<UpdateResourceForOrgRequest>;
+
 /** Updated resource-specific metadata. */
 export type UpdateResourceForUserRequestMetadataMap = { [key: string]: unknown | undefined };
+const UpdateResourceForUserRequestMetadataMap =
+  CreateResourceForOrgRequestMetadataMap as any as S.Schema<UpdateResourceForUserRequestMetadataMap>;
+
 export interface UpdateResourceForUserRequest {
   /** The handle for the GitHub user account. */
   username: string;
@@ -699,6 +975,11 @@ export interface UpdateResourceForUserRequest {
   /** Updated resource-specific metadata. */
   metadata?: UpdateResourceForUserRequestMetadataMap;
 }
+const UpdateResourceForUserRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  6,
+) as any as S.Schema<UpdateResourceForUserRequest>;
+
 export type AddCollaboratorForOrgError = Forbidden | NotFound | UnprocessableEntity | GithubOpError;
 /** Add a collaborator to an organization Copilot Space Adds a collaborator (user or team) to a specific Copilot Space owned by an organization. The authenticated user must have appropriate permissions to manage collaborators. **Note:** When adding users as collaborators, they must already be members of the organization. When adding teams as collaborators, they must be defined in the organization. OAuth app tokens and personal access tokens (classic) need the `write:org` scope to use this endpoint. Fine-grained tokens and GitHub App user access tokens must have been granted access to the organization that owns the space. They must also have been granted access to every repository referenced by resources in the space. */
 export const addCollaboratorForOrg: API.OperationMethod<
@@ -707,8 +988,8 @@ export const addCollaboratorForOrg: API.OperationMethod<
   AddCollaboratorForOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<AddCollaboratorForOrgRequest>,
-  output: __S(1) as any as S.Schema<AddCollaboratorForOrgResponse>,
+  input: AddCollaboratorForOrgRequest,
+  output: AddCollaboratorForOrgResponse,
   errors: [Forbidden, NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -726,8 +1007,8 @@ export const addCollaboratorForUser: API.OperationMethod<
   AddCollaboratorForUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2) as any as S.Schema<AddCollaboratorForUserRequest>,
-  output: __S(1) as any as S.Schema<AddCollaboratorForUserResponse>,
+  input: AddCollaboratorForUserRequest,
+  output: AddCollaboratorForUserResponse,
   errors: [Forbidden, NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -741,8 +1022,8 @@ export const createForOrg: API.OperationMethod<
   CreateForOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6) as any as S.Schema<CreateForOrgRequest>,
-  output: __S(11) as any as S.Schema<CopilotSpace>,
+  input: CreateForOrgRequest,
+  output: CopilotSpace,
   errors: [Forbidden, NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -756,8 +1037,8 @@ export const createForUser: API.OperationMethod<
   CreateForUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12) as any as S.Schema<CreateForUserRequest>,
-  output: __S(11) as any as S.Schema<CopilotSpace>,
+  input: CreateForUserRequest,
+  output: CopilotSpace,
   errors: [Forbidden, NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -771,8 +1052,8 @@ export const createResourceForOrg: API.OperationMethod<
   CreateResourceForOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14) as any as S.Schema<CreateResourceForOrgRequest>,
-  output: __S(15) as any as S.Schema<CopilotSpaceResource>,
+  input: CreateResourceForOrgRequest,
+  output: CopilotSpaceResource,
   errors: [Forbidden, NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -786,8 +1067,8 @@ export const createResourceForUser: API.OperationMethod<
   CreateResourceForUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16) as any as S.Schema<CreateResourceForUserRequest>,
-  output: __S(15) as any as S.Schema<CopilotSpaceResource>,
+  input: CreateResourceForUserRequest,
+  output: CopilotSpaceResource,
   errors: [Forbidden, NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -801,8 +1082,8 @@ export const deleteForOrg: API.OperationMethod<
   DeleteForOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17) as any as S.Schema<DeleteForOrgRequest>,
-  output: __S(18) as any as S.Schema<DeleteForOrgResponse>,
+  input: DeleteForOrgRequest,
+  output: DeleteForOrgResponse,
   errors: [NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -816,8 +1097,8 @@ export const deleteForUser: API.OperationMethod<
   DeleteForUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19) as any as S.Schema<DeleteForUserRequest>,
-  output: __S(18) as any as S.Schema<DeleteForUserResponse>,
+  input: DeleteForUserRequest,
+  output: DeleteForUserResponse,
   errors: [NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -831,8 +1112,8 @@ export const deleteResourceForOrg: API.OperationMethod<
   DeleteResourceForOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20) as any as S.Schema<DeleteResourceForOrgRequest>,
-  output: __S(18) as any as S.Schema<DeleteResourceForOrgResponse>,
+  input: DeleteResourceForOrgRequest,
+  output: DeleteResourceForOrgResponse,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -846,8 +1127,8 @@ export const deleteResourceForUser: API.OperationMethod<
   DeleteResourceForUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21) as any as S.Schema<DeleteResourceForUserRequest>,
-  output: __S(18) as any as S.Schema<DeleteResourceForUserResponse>,
+  input: DeleteResourceForUserRequest,
+  output: DeleteResourceForUserResponse,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -861,8 +1142,8 @@ export const getForOrg: API.OperationMethod<
   GetForOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22) as any as S.Schema<GetForOrgRequest>,
-  output: __S(11) as any as S.Schema<CopilotSpace>,
+  input: GetForOrgRequest,
+  output: CopilotSpace,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -876,8 +1157,8 @@ export const getForUser: API.OperationMethod<
   GetForUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23) as any as S.Schema<GetForUserRequest>,
-  output: __S(11) as any as S.Schema<CopilotSpace>,
+  input: GetForUserRequest,
+  output: CopilotSpace,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -891,8 +1172,8 @@ export const getResourceForOrg: API.OperationMethod<
   GetResourceForOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24) as any as S.Schema<GetResourceForOrgRequest>,
-  output: __S(15) as any as S.Schema<CopilotSpaceResource>,
+  input: GetResourceForOrgRequest,
+  output: CopilotSpaceResource,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -906,8 +1187,8 @@ export const getResourceForUser: API.OperationMethod<
   GetResourceForUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25) as any as S.Schema<GetResourceForUserRequest>,
-  output: __S(15) as any as S.Schema<CopilotSpaceResource>,
+  input: GetResourceForUserRequest,
+  output: CopilotSpaceResource,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -921,8 +1202,8 @@ export const listCollaboratorsForOrg: API.OperationMethod<
   ListCollaboratorsForOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26) as any as S.Schema<ListCollaboratorsForOrgRequest>,
-  output: __S(28) as any as S.Schema<ListCollaboratorsForOrgResponse>,
+  input: ListCollaboratorsForOrgRequest,
+  output: ListCollaboratorsForOrgResponse,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -936,8 +1217,8 @@ export const listCollaboratorsForUser: API.OperationMethod<
   ListCollaboratorsForUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29) as any as S.Schema<ListCollaboratorsForUserRequest>,
-  output: __S(28) as any as S.Schema<ListCollaboratorsForUserResponse>,
+  input: ListCollaboratorsForUserRequest,
+  output: ListCollaboratorsForUserResponse,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -951,8 +1232,8 @@ export const listForOrg: API.OperationMethod<
   ListForOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30) as any as S.Schema<ListForOrgRequest>,
-  output: __S(32) as any as S.Schema<ListForOrgResponse>,
+  input: ListForOrgRequest,
+  output: ListForOrgResponse,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -966,8 +1247,8 @@ export const listForUser: API.OperationMethod<
   ListForUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33) as any as S.Schema<ListForUserRequest>,
-  output: __S(32) as any as S.Schema<ListForUserResponse>,
+  input: ListForUserRequest,
+  output: ListForUserResponse,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -981,8 +1262,8 @@ export const listResourcesForOrg: API.OperationMethod<
   ListResourcesForOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34) as any as S.Schema<ListResourcesForOrgRequest>,
-  output: __S(36) as any as S.Schema<ListResourcesForOrgResponse>,
+  input: ListResourcesForOrgRequest,
+  output: ListResourcesForOrgResponse,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -996,8 +1277,8 @@ export const listResourcesForUser: API.OperationMethod<
   ListResourcesForUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37) as any as S.Schema<ListResourcesForUserRequest>,
-  output: __S(36) as any as S.Schema<ListResourcesForUserResponse>,
+  input: ListResourcesForUserRequest,
+  output: ListResourcesForUserResponse,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1011,8 +1292,8 @@ export const removeCollaboratorForOrg: API.OperationMethod<
   RemoveCollaboratorForOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38) as any as S.Schema<RemoveCollaboratorForOrgRequest>,
-  output: __S(39) as any as S.Schema<RemoveCollaboratorForOrgResponse>,
+  input: RemoveCollaboratorForOrgRequest,
+  output: RemoveCollaboratorForOrgResponse,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1026,8 +1307,8 @@ export const removeCollaboratorForUser: API.OperationMethod<
   RemoveCollaboratorForUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40) as any as S.Schema<RemoveCollaboratorForUserRequest>,
-  output: __S(39) as any as S.Schema<RemoveCollaboratorForUserResponse>,
+  input: RemoveCollaboratorForUserRequest,
+  output: RemoveCollaboratorForUserResponse,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1045,8 +1326,8 @@ export const updateCollaboratorForOrg: API.OperationMethod<
   UpdateCollaboratorForOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41) as any as S.Schema<UpdateCollaboratorForOrgRequest>,
-  output: __S(1) as any as S.Schema<UpdateCollaboratorForOrgResponse>,
+  input: UpdateCollaboratorForOrgRequest,
+  output: UpdateCollaboratorForOrgResponse,
   errors: [Forbidden, NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1064,8 +1345,8 @@ export const updateCollaboratorForUser: API.OperationMethod<
   UpdateCollaboratorForUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42) as any as S.Schema<UpdateCollaboratorForUserRequest>,
-  output: __S(1) as any as S.Schema<UpdateCollaboratorForUserResponse>,
+  input: UpdateCollaboratorForUserRequest,
+  output: UpdateCollaboratorForUserResponse,
   errors: [Forbidden, NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1079,8 +1360,8 @@ export const updateForOrg: API.OperationMethod<
   UpdateForOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43) as any as S.Schema<UpdateForOrgRequest>,
-  output: __S(11) as any as S.Schema<CopilotSpace>,
+  input: UpdateForOrgRequest,
+  output: CopilotSpace,
   errors: [Forbidden, NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1094,8 +1375,8 @@ export const updateForUser: API.OperationMethod<
   UpdateForUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44) as any as S.Schema<UpdateForUserRequest>,
-  output: __S(11) as any as S.Schema<CopilotSpace>,
+  input: UpdateForUserRequest,
+  output: CopilotSpace,
   errors: [Forbidden, NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1109,8 +1390,8 @@ export const updateResourceForOrg: API.OperationMethod<
   UpdateResourceForOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45) as any as S.Schema<UpdateResourceForOrgRequest>,
-  output: __S(15) as any as S.Schema<CopilotSpaceResource>,
+  input: UpdateResourceForOrgRequest,
+  output: CopilotSpaceResource,
   errors: [Forbidden, NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1124,8 +1405,8 @@ export const updateResourceForUser: API.OperationMethod<
   UpdateResourceForUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(46) as any as S.Schema<UpdateResourceForUserRequest>,
-  output: __S(15) as any as S.Schema<CopilotSpaceResource>,
+  input: UpdateResourceForUserRequest,
+  output: CopilotSpaceResource,
   errors: [Forbidden, NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1139,9 +1420,9 @@ function __c0(j: number): any {
         S.Struct({
           org: S.String.pipe(T.Label()),
           space_number: S.Number.pipe(T.Label()),
-          actor_type: S.String,
+          actor_type: AddCollaboratorForOrgRequestActorType,
           actor_identifier: S.String,
-          role: S.String,
+          role: AddCollaboratorForOrgRequestRole,
         }).pipe(
           T.Http({
             method: "POST",
@@ -1153,7 +1434,7 @@ function __c0(j: number): any {
         identifier: "AddCollaboratorForOrgRequest",
       });
     case 1:
-      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => CopilotSpaceCollaborator.pipe(T.RawResponseRoot())).annotate({
         identifier: "AddCollaboratorForOrgResponse",
       });
     case 2:
@@ -1161,9 +1442,9 @@ function __c0(j: number): any {
         S.Struct({
           username: S.String.pipe(T.Label()),
           space_number: S.Number.pipe(T.Label()),
-          actor_type: S.String,
+          actor_type: AddCollaboratorForUserRequestActorType,
           actor_identifier: S.String,
-          role: S.String,
+          role: AddCollaboratorForUserRequestRole,
         }).pipe(
           T.Http({
             method: "POST",
@@ -1189,14 +1470,14 @@ function __c0(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          resource_type: S.optional(S.String),
-          metadata: S.optional(__S(3)),
+          resource_type: S.optional(CreateForOrgRequestResourcesAttributesItemResourceType),
+          metadata: S.optional(CreateForOrgRequestResourcesAttributesItemMetadata),
         }),
       ).annotate({
         identifier: "CreateForOrgRequestResourcesAttributesItem",
       });
     case 5:
-      return S.Array(__S(4));
+      return S.Array(CreateForOrgRequestResourcesAttributesItem);
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -1204,8 +1485,8 @@ function __c0(j: number): any {
           name: S.String,
           description: S.optional(S.String),
           general_instructions: S.optional(S.String),
-          base_role: S.optional(S.String),
-          resources_attributes: S.optional(__S(5)),
+          base_role: S.optional(CreateForOrgRequestBaseRole),
+          resources_attributes: S.optional(CreateForOrgRequestResourcesAttributesList),
         }).pipe(T.Http({ method: "POST", uri: "/orgs/{org}/copilot-spaces", code: 200 })),
       ).annotate({ identifier: "CreateForOrgRequest" });
     case 7:
@@ -1260,17 +1541,17 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.Number),
-          resource_type: S.optional(S.String),
+          resource_type: S.optional(CopilotSpaceResourcesAttributesItemResourceType),
           copilot_chat_attachment_id: S.optional(S.NullOr(S.Number)),
           created_at: S.optional(S.String),
           updated_at: S.optional(S.String),
-          metadata: S.optional(__S(8)),
+          metadata: S.optional(CopilotSpaceResourcesAttributesItemMetadata),
         }),
       ).annotate({
         identifier: "CopilotSpaceResourcesAttributesItem",
       });
     case 2:
-      return S.Array(__S(9));
+      return S.Array(CopilotSpaceResourcesAttributesItem);
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -1279,14 +1560,14 @@ function __c1(j: number): any {
           name: S.String,
           description: S.optional(S.NullOr(S.String)),
           general_instructions: S.optional(S.NullOr(S.String)),
-          base_role: S.String,
-          owner: S.Unknown,
-          creator: __S(7),
+          base_role: CopilotSpaceBaseRole,
+          owner: CopilotSpaceOwner,
+          creator: SimpleUser,
           created_at: S.String,
           updated_at: S.String,
           html_url: S.String,
           api_url: S.String,
-          resources_attributes: S.optional(__S(10)),
+          resources_attributes: S.optional(CopilotSpaceResourcesAttributesList),
         }),
       ).annotate({ identifier: "CopilotSpace" });
     case 4:
@@ -1296,8 +1577,8 @@ function __c1(j: number): any {
           name: S.String,
           description: S.optional(S.String),
           general_instructions: S.optional(S.String),
-          base_role: S.optional(S.String),
-          resources_attributes: S.optional(__S(5)),
+          base_role: S.optional(CreateForUserRequestBaseRole),
+          resources_attributes: S.optional(CreateForUserRequestResourcesAttributesList),
         }).pipe(T.Http({ method: "POST", uri: "/users/{username}/copilot-spaces", code: 200 })),
       ).annotate({ identifier: "CreateForUserRequest" });
     case 5:
@@ -1307,8 +1588,8 @@ function __c1(j: number): any {
         S.Struct({
           org: S.String.pipe(T.Label()),
           space_number: S.Number.pipe(T.Label()),
-          resource_type: S.String,
-          metadata: __S(13),
+          resource_type: CreateResourceForOrgRequestResourceType,
+          metadata: CreateResourceForOrgRequestMetadataMap,
         }).pipe(
           T.Http({
             method: "POST",
@@ -1323,9 +1604,9 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.Number,
-          resource_type: S.String,
+          resource_type: CopilotSpaceResourceResourceType,
           copilot_chat_attachment_id: S.optional(S.NullOr(S.Number)),
-          metadata: __S(13),
+          metadata: CopilotSpaceResourceMetadataMap,
           created_at: S.String,
           updated_at: S.String,
         }),
@@ -1339,8 +1620,8 @@ function __c2(j: number): any {
         S.Struct({
           username: S.String.pipe(T.Label()),
           space_number: S.Number.pipe(T.Label()),
-          resource_type: S.String,
-          metadata: __S(13),
+          resource_type: CreateResourceForUserRequestResourceType,
+          metadata: CreateResourceForUserRequestMetadataMap,
         }).pipe(
           T.Http({
             method: "POST",
@@ -1481,11 +1762,11 @@ function __c3(j: number): any {
         identifier: "ListCollaboratorsForOrgRequest",
       });
     case 3:
-      return S.Array(S.Unknown);
+      return S.Array(CopilotSpaceCollaborator);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          collaborators: __S(27),
+          collaborators: ListCollaboratorsForOrgResponseCollaboratorsList,
         }),
       ).annotate({
         identifier: "ListCollaboratorsForOrgResponse",
@@ -1515,7 +1796,7 @@ function __c3(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/orgs/{org}/copilot-spaces", code: 200 })),
       ).annotate({ identifier: "ListForOrgRequest" });
     case 7:
-      return S.Array(__S(11));
+      return S.Array(CopilotSpace);
   }
 }
 function __c4(j: number): any {
@@ -1523,7 +1804,7 @@ function __c4(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          spaces: __S(31),
+          spaces: ListForOrgResponseSpacesList,
         }),
       ).annotate({ identifier: "ListForOrgResponse" });
     case 1:
@@ -1551,11 +1832,11 @@ function __c4(j: number): any {
         identifier: "ListResourcesForOrgRequest",
       });
     case 3:
-      return S.Array(__S(15));
+      return S.Array(CopilotSpaceResource);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          resources: __S(35),
+          resources: ListResourcesForOrgResponseResourcesList,
         }),
       ).annotate({
         identifier: "ListResourcesForOrgResponse",
@@ -1580,7 +1861,7 @@ function __c4(j: number): any {
         S.Struct({
           org: S.String.pipe(T.Label()),
           space_number: S.Number.pipe(T.Label()),
-          actor_type: S.String.pipe(T.Label()),
+          actor_type: RemoveCollaboratorForOrgRequestActorType.pipe(T.Label()),
           actor_identifier: S.String.pipe(T.Label()),
         }).pipe(
           T.Http({
@@ -1605,7 +1886,7 @@ function __c5(j: number): any {
         S.Struct({
           username: S.String.pipe(T.Label()),
           space_number: S.Number.pipe(T.Label()),
-          actor_type: S.String.pipe(T.Label()),
+          actor_type: RemoveCollaboratorForUserRequestActorType.pipe(T.Label()),
           actor_identifier: S.String.pipe(T.Label()),
         }).pipe(
           T.Http({
@@ -1622,9 +1903,9 @@ function __c5(j: number): any {
         S.Struct({
           org: S.String.pipe(T.Label()),
           space_number: S.Number.pipe(T.Label()),
-          actor_type: S.String.pipe(T.Label()),
+          actor_type: UpdateCollaboratorForOrgRequestActorType.pipe(T.Label()),
           actor_identifier: S.String.pipe(T.Label()),
-          role: S.String,
+          role: UpdateCollaboratorForOrgRequestRole,
         }).pipe(
           T.Http({
             method: "PUT",
@@ -1640,9 +1921,9 @@ function __c5(j: number): any {
         S.Struct({
           username: S.String.pipe(T.Label()),
           space_number: S.Number.pipe(T.Label()),
-          actor_type: S.String.pipe(T.Label()),
+          actor_type: UpdateCollaboratorForUserRequestActorType.pipe(T.Label()),
           actor_identifier: S.String.pipe(T.Label()),
-          role: S.String,
+          role: UpdateCollaboratorForUserRequestRole,
         }).pipe(
           T.Http({
             method: "PUT",
@@ -1661,8 +1942,8 @@ function __c5(j: number): any {
           name: S.optional(S.String),
           description: S.optional(S.String),
           general_instructions: S.optional(S.String),
-          base_role: S.optional(S.String),
-          resources_attributes: S.optional(__S(5)),
+          base_role: S.optional(UpdateForOrgRequestBaseRole),
+          resources_attributes: S.optional(UpdateForOrgRequestResourcesAttributesList),
         }).pipe(
           T.Http({ method: "PUT", uri: "/orgs/{org}/copilot-spaces/{space_number}", code: 200 }),
         ),
@@ -1675,8 +1956,8 @@ function __c5(j: number): any {
           name: S.optional(S.String),
           description: S.optional(S.String),
           general_instructions: S.optional(S.String),
-          base_role: S.optional(S.String),
-          resources_attributes: S.optional(__S(5)),
+          base_role: S.optional(UpdateForUserRequestBaseRole),
+          resources_attributes: S.optional(UpdateForUserRequestResourcesAttributesList),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -1691,7 +1972,7 @@ function __c5(j: number): any {
           org: S.String.pipe(T.Label()),
           space_number: S.Number.pipe(T.Label()),
           space_resource_id: S.Number.pipe(T.Label()),
-          metadata: S.optional(__S(13)),
+          metadata: S.optional(UpdateResourceForOrgRequestMetadataMap),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -1708,7 +1989,7 @@ function __c5(j: number): any {
           username: S.String.pipe(T.Label()),
           space_number: S.Number.pipe(T.Label()),
           space_resource_id: S.Number.pipe(T.Label()),
-          metadata: S.optional(__S(13)),
+          metadata: S.optional(UpdateResourceForUserRequestMetadataMap),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -1719,26 +2000,5 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "UpdateResourceForUserRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
   }
 }

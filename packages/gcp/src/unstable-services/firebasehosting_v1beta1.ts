@@ -7,8 +7,6 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -65,11 +63,15 @@ export class NotFound
   ) {}
 
 export type StringList = Array<string>;
+const StringList = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<StringList>;
+
 /** A representation of filter path. */
 export interface PathFilter {
   /** An array of RegEx values by which to filter. */
   regexes?: StringList;
 }
+const PathFilter = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<PathFilter>;
+
 export interface CloneVersionRequest {
   /** Required. The unique identifier for the version to be cloned, in the format: sites/SITE_ID/versions/VERSION_ID */
   sourceVersion?: string;
@@ -80,14 +82,25 @@ export interface CloneVersionRequest {
   /** If true, the call to `CloneVersion` immediately finalizes the version after cloning is complete. If false, the cloned version will have a status of `CREATED`. Use [`UpdateVersion`](patch) to set the status of the version to `FINALIZED`. */
   finalize?: boolean;
 }
+const CloneVersionRequest = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<CloneVersionRequest>;
+
 export interface CloneProjectsSitesVersionsRequest {
   /** Required. The target site for the cloned version, in the format: sites/ SITE_ID */
   parent: string;
   /** Request body */
   body?: CloneVersionRequest;
 }
+const CloneProjectsSitesVersionsRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<CloneProjectsSitesVersionsRequest>;
+
 export type DocumentMap = { [key: string]: unknown | undefined };
+const DocumentMap = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<DocumentMap>;
+
 export type DocumentMapList = Array<DocumentMap>;
+const DocumentMapList = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<DocumentMapList>;
+
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
@@ -97,6 +110,8 @@ export interface Status {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
   message?: string;
 }
+const Status = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<Status>;
+
 /** This resource represents a long-running operation that is the result of a network API call. */
 export interface Operation {
   /** The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`. */
@@ -110,14 +125,25 @@ export interface Operation {
   /** If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available. */
   done?: boolean;
 }
+const Operation = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<Operation>;
+
 export interface CloneSitesVersionsRequest {
   /** Required. The target site for the cloned version, in the format: sites/ SITE_ID */
   parent: string;
   /** Request body */
   body?: CloneVersionRequest;
 }
+const CloneSitesVersionsRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<CloneSitesVersionsRequest>;
+
 export type SiteTypeEnum = "TYPE_UNSPECIFIED" | "DEFAULT_SITE" | "USER_SITE";
+const SiteTypeEnum = S.String;
+
 export type StringMap = { [key: string]: string | undefined };
+const StringMap = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<StringMap>;
+
 /** A `Site` represents a Firebase Hosting site. */
 export interface Site {
   /** Output only. The type of Hosting site. Every Firebase project has a `DEFAULT_SITE`, which is created when Hosting is provisioned for the project. All additional sites are `USER_SITE`. */
@@ -131,6 +157,8 @@ export interface Site {
   /** Optional. User-specified labels for the Hosting site. */
   labels?: StringMap;
 }
+const Site = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<Site>;
+
 export interface CreateProjectsSitesRequest {
   /** Optional. If set, validates that the site_id is available and that the request would succeed, returning the expected resulting site or error. */
   validateOnly?: boolean;
@@ -141,6 +169,11 @@ export interface CreateProjectsSitesRequest {
   /** Request body */
   body?: Site;
 }
+const CreateProjectsSitesRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<CreateProjectsSitesRequest>;
+
 /** Contains metadata about the user who performed an action, such as creating a release or finalizing a version. */
 export interface ActingUser {
   /** A profile image URL for the user. May not be present if the user has changed their email address or deleted their account. */
@@ -148,15 +181,21 @@ export interface ActingUser {
   /** The email address of the user when the user performed the action. */
   email?: string;
 }
+const ActingUser = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<ActingUser>;
+
 export type ServingConfigTrailingSlashBehaviorEnum =
   | "TRAILING_SLASH_BEHAVIOR_UNSPECIFIED"
   | "ADD"
   | "REMOVE";
+const ServingConfigTrailingSlashBehaviorEnum = S.String;
+
 /** If provided, i18n rewrites are enabled. */
 export interface I18nConfig {
   /** Required. The user-supplied path where country and language specific content will be looked for within the public directory. */
   root?: string;
 }
+const I18nConfig = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<I18nConfig>;
+
 /** A [`Redirect`](https://firebase.google.com/docs/hosting/full-config#redirects) specifies a URL pattern that, if matched to the request URL path, triggers Hosting to respond with a redirect to the specified destination path. */
 export interface Redirect {
   /** The user-supplied RE2 regular expression to match against the request URL path. */
@@ -168,7 +207,11 @@ export interface Redirect {
   /** Required. The status HTTP code to return in the response. It must be a valid 3xx status code. */
   statusCode?: number;
 }
+const Redirect = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<Redirect>;
+
 export type RedirectList = Array<Redirect>;
+const RedirectList = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<RedirectList>;
+
 /** A [`Header`](https://firebase.google.com/docs/hosting/full-config#headers) specifies a URL pattern that, if matched to the request URL path, triggers Hosting to apply the specified custom response headers. */
 export interface Header {
   /** Required. The additional headers to add to the response. */
@@ -178,7 +221,11 @@ export interface Header {
   /** The user-supplied RE2 regular expression to match against the request URL path. */
   regex?: string;
 }
+const Header = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<Header>;
+
 export type HeaderList = Array<Header>;
+const HeaderList = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<HeaderList>;
+
 /** A configured rewrite that directs requests to a Cloud Run service. If the Cloud Run service does not exist when setting or updating your Firebase Hosting configuration, then the request fails. Any errors from the Cloud Run service are passed to the end user (for example, if you delete a service, any requests directed to that service receive a `404` error). */
 export interface CloudRunRewrite {
   /** Optional. User-provided region where the Cloud Run service is hosted. Defaults to `us-central1` if not supplied. */
@@ -188,6 +235,8 @@ export interface CloudRunRewrite {
   /** Optional. User-provided TrafficConfig tag to send traffic to. When omitted, traffic is sent to the service-wide URI */
   tag?: string;
 }
+const CloudRunRewrite = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<CloudRunRewrite>;
+
 /** A [`Rewrite`](https://firebase.google.com/docs/hosting/full-config#rewrites) specifies a URL pattern that, if matched to the request URL path, triggers Hosting to respond as if the service were given the specified destination URL. */
 export interface Rewrite {
   /** The user-supplied [glob](https://firebase.google.com/docs/hosting/full-config#glob_pattern_matching) to match against the request URL path. */
@@ -205,8 +254,14 @@ export interface Rewrite {
   /** The request will be forwarded to Firebase Dynamic Links. */
   dynamicLinks?: boolean;
 }
+const Rewrite = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<Rewrite>;
+
 export type RewriteList = Array<Rewrite>;
+const RewriteList = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<RewriteList>;
+
 export type ServingConfigAppAssociationEnum = "AUTO" | "NONE";
+const ServingConfigAppAssociationEnum = S.String;
+
 /** The configuration for how incoming requests to a site should be routed and processed before serving content. The URL request paths are matched against the specified URL patterns in the configuration, then Hosting applies the applicable configuration according to a specific [priority order](https://firebase.google.com/docs/hosting/full-config#hosting_priority_order). */
 export interface ServingConfig {
   /** Defines how to handle a trailing slash in the URL path. */
@@ -224,6 +279,8 @@ export interface ServingConfig {
   /** Defines whether to drop the file extension from uploaded files. */
   cleanUrls?: boolean;
 }
+const ServingConfig = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<ServingConfig>;
+
 export type VersionStatusEnum =
   | "VERSION_STATUS_UNSPECIFIED"
   | "CREATED"
@@ -232,6 +289,8 @@ export type VersionStatusEnum =
   | "ABANDONED"
   | "EXPIRED"
   | "CLONING";
+const VersionStatusEnum = S.String;
+
 /** A `Version` is a configuration and a collection of static files which determine how a site is displayed. */
 export interface Version {
   /** Output only. Identifies the user who `FINALIZED` the version. */
@@ -259,7 +318,11 @@ export interface Version {
   /** Output only. Identifies the user who created the version. */
   createUser?: ActingUser;
 }
+const Version = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<Version>;
+
 export type ReleaseTypeEnum = "TYPE_UNSPECIFIED" | "DEPLOY" | "ROLLBACK" | "SITE_DISABLE";
+const ReleaseTypeEnum = S.String;
+
 /** A `Release` is a particular [collection of configurations and files](sites.versions) that is set to be public at a particular time. */
 export interface Release {
   /** Output only. The time at which the version is set to be public. */
@@ -275,6 +338,8 @@ export interface Release {
   /** Output only. The unique identifier for the release, in either of the following formats: - sites/SITE_ID/releases/RELEASE_ID - sites/SITE_ID/channels/CHANNEL_ID/releases/RELEASE_ID This name is provided in the response body when you call [`releases.create`](sites.releases/create) or [`channels.releases.create`](sites.channels.releases/create). */
   name?: string;
 }
+const Release = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<Release>;
+
 /** A `Channel` represents a stream of releases for a site. All sites have a default `live` channel that serves content to the Firebase-provided subdomains and any connected custom domains. */
 export interface Channel {
   /** Output only. The time at which the channel was last updated. */
@@ -296,6 +361,8 @@ export interface Channel {
   /** Input only. A time-to-live for this channel. Sets `expire_time` to the provided duration past the time of the request. */
   ttl?: string;
 }
+const Channel = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<Channel>;
+
 export interface CreateProjectsSitesChannelsRequest {
   /** Required. Immutable. A unique ID within the site that identifies the channel. */
   channelId?: string;
@@ -304,6 +371,11 @@ export interface CreateProjectsSitesChannelsRequest {
   /** Request body */
   body?: Channel;
 }
+const CreateProjectsSitesChannelsRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<CreateProjectsSitesChannelsRequest>;
+
 export interface CreateProjectsSitesChannelsReleasesRequest {
   /** Required. The site or channel to which the release belongs, in either of the following formats: - sites/SITE_ID - sites/SITE_ID/channels/CHANNEL_ID */
   parent: string;
@@ -312,8 +384,17 @@ export interface CreateProjectsSitesChannelsReleasesRequest {
   /** Request body */
   body?: Release;
 }
+const CreateProjectsSitesChannelsReleasesRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<CreateProjectsSitesChannelsReleasesRequest>;
+
 export type DnsRecordTypeEnum = "TYPE_UNSPECIFIED" | "A" | "CNAME" | "TXT" | "AAAA" | "CAA";
+const DnsRecordTypeEnum = S.String;
+
 export type DnsRecordRequiredActionEnum = "NONE" | "ADD" | "REMOVE";
+const DnsRecordRequiredActionEnum = S.String;
+
 /** DNS records are resource records that define how systems and services should behave when handling requests for a domain name. For example, when you add `A` records to your domain name's DNS records, you're informing other systems (such as your users' web browsers) to contact those IPv4 addresses to retrieve resources relevant to your domain name (such as your Hosting site files). */
 export interface DnsRecord {
   /** Output only. The data of the record. The meaning of the value depends on record type: - A and AAAA: IP addresses for the domain name. - CNAME: Another domain to check for records. - TXT: Arbitrary text strings associated with the domain name. Hosting uses TXT records to determine which Firebase projects have permission to act on the domain name's behalf. - CAA: The record's flags, tag, and value, e.g. `0 issue "pki.goog"`. */
@@ -325,7 +406,11 @@ export interface DnsRecord {
   /** Output only. The domain name the record pertains to, e.g. `foo.bar.com.`. */
   domainName?: string;
 }
+const DnsRecord = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<DnsRecord>;
+
 export type DnsRecordList = Array<DnsRecord>;
+const DnsRecordList = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<DnsRecordList>;
+
 /** A set of DNS records relevant to the setup and maintenance of a custom domain in Firebase Hosting. */
 export interface DnsRecordSet {
   /** Output only. The domain name the record set pertains to. */
@@ -335,7 +420,11 @@ export interface DnsRecordSet {
   /** Output only. Records on the domain. */
   records?: DnsRecordList;
 }
+const DnsRecordSet = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<DnsRecordSet>;
+
 export type DnsRecordSetList = Array<DnsRecordSet>;
+const DnsRecordSetList = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<DnsRecordSetList>;
+
 /** A set of DNS record updates that you should make to allow Hosting to serve secure content in response to requests against your domain name. These updates present the current state of your domain name's DNS records when Hosting last queried them, and the desired set of records that Hosting needs to see before your custom domain can be fully active. */
 export interface DnsUpdates {
   /** The set of DNS records Hosting discovered when inspecting a domain. */
@@ -345,7 +434,11 @@ export interface DnsUpdates {
   /** The set of DNS records Hosting needs to serve secure content on the domain. */
   desired?: DnsRecordSetList;
 }
+const DnsUpdates = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<DnsUpdates>;
+
 export type StatusList = Array<Status>;
+const StatusList = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<StatusList>;
+
 export type CustomDomainHostStateEnum =
   | "HOST_STATE_UNSPECIFIED"
   | "HOST_UNHOSTED"
@@ -353,6 +446,8 @@ export type CustomDomainHostStateEnum =
   | "HOST_MISMATCH"
   | "HOST_CONFLICT"
   | "HOST_ACTIVE";
+const CustomDomainHostStateEnum = S.String;
+
 export type CustomDomainOwnershipStateEnum =
   | "OWNERSHIP_STATE_UNSPECIFIED"
   | "OWNERSHIP_MISSING"
@@ -361,12 +456,16 @@ export type CustomDomainOwnershipStateEnum =
   | "OWNERSHIP_CONFLICT"
   | "OWNERSHIP_PENDING"
   | "OWNERSHIP_ACTIVE";
+const CustomDomainOwnershipStateEnum = S.String;
+
 export type CustomDomainCertPreferenceEnum =
   | "TYPE_UNSPECIFIED"
   | "TEMPORARY"
   | "GROUPED"
   | "PROJECT_GROUPED"
   | "DEDICATED";
+const CustomDomainCertPreferenceEnum = S.String;
+
 export type CertificateStateEnum =
   | "CERT_STATE_UNSPECIFIED"
   | "CERT_PREPARING"
@@ -375,6 +474,8 @@ export type CertificateStateEnum =
   | "CERT_ACTIVE"
   | "CERT_EXPIRING_SOON"
   | "CERT_EXPIRED";
+const CertificateStateEnum = S.String;
+
 /** A file you can add to your existing, non-Hosting hosting service that confirms your intent to allow Hosting's Certificate Authorities to create an SSL certificate for your domain. */
 export interface HttpUpdate {
   /** Output only. The path to the file. */
@@ -388,6 +489,8 @@ export interface HttpUpdate {
   /** Output only. Whether Hosting was able to find the required file contents on the specified path during its last check. */
   discovered?: string;
 }
+const HttpUpdate = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<HttpUpdate>;
+
 /** A set of ACME challenges you can use to allow Hosting to create an SSL certificate for your domain name before directing traffic to Hosting servers. Use either the DNS or HTTP challenge; it's not necessary to provide both. */
 export interface CertVerification {
   /** Output only. A `TXT` record to add to your DNS records that confirms your intent to let Hosting create an SSL cert for your domain name. */
@@ -395,12 +498,16 @@ export interface CertVerification {
   /** Output only. A file to add to your existing, non-Hosting hosting service that confirms your intent to let Hosting create an SSL cert for your domain name. */
   http?: HttpUpdate;
 }
+const CertVerification = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<CertVerification>;
+
 export type CertificateTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "TEMPORARY"
   | "GROUPED"
   | "PROJECT_GROUPED"
   | "DEDICATED";
+const CertificateTypeEnum = S.String;
+
 /** An SSL certificate used to provide end-to-end encryption for requests against your domain name. A `Certificate` can be an actual SSL certificate or, for newly-created custom domains, Hosting's intent to create one. */
 export interface Certificate {
   /** Output only. A set of errors Hosting encountered when attempting to create a cert for your domain name. Resolve these issues to ensure Hosting is able to provide secure communication with your site's visitors. */
@@ -416,6 +523,8 @@ export interface Certificate {
   /** Output only. The certificate's type. */
   type?: CertificateTypeEnum | (string & {});
 }
+const Certificate = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<Certificate>;
+
 /** A `CustomDomain` is an entity that links a domain name to a Firebase Hosting site. Add a `CustomDomain` to your site to allow Hosting to serve the site's content in response to requests against your domain name. */
 export interface CustomDomain {
   /** Output only. A set of updates you should make to the domain name's DNS records to let Hosting serve secure content on its behalf. */
@@ -451,6 +560,8 @@ export interface CustomDomain {
   /** Output only. The custom domain's create time. */
   createTime?: string;
 }
+const CustomDomain = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<CustomDomain>;
+
 export interface CreateProjectsSitesCustomDomainsRequest {
   /** Required. The ID of the `CustomDomain`, which is the domain name you'd like to use with Firebase Hosting. */
   customDomainId?: string;
@@ -461,12 +572,19 @@ export interface CreateProjectsSitesCustomDomainsRequest {
   /** Request body */
   body?: CustomDomain;
 }
+const CreateProjectsSitesCustomDomainsRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<CreateProjectsSitesCustomDomainsRequest>;
+
 export type DomainStatusEnum =
   | "DOMAIN_STATUS_UNSPECIFIED"
   | "DOMAIN_CHANGE_PENDING"
   | "DOMAIN_ACTIVE"
   | "DOMAIN_VERIFICATION_REQUIRED"
   | "DOMAIN_VERIFICATION_LOST";
+const DomainStatusEnum = S.String;
+
 /** Represents an HTTP certificate challenge. */
 export interface CertHttpChallenge {
   /** The URL path on which to serve the specified token to satisfy the certificate challenge. */
@@ -474,6 +592,8 @@ export interface CertHttpChallenge {
   /** The token to serve at the specified URL path to satisfy the certificate challenge. */
   token?: string;
 }
+const CertHttpChallenge = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<CertHttpChallenge>;
+
 export type DomainProvisioningCertStatusEnum =
   | "CERT_STATUS_UNSPECIFIED"
   | "CERT_PENDING"
@@ -482,6 +602,8 @@ export type DomainProvisioningCertStatusEnum =
   | "CERT_PROPAGATING"
   | "CERT_ACTIVE"
   | "CERT_ERROR";
+const DomainProvisioningCertStatusEnum = S.String;
+
 /** Represents a DNS certificate challenge. */
 export interface CertDnsChallenge {
   /** The domain name upon which the DNS challenge must be satisfied. */
@@ -489,6 +611,8 @@ export interface CertDnsChallenge {
   /** The value that must be present as a TXT record on the domain name to satisfy the challenge. */
   token?: string;
 }
+const CertDnsChallenge = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<CertDnsChallenge>;
+
 export type DomainProvisioningDnsStatusEnum =
   | "DNS_STATUS_UNSPECIFIED"
   | "DNS_PENDING"
@@ -496,6 +620,8 @@ export type DomainProvisioningDnsStatusEnum =
   | "DNS_PARTIAL_MATCH"
   | "DNS_MATCH"
   | "DNS_EXTRANEOUS_MATCH";
+const DomainProvisioningDnsStatusEnum = S.String;
+
 /** The current certificate provisioning status information for a domain. */
 export interface DomainProvisioning {
   /** The time at which the last DNS fetch occurred. */
@@ -515,7 +641,11 @@ export interface DomainProvisioning {
   /** The TXT records (for the certificate challenge) that were found at the last DNS fetch. */
   certChallengeDiscoveredTxt?: StringList;
 }
+const DomainProvisioning = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<DomainProvisioning>;
+
 export type DomainRedirectTypeEnum = "REDIRECT_TYPE_UNSPECIFIED" | "MOVED_PERMANENTLY";
+const DomainRedirectTypeEnum = S.String;
+
 /** Defines the behavior of a domain-level redirect. Domain redirects preserve the path of the redirect but replace the requested domain with the one specified in the redirect configuration. */
 export interface DomainRedirect {
   /** Required. The domain name to redirect to. */
@@ -523,6 +653,8 @@ export interface DomainRedirect {
   /** Required. The redirect status code. */
   type?: DomainRedirectTypeEnum | (string & {});
 }
+const DomainRedirect = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<DomainRedirect>;
+
 /** The intended behavior and status information of a domain. */
 export interface Domain {
   /** Output only. Additional status of the domain association. */
@@ -538,12 +670,19 @@ export interface Domain {
   /** Required. The domain name of the association. */
   domainName?: string;
 }
+const Domain = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<Domain>;
+
 export interface CreateProjectsSitesDomainsRequest {
   /** Required. The parent to create the domain association for, in the format: sites/site-name */
   parent: string;
   /** Request body */
   body?: Domain;
 }
+const CreateProjectsSitesDomainsRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<CreateProjectsSitesDomainsRequest>;
+
 export interface CreateProjectsSitesReleasesRequest {
   /** Required. The site or channel to which the release belongs, in either of the following formats: - sites/SITE_ID - sites/SITE_ID/channels/CHANNEL_ID */
   parent: string;
@@ -552,6 +691,11 @@ export interface CreateProjectsSitesReleasesRequest {
   /** Request body */
   body?: Release;
 }
+const CreateProjectsSitesReleasesRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  4,
+) as any as S.Schema<CreateProjectsSitesReleasesRequest>;
+
 export interface CreateProjectsSitesVersionsRequest {
   /** The self-reported size of the version. This value is used for a pre-emptive quota check for legacy version uploads. */
   sizeBytes?: string;
@@ -562,6 +706,11 @@ export interface CreateProjectsSitesVersionsRequest {
   /** Request body */
   body?: Version;
 }
+const CreateProjectsSitesVersionsRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  5,
+) as any as S.Schema<CreateProjectsSitesVersionsRequest>;
+
 export interface CreateSitesChannelsRequest {
   /** Required. The site in which to create this channel, in the format: sites/ SITE_ID */
   parent: string;
@@ -570,6 +719,11 @@ export interface CreateSitesChannelsRequest {
   /** Request body */
   body?: Channel;
 }
+const CreateSitesChannelsRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  6,
+) as any as S.Schema<CreateSitesChannelsRequest>;
+
 export interface CreateSitesChannelsReleasesRequest {
   /** The unique identifier for a version, in the format: sites/SITE_ID/versions/ VERSION_ID The SITE_ID in this version identifier must match the SITE_ID in the `parent` parameter. This query parameter must be empty if the `type` field in the request body is `SITE_DISABLE`. */
   versionName?: string;
@@ -578,12 +732,22 @@ export interface CreateSitesChannelsReleasesRequest {
   /** Request body */
   body?: Release;
 }
+const CreateSitesChannelsReleasesRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  7,
+) as any as S.Schema<CreateSitesChannelsReleasesRequest>;
+
 export interface CreateSitesDomainsRequest {
   /** Required. The parent to create the domain association for, in the format: sites/site-name */
   parent: string;
   /** Request body */
   body?: Domain;
 }
+const CreateSitesDomainsRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<CreateSitesDomainsRequest>;
+
 export interface CreateSitesReleasesRequest {
   /** Required. The site or channel to which the release belongs, in either of the following formats: - sites/SITE_ID - sites/SITE_ID/channels/CHANNEL_ID */
   parent: string;
@@ -592,6 +756,11 @@ export interface CreateSitesReleasesRequest {
   /** Request body */
   body?: Release;
 }
+const CreateSitesReleasesRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  1,
+) as any as S.Schema<CreateSitesReleasesRequest>;
+
 export interface CreateSitesVersionsRequest {
   /** A unique id for the new version. This is was only specified for legacy version creations, and should be blank. */
   versionId?: string;
@@ -602,16 +771,33 @@ export interface CreateSitesVersionsRequest {
   /** Request body */
   body?: Version;
 }
+const CreateSitesVersionsRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  2,
+) as any as S.Schema<CreateSitesVersionsRequest>;
+
 export interface DeleteProjectsSitesRequest {
   /** Required. The fully-qualified resource name for the Hosting site, in the format: projects/PROJECT_IDENTIFIER/sites/SITE_ID Refer to the `Site` [`name`](../projects#Site.FIELDS.name) field for details about PROJECT_IDENTIFIER values. */
   name: string;
 }
+const DeleteProjectsSitesRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  3,
+) as any as S.Schema<DeleteProjectsSitesRequest>;
+
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
+const Empty = /*@__PURE__*/ __L.at(__c6, 4) as any as S.Schema<Empty>;
+
 export interface DeleteProjectsSitesChannelsRequest {
   /** Required. The fully-qualified resource name for the channel, in the format: sites/SITE_ID/channels/CHANNEL_ID */
   name: string;
 }
+const DeleteProjectsSitesChannelsRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  5,
+) as any as S.Schema<DeleteProjectsSitesChannelsRequest>;
+
 export interface DeleteProjectsSitesCustomDomainsRequest {
   /** If true, the request succeeds even if the `CustomDomain` doesn't exist. */
   allowMissing?: boolean;
@@ -622,30 +808,65 @@ export interface DeleteProjectsSitesCustomDomainsRequest {
   /** A tag that represents the state of the `CustomDomain` as you know it. If present, the supplied tag must match the current value on your `CustomDomain`, or the request fails. */
   etag?: string;
 }
+const DeleteProjectsSitesCustomDomainsRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  6,
+) as any as S.Schema<DeleteProjectsSitesCustomDomainsRequest>;
+
 export interface DeleteProjectsSitesDomainsRequest {
   /** Required. The name of the domain association to delete. */
   name: string;
 }
+const DeleteProjectsSitesDomainsRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  7,
+) as any as S.Schema<DeleteProjectsSitesDomainsRequest>;
+
 export interface DeleteProjectsSitesVersionsRequest {
   /** Required. The fully-qualified resource name for the version, in the format: sites/SITE_ID/versions/VERSION_ID */
   name: string;
 }
+const DeleteProjectsSitesVersionsRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  0,
+) as any as S.Schema<DeleteProjectsSitesVersionsRequest>;
+
 export interface DeleteSitesChannelsRequest {
   /** Required. The fully-qualified resource name for the channel, in the format: sites/SITE_ID/channels/CHANNEL_ID */
   name: string;
 }
+const DeleteSitesChannelsRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  1,
+) as any as S.Schema<DeleteSitesChannelsRequest>;
+
 export interface DeleteSitesDomainsRequest {
   /** Required. The name of the domain association to delete. */
   name: string;
 }
+const DeleteSitesDomainsRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  2,
+) as any as S.Schema<DeleteSitesDomainsRequest>;
+
 export interface DeleteSitesVersionsRequest {
   /** Required. The fully-qualified resource name for the version, in the format: sites/SITE_ID/versions/VERSION_ID */
   name: string;
 }
+const DeleteSitesVersionsRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  3,
+) as any as S.Schema<DeleteSitesVersionsRequest>;
+
 export interface GetConfigProjectsSitesRequest {
   /** Required. The site for which to get the SiteConfig, in the format: sites/ site-name/config */
   name: string;
 }
+const GetConfigProjectsSitesRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  4,
+) as any as S.Schema<GetConfigProjectsSitesRequest>;
+
 /** A `SiteConfig` contains metadata associated with a specific site that controls Firebase Hosting serving behavior */
 export interface SiteConfig {
   /** The number of FINALIZED versions that will be held for a site before automatic deletion. When a new version is deployed, content for versions in storage in excess of this number will be deleted, and will no longer be billed for storage usage. Oldest versions will be deleted first; sites are created with an unlimited number of max_versions by default. */
@@ -653,66 +874,143 @@ export interface SiteConfig {
   /** Whether or not web requests made by site visitors are logged via Cloud Logging. */
   cloudLoggingEnabled?: boolean;
 }
+const SiteConfig = /*@__PURE__*/ __L.at(__c7, 5) as any as S.Schema<SiteConfig>;
+
 export interface GetConfigSitesRequest {
   /** Required. The site for which to get the SiteConfig, in the format: sites/ site-name/config */
   name: string;
 }
+const GetConfigSitesRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  6,
+) as any as S.Schema<GetConfigSitesRequest>;
+
 export interface GetProjectsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
+const GetProjectsOperationsRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  7,
+) as any as S.Schema<GetProjectsOperationsRequest>;
+
 export interface GetProjectsSitesRequest {
   /** Required. The fully-qualified resource name for the Hosting site, in the format: projects/PROJECT_IDENTIFIER/sites/SITE_ID Refer to the `Site` [`name`](../projects#Site.FIELDS.name) field for details about PROJECT_IDENTIFIER values. Since a SITE_ID is a globally unique identifier, you can also use the unique sub-collection resource access pattern, in the format: projects/-/sites/SITE_ID */
   name: string;
 }
+const GetProjectsSitesRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  0,
+) as any as S.Schema<GetProjectsSitesRequest>;
+
 export interface GetProjectsSitesChannelsRequest {
   /** Required. The fully-qualified resource name for the channel, in the format: sites/SITE_ID/channels/CHANNEL_ID */
   name: string;
 }
+const GetProjectsSitesChannelsRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  1,
+) as any as S.Schema<GetProjectsSitesChannelsRequest>;
+
 export interface GetProjectsSitesChannelsReleasesRequest {
   /** Required. The fully-qualified resource name for the Hosting release, in either of the following formats: - sites/SITE_ID/channels/CHANNEL_ID/releases/RELEASE_ID - sites/SITE_ID/releases/RELEASE_ID */
   name: string;
 }
+const GetProjectsSitesChannelsReleasesRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  2,
+) as any as S.Schema<GetProjectsSitesChannelsReleasesRequest>;
+
 export interface GetProjectsSitesCustomDomainsRequest {
   /** Required. The name of the `CustomDomain` to get. */
   name: string;
 }
+const GetProjectsSitesCustomDomainsRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  3,
+) as any as S.Schema<GetProjectsSitesCustomDomainsRequest>;
+
 export interface GetProjectsSitesCustomDomainsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
+const GetProjectsSitesCustomDomainsOperationsRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  4,
+) as any as S.Schema<GetProjectsSitesCustomDomainsOperationsRequest>;
+
 export interface GetProjectsSitesDomainsRequest {
   /** Required. The name of the domain configuration to get. */
   name: string;
 }
+const GetProjectsSitesDomainsRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  5,
+) as any as S.Schema<GetProjectsSitesDomainsRequest>;
+
 export interface GetProjectsSitesReleasesRequest {
   /** Required. The fully-qualified resource name for the Hosting release, in either of the following formats: - sites/SITE_ID/channels/CHANNEL_ID/releases/RELEASE_ID - sites/SITE_ID/releases/RELEASE_ID */
   name: string;
 }
+const GetProjectsSitesReleasesRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  6,
+) as any as S.Schema<GetProjectsSitesReleasesRequest>;
+
 export interface GetProjectsSitesVersionsRequest {
   /** Required. The fully-qualified resource name for the version, in the format: sites/SITE_ID/versions/VERSION_ID */
   name: string;
 }
+const GetProjectsSitesVersionsRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  7,
+) as any as S.Schema<GetProjectsSitesVersionsRequest>;
+
 export interface GetSitesChannelsRequest {
   /** Required. The fully-qualified resource name for the channel, in the format: sites/SITE_ID/channels/CHANNEL_ID */
   name: string;
 }
+const GetSitesChannelsRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  0,
+) as any as S.Schema<GetSitesChannelsRequest>;
+
 export interface GetSitesChannelsReleasesRequest {
   /** Required. The fully-qualified resource name for the Hosting release, in either of the following formats: - sites/SITE_ID/channels/CHANNEL_ID/releases/RELEASE_ID - sites/SITE_ID/releases/RELEASE_ID */
   name: string;
 }
+const GetSitesChannelsReleasesRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  1,
+) as any as S.Schema<GetSitesChannelsReleasesRequest>;
+
 export interface GetSitesDomainsRequest {
   /** Required. The name of the domain configuration to get. */
   name: string;
 }
+const GetSitesDomainsRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  2,
+) as any as S.Schema<GetSitesDomainsRequest>;
+
 export interface GetSitesReleasesRequest {
   /** Required. The fully-qualified resource name for the Hosting release, in either of the following formats: - sites/SITE_ID/channels/CHANNEL_ID/releases/RELEASE_ID - sites/SITE_ID/releases/RELEASE_ID */
   name: string;
 }
+const GetSitesReleasesRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  3,
+) as any as S.Schema<GetSitesReleasesRequest>;
+
 export interface GetSitesVersionsRequest {
   /** Required. The fully-qualified resource name for the version, in the format: sites/SITE_ID/versions/VERSION_ID */
   name: string;
 }
+const GetSitesVersionsRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  4,
+) as any as S.Schema<GetSitesVersionsRequest>;
+
 export interface ListProjectsSitesRequest {
   /** Optional. The maximum number of sites to return. The service may return a lower number if fewer sites exist than this maximum number. If unspecified, defaults to 40. */
   pageSize?: number;
@@ -721,13 +1019,22 @@ export interface ListProjectsSitesRequest {
   /** Optional. A token from a previous call to `ListSites` that tells the server where to resume listing. */
   pageToken?: string;
 }
+const ListProjectsSitesRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  5,
+) as any as S.Schema<ListProjectsSitesRequest>;
+
 export type SiteList = Array<Site>;
+const SiteList = /*@__PURE__*/ __L.at(__c9, 6) as any as S.Schema<SiteList>;
+
 export interface ListSitesResponse {
   /** A list of Site objects associated with the specified Firebase project. */
   sites?: SiteList;
   /** The pagination token, if more results exist beyond the ones in this response. Include this token in your next call to `ListSites`. Page tokens are short-lived and should not be stored. */
   nextPageToken?: string;
 }
+const ListSitesResponse = /*@__PURE__*/ __L.at(__c9, 7) as any as S.Schema<ListSitesResponse>;
+
 export interface ListProjectsSitesChannelsRequest {
   /** The maximum number of channels to return. The service may return a lower number if fewer channels exist than this maximum number. If unspecified, defaults to 10. The maximum value is 100; values above 100 will be coerced to 100. */
   pageSize?: number;
@@ -736,13 +1043,25 @@ export interface ListProjectsSitesChannelsRequest {
   /** A token from a previous call to `ListChannels` that tells the server where to resume listing. */
   pageToken?: string;
 }
+const ListProjectsSitesChannelsRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  0,
+) as any as S.Schema<ListProjectsSitesChannelsRequest>;
+
 export type ChannelList = Array<Channel>;
+const ChannelList = /*@__PURE__*/ __L.at(__c10, 1) as any as S.Schema<ChannelList>;
+
 export interface ListChannelsResponse {
   /** The list of channels. */
   channels?: ChannelList;
   /** The pagination token, if more results exist beyond the ones in this response. Include this token in your next call to `ListChannels`. Page tokens are short-lived and should not be stored. */
   nextPageToken?: string;
 }
+const ListChannelsResponse = /*@__PURE__*/ __L.at(
+  __c10,
+  2,
+) as any as S.Schema<ListChannelsResponse>;
+
 export interface ListProjectsSitesChannelsReleasesRequest {
   /** A token from a previous call to `releases.list` or `channels.releases.list` that tells the server where to resume listing. */
   pageToken?: string;
@@ -751,13 +1070,25 @@ export interface ListProjectsSitesChannelsReleasesRequest {
   /** The maximum number of releases to return. The service may return a lower number if fewer releases exist than this maximum number. If unspecified, defaults to 100. */
   pageSize?: number;
 }
+const ListProjectsSitesChannelsReleasesRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  3,
+) as any as S.Schema<ListProjectsSitesChannelsReleasesRequest>;
+
 export type ReleaseList = Array<Release>;
+const ReleaseList = /*@__PURE__*/ __L.at(__c10, 4) as any as S.Schema<ReleaseList>;
+
 export interface ListReleasesResponse {
   /** The pagination token, if more results exist beyond the ones in this response. Include this token in your next call to `ListReleases`. Page tokens are short-lived and should not be stored. */
   nextPageToken?: string;
   /** The list of hashes of files that still need to be uploaded, if any exist. */
   releases?: ReleaseList;
 }
+const ListReleasesResponse = /*@__PURE__*/ __L.at(
+  __c10,
+  5,
+) as any as S.Schema<ListReleasesResponse>;
+
 export interface ListProjectsSitesCustomDomainsRequest {
   /** A token from a previous call to `ListCustomDomains` that tells the server where to resume listing. */
   pageToken?: string;
@@ -768,7 +1099,14 @@ export interface ListProjectsSitesCustomDomainsRequest {
   /** The max number of `CustomDomain` entities to return in a request. Defaults to 10. */
   pageSize?: number;
 }
+const ListProjectsSitesCustomDomainsRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  6,
+) as any as S.Schema<ListProjectsSitesCustomDomainsRequest>;
+
 export type CustomDomainList = Array<CustomDomain>;
+const CustomDomainList = /*@__PURE__*/ __L.at(__c10, 7) as any as S.Schema<CustomDomainList>;
+
 /** The response from `ListCustomDomains`. */
 export interface ListCustomDomainsResponse {
   /** The pagination token, if more results exist beyond the ones in this response. Include this token in your next call to `ListCustomDomains`. Page tokens are short-lived and should not be stored. */
@@ -776,6 +1114,11 @@ export interface ListCustomDomainsResponse {
   /** A list of `CustomDomain` entities associated with the specified Firebase `Site`. */
   customDomains?: CustomDomainList;
 }
+const ListCustomDomainsResponse = /*@__PURE__*/ __L.at(
+  __c11,
+  0,
+) as any as S.Schema<ListCustomDomainsResponse>;
+
 export interface ListProjectsSitesCustomDomainsOperationsRequest {
   /** The standard list page size. */
   pageSize?: number;
@@ -788,7 +1131,14 @@ export interface ListProjectsSitesCustomDomainsOperationsRequest {
   /** The standard list page token. */
   pageToken?: string;
 }
+const ListProjectsSitesCustomDomainsOperationsRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  1,
+) as any as S.Schema<ListProjectsSitesCustomDomainsOperationsRequest>;
+
 export type OperationList = Array<Operation>;
+const OperationList = /*@__PURE__*/ __L.at(__c11, 2) as any as S.Schema<OperationList>;
+
 /** The response message for Operations.ListOperations. */
 export interface ListOperationsResponse {
   /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
@@ -798,6 +1148,11 @@ export interface ListOperationsResponse {
   /** A list of operations that matches the specified filter in the request. */
   operations?: OperationList;
 }
+const ListOperationsResponse = /*@__PURE__*/ __L.at(
+  __c11,
+  3,
+) as any as S.Schema<ListOperationsResponse>;
+
 export interface ListProjectsSitesDomainsRequest {
   /** The next_page_token from a previous request, if provided. */
   pageToken?: string;
@@ -806,7 +1161,14 @@ export interface ListProjectsSitesDomainsRequest {
   /** The page size to return. Defaults to 50. */
   pageSize?: number;
 }
+const ListProjectsSitesDomainsRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  4,
+) as any as S.Schema<ListProjectsSitesDomainsRequest>;
+
 export type DomainList = Array<Domain>;
+const DomainList = /*@__PURE__*/ __L.at(__c11, 5) as any as S.Schema<DomainList>;
+
 /** The response to listing Domains. */
 export interface ListDomainsResponse {
   /** The list of domains, if any exist. */
@@ -814,6 +1176,8 @@ export interface ListDomainsResponse {
   /** The pagination token, if more results exist. */
   nextPageToken?: string;
 }
+const ListDomainsResponse = /*@__PURE__*/ __L.at(__c11, 6) as any as S.Schema<ListDomainsResponse>;
+
 export interface ListProjectsSitesReleasesRequest {
   /** A token from a previous call to `releases.list` or `channels.releases.list` that tells the server where to resume listing. */
   pageToken?: string;
@@ -822,6 +1186,11 @@ export interface ListProjectsSitesReleasesRequest {
   /** The maximum number of releases to return. The service may return a lower number if fewer releases exist than this maximum number. If unspecified, defaults to 100. */
   pageSize?: number;
 }
+const ListProjectsSitesReleasesRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  7,
+) as any as S.Schema<ListProjectsSitesReleasesRequest>;
+
 export interface ListProjectsSitesVersionsRequest {
   /** Required. The site or channel for which to list versions, in either of the following formats: - sites/SITE_ID - sites/SITE_ID/channels/CHANNEL_ID */
   parent: string;
@@ -832,14 +1201,28 @@ export interface ListProjectsSitesVersionsRequest {
   /** A token from a previous call to `ListVersions` that tells the server where to resume listing. */
   pageToken?: string;
 }
+const ListProjectsSitesVersionsRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  0,
+) as any as S.Schema<ListProjectsSitesVersionsRequest>;
+
 export type VersionList = Array<Version>;
+const VersionList = /*@__PURE__*/ __L.at(__c12, 1) as any as S.Schema<VersionList>;
+
 export interface ListVersionsResponse {
   /** The list of versions, if any exist. */
   versions?: VersionList;
   /** The pagination token, if more results exist beyond the ones in this response. Include this token in your next call to `ListVersions`. Page tokens are short-lived and should not be stored. */
   nextPageToken?: string;
 }
+const ListVersionsResponse = /*@__PURE__*/ __L.at(
+  __c12,
+  2,
+) as any as S.Schema<ListVersionsResponse>;
+
 export type ListProjectsSitesVersionsFilesStatusEnum = "STATUS_UNSPECIFIED" | "EXPECTED" | "ACTIVE";
+const ListProjectsSitesVersionsFilesStatusEnum = S.String;
+
 export interface ListProjectsSitesVersionsFilesRequest {
   /** A token from a previous call to `ListVersionFiles` that tells the server where to resume listing. */
   pageToken?: string;
@@ -850,7 +1233,14 @@ export interface ListProjectsSitesVersionsFilesRequest {
   /** The maximum number of version files to return. The service may return a lower number if fewer version files exist than this maximum number. If unspecified, defaults to 1000. */
   pageSize?: number;
 }
+const ListProjectsSitesVersionsFilesRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  3,
+) as any as S.Schema<ListProjectsSitesVersionsFilesRequest>;
+
 export type VersionFileStatusEnum = "STATUS_UNSPECIFIED" | "EXPECTED" | "ACTIVE";
+const VersionFileStatusEnum = S.String;
+
 /** A static content file that is part of a version. */
 export interface VersionFile {
   /** The URI at which the file's content should display. */
@@ -860,13 +1250,22 @@ export interface VersionFile {
   /** Output only. The current status of a particular file in the specified version. The value will be either `pending upload` or `uploaded`. */
   status?: VersionFileStatusEnum;
 }
+const VersionFile = /*@__PURE__*/ __L.at(__c12, 4) as any as S.Schema<VersionFile>;
+
 export type VersionFileList = Array<VersionFile>;
+const VersionFileList = /*@__PURE__*/ __L.at(__c12, 5) as any as S.Schema<VersionFileList>;
+
 export interface ListVersionFilesResponse {
   /** The list of paths to the hashes of the files in the specified version. */
   files?: VersionFileList;
   /** The pagination token, if more results exist beyond the ones in this response. Include this token in your next call to `ListVersionFiles`. Page tokens are short-lived and should not be stored. */
   nextPageToken?: string;
 }
+const ListVersionFilesResponse = /*@__PURE__*/ __L.at(
+  __c12,
+  6,
+) as any as S.Schema<ListVersionFilesResponse>;
+
 export interface ListSitesChannelsRequest {
   /** A token from a previous call to `ListChannels` that tells the server where to resume listing. */
   pageToken?: string;
@@ -875,6 +1274,11 @@ export interface ListSitesChannelsRequest {
   /** The maximum number of channels to return. The service may return a lower number if fewer channels exist than this maximum number. If unspecified, defaults to 10. The maximum value is 100; values above 100 will be coerced to 100. */
   pageSize?: number;
 }
+const ListSitesChannelsRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  7,
+) as any as S.Schema<ListSitesChannelsRequest>;
+
 export interface ListSitesChannelsReleasesRequest {
   /** Required. The site or channel for which to list releases, in either of the following formats: - sites/SITE_ID - sites/SITE_ID/channels/CHANNEL_ID */
   parent: string;
@@ -883,6 +1287,11 @@ export interface ListSitesChannelsReleasesRequest {
   /** A token from a previous call to `releases.list` or `channels.releases.list` that tells the server where to resume listing. */
   pageToken?: string;
 }
+const ListSitesChannelsReleasesRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  0,
+) as any as S.Schema<ListSitesChannelsReleasesRequest>;
+
 export interface ListSitesDomainsRequest {
   /** The next_page_token from a previous request, if provided. */
   pageToken?: string;
@@ -891,6 +1300,11 @@ export interface ListSitesDomainsRequest {
   /** The page size to return. Defaults to 50. */
   pageSize?: number;
 }
+const ListSitesDomainsRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  1,
+) as any as S.Schema<ListSitesDomainsRequest>;
+
 export interface ListSitesReleasesRequest {
   /** The maximum number of releases to return. The service may return a lower number if fewer releases exist than this maximum number. If unspecified, defaults to 100. */
   pageSize?: number;
@@ -899,6 +1313,11 @@ export interface ListSitesReleasesRequest {
   /** A token from a previous call to `releases.list` or `channels.releases.list` that tells the server where to resume listing. */
   pageToken?: string;
 }
+const ListSitesReleasesRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  2,
+) as any as S.Schema<ListSitesReleasesRequest>;
+
 export interface ListSitesVersionsRequest {
   /** A filter string used to return a subset of versions in the response. The currently supported fields for filtering are: `name`, `status`, and `create_time`. Learn more about filtering in Google's [AIP 160 standard](https://google.aip.dev/160). */
   filter?: string;
@@ -909,7 +1328,14 @@ export interface ListSitesVersionsRequest {
   /** Required. The site or channel for which to list versions, in either of the following formats: - sites/SITE_ID - sites/SITE_ID/channels/CHANNEL_ID */
   parent: string;
 }
+const ListSitesVersionsRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  3,
+) as any as S.Schema<ListSitesVersionsRequest>;
+
 export type ListSitesVersionsFilesStatusEnum = "STATUS_UNSPECIFIED" | "EXPECTED" | "ACTIVE";
+const ListSitesVersionsFilesStatusEnum = S.String;
+
 export interface ListSitesVersionsFilesRequest {
   /** The maximum number of version files to return. The service may return a lower number if fewer version files exist than this maximum number. If unspecified, defaults to 1000. */
   pageSize?: number;
@@ -920,6 +1346,11 @@ export interface ListSitesVersionsFilesRequest {
   /** The type of files that should be listed for the specified version. */
   status?: ListSitesVersionsFilesStatusEnum | (string & {});
 }
+const ListSitesVersionsFilesRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  4,
+) as any as S.Schema<ListSitesVersionsFilesRequest>;
+
 export interface PatchProjectsSitesRequest {
   /** A set of field names from your Site that you want to update. */
   updateMask?: string;
@@ -928,6 +1359,11 @@ export interface PatchProjectsSitesRequest {
   /** Request body */
   body?: Site;
 }
+const PatchProjectsSitesRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  5,
+) as any as S.Schema<PatchProjectsSitesRequest>;
+
 export interface PatchProjectsSitesChannelsRequest {
   /** A comma-separated list of fields to be updated in this request. */
   updateMask?: string;
@@ -936,6 +1372,11 @@ export interface PatchProjectsSitesChannelsRequest {
   /** Request body */
   body?: Channel;
 }
+const PatchProjectsSitesChannelsRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  6,
+) as any as S.Schema<PatchProjectsSitesChannelsRequest>;
+
 export interface PatchProjectsSitesCustomDomainsRequest {
   /** Identifier. The fully-qualified name of the `CustomDomain`. */
   name: string;
@@ -948,6 +1389,11 @@ export interface PatchProjectsSitesCustomDomainsRequest {
   /** Request body */
   body?: CustomDomain;
 }
+const PatchProjectsSitesCustomDomainsRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  7,
+) as any as S.Schema<PatchProjectsSitesCustomDomainsRequest>;
+
 export interface PatchProjectsSitesVersionsRequest {
   /** The fully-qualified resource name for the version, in the format: sites/ SITE_ID/versions/VERSION_ID This name is provided in the response body when you call [`CreateVersion`](sites.versions/create). */
   name: string;
@@ -956,6 +1402,11 @@ export interface PatchProjectsSitesVersionsRequest {
   /** Request body */
   body?: Version;
 }
+const PatchProjectsSitesVersionsRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  0,
+) as any as S.Schema<PatchProjectsSitesVersionsRequest>;
+
 export interface PatchSitesChannelsRequest {
   /** A comma-separated list of fields to be updated in this request. */
   updateMask?: string;
@@ -964,6 +1415,11 @@ export interface PatchSitesChannelsRequest {
   /** Request body */
   body?: Channel;
 }
+const PatchSitesChannelsRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  1,
+) as any as S.Schema<PatchSitesChannelsRequest>;
+
 export interface PatchSitesVersionsRequest {
   /** The fully-qualified resource name for the version, in the format: sites/ SITE_ID/versions/VERSION_ID This name is provided in the response body when you call [`CreateVersion`](sites.versions/create). */
   name: string;
@@ -972,28 +1428,53 @@ export interface PatchSitesVersionsRequest {
   /** Request body */
   body?: Version;
 }
+const PatchSitesVersionsRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  2,
+) as any as S.Schema<PatchSitesVersionsRequest>;
+
 export interface PopulateVersionFilesRequest {
   /** A set of file paths to the hashes corresponding to assets that should be added to the version. A file path to an empty hash will remove the path from the version. Calculate a hash by Gzipping the file then taking the SHA256 hash of the newly compressed file. */
   files?: StringMap;
 }
+const PopulateVersionFilesRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  3,
+) as any as S.Schema<PopulateVersionFilesRequest>;
+
 export interface PopulateFilesProjectsSitesVersionsRequest {
   /** Required. The version to which to add files, in the format: sites/SITE_ID /versions/VERSION_ID */
   parent: string;
   /** Request body */
   body?: PopulateVersionFilesRequest;
 }
+const PopulateFilesProjectsSitesVersionsRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  4,
+) as any as S.Schema<PopulateFilesProjectsSitesVersionsRequest>;
+
 export interface PopulateVersionFilesResponse {
   /** The URL to which the files should be uploaded, in the format: "https://upload-firebasehosting.googleapis.com/upload/sites/SITE_ID /versions/VERSION_ID/files" Perform a multipart `POST` of the Gzipped file contents to the URL using a forward slash and the hash of the file appended to the end. */
   uploadUrl?: string;
   /** The content hashes of the specified files that need to be uploaded to the specified URL. */
   uploadRequiredHashes?: StringList;
 }
+const PopulateVersionFilesResponse = /*@__PURE__*/ __L.at(
+  __c14,
+  5,
+) as any as S.Schema<PopulateVersionFilesResponse>;
+
 export interface PopulateFilesSitesVersionsRequest {
   /** Required. The version to which to add files, in the format: sites/SITE_ID /versions/VERSION_ID */
   parent: string;
   /** Request body */
   body?: PopulateVersionFilesRequest;
 }
+const PopulateFilesSitesVersionsRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  6,
+) as any as S.Schema<PopulateFilesSitesVersionsRequest>;
+
 /** The request sent to `UndeleteCustomDomain`. */
 export interface UndeleteCustomDomainRequest {
   /** If true, Hosting validates that it's possible to complete your request but doesn't actually delete the `CustomDomain`. */
@@ -1001,12 +1482,22 @@ export interface UndeleteCustomDomainRequest {
   /** A tag that represents the state of the `CustomDomain` as you know it. If present, the supplied tag must match the current value on your `CustomDomain`, or the request fails. */
   etag?: string;
 }
+const UndeleteCustomDomainRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  7,
+) as any as S.Schema<UndeleteCustomDomainRequest>;
+
 export interface UndeleteProjectsSitesCustomDomainsRequest {
   /** Required. The name of the `CustomDomain` to delete. */
   name: string;
   /** Request body */
   body?: UndeleteCustomDomainRequest;
 }
+const UndeleteProjectsSitesCustomDomainsRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  0,
+) as any as S.Schema<UndeleteProjectsSitesCustomDomainsRequest>;
+
 export interface UpdateConfigProjectsSitesRequest {
   /** A set of field names from your [site configuration](../sites.SiteConfig) that you want to update. A field will be overwritten if, and only if, it's in the mask. If a mask is not provided then a default mask of only [`max_versions`](../sites.SiteConfig.max_versions) will be used. */
   updateMask?: string;
@@ -1015,6 +1506,11 @@ export interface UpdateConfigProjectsSitesRequest {
   /** Request body */
   body?: SiteConfig;
 }
+const UpdateConfigProjectsSitesRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  1,
+) as any as S.Schema<UpdateConfigProjectsSitesRequest>;
+
 export interface UpdateConfigSitesRequest {
   /** A set of field names from your [site configuration](../sites.SiteConfig) that you want to update. A field will be overwritten if, and only if, it's in the mask. If a mask is not provided then a default mask of only [`max_versions`](../sites.SiteConfig.max_versions) will be used. */
   updateMask?: string;
@@ -1023,18 +1519,33 @@ export interface UpdateConfigSitesRequest {
   /** Request body */
   body?: SiteConfig;
 }
+const UpdateConfigSitesRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  2,
+) as any as S.Schema<UpdateConfigSitesRequest>;
+
 export interface UpdateProjectsSitesDomainsRequest {
   /** Required. The name of the domain association to update or create, if an association doesn't already exist. */
   name: string;
   /** Request body */
   body?: Domain;
 }
+const UpdateProjectsSitesDomainsRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  3,
+) as any as S.Schema<UpdateProjectsSitesDomainsRequest>;
+
 export interface UpdateSitesDomainsRequest {
   /** Required. The name of the domain association to update or create, if an association doesn't already exist. */
   name: string;
   /** Request body */
   body?: Domain;
 }
+const UpdateSitesDomainsRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  4,
+) as any as S.Schema<UpdateSitesDomainsRequest>;
+
 export type CloneProjectsSitesVersionsError =
   | NotFound
   | Forbidden
@@ -1048,8 +1559,8 @@ export const cloneProjectsSitesVersions: API.OperationMethod<
   CloneProjectsSitesVersionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3) as any as S.Schema<CloneProjectsSitesVersionsRequest>,
-  output: __S(7) as any as S.Schema<Operation>,
+  input: CloneProjectsSitesVersionsRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1063,8 +1574,8 @@ export const cloneSitesVersions: API.OperationMethod<
   CloneSitesVersionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8) as any as S.Schema<CloneSitesVersionsRequest>,
-  output: __S(7) as any as S.Schema<Operation>,
+  input: CloneSitesVersionsRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1078,8 +1589,8 @@ export const createProjectsSites: API.OperationMethod<
   CreateProjectsSitesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11) as any as S.Schema<CreateProjectsSitesRequest>,
-  output: __S(10) as any as S.Schema<Site>,
+  input: CreateProjectsSitesRequest,
+  output: Site,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1098,8 +1609,8 @@ export const createProjectsSitesChannels: API.OperationMethod<
   CreateProjectsSitesChannelsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25) as any as S.Schema<CreateProjectsSitesChannelsRequest>,
-  output: __S(24) as any as S.Schema<Channel>,
+  input: CreateProjectsSitesChannelsRequest,
+  output: Channel,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1118,8 +1629,8 @@ export const createProjectsSitesChannelsReleases: API.OperationMethod<
   CreateProjectsSitesChannelsReleasesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26) as any as S.Schema<CreateProjectsSitesChannelsReleasesRequest>,
-  output: __S(23) as any as S.Schema<Release>,
+  input: CreateProjectsSitesChannelsReleasesRequest,
+  output: Release,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1138,8 +1649,8 @@ export const createProjectsSitesCustomDomains: API.OperationMethod<
   CreateProjectsSitesCustomDomainsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37) as any as S.Schema<CreateProjectsSitesCustomDomainsRequest>,
-  output: __S(7) as any as S.Schema<Operation>,
+  input: CreateProjectsSitesCustomDomainsRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1158,8 +1669,8 @@ export const createProjectsSitesDomains: API.OperationMethod<
   CreateProjectsSitesDomainsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43) as any as S.Schema<CreateProjectsSitesDomainsRequest>,
-  output: __S(42) as any as S.Schema<Domain>,
+  input: CreateProjectsSitesDomainsRequest,
+  output: Domain,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1178,8 +1689,8 @@ export const createProjectsSitesReleases: API.OperationMethod<
   CreateProjectsSitesReleasesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44) as any as S.Schema<CreateProjectsSitesReleasesRequest>,
-  output: __S(23) as any as S.Schema<Release>,
+  input: CreateProjectsSitesReleasesRequest,
+  output: Release,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1198,8 +1709,8 @@ export const createProjectsSitesVersions: API.OperationMethod<
   CreateProjectsSitesVersionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45) as any as S.Schema<CreateProjectsSitesVersionsRequest>,
-  output: __S(22) as any as S.Schema<Version>,
+  input: CreateProjectsSitesVersionsRequest,
+  output: Version,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1213,8 +1724,8 @@ export const createSitesChannels: API.OperationMethod<
   CreateSitesChannelsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(46) as any as S.Schema<CreateSitesChannelsRequest>,
-  output: __S(24) as any as S.Schema<Channel>,
+  input: CreateSitesChannelsRequest,
+  output: Channel,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1233,8 +1744,8 @@ export const createSitesChannelsReleases: API.OperationMethod<
   CreateSitesChannelsReleasesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47) as any as S.Schema<CreateSitesChannelsReleasesRequest>,
-  output: __S(23) as any as S.Schema<Release>,
+  input: CreateSitesChannelsReleasesRequest,
+  output: Release,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1248,8 +1759,8 @@ export const createSitesDomains: API.OperationMethod<
   CreateSitesDomainsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48) as any as S.Schema<CreateSitesDomainsRequest>,
-  output: __S(42) as any as S.Schema<Domain>,
+  input: CreateSitesDomainsRequest,
+  output: Domain,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1263,8 +1774,8 @@ export const createSitesReleases: API.OperationMethod<
   CreateSitesReleasesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49) as any as S.Schema<CreateSitesReleasesRequest>,
-  output: __S(23) as any as S.Schema<Release>,
+  input: CreateSitesReleasesRequest,
+  output: Release,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1278,8 +1789,8 @@ export const createSitesVersions: API.OperationMethod<
   CreateSitesVersionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(50) as any as S.Schema<CreateSitesVersionsRequest>,
-  output: __S(22) as any as S.Schema<Version>,
+  input: CreateSitesVersionsRequest,
+  output: Version,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1293,8 +1804,8 @@ export const deleteProjectsSites: API.OperationMethod<
   DeleteProjectsSitesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(51) as any as S.Schema<DeleteProjectsSitesRequest>,
-  output: __S(52) as any as S.Schema<Empty>,
+  input: DeleteProjectsSitesRequest,
+  output: Empty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1313,8 +1824,8 @@ export const deleteProjectsSitesChannels: API.OperationMethod<
   DeleteProjectsSitesChannelsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(53) as any as S.Schema<DeleteProjectsSitesChannelsRequest>,
-  output: __S(52) as any as S.Schema<Empty>,
+  input: DeleteProjectsSitesChannelsRequest,
+  output: Empty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1333,8 +1844,8 @@ export const deleteProjectsSitesCustomDomains: API.OperationMethod<
   DeleteProjectsSitesCustomDomainsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(54) as any as S.Schema<DeleteProjectsSitesCustomDomainsRequest>,
-  output: __S(7) as any as S.Schema<Operation>,
+  input: DeleteProjectsSitesCustomDomainsRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1353,8 +1864,8 @@ export const deleteProjectsSitesDomains: API.OperationMethod<
   DeleteProjectsSitesDomainsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(55) as any as S.Schema<DeleteProjectsSitesDomainsRequest>,
-  output: __S(52) as any as S.Schema<Empty>,
+  input: DeleteProjectsSitesDomainsRequest,
+  output: Empty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1373,8 +1884,8 @@ export const deleteProjectsSitesVersions: API.OperationMethod<
   DeleteProjectsSitesVersionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56) as any as S.Schema<DeleteProjectsSitesVersionsRequest>,
-  output: __S(52) as any as S.Schema<Empty>,
+  input: DeleteProjectsSitesVersionsRequest,
+  output: Empty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1388,8 +1899,8 @@ export const deleteSitesChannels: API.OperationMethod<
   DeleteSitesChannelsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57) as any as S.Schema<DeleteSitesChannelsRequest>,
-  output: __S(52) as any as S.Schema<Empty>,
+  input: DeleteSitesChannelsRequest,
+  output: Empty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1403,8 +1914,8 @@ export const deleteSitesDomains: API.OperationMethod<
   DeleteSitesDomainsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(58) as any as S.Schema<DeleteSitesDomainsRequest>,
-  output: __S(52) as any as S.Schema<Empty>,
+  input: DeleteSitesDomainsRequest,
+  output: Empty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1418,8 +1929,8 @@ export const deleteSitesVersions: API.OperationMethod<
   DeleteSitesVersionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(59) as any as S.Schema<DeleteSitesVersionsRequest>,
-  output: __S(52) as any as S.Schema<Empty>,
+  input: DeleteSitesVersionsRequest,
+  output: Empty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1433,8 +1944,8 @@ export const getConfigProjectsSites: API.OperationMethod<
   GetConfigProjectsSitesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60) as any as S.Schema<GetConfigProjectsSitesRequest>,
-  output: __S(61) as any as S.Schema<SiteConfig>,
+  input: GetConfigProjectsSitesRequest,
+  output: SiteConfig,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1448,8 +1959,8 @@ export const getConfigSites: API.OperationMethod<
   GetConfigSitesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(62) as any as S.Schema<GetConfigSitesRequest>,
-  output: __S(61) as any as S.Schema<SiteConfig>,
+  input: GetConfigSitesRequest,
+  output: SiteConfig,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1463,8 +1974,8 @@ export const getProjectsOperations: API.OperationMethod<
   GetProjectsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(63) as any as S.Schema<GetProjectsOperationsRequest>,
-  output: __S(7) as any as S.Schema<Operation>,
+  input: GetProjectsOperationsRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1478,8 +1989,8 @@ export const getProjectsSites: API.OperationMethod<
   GetProjectsSitesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(64) as any as S.Schema<GetProjectsSitesRequest>,
-  output: __S(10) as any as S.Schema<Site>,
+  input: GetProjectsSitesRequest,
+  output: Site,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1493,8 +2004,8 @@ export const getProjectsSitesChannels: API.OperationMethod<
   GetProjectsSitesChannelsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65) as any as S.Schema<GetProjectsSitesChannelsRequest>,
-  output: __S(24) as any as S.Schema<Channel>,
+  input: GetProjectsSitesChannelsRequest,
+  output: Channel,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1508,8 +2019,8 @@ export const getProjectsSitesChannelsReleases: API.OperationMethod<
   GetProjectsSitesChannelsReleasesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(66) as any as S.Schema<GetProjectsSitesChannelsReleasesRequest>,
-  output: __S(23) as any as S.Schema<Release>,
+  input: GetProjectsSitesChannelsReleasesRequest,
+  output: Release,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1523,8 +2034,8 @@ export const getProjectsSitesCustomDomains: API.OperationMethod<
   GetProjectsSitesCustomDomainsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(67) as any as S.Schema<GetProjectsSitesCustomDomainsRequest>,
-  output: __S(36) as any as S.Schema<CustomDomain>,
+  input: GetProjectsSitesCustomDomainsRequest,
+  output: CustomDomain,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1538,8 +2049,8 @@ export const getProjectsSitesCustomDomainsOperations: API.OperationMethod<
   GetProjectsSitesCustomDomainsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(68) as any as S.Schema<GetProjectsSitesCustomDomainsOperationsRequest>,
-  output: __S(7) as any as S.Schema<Operation>,
+  input: GetProjectsSitesCustomDomainsOperationsRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1553,8 +2064,8 @@ export const getProjectsSitesDomains: API.OperationMethod<
   GetProjectsSitesDomainsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(69) as any as S.Schema<GetProjectsSitesDomainsRequest>,
-  output: __S(42) as any as S.Schema<Domain>,
+  input: GetProjectsSitesDomainsRequest,
+  output: Domain,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1568,8 +2079,8 @@ export const getProjectsSitesReleases: API.OperationMethod<
   GetProjectsSitesReleasesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(70) as any as S.Schema<GetProjectsSitesReleasesRequest>,
-  output: __S(23) as any as S.Schema<Release>,
+  input: GetProjectsSitesReleasesRequest,
+  output: Release,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1583,8 +2094,8 @@ export const getProjectsSitesVersions: API.OperationMethod<
   GetProjectsSitesVersionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(71) as any as S.Schema<GetProjectsSitesVersionsRequest>,
-  output: __S(22) as any as S.Schema<Version>,
+  input: GetProjectsSitesVersionsRequest,
+  output: Version,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1598,8 +2109,8 @@ export const getSitesChannels: API.OperationMethod<
   GetSitesChannelsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(72) as any as S.Schema<GetSitesChannelsRequest>,
-  output: __S(24) as any as S.Schema<Channel>,
+  input: GetSitesChannelsRequest,
+  output: Channel,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1613,8 +2124,8 @@ export const getSitesChannelsReleases: API.OperationMethod<
   GetSitesChannelsReleasesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(73) as any as S.Schema<GetSitesChannelsReleasesRequest>,
-  output: __S(23) as any as S.Schema<Release>,
+  input: GetSitesChannelsReleasesRequest,
+  output: Release,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1628,8 +2139,8 @@ export const getSitesDomains: API.OperationMethod<
   GetSitesDomainsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(74) as any as S.Schema<GetSitesDomainsRequest>,
-  output: __S(42) as any as S.Schema<Domain>,
+  input: GetSitesDomainsRequest,
+  output: Domain,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1643,8 +2154,8 @@ export const getSitesReleases: API.OperationMethod<
   GetSitesReleasesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(75) as any as S.Schema<GetSitesReleasesRequest>,
-  output: __S(23) as any as S.Schema<Release>,
+  input: GetSitesReleasesRequest,
+  output: Release,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1658,8 +2169,8 @@ export const getSitesVersions: API.OperationMethod<
   GetSitesVersionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(76) as any as S.Schema<GetSitesVersionsRequest>,
-  output: __S(22) as any as S.Schema<Version>,
+  input: GetSitesVersionsRequest,
+  output: Version,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1674,8 +2185,8 @@ export const listProjectsSites: API.PaginatedOperationMethod<
   GcpOpContext,
   ListSitesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(77) as any as S.Schema<ListProjectsSitesRequest>,
-  output: __S(79) as any as S.Schema<ListSitesResponse>,
+  input: ListProjectsSitesRequest,
+  output: ListSitesResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1691,8 +2202,8 @@ export const listProjectsSitesChannels: API.PaginatedOperationMethod<
   GcpOpContext,
   ListChannelsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(80) as any as S.Schema<ListProjectsSitesChannelsRequest>,
-  output: __S(82) as any as S.Schema<ListChannelsResponse>,
+  input: ListProjectsSitesChannelsRequest,
+  output: ListChannelsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1708,8 +2219,8 @@ export const listProjectsSitesChannelsReleases: API.PaginatedOperationMethod<
   GcpOpContext,
   ListReleasesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(83) as any as S.Schema<ListProjectsSitesChannelsReleasesRequest>,
-  output: __S(85) as any as S.Schema<ListReleasesResponse>,
+  input: ListProjectsSitesChannelsReleasesRequest,
+  output: ListReleasesResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1725,8 +2236,8 @@ export const listProjectsSitesCustomDomains: API.PaginatedOperationMethod<
   GcpOpContext,
   ListCustomDomainsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(86) as any as S.Schema<ListProjectsSitesCustomDomainsRequest>,
-  output: __S(88) as any as S.Schema<ListCustomDomainsResponse>,
+  input: ListProjectsSitesCustomDomainsRequest,
+  output: ListCustomDomainsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1742,8 +2253,8 @@ export const listProjectsSitesCustomDomainsOperations: API.PaginatedOperationMet
   GcpOpContext,
   ListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(89) as any as S.Schema<ListProjectsSitesCustomDomainsOperationsRequest>,
-  output: __S(91) as any as S.Schema<ListOperationsResponse>,
+  input: ListProjectsSitesCustomDomainsOperationsRequest,
+  output: ListOperationsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1759,8 +2270,8 @@ export const listProjectsSitesDomains: API.PaginatedOperationMethod<
   GcpOpContext,
   ListDomainsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(92) as any as S.Schema<ListProjectsSitesDomainsRequest>,
-  output: __S(94) as any as S.Schema<ListDomainsResponse>,
+  input: ListProjectsSitesDomainsRequest,
+  output: ListDomainsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1776,8 +2287,8 @@ export const listProjectsSitesReleases: API.PaginatedOperationMethod<
   GcpOpContext,
   ListReleasesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(95) as any as S.Schema<ListProjectsSitesReleasesRequest>,
-  output: __S(85) as any as S.Schema<ListReleasesResponse>,
+  input: ListProjectsSitesReleasesRequest,
+  output: ListReleasesResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1793,8 +2304,8 @@ export const listProjectsSitesVersions: API.PaginatedOperationMethod<
   GcpOpContext,
   ListVersionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(96) as any as S.Schema<ListProjectsSitesVersionsRequest>,
-  output: __S(98) as any as S.Schema<ListVersionsResponse>,
+  input: ListProjectsSitesVersionsRequest,
+  output: ListVersionsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1810,8 +2321,8 @@ export const listProjectsSitesVersionsFiles: API.PaginatedOperationMethod<
   GcpOpContext,
   ListVersionFilesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(99) as any as S.Schema<ListProjectsSitesVersionsFilesRequest>,
-  output: __S(102) as any as S.Schema<ListVersionFilesResponse>,
+  input: ListProjectsSitesVersionsFilesRequest,
+  output: ListVersionFilesResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1827,8 +2338,8 @@ export const listSitesChannels: API.PaginatedOperationMethod<
   GcpOpContext,
   ListChannelsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(103) as any as S.Schema<ListSitesChannelsRequest>,
-  output: __S(82) as any as S.Schema<ListChannelsResponse>,
+  input: ListSitesChannelsRequest,
+  output: ListChannelsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1844,8 +2355,8 @@ export const listSitesChannelsReleases: API.PaginatedOperationMethod<
   GcpOpContext,
   ListReleasesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(104) as any as S.Schema<ListSitesChannelsReleasesRequest>,
-  output: __S(85) as any as S.Schema<ListReleasesResponse>,
+  input: ListSitesChannelsReleasesRequest,
+  output: ListReleasesResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1861,8 +2372,8 @@ export const listSitesDomains: API.PaginatedOperationMethod<
   GcpOpContext,
   ListDomainsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(105) as any as S.Schema<ListSitesDomainsRequest>,
-  output: __S(94) as any as S.Schema<ListDomainsResponse>,
+  input: ListSitesDomainsRequest,
+  output: ListDomainsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1878,8 +2389,8 @@ export const listSitesReleases: API.PaginatedOperationMethod<
   GcpOpContext,
   ListReleasesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(106) as any as S.Schema<ListSitesReleasesRequest>,
-  output: __S(85) as any as S.Schema<ListReleasesResponse>,
+  input: ListSitesReleasesRequest,
+  output: ListReleasesResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1895,8 +2406,8 @@ export const listSitesVersions: API.PaginatedOperationMethod<
   GcpOpContext,
   ListVersionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(107) as any as S.Schema<ListSitesVersionsRequest>,
-  output: __S(98) as any as S.Schema<ListVersionsResponse>,
+  input: ListSitesVersionsRequest,
+  output: ListVersionsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1912,8 +2423,8 @@ export const listSitesVersionsFiles: API.PaginatedOperationMethod<
   GcpOpContext,
   ListVersionFilesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(108) as any as S.Schema<ListSitesVersionsFilesRequest>,
-  output: __S(102) as any as S.Schema<ListVersionFilesResponse>,
+  input: ListSitesVersionsFilesRequest,
+  output: ListVersionFilesResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1928,8 +2439,8 @@ export const patchProjectsSites: API.OperationMethod<
   PatchProjectsSitesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(109) as any as S.Schema<PatchProjectsSitesRequest>,
-  output: __S(10) as any as S.Schema<Site>,
+  input: PatchProjectsSitesRequest,
+  output: Site,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1948,8 +2459,8 @@ export const patchProjectsSitesChannels: API.OperationMethod<
   PatchProjectsSitesChannelsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(110) as any as S.Schema<PatchProjectsSitesChannelsRequest>,
-  output: __S(24) as any as S.Schema<Channel>,
+  input: PatchProjectsSitesChannelsRequest,
+  output: Channel,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1968,8 +2479,8 @@ export const patchProjectsSitesCustomDomains: API.OperationMethod<
   PatchProjectsSitesCustomDomainsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(111) as any as S.Schema<PatchProjectsSitesCustomDomainsRequest>,
-  output: __S(7) as any as S.Schema<Operation>,
+  input: PatchProjectsSitesCustomDomainsRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1988,8 +2499,8 @@ export const patchProjectsSitesVersions: API.OperationMethod<
   PatchProjectsSitesVersionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(112) as any as S.Schema<PatchProjectsSitesVersionsRequest>,
-  output: __S(22) as any as S.Schema<Version>,
+  input: PatchProjectsSitesVersionsRequest,
+  output: Version,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2003,8 +2514,8 @@ export const patchSitesChannels: API.OperationMethod<
   PatchSitesChannelsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(113) as any as S.Schema<PatchSitesChannelsRequest>,
-  output: __S(24) as any as S.Schema<Channel>,
+  input: PatchSitesChannelsRequest,
+  output: Channel,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2018,8 +2529,8 @@ export const patchSitesVersions: API.OperationMethod<
   PatchSitesVersionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(114) as any as S.Schema<PatchSitesVersionsRequest>,
-  output: __S(22) as any as S.Schema<Version>,
+  input: PatchSitesVersionsRequest,
+  output: Version,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2038,8 +2549,8 @@ export const populateFilesProjectsSitesVersions: API.OperationMethod<
   PopulateFilesProjectsSitesVersionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(116) as any as S.Schema<PopulateFilesProjectsSitesVersionsRequest>,
-  output: __S(117) as any as S.Schema<PopulateVersionFilesResponse>,
+  input: PopulateFilesProjectsSitesVersionsRequest,
+  output: PopulateVersionFilesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2058,8 +2569,8 @@ export const populateFilesSitesVersions: API.OperationMethod<
   PopulateFilesSitesVersionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(118) as any as S.Schema<PopulateFilesSitesVersionsRequest>,
-  output: __S(117) as any as S.Schema<PopulateVersionFilesResponse>,
+  input: PopulateFilesSitesVersionsRequest,
+  output: PopulateVersionFilesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2078,8 +2589,8 @@ export const undeleteProjectsSitesCustomDomains: API.OperationMethod<
   UndeleteProjectsSitesCustomDomainsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(120) as any as S.Schema<UndeleteProjectsSitesCustomDomainsRequest>,
-  output: __S(7) as any as S.Schema<Operation>,
+  input: UndeleteProjectsSitesCustomDomainsRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2098,8 +2609,8 @@ export const updateConfigProjectsSites: API.OperationMethod<
   UpdateConfigProjectsSitesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(121) as any as S.Schema<UpdateConfigProjectsSitesRequest>,
-  output: __S(61) as any as S.Schema<SiteConfig>,
+  input: UpdateConfigProjectsSitesRequest,
+  output: SiteConfig,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2113,8 +2624,8 @@ export const updateConfigSites: API.OperationMethod<
   UpdateConfigSitesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(122) as any as S.Schema<UpdateConfigSitesRequest>,
-  output: __S(61) as any as S.Schema<SiteConfig>,
+  input: UpdateConfigSitesRequest,
+  output: SiteConfig,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2133,8 +2644,8 @@ export const updateProjectsSitesDomains: API.OperationMethod<
   UpdateProjectsSitesDomainsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(123) as any as S.Schema<UpdateProjectsSitesDomainsRequest>,
-  output: __S(42) as any as S.Schema<Domain>,
+  input: UpdateProjectsSitesDomainsRequest,
+  output: Domain,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2148,8 +2659,8 @@ export const updateSitesDomains: API.OperationMethod<
   UpdateSitesDomainsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(124) as any as S.Schema<UpdateSitesDomainsRequest>,
-  output: __S(42) as any as S.Schema<Domain>,
+  input: UpdateSitesDomainsRequest,
+  output: Domain,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2163,15 +2674,15 @@ function __c0(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          regexes: S.optional(__S(0)),
+          regexes: S.optional(StringList),
         }),
       ).annotate({ identifier: "PathFilter" });
     case 2:
       return S.suspend(() =>
         S.Struct({
           sourceVersion: S.optional(S.String),
-          include: S.optional(__S(1)),
-          exclude: S.optional(__S(1)),
+          include: S.optional(PathFilter),
+          exclude: S.optional(PathFilter),
           finalize: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "CloneVersionRequest" });
@@ -2179,7 +2690,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(2).pipe(T.HttpBody())),
+          body: S.optional(CloneVersionRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2193,11 +2704,11 @@ function __c0(j: number): any {
     case 4:
       return S.Record(S.String, S.Unknown);
     case 5:
-      return S.Array(__S(4));
+      return S.Array(DocumentMap);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          details: S.optional(__S(5)),
+          details: S.optional(DocumentMapList),
           code: S.optional(S.Number),
           message: S.optional(S.String),
         }),
@@ -2205,10 +2716,10 @@ function __c0(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          response: S.optional(__S(4)),
+          response: S.optional(DocumentMap),
           name: S.optional(S.String),
-          error: S.optional(__S(6)),
-          metadata: S.optional(__S(4)),
+          error: S.optional(Status),
+          metadata: S.optional(DocumentMap),
           done: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "Operation" });
@@ -2220,7 +2731,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(2).pipe(T.HttpBody())),
+          body: S.optional(CloneVersionRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2236,11 +2747,11 @@ function __c1(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(S.String),
+          type: S.optional(SiteTypeEnum),
           name: S.optional(S.String),
           appId: S.optional(S.String),
           defaultUrl: S.optional(S.String),
-          labels: S.optional(__S(9)),
+          labels: S.optional(StringMap),
         }),
       ).annotate({ identifier: "Site" });
     case 3:
@@ -2249,7 +2760,7 @@ function __c1(j: number): any {
           validateOnly: S.optional(S.Boolean.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
           siteId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(10).pipe(T.HttpBody())),
+          body: S.optional(Site.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2283,7 +2794,7 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "Redirect" });
     case 7:
-      return S.Array(__S(14));
+      return S.Array(Redirect);
   }
 }
 function __c2(j: number): any {
@@ -2291,13 +2802,13 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          headers: S.optional(__S(9)),
+          headers: S.optional(StringMap),
           glob: S.optional(S.String),
           regex: S.optional(S.String),
         }),
       ).annotate({ identifier: "Header" });
     case 1:
-      return S.Array(__S(16));
+      return S.Array(Header);
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -2313,50 +2824,50 @@ function __c2(j: number): any {
           function: S.optional(S.String),
           functionRegion: S.optional(S.String),
           path: S.optional(S.String),
-          run: S.optional(__S(18)),
+          run: S.optional(CloudRunRewrite),
           regex: S.optional(S.String),
           dynamicLinks: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "Rewrite" });
     case 4:
-      return S.Array(__S(19));
+      return S.Array(Rewrite);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          trailingSlashBehavior: S.optional(S.String),
-          i18n: S.optional(__S(13)),
-          redirects: S.optional(__S(15)),
-          headers: S.optional(__S(17)),
-          rewrites: S.optional(__S(20)),
-          appAssociation: S.optional(S.String),
+          trailingSlashBehavior: S.optional(ServingConfigTrailingSlashBehaviorEnum),
+          i18n: S.optional(I18nConfig),
+          redirects: S.optional(RedirectList),
+          headers: S.optional(HeaderList),
+          rewrites: S.optional(RewriteList),
+          appAssociation: S.optional(ServingConfigAppAssociationEnum),
           cleanUrls: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "ServingConfig" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          finalizeUser: S.optional(__S(12)),
+          finalizeUser: S.optional(ActingUser),
           createTime: S.optional(S.String),
           finalizeTime: S.optional(S.String),
-          labels: S.optional(__S(9)),
+          labels: S.optional(StringMap),
           name: S.optional(S.String),
-          config: S.optional(__S(21)),
-          deleteUser: S.optional(__S(12)),
-          status: S.optional(S.String),
+          config: S.optional(ServingConfig),
+          deleteUser: S.optional(ActingUser),
+          status: S.optional(VersionStatusEnum),
           versionBytes: S.optional(S.String),
           deleteTime: S.optional(S.String),
           fileCount: S.optional(S.String),
-          createUser: S.optional(__S(12)),
+          createUser: S.optional(ActingUser),
         }),
       ).annotate({ identifier: "Version" });
     case 7:
       return S.suspend(() =>
         S.Struct({
           releaseTime: S.optional(S.String),
-          version: S.optional(__S(22)),
-          releaseUser: S.optional(__S(12)),
+          version: S.optional(Version),
+          releaseUser: S.optional(ActingUser),
           message: S.optional(S.String),
-          type: S.optional(S.String),
+          type: S.optional(ReleaseTypeEnum),
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "Release" });
@@ -2369,12 +2880,12 @@ function __c3(j: number): any {
         S.Struct({
           updateTime: S.optional(S.String),
           expireTime: S.optional(S.String),
-          labels: S.optional(__S(9)),
+          labels: S.optional(StringMap),
           createTime: S.optional(S.String),
           name: S.optional(S.String),
           retainedReleaseCount: S.optional(S.Number),
           url: S.optional(S.String),
-          release: S.optional(__S(23)),
+          release: S.optional(Release),
           ttl: S.optional(S.String),
         }),
       ).annotate({ identifier: "Channel" });
@@ -2383,7 +2894,7 @@ function __c3(j: number): any {
         S.Struct({
           channelId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(24).pipe(T.HttpBody())),
+          body: S.optional(Channel.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2399,7 +2910,7 @@ function __c3(j: number): any {
         S.Struct({
           parent: S.String.pipe(T.Label()),
           versionName: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(23).pipe(T.HttpBody())),
+          body: S.optional(Release.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2414,29 +2925,29 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           rdata: S.optional(S.String),
-          type: S.optional(S.String),
-          requiredAction: S.optional(S.String),
+          type: S.optional(DnsRecordTypeEnum),
+          requiredAction: S.optional(DnsRecordRequiredActionEnum),
           domainName: S.optional(S.String),
         }),
       ).annotate({ identifier: "DnsRecord" });
     case 4:
-      return S.Array(__S(27));
+      return S.Array(DnsRecord);
     case 5:
       return S.suspend(() =>
         S.Struct({
           domainName: S.optional(S.String),
-          checkError: S.optional(__S(6)),
-          records: S.optional(__S(28)),
+          checkError: S.optional(Status),
+          records: S.optional(DnsRecordList),
         }),
       ).annotate({ identifier: "DnsRecordSet" });
     case 6:
-      return S.Array(__S(29));
+      return S.Array(DnsRecordSet);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          discovered: S.optional(__S(30)),
+          discovered: S.optional(DnsRecordSetList),
           checkTime: S.optional(S.String),
-          desired: S.optional(__S(30)),
+          desired: S.optional(DnsRecordSetList),
         }),
       ).annotate({ identifier: "DnsUpdates" });
   }
@@ -2444,13 +2955,13 @@ function __c3(j: number): any {
 function __c4(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(6));
+      return S.Array(Status);
     case 1:
       return S.suspend(() =>
         S.Struct({
           path: S.optional(S.String),
           desired: S.optional(S.String),
-          checkError: S.optional(__S(6)),
+          checkError: S.optional(Status),
           lastCheckTime: S.optional(S.String),
           discovered: S.optional(S.String),
         }),
@@ -2458,39 +2969,39 @@ function __c4(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          dns: S.optional(__S(31)),
-          http: S.optional(__S(33)),
+          dns: S.optional(DnsUpdates),
+          http: S.optional(HttpUpdate),
         }),
       ).annotate({ identifier: "CertVerification" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          issues: S.optional(__S(32)),
+          issues: S.optional(StatusList),
           expireTime: S.optional(S.String),
-          state: S.optional(S.String),
+          state: S.optional(CertificateStateEnum),
           createTime: S.optional(S.String),
-          verification: S.optional(__S(34)),
-          type: S.optional(S.String),
+          verification: S.optional(CertVerification),
+          type: S.optional(CertificateTypeEnum),
         }),
       ).annotate({ identifier: "Certificate" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          requiredDnsUpdates: S.optional(__S(31)),
-          issues: S.optional(__S(32)),
-          labels: S.optional(__S(9)),
+          requiredDnsUpdates: S.optional(DnsUpdates),
+          issues: S.optional(StatusList),
+          labels: S.optional(StringMap),
           expireTime: S.optional(S.String),
           updateTime: S.optional(S.String),
           name: S.optional(S.String),
-          hostState: S.optional(S.String),
-          ownershipState: S.optional(S.String),
+          hostState: S.optional(CustomDomainHostStateEnum),
+          ownershipState: S.optional(CustomDomainOwnershipStateEnum),
           deleteTime: S.optional(S.String),
           reconciling: S.optional(S.Boolean),
-          certPreference: S.optional(S.String),
-          annotations: S.optional(__S(9)),
+          certPreference: S.optional(CustomDomainCertPreferenceEnum),
+          annotations: S.optional(StringMap),
           redirectTarget: S.optional(S.String),
           etag: S.optional(S.String),
-          cert: S.optional(__S(35)),
+          cert: S.optional(Certificate),
           createTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "CustomDomain" });
@@ -2500,7 +3011,7 @@ function __c4(j: number): any {
           customDomainId: S.optional(S.String.pipe(T.Query())),
           validateOnly: S.optional(S.Boolean.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(36).pipe(T.HttpBody())),
+          body: S.optional(CustomDomain.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2533,30 +3044,30 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           dnsFetchTime: S.optional(S.String),
-          certChallengeHttp: S.optional(__S(38)),
-          certStatus: S.optional(S.String),
-          discoveredIps: S.optional(__S(0)),
-          expectedIps: S.optional(__S(0)),
-          certChallengeDns: S.optional(__S(39)),
-          dnsStatus: S.optional(S.String),
-          certChallengeDiscoveredTxt: S.optional(__S(0)),
+          certChallengeHttp: S.optional(CertHttpChallenge),
+          certStatus: S.optional(DomainProvisioningCertStatusEnum),
+          discoveredIps: S.optional(StringList),
+          expectedIps: S.optional(StringList),
+          certChallengeDns: S.optional(CertDnsChallenge),
+          dnsStatus: S.optional(DomainProvisioningDnsStatusEnum),
+          certChallengeDiscoveredTxt: S.optional(StringList),
         }),
       ).annotate({ identifier: "DomainProvisioning" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           domainName: S.optional(S.String),
-          type: S.optional(S.String),
+          type: S.optional(DomainRedirectTypeEnum),
         }),
       ).annotate({ identifier: "DomainRedirect" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(S.String),
+          status: S.optional(DomainStatusEnum),
           site: S.optional(S.String),
-          provisioning: S.optional(__S(40)),
+          provisioning: S.optional(DomainProvisioning),
           updateTime: S.optional(S.String),
-          domainRedirect: S.optional(__S(41)),
+          domainRedirect: S.optional(DomainRedirect),
           domainName: S.optional(S.String),
         }),
       ).annotate({ identifier: "Domain" });
@@ -2564,7 +3075,7 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(42).pipe(T.HttpBody())),
+          body: S.optional(Domain.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2580,7 +3091,7 @@ function __c5(j: number): any {
         S.Struct({
           parent: S.String.pipe(T.Label()),
           versionName: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(23).pipe(T.HttpBody())),
+          body: S.optional(Release.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2597,7 +3108,7 @@ function __c5(j: number): any {
           sizeBytes: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
           versionId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(22).pipe(T.HttpBody())),
+          body: S.optional(Version.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2613,7 +3124,7 @@ function __c5(j: number): any {
         S.Struct({
           parent: S.String.pipe(T.Label()),
           channelId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(24).pipe(T.HttpBody())),
+          body: S.optional(Channel.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2629,7 +3140,7 @@ function __c5(j: number): any {
         S.Struct({
           versionName: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(23).pipe(T.HttpBody())),
+          body: S.optional(Release.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2648,7 +3159,7 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(42).pipe(T.HttpBody())),
+          body: S.optional(Domain.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2664,7 +3175,7 @@ function __c6(j: number): any {
         S.Struct({
           parent: S.String.pipe(T.Label()),
           versionName: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(23).pipe(T.HttpBody())),
+          body: S.optional(Release.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2681,7 +3192,7 @@ function __c6(j: number): any {
           versionId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
           sizeBytes: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(22).pipe(T.HttpBody())),
+          body: S.optional(Version.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3057,11 +3568,11 @@ function __c9(j: number): any {
         ),
       ).annotate({ identifier: "ListProjectsSitesRequest" });
     case 6:
-      return S.Array(__S(10));
+      return S.Array(Site);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          sites: S.optional(__S(78)),
+          sites: S.optional(SiteList),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListSitesResponse" });
@@ -3086,11 +3597,11 @@ function __c10(j: number): any {
         identifier: "ListProjectsSitesChannelsRequest",
       });
     case 1:
-      return S.Array(__S(24));
+      return S.Array(Channel);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          channels: S.optional(__S(81)),
+          channels: S.optional(ChannelList),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListChannelsResponse" });
@@ -3111,12 +3622,12 @@ function __c10(j: number): any {
         identifier: "ListProjectsSitesChannelsReleasesRequest",
       });
     case 4:
-      return S.Array(__S(23));
+      return S.Array(Release);
     case 5:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          releases: S.optional(__S(84)),
+          releases: S.optional(ReleaseList),
         }),
       ).annotate({ identifier: "ListReleasesResponse" });
     case 6:
@@ -3137,7 +3648,7 @@ function __c10(j: number): any {
         identifier: "ListProjectsSitesCustomDomainsRequest",
       });
     case 7:
-      return S.Array(__S(36));
+      return S.Array(CustomDomain);
   }
 }
 function __c11(j: number): any {
@@ -3146,7 +3657,7 @@ function __c11(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          customDomains: S.optional(__S(87)),
+          customDomains: S.optional(CustomDomainList),
         }),
       ).annotate({
         identifier: "ListCustomDomainsResponse",
@@ -3170,13 +3681,13 @@ function __c11(j: number): any {
         identifier: "ListProjectsSitesCustomDomainsOperationsRequest",
       });
     case 2:
-      return S.Array(__S(7));
+      return S.Array(Operation);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          unreachable: S.optional(__S(0)),
+          unreachable: S.optional(StringList),
           nextPageToken: S.optional(S.String),
-          operations: S.optional(__S(90)),
+          operations: S.optional(OperationList),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
     case 4:
@@ -3196,11 +3707,11 @@ function __c11(j: number): any {
         identifier: "ListProjectsSitesDomainsRequest",
       });
     case 5:
-      return S.Array(__S(42));
+      return S.Array(Domain);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          domains: S.optional(__S(93)),
+          domains: S.optional(DomainList),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListDomainsResponse" });
@@ -3242,11 +3753,11 @@ function __c12(j: number): any {
         identifier: "ListProjectsSitesVersionsRequest",
       });
     case 1:
-      return S.Array(__S(22));
+      return S.Array(Version);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          versions: S.optional(__S(97)),
+          versions: S.optional(VersionList),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListVersionsResponse" });
@@ -3255,7 +3766,7 @@ function __c12(j: number): any {
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          status: S.optional(S.String.pipe(T.Query())),
+          status: S.optional(ListProjectsSitesVersionsFilesStatusEnum.pipe(T.Query())),
           pageSize: S.optional(S.Number.pipe(T.Query())),
         }).pipe(
           T.Http({
@@ -3272,15 +3783,15 @@ function __c12(j: number): any {
         S.Struct({
           path: S.optional(S.String),
           hash: S.optional(S.String),
-          status: S.optional(S.String),
+          status: S.optional(VersionFileStatusEnum),
         }),
       ).annotate({ identifier: "VersionFile" });
     case 5:
-      return S.Array(__S(100));
+      return S.Array(VersionFile);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          files: S.optional(__S(101)),
+          files: S.optional(VersionFileList),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListVersionFilesResponse" });
@@ -3367,7 +3878,7 @@ function __c13(j: number): any {
           pageSize: S.optional(S.Number.pipe(T.Query())),
           pageToken: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          status: S.optional(S.String.pipe(T.Query())),
+          status: S.optional(ListSitesVersionsFilesStatusEnum.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -3383,7 +3894,7 @@ function __c13(j: number): any {
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(10).pipe(T.HttpBody())),
+          body: S.optional(Site.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3399,7 +3910,7 @@ function __c13(j: number): any {
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(24).pipe(T.HttpBody())),
+          body: S.optional(Channel.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3417,7 +3928,7 @@ function __c13(j: number): any {
           updateMask: S.optional(S.String.pipe(T.Query())),
           allowMissing: S.optional(S.Boolean.pipe(T.Query())),
           validateOnly: S.optional(S.Boolean.pipe(T.Query())),
-          body: S.optional(__S(36).pipe(T.HttpBody())),
+          body: S.optional(CustomDomain.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3437,7 +3948,7 @@ function __c14(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(22).pipe(T.HttpBody())),
+          body: S.optional(Version.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3453,7 +3964,7 @@ function __c14(j: number): any {
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(24).pipe(T.HttpBody())),
+          body: S.optional(Channel.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3469,7 +3980,7 @@ function __c14(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(22).pipe(T.HttpBody())),
+          body: S.optional(Version.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3483,7 +3994,7 @@ function __c14(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          files: S.optional(__S(9)),
+          files: S.optional(StringMap),
         }),
       ).annotate({
         identifier: "PopulateVersionFilesRequest",
@@ -3492,7 +4003,7 @@ function __c14(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(115).pipe(T.HttpBody())),
+          body: S.optional(PopulateVersionFilesRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3507,7 +4018,7 @@ function __c14(j: number): any {
       return S.suspend(() =>
         S.Struct({
           uploadUrl: S.optional(S.String),
-          uploadRequiredHashes: S.optional(__S(0)),
+          uploadRequiredHashes: S.optional(StringList),
         }),
       ).annotate({
         identifier: "PopulateVersionFilesResponse",
@@ -3516,7 +4027,7 @@ function __c14(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(115).pipe(T.HttpBody())),
+          body: S.optional(PopulateVersionFilesRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3544,7 +4055,7 @@ function __c15(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(119).pipe(T.HttpBody())),
+          body: S.optional(UndeleteCustomDomainRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3560,7 +4071,7 @@ function __c15(j: number): any {
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(61).pipe(T.HttpBody())),
+          body: S.optional(SiteConfig.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3576,7 +4087,7 @@ function __c15(j: number): any {
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(61).pipe(T.HttpBody())),
+          body: S.optional(SiteConfig.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3589,7 +4100,7 @@ function __c15(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(42).pipe(T.HttpBody())),
+          body: S.optional(Domain.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -3604,7 +4115,7 @@ function __c15(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(42).pipe(T.HttpBody())),
+          body: S.optional(Domain.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -3615,46 +4126,5 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "UpdateSitesDomainsRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
-    case 9:
-      return __c9(i & 7);
-    case 10:
-      return __c10(i & 7);
-    case 11:
-      return __c11(i & 7);
-    case 12:
-      return __c12(i & 7);
-    case 13:
-      return __c13(i & 7);
-    case 14:
-      return __c14(i & 7);
-    case 15:
-      return __c15(i & 7);
   }
 }

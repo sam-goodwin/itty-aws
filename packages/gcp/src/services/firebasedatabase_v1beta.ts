@@ -7,8 +7,6 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -68,11 +66,15 @@ export type DatabaseInstanceTypeEnum =
   | "DATABASE_INSTANCE_TYPE_UNSPECIFIED"
   | "DEFAULT_DATABASE"
   | "USER_DATABASE";
+const DatabaseInstanceTypeEnum = S.String;
+
 export type DatabaseInstanceStateEnum =
   | "LIFECYCLE_STATE_UNSPECIFIED"
   | "ACTIVE"
   | "DISABLED"
   | "DELETED";
+const DatabaseInstanceStateEnum = S.String;
+
 /** Representation of a Realtime Database instance. Details on interacting with contents of a DatabaseInstance can be found at: https://firebase.google.com/docs/database/rest/start. */
 export interface DatabaseInstance {
   /** Output only. Output Only. The globally unique hostname of the database. */
@@ -86,6 +88,8 @@ export interface DatabaseInstance {
   /** Output only. The database's lifecycle state. Read-only. */
   state?: DatabaseInstanceStateEnum | (string & {});
 }
+const DatabaseInstance = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<DatabaseInstance>;
+
 export interface CreateProjectsLocationsInstancesRequest {
   /** The globally unique identifier of the database instance. */
   databaseId?: string;
@@ -96,22 +100,47 @@ export interface CreateProjectsLocationsInstancesRequest {
   /** Request body */
   body?: DatabaseInstance;
 }
+const CreateProjectsLocationsInstancesRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<CreateProjectsLocationsInstancesRequest>;
+
 export interface DeleteProjectsLocationsInstancesRequest {
   /** Required. The fully qualified resource name of the database instance, in the form: `projects/{project-number}/locations/{location-id}/instances/{database-id}` */
   name: string;
 }
+const DeleteProjectsLocationsInstancesRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<DeleteProjectsLocationsInstancesRequest>;
+
 /** The request sent to the DisableDatabaseInstance method. */
 export interface DisableDatabaseInstanceRequest {}
+const DisableDatabaseInstanceRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<DisableDatabaseInstanceRequest>;
+
 export interface DisableProjectsLocationsInstancesRequest {
   /** Required. The fully qualified resource name of the database instance, in the form: `projects/{project-number}/locations/{location-id}/instances/{database-id}` */
   name: string;
   /** Request body */
   body?: DisableDatabaseInstanceRequest;
 }
+const DisableProjectsLocationsInstancesRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<DisableProjectsLocationsInstancesRequest>;
+
 export interface GetProjectsLocationsInstancesRequest {
   /** Required. The fully qualified resource name of the database instance, in the form: `projects/{project-number}/locations/{location-id}/instances/{database-id}`. `database-id` is a globally unique identifier across all parent collections. For convenience, this method allows you to supply `-` as a wildcard character in place of specific collections under `projects` and `locations`. The resulting wildcarding form of the method is: `projects/-/locations/-/instances/{database-id}`. */
   name: string;
 }
+const GetProjectsLocationsInstancesRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<GetProjectsLocationsInstancesRequest>;
+
 export interface ListProjectsLocationsInstancesRequest {
   /** The maximum number of database instances to return in the response. The server may return fewer than this at its discretion. If no value is specified (or too large a value is specified), then the server will impose its own limit. */
   pageSize?: number;
@@ -122,7 +151,14 @@ export interface ListProjectsLocationsInstancesRequest {
   /** Indicate that DatabaseInstances in the `DELETED` state should also be returned. */
   showDeleted?: boolean;
 }
+const ListProjectsLocationsInstancesRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<ListProjectsLocationsInstancesRequest>;
+
 export type DatabaseInstanceList = Array<DatabaseInstance>;
+const DatabaseInstanceList = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<DatabaseInstanceList>;
+
 /** The response from the ListDatabaseInstances method. */
 export interface ListDatabaseInstancesResponse {
   /** List of each DatabaseInstance that is in the parent Firebase project. */
@@ -130,6 +166,11 @@ export interface ListDatabaseInstancesResponse {
   /** If the result list is too large to fit in a single response, then a token is returned. If the string is empty, then this response is the last page of results. This token can be used in a subsequent call to `ListDatabaseInstances` to find the next group of database instances. Page tokens are short-lived and should not be persisted. */
   nextPageToken?: string;
 }
+const ListDatabaseInstancesResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<ListDatabaseInstancesResponse>;
+
 /** The request sent to the ReenableDatabaseInstance method. */
 export type ReenableDatabaseInstanceRequest = DisableDatabaseInstanceRequest;
 export interface ReenableProjectsLocationsInstancesRequest {
@@ -138,6 +179,11 @@ export interface ReenableProjectsLocationsInstancesRequest {
   /** Request body */
   body?: DisableDatabaseInstanceRequest;
 }
+const ReenableProjectsLocationsInstancesRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<ReenableProjectsLocationsInstancesRequest>;
+
 /** The request sent to UndeleteDatabaseInstance method. */
 export type UndeleteDatabaseInstanceRequest = DisableDatabaseInstanceRequest;
 export interface UndeleteProjectsLocationsInstancesRequest {
@@ -146,6 +192,11 @@ export interface UndeleteProjectsLocationsInstancesRequest {
   /** Request body */
   body?: DisableDatabaseInstanceRequest;
 }
+const UndeleteProjectsLocationsInstancesRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<UndeleteProjectsLocationsInstancesRequest>;
+
 export type CreateProjectsLocationsInstancesError =
   | NotFound
   | Forbidden
@@ -159,8 +210,8 @@ export const createProjectsLocationsInstances: API.OperationMethod<
   CreateProjectsLocationsInstancesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1) as any as S.Schema<CreateProjectsLocationsInstancesRequest>,
-  output: __S(0) as any as S.Schema<DatabaseInstance>,
+  input: CreateProjectsLocationsInstancesRequest,
+  output: DatabaseInstance,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -179,8 +230,8 @@ export const deleteProjectsLocationsInstances: API.OperationMethod<
   DeleteProjectsLocationsInstancesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2) as any as S.Schema<DeleteProjectsLocationsInstancesRequest>,
-  output: __S(0) as any as S.Schema<DatabaseInstance>,
+  input: DeleteProjectsLocationsInstancesRequest,
+  output: DatabaseInstance,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -199,8 +250,8 @@ export const disableProjectsLocationsInstances: API.OperationMethod<
   DisableProjectsLocationsInstancesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4) as any as S.Schema<DisableProjectsLocationsInstancesRequest>,
-  output: __S(0) as any as S.Schema<DatabaseInstance>,
+  input: DisableProjectsLocationsInstancesRequest,
+  output: DatabaseInstance,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -214,8 +265,8 @@ export const getProjectsLocationsInstances: API.OperationMethod<
   GetProjectsLocationsInstancesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5) as any as S.Schema<GetProjectsLocationsInstancesRequest>,
-  output: __S(0) as any as S.Schema<DatabaseInstance>,
+  input: GetProjectsLocationsInstancesRequest,
+  output: DatabaseInstance,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -230,8 +281,8 @@ export const listProjectsLocationsInstances: API.PaginatedOperationMethod<
   GcpOpContext,
   ListDatabaseInstancesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(6) as any as S.Schema<ListProjectsLocationsInstancesRequest>,
-  output: __S(8) as any as S.Schema<ListDatabaseInstancesResponse>,
+  input: ListProjectsLocationsInstancesRequest,
+  output: ListDatabaseInstancesResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -251,8 +302,8 @@ export const reenableProjectsLocationsInstances: API.OperationMethod<
   ReenableProjectsLocationsInstancesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9) as any as S.Schema<ReenableProjectsLocationsInstancesRequest>,
-  output: __S(0) as any as S.Schema<DatabaseInstance>,
+  input: ReenableProjectsLocationsInstancesRequest,
+  output: DatabaseInstance,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -271,8 +322,8 @@ export const undeleteProjectsLocationsInstances: API.OperationMethod<
   UndeleteProjectsLocationsInstancesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10) as any as S.Schema<UndeleteProjectsLocationsInstancesRequest>,
-  output: __S(0) as any as S.Schema<DatabaseInstance>,
+  input: UndeleteProjectsLocationsInstancesRequest,
+  output: DatabaseInstance,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -286,9 +337,9 @@ function __c0(j: number): any {
         S.Struct({
           databaseUrl: S.optional(S.String),
           project: S.optional(S.String),
-          type: S.optional(S.String),
+          type: S.optional(DatabaseInstanceTypeEnum),
           name: S.optional(S.String),
-          state: S.optional(S.String),
+          state: S.optional(DatabaseInstanceStateEnum),
         }),
       ).annotate({ identifier: "DatabaseInstance" });
     case 1:
@@ -297,7 +348,7 @@ function __c0(j: number): any {
           databaseId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
           validateOnly: S.optional(S.Boolean.pipe(T.Query())),
-          body: S.optional(__S(0).pipe(T.HttpBody())),
+          body: S.optional(DatabaseInstance.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -330,7 +381,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(3).pipe(T.HttpBody())),
+          body: S.optional(DisableDatabaseInstanceRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -373,7 +424,7 @@ function __c0(j: number): any {
         identifier: "ListProjectsLocationsInstancesRequest",
       });
     case 7:
-      return S.Array(__S(0));
+      return S.Array(DatabaseInstance);
   }
 }
 function __c1(j: number): any {
@@ -381,7 +432,7 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          instances: S.optional(__S(7)),
+          instances: S.optional(DatabaseInstanceList),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -391,7 +442,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(3).pipe(T.HttpBody())),
+          body: S.optional(DisableDatabaseInstanceRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -406,7 +457,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(3).pipe(T.HttpBody())),
+          body: S.optional(DisableDatabaseInstanceRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -417,18 +468,5 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "UndeleteProjectsLocationsInstancesRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
   }
 }

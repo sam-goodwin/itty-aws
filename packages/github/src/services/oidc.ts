@@ -6,8 +6,6 @@ import * as S from "@distilled.cloud/core/schema";
 import { GithubProtocol, type GithubOpError, type GithubOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { GithubOpError, GithubOpContext };
 
@@ -53,8 +51,15 @@ export interface CreateOidcCustomPropertyInclusionForEnterpriseRequest {
   /** The name of the custom property to include in the OIDC token */
   custom_property_name: string;
 }
+const CreateOidcCustomPropertyInclusionForEnterpriseRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<CreateOidcCustomPropertyInclusionForEnterpriseRequest>;
+
 /** Whether the inclusion was defined at the organization or enterprise level */
 export type OidcCustomPropertyInclusionInclusionSource = "organization" | "enterprise";
+const OidcCustomPropertyInclusionInclusionSource = S.String;
+
 /** An OIDC custom property inclusion for repository properties */
 export interface OidcCustomPropertyInclusion {
   /** The name of the custom property that is included in the OIDC token */
@@ -62,32 +67,70 @@ export interface OidcCustomPropertyInclusion {
   /** Whether the inclusion was defined at the organization or enterprise level */
   inclusion_source: OidcCustomPropertyInclusionInclusionSource;
 }
+const OidcCustomPropertyInclusion = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<OidcCustomPropertyInclusion>;
+
 export interface CreateOidcCustomPropertyInclusionForOrgRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
   /** The name of the custom property to include in the OIDC token */
   custom_property_name: string;
 }
+const CreateOidcCustomPropertyInclusionForOrgRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<CreateOidcCustomPropertyInclusionForOrgRequest>;
+
 export interface DeleteOidcCustomPropertyInclusionForEnterpriseRequest {
   /** The slug version of the enterprise name. */
   enterprise: string;
   /** The name of the custom property to remove from OIDC token inclusion */
   custom_property_name: string;
 }
+const DeleteOidcCustomPropertyInclusionForEnterpriseRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<DeleteOidcCustomPropertyInclusionForEnterpriseRequest>;
+
 export interface DeleteOidcCustomPropertyInclusionForEnterpriseResponse {}
+const DeleteOidcCustomPropertyInclusionForEnterpriseResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<DeleteOidcCustomPropertyInclusionForEnterpriseResponse>;
+
 export interface DeleteOidcCustomPropertyInclusionForOrgRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
   /** The name of the custom property to remove from OIDC token inclusion */
   custom_property_name: string;
 }
+const DeleteOidcCustomPropertyInclusionForOrgRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<DeleteOidcCustomPropertyInclusionForOrgRequest>;
+
 export interface DeleteOidcCustomPropertyInclusionForOrgResponse {}
+const DeleteOidcCustomPropertyInclusionForOrgResponse =
+  DeleteOidcCustomPropertyInclusionForEnterpriseResponse as any as S.Schema<DeleteOidcCustomPropertyInclusionForOrgResponse>;
+
 export interface GetOidcCustomSubTemplateForOrgRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
 }
+const GetOidcCustomSubTemplateForOrgRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<GetOidcCustomSubTemplateForOrgRequest>;
+
 /** Array of unique strings. Each claim key can only contain alphanumeric characters and underscores. */
 export type OidcCustomSubIncludeClaimKeysList = Array<string>;
+const OidcCustomSubIncludeClaimKeysList = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<OidcCustomSubIncludeClaimKeysList>;
+
 /** Actions OIDC Subject customization */
 export interface OidcCustomSub {
   /** Array of unique strings. Each claim key can only contain alphanumeric characters and underscores. */
@@ -95,24 +138,52 @@ export interface OidcCustomSub {
   /** Whether to opt in to the immutable OIDC subject claim format for the organization. When `true`, new OIDC tokens will use a stable, repository-ID-based `sub` claim instead of the name-based format. */
   use_immutable_subject?: boolean;
 }
+const OidcCustomSub = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<OidcCustomSub>;
+
 export interface ListOidcCustomPropertyInclusionsForEnterpriseRequest {
   /** The slug version of the enterprise name. */
   enterprise: string;
 }
+const ListOidcCustomPropertyInclusionsForEnterpriseRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<ListOidcCustomPropertyInclusionsForEnterpriseRequest>;
+
 export type ListOidcCustomPropertyInclusionsForEnterpriseResponseBodyList =
   Array<OidcCustomPropertyInclusion>;
+const ListOidcCustomPropertyInclusionsForEnterpriseResponseBodyList = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<ListOidcCustomPropertyInclusionsForEnterpriseResponseBodyList>;
+
 export type ListOidcCustomPropertyInclusionsForEnterpriseResponse =
   ListOidcCustomPropertyInclusionsForEnterpriseResponseBodyList;
+const ListOidcCustomPropertyInclusionsForEnterpriseResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<ListOidcCustomPropertyInclusionsForEnterpriseResponse>;
+
 export interface ListOidcCustomPropertyInclusionsForOrgRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
 }
+const ListOidcCustomPropertyInclusionsForOrgRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<ListOidcCustomPropertyInclusionsForOrgRequest>;
+
 export type ListOidcCustomPropertyInclusionsForOrgResponseBodyList =
   Array<OidcCustomPropertyInclusion>;
 export type ListOidcCustomPropertyInclusionsForOrgResponse =
   ListOidcCustomPropertyInclusionsForOrgResponseBodyList;
+const ListOidcCustomPropertyInclusionsForOrgResponse =
+  ListOidcCustomPropertyInclusionsForEnterpriseResponse as any as S.Schema<ListOidcCustomPropertyInclusionsForOrgResponse>;
+
 /** Array of unique strings. Each claim key can only contain alphanumeric characters and underscores. */
 export type UpdateOidcCustomSubTemplateForOrgRequestIncludeClaimKeysList = Array<string>;
+const UpdateOidcCustomSubTemplateForOrgRequestIncludeClaimKeysList =
+  OidcCustomSubIncludeClaimKeysList as any as S.Schema<UpdateOidcCustomSubTemplateForOrgRequestIncludeClaimKeysList>;
+
 export interface UpdateOidcCustomSubTemplateForOrgRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -121,7 +192,17 @@ export interface UpdateOidcCustomSubTemplateForOrgRequest {
   /** Whether to opt in to the immutable OIDC subject claim format for the organization. When `true`, new OIDC tokens will use a stable, repository-ID-based `sub` claim instead of the name-based format. */
   use_immutable_subject?: boolean;
 }
+const UpdateOidcCustomSubTemplateForOrgRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<UpdateOidcCustomSubTemplateForOrgRequest>;
+
 export type UpdateOidcCustomSubTemplateForOrgResponse = unknown;
+const UpdateOidcCustomSubTemplateForOrgResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<UpdateOidcCustomSubTemplateForOrgResponse>;
+
 export type CreateOidcCustomPropertyInclusionForEnterpriseError =
   | BadRequest
   | Forbidden
@@ -134,8 +215,8 @@ export const createOidcCustomPropertyInclusionForEnterprise: API.OperationMethod
   CreateOidcCustomPropertyInclusionForEnterpriseError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<CreateOidcCustomPropertyInclusionForEnterpriseRequest>,
-  output: __S(1) as any as S.Schema<OidcCustomPropertyInclusion>,
+  input: CreateOidcCustomPropertyInclusionForEnterpriseRequest,
+  output: OidcCustomPropertyInclusion,
   errors: [BadRequest, Forbidden, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -153,8 +234,8 @@ export const createOidcCustomPropertyInclusionForOrg: API.OperationMethod<
   CreateOidcCustomPropertyInclusionForOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2) as any as S.Schema<CreateOidcCustomPropertyInclusionForOrgRequest>,
-  output: __S(1) as any as S.Schema<OidcCustomPropertyInclusion>,
+  input: CreateOidcCustomPropertyInclusionForOrgRequest,
+  output: OidcCustomPropertyInclusion,
   errors: [BadRequest, Forbidden, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -172,8 +253,8 @@ export const deleteOidcCustomPropertyInclusionForEnterprise: API.OperationMethod
   DeleteOidcCustomPropertyInclusionForEnterpriseError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3) as any as S.Schema<DeleteOidcCustomPropertyInclusionForEnterpriseRequest>,
-  output: __S(4) as any as S.Schema<DeleteOidcCustomPropertyInclusionForEnterpriseResponse>,
+  input: DeleteOidcCustomPropertyInclusionForEnterpriseRequest,
+  output: DeleteOidcCustomPropertyInclusionForEnterpriseResponse,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -191,8 +272,8 @@ export const deleteOidcCustomPropertyInclusionForOrg: API.OperationMethod<
   DeleteOidcCustomPropertyInclusionForOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5) as any as S.Schema<DeleteOidcCustomPropertyInclusionForOrgRequest>,
-  output: __S(4) as any as S.Schema<DeleteOidcCustomPropertyInclusionForOrgResponse>,
+  input: DeleteOidcCustomPropertyInclusionForOrgRequest,
+  output: DeleteOidcCustomPropertyInclusionForOrgResponse,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -206,8 +287,8 @@ export const getOidcCustomSubTemplateForOrg: API.OperationMethod<
   GetOidcCustomSubTemplateForOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6) as any as S.Schema<GetOidcCustomSubTemplateForOrgRequest>,
-  output: __S(8) as any as S.Schema<OidcCustomSub>,
+  input: GetOidcCustomSubTemplateForOrgRequest,
+  output: OidcCustomSub,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -224,8 +305,8 @@ export const listOidcCustomPropertyInclusionsForEnterprise: API.OperationMethod<
   ListOidcCustomPropertyInclusionsForEnterpriseError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9) as any as S.Schema<ListOidcCustomPropertyInclusionsForEnterpriseRequest>,
-  output: __S(11) as any as S.Schema<ListOidcCustomPropertyInclusionsForEnterpriseResponse>,
+  input: ListOidcCustomPropertyInclusionsForEnterpriseRequest,
+  output: ListOidcCustomPropertyInclusionsForEnterpriseResponse,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -239,8 +320,8 @@ export const listOidcCustomPropertyInclusionsForOrg: API.OperationMethod<
   ListOidcCustomPropertyInclusionsForOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12) as any as S.Schema<ListOidcCustomPropertyInclusionsForOrgRequest>,
-  output: __S(11) as any as S.Schema<ListOidcCustomPropertyInclusionsForOrgResponse>,
+  input: ListOidcCustomPropertyInclusionsForOrgRequest,
+  output: ListOidcCustomPropertyInclusionsForOrgResponse,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -254,8 +335,8 @@ export const updateOidcCustomSubTemplateForOrg: API.OperationMethod<
   UpdateOidcCustomSubTemplateForOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13) as any as S.Schema<UpdateOidcCustomSubTemplateForOrgRequest>,
-  output: __S(14) as any as S.Schema<UpdateOidcCustomSubTemplateForOrgResponse>,
+  input: UpdateOidcCustomSubTemplateForOrgRequest,
+  output: UpdateOidcCustomSubTemplateForOrgResponse,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -283,7 +364,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           custom_property_name: S.String,
-          inclusion_source: S.String,
+          inclusion_source: OidcCustomPropertyInclusionInclusionSource,
         }),
       ).annotate({
         identifier: "OidcCustomPropertyInclusion",
@@ -356,7 +437,7 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          include_claim_keys: __S(7),
+          include_claim_keys: OidcCustomSubIncludeClaimKeysList,
           use_immutable_subject: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "OidcCustomSub" });
@@ -375,9 +456,11 @@ function __c1(j: number): any {
         identifier: "ListOidcCustomPropertyInclusionsForEnterpriseRequest",
       });
     case 2:
-      return S.Array(__S(1));
+      return S.Array(OidcCustomPropertyInclusion);
     case 3:
-      return S.suspend(() => __S(10).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        ListOidcCustomPropertyInclusionsForEnterpriseResponseBodyList.pipe(T.RawResponseRoot()),
+      ).annotate({
         identifier: "ListOidcCustomPropertyInclusionsForEnterpriseResponse",
       });
     case 4:
@@ -398,7 +481,9 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           org: S.String.pipe(T.Label()),
-          include_claim_keys: S.optional(__S(7)),
+          include_claim_keys: S.optional(
+            UpdateOidcCustomSubTemplateForOrgRequestIncludeClaimKeysList,
+          ),
           use_immutable_subject: S.optional(S.Boolean),
         }).pipe(
           T.Http({ method: "PUT", uri: "/orgs/{org}/actions/oidc/customization/sub", code: 200 }),
@@ -410,18 +495,5 @@ function __c1(j: number): any {
       return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
         identifier: "UpdateOidcCustomSubTemplateForOrgResponse",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
   }
 }

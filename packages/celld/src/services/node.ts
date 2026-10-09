@@ -5,8 +5,6 @@ import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
 import { CelldProtocol, type CelldOpError, type CelldOpContext } from "../protocol.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { CelldOpError, CelldOpContext };
 
@@ -78,12 +76,22 @@ export class ReloadFailed
 export interface EvictCellRequest {
   scope: string;
 }
+const EvictCellRequest = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<EvictCellRequest>;
+
 export interface OkResponse {
   ok: boolean;
 }
+const OkResponse = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<OkResponse>;
+
 export interface GetNodeStateRequest {}
+const GetNodeStateRequest = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<GetNodeStateRequest>;
+
 export type DocumentMap = { [key: string]: unknown | undefined };
+const DocumentMap = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<DocumentMap>;
+
 export type DocumentList = Array<unknown>;
+const DocumentList = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<DocumentList>;
+
 /** Isolate pool census. heap_bytes and external_bytes sample isolates not held by a turn. */
 export interface PoolCensus {
   live: number;
@@ -96,20 +104,35 @@ export interface PoolCensus {
   heap_bytes: number;
   external_bytes: number;
 }
+const PoolCensus = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<PoolCensus>;
+
 export type PoolCensuses = { [key: string]: PoolCensus | undefined };
+const PoolCensuses = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<PoolCensuses>;
+
 /** Current or draining deployment isolate pools, keyed by service or Worker script. */
 export interface IsolateCensus {
   stateless: PoolCensus;
   services: PoolCensuses;
   cells: PoolCensuses;
 }
+const IsolateCensus = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<IsolateCensus>;
+
 export interface DeploymentGeneration {
   generation: number;
   version: string;
   isolates: IsolateCensus;
 }
+const DeploymentGeneration = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<DeploymentGeneration>;
+
 export type DeploymentGenerations = Array<DeploymentGeneration>;
+const DeploymentGenerations = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<DeploymentGenerations>;
+
 export type LongMap = { [key: string]: number | undefined };
+const LongMap = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<LongMap>;
+
 export interface DeploymentState {
   generation: number;
   version: string;
@@ -119,6 +142,8 @@ export interface DeploymentState {
   cells: LongMap;
   isolates: IsolateCensus;
 }
+const DeploymentState = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<DeploymentState>;
+
 /** Jemalloc memory counters from the node snapshot, in bytes. */
 export interface AllocatorStats {
   allocated_bytes: number;
@@ -127,6 +152,8 @@ export interface AllocatorStats {
   mapped_bytes: number;
   retained_bytes: number;
 }
+const AllocatorStats = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<AllocatorStats>;
+
 /** System allocator memory counters, in bytes. The node reports null when unavailable. */
 export interface LibcMallocStats {
   in_use_bytes: number;
@@ -134,6 +161,8 @@ export interface LibcMallocStats {
   mmap_bytes: number;
   arena_bytes: number;
 }
+const LibcMallocStats = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<LibcMallocStats>;
+
 /** Node snapshot. Census detail is implementation-defined JSON. If the actor has stopped, the server instead returns only error="actor_stopped". */
 export interface NodeState {
   activating?: number;
@@ -169,11 +198,25 @@ export interface NodeState {
   allocator?: AllocatorStats | null;
   libc_malloc?: LibcMallocStats | null;
 }
+const NodeState = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<NodeState>;
+
 export interface PauseRebalancingRequest {}
+const PauseRebalancingRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<PauseRebalancingRequest>;
+
 export interface RebalanceResponse {
   rebalance_paused: boolean;
 }
+const RebalanceResponse = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<RebalanceResponse>;
+
 export interface ReloadDeploymentRequest {}
+const ReloadDeploymentRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<ReloadDeploymentRequest>;
+
 export interface ReloadResponse {
   ok: boolean;
   outcome: string;
@@ -181,10 +224,19 @@ export interface ReloadResponse {
   version: string;
   prefix?: string;
 }
+const ReloadResponse = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<ReloadResponse>;
+
 export interface ResumeRebalancingRequest {}
+const ResumeRebalancingRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<ResumeRebalancingRequest>;
+
 export interface RouteCellRequest {
   scope: string;
 }
+const RouteCellRequest = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<RouteCellRequest>;
+
 export interface RouteCellResponse {
   route?: string;
   cell?: string;
@@ -193,10 +245,16 @@ export interface RouteCellResponse {
   epoch?: number;
   peer_protocol?: number;
 }
+const RouteCellResponse = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<RouteCellResponse>;
+
 export type ShutdownHandoff = "preserve";
+const ShutdownHandoff = S.String;
+
 export interface ShutdownNodeRequest {
   handoff?: ShutdownHandoff | (string & {});
 }
+const ShutdownNodeRequest = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<ShutdownNodeRequest>;
+
 export type StringList = Array<string>;
 export type ModuleKind = "wasm";
 export interface ModuleRef {
@@ -301,8 +359,8 @@ export const evictCell: API.OperationMethod<
   EvictCellError,
   CelldOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<EvictCellRequest>,
-  output: __S(1) as any as S.Schema<OkResponse>,
+  input: EvictCellRequest,
+  output: OkResponse,
   errors: [MalformedScope, EvictionRefused, EvictionCancelled, EvictionFailed],
   protocol: CelldProtocol,
 }));
@@ -315,8 +373,8 @@ export const getNodeState: API.OperationMethod<
   GetNodeStateError,
   CelldOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2) as any as S.Schema<GetNodeStateRequest>,
-  output: __S(14) as any as S.Schema<NodeState>,
+  input: GetNodeStateRequest,
+  output: NodeState,
   errors: [],
   protocol: CelldProtocol,
 }));
@@ -328,8 +386,8 @@ export const pauseRebalancing: API.OperationMethod<
   PauseRebalancingError,
   CelldOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15) as any as S.Schema<PauseRebalancingRequest>,
-  output: __S(16) as any as S.Schema<RebalanceResponse>,
+  input: PauseRebalancingRequest,
+  output: RebalanceResponse,
   errors: [NodeHasNoLease],
   protocol: CelldProtocol,
 }));
@@ -342,8 +400,8 @@ export const reloadDeployment: API.OperationMethod<
   ReloadDeploymentError,
   CelldOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17) as any as S.Schema<ReloadDeploymentRequest>,
-  output: __S(18) as any as S.Schema<ReloadResponse>,
+  input: ReloadDeploymentRequest,
+  output: ReloadResponse,
   errors: [ReloadFailed, NodeUnavailable],
   protocol: CelldProtocol,
 }));
@@ -355,8 +413,8 @@ export const resumeRebalancing: API.OperationMethod<
   ResumeRebalancingError,
   CelldOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19) as any as S.Schema<ResumeRebalancingRequest>,
-  output: __S(16) as any as S.Schema<RebalanceResponse>,
+  input: ResumeRebalancingRequest,
+  output: RebalanceResponse,
   errors: [NodeHasNoLease],
   protocol: CelldProtocol,
 }));
@@ -369,8 +427,8 @@ export const routeCell: API.OperationMethod<
   RouteCellError,
   CelldOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20) as any as S.Schema<RouteCellRequest>,
-  output: __S(21) as any as S.Schema<RouteCellResponse>,
+  input: RouteCellRequest,
+  output: RouteCellResponse,
   errors: [MalformedScope, NodeUnavailable],
   protocol: CelldProtocol,
 }));
@@ -383,8 +441,8 @@ export const shutdownNode: API.OperationMethod<
   ShutdownNodeError,
   CelldOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22) as any as S.Schema<ShutdownNodeRequest>,
-  output: __S(1) as any as S.Schema<OkResponse>,
+  input: ShutdownNodeRequest,
+  output: OkResponse,
   errors: [],
   protocol: CelldProtocol,
 }));
@@ -427,13 +485,13 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "PoolCensus" });
     case 6:
-      return S.Record(S.String, __S(5));
+      return S.Record(S.String, PoolCensus);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          stateless: __S(5),
-          services: __S(6),
-          cells: __S(6),
+          stateless: PoolCensus,
+          services: PoolCensuses,
+          cells: PoolCensuses,
         }),
       ).annotate({ identifier: "IsolateCensus" });
   }
@@ -445,11 +503,11 @@ function __c1(j: number): any {
         S.Struct({
           generation: S.Number,
           version: S.String,
-          isolates: __S(7),
+          isolates: IsolateCensus,
         }),
       ).annotate({ identifier: "DeploymentGeneration" });
     case 1:
-      return S.Array(__S(8));
+      return S.Array(DeploymentGeneration);
     case 2:
       return S.Record(S.String, S.Number);
     case 3:
@@ -458,10 +516,10 @@ function __c1(j: number): any {
           generation: S.Number,
           version: S.String,
           prefix: S.String,
-          draining: __S(9),
+          draining: DeploymentGenerations,
           swapping: S.Number,
-          cells: __S(10),
-          isolates: __S(7),
+          cells: LongMap,
+          isolates: IsolateCensus,
         }),
       ).annotate({ identifier: "DeploymentState" });
     case 4:
@@ -508,16 +566,16 @@ function __c1(j: number): any {
           in_use_bytes: S.optional(S.Number),
           rss_bytes: S.optional(S.Number),
           ownership: S.optional(S.String),
-          phases: S.optional(__S(3)),
-          published: S.optional(__S(4)),
-          residents: S.optional(__S(4)),
+          phases: S.optional(DocumentMap),
+          published: S.optional(DocumentList),
+          residents: S.optional(DocumentList),
           node_load: S.optional(S.Unknown),
           shedding: S.optional(S.Unknown),
-          drainPins: S.optional(__S(4)),
-          deployment: S.optional(__S(11)),
+          drainPins: S.optional(DocumentList),
+          deployment: S.optional(DeploymentState),
           error: S.optional(S.String),
-          allocator: S.optional(S.NullOr(__S(12))),
-          libc_malloc: S.optional(S.NullOr(__S(13))),
+          allocator: S.optional(S.NullOr(AllocatorStats)),
+          libc_malloc: S.optional(S.NullOr(LibcMallocStats)),
         }),
       ).annotate({ identifier: "NodeState" });
     case 7:
@@ -572,23 +630,8 @@ function __c2(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          handoff: S.optional(S.String.pipe(T.Query())),
+          handoff: S.optional(ShutdownHandoff.pipe(T.Query())),
         }).pipe(T.Http({ method: "POST", uri: "/shutdown", code: 200 })),
       ).annotate({ identifier: "ShutdownNodeRequest" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
   }
 }

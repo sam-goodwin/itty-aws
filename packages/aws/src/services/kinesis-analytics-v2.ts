@@ -8,8 +8,6 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 const ns = /*@__PURE__*/ T.XmlNamespace("http://analytics.kinesis.amazonaws.com/doc/2018-05-23");
 const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "Kinesis Analytics V2",
@@ -133,10 +131,10 @@ export class UnableToDetectSchemaException
     {
       message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
       RawInputRecords: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => __S(17)).annotate({ identifier: "RawInputRecords" }),
+        /*@__PURE__*/ S.suspend(() => RawInputRecords).annotate({ identifier: "RawInputRecords" }),
       ),
       ProcessedInputRecords: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => __S(17)).annotate({
+        /*@__PURE__*/ S.suspend(() => ProcessedInputRecords).annotate({
           identifier: "ProcessedInputRecords",
         }),
       ),
@@ -153,6 +151,10 @@ export type LogStreamARN = string;
 export interface CloudWatchLoggingOption {
   LogStreamARN: string;
 }
+const CloudWatchLoggingOption = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<CloudWatchLoggingOption>;
 export type ConditionalToken = string;
 export interface AddApplicationCloudWatchLoggingOptionRequest {
   ApplicationName: string;
@@ -160,6 +162,10 @@ export interface AddApplicationCloudWatchLoggingOptionRequest {
   CloudWatchLoggingOption: CloudWatchLoggingOption;
   ConditionalToken?: string;
 }
+const AddApplicationCloudWatchLoggingOptionRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<AddApplicationCloudWatchLoggingOptionRequest>;
 export type ResourceARN = string;
 export type Id = string;
 export type RoleARN = string;
@@ -168,7 +174,12 @@ export interface CloudWatchLoggingOptionDescription {
   LogStreamARN: string;
   RoleARN?: string;
 }
+const CloudWatchLoggingOptionDescription = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<CloudWatchLoggingOptionDescription>;
 export type CloudWatchLoggingOptionDescriptions = CloudWatchLoggingOptionDescription[];
+const CloudWatchLoggingOptionDescriptions = /*@__PURE__*/ __L.at(__c0, 3);
 export type OperationId = string;
 export interface AddApplicationCloudWatchLoggingOptionResponse {
   ApplicationARN?: string;
@@ -176,42 +187,63 @@ export interface AddApplicationCloudWatchLoggingOptionResponse {
   CloudWatchLoggingOptionDescriptions?: CloudWatchLoggingOptionDescription[];
   OperationId?: string;
 }
+const AddApplicationCloudWatchLoggingOptionResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<AddApplicationCloudWatchLoggingOptionResponse>;
 export type InAppStreamName = string;
 export interface InputLambdaProcessor {
   ResourceARN: string;
 }
+const InputLambdaProcessor = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<InputLambdaProcessor>;
 export interface InputProcessingConfiguration {
   InputLambdaProcessor: InputLambdaProcessor;
 }
+const InputProcessingConfiguration = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<InputProcessingConfiguration>;
 export interface KinesisStreamsInput {
   ResourceARN: string;
 }
+const KinesisStreamsInput = InputLambdaProcessor as any as S.Schema<KinesisStreamsInput>;
 export interface KinesisFirehoseInput {
   ResourceARN: string;
 }
+const KinesisFirehoseInput = InputLambdaProcessor as any as S.Schema<KinesisFirehoseInput>;
 export type InputParallelismCount = number;
 export interface InputParallelism {
   Count?: number;
 }
+const InputParallelism = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<InputParallelism>;
 export type RecordFormatType = "JSON" | "CSV" | (string & {});
+const RecordFormatType = S.String;
+
 export type RecordRowPath = string;
 export interface JSONMappingParameters {
   RecordRowPath: string;
 }
+const JSONMappingParameters = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<JSONMappingParameters>;
 export type RecordRowDelimiter = string;
 export type RecordColumnDelimiter = string;
 export interface CSVMappingParameters {
   RecordRowDelimiter: string;
   RecordColumnDelimiter: string;
 }
+const CSVMappingParameters = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<CSVMappingParameters>;
 export interface MappingParameters {
   JSONMappingParameters?: JSONMappingParameters;
   CSVMappingParameters?: CSVMappingParameters;
 }
+const MappingParameters = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<MappingParameters>;
 export interface RecordFormat {
   RecordFormatType: RecordFormatType;
   MappingParameters?: MappingParameters;
 }
+const RecordFormat = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<RecordFormat>;
 export type RecordEncoding = string;
 export type RecordColumnName = string;
 export type RecordColumnMapping = string;
@@ -221,12 +253,15 @@ export interface RecordColumn {
   Mapping?: string;
   SqlType: string;
 }
+const RecordColumn = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<RecordColumn>;
 export type RecordColumns = RecordColumn[];
+const RecordColumns = /*@__PURE__*/ __L.at(__c1, 5);
 export interface SourceSchema {
   RecordFormat: RecordFormat;
   RecordEncoding?: string;
   RecordColumns: RecordColumn[];
 }
+const SourceSchema = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<SourceSchema>;
 export interface Input {
   NamePrefix: string;
   InputProcessingConfiguration?: InputProcessingConfiguration;
@@ -235,31 +270,55 @@ export interface Input {
   InputParallelism?: InputParallelism;
   InputSchema: SourceSchema;
 }
+const Input = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<Input>;
 export interface AddApplicationInputRequest {
   ApplicationName: string;
   CurrentApplicationVersionId: number;
   Input: Input;
 }
+const AddApplicationInputRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<AddApplicationInputRequest>;
 export type InAppStreamNames = string[];
+const InAppStreamNames = /*@__PURE__*/ __L.at(__c2, 1);
 export interface InputLambdaProcessorDescription {
   ResourceARN: string;
   RoleARN?: string;
 }
+const InputLambdaProcessorDescription = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<InputLambdaProcessorDescription>;
 export interface InputProcessingConfigurationDescription {
   InputLambdaProcessorDescription?: InputLambdaProcessorDescription;
 }
+const InputProcessingConfigurationDescription = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<InputProcessingConfigurationDescription>;
 export interface KinesisStreamsInputDescription {
   ResourceARN: string;
   RoleARN?: string;
 }
+const KinesisStreamsInputDescription =
+  InputLambdaProcessorDescription as any as S.Schema<KinesisStreamsInputDescription>;
 export interface KinesisFirehoseInputDescription {
   ResourceARN: string;
   RoleARN?: string;
 }
+const KinesisFirehoseInputDescription =
+  InputLambdaProcessorDescription as any as S.Schema<KinesisFirehoseInputDescription>;
 export type InputStartingPosition = "NOW" | "TRIM_HORIZON" | "LAST_STOPPED_POINT" | (string & {});
+const InputStartingPosition = S.String;
+
 export interface InputStartingPositionConfiguration {
   InputStartingPosition?: InputStartingPosition;
 }
+const InputStartingPositionConfiguration = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<InputStartingPositionConfiguration>;
 export interface InputDescription {
   InputId?: string;
   NamePrefix?: string;
@@ -271,36 +330,54 @@ export interface InputDescription {
   InputParallelism?: InputParallelism;
   InputStartingPositionConfiguration?: InputStartingPositionConfiguration;
 }
+const InputDescription = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<InputDescription>;
 export type InputDescriptions = InputDescription[];
+const InputDescriptions = /*@__PURE__*/ __L.at(__c2, 6);
 export interface AddApplicationInputResponse {
   ApplicationARN?: string;
   ApplicationVersionId?: number;
   InputDescriptions?: InputDescription[];
 }
+const AddApplicationInputResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<AddApplicationInputResponse>;
 export interface AddApplicationInputProcessingConfigurationRequest {
   ApplicationName: string;
   CurrentApplicationVersionId: number;
   InputId: string;
   InputProcessingConfiguration: InputProcessingConfiguration;
 }
+const AddApplicationInputProcessingConfigurationRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<AddApplicationInputProcessingConfigurationRequest>;
 export interface AddApplicationInputProcessingConfigurationResponse {
   ApplicationARN?: string;
   ApplicationVersionId?: number;
   InputId?: string;
   InputProcessingConfigurationDescription?: InputProcessingConfigurationDescription;
 }
+const AddApplicationInputProcessingConfigurationResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<AddApplicationInputProcessingConfigurationResponse>;
 export interface KinesisStreamsOutput {
   ResourceARN: string;
 }
+const KinesisStreamsOutput = InputLambdaProcessor as any as S.Schema<KinesisStreamsOutput>;
 export interface KinesisFirehoseOutput {
   ResourceARN: string;
 }
+const KinesisFirehoseOutput = InputLambdaProcessor as any as S.Schema<KinesisFirehoseOutput>;
 export interface LambdaOutput {
   ResourceARN: string;
 }
+const LambdaOutput = InputLambdaProcessor as any as S.Schema<LambdaOutput>;
 export interface DestinationSchema {
   RecordFormatType: RecordFormatType;
 }
+const DestinationSchema = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<DestinationSchema>;
 export interface Output {
   Name: string;
   KinesisStreamsOutput?: KinesisStreamsOutput;
@@ -308,23 +385,36 @@ export interface Output {
   LambdaOutput?: LambdaOutput;
   DestinationSchema: DestinationSchema;
 }
+const Output = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<Output>;
 export interface AddApplicationOutputRequest {
   ApplicationName: string;
   CurrentApplicationVersionId: number;
   Output: Output;
 }
+const AddApplicationOutputRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<AddApplicationOutputRequest>;
 export interface KinesisStreamsOutputDescription {
   ResourceARN: string;
   RoleARN?: string;
 }
+const KinesisStreamsOutputDescription =
+  InputLambdaProcessorDescription as any as S.Schema<KinesisStreamsOutputDescription>;
 export interface KinesisFirehoseOutputDescription {
   ResourceARN: string;
   RoleARN?: string;
 }
+const KinesisFirehoseOutputDescription =
+  InputLambdaProcessorDescription as any as S.Schema<KinesisFirehoseOutputDescription>;
 export interface LambdaOutputDescription {
   ResourceARN: string;
   RoleARN?: string;
 }
+const LambdaOutputDescription = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<LambdaOutputDescription>;
 export interface OutputDescription {
   OutputId?: string;
   Name?: string;
@@ -333,12 +423,18 @@ export interface OutputDescription {
   LambdaOutputDescription?: LambdaOutputDescription;
   DestinationSchema?: DestinationSchema;
 }
+const OutputDescription = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<OutputDescription>;
 export type OutputDescriptions = OutputDescription[];
+const OutputDescriptions = /*@__PURE__*/ __L.at(__c3, 7);
 export interface AddApplicationOutputResponse {
   ApplicationARN?: string;
   ApplicationVersionId?: number;
   OutputDescriptions?: OutputDescription[];
 }
+const AddApplicationOutputResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<AddApplicationOutputResponse>;
 export type InAppTableName = string;
 export type BucketARN = string;
 export type FileKey = string;
@@ -346,47 +442,76 @@ export interface S3ReferenceDataSource {
   BucketARN?: string;
   FileKey?: string;
 }
+const S3ReferenceDataSource = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<S3ReferenceDataSource>;
 export interface ReferenceDataSource {
   TableName: string;
   S3ReferenceDataSource?: S3ReferenceDataSource;
   ReferenceSchema: SourceSchema;
 }
+const ReferenceDataSource = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<ReferenceDataSource>;
 export interface AddApplicationReferenceDataSourceRequest {
   ApplicationName: string;
   CurrentApplicationVersionId: number;
   ReferenceDataSource: ReferenceDataSource;
 }
+const AddApplicationReferenceDataSourceRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<AddApplicationReferenceDataSourceRequest>;
 export interface S3ReferenceDataSourceDescription {
   BucketARN: string;
   FileKey: string;
   ReferenceRoleARN?: string;
 }
+const S3ReferenceDataSourceDescription = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<S3ReferenceDataSourceDescription>;
 export interface ReferenceDataSourceDescription {
   ReferenceId: string;
   TableName: string;
   S3ReferenceDataSourceDescription: S3ReferenceDataSourceDescription;
   ReferenceSchema?: SourceSchema;
 }
+const ReferenceDataSourceDescription = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<ReferenceDataSourceDescription>;
 export type ReferenceDataSourceDescriptions = ReferenceDataSourceDescription[];
+const ReferenceDataSourceDescriptions = /*@__PURE__*/ __L.at(__c4, 6);
 export interface AddApplicationReferenceDataSourceResponse {
   ApplicationARN?: string;
   ApplicationVersionId?: number;
   ReferenceDataSourceDescriptions?: ReferenceDataSourceDescription[];
 }
+const AddApplicationReferenceDataSourceResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<AddApplicationReferenceDataSourceResponse>;
 export type SubnetId = string;
 export type SubnetIds = string[];
+const SubnetIds = InAppStreamNames as any as S.Schema<SubnetIds>;
 export type SecurityGroupId = string;
 export type SecurityGroupIds = string[];
+const SecurityGroupIds = InAppStreamNames as any as S.Schema<SecurityGroupIds>;
 export interface VpcConfiguration {
   SubnetIds: string[];
   SecurityGroupIds: string[];
 }
+const VpcConfiguration = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<VpcConfiguration>;
 export interface AddApplicationVpcConfigurationRequest {
   ApplicationName: string;
   CurrentApplicationVersionId?: number;
   VpcConfiguration: VpcConfiguration;
   ConditionalToken?: string;
 }
+const AddApplicationVpcConfigurationRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  1,
+) as any as S.Schema<AddApplicationVpcConfigurationRequest>;
 export type VpcId = string;
 export interface VpcConfigurationDescription {
   VpcConfigurationId: string;
@@ -394,12 +519,20 @@ export interface VpcConfigurationDescription {
   SubnetIds: string[];
   SecurityGroupIds: string[];
 }
+const VpcConfigurationDescription = /*@__PURE__*/ __L.at(
+  __c5,
+  2,
+) as any as S.Schema<VpcConfigurationDescription>;
 export interface AddApplicationVpcConfigurationResponse {
   ApplicationARN?: string;
   ApplicationVersionId?: number;
   VpcConfigurationDescription?: VpcConfigurationDescription;
   OperationId?: string;
 }
+const AddApplicationVpcConfigurationResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<AddApplicationVpcConfigurationResponse>;
 export type ApplicationDescription = string;
 export type RuntimeEnvironment =
   | "SQL-1_0"
@@ -417,15 +550,26 @@ export type RuntimeEnvironment =
   | "FLINK-2_2"
   | "FLINK-2_3"
   | (string & {});
+const RuntimeEnvironment = S.String;
+
 export type Inputs = Input[];
+const Inputs = /*@__PURE__*/ __L.at(__c5, 4);
 export type Outputs = Output[];
+const Outputs = /*@__PURE__*/ __L.at(__c5, 5);
 export type ReferenceDataSources = ReferenceDataSource[];
+const ReferenceDataSources = /*@__PURE__*/ __L.at(__c5, 6);
 export interface SqlApplicationConfiguration {
   Inputs?: Input[];
   Outputs?: Output[];
   ReferenceDataSources?: ReferenceDataSource[];
 }
+const SqlApplicationConfiguration = /*@__PURE__*/ __L.at(
+  __c5,
+  7,
+) as any as S.Schema<SqlApplicationConfiguration>;
 export type ConfigurationType = "DEFAULT" | "CUSTOM" | (string & {});
+const ConfigurationType = S.String;
+
 export type CheckpointInterval = number;
 export type MinPauseBetweenCheckpoints = number;
 export interface CheckpointConfiguration {
@@ -434,13 +578,25 @@ export interface CheckpointConfiguration {
   CheckpointInterval?: number;
   MinPauseBetweenCheckpoints?: number;
 }
+const CheckpointConfiguration = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<CheckpointConfiguration>;
 export type MetricsLevel = "APPLICATION" | "TASK" | "OPERATOR" | "PARALLELISM" | (string & {});
+const MetricsLevel = S.String;
+
 export type LogLevel = "INFO" | "WARN" | "ERROR" | "DEBUG" | (string & {});
+const LogLevel = S.String;
+
 export interface MonitoringConfiguration {
   ConfigurationType: ConfigurationType;
   MetricsLevel?: MetricsLevel;
   LogLevel?: LogLevel;
 }
+const MonitoringConfiguration = /*@__PURE__*/ __L.at(
+  __c6,
+  1,
+) as any as S.Schema<MonitoringConfiguration>;
 export type Parallelism = number;
 export type ParallelismPerKPU = number;
 export interface ParallelismConfiguration {
@@ -449,22 +605,37 @@ export interface ParallelismConfiguration {
   ParallelismPerKPU?: number;
   AutoScalingEnabled?: boolean;
 }
+const ParallelismConfiguration = /*@__PURE__*/ __L.at(
+  __c6,
+  2,
+) as any as S.Schema<ParallelismConfiguration>;
 export interface FlinkApplicationConfiguration {
   CheckpointConfiguration?: CheckpointConfiguration;
   MonitoringConfiguration?: MonitoringConfiguration;
   ParallelismConfiguration?: ParallelismConfiguration;
 }
+const FlinkApplicationConfiguration = /*@__PURE__*/ __L.at(
+  __c6,
+  3,
+) as any as S.Schema<FlinkApplicationConfiguration>;
 export type PropertyKey = string;
 export type PropertyValue = string;
 export type PropertyMap = { [key: string]: string | undefined };
+const PropertyMap = /*@__PURE__*/ __L.at(__c6, 4);
 export interface PropertyGroup {
   PropertyGroupId: string;
   PropertyMap: { [key: string]: string | undefined };
 }
+const PropertyGroup = /*@__PURE__*/ __L.at(__c6, 5) as any as S.Schema<PropertyGroup>;
 export type PropertyGroups = PropertyGroup[];
+const PropertyGroups = /*@__PURE__*/ __L.at(__c6, 6);
 export interface EnvironmentProperties {
   PropertyGroups: PropertyGroup[];
 }
+const EnvironmentProperties = /*@__PURE__*/ __L.at(
+  __c6,
+  7,
+) as any as S.Schema<EnvironmentProperties>;
 export type TextContent = string;
 export type ZipFileContent = Uint8Array;
 export type ObjectVersion = string;
@@ -473,42 +644,78 @@ export interface S3ContentLocation {
   FileKey: string;
   ObjectVersion?: string;
 }
+const S3ContentLocation = /*@__PURE__*/ __L.at(__c7, 0) as any as S.Schema<S3ContentLocation>;
 export interface CodeContent {
   TextContent?: string;
   ZipFileContent?: Uint8Array;
   S3ContentLocation?: S3ContentLocation;
 }
+const CodeContent = /*@__PURE__*/ __L.at(__c7, 1) as any as S.Schema<CodeContent>;
 export type CodeContentType = "PLAINTEXT" | "ZIPFILE" | (string & {});
+const CodeContentType = S.String;
+
 export interface ApplicationCodeConfiguration {
   CodeContent?: CodeContent;
   CodeContentType: CodeContentType;
 }
+const ApplicationCodeConfiguration = /*@__PURE__*/ __L.at(
+  __c7,
+  2,
+) as any as S.Schema<ApplicationCodeConfiguration>;
 export interface ApplicationSnapshotConfiguration {
   SnapshotsEnabled: boolean;
 }
+const ApplicationSnapshotConfiguration = /*@__PURE__*/ __L.at(
+  __c7,
+  3,
+) as any as S.Schema<ApplicationSnapshotConfiguration>;
 export interface ApplicationSystemRollbackConfiguration {
   RollbackEnabled: boolean;
 }
+const ApplicationSystemRollbackConfiguration = /*@__PURE__*/ __L.at(
+  __c7,
+  4,
+) as any as S.Schema<ApplicationSystemRollbackConfiguration>;
 export type VpcConfigurations = VpcConfiguration[];
+const VpcConfigurations = /*@__PURE__*/ __L.at(__c7, 5);
 export interface ZeppelinMonitoringConfiguration {
   LogLevel: LogLevel;
 }
+const ZeppelinMonitoringConfiguration = /*@__PURE__*/ __L.at(
+  __c7,
+  6,
+) as any as S.Schema<ZeppelinMonitoringConfiguration>;
 export type DatabaseARN = string;
 export interface GlueDataCatalogConfiguration {
   DatabaseARN: string;
 }
+const GlueDataCatalogConfiguration = /*@__PURE__*/ __L.at(
+  __c7,
+  7,
+) as any as S.Schema<GlueDataCatalogConfiguration>;
 export interface CatalogConfiguration {
   GlueDataCatalogConfiguration: GlueDataCatalogConfiguration;
 }
+const CatalogConfiguration = /*@__PURE__*/ __L.at(__c8, 0) as any as S.Schema<CatalogConfiguration>;
 export type BasePath = string;
 export interface S3ContentBaseLocation {
   BucketARN: string;
   BasePath?: string;
 }
+const S3ContentBaseLocation = /*@__PURE__*/ __L.at(
+  __c8,
+  1,
+) as any as S.Schema<S3ContentBaseLocation>;
 export interface DeployAsApplicationConfiguration {
   S3ContentLocation: S3ContentBaseLocation;
 }
+const DeployAsApplicationConfiguration = /*@__PURE__*/ __L.at(
+  __c8,
+  2,
+) as any as S.Schema<DeployAsApplicationConfiguration>;
 export type ArtifactType = "UDF" | "DEPENDENCY_JAR" | (string & {});
+const ArtifactType = S.String;
+
 export type MavenGroupId = string;
 export type MavenArtifactId = string;
 export type MavenVersion = string;
@@ -517,24 +724,40 @@ export interface MavenReference {
   ArtifactId: string;
   Version: string;
 }
+const MavenReference = /*@__PURE__*/ __L.at(__c8, 3) as any as S.Schema<MavenReference>;
 export interface CustomArtifactConfiguration {
   ArtifactType: ArtifactType;
   S3ContentLocation?: S3ContentLocation;
   MavenReference?: MavenReference;
 }
+const CustomArtifactConfiguration = /*@__PURE__*/ __L.at(
+  __c8,
+  4,
+) as any as S.Schema<CustomArtifactConfiguration>;
 export type CustomArtifactsConfigurationList = CustomArtifactConfiguration[];
+const CustomArtifactsConfigurationList = /*@__PURE__*/ __L.at(__c8, 5);
 export interface ZeppelinApplicationConfiguration {
   MonitoringConfiguration?: ZeppelinMonitoringConfiguration;
   CatalogConfiguration?: CatalogConfiguration;
   DeployAsApplicationConfiguration?: DeployAsApplicationConfiguration;
   CustomArtifactsConfiguration?: CustomArtifactConfiguration[];
 }
+const ZeppelinApplicationConfiguration = /*@__PURE__*/ __L.at(
+  __c8,
+  6,
+) as any as S.Schema<ZeppelinApplicationConfiguration>;
 export type KeyId = string;
 export type KeyType = "AWS_OWNED_KEY" | "CUSTOMER_MANAGED_KEY" | (string & {});
+const KeyType = S.String;
+
 export interface ApplicationEncryptionConfiguration {
   KeyId?: string;
   KeyType: KeyType;
 }
+const ApplicationEncryptionConfiguration = /*@__PURE__*/ __L.at(
+  __c8,
+  7,
+) as any as S.Schema<ApplicationEncryptionConfiguration>;
 export interface ApplicationConfiguration {
   SqlApplicationConfiguration?: SqlApplicationConfiguration;
   FlinkApplicationConfiguration?: FlinkApplicationConfiguration;
@@ -546,15 +769,24 @@ export interface ApplicationConfiguration {
   ZeppelinApplicationConfiguration?: ZeppelinApplicationConfiguration;
   ApplicationEncryptionConfiguration?: ApplicationEncryptionConfiguration;
 }
+const ApplicationConfiguration = /*@__PURE__*/ __L.at(
+  __c9,
+  0,
+) as any as S.Schema<ApplicationConfiguration>;
 export type CloudWatchLoggingOptions = CloudWatchLoggingOption[];
+const CloudWatchLoggingOptions = /*@__PURE__*/ __L.at(__c9, 1);
 export type TagKey = string;
 export type TagValue = string;
 export interface Tag {
   Key: string;
   Value?: string;
 }
+const Tag = /*@__PURE__*/ __L.at(__c9, 2) as any as S.Schema<Tag>;
 export type Tags = Tag[];
+const Tags = /*@__PURE__*/ __L.at(__c9, 3);
 export type ApplicationMode = "STREAMING" | "INTERACTIVE" | (string & {});
+const ApplicationMode = S.String;
+
 export interface CreateApplicationRequest {
   ApplicationName: string;
   ApplicationDescription?: string;
@@ -565,6 +797,10 @@ export interface CreateApplicationRequest {
   Tags?: Tag[];
   ApplicationMode?: ApplicationMode;
 }
+const CreateApplicationRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  4,
+) as any as S.Schema<CreateApplicationRequest>;
 export type ApplicationStatus =
   | "DELETING"
   | "STARTING"
@@ -578,11 +814,17 @@ export type ApplicationStatus =
   | "MAINTENANCE"
   | "ROLLED_BACK"
   | (string & {});
+const ApplicationStatus = S.String;
+
 export interface SqlApplicationConfigurationDescription {
   InputDescriptions?: InputDescription[];
   OutputDescriptions?: OutputDescription[];
   ReferenceDataSourceDescriptions?: ReferenceDataSourceDescription[];
 }
+const SqlApplicationConfigurationDescription = /*@__PURE__*/ __L.at(
+  __c9,
+  5,
+) as any as S.Schema<SqlApplicationConfigurationDescription>;
 export type CodeMD5 = string;
 export type CodeSize = number;
 export interface S3ApplicationCodeLocationDescription {
@@ -590,44 +832,78 @@ export interface S3ApplicationCodeLocationDescription {
   FileKey: string;
   ObjectVersion?: string;
 }
+const S3ApplicationCodeLocationDescription = /*@__PURE__*/ __L.at(
+  __c9,
+  6,
+) as any as S.Schema<S3ApplicationCodeLocationDescription>;
 export interface CodeContentDescription {
   TextContent?: string;
   CodeMD5?: string;
   CodeSize?: number;
   S3ApplicationCodeLocationDescription?: S3ApplicationCodeLocationDescription;
 }
+const CodeContentDescription = /*@__PURE__*/ __L.at(
+  __c9,
+  7,
+) as any as S.Schema<CodeContentDescription>;
 export interface ApplicationCodeConfigurationDescription {
   CodeContentType: CodeContentType;
   CodeContentDescription?: CodeContentDescription;
 }
+const ApplicationCodeConfigurationDescription = /*@__PURE__*/ __L.at(
+  __c10,
+  0,
+) as any as S.Schema<ApplicationCodeConfigurationDescription>;
 export type ApplicationRestoreType =
   | "SKIP_RESTORE_FROM_SNAPSHOT"
   | "RESTORE_FROM_LATEST_SNAPSHOT"
   | "RESTORE_FROM_CUSTOM_SNAPSHOT"
   | (string & {});
+const ApplicationRestoreType = S.String;
+
 export type SnapshotName = string;
 export interface ApplicationRestoreConfiguration {
   ApplicationRestoreType: ApplicationRestoreType;
   SnapshotName?: string;
 }
+const ApplicationRestoreConfiguration = /*@__PURE__*/ __L.at(
+  __c10,
+  1,
+) as any as S.Schema<ApplicationRestoreConfiguration>;
 export interface FlinkRunConfiguration {
   AllowNonRestoredState?: boolean;
 }
+const FlinkRunConfiguration = /*@__PURE__*/ __L.at(
+  __c10,
+  2,
+) as any as S.Schema<FlinkRunConfiguration>;
 export interface RunConfigurationDescription {
   ApplicationRestoreConfigurationDescription?: ApplicationRestoreConfiguration;
   FlinkRunConfigurationDescription?: FlinkRunConfiguration;
 }
+const RunConfigurationDescription = /*@__PURE__*/ __L.at(
+  __c10,
+  3,
+) as any as S.Schema<RunConfigurationDescription>;
 export interface CheckpointConfigurationDescription {
   ConfigurationType?: ConfigurationType;
   CheckpointingEnabled?: boolean;
   CheckpointInterval?: number;
   MinPauseBetweenCheckpoints?: number;
 }
+const CheckpointConfigurationDescription = /*@__PURE__*/ __L.at(
+  __c10,
+  4,
+) as any as S.Schema<CheckpointConfigurationDescription>;
 export interface MonitoringConfigurationDescription {
   ConfigurationType?: ConfigurationType;
   MetricsLevel?: MetricsLevel;
   LogLevel?: LogLevel;
 }
+const MonitoringConfigurationDescription = /*@__PURE__*/ __L.at(
+  __c10,
+  5,
+) as any as S.Schema<MonitoringConfigurationDescription>;
 export interface ParallelismConfigurationDescription {
   ConfigurationType?: ConfigurationType;
   Parallelism?: number;
@@ -635,6 +911,10 @@ export interface ParallelismConfigurationDescription {
   CurrentParallelism?: number;
   AutoScalingEnabled?: boolean;
 }
+const ParallelismConfigurationDescription = /*@__PURE__*/ __L.at(
+  __c10,
+  6,
+) as any as S.Schema<ParallelismConfigurationDescription>;
 export type JobPlanDescription = string;
 export interface FlinkApplicationConfigurationDescription {
   CheckpointConfigurationDescription?: CheckpointConfigurationDescription;
@@ -642,48 +922,90 @@ export interface FlinkApplicationConfigurationDescription {
   ParallelismConfigurationDescription?: ParallelismConfigurationDescription;
   JobPlanDescription?: string;
 }
+const FlinkApplicationConfigurationDescription = /*@__PURE__*/ __L.at(
+  __c10,
+  7,
+) as any as S.Schema<FlinkApplicationConfigurationDescription>;
 export interface EnvironmentPropertyDescriptions {
   PropertyGroupDescriptions?: PropertyGroup[];
 }
+const EnvironmentPropertyDescriptions = /*@__PURE__*/ __L.at(
+  __c11,
+  0,
+) as any as S.Schema<EnvironmentPropertyDescriptions>;
 export interface ApplicationSnapshotConfigurationDescription {
   SnapshotsEnabled: boolean;
 }
+const ApplicationSnapshotConfigurationDescription =
+  ApplicationSnapshotConfiguration as any as S.Schema<ApplicationSnapshotConfigurationDescription>;
 export interface ApplicationSystemRollbackConfigurationDescription {
   RollbackEnabled: boolean;
 }
+const ApplicationSystemRollbackConfigurationDescription =
+  ApplicationSystemRollbackConfiguration as any as S.Schema<ApplicationSystemRollbackConfigurationDescription>;
 export type VpcConfigurationDescriptions = VpcConfigurationDescription[];
+const VpcConfigurationDescriptions = /*@__PURE__*/ __L.at(__c11, 1);
 export interface ZeppelinMonitoringConfigurationDescription {
   LogLevel?: LogLevel;
 }
+const ZeppelinMonitoringConfigurationDescription = /*@__PURE__*/ __L.at(
+  __c11,
+  2,
+) as any as S.Schema<ZeppelinMonitoringConfigurationDescription>;
 export interface GlueDataCatalogConfigurationDescription {
   DatabaseARN: string;
 }
+const GlueDataCatalogConfigurationDescription =
+  GlueDataCatalogConfiguration as any as S.Schema<GlueDataCatalogConfigurationDescription>;
 export interface CatalogConfigurationDescription {
   GlueDataCatalogConfigurationDescription: GlueDataCatalogConfigurationDescription;
 }
+const CatalogConfigurationDescription = /*@__PURE__*/ __L.at(
+  __c11,
+  3,
+) as any as S.Schema<CatalogConfigurationDescription>;
 export interface S3ContentBaseLocationDescription {
   BucketARN: string;
   BasePath?: string;
 }
+const S3ContentBaseLocationDescription = /*@__PURE__*/ __L.at(
+  __c11,
+  4,
+) as any as S.Schema<S3ContentBaseLocationDescription>;
 export interface DeployAsApplicationConfigurationDescription {
   S3ContentLocationDescription: S3ContentBaseLocationDescription;
 }
+const DeployAsApplicationConfigurationDescription = /*@__PURE__*/ __L.at(
+  __c11,
+  5,
+) as any as S.Schema<DeployAsApplicationConfigurationDescription>;
 export interface CustomArtifactConfigurationDescription {
   ArtifactType?: ArtifactType;
   S3ContentLocationDescription?: S3ContentLocation;
   MavenReferenceDescription?: MavenReference;
 }
+const CustomArtifactConfigurationDescription = /*@__PURE__*/ __L.at(
+  __c11,
+  6,
+) as any as S.Schema<CustomArtifactConfigurationDescription>;
 export type CustomArtifactsConfigurationDescriptionList = CustomArtifactConfigurationDescription[];
+const CustomArtifactsConfigurationDescriptionList = /*@__PURE__*/ __L.at(__c11, 7);
 export interface ZeppelinApplicationConfigurationDescription {
   MonitoringConfigurationDescription: ZeppelinMonitoringConfigurationDescription;
   CatalogConfigurationDescription?: CatalogConfigurationDescription;
   DeployAsApplicationConfigurationDescription?: DeployAsApplicationConfigurationDescription;
   CustomArtifactsConfigurationDescription?: CustomArtifactConfigurationDescription[];
 }
+const ZeppelinApplicationConfigurationDescription = /*@__PURE__*/ __L.at(
+  __c12,
+  0,
+) as any as S.Schema<ZeppelinApplicationConfigurationDescription>;
 export interface ApplicationEncryptionConfigurationDescription {
   KeyId?: string;
   KeyType: KeyType;
 }
+const ApplicationEncryptionConfigurationDescription =
+  ApplicationEncryptionConfiguration as any as S.Schema<ApplicationEncryptionConfigurationDescription>;
 export interface ApplicationConfigurationDescription {
   SqlApplicationConfigurationDescription?: SqlApplicationConfigurationDescription;
   ApplicationCodeConfigurationDescription?: ApplicationCodeConfigurationDescription;
@@ -696,12 +1018,20 @@ export interface ApplicationConfigurationDescription {
   ZeppelinApplicationConfigurationDescription?: ZeppelinApplicationConfigurationDescription;
   ApplicationEncryptionConfigurationDescription?: ApplicationEncryptionConfigurationDescription;
 }
+const ApplicationConfigurationDescription = /*@__PURE__*/ __L.at(
+  __c12,
+  1,
+) as any as S.Schema<ApplicationConfigurationDescription>;
 export type ApplicationMaintenanceWindowStartTime = string;
 export type ApplicationMaintenanceWindowEndTime = string;
 export interface ApplicationMaintenanceConfigurationDescription {
   ApplicationMaintenanceWindowStartTime: string;
   ApplicationMaintenanceWindowEndTime: string;
 }
+const ApplicationMaintenanceConfigurationDescription = /*@__PURE__*/ __L.at(
+  __c12,
+  2,
+) as any as S.Schema<ApplicationMaintenanceConfigurationDescription>;
 export interface ApplicationDetail {
   ApplicationARN: string;
   ApplicationDescription?: string;
@@ -722,111 +1052,201 @@ export interface ApplicationDetail {
   ApplicationVersionRolledBackTo?: number;
   ApplicationMode?: ApplicationMode;
 }
+const ApplicationDetail = /*@__PURE__*/ __L.at(__c12, 3) as any as S.Schema<ApplicationDetail>;
 export interface CreateApplicationResponse {
   ApplicationDetail: ApplicationDetail;
 }
+const CreateApplicationResponse = /*@__PURE__*/ __L.at(
+  __c12,
+  4,
+) as any as S.Schema<CreateApplicationResponse>;
 export type UrlType = "FLINK_DASHBOARD_URL" | "ZEPPELIN_UI_URL" | (string & {});
+const UrlType = S.String;
+
 export type SessionExpirationDurationInSeconds = number;
 export interface CreateApplicationPresignedUrlRequest {
   ApplicationName: string;
   UrlType: UrlType;
   SessionExpirationDurationInSeconds?: number;
 }
+const CreateApplicationPresignedUrlRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  5,
+) as any as S.Schema<CreateApplicationPresignedUrlRequest>;
 export type AuthorizedUrl = string;
 export interface CreateApplicationPresignedUrlResponse {
   AuthorizedUrl?: string;
 }
+const CreateApplicationPresignedUrlResponse = /*@__PURE__*/ __L.at(
+  __c12,
+  6,
+) as any as S.Schema<CreateApplicationPresignedUrlResponse>;
 export interface CreateApplicationSnapshotRequest {
   ApplicationName: string;
   SnapshotName: string;
 }
+const CreateApplicationSnapshotRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  7,
+) as any as S.Schema<CreateApplicationSnapshotRequest>;
 export interface CreateApplicationSnapshotResponse {}
+const CreateApplicationSnapshotResponse = /*@__PURE__*/ __L.at(
+  __c13,
+  0,
+) as any as S.Schema<CreateApplicationSnapshotResponse>;
 export interface DeleteApplicationRequest {
   ApplicationName: string;
   CreateTimestamp: Date;
 }
+const DeleteApplicationRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  1,
+) as any as S.Schema<DeleteApplicationRequest>;
 export interface DeleteApplicationResponse {}
+const DeleteApplicationResponse =
+  CreateApplicationSnapshotResponse as any as S.Schema<DeleteApplicationResponse>;
 export interface DeleteApplicationCloudWatchLoggingOptionRequest {
   ApplicationName: string;
   CurrentApplicationVersionId?: number;
   CloudWatchLoggingOptionId: string;
   ConditionalToken?: string;
 }
+const DeleteApplicationCloudWatchLoggingOptionRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  2,
+) as any as S.Schema<DeleteApplicationCloudWatchLoggingOptionRequest>;
 export interface DeleteApplicationCloudWatchLoggingOptionResponse {
   ApplicationARN?: string;
   ApplicationVersionId?: number;
   CloudWatchLoggingOptionDescriptions?: CloudWatchLoggingOptionDescription[];
   OperationId?: string;
 }
+const DeleteApplicationCloudWatchLoggingOptionResponse =
+  AddApplicationCloudWatchLoggingOptionResponse as any as S.Schema<DeleteApplicationCloudWatchLoggingOptionResponse>;
 export interface DeleteApplicationInputProcessingConfigurationRequest {
   ApplicationName: string;
   CurrentApplicationVersionId: number;
   InputId: string;
 }
+const DeleteApplicationInputProcessingConfigurationRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  3,
+) as any as S.Schema<DeleteApplicationInputProcessingConfigurationRequest>;
 export interface DeleteApplicationInputProcessingConfigurationResponse {
   ApplicationARN?: string;
   ApplicationVersionId?: number;
 }
+const DeleteApplicationInputProcessingConfigurationResponse = /*@__PURE__*/ __L.at(
+  __c13,
+  4,
+) as any as S.Schema<DeleteApplicationInputProcessingConfigurationResponse>;
 export interface DeleteApplicationOutputRequest {
   ApplicationName: string;
   CurrentApplicationVersionId: number;
   OutputId: string;
 }
+const DeleteApplicationOutputRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  5,
+) as any as S.Schema<DeleteApplicationOutputRequest>;
 export interface DeleteApplicationOutputResponse {
   ApplicationARN?: string;
   ApplicationVersionId?: number;
 }
+const DeleteApplicationOutputResponse =
+  DeleteApplicationInputProcessingConfigurationResponse as any as S.Schema<DeleteApplicationOutputResponse>;
 export interface DeleteApplicationReferenceDataSourceRequest {
   ApplicationName: string;
   CurrentApplicationVersionId: number;
   ReferenceId: string;
 }
+const DeleteApplicationReferenceDataSourceRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  6,
+) as any as S.Schema<DeleteApplicationReferenceDataSourceRequest>;
 export interface DeleteApplicationReferenceDataSourceResponse {
   ApplicationARN?: string;
   ApplicationVersionId?: number;
 }
+const DeleteApplicationReferenceDataSourceResponse =
+  DeleteApplicationInputProcessingConfigurationResponse as any as S.Schema<DeleteApplicationReferenceDataSourceResponse>;
 export interface DeleteApplicationSnapshotRequest {
   ApplicationName: string;
   SnapshotName: string;
   SnapshotCreationTimestamp: Date;
 }
+const DeleteApplicationSnapshotRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  7,
+) as any as S.Schema<DeleteApplicationSnapshotRequest>;
 export interface DeleteApplicationSnapshotResponse {}
+const DeleteApplicationSnapshotResponse =
+  CreateApplicationSnapshotResponse as any as S.Schema<DeleteApplicationSnapshotResponse>;
 export interface DeleteApplicationVpcConfigurationRequest {
   ApplicationName: string;
   CurrentApplicationVersionId?: number;
   VpcConfigurationId: string;
   ConditionalToken?: string;
 }
+const DeleteApplicationVpcConfigurationRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  0,
+) as any as S.Schema<DeleteApplicationVpcConfigurationRequest>;
 export interface DeleteApplicationVpcConfigurationResponse {
   ApplicationARN?: string;
   ApplicationVersionId?: number;
   OperationId?: string;
 }
+const DeleteApplicationVpcConfigurationResponse = /*@__PURE__*/ __L.at(
+  __c14,
+  1,
+) as any as S.Schema<DeleteApplicationVpcConfigurationResponse>;
 export interface DescribeApplicationRequest {
   ApplicationName: string;
   IncludeAdditionalDetails?: boolean;
 }
+const DescribeApplicationRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  2,
+) as any as S.Schema<DescribeApplicationRequest>;
 export interface DescribeApplicationResponse {
   ApplicationDetail: ApplicationDetail;
 }
+const DescribeApplicationResponse =
+  CreateApplicationResponse as any as S.Schema<DescribeApplicationResponse>;
 export interface DescribeApplicationOperationRequest {
   ApplicationName: string;
   OperationId: string;
 }
+const DescribeApplicationOperationRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  3,
+) as any as S.Schema<DescribeApplicationOperationRequest>;
 export type Operation = string;
 export type OperationStatus = "IN_PROGRESS" | "CANCELLED" | "SUCCESSFUL" | "FAILED" | (string & {});
+const OperationStatus = S.String;
+
 export interface ApplicationVersionChangeDetails {
   ApplicationVersionUpdatedFrom: number;
   ApplicationVersionUpdatedTo: number;
 }
+const ApplicationVersionChangeDetails = /*@__PURE__*/ __L.at(
+  __c14,
+  4,
+) as any as S.Schema<ApplicationVersionChangeDetails>;
 export type ErrorString = string;
 export interface ErrorInfo {
   ErrorString?: string;
 }
+const ErrorInfo = /*@__PURE__*/ __L.at(__c14, 5) as any as S.Schema<ErrorInfo>;
 export interface OperationFailureDetails {
   RollbackOperationId?: string;
   ErrorInfo?: ErrorInfo;
 }
+const OperationFailureDetails = /*@__PURE__*/ __L.at(
+  __c14,
+  6,
+) as any as S.Schema<OperationFailureDetails>;
 export interface ApplicationOperationInfoDetails {
   Operation: string;
   StartTime: Date;
@@ -835,14 +1255,28 @@ export interface ApplicationOperationInfoDetails {
   ApplicationVersionChangeDetails?: ApplicationVersionChangeDetails;
   OperationFailureDetails?: OperationFailureDetails;
 }
+const ApplicationOperationInfoDetails = /*@__PURE__*/ __L.at(
+  __c14,
+  7,
+) as any as S.Schema<ApplicationOperationInfoDetails>;
 export interface DescribeApplicationOperationResponse {
   ApplicationOperationInfoDetails?: ApplicationOperationInfoDetails;
 }
+const DescribeApplicationOperationResponse = /*@__PURE__*/ __L.at(
+  __c15,
+  0,
+) as any as S.Schema<DescribeApplicationOperationResponse>;
 export interface DescribeApplicationSnapshotRequest {
   ApplicationName: string;
   SnapshotName: string;
 }
+const DescribeApplicationSnapshotRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  1,
+) as any as S.Schema<DescribeApplicationSnapshotRequest>;
 export type SnapshotStatus = "CREATING" | "READY" | "DELETING" | "FAILED" | (string & {});
+const SnapshotStatus = S.String;
+
 export interface SnapshotDetails {
   SnapshotName: string;
   SnapshotStatus: SnapshotStatus;
@@ -851,20 +1285,34 @@ export interface SnapshotDetails {
   RuntimeEnvironment?: RuntimeEnvironment;
   ApplicationEncryptionConfigurationDescription?: ApplicationEncryptionConfigurationDescription;
 }
+const SnapshotDetails = /*@__PURE__*/ __L.at(__c15, 2) as any as S.Schema<SnapshotDetails>;
 export interface DescribeApplicationSnapshotResponse {
   SnapshotDetails: SnapshotDetails;
 }
+const DescribeApplicationSnapshotResponse = /*@__PURE__*/ __L.at(
+  __c15,
+  3,
+) as any as S.Schema<DescribeApplicationSnapshotResponse>;
 export interface DescribeApplicationVersionRequest {
   ApplicationName: string;
   ApplicationVersionId: number;
 }
+const DescribeApplicationVersionRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  4,
+) as any as S.Schema<DescribeApplicationVersionRequest>;
 export interface DescribeApplicationVersionResponse {
   ApplicationVersionDetail?: ApplicationDetail;
 }
+const DescribeApplicationVersionResponse = /*@__PURE__*/ __L.at(
+  __c15,
+  5,
+) as any as S.Schema<DescribeApplicationVersionResponse>;
 export interface S3Configuration {
   BucketARN: string;
   FileKey: string;
 }
+const S3Configuration = /*@__PURE__*/ __L.at(__c15, 6) as any as S.Schema<S3Configuration>;
 export interface DiscoverInputSchemaRequest {
   ResourceARN?: string;
   ServiceExecutionRole: string;
@@ -872,19 +1320,31 @@ export interface DiscoverInputSchemaRequest {
   S3Configuration?: S3Configuration;
   InputProcessingConfiguration?: InputProcessingConfiguration;
 }
+const DiscoverInputSchemaRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  7,
+) as any as S.Schema<DiscoverInputSchemaRequest>;
 export type ParsedInputRecordField = string;
 export type ParsedInputRecord = string[];
+const ParsedInputRecord = InAppStreamNames as any as S.Schema<ParsedInputRecord>;
 export type ParsedInputRecords = string[][];
+const ParsedInputRecords = /*@__PURE__*/ __L.at(__c16, 0);
 export type ProcessedInputRecord = string;
 export type ProcessedInputRecords = string[];
+const ProcessedInputRecords = InAppStreamNames as any as S.Schema<ProcessedInputRecords>;
 export type RawInputRecord = string;
 export type RawInputRecords = string[];
+const RawInputRecords = InAppStreamNames as any as S.Schema<RawInputRecords>;
 export interface DiscoverInputSchemaResponse {
   InputSchema?: SourceSchema;
   ParsedInputRecords?: string[][];
   ProcessedInputRecords?: string[];
   RawInputRecords?: string[];
 }
+const DiscoverInputSchemaResponse = /*@__PURE__*/ __L.at(
+  __c16,
+  1,
+) as any as S.Schema<DiscoverInputSchemaResponse>;
 export type ListApplicationOperationsInputLimit = number;
 export type NextToken = string;
 export interface ListApplicationOperationsRequest {
@@ -894,6 +1354,10 @@ export interface ListApplicationOperationsRequest {
   Operation?: string;
   OperationStatus?: OperationStatus;
 }
+const ListApplicationOperationsRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  2,
+) as any as S.Schema<ListApplicationOperationsRequest>;
 export interface ApplicationOperationInfo {
   Operation?: string;
   OperationId?: string;
@@ -901,16 +1365,29 @@ export interface ApplicationOperationInfo {
   EndTime?: Date;
   OperationStatus?: OperationStatus;
 }
+const ApplicationOperationInfo = /*@__PURE__*/ __L.at(
+  __c16,
+  3,
+) as any as S.Schema<ApplicationOperationInfo>;
 export type ApplicationOperationInfoList = ApplicationOperationInfo[];
+const ApplicationOperationInfoList = /*@__PURE__*/ __L.at(__c16, 4);
 export interface ListApplicationOperationsResponse {
   ApplicationOperationInfoList?: ApplicationOperationInfo[];
   NextToken?: string;
 }
+const ListApplicationOperationsResponse = /*@__PURE__*/ __L.at(
+  __c16,
+  5,
+) as any as S.Schema<ListApplicationOperationsResponse>;
 export type ListApplicationsInputLimit = number;
 export interface ListApplicationsRequest {
   Limit?: number;
   NextToken?: string;
 }
+const ListApplicationsRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  6,
+) as any as S.Schema<ListApplicationsRequest>;
 export interface ApplicationSummary {
   ApplicationName: string;
   ApplicationARN: string;
@@ -919,107 +1396,193 @@ export interface ApplicationSummary {
   RuntimeEnvironment: RuntimeEnvironment;
   ApplicationMode?: ApplicationMode;
 }
+const ApplicationSummary = /*@__PURE__*/ __L.at(__c16, 7) as any as S.Schema<ApplicationSummary>;
 export type ApplicationSummaries = ApplicationSummary[];
+const ApplicationSummaries = /*@__PURE__*/ __L.at(__c17, 0);
 export interface ListApplicationsResponse {
   ApplicationSummaries: ApplicationSummary[];
   NextToken?: string;
 }
+const ListApplicationsResponse = /*@__PURE__*/ __L.at(
+  __c17,
+  1,
+) as any as S.Schema<ListApplicationsResponse>;
 export type ListSnapshotsInputLimit = number;
 export interface ListApplicationSnapshotsRequest {
   ApplicationName: string;
   Limit?: number;
   NextToken?: string;
 }
+const ListApplicationSnapshotsRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  2,
+) as any as S.Schema<ListApplicationSnapshotsRequest>;
 export type SnapshotSummaries = SnapshotDetails[];
+const SnapshotSummaries = /*@__PURE__*/ __L.at(__c17, 3);
 export interface ListApplicationSnapshotsResponse {
   SnapshotSummaries?: SnapshotDetails[];
   NextToken?: string;
 }
+const ListApplicationSnapshotsResponse = /*@__PURE__*/ __L.at(
+  __c17,
+  4,
+) as any as S.Schema<ListApplicationSnapshotsResponse>;
 export type ListApplicationVersionsInputLimit = number;
 export interface ListApplicationVersionsRequest {
   ApplicationName: string;
   Limit?: number;
   NextToken?: string;
 }
+const ListApplicationVersionsRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  5,
+) as any as S.Schema<ListApplicationVersionsRequest>;
 export interface ApplicationVersionSummary {
   ApplicationVersionId: number;
   ApplicationStatus: ApplicationStatus;
 }
+const ApplicationVersionSummary = /*@__PURE__*/ __L.at(
+  __c17,
+  6,
+) as any as S.Schema<ApplicationVersionSummary>;
 export type ApplicationVersionSummaries = ApplicationVersionSummary[];
+const ApplicationVersionSummaries = /*@__PURE__*/ __L.at(__c17, 7);
 export interface ListApplicationVersionsResponse {
   ApplicationVersionSummaries?: ApplicationVersionSummary[];
   NextToken?: string;
 }
+const ListApplicationVersionsResponse = /*@__PURE__*/ __L.at(
+  __c18,
+  0,
+) as any as S.Schema<ListApplicationVersionsResponse>;
 export type KinesisAnalyticsARN = string;
 export interface ListTagsForResourceRequest {
   ResourceARN: string;
 }
+const ListTagsForResourceRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  1,
+) as any as S.Schema<ListTagsForResourceRequest>;
 export interface ListTagsForResourceResponse {
   Tags?: Tag[];
 }
+const ListTagsForResourceResponse = /*@__PURE__*/ __L.at(
+  __c18,
+  2,
+) as any as S.Schema<ListTagsForResourceResponse>;
 export interface RollbackApplicationRequest {
   ApplicationName: string;
   CurrentApplicationVersionId: number;
 }
+const RollbackApplicationRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  3,
+) as any as S.Schema<RollbackApplicationRequest>;
 export interface RollbackApplicationResponse {
   ApplicationDetail: ApplicationDetail;
   OperationId?: string;
 }
+const RollbackApplicationResponse = /*@__PURE__*/ __L.at(
+  __c18,
+  4,
+) as any as S.Schema<RollbackApplicationResponse>;
 export interface SqlRunConfiguration {
   InputId: string;
   InputStartingPositionConfiguration: InputStartingPositionConfiguration;
 }
+const SqlRunConfiguration = /*@__PURE__*/ __L.at(__c18, 5) as any as S.Schema<SqlRunConfiguration>;
 export type SqlRunConfigurations = SqlRunConfiguration[];
+const SqlRunConfigurations = /*@__PURE__*/ __L.at(__c18, 6);
 export interface RunConfiguration {
   FlinkRunConfiguration?: FlinkRunConfiguration;
   SqlRunConfigurations?: SqlRunConfiguration[];
   ApplicationRestoreConfiguration?: ApplicationRestoreConfiguration;
 }
+const RunConfiguration = /*@__PURE__*/ __L.at(__c18, 7) as any as S.Schema<RunConfiguration>;
 export interface StartApplicationRequest {
   ApplicationName: string;
   RunConfiguration?: RunConfiguration;
 }
+const StartApplicationRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  0,
+) as any as S.Schema<StartApplicationRequest>;
 export interface StartApplicationResponse {
   OperationId?: string;
 }
+const StartApplicationResponse = /*@__PURE__*/ __L.at(
+  __c19,
+  1,
+) as any as S.Schema<StartApplicationResponse>;
 export interface StopApplicationRequest {
   ApplicationName: string;
   Force?: boolean;
 }
+const StopApplicationRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  2,
+) as any as S.Schema<StopApplicationRequest>;
 export interface StopApplicationResponse {
   OperationId?: string;
 }
+const StopApplicationResponse =
+  StartApplicationResponse as any as S.Schema<StopApplicationResponse>;
 export interface TagResourceRequest {
   ResourceARN: string;
   Tags: Tag[];
 }
+const TagResourceRequest = /*@__PURE__*/ __L.at(__c19, 3) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
+const TagResourceResponse = /*@__PURE__*/ __L.at(__c19, 4) as any as S.Schema<TagResourceResponse>;
 export type TagKeys = string[];
+const TagKeys = InAppStreamNames as any as S.Schema<TagKeys>;
 export interface UntagResourceRequest {
   ResourceARN: string;
   TagKeys: string[];
 }
+const UntagResourceRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  5,
+) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
+const UntagResourceResponse = TagResourceResponse as any as S.Schema<UntagResourceResponse>;
 export interface InputLambdaProcessorUpdate {
   ResourceARNUpdate: string;
 }
+const InputLambdaProcessorUpdate = /*@__PURE__*/ __L.at(
+  __c19,
+  6,
+) as any as S.Schema<InputLambdaProcessorUpdate>;
 export interface InputProcessingConfigurationUpdate {
   InputLambdaProcessorUpdate: InputLambdaProcessorUpdate;
 }
+const InputProcessingConfigurationUpdate = /*@__PURE__*/ __L.at(
+  __c19,
+  7,
+) as any as S.Schema<InputProcessingConfigurationUpdate>;
 export interface KinesisStreamsInputUpdate {
   ResourceARNUpdate: string;
 }
+const KinesisStreamsInputUpdate =
+  InputLambdaProcessorUpdate as any as S.Schema<KinesisStreamsInputUpdate>;
 export interface KinesisFirehoseInputUpdate {
   ResourceARNUpdate: string;
 }
+const KinesisFirehoseInputUpdate =
+  InputLambdaProcessorUpdate as any as S.Schema<KinesisFirehoseInputUpdate>;
 export interface InputSchemaUpdate {
   RecordFormatUpdate?: RecordFormat;
   RecordEncodingUpdate?: string;
   RecordColumnUpdates?: RecordColumn[];
 }
+const InputSchemaUpdate = /*@__PURE__*/ __L.at(__c20, 0) as any as S.Schema<InputSchemaUpdate>;
 export interface InputParallelismUpdate {
   CountUpdate: number;
 }
+const InputParallelismUpdate = /*@__PURE__*/ __L.at(
+  __c20,
+  1,
+) as any as S.Schema<InputParallelismUpdate>;
 export interface InputUpdate {
   InputId: string;
   NamePrefixUpdate?: string;
@@ -1029,16 +1592,23 @@ export interface InputUpdate {
   InputSchemaUpdate?: InputSchemaUpdate;
   InputParallelismUpdate?: InputParallelismUpdate;
 }
+const InputUpdate = /*@__PURE__*/ __L.at(__c20, 2) as any as S.Schema<InputUpdate>;
 export type InputUpdates = InputUpdate[];
+const InputUpdates = /*@__PURE__*/ __L.at(__c20, 3);
 export interface KinesisStreamsOutputUpdate {
   ResourceARNUpdate: string;
 }
+const KinesisStreamsOutputUpdate =
+  InputLambdaProcessorUpdate as any as S.Schema<KinesisStreamsOutputUpdate>;
 export interface KinesisFirehoseOutputUpdate {
   ResourceARNUpdate: string;
 }
+const KinesisFirehoseOutputUpdate =
+  InputLambdaProcessorUpdate as any as S.Schema<KinesisFirehoseOutputUpdate>;
 export interface LambdaOutputUpdate {
   ResourceARNUpdate: string;
 }
+const LambdaOutputUpdate = /*@__PURE__*/ __L.at(__c20, 4) as any as S.Schema<LambdaOutputUpdate>;
 export interface OutputUpdate {
   OutputId: string;
   NameUpdate?: string;
@@ -1047,100 +1617,185 @@ export interface OutputUpdate {
   LambdaOutputUpdate?: LambdaOutputUpdate;
   DestinationSchemaUpdate?: DestinationSchema;
 }
+const OutputUpdate = /*@__PURE__*/ __L.at(__c20, 5) as any as S.Schema<OutputUpdate>;
 export type OutputUpdates = OutputUpdate[];
+const OutputUpdates = /*@__PURE__*/ __L.at(__c20, 6);
 export interface S3ReferenceDataSourceUpdate {
   BucketARNUpdate?: string;
   FileKeyUpdate?: string;
 }
+const S3ReferenceDataSourceUpdate = /*@__PURE__*/ __L.at(
+  __c20,
+  7,
+) as any as S.Schema<S3ReferenceDataSourceUpdate>;
 export interface ReferenceDataSourceUpdate {
   ReferenceId: string;
   TableNameUpdate?: string;
   S3ReferenceDataSourceUpdate?: S3ReferenceDataSourceUpdate;
   ReferenceSchemaUpdate?: SourceSchema;
 }
+const ReferenceDataSourceUpdate = /*@__PURE__*/ __L.at(
+  __c21,
+  0,
+) as any as S.Schema<ReferenceDataSourceUpdate>;
 export type ReferenceDataSourceUpdates = ReferenceDataSourceUpdate[];
+const ReferenceDataSourceUpdates = /*@__PURE__*/ __L.at(__c21, 1);
 export interface SqlApplicationConfigurationUpdate {
   InputUpdates?: InputUpdate[];
   OutputUpdates?: OutputUpdate[];
   ReferenceDataSourceUpdates?: ReferenceDataSourceUpdate[];
 }
+const SqlApplicationConfigurationUpdate = /*@__PURE__*/ __L.at(
+  __c21,
+  2,
+) as any as S.Schema<SqlApplicationConfigurationUpdate>;
 export interface S3ContentLocationUpdate {
   BucketARNUpdate?: string;
   FileKeyUpdate?: string;
   ObjectVersionUpdate?: string;
 }
+const S3ContentLocationUpdate = /*@__PURE__*/ __L.at(
+  __c21,
+  3,
+) as any as S.Schema<S3ContentLocationUpdate>;
 export interface CodeContentUpdate {
   TextContentUpdate?: string;
   ZipFileContentUpdate?: Uint8Array;
   S3ContentLocationUpdate?: S3ContentLocationUpdate;
 }
+const CodeContentUpdate = /*@__PURE__*/ __L.at(__c21, 4) as any as S.Schema<CodeContentUpdate>;
 export interface ApplicationCodeConfigurationUpdate {
   CodeContentTypeUpdate?: CodeContentType;
   CodeContentUpdate?: CodeContentUpdate;
 }
+const ApplicationCodeConfigurationUpdate = /*@__PURE__*/ __L.at(
+  __c21,
+  5,
+) as any as S.Schema<ApplicationCodeConfigurationUpdate>;
 export interface CheckpointConfigurationUpdate {
   ConfigurationTypeUpdate?: ConfigurationType;
   CheckpointingEnabledUpdate?: boolean;
   CheckpointIntervalUpdate?: number;
   MinPauseBetweenCheckpointsUpdate?: number;
 }
+const CheckpointConfigurationUpdate = /*@__PURE__*/ __L.at(
+  __c21,
+  6,
+) as any as S.Schema<CheckpointConfigurationUpdate>;
 export interface MonitoringConfigurationUpdate {
   ConfigurationTypeUpdate?: ConfigurationType;
   MetricsLevelUpdate?: MetricsLevel;
   LogLevelUpdate?: LogLevel;
 }
+const MonitoringConfigurationUpdate = /*@__PURE__*/ __L.at(
+  __c21,
+  7,
+) as any as S.Schema<MonitoringConfigurationUpdate>;
 export interface ParallelismConfigurationUpdate {
   ConfigurationTypeUpdate?: ConfigurationType;
   ParallelismUpdate?: number;
   ParallelismPerKPUUpdate?: number;
   AutoScalingEnabledUpdate?: boolean;
 }
+const ParallelismConfigurationUpdate = /*@__PURE__*/ __L.at(
+  __c22,
+  0,
+) as any as S.Schema<ParallelismConfigurationUpdate>;
 export interface FlinkApplicationConfigurationUpdate {
   CheckpointConfigurationUpdate?: CheckpointConfigurationUpdate;
   MonitoringConfigurationUpdate?: MonitoringConfigurationUpdate;
   ParallelismConfigurationUpdate?: ParallelismConfigurationUpdate;
 }
+const FlinkApplicationConfigurationUpdate = /*@__PURE__*/ __L.at(
+  __c22,
+  1,
+) as any as S.Schema<FlinkApplicationConfigurationUpdate>;
 export interface EnvironmentPropertyUpdates {
   PropertyGroups: PropertyGroup[];
 }
+const EnvironmentPropertyUpdates = /*@__PURE__*/ __L.at(
+  __c22,
+  2,
+) as any as S.Schema<EnvironmentPropertyUpdates>;
 export interface ApplicationSnapshotConfigurationUpdate {
   SnapshotsEnabledUpdate: boolean;
 }
+const ApplicationSnapshotConfigurationUpdate = /*@__PURE__*/ __L.at(
+  __c22,
+  3,
+) as any as S.Schema<ApplicationSnapshotConfigurationUpdate>;
 export interface ApplicationSystemRollbackConfigurationUpdate {
   RollbackEnabledUpdate: boolean;
 }
+const ApplicationSystemRollbackConfigurationUpdate = /*@__PURE__*/ __L.at(
+  __c22,
+  4,
+) as any as S.Schema<ApplicationSystemRollbackConfigurationUpdate>;
 export interface VpcConfigurationUpdate {
   VpcConfigurationId: string;
   SubnetIdUpdates?: string[];
   SecurityGroupIdUpdates?: string[];
 }
+const VpcConfigurationUpdate = /*@__PURE__*/ __L.at(
+  __c22,
+  5,
+) as any as S.Schema<VpcConfigurationUpdate>;
 export type VpcConfigurationUpdates = VpcConfigurationUpdate[];
+const VpcConfigurationUpdates = /*@__PURE__*/ __L.at(__c22, 6);
 export interface ZeppelinMonitoringConfigurationUpdate {
   LogLevelUpdate: LogLevel;
 }
+const ZeppelinMonitoringConfigurationUpdate = /*@__PURE__*/ __L.at(
+  __c22,
+  7,
+) as any as S.Schema<ZeppelinMonitoringConfigurationUpdate>;
 export interface GlueDataCatalogConfigurationUpdate {
   DatabaseARNUpdate: string;
 }
+const GlueDataCatalogConfigurationUpdate = /*@__PURE__*/ __L.at(
+  __c23,
+  0,
+) as any as S.Schema<GlueDataCatalogConfigurationUpdate>;
 export interface CatalogConfigurationUpdate {
   GlueDataCatalogConfigurationUpdate: GlueDataCatalogConfigurationUpdate;
 }
+const CatalogConfigurationUpdate = /*@__PURE__*/ __L.at(
+  __c23,
+  1,
+) as any as S.Schema<CatalogConfigurationUpdate>;
 export interface S3ContentBaseLocationUpdate {
   BucketARNUpdate?: string;
   BasePathUpdate?: string;
 }
+const S3ContentBaseLocationUpdate = /*@__PURE__*/ __L.at(
+  __c23,
+  2,
+) as any as S.Schema<S3ContentBaseLocationUpdate>;
 export interface DeployAsApplicationConfigurationUpdate {
   S3ContentLocationUpdate?: S3ContentBaseLocationUpdate;
 }
+const DeployAsApplicationConfigurationUpdate = /*@__PURE__*/ __L.at(
+  __c23,
+  3,
+) as any as S.Schema<DeployAsApplicationConfigurationUpdate>;
 export interface ZeppelinApplicationConfigurationUpdate {
   MonitoringConfigurationUpdate?: ZeppelinMonitoringConfigurationUpdate;
   CatalogConfigurationUpdate?: CatalogConfigurationUpdate;
   DeployAsApplicationConfigurationUpdate?: DeployAsApplicationConfigurationUpdate;
   CustomArtifactsConfigurationUpdate?: CustomArtifactConfiguration[];
 }
+const ZeppelinApplicationConfigurationUpdate = /*@__PURE__*/ __L.at(
+  __c23,
+  4,
+) as any as S.Schema<ZeppelinApplicationConfigurationUpdate>;
 export interface ApplicationEncryptionConfigurationUpdate {
   KeyIdUpdate?: string;
   KeyTypeUpdate: KeyType;
 }
+const ApplicationEncryptionConfigurationUpdate = /*@__PURE__*/ __L.at(
+  __c23,
+  5,
+) as any as S.Schema<ApplicationEncryptionConfigurationUpdate>;
 export interface ApplicationConfigurationUpdate {
   SqlApplicationConfigurationUpdate?: SqlApplicationConfigurationUpdate;
   ApplicationCodeConfigurationUpdate?: ApplicationCodeConfigurationUpdate;
@@ -1152,15 +1807,28 @@ export interface ApplicationConfigurationUpdate {
   ZeppelinApplicationConfigurationUpdate?: ZeppelinApplicationConfigurationUpdate;
   ApplicationEncryptionConfigurationUpdate?: ApplicationEncryptionConfigurationUpdate;
 }
+const ApplicationConfigurationUpdate = /*@__PURE__*/ __L.at(
+  __c23,
+  6,
+) as any as S.Schema<ApplicationConfigurationUpdate>;
 export interface RunConfigurationUpdate {
   FlinkRunConfiguration?: FlinkRunConfiguration;
   ApplicationRestoreConfiguration?: ApplicationRestoreConfiguration;
 }
+const RunConfigurationUpdate = /*@__PURE__*/ __L.at(
+  __c23,
+  7,
+) as any as S.Schema<RunConfigurationUpdate>;
 export interface CloudWatchLoggingOptionUpdate {
   CloudWatchLoggingOptionId: string;
   LogStreamARNUpdate?: string;
 }
+const CloudWatchLoggingOptionUpdate = /*@__PURE__*/ __L.at(
+  __c24,
+  0,
+) as any as S.Schema<CloudWatchLoggingOptionUpdate>;
 export type CloudWatchLoggingOptionUpdates = CloudWatchLoggingOptionUpdate[];
+const CloudWatchLoggingOptionUpdates = /*@__PURE__*/ __L.at(__c24, 1);
 export interface UpdateApplicationRequest {
   ApplicationName: string;
   CurrentApplicationVersionId?: number;
@@ -1171,21 +1839,39 @@ export interface UpdateApplicationRequest {
   ConditionalToken?: string;
   RuntimeEnvironmentUpdate?: RuntimeEnvironment;
 }
+const UpdateApplicationRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  2,
+) as any as S.Schema<UpdateApplicationRequest>;
 export interface UpdateApplicationResponse {
   ApplicationDetail: ApplicationDetail;
   OperationId?: string;
 }
+const UpdateApplicationResponse =
+  RollbackApplicationResponse as any as S.Schema<UpdateApplicationResponse>;
 export interface ApplicationMaintenanceConfigurationUpdate {
   ApplicationMaintenanceWindowStartTimeUpdate: string;
 }
+const ApplicationMaintenanceConfigurationUpdate = /*@__PURE__*/ __L.at(
+  __c24,
+  3,
+) as any as S.Schema<ApplicationMaintenanceConfigurationUpdate>;
 export interface UpdateApplicationMaintenanceConfigurationRequest {
   ApplicationName: string;
   ApplicationMaintenanceConfigurationUpdate: ApplicationMaintenanceConfigurationUpdate;
 }
+const UpdateApplicationMaintenanceConfigurationRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  4,
+) as any as S.Schema<UpdateApplicationMaintenanceConfigurationRequest>;
 export interface UpdateApplicationMaintenanceConfigurationResponse {
   ApplicationARN?: string;
   ApplicationMaintenanceConfigurationDescription?: ApplicationMaintenanceConfigurationDescription;
 }
+const UpdateApplicationMaintenanceConfigurationResponse = /*@__PURE__*/ __L.at(
+  __c24,
+  5,
+) as any as S.Schema<UpdateApplicationMaintenanceConfigurationResponse>;
 export type ErrorMessage = string;
 export type AddApplicationCloudWatchLoggingOptionError =
   | ConcurrentModificationException
@@ -1204,8 +1890,8 @@ export const addApplicationCloudWatchLoggingOption: API.OperationMethod<
   AddApplicationCloudWatchLoggingOptionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1) as any as S.Schema<AddApplicationCloudWatchLoggingOptionRequest>,
-  output: __S(4) as any as S.Schema<AddApplicationCloudWatchLoggingOptionResponse>,
+  input: AddApplicationCloudWatchLoggingOptionRequest,
+  output: AddApplicationCloudWatchLoggingOptionResponse,
   errors: [
     ConcurrentModificationException,
     InvalidApplicationConfigurationException,
@@ -1244,8 +1930,8 @@ export const addApplicationInput: API.OperationMethod<
   AddApplicationInputError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16) as any as S.Schema<AddApplicationInputRequest>,
-  output: __S(23) as any as S.Schema<AddApplicationInputResponse>,
+  input: AddApplicationInputRequest,
+  output: AddApplicationInputResponse,
   errors: [
     CodeValidationException,
     ConcurrentModificationException,
@@ -1277,8 +1963,8 @@ export const addApplicationInputProcessingConfiguration: API.OperationMethod<
   AddApplicationInputProcessingConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24) as any as S.Schema<AddApplicationInputProcessingConfigurationRequest>,
-  output: __S(25) as any as S.Schema<AddApplicationInputProcessingConfigurationResponse>,
+  input: AddApplicationInputProcessingConfigurationRequest,
+  output: AddApplicationInputProcessingConfigurationResponse,
   errors: [
     ConcurrentModificationException,
     InvalidArgumentException,
@@ -1322,8 +2008,8 @@ export const addApplicationOutput: API.OperationMethod<
   AddApplicationOutputError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28) as any as S.Schema<AddApplicationOutputRequest>,
-  output: __S(32) as any as S.Schema<AddApplicationOutputResponse>,
+  input: AddApplicationOutputRequest,
+  output: AddApplicationOutputResponse,
   errors: [
     ConcurrentModificationException,
     InvalidArgumentException,
@@ -1358,8 +2044,8 @@ export const addApplicationReferenceDataSource: API.OperationMethod<
   AddApplicationReferenceDataSourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35) as any as S.Schema<AddApplicationReferenceDataSourceRequest>,
-  output: __S(39) as any as S.Schema<AddApplicationReferenceDataSourceResponse>,
+  input: AddApplicationReferenceDataSourceRequest,
+  output: AddApplicationReferenceDataSourceResponse,
   errors: [
     ConcurrentModificationException,
     InvalidArgumentException,
@@ -1396,8 +2082,8 @@ export const addApplicationVpcConfiguration: API.OperationMethod<
   AddApplicationVpcConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41) as any as S.Schema<AddApplicationVpcConfigurationRequest>,
-  output: __S(43) as any as S.Schema<AddApplicationVpcConfigurationResponse>,
+  input: AddApplicationVpcConfigurationRequest,
+  output: AddApplicationVpcConfigurationResponse,
   errors: [
     ConcurrentModificationException,
     InvalidApplicationConfigurationException,
@@ -1431,8 +2117,8 @@ export const createApplication: API.OperationMethod<
   CreateApplicationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(76) as any as S.Schema<CreateApplicationRequest>,
-  output: __S(100) as any as S.Schema<CreateApplicationResponse>,
+  input: CreateApplicationRequest,
+  output: CreateApplicationResponse,
   errors: [
     CodeValidationException,
     ConcurrentModificationException,
@@ -1475,8 +2161,8 @@ export const createApplicationPresignedUrl: API.OperationMethod<
   CreateApplicationPresignedUrlError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(101) as any as S.Schema<CreateApplicationPresignedUrlRequest>,
-  output: __S(102) as any as S.Schema<CreateApplicationPresignedUrlResponse>,
+  input: CreateApplicationPresignedUrlRequest,
+  output: CreateApplicationPresignedUrlResponse,
   errors: [InvalidArgumentException, ResourceInUseException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1501,8 +2187,8 @@ export const createApplicationSnapshot: API.OperationMethod<
   CreateApplicationSnapshotError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(103) as any as S.Schema<CreateApplicationSnapshotRequest>,
-  output: __S(104) as any as S.Schema<CreateApplicationSnapshotResponse>,
+  input: CreateApplicationSnapshotRequest,
+  output: CreateApplicationSnapshotResponse,
   errors: [
     InvalidApplicationConfigurationException,
     InvalidArgumentException,
@@ -1534,8 +2220,8 @@ export const deleteApplication: API.OperationMethod<
   DeleteApplicationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(105) as any as S.Schema<DeleteApplicationRequest>,
-  output: __S(104) as any as S.Schema<DeleteApplicationResponse>,
+  input: DeleteApplicationRequest,
+  output: DeleteApplicationResponse,
   errors: [
     ConcurrentModificationException,
     InvalidApplicationConfigurationException,
@@ -1566,8 +2252,8 @@ export const deleteApplicationCloudWatchLoggingOption: API.OperationMethod<
   DeleteApplicationCloudWatchLoggingOptionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(106) as any as S.Schema<DeleteApplicationCloudWatchLoggingOptionRequest>,
-  output: __S(4) as any as S.Schema<DeleteApplicationCloudWatchLoggingOptionResponse>,
+  input: DeleteApplicationCloudWatchLoggingOptionRequest,
+  output: DeleteApplicationCloudWatchLoggingOptionResponse,
   errors: [
     ConcurrentModificationException,
     InvalidApplicationConfigurationException,
@@ -1597,8 +2283,8 @@ export const deleteApplicationInputProcessingConfiguration: API.OperationMethod<
   DeleteApplicationInputProcessingConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(107) as any as S.Schema<DeleteApplicationInputProcessingConfigurationRequest>,
-  output: __S(108) as any as S.Schema<DeleteApplicationInputProcessingConfigurationResponse>,
+  input: DeleteApplicationInputProcessingConfigurationRequest,
+  output: DeleteApplicationInputProcessingConfigurationResponse,
   errors: [
     ConcurrentModificationException,
     InvalidArgumentException,
@@ -1629,8 +2315,8 @@ export const deleteApplicationOutput: API.OperationMethod<
   DeleteApplicationOutputError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(109) as any as S.Schema<DeleteApplicationOutputRequest>,
-  output: __S(108) as any as S.Schema<DeleteApplicationOutputResponse>,
+  input: DeleteApplicationOutputRequest,
+  output: DeleteApplicationOutputResponse,
   errors: [
     ConcurrentModificationException,
     InvalidArgumentException,
@@ -1662,8 +2348,8 @@ export const deleteApplicationReferenceDataSource: API.OperationMethod<
   DeleteApplicationReferenceDataSourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(110) as any as S.Schema<DeleteApplicationReferenceDataSourceRequest>,
-  output: __S(108) as any as S.Schema<DeleteApplicationReferenceDataSourceResponse>,
+  input: DeleteApplicationReferenceDataSourceRequest,
+  output: DeleteApplicationReferenceDataSourceResponse,
   errors: [
     ConcurrentModificationException,
     InvalidArgumentException,
@@ -1693,8 +2379,8 @@ export const deleteApplicationSnapshot: API.OperationMethod<
   DeleteApplicationSnapshotError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(111) as any as S.Schema<DeleteApplicationSnapshotRequest>,
-  output: __S(104) as any as S.Schema<DeleteApplicationSnapshotResponse>,
+  input: DeleteApplicationSnapshotRequest,
+  output: DeleteApplicationSnapshotResponse,
   errors: [
     ConcurrentModificationException,
     InvalidArgumentException,
@@ -1724,8 +2410,8 @@ export const deleteApplicationVpcConfiguration: API.OperationMethod<
   DeleteApplicationVpcConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(112) as any as S.Schema<DeleteApplicationVpcConfigurationRequest>,
-  output: __S(113) as any as S.Schema<DeleteApplicationVpcConfigurationResponse>,
+  input: DeleteApplicationVpcConfigurationRequest,
+  output: DeleteApplicationVpcConfigurationResponse,
   errors: [
     ConcurrentModificationException,
     InvalidApplicationConfigurationException,
@@ -1755,8 +2441,8 @@ export const describeApplication: API.OperationMethod<
   DescribeApplicationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(114) as any as S.Schema<DescribeApplicationRequest>,
-  output: __S(100) as any as S.Schema<DescribeApplicationResponse>,
+  input: DescribeApplicationRequest,
+  output: DescribeApplicationResponse,
   errors: [InvalidArgumentException, InvalidRequestException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1779,8 +2465,8 @@ export const describeApplicationOperation: API.OperationMethod<
   DescribeApplicationOperationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(115) as any as S.Schema<DescribeApplicationOperationRequest>,
-  output: __S(120) as any as S.Schema<DescribeApplicationOperationResponse>,
+  input: DescribeApplicationOperationRequest,
+  output: DescribeApplicationOperationResponse,
   errors: [InvalidArgumentException, ResourceNotFoundException, UnsupportedOperationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1801,8 +2487,8 @@ export const describeApplicationSnapshot: API.OperationMethod<
   DescribeApplicationSnapshotError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(121) as any as S.Schema<DescribeApplicationSnapshotRequest>,
-  output: __S(123) as any as S.Schema<DescribeApplicationSnapshotResponse>,
+  input: DescribeApplicationSnapshotRequest,
+  output: DescribeApplicationSnapshotResponse,
   errors: [InvalidArgumentException, ResourceNotFoundException, UnsupportedOperationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1825,8 +2511,8 @@ export const describeApplicationVersion: API.OperationMethod<
   DescribeApplicationVersionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(124) as any as S.Schema<DescribeApplicationVersionRequest>,
-  output: __S(125) as any as S.Schema<DescribeApplicationVersionResponse>,
+  input: DescribeApplicationVersionRequest,
+  output: DescribeApplicationVersionResponse,
   errors: [InvalidArgumentException, ResourceNotFoundException, UnsupportedOperationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1857,8 +2543,8 @@ export const discoverInputSchema: API.OperationMethod<
   DiscoverInputSchemaError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(127) as any as S.Schema<DiscoverInputSchemaRequest>,
-  output: __S(129) as any as S.Schema<DiscoverInputSchemaResponse>,
+  input: DiscoverInputSchemaRequest,
+  output: DiscoverInputSchemaResponse,
   errors: [
     InvalidArgumentException,
     InvalidRequestException,
@@ -1892,8 +2578,8 @@ export const listApplicationOperations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ApplicationOperationInfo
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(130) as any as S.Schema<ListApplicationOperationsRequest>,
-  output: __S(133) as any as S.Schema<ListApplicationOperationsResponse>,
+  input: ListApplicationOperationsRequest,
+  output: ListApplicationOperationsResponse,
   errors: [InvalidArgumentException, ResourceNotFoundException, UnsupportedOperationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1922,8 +2608,8 @@ export const listApplications: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ApplicationSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(134) as any as S.Schema<ListApplicationsRequest>,
-  output: __S(137) as any as S.Schema<ListApplicationsResponse>,
+  input: ListApplicationsRequest,
+  output: ListApplicationsResponse,
   errors: [InvalidRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1950,8 +2636,8 @@ export const listApplicationSnapshots: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   SnapshotDetails
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(138) as any as S.Schema<ListApplicationSnapshotsRequest>,
-  output: __S(140) as any as S.Schema<ListApplicationSnapshotsResponse>,
+  input: ListApplicationSnapshotsRequest,
+  output: ListApplicationSnapshotsResponse,
   errors: [InvalidArgumentException, UnsupportedOperationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1984,8 +2670,8 @@ export const listApplicationVersions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ApplicationVersionSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(141) as any as S.Schema<ListApplicationVersionsRequest>,
-  output: __S(144) as any as S.Schema<ListApplicationVersionsResponse>,
+  input: ListApplicationVersionsRequest,
+  output: ListApplicationVersionsResponse,
   errors: [InvalidArgumentException, ResourceNotFoundException, UnsupportedOperationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2013,8 +2699,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(145) as any as S.Schema<ListTagsForResourceRequest>,
-  output: __S(146) as any as S.Schema<ListTagsForResourceResponse>,
+  input: ListTagsForResourceRequest,
+  output: ListTagsForResourceResponse,
   errors: [ConcurrentModificationException, InvalidArgumentException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2045,8 +2731,8 @@ export const rollbackApplication: API.OperationMethod<
   RollbackApplicationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(147) as any as S.Schema<RollbackApplicationRequest>,
-  output: __S(148) as any as S.Schema<RollbackApplicationResponse>,
+  input: RollbackApplicationRequest,
+  output: RollbackApplicationResponse,
   errors: [
     ConcurrentModificationException,
     InvalidArgumentException,
@@ -2077,8 +2763,8 @@ export const startApplication: API.OperationMethod<
   StartApplicationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(152) as any as S.Schema<StartApplicationRequest>,
-  output: __S(153) as any as S.Schema<StartApplicationResponse>,
+  input: StartApplicationRequest,
+  output: StartApplicationResponse,
   errors: [
     InvalidApplicationConfigurationException,
     InvalidArgumentException,
@@ -2115,8 +2801,8 @@ export const stopApplication: API.OperationMethod<
   StopApplicationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(154) as any as S.Schema<StopApplicationRequest>,
-  output: __S(153) as any as S.Schema<StopApplicationResponse>,
+  input: StopApplicationRequest,
+  output: StopApplicationResponse,
   errors: [
     ConcurrentModificationException,
     InvalidApplicationConfigurationException,
@@ -2148,8 +2834,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(155) as any as S.Schema<TagResourceRequest>,
-  output: __S(156) as any as S.Schema<TagResourceResponse>,
+  input: TagResourceRequest,
+  output: TagResourceResponse,
   errors: [
     ConcurrentModificationException,
     InvalidArgumentException,
@@ -2179,8 +2865,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(157) as any as S.Schema<UntagResourceRequest>,
-  output: __S(156) as any as S.Schema<UntagResourceResponse>,
+  input: UntagResourceRequest,
+  output: UntagResourceResponse,
   errors: [
     ConcurrentModificationException,
     InvalidArgumentException,
@@ -2216,8 +2902,8 @@ export const updateApplication: API.OperationMethod<
   UpdateApplicationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(194) as any as S.Schema<UpdateApplicationRequest>,
-  output: __S(148) as any as S.Schema<UpdateApplicationResponse>,
+  input: UpdateApplicationRequest,
+  output: UpdateApplicationResponse,
   errors: [
     CodeValidationException,
     ConcurrentModificationException,
@@ -2266,8 +2952,8 @@ export const updateApplicationMaintenanceConfiguration: API.OperationMethod<
   UpdateApplicationMaintenanceConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(196) as any as S.Schema<UpdateApplicationMaintenanceConfigurationRequest>,
-  output: __S(197) as any as S.Schema<UpdateApplicationMaintenanceConfigurationResponse>,
+  input: UpdateApplicationMaintenanceConfigurationRequest,
+  output: UpdateApplicationMaintenanceConfigurationResponse,
   errors: [
     ConcurrentModificationException,
     InvalidArgumentException,
@@ -2292,7 +2978,7 @@ function __c0(j: number): any {
         S.Struct({
           ApplicationName: S.String,
           CurrentApplicationVersionId: S.optional(S.Number),
-          CloudWatchLoggingOption: __S(0),
+          CloudWatchLoggingOption: CloudWatchLoggingOption,
           ConditionalToken: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
@@ -2309,13 +2995,13 @@ function __c0(j: number): any {
         identifier: "CloudWatchLoggingOptionDescription",
       });
     case 3:
-      return S.Array(__S(2));
+      return S.Array(CloudWatchLoggingOptionDescription);
     case 4:
       return S.suspend(() =>
         S.Struct({
           ApplicationARN: S.optional(S.String),
           ApplicationVersionId: S.optional(S.Number),
-          CloudWatchLoggingOptionDescriptions: S.optional(__S(3)),
+          CloudWatchLoggingOptionDescriptions: S.optional(CloudWatchLoggingOptionDescriptions),
           OperationId: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
@@ -2326,7 +3012,7 @@ function __c0(j: number): any {
         identifier: "InputLambdaProcessor",
       });
     case 6:
-      return S.suspend(() => S.Struct({ InputLambdaProcessor: __S(5) })).annotate({
+      return S.suspend(() => S.Struct({ InputLambdaProcessor: InputLambdaProcessor })).annotate({
         identifier: "InputProcessingConfiguration",
       });
     case 7:
@@ -2348,15 +3034,15 @@ function __c1(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          JSONMappingParameters: S.optional(__S(8)),
-          CSVMappingParameters: S.optional(__S(9)),
+          JSONMappingParameters: S.optional(JSONMappingParameters),
+          CSVMappingParameters: S.optional(CSVMappingParameters),
         }),
       ).annotate({ identifier: "MappingParameters" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          RecordFormatType: S.String,
-          MappingParameters: S.optional(__S(10)),
+          RecordFormatType: RecordFormatType,
+          MappingParameters: S.optional(MappingParameters),
         }),
       ).annotate({ identifier: "RecordFormat" });
     case 4:
@@ -2364,24 +3050,24 @@ function __c1(j: number): any {
         S.Struct({ Name: S.String, Mapping: S.optional(S.String), SqlType: S.String }),
       ).annotate({ identifier: "RecordColumn" });
     case 5:
-      return S.Array(__S(12));
+      return S.Array(RecordColumn);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          RecordFormat: __S(11),
+          RecordFormat: RecordFormat,
           RecordEncoding: S.optional(S.String),
-          RecordColumns: __S(13),
+          RecordColumns: RecordColumns,
         }),
       ).annotate({ identifier: "SourceSchema" });
     case 7:
       return S.suspend(() =>
         S.Struct({
           NamePrefix: S.String,
-          InputProcessingConfiguration: S.optional(__S(6)),
-          KinesisStreamsInput: S.optional(__S(5)),
-          KinesisFirehoseInput: S.optional(__S(5)),
-          InputParallelism: S.optional(__S(7)),
-          InputSchema: __S(14),
+          InputProcessingConfiguration: S.optional(InputProcessingConfiguration),
+          KinesisStreamsInput: S.optional(KinesisStreamsInput),
+          KinesisFirehoseInput: S.optional(KinesisFirehoseInput),
+          InputParallelism: S.optional(InputParallelism),
+          InputSchema: SourceSchema,
         }),
       ).annotate({ identifier: "Input" });
   }
@@ -2393,7 +3079,7 @@ function __c2(j: number): any {
         S.Struct({
           ApplicationName: S.String,
           CurrentApplicationVersionId: S.Number,
-          Input: __S(15),
+          Input: Input,
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "AddApplicationInputRequest",
@@ -2408,12 +3094,14 @@ function __c2(j: number): any {
       });
     case 3:
       return S.suspend(() =>
-        S.Struct({ InputLambdaProcessorDescription: S.optional(__S(18)) }),
+        S.Struct({ InputLambdaProcessorDescription: S.optional(InputLambdaProcessorDescription) }),
       ).annotate({
         identifier: "InputProcessingConfigurationDescription",
       });
     case 4:
-      return S.suspend(() => S.Struct({ InputStartingPosition: S.optional(S.String) })).annotate({
+      return S.suspend(() =>
+        S.Struct({ InputStartingPosition: S.optional(InputStartingPosition) }),
+      ).annotate({
         identifier: "InputStartingPositionConfiguration",
       });
     case 5:
@@ -2421,23 +3109,25 @@ function __c2(j: number): any {
         S.Struct({
           InputId: S.optional(S.String),
           NamePrefix: S.optional(S.String),
-          InAppStreamNames: S.optional(__S(17)),
-          InputProcessingConfigurationDescription: S.optional(__S(19)),
-          KinesisStreamsInputDescription: S.optional(__S(18)),
-          KinesisFirehoseInputDescription: S.optional(__S(18)),
-          InputSchema: S.optional(__S(14)),
-          InputParallelism: S.optional(__S(7)),
-          InputStartingPositionConfiguration: S.optional(__S(20)),
+          InAppStreamNames: S.optional(InAppStreamNames),
+          InputProcessingConfigurationDescription: S.optional(
+            InputProcessingConfigurationDescription,
+          ),
+          KinesisStreamsInputDescription: S.optional(KinesisStreamsInputDescription),
+          KinesisFirehoseInputDescription: S.optional(KinesisFirehoseInputDescription),
+          InputSchema: S.optional(SourceSchema),
+          InputParallelism: S.optional(InputParallelism),
+          InputStartingPositionConfiguration: S.optional(InputStartingPositionConfiguration),
         }),
       ).annotate({ identifier: "InputDescription" });
     case 6:
-      return S.Array(__S(21));
+      return S.Array(InputDescription);
     case 7:
       return S.suspend(() =>
         S.Struct({
           ApplicationARN: S.optional(S.String),
           ApplicationVersionId: S.optional(S.Number),
-          InputDescriptions: S.optional(__S(22)),
+          InputDescriptions: S.optional(InputDescriptions),
         }).pipe(ns),
       ).annotate({
         identifier: "AddApplicationInputResponse",
@@ -2452,7 +3142,7 @@ function __c3(j: number): any {
           ApplicationName: S.String,
           CurrentApplicationVersionId: S.Number,
           InputId: S.String,
-          InputProcessingConfiguration: __S(6),
+          InputProcessingConfiguration: InputProcessingConfiguration,
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "AddApplicationInputProcessingConfigurationRequest",
@@ -2463,23 +3153,25 @@ function __c3(j: number): any {
           ApplicationARN: S.optional(S.String),
           ApplicationVersionId: S.optional(S.Number),
           InputId: S.optional(S.String),
-          InputProcessingConfigurationDescription: S.optional(__S(19)),
+          InputProcessingConfigurationDescription: S.optional(
+            InputProcessingConfigurationDescription,
+          ),
         }).pipe(ns),
       ).annotate({
         identifier: "AddApplicationInputProcessingConfigurationResponse",
       });
     case 2:
-      return S.suspend(() => S.Struct({ RecordFormatType: S.String })).annotate({
+      return S.suspend(() => S.Struct({ RecordFormatType: RecordFormatType })).annotate({
         identifier: "DestinationSchema",
       });
     case 3:
       return S.suspend(() =>
         S.Struct({
           Name: S.String,
-          KinesisStreamsOutput: S.optional(__S(5)),
-          KinesisFirehoseOutput: S.optional(__S(5)),
-          LambdaOutput: S.optional(__S(5)),
-          DestinationSchema: __S(26),
+          KinesisStreamsOutput: S.optional(KinesisStreamsOutput),
+          KinesisFirehoseOutput: S.optional(KinesisFirehoseOutput),
+          LambdaOutput: S.optional(LambdaOutput),
+          DestinationSchema: DestinationSchema,
         }),
       ).annotate({ identifier: "Output" });
     case 4:
@@ -2487,7 +3179,7 @@ function __c3(j: number): any {
         S.Struct({
           ApplicationName: S.String,
           CurrentApplicationVersionId: S.Number,
-          Output: __S(27),
+          Output: Output,
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "AddApplicationOutputRequest",
@@ -2501,14 +3193,14 @@ function __c3(j: number): any {
         S.Struct({
           OutputId: S.optional(S.String),
           Name: S.optional(S.String),
-          KinesisStreamsOutputDescription: S.optional(__S(18)),
-          KinesisFirehoseOutputDescription: S.optional(__S(18)),
-          LambdaOutputDescription: S.optional(__S(29)),
-          DestinationSchema: S.optional(__S(26)),
+          KinesisStreamsOutputDescription: S.optional(KinesisStreamsOutputDescription),
+          KinesisFirehoseOutputDescription: S.optional(KinesisFirehoseOutputDescription),
+          LambdaOutputDescription: S.optional(LambdaOutputDescription),
+          DestinationSchema: S.optional(DestinationSchema),
         }),
       ).annotate({ identifier: "OutputDescription" });
     case 7:
-      return S.Array(__S(30));
+      return S.Array(OutputDescription);
   }
 }
 function __c4(j: number): any {
@@ -2518,7 +3210,7 @@ function __c4(j: number): any {
         S.Struct({
           ApplicationARN: S.optional(S.String),
           ApplicationVersionId: S.optional(S.Number),
-          OutputDescriptions: S.optional(__S(31)),
+          OutputDescriptions: S.optional(OutputDescriptions),
         }).pipe(ns),
       ).annotate({
         identifier: "AddApplicationOutputResponse",
@@ -2531,8 +3223,8 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           TableName: S.String,
-          S3ReferenceDataSource: S.optional(__S(33)),
-          ReferenceSchema: __S(14),
+          S3ReferenceDataSource: S.optional(S3ReferenceDataSource),
+          ReferenceSchema: SourceSchema,
         }),
       ).annotate({ identifier: "ReferenceDataSource" });
     case 3:
@@ -2540,7 +3232,7 @@ function __c4(j: number): any {
         S.Struct({
           ApplicationName: S.String,
           CurrentApplicationVersionId: S.Number,
-          ReferenceDataSource: __S(34),
+          ReferenceDataSource: ReferenceDataSource,
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "AddApplicationReferenceDataSourceRequest",
@@ -2560,20 +3252,20 @@ function __c4(j: number): any {
         S.Struct({
           ReferenceId: S.String,
           TableName: S.String,
-          S3ReferenceDataSourceDescription: __S(36),
-          ReferenceSchema: S.optional(__S(14)),
+          S3ReferenceDataSourceDescription: S3ReferenceDataSourceDescription,
+          ReferenceSchema: S.optional(SourceSchema),
         }),
       ).annotate({
         identifier: "ReferenceDataSourceDescription",
       });
     case 6:
-      return S.Array(__S(37));
+      return S.Array(ReferenceDataSourceDescription);
     case 7:
       return S.suspend(() =>
         S.Struct({
           ApplicationARN: S.optional(S.String),
           ApplicationVersionId: S.optional(S.Number),
-          ReferenceDataSourceDescriptions: S.optional(__S(38)),
+          ReferenceDataSourceDescriptions: S.optional(ReferenceDataSourceDescriptions),
         }).pipe(ns),
       ).annotate({
         identifier: "AddApplicationReferenceDataSourceResponse",
@@ -2583,15 +3275,15 @@ function __c4(j: number): any {
 function __c5(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ SubnetIds: __S(17), SecurityGroupIds: __S(17) })).annotate({
-        identifier: "VpcConfiguration",
-      });
+      return S.suspend(() =>
+        S.Struct({ SubnetIds: SubnetIds, SecurityGroupIds: SecurityGroupIds }),
+      ).annotate({ identifier: "VpcConfiguration" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           ApplicationName: S.String,
           CurrentApplicationVersionId: S.optional(S.Number),
-          VpcConfiguration: __S(40),
+          VpcConfiguration: VpcConfiguration,
           ConditionalToken: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
@@ -2602,8 +3294,8 @@ function __c5(j: number): any {
         S.Struct({
           VpcConfigurationId: S.String,
           VpcId: S.String,
-          SubnetIds: __S(17),
-          SecurityGroupIds: __S(17),
+          SubnetIds: SubnetIds,
+          SecurityGroupIds: SecurityGroupIds,
         }),
       ).annotate({
         identifier: "VpcConfigurationDescription",
@@ -2613,24 +3305,24 @@ function __c5(j: number): any {
         S.Struct({
           ApplicationARN: S.optional(S.String),
           ApplicationVersionId: S.optional(S.Number),
-          VpcConfigurationDescription: S.optional(__S(42)),
+          VpcConfigurationDescription: S.optional(VpcConfigurationDescription),
           OperationId: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
         identifier: "AddApplicationVpcConfigurationResponse",
       });
     case 4:
-      return S.Array(__S(15));
+      return S.Array(Input);
     case 5:
-      return S.Array(__S(27));
+      return S.Array(Output);
     case 6:
-      return S.Array(__S(34));
+      return S.Array(ReferenceDataSource);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          Inputs: S.optional(__S(44)),
-          Outputs: S.optional(__S(45)),
-          ReferenceDataSources: S.optional(__S(46)),
+          Inputs: S.optional(Inputs),
+          Outputs: S.optional(Outputs),
+          ReferenceDataSources: S.optional(ReferenceDataSources),
         }),
       ).annotate({
         identifier: "SqlApplicationConfiguration",
@@ -2642,7 +3334,7 @@ function __c6(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          ConfigurationType: S.String,
+          ConfigurationType: ConfigurationType,
           CheckpointingEnabled: S.optional(S.Boolean),
           CheckpointInterval: S.optional(S.Number),
           MinPauseBetweenCheckpoints: S.optional(S.Number),
@@ -2651,15 +3343,15 @@ function __c6(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          ConfigurationType: S.String,
-          MetricsLevel: S.optional(S.String),
-          LogLevel: S.optional(S.String),
+          ConfigurationType: ConfigurationType,
+          MetricsLevel: S.optional(MetricsLevel),
+          LogLevel: S.optional(LogLevel),
         }),
       ).annotate({ identifier: "MonitoringConfiguration" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          ConfigurationType: S.String,
+          ConfigurationType: ConfigurationType,
           Parallelism: S.optional(S.Number),
           ParallelismPerKPU: S.optional(S.Number),
           AutoScalingEnabled: S.optional(S.Boolean),
@@ -2668,9 +3360,9 @@ function __c6(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          CheckpointConfiguration: S.optional(__S(48)),
-          MonitoringConfiguration: S.optional(__S(49)),
-          ParallelismConfiguration: S.optional(__S(50)),
+          CheckpointConfiguration: S.optional(CheckpointConfiguration),
+          MonitoringConfiguration: S.optional(MonitoringConfiguration),
+          ParallelismConfiguration: S.optional(ParallelismConfiguration),
         }),
       ).annotate({
         identifier: "FlinkApplicationConfiguration",
@@ -2679,12 +3371,12 @@ function __c6(j: number): any {
       return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
     case 5:
       return S.suspend(() =>
-        S.Struct({ PropertyGroupId: S.String, PropertyMap: __S(52) }),
+        S.Struct({ PropertyGroupId: S.String, PropertyMap: PropertyMap }),
       ).annotate({ identifier: "PropertyGroup" });
     case 6:
-      return S.Array(__S(53));
+      return S.Array(PropertyGroup);
     case 7:
-      return S.suspend(() => S.Struct({ PropertyGroups: __S(54) })).annotate({
+      return S.suspend(() => S.Struct({ PropertyGroups: PropertyGroups })).annotate({
         identifier: "EnvironmentProperties",
       });
   }
@@ -2700,12 +3392,12 @@ function __c7(j: number): any {
         S.Struct({
           TextContent: S.optional(S.String),
           ZipFileContent: S.optional(T.Blob),
-          S3ContentLocation: S.optional(__S(56)),
+          S3ContentLocation: S.optional(S3ContentLocation),
         }),
       ).annotate({ identifier: "CodeContent" });
     case 2:
       return S.suspend(() =>
-        S.Struct({ CodeContent: S.optional(__S(57)), CodeContentType: S.String }),
+        S.Struct({ CodeContent: S.optional(CodeContent), CodeContentType: CodeContentType }),
       ).annotate({
         identifier: "ApplicationCodeConfiguration",
       });
@@ -2718,9 +3410,9 @@ function __c7(j: number): any {
         identifier: "ApplicationSystemRollbackConfiguration",
       });
     case 5:
-      return S.Array(__S(40));
+      return S.Array(VpcConfiguration);
     case 6:
-      return S.suspend(() => S.Struct({ LogLevel: S.String })).annotate({
+      return S.suspend(() => S.Struct({ LogLevel: LogLevel })).annotate({
         identifier: "ZeppelinMonitoringConfiguration",
       });
     case 7:
@@ -2732,15 +3424,15 @@ function __c7(j: number): any {
 function __c8(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ GlueDataCatalogConfiguration: __S(63) })).annotate({
-        identifier: "CatalogConfiguration",
-      });
+      return S.suspend(() =>
+        S.Struct({ GlueDataCatalogConfiguration: GlueDataCatalogConfiguration }),
+      ).annotate({ identifier: "CatalogConfiguration" });
     case 1:
       return S.suspend(() =>
         S.Struct({ BucketARN: S.String, BasePath: S.optional(S.String) }),
       ).annotate({ identifier: "S3ContentBaseLocation" });
     case 2:
-      return S.suspend(() => S.Struct({ S3ContentLocation: __S(65) })).annotate({
+      return S.suspend(() => S.Struct({ S3ContentLocation: S3ContentBaseLocation })).annotate({
         identifier: "DeployAsApplicationConfiguration",
       });
     case 3:
@@ -2750,32 +3442,30 @@ function __c8(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          ArtifactType: S.String,
-          S3ContentLocation: S.optional(__S(56)),
-          MavenReference: S.optional(__S(67)),
+          ArtifactType: ArtifactType,
+          S3ContentLocation: S.optional(S3ContentLocation),
+          MavenReference: S.optional(MavenReference),
         }),
       ).annotate({
         identifier: "CustomArtifactConfiguration",
       });
     case 5:
-      return S.Array(__S(68));
+      return S.Array(CustomArtifactConfiguration);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          MonitoringConfiguration: S.optional(__S(62)),
-          CatalogConfiguration: S.optional(__S(64)),
-          DeployAsApplicationConfiguration: S.optional(__S(66)),
-          CustomArtifactsConfiguration: S.optional(__S(69)),
+          MonitoringConfiguration: S.optional(ZeppelinMonitoringConfiguration),
+          CatalogConfiguration: S.optional(CatalogConfiguration),
+          DeployAsApplicationConfiguration: S.optional(DeployAsApplicationConfiguration),
+          CustomArtifactsConfiguration: S.optional(CustomArtifactsConfigurationList),
         }),
       ).annotate({
         identifier: "ZeppelinApplicationConfiguration",
       });
     case 7:
-      return S.suspend(() => S.Struct({ KeyId: S.optional(S.String), KeyType: S.String })).annotate(
-        {
-          identifier: "ApplicationEncryptionConfiguration",
-        },
-      );
+      return S.suspend(() => S.Struct({ KeyId: S.optional(S.String), KeyType: KeyType })).annotate({
+        identifier: "ApplicationEncryptionConfiguration",
+      });
   }
 }
 function __c9(j: number): any {
@@ -2783,44 +3473,46 @@ function __c9(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          SqlApplicationConfiguration: S.optional(__S(47)),
-          FlinkApplicationConfiguration: S.optional(__S(51)),
-          EnvironmentProperties: S.optional(__S(55)),
-          ApplicationCodeConfiguration: S.optional(__S(58)),
-          ApplicationSnapshotConfiguration: S.optional(__S(59)),
-          ApplicationSystemRollbackConfiguration: S.optional(__S(60)),
-          VpcConfigurations: S.optional(__S(61)),
-          ZeppelinApplicationConfiguration: S.optional(__S(70)),
-          ApplicationEncryptionConfiguration: S.optional(__S(71)),
+          SqlApplicationConfiguration: S.optional(SqlApplicationConfiguration),
+          FlinkApplicationConfiguration: S.optional(FlinkApplicationConfiguration),
+          EnvironmentProperties: S.optional(EnvironmentProperties),
+          ApplicationCodeConfiguration: S.optional(ApplicationCodeConfiguration),
+          ApplicationSnapshotConfiguration: S.optional(ApplicationSnapshotConfiguration),
+          ApplicationSystemRollbackConfiguration: S.optional(
+            ApplicationSystemRollbackConfiguration,
+          ),
+          VpcConfigurations: S.optional(VpcConfigurations),
+          ZeppelinApplicationConfiguration: S.optional(ZeppelinApplicationConfiguration),
+          ApplicationEncryptionConfiguration: S.optional(ApplicationEncryptionConfiguration),
         }),
       ).annotate({ identifier: "ApplicationConfiguration" });
     case 1:
-      return S.Array(__S(0));
+      return S.Array(CloudWatchLoggingOption);
     case 2:
       return S.suspend(() => S.Struct({ Key: S.String, Value: S.optional(S.String) })).annotate({
         identifier: "Tag",
       });
     case 3:
-      return S.Array(__S(74));
+      return S.Array(Tag);
     case 4:
       return S.suspend(() =>
         S.Struct({
           ApplicationName: S.String,
           ApplicationDescription: S.optional(S.String),
-          RuntimeEnvironment: S.String,
+          RuntimeEnvironment: RuntimeEnvironment,
           ServiceExecutionRole: S.String,
-          ApplicationConfiguration: S.optional(__S(72)),
-          CloudWatchLoggingOptions: S.optional(__S(73)),
-          Tags: S.optional(__S(75)),
-          ApplicationMode: S.optional(S.String),
+          ApplicationConfiguration: S.optional(ApplicationConfiguration),
+          CloudWatchLoggingOptions: S.optional(CloudWatchLoggingOptions),
+          Tags: S.optional(Tags),
+          ApplicationMode: S.optional(ApplicationMode),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateApplicationRequest" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          InputDescriptions: S.optional(__S(22)),
-          OutputDescriptions: S.optional(__S(31)),
-          ReferenceDataSourceDescriptions: S.optional(__S(38)),
+          InputDescriptions: S.optional(InputDescriptions),
+          OutputDescriptions: S.optional(OutputDescriptions),
+          ReferenceDataSourceDescriptions: S.optional(ReferenceDataSourceDescriptions),
         }),
       ).annotate({
         identifier: "SqlApplicationConfigurationDescription",
@@ -2837,7 +3529,7 @@ function __c9(j: number): any {
           TextContent: S.optional(S.String),
           CodeMD5: S.optional(S.String),
           CodeSize: S.optional(S.Number),
-          S3ApplicationCodeLocationDescription: S.optional(__S(78)),
+          S3ApplicationCodeLocationDescription: S.optional(S3ApplicationCodeLocationDescription),
         }),
       ).annotate({ identifier: "CodeContentDescription" });
   }
@@ -2847,8 +3539,8 @@ function __c10(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          CodeContentType: S.String,
-          CodeContentDescription: S.optional(__S(79)),
+          CodeContentType: CodeContentType,
+          CodeContentDescription: S.optional(CodeContentDescription),
         }),
       ).annotate({
         identifier: "ApplicationCodeConfigurationDescription",
@@ -2856,7 +3548,7 @@ function __c10(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          ApplicationRestoreType: S.String,
+          ApplicationRestoreType: ApplicationRestoreType,
           SnapshotName: S.optional(S.String),
         }),
       ).annotate({
@@ -2869,8 +3561,8 @@ function __c10(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          ApplicationRestoreConfigurationDescription: S.optional(__S(81)),
-          FlinkRunConfigurationDescription: S.optional(__S(82)),
+          ApplicationRestoreConfigurationDescription: S.optional(ApplicationRestoreConfiguration),
+          FlinkRunConfigurationDescription: S.optional(FlinkRunConfiguration),
         }),
       ).annotate({
         identifier: "RunConfigurationDescription",
@@ -2878,7 +3570,7 @@ function __c10(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          ConfigurationType: S.optional(S.String),
+          ConfigurationType: S.optional(ConfigurationType),
           CheckpointingEnabled: S.optional(S.Boolean),
           CheckpointInterval: S.optional(S.Number),
           MinPauseBetweenCheckpoints: S.optional(S.Number),
@@ -2889,9 +3581,9 @@ function __c10(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          ConfigurationType: S.optional(S.String),
-          MetricsLevel: S.optional(S.String),
-          LogLevel: S.optional(S.String),
+          ConfigurationType: S.optional(ConfigurationType),
+          MetricsLevel: S.optional(MetricsLevel),
+          LogLevel: S.optional(LogLevel),
         }),
       ).annotate({
         identifier: "MonitoringConfigurationDescription",
@@ -2899,7 +3591,7 @@ function __c10(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          ConfigurationType: S.optional(S.String),
+          ConfigurationType: S.optional(ConfigurationType),
           Parallelism: S.optional(S.Number),
           ParallelismPerKPU: S.optional(S.Number),
           CurrentParallelism: S.optional(S.Number),
@@ -2911,9 +3603,9 @@ function __c10(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          CheckpointConfigurationDescription: S.optional(__S(84)),
-          MonitoringConfigurationDescription: S.optional(__S(85)),
-          ParallelismConfigurationDescription: S.optional(__S(86)),
+          CheckpointConfigurationDescription: S.optional(CheckpointConfigurationDescription),
+          MonitoringConfigurationDescription: S.optional(MonitoringConfigurationDescription),
+          ParallelismConfigurationDescription: S.optional(ParallelismConfigurationDescription),
           JobPlanDescription: S.optional(S.String),
         }),
       ).annotate({
@@ -2924,21 +3616,21 @@ function __c10(j: number): any {
 function __c11(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ PropertyGroupDescriptions: S.optional(__S(54)) })).annotate(
-        {
-          identifier: "EnvironmentPropertyDescriptions",
-        },
-      );
+      return S.suspend(() =>
+        S.Struct({ PropertyGroupDescriptions: S.optional(PropertyGroups) }),
+      ).annotate({
+        identifier: "EnvironmentPropertyDescriptions",
+      });
     case 1:
-      return S.Array(__S(42));
+      return S.Array(VpcConfigurationDescription);
     case 2:
-      return S.suspend(() => S.Struct({ LogLevel: S.optional(S.String) })).annotate({
+      return S.suspend(() => S.Struct({ LogLevel: S.optional(LogLevel) })).annotate({
         identifier: "ZeppelinMonitoringConfigurationDescription",
       });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          GlueDataCatalogConfigurationDescription: __S(63),
+          GlueDataCatalogConfigurationDescription: GlueDataCatalogConfigurationDescription,
         }),
       ).annotate({
         identifier: "CatalogConfigurationDescription",
@@ -2950,21 +3642,23 @@ function __c11(j: number): any {
         identifier: "S3ContentBaseLocationDescription",
       });
     case 5:
-      return S.suspend(() => S.Struct({ S3ContentLocationDescription: __S(92) })).annotate({
+      return S.suspend(() =>
+        S.Struct({ S3ContentLocationDescription: S3ContentBaseLocationDescription }),
+      ).annotate({
         identifier: "DeployAsApplicationConfigurationDescription",
       });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          ArtifactType: S.optional(S.String),
-          S3ContentLocationDescription: S.optional(__S(56)),
-          MavenReferenceDescription: S.optional(__S(67)),
+          ArtifactType: S.optional(ArtifactType),
+          S3ContentLocationDescription: S.optional(S3ContentLocation),
+          MavenReferenceDescription: S.optional(MavenReference),
         }),
       ).annotate({
         identifier: "CustomArtifactConfigurationDescription",
       });
     case 7:
-      return S.Array(__S(94));
+      return S.Array(CustomArtifactConfigurationDescription);
   }
 }
 function __c12(j: number): any {
@@ -2972,10 +3666,14 @@ function __c12(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          MonitoringConfigurationDescription: __S(90),
-          CatalogConfigurationDescription: S.optional(__S(91)),
-          DeployAsApplicationConfigurationDescription: S.optional(__S(93)),
-          CustomArtifactsConfigurationDescription: S.optional(__S(95)),
+          MonitoringConfigurationDescription: ZeppelinMonitoringConfigurationDescription,
+          CatalogConfigurationDescription: S.optional(CatalogConfigurationDescription),
+          DeployAsApplicationConfigurationDescription: S.optional(
+            DeployAsApplicationConfigurationDescription,
+          ),
+          CustomArtifactsConfigurationDescription: S.optional(
+            CustomArtifactsConfigurationDescriptionList,
+          ),
         }),
       ).annotate({
         identifier: "ZeppelinApplicationConfigurationDescription",
@@ -2983,16 +3681,30 @@ function __c12(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          SqlApplicationConfigurationDescription: S.optional(__S(77)),
-          ApplicationCodeConfigurationDescription: S.optional(__S(80)),
-          RunConfigurationDescription: S.optional(__S(83)),
-          FlinkApplicationConfigurationDescription: S.optional(__S(87)),
-          EnvironmentPropertyDescriptions: S.optional(__S(88)),
-          ApplicationSnapshotConfigurationDescription: S.optional(__S(59)),
-          ApplicationSystemRollbackConfigurationDescription: S.optional(__S(60)),
-          VpcConfigurationDescriptions: S.optional(__S(89)),
-          ZeppelinApplicationConfigurationDescription: S.optional(__S(96)),
-          ApplicationEncryptionConfigurationDescription: S.optional(__S(71)),
+          SqlApplicationConfigurationDescription: S.optional(
+            SqlApplicationConfigurationDescription,
+          ),
+          ApplicationCodeConfigurationDescription: S.optional(
+            ApplicationCodeConfigurationDescription,
+          ),
+          RunConfigurationDescription: S.optional(RunConfigurationDescription),
+          FlinkApplicationConfigurationDescription: S.optional(
+            FlinkApplicationConfigurationDescription,
+          ),
+          EnvironmentPropertyDescriptions: S.optional(EnvironmentPropertyDescriptions),
+          ApplicationSnapshotConfigurationDescription: S.optional(
+            ApplicationSnapshotConfigurationDescription,
+          ),
+          ApplicationSystemRollbackConfigurationDescription: S.optional(
+            ApplicationSystemRollbackConfigurationDescription,
+          ),
+          VpcConfigurationDescriptions: S.optional(VpcConfigurationDescriptions),
+          ZeppelinApplicationConfigurationDescription: S.optional(
+            ZeppelinApplicationConfigurationDescription,
+          ),
+          ApplicationEncryptionConfigurationDescription: S.optional(
+            ApplicationEncryptionConfigurationDescription,
+          ),
         }),
       ).annotate({
         identifier: "ApplicationConfigurationDescription",
@@ -3012,15 +3724,17 @@ function __c12(j: number): any {
           ApplicationARN: S.String,
           ApplicationDescription: S.optional(S.String),
           ApplicationName: S.String,
-          RuntimeEnvironment: S.String,
+          RuntimeEnvironment: RuntimeEnvironment,
           ServiceExecutionRole: S.optional(S.String),
-          ApplicationStatus: S.String,
+          ApplicationStatus: ApplicationStatus,
           ApplicationVersionId: S.Number,
           CreateTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           LastUpdateTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          ApplicationConfigurationDescription: S.optional(__S(97)),
-          CloudWatchLoggingOptionDescriptions: S.optional(__S(3)),
-          ApplicationMaintenanceConfigurationDescription: S.optional(__S(98)),
+          ApplicationConfigurationDescription: S.optional(ApplicationConfigurationDescription),
+          CloudWatchLoggingOptionDescriptions: S.optional(CloudWatchLoggingOptionDescriptions),
+          ApplicationMaintenanceConfigurationDescription: S.optional(
+            ApplicationMaintenanceConfigurationDescription,
+          ),
           ApplicationVersionUpdatedFrom: S.optional(S.Number),
           ApplicationVersionRolledBackFrom: S.optional(S.Number),
           ApplicationVersionCreateTimestamp: S.optional(
@@ -3028,18 +3742,18 @@ function __c12(j: number): any {
           ),
           ConditionalToken: S.optional(S.String),
           ApplicationVersionRolledBackTo: S.optional(S.Number),
-          ApplicationMode: S.optional(S.String),
+          ApplicationMode: S.optional(ApplicationMode),
         }),
       ).annotate({ identifier: "ApplicationDetail" });
     case 4:
-      return S.suspend(() => S.Struct({ ApplicationDetail: __S(99) }).pipe(ns)).annotate({
+      return S.suspend(() => S.Struct({ ApplicationDetail: ApplicationDetail }).pipe(ns)).annotate({
         identifier: "CreateApplicationResponse",
       });
     case 5:
       return S.suspend(() =>
         S.Struct({
           ApplicationName: S.String,
-          UrlType: S.String,
+          UrlType: UrlType,
           SessionExpirationDurationInSeconds: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
@@ -3189,7 +3903,7 @@ function __c14(j: number): any {
       });
     case 6:
       return S.suspend(() =>
-        S.Struct({ RollbackOperationId: S.optional(S.String), ErrorInfo: S.optional(__S(117)) }),
+        S.Struct({ RollbackOperationId: S.optional(S.String), ErrorInfo: S.optional(ErrorInfo) }),
       ).annotate({ identifier: "OperationFailureDetails" });
     case 7:
       return S.suspend(() =>
@@ -3197,9 +3911,9 @@ function __c14(j: number): any {
           Operation: S.String,
           StartTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           EndTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          OperationStatus: S.String,
-          ApplicationVersionChangeDetails: S.optional(__S(116)),
-          OperationFailureDetails: S.optional(__S(118)),
+          OperationStatus: OperationStatus,
+          ApplicationVersionChangeDetails: S.optional(ApplicationVersionChangeDetails),
+          OperationFailureDetails: S.optional(OperationFailureDetails),
         }),
       ).annotate({
         identifier: "ApplicationOperationInfoDetails",
@@ -3211,7 +3925,7 @@ function __c15(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          ApplicationOperationInfoDetails: S.optional(__S(119)),
+          ApplicationOperationInfoDetails: S.optional(ApplicationOperationInfoDetails),
         }).pipe(ns),
       ).annotate({
         identifier: "DescribeApplicationOperationResponse",
@@ -3228,15 +3942,17 @@ function __c15(j: number): any {
       return S.suspend(() =>
         S.Struct({
           SnapshotName: S.String,
-          SnapshotStatus: S.String,
+          SnapshotStatus: SnapshotStatus,
           ApplicationVersionId: S.Number,
           SnapshotCreationTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          RuntimeEnvironment: S.optional(S.String),
-          ApplicationEncryptionConfigurationDescription: S.optional(__S(71)),
+          RuntimeEnvironment: S.optional(RuntimeEnvironment),
+          ApplicationEncryptionConfigurationDescription: S.optional(
+            ApplicationEncryptionConfigurationDescription,
+          ),
         }),
       ).annotate({ identifier: "SnapshotDetails" });
     case 3:
-      return S.suspend(() => S.Struct({ SnapshotDetails: __S(122) }).pipe(ns)).annotate({
+      return S.suspend(() => S.Struct({ SnapshotDetails: SnapshotDetails }).pipe(ns)).annotate({
         identifier: "DescribeApplicationSnapshotResponse",
       });
     case 4:
@@ -3249,7 +3965,7 @@ function __c15(j: number): any {
       });
     case 5:
       return S.suspend(() =>
-        S.Struct({ ApplicationVersionDetail: S.optional(__S(99)) }).pipe(ns),
+        S.Struct({ ApplicationVersionDetail: S.optional(ApplicationDetail) }).pipe(ns),
       ).annotate({
         identifier: "DescribeApplicationVersionResponse",
       });
@@ -3262,9 +3978,9 @@ function __c15(j: number): any {
         S.Struct({
           ResourceARN: S.optional(S.String),
           ServiceExecutionRole: S.String,
-          InputStartingPositionConfiguration: S.optional(__S(20)),
-          S3Configuration: S.optional(__S(126)),
-          InputProcessingConfiguration: S.optional(__S(6)),
+          InputStartingPositionConfiguration: S.optional(InputStartingPositionConfiguration),
+          S3Configuration: S.optional(S3Configuration),
+          InputProcessingConfiguration: S.optional(InputProcessingConfiguration),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "DiscoverInputSchemaRequest",
@@ -3274,14 +3990,14 @@ function __c15(j: number): any {
 function __c16(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(17));
+      return S.Array(ParsedInputRecord);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          InputSchema: S.optional(__S(14)),
-          ParsedInputRecords: S.optional(__S(128)),
-          ProcessedInputRecords: S.optional(__S(17)),
-          RawInputRecords: S.optional(__S(17)),
+          InputSchema: S.optional(SourceSchema),
+          ParsedInputRecords: S.optional(ParsedInputRecords),
+          ProcessedInputRecords: S.optional(ProcessedInputRecords),
+          RawInputRecords: S.optional(RawInputRecords),
         }).pipe(ns),
       ).annotate({
         identifier: "DiscoverInputSchemaResponse",
@@ -3293,7 +4009,7 @@ function __c16(j: number): any {
           Limit: S.optional(S.Number),
           NextToken: S.optional(S.String),
           Operation: S.optional(S.String),
-          OperationStatus: S.optional(S.String),
+          OperationStatus: S.optional(OperationStatus),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "ListApplicationOperationsRequest",
@@ -3305,15 +4021,15 @@ function __c16(j: number): any {
           OperationId: S.optional(S.String),
           StartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           EndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          OperationStatus: S.optional(S.String),
+          OperationStatus: S.optional(OperationStatus),
         }),
       ).annotate({ identifier: "ApplicationOperationInfo" });
     case 4:
-      return S.Array(__S(131));
+      return S.Array(ApplicationOperationInfo);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          ApplicationOperationInfoList: S.optional(__S(132)),
+          ApplicationOperationInfoList: S.optional(ApplicationOperationInfoList),
           NextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
@@ -3330,10 +4046,10 @@ function __c16(j: number): any {
         S.Struct({
           ApplicationName: S.String,
           ApplicationARN: S.String,
-          ApplicationStatus: S.String,
+          ApplicationStatus: ApplicationStatus,
           ApplicationVersionId: S.Number,
-          RuntimeEnvironment: S.String,
-          ApplicationMode: S.optional(S.String),
+          RuntimeEnvironment: RuntimeEnvironment,
+          ApplicationMode: S.optional(ApplicationMode),
         }),
       ).annotate({ identifier: "ApplicationSummary" });
   }
@@ -3341,11 +4057,11 @@ function __c16(j: number): any {
 function __c17(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(135));
+      return S.Array(ApplicationSummary);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          ApplicationSummaries: __S(136),
+          ApplicationSummaries: ApplicationSummaries,
           NextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({ identifier: "ListApplicationsResponse" });
@@ -3360,11 +4076,11 @@ function __c17(j: number): any {
         identifier: "ListApplicationSnapshotsRequest",
       });
     case 3:
-      return S.Array(__S(122));
+      return S.Array(SnapshotDetails);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          SnapshotSummaries: S.optional(__S(139)),
+          SnapshotSummaries: S.optional(SnapshotSummaries),
           NextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
@@ -3382,12 +4098,12 @@ function __c17(j: number): any {
       });
     case 6:
       return S.suspend(() =>
-        S.Struct({ ApplicationVersionId: S.Number, ApplicationStatus: S.String }),
+        S.Struct({ ApplicationVersionId: S.Number, ApplicationStatus: ApplicationStatus }),
       ).annotate({
         identifier: "ApplicationVersionSummary",
       });
     case 7:
-      return S.Array(__S(142));
+      return S.Array(ApplicationVersionSummary);
   }
 }
 function __c18(j: number): any {
@@ -3395,7 +4111,7 @@ function __c18(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          ApplicationVersionSummaries: S.optional(__S(143)),
+          ApplicationVersionSummaries: S.optional(ApplicationVersionSummaries),
           NextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
@@ -3410,7 +4126,7 @@ function __c18(j: number): any {
         identifier: "ListTagsForResourceRequest",
       });
     case 2:
-      return S.suspend(() => S.Struct({ Tags: S.optional(__S(75)) }).pipe(ns)).annotate({
+      return S.suspend(() => S.Struct({ Tags: S.optional(Tags) }).pipe(ns)).annotate({
         identifier: "ListTagsForResourceResponse",
       });
     case 3:
@@ -3423,7 +4139,9 @@ function __c18(j: number): any {
       });
     case 4:
       return S.suspend(() =>
-        S.Struct({ ApplicationDetail: __S(99), OperationId: S.optional(S.String) }).pipe(ns),
+        S.Struct({ ApplicationDetail: ApplicationDetail, OperationId: S.optional(S.String) }).pipe(
+          ns,
+        ),
       ).annotate({
         identifier: "RollbackApplicationResponse",
       });
@@ -3431,17 +4149,17 @@ function __c18(j: number): any {
       return S.suspend(() =>
         S.Struct({
           InputId: S.String,
-          InputStartingPositionConfiguration: __S(20),
+          InputStartingPositionConfiguration: InputStartingPositionConfiguration,
         }),
       ).annotate({ identifier: "SqlRunConfiguration" });
     case 6:
-      return S.Array(__S(149));
+      return S.Array(SqlRunConfiguration);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          FlinkRunConfiguration: S.optional(__S(82)),
-          SqlRunConfigurations: S.optional(__S(150)),
-          ApplicationRestoreConfiguration: S.optional(__S(81)),
+          FlinkRunConfiguration: S.optional(FlinkRunConfiguration),
+          SqlRunConfigurations: S.optional(SqlRunConfigurations),
+          ApplicationRestoreConfiguration: S.optional(ApplicationRestoreConfiguration),
         }),
       ).annotate({ identifier: "RunConfiguration" });
   }
@@ -3452,7 +4170,7 @@ function __c19(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ApplicationName: S.String,
-          RunConfiguration: S.optional(__S(151)),
+          RunConfiguration: S.optional(RunConfiguration),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "StartApplicationRequest" });
     case 1:
@@ -3467,7 +4185,7 @@ function __c19(j: number): any {
       ).annotate({ identifier: "StopApplicationRequest" });
     case 3:
       return S.suspend(() =>
-        S.Struct({ ResourceARN: S.String, Tags: __S(75) }).pipe(
+        S.Struct({ ResourceARN: S.String, Tags: Tags }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "TagResourceRequest" });
@@ -3477,7 +4195,7 @@ function __c19(j: number): any {
       });
     case 5:
       return S.suspend(() =>
-        S.Struct({ ResourceARN: S.String, TagKeys: __S(17) }).pipe(
+        S.Struct({ ResourceARN: S.String, TagKeys: TagKeys }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "UntagResourceRequest" });
@@ -3486,7 +4204,9 @@ function __c19(j: number): any {
         identifier: "InputLambdaProcessorUpdate",
       });
     case 7:
-      return S.suspend(() => S.Struct({ InputLambdaProcessorUpdate: __S(158) })).annotate({
+      return S.suspend(() =>
+        S.Struct({ InputLambdaProcessorUpdate: InputLambdaProcessorUpdate }),
+      ).annotate({
         identifier: "InputProcessingConfigurationUpdate",
       });
   }
@@ -3496,9 +4216,9 @@ function __c20(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          RecordFormatUpdate: S.optional(__S(11)),
+          RecordFormatUpdate: S.optional(RecordFormat),
           RecordEncodingUpdate: S.optional(S.String),
-          RecordColumnUpdates: S.optional(__S(13)),
+          RecordColumnUpdates: S.optional(RecordColumns),
         }),
       ).annotate({ identifier: "InputSchemaUpdate" });
     case 1:
@@ -3510,15 +4230,15 @@ function __c20(j: number): any {
         S.Struct({
           InputId: S.String,
           NamePrefixUpdate: S.optional(S.String),
-          InputProcessingConfigurationUpdate: S.optional(__S(159)),
-          KinesisStreamsInputUpdate: S.optional(__S(158)),
-          KinesisFirehoseInputUpdate: S.optional(__S(158)),
-          InputSchemaUpdate: S.optional(__S(160)),
-          InputParallelismUpdate: S.optional(__S(161)),
+          InputProcessingConfigurationUpdate: S.optional(InputProcessingConfigurationUpdate),
+          KinesisStreamsInputUpdate: S.optional(KinesisStreamsInputUpdate),
+          KinesisFirehoseInputUpdate: S.optional(KinesisFirehoseInputUpdate),
+          InputSchemaUpdate: S.optional(InputSchemaUpdate),
+          InputParallelismUpdate: S.optional(InputParallelismUpdate),
         }),
       ).annotate({ identifier: "InputUpdate" });
     case 3:
-      return S.Array(__S(162));
+      return S.Array(InputUpdate);
     case 4:
       return S.suspend(() => S.Struct({ ResourceARNUpdate: S.String })).annotate({
         identifier: "LambdaOutputUpdate",
@@ -3528,14 +4248,14 @@ function __c20(j: number): any {
         S.Struct({
           OutputId: S.String,
           NameUpdate: S.optional(S.String),
-          KinesisStreamsOutputUpdate: S.optional(__S(158)),
-          KinesisFirehoseOutputUpdate: S.optional(__S(158)),
-          LambdaOutputUpdate: S.optional(__S(164)),
-          DestinationSchemaUpdate: S.optional(__S(26)),
+          KinesisStreamsOutputUpdate: S.optional(KinesisStreamsOutputUpdate),
+          KinesisFirehoseOutputUpdate: S.optional(KinesisFirehoseOutputUpdate),
+          LambdaOutputUpdate: S.optional(LambdaOutputUpdate),
+          DestinationSchemaUpdate: S.optional(DestinationSchema),
         }),
       ).annotate({ identifier: "OutputUpdate" });
     case 6:
-      return S.Array(__S(165));
+      return S.Array(OutputUpdate);
     case 7:
       return S.suspend(() =>
         S.Struct({ BucketARNUpdate: S.optional(S.String), FileKeyUpdate: S.optional(S.String) }),
@@ -3551,20 +4271,20 @@ function __c21(j: number): any {
         S.Struct({
           ReferenceId: S.String,
           TableNameUpdate: S.optional(S.String),
-          S3ReferenceDataSourceUpdate: S.optional(__S(167)),
-          ReferenceSchemaUpdate: S.optional(__S(14)),
+          S3ReferenceDataSourceUpdate: S.optional(S3ReferenceDataSourceUpdate),
+          ReferenceSchemaUpdate: S.optional(SourceSchema),
         }),
       ).annotate({
         identifier: "ReferenceDataSourceUpdate",
       });
     case 1:
-      return S.Array(__S(168));
+      return S.Array(ReferenceDataSourceUpdate);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          InputUpdates: S.optional(__S(163)),
-          OutputUpdates: S.optional(__S(166)),
-          ReferenceDataSourceUpdates: S.optional(__S(169)),
+          InputUpdates: S.optional(InputUpdates),
+          OutputUpdates: S.optional(OutputUpdates),
+          ReferenceDataSourceUpdates: S.optional(ReferenceDataSourceUpdates),
         }),
       ).annotate({
         identifier: "SqlApplicationConfigurationUpdate",
@@ -3582,14 +4302,14 @@ function __c21(j: number): any {
         S.Struct({
           TextContentUpdate: S.optional(S.String),
           ZipFileContentUpdate: S.optional(T.Blob),
-          S3ContentLocationUpdate: S.optional(__S(171)),
+          S3ContentLocationUpdate: S.optional(S3ContentLocationUpdate),
         }),
       ).annotate({ identifier: "CodeContentUpdate" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          CodeContentTypeUpdate: S.optional(S.String),
-          CodeContentUpdate: S.optional(__S(172)),
+          CodeContentTypeUpdate: S.optional(CodeContentType),
+          CodeContentUpdate: S.optional(CodeContentUpdate),
         }),
       ).annotate({
         identifier: "ApplicationCodeConfigurationUpdate",
@@ -3597,7 +4317,7 @@ function __c21(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          ConfigurationTypeUpdate: S.optional(S.String),
+          ConfigurationTypeUpdate: S.optional(ConfigurationType),
           CheckpointingEnabledUpdate: S.optional(S.Boolean),
           CheckpointIntervalUpdate: S.optional(S.Number),
           MinPauseBetweenCheckpointsUpdate: S.optional(S.Number),
@@ -3608,9 +4328,9 @@ function __c21(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          ConfigurationTypeUpdate: S.optional(S.String),
-          MetricsLevelUpdate: S.optional(S.String),
-          LogLevelUpdate: S.optional(S.String),
+          ConfigurationTypeUpdate: S.optional(ConfigurationType),
+          MetricsLevelUpdate: S.optional(MetricsLevel),
+          LogLevelUpdate: S.optional(LogLevel),
         }),
       ).annotate({
         identifier: "MonitoringConfigurationUpdate",
@@ -3622,7 +4342,7 @@ function __c22(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          ConfigurationTypeUpdate: S.optional(S.String),
+          ConfigurationTypeUpdate: S.optional(ConfigurationType),
           ParallelismUpdate: S.optional(S.Number),
           ParallelismPerKPUUpdate: S.optional(S.Number),
           AutoScalingEnabledUpdate: S.optional(S.Boolean),
@@ -3633,15 +4353,15 @@ function __c22(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          CheckpointConfigurationUpdate: S.optional(__S(174)),
-          MonitoringConfigurationUpdate: S.optional(__S(175)),
-          ParallelismConfigurationUpdate: S.optional(__S(176)),
+          CheckpointConfigurationUpdate: S.optional(CheckpointConfigurationUpdate),
+          MonitoringConfigurationUpdate: S.optional(MonitoringConfigurationUpdate),
+          ParallelismConfigurationUpdate: S.optional(ParallelismConfigurationUpdate),
         }),
       ).annotate({
         identifier: "FlinkApplicationConfigurationUpdate",
       });
     case 2:
-      return S.suspend(() => S.Struct({ PropertyGroups: __S(54) })).annotate({
+      return S.suspend(() => S.Struct({ PropertyGroups: PropertyGroups })).annotate({
         identifier: "EnvironmentPropertyUpdates",
       });
     case 3:
@@ -3656,14 +4376,14 @@ function __c22(j: number): any {
       return S.suspend(() =>
         S.Struct({
           VpcConfigurationId: S.String,
-          SubnetIdUpdates: S.optional(__S(17)),
-          SecurityGroupIdUpdates: S.optional(__S(17)),
+          SubnetIdUpdates: S.optional(SubnetIds),
+          SecurityGroupIdUpdates: S.optional(SecurityGroupIds),
         }),
       ).annotate({ identifier: "VpcConfigurationUpdate" });
     case 6:
-      return S.Array(__S(181));
+      return S.Array(VpcConfigurationUpdate);
     case 7:
-      return S.suspend(() => S.Struct({ LogLevelUpdate: S.String })).annotate({
+      return S.suspend(() => S.Struct({ LogLevelUpdate: LogLevel })).annotate({
         identifier: "ZeppelinMonitoringConfigurationUpdate",
       });
   }
@@ -3675,7 +4395,9 @@ function __c23(j: number): any {
         identifier: "GlueDataCatalogConfigurationUpdate",
       });
     case 1:
-      return S.suspend(() => S.Struct({ GlueDataCatalogConfigurationUpdate: __S(184) })).annotate({
+      return S.suspend(() =>
+        S.Struct({ GlueDataCatalogConfigurationUpdate: GlueDataCatalogConfigurationUpdate }),
+      ).annotate({
         identifier: "CatalogConfigurationUpdate",
       });
     case 2:
@@ -3685,38 +4407,50 @@ function __c23(j: number): any {
         identifier: "S3ContentBaseLocationUpdate",
       });
     case 3:
-      return S.suspend(() => S.Struct({ S3ContentLocationUpdate: S.optional(__S(186)) })).annotate({
+      return S.suspend(() =>
+        S.Struct({ S3ContentLocationUpdate: S.optional(S3ContentBaseLocationUpdate) }),
+      ).annotate({
         identifier: "DeployAsApplicationConfigurationUpdate",
       });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          MonitoringConfigurationUpdate: S.optional(__S(183)),
-          CatalogConfigurationUpdate: S.optional(__S(185)),
-          DeployAsApplicationConfigurationUpdate: S.optional(__S(187)),
-          CustomArtifactsConfigurationUpdate: S.optional(__S(69)),
+          MonitoringConfigurationUpdate: S.optional(ZeppelinMonitoringConfigurationUpdate),
+          CatalogConfigurationUpdate: S.optional(CatalogConfigurationUpdate),
+          DeployAsApplicationConfigurationUpdate: S.optional(
+            DeployAsApplicationConfigurationUpdate,
+          ),
+          CustomArtifactsConfigurationUpdate: S.optional(CustomArtifactsConfigurationList),
         }),
       ).annotate({
         identifier: "ZeppelinApplicationConfigurationUpdate",
       });
     case 5:
       return S.suspend(() =>
-        S.Struct({ KeyIdUpdate: S.optional(S.String), KeyTypeUpdate: S.String }),
+        S.Struct({ KeyIdUpdate: S.optional(S.String), KeyTypeUpdate: KeyType }),
       ).annotate({
         identifier: "ApplicationEncryptionConfigurationUpdate",
       });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          SqlApplicationConfigurationUpdate: S.optional(__S(170)),
-          ApplicationCodeConfigurationUpdate: S.optional(__S(173)),
-          FlinkApplicationConfigurationUpdate: S.optional(__S(177)),
-          EnvironmentPropertyUpdates: S.optional(__S(178)),
-          ApplicationSnapshotConfigurationUpdate: S.optional(__S(179)),
-          ApplicationSystemRollbackConfigurationUpdate: S.optional(__S(180)),
-          VpcConfigurationUpdates: S.optional(__S(182)),
-          ZeppelinApplicationConfigurationUpdate: S.optional(__S(188)),
-          ApplicationEncryptionConfigurationUpdate: S.optional(__S(189)),
+          SqlApplicationConfigurationUpdate: S.optional(SqlApplicationConfigurationUpdate),
+          ApplicationCodeConfigurationUpdate: S.optional(ApplicationCodeConfigurationUpdate),
+          FlinkApplicationConfigurationUpdate: S.optional(FlinkApplicationConfigurationUpdate),
+          EnvironmentPropertyUpdates: S.optional(EnvironmentPropertyUpdates),
+          ApplicationSnapshotConfigurationUpdate: S.optional(
+            ApplicationSnapshotConfigurationUpdate,
+          ),
+          ApplicationSystemRollbackConfigurationUpdate: S.optional(
+            ApplicationSystemRollbackConfigurationUpdate,
+          ),
+          VpcConfigurationUpdates: S.optional(VpcConfigurationUpdates),
+          ZeppelinApplicationConfigurationUpdate: S.optional(
+            ZeppelinApplicationConfigurationUpdate,
+          ),
+          ApplicationEncryptionConfigurationUpdate: S.optional(
+            ApplicationEncryptionConfigurationUpdate,
+          ),
         }),
       ).annotate({
         identifier: "ApplicationConfigurationUpdate",
@@ -3724,8 +4458,8 @@ function __c23(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          FlinkRunConfiguration: S.optional(__S(82)),
-          ApplicationRestoreConfiguration: S.optional(__S(81)),
+          FlinkRunConfiguration: S.optional(FlinkRunConfiguration),
+          ApplicationRestoreConfiguration: S.optional(ApplicationRestoreConfiguration),
         }),
       ).annotate({ identifier: "RunConfigurationUpdate" });
   }
@@ -3739,18 +4473,18 @@ function __c24(j: number): any {
         identifier: "CloudWatchLoggingOptionUpdate",
       });
     case 1:
-      return S.Array(__S(192));
+      return S.Array(CloudWatchLoggingOptionUpdate);
     case 2:
       return S.suspend(() =>
         S.Struct({
           ApplicationName: S.String,
           CurrentApplicationVersionId: S.optional(S.Number),
-          ApplicationConfigurationUpdate: S.optional(__S(190)),
+          ApplicationConfigurationUpdate: S.optional(ApplicationConfigurationUpdate),
           ServiceExecutionRoleUpdate: S.optional(S.String),
-          RunConfigurationUpdate: S.optional(__S(191)),
-          CloudWatchLoggingOptionUpdates: S.optional(__S(193)),
+          RunConfigurationUpdate: S.optional(RunConfigurationUpdate),
+          CloudWatchLoggingOptionUpdates: S.optional(CloudWatchLoggingOptionUpdates),
           ConditionalToken: S.optional(S.String),
-          RuntimeEnvironmentUpdate: S.optional(S.String),
+          RuntimeEnvironmentUpdate: S.optional(RuntimeEnvironment),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "UpdateApplicationRequest" });
     case 3:
@@ -3763,7 +4497,7 @@ function __c24(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ApplicationName: S.String,
-          ApplicationMaintenanceConfigurationUpdate: __S(195),
+          ApplicationMaintenanceConfigurationUpdate: ApplicationMaintenanceConfigurationUpdate,
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "UpdateApplicationMaintenanceConfigurationRequest",
@@ -3772,69 +4506,12 @@ function __c24(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ApplicationARN: S.optional(S.String),
-          ApplicationMaintenanceConfigurationDescription: S.optional(__S(98)),
+          ApplicationMaintenanceConfigurationDescription: S.optional(
+            ApplicationMaintenanceConfigurationDescription,
+          ),
         }).pipe(ns),
       ).annotate({
         identifier: "UpdateApplicationMaintenanceConfigurationResponse",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
-    case 9:
-      return __c9(i & 7);
-    case 10:
-      return __c10(i & 7);
-    case 11:
-      return __c11(i & 7);
-    case 12:
-      return __c12(i & 7);
-    case 13:
-      return __c13(i & 7);
-    case 14:
-      return __c14(i & 7);
-    case 15:
-      return __c15(i & 7);
-    case 16:
-      return __c16(i & 7);
-    case 17:
-      return __c17(i & 7);
-    case 18:
-      return __c18(i & 7);
-    case 19:
-      return __c19(i & 7);
-    case 20:
-      return __c20(i & 7);
-    case 21:
-      return __c21(i & 7);
-    case 22:
-      return __c22(i & 7);
-    case 23:
-      return __c23(i & 7);
-    case 24:
-      return __c24(i & 7);
   }
 }

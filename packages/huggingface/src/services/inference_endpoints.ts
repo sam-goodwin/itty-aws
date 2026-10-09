@@ -9,12 +9,12 @@ import {
 } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { HuggingFaceOpError, HuggingFaceOpContext };
 
 export type CheckEndpointAccessRequestPerms = "read" | "write" | "infer";
+const CheckEndpointAccessRequestPerms = S.String;
+
 export interface CheckEndpointAccessRequest {
   namespace: string;
   endpoint: string;
@@ -26,21 +26,43 @@ export interface CheckEndpointAccessRequest {
   resource_group_id?: string;
   repo_id?: string;
 }
+const CheckEndpointAccessRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<CheckEndpointAccessRequest>;
+
 export interface CheckEndpointAccessResponseNamespace {
   id: string;
   name: string;
 }
+const CheckEndpointAccessResponseNamespace = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<CheckEndpointAccessResponseNamespace>;
+
 export interface CheckEndpointAccessResponseUser {
   id: string;
   name: string;
   hasHfLevelAccess?: boolean;
 }
+const CheckEndpointAccessResponseUser = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<CheckEndpointAccessResponseUser>;
+
 export interface CheckEndpointAccessResponse {
   namespace: CheckEndpointAccessResponseNamespace;
   user: CheckEndpointAccessResponseUser;
   resourceGroupId?: string;
 }
+const CheckEndpointAccessResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<CheckEndpointAccessResponse>;
+
 export type CheckNamespaceAccessRequestPerms = "read" | "write" | "infer";
+const CheckNamespaceAccessRequestPerms = S.String;
+
 export interface CheckNamespaceAccessRequest {
   namespace: string;
   perms: CheckNamespaceAccessRequestPerms | (string & {});
@@ -51,6 +73,11 @@ export interface CheckNamespaceAccessRequest {
   resource_group_id?: string;
   repo_id?: string;
 }
+const CheckNamespaceAccessRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<CheckNamespaceAccessRequest>;
+
 export type CheckNamespaceAccessResponseNamespace = CheckEndpointAccessResponseNamespace;
 export type CheckNamespaceAccessResponseUser = CheckEndpointAccessResponseUser;
 export interface CheckNamespaceAccessResponse {
@@ -58,6 +85,9 @@ export interface CheckNamespaceAccessResponse {
   user: CheckEndpointAccessResponseUser;
   resourceGroupId?: string;
 }
+const CheckNamespaceAccessResponse =
+  CheckEndpointAccessResponse as any as S.Schema<CheckNamespaceAccessResponse>;
+
 export type CheckEndpointAccessError = HuggingFaceOpError;
 /** Check access Check if the user has access to the inference endpoint */
 export const checkEndpointAccess: API.OperationMethod<
@@ -66,8 +96,8 @@ export const checkEndpointAccess: API.OperationMethod<
   CheckEndpointAccessError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<CheckEndpointAccessRequest>,
-  output: __S(3) as any as S.Schema<CheckEndpointAccessResponse>,
+  input: CheckEndpointAccessRequest,
+  output: CheckEndpointAccessResponse,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -81,8 +111,8 @@ export const checkNamespaceAccess: API.OperationMethod<
   CheckNamespaceAccessError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4) as any as S.Schema<CheckNamespaceAccessRequest>,
-  output: __S(3) as any as S.Schema<CheckNamespaceAccessResponse>,
+  input: CheckNamespaceAccessRequest,
+  output: CheckNamespaceAccessResponse,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -96,7 +126,7 @@ function __c0(j: number): any {
         S.Struct({
           namespace: S.String.pipe(T.Label()),
           endpoint: S.String.pipe(T.Label()),
-          perms: S.String.pipe(T.Label()),
+          perms: CheckEndpointAccessRequestPerms.pipe(T.Label()),
           own: S.optional(S.String.pipe(T.Query())),
           is_creator: S.optional(S.String.pipe(T.Query())),
           creator_id: S.optional(S.String.pipe(T.Query())),
@@ -135,8 +165,8 @@ function __c0(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          namespace: __S(1),
-          user: __S(2),
+          namespace: CheckEndpointAccessResponseNamespace,
+          user: CheckEndpointAccessResponseUser,
           resourceGroupId: S.optional(S.String),
         }),
       ).annotate({
@@ -146,7 +176,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
-          perms: S.String.pipe(T.Label()),
+          perms: CheckNamespaceAccessRequestPerms.pipe(T.Label()),
           own: S.optional(S.String.pipe(T.Query())),
           is_creator: S.optional(S.String.pipe(T.Query())),
           creator_id: S.optional(S.String.pipe(T.Query())),
@@ -163,16 +193,5 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CheckNamespaceAccessRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
   }
 }

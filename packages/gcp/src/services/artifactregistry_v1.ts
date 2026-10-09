@@ -7,8 +7,6 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -65,6 +63,8 @@ export class NotFound
   ) {}
 
 export type StringList = Array<string>;
+const StringList = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<StringList>;
+
 /** The request to delete multiple versions across a repository. */
 export interface BatchDeleteVersionsRequest {
   /** Required. The names of the versions to delete. The maximum number of versions deleted per batch is determined by the service and is dependent on the available resources in the region. */
@@ -72,14 +72,28 @@ export interface BatchDeleteVersionsRequest {
   /** If true, the request is performed without deleting data, following AIP-163. */
   validateOnly?: boolean;
 }
+const BatchDeleteVersionsRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<BatchDeleteVersionsRequest>;
+
 export interface BatchDeleteProjectsLocationsRepositoriesPackagesVersionsRequest {
   /** The name of the repository holding all requested versions. */
   parent: string;
   /** Request body */
   body?: BatchDeleteVersionsRequest;
 }
+const BatchDeleteProjectsLocationsRepositoriesPackagesVersionsRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<BatchDeleteProjectsLocationsRepositoriesPackagesVersionsRequest>;
+
 export type DocumentMap = { [key: string]: unknown | undefined };
+const DocumentMap = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<DocumentMap>;
+
 export type DocumentMapList = Array<DocumentMap>;
+const DocumentMapList = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<DocumentMapList>;
+
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
@@ -89,6 +103,8 @@ export interface Status {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
   message?: string;
 }
+const Status = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<Status>;
+
 /** This resource represents a long-running operation that is the result of a network API call. */
 export interface Operation {
   /** The error result of the operation in case of failure or cancellation. */
@@ -102,16 +118,30 @@ export interface Operation {
   /** If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available. */
   done?: boolean;
 }
+const Operation = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<Operation>;
+
 /** The request message for Operations.CancelOperation. */
 export interface CancelOperationRequest {}
+const CancelOperationRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<CancelOperationRequest>;
+
 export interface CancelProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be cancelled. */
   name: string;
   /** Request body */
   body?: CancelOperationRequest;
 }
+const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<CancelProjectsLocationsOperationsRequest>;
+
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
+const Empty = CancelOperationRequest as any as S.Schema<Empty>;
+
 /** The request for checking an artifact for streaming. */
 export interface CheckPrewarmedArtifactRequest {
   /** Optional. The artifact tag Format:projects/{project}/locations/{location}/repositories/{repository}/packages/{package}/tags/{tag} */
@@ -121,12 +151,22 @@ export interface CheckPrewarmedArtifactRequest {
   /** Optional. The artifact version Format: projects/{project}/locations/{location}/repositories/{repository}/packages/{package}/versions/{version} */
   version?: string;
 }
+const CheckPrewarmedArtifactRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<CheckPrewarmedArtifactRequest>;
+
 export interface CheckPrewarmedArtifactProjectsLocationsRepositoriesRequest {
   /** Required. The name of the repository, for example: `projects/p1/locations/us-central1/repositories/repo1`. If the package or version ID parts contain slashes, the slashes are escaped. */
   repository: string;
   /** Request body */
   body?: CheckPrewarmedArtifactRequest;
 }
+const CheckPrewarmedArtifactProjectsLocationsRepositoriesRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<CheckPrewarmedArtifactProjectsLocationsRepositoriesRequest>;
+
 /** PrewarmedArtifact represents a streamed artifact. This is not a request message, so field_behavior annotations are not required. */
 export interface PrewarmedArtifact {
   /** The expiration time of the prewarmed artifact. */
@@ -136,12 +176,21 @@ export interface PrewarmedArtifact {
   /** The location of the prewarmed artifact. */
   location?: string;
 }
+const PrewarmedArtifact = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<PrewarmedArtifact>;
+
 /** The response for checking an artifact for streaming. */
 export interface CheckPrewarmedArtifactResponse {
   /** The prewarmed artifact that was checked. */
   prewarmedArtifact?: PrewarmedArtifact;
 }
+const CheckPrewarmedArtifactResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<CheckPrewarmedArtifactResponse>;
+
 export type StringMap = { [key: string]: string | undefined };
+const StringMap = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<StringMap>;
+
 /** Artifact policy configuration for the repository contents. */
 export interface UpstreamPolicy {
   /** Entries with a greater priority value take precedence in the pull order. */
@@ -151,12 +200,21 @@ export interface UpstreamPolicy {
   /** A reference to the repository resource, for example: `projects/p1/locations/us-central1/repositories/repo1`. */
   repository?: string;
 }
+const UpstreamPolicy = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<UpstreamPolicy>;
+
 export type UpstreamPolicyList = Array<UpstreamPolicy>;
+const UpstreamPolicyList = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<UpstreamPolicyList>;
+
 /** Virtual repository configuration. */
 export interface VirtualRepositoryConfig {
   /** Policies that configure the upstream artifacts distributed by the Virtual Repository. Upstream policies cannot be set on a standard repository. */
   upstreamPolicies?: UpstreamPolicyList;
 }
+const VirtualRepositoryConfig = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<VirtualRepositoryConfig>;
+
 export type RepositoryFormatEnum =
   | "FORMAT_UNSPECIFIED"
   | "DOCKER"
@@ -171,15 +229,21 @@ export type RepositoryFormatEnum =
   | "GENERIC"
   | "RUBY"
   | "CONDA";
+const RepositoryFormatEnum = S.String;
+
 export type VulnerabilityScanningConfigEnablementConfigEnum =
   | "ENABLEMENT_CONFIG_UNSPECIFIED"
   | "INHERITED"
   | "DISABLED";
+const VulnerabilityScanningConfigEnablementConfigEnum = S.String;
+
 export type VulnerabilityScanningConfigEnablementStateEnum =
   | "ENABLEMENT_STATE_UNSPECIFIED"
   | "SCANNING_UNSUPPORTED"
   | "SCANNING_DISABLED"
   | "SCANNING_ACTIVE";
+const VulnerabilityScanningConfigEnablementStateEnum = S.String;
+
 /** Config on whether to perform vulnerability scanning for resources in this repository, as well as output fields describing current state. */
 export interface VulnerabilityScanningConfig {
   /** Optional. Config for whether this repository has vulnerability scanning disabled. When unset (ENABLEMENT_CONFIG_UNSPECIFIED), this is treated as INHERITED for Docker repositories and DISABLED for non-Docker repositories. */
@@ -191,10 +255,17 @@ export interface VulnerabilityScanningConfig {
   /** Output only. Reason for the repository state. */
   enablementStateReason?: string;
 }
+const VulnerabilityScanningConfig = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<VulnerabilityScanningConfig>;
+
 export type PlatformLogsConfigLoggingStateEnum =
   | "LOGGING_STATE_UNSPECIFIED"
   | "ENABLED"
   | "DISABLED";
+const PlatformLogsConfigLoggingStateEnum = S.String;
+
 export type PlatformLogsConfigSeverityLevelEnum =
   | "SEVERITY_LEVEL_UNSPECIFIED"
   | "DEBUG"
@@ -205,6 +276,8 @@ export type PlatformLogsConfigSeverityLevelEnum =
   | "CRITICAL"
   | "ALERT"
   | "EMERGENCY";
+const PlatformLogsConfigSeverityLevelEnum = S.String;
+
 /** The platform logs config for a project or a repository. */
 export interface PlatformLogsConfig {
   /** Optional. The state of the platform logs: enabled or disabled. */
@@ -212,12 +285,18 @@ export interface PlatformLogsConfig {
   /** Optional. The severity level for the logs. Logs will be generated if their severity level is >= than the value of the severity level mentioned here. */
   severityLevel?: PlatformLogsConfigSeverityLevelEnum | (string & {});
 }
+const PlatformLogsConfig = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<PlatformLogsConfig>;
+
 export type CleanupPolicyActionEnum = "ACTION_UNSPECIFIED" | "DELETE" | "KEEP";
+const CleanupPolicyActionEnum = S.String;
+
 export type CleanupPolicyConditionTagStateEnum =
   | "TAG_STATE_UNSPECIFIED"
   | "TAGGED"
   | "UNTAGGED"
   | "ANY";
+const CleanupPolicyConditionTagStateEnum = S.String;
+
 /** CleanupPolicyCondition is a set of conditions attached to a CleanupPolicy. If multiple entries are set, all must be satisfied for the condition to be satisfied. */
 export interface CleanupPolicyCondition {
   /** Match versions by version name prefix. Applied on any prefix match. */
@@ -233,6 +312,11 @@ export interface CleanupPolicyCondition {
   /** Match versions newer than a duration. */
   newerThan?: string;
 }
+const CleanupPolicyCondition = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<CleanupPolicyCondition>;
+
 /** CleanupPolicyMostRecentVersions is an alternate condition of a CleanupPolicy for retaining a minimum number of versions. */
 export interface CleanupPolicyMostRecentVersions {
   /** List of package name prefixes that will apply this rule. */
@@ -240,6 +324,11 @@ export interface CleanupPolicyMostRecentVersions {
   /** Minimum number of versions to keep. */
   keepCount?: number;
 }
+const CleanupPolicyMostRecentVersions = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<CleanupPolicyMostRecentVersions>;
+
 /** Artifact policy configuration for repository cleanup policies. */
 export interface CleanupPolicy {
   /** Policy action. */
@@ -251,7 +340,11 @@ export interface CleanupPolicy {
   /** Policy condition for retaining a minimum number of versions. May only be specified with a Keep action. */
   mostRecentVersions?: CleanupPolicyMostRecentVersions;
 }
+const CleanupPolicy = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<CleanupPolicy>;
+
 export type CleanupPolicyMap = { [key: string]: CleanupPolicy | undefined };
+const CleanupPolicyMap = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<CleanupPolicyMap>;
+
 export type RepositoryModeEnum =
   | "MODE_UNSPECIFIED"
   | "STANDARD_REPOSITORY"
@@ -259,10 +352,14 @@ export type RepositoryModeEnum =
   | "REMOTE_REPOSITORY"
   | "AOSS_REPOSITORY"
   | "ASSURED_OSS_REPOSITORY";
+const RepositoryModeEnum = S.String;
+
 export type MavenRepositoryConfigVersionPolicyEnum =
   | "VERSION_POLICY_UNSPECIFIED"
   | "RELEASE"
   | "SNAPSHOT";
+const MavenRepositoryConfigVersionPolicyEnum = S.String;
+
 /** MavenRepositoryConfig is maven related repository details. Provides additional configuration details for repositories of the maven format type. */
 export interface MavenRepositoryConfig {
   /** The repository with this flag will allow publishing the same snapshot versions. */
@@ -270,12 +367,25 @@ export interface MavenRepositoryConfig {
   /** Version policy defines the versions that the registry will accept. */
   versionPolicy?: MavenRepositoryConfigVersionPolicyEnum | (string & {});
 }
+const MavenRepositoryConfig = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<MavenRepositoryConfig>;
+
 export type MavenRepositoryPublicRepositoryEnum = "PUBLIC_REPOSITORY_UNSPECIFIED" | "MAVEN_CENTRAL";
+const MavenRepositoryPublicRepositoryEnum = S.String;
+
 /** Customer-specified publicly available remote repository. */
 export interface GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepository {
   /** An https uri reference to the upstream remote repository, for ex: "https://my.maven.registry/". */
   uri?: string;
 }
+const GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepository =
+  /*@__PURE__*/ __L.at(
+    __c3,
+    0,
+  ) as any as S.Schema<GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepository>;
+
 /** Configuration for a Maven remote repository. */
 export interface MavenRepository {
   /** One of the publicly available Maven repositories supported by Artifact Registry. */
@@ -283,12 +393,19 @@ export interface MavenRepository {
   /** Customer-specified remote repository. */
   customRepository?: GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepository;
 }
+const MavenRepository = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<MavenRepository>;
+
 export type DockerRepositoryPublicRepositoryEnum = "PUBLIC_REPOSITORY_UNSPECIFIED" | "DOCKER_HUB";
+const DockerRepositoryPublicRepositoryEnum = S.String;
+
 /** Customer-specified publicly available remote repository. */
 export interface GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepository {
   /** An https uri reference to the custom remote repository, for ex: "https://registry-1.docker.io". */
   uri?: string;
 }
+const GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepository =
+  GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepository as any as S.Schema<GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepository>;
+
 /** Configuration for a Docker remote repository. */
 export interface DockerRepository {
   /** One of the publicly available Docker repositories supported by Artifact Registry. */
@@ -296,14 +413,21 @@ export interface DockerRepository {
   /** Customer-specified remote repository. */
   customRepository?: GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepository;
 }
+const DockerRepository = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<DockerRepository>;
+
 /** The configuration for the no-cache fetching mode, which acts as a non-caching proxy. */
 export type NoCacheFetching = CancelOperationRequest;
 export type PythonRepositoryPublicRepositoryEnum = "PUBLIC_REPOSITORY_UNSPECIFIED" | "PYPI";
+const PythonRepositoryPublicRepositoryEnum = S.String;
+
 /** Customer-specified publicly available remote repository. */
 export interface GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepository {
   /** An https uri reference to the upstream remote repository, for ex: "https://my.python.registry/". */
   uri?: string;
 }
+const GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepository =
+  GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepository as any as S.Schema<GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepository>;
+
 /** Configuration for a Python remote repository. */
 export interface PythonRepository {
   /** One of the publicly available Python repositories supported by Artifact Registry. */
@@ -311,6 +435,8 @@ export interface PythonRepository {
   /** Customer-specified remote repository. */
   customRepository?: GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepository;
 }
+const PythonRepository = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<PythonRepository>;
+
 export type GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryRepositoryBaseEnum =
   | "REPOSITORY_BASE_UNSPECIFIED"
   | "CENTOS"
@@ -319,6 +445,9 @@ export type GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryP
   | "CENTOS_STREAM"
   | "ROCKY"
   | "EPEL";
+const GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryRepositoryBaseEnum =
+  S.String;
+
 /** Publicly available Yum repositories constructed from a common repository base and a custom repository path. */
 export interface GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepository {
   /** A common public repository base for Yum. */
@@ -328,11 +457,20 @@ export interface GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumReposi
   /** A custom field to define a path to a specific repository from the base. */
   repositoryPath?: string;
 }
+const GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepository =
+  /*@__PURE__*/ __L.at(
+    __c3,
+    4,
+  ) as any as S.Schema<GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepository>;
+
 /** Customer-specified publicly available remote repository. */
 export interface GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepository {
   /** An https uri reference to the upstream remote repository, for ex: "https://my.yum.registry/". */
   uri?: string;
 }
+const GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepository =
+  GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepository as any as S.Schema<GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepository>;
+
 /** Configuration for a Yum remote repository. */
 export interface YumRepository {
   /** One of the publicly available Yum repositories supported by Artifact Registry. */
@@ -340,17 +478,29 @@ export interface YumRepository {
   /** Customer-specified remote repository. */
   customRepository?: GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepository;
 }
+const YumRepository = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<YumRepository>;
+
 /** Common remote repository settings type. */
 export interface CommonRemoteRepository {
   /** Required. A common public repository base for remote repository. */
   uri?: string;
 }
+const CommonRemoteRepository = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<CommonRemoteRepository>;
+
 export type NpmRepositoryPublicRepositoryEnum = "PUBLIC_REPOSITORY_UNSPECIFIED" | "NPMJS";
+const NpmRepositoryPublicRepositoryEnum = S.String;
+
 /** Customer-specified publicly available remote repository. */
 export interface GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepository {
   /** An https uri reference to the upstream remote repository, for ex: "https://my.npm.registry/". */
   uri?: string;
 }
+const GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepository =
+  GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepository as any as S.Schema<GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepository>;
+
 /** Configuration for a Npm remote repository. */
 export interface NpmRepository {
   /** One of the publicly available Npm repositories supported by Artifact Registry. */
@@ -358,6 +508,8 @@ export interface NpmRepository {
   /** Customer-specified remote repository. */
   customRepository?: GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepository;
 }
+const NpmRepository = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<NpmRepository>;
+
 export type GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryRepositoryBaseEnum =
   | "REPOSITORY_BASE_UNSPECIFIED"
   | "DEBIAN"
@@ -372,11 +524,17 @@ export interface GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptReposi
   /** A custom field to define a path to a specific repository from the base. */
   repositoryPath?: string;
 }
+const GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepository =
+  GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepository as any as S.Schema<GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepository>;
+
 /** Customer-specified publicly available remote repository. */
 export interface GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepository {
   /** An https uri reference to the upstream remote repository, for ex: "https://my.apt.registry/". */
   uri?: string;
 }
+const GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepository =
+  GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepository as any as S.Schema<GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepository>;
+
 /** Configuration for an Apt remote repository. */
 export interface AptRepository {
   /** One of the publicly available Apt repositories supported by Artifact Registry. */
@@ -384,6 +542,8 @@ export interface AptRepository {
   /** Customer-specified remote repository. */
   customRepository?: GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepository;
 }
+const AptRepository = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<AptRepository>;
+
 /** Username and password credentials. */
 export interface UsernamePasswordCredentials {
   /** The Secret Manager key version that holds the password to access the remote repository. Must be in the format of `projects/{project}/secrets/{secret}/versions/{version}`. */
@@ -391,11 +551,18 @@ export interface UsernamePasswordCredentials {
   /** The username to access the remote repository. */
   username?: string;
 }
+const UsernamePasswordCredentials = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<UsernamePasswordCredentials>;
+
 /** The credentials to access the remote repository. */
 export interface UpstreamCredentials {
   /** Use username and password to access the remote repository. */
   usernamePasswordCredentials?: UsernamePasswordCredentials;
 }
+const UpstreamCredentials = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<UpstreamCredentials>;
+
 /** Remote repository configuration. */
 export interface RemoteRepositoryConfig {
   /** The description of the remote source. */
@@ -421,11 +588,21 @@ export interface RemoteRepositoryConfig {
   /** Optional. The credentials used to access the remote repository. */
   upstreamCredentials?: UpstreamCredentials;
 }
+const RemoteRepositoryConfig = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<RemoteRepositoryConfig>;
+
 /** DockerRepositoryConfig is docker related repository details. Provides additional configuration details for repositories of the docker format type. */
 export interface DockerRepositoryConfig {
   /** The repository which enabled this flag prevents all tags from being modified, moved or deleted. This does not prevent tags from being created. */
   immutableTags?: boolean;
 }
+const DockerRepositoryConfig = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<DockerRepositoryConfig>;
+
 /** A Repository for storing artifacts with a specific format. */
 export interface Repository {
   /** Labels with user-defined metadata. This field may contain up to 64 entries. Label keys and values may be no longer than 63 characters. Label keys must begin with a lowercase letter and may only contain lowercase letters, numeric characters, underscores, and dashes. */
@@ -471,6 +648,8 @@ export interface Repository {
   /** Output only. The repository endpoint, for example: `us-docker.pkg.dev/my-proj/my-repo`. */
   registryUri?: string;
 }
+const Repository = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<Repository>;
+
 export interface CreateProjectsLocationsRepositoriesRequest {
   /** Required. The repository id to use for this repository. */
   repositoryId?: string;
@@ -479,6 +658,11 @@ export interface CreateProjectsLocationsRepositoriesRequest {
   /** Request body */
   body?: Repository;
 }
+const CreateProjectsLocationsRepositoriesRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<CreateProjectsLocationsRepositoriesRequest>;
+
 /** An Attachment refers to additional metadata that can be attached to artifacts in Artifact Registry. An attachment consists of one or more files. */
 export interface Attachment {
   /** The name of the attachment. E.g. `projects/p1/locations/us/repositories/repo/attachments/sbom`. */
@@ -500,6 +684,8 @@ export interface Attachment {
   /** The namespace this attachment belongs to. E.g. If an attachment is created by artifact analysis, namespace is set to `artifactanalysis.googleapis.com`. */
   attachmentNamespace?: string;
 }
+const Attachment = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<Attachment>;
+
 export interface CreateProjectsLocationsRepositoriesAttachmentsRequest {
   /** Required. The name of the parent resource where the attachment will be created. */
   parent: string;
@@ -508,6 +694,11 @@ export interface CreateProjectsLocationsRepositoriesAttachmentsRequest {
   /** Request body */
   body?: Attachment;
 }
+const CreateProjectsLocationsRepositoriesAttachmentsRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  0,
+) as any as S.Schema<CreateProjectsLocationsRepositoriesAttachmentsRequest>;
+
 /** Tags point to a version and represent an alternative name that can be used to access the version. */
 export interface Tag {
   /** The name of the tag, for example: "projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/tags/tag1". If the package part contains slashes, the slashes are escaped. The tag part can only have characters in [a-zA-Z0-9\-._~:@], anything else must be URL encoded. */
@@ -515,6 +706,8 @@ export interface Tag {
   /** The name of the version the tag refers to, for example: `projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/versions/sha256:5243811` If the package or version ID parts contain slashes, the slashes are escaped. */
   version?: string;
 }
+const Tag = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<Tag>;
+
 export interface CreateProjectsLocationsRepositoriesPackagesTagsRequest {
   /** The name of the parent resource where the tag will be created. */
   parent: string;
@@ -523,6 +716,11 @@ export interface CreateProjectsLocationsRepositoriesPackagesTagsRequest {
   /** Request body */
   body?: Tag;
 }
+const CreateProjectsLocationsRepositoriesPackagesTagsRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  2,
+) as any as S.Schema<CreateProjectsLocationsRepositoriesPackagesTagsRequest>;
+
 /** Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information. */
 export interface Expr {
   /** Textual representation of an expression in Common Expression Language syntax. */
@@ -534,13 +732,19 @@ export interface Expr {
   /** Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI. */
   description?: string;
 }
+const Expr = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<Expr>;
+
 export type GoogleDevtoolsArtifactregistryV1RuleOperationEnum =
   | "OPERATION_UNSPECIFIED"
   | "DOWNLOAD";
+const GoogleDevtoolsArtifactregistryV1RuleOperationEnum = S.String;
+
 export type GoogleDevtoolsArtifactregistryV1RuleActionEnum =
   | "ACTION_UNSPECIFIED"
   | "ALLOW"
   | "DENY";
+const GoogleDevtoolsArtifactregistryV1RuleActionEnum = S.String;
+
 /** A rule defines the deny or allow action of the operation it applies to and the conditions required for the rule to apply. You can set one rule for an entire repository and one rule for each package within. */
 export interface GoogleDevtoolsArtifactregistryV1Rule {
   /** Optional. A CEL expression for conditions that must be met in order for the rule to apply. If not provided, the rule matches all objects. */
@@ -553,6 +757,11 @@ export interface GoogleDevtoolsArtifactregistryV1Rule {
   /** The action this rule takes. */
   action?: GoogleDevtoolsArtifactregistryV1RuleActionEnum | (string & {});
 }
+const GoogleDevtoolsArtifactregistryV1Rule = /*@__PURE__*/ __L.at(
+  __c5,
+  4,
+) as any as S.Schema<GoogleDevtoolsArtifactregistryV1Rule>;
+
 export interface CreateProjectsLocationsRepositoriesRulesRequest {
   /** Required. The name of the parent resource where the rule will be created. */
   parent: string;
@@ -561,42 +770,89 @@ export interface CreateProjectsLocationsRepositoriesRulesRequest {
   /** Request body */
   body?: GoogleDevtoolsArtifactregistryV1Rule;
 }
+const CreateProjectsLocationsRepositoriesRulesRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  5,
+) as any as S.Schema<CreateProjectsLocationsRepositoriesRulesRequest>;
+
 export interface DeleteProjectsLocationsRepositoriesRequest {
   /** Required. The name of the repository to delete. */
   name: string;
 }
+const DeleteProjectsLocationsRepositoriesRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  6,
+) as any as S.Schema<DeleteProjectsLocationsRepositoriesRequest>;
+
 export interface DeleteProjectsLocationsRepositoriesAttachmentsRequest {
   /** Required. The name of the attachment to delete. */
   name: string;
 }
+const DeleteProjectsLocationsRepositoriesAttachmentsRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  7,
+) as any as S.Schema<DeleteProjectsLocationsRepositoriesAttachmentsRequest>;
+
 export interface DeleteProjectsLocationsRepositoriesFilesRequest {
   /** Required. The name of the file to delete. */
   name: string;
 }
+const DeleteProjectsLocationsRepositoriesFilesRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<DeleteProjectsLocationsRepositoriesFilesRequest>;
+
 export interface DeleteProjectsLocationsRepositoriesPackagesRequest {
   /** Required. The name of the package to delete. */
   name: string;
 }
+const DeleteProjectsLocationsRepositoriesPackagesRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  1,
+) as any as S.Schema<DeleteProjectsLocationsRepositoriesPackagesRequest>;
+
 export interface DeleteProjectsLocationsRepositoriesPackagesTagsRequest {
   /** The name of the tag to delete. */
   name: string;
 }
+const DeleteProjectsLocationsRepositoriesPackagesTagsRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  2,
+) as any as S.Schema<DeleteProjectsLocationsRepositoriesPackagesTagsRequest>;
+
 export interface DeleteProjectsLocationsRepositoriesPackagesVersionsRequest {
   /** By default, a version that is tagged may not be deleted. If force=true, the version and any tags pointing to the version are deleted. */
   force?: boolean;
   /** The name of the version to delete. */
   name: string;
 }
+const DeleteProjectsLocationsRepositoriesPackagesVersionsRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  3,
+) as any as S.Schema<DeleteProjectsLocationsRepositoriesPackagesVersionsRequest>;
+
 export interface DeleteProjectsLocationsRepositoriesRulesRequest {
   /** Required. The name of the rule to delete. */
   name: string;
 }
+const DeleteProjectsLocationsRepositoriesRulesRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  4,
+) as any as S.Schema<DeleteProjectsLocationsRepositoriesRulesRequest>;
+
 export interface DownloadProjectsLocationsRepositoriesFilesRequest {
   /** Required. The name of the file to download. */
   name: string;
 }
+const DownloadProjectsLocationsRepositoriesFilesRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  5,
+) as any as S.Schema<DownloadProjectsLocationsRepositoriesFilesRequest>;
+
 /** The response to download a file. */
 export interface DownloadFileResponse {}
+const DownloadFileResponse = CancelOperationRequest as any as S.Schema<DownloadFileResponse>;
+
 /** The request for exporting an artifact to a destination. */
 export interface ExportArtifactRequest {
   /** The artifact tag to export. Format:projects/{project}/locations/{location}/repositories/{repository}/packages/{package}/tags/{tag} */
@@ -606,18 +862,33 @@ export interface ExportArtifactRequest {
   /** The artifact version to export. Format: projects/{project}/locations/{location}/repositories/{repository}/packages/{package}/versions/{version} */
   sourceVersion?: string;
 }
+const ExportArtifactRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  6,
+) as any as S.Schema<ExportArtifactRequest>;
+
 export interface ExportArtifactProjectsLocationsRepositoriesRequest {
   /** Required. The repository of the artifact to export. Format: projects/{project}/locations/{location}/repositories/{repository} */
   repository: string;
   /** Request body */
   body?: ExportArtifactRequest;
 }
+const ExportArtifactProjectsLocationsRepositoriesRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  7,
+) as any as S.Schema<ExportArtifactProjectsLocationsRepositoriesRequest>;
+
 export interface GetIamPolicyProjectsLocationsRepositoriesRequest {
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
 }
+const GetIamPolicyProjectsLocationsRepositoriesRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  0,
+) as any as S.Schema<GetIamPolicyProjectsLocationsRepositoriesRequest>;
+
 /** Associates `members`, or principals, with a `role`. */
 export interface Binding {
   /** Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`. */
@@ -627,7 +898,11 @@ export interface Binding {
   /** The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   condition?: Expr;
 }
+const Binding = /*@__PURE__*/ __L.at(__c7, 1) as any as S.Schema<Binding>;
+
 export type BindingList = Array<Binding>;
+const BindingList = /*@__PURE__*/ __L.at(__c7, 2) as any as S.Schema<BindingList>;
+
 /** An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single `role`. Principals can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** ``` { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } ``` **YAML example:** ``` bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/). */
 export interface Policy {
   /** `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. */
@@ -637,10 +912,17 @@ export interface Policy {
   /** Associates a list of `members`, or principals, with a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one principal. The `bindings` in a `Policy` can refer to up to 1,500 principals; up to 250 of these principals can be Google groups. Each occurrence of a principal counts towards these limits. For example, if the `bindings` grant 50 different roles to `user:alice@example.com`, and not to any other principal, then you can add another 1,450 principals to the `bindings` in the `Policy`. */
   bindings?: BindingList;
 }
+const Policy = /*@__PURE__*/ __L.at(__c7, 3) as any as S.Schema<Policy>;
+
 export interface GetProjectConfigProjectsLocationsRequest {
   /** Required. The name of the project's logging configuration: projects/{project}/locations/{location}/projectConfig */
   name: string;
 }
+const GetProjectConfigProjectsLocationsRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  4,
+) as any as S.Schema<GetProjectConfigProjectsLocationsRequest>;
+
 /** The Artifact Registry logging configurations that apply to a Project. */
 export interface ProjectConfig {
   /** Identifier. The name of the project's configuration. Always of the form: projects/{project}/locations/{location}/projectConfig */
@@ -648,10 +930,17 @@ export interface ProjectConfig {
   /** Optional. Configuration for platform logs. */
   platformLogsConfig?: PlatformLogsConfig;
 }
+const ProjectConfig = /*@__PURE__*/ __L.at(__c7, 5) as any as S.Schema<ProjectConfig>;
+
 export interface GetProjectSettingsProjectsRequest {
   /** Required. The name of the projectSettings resource. */
   name: string;
 }
+const GetProjectSettingsProjectsRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  6,
+) as any as S.Schema<GetProjectSettingsProjectsRequest>;
+
 export type ProjectSettingsLegacyRedirectionStateEnum =
   | "REDIRECTION_STATE_UNSPECIFIED"
   | "REDIRECTION_FROM_GCR_IO_DISABLED"
@@ -659,6 +948,8 @@ export type ProjectSettingsLegacyRedirectionStateEnum =
   | "REDIRECTION_FROM_GCR_IO_FINALIZED"
   | "REDIRECTION_FROM_GCR_IO_ENABLED_AND_COPYING"
   | "REDIRECTION_FROM_GCR_IO_PARTIAL_AND_COPYING";
+const ProjectSettingsLegacyRedirectionStateEnum = S.String;
+
 /** The Artifact Registry settings that apply to a Project. */
 export interface ProjectSettings {
   /** The percentage of pull traffic to redirect from GCR to AR when using partial redirection. */
@@ -668,10 +959,17 @@ export interface ProjectSettings {
   /** The name of the project's settings. Always of the form: projects/{project-id}/projectSettings In update request: never set In response: always set */
   name?: string;
 }
+const ProjectSettings = /*@__PURE__*/ __L.at(__c7, 7) as any as S.Schema<ProjectSettings>;
+
 export interface GetProjectsLocationsRequest {
   /** Resource name for the location. */
   name: string;
 }
+const GetProjectsLocationsRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  0,
+) as any as S.Schema<GetProjectsLocationsRequest>;
+
 /** A resource that represents a Google Cloud location. */
 export interface Location {
   /** The canonical id for this location. For example: `"us-east1"`. */
@@ -685,22 +983,44 @@ export interface Location {
   /** Service-specific metadata. For example the available capacity at the given location. */
   metadata?: DocumentMap;
 }
+const Location = /*@__PURE__*/ __L.at(__c8, 1) as any as S.Schema<Location>;
+
 export interface GetProjectsLocationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
+const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  2,
+) as any as S.Schema<GetProjectsLocationsOperationsRequest>;
+
 export interface GetProjectsLocationsRepositoriesRequest {
   /** Required. The name of the repository to retrieve. */
   name: string;
 }
+const GetProjectsLocationsRepositoriesRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  3,
+) as any as S.Schema<GetProjectsLocationsRepositoriesRequest>;
+
 export interface GetProjectsLocationsRepositoriesAttachmentsRequest {
   /** Required. The name of the attachment to retrieve. */
   name: string;
 }
+const GetProjectsLocationsRepositoriesAttachmentsRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  4,
+) as any as S.Schema<GetProjectsLocationsRepositoriesAttachmentsRequest>;
+
 export interface GetProjectsLocationsRepositoriesDockerImagesRequest {
   /** Required. The name of the docker images. */
   name: string;
 }
+const GetProjectsLocationsRepositoriesDockerImagesRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  5,
+) as any as S.Schema<GetProjectsLocationsRepositoriesDockerImagesRequest>;
+
 /** Details of a single image manifest within a multi-arch image. */
 export interface ImageManifest {
   /** Optional. The operating system of the image. Values are provided by the Docker client and are not validated by Artifact Registry. Example values include "linux", "windows", "darwin", "aix", etc. */
@@ -718,7 +1038,11 @@ export interface ImageManifest {
   /** Optional. The CPU architecture of the image. Values are provided by the Docker client and are not validated by Artifact Registry. Example values include "amd64", "arm64", "ppc64le", "s390x", "riscv64", "mips64le", etc. */
   architecture?: string;
 }
+const ImageManifest = /*@__PURE__*/ __L.at(__c8, 6) as any as S.Schema<ImageManifest>;
+
 export type ImageManifestList = Array<ImageManifest>;
+const ImageManifestList = /*@__PURE__*/ __L.at(__c8, 7) as any as S.Schema<ImageManifestList>;
+
 /** DockerImage represents a docker artifact. The following fields are returned as untyped metadata in the Version resource, using camelcase keys (i.e. metadata.imageSizeBytes): * imageSizeBytes * mediaType * buildTime */
 export interface DockerImage {
   /** Output only. The time when the docker image was last updated. */
@@ -742,11 +1066,20 @@ export interface DockerImage {
   /** Calculated size of the image. This field is returned as the 'metadata.imageSizeBytes' field in the Version resource. */
   imageSizeBytes?: string;
 }
+const DockerImage = /*@__PURE__*/ __L.at(__c9, 0) as any as S.Schema<DockerImage>;
+
 export interface GetProjectsLocationsRepositoriesFilesRequest {
   /** Required. The name of the file to retrieve. */
   name: string;
 }
+const GetProjectsLocationsRepositoriesFilesRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  1,
+) as any as S.Schema<GetProjectsLocationsRepositoriesFilesRequest>;
+
 export type HashTypeEnum = "HASH_TYPE_UNSPECIFIED" | "SHA256" | "MD5" | "DIRSUM_SHA256";
+const HashTypeEnum = S.String;
+
 /** A hash of file content. */
 export interface Hash {
   /** The hash value. */
@@ -754,7 +1087,11 @@ export interface Hash {
   /** The algorithm used to compute the hash value. */
   type?: HashTypeEnum | (string & {});
 }
+const Hash = /*@__PURE__*/ __L.at(__c9, 2) as any as S.Schema<Hash>;
+
 export type HashList = Array<Hash>;
+const HashList = /*@__PURE__*/ __L.at(__c9, 3) as any as S.Schema<HashList>;
+
 /** Files store content that is potentially associated with Packages or Versions. */
 export interface GoogleDevtoolsArtifactregistryV1File {
   /** The size of the File in bytes. */
@@ -774,10 +1111,20 @@ export interface GoogleDevtoolsArtifactregistryV1File {
   /** Output only. The time when the File was created. */
   createTime?: string;
 }
+const GoogleDevtoolsArtifactregistryV1File = /*@__PURE__*/ __L.at(
+  __c9,
+  4,
+) as any as S.Schema<GoogleDevtoolsArtifactregistryV1File>;
+
 export interface GetProjectsLocationsRepositoriesMavenArtifactsRequest {
   /** Required. The name of the maven artifact. */
   name: string;
 }
+const GetProjectsLocationsRepositoriesMavenArtifactsRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  5,
+) as any as S.Schema<GetProjectsLocationsRepositoriesMavenArtifactsRequest>;
+
 /** MavenArtifact represents a maven artifact. */
 export interface MavenArtifact {
   /** Artifact ID for the artifact. */
@@ -795,10 +1142,17 @@ export interface MavenArtifact {
   /** Output only. Time the artifact was updated. */
   updateTime?: string;
 }
+const MavenArtifact = /*@__PURE__*/ __L.at(__c9, 6) as any as S.Schema<MavenArtifact>;
+
 export interface GetProjectsLocationsRepositoriesNpmPackagesRequest {
   /** Required. The name of the npm package. */
   name: string;
 }
+const GetProjectsLocationsRepositoriesNpmPackagesRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  7,
+) as any as S.Schema<GetProjectsLocationsRepositoriesNpmPackagesRequest>;
+
 /** NpmPackage represents an npm artifact. */
 export interface NpmPackage {
   /** Output only. Time the package was updated. */
@@ -814,10 +1168,17 @@ export interface NpmPackage {
   /** Required. registry_location, project_id, repository_name and npm_package forms a unique package For example, "projects/test-project/locations/us-west4/repositories/test-repo/npmPackages/ npm_test:1.0.0", where "us-west4" is the registry_location, "test-project" is the project_id, "test-repo" is the repository_name and npm_test:1.0.0" is the npm package. */
   name?: string;
 }
+const NpmPackage = /*@__PURE__*/ __L.at(__c10, 0) as any as S.Schema<NpmPackage>;
+
 export interface GetProjectsLocationsRepositoriesPackagesRequest {
   /** Required. The name of the package to retrieve. */
   name: string;
 }
+const GetProjectsLocationsRepositoriesPackagesRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  1,
+) as any as S.Schema<GetProjectsLocationsRepositoriesPackagesRequest>;
+
 /** Packages are named collections of versions. */
 export interface Package {
   /** The display name of the package. */
@@ -831,21 +1192,37 @@ export interface Package {
   /** Optional. Client specified annotations. */
   annotations?: StringMap;
 }
+const Package = /*@__PURE__*/ __L.at(__c10, 2) as any as S.Schema<Package>;
+
 export interface GetProjectsLocationsRepositoriesPackagesTagsRequest {
   /** The name of the tag to retrieve. */
   name: string;
 }
+const GetProjectsLocationsRepositoriesPackagesTagsRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  3,
+) as any as S.Schema<GetProjectsLocationsRepositoriesPackagesTagsRequest>;
+
 export type GetProjectsLocationsRepositoriesPackagesVersionsViewEnum =
   | "VERSION_VIEW_UNSPECIFIED"
   | "BASIC"
   | "FULL";
+const GetProjectsLocationsRepositoriesPackagesVersionsViewEnum = S.String;
+
 export interface GetProjectsLocationsRepositoriesPackagesVersionsRequest {
   /** The name of the version to retrieve. */
   name: string;
   /** The view that should be returned in the response. */
   view?: GetProjectsLocationsRepositoriesPackagesVersionsViewEnum | (string & {});
 }
+const GetProjectsLocationsRepositoriesPackagesVersionsRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  4,
+) as any as S.Schema<GetProjectsLocationsRepositoriesPackagesVersionsRequest>;
+
 export type TagList = Array<Tag>;
+const TagList = /*@__PURE__*/ __L.at(__c10, 5) as any as S.Schema<TagList>;
+
 /** The body of a version resource. A version resource represents a collection of components, such as files and other data. This may correspond to a version in many package management schemes. */
 export interface Version {
   /** The time when the version was created. */
@@ -865,10 +1242,17 @@ export interface Version {
   /** Output only. Repository-specific Metadata stored against this version. The fields returned are defined by the underlying repository-specific resource. Currently, the resources could be: DockerImage MavenArtifact */
   metadata?: DocumentMap;
 }
+const Version = /*@__PURE__*/ __L.at(__c10, 6) as any as S.Schema<Version>;
+
 export interface GetProjectsLocationsRepositoriesPythonPackagesRequest {
   /** Required. The name of the python package. */
   name: string;
 }
+const GetProjectsLocationsRepositoriesPythonPackagesRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  7,
+) as any as S.Schema<GetProjectsLocationsRepositoriesPythonPackagesRequest>;
+
 /** PythonPackage represents a python artifact. */
 export interface PythonPackage {
   /** Package for the artifact. */
@@ -884,15 +1268,29 @@ export interface PythonPackage {
   /** Required. URL to access the package. Example: us-west4-python.pkg.dev/test-project/test-repo/python_package/file-name-1.0.0.tar.gz */
   uri?: string;
 }
+const PythonPackage = /*@__PURE__*/ __L.at(__c11, 0) as any as S.Schema<PythonPackage>;
+
 export interface GetProjectsLocationsRepositoriesRulesRequest {
   /** Required. The name of the rule to retrieve. */
   name: string;
 }
+const GetProjectsLocationsRepositoriesRulesRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  1,
+) as any as S.Schema<GetProjectsLocationsRepositoriesRulesRequest>;
+
 export interface GetVpcscConfigProjectsLocationsRequest {
   /** Required. The name of the VPCSCConfig resource. */
   name: string;
 }
+const GetVpcscConfigProjectsLocationsRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  2,
+) as any as S.Schema<GetVpcscConfigProjectsLocationsRequest>;
+
 export type VPCSCConfigVpcscPolicyEnum = "VPCSC_POLICY_UNSPECIFIED" | "DENY" | "ALLOW";
+const VPCSCConfigVpcscPolicyEnum = S.String;
+
 /** The Artifact Registry VPC SC config that apply to a Project. */
 export interface VPCSCConfig {
   /** The name of the project's VPC SC Config. Always of the form: projects/{projectID}/locations/{location}/vpcscConfig In update request: never set In response: always set */
@@ -900,6 +1298,8 @@ export interface VPCSCConfig {
   /** The project per location VPC SC policy that defines the VPC SC behavior for the Remote Repository (Allow/Deny). */
   vpcscPolicy?: VPCSCConfigVpcscPolicyEnum | (string & {});
 }
+const VPCSCConfig = /*@__PURE__*/ __L.at(__c11, 3) as any as S.Schema<VPCSCConfig>;
+
 /** Google Cloud Storage location where the artifacts currently reside. */
 export interface ImportAptArtifactsGcsSource {
   /** Cloud Storage paths URI (e.g., gs://my_bucket//my_object). */
@@ -907,17 +1307,32 @@ export interface ImportAptArtifactsGcsSource {
   /** Supports URI wildcards for matching multiple objects from a single URI. */
   useWildcards?: boolean;
 }
+const ImportAptArtifactsGcsSource = /*@__PURE__*/ __L.at(
+  __c11,
+  4,
+) as any as S.Schema<ImportAptArtifactsGcsSource>;
+
 /** The request to import new apt artifacts. */
 export interface ImportAptArtifactsRequest {
   /** Google Cloud Storage location where input content is located. */
   gcsSource?: ImportAptArtifactsGcsSource;
 }
+const ImportAptArtifactsRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  5,
+) as any as S.Schema<ImportAptArtifactsRequest>;
+
 export interface ImportProjectsLocationsRepositoriesAptArtifactsRequest {
   /** The name of the parent resource where the artifacts will be imported. */
   parent: string;
   /** Request body */
   body?: ImportAptArtifactsRequest;
 }
+const ImportProjectsLocationsRepositoriesAptArtifactsRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  6,
+) as any as S.Schema<ImportProjectsLocationsRepositoriesAptArtifactsRequest>;
+
 /** Google Cloud Storage location where the artifacts currently reside. */
 export interface ImportGoogetArtifactsGcsSource {
   /** Supports URI wildcards for matching multiple objects from a single URI. */
@@ -925,17 +1340,32 @@ export interface ImportGoogetArtifactsGcsSource {
   /** Cloud Storage paths URI (e.g., `gs://my_bucket/my_object`). */
   uris?: StringList;
 }
+const ImportGoogetArtifactsGcsSource = /*@__PURE__*/ __L.at(
+  __c11,
+  7,
+) as any as S.Schema<ImportGoogetArtifactsGcsSource>;
+
 /** The request to import new googet artifacts. */
 export interface ImportGoogetArtifactsRequest {
   /** Google Cloud Storage location where input content is located. */
   gcsSource?: ImportGoogetArtifactsGcsSource;
 }
+const ImportGoogetArtifactsRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  0,
+) as any as S.Schema<ImportGoogetArtifactsRequest>;
+
 export interface ImportProjectsLocationsRepositoriesGoogetArtifactsRequest {
   /** The name of the parent resource where the artifacts will be imported. */
   parent: string;
   /** Request body */
   body?: ImportGoogetArtifactsRequest;
 }
+const ImportProjectsLocationsRepositoriesGoogetArtifactsRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  1,
+) as any as S.Schema<ImportProjectsLocationsRepositoriesGoogetArtifactsRequest>;
+
 /** Google Cloud Storage location where the artifacts currently reside. */
 export type ImportYumArtifactsGcsSource = ImportAptArtifactsGcsSource;
 /** The request to import new yum artifacts. */
@@ -946,6 +1376,11 @@ export interface ImportProjectsLocationsRepositoriesYumArtifactsRequest {
   /** Request body */
   body?: ImportAptArtifactsRequest;
 }
+const ImportProjectsLocationsRepositoriesYumArtifactsRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  2,
+) as any as S.Schema<ImportProjectsLocationsRepositoriesYumArtifactsRequest>;
+
 export interface ListProjectsLocationsRequest {
   /** The maximum number of results to return. If not set, the service selects a default. */
   pageSize?: number;
@@ -958,7 +1393,14 @@ export interface ListProjectsLocationsRequest {
   /** The resource that owns the locations collection, if applicable. */
   name: string;
 }
+const ListProjectsLocationsRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  3,
+) as any as S.Schema<ListProjectsLocationsRequest>;
+
 export type LocationList = Array<Location>;
+const LocationList = /*@__PURE__*/ __L.at(__c12, 4) as any as S.Schema<LocationList>;
+
 /** The response message for Locations.ListLocations. */
 export interface ListLocationsResponse {
   /** The standard List next-page token. */
@@ -966,6 +1408,11 @@ export interface ListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
   locations?: LocationList;
 }
+const ListLocationsResponse = /*@__PURE__*/ __L.at(
+  __c12,
+  5,
+) as any as S.Schema<ListLocationsResponse>;
+
 export interface ListProjectsLocationsRepositoriesRequest {
   /** The maximum number of repositories to return. Maximum page size is 1,000. */
   pageSize?: number;
@@ -978,7 +1425,14 @@ export interface ListProjectsLocationsRepositoriesRequest {
   /** Optional. An expression for filtering the results of the request. Filter rules are case insensitive. The fields eligible for filtering are: * `name` Examples of using a filter: To filter the results of your request to repositories with the name `my-repo` in project `my-project` in the `us-central` region, append the following filter expression to your request: * `name="projects/my-project/locations/us-central1/repositories/my-repo"` You can also use wildcards to match any number of characters before or after the value: * `name="projects/my-project/locations/us-central1/repositories/my-*"` * `name="projects/my-project/locations/us-central1/repositories/*repo"` * `name="projects/my-project/locations/us-central1/repositories/*repo*"` */
   filter?: string;
 }
+const ListProjectsLocationsRepositoriesRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  6,
+) as any as S.Schema<ListProjectsLocationsRepositoriesRequest>;
+
 export type RepositoryList = Array<Repository>;
+const RepositoryList = /*@__PURE__*/ __L.at(__c12, 7) as any as S.Schema<RepositoryList>;
+
 /** The response from listing repositories. */
 export interface ListRepositoriesResponse {
   /** The repositories returned. */
@@ -986,6 +1440,11 @@ export interface ListRepositoriesResponse {
   /** The token to retrieve the next page of repositories, or empty if there are no more repositories to return. */
   nextPageToken?: string;
 }
+const ListRepositoriesResponse = /*@__PURE__*/ __L.at(
+  __c13,
+  0,
+) as any as S.Schema<ListRepositoriesResponse>;
+
 export interface ListProjectsLocationsRepositoriesAttachmentsRequest {
   /** The maximum number of attachments to return. Maximum page size is 1,000. */
   pageSize?: number;
@@ -996,7 +1455,14 @@ export interface ListProjectsLocationsRepositoriesAttachmentsRequest {
   /** Optional. An expression for filtering the results of the request. Filter rules are case insensitive. The fields eligible for filtering are: * `target` * `type` * `attachment_namespace` */
   filter?: string;
 }
+const ListProjectsLocationsRepositoriesAttachmentsRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  1,
+) as any as S.Schema<ListProjectsLocationsRepositoriesAttachmentsRequest>;
+
 export type AttachmentList = Array<Attachment>;
+const AttachmentList = /*@__PURE__*/ __L.at(__c13, 2) as any as S.Schema<AttachmentList>;
+
 /** The response from listing attachments. */
 export interface ListAttachmentsResponse {
   /** The token to retrieve the next page of attachments, or empty if there are no more attachments to return. */
@@ -1004,6 +1470,11 @@ export interface ListAttachmentsResponse {
   /** The attachments returned. */
   attachments?: AttachmentList;
 }
+const ListAttachmentsResponse = /*@__PURE__*/ __L.at(
+  __c13,
+  3,
+) as any as S.Schema<ListAttachmentsResponse>;
+
 export interface ListProjectsLocationsRepositoriesDockerImagesRequest {
   /** The next_page_token value returned from a previous list request, if any. */
   pageToken?: string;
@@ -1014,7 +1485,14 @@ export interface ListProjectsLocationsRepositoriesDockerImagesRequest {
   /** The maximum number of artifacts to return. Maximum page size is 1,000. */
   pageSize?: number;
 }
+const ListProjectsLocationsRepositoriesDockerImagesRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  4,
+) as any as S.Schema<ListProjectsLocationsRepositoriesDockerImagesRequest>;
+
 export type DockerImageList = Array<DockerImage>;
+const DockerImageList = /*@__PURE__*/ __L.at(__c13, 5) as any as S.Schema<DockerImageList>;
+
 /** The response from listing docker images. */
 export interface ListDockerImagesResponse {
   /** The token to retrieve the next page of artifacts, or empty if there are no more artifacts to return. */
@@ -1022,6 +1500,11 @@ export interface ListDockerImagesResponse {
   /** The docker images returned. */
   dockerImages?: DockerImageList;
 }
+const ListDockerImagesResponse = /*@__PURE__*/ __L.at(
+  __c13,
+  6,
+) as any as S.Schema<ListDockerImagesResponse>;
+
 export interface ListProjectsLocationsRepositoriesFilesRequest {
   /** Required. The name of the repository whose files will be listed. For example: "projects/p1/locations/us-central1/repositories/repo1 */
   parent: string;
@@ -1034,7 +1517,17 @@ export interface ListProjectsLocationsRepositoriesFilesRequest {
   /** The next_page_token value returned from a previous list request, if any. */
   pageToken?: string;
 }
+const ListProjectsLocationsRepositoriesFilesRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  7,
+) as any as S.Schema<ListProjectsLocationsRepositoriesFilesRequest>;
+
 export type GoogleDevtoolsArtifactregistryV1FileList = Array<GoogleDevtoolsArtifactregistryV1File>;
+const GoogleDevtoolsArtifactregistryV1FileList = /*@__PURE__*/ __L.at(
+  __c14,
+  0,
+) as any as S.Schema<GoogleDevtoolsArtifactregistryV1FileList>;
+
 /** The response from listing files. */
 export interface ListFilesResponse {
   /** The token to retrieve the next page of files, or empty if there are no more files to return. */
@@ -1042,6 +1535,8 @@ export interface ListFilesResponse {
   /** The files returned. */
   files?: GoogleDevtoolsArtifactregistryV1FileList;
 }
+const ListFilesResponse = /*@__PURE__*/ __L.at(__c14, 1) as any as S.Schema<ListFilesResponse>;
+
 export interface ListProjectsLocationsRepositoriesMavenArtifactsRequest {
   /** The next_page_token value returned from a previous list request, if any. */
   pageToken?: string;
@@ -1050,7 +1545,14 @@ export interface ListProjectsLocationsRepositoriesMavenArtifactsRequest {
   /** Required. The name of the parent resource whose maven artifacts will be listed. */
   parent: string;
 }
+const ListProjectsLocationsRepositoriesMavenArtifactsRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  2,
+) as any as S.Schema<ListProjectsLocationsRepositoriesMavenArtifactsRequest>;
+
 export type MavenArtifactList = Array<MavenArtifact>;
+const MavenArtifactList = /*@__PURE__*/ __L.at(__c14, 3) as any as S.Schema<MavenArtifactList>;
+
 /** The response from listing maven artifacts. */
 export interface ListMavenArtifactsResponse {
   /** The token to retrieve the next page of artifacts, or empty if there are no more artifacts to return. */
@@ -1058,6 +1560,11 @@ export interface ListMavenArtifactsResponse {
   /** The maven artifacts returned. */
   mavenArtifacts?: MavenArtifactList;
 }
+const ListMavenArtifactsResponse = /*@__PURE__*/ __L.at(
+  __c14,
+  4,
+) as any as S.Schema<ListMavenArtifactsResponse>;
+
 export interface ListProjectsLocationsRepositoriesNpmPackagesRequest {
   /** The next_page_token value returned from a previous list request, if any. */
   pageToken?: string;
@@ -1066,7 +1573,14 @@ export interface ListProjectsLocationsRepositoriesNpmPackagesRequest {
   /** Required. The name of the parent resource whose npm packages will be listed. */
   parent: string;
 }
+const ListProjectsLocationsRepositoriesNpmPackagesRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  5,
+) as any as S.Schema<ListProjectsLocationsRepositoriesNpmPackagesRequest>;
+
 export type NpmPackageList = Array<NpmPackage>;
+const NpmPackageList = /*@__PURE__*/ __L.at(__c14, 6) as any as S.Schema<NpmPackageList>;
+
 /** The response from listing npm packages. */
 export interface ListNpmPackagesResponse {
   /** The token to retrieve the next page of artifacts, or empty if there are no more artifacts to return. */
@@ -1074,6 +1588,11 @@ export interface ListNpmPackagesResponse {
   /** The npm packages returned. */
   npmPackages?: NpmPackageList;
 }
+const ListNpmPackagesResponse = /*@__PURE__*/ __L.at(
+  __c14,
+  7,
+) as any as S.Schema<ListNpmPackagesResponse>;
+
 export interface ListProjectsLocationsRepositoriesPackagesRequest {
   /** The maximum number of packages to return. Maximum page size is 1,000. */
   pageSize?: number;
@@ -1086,7 +1605,14 @@ export interface ListProjectsLocationsRepositoriesPackagesRequest {
   /** Optional. The field to order the results by. */
   orderBy?: string;
 }
+const ListProjectsLocationsRepositoriesPackagesRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  0,
+) as any as S.Schema<ListProjectsLocationsRepositoriesPackagesRequest>;
+
 export type PackageList = Array<Package>;
+const PackageList = /*@__PURE__*/ __L.at(__c15, 1) as any as S.Schema<PackageList>;
+
 /** The response from listing packages. */
 export interface ListPackagesResponse {
   /** The token to retrieve the next page of packages, or empty if there are no more packages to return. */
@@ -1094,6 +1620,11 @@ export interface ListPackagesResponse {
   /** The packages returned. */
   packages?: PackageList;
 }
+const ListPackagesResponse = /*@__PURE__*/ __L.at(
+  __c15,
+  2,
+) as any as S.Schema<ListPackagesResponse>;
+
 export interface ListProjectsLocationsRepositoriesPackagesTagsRequest {
   /** The next_page_token value returned from a previous list request, if any. */
   pageToken?: string;
@@ -1104,6 +1635,11 @@ export interface ListProjectsLocationsRepositoriesPackagesTagsRequest {
   /** The maximum number of tags to return. Maximum page size is 1,000. */
   pageSize?: number;
 }
+const ListProjectsLocationsRepositoriesPackagesTagsRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  3,
+) as any as S.Schema<ListProjectsLocationsRepositoriesPackagesTagsRequest>;
+
 /** The response from listing tags. */
 export interface ListTagsResponse {
   /** The tags returned. */
@@ -1111,10 +1647,14 @@ export interface ListTagsResponse {
   /** The token to retrieve the next page of tags, or empty if there are no more tags to return. */
   nextPageToken?: string;
 }
+const ListTagsResponse = /*@__PURE__*/ __L.at(__c15, 4) as any as S.Schema<ListTagsResponse>;
+
 export type ListProjectsLocationsRepositoriesPackagesVersionsViewEnum =
   | "VERSION_VIEW_UNSPECIFIED"
   | "BASIC"
   | "FULL";
+const ListProjectsLocationsRepositoriesPackagesVersionsViewEnum = S.String;
+
 export interface ListProjectsLocationsRepositoriesPackagesVersionsRequest {
   /** The next_page_token value returned from a previous list request, if any. */
   pageToken?: string;
@@ -1129,7 +1669,14 @@ export interface ListProjectsLocationsRepositoriesPackagesVersionsRequest {
   /** Optional. An expression for filtering the results of the request. Filter rules are case insensitive. The fields eligible for filtering are: * `name` * `annotations` Examples of using a filter: To filter the results of your request to versions with the name `my-version` in project `my-project` in the `us-central` region, in repository `my-repo`, append the following filter expression to your request: * `name="projects/my-project/locations/us-central1/repositories/my-repo/packages/my-package/versions/my-version"` You can also use wildcards to match any number of characters before or after the value: * `name="projects/my-project/locations/us-central1/repositories/my-repo/packages/my-package/versions/*version"` * `name="projects/my-project/locations/us-central1/repositories/my-repo/packages/my-package/versions/my*"` * `name="projects/my-project/locations/us-central1/repositories/my-repo/packages/my-package/versions/*version*"` To filter the results of your request to versions with the annotation key-value pair [`external_link`: `external_link_value`], append the following filter expression to your request: * `"annotations.external_link:external_link_value"` To filter just for a specific annotation key `external_link`, append the following filter expression to your request: * `"annotations.external_link"` If the annotation key or value contains special characters, you can escape them by surrounding the value with backticks. For example, to filter the results of your request to versions with the annotation key-value pair [`external.link`:`https://example.com/my-version`], append the following filter expression to your request: * `` "annotations.`external.link`:`https://example.com/my-version`" `` You can also filter with annotations with a wildcard to match any number of characters before or after the value: * `` "annotations.*_link:`*example.com*`" `` */
   filter?: string;
 }
+const ListProjectsLocationsRepositoriesPackagesVersionsRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  5,
+) as any as S.Schema<ListProjectsLocationsRepositoriesPackagesVersionsRequest>;
+
 export type VersionList = Array<Version>;
+const VersionList = /*@__PURE__*/ __L.at(__c15, 6) as any as S.Schema<VersionList>;
+
 /** The response from listing versions. */
 export interface ListVersionsResponse {
   /** The token to retrieve the next page of versions, or empty if there are no more versions to return. */
@@ -1137,6 +1684,11 @@ export interface ListVersionsResponse {
   /** The versions returned. */
   versions?: VersionList;
 }
+const ListVersionsResponse = /*@__PURE__*/ __L.at(
+  __c15,
+  7,
+) as any as S.Schema<ListVersionsResponse>;
+
 export interface ListProjectsLocationsRepositoriesPrewarmedArtifactsRequest {
   /** Optional. The maximum number of prewarmed artifacts to return. Maximum page size is 1,000. Default page size is 100. */
   pageSize?: number;
@@ -1147,7 +1699,17 @@ export interface ListProjectsLocationsRepositoriesPrewarmedArtifactsRequest {
   /** Optional. Filter should only support The location of the prewarmed artifacts. multi-region is not supported for this field. */
   filter?: string;
 }
+const ListProjectsLocationsRepositoriesPrewarmedArtifactsRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  0,
+) as any as S.Schema<ListProjectsLocationsRepositoriesPrewarmedArtifactsRequest>;
+
 export type PrewarmedArtifactList = Array<PrewarmedArtifact>;
+const PrewarmedArtifactList = /*@__PURE__*/ __L.at(
+  __c16,
+  1,
+) as any as S.Schema<PrewarmedArtifactList>;
+
 /** The response for listing artifacts for streaming. */
 export interface ListPrewarmedArtifactsResponse {
   /** The prewarmed artifacts. */
@@ -1155,6 +1717,11 @@ export interface ListPrewarmedArtifactsResponse {
   /** The token to retrieve the next page of prewarmed artifacts, or empty if there are no more streamings to return. */
   nextPageToken?: string;
 }
+const ListPrewarmedArtifactsResponse = /*@__PURE__*/ __L.at(
+  __c16,
+  2,
+) as any as S.Schema<ListPrewarmedArtifactsResponse>;
+
 export interface ListProjectsLocationsRepositoriesPythonPackagesRequest {
   /** The next_page_token value returned from a previous list request, if any. */
   pageToken?: string;
@@ -1163,7 +1730,14 @@ export interface ListProjectsLocationsRepositoriesPythonPackagesRequest {
   /** Required. The name of the parent resource whose python packages will be listed. */
   parent: string;
 }
+const ListProjectsLocationsRepositoriesPythonPackagesRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  3,
+) as any as S.Schema<ListProjectsLocationsRepositoriesPythonPackagesRequest>;
+
 export type PythonPackageList = Array<PythonPackage>;
+const PythonPackageList = /*@__PURE__*/ __L.at(__c16, 4) as any as S.Schema<PythonPackageList>;
+
 /** The response from listing python packages. */
 export interface ListPythonPackagesResponse {
   /** The python packages returned. */
@@ -1171,6 +1745,11 @@ export interface ListPythonPackagesResponse {
   /** The token to retrieve the next page of artifacts, or empty if there are no more artifacts to return. */
   nextPageToken?: string;
 }
+const ListPythonPackagesResponse = /*@__PURE__*/ __L.at(
+  __c16,
+  5,
+) as any as S.Schema<ListPythonPackagesResponse>;
+
 export interface ListProjectsLocationsRepositoriesRulesRequest {
   /** Required. The name of the parent repository whose rules will be listed. For example: `projects/p1/locations/us-central1/repositories/repo1`. */
   parent: string;
@@ -1179,7 +1758,17 @@ export interface ListProjectsLocationsRepositoriesRulesRequest {
   /** The next_page_token value returned from a previous list request, if any. */
   pageToken?: string;
 }
+const ListProjectsLocationsRepositoriesRulesRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  6,
+) as any as S.Schema<ListProjectsLocationsRepositoriesRulesRequest>;
+
 export type GoogleDevtoolsArtifactregistryV1RuleList = Array<GoogleDevtoolsArtifactregistryV1Rule>;
+const GoogleDevtoolsArtifactregistryV1RuleList = /*@__PURE__*/ __L.at(
+  __c16,
+  7,
+) as any as S.Schema<GoogleDevtoolsArtifactregistryV1RuleList>;
+
 /** The response from listing rules. */
 export interface ListRulesResponse {
   /** The rules returned. */
@@ -1187,6 +1776,8 @@ export interface ListRulesResponse {
   /** The token to retrieve the next page of rules, or empty if there are no more rules to return. */
   nextPageToken?: string;
 }
+const ListRulesResponse = /*@__PURE__*/ __L.at(__c17, 0) as any as S.Schema<ListRulesResponse>;
+
 export interface PatchProjectsLocationsRepositoriesRequest {
   /** The update mask applies to the resource. For the `FieldMask` definition, see https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask */
   updateMask?: string;
@@ -1195,6 +1786,11 @@ export interface PatchProjectsLocationsRepositoriesRequest {
   /** Request body */
   body?: Repository;
 }
+const PatchProjectsLocationsRepositoriesRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  1,
+) as any as S.Schema<PatchProjectsLocationsRepositoriesRequest>;
+
 export interface PatchProjectsLocationsRepositoriesFilesRequest {
   /** The name of the file, for example: `projects/p1/locations/us-central1/repositories/repo1/files/a%2Fb%2Fc.txt`. If the file ID part contains slashes, they are escaped. */
   name: string;
@@ -1203,6 +1799,11 @@ export interface PatchProjectsLocationsRepositoriesFilesRequest {
   /** Request body */
   body?: GoogleDevtoolsArtifactregistryV1File;
 }
+const PatchProjectsLocationsRepositoriesFilesRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  2,
+) as any as S.Schema<PatchProjectsLocationsRepositoriesFilesRequest>;
+
 export interface PatchProjectsLocationsRepositoriesPackagesRequest {
   /** The name of the package, for example: `projects/p1/locations/us-central1/repositories/repo1/packages/pkg1`. If the package ID part contains slashes, the slashes are escaped. */
   name: string;
@@ -1211,6 +1812,11 @@ export interface PatchProjectsLocationsRepositoriesPackagesRequest {
   /** Request body */
   body?: Package;
 }
+const PatchProjectsLocationsRepositoriesPackagesRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  3,
+) as any as S.Schema<PatchProjectsLocationsRepositoriesPackagesRequest>;
+
 export interface PatchProjectsLocationsRepositoriesPackagesTagsRequest {
   /** The name of the tag, for example: "projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/tags/tag1". If the package part contains slashes, the slashes are escaped. The tag part can only have characters in [a-zA-Z0-9\-._~:@], anything else must be URL encoded. */
   name: string;
@@ -1219,6 +1825,11 @@ export interface PatchProjectsLocationsRepositoriesPackagesTagsRequest {
   /** Request body */
   body?: Tag;
 }
+const PatchProjectsLocationsRepositoriesPackagesTagsRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  4,
+) as any as S.Schema<PatchProjectsLocationsRepositoriesPackagesTagsRequest>;
+
 export interface PatchProjectsLocationsRepositoriesPackagesVersionsRequest {
   /** The name of the version, for example: `projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/versions/art1`. If the package or version ID parts contain slashes, the slashes are escaped. */
   name: string;
@@ -1227,6 +1838,11 @@ export interface PatchProjectsLocationsRepositoriesPackagesVersionsRequest {
   /** Request body */
   body?: Version;
 }
+const PatchProjectsLocationsRepositoriesPackagesVersionsRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  5,
+) as any as S.Schema<PatchProjectsLocationsRepositoriesPackagesVersionsRequest>;
+
 export interface PatchProjectsLocationsRepositoriesRulesRequest {
   /** The update mask applies to the resource. For the `FieldMask` definition, see https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask */
   updateMask?: string;
@@ -1235,6 +1851,11 @@ export interface PatchProjectsLocationsRepositoriesRulesRequest {
   /** Request body */
   body?: GoogleDevtoolsArtifactregistryV1Rule;
 }
+const PatchProjectsLocationsRepositoriesRulesRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  6,
+) as any as S.Schema<PatchProjectsLocationsRepositoriesRulesRequest>;
+
 /** The platform (architecture and OS) of the image. This is a sub-message. */
 export interface PrewarmPlatform {
   /** Optional. The architecture of the image or tag. For example, "arm64" or "amd64". */
@@ -1242,6 +1863,8 @@ export interface PrewarmPlatform {
   /** Optional. The OS of the image or tag. For example, "linux" or "windows". */
   os?: string;
 }
+const PrewarmPlatform = /*@__PURE__*/ __L.at(__c17, 7) as any as S.Schema<PrewarmPlatform>;
+
 /** The request for prewarming an artifact for streaming. */
 export interface PrewarmArtifactRequest {
   /** Optional. The retention days of the prewarmed artifact. If not specified, the artifact will be cached for 3 days. */
@@ -1257,12 +1880,22 @@ export interface PrewarmArtifactRequest {
   /** Optional. If true, old artifact will be evicted to make room for the new artifact. */
   force?: boolean;
 }
+const PrewarmArtifactRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  0,
+) as any as S.Schema<PrewarmArtifactRequest>;
+
 export interface PrewarmArtifactProjectsLocationsRepositoriesRequest {
   /** Required. The repository name, for example: `projects/p1/locations/us-central1/repositories/repo1`. If the package or version ID parts contain slashes, the slashes are escaped. */
   repository: string;
   /** Request body */
   body?: PrewarmArtifactRequest;
 }
+const PrewarmArtifactProjectsLocationsRepositoriesRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  1,
+) as any as S.Schema<PrewarmArtifactProjectsLocationsRepositoriesRequest>;
+
 /** The request for removing an artifact from streaming. */
 export interface RemovePrewarmedArtifactRequest {
   /** Optional. The location of the prewarmed artifact. multi-region is not supported for this field. */
@@ -1272,44 +1905,77 @@ export interface RemovePrewarmedArtifactRequest {
   /** Optional. The artifact tag Format:projects/{project}/locations/{location}/repositories/{repository}/packages/{package}/tags/{tag} */
   tag?: string;
 }
+const RemovePrewarmedArtifactRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  2,
+) as any as S.Schema<RemovePrewarmedArtifactRequest>;
+
 export interface RemovePrewarmedArtifactProjectsLocationsRepositoriesRequest {
   /** Required. The repository name, for example: `projects/p1/locations/us-central1/repositories/repo1`. */
   repository: string;
   /** Request body */
   body?: RemovePrewarmedArtifactRequest;
 }
+const RemovePrewarmedArtifactProjectsLocationsRepositoriesRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  3,
+) as any as S.Schema<RemovePrewarmedArtifactProjectsLocationsRepositoriesRequest>;
+
 /** The response for removing an artifact from streaming. */
 export interface RemovePrewarmedArtifactResponse {
   /** The prewarmed artifact that was removed. */
   prewarmedArtifact?: PrewarmedArtifact;
 }
+const RemovePrewarmedArtifactResponse =
+  CheckPrewarmedArtifactResponse as any as S.Schema<RemovePrewarmedArtifactResponse>;
+
 /** Request message for `SetIamPolicy` method. */
 export interface SetIamPolicyRequest {
   /** REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Google Cloud services (such as Projects) might reject them. */
   policy?: Policy;
 }
+const SetIamPolicyRequest = /*@__PURE__*/ __L.at(__c18, 4) as any as S.Schema<SetIamPolicyRequest>;
+
 export interface SetIamPolicyProjectsLocationsRepositoriesRequest {
   /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: SetIamPolicyRequest;
 }
+const SetIamPolicyProjectsLocationsRepositoriesRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  5,
+) as any as S.Schema<SetIamPolicyProjectsLocationsRepositoriesRequest>;
+
 /** Request message for `TestIamPermissions` method. */
 export interface TestIamPermissionsRequest {
   /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
   permissions?: StringList;
 }
+const TestIamPermissionsRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  6,
+) as any as S.Schema<TestIamPermissionsRequest>;
+
 export interface TestIamPermissionsProjectsLocationsRepositoriesRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
+const TestIamPermissionsProjectsLocationsRepositoriesRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  7,
+) as any as S.Schema<TestIamPermissionsProjectsLocationsRepositoriesRequest>;
+
 /** Response message for `TestIamPermissions` method. */
 export interface TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
   permissions?: StringList;
 }
+const TestIamPermissionsResponse =
+  TestIamPermissionsRequest as any as S.Schema<TestIamPermissionsResponse>;
+
 export interface UpdateProjectConfigProjectsLocationsRequest {
   /** Optional. Field mask to support partial updates. See https://protobuf.dev/reference/protobuf/google.protobuf/#field-mask for more details. */
   updateMask?: string;
@@ -1318,6 +1984,11 @@ export interface UpdateProjectConfigProjectsLocationsRequest {
   /** Request body */
   body?: ProjectConfig;
 }
+const UpdateProjectConfigProjectsLocationsRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  0,
+) as any as S.Schema<UpdateProjectConfigProjectsLocationsRequest>;
+
 export interface UpdateProjectSettingsProjectsRequest {
   /** The name of the project's settings. Always of the form: projects/{project-id}/projectSettings In update request: never set In response: always set */
   name: string;
@@ -1326,6 +1997,11 @@ export interface UpdateProjectSettingsProjectsRequest {
   /** Request body */
   body?: ProjectSettings;
 }
+const UpdateProjectSettingsProjectsRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  1,
+) as any as S.Schema<UpdateProjectSettingsProjectsRequest>;
+
 export interface UpdateVpcscConfigProjectsLocationsRequest {
   /** The name of the project's VPC SC Config. Always of the form: projects/{projectID}/locations/{location}/vpcscConfig In update request: never set In response: always set */
   name: string;
@@ -1334,6 +2010,11 @@ export interface UpdateVpcscConfigProjectsLocationsRequest {
   /** Request body */
   body?: VPCSCConfig;
 }
+const UpdateVpcscConfigProjectsLocationsRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  2,
+) as any as S.Schema<UpdateVpcscConfigProjectsLocationsRequest>;
+
 /** The request to upload an artifact. */
 export type UploadAptArtifactRequest = CancelOperationRequest;
 export interface UploadProjectsLocationsRepositoriesAptArtifactsRequest {
@@ -1342,12 +2023,24 @@ export interface UploadProjectsLocationsRepositoriesAptArtifactsRequest {
   /** Request body */
   body?: CancelOperationRequest;
 }
+const UploadProjectsLocationsRepositoriesAptArtifactsRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  3,
+) as any as S.Schema<UploadProjectsLocationsRepositoriesAptArtifactsRequest>;
+
 /** The response to upload an artifact. */
 export interface UploadAptArtifactMediaResponse {
   /** Operation to be returned to the user. */
   operation?: Operation;
 }
+const UploadAptArtifactMediaResponse = /*@__PURE__*/ __L.at(
+  __c19,
+  4,
+) as any as S.Schema<UploadAptArtifactMediaResponse>;
+
 export type UploadFileRequestFileTypeEnum = "ATTACHMENT" | "ARTIFACT";
+const UploadFileRequestFileTypeEnum = S.String;
+
 /** The request to upload a file. */
 export interface UploadFileRequest {
   /** Optional. The ID of the file. If left empty will default to sha256 digest of the content uploaded. */
@@ -1355,17 +2048,29 @@ export interface UploadFileRequest {
   /** Optional. The type of the file to upload. Defaulting to ATTACHMENT if not specified. */
   fileType?: UploadFileRequestFileTypeEnum | (string & {});
 }
+const UploadFileRequest = /*@__PURE__*/ __L.at(__c19, 5) as any as S.Schema<UploadFileRequest>;
+
 export interface UploadProjectsLocationsRepositoriesFilesRequest {
   /** Required. The resource name of the repository where the file will be uploaded. */
   parent: string;
   /** Request body */
   body?: UploadFileRequest;
 }
+const UploadProjectsLocationsRepositoriesFilesRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  6,
+) as any as S.Schema<UploadProjectsLocationsRepositoriesFilesRequest>;
+
 /** The response to upload a generic artifact. */
 export interface UploadFileMediaResponse {
   /** Operation that will be returned to the user. */
   operation?: Operation;
 }
+const UploadFileMediaResponse = /*@__PURE__*/ __L.at(
+  __c19,
+  7,
+) as any as S.Schema<UploadFileMediaResponse>;
+
 /** The request to upload a generic artifact. The created GenericArtifact will have the resource name {parent}/genericArtifacts/package_id:version_id. The created file will have the resource name {parent}/files/package_id:version_id:filename. */
 export interface UploadGenericArtifactRequest {
   /** Optional. Client specified annotations to attach to the version upon creation. This field is only applied if the Version is created during this upload. If the Version already exists and this field is set, the request will fail. */
@@ -1377,17 +2082,30 @@ export interface UploadGenericArtifactRequest {
   /** The name of the file of the generic artifact to be uploaded. E.g. `example-file.zip` The filename is limited to letters, numbers, and url safe characters, i.e. [a-zA-Z0-9-_.~@]. */
   filename?: string;
 }
+const UploadGenericArtifactRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  0,
+) as any as S.Schema<UploadGenericArtifactRequest>;
+
 export interface UploadProjectsLocationsRepositoriesGenericArtifactsRequest {
   /** The resource name of the repository where the generic artifact will be uploaded. */
   parent: string;
   /** Request body */
   body?: UploadGenericArtifactRequest;
 }
+const UploadProjectsLocationsRepositoriesGenericArtifactsRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  1,
+) as any as S.Schema<UploadProjectsLocationsRepositoriesGenericArtifactsRequest>;
+
 /** The response to upload a generic artifact. */
 export interface UploadGenericArtifactMediaResponse {
   /** Operation that will be returned to the user. */
   operation?: Operation;
 }
+const UploadGenericArtifactMediaResponse =
+  UploadAptArtifactMediaResponse as any as S.Schema<UploadGenericArtifactMediaResponse>;
+
 /** The request to upload a Go module. */
 export type UploadGoModuleRequest = CancelOperationRequest;
 export interface UploadProjectsLocationsRepositoriesGoModulesRequest {
@@ -1396,11 +2114,19 @@ export interface UploadProjectsLocationsRepositoriesGoModulesRequest {
   /** Request body */
   body?: CancelOperationRequest;
 }
+const UploadProjectsLocationsRepositoriesGoModulesRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  2,
+) as any as S.Schema<UploadProjectsLocationsRepositoriesGoModulesRequest>;
+
 /** The response to upload a Go module. */
 export interface UploadGoModuleMediaResponse {
   /** Operation to be returned to the user. */
   operation?: Operation;
 }
+const UploadGoModuleMediaResponse =
+  UploadAptArtifactMediaResponse as any as S.Schema<UploadGoModuleMediaResponse>;
+
 /** The request to upload an artifact. */
 export type UploadGoogetArtifactRequest = CancelOperationRequest;
 export interface UploadProjectsLocationsRepositoriesGoogetArtifactsRequest {
@@ -1409,11 +2135,19 @@ export interface UploadProjectsLocationsRepositoriesGoogetArtifactsRequest {
   /** Request body */
   body?: CancelOperationRequest;
 }
+const UploadProjectsLocationsRepositoriesGoogetArtifactsRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  3,
+) as any as S.Schema<UploadProjectsLocationsRepositoriesGoogetArtifactsRequest>;
+
 /** The response to upload an artifact. */
 export interface UploadGoogetArtifactMediaResponse {
   /** Operation to be returned to the user. */
   operation?: Operation;
 }
+const UploadGoogetArtifactMediaResponse =
+  UploadAptArtifactMediaResponse as any as S.Schema<UploadGoogetArtifactMediaResponse>;
+
 /** The request to upload an artifact. */
 export interface UploadKfpArtifactRequest {
   /** Description of the package version. */
@@ -1421,17 +2155,30 @@ export interface UploadKfpArtifactRequest {
   /** Tags to be created with the version. */
   tags?: StringList;
 }
+const UploadKfpArtifactRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  4,
+) as any as S.Schema<UploadKfpArtifactRequest>;
+
 export interface UploadProjectsLocationsRepositoriesKfpArtifactsRequest {
   /** The resource name of the repository where the KFP artifact will be uploaded. */
   parent: string;
   /** Request body */
   body?: UploadKfpArtifactRequest;
 }
+const UploadProjectsLocationsRepositoriesKfpArtifactsRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  5,
+) as any as S.Schema<UploadProjectsLocationsRepositoriesKfpArtifactsRequest>;
+
 /** The response to upload an artifact. */
 export interface UploadKfpArtifactMediaResponse {
   /** Operation that will be returned to the user. */
   operation?: Operation;
 }
+const UploadKfpArtifactMediaResponse =
+  UploadAptArtifactMediaResponse as any as S.Schema<UploadKfpArtifactMediaResponse>;
+
 /** The request to upload an artifact. */
 export type UploadYumArtifactRequest = CancelOperationRequest;
 export interface UploadProjectsLocationsRepositoriesYumArtifactsRequest {
@@ -1440,11 +2187,19 @@ export interface UploadProjectsLocationsRepositoriesYumArtifactsRequest {
   /** Request body */
   body?: CancelOperationRequest;
 }
+const UploadProjectsLocationsRepositoriesYumArtifactsRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  6,
+) as any as S.Schema<UploadProjectsLocationsRepositoriesYumArtifactsRequest>;
+
 /** The response to upload an artifact. */
 export interface UploadYumArtifactMediaResponse {
   /** Operation to be returned to the user. */
   operation?: Operation;
 }
+const UploadYumArtifactMediaResponse =
+  UploadAptArtifactMediaResponse as any as S.Schema<UploadYumArtifactMediaResponse>;
+
 export type BatchDeleteProjectsLocationsRepositoriesPackagesVersionsError =
   | NotFound
   | Forbidden
@@ -1458,8 +2213,8 @@ export const batchDeleteProjectsLocationsRepositoriesPackagesVersions: API.Opera
   BatchDeleteProjectsLocationsRepositoriesPackagesVersionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2) as any as S.Schema<BatchDeleteProjectsLocationsRepositoriesPackagesVersionsRequest>,
-  output: __S(6) as any as S.Schema<Operation>,
+  input: BatchDeleteProjectsLocationsRepositoriesPackagesVersionsRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1478,8 +2233,8 @@ export const cancelProjectsLocationsOperations: API.OperationMethod<
   CancelProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8) as any as S.Schema<CancelProjectsLocationsOperationsRequest>,
-  output: __S(7) as any as S.Schema<Empty>,
+  input: CancelProjectsLocationsOperationsRequest,
+  output: Empty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1498,8 +2253,8 @@ export const checkPrewarmedArtifactProjectsLocationsRepositories: API.OperationM
   CheckPrewarmedArtifactProjectsLocationsRepositoriesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10) as any as S.Schema<CheckPrewarmedArtifactProjectsLocationsRepositoriesRequest>,
-  output: __S(12) as any as S.Schema<CheckPrewarmedArtifactResponse>,
+  input: CheckPrewarmedArtifactProjectsLocationsRepositoriesRequest,
+  output: CheckPrewarmedArtifactResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1518,8 +2273,8 @@ export const createProjectsLocationsRepositories: API.OperationMethod<
   CreateProjectsLocationsRepositoriesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38) as any as S.Schema<CreateProjectsLocationsRepositoriesRequest>,
-  output: __S(6) as any as S.Schema<Operation>,
+  input: CreateProjectsLocationsRepositoriesRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1538,8 +2293,8 @@ export const createProjectsLocationsRepositoriesAttachments: API.OperationMethod
   CreateProjectsLocationsRepositoriesAttachmentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40) as any as S.Schema<CreateProjectsLocationsRepositoriesAttachmentsRequest>,
-  output: __S(6) as any as S.Schema<Operation>,
+  input: CreateProjectsLocationsRepositoriesAttachmentsRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1558,8 +2313,8 @@ export const createProjectsLocationsRepositoriesPackagesTags: API.OperationMetho
   CreateProjectsLocationsRepositoriesPackagesTagsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42) as any as S.Schema<CreateProjectsLocationsRepositoriesPackagesTagsRequest>,
-  output: __S(41) as any as S.Schema<Tag>,
+  input: CreateProjectsLocationsRepositoriesPackagesTagsRequest,
+  output: Tag,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1578,8 +2333,8 @@ export const createProjectsLocationsRepositoriesRules: API.OperationMethod<
   CreateProjectsLocationsRepositoriesRulesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45) as any as S.Schema<CreateProjectsLocationsRepositoriesRulesRequest>,
-  output: __S(44) as any as S.Schema<GoogleDevtoolsArtifactregistryV1Rule>,
+  input: CreateProjectsLocationsRepositoriesRulesRequest,
+  output: GoogleDevtoolsArtifactregistryV1Rule,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1598,8 +2353,8 @@ export const deleteProjectsLocationsRepositories: API.OperationMethod<
   DeleteProjectsLocationsRepositoriesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(46) as any as S.Schema<DeleteProjectsLocationsRepositoriesRequest>,
-  output: __S(6) as any as S.Schema<Operation>,
+  input: DeleteProjectsLocationsRepositoriesRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1618,8 +2373,8 @@ export const deleteProjectsLocationsRepositoriesAttachments: API.OperationMethod
   DeleteProjectsLocationsRepositoriesAttachmentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47) as any as S.Schema<DeleteProjectsLocationsRepositoriesAttachmentsRequest>,
-  output: __S(6) as any as S.Schema<Operation>,
+  input: DeleteProjectsLocationsRepositoriesAttachmentsRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1638,8 +2393,8 @@ export const deleteProjectsLocationsRepositoriesFiles: API.OperationMethod<
   DeleteProjectsLocationsRepositoriesFilesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48) as any as S.Schema<DeleteProjectsLocationsRepositoriesFilesRequest>,
-  output: __S(6) as any as S.Schema<Operation>,
+  input: DeleteProjectsLocationsRepositoriesFilesRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1658,8 +2413,8 @@ export const deleteProjectsLocationsRepositoriesPackages: API.OperationMethod<
   DeleteProjectsLocationsRepositoriesPackagesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49) as any as S.Schema<DeleteProjectsLocationsRepositoriesPackagesRequest>,
-  output: __S(6) as any as S.Schema<Operation>,
+  input: DeleteProjectsLocationsRepositoriesPackagesRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1678,8 +2433,8 @@ export const deleteProjectsLocationsRepositoriesPackagesTags: API.OperationMetho
   DeleteProjectsLocationsRepositoriesPackagesTagsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(50) as any as S.Schema<DeleteProjectsLocationsRepositoriesPackagesTagsRequest>,
-  output: __S(7) as any as S.Schema<Empty>,
+  input: DeleteProjectsLocationsRepositoriesPackagesTagsRequest,
+  output: Empty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1698,8 +2453,8 @@ export const deleteProjectsLocationsRepositoriesPackagesVersions: API.OperationM
   DeleteProjectsLocationsRepositoriesPackagesVersionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(51) as any as S.Schema<DeleteProjectsLocationsRepositoriesPackagesVersionsRequest>,
-  output: __S(6) as any as S.Schema<Operation>,
+  input: DeleteProjectsLocationsRepositoriesPackagesVersionsRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1718,8 +2473,8 @@ export const deleteProjectsLocationsRepositoriesRules: API.OperationMethod<
   DeleteProjectsLocationsRepositoriesRulesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(52) as any as S.Schema<DeleteProjectsLocationsRepositoriesRulesRequest>,
-  output: __S(7) as any as S.Schema<Empty>,
+  input: DeleteProjectsLocationsRepositoriesRulesRequest,
+  output: Empty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1733,8 +2488,8 @@ export const downloadProjectsLocationsRepositoriesFiles: API.OperationMethod<
   DownloadProjectsLocationsRepositoriesFilesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(53) as any as S.Schema<DownloadProjectsLocationsRepositoriesFilesRequest>,
-  output: __S(7) as any as S.Schema<DownloadFileResponse>,
+  input: DownloadProjectsLocationsRepositoriesFilesRequest,
+  output: DownloadFileResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1753,8 +2508,8 @@ export const exportArtifactProjectsLocationsRepositories: API.OperationMethod<
   ExportArtifactProjectsLocationsRepositoriesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(55) as any as S.Schema<ExportArtifactProjectsLocationsRepositoriesRequest>,
-  output: __S(6) as any as S.Schema<Operation>,
+  input: ExportArtifactProjectsLocationsRepositoriesRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1768,8 +2523,8 @@ export const getIamPolicyProjectsLocationsRepositories: API.OperationMethod<
   GetIamPolicyProjectsLocationsRepositoriesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56) as any as S.Schema<GetIamPolicyProjectsLocationsRepositoriesRequest>,
-  output: __S(59) as any as S.Schema<Policy>,
+  input: GetIamPolicyProjectsLocationsRepositoriesRequest,
+  output: Policy,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1783,8 +2538,8 @@ export const getProjectConfigProjectsLocations: API.OperationMethod<
   GetProjectConfigProjectsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60) as any as S.Schema<GetProjectConfigProjectsLocationsRequest>,
-  output: __S(61) as any as S.Schema<ProjectConfig>,
+  input: GetProjectConfigProjectsLocationsRequest,
+  output: ProjectConfig,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1798,8 +2553,8 @@ export const getProjectSettingsProjects: API.OperationMethod<
   GetProjectSettingsProjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(62) as any as S.Schema<GetProjectSettingsProjectsRequest>,
-  output: __S(63) as any as S.Schema<ProjectSettings>,
+  input: GetProjectSettingsProjectsRequest,
+  output: ProjectSettings,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1813,8 +2568,8 @@ export const getProjectsLocations: API.OperationMethod<
   GetProjectsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(64) as any as S.Schema<GetProjectsLocationsRequest>,
-  output: __S(65) as any as S.Schema<Location>,
+  input: GetProjectsLocationsRequest,
+  output: Location,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1828,8 +2583,8 @@ export const getProjectsLocationsOperations: API.OperationMethod<
   GetProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(66) as any as S.Schema<GetProjectsLocationsOperationsRequest>,
-  output: __S(6) as any as S.Schema<Operation>,
+  input: GetProjectsLocationsOperationsRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1843,8 +2598,8 @@ export const getProjectsLocationsRepositories: API.OperationMethod<
   GetProjectsLocationsRepositoriesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(67) as any as S.Schema<GetProjectsLocationsRepositoriesRequest>,
-  output: __S(37) as any as S.Schema<Repository>,
+  input: GetProjectsLocationsRepositoriesRequest,
+  output: Repository,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1858,8 +2613,8 @@ export const getProjectsLocationsRepositoriesAttachments: API.OperationMethod<
   GetProjectsLocationsRepositoriesAttachmentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(68) as any as S.Schema<GetProjectsLocationsRepositoriesAttachmentsRequest>,
-  output: __S(39) as any as S.Schema<Attachment>,
+  input: GetProjectsLocationsRepositoriesAttachmentsRequest,
+  output: Attachment,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1873,8 +2628,8 @@ export const getProjectsLocationsRepositoriesDockerImages: API.OperationMethod<
   GetProjectsLocationsRepositoriesDockerImagesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(69) as any as S.Schema<GetProjectsLocationsRepositoriesDockerImagesRequest>,
-  output: __S(72) as any as S.Schema<DockerImage>,
+  input: GetProjectsLocationsRepositoriesDockerImagesRequest,
+  output: DockerImage,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1888,8 +2643,8 @@ export const getProjectsLocationsRepositoriesFiles: API.OperationMethod<
   GetProjectsLocationsRepositoriesFilesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(73) as any as S.Schema<GetProjectsLocationsRepositoriesFilesRequest>,
-  output: __S(76) as any as S.Schema<GoogleDevtoolsArtifactregistryV1File>,
+  input: GetProjectsLocationsRepositoriesFilesRequest,
+  output: GoogleDevtoolsArtifactregistryV1File,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1903,8 +2658,8 @@ export const getProjectsLocationsRepositoriesMavenArtifacts: API.OperationMethod
   GetProjectsLocationsRepositoriesMavenArtifactsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(77) as any as S.Schema<GetProjectsLocationsRepositoriesMavenArtifactsRequest>,
-  output: __S(78) as any as S.Schema<MavenArtifact>,
+  input: GetProjectsLocationsRepositoriesMavenArtifactsRequest,
+  output: MavenArtifact,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1918,8 +2673,8 @@ export const getProjectsLocationsRepositoriesNpmPackages: API.OperationMethod<
   GetProjectsLocationsRepositoriesNpmPackagesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(79) as any as S.Schema<GetProjectsLocationsRepositoriesNpmPackagesRequest>,
-  output: __S(80) as any as S.Schema<NpmPackage>,
+  input: GetProjectsLocationsRepositoriesNpmPackagesRequest,
+  output: NpmPackage,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1933,8 +2688,8 @@ export const getProjectsLocationsRepositoriesPackages: API.OperationMethod<
   GetProjectsLocationsRepositoriesPackagesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(81) as any as S.Schema<GetProjectsLocationsRepositoriesPackagesRequest>,
-  output: __S(82) as any as S.Schema<Package>,
+  input: GetProjectsLocationsRepositoriesPackagesRequest,
+  output: Package,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1948,8 +2703,8 @@ export const getProjectsLocationsRepositoriesPackagesTags: API.OperationMethod<
   GetProjectsLocationsRepositoriesPackagesTagsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(83) as any as S.Schema<GetProjectsLocationsRepositoriesPackagesTagsRequest>,
-  output: __S(41) as any as S.Schema<Tag>,
+  input: GetProjectsLocationsRepositoriesPackagesTagsRequest,
+  output: Tag,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1966,8 +2721,8 @@ export const getProjectsLocationsRepositoriesPackagesVersions: API.OperationMeth
   GetProjectsLocationsRepositoriesPackagesVersionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(84) as any as S.Schema<GetProjectsLocationsRepositoriesPackagesVersionsRequest>,
-  output: __S(86) as any as S.Schema<Version>,
+  input: GetProjectsLocationsRepositoriesPackagesVersionsRequest,
+  output: Version,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1981,8 +2736,8 @@ export const getProjectsLocationsRepositoriesPythonPackages: API.OperationMethod
   GetProjectsLocationsRepositoriesPythonPackagesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(87) as any as S.Schema<GetProjectsLocationsRepositoriesPythonPackagesRequest>,
-  output: __S(88) as any as S.Schema<PythonPackage>,
+  input: GetProjectsLocationsRepositoriesPythonPackagesRequest,
+  output: PythonPackage,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1996,8 +2751,8 @@ export const getProjectsLocationsRepositoriesRules: API.OperationMethod<
   GetProjectsLocationsRepositoriesRulesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(89) as any as S.Schema<GetProjectsLocationsRepositoriesRulesRequest>,
-  output: __S(44) as any as S.Schema<GoogleDevtoolsArtifactregistryV1Rule>,
+  input: GetProjectsLocationsRepositoriesRulesRequest,
+  output: GoogleDevtoolsArtifactregistryV1Rule,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2011,8 +2766,8 @@ export const getVpcscConfigProjectsLocations: API.OperationMethod<
   GetVpcscConfigProjectsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(90) as any as S.Schema<GetVpcscConfigProjectsLocationsRequest>,
-  output: __S(91) as any as S.Schema<VPCSCConfig>,
+  input: GetVpcscConfigProjectsLocationsRequest,
+  output: VPCSCConfig,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2031,8 +2786,8 @@ export const importProjectsLocationsRepositoriesAptArtifacts: API.OperationMetho
   ImportProjectsLocationsRepositoriesAptArtifactsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(94) as any as S.Schema<ImportProjectsLocationsRepositoriesAptArtifactsRequest>,
-  output: __S(6) as any as S.Schema<Operation>,
+  input: ImportProjectsLocationsRepositoriesAptArtifactsRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2051,8 +2806,8 @@ export const importProjectsLocationsRepositoriesGoogetArtifacts: API.OperationMe
   ImportProjectsLocationsRepositoriesGoogetArtifactsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(97) as any as S.Schema<ImportProjectsLocationsRepositoriesGoogetArtifactsRequest>,
-  output: __S(6) as any as S.Schema<Operation>,
+  input: ImportProjectsLocationsRepositoriesGoogetArtifactsRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2071,8 +2826,8 @@ export const importProjectsLocationsRepositoriesYumArtifacts: API.OperationMetho
   ImportProjectsLocationsRepositoriesYumArtifactsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(98) as any as S.Schema<ImportProjectsLocationsRepositoriesYumArtifactsRequest>,
-  output: __S(6) as any as S.Schema<Operation>,
+  input: ImportProjectsLocationsRepositoriesYumArtifactsRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2087,8 +2842,8 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListLocationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(99) as any as S.Schema<ListProjectsLocationsRequest>,
-  output: __S(101) as any as S.Schema<ListLocationsResponse>,
+  input: ListProjectsLocationsRequest,
+  output: ListLocationsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2104,8 +2859,8 @@ export const listProjectsLocationsRepositories: API.PaginatedOperationMethod<
   GcpOpContext,
   ListRepositoriesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(102) as any as S.Schema<ListProjectsLocationsRepositoriesRequest>,
-  output: __S(104) as any as S.Schema<ListRepositoriesResponse>,
+  input: ListProjectsLocationsRepositoriesRequest,
+  output: ListRepositoriesResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2121,8 +2876,8 @@ export const listProjectsLocationsRepositoriesAttachments: API.PaginatedOperatio
   GcpOpContext,
   ListAttachmentsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(105) as any as S.Schema<ListProjectsLocationsRepositoriesAttachmentsRequest>,
-  output: __S(107) as any as S.Schema<ListAttachmentsResponse>,
+  input: ListProjectsLocationsRepositoriesAttachmentsRequest,
+  output: ListAttachmentsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2138,8 +2893,8 @@ export const listProjectsLocationsRepositoriesDockerImages: API.PaginatedOperati
   GcpOpContext,
   ListDockerImagesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(108) as any as S.Schema<ListProjectsLocationsRepositoriesDockerImagesRequest>,
-  output: __S(110) as any as S.Schema<ListDockerImagesResponse>,
+  input: ListProjectsLocationsRepositoriesDockerImagesRequest,
+  output: ListDockerImagesResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2155,8 +2910,8 @@ export const listProjectsLocationsRepositoriesFiles: API.PaginatedOperationMetho
   GcpOpContext,
   ListFilesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(111) as any as S.Schema<ListProjectsLocationsRepositoriesFilesRequest>,
-  output: __S(113) as any as S.Schema<ListFilesResponse>,
+  input: ListProjectsLocationsRepositoriesFilesRequest,
+  output: ListFilesResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2175,8 +2930,8 @@ export const listProjectsLocationsRepositoriesMavenArtifacts: API.PaginatedOpera
   GcpOpContext,
   ListMavenArtifactsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(114) as any as S.Schema<ListProjectsLocationsRepositoriesMavenArtifactsRequest>,
-  output: __S(116) as any as S.Schema<ListMavenArtifactsResponse>,
+  input: ListProjectsLocationsRepositoriesMavenArtifactsRequest,
+  output: ListMavenArtifactsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2192,8 +2947,8 @@ export const listProjectsLocationsRepositoriesNpmPackages: API.PaginatedOperatio
   GcpOpContext,
   ListNpmPackagesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(117) as any as S.Schema<ListProjectsLocationsRepositoriesNpmPackagesRequest>,
-  output: __S(119) as any as S.Schema<ListNpmPackagesResponse>,
+  input: ListProjectsLocationsRepositoriesNpmPackagesRequest,
+  output: ListNpmPackagesResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2209,8 +2964,8 @@ export const listProjectsLocationsRepositoriesPackages: API.PaginatedOperationMe
   GcpOpContext,
   ListPackagesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(120) as any as S.Schema<ListProjectsLocationsRepositoriesPackagesRequest>,
-  output: __S(122) as any as S.Schema<ListPackagesResponse>,
+  input: ListProjectsLocationsRepositoriesPackagesRequest,
+  output: ListPackagesResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2226,8 +2981,8 @@ export const listProjectsLocationsRepositoriesPackagesTags: API.PaginatedOperati
   GcpOpContext,
   ListTagsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(123) as any as S.Schema<ListProjectsLocationsRepositoriesPackagesTagsRequest>,
-  output: __S(124) as any as S.Schema<ListTagsResponse>,
+  input: ListProjectsLocationsRepositoriesPackagesTagsRequest,
+  output: ListTagsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2246,8 +3001,8 @@ export const listProjectsLocationsRepositoriesPackagesVersions: API.PaginatedOpe
   GcpOpContext,
   ListVersionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(125) as any as S.Schema<ListProjectsLocationsRepositoriesPackagesVersionsRequest>,
-  output: __S(127) as any as S.Schema<ListVersionsResponse>,
+  input: ListProjectsLocationsRepositoriesPackagesVersionsRequest,
+  output: ListVersionsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2266,8 +3021,8 @@ export const listProjectsLocationsRepositoriesPrewarmedArtifacts: API.PaginatedO
   GcpOpContext,
   ListPrewarmedArtifactsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(128) as any as S.Schema<ListProjectsLocationsRepositoriesPrewarmedArtifactsRequest>,
-  output: __S(130) as any as S.Schema<ListPrewarmedArtifactsResponse>,
+  input: ListProjectsLocationsRepositoriesPrewarmedArtifactsRequest,
+  output: ListPrewarmedArtifactsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2286,8 +3041,8 @@ export const listProjectsLocationsRepositoriesPythonPackages: API.PaginatedOpera
   GcpOpContext,
   ListPythonPackagesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(131) as any as S.Schema<ListProjectsLocationsRepositoriesPythonPackagesRequest>,
-  output: __S(133) as any as S.Schema<ListPythonPackagesResponse>,
+  input: ListProjectsLocationsRepositoriesPythonPackagesRequest,
+  output: ListPythonPackagesResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2303,8 +3058,8 @@ export const listProjectsLocationsRepositoriesRules: API.PaginatedOperationMetho
   GcpOpContext,
   ListRulesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(134) as any as S.Schema<ListProjectsLocationsRepositoriesRulesRequest>,
-  output: __S(136) as any as S.Schema<ListRulesResponse>,
+  input: ListProjectsLocationsRepositoriesRulesRequest,
+  output: ListRulesResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2324,8 +3079,8 @@ export const patchProjectsLocationsRepositories: API.OperationMethod<
   PatchProjectsLocationsRepositoriesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(137) as any as S.Schema<PatchProjectsLocationsRepositoriesRequest>,
-  output: __S(37) as any as S.Schema<Repository>,
+  input: PatchProjectsLocationsRepositoriesRequest,
+  output: Repository,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2344,8 +3099,8 @@ export const patchProjectsLocationsRepositoriesFiles: API.OperationMethod<
   PatchProjectsLocationsRepositoriesFilesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(138) as any as S.Schema<PatchProjectsLocationsRepositoriesFilesRequest>,
-  output: __S(76) as any as S.Schema<GoogleDevtoolsArtifactregistryV1File>,
+  input: PatchProjectsLocationsRepositoriesFilesRequest,
+  output: GoogleDevtoolsArtifactregistryV1File,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2364,8 +3119,8 @@ export const patchProjectsLocationsRepositoriesPackages: API.OperationMethod<
   PatchProjectsLocationsRepositoriesPackagesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(139) as any as S.Schema<PatchProjectsLocationsRepositoriesPackagesRequest>,
-  output: __S(82) as any as S.Schema<Package>,
+  input: PatchProjectsLocationsRepositoriesPackagesRequest,
+  output: Package,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2384,8 +3139,8 @@ export const patchProjectsLocationsRepositoriesPackagesTags: API.OperationMethod
   PatchProjectsLocationsRepositoriesPackagesTagsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(140) as any as S.Schema<PatchProjectsLocationsRepositoriesPackagesTagsRequest>,
-  output: __S(41) as any as S.Schema<Tag>,
+  input: PatchProjectsLocationsRepositoriesPackagesTagsRequest,
+  output: Tag,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2404,8 +3159,8 @@ export const patchProjectsLocationsRepositoriesPackagesVersions: API.OperationMe
   PatchProjectsLocationsRepositoriesPackagesVersionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(141) as any as S.Schema<PatchProjectsLocationsRepositoriesPackagesVersionsRequest>,
-  output: __S(86) as any as S.Schema<Version>,
+  input: PatchProjectsLocationsRepositoriesPackagesVersionsRequest,
+  output: Version,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2424,8 +3179,8 @@ export const patchProjectsLocationsRepositoriesRules: API.OperationMethod<
   PatchProjectsLocationsRepositoriesRulesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(142) as any as S.Schema<PatchProjectsLocationsRepositoriesRulesRequest>,
-  output: __S(44) as any as S.Schema<GoogleDevtoolsArtifactregistryV1Rule>,
+  input: PatchProjectsLocationsRepositoriesRulesRequest,
+  output: GoogleDevtoolsArtifactregistryV1Rule,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2444,8 +3199,8 @@ export const prewarmArtifactProjectsLocationsRepositories: API.OperationMethod<
   PrewarmArtifactProjectsLocationsRepositoriesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(145) as any as S.Schema<PrewarmArtifactProjectsLocationsRepositoriesRequest>,
-  output: __S(6) as any as S.Schema<Operation>,
+  input: PrewarmArtifactProjectsLocationsRepositoriesRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2464,8 +3219,8 @@ export const removePrewarmedArtifactProjectsLocationsRepositories: API.Operation
   RemovePrewarmedArtifactProjectsLocationsRepositoriesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(147) as any as S.Schema<RemovePrewarmedArtifactProjectsLocationsRepositoriesRequest>,
-  output: __S(12) as any as S.Schema<RemovePrewarmedArtifactResponse>,
+  input: RemovePrewarmedArtifactProjectsLocationsRepositoriesRequest,
+  output: RemovePrewarmedArtifactResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2484,8 +3239,8 @@ export const setIamPolicyProjectsLocationsRepositories: API.OperationMethod<
   SetIamPolicyProjectsLocationsRepositoriesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(149) as any as S.Schema<SetIamPolicyProjectsLocationsRepositoriesRequest>,
-  output: __S(59) as any as S.Schema<Policy>,
+  input: SetIamPolicyProjectsLocationsRepositoriesRequest,
+  output: Policy,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2504,8 +3259,8 @@ export const testIamPermissionsProjectsLocationsRepositories: API.OperationMetho
   TestIamPermissionsProjectsLocationsRepositoriesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(151) as any as S.Schema<TestIamPermissionsProjectsLocationsRepositoriesRequest>,
-  output: __S(150) as any as S.Schema<TestIamPermissionsResponse>,
+  input: TestIamPermissionsProjectsLocationsRepositoriesRequest,
+  output: TestIamPermissionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2524,8 +3279,8 @@ export const updateProjectConfigProjectsLocations: API.OperationMethod<
   UpdateProjectConfigProjectsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(152) as any as S.Schema<UpdateProjectConfigProjectsLocationsRequest>,
-  output: __S(61) as any as S.Schema<ProjectConfig>,
+  input: UpdateProjectConfigProjectsLocationsRequest,
+  output: ProjectConfig,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2544,8 +3299,8 @@ export const updateProjectSettingsProjects: API.OperationMethod<
   UpdateProjectSettingsProjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(153) as any as S.Schema<UpdateProjectSettingsProjectsRequest>,
-  output: __S(63) as any as S.Schema<ProjectSettings>,
+  input: UpdateProjectSettingsProjectsRequest,
+  output: ProjectSettings,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2564,8 +3319,8 @@ export const updateVpcscConfigProjectsLocations: API.OperationMethod<
   UpdateVpcscConfigProjectsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(154) as any as S.Schema<UpdateVpcscConfigProjectsLocationsRequest>,
-  output: __S(91) as any as S.Schema<VPCSCConfig>,
+  input: UpdateVpcscConfigProjectsLocationsRequest,
+  output: VPCSCConfig,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2584,8 +3339,8 @@ export const uploadProjectsLocationsRepositoriesAptArtifacts: API.OperationMetho
   UploadProjectsLocationsRepositoriesAptArtifactsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(155) as any as S.Schema<UploadProjectsLocationsRepositoriesAptArtifactsRequest>,
-  output: __S(156) as any as S.Schema<UploadAptArtifactMediaResponse>,
+  input: UploadProjectsLocationsRepositoriesAptArtifactsRequest,
+  output: UploadAptArtifactMediaResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2604,8 +3359,8 @@ export const uploadProjectsLocationsRepositoriesFiles: API.OperationMethod<
   UploadProjectsLocationsRepositoriesFilesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(158) as any as S.Schema<UploadProjectsLocationsRepositoriesFilesRequest>,
-  output: __S(159) as any as S.Schema<UploadFileMediaResponse>,
+  input: UploadProjectsLocationsRepositoriesFilesRequest,
+  output: UploadFileMediaResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2624,8 +3379,8 @@ export const uploadProjectsLocationsRepositoriesGenericArtifacts: API.OperationM
   UploadProjectsLocationsRepositoriesGenericArtifactsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(161) as any as S.Schema<UploadProjectsLocationsRepositoriesGenericArtifactsRequest>,
-  output: __S(156) as any as S.Schema<UploadGenericArtifactMediaResponse>,
+  input: UploadProjectsLocationsRepositoriesGenericArtifactsRequest,
+  output: UploadGenericArtifactMediaResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2644,8 +3399,8 @@ export const uploadProjectsLocationsRepositoriesGoModules: API.OperationMethod<
   UploadProjectsLocationsRepositoriesGoModulesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(162) as any as S.Schema<UploadProjectsLocationsRepositoriesGoModulesRequest>,
-  output: __S(156) as any as S.Schema<UploadGoModuleMediaResponse>,
+  input: UploadProjectsLocationsRepositoriesGoModulesRequest,
+  output: UploadGoModuleMediaResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2664,8 +3419,8 @@ export const uploadProjectsLocationsRepositoriesGoogetArtifacts: API.OperationMe
   UploadProjectsLocationsRepositoriesGoogetArtifactsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(163) as any as S.Schema<UploadProjectsLocationsRepositoriesGoogetArtifactsRequest>,
-  output: __S(156) as any as S.Schema<UploadGoogetArtifactMediaResponse>,
+  input: UploadProjectsLocationsRepositoriesGoogetArtifactsRequest,
+  output: UploadGoogetArtifactMediaResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2684,8 +3439,8 @@ export const uploadProjectsLocationsRepositoriesKfpArtifacts: API.OperationMetho
   UploadProjectsLocationsRepositoriesKfpArtifactsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(165) as any as S.Schema<UploadProjectsLocationsRepositoriesKfpArtifactsRequest>,
-  output: __S(156) as any as S.Schema<UploadKfpArtifactMediaResponse>,
+  input: UploadProjectsLocationsRepositoriesKfpArtifactsRequest,
+  output: UploadKfpArtifactMediaResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2704,8 +3459,8 @@ export const uploadProjectsLocationsRepositoriesYumArtifacts: API.OperationMetho
   UploadProjectsLocationsRepositoriesYumArtifactsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(166) as any as S.Schema<UploadProjectsLocationsRepositoriesYumArtifactsRequest>,
-  output: __S(156) as any as S.Schema<UploadYumArtifactMediaResponse>,
+  input: UploadProjectsLocationsRepositoriesYumArtifactsRequest,
+  output: UploadYumArtifactMediaResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2719,7 +3474,7 @@ function __c0(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          names: S.optional(__S(0)),
+          names: S.optional(StringList),
           validateOnly: S.optional(S.Boolean),
         }),
       ).annotate({
@@ -2729,7 +3484,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(1).pipe(T.HttpBody())),
+          body: S.optional(BatchDeleteVersionsRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2743,11 +3498,11 @@ function __c0(j: number): any {
     case 3:
       return S.Record(S.String, S.Unknown);
     case 4:
-      return S.Array(__S(3));
+      return S.Array(DocumentMap);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          details: S.optional(__S(4)),
+          details: S.optional(DocumentMapList),
           code: S.optional(S.Number),
           message: S.optional(S.String),
         }),
@@ -2755,9 +3510,9 @@ function __c0(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          error: S.optional(__S(5)),
-          response: S.optional(__S(3)),
-          metadata: S.optional(__S(3)),
+          error: S.optional(Status),
+          response: S.optional(DocumentMap),
+          metadata: S.optional(DocumentMap),
           name: S.optional(S.String),
           done: S.optional(S.Boolean),
         }),
@@ -2774,7 +3529,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(7).pipe(T.HttpBody())),
+          body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2799,7 +3554,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           repository: S.String.pipe(T.Label()),
-          body: S.optional(__S(9).pipe(T.HttpBody())),
+          body: S.optional(CheckPrewarmedArtifactRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2821,7 +3576,7 @@ function __c1(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          prewarmedArtifact: S.optional(__S(11)),
+          prewarmedArtifact: S.optional(PrewarmedArtifact),
         }),
       ).annotate({
         identifier: "CheckPrewarmedArtifactResponse",
@@ -2837,7 +3592,7 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "UpstreamPolicy" });
     case 7:
-      return S.Array(__S(14));
+      return S.Array(UpstreamPolicy);
   }
 }
 function __c2(j: number): any {
@@ -2845,15 +3600,15 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          upstreamPolicies: S.optional(__S(15)),
+          upstreamPolicies: S.optional(UpstreamPolicyList),
         }),
       ).annotate({ identifier: "VirtualRepositoryConfig" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          enablementConfig: S.optional(S.String),
+          enablementConfig: S.optional(VulnerabilityScanningConfigEnablementConfigEnum),
           lastEnableTime: S.optional(S.String),
-          enablementState: S.optional(S.String),
+          enablementState: S.optional(VulnerabilityScanningConfigEnablementStateEnum),
           enablementStateReason: S.optional(S.String),
         }),
       ).annotate({
@@ -2862,17 +3617,17 @@ function __c2(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          loggingState: S.optional(S.String),
-          severityLevel: S.optional(S.String),
+          loggingState: S.optional(PlatformLogsConfigLoggingStateEnum),
+          severityLevel: S.optional(PlatformLogsConfigSeverityLevelEnum),
         }),
       ).annotate({ identifier: "PlatformLogsConfig" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          versionNamePrefixes: S.optional(__S(0)),
-          tagPrefixes: S.optional(__S(0)),
-          tagState: S.optional(S.String),
-          packageNamePrefixes: S.optional(__S(0)),
+          versionNamePrefixes: S.optional(StringList),
+          tagPrefixes: S.optional(StringList),
+          tagState: S.optional(CleanupPolicyConditionTagStateEnum),
+          packageNamePrefixes: S.optional(StringList),
           olderThan: S.optional(S.String),
           newerThan: S.optional(S.String),
         }),
@@ -2880,7 +3635,7 @@ function __c2(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          packageNamePrefixes: S.optional(__S(0)),
+          packageNamePrefixes: S.optional(StringList),
           keepCount: S.optional(S.Number),
         }),
       ).annotate({
@@ -2889,19 +3644,19 @@ function __c2(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          action: S.optional(S.String),
+          action: S.optional(CleanupPolicyActionEnum),
           id: S.optional(S.String),
-          condition: S.optional(__S(19)),
-          mostRecentVersions: S.optional(__S(20)),
+          condition: S.optional(CleanupPolicyCondition),
+          mostRecentVersions: S.optional(CleanupPolicyMostRecentVersions),
         }),
       ).annotate({ identifier: "CleanupPolicy" });
     case 6:
-      return S.Record(S.String, __S(21));
+      return S.Record(S.String, CleanupPolicy);
     case 7:
       return S.suspend(() =>
         S.Struct({
           allowSnapshotOverwrites: S.optional(S.Boolean),
-          versionPolicy: S.optional(S.String),
+          versionPolicy: S.optional(MavenRepositoryConfigVersionPolicyEnum),
         }),
       ).annotate({ identifier: "MavenRepositoryConfig" });
   }
@@ -2920,28 +3675,36 @@ function __c3(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          publicRepository: S.optional(S.String),
-          customRepository: S.optional(__S(24)),
+          publicRepository: S.optional(MavenRepositoryPublicRepositoryEnum),
+          customRepository: S.optional(
+            GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepository,
+          ),
         }),
       ).annotate({ identifier: "MavenRepository" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          publicRepository: S.optional(S.String),
-          customRepository: S.optional(__S(24)),
+          publicRepository: S.optional(DockerRepositoryPublicRepositoryEnum),
+          customRepository: S.optional(
+            GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepository,
+          ),
         }),
       ).annotate({ identifier: "DockerRepository" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          publicRepository: S.optional(S.String),
-          customRepository: S.optional(__S(24)),
+          publicRepository: S.optional(PythonRepositoryPublicRepositoryEnum),
+          customRepository: S.optional(
+            GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepository,
+          ),
         }),
       ).annotate({ identifier: "PythonRepository" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          repositoryBase: S.optional(S.String),
+          repositoryBase: S.optional(
+            GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryRepositoryBaseEnum,
+          ),
           repositoryPath: S.optional(S.String),
         }),
       ).annotate({
@@ -2951,8 +3714,12 @@ function __c3(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          publicRepository: S.optional(__S(28)),
-          customRepository: S.optional(__S(24)),
+          publicRepository: S.optional(
+            GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepository,
+          ),
+          customRepository: S.optional(
+            GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepository,
+          ),
         }),
       ).annotate({ identifier: "YumRepository" });
     case 6:
@@ -2964,8 +3731,10 @@ function __c3(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          publicRepository: S.optional(S.String),
-          customRepository: S.optional(__S(24)),
+          publicRepository: S.optional(NpmRepositoryPublicRepositoryEnum),
+          customRepository: S.optional(
+            GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepository,
+          ),
         }),
       ).annotate({ identifier: "NpmRepository" });
   }
@@ -2975,8 +3744,12 @@ function __c4(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          publicRepository: S.optional(__S(28)),
-          customRepository: S.optional(__S(24)),
+          publicRepository: S.optional(
+            GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepository,
+          ),
+          customRepository: S.optional(
+            GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepository,
+          ),
         }),
       ).annotate({ identifier: "AptRepository" });
     case 1:
@@ -2991,23 +3764,23 @@ function __c4(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          usernamePasswordCredentials: S.optional(__S(33)),
+          usernamePasswordCredentials: S.optional(UsernamePasswordCredentials),
         }),
       ).annotate({ identifier: "UpstreamCredentials" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
-          mavenRepository: S.optional(__S(25)),
-          dockerRepository: S.optional(__S(26)),
-          noCache: S.optional(__S(7)),
+          mavenRepository: S.optional(MavenRepository),
+          dockerRepository: S.optional(DockerRepository),
+          noCache: S.optional(CancelOperationRequest),
           disableUpstreamValidation: S.optional(S.Boolean),
-          pythonRepository: S.optional(__S(27)),
-          yumRepository: S.optional(__S(29)),
-          commonRepository: S.optional(__S(30)),
-          npmRepository: S.optional(__S(31)),
-          aptRepository: S.optional(__S(32)),
-          upstreamCredentials: S.optional(__S(34)),
+          pythonRepository: S.optional(PythonRepository),
+          yumRepository: S.optional(YumRepository),
+          commonRepository: S.optional(CommonRemoteRepository),
+          npmRepository: S.optional(NpmRepository),
+          aptRepository: S.optional(AptRepository),
+          upstreamCredentials: S.optional(UpstreamCredentials),
         }),
       ).annotate({ identifier: "RemoteRepositoryConfig" });
     case 4:
@@ -3019,26 +3792,26 @@ function __c4(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          labels: S.optional(__S(13)),
+          labels: S.optional(StringMap),
           satisfiesPzs: S.optional(S.Boolean),
-          virtualRepositoryConfig: S.optional(__S(16)),
-          format: S.optional(S.String),
+          virtualRepositoryConfig: S.optional(VirtualRepositoryConfig),
+          format: S.optional(RepositoryFormatEnum),
           kmsKeyName: S.optional(S.String),
-          vulnerabilityScanningConfig: S.optional(__S(17)),
+          vulnerabilityScanningConfig: S.optional(VulnerabilityScanningConfig),
           createTime: S.optional(S.String),
-          platformLogsConfig: S.optional(__S(18)),
+          platformLogsConfig: S.optional(PlatformLogsConfig),
           description: S.optional(S.String),
-          cleanupPolicies: S.optional(__S(22)),
-          mode: S.optional(S.String),
-          mavenConfig: S.optional(__S(23)),
-          remoteRepositoryConfig: S.optional(__S(35)),
+          cleanupPolicies: S.optional(CleanupPolicyMap),
+          mode: S.optional(RepositoryModeEnum),
+          mavenConfig: S.optional(MavenRepositoryConfig),
+          remoteRepositoryConfig: S.optional(RemoteRepositoryConfig),
           cleanupPolicyDryRun: S.optional(S.Boolean),
           disallowUnspecifiedMode: S.optional(S.Boolean),
           updateTime: S.optional(S.String),
           satisfiesPzi: S.optional(S.Boolean),
           name: S.optional(S.String),
           sizeBytes: S.optional(S.String),
-          dockerConfig: S.optional(__S(36)),
+          dockerConfig: S.optional(DockerRepositoryConfig),
           registryUri: S.optional(S.String),
         }),
       ).annotate({ identifier: "Repository" });
@@ -3047,7 +3820,7 @@ function __c4(j: number): any {
         S.Struct({
           repositoryId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(37).pipe(T.HttpBody())),
+          body: S.optional(Repository.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3062,10 +3835,10 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          annotations: S.optional(__S(13)),
+          annotations: S.optional(StringMap),
           updateTime: S.optional(S.String),
           type: S.optional(S.String),
-          files: S.optional(__S(0)),
+          files: S.optional(StringList),
           target: S.optional(S.String),
           ociVersionName: S.optional(S.String),
           createTime: S.optional(S.String),
@@ -3081,7 +3854,7 @@ function __c5(j: number): any {
         S.Struct({
           parent: S.String.pipe(T.Label()),
           attachmentId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(39).pipe(T.HttpBody())),
+          body: S.optional(Attachment.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3104,7 +3877,7 @@ function __c5(j: number): any {
         S.Struct({
           parent: S.String.pipe(T.Label()),
           tagId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(41).pipe(T.HttpBody())),
+          body: S.optional(Tag.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3127,11 +3900,11 @@ function __c5(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          condition: S.optional(__S(43)),
+          condition: S.optional(Expr),
           name: S.optional(S.String),
-          operation: S.optional(S.String),
+          operation: S.optional(GoogleDevtoolsArtifactregistryV1RuleOperationEnum),
           packageId: S.optional(S.String),
-          action: S.optional(S.String),
+          action: S.optional(GoogleDevtoolsArtifactregistryV1RuleActionEnum),
         }),
       ).annotate({
         identifier: "GoogleDevtoolsArtifactregistryV1Rule",
@@ -3141,7 +3914,7 @@ function __c5(j: number): any {
         S.Struct({
           parent: S.String.pipe(T.Label()),
           ruleId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(44).pipe(T.HttpBody())),
+          body: S.optional(GoogleDevtoolsArtifactregistryV1Rule.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3281,7 +4054,7 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           repository: S.String.pipe(T.Label()),
-          body: S.optional(__S(54).pipe(T.HttpBody())),
+          body: S.optional(ExportArtifactRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3314,19 +4087,19 @@ function __c7(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          members: S.optional(__S(0)),
+          members: S.optional(StringList),
           role: S.optional(S.String),
-          condition: S.optional(__S(43)),
+          condition: S.optional(Expr),
         }),
       ).annotate({ identifier: "Binding" });
     case 2:
-      return S.Array(__S(57));
+      return S.Array(Binding);
     case 3:
       return S.suspend(() =>
         S.Struct({
           etag: S.optional(S.String),
           version: S.optional(S.Number),
-          bindings: S.optional(__S(58)),
+          bindings: S.optional(BindingList),
         }),
       ).annotate({ identifier: "Policy" });
     case 4:
@@ -3347,7 +4120,7 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          platformLogsConfig: S.optional(__S(18)),
+          platformLogsConfig: S.optional(PlatformLogsConfig),
         }),
       ).annotate({ identifier: "ProjectConfig" });
     case 6:
@@ -3368,7 +4141,7 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           pullPercent: S.optional(S.Number),
-          legacyRedirectionState: S.optional(S.String),
+          legacyRedirectionState: S.optional(ProjectSettingsLegacyRedirectionStateEnum),
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "ProjectSettings" });
@@ -3394,10 +4167,10 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           locationId: S.optional(S.String),
-          labels: S.optional(__S(13)),
+          labels: S.optional(StringMap),
           name: S.optional(S.String),
           displayName: S.optional(S.String),
-          metadata: S.optional(__S(3)),
+          metadata: S.optional(DocumentMap),
         }),
       ).annotate({ identifier: "Location" });
     case 2:
@@ -3461,7 +4234,7 @@ function __c8(j: number): any {
         S.Struct({
           os: S.optional(S.String),
           mediaType: S.optional(S.String),
-          osFeatures: S.optional(__S(0)),
+          osFeatures: S.optional(StringList),
           digest: S.optional(S.String),
           osVersion: S.optional(S.String),
           variant: S.optional(S.String),
@@ -3469,7 +4242,7 @@ function __c8(j: number): any {
         }),
       ).annotate({ identifier: "ImageManifest" });
     case 7:
-      return S.Array(__S(70));
+      return S.Array(ImageManifest);
   }
 }
 function __c9(j: number): any {
@@ -3478,8 +4251,8 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           updateTime: S.optional(S.String),
-          imageManifests: S.optional(__S(71)),
-          tags: S.optional(__S(0)),
+          imageManifests: S.optional(ImageManifestList),
+          tags: S.optional(StringList),
           artifactType: S.optional(S.String),
           mediaType: S.optional(S.String),
           uri: S.optional(S.String),
@@ -3507,19 +4280,19 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           value: S.optional(S.String),
-          type: S.optional(S.String),
+          type: S.optional(HashTypeEnum),
         }),
       ).annotate({ identifier: "Hash" });
     case 3:
-      return S.Array(__S(74));
+      return S.Array(Hash);
     case 4:
       return S.suspend(() =>
         S.Struct({
           sizeBytes: S.optional(S.String),
-          annotations: S.optional(__S(13)),
+          annotations: S.optional(StringMap),
           fetchTime: S.optional(S.String),
           updateTime: S.optional(S.String),
-          hashes: S.optional(__S(75)),
+          hashes: S.optional(HashList),
           name: S.optional(S.String),
           owner: S.optional(S.String),
           createTime: S.optional(S.String),
@@ -3578,7 +4351,7 @@ function __c10(j: number): any {
           packageName: S.optional(S.String),
           version: S.optional(S.String),
           createTime: S.optional(S.String),
-          tags: S.optional(__S(0)),
+          tags: S.optional(StringList),
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "NpmPackage" });
@@ -3603,7 +4376,7 @@ function __c10(j: number): any {
           createTime: S.optional(S.String),
           name: S.optional(S.String),
           updateTime: S.optional(S.String),
-          annotations: S.optional(__S(13)),
+          annotations: S.optional(StringMap),
         }),
       ).annotate({ identifier: "Package" });
     case 3:
@@ -3624,7 +4397,9 @@ function __c10(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          view: S.optional(S.String.pipe(T.Query())),
+          view: S.optional(
+            GetProjectsLocationsRepositoriesPackagesVersionsViewEnum.pipe(T.Query()),
+          ),
         }).pipe(
           T.Http({
             method: "GET",
@@ -3636,18 +4411,18 @@ function __c10(j: number): any {
         identifier: "GetProjectsLocationsRepositoriesPackagesVersionsRequest",
       });
     case 5:
-      return S.Array(__S(41));
+      return S.Array(Tag);
     case 6:
       return S.suspend(() =>
         S.Struct({
           createTime: S.optional(S.String),
           description: S.optional(S.String),
-          relatedTags: S.optional(__S(85)),
-          annotations: S.optional(__S(13)),
+          relatedTags: S.optional(TagList),
+          annotations: S.optional(StringMap),
           updateTime: S.optional(S.String),
           name: S.optional(S.String),
-          fingerprints: S.optional(__S(75)),
-          metadata: S.optional(__S(3)),
+          fingerprints: S.optional(HashList),
+          metadata: S.optional(DocumentMap),
         }),
       ).annotate({ identifier: "Version" });
     case 7:
@@ -3711,13 +4486,13 @@ function __c11(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          vpcscPolicy: S.optional(S.String),
+          vpcscPolicy: S.optional(VPCSCConfigVpcscPolicyEnum),
         }),
       ).annotate({ identifier: "VPCSCConfig" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          uris: S.optional(__S(0)),
+          uris: S.optional(StringList),
           useWildcards: S.optional(S.Boolean),
         }),
       ).annotate({
@@ -3726,7 +4501,7 @@ function __c11(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          gcsSource: S.optional(__S(92)),
+          gcsSource: S.optional(ImportAptArtifactsGcsSource),
         }),
       ).annotate({
         identifier: "ImportAptArtifactsRequest",
@@ -3735,7 +4510,7 @@ function __c11(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(93).pipe(T.HttpBody())),
+          body: S.optional(ImportAptArtifactsRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3750,7 +4525,7 @@ function __c11(j: number): any {
       return S.suspend(() =>
         S.Struct({
           useWildcards: S.optional(S.Boolean),
-          uris: S.optional(__S(0)),
+          uris: S.optional(StringList),
         }),
       ).annotate({
         identifier: "ImportGoogetArtifactsGcsSource",
@@ -3762,7 +4537,7 @@ function __c12(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          gcsSource: S.optional(__S(95)),
+          gcsSource: S.optional(ImportGoogetArtifactsGcsSource),
         }),
       ).annotate({
         identifier: "ImportGoogetArtifactsRequest",
@@ -3771,7 +4546,7 @@ function __c12(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(96).pipe(T.HttpBody())),
+          body: S.optional(ImportGoogetArtifactsRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3786,7 +4561,7 @@ function __c12(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(93).pipe(T.HttpBody())),
+          body: S.optional(ImportAptArtifactsRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3801,7 +4576,7 @@ function __c12(j: number): any {
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
-          extraLocationTypes: S.optional(__S(0).pipe(T.Query())),
+          extraLocationTypes: S.optional(StringList.pipe(T.Query())),
           filter: S.optional(S.String.pipe(T.Query())),
           pageToken: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
@@ -3816,12 +4591,12 @@ function __c12(j: number): any {
         identifier: "ListProjectsLocationsRequest",
       });
     case 4:
-      return S.Array(__S(65));
+      return S.Array(Location);
     case 5:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          locations: S.optional(__S(100)),
+          locations: S.optional(LocationList),
         }),
       ).annotate({ identifier: "ListLocationsResponse" });
     case 6:
@@ -3843,7 +4618,7 @@ function __c12(j: number): any {
         identifier: "ListProjectsLocationsRepositoriesRequest",
       });
     case 7:
-      return S.Array(__S(37));
+      return S.Array(Repository);
   }
 }
 function __c13(j: number): any {
@@ -3851,7 +4626,7 @@ function __c13(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          repositories: S.optional(__S(103)),
+          repositories: S.optional(RepositoryList),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListRepositoriesResponse" });
@@ -3873,12 +4648,12 @@ function __c13(j: number): any {
         identifier: "ListProjectsLocationsRepositoriesAttachmentsRequest",
       });
     case 2:
-      return S.Array(__S(39));
+      return S.Array(Attachment);
     case 3:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          attachments: S.optional(__S(106)),
+          attachments: S.optional(AttachmentList),
         }),
       ).annotate({ identifier: "ListAttachmentsResponse" });
     case 4:
@@ -3899,12 +4674,12 @@ function __c13(j: number): any {
         identifier: "ListProjectsLocationsRepositoriesDockerImagesRequest",
       });
     case 5:
-      return S.Array(__S(72));
+      return S.Array(DockerImage);
     case 6:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          dockerImages: S.optional(__S(109)),
+          dockerImages: S.optional(DockerImageList),
         }),
       ).annotate({ identifier: "ListDockerImagesResponse" });
     case 7:
@@ -3930,12 +4705,12 @@ function __c13(j: number): any {
 function __c14(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(76));
+      return S.Array(GoogleDevtoolsArtifactregistryV1File);
     case 1:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          files: S.optional(__S(112)),
+          files: S.optional(GoogleDevtoolsArtifactregistryV1FileList),
         }),
       ).annotate({ identifier: "ListFilesResponse" });
     case 2:
@@ -3955,12 +4730,12 @@ function __c14(j: number): any {
         identifier: "ListProjectsLocationsRepositoriesMavenArtifactsRequest",
       });
     case 3:
-      return S.Array(__S(78));
+      return S.Array(MavenArtifact);
     case 4:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          mavenArtifacts: S.optional(__S(115)),
+          mavenArtifacts: S.optional(MavenArtifactList),
         }),
       ).annotate({
         identifier: "ListMavenArtifactsResponse",
@@ -3982,12 +4757,12 @@ function __c14(j: number): any {
         identifier: "ListProjectsLocationsRepositoriesNpmPackagesRequest",
       });
     case 6:
-      return S.Array(__S(80));
+      return S.Array(NpmPackage);
     case 7:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          npmPackages: S.optional(__S(118)),
+          npmPackages: S.optional(NpmPackageList),
         }),
       ).annotate({ identifier: "ListNpmPackagesResponse" });
   }
@@ -4013,12 +4788,12 @@ function __c15(j: number): any {
         identifier: "ListProjectsLocationsRepositoriesPackagesRequest",
       });
     case 1:
-      return S.Array(__S(82));
+      return S.Array(Package);
     case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          packages: S.optional(__S(121)),
+          packages: S.optional(PackageList),
         }),
       ).annotate({ identifier: "ListPackagesResponse" });
     case 3:
@@ -4041,7 +4816,7 @@ function __c15(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          tags: S.optional(__S(85)),
+          tags: S.optional(TagList),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListTagsResponse" });
@@ -4050,7 +4825,9 @@ function __c15(j: number): any {
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
           orderBy: S.optional(S.String.pipe(T.Query())),
-          view: S.optional(S.String.pipe(T.Query())),
+          view: S.optional(
+            ListProjectsLocationsRepositoriesPackagesVersionsViewEnum.pipe(T.Query()),
+          ),
           pageSize: S.optional(S.Number.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
           filter: S.optional(S.String.pipe(T.Query())),
@@ -4065,12 +4842,12 @@ function __c15(j: number): any {
         identifier: "ListProjectsLocationsRepositoriesPackagesVersionsRequest",
       });
     case 6:
-      return S.Array(__S(86));
+      return S.Array(Version);
     case 7:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          versions: S.optional(__S(126)),
+          versions: S.optional(VersionList),
         }),
       ).annotate({ identifier: "ListVersionsResponse" });
   }
@@ -4095,11 +4872,11 @@ function __c16(j: number): any {
         identifier: "ListProjectsLocationsRepositoriesPrewarmedArtifactsRequest",
       });
     case 1:
-      return S.Array(__S(11));
+      return S.Array(PrewarmedArtifact);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          prewarmedArtifacts: S.optional(__S(129)),
+          prewarmedArtifacts: S.optional(PrewarmedArtifactList),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -4122,11 +4899,11 @@ function __c16(j: number): any {
         identifier: "ListProjectsLocationsRepositoriesPythonPackagesRequest",
       });
     case 4:
-      return S.Array(__S(88));
+      return S.Array(PythonPackage);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          pythonPackages: S.optional(__S(132)),
+          pythonPackages: S.optional(PythonPackageList),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -4149,7 +4926,7 @@ function __c16(j: number): any {
         identifier: "ListProjectsLocationsRepositoriesRulesRequest",
       });
     case 7:
-      return S.Array(__S(44));
+      return S.Array(GoogleDevtoolsArtifactregistryV1Rule);
   }
 }
 function __c17(j: number): any {
@@ -4157,7 +4934,7 @@ function __c17(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          rules: S.optional(__S(135)),
+          rules: S.optional(GoogleDevtoolsArtifactregistryV1RuleList),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListRulesResponse" });
@@ -4166,7 +4943,7 @@ function __c17(j: number): any {
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(37).pipe(T.HttpBody())),
+          body: S.optional(Repository.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -4182,7 +4959,7 @@ function __c17(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(76).pipe(T.HttpBody())),
+          body: S.optional(GoogleDevtoolsArtifactregistryV1File.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -4198,7 +4975,7 @@ function __c17(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(82).pipe(T.HttpBody())),
+          body: S.optional(Package.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -4214,7 +4991,7 @@ function __c17(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(41).pipe(T.HttpBody())),
+          body: S.optional(Tag.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -4230,7 +5007,7 @@ function __c17(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(86).pipe(T.HttpBody())),
+          body: S.optional(Version.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -4246,7 +5023,7 @@ function __c17(j: number): any {
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(44).pipe(T.HttpBody())),
+          body: S.optional(GoogleDevtoolsArtifactregistryV1Rule.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -4275,7 +5052,7 @@ function __c18(j: number): any {
           version: S.optional(S.String),
           streamLocation: S.optional(S.String),
           tag: S.optional(S.String),
-          platform: S.optional(__S(143)),
+          platform: S.optional(PrewarmPlatform),
           force: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "PrewarmArtifactRequest" });
@@ -4283,7 +5060,7 @@ function __c18(j: number): any {
       return S.suspend(() =>
         S.Struct({
           repository: S.String.pipe(T.Label()),
-          body: S.optional(__S(144).pipe(T.HttpBody())),
+          body: S.optional(PrewarmArtifactRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4308,7 +5085,7 @@ function __c18(j: number): any {
       return S.suspend(() =>
         S.Struct({
           repository: S.String.pipe(T.Label()),
-          body: S.optional(__S(146).pipe(T.HttpBody())),
+          body: S.optional(RemovePrewarmedArtifactRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4322,14 +5099,14 @@ function __c18(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          policy: S.optional(__S(59)),
+          policy: S.optional(Policy),
         }),
       ).annotate({ identifier: "SetIamPolicyRequest" });
     case 5:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(148).pipe(T.HttpBody())),
+          body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4343,7 +5120,7 @@ function __c18(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          permissions: S.optional(__S(0)),
+          permissions: S.optional(StringList),
         }),
       ).annotate({
         identifier: "TestIamPermissionsRequest",
@@ -4352,7 +5129,7 @@ function __c18(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(150).pipe(T.HttpBody())),
+          body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4372,7 +5149,7 @@ function __c19(j: number): any {
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(61).pipe(T.HttpBody())),
+          body: S.optional(ProjectConfig.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -4388,7 +5165,7 @@ function __c19(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(63).pipe(T.HttpBody())),
+          body: S.optional(ProjectSettings.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -4404,7 +5181,7 @@ function __c19(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(91).pipe(T.HttpBody())),
+          body: S.optional(VPCSCConfig.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -4419,7 +5196,7 @@ function __c19(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(7).pipe(T.HttpBody())),
+          body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4433,7 +5210,7 @@ function __c19(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          operation: S.optional(__S(6)),
+          operation: S.optional(Operation),
         }),
       ).annotate({
         identifier: "UploadAptArtifactMediaResponse",
@@ -4442,14 +5219,14 @@ function __c19(j: number): any {
       return S.suspend(() =>
         S.Struct({
           fileId: S.optional(S.String),
-          fileType: S.optional(S.String),
+          fileType: S.optional(UploadFileRequestFileTypeEnum),
         }),
       ).annotate({ identifier: "UploadFileRequest" });
     case 6:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(157).pipe(T.HttpBody())),
+          body: S.optional(UploadFileRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4463,7 +5240,7 @@ function __c19(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          operation: S.optional(__S(6)),
+          operation: S.optional(Operation),
         }),
       ).annotate({ identifier: "UploadFileMediaResponse" });
   }
@@ -4473,7 +5250,7 @@ function __c20(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          versionAnnotations: S.optional(__S(13)),
+          versionAnnotations: S.optional(StringMap),
           packageId: S.optional(S.String),
           versionId: S.optional(S.String),
           filename: S.optional(S.String),
@@ -4485,7 +5262,7 @@ function __c20(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(160).pipe(T.HttpBody())),
+          body: S.optional(UploadGenericArtifactRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4500,7 +5277,7 @@ function __c20(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(7).pipe(T.HttpBody())),
+          body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4515,7 +5292,7 @@ function __c20(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(7).pipe(T.HttpBody())),
+          body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4530,14 +5307,14 @@ function __c20(j: number): any {
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
-          tags: S.optional(__S(0)),
+          tags: S.optional(StringList),
         }),
       ).annotate({ identifier: "UploadKfpArtifactRequest" });
     case 5:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(164).pipe(T.HttpBody())),
+          body: S.optional(UploadKfpArtifactRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4552,7 +5329,7 @@ function __c20(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(7).pipe(T.HttpBody())),
+          body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4563,56 +5340,5 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "UploadProjectsLocationsRepositoriesYumArtifactsRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
-    case 9:
-      return __c9(i & 7);
-    case 10:
-      return __c10(i & 7);
-    case 11:
-      return __c11(i & 7);
-    case 12:
-      return __c12(i & 7);
-    case 13:
-      return __c13(i & 7);
-    case 14:
-      return __c14(i & 7);
-    case 15:
-      return __c15(i & 7);
-    case 16:
-      return __c16(i & 7);
-    case 17:
-      return __c17(i & 7);
-    case 18:
-      return __c18(i & 7);
-    case 19:
-      return __c19(i & 7);
-    case 20:
-      return __c20(i & 7);
   }
 }

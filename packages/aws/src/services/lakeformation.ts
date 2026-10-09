@@ -10,8 +10,6 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "LakeFormation",
   serviceShapeName: "AWSLakeFormation",
@@ -204,22 +202,28 @@ export type CatalogIdString = string;
 export interface CatalogResource {
   Id?: string;
 }
+const CatalogResource = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<CatalogResource>;
 export type NameString = string;
 export interface DatabaseResource {
   CatalogId?: string;
   Name: string;
 }
+const DatabaseResource = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<DatabaseResource>;
 export interface TableWildcard {}
+const TableWildcard = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<TableWildcard>;
 export interface TableResource {
   CatalogId?: string;
   DatabaseName: string;
   Name?: string;
   TableWildcard?: TableWildcard;
 }
+const TableResource = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<TableResource>;
 export type ColumnNames = string[];
+const ColumnNames = /*@__PURE__*/ __L.at(__c0, 4);
 export interface ColumnWildcard {
   ExcludedColumnNames?: string[];
 }
+const ColumnWildcard = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<ColumnWildcard>;
 export interface TableWithColumnsResource {
   CatalogId?: string;
   DatabaseName: string;
@@ -227,41 +231,58 @@ export interface TableWithColumnsResource {
   ColumnNames?: string[];
   ColumnWildcard?: ColumnWildcard;
 }
+const TableWithColumnsResource = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<TableWithColumnsResource>;
 export type ResourceArnString = string;
 export interface DataLocationResource {
   CatalogId?: string;
   ResourceArn: string;
 }
+const DataLocationResource = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<DataLocationResource>;
 export interface DataCellsFilterResource {
   TableCatalogId?: string;
   DatabaseName?: string;
   TableName?: string;
   Name?: string;
 }
+const DataCellsFilterResource = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<DataCellsFilterResource>;
 export type LFTagValue = string;
 export type TagValueList = string[];
+const TagValueList = ColumnNames as any as S.Schema<TagValueList>;
 export interface LFTagKeyResource {
   CatalogId?: string;
   TagKey: string;
   TagValues: string[];
 }
+const LFTagKeyResource = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<LFTagKeyResource>;
 export type ResourceType = "DATABASE" | "TABLE" | (string & {});
+const ResourceType = S.String;
+
 export type LFTagKey = string;
 export interface LFTag {
   TagKey: string;
   TagValues: string[];
 }
+const LFTag = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<LFTag>;
 export type Expression = LFTag[];
+const Expression = /*@__PURE__*/ __L.at(__c1, 3);
 export interface LFTagPolicyResource {
   CatalogId?: string;
   ResourceType: ResourceType;
   Expression?: LFTag[];
   ExpressionName?: string;
 }
+const LFTagPolicyResource = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<LFTagPolicyResource>;
 export interface LFTagExpressionResource {
   CatalogId?: string;
   Name: string;
 }
+const LFTagExpressionResource = DatabaseResource as any as S.Schema<LFTagExpressionResource>;
 export interface Resource {
   Catalog?: CatalogResource;
   Database?: DatabaseResource;
@@ -273,30 +294,44 @@ export interface Resource {
   LFTagPolicy?: LFTagPolicyResource;
   LFTagExpression?: LFTagExpressionResource;
 }
+const Resource = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<Resource>;
 export interface LFTagPair {
   CatalogId?: string;
   TagKey: string;
   TagValues: string[];
 }
+const LFTagPair = LFTagKeyResource as any as S.Schema<LFTagPair>;
 export type LFTagsList = LFTagPair[];
+const LFTagsList = /*@__PURE__*/ __L.at(__c1, 6);
 export interface AddLFTagsToResourceRequest {
   CatalogId?: string;
   Resource: Resource;
   LFTags: LFTagPair[];
 }
+const AddLFTagsToResourceRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<AddLFTagsToResourceRequest>;
 export type DescriptionString = string;
 export interface ErrorDetail {
   ErrorCode?: string;
   ErrorMessage?: string;
 }
+const ErrorDetail = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<ErrorDetail>;
 export interface LFTagError {
   LFTag?: LFTagPair;
   Error?: ErrorDetail;
 }
+const LFTagError = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<LFTagError>;
 export type LFTagErrors = LFTagError[];
+const LFTagErrors = /*@__PURE__*/ __L.at(__c2, 2);
 export interface AddLFTagsToResourceResponse {
   Failures?: LFTagError[];
 }
+const AddLFTagsToResourceResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<AddLFTagsToResourceResponse>;
 export type SAMLAssertionString = string;
 export type IAMRoleArn = string;
 export type IAMSAMLProviderArn = string;
@@ -307,6 +342,10 @@ export interface AssumeDecoratedRoleWithSAMLRequest {
   PrincipalArn: string;
   DurationSeconds?: number;
 }
+const AssumeDecoratedRoleWithSAMLRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<AssumeDecoratedRoleWithSAMLRequest>;
 export type AccessKeyIdString = string;
 export type SecretAccessKeyString = string;
 export type SessionTokenString = string;
@@ -317,11 +356,16 @@ export interface AssumeDecoratedRoleWithSAMLResponse {
   SessionToken?: string | redacted.Redacted<string>;
   Expiration?: Date;
 }
+const AssumeDecoratedRoleWithSAMLResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<AssumeDecoratedRoleWithSAMLResponse>;
 export type Identifier = string;
 export type DataLakePrincipalString = string;
 export interface DataLakePrincipal {
   DataLakePrincipalIdentifier?: string;
 }
+const DataLakePrincipal = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<DataLakePrincipal>;
 export type Permission =
   | "ALL"
   | "SELECT"
@@ -340,11 +384,15 @@ export type Permission =
   | "CREATE_CATALOG"
   | "SUPER_USER"
   | (string & {});
+const Permission = S.String;
+
 export type PermissionList = Permission[];
+const PermissionList = /*@__PURE__*/ __L.at(__c2, 7);
 export type ExpressionString = string;
 export interface Condition {
   Expression?: string;
 }
+const Condition = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<Condition>;
 export interface BatchPermissionsRequestEntry {
   Id: string;
   Principal?: DataLakePrincipal;
@@ -353,49 +401,90 @@ export interface BatchPermissionsRequestEntry {
   Condition?: Condition;
   PermissionsWithGrantOption?: Permission[];
 }
+const BatchPermissionsRequestEntry = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<BatchPermissionsRequestEntry>;
 export type BatchPermissionsRequestEntryList = BatchPermissionsRequestEntry[];
+const BatchPermissionsRequestEntryList = /*@__PURE__*/ __L.at(__c3, 2);
 export interface BatchGrantPermissionsRequest {
   CatalogId?: string;
   Entries: BatchPermissionsRequestEntry[];
 }
+const BatchGrantPermissionsRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<BatchGrantPermissionsRequest>;
 export interface BatchPermissionsFailureEntry {
   RequestEntry?: BatchPermissionsRequestEntry;
   Error?: ErrorDetail;
 }
+const BatchPermissionsFailureEntry = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<BatchPermissionsFailureEntry>;
 export type BatchPermissionsFailureList = BatchPermissionsFailureEntry[];
+const BatchPermissionsFailureList = /*@__PURE__*/ __L.at(__c3, 5);
 export interface BatchGrantPermissionsResponse {
   Failures?: BatchPermissionsFailureEntry[];
 }
+const BatchGrantPermissionsResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<BatchGrantPermissionsResponse>;
 export interface BatchRevokePermissionsRequest {
   CatalogId?: string;
   Entries: BatchPermissionsRequestEntry[];
 }
+const BatchRevokePermissionsRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<BatchRevokePermissionsRequest>;
 export interface BatchRevokePermissionsResponse {
   Failures?: BatchPermissionsFailureEntry[];
 }
+const BatchRevokePermissionsResponse =
+  BatchGrantPermissionsResponse as any as S.Schema<BatchRevokePermissionsResponse>;
 export type TransactionIdString = string;
 export interface CancelTransactionRequest {
   TransactionId: string;
 }
+const CancelTransactionRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<CancelTransactionRequest>;
 export interface CancelTransactionResponse {}
+const CancelTransactionResponse = TableWildcard as any as S.Schema<CancelTransactionResponse>;
 export interface CommitTransactionRequest {
   TransactionId: string;
 }
+const CommitTransactionRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<CommitTransactionRequest>;
 export type TransactionStatus =
   | "ACTIVE"
   | "COMMITTED"
   | "ABORTED"
   | "COMMIT_IN_PROGRESS"
   | (string & {});
+const TransactionStatus = S.String;
+
 export interface CommitTransactionResponse {
   TransactionStatus?: TransactionStatus;
 }
+const CommitTransactionResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<CommitTransactionResponse>;
 export type PredicateString = string;
 export interface AllRowsWildcard {}
+const AllRowsWildcard = TableWildcard as any as S.Schema<AllRowsWildcard>;
 export interface RowFilter {
   FilterExpression?: string;
   AllRowsWildcard?: AllRowsWildcard;
 }
+const RowFilter = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<RowFilter>;
 export type VersionString = string;
 export interface DataCellsFilter {
   TableCatalogId: string;
@@ -407,27 +496,49 @@ export interface DataCellsFilter {
   ColumnWildcard?: ColumnWildcard;
   VersionId?: string;
 }
+const DataCellsFilter = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<DataCellsFilter>;
 export interface CreateDataCellsFilterRequest {
   TableData: DataCellsFilter;
 }
+const CreateDataCellsFilterRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<CreateDataCellsFilterRequest>;
 export interface CreateDataCellsFilterResponse {}
+const CreateDataCellsFilterResponse =
+  TableWildcard as any as S.Schema<CreateDataCellsFilterResponse>;
 export type IdentityCenterInstanceArn = string;
 export type EnableStatus = "ENABLED" | "DISABLED" | (string & {});
+const EnableStatus = S.String;
+
 export type ScopeTarget = string;
 export type ScopeTargets = string[];
+const ScopeTargets = ColumnNames as any as S.Schema<ScopeTargets>;
 export interface ExternalFilteringConfiguration {
   Status: EnableStatus;
   AuthorizedTargets: string[];
 }
+const ExternalFilteringConfiguration = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<ExternalFilteringConfiguration>;
 export type DataLakePrincipalList = DataLakePrincipal[];
+const DataLakePrincipalList = /*@__PURE__*/ __L.at(__c4, 7);
 export type ServiceAuthorization = "ENABLED" | "DISABLED" | (string & {});
+const ServiceAuthorization = S.String;
+
 export interface RedshiftConnect {
   Authorization: ServiceAuthorization;
 }
+const RedshiftConnect = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<RedshiftConnect>;
 export type RedshiftScopeUnion = { RedshiftConnect: RedshiftConnect };
+const RedshiftScopeUnion = /*@__PURE__*/ __L.at(__c5, 1);
 export type RedshiftServiceIntegrations = RedshiftScopeUnion[];
+const RedshiftServiceIntegrations = /*@__PURE__*/ __L.at(__c5, 2);
 export type ServiceIntegrationUnion = { Redshift: RedshiftScopeUnion[] };
+const ServiceIntegrationUnion = /*@__PURE__*/ __L.at(__c5, 3);
 export type ServiceIntegrationList = ServiceIntegrationUnion[];
+const ServiceIntegrationList = /*@__PURE__*/ __L.at(__c5, 4);
 export interface CreateLakeFormationIdentityCenterConfigurationRequest {
   CatalogId?: string;
   InstanceArn?: string;
@@ -435,63 +546,115 @@ export interface CreateLakeFormationIdentityCenterConfigurationRequest {
   ShareRecipients?: DataLakePrincipal[];
   ServiceIntegrations?: ServiceIntegrationUnion[];
 }
+const CreateLakeFormationIdentityCenterConfigurationRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  5,
+) as any as S.Schema<CreateLakeFormationIdentityCenterConfigurationRequest>;
 export type ApplicationArn = string;
 export interface CreateLakeFormationIdentityCenterConfigurationResponse {
   ApplicationArn?: string;
 }
+const CreateLakeFormationIdentityCenterConfigurationResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  6,
+) as any as S.Schema<CreateLakeFormationIdentityCenterConfigurationResponse>;
 export interface CreateLakeFormationOptInRequest {
   Principal: DataLakePrincipal;
   Resource: Resource;
   Condition?: Condition;
 }
+const CreateLakeFormationOptInRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  7,
+) as any as S.Schema<CreateLakeFormationOptInRequest>;
 export interface CreateLakeFormationOptInResponse {}
+const CreateLakeFormationOptInResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<CreateLakeFormationOptInResponse>;
 export interface CreateLFTagRequest {
   CatalogId?: string;
   TagKey: string;
   TagValues: string[];
 }
+const CreateLFTagRequest = /*@__PURE__*/ __L.at(__c6, 1) as any as S.Schema<CreateLFTagRequest>;
 export interface CreateLFTagResponse {}
+const CreateLFTagResponse = TableWildcard as any as S.Schema<CreateLFTagResponse>;
 export interface CreateLFTagExpressionRequest {
   Name: string;
   Description?: string;
   CatalogId?: string;
   Expression: LFTag[];
 }
+const CreateLFTagExpressionRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  2,
+) as any as S.Schema<CreateLFTagExpressionRequest>;
 export interface CreateLFTagExpressionResponse {}
+const CreateLFTagExpressionResponse =
+  TableWildcard as any as S.Schema<CreateLFTagExpressionResponse>;
 export interface DeleteDataCellsFilterRequest {
   TableCatalogId?: string;
   DatabaseName?: string;
   TableName?: string;
   Name?: string;
 }
+const DeleteDataCellsFilterRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  3,
+) as any as S.Schema<DeleteDataCellsFilterRequest>;
 export interface DeleteDataCellsFilterResponse {}
+const DeleteDataCellsFilterResponse =
+  TableWildcard as any as S.Schema<DeleteDataCellsFilterResponse>;
 export interface DeleteLakeFormationIdentityCenterConfigurationRequest {
   CatalogId?: string;
 }
+const DeleteLakeFormationIdentityCenterConfigurationRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  4,
+) as any as S.Schema<DeleteLakeFormationIdentityCenterConfigurationRequest>;
 export interface DeleteLakeFormationIdentityCenterConfigurationResponse {}
+const DeleteLakeFormationIdentityCenterConfigurationResponse =
+  CreateLakeFormationOptInResponse as any as S.Schema<DeleteLakeFormationIdentityCenterConfigurationResponse>;
 export interface DeleteLakeFormationOptInRequest {
   Principal: DataLakePrincipal;
   Resource: Resource;
   Condition?: Condition;
 }
+const DeleteLakeFormationOptInRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  5,
+) as any as S.Schema<DeleteLakeFormationOptInRequest>;
 export interface DeleteLakeFormationOptInResponse {}
+const DeleteLakeFormationOptInResponse =
+  CreateLakeFormationOptInResponse as any as S.Schema<DeleteLakeFormationOptInResponse>;
 export interface DeleteLFTagRequest {
   CatalogId?: string;
   TagKey: string;
 }
+const DeleteLFTagRequest = /*@__PURE__*/ __L.at(__c6, 6) as any as S.Schema<DeleteLFTagRequest>;
 export interface DeleteLFTagResponse {}
+const DeleteLFTagResponse = TableWildcard as any as S.Schema<DeleteLFTagResponse>;
 export interface DeleteLFTagExpressionRequest {
   Name: string;
   CatalogId?: string;
 }
+const DeleteLFTagExpressionRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  7,
+) as any as S.Schema<DeleteLFTagExpressionRequest>;
 export interface DeleteLFTagExpressionResponse {}
+const DeleteLFTagExpressionResponse =
+  TableWildcard as any as S.Schema<DeleteLFTagExpressionResponse>;
 export type URI = string;
 export type ETagString = string;
 export interface VirtualObject {
   Uri: string;
   ETag?: string;
 }
+const VirtualObject = /*@__PURE__*/ __L.at(__c7, 0) as any as S.Schema<VirtualObject>;
 export type VirtualObjectList = VirtualObject[];
+const VirtualObjectList = /*@__PURE__*/ __L.at(__c7, 1);
 export interface DeleteObjectsOnCancelRequest {
   CatalogId?: string;
   DatabaseName: string;
@@ -499,14 +662,29 @@ export interface DeleteObjectsOnCancelRequest {
   TransactionId: string;
   Objects: VirtualObject[];
 }
+const DeleteObjectsOnCancelRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  2,
+) as any as S.Schema<DeleteObjectsOnCancelRequest>;
 export interface DeleteObjectsOnCancelResponse {}
+const DeleteObjectsOnCancelResponse =
+  TableWildcard as any as S.Schema<DeleteObjectsOnCancelResponse>;
 export interface DeregisterResourceRequest {
   ResourceArn: string;
 }
+const DeregisterResourceRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  3,
+) as any as S.Schema<DeregisterResourceRequest>;
 export interface DeregisterResourceResponse {}
+const DeregisterResourceResponse = TableWildcard as any as S.Schema<DeregisterResourceResponse>;
 export interface DescribeLakeFormationIdentityCenterConfigurationRequest {
   CatalogId?: string;
 }
+const DescribeLakeFormationIdentityCenterConfigurationRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  4,
+) as any as S.Schema<DescribeLakeFormationIdentityCenterConfigurationRequest>;
 export type RAMResourceShareArn = string;
 export interface DescribeLakeFormationIdentityCenterConfigurationResponse {
   CatalogId?: string;
@@ -517,15 +695,25 @@ export interface DescribeLakeFormationIdentityCenterConfigurationResponse {
   ServiceIntegrations?: ServiceIntegrationUnion[];
   ResourceShare?: string;
 }
+const DescribeLakeFormationIdentityCenterConfigurationResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  5,
+) as any as S.Schema<DescribeLakeFormationIdentityCenterConfigurationResponse>;
 export interface DescribeResourceRequest {
   ResourceArn: string;
 }
+const DescribeResourceRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  6,
+) as any as S.Schema<DescribeResourceRequest>;
 export type LastModifiedTimestamp = Date;
 export type VerificationStatus =
   | "VERIFIED"
   | "VERIFICATION_FAILED"
   | "NOT_VERIFIED"
   | (string & {});
+const VerificationStatus = S.String;
+
 export type AccountIdString = string;
 export interface ResourceInfo {
   ResourceArn?: string;
@@ -537,52 +725,99 @@ export interface ResourceInfo {
   VerificationStatus?: VerificationStatus;
   ExpectedResourceOwnerAccount?: string;
 }
+const ResourceInfo = /*@__PURE__*/ __L.at(__c7, 7) as any as S.Schema<ResourceInfo>;
 export interface DescribeResourceResponse {
   ResourceInfo?: ResourceInfo;
 }
+const DescribeResourceResponse = /*@__PURE__*/ __L.at(
+  __c8,
+  0,
+) as any as S.Schema<DescribeResourceResponse>;
 export interface DescribeTransactionRequest {
   TransactionId: string;
 }
+const DescribeTransactionRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  1,
+) as any as S.Schema<DescribeTransactionRequest>;
 export interface TransactionDescription {
   TransactionId?: string;
   TransactionStatus?: TransactionStatus;
   TransactionStartTime?: Date;
   TransactionEndTime?: Date;
 }
+const TransactionDescription = /*@__PURE__*/ __L.at(
+  __c8,
+  2,
+) as any as S.Schema<TransactionDescription>;
 export interface DescribeTransactionResponse {
   TransactionDescription?: TransactionDescription;
 }
+const DescribeTransactionResponse = /*@__PURE__*/ __L.at(
+  __c8,
+  3,
+) as any as S.Schema<DescribeTransactionResponse>;
 export interface ExtendTransactionRequest {
   TransactionId?: string;
 }
+const ExtendTransactionRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  4,
+) as any as S.Schema<ExtendTransactionRequest>;
 export interface ExtendTransactionResponse {}
+const ExtendTransactionResponse = TableWildcard as any as S.Schema<ExtendTransactionResponse>;
 export interface GetDataCellsFilterRequest {
   TableCatalogId: string;
   DatabaseName: string;
   TableName: string;
   Name: string;
 }
+const GetDataCellsFilterRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  5,
+) as any as S.Schema<GetDataCellsFilterRequest>;
 export interface GetDataCellsFilterResponse {
   DataCellsFilter?: DataCellsFilter;
 }
+const GetDataCellsFilterResponse = /*@__PURE__*/ __L.at(
+  __c8,
+  6,
+) as any as S.Schema<GetDataCellsFilterResponse>;
 export interface GetDataLakePrincipalRequest {}
+const GetDataLakePrincipalRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  7,
+) as any as S.Schema<GetDataLakePrincipalRequest>;
 export type IdentityString = string;
 export interface GetDataLakePrincipalResponse {
   Identity?: string;
 }
+const GetDataLakePrincipalResponse = /*@__PURE__*/ __L.at(
+  __c9,
+  0,
+) as any as S.Schema<GetDataLakePrincipalResponse>;
 export interface GetDataLakeSettingsRequest {
   CatalogId?: string;
 }
+const GetDataLakeSettingsRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  1,
+) as any as S.Schema<GetDataLakeSettingsRequest>;
 export interface PrincipalPermissions {
   Principal?: DataLakePrincipal;
   Permissions?: Permission[];
 }
+const PrincipalPermissions = /*@__PURE__*/ __L.at(__c9, 2) as any as S.Schema<PrincipalPermissions>;
 export type PrincipalPermissionsList = PrincipalPermissions[];
+const PrincipalPermissionsList = /*@__PURE__*/ __L.at(__c9, 3);
 export type KeyString = string;
 export type ParametersMapValue = string;
 export type ParametersMap = { [key: string]: string | undefined };
+const ParametersMap = /*@__PURE__*/ __L.at(__c9, 4);
 export type TrustedResourceOwners = string[];
+const TrustedResourceOwners = ColumnNames as any as S.Schema<TrustedResourceOwners>;
 export type AuthorizedSessionTagValueList = string[];
+const AuthorizedSessionTagValueList = ColumnNames as any as S.Schema<AuthorizedSessionTagValueList>;
 export interface DataLakeSettings {
   DataLakeAdmins?: DataLakePrincipal[];
   ReadOnlyAdmins?: DataLakePrincipal[];
@@ -595,9 +830,14 @@ export interface DataLakeSettings {
   ExternalDataFilteringAllowList?: DataLakePrincipal[];
   AuthorizedSessionTagValueList?: string[];
 }
+const DataLakeSettings = /*@__PURE__*/ __L.at(__c9, 5) as any as S.Schema<DataLakeSettings>;
 export interface GetDataLakeSettingsResponse {
   DataLakeSettings?: DataLakeSettings;
 }
+const GetDataLakeSettingsResponse = /*@__PURE__*/ __L.at(
+  __c9,
+  6,
+) as any as S.Schema<GetDataLakeSettingsResponse>;
 export type Token = string;
 export type PageSize = number;
 export interface GetEffectivePermissionsForPathRequest {
@@ -606,10 +846,16 @@ export interface GetEffectivePermissionsForPathRequest {
   NextToken?: string;
   MaxResults?: number;
 }
+const GetEffectivePermissionsForPathRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  7,
+) as any as S.Schema<GetEffectivePermissionsForPathRequest>;
 export type ResourceShareList = string[];
+const ResourceShareList = ColumnNames as any as S.Schema<ResourceShareList>;
 export interface DetailsMap {
   ResourceShare?: string[];
 }
+const DetailsMap = /*@__PURE__*/ __L.at(__c10, 0) as any as S.Schema<DetailsMap>;
 export interface PrincipalResourcePermissions {
   Principal?: DataLakePrincipal;
   Resource?: Resource;
@@ -620,34 +866,57 @@ export interface PrincipalResourcePermissions {
   LastUpdated?: Date;
   LastUpdatedBy?: string;
 }
+const PrincipalResourcePermissions = /*@__PURE__*/ __L.at(
+  __c10,
+  1,
+) as any as S.Schema<PrincipalResourcePermissions>;
 export type PrincipalResourcePermissionsList = PrincipalResourcePermissions[];
+const PrincipalResourcePermissionsList = /*@__PURE__*/ __L.at(__c10, 2);
 export interface GetEffectivePermissionsForPathResponse {
   Permissions?: PrincipalResourcePermissions[];
   NextToken?: string;
 }
+const GetEffectivePermissionsForPathResponse = /*@__PURE__*/ __L.at(
+  __c10,
+  3,
+) as any as S.Schema<GetEffectivePermissionsForPathResponse>;
 export interface GetLFTagRequest {
   CatalogId?: string;
   TagKey: string;
 }
+const GetLFTagRequest = /*@__PURE__*/ __L.at(__c10, 4) as any as S.Schema<GetLFTagRequest>;
 export interface GetLFTagResponse {
   CatalogId?: string;
   TagKey?: string;
   TagValues?: string[];
 }
+const GetLFTagResponse = /*@__PURE__*/ __L.at(__c10, 5) as any as S.Schema<GetLFTagResponse>;
 export interface GetLFTagExpressionRequest {
   Name: string;
   CatalogId?: string;
 }
+const GetLFTagExpressionRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  6,
+) as any as S.Schema<GetLFTagExpressionRequest>;
 export interface GetLFTagExpressionResponse {
   Name?: string;
   Description?: string;
   CatalogId?: string;
   Expression?: LFTag[];
 }
+const GetLFTagExpressionResponse = /*@__PURE__*/ __L.at(
+  __c10,
+  7,
+) as any as S.Schema<GetLFTagExpressionResponse>;
 export type GetQueryStateRequestQueryIdString = string;
 export interface GetQueryStateRequest {
   QueryId: string;
 }
+const GetQueryStateRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  0,
+) as any as S.Schema<GetQueryStateRequest>;
 export type ErrorMessageString = string;
 export type QueryStateString =
   | "PENDING"
@@ -656,14 +925,24 @@ export type QueryStateString =
   | "FINISHED"
   | "EXPIRED"
   | (string & {});
+const QueryStateString = S.String;
+
 export interface GetQueryStateResponse {
   Error?: string;
   State: QueryStateString;
 }
+const GetQueryStateResponse = /*@__PURE__*/ __L.at(
+  __c11,
+  1,
+) as any as S.Schema<GetQueryStateResponse>;
 export type GetQueryStatisticsRequestQueryIdString = string;
 export interface GetQueryStatisticsRequest {
   QueryId: string;
 }
+const GetQueryStatisticsRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  2,
+) as any as S.Schema<GetQueryStatisticsRequest>;
 export type NumberOfMilliseconds = number;
 export type NumberOfBytes = number;
 export type NumberOfItems = number;
@@ -672,33 +951,49 @@ export interface ExecutionStatistics {
   DataScannedBytes?: number;
   WorkUnitsExecutedCount?: number;
 }
+const ExecutionStatistics = /*@__PURE__*/ __L.at(__c11, 3) as any as S.Schema<ExecutionStatistics>;
 export interface PlanningStatistics {
   EstimatedDataToScanBytes?: number;
   PlanningTimeMillis?: number;
   QueueTimeMillis?: number;
   WorkUnitsGeneratedCount?: number;
 }
+const PlanningStatistics = /*@__PURE__*/ __L.at(__c11, 4) as any as S.Schema<PlanningStatistics>;
 export interface GetQueryStatisticsResponse {
   ExecutionStatistics?: ExecutionStatistics;
   PlanningStatistics?: PlanningStatistics;
   QuerySubmissionTime?: Date;
 }
+const GetQueryStatisticsResponse = /*@__PURE__*/ __L.at(
+  __c11,
+  5,
+) as any as S.Schema<GetQueryStatisticsResponse>;
 export type BooleanNullable = boolean;
 export interface GetResourceLFTagsRequest {
   CatalogId?: string;
   Resource: Resource;
   ShowAssignedLFTags?: boolean;
 }
+const GetResourceLFTagsRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  6,
+) as any as S.Schema<GetResourceLFTagsRequest>;
 export interface ColumnLFTag {
   Name?: string;
   LFTags?: LFTagPair[];
 }
+const ColumnLFTag = /*@__PURE__*/ __L.at(__c11, 7) as any as S.Schema<ColumnLFTag>;
 export type ColumnLFTagsList = ColumnLFTag[];
+const ColumnLFTagsList = /*@__PURE__*/ __L.at(__c12, 0);
 export interface GetResourceLFTagsResponse {
   LFTagOnDatabase?: LFTagPair[];
   LFTagsOnTable?: LFTagPair[];
   LFTagsOnColumns?: ColumnLFTag[];
 }
+const GetResourceLFTagsResponse = /*@__PURE__*/ __L.at(
+  __c12,
+  1,
+) as any as S.Schema<GetResourceLFTagsResponse>;
 export type TokenString = string;
 export interface GetTableObjectsRequest {
   CatalogId?: string;
@@ -710,53 +1005,84 @@ export interface GetTableObjectsRequest {
   MaxResults?: number;
   NextToken?: string;
 }
+const GetTableObjectsRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  2,
+) as any as S.Schema<GetTableObjectsRequest>;
 export type PartitionValueString = string;
 export type PartitionValuesList = string[];
+const PartitionValuesList = ColumnNames as any as S.Schema<PartitionValuesList>;
 export type ObjectSize = number;
 export interface TableObject {
   Uri?: string;
   ETag?: string;
   Size?: number;
 }
+const TableObject = /*@__PURE__*/ __L.at(__c12, 3) as any as S.Schema<TableObject>;
 export type TableObjectList = TableObject[];
+const TableObjectList = /*@__PURE__*/ __L.at(__c12, 4);
 export interface PartitionObjects {
   PartitionValues?: string[];
   Objects?: TableObject[];
 }
+const PartitionObjects = /*@__PURE__*/ __L.at(__c12, 5) as any as S.Schema<PartitionObjects>;
 export type PartitionedTableObjectsList = PartitionObjects[];
+const PartitionedTableObjectsList = /*@__PURE__*/ __L.at(__c12, 6);
 export interface GetTableObjectsResponse {
   Objects?: PartitionObjects[];
   NextToken?: string;
 }
+const GetTableObjectsResponse = /*@__PURE__*/ __L.at(
+  __c12,
+  7,
+) as any as S.Schema<GetTableObjectsResponse>;
 export type AuditContextString = string;
 export interface AuditContext {
   AdditionalAuditContext?: string;
 }
+const AuditContext = /*@__PURE__*/ __L.at(__c13, 0) as any as S.Schema<AuditContext>;
 export type PathString = string;
 export type PathStringList = string[];
+const PathStringList = ColumnNames as any as S.Schema<PathStringList>;
 export type CredentialsScope = "READ" | "READWRITE" | (string & {});
+const CredentialsScope = S.String;
+
 export interface GetTemporaryDataLocationCredentialsRequest {
   DurationSeconds?: number;
   AuditContext?: AuditContext;
   DataLocations?: string[];
   CredentialsScope?: CredentialsScope;
 }
+const GetTemporaryDataLocationCredentialsRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  1,
+) as any as S.Schema<GetTemporaryDataLocationCredentialsRequest>;
 export interface TemporaryCredentials {
   AccessKeyId?: string;
   SecretAccessKey?: string | redacted.Redacted<string>;
   SessionToken?: string | redacted.Redacted<string>;
   Expiration?: Date;
 }
+const TemporaryCredentials = /*@__PURE__*/ __L.at(
+  __c13,
+  2,
+) as any as S.Schema<TemporaryCredentials>;
 export interface GetTemporaryDataLocationCredentialsResponse {
   Credentials?: TemporaryCredentials;
   AccessibleDataLocations?: string[];
   CredentialsScope?: CredentialsScope;
 }
+const GetTemporaryDataLocationCredentialsResponse = /*@__PURE__*/ __L.at(
+  __c13,
+  3,
+) as any as S.Schema<GetTemporaryDataLocationCredentialsResponse>;
 export type ValueString = string;
 export type ValueStringList = string[];
+const ValueStringList = ColumnNames as any as S.Schema<ValueStringList>;
 export interface PartitionValueList {
   Values: string[];
 }
+const PartitionValueList = /*@__PURE__*/ __L.at(__c13, 4) as any as S.Schema<PartitionValueList>;
 export type PermissionType =
   | "COLUMN_PERMISSION"
   | "CELL_FILTER_PERMISSION"
@@ -764,6 +1090,7 @@ export type PermissionType =
   | "NESTED_CELL_PERMISSION"
   | (string & {});
 export type PermissionTypeList = PermissionType[];
+const PermissionTypeList = PermissionList as any as S.Schema<PermissionTypeList>;
 export interface GetTemporaryGluePartitionCredentialsRequest {
   TableArn: string;
   Partition: PartitionValueList;
@@ -772,17 +1099,24 @@ export interface GetTemporaryGluePartitionCredentialsRequest {
   AuditContext?: AuditContext;
   SupportedPermissionTypes?: PermissionType[];
 }
+const GetTemporaryGluePartitionCredentialsRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  5,
+) as any as S.Schema<GetTemporaryGluePartitionCredentialsRequest>;
 export interface GetTemporaryGluePartitionCredentialsResponse {
   AccessKeyId?: string;
   SecretAccessKey?: string | redacted.Redacted<string>;
   SessionToken?: string | redacted.Redacted<string>;
   Expiration?: Date;
 }
+const GetTemporaryGluePartitionCredentialsResponse =
+  AssumeDecoratedRoleWithSAMLResponse as any as S.Schema<GetTemporaryGluePartitionCredentialsResponse>;
 export type HashString = string;
 export type NullableString = string;
 export type ContextKey = string;
 export type ContextValue = string;
 export type AdditionalContextMap = { [key: string]: string | undefined };
+const AdditionalContextMap = ParametersMap as any as S.Schema<AdditionalContextMap>;
 export interface QuerySessionContext {
   QueryId?: string;
   QueryStartTime?: Date;
@@ -790,6 +1124,7 @@ export interface QuerySessionContext {
   QueryAuthorizationId?: string;
   AdditionalContext?: { [key: string]: string | undefined };
 }
+const QuerySessionContext = /*@__PURE__*/ __L.at(__c13, 6) as any as S.Schema<QuerySessionContext>;
 export interface GetTemporaryGlueTableCredentialsRequest {
   TableArn: string;
   Permissions?: Permission[];
@@ -799,6 +1134,10 @@ export interface GetTemporaryGlueTableCredentialsRequest {
   S3Path?: string;
   QuerySessionContext?: QuerySessionContext;
 }
+const GetTemporaryGlueTableCredentialsRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  7,
+) as any as S.Schema<GetTemporaryGlueTableCredentialsRequest>;
 export interface GetTemporaryGlueTableCredentialsResponse {
   AccessKeyId?: string;
   SecretAccessKey?: string | redacted.Redacted<string>;
@@ -806,6 +1145,10 @@ export interface GetTemporaryGlueTableCredentialsResponse {
   Expiration?: Date;
   VendedS3Path?: string[];
 }
+const GetTemporaryGlueTableCredentialsResponse = /*@__PURE__*/ __L.at(
+  __c14,
+  0,
+) as any as S.Schema<GetTemporaryGlueTableCredentialsResponse>;
 export type GetWorkUnitResultsRequestQueryIdString = string;
 export type GetWorkUnitResultsRequestWorkUnitIdLong = number;
 export type SyntheticGetWorkUnitResultsRequestWorkUnitTokenString =
@@ -816,15 +1159,24 @@ export interface GetWorkUnitResultsRequest {
   WorkUnitId: number;
   WorkUnitToken: string | redacted.Redacted<string>;
 }
+const GetWorkUnitResultsRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  1,
+) as any as S.Schema<GetWorkUnitResultsRequest>;
 export interface GetWorkUnitResultsResponse {
   ResultStream?: T.StreamingOutputBody;
 }
+const GetWorkUnitResultsResponse = /*@__PURE__*/ __L.at(
+  __c14,
+  2,
+) as any as S.Schema<GetWorkUnitResultsResponse>;
 export type GetWorkUnitsRequestQueryIdString = string;
 export interface GetWorkUnitsRequest {
   NextToken?: string;
   PageSize?: number;
   QueryId: string;
 }
+const GetWorkUnitsRequest = /*@__PURE__*/ __L.at(__c14, 3) as any as S.Schema<GetWorkUnitsRequest>;
 export type QueryIdString = string;
 export type WorkUnitIdLong = number;
 export type WorkUnitTokenString = string;
@@ -833,12 +1185,18 @@ export interface WorkUnitRange {
   WorkUnitIdMin: number;
   WorkUnitToken: string;
 }
+const WorkUnitRange = /*@__PURE__*/ __L.at(__c14, 4) as any as S.Schema<WorkUnitRange>;
 export type WorkUnitRangeList = WorkUnitRange[];
+const WorkUnitRangeList = /*@__PURE__*/ __L.at(__c14, 5);
 export interface GetWorkUnitsResponse {
   NextToken?: string;
   QueryId: string;
   WorkUnitRanges: WorkUnitRange[];
 }
+const GetWorkUnitsResponse = /*@__PURE__*/ __L.at(
+  __c14,
+  6,
+) as any as S.Schema<GetWorkUnitsResponse>;
 export interface GrantPermissionsRequest {
   CatalogId?: string;
   Principal: DataLakePrincipal;
@@ -847,23 +1205,41 @@ export interface GrantPermissionsRequest {
   Condition?: Condition;
   PermissionsWithGrantOption?: Permission[];
 }
+const GrantPermissionsRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  7,
+) as any as S.Schema<GrantPermissionsRequest>;
 export interface GrantPermissionsResponse {}
+const GrantPermissionsResponse = TableWildcard as any as S.Schema<GrantPermissionsResponse>;
 export interface ListDataCellsFilterRequest {
   Table?: TableResource;
   NextToken?: string;
   MaxResults?: number;
 }
+const ListDataCellsFilterRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  0,
+) as any as S.Schema<ListDataCellsFilterRequest>;
 export type DataCellsFilterList = DataCellsFilter[];
+const DataCellsFilterList = /*@__PURE__*/ __L.at(__c15, 1);
 export interface ListDataCellsFilterResponse {
   DataCellsFilters?: DataCellsFilter[];
   NextToken?: string;
 }
+const ListDataCellsFilterResponse = /*@__PURE__*/ __L.at(
+  __c15,
+  2,
+) as any as S.Schema<ListDataCellsFilterResponse>;
 export interface ListLakeFormationOptInsRequest {
   Principal?: DataLakePrincipal;
   Resource?: Resource;
   MaxResults?: number;
   NextToken?: string;
 }
+const ListLakeFormationOptInsRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  3,
+) as any as S.Schema<ListLakeFormationOptInsRequest>;
 export interface LakeFormationOptInsInfo {
   Resource?: Resource;
   Principal?: DataLakePrincipal;
@@ -871,38 +1247,61 @@ export interface LakeFormationOptInsInfo {
   LastModified?: Date;
   LastUpdatedBy?: string;
 }
+const LakeFormationOptInsInfo = /*@__PURE__*/ __L.at(
+  __c15,
+  4,
+) as any as S.Schema<LakeFormationOptInsInfo>;
 export type LakeFormationOptInsInfoList = LakeFormationOptInsInfo[];
+const LakeFormationOptInsInfoList = /*@__PURE__*/ __L.at(__c15, 5);
 export interface ListLakeFormationOptInsResponse {
   LakeFormationOptInsInfoList?: LakeFormationOptInsInfo[];
   NextToken?: string;
 }
+const ListLakeFormationOptInsResponse = /*@__PURE__*/ __L.at(
+  __c15,
+  6,
+) as any as S.Schema<ListLakeFormationOptInsResponse>;
 export interface ListLFTagExpressionsRequest {
   CatalogId?: string;
   MaxResults?: number;
   NextToken?: string;
 }
+const ListLFTagExpressionsRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  7,
+) as any as S.Schema<ListLFTagExpressionsRequest>;
 export interface LFTagExpression {
   Name?: string;
   Description?: string;
   CatalogId?: string;
   Expression?: LFTag[];
 }
+const LFTagExpression = /*@__PURE__*/ __L.at(__c16, 0) as any as S.Schema<LFTagExpression>;
 export type LFTagExpressionsList = LFTagExpression[];
+const LFTagExpressionsList = /*@__PURE__*/ __L.at(__c16, 1);
 export interface ListLFTagExpressionsResponse {
   LFTagExpressions?: LFTagExpression[];
   NextToken?: string;
 }
+const ListLFTagExpressionsResponse = /*@__PURE__*/ __L.at(
+  __c16,
+  2,
+) as any as S.Schema<ListLFTagExpressionsResponse>;
 export type ResourceShareType = "FOREIGN" | "ALL" | (string & {});
+const ResourceShareType = S.String;
+
 export interface ListLFTagsRequest {
   CatalogId?: string;
   ResourceShareType?: ResourceShareType;
   MaxResults?: number;
   NextToken?: string;
 }
+const ListLFTagsRequest = /*@__PURE__*/ __L.at(__c16, 3) as any as S.Schema<ListLFTagsRequest>;
 export interface ListLFTagsResponse {
   LFTags?: LFTagPair[];
   NextToken?: string;
 }
+const ListLFTagsResponse = /*@__PURE__*/ __L.at(__c16, 4) as any as S.Schema<ListLFTagsResponse>;
 export type DataLakeResourceType =
   | "CATALOG"
   | "DATABASE"
@@ -914,6 +1313,8 @@ export type DataLakeResourceType =
   | "LF_TAG_POLICY_TABLE"
   | "LF_NAMED_TAG_EXPRESSION"
   | (string & {});
+const DataLakeResourceType = S.String;
+
 export type TrueFalseString = string;
 export interface ListPermissionsRequest {
   CatalogId?: string;
@@ -924,11 +1325,21 @@ export interface ListPermissionsRequest {
   MaxResults?: number;
   IncludeRelated?: string;
 }
+const ListPermissionsRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  5,
+) as any as S.Schema<ListPermissionsRequest>;
 export interface ListPermissionsResponse {
   PrincipalResourcePermissions?: PrincipalResourcePermissions[];
   NextToken?: string;
 }
+const ListPermissionsResponse = /*@__PURE__*/ __L.at(
+  __c16,
+  6,
+) as any as S.Schema<ListPermissionsResponse>;
 export type FieldNameString = "RESOURCE_ARN" | "ROLE_ARN" | "LAST_MODIFIED" | (string & {});
+const FieldNameString = S.String;
+
 export type ComparisonOperator =
   | "EQ"
   | "NE"
@@ -942,25 +1353,41 @@ export type ComparisonOperator =
   | "IN"
   | "BETWEEN"
   | (string & {});
+const ComparisonOperator = S.String;
+
 export type StringValue = string;
 export type StringValueList = string[];
+const StringValueList = ColumnNames as any as S.Schema<StringValueList>;
 export interface FilterCondition {
   Field?: FieldNameString;
   ComparisonOperator?: ComparisonOperator;
   StringValueList?: string[];
 }
+const FilterCondition = /*@__PURE__*/ __L.at(__c16, 7) as any as S.Schema<FilterCondition>;
 export type FilterConditionList = FilterCondition[];
+const FilterConditionList = /*@__PURE__*/ __L.at(__c17, 0);
 export interface ListResourcesRequest {
   FilterConditionList?: FilterCondition[];
   MaxResults?: number;
   NextToken?: string;
 }
+const ListResourcesRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  1,
+) as any as S.Schema<ListResourcesRequest>;
 export type ResourceInfoList = ResourceInfo[];
+const ResourceInfoList = /*@__PURE__*/ __L.at(__c17, 2);
 export interface ListResourcesResponse {
   ResourceInfoList?: ResourceInfo[];
   NextToken?: string;
 }
+const ListResourcesResponse = /*@__PURE__*/ __L.at(
+  __c17,
+  3,
+) as any as S.Schema<ListResourcesResponse>;
 export type OptimizerType = "COMPACTION" | "GARBAGE_COLLECTION" | "ALL" | (string & {});
+const OptimizerType = S.String;
+
 export interface ListTableStorageOptimizersRequest {
   CatalogId?: string;
   DatabaseName: string;
@@ -969,9 +1396,14 @@ export interface ListTableStorageOptimizersRequest {
   MaxResults?: number;
   NextToken?: string;
 }
+const ListTableStorageOptimizersRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  4,
+) as any as S.Schema<ListTableStorageOptimizersRequest>;
 export type StorageOptimizerConfigKey = string;
 export type StorageOptimizerConfigValue = string;
 export type StorageOptimizerConfig = { [key: string]: string | undefined };
+const StorageOptimizerConfig = ParametersMap as any as S.Schema<StorageOptimizerConfig>;
 export type MessageString = string;
 export interface StorageOptimizer {
   StorageOptimizerType?: OptimizerType;
@@ -980,11 +1412,17 @@ export interface StorageOptimizer {
   Warnings?: string;
   LastRunDetails?: string;
 }
+const StorageOptimizer = /*@__PURE__*/ __L.at(__c17, 5) as any as S.Schema<StorageOptimizer>;
 export type StorageOptimizerList = StorageOptimizer[];
+const StorageOptimizerList = /*@__PURE__*/ __L.at(__c17, 6);
 export interface ListTableStorageOptimizersResponse {
   StorageOptimizerList?: StorageOptimizer[];
   NextToken?: string;
 }
+const ListTableStorageOptimizersResponse = /*@__PURE__*/ __L.at(
+  __c17,
+  7,
+) as any as S.Schema<ListTableStorageOptimizersResponse>;
 export type TransactionStatusFilter =
   | "ALL"
   | "COMPLETED"
@@ -992,22 +1430,38 @@ export type TransactionStatusFilter =
   | "COMMITTED"
   | "ABORTED"
   | (string & {});
+const TransactionStatusFilter = S.String;
+
 export interface ListTransactionsRequest {
   CatalogId?: string;
   StatusFilter?: TransactionStatusFilter;
   MaxResults?: number;
   NextToken?: string;
 }
+const ListTransactionsRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  0,
+) as any as S.Schema<ListTransactionsRequest>;
 export type TransactionDescriptionList = TransactionDescription[];
+const TransactionDescriptionList = /*@__PURE__*/ __L.at(__c18, 1);
 export interface ListTransactionsResponse {
   Transactions?: TransactionDescription[];
   NextToken?: string;
 }
+const ListTransactionsResponse = /*@__PURE__*/ __L.at(
+  __c18,
+  2,
+) as any as S.Schema<ListTransactionsResponse>;
 export interface PutDataLakeSettingsRequest {
   CatalogId?: string;
   DataLakeSettings: DataLakeSettings;
 }
+const PutDataLakeSettingsRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  3,
+) as any as S.Schema<PutDataLakeSettingsRequest>;
 export interface PutDataLakeSettingsResponse {}
+const PutDataLakeSettingsResponse = TableWildcard as any as S.Schema<PutDataLakeSettingsResponse>;
 export interface RegisterResourceRequest {
   ResourceArn: string;
   UseServiceLinkedRole?: boolean;
@@ -1017,15 +1471,26 @@ export interface RegisterResourceRequest {
   WithPrivilegedAccess?: boolean;
   ExpectedResourceOwnerAccount?: string;
 }
+const RegisterResourceRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  4,
+) as any as S.Schema<RegisterResourceRequest>;
 export interface RegisterResourceResponse {}
+const RegisterResourceResponse = TableWildcard as any as S.Schema<RegisterResourceResponse>;
 export interface RemoveLFTagsFromResourceRequest {
   CatalogId?: string;
   Resource: Resource;
   LFTags: LFTagPair[];
 }
+const RemoveLFTagsFromResourceRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  5,
+) as any as S.Schema<RemoveLFTagsFromResourceRequest>;
 export interface RemoveLFTagsFromResourceResponse {
   Failures?: LFTagError[];
 }
+const RemoveLFTagsFromResourceResponse =
+  AddLFTagsToResourceResponse as any as S.Schema<RemoveLFTagsFromResourceResponse>;
 export interface RevokePermissionsRequest {
   CatalogId?: string;
   Principal: DataLakePrincipal;
@@ -1034,7 +1499,12 @@ export interface RevokePermissionsRequest {
   Condition?: Condition;
   PermissionsWithGrantOption?: Permission[];
 }
+const RevokePermissionsRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  6,
+) as any as S.Schema<RevokePermissionsRequest>;
 export interface RevokePermissionsResponse {}
+const RevokePermissionsResponse = TableWildcard as any as S.Schema<RevokePermissionsResponse>;
 export type SearchPageSize = number;
 export interface SearchDatabasesByLFTagsRequest {
   NextToken?: string;
@@ -1042,34 +1512,55 @@ export interface SearchDatabasesByLFTagsRequest {
   CatalogId?: string;
   Expression: LFTag[];
 }
+const SearchDatabasesByLFTagsRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  7,
+) as any as S.Schema<SearchDatabasesByLFTagsRequest>;
 export interface TaggedDatabase {
   Database?: DatabaseResource;
   LFTags?: LFTagPair[];
 }
+const TaggedDatabase = /*@__PURE__*/ __L.at(__c19, 0) as any as S.Schema<TaggedDatabase>;
 export type DatabaseLFTagsList = TaggedDatabase[];
+const DatabaseLFTagsList = /*@__PURE__*/ __L.at(__c19, 1);
 export interface SearchDatabasesByLFTagsResponse {
   NextToken?: string;
   DatabaseList?: TaggedDatabase[];
 }
+const SearchDatabasesByLFTagsResponse = /*@__PURE__*/ __L.at(
+  __c19,
+  2,
+) as any as S.Schema<SearchDatabasesByLFTagsResponse>;
 export interface SearchTablesByLFTagsRequest {
   NextToken?: string;
   MaxResults?: number;
   CatalogId?: string;
   Expression: LFTag[];
 }
+const SearchTablesByLFTagsRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  3,
+) as any as S.Schema<SearchTablesByLFTagsRequest>;
 export interface TaggedTable {
   Table?: TableResource;
   LFTagOnDatabase?: LFTagPair[];
   LFTagsOnTable?: LFTagPair[];
   LFTagsOnColumns?: ColumnLFTag[];
 }
+const TaggedTable = /*@__PURE__*/ __L.at(__c19, 4) as any as S.Schema<TaggedTable>;
 export type TableLFTagsList = TaggedTable[];
+const TableLFTagsList = /*@__PURE__*/ __L.at(__c19, 5);
 export interface SearchTablesByLFTagsResponse {
   NextToken?: string;
   TableList?: TaggedTable[];
 }
+const SearchTablesByLFTagsResponse = /*@__PURE__*/ __L.at(
+  __c19,
+  6,
+) as any as S.Schema<SearchTablesByLFTagsResponse>;
 export type QueryPlanningContextDatabaseNameString = string;
 export type QueryParameterMap = { [key: string]: string | undefined };
+const QueryParameterMap = ParametersMap as any as S.Schema<QueryParameterMap>;
 export interface QueryPlanningContext {
   CatalogId?: string;
   DatabaseName: string;
@@ -1077,26 +1568,56 @@ export interface QueryPlanningContext {
   QueryParameters?: { [key: string]: string | undefined };
   TransactionId?: string;
 }
+const QueryPlanningContext = /*@__PURE__*/ __L.at(
+  __c19,
+  7,
+) as any as S.Schema<QueryPlanningContext>;
 export type SyntheticStartQueryPlanningRequestQueryString = string | redacted.Redacted<string>;
 export interface StartQueryPlanningRequest {
   QueryPlanningContext: QueryPlanningContext;
   QueryString: string | redacted.Redacted<string>;
 }
+const StartQueryPlanningRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  0,
+) as any as S.Schema<StartQueryPlanningRequest>;
 export interface StartQueryPlanningResponse {
   QueryId: string;
 }
+const StartQueryPlanningResponse = /*@__PURE__*/ __L.at(
+  __c20,
+  1,
+) as any as S.Schema<StartQueryPlanningResponse>;
 export type TransactionType = "READ_AND_WRITE" | "READ_ONLY" | (string & {});
+const TransactionType = S.String;
+
 export interface StartTransactionRequest {
   TransactionType?: TransactionType;
 }
+const StartTransactionRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  2,
+) as any as S.Schema<StartTransactionRequest>;
 export interface StartTransactionResponse {
   TransactionId?: string;
 }
+const StartTransactionResponse = /*@__PURE__*/ __L.at(
+  __c20,
+  3,
+) as any as S.Schema<StartTransactionResponse>;
 export interface UpdateDataCellsFilterRequest {
   TableData: DataCellsFilter;
 }
+const UpdateDataCellsFilterRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  4,
+) as any as S.Schema<UpdateDataCellsFilterRequest>;
 export interface UpdateDataCellsFilterResponse {}
+const UpdateDataCellsFilterResponse =
+  TableWildcard as any as S.Schema<UpdateDataCellsFilterResponse>;
 export type ApplicationStatus = "ENABLED" | "DISABLED" | (string & {});
+const ApplicationStatus = S.String;
+
 export interface UpdateLakeFormationIdentityCenterConfigurationRequest {
   CatalogId?: string;
   ShareRecipients?: DataLakePrincipal[];
@@ -1104,21 +1625,35 @@ export interface UpdateLakeFormationIdentityCenterConfigurationRequest {
   ApplicationStatus?: ApplicationStatus;
   ExternalFiltering?: ExternalFilteringConfiguration;
 }
+const UpdateLakeFormationIdentityCenterConfigurationRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  5,
+) as any as S.Schema<UpdateLakeFormationIdentityCenterConfigurationRequest>;
 export interface UpdateLakeFormationIdentityCenterConfigurationResponse {}
+const UpdateLakeFormationIdentityCenterConfigurationResponse =
+  CreateLakeFormationOptInResponse as any as S.Schema<UpdateLakeFormationIdentityCenterConfigurationResponse>;
 export interface UpdateLFTagRequest {
   CatalogId?: string;
   TagKey: string;
   TagValuesToDelete?: string[];
   TagValuesToAdd?: string[];
 }
+const UpdateLFTagRequest = /*@__PURE__*/ __L.at(__c20, 6) as any as S.Schema<UpdateLFTagRequest>;
 export interface UpdateLFTagResponse {}
+const UpdateLFTagResponse = TableWildcard as any as S.Schema<UpdateLFTagResponse>;
 export interface UpdateLFTagExpressionRequest {
   Name: string;
   Description?: string;
   CatalogId?: string;
   Expression: LFTag[];
 }
+const UpdateLFTagExpressionRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  7,
+) as any as S.Schema<UpdateLFTagExpressionRequest>;
 export interface UpdateLFTagExpressionResponse {}
+const UpdateLFTagExpressionResponse =
+  TableWildcard as any as S.Schema<UpdateLFTagExpressionResponse>;
 export interface UpdateResourceRequest {
   RoleArn: string;
   ResourceArn: string;
@@ -1126,23 +1661,32 @@ export interface UpdateResourceRequest {
   HybridAccessEnabled?: boolean;
   ExpectedResourceOwnerAccount?: string;
 }
+const UpdateResourceRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  0,
+) as any as S.Schema<UpdateResourceRequest>;
 export interface UpdateResourceResponse {}
+const UpdateResourceResponse = TableWildcard as any as S.Schema<UpdateResourceResponse>;
 export interface AddObjectInput {
   Uri: string;
   ETag: string;
   Size: number;
   PartitionValues?: string[];
 }
+const AddObjectInput = /*@__PURE__*/ __L.at(__c21, 1) as any as S.Schema<AddObjectInput>;
 export interface DeleteObjectInput {
   Uri: string;
   ETag?: string;
   PartitionValues?: string[];
 }
+const DeleteObjectInput = /*@__PURE__*/ __L.at(__c21, 2) as any as S.Schema<DeleteObjectInput>;
 export interface WriteOperation {
   AddObject?: AddObjectInput;
   DeleteObject?: DeleteObjectInput;
 }
+const WriteOperation = /*@__PURE__*/ __L.at(__c21, 3) as any as S.Schema<WriteOperation>;
 export type WriteOperationList = WriteOperation[];
+const WriteOperationList = /*@__PURE__*/ __L.at(__c21, 4);
 export interface UpdateTableObjectsRequest {
   CatalogId?: string;
   DatabaseName: string;
@@ -1150,20 +1694,34 @@ export interface UpdateTableObjectsRequest {
   TransactionId?: string;
   WriteOperations: WriteOperation[];
 }
+const UpdateTableObjectsRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  5,
+) as any as S.Schema<UpdateTableObjectsRequest>;
 export interface UpdateTableObjectsResponse {}
+const UpdateTableObjectsResponse = TableWildcard as any as S.Schema<UpdateTableObjectsResponse>;
 export type StorageOptimizerConfigMap = {
   [key in OptimizerType]?: { [key: string]: string | undefined };
 };
+const StorageOptimizerConfigMap = /*@__PURE__*/ __L.at(__c21, 6);
 export interface UpdateTableStorageOptimizerRequest {
   CatalogId?: string;
   DatabaseName: string;
   TableName: string;
   StorageOptimizerConfig: { [key: string]: { [key: string]: string | undefined } | undefined };
 }
+const UpdateTableStorageOptimizerRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  7,
+) as any as S.Schema<UpdateTableStorageOptimizerRequest>;
 export type Result = string;
 export interface UpdateTableStorageOptimizerResponse {
   Result?: string;
 }
+const UpdateTableStorageOptimizerResponse = /*@__PURE__*/ __L.at(
+  __c22,
+  0,
+) as any as S.Schema<UpdateTableStorageOptimizerResponse>;
 export type AddLFTagsToResourceError =
   | AccessDeniedException
   | ConcurrentModificationException
@@ -1181,8 +1739,8 @@ export const addLFTagsToResource: API.OperationMethod<
   AddLFTagsToResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15) as any as S.Schema<AddLFTagsToResourceRequest>,
-  output: __S(19) as any as S.Schema<AddLFTagsToResourceResponse>,
+  input: AddLFTagsToResourceRequest,
+  output: AddLFTagsToResourceResponse,
   errors: [
     AccessDeniedException,
     ConcurrentModificationException,
@@ -1227,8 +1785,8 @@ export const assumeDecoratedRoleWithSAML: API.OperationMethod<
   AssumeDecoratedRoleWithSAMLError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20) as any as S.Schema<AssumeDecoratedRoleWithSAMLRequest>,
-  output: __S(21) as any as S.Schema<AssumeDecoratedRoleWithSAMLResponse>,
+  input: AssumeDecoratedRoleWithSAMLRequest,
+  output: AssumeDecoratedRoleWithSAMLResponse,
   errors: [
     AccessDeniedException,
     EntityNotFoundException,
@@ -1254,8 +1812,8 @@ export const batchGrantPermissions: API.OperationMethod<
   BatchGrantPermissionsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27) as any as S.Schema<BatchGrantPermissionsRequest>,
-  output: __S(30) as any as S.Schema<BatchGrantPermissionsResponse>,
+  input: BatchGrantPermissionsRequest,
+  output: BatchGrantPermissionsResponse,
   errors: [InvalidInputException, OperationTimeoutException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1275,8 +1833,8 @@ export const batchRevokePermissions: API.OperationMethod<
   BatchRevokePermissionsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31) as any as S.Schema<BatchRevokePermissionsRequest>,
-  output: __S(30) as any as S.Schema<BatchRevokePermissionsResponse>,
+  input: BatchRevokePermissionsRequest,
+  output: BatchRevokePermissionsResponse,
   errors: [InvalidInputException, OperationTimeoutException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1301,8 +1859,8 @@ export const cancelTransaction: API.OperationMethod<
   CancelTransactionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32) as any as S.Schema<CancelTransactionRequest>,
-  output: __S(2) as any as S.Schema<CancelTransactionResponse>,
+  input: CancelTransactionRequest,
+  output: CancelTransactionResponse,
   errors: [
     ConcurrentModificationException,
     EntityNotFoundException,
@@ -1334,8 +1892,8 @@ export const commitTransaction: API.OperationMethod<
   CommitTransactionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33) as any as S.Schema<CommitTransactionRequest>,
-  output: __S(34) as any as S.Schema<CommitTransactionResponse>,
+  input: CommitTransactionRequest,
+  output: CommitTransactionResponse,
   errors: [
     ConcurrentModificationException,
     EntityNotFoundException,
@@ -1367,8 +1925,8 @@ export const createDataCellsFilter: API.OperationMethod<
   CreateDataCellsFilterError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37) as any as S.Schema<CreateDataCellsFilterRequest>,
-  output: __S(2) as any as S.Schema<CreateDataCellsFilterResponse>,
+  input: CreateDataCellsFilterRequest,
+  output: CreateDataCellsFilterResponse,
   errors: [
     AccessDeniedException,
     AlreadyExistsException,
@@ -1400,8 +1958,8 @@ export const createLakeFormationIdentityCenterConfiguration: API.OperationMethod
   CreateLakeFormationIdentityCenterConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45) as any as S.Schema<CreateLakeFormationIdentityCenterConfigurationRequest>,
-  output: __S(46) as any as S.Schema<CreateLakeFormationIdentityCenterConfigurationResponse>,
+  input: CreateLakeFormationIdentityCenterConfigurationRequest,
+  output: CreateLakeFormationIdentityCenterConfigurationResponse,
   errors: [
     AccessDeniedException,
     AlreadyExistsException,
@@ -1434,8 +1992,8 @@ export const createLakeFormationOptIn: API.OperationMethod<
   CreateLakeFormationOptInError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47) as any as S.Schema<CreateLakeFormationOptInRequest>,
-  output: __S(48) as any as S.Schema<CreateLakeFormationOptInResponse>,
+  input: CreateLakeFormationOptInRequest,
+  output: CreateLakeFormationOptInResponse,
   errors: [
     AccessDeniedException,
     ConcurrentModificationException,
@@ -1468,8 +2026,8 @@ export const createLFTag: API.OperationMethod<
   CreateLFTagError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49) as any as S.Schema<CreateLFTagRequest>,
-  output: __S(2) as any as S.Schema<CreateLFTagResponse>,
+  input: CreateLFTagRequest,
+  output: CreateLFTagResponse,
   errors: [
     AccessDeniedException,
     EntityNotFoundException,
@@ -1508,8 +2066,8 @@ export const createLFTagExpression: API.OperationMethod<
   CreateLFTagExpressionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(50) as any as S.Schema<CreateLFTagExpressionRequest>,
-  output: __S(2) as any as S.Schema<CreateLFTagExpressionResponse>,
+  input: CreateLFTagExpressionRequest,
+  output: CreateLFTagExpressionResponse,
   errors: [
     AccessDeniedException,
     EntityNotFoundException,
@@ -1539,8 +2097,8 @@ export const deleteDataCellsFilter: API.OperationMethod<
   DeleteDataCellsFilterError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(51) as any as S.Schema<DeleteDataCellsFilterRequest>,
-  output: __S(2) as any as S.Schema<DeleteDataCellsFilterResponse>,
+  input: DeleteDataCellsFilterRequest,
+  output: DeleteDataCellsFilterResponse,
   errors: [
     AccessDeniedException,
     EntityNotFoundException,
@@ -1570,8 +2128,8 @@ export const deleteLakeFormationIdentityCenterConfiguration: API.OperationMethod
   DeleteLakeFormationIdentityCenterConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(52) as any as S.Schema<DeleteLakeFormationIdentityCenterConfigurationRequest>,
-  output: __S(48) as any as S.Schema<DeleteLakeFormationIdentityCenterConfigurationResponse>,
+  input: DeleteLakeFormationIdentityCenterConfigurationRequest,
+  output: DeleteLakeFormationIdentityCenterConfigurationResponse,
   errors: [
     AccessDeniedException,
     ConcurrentModificationException,
@@ -1603,8 +2161,8 @@ export const deleteLakeFormationOptIn: API.OperationMethod<
   DeleteLakeFormationOptInError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(53) as any as S.Schema<DeleteLakeFormationOptInRequest>,
-  output: __S(48) as any as S.Schema<DeleteLakeFormationOptInResponse>,
+  input: DeleteLakeFormationOptInRequest,
+  output: DeleteLakeFormationOptInResponse,
   errors: [
     AccessDeniedException,
     ConcurrentModificationException,
@@ -1641,8 +2199,8 @@ export const deleteLFTag: API.OperationMethod<
   DeleteLFTagError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(54) as any as S.Schema<DeleteLFTagRequest>,
-  output: __S(2) as any as S.Schema<DeleteLFTagResponse>,
+  input: DeleteLFTagRequest,
+  output: DeleteLFTagResponse,
   errors: [
     AccessDeniedException,
     EntityNotFoundException,
@@ -1672,8 +2230,8 @@ export const deleteLFTagExpression: API.OperationMethod<
   DeleteLFTagExpressionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(55) as any as S.Schema<DeleteLFTagExpressionRequest>,
-  output: __S(2) as any as S.Schema<DeleteLFTagExpressionResponse>,
+  input: DeleteLFTagExpressionRequest,
+  output: DeleteLFTagExpressionResponse,
   errors: [
     AccessDeniedException,
     EntityNotFoundException,
@@ -1710,8 +2268,8 @@ export const deleteObjectsOnCancel: API.OperationMethod<
   DeleteObjectsOnCancelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(58) as any as S.Schema<DeleteObjectsOnCancelRequest>,
-  output: __S(2) as any as S.Schema<DeleteObjectsOnCancelResponse>,
+  input: DeleteObjectsOnCancelRequest,
+  output: DeleteObjectsOnCancelResponse,
   errors: [
     ConcurrentModificationException,
     EntityNotFoundException,
@@ -1745,8 +2303,8 @@ export const deregisterResource: API.OperationMethod<
   DeregisterResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(59) as any as S.Schema<DeregisterResourceRequest>,
-  output: __S(2) as any as S.Schema<DeregisterResourceResponse>,
+  input: DeregisterResourceRequest,
+  output: DeregisterResourceResponse,
   errors: [
     EntityNotFoundException,
     InternalServiceException,
@@ -1775,8 +2333,8 @@ export const describeLakeFormationIdentityCenterConfiguration: API.OperationMeth
   DescribeLakeFormationIdentityCenterConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60) as any as S.Schema<DescribeLakeFormationIdentityCenterConfigurationRequest>,
-  output: __S(61) as any as S.Schema<DescribeLakeFormationIdentityCenterConfigurationResponse>,
+  input: DescribeLakeFormationIdentityCenterConfigurationRequest,
+  output: DescribeLakeFormationIdentityCenterConfigurationResponse,
   errors: [
     AccessDeniedException,
     EntityNotFoundException,
@@ -1804,8 +2362,8 @@ export const describeResource: API.OperationMethod<
   DescribeResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(62) as any as S.Schema<DescribeResourceRequest>,
-  output: __S(64) as any as S.Schema<DescribeResourceResponse>,
+  input: DescribeResourceRequest,
+  output: DescribeResourceResponse,
   errors: [
     EntityNotFoundException,
     InternalServiceException,
@@ -1832,8 +2390,8 @@ export const describeTransaction: API.OperationMethod<
   DescribeTransactionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65) as any as S.Schema<DescribeTransactionRequest>,
-  output: __S(67) as any as S.Schema<DescribeTransactionResponse>,
+  input: DescribeTransactionRequest,
+  output: DescribeTransactionResponse,
   errors: [
     EntityNotFoundException,
     InternalServiceException,
@@ -1865,8 +2423,8 @@ export const extendTransaction: API.OperationMethod<
   ExtendTransactionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(68) as any as S.Schema<ExtendTransactionRequest>,
-  output: __S(2) as any as S.Schema<ExtendTransactionResponse>,
+  input: ExtendTransactionRequest,
+  output: ExtendTransactionResponse,
   errors: [
     EntityNotFoundException,
     InternalServiceException,
@@ -1897,8 +2455,8 @@ export const getDataCellsFilter: API.OperationMethod<
   GetDataCellsFilterError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(69) as any as S.Schema<GetDataCellsFilterRequest>,
-  output: __S(70) as any as S.Schema<GetDataCellsFilterResponse>,
+  input: GetDataCellsFilterRequest,
+  output: GetDataCellsFilterResponse,
   errors: [
     AccessDeniedException,
     EntityNotFoundException,
@@ -1925,8 +2483,8 @@ export const getDataLakePrincipal: API.OperationMethod<
   GetDataLakePrincipalError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(71) as any as S.Schema<GetDataLakePrincipalRequest>,
-  output: __S(72) as any as S.Schema<GetDataLakePrincipalResponse>,
+  input: GetDataLakePrincipalRequest,
+  output: GetDataLakePrincipalResponse,
   errors: [AccessDeniedException, InternalServiceException, OperationTimeoutException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1947,8 +2505,8 @@ export const getDataLakeSettings: API.OperationMethod<
   GetDataLakeSettingsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(73) as any as S.Schema<GetDataLakeSettingsRequest>,
-  output: __S(78) as any as S.Schema<GetDataLakeSettingsResponse>,
+  input: GetDataLakeSettingsRequest,
+  output: GetDataLakeSettingsResponse,
   errors: [EntityNotFoundException, InternalServiceException, InvalidInputException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1972,8 +2530,8 @@ export const getEffectivePermissionsForPath: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(79) as any as S.Schema<GetEffectivePermissionsForPathRequest>,
-  output: __S(83) as any as S.Schema<GetEffectivePermissionsForPathResponse>,
+  input: GetEffectivePermissionsForPathRequest,
+  output: GetEffectivePermissionsForPathResponse,
   errors: [
     EntityNotFoundException,
     InternalServiceException,
@@ -2006,8 +2564,8 @@ export const getLFTag: API.OperationMethod<
   GetLFTagError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(84) as any as S.Schema<GetLFTagRequest>,
-  output: __S(85) as any as S.Schema<GetLFTagResponse>,
+  input: GetLFTagRequest,
+  output: GetLFTagResponse,
   errors: [
     AccessDeniedException,
     EntityNotFoundException,
@@ -2036,8 +2594,8 @@ export const getLFTagExpression: API.OperationMethod<
   GetLFTagExpressionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(86) as any as S.Schema<GetLFTagExpressionRequest>,
-  output: __S(87) as any as S.Schema<GetLFTagExpressionResponse>,
+  input: GetLFTagExpressionRequest,
+  output: GetLFTagExpressionResponse,
   errors: [
     AccessDeniedException,
     EntityNotFoundException,
@@ -2064,8 +2622,8 @@ export const getQueryState: API.OperationMethod<
   GetQueryStateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(88) as any as S.Schema<GetQueryStateRequest>,
-  output: __S(89) as any as S.Schema<GetQueryStateResponse>,
+  input: GetQueryStateRequest,
+  output: GetQueryStateResponse,
   errors: [AccessDeniedException, InternalServiceException, InvalidInputException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2090,8 +2648,8 @@ export const getQueryStatistics: API.OperationMethod<
   GetQueryStatisticsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(90) as any as S.Schema<GetQueryStatisticsRequest>,
-  output: __S(93) as any as S.Schema<GetQueryStatisticsResponse>,
+  input: GetQueryStatisticsRequest,
+  output: GetQueryStatisticsResponse,
   errors: [
     AccessDeniedException,
     ExpiredException,
@@ -2123,8 +2681,8 @@ export const getResourceLFTags: API.OperationMethod<
   GetResourceLFTagsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(94) as any as S.Schema<GetResourceLFTagsRequest>,
-  output: __S(97) as any as S.Schema<GetResourceLFTagsResponse>,
+  input: GetResourceLFTagsRequest,
+  output: GetResourceLFTagsResponse,
   errors: [
     AccessDeniedException,
     EntityNotFoundException,
@@ -2157,8 +2715,8 @@ export const getTableObjects: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(98) as any as S.Schema<GetTableObjectsRequest>,
-  output: __S(103) as any as S.Schema<GetTableObjectsResponse>,
+  input: GetTableObjectsRequest,
+  output: GetTableObjectsResponse,
   errors: [
     EntityNotFoundException,
     InternalServiceException,
@@ -2215,8 +2773,8 @@ export const getTemporaryDataLocationCredentials: API.OperationMethod<
   GetTemporaryDataLocationCredentialsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(105) as any as S.Schema<GetTemporaryDataLocationCredentialsRequest>,
-  output: __S(107) as any as S.Schema<GetTemporaryDataLocationCredentialsResponse>,
+  input: GetTemporaryDataLocationCredentialsRequest,
+  output: GetTemporaryDataLocationCredentialsResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2248,8 +2806,8 @@ export const getTemporaryGluePartitionCredentials: API.OperationMethod<
   GetTemporaryGluePartitionCredentialsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(109) as any as S.Schema<GetTemporaryGluePartitionCredentialsRequest>,
-  output: __S(21) as any as S.Schema<GetTemporaryGluePartitionCredentialsResponse>,
+  input: GetTemporaryGluePartitionCredentialsRequest,
+  output: GetTemporaryGluePartitionCredentialsResponse,
   errors: [
     AccessDeniedException,
     EntityNotFoundException,
@@ -2282,8 +2840,8 @@ export const getTemporaryGlueTableCredentials: API.OperationMethod<
   GetTemporaryGlueTableCredentialsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(111) as any as S.Schema<GetTemporaryGlueTableCredentialsRequest>,
-  output: __S(112) as any as S.Schema<GetTemporaryGlueTableCredentialsResponse>,
+  input: GetTemporaryGlueTableCredentialsRequest,
+  output: GetTemporaryGlueTableCredentialsResponse,
   errors: [
     AccessDeniedException,
     EntityNotFoundException,
@@ -2313,8 +2871,8 @@ export const getWorkUnitResults: API.OperationMethod<
   GetWorkUnitResultsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(113) as any as S.Schema<GetWorkUnitResultsRequest>,
-  output: __S(114) as any as S.Schema<GetWorkUnitResultsResponse>,
+  input: GetWorkUnitResultsRequest,
+  output: GetWorkUnitResultsResponse,
   errors: [
     AccessDeniedException,
     ExpiredException,
@@ -2345,8 +2903,8 @@ export const getWorkUnits: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   WorkUnitRange
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(115) as any as S.Schema<GetWorkUnitsRequest>,
-  output: __S(118) as any as S.Schema<GetWorkUnitsResponse>,
+  input: GetWorkUnitsRequest,
+  output: GetWorkUnitsResponse,
   errors: [
     AccessDeniedException,
     ExpiredException,
@@ -2383,8 +2941,8 @@ export const grantPermissions: API.OperationMethod<
   GrantPermissionsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(119) as any as S.Schema<GrantPermissionsRequest>,
-  output: __S(2) as any as S.Schema<GrantPermissionsResponse>,
+  input: GrantPermissionsRequest,
+  output: GrantPermissionsResponse,
   errors: [
     ConcurrentModificationException,
     EntityNotFoundException,
@@ -2412,8 +2970,8 @@ export const listDataCellsFilter: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   DataCellsFilter
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(120) as any as S.Schema<ListDataCellsFilterRequest>,
-  output: __S(122) as any as S.Schema<ListDataCellsFilterResponse>,
+  input: ListDataCellsFilterRequest,
+  output: ListDataCellsFilterResponse,
   errors: [
     AccessDeniedException,
     InternalServiceException,
@@ -2449,8 +3007,8 @@ export const listLakeFormationOptIns: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(123) as any as S.Schema<ListLakeFormationOptInsRequest>,
-  output: __S(126) as any as S.Schema<ListLakeFormationOptInsResponse>,
+  input: ListLakeFormationOptInsRequest,
+  output: ListLakeFormationOptInsResponse,
   errors: [
     AccessDeniedException,
     InternalServiceException,
@@ -2486,8 +3044,8 @@ export const listLFTagExpressions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   LFTagExpression
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(127) as any as S.Schema<ListLFTagExpressionsRequest>,
-  output: __S(130) as any as S.Schema<ListLFTagExpressionsResponse>,
+  input: ListLFTagExpressionsRequest,
+  output: ListLFTagExpressionsResponse,
   errors: [
     AccessDeniedException,
     EntityNotFoundException,
@@ -2523,8 +3081,8 @@ export const listLFTags: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   LFTagPair
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(131) as any as S.Schema<ListLFTagsRequest>,
-  output: __S(132) as any as S.Schema<ListLFTagsResponse>,
+  input: ListLFTagsRequest,
+  output: ListLFTagsResponse,
   errors: [
     AccessDeniedException,
     EntityNotFoundException,
@@ -2565,8 +3123,8 @@ export const listPermissions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(133) as any as S.Schema<ListPermissionsRequest>,
-  output: __S(134) as any as S.Schema<ListPermissionsResponse>,
+  input: ListPermissionsRequest,
+  output: ListPermissionsResponse,
   errors: [
     InternalServiceException,
     InvalidInputException,
@@ -2598,8 +3156,8 @@ export const listResources: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(137) as any as S.Schema<ListResourcesRequest>,
-  output: __S(139) as any as S.Schema<ListResourcesResponse>,
+  input: ListResourcesRequest,
+  output: ListResourcesResponse,
   errors: [InternalServiceException, InvalidInputException, OperationTimeoutException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2627,8 +3185,8 @@ export const listTableStorageOptimizers: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(140) as any as S.Schema<ListTableStorageOptimizersRequest>,
-  output: __S(143) as any as S.Schema<ListTableStorageOptimizersResponse>,
+  input: ListTableStorageOptimizersRequest,
+  output: ListTableStorageOptimizersResponse,
   errors: [
     AccessDeniedException,
     EntityNotFoundException,
@@ -2662,8 +3220,8 @@ export const listTransactions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(144) as any as S.Schema<ListTransactionsRequest>,
-  output: __S(146) as any as S.Schema<ListTransactionsResponse>,
+  input: ListTransactionsRequest,
+  output: ListTransactionsResponse,
   errors: [InternalServiceException, InvalidInputException, OperationTimeoutException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2691,8 +3249,8 @@ export const putDataLakeSettings: API.OperationMethod<
   PutDataLakeSettingsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(147) as any as S.Schema<PutDataLakeSettingsRequest>,
-  output: __S(2) as any as S.Schema<PutDataLakeSettingsResponse>,
+  input: PutDataLakeSettingsRequest,
+  output: PutDataLakeSettingsResponse,
   errors: [InternalServiceException, InvalidInputException, InvalidLakeFormationPrincipal],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2728,8 +3286,8 @@ export const registerResource: API.OperationMethod<
   RegisterResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(148) as any as S.Schema<RegisterResourceRequest>,
-  output: __S(2) as any as S.Schema<RegisterResourceResponse>,
+  input: RegisterResourceRequest,
+  output: RegisterResourceResponse,
   errors: [
     AccessDeniedException,
     AlreadyExistsException,
@@ -2762,8 +3320,8 @@ export const removeLFTagsFromResource: API.OperationMethod<
   RemoveLFTagsFromResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(149) as any as S.Schema<RemoveLFTagsFromResourceRequest>,
-  output: __S(19) as any as S.Schema<RemoveLFTagsFromResourceResponse>,
+  input: RemoveLFTagsFromResourceRequest,
+  output: RemoveLFTagsFromResourceResponse,
   errors: [
     AccessDeniedException,
     ConcurrentModificationException,
@@ -2793,8 +3351,8 @@ export const revokePermissions: API.OperationMethod<
   RevokePermissionsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(150) as any as S.Schema<RevokePermissionsRequest>,
-  output: __S(2) as any as S.Schema<RevokePermissionsResponse>,
+  input: RevokePermissionsRequest,
+  output: RevokePermissionsResponse,
   errors: [
     ConcurrentModificationException,
     EntityNotFoundException,
@@ -2824,8 +3382,8 @@ export const searchDatabasesByLFTags: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   TaggedDatabase
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(151) as any as S.Schema<SearchDatabasesByLFTagsRequest>,
-  output: __S(154) as any as S.Schema<SearchDatabasesByLFTagsResponse>,
+  input: SearchDatabasesByLFTagsRequest,
+  output: SearchDatabasesByLFTagsResponse,
   errors: [
     AccessDeniedException,
     EntityNotFoundException,
@@ -2863,8 +3421,8 @@ export const searchTablesByLFTags: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   TaggedTable
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(155) as any as S.Schema<SearchTablesByLFTagsRequest>,
-  output: __S(158) as any as S.Schema<SearchTablesByLFTagsResponse>,
+  input: SearchTablesByLFTagsRequest,
+  output: SearchTablesByLFTagsResponse,
   errors: [
     AccessDeniedException,
     EntityNotFoundException,
@@ -2901,8 +3459,8 @@ export const startQueryPlanning: API.OperationMethod<
   StartQueryPlanningError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(160) as any as S.Schema<StartQueryPlanningRequest>,
-  output: __S(161) as any as S.Schema<StartQueryPlanningResponse>,
+  input: StartQueryPlanningRequest,
+  output: StartQueryPlanningResponse,
   errors: [
     AccessDeniedException,
     InternalServiceException,
@@ -2928,8 +3486,8 @@ export const startTransaction: API.OperationMethod<
   StartTransactionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(162) as any as S.Schema<StartTransactionRequest>,
-  output: __S(163) as any as S.Schema<StartTransactionResponse>,
+  input: StartTransactionRequest,
+  output: StartTransactionResponse,
   errors: [InternalServiceException, OperationTimeoutException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2953,8 +3511,8 @@ export const updateDataCellsFilter: API.OperationMethod<
   UpdateDataCellsFilterError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(164) as any as S.Schema<UpdateDataCellsFilterRequest>,
-  output: __S(2) as any as S.Schema<UpdateDataCellsFilterResponse>,
+  input: UpdateDataCellsFilterRequest,
+  output: UpdateDataCellsFilterResponse,
   errors: [
     AccessDeniedException,
     ConcurrentModificationException,
@@ -2985,8 +3543,8 @@ export const updateLakeFormationIdentityCenterConfiguration: API.OperationMethod
   UpdateLakeFormationIdentityCenterConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(165) as any as S.Schema<UpdateLakeFormationIdentityCenterConfigurationRequest>,
-  output: __S(48) as any as S.Schema<UpdateLakeFormationIdentityCenterConfigurationResponse>,
+  input: UpdateLakeFormationIdentityCenterConfigurationRequest,
+  output: UpdateLakeFormationIdentityCenterConfigurationResponse,
   errors: [
     AccessDeniedException,
     ConcurrentModificationException,
@@ -3017,8 +3575,8 @@ export const updateLFTag: API.OperationMethod<
   UpdateLFTagError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(166) as any as S.Schema<UpdateLFTagRequest>,
-  output: __S(2) as any as S.Schema<UpdateLFTagResponse>,
+  input: UpdateLFTagRequest,
+  output: UpdateLFTagResponse,
   errors: [
     AccessDeniedException,
     ConcurrentModificationException,
@@ -3050,8 +3608,8 @@ export const updateLFTagExpression: API.OperationMethod<
   UpdateLFTagExpressionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(167) as any as S.Schema<UpdateLFTagExpressionRequest>,
-  output: __S(2) as any as S.Schema<UpdateLFTagExpressionResponse>,
+  input: UpdateLFTagExpressionRequest,
+  output: UpdateLFTagExpressionResponse,
   errors: [
     AccessDeniedException,
     EntityNotFoundException,
@@ -3080,8 +3638,8 @@ export const updateResource: API.OperationMethod<
   UpdateResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(168) as any as S.Schema<UpdateResourceRequest>,
-  output: __S(2) as any as S.Schema<UpdateResourceResponse>,
+  input: UpdateResourceRequest,
+  output: UpdateResourceResponse,
   errors: [
     EntityNotFoundException,
     InternalServiceException,
@@ -3113,8 +3671,8 @@ export const updateTableObjects: API.OperationMethod<
   UpdateTableObjectsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(173) as any as S.Schema<UpdateTableObjectsRequest>,
-  output: __S(2) as any as S.Schema<UpdateTableObjectsResponse>,
+  input: UpdateTableObjectsRequest,
+  output: UpdateTableObjectsResponse,
   errors: [
     ConcurrentModificationException,
     EntityNotFoundException,
@@ -3146,8 +3704,8 @@ export const updateTableStorageOptimizer: API.OperationMethod<
   UpdateTableStorageOptimizerError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(175) as any as S.Schema<UpdateTableStorageOptimizerRequest>,
-  output: __S(176) as any as S.Schema<UpdateTableStorageOptimizerResponse>,
+  input: UpdateTableStorageOptimizerRequest,
+  output: UpdateTableStorageOptimizerResponse,
   errors: [
     AccessDeniedException,
     EntityNotFoundException,
@@ -3180,13 +3738,13 @@ function __c0(j: number): any {
           CatalogId: S.optional(S.String),
           DatabaseName: S.String,
           Name: S.optional(S.String),
-          TableWildcard: S.optional(__S(2)),
+          TableWildcard: S.optional(TableWildcard),
         }),
       ).annotate({ identifier: "TableResource" });
     case 4:
       return S.Array(S.String);
     case 5:
-      return S.suspend(() => S.Struct({ ExcludedColumnNames: S.optional(__S(4)) })).annotate({
+      return S.suspend(() => S.Struct({ ExcludedColumnNames: S.optional(ColumnNames) })).annotate({
         identifier: "ColumnWildcard",
       });
     case 6:
@@ -3195,8 +3753,8 @@ function __c0(j: number): any {
           CatalogId: S.optional(S.String),
           DatabaseName: S.String,
           Name: S.String,
-          ColumnNames: S.optional(__S(4)),
-          ColumnWildcard: S.optional(__S(5)),
+          ColumnNames: S.optional(ColumnNames),
+          ColumnWildcard: S.optional(ColumnWildcard),
         }),
       ).annotate({ identifier: "TableWithColumnsResource" });
     case 7:
@@ -3218,42 +3776,42 @@ function __c1(j: number): any {
       ).annotate({ identifier: "DataCellsFilterResource" });
     case 1:
       return S.suspend(() =>
-        S.Struct({ CatalogId: S.optional(S.String), TagKey: S.String, TagValues: __S(4) }),
+        S.Struct({ CatalogId: S.optional(S.String), TagKey: S.String, TagValues: TagValueList }),
       ).annotate({ identifier: "LFTagKeyResource" });
     case 2:
-      return S.suspend(() => S.Struct({ TagKey: S.String, TagValues: __S(4) })).annotate({
+      return S.suspend(() => S.Struct({ TagKey: S.String, TagValues: TagValueList })).annotate({
         identifier: "LFTag",
       });
     case 3:
-      return S.Array(__S(10));
+      return S.Array(LFTag);
     case 4:
       return S.suspend(() =>
         S.Struct({
           CatalogId: S.optional(S.String),
-          ResourceType: S.String,
-          Expression: S.optional(__S(11)),
+          ResourceType: ResourceType,
+          Expression: S.optional(Expression),
           ExpressionName: S.optional(S.String),
         }),
       ).annotate({ identifier: "LFTagPolicyResource" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          Catalog: S.optional(__S(0)),
-          Database: S.optional(__S(1)),
-          Table: S.optional(__S(3)),
-          TableWithColumns: S.optional(__S(6)),
-          DataLocation: S.optional(__S(7)),
-          DataCellsFilter: S.optional(__S(8)),
-          LFTag: S.optional(__S(9)),
-          LFTagPolicy: S.optional(__S(12)),
-          LFTagExpression: S.optional(__S(1)),
+          Catalog: S.optional(CatalogResource),
+          Database: S.optional(DatabaseResource),
+          Table: S.optional(TableResource),
+          TableWithColumns: S.optional(TableWithColumnsResource),
+          DataLocation: S.optional(DataLocationResource),
+          DataCellsFilter: S.optional(DataCellsFilterResource),
+          LFTag: S.optional(LFTagKeyResource),
+          LFTagPolicy: S.optional(LFTagPolicyResource),
+          LFTagExpression: S.optional(LFTagExpressionResource),
         }),
       ).annotate({ identifier: "Resource" });
     case 6:
-      return S.Array(__S(9));
+      return S.Array(LFTagPair);
     case 7:
       return S.suspend(() =>
-        S.Struct({ CatalogId: S.optional(S.String), Resource: __S(13), LFTags: __S(14) }).pipe(
+        S.Struct({ CatalogId: S.optional(S.String), Resource: Resource, LFTags: LFTagsList }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/AddLFTagsToResource" }),
             svc,
@@ -3276,12 +3834,12 @@ function __c2(j: number): any {
       ).annotate({ identifier: "ErrorDetail" });
     case 1:
       return S.suspend(() =>
-        S.Struct({ LFTag: S.optional(__S(9)), Error: S.optional(__S(16)) }),
+        S.Struct({ LFTag: S.optional(LFTagPair), Error: S.optional(ErrorDetail) }),
       ).annotate({ identifier: "LFTagError" });
     case 2:
-      return S.Array(__S(17));
+      return S.Array(LFTagError);
     case 3:
-      return S.suspend(() => S.Struct({ Failures: S.optional(__S(18)) })).annotate({
+      return S.suspend(() => S.Struct({ Failures: S.optional(LFTagErrors) })).annotate({
         identifier: "AddLFTagsToResourceResponse",
       });
     case 4:
@@ -3320,7 +3878,7 @@ function __c2(j: number): any {
         S.Struct({ DataLakePrincipalIdentifier: S.optional(S.String) }),
       ).annotate({ identifier: "DataLakePrincipal" });
     case 7:
-      return S.Array(S.String);
+      return S.Array(Permission);
   }
 }
 function __c3(j: number): any {
@@ -3333,22 +3891,22 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Id: S.String,
-          Principal: S.optional(__S(22)),
-          Resource: S.optional(__S(13)),
-          Permissions: S.optional(__S(23)),
-          Condition: S.optional(__S(24)),
-          PermissionsWithGrantOption: S.optional(__S(23)),
+          Principal: S.optional(DataLakePrincipal),
+          Resource: S.optional(Resource),
+          Permissions: S.optional(PermissionList),
+          Condition: S.optional(Condition),
+          PermissionsWithGrantOption: S.optional(PermissionList),
         }),
       ).annotate({
         identifier: "BatchPermissionsRequestEntry",
       });
     case 2:
-      return S.Array(__S(25));
+      return S.Array(BatchPermissionsRequestEntry);
     case 3:
       return S.suspend(() =>
         S.Struct({
           CatalogId: S.optional(S.String),
-          Entries: __S(26),
+          Entries: BatchPermissionsRequestEntryList,
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/BatchGrantPermissions" }),
@@ -3365,23 +3923,25 @@ function __c3(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          RequestEntry: S.optional(__S(25)),
-          Error: S.optional(__S(16)),
+          RequestEntry: S.optional(BatchPermissionsRequestEntry),
+          Error: S.optional(ErrorDetail),
         }),
       ).annotate({
         identifier: "BatchPermissionsFailureEntry",
       });
     case 5:
-      return S.Array(__S(28));
+      return S.Array(BatchPermissionsFailureEntry);
     case 6:
-      return S.suspend(() => S.Struct({ Failures: S.optional(__S(29)) })).annotate({
+      return S.suspend(() =>
+        S.Struct({ Failures: S.optional(BatchPermissionsFailureList) }),
+      ).annotate({
         identifier: "BatchGrantPermissionsResponse",
       });
     case 7:
       return S.suspend(() =>
         S.Struct({
           CatalogId: S.optional(S.String),
-          Entries: __S(26),
+          Entries: BatchPermissionsRequestEntryList,
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/BatchRevokePermissions" }),
@@ -3426,14 +3986,16 @@ function __c4(j: number): any {
         ),
       ).annotate({ identifier: "CommitTransactionRequest" });
     case 2:
-      return S.suspend(() => S.Struct({ TransactionStatus: S.optional(S.String) })).annotate({
+      return S.suspend(() =>
+        S.Struct({ TransactionStatus: S.optional(TransactionStatus) }),
+      ).annotate({
         identifier: "CommitTransactionResponse",
       });
     case 3:
       return S.suspend(() =>
         S.Struct({
           FilterExpression: S.optional(S.String),
-          AllRowsWildcard: S.optional(__S(2)),
+          AllRowsWildcard: S.optional(AllRowsWildcard),
         }),
       ).annotate({ identifier: "RowFilter" });
     case 4:
@@ -3443,15 +4005,15 @@ function __c4(j: number): any {
           DatabaseName: S.String,
           TableName: S.String,
           Name: S.String,
-          RowFilter: S.optional(__S(35)),
-          ColumnNames: S.optional(__S(4)),
-          ColumnWildcard: S.optional(__S(5)),
+          RowFilter: S.optional(RowFilter),
+          ColumnNames: S.optional(ColumnNames),
+          ColumnWildcard: S.optional(ColumnWildcard),
           VersionId: S.optional(S.String),
         }),
       ).annotate({ identifier: "DataCellsFilter" });
     case 5:
       return S.suspend(() =>
-        S.Struct({ TableData: __S(36) }).pipe(
+        S.Struct({ TableData: DataCellsFilter }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/CreateDataCellsFilter" }),
             svc,
@@ -3465,35 +4027,37 @@ function __c4(j: number): any {
         identifier: "CreateDataCellsFilterRequest",
       });
     case 6:
-      return S.suspend(() => S.Struct({ Status: S.String, AuthorizedTargets: __S(4) })).annotate({
+      return S.suspend(() =>
+        S.Struct({ Status: EnableStatus, AuthorizedTargets: ScopeTargets }),
+      ).annotate({
         identifier: "ExternalFilteringConfiguration",
       });
     case 7:
-      return S.Array(__S(22));
+      return S.Array(DataLakePrincipal);
   }
 }
 function __c5(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ Authorization: S.String })).annotate({
+      return S.suspend(() => S.Struct({ Authorization: ServiceAuthorization })).annotate({
         identifier: "RedshiftConnect",
       });
     case 1:
-      return S.Union([/*@__PURE__*/ S.Struct({ RedshiftConnect: __S(40) })]);
+      return S.Union([/*@__PURE__*/ S.Struct({ RedshiftConnect: RedshiftConnect })]);
     case 2:
-      return S.Array(__S(41));
+      return S.Array(RedshiftScopeUnion);
     case 3:
-      return S.Union([/*@__PURE__*/ S.Struct({ Redshift: __S(42) })]);
+      return S.Union([/*@__PURE__*/ S.Struct({ Redshift: RedshiftServiceIntegrations })]);
     case 4:
-      return S.Array(__S(43));
+      return S.Array(ServiceIntegrationUnion);
     case 5:
       return S.suspend(() =>
         S.Struct({
           CatalogId: S.optional(S.String),
           InstanceArn: S.optional(S.String),
-          ExternalFiltering: S.optional(__S(38)),
-          ShareRecipients: S.optional(__S(39)),
-          ServiceIntegrations: S.optional(__S(44)),
+          ExternalFiltering: S.optional(ExternalFilteringConfiguration),
+          ShareRecipients: S.optional(DataLakePrincipalList),
+          ServiceIntegrations: S.optional(ServiceIntegrationList),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/CreateLakeFormationIdentityCenterConfiguration" }),
@@ -3514,9 +4078,9 @@ function __c5(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          Principal: __S(22),
-          Resource: __S(13),
-          Condition: S.optional(__S(24)),
+          Principal: DataLakePrincipal,
+          Resource: Resource,
+          Condition: S.optional(Condition),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/CreateLakeFormationOptIn" }),
@@ -3543,7 +4107,7 @@ function __c6(j: number): any {
         S.Struct({
           CatalogId: S.optional(S.String),
           TagKey: S.String,
-          TagValues: __S(4),
+          TagValues: TagValueList,
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/CreateLFTag" }), svc, auth, proto, ver, rules),
         ),
@@ -3554,7 +4118,7 @@ function __c6(j: number): any {
           Name: S.String,
           Description: S.optional(S.String),
           CatalogId: S.optional(S.String),
-          Expression: __S(11),
+          Expression: Expression,
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/CreateLFTagExpression" }),
@@ -3606,9 +4170,9 @@ function __c6(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          Principal: __S(22),
-          Resource: __S(13),
-          Condition: S.optional(__S(24)),
+          Principal: DataLakePrincipal,
+          Resource: Resource,
+          Condition: S.optional(Condition),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/DeleteLakeFormationOptIn" }),
@@ -3652,7 +4216,7 @@ function __c7(j: number): any {
         identifier: "VirtualObject",
       });
     case 1:
-      return S.Array(__S(56));
+      return S.Array(VirtualObject);
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -3660,7 +4224,7 @@ function __c7(j: number): any {
           DatabaseName: S.String,
           TableName: S.String,
           TransactionId: S.String,
-          Objects: __S(57),
+          Objects: VirtualObjectList,
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/DeleteObjectsOnCancel" }),
@@ -3710,9 +4274,9 @@ function __c7(j: number): any {
           CatalogId: S.optional(S.String),
           InstanceArn: S.optional(S.String),
           ApplicationArn: S.optional(S.String),
-          ExternalFiltering: S.optional(__S(38)),
-          ShareRecipients: S.optional(__S(39)),
-          ServiceIntegrations: S.optional(__S(44)),
+          ExternalFiltering: S.optional(ExternalFilteringConfiguration),
+          ShareRecipients: S.optional(DataLakePrincipalList),
+          ServiceIntegrations: S.optional(ServiceIntegrationList),
           ResourceShare: S.optional(S.String),
         }),
       ).annotate({
@@ -3733,7 +4297,7 @@ function __c7(j: number): any {
           WithFederation: S.optional(S.Boolean),
           HybridAccessEnabled: S.optional(S.Boolean),
           WithPrivilegedAccess: S.optional(S.Boolean),
-          VerificationStatus: S.optional(S.String),
+          VerificationStatus: S.optional(VerificationStatus),
           ExpectedResourceOwnerAccount: S.optional(S.String),
         }),
       ).annotate({ identifier: "ResourceInfo" });
@@ -3742,7 +4306,7 @@ function __c7(j: number): any {
 function __c8(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ ResourceInfo: S.optional(__S(63)) })).annotate({
+      return S.suspend(() => S.Struct({ ResourceInfo: S.optional(ResourceInfo) })).annotate({
         identifier: "DescribeResourceResponse",
       });
     case 1:
@@ -3764,13 +4328,15 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           TransactionId: S.optional(S.String),
-          TransactionStatus: S.optional(S.String),
+          TransactionStatus: S.optional(TransactionStatus),
           TransactionStartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           TransactionEndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "TransactionDescription" });
     case 3:
-      return S.suspend(() => S.Struct({ TransactionDescription: S.optional(__S(66)) })).annotate({
+      return S.suspend(() =>
+        S.Struct({ TransactionDescription: S.optional(TransactionDescription) }),
+      ).annotate({
         identifier: "DescribeTransactionResponse",
       });
     case 4:
@@ -3807,7 +4373,7 @@ function __c8(j: number): any {
         identifier: "GetDataCellsFilterRequest",
       });
     case 6:
-      return S.suspend(() => S.Struct({ DataCellsFilter: S.optional(__S(36)) })).annotate({
+      return S.suspend(() => S.Struct({ DataCellsFilter: S.optional(DataCellsFilter) })).annotate({
         identifier: "GetDataCellsFilterResponse",
       });
     case 7:
@@ -3851,33 +4417,35 @@ function __c9(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          Principal: S.optional(__S(22)),
-          Permissions: S.optional(__S(23)),
+          Principal: S.optional(DataLakePrincipal),
+          Permissions: S.optional(PermissionList),
         }),
       ).annotate({ identifier: "PrincipalPermissions" });
     case 3:
-      return S.Array(__S(74));
+      return S.Array(PrincipalPermissions);
     case 4:
       return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          DataLakeAdmins: S.optional(__S(39)),
-          ReadOnlyAdmins: S.optional(__S(39)),
-          CreateDatabaseDefaultPermissions: S.optional(__S(75)),
-          CreateTableDefaultPermissions: S.optional(__S(75)),
-          Parameters: S.optional(__S(76)),
-          TrustedResourceOwners: S.optional(__S(4)),
+          DataLakeAdmins: S.optional(DataLakePrincipalList),
+          ReadOnlyAdmins: S.optional(DataLakePrincipalList),
+          CreateDatabaseDefaultPermissions: S.optional(PrincipalPermissionsList),
+          CreateTableDefaultPermissions: S.optional(PrincipalPermissionsList),
+          Parameters: S.optional(ParametersMap),
+          TrustedResourceOwners: S.optional(TrustedResourceOwners),
           AllowExternalDataFiltering: S.optional(S.Boolean),
           AllowFullTableExternalDataAccess: S.optional(S.Boolean),
-          ExternalDataFilteringAllowList: S.optional(__S(39)),
-          AuthorizedSessionTagValueList: S.optional(__S(4)),
+          ExternalDataFilteringAllowList: S.optional(DataLakePrincipalList),
+          AuthorizedSessionTagValueList: S.optional(AuthorizedSessionTagValueList),
         }),
       ).annotate({ identifier: "DataLakeSettings" });
     case 6:
-      return S.suspend(() => S.Struct({ DataLakeSettings: S.optional(__S(77)) })).annotate({
-        identifier: "GetDataLakeSettingsResponse",
-      });
+      return S.suspend(() => S.Struct({ DataLakeSettings: S.optional(DataLakeSettings) })).annotate(
+        {
+          identifier: "GetDataLakeSettingsResponse",
+        },
+      );
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -3903,18 +4471,18 @@ function __c9(j: number): any {
 function __c10(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ ResourceShare: S.optional(__S(4)) })).annotate({
+      return S.suspend(() => S.Struct({ ResourceShare: S.optional(ResourceShareList) })).annotate({
         identifier: "DetailsMap",
       });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          Principal: S.optional(__S(22)),
-          Resource: S.optional(__S(13)),
-          Condition: S.optional(__S(24)),
-          Permissions: S.optional(__S(23)),
-          PermissionsWithGrantOption: S.optional(__S(23)),
-          AdditionalDetails: S.optional(__S(80)),
+          Principal: S.optional(DataLakePrincipal),
+          Resource: S.optional(Resource),
+          Condition: S.optional(Condition),
+          Permissions: S.optional(PermissionList),
+          PermissionsWithGrantOption: S.optional(PermissionList),
+          AdditionalDetails: S.optional(DetailsMap),
           LastUpdated: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           LastUpdatedBy: S.optional(S.String),
         }),
@@ -3922,11 +4490,11 @@ function __c10(j: number): any {
         identifier: "PrincipalResourcePermissions",
       });
     case 2:
-      return S.Array(__S(81));
+      return S.Array(PrincipalResourcePermissions);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          Permissions: S.optional(__S(82)),
+          Permissions: S.optional(PrincipalResourcePermissionsList),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -3943,7 +4511,7 @@ function __c10(j: number): any {
         S.Struct({
           CatalogId: S.optional(S.String),
           TagKey: S.optional(S.String),
-          TagValues: S.optional(__S(4)),
+          TagValues: S.optional(TagValueList),
         }),
       ).annotate({ identifier: "GetLFTagResponse" });
     case 6:
@@ -3967,7 +4535,7 @@ function __c10(j: number): any {
           Name: S.optional(S.String),
           Description: S.optional(S.String),
           CatalogId: S.optional(S.String),
-          Expression: S.optional(__S(11)),
+          Expression: S.optional(Expression),
         }),
       ).annotate({
         identifier: "GetLFTagExpressionResponse",
@@ -3983,9 +4551,9 @@ function __c11(j: number): any {
         ),
       ).annotate({ identifier: "GetQueryStateRequest" });
     case 1:
-      return S.suspend(() => S.Struct({ Error: S.optional(S.String), State: S.String })).annotate({
-        identifier: "GetQueryStateResponse",
-      });
+      return S.suspend(() =>
+        S.Struct({ Error: S.optional(S.String), State: QueryStateString }),
+      ).annotate({ identifier: "GetQueryStateResponse" });
     case 2:
       return S.suspend(() =>
         S.Struct({ QueryId: S.String }).pipe(
@@ -4021,8 +4589,8 @@ function __c11(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          ExecutionStatistics: S.optional(__S(91)),
-          PlanningStatistics: S.optional(__S(92)),
+          ExecutionStatistics: S.optional(ExecutionStatistics),
+          PlanningStatistics: S.optional(PlanningStatistics),
           QuerySubmissionTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
         }),
       ).annotate({
@@ -4032,7 +4600,7 @@ function __c11(j: number): any {
       return S.suspend(() =>
         S.Struct({
           CatalogId: S.optional(S.String),
-          Resource: __S(13),
+          Resource: Resource,
           ShowAssignedLFTags: S.optional(S.Boolean),
         }).pipe(
           T.all(
@@ -4047,20 +4615,20 @@ function __c11(j: number): any {
       ).annotate({ identifier: "GetResourceLFTagsRequest" });
     case 7:
       return S.suspend(() =>
-        S.Struct({ Name: S.optional(S.String), LFTags: S.optional(__S(14)) }),
+        S.Struct({ Name: S.optional(S.String), LFTags: S.optional(LFTagsList) }),
       ).annotate({ identifier: "ColumnLFTag" });
   }
 }
 function __c12(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(95));
+      return S.Array(ColumnLFTag);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          LFTagOnDatabase: S.optional(__S(14)),
-          LFTagsOnTable: S.optional(__S(14)),
-          LFTagsOnColumns: S.optional(__S(96)),
+          LFTagOnDatabase: S.optional(LFTagsList),
+          LFTagsOnTable: S.optional(LFTagsList),
+          LFTagsOnColumns: S.optional(ColumnLFTagsList),
         }),
       ).annotate({
         identifier: "GetResourceLFTagsResponse",
@@ -4089,20 +4657,20 @@ function __c12(j: number): any {
         }),
       ).annotate({ identifier: "TableObject" });
     case 4:
-      return S.Array(__S(99));
+      return S.Array(TableObject);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          PartitionValues: S.optional(__S(4)),
-          Objects: S.optional(__S(100)),
+          PartitionValues: S.optional(PartitionValuesList),
+          Objects: S.optional(TableObjectList),
         }),
       ).annotate({ identifier: "PartitionObjects" });
     case 6:
-      return S.Array(__S(101));
+      return S.Array(PartitionObjects);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          Objects: S.optional(__S(102)),
+          Objects: S.optional(PartitionedTableObjectsList),
           NextToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetTableObjectsResponse" });
@@ -4118,9 +4686,9 @@ function __c13(j: number): any {
       return S.suspend(() =>
         S.Struct({
           DurationSeconds: S.optional(S.Number),
-          AuditContext: S.optional(__S(104)),
-          DataLocations: S.optional(__S(4)),
-          CredentialsScope: S.optional(S.String),
+          AuditContext: S.optional(AuditContext),
+          DataLocations: S.optional(PathStringList),
+          CredentialsScope: S.optional(CredentialsScope),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/GetTemporaryDataLocationCredentials" }),
@@ -4146,26 +4714,26 @@ function __c13(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          Credentials: S.optional(__S(106)),
-          AccessibleDataLocations: S.optional(__S(4)),
-          CredentialsScope: S.optional(S.String),
+          Credentials: S.optional(TemporaryCredentials),
+          AccessibleDataLocations: S.optional(PathStringList),
+          CredentialsScope: S.optional(CredentialsScope),
         }),
       ).annotate({
         identifier: "GetTemporaryDataLocationCredentialsResponse",
       });
     case 4:
-      return S.suspend(() => S.Struct({ Values: __S(4) })).annotate({
+      return S.suspend(() => S.Struct({ Values: ValueStringList })).annotate({
         identifier: "PartitionValueList",
       });
     case 5:
       return S.suspend(() =>
         S.Struct({
           TableArn: S.String,
-          Partition: __S(108),
-          Permissions: S.optional(__S(23)),
+          Partition: PartitionValueList,
+          Permissions: S.optional(PermissionList),
           DurationSeconds: S.optional(S.Number),
-          AuditContext: S.optional(__S(104)),
-          SupportedPermissionTypes: S.optional(__S(23)),
+          AuditContext: S.optional(AuditContext),
+          SupportedPermissionTypes: S.optional(PermissionTypeList),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/GetTemporaryGluePartitionCredentials" }),
@@ -4186,19 +4754,19 @@ function __c13(j: number): any {
           QueryStartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           ClusterId: S.optional(S.String),
           QueryAuthorizationId: S.optional(S.String),
-          AdditionalContext: S.optional(__S(76)),
+          AdditionalContext: S.optional(AdditionalContextMap),
         }),
       ).annotate({ identifier: "QuerySessionContext" });
     case 7:
       return S.suspend(() =>
         S.Struct({
           TableArn: S.String,
-          Permissions: S.optional(__S(23)),
+          Permissions: S.optional(PermissionList),
           DurationSeconds: S.optional(S.Number),
-          AuditContext: S.optional(__S(104)),
-          SupportedPermissionTypes: S.optional(__S(23)),
+          AuditContext: S.optional(AuditContext),
+          SupportedPermissionTypes: S.optional(PermissionTypeList),
           S3Path: S.optional(S.String),
-          QuerySessionContext: S.optional(__S(110)),
+          QuerySessionContext: S.optional(QuerySessionContext),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/GetTemporaryGlueTableCredentials" }),
@@ -4223,7 +4791,7 @@ function __c14(j: number): any {
           SecretAccessKey: S.optional(SensitiveString),
           SessionToken: S.optional(SensitiveString),
           Expiration: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          VendedS3Path: S.optional(__S(4)),
+          VendedS3Path: S.optional(PathStringList),
         }),
       ).annotate({
         identifier: "GetTemporaryGlueTableCredentialsResponse",
@@ -4264,24 +4832,24 @@ function __c14(j: number): any {
         S.Struct({ WorkUnitIdMax: S.Number, WorkUnitIdMin: S.Number, WorkUnitToken: S.String }),
       ).annotate({ identifier: "WorkUnitRange" });
     case 5:
-      return S.Array(__S(116));
+      return S.Array(WorkUnitRange);
     case 6:
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String),
           QueryId: S.String,
-          WorkUnitRanges: __S(117),
+          WorkUnitRanges: WorkUnitRangeList,
         }),
       ).annotate({ identifier: "GetWorkUnitsResponse" });
     case 7:
       return S.suspend(() =>
         S.Struct({
           CatalogId: S.optional(S.String),
-          Principal: __S(22),
-          Resource: __S(13),
-          Permissions: __S(23),
-          Condition: S.optional(__S(24)),
-          PermissionsWithGrantOption: S.optional(__S(23)),
+          Principal: DataLakePrincipal,
+          Resource: Resource,
+          Permissions: PermissionList,
+          Condition: S.optional(Condition),
+          PermissionsWithGrantOption: S.optional(PermissionList),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/GrantPermissions" }), svc, auth, proto, ver, rules),
         ),
@@ -4293,7 +4861,7 @@ function __c15(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          Table: S.optional(__S(3)),
+          Table: S.optional(TableResource),
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }).pipe(
@@ -4310,11 +4878,11 @@ function __c15(j: number): any {
         identifier: "ListDataCellsFilterRequest",
       });
     case 1:
-      return S.Array(__S(36));
+      return S.Array(DataCellsFilter);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          DataCellsFilters: S.optional(__S(121)),
+          DataCellsFilters: S.optional(DataCellsFilterList),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -4323,8 +4891,8 @@ function __c15(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          Principal: S.optional(__S(22)),
-          Resource: S.optional(__S(13)),
+          Principal: S.optional(DataLakePrincipal),
+          Resource: S.optional(Resource),
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(
@@ -4343,19 +4911,19 @@ function __c15(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          Resource: S.optional(__S(13)),
-          Principal: S.optional(__S(22)),
-          Condition: S.optional(__S(24)),
+          Resource: S.optional(Resource),
+          Principal: S.optional(DataLakePrincipal),
+          Condition: S.optional(Condition),
           LastModified: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           LastUpdatedBy: S.optional(S.String),
         }),
       ).annotate({ identifier: "LakeFormationOptInsInfo" });
     case 5:
-      return S.Array(__S(124));
+      return S.Array(LakeFormationOptInsInfo);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          LakeFormationOptInsInfoList: S.optional(__S(125)),
+          LakeFormationOptInsInfoList: S.optional(LakeFormationOptInsInfoList),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -4390,15 +4958,15 @@ function __c16(j: number): any {
           Name: S.optional(S.String),
           Description: S.optional(S.String),
           CatalogId: S.optional(S.String),
-          Expression: S.optional(__S(11)),
+          Expression: S.optional(Expression),
         }),
       ).annotate({ identifier: "LFTagExpression" });
     case 1:
-      return S.Array(__S(128));
+      return S.Array(LFTagExpression);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          LFTagExpressions: S.optional(__S(129)),
+          LFTagExpressions: S.optional(LFTagExpressionsList),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -4408,7 +4976,7 @@ function __c16(j: number): any {
       return S.suspend(() =>
         S.Struct({
           CatalogId: S.optional(S.String),
-          ResourceShareType: S.optional(S.String),
+          ResourceShareType: S.optional(ResourceShareType),
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(
@@ -4417,15 +4985,15 @@ function __c16(j: number): any {
       ).annotate({ identifier: "ListLFTagsRequest" });
     case 4:
       return S.suspend(() =>
-        S.Struct({ LFTags: S.optional(__S(14)), NextToken: S.optional(S.String) }),
+        S.Struct({ LFTags: S.optional(LFTagsList), NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListLFTagsResponse" });
     case 5:
       return S.suspend(() =>
         S.Struct({
           CatalogId: S.optional(S.String),
-          Principal: S.optional(__S(22)),
-          ResourceType: S.optional(S.String),
-          Resource: S.optional(__S(13)),
+          Principal: S.optional(DataLakePrincipal),
+          ResourceType: S.optional(DataLakeResourceType),
+          Resource: S.optional(Resource),
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
           IncludeRelated: S.optional(S.String),
@@ -4436,16 +5004,16 @@ function __c16(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          PrincipalResourcePermissions: S.optional(__S(82)),
+          PrincipalResourcePermissions: S.optional(PrincipalResourcePermissionsList),
           NextToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListPermissionsResponse" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          Field: S.optional(S.String),
-          ComparisonOperator: S.optional(S.String),
-          StringValueList: S.optional(__S(4)),
+          Field: S.optional(FieldNameString),
+          ComparisonOperator: S.optional(ComparisonOperator),
+          StringValueList: S.optional(StringValueList),
         }),
       ).annotate({ identifier: "FilterCondition" });
   }
@@ -4453,11 +5021,11 @@ function __c16(j: number): any {
 function __c17(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(135));
+      return S.Array(FilterCondition);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          FilterConditionList: S.optional(__S(136)),
+          FilterConditionList: S.optional(FilterConditionList),
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(
@@ -4465,11 +5033,11 @@ function __c17(j: number): any {
         ),
       ).annotate({ identifier: "ListResourcesRequest" });
     case 2:
-      return S.Array(__S(63));
+      return S.Array(ResourceInfo);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          ResourceInfoList: S.optional(__S(138)),
+          ResourceInfoList: S.optional(ResourceInfoList),
           NextToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListResourcesResponse" });
@@ -4479,7 +5047,7 @@ function __c17(j: number): any {
           CatalogId: S.optional(S.String),
           DatabaseName: S.String,
           TableName: S.String,
-          StorageOptimizerType: S.optional(S.String),
+          StorageOptimizerType: S.optional(OptimizerType),
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(
@@ -4498,19 +5066,19 @@ function __c17(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          StorageOptimizerType: S.optional(S.String),
-          Config: S.optional(__S(76)),
+          StorageOptimizerType: S.optional(OptimizerType),
+          Config: S.optional(StorageOptimizerConfig),
           ErrorMessage: S.optional(S.String),
           Warnings: S.optional(S.String),
           LastRunDetails: S.optional(S.String),
         }),
       ).annotate({ identifier: "StorageOptimizer" });
     case 6:
-      return S.Array(__S(141));
+      return S.Array(StorageOptimizer);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          StorageOptimizerList: S.optional(__S(142)),
+          StorageOptimizerList: S.optional(StorageOptimizerList),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -4524,7 +5092,7 @@ function __c18(j: number): any {
       return S.suspend(() =>
         S.Struct({
           CatalogId: S.optional(S.String),
-          StatusFilter: S.optional(S.String),
+          StatusFilter: S.optional(TransactionStatusFilter),
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(
@@ -4532,17 +5100,17 @@ function __c18(j: number): any {
         ),
       ).annotate({ identifier: "ListTransactionsRequest" });
     case 1:
-      return S.Array(__S(66));
+      return S.Array(TransactionDescription);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          Transactions: S.optional(__S(145)),
+          Transactions: S.optional(TransactionDescriptionList),
           NextToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListTransactionsResponse" });
     case 3:
       return S.suspend(() =>
-        S.Struct({ CatalogId: S.optional(S.String), DataLakeSettings: __S(77) }).pipe(
+        S.Struct({ CatalogId: S.optional(S.String), DataLakeSettings: DataLakeSettings }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/PutDataLakeSettings" }),
             svc,
@@ -4571,7 +5139,7 @@ function __c18(j: number): any {
       ).annotate({ identifier: "RegisterResourceRequest" });
     case 5:
       return S.suspend(() =>
-        S.Struct({ CatalogId: S.optional(S.String), Resource: __S(13), LFTags: __S(14) }).pipe(
+        S.Struct({ CatalogId: S.optional(S.String), Resource: Resource, LFTags: LFTagsList }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/RemoveLFTagsFromResource" }),
             svc,
@@ -4588,11 +5156,11 @@ function __c18(j: number): any {
       return S.suspend(() =>
         S.Struct({
           CatalogId: S.optional(S.String),
-          Principal: __S(22),
-          Resource: __S(13),
-          Permissions: __S(23),
-          Condition: S.optional(__S(24)),
-          PermissionsWithGrantOption: S.optional(__S(23)),
+          Principal: DataLakePrincipal,
+          Resource: Resource,
+          Permissions: PermissionList,
+          Condition: S.optional(Condition),
+          PermissionsWithGrantOption: S.optional(PermissionList),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/RevokePermissions" }),
@@ -4610,7 +5178,7 @@ function __c18(j: number): any {
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
           CatalogId: S.optional(S.String),
-          Expression: __S(11),
+          Expression: Expression,
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/SearchDatabasesByLFTags" }),
@@ -4630,13 +5198,13 @@ function __c19(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ Database: S.optional(__S(1)), LFTags: S.optional(__S(14)) }),
+        S.Struct({ Database: S.optional(DatabaseResource), LFTags: S.optional(LFTagsList) }),
       ).annotate({ identifier: "TaggedDatabase" });
     case 1:
-      return S.Array(__S(152));
+      return S.Array(TaggedDatabase);
     case 2:
       return S.suspend(() =>
-        S.Struct({ NextToken: S.optional(S.String), DatabaseList: S.optional(__S(153)) }),
+        S.Struct({ NextToken: S.optional(S.String), DatabaseList: S.optional(DatabaseLFTagsList) }),
       ).annotate({
         identifier: "SearchDatabasesByLFTagsResponse",
       });
@@ -4646,7 +5214,7 @@ function __c19(j: number): any {
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
           CatalogId: S.optional(S.String),
-          Expression: __S(11),
+          Expression: Expression,
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/SearchTablesByLFTags" }),
@@ -4663,17 +5231,17 @@ function __c19(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          Table: S.optional(__S(3)),
-          LFTagOnDatabase: S.optional(__S(14)),
-          LFTagsOnTable: S.optional(__S(14)),
-          LFTagsOnColumns: S.optional(__S(96)),
+          Table: S.optional(TableResource),
+          LFTagOnDatabase: S.optional(LFTagsList),
+          LFTagsOnTable: S.optional(LFTagsList),
+          LFTagsOnColumns: S.optional(ColumnLFTagsList),
         }),
       ).annotate({ identifier: "TaggedTable" });
     case 5:
-      return S.Array(__S(156));
+      return S.Array(TaggedTable);
     case 6:
       return S.suspend(() =>
-        S.Struct({ NextToken: S.optional(S.String), TableList: S.optional(__S(157)) }),
+        S.Struct({ NextToken: S.optional(S.String), TableList: S.optional(TableLFTagsList) }),
       ).annotate({
         identifier: "SearchTablesByLFTagsResponse",
       });
@@ -4683,7 +5251,7 @@ function __c19(j: number): any {
           CatalogId: S.optional(S.String),
           DatabaseName: S.String,
           QueryAsOfTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          QueryParameters: S.optional(__S(76)),
+          QueryParameters: S.optional(QueryParameterMap),
           TransactionId: S.optional(S.String),
         }),
       ).annotate({ identifier: "QueryPlanningContext" });
@@ -4693,7 +5261,7 @@ function __c20(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ QueryPlanningContext: __S(159), QueryString: SensitiveString }).pipe(
+        S.Struct({ QueryPlanningContext: QueryPlanningContext, QueryString: SensitiveString }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/StartQueryPlanning" }),
             svc,
@@ -4712,7 +5280,7 @@ function __c20(j: number): any {
       });
     case 2:
       return S.suspend(() =>
-        S.Struct({ TransactionType: S.optional(S.String) }).pipe(
+        S.Struct({ TransactionType: S.optional(TransactionType) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/StartTransaction" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "StartTransactionRequest" });
@@ -4722,7 +5290,7 @@ function __c20(j: number): any {
       });
     case 4:
       return S.suspend(() =>
-        S.Struct({ TableData: __S(36) }).pipe(
+        S.Struct({ TableData: DataCellsFilter }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/UpdateDataCellsFilter" }),
             svc,
@@ -4739,10 +5307,10 @@ function __c20(j: number): any {
       return S.suspend(() =>
         S.Struct({
           CatalogId: S.optional(S.String),
-          ShareRecipients: S.optional(__S(39)),
-          ServiceIntegrations: S.optional(__S(44)),
-          ApplicationStatus: S.optional(S.String),
-          ExternalFiltering: S.optional(__S(38)),
+          ShareRecipients: S.optional(DataLakePrincipalList),
+          ServiceIntegrations: S.optional(ServiceIntegrationList),
+          ApplicationStatus: S.optional(ApplicationStatus),
+          ExternalFiltering: S.optional(ExternalFilteringConfiguration),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/UpdateLakeFormationIdentityCenterConfiguration" }),
@@ -4761,8 +5329,8 @@ function __c20(j: number): any {
         S.Struct({
           CatalogId: S.optional(S.String),
           TagKey: S.String,
-          TagValuesToDelete: S.optional(__S(4)),
-          TagValuesToAdd: S.optional(__S(4)),
+          TagValuesToDelete: S.optional(TagValueList),
+          TagValuesToAdd: S.optional(TagValueList),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/UpdateLFTag" }), svc, auth, proto, ver, rules),
         ),
@@ -4773,7 +5341,7 @@ function __c20(j: number): any {
           Name: S.String,
           Description: S.optional(S.String),
           CatalogId: S.optional(S.String),
-          Expression: __S(11),
+          Expression: Expression,
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/UpdateLFTagExpression" }),
@@ -4809,7 +5377,7 @@ function __c21(j: number): any {
           Uri: S.String,
           ETag: S.String,
           Size: S.Number,
-          PartitionValues: S.optional(__S(4)),
+          PartitionValues: S.optional(PartitionValuesList),
         }),
       ).annotate({ identifier: "AddObjectInput" });
     case 2:
@@ -4817,18 +5385,18 @@ function __c21(j: number): any {
         S.Struct({
           Uri: S.String,
           ETag: S.optional(S.String),
-          PartitionValues: S.optional(__S(4)),
+          PartitionValues: S.optional(PartitionValuesList),
         }),
       ).annotate({ identifier: "DeleteObjectInput" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          AddObject: S.optional(__S(169)),
-          DeleteObject: S.optional(__S(170)),
+          AddObject: S.optional(AddObjectInput),
+          DeleteObject: S.optional(DeleteObjectInput),
         }),
       ).annotate({ identifier: "WriteOperation" });
     case 4:
-      return S.Array(__S(171));
+      return S.Array(WriteOperation);
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -4836,7 +5404,7 @@ function __c21(j: number): any {
           DatabaseName: S.String,
           TableName: S.String,
           TransactionId: S.optional(S.String),
-          WriteOperations: __S(172),
+          WriteOperations: WriteOperationList,
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/UpdateTableObjects" }),
@@ -4851,14 +5419,14 @@ function __c21(j: number): any {
         identifier: "UpdateTableObjectsRequest",
       });
     case 6:
-      return S.Record(S.String, /*@__PURE__*/ __S(76).pipe(S.optional));
+      return S.Record(OptimizerType, /*@__PURE__*/ StorageOptimizerConfig.pipe(S.optional));
     case 7:
       return S.suspend(() =>
         S.Struct({
           CatalogId: S.optional(S.String),
           DatabaseName: S.String,
           TableName: S.String,
-          StorageOptimizerConfig: __S(174),
+          StorageOptimizerConfig: StorageOptimizerConfigMap,
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/UpdateTableStorageOptimizer" }),
@@ -4880,60 +5448,5 @@ function __c22(j: number): any {
       return S.suspend(() => S.Struct({ Result: S.optional(S.String) })).annotate({
         identifier: "UpdateTableStorageOptimizerResponse",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
-    case 9:
-      return __c9(i & 7);
-    case 10:
-      return __c10(i & 7);
-    case 11:
-      return __c11(i & 7);
-    case 12:
-      return __c12(i & 7);
-    case 13:
-      return __c13(i & 7);
-    case 14:
-      return __c14(i & 7);
-    case 15:
-      return __c15(i & 7);
-    case 16:
-      return __c16(i & 7);
-    case 17:
-      return __c17(i & 7);
-    case 18:
-      return __c18(i & 7);
-    case 19:
-      return __c19(i & 7);
-    case 20:
-      return __c20(i & 7);
-    case 21:
-      return __c21(i & 7);
-    case 22:
-      return __c22(i & 7);
   }
 }

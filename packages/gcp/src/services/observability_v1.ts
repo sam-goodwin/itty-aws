@@ -7,8 +7,6 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -66,26 +64,48 @@ export class NotFound
 
 /** The request message for Operations.CancelOperation. */
 export interface CancelOperationRequest {}
+const CancelOperationRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<CancelOperationRequest>;
+
 export interface CancelFoldersLocationsOperationsRequest {
   /** The name of the operation resource to be cancelled. */
   name: string;
   /** Request body */
   body?: CancelOperationRequest;
 }
+const CancelFoldersLocationsOperationsRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<CancelFoldersLocationsOperationsRequest>;
+
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
+const Empty = CancelOperationRequest as any as S.Schema<Empty>;
+
 export interface CancelOrganizationsLocationsOperationsRequest {
   /** The name of the operation resource to be cancelled. */
   name: string;
   /** Request body */
   body?: CancelOperationRequest;
 }
+const CancelOrganizationsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<CancelOrganizationsLocationsOperationsRequest>;
+
 export interface CancelProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be cancelled. */
   name: string;
   /** Request body */
   body?: CancelOperationRequest;
 }
+const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<CancelProjectsLocationsOperationsRequest>;
+
 /** Settings for configuring CMEK for a bucket. */
 export interface CmekSettings {
   /** Output only. The service account used to access the key. */
@@ -95,6 +115,8 @@ export interface CmekSettings {
   /** Output only. The CryptoKeyVersion resource name for the configured Cloud KMS key. The format is: projects/[PROJECT_ID]/locations/[LOCATION]/keyRings/[KEYRING]/cryptoKeys/[KEY]/cryptoKeyVersions/[VERSION] For example: projects/my-project/locations/us-central1/keyRings/my-ring/cryptoKeys/my-key/cryptoKeyVersions/1 This read-only field is used to convey the specific configured CryptoKeyVersion of the `kms_key` that has been configured. It is populated when the CMEK settings are bound to a single key version. */
   kmsKeyVersion?: string;
 }
+const CmekSettings = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<CmekSettings>;
+
 /** Bucket configuration for storing observability data. */
 export interface Bucket {
   /** Output only. Timestamp when the bucket in soft-deleted state is purged. */
@@ -114,6 +136,8 @@ export interface Bucket {
   /** Optional. Description of the bucket. */
   description?: string;
 }
+const Bucket = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<Bucket>;
+
 export interface CreateProjectsLocationsBucketsRequest {
   /** Required. Name of the project and location for the bucket. The format is: projects/[PROJECT_ID]/locations/[LOCATION] */
   parent: string;
@@ -122,8 +146,17 @@ export interface CreateProjectsLocationsBucketsRequest {
   /** Request body */
   body?: Bucket;
 }
+const CreateProjectsLocationsBucketsRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<CreateProjectsLocationsBucketsRequest>;
+
 export type DocumentMap = { [key: string]: unknown | undefined };
+const DocumentMap = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<DocumentMap>;
+
 export type DocumentMapList = Array<DocumentMap>;
+const DocumentMapList = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<DocumentMapList>;
+
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
@@ -133,6 +166,8 @@ export interface Status {
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
   details?: DocumentMapList;
 }
+const Status = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<Status>;
+
 /** This resource represents a long-running operation that is the result of a network API call. */
 export interface Operation {
   /** The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`. */
@@ -146,6 +181,8 @@ export interface Operation {
   /** If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available. */
   done?: boolean;
 }
+const Operation = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<Operation>;
+
 /** A link lets a dataset be accessible to BigQuery via usage of linked datasets. */
 export interface Link {
   /** Optional. A user friendly display name. */
@@ -157,6 +194,8 @@ export interface Link {
   /** Optional. Description of the link. */
   description?: string;
 }
+const Link = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<Link>;
+
 export interface CreateProjectsLocationsBucketsDatasetsLinksRequest {
   /** Required. Name of the containing dataset for this link. The format is: projects/[PROJECT_ID]/locations/[LOCATION]/buckets/[BUCKET_ID]/datasets/[DATASET_ID] */
   parent: string;
@@ -165,7 +204,14 @@ export interface CreateProjectsLocationsBucketsDatasetsLinksRequest {
   /** Request body */
   body?: Link;
 }
+const CreateProjectsLocationsBucketsDatasetsLinksRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<CreateProjectsLocationsBucketsDatasetsLinksRequest>;
+
 export type StringList = Array<string>;
+const StringList = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<StringList>;
+
 /** A trace scope is a collection of resources whose traces are queried together. */
 export interface TraceScope {
   /** Optional. Describes this trace scope. The maximum length of the description is 8000 characters. */
@@ -179,6 +225,8 @@ export interface TraceScope {
   /** Output only. The last update timestamp of the trace scope. */
   updateTime?: string;
 }
+const TraceScope = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<TraceScope>;
+
 export interface CreateProjectsLocationsTraceScopesRequest {
   /** Required. A client-assigned identifier for the trace scope. */
   traceScopeId?: string;
@@ -187,31 +235,68 @@ export interface CreateProjectsLocationsTraceScopesRequest {
   /** Request body */
   body?: TraceScope;
 }
+const CreateProjectsLocationsTraceScopesRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<CreateProjectsLocationsTraceScopesRequest>;
+
 export interface DeleteFoldersLocationsOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
+const DeleteFoldersLocationsOperationsRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<DeleteFoldersLocationsOperationsRequest>;
+
 export interface DeleteOrganizationsLocationsOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
+const DeleteOrganizationsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<DeleteOrganizationsLocationsOperationsRequest>;
+
 export interface DeleteProjectsLocationsBucketsDatasetsLinksRequest {
   /** Required. Name of the link to delete. The format is: projects/[PROJECT_ID]/locations/[LOCATION]/buckets/[BUCKET_ID]/datasets/[DATASET_ID]/links/[LINK_ID] */
   name: string;
 }
+const DeleteProjectsLocationsBucketsDatasetsLinksRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<DeleteProjectsLocationsBucketsDatasetsLinksRequest>;
+
 export interface DeleteProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
+const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>;
+
 export interface DeleteProjectsLocationsTraceScopesRequest {
   /** Required. The full resource name of the trace scope to delete: projects/[PROJECT_ID]/locations/[LOCATION_ID]/traceScopes/[TRACE_SCOPE_ID] For example: projects/my-project/locations/global/traceScopes/my-trace-scope */
   name: string;
 }
+const DeleteProjectsLocationsTraceScopesRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<DeleteProjectsLocationsTraceScopesRequest>;
+
 export interface GetFoldersLocationsRequest {
   /** Resource name for the location. */
   name: string;
 }
+const GetFoldersLocationsRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<GetFoldersLocationsRequest>;
+
 export type StringMap = { [key: string]: string | undefined };
+const StringMap = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<StringMap>;
+
 /** A resource that represents a Google Cloud location. */
 export interface Location {
   /** The friendly name for this location, typically a nearby city name. For example, "Tokyo". */
@@ -225,30 +310,62 @@ export interface Location {
   /** Service-specific metadata. For example the available capacity at the given location. */
   metadata?: DocumentMap;
 }
+const Location = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<Location>;
+
 export interface GetFoldersLocationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
+const GetFoldersLocationsOperationsRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<GetFoldersLocationsOperationsRequest>;
+
 export interface GetOrganizationsLocationsRequest {
   /** Resource name for the location. */
   name: string;
 }
+const GetOrganizationsLocationsRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<GetOrganizationsLocationsRequest>;
+
 export interface GetOrganizationsLocationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
+const GetOrganizationsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<GetOrganizationsLocationsOperationsRequest>;
+
 export interface GetProjectsLocationsRequest {
   /** Resource name for the location. */
   name: string;
 }
+const GetProjectsLocationsRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<GetProjectsLocationsRequest>;
+
 export interface GetProjectsLocationsBucketsRequest {
   /** Required. Name of the bucket to retrieve. The format is: projects/[PROJECT_ID]/locations/[LOCATION]/buckets/[BUCKET_ID] */
   name: string;
 }
+const GetProjectsLocationsBucketsRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<GetProjectsLocationsBucketsRequest>;
+
 export interface GetProjectsLocationsBucketsDatasetsRequest {
   /** Required. Name of the dataset to retrieve. The format is: projects/[PROJECT_ID]/locations/[LOCATION]/buckets/[BUCKET_ID]/datasets/[DATASET_ID] */
   name: string;
 }
+const GetProjectsLocationsBucketsDatasetsRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<GetProjectsLocationsBucketsDatasetsRequest>;
+
 /** A dataset is a collection of data that has a specific configuration. A dataset can be backed by multiple tables. One bucket can have multiple datasets. */
 export interface Dataset {
   /** Output only. Create timestamp. */
@@ -264,14 +381,26 @@ export interface Dataset {
   /** Identifier. Name of the dataset. The format is: projects/[PROJECT_ID]/locations/[LOCATION]/buckets/[BUCKET_ID]/datasets/[DATASET_ID] */
   name?: string;
 }
+const Dataset = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<Dataset>;
+
 export interface GetProjectsLocationsBucketsDatasetsLinksRequest {
   /** Required. Name of the link to retrieve. The format is: projects/[PROJECT_ID]/locations/[LOCATION]/buckets/[BUCKET_ID]/datasets/[DATASET_ID]/links/[LINK_ID] */
   name: string;
 }
+const GetProjectsLocationsBucketsDatasetsLinksRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<GetProjectsLocationsBucketsDatasetsLinksRequest>;
+
 export interface GetProjectsLocationsBucketsDatasetsViewsRequest {
   /** Required. Name of the view to retrieve. The format is: projects/[PROJECT_ID]/locations/[LOCATION]/buckets/[BUCKET_ID]/datasets/[DATASET_ID]/views/[VIEW_ID] */
   name: string;
 }
+const GetProjectsLocationsBucketsDatasetsViewsRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<GetProjectsLocationsBucketsDatasetsViewsRequest>;
+
 /** A view corresponds to a read-only representation of a subset of the data in a dataset. */
 export interface View {
   /** Output only. Create timestamp. */
@@ -285,14 +414,26 @@ export interface View {
   /** Optional. Description of the view. */
   description?: string;
 }
+const View = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<View>;
+
 export interface GetProjectsLocationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
+const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<GetProjectsLocationsOperationsRequest>;
+
 export interface GetProjectsLocationsScopesRequest {
   /** Required. Name of the resource. The format is: projects/{project}/locations/{location}/scopes/{scope} The `{location}` field must be set to `global`. The `{scope}` field must be set to `_Default`. */
   name: string;
 }
+const GetProjectsLocationsScopesRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<GetProjectsLocationsScopesRequest>;
+
 /** Message describing Scope object */
 export interface Scope {
   /** Required. The full resource name of the `LogScope`. For example: //logging.googleapis.com/projects/myproject/locations/global/logScopes/my-log-scope */
@@ -304,14 +445,26 @@ export interface Scope {
   /** Required. The resource name of the `TraceScope`. For example: projects/myproject/locations/global/traceScopes/my-trace-scope */
   traceScope?: string;
 }
+const Scope = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<Scope>;
+
 export interface GetProjectsLocationsTraceScopesRequest {
   /** Required. The resource name of the trace scope: projects/[PROJECT_ID]/locations/[LOCATION_ID]/traceScopes/[TRACE_SCOPE_ID] For example: projects/my-project/locations/global/traceScopes/my-trace-scope */
   name: string;
 }
+const GetProjectsLocationsTraceScopesRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<GetProjectsLocationsTraceScopesRequest>;
+
 export interface GetSettingsFoldersLocationsRequest {
   /** Required. Name of the settings to retrieve. Name format: "projects/[PROJECT_ID]/locations/[LOCATION]/settings" "folders/[FOLDER_ID]/locations/[LOCATION]/settings" "organizations/[ORGANIZATION_ID]/locations/[LOCATION]/settings" */
   name: string;
 }
+const GetSettingsFoldersLocationsRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<GetSettingsFoldersLocationsRequest>;
+
 /** Describes the settings associated with a project, organization, or folder. */
 export interface Settings {
   /** Identifier. The resource name of the settings. */
@@ -323,14 +476,26 @@ export interface Settings {
   /** Optional. The resource name for the configured Cloud KMS key. KMS key name format: "projects/[PROJECT_ID]/locations/[LOCATION]/keyRings/[KEYRING]/cryptoKeys/[KEY]" For example: `"projects/my-project/locations/us-central1/keyRings/my-ring/cryptoKeys/my-key"` */
   kmsKeyName?: string;
 }
+const Settings = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<Settings>;
+
 export interface GetSettingsOrganizationsLocationsRequest {
   /** Required. Name of the settings to retrieve. Name format: "projects/[PROJECT_ID]/locations/[LOCATION]/settings" "folders/[FOLDER_ID]/locations/[LOCATION]/settings" "organizations/[ORGANIZATION_ID]/locations/[LOCATION]/settings" */
   name: string;
 }
+const GetSettingsOrganizationsLocationsRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  0,
+) as any as S.Schema<GetSettingsOrganizationsLocationsRequest>;
+
 export interface GetSettingsProjectsLocationsRequest {
   /** Required. Name of the settings to retrieve. Name format: "projects/[PROJECT_ID]/locations/[LOCATION]/settings" "folders/[FOLDER_ID]/locations/[LOCATION]/settings" "organizations/[ORGANIZATION_ID]/locations/[LOCATION]/settings" */
   name: string;
 }
+const GetSettingsProjectsLocationsRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  1,
+) as any as S.Schema<GetSettingsProjectsLocationsRequest>;
+
 export interface ListFoldersLocationsRequest {
   /** Optional. Do not use this field unless explicitly documented otherwise. This is primarily for internal usage. */
   extraLocationTypes?: StringList;
@@ -343,7 +508,14 @@ export interface ListFoldersLocationsRequest {
   /** The resource that owns the locations collection, if applicable. */
   name: string;
 }
+const ListFoldersLocationsRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  2,
+) as any as S.Schema<ListFoldersLocationsRequest>;
+
 export type LocationList = Array<Location>;
+const LocationList = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<LocationList>;
+
 /** The response message for Locations.ListLocations. */
 export interface ListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
@@ -351,6 +523,11 @@ export interface ListLocationsResponse {
   /** The standard List next-page token. */
   nextPageToken?: string;
 }
+const ListLocationsResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  4,
+) as any as S.Schema<ListLocationsResponse>;
+
 export interface ListFoldersLocationsOperationsRequest {
   /** The standard list page token. */
   pageToken?: string;
@@ -363,7 +540,14 @@ export interface ListFoldersLocationsOperationsRequest {
   /** The name of the operation's parent resource. */
   name: string;
 }
+const ListFoldersLocationsOperationsRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  5,
+) as any as S.Schema<ListFoldersLocationsOperationsRequest>;
+
 export type OperationList = Array<Operation>;
+const OperationList = /*@__PURE__*/ __L.at(__c5, 6) as any as S.Schema<OperationList>;
+
 /** The response message for Operations.ListOperations. */
 export interface ListOperationsResponse {
   /** A list of operations that matches the specified filter in the request. */
@@ -373,6 +557,11 @@ export interface ListOperationsResponse {
   /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
   unreachable?: StringList;
 }
+const ListOperationsResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  7,
+) as any as S.Schema<ListOperationsResponse>;
+
 export interface ListOrganizationsLocationsRequest {
   /** The maximum number of results to return. If not set, the service selects a default. */
   pageSize?: number;
@@ -385,6 +574,11 @@ export interface ListOrganizationsLocationsRequest {
   /** A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). */
   filter?: string;
 }
+const ListOrganizationsLocationsRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<ListOrganizationsLocationsRequest>;
+
 export interface ListOrganizationsLocationsOperationsRequest {
   /** When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. */
   returnPartialSuccess?: boolean;
@@ -397,6 +591,11 @@ export interface ListOrganizationsLocationsOperationsRequest {
   /** The standard list page token. */
   pageToken?: string;
 }
+const ListOrganizationsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  1,
+) as any as S.Schema<ListOrganizationsLocationsOperationsRequest>;
+
 export interface ListProjectsLocationsRequest {
   /** A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. */
   pageToken?: string;
@@ -409,6 +608,11 @@ export interface ListProjectsLocationsRequest {
   /** The maximum number of results to return. If not set, the service selects a default. */
   pageSize?: number;
 }
+const ListProjectsLocationsRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  2,
+) as any as S.Schema<ListProjectsLocationsRequest>;
+
 export interface ListProjectsLocationsBucketsRequest {
   /** Optional. If true, then the response will include deleted buckets. */
   showDeleted?: boolean;
@@ -419,7 +623,14 @@ export interface ListProjectsLocationsBucketsRequest {
   /** Optional. A page token, received from a previous `ListBuckets` call. Provide this to retrieve the subsequent page. */
   pageToken?: string;
 }
+const ListProjectsLocationsBucketsRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  3,
+) as any as S.Schema<ListProjectsLocationsBucketsRequest>;
+
 export type BucketList = Array<Bucket>;
+const BucketList = /*@__PURE__*/ __L.at(__c6, 4) as any as S.Schema<BucketList>;
+
 /** Response for listing buckets. */
 export interface ListBucketsResponse {
   /** Optional. The list of buckets. */
@@ -427,6 +638,8 @@ export interface ListBucketsResponse {
   /** Optional. A token that can be sent as `page_token` to retrieve the next page. When this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
+const ListBucketsResponse = /*@__PURE__*/ __L.at(__c6, 5) as any as S.Schema<ListBucketsResponse>;
+
 export interface ListProjectsLocationsBucketsDatasetsRequest {
   /** Optional. The maximum number of datasets to return. If unspecified, then at most 100 datasets are returned. The maximum value is 1000; values above 1000 are coerced to 1000. */
   pageSize?: number;
@@ -437,7 +650,14 @@ export interface ListProjectsLocationsBucketsDatasetsRequest {
   /** Optional. A page token, received from a previous `ListDatasets` call. Provide this to retrieve the subsequent page. */
   pageToken?: string;
 }
+const ListProjectsLocationsBucketsDatasetsRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  6,
+) as any as S.Schema<ListProjectsLocationsBucketsDatasetsRequest>;
+
 export type DatasetList = Array<Dataset>;
+const DatasetList = /*@__PURE__*/ __L.at(__c6, 7) as any as S.Schema<DatasetList>;
+
 /** Response for listing datasets. */
 export interface ListDatasetsResponse {
   /** The list of datasets. */
@@ -445,6 +665,8 @@ export interface ListDatasetsResponse {
   /** A token that can be sent as `page_token` to retrieve the next page. When this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
+const ListDatasetsResponse = /*@__PURE__*/ __L.at(__c7, 0) as any as S.Schema<ListDatasetsResponse>;
+
 export interface ListProjectsLocationsBucketsDatasetsLinksRequest {
   /** Optional. A page token, received from a previous `ListLinks` call. Provide this to retrieve the subsequent page. */
   pageToken?: string;
@@ -453,7 +675,14 @@ export interface ListProjectsLocationsBucketsDatasetsLinksRequest {
   /** Optional. The maximum number of links to return. If unspecified, then at most 100 links are returned. The maximum value is 1000; values above 1000 are coerced to 1000. */
   pageSize?: number;
 }
+const ListProjectsLocationsBucketsDatasetsLinksRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  1,
+) as any as S.Schema<ListProjectsLocationsBucketsDatasetsLinksRequest>;
+
 export type LinkList = Array<Link>;
+const LinkList = /*@__PURE__*/ __L.at(__c7, 2) as any as S.Schema<LinkList>;
+
 /** Response for listing links. */
 export interface ListLinksResponse {
   /** The list of links. */
@@ -461,6 +690,8 @@ export interface ListLinksResponse {
   /** Optional. A token that can be sent as `page_token` to retrieve the next page. When this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
+const ListLinksResponse = /*@__PURE__*/ __L.at(__c7, 3) as any as S.Schema<ListLinksResponse>;
+
 export interface ListProjectsLocationsBucketsDatasetsViewsRequest {
   /** Optional. A page token, received from a previous `ListViews` call. Provide this to retrieve the subsequent page. */
   pageToken?: string;
@@ -469,7 +700,14 @@ export interface ListProjectsLocationsBucketsDatasetsViewsRequest {
   /** Required. Dataset whose views are to be listed. The format is: projects/[PROJECT_ID]/locations/[LOCATION]/buckets/[BUCKET_ID]/datasets/[DATASET_ID] */
   parent: string;
 }
+const ListProjectsLocationsBucketsDatasetsViewsRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  4,
+) as any as S.Schema<ListProjectsLocationsBucketsDatasetsViewsRequest>;
+
 export type ViewList = Array<View>;
+const ViewList = /*@__PURE__*/ __L.at(__c7, 5) as any as S.Schema<ViewList>;
+
 /** Response for listing views. */
 export interface ListViewsResponse {
   /** The list of views. */
@@ -477,6 +715,8 @@ export interface ListViewsResponse {
   /** Optional. A token that can be sent as `page_token` to retrieve the next page. When this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
+const ListViewsResponse = /*@__PURE__*/ __L.at(__c7, 6) as any as S.Schema<ListViewsResponse>;
+
 export interface ListProjectsLocationsOperationsRequest {
   /** The name of the operation's parent resource. */
   name: string;
@@ -489,6 +729,11 @@ export interface ListProjectsLocationsOperationsRequest {
   /** The standard list page token. */
   pageToken?: string;
 }
+const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  7,
+) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
+
 export interface ListProjectsLocationsTraceScopesRequest {
   /** Required. The full resource name of the location to look for trace scopes: projects/[PROJECT_ID]/locations/[LOCATION_ID] For example: projects/my-project/locations/global */
   parent: string;
@@ -497,7 +742,14 @@ export interface ListProjectsLocationsTraceScopesRequest {
   /** Optional. If present, then retrieve the next batch of results from the preceding call to this method. `page_token` must be the value of `next_page_token` from the previous response. The values of other method parameters should be identical to those in the previous call. */
   pageToken?: string;
 }
+const ListProjectsLocationsTraceScopesRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  0,
+) as any as S.Schema<ListProjectsLocationsTraceScopesRequest>;
+
 export type TraceScopeList = Array<TraceScope>;
+const TraceScopeList = /*@__PURE__*/ __L.at(__c8, 1) as any as S.Schema<TraceScopeList>;
+
 /** Response for listing TraceScopes. */
 export interface ListTraceScopesResponse {
   /** Optional. A list of trace scopes. */
@@ -505,6 +757,11 @@ export interface ListTraceScopesResponse {
   /** Optional. If there might be more results than appear in this response, then `next_page_token` is included. To get the next set of results, call the same method again using the value of `next_page_token` as `page_token`. */
   nextPageToken?: string;
 }
+const ListTraceScopesResponse = /*@__PURE__*/ __L.at(
+  __c8,
+  2,
+) as any as S.Schema<ListTraceScopesResponse>;
+
 export interface PatchProjectsLocationsBucketsRequest {
   /** Identifier. Name of the bucket. The format is: projects/[PROJECT_ID]/locations/[LOCATION]/buckets/[BUCKET_ID] */
   name: string;
@@ -513,6 +770,11 @@ export interface PatchProjectsLocationsBucketsRequest {
   /** Request body */
   body?: Bucket;
 }
+const PatchProjectsLocationsBucketsRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  3,
+) as any as S.Schema<PatchProjectsLocationsBucketsRequest>;
+
 export interface PatchProjectsLocationsBucketsDatasetsLinksRequest {
   /** Identifier. Name of the link. The format is: projects/[PROJECT_ID]/locations/[LOCATION]/buckets/[BUCKET_ID]/datasets/[DATASET_ID]/links/[LINK_ID] */
   name: string;
@@ -521,6 +783,11 @@ export interface PatchProjectsLocationsBucketsDatasetsLinksRequest {
   /** Request body */
   body?: Link;
 }
+const PatchProjectsLocationsBucketsDatasetsLinksRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  4,
+) as any as S.Schema<PatchProjectsLocationsBucketsDatasetsLinksRequest>;
+
 export interface PatchProjectsLocationsScopesRequest {
   /** Identifier. Name of the resource. The format is: projects/{project}/locations/{location}/scopes/{scope} The `{location}` field must be set to `global`. The `{scope}` field must be set to `_Default`. */
   name: string;
@@ -529,6 +796,11 @@ export interface PatchProjectsLocationsScopesRequest {
   /** Request body */
   body?: Scope;
 }
+const PatchProjectsLocationsScopesRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  5,
+) as any as S.Schema<PatchProjectsLocationsScopesRequest>;
+
 export interface PatchProjectsLocationsTraceScopesRequest {
   /** Identifier. The resource name of the trace scope. For example: projects/my-project/locations/global/traceScopes/my-trace-scope */
   name: string;
@@ -537,6 +809,11 @@ export interface PatchProjectsLocationsTraceScopesRequest {
   /** Request body */
   body?: TraceScope;
 }
+const PatchProjectsLocationsTraceScopesRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  6,
+) as any as S.Schema<PatchProjectsLocationsTraceScopesRequest>;
+
 export interface UpdateSettingsFoldersLocationsRequest {
   /** Identifier. The resource name of the settings. */
   name: string;
@@ -545,6 +822,11 @@ export interface UpdateSettingsFoldersLocationsRequest {
   /** Request body */
   body?: Settings;
 }
+const UpdateSettingsFoldersLocationsRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  7,
+) as any as S.Schema<UpdateSettingsFoldersLocationsRequest>;
+
 export interface UpdateSettingsOrganizationsLocationsRequest {
   /** Identifier. The resource name of the settings. */
   name: string;
@@ -553,6 +835,11 @@ export interface UpdateSettingsOrganizationsLocationsRequest {
   /** Request body */
   body?: Settings;
 }
+const UpdateSettingsOrganizationsLocationsRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  0,
+) as any as S.Schema<UpdateSettingsOrganizationsLocationsRequest>;
+
 export interface UpdateSettingsProjectsLocationsRequest {
   /** Identifier. The resource name of the settings. */
   name: string;
@@ -561,6 +848,11 @@ export interface UpdateSettingsProjectsLocationsRequest {
   /** Request body */
   body?: Settings;
 }
+const UpdateSettingsProjectsLocationsRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  1,
+) as any as S.Schema<UpdateSettingsProjectsLocationsRequest>;
+
 export type CancelFoldersLocationsOperationsError =
   | NotFound
   | Forbidden
@@ -574,8 +866,8 @@ export const cancelFoldersLocationsOperations: API.OperationMethod<
   CancelFoldersLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1) as any as S.Schema<CancelFoldersLocationsOperationsRequest>,
-  output: __S(0) as any as S.Schema<Empty>,
+  input: CancelFoldersLocationsOperationsRequest,
+  output: Empty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -594,8 +886,8 @@ export const cancelOrganizationsLocationsOperations: API.OperationMethod<
   CancelOrganizationsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2) as any as S.Schema<CancelOrganizationsLocationsOperationsRequest>,
-  output: __S(0) as any as S.Schema<Empty>,
+  input: CancelOrganizationsLocationsOperationsRequest,
+  output: Empty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -614,8 +906,8 @@ export const cancelProjectsLocationsOperations: API.OperationMethod<
   CancelProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3) as any as S.Schema<CancelProjectsLocationsOperationsRequest>,
-  output: __S(0) as any as S.Schema<Empty>,
+  input: CancelProjectsLocationsOperationsRequest,
+  output: Empty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -634,8 +926,8 @@ export const createProjectsLocationsBuckets: API.OperationMethod<
   CreateProjectsLocationsBucketsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6) as any as S.Schema<CreateProjectsLocationsBucketsRequest>,
-  output: __S(10) as any as S.Schema<Operation>,
+  input: CreateProjectsLocationsBucketsRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -654,8 +946,8 @@ export const createProjectsLocationsBucketsDatasetsLinks: API.OperationMethod<
   CreateProjectsLocationsBucketsDatasetsLinksError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12) as any as S.Schema<CreateProjectsLocationsBucketsDatasetsLinksRequest>,
-  output: __S(10) as any as S.Schema<Operation>,
+  input: CreateProjectsLocationsBucketsDatasetsLinksRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -674,8 +966,8 @@ export const createProjectsLocationsTraceScopes: API.OperationMethod<
   CreateProjectsLocationsTraceScopesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15) as any as S.Schema<CreateProjectsLocationsTraceScopesRequest>,
-  output: __S(14) as any as S.Schema<TraceScope>,
+  input: CreateProjectsLocationsTraceScopesRequest,
+  output: TraceScope,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -694,8 +986,8 @@ export const deleteFoldersLocationsOperations: API.OperationMethod<
   DeleteFoldersLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16) as any as S.Schema<DeleteFoldersLocationsOperationsRequest>,
-  output: __S(0) as any as S.Schema<Empty>,
+  input: DeleteFoldersLocationsOperationsRequest,
+  output: Empty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -714,8 +1006,8 @@ export const deleteOrganizationsLocationsOperations: API.OperationMethod<
   DeleteOrganizationsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17) as any as S.Schema<DeleteOrganizationsLocationsOperationsRequest>,
-  output: __S(0) as any as S.Schema<Empty>,
+  input: DeleteOrganizationsLocationsOperationsRequest,
+  output: Empty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -734,8 +1026,8 @@ export const deleteProjectsLocationsBucketsDatasetsLinks: API.OperationMethod<
   DeleteProjectsLocationsBucketsDatasetsLinksError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18) as any as S.Schema<DeleteProjectsLocationsBucketsDatasetsLinksRequest>,
-  output: __S(10) as any as S.Schema<Operation>,
+  input: DeleteProjectsLocationsBucketsDatasetsLinksRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -754,8 +1046,8 @@ export const deleteProjectsLocationsOperations: API.OperationMethod<
   DeleteProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>,
-  output: __S(0) as any as S.Schema<Empty>,
+  input: DeleteProjectsLocationsOperationsRequest,
+  output: Empty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -774,8 +1066,8 @@ export const deleteProjectsLocationsTraceScopes: API.OperationMethod<
   DeleteProjectsLocationsTraceScopesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20) as any as S.Schema<DeleteProjectsLocationsTraceScopesRequest>,
-  output: __S(0) as any as S.Schema<Empty>,
+  input: DeleteProjectsLocationsTraceScopesRequest,
+  output: Empty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -789,8 +1081,8 @@ export const getFoldersLocations: API.OperationMethod<
   GetFoldersLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21) as any as S.Schema<GetFoldersLocationsRequest>,
-  output: __S(23) as any as S.Schema<Location>,
+  input: GetFoldersLocationsRequest,
+  output: Location,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -804,8 +1096,8 @@ export const getFoldersLocationsOperations: API.OperationMethod<
   GetFoldersLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24) as any as S.Schema<GetFoldersLocationsOperationsRequest>,
-  output: __S(10) as any as S.Schema<Operation>,
+  input: GetFoldersLocationsOperationsRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -819,8 +1111,8 @@ export const getOrganizationsLocations: API.OperationMethod<
   GetOrganizationsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25) as any as S.Schema<GetOrganizationsLocationsRequest>,
-  output: __S(23) as any as S.Schema<Location>,
+  input: GetOrganizationsLocationsRequest,
+  output: Location,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -834,8 +1126,8 @@ export const getOrganizationsLocationsOperations: API.OperationMethod<
   GetOrganizationsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26) as any as S.Schema<GetOrganizationsLocationsOperationsRequest>,
-  output: __S(10) as any as S.Schema<Operation>,
+  input: GetOrganizationsLocationsOperationsRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -849,8 +1141,8 @@ export const getProjectsLocations: API.OperationMethod<
   GetProjectsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27) as any as S.Schema<GetProjectsLocationsRequest>,
-  output: __S(23) as any as S.Schema<Location>,
+  input: GetProjectsLocationsRequest,
+  output: Location,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -864,8 +1156,8 @@ export const getProjectsLocationsBuckets: API.OperationMethod<
   GetProjectsLocationsBucketsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28) as any as S.Schema<GetProjectsLocationsBucketsRequest>,
-  output: __S(5) as any as S.Schema<Bucket>,
+  input: GetProjectsLocationsBucketsRequest,
+  output: Bucket,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -879,8 +1171,8 @@ export const getProjectsLocationsBucketsDatasets: API.OperationMethod<
   GetProjectsLocationsBucketsDatasetsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29) as any as S.Schema<GetProjectsLocationsBucketsDatasetsRequest>,
-  output: __S(30) as any as S.Schema<Dataset>,
+  input: GetProjectsLocationsBucketsDatasetsRequest,
+  output: Dataset,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -894,8 +1186,8 @@ export const getProjectsLocationsBucketsDatasetsLinks: API.OperationMethod<
   GetProjectsLocationsBucketsDatasetsLinksError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31) as any as S.Schema<GetProjectsLocationsBucketsDatasetsLinksRequest>,
-  output: __S(11) as any as S.Schema<Link>,
+  input: GetProjectsLocationsBucketsDatasetsLinksRequest,
+  output: Link,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -909,8 +1201,8 @@ export const getProjectsLocationsBucketsDatasetsViews: API.OperationMethod<
   GetProjectsLocationsBucketsDatasetsViewsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32) as any as S.Schema<GetProjectsLocationsBucketsDatasetsViewsRequest>,
-  output: __S(33) as any as S.Schema<View>,
+  input: GetProjectsLocationsBucketsDatasetsViewsRequest,
+  output: View,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -924,8 +1216,8 @@ export const getProjectsLocationsOperations: API.OperationMethod<
   GetProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34) as any as S.Schema<GetProjectsLocationsOperationsRequest>,
-  output: __S(10) as any as S.Schema<Operation>,
+  input: GetProjectsLocationsOperationsRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -939,8 +1231,8 @@ export const getProjectsLocationsScopes: API.OperationMethod<
   GetProjectsLocationsScopesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35) as any as S.Schema<GetProjectsLocationsScopesRequest>,
-  output: __S(36) as any as S.Schema<Scope>,
+  input: GetProjectsLocationsScopesRequest,
+  output: Scope,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -954,8 +1246,8 @@ export const getProjectsLocationsTraceScopes: API.OperationMethod<
   GetProjectsLocationsTraceScopesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37) as any as S.Schema<GetProjectsLocationsTraceScopesRequest>,
-  output: __S(14) as any as S.Schema<TraceScope>,
+  input: GetProjectsLocationsTraceScopesRequest,
+  output: TraceScope,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -969,8 +1261,8 @@ export const getSettingsFoldersLocations: API.OperationMethod<
   GetSettingsFoldersLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38) as any as S.Schema<GetSettingsFoldersLocationsRequest>,
-  output: __S(39) as any as S.Schema<Settings>,
+  input: GetSettingsFoldersLocationsRequest,
+  output: Settings,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -984,8 +1276,8 @@ export const getSettingsOrganizationsLocations: API.OperationMethod<
   GetSettingsOrganizationsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40) as any as S.Schema<GetSettingsOrganizationsLocationsRequest>,
-  output: __S(39) as any as S.Schema<Settings>,
+  input: GetSettingsOrganizationsLocationsRequest,
+  output: Settings,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -999,8 +1291,8 @@ export const getSettingsProjectsLocations: API.OperationMethod<
   GetSettingsProjectsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41) as any as S.Schema<GetSettingsProjectsLocationsRequest>,
-  output: __S(39) as any as S.Schema<Settings>,
+  input: GetSettingsProjectsLocationsRequest,
+  output: Settings,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1015,8 +1307,8 @@ export const listFoldersLocations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListLocationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(42) as any as S.Schema<ListFoldersLocationsRequest>,
-  output: __S(44) as any as S.Schema<ListLocationsResponse>,
+  input: ListFoldersLocationsRequest,
+  output: ListLocationsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1032,8 +1324,8 @@ export const listFoldersLocationsOperations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(45) as any as S.Schema<ListFoldersLocationsOperationsRequest>,
-  output: __S(47) as any as S.Schema<ListOperationsResponse>,
+  input: ListFoldersLocationsOperationsRequest,
+  output: ListOperationsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1049,8 +1341,8 @@ export const listOrganizationsLocations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListLocationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(48) as any as S.Schema<ListOrganizationsLocationsRequest>,
-  output: __S(44) as any as S.Schema<ListLocationsResponse>,
+  input: ListOrganizationsLocationsRequest,
+  output: ListLocationsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1066,8 +1358,8 @@ export const listOrganizationsLocationsOperations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(49) as any as S.Schema<ListOrganizationsLocationsOperationsRequest>,
-  output: __S(47) as any as S.Schema<ListOperationsResponse>,
+  input: ListOrganizationsLocationsOperationsRequest,
+  output: ListOperationsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1083,8 +1375,8 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListLocationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(50) as any as S.Schema<ListProjectsLocationsRequest>,
-  output: __S(44) as any as S.Schema<ListLocationsResponse>,
+  input: ListProjectsLocationsRequest,
+  output: ListLocationsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1100,8 +1392,8 @@ export const listProjectsLocationsBuckets: API.PaginatedOperationMethod<
   GcpOpContext,
   ListBucketsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(51) as any as S.Schema<ListProjectsLocationsBucketsRequest>,
-  output: __S(53) as any as S.Schema<ListBucketsResponse>,
+  input: ListProjectsLocationsBucketsRequest,
+  output: ListBucketsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1117,8 +1409,8 @@ export const listProjectsLocationsBucketsDatasets: API.PaginatedOperationMethod<
   GcpOpContext,
   ListDatasetsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(54) as any as S.Schema<ListProjectsLocationsBucketsDatasetsRequest>,
-  output: __S(56) as any as S.Schema<ListDatasetsResponse>,
+  input: ListProjectsLocationsBucketsDatasetsRequest,
+  output: ListDatasetsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1134,8 +1426,8 @@ export const listProjectsLocationsBucketsDatasetsLinks: API.PaginatedOperationMe
   GcpOpContext,
   ListLinksResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(57) as any as S.Schema<ListProjectsLocationsBucketsDatasetsLinksRequest>,
-  output: __S(59) as any as S.Schema<ListLinksResponse>,
+  input: ListProjectsLocationsBucketsDatasetsLinksRequest,
+  output: ListLinksResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1151,8 +1443,8 @@ export const listProjectsLocationsBucketsDatasetsViews: API.PaginatedOperationMe
   GcpOpContext,
   ListViewsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(60) as any as S.Schema<ListProjectsLocationsBucketsDatasetsViewsRequest>,
-  output: __S(62) as any as S.Schema<ListViewsResponse>,
+  input: ListProjectsLocationsBucketsDatasetsViewsRequest,
+  output: ListViewsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1168,8 +1460,8 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(63) as any as S.Schema<ListProjectsLocationsOperationsRequest>,
-  output: __S(47) as any as S.Schema<ListOperationsResponse>,
+  input: ListProjectsLocationsOperationsRequest,
+  output: ListOperationsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1185,8 +1477,8 @@ export const listProjectsLocationsTraceScopes: API.PaginatedOperationMethod<
   GcpOpContext,
   ListTraceScopesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(64) as any as S.Schema<ListProjectsLocationsTraceScopesRequest>,
-  output: __S(66) as any as S.Schema<ListTraceScopesResponse>,
+  input: ListProjectsLocationsTraceScopesRequest,
+  output: ListTraceScopesResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1206,8 +1498,8 @@ export const patchProjectsLocationsBuckets: API.OperationMethod<
   PatchProjectsLocationsBucketsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(67) as any as S.Schema<PatchProjectsLocationsBucketsRequest>,
-  output: __S(10) as any as S.Schema<Operation>,
+  input: PatchProjectsLocationsBucketsRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1226,8 +1518,8 @@ export const patchProjectsLocationsBucketsDatasetsLinks: API.OperationMethod<
   PatchProjectsLocationsBucketsDatasetsLinksError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(68) as any as S.Schema<PatchProjectsLocationsBucketsDatasetsLinksRequest>,
-  output: __S(10) as any as S.Schema<Operation>,
+  input: PatchProjectsLocationsBucketsDatasetsLinksRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1246,8 +1538,8 @@ export const patchProjectsLocationsScopes: API.OperationMethod<
   PatchProjectsLocationsScopesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(69) as any as S.Schema<PatchProjectsLocationsScopesRequest>,
-  output: __S(36) as any as S.Schema<Scope>,
+  input: PatchProjectsLocationsScopesRequest,
+  output: Scope,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1266,8 +1558,8 @@ export const patchProjectsLocationsTraceScopes: API.OperationMethod<
   PatchProjectsLocationsTraceScopesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(70) as any as S.Schema<PatchProjectsLocationsTraceScopesRequest>,
-  output: __S(14) as any as S.Schema<TraceScope>,
+  input: PatchProjectsLocationsTraceScopesRequest,
+  output: TraceScope,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1286,8 +1578,8 @@ export const updateSettingsFoldersLocations: API.OperationMethod<
   UpdateSettingsFoldersLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(71) as any as S.Schema<UpdateSettingsFoldersLocationsRequest>,
-  output: __S(10) as any as S.Schema<Operation>,
+  input: UpdateSettingsFoldersLocationsRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1306,8 +1598,8 @@ export const updateSettingsOrganizationsLocations: API.OperationMethod<
   UpdateSettingsOrganizationsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(72) as any as S.Schema<UpdateSettingsOrganizationsLocationsRequest>,
-  output: __S(10) as any as S.Schema<Operation>,
+  input: UpdateSettingsOrganizationsLocationsRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1326,8 +1618,8 @@ export const updateSettingsProjectsLocations: API.OperationMethod<
   UpdateSettingsProjectsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(73) as any as S.Schema<UpdateSettingsProjectsLocationsRequest>,
-  output: __S(10) as any as S.Schema<Operation>,
+  input: UpdateSettingsProjectsLocationsRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1344,7 +1636,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(0).pipe(T.HttpBody())),
+          body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1359,7 +1651,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(0).pipe(T.HttpBody())),
+          body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1374,7 +1666,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(0).pipe(T.HttpBody())),
+          body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1399,7 +1691,7 @@ function __c0(j: number): any {
           purgeTime: S.optional(S.String),
           createTime: S.optional(S.String),
           name: S.optional(S.String),
-          cmekSettings: S.optional(__S(4)),
+          cmekSettings: S.optional(CmekSettings),
           updateTime: S.optional(S.String),
           deleteTime: S.optional(S.String),
           displayName: S.optional(S.String),
@@ -1411,7 +1703,7 @@ function __c0(j: number): any {
         S.Struct({
           parent: S.String.pipe(T.Label()),
           bucketId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(5).pipe(T.HttpBody())),
+          body: S.optional(Bucket.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1429,22 +1721,22 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(7));
+      return S.Array(DocumentMap);
     case 1:
       return S.suspend(() =>
         S.Struct({
           message: S.optional(S.String),
           code: S.optional(S.Number),
-          details: S.optional(__S(8)),
+          details: S.optional(DocumentMapList),
         }),
       ).annotate({ identifier: "Status" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          response: S.optional(__S(7)),
+          response: S.optional(DocumentMap),
           name: S.optional(S.String),
-          error: S.optional(__S(9)),
-          metadata: S.optional(__S(7)),
+          error: S.optional(Status),
+          metadata: S.optional(DocumentMap),
           done: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "Operation" });
@@ -1462,7 +1754,7 @@ function __c1(j: number): any {
         S.Struct({
           parent: S.String.pipe(T.Label()),
           linkId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(11).pipe(T.HttpBody())),
+          body: S.optional(Link.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1481,7 +1773,7 @@ function __c1(j: number): any {
           description: S.optional(S.String),
           name: S.optional(S.String),
           createTime: S.optional(S.String),
-          resourceNames: S.optional(__S(13)),
+          resourceNames: S.optional(StringList),
           updateTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "TraceScope" });
@@ -1490,7 +1782,7 @@ function __c1(j: number): any {
         S.Struct({
           traceScopeId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(14).pipe(T.HttpBody())),
+          body: S.optional(TraceScope.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1596,9 +1888,9 @@ function __c2(j: number): any {
         S.Struct({
           displayName: S.optional(S.String),
           name: S.optional(S.String),
-          labels: S.optional(__S(22)),
+          labels: S.optional(StringMap),
           locationId: S.optional(S.String),
-          metadata: S.optional(__S(7)),
+          metadata: S.optional(DocumentMap),
         }),
       ).annotate({ identifier: "Location" });
   }
@@ -1851,7 +2143,7 @@ function __c5(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          extraLocationTypes: S.optional(__S(13).pipe(T.Query())),
+          extraLocationTypes: S.optional(StringList.pipe(T.Query())),
           pageSize: S.optional(S.Number.pipe(T.Query())),
           pageToken: S.optional(S.String.pipe(T.Query())),
           filter: S.optional(S.String.pipe(T.Query())),
@@ -1867,11 +2159,11 @@ function __c5(j: number): any {
         identifier: "ListFoldersLocationsRequest",
       });
     case 3:
-      return S.Array(__S(23));
+      return S.Array(Location);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          locations: S.optional(__S(43)),
+          locations: S.optional(LocationList),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListLocationsResponse" });
@@ -1894,13 +2186,13 @@ function __c5(j: number): any {
         identifier: "ListFoldersLocationsOperationsRequest",
       });
     case 6:
-      return S.Array(__S(10));
+      return S.Array(Operation);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          operations: S.optional(__S(46)),
+          operations: S.optional(OperationList),
           nextPageToken: S.optional(S.String),
-          unreachable: S.optional(__S(13)),
+          unreachable: S.optional(StringList),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
   }
@@ -1911,7 +2203,7 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
-          extraLocationTypes: S.optional(__S(13).pipe(T.Query())),
+          extraLocationTypes: S.optional(StringList.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
           pageToken: S.optional(S.String.pipe(T.Query())),
           filter: S.optional(S.String.pipe(T.Query())),
@@ -1949,7 +2241,7 @@ function __c6(j: number): any {
           pageToken: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
           filter: S.optional(S.String.pipe(T.Query())),
-          extraLocationTypes: S.optional(__S(13).pipe(T.Query())),
+          extraLocationTypes: S.optional(StringList.pipe(T.Query())),
           pageSize: S.optional(S.Number.pipe(T.Query())),
         }).pipe(
           T.Http({
@@ -1979,11 +2271,11 @@ function __c6(j: number): any {
         identifier: "ListProjectsLocationsBucketsRequest",
       });
     case 4:
-      return S.Array(__S(5));
+      return S.Array(Bucket);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          buckets: S.optional(__S(52)),
+          buckets: S.optional(BucketList),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListBucketsResponse" });
@@ -2005,7 +2297,7 @@ function __c6(j: number): any {
         identifier: "ListProjectsLocationsBucketsDatasetsRequest",
       });
     case 7:
-      return S.Array(__S(30));
+      return S.Array(Dataset);
   }
 }
 function __c7(j: number): any {
@@ -2013,7 +2305,7 @@ function __c7(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          datasets: S.optional(__S(55)),
+          datasets: S.optional(DatasetList),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListDatasetsResponse" });
@@ -2034,11 +2326,11 @@ function __c7(j: number): any {
         identifier: "ListProjectsLocationsBucketsDatasetsLinksRequest",
       });
     case 2:
-      return S.Array(__S(11));
+      return S.Array(Link);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          links: S.optional(__S(58)),
+          links: S.optional(LinkList),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListLinksResponse" });
@@ -2059,11 +2351,11 @@ function __c7(j: number): any {
         identifier: "ListProjectsLocationsBucketsDatasetsViewsRequest",
       });
     case 5:
-      return S.Array(__S(33));
+      return S.Array(View);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          views: S.optional(__S(61)),
+          views: S.optional(ViewList),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListViewsResponse" });
@@ -2106,11 +2398,11 @@ function __c8(j: number): any {
         identifier: "ListProjectsLocationsTraceScopesRequest",
       });
     case 1:
-      return S.Array(__S(14));
+      return S.Array(TraceScope);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          traceScopes: S.optional(__S(65)),
+          traceScopes: S.optional(TraceScopeList),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListTraceScopesResponse" });
@@ -2119,7 +2411,7 @@ function __c8(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(5).pipe(T.HttpBody())),
+          body: S.optional(Bucket.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2135,7 +2427,7 @@ function __c8(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(11).pipe(T.HttpBody())),
+          body: S.optional(Link.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2151,7 +2443,7 @@ function __c8(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(36).pipe(T.HttpBody())),
+          body: S.optional(Scope.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2167,7 +2459,7 @@ function __c8(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(14).pipe(T.HttpBody())),
+          body: S.optional(TraceScope.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2183,7 +2475,7 @@ function __c8(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(39).pipe(T.HttpBody())),
+          body: S.optional(Settings.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2203,7 +2495,7 @@ function __c9(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(39).pipe(T.HttpBody())),
+          body: S.optional(Settings.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2219,7 +2511,7 @@ function __c9(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(39).pipe(T.HttpBody())),
+          body: S.optional(Settings.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2230,34 +2522,5 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "UpdateSettingsProjectsLocationsRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
-    case 9:
-      return __c9(i & 7);
   }
 }

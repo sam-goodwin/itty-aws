@@ -6,12 +6,12 @@ import { SlackError, SlackRateLimited } from "../errors.ts";
 import { SlackProtocol, type SlackOpError, type SlackOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { SlackOpError, SlackOpContext };
 
 export type SearchAllRequestSortDir = "asc" | "desc";
+const SearchAllRequestSortDir = S.String;
+
 export interface SearchAllRequest {
   count?: number;
   /** Pass a value of `true` to enable query highlight markers (see below). */
@@ -26,6 +26,8 @@ export interface SearchAllRequest {
   /** encoded team id to search in, required if org token is used */
   team_id?: string;
 }
+const SearchAllRequest = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<SearchAllRequest>;
+
 export interface SearchAllResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
@@ -36,7 +38,11 @@ export interface SearchAllResponse {
   /** Search query. */
   query?: string;
 }
+const SearchAllResponse = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<SearchAllResponse>;
+
 export type SearchFilesRequestSortDir = "asc" | "desc";
+const SearchFilesRequestSortDir = S.String;
+
 export interface SearchFilesRequest {
   count?: number;
   /** Pass a value of `true` to enable query highlight markers (see below). */
@@ -51,7 +57,14 @@ export interface SearchFilesRequest {
   /** encoded team id to search in, required if org token is used */
   team_id?: string;
 }
+const SearchFilesRequest = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<SearchFilesRequest>;
+
 export type SearchFilesResponseFilesPaginationWarningsList = Array<string>;
+const SearchFilesResponseFilesPaginationWarningsList = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<SearchFilesResponseFilesPaginationWarningsList>;
+
 export interface SearchFilesResponseFilesPagination {
   /** Last result id */
   last?: number;
@@ -67,8 +80,21 @@ export interface SearchFilesResponseFilesPagination {
   /** First result id */
   first?: number;
 }
+const SearchFilesResponseFilesPagination = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<SearchFilesResponseFilesPagination>;
+
 export type SearchFilesResponseFilesMatchesList = Array<unknown>;
+const SearchFilesResponseFilesMatchesList = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<SearchFilesResponseFilesMatchesList>;
+
 export type SearchFilesResponseFilesPagingWarningsList = Array<string>;
+const SearchFilesResponseFilesPagingWarningsList =
+  SearchFilesResponseFilesPaginationWarningsList as any as S.Schema<SearchFilesResponseFilesPagingWarningsList>;
+
 export interface SearchFilesResponseFilesPaging {
   /** Number of results per page */
   count?: number;
@@ -80,6 +106,11 @@ export interface SearchFilesResponseFilesPaging {
   page?: number;
   warnings?: SearchFilesResponseFilesPagingWarningsList;
 }
+const SearchFilesResponseFilesPaging = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<SearchFilesResponseFilesPaging>;
+
 export interface SearchFilesResponseFiles {
   pagination?: SearchFilesResponseFilesPagination;
   matches?: SearchFilesResponseFilesMatchesList;
@@ -89,11 +120,33 @@ export interface SearchFilesResponseFiles {
   total?: number;
   query_too_long?: boolean;
 }
+const SearchFilesResponseFiles = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<SearchFilesResponseFiles>;
+
 export type SearchFilesResponseUsersMap = { [key: string]: unknown | undefined };
+const SearchFilesResponseUsersMap = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<SearchFilesResponseUsersMap>;
+
 export type SearchFilesResponseTeamsMap = { [key: string]: unknown | undefined };
+const SearchFilesResponseTeamsMap =
+  SearchFilesResponseUsersMap as any as S.Schema<SearchFilesResponseTeamsMap>;
+
 export type SearchFilesResponseChannelsMap = { [key: string]: unknown | undefined };
+const SearchFilesResponseChannelsMap =
+  SearchFilesResponseUsersMap as any as S.Schema<SearchFilesResponseChannelsMap>;
+
 export type SearchFilesResponseImsMap = { [key: string]: unknown | undefined };
+const SearchFilesResponseImsMap =
+  SearchFilesResponseUsersMap as any as S.Schema<SearchFilesResponseImsMap>;
+
 export type SearchFilesResponseGroupsMap = { [key: string]: unknown | undefined };
+const SearchFilesResponseGroupsMap =
+  SearchFilesResponseUsersMap as any as S.Schema<SearchFilesResponseGroupsMap>;
+
 export interface SearchFilesResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
@@ -108,7 +161,11 @@ export interface SearchFilesResponse {
   query?: string;
   ignored_exclude_bots_pref?: boolean;
 }
+const SearchFilesResponse = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<SearchFilesResponse>;
+
 export type SearchMessagesRequestSortDir = "asc" | "desc" | "";
+const SearchMessagesRequestSortDir = S.String;
+
 export interface SearchMessagesRequest {
   /** Pass the number of results you want per "page". Maximum of `100`. */
   count?: number;
@@ -126,9 +183,23 @@ export interface SearchMessagesRequest {
   /** encoded team id to search in, required if org token is used */
   team_id?: string;
 }
+const SearchMessagesRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<SearchMessagesRequest>;
+
 export type SearchMessagesResponseUsersMap = { [key: string]: unknown | undefined };
+const SearchMessagesResponseUsersMap =
+  SearchFilesResponseUsersMap as any as S.Schema<SearchMessagesResponseUsersMap>;
+
 export type SearchMessagesResponseMessagesMatchesList = Array<unknown>;
+const SearchMessagesResponseMessagesMatchesList =
+  SearchFilesResponseFilesMatchesList as any as S.Schema<SearchMessagesResponseMessagesMatchesList>;
+
 export type SearchMessagesResponseMessagesPaginationWarningsList = Array<string>;
+const SearchMessagesResponseMessagesPaginationWarningsList =
+  SearchFilesResponseFilesPaginationWarningsList as any as S.Schema<SearchMessagesResponseMessagesPaginationWarningsList>;
+
 export interface SearchMessagesResponseMessagesPagination {
   /** Last result id */
   last?: number;
@@ -146,7 +217,15 @@ export interface SearchMessagesResponseMessagesPagination {
   /** value of next cursor to be passed when using cursormark pagination */
   next_cursor?: string;
 }
+const SearchMessagesResponseMessagesPagination = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<SearchMessagesResponseMessagesPagination>;
+
 export type SearchMessagesResponseMessagesPagingWarningsList = Array<string>;
+const SearchMessagesResponseMessagesPagingWarningsList =
+  SearchFilesResponseFilesPaginationWarningsList as any as S.Schema<SearchMessagesResponseMessagesPagingWarningsList>;
+
 export interface SearchMessagesResponseMessagesPaging {
   /** Number of results per page */
   count?: number;
@@ -160,6 +239,11 @@ export interface SearchMessagesResponseMessagesPaging {
   /** next cursor to be passed to the method for next set of results using cursor pagination */
   next_cursor?: string;
 }
+const SearchMessagesResponseMessagesPaging = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<SearchMessagesResponseMessagesPaging>;
+
 export interface SearchMessagesResponseMessages {
   matches?: SearchMessagesResponseMessagesMatchesList;
   pagination?: SearchMessagesResponseMessagesPagination;
@@ -168,13 +252,29 @@ export interface SearchMessagesResponseMessages {
   all_stop_words?: boolean;
   paging?: SearchMessagesResponseMessagesPaging;
 }
+const SearchMessagesResponseMessages = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<SearchMessagesResponseMessages>;
+
 export type SearchMessagesResponseTeamsMap = { [key: string]: unknown | undefined };
+const SearchMessagesResponseTeamsMap =
+  SearchFilesResponseUsersMap as any as S.Schema<SearchMessagesResponseTeamsMap>;
+
 export type SearchMessagesResponseBotsMap = { [key: string]: unknown | undefined };
+const SearchMessagesResponseBotsMap =
+  SearchFilesResponseUsersMap as any as S.Schema<SearchMessagesResponseBotsMap>;
+
 /** Pagination metadata. An empty `next_cursor` means the last page. */
 export interface SearchMessagesResponseResponseMetadata {
   /** Cursor for the next page -- pass as `cursor` on the next call. */
   next_cursor?: string;
 }
+const SearchMessagesResponseResponseMetadata = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<SearchMessagesResponseResponseMetadata>;
+
 export interface SearchMessagesResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
@@ -190,6 +290,11 @@ export interface SearchMessagesResponse {
   /** Pagination metadata. An empty `next_cursor` means the last page. */
   response_metadata?: SearchMessagesResponseResponseMetadata;
 }
+const SearchMessagesResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<SearchMessagesResponse>;
+
 export type SearchAllError = SlackOpError;
 /** Searches for messages and files matching a query. Required scopes -- user: `search:read` Rate limit tier: 2 Method-specific errors (the `error` slug on the SlackError): - `no_query` -- No query was provided. See https://docs.slack.dev/reference/methods/search.all */
 export const searchAll: API.OperationMethod<
@@ -198,8 +303,8 @@ export const searchAll: API.OperationMethod<
   SearchAllError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<SearchAllRequest>,
-  output: __S(1) as any as S.Schema<SearchAllResponse>,
+  input: SearchAllRequest,
+  output: SearchAllResponse,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -213,8 +318,8 @@ export const searchFiles: API.OperationMethod<
   SearchFilesError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2) as any as S.Schema<SearchFilesRequest>,
-  output: __S(9) as any as S.Schema<SearchFilesResponse>,
+  input: SearchFilesRequest,
+  output: SearchFilesResponse,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -228,8 +333,8 @@ export const searchMessages: API.OperationMethod<
   SearchMessagesError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10) as any as S.Schema<SearchMessagesRequest>,
-  output: __S(15) as any as S.Schema<SearchMessagesResponse>,
+  input: SearchMessagesRequest,
+  output: SearchMessagesResponse,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -246,7 +351,7 @@ function __c0(j: number): any {
           page: S.optional(S.Number.pipe(T.Query())),
           query: S.String.pipe(T.Query()),
           sort: S.optional(S.String.pipe(T.Query())),
-          sort_dir: S.optional(S.String.pipe(T.Query())),
+          sort_dir: S.optional(SearchAllRequestSortDir.pipe(T.Query())),
           team_id: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/search.all", code: 200 })),
       ).annotate({ identifier: "SearchAllRequest" });
@@ -269,7 +374,7 @@ function __c0(j: number): any {
           page: S.optional(S.Number.pipe(T.Query())),
           query: S.String.pipe(T.Query()),
           sort: S.optional(S.String.pipe(T.Query())),
-          sort_dir: S.optional(S.String.pipe(T.Query())),
+          sort_dir: S.optional(SearchFilesRequestSortDir.pipe(T.Query())),
           team_id: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/search.files", code: 200 })),
       ).annotate({ identifier: "SearchFilesRequest" });
@@ -279,7 +384,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           last: S.optional(S.Number),
-          warnings: S.optional(__S(3)),
+          warnings: S.optional(SearchFilesResponseFilesPaginationWarningsList),
           total_count: S.optional(S.Number),
           page_count: S.optional(S.Number),
           per_page: S.optional(S.Number),
@@ -298,7 +403,7 @@ function __c0(j: number): any {
           pages: S.optional(S.Number),
           total: S.optional(S.Number),
           page: S.optional(S.Number),
-          warnings: S.optional(__S(3)),
+          warnings: S.optional(SearchFilesResponseFilesPagingWarningsList),
         }),
       ).annotate({
         identifier: "SearchFilesResponseFilesPaging",
@@ -306,9 +411,9 @@ function __c0(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          pagination: S.optional(__S(4)),
-          matches: S.optional(__S(5)),
-          paging: S.optional(__S(6)),
+          pagination: S.optional(SearchFilesResponseFilesPagination),
+          matches: S.optional(SearchFilesResponseFilesMatchesList),
+          paging: S.optional(SearchFilesResponseFilesPaging),
           all_stop_words: S.optional(S.Boolean),
           total: S.optional(S.Number),
           query_too_long: S.optional(S.Boolean),
@@ -324,13 +429,13 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
-          files: S.optional(__S(7)),
+          files: S.optional(SearchFilesResponseFiles),
           callstack: S.optional(S.String),
-          users: S.optional(__S(8)),
-          teams: S.optional(__S(8)),
-          channels: S.optional(__S(8)),
-          ims: S.optional(__S(8)),
-          groups: S.optional(__S(8)),
+          users: S.optional(SearchFilesResponseUsersMap),
+          teams: S.optional(SearchFilesResponseTeamsMap),
+          channels: S.optional(SearchFilesResponseChannelsMap),
+          ims: S.optional(SearchFilesResponseImsMap),
+          groups: S.optional(SearchFilesResponseGroupsMap),
           query: S.optional(S.String),
           ignored_exclude_bots_pref: S.optional(S.Boolean),
         }),
@@ -344,7 +449,7 @@ function __c1(j: number): any {
           cursor: S.optional(S.String.pipe(T.Query())),
           query: S.String.pipe(T.Query()),
           sort: S.optional(S.String.pipe(T.Query())),
-          sort_dir: S.optional(S.String.pipe(T.Query())),
+          sort_dir: S.optional(SearchMessagesRequestSortDir.pipe(T.Query())),
           team_id: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/search.messages", code: 200 })),
       ).annotate({ identifier: "SearchMessagesRequest" });
@@ -352,7 +457,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           last: S.optional(S.Number),
-          warnings: S.optional(__S(3)),
+          warnings: S.optional(SearchMessagesResponseMessagesPaginationWarningsList),
           total_count: S.optional(S.Number),
           page_count: S.optional(S.Number),
           per_page: S.optional(S.Number),
@@ -370,7 +475,7 @@ function __c1(j: number): any {
           total: S.optional(S.Number),
           pages: S.optional(S.Number),
           page: S.optional(S.Number),
-          warnings: S.optional(__S(3)),
+          warnings: S.optional(SearchMessagesResponseMessagesPagingWarningsList),
           next_cursor: S.optional(S.String),
         }),
       ).annotate({
@@ -379,11 +484,11 @@ function __c1(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          matches: S.optional(__S(5)),
-          pagination: S.optional(__S(11)),
+          matches: S.optional(SearchMessagesResponseMessagesMatchesList),
+          pagination: S.optional(SearchMessagesResponseMessagesPagination),
           total: S.optional(S.Number),
           all_stop_words: S.optional(S.Boolean),
-          paging: S.optional(__S(12)),
+          paging: S.optional(SearchMessagesResponseMessagesPaging),
         }),
       ).annotate({
         identifier: "SearchMessagesResponseMessages",
@@ -401,28 +506,15 @@ function __c1(j: number): any {
         S.Struct({
           ok: S.Boolean,
           callstack: S.optional(S.String),
-          users: S.optional(__S(8)),
-          messages: S.optional(__S(13)),
+          users: S.optional(SearchMessagesResponseUsersMap),
+          messages: S.optional(SearchMessagesResponseMessages),
           show_feedback: S.optional(S.Boolean),
-          teams: S.optional(__S(8)),
+          teams: S.optional(SearchMessagesResponseTeamsMap),
           query: S.optional(S.String),
-          bots: S.optional(__S(8)),
+          bots: S.optional(SearchMessagesResponseBotsMap),
           ignored_exclude_bots_pref: S.optional(S.Boolean),
-          response_metadata: S.optional(__S(14)),
+          response_metadata: S.optional(SearchMessagesResponseResponseMetadata),
         }),
       ).annotate({ identifier: "SearchMessagesResponse" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
   }
 }

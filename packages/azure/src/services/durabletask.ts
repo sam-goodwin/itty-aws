@@ -6,8 +6,6 @@ import { UnknownAzureError } from "../errors.ts";
 import { AzureProtocol, type AzureOpError, type AzureOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { AzureOpError, AzureOpContext };
 
@@ -19,7 +17,17 @@ export interface DeleteRetentionPolicyRequest {
   /** The name of the Scheduler */
   schedulerName: string;
 }
+const DeleteRetentionPolicyRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<DeleteRetentionPolicyRequest>;
+
 export interface DeleteRetentionPolicyResponse {}
+const DeleteRetentionPolicyResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<DeleteRetentionPolicyResponse>;
+
 export interface DeleteSchedulerRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -28,7 +36,15 @@ export interface DeleteSchedulerRequest {
   /** The name of the Scheduler */
   schedulerName: string;
 }
+const DeleteSchedulerRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<DeleteSchedulerRequest>;
+
 export interface DeleteSchedulerResponse {}
+const DeleteSchedulerResponse =
+  DeleteRetentionPolicyResponse as any as S.Schema<DeleteSchedulerResponse>;
+
 export interface DeleteSchedulerPrivateEndpointConnectionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -39,7 +55,17 @@ export interface DeleteSchedulerPrivateEndpointConnectionRequest {
   /** The name of the private endpoint connection associated with the Azure resource. */
   privateEndpointConnectionName: string;
 }
+const DeleteSchedulerPrivateEndpointConnectionRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<DeleteSchedulerPrivateEndpointConnectionRequest>;
+
 export interface DeleteSchedulerPrivateEndpointConnectionResponse {}
+const DeleteSchedulerPrivateEndpointConnectionResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<DeleteSchedulerPrivateEndpointConnectionResponse>;
+
 export interface DeleteTaskHubRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -50,7 +76,12 @@ export interface DeleteTaskHubRequest {
   /** The name of the TaskHub */
   taskHubName: string;
 }
+const DeleteTaskHubRequest = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<DeleteTaskHubRequest>;
+
 export interface DeleteTaskHubResponse {}
+const DeleteTaskHubResponse =
+  DeleteRetentionPolicyResponse as any as S.Schema<DeleteTaskHubResponse>;
+
 export interface GetRetentionPolicyRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -59,10 +90,19 @@ export interface GetRetentionPolicyRequest {
   /** The name of the Scheduler */
   schedulerName: string;
 }
+const GetRetentionPolicyRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<GetRetentionPolicyRequest>;
+
 /** The type of identity that created the resource. */
 export type SystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
+const SystemDataCreatedByType = S.String;
+
 /** The type of identity that last modified the resource. */
 export type SystemDataLastModifiedByType = "User" | "Application" | "ManagedIdentity" | "Key";
+const SystemDataLastModifiedByType = S.String;
+
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface SystemData {
   /** The identity that created the resource. */
@@ -78,6 +118,8 @@ export interface SystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
+const SystemData = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<SystemData>;
+
 /** The status of the current operation */
 export type ProvisioningState =
   | "Succeeded"
@@ -87,8 +129,12 @@ export type ProvisioningState =
   | "Updating"
   | "Deleting"
   | "Accepted";
+const ProvisioningState = S.String;
+
 /** Purgeable orchestration state to be used in retention policies */
 export type PurgeableOrchestrationState = "Completed" | "Failed" | "Terminated" | "Canceled";
+const PurgeableOrchestrationState = S.String;
+
 /** The properties of a retention policy */
 export interface RetentionPolicyDetails {
   /** The retention period in days after which the orchestration will be purged automatically */
@@ -96,8 +142,18 @@ export interface RetentionPolicyDetails {
   /** The orchestration state to which this policy applies. If omitted, the policy applies to all purgeable orchestration states. */
   orchestrationState?: PurgeableOrchestrationState | (string & {});
 }
+const RetentionPolicyDetails = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<RetentionPolicyDetails>;
+
 /** The orchestration retention policies */
 export type RetentionPolicyPropertiesRetentionPoliciesList = Array<RetentionPolicyDetails>;
+const RetentionPolicyPropertiesRetentionPoliciesList = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<RetentionPolicyPropertiesRetentionPoliciesList>;
+
 /** The retention policy settings for the resource */
 export interface RetentionPolicyProperties {
   /** The status of the last operation */
@@ -105,6 +161,11 @@ export interface RetentionPolicyProperties {
   /** The orchestration retention policies */
   retentionPolicies?: RetentionPolicyPropertiesRetentionPoliciesList;
 }
+const RetentionPolicyProperties = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<RetentionPolicyProperties>;
+
 export interface GetRetentionPolicyResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -117,6 +178,11 @@ export interface GetRetentionPolicyResponse {
   /** The resource-specific properties for this resource. */
   properties?: RetentionPolicyProperties;
 }
+const GetRetentionPolicyResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<GetRetentionPolicyResponse>;
+
 export interface GetSchedulerRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -125,14 +191,30 @@ export interface GetSchedulerRequest {
   /** The name of the Scheduler */
   schedulerName: string;
 }
+const GetSchedulerRequest = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<GetSchedulerRequest>;
+
 /** Resource tags. */
 export type GetSchedulerResponseTagsMap = { [key: string]: string | undefined };
+const GetSchedulerResponseTagsMap = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<GetSchedulerResponseTagsMap>;
+
 /** IP allow list for durable task scheduler. Values can be IPv4, IPv6 or CIDR */
 export type SchedulerPropertiesIpAllowlistList = Array<string>;
+const SchedulerPropertiesIpAllowlistList = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<SchedulerPropertiesIpAllowlistList>;
+
 /** The name of the Stock Keeping Unit (SKU) of a Durable Task Scheduler */
 export type SchedulerSkuName = "Dedicated" | "Consumption";
+const SchedulerSkuName = S.String;
+
 /** The state of the resource redundancy */
 export type RedundancyState = "None" | "Zone";
+const RedundancyState = S.String;
+
 /** The SKU (Stock Keeping Unit) assigned to this durable task scheduler */
 export interface SchedulerSku {
   /** The name of the SKU */
@@ -142,17 +224,28 @@ export interface SchedulerSku {
   /** Indicates whether the current SKU configuration is zone redundant */
   redundancyState?: RedundancyState | (string & {});
 }
+const SchedulerSku = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<SchedulerSku>;
+
 /** State of the public network access. */
 export type PublicNetworkAccess = "Enabled" | "Disabled";
+const PublicNetworkAccess = S.String;
+
 /** The group ids for the private endpoint resource. */
 export type PrivateEndpointConnectionPropertiesGroupIdsList = Array<string>;
+const PrivateEndpointConnectionPropertiesGroupIdsList =
+  SchedulerPropertiesIpAllowlistList as any as S.Schema<PrivateEndpointConnectionPropertiesGroupIdsList>;
+
 /** The private endpoint resource. */
 export interface PrivateEndpoint {
   /** The ARM identifier for private endpoint. */
   id?: string;
 }
+const PrivateEndpoint = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<PrivateEndpoint>;
+
 /** The private endpoint connection status. */
 export type PrivateEndpointServiceConnectionStatus = "Pending" | "Approved" | "Rejected";
+const PrivateEndpointServiceConnectionStatus = S.String;
+
 /** A collection of information about the state of the connection between service consumer and provider. */
 export interface PrivateLinkServiceConnectionState {
   /** Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service. */
@@ -162,12 +255,19 @@ export interface PrivateLinkServiceConnectionState {
   /** A message indicating if changes on the service provider require any updates on the consumer. */
   actionsRequired?: string;
 }
+const PrivateLinkServiceConnectionState = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<PrivateLinkServiceConnectionState>;
+
 /** The current provisioning state. */
 export type PrivateEndpointConnectionProvisioningState =
   | "Succeeded"
   | "Creating"
   | "Deleting"
   | "Failed";
+const PrivateEndpointConnectionProvisioningState = S.String;
+
 /** Properties of the private endpoint connection. */
 export interface PrivateEndpointConnectionProperties {
   /** The group ids for the private endpoint resource. */
@@ -179,6 +279,11 @@ export interface PrivateEndpointConnectionProperties {
   /** The provisioning state of the private endpoint connection resource. */
   provisioningState?: PrivateEndpointConnectionProvisioningState;
 }
+const PrivateEndpointConnectionProperties = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<PrivateEndpointConnectionProperties>;
+
 /** The private endpoint connection resource. */
 export interface SchedulerPropertiesPrivateEndpointConnectionsItem {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -192,9 +297,19 @@ export interface SchedulerPropertiesPrivateEndpointConnectionsItem {
   /** Resource properties. */
   properties?: PrivateEndpointConnectionProperties;
 }
+const SchedulerPropertiesPrivateEndpointConnectionsItem = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<SchedulerPropertiesPrivateEndpointConnectionsItem>;
+
 /** The private endpoints exposed by this resource */
 export type SchedulerPropertiesPrivateEndpointConnectionsList =
   Array<SchedulerPropertiesPrivateEndpointConnectionsItem>;
+const SchedulerPropertiesPrivateEndpointConnectionsList = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<SchedulerPropertiesPrivateEndpointConnectionsList>;
+
 /** Details of the Scheduler */
 export interface SchedulerProperties {
   /** The status of the last operation */
@@ -210,6 +325,8 @@ export interface SchedulerProperties {
   /** The private endpoints exposed by this resource */
   privateEndpointConnections?: SchedulerPropertiesPrivateEndpointConnectionsList;
 }
+const SchedulerProperties = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<SchedulerProperties>;
+
 export interface GetSchedulerResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -226,6 +343,8 @@ export interface GetSchedulerResponse {
   /** The resource-specific properties for this resource. */
   properties?: SchedulerProperties;
 }
+const GetSchedulerResponse = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<GetSchedulerResponse>;
+
 export interface GetSchedulerPrivateEndpointConnectionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -236,6 +355,11 @@ export interface GetSchedulerPrivateEndpointConnectionRequest {
   /** The name of the private endpoint connection associated with the Azure resource. */
   privateEndpointConnectionName: string;
 }
+const GetSchedulerPrivateEndpointConnectionRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<GetSchedulerPrivateEndpointConnectionRequest>;
+
 export interface GetSchedulerPrivateEndpointConnectionResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -248,6 +372,9 @@ export interface GetSchedulerPrivateEndpointConnectionResponse {
   /** Resource properties. */
   properties?: PrivateEndpointConnectionProperties;
 }
+const GetSchedulerPrivateEndpointConnectionResponse =
+  SchedulerPropertiesPrivateEndpointConnectionsItem as any as S.Schema<GetSchedulerPrivateEndpointConnectionResponse>;
+
 export interface GetSchedulerPrivateLinkRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -258,10 +385,21 @@ export interface GetSchedulerPrivateLinkRequest {
   /** The name of the private link associated with the Azure resource. */
   privateLinkResourceName: string;
 }
+const GetSchedulerPrivateLinkRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<GetSchedulerPrivateLinkRequest>;
+
 /** The private link resource required member names. */
 export type PrivateLinkResourcePropertiesRequiredMembersList = Array<string>;
+const PrivateLinkResourcePropertiesRequiredMembersList =
+  SchedulerPropertiesIpAllowlistList as any as S.Schema<PrivateLinkResourcePropertiesRequiredMembersList>;
+
 /** The private link resource private link DNS zone name. */
 export type PrivateLinkResourcePropertiesRequiredZoneNamesList = Array<string>;
+const PrivateLinkResourcePropertiesRequiredZoneNamesList =
+  SchedulerPropertiesIpAllowlistList as any as S.Schema<PrivateLinkResourcePropertiesRequiredZoneNamesList>;
+
 /** Properties of a private link resource. */
 export interface PrivateLinkResourceProperties {
   /** The private link resource group id. */
@@ -271,6 +409,11 @@ export interface PrivateLinkResourceProperties {
   /** The private link resource private link DNS zone name. */
   requiredZoneNames?: PrivateLinkResourcePropertiesRequiredZoneNamesList;
 }
+const PrivateLinkResourceProperties = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<PrivateLinkResourceProperties>;
+
 export interface GetSchedulerPrivateLinkResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -283,6 +426,11 @@ export interface GetSchedulerPrivateLinkResponse {
   /** Resource properties. */
   properties?: PrivateLinkResourceProperties;
 }
+const GetSchedulerPrivateLinkResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<GetSchedulerPrivateLinkResponse>;
+
 export interface GetTaskHubRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -293,6 +441,8 @@ export interface GetTaskHubRequest {
   /** The name of the TaskHub */
   taskHubName: string;
 }
+const GetTaskHubRequest = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<GetTaskHubRequest>;
+
 /** The properties of Task Hub */
 export interface TaskHubProperties {
   /** The status of the last operation */
@@ -300,6 +450,8 @@ export interface TaskHubProperties {
   /** URL of the durable task scheduler dashboard */
   dashboardUrl?: string;
 }
+const TaskHubProperties = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<TaskHubProperties>;
+
 export interface GetTaskHubResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -312,7 +464,14 @@ export interface GetTaskHubResponse {
   /** The resource-specific properties for this resource. */
   properties?: TaskHubProperties;
 }
+const GetTaskHubResponse = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<GetTaskHubResponse>;
+
 export interface ListOperationsRequest {}
+const ListOperationsRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<ListOperationsRequest>;
+
 /** Localized display information for this particular operation. */
 export interface OperationDisplay {
   /** The localized friendly form of the resource provider name, e.g. "Microsoft Monitoring Insights" or "Microsoft Compute". */
@@ -324,10 +483,16 @@ export interface OperationDisplay {
   /** The short, localized friendly description of the operation; suitable for tool tips and detailed views. */
   description?: string;
 }
+const OperationDisplay = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<OperationDisplay>;
+
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
 export type OperationOrigin = "user" | "system" | "user,system";
+const OperationOrigin = S.String;
+
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
 export type OperationActionType = "Internal";
+const OperationActionType = S.String;
+
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
 export interface Operation {
   /** The name of the operation, as per Resource-Based Access Control (RBAC). Examples: "Microsoft.Compute/virtualMachines/write", "Microsoft.Compute/virtualMachines/capture/action" */
@@ -341,14 +506,26 @@ export interface Operation {
   /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
   actionType?: OperationActionType;
 }
+const Operation = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<Operation>;
+
 /** List of operations supported by the resource provider */
 export type ListOperationsResponseValueList = Array<Operation>;
+const ListOperationsResponseValueList = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<ListOperationsResponseValueList>;
+
 export interface ListOperationsResponse {
   /** List of operations supported by the resource provider */
   value?: ListOperationsResponseValueList;
   /** URL to get the next set of operation list results (if there are any). */
   nextLink?: string;
 }
+const ListOperationsResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<ListOperationsResponse>;
+
 export interface ListRetentionPolicyBySchedulerRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -357,6 +534,11 @@ export interface ListRetentionPolicyBySchedulerRequest {
   /** The name of the Scheduler */
   schedulerName: string;
 }
+const ListRetentionPolicyBySchedulerRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<ListRetentionPolicyBySchedulerRequest>;
+
 /** A retention policy resource belonging to the scheduler */
 export interface RetentionPolicy {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -370,8 +552,15 @@ export interface RetentionPolicy {
   /** The resource-specific properties for this resource. */
   properties?: RetentionPolicyProperties;
 }
+const RetentionPolicy = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<RetentionPolicy>;
+
 /** The RetentionPolicy items on this page */
 export type RetentionPolicyListResultValueList = Array<RetentionPolicy>;
+const RetentionPolicyListResultValueList = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<RetentionPolicyListResultValueList>;
+
 /** The response of a RetentionPolicy list operation. */
 export interface RetentionPolicyListResult {
   /** The RetentionPolicy items on this page */
@@ -379,12 +568,22 @@ export interface RetentionPolicyListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const RetentionPolicyListResult = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<RetentionPolicyListResult>;
+
 export interface ListSchedulerByResourceGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
+const ListSchedulerByResourceGroupRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<ListSchedulerByResourceGroupRequest>;
+
 /** Resource tags. */
 export type SchedulerTagsMap = { [key: string]: string | undefined };
 /** A Durable Task Scheduler resource */
@@ -404,8 +603,15 @@ export interface Scheduler {
   /** The resource-specific properties for this resource. */
   properties?: SchedulerProperties;
 }
+const Scheduler = GetSchedulerResponse as any as S.Schema<Scheduler>;
+
 /** The Scheduler items on this page */
 export type SchedulerListResultValueList = Array<Scheduler>;
+const SchedulerListResultValueList = /*@__PURE__*/ __L.at(
+  __c5,
+  0,
+) as any as S.Schema<SchedulerListResultValueList>;
+
 /** The response of a Scheduler list operation. */
 export interface SchedulerListResult {
   /** The Scheduler items on this page */
@@ -413,10 +619,17 @@ export interface SchedulerListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const SchedulerListResult = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<SchedulerListResult>;
+
 export interface ListSchedulerBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
+const ListSchedulerBySubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  2,
+) as any as S.Schema<ListSchedulerBySubscriptionRequest>;
+
 export interface ListSchedulerPrivateEndpointConnectionsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -425,12 +638,20 @@ export interface ListSchedulerPrivateEndpointConnectionsRequest {
   /** The name of the Scheduler */
   schedulerName: string;
 }
+const ListSchedulerPrivateEndpointConnectionsRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<ListSchedulerPrivateEndpointConnectionsRequest>;
+
 /** The private endpoint connection resource. */
 export type PrivateEndpointConnectionListResultValueItem =
   SchedulerPropertiesPrivateEndpointConnectionsItem;
 /** The PrivateEndpointConnection items on this page */
 export type PrivateEndpointConnectionListResultValueList =
   Array<SchedulerPropertiesPrivateEndpointConnectionsItem>;
+const PrivateEndpointConnectionListResultValueList =
+  SchedulerPropertiesPrivateEndpointConnectionsList as any as S.Schema<PrivateEndpointConnectionListResultValueList>;
+
 /** The response of a PrivateEndpointConnection list operation. */
 export interface PrivateEndpointConnectionListResult {
   /** The PrivateEndpointConnection items on this page */
@@ -438,6 +659,11 @@ export interface PrivateEndpointConnectionListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const PrivateEndpointConnectionListResult = /*@__PURE__*/ __L.at(
+  __c5,
+  4,
+) as any as S.Schema<PrivateEndpointConnectionListResult>;
+
 export interface ListSchedulerPrivateLinksRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -446,6 +672,11 @@ export interface ListSchedulerPrivateLinksRequest {
   /** The name of the Scheduler */
   schedulerName: string;
 }
+const ListSchedulerPrivateLinksRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  5,
+) as any as S.Schema<ListSchedulerPrivateLinksRequest>;
+
 /** A private link resource. */
 export interface SchedulerPrivateLinkResourceListResultValueItem {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -459,9 +690,17 @@ export interface SchedulerPrivateLinkResourceListResultValueItem {
   /** Resource properties. */
   properties?: PrivateLinkResourceProperties;
 }
+const SchedulerPrivateLinkResourceListResultValueItem =
+  GetSchedulerPrivateLinkResponse as any as S.Schema<SchedulerPrivateLinkResourceListResultValueItem>;
+
 /** The SchedulerPrivateLinkResource items on this page */
 export type SchedulerPrivateLinkResourceListResultValueList =
   Array<SchedulerPrivateLinkResourceListResultValueItem>;
+const SchedulerPrivateLinkResourceListResultValueList = /*@__PURE__*/ __L.at(
+  __c5,
+  6,
+) as any as S.Schema<SchedulerPrivateLinkResourceListResultValueList>;
+
 /** The response of a SchedulerPrivateLinkResource list operation. */
 export interface SchedulerPrivateLinkResourceListResult {
   /** The SchedulerPrivateLinkResource items on this page */
@@ -469,6 +708,11 @@ export interface SchedulerPrivateLinkResourceListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const SchedulerPrivateLinkResourceListResult = /*@__PURE__*/ __L.at(
+  __c5,
+  7,
+) as any as S.Schema<SchedulerPrivateLinkResourceListResult>;
+
 export interface ListTaskHubBySchedulerRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -477,6 +721,11 @@ export interface ListTaskHubBySchedulerRequest {
   /** The name of the Scheduler */
   schedulerName: string;
 }
+const ListTaskHubBySchedulerRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<ListTaskHubBySchedulerRequest>;
+
 /** A Task Hub resource belonging to the scheduler */
 export interface TaskHub {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -490,8 +739,15 @@ export interface TaskHub {
   /** The resource-specific properties for this resource. */
   properties?: TaskHubProperties;
 }
+const TaskHub = GetTaskHubResponse as any as S.Schema<TaskHub>;
+
 /** The TaskHub items on this page */
 export type TaskHubListResultValueList = Array<TaskHub>;
+const TaskHubListResultValueList = /*@__PURE__*/ __L.at(
+  __c6,
+  1,
+) as any as S.Schema<TaskHubListResultValueList>;
+
 /** The response of a TaskHub list operation. */
 export interface TaskHubListResult {
   /** The TaskHub items on this page */
@@ -499,13 +755,23 @@ export interface TaskHubListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
+const TaskHubListResult = /*@__PURE__*/ __L.at(__c6, 2) as any as S.Schema<TaskHubListResult>;
+
 /** The orchestration retention policies */
 export type RetentionPolicyPropertiesInputRetentionPoliciesList = Array<RetentionPolicyDetails>;
+const RetentionPolicyPropertiesInputRetentionPoliciesList =
+  RetentionPolicyPropertiesRetentionPoliciesList as any as S.Schema<RetentionPolicyPropertiesInputRetentionPoliciesList>;
+
 /** The retention policy settings for the resource */
 export interface RetentionPolicyPropertiesInput {
   /** The orchestration retention policies */
   retentionPolicies?: RetentionPolicyPropertiesInputRetentionPoliciesList;
 }
+const RetentionPolicyPropertiesInput = /*@__PURE__*/ __L.at(
+  __c6,
+  3,
+) as any as S.Schema<RetentionPolicyPropertiesInput>;
+
 export interface RetentionPoliciesCreateOrReplaceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -516,6 +782,11 @@ export interface RetentionPoliciesCreateOrReplaceRequest {
   /** The resource-specific properties for this resource. */
   properties?: RetentionPolicyPropertiesInput;
 }
+const RetentionPoliciesCreateOrReplaceRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  4,
+) as any as S.Schema<RetentionPoliciesCreateOrReplaceRequest>;
+
 export interface RetentionPoliciesCreateOrReplaceResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -528,10 +799,19 @@ export interface RetentionPoliciesCreateOrReplaceResponse {
   /** The resource-specific properties for this resource. */
   properties?: RetentionPolicyProperties;
 }
+const RetentionPoliciesCreateOrReplaceResponse =
+  GetRetentionPolicyResponse as any as S.Schema<RetentionPoliciesCreateOrReplaceResponse>;
+
 /** Resource tags. */
 export type SchedulersCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
+const SchedulersCreateOrUpdateRequestTagsMap =
+  GetSchedulerResponseTagsMap as any as S.Schema<SchedulersCreateOrUpdateRequestTagsMap>;
+
 /** IP allow list for durable task scheduler. Values can be IPv4, IPv6 or CIDR */
 export type SchedulerPropertiesInputIpAllowlistList = Array<string>;
+const SchedulerPropertiesInputIpAllowlistList =
+  SchedulerPropertiesIpAllowlistList as any as S.Schema<SchedulerPropertiesInputIpAllowlistList>;
+
 /** Details of the Scheduler */
 export interface SchedulerPropertiesInput {
   /** IP allow list for durable task scheduler. Values can be IPv4, IPv6 or CIDR */
@@ -541,6 +821,11 @@ export interface SchedulerPropertiesInput {
   /** Allow or disallow public network access to durable task scheduler */
   publicNetworkAccess?: PublicNetworkAccess | (string & {});
 }
+const SchedulerPropertiesInput = /*@__PURE__*/ __L.at(
+  __c6,
+  5,
+) as any as S.Schema<SchedulerPropertiesInput>;
+
 export interface SchedulersCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -555,8 +840,16 @@ export interface SchedulersCreateOrUpdateRequest {
   /** The resource-specific properties for this resource. */
   properties?: SchedulerPropertiesInput;
 }
+const SchedulersCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  6,
+) as any as S.Schema<SchedulersCreateOrUpdateRequest>;
+
 /** Resource tags. */
 export type SchedulersCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
+const SchedulersCreateOrUpdateResponseTagsMap =
+  GetSchedulerResponseTagsMap as any as S.Schema<SchedulersCreateOrUpdateResponseTagsMap>;
+
 export interface SchedulersCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -573,8 +866,15 @@ export interface SchedulersCreateOrUpdateResponse {
   /** The resource-specific properties for this resource. */
   properties?: SchedulerProperties;
 }
+const SchedulersCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  7,
+) as any as S.Schema<SchedulersCreateOrUpdateResponse>;
+
 /** The private endpoint resource. */
 export interface PrivateEndpointInput {}
+const PrivateEndpointInput = DeleteRetentionPolicyResponse as any as S.Schema<PrivateEndpointInput>;
+
 /** Properties of the private endpoint connection. */
 export interface PrivateEndpointConnectionPropertiesInput {
   /** The private endpoint resource. */
@@ -582,6 +882,11 @@ export interface PrivateEndpointConnectionPropertiesInput {
   /** A collection of information about the state of the connection between service consumer and provider. */
   privateLinkServiceConnectionState: PrivateLinkServiceConnectionState;
 }
+const PrivateEndpointConnectionPropertiesInput = /*@__PURE__*/ __L.at(
+  __c7,
+  0,
+) as any as S.Schema<PrivateEndpointConnectionPropertiesInput>;
+
 export interface SchedulersCreateOrUpdatePrivateEndpointConnectionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -594,6 +899,11 @@ export interface SchedulersCreateOrUpdatePrivateEndpointConnectionRequest {
   /** Resource properties. */
   properties?: PrivateEndpointConnectionPropertiesInput;
 }
+const SchedulersCreateOrUpdatePrivateEndpointConnectionRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  1,
+) as any as S.Schema<SchedulersCreateOrUpdatePrivateEndpointConnectionRequest>;
+
 export interface SchedulersCreateOrUpdatePrivateEndpointConnectionResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -606,6 +916,11 @@ export interface SchedulersCreateOrUpdatePrivateEndpointConnectionResponse {
   /** Resource properties. */
   properties?: PrivateEndpointConnectionProperties;
 }
+const SchedulersCreateOrUpdatePrivateEndpointConnectionResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  2,
+) as any as S.Schema<SchedulersCreateOrUpdatePrivateEndpointConnectionResponse>;
+
 /** The properties of Task Hub */
 export type TaskHubPropertiesInput = PrivateEndpointInput;
 export interface TaskHubsCreateOrUpdateRequest {
@@ -620,6 +935,11 @@ export interface TaskHubsCreateOrUpdateRequest {
   /** The resource-specific properties for this resource. */
   properties?: PrivateEndpointInput;
 }
+const TaskHubsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  3,
+) as any as S.Schema<TaskHubsCreateOrUpdateRequest>;
+
 export interface TaskHubsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -632,6 +952,11 @@ export interface TaskHubsCreateOrUpdateResponse {
   /** The resource-specific properties for this resource. */
   properties?: TaskHubProperties;
 }
+const TaskHubsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  4,
+) as any as S.Schema<TaskHubsCreateOrUpdateResponse>;
+
 export interface UpdateRetentionPolicyRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -642,6 +967,11 @@ export interface UpdateRetentionPolicyRequest {
   /** The resource-specific properties for this resource. */
   properties?: RetentionPolicyPropertiesInput;
 }
+const UpdateRetentionPolicyRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  5,
+) as any as S.Schema<UpdateRetentionPolicyRequest>;
+
 export interface UpdateRetentionPolicyResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -654,8 +984,14 @@ export interface UpdateRetentionPolicyResponse {
   /** The resource-specific properties for this resource. */
   properties?: RetentionPolicyProperties;
 }
+const UpdateRetentionPolicyResponse =
+  GetRetentionPolicyResponse as any as S.Schema<UpdateRetentionPolicyResponse>;
+
 /** IP allow list for durable task scheduler. Values can be IPv4, IPv6 or CIDR */
 export type SchedulerPropertiesUpdateInputIpAllowlistList = Array<string>;
+const SchedulerPropertiesUpdateInputIpAllowlistList =
+  SchedulerPropertiesIpAllowlistList as any as S.Schema<SchedulerPropertiesUpdateInputIpAllowlistList>;
+
 /** The SKU (Stock Keeping Unit) properties to be updated */
 export interface SchedulerSkuUpdate {
   /** The name of the SKU */
@@ -663,6 +999,8 @@ export interface SchedulerSkuUpdate {
   /** The SKU capacity. This allows scale out/in for the resource and impacts zone redundancy */
   capacity?: number;
 }
+const SchedulerSkuUpdate = /*@__PURE__*/ __L.at(__c7, 6) as any as S.Schema<SchedulerSkuUpdate>;
+
 /** The Scheduler resource properties to be updated */
 export interface SchedulerPropertiesUpdateInput {
   /** IP allow list for durable task scheduler. Values can be IPv4, IPv6 or CIDR */
@@ -672,8 +1010,16 @@ export interface SchedulerPropertiesUpdateInput {
   /** Allow or disallow public network access to durable task scheduler */
   publicNetworkAccess?: PublicNetworkAccess | (string & {});
 }
+const SchedulerPropertiesUpdateInput = /*@__PURE__*/ __L.at(
+  __c7,
+  7,
+) as any as S.Schema<SchedulerPropertiesUpdateInput>;
+
 /** Resource tags. */
 export type UpdateSchedulerRequestTagsMap = { [key: string]: string | undefined };
+const UpdateSchedulerRequestTagsMap =
+  GetSchedulerResponseTagsMap as any as S.Schema<UpdateSchedulerRequestTagsMap>;
+
 export interface UpdateSchedulerRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -686,6 +1032,11 @@ export interface UpdateSchedulerRequest {
   /** Resource tags. */
   tags?: UpdateSchedulerRequestTagsMap;
 }
+const UpdateSchedulerRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  0,
+) as any as S.Schema<UpdateSchedulerRequest>;
+
 /** Resource tags. */
 export type UpdateSchedulerResponseTagsMap = { [key: string]: string | undefined };
 export interface UpdateSchedulerResponse {
@@ -704,6 +1055,8 @@ export interface UpdateSchedulerResponse {
   /** The resource-specific properties for this resource. */
   properties?: SchedulerProperties;
 }
+const UpdateSchedulerResponse = GetSchedulerResponse as any as S.Schema<UpdateSchedulerResponse>;
+
 /** The private endpoint resource. */
 export type UpdateSchedulerPrivateEndpointConnectionRequestPropertiesPrivateEndpoint =
   PrivateEndpointInput;
@@ -717,6 +1070,11 @@ export interface UpdateSchedulerPrivateEndpointConnectionRequestProperties {
   /** A collection of information about the state of the connection between service consumer and provider. */
   privateLinkServiceConnectionState?: PrivateLinkServiceConnectionState;
 }
+const UpdateSchedulerPrivateEndpointConnectionRequestProperties = /*@__PURE__*/ __L.at(
+  __c8,
+  1,
+) as any as S.Schema<UpdateSchedulerPrivateEndpointConnectionRequestProperties>;
+
 export interface UpdateSchedulerPrivateEndpointConnectionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -729,6 +1087,11 @@ export interface UpdateSchedulerPrivateEndpointConnectionRequest {
   /** The private endpoint connection properties */
   properties?: UpdateSchedulerPrivateEndpointConnectionRequestProperties;
 }
+const UpdateSchedulerPrivateEndpointConnectionRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  2,
+) as any as S.Schema<UpdateSchedulerPrivateEndpointConnectionRequest>;
+
 export interface UpdateSchedulerPrivateEndpointConnectionResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -741,6 +1104,9 @@ export interface UpdateSchedulerPrivateEndpointConnectionResponse {
   /** Resource properties. */
   properties?: PrivateEndpointConnectionProperties;
 }
+const UpdateSchedulerPrivateEndpointConnectionResponse =
+  SchedulerPropertiesPrivateEndpointConnectionsItem as any as S.Schema<UpdateSchedulerPrivateEndpointConnectionResponse>;
+
 export type DeleteRetentionPolicyError = AzureOpError;
 /** Delete a Retention Policy */
 export const DeleteRetentionPolicy: API.OperationMethod<
@@ -749,8 +1115,8 @@ export const DeleteRetentionPolicy: API.OperationMethod<
   DeleteRetentionPolicyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<DeleteRetentionPolicyRequest>,
-  output: __S(1) as any as S.Schema<DeleteRetentionPolicyResponse>,
+  input: DeleteRetentionPolicyRequest,
+  output: DeleteRetentionPolicyResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -764,8 +1130,8 @@ export const DeleteScheduler: API.OperationMethod<
   DeleteSchedulerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2) as any as S.Schema<DeleteSchedulerRequest>,
-  output: __S(1) as any as S.Schema<DeleteSchedulerResponse>,
+  input: DeleteSchedulerRequest,
+  output: DeleteSchedulerResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -779,8 +1145,8 @@ export const DeleteSchedulerPrivateEndpointConnection: API.OperationMethod<
   DeleteSchedulerPrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3) as any as S.Schema<DeleteSchedulerPrivateEndpointConnectionRequest>,
-  output: __S(4) as any as S.Schema<DeleteSchedulerPrivateEndpointConnectionResponse>,
+  input: DeleteSchedulerPrivateEndpointConnectionRequest,
+  output: DeleteSchedulerPrivateEndpointConnectionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -794,8 +1160,8 @@ export const DeleteTaskHub: API.OperationMethod<
   DeleteTaskHubError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5) as any as S.Schema<DeleteTaskHubRequest>,
-  output: __S(1) as any as S.Schema<DeleteTaskHubResponse>,
+  input: DeleteTaskHubRequest,
+  output: DeleteTaskHubResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -809,8 +1175,8 @@ export const GetRetentionPolicy: API.OperationMethod<
   GetRetentionPolicyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6) as any as S.Schema<GetRetentionPolicyRequest>,
-  output: __S(11) as any as S.Schema<GetRetentionPolicyResponse>,
+  input: GetRetentionPolicyRequest,
+  output: GetRetentionPolicyResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -824,8 +1190,8 @@ export const GetScheduler: API.OperationMethod<
   GetSchedulerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12) as any as S.Schema<GetSchedulerRequest>,
-  output: __S(22) as any as S.Schema<GetSchedulerResponse>,
+  input: GetSchedulerRequest,
+  output: GetSchedulerResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -839,8 +1205,8 @@ export const GetSchedulerPrivateEndpointConnection: API.OperationMethod<
   GetSchedulerPrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23) as any as S.Schema<GetSchedulerPrivateEndpointConnectionRequest>,
-  output: __S(19) as any as S.Schema<GetSchedulerPrivateEndpointConnectionResponse>,
+  input: GetSchedulerPrivateEndpointConnectionRequest,
+  output: GetSchedulerPrivateEndpointConnectionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -854,8 +1220,8 @@ export const GetSchedulerPrivateLink: API.OperationMethod<
   GetSchedulerPrivateLinkError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24) as any as S.Schema<GetSchedulerPrivateLinkRequest>,
-  output: __S(26) as any as S.Schema<GetSchedulerPrivateLinkResponse>,
+  input: GetSchedulerPrivateLinkRequest,
+  output: GetSchedulerPrivateLinkResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -869,8 +1235,8 @@ export const GetTaskHub: API.OperationMethod<
   GetTaskHubError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27) as any as S.Schema<GetTaskHubRequest>,
-  output: __S(29) as any as S.Schema<GetTaskHubResponse>,
+  input: GetTaskHubRequest,
+  output: GetTaskHubResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -884,8 +1250,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30) as any as S.Schema<ListOperationsRequest>,
-  output: __S(34) as any as S.Schema<ListOperationsResponse>,
+  input: ListOperationsRequest,
+  output: ListOperationsResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -899,8 +1265,8 @@ export const ListRetentionPolicyByScheduler: API.OperationMethod<
   ListRetentionPolicyBySchedulerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35) as any as S.Schema<ListRetentionPolicyBySchedulerRequest>,
-  output: __S(38) as any as S.Schema<RetentionPolicyListResult>,
+  input: ListRetentionPolicyBySchedulerRequest,
+  output: RetentionPolicyListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -914,8 +1280,8 @@ export const ListSchedulerByResourceGroup: API.OperationMethod<
   ListSchedulerByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39) as any as S.Schema<ListSchedulerByResourceGroupRequest>,
-  output: __S(41) as any as S.Schema<SchedulerListResult>,
+  input: ListSchedulerByResourceGroupRequest,
+  output: SchedulerListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -929,8 +1295,8 @@ export const ListSchedulerBySubscription: API.OperationMethod<
   ListSchedulerBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42) as any as S.Schema<ListSchedulerBySubscriptionRequest>,
-  output: __S(41) as any as S.Schema<SchedulerListResult>,
+  input: ListSchedulerBySubscriptionRequest,
+  output: SchedulerListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -944,8 +1310,8 @@ export const ListSchedulerPrivateEndpointConnections: API.OperationMethod<
   ListSchedulerPrivateEndpointConnectionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43) as any as S.Schema<ListSchedulerPrivateEndpointConnectionsRequest>,
-  output: __S(44) as any as S.Schema<PrivateEndpointConnectionListResult>,
+  input: ListSchedulerPrivateEndpointConnectionsRequest,
+  output: PrivateEndpointConnectionListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -959,8 +1325,8 @@ export const ListSchedulerPrivateLinks: API.OperationMethod<
   ListSchedulerPrivateLinksError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45) as any as S.Schema<ListSchedulerPrivateLinksRequest>,
-  output: __S(47) as any as S.Schema<SchedulerPrivateLinkResourceListResult>,
+  input: ListSchedulerPrivateLinksRequest,
+  output: SchedulerPrivateLinkResourceListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -974,8 +1340,8 @@ export const ListTaskHubByScheduler: API.OperationMethod<
   ListTaskHubBySchedulerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48) as any as S.Schema<ListTaskHubBySchedulerRequest>,
-  output: __S(50) as any as S.Schema<TaskHubListResult>,
+  input: ListTaskHubBySchedulerRequest,
+  output: TaskHubListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -989,8 +1355,8 @@ export const RetentionPoliciesCreateOrReplace: API.OperationMethod<
   RetentionPoliciesCreateOrReplaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(52) as any as S.Schema<RetentionPoliciesCreateOrReplaceRequest>,
-  output: __S(11) as any as S.Schema<RetentionPoliciesCreateOrReplaceResponse>,
+  input: RetentionPoliciesCreateOrReplaceRequest,
+  output: RetentionPoliciesCreateOrReplaceResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1004,8 +1370,8 @@ export const SchedulersCreateOrUpdate: API.OperationMethod<
   SchedulersCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(54) as any as S.Schema<SchedulersCreateOrUpdateRequest>,
-  output: __S(55) as any as S.Schema<SchedulersCreateOrUpdateResponse>,
+  input: SchedulersCreateOrUpdateRequest,
+  output: SchedulersCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1019,8 +1385,8 @@ export const SchedulersCreateOrUpdatePrivateEndpointConnection: API.OperationMet
   SchedulersCreateOrUpdatePrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57) as any as S.Schema<SchedulersCreateOrUpdatePrivateEndpointConnectionRequest>,
-  output: __S(58) as any as S.Schema<SchedulersCreateOrUpdatePrivateEndpointConnectionResponse>,
+  input: SchedulersCreateOrUpdatePrivateEndpointConnectionRequest,
+  output: SchedulersCreateOrUpdatePrivateEndpointConnectionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1034,8 +1400,8 @@ export const TaskHubsCreateOrUpdate: API.OperationMethod<
   TaskHubsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(59) as any as S.Schema<TaskHubsCreateOrUpdateRequest>,
-  output: __S(60) as any as S.Schema<TaskHubsCreateOrUpdateResponse>,
+  input: TaskHubsCreateOrUpdateRequest,
+  output: TaskHubsCreateOrUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1049,8 +1415,8 @@ export const UpdateRetentionPolicy: API.OperationMethod<
   UpdateRetentionPolicyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(61) as any as S.Schema<UpdateRetentionPolicyRequest>,
-  output: __S(11) as any as S.Schema<UpdateRetentionPolicyResponse>,
+  input: UpdateRetentionPolicyRequest,
+  output: UpdateRetentionPolicyResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1064,8 +1430,8 @@ export const UpdateScheduler: API.OperationMethod<
   UpdateSchedulerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(64) as any as S.Schema<UpdateSchedulerRequest>,
-  output: __S(22) as any as S.Schema<UpdateSchedulerResponse>,
+  input: UpdateSchedulerRequest,
+  output: UpdateSchedulerResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1079,8 +1445,8 @@ export const UpdateSchedulerPrivateEndpointConnection: API.OperationMethod<
   UpdateSchedulerPrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(66) as any as S.Schema<UpdateSchedulerPrivateEndpointConnectionRequest>,
-  output: __S(19) as any as S.Schema<UpdateSchedulerPrivateEndpointConnectionResponse>,
+  input: UpdateSchedulerPrivateEndpointConnectionRequest,
+  output: UpdateSchedulerPrivateEndpointConnectionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1184,10 +1550,10 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
-          createdByType: S.optional(S.String),
+          createdByType: S.optional(SystemDataCreatedByType),
           createdAt: S.optional(S.String),
           lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(S.String),
+          lastModifiedByType: S.optional(SystemDataLastModifiedByType),
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "SystemData" });
@@ -1199,16 +1565,16 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           retentionPeriodInDays: S.Number,
-          orchestrationState: S.optional(S.String),
+          orchestrationState: S.optional(PurgeableOrchestrationState),
         }),
       ).annotate({ identifier: "RetentionPolicyDetails" });
     case 1:
-      return S.Array(__S(8));
+      return S.Array(RetentionPolicyDetails);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          provisioningState: S.optional(S.String),
-          retentionPolicies: S.optional(__S(9)),
+          provisioningState: S.optional(ProvisioningState),
+          retentionPolicies: S.optional(RetentionPolicyPropertiesRetentionPoliciesList),
         }),
       ).annotate({
         identifier: "RetentionPolicyProperties",
@@ -1219,8 +1585,8 @@ function __c1(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(7)),
-          properties: S.optional(__S(10)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(RetentionPolicyProperties),
         }),
       ).annotate({
         identifier: "GetRetentionPolicyResponse",
@@ -1247,9 +1613,9 @@ function __c1(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          name: S.String,
+          name: SchedulerSkuName,
           capacity: S.optional(S.Number),
-          redundancyState: S.optional(S.String),
+          redundancyState: S.optional(RedundancyState),
         }),
       ).annotate({ identifier: "SchedulerSku" });
   }
@@ -1265,7 +1631,7 @@ function __c2(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(S.String),
+          status: S.optional(PrivateEndpointServiceConnectionStatus),
           description: S.optional(S.String),
           actionsRequired: S.optional(S.String),
         }),
@@ -1275,10 +1641,10 @@ function __c2(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          groupIds: S.optional(__S(14)),
-          privateEndpoint: S.optional(__S(16)),
-          privateLinkServiceConnectionState: __S(17),
-          provisioningState: S.optional(S.String),
+          groupIds: S.optional(PrivateEndpointConnectionPropertiesGroupIdsList),
+          privateEndpoint: S.optional(PrivateEndpoint),
+          privateLinkServiceConnectionState: PrivateLinkServiceConnectionState,
+          provisioningState: S.optional(PrivateEndpointConnectionProvisioningState),
         }),
       ).annotate({
         identifier: "PrivateEndpointConnectionProperties",
@@ -1289,23 +1655,23 @@ function __c2(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(7)),
-          properties: S.optional(__S(18)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(PrivateEndpointConnectionProperties),
         }),
       ).annotate({
         identifier: "SchedulerPropertiesPrivateEndpointConnectionsItem",
       });
     case 4:
-      return S.Array(__S(19));
+      return S.Array(SchedulerPropertiesPrivateEndpointConnectionsItem);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          provisioningState: S.optional(S.String),
+          provisioningState: S.optional(ProvisioningState),
           endpoint: S.optional(S.String),
-          ipAllowlist: __S(14),
-          sku: __S(15),
-          publicNetworkAccess: S.optional(S.String),
-          privateEndpointConnections: S.optional(__S(20)),
+          ipAllowlist: SchedulerPropertiesIpAllowlistList,
+          sku: SchedulerSku,
+          publicNetworkAccess: S.optional(PublicNetworkAccess),
+          privateEndpointConnections: S.optional(SchedulerPropertiesPrivateEndpointConnectionsList),
         }),
       ).annotate({ identifier: "SchedulerProperties" });
     case 6:
@@ -1314,10 +1680,10 @@ function __c2(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(7)),
-          tags: S.optional(__S(13)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(GetSchedulerResponseTagsMap),
           location: S.String,
-          properties: S.optional(__S(21)),
+          properties: S.optional(SchedulerProperties),
         }),
       ).annotate({ identifier: "GetSchedulerResponse" });
     case 7:
@@ -1364,8 +1730,8 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           groupId: S.optional(S.String),
-          requiredMembers: S.optional(__S(14)),
-          requiredZoneNames: S.optional(__S(14)),
+          requiredMembers: S.optional(PrivateLinkResourcePropertiesRequiredMembersList),
+          requiredZoneNames: S.optional(PrivateLinkResourcePropertiesRequiredZoneNamesList),
         }),
       ).annotate({
         identifier: "PrivateLinkResourceProperties",
@@ -1376,8 +1742,8 @@ function __c3(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(7)),
-          properties: S.optional(__S(25)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(PrivateLinkResourceProperties),
         }),
       ).annotate({
         identifier: "GetSchedulerPrivateLinkResponse",
@@ -1401,7 +1767,7 @@ function __c3(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          provisioningState: S.optional(S.String),
+          provisioningState: S.optional(ProvisioningState),
           dashboardUrl: S.optional(S.String),
         }),
       ).annotate({ identifier: "TaskHubProperties" });
@@ -1411,8 +1777,8 @@ function __c3(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(7)),
-          properties: S.optional(__S(28)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(TaskHubProperties),
         }),
       ).annotate({ identifier: "GetTaskHubResponse" });
     case 6:
@@ -1444,17 +1810,17 @@ function __c4(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           isDataAction: S.optional(S.Boolean),
-          display: S.optional(__S(31)),
-          origin: S.optional(S.String),
-          actionType: S.optional(S.String),
+          display: S.optional(OperationDisplay),
+          origin: S.optional(OperationOrigin),
+          actionType: S.optional(OperationActionType),
         }),
       ).annotate({ identifier: "Operation" });
     case 1:
-      return S.Array(__S(32));
+      return S.Array(Operation);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(33)),
+          value: S.optional(ListOperationsResponseValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
@@ -1481,16 +1847,16 @@ function __c4(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(7)),
-          properties: S.optional(__S(10)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(RetentionPolicyProperties),
         }),
       ).annotate({ identifier: "RetentionPolicy" });
     case 5:
-      return S.Array(__S(36));
+      return S.Array(RetentionPolicy);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          value: __S(37),
+          value: RetentionPolicyListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -1517,11 +1883,11 @@ function __c4(j: number): any {
 function __c5(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(22));
+      return S.Array(Scheduler);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(40),
+          value: SchedulerListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "SchedulerListResult" });
@@ -1560,7 +1926,7 @@ function __c5(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: __S(20),
+          value: PrivateEndpointConnectionListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -1584,11 +1950,11 @@ function __c5(j: number): any {
         identifier: "ListSchedulerPrivateLinksRequest",
       });
     case 6:
-      return S.Array(__S(26));
+      return S.Array(SchedulerPrivateLinkResourceListResultValueItem);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          value: __S(46),
+          value: SchedulerPrivateLinkResourceListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -1616,18 +1982,18 @@ function __c6(j: number): any {
         identifier: "ListTaskHubBySchedulerRequest",
       });
     case 1:
-      return S.Array(__S(29));
+      return S.Array(TaskHub);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(49),
+          value: TaskHubListResultValueList,
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "TaskHubListResult" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          retentionPolicies: S.optional(__S(9)),
+          retentionPolicies: S.optional(RetentionPolicyPropertiesInputRetentionPoliciesList),
         }),
       ).annotate({
         identifier: "RetentionPolicyPropertiesInput",
@@ -1638,7 +2004,7 @@ function __c6(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           schedulerName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(51)),
+          properties: S.optional(RetentionPolicyPropertiesInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -1653,9 +2019,9 @@ function __c6(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          ipAllowlist: __S(14),
-          sku: __S(15),
-          publicNetworkAccess: S.optional(S.String),
+          ipAllowlist: SchedulerPropertiesInputIpAllowlistList,
+          sku: SchedulerSku,
+          publicNetworkAccess: S.optional(PublicNetworkAccess),
         }),
       ).annotate({ identifier: "SchedulerPropertiesInput" });
     case 6:
@@ -1664,9 +2030,9 @@ function __c6(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           schedulerName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(13)),
+          tags: S.optional(SchedulersCreateOrUpdateRequestTagsMap),
           location: S.String,
-          properties: S.optional(__S(53)),
+          properties: S.optional(SchedulerPropertiesInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -1684,10 +2050,10 @@ function __c6(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(7)),
-          tags: S.optional(__S(13)),
+          systemData: S.optional(SystemData),
+          tags: S.optional(SchedulersCreateOrUpdateResponseTagsMap),
           location: S.String,
-          properties: S.optional(__S(21)),
+          properties: S.optional(SchedulerProperties),
         }),
       ).annotate({
         identifier: "SchedulersCreateOrUpdateResponse",
@@ -1699,8 +2065,8 @@ function __c7(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          privateEndpoint: S.optional(__S(1)),
-          privateLinkServiceConnectionState: __S(17),
+          privateEndpoint: S.optional(PrivateEndpointInput),
+          privateLinkServiceConnectionState: PrivateLinkServiceConnectionState,
         }),
       ).annotate({
         identifier: "PrivateEndpointConnectionPropertiesInput",
@@ -1712,7 +2078,7 @@ function __c7(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           schedulerName: S.String.pipe(T.Label()),
           privateEndpointConnectionName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(56)),
+          properties: S.optional(PrivateEndpointConnectionPropertiesInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -1730,8 +2096,8 @@ function __c7(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(7)),
-          properties: S.optional(__S(18)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(PrivateEndpointConnectionProperties),
         }),
       ).annotate({
         identifier: "SchedulersCreateOrUpdatePrivateEndpointConnectionResponse",
@@ -1743,7 +2109,7 @@ function __c7(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           schedulerName: S.String.pipe(T.Label()),
           taskHubName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(1)),
+          properties: S.optional(PrivateEndpointInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -1761,8 +2127,8 @@ function __c7(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(7)),
-          properties: S.optional(__S(28)),
+          systemData: S.optional(SystemData),
+          properties: S.optional(TaskHubProperties),
         }),
       ).annotate({
         identifier: "TaskHubsCreateOrUpdateResponse",
@@ -1773,7 +2139,7 @@ function __c7(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           schedulerName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(51)),
+          properties: S.optional(RetentionPolicyPropertiesInput),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1788,16 +2154,16 @@ function __c7(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          name: S.optional(S.String),
+          name: S.optional(SchedulerSkuName),
           capacity: S.optional(S.Number),
         }),
       ).annotate({ identifier: "SchedulerSkuUpdate" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          ipAllowlist: S.optional(__S(14)),
-          sku: S.optional(__S(62)),
-          publicNetworkAccess: S.optional(S.String),
+          ipAllowlist: S.optional(SchedulerPropertiesUpdateInputIpAllowlistList),
+          sku: S.optional(SchedulerSkuUpdate),
+          publicNetworkAccess: S.optional(PublicNetworkAccess),
         }),
       ).annotate({
         identifier: "SchedulerPropertiesUpdateInput",
@@ -1812,8 +2178,8 @@ function __c8(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           schedulerName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(63)),
-          tags: S.optional(__S(13)),
+          properties: S.optional(SchedulerPropertiesUpdateInput),
+          tags: S.optional(UpdateSchedulerRequestTagsMap),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1826,8 +2192,8 @@ function __c8(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          privateEndpoint: S.optional(__S(1)),
-          privateLinkServiceConnectionState: S.optional(__S(17)),
+          privateEndpoint: S.optional(PrivateEndpointInput),
+          privateLinkServiceConnectionState: S.optional(PrivateLinkServiceConnectionState),
         }),
       ).annotate({
         identifier: "UpdateSchedulerPrivateEndpointConnectionRequestProperties",
@@ -1839,7 +2205,7 @@ function __c8(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           schedulerName: S.String.pipe(T.Label()),
           privateEndpointConnectionName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(65)),
+          properties: S.optional(UpdateSchedulerPrivateEndpointConnectionRequestProperties),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1851,32 +2217,5 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "UpdateSchedulerPrivateEndpointConnectionRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
   }
 }

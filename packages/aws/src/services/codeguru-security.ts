@@ -10,8 +10,6 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "CodeGuru Security",
   serviceShapeName: "AwsCodeGuruSecurity",
@@ -140,11 +138,11 @@ export class ValidationException
     {
       errorCode: S.String,
       message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
-      reason: /*@__PURE__*/ S.suspend(() => S.String).annotate({
+      reason: /*@__PURE__*/ S.suspend(() => ValidationExceptionReason).annotate({
         identifier: "ValidationExceptionReason",
       }),
       fieldList: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => __S(55)).annotate({
+        /*@__PURE__*/ S.suspend(() => ValidationExceptionFieldList).annotate({
           identifier: "ValidationExceptionFieldList",
         }),
       ),
@@ -155,22 +153,35 @@ export interface FindingIdentifier {
   scanName: string;
   findingId: string;
 }
+const FindingIdentifier = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<FindingIdentifier>;
 export type FindingIdentifiers = FindingIdentifier[];
+const FindingIdentifiers = /*@__PURE__*/ __L.at(__c0, 1);
 export interface BatchGetFindingsRequest {
   findingIdentifiers: FindingIdentifier[];
 }
+const BatchGetFindingsRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<BatchGetFindingsRequest>;
 export type Status = "Closed" | "Open" | "All" | (string & {});
+const Status = S.String;
+
 export interface Resource {
   id?: string;
   subResourceId?: string;
 }
+const Resource = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<Resource>;
 export type ReferenceUrls = string[];
+const ReferenceUrls = /*@__PURE__*/ __L.at(__c0, 4);
 export type RelatedVulnerabilities = string[];
+const RelatedVulnerabilities = ReferenceUrls as any as S.Schema<RelatedVulnerabilities>;
 export interface CodeLine {
   number?: number;
   content?: string;
 }
+const CodeLine = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<CodeLine>;
 export type CodeSnippet = CodeLine[];
+const CodeSnippet = /*@__PURE__*/ __L.at(__c0, 6);
 export interface FilePath {
   name?: string;
   path?: string;
@@ -178,6 +189,7 @@ export interface FilePath {
   endLine?: number;
   codeSnippet?: CodeLine[];
 }
+const FilePath = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<FilePath>;
 export interface Vulnerability {
   referenceUrls?: string[];
   relatedVulnerabilities?: string[];
@@ -185,21 +197,29 @@ export interface Vulnerability {
   filePath?: FilePath;
   itemCount?: number;
 }
+const Vulnerability = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<Vulnerability>;
 export type Severity = "Critical" | "High" | "Medium" | "Low" | "Info" | (string & {});
+const Severity = S.String;
+
 export interface Recommendation {
   text?: string;
   url?: string;
 }
+const Recommendation = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<Recommendation>;
 export interface SuggestedFix {
   description?: string;
   code?: string;
 }
+const SuggestedFix = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<SuggestedFix>;
 export type SuggestedFixes = SuggestedFix[];
+const SuggestedFixes = /*@__PURE__*/ __L.at(__c1, 3);
 export interface Remediation {
   recommendation?: Recommendation;
   suggestedFixes?: SuggestedFix[];
 }
+const Remediation = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<Remediation>;
 export type DetectorTags = string[];
+const DetectorTags = ReferenceUrls as any as S.Schema<DetectorTags>;
 export interface Finding {
   createdAt?: Date;
   description?: string;
@@ -218,7 +238,9 @@ export interface Finding {
   detectorName?: string;
   ruleId?: string;
 }
+const Finding = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<Finding>;
 export type Findings = Finding[];
+const Findings = /*@__PURE__*/ __L.at(__c1, 6);
 export type ScanName = string;
 export type ErrorCode =
   | "DUPLICATE_IDENTIFIER"
@@ -227,25 +249,42 @@ export type ErrorCode =
   | "INVALID_FINDING_ID"
   | "INVALID_SCAN_NAME"
   | (string & {});
+const ErrorCode = S.String;
+
 export interface BatchGetFindingsError_ {
   scanName: string;
   findingId: string;
   errorCode: ErrorCode;
   message: string;
 }
+const BatchGetFindingsError_ = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<BatchGetFindingsError_>;
 export type BatchGetFindingsErrors = BatchGetFindingsError_[];
+const BatchGetFindingsErrors = /*@__PURE__*/ __L.at(__c2, 0);
 export interface BatchGetFindingsResponse {
   findings: Finding[];
   failedFindings: BatchGetFindingsError_[];
 }
+const BatchGetFindingsResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<BatchGetFindingsResponse>;
 export type ClientToken = string;
 export type Uuid = string;
 export type ResourceId = { codeArtifactId: string };
+const ResourceId = /*@__PURE__*/ __L.at(__c2, 2);
 export type ScanType = "Standard" | "Express" | (string & {});
+const ScanType = S.String;
+
 export type AnalysisType = "Security" | "All" | (string & {});
+const AnalysisType = S.String;
+
 export type TagKey = string;
 export type TagValue = string;
 export type TagMap = { [key: string]: string | undefined };
+const TagMap = /*@__PURE__*/ __L.at(__c2, 3);
 export interface CreateScanRequest {
   clientToken?: string;
   resourceId: ResourceId;
@@ -254,7 +293,10 @@ export interface CreateScanRequest {
   analysisType?: AnalysisType;
   tags?: { [key: string]: string | undefined };
 }
+const CreateScanRequest = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<CreateScanRequest>;
 export type ScanState = "InProgress" | "Successful" | "Failed" | (string & {});
+const ScanState = S.String;
+
 export type ScanNameArn = string;
 export interface CreateScanResponse {
   scanName: string;
@@ -263,26 +305,45 @@ export interface CreateScanResponse {
   scanState: ScanState;
   scanNameArn?: string;
 }
+const CreateScanResponse = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<CreateScanResponse>;
 export interface CreateUploadUrlRequest {
   scanName: string;
 }
+const CreateUploadUrlRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<CreateUploadUrlRequest>;
 export type S3Url = string | redacted.Redacted<string>;
 export type HeaderKey = string;
 export type HeaderValue = string;
 export type RequestHeaderMap = { [key: string]: string | undefined };
+const RequestHeaderMap = /*@__PURE__*/ __L.at(__c2, 7);
 export interface CreateUploadUrlResponse {
   s3Url: string | redacted.Redacted<string>;
   requestHeaders: { [key: string]: string | undefined };
   codeArtifactId: string;
 }
+const CreateUploadUrlResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<CreateUploadUrlResponse>;
 export interface GetAccountConfigurationRequest {}
+const GetAccountConfigurationRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<GetAccountConfigurationRequest>;
 export type KmsKeyArn = string;
 export interface EncryptionConfig {
   kmsKeyArn?: string;
 }
+const EncryptionConfig = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<EncryptionConfig>;
 export interface GetAccountConfigurationResponse {
   encryptionConfig: EncryptionConfig;
 }
+const GetAccountConfigurationResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<GetAccountConfigurationResponse>;
 export type NextToken = string;
 export interface GetFindingsRequest {
   scanName: string;
@@ -290,13 +351,19 @@ export interface GetFindingsRequest {
   maxResults?: number;
   status?: Status;
 }
+const GetFindingsRequest = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<GetFindingsRequest>;
 export interface GetFindingsResponse {
   findings?: Finding[];
   nextToken?: string;
 }
+const GetFindingsResponse = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<GetFindingsResponse>;
 export interface GetMetricsSummaryRequest {
   date: Date;
 }
+const GetMetricsSummaryRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<GetMetricsSummaryRequest>;
 export interface FindingMetricsValuePerSeverity {
   info?: number;
   low?: number;
@@ -304,17 +371,33 @@ export interface FindingMetricsValuePerSeverity {
   high?: number;
   critical?: number;
 }
+const FindingMetricsValuePerSeverity = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<FindingMetricsValuePerSeverity>;
 export interface CategoryWithFindingNum {
   categoryName?: string;
   findingNumber?: number;
 }
+const CategoryWithFindingNum = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<CategoryWithFindingNum>;
 export type CategoriesWithMostFindings = CategoryWithFindingNum[];
+const CategoriesWithMostFindings = /*@__PURE__*/ __L.at(__c4, 1);
 export interface ScanNameWithFindingNum {
   scanName?: string;
   findingNumber?: number;
 }
+const ScanNameWithFindingNum = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<ScanNameWithFindingNum>;
 export type ScansWithMostOpenFindings = ScanNameWithFindingNum[];
+const ScansWithMostOpenFindings = /*@__PURE__*/ __L.at(__c4, 3);
 export type ScansWithMostOpenCriticalFindings = ScanNameWithFindingNum[];
+const ScansWithMostOpenCriticalFindings =
+  ScansWithMostOpenFindings as any as S.Schema<ScansWithMostOpenCriticalFindings>;
 export interface MetricsSummary {
   date?: Date;
   openFindings?: FindingMetricsValuePerSeverity;
@@ -322,13 +405,19 @@ export interface MetricsSummary {
   scansWithMostOpenFindings?: ScanNameWithFindingNum[];
   scansWithMostOpenCriticalFindings?: ScanNameWithFindingNum[];
 }
+const MetricsSummary = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<MetricsSummary>;
 export interface GetMetricsSummaryResponse {
   metricsSummary?: MetricsSummary;
 }
+const GetMetricsSummaryResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<GetMetricsSummaryResponse>;
 export interface GetScanRequest {
   scanName: string;
   runId?: string;
 }
+const GetScanRequest = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<GetScanRequest>;
 export type ErrorMessage = string;
 export interface GetScanResponse {
   scanName: string;
@@ -341,12 +430,17 @@ export interface GetScanResponse {
   scanNameArn?: string;
   errorMessage?: string;
 }
+const GetScanResponse = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<GetScanResponse>;
 export interface ListFindingsMetricsRequest {
   nextToken?: string;
   maxResults?: number;
   startDate: Date;
   endDate: Date;
 }
+const ListFindingsMetricsRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  0,
+) as any as S.Schema<ListFindingsMetricsRequest>;
 export interface AccountFindingsMetric {
   date?: Date;
   newFindings?: FindingMetricsValuePerSeverity;
@@ -354,15 +448,25 @@ export interface AccountFindingsMetric {
   openFindings?: FindingMetricsValuePerSeverity;
   meanTimeToClose?: FindingMetricsValuePerSeverity;
 }
+const AccountFindingsMetric = /*@__PURE__*/ __L.at(
+  __c5,
+  1,
+) as any as S.Schema<AccountFindingsMetric>;
 export type FindingsMetricList = AccountFindingsMetric[];
+const FindingsMetricList = /*@__PURE__*/ __L.at(__c5, 2);
 export interface ListFindingsMetricsResponse {
   findingsMetrics?: AccountFindingsMetric[];
   nextToken?: string;
 }
+const ListFindingsMetricsResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<ListFindingsMetricsResponse>;
 export interface ListScansRequest {
   nextToken?: string;
   maxResults?: number;
 }
+const ListScansRequest = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<ListScansRequest>;
 export interface ScanSummary {
   scanState: ScanState;
   createdAt: Date;
@@ -371,34 +475,56 @@ export interface ScanSummary {
   runId: string;
   scanNameArn?: string;
 }
+const ScanSummary = /*@__PURE__*/ __L.at(__c5, 5) as any as S.Schema<ScanSummary>;
 export type ScanSummaries = ScanSummary[];
+const ScanSummaries = /*@__PURE__*/ __L.at(__c5, 6);
 export interface ListScansResponse {
   summaries?: ScanSummary[];
   nextToken?: string;
 }
+const ListScansResponse = /*@__PURE__*/ __L.at(__c5, 7) as any as S.Schema<ListScansResponse>;
 export interface ListTagsForResourceRequest {
   resourceArn: string;
 }
+const ListTagsForResourceRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<ListTagsForResourceRequest>;
 export interface ListTagsForResourceResponse {
   tags?: { [key: string]: string | undefined };
 }
+const ListTagsForResourceResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  1,
+) as any as S.Schema<ListTagsForResourceResponse>;
 export interface TagResourceRequest {
   resourceArn: string;
   tags: { [key: string]: string | undefined };
 }
+const TagResourceRequest = /*@__PURE__*/ __L.at(__c6, 2) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
+const TagResourceResponse = /*@__PURE__*/ __L.at(__c6, 3) as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
+const TagKeyList = ReferenceUrls as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   resourceArn: string;
   tagKeys: string[];
 }
+const UntagResourceRequest = /*@__PURE__*/ __L.at(__c6, 4) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
+const UntagResourceResponse = TagResourceResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateAccountConfigurationRequest {
   encryptionConfig: EncryptionConfig;
 }
+const UpdateAccountConfigurationRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  5,
+) as any as S.Schema<UpdateAccountConfigurationRequest>;
 export interface UpdateAccountConfigurationResponse {
   encryptionConfig: EncryptionConfig;
 }
+const UpdateAccountConfigurationResponse =
+  GetAccountConfigurationResponse as any as S.Schema<UpdateAccountConfigurationResponse>;
 export type ValidationExceptionReason =
   | "unknownOperation"
   | "cannotParse"
@@ -406,11 +532,18 @@ export type ValidationExceptionReason =
   | "other"
   | "lambdaCodeShaMisMatch"
   | (string & {});
+const ValidationExceptionReason = S.String;
+
 export interface ValidationExceptionField {
   name: string;
   message: string;
 }
+const ValidationExceptionField = /*@__PURE__*/ __L.at(
+  __c6,
+  6,
+) as any as S.Schema<ValidationExceptionField>;
 export type ValidationExceptionFieldList = ValidationExceptionField[];
+const ValidationExceptionFieldList = /*@__PURE__*/ __L.at(__c6, 7);
 export type BatchGetFindingsError =
   | AccessDeniedException
   | InternalServerException
@@ -426,8 +559,8 @@ export const batchGetFindings: API.OperationMethod<
   BatchGetFindingsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2) as any as S.Schema<BatchGetFindingsRequest>,
-  output: __S(17) as any as S.Schema<BatchGetFindingsResponse>,
+  input: BatchGetFindingsRequest,
+  output: BatchGetFindingsResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -456,8 +589,8 @@ export const createScan: API.OperationMethod<
   CreateScanError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20) as any as S.Schema<CreateScanRequest>,
-  output: __S(21) as any as S.Schema<CreateScanResponse>,
+  input: CreateScanRequest,
+  output: CreateScanResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -488,8 +621,8 @@ export const createUploadUrl: API.OperationMethod<
   CreateUploadUrlError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22) as any as S.Schema<CreateUploadUrlRequest>,
-  output: __S(24) as any as S.Schema<CreateUploadUrlResponse>,
+  input: CreateUploadUrlRequest,
+  output: CreateUploadUrlResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -516,8 +649,8 @@ export const getAccountConfiguration: API.OperationMethod<
   GetAccountConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25) as any as S.Schema<GetAccountConfigurationRequest>,
-  output: __S(27) as any as S.Schema<GetAccountConfigurationResponse>,
+  input: GetAccountConfigurationRequest,
+  output: GetAccountConfigurationResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -547,8 +680,8 @@ export const getFindings: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Finding
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(28) as any as S.Schema<GetFindingsRequest>,
-  output: __S(29) as any as S.Schema<GetFindingsResponse>,
+  input: GetFindingsRequest,
+  output: GetFindingsResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -583,8 +716,8 @@ export const getMetricsSummary: API.OperationMethod<
   GetMetricsSummaryError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30) as any as S.Schema<GetMetricsSummaryRequest>,
-  output: __S(37) as any as S.Schema<GetMetricsSummaryResponse>,
+  input: GetMetricsSummaryRequest,
+  output: GetMetricsSummaryResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -612,8 +745,8 @@ export const getScan: API.OperationMethod<
   GetScanError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38) as any as S.Schema<GetScanRequest>,
-  output: __S(39) as any as S.Schema<GetScanResponse>,
+  input: GetScanRequest,
+  output: GetScanResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -642,8 +775,8 @@ export const listFindingsMetrics: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   AccountFindingsMetric
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(40) as any as S.Schema<ListFindingsMetricsRequest>,
-  output: __S(43) as any as S.Schema<ListFindingsMetricsResponse>,
+  input: ListFindingsMetricsRequest,
+  output: ListFindingsMetricsResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -677,8 +810,8 @@ export const listScans: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ScanSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(44) as any as S.Schema<ListScansRequest>,
-  output: __S(47) as any as S.Schema<ListScansResponse>,
+  input: ListScansRequest,
+  output: ListScansResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -713,8 +846,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48) as any as S.Schema<ListTagsForResourceRequest>,
-  output: __S(49) as any as S.Schema<ListTagsForResourceResponse>,
+  input: ListTagsForResourceRequest,
+  output: ListTagsForResourceResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -745,8 +878,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(50) as any as S.Schema<TagResourceRequest>,
-  output: __S(51) as any as S.Schema<TagResourceResponse>,
+  input: TagResourceRequest,
+  output: TagResourceResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -777,8 +910,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(52) as any as S.Schema<UntagResourceRequest>,
-  output: __S(51) as any as S.Schema<UntagResourceResponse>,
+  input: UntagResourceRequest,
+  output: UntagResourceResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -808,8 +941,8 @@ export const updateAccountConfiguration: API.OperationMethod<
   UpdateAccountConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(53) as any as S.Schema<UpdateAccountConfigurationRequest>,
-  output: __S(27) as any as S.Schema<UpdateAccountConfigurationResponse>,
+  input: UpdateAccountConfigurationRequest,
+  output: UpdateAccountConfigurationResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -830,10 +963,10 @@ function __c0(j: number): any {
         identifier: "FindingIdentifier",
       });
     case 1:
-      return S.Array(__S(0));
+      return S.Array(FindingIdentifier);
     case 2:
       return S.suspend(() =>
-        S.Struct({ findingIdentifiers: __S(1) }).pipe(
+        S.Struct({ findingIdentifiers: FindingIdentifiers }).pipe(
           T.all(T.Http({ method: "POST", uri: "/batchGetFindings" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "BatchGetFindingsRequest" });
@@ -848,7 +981,7 @@ function __c0(j: number): any {
         S.Struct({ number: S.optional(S.Number), content: S.optional(S.String) }),
       ).annotate({ identifier: "CodeLine" });
     case 6:
-      return S.Array(__S(5));
+      return S.Array(CodeLine);
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -856,7 +989,7 @@ function __c0(j: number): any {
           path: S.optional(S.String),
           startLine: S.optional(S.Number),
           endLine: S.optional(S.Number),
-          codeSnippet: S.optional(__S(6)),
+          codeSnippet: S.optional(CodeSnippet),
         }),
       ).annotate({ identifier: "FilePath" });
   }
@@ -866,10 +999,10 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          referenceUrls: S.optional(__S(4)),
-          relatedVulnerabilities: S.optional(__S(4)),
+          referenceUrls: S.optional(ReferenceUrls),
+          relatedVulnerabilities: S.optional(RelatedVulnerabilities),
           id: S.optional(S.String),
-          filePath: S.optional(__S(7)),
+          filePath: S.optional(FilePath),
           itemCount: S.optional(S.Number),
         }),
       ).annotate({ identifier: "Vulnerability" });
@@ -882,12 +1015,12 @@ function __c1(j: number): any {
         S.Struct({ description: S.optional(S.String), code: S.optional(S.String) }),
       ).annotate({ identifier: "SuggestedFix" });
     case 3:
-      return S.Array(__S(10));
+      return S.Array(SuggestedFix);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          recommendation: S.optional(__S(9)),
-          suggestedFixes: S.optional(__S(11)),
+          recommendation: S.optional(Recommendation),
+          suggestedFixes: S.optional(SuggestedFixes),
         }),
       ).annotate({ identifier: "Remediation" });
     case 5:
@@ -899,26 +1032,26 @@ function __c1(j: number): any {
           id: S.optional(S.String),
           updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           type: S.optional(S.String),
-          status: S.optional(S.String),
-          resource: S.optional(__S(3)),
-          vulnerability: S.optional(__S(8)),
-          severity: S.optional(S.String),
-          remediation: S.optional(__S(12)),
+          status: S.optional(Status),
+          resource: S.optional(Resource),
+          vulnerability: S.optional(Vulnerability),
+          severity: S.optional(Severity),
+          remediation: S.optional(Remediation),
           title: S.optional(S.String),
-          detectorTags: S.optional(__S(4)),
+          detectorTags: S.optional(DetectorTags),
           detectorId: S.optional(S.String),
           detectorName: S.optional(S.String),
           ruleId: S.optional(S.String),
         }),
       ).annotate({ identifier: "Finding" });
     case 6:
-      return S.Array(__S(13));
+      return S.Array(Finding);
     case 7:
       return S.suspend(() =>
         S.Struct({
           scanName: S.String,
           findingId: S.String,
-          errorCode: S.String,
+          errorCode: ErrorCode,
           message: S.String,
         }),
       ).annotate({ identifier: "BatchGetFindingsError" });
@@ -927,11 +1060,11 @@ function __c1(j: number): any {
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(15));
+      return S.Array(BatchGetFindingsError_);
     case 1:
-      return S.suspend(() => S.Struct({ findings: __S(14), failedFindings: __S(16) })).annotate({
-        identifier: "BatchGetFindingsResponse",
-      });
+      return S.suspend(() =>
+        S.Struct({ findings: Findings, failedFindings: BatchGetFindingsErrors }),
+      ).annotate({ identifier: "BatchGetFindingsResponse" });
     case 2:
       return S.Union([/*@__PURE__*/ S.Struct({ codeArtifactId: S.String })]);
     case 3:
@@ -940,11 +1073,11 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          resourceId: __S(18),
+          resourceId: ResourceId,
           scanName: S.String,
-          scanType: S.optional(S.String),
-          analysisType: S.optional(S.String),
-          tags: S.optional(__S(19)),
+          scanType: S.optional(ScanType),
+          analysisType: S.optional(AnalysisType),
+          tags: S.optional(TagMap),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/scans" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateScanRequest" });
     case 5:
@@ -952,8 +1085,8 @@ function __c2(j: number): any {
         S.Struct({
           scanName: S.String,
           runId: S.String,
-          resourceId: __S(18),
-          scanState: S.String,
+          resourceId: ResourceId,
+          scanState: ScanState,
           scanNameArn: S.optional(S.String),
         }),
       ).annotate({ identifier: "CreateScanResponse" });
@@ -973,7 +1106,7 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           s3Url: SensitiveString,
-          requestHeaders: __S(23),
+          requestHeaders: RequestHeaderMap,
           codeArtifactId: S.String,
         }),
       ).annotate({ identifier: "CreateUploadUrlResponse" });
@@ -997,7 +1130,7 @@ function __c3(j: number): any {
         identifier: "EncryptionConfig",
       });
     case 3:
-      return S.suspend(() => S.Struct({ encryptionConfig: __S(26) })).annotate({
+      return S.suspend(() => S.Struct({ encryptionConfig: EncryptionConfig })).annotate({
         identifier: "GetAccountConfigurationResponse",
       });
     case 4:
@@ -1006,7 +1139,7 @@ function __c3(j: number): any {
           scanName: S.String.pipe(T.HttpLabel("scanName")),
           nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
           maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-          status: S.optional(S.String).pipe(T.HttpQuery("status")),
+          status: S.optional(Status).pipe(T.HttpQuery("status")),
         }).pipe(
           T.all(
             T.Http({ method: "GET", uri: "/findings/{scanName}" }),
@@ -1020,7 +1153,7 @@ function __c3(j: number): any {
       ).annotate({ identifier: "GetFindingsRequest" });
     case 5:
       return S.suspend(() =>
-        S.Struct({ findings: S.optional(__S(14)), nextToken: S.optional(S.String) }),
+        S.Struct({ findings: S.optional(Findings), nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "GetFindingsResponse" });
     case 6:
       return S.suspend(() =>
@@ -1051,25 +1184,25 @@ function __c4(j: number): any {
         S.Struct({ categoryName: S.optional(S.String), findingNumber: S.optional(S.Number) }),
       ).annotate({ identifier: "CategoryWithFindingNum" });
     case 1:
-      return S.Array(__S(32));
+      return S.Array(CategoryWithFindingNum);
     case 2:
       return S.suspend(() =>
         S.Struct({ scanName: S.optional(S.String), findingNumber: S.optional(S.Number) }),
       ).annotate({ identifier: "ScanNameWithFindingNum" });
     case 3:
-      return S.Array(__S(34));
+      return S.Array(ScanNameWithFindingNum);
     case 4:
       return S.suspend(() =>
         S.Struct({
           date: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          openFindings: S.optional(__S(31)),
-          categoriesWithMostFindings: S.optional(__S(33)),
-          scansWithMostOpenFindings: S.optional(__S(35)),
-          scansWithMostOpenCriticalFindings: S.optional(__S(35)),
+          openFindings: S.optional(FindingMetricsValuePerSeverity),
+          categoriesWithMostFindings: S.optional(CategoriesWithMostFindings),
+          scansWithMostOpenFindings: S.optional(ScansWithMostOpenFindings),
+          scansWithMostOpenCriticalFindings: S.optional(ScansWithMostOpenCriticalFindings),
         }),
       ).annotate({ identifier: "MetricsSummary" });
     case 5:
-      return S.suspend(() => S.Struct({ metricsSummary: S.optional(__S(36)) })).annotate({
+      return S.suspend(() => S.Struct({ metricsSummary: S.optional(MetricsSummary) })).annotate({
         identifier: "GetMetricsSummaryResponse",
       });
     case 6:
@@ -1086,9 +1219,9 @@ function __c4(j: number): any {
         S.Struct({
           scanName: S.String,
           runId: S.String,
-          scanState: S.String,
+          scanState: ScanState,
           createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          analysisType: S.String,
+          analysisType: AnalysisType,
           updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           numberOfRevisions: S.optional(S.Number),
           scanNameArn: S.optional(S.String),
@@ -1116,18 +1249,18 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           date: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          newFindings: S.optional(__S(31)),
-          closedFindings: S.optional(__S(31)),
-          openFindings: S.optional(__S(31)),
-          meanTimeToClose: S.optional(__S(31)),
+          newFindings: S.optional(FindingMetricsValuePerSeverity),
+          closedFindings: S.optional(FindingMetricsValuePerSeverity),
+          openFindings: S.optional(FindingMetricsValuePerSeverity),
+          meanTimeToClose: S.optional(FindingMetricsValuePerSeverity),
         }),
       ).annotate({ identifier: "AccountFindingsMetric" });
     case 2:
-      return S.Array(__S(41));
+      return S.Array(AccountFindingsMetric);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          findingsMetrics: S.optional(__S(42)),
+          findingsMetrics: S.optional(FindingsMetricList),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -1143,7 +1276,7 @@ function __c5(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          scanState: S.String,
+          scanState: ScanState,
           createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           scanName: S.String,
@@ -1152,10 +1285,10 @@ function __c5(j: number): any {
         }),
       ).annotate({ identifier: "ScanSummary" });
     case 6:
-      return S.Array(__S(45));
+      return S.Array(ScanSummary);
     case 7:
       return S.suspend(() =>
-        S.Struct({ summaries: S.optional(__S(46)), nextToken: S.optional(S.String) }),
+        S.Struct({ summaries: S.optional(ScanSummaries), nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListScansResponse" });
   }
 }
@@ -1177,12 +1310,12 @@ function __c6(j: number): any {
         identifier: "ListTagsForResourceRequest",
       });
     case 1:
-      return S.suspend(() => S.Struct({ tags: S.optional(__S(19)) })).annotate({
+      return S.suspend(() => S.Struct({ tags: S.optional(TagMap) })).annotate({
         identifier: "ListTagsForResourceResponse",
       });
     case 2:
       return S.suspend(() =>
-        S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")), tags: __S(19) }).pipe(
+        S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")), tags: TagMap }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/tags/{resourceArn}" }),
             svc,
@@ -1201,7 +1334,7 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
-          tagKeys: __S(4).pipe(T.HttpQuery("tagKeys")),
+          tagKeys: TagKeyList.pipe(T.HttpQuery("tagKeys")),
         }).pipe(
           T.all(
             T.Http({ method: "DELETE", uri: "/tags/{resourceArn}" }),
@@ -1215,7 +1348,7 @@ function __c6(j: number): any {
       ).annotate({ identifier: "UntagResourceRequest" });
     case 5:
       return S.suspend(() =>
-        S.Struct({ encryptionConfig: __S(26) }).pipe(
+        S.Struct({ encryptionConfig: EncryptionConfig }).pipe(
           T.all(
             T.Http({ method: "PUT", uri: "/updateAccountConfiguration" }),
             svc,
@@ -1233,29 +1366,6 @@ function __c6(j: number): any {
         identifier: "ValidationExceptionField",
       });
     case 7:
-      return S.Array(__S(54));
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
+      return S.Array(ValidationExceptionField);
   }
 }

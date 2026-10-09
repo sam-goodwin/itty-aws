@@ -6,8 +6,6 @@ import { UnknownDaytonaError } from "../errors.ts";
 import { DaytonaProtocol, type DaytonaOpError, type DaytonaOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { DaytonaOpError, DaytonaOpContext };
 
@@ -17,38 +15,88 @@ export interface GetSandboxIdFromSignedPreviewUrlTokenRequest {
   /** Port number to get sandbox ID from signed preview URL token */
   port: number;
 }
+const GetSandboxIdFromSignedPreviewUrlTokenRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<GetSandboxIdFromSignedPreviewUrlTokenRequest>;
+
 export type GetSandboxIdFromSignedPreviewUrlTokenResponse = string;
+const GetSandboxIdFromSignedPreviewUrlTokenResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<GetSandboxIdFromSignedPreviewUrlTokenResponse>;
+
 export interface GetSigningKeyRequest {
   /** ID of the sandbox */
   sandboxId: string;
 }
+const GetSigningKeyRequest = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<GetSigningKeyRequest>;
+
 export type GetSigningKeyResponse = string;
+const GetSigningKeyResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<GetSigningKeyResponse>;
+
 export interface HasSandboxAccessRequest {
   sandboxId: string;
 }
+const HasSandboxAccessRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<HasSandboxAccessRequest>;
+
 export type HasSandboxAccessResponse = boolean;
+const HasSandboxAccessResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<HasSandboxAccessResponse>;
+
 export interface IsPreviewWarningEnabledRequest {
   /** ID of the sandbox, or a signed preview URL token (requires the port query param) */
   sandboxId: string;
   /** Port the signed preview URL token was issued for. Required when sandboxId is a signed token. */
   port?: number;
 }
+const IsPreviewWarningEnabledRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<IsPreviewWarningEnabledRequest>;
+
 export interface PreviewWarning {
   /** Whether the preview warning page is enabled for the sandbox */
   enabled: boolean;
 }
+const PreviewWarning = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<PreviewWarning>;
+
 export interface IsSandboxPublicRequest {
   /** ID of the sandbox */
   sandboxId: string;
 }
+const IsSandboxPublicRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<IsSandboxPublicRequest>;
+
 export type IsSandboxPublicResponse = boolean;
+const IsSandboxPublicResponse =
+  HasSandboxAccessResponse as any as S.Schema<IsSandboxPublicResponse>;
+
 export interface IsValidAuthTokenRequest {
   /** ID of the sandbox */
   sandboxId: string;
   /** Auth token of the sandbox */
   authToken: string;
 }
+const IsValidAuthTokenRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<IsValidAuthTokenRequest>;
+
 export type IsValidAuthTokenResponse = boolean;
+const IsValidAuthTokenResponse =
+  HasSandboxAccessResponse as any as S.Schema<IsValidAuthTokenResponse>;
+
 export type GetSandboxIdFromSignedPreviewUrlTokenError = DaytonaOpError;
 /** Get sandbox ID from signed preview URL token */
 export const getSandboxIdFromSignedPreviewUrlToken: API.OperationMethod<
@@ -57,8 +105,8 @@ export const getSandboxIdFromSignedPreviewUrlToken: API.OperationMethod<
   GetSandboxIdFromSignedPreviewUrlTokenError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<GetSandboxIdFromSignedPreviewUrlTokenRequest>,
-  output: __S(1) as any as S.Schema<GetSandboxIdFromSignedPreviewUrlTokenResponse>,
+  input: GetSandboxIdFromSignedPreviewUrlTokenRequest,
+  output: GetSandboxIdFromSignedPreviewUrlTokenResponse,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -72,8 +120,8 @@ export const getSigningKey: API.OperationMethod<
   GetSigningKeyError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2) as any as S.Schema<GetSigningKeyRequest>,
-  output: __S(3) as any as S.Schema<GetSigningKeyResponse>,
+  input: GetSigningKeyRequest,
+  output: GetSigningKeyResponse,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -87,8 +135,8 @@ export const hasSandboxAccess: API.OperationMethod<
   HasSandboxAccessError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4) as any as S.Schema<HasSandboxAccessRequest>,
-  output: __S(5) as any as S.Schema<HasSandboxAccessResponse>,
+  input: HasSandboxAccessRequest,
+  output: HasSandboxAccessResponse,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -102,8 +150,8 @@ export const isPreviewWarningEnabled: API.OperationMethod<
   IsPreviewWarningEnabledError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6) as any as S.Schema<IsPreviewWarningEnabledRequest>,
-  output: __S(7) as any as S.Schema<PreviewWarning>,
+  input: IsPreviewWarningEnabledRequest,
+  output: PreviewWarning,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -117,8 +165,8 @@ export const isSandboxPublic: API.OperationMethod<
   IsSandboxPublicError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8) as any as S.Schema<IsSandboxPublicRequest>,
-  output: __S(5) as any as S.Schema<IsSandboxPublicResponse>,
+  input: IsSandboxPublicRequest,
+  output: IsSandboxPublicResponse,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -132,8 +180,8 @@ export const isValidAuthToken: API.OperationMethod<
   IsValidAuthTokenError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9) as any as S.Schema<IsValidAuthTokenRequest>,
-  output: __S(5) as any as S.Schema<IsValidAuthTokenResponse>,
+  input: IsValidAuthTokenRequest,
+  output: IsValidAuthTokenResponse,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -215,18 +263,5 @@ function __c1(j: number): any {
           T.Http({ method: "GET", uri: "/preview/{sandboxId}/validate/{authToken}", code: 200 }),
         ),
       ).annotate({ identifier: "IsValidAuthTokenRequest" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
   }
 }

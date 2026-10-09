@@ -6,8 +6,6 @@ import * as S from "@distilled.cloud/core/schema";
 import { PosthogProtocol, type PosthogOpError, type PosthogOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { PosthogOpError, PosthogOpContext };
 
@@ -33,12 +31,32 @@ export interface GetSessionsPropertyDefinitionRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
+const GetSessionsPropertyDefinitionRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<GetSessionsPropertyDefinitionRequest>;
+
 export interface GetSessionsPropertyDefinitionResponse {}
+const GetSessionsPropertyDefinitionResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<GetSessionsPropertyDefinitionResponse>;
+
 export interface GetSessionsValueRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
+const GetSessionsValueRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<GetSessionsValueRequest>;
+
 export interface GetSessionsValueResponse {}
+const GetSessionsValueResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<GetSessionsValueResponse>;
+
 export type GetSessionsPropertyDefinitionError = Forbidden | NotFound | PosthogOpError;
 export const getSessionsPropertyDefinition: API.OperationMethod<
   GetSessionsPropertyDefinitionRequest,
@@ -46,8 +64,8 @@ export const getSessionsPropertyDefinition: API.OperationMethod<
   GetSessionsPropertyDefinitionError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<GetSessionsPropertyDefinitionRequest>,
-  output: __S(1) as any as S.Schema<GetSessionsPropertyDefinitionResponse>,
+  input: GetSessionsPropertyDefinitionRequest,
+  output: GetSessionsPropertyDefinitionResponse,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -60,8 +78,8 @@ export const getSessionsValue: API.OperationMethod<
   GetSessionsValueError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2) as any as S.Schema<GetSessionsValueRequest>,
-  output: __S(3) as any as S.Schema<GetSessionsValueResponse>,
+  input: GetSessionsValueRequest,
+  output: GetSessionsValueResponse,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -100,16 +118,5 @@ function __c0(j: number): any {
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "GetSessionsValueResponse",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 2) {
-    case 0:
-      return __c0(i & 3);
   }
 }

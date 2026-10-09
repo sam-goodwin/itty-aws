@@ -11,8 +11,6 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveBlob } from "../sensitive.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "SageMaker Runtime HTTP2",
   serviceShapeName: "AmazonSageMakerRuntimeHttp2",
@@ -386,7 +384,11 @@ export interface RequestPayloadPart {
   CompletionState?: string;
   P?: string;
 }
+const RequestPayloadPart = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<RequestPayloadPart>;
 export type RequestStreamEvent = { PayloadPart: RequestPayloadPart };
+const RequestStreamEvent = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<
+  stream.Stream<RequestStreamEvent, Error, never>
+>;
 export interface InvokeEndpointWithBidirectionalStreamInput {
   EndpointName: string;
   Body: stream.Stream<RequestStreamEvent, Error, never>;
@@ -394,20 +396,32 @@ export interface InvokeEndpointWithBidirectionalStreamInput {
   ModelInvocationPath?: string;
   ModelQueryString?: string;
 }
+const InvokeEndpointWithBidirectionalStreamInput = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<InvokeEndpointWithBidirectionalStreamInput>;
 export interface ResponsePayloadPart {
   Bytes?: Uint8Array | redacted.Redacted<Uint8Array>;
   DataType?: string;
   CompletionState?: string;
   P?: string;
 }
+const ResponsePayloadPart = RequestPayloadPart as any as S.Schema<ResponsePayloadPart>;
 export type ResponseStreamEvent =
   | { PayloadPart: ResponsePayloadPart; ModelStreamError?: never; InternalStreamFailure?: never }
   | { PayloadPart?: never; ModelStreamError: ModelStreamError; InternalStreamFailure?: never }
   | { PayloadPart?: never; ModelStreamError?: never; InternalStreamFailure: InternalStreamFailure };
+const ResponseStreamEvent = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<
+  stream.Stream<ResponseStreamEvent, Error, never>
+>;
 export interface InvokeEndpointWithBidirectionalStreamOutput {
   Body: stream.Stream<ResponseStreamEvent, Error, never>;
   InvokedProductionVariant?: string;
 }
+const InvokeEndpointWithBidirectionalStreamOutput = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<InvokeEndpointWithBidirectionalStreamOutput>;
 export type InvokeEndpointWithBidirectionalStreamError =
   | InputValidationError
   | InternalServerError
@@ -437,8 +451,8 @@ export const invokeEndpointWithBidirectionalStream: API.OperationMethod<
   InvokeEndpointWithBidirectionalStreamError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2) as any as S.Schema<InvokeEndpointWithBidirectionalStreamInput>,
-  output: __S(4) as any as S.Schema<InvokeEndpointWithBidirectionalStreamOutput>,
+  input: InvokeEndpointWithBidirectionalStreamInput,
+  output: InvokeEndpointWithBidirectionalStreamOutput,
   errors: [
     InputValidationError,
     InternalServerError,
@@ -466,13 +480,13 @@ function __c0(j: number): any {
       ).annotate({ identifier: "RequestPayloadPart" });
     case 1:
       return T.InputEventStream(
-        /*@__PURE__*/ S.Union([/*@__PURE__*/ S.Struct({ PayloadPart: __S(0) })]),
+        /*@__PURE__*/ S.Union([/*@__PURE__*/ S.Struct({ PayloadPart: RequestPayloadPart })]),
       );
     case 2:
       return S.suspend(() =>
         S.Struct({
           EndpointName: S.String.pipe(T.HttpLabel("EndpointName")),
-          Body: __S(1).pipe(T.HttpPayload()),
+          Body: RequestStreamEvent.pipe(T.HttpPayload()),
           TargetVariant: S.optional(S.String).pipe(T.HttpHeader("X-Amzn-SageMaker-Target-Variant")),
           ModelInvocationPath: S.optional(S.String).pipe(
             T.HttpHeader("X-Amzn-SageMaker-Model-Invocation-Path"),
@@ -499,7 +513,7 @@ function __c0(j: number): any {
     case 3:
       return T.EventStream(
         /*@__PURE__*/ S.Union([
-          /*@__PURE__*/ S.Struct({ PayloadPart: __S(0) }),
+          /*@__PURE__*/ S.Struct({ PayloadPart: ResponsePayloadPart }),
           /*@__PURE__*/ S.Struct({
             ModelStreamError: /*@__PURE__*/ S.suspend(() => ModelStreamError).annotate({
               identifier: "ModelStreamError",
@@ -515,7 +529,7 @@ function __c0(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          Body: __S(3).pipe(T.HttpPayload()),
+          Body: ResponseStreamEvent.pipe(T.HttpPayload()),
           InvokedProductionVariant: S.optional(S.String).pipe(
             T.HttpHeader("X-Amzn-Invoked-Production-Variant"),
           ),
@@ -523,16 +537,5 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "InvokeEndpointWithBidirectionalStreamOutput",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
   }
 }

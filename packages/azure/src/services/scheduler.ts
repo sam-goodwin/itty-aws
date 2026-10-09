@@ -6,8 +6,6 @@ import { UnknownAzureError } from "../errors.ts";
 import { AzureProtocol, type AzureOpError, type AzureOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { AzureOpError, AzureOpContext };
 
@@ -21,7 +19,11 @@ export interface DeleteJobRequest {
   /** The job name. */
   jobName: string;
 }
+const DeleteJobRequest = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<DeleteJobRequest>;
+
 export interface DeleteJobResponse {}
+const DeleteJobResponse = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<DeleteJobResponse>;
+
 export interface DeleteJobCollectionRequest {
   /** The subscription id. */
   subscriptionId: string;
@@ -30,7 +32,15 @@ export interface DeleteJobCollectionRequest {
   /** The job collection name. */
   jobCollectionName: string;
 }
+const DeleteJobCollectionRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<DeleteJobCollectionRequest>;
+
 export interface DeleteJobCollectionResponse {}
+const DeleteJobCollectionResponse =
+  DeleteJobResponse as any as S.Schema<DeleteJobCollectionResponse>;
+
 export interface DisableJobCollectionRequest {
   /** The subscription id. */
   subscriptionId: string;
@@ -39,7 +49,15 @@ export interface DisableJobCollectionRequest {
   /** The job collection name. */
   jobCollectionName: string;
 }
+const DisableJobCollectionRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<DisableJobCollectionRequest>;
+
 export interface DisableJobCollectionResponse {}
+const DisableJobCollectionResponse =
+  DeleteJobResponse as any as S.Schema<DisableJobCollectionResponse>;
+
 export interface EnableJobCollectionRequest {
   /** The subscription id. */
   subscriptionId: string;
@@ -48,7 +66,15 @@ export interface EnableJobCollectionRequest {
   /** The job collection name. */
   jobCollectionName: string;
 }
+const EnableJobCollectionRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<EnableJobCollectionRequest>;
+
 export interface EnableJobCollectionResponse {}
+const EnableJobCollectionResponse =
+  DeleteJobResponse as any as S.Schema<EnableJobCollectionResponse>;
+
 export interface GetJobRequest {
   /** The subscription id. */
   subscriptionId: string;
@@ -59,6 +85,8 @@ export interface GetJobRequest {
   /** The job name. */
   jobName: string;
 }
+const GetJobRequest = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<GetJobRequest>;
+
 /** Gets or sets the job action type. */
 export type JobActionType =
   | "Http"
@@ -66,18 +94,29 @@ export type JobActionType =
   | "StorageQueue"
   | "ServiceBusQueue"
   | "ServiceBusTopic";
+const JobActionType = S.String;
+
 /** Gets or sets the HTTP authentication type. */
 export type HttpAuthenticationType =
   | "NotSpecified"
   | "ClientCertificate"
   | "ActiveDirectoryOAuth"
   | "Basic";
+const HttpAuthenticationType = S.String;
+
 export interface HttpAuthentication {
   /** Gets or sets the HTTP authentication type. */
   type: HttpAuthenticationType | (string & {});
 }
+const HttpAuthentication = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<HttpAuthentication>;
+
 /** Gets or sets the headers. */
 export type HttpRequestHeadersMap = { [key: string]: string | undefined };
+const HttpRequestHeadersMap = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<HttpRequestHeadersMap>;
+
 export interface HttpRequest {
   /** Gets or sets the authentication method of the request. */
   authentication?: HttpAuthentication;
@@ -90,6 +129,8 @@ export interface HttpRequest {
   /** Gets or sets the headers. */
   headers?: HttpRequestHeadersMap;
 }
+const HttpRequest = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<HttpRequest>;
+
 export interface StorageQueueMessage {
   /** Gets or sets the storage account name. */
   storageAccount?: string;
@@ -100,8 +141,12 @@ export interface StorageQueueMessage {
   /** Gets or sets the message. */
   message?: string;
 }
+const StorageQueueMessage = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<StorageQueueMessage>;
+
 /** Gets or sets the authentication type. */
 export type ServiceBusAuthenticationType = "NotSpecified" | "SharedAccessKey";
+const ServiceBusAuthenticationType = S.String;
+
 export interface ServiceBusAuthentication {
   /** Gets or sets the SAS key. */
   sasKey?: string;
@@ -110,6 +155,11 @@ export interface ServiceBusAuthentication {
   /** Gets or sets the authentication type. */
   type?: ServiceBusAuthenticationType | (string & {});
 }
+const ServiceBusAuthentication = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<ServiceBusAuthentication>;
+
 export interface ServiceBusBrokeredMessageProperties {
   /** Gets or sets the content type. */
   contentType?: string;
@@ -138,12 +188,22 @@ export interface ServiceBusBrokeredMessageProperties {
   /** Gets or sets the via partition key. */
   viaPartitionKey?: string;
 }
+const ServiceBusBrokeredMessageProperties = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<ServiceBusBrokeredMessageProperties>;
+
 /** Gets or sets the custom message properties. */
 export type ServiceBusQueueMessageCustomMessagePropertiesMap = {
   [key: string]: string | undefined;
 };
+const ServiceBusQueueMessageCustomMessagePropertiesMap =
+  HttpRequestHeadersMap as any as S.Schema<ServiceBusQueueMessageCustomMessagePropertiesMap>;
+
 /** Gets or sets the transport type. */
 export type ServiceBusQueueMessageTransportType = "NotSpecified" | "NetMessaging" | "AMQP";
+const ServiceBusQueueMessageTransportType = S.String;
+
 export interface ServiceBusQueueMessage {
   /** Gets or sets the Service Bus authentication. */
   authentication?: ServiceBusAuthentication;
@@ -160,12 +220,22 @@ export interface ServiceBusQueueMessage {
   /** Gets or sets the queue name. */
   queueName?: string;
 }
+const ServiceBusQueueMessage = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<ServiceBusQueueMessage>;
+
 /** Gets or sets the custom message properties. */
 export type ServiceBusTopicMessageCustomMessagePropertiesMap = {
   [key: string]: string | undefined;
 };
+const ServiceBusTopicMessageCustomMessagePropertiesMap =
+  HttpRequestHeadersMap as any as S.Schema<ServiceBusTopicMessageCustomMessagePropertiesMap>;
+
 /** Gets or sets the transport type. */
 export type ServiceBusTopicMessageTransportType = "NotSpecified" | "NetMessaging" | "AMQP";
+const ServiceBusTopicMessageTransportType = S.String;
+
 export interface ServiceBusTopicMessage {
   /** Gets or sets the Service Bus authentication. */
   authentication?: ServiceBusAuthentication;
@@ -182,8 +252,15 @@ export interface ServiceBusTopicMessage {
   /** Gets or sets the topic path. */
   topicPath?: string;
 }
+const ServiceBusTopicMessage = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<ServiceBusTopicMessage>;
+
 /** Gets or sets the retry strategy to be used. */
 export type RetryPolicyRetryType = "None" | "Fixed";
+const RetryPolicyRetryType = S.String;
+
 export interface RetryPolicy {
   /** Gets or sets the retry strategy to be used. */
   retryType?: RetryPolicyRetryType | (string & {});
@@ -192,6 +269,8 @@ export interface RetryPolicy {
   /** Gets or sets the number of times a retry should be attempted. */
   retryCount?: number;
 }
+const RetryPolicy = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<RetryPolicy>;
+
 /** Gets or sets the job error action type. */
 export type JobErrorActionType =
   | "Http"
@@ -199,6 +278,8 @@ export type JobErrorActionType =
   | "StorageQueue"
   | "ServiceBusQueue"
   | "ServiceBusTopic";
+const JobErrorActionType = S.String;
+
 export interface JobErrorAction {
   /** Gets or sets the job error action type. */
   type?: JobErrorActionType | (string & {});
@@ -213,6 +294,8 @@ export interface JobErrorAction {
   /** Gets or sets the retry policy. */
   retryPolicy?: RetryPolicy;
 }
+const JobErrorAction = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<JobErrorAction>;
+
 export interface JobAction {
   /** Gets or sets the job action type. */
   type?: JobActionType | (string & {});
@@ -229,8 +312,12 @@ export interface JobAction {
   /** Gets or sets the error action. */
   errorAction?: JobErrorAction;
 }
+const JobAction = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<JobAction>;
+
 /** Gets or sets the frequency of recurrence (second, minute, hour, day, week, month). */
 export type JobRecurrenceFrequency = "Minute" | "Hour" | "Day" | "Week" | "Month";
+const JobRecurrenceFrequency = S.String;
+
 export type JobRecurrenceScheduleWeekDaysItem =
   | "Sunday"
   | "Monday"
@@ -239,16 +326,34 @@ export type JobRecurrenceScheduleWeekDaysItem =
   | "Thursday"
   | "Friday"
   | "Saturday";
+const JobRecurrenceScheduleWeekDaysItem = S.String;
+
 /** Gets or sets the days of the week that the job should execute on. */
 export type JobRecurrenceScheduleWeekDaysList = Array<
   JobRecurrenceScheduleWeekDaysItem | (string & {})
 >;
+const JobRecurrenceScheduleWeekDaysList = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<JobRecurrenceScheduleWeekDaysList>;
+
 /** Gets or sets the hours of the day that the job should execute at. */
 export type JobRecurrenceScheduleHoursList = Array<number>;
+const JobRecurrenceScheduleHoursList = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<JobRecurrenceScheduleHoursList>;
+
 /** Gets or sets the minutes of the hour that the job should execute at. */
 export type JobRecurrenceScheduleMinutesList = Array<number>;
+const JobRecurrenceScheduleMinutesList =
+  JobRecurrenceScheduleHoursList as any as S.Schema<JobRecurrenceScheduleMinutesList>;
+
 /** Gets or sets the days of the month that the job should execute on. Must be between 1 and 31. */
 export type JobRecurrenceScheduleMonthDaysList = Array<number>;
+const JobRecurrenceScheduleMonthDaysList =
+  JobRecurrenceScheduleHoursList as any as S.Schema<JobRecurrenceScheduleMonthDaysList>;
+
 /** Gets or sets the day. Must be one of monday, tuesday, wednesday, thursday, friday, saturday, sunday. */
 export type JobRecurrenceScheduleMonthlyOccurrenceDay =
   | "Monday"
@@ -258,15 +363,27 @@ export type JobRecurrenceScheduleMonthlyOccurrenceDay =
   | "Friday"
   | "Saturday"
   | "Sunday";
+const JobRecurrenceScheduleMonthlyOccurrenceDay = S.String;
+
 export interface JobRecurrenceScheduleMonthlyOccurrence {
   /** Gets or sets the day. Must be one of monday, tuesday, wednesday, thursday, friday, saturday, sunday. */
   day?: JobRecurrenceScheduleMonthlyOccurrenceDay | (string & {});
   /** Gets or sets the occurrence. Must be between -5 and 5. */
   Occurrence?: number;
 }
+const JobRecurrenceScheduleMonthlyOccurrence = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<JobRecurrenceScheduleMonthlyOccurrence>;
+
 /** Gets or sets the occurrences of days within a month. */
 export type JobRecurrenceScheduleMonthlyOccurrencesList =
   Array<JobRecurrenceScheduleMonthlyOccurrence>;
+const JobRecurrenceScheduleMonthlyOccurrencesList = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<JobRecurrenceScheduleMonthlyOccurrencesList>;
+
 export interface JobRecurrenceSchedule {
   /** Gets or sets the days of the week that the job should execute on. */
   weekDays?: JobRecurrenceScheduleWeekDaysList;
@@ -279,6 +396,11 @@ export interface JobRecurrenceSchedule {
   /** Gets or sets the occurrences of days within a month. */
   monthlyOccurrences?: JobRecurrenceScheduleMonthlyOccurrencesList;
 }
+const JobRecurrenceSchedule = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<JobRecurrenceSchedule>;
+
 export interface JobRecurrence {
   /** Gets or sets the frequency of recurrence (second, minute, hour, day, week, month). */
   frequency?: JobRecurrenceFrequency | (string & {});
@@ -290,8 +412,12 @@ export interface JobRecurrence {
   endTime?: string;
   schedule?: JobRecurrenceSchedule;
 }
+const JobRecurrence = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<JobRecurrence>;
+
 /** Gets or set the job state. */
 export type JobState = "Enabled" | "Disabled" | "Faulted" | "Completed";
+const JobState = S.String;
+
 export interface JobStatus {
   /** Gets the number of times this job has executed. */
   executionCount?: number;
@@ -304,6 +430,8 @@ export interface JobStatus {
   /** Gets the time of the next occurrence in ISO-8601 format. Could be empty if the job is completed. */
   nextExecutionTime?: string;
 }
+const JobStatus = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<JobStatus>;
+
 export interface JobProperties {
   /** Gets or sets the job start time. */
   startTime?: string;
@@ -316,6 +444,8 @@ export interface JobProperties {
   /** Gets the job status. */
   status?: JobStatus;
 }
+const JobProperties = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<JobProperties>;
+
 export interface JobDefinition {
   /** Gets the job resource identifier. */
   id?: string;
@@ -326,6 +456,8 @@ export interface JobDefinition {
   /** Gets or sets the job properties. */
   properties?: JobProperties;
 }
+const JobDefinition = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<JobDefinition>;
+
 export interface GetJobCollectionRequest {
   /** The subscription id. */
   subscriptionId: string;
@@ -334,24 +466,42 @@ export interface GetJobCollectionRequest {
   /** The job collection name. */
   jobCollectionName: string;
 }
+const GetJobCollectionRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<GetJobCollectionRequest>;
+
 /** Gets or sets the tags. */
 export type JobCollectionDefinitionTagsMap = { [key: string]: string | undefined };
+const JobCollectionDefinitionTagsMap =
+  HttpRequestHeadersMap as any as S.Schema<JobCollectionDefinitionTagsMap>;
+
 /** Gets or set the SKU. */
 export type SkuName = "Standard" | "Free" | "P10Premium" | "P20Premium";
+const SkuName = S.String;
+
 export interface Sku {
   /** Gets or set the SKU. */
   name?: SkuName | (string & {});
 }
+const Sku = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<Sku>;
+
 /** Gets or sets the state. */
 export type JobCollectionPropertiesState = "Enabled" | "Disabled" | "Suspended" | "Deleted";
+const JobCollectionPropertiesState = S.String;
+
 /** Gets or sets the frequency of recurrence (second, minute, hour, day, week, month). */
 export type JobMaxRecurrenceFrequency = "Minute" | "Hour" | "Day" | "Week" | "Month";
+const JobMaxRecurrenceFrequency = S.String;
+
 export interface JobMaxRecurrence {
   /** Gets or sets the frequency of recurrence (second, minute, hour, day, week, month). */
   frequency?: JobMaxRecurrenceFrequency | (string & {});
   /** Gets or sets the interval between retries. */
   interval?: number;
 }
+const JobMaxRecurrence = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<JobMaxRecurrence>;
+
 export interface JobCollectionQuota {
   /** Gets or set the maximum job count. */
   maxJobCount?: number;
@@ -360,6 +510,8 @@ export interface JobCollectionQuota {
   /** Gets or set the maximum recurrence. */
   maxRecurrence?: JobMaxRecurrence;
 }
+const JobCollectionQuota = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<JobCollectionQuota>;
+
 export interface JobCollectionProperties {
   /** Gets or sets the SKU. */
   sku?: Sku;
@@ -368,6 +520,11 @@ export interface JobCollectionProperties {
   /** Gets or sets the job collection quota. */
   quota?: JobCollectionQuota;
 }
+const JobCollectionProperties = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<JobCollectionProperties>;
+
 export interface JobCollectionDefinition {
   /** Gets the job collection resource identifier. */
   id?: string;
@@ -382,8 +539,16 @@ export interface JobCollectionDefinition {
   /** Gets or sets the job collection properties. */
   properties?: JobCollectionProperties;
 }
+const JobCollectionDefinition = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<JobCollectionDefinition>;
+
 /** Gets or sets the tags. */
 export type JobCollectionsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
+const JobCollectionsCreateOrUpdateRequestTagsMap =
+  HttpRequestHeadersMap as any as S.Schema<JobCollectionsCreateOrUpdateRequestTagsMap>;
+
 export interface JobCollectionsCreateOrUpdateRequest {
   /** The subscription id. */
   subscriptionId: string;
@@ -400,6 +565,11 @@ export interface JobCollectionsCreateOrUpdateRequest {
   /** Gets or sets the job collection properties. */
   properties?: JobCollectionProperties;
 }
+const JobCollectionsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<JobCollectionsCreateOrUpdateRequest>;
+
 export interface JobPropertiesInput {
   /** Gets or sets the job start time. */
   startTime?: string;
@@ -410,6 +580,8 @@ export interface JobPropertiesInput {
   /** Gets or set the job state. */
   state?: JobState | (string & {});
 }
+const JobPropertiesInput = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<JobPropertiesInput>;
+
 export interface JobsCreateOrUpdateRequest {
   /** The subscription id. */
   subscriptionId: string;
@@ -422,24 +594,49 @@ export interface JobsCreateOrUpdateRequest {
   /** Gets or sets the job properties. */
   properties?: JobPropertiesInput;
 }
+const JobsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<JobsCreateOrUpdateRequest>;
+
 export interface ListJobCollectionByResourceGroupRequest {
   /** The subscription id. */
   subscriptionId: string;
   /** The resource group name. */
   resourceGroupName: string;
 }
+const ListJobCollectionByResourceGroupRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<ListJobCollectionByResourceGroupRequest>;
+
 /** Gets the job collections. */
 export type JobCollectionListResultValueList = Array<JobCollectionDefinition>;
+const JobCollectionListResultValueList = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<JobCollectionListResultValueList>;
+
 export interface JobCollectionListResult {
   /** Gets the job collections. */
   value?: JobCollectionListResultValueList;
   /** Gets or sets the URL to get the next set of job collections. */
   nextLink?: string;
 }
+const JobCollectionListResult = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<JobCollectionListResult>;
+
 export interface ListJobCollectionBySubscriptionRequest {
   /** The subscription id. */
   subscriptionId: string;
 }
+const ListJobCollectionBySubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<ListJobCollectionBySubscriptionRequest>;
+
 export interface ListJobJobHistoryRequest {
   /** The subscription id. */
   subscriptionId: string;
@@ -456,10 +653,19 @@ export interface ListJobJobHistoryRequest {
   /** The filter to apply on the job state. */
   _filter?: string;
 }
+const ListJobJobHistoryRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<ListJobJobHistoryRequest>;
+
 /** Gets the job history action name. */
 export type JobHistoryDefinitionPropertiesActionName = "MainAction" | "ErrorAction";
+const JobHistoryDefinitionPropertiesActionName = S.String;
+
 /** Gets the job execution status. */
 export type JobExecutionStatus = "Completed" | "Failed" | "Postponed";
+const JobExecutionStatus = S.String;
+
 export interface JobHistoryDefinitionProperties {
   /** Gets the start time for this job. */
   startTime?: string;
@@ -478,6 +684,11 @@ export interface JobHistoryDefinitionProperties {
   /** Gets the repeat count for the job. */
   repeatCount?: number;
 }
+const JobHistoryDefinitionProperties = /*@__PURE__*/ __L.at(
+  __c5,
+  0,
+) as any as S.Schema<JobHistoryDefinitionProperties>;
+
 export interface JobHistoryDefinition {
   /** Gets the job history identifier. */
   id?: string;
@@ -488,14 +699,23 @@ export interface JobHistoryDefinition {
   /** Gets or sets the job history properties. */
   properties?: JobHistoryDefinitionProperties;
 }
+const JobHistoryDefinition = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<JobHistoryDefinition>;
+
 /** Gets or sets the job histories under job. */
 export type JobHistoryListResultValueList = Array<JobHistoryDefinition>;
+const JobHistoryListResultValueList = /*@__PURE__*/ __L.at(
+  __c5,
+  2,
+) as any as S.Schema<JobHistoryListResultValueList>;
+
 export interface JobHistoryListResult {
   /** Gets or sets the job histories under job. */
   value?: JobHistoryListResultValueList;
   /** Gets or sets the URL to get the next set of job histories. */
   nextLink?: string;
 }
+const JobHistoryListResult = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<JobHistoryListResult>;
+
 export interface ListJobsRequest {
   /** The subscription id. */
   subscriptionId: string;
@@ -510,14 +730,23 @@ export interface ListJobsRequest {
   /** The filter to apply on the job state. */
   _filter?: string;
 }
+const ListJobsRequest = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<ListJobsRequest>;
+
 /** Gets or sets all jobs under job collection. */
 export type JobListResultValueList = Array<JobDefinition>;
+const JobListResultValueList = /*@__PURE__*/ __L.at(
+  __c5,
+  5,
+) as any as S.Schema<JobListResultValueList>;
+
 export interface JobListResult {
   /** Gets or sets all jobs under job collection. */
   value?: JobListResultValueList;
   /** Gets or sets the URL to get the next set of jobs. */
   nextLink?: string;
 }
+const JobListResult = /*@__PURE__*/ __L.at(__c5, 6) as any as S.Schema<JobListResult>;
+
 export interface PatchJobRequest {
   /** The subscription id. */
   subscriptionId: string;
@@ -530,8 +759,13 @@ export interface PatchJobRequest {
   /** Gets or sets the job properties. */
   properties?: JobPropertiesInput;
 }
+const PatchJobRequest = /*@__PURE__*/ __L.at(__c5, 7) as any as S.Schema<PatchJobRequest>;
+
 /** Gets or sets the tags. */
 export type PatchJobCollectionRequestTagsMap = { [key: string]: string | undefined };
+const PatchJobCollectionRequestTagsMap =
+  HttpRequestHeadersMap as any as S.Schema<PatchJobCollectionRequestTagsMap>;
+
 export interface PatchJobCollectionRequest {
   /** The subscription id. */
   subscriptionId: string;
@@ -548,6 +782,11 @@ export interface PatchJobCollectionRequest {
   /** Gets or sets the job collection properties. */
   properties?: JobCollectionProperties;
 }
+const PatchJobCollectionRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<PatchJobCollectionRequest>;
+
 export interface RunJobRequest {
   /** The subscription id. */
   subscriptionId: string;
@@ -558,7 +797,11 @@ export interface RunJobRequest {
   /** The job name. */
   jobName: string;
 }
+const RunJobRequest = /*@__PURE__*/ __L.at(__c6, 1) as any as S.Schema<RunJobRequest>;
+
 export interface RunJobResponse {}
+const RunJobResponse = DeleteJobResponse as any as S.Schema<RunJobResponse>;
+
 export type DeleteJobError = AzureOpError;
 /** Deletes a job. */
 export const DeleteJob: API.OperationMethod<
@@ -567,8 +810,8 @@ export const DeleteJob: API.OperationMethod<
   DeleteJobError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<DeleteJobRequest>,
-  output: __S(1) as any as S.Schema<DeleteJobResponse>,
+  input: DeleteJobRequest,
+  output: DeleteJobResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -582,8 +825,8 @@ export const DeleteJobCollection: API.OperationMethod<
   DeleteJobCollectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2) as any as S.Schema<DeleteJobCollectionRequest>,
-  output: __S(1) as any as S.Schema<DeleteJobCollectionResponse>,
+  input: DeleteJobCollectionRequest,
+  output: DeleteJobCollectionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -597,8 +840,8 @@ export const DisableJobCollection: API.OperationMethod<
   DisableJobCollectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3) as any as S.Schema<DisableJobCollectionRequest>,
-  output: __S(1) as any as S.Schema<DisableJobCollectionResponse>,
+  input: DisableJobCollectionRequest,
+  output: DisableJobCollectionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -612,8 +855,8 @@ export const EnableJobCollection: API.OperationMethod<
   EnableJobCollectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4) as any as S.Schema<EnableJobCollectionRequest>,
-  output: __S(1) as any as S.Schema<EnableJobCollectionResponse>,
+  input: EnableJobCollectionRequest,
+  output: EnableJobCollectionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -627,8 +870,8 @@ export const GetJob: API.OperationMethod<
   GetJobError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5) as any as S.Schema<GetJobRequest>,
-  output: __S(25) as any as S.Schema<JobDefinition>,
+  input: GetJobRequest,
+  output: JobDefinition,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -642,8 +885,8 @@ export const GetJobCollection: API.OperationMethod<
   GetJobCollectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26) as any as S.Schema<GetJobCollectionRequest>,
-  output: __S(31) as any as S.Schema<JobCollectionDefinition>,
+  input: GetJobCollectionRequest,
+  output: JobCollectionDefinition,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -657,8 +900,8 @@ export const JobCollectionsCreateOrUpdate: API.OperationMethod<
   JobCollectionsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32) as any as S.Schema<JobCollectionsCreateOrUpdateRequest>,
-  output: __S(31) as any as S.Schema<JobCollectionDefinition>,
+  input: JobCollectionsCreateOrUpdateRequest,
+  output: JobCollectionDefinition,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -672,8 +915,8 @@ export const JobsCreateOrUpdate: API.OperationMethod<
   JobsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34) as any as S.Schema<JobsCreateOrUpdateRequest>,
-  output: __S(25) as any as S.Schema<JobDefinition>,
+  input: JobsCreateOrUpdateRequest,
+  output: JobDefinition,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -687,8 +930,8 @@ export const ListJobCollectionByResourceGroup: API.OperationMethod<
   ListJobCollectionByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35) as any as S.Schema<ListJobCollectionByResourceGroupRequest>,
-  output: __S(37) as any as S.Schema<JobCollectionListResult>,
+  input: ListJobCollectionByResourceGroupRequest,
+  output: JobCollectionListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -702,8 +945,8 @@ export const ListJobCollectionBySubscription: API.OperationMethod<
   ListJobCollectionBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38) as any as S.Schema<ListJobCollectionBySubscriptionRequest>,
-  output: __S(37) as any as S.Schema<JobCollectionListResult>,
+  input: ListJobCollectionBySubscriptionRequest,
+  output: JobCollectionListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -717,8 +960,8 @@ export const ListJobJobHistory: API.OperationMethod<
   ListJobJobHistoryError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39) as any as S.Schema<ListJobJobHistoryRequest>,
-  output: __S(43) as any as S.Schema<JobHistoryListResult>,
+  input: ListJobJobHistoryRequest,
+  output: JobHistoryListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -732,8 +975,8 @@ export const ListJobs: API.OperationMethod<
   ListJobsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44) as any as S.Schema<ListJobsRequest>,
-  output: __S(46) as any as S.Schema<JobListResult>,
+  input: ListJobsRequest,
+  output: JobListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -747,8 +990,8 @@ export const PatchJob: API.OperationMethod<
   PatchJobError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47) as any as S.Schema<PatchJobRequest>,
-  output: __S(25) as any as S.Schema<JobDefinition>,
+  input: PatchJobRequest,
+  output: JobDefinition,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -762,8 +1005,8 @@ export const PatchJobCollection: API.OperationMethod<
   PatchJobCollectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48) as any as S.Schema<PatchJobCollectionRequest>,
-  output: __S(31) as any as S.Schema<JobCollectionDefinition>,
+  input: PatchJobCollectionRequest,
+  output: JobCollectionDefinition,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -777,8 +1020,8 @@ export const RunJob: API.OperationMethod<
   RunJobError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49) as any as S.Schema<RunJobRequest>,
-  output: __S(1) as any as S.Schema<RunJobResponse>,
+  input: RunJobRequest,
+  output: RunJobResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -877,7 +1120,7 @@ function __c0(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          type: S.String,
+          type: HttpAuthenticationType,
         }),
       ).annotate({ identifier: "HttpAuthentication" });
     case 7:
@@ -889,11 +1132,11 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          authentication: S.optional(__S(6)),
+          authentication: S.optional(HttpAuthentication),
           uri: S.optional(S.String),
           method: S.optional(S.String),
           body: S.optional(S.String),
-          headers: S.optional(__S(7)),
+          headers: S.optional(HttpRequestHeadersMap),
         }),
       ).annotate({ identifier: "HttpRequest" });
     case 1:
@@ -910,7 +1153,7 @@ function __c1(j: number): any {
         S.Struct({
           sasKey: S.optional(S.String),
           sasKeyName: S.optional(S.String),
-          type: S.optional(S.String),
+          type: S.optional(ServiceBusAuthenticationType),
         }),
       ).annotate({ identifier: "ServiceBusAuthentication" });
     case 3:
@@ -936,31 +1179,31 @@ function __c1(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          authentication: S.optional(__S(10)),
-          brokeredMessageProperties: S.optional(__S(11)),
-          customMessageProperties: S.optional(__S(7)),
+          authentication: S.optional(ServiceBusAuthentication),
+          brokeredMessageProperties: S.optional(ServiceBusBrokeredMessageProperties),
+          customMessageProperties: S.optional(ServiceBusQueueMessageCustomMessagePropertiesMap),
           message: S.optional(S.String),
           namespace: S.optional(S.String),
-          transportType: S.optional(S.String),
+          transportType: S.optional(ServiceBusQueueMessageTransportType),
           queueName: S.optional(S.String),
         }),
       ).annotate({ identifier: "ServiceBusQueueMessage" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          authentication: S.optional(__S(10)),
-          brokeredMessageProperties: S.optional(__S(11)),
-          customMessageProperties: S.optional(__S(7)),
+          authentication: S.optional(ServiceBusAuthentication),
+          brokeredMessageProperties: S.optional(ServiceBusBrokeredMessageProperties),
+          customMessageProperties: S.optional(ServiceBusTopicMessageCustomMessagePropertiesMap),
           message: S.optional(S.String),
           namespace: S.optional(S.String),
-          transportType: S.optional(S.String),
+          transportType: S.optional(ServiceBusTopicMessageTransportType),
           topicPath: S.optional(S.String),
         }),
       ).annotate({ identifier: "ServiceBusTopicMessage" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          retryType: S.optional(S.String),
+          retryType: S.optional(RetryPolicyRetryType),
           retryInterval: S.optional(S.String),
           retryCount: S.optional(S.Number),
         }),
@@ -968,12 +1211,12 @@ function __c1(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(S.String),
-          request: S.optional(__S(8)),
-          queueMessage: S.optional(__S(9)),
-          serviceBusQueueMessage: S.optional(__S(12)),
-          serviceBusTopicMessage: S.optional(__S(13)),
-          retryPolicy: S.optional(__S(14)),
+          type: S.optional(JobErrorActionType),
+          request: S.optional(HttpRequest),
+          queueMessage: S.optional(StorageQueueMessage),
+          serviceBusQueueMessage: S.optional(ServiceBusQueueMessage),
+          serviceBusTopicMessage: S.optional(ServiceBusTopicMessage),
+          retryPolicy: S.optional(RetryPolicy),
         }),
       ).annotate({ identifier: "JobErrorAction" });
   }
@@ -983,48 +1226,48 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(S.String),
-          request: S.optional(__S(8)),
-          queueMessage: S.optional(__S(9)),
-          serviceBusQueueMessage: S.optional(__S(12)),
-          serviceBusTopicMessage: S.optional(__S(13)),
-          retryPolicy: S.optional(__S(14)),
-          errorAction: S.optional(__S(15)),
+          type: S.optional(JobActionType),
+          request: S.optional(HttpRequest),
+          queueMessage: S.optional(StorageQueueMessage),
+          serviceBusQueueMessage: S.optional(ServiceBusQueueMessage),
+          serviceBusTopicMessage: S.optional(ServiceBusTopicMessage),
+          retryPolicy: S.optional(RetryPolicy),
+          errorAction: S.optional(JobErrorAction),
         }),
       ).annotate({ identifier: "JobAction" });
     case 1:
-      return S.Array(S.String);
+      return S.Array(JobRecurrenceScheduleWeekDaysItem);
     case 2:
       return S.Array(S.Number);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          day: S.optional(S.String),
+          day: S.optional(JobRecurrenceScheduleMonthlyOccurrenceDay),
           Occurrence: S.optional(S.Number),
         }),
       ).annotate({
         identifier: "JobRecurrenceScheduleMonthlyOccurrence",
       });
     case 4:
-      return S.Array(__S(19));
+      return S.Array(JobRecurrenceScheduleMonthlyOccurrence);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          weekDays: S.optional(__S(17)),
-          hours: S.optional(__S(18)),
-          minutes: S.optional(__S(18)),
-          monthDays: S.optional(__S(18)),
-          monthlyOccurrences: S.optional(__S(20)),
+          weekDays: S.optional(JobRecurrenceScheduleWeekDaysList),
+          hours: S.optional(JobRecurrenceScheduleHoursList),
+          minutes: S.optional(JobRecurrenceScheduleMinutesList),
+          monthDays: S.optional(JobRecurrenceScheduleMonthDaysList),
+          monthlyOccurrences: S.optional(JobRecurrenceScheduleMonthlyOccurrencesList),
         }),
       ).annotate({ identifier: "JobRecurrenceSchedule" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          frequency: S.optional(S.String),
+          frequency: S.optional(JobRecurrenceFrequency),
           interval: S.optional(S.Number),
           count: S.optional(S.Number),
           endTime: S.optional(S.String),
-          schedule: S.optional(__S(21)),
+          schedule: S.optional(JobRecurrenceSchedule),
         }),
       ).annotate({ identifier: "JobRecurrence" });
     case 7:
@@ -1045,10 +1288,10 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           startTime: S.optional(S.String),
-          action: S.optional(__S(16)),
-          recurrence: S.optional(__S(22)),
-          state: S.optional(S.String),
-          status: S.optional(__S(23)),
+          action: S.optional(JobAction),
+          recurrence: S.optional(JobRecurrence),
+          state: S.optional(JobState),
+          status: S.optional(JobStatus),
         }),
       ).annotate({ identifier: "JobProperties" });
     case 1:
@@ -1057,7 +1300,7 @@ function __c3(j: number): any {
           id: S.optional(S.String),
           type: S.optional(S.String),
           name: S.optional(S.String),
-          properties: S.optional(__S(24)),
+          properties: S.optional(JobProperties),
         }),
       ).annotate({ identifier: "JobDefinition" });
     case 2:
@@ -1078,13 +1321,13 @@ function __c3(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          name: S.optional(S.String),
+          name: S.optional(SkuName),
         }),
       ).annotate({ identifier: "Sku" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          frequency: S.optional(S.String),
+          frequency: S.optional(JobMaxRecurrenceFrequency),
           interval: S.optional(S.Number),
         }),
       ).annotate({ identifier: "JobMaxRecurrence" });
@@ -1093,15 +1336,15 @@ function __c3(j: number): any {
         S.Struct({
           maxJobCount: S.optional(S.Number),
           maxJobOccurrence: S.optional(S.Number),
-          maxRecurrence: S.optional(__S(28)),
+          maxRecurrence: S.optional(JobMaxRecurrence),
         }),
       ).annotate({ identifier: "JobCollectionQuota" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          sku: S.optional(__S(27)),
-          state: S.optional(S.String),
-          quota: S.optional(__S(29)),
+          sku: S.optional(Sku),
+          state: S.optional(JobCollectionPropertiesState),
+          quota: S.optional(JobCollectionQuota),
         }),
       ).annotate({ identifier: "JobCollectionProperties" });
     case 7:
@@ -1111,8 +1354,8 @@ function __c3(j: number): any {
           type: S.optional(S.String),
           name: S.optional(S.String),
           location: S.optional(S.String),
-          tags: S.optional(__S(7)),
-          properties: S.optional(__S(30)),
+          tags: S.optional(JobCollectionDefinitionTagsMap),
+          properties: S.optional(JobCollectionProperties),
         }),
       ).annotate({ identifier: "JobCollectionDefinition" });
   }
@@ -1127,8 +1370,8 @@ function __c4(j: number): any {
           jobCollectionName: S.String.pipe(T.Label()),
           name: S.optional(S.String),
           location: S.optional(S.String),
-          tags: S.optional(__S(7)),
-          properties: S.optional(__S(30)),
+          tags: S.optional(JobCollectionsCreateOrUpdateRequestTagsMap),
+          properties: S.optional(JobCollectionProperties),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -1144,9 +1387,9 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           startTime: S.optional(S.String),
-          action: S.optional(__S(16)),
-          recurrence: S.optional(__S(22)),
-          state: S.optional(S.String),
+          action: S.optional(JobAction),
+          recurrence: S.optional(JobRecurrence),
+          state: S.optional(JobState),
         }),
       ).annotate({ identifier: "JobPropertiesInput" });
     case 2:
@@ -1156,7 +1399,7 @@ function __c4(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           jobCollectionName: S.String.pipe(T.Label()),
           jobName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(33)),
+          properties: S.optional(JobPropertiesInput),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -1185,11 +1428,11 @@ function __c4(j: number): any {
         identifier: "ListJobCollectionByResourceGroupRequest",
       });
     case 4:
-      return S.Array(__S(31));
+      return S.Array(JobCollectionDefinition);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(36)),
+          value: S.optional(JobCollectionListResultValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "JobCollectionListResult" });
@@ -1237,8 +1480,8 @@ function __c5(j: number): any {
           startTime: S.optional(S.String),
           endTime: S.optional(S.String),
           expectedExecutionTime: S.optional(S.String),
-          actionName: S.optional(S.String),
-          status: S.optional(S.String),
+          actionName: S.optional(JobHistoryDefinitionPropertiesActionName),
+          status: S.optional(JobExecutionStatus),
           message: S.optional(S.String),
           retryCount: S.optional(S.Number),
           repeatCount: S.optional(S.Number),
@@ -1252,15 +1495,15 @@ function __c5(j: number): any {
           id: S.optional(S.String),
           type: S.optional(S.String),
           name: S.optional(S.String),
-          properties: S.optional(__S(40)),
+          properties: S.optional(JobHistoryDefinitionProperties),
         }),
       ).annotate({ identifier: "JobHistoryDefinition" });
     case 2:
-      return S.Array(__S(41));
+      return S.Array(JobHistoryDefinition);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(42)),
+          value: S.optional(JobHistoryListResultValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "JobHistoryListResult" });
@@ -1283,11 +1526,11 @@ function __c5(j: number): any {
         ),
       ).annotate({ identifier: "ListJobsRequest" });
     case 5:
-      return S.Array(__S(25));
+      return S.Array(JobDefinition);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(45)),
+          value: S.optional(JobListResultValueList),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "JobListResult" });
@@ -1298,7 +1541,7 @@ function __c5(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           jobCollectionName: S.String.pipe(T.Label()),
           jobName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(33)),
+          properties: S.optional(JobPropertiesInput),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1320,8 +1563,8 @@ function __c6(j: number): any {
           jobCollectionName: S.String.pipe(T.Label()),
           name: S.optional(S.String),
           location: S.optional(S.String),
-          tags: S.optional(__S(7)),
-          properties: S.optional(__S(30)),
+          tags: S.optional(PatchJobCollectionRequestTagsMap),
+          properties: S.optional(JobCollectionProperties),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1349,28 +1592,5 @@ function __c6(j: number): any {
           }),
         ),
       ).annotate({ identifier: "RunJobRequest" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
   }
 }

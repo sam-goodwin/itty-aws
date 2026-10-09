@@ -7,8 +7,6 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -68,11 +66,18 @@ export interface AccessProjectsSecretsVersionsRequest {
   /** Required. The resource name of the SecretVersion in the format `projects/*\/secrets/*\/versions/*`. */
   name: string;
 }
+const AccessProjectsSecretsVersionsRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<AccessProjectsSecretsVersionsRequest>;
+
 /** A secret payload resource in the Secret Manager API. This contains the sensitive secret data that is associated with a SecretVersion. */
 export interface SecretPayload {
   /** The secret data. Must be no larger than 64KiB. */
   data?: string;
 }
+const SecretPayload = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<SecretPayload>;
+
 /** Response message for SecretManagerService.AccessSecretVersion. */
 export interface AccessSecretVersionResponse {
   /** Secret payload */
@@ -80,18 +85,35 @@ export interface AccessSecretVersionResponse {
   /** The resource name of the SecretVersion in the format `projects/*\/secrets/*\/versions/*`. */
   name?: string;
 }
+const AccessSecretVersionResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<AccessSecretVersionResponse>;
+
 /** Request message for SecretManagerService.AddSecretVersion. */
 export interface AddSecretVersionRequest {
   /** Required. The secret payload of the SecretVersion. */
   payload?: SecretPayload;
 }
+const AddSecretVersionRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<AddSecretVersionRequest>;
+
 export interface AddVersionProjectsSecretsRequest {
   /** Required. The resource name of the Secret to associate with the SecretVersion in the format `projects/*\/secrets/*`. */
   parent: string;
   /** Request body */
   body?: AddSecretVersionRequest;
 }
+const AddVersionProjectsSecretsRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<AddVersionProjectsSecretsRequest>;
+
 export type SecretVersionStateEnum = "STATE_UNSPECIFIED" | "ENABLED" | "DISABLED" | "DESTROYED";
+const SecretVersionStateEnum = S.String;
+
 /** A secret version resource in the Secret Manager API. */
 export interface SecretVersion {
   /** Output only. The current state of the SecretVersion. */
@@ -103,20 +125,32 @@ export interface SecretVersion {
   /** Output only. The time this SecretVersion was destroyed. Only present if state is DESTROYED. */
   destroyTime?: string;
 }
+const SecretVersion = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<SecretVersion>;
+
 export type StringMap = { [key: string]: string | undefined };
+const StringMap = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<StringMap>;
+
 /** A replication policy that replicates the Secret payload without any restrictions. */
 export interface Automatic {}
+const Automatic = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<Automatic>;
+
 /** Represents a Replica for this Secret. */
 export interface Replica {
   /** The canonical IDs of the location to replicate data. For example: `"us-east1"`. */
   location?: string;
 }
+const Replica = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<Replica>;
+
 export type ReplicaList = Array<Replica>;
+const ReplicaList = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<ReplicaList>;
+
 /** A replication policy that replicates the Secret payload into the locations specified in Replication.UserManaged.replicas */
 export interface UserManaged {
   /** Required. The list of Replicas for this Secret. Cannot be empty. */
   replicas?: ReplicaList;
 }
+const UserManaged = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<UserManaged>;
+
 /** A policy that defines the replication configuration of data. */
 export interface Replication {
   /** The Secret will automatically be replicated without any restrictions. */
@@ -124,6 +158,8 @@ export interface Replication {
   /** The Secret will only be replicated into the locations specified. */
   userManaged?: UserManaged;
 }
+const Replication = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<Replication>;
+
 /** A Secret is a logical secret whose value and versions can be accessed. A Secret is made up of zero or more SecretVersions that represent the secret data. */
 export interface Secret {
   /** The labels assigned to this Secret. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: `\p{Ll}\p{Lo}{0,62}` Label values must be between 0 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: `[\p{Ll}\p{Lo}\p{N}_-]{0,63}` No more than 64 labels can be assigned to a given resource. */
@@ -137,6 +173,8 @@ export interface Secret {
   /** Output only. The time at which the Secret was created. */
   createTime?: string;
 }
+const Secret = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<Secret>;
+
 export interface CreateProjectsSecretsRequest {
   /** Required. This must be unique within the project. A secret ID is a string with a maximum length of 255 characters and can contain uppercase and lowercase letters, numerals, and the hyphen (`-`) and underscore (`_`) characters. */
   secretId?: string;
@@ -145,12 +183,24 @@ export interface CreateProjectsSecretsRequest {
   /** Request body */
   body?: Secret;
 }
+const CreateProjectsSecretsRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<CreateProjectsSecretsRequest>;
+
 export interface DeleteProjectsSecretsRequest {
   /** Required. The resource name of the Secret to delete in the format `projects/*\/secrets/*`. */
   name: string;
 }
+const DeleteProjectsSecretsRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<DeleteProjectsSecretsRequest>;
+
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
+const Empty = Automatic as any as S.Schema<Empty>;
+
 /** Request message for SecretManagerService.DestroySecretVersion. */
 export type DestroySecretVersionRequest = Automatic;
 export interface DestroyProjectsSecretsVersionsRequest {
@@ -159,6 +209,11 @@ export interface DestroyProjectsSecretsVersionsRequest {
   /** Request body */
   body?: Automatic;
 }
+const DestroyProjectsSecretsVersionsRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<DestroyProjectsSecretsVersionsRequest>;
+
 /** Request message for SecretManagerService.DisableSecretVersion. */
 export type DisableSecretVersionRequest = Automatic;
 export interface DisableProjectsSecretsVersionsRequest {
@@ -167,6 +222,11 @@ export interface DisableProjectsSecretsVersionsRequest {
   /** Request body */
   body?: Automatic;
 }
+const DisableProjectsSecretsVersionsRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<DisableProjectsSecretsVersionsRequest>;
+
 /** Request message for SecretManagerService.EnableSecretVersion. */
 export type EnableSecretVersionRequest = Automatic;
 export interface EnableProjectsSecretsVersionsRequest {
@@ -175,12 +235,22 @@ export interface EnableProjectsSecretsVersionsRequest {
   /** Request body */
   body?: Automatic;
 }
+const EnableProjectsSecretsVersionsRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<EnableProjectsSecretsVersionsRequest>;
+
 export interface GetIamPolicyProjectsSecretsRequest {
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
 }
+const GetIamPolicyProjectsSecretsRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<GetIamPolicyProjectsSecretsRequest>;
+
 /** Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information. */
 export interface Expr {
   /** Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file. */
@@ -192,7 +262,11 @@ export interface Expr {
   /** Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI. */
   description?: string;
 }
+const Expr = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<Expr>;
+
 export type StringList = Array<string>;
+const StringList = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<StringList>;
+
 /** Associates `members`, or principals, with a `role`. */
 export interface Binding {
   /** The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
@@ -202,12 +276,18 @@ export interface Binding {
   /** Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`. */
   members?: StringList;
 }
+const Binding = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<Binding>;
+
 export type BindingList = Array<Binding>;
+const BindingList = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<BindingList>;
+
 export type AuditLogConfigLogTypeEnum =
   | "LOG_TYPE_UNSPECIFIED"
   | "ADMIN_READ"
   | "DATA_WRITE"
   | "DATA_READ";
+const AuditLogConfigLogTypeEnum = S.String;
+
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
 export interface AuditLogConfig {
   /** Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members. */
@@ -215,7 +295,11 @@ export interface AuditLogConfig {
   /** The log type that this config enables. */
   logType?: AuditLogConfigLogTypeEnum | (string & {});
 }
+const AuditLogConfig = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<AuditLogConfig>;
+
 export type AuditLogConfigList = Array<AuditLogConfig>;
+const AuditLogConfigList = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<AuditLogConfigList>;
+
 /** Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts `jose@example.com` from DATA_READ logging, and `aliya@example.com` from DATA_WRITE logging. */
 export interface AuditConfig {
   /** The configuration for logging of each type of permission. */
@@ -223,7 +307,11 @@ export interface AuditConfig {
   /** Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services. */
   service?: string;
 }
+const AuditConfig = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<AuditConfig>;
+
 export type AuditConfigList = Array<AuditConfig>;
+const AuditConfigList = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<AuditConfigList>;
+
 /** An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single `role`. Principals can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** ``` { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } ``` **YAML example:** ``` bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/). */
 export interface Policy {
   /** Associates a list of `members`, or principals, with a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one principal. The `bindings` in a `Policy` can refer to up to 1,500 principals; up to 250 of these principals can be Google groups. Each occurrence of a principal counts towards these limits. For example, if the `bindings` grant 50 different roles to `user:alice@example.com`, and not to any other principal, then you can add another 1,450 principals to the `bindings` in the `Policy`. */
@@ -235,11 +323,20 @@ export interface Policy {
   /** Specifies cloud audit logging configuration for this policy. */
   auditConfigs?: AuditConfigList;
 }
+const Policy = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<Policy>;
+
 export interface GetProjectsLocationsRequest {
   /** Resource name for the location. */
   name: string;
 }
+const GetProjectsLocationsRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<GetProjectsLocationsRequest>;
+
 export type DocumentMap = { [key: string]: unknown | undefined };
+const DocumentMap = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<DocumentMap>;
+
 /** A resource that represents a Google Cloud location. */
 export interface Location {
   /** Service-specific metadata. For example the available capacity at the given location. */
@@ -253,14 +350,26 @@ export interface Location {
   /** Resource name for the location, which may vary between implementations. For example: `"projects/example-project/locations/us-east1"` */
   name?: string;
 }
+const Location = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<Location>;
+
 export interface GetProjectsSecretsRequest {
   /** Required. The resource name of the Secret, in the format `projects/*\/secrets/*`. */
   name: string;
 }
+const GetProjectsSecretsRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<GetProjectsSecretsRequest>;
+
 export interface GetProjectsSecretsVersionsRequest {
   /** Required. The resource name of the SecretVersion in the format `projects/*\/secrets/*\/versions/*`. `projects/*\/secrets/*\/versions/latest` is an alias to the `latest` SecretVersion. */
   name: string;
 }
+const GetProjectsSecretsVersionsRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<GetProjectsSecretsVersionsRequest>;
+
 export interface ListProjectsLocationsRequest {
   /** A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). */
   filter?: string;
@@ -273,7 +382,14 @@ export interface ListProjectsLocationsRequest {
   /** The maximum number of results to return. If not set, the service selects a default. */
   pageSize?: number;
 }
+const ListProjectsLocationsRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<ListProjectsLocationsRequest>;
+
 export type LocationList = Array<Location>;
+const LocationList = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<LocationList>;
+
 /** The response message for Locations.ListLocations. */
 export interface ListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
@@ -281,6 +397,11 @@ export interface ListLocationsResponse {
   /** The standard List next-page token. */
   nextPageToken?: string;
 }
+const ListLocationsResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<ListLocationsResponse>;
+
 export interface ListProjectsSecretsRequest {
   /** Optional. The maximum number of results to be returned in a single page. If set to 0, the server decides the number of results to return. If the number is greater than 25000, it is capped at 25000. */
   pageSize?: number;
@@ -289,7 +410,14 @@ export interface ListProjectsSecretsRequest {
   /** Optional. Pagination token, returned earlier via ListSecretsResponse.next_page_token. */
   pageToken?: string;
 }
+const ListProjectsSecretsRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<ListProjectsSecretsRequest>;
+
 export type SecretList = Array<Secret>;
+const SecretList = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<SecretList>;
+
 /** Response message for SecretManagerService.ListSecrets. */
 export interface ListSecretsResponse {
   /** A token to retrieve the next page of results. Pass this value in ListSecretsRequest.page_token to retrieve the next page. */
@@ -299,6 +427,8 @@ export interface ListSecretsResponse {
   /** The total number of Secrets. */
   totalSize?: number;
 }
+const ListSecretsResponse = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<ListSecretsResponse>;
+
 export interface ListProjectsSecretsVersionsRequest {
   /** Required. The resource name of the Secret associated with the SecretVersions to list, in the format `projects/*\/secrets/*`. */
   parent: string;
@@ -307,7 +437,14 @@ export interface ListProjectsSecretsVersionsRequest {
   /** Optional. Pagination token, returned earlier via ListSecretVersionsResponse.next_page_token][]. */
   pageToken?: string;
 }
+const ListProjectsSecretsVersionsRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<ListProjectsSecretsVersionsRequest>;
+
 export type SecretVersionList = Array<SecretVersion>;
+const SecretVersionList = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<SecretVersionList>;
+
 /** Response message for SecretManagerService.ListSecretVersions. */
 export interface ListSecretVersionsResponse {
   /** The list of SecretVersions sorted in reverse by create_time (newest first). */
@@ -317,6 +454,11 @@ export interface ListSecretVersionsResponse {
   /** The total number of SecretVersions. */
   totalSize?: number;
 }
+const ListSecretVersionsResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  1,
+) as any as S.Schema<ListSecretVersionsResponse>;
+
 export interface PatchProjectsSecretsRequest {
   /** Required. Specifies the fields to be updated. */
   updateMask?: string;
@@ -325,6 +467,11 @@ export interface PatchProjectsSecretsRequest {
   /** Request body */
   body?: Secret;
 }
+const PatchProjectsSecretsRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  2,
+) as any as S.Schema<PatchProjectsSecretsRequest>;
+
 /** Request message for `SetIamPolicy` method. */
 export interface SetIamPolicyRequest {
   /** OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask will be modified. If no mask is provided, the following default mask is used: `paths: "bindings, etag"` */
@@ -332,28 +479,48 @@ export interface SetIamPolicyRequest {
   /** REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Google Cloud services (such as Projects) might reject them. */
   policy?: Policy;
 }
+const SetIamPolicyRequest = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<SetIamPolicyRequest>;
+
 export interface SetIamPolicyProjectsSecretsRequest {
   /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: SetIamPolicyRequest;
 }
+const SetIamPolicyProjectsSecretsRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  4,
+) as any as S.Schema<SetIamPolicyProjectsSecretsRequest>;
+
 /** Request message for `TestIamPermissions` method. */
 export interface TestIamPermissionsRequest {
   /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
   permissions?: StringList;
 }
+const TestIamPermissionsRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  5,
+) as any as S.Schema<TestIamPermissionsRequest>;
+
 export interface TestIamPermissionsProjectsSecretsRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
+const TestIamPermissionsProjectsSecretsRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  6,
+) as any as S.Schema<TestIamPermissionsProjectsSecretsRequest>;
+
 /** Response message for `TestIamPermissions` method. */
 export interface TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
   permissions?: StringList;
 }
+const TestIamPermissionsResponse =
+  TestIamPermissionsRequest as any as S.Schema<TestIamPermissionsResponse>;
+
 export type AccessProjectsSecretsVersionsError = NotFound | Forbidden | GcpOpError;
 /** Accesses a SecretVersion. This call returns the secret data. `projects/*\/secrets/*\/versions/latest` is an alias to the `latest` SecretVersion. */
 export const accessProjectsSecretsVersions: API.OperationMethod<
@@ -362,8 +529,8 @@ export const accessProjectsSecretsVersions: API.OperationMethod<
   AccessProjectsSecretsVersionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<AccessProjectsSecretsVersionsRequest>,
-  output: __S(2) as any as S.Schema<AccessSecretVersionResponse>,
+  input: AccessProjectsSecretsVersionsRequest,
+  output: AccessSecretVersionResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -382,8 +549,8 @@ export const addVersionProjectsSecrets: API.OperationMethod<
   AddVersionProjectsSecretsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4) as any as S.Schema<AddVersionProjectsSecretsRequest>,
-  output: __S(5) as any as S.Schema<SecretVersion>,
+  input: AddVersionProjectsSecretsRequest,
+  output: SecretVersion,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -397,8 +564,8 @@ export const createProjectsSecrets: API.OperationMethod<
   CreateProjectsSecretsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13) as any as S.Schema<CreateProjectsSecretsRequest>,
-  output: __S(12) as any as S.Schema<Secret>,
+  input: CreateProjectsSecretsRequest,
+  output: Secret,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -412,8 +579,8 @@ export const deleteProjectsSecrets: API.OperationMethod<
   DeleteProjectsSecretsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14) as any as S.Schema<DeleteProjectsSecretsRequest>,
-  output: __S(7) as any as S.Schema<Empty>,
+  input: DeleteProjectsSecretsRequest,
+  output: Empty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -432,8 +599,8 @@ export const destroyProjectsSecretsVersions: API.OperationMethod<
   DestroyProjectsSecretsVersionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15) as any as S.Schema<DestroyProjectsSecretsVersionsRequest>,
-  output: __S(5) as any as S.Schema<SecretVersion>,
+  input: DestroyProjectsSecretsVersionsRequest,
+  output: SecretVersion,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -452,8 +619,8 @@ export const disableProjectsSecretsVersions: API.OperationMethod<
   DisableProjectsSecretsVersionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16) as any as S.Schema<DisableProjectsSecretsVersionsRequest>,
-  output: __S(5) as any as S.Schema<SecretVersion>,
+  input: DisableProjectsSecretsVersionsRequest,
+  output: SecretVersion,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -472,8 +639,8 @@ export const enableProjectsSecretsVersions: API.OperationMethod<
   EnableProjectsSecretsVersionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17) as any as S.Schema<EnableProjectsSecretsVersionsRequest>,
-  output: __S(5) as any as S.Schema<SecretVersion>,
+  input: EnableProjectsSecretsVersionsRequest,
+  output: SecretVersion,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -487,8 +654,8 @@ export const getIamPolicyProjectsSecrets: API.OperationMethod<
   GetIamPolicyProjectsSecretsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18) as any as S.Schema<GetIamPolicyProjectsSecretsRequest>,
-  output: __S(27) as any as S.Schema<Policy>,
+  input: GetIamPolicyProjectsSecretsRequest,
+  output: Policy,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -502,8 +669,8 @@ export const getProjectsLocations: API.OperationMethod<
   GetProjectsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28) as any as S.Schema<GetProjectsLocationsRequest>,
-  output: __S(30) as any as S.Schema<Location>,
+  input: GetProjectsLocationsRequest,
+  output: Location,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -517,8 +684,8 @@ export const getProjectsSecrets: API.OperationMethod<
   GetProjectsSecretsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31) as any as S.Schema<GetProjectsSecretsRequest>,
-  output: __S(12) as any as S.Schema<Secret>,
+  input: GetProjectsSecretsRequest,
+  output: Secret,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -532,8 +699,8 @@ export const getProjectsSecretsVersions: API.OperationMethod<
   GetProjectsSecretsVersionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32) as any as S.Schema<GetProjectsSecretsVersionsRequest>,
-  output: __S(5) as any as S.Schema<SecretVersion>,
+  input: GetProjectsSecretsVersionsRequest,
+  output: SecretVersion,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -548,8 +715,8 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListLocationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(33) as any as S.Schema<ListProjectsLocationsRequest>,
-  output: __S(35) as any as S.Schema<ListLocationsResponse>,
+  input: ListProjectsLocationsRequest,
+  output: ListLocationsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -565,8 +732,8 @@ export const listProjectsSecrets: API.PaginatedOperationMethod<
   GcpOpContext,
   ListSecretsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(36) as any as S.Schema<ListProjectsSecretsRequest>,
-  output: __S(38) as any as S.Schema<ListSecretsResponse>,
+  input: ListProjectsSecretsRequest,
+  output: ListSecretsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -582,8 +749,8 @@ export const listProjectsSecretsVersions: API.PaginatedOperationMethod<
   GcpOpContext,
   ListSecretVersionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(39) as any as S.Schema<ListProjectsSecretsVersionsRequest>,
-  output: __S(41) as any as S.Schema<ListSecretVersionsResponse>,
+  input: ListProjectsSecretsVersionsRequest,
+  output: ListSecretVersionsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -598,8 +765,8 @@ export const patchProjectsSecrets: API.OperationMethod<
   PatchProjectsSecretsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42) as any as S.Schema<PatchProjectsSecretsRequest>,
-  output: __S(12) as any as S.Schema<Secret>,
+  input: PatchProjectsSecretsRequest,
+  output: Secret,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -618,8 +785,8 @@ export const setIamPolicyProjectsSecrets: API.OperationMethod<
   SetIamPolicyProjectsSecretsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44) as any as S.Schema<SetIamPolicyProjectsSecretsRequest>,
-  output: __S(27) as any as S.Schema<Policy>,
+  input: SetIamPolicyProjectsSecretsRequest,
+  output: Policy,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -638,8 +805,8 @@ export const testIamPermissionsProjectsSecrets: API.OperationMethod<
   TestIamPermissionsProjectsSecretsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(46) as any as S.Schema<TestIamPermissionsProjectsSecretsRequest>,
-  output: __S(45) as any as S.Schema<TestIamPermissionsResponse>,
+  input: TestIamPermissionsProjectsSecretsRequest,
+  output: TestIamPermissionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -671,7 +838,7 @@ function __c0(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          payload: S.optional(__S(1)),
+          payload: S.optional(SecretPayload),
           name: S.optional(S.String),
         }),
       ).annotate({
@@ -680,14 +847,14 @@ function __c0(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          payload: S.optional(__S(1)),
+          payload: S.optional(SecretPayload),
         }),
       ).annotate({ identifier: "AddSecretVersionRequest" });
     case 4:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(3).pipe(T.HttpBody())),
+          body: S.optional(AddSecretVersionRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -701,7 +868,7 @@ function __c0(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          state: S.optional(S.String),
+          state: S.optional(SecretVersionStateEnum),
           name: S.optional(S.String),
           createTime: S.optional(S.String),
           destroyTime: S.optional(S.String),
@@ -724,27 +891,27 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "Replica" });
     case 1:
-      return S.Array(__S(8));
+      return S.Array(Replica);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          replicas: S.optional(__S(9)),
+          replicas: S.optional(ReplicaList),
         }),
       ).annotate({ identifier: "UserManaged" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          automatic: S.optional(__S(7)),
-          userManaged: S.optional(__S(10)),
+          automatic: S.optional(Automatic),
+          userManaged: S.optional(UserManaged),
         }),
       ).annotate({ identifier: "Replication" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          labels: S.optional(__S(6)),
+          labels: S.optional(StringMap),
           name: S.optional(S.String),
-          tags: S.optional(__S(6)),
-          replication: S.optional(__S(11)),
+          tags: S.optional(StringMap),
+          replication: S.optional(Replication),
           createTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "Secret" });
@@ -753,7 +920,7 @@ function __c1(j: number): any {
         S.Struct({
           secretId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(12).pipe(T.HttpBody())),
+          body: S.optional(Secret.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -782,7 +949,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(7).pipe(T.HttpBody())),
+          body: S.optional(Automatic.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -801,7 +968,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(7).pipe(T.HttpBody())),
+          body: S.optional(Automatic.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -816,7 +983,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(7).pipe(T.HttpBody())),
+          body: S.optional(Automatic.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -856,18 +1023,18 @@ function __c2(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          condition: S.optional(__S(19)),
+          condition: S.optional(Expr),
           role: S.optional(S.String),
-          members: S.optional(__S(20)),
+          members: S.optional(StringList),
         }),
       ).annotate({ identifier: "Binding" });
     case 6:
-      return S.Array(__S(21));
+      return S.Array(Binding);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          exemptedMembers: S.optional(__S(20)),
-          logType: S.optional(S.String),
+          exemptedMembers: S.optional(StringList),
+          logType: S.optional(AuditLogConfigLogTypeEnum),
         }),
       ).annotate({ identifier: "AuditLogConfig" });
   }
@@ -875,23 +1042,23 @@ function __c2(j: number): any {
 function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(23));
+      return S.Array(AuditLogConfig);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          auditLogConfigs: S.optional(__S(24)),
+          auditLogConfigs: S.optional(AuditLogConfigList),
           service: S.optional(S.String),
         }),
       ).annotate({ identifier: "AuditConfig" });
     case 2:
-      return S.Array(__S(25));
+      return S.Array(AuditConfig);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          bindings: S.optional(__S(22)),
+          bindings: S.optional(BindingList),
           version: S.optional(S.Number),
           etag: S.optional(S.String),
-          auditConfigs: S.optional(__S(26)),
+          auditConfigs: S.optional(AuditConfigList),
         }),
       ).annotate({ identifier: "Policy" });
     case 4:
@@ -913,10 +1080,10 @@ function __c3(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          metadata: S.optional(__S(29)),
+          metadata: S.optional(DocumentMap),
           locationId: S.optional(S.String),
           displayName: S.optional(S.String),
-          labels: S.optional(__S(6)),
+          labels: S.optional(StringMap),
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "Location" });
@@ -957,7 +1124,7 @@ function __c4(j: number): any {
         S.Struct({
           filter: S.optional(S.String.pipe(T.Query())),
           pageToken: S.optional(S.String.pipe(T.Query())),
-          extraLocationTypes: S.optional(__S(20).pipe(T.Query())),
+          extraLocationTypes: S.optional(StringList.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
           pageSize: S.optional(S.Number.pipe(T.Query())),
         }).pipe(
@@ -971,11 +1138,11 @@ function __c4(j: number): any {
         identifier: "ListProjectsLocationsRequest",
       });
     case 2:
-      return S.Array(__S(30));
+      return S.Array(Location);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          locations: S.optional(__S(34)),
+          locations: S.optional(LocationList),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListLocationsResponse" });
@@ -996,12 +1163,12 @@ function __c4(j: number): any {
         identifier: "ListProjectsSecretsRequest",
       });
     case 5:
-      return S.Array(__S(12));
+      return S.Array(Secret);
     case 6:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          secrets: S.optional(__S(37)),
+          secrets: S.optional(SecretList),
           totalSize: S.optional(S.Number),
         }),
       ).annotate({ identifier: "ListSecretsResponse" });
@@ -1026,11 +1193,11 @@ function __c4(j: number): any {
 function __c5(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(5));
+      return S.Array(SecretVersion);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          versions: S.optional(__S(40)),
+          versions: S.optional(SecretVersionList),
           nextPageToken: S.optional(S.String),
           totalSize: S.optional(S.Number),
         }),
@@ -1042,7 +1209,7 @@ function __c5(j: number): any {
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(12).pipe(T.HttpBody())),
+          body: S.optional(Secret.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1057,14 +1224,14 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           updateMask: S.optional(S.String),
-          policy: S.optional(__S(27)),
+          policy: S.optional(Policy),
         }),
       ).annotate({ identifier: "SetIamPolicyRequest" });
     case 4:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(43).pipe(T.HttpBody())),
+          body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1078,7 +1245,7 @@ function __c5(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          permissions: S.optional(__S(20)),
+          permissions: S.optional(StringList),
         }),
       ).annotate({
         identifier: "TestIamPermissionsRequest",
@@ -1087,7 +1254,7 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(45).pipe(T.HttpBody())),
+          body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1098,26 +1265,5 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "TestIamPermissionsProjectsSecretsRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
   }
 }

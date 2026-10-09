@@ -7,8 +7,6 @@ import { paginateRelay } from "../pagination.ts";
 import { WhopProtocol, type WhopOpError, type WhopOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { WhopOpError, WhopOpContext };
 
@@ -41,6 +39,8 @@ export class NotFound
 
 /** Controls whether checkout charges the buyer immediately or saves payment details for later. Defaults to `payment`. */
 export type CreateCheckoutConfigurationRequestMode = "payment" | "setup";
+const CreateCheckoutConfigurationRequestMode = S.String;
+
 /** The different types of payment methods that can be used. */
 export type PaymentMethodTypes =
   | "acss_debit"
@@ -172,14 +172,25 @@ export type PaymentMethodTypes =
   | "zip"
   | "coinflow"
   | "unknown";
+const PaymentMethodTypes = S.String;
+
 /** Payment method types explicitly disabled for checkout -- the `type` values from the payment method types catalogue. Types Whop no longer offers, and the read-only `unknown` placeholder, are dropped. */
 export type CreateCheckoutConfigurationRequestPaymentMethodConfigurationDisabledList = Array<
   PaymentMethodTypes | (string & {})
 >;
+const CreateCheckoutConfigurationRequestPaymentMethodConfigurationDisabledList =
+  /*@__PURE__*/ __L.at(
+    __c0,
+    0,
+  ) as any as S.Schema<CreateCheckoutConfigurationRequestPaymentMethodConfigurationDisabledList>;
+
 /** Payment method types explicitly enabled for checkout -- the `type` values from the payment method types catalogue. Types Whop no longer offers, and the read-only `unknown` placeholder, are dropped. */
 export type CreateCheckoutConfigurationRequestPaymentMethodConfigurationEnabledList = Array<
   PaymentMethodTypes | (string & {})
 >;
+const CreateCheckoutConfigurationRequestPaymentMethodConfigurationEnabledList =
+  CreateCheckoutConfigurationRequestPaymentMethodConfigurationDisabledList as any as S.Schema<CreateCheckoutConfigurationRequestPaymentMethodConfigurationEnabledList>;
+
 /** Payment method overrides for this checkout. `null` uses the plan or platform defaults. */
 export interface CreateCheckoutConfigurationRequestPaymentMethodConfiguration {
   /** Payment method types explicitly disabled for checkout -- the `type` values from the payment method types catalogue. Types Whop no longer offers, and the read-only `unknown` placeholder, are dropped. */
@@ -189,14 +200,25 @@ export interface CreateCheckoutConfigurationRequestPaymentMethodConfiguration {
   /** Whether platform default payment methods are included. */
   include_platform_defaults?: boolean;
 }
+const CreateCheckoutConfigurationRequestPaymentMethodConfiguration = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<CreateCheckoutConfigurationRequestPaymentMethodConfiguration>;
+
 /** Payment method types explicitly disabled for this plan -- the `type` values from the payment method types catalogue. Types Whop no longer offers, and the read-only `unknown` placeholder, are dropped. */
 export type CreateCheckoutConfigurationRequestPlanPaymentMethodConfigurationDisabledList = Array<
   PaymentMethodTypes | (string & {})
 >;
+const CreateCheckoutConfigurationRequestPlanPaymentMethodConfigurationDisabledList =
+  CreateCheckoutConfigurationRequestPaymentMethodConfigurationDisabledList as any as S.Schema<CreateCheckoutConfigurationRequestPlanPaymentMethodConfigurationDisabledList>;
+
 /** Payment method types explicitly enabled for this plan -- the `type` values from the payment method types catalogue. Types Whop no longer offers, and the read-only `unknown` placeholder, are dropped. */
 export type CreateCheckoutConfigurationRequestPlanPaymentMethodConfigurationEnabledList = Array<
   PaymentMethodTypes | (string & {})
 >;
+const CreateCheckoutConfigurationRequestPlanPaymentMethodConfigurationEnabledList =
+  CreateCheckoutConfigurationRequestPaymentMethodConfigurationDisabledList as any as S.Schema<CreateCheckoutConfigurationRequestPlanPaymentMethodConfigurationEnabledList>;
+
 /** Payment method overrides for the inline plan. `null` uses platform defaults. */
 export interface CreateCheckoutConfigurationRequestPlanPaymentMethodConfiguration {
   /** Payment method types explicitly disabled for this plan -- the `type` values from the payment method types catalogue. Types Whop no longer offers, and the read-only `unknown` placeholder, are dropped. */
@@ -206,21 +228,34 @@ export interface CreateCheckoutConfigurationRequestPlanPaymentMethodConfiguratio
   /** Whether platform default payment methods are included. */
   include_platform_defaults?: boolean;
 }
+const CreateCheckoutConfigurationRequestPlanPaymentMethodConfiguration = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<CreateCheckoutConfigurationRequestPlanPaymentMethodConfiguration>;
+
 /** Billing model for the plan. */
 export type CreateCheckoutConfigurationRequestPlanPlanType = "renewal" | "one_time";
+const CreateCheckoutConfigurationRequestPlanPlanType = S.String;
+
 /** Sales method for the plan. */
 export type CreateCheckoutConfigurationRequestPlanReleaseMethod = "buy_now" | "waitlist";
+const CreateCheckoutConfigurationRequestPlanReleaseMethod = S.String;
+
 /** 3D Secure behavior for supported on-session card payments. `mandate_challenge` requires a 3DS challenge before payment processing; `mandate_if_required` mandates a challenge only when the payment processor requires it; `frictionless_if_required` uses the regular frictionless 3DS flow. Payments of $1,000 or more use `mandate_if_required` unless `mandate_challenge` is selected. Risk and authentication recovery requirements can override the preference. `null` inherits the account default. */
 export type CreateCheckoutConfigurationRequestPlanThreeDsLevel =
   | "mandate_challenge"
   | "mandate_if_required"
   | "frictionless_if_required";
+const CreateCheckoutConfigurationRequestPlanThreeDsLevel = S.String;
+
 /** Whether the plan is visible to customers or hidden from public view. */
 export type CreateCheckoutConfigurationRequestPlanVisibility =
   | "visible"
   | "hidden"
   | "archived"
   | "quick_link";
+const CreateCheckoutConfigurationRequestPlanVisibility = S.String;
+
 /** Plan attributes used to create or find a plan for this checkout configuration. Mutually exclusive with `plan_id`. */
 export interface CreateCheckoutConfigurationRequestPlan {
   /** Account ID for the inline plan, prefixed `biz_`. Defaults to the account resolved from the request. */
@@ -264,11 +299,18 @@ export interface CreateCheckoutConfigurationRequestPlan {
   /** Whether the plan is visible to customers or hidden from public view. */
   visibility?: CreateCheckoutConfigurationRequestPlanVisibility | (string & {}) | null;
 }
+const CreateCheckoutConfigurationRequestPlan = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<CreateCheckoutConfigurationRequestPlan>;
+
 /** 3D Secure behavior for supported on-session card payments. `mandate_challenge` requires a 3DS challenge before payment processing; `mandate_if_required` mandates a challenge only when the payment processor requires it; `frictionless_if_required` uses the regular frictionless 3DS flow. Payments of $1,000 or more use `mandate_if_required` unless `mandate_challenge` is selected. Risk and authentication recovery requirements can override the preference. Applies in setup mode; `null` uses frictionless 3DS. Payment mode uses the plan policy. */
 export type CreateCheckoutConfigurationRequestThreeDsLevel =
   | "mandate_challenge"
   | "mandate_if_required"
   | "frictionless_if_required";
+const CreateCheckoutConfigurationRequestThreeDsLevel = S.String;
+
 export interface CreateCheckoutConfigurationRequest {
   /** Account ID, prefixed `biz_`. */
   account_id?: string;
@@ -293,12 +335,26 @@ export interface CreateCheckoutConfigurationRequest {
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
+const CreateCheckoutConfigurationRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<CreateCheckoutConfigurationRequest>;
+
 /** Payment methods explicitly disabled. */
 export type CreateCheckoutConfigurationResponseEffectivePaymentMethodConfigurationDisabledList =
   Array<string>;
+const CreateCheckoutConfigurationResponseEffectivePaymentMethodConfigurationDisabledList =
+  /*@__PURE__*/ __L.at(
+    __c0,
+    5,
+  ) as any as S.Schema<CreateCheckoutConfigurationResponseEffectivePaymentMethodConfigurationDisabledList>;
+
 /** Payment methods explicitly enabled. */
 export type CreateCheckoutConfigurationResponseEffectivePaymentMethodConfigurationEnabledList =
   Array<string>;
+const CreateCheckoutConfigurationResponseEffectivePaymentMethodConfigurationEnabledList =
+  CreateCheckoutConfigurationResponseEffectivePaymentMethodConfigurationDisabledList as any as S.Schema<CreateCheckoutConfigurationResponseEffectivePaymentMethodConfigurationEnabledList>;
+
 /** The configuration governing a checkout mounted from this configuration, resolved through every layer (its own overrides, the plan's, and the account's) -- the shape a session's `payment_method_configuration` carries. Apply it over the payment method types catalogue for the offerable set. `null` means platform defaults; `payment_method_configuration` stays this configuration's own editable override. */
 export interface CreateCheckoutConfigurationResponseEffectivePaymentMethodConfiguration {
   /** Payment methods explicitly disabled. */
@@ -308,14 +364,27 @@ export interface CreateCheckoutConfigurationResponseEffectivePaymentMethodConfig
   /** Whether platform default payment methods are included. */
   include_platform_defaults?: boolean;
 }
+const CreateCheckoutConfigurationResponseEffectivePaymentMethodConfiguration = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<CreateCheckoutConfigurationResponseEffectivePaymentMethodConfiguration>;
+
 /** Controls whether checkout charges the buyer immediately or saves payment details for later. */
 export type CreateCheckoutConfigurationResponseMode = "payment" | "setup";
+const CreateCheckoutConfigurationResponseMode = S.String;
+
 /** Payment methods explicitly disabled for checkout. */
 export type CreateCheckoutConfigurationResponsePaymentMethodConfigurationDisabledList =
   Array<string>;
+const CreateCheckoutConfigurationResponsePaymentMethodConfigurationDisabledList =
+  CreateCheckoutConfigurationResponseEffectivePaymentMethodConfigurationDisabledList as any as S.Schema<CreateCheckoutConfigurationResponsePaymentMethodConfigurationDisabledList>;
+
 /** Payment methods explicitly enabled for checkout. */
 export type CreateCheckoutConfigurationResponsePaymentMethodConfigurationEnabledList =
   Array<string>;
+const CreateCheckoutConfigurationResponsePaymentMethodConfigurationEnabledList =
+  CreateCheckoutConfigurationResponseEffectivePaymentMethodConfigurationDisabledList as any as S.Schema<CreateCheckoutConfigurationResponsePaymentMethodConfigurationEnabledList>;
+
 /** Payment method overrides for this checkout. `null` when it uses the plan or platform defaults. */
 export interface CreateCheckoutConfigurationResponsePaymentMethodConfiguration {
   /** Payment methods explicitly disabled for checkout. */
@@ -325,21 +394,34 @@ export interface CreateCheckoutConfigurationResponsePaymentMethodConfiguration {
   /** Whether platform default payment methods are included. */
   include_platform_defaults?: boolean;
 }
+const CreateCheckoutConfigurationResponsePaymentMethodConfiguration = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<CreateCheckoutConfigurationResponsePaymentMethodConfiguration>;
+
 /** Billing model for the plan. */
 export type CreateCheckoutConfigurationResponsePlanPlanType = "renewal" | "one_time";
+const CreateCheckoutConfigurationResponsePlanPlanType = S.String;
+
 /** Sales method for the plan. */
 export type CreateCheckoutConfigurationResponsePlanReleaseMethod = "buy_now" | "waitlist";
+const CreateCheckoutConfigurationResponsePlanReleaseMethod = S.String;
+
 /** 3D Secure behavior for supported on-session card payments. `mandate_challenge` requires a 3DS challenge before payment processing; `mandate_if_required` mandates a challenge only when the payment processor requires it; `frictionless_if_required` uses the regular frictionless 3DS flow. Payments of $1,000 or more use `mandate_if_required` unless `mandate_challenge` is selected. Risk and authentication recovery requirements can override the preference. `null` inherits the account default. */
 export type CreateCheckoutConfigurationResponsePlanThreeDsLevel =
   | "mandate_challenge"
   | "mandate_if_required"
   | "frictionless_if_required";
+const CreateCheckoutConfigurationResponsePlanThreeDsLevel = S.String;
+
 /** Whether the plan is visible to customers or hidden from public view. */
 export type CreateCheckoutConfigurationResponsePlanVisibility =
   | "visible"
   | "hidden"
   | "archived"
   | "quick_link";
+const CreateCheckoutConfigurationResponsePlanVisibility = S.String;
+
 /** Plan used for payment checkout. `null` in setup mode. */
 export interface CreateCheckoutConfigurationResponsePlan {
   /** Whether this plan accepts local currency payments via adaptive pricing. */
@@ -367,11 +449,18 @@ export interface CreateCheckoutConfigurationResponsePlan {
   /** Whether the plan is visible to customers or hidden from public view. */
   visibility: CreateCheckoutConfigurationResponsePlanVisibility;
 }
+const CreateCheckoutConfigurationResponsePlan = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<CreateCheckoutConfigurationResponsePlan>;
+
 /** 3D Secure behavior for supported on-session card payments. `mandate_challenge` requires a 3DS challenge before payment processing; `mandate_if_required` mandates a challenge only when the payment processor requires it; `frictionless_if_required` uses the regular frictionless 3DS flow. Payments of $1,000 or more use `mandate_if_required` unless `mandate_challenge` is selected. Risk and authentication recovery requirements can override the preference. Applies in setup mode; `null` uses frictionless 3DS. Payment mode uses the plan policy. */
 export type CreateCheckoutConfigurationResponseThreeDsLevel =
   | "mandate_challenge"
   | "mandate_if_required"
   | "frictionless_if_required";
+const CreateCheckoutConfigurationResponseThreeDsLevel = S.String;
+
 export interface CreateCheckoutConfigurationResponse {
   /** Account ID, prefixed `biz_`. */
   account_id: string;
@@ -402,20 +491,40 @@ export interface CreateCheckoutConfigurationResponse {
   /** When the checkout configuration was last updated, as an ISO 8601 timestamp. */
   updated_at: string;
 }
+const CreateCheckoutConfigurationResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<CreateCheckoutConfigurationResponse>;
+
 export interface DeleteCheckoutConfigurationRequest {
   /** The ID of the checkout configuration. */
   id: string;
 }
+const DeleteCheckoutConfigurationRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<DeleteCheckoutConfigurationRequest>;
+
 export interface DeleteCheckoutConfigurationResponse {
   /** Always true. */
   deleted: boolean;
   /** ID of the deleted checkout configuration. */
   id: string;
 }
+const DeleteCheckoutConfigurationResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<DeleteCheckoutConfigurationResponse>;
+
 export interface GetCheckoutConfigurationRequest {
   /** The ID of the checkout configuration. */
   id: string;
 }
+const GetCheckoutConfigurationRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<GetCheckoutConfigurationRequest>;
+
 /** Payment methods explicitly disabled. */
 export type GetCheckoutConfigurationResponseEffectivePaymentMethodConfigurationDisabledList =
   Array<string>;
@@ -431,12 +540,23 @@ export interface GetCheckoutConfigurationResponseEffectivePaymentMethodConfigura
   /** Whether platform default payment methods are included. */
   include_platform_defaults?: boolean;
 }
+const GetCheckoutConfigurationResponseEffectivePaymentMethodConfiguration =
+  CreateCheckoutConfigurationResponseEffectivePaymentMethodConfiguration as any as S.Schema<GetCheckoutConfigurationResponseEffectivePaymentMethodConfiguration>;
+
 /** Controls whether checkout charges the buyer immediately or saves payment details for later. */
 export type GetCheckoutConfigurationResponseMode = "payment" | "setup";
+const GetCheckoutConfigurationResponseMode = S.String;
+
 /** Payment methods explicitly disabled for checkout. */
 export type GetCheckoutConfigurationResponsePaymentMethodConfigurationDisabledList = Array<string>;
+const GetCheckoutConfigurationResponsePaymentMethodConfigurationDisabledList =
+  CreateCheckoutConfigurationResponseEffectivePaymentMethodConfigurationDisabledList as any as S.Schema<GetCheckoutConfigurationResponsePaymentMethodConfigurationDisabledList>;
+
 /** Payment methods explicitly enabled for checkout. */
 export type GetCheckoutConfigurationResponsePaymentMethodConfigurationEnabledList = Array<string>;
+const GetCheckoutConfigurationResponsePaymentMethodConfigurationEnabledList =
+  CreateCheckoutConfigurationResponseEffectivePaymentMethodConfigurationDisabledList as any as S.Schema<GetCheckoutConfigurationResponsePaymentMethodConfigurationEnabledList>;
+
 /** Payment method overrides for this checkout. `null` when it uses the plan or platform defaults. */
 export interface GetCheckoutConfigurationResponsePaymentMethodConfiguration {
   /** Payment methods explicitly disabled for checkout. */
@@ -446,6 +566,11 @@ export interface GetCheckoutConfigurationResponsePaymentMethodConfiguration {
   /** Whether platform default payment methods are included. */
   include_platform_defaults?: boolean;
 }
+const GetCheckoutConfigurationResponsePaymentMethodConfiguration = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<GetCheckoutConfigurationResponsePaymentMethodConfiguration>;
+
 /** Billing model for the plan. */
 export type GetCheckoutConfigurationResponsePlanPlanType = "renewal" | "one_time";
 /** Sales method for the plan. */
@@ -488,11 +613,16 @@ export interface GetCheckoutConfigurationResponsePlan {
   /** Whether the plan is visible to customers or hidden from public view. */
   visibility: GetCheckoutConfigurationResponsePlanVisibility;
 }
+const GetCheckoutConfigurationResponsePlan =
+  CreateCheckoutConfigurationResponsePlan as any as S.Schema<GetCheckoutConfigurationResponsePlan>;
+
 /** 3D Secure behavior for supported on-session card payments. `mandate_challenge` requires a 3DS challenge before payment processing; `mandate_if_required` mandates a challenge only when the payment processor requires it; `frictionless_if_required` uses the regular frictionless 3DS flow. Payments of $1,000 or more use `mandate_if_required` unless `mandate_challenge` is selected. Risk and authentication recovery requirements can override the preference. Applies in setup mode; `null` uses frictionless 3DS. Payment mode uses the plan policy. */
 export type GetCheckoutConfigurationResponseThreeDsLevel =
   | "mandate_challenge"
   | "mandate_if_required"
   | "frictionless_if_required";
+const GetCheckoutConfigurationResponseThreeDsLevel = S.String;
+
 export interface GetCheckoutConfigurationResponse {
   /** Account ID, prefixed `biz_`. */
   account_id: string;
@@ -523,8 +653,17 @@ export interface GetCheckoutConfigurationResponse {
   /** When the checkout configuration was last updated, as an ISO 8601 timestamp. */
   updated_at: string;
 }
+const GetCheckoutConfigurationResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<GetCheckoutConfigurationResponse>;
+
 export type ListCheckoutConfigurationsRequestOrder = "created_at";
+const ListCheckoutConfigurationsRequestOrder = S.String;
+
 export type ListCheckoutConfigurationsRequestDirection = "asc" | "desc";
+const ListCheckoutConfigurationsRequestDirection = S.String;
+
 export interface ListCheckoutConfigurationsRequest {
   /** Account ID, prefixed `biz_`. */
   account_id: string;
@@ -543,6 +682,11 @@ export interface ListCheckoutConfigurationsRequest {
   /** Return results after this cursor. Use `page_info.end_cursor` from the previous response to fetch the next page. */
   after?: string;
 }
+const ListCheckoutConfigurationsRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<ListCheckoutConfigurationsRequest>;
+
 /** Payment methods explicitly disabled. */
 export type ListCheckoutConfigurationsResponseDataItemEffectivePaymentMethodConfigurationDisabledList =
   Array<string>;
@@ -558,8 +702,13 @@ export interface ListCheckoutConfigurationsResponseDataItemEffectivePaymentMetho
   /** Whether platform default payment methods are included. */
   include_platform_defaults?: boolean;
 }
+const ListCheckoutConfigurationsResponseDataItemEffectivePaymentMethodConfiguration =
+  CreateCheckoutConfigurationResponseEffectivePaymentMethodConfiguration as any as S.Schema<ListCheckoutConfigurationsResponseDataItemEffectivePaymentMethodConfiguration>;
+
 /** Controls whether checkout charges the buyer immediately or saves payment details for later. */
 export type ListCheckoutConfigurationsResponseDataItemMode = "payment" | "setup";
+const ListCheckoutConfigurationsResponseDataItemMode = S.String;
+
 /** Payment methods explicitly disabled for checkout. */
 export type ListCheckoutConfigurationsResponseDataItemPaymentMethodConfigurationDisabledList =
   Array<string>;
@@ -575,6 +724,9 @@ export interface ListCheckoutConfigurationsResponseDataItemPaymentMethodConfigur
   /** Whether platform default payment methods are included. */
   include_platform_defaults?: boolean;
 }
+const ListCheckoutConfigurationsResponseDataItemPaymentMethodConfiguration =
+  CreateCheckoutConfigurationResponseEffectivePaymentMethodConfiguration as any as S.Schema<ListCheckoutConfigurationsResponseDataItemPaymentMethodConfiguration>;
+
 /** Billing model for the plan. */
 export type ListCheckoutConfigurationsResponseDataItemPlanPlanType = "renewal" | "one_time";
 /** Sales method for the plan. */
@@ -617,11 +769,16 @@ export interface ListCheckoutConfigurationsResponseDataItemPlan {
   /** Whether the plan is visible to customers or hidden from public view. */
   visibility: ListCheckoutConfigurationsResponseDataItemPlanVisibility;
 }
+const ListCheckoutConfigurationsResponseDataItemPlan =
+  CreateCheckoutConfigurationResponsePlan as any as S.Schema<ListCheckoutConfigurationsResponseDataItemPlan>;
+
 /** 3D Secure behavior for supported on-session card payments. `mandate_challenge` requires a 3DS challenge before payment processing; `mandate_if_required` mandates a challenge only when the payment processor requires it; `frictionless_if_required` uses the regular frictionless 3DS flow. Payments of $1,000 or more use `mandate_if_required` unless `mandate_challenge` is selected. Risk and authentication recovery requirements can override the preference. Applies in setup mode; `null` uses frictionless 3DS. Payment mode uses the plan policy. */
 export type ListCheckoutConfigurationsResponseDataItemThreeDsLevel =
   | "mandate_challenge"
   | "mandate_if_required"
   | "frictionless_if_required";
+const ListCheckoutConfigurationsResponseDataItemThreeDsLevel = S.String;
+
 export interface ListCheckoutConfigurationsResponseDataItem {
   /** Account ID, prefixed `biz_`. */
   account_id: string;
@@ -652,18 +809,38 @@ export interface ListCheckoutConfigurationsResponseDataItem {
   /** When the checkout configuration was last updated, as an ISO 8601 timestamp. */
   updated_at: string;
 }
+const ListCheckoutConfigurationsResponseDataItem = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<ListCheckoutConfigurationsResponseDataItem>;
+
 export type ListCheckoutConfigurationsResponseDataList =
   Array<ListCheckoutConfigurationsResponseDataItem>;
+const ListCheckoutConfigurationsResponseDataList = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<ListCheckoutConfigurationsResponseDataList>;
+
 export interface ListCheckoutConfigurationsResponsePageInfo {
   end_cursor: string | null;
   has_next_page: boolean;
   has_previous_page: boolean;
   start_cursor: string | null;
 }
+const ListCheckoutConfigurationsResponsePageInfo = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<ListCheckoutConfigurationsResponsePageInfo>;
+
 export interface ListCheckoutConfigurationsResponse {
   data: ListCheckoutConfigurationsResponseDataList;
   page_info: ListCheckoutConfigurationsResponsePageInfo;
 }
+const ListCheckoutConfigurationsResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<ListCheckoutConfigurationsResponse>;
+
 export type CreateCheckoutConfigurationError = Conflict | WhopOpError;
 /** Create a checkout configuration Creates a reusable checkout configuration for an existing or inline plan. */
 export const createCheckoutConfiguration: API.OperationMethod<
@@ -672,8 +849,8 @@ export const createCheckoutConfiguration: API.OperationMethod<
   CreateCheckoutConfigurationError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4) as any as S.Schema<CreateCheckoutConfigurationRequest>,
-  output: __S(9) as any as S.Schema<CreateCheckoutConfigurationResponse>,
+  input: CreateCheckoutConfigurationRequest,
+  output: CreateCheckoutConfigurationResponse,
   errors: [Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -687,8 +864,8 @@ export const deleteCheckoutConfiguration: API.OperationMethod<
   DeleteCheckoutConfigurationError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10) as any as S.Schema<DeleteCheckoutConfigurationRequest>,
-  output: __S(11) as any as S.Schema<DeleteCheckoutConfigurationResponse>,
+  input: DeleteCheckoutConfigurationRequest,
+  output: DeleteCheckoutConfigurationResponse,
   errors: [NotFound],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -702,8 +879,8 @@ export const getCheckoutConfiguration: API.OperationMethod<
   GetCheckoutConfigurationError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12) as any as S.Schema<GetCheckoutConfigurationRequest>,
-  output: __S(14) as any as S.Schema<GetCheckoutConfigurationResponse>,
+  input: GetCheckoutConfigurationRequest,
+  output: GetCheckoutConfigurationResponse,
   errors: [NotFound],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -719,8 +896,8 @@ export const listCheckoutConfigurations: API.PaginatedOperationMethod<
   ListCheckoutConfigurationsResponseDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(15) as any as S.Schema<ListCheckoutConfigurationsRequest>,
-    output: __S(19) as any as S.Schema<ListCheckoutConfigurationsResponse>,
+    input: ListCheckoutConfigurationsRequest,
+    output: ListCheckoutConfigurationsResponse,
     errors: [BadRequest],
     protocol: WhopProtocol,
     retry: Retry.Retry,
@@ -740,12 +917,16 @@ export const listCheckoutConfigurations: API.PaginatedOperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
+      return S.Array(PaymentMethodTypes);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          disabled: S.optional(__S(0)),
-          enabled: S.optional(__S(0)),
+          disabled: S.optional(
+            CreateCheckoutConfigurationRequestPaymentMethodConfigurationDisabledList,
+          ),
+          enabled: S.optional(
+            CreateCheckoutConfigurationRequestPaymentMethodConfigurationEnabledList,
+          ),
           include_platform_defaults: S.optional(S.Boolean),
         }),
       ).annotate({
@@ -754,8 +935,12 @@ function __c0(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          disabled: S.optional(__S(0)),
-          enabled: S.optional(__S(0)),
+          disabled: S.optional(
+            CreateCheckoutConfigurationRequestPlanPaymentMethodConfigurationDisabledList,
+          ),
+          enabled: S.optional(
+            CreateCheckoutConfigurationRequestPlanPaymentMethodConfigurationEnabledList,
+          ),
           include_platform_defaults: S.optional(S.Boolean),
         }),
       ).annotate({
@@ -773,17 +958,19 @@ function __c0(j: number): any {
           initial_price: S.optional(S.NullOr(S.Number)),
           metadata: S.optional(S.NullOr(S.Unknown)),
           override_tax_type: S.optional(S.NullOr(S.String)),
-          payment_method_configuration: S.optional(S.NullOr(__S(2))),
-          plan_type: S.optional(S.NullOr(S.String)),
+          payment_method_configuration: S.optional(
+            S.NullOr(CreateCheckoutConfigurationRequestPlanPaymentMethodConfiguration),
+          ),
+          plan_type: S.optional(S.NullOr(CreateCheckoutConfigurationRequestPlanPlanType)),
           product_id: S.optional(S.NullOr(S.String)),
-          release_method: S.optional(S.NullOr(S.String)),
+          release_method: S.optional(S.NullOr(CreateCheckoutConfigurationRequestPlanReleaseMethod)),
           renewal_price: S.optional(S.NullOr(S.Number)),
           stock: S.optional(S.NullOr(S.Number)),
-          three_ds_level: S.optional(S.NullOr(S.String)),
+          three_ds_level: S.optional(S.NullOr(CreateCheckoutConfigurationRequestPlanThreeDsLevel)),
           title: S.optional(S.NullOr(S.String)),
           trial_period_days: S.optional(S.NullOr(S.Number)),
           unlimited_stock: S.optional(S.NullOr(S.Boolean)),
-          visibility: S.optional(S.NullOr(S.String)),
+          visibility: S.optional(S.NullOr(CreateCheckoutConfigurationRequestPlanVisibility)),
         }),
       ).annotate({
         identifier: "CreateCheckoutConfigurationRequestPlan",
@@ -795,12 +982,14 @@ function __c0(j: number): any {
           affiliate_code: S.optional(S.NullOr(S.String)),
           currency: S.optional(S.NullOr(S.String)),
           metadata: S.optional(S.NullOr(S.Unknown)),
-          mode: S.optional(S.String),
-          payment_method_configuration: S.optional(S.NullOr(__S(1))),
-          plan: S.optional(S.NullOr(__S(3))),
+          mode: S.optional(CreateCheckoutConfigurationRequestMode),
+          payment_method_configuration: S.optional(
+            S.NullOr(CreateCheckoutConfigurationRequestPaymentMethodConfiguration),
+          ),
+          plan: S.optional(S.NullOr(CreateCheckoutConfigurationRequestPlan)),
           plan_id: S.optional(S.NullOr(S.String)),
           redirect_url: S.optional(S.NullOr(S.String)),
-          three_ds_level: S.optional(S.NullOr(S.String)),
+          three_ds_level: S.optional(S.NullOr(CreateCheckoutConfigurationRequestThreeDsLevel)),
           idempotency_key: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
         }).pipe(T.Http({ method: "POST", uri: "/checkout_configurations", code: 200 })),
       ).annotate({
@@ -811,8 +1000,12 @@ function __c0(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          disabled: S.optional(__S(5)),
-          enabled: S.optional(__S(5)),
+          disabled: S.optional(
+            CreateCheckoutConfigurationResponseEffectivePaymentMethodConfigurationDisabledList,
+          ),
+          enabled: S.optional(
+            CreateCheckoutConfigurationResponseEffectivePaymentMethodConfigurationEnabledList,
+          ),
           include_platform_defaults: S.optional(S.Boolean),
         }),
       ).annotate({
@@ -821,8 +1014,12 @@ function __c0(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          disabled: S.optional(__S(5)),
-          enabled: S.optional(__S(5)),
+          disabled: S.optional(
+            CreateCheckoutConfigurationResponsePaymentMethodConfigurationDisabledList,
+          ),
+          enabled: S.optional(
+            CreateCheckoutConfigurationResponsePaymentMethodConfigurationEnabledList,
+          ),
           include_platform_defaults: S.optional(S.Boolean),
         }),
       ).annotate({
@@ -841,12 +1038,12 @@ function __c1(j: number): any {
           expiration_days: S.NullOr(S.Number),
           id: S.String,
           initial_price: S.Number,
-          plan_type: S.String,
-          release_method: S.String,
+          plan_type: CreateCheckoutConfigurationResponsePlanPlanType,
+          release_method: CreateCheckoutConfigurationResponsePlanReleaseMethod,
           renewal_price: S.Number,
-          three_ds_level: S.NullOr(S.String),
+          three_ds_level: S.NullOr(CreateCheckoutConfigurationResponsePlanThreeDsLevel),
           trial_period_days: S.NullOr(S.Number),
-          visibility: S.String,
+          visibility: CreateCheckoutConfigurationResponsePlanVisibility,
         }),
       ).annotate({
         identifier: "CreateCheckoutConfigurationResponsePlan",
@@ -858,15 +1055,19 @@ function __c1(j: number): any {
           affiliate_code: S.optional(S.NullOr(S.String)),
           created_at: S.String,
           currency: S.optional(S.NullOr(S.String)),
-          effective_payment_method_configuration: S.optional(S.NullOr(__S(6))),
+          effective_payment_method_configuration: S.optional(
+            S.NullOr(CreateCheckoutConfigurationResponseEffectivePaymentMethodConfiguration),
+          ),
           id: S.String,
           metadata: S.optional(S.NullOr(S.Unknown)),
-          mode: S.String,
-          payment_method_configuration: S.optional(S.NullOr(__S(7))),
-          plan: S.optional(S.NullOr(__S(8))),
+          mode: CreateCheckoutConfigurationResponseMode,
+          payment_method_configuration: S.optional(
+            S.NullOr(CreateCheckoutConfigurationResponsePaymentMethodConfiguration),
+          ),
+          plan: S.optional(S.NullOr(CreateCheckoutConfigurationResponsePlan)),
           purchase_url: S.optional(S.NullOr(S.String)),
           redirect_url: S.optional(S.NullOr(S.String)),
-          three_ds_level: S.optional(S.NullOr(S.String)),
+          three_ds_level: S.optional(S.NullOr(CreateCheckoutConfigurationResponseThreeDsLevel)),
           updated_at: S.String,
         }),
       ).annotate({
@@ -900,8 +1101,12 @@ function __c1(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          disabled: S.optional(__S(5)),
-          enabled: S.optional(__S(5)),
+          disabled: S.optional(
+            GetCheckoutConfigurationResponsePaymentMethodConfigurationDisabledList,
+          ),
+          enabled: S.optional(
+            GetCheckoutConfigurationResponsePaymentMethodConfigurationEnabledList,
+          ),
           include_platform_defaults: S.optional(S.Boolean),
         }),
       ).annotate({
@@ -914,15 +1119,19 @@ function __c1(j: number): any {
           affiliate_code: S.optional(S.NullOr(S.String)),
           created_at: S.String,
           currency: S.optional(S.NullOr(S.String)),
-          effective_payment_method_configuration: S.optional(S.NullOr(__S(6))),
+          effective_payment_method_configuration: S.optional(
+            S.NullOr(GetCheckoutConfigurationResponseEffectivePaymentMethodConfiguration),
+          ),
           id: S.String,
           metadata: S.optional(S.NullOr(S.Unknown)),
-          mode: S.String,
-          payment_method_configuration: S.optional(S.NullOr(__S(13))),
-          plan: S.optional(S.NullOr(__S(8))),
+          mode: GetCheckoutConfigurationResponseMode,
+          payment_method_configuration: S.optional(
+            S.NullOr(GetCheckoutConfigurationResponsePaymentMethodConfiguration),
+          ),
+          plan: S.optional(S.NullOr(GetCheckoutConfigurationResponsePlan)),
           purchase_url: S.optional(S.NullOr(S.String)),
           redirect_url: S.optional(S.NullOr(S.String)),
-          three_ds_level: S.optional(S.NullOr(S.String)),
+          three_ds_level: S.optional(S.NullOr(GetCheckoutConfigurationResponseThreeDsLevel)),
           updated_at: S.String,
         }),
       ).annotate({
@@ -935,8 +1144,8 @@ function __c1(j: number): any {
           plan_id: S.optional(S.String.pipe(T.Query())),
           created_before: S.optional(S.String.pipe(T.Query())),
           created_after: S.optional(S.String.pipe(T.Query())),
-          order: S.optional(S.String.pipe(T.Query())),
-          direction: S.optional(S.String.pipe(T.Query())),
+          order: S.optional(ListCheckoutConfigurationsRequestOrder.pipe(T.Query())),
+          direction: S.optional(ListCheckoutConfigurationsRequestDirection.pipe(T.Query())),
           first: S.optional(S.Number.pipe(T.Query())),
           after: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/checkout_configurations", code: 200 })),
@@ -954,22 +1163,28 @@ function __c2(j: number): any {
           affiliate_code: S.optional(S.NullOr(S.String)),
           created_at: S.String,
           currency: S.optional(S.NullOr(S.String)),
-          effective_payment_method_configuration: S.optional(S.NullOr(__S(6))),
+          effective_payment_method_configuration: S.optional(
+            S.NullOr(ListCheckoutConfigurationsResponseDataItemEffectivePaymentMethodConfiguration),
+          ),
           id: S.String,
           metadata: S.optional(S.NullOr(S.Unknown)),
-          mode: S.String,
-          payment_method_configuration: S.optional(S.NullOr(__S(6))),
-          plan: S.optional(S.NullOr(__S(8))),
+          mode: ListCheckoutConfigurationsResponseDataItemMode,
+          payment_method_configuration: S.optional(
+            S.NullOr(ListCheckoutConfigurationsResponseDataItemPaymentMethodConfiguration),
+          ),
+          plan: S.optional(S.NullOr(ListCheckoutConfigurationsResponseDataItemPlan)),
           purchase_url: S.optional(S.NullOr(S.String)),
           redirect_url: S.optional(S.NullOr(S.String)),
-          three_ds_level: S.optional(S.NullOr(S.String)),
+          three_ds_level: S.optional(
+            S.NullOr(ListCheckoutConfigurationsResponseDataItemThreeDsLevel),
+          ),
           updated_at: S.String,
         }),
       ).annotate({
         identifier: "ListCheckoutConfigurationsResponseDataItem",
       });
     case 1:
-      return S.Array(__S(16));
+      return S.Array(ListCheckoutConfigurationsResponseDataItem);
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -984,26 +1199,11 @@ function __c2(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          data: __S(17),
-          page_info: __S(18),
+          data: ListCheckoutConfigurationsResponseDataList,
+          page_info: ListCheckoutConfigurationsResponsePageInfo,
         }),
       ).annotate({
         identifier: "ListCheckoutConfigurationsResponse",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
   }
 }

@@ -8,8 +8,6 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "Cost and Usage Report Service",
   serviceShapeName: "AWSOrigamiServiceGatewayService",
@@ -107,24 +105,45 @@ export type ReportName = string;
 export interface DeleteReportDefinitionRequest {
   ReportName: string;
 }
+const DeleteReportDefinitionRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<DeleteReportDefinitionRequest>;
 export type DeleteResponseMessage = string;
 export interface DeleteReportDefinitionResponse {
   ResponseMessage?: string;
 }
+const DeleteReportDefinitionResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<DeleteReportDefinitionResponse>;
 export type MaxResults = number;
 export interface DescribeReportDefinitionsRequest {
   MaxResults?: number;
   NextToken?: string;
 }
+const DescribeReportDefinitionsRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<DescribeReportDefinitionsRequest>;
 export type TimeUnit = "HOURLY" | "DAILY" | "MONTHLY" | (string & {});
+const TimeUnit = S.String;
+
 export type ReportFormat = "textORcsv" | "Parquet" | (string & {});
+const ReportFormat = S.String;
+
 export type CompressionFormat = "ZIP" | "GZIP" | "Parquet" | (string & {});
+const CompressionFormat = S.String;
+
 export type SchemaElement =
   | "RESOURCES"
   | "SPLIT_COST_ALLOCATION_DATA"
   | "MANUAL_DISCOUNT_COMPATIBILITY"
   | (string & {});
+const SchemaElement = S.String;
+
 export type SchemaElementList = SchemaElement[];
+const SchemaElementList = /*@__PURE__*/ __L.at(__c0, 3);
 export type S3Bucket = string;
 export type S3Prefix = string;
 export type AWSRegion =
@@ -157,17 +176,25 @@ export type AWSRegion =
   | "cn-north-1"
   | "cn-northwest-1"
   | (string & {});
+const AWSRegion = S.String;
+
 export type AdditionalArtifact = "REDSHIFT" | "QUICKSIGHT" | "ATHENA" | (string & {});
 export type AdditionalArtifactList = AdditionalArtifact[];
+const AdditionalArtifactList = SchemaElementList as any as S.Schema<AdditionalArtifactList>;
 export type RefreshClosedReports = boolean;
 export type ReportVersioning = "CREATE_NEW_REPORT" | "OVERWRITE_REPORT" | (string & {});
+const ReportVersioning = S.String;
+
 export type BillingViewArn = string;
 export type LastDelivery = string;
 export type LastStatus = "SUCCESS" | "ERROR_PERMISSIONS" | "ERROR_NO_BUCKET" | (string & {});
+const LastStatus = S.String;
+
 export interface ReportStatus {
   lastDelivery?: string;
   lastStatus?: LastStatus;
 }
+const ReportStatus = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<ReportStatus>;
 export interface ReportDefinition {
   ReportName: string;
   TimeUnit: TimeUnit;
@@ -183,45 +210,81 @@ export interface ReportDefinition {
   BillingViewArn?: string;
   ReportStatus?: ReportStatus;
 }
+const ReportDefinition = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<ReportDefinition>;
 export type ReportDefinitionList = ReportDefinition[];
+const ReportDefinitionList = /*@__PURE__*/ __L.at(__c0, 6);
 export interface DescribeReportDefinitionsResponse {
   ReportDefinitions?: ReportDefinition[];
   NextToken?: string;
 }
+const DescribeReportDefinitionsResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<DescribeReportDefinitionsResponse>;
 export interface ListTagsForResourceRequest {
   ReportName: string;
 }
+const ListTagsForResourceRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<ListTagsForResourceRequest>;
 export type TagKey = string;
 export type TagValue = string;
 export interface Tag {
   Key: string;
   Value: string;
 }
+const Tag = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<Tag>;
 export type TagList = Tag[];
+const TagList = /*@__PURE__*/ __L.at(__c1, 2);
 export interface ListTagsForResourceResponse {
   Tags?: Tag[];
 }
+const ListTagsForResourceResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<ListTagsForResourceResponse>;
 export interface ModifyReportDefinitionRequest {
   ReportName: string;
   ReportDefinition: ReportDefinition;
 }
+const ModifyReportDefinitionRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<ModifyReportDefinitionRequest>;
 export interface ModifyReportDefinitionResponse {}
+const ModifyReportDefinitionResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<ModifyReportDefinitionResponse>;
 export interface PutReportDefinitionRequest {
   ReportDefinition: ReportDefinition;
   Tags?: Tag[];
 }
+const PutReportDefinitionRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<PutReportDefinitionRequest>;
 export interface PutReportDefinitionResponse {}
+const PutReportDefinitionResponse =
+  ModifyReportDefinitionResponse as any as S.Schema<PutReportDefinitionResponse>;
 export interface TagResourceRequest {
   ReportName: string;
   Tags: Tag[];
 }
+const TagResourceRequest = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
+const TagResourceResponse = ModifyReportDefinitionResponse as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
+const TagKeyList = /*@__PURE__*/ __L.at(__c2, 0);
 export interface UntagResourceRequest {
   ReportName: string;
   TagKeys: string[];
 }
+const UntagResourceRequest = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
+const UntagResourceResponse =
+  ModifyReportDefinitionResponse as any as S.Schema<UntagResourceResponse>;
 export type ErrorMessage = string;
 export type DeleteReportDefinitionError =
   | InternalErrorException
@@ -237,8 +300,8 @@ export const deleteReportDefinition: API.OperationMethod<
   DeleteReportDefinitionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<DeleteReportDefinitionRequest>,
-  output: __S(1) as any as S.Schema<DeleteReportDefinitionResponse>,
+  input: DeleteReportDefinitionRequest,
+  output: DeleteReportDefinitionResponse,
   errors: [InternalErrorException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -256,8 +319,8 @@ export const describeReportDefinitions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(2) as any as S.Schema<DescribeReportDefinitionsRequest>,
-  output: __S(7) as any as S.Schema<DescribeReportDefinitionsResponse>,
+  input: DescribeReportDefinitionsRequest,
+  output: DescribeReportDefinitionsResponse,
   errors: [InternalErrorException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -283,8 +346,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8) as any as S.Schema<ListTagsForResourceRequest>,
-  output: __S(11) as any as S.Schema<ListTagsForResourceResponse>,
+  input: ListTagsForResourceRequest,
+  output: ListTagsForResourceResponse,
   errors: [InternalErrorException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -305,8 +368,8 @@ export const modifyReportDefinition: API.OperationMethod<
   ModifyReportDefinitionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12) as any as S.Schema<ModifyReportDefinitionRequest>,
-  output: __S(13) as any as S.Schema<ModifyReportDefinitionResponse>,
+  input: ModifyReportDefinitionRequest,
+  output: ModifyReportDefinitionResponse,
   errors: [InternalErrorException, ValidationException, ReportBucketNotVerified],
   protocol: AwsProtocol,
   retry: Retry,
@@ -330,8 +393,8 @@ export const putReportDefinition: API.OperationMethod<
   PutReportDefinitionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14) as any as S.Schema<PutReportDefinitionRequest>,
-  output: __S(13) as any as S.Schema<PutReportDefinitionResponse>,
+  input: PutReportDefinitionRequest,
+  output: PutReportDefinitionResponse,
   errors: [
     DuplicateReportNameException,
     InternalErrorException,
@@ -359,8 +422,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15) as any as S.Schema<TagResourceRequest>,
-  output: __S(13) as any as S.Schema<TagResourceResponse>,
+  input: TagResourceRequest,
+  output: TagResourceResponse,
   errors: [InternalErrorException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -381,8 +444,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17) as any as S.Schema<UntagResourceRequest>,
-  output: __S(13) as any as S.Schema<UntagResourceResponse>,
+  input: UntagResourceRequest,
+  output: UntagResourceResponse,
   errors: [InternalErrorException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -413,35 +476,35 @@ function __c0(j: number): any {
         identifier: "DescribeReportDefinitionsRequest",
       });
     case 3:
-      return S.Array(S.String);
+      return S.Array(SchemaElement);
     case 4:
       return S.suspend(() =>
-        S.Struct({ lastDelivery: S.optional(S.String), lastStatus: S.optional(S.String) }),
+        S.Struct({ lastDelivery: S.optional(S.String), lastStatus: S.optional(LastStatus) }),
       ).annotate({ identifier: "ReportStatus" });
     case 5:
       return S.suspend(() =>
         S.Struct({
           ReportName: S.String,
-          TimeUnit: S.String,
-          Format: S.String,
-          Compression: S.String,
-          AdditionalSchemaElements: __S(3),
+          TimeUnit: TimeUnit,
+          Format: ReportFormat,
+          Compression: CompressionFormat,
+          AdditionalSchemaElements: SchemaElementList,
           S3Bucket: S.String,
           S3Prefix: S.String,
-          S3Region: S.String,
-          AdditionalArtifacts: S.optional(__S(3)),
+          S3Region: AWSRegion,
+          AdditionalArtifacts: S.optional(AdditionalArtifactList),
           RefreshClosedReports: S.optional(S.Boolean),
-          ReportVersioning: S.optional(S.String),
+          ReportVersioning: S.optional(ReportVersioning),
           BillingViewArn: S.optional(S.String),
-          ReportStatus: S.optional(__S(4)),
+          ReportStatus: S.optional(ReportStatus),
         }),
       ).annotate({ identifier: "ReportDefinition" });
     case 6:
-      return S.Array(__S(5));
+      return S.Array(ReportDefinition);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          ReportDefinitions: S.optional(__S(6)),
+          ReportDefinitions: S.optional(ReportDefinitionList),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -464,14 +527,14 @@ function __c1(j: number): any {
         identifier: "Tag",
       });
     case 2:
-      return S.Array(__S(9));
+      return S.Array(Tag);
     case 3:
-      return S.suspend(() => S.Struct({ Tags: S.optional(__S(10)) })).annotate({
+      return S.suspend(() => S.Struct({ Tags: S.optional(TagList) })).annotate({
         identifier: "ListTagsForResourceResponse",
       });
     case 4:
       return S.suspend(() =>
-        S.Struct({ ReportName: S.String, ReportDefinition: __S(5) }).pipe(
+        S.Struct({ ReportName: S.String, ReportDefinition: ReportDefinition }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
@@ -483,7 +546,7 @@ function __c1(j: number): any {
       });
     case 6:
       return S.suspend(() =>
-        S.Struct({ ReportDefinition: __S(5), Tags: S.optional(__S(10)) }).pipe(
+        S.Struct({ ReportDefinition: ReportDefinition, Tags: S.optional(TagList) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
@@ -491,7 +554,7 @@ function __c1(j: number): any {
       });
     case 7:
       return S.suspend(() =>
-        S.Struct({ ReportName: S.String, Tags: __S(10) }).pipe(
+        S.Struct({ ReportName: S.String, Tags: TagList }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "TagResourceRequest" });
@@ -503,24 +566,9 @@ function __c2(j: number): any {
       return S.Array(S.String);
     case 1:
       return S.suspend(() =>
-        S.Struct({ ReportName: S.String, TagKeys: __S(16) }).pipe(
+        S.Struct({ ReportName: S.String, TagKeys: TagKeyList }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "UntagResourceRequest" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
   }
 }

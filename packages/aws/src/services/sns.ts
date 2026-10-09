@@ -10,8 +10,6 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 const ns = /*@__PURE__*/ T.XmlNamespace("http://sns.amazonaws.com/doc/2010-03-31/");
 const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "SNS",
@@ -398,22 +396,37 @@ export type TopicARN = string;
 export type Label = string;
 export type Delegate = string;
 export type DelegatesList = string[];
+const DelegatesList = /*@__PURE__*/ __L.at(__c0, 0);
 export type Action = string;
 export type ActionsList = string[];
+const ActionsList = /*@__PURE__*/ __L.at(__c0, 1);
 export interface AddPermissionInput {
   TopicArn: string;
   Label: string;
   AWSAccountId: string[];
   ActionName: string[];
 }
+const AddPermissionInput = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<AddPermissionInput>;
 export interface AddPermissionResponse {}
+const AddPermissionResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<AddPermissionResponse>;
 export type PhoneNumber = string | redacted.Redacted<string>;
 export interface CheckIfPhoneNumberIsOptedOutInput {
   phoneNumber: string | redacted.Redacted<string>;
 }
+const CheckIfPhoneNumberIsOptedOutInput = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<CheckIfPhoneNumberIsOptedOutInput>;
 export interface CheckIfPhoneNumberIsOptedOutResponse {
   isOptedOut?: boolean;
 }
+const CheckIfPhoneNumberIsOptedOutResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<CheckIfPhoneNumberIsOptedOutResponse>;
 export type Token = string;
 export type AuthenticateOnUnsubscribe = string;
 export interface ConfirmSubscriptionInput {
@@ -421,28 +434,53 @@ export interface ConfirmSubscriptionInput {
   Token: string;
   AuthenticateOnUnsubscribe?: string;
 }
+const ConfirmSubscriptionInput = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<ConfirmSubscriptionInput>;
 export type SubscriptionARN = string;
 export interface ConfirmSubscriptionResponse {
   SubscriptionArn?: string;
 }
+const ConfirmSubscriptionResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<ConfirmSubscriptionResponse>;
 export type MapStringToString = { [key: string]: string | undefined };
+const MapStringToString = /*@__PURE__*/ __L.at(__c1, 0);
 export interface CreatePlatformApplicationInput {
   Name: string;
   Platform: string;
   Attributes: { [key: string]: string | undefined };
 }
+const CreatePlatformApplicationInput = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<CreatePlatformApplicationInput>;
 export interface CreatePlatformApplicationResponse {
   PlatformApplicationArn?: string;
 }
+const CreatePlatformApplicationResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<CreatePlatformApplicationResponse>;
 export interface CreatePlatformEndpointInput {
   PlatformApplicationArn: string;
   Token: string;
   CustomUserData?: string;
   Attributes?: { [key: string]: string | undefined };
 }
+const CreatePlatformEndpointInput = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<CreatePlatformEndpointInput>;
 export interface CreateEndpointResponse {
   EndpointArn?: string;
 }
+const CreateEndpointResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<CreateEndpointResponse>;
 export type PhoneNumberString = string | redacted.Redacted<string>;
 export type LanguageCodeString =
   | "en-US"
@@ -459,113 +497,227 @@ export type LanguageCodeString =
   | "zh-CN"
   | "zh-TW"
   | (string & {});
+const LanguageCodeString = S.String;
+
 export interface CreateSMSSandboxPhoneNumberInput {
   PhoneNumber: string | redacted.Redacted<string>;
   LanguageCode?: LanguageCodeString;
 }
+const CreateSMSSandboxPhoneNumberInput = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<CreateSMSSandboxPhoneNumberInput>;
 export interface CreateSMSSandboxPhoneNumberResult {}
+const CreateSMSSandboxPhoneNumberResult = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<CreateSMSSandboxPhoneNumberResult>;
 export type TopicName = string;
 export type AttributeName = string;
 export type AttributeValue = string;
 export type TopicAttributesMap = { [key: string]: string | undefined };
+const TopicAttributesMap = /*@__PURE__*/ __L.at(__c1, 7);
 export type TagKey = string;
 export type TagValue = string;
 export interface Tag {
   Key: string;
   Value: string;
 }
+const Tag = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<Tag>;
 export type TagList = Tag[];
+const TagList = /*@__PURE__*/ __L.at(__c2, 1);
 export interface CreateTopicInput {
   Name: string;
   Attributes?: { [key: string]: string | undefined };
   Tags?: Tag[];
   DataProtectionPolicy?: string;
 }
+const CreateTopicInput = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<CreateTopicInput>;
 export interface CreateTopicResponse {
   TopicArn?: string;
 }
+const CreateTopicResponse = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<CreateTopicResponse>;
 export interface DeleteEndpointInput {
   EndpointArn: string;
 }
+const DeleteEndpointInput = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<DeleteEndpointInput>;
 export interface DeleteEndpointResponse {}
+const DeleteEndpointResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<DeleteEndpointResponse>;
 export interface DeletePlatformApplicationInput {
   PlatformApplicationArn: string;
 }
+const DeletePlatformApplicationInput = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<DeletePlatformApplicationInput>;
 export interface DeletePlatformApplicationResponse {}
+const DeletePlatformApplicationResponse = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<DeletePlatformApplicationResponse>;
 export interface DeleteSMSSandboxPhoneNumberInput {
   PhoneNumber: string | redacted.Redacted<string>;
 }
+const DeleteSMSSandboxPhoneNumberInput = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<DeleteSMSSandboxPhoneNumberInput>;
 export interface DeleteSMSSandboxPhoneNumberResult {}
+const DeleteSMSSandboxPhoneNumberResult = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<DeleteSMSSandboxPhoneNumberResult>;
 export interface DeleteTopicInput {
   TopicArn: string;
 }
+const DeleteTopicInput = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<DeleteTopicInput>;
 export interface DeleteTopicResponse {}
+const DeleteTopicResponse = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<DeleteTopicResponse>;
 export interface GetDataProtectionPolicyInput {
   ResourceArn: string;
 }
+const GetDataProtectionPolicyInput = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<GetDataProtectionPolicyInput>;
 export interface GetDataProtectionPolicyResponse {
   DataProtectionPolicy?: string;
 }
+const GetDataProtectionPolicyResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<GetDataProtectionPolicyResponse>;
 export interface GetEndpointAttributesInput {
   EndpointArn: string;
 }
+const GetEndpointAttributesInput = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<GetEndpointAttributesInput>;
 export interface GetEndpointAttributesResponse {
   Attributes?: { [key: string]: string | undefined };
 }
+const GetEndpointAttributesResponse = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<GetEndpointAttributesResponse>;
 export interface GetPlatformApplicationAttributesInput {
   PlatformApplicationArn: string;
 }
+const GetPlatformApplicationAttributesInput = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<GetPlatformApplicationAttributesInput>;
 export interface GetPlatformApplicationAttributesResponse {
   Attributes?: { [key: string]: string | undefined };
 }
+const GetPlatformApplicationAttributesResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<GetPlatformApplicationAttributesResponse>;
 export type ListString = string[];
+const ListString = /*@__PURE__*/ __L.at(__c4, 2);
 export interface GetSMSAttributesInput {
   attributes?: string[];
 }
+const GetSMSAttributesInput = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<GetSMSAttributesInput>;
 export interface GetSMSAttributesResponse {
   attributes?: { [key: string]: string | undefined };
 }
+const GetSMSAttributesResponse = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<GetSMSAttributesResponse>;
 export interface GetSMSSandboxAccountStatusInput {}
+const GetSMSSandboxAccountStatusInput = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<GetSMSSandboxAccountStatusInput>;
 export interface GetSMSSandboxAccountStatusResult {
   IsInSandbox: boolean;
 }
+const GetSMSSandboxAccountStatusResult = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<GetSMSSandboxAccountStatusResult>;
 export interface GetSubscriptionAttributesInput {
   SubscriptionArn: string;
 }
+const GetSubscriptionAttributesInput = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<GetSubscriptionAttributesInput>;
 export type SubscriptionAttributesMap = { [key: string]: string | undefined };
+const SubscriptionAttributesMap = /*@__PURE__*/ __L.at(__c5, 0);
 export interface GetSubscriptionAttributesResponse {
   Attributes?: { [key: string]: string | undefined };
 }
+const GetSubscriptionAttributesResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  1,
+) as any as S.Schema<GetSubscriptionAttributesResponse>;
 export interface GetTopicAttributesInput {
   TopicArn: string;
 }
+const GetTopicAttributesInput = /*@__PURE__*/ __L.at(
+  __c5,
+  2,
+) as any as S.Schema<GetTopicAttributesInput>;
 export interface GetTopicAttributesResponse {
   Attributes?: { [key: string]: string | undefined };
 }
+const GetTopicAttributesResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<GetTopicAttributesResponse>;
 export interface ListEndpointsByPlatformApplicationInput {
   PlatformApplicationArn: string;
   NextToken?: string;
 }
+const ListEndpointsByPlatformApplicationInput = /*@__PURE__*/ __L.at(
+  __c5,
+  4,
+) as any as S.Schema<ListEndpointsByPlatformApplicationInput>;
 export interface Endpoint {
   EndpointArn?: string;
   Attributes?: { [key: string]: string | undefined };
 }
 const Endpoint = /*@__PURE__*/ __L.at(__c5, 5) as any as S.Schema<Endpoint>;
 export type ListOfEndpoints = Endpoint[];
+const ListOfEndpoints = /*@__PURE__*/ __L.at(__c5, 6);
 export interface ListEndpointsByPlatformApplicationResponse {
   Endpoints?: Endpoint[];
   NextToken?: string;
 }
+const ListEndpointsByPlatformApplicationResponse = /*@__PURE__*/ __L.at(
+  __c5,
+  7,
+) as any as S.Schema<ListEndpointsByPlatformApplicationResponse>;
 export type NextToken = string;
 export type MaxItemsListOriginationNumbers = number;
 export interface ListOriginationNumbersRequest {
   NextToken?: string;
   MaxResults?: number;
 }
+const ListOriginationNumbersRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<ListOriginationNumbersRequest>;
 export type Iso2CountryCode = string;
 export type RouteType = "Transactional" | "Promotional" | "Premium" | (string & {});
+const RouteType = S.String;
+
 export type NumberCapability = "SMS" | "MMS" | "VOICE" | (string & {});
+const NumberCapability = S.String;
+
 export type NumberCapabilityList = NumberCapability[];
+const NumberCapabilityList = /*@__PURE__*/ __L.at(__c6, 1);
 export interface PhoneNumberInformation {
   CreatedAt?: Date;
   PhoneNumber?: string | redacted.Redacted<string>;
@@ -574,49 +726,96 @@ export interface PhoneNumberInformation {
   RouteType?: RouteType;
   NumberCapabilities?: NumberCapability[];
 }
+const PhoneNumberInformation = /*@__PURE__*/ __L.at(
+  __c6,
+  2,
+) as any as S.Schema<PhoneNumberInformation>;
 export type PhoneNumberInformationList = PhoneNumberInformation[];
+const PhoneNumberInformationList = /*@__PURE__*/ __L.at(__c6, 3);
 export interface ListOriginationNumbersResult {
   NextToken?: string;
   PhoneNumbers?: PhoneNumberInformation[];
 }
+const ListOriginationNumbersResult = /*@__PURE__*/ __L.at(
+  __c6,
+  4,
+) as any as S.Schema<ListOriginationNumbersResult>;
 export interface ListPhoneNumbersOptedOutInput {
   nextToken?: string;
 }
+const ListPhoneNumbersOptedOutInput = /*@__PURE__*/ __L.at(
+  __c6,
+  5,
+) as any as S.Schema<ListPhoneNumbersOptedOutInput>;
 export type PhoneNumberList = (string | redacted.Redacted<string>)[];
+const PhoneNumberList = /*@__PURE__*/ __L.at(__c6, 6);
 export interface ListPhoneNumbersOptedOutResponse {
   phoneNumbers?: (string | redacted.Redacted<string>)[];
   nextToken?: string;
 }
+const ListPhoneNumbersOptedOutResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  7,
+) as any as S.Schema<ListPhoneNumbersOptedOutResponse>;
 export interface ListPlatformApplicationsInput {
   NextToken?: string;
 }
+const ListPlatformApplicationsInput = /*@__PURE__*/ __L.at(
+  __c7,
+  0,
+) as any as S.Schema<ListPlatformApplicationsInput>;
 export interface PlatformApplication {
   PlatformApplicationArn?: string;
   Attributes?: { [key: string]: string | undefined };
 }
+const PlatformApplication = /*@__PURE__*/ __L.at(__c7, 1) as any as S.Schema<PlatformApplication>;
 export type ListOfPlatformApplications = PlatformApplication[];
+const ListOfPlatformApplications = /*@__PURE__*/ __L.at(__c7, 2);
 export interface ListPlatformApplicationsResponse {
   PlatformApplications?: PlatformApplication[];
   NextToken?: string;
 }
+const ListPlatformApplicationsResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  3,
+) as any as S.Schema<ListPlatformApplicationsResponse>;
 export type MaxItems = number;
 export interface ListSMSSandboxPhoneNumbersInput {
   NextToken?: string;
   MaxResults?: number;
 }
+const ListSMSSandboxPhoneNumbersInput = /*@__PURE__*/ __L.at(
+  __c7,
+  4,
+) as any as S.Schema<ListSMSSandboxPhoneNumbersInput>;
 export type SMSSandboxPhoneNumberVerificationStatus = "Pending" | "Verified" | (string & {});
+const SMSSandboxPhoneNumberVerificationStatus = S.String;
+
 export interface SMSSandboxPhoneNumber {
   PhoneNumber?: string | redacted.Redacted<string>;
   Status?: SMSSandboxPhoneNumberVerificationStatus;
 }
+const SMSSandboxPhoneNumber = /*@__PURE__*/ __L.at(
+  __c7,
+  5,
+) as any as S.Schema<SMSSandboxPhoneNumber>;
 export type SMSSandboxPhoneNumberList = SMSSandboxPhoneNumber[];
+const SMSSandboxPhoneNumberList = /*@__PURE__*/ __L.at(__c7, 6);
 export interface ListSMSSandboxPhoneNumbersResult {
   PhoneNumbers: SMSSandboxPhoneNumber[];
   NextToken?: string;
 }
+const ListSMSSandboxPhoneNumbersResult = /*@__PURE__*/ __L.at(
+  __c7,
+  7,
+) as any as S.Schema<ListSMSSandboxPhoneNumbersResult>;
 export interface ListSubscriptionsInput {
   NextToken?: string;
 }
+const ListSubscriptionsInput = /*@__PURE__*/ __L.at(
+  __c8,
+  0,
+) as any as S.Schema<ListSubscriptionsInput>;
 export type Account = string;
 export type Protocol = string;
 export type Endpoint2 = string;
@@ -627,41 +826,75 @@ export interface Subscription {
   Endpoint?: string;
   TopicArn?: string;
 }
+const Subscription = /*@__PURE__*/ __L.at(__c8, 1) as any as S.Schema<Subscription>;
 export type SubscriptionsList = Subscription[];
+const SubscriptionsList = /*@__PURE__*/ __L.at(__c8, 2);
 export interface ListSubscriptionsResponse {
   Subscriptions?: Subscription[];
   NextToken?: string;
 }
+const ListSubscriptionsResponse = /*@__PURE__*/ __L.at(
+  __c8,
+  3,
+) as any as S.Schema<ListSubscriptionsResponse>;
 export interface ListSubscriptionsByTopicInput {
   TopicArn: string;
   NextToken?: string;
 }
+const ListSubscriptionsByTopicInput = /*@__PURE__*/ __L.at(
+  __c8,
+  4,
+) as any as S.Schema<ListSubscriptionsByTopicInput>;
 export interface ListSubscriptionsByTopicResponse {
   Subscriptions?: Subscription[];
   NextToken?: string;
 }
+const ListSubscriptionsByTopicResponse = /*@__PURE__*/ __L.at(
+  __c8,
+  5,
+) as any as S.Schema<ListSubscriptionsByTopicResponse>;
 export type AmazonResourceName = string;
 export interface ListTagsForResourceRequest {
   ResourceArn: string;
 }
+const ListTagsForResourceRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  6,
+) as any as S.Schema<ListTagsForResourceRequest>;
 export interface ListTagsForResourceResponse {
   Tags?: Tag[];
 }
+const ListTagsForResourceResponse = /*@__PURE__*/ __L.at(
+  __c8,
+  7,
+) as any as S.Schema<ListTagsForResourceResponse>;
 export interface ListTopicsInput {
   NextToken?: string;
 }
+const ListTopicsInput = /*@__PURE__*/ __L.at(__c9, 0) as any as S.Schema<ListTopicsInput>;
 export interface Topic {
   TopicArn?: string;
 }
+const Topic = /*@__PURE__*/ __L.at(__c9, 1) as any as S.Schema<Topic>;
 export type TopicsList = Topic[];
+const TopicsList = /*@__PURE__*/ __L.at(__c9, 2);
 export interface ListTopicsResponse {
   Topics?: Topic[];
   NextToken?: string;
 }
+const ListTopicsResponse = /*@__PURE__*/ __L.at(__c9, 3) as any as S.Schema<ListTopicsResponse>;
 export interface OptInPhoneNumberInput {
   phoneNumber: string | redacted.Redacted<string>;
 }
+const OptInPhoneNumberInput = /*@__PURE__*/ __L.at(
+  __c9,
+  4,
+) as any as S.Schema<OptInPhoneNumberInput>;
 export interface OptInPhoneNumberResponse {}
+const OptInPhoneNumberResponse = /*@__PURE__*/ __L.at(
+  __c9,
+  5,
+) as any as S.Schema<OptInPhoneNumberResponse>;
 export type Message = string;
 export type Subject = string;
 export type MessageStructure = string;
@@ -671,7 +904,12 @@ export interface MessageAttributeValue {
   StringValue?: string;
   BinaryValue?: Uint8Array;
 }
+const MessageAttributeValue = /*@__PURE__*/ __L.at(
+  __c9,
+  6,
+) as any as S.Schema<MessageAttributeValue>;
 export type MessageAttributeMap = { [key: string]: MessageAttributeValue | undefined };
+const MessageAttributeMap = /*@__PURE__*/ __L.at(__c9, 7);
 export interface PublishInput {
   TopicArn?: string;
   TargetArn?: string;
@@ -683,11 +921,13 @@ export interface PublishInput {
   MessageDeduplicationId?: string;
   MessageGroupId?: string;
 }
+const PublishInput = /*@__PURE__*/ __L.at(__c10, 0) as any as S.Schema<PublishInput>;
 export type MessageId = string;
 export interface PublishResponse {
   MessageId?: string;
   SequenceNumber?: string;
 }
+const PublishResponse = /*@__PURE__*/ __L.at(__c10, 1) as any as S.Schema<PublishResponse>;
 export interface PublishBatchRequestEntry {
   Id: string;
   Message: string;
@@ -697,64 +937,140 @@ export interface PublishBatchRequestEntry {
   MessageDeduplicationId?: string;
   MessageGroupId?: string;
 }
+const PublishBatchRequestEntry = /*@__PURE__*/ __L.at(
+  __c10,
+  2,
+) as any as S.Schema<PublishBatchRequestEntry>;
 export type PublishBatchRequestEntryList = PublishBatchRequestEntry[];
+const PublishBatchRequestEntryList = /*@__PURE__*/ __L.at(__c10, 3);
 export interface PublishBatchInput {
   TopicArn: string;
   PublishBatchRequestEntries: PublishBatchRequestEntry[];
 }
+const PublishBatchInput = /*@__PURE__*/ __L.at(__c10, 4) as any as S.Schema<PublishBatchInput>;
 export interface PublishBatchResultEntry {
   Id?: string;
   MessageId?: string;
   SequenceNumber?: string;
 }
+const PublishBatchResultEntry = /*@__PURE__*/ __L.at(
+  __c10,
+  5,
+) as any as S.Schema<PublishBatchResultEntry>;
 export type PublishBatchResultEntryList = PublishBatchResultEntry[];
+const PublishBatchResultEntryList = /*@__PURE__*/ __L.at(__c10, 6);
 export interface BatchResultErrorEntry {
   Id: string;
   Code: string;
   Message?: string;
   SenderFault: boolean;
 }
+const BatchResultErrorEntry = /*@__PURE__*/ __L.at(
+  __c10,
+  7,
+) as any as S.Schema<BatchResultErrorEntry>;
 export type BatchResultErrorEntryList = BatchResultErrorEntry[];
+const BatchResultErrorEntryList = /*@__PURE__*/ __L.at(__c11, 0);
 export interface PublishBatchResponse {
   Successful?: PublishBatchResultEntry[];
   Failed?: BatchResultErrorEntry[];
 }
+const PublishBatchResponse = /*@__PURE__*/ __L.at(
+  __c11,
+  1,
+) as any as S.Schema<PublishBatchResponse>;
 export interface PutDataProtectionPolicyInput {
   ResourceArn: string;
   DataProtectionPolicy: string;
 }
+const PutDataProtectionPolicyInput = /*@__PURE__*/ __L.at(
+  __c11,
+  2,
+) as any as S.Schema<PutDataProtectionPolicyInput>;
 export interface PutDataProtectionPolicyResponse {}
+const PutDataProtectionPolicyResponse = /*@__PURE__*/ __L.at(
+  __c11,
+  3,
+) as any as S.Schema<PutDataProtectionPolicyResponse>;
 export interface RemovePermissionInput {
   TopicArn: string;
   Label: string;
 }
+const RemovePermissionInput = /*@__PURE__*/ __L.at(
+  __c11,
+  4,
+) as any as S.Schema<RemovePermissionInput>;
 export interface RemovePermissionResponse {}
+const RemovePermissionResponse = /*@__PURE__*/ __L.at(
+  __c11,
+  5,
+) as any as S.Schema<RemovePermissionResponse>;
 export interface SetEndpointAttributesInput {
   EndpointArn: string;
   Attributes: { [key: string]: string | undefined };
 }
+const SetEndpointAttributesInput = /*@__PURE__*/ __L.at(
+  __c11,
+  6,
+) as any as S.Schema<SetEndpointAttributesInput>;
 export interface SetEndpointAttributesResponse {}
+const SetEndpointAttributesResponse = /*@__PURE__*/ __L.at(
+  __c11,
+  7,
+) as any as S.Schema<SetEndpointAttributesResponse>;
 export interface SetPlatformApplicationAttributesInput {
   PlatformApplicationArn: string;
   Attributes: { [key: string]: string | undefined };
 }
+const SetPlatformApplicationAttributesInput = /*@__PURE__*/ __L.at(
+  __c12,
+  0,
+) as any as S.Schema<SetPlatformApplicationAttributesInput>;
 export interface SetPlatformApplicationAttributesResponse {}
+const SetPlatformApplicationAttributesResponse = /*@__PURE__*/ __L.at(
+  __c12,
+  1,
+) as any as S.Schema<SetPlatformApplicationAttributesResponse>;
 export interface SetSMSAttributesInput {
   attributes: { [key: string]: string | undefined };
 }
+const SetSMSAttributesInput = /*@__PURE__*/ __L.at(
+  __c12,
+  2,
+) as any as S.Schema<SetSMSAttributesInput>;
 export interface SetSMSAttributesResponse {}
+const SetSMSAttributesResponse = /*@__PURE__*/ __L.at(
+  __c12,
+  3,
+) as any as S.Schema<SetSMSAttributesResponse>;
 export interface SetSubscriptionAttributesInput {
   SubscriptionArn: string;
   AttributeName: string;
   AttributeValue?: string;
 }
+const SetSubscriptionAttributesInput = /*@__PURE__*/ __L.at(
+  __c12,
+  4,
+) as any as S.Schema<SetSubscriptionAttributesInput>;
 export interface SetSubscriptionAttributesResponse {}
+const SetSubscriptionAttributesResponse = /*@__PURE__*/ __L.at(
+  __c12,
+  5,
+) as any as S.Schema<SetSubscriptionAttributesResponse>;
 export interface SetTopicAttributesInput {
   TopicArn: string;
   AttributeName: string;
   AttributeValue?: string;
 }
+const SetTopicAttributesInput = /*@__PURE__*/ __L.at(
+  __c12,
+  6,
+) as any as S.Schema<SetTopicAttributesInput>;
 export interface SetTopicAttributesResponse {}
+const SetTopicAttributesResponse = /*@__PURE__*/ __L.at(
+  __c12,
+  7,
+) as any as S.Schema<SetTopicAttributesResponse>;
 export interface SubscribeInput {
   TopicArn: string;
   Protocol: string;
@@ -762,30 +1078,53 @@ export interface SubscribeInput {
   Attributes?: { [key: string]: string | undefined };
   ReturnSubscriptionArn?: boolean;
 }
+const SubscribeInput = /*@__PURE__*/ __L.at(__c13, 0) as any as S.Schema<SubscribeInput>;
 export interface SubscribeResponse {
   SubscriptionArn?: string;
 }
+const SubscribeResponse = /*@__PURE__*/ __L.at(__c13, 1) as any as S.Schema<SubscribeResponse>;
 export interface TagResourceRequest {
   ResourceArn: string;
   Tags: Tag[];
 }
+const TagResourceRequest = /*@__PURE__*/ __L.at(__c13, 2) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
+const TagResourceResponse = /*@__PURE__*/ __L.at(__c13, 3) as any as S.Schema<TagResourceResponse>;
 export interface UnsubscribeInput {
   SubscriptionArn: string;
 }
+const UnsubscribeInput = /*@__PURE__*/ __L.at(__c13, 4) as any as S.Schema<UnsubscribeInput>;
 export interface UnsubscribeResponse {}
+const UnsubscribeResponse = /*@__PURE__*/ __L.at(__c13, 5) as any as S.Schema<UnsubscribeResponse>;
 export type TagKeyList = string[];
+const TagKeyList = /*@__PURE__*/ __L.at(__c13, 6);
 export interface UntagResourceRequest {
   ResourceArn: string;
   TagKeys: string[];
 }
+const UntagResourceRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  7,
+) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
+const UntagResourceResponse = /*@__PURE__*/ __L.at(
+  __c14,
+  0,
+) as any as S.Schema<UntagResourceResponse>;
 export type OTPCode = string;
 export interface VerifySMSSandboxPhoneNumberInput {
   PhoneNumber: string | redacted.Redacted<string>;
   OneTimePassword: string;
 }
+const VerifySMSSandboxPhoneNumberInput = /*@__PURE__*/ __L.at(
+  __c14,
+  1,
+) as any as S.Schema<VerifySMSSandboxPhoneNumberInput>;
 export interface VerifySMSSandboxPhoneNumberResult {}
+const VerifySMSSandboxPhoneNumberResult = /*@__PURE__*/ __L.at(
+  __c14,
+  2,
+) as any as S.Schema<VerifySMSSandboxPhoneNumberResult>;
 export type AddPermissionError =
   | AuthorizationErrorException
   | InternalErrorException
@@ -808,8 +1147,8 @@ export const addPermission: API.OperationMethod<
   AddPermissionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2) as any as S.Schema<AddPermissionInput>,
-  output: __S(3) as any as S.Schema<AddPermissionResponse>,
+  input: AddPermissionInput,
+  output: AddPermissionResponse,
   errors: [
     AuthorizationErrorException,
     InternalErrorException,
@@ -843,8 +1182,8 @@ export const checkIfPhoneNumberIsOptedOut: API.OperationMethod<
   CheckIfPhoneNumberIsOptedOutError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4) as any as S.Schema<CheckIfPhoneNumberIsOptedOutInput>,
-  output: __S(5) as any as S.Schema<CheckIfPhoneNumberIsOptedOutResponse>,
+  input: CheckIfPhoneNumberIsOptedOutInput,
+  output: CheckIfPhoneNumberIsOptedOutResponse,
   errors: [
     AuthorizationErrorException,
     InternalErrorException,
@@ -878,8 +1217,8 @@ export const confirmSubscription: API.OperationMethod<
   ConfirmSubscriptionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6) as any as S.Schema<ConfirmSubscriptionInput>,
-  output: __S(7) as any as S.Schema<ConfirmSubscriptionResponse>,
+  input: ConfirmSubscriptionInput,
+  output: ConfirmSubscriptionResponse,
   errors: [
     AuthorizationErrorException,
     FilterPolicyLimitExceededException,
@@ -945,8 +1284,8 @@ export const createPlatformApplication: API.OperationMethod<
   CreatePlatformApplicationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9) as any as S.Schema<CreatePlatformApplicationInput>,
-  output: __S(10) as any as S.Schema<CreatePlatformApplicationResponse>,
+  input: CreatePlatformApplicationInput,
+  output: CreatePlatformApplicationResponse,
   errors: [AuthorizationErrorException, InternalErrorException, InvalidParameterException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -984,8 +1323,8 @@ export const createPlatformEndpoint: API.OperationMethod<
   CreatePlatformEndpointError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11) as any as S.Schema<CreatePlatformEndpointInput>,
-  output: __S(12) as any as S.Schema<CreateEndpointResponse>,
+  input: CreatePlatformEndpointInput,
+  output: CreateEndpointResponse,
   errors: [
     AuthorizationErrorException,
     InternalErrorException,
@@ -1026,8 +1365,8 @@ export const createSMSSandboxPhoneNumber: API.OperationMethod<
   CreateSMSSandboxPhoneNumberError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13) as any as S.Schema<CreateSMSSandboxPhoneNumberInput>,
-  output: __S(14) as any as S.Schema<CreateSMSSandboxPhoneNumberResult>,
+  input: CreateSMSSandboxPhoneNumberInput,
+  output: CreateSMSSandboxPhoneNumberResult,
   errors: [
     AuthorizationErrorException,
     InternalErrorException,
@@ -1065,8 +1404,8 @@ export const createTopic: API.OperationMethod<
   CreateTopicError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18) as any as S.Schema<CreateTopicInput>,
-  output: __S(19) as any as S.Schema<CreateTopicResponse>,
+  input: CreateTopicInput,
+  output: CreateTopicResponse,
   errors: [
     AuthorizationErrorException,
     ConcurrentAccessException,
@@ -1104,8 +1443,8 @@ export const deleteEndpoint: API.OperationMethod<
   DeleteEndpointError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20) as any as S.Schema<DeleteEndpointInput>,
-  output: __S(21) as any as S.Schema<DeleteEndpointResponse>,
+  input: DeleteEndpointInput,
+  output: DeleteEndpointResponse,
   errors: [
     AuthorizationErrorException,
     InternalErrorException,
@@ -1137,8 +1476,8 @@ export const deletePlatformApplication: API.OperationMethod<
   DeletePlatformApplicationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22) as any as S.Schema<DeletePlatformApplicationInput>,
-  output: __S(23) as any as S.Schema<DeletePlatformApplicationResponse>,
+  input: DeletePlatformApplicationInput,
+  output: DeletePlatformApplicationResponse,
   errors: [
     AuthorizationErrorException,
     InternalErrorException,
@@ -1178,8 +1517,8 @@ export const deleteSMSSandboxPhoneNumber: API.OperationMethod<
   DeleteSMSSandboxPhoneNumberError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24) as any as S.Schema<DeleteSMSSandboxPhoneNumberInput>,
-  output: __S(25) as any as S.Schema<DeleteSMSSandboxPhoneNumberResult>,
+  input: DeleteSMSSandboxPhoneNumberInput,
+  output: DeleteSMSSandboxPhoneNumberResult,
   errors: [
     AuthorizationErrorException,
     InternalErrorException,
@@ -1217,8 +1556,8 @@ export const deleteTopic: API.OperationMethod<
   DeleteTopicError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26) as any as S.Schema<DeleteTopicInput>,
-  output: __S(27) as any as S.Schema<DeleteTopicResponse>,
+  input: DeleteTopicInput,
+  output: DeleteTopicResponse,
   errors: [
     AuthorizationErrorException,
     ConcurrentAccessException,
@@ -1259,8 +1598,8 @@ export const getDataProtectionPolicy: API.OperationMethod<
   GetDataProtectionPolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28) as any as S.Schema<GetDataProtectionPolicyInput>,
-  output: __S(29) as any as S.Schema<GetDataProtectionPolicyResponse>,
+  input: GetDataProtectionPolicyInput,
+  output: GetDataProtectionPolicyResponse,
   errors: [
     AuthorizationErrorException,
     InternalErrorException,
@@ -1294,8 +1633,8 @@ export const getEndpointAttributes: API.OperationMethod<
   GetEndpointAttributesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30) as any as S.Schema<GetEndpointAttributesInput>,
-  output: __S(31) as any as S.Schema<GetEndpointAttributesResponse>,
+  input: GetEndpointAttributesInput,
+  output: GetEndpointAttributesResponse,
   errors: [
     AuthorizationErrorException,
     InternalErrorException,
@@ -1328,8 +1667,8 @@ export const getPlatformApplicationAttributes: API.OperationMethod<
   GetPlatformApplicationAttributesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32) as any as S.Schema<GetPlatformApplicationAttributesInput>,
-  output: __S(33) as any as S.Schema<GetPlatformApplicationAttributesResponse>,
+  input: GetPlatformApplicationAttributesInput,
+  output: GetPlatformApplicationAttributesResponse,
   errors: [
     AuthorizationErrorException,
     InternalErrorException,
@@ -1360,8 +1699,8 @@ export const getSMSAttributes: API.OperationMethod<
   GetSMSAttributesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35) as any as S.Schema<GetSMSAttributesInput>,
-  output: __S(36) as any as S.Schema<GetSMSAttributesResponse>,
+  input: GetSMSAttributesInput,
+  output: GetSMSAttributesResponse,
   errors: [
     AuthorizationErrorException,
     InternalErrorException,
@@ -1397,8 +1736,8 @@ export const getSMSSandboxAccountStatus: API.OperationMethod<
   GetSMSSandboxAccountStatusError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37) as any as S.Schema<GetSMSSandboxAccountStatusInput>,
-  output: __S(38) as any as S.Schema<GetSMSSandboxAccountStatusResult>,
+  input: GetSMSSandboxAccountStatusInput,
+  output: GetSMSSandboxAccountStatusResult,
   errors: [AuthorizationErrorException, InternalErrorException, ThrottledException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1420,8 +1759,8 @@ export const getSubscriptionAttributes: API.OperationMethod<
   GetSubscriptionAttributesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39) as any as S.Schema<GetSubscriptionAttributesInput>,
-  output: __S(41) as any as S.Schema<GetSubscriptionAttributesResponse>,
+  input: GetSubscriptionAttributesInput,
+  output: GetSubscriptionAttributesResponse,
   errors: [
     AuthorizationErrorException,
     InternalErrorException,
@@ -1452,8 +1791,8 @@ export const getTopicAttributes: API.OperationMethod<
   GetTopicAttributesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42) as any as S.Schema<GetTopicAttributesInput>,
-  output: __S(43) as any as S.Schema<GetTopicAttributesResponse>,
+  input: GetTopicAttributesInput,
+  output: GetTopicAttributesResponse,
   errors: [
     AuthorizationErrorException,
     InternalErrorException,
@@ -1496,8 +1835,8 @@ export const listEndpointsByPlatformApplication: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Endpoint
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(44) as any as S.Schema<ListEndpointsByPlatformApplicationInput>,
-  output: __S(47) as any as S.Schema<ListEndpointsByPlatformApplicationResponse>,
+  input: ListEndpointsByPlatformApplicationInput,
+  output: ListEndpointsByPlatformApplicationResponse,
   errors: [
     AuthorizationErrorException,
     InternalErrorException,
@@ -1531,8 +1870,8 @@ export const listOriginationNumbers: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   PhoneNumberInformation
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(48) as any as S.Schema<ListOriginationNumbersRequest>,
-  output: __S(52) as any as S.Schema<ListOriginationNumbersResult>,
+  input: ListOriginationNumbersRequest,
+  output: ListOriginationNumbersResult,
   errors: [
     AuthorizationErrorException,
     InternalErrorException,
@@ -1575,8 +1914,8 @@ export const listPhoneNumbersOptedOut: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   PhoneNumber
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(53) as any as S.Schema<ListPhoneNumbersOptedOutInput>,
-  output: __S(55) as any as S.Schema<ListPhoneNumbersOptedOutResponse>,
+  input: ListPhoneNumbersOptedOutInput,
+  output: ListPhoneNumbersOptedOutResponse,
   errors: [
     AuthorizationErrorException,
     InternalErrorException,
@@ -1614,8 +1953,8 @@ export const listPlatformApplications: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   PlatformApplication
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(56) as any as S.Schema<ListPlatformApplicationsInput>,
-  output: __S(59) as any as S.Schema<ListPlatformApplicationsResponse>,
+  input: ListPlatformApplicationsInput,
+  output: ListPlatformApplicationsResponse,
   errors: [AuthorizationErrorException, InternalErrorException, InvalidParameterException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1654,8 +1993,8 @@ export const listSMSSandboxPhoneNumbers: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   SMSSandboxPhoneNumber
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(60) as any as S.Schema<ListSMSSandboxPhoneNumbersInput>,
-  output: __S(63) as any as S.Schema<ListSMSSandboxPhoneNumbersResult>,
+  input: ListSMSSandboxPhoneNumbersInput,
+  output: ListSMSSandboxPhoneNumbersResult,
   errors: [
     AuthorizationErrorException,
     InternalErrorException,
@@ -1694,8 +2033,8 @@ export const listSubscriptions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Subscription
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(64) as any as S.Schema<ListSubscriptionsInput>,
-  output: __S(67) as any as S.Schema<ListSubscriptionsResponse>,
+  input: ListSubscriptionsInput,
+  output: ListSubscriptionsResponse,
   errors: [AuthorizationErrorException, InternalErrorException, InvalidParameterException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1730,8 +2069,8 @@ export const listSubscriptionsByTopic: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Subscription
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(68) as any as S.Schema<ListSubscriptionsByTopicInput>,
-  output: __S(69) as any as S.Schema<ListSubscriptionsByTopicResponse>,
+  input: ListSubscriptionsByTopicInput,
+  output: ListSubscriptionsByTopicResponse,
   errors: [
     AuthorizationErrorException,
     InternalErrorException,
@@ -1769,8 +2108,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(70) as any as S.Schema<ListTagsForResourceRequest>,
-  output: __S(71) as any as S.Schema<ListTagsForResourceResponse>,
+  input: ListTagsForResourceRequest,
+  output: ListTagsForResourceResponse,
   errors: [
     AuthorizationErrorException,
     ConcurrentAccessException,
@@ -1805,8 +2144,8 @@ export const listTopics: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Topic
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(72) as any as S.Schema<ListTopicsInput>,
-  output: __S(75) as any as S.Schema<ListTopicsResponse>,
+  input: ListTopicsInput,
+  output: ListTopicsResponse,
   errors: [AuthorizationErrorException, InternalErrorException, InvalidParameterException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1832,8 +2171,8 @@ export const optInPhoneNumber: API.OperationMethod<
   OptInPhoneNumberError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(76) as any as S.Schema<OptInPhoneNumberInput>,
-  output: __S(77) as any as S.Schema<OptInPhoneNumberResponse>,
+  input: OptInPhoneNumberInput,
+  output: OptInPhoneNumberResponse,
   errors: [
     AuthorizationErrorException,
     InternalErrorException,
@@ -1893,8 +2232,8 @@ export const publish: API.OperationMethod<
   PublishError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(80) as any as S.Schema<PublishInput>,
-  output: __S(81) as any as S.Schema<PublishResponse>,
+  input: PublishInput,
+  output: PublishResponse,
   errors: [
     AuthorizationErrorException,
     EndpointDisabledException,
@@ -1994,8 +2333,8 @@ export const publishBatch: API.OperationMethod<
   PublishBatchError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(84) as any as S.Schema<PublishBatchInput>,
-  output: __S(89) as any as S.Schema<PublishBatchResponse>,
+  input: PublishBatchInput,
+  output: PublishBatchResponse,
   errors: [
     AuthorizationErrorException,
     BatchEntryIdsNotDistinctException,
@@ -2046,8 +2385,8 @@ export const putDataProtectionPolicy: API.OperationMethod<
   PutDataProtectionPolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(90) as any as S.Schema<PutDataProtectionPolicyInput>,
-  output: __S(91) as any as S.Schema<PutDataProtectionPolicyResponse>,
+  input: PutDataProtectionPolicyInput,
+  output: PutDataProtectionPolicyResponse,
   errors: [
     AuthorizationErrorException,
     InternalErrorException,
@@ -2083,8 +2422,8 @@ export const removePermission: API.OperationMethod<
   RemovePermissionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(92) as any as S.Schema<RemovePermissionInput>,
-  output: __S(93) as any as S.Schema<RemovePermissionResponse>,
+  input: RemovePermissionInput,
+  output: RemovePermissionResponse,
   errors: [
     AuthorizationErrorException,
     InternalErrorException,
@@ -2117,8 +2456,8 @@ export const setEndpointAttributes: API.OperationMethod<
   SetEndpointAttributesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(94) as any as S.Schema<SetEndpointAttributesInput>,
-  output: __S(95) as any as S.Schema<SetEndpointAttributesResponse>,
+  input: SetEndpointAttributesInput,
+  output: SetEndpointAttributesResponse,
   errors: [
     AuthorizationErrorException,
     InternalErrorException,
@@ -2153,8 +2492,8 @@ export const setPlatformApplicationAttributes: API.OperationMethod<
   SetPlatformApplicationAttributesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(96) as any as S.Schema<SetPlatformApplicationAttributesInput>,
-  output: __S(97) as any as S.Schema<SetPlatformApplicationAttributesResponse>,
+  input: SetPlatformApplicationAttributesInput,
+  output: SetPlatformApplicationAttributesResponse,
   errors: [
     AuthorizationErrorException,
     InternalErrorException,
@@ -2193,8 +2532,8 @@ export const setSMSAttributes: API.OperationMethod<
   SetSMSAttributesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(98) as any as S.Schema<SetSMSAttributesInput>,
-  output: __S(99) as any as S.Schema<SetSMSAttributesResponse>,
+  input: SetSMSAttributesInput,
+  output: SetSMSAttributesResponse,
   errors: [
     AuthorizationErrorException,
     InternalErrorException,
@@ -2224,8 +2563,8 @@ export const setSubscriptionAttributes: API.OperationMethod<
   SetSubscriptionAttributesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(100) as any as S.Schema<SetSubscriptionAttributesInput>,
-  output: __S(101) as any as S.Schema<SetSubscriptionAttributesResponse>,
+  input: SetSubscriptionAttributesInput,
+  output: SetSubscriptionAttributesResponse,
   errors: [
     AuthorizationErrorException,
     FilterPolicyLimitExceededException,
@@ -2261,8 +2600,8 @@ export const setTopicAttributes: API.OperationMethod<
   SetTopicAttributesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(102) as any as S.Schema<SetTopicAttributesInput>,
-  output: __S(103) as any as S.Schema<SetTopicAttributesResponse>,
+  input: SetTopicAttributesInput,
+  output: SetTopicAttributesResponse,
   errors: [
     AuthorizationErrorException,
     InternalErrorException,
@@ -2305,8 +2644,8 @@ export const subscribe: API.OperationMethod<
   SubscribeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(104) as any as S.Schema<SubscribeInput>,
-  output: __S(105) as any as S.Schema<SubscribeResponse>,
+  input: SubscribeInput,
+  output: SubscribeResponse,
   errors: [
     AuthorizationErrorException,
     FilterPolicyLimitExceededException,
@@ -2360,8 +2699,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(106) as any as S.Schema<TagResourceRequest>,
-  output: __S(107) as any as S.Schema<TagResourceResponse>,
+  input: TagResourceRequest,
+  output: TagResourceResponse,
   errors: [
     AuthorizationErrorException,
     ConcurrentAccessException,
@@ -2401,8 +2740,8 @@ export const unsubscribe: API.OperationMethod<
   UnsubscribeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(108) as any as S.Schema<UnsubscribeInput>,
-  output: __S(109) as any as S.Schema<UnsubscribeResponse>,
+  input: UnsubscribeInput,
+  output: UnsubscribeResponse,
   errors: [
     AuthorizationErrorException,
     InternalErrorException,
@@ -2436,8 +2775,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(111) as any as S.Schema<UntagResourceRequest>,
-  output: __S(112) as any as S.Schema<UntagResourceResponse>,
+  input: UntagResourceRequest,
+  output: UntagResourceResponse,
   errors: [
     AuthorizationErrorException,
     ConcurrentAccessException,
@@ -2481,8 +2820,8 @@ export const verifySMSSandboxPhoneNumber: API.OperationMethod<
   VerifySMSSandboxPhoneNumberError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(113) as any as S.Schema<VerifySMSSandboxPhoneNumberInput>,
-  output: __S(114) as any as S.Schema<VerifySMSSandboxPhoneNumberResult>,
+  input: VerifySMSSandboxPhoneNumberInput,
+  output: VerifySMSSandboxPhoneNumberResult,
   errors: [
     AuthorizationErrorException,
     InternalErrorException,
@@ -2508,8 +2847,8 @@ function __c0(j: number): any {
         S.Struct({
           TopicArn: S.String,
           Label: S.String,
-          AWSAccountId: __S(0),
-          ActionName: __S(1),
+          AWSAccountId: DelegatesList,
+          ActionName: ActionsList,
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "AddPermissionInput" });
     case 3:
@@ -2550,7 +2889,7 @@ function __c1(j: number): any {
       return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
     case 1:
       return S.suspend(() =>
-        S.Struct({ Name: S.String, Platform: S.String, Attributes: __S(8) }).pipe(
+        S.Struct({ Name: S.String, Platform: S.String, Attributes: MapStringToString }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
@@ -2568,7 +2907,7 @@ function __c1(j: number): any {
           PlatformApplicationArn: S.String,
           Token: S.String,
           CustomUserData: S.optional(S.String),
-          Attributes: S.optional(__S(8)),
+          Attributes: S.optional(MapStringToString),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "CreatePlatformEndpointInput",
@@ -2581,7 +2920,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           PhoneNumber: SensitiveString,
-          LanguageCode: S.optional(S.String),
+          LanguageCode: S.optional(LanguageCodeString),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "CreateSMSSandboxPhoneNumberInput",
@@ -2601,13 +2940,13 @@ function __c2(j: number): any {
         identifier: "Tag",
       });
     case 1:
-      return S.Array(__S(16));
+      return S.Array(Tag);
     case 2:
       return S.suspend(() =>
         S.Struct({
           Name: S.String,
-          Attributes: S.optional(__S(15)),
-          Tags: S.optional(__S(17)),
+          Attributes: S.optional(TopicAttributesMap),
+          Tags: S.optional(TagList),
           DataProtectionPolicy: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateTopicInput" });
@@ -2686,7 +3025,9 @@ function __c3(j: number): any {
         identifier: "GetEndpointAttributesInput",
       });
     case 7:
-      return S.suspend(() => S.Struct({ Attributes: S.optional(__S(8)) }).pipe(ns)).annotate({
+      return S.suspend(() =>
+        S.Struct({ Attributes: S.optional(MapStringToString) }).pipe(ns),
+      ).annotate({
         identifier: "GetEndpointAttributesResponse",
       });
   }
@@ -2702,21 +3043,23 @@ function __c4(j: number): any {
         identifier: "GetPlatformApplicationAttributesInput",
       });
     case 1:
-      return S.suspend(() => S.Struct({ Attributes: S.optional(__S(8)) }).pipe(ns)).annotate({
+      return S.suspend(() =>
+        S.Struct({ Attributes: S.optional(MapStringToString) }).pipe(ns),
+      ).annotate({
         identifier: "GetPlatformApplicationAttributesResponse",
       });
     case 2:
       return S.Array(S.String);
     case 3:
       return S.suspend(() =>
-        S.Struct({ attributes: S.optional(__S(34)) }).pipe(
+        S.Struct({ attributes: S.optional(ListString) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "GetSMSAttributesInput" });
     case 4:
-      return S.suspend(() => S.Struct({ attributes: S.optional(__S(8)) }).pipe(ns)).annotate({
-        identifier: "GetSMSAttributesResponse",
-      });
+      return S.suspend(() =>
+        S.Struct({ attributes: S.optional(MapStringToString) }).pipe(ns),
+      ).annotate({ identifier: "GetSMSAttributesResponse" });
     case 5:
       return S.suspend(() =>
         S.Struct({}).pipe(
@@ -2744,7 +3087,9 @@ function __c5(j: number): any {
     case 0:
       return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
     case 1:
-      return S.suspend(() => S.Struct({ Attributes: S.optional(__S(40)) }).pipe(ns)).annotate({
+      return S.suspend(() =>
+        S.Struct({ Attributes: S.optional(SubscriptionAttributesMap) }).pipe(ns),
+      ).annotate({
         identifier: "GetSubscriptionAttributesResponse",
       });
     case 2:
@@ -2754,7 +3099,9 @@ function __c5(j: number): any {
         ),
       ).annotate({ identifier: "GetTopicAttributesInput" });
     case 3:
-      return S.suspend(() => S.Struct({ Attributes: S.optional(__S(15)) }).pipe(ns)).annotate({
+      return S.suspend(() =>
+        S.Struct({ Attributes: S.optional(TopicAttributesMap) }).pipe(ns),
+      ).annotate({
         identifier: "GetTopicAttributesResponse",
       });
     case 4:
@@ -2767,13 +3114,15 @@ function __c5(j: number): any {
       });
     case 5:
       return S.suspend(() =>
-        S.Struct({ EndpointArn: S.optional(S.String), Attributes: S.optional(__S(8)) }),
+        S.Struct({ EndpointArn: S.optional(S.String), Attributes: S.optional(MapStringToString) }),
       ).annotate({ identifier: "Endpoint" });
     case 6:
       return S.Array(Endpoint);
     case 7:
       return S.suspend(() =>
-        S.Struct({ Endpoints: S.optional(__S(46)), NextToken: S.optional(S.String) }).pipe(ns),
+        S.Struct({ Endpoints: S.optional(ListOfEndpoints), NextToken: S.optional(S.String) }).pipe(
+          ns,
+        ),
       ).annotate({
         identifier: "ListEndpointsByPlatformApplicationResponse",
       });
@@ -2790,7 +3139,7 @@ function __c6(j: number): any {
         identifier: "ListOriginationNumbersRequest",
       });
     case 1:
-      return S.Array(S.String);
+      return S.Array(NumberCapability);
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -2798,17 +3147,17 @@ function __c6(j: number): any {
           PhoneNumber: S.optional(SensitiveString),
           Status: S.optional(S.String),
           Iso2CountryCode: S.optional(S.String),
-          RouteType: S.optional(S.String),
-          NumberCapabilities: S.optional(__S(49)),
+          RouteType: S.optional(RouteType),
+          NumberCapabilities: S.optional(NumberCapabilityList),
         }),
       ).annotate({ identifier: "PhoneNumberInformation" });
     case 3:
-      return S.Array(__S(50));
+      return S.Array(PhoneNumberInformation);
     case 4:
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String),
-          PhoneNumbers: S.optional(__S(51)),
+          PhoneNumbers: S.optional(PhoneNumberInformationList),
         }).pipe(ns),
       ).annotate({
         identifier: "ListOriginationNumbersResult",
@@ -2826,7 +3175,7 @@ function __c6(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          phoneNumbers: S.optional(__S(54)),
+          phoneNumbers: S.optional(PhoneNumberList),
           nextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
@@ -2848,15 +3197,15 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           PlatformApplicationArn: S.optional(S.String),
-          Attributes: S.optional(__S(8)),
+          Attributes: S.optional(MapStringToString),
         }),
       ).annotate({ identifier: "PlatformApplication" });
     case 2:
-      return S.Array(__S(57));
+      return S.Array(PlatformApplication);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          PlatformApplications: S.optional(__S(58)),
+          PlatformApplications: S.optional(ListOfPlatformApplications),
           NextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
@@ -2874,14 +3223,16 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           PhoneNumber: S.optional(SensitiveString),
-          Status: S.optional(S.String),
+          Status: S.optional(SMSSandboxPhoneNumberVerificationStatus),
         }),
       ).annotate({ identifier: "SMSSandboxPhoneNumber" });
     case 6:
-      return S.Array(__S(61));
+      return S.Array(SMSSandboxPhoneNumber);
     case 7:
       return S.suspend(() =>
-        S.Struct({ PhoneNumbers: __S(62), NextToken: S.optional(S.String) }).pipe(ns),
+        S.Struct({ PhoneNumbers: SMSSandboxPhoneNumberList, NextToken: S.optional(S.String) }).pipe(
+          ns,
+        ),
       ).annotate({
         identifier: "ListSMSSandboxPhoneNumbersResult",
       });
@@ -2906,11 +3257,11 @@ function __c8(j: number): any {
         }),
       ).annotate({ identifier: "Subscription" });
     case 2:
-      return S.Array(__S(65));
+      return S.Array(Subscription);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          Subscriptions: S.optional(__S(66)),
+          Subscriptions: S.optional(SubscriptionsList),
           NextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
@@ -2927,7 +3278,7 @@ function __c8(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          Subscriptions: S.optional(__S(66)),
+          Subscriptions: S.optional(SubscriptionsList),
           NextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
@@ -2942,7 +3293,7 @@ function __c8(j: number): any {
         identifier: "ListTagsForResourceRequest",
       });
     case 7:
-      return S.suspend(() => S.Struct({ Tags: S.optional(__S(17)) }).pipe(ns)).annotate({
+      return S.suspend(() => S.Struct({ Tags: S.optional(TagList) }).pipe(ns)).annotate({
         identifier: "ListTagsForResourceResponse",
       });
   }
@@ -2960,10 +3311,10 @@ function __c9(j: number): any {
         identifier: "Topic",
       });
     case 2:
-      return S.Array(__S(73));
+      return S.Array(Topic);
     case 3:
       return S.suspend(() =>
-        S.Struct({ Topics: S.optional(__S(74)), NextToken: S.optional(S.String) }).pipe(ns),
+        S.Struct({ Topics: S.optional(TopicsList), NextToken: S.optional(S.String) }).pipe(ns),
       ).annotate({ identifier: "ListTopicsResponse" });
     case 4:
       return S.suspend(() =>
@@ -2986,8 +3337,7 @@ function __c9(j: number): any {
     case 7:
       return S.Record(
         /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("Name")),
-        /*@__PURE__*/ __S(78)
-          .pipe(/*@__PURE__*/ T.XmlName("Value"))
+        /*@__PURE__*/ MessageAttributeValue.pipe(/*@__PURE__*/ T.XmlName("Value"))
           .annotate({ identifier: "MessageAttributeValue" })
           .pipe(S.optional),
       );
@@ -3004,7 +3354,7 @@ function __c10(j: number): any {
           Message: S.String,
           Subject: S.optional(S.String),
           MessageStructure: S.optional(S.String),
-          MessageAttributes: S.optional(__S(79)),
+          MessageAttributes: S.optional(MessageAttributeMap),
           MessageDeduplicationId: S.optional(S.String),
           MessageGroupId: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -3022,18 +3372,18 @@ function __c10(j: number): any {
           Message: S.String,
           Subject: S.optional(S.String),
           MessageStructure: S.optional(S.String),
-          MessageAttributes: S.optional(__S(79)),
+          MessageAttributes: S.optional(MessageAttributeMap),
           MessageDeduplicationId: S.optional(S.String),
           MessageGroupId: S.optional(S.String),
         }),
       ).annotate({ identifier: "PublishBatchRequestEntry" });
     case 3:
-      return S.Array(__S(82));
+      return S.Array(PublishBatchRequestEntry);
     case 4:
       return S.suspend(() =>
         S.Struct({
           TopicArn: S.String,
-          PublishBatchRequestEntries: __S(83),
+          PublishBatchRequestEntries: PublishBatchRequestEntryList,
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "PublishBatchInput" });
     case 5:
@@ -3045,7 +3395,7 @@ function __c10(j: number): any {
         }),
       ).annotate({ identifier: "PublishBatchResultEntry" });
     case 6:
-      return S.Array(__S(85));
+      return S.Array(PublishBatchResultEntry);
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -3060,12 +3410,12 @@ function __c10(j: number): any {
 function __c11(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(87));
+      return S.Array(BatchResultErrorEntry);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          Successful: S.optional(__S(86)),
-          Failed: S.optional(__S(88)),
+          Successful: S.optional(PublishBatchResultEntryList),
+          Failed: S.optional(BatchResultErrorEntryList),
         }).pipe(ns),
       ).annotate({ identifier: "PublishBatchResponse" });
     case 2:
@@ -3092,7 +3442,7 @@ function __c11(j: number): any {
       });
     case 6:
       return S.suspend(() =>
-        S.Struct({ EndpointArn: S.String, Attributes: __S(8) }).pipe(
+        S.Struct({ EndpointArn: S.String, Attributes: MapStringToString }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
@@ -3108,7 +3458,7 @@ function __c12(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ PlatformApplicationArn: S.String, Attributes: __S(8) }).pipe(
+        S.Struct({ PlatformApplicationArn: S.String, Attributes: MapStringToString }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
@@ -3120,7 +3470,7 @@ function __c12(j: number): any {
       });
     case 2:
       return S.suspend(() =>
-        S.Struct({ attributes: __S(8) }).pipe(
+        S.Struct({ attributes: MapStringToString }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "SetSMSAttributesInput" });
@@ -3164,7 +3514,7 @@ function __c13(j: number): any {
           TopicArn: S.String,
           Protocol: S.String,
           Endpoint: S.optional(S.String),
-          Attributes: S.optional(__S(40)),
+          Attributes: S.optional(SubscriptionAttributesMap),
           ReturnSubscriptionArn: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "SubscribeInput" });
@@ -3174,7 +3524,7 @@ function __c13(j: number): any {
       );
     case 2:
       return S.suspend(() =>
-        S.Struct({ ResourceArn: S.String, Tags: __S(17) }).pipe(
+        S.Struct({ ResourceArn: S.String, Tags: TagList }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "TagResourceRequest" });
@@ -3196,7 +3546,7 @@ function __c13(j: number): any {
       return S.Array(S.String);
     case 7:
       return S.suspend(() =>
-        S.Struct({ ResourceArn: S.String, TagKeys: __S(110) }).pipe(
+        S.Struct({ ResourceArn: S.String, TagKeys: TagKeyList }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "UntagResourceRequest" });
@@ -3220,44 +3570,5 @@ function __c14(j: number): any {
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "VerifySMSSandboxPhoneNumberResult",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
-    case 9:
-      return __c9(i & 7);
-    case 10:
-      return __c10(i & 7);
-    case 11:
-      return __c11(i & 7);
-    case 12:
-      return __c12(i & 7);
-    case 13:
-      return __c13(i & 7);
-    case 14:
-      return __c14(i & 7);
   }
 }

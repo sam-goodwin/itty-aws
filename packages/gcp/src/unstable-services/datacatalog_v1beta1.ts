@@ -7,8 +7,6 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -73,6 +71,11 @@ export interface GoogleCloudDatacatalogV1beta1SystemTimestamps {
   /** The last-modified time of the resource within the given system. */
   updateTime?: string;
 }
+const GoogleCloudDatacatalogV1beta1SystemTimestamps = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<GoogleCloudDatacatalogV1beta1SystemTimestamps>;
+
 /** EntryGroup Metadata. An EntryGroup resource represents a logical grouping of zero or more Data Catalog Entry resources. */
 export interface GoogleCloudDatacatalogV1beta1EntryGroup {
   /** Entry group description, which can consist of several sentences or paragraphs that describe entry group contents. Default value is an empty string. */
@@ -84,6 +87,11 @@ export interface GoogleCloudDatacatalogV1beta1EntryGroup {
   /** A short name to identify the entry group, for example, "analytics data - jan 2011". Default value is an empty string. */
   displayName?: string;
 }
+const GoogleCloudDatacatalogV1beta1EntryGroup = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<GoogleCloudDatacatalogV1beta1EntryGroup>;
+
 export interface CreateProjectsLocationsEntryGroupsRequest {
   /** Required. The name of the project this entry group is in. Example: * projects/{project_id}/locations/{location} Note that this EntryGroup and its child resources may not actually be stored in the location in this name. */
   parent: string;
@@ -92,12 +100,19 @@ export interface CreateProjectsLocationsEntryGroupsRequest {
   /** Request body */
   body?: GoogleCloudDatacatalogV1beta1EntryGroup;
 }
+const CreateProjectsLocationsEntryGroupsRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<CreateProjectsLocationsEntryGroupsRequest>;
+
 export type GoogleCloudDatacatalogV1beta1EntryTypeEnum =
   | "ENTRY_TYPE_UNSPECIFIED"
   | "TABLE"
   | "MODEL"
   | "DATA_STREAM"
   | "FILESET";
+const GoogleCloudDatacatalogV1beta1EntryTypeEnum = S.String;
+
 /** Specifications of a single file in Cloud Storage. */
 export interface GoogleCloudDatacatalogV1beta1GcsFileSpec {
   /** Required. The full file path. Example: `gs://bucket_name/a/b.txt`. */
@@ -107,9 +122,21 @@ export interface GoogleCloudDatacatalogV1beta1GcsFileSpec {
   /** Output only. Timestamps about the Cloud Storage file. */
   gcsTimestamps?: GoogleCloudDatacatalogV1beta1SystemTimestamps;
 }
+const GoogleCloudDatacatalogV1beta1GcsFileSpec = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<GoogleCloudDatacatalogV1beta1GcsFileSpec>;
+
 export type GoogleCloudDatacatalogV1beta1GcsFileSpecList =
   Array<GoogleCloudDatacatalogV1beta1GcsFileSpec>;
+const GoogleCloudDatacatalogV1beta1GcsFileSpecList = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<GoogleCloudDatacatalogV1beta1GcsFileSpecList>;
+
 export type StringList = Array<string>;
+const StringList = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<StringList>;
+
 /** Describes a Cloud Storage fileset entry. */
 export interface GoogleCloudDatacatalogV1beta1GcsFilesetSpec {
   /** Output only. Sample files contained in this fileset, not all files contained in this fileset are represented here. */
@@ -117,6 +144,11 @@ export interface GoogleCloudDatacatalogV1beta1GcsFilesetSpec {
   /** Required. Patterns to identify a set of files in Google Cloud Storage. See [Cloud Storage documentation](https://cloud.google.com/storage/docs/wildcards) for more information. Note that bucket wildcards are currently not supported. Examples of valid file_patterns: * `gs://bucket_name/dir/*`: matches all files within `bucket_name/dir` directory. * `gs://bucket_name/dir/**`: matches all files in `bucket_name/dir` spanning all subdirectories. * `gs://bucket_name/file*`: matches files prefixed by `file` in `bucket_name` * `gs://bucket_name/??.txt`: matches files with two characters followed by `.txt` in `bucket_name` * `gs://bucket_name/[aeiou].txt`: matches files that contain a single vowel character followed by `.txt` in `bucket_name` * `gs://bucket_name/[a-m].txt`: matches files that contain `a`, `b`, ... or `m` followed by `.txt` in `bucket_name` * `gs://bucket_name/a/*\/b`: matches all files in `bucket_name` that match `a/*\/b` pattern, such as `a/c/b`, `a/d/b` * `gs://another_bucket/a.txt`: matches `gs://another_bucket/a.txt` You can combine wildcards to provide more powerful matches, for example: * `gs://bucket_name/[a-m]??.j*g` */
   filePatterns?: StringList;
 }
+const GoogleCloudDatacatalogV1beta1GcsFilesetSpec = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<GoogleCloudDatacatalogV1beta1GcsFilesetSpec>;
+
 /** Representation of a column within a schema. Columns could be nested inside other columns. */
 export interface GoogleCloudDatacatalogV1beta1ColumnSchema {
   /** Required. Type of the column. */
@@ -130,13 +162,28 @@ export interface GoogleCloudDatacatalogV1beta1ColumnSchema {
   /** Optional. A column's mode indicates whether the values in this column are required, nullable, etc. Only `NULLABLE`, `REQUIRED` and `REPEATED` are supported. Default mode is `NULLABLE`. */
   mode?: string;
 }
+const GoogleCloudDatacatalogV1beta1ColumnSchema = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<GoogleCloudDatacatalogV1beta1ColumnSchema>;
+
 export type GoogleCloudDatacatalogV1beta1ColumnSchemaList =
   Array<GoogleCloudDatacatalogV1beta1ColumnSchema>;
+const GoogleCloudDatacatalogV1beta1ColumnSchemaList = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<GoogleCloudDatacatalogV1beta1ColumnSchemaList>;
+
 /** Represents a schema (e.g. BigQuery, GoogleSQL, Avro schema). */
 export interface GoogleCloudDatacatalogV1beta1Schema {
   /** Required. Schema of columns. A maximum of 10,000 columns and sub-columns can be specified. */
   columns?: GoogleCloudDatacatalogV1beta1ColumnSchemaList;
 }
+const GoogleCloudDatacatalogV1beta1Schema = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<GoogleCloudDatacatalogV1beta1Schema>;
+
 /** Detailed counts on the entry's usage. Caveats: - Only BigQuery tables have usage stats - The usage stats only include BigQuery query jobs - The usage stats might be underestimated, e.g. wildcard table references are not yet counted in usage computation https://cloud.google.com/bigquery/docs/querying-wildcard-tables */
 export interface GoogleCloudDatacatalogV1beta1UsageStats {
   /** Total time spent (in milliseconds) during uses the resulted in completions. */
@@ -148,9 +195,19 @@ export interface GoogleCloudDatacatalogV1beta1UsageStats {
   /** The number of times that the underlying entry was successfully used. */
   totalCompletions?: number;
 }
+const GoogleCloudDatacatalogV1beta1UsageStats = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<GoogleCloudDatacatalogV1beta1UsageStats>;
+
 export type GoogleCloudDatacatalogV1beta1UsageStatsMap = {
   [key: string]: GoogleCloudDatacatalogV1beta1UsageStats | undefined;
 };
+const GoogleCloudDatacatalogV1beta1UsageStatsMap = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<GoogleCloudDatacatalogV1beta1UsageStatsMap>;
+
 /** The set of all usage signals that we store in Data Catalog. */
 export interface GoogleCloudDatacatalogV1beta1UsageSignal {
   /** The timestamp of the end of the usage statistics duration. */
@@ -158,21 +215,38 @@ export interface GoogleCloudDatacatalogV1beta1UsageSignal {
   /** Usage statistics over each of the pre-defined time ranges, supported strings for time ranges are {"24H", "7D", "30D"}. */
   usageWithinTimeRange?: GoogleCloudDatacatalogV1beta1UsageStatsMap;
 }
+const GoogleCloudDatacatalogV1beta1UsageSignal = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<GoogleCloudDatacatalogV1beta1UsageSignal>;
+
 export type GoogleCloudDatacatalogV1beta1BigQueryTableSpecTableSourceTypeEnum =
   | "TABLE_SOURCE_TYPE_UNSPECIFIED"
   | "BIGQUERY_VIEW"
   | "BIGQUERY_TABLE"
   | "BIGQUERY_MATERIALIZED_VIEW";
+const GoogleCloudDatacatalogV1beta1BigQueryTableSpecTableSourceTypeEnum = S.String;
+
 /** Table view specification. */
 export interface GoogleCloudDatacatalogV1beta1ViewSpec {
   /** Output only. The query that defines the table view. */
   viewQuery?: string;
 }
+const GoogleCloudDatacatalogV1beta1ViewSpec = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<GoogleCloudDatacatalogV1beta1ViewSpec>;
+
 /** Normal BigQuery table spec. */
 export interface GoogleCloudDatacatalogV1beta1TableSpec {
   /** Output only. If the table is a dated shard, i.e., with name pattern `[prefix]YYYYMMDD`, `grouped_entry` is the Data Catalog resource name of the date sharded grouped entry, for example, `projects/{project_id}/locations/{location}/entrygroups/{entry_group_id}/entries/{entry_id}`. Otherwise, `grouped_entry` is empty. */
   groupedEntry?: string;
 }
+const GoogleCloudDatacatalogV1beta1TableSpec = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<GoogleCloudDatacatalogV1beta1TableSpec>;
+
 /** Describes a BigQuery table. */
 export interface GoogleCloudDatacatalogV1beta1BigQueryTableSpec {
   /** Output only. The table source type. */
@@ -184,6 +258,11 @@ export interface GoogleCloudDatacatalogV1beta1BigQueryTableSpec {
   /** Spec of a BigQuery table. This field should only be populated if `table_source_type` is `BIGQUERY_TABLE`. */
   tableSpec?: GoogleCloudDatacatalogV1beta1TableSpec;
 }
+const GoogleCloudDatacatalogV1beta1BigQueryTableSpec = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<GoogleCloudDatacatalogV1beta1BigQueryTableSpec>;
+
 /** Spec for a group of BigQuery tables with name pattern `[prefix]YYYYMMDD`. Context: https://cloud.google.com/bigquery/docs/partitioned-tables#partitioning_versus_sharding */
 export interface GoogleCloudDatacatalogV1beta1BigQueryDateShardedSpec {
   /** Output only. Total number of shards. */
@@ -193,10 +272,17 @@ export interface GoogleCloudDatacatalogV1beta1BigQueryDateShardedSpec {
   /** Output only. The table name prefix of the shards. The name of any given shard is `[table_prefix]YYYYMMDD`, for example, for shard `MyTable20180101`, the `table_prefix` is `MyTable`. */
   tablePrefix?: string;
 }
+const GoogleCloudDatacatalogV1beta1BigQueryDateShardedSpec = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<GoogleCloudDatacatalogV1beta1BigQueryDateShardedSpec>;
+
 export type GoogleCloudDatacatalogV1beta1EntryIntegratedSystemEnum =
   | "INTEGRATED_SYSTEM_UNSPECIFIED"
   | "BIGQUERY"
   | "CLOUD_PUBSUB";
+const GoogleCloudDatacatalogV1beta1EntryIntegratedSystemEnum = S.String;
+
 /** Entry Metadata. A Data Catalog Entry resource represents another resource in Google Cloud Platform (such as a BigQuery dataset or a Pub/Sub topic), or outside of Google Cloud Platform. Clients can use the `linked_resource` field in the Entry resource to refer to the original resource ID of the source system. An Entry resource contains resource details, such as its schema. An Entry can also be used to attach flexible metadata, such as a Tag. */
 export interface GoogleCloudDatacatalogV1beta1Entry {
   /** Output only. Identifier. The Data Catalog resource name of the entry in URL format. Example: * projects/{project_id}/locations/{location}/entryGroups/{entry_group_id}/entries/{entry_id} Note that this Entry and its child resources may not actually be stored in the location in this name. */
@@ -228,6 +314,11 @@ export interface GoogleCloudDatacatalogV1beta1Entry {
   /** Entry type if it does not fit any of the input-allowed values listed in `EntryType` enum above. When creating an entry, users should check the enum values first, if nothing matches the entry to be created, then provide a custom value, for example "my_special_type". `user_specified_type` strings must begin with a letter or underscore and can only contain letters, numbers, and underscores; are case insensitive; must be at least 1 character and at most 64 characters long. Currently, only FILESET enum value is allowed. All other entries created through Data Catalog must use `user_specified_type`. */
   userSpecifiedType?: string;
 }
+const GoogleCloudDatacatalogV1beta1Entry = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<GoogleCloudDatacatalogV1beta1Entry>;
+
 export interface CreateProjectsLocationsEntryGroupsEntriesRequest {
   /** Required. The id of the entry to create. */
   entryId?: string;
@@ -236,11 +327,21 @@ export interface CreateProjectsLocationsEntryGroupsEntriesRequest {
   /** Request body */
   body?: GoogleCloudDatacatalogV1beta1Entry;
 }
+const CreateProjectsLocationsEntryGroupsEntriesRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<CreateProjectsLocationsEntryGroupsEntriesRequest>;
+
 /** Holds an enum value. */
 export interface GoogleCloudDatacatalogV1beta1TagFieldEnumValue {
   /** The display name of the enum value. */
   displayName?: string;
 }
+const GoogleCloudDatacatalogV1beta1TagFieldEnumValue = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<GoogleCloudDatacatalogV1beta1TagFieldEnumValue>;
+
 /** Contains the value and supporting information for a field within a Tag. */
 export interface GoogleCloudDatacatalogV1beta1TagField {
   /** Output only. The display name of this field. */
@@ -258,9 +359,19 @@ export interface GoogleCloudDatacatalogV1beta1TagField {
   /** Holds the value for a tag field with string type. */
   stringValue?: string;
 }
+const GoogleCloudDatacatalogV1beta1TagField = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<GoogleCloudDatacatalogV1beta1TagField>;
+
 export type GoogleCloudDatacatalogV1beta1TagFieldMap = {
   [key: string]: GoogleCloudDatacatalogV1beta1TagField | undefined;
 };
+const GoogleCloudDatacatalogV1beta1TagFieldMap = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<GoogleCloudDatacatalogV1beta1TagFieldMap>;
+
 /** Tags are used to attach custom metadata to Data Catalog resources. Tags conform to the specifications within their tag template. See [Data Catalog IAM](https://cloud.google.com/data-catalog/docs/concepts/iam) for information on the permissions needed to create or view tags. */
 export interface GoogleCloudDatacatalogV1beta1Tag {
   /** Output only. The display name of the tag template. */
@@ -274,42 +385,79 @@ export interface GoogleCloudDatacatalogV1beta1Tag {
   /** Required. The resource name of the tag template that this tag uses. Example: * projects/{project_id}/locations/{location}/tagTemplates/{tag_template_id} This field cannot be modified after creation. */
   template?: string;
 }
+const GoogleCloudDatacatalogV1beta1Tag = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<GoogleCloudDatacatalogV1beta1Tag>;
+
 export interface CreateProjectsLocationsEntryGroupsEntriesTagsRequest {
   /** Required. The name of the resource to attach this tag to. Tags can be attached to Entries. Example: * projects/{project_id}/locations/{location}/entryGroups/{entry_group_id}/entries/{entry_id} Note that this Tag and its child resources may not actually be stored in the location in this name. */
   parent: string;
   /** Request body */
   body?: GoogleCloudDatacatalogV1beta1Tag;
 }
+const CreateProjectsLocationsEntryGroupsEntriesTagsRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<CreateProjectsLocationsEntryGroupsEntriesTagsRequest>;
+
 export interface CreateProjectsLocationsEntryGroupsTagsRequest {
   /** Required. The name of the resource to attach this tag to. Tags can be attached to Entries. Example: * projects/{project_id}/locations/{location}/entryGroups/{entry_group_id}/entries/{entry_id} Note that this Tag and its child resources may not actually be stored in the location in this name. */
   parent: string;
   /** Request body */
   body?: GoogleCloudDatacatalogV1beta1Tag;
 }
+const CreateProjectsLocationsEntryGroupsTagsRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<CreateProjectsLocationsEntryGroupsTagsRequest>;
+
 export type GoogleCloudDatacatalogV1beta1TagTemplateDataplexTransferStatusEnum =
   | "DATAPLEX_TRANSFER_STATUS_UNSPECIFIED"
   | "MIGRATED";
+const GoogleCloudDatacatalogV1beta1TagTemplateDataplexTransferStatusEnum = S.String;
+
 export interface GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValue {
   /** Required. The display name of the enum value. Must not be an empty string. */
   displayName?: string;
 }
+const GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValue =
+  GoogleCloudDatacatalogV1beta1TagFieldEnumValue as any as S.Schema<GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValue>;
+
 export type GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValueList =
   Array<GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValue>;
+const GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValueList = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValueList>;
+
 export interface GoogleCloudDatacatalogV1beta1FieldTypeEnumType {
   allowedValues?: GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValueList;
 }
+const GoogleCloudDatacatalogV1beta1FieldTypeEnumType = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<GoogleCloudDatacatalogV1beta1FieldTypeEnumType>;
+
 export type GoogleCloudDatacatalogV1beta1FieldTypePrimitiveTypeEnum =
   | "PRIMITIVE_TYPE_UNSPECIFIED"
   | "DOUBLE"
   | "STRING"
   | "BOOL"
   | "TIMESTAMP";
+const GoogleCloudDatacatalogV1beta1FieldTypePrimitiveTypeEnum = S.String;
+
 export interface GoogleCloudDatacatalogV1beta1FieldType {
   /** Represents an enum type. */
   enumType?: GoogleCloudDatacatalogV1beta1FieldTypeEnumType;
   /** Represents primitive types - string, bool etc. */
   primitiveType?: GoogleCloudDatacatalogV1beta1FieldTypePrimitiveTypeEnum | (string & {});
 }
+const GoogleCloudDatacatalogV1beta1FieldType = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<GoogleCloudDatacatalogV1beta1FieldType>;
+
 /** The template for an individual field within a tag template. */
 export interface GoogleCloudDatacatalogV1beta1TagTemplateField {
   /** The description for this field. Defaults to an empty string. */
@@ -325,9 +473,19 @@ export interface GoogleCloudDatacatalogV1beta1TagTemplateField {
   /** Whether this is a required field. Defaults to false. */
   isRequired?: boolean;
 }
+const GoogleCloudDatacatalogV1beta1TagTemplateField = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<GoogleCloudDatacatalogV1beta1TagTemplateField>;
+
 export type GoogleCloudDatacatalogV1beta1TagTemplateFieldMap = {
   [key: string]: GoogleCloudDatacatalogV1beta1TagTemplateField | undefined;
 };
+const GoogleCloudDatacatalogV1beta1TagTemplateFieldMap = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<GoogleCloudDatacatalogV1beta1TagTemplateFieldMap>;
+
 /** A tag template defines a tag, which can have one or more typed fields. The template is used to create and attach the tag to Google Cloud resources. [Tag template roles](https://cloud.google.com/iam/docs/roles-permissions/datacatalog) provide permissions to create, edit, and use the template. See, for example, the [TagTemplate User](https://cloud.google.com/data-catalog/docs/how-to/template-user) role, which includes permission to use the tag template to tag resources. */
 export interface GoogleCloudDatacatalogV1beta1TagTemplate {
   /** Identifier. The resource name of the tag template in URL format. Example: * projects/{project_id}/locations/{location}/tagTemplates/{tag_template_id} Note that this TagTemplate and its child resources may not actually be stored in the location in this name. */
@@ -341,6 +499,11 @@ export interface GoogleCloudDatacatalogV1beta1TagTemplate {
   /** Required. Map of tag template field IDs to the settings for the field. This map is an exhaustive list of the allowed fields. This map must contain at least one field and at most 500 fields. The keys to this map are tag template field IDs. Field IDs can contain letters (both uppercase and lowercase), numbers (0-9) and underscores (_). Field IDs must be at least 1 character long and at most 64 characters long. Field IDs must start with a letter or underscore. */
   fields?: GoogleCloudDatacatalogV1beta1TagTemplateFieldMap;
 }
+const GoogleCloudDatacatalogV1beta1TagTemplate = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<GoogleCloudDatacatalogV1beta1TagTemplate>;
+
 export interface CreateProjectsLocationsTagTemplatesRequest {
   /** Required. The id of the tag template to create. */
   tagTemplateId?: string;
@@ -349,6 +512,11 @@ export interface CreateProjectsLocationsTagTemplatesRequest {
   /** Request body */
   body?: GoogleCloudDatacatalogV1beta1TagTemplate;
 }
+const CreateProjectsLocationsTagTemplatesRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<CreateProjectsLocationsTagTemplatesRequest>;
+
 export interface CreateProjectsLocationsTagTemplatesFieldsRequest {
   /** Required. The name of the project and the template location [region](https://cloud.google.com/data-catalog/docs/concepts/regions). Example: * projects/{project_id}/locations/us-central1/tagTemplates/{tag_template_id} */
   parent: string;
@@ -357,16 +525,30 @@ export interface CreateProjectsLocationsTagTemplatesFieldsRequest {
   /** Request body */
   body?: GoogleCloudDatacatalogV1beta1TagTemplateField;
 }
+const CreateProjectsLocationsTagTemplatesFieldsRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<CreateProjectsLocationsTagTemplatesFieldsRequest>;
+
 export type GoogleCloudDatacatalogV1beta1TaxonomyActivatedPolicyTypesItemEnum =
   | "POLICY_TYPE_UNSPECIFIED"
   | "FINE_GRAINED_ACCESS_CONTROL";
+const GoogleCloudDatacatalogV1beta1TaxonomyActivatedPolicyTypesItemEnum = S.String;
+
 export type GoogleCloudDatacatalogV1beta1TaxonomyActivatedPolicyTypesItemEnumList = Array<
   GoogleCloudDatacatalogV1beta1TaxonomyActivatedPolicyTypesItemEnum | (string & {})
 >;
+const GoogleCloudDatacatalogV1beta1TaxonomyActivatedPolicyTypesItemEnumList = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<GoogleCloudDatacatalogV1beta1TaxonomyActivatedPolicyTypesItemEnumList>;
+
 export type GoogleCloudDatacatalogV1beta1TaxonomyServiceNameEnum =
   | "MANAGING_SYSTEM_UNSPECIFIED"
   | "MANAGING_SYSTEM_DATAPLEX"
   | "MANAGING_SYSTEM_OTHER";
+const GoogleCloudDatacatalogV1beta1TaxonomyServiceNameEnum = S.String;
+
 /** The source system of the Taxonomy. */
 export interface GoogleCloudDatacatalogV1beta1TaxonomyService {
   /** The Google Cloud service name. */
@@ -374,6 +556,11 @@ export interface GoogleCloudDatacatalogV1beta1TaxonomyService {
   /** The service agent for the service. */
   identity?: string;
 }
+const GoogleCloudDatacatalogV1beta1TaxonomyService = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<GoogleCloudDatacatalogV1beta1TaxonomyService>;
+
 /** A taxonomy is a collection of policy tags that classify data along a common axis. For instance a data *sensitivity* taxonomy could contain policy tags denoting PII such as age, zipcode, and SSN. A data *origin* taxonomy could contain policy tags to distinguish user data, employee data, partner data, public data. */
 export interface GoogleCloudDatacatalogV1beta1Taxonomy {
   /** Optional. A list of policy types that are activated for this taxonomy. If not set, defaults to an empty list. */
@@ -391,12 +578,22 @@ export interface GoogleCloudDatacatalogV1beta1Taxonomy {
   /** Identifier. Resource name of this taxonomy, whose format is: "projects/{project_number}/locations/{location_id}/taxonomies/{id}". */
   name?: string;
 }
+const GoogleCloudDatacatalogV1beta1Taxonomy = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<GoogleCloudDatacatalogV1beta1Taxonomy>;
+
 export interface CreateProjectsLocationsTaxonomiesRequest {
   /** Required. Resource name of the project that the taxonomy will belong to. */
   parent: string;
   /** Request body */
   body?: GoogleCloudDatacatalogV1beta1Taxonomy;
 }
+const CreateProjectsLocationsTaxonomiesRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<CreateProjectsLocationsTaxonomiesRequest>;
+
 /** Denotes one policy tag in a taxonomy (e.g. ssn). Policy Tags can be defined in a hierarchy. For example, consider the following hierarchy: Geolocation -> (LatLong, City, ZipCode). PolicyTag "Geolocation" contains three child policy tags: "LatLong", "City", and "ZipCode". */
 export interface GoogleCloudDatacatalogV1beta1PolicyTag {
   /** Resource name of this policy tag's parent policy tag (e.g. for the "LatLong" policy tag in the example above, this field contains the resource name of the "Geolocation" policy tag). If empty, it means this policy tag is a top level policy tag (e.g. this field is empty for the "Geolocation" policy tag in the example above). If not set, defaults to an empty string. */
@@ -410,52 +607,104 @@ export interface GoogleCloudDatacatalogV1beta1PolicyTag {
   /** Identifier. Resource name of this policy tag, whose format is: "projects/{project_number}/locations/{location_id}/taxonomies/{taxonomy_id}/policyTags/{id}". */
   name?: string;
 }
+const GoogleCloudDatacatalogV1beta1PolicyTag = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<GoogleCloudDatacatalogV1beta1PolicyTag>;
+
 export interface CreateProjectsLocationsTaxonomiesPolicyTagsRequest {
   /** Required. Resource name of the taxonomy that the policy tag will belong to. */
   parent: string;
   /** Request body */
   body?: GoogleCloudDatacatalogV1beta1PolicyTag;
 }
+const CreateProjectsLocationsTaxonomiesPolicyTagsRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<CreateProjectsLocationsTaxonomiesPolicyTagsRequest>;
+
 export interface DeleteProjectsLocationsEntryGroupsRequest {
   /** Required. The name of the entry group. For example, `projects/{project_id}/locations/{location}/entryGroups/{entry_group_id}`. */
   name: string;
   /** Optional. If true, deletes all entries in the entry group. */
   force?: boolean;
 }
+const DeleteProjectsLocationsEntryGroupsRequest = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<DeleteProjectsLocationsEntryGroupsRequest>;
+
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
+const Empty = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<Empty>;
+
 export interface DeleteProjectsLocationsEntryGroupsEntriesRequest {
   /** Required. The name of the entry. Example: * projects/{project_id}/locations/{location}/entryGroups/{entry_group_id}/entries/{entry_id} */
   name: string;
 }
+const DeleteProjectsLocationsEntryGroupsEntriesRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  1,
+) as any as S.Schema<DeleteProjectsLocationsEntryGroupsEntriesRequest>;
+
 export interface DeleteProjectsLocationsEntryGroupsEntriesTagsRequest {
   /** Required. The name of the tag to delete. Example: * projects/{project_id}/locations/{location}/entryGroups/{entry_group_id}/entries/{entry_id}/tags/{tag_id} */
   name: string;
 }
+const DeleteProjectsLocationsEntryGroupsEntriesTagsRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  2,
+) as any as S.Schema<DeleteProjectsLocationsEntryGroupsEntriesTagsRequest>;
+
 export interface DeleteProjectsLocationsEntryGroupsTagsRequest {
   /** Required. The name of the tag to delete. Example: * projects/{project_id}/locations/{location}/entryGroups/{entry_group_id}/entries/{entry_id}/tags/{tag_id} */
   name: string;
 }
+const DeleteProjectsLocationsEntryGroupsTagsRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<DeleteProjectsLocationsEntryGroupsTagsRequest>;
+
 export interface DeleteProjectsLocationsTagTemplatesRequest {
   /** Required. Currently, this field must always be set to `true`. This confirms the deletion of any possible tags using this template. `force = false` will be supported in the future. */
   force?: boolean;
   /** Required. The name of the tag template to delete. Example: * projects/{project_id}/locations/{location}/tagTemplates/{tag_template_id} */
   name: string;
 }
+const DeleteProjectsLocationsTagTemplatesRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  4,
+) as any as S.Schema<DeleteProjectsLocationsTagTemplatesRequest>;
+
 export interface DeleteProjectsLocationsTagTemplatesFieldsRequest {
   /** Required. The name of the tag template field to delete. Example: * projects/{project_id}/locations/{location}/tagTemplates/{tag_template_id}/fields/{tag_template_field_id} */
   name: string;
   /** Required. Currently, this field must always be set to `true`. This confirms the deletion of this field from any tags using this field. `force = false` will be supported in the future. */
   force?: boolean;
 }
+const DeleteProjectsLocationsTagTemplatesFieldsRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  5,
+) as any as S.Schema<DeleteProjectsLocationsTagTemplatesFieldsRequest>;
+
 export interface DeleteProjectsLocationsTaxonomiesRequest {
   /** Required. Resource name of the taxonomy to be deleted. All policy tags in this taxonomy will also be deleted. */
   name: string;
 }
+const DeleteProjectsLocationsTaxonomiesRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  6,
+) as any as S.Schema<DeleteProjectsLocationsTaxonomiesRequest>;
+
 export interface DeleteProjectsLocationsTaxonomiesPolicyTagsRequest {
   /** Required. Resource name of the policy tag to be deleted. All of its descendant policy tags will also be deleted. */
   name: string;
 }
+const DeleteProjectsLocationsTaxonomiesPolicyTagsRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  7,
+) as any as S.Schema<DeleteProjectsLocationsTaxonomiesPolicyTagsRequest>;
+
 export interface ExportProjectsLocationsTaxonomiesRequest {
   /** Export taxonomies as serialized taxonomies. */
   serializedTaxonomies?: boolean;
@@ -464,12 +713,20 @@ export interface ExportProjectsLocationsTaxonomiesRequest {
   /** Required. Resource name of the project that taxonomies to be exported will share. */
   parent: string;
 }
+const ExportProjectsLocationsTaxonomiesRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<ExportProjectsLocationsTaxonomiesRequest>;
+
 export type GoogleCloudDatacatalogV1beta1SerializedTaxonomyActivatedPolicyTypesItemEnum =
   | "POLICY_TYPE_UNSPECIFIED"
   | "FINE_GRAINED_ACCESS_CONTROL";
 export type GoogleCloudDatacatalogV1beta1SerializedTaxonomyActivatedPolicyTypesItemEnumList = Array<
   GoogleCloudDatacatalogV1beta1SerializedTaxonomyActivatedPolicyTypesItemEnum | (string & {})
 >;
+const GoogleCloudDatacatalogV1beta1SerializedTaxonomyActivatedPolicyTypesItemEnumList =
+  GoogleCloudDatacatalogV1beta1TaxonomyActivatedPolicyTypesItemEnumList as any as S.Schema<GoogleCloudDatacatalogV1beta1SerializedTaxonomyActivatedPolicyTypesItemEnumList>;
+
 /** Message representing one policy tag when exported as a nested proto. */
 export interface GoogleCloudDatacatalogV1beta1SerializedPolicyTag {
   /** Required. Display name of the policy tag. Max 200 bytes when encoded in UTF-8. */
@@ -481,8 +738,18 @@ export interface GoogleCloudDatacatalogV1beta1SerializedPolicyTag {
   /** Description of the serialized policy tag. The length of the description is limited to 2000 bytes when encoded in UTF-8. If not set, defaults to an empty description. */
   description?: string;
 }
+const GoogleCloudDatacatalogV1beta1SerializedPolicyTag = /*@__PURE__*/ __L.at(
+  __c6,
+  1,
+) as any as S.Schema<GoogleCloudDatacatalogV1beta1SerializedPolicyTag>;
+
 export type GoogleCloudDatacatalogV1beta1SerializedPolicyTagList =
   Array<GoogleCloudDatacatalogV1beta1SerializedPolicyTag>;
+const GoogleCloudDatacatalogV1beta1SerializedPolicyTagList = /*@__PURE__*/ __L.at(
+  __c6,
+  2,
+) as any as S.Schema<GoogleCloudDatacatalogV1beta1SerializedPolicyTagList>;
+
 /** Message capturing a taxonomy and its policy tag hierarchy as a nested proto. Used for taxonomy import/export and mutation. */
 export interface GoogleCloudDatacatalogV1beta1SerializedTaxonomy {
   /** A list of policy types that are activated for a taxonomy. */
@@ -494,29 +761,53 @@ export interface GoogleCloudDatacatalogV1beta1SerializedTaxonomy {
   /** Required. Display name of the taxonomy. Max 200 bytes when encoded in UTF-8. */
   displayName?: string;
 }
+const GoogleCloudDatacatalogV1beta1SerializedTaxonomy = /*@__PURE__*/ __L.at(
+  __c6,
+  3,
+) as any as S.Schema<GoogleCloudDatacatalogV1beta1SerializedTaxonomy>;
+
 export type GoogleCloudDatacatalogV1beta1SerializedTaxonomyList =
   Array<GoogleCloudDatacatalogV1beta1SerializedTaxonomy>;
+const GoogleCloudDatacatalogV1beta1SerializedTaxonomyList = /*@__PURE__*/ __L.at(
+  __c6,
+  4,
+) as any as S.Schema<GoogleCloudDatacatalogV1beta1SerializedTaxonomyList>;
+
 /** Response message for ExportTaxonomies. */
 export interface GoogleCloudDatacatalogV1beta1ExportTaxonomiesResponse {
   /** List of taxonomies and policy tags in a tree structure. */
   taxonomies?: GoogleCloudDatacatalogV1beta1SerializedTaxonomyList;
 }
+const GoogleCloudDatacatalogV1beta1ExportTaxonomiesResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  5,
+) as any as S.Schema<GoogleCloudDatacatalogV1beta1ExportTaxonomiesResponse>;
+
 /** Encapsulates settings provided to GetIamPolicy. */
 export interface GetPolicyOptions {
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   requestedPolicyVersion?: number;
 }
+const GetPolicyOptions = /*@__PURE__*/ __L.at(__c6, 6) as any as S.Schema<GetPolicyOptions>;
+
 /** Request message for `GetIamPolicy` method. */
 export interface GetIamPolicyRequest {
   /** OPTIONAL: A `GetPolicyOptions` object for specifying options to `GetIamPolicy`. */
   options?: GetPolicyOptions;
 }
+const GetIamPolicyRequest = /*@__PURE__*/ __L.at(__c6, 7) as any as S.Schema<GetIamPolicyRequest>;
+
 export interface GetIamPolicyProjectsLocationsEntryGroupsRequest {
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: GetIamPolicyRequest;
 }
+const GetIamPolicyProjectsLocationsEntryGroupsRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  0,
+) as any as S.Schema<GetIamPolicyProjectsLocationsEntryGroupsRequest>;
+
 /** Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information. */
 export interface Expr {
   /** Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file. */
@@ -528,6 +819,8 @@ export interface Expr {
   /** Textual representation of an expression in Common Expression Language syntax. */
   expression?: string;
 }
+const Expr = /*@__PURE__*/ __L.at(__c7, 1) as any as S.Schema<Expr>;
+
 /** Associates `members`, or principals, with a `role`. */
 export interface Binding {
   /** Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`. */
@@ -537,7 +830,11 @@ export interface Binding {
   /** Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles). */
   role?: string;
 }
+const Binding = /*@__PURE__*/ __L.at(__c7, 2) as any as S.Schema<Binding>;
+
 export type BindingList = Array<Binding>;
+const BindingList = /*@__PURE__*/ __L.at(__c7, 3) as any as S.Schema<BindingList>;
+
 /** An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single `role`. Principals can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** ``` { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } ``` **YAML example:** ``` bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/). */
 export interface Policy {
   /** Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
@@ -547,75 +844,145 @@ export interface Policy {
   /** Associates a list of `members`, or principals, with a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one principal. The `bindings` in a `Policy` can refer to up to 1,500 principals; up to 250 of these principals can be Google groups. Each occurrence of a principal counts towards these limits. For example, if the `bindings` grant 50 different roles to `user:alice@example.com`, and not to any other principal, then you can add another 1,450 principals to the `bindings` in the `Policy`. */
   bindings?: BindingList;
 }
+const Policy = /*@__PURE__*/ __L.at(__c7, 4) as any as S.Schema<Policy>;
+
 export interface GetIamPolicyProjectsLocationsEntryGroupsEntriesRequest {
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: GetIamPolicyRequest;
 }
+const GetIamPolicyProjectsLocationsEntryGroupsEntriesRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  5,
+) as any as S.Schema<GetIamPolicyProjectsLocationsEntryGroupsEntriesRequest>;
+
 export interface GetIamPolicyProjectsLocationsTagTemplatesRequest {
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: GetIamPolicyRequest;
 }
+const GetIamPolicyProjectsLocationsTagTemplatesRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  6,
+) as any as S.Schema<GetIamPolicyProjectsLocationsTagTemplatesRequest>;
+
 export interface GetIamPolicyProjectsLocationsTaxonomiesRequest {
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: GetIamPolicyRequest;
 }
+const GetIamPolicyProjectsLocationsTaxonomiesRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  7,
+) as any as S.Schema<GetIamPolicyProjectsLocationsTaxonomiesRequest>;
+
 export interface GetIamPolicyProjectsLocationsTaxonomiesPolicyTagsRequest {
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: GetIamPolicyRequest;
 }
+const GetIamPolicyProjectsLocationsTaxonomiesPolicyTagsRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  0,
+) as any as S.Schema<GetIamPolicyProjectsLocationsTaxonomiesPolicyTagsRequest>;
+
 export interface GetProjectsLocationsEntryGroupsRequest {
   /** Required. The name of the entry group. For example, `projects/{project_id}/locations/{location}/entryGroups/{entry_group_id}`. */
   name: string;
   /** The fields to return. If not set or empty, all fields are returned. */
   readMask?: string;
 }
+const GetProjectsLocationsEntryGroupsRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  1,
+) as any as S.Schema<GetProjectsLocationsEntryGroupsRequest>;
+
 export interface GetProjectsLocationsEntryGroupsEntriesRequest {
   /** Required. The name of the entry. Example: * projects/{project_id}/locations/{location}/entryGroups/{entry_group_id}/entries/{entry_id} */
   name: string;
 }
+const GetProjectsLocationsEntryGroupsEntriesRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  2,
+) as any as S.Schema<GetProjectsLocationsEntryGroupsEntriesRequest>;
+
 export interface GetProjectsLocationsTagTemplatesRequest {
   /** Required. The name of the tag template. Example: * projects/{project_id}/locations/{location}/tagTemplates/{tag_template_id} */
   name: string;
 }
+const GetProjectsLocationsTagTemplatesRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  3,
+) as any as S.Schema<GetProjectsLocationsTagTemplatesRequest>;
+
 export interface GetProjectsLocationsTaxonomiesRequest {
   /** Required. Resource name of the requested taxonomy. */
   name: string;
 }
+const GetProjectsLocationsTaxonomiesRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  4,
+) as any as S.Schema<GetProjectsLocationsTaxonomiesRequest>;
+
 export interface GetProjectsLocationsTaxonomiesPolicyTagsRequest {
   /** Required. Resource name of the requested policy tag. */
   name: string;
 }
+const GetProjectsLocationsTaxonomiesPolicyTagsRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  5,
+) as any as S.Schema<GetProjectsLocationsTaxonomiesPolicyTagsRequest>;
+
 /** Inline source used for taxonomies import. */
 export interface GoogleCloudDatacatalogV1beta1InlineSource {
   /** Required. Taxonomies to be imported. */
   taxonomies?: GoogleCloudDatacatalogV1beta1SerializedTaxonomyList;
 }
+const GoogleCloudDatacatalogV1beta1InlineSource =
+  GoogleCloudDatacatalogV1beta1ExportTaxonomiesResponse as any as S.Schema<GoogleCloudDatacatalogV1beta1InlineSource>;
+
 /** Request message for ImportTaxonomies. */
 export interface GoogleCloudDatacatalogV1beta1ImportTaxonomiesRequest {
   /** Inline source used for taxonomies to be imported. */
   inlineSource?: GoogleCloudDatacatalogV1beta1InlineSource;
 }
+const GoogleCloudDatacatalogV1beta1ImportTaxonomiesRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  6,
+) as any as S.Schema<GoogleCloudDatacatalogV1beta1ImportTaxonomiesRequest>;
+
 export interface ImportProjectsLocationsTaxonomiesRequest {
   /** Required. Resource name of project that the imported taxonomies will belong to. */
   parent: string;
   /** Request body */
   body?: GoogleCloudDatacatalogV1beta1ImportTaxonomiesRequest;
 }
+const ImportProjectsLocationsTaxonomiesRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  7,
+) as any as S.Schema<ImportProjectsLocationsTaxonomiesRequest>;
+
 export type GoogleCloudDatacatalogV1beta1TaxonomyList =
   Array<GoogleCloudDatacatalogV1beta1Taxonomy>;
+const GoogleCloudDatacatalogV1beta1TaxonomyList = /*@__PURE__*/ __L.at(
+  __c9,
+  0,
+) as any as S.Schema<GoogleCloudDatacatalogV1beta1TaxonomyList>;
+
 /** Response message for ImportTaxonomies. */
 export interface GoogleCloudDatacatalogV1beta1ImportTaxonomiesResponse {
   /** Taxonomies that were imported. */
   taxonomies?: GoogleCloudDatacatalogV1beta1TaxonomyList;
 }
+const GoogleCloudDatacatalogV1beta1ImportTaxonomiesResponse = /*@__PURE__*/ __L.at(
+  __c9,
+  1,
+) as any as S.Schema<GoogleCloudDatacatalogV1beta1ImportTaxonomiesResponse>;
+
 export interface ListProjectsLocationsEntryGroupsRequest {
   /** Optional. Token that specifies which page is requested. If empty, the first page is returned. */
   pageToken?: string;
@@ -624,8 +991,18 @@ export interface ListProjectsLocationsEntryGroupsRequest {
   /** Required. The name of the location that contains the entry groups, which can be provided in URL format. Example: * projects/{project_id}/locations/{location} */
   parent: string;
 }
+const ListProjectsLocationsEntryGroupsRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  2,
+) as any as S.Schema<ListProjectsLocationsEntryGroupsRequest>;
+
 export type GoogleCloudDatacatalogV1beta1EntryGroupList =
   Array<GoogleCloudDatacatalogV1beta1EntryGroup>;
+const GoogleCloudDatacatalogV1beta1EntryGroupList = /*@__PURE__*/ __L.at(
+  __c9,
+  3,
+) as any as S.Schema<GoogleCloudDatacatalogV1beta1EntryGroupList>;
+
 /** Response message for ListEntryGroups. */
 export interface GoogleCloudDatacatalogV1beta1ListEntryGroupsResponse {
   /** Token to retrieve the next page of results. It is set to empty if no items remain in results. */
@@ -633,6 +1010,11 @@ export interface GoogleCloudDatacatalogV1beta1ListEntryGroupsResponse {
   /** EntryGroup details. */
   entryGroups?: GoogleCloudDatacatalogV1beta1EntryGroupList;
 }
+const GoogleCloudDatacatalogV1beta1ListEntryGroupsResponse = /*@__PURE__*/ __L.at(
+  __c9,
+  4,
+) as any as S.Schema<GoogleCloudDatacatalogV1beta1ListEntryGroupsResponse>;
+
 export interface ListProjectsLocationsEntryGroupsEntriesRequest {
   /** The maximum number of items to return. Default is 10. Max limit is 1000. Throws an invalid argument for `page_size > 1000`. */
   pageSize?: number;
@@ -643,7 +1025,17 @@ export interface ListProjectsLocationsEntryGroupsEntriesRequest {
   /** Token that specifies which page is requested. If empty, the first page is returned. */
   pageToken?: string;
 }
+const ListProjectsLocationsEntryGroupsEntriesRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  5,
+) as any as S.Schema<ListProjectsLocationsEntryGroupsEntriesRequest>;
+
 export type GoogleCloudDatacatalogV1beta1EntryList = Array<GoogleCloudDatacatalogV1beta1Entry>;
+const GoogleCloudDatacatalogV1beta1EntryList = /*@__PURE__*/ __L.at(
+  __c9,
+  6,
+) as any as S.Schema<GoogleCloudDatacatalogV1beta1EntryList>;
+
 /** Response message for ListEntries. */
 export interface GoogleCloudDatacatalogV1beta1ListEntriesResponse {
   /** Entry details. */
@@ -651,6 +1043,11 @@ export interface GoogleCloudDatacatalogV1beta1ListEntriesResponse {
   /** Token to retrieve the next page of results. It is set to empty if no items remain in results. */
   nextPageToken?: string;
 }
+const GoogleCloudDatacatalogV1beta1ListEntriesResponse = /*@__PURE__*/ __L.at(
+  __c9,
+  7,
+) as any as S.Schema<GoogleCloudDatacatalogV1beta1ListEntriesResponse>;
+
 export interface ListProjectsLocationsEntryGroupsEntriesTagsRequest {
   /** Token that specifies which page is requested. If empty, the first page is returned. */
   pageToken?: string;
@@ -659,7 +1056,17 @@ export interface ListProjectsLocationsEntryGroupsEntriesTagsRequest {
   /** Required. The name of the Data Catalog resource to list the tags of. The resource could be an Entry or an EntryGroup. Examples: * projects/{project_id}/locations/{location}/entryGroups/{entry_group_id} * projects/{project_id}/locations/{location}/entryGroups/{entry_group_id}/entries/{entry_id} */
   parent: string;
 }
+const ListProjectsLocationsEntryGroupsEntriesTagsRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  0,
+) as any as S.Schema<ListProjectsLocationsEntryGroupsEntriesTagsRequest>;
+
 export type GoogleCloudDatacatalogV1beta1TagList = Array<GoogleCloudDatacatalogV1beta1Tag>;
+const GoogleCloudDatacatalogV1beta1TagList = /*@__PURE__*/ __L.at(
+  __c10,
+  1,
+) as any as S.Schema<GoogleCloudDatacatalogV1beta1TagList>;
+
 /** Response message for ListTags. */
 export interface GoogleCloudDatacatalogV1beta1ListTagsResponse {
   /** Tag details. */
@@ -667,6 +1074,11 @@ export interface GoogleCloudDatacatalogV1beta1ListTagsResponse {
   /** Token to retrieve the next page of results. It is set to empty if no items remain in results. */
   nextPageToken?: string;
 }
+const GoogleCloudDatacatalogV1beta1ListTagsResponse = /*@__PURE__*/ __L.at(
+  __c10,
+  2,
+) as any as S.Schema<GoogleCloudDatacatalogV1beta1ListTagsResponse>;
+
 export interface ListProjectsLocationsEntryGroupsTagsRequest {
   /** Required. The name of the Data Catalog resource to list the tags of. The resource could be an Entry or an EntryGroup. Examples: * projects/{project_id}/locations/{location}/entryGroups/{entry_group_id} * projects/{project_id}/locations/{location}/entryGroups/{entry_group_id}/entries/{entry_id} */
   parent: string;
@@ -675,6 +1087,11 @@ export interface ListProjectsLocationsEntryGroupsTagsRequest {
   /** The maximum number of tags to return. Default is 10. Max limit is 1000. */
   pageSize?: number;
 }
+const ListProjectsLocationsEntryGroupsTagsRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  3,
+) as any as S.Schema<ListProjectsLocationsEntryGroupsTagsRequest>;
+
 export interface ListProjectsLocationsTaxonomiesRequest {
   /** The maximum number of items to return. Must be a value between 1 and 1000. If not set, defaults to 50. */
   pageSize?: number;
@@ -685,6 +1102,11 @@ export interface ListProjectsLocationsTaxonomiesRequest {
   /** The next_page_token value returned from a previous list request, if any. If not set, defaults to an empty string. */
   pageToken?: string;
 }
+const ListProjectsLocationsTaxonomiesRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  4,
+) as any as S.Schema<ListProjectsLocationsTaxonomiesRequest>;
+
 /** Response message for ListTaxonomies. */
 export interface GoogleCloudDatacatalogV1beta1ListTaxonomiesResponse {
   /** Taxonomies that the project contains. */
@@ -692,6 +1114,11 @@ export interface GoogleCloudDatacatalogV1beta1ListTaxonomiesResponse {
   /** Token used to retrieve the next page of results, or empty if there are no more results in the list. */
   nextPageToken?: string;
 }
+const GoogleCloudDatacatalogV1beta1ListTaxonomiesResponse = /*@__PURE__*/ __L.at(
+  __c10,
+  5,
+) as any as S.Schema<GoogleCloudDatacatalogV1beta1ListTaxonomiesResponse>;
+
 export interface ListProjectsLocationsTaxonomiesPolicyTagsRequest {
   /** The next_page_token value returned from a previous List request, if any. If not set, defaults to an empty string. */
   pageToken?: string;
@@ -700,8 +1127,18 @@ export interface ListProjectsLocationsTaxonomiesPolicyTagsRequest {
   /** The maximum number of items to return. Must be a value between 1 and 1000. If not set, defaults to 50. */
   pageSize?: number;
 }
+const ListProjectsLocationsTaxonomiesPolicyTagsRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  6,
+) as any as S.Schema<ListProjectsLocationsTaxonomiesPolicyTagsRequest>;
+
 export type GoogleCloudDatacatalogV1beta1PolicyTagList =
   Array<GoogleCloudDatacatalogV1beta1PolicyTag>;
+const GoogleCloudDatacatalogV1beta1PolicyTagList = /*@__PURE__*/ __L.at(
+  __c10,
+  7,
+) as any as S.Schema<GoogleCloudDatacatalogV1beta1PolicyTagList>;
+
 /** Response message for ListPolicyTags. */
 export interface GoogleCloudDatacatalogV1beta1ListPolicyTagsResponse {
   /** Token used to retrieve the next page of results, or empty if there are no more results in the list. */
@@ -709,12 +1146,22 @@ export interface GoogleCloudDatacatalogV1beta1ListPolicyTagsResponse {
   /** The policy tags that are in the requested taxonomy. */
   policyTags?: GoogleCloudDatacatalogV1beta1PolicyTagList;
 }
+const GoogleCloudDatacatalogV1beta1ListPolicyTagsResponse = /*@__PURE__*/ __L.at(
+  __c11,
+  0,
+) as any as S.Schema<GoogleCloudDatacatalogV1beta1ListPolicyTagsResponse>;
+
 export interface LookupEntriesRequest {
   /** The full name of the Google Cloud Platform resource the Data Catalog entry represents. See: https://cloud.google.com/apis/design/resource_names#full_resource_name. Full names are case-sensitive. Examples: * //bigquery.googleapis.com/projects/projectId/datasets/datasetId/tables/tableId * //pubsub.googleapis.com/projects/projectId/topics/topicId */
   linkedResource?: string;
   /** The SQL name of the entry. SQL names are case-sensitive. Examples: * `pubsub.project_id.topic_id` * ``pubsub.project_id.`topic.id.with.dots` `` * `bigquery.table.project_id.dataset_id.table_id` * `bigquery.dataset.project_id.dataset_id` * `datacatalog.entry.project_id.location_id.entry_group_id.entry_id` `*_id`s should satisfy the GoogleSQL rules for identifiers. https://cloud.google.com/bigquery/docs/reference/standard-sql/lexical. */
   sqlResource?: string;
 }
+const LookupEntriesRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  1,
+) as any as S.Schema<LookupEntriesRequest>;
+
 export interface PatchProjectsLocationsEntryGroupsRequest {
   /** Names of fields whose values to overwrite on an entry group. If this parameter is absent or empty, all modifiable fields are overwritten. If such fields are non-required and omitted in the request body, their values are emptied. */
   updateMask?: string;
@@ -723,6 +1170,11 @@ export interface PatchProjectsLocationsEntryGroupsRequest {
   /** Request body */
   body?: GoogleCloudDatacatalogV1beta1EntryGroup;
 }
+const PatchProjectsLocationsEntryGroupsRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  2,
+) as any as S.Schema<PatchProjectsLocationsEntryGroupsRequest>;
+
 export interface PatchProjectsLocationsEntryGroupsEntriesRequest {
   /** Output only. Identifier. The Data Catalog resource name of the entry in URL format. Example: * projects/{project_id}/locations/{location}/entryGroups/{entry_group_id}/entries/{entry_id} Note that this Entry and its child resources may not actually be stored in the location in this name. */
   name: string;
@@ -731,6 +1183,11 @@ export interface PatchProjectsLocationsEntryGroupsEntriesRequest {
   /** Request body */
   body?: GoogleCloudDatacatalogV1beta1Entry;
 }
+const PatchProjectsLocationsEntryGroupsEntriesRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  3,
+) as any as S.Schema<PatchProjectsLocationsEntryGroupsEntriesRequest>;
+
 export interface PatchProjectsLocationsEntryGroupsEntriesTagsRequest {
   /** Identifier. The resource name of the tag in URL format. Example: * projects/{project_id}/locations/{location}/entrygroups/{entry_group_id}/entries/{entry_id}/tags/{tag_id} where `tag_id` is a system-generated identifier. Note that this Tag may not actually be stored in the location in this name. */
   name: string;
@@ -739,6 +1196,11 @@ export interface PatchProjectsLocationsEntryGroupsEntriesTagsRequest {
   /** Request body */
   body?: GoogleCloudDatacatalogV1beta1Tag;
 }
+const PatchProjectsLocationsEntryGroupsEntriesTagsRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  4,
+) as any as S.Schema<PatchProjectsLocationsEntryGroupsEntriesTagsRequest>;
+
 export interface PatchProjectsLocationsEntryGroupsTagsRequest {
   /** Identifier. The resource name of the tag in URL format. Example: * projects/{project_id}/locations/{location}/entrygroups/{entry_group_id}/entries/{entry_id}/tags/{tag_id} where `tag_id` is a system-generated identifier. Note that this Tag may not actually be stored in the location in this name. */
   name: string;
@@ -747,6 +1209,11 @@ export interface PatchProjectsLocationsEntryGroupsTagsRequest {
   /** Request body */
   body?: GoogleCloudDatacatalogV1beta1Tag;
 }
+const PatchProjectsLocationsEntryGroupsTagsRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  5,
+) as any as S.Schema<PatchProjectsLocationsEntryGroupsTagsRequest>;
+
 export interface PatchProjectsLocationsTagTemplatesRequest {
   /** Identifier. The resource name of the tag template in URL format. Example: * projects/{project_id}/locations/{location}/tagTemplates/{tag_template_id} Note that this TagTemplate and its child resources may not actually be stored in the location in this name. */
   name: string;
@@ -755,6 +1222,11 @@ export interface PatchProjectsLocationsTagTemplatesRequest {
   /** Request body */
   body?: GoogleCloudDatacatalogV1beta1TagTemplate;
 }
+const PatchProjectsLocationsTagTemplatesRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  6,
+) as any as S.Schema<PatchProjectsLocationsTagTemplatesRequest>;
+
 export interface PatchProjectsLocationsTagTemplatesFieldsRequest {
   /** Optional. Names of fields whose values to overwrite on an individual field of a tag template. The following fields are modifiable: * `display_name` * `type.enum_type` * `is_required` If this parameter is absent or empty, all modifiable fields are overwritten. If such fields are non-required and omitted in the request body, their values are emptied with one exception: when updating an enum type, the provided values are merged with the existing values. Therefore, enum values can only be added, existing enum values cannot be deleted or renamed. Additionally, updating a template field from optional to required is *not* allowed. */
   updateMask?: string;
@@ -763,6 +1235,11 @@ export interface PatchProjectsLocationsTagTemplatesFieldsRequest {
   /** Request body */
   body?: GoogleCloudDatacatalogV1beta1TagTemplateField;
 }
+const PatchProjectsLocationsTagTemplatesFieldsRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  7,
+) as any as S.Schema<PatchProjectsLocationsTagTemplatesFieldsRequest>;
+
 export interface PatchProjectsLocationsTaxonomiesRequest {
   /** Identifier. Resource name of this taxonomy, whose format is: "projects/{project_number}/locations/{location_id}/taxonomies/{id}". */
   name: string;
@@ -771,6 +1248,11 @@ export interface PatchProjectsLocationsTaxonomiesRequest {
   /** Request body */
   body?: GoogleCloudDatacatalogV1beta1Taxonomy;
 }
+const PatchProjectsLocationsTaxonomiesRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  0,
+) as any as S.Schema<PatchProjectsLocationsTaxonomiesRequest>;
+
 export interface PatchProjectsLocationsTaxonomiesPolicyTagsRequest {
   /** Identifier. Resource name of this policy tag, whose format is: "projects/{project_number}/locations/{location_id}/taxonomies/{taxonomy_id}/policyTags/{id}". */
   name: string;
@@ -779,28 +1261,53 @@ export interface PatchProjectsLocationsTaxonomiesPolicyTagsRequest {
   /** Request body */
   body?: GoogleCloudDatacatalogV1beta1PolicyTag;
 }
+const PatchProjectsLocationsTaxonomiesPolicyTagsRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  1,
+) as any as S.Schema<PatchProjectsLocationsTaxonomiesPolicyTagsRequest>;
+
 /** Request message for RenameTagTemplateField. */
 export interface GoogleCloudDatacatalogV1beta1RenameTagTemplateFieldRequest {
   /** Required. The new ID of this tag template field. For example, `my_new_field`. */
   newTagTemplateFieldId?: string;
 }
+const GoogleCloudDatacatalogV1beta1RenameTagTemplateFieldRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  2,
+) as any as S.Schema<GoogleCloudDatacatalogV1beta1RenameTagTemplateFieldRequest>;
+
 export interface RenameProjectsLocationsTagTemplatesFieldsRequest {
   /** Required. The name of the tag template. Example: * projects/{project_id}/locations/{location}/tagTemplates/{tag_template_id}/fields/{tag_template_field_id} */
   name: string;
   /** Request body */
   body?: GoogleCloudDatacatalogV1beta1RenameTagTemplateFieldRequest;
 }
+const RenameProjectsLocationsTagTemplatesFieldsRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  3,
+) as any as S.Schema<RenameProjectsLocationsTagTemplatesFieldsRequest>;
+
 /** Request message for RenameTagTemplateFieldEnumValue. */
 export interface GoogleCloudDatacatalogV1beta1RenameTagTemplateFieldEnumValueRequest {
   /** Required. The new display name of the enum value. For example, `my_new_enum_value`. */
   newEnumValueDisplayName?: string;
 }
+const GoogleCloudDatacatalogV1beta1RenameTagTemplateFieldEnumValueRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  4,
+) as any as S.Schema<GoogleCloudDatacatalogV1beta1RenameTagTemplateFieldEnumValueRequest>;
+
 export interface RenameProjectsLocationsTagTemplatesFieldsEnumValuesRequest {
   /** Required. The name of the enum field value. Example: * projects/{project_id}/locations/{location}/tagTemplates/{tag_template_id}/fields/{tag_template_field_id}/enumValues/{enum_value_display_name} */
   name: string;
   /** Request body */
   body?: GoogleCloudDatacatalogV1beta1RenameTagTemplateFieldEnumValueRequest;
 }
+const RenameProjectsLocationsTagTemplatesFieldsEnumValuesRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  5,
+) as any as S.Schema<RenameProjectsLocationsTagTemplatesFieldsEnumValuesRequest>;
+
 /** The criteria that select the subspace used for query matching. */
 export interface GoogleCloudDatacatalogV1beta1SearchCatalogRequestScope {
   /** The list of organization IDs to search within. To find your organization ID, follow instructions in https://cloud.google.com/resource-manager/docs/creating-managing-organization. */
@@ -812,6 +1319,11 @@ export interface GoogleCloudDatacatalogV1beta1SearchCatalogRequestScope {
   /** If `true`, include Google Cloud public datasets in the search results. Info on Google Cloud public datasets is available at https://cloud.google.com/public-datasets/. By default, Google Cloud public datasets are excluded. */
   includeGcpPublicDatasets?: boolean;
 }
+const GoogleCloudDatacatalogV1beta1SearchCatalogRequestScope = /*@__PURE__*/ __L.at(
+  __c12,
+  6,
+) as any as S.Schema<GoogleCloudDatacatalogV1beta1SearchCatalogRequestScope>;
+
 /** Request message for SearchCatalog. */
 export interface GoogleCloudDatacatalogV1beta1SearchCatalogRequest {
   /** Number of results in the search page. If <=0 then defaults to 10. Max limit for page_size is 1000. Throws an invalid argument for page_size > 1000. */
@@ -825,15 +1337,27 @@ export interface GoogleCloudDatacatalogV1beta1SearchCatalogRequest {
   /** Optional. Pagination token returned in an earlier SearchCatalogResponse.next_page_token, which indicates that this is a continuation of a prior SearchCatalogRequest call, and that the system should return the next page of data. If empty, the first page is returned. */
   pageToken?: string;
 }
+const GoogleCloudDatacatalogV1beta1SearchCatalogRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  7,
+) as any as S.Schema<GoogleCloudDatacatalogV1beta1SearchCatalogRequest>;
+
 export interface SearchCatalogRequest {
   /** Request body */
   body?: GoogleCloudDatacatalogV1beta1SearchCatalogRequest;
 }
+const SearchCatalogRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  0,
+) as any as S.Schema<SearchCatalogRequest>;
+
 export type GoogleCloudDatacatalogV1beta1SearchCatalogResultSearchResultTypeEnum =
   | "SEARCH_RESULT_TYPE_UNSPECIFIED"
   | "ENTRY"
   | "TAG_TEMPLATE"
   | "ENTRY_GROUP";
+const GoogleCloudDatacatalogV1beta1SearchCatalogResultSearchResultTypeEnum = S.String;
+
 /** A result that appears in the response of a search request. Each result captures details of one entry that matches the search. */
 export interface GoogleCloudDatacatalogV1beta1SearchCatalogResult {
   /** Last-modified timestamp of the entry from the managing system. */
@@ -847,8 +1371,18 @@ export interface GoogleCloudDatacatalogV1beta1SearchCatalogResult {
   /** Type of the search result. This field can be used to determine which Get method to call to fetch the full resource. */
   searchResultType?: GoogleCloudDatacatalogV1beta1SearchCatalogResultSearchResultTypeEnum;
 }
+const GoogleCloudDatacatalogV1beta1SearchCatalogResult = /*@__PURE__*/ __L.at(
+  __c13,
+  1,
+) as any as S.Schema<GoogleCloudDatacatalogV1beta1SearchCatalogResult>;
+
 export type GoogleCloudDatacatalogV1beta1SearchCatalogResultList =
   Array<GoogleCloudDatacatalogV1beta1SearchCatalogResult>;
+const GoogleCloudDatacatalogV1beta1SearchCatalogResultList = /*@__PURE__*/ __L.at(
+  __c13,
+  2,
+) as any as S.Schema<GoogleCloudDatacatalogV1beta1SearchCatalogResultList>;
+
 /** Response message for SearchCatalog. */
 export interface GoogleCloudDatacatalogV1beta1SearchCatalogResponse {
   /** Unreachable locations. Search result does not include data from those locations. Users can get additional information on the error by repeating the search request with a more restrictive parameter -- setting the value for `SearchDataCatalogRequest.scope.restricted_locations`. */
@@ -860,75 +1394,135 @@ export interface GoogleCloudDatacatalogV1beta1SearchCatalogResponse {
   /** The token that can be used to retrieve the next page of results. */
   nextPageToken?: string;
 }
+const GoogleCloudDatacatalogV1beta1SearchCatalogResponse = /*@__PURE__*/ __L.at(
+  __c13,
+  3,
+) as any as S.Schema<GoogleCloudDatacatalogV1beta1SearchCatalogResponse>;
+
 /** Request message for `SetIamPolicy` method. */
 export interface SetIamPolicyRequest {
   /** REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Google Cloud services (such as Projects) might reject them. */
   policy?: Policy;
 }
+const SetIamPolicyRequest = /*@__PURE__*/ __L.at(__c13, 4) as any as S.Schema<SetIamPolicyRequest>;
+
 export interface SetIamPolicyProjectsLocationsEntryGroupsRequest {
   /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: SetIamPolicyRequest;
 }
+const SetIamPolicyProjectsLocationsEntryGroupsRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  5,
+) as any as S.Schema<SetIamPolicyProjectsLocationsEntryGroupsRequest>;
+
 export interface SetIamPolicyProjectsLocationsTagTemplatesRequest {
   /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: SetIamPolicyRequest;
 }
+const SetIamPolicyProjectsLocationsTagTemplatesRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  6,
+) as any as S.Schema<SetIamPolicyProjectsLocationsTagTemplatesRequest>;
+
 export interface SetIamPolicyProjectsLocationsTaxonomiesRequest {
   /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: SetIamPolicyRequest;
 }
+const SetIamPolicyProjectsLocationsTaxonomiesRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  7,
+) as any as S.Schema<SetIamPolicyProjectsLocationsTaxonomiesRequest>;
+
 export interface SetIamPolicyProjectsLocationsTaxonomiesPolicyTagsRequest {
   /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: SetIamPolicyRequest;
 }
+const SetIamPolicyProjectsLocationsTaxonomiesPolicyTagsRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  0,
+) as any as S.Schema<SetIamPolicyProjectsLocationsTaxonomiesPolicyTagsRequest>;
+
 /** Request message for `TestIamPermissions` method. */
 export interface TestIamPermissionsRequest {
   /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
   permissions?: StringList;
 }
+const TestIamPermissionsRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  1,
+) as any as S.Schema<TestIamPermissionsRequest>;
+
 export interface TestIamPermissionsProjectsLocationsEntryGroupsRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
+const TestIamPermissionsProjectsLocationsEntryGroupsRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  2,
+) as any as S.Schema<TestIamPermissionsProjectsLocationsEntryGroupsRequest>;
+
 /** Response message for `TestIamPermissions` method. */
 export interface TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
   permissions?: StringList;
 }
+const TestIamPermissionsResponse =
+  TestIamPermissionsRequest as any as S.Schema<TestIamPermissionsResponse>;
+
 export interface TestIamPermissionsProjectsLocationsEntryGroupsEntriesRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
+const TestIamPermissionsProjectsLocationsEntryGroupsEntriesRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  3,
+) as any as S.Schema<TestIamPermissionsProjectsLocationsEntryGroupsEntriesRequest>;
+
 export interface TestIamPermissionsProjectsLocationsTagTemplatesRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
+const TestIamPermissionsProjectsLocationsTagTemplatesRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  4,
+) as any as S.Schema<TestIamPermissionsProjectsLocationsTagTemplatesRequest>;
+
 export interface TestIamPermissionsProjectsLocationsTaxonomiesRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
+const TestIamPermissionsProjectsLocationsTaxonomiesRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  5,
+) as any as S.Schema<TestIamPermissionsProjectsLocationsTaxonomiesRequest>;
+
 export interface TestIamPermissionsProjectsLocationsTaxonomiesPolicyTagsRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
+const TestIamPermissionsProjectsLocationsTaxonomiesPolicyTagsRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  6,
+) as any as S.Schema<TestIamPermissionsProjectsLocationsTaxonomiesPolicyTagsRequest>;
+
 export type CreateProjectsLocationsEntryGroupsError =
   | NotFound
   | Forbidden
@@ -942,8 +1536,8 @@ export const createProjectsLocationsEntryGroups: API.OperationMethod<
   CreateProjectsLocationsEntryGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2) as any as S.Schema<CreateProjectsLocationsEntryGroupsRequest>,
-  output: __S(1) as any as S.Schema<GoogleCloudDatacatalogV1beta1EntryGroup>,
+  input: CreateProjectsLocationsEntryGroupsRequest,
+  output: GoogleCloudDatacatalogV1beta1EntryGroup,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -962,8 +1556,8 @@ export const createProjectsLocationsEntryGroupsEntries: API.OperationMethod<
   CreateProjectsLocationsEntryGroupsEntriesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18) as any as S.Schema<CreateProjectsLocationsEntryGroupsEntriesRequest>,
-  output: __S(17) as any as S.Schema<GoogleCloudDatacatalogV1beta1Entry>,
+  input: CreateProjectsLocationsEntryGroupsEntriesRequest,
+  output: GoogleCloudDatacatalogV1beta1Entry,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -982,8 +1576,8 @@ export const createProjectsLocationsEntryGroupsEntriesTags: API.OperationMethod<
   CreateProjectsLocationsEntryGroupsEntriesTagsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23) as any as S.Schema<CreateProjectsLocationsEntryGroupsEntriesTagsRequest>,
-  output: __S(22) as any as S.Schema<GoogleCloudDatacatalogV1beta1Tag>,
+  input: CreateProjectsLocationsEntryGroupsEntriesTagsRequest,
+  output: GoogleCloudDatacatalogV1beta1Tag,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1002,8 +1596,8 @@ export const createProjectsLocationsEntryGroupsTags: API.OperationMethod<
   CreateProjectsLocationsEntryGroupsTagsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24) as any as S.Schema<CreateProjectsLocationsEntryGroupsTagsRequest>,
-  output: __S(22) as any as S.Schema<GoogleCloudDatacatalogV1beta1Tag>,
+  input: CreateProjectsLocationsEntryGroupsTagsRequest,
+  output: GoogleCloudDatacatalogV1beta1Tag,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1022,8 +1616,8 @@ export const createProjectsLocationsTagTemplates: API.OperationMethod<
   CreateProjectsLocationsTagTemplatesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31) as any as S.Schema<CreateProjectsLocationsTagTemplatesRequest>,
-  output: __S(30) as any as S.Schema<GoogleCloudDatacatalogV1beta1TagTemplate>,
+  input: CreateProjectsLocationsTagTemplatesRequest,
+  output: GoogleCloudDatacatalogV1beta1TagTemplate,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1042,8 +1636,8 @@ export const createProjectsLocationsTagTemplatesFields: API.OperationMethod<
   CreateProjectsLocationsTagTemplatesFieldsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32) as any as S.Schema<CreateProjectsLocationsTagTemplatesFieldsRequest>,
-  output: __S(28) as any as S.Schema<GoogleCloudDatacatalogV1beta1TagTemplateField>,
+  input: CreateProjectsLocationsTagTemplatesFieldsRequest,
+  output: GoogleCloudDatacatalogV1beta1TagTemplateField,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1062,8 +1656,8 @@ export const createProjectsLocationsTaxonomies: API.OperationMethod<
   CreateProjectsLocationsTaxonomiesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36) as any as S.Schema<CreateProjectsLocationsTaxonomiesRequest>,
-  output: __S(35) as any as S.Schema<GoogleCloudDatacatalogV1beta1Taxonomy>,
+  input: CreateProjectsLocationsTaxonomiesRequest,
+  output: GoogleCloudDatacatalogV1beta1Taxonomy,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1082,8 +1676,8 @@ export const createProjectsLocationsTaxonomiesPolicyTags: API.OperationMethod<
   CreateProjectsLocationsTaxonomiesPolicyTagsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38) as any as S.Schema<CreateProjectsLocationsTaxonomiesPolicyTagsRequest>,
-  output: __S(37) as any as S.Schema<GoogleCloudDatacatalogV1beta1PolicyTag>,
+  input: CreateProjectsLocationsTaxonomiesPolicyTagsRequest,
+  output: GoogleCloudDatacatalogV1beta1PolicyTag,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1102,8 +1696,8 @@ export const deleteProjectsLocationsEntryGroups: API.OperationMethod<
   DeleteProjectsLocationsEntryGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39) as any as S.Schema<DeleteProjectsLocationsEntryGroupsRequest>,
-  output: __S(40) as any as S.Schema<Empty>,
+  input: DeleteProjectsLocationsEntryGroupsRequest,
+  output: Empty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1122,8 +1716,8 @@ export const deleteProjectsLocationsEntryGroupsEntries: API.OperationMethod<
   DeleteProjectsLocationsEntryGroupsEntriesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41) as any as S.Schema<DeleteProjectsLocationsEntryGroupsEntriesRequest>,
-  output: __S(40) as any as S.Schema<Empty>,
+  input: DeleteProjectsLocationsEntryGroupsEntriesRequest,
+  output: Empty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1142,8 +1736,8 @@ export const deleteProjectsLocationsEntryGroupsEntriesTags: API.OperationMethod<
   DeleteProjectsLocationsEntryGroupsEntriesTagsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42) as any as S.Schema<DeleteProjectsLocationsEntryGroupsEntriesTagsRequest>,
-  output: __S(40) as any as S.Schema<Empty>,
+  input: DeleteProjectsLocationsEntryGroupsEntriesTagsRequest,
+  output: Empty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1162,8 +1756,8 @@ export const deleteProjectsLocationsEntryGroupsTags: API.OperationMethod<
   DeleteProjectsLocationsEntryGroupsTagsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43) as any as S.Schema<DeleteProjectsLocationsEntryGroupsTagsRequest>,
-  output: __S(40) as any as S.Schema<Empty>,
+  input: DeleteProjectsLocationsEntryGroupsTagsRequest,
+  output: Empty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1182,8 +1776,8 @@ export const deleteProjectsLocationsTagTemplates: API.OperationMethod<
   DeleteProjectsLocationsTagTemplatesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44) as any as S.Schema<DeleteProjectsLocationsTagTemplatesRequest>,
-  output: __S(40) as any as S.Schema<Empty>,
+  input: DeleteProjectsLocationsTagTemplatesRequest,
+  output: Empty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1202,8 +1796,8 @@ export const deleteProjectsLocationsTagTemplatesFields: API.OperationMethod<
   DeleteProjectsLocationsTagTemplatesFieldsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45) as any as S.Schema<DeleteProjectsLocationsTagTemplatesFieldsRequest>,
-  output: __S(40) as any as S.Schema<Empty>,
+  input: DeleteProjectsLocationsTagTemplatesFieldsRequest,
+  output: Empty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1222,8 +1816,8 @@ export const deleteProjectsLocationsTaxonomies: API.OperationMethod<
   DeleteProjectsLocationsTaxonomiesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(46) as any as S.Schema<DeleteProjectsLocationsTaxonomiesRequest>,
-  output: __S(40) as any as S.Schema<Empty>,
+  input: DeleteProjectsLocationsTaxonomiesRequest,
+  output: Empty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1242,8 +1836,8 @@ export const deleteProjectsLocationsTaxonomiesPolicyTags: API.OperationMethod<
   DeleteProjectsLocationsTaxonomiesPolicyTagsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47) as any as S.Schema<DeleteProjectsLocationsTaxonomiesPolicyTagsRequest>,
-  output: __S(40) as any as S.Schema<Empty>,
+  input: DeleteProjectsLocationsTaxonomiesPolicyTagsRequest,
+  output: Empty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1257,8 +1851,8 @@ export const exportProjectsLocationsTaxonomies: API.OperationMethod<
   ExportProjectsLocationsTaxonomiesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48) as any as S.Schema<ExportProjectsLocationsTaxonomiesRequest>,
-  output: __S(53) as any as S.Schema<GoogleCloudDatacatalogV1beta1ExportTaxonomiesResponse>,
+  input: ExportProjectsLocationsTaxonomiesRequest,
+  output: GoogleCloudDatacatalogV1beta1ExportTaxonomiesResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1277,8 +1871,8 @@ export const getIamPolicyProjectsLocationsEntryGroups: API.OperationMethod<
   GetIamPolicyProjectsLocationsEntryGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56) as any as S.Schema<GetIamPolicyProjectsLocationsEntryGroupsRequest>,
-  output: __S(60) as any as S.Schema<Policy>,
+  input: GetIamPolicyProjectsLocationsEntryGroupsRequest,
+  output: Policy,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1297,8 +1891,8 @@ export const getIamPolicyProjectsLocationsEntryGroupsEntries: API.OperationMetho
   GetIamPolicyProjectsLocationsEntryGroupsEntriesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(61) as any as S.Schema<GetIamPolicyProjectsLocationsEntryGroupsEntriesRequest>,
-  output: __S(60) as any as S.Schema<Policy>,
+  input: GetIamPolicyProjectsLocationsEntryGroupsEntriesRequest,
+  output: Policy,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1317,8 +1911,8 @@ export const getIamPolicyProjectsLocationsTagTemplates: API.OperationMethod<
   GetIamPolicyProjectsLocationsTagTemplatesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(62) as any as S.Schema<GetIamPolicyProjectsLocationsTagTemplatesRequest>,
-  output: __S(60) as any as S.Schema<Policy>,
+  input: GetIamPolicyProjectsLocationsTagTemplatesRequest,
+  output: Policy,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1337,8 +1931,8 @@ export const getIamPolicyProjectsLocationsTaxonomies: API.OperationMethod<
   GetIamPolicyProjectsLocationsTaxonomiesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(63) as any as S.Schema<GetIamPolicyProjectsLocationsTaxonomiesRequest>,
-  output: __S(60) as any as S.Schema<Policy>,
+  input: GetIamPolicyProjectsLocationsTaxonomiesRequest,
+  output: Policy,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1357,8 +1951,8 @@ export const getIamPolicyProjectsLocationsTaxonomiesPolicyTags: API.OperationMet
   GetIamPolicyProjectsLocationsTaxonomiesPolicyTagsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(64) as any as S.Schema<GetIamPolicyProjectsLocationsTaxonomiesPolicyTagsRequest>,
-  output: __S(60) as any as S.Schema<Policy>,
+  input: GetIamPolicyProjectsLocationsTaxonomiesPolicyTagsRequest,
+  output: Policy,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1372,8 +1966,8 @@ export const getProjectsLocationsEntryGroups: API.OperationMethod<
   GetProjectsLocationsEntryGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65) as any as S.Schema<GetProjectsLocationsEntryGroupsRequest>,
-  output: __S(1) as any as S.Schema<GoogleCloudDatacatalogV1beta1EntryGroup>,
+  input: GetProjectsLocationsEntryGroupsRequest,
+  output: GoogleCloudDatacatalogV1beta1EntryGroup,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1387,8 +1981,8 @@ export const getProjectsLocationsEntryGroupsEntries: API.OperationMethod<
   GetProjectsLocationsEntryGroupsEntriesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(66) as any as S.Schema<GetProjectsLocationsEntryGroupsEntriesRequest>,
-  output: __S(17) as any as S.Schema<GoogleCloudDatacatalogV1beta1Entry>,
+  input: GetProjectsLocationsEntryGroupsEntriesRequest,
+  output: GoogleCloudDatacatalogV1beta1Entry,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1402,8 +1996,8 @@ export const getProjectsLocationsTagTemplates: API.OperationMethod<
   GetProjectsLocationsTagTemplatesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(67) as any as S.Schema<GetProjectsLocationsTagTemplatesRequest>,
-  output: __S(30) as any as S.Schema<GoogleCloudDatacatalogV1beta1TagTemplate>,
+  input: GetProjectsLocationsTagTemplatesRequest,
+  output: GoogleCloudDatacatalogV1beta1TagTemplate,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1417,8 +2011,8 @@ export const getProjectsLocationsTaxonomies: API.OperationMethod<
   GetProjectsLocationsTaxonomiesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(68) as any as S.Schema<GetProjectsLocationsTaxonomiesRequest>,
-  output: __S(35) as any as S.Schema<GoogleCloudDatacatalogV1beta1Taxonomy>,
+  input: GetProjectsLocationsTaxonomiesRequest,
+  output: GoogleCloudDatacatalogV1beta1Taxonomy,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1432,8 +2026,8 @@ export const getProjectsLocationsTaxonomiesPolicyTags: API.OperationMethod<
   GetProjectsLocationsTaxonomiesPolicyTagsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(69) as any as S.Schema<GetProjectsLocationsTaxonomiesPolicyTagsRequest>,
-  output: __S(37) as any as S.Schema<GoogleCloudDatacatalogV1beta1PolicyTag>,
+  input: GetProjectsLocationsTaxonomiesPolicyTagsRequest,
+  output: GoogleCloudDatacatalogV1beta1PolicyTag,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1452,8 +2046,8 @@ export const importProjectsLocationsTaxonomies: API.OperationMethod<
   ImportProjectsLocationsTaxonomiesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(71) as any as S.Schema<ImportProjectsLocationsTaxonomiesRequest>,
-  output: __S(73) as any as S.Schema<GoogleCloudDatacatalogV1beta1ImportTaxonomiesResponse>,
+  input: ImportProjectsLocationsTaxonomiesRequest,
+  output: GoogleCloudDatacatalogV1beta1ImportTaxonomiesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1468,8 +2062,8 @@ export const listProjectsLocationsEntryGroups: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudDatacatalogV1beta1ListEntryGroupsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(74) as any as S.Schema<ListProjectsLocationsEntryGroupsRequest>,
-  output: __S(76) as any as S.Schema<GoogleCloudDatacatalogV1beta1ListEntryGroupsResponse>,
+  input: ListProjectsLocationsEntryGroupsRequest,
+  output: GoogleCloudDatacatalogV1beta1ListEntryGroupsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1485,8 +2079,8 @@ export const listProjectsLocationsEntryGroupsEntries: API.PaginatedOperationMeth
   GcpOpContext,
   GoogleCloudDatacatalogV1beta1ListEntriesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(77) as any as S.Schema<ListProjectsLocationsEntryGroupsEntriesRequest>,
-  output: __S(79) as any as S.Schema<GoogleCloudDatacatalogV1beta1ListEntriesResponse>,
+  input: ListProjectsLocationsEntryGroupsEntriesRequest,
+  output: GoogleCloudDatacatalogV1beta1ListEntriesResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1502,8 +2096,8 @@ export const listProjectsLocationsEntryGroupsEntriesTags: API.PaginatedOperation
   GcpOpContext,
   GoogleCloudDatacatalogV1beta1ListTagsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(80) as any as S.Schema<ListProjectsLocationsEntryGroupsEntriesTagsRequest>,
-  output: __S(82) as any as S.Schema<GoogleCloudDatacatalogV1beta1ListTagsResponse>,
+  input: ListProjectsLocationsEntryGroupsEntriesTagsRequest,
+  output: GoogleCloudDatacatalogV1beta1ListTagsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1519,8 +2113,8 @@ export const listProjectsLocationsEntryGroupsTags: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudDatacatalogV1beta1ListTagsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(83) as any as S.Schema<ListProjectsLocationsEntryGroupsTagsRequest>,
-  output: __S(82) as any as S.Schema<GoogleCloudDatacatalogV1beta1ListTagsResponse>,
+  input: ListProjectsLocationsEntryGroupsTagsRequest,
+  output: GoogleCloudDatacatalogV1beta1ListTagsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1536,8 +2130,8 @@ export const listProjectsLocationsTaxonomies: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudDatacatalogV1beta1ListTaxonomiesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(84) as any as S.Schema<ListProjectsLocationsTaxonomiesRequest>,
-  output: __S(85) as any as S.Schema<GoogleCloudDatacatalogV1beta1ListTaxonomiesResponse>,
+  input: ListProjectsLocationsTaxonomiesRequest,
+  output: GoogleCloudDatacatalogV1beta1ListTaxonomiesResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1553,8 +2147,8 @@ export const listProjectsLocationsTaxonomiesPolicyTags: API.PaginatedOperationMe
   GcpOpContext,
   GoogleCloudDatacatalogV1beta1ListPolicyTagsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(86) as any as S.Schema<ListProjectsLocationsTaxonomiesPolicyTagsRequest>,
-  output: __S(88) as any as S.Schema<GoogleCloudDatacatalogV1beta1ListPolicyTagsResponse>,
+  input: ListProjectsLocationsTaxonomiesPolicyTagsRequest,
+  output: GoogleCloudDatacatalogV1beta1ListPolicyTagsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1569,8 +2163,8 @@ export const lookupEntries: API.OperationMethod<
   LookupEntriesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(89) as any as S.Schema<LookupEntriesRequest>,
-  output: __S(17) as any as S.Schema<GoogleCloudDatacatalogV1beta1Entry>,
+  input: LookupEntriesRequest,
+  output: GoogleCloudDatacatalogV1beta1Entry,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1589,8 +2183,8 @@ export const patchProjectsLocationsEntryGroups: API.OperationMethod<
   PatchProjectsLocationsEntryGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(90) as any as S.Schema<PatchProjectsLocationsEntryGroupsRequest>,
-  output: __S(1) as any as S.Schema<GoogleCloudDatacatalogV1beta1EntryGroup>,
+  input: PatchProjectsLocationsEntryGroupsRequest,
+  output: GoogleCloudDatacatalogV1beta1EntryGroup,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1609,8 +2203,8 @@ export const patchProjectsLocationsEntryGroupsEntries: API.OperationMethod<
   PatchProjectsLocationsEntryGroupsEntriesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(91) as any as S.Schema<PatchProjectsLocationsEntryGroupsEntriesRequest>,
-  output: __S(17) as any as S.Schema<GoogleCloudDatacatalogV1beta1Entry>,
+  input: PatchProjectsLocationsEntryGroupsEntriesRequest,
+  output: GoogleCloudDatacatalogV1beta1Entry,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1629,8 +2223,8 @@ export const patchProjectsLocationsEntryGroupsEntriesTags: API.OperationMethod<
   PatchProjectsLocationsEntryGroupsEntriesTagsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(92) as any as S.Schema<PatchProjectsLocationsEntryGroupsEntriesTagsRequest>,
-  output: __S(22) as any as S.Schema<GoogleCloudDatacatalogV1beta1Tag>,
+  input: PatchProjectsLocationsEntryGroupsEntriesTagsRequest,
+  output: GoogleCloudDatacatalogV1beta1Tag,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1649,8 +2243,8 @@ export const patchProjectsLocationsEntryGroupsTags: API.OperationMethod<
   PatchProjectsLocationsEntryGroupsTagsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(93) as any as S.Schema<PatchProjectsLocationsEntryGroupsTagsRequest>,
-  output: __S(22) as any as S.Schema<GoogleCloudDatacatalogV1beta1Tag>,
+  input: PatchProjectsLocationsEntryGroupsTagsRequest,
+  output: GoogleCloudDatacatalogV1beta1Tag,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1669,8 +2263,8 @@ export const patchProjectsLocationsTagTemplates: API.OperationMethod<
   PatchProjectsLocationsTagTemplatesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(94) as any as S.Schema<PatchProjectsLocationsTagTemplatesRequest>,
-  output: __S(30) as any as S.Schema<GoogleCloudDatacatalogV1beta1TagTemplate>,
+  input: PatchProjectsLocationsTagTemplatesRequest,
+  output: GoogleCloudDatacatalogV1beta1TagTemplate,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1689,8 +2283,8 @@ export const patchProjectsLocationsTagTemplatesFields: API.OperationMethod<
   PatchProjectsLocationsTagTemplatesFieldsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(95) as any as S.Schema<PatchProjectsLocationsTagTemplatesFieldsRequest>,
-  output: __S(28) as any as S.Schema<GoogleCloudDatacatalogV1beta1TagTemplateField>,
+  input: PatchProjectsLocationsTagTemplatesFieldsRequest,
+  output: GoogleCloudDatacatalogV1beta1TagTemplateField,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1709,8 +2303,8 @@ export const patchProjectsLocationsTaxonomies: API.OperationMethod<
   PatchProjectsLocationsTaxonomiesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(96) as any as S.Schema<PatchProjectsLocationsTaxonomiesRequest>,
-  output: __S(35) as any as S.Schema<GoogleCloudDatacatalogV1beta1Taxonomy>,
+  input: PatchProjectsLocationsTaxonomiesRequest,
+  output: GoogleCloudDatacatalogV1beta1Taxonomy,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1729,8 +2323,8 @@ export const patchProjectsLocationsTaxonomiesPolicyTags: API.OperationMethod<
   PatchProjectsLocationsTaxonomiesPolicyTagsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(97) as any as S.Schema<PatchProjectsLocationsTaxonomiesPolicyTagsRequest>,
-  output: __S(37) as any as S.Schema<GoogleCloudDatacatalogV1beta1PolicyTag>,
+  input: PatchProjectsLocationsTaxonomiesPolicyTagsRequest,
+  output: GoogleCloudDatacatalogV1beta1PolicyTag,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1749,8 +2343,8 @@ export const renameProjectsLocationsTagTemplatesFields: API.OperationMethod<
   RenameProjectsLocationsTagTemplatesFieldsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(99) as any as S.Schema<RenameProjectsLocationsTagTemplatesFieldsRequest>,
-  output: __S(28) as any as S.Schema<GoogleCloudDatacatalogV1beta1TagTemplateField>,
+  input: RenameProjectsLocationsTagTemplatesFieldsRequest,
+  output: GoogleCloudDatacatalogV1beta1TagTemplateField,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1769,8 +2363,8 @@ export const renameProjectsLocationsTagTemplatesFieldsEnumValues: API.OperationM
   RenameProjectsLocationsTagTemplatesFieldsEnumValuesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(101) as any as S.Schema<RenameProjectsLocationsTagTemplatesFieldsEnumValuesRequest>,
-  output: __S(28) as any as S.Schema<GoogleCloudDatacatalogV1beta1TagTemplateField>,
+  input: RenameProjectsLocationsTagTemplatesFieldsEnumValuesRequest,
+  output: GoogleCloudDatacatalogV1beta1TagTemplateField,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1784,8 +2378,8 @@ export const searchCatalog: API.OperationMethod<
   SearchCatalogError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(104) as any as S.Schema<SearchCatalogRequest>,
-  output: __S(107) as any as S.Schema<GoogleCloudDatacatalogV1beta1SearchCatalogResponse>,
+  input: SearchCatalogRequest,
+  output: GoogleCloudDatacatalogV1beta1SearchCatalogResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1804,8 +2398,8 @@ export const setIamPolicyProjectsLocationsEntryGroups: API.OperationMethod<
   SetIamPolicyProjectsLocationsEntryGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(109) as any as S.Schema<SetIamPolicyProjectsLocationsEntryGroupsRequest>,
-  output: __S(60) as any as S.Schema<Policy>,
+  input: SetIamPolicyProjectsLocationsEntryGroupsRequest,
+  output: Policy,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1824,8 +2418,8 @@ export const setIamPolicyProjectsLocationsTagTemplates: API.OperationMethod<
   SetIamPolicyProjectsLocationsTagTemplatesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(110) as any as S.Schema<SetIamPolicyProjectsLocationsTagTemplatesRequest>,
-  output: __S(60) as any as S.Schema<Policy>,
+  input: SetIamPolicyProjectsLocationsTagTemplatesRequest,
+  output: Policy,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1844,8 +2438,8 @@ export const setIamPolicyProjectsLocationsTaxonomies: API.OperationMethod<
   SetIamPolicyProjectsLocationsTaxonomiesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(111) as any as S.Schema<SetIamPolicyProjectsLocationsTaxonomiesRequest>,
-  output: __S(60) as any as S.Schema<Policy>,
+  input: SetIamPolicyProjectsLocationsTaxonomiesRequest,
+  output: Policy,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1864,8 +2458,8 @@ export const setIamPolicyProjectsLocationsTaxonomiesPolicyTags: API.OperationMet
   SetIamPolicyProjectsLocationsTaxonomiesPolicyTagsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(112) as any as S.Schema<SetIamPolicyProjectsLocationsTaxonomiesPolicyTagsRequest>,
-  output: __S(60) as any as S.Schema<Policy>,
+  input: SetIamPolicyProjectsLocationsTaxonomiesPolicyTagsRequest,
+  output: Policy,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1884,8 +2478,8 @@ export const testIamPermissionsProjectsLocationsEntryGroups: API.OperationMethod
   TestIamPermissionsProjectsLocationsEntryGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(114) as any as S.Schema<TestIamPermissionsProjectsLocationsEntryGroupsRequest>,
-  output: __S(113) as any as S.Schema<TestIamPermissionsResponse>,
+  input: TestIamPermissionsProjectsLocationsEntryGroupsRequest,
+  output: TestIamPermissionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1904,8 +2498,8 @@ export const testIamPermissionsProjectsLocationsEntryGroupsEntries: API.Operatio
   TestIamPermissionsProjectsLocationsEntryGroupsEntriesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(115) as any as S.Schema<TestIamPermissionsProjectsLocationsEntryGroupsEntriesRequest>,
-  output: __S(113) as any as S.Schema<TestIamPermissionsResponse>,
+  input: TestIamPermissionsProjectsLocationsEntryGroupsEntriesRequest,
+  output: TestIamPermissionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1924,8 +2518,8 @@ export const testIamPermissionsProjectsLocationsTagTemplates: API.OperationMetho
   TestIamPermissionsProjectsLocationsTagTemplatesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(116) as any as S.Schema<TestIamPermissionsProjectsLocationsTagTemplatesRequest>,
-  output: __S(113) as any as S.Schema<TestIamPermissionsResponse>,
+  input: TestIamPermissionsProjectsLocationsTagTemplatesRequest,
+  output: TestIamPermissionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1944,8 +2538,8 @@ export const testIamPermissionsProjectsLocationsTaxonomies: API.OperationMethod<
   TestIamPermissionsProjectsLocationsTaxonomiesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(117) as any as S.Schema<TestIamPermissionsProjectsLocationsTaxonomiesRequest>,
-  output: __S(113) as any as S.Schema<TestIamPermissionsResponse>,
+  input: TestIamPermissionsProjectsLocationsTaxonomiesRequest,
+  output: TestIamPermissionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1964,10 +2558,8 @@ export const testIamPermissionsProjectsLocationsTaxonomiesPolicyTags: API.Operat
   TestIamPermissionsProjectsLocationsTaxonomiesPolicyTagsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(
-    118,
-  ) as any as S.Schema<TestIamPermissionsProjectsLocationsTaxonomiesPolicyTagsRequest>,
-  output: __S(113) as any as S.Schema<TestIamPermissionsResponse>,
+  input: TestIamPermissionsProjectsLocationsTaxonomiesPolicyTagsRequest,
+  output: TestIamPermissionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1991,7 +2583,7 @@ function __c0(j: number): any {
         S.Struct({
           description: S.optional(S.String),
           name: S.optional(S.String),
-          dataCatalogTimestamps: S.optional(__S(0)),
+          dataCatalogTimestamps: S.optional(GoogleCloudDatacatalogV1beta1SystemTimestamps),
           displayName: S.optional(S.String),
         }),
       ).annotate({
@@ -2002,7 +2594,7 @@ function __c0(j: number): any {
         S.Struct({
           parent: S.String.pipe(T.Label()),
           entryGroupId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(1).pipe(T.HttpBody())),
+          body: S.optional(GoogleCloudDatacatalogV1beta1EntryGroup.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2018,20 +2610,20 @@ function __c0(j: number): any {
         S.Struct({
           filePath: S.optional(S.String),
           sizeBytes: S.optional(S.String),
-          gcsTimestamps: S.optional(__S(0)),
+          gcsTimestamps: S.optional(GoogleCloudDatacatalogV1beta1SystemTimestamps),
         }),
       ).annotate({
         identifier: "GoogleCloudDatacatalogV1beta1GcsFileSpec",
       });
     case 4:
-      return S.Array(__S(3));
+      return S.Array(GoogleCloudDatacatalogV1beta1GcsFileSpec);
     case 5:
       return S.Array(S.String);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          sampleGcsFileSpecs: S.optional(__S(4)),
-          filePatterns: S.optional(__S(5)),
+          sampleGcsFileSpecs: S.optional(GoogleCloudDatacatalogV1beta1GcsFileSpecList),
+          filePatterns: S.optional(StringList),
         }),
       ).annotate({
         identifier: "GoogleCloudDatacatalogV1beta1GcsFilesetSpec",
@@ -2040,7 +2632,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String),
-          subcolumns: S.optional(S.suspend(() => __S(8))),
+          subcolumns: S.optional(S.suspend(() => GoogleCloudDatacatalogV1beta1ColumnSchemaList)),
           column: S.optional(S.String),
           description: S.optional(S.String),
           mode: S.optional(S.String),
@@ -2053,11 +2645,11 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(7));
+      return S.Array(GoogleCloudDatacatalogV1beta1ColumnSchema);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          columns: S.optional(__S(8)),
+          columns: S.optional(GoogleCloudDatacatalogV1beta1ColumnSchemaList),
         }),
       ).annotate({
         identifier: "GoogleCloudDatacatalogV1beta1Schema",
@@ -2074,12 +2666,12 @@ function __c1(j: number): any {
         identifier: "GoogleCloudDatacatalogV1beta1UsageStats",
       });
     case 3:
-      return S.Record(S.String, __S(10));
+      return S.Record(S.String, GoogleCloudDatacatalogV1beta1UsageStats);
     case 4:
       return S.suspend(() =>
         S.Struct({
           updateTime: S.optional(S.String),
-          usageWithinTimeRange: S.optional(__S(11)),
+          usageWithinTimeRange: S.optional(GoogleCloudDatacatalogV1beta1UsageStatsMap),
         }),
       ).annotate({
         identifier: "GoogleCloudDatacatalogV1beta1UsageSignal",
@@ -2103,9 +2695,11 @@ function __c1(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          tableSourceType: S.optional(S.String),
-          viewSpec: S.optional(__S(13)),
-          tableSpec: S.optional(__S(14)),
+          tableSourceType: S.optional(
+            GoogleCloudDatacatalogV1beta1BigQueryTableSpecTableSourceTypeEnum,
+          ),
+          viewSpec: S.optional(GoogleCloudDatacatalogV1beta1ViewSpec),
+          tableSpec: S.optional(GoogleCloudDatacatalogV1beta1TableSpec),
         }),
       ).annotate({
         identifier: "GoogleCloudDatacatalogV1beta1BigQueryTableSpec",
@@ -2128,16 +2722,16 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          type: S.optional(S.String),
-          gcsFilesetSpec: S.optional(__S(6)),
-          schema: S.optional(__S(9)),
-          usageSignal: S.optional(__S(12)),
-          bigqueryTableSpec: S.optional(__S(15)),
-          bigqueryDateShardedSpec: S.optional(__S(16)),
+          type: S.optional(GoogleCloudDatacatalogV1beta1EntryTypeEnum),
+          gcsFilesetSpec: S.optional(GoogleCloudDatacatalogV1beta1GcsFilesetSpec),
+          schema: S.optional(GoogleCloudDatacatalogV1beta1Schema),
+          usageSignal: S.optional(GoogleCloudDatacatalogV1beta1UsageSignal),
+          bigqueryTableSpec: S.optional(GoogleCloudDatacatalogV1beta1BigQueryTableSpec),
+          bigqueryDateShardedSpec: S.optional(GoogleCloudDatacatalogV1beta1BigQueryDateShardedSpec),
           displayName: S.optional(S.String),
           description: S.optional(S.String),
-          sourceSystemTimestamps: S.optional(__S(0)),
-          integratedSystem: S.optional(S.String),
+          sourceSystemTimestamps: S.optional(GoogleCloudDatacatalogV1beta1SystemTimestamps),
+          integratedSystem: S.optional(GoogleCloudDatacatalogV1beta1EntryIntegratedSystemEnum),
           linkedResource: S.optional(S.String),
           userSpecifiedSystem: S.optional(S.String),
           userSpecifiedType: S.optional(S.String),
@@ -2150,7 +2744,7 @@ function __c2(j: number): any {
         S.Struct({
           entryId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(17).pipe(T.HttpBody())),
+          body: S.optional(GoogleCloudDatacatalogV1beta1Entry.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2175,7 +2769,7 @@ function __c2(j: number): any {
           displayName: S.optional(S.String),
           doubleValue: S.optional(S.Number),
           timestampValue: S.optional(S.String),
-          enumValue: S.optional(__S(19)),
+          enumValue: S.optional(GoogleCloudDatacatalogV1beta1TagFieldEnumValue),
           order: S.optional(S.Number),
           boolValue: S.optional(S.Boolean),
           stringValue: S.optional(S.String),
@@ -2184,13 +2778,13 @@ function __c2(j: number): any {
         identifier: "GoogleCloudDatacatalogV1beta1TagField",
       });
     case 5:
-      return S.Record(S.String, __S(20));
+      return S.Record(S.String, GoogleCloudDatacatalogV1beta1TagField);
     case 6:
       return S.suspend(() =>
         S.Struct({
           templateDisplayName: S.optional(S.String),
           column: S.optional(S.String),
-          fields: S.optional(__S(21)),
+          fields: S.optional(GoogleCloudDatacatalogV1beta1TagFieldMap),
           name: S.optional(S.String),
           template: S.optional(S.String),
         }),
@@ -2201,7 +2795,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(22).pipe(T.HttpBody())),
+          body: S.optional(GoogleCloudDatacatalogV1beta1Tag.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2220,7 +2814,7 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(22).pipe(T.HttpBody())),
+          body: S.optional(GoogleCloudDatacatalogV1beta1Tag.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2232,11 +2826,11 @@ function __c3(j: number): any {
         identifier: "CreateProjectsLocationsEntryGroupsTagsRequest",
       });
     case 1:
-      return S.Array(__S(19));
+      return S.Array(GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValue);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          allowedValues: S.optional(__S(25)),
+          allowedValues: S.optional(GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValueList),
         }),
       ).annotate({
         identifier: "GoogleCloudDatacatalogV1beta1FieldTypeEnumType",
@@ -2244,8 +2838,8 @@ function __c3(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          enumType: S.optional(__S(26)),
-          primitiveType: S.optional(S.String),
+          enumType: S.optional(GoogleCloudDatacatalogV1beta1FieldTypeEnumType),
+          primitiveType: S.optional(GoogleCloudDatacatalogV1beta1FieldTypePrimitiveTypeEnum),
         }),
       ).annotate({
         identifier: "GoogleCloudDatacatalogV1beta1FieldType",
@@ -2256,7 +2850,7 @@ function __c3(j: number): any {
           description: S.optional(S.String),
           order: S.optional(S.Number),
           name: S.optional(S.String),
-          type: S.optional(__S(27)),
+          type: S.optional(GoogleCloudDatacatalogV1beta1FieldType),
           displayName: S.optional(S.String),
           isRequired: S.optional(S.Boolean),
         }),
@@ -2264,14 +2858,16 @@ function __c3(j: number): any {
         identifier: "GoogleCloudDatacatalogV1beta1TagTemplateField",
       });
     case 5:
-      return S.Record(S.String, __S(28));
+      return S.Record(S.String, GoogleCloudDatacatalogV1beta1TagTemplateField);
     case 6:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          dataplexTransferStatus: S.optional(S.String),
+          dataplexTransferStatus: S.optional(
+            GoogleCloudDatacatalogV1beta1TagTemplateDataplexTransferStatusEnum,
+          ),
           displayName: S.optional(S.String),
-          fields: S.optional(__S(29)),
+          fields: S.optional(GoogleCloudDatacatalogV1beta1TagTemplateFieldMap),
         }),
       ).annotate({
         identifier: "GoogleCloudDatacatalogV1beta1TagTemplate",
@@ -2281,7 +2877,7 @@ function __c3(j: number): any {
         S.Struct({
           tagTemplateId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(30).pipe(T.HttpBody())),
+          body: S.optional(GoogleCloudDatacatalogV1beta1TagTemplate.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2301,7 +2897,7 @@ function __c4(j: number): any {
         S.Struct({
           parent: S.String.pipe(T.Label()),
           tagTemplateFieldId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(28).pipe(T.HttpBody())),
+          body: S.optional(GoogleCloudDatacatalogV1beta1TagTemplateField.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2313,11 +2909,11 @@ function __c4(j: number): any {
         identifier: "CreateProjectsLocationsTagTemplatesFieldsRequest",
       });
     case 1:
-      return S.Array(S.String);
+      return S.Array(GoogleCloudDatacatalogV1beta1TaxonomyActivatedPolicyTypesItemEnum);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          name: S.optional(S.String),
+          name: S.optional(GoogleCloudDatacatalogV1beta1TaxonomyServiceNameEnum),
           identity: S.optional(S.String),
         }),
       ).annotate({
@@ -2326,11 +2922,13 @@ function __c4(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          activatedPolicyTypes: S.optional(__S(33)),
+          activatedPolicyTypes: S.optional(
+            GoogleCloudDatacatalogV1beta1TaxonomyActivatedPolicyTypesItemEnumList,
+          ),
           description: S.optional(S.String),
-          taxonomyTimestamps: S.optional(__S(0)),
+          taxonomyTimestamps: S.optional(GoogleCloudDatacatalogV1beta1SystemTimestamps),
           policyTagCount: S.optional(S.Number),
-          service: S.optional(__S(34)),
+          service: S.optional(GoogleCloudDatacatalogV1beta1TaxonomyService),
           displayName: S.optional(S.String),
           name: S.optional(S.String),
         }),
@@ -2341,7 +2939,7 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(35).pipe(T.HttpBody())),
+          body: S.optional(GoogleCloudDatacatalogV1beta1Taxonomy.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2358,7 +2956,7 @@ function __c4(j: number): any {
           parentPolicyTag: S.optional(S.String),
           description: S.optional(S.String),
           displayName: S.optional(S.String),
-          childPolicyTags: S.optional(__S(5)),
+          childPolicyTags: S.optional(StringList),
           name: S.optional(S.String),
         }),
       ).annotate({
@@ -2368,7 +2966,7 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(37).pipe(T.HttpBody())),
+          body: S.optional(GoogleCloudDatacatalogV1beta1PolicyTag.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2510,7 +3108,7 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           serializedTaxonomies: S.optional(S.Boolean.pipe(T.Query())),
-          taxonomies: S.optional(__S(5).pipe(T.Query())),
+          taxonomies: S.optional(StringList.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
         }).pipe(
           T.Http({
@@ -2527,19 +3125,23 @@ function __c6(j: number): any {
         S.Struct({
           displayName: S.optional(S.String),
           policyTag: S.optional(S.String),
-          childPolicyTags: S.optional(S.suspend(() => __S(50))),
+          childPolicyTags: S.optional(
+            S.suspend(() => GoogleCloudDatacatalogV1beta1SerializedPolicyTagList),
+          ),
           description: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudDatacatalogV1beta1SerializedPolicyTag",
       });
     case 2:
-      return S.Array(__S(49));
+      return S.Array(GoogleCloudDatacatalogV1beta1SerializedPolicyTag);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          activatedPolicyTypes: S.optional(__S(33)),
-          policyTags: S.optional(__S(50)),
+          activatedPolicyTypes: S.optional(
+            GoogleCloudDatacatalogV1beta1SerializedTaxonomyActivatedPolicyTypesItemEnumList,
+          ),
+          policyTags: S.optional(GoogleCloudDatacatalogV1beta1SerializedPolicyTagList),
           description: S.optional(S.String),
           displayName: S.optional(S.String),
         }),
@@ -2547,11 +3149,11 @@ function __c6(j: number): any {
         identifier: "GoogleCloudDatacatalogV1beta1SerializedTaxonomy",
       });
     case 4:
-      return S.Array(__S(51));
+      return S.Array(GoogleCloudDatacatalogV1beta1SerializedTaxonomy);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          taxonomies: S.optional(__S(52)),
+          taxonomies: S.optional(GoogleCloudDatacatalogV1beta1SerializedTaxonomyList),
         }),
       ).annotate({
         identifier: "GoogleCloudDatacatalogV1beta1ExportTaxonomiesResponse",
@@ -2565,7 +3167,7 @@ function __c6(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          options: S.optional(__S(54)),
+          options: S.optional(GetPolicyOptions),
         }),
       ).annotate({ identifier: "GetIamPolicyRequest" });
   }
@@ -2576,7 +3178,7 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(55).pipe(T.HttpBody())),
+          body: S.optional(GetIamPolicyRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2599,26 +3201,26 @@ function __c7(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          members: S.optional(__S(5)),
-          condition: S.optional(__S(57)),
+          members: S.optional(StringList),
+          condition: S.optional(Expr),
           role: S.optional(S.String),
         }),
       ).annotate({ identifier: "Binding" });
     case 3:
-      return S.Array(__S(58));
+      return S.Array(Binding);
     case 4:
       return S.suspend(() =>
         S.Struct({
           version: S.optional(S.Number),
           etag: S.optional(S.String),
-          bindings: S.optional(__S(59)),
+          bindings: S.optional(BindingList),
         }),
       ).annotate({ identifier: "Policy" });
     case 5:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(55).pipe(T.HttpBody())),
+          body: S.optional(GetIamPolicyRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2633,7 +3235,7 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(55).pipe(T.HttpBody())),
+          body: S.optional(GetIamPolicyRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2648,7 +3250,7 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(55).pipe(T.HttpBody())),
+          body: S.optional(GetIamPolicyRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2667,7 +3269,7 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(55).pipe(T.HttpBody())),
+          body: S.optional(GetIamPolicyRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2752,7 +3354,7 @@ function __c8(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          inlineSource: S.optional(__S(53)),
+          inlineSource: S.optional(GoogleCloudDatacatalogV1beta1InlineSource),
         }),
       ).annotate({
         identifier: "GoogleCloudDatacatalogV1beta1ImportTaxonomiesRequest",
@@ -2761,7 +3363,7 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(70).pipe(T.HttpBody())),
+          body: S.optional(GoogleCloudDatacatalogV1beta1ImportTaxonomiesRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2777,11 +3379,11 @@ function __c8(j: number): any {
 function __c9(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(35));
+      return S.Array(GoogleCloudDatacatalogV1beta1Taxonomy);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          taxonomies: S.optional(__S(72)),
+          taxonomies: S.optional(GoogleCloudDatacatalogV1beta1TaxonomyList),
         }),
       ).annotate({
         identifier: "GoogleCloudDatacatalogV1beta1ImportTaxonomiesResponse",
@@ -2803,12 +3405,12 @@ function __c9(j: number): any {
         identifier: "ListProjectsLocationsEntryGroupsRequest",
       });
     case 3:
-      return S.Array(__S(1));
+      return S.Array(GoogleCloudDatacatalogV1beta1EntryGroup);
     case 4:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          entryGroups: S.optional(__S(75)),
+          entryGroups: S.optional(GoogleCloudDatacatalogV1beta1EntryGroupList),
         }),
       ).annotate({
         identifier: "GoogleCloudDatacatalogV1beta1ListEntryGroupsResponse",
@@ -2831,11 +3433,11 @@ function __c9(j: number): any {
         identifier: "ListProjectsLocationsEntryGroupsEntriesRequest",
       });
     case 6:
-      return S.Array(__S(17));
+      return S.Array(GoogleCloudDatacatalogV1beta1Entry);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          entries: S.optional(__S(78)),
+          entries: S.optional(GoogleCloudDatacatalogV1beta1EntryList),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -2862,11 +3464,11 @@ function __c10(j: number): any {
         identifier: "ListProjectsLocationsEntryGroupsEntriesTagsRequest",
       });
     case 1:
-      return S.Array(__S(22));
+      return S.Array(GoogleCloudDatacatalogV1beta1Tag);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          tags: S.optional(__S(81)),
+          tags: S.optional(GoogleCloudDatacatalogV1beta1TagList),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -2908,7 +3510,7 @@ function __c10(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          taxonomies: S.optional(__S(72)),
+          taxonomies: S.optional(GoogleCloudDatacatalogV1beta1TaxonomyList),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -2931,7 +3533,7 @@ function __c10(j: number): any {
         identifier: "ListProjectsLocationsTaxonomiesPolicyTagsRequest",
       });
     case 7:
-      return S.Array(__S(37));
+      return S.Array(GoogleCloudDatacatalogV1beta1PolicyTag);
   }
 }
 function __c11(j: number): any {
@@ -2940,7 +3542,7 @@ function __c11(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          policyTags: S.optional(__S(87)),
+          policyTags: S.optional(GoogleCloudDatacatalogV1beta1PolicyTagList),
         }),
       ).annotate({
         identifier: "GoogleCloudDatacatalogV1beta1ListPolicyTagsResponse",
@@ -2963,7 +3565,7 @@ function __c11(j: number): any {
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(1).pipe(T.HttpBody())),
+          body: S.optional(GoogleCloudDatacatalogV1beta1EntryGroup.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2979,7 +3581,7 @@ function __c11(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(17).pipe(T.HttpBody())),
+          body: S.optional(GoogleCloudDatacatalogV1beta1Entry.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2995,7 +3597,7 @@ function __c11(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(22).pipe(T.HttpBody())),
+          body: S.optional(GoogleCloudDatacatalogV1beta1Tag.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3011,7 +3613,7 @@ function __c11(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(22).pipe(T.HttpBody())),
+          body: S.optional(GoogleCloudDatacatalogV1beta1Tag.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3027,7 +3629,7 @@ function __c11(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(30).pipe(T.HttpBody())),
+          body: S.optional(GoogleCloudDatacatalogV1beta1TagTemplate.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3043,7 +3645,7 @@ function __c11(j: number): any {
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(28).pipe(T.HttpBody())),
+          body: S.optional(GoogleCloudDatacatalogV1beta1TagTemplateField.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3063,7 +3665,7 @@ function __c12(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(35).pipe(T.HttpBody())),
+          body: S.optional(GoogleCloudDatacatalogV1beta1Taxonomy.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3079,7 +3681,7 @@ function __c12(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(37).pipe(T.HttpBody())),
+          body: S.optional(GoogleCloudDatacatalogV1beta1PolicyTag.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3102,7 +3704,9 @@ function __c12(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(98).pipe(T.HttpBody())),
+          body: S.optional(
+            GoogleCloudDatacatalogV1beta1RenameTagTemplateFieldRequest.pipe(T.HttpBody()),
+          ),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3125,7 +3729,9 @@ function __c12(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(100).pipe(T.HttpBody())),
+          body: S.optional(
+            GoogleCloudDatacatalogV1beta1RenameTagTemplateFieldEnumValueRequest.pipe(T.HttpBody()),
+          ),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3139,9 +3745,9 @@ function __c12(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          includeOrgIds: S.optional(__S(5)),
-          includeProjectIds: S.optional(__S(5)),
-          restrictedLocations: S.optional(__S(5)),
+          includeOrgIds: S.optional(StringList),
+          includeProjectIds: S.optional(StringList),
+          restrictedLocations: S.optional(StringList),
           includeGcpPublicDatasets: S.optional(S.Boolean),
         }),
       ).annotate({
@@ -3152,7 +3758,7 @@ function __c12(j: number): any {
         S.Struct({
           pageSize: S.optional(S.Number),
           orderBy: S.optional(S.String),
-          scope: S.optional(__S(102)),
+          scope: S.optional(GoogleCloudDatacatalogV1beta1SearchCatalogRequestScope),
           query: S.optional(S.String),
           pageToken: S.optional(S.String),
         }),
@@ -3166,7 +3772,7 @@ function __c13(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(__S(103).pipe(T.HttpBody())),
+          body: S.optional(GoogleCloudDatacatalogV1beta1SearchCatalogRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3182,18 +3788,20 @@ function __c13(j: number): any {
           searchResultSubtype: S.optional(S.String),
           relativeResourceName: S.optional(S.String),
           linkedResource: S.optional(S.String),
-          searchResultType: S.optional(S.String),
+          searchResultType: S.optional(
+            GoogleCloudDatacatalogV1beta1SearchCatalogResultSearchResultTypeEnum,
+          ),
         }),
       ).annotate({
         identifier: "GoogleCloudDatacatalogV1beta1SearchCatalogResult",
       });
     case 2:
-      return S.Array(__S(105));
+      return S.Array(GoogleCloudDatacatalogV1beta1SearchCatalogResult);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          unreachable: S.optional(__S(5)),
-          results: S.optional(__S(106)),
+          unreachable: S.optional(StringList),
+          results: S.optional(GoogleCloudDatacatalogV1beta1SearchCatalogResultList),
           totalSize: S.optional(S.Number),
           nextPageToken: S.optional(S.String),
         }),
@@ -3203,14 +3811,14 @@ function __c13(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          policy: S.optional(__S(60)),
+          policy: S.optional(Policy),
         }),
       ).annotate({ identifier: "SetIamPolicyRequest" });
     case 5:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(108).pipe(T.HttpBody())),
+          body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3225,7 +3833,7 @@ function __c13(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(108).pipe(T.HttpBody())),
+          body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3240,7 +3848,7 @@ function __c13(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(108).pipe(T.HttpBody())),
+          body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3259,7 +3867,7 @@ function __c14(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(108).pipe(T.HttpBody())),
+          body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3273,7 +3881,7 @@ function __c14(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          permissions: S.optional(__S(5)),
+          permissions: S.optional(StringList),
         }),
       ).annotate({
         identifier: "TestIamPermissionsRequest",
@@ -3282,7 +3890,7 @@ function __c14(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(113).pipe(T.HttpBody())),
+          body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3297,7 +3905,7 @@ function __c14(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(113).pipe(T.HttpBody())),
+          body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3312,7 +3920,7 @@ function __c14(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(113).pipe(T.HttpBody())),
+          body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3327,7 +3935,7 @@ function __c14(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(113).pipe(T.HttpBody())),
+          body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3342,7 +3950,7 @@ function __c14(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(113).pipe(T.HttpBody())),
+          body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3353,44 +3961,5 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "TestIamPermissionsProjectsLocationsTaxonomiesPolicyTagsRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
-    case 9:
-      return __c9(i & 7);
-    case 10:
-      return __c10(i & 7);
-    case 11:
-      return __c11(i & 7);
-    case 12:
-      return __c12(i & 7);
-    case 13:
-      return __c13(i & 7);
-    case 14:
-      return __c14(i & 7);
   }
 }

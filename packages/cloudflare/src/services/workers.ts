@@ -12,8 +12,6 @@ import {
 } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { CloudflareOpError, CloudflareOpContext };
 
@@ -541,9 +539,16 @@ export type ScriptsSecretsBulkUpdateRequestSecretsValueSecretKeyUsagesItem =
   | "deriveBits"
   | "wrapKey"
   | "unwrapKey";
+const ScriptsSecretsBulkUpdateRequestSecretsValueSecretKeyUsagesItem = S.String;
+
 export type ScriptsSecretsBulkUpdateRequestSecretsValueSecretKeyUsagesList = Array<
   ScriptsSecretsBulkUpdateRequestSecretsValueSecretKeyUsagesItem | (string & {})
 >;
+const ScriptsSecretsBulkUpdateRequestSecretsValueSecretKeyUsagesList = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<ScriptsSecretsBulkUpdateRequestSecretsValueSecretKeyUsagesList>;
+
 export interface ScriptsSecretsBulkUpdateRequestSecretsValueSecretKey {
   /** Algorithm-specific key parameters. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#algorithm). */
   algorithm: unknown;
@@ -563,10 +568,22 @@ export interface ScriptsSecretsBulkUpdateRequestSecretsValueSecretKey {
 export type ScriptsSecretsBulkUpdateRequestSecretsValue =
   | ScriptsSecretsBulkUpdateRequestSecretsValueSecretText
   | ScriptsSecretsBulkUpdateRequestSecretsValueSecretKey;
+const ScriptsSecretsBulkUpdateRequestSecretsValue = /*@__PURE__*/ __L.at(__c0, 1);
+
 export type ScriptsSecretsBulkUpdateRequestSecretsMap = {
   [key: string]: ScriptsSecretsBulkUpdateRequestSecretsValue | undefined;
 };
+const ScriptsSecretsBulkUpdateRequestSecretsMap = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<ScriptsSecretsBulkUpdateRequestSecretsMap>;
+
 export type ScriptsSecretsBulkUpdateRequestVersionTagsMap = { [key: string]: unknown | undefined };
+const ScriptsSecretsBulkUpdateRequestVersionTagsMap = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<ScriptsSecretsBulkUpdateRequestVersionTagsMap>;
+
 export interface BulkUpdateScriptSecretsRequest {
   /** Identifier. */
   accountId: string;
@@ -577,6 +594,11 @@ export interface BulkUpdateScriptSecretsRequest {
   /** Optional version tags to apply to the new script version. */
   versionTags?: ScriptsSecretsBulkUpdateRequestVersionTagsMap;
 }
+const BulkUpdateScriptSecretsRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<BulkUpdateScriptSecretsRequest>;
+
 export type ScriptsSecretsBulkUpdateResultValueSecretTextType = "secret_text";
 export interface ScriptsSecretsBulkUpdateResultValueSecretText {
   /** A JavaScript variable name for the binding. */
@@ -618,11 +640,26 @@ export interface ScriptsSecretsBulkUpdateResultValueSecretKey {
 export type ScriptsSecretsBulkUpdateResultValue =
   | ScriptsSecretsBulkUpdateResultValueSecretText
   | ScriptsSecretsBulkUpdateResultValueSecretKey;
+const ScriptsSecretsBulkUpdateResultValue = /*@__PURE__*/ __L.at(__c0, 5);
+
 export type ScriptsSecretsBulkUpdateResultMap = {
   [key: string]: ScriptsSecretsBulkUpdateResultValue | undefined;
 };
+const ScriptsSecretsBulkUpdateResultMap = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<ScriptsSecretsBulkUpdateResultMap>;
+
 export type BulkUpdateScriptSecretsResponse = ScriptsSecretsBulkUpdateResultMap;
+const BulkUpdateScriptSecretsResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<BulkUpdateScriptSecretsResponse>;
+
 export type CreateAssetUploadBodyMap = { [key: string]: unknown | undefined };
+const CreateAssetUploadBodyMap =
+  ScriptsSecretsBulkUpdateRequestVersionTagsMap as any as S.Schema<CreateAssetUploadBodyMap>;
+
 export interface CreateAssetUploadRequest {
   /** Identifier. */
   accountId: string;
@@ -633,16 +670,36 @@ export interface CreateAssetUploadRequest {
   /** Asset-upload session JWT (sent as Bearer Authorization). */
   jwtToken?: string;
 }
+const CreateAssetUploadRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<CreateAssetUploadRequest>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateAssetUploadResponse {
   /** A "completion" JWT which can be redeemed when creating a Worker version. */
   jwt?: string | null;
 }
+const CreateAssetUploadResponse = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<CreateAssetUploadResponse>;
+
 export interface BetaWorkersCreateRequestObservabilityIssues {
   /** Whether real-time Issues are enabled for the Worker. */
   enabled?: boolean;
 }
+const BetaWorkersCreateRequestObservabilityIssues = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<BetaWorkersCreateRequestObservabilityIssues>;
+
 export type BetaWorkersCreateRequestObservabilityLogsDestinationsList = Array<string>;
+const BetaWorkersCreateRequestObservabilityLogsDestinationsList = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<BetaWorkersCreateRequestObservabilityLogsDestinationsList>;
+
 export interface BetaWorkersCreateRequestObservabilityLogs {
   /** A list of destinations where logs will be exported to. */
   destinations?: BetaWorkersCreateRequestObservabilityLogsDestinationsList;
@@ -655,10 +712,20 @@ export interface BetaWorkersCreateRequestObservabilityLogs {
   /** Whether log persistence is enabled for the Worker. */
   persist?: boolean;
 }
+const BetaWorkersCreateRequestObservabilityLogs = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<BetaWorkersCreateRequestObservabilityLogs>;
+
 export type BetaWorkersCreateRequestObservabilityTracesDestinationsList = Array<string>;
+const BetaWorkersCreateRequestObservabilityTracesDestinationsList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<BetaWorkersCreateRequestObservabilityTracesDestinationsList>;
+
 export type BetaWorkersCreateRequestObservabilityTracesPropagationPolicy =
   | "authenticated"
   | "accept";
+const BetaWorkersCreateRequestObservabilityTracesPropagationPolicy = S.String;
+
 export interface BetaWorkersCreateRequestObservabilityTraces {
   /** A list of destinations where traces will be exported to. */
   destinations?: BetaWorkersCreateRequestObservabilityTracesDestinationsList;
@@ -671,6 +738,11 @@ export interface BetaWorkersCreateRequestObservabilityTraces {
   /** Controls how inbound trace context (traceparent/tracestate) headers on incoming requests are handled. "authenticated" honors inbound trace context only when accompanied by a valid trace auth token. "accept" unconditionally accepts inbound trace context. Requires the trace propagation feature to be enabled. Returns null when the trace propagation feature is not enabled for the account. */
   propagationPolicy?: BetaWorkersCreateRequestObservabilityTracesPropagationPolicy | (string & {});
 }
+const BetaWorkersCreateRequestObservabilityTraces = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<BetaWorkersCreateRequestObservabilityTraces>;
+
 export interface BetaWorkersCreateRequestObservability {
   /** Whether observability is enabled for the Worker. */
   enabled?: boolean;
@@ -685,29 +757,60 @@ export interface BetaWorkersCreateRequestObservability {
   /** Trace settings for the Worker. */
   traces?: BetaWorkersCreateRequestObservabilityTraces;
 }
+const BetaWorkersCreateRequestObservability = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<BetaWorkersCreateRequestObservability>;
+
 export interface BetaWorkersCreateRequestPreviewsBaseConfigCacheOptions {
   /** Whether caching is enabled for this Worker. */
   enabled: boolean;
   /** Whether cached responses are shared across Worker version uploads. This is independent of `enabled`. It can stay true while caching is off, so the preference survives turning caching off and back on. */
   crossVersionCache?: boolean;
 }
+const BetaWorkersCreateRequestPreviewsBaseConfigCacheOptions = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<BetaWorkersCreateRequestPreviewsBaseConfigCacheOptions>;
+
 export interface BetaWorkersCreateRequestPreviewsBaseConfigEnvValue {
   /** The kind of resource that the binding provides. */
   type: string;
 }
+const BetaWorkersCreateRequestPreviewsBaseConfigEnvValue = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<BetaWorkersCreateRequestPreviewsBaseConfigEnvValue>;
+
 export type BetaWorkersCreateRequestPreviewsBaseConfigEnvMap = {
   [key: string]: BetaWorkersCreateRequestPreviewsBaseConfigEnvValue | undefined;
 };
+const BetaWorkersCreateRequestPreviewsBaseConfigEnvMap = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<BetaWorkersCreateRequestPreviewsBaseConfigEnvMap>;
+
 export interface BetaWorkersCreateRequestPreviewsBaseConfigLimits {
   /** The amount of CPU time this Worker can use in milliseconds. */
   cpuMs?: number;
   /** The number of subrequests this Worker can make per request. */
   subrequests?: number;
 }
+const BetaWorkersCreateRequestPreviewsBaseConfigLimits = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<BetaWorkersCreateRequestPreviewsBaseConfigLimits>;
+
 export type BetaWorkersCreateRequestPreviewsBaseConfigObservabilityIssues =
   BetaWorkersCreateRequestObservabilityIssues;
 export type BetaWorkersCreateRequestPreviewsBaseConfigObservabilityLogsDestinationsList =
   Array<string>;
+const BetaWorkersCreateRequestPreviewsBaseConfigObservabilityLogsDestinationsList =
+  /*@__PURE__*/ __L.at(
+    __c2,
+    3,
+  ) as any as S.Schema<BetaWorkersCreateRequestPreviewsBaseConfigObservabilityLogsDestinationsList>;
+
 export interface BetaWorkersCreateRequestPreviewsBaseConfigObservabilityLogs {
   /** A list of destinations where logs will be exported to. */
   destinations?: BetaWorkersCreateRequestPreviewsBaseConfigObservabilityLogsDestinationsList;
@@ -720,11 +823,21 @@ export interface BetaWorkersCreateRequestPreviewsBaseConfigObservabilityLogs {
   /** Whether log persistence is enabled for the Worker. */
   persist?: boolean;
 }
+const BetaWorkersCreateRequestPreviewsBaseConfigObservabilityLogs = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<BetaWorkersCreateRequestPreviewsBaseConfigObservabilityLogs>;
+
 export type BetaWorkersCreateRequestPreviewsBaseConfigObservabilityTracesDestinationsList =
   Array<string>;
+const BetaWorkersCreateRequestPreviewsBaseConfigObservabilityTracesDestinationsList =
+  BetaWorkersCreateRequestPreviewsBaseConfigObservabilityLogsDestinationsList as any as S.Schema<BetaWorkersCreateRequestPreviewsBaseConfigObservabilityTracesDestinationsList>;
+
 export type BetaWorkersCreateRequestPreviewsBaseConfigObservabilityTracesPropagationPolicy =
   | "authenticated"
   | "accept";
+const BetaWorkersCreateRequestPreviewsBaseConfigObservabilityTracesPropagationPolicy = S.String;
+
 export interface BetaWorkersCreateRequestPreviewsBaseConfigObservabilityTraces {
   /** A list of destinations where traces will be exported to. */
   destinations?: BetaWorkersCreateRequestPreviewsBaseConfigObservabilityTracesDestinationsList;
@@ -739,6 +852,11 @@ export interface BetaWorkersCreateRequestPreviewsBaseConfigObservabilityTraces {
     | BetaWorkersCreateRequestPreviewsBaseConfigObservabilityTracesPropagationPolicy
     | (string & {});
 }
+const BetaWorkersCreateRequestPreviewsBaseConfigObservabilityTraces = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<BetaWorkersCreateRequestPreviewsBaseConfigObservabilityTraces>;
+
 export interface BetaWorkersCreateRequestPreviewsBaseConfigObservability {
   /** Whether observability is enabled for the Worker. */
   enabled?: boolean;
@@ -753,6 +871,11 @@ export interface BetaWorkersCreateRequestPreviewsBaseConfigObservability {
   /** Trace settings for the Worker. */
   traces?: BetaWorkersCreateRequestPreviewsBaseConfigObservabilityTraces;
 }
+const BetaWorkersCreateRequestPreviewsBaseConfigObservability = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<BetaWorkersCreateRequestPreviewsBaseConfigObservability>;
+
 export type BetaWorkersCreateRequestPreviewsBaseConfigPlacementModeMode = "smart";
 export interface BetaWorkersCreateRequestPreviewsBaseConfigPlacementMode {
   /** Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
@@ -823,12 +946,24 @@ export type BetaWorkersCreateRequestPreviewsBaseConfigPlacement =
   | BetaWorkersCreateRequestPreviewsBaseConfigPlacementCase5
   | BetaWorkersCreateRequestPreviewsBaseConfigPlacementCase6
   | BetaWorkersCreateRequestPreviewsBaseConfigPlacementCase7;
+const BetaWorkersCreateRequestPreviewsBaseConfigPlacement = /*@__PURE__*/ __L.at(__c2, 7);
+
 export interface BetaWorkersCreateRequestPreviewsBaseConfigTailConsumersItem {
   /** Name of the consumer Worker. */
   name: string;
 }
+const BetaWorkersCreateRequestPreviewsBaseConfigTailConsumersItem = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<BetaWorkersCreateRequestPreviewsBaseConfigTailConsumersItem>;
+
 export type BetaWorkersCreateRequestPreviewsBaseConfigTailConsumersList =
   Array<BetaWorkersCreateRequestPreviewsBaseConfigTailConsumersItem>;
+const BetaWorkersCreateRequestPreviewsBaseConfigTailConsumersList = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<BetaWorkersCreateRequestPreviewsBaseConfigTailConsumersList>;
+
 export interface BetaWorkersCreateRequestPreviewsBaseConfig {
   /** Cache options used when creating new Previews. */
   cacheOptions?: BetaWorkersCreateRequestPreviewsBaseConfigCacheOptions;
@@ -845,6 +980,11 @@ export interface BetaWorkersCreateRequestPreviewsBaseConfig {
   /** Other Workers that should consume logs from newly created Previews. */
   tailConsumers?: BetaWorkersCreateRequestPreviewsBaseConfigTailConsumersList;
 }
+const BetaWorkersCreateRequestPreviewsBaseConfig = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<BetaWorkersCreateRequestPreviewsBaseConfig>;
+
 export interface BetaWorkersCreateRequestSubdomain {
   /** Whether the *.workers.dev subdomain is enabled for the Worker. */
   enabled?: boolean;
@@ -855,11 +995,22 @@ export interface BetaWorkersCreateRequestSubdomain {
   /** The address the Worker would serve on once its *.workers.dev subdomain is enabled. Present whenever the account owns a workers.dev subdomain, regardless of whether `enabled` is true, so presence does not imply the Worker is currently live at this URL. Absent only when the account owns no workers.dev subdomain. */
   url?: string;
 }
+const BetaWorkersCreateRequestSubdomain = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<BetaWorkersCreateRequestSubdomain>;
+
 export type BetaWorkersCreateRequestTagsList = Array<string>;
+const BetaWorkersCreateRequestTagsList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<BetaWorkersCreateRequestTagsList>;
+
 export type BetaWorkersCreateRequestTailConsumersItem =
   BetaWorkersCreateRequestPreviewsBaseConfigTailConsumersItem;
 export type BetaWorkersCreateRequestTailConsumersList =
   Array<BetaWorkersCreateRequestPreviewsBaseConfigTailConsumersItem>;
+const BetaWorkersCreateRequestTailConsumersList =
+  BetaWorkersCreateRequestPreviewsBaseConfigTailConsumersList as any as S.Schema<BetaWorkersCreateRequestTailConsumersList>;
+
 export interface CreateBetaWorkerRequest {
   /** Identifier. */
   accountId: string;
@@ -878,11 +1029,24 @@ export interface CreateBetaWorkerRequest {
   /** Other Workers that should consume logs from the Worker. */
   tailConsumers?: BetaWorkersCreateRequestTailConsumersList;
 }
+const CreateBetaWorkerRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<CreateBetaWorkerRequest>;
+
 export interface BetaWorkersCreateResponseObservabilityIssues {
   /** Whether real-time Issues are enabled for the Worker. */
   enabled?: boolean | null;
 }
+const BetaWorkersCreateResponseObservabilityIssues = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<BetaWorkersCreateResponseObservabilityIssues>;
+
 export type BetaWorkersCreateResponseObservabilityLogsDestinationsList = Array<string>;
+const BetaWorkersCreateResponseObservabilityLogsDestinationsList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<BetaWorkersCreateResponseObservabilityLogsDestinationsList>;
+
 export interface BetaWorkersCreateResponseObservabilityLogs {
   /** A list of destinations where logs will be exported to. */
   destinations?: BetaWorkersCreateResponseObservabilityLogsDestinationsList | null;
@@ -895,10 +1059,20 @@ export interface BetaWorkersCreateResponseObservabilityLogs {
   /** Whether log persistence is enabled for the Worker. */
   persist?: boolean | null;
 }
+const BetaWorkersCreateResponseObservabilityLogs = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<BetaWorkersCreateResponseObservabilityLogs>;
+
 export type BetaWorkersCreateResponseObservabilityTracesDestinationsList = Array<string>;
+const BetaWorkersCreateResponseObservabilityTracesDestinationsList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<BetaWorkersCreateResponseObservabilityTracesDestinationsList>;
+
 export type BetaWorkersCreateResponseObservabilityTracesPropagationPolicy =
   | "authenticated"
   | "accept";
+const BetaWorkersCreateResponseObservabilityTracesPropagationPolicy = S.String;
+
 export interface BetaWorkersCreateResponseObservabilityTraces {
   /** A list of destinations where traces will be exported to. */
   destinations?: BetaWorkersCreateResponseObservabilityTracesDestinationsList | null;
@@ -911,6 +1085,11 @@ export interface BetaWorkersCreateResponseObservabilityTraces {
   /** Controls how inbound trace context (traceparent/tracestate) headers on incoming requests are handled. "authenticated" honors inbound trace context only when accompanied by a valid trace auth token. "accept" unconditionally accepts inbound trace context. Requires the trace propagation feature to be enabled. Returns null when the trace propagation feature is not enabled for the account. */
   propagationPolicy?: BetaWorkersCreateResponseObservabilityTracesPropagationPolicy | null;
 }
+const BetaWorkersCreateResponseObservabilityTraces = /*@__PURE__*/ __L.at(
+  __c3,
+  7,
+) as any as S.Schema<BetaWorkersCreateResponseObservabilityTraces>;
+
 export interface BetaWorkersCreateResponseObservability {
   /** Whether observability is enabled for the Worker. */
   enabled?: boolean | null;
@@ -925,6 +1104,11 @@ export interface BetaWorkersCreateResponseObservability {
   /** Trace settings for the Worker. */
   traces?: BetaWorkersCreateResponseObservabilityTraces | null;
 }
+const BetaWorkersCreateResponseObservability = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<BetaWorkersCreateResponseObservability>;
+
 export interface BetaWorkersCreateResponseReferencesDispatchNamespaceOutboundsItem {
   /** ID of the dispatch namespace. */
   namespaceId: string;
@@ -935,8 +1119,18 @@ export interface BetaWorkersCreateResponseReferencesDispatchNamespaceOutboundsIt
   /** Name of the Worker using the dispatch namespace. */
   workerName: string;
 }
+const BetaWorkersCreateResponseReferencesDispatchNamespaceOutboundsItem = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<BetaWorkersCreateResponseReferencesDispatchNamespaceOutboundsItem>;
+
 export type BetaWorkersCreateResponseReferencesDispatchNamespaceOutboundsList =
   Array<BetaWorkersCreateResponseReferencesDispatchNamespaceOutboundsItem>;
+const BetaWorkersCreateResponseReferencesDispatchNamespaceOutboundsList = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<BetaWorkersCreateResponseReferencesDispatchNamespaceOutboundsList>;
+
 export interface BetaWorkersCreateResponseReferencesDomainsItem {
   /** ID of the custom domain. */
   id: string;
@@ -949,8 +1143,18 @@ export interface BetaWorkersCreateResponseReferencesDomainsItem {
   /** Name of the zone. */
   zoneName: string;
 }
+const BetaWorkersCreateResponseReferencesDomainsItem = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<BetaWorkersCreateResponseReferencesDomainsItem>;
+
 export type BetaWorkersCreateResponseReferencesDomainsList =
   Array<BetaWorkersCreateResponseReferencesDomainsItem>;
+const BetaWorkersCreateResponseReferencesDomainsList = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<BetaWorkersCreateResponseReferencesDomainsList>;
+
 export interface BetaWorkersCreateResponseReferencesDurableObjectsItem {
   /** ID of the Durable Object namespace being used. */
   namespaceId: string;
@@ -961,8 +1165,18 @@ export interface BetaWorkersCreateResponseReferencesDurableObjectsItem {
   /** Name of the Worker using the Durable Object implementation. */
   workerName: string;
 }
+const BetaWorkersCreateResponseReferencesDurableObjectsItem = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<BetaWorkersCreateResponseReferencesDurableObjectsItem>;
+
 export type BetaWorkersCreateResponseReferencesDurableObjectsList =
   Array<BetaWorkersCreateResponseReferencesDurableObjectsItem>;
+const BetaWorkersCreateResponseReferencesDurableObjectsList = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<BetaWorkersCreateResponseReferencesDurableObjectsList>;
+
 export interface BetaWorkersCreateResponseReferencesQueuesItem {
   /** ID of the queue consumer configuration. */
   queueConsumerId: string;
@@ -971,16 +1185,36 @@ export interface BetaWorkersCreateResponseReferencesQueuesItem {
   /** Name of the queue. */
   queueName: string;
 }
+const BetaWorkersCreateResponseReferencesQueuesItem = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<BetaWorkersCreateResponseReferencesQueuesItem>;
+
 export type BetaWorkersCreateResponseReferencesQueuesList =
   Array<BetaWorkersCreateResponseReferencesQueuesItem>;
+const BetaWorkersCreateResponseReferencesQueuesList = /*@__PURE__*/ __L.at(
+  __c5,
+  0,
+) as any as S.Schema<BetaWorkersCreateResponseReferencesQueuesList>;
+
 export interface BetaWorkersCreateResponseReferencesWorkersItem {
   /** ID of the referencing Worker. */
   id: string;
   /** Name of the referencing Worker. */
   name: string;
 }
+const BetaWorkersCreateResponseReferencesWorkersItem = /*@__PURE__*/ __L.at(
+  __c5,
+  1,
+) as any as S.Schema<BetaWorkersCreateResponseReferencesWorkersItem>;
+
 export type BetaWorkersCreateResponseReferencesWorkersList =
   Array<BetaWorkersCreateResponseReferencesWorkersItem>;
+const BetaWorkersCreateResponseReferencesWorkersList = /*@__PURE__*/ __L.at(
+  __c5,
+  2,
+) as any as S.Schema<BetaWorkersCreateResponseReferencesWorkersList>;
+
 export interface BetaWorkersCreateResponseReferences {
   /** Other Workers that reference the Worker as an outbound for a dispatch namespace. */
   dispatchNamespaceOutbounds: BetaWorkersCreateResponseReferencesDispatchNamespaceOutboundsList;
@@ -993,6 +1227,11 @@ export interface BetaWorkersCreateResponseReferences {
   /** Other Workers that reference the Worker using [service bindings](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/). */
   workers: BetaWorkersCreateResponseReferencesWorkersList;
 }
+const BetaWorkersCreateResponseReferences = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<BetaWorkersCreateResponseReferences>;
+
 export interface BetaWorkersCreateResponseSubdomain {
   /** Whether the *.workers.dev subdomain is enabled for the Worker. */
   enabled?: boolean | null;
@@ -1003,32 +1242,59 @@ export interface BetaWorkersCreateResponseSubdomain {
   /** The address the Worker would serve on once its *.workers.dev subdomain is enabled. Present whenever the account owns a workers.dev subdomain, regardless of whether `enabled` is true, so presence does not imply the Worker is currently live at this URL. Absent only when the account owns no workers.dev subdomain. */
   url?: string | null;
 }
+const BetaWorkersCreateResponseSubdomain = /*@__PURE__*/ __L.at(
+  __c5,
+  4,
+) as any as S.Schema<BetaWorkersCreateResponseSubdomain>;
+
 export type BetaWorkersCreateResponseTagsList = Array<string>;
+const BetaWorkersCreateResponseTagsList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<BetaWorkersCreateResponseTagsList>;
+
 export type BetaWorkersCreateResponseTailConsumersItem =
   BetaWorkersCreateRequestPreviewsBaseConfigTailConsumersItem;
 export type BetaWorkersCreateResponseTailConsumersList =
   Array<BetaWorkersCreateRequestPreviewsBaseConfigTailConsumersItem>;
+const BetaWorkersCreateResponseTailConsumersList =
+  BetaWorkersCreateRequestPreviewsBaseConfigTailConsumersList as any as S.Schema<BetaWorkersCreateResponseTailConsumersList>;
+
 export interface BetaWorkersCreateResponsePreviewsBaseConfigCacheOptions {
   /** Whether caching is enabled for this Worker. */
   enabled: boolean;
   /** Whether cached responses are shared across Worker version uploads. This is independent of `enabled`. It can stay true while caching is off, so the preference survives turning caching off and back on. */
   crossVersionCache?: boolean | null;
 }
+const BetaWorkersCreateResponsePreviewsBaseConfigCacheOptions = /*@__PURE__*/ __L.at(
+  __c5,
+  5,
+) as any as S.Schema<BetaWorkersCreateResponsePreviewsBaseConfigCacheOptions>;
+
 export type BetaWorkersCreateResponsePreviewsBaseConfigEnvValue =
   BetaWorkersCreateRequestPreviewsBaseConfigEnvValue;
 export type BetaWorkersCreateResponsePreviewsBaseConfigEnvMap = {
   [key: string]: BetaWorkersCreateRequestPreviewsBaseConfigEnvValue | undefined;
 };
+const BetaWorkersCreateResponsePreviewsBaseConfigEnvMap =
+  BetaWorkersCreateRequestPreviewsBaseConfigEnvMap as any as S.Schema<BetaWorkersCreateResponsePreviewsBaseConfigEnvMap>;
+
 export interface BetaWorkersCreateResponsePreviewsBaseConfigLimits {
   /** The amount of CPU time this Worker can use in milliseconds. */
   cpuMs?: number | null;
   /** The number of subrequests this Worker can make per request. */
   subrequests?: number | null;
 }
+const BetaWorkersCreateResponsePreviewsBaseConfigLimits = /*@__PURE__*/ __L.at(
+  __c5,
+  6,
+) as any as S.Schema<BetaWorkersCreateResponsePreviewsBaseConfigLimits>;
+
 export type BetaWorkersCreateResponsePreviewsBaseConfigObservabilityIssues =
   BetaWorkersCreateResponseObservabilityIssues;
 export type BetaWorkersCreateResponsePreviewsBaseConfigObservabilityLogsDestinationsList =
   Array<string>;
+const BetaWorkersCreateResponsePreviewsBaseConfigObservabilityLogsDestinationsList =
+  BetaWorkersCreateRequestPreviewsBaseConfigObservabilityLogsDestinationsList as any as S.Schema<BetaWorkersCreateResponsePreviewsBaseConfigObservabilityLogsDestinationsList>;
+
 export interface BetaWorkersCreateResponsePreviewsBaseConfigObservabilityLogs {
   /** A list of destinations where logs will be exported to. */
   destinations?: BetaWorkersCreateResponsePreviewsBaseConfigObservabilityLogsDestinationsList | null;
@@ -1041,11 +1307,21 @@ export interface BetaWorkersCreateResponsePreviewsBaseConfigObservabilityLogs {
   /** Whether log persistence is enabled for the Worker. */
   persist?: boolean | null;
 }
+const BetaWorkersCreateResponsePreviewsBaseConfigObservabilityLogs = /*@__PURE__*/ __L.at(
+  __c5,
+  7,
+) as any as S.Schema<BetaWorkersCreateResponsePreviewsBaseConfigObservabilityLogs>;
+
 export type BetaWorkersCreateResponsePreviewsBaseConfigObservabilityTracesDestinationsList =
   Array<string>;
+const BetaWorkersCreateResponsePreviewsBaseConfigObservabilityTracesDestinationsList =
+  BetaWorkersCreateRequestPreviewsBaseConfigObservabilityLogsDestinationsList as any as S.Schema<BetaWorkersCreateResponsePreviewsBaseConfigObservabilityTracesDestinationsList>;
+
 export type BetaWorkersCreateResponsePreviewsBaseConfigObservabilityTracesPropagationPolicy =
   | "authenticated"
   | "accept";
+const BetaWorkersCreateResponsePreviewsBaseConfigObservabilityTracesPropagationPolicy = S.String;
+
 export interface BetaWorkersCreateResponsePreviewsBaseConfigObservabilityTraces {
   /** A list of destinations where traces will be exported to. */
   destinations?: BetaWorkersCreateResponsePreviewsBaseConfigObservabilityTracesDestinationsList | null;
@@ -1058,6 +1334,11 @@ export interface BetaWorkersCreateResponsePreviewsBaseConfigObservabilityTraces 
   /** Controls how inbound trace context (traceparent/tracestate) headers on incoming requests are handled. "authenticated" honors inbound trace context only when accompanied by a valid trace auth token. "accept" unconditionally accepts inbound trace context. Requires the trace propagation feature to be enabled. Returns null when the trace propagation feature is not enabled for the account. */
   propagationPolicy?: BetaWorkersCreateResponsePreviewsBaseConfigObservabilityTracesPropagationPolicy | null;
 }
+const BetaWorkersCreateResponsePreviewsBaseConfigObservabilityTraces = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<BetaWorkersCreateResponsePreviewsBaseConfigObservabilityTraces>;
+
 export interface BetaWorkersCreateResponsePreviewsBaseConfigObservability {
   /** Whether observability is enabled for the Worker. */
   enabled?: boolean | null;
@@ -1072,6 +1353,11 @@ export interface BetaWorkersCreateResponsePreviewsBaseConfigObservability {
   /** Trace settings for the Worker. */
   traces?: BetaWorkersCreateResponsePreviewsBaseConfigObservabilityTraces | null;
 }
+const BetaWorkersCreateResponsePreviewsBaseConfigObservability = /*@__PURE__*/ __L.at(
+  __c6,
+  1,
+) as any as S.Schema<BetaWorkersCreateResponsePreviewsBaseConfigObservability>;
+
 export type BetaWorkersCreateResponsePreviewsBaseConfigPlacementModeMode = "smart";
 export interface BetaWorkersCreateResponsePreviewsBaseConfigPlacementMode {
   /** Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
@@ -1132,10 +1418,15 @@ export type BetaWorkersCreateResponsePreviewsBaseConfigPlacement =
   | BetaWorkersCreateResponsePreviewsBaseConfigPlacementCase5
   | BetaWorkersCreateResponsePreviewsBaseConfigPlacementCase6
   | BetaWorkersCreateResponsePreviewsBaseConfigPlacementCase7;
+const BetaWorkersCreateResponsePreviewsBaseConfigPlacement = /*@__PURE__*/ __L.at(__c6, 2);
+
 export type BetaWorkersCreateResponsePreviewsBaseConfigTailConsumersItem =
   BetaWorkersCreateRequestPreviewsBaseConfigTailConsumersItem;
 export type BetaWorkersCreateResponsePreviewsBaseConfigTailConsumersList =
   Array<BetaWorkersCreateRequestPreviewsBaseConfigTailConsumersItem>;
+const BetaWorkersCreateResponsePreviewsBaseConfigTailConsumersList =
+  BetaWorkersCreateRequestPreviewsBaseConfigTailConsumersList as any as S.Schema<BetaWorkersCreateResponsePreviewsBaseConfigTailConsumersList>;
+
 export interface BetaWorkersCreateResponsePreviewsBaseConfig {
   /** Cache options used when creating new Previews. */
   cacheOptions?: BetaWorkersCreateResponsePreviewsBaseConfigCacheOptions | null;
@@ -1152,6 +1443,11 @@ export interface BetaWorkersCreateResponsePreviewsBaseConfig {
   /** Other Workers that should consume logs from newly created Previews. */
   tailConsumers?: BetaWorkersCreateResponsePreviewsBaseConfigTailConsumersList | null;
 }
+const BetaWorkersCreateResponsePreviewsBaseConfig = /*@__PURE__*/ __L.at(
+  __c6,
+  3,
+) as any as S.Schema<BetaWorkersCreateResponsePreviewsBaseConfig>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateBetaWorkerResponse {
   /** Immutable ID of the Worker. */
@@ -1179,6 +1475,11 @@ export interface CreateBetaWorkerResponse {
   /** Template configuration used when creating new Previews for this Worker. */
   previewsBaseConfig?: BetaWorkersCreateResponsePreviewsBaseConfig | null;
 }
+const CreateBetaWorkerResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  4,
+) as any as S.Schema<CreateBetaWorkerResponse>;
+
 export interface BetaWorkersVersionsCreateRequestAnnotations {
   /** Human-readable message about the version. Truncated to 1000 bytes if longer. */
   workersMessage?: string;
@@ -1187,19 +1488,30 @@ export interface BetaWorkersVersionsCreateRequestAnnotations {
   /** Operation that triggered the creation of the version. */
   workersTriggeredBy?: string;
 }
+const BetaWorkersVersionsCreateRequestAnnotations = /*@__PURE__*/ __L.at(
+  __c6,
+  5,
+) as any as S.Schema<BetaWorkersVersionsCreateRequestAnnotations>;
+
 export type BetaWorkersVersionsCreateRequestAssetsConfigHtmlHandling =
   | "auto-trailing-slash"
   | "force-trailing-slash"
   | "drop-trailing-slash"
   | "none";
+const BetaWorkersVersionsCreateRequestAssetsConfigHtmlHandling = S.String;
+
 export type BetaWorkersVersionsCreateRequestAssetsConfigNotFoundHandling =
   | "none"
   | "404-page"
   | "single-page-application";
+const BetaWorkersVersionsCreateRequestAssetsConfigNotFoundHandling = S.String;
+
 export type BetaWorkersVersionsCreateRequestAssetsConfigRunWorkerFirstCase0List = Array<string>;
 export type BetaWorkersVersionsCreateRequestAssetsConfigRunWorkerFirst =
   | boolean
   | BetaWorkersVersionsCreateRequestAssetsConfigRunWorkerFirstCase0List;
+const BetaWorkersVersionsCreateRequestAssetsConfigRunWorkerFirst = /*@__PURE__*/ __L.at(__c6, 6);
+
 export interface BetaWorkersVersionsCreateRequestAssetsConfig {
   /** The public URL path prefix under which assets are served. A null request value resets it to `/`; responses represent the root as `/`. All versions in a gradual deployment must use the same canonical value. To change it, first deploy the version containing the change at 100%. */
   basePath?: string;
@@ -1210,12 +1522,22 @@ export interface BetaWorkersVersionsCreateRequestAssetsConfig {
   /** Contains a list path rules to control routing to either the Worker or assets. Glob (*) and negative (!) rules are supported. Rules must start with either '/' or '!/'. At least one non-negative rule must be provided, and negative rules have higher precedence than non-negative rules. */
   runWorkerFirst?: BetaWorkersVersionsCreateRequestAssetsConfigRunWorkerFirst;
 }
+const BetaWorkersVersionsCreateRequestAssetsConfig = /*@__PURE__*/ __L.at(
+  __c6,
+  7,
+) as any as S.Schema<BetaWorkersVersionsCreateRequestAssetsConfig>;
+
 export interface BetaWorkersVersionsCreateRequestAssets {
   /** Configuration for assets within a Worker. */
   config?: BetaWorkersVersionsCreateRequestAssetsConfig;
   /** Token provided upon successful upload of all files from a registered manifest. */
   jwt?: string;
 }
+const BetaWorkersVersionsCreateRequestAssets = /*@__PURE__*/ __L.at(
+  __c7,
+  0,
+) as any as S.Schema<BetaWorkersVersionsCreateRequestAssets>;
+
 export type BetaWorkersVersionsCreateRequestBindingsItemAIType = "ai";
 export interface BetaWorkersVersionsCreateRequestBindingsItemAI {
   /** A JavaScript variable name for the binding. */
@@ -1690,25 +2012,52 @@ export type BetaWorkersVersionsCreateRequestBindingsItem =
   | BetaWorkersVersionsCreateRequestBindingsItemWasmModule
   | BetaWorkersVersionsCreateRequestBindingsItemVPCService
   | BetaWorkersVersionsCreateRequestBindingsItemVPCNetwork;
+const BetaWorkersVersionsCreateRequestBindingsItem = /*@__PURE__*/ __L.at(__c7, 1);
+
 export type BetaWorkersVersionsCreateRequestBindingsList =
   Array<BetaWorkersVersionsCreateRequestBindingsItem>;
+const BetaWorkersVersionsCreateRequestBindingsList = /*@__PURE__*/ __L.at(
+  __c7,
+  2,
+) as any as S.Schema<BetaWorkersVersionsCreateRequestBindingsList>;
+
 export type BetaWorkersVersionsCreateRequestCacheOptions =
   BetaWorkersCreateRequestPreviewsBaseConfigCacheOptions;
 export type BetaWorkersVersionsCreateRequestCompatibilityFlagsList = Array<string>;
+const BetaWorkersVersionsCreateRequestCompatibilityFlagsList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<BetaWorkersVersionsCreateRequestCompatibilityFlagsList>;
+
 export type ContainerImageMap = { [key: string]: string | undefined };
+const ContainerImageMap = /*@__PURE__*/ __L.at(__c7, 3) as any as S.Schema<ContainerImageMap>;
+
 export interface BetaWorkersVersionsCreateRequestContainersItem {
   /** Select which Durable Object class should get this container attached. */
   className: string;
   name?: string;
   images?: ContainerImageMap;
 }
+const BetaWorkersVersionsCreateRequestContainersItem = /*@__PURE__*/ __L.at(
+  __c7,
+  4,
+) as any as S.Schema<BetaWorkersVersionsCreateRequestContainersItem>;
+
 export type BetaWorkersVersionsCreateRequestContainersList =
   Array<BetaWorkersVersionsCreateRequestContainersItem>;
+const BetaWorkersVersionsCreateRequestContainersList = /*@__PURE__*/ __L.at(
+  __c7,
+  5,
+) as any as S.Schema<BetaWorkersVersionsCreateRequestContainersList>;
+
 export type BetaWorkersVersionsCreateRequestExportsValueWorkerType = "worker";
 export interface BetaWorkersVersionsCreateRequestExportsValueWorkerCache {
   /** Whether caching is enabled for this entrypoint. */
   enabled: boolean;
 }
+const BetaWorkersVersionsCreateRequestExportsValueWorkerCache = /*@__PURE__*/ __L.at(
+  __c7,
+  6,
+) as any as S.Schema<BetaWorkersVersionsCreateRequestExportsValueWorkerCache>;
+
 export type BetaWorkersVersionsCreateRequestExportsValueWorkerState = "created";
 export interface BetaWorkersVersionsCreateRequestExportsValueWorker {
   /** Marks this entry as a Worker entrypoint export. */
@@ -1800,15 +2149,25 @@ export type BetaWorkersVersionsCreateRequestExportsValue =
   | BetaWorkersVersionsCreateRequestExportsValueWorkersDurableObjectRenamedExport
   | BetaWorkersVersionsCreateRequestExportsValueWorkersDurableObjectTransferredExport
   | BetaWorkersVersionsCreateRequestExportsValueWorkersDurableObjectExpectingTransferExport;
+const BetaWorkersVersionsCreateRequestExportsValue = /*@__PURE__*/ __L.at(__c7, 7);
+
 export type BetaWorkersVersionsCreateRequestExportsMap = {
   [key: string]: BetaWorkersVersionsCreateRequestExportsValue | undefined;
 };
+const BetaWorkersVersionsCreateRequestExportsMap = /*@__PURE__*/ __L.at(
+  __c8,
+  0,
+) as any as S.Schema<BetaWorkersVersionsCreateRequestExportsMap>;
+
 export interface BetaWorkersVersionsCreateRequestLimits {
   /** CPU time limit in milliseconds. */
   cpuMs?: number;
   /** Subrequest limit per request. */
   subrequests?: number;
 }
+const BetaWorkersVersionsCreateRequestLimits =
+  BetaWorkersCreateRequestPreviewsBaseConfigLimits as any as S.Schema<BetaWorkersVersionsCreateRequestLimits>;
+
 export type BetaWorkersVersionsCreateRequestMigrationsSingleStepMigrationDeletedClassesList =
   Array<string>;
 export type BetaWorkersVersionsCreateRequestMigrationsSingleStepMigrationNewClassesList =
@@ -1819,6 +2178,12 @@ export interface BetaWorkersVersionsCreateRequestMigrationsSingleStepMigrationRe
   from?: string;
   to?: string;
 }
+const BetaWorkersVersionsCreateRequestMigrationsSingleStepMigrationRenamedClassesItem =
+  /*@__PURE__*/ __L.at(
+    __c8,
+    1,
+  ) as any as S.Schema<BetaWorkersVersionsCreateRequestMigrationsSingleStepMigrationRenamedClassesItem>;
+
 export type BetaWorkersVersionsCreateRequestMigrationsSingleStepMigrationRenamedClassesList =
   Array<BetaWorkersVersionsCreateRequestMigrationsSingleStepMigrationRenamedClassesItem>;
 export interface BetaWorkersVersionsCreateRequestMigrationsSingleStepMigrationTransferredClassesItem {
@@ -1883,6 +2248,8 @@ export interface BetaWorkersVersionsCreateRequestMigrationsWorkersMultipleStepMi
 export type BetaWorkersVersionsCreateRequestMigrations =
   | BetaWorkersVersionsCreateRequestMigrationsSingleStepMigration
   | BetaWorkersVersionsCreateRequestMigrationsWorkersMultipleStepMigrations;
+const BetaWorkersVersionsCreateRequestMigrations = /*@__PURE__*/ __L.at(__c8, 2);
+
 export interface BetaWorkersVersionsCreateRequestModulesItem {
   /** The base64-encoded module content. */
   contentBase64: string;
@@ -1891,8 +2258,18 @@ export interface BetaWorkersVersionsCreateRequestModulesItem {
   /** The name of the module. */
   name: string;
 }
+const BetaWorkersVersionsCreateRequestModulesItem = /*@__PURE__*/ __L.at(
+  __c8,
+  3,
+) as any as S.Schema<BetaWorkersVersionsCreateRequestModulesItem>;
+
 export type BetaWorkersVersionsCreateRequestModulesList =
   Array<BetaWorkersVersionsCreateRequestModulesItem>;
+const BetaWorkersVersionsCreateRequestModulesList = /*@__PURE__*/ __L.at(
+  __c8,
+  4,
+) as any as S.Schema<BetaWorkersVersionsCreateRequestModulesList>;
+
 export interface BetaWorkersVersionsCreateRequestPackageDependenciesItem {
   /** The exact version that was resolved and installed by the package manager. */
   installedVersion: string;
@@ -1901,8 +2278,18 @@ export interface BetaWorkersVersionsCreateRequestPackageDependenciesItem {
   /** The version constraint as written in package.json. */
   packageJsonVersion: string;
 }
+const BetaWorkersVersionsCreateRequestPackageDependenciesItem = /*@__PURE__*/ __L.at(
+  __c8,
+  5,
+) as any as S.Schema<BetaWorkersVersionsCreateRequestPackageDependenciesItem>;
+
 export type BetaWorkersVersionsCreateRequestPackageDependenciesList =
   Array<BetaWorkersVersionsCreateRequestPackageDependenciesItem>;
+const BetaWorkersVersionsCreateRequestPackageDependenciesList = /*@__PURE__*/ __L.at(
+  __c8,
+  6,
+) as any as S.Schema<BetaWorkersVersionsCreateRequestPackageDependenciesList>;
+
 export type BetaWorkersVersionsCreateRequestPlacementModeMode = "smart";
 export interface BetaWorkersVersionsCreateRequestPlacementMode {
   /** Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
@@ -1963,7 +2350,11 @@ export type BetaWorkersVersionsCreateRequestPlacement =
   | BetaWorkersVersionsCreateRequestPlacementCase5
   | BetaWorkersVersionsCreateRequestPlacementCase6
   | BetaWorkersVersionsCreateRequestPlacementCase7;
+const BetaWorkersVersionsCreateRequestPlacement = /*@__PURE__*/ __L.at(__c8, 7);
+
 export type BetaWorkersVersionsCreateRequestUsageModel = "standard" | "bundled" | "unbound";
+const BetaWorkersVersionsCreateRequestUsageModel = S.String;
+
 export interface CreateBetaWorkerVersionRequest {
   /** Identifier. */
   accountId: string;
@@ -2002,7 +2393,15 @@ export interface CreateBetaWorkerVersionRequest {
   /** Usage model for the version. */
   usageModel?: BetaWorkersVersionsCreateRequestUsageModel | (string & {});
 }
+const CreateBetaWorkerVersionRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  0,
+) as any as S.Schema<CreateBetaWorkerVersionRequest>;
+
 export type BetaWorkersVersionsCreateResponseUrlsList = Array<string>;
+const BetaWorkersVersionsCreateResponseUrlsList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<BetaWorkersVersionsCreateResponseUrlsList>;
+
 export interface BetaWorkersVersionsCreateResponseAnnotations {
   /** Human-readable message about the version. Truncated to 1000 bytes if longer. */
   workersMessage?: string | null;
@@ -2011,19 +2410,30 @@ export interface BetaWorkersVersionsCreateResponseAnnotations {
   /** Operation that triggered the creation of the version. */
   workersTriggeredBy?: string | null;
 }
+const BetaWorkersVersionsCreateResponseAnnotations = /*@__PURE__*/ __L.at(
+  __c9,
+  1,
+) as any as S.Schema<BetaWorkersVersionsCreateResponseAnnotations>;
+
 export type BetaWorkersVersionsCreateResponseAssetsConfigHtmlHandling =
   | "auto-trailing-slash"
   | "force-trailing-slash"
   | "drop-trailing-slash"
   | "none";
+const BetaWorkersVersionsCreateResponseAssetsConfigHtmlHandling = S.String;
+
 export type BetaWorkersVersionsCreateResponseAssetsConfigNotFoundHandling =
   | "none"
   | "404-page"
   | "single-page-application";
+const BetaWorkersVersionsCreateResponseAssetsConfigNotFoundHandling = S.String;
+
 export type BetaWorkersVersionsCreateResponseAssetsConfigRunWorkerFirstCase0List = Array<string>;
 export type BetaWorkersVersionsCreateResponseAssetsConfigRunWorkerFirst =
   | boolean
   | BetaWorkersVersionsCreateResponseAssetsConfigRunWorkerFirstCase0List;
+const BetaWorkersVersionsCreateResponseAssetsConfigRunWorkerFirst = /*@__PURE__*/ __L.at(__c9, 2);
+
 export interface BetaWorkersVersionsCreateResponseAssetsConfig {
   /** The public URL path prefix under which assets are served. A null request value resets it to `/`; responses represent the root as `/`. All versions in a gradual deployment must use the same canonical value. To change it, first deploy the version containing the change at 100%. */
   basePath?: string | null;
@@ -2034,12 +2444,22 @@ export interface BetaWorkersVersionsCreateResponseAssetsConfig {
   /** Contains a list path rules to control routing to either the Worker or assets. Glob (*) and negative (!) rules are supported. Rules must start with either '/' or '!/'. At least one non-negative rule must be provided, and negative rules have higher precedence than non-negative rules. */
   runWorkerFirst?: BetaWorkersVersionsCreateResponseAssetsConfigRunWorkerFirst | null;
 }
+const BetaWorkersVersionsCreateResponseAssetsConfig = /*@__PURE__*/ __L.at(
+  __c9,
+  3,
+) as any as S.Schema<BetaWorkersVersionsCreateResponseAssetsConfig>;
+
 export interface BetaWorkersVersionsCreateResponseAssets {
   /** Configuration for assets within a Worker. */
   config?: BetaWorkersVersionsCreateResponseAssetsConfig | null;
   /** Token provided upon successful upload of all files from a registered manifest. */
   jwt?: string | null;
 }
+const BetaWorkersVersionsCreateResponseAssets = /*@__PURE__*/ __L.at(
+  __c9,
+  4,
+) as any as S.Schema<BetaWorkersVersionsCreateResponseAssets>;
+
 export type BetaWorkersVersionsCreateResponseBindingsItemAIType = "ai";
 export interface BetaWorkersVersionsCreateResponseBindingsItemAI {
   /** A JavaScript variable name for the binding. */
@@ -2511,19 +2931,39 @@ export type BetaWorkersVersionsCreateResponseBindingsItem =
   | BetaWorkersVersionsCreateResponseBindingsItemWasmModule
   | BetaWorkersVersionsCreateResponseBindingsItemVPCService
   | BetaWorkersVersionsCreateResponseBindingsItemVPCNetwork;
+const BetaWorkersVersionsCreateResponseBindingsItem = /*@__PURE__*/ __L.at(__c9, 5);
+
 export type BetaWorkersVersionsCreateResponseBindingsList =
   Array<BetaWorkersVersionsCreateResponseBindingsItem>;
+const BetaWorkersVersionsCreateResponseBindingsList = /*@__PURE__*/ __L.at(
+  __c9,
+  6,
+) as any as S.Schema<BetaWorkersVersionsCreateResponseBindingsList>;
+
 export type BetaWorkersVersionsCreateResponseCacheOptions =
   BetaWorkersCreateResponsePreviewsBaseConfigCacheOptions;
 export type BetaWorkersVersionsCreateResponseCompatibilityFlagsList = Array<string>;
+const BetaWorkersVersionsCreateResponseCompatibilityFlagsList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<BetaWorkersVersionsCreateResponseCompatibilityFlagsList>;
+
 export interface BetaWorkersVersionsCreateResponseContainersItem {
   /** Select which Durable Object class should get this container attached. */
   className: string;
   name?: string | null;
   images?: ContainerImageMap | null;
 }
+const BetaWorkersVersionsCreateResponseContainersItem = /*@__PURE__*/ __L.at(
+  __c9,
+  7,
+) as any as S.Schema<BetaWorkersVersionsCreateResponseContainersItem>;
+
 export type BetaWorkersVersionsCreateResponseContainersList =
   Array<BetaWorkersVersionsCreateResponseContainersItem>;
+const BetaWorkersVersionsCreateResponseContainersList = /*@__PURE__*/ __L.at(
+  __c10,
+  0,
+) as any as S.Schema<BetaWorkersVersionsCreateResponseContainersList>;
+
 export type BetaWorkersVersionsCreateResponseExportsValueWorkerType = "worker";
 export type BetaWorkersVersionsCreateResponseExportsValueWorkerCache =
   BetaWorkersVersionsCreateRequestExportsValueWorkerCache;
@@ -2613,11 +3053,24 @@ export type BetaWorkersVersionsCreateResponseExportsValue =
   | BetaWorkersVersionsCreateResponseExportsValueWorkersDurableObjectRenamedExport
   | BetaWorkersVersionsCreateResponseExportsValueWorkersDurableObjectTransferredExport
   | BetaWorkersVersionsCreateResponseExportsValueWorkersDurableObjectExpectingTransferExport;
+const BetaWorkersVersionsCreateResponseExportsValue = /*@__PURE__*/ __L.at(__c10, 1);
+
 export type BetaWorkersVersionsCreateResponseExportsMap = {
   [key: string]: BetaWorkersVersionsCreateResponseExportsValue | undefined;
 };
+const BetaWorkersVersionsCreateResponseExportsMap = /*@__PURE__*/ __L.at(
+  __c10,
+  2,
+) as any as S.Schema<BetaWorkersVersionsCreateResponseExportsMap>;
+
 export type BetaWorkersVersionsCreateResponseExportsReconciliationCreatedList = Array<string>;
+const BetaWorkersVersionsCreateResponseExportsReconciliationCreatedList =
+  BetaWorkersCreateRequestPreviewsBaseConfigObservabilityLogsDestinationsList as any as S.Schema<BetaWorkersVersionsCreateResponseExportsReconciliationCreatedList>;
+
 export type BetaWorkersVersionsCreateResponseExportsReconciliationDeletedList = Array<string>;
+const BetaWorkersVersionsCreateResponseExportsReconciliationDeletedList =
+  BetaWorkersCreateRequestPreviewsBaseConfigObservabilityLogsDestinationsList as any as S.Schema<BetaWorkersVersionsCreateResponseExportsReconciliationDeletedList>;
+
 export type BetaWorkersVersionsCreateResponseExportsReconciliationInfoItemScenario =
   | "code_class_not_in_exports"
   | "provisioned_class_missing_from_config"
@@ -2652,8 +3105,13 @@ export type BetaWorkersVersionsCreateResponseExportsReconciliationInfoItemScenar
   | "stale_tombstone"
   | "transfer_receive_already_applied"
   | "transfer_receive_cleanup_complete";
+const BetaWorkersVersionsCreateResponseExportsReconciliationInfoItemScenario = S.String;
+
 export type BetaWorkersVersionsCreateResponseExportsReconciliationInfoItemReferencingScriptsList =
   Array<string>;
+const BetaWorkersVersionsCreateResponseExportsReconciliationInfoItemReferencingScriptsList =
+  BetaWorkersCreateRequestPreviewsBaseConfigObservabilityLogsDestinationsList as any as S.Schema<BetaWorkersVersionsCreateResponseExportsReconciliationInfoItemReferencingScriptsList>;
+
 export interface BetaWorkersVersionsCreateResponseExportsReconciliationInfoItem {
   /** The class name the info entry is about. */
   class: string;
@@ -2666,28 +3124,65 @@ export interface BetaWorkersVersionsCreateResponseExportsReconciliationInfoItem 
   /** Other Workers in the account that still bind to the affected class. Advisory: while non-empty the tombstone is not yet safe to remove -- redeploy these Workers with bindings re-pointed first. */
   referencingScripts?: BetaWorkersVersionsCreateResponseExportsReconciliationInfoItemReferencingScriptsList | null;
 }
+const BetaWorkersVersionsCreateResponseExportsReconciliationInfoItem = /*@__PURE__*/ __L.at(
+  __c10,
+  3,
+) as any as S.Schema<BetaWorkersVersionsCreateResponseExportsReconciliationInfoItem>;
+
 export type BetaWorkersVersionsCreateResponseExportsReconciliationInfoList =
   Array<BetaWorkersVersionsCreateResponseExportsReconciliationInfoItem>;
+const BetaWorkersVersionsCreateResponseExportsReconciliationInfoList = /*@__PURE__*/ __L.at(
+  __c10,
+  4,
+) as any as S.Schema<BetaWorkersVersionsCreateResponseExportsReconciliationInfoList>;
+
 export type BetaWorkersVersionsCreateResponseExportsReconciliationRemovableEntriesList =
   Array<string>;
+const BetaWorkersVersionsCreateResponseExportsReconciliationRemovableEntriesList =
+  BetaWorkersCreateRequestPreviewsBaseConfigObservabilityLogsDestinationsList as any as S.Schema<BetaWorkersVersionsCreateResponseExportsReconciliationRemovableEntriesList>;
+
 export interface BetaWorkersVersionsCreateResponseExportsReconciliationRenamedItem {
   /** The original (source) class name. */
   from: string;
   /** The new class name (`renamed_to`). */
   to: string;
 }
+const BetaWorkersVersionsCreateResponseExportsReconciliationRenamedItem = /*@__PURE__*/ __L.at(
+  __c10,
+  5,
+) as any as S.Schema<BetaWorkersVersionsCreateResponseExportsReconciliationRenamedItem>;
+
 export type BetaWorkersVersionsCreateResponseExportsReconciliationRenamedList =
   Array<BetaWorkersVersionsCreateResponseExportsReconciliationRenamedItem>;
+const BetaWorkersVersionsCreateResponseExportsReconciliationRenamedList = /*@__PURE__*/ __L.at(
+  __c10,
+  6,
+) as any as S.Schema<BetaWorkersVersionsCreateResponseExportsReconciliationRenamedList>;
+
 export interface BetaWorkersVersionsCreateResponseExportsReconciliationTransferPendingItem {
   /** The target-side class name awaiting transfer. */
   class: string;
   /** The source script the namespace will be transferred from. */
   from: string;
 }
+const BetaWorkersVersionsCreateResponseExportsReconciliationTransferPendingItem =
+  /*@__PURE__*/ __L.at(
+    __c10,
+    7,
+  ) as any as S.Schema<BetaWorkersVersionsCreateResponseExportsReconciliationTransferPendingItem>;
+
 export type BetaWorkersVersionsCreateResponseExportsReconciliationTransferPendingList =
   Array<BetaWorkersVersionsCreateResponseExportsReconciliationTransferPendingItem>;
+const BetaWorkersVersionsCreateResponseExportsReconciliationTransferPendingList =
+  /*@__PURE__*/ __L.at(
+    __c11,
+    0,
+  ) as any as S.Schema<BetaWorkersVersionsCreateResponseExportsReconciliationTransferPendingList>;
+
 export type BetaWorkersVersionsCreateResponseExportsReconciliationTransferredItemPhase =
   "committed";
+const BetaWorkersVersionsCreateResponseExportsReconciliationTransferredItemPhase = S.String;
+
 export interface BetaWorkersVersionsCreateResponseExportsReconciliationTransferredItem {
   /** The source class name that was transferred. */
   class: string;
@@ -2696,9 +3191,22 @@ export interface BetaWorkersVersionsCreateResponseExportsReconciliationTransferr
   /** The destination script that now owns the namespace. */
   to: string;
 }
+const BetaWorkersVersionsCreateResponseExportsReconciliationTransferredItem = /*@__PURE__*/ __L.at(
+  __c11,
+  1,
+) as any as S.Schema<BetaWorkersVersionsCreateResponseExportsReconciliationTransferredItem>;
+
 export type BetaWorkersVersionsCreateResponseExportsReconciliationTransferredList =
   Array<BetaWorkersVersionsCreateResponseExportsReconciliationTransferredItem>;
+const BetaWorkersVersionsCreateResponseExportsReconciliationTransferredList = /*@__PURE__*/ __L.at(
+  __c11,
+  2,
+) as any as S.Schema<BetaWorkersVersionsCreateResponseExportsReconciliationTransferredList>;
+
 export type BetaWorkersVersionsCreateResponseExportsReconciliationUpdatedList = Array<string>;
+const BetaWorkersVersionsCreateResponseExportsReconciliationUpdatedList =
+  BetaWorkersCreateRequestPreviewsBaseConfigObservabilityLogsDestinationsList as any as S.Schema<BetaWorkersVersionsCreateResponseExportsReconciliationUpdatedList>;
+
 export type BetaWorkersVersionsCreateResponseExportsReconciliationWarningsItemScenario =
   | "code_class_not_in_exports"
   | "provisioned_class_missing_from_config"
@@ -2733,6 +3241,8 @@ export type BetaWorkersVersionsCreateResponseExportsReconciliationWarningsItemSc
   | "stale_tombstone"
   | "transfer_receive_already_applied"
   | "transfer_receive_cleanup_complete";
+const BetaWorkersVersionsCreateResponseExportsReconciliationWarningsItemScenario = S.String;
+
 export interface BetaWorkersVersionsCreateResponseExportsReconciliationWarningsItem {
   /** The class name the warning is about. */
   class: string;
@@ -2743,8 +3253,18 @@ export interface BetaWorkersVersionsCreateResponseExportsReconciliationWarningsI
   /** The provisioned namespace the warning relates to, when applicable. */
   namespaceId?: string | null;
 }
+const BetaWorkersVersionsCreateResponseExportsReconciliationWarningsItem = /*@__PURE__*/ __L.at(
+  __c11,
+  3,
+) as any as S.Schema<BetaWorkersVersionsCreateResponseExportsReconciliationWarningsItem>;
+
 export type BetaWorkersVersionsCreateResponseExportsReconciliationWarningsList =
   Array<BetaWorkersVersionsCreateResponseExportsReconciliationWarningsItem>;
+const BetaWorkersVersionsCreateResponseExportsReconciliationWarningsList = /*@__PURE__*/ __L.at(
+  __c11,
+  4,
+) as any as S.Schema<BetaWorkersVersionsCreateResponseExportsReconciliationWarningsList>;
+
 export interface BetaWorkersVersionsCreateResponseExportsReconciliation {
   /** Class names for which a new namespace was provisioned. */
   created: BetaWorkersVersionsCreateResponseExportsReconciliationCreatedList;
@@ -2765,12 +3285,20 @@ export interface BetaWorkersVersionsCreateResponseExportsReconciliation {
   /** Non-blocking warnings. See `exports_reconciliation_warning`. */
   warnings: BetaWorkersVersionsCreateResponseExportsReconciliationWarningsList;
 }
+const BetaWorkersVersionsCreateResponseExportsReconciliation = /*@__PURE__*/ __L.at(
+  __c11,
+  5,
+) as any as S.Schema<BetaWorkersVersionsCreateResponseExportsReconciliation>;
+
 export interface BetaWorkersVersionsCreateResponseLimits {
   /** CPU time limit in milliseconds. */
   cpuMs?: number | null;
   /** Subrequest limit per request. */
   subrequests?: number | null;
 }
+const BetaWorkersVersionsCreateResponseLimits =
+  BetaWorkersCreateResponsePreviewsBaseConfigLimits as any as S.Schema<BetaWorkersVersionsCreateResponseLimits>;
+
 export type BetaWorkersVersionsCreateResponseMigrationsSingleStepMigrationDeletedClassesList =
   Array<string>;
 export type BetaWorkersVersionsCreateResponseMigrationsSingleStepMigrationNewClassesList =
@@ -2845,14 +3373,22 @@ export interface BetaWorkersVersionsCreateResponseMigrationsWorkersMultipleStepM
 export type BetaWorkersVersionsCreateResponseMigrations =
   | BetaWorkersVersionsCreateResponseMigrationsSingleStepMigration
   | BetaWorkersVersionsCreateResponseMigrationsWorkersMultipleStepMigrations;
+const BetaWorkersVersionsCreateResponseMigrations = /*@__PURE__*/ __L.at(__c11, 6);
+
 export type BetaWorkersVersionsCreateResponseModulesItem =
   BetaWorkersVersionsCreateRequestModulesItem;
 export type BetaWorkersVersionsCreateResponseModulesList =
   Array<BetaWorkersVersionsCreateRequestModulesItem>;
+const BetaWorkersVersionsCreateResponseModulesList =
+  BetaWorkersVersionsCreateRequestModulesList as any as S.Schema<BetaWorkersVersionsCreateResponseModulesList>;
+
 export type BetaWorkersVersionsCreateResponsePackageDependenciesItem =
   BetaWorkersVersionsCreateRequestPackageDependenciesItem;
 export type BetaWorkersVersionsCreateResponsePackageDependenciesList =
   Array<BetaWorkersVersionsCreateRequestPackageDependenciesItem>;
+const BetaWorkersVersionsCreateResponsePackageDependenciesList =
+  BetaWorkersVersionsCreateRequestPackageDependenciesList as any as S.Schema<BetaWorkersVersionsCreateResponsePackageDependenciesList>;
+
 export type BetaWorkersVersionsCreateResponsePlacementModeMode = "smart";
 export interface BetaWorkersVersionsCreateResponsePlacementMode {
   /** Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
@@ -2913,7 +3449,11 @@ export type BetaWorkersVersionsCreateResponsePlacement =
   | BetaWorkersVersionsCreateResponsePlacementCase5
   | BetaWorkersVersionsCreateResponsePlacementCase6
   | BetaWorkersVersionsCreateResponsePlacementCase7;
+const BetaWorkersVersionsCreateResponsePlacement = /*@__PURE__*/ __L.at(__c11, 7);
+
 export type BetaWorkersVersionsCreateResponseUsageModel = "standard" | "bundled" | "unbound";
+const BetaWorkersVersionsCreateResponseUsageModel = S.String;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateBetaWorkerVersionResponse {
   /** Version identifier. */
@@ -2967,20 +3507,37 @@ export interface CreateBetaWorkerVersionResponse {
   /** Usage model for the version. */
   usageModel?: BetaWorkersVersionsCreateResponseUsageModel | null;
 }
+const CreateBetaWorkerVersionResponse = /*@__PURE__*/ __L.at(
+  __c12,
+  0,
+) as any as S.Schema<CreateBetaWorkerVersionResponse>;
+
 export type ObservabilityDestinationsCreateRequestConfigurationHeadersMap = {
   [key: string]: string | undefined;
 };
+const ObservabilityDestinationsCreateRequestConfigurationHeadersMap =
+  ContainerImageMap as any as S.Schema<ObservabilityDestinationsCreateRequestConfigurationHeadersMap>;
+
 export type ObservabilityDestinationsCreateRequestConfigurationLogpushDataset =
   | "opentelemetry-traces"
   | "opentelemetry-logs"
   | "opentelemetry-metrics";
+const ObservabilityDestinationsCreateRequestConfigurationLogpushDataset = S.String;
+
 export type ObservabilityDestinationsCreateRequestConfigurationType = "logpush";
+const ObservabilityDestinationsCreateRequestConfigurationType = S.String;
+
 export interface ObservabilityDestinationsCreateRequestConfiguration {
   headers: ObservabilityDestinationsCreateRequestConfigurationHeadersMap;
   logpushDataset: ObservabilityDestinationsCreateRequestConfigurationLogpushDataset | (string & {});
   type: ObservabilityDestinationsCreateRequestConfigurationType | (string & {});
   url: string;
 }
+const ObservabilityDestinationsCreateRequestConfiguration = /*@__PURE__*/ __L.at(
+  __c12,
+  1,
+) as any as S.Schema<ObservabilityDestinationsCreateRequestConfiguration>;
+
 export interface CreateObservabilityDestinationRequest {
   accountId: string;
   configuration: ObservabilityDestinationsCreateRequestConfiguration;
@@ -2988,11 +3545,20 @@ export interface CreateObservabilityDestinationRequest {
   name: string;
   skipPreflightCheck?: boolean;
 }
+const CreateObservabilityDestinationRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  2,
+) as any as S.Schema<CreateObservabilityDestinationRequest>;
+
 export type ObservabilityDestinationsCreateResponseConfigurationLogpushDataset =
   | "opentelemetry-traces"
   | "opentelemetry-logs"
   | "opentelemetry-metrics";
+const ObservabilityDestinationsCreateResponseConfigurationLogpushDataset = S.String;
+
 export type ObservabilityDestinationsCreateResponseConfigurationType = "logpush";
+const ObservabilityDestinationsCreateResponseConfigurationType = S.String;
+
 export interface ObservabilityDestinationsCreateResponseConfiguration {
   destinationConf: string;
   logpushDataset: ObservabilityDestinationsCreateResponseConfigurationLogpushDataset;
@@ -3000,7 +3566,15 @@ export interface ObservabilityDestinationsCreateResponseConfiguration {
   type: ObservabilityDestinationsCreateResponseConfigurationType;
   url: string;
 }
+const ObservabilityDestinationsCreateResponseConfiguration = /*@__PURE__*/ __L.at(
+  __c12,
+  3,
+) as any as S.Schema<ObservabilityDestinationsCreateResponseConfiguration>;
+
 export type ObservabilityDestinationsCreateResponseScriptsList = Array<string>;
+const ObservabilityDestinationsCreateResponseScriptsList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<ObservabilityDestinationsCreateResponseScriptsList>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateObservabilityDestinationResponse {
   configuration: ObservabilityDestinationsCreateResponseConfiguration;
@@ -3009,6 +3583,11 @@ export interface CreateObservabilityDestinationResponse {
   scripts: ObservabilityDestinationsCreateResponseScriptsList;
   slug: string;
 }
+const CreateObservabilityDestinationResponse = /*@__PURE__*/ __L.at(
+  __c12,
+  4,
+) as any as S.Schema<CreateObservabilityDestinationResponse>;
+
 export type ObservabilityQueriesCreateRequestParametersCalculationsItemCase0Operator =
   | "count"
   | "COUNT";
@@ -3076,14 +3655,26 @@ export interface ObservabilityQueriesCreateRequestParametersCalculationsItemCase
 export type ObservabilityQueriesCreateRequestParametersCalculationsItem =
   | ObservabilityQueriesCreateRequestParametersCalculationsItemCase0
   | ObservabilityQueriesCreateRequestParametersCalculationsItemCase1;
+const ObservabilityQueriesCreateRequestParametersCalculationsItem = /*@__PURE__*/ __L.at(__c12, 5);
+
 export type ObservabilityQueriesCreateRequestParametersCalculationsList =
   Array<ObservabilityQueriesCreateRequestParametersCalculationsItem>;
+const ObservabilityQueriesCreateRequestParametersCalculationsList = /*@__PURE__*/ __L.at(
+  __c12,
+  6,
+) as any as S.Schema<ObservabilityQueriesCreateRequestParametersCalculationsList>;
+
 export type ObservabilityQueriesCreateRequestParametersDatasetsList = Array<string>;
+const ObservabilityQueriesCreateRequestParametersDatasetsList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<ObservabilityQueriesCreateRequestParametersDatasetsList>;
+
 export type ObservabilityQueriesCreateRequestParametersFilterCombination =
   | "and"
   | "or"
   | "AND"
   | "OR";
+const ObservabilityQueriesCreateRequestParametersFilterCombination = S.String;
+
 export type ObservabilityQueriesCreateRequestParametersFiltersItemCase0FilterCombination =
   | "and"
   | "or"
@@ -3160,18 +3751,37 @@ export interface ObservabilityQueriesCreateRequestParametersFiltersItemWorkersOb
 export type ObservabilityQueriesCreateRequestParametersFiltersItem =
   | ObservabilityQueriesCreateRequestParametersFiltersItemCase0
   | ObservabilityQueriesCreateRequestParametersFiltersItemWorkersObservabilityFilterLeaf;
+const ObservabilityQueriesCreateRequestParametersFiltersItem = /*@__PURE__*/ __L.at(__c12, 7);
+
 export type ObservabilityQueriesCreateRequestParametersFiltersList =
   Array<ObservabilityQueriesCreateRequestParametersFiltersItem>;
+const ObservabilityQueriesCreateRequestParametersFiltersList = /*@__PURE__*/ __L.at(
+  __c13,
+  0,
+) as any as S.Schema<ObservabilityQueriesCreateRequestParametersFiltersList>;
+
 export type ObservabilityQueriesCreateRequestParametersGroupBysItemType =
   | "string"
   | "number"
   | "boolean";
+const ObservabilityQueriesCreateRequestParametersGroupBysItemType = S.String;
+
 export interface ObservabilityQueriesCreateRequestParametersGroupBysItem {
   type: ObservabilityQueriesCreateRequestParametersGroupBysItemType | (string & {});
   value: string;
 }
+const ObservabilityQueriesCreateRequestParametersGroupBysItem = /*@__PURE__*/ __L.at(
+  __c13,
+  1,
+) as any as S.Schema<ObservabilityQueriesCreateRequestParametersGroupBysItem>;
+
 export type ObservabilityQueriesCreateRequestParametersGroupBysList =
   Array<ObservabilityQueriesCreateRequestParametersGroupBysItem>;
+const ObservabilityQueriesCreateRequestParametersGroupBysList = /*@__PURE__*/ __L.at(
+  __c13,
+  2,
+) as any as S.Schema<ObservabilityQueriesCreateRequestParametersGroupBysList>;
+
 export type ObservabilityQueriesCreateRequestParametersHavingsItemOperation =
   | "eq"
   | "neq"
@@ -3179,26 +3789,52 @@ export type ObservabilityQueriesCreateRequestParametersHavingsItemOperation =
   | "gte"
   | "lt"
   | "lte";
+const ObservabilityQueriesCreateRequestParametersHavingsItemOperation = S.String;
+
 export interface ObservabilityQueriesCreateRequestParametersHavingsItem {
   key: string;
   operation: ObservabilityQueriesCreateRequestParametersHavingsItemOperation | (string & {});
   value: number;
 }
+const ObservabilityQueriesCreateRequestParametersHavingsItem = /*@__PURE__*/ __L.at(
+  __c13,
+  3,
+) as any as S.Schema<ObservabilityQueriesCreateRequestParametersHavingsItem>;
+
 export type ObservabilityQueriesCreateRequestParametersHavingsList =
   Array<ObservabilityQueriesCreateRequestParametersHavingsItem>;
+const ObservabilityQueriesCreateRequestParametersHavingsList = /*@__PURE__*/ __L.at(
+  __c13,
+  4,
+) as any as S.Schema<ObservabilityQueriesCreateRequestParametersHavingsList>;
+
 export type ObservabilityQueriesCreateRequestParametersNeedleValue = string | number | boolean;
+const ObservabilityQueriesCreateRequestParametersNeedleValue = /*@__PURE__*/ __L.at(__c13, 5);
+
 export interface ObservabilityQueriesCreateRequestParametersNeedle {
   value: ObservabilityQueriesCreateRequestParametersNeedleValue;
   isRegex?: boolean;
   matchCase?: boolean;
 }
+const ObservabilityQueriesCreateRequestParametersNeedle = /*@__PURE__*/ __L.at(
+  __c13,
+  6,
+) as any as S.Schema<ObservabilityQueriesCreateRequestParametersNeedle>;
+
 export type ObservabilityQueriesCreateRequestParametersOrderByOrder = "asc" | "desc";
+const ObservabilityQueriesCreateRequestParametersOrderByOrder = S.String;
+
 export interface ObservabilityQueriesCreateRequestParametersOrderBy {
   /** Configure which Calculation to order the results by. */
   value: string;
   /** Set the order of the results */
   order?: ObservabilityQueriesCreateRequestParametersOrderByOrder | (string & {});
 }
+const ObservabilityQueriesCreateRequestParametersOrderBy = /*@__PURE__*/ __L.at(
+  __c13,
+  7,
+) as any as S.Schema<ObservabilityQueriesCreateRequestParametersOrderBy>;
+
 export interface ObservabilityQueriesCreateRequestParameters {
   /** Create Calculations to compute as part of the query. */
   calculations?: ObservabilityQueriesCreateRequestParametersCalculationsList;
@@ -3219,6 +3855,11 @@ export interface ObservabilityQueriesCreateRequestParameters {
   /** Configure the order of the results returned by the query. */
   orderBy?: ObservabilityQueriesCreateRequestParametersOrderBy;
 }
+const ObservabilityQueriesCreateRequestParameters = /*@__PURE__*/ __L.at(
+  __c14,
+  0,
+) as any as S.Schema<ObservabilityQueriesCreateRequestParameters>;
+
 export interface CreateObservabilityQueryRequest {
   accountId: string;
   description: string;
@@ -3226,6 +3867,11 @@ export interface CreateObservabilityQueryRequest {
   name: string;
   parameters: ObservabilityQueriesCreateRequestParameters;
 }
+const CreateObservabilityQueryRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  1,
+) as any as S.Schema<CreateObservabilityQueryRequest>;
+
 export type ObservabilityQueriesCreateResponseParametersCalculationsItemCase0Operator =
   | "count"
   | "COUNT";
@@ -3289,14 +3935,26 @@ export interface ObservabilityQueriesCreateResponseParametersCalculationsItemCas
 export type ObservabilityQueriesCreateResponseParametersCalculationsItem =
   | ObservabilityQueriesCreateResponseParametersCalculationsItemCase0
   | ObservabilityQueriesCreateResponseParametersCalculationsItemCase1;
+const ObservabilityQueriesCreateResponseParametersCalculationsItem = /*@__PURE__*/ __L.at(__c14, 2);
+
 export type ObservabilityQueriesCreateResponseParametersCalculationsList =
   Array<ObservabilityQueriesCreateResponseParametersCalculationsItem>;
+const ObservabilityQueriesCreateResponseParametersCalculationsList = /*@__PURE__*/ __L.at(
+  __c14,
+  3,
+) as any as S.Schema<ObservabilityQueriesCreateResponseParametersCalculationsList>;
+
 export type ObservabilityQueriesCreateResponseParametersDatasetsList = Array<string>;
+const ObservabilityQueriesCreateResponseParametersDatasetsList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<ObservabilityQueriesCreateResponseParametersDatasetsList>;
+
 export type ObservabilityQueriesCreateResponseParametersFilterCombination =
   | "and"
   | "or"
   | "AND"
   | "OR";
+const ObservabilityQueriesCreateResponseParametersFilterCombination = S.String;
+
 export type ObservabilityQueriesCreateResponseParametersFiltersItemCase0FilterCombination =
   | "and"
   | "or"
@@ -3366,18 +4024,37 @@ export interface ObservabilityQueriesCreateResponseParametersFiltersItemWorkersO
 export type ObservabilityQueriesCreateResponseParametersFiltersItem =
   | ObservabilityQueriesCreateResponseParametersFiltersItemCase0
   | ObservabilityQueriesCreateResponseParametersFiltersItemWorkersObservabilityFilterLeaf;
+const ObservabilityQueriesCreateResponseParametersFiltersItem = /*@__PURE__*/ __L.at(__c14, 4);
+
 export type ObservabilityQueriesCreateResponseParametersFiltersList =
   Array<ObservabilityQueriesCreateResponseParametersFiltersItem>;
+const ObservabilityQueriesCreateResponseParametersFiltersList = /*@__PURE__*/ __L.at(
+  __c14,
+  5,
+) as any as S.Schema<ObservabilityQueriesCreateResponseParametersFiltersList>;
+
 export type ObservabilityQueriesCreateResponseParametersGroupBysItemType =
   | "string"
   | "number"
   | "boolean";
+const ObservabilityQueriesCreateResponseParametersGroupBysItemType = S.String;
+
 export interface ObservabilityQueriesCreateResponseParametersGroupBysItem {
   type: ObservabilityQueriesCreateResponseParametersGroupBysItemType;
   value: string;
 }
+const ObservabilityQueriesCreateResponseParametersGroupBysItem = /*@__PURE__*/ __L.at(
+  __c14,
+  6,
+) as any as S.Schema<ObservabilityQueriesCreateResponseParametersGroupBysItem>;
+
 export type ObservabilityQueriesCreateResponseParametersGroupBysList =
   Array<ObservabilityQueriesCreateResponseParametersGroupBysItem>;
+const ObservabilityQueriesCreateResponseParametersGroupBysList = /*@__PURE__*/ __L.at(
+  __c14,
+  7,
+) as any as S.Schema<ObservabilityQueriesCreateResponseParametersGroupBysList>;
+
 export type ObservabilityQueriesCreateResponseParametersHavingsItemOperation =
   | "eq"
   | "neq"
@@ -3392,19 +4069,36 @@ export interface ObservabilityQueriesCreateResponseParametersHavingsItem {
 }
 export type ObservabilityQueriesCreateResponseParametersHavingsList =
   Array<ObservabilityQueriesCreateResponseParametersHavingsItem>;
+const ObservabilityQueriesCreateResponseParametersHavingsList =
+  ObservabilityQueriesCreateRequestParametersHavingsList as any as S.Schema<ObservabilityQueriesCreateResponseParametersHavingsList>;
+
 export type ObservabilityQueriesCreateResponseParametersNeedleValue = string | number | boolean;
+const ObservabilityQueriesCreateResponseParametersNeedleValue = /*@__PURE__*/ __L.at(__c15, 0);
+
 export interface ObservabilityQueriesCreateResponseParametersNeedle {
   value: ObservabilityQueriesCreateResponseParametersNeedleValue;
   isRegex?: boolean | null;
   matchCase?: boolean | null;
 }
+const ObservabilityQueriesCreateResponseParametersNeedle = /*@__PURE__*/ __L.at(
+  __c15,
+  1,
+) as any as S.Schema<ObservabilityQueriesCreateResponseParametersNeedle>;
+
 export type ObservabilityQueriesCreateResponseParametersOrderByOrder = "asc" | "desc";
+const ObservabilityQueriesCreateResponseParametersOrderByOrder = S.String;
+
 export interface ObservabilityQueriesCreateResponseParametersOrderBy {
   /** Configure which Calculation to order the results by. */
   value: string;
   /** Set the order of the results */
   order?: ObservabilityQueriesCreateResponseParametersOrderByOrder | null;
 }
+const ObservabilityQueriesCreateResponseParametersOrderBy = /*@__PURE__*/ __L.at(
+  __c15,
+  2,
+) as any as S.Schema<ObservabilityQueriesCreateResponseParametersOrderBy>;
+
 export interface ObservabilityQueriesCreateResponseParameters {
   /** Create Calculations to compute as part of the query. */
   calculations?: ObservabilityQueriesCreateResponseParametersCalculationsList | null;
@@ -3425,6 +4119,11 @@ export interface ObservabilityQueriesCreateResponseParameters {
   /** Configure the order of the results returned by the query. */
   orderBy?: ObservabilityQueriesCreateResponseParametersOrderBy | null;
 }
+const ObservabilityQueriesCreateResponseParameters = /*@__PURE__*/ __L.at(
+  __c15,
+  3,
+) as any as S.Schema<ObservabilityQueriesCreateResponseParameters>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateObservabilityQueryResponse {
   id: string;
@@ -3439,18 +4138,32 @@ export interface CreateObservabilityQueryResponse {
   updated: string;
   updatedBy: string;
 }
+const CreateObservabilityQueryResponse = /*@__PURE__*/ __L.at(
+  __c15,
+  4,
+) as any as S.Schema<CreateObservabilityQueryResponse>;
+
 export interface ObservabilitySharedQueriesCreateRequestTimeframe {
   /** Start timestamp for the query timeframe. Unix timestamp in milliseconds */
   from: number;
   /** End timestamp for the query timeframe. Unix timestamp in milliseconds */
   to: number;
 }
+const ObservabilitySharedQueriesCreateRequestTimeframe = /*@__PURE__*/ __L.at(
+  __c15,
+  5,
+) as any as S.Schema<ObservabilitySharedQueriesCreateRequestTimeframe>;
+
 export type ObservabilitySharedQueriesCreateRequestChartType =
   | "timeseries_and_aggregate"
   | "timeseries"
   | "aggregate"
   | "distribution";
+const ObservabilitySharedQueriesCreateRequestChartType = S.String;
+
 export type ObservabilitySharedQueriesCreateRequestDistributionScale = "log" | "linear";
+const ObservabilitySharedQueriesCreateRequestDistributionScale = S.String;
+
 export type ObservabilitySharedQueriesCreateRequestParametersCalculationsItemCase0Operator =
   | "count"
   | "COUNT";
@@ -3530,14 +4243,29 @@ export interface ObservabilitySharedQueriesCreateRequestParametersCalculationsIt
 export type ObservabilitySharedQueriesCreateRequestParametersCalculationsItem =
   | ObservabilitySharedQueriesCreateRequestParametersCalculationsItemCase0
   | ObservabilitySharedQueriesCreateRequestParametersCalculationsItemCase1;
+const ObservabilitySharedQueriesCreateRequestParametersCalculationsItem = /*@__PURE__*/ __L.at(
+  __c15,
+  6,
+);
+
 export type ObservabilitySharedQueriesCreateRequestParametersCalculationsList =
   Array<ObservabilitySharedQueriesCreateRequestParametersCalculationsItem>;
+const ObservabilitySharedQueriesCreateRequestParametersCalculationsList = /*@__PURE__*/ __L.at(
+  __c15,
+  7,
+) as any as S.Schema<ObservabilitySharedQueriesCreateRequestParametersCalculationsList>;
+
 export type ObservabilitySharedQueriesCreateRequestParametersDatasetsList = Array<string>;
+const ObservabilitySharedQueriesCreateRequestParametersDatasetsList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<ObservabilitySharedQueriesCreateRequestParametersDatasetsList>;
+
 export type ObservabilitySharedQueriesCreateRequestParametersFilterCombination =
   | "and"
   | "or"
   | "AND"
   | "OR";
+const ObservabilitySharedQueriesCreateRequestParametersFilterCombination = S.String;
+
 export type ObservabilitySharedQueriesCreateRequestParametersFiltersItemCase0FilterCombination =
   | "and"
   | "or"
@@ -3693,20 +4421,39 @@ export interface ObservabilitySharedQueriesCreateRequestParametersFiltersItemWor
 export type ObservabilitySharedQueriesCreateRequestParametersFiltersItem =
   | ObservabilitySharedQueriesCreateRequestParametersFiltersItemCase0
   | ObservabilitySharedQueriesCreateRequestParametersFiltersItemWorkersObservabilityFilterLeaf;
+const ObservabilitySharedQueriesCreateRequestParametersFiltersItem = /*@__PURE__*/ __L.at(__c16, 0);
+
 export type ObservabilitySharedQueriesCreateRequestParametersFiltersList =
   Array<ObservabilitySharedQueriesCreateRequestParametersFiltersItem>;
+const ObservabilitySharedQueriesCreateRequestParametersFiltersList = /*@__PURE__*/ __L.at(
+  __c16,
+  1,
+) as any as S.Schema<ObservabilitySharedQueriesCreateRequestParametersFiltersList>;
+
 export type ObservabilitySharedQueriesCreateRequestParametersGroupBysItemType =
   | "string"
   | "number"
   | "boolean";
+const ObservabilitySharedQueriesCreateRequestParametersGroupBysItemType = S.String;
+
 export interface ObservabilitySharedQueriesCreateRequestParametersGroupBysItem {
   /** Data type of the group-by field. */
   type: ObservabilitySharedQueriesCreateRequestParametersGroupBysItemType | (string & {});
   /** Field name to group results by (e.g. $metadata.service, $metadata.statusCode). */
   value: string;
 }
+const ObservabilitySharedQueriesCreateRequestParametersGroupBysItem = /*@__PURE__*/ __L.at(
+  __c16,
+  2,
+) as any as S.Schema<ObservabilitySharedQueriesCreateRequestParametersGroupBysItem>;
+
 export type ObservabilitySharedQueriesCreateRequestParametersGroupBysList =
   Array<ObservabilitySharedQueriesCreateRequestParametersGroupBysItem>;
+const ObservabilitySharedQueriesCreateRequestParametersGroupBysList = /*@__PURE__*/ __L.at(
+  __c16,
+  3,
+) as any as S.Schema<ObservabilitySharedQueriesCreateRequestParametersGroupBysList>;
+
 export type ObservabilitySharedQueriesCreateRequestParametersHavingsItemOperation =
   | "eq"
   | "neq"
@@ -3714,6 +4461,8 @@ export type ObservabilitySharedQueriesCreateRequestParametersHavingsItemOperatio
   | "gte"
   | "lt"
   | "lte";
+const ObservabilitySharedQueriesCreateRequestParametersHavingsItemOperation = S.String;
+
 export interface ObservabilitySharedQueriesCreateRequestParametersHavingsItem {
   /** Calculation alias or operator to filter on after aggregation. */
   key: string;
@@ -3722,12 +4471,24 @@ export interface ObservabilitySharedQueriesCreateRequestParametersHavingsItem {
   /** Threshold value to compare the calculation result against. */
   value: number;
 }
+const ObservabilitySharedQueriesCreateRequestParametersHavingsItem = /*@__PURE__*/ __L.at(
+  __c16,
+  4,
+) as any as S.Schema<ObservabilitySharedQueriesCreateRequestParametersHavingsItem>;
+
 export type ObservabilitySharedQueriesCreateRequestParametersHavingsList =
   Array<ObservabilitySharedQueriesCreateRequestParametersHavingsItem>;
+const ObservabilitySharedQueriesCreateRequestParametersHavingsList = /*@__PURE__*/ __L.at(
+  __c16,
+  5,
+) as any as S.Schema<ObservabilitySharedQueriesCreateRequestParametersHavingsList>;
+
 export type ObservabilitySharedQueriesCreateRequestParametersNeedleValue =
   | string
   | number
   | boolean;
+const ObservabilitySharedQueriesCreateRequestParametersNeedleValue = /*@__PURE__*/ __L.at(__c16, 6);
+
 export interface ObservabilitySharedQueriesCreateRequestParametersNeedle {
   /** The text or pattern to search for. */
   value: ObservabilitySharedQueriesCreateRequestParametersNeedleValue;
@@ -3736,13 +4497,25 @@ export interface ObservabilitySharedQueriesCreateRequestParametersNeedle {
   /** When true, performs a case-sensitive search. Defaults to case-insensitive. */
   matchCase?: boolean;
 }
+const ObservabilitySharedQueriesCreateRequestParametersNeedle = /*@__PURE__*/ __L.at(
+  __c16,
+  7,
+) as any as S.Schema<ObservabilitySharedQueriesCreateRequestParametersNeedle>;
+
 export type ObservabilitySharedQueriesCreateRequestParametersOrderByOrder = "asc" | "desc";
+const ObservabilitySharedQueriesCreateRequestParametersOrderByOrder = S.String;
+
 export interface ObservabilitySharedQueriesCreateRequestParametersOrderBy {
   /** Alias of the calculation to order results by. Must match the alias (or operator) of a calculation in the query. */
   value: string;
   /** Sort direction: 'asc' for ascending, 'desc' for descending. */
   order?: ObservabilitySharedQueriesCreateRequestParametersOrderByOrder | (string & {});
 }
+const ObservabilitySharedQueriesCreateRequestParametersOrderBy = /*@__PURE__*/ __L.at(
+  __c17,
+  0,
+) as any as S.Schema<ObservabilitySharedQueriesCreateRequestParametersOrderBy>;
+
 export interface ObservabilitySharedQueriesCreateRequestParameters {
   /** Aggregation calculations to compute (e.g. count, avg, p99). Each calculation produces aggregate values and optional time-series data. */
   calculations?: ObservabilitySharedQueriesCreateRequestParametersCalculationsList;
@@ -3765,6 +4538,11 @@ export interface ObservabilitySharedQueriesCreateRequestParameters {
   /** Ordering for grouped calculation results. Only effective when a group-by is present. */
   orderBy?: ObservabilitySharedQueriesCreateRequestParametersOrderBy;
 }
+const ObservabilitySharedQueriesCreateRequestParameters = /*@__PURE__*/ __L.at(
+  __c17,
+  1,
+) as any as S.Schema<ObservabilitySharedQueriesCreateRequestParameters>;
+
 export type ObservabilitySharedQueriesCreateRequestView =
   | "traces"
   | "events"
@@ -3772,6 +4550,8 @@ export type ObservabilitySharedQueriesCreateRequestView =
   | "invocations"
   | "requests"
   | "agents";
+const ObservabilitySharedQueriesCreateRequestView = S.String;
+
 export interface CreateObservabilitySharedQueryRequest {
   accountId: string;
   /** Identifier for the query. When parameters are omitted, this ID is used to load a previously saved query's parameters. When providing parameters inline, pass any identifier (e.g. an ad-hoc ID). */
@@ -3805,15 +4585,32 @@ export interface CreateObservabilitySharedQueryRequest {
   /** Controls the shape of the response. 'events': individual log lines matching the query. 'calculations': aggregated metrics (count, avg, p99, etc.) with optional group-by breakdowns and time-series. 'invocations': events grouped by request ID. 'traces': distributed trace summaries. 'agents': agent-specific trace summaries. */
   view?: ObservabilitySharedQueriesCreateRequestView | (string & {});
 }
+const CreateObservabilitySharedQueryRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  2,
+) as any as S.Schema<CreateObservabilitySharedQueryRequest>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateObservabilitySharedQueryResponse {
   /** Specify the ID of the shared query. */
   id: string;
 }
+const CreateObservabilitySharedQueryResponse = /*@__PURE__*/ __L.at(
+  __c17,
+  3,
+) as any as S.Schema<CreateObservabilitySharedQueryResponse>;
+
 export interface PreviewTailConsumer {
   name: string;
 }
+const PreviewTailConsumer = /*@__PURE__*/ __L.at(__c17, 4) as any as S.Schema<PreviewTailConsumer>;
+
 export type PreviewTailConsumersList = Array<PreviewTailConsumer>;
+const PreviewTailConsumersList = /*@__PURE__*/ __L.at(
+  __c17,
+  5,
+) as any as S.Schema<PreviewTailConsumersList>;
+
 export interface CreatePreviewRequest {
   accountId: string;
   /** Parent Worker id or script name. */
@@ -3825,7 +4622,14 @@ export interface CreatePreviewRequest {
   logpush?: boolean;
   tailConsumers?: PreviewTailConsumersList;
 }
+const CreatePreviewRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  6,
+) as any as S.Schema<CreatePreviewRequest>;
+
 export type PreviewUrlsList = Array<string>;
+const PreviewUrlsList = /*@__PURE__*/ __L.at(__c17, 7) as any as S.Schema<PreviewUrlsList>;
+
 export interface PreviewResource {
   /** Immutable Preview id. */
   id: string;
@@ -3843,11 +4647,21 @@ export interface PreviewResource {
   createdOn?: string | null;
   updatedOn?: string | null;
 }
+const PreviewResource = /*@__PURE__*/ __L.at(__c18, 0) as any as S.Schema<PreviewResource>;
+
 export interface CreatePreviewDeploymentMetadataAssets {
   jwt?: string;
   config?: unknown;
 }
+const CreatePreviewDeploymentMetadataAssets = /*@__PURE__*/ __L.at(
+  __c18,
+  1,
+) as any as S.Schema<CreatePreviewDeploymentMetadataAssets>;
+
 export type CreatePreviewDeploymentMetadataCompatibilityFlagsList = Array<string>;
+const CreatePreviewDeploymentMetadataCompatibilityFlagsList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<CreatePreviewDeploymentMetadataCompatibilityFlagsList>;
+
 export interface CreatePreviewDeploymentMetadataContainer {
   className: string;
   name?: string;
@@ -3855,6 +4669,9 @@ export interface CreatePreviewDeploymentMetadataContainer {
 }
 export type CreatePreviewDeploymentMetadataContainersList =
   Array<CreatePreviewDeploymentMetadataContainer>;
+const CreatePreviewDeploymentMetadataContainersList =
+  BetaWorkersVersionsCreateRequestContainersList as any as S.Schema<CreatePreviewDeploymentMetadataContainersList>;
+
 export interface CreatePreviewDeploymentMetadata {
   /** Entrypoint module filename. */
   mainModule?: string;
@@ -3872,6 +4689,11 @@ export interface CreatePreviewDeploymentMetadata {
   env?: unknown;
   containers?: CreatePreviewDeploymentMetadataContainersList;
 }
+const CreatePreviewDeploymentMetadata = /*@__PURE__*/ __L.at(
+  __c18,
+  2,
+) as any as S.Schema<CreatePreviewDeploymentMetadata>;
+
 export interface CreatePreviewDeploymentRequest {
   accountId: string;
   workerId: string;
@@ -3882,6 +4704,11 @@ export interface CreatePreviewDeploymentRequest {
   /** Module files comprising the Worker script, appended under their own filenames. */
   files?: File | Blob | (File | Blob)[];
 }
+const CreatePreviewDeploymentRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  3,
+) as any as S.Schema<CreatePreviewDeploymentRequest>;
+
 export interface PreviewDeploymentResource {
   id: string;
   previewId?: string | null;
@@ -3892,6 +4719,11 @@ export interface PreviewDeploymentResource {
   compatibilityDate?: string | null;
   createdOn?: string | null;
 }
+const PreviewDeploymentResource = /*@__PURE__*/ __L.at(
+  __c18,
+  4,
+) as any as S.Schema<PreviewDeploymentResource>;
+
 export interface CreateRouteRequest {
   /** Identifier. */
   zoneId: string;
@@ -3900,6 +4732,8 @@ export interface CreateRouteRequest {
   /** Name of the script to run if the route matches. */
   script?: string;
 }
+const CreateRouteRequest = /*@__PURE__*/ __L.at(__c18, 5) as any as S.Schema<CreateRouteRequest>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateRouteResponse {
   /** Identifier. */
@@ -3909,15 +4743,27 @@ export interface CreateRouteResponse {
   /** Name of the script to run if the route matches. */
   script?: string | null;
 }
+const CreateRouteResponse = /*@__PURE__*/ __L.at(__c18, 6) as any as S.Schema<CreateRouteResponse>;
+
 export interface ScriptsAssetsUploadCreateRequestManifestValue {
   /** The hash of the file. */
   hash: string;
   /** The size of the file in bytes. */
   size: number;
 }
+const ScriptsAssetsUploadCreateRequestManifestValue = /*@__PURE__*/ __L.at(
+  __c18,
+  7,
+) as any as S.Schema<ScriptsAssetsUploadCreateRequestManifestValue>;
+
 export type ScriptsAssetsUploadCreateRequestManifestMap = {
   [key: string]: ScriptsAssetsUploadCreateRequestManifestValue | undefined;
 };
+const ScriptsAssetsUploadCreateRequestManifestMap = /*@__PURE__*/ __L.at(
+  __c19,
+  0,
+) as any as S.Schema<ScriptsAssetsUploadCreateRequestManifestMap>;
+
 export interface CreateScriptAssetUploadRequest {
   /** Identifier. */
   accountId: string;
@@ -3926,9 +4772,22 @@ export interface CreateScriptAssetUploadRequest {
   /** A manifest ([path]: {hash, size}) map of files to upload. As an example, `/blog/hello-world.html` would be a valid path key. */
   manifest: ScriptsAssetsUploadCreateRequestManifestMap;
 }
+const CreateScriptAssetUploadRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  1,
+) as any as S.Schema<CreateScriptAssetUploadRequest>;
+
 export type ScriptsAssetsUploadCreateResponseBucketsItemList = Array<string>;
+const ScriptsAssetsUploadCreateResponseBucketsItemList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<ScriptsAssetsUploadCreateResponseBucketsItemList>;
+
 export type ScriptsAssetsUploadCreateResponseBucketsList =
   Array<ScriptsAssetsUploadCreateResponseBucketsItemList>;
+const ScriptsAssetsUploadCreateResponseBucketsList = /*@__PURE__*/ __L.at(
+  __c19,
+  2,
+) as any as S.Schema<ScriptsAssetsUploadCreateResponseBucketsList>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateScriptAssetUploadResponse {
   /** The requests to make to upload assets. */
@@ -3936,21 +4795,43 @@ export interface CreateScriptAssetUploadResponse {
   /** A JWT to use as authentication for uploading assets. */
   jwt?: string | null;
 }
+const CreateScriptAssetUploadResponse = /*@__PURE__*/ __L.at(
+  __c19,
+  3,
+) as any as S.Schema<CreateScriptAssetUploadResponse>;
+
 export type ScriptsDeploymentsCreateRequestStrategy = "percentage";
+const ScriptsDeploymentsCreateRequestStrategy = S.String;
+
 export interface ScriptsDeploymentsCreateRequestVersionsItem {
   /** Percentage of traffic served by this version. */
   percentage: number;
   /** Identifier of the Worker Version. */
   versionId: string;
 }
+const ScriptsDeploymentsCreateRequestVersionsItem = /*@__PURE__*/ __L.at(
+  __c19,
+  4,
+) as any as S.Schema<ScriptsDeploymentsCreateRequestVersionsItem>;
+
 export type ScriptsDeploymentsCreateRequestVersionsList =
   Array<ScriptsDeploymentsCreateRequestVersionsItem>;
+const ScriptsDeploymentsCreateRequestVersionsList = /*@__PURE__*/ __L.at(
+  __c19,
+  5,
+) as any as S.Schema<ScriptsDeploymentsCreateRequestVersionsList>;
+
 export interface ScriptsDeploymentsCreateRequestAnnotations {
   /** Human-readable message about the deployment. Truncated to 1000 bytes if longer. */
   workersMessage?: string;
   /** Operation that triggered the creation of the deployment. */
   workersTriggeredBy?: string;
 }
+const ScriptsDeploymentsCreateRequestAnnotations = /*@__PURE__*/ __L.at(
+  __c19,
+  6,
+) as any as S.Schema<ScriptsDeploymentsCreateRequestAnnotations>;
+
 export interface CreateScriptDeploymentRequest {
   /** Identifier. */
   accountId: string;
@@ -3963,17 +4844,32 @@ export interface CreateScriptDeploymentRequest {
   versions: ScriptsDeploymentsCreateRequestVersionsList;
   annotations?: ScriptsDeploymentsCreateRequestAnnotations;
 }
+const CreateScriptDeploymentRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  7,
+) as any as S.Schema<CreateScriptDeploymentRequest>;
+
 export type ScriptsDeploymentsCreateResponseStrategy = "percentage";
+const ScriptsDeploymentsCreateResponseStrategy = S.String;
+
 export type ScriptsDeploymentsCreateResponseVersionsItem =
   ScriptsDeploymentsCreateRequestVersionsItem;
 export type ScriptsDeploymentsCreateResponseVersionsList =
   Array<ScriptsDeploymentsCreateRequestVersionsItem>;
+const ScriptsDeploymentsCreateResponseVersionsList =
+  ScriptsDeploymentsCreateRequestVersionsList as any as S.Schema<ScriptsDeploymentsCreateResponseVersionsList>;
+
 export interface ScriptsDeploymentsCreateResponseAnnotations {
   /** Human-readable message about the deployment. Truncated to 1000 bytes if longer. */
   workersMessage?: string | null;
   /** Operation that triggered the creation of the deployment. */
   workersTriggeredBy?: string | null;
 }
+const ScriptsDeploymentsCreateResponseAnnotations = /*@__PURE__*/ __L.at(
+  __c20,
+  0,
+) as any as S.Schema<ScriptsDeploymentsCreateResponseAnnotations>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateScriptDeploymentResponse {
   id: string;
@@ -3985,6 +4881,11 @@ export interface CreateScriptDeploymentResponse {
   annotations?: ScriptsDeploymentsCreateResponseAnnotations | null;
   authorEmail?: string | null;
 }
+const CreateScriptDeploymentResponse = /*@__PURE__*/ __L.at(
+  __c20,
+  1,
+) as any as S.Schema<CreateScriptDeploymentResponse>;
+
 export interface CreateScriptEdgePreviewWranglerSessionConfigWorkersDev {
   /** Route the preview through workers.dev. */
   workersDev: boolean;
@@ -3999,8 +4900,15 @@ export interface CreateScriptEdgePreviewWranglerSessionConfigRoutes {
 export type CreateScriptEdgePreviewWranglerSessionConfig =
   | CreateScriptEdgePreviewWranglerSessionConfigWorkersDev
   | CreateScriptEdgePreviewWranglerSessionConfigRoutes;
+const CreateScriptEdgePreviewWranglerSessionConfig = /*@__PURE__*/ __L.at(__c20, 2);
+
 export type CreateScriptEdgePreviewMetadataStringList = Array<string>;
+const CreateScriptEdgePreviewMetadataStringList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<CreateScriptEdgePreviewMetadataStringList>;
+
 export type CreateScriptEdgePreviewMetadataUsageModel = "bundled" | "unbound" | "standard";
+const CreateScriptEdgePreviewMetadataUsageModel = S.String;
+
 export type CreateScriptEdgePreviewMetadataBindingPlainTextType = "plain_text";
 export interface CreateScriptEdgePreviewMetadataBindingPlainText {
   type: CreateScriptEdgePreviewMetadataBindingPlainTextType;
@@ -4312,25 +5220,52 @@ export type CreateScriptEdgePreviewMetadataBinding =
   | CreateScriptEdgePreviewMetadataBindingVpcService
   | CreateScriptEdgePreviewMetadataBindingVpcNetwork
   | CreateScriptEdgePreviewMetadataBindingInherit;
+const CreateScriptEdgePreviewMetadataBinding = /*@__PURE__*/ __L.at(__c20, 3);
+
 export type CreateScriptEdgePreviewMetadataBindingsList =
   Array<CreateScriptEdgePreviewMetadataBinding>;
+const CreateScriptEdgePreviewMetadataBindingsList = /*@__PURE__*/ __L.at(
+  __c20,
+  4,
+) as any as S.Schema<CreateScriptEdgePreviewMetadataBindingsList>;
+
 export type CreateScriptEdgePreviewMetadataMigrationRenamedClass =
   BetaWorkersVersionsCreateRequestMigrationsSingleStepMigrationRenamedClassesItem;
 export type CreateScriptEdgePreviewMetadataMigrationRenamedClassesList =
   Array<BetaWorkersVersionsCreateRequestMigrationsSingleStepMigrationRenamedClassesItem>;
+const CreateScriptEdgePreviewMetadataMigrationRenamedClassesList = /*@__PURE__*/ __L.at(
+  __c20,
+  5,
+) as any as S.Schema<CreateScriptEdgePreviewMetadataMigrationRenamedClassesList>;
+
 export interface CreateScriptEdgePreviewMetadataMigrationStep {
   newClasses?: CreateScriptEdgePreviewMetadataStringList;
   newSqliteClasses?: CreateScriptEdgePreviewMetadataStringList;
   renamedClasses?: CreateScriptEdgePreviewMetadataMigrationRenamedClassesList;
   deletedClasses?: CreateScriptEdgePreviewMetadataStringList;
 }
+const CreateScriptEdgePreviewMetadataMigrationStep = /*@__PURE__*/ __L.at(
+  __c20,
+  6,
+) as any as S.Schema<CreateScriptEdgePreviewMetadataMigrationStep>;
+
 export type CreateScriptEdgePreviewMetadataMigrationStepsList =
   Array<CreateScriptEdgePreviewMetadataMigrationStep>;
+const CreateScriptEdgePreviewMetadataMigrationStepsList = /*@__PURE__*/ __L.at(
+  __c20,
+  7,
+) as any as S.Schema<CreateScriptEdgePreviewMetadataMigrationStepsList>;
+
 export interface CreateScriptEdgePreviewMetadataMigrations {
   oldTag?: string;
   newTag?: string;
   steps?: CreateScriptEdgePreviewMetadataMigrationStepsList;
 }
+const CreateScriptEdgePreviewMetadataMigrations = /*@__PURE__*/ __L.at(
+  __c21,
+  0,
+) as any as S.Schema<CreateScriptEdgePreviewMetadataMigrations>;
+
 export type CreateScriptEdgePreviewMetadataPlacementSmartMode = "smart";
 export interface CreateScriptEdgePreviewMetadataPlacementSmart {
   mode: CreateScriptEdgePreviewMetadataPlacementSmartMode;
@@ -4350,28 +5285,49 @@ export type CreateScriptEdgePreviewMetadataPlacement =
   | CreateScriptEdgePreviewMetadataPlacementRegion
   | CreateScriptEdgePreviewMetadataPlacementHost
   | CreateScriptEdgePreviewMetadataPlacementHostname;
+const CreateScriptEdgePreviewMetadataPlacement = /*@__PURE__*/ __L.at(__c21, 1);
+
 export interface CreateScriptEdgePreviewMetadataTailConsumer {
   service: string;
   environment?: string;
 }
+const CreateScriptEdgePreviewMetadataTailConsumer = /*@__PURE__*/ __L.at(
+  __c21,
+  2,
+) as any as S.Schema<CreateScriptEdgePreviewMetadataTailConsumer>;
+
 export type CreateScriptEdgePreviewMetadataTailConsumersList =
   Array<CreateScriptEdgePreviewMetadataTailConsumer>;
+const CreateScriptEdgePreviewMetadataTailConsumersList = /*@__PURE__*/ __L.at(
+  __c21,
+  3,
+) as any as S.Schema<CreateScriptEdgePreviewMetadataTailConsumersList>;
+
 export interface CreateScriptEdgePreviewMetadataLimits {
   cpuMs?: number;
   subrequests?: number;
 }
+const CreateScriptEdgePreviewMetadataLimits =
+  BetaWorkersCreateRequestPreviewsBaseConfigLimits as any as S.Schema<CreateScriptEdgePreviewMetadataLimits>;
+
 export type CreateScriptEdgePreviewMetadataAssetsConfigHtmlHandling =
   | "auto-trailing-slash"
   | "force-trailing-slash"
   | "drop-trailing-slash"
   | "none";
+const CreateScriptEdgePreviewMetadataAssetsConfigHtmlHandling = S.String;
+
 export type CreateScriptEdgePreviewMetadataAssetsConfigNotFoundHandling =
   | "single-page-application"
   | "404-page"
   | "none";
+const CreateScriptEdgePreviewMetadataAssetsConfigNotFoundHandling = S.String;
+
 export type CreateScriptEdgePreviewMetadataAssetsConfigRunWorkerFirst =
   | boolean
   | CreateScriptEdgePreviewMetadataStringList;
+const CreateScriptEdgePreviewMetadataAssetsConfigRunWorkerFirst = /*@__PURE__*/ __L.at(__c21, 4);
+
 export interface CreateScriptEdgePreviewMetadataAssetsConfig {
   htmlHandling?: CreateScriptEdgePreviewMetadataAssetsConfigHtmlHandling | (string & {});
   notFoundHandling?: CreateScriptEdgePreviewMetadataAssetsConfigNotFoundHandling | (string & {});
@@ -4379,10 +5335,20 @@ export interface CreateScriptEdgePreviewMetadataAssetsConfig {
   redirects?: string;
   headers?: string;
 }
+const CreateScriptEdgePreviewMetadataAssetsConfig = /*@__PURE__*/ __L.at(
+  __c21,
+  5,
+) as any as S.Schema<CreateScriptEdgePreviewMetadataAssetsConfig>;
+
 export interface CreateScriptEdgePreviewMetadataAssets {
   jwt?: string;
   config?: CreateScriptEdgePreviewMetadataAssetsConfig;
 }
+const CreateScriptEdgePreviewMetadataAssets = /*@__PURE__*/ __L.at(
+  __c21,
+  6,
+) as any as S.Schema<CreateScriptEdgePreviewMetadataAssets>;
+
 export interface CreateScriptEdgePreviewMetadataObservabilityLogs {
   enabled?: boolean;
   headSamplingRate?: number;
@@ -4390,15 +5356,28 @@ export interface CreateScriptEdgePreviewMetadataObservabilityLogs {
   persist?: boolean;
   destinations?: CreateScriptEdgePreviewMetadataStringList;
 }
+const CreateScriptEdgePreviewMetadataObservabilityLogs = /*@__PURE__*/ __L.at(
+  __c21,
+  7,
+) as any as S.Schema<CreateScriptEdgePreviewMetadataObservabilityLogs>;
+
 export interface CreateScriptEdgePreviewMetadataObservabilityIssues {
   enabled?: boolean;
 }
+const CreateScriptEdgePreviewMetadataObservabilityIssues =
+  BetaWorkersCreateRequestObservabilityIssues as any as S.Schema<CreateScriptEdgePreviewMetadataObservabilityIssues>;
+
 export interface CreateScriptEdgePreviewMetadataObservabilityTraces {
   enabled?: boolean;
   headSamplingRate?: number;
   persist?: boolean;
   destinations?: CreateScriptEdgePreviewMetadataStringList;
 }
+const CreateScriptEdgePreviewMetadataObservabilityTraces = /*@__PURE__*/ __L.at(
+  __c22,
+  0,
+) as any as S.Schema<CreateScriptEdgePreviewMetadataObservabilityTraces>;
+
 export interface CreateScriptEdgePreviewMetadataObservability {
   enabled?: boolean;
   headSamplingRate?: number;
@@ -4407,9 +5386,17 @@ export interface CreateScriptEdgePreviewMetadataObservability {
   issues?: CreateScriptEdgePreviewMetadataObservabilityIssues;
   traces?: CreateScriptEdgePreviewMetadataObservabilityTraces;
 }
+const CreateScriptEdgePreviewMetadataObservability = /*@__PURE__*/ __L.at(
+  __c22,
+  1,
+) as any as S.Schema<CreateScriptEdgePreviewMetadataObservability>;
+
 export type CreateScriptEdgePreviewMetadataContainer = CreatePreviewDeploymentMetadataContainer;
 export type CreateScriptEdgePreviewMetadataContainersList =
   Array<CreatePreviewDeploymentMetadataContainer>;
+const CreateScriptEdgePreviewMetadataContainersList =
+  BetaWorkersVersionsCreateRequestContainersList as any as S.Schema<CreateScriptEdgePreviewMetadataContainersList>;
+
 export interface CreateScriptEdgePreviewMetadata {
   mainModule?: string;
   bodyPart?: string;
@@ -4432,6 +5419,11 @@ export interface CreateScriptEdgePreviewMetadata {
   keepAssets?: boolean;
   tags?: CreateScriptEdgePreviewMetadataStringList;
 }
+const CreateScriptEdgePreviewMetadata = /*@__PURE__*/ __L.at(
+  __c22,
+  2,
+) as any as S.Schema<CreateScriptEdgePreviewMetadata>;
+
 export interface CreateScriptEdgePreviewRequest {
   /** Identifier. */
   accountId: string;
@@ -4446,12 +5438,22 @@ export interface CreateScriptEdgePreviewRequest {
   /** JSON-encoded multipart `metadata` part: the preview worker's modules, bindings and settings. */
   metadata?: CreateScriptEdgePreviewMetadata;
 }
+const CreateScriptEdgePreviewRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  3,
+) as any as S.Schema<CreateScriptEdgePreviewRequest>;
+
 export interface CreateScriptEdgePreviewResponse {
   /** Token to send as cf-workers-preview-token header when making requests to the preview host. */
   previewToken: string;
   /** URL for tailing live logs from the preview worker. */
   tailUrl?: string | null;
 }
+const CreateScriptEdgePreviewResponse = /*@__PURE__*/ __L.at(
+  __c22,
+  4,
+) as any as S.Schema<CreateScriptEdgePreviewResponse>;
+
 export interface CreateScriptSubdomainRequest {
   /** Identifier. */
   accountId: string;
@@ -4462,6 +5464,11 @@ export interface CreateScriptSubdomainRequest {
   /** Whether the Worker's Preview URLs should be available on the workers.dev subdomain. */
   previewsEnabled?: boolean;
 }
+const CreateScriptSubdomainRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  5,
+) as any as S.Schema<CreateScriptSubdomainRequest>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateScriptSubdomainResponse {
   /** Whether the Worker is available on the workers.dev subdomain. */
@@ -4469,7 +5476,17 @@ export interface CreateScriptSubdomainResponse {
   /** Whether the Worker's Preview URLs are available on the workers.dev subdomain. */
   previewsEnabled: boolean;
 }
+const CreateScriptSubdomainResponse = /*@__PURE__*/ __L.at(
+  __c22,
+  6,
+) as any as S.Schema<CreateScriptSubdomainResponse>;
+
 export type CreateScriptTailFiltersList = Array<unknown>;
+const CreateScriptTailFiltersList = /*@__PURE__*/ __L.at(
+  __c22,
+  7,
+) as any as S.Schema<CreateScriptTailFiltersList>;
+
 export interface CreateScriptTailRequest {
   /** Identifier. */
   accountId: string;
@@ -4478,6 +5495,11 @@ export interface CreateScriptTailRequest {
   /** Tail event filters; an empty list tails everything. */
   filters?: CreateScriptTailFiltersList;
 }
+const CreateScriptTailRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  0,
+) as any as S.Schema<CreateScriptTailRequest>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateScriptTailResponse {
   /** Identifier. */
@@ -4485,21 +5507,42 @@ export interface CreateScriptTailResponse {
   expiresAt: string;
   url: string;
 }
+const CreateScriptTailResponse = /*@__PURE__*/ __L.at(
+  __c23,
+  1,
+) as any as S.Schema<CreateScriptTailResponse>;
+
 export type ScriptsVersionsCreateRequestBindingsInherit = "strict";
+const ScriptsVersionsCreateRequestBindingsInherit = S.String;
+
 export interface PutScriptMetadataAnnotations {
   workersMessage?: string;
   workersTag?: string;
   /** Alias to point at this version (e.g. for gradual deployments). */
   workersAlias?: string;
 }
+const PutScriptMetadataAnnotations = /*@__PURE__*/ __L.at(
+  __c23,
+  2,
+) as any as S.Schema<PutScriptMetadataAnnotations>;
+
 export type PutScriptAssetsConfigHtmlHandling =
   | "auto-trailing-slash"
   | "force-trailing-slash"
   | "drop-trailing-slash"
   | "none";
+const PutScriptAssetsConfigHtmlHandling = S.String;
+
 export type PutScriptAssetsConfigNotFoundHandling = "none" | "404-page" | "single-page-application";
+const PutScriptAssetsConfigNotFoundHandling = S.String;
+
 export type PutScriptMetadataStringList = Array<string>;
+const PutScriptMetadataStringList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<PutScriptMetadataStringList>;
+
 export type PutScriptAssetsConfigRunWorkerFirst = PutScriptMetadataStringList | boolean;
+const PutScriptAssetsConfigRunWorkerFirst = /*@__PURE__*/ __L.at(__c23, 3);
+
 export interface PutScriptAssetsConfig {
   htmlHandling?: PutScriptAssetsConfigHtmlHandling | (string & {});
   notFoundHandling?: PutScriptAssetsConfigNotFoundHandling | (string & {});
@@ -4508,10 +5551,20 @@ export interface PutScriptAssetsConfig {
   headers?: string;
   redirects?: string;
 }
+const PutScriptAssetsConfig = /*@__PURE__*/ __L.at(
+  __c23,
+  4,
+) as any as S.Schema<PutScriptAssetsConfig>;
+
 export interface PutScriptMetadataAssets {
   config?: PutScriptAssetsConfig;
   jwt?: string;
 }
+const PutScriptMetadataAssets = /*@__PURE__*/ __L.at(
+  __c23,
+  5,
+) as any as S.Schema<PutScriptMetadataAssets>;
+
 export type PutScriptBindingAiType = "ai";
 export interface PutScriptBindingAi {
   name: string;
@@ -4831,9 +5884,19 @@ export type PutScriptBinding =
   | PutScriptBindingArtifacts
   | PutScriptBindingStream
   | PutScriptBindingK2;
+const PutScriptBinding = /*@__PURE__*/ __L.at(__c23, 6);
+
 export type PutScriptMetadataBindingsList = Array<PutScriptBinding>;
+const PutScriptMetadataBindingsList = /*@__PURE__*/ __L.at(
+  __c23,
+  7,
+) as any as S.Schema<PutScriptMetadataBindingsList>;
+
 export type PutScriptContainer = CreatePreviewDeploymentMetadataContainer;
 export type PutScriptMetadataContainersList = Array<CreatePreviewDeploymentMetadataContainer>;
+const PutScriptMetadataContainersList =
+  BetaWorkersVersionsCreateRequestContainersList as any as S.Schema<PutScriptMetadataContainersList>;
+
 export type PutScriptMetadataLimits = CreateScriptEdgePreviewMetadataLimits;
 export type PutScriptMigrationRenamedClass =
   BetaWorkersVersionsCreateRequestMigrationsSingleStepMigrationRenamedClassesItem;
@@ -4868,6 +5931,8 @@ export interface PutScriptMultipleStepMigrations {
 export type PutScriptMetadataMigrations =
   | PutScriptSingleStepMigration
   | PutScriptMultipleStepMigrations;
+const PutScriptMetadataMigrations = /*@__PURE__*/ __L.at(__c24, 0);
+
 export interface PutScriptObservabilityLogs {
   enabled: boolean;
   invocationLogs: boolean;
@@ -4875,7 +5940,14 @@ export interface PutScriptObservabilityLogs {
   headSamplingRate?: number | null;
   persist?: boolean;
 }
+const PutScriptObservabilityLogs = /*@__PURE__*/ __L.at(
+  __c24,
+  1,
+) as any as S.Schema<PutScriptObservabilityLogs>;
+
 export type PutScriptObservabilityTracesPropagationPolicy = "authenticated" | "accept";
+const PutScriptObservabilityTracesPropagationPolicy = S.String;
+
 export interface PutScriptObservabilityTraces {
   destinations?: PutScriptMetadataStringList;
   enabled?: boolean;
@@ -4883,10 +5955,18 @@ export interface PutScriptObservabilityTraces {
   persist?: boolean;
   propagationPolicy?: PutScriptObservabilityTracesPropagationPolicy | (string & {});
 }
+const PutScriptObservabilityTraces = /*@__PURE__*/ __L.at(
+  __c24,
+  2,
+) as any as S.Schema<PutScriptObservabilityTraces>;
+
 export interface PutScriptObservabilityIssues {
   /** Whether Workers Issues error monitoring is enabled. */
   enabled: boolean;
 }
+const PutScriptObservabilityIssues =
+  BetaWorkersVersionsCreateRequestExportsValueWorkerCache as any as S.Schema<PutScriptObservabilityIssues>;
+
 export interface PutScriptMetadataObservability {
   enabled?: boolean;
   headSamplingRate?: number | null;
@@ -4895,6 +5975,11 @@ export interface PutScriptMetadataObservability {
   issues?: PutScriptObservabilityIssues;
   redactQueryString?: boolean;
 }
+const PutScriptMetadataObservability = /*@__PURE__*/ __L.at(
+  __c24,
+  3,
+) as any as S.Schema<PutScriptMetadataObservability>;
+
 export type PutScriptPlacementSmartMode = "smart";
 export interface PutScriptPlacementSmart {
   mode: PutScriptPlacementSmartMode;
@@ -4936,25 +6021,51 @@ export type PutScriptMetadataPlacement =
   | PutScriptPlacementTargetedHostname
   | PutScriptPlacementTargetedHost
   | PutScriptPlacementTargetedList;
+const PutScriptMetadataPlacement = /*@__PURE__*/ __L.at(__c24, 4);
+
 export interface PutScriptTailConsumer {
   service: string;
   environment?: string;
   namespace?: string;
 }
+const PutScriptTailConsumer = /*@__PURE__*/ __L.at(
+  __c24,
+  5,
+) as any as S.Schema<PutScriptTailConsumer>;
+
 export type PutScriptMetadataTailConsumersList = Array<PutScriptTailConsumer>;
+const PutScriptMetadataTailConsumersList = /*@__PURE__*/ __L.at(
+  __c24,
+  6,
+) as any as S.Schema<PutScriptMetadataTailConsumersList>;
+
 export type PutScriptMetadataUsageModel = "standard" | "bundled" | "unbound";
+const PutScriptMetadataUsageModel = S.String;
+
 export interface PutScriptMetadataCache {
   enabled?: boolean;
   crossVersionCache?: boolean;
 }
+const PutScriptMetadataCache = /*@__PURE__*/ __L.at(
+  __c24,
+  7,
+) as any as S.Schema<PutScriptMetadataCache>;
+
 export type PutScriptMetadataStreamingTailConsumersList = Array<PutScriptTailConsumer>;
+const PutScriptMetadataStreamingTailConsumersList =
+  PutScriptMetadataTailConsumersList as any as S.Schema<PutScriptMetadataStreamingTailConsumersList>;
+
 export type PutScriptMetadataExportType = "worker" | "durable-object";
+const PutScriptMetadataExportType = S.String;
+
 export type PutScriptMetadataExportState =
   | "created"
   | "deleted"
   | "renamed"
   | "transferred"
   | "expecting-transfer";
+const PutScriptMetadataExportState = S.String;
+
 export interface PutScriptMetadataExport {
   type?: PutScriptMetadataExportType | (string & {});
   cache?: PutScriptMetadataCache;
@@ -4965,7 +6076,17 @@ export interface PutScriptMetadataExport {
   transferredTo?: string;
   transferFrom?: string;
 }
+const PutScriptMetadataExport = /*@__PURE__*/ __L.at(
+  __c25,
+  0,
+) as any as S.Schema<PutScriptMetadataExport>;
+
 export type PutScriptMetadataExports = { [key: string]: PutScriptMetadataExport | undefined };
+const PutScriptMetadataExports = /*@__PURE__*/ __L.at(
+  __c25,
+  1,
+) as any as S.Schema<PutScriptMetadataExports>;
+
 export interface PutScriptMetadata {
   annotations?: PutScriptMetadataAnnotations;
   assets?: PutScriptMetadataAssets;
@@ -4990,6 +6111,8 @@ export interface PutScriptMetadata {
   /** Per-export settings keyed by the verbatim export name (default for the default export). */
   exports?: PutScriptMetadataExports;
 }
+const PutScriptMetadata = /*@__PURE__*/ __L.at(__c25, 2) as any as S.Schema<PutScriptMetadata>;
+
 export interface CreateScriptVersionRequest {
   /** Identifier. */
   accountId: string;
@@ -5001,17 +6124,38 @@ export interface CreateScriptVersionRequest {
   /** Module / asset file parts, appended under their own filenames. */
   files?: File | Blob | (File | Blob)[];
 }
+const CreateScriptVersionRequest = /*@__PURE__*/ __L.at(
+  __c25,
+  3,
+) as any as S.Schema<CreateScriptVersionRequest>;
+
 export type ScriptsVersionsCreateResponseResourcesScriptHandlersList = Array<string>;
+const ScriptsVersionsCreateResponseResourcesScriptHandlersList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<ScriptsVersionsCreateResponseResourcesScriptHandlersList>;
+
 export type ScriptsVersionsCreateResponseResourcesScriptNamedHandlersItemHandlersList =
   Array<string>;
+const ScriptsVersionsCreateResponseResourcesScriptNamedHandlersItemHandlersList =
+  BetaWorkersCreateRequestPreviewsBaseConfigObservabilityLogsDestinationsList as any as S.Schema<ScriptsVersionsCreateResponseResourcesScriptNamedHandlersItemHandlersList>;
+
 export interface ScriptsVersionsCreateResponseResourcesScriptNamedHandlersItem {
   /** The names of handlers exported as part of the named export. */
   handlers?: ScriptsVersionsCreateResponseResourcesScriptNamedHandlersItemHandlersList | null;
   /** The name of the exported class or entrypoint. */
   name?: string | null;
 }
+const ScriptsVersionsCreateResponseResourcesScriptNamedHandlersItem = /*@__PURE__*/ __L.at(
+  __c25,
+  4,
+) as any as S.Schema<ScriptsVersionsCreateResponseResourcesScriptNamedHandlersItem>;
+
 export type ScriptsVersionsCreateResponseResourcesScriptNamedHandlersList =
   Array<ScriptsVersionsCreateResponseResourcesScriptNamedHandlersItem>;
+const ScriptsVersionsCreateResponseResourcesScriptNamedHandlersList = /*@__PURE__*/ __L.at(
+  __c25,
+  5,
+) as any as S.Schema<ScriptsVersionsCreateResponseResourcesScriptNamedHandlersList>;
+
 export interface ScriptsVersionsCreateResponseResourcesScript {
   /** Hashed script content */
   etag?: string | null;
@@ -5022,8 +6166,16 @@ export interface ScriptsVersionsCreateResponseResourcesScript {
   /** Named exports, such as Durable Object class implementations and named entrypoints. */
   namedHandlers?: ScriptsVersionsCreateResponseResourcesScriptNamedHandlersList | null;
 }
+const ScriptsVersionsCreateResponseResourcesScript = /*@__PURE__*/ __L.at(
+  __c25,
+  6,
+) as any as S.Schema<ScriptsVersionsCreateResponseResourcesScript>;
+
 export type ScriptsVersionsCreateResponseResourcesScriptRuntimeCompatibilityFlagsList =
   Array<string>;
+const ScriptsVersionsCreateResponseResourcesScriptRuntimeCompatibilityFlagsList =
+  BetaWorkersCreateRequestPreviewsBaseConfigObservabilityLogsDestinationsList as any as S.Schema<ScriptsVersionsCreateResponseResourcesScriptRuntimeCompatibilityFlagsList>;
+
 export type ScriptsVersionsCreateResponseResourcesScriptRuntimeExportsValueWorkerType = "worker";
 export type ScriptsVersionsCreateResponseResourcesScriptRuntimeExportsValueWorkerCache =
   BetaWorkersVersionsCreateRequestExportsValueWorkerCache;
@@ -5113,17 +6265,34 @@ export type ScriptsVersionsCreateResponseResourcesScriptRuntimeExportsValue =
   | ScriptsVersionsCreateResponseResourcesScriptRuntimeExportsValueWorkersDurableObjectRenamedExport
   | ScriptsVersionsCreateResponseResourcesScriptRuntimeExportsValueWorkersDurableObjectTransferredExport
   | ScriptsVersionsCreateResponseResourcesScriptRuntimeExportsValueWorkersDurableObjectExpectingTransferExport;
+const ScriptsVersionsCreateResponseResourcesScriptRuntimeExportsValue = /*@__PURE__*/ __L.at(
+  __c25,
+  7,
+);
+
 export type ScriptsVersionsCreateResponseResourcesScriptRuntimeExportsMap = {
   [key: string]: ScriptsVersionsCreateResponseResourcesScriptRuntimeExportsValue | undefined;
 };
+const ScriptsVersionsCreateResponseResourcesScriptRuntimeExportsMap = /*@__PURE__*/ __L.at(
+  __c26,
+  0,
+) as any as S.Schema<ScriptsVersionsCreateResponseResourcesScriptRuntimeExportsMap>;
+
 export interface ScriptsVersionsCreateResponseResourcesScriptRuntimeLimits {
   /** The amount of CPU time this Worker can use in milliseconds. */
   cpuMs?: number | null;
 }
+const ScriptsVersionsCreateResponseResourcesScriptRuntimeLimits = /*@__PURE__*/ __L.at(
+  __c26,
+  1,
+) as any as S.Schema<ScriptsVersionsCreateResponseResourcesScriptRuntimeLimits>;
+
 export type ScriptsVersionsCreateResponseResourcesScriptRuntimeUsageModel =
   | "bundled"
   | "unbound"
   | "standard";
+const ScriptsVersionsCreateResponseResourcesScriptRuntimeUsageModel = S.String;
+
 export interface ScriptsVersionsCreateResponseResourcesScriptRuntime {
   /** Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker. */
   compatibilityDate?: string | null;
@@ -5139,6 +6308,11 @@ export interface ScriptsVersionsCreateResponseResourcesScriptRuntime {
   usageModel?: ScriptsVersionsCreateResponseResourcesScriptRuntimeUsageModel | null;
   containers?: BetaWorkersVersionsCreateResponseContainersList | null;
 }
+const ScriptsVersionsCreateResponseResourcesScriptRuntime = /*@__PURE__*/ __L.at(
+  __c26,
+  2,
+) as any as S.Schema<ScriptsVersionsCreateResponseResourcesScriptRuntime>;
+
 export interface ScriptsVersionsCreateResponseResources {
   /** List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings. */
   bindings: unknown;
@@ -5146,8 +6320,19 @@ export interface ScriptsVersionsCreateResponseResources {
   /** Runtime configuration for the Worker. */
   scriptRuntime?: ScriptsVersionsCreateResponseResourcesScriptRuntime | null;
 }
+const ScriptsVersionsCreateResponseResources = /*@__PURE__*/ __L.at(
+  __c26,
+  3,
+) as any as S.Schema<ScriptsVersionsCreateResponseResources>;
+
 export type ScriptsVersionsCreateResponseExportsReconciliationCreatedList = Array<string>;
+const ScriptsVersionsCreateResponseExportsReconciliationCreatedList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<ScriptsVersionsCreateResponseExportsReconciliationCreatedList>;
+
 export type ScriptsVersionsCreateResponseExportsReconciliationDeletedList = Array<string>;
+const ScriptsVersionsCreateResponseExportsReconciliationDeletedList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<ScriptsVersionsCreateResponseExportsReconciliationDeletedList>;
+
 export type ScriptsVersionsCreateResponseExportsReconciliationInfoItemScenario =
   | "code_class_not_in_exports"
   | "provisioned_class_missing_from_config"
@@ -5182,8 +6367,13 @@ export type ScriptsVersionsCreateResponseExportsReconciliationInfoItemScenario =
   | "stale_tombstone"
   | "transfer_receive_already_applied"
   | "transfer_receive_cleanup_complete";
+const ScriptsVersionsCreateResponseExportsReconciliationInfoItemScenario = S.String;
+
 export type ScriptsVersionsCreateResponseExportsReconciliationInfoItemReferencingScriptsList =
   Array<string>;
+const ScriptsVersionsCreateResponseExportsReconciliationInfoItemReferencingScriptsList =
+  BetaWorkersCreateRequestPreviewsBaseConfigObservabilityLogsDestinationsList as any as S.Schema<ScriptsVersionsCreateResponseExportsReconciliationInfoItemReferencingScriptsList>;
+
 export interface ScriptsVersionsCreateResponseExportsReconciliationInfoItem {
   /** The class name the info entry is about. */
   class: string;
@@ -5196,17 +6386,38 @@ export interface ScriptsVersionsCreateResponseExportsReconciliationInfoItem {
   /** Other Workers in the account that still bind to the affected class. Advisory: while non-empty the tombstone is not yet safe to remove -- redeploy these Workers with bindings re-pointed first. */
   referencingScripts?: ScriptsVersionsCreateResponseExportsReconciliationInfoItemReferencingScriptsList | null;
 }
+const ScriptsVersionsCreateResponseExportsReconciliationInfoItem = /*@__PURE__*/ __L.at(
+  __c26,
+  4,
+) as any as S.Schema<ScriptsVersionsCreateResponseExportsReconciliationInfoItem>;
+
 export type ScriptsVersionsCreateResponseExportsReconciliationInfoList =
   Array<ScriptsVersionsCreateResponseExportsReconciliationInfoItem>;
+const ScriptsVersionsCreateResponseExportsReconciliationInfoList = /*@__PURE__*/ __L.at(
+  __c26,
+  5,
+) as any as S.Schema<ScriptsVersionsCreateResponseExportsReconciliationInfoList>;
+
 export type ScriptsVersionsCreateResponseExportsReconciliationRemovableEntriesList = Array<string>;
+const ScriptsVersionsCreateResponseExportsReconciliationRemovableEntriesList =
+  BetaWorkersCreateRequestPreviewsBaseConfigObservabilityLogsDestinationsList as any as S.Schema<ScriptsVersionsCreateResponseExportsReconciliationRemovableEntriesList>;
+
 export type ScriptsVersionsCreateResponseExportsReconciliationRenamedItem =
   BetaWorkersVersionsCreateResponseExportsReconciliationRenamedItem;
 export type ScriptsVersionsCreateResponseExportsReconciliationRenamedList =
   Array<BetaWorkersVersionsCreateResponseExportsReconciliationRenamedItem>;
+const ScriptsVersionsCreateResponseExportsReconciliationRenamedList = /*@__PURE__*/ __L.at(
+  __c26,
+  6,
+) as any as S.Schema<ScriptsVersionsCreateResponseExportsReconciliationRenamedList>;
+
 export type ScriptsVersionsCreateResponseExportsReconciliationTransferPendingItem =
   BetaWorkersVersionsCreateResponseExportsReconciliationTransferPendingItem;
 export type ScriptsVersionsCreateResponseExportsReconciliationTransferPendingList =
   Array<BetaWorkersVersionsCreateResponseExportsReconciliationTransferPendingItem>;
+const ScriptsVersionsCreateResponseExportsReconciliationTransferPendingList =
+  BetaWorkersVersionsCreateResponseExportsReconciliationTransferPendingList as any as S.Schema<ScriptsVersionsCreateResponseExportsReconciliationTransferPendingList>;
+
 export type ScriptsVersionsCreateResponseExportsReconciliationTransferredItemPhase = "committed";
 export interface ScriptsVersionsCreateResponseExportsReconciliationTransferredItem {
   /** The source class name that was transferred. */
@@ -5218,7 +6429,13 @@ export interface ScriptsVersionsCreateResponseExportsReconciliationTransferredIt
 }
 export type ScriptsVersionsCreateResponseExportsReconciliationTransferredList =
   Array<ScriptsVersionsCreateResponseExportsReconciliationTransferredItem>;
+const ScriptsVersionsCreateResponseExportsReconciliationTransferredList =
+  BetaWorkersVersionsCreateResponseExportsReconciliationTransferredList as any as S.Schema<ScriptsVersionsCreateResponseExportsReconciliationTransferredList>;
+
 export type ScriptsVersionsCreateResponseExportsReconciliationUpdatedList = Array<string>;
+const ScriptsVersionsCreateResponseExportsReconciliationUpdatedList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<ScriptsVersionsCreateResponseExportsReconciliationUpdatedList>;
+
 export type ScriptsVersionsCreateResponseExportsReconciliationWarningsItemScenario =
   | "code_class_not_in_exports"
   | "provisioned_class_missing_from_config"
@@ -5263,8 +6480,16 @@ export interface ScriptsVersionsCreateResponseExportsReconciliationWarningsItem 
   /** The provisioned namespace the warning relates to, when applicable. */
   namespaceId?: string | null;
 }
+const ScriptsVersionsCreateResponseExportsReconciliationWarningsItem =
+  BetaWorkersVersionsCreateResponseExportsReconciliationWarningsItem as any as S.Schema<ScriptsVersionsCreateResponseExportsReconciliationWarningsItem>;
+
 export type ScriptsVersionsCreateResponseExportsReconciliationWarningsList =
   Array<ScriptsVersionsCreateResponseExportsReconciliationWarningsItem>;
+const ScriptsVersionsCreateResponseExportsReconciliationWarningsList = /*@__PURE__*/ __L.at(
+  __c26,
+  7,
+) as any as S.Schema<ScriptsVersionsCreateResponseExportsReconciliationWarningsList>;
+
 export interface ScriptsVersionsCreateResponseExportsReconciliation {
   /** Class names for which a new namespace was provisioned. */
   created: ScriptsVersionsCreateResponseExportsReconciliationCreatedList;
@@ -5285,6 +6510,11 @@ export interface ScriptsVersionsCreateResponseExportsReconciliation {
   /** Non-blocking warnings. See `exports_reconciliation_warning`. */
   warnings: ScriptsVersionsCreateResponseExportsReconciliationWarningsList;
 }
+const ScriptsVersionsCreateResponseExportsReconciliation = /*@__PURE__*/ __L.at(
+  __c27,
+  0,
+) as any as S.Schema<ScriptsVersionsCreateResponseExportsReconciliation>;
+
 export type ScriptsVersionsCreateResponseMetadataSource =
   | "unknown"
   | "api"
@@ -5297,6 +6527,8 @@ export type ScriptsVersionsCreateResponseMetadataSource =
   | "quick_editor"
   | "playground"
   | "workersci";
+const ScriptsVersionsCreateResponseMetadataSource = S.String;
+
 export interface ScriptsVersionsCreateResponseMetadata {
   /** Email of the user who created the version. */
   authorEmail?: string | null;
@@ -5311,6 +6543,11 @@ export interface ScriptsVersionsCreateResponseMetadata {
   /** The source of the version upload. */
   source?: ScriptsVersionsCreateResponseMetadataSource | null;
 }
+const ScriptsVersionsCreateResponseMetadata = /*@__PURE__*/ __L.at(
+  __c27,
+  1,
+) as any as S.Schema<ScriptsVersionsCreateResponseMetadata>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateScriptVersionResponse {
   resources: ScriptsVersionsCreateResponseResources;
@@ -5324,6 +6561,11 @@ export interface CreateScriptVersionResponse {
   /** Time in milliseconds spent on [Worker startup](https://developers.cloudflare.com/workers/platform/limits/#worker-startup-time). */
   startupTimeMs?: number | null;
 }
+const CreateScriptVersionResponse = /*@__PURE__*/ __L.at(
+  __c27,
+  2,
+) as any as S.Schema<CreateScriptVersionResponse>;
+
 export interface CreateServiceEdgePreviewRequest {
   /** Identifier. */
   accountId: string;
@@ -5340,32 +6582,58 @@ export interface CreateServiceEdgePreviewRequest {
   /** JSON-encoded multipart part selecting how the preview is routed (workers.dev or explicit routes); without it edge previews cannot opt into workers.dev routing. */
   wranglerSessionConfig?: CreateScriptEdgePreviewWranglerSessionConfig;
 }
+const CreateServiceEdgePreviewRequest = /*@__PURE__*/ __L.at(
+  __c27,
+  3,
+) as any as S.Schema<CreateServiceEdgePreviewRequest>;
+
 export interface CreateServiceEdgePreviewResponse {
   /** Token to send as cf-workers-preview-token header when making requests to the preview host. */
   previewToken: string;
   /** URL for tailing live logs from the preview worker. */
   tailUrl?: string | null;
 }
+const CreateServiceEdgePreviewResponse =
+  CreateScriptEdgePreviewResponse as any as S.Schema<CreateServiceEdgePreviewResponse>;
+
 export interface CreateSubdomainEdgePreviewSessionRequest {
   /** Identifier. */
   accountId: string;
 }
+const CreateSubdomainEdgePreviewSessionRequest = /*@__PURE__*/ __L.at(
+  __c27,
+  4,
+) as any as S.Schema<CreateSubdomainEdgePreviewSessionRequest>;
+
 export interface CreateSubdomainEdgePreviewSessionResponse {
   /** Session token used as cf-preview-upload-config-token when uploading a preview worker. */
   token: string;
   /** Optional URL to exchange the token for a re-encoded version. */
   exchangeUrl?: string | null;
 }
+const CreateSubdomainEdgePreviewSessionResponse = /*@__PURE__*/ __L.at(
+  __c27,
+  5,
+) as any as S.Schema<CreateSubdomainEdgePreviewSessionResponse>;
+
 export interface CreateZoneEdgePreviewSessionRequest {
   /** Identifier. */
   zoneId: string;
 }
+const CreateZoneEdgePreviewSessionRequest = /*@__PURE__*/ __L.at(
+  __c27,
+  6,
+) as any as S.Schema<CreateZoneEdgePreviewSessionRequest>;
+
 export interface CreateZoneEdgePreviewSessionResponse {
   /** Session token used as cf-preview-upload-config-token when uploading a preview worker. */
   token: string;
   /** Optional URL to exchange the token for a re-encoded version. */
   exchangeUrl?: string | null;
 }
+const CreateZoneEdgePreviewSessionResponse =
+  CreateSubdomainEdgePreviewSessionResponse as any as S.Schema<CreateZoneEdgePreviewSessionResponse>;
+
 export interface DeleteBetaWorkerRequest {
   /** Identifier. */
   accountId: string;
@@ -5374,7 +6642,17 @@ export interface DeleteBetaWorkerRequest {
   /** If true, delete the Worker even when other Workers still reference it. Service bindings in those Workers may be left broken. Durable Object namespaces implemented by the deleted Worker are deleted even if other Workers reference them. */
   force?: boolean;
 }
+const DeleteBetaWorkerRequest = /*@__PURE__*/ __L.at(
+  __c27,
+  7,
+) as any as S.Schema<DeleteBetaWorkerRequest>;
+
 export interface DeleteBetaWorkerResponse {}
+const DeleteBetaWorkerResponse = /*@__PURE__*/ __L.at(
+  __c28,
+  0,
+) as any as S.Schema<DeleteBetaWorkerResponse>;
+
 export interface DeleteBetaWorkerVersionRequest {
   /** Identifier. */
   accountId: string;
@@ -5383,18 +6661,37 @@ export interface DeleteBetaWorkerVersionRequest {
   /** Identifier for the version, which can be a UUID, a UUID prefix (minimum length 8), or the literal "latest" to operate on the most recently created version. */
   versionId: string;
 }
+const DeleteBetaWorkerVersionRequest = /*@__PURE__*/ __L.at(
+  __c28,
+  1,
+) as any as S.Schema<DeleteBetaWorkerVersionRequest>;
+
 export interface DeleteBetaWorkerVersionResponse {}
+const DeleteBetaWorkerVersionResponse = /*@__PURE__*/ __L.at(
+  __c28,
+  2,
+) as any as S.Schema<DeleteBetaWorkerVersionResponse>;
+
 export interface DeleteDomainRequest {
   /** Identifier. */
   accountId: string;
   /** ID of the domain. */
   domainId: string;
 }
+const DeleteDomainRequest = /*@__PURE__*/ __L.at(__c28, 3) as any as S.Schema<DeleteDomainRequest>;
+
 export interface DeleteDomainResponse {}
+const DeleteDomainResponse = DeleteBetaWorkerResponse as any as S.Schema<DeleteDomainResponse>;
+
 export interface DeleteObservabilityDestinationRequest {
   accountId: string;
   slug: string;
 }
+const DeleteObservabilityDestinationRequest = /*@__PURE__*/ __L.at(
+  __c28,
+  4,
+) as any as S.Schema<DeleteObservabilityDestinationRequest>;
+
 export type ObservabilityDestinationsDeleteResponseConfigurationLogpushDataset =
   | "opentelemetry-traces"
   | "opentelemetry-logs"
@@ -5407,7 +6704,13 @@ export interface ObservabilityDestinationsDeleteResponseConfiguration {
   type: ObservabilityDestinationsDeleteResponseConfigurationType;
   url: string;
 }
+const ObservabilityDestinationsDeleteResponseConfiguration =
+  ObservabilityDestinationsCreateResponseConfiguration as any as S.Schema<ObservabilityDestinationsDeleteResponseConfiguration>;
+
 export type ObservabilityDestinationsDeleteResponseScriptsList = Array<string>;
+const ObservabilityDestinationsDeleteResponseScriptsList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<ObservabilityDestinationsDeleteResponseScriptsList>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DeleteObservabilityDestinationResponse {
   configuration: ObservabilityDestinationsDeleteResponseConfiguration;
@@ -5416,23 +6719,39 @@ export interface DeleteObservabilityDestinationResponse {
   scripts: ObservabilityDestinationsDeleteResponseScriptsList;
   slug: string;
 }
+const DeleteObservabilityDestinationResponse = /*@__PURE__*/ __L.at(
+  __c28,
+  5,
+) as any as S.Schema<DeleteObservabilityDestinationResponse>;
+
 export interface DeletePreviewRequest {
   accountId: string;
   workerId: string;
   previewId: string;
 }
+const DeletePreviewRequest = /*@__PURE__*/ __L.at(
+  __c28,
+  6,
+) as any as S.Schema<DeletePreviewRequest>;
+
 export interface DeletePreviewResponse {}
+const DeletePreviewResponse = DeleteBetaWorkerResponse as any as S.Schema<DeletePreviewResponse>;
+
 export interface DeleteRouteRequest {
   /** Identifier. */
   zoneId: string;
   /** Identifier. */
   routeId: string;
 }
+const DeleteRouteRequest = /*@__PURE__*/ __L.at(__c28, 7) as any as S.Schema<DeleteRouteRequest>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DeleteRouteResponse {
   /** Identifier. */
   id?: string | null;
 }
+const DeleteRouteResponse = /*@__PURE__*/ __L.at(__c29, 0) as any as S.Schema<DeleteRouteResponse>;
+
 export interface DeleteScriptRequest {
   /** Identifier. */
   accountId: string;
@@ -5441,7 +6760,14 @@ export interface DeleteScriptRequest {
   /** If true, delete the Worker even when other Workers still reference it. Service bindings in those Workers may be left broken. Durable Object namespaces implemented by the deleted Worker are deleted even if other Workers reference them. */
   force?: boolean;
 }
+const DeleteScriptRequest = /*@__PURE__*/ __L.at(__c29, 1) as any as S.Schema<DeleteScriptRequest>;
+
 export type DeleteScriptResponse = unknown;
+const DeleteScriptResponse = /*@__PURE__*/ __L.at(
+  __c29,
+  2,
+) as any as S.Schema<DeleteScriptResponse>;
+
 export interface DeleteScriptDeploymentRequest {
   /** Identifier. */
   accountId: string;
@@ -5449,7 +6775,15 @@ export interface DeleteScriptDeploymentRequest {
   scriptName: string;
   deploymentId: string;
 }
+const DeleteScriptDeploymentRequest = /*@__PURE__*/ __L.at(
+  __c29,
+  3,
+) as any as S.Schema<DeleteScriptDeploymentRequest>;
+
 export interface DeleteScriptDeploymentResponse {}
+const DeleteScriptDeploymentResponse =
+  DeleteBetaWorkerVersionResponse as any as S.Schema<DeleteScriptDeploymentResponse>;
+
 export interface DeleteScriptSecretRequest {
   /** Identifier. */
   accountId: string;
@@ -5460,13 +6794,28 @@ export interface DeleteScriptSecretRequest {
   /** Flag that indicates whether the secret name is URL encoded. */
   urlEncoded?: boolean;
 }
+const DeleteScriptSecretRequest = /*@__PURE__*/ __L.at(
+  __c29,
+  4,
+) as any as S.Schema<DeleteScriptSecretRequest>;
+
 export type DeleteScriptSecretResponse = unknown;
+const DeleteScriptSecretResponse = /*@__PURE__*/ __L.at(
+  __c29,
+  5,
+) as any as S.Schema<DeleteScriptSecretResponse>;
+
 export interface DeleteScriptSubdomainRequest {
   /** Identifier. */
   accountId: string;
   /** Name of the script. */
   scriptName: string;
 }
+const DeleteScriptSubdomainRequest = /*@__PURE__*/ __L.at(
+  __c29,
+  6,
+) as any as S.Schema<DeleteScriptSubdomainRequest>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DeleteScriptSubdomainResponse {
   /** Whether the Worker is available on the workers.dev subdomain. */
@@ -5474,6 +6823,9 @@ export interface DeleteScriptSubdomainResponse {
   /** Whether the Worker's Preview URLs are available on the workers.dev subdomain. */
   previewsEnabled: boolean;
 }
+const DeleteScriptSubdomainResponse =
+  CreateScriptSubdomainResponse as any as S.Schema<DeleteScriptSubdomainResponse>;
+
 export interface DeleteScriptTailRequest {
   /** Identifier. */
   accountId: string;
@@ -5482,27 +6834,58 @@ export interface DeleteScriptTailRequest {
   /** Identifier. */
   id: string;
 }
+const DeleteScriptTailRequest = /*@__PURE__*/ __L.at(
+  __c29,
+  7,
+) as any as S.Schema<DeleteScriptTailRequest>;
+
 export interface DeleteScriptTailResponse {}
+const DeleteScriptTailResponse =
+  DeleteBetaWorkerResponse as any as S.Schema<DeleteScriptTailResponse>;
+
 export interface DeleteSubdomainRequest {
   /** Identifier. */
   accountId: string;
 }
+const DeleteSubdomainRequest = /*@__PURE__*/ __L.at(
+  __c30,
+  0,
+) as any as S.Schema<DeleteSubdomainRequest>;
+
 export interface DeleteSubdomainResponse {}
+const DeleteSubdomainResponse =
+  DeleteBetaWorkerResponse as any as S.Schema<DeleteSubdomainResponse>;
+
 export interface GetAccountSettingRequest {
   /** Identifier. */
   accountId: string;
 }
+const GetAccountSettingRequest = /*@__PURE__*/ __L.at(
+  __c30,
+  1,
+) as any as S.Schema<GetAccountSettingRequest>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetAccountSettingResponse {
   defaultUsageModel?: string | null;
   greenCompute?: boolean | null;
 }
+const GetAccountSettingResponse = /*@__PURE__*/ __L.at(
+  __c30,
+  2,
+) as any as S.Schema<GetAccountSettingResponse>;
+
 export interface GetBetaWorkerRequest {
   /** Identifier. */
   accountId: string;
   /** Identifier for the Worker, which can be ID or name. */
   workerId: string;
 }
+const GetBetaWorkerRequest = /*@__PURE__*/ __L.at(
+  __c30,
+  3,
+) as any as S.Schema<GetBetaWorkerRequest>;
+
 export type BetaWorkersGetResponseObservabilityIssues =
   BetaWorkersCreateResponseObservabilityIssues;
 export type BetaWorkersGetResponseObservabilityLogsDestinationsList = Array<string>;
@@ -5518,8 +6901,16 @@ export interface BetaWorkersGetResponseObservabilityLogs {
   /** Whether log persistence is enabled for the Worker. */
   persist?: boolean | null;
 }
+const BetaWorkersGetResponseObservabilityLogs =
+  BetaWorkersCreateResponseObservabilityLogs as any as S.Schema<BetaWorkersGetResponseObservabilityLogs>;
+
 export type BetaWorkersGetResponseObservabilityTracesDestinationsList = Array<string>;
+const BetaWorkersGetResponseObservabilityTracesDestinationsList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<BetaWorkersGetResponseObservabilityTracesDestinationsList>;
+
 export type BetaWorkersGetResponseObservabilityTracesPropagationPolicy = "authenticated" | "accept";
+const BetaWorkersGetResponseObservabilityTracesPropagationPolicy = S.String;
+
 export interface BetaWorkersGetResponseObservabilityTraces {
   /** A list of destinations where traces will be exported to. */
   destinations?: BetaWorkersGetResponseObservabilityTracesDestinationsList | null;
@@ -5532,6 +6923,11 @@ export interface BetaWorkersGetResponseObservabilityTraces {
   /** Controls how inbound trace context (traceparent/tracestate) headers on incoming requests are handled. "authenticated" honors inbound trace context only when accompanied by a valid trace auth token. "accept" unconditionally accepts inbound trace context. Requires the trace propagation feature to be enabled. Returns null when the trace propagation feature is not enabled for the account. */
   propagationPolicy?: BetaWorkersGetResponseObservabilityTracesPropagationPolicy | null;
 }
+const BetaWorkersGetResponseObservabilityTraces = /*@__PURE__*/ __L.at(
+  __c30,
+  4,
+) as any as S.Schema<BetaWorkersGetResponseObservabilityTraces>;
+
 export interface BetaWorkersGetResponseObservability {
   /** Whether observability is enabled for the Worker. */
   enabled?: boolean | null;
@@ -5546,26 +6942,48 @@ export interface BetaWorkersGetResponseObservability {
   /** Trace settings for the Worker. */
   traces?: BetaWorkersGetResponseObservabilityTraces | null;
 }
+const BetaWorkersGetResponseObservability = /*@__PURE__*/ __L.at(
+  __c30,
+  5,
+) as any as S.Schema<BetaWorkersGetResponseObservability>;
+
 export type BetaWorkersGetResponseReferencesDispatchNamespaceOutboundsItem =
   BetaWorkersCreateResponseReferencesDispatchNamespaceOutboundsItem;
 export type BetaWorkersGetResponseReferencesDispatchNamespaceOutboundsList =
   Array<BetaWorkersCreateResponseReferencesDispatchNamespaceOutboundsItem>;
+const BetaWorkersGetResponseReferencesDispatchNamespaceOutboundsList = /*@__PURE__*/ __L.at(
+  __c30,
+  6,
+) as any as S.Schema<BetaWorkersGetResponseReferencesDispatchNamespaceOutboundsList>;
+
 export type BetaWorkersGetResponseReferencesDomainsItem =
   BetaWorkersCreateResponseReferencesDomainsItem;
 export type BetaWorkersGetResponseReferencesDomainsList =
   Array<BetaWorkersCreateResponseReferencesDomainsItem>;
+const BetaWorkersGetResponseReferencesDomainsList =
+  BetaWorkersCreateResponseReferencesDomainsList as any as S.Schema<BetaWorkersGetResponseReferencesDomainsList>;
+
 export type BetaWorkersGetResponseReferencesDurableObjectsItem =
   BetaWorkersCreateResponseReferencesDurableObjectsItem;
 export type BetaWorkersGetResponseReferencesDurableObjectsList =
   Array<BetaWorkersCreateResponseReferencesDurableObjectsItem>;
+const BetaWorkersGetResponseReferencesDurableObjectsList =
+  BetaWorkersCreateResponseReferencesDurableObjectsList as any as S.Schema<BetaWorkersGetResponseReferencesDurableObjectsList>;
+
 export type BetaWorkersGetResponseReferencesQueuesItem =
   BetaWorkersCreateResponseReferencesQueuesItem;
 export type BetaWorkersGetResponseReferencesQueuesList =
   Array<BetaWorkersCreateResponseReferencesQueuesItem>;
+const BetaWorkersGetResponseReferencesQueuesList =
+  BetaWorkersCreateResponseReferencesQueuesList as any as S.Schema<BetaWorkersGetResponseReferencesQueuesList>;
+
 export type BetaWorkersGetResponseReferencesWorkersItem =
   BetaWorkersCreateResponseReferencesWorkersItem;
 export type BetaWorkersGetResponseReferencesWorkersList =
   Array<BetaWorkersCreateResponseReferencesWorkersItem>;
+const BetaWorkersGetResponseReferencesWorkersList =
+  BetaWorkersCreateResponseReferencesWorkersList as any as S.Schema<BetaWorkersGetResponseReferencesWorkersList>;
+
 export interface BetaWorkersGetResponseReferences {
   /** Other Workers that reference the Worker as an outbound for a dispatch namespace. */
   dispatchNamespaceOutbounds: BetaWorkersGetResponseReferencesDispatchNamespaceOutboundsList;
@@ -5578,12 +6996,23 @@ export interface BetaWorkersGetResponseReferences {
   /** Other Workers that reference the Worker using [service bindings](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/). */
   workers: BetaWorkersGetResponseReferencesWorkersList;
 }
+const BetaWorkersGetResponseReferences = /*@__PURE__*/ __L.at(
+  __c30,
+  7,
+) as any as S.Schema<BetaWorkersGetResponseReferences>;
+
 export type BetaWorkersGetResponseSubdomain = BetaWorkersCreateResponseSubdomain;
 export type BetaWorkersGetResponseTagsList = Array<string>;
+const BetaWorkersGetResponseTagsList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<BetaWorkersGetResponseTagsList>;
+
 export type BetaWorkersGetResponseTailConsumersItem =
   BetaWorkersCreateRequestPreviewsBaseConfigTailConsumersItem;
 export type BetaWorkersGetResponseTailConsumersList =
   Array<BetaWorkersCreateRequestPreviewsBaseConfigTailConsumersItem>;
+const BetaWorkersGetResponseTailConsumersList =
+  BetaWorkersCreateRequestPreviewsBaseConfigTailConsumersList as any as S.Schema<BetaWorkersGetResponseTailConsumersList>;
+
 export type BetaWorkersGetResponsePreviewsBaseConfigCacheOptions =
   BetaWorkersCreateResponsePreviewsBaseConfigCacheOptions;
 export type BetaWorkersGetResponsePreviewsBaseConfigEnvValue =
@@ -5591,6 +7020,9 @@ export type BetaWorkersGetResponsePreviewsBaseConfigEnvValue =
 export type BetaWorkersGetResponsePreviewsBaseConfigEnvMap = {
   [key: string]: BetaWorkersCreateRequestPreviewsBaseConfigEnvValue | undefined;
 };
+const BetaWorkersGetResponsePreviewsBaseConfigEnvMap =
+  BetaWorkersCreateRequestPreviewsBaseConfigEnvMap as any as S.Schema<BetaWorkersGetResponsePreviewsBaseConfigEnvMap>;
+
 export type BetaWorkersGetResponsePreviewsBaseConfigLimits =
   BetaWorkersCreateResponsePreviewsBaseConfigLimits;
 export type BetaWorkersGetResponsePreviewsBaseConfigObservabilityIssues =
@@ -5609,11 +7041,19 @@ export interface BetaWorkersGetResponsePreviewsBaseConfigObservabilityLogs {
   /** Whether log persistence is enabled for the Worker. */
   persist?: boolean | null;
 }
+const BetaWorkersGetResponsePreviewsBaseConfigObservabilityLogs =
+  BetaWorkersCreateResponsePreviewsBaseConfigObservabilityLogs as any as S.Schema<BetaWorkersGetResponsePreviewsBaseConfigObservabilityLogs>;
+
 export type BetaWorkersGetResponsePreviewsBaseConfigObservabilityTracesDestinationsList =
   Array<string>;
+const BetaWorkersGetResponsePreviewsBaseConfigObservabilityTracesDestinationsList =
+  BetaWorkersCreateRequestPreviewsBaseConfigObservabilityLogsDestinationsList as any as S.Schema<BetaWorkersGetResponsePreviewsBaseConfigObservabilityTracesDestinationsList>;
+
 export type BetaWorkersGetResponsePreviewsBaseConfigObservabilityTracesPropagationPolicy =
   | "authenticated"
   | "accept";
+const BetaWorkersGetResponsePreviewsBaseConfigObservabilityTracesPropagationPolicy = S.String;
+
 export interface BetaWorkersGetResponsePreviewsBaseConfigObservabilityTraces {
   /** A list of destinations where traces will be exported to. */
   destinations?: BetaWorkersGetResponsePreviewsBaseConfigObservabilityTracesDestinationsList | null;
@@ -5626,6 +7066,11 @@ export interface BetaWorkersGetResponsePreviewsBaseConfigObservabilityTraces {
   /** Controls how inbound trace context (traceparent/tracestate) headers on incoming requests are handled. "authenticated" honors inbound trace context only when accompanied by a valid trace auth token. "accept" unconditionally accepts inbound trace context. Requires the trace propagation feature to be enabled. Returns null when the trace propagation feature is not enabled for the account. */
   propagationPolicy?: BetaWorkersGetResponsePreviewsBaseConfigObservabilityTracesPropagationPolicy | null;
 }
+const BetaWorkersGetResponsePreviewsBaseConfigObservabilityTraces = /*@__PURE__*/ __L.at(
+  __c31,
+  0,
+) as any as S.Schema<BetaWorkersGetResponsePreviewsBaseConfigObservabilityTraces>;
+
 export interface BetaWorkersGetResponsePreviewsBaseConfigObservability {
   /** Whether observability is enabled for the Worker. */
   enabled?: boolean | null;
@@ -5640,6 +7085,11 @@ export interface BetaWorkersGetResponsePreviewsBaseConfigObservability {
   /** Trace settings for the Worker. */
   traces?: BetaWorkersGetResponsePreviewsBaseConfigObservabilityTraces | null;
 }
+const BetaWorkersGetResponsePreviewsBaseConfigObservability = /*@__PURE__*/ __L.at(
+  __c31,
+  1,
+) as any as S.Schema<BetaWorkersGetResponsePreviewsBaseConfigObservability>;
+
 export type BetaWorkersGetResponsePreviewsBaseConfigPlacementModeMode = "smart";
 export interface BetaWorkersGetResponsePreviewsBaseConfigPlacementMode {
   /** Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
@@ -5700,10 +7150,15 @@ export type BetaWorkersGetResponsePreviewsBaseConfigPlacement =
   | BetaWorkersGetResponsePreviewsBaseConfigPlacementCase5
   | BetaWorkersGetResponsePreviewsBaseConfigPlacementCase6
   | BetaWorkersGetResponsePreviewsBaseConfigPlacementCase7;
+const BetaWorkersGetResponsePreviewsBaseConfigPlacement = /*@__PURE__*/ __L.at(__c31, 2);
+
 export type BetaWorkersGetResponsePreviewsBaseConfigTailConsumersItem =
   BetaWorkersCreateRequestPreviewsBaseConfigTailConsumersItem;
 export type BetaWorkersGetResponsePreviewsBaseConfigTailConsumersList =
   Array<BetaWorkersCreateRequestPreviewsBaseConfigTailConsumersItem>;
+const BetaWorkersGetResponsePreviewsBaseConfigTailConsumersList =
+  BetaWorkersCreateRequestPreviewsBaseConfigTailConsumersList as any as S.Schema<BetaWorkersGetResponsePreviewsBaseConfigTailConsumersList>;
+
 export interface BetaWorkersGetResponsePreviewsBaseConfig {
   /** Cache options used when creating new Previews. */
   cacheOptions?: BetaWorkersCreateResponsePreviewsBaseConfigCacheOptions | null;
@@ -5720,6 +7175,11 @@ export interface BetaWorkersGetResponsePreviewsBaseConfig {
   /** Other Workers that should consume logs from newly created Previews. */
   tailConsumers?: BetaWorkersGetResponsePreviewsBaseConfigTailConsumersList | null;
 }
+const BetaWorkersGetResponsePreviewsBaseConfig = /*@__PURE__*/ __L.at(
+  __c31,
+  3,
+) as any as S.Schema<BetaWorkersGetResponsePreviewsBaseConfig>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetBetaWorkerResponse {
   /** Immutable ID of the Worker. */
@@ -5747,7 +7207,14 @@ export interface GetBetaWorkerResponse {
   /** Template configuration used when creating new Previews for this Worker. */
   previewsBaseConfig?: BetaWorkersGetResponsePreviewsBaseConfig | null;
 }
+const GetBetaWorkerResponse = /*@__PURE__*/ __L.at(
+  __c31,
+  4,
+) as any as S.Schema<GetBetaWorkerResponse>;
+
 export type BetaWorkersVersionsGetRequestInclude = "modules";
+const BetaWorkersVersionsGetRequestInclude = S.String;
+
 export interface GetBetaWorkerVersionRequest {
   /** Identifier. */
   accountId: string;
@@ -5758,7 +7225,15 @@ export interface GetBetaWorkerVersionRequest {
   /** Whether to include the `modules` property of the version in the response, which contains code and sourcemap content and may add several megabytes to the response size. */
   include?: BetaWorkersVersionsGetRequestInclude | (string & {});
 }
+const GetBetaWorkerVersionRequest = /*@__PURE__*/ __L.at(
+  __c31,
+  5,
+) as any as S.Schema<GetBetaWorkerVersionRequest>;
+
 export type BetaWorkersVersionsGetResponseUrlsList = Array<string>;
+const BetaWorkersVersionsGetResponseUrlsList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<BetaWorkersVersionsGetResponseUrlsList>;
+
 export type BetaWorkersVersionsGetResponseAnnotations =
   BetaWorkersVersionsCreateResponseAnnotations;
 export type BetaWorkersVersionsGetResponseAssetsConfigHtmlHandling =
@@ -5766,14 +7241,20 @@ export type BetaWorkersVersionsGetResponseAssetsConfigHtmlHandling =
   | "force-trailing-slash"
   | "drop-trailing-slash"
   | "none";
+const BetaWorkersVersionsGetResponseAssetsConfigHtmlHandling = S.String;
+
 export type BetaWorkersVersionsGetResponseAssetsConfigNotFoundHandling =
   | "none"
   | "404-page"
   | "single-page-application";
+const BetaWorkersVersionsGetResponseAssetsConfigNotFoundHandling = S.String;
+
 export type BetaWorkersVersionsGetResponseAssetsConfigRunWorkerFirstCase0List = Array<string>;
 export type BetaWorkersVersionsGetResponseAssetsConfigRunWorkerFirst =
   | boolean
   | BetaWorkersVersionsGetResponseAssetsConfigRunWorkerFirstCase0List;
+const BetaWorkersVersionsGetResponseAssetsConfigRunWorkerFirst = /*@__PURE__*/ __L.at(__c31, 6);
+
 export interface BetaWorkersVersionsGetResponseAssetsConfig {
   /** The public URL path prefix under which assets are served. A null request value resets it to `/`; responses represent the root as `/`. All versions in a gradual deployment must use the same canonical value. To change it, first deploy the version containing the change at 100%. */
   basePath?: string | null;
@@ -5784,12 +7265,22 @@ export interface BetaWorkersVersionsGetResponseAssetsConfig {
   /** Contains a list path rules to control routing to either the Worker or assets. Glob (*) and negative (!) rules are supported. Rules must start with either '/' or '!/'. At least one non-negative rule must be provided, and negative rules have higher precedence than non-negative rules. */
   runWorkerFirst?: BetaWorkersVersionsGetResponseAssetsConfigRunWorkerFirst | null;
 }
+const BetaWorkersVersionsGetResponseAssetsConfig = /*@__PURE__*/ __L.at(
+  __c31,
+  7,
+) as any as S.Schema<BetaWorkersVersionsGetResponseAssetsConfig>;
+
 export interface BetaWorkersVersionsGetResponseAssets {
   /** Configuration for assets within a Worker. */
   config?: BetaWorkersVersionsGetResponseAssetsConfig | null;
   /** Token provided upon successful upload of all files from a registered manifest. */
   jwt?: string | null;
 }
+const BetaWorkersVersionsGetResponseAssets = /*@__PURE__*/ __L.at(
+  __c32,
+  0,
+) as any as S.Schema<BetaWorkersVersionsGetResponseAssets>;
+
 export type BetaWorkersVersionsGetResponseBindingsItemAIType = "ai";
 export interface BetaWorkersVersionsGetResponseBindingsItemAI {
   /** A JavaScript variable name for the binding. */
@@ -6247,15 +7738,28 @@ export type BetaWorkersVersionsGetResponseBindingsItem =
   | BetaWorkersVersionsGetResponseBindingsItemWasmModule
   | BetaWorkersVersionsGetResponseBindingsItemVPCService
   | BetaWorkersVersionsGetResponseBindingsItemVPCNetwork;
+const BetaWorkersVersionsGetResponseBindingsItem = /*@__PURE__*/ __L.at(__c32, 1);
+
 export type BetaWorkersVersionsGetResponseBindingsList =
   Array<BetaWorkersVersionsGetResponseBindingsItem>;
+const BetaWorkersVersionsGetResponseBindingsList = /*@__PURE__*/ __L.at(
+  __c32,
+  2,
+) as any as S.Schema<BetaWorkersVersionsGetResponseBindingsList>;
+
 export type BetaWorkersVersionsGetResponseCacheOptions =
   BetaWorkersCreateResponsePreviewsBaseConfigCacheOptions;
 export type BetaWorkersVersionsGetResponseCompatibilityFlagsList = Array<string>;
+const BetaWorkersVersionsGetResponseCompatibilityFlagsList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<BetaWorkersVersionsGetResponseCompatibilityFlagsList>;
+
 export type BetaWorkersVersionsGetResponseContainersItem =
   BetaWorkersVersionsCreateResponseContainersItem;
 export type BetaWorkersVersionsGetResponseContainersList =
   Array<BetaWorkersVersionsCreateResponseContainersItem>;
+const BetaWorkersVersionsGetResponseContainersList =
+  BetaWorkersVersionsCreateResponseContainersList as any as S.Schema<BetaWorkersVersionsGetResponseContainersList>;
+
 export type BetaWorkersVersionsGetResponseExportsValueWorkerType = "worker";
 export type BetaWorkersVersionsGetResponseExportsValueWorkerCache =
   BetaWorkersVersionsCreateRequestExportsValueWorkerCache;
@@ -6344,11 +7848,24 @@ export type BetaWorkersVersionsGetResponseExportsValue =
   | BetaWorkersVersionsGetResponseExportsValueWorkersDurableObjectRenamedExport
   | BetaWorkersVersionsGetResponseExportsValueWorkersDurableObjectTransferredExport
   | BetaWorkersVersionsGetResponseExportsValueWorkersDurableObjectExpectingTransferExport;
+const BetaWorkersVersionsGetResponseExportsValue = /*@__PURE__*/ __L.at(__c32, 3);
+
 export type BetaWorkersVersionsGetResponseExportsMap = {
   [key: string]: BetaWorkersVersionsGetResponseExportsValue | undefined;
 };
+const BetaWorkersVersionsGetResponseExportsMap = /*@__PURE__*/ __L.at(
+  __c32,
+  4,
+) as any as S.Schema<BetaWorkersVersionsGetResponseExportsMap>;
+
 export type BetaWorkersVersionsGetResponseExportsReconciliationCreatedList = Array<string>;
+const BetaWorkersVersionsGetResponseExportsReconciliationCreatedList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<BetaWorkersVersionsGetResponseExportsReconciliationCreatedList>;
+
 export type BetaWorkersVersionsGetResponseExportsReconciliationDeletedList = Array<string>;
+const BetaWorkersVersionsGetResponseExportsReconciliationDeletedList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<BetaWorkersVersionsGetResponseExportsReconciliationDeletedList>;
+
 export type BetaWorkersVersionsGetResponseExportsReconciliationInfoItemScenario =
   | "code_class_not_in_exports"
   | "provisioned_class_missing_from_config"
@@ -6383,8 +7900,13 @@ export type BetaWorkersVersionsGetResponseExportsReconciliationInfoItemScenario 
   | "stale_tombstone"
   | "transfer_receive_already_applied"
   | "transfer_receive_cleanup_complete";
+const BetaWorkersVersionsGetResponseExportsReconciliationInfoItemScenario = S.String;
+
 export type BetaWorkersVersionsGetResponseExportsReconciliationInfoItemReferencingScriptsList =
   Array<string>;
+const BetaWorkersVersionsGetResponseExportsReconciliationInfoItemReferencingScriptsList =
+  BetaWorkersCreateRequestPreviewsBaseConfigObservabilityLogsDestinationsList as any as S.Schema<BetaWorkersVersionsGetResponseExportsReconciliationInfoItemReferencingScriptsList>;
+
 export interface BetaWorkersVersionsGetResponseExportsReconciliationInfoItem {
   /** The class name the info entry is about. */
   class: string;
@@ -6397,17 +7919,36 @@ export interface BetaWorkersVersionsGetResponseExportsReconciliationInfoItem {
   /** Other Workers in the account that still bind to the affected class. Advisory: while non-empty the tombstone is not yet safe to remove -- redeploy these Workers with bindings re-pointed first. */
   referencingScripts?: BetaWorkersVersionsGetResponseExportsReconciliationInfoItemReferencingScriptsList | null;
 }
+const BetaWorkersVersionsGetResponseExportsReconciliationInfoItem = /*@__PURE__*/ __L.at(
+  __c32,
+  5,
+) as any as S.Schema<BetaWorkersVersionsGetResponseExportsReconciliationInfoItem>;
+
 export type BetaWorkersVersionsGetResponseExportsReconciliationInfoList =
   Array<BetaWorkersVersionsGetResponseExportsReconciliationInfoItem>;
+const BetaWorkersVersionsGetResponseExportsReconciliationInfoList = /*@__PURE__*/ __L.at(
+  __c32,
+  6,
+) as any as S.Schema<BetaWorkersVersionsGetResponseExportsReconciliationInfoList>;
+
 export type BetaWorkersVersionsGetResponseExportsReconciliationRemovableEntriesList = Array<string>;
+const BetaWorkersVersionsGetResponseExportsReconciliationRemovableEntriesList =
+  BetaWorkersCreateRequestPreviewsBaseConfigObservabilityLogsDestinationsList as any as S.Schema<BetaWorkersVersionsGetResponseExportsReconciliationRemovableEntriesList>;
+
 export type BetaWorkersVersionsGetResponseExportsReconciliationRenamedItem =
   BetaWorkersVersionsCreateResponseExportsReconciliationRenamedItem;
 export type BetaWorkersVersionsGetResponseExportsReconciliationRenamedList =
   Array<BetaWorkersVersionsCreateResponseExportsReconciliationRenamedItem>;
+const BetaWorkersVersionsGetResponseExportsReconciliationRenamedList =
+  ScriptsVersionsCreateResponseExportsReconciliationRenamedList as any as S.Schema<BetaWorkersVersionsGetResponseExportsReconciliationRenamedList>;
+
 export type BetaWorkersVersionsGetResponseExportsReconciliationTransferPendingItem =
   BetaWorkersVersionsCreateResponseExportsReconciliationTransferPendingItem;
 export type BetaWorkersVersionsGetResponseExportsReconciliationTransferPendingList =
   Array<BetaWorkersVersionsCreateResponseExportsReconciliationTransferPendingItem>;
+const BetaWorkersVersionsGetResponseExportsReconciliationTransferPendingList =
+  BetaWorkersVersionsCreateResponseExportsReconciliationTransferPendingList as any as S.Schema<BetaWorkersVersionsGetResponseExportsReconciliationTransferPendingList>;
+
 export type BetaWorkersVersionsGetResponseExportsReconciliationTransferredItemPhase = "committed";
 export interface BetaWorkersVersionsGetResponseExportsReconciliationTransferredItem {
   /** The source class name that was transferred. */
@@ -6419,7 +7960,13 @@ export interface BetaWorkersVersionsGetResponseExportsReconciliationTransferredI
 }
 export type BetaWorkersVersionsGetResponseExportsReconciliationTransferredList =
   Array<BetaWorkersVersionsGetResponseExportsReconciliationTransferredItem>;
+const BetaWorkersVersionsGetResponseExportsReconciliationTransferredList =
+  BetaWorkersVersionsCreateResponseExportsReconciliationTransferredList as any as S.Schema<BetaWorkersVersionsGetResponseExportsReconciliationTransferredList>;
+
 export type BetaWorkersVersionsGetResponseExportsReconciliationUpdatedList = Array<string>;
+const BetaWorkersVersionsGetResponseExportsReconciliationUpdatedList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<BetaWorkersVersionsGetResponseExportsReconciliationUpdatedList>;
+
 export type BetaWorkersVersionsGetResponseExportsReconciliationWarningsItemScenario =
   | "code_class_not_in_exports"
   | "provisioned_class_missing_from_config"
@@ -6466,6 +8013,9 @@ export interface BetaWorkersVersionsGetResponseExportsReconciliationWarningsItem
 }
 export type BetaWorkersVersionsGetResponseExportsReconciliationWarningsList =
   Array<BetaWorkersVersionsGetResponseExportsReconciliationWarningsItem>;
+const BetaWorkersVersionsGetResponseExportsReconciliationWarningsList =
+  BetaWorkersVersionsCreateResponseExportsReconciliationWarningsList as any as S.Schema<BetaWorkersVersionsGetResponseExportsReconciliationWarningsList>;
+
 export interface BetaWorkersVersionsGetResponseExportsReconciliation {
   /** Class names for which a new namespace was provisioned. */
   created: BetaWorkersVersionsGetResponseExportsReconciliationCreatedList;
@@ -6486,6 +8036,11 @@ export interface BetaWorkersVersionsGetResponseExportsReconciliation {
   /** Non-blocking warnings. See `exports_reconciliation_warning`. */
   warnings: BetaWorkersVersionsGetResponseExportsReconciliationWarningsList;
 }
+const BetaWorkersVersionsGetResponseExportsReconciliation = /*@__PURE__*/ __L.at(
+  __c32,
+  7,
+) as any as S.Schema<BetaWorkersVersionsGetResponseExportsReconciliation>;
+
 export type BetaWorkersVersionsGetResponseLimits = BetaWorkersVersionsCreateResponseLimits;
 export type BetaWorkersVersionsGetResponseMigrationsSingleStepMigrationDeletedClassesList =
   Array<string>;
@@ -6556,13 +8111,21 @@ export interface BetaWorkersVersionsGetResponseMigrationsWorkersMultipleStepMigr
 export type BetaWorkersVersionsGetResponseMigrations =
   | BetaWorkersVersionsGetResponseMigrationsSingleStepMigration
   | BetaWorkersVersionsGetResponseMigrationsWorkersMultipleStepMigrations;
+const BetaWorkersVersionsGetResponseMigrations = /*@__PURE__*/ __L.at(__c33, 0);
+
 export type BetaWorkersVersionsGetResponseModulesItem = BetaWorkersVersionsCreateRequestModulesItem;
 export type BetaWorkersVersionsGetResponseModulesList =
   Array<BetaWorkersVersionsCreateRequestModulesItem>;
+const BetaWorkersVersionsGetResponseModulesList =
+  BetaWorkersVersionsCreateRequestModulesList as any as S.Schema<BetaWorkersVersionsGetResponseModulesList>;
+
 export type BetaWorkersVersionsGetResponsePackageDependenciesItem =
   BetaWorkersVersionsCreateRequestPackageDependenciesItem;
 export type BetaWorkersVersionsGetResponsePackageDependenciesList =
   Array<BetaWorkersVersionsCreateRequestPackageDependenciesItem>;
+const BetaWorkersVersionsGetResponsePackageDependenciesList =
+  BetaWorkersVersionsCreateRequestPackageDependenciesList as any as S.Schema<BetaWorkersVersionsGetResponsePackageDependenciesList>;
+
 export type BetaWorkersVersionsGetResponsePlacementModeMode = "smart";
 export interface BetaWorkersVersionsGetResponsePlacementMode {
   /** Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
@@ -6623,7 +8186,11 @@ export type BetaWorkersVersionsGetResponsePlacement =
   | BetaWorkersVersionsGetResponsePlacementCase5
   | BetaWorkersVersionsGetResponsePlacementCase6
   | BetaWorkersVersionsGetResponsePlacementCase7;
+const BetaWorkersVersionsGetResponsePlacement = /*@__PURE__*/ __L.at(__c33, 1);
+
 export type BetaWorkersVersionsGetResponseUsageModel = "standard" | "bundled" | "unbound";
+const BetaWorkersVersionsGetResponseUsageModel = S.String;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetBetaWorkerVersionResponse {
   /** Version identifier. */
@@ -6677,12 +8244,19 @@ export interface GetBetaWorkerVersionResponse {
   /** Usage model for the version. */
   usageModel?: BetaWorkersVersionsGetResponseUsageModel | null;
 }
+const GetBetaWorkerVersionResponse = /*@__PURE__*/ __L.at(
+  __c33,
+  2,
+) as any as S.Schema<GetBetaWorkerVersionResponse>;
+
 export interface GetDomainRequest {
   /** Identifier. */
   accountId: string;
   /** ID of the domain. */
   domainId: string;
 }
+const GetDomainRequest = /*@__PURE__*/ __L.at(__c33, 3) as any as S.Schema<GetDomainRequest>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetDomainResponse {
   /** Immutable ID of the domain. */
@@ -6702,7 +8276,11 @@ export interface GetDomainResponse {
   /** Whether Worker Previews are served on this custom domain. */
   previewsEnabled?: boolean | null;
 }
+const GetDomainResponse = /*@__PURE__*/ __L.at(__c33, 4) as any as S.Schema<GetDomainResponse>;
+
 export type ObservabilitySharedQueriesGetRequestView = "events" | "invocations" | "calculations";
+const ObservabilitySharedQueriesGetRequestView = S.String;
+
 export interface GetObservabilitySharedQueryRequest {
   accountId: string;
   /** Specify the ID of the shared query. */
@@ -6710,6 +8288,11 @@ export interface GetObservabilitySharedQueryRequest {
   /** Select the view of the query result to return, defaults to events. */
   view?: ObservabilitySharedQueriesGetRequestView | (string & {});
 }
+const GetObservabilitySharedQueryRequest = /*@__PURE__*/ __L.at(
+  __c33,
+  5,
+) as any as S.Schema<GetObservabilitySharedQueryRequest>;
+
 export type ObservabilitySharedQueriesGetResponseRunQueryParametersCalculationsItemCase0Operator =
   | "count"
   | "COUNT";
@@ -6773,14 +8356,28 @@ export interface ObservabilitySharedQueriesGetResponseRunQueryParametersCalculat
 export type ObservabilitySharedQueriesGetResponseRunQueryParametersCalculationsItem =
   | ObservabilitySharedQueriesGetResponseRunQueryParametersCalculationsItemCase0
   | ObservabilitySharedQueriesGetResponseRunQueryParametersCalculationsItemCase1;
+const ObservabilitySharedQueriesGetResponseRunQueryParametersCalculationsItem =
+  /*@__PURE__*/ __L.at(__c33, 6);
+
 export type ObservabilitySharedQueriesGetResponseRunQueryParametersCalculationsList =
   Array<ObservabilitySharedQueriesGetResponseRunQueryParametersCalculationsItem>;
+const ObservabilitySharedQueriesGetResponseRunQueryParametersCalculationsList =
+  /*@__PURE__*/ __L.at(
+    __c33,
+    7,
+  ) as any as S.Schema<ObservabilitySharedQueriesGetResponseRunQueryParametersCalculationsList>;
+
 export type ObservabilitySharedQueriesGetResponseRunQueryParametersDatasetsList = Array<string>;
+const ObservabilitySharedQueriesGetResponseRunQueryParametersDatasetsList =
+  BetaWorkersCreateRequestPreviewsBaseConfigObservabilityLogsDestinationsList as any as S.Schema<ObservabilitySharedQueriesGetResponseRunQueryParametersDatasetsList>;
+
 export type ObservabilitySharedQueriesGetResponseRunQueryParametersFilterCombination =
   | "and"
   | "or"
   | "AND"
   | "OR";
+const ObservabilitySharedQueriesGetResponseRunQueryParametersFilterCombination = S.String;
+
 export type ObservabilitySharedQueriesGetResponseRunQueryParametersFiltersItemCase0FilterCombination =
   | "and"
   | "or"
@@ -6850,8 +8447,18 @@ export interface ObservabilitySharedQueriesGetResponseRunQueryParametersFiltersI
 export type ObservabilitySharedQueriesGetResponseRunQueryParametersFiltersItem =
   | ObservabilitySharedQueriesGetResponseRunQueryParametersFiltersItemCase0
   | ObservabilitySharedQueriesGetResponseRunQueryParametersFiltersItemWorkersObservabilityFilterLeaf;
+const ObservabilitySharedQueriesGetResponseRunQueryParametersFiltersItem = /*@__PURE__*/ __L.at(
+  __c34,
+  0,
+);
+
 export type ObservabilitySharedQueriesGetResponseRunQueryParametersFiltersList =
   Array<ObservabilitySharedQueriesGetResponseRunQueryParametersFiltersItem>;
+const ObservabilitySharedQueriesGetResponseRunQueryParametersFiltersList = /*@__PURE__*/ __L.at(
+  __c34,
+  1,
+) as any as S.Schema<ObservabilitySharedQueriesGetResponseRunQueryParametersFiltersList>;
+
 export type ObservabilitySharedQueriesGetResponseRunQueryParametersGroupBysItemType =
   | "string"
   | "number"
@@ -6860,8 +8467,16 @@ export interface ObservabilitySharedQueriesGetResponseRunQueryParametersGroupBys
   type: ObservabilitySharedQueriesGetResponseRunQueryParametersGroupBysItemType;
   value: string;
 }
+const ObservabilitySharedQueriesGetResponseRunQueryParametersGroupBysItem =
+  ObservabilitySharedQueriesCreateRequestParametersGroupBysItem as any as S.Schema<ObservabilitySharedQueriesGetResponseRunQueryParametersGroupBysItem>;
+
 export type ObservabilitySharedQueriesGetResponseRunQueryParametersGroupBysList =
   Array<ObservabilitySharedQueriesGetResponseRunQueryParametersGroupBysItem>;
+const ObservabilitySharedQueriesGetResponseRunQueryParametersGroupBysList = /*@__PURE__*/ __L.at(
+  __c34,
+  2,
+) as any as S.Schema<ObservabilitySharedQueriesGetResponseRunQueryParametersGroupBysList>;
+
 export type ObservabilitySharedQueriesGetResponseRunQueryParametersHavingsItemOperation =
   | "eq"
   | "neq"
@@ -6869,25 +8484,49 @@ export type ObservabilitySharedQueriesGetResponseRunQueryParametersHavingsItemOp
   | "gte"
   | "lt"
   | "lte";
+const ObservabilitySharedQueriesGetResponseRunQueryParametersHavingsItemOperation = S.String;
+
 export interface ObservabilitySharedQueriesGetResponseRunQueryParametersHavingsItem {
   key: string;
   operation: ObservabilitySharedQueriesGetResponseRunQueryParametersHavingsItemOperation;
   value: number;
 }
+const ObservabilitySharedQueriesGetResponseRunQueryParametersHavingsItem = /*@__PURE__*/ __L.at(
+  __c34,
+  3,
+) as any as S.Schema<ObservabilitySharedQueriesGetResponseRunQueryParametersHavingsItem>;
+
 export type ObservabilitySharedQueriesGetResponseRunQueryParametersHavingsList =
   Array<ObservabilitySharedQueriesGetResponseRunQueryParametersHavingsItem>;
+const ObservabilitySharedQueriesGetResponseRunQueryParametersHavingsList = /*@__PURE__*/ __L.at(
+  __c34,
+  4,
+) as any as S.Schema<ObservabilitySharedQueriesGetResponseRunQueryParametersHavingsList>;
+
 export interface ObservabilitySharedQueriesGetResponseRunQueryParametersNeedle {
   value: unknown;
   isRegex?: boolean | null;
   matchCase?: boolean | null;
 }
+const ObservabilitySharedQueriesGetResponseRunQueryParametersNeedle = /*@__PURE__*/ __L.at(
+  __c34,
+  5,
+) as any as S.Schema<ObservabilitySharedQueriesGetResponseRunQueryParametersNeedle>;
+
 export type ObservabilitySharedQueriesGetResponseRunQueryParametersOrderByOrder = "asc" | "desc";
+const ObservabilitySharedQueriesGetResponseRunQueryParametersOrderByOrder = S.String;
+
 export interface ObservabilitySharedQueriesGetResponseRunQueryParametersOrderBy {
   /** Configure which Calculation to order the results by. */
   value: string;
   /** Set the order of the results */
   order?: ObservabilitySharedQueriesGetResponseRunQueryParametersOrderByOrder | null;
 }
+const ObservabilitySharedQueriesGetResponseRunQueryParametersOrderBy = /*@__PURE__*/ __L.at(
+  __c34,
+  6,
+) as any as S.Schema<ObservabilitySharedQueriesGetResponseRunQueryParametersOrderBy>;
+
 export interface ObservabilitySharedQueriesGetResponseRunQueryParameters {
   /** Create Calculations to compute as part of the query. */
   calculations?: ObservabilitySharedQueriesGetResponseRunQueryParametersCalculationsList | null;
@@ -6908,6 +8547,11 @@ export interface ObservabilitySharedQueriesGetResponseRunQueryParameters {
   /** Configure the order of the results returned by the query. */
   orderBy?: ObservabilitySharedQueriesGetResponseRunQueryParametersOrderBy | null;
 }
+const ObservabilitySharedQueriesGetResponseRunQueryParameters = /*@__PURE__*/ __L.at(
+  __c34,
+  7,
+) as any as S.Schema<ObservabilitySharedQueriesGetResponseRunQueryParameters>;
+
 export interface ObservabilitySharedQueriesGetResponseRunQuery {
   id: string;
   /** If the query wasn't explcitly saved */
@@ -6921,7 +8565,14 @@ export interface ObservabilitySharedQueriesGetResponseRunQuery {
   updated: string;
   updatedBy: string;
 }
+const ObservabilitySharedQueriesGetResponseRunQuery = /*@__PURE__*/ __L.at(
+  __c35,
+  0,
+) as any as S.Schema<ObservabilitySharedQueriesGetResponseRunQuery>;
+
 export type ObservabilitySharedQueriesGetResponseRunStatus = "STARTED" | "COMPLETED";
+const ObservabilitySharedQueriesGetResponseRunStatus = S.String;
+
 export type ObservabilitySharedQueriesGetResponseRunTimeframe =
   ObservabilitySharedQueriesCreateRequestTimeframe;
 export interface ObservabilitySharedQueriesGetResponseRunStatistics {
@@ -6934,6 +8585,11 @@ export interface ObservabilitySharedQueriesGetResponseRunStatistics {
   /** The level of Adaptive Bit Rate (ABR) sampling used for the query. If empty the ABR level is 1 */
   abrLevel?: number | null;
 }
+const ObservabilitySharedQueriesGetResponseRunStatistics = /*@__PURE__*/ __L.at(
+  __c35,
+  1,
+) as any as S.Schema<ObservabilitySharedQueriesGetResponseRunStatistics>;
+
 export interface ObservabilitySharedQueriesGetResponseRun {
   /** Unique identifier for this query run. */
   id: string;
@@ -6958,13 +8614,32 @@ export interface ObservabilitySharedQueriesGetResponseRun {
   /** ISO-8601 timestamp when the query run was last updated. */
   updated?: string | null;
 }
+const ObservabilitySharedQueriesGetResponseRun = /*@__PURE__*/ __L.at(
+  __c35,
+  2,
+) as any as S.Schema<ObservabilitySharedQueriesGetResponseRun>;
+
 export type ObservabilitySharedQueriesGetResponseStatistics =
   ObservabilitySharedQueriesGetResponseRunStatistics;
 export type ObservabilitySharedQueriesGetResponseAgentsItemErrorsList = Array<string>;
+const ObservabilitySharedQueriesGetResponseAgentsItemErrorsList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<ObservabilitySharedQueriesGetResponseAgentsItemErrorsList>;
+
 export type ObservabilitySharedQueriesGetResponseAgentsItemModelsList = Array<string>;
+const ObservabilitySharedQueriesGetResponseAgentsItemModelsList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<ObservabilitySharedQueriesGetResponseAgentsItemModelsList>;
+
 export type ObservabilitySharedQueriesGetResponseAgentsItemProvidersList = Array<string>;
+const ObservabilitySharedQueriesGetResponseAgentsItemProvidersList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<ObservabilitySharedQueriesGetResponseAgentsItemProvidersList>;
+
 export type ObservabilitySharedQueriesGetResponseAgentsItemServicesList = Array<string>;
+const ObservabilitySharedQueriesGetResponseAgentsItemServicesList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<ObservabilitySharedQueriesGetResponseAgentsItemServicesList>;
+
 export type ObservabilitySharedQueriesGetResponseAgentsItemStatus = "completed" | "error";
+const ObservabilitySharedQueriesGetResponseAgentsItemStatus = S.String;
+
 export interface ObservabilitySharedQueriesGetResponseAgentsItem {
   /** Stable pagination cursor for this agent run. */
   id: string;
@@ -6999,18 +8674,43 @@ export interface ObservabilitySharedQueriesGetResponseAgentsItem {
   /** Output tokens summed across chat spans in the run's trace; informational, not billing data. */
   outputTokens?: number | null;
 }
+const ObservabilitySharedQueriesGetResponseAgentsItem = /*@__PURE__*/ __L.at(
+  __c35,
+  3,
+) as any as S.Schema<ObservabilitySharedQueriesGetResponseAgentsItem>;
+
 export type ObservabilitySharedQueriesGetResponseAgentsList =
   Array<ObservabilitySharedQueriesGetResponseAgentsItem>;
+const ObservabilitySharedQueriesGetResponseAgentsList = /*@__PURE__*/ __L.at(
+  __c35,
+  4,
+) as any as S.Schema<ObservabilitySharedQueriesGetResponseAgentsList>;
+
 export type ObservabilitySharedQueriesGetResponseCalculationsItemAggregatesItemGroupsItemValue =
   | string
   | number
   | boolean;
+const ObservabilitySharedQueriesGetResponseCalculationsItemAggregatesItemGroupsItemValue =
+  /*@__PURE__*/ __L.at(__c35, 5);
+
 export interface ObservabilitySharedQueriesGetResponseCalculationsItemAggregatesItemGroupsItem {
   key: string;
   value: ObservabilitySharedQueriesGetResponseCalculationsItemAggregatesItemGroupsItemValue;
 }
+const ObservabilitySharedQueriesGetResponseCalculationsItemAggregatesItemGroupsItem =
+  /*@__PURE__*/ __L.at(
+    __c35,
+    6,
+  ) as any as S.Schema<ObservabilitySharedQueriesGetResponseCalculationsItemAggregatesItemGroupsItem>;
+
 export type ObservabilitySharedQueriesGetResponseCalculationsItemAggregatesItemGroupsList =
   Array<ObservabilitySharedQueriesGetResponseCalculationsItemAggregatesItemGroupsItem>;
+const ObservabilitySharedQueriesGetResponseCalculationsItemAggregatesItemGroupsList =
+  /*@__PURE__*/ __L.at(
+    __c35,
+    7,
+  ) as any as S.Schema<ObservabilitySharedQueriesGetResponseCalculationsItemAggregatesItemGroupsList>;
+
 export interface ObservabilitySharedQueriesGetResponseCalculationsItemAggregatesItem {
   /** Estimated number of matching events: the sum of the sample intervals of the stored events. It equals the number of stored events when sampleInterval is 1. */
   count: number;
@@ -7022,18 +8722,43 @@ export interface ObservabilitySharedQueriesGetResponseCalculationsItemAggregates
   value: number;
   groups?: ObservabilitySharedQueriesGetResponseCalculationsItemAggregatesItemGroupsList | null;
 }
+const ObservabilitySharedQueriesGetResponseCalculationsItemAggregatesItem = /*@__PURE__*/ __L.at(
+  __c36,
+  0,
+) as any as S.Schema<ObservabilitySharedQueriesGetResponseCalculationsItemAggregatesItem>;
+
 export type ObservabilitySharedQueriesGetResponseCalculationsItemAggregatesList =
   Array<ObservabilitySharedQueriesGetResponseCalculationsItemAggregatesItem>;
+const ObservabilitySharedQueriesGetResponseCalculationsItemAggregatesList = /*@__PURE__*/ __L.at(
+  __c36,
+  1,
+) as any as S.Schema<ObservabilitySharedQueriesGetResponseCalculationsItemAggregatesList>;
+
 export type ObservabilitySharedQueriesGetResponseCalculationsItemSeriesItemDataItemGroupsItemValue =
   | string
   | number
   | boolean;
+const ObservabilitySharedQueriesGetResponseCalculationsItemSeriesItemDataItemGroupsItemValue =
+  /*@__PURE__*/ __L.at(__c36, 2);
+
 export interface ObservabilitySharedQueriesGetResponseCalculationsItemSeriesItemDataItemGroupsItem {
   key: string;
   value: ObservabilitySharedQueriesGetResponseCalculationsItemSeriesItemDataItemGroupsItemValue;
 }
+const ObservabilitySharedQueriesGetResponseCalculationsItemSeriesItemDataItemGroupsItem =
+  /*@__PURE__*/ __L.at(
+    __c36,
+    3,
+  ) as any as S.Schema<ObservabilitySharedQueriesGetResponseCalculationsItemSeriesItemDataItemGroupsItem>;
+
 export type ObservabilitySharedQueriesGetResponseCalculationsItemSeriesItemDataItemGroupsList =
   Array<ObservabilitySharedQueriesGetResponseCalculationsItemSeriesItemDataItemGroupsItem>;
+const ObservabilitySharedQueriesGetResponseCalculationsItemSeriesItemDataItemGroupsList =
+  /*@__PURE__*/ __L.at(
+    __c36,
+    4,
+  ) as any as S.Schema<ObservabilitySharedQueriesGetResponseCalculationsItemSeriesItemDataItemGroupsList>;
+
 export interface ObservabilitySharedQueriesGetResponseCalculationsItemSeriesItemDataItem {
   /** Estimated number of matching events: the sum of the sample intervals of the stored events. It equals the number of stored events when sampleInterval is 1. */
   count: number;
@@ -7047,32 +8772,79 @@ export interface ObservabilitySharedQueriesGetResponseCalculationsItemSeriesItem
   groups?: ObservabilitySharedQueriesGetResponseCalculationsItemSeriesItemDataItemGroupsList | null;
   lastSeen?: string | null;
 }
+const ObservabilitySharedQueriesGetResponseCalculationsItemSeriesItemDataItem =
+  /*@__PURE__*/ __L.at(
+    __c36,
+    5,
+  ) as any as S.Schema<ObservabilitySharedQueriesGetResponseCalculationsItemSeriesItemDataItem>;
+
 export type ObservabilitySharedQueriesGetResponseCalculationsItemSeriesItemDataList =
   Array<ObservabilitySharedQueriesGetResponseCalculationsItemSeriesItemDataItem>;
+const ObservabilitySharedQueriesGetResponseCalculationsItemSeriesItemDataList =
+  /*@__PURE__*/ __L.at(
+    __c36,
+    6,
+  ) as any as S.Schema<ObservabilitySharedQueriesGetResponseCalculationsItemSeriesItemDataList>;
+
 export interface ObservabilitySharedQueriesGetResponseCalculationsItemSeriesItem {
   data: ObservabilitySharedQueriesGetResponseCalculationsItemSeriesItemDataList;
   time: string;
 }
+const ObservabilitySharedQueriesGetResponseCalculationsItemSeriesItem = /*@__PURE__*/ __L.at(
+  __c36,
+  7,
+) as any as S.Schema<ObservabilitySharedQueriesGetResponseCalculationsItemSeriesItem>;
+
 export type ObservabilitySharedQueriesGetResponseCalculationsItemSeriesList =
   Array<ObservabilitySharedQueriesGetResponseCalculationsItemSeriesItem>;
+const ObservabilitySharedQueriesGetResponseCalculationsItemSeriesList = /*@__PURE__*/ __L.at(
+  __c37,
+  0,
+) as any as S.Schema<ObservabilitySharedQueriesGetResponseCalculationsItemSeriesList>;
+
 export interface ObservabilitySharedQueriesGetResponseCalculationsItem {
   aggregates: ObservabilitySharedQueriesGetResponseCalculationsItemAggregatesList;
   calculation: string;
   series: ObservabilitySharedQueriesGetResponseCalculationsItemSeriesList;
   alias?: string | null;
 }
+const ObservabilitySharedQueriesGetResponseCalculationsItem = /*@__PURE__*/ __L.at(
+  __c37,
+  1,
+) as any as S.Schema<ObservabilitySharedQueriesGetResponseCalculationsItem>;
+
 export type ObservabilitySharedQueriesGetResponseCalculationsList =
   Array<ObservabilitySharedQueriesGetResponseCalculationsItem>;
+const ObservabilitySharedQueriesGetResponseCalculationsList = /*@__PURE__*/ __L.at(
+  __c37,
+  2,
+) as any as S.Schema<ObservabilitySharedQueriesGetResponseCalculationsList>;
+
 export type ObservabilitySharedQueriesGetResponseCompareItemAggregatesItemGroupsItemValue =
   | string
   | number
   | boolean;
+const ObservabilitySharedQueriesGetResponseCompareItemAggregatesItemGroupsItemValue =
+  /*@__PURE__*/ __L.at(__c37, 3);
+
 export interface ObservabilitySharedQueriesGetResponseCompareItemAggregatesItemGroupsItem {
   key: string;
   value: ObservabilitySharedQueriesGetResponseCompareItemAggregatesItemGroupsItemValue;
 }
+const ObservabilitySharedQueriesGetResponseCompareItemAggregatesItemGroupsItem =
+  /*@__PURE__*/ __L.at(
+    __c37,
+    4,
+  ) as any as S.Schema<ObservabilitySharedQueriesGetResponseCompareItemAggregatesItemGroupsItem>;
+
 export type ObservabilitySharedQueriesGetResponseCompareItemAggregatesItemGroupsList =
   Array<ObservabilitySharedQueriesGetResponseCompareItemAggregatesItemGroupsItem>;
+const ObservabilitySharedQueriesGetResponseCompareItemAggregatesItemGroupsList =
+  /*@__PURE__*/ __L.at(
+    __c37,
+    5,
+  ) as any as S.Schema<ObservabilitySharedQueriesGetResponseCompareItemAggregatesItemGroupsList>;
+
 export interface ObservabilitySharedQueriesGetResponseCompareItemAggregatesItem {
   /** Estimated number of matching events: the sum of the sample intervals of the stored events. It equals the number of stored events when sampleInterval is 1. */
   count: number;
@@ -7084,18 +8856,43 @@ export interface ObservabilitySharedQueriesGetResponseCompareItemAggregatesItem 
   value: number;
   groups?: ObservabilitySharedQueriesGetResponseCompareItemAggregatesItemGroupsList | null;
 }
+const ObservabilitySharedQueriesGetResponseCompareItemAggregatesItem = /*@__PURE__*/ __L.at(
+  __c37,
+  6,
+) as any as S.Schema<ObservabilitySharedQueriesGetResponseCompareItemAggregatesItem>;
+
 export type ObservabilitySharedQueriesGetResponseCompareItemAggregatesList =
   Array<ObservabilitySharedQueriesGetResponseCompareItemAggregatesItem>;
+const ObservabilitySharedQueriesGetResponseCompareItemAggregatesList = /*@__PURE__*/ __L.at(
+  __c37,
+  7,
+) as any as S.Schema<ObservabilitySharedQueriesGetResponseCompareItemAggregatesList>;
+
 export type ObservabilitySharedQueriesGetResponseCompareItemSeriesItemDataItemGroupsItemValue =
   | string
   | number
   | boolean;
+const ObservabilitySharedQueriesGetResponseCompareItemSeriesItemDataItemGroupsItemValue =
+  /*@__PURE__*/ __L.at(__c38, 0);
+
 export interface ObservabilitySharedQueriesGetResponseCompareItemSeriesItemDataItemGroupsItem {
   key: string;
   value: ObservabilitySharedQueriesGetResponseCompareItemSeriesItemDataItemGroupsItemValue;
 }
+const ObservabilitySharedQueriesGetResponseCompareItemSeriesItemDataItemGroupsItem =
+  /*@__PURE__*/ __L.at(
+    __c38,
+    1,
+  ) as any as S.Schema<ObservabilitySharedQueriesGetResponseCompareItemSeriesItemDataItemGroupsItem>;
+
 export type ObservabilitySharedQueriesGetResponseCompareItemSeriesItemDataItemGroupsList =
   Array<ObservabilitySharedQueriesGetResponseCompareItemSeriesItemDataItemGroupsItem>;
+const ObservabilitySharedQueriesGetResponseCompareItemSeriesItemDataItemGroupsList =
+  /*@__PURE__*/ __L.at(
+    __c38,
+    2,
+  ) as any as S.Schema<ObservabilitySharedQueriesGetResponseCompareItemSeriesItemDataItemGroupsList>;
+
 export interface ObservabilitySharedQueriesGetResponseCompareItemSeriesItemDataItem {
   /** Estimated number of matching events: the sum of the sample intervals of the stored events. It equals the number of stored events when sampleInterval is 1. */
   count: number;
@@ -7109,29 +8906,80 @@ export interface ObservabilitySharedQueriesGetResponseCompareItemSeriesItemDataI
   groups?: ObservabilitySharedQueriesGetResponseCompareItemSeriesItemDataItemGroupsList | null;
   lastSeen?: string | null;
 }
+const ObservabilitySharedQueriesGetResponseCompareItemSeriesItemDataItem = /*@__PURE__*/ __L.at(
+  __c38,
+  3,
+) as any as S.Schema<ObservabilitySharedQueriesGetResponseCompareItemSeriesItemDataItem>;
+
 export type ObservabilitySharedQueriesGetResponseCompareItemSeriesItemDataList =
   Array<ObservabilitySharedQueriesGetResponseCompareItemSeriesItemDataItem>;
+const ObservabilitySharedQueriesGetResponseCompareItemSeriesItemDataList = /*@__PURE__*/ __L.at(
+  __c38,
+  4,
+) as any as S.Schema<ObservabilitySharedQueriesGetResponseCompareItemSeriesItemDataList>;
+
 export interface ObservabilitySharedQueriesGetResponseCompareItemSeriesItem {
   data: ObservabilitySharedQueriesGetResponseCompareItemSeriesItemDataList;
   time: string;
 }
+const ObservabilitySharedQueriesGetResponseCompareItemSeriesItem = /*@__PURE__*/ __L.at(
+  __c38,
+  5,
+) as any as S.Schema<ObservabilitySharedQueriesGetResponseCompareItemSeriesItem>;
+
 export type ObservabilitySharedQueriesGetResponseCompareItemSeriesList =
   Array<ObservabilitySharedQueriesGetResponseCompareItemSeriesItem>;
+const ObservabilitySharedQueriesGetResponseCompareItemSeriesList = /*@__PURE__*/ __L.at(
+  __c38,
+  6,
+) as any as S.Schema<ObservabilitySharedQueriesGetResponseCompareItemSeriesList>;
+
 export interface ObservabilitySharedQueriesGetResponseCompareItem {
   aggregates: ObservabilitySharedQueriesGetResponseCompareItemAggregatesList;
   calculation: string;
   series: ObservabilitySharedQueriesGetResponseCompareItemSeriesList;
   alias?: string | null;
 }
+const ObservabilitySharedQueriesGetResponseCompareItem = /*@__PURE__*/ __L.at(
+  __c38,
+  7,
+) as any as S.Schema<ObservabilitySharedQueriesGetResponseCompareItem>;
+
 export type ObservabilitySharedQueriesGetResponseCompareList =
   Array<ObservabilitySharedQueriesGetResponseCompareItem>;
+const ObservabilitySharedQueriesGetResponseCompareList = /*@__PURE__*/ __L.at(
+  __c39,
+  0,
+) as any as S.Schema<ObservabilitySharedQueriesGetResponseCompareList>;
+
 export type ObservabilitySharedQueriesGetResponseDistributionBinsList = Array<string>;
+const ObservabilitySharedQueriesGetResponseDistributionBinsList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<ObservabilitySharedQueriesGetResponseDistributionBinsList>;
+
 export type ObservabilitySharedQueriesGetResponseDistributionBucketBoundariesList = Array<number>;
+const ObservabilitySharedQueriesGetResponseDistributionBucketBoundariesList = /*@__PURE__*/ __L.at(
+  __c39,
+  1,
+) as any as S.Schema<ObservabilitySharedQueriesGetResponseDistributionBucketBoundariesList>;
+
 export type ObservabilitySharedQueriesGetResponseDistributionBucketMode = "log" | "linear";
+const ObservabilitySharedQueriesGetResponseDistributionBucketMode = S.String;
+
 export type ObservabilitySharedQueriesGetResponseDistributionBucketsList = Array<string>;
+const ObservabilitySharedQueriesGetResponseDistributionBucketsList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<ObservabilitySharedQueriesGetResponseDistributionBucketsList>;
+
 export type ObservabilitySharedQueriesGetResponseDistributionMatrixItemList = Array<number>;
+const ObservabilitySharedQueriesGetResponseDistributionMatrixItemList =
+  ObservabilitySharedQueriesGetResponseDistributionBucketBoundariesList as any as S.Schema<ObservabilitySharedQueriesGetResponseDistributionMatrixItemList>;
+
 export type ObservabilitySharedQueriesGetResponseDistributionMatrixList =
   Array<ObservabilitySharedQueriesGetResponseDistributionMatrixItemList>;
+const ObservabilitySharedQueriesGetResponseDistributionMatrixList = /*@__PURE__*/ __L.at(
+  __c39,
+  2,
+) as any as S.Schema<ObservabilitySharedQueriesGetResponseDistributionMatrixList>;
+
 export interface ObservabilitySharedQueriesGetResponseDistribution {
   /** Time-bucket labels (ISO-8601 strings), one per matrix column. */
   bins: ObservabilitySharedQueriesGetResponseDistributionBinsList;
@@ -7144,6 +8992,11 @@ export interface ObservabilitySharedQueriesGetResponseDistribution {
   /** Sampling-corrected counts. matrix[bucketIdx][binIdx] is the estimated number of events in value-bucket 'bucketIdx' during time-bin 'binIdx'. */
   matrix: ObservabilitySharedQueriesGetResponseDistributionMatrixList;
 }
+const ObservabilitySharedQueriesGetResponseDistribution = /*@__PURE__*/ __L.at(
+  __c39,
+  3,
+) as any as S.Schema<ObservabilitySharedQueriesGetResponseDistribution>;
+
 export interface ObservabilitySharedQueriesGetResponseEventsEventsItemMetadata {
   /** Unique event ID. Use as the cursor value for offset-based pagination. */
   id: string;
@@ -7216,15 +9069,30 @@ export interface ObservabilitySharedQueriesGetResponseEventsEventsItemMetadata {
   /** Request URL that triggered the Worker invocation. */
   url?: string | null;
 }
+const ObservabilitySharedQueriesGetResponseEventsEventsItemMetadata = /*@__PURE__*/ __L.at(
+  __c39,
+  4,
+) as any as S.Schema<ObservabilitySharedQueriesGetResponseEventsEventsItemMetadata>;
+
 export type ObservabilitySharedQueriesGetResponseEventsEventsItemSourceCase1Map = {
   [key: string]: unknown | undefined;
 };
+const ObservabilitySharedQueriesGetResponseEventsEventsItemSourceCase1Map = /*@__PURE__*/ __L.at(
+  __c39,
+  5,
+) as any as S.Schema<ObservabilitySharedQueriesGetResponseEventsEventsItemSourceCase1Map>;
+
 export type ObservabilitySharedQueriesGetResponseEventsEventsItemSource =
   | string
   | ObservabilitySharedQueriesGetResponseEventsEventsItemSourceCase1Map;
+const ObservabilitySharedQueriesGetResponseEventsEventsItemSource = /*@__PURE__*/ __L.at(__c39, 6);
+
 export type ObservabilitySharedQueriesGetResponseEventsEventsItemContainersMap = {
   [key: string]: unknown | undefined;
 };
+const ObservabilitySharedQueriesGetResponseEventsEventsItemContainersMap =
+  ObservabilitySharedQueriesGetResponseEventsEventsItemSourceCase1Map as any as S.Schema<ObservabilitySharedQueriesGetResponseEventsEventsItemContainersMap>;
+
 export type ObservabilitySharedQueriesGetResponseEventsEventsItemWorkersCase0EventType =
   | "fetch"
   | "scheduled"
@@ -7321,6 +9189,8 @@ export interface ObservabilitySharedQueriesGetResponseEventsEventsItemWorkersCas
 export type ObservabilitySharedQueriesGetResponseEventsEventsItemWorkers =
   | ObservabilitySharedQueriesGetResponseEventsEventsItemWorkersCase0
   | ObservabilitySharedQueriesGetResponseEventsEventsItemWorkersCase1;
+const ObservabilitySharedQueriesGetResponseEventsEventsItemWorkers = /*@__PURE__*/ __L.at(__c39, 7);
+
 export interface ObservabilitySharedQueriesGetResponseEventsEventsItem {
   /** Structured metadata extracted from the event. These fields are indexed and available for filtering and aggregation. */
   metadata: ObservabilitySharedQueriesGetResponseEventsEventsItemMetadata;
@@ -7335,16 +9205,36 @@ export interface ObservabilitySharedQueriesGetResponseEventsEventsItem {
   /** Cloudflare Workers event information that enriches your logs for identifying and debugging issues. */
   workers?: ObservabilitySharedQueriesGetResponseEventsEventsItemWorkers | null;
 }
+const ObservabilitySharedQueriesGetResponseEventsEventsItem = /*@__PURE__*/ __L.at(
+  __c40,
+  0,
+) as any as S.Schema<ObservabilitySharedQueriesGetResponseEventsEventsItem>;
+
 export type ObservabilitySharedQueriesGetResponseEventsEventsList =
   Array<ObservabilitySharedQueriesGetResponseEventsEventsItem>;
+const ObservabilitySharedQueriesGetResponseEventsEventsList = /*@__PURE__*/ __L.at(
+  __c40,
+  1,
+) as any as S.Schema<ObservabilitySharedQueriesGetResponseEventsEventsList>;
+
 export interface ObservabilitySharedQueriesGetResponseEventsFieldsItem {
   /** Field name present in the matched events. */
   key: string;
   /** Data type of the field (string, number, or boolean). */
   type: string;
 }
+const ObservabilitySharedQueriesGetResponseEventsFieldsItem = /*@__PURE__*/ __L.at(
+  __c40,
+  2,
+) as any as S.Schema<ObservabilitySharedQueriesGetResponseEventsFieldsItem>;
+
 export type ObservabilitySharedQueriesGetResponseEventsFieldsList =
   Array<ObservabilitySharedQueriesGetResponseEventsFieldsItem>;
+const ObservabilitySharedQueriesGetResponseEventsFieldsList = /*@__PURE__*/ __L.at(
+  __c40,
+  3,
+) as any as S.Schema<ObservabilitySharedQueriesGetResponseEventsFieldsList>;
+
 export interface ObservabilitySharedQueriesGetResponseEventsSeriesItemDataItemAggregates {
   /** exclusiveMinimum */
   count: number;
@@ -7354,15 +9244,29 @@ export interface ObservabilitySharedQueriesGetResponseEventsSeriesItemDataItemAg
   lastSeen?: string | null;
   bin?: unknown | null;
 }
+const ObservabilitySharedQueriesGetResponseEventsSeriesItemDataItemAggregates =
+  /*@__PURE__*/ __L.at(
+    __c40,
+    4,
+  ) as any as S.Schema<ObservabilitySharedQueriesGetResponseEventsSeriesItemDataItemAggregates>;
+
 export type ObservabilitySharedQueriesGetResponseEventsSeriesItemDataItemGroupsValue =
   | string
   | number
   | boolean;
+const ObservabilitySharedQueriesGetResponseEventsSeriesItemDataItemGroupsValue =
+  /*@__PURE__*/ __L.at(__c40, 5);
+
 export type ObservabilitySharedQueriesGetResponseEventsSeriesItemDataItemGroupsMap = {
   [key: string]:
     | ObservabilitySharedQueriesGetResponseEventsSeriesItemDataItemGroupsValue
     | undefined;
 };
+const ObservabilitySharedQueriesGetResponseEventsSeriesItemDataItemGroupsMap = /*@__PURE__*/ __L.at(
+  __c40,
+  6,
+) as any as S.Schema<ObservabilitySharedQueriesGetResponseEventsSeriesItemDataItemGroupsMap>;
+
 export interface ObservabilitySharedQueriesGetResponseEventsSeriesItemDataItem {
   aggregates: ObservabilitySharedQueriesGetResponseEventsSeriesItemDataItemAggregates;
   /** Estimated number of matching events: the sum of the sample intervals of the stored events. It equals the number of stored events when sampleInterval is 1. */
@@ -7375,14 +9279,34 @@ export interface ObservabilitySharedQueriesGetResponseEventsSeriesItemDataItem {
   /** Groups in the query results. */
   groups?: ObservabilitySharedQueriesGetResponseEventsSeriesItemDataItemGroupsMap | null;
 }
+const ObservabilitySharedQueriesGetResponseEventsSeriesItemDataItem = /*@__PURE__*/ __L.at(
+  __c40,
+  7,
+) as any as S.Schema<ObservabilitySharedQueriesGetResponseEventsSeriesItemDataItem>;
+
 export type ObservabilitySharedQueriesGetResponseEventsSeriesItemDataList =
   Array<ObservabilitySharedQueriesGetResponseEventsSeriesItemDataItem>;
+const ObservabilitySharedQueriesGetResponseEventsSeriesItemDataList = /*@__PURE__*/ __L.at(
+  __c41,
+  0,
+) as any as S.Schema<ObservabilitySharedQueriesGetResponseEventsSeriesItemDataList>;
+
 export interface ObservabilitySharedQueriesGetResponseEventsSeriesItem {
   data: ObservabilitySharedQueriesGetResponseEventsSeriesItemDataList;
   time: string;
 }
+const ObservabilitySharedQueriesGetResponseEventsSeriesItem = /*@__PURE__*/ __L.at(
+  __c41,
+  1,
+) as any as S.Schema<ObservabilitySharedQueriesGetResponseEventsSeriesItem>;
+
 export type ObservabilitySharedQueriesGetResponseEventsSeriesList =
   Array<ObservabilitySharedQueriesGetResponseEventsSeriesItem>;
+const ObservabilitySharedQueriesGetResponseEventsSeriesList = /*@__PURE__*/ __L.at(
+  __c41,
+  2,
+) as any as S.Schema<ObservabilitySharedQueriesGetResponseEventsSeriesList>;
+
 export interface ObservabilitySharedQueriesGetResponseEvents {
   /** Total number of events matching the query (may exceed the number returned due to limits). */
   count?: number | null;
@@ -7393,6 +9317,11 @@ export interface ObservabilitySharedQueriesGetResponseEvents {
   /** Time-series data for the matched events, bucketed by the query granularity. */
   series?: ObservabilitySharedQueriesGetResponseEventsSeriesList | null;
 }
+const ObservabilitySharedQueriesGetResponseEvents = /*@__PURE__*/ __L.at(
+  __c41,
+  3,
+) as any as S.Schema<ObservabilitySharedQueriesGetResponseEvents>;
+
 export type ObservabilitySharedQueriesGetResponseInvocationsValueItemMetadata =
   ObservabilitySharedQueriesGetResponseEventsEventsItemMetadata;
 export type ObservabilitySharedQueriesGetResponseInvocationsValueItemSourceCase1Map = {
@@ -7401,9 +9330,17 @@ export type ObservabilitySharedQueriesGetResponseInvocationsValueItemSourceCase1
 export type ObservabilitySharedQueriesGetResponseInvocationsValueItemSource =
   | string
   | ObservabilitySharedQueriesGetResponseInvocationsValueItemSourceCase1Map;
+const ObservabilitySharedQueriesGetResponseInvocationsValueItemSource = /*@__PURE__*/ __L.at(
+  __c41,
+  4,
+);
+
 export type ObservabilitySharedQueriesGetResponseInvocationsValueItemContainersMap = {
   [key: string]: unknown | undefined;
 };
+const ObservabilitySharedQueriesGetResponseInvocationsValueItemContainersMap =
+  ObservabilitySharedQueriesGetResponseEventsEventsItemSourceCase1Map as any as S.Schema<ObservabilitySharedQueriesGetResponseInvocationsValueItemContainersMap>;
+
 export type ObservabilitySharedQueriesGetResponseInvocationsValueItemWorkersCase0EventType =
   | "fetch"
   | "scheduled"
@@ -7491,6 +9428,11 @@ export interface ObservabilitySharedQueriesGetResponseInvocationsValueItemWorker
 export type ObservabilitySharedQueriesGetResponseInvocationsValueItemWorkers =
   | ObservabilitySharedQueriesGetResponseInvocationsValueItemWorkersCase0
   | ObservabilitySharedQueriesGetResponseInvocationsValueItemWorkersCase1;
+const ObservabilitySharedQueriesGetResponseInvocationsValueItemWorkers = /*@__PURE__*/ __L.at(
+  __c41,
+  5,
+);
+
 export interface ObservabilitySharedQueriesGetResponseInvocationsValueItem {
   /** Structured metadata extracted from the event. These fields are indexed and available for filtering and aggregation. */
   metadata: ObservabilitySharedQueriesGetResponseEventsEventsItemMetadata;
@@ -7505,13 +9447,34 @@ export interface ObservabilitySharedQueriesGetResponseInvocationsValueItem {
   /** Cloudflare Workers event information that enriches your logs for identifying and debugging issues. */
   workers?: ObservabilitySharedQueriesGetResponseInvocationsValueItemWorkers | null;
 }
+const ObservabilitySharedQueriesGetResponseInvocationsValueItem = /*@__PURE__*/ __L.at(
+  __c41,
+  6,
+) as any as S.Schema<ObservabilitySharedQueriesGetResponseInvocationsValueItem>;
+
 export type ObservabilitySharedQueriesGetResponseInvocationsValueList =
   Array<ObservabilitySharedQueriesGetResponseInvocationsValueItem>;
+const ObservabilitySharedQueriesGetResponseInvocationsValueList = /*@__PURE__*/ __L.at(
+  __c41,
+  7,
+) as any as S.Schema<ObservabilitySharedQueriesGetResponseInvocationsValueList>;
+
 export type ObservabilitySharedQueriesGetResponseInvocationsMap = {
   [key: string]: ObservabilitySharedQueriesGetResponseInvocationsValueList | undefined;
 };
+const ObservabilitySharedQueriesGetResponseInvocationsMap = /*@__PURE__*/ __L.at(
+  __c42,
+  0,
+) as any as S.Schema<ObservabilitySharedQueriesGetResponseInvocationsMap>;
+
 export type ObservabilitySharedQueriesGetResponseTracesItemServiceList = Array<string>;
+const ObservabilitySharedQueriesGetResponseTracesItemServiceList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<ObservabilitySharedQueriesGetResponseTracesItemServiceList>;
+
 export type ObservabilitySharedQueriesGetResponseTracesItemErrorsList = Array<string>;
+const ObservabilitySharedQueriesGetResponseTracesItemErrorsList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<ObservabilitySharedQueriesGetResponseTracesItemErrorsList>;
+
 export interface ObservabilitySharedQueriesGetResponseTracesItem {
   /** Name of the root span that initiated the trace. */
   rootSpanName: string;
@@ -7532,8 +9495,18 @@ export interface ObservabilitySharedQueriesGetResponseTracesItem {
   /** Error messages encountered during the trace, if any. */
   errors?: ObservabilitySharedQueriesGetResponseTracesItemErrorsList | null;
 }
+const ObservabilitySharedQueriesGetResponseTracesItem = /*@__PURE__*/ __L.at(
+  __c42,
+  1,
+) as any as S.Schema<ObservabilitySharedQueriesGetResponseTracesItem>;
+
 export type ObservabilitySharedQueriesGetResponseTracesList =
   Array<ObservabilitySharedQueriesGetResponseTracesItem>;
+const ObservabilitySharedQueriesGetResponseTracesList = /*@__PURE__*/ __L.at(
+  __c42,
+  2,
+) as any as S.Schema<ObservabilitySharedQueriesGetResponseTracesList>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetObservabilitySharedQueryResponse {
   /** Represents a single execution of a query against Workers Observability data, including the query definition, execution status, and performance statistics. */
@@ -7555,6 +9528,11 @@ export interface GetObservabilitySharedQueryResponse {
   /** Trace summaries matching the query. Present when the query view is 'traces'. Each entry represents a distributed trace with its spans, duration, and services involved. */
   traces?: ObservabilitySharedQueriesGetResponseTracesList | null;
 }
+const GetObservabilitySharedQueryResponse = /*@__PURE__*/ __L.at(
+  __c42,
+  3,
+) as any as S.Schema<GetObservabilitySharedQueryResponse>;
+
 export interface GetPreviewRequest {
   accountId: string;
   /** Parent Worker id or script name. */
@@ -7562,6 +9540,8 @@ export interface GetPreviewRequest {
   /** Preview id or name. */
   previewId: string;
 }
+const GetPreviewRequest = /*@__PURE__*/ __L.at(__c42, 4) as any as S.Schema<GetPreviewRequest>;
+
 export interface GetPreviewDeploymentRequest {
   accountId: string;
   workerId: string;
@@ -7569,12 +9549,19 @@ export interface GetPreviewDeploymentRequest {
   /** Deployment id, or `latest`. */
   deploymentId: string;
 }
+const GetPreviewDeploymentRequest = /*@__PURE__*/ __L.at(
+  __c42,
+  5,
+) as any as S.Schema<GetPreviewDeploymentRequest>;
+
 export interface GetRouteRequest {
   /** Identifier. */
   zoneId: string;
   /** Identifier. */
   routeId: string;
 }
+const GetRouteRequest = /*@__PURE__*/ __L.at(__c42, 6) as any as S.Schema<GetRouteRequest>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetRouteResponse {
   /** Identifier. */
@@ -7584,20 +9571,34 @@ export interface GetRouteResponse {
   /** Name of the script to run if the route matches. */
   script?: string | null;
 }
+const GetRouteResponse = CreateRouteResponse as any as S.Schema<GetRouteResponse>;
+
 export interface GetScriptRequest {
   /** Identifier. */
   accountId: string;
   /** Name of the script. */
   scriptName: string;
 }
+const GetScriptRequest = /*@__PURE__*/ __L.at(__c42, 7) as any as S.Schema<GetScriptRequest>;
+
 export interface GetScriptResponse {}
+const GetScriptResponse = DeleteBetaWorkerResponse as any as S.Schema<GetScriptResponse>;
+
 export interface GetScriptContentRequest {
   /** Identifier. */
   accountId: string;
   /** Name of the script. */
   scriptName: string;
 }
+const GetScriptContentRequest = /*@__PURE__*/ __L.at(
+  __c43,
+  0,
+) as any as S.Schema<GetScriptContentRequest>;
+
 export interface GetScriptContentResponse {}
+const GetScriptContentResponse =
+  DeleteBetaWorkerResponse as any as S.Schema<GetScriptContentResponse>;
+
 export interface GetScriptDeploymentRequest {
   /** Identifier. */
   accountId: string;
@@ -7605,10 +9606,20 @@ export interface GetScriptDeploymentRequest {
   scriptName: string;
   deploymentId: string;
 }
+const GetScriptDeploymentRequest = /*@__PURE__*/ __L.at(
+  __c43,
+  1,
+) as any as S.Schema<GetScriptDeploymentRequest>;
+
 export type ScriptsDeploymentsGetResponseStrategy = "percentage";
+const ScriptsDeploymentsGetResponseStrategy = S.String;
+
 export type ScriptsDeploymentsGetResponseVersionsItem = ScriptsDeploymentsCreateRequestVersionsItem;
 export type ScriptsDeploymentsGetResponseVersionsList =
   Array<ScriptsDeploymentsCreateRequestVersionsItem>;
+const ScriptsDeploymentsGetResponseVersionsList =
+  ScriptsDeploymentsCreateRequestVersionsList as any as S.Schema<ScriptsDeploymentsGetResponseVersionsList>;
+
 export type ScriptsDeploymentsGetResponseAnnotations = ScriptsDeploymentsCreateResponseAnnotations;
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetScriptDeploymentResponse {
@@ -7621,18 +9632,30 @@ export interface GetScriptDeploymentResponse {
   annotations?: ScriptsDeploymentsCreateResponseAnnotations | null;
   authorEmail?: string | null;
 }
+const GetScriptDeploymentResponse = /*@__PURE__*/ __L.at(
+  __c43,
+  2,
+) as any as S.Schema<GetScriptDeploymentResponse>;
+
 export interface GetScriptEventTriggersRequest {
   /** Identifier. */
   accountId: string;
   /** Name of the script. */
   scriptName: string;
 }
+const GetScriptEventTriggersRequest = /*@__PURE__*/ __L.at(
+  __c43,
+  3,
+) as any as S.Schema<GetScriptEventTriggersRequest>;
+
 export interface EventTriggerFilter {
   /** Only events from this Artifacts namespace. */
   namespace?: string | null;
   /** Only events from this Artifacts repository. */
   repoName?: string | null;
 }
+const EventTriggerFilter = /*@__PURE__*/ __L.at(__c43, 4) as any as S.Schema<EventTriggerFilter>;
+
 export interface EventTriggerTarget {
   /** Target kind: `workflow`. */
   type: string;
@@ -7641,42 +9664,85 @@ export interface EventTriggerTarget {
   /** The script that hosts the Workflow: the script the trigger belongs to. */
   scriptName?: string | null;
 }
+const EventTriggerTarget = /*@__PURE__*/ __L.at(__c43, 5) as any as S.Schema<EventTriggerTarget>;
+
 export type EventTriggerTargetList = Array<EventTriggerTarget>;
+const EventTriggerTargetList = /*@__PURE__*/ __L.at(
+  __c43,
+  6,
+) as any as S.Schema<EventTriggerTargetList>;
+
 export interface EventTrigger {
   /** Event type, e.g. `cf.artifacts.repo.pushed`. */
   type: string;
   filter?: EventTriggerFilter | null;
   targets: EventTriggerTargetList;
 }
+const EventTrigger = /*@__PURE__*/ __L.at(__c43, 7) as any as S.Schema<EventTrigger>;
+
 export type EventTriggerList = Array<EventTrigger>;
+const EventTriggerList = /*@__PURE__*/ __L.at(__c44, 0) as any as S.Schema<EventTriggerList>;
+
 export interface ScriptEventTriggers {
   scriptName: string;
   triggers: EventTriggerList;
 }
+const ScriptEventTriggers = /*@__PURE__*/ __L.at(__c44, 1) as any as S.Schema<ScriptEventTriggers>;
+
 export type GetScriptEventTriggersResponse = ScriptEventTriggers;
+const GetScriptEventTriggersResponse = /*@__PURE__*/ __L.at(
+  __c44,
+  2,
+) as any as S.Schema<GetScriptEventTriggersResponse>;
+
 export interface GetScriptScheduleRequest {
   /** Identifier. */
   accountId: string;
   /** Name of the script. */
   scriptName: string;
 }
+const GetScriptScheduleRequest = /*@__PURE__*/ __L.at(
+  __c44,
+  3,
+) as any as S.Schema<GetScriptScheduleRequest>;
+
 export interface ScriptsSchedulesGetResponseSchedulesItem {
   cron: string;
   createdOn?: string | null;
   modifiedOn?: string | null;
 }
+const ScriptsSchedulesGetResponseSchedulesItem = /*@__PURE__*/ __L.at(
+  __c44,
+  4,
+) as any as S.Schema<ScriptsSchedulesGetResponseSchedulesItem>;
+
 export type ScriptsSchedulesGetResponseSchedulesList =
   Array<ScriptsSchedulesGetResponseSchedulesItem>;
+const ScriptsSchedulesGetResponseSchedulesList = /*@__PURE__*/ __L.at(
+  __c44,
+  5,
+) as any as S.Schema<ScriptsSchedulesGetResponseSchedulesList>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetScriptScheduleResponse {
   schedules: ScriptsSchedulesGetResponseSchedulesList;
 }
+const GetScriptScheduleResponse = /*@__PURE__*/ __L.at(
+  __c44,
+  6,
+) as any as S.Schema<GetScriptScheduleResponse>;
+
 export interface GetScriptScriptAndVersionSettingRequest {
   /** Identifier. */
   accountId: string;
   /** Name of the script. */
   scriptName: string;
 }
+const GetScriptScriptAndVersionSettingRequest = /*@__PURE__*/ __L.at(
+  __c44,
+  7,
+) as any as S.Schema<GetScriptScriptAndVersionSettingRequest>;
+
 export interface ScriptsScriptAndVersionSettingsGetResponseAnnotations {
   /** Human-readable message about the version. Truncated to 1000 bytes if longer. */
   workersMessage?: string | null;
@@ -7685,6 +9751,9 @@ export interface ScriptsScriptAndVersionSettingsGetResponseAnnotations {
   /** Operation that triggered the creation of the version. This is read-only and set by the server. */
   workersTriggeredBy?: string | null;
 }
+const ScriptsScriptAndVersionSettingsGetResponseAnnotations =
+  BetaWorkersVersionsCreateResponseAnnotations as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseAnnotations>;
+
 export type ScriptsScriptAndVersionSettingsGetResponseBindingsItemAIType = "ai";
 export interface ScriptsScriptAndVersionSettingsGetResponseBindingsItemAI {
   /** A JavaScript variable name for the binding. */
@@ -8148,11 +10217,21 @@ export type ScriptsScriptAndVersionSettingsGetResponseBindingsItem =
   | ScriptsScriptAndVersionSettingsGetResponseBindingsItemWasmModule
   | ScriptsScriptAndVersionSettingsGetResponseBindingsItemVPCService
   | ScriptsScriptAndVersionSettingsGetResponseBindingsItemVPCNetwork;
+const ScriptsScriptAndVersionSettingsGetResponseBindingsItem = /*@__PURE__*/ __L.at(__c45, 0);
+
 export type ScriptsScriptAndVersionSettingsGetResponseBindingsList =
   Array<ScriptsScriptAndVersionSettingsGetResponseBindingsItem>;
+const ScriptsScriptAndVersionSettingsGetResponseBindingsList = /*@__PURE__*/ __L.at(
+  __c45,
+  1,
+) as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseBindingsList>;
+
 export type ScriptsScriptAndVersionSettingsGetResponseCacheOptions =
   BetaWorkersCreateResponsePreviewsBaseConfigCacheOptions;
 export type ScriptsScriptAndVersionSettingsGetResponseCompatibilityFlagsList = Array<string>;
+const ScriptsScriptAndVersionSettingsGetResponseCompatibilityFlagsList =
+  BetaWorkersCreateRequestPreviewsBaseConfigObservabilityLogsDestinationsList as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseCompatibilityFlagsList>;
+
 export type ScriptsScriptAndVersionSettingsGetResponseExportsValueWorkerType = "worker";
 export type ScriptsScriptAndVersionSettingsGetResponseExportsValueWorkerCache =
   BetaWorkersVersionsCreateRequestExportsValueWorkerCache;
@@ -8242,13 +10321,26 @@ export type ScriptsScriptAndVersionSettingsGetResponseExportsValue =
   | ScriptsScriptAndVersionSettingsGetResponseExportsValueWorkersDurableObjectRenamedExport
   | ScriptsScriptAndVersionSettingsGetResponseExportsValueWorkersDurableObjectTransferredExport
   | ScriptsScriptAndVersionSettingsGetResponseExportsValueWorkersDurableObjectExpectingTransferExport;
+const ScriptsScriptAndVersionSettingsGetResponseExportsValue = /*@__PURE__*/ __L.at(__c45, 2);
+
 export type ScriptsScriptAndVersionSettingsGetResponseExportsMap = {
   [key: string]: ScriptsScriptAndVersionSettingsGetResponseExportsValue | undefined;
 };
+const ScriptsScriptAndVersionSettingsGetResponseExportsMap = /*@__PURE__*/ __L.at(
+  __c45,
+  3,
+) as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseExportsMap>;
+
 export type ScriptsScriptAndVersionSettingsGetResponseExportsReconciliationCreatedList =
   Array<string>;
+const ScriptsScriptAndVersionSettingsGetResponseExportsReconciliationCreatedList =
+  BetaWorkersCreateRequestPreviewsBaseConfigObservabilityLogsDestinationsList as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseExportsReconciliationCreatedList>;
+
 export type ScriptsScriptAndVersionSettingsGetResponseExportsReconciliationDeletedList =
   Array<string>;
+const ScriptsScriptAndVersionSettingsGetResponseExportsReconciliationDeletedList =
+  BetaWorkersCreateRequestPreviewsBaseConfigObservabilityLogsDestinationsList as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseExportsReconciliationDeletedList>;
+
 export type ScriptsScriptAndVersionSettingsGetResponseExportsReconciliationInfoItemScenario =
   | "code_class_not_in_exports"
   | "provisioned_class_missing_from_config"
@@ -8283,8 +10375,13 @@ export type ScriptsScriptAndVersionSettingsGetResponseExportsReconciliationInfoI
   | "stale_tombstone"
   | "transfer_receive_already_applied"
   | "transfer_receive_cleanup_complete";
+const ScriptsScriptAndVersionSettingsGetResponseExportsReconciliationInfoItemScenario = S.String;
+
 export type ScriptsScriptAndVersionSettingsGetResponseExportsReconciliationInfoItemReferencingScriptsList =
   Array<string>;
+const ScriptsScriptAndVersionSettingsGetResponseExportsReconciliationInfoItemReferencingScriptsList =
+  BetaWorkersCreateRequestPreviewsBaseConfigObservabilityLogsDestinationsList as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseExportsReconciliationInfoItemReferencingScriptsList>;
+
 export interface ScriptsScriptAndVersionSettingsGetResponseExportsReconciliationInfoItem {
   /** The class name the info entry is about. */
   class: string;
@@ -8297,18 +10394,39 @@ export interface ScriptsScriptAndVersionSettingsGetResponseExportsReconciliation
   /** Other Workers in the account that still bind to the affected class. Advisory: while non-empty the tombstone is not yet safe to remove -- redeploy these Workers with bindings re-pointed first. */
   referencingScripts?: ScriptsScriptAndVersionSettingsGetResponseExportsReconciliationInfoItemReferencingScriptsList | null;
 }
+const ScriptsScriptAndVersionSettingsGetResponseExportsReconciliationInfoItem =
+  /*@__PURE__*/ __L.at(
+    __c45,
+    4,
+  ) as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseExportsReconciliationInfoItem>;
+
 export type ScriptsScriptAndVersionSettingsGetResponseExportsReconciliationInfoList =
   Array<ScriptsScriptAndVersionSettingsGetResponseExportsReconciliationInfoItem>;
+const ScriptsScriptAndVersionSettingsGetResponseExportsReconciliationInfoList =
+  /*@__PURE__*/ __L.at(
+    __c45,
+    5,
+  ) as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseExportsReconciliationInfoList>;
+
 export type ScriptsScriptAndVersionSettingsGetResponseExportsReconciliationRemovableEntriesList =
   Array<string>;
+const ScriptsScriptAndVersionSettingsGetResponseExportsReconciliationRemovableEntriesList =
+  BetaWorkersCreateRequestPreviewsBaseConfigObservabilityLogsDestinationsList as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseExportsReconciliationRemovableEntriesList>;
+
 export type ScriptsScriptAndVersionSettingsGetResponseExportsReconciliationRenamedItem =
   BetaWorkersVersionsCreateResponseExportsReconciliationRenamedItem;
 export type ScriptsScriptAndVersionSettingsGetResponseExportsReconciliationRenamedList =
   Array<BetaWorkersVersionsCreateResponseExportsReconciliationRenamedItem>;
+const ScriptsScriptAndVersionSettingsGetResponseExportsReconciliationRenamedList =
+  BetaWorkersVersionsCreateResponseExportsReconciliationRenamedList as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseExportsReconciliationRenamedList>;
+
 export type ScriptsScriptAndVersionSettingsGetResponseExportsReconciliationTransferPendingItem =
   BetaWorkersVersionsCreateResponseExportsReconciliationTransferPendingItem;
 export type ScriptsScriptAndVersionSettingsGetResponseExportsReconciliationTransferPendingList =
   Array<BetaWorkersVersionsCreateResponseExportsReconciliationTransferPendingItem>;
+const ScriptsScriptAndVersionSettingsGetResponseExportsReconciliationTransferPendingList =
+  BetaWorkersVersionsCreateResponseExportsReconciliationTransferPendingList as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseExportsReconciliationTransferPendingList>;
+
 export type ScriptsScriptAndVersionSettingsGetResponseExportsReconciliationTransferredItemPhase =
   "committed";
 export interface ScriptsScriptAndVersionSettingsGetResponseExportsReconciliationTransferredItem {
@@ -8321,8 +10439,14 @@ export interface ScriptsScriptAndVersionSettingsGetResponseExportsReconciliation
 }
 export type ScriptsScriptAndVersionSettingsGetResponseExportsReconciliationTransferredList =
   Array<ScriptsScriptAndVersionSettingsGetResponseExportsReconciliationTransferredItem>;
+const ScriptsScriptAndVersionSettingsGetResponseExportsReconciliationTransferredList =
+  BetaWorkersVersionsCreateResponseExportsReconciliationTransferredList as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseExportsReconciliationTransferredList>;
+
 export type ScriptsScriptAndVersionSettingsGetResponseExportsReconciliationUpdatedList =
   Array<string>;
+const ScriptsScriptAndVersionSettingsGetResponseExportsReconciliationUpdatedList =
+  BetaWorkersCreateRequestPreviewsBaseConfigObservabilityLogsDestinationsList as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseExportsReconciliationUpdatedList>;
+
 export type ScriptsScriptAndVersionSettingsGetResponseExportsReconciliationWarningsItemScenario =
   | "code_class_not_in_exports"
   | "provisioned_class_missing_from_config"
@@ -8369,6 +10493,9 @@ export interface ScriptsScriptAndVersionSettingsGetResponseExportsReconciliation
 }
 export type ScriptsScriptAndVersionSettingsGetResponseExportsReconciliationWarningsList =
   Array<ScriptsScriptAndVersionSettingsGetResponseExportsReconciliationWarningsItem>;
+const ScriptsScriptAndVersionSettingsGetResponseExportsReconciliationWarningsList =
+  BetaWorkersVersionsCreateResponseExportsReconciliationWarningsList as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseExportsReconciliationWarningsList>;
+
 export interface ScriptsScriptAndVersionSettingsGetResponseExportsReconciliation {
   /** Class names for which a new namespace was provisioned. */
   created: ScriptsScriptAndVersionSettingsGetResponseExportsReconciliationCreatedList;
@@ -8389,6 +10516,11 @@ export interface ScriptsScriptAndVersionSettingsGetResponseExportsReconciliation
   /** Non-blocking warnings. See `exports_reconciliation_warning`. */
   warnings: ScriptsScriptAndVersionSettingsGetResponseExportsReconciliationWarningsList;
 }
+const ScriptsScriptAndVersionSettingsGetResponseExportsReconciliation = /*@__PURE__*/ __L.at(
+  __c45,
+  6,
+) as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseExportsReconciliation>;
+
 export type ScriptsScriptAndVersionSettingsGetResponseLimits =
   BetaWorkersCreateResponsePreviewsBaseConfigLimits;
 export type ScriptsScriptAndVersionSettingsGetResponseMigrationsSingleStepMigrationDeletedClassesList =
@@ -8460,10 +10592,15 @@ export interface ScriptsScriptAndVersionSettingsGetResponseMigrationsWorkersMult
 export type ScriptsScriptAndVersionSettingsGetResponseMigrations =
   | ScriptsScriptAndVersionSettingsGetResponseMigrationsSingleStepMigration
   | ScriptsScriptAndVersionSettingsGetResponseMigrationsWorkersMultipleStepMigrations;
+const ScriptsScriptAndVersionSettingsGetResponseMigrations = /*@__PURE__*/ __L.at(__c45, 7);
+
 export type ScriptsScriptAndVersionSettingsGetResponseObservabilityIssues =
   BetaWorkersCreateResponseObservabilityIssues;
 export type ScriptsScriptAndVersionSettingsGetResponseObservabilityLogsDestinationsList =
   Array<string>;
+const ScriptsScriptAndVersionSettingsGetResponseObservabilityLogsDestinationsList =
+  BetaWorkersCreateRequestPreviewsBaseConfigObservabilityLogsDestinationsList as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseObservabilityLogsDestinationsList>;
+
 export interface ScriptsScriptAndVersionSettingsGetResponseObservabilityLogs {
   /** Whether logs are enabled for the Worker. */
   enabled: boolean;
@@ -8476,11 +10613,21 @@ export interface ScriptsScriptAndVersionSettingsGetResponseObservabilityLogs {
   /** Whether log persistence is enabled for the Worker. */
   persist?: boolean | null;
 }
+const ScriptsScriptAndVersionSettingsGetResponseObservabilityLogs = /*@__PURE__*/ __L.at(
+  __c46,
+  0,
+) as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseObservabilityLogs>;
+
 export type ScriptsScriptAndVersionSettingsGetResponseObservabilityTracesDestinationsList =
   Array<string>;
+const ScriptsScriptAndVersionSettingsGetResponseObservabilityTracesDestinationsList =
+  BetaWorkersCreateRequestPreviewsBaseConfigObservabilityLogsDestinationsList as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseObservabilityTracesDestinationsList>;
+
 export type ScriptsScriptAndVersionSettingsGetResponseObservabilityTracesPropagationPolicy =
   | "authenticated"
   | "accept";
+const ScriptsScriptAndVersionSettingsGetResponseObservabilityTracesPropagationPolicy = S.String;
+
 export interface ScriptsScriptAndVersionSettingsGetResponseObservabilityTraces {
   /** A list of destinations where traces will be exported to. */
   destinations?: ScriptsScriptAndVersionSettingsGetResponseObservabilityTracesDestinationsList | null;
@@ -8493,6 +10640,11 @@ export interface ScriptsScriptAndVersionSettingsGetResponseObservabilityTraces {
   /** Controls how inbound trace context (traceparent/tracestate) headers on incoming requests are handled. "authenticated" honors inbound trace context only when accompanied by a valid trace auth token. "accept" unconditionally accepts inbound trace context. Requires the trace propagation feature to be enabled. Returns null when the trace propagation feature is not enabled for the account. */
   propagationPolicy?: ScriptsScriptAndVersionSettingsGetResponseObservabilityTracesPropagationPolicy | null;
 }
+const ScriptsScriptAndVersionSettingsGetResponseObservabilityTraces = /*@__PURE__*/ __L.at(
+  __c46,
+  1,
+) as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseObservabilityTraces>;
+
 export interface ScriptsScriptAndVersionSettingsGetResponseObservability {
   /** Whether observability is enabled for the Worker. */
   enabled: boolean;
@@ -8507,6 +10659,11 @@ export interface ScriptsScriptAndVersionSettingsGetResponseObservability {
   /** Trace settings for the Worker. */
   traces?: ScriptsScriptAndVersionSettingsGetResponseObservabilityTraces | null;
 }
+const ScriptsScriptAndVersionSettingsGetResponseObservability = /*@__PURE__*/ __L.at(
+  __c46,
+  2,
+) as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseObservability>;
+
 export type ScriptsScriptAndVersionSettingsGetResponsePlacementModeMode = "smart";
 export interface ScriptsScriptAndVersionSettingsGetResponsePlacementMode {
   /** Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
@@ -8567,7 +10724,12 @@ export type ScriptsScriptAndVersionSettingsGetResponsePlacement =
   | ScriptsScriptAndVersionSettingsGetResponsePlacementCase5
   | ScriptsScriptAndVersionSettingsGetResponsePlacementCase6
   | ScriptsScriptAndVersionSettingsGetResponsePlacementCase7;
+const ScriptsScriptAndVersionSettingsGetResponsePlacement = /*@__PURE__*/ __L.at(__c46, 3);
+
 export type ScriptsScriptAndVersionSettingsGetResponseTagsList = Array<string>;
+const ScriptsScriptAndVersionSettingsGetResponseTagsList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseTagsList>;
+
 export interface ScriptsScriptAndVersionSettingsGetResponseTailConsumersItem {
   /** Name of Worker that is to be the consumer. */
   service: string;
@@ -8576,12 +10738,24 @@ export interface ScriptsScriptAndVersionSettingsGetResponseTailConsumersItem {
   /** Optional dispatch namespace the script belongs to. */
   namespace?: string | null;
 }
+const ScriptsScriptAndVersionSettingsGetResponseTailConsumersItem = /*@__PURE__*/ __L.at(
+  __c46,
+  4,
+) as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseTailConsumersItem>;
+
 export type ScriptsScriptAndVersionSettingsGetResponseTailConsumersList =
   Array<ScriptsScriptAndVersionSettingsGetResponseTailConsumersItem>;
+const ScriptsScriptAndVersionSettingsGetResponseTailConsumersList = /*@__PURE__*/ __L.at(
+  __c46,
+  5,
+) as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseTailConsumersList>;
+
 export type ScriptsScriptAndVersionSettingsGetResponseUsageModel =
   | "standard"
   | "bundled"
   | "unbound";
+const ScriptsScriptAndVersionSettingsGetResponseUsageModel = S.String;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetScriptScriptAndVersionSettingResponse {
   /** Annotations for the Worker version. Annotations are not inherited across settings updates; omitting this field means the new version will have no annotations. */
@@ -8615,6 +10789,11 @@ export interface GetScriptScriptAndVersionSettingResponse {
   /** Usage model for the Worker invocations. */
   usageModel?: ScriptsScriptAndVersionSettingsGetResponseUsageModel | null;
 }
+const GetScriptScriptAndVersionSettingResponse = /*@__PURE__*/ __L.at(
+  __c46,
+  6,
+) as any as S.Schema<GetScriptScriptAndVersionSettingResponse>;
+
 export interface GetScriptSecretRequest {
   /** Identifier. */
   accountId: string;
@@ -8625,6 +10804,11 @@ export interface GetScriptSecretRequest {
   /** Flag that indicates whether the secret name is URL encoded. */
   urlEncoded?: boolean;
 }
+const GetScriptSecretRequest = /*@__PURE__*/ __L.at(
+  __c46,
+  7,
+) as any as S.Schema<GetScriptSecretRequest>;
+
 export type ScriptsSecretsGetResultSecretTextType = "secret_text";
 export interface ScriptsSecretsGetResultSecretText {
   /** A JavaScript variable name for the binding. */
@@ -8666,16 +10850,31 @@ export interface ScriptsSecretsGetResultSecretKey {
 export type ScriptsSecretsGetResult =
   | ScriptsSecretsGetResultSecretText
   | ScriptsSecretsGetResultSecretKey;
+const ScriptsSecretsGetResult = /*@__PURE__*/ __L.at(__c47, 0);
+
 export type GetScriptSecretResponse = ScriptsSecretsGetResult;
+const GetScriptSecretResponse = /*@__PURE__*/ __L.at(
+  __c47,
+  1,
+) as any as S.Schema<GetScriptSecretResponse>;
+
 export interface GetScriptSettingRequest {
   /** Identifier. */
   accountId: string;
   /** Name of the script. */
   scriptName: string;
 }
+const GetScriptSettingRequest = /*@__PURE__*/ __L.at(
+  __c47,
+  2,
+) as any as S.Schema<GetScriptSettingRequest>;
+
 export type ScriptsSettingsGetResponseObservabilityIssues =
   BetaWorkersCreateResponseObservabilityIssues;
 export type ScriptsSettingsGetResponseObservabilityLogsDestinationsList = Array<string>;
+const ScriptsSettingsGetResponseObservabilityLogsDestinationsList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<ScriptsSettingsGetResponseObservabilityLogsDestinationsList>;
+
 export interface ScriptsSettingsGetResponseObservabilityLogs {
   /** Whether logs are enabled for the Worker. */
   enabled: boolean;
@@ -8688,10 +10887,20 @@ export interface ScriptsSettingsGetResponseObservabilityLogs {
   /** Whether log persistence is enabled for the Worker. */
   persist?: boolean | null;
 }
+const ScriptsSettingsGetResponseObservabilityLogs = /*@__PURE__*/ __L.at(
+  __c47,
+  3,
+) as any as S.Schema<ScriptsSettingsGetResponseObservabilityLogs>;
+
 export type ScriptsSettingsGetResponseObservabilityTracesDestinationsList = Array<string>;
+const ScriptsSettingsGetResponseObservabilityTracesDestinationsList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<ScriptsSettingsGetResponseObservabilityTracesDestinationsList>;
+
 export type ScriptsSettingsGetResponseObservabilityTracesPropagationPolicy =
   | "authenticated"
   | "accept";
+const ScriptsSettingsGetResponseObservabilityTracesPropagationPolicy = S.String;
+
 export interface ScriptsSettingsGetResponseObservabilityTraces {
   /** A list of destinations where traces will be exported to. */
   destinations?: ScriptsSettingsGetResponseObservabilityTracesDestinationsList | null;
@@ -8704,6 +10913,11 @@ export interface ScriptsSettingsGetResponseObservabilityTraces {
   /** Controls how inbound trace context (traceparent/tracestate) headers on incoming requests are handled. "authenticated" honors inbound trace context only when accompanied by a valid trace auth token. "accept" unconditionally accepts inbound trace context. Requires the trace propagation feature to be enabled. Returns null when the trace propagation feature is not enabled for the account. */
   propagationPolicy?: ScriptsSettingsGetResponseObservabilityTracesPropagationPolicy | null;
 }
+const ScriptsSettingsGetResponseObservabilityTraces = /*@__PURE__*/ __L.at(
+  __c47,
+  4,
+) as any as S.Schema<ScriptsSettingsGetResponseObservabilityTraces>;
+
 export interface ScriptsSettingsGetResponseObservability {
   /** Whether observability is enabled for the Worker. */
   enabled: boolean;
@@ -8718,11 +10932,22 @@ export interface ScriptsSettingsGetResponseObservability {
   /** Trace settings for the Worker. */
   traces?: ScriptsSettingsGetResponseObservabilityTraces | null;
 }
+const ScriptsSettingsGetResponseObservability = /*@__PURE__*/ __L.at(
+  __c47,
+  5,
+) as any as S.Schema<ScriptsSettingsGetResponseObservability>;
+
 export type ScriptsSettingsGetResponseTagsList = Array<string>;
+const ScriptsSettingsGetResponseTagsList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<ScriptsSettingsGetResponseTagsList>;
+
 export type ScriptsSettingsGetResponseTailConsumersItem =
   ScriptsScriptAndVersionSettingsGetResponseTailConsumersItem;
 export type ScriptsSettingsGetResponseTailConsumersList =
   Array<ScriptsScriptAndVersionSettingsGetResponseTailConsumersItem>;
+const ScriptsSettingsGetResponseTailConsumersList =
+  ScriptsScriptAndVersionSettingsGetResponseTailConsumersList as any as S.Schema<ScriptsSettingsGetResponseTailConsumersList>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetScriptSettingResponse {
   /** Whether Logpush is turned on for the Worker. */
@@ -8734,12 +10959,22 @@ export interface GetScriptSettingResponse {
   /** List of Workers that will consume logs from the attached Worker. */
   tailConsumers?: ScriptsSettingsGetResponseTailConsumersList | null;
 }
+const GetScriptSettingResponse = /*@__PURE__*/ __L.at(
+  __c47,
+  6,
+) as any as S.Schema<GetScriptSettingResponse>;
+
 export interface GetScriptSubdomainRequest {
   /** Identifier. */
   accountId: string;
   /** Name of the script. */
   scriptName: string;
 }
+const GetScriptSubdomainRequest = /*@__PURE__*/ __L.at(
+  __c47,
+  7,
+) as any as S.Schema<GetScriptSubdomainRequest>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetScriptSubdomainResponse {
   /** Whether the Worker is available on the workers.dev subdomain. */
@@ -8747,12 +10982,20 @@ export interface GetScriptSubdomainResponse {
   /** Whether the Worker's Preview URLs are available on the workers.dev subdomain. */
   previewsEnabled: boolean;
 }
+const GetScriptSubdomainResponse =
+  CreateScriptSubdomainResponse as any as S.Schema<GetScriptSubdomainResponse>;
+
 export interface GetScriptTailRequest {
   /** Identifier. */
   accountId: string;
   /** Name of the script. */
   scriptName: string;
 }
+const GetScriptTailRequest = /*@__PURE__*/ __L.at(
+  __c48,
+  0,
+) as any as S.Schema<GetScriptTailRequest>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetScriptTailResponse {
   /** Identifier. */
@@ -8760,6 +11003,8 @@ export interface GetScriptTailResponse {
   expiresAt: string;
   url: string;
 }
+const GetScriptTailResponse = CreateScriptTailResponse as any as S.Schema<GetScriptTailResponse>;
+
 export interface GetScriptVersionRequest {
   /** Identifier. */
   accountId: string;
@@ -8767,16 +11012,37 @@ export interface GetScriptVersionRequest {
   scriptName: string;
   versionId: string;
 }
+const GetScriptVersionRequest = /*@__PURE__*/ __L.at(
+  __c48,
+  1,
+) as any as S.Schema<GetScriptVersionRequest>;
+
 export type ScriptsVersionsGetResponseResourcesScriptHandlersList = Array<string>;
+const ScriptsVersionsGetResponseResourcesScriptHandlersList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<ScriptsVersionsGetResponseResourcesScriptHandlersList>;
+
 export type ScriptsVersionsGetResponseResourcesScriptNamedHandlersItemHandlersList = Array<string>;
+const ScriptsVersionsGetResponseResourcesScriptNamedHandlersItemHandlersList =
+  BetaWorkersCreateRequestPreviewsBaseConfigObservabilityLogsDestinationsList as any as S.Schema<ScriptsVersionsGetResponseResourcesScriptNamedHandlersItemHandlersList>;
+
 export interface ScriptsVersionsGetResponseResourcesScriptNamedHandlersItem {
   /** The names of handlers exported as part of the named export. */
   handlers?: ScriptsVersionsGetResponseResourcesScriptNamedHandlersItemHandlersList | null;
   /** The name of the exported class or entrypoint. */
   name?: string | null;
 }
+const ScriptsVersionsGetResponseResourcesScriptNamedHandlersItem = /*@__PURE__*/ __L.at(
+  __c48,
+  2,
+) as any as S.Schema<ScriptsVersionsGetResponseResourcesScriptNamedHandlersItem>;
+
 export type ScriptsVersionsGetResponseResourcesScriptNamedHandlersList =
   Array<ScriptsVersionsGetResponseResourcesScriptNamedHandlersItem>;
+const ScriptsVersionsGetResponseResourcesScriptNamedHandlersList = /*@__PURE__*/ __L.at(
+  __c48,
+  3,
+) as any as S.Schema<ScriptsVersionsGetResponseResourcesScriptNamedHandlersList>;
+
 export interface ScriptsVersionsGetResponseResourcesScript {
   /** Hashed script content */
   etag?: string | null;
@@ -8787,7 +11053,15 @@ export interface ScriptsVersionsGetResponseResourcesScript {
   /** Named exports, such as Durable Object class implementations and named entrypoints. */
   namedHandlers?: ScriptsVersionsGetResponseResourcesScriptNamedHandlersList | null;
 }
+const ScriptsVersionsGetResponseResourcesScript = /*@__PURE__*/ __L.at(
+  __c48,
+  4,
+) as any as S.Schema<ScriptsVersionsGetResponseResourcesScript>;
+
 export type ScriptsVersionsGetResponseResourcesScriptRuntimeCompatibilityFlagsList = Array<string>;
+const ScriptsVersionsGetResponseResourcesScriptRuntimeCompatibilityFlagsList =
+  BetaWorkersCreateRequestPreviewsBaseConfigObservabilityLogsDestinationsList as any as S.Schema<ScriptsVersionsGetResponseResourcesScriptRuntimeCompatibilityFlagsList>;
+
 export type ScriptsVersionsGetResponseResourcesScriptRuntimeExportsValueWorkerType = "worker";
 export type ScriptsVersionsGetResponseResourcesScriptRuntimeExportsValueWorkerCache =
   BetaWorkersVersionsCreateRequestExportsValueWorkerCache;
@@ -8877,15 +11151,24 @@ export type ScriptsVersionsGetResponseResourcesScriptRuntimeExportsValue =
   | ScriptsVersionsGetResponseResourcesScriptRuntimeExportsValueWorkersDurableObjectRenamedExport
   | ScriptsVersionsGetResponseResourcesScriptRuntimeExportsValueWorkersDurableObjectTransferredExport
   | ScriptsVersionsGetResponseResourcesScriptRuntimeExportsValueWorkersDurableObjectExpectingTransferExport;
+const ScriptsVersionsGetResponseResourcesScriptRuntimeExportsValue = /*@__PURE__*/ __L.at(__c48, 5);
+
 export type ScriptsVersionsGetResponseResourcesScriptRuntimeExportsMap = {
   [key: string]: ScriptsVersionsGetResponseResourcesScriptRuntimeExportsValue | undefined;
 };
+const ScriptsVersionsGetResponseResourcesScriptRuntimeExportsMap = /*@__PURE__*/ __L.at(
+  __c48,
+  6,
+) as any as S.Schema<ScriptsVersionsGetResponseResourcesScriptRuntimeExportsMap>;
+
 export type ScriptsVersionsGetResponseResourcesScriptRuntimeLimits =
   ScriptsVersionsCreateResponseResourcesScriptRuntimeLimits;
 export type ScriptsVersionsGetResponseResourcesScriptRuntimeUsageModel =
   | "bundled"
   | "unbound"
   | "standard";
+const ScriptsVersionsGetResponseResourcesScriptRuntimeUsageModel = S.String;
+
 export interface ScriptsVersionsGetResponseResourcesScriptRuntime {
   /** Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker. */
   compatibilityDate?: string | null;
@@ -8901,6 +11184,11 @@ export interface ScriptsVersionsGetResponseResourcesScriptRuntime {
   usageModel?: ScriptsVersionsGetResponseResourcesScriptRuntimeUsageModel | null;
   containers?: BetaWorkersVersionsGetResponseContainersList | null;
 }
+const ScriptsVersionsGetResponseResourcesScriptRuntime = /*@__PURE__*/ __L.at(
+  __c48,
+  7,
+) as any as S.Schema<ScriptsVersionsGetResponseResourcesScriptRuntime>;
+
 export interface ScriptsVersionsGetResponseResources {
   /** List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings. */
   bindings: unknown;
@@ -8908,6 +11196,11 @@ export interface ScriptsVersionsGetResponseResources {
   /** Runtime configuration for the Worker. */
   scriptRuntime?: ScriptsVersionsGetResponseResourcesScriptRuntime | null;
 }
+const ScriptsVersionsGetResponseResources = /*@__PURE__*/ __L.at(
+  __c49,
+  0,
+) as any as S.Schema<ScriptsVersionsGetResponseResources>;
+
 export type ScriptsVersionsGetResponseMetadataSource =
   | "unknown"
   | "api"
@@ -8934,6 +11227,9 @@ export interface ScriptsVersionsGetResponseMetadata {
   /** The source of the version upload. */
   source?: ScriptsVersionsGetResponseMetadataSource | null;
 }
+const ScriptsVersionsGetResponseMetadata =
+  ScriptsVersionsCreateResponseMetadata as any as S.Schema<ScriptsVersionsGetResponseMetadata>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetScriptVersionResponse {
   resources: ScriptsVersionsGetResponseResources;
@@ -8943,15 +11239,30 @@ export interface GetScriptVersionResponse {
   /** Sequential version number. */
   number?: number | null;
 }
+const GetScriptVersionResponse = /*@__PURE__*/ __L.at(
+  __c49,
+  1,
+) as any as S.Schema<GetScriptVersionResponse>;
+
 export interface GetSubdomainRequest {
   /** Identifier. */
   accountId: string;
 }
+const GetSubdomainRequest = /*@__PURE__*/ __L.at(__c49, 2) as any as S.Schema<GetSubdomainRequest>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetSubdomainResponse {
   subdomain: string;
 }
+const GetSubdomainResponse = /*@__PURE__*/ __L.at(
+  __c49,
+  3,
+) as any as S.Schema<GetSubdomainResponse>;
+
 export type ObservabilityTelemetryKeysRequestDatasetsList = Array<string>;
+const ObservabilityTelemetryKeysRequestDatasetsList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<ObservabilityTelemetryKeysRequestDatasetsList>;
+
 export type ObservabilityTelemetryKeysRequestFiltersItemCase0FilterCombination =
   | "and"
   | "or"
@@ -9106,9 +11417,18 @@ export interface ObservabilityTelemetryKeysRequestFiltersItemWorkersObservabilit
 export type ObservabilityTelemetryKeysRequestFiltersItem =
   | ObservabilityTelemetryKeysRequestFiltersItemCase0
   | ObservabilityTelemetryKeysRequestFiltersItemWorkersObservabilityFilterLeaf;
+const ObservabilityTelemetryKeysRequestFiltersItem = /*@__PURE__*/ __L.at(__c49, 4);
+
 export type ObservabilityTelemetryKeysRequestFiltersList =
   Array<ObservabilityTelemetryKeysRequestFiltersItem>;
+const ObservabilityTelemetryKeysRequestFiltersList = /*@__PURE__*/ __L.at(
+  __c49,
+  5,
+) as any as S.Schema<ObservabilityTelemetryKeysRequestFiltersList>;
+
 export type ObservabilityTelemetryKeysRequestKeyNeedleValue = string | number | boolean;
+const ObservabilityTelemetryKeysRequestKeyNeedleValue = /*@__PURE__*/ __L.at(__c49, 6);
+
 export interface ObservabilityTelemetryKeysRequestKeyNeedle {
   /** The text or pattern to search for. */
   value: ObservabilityTelemetryKeysRequestKeyNeedleValue;
@@ -9117,7 +11437,14 @@ export interface ObservabilityTelemetryKeysRequestKeyNeedle {
   /** When true, performs a case-sensitive search. Defaults to case-insensitive. */
   matchCase?: boolean;
 }
+const ObservabilityTelemetryKeysRequestKeyNeedle = /*@__PURE__*/ __L.at(
+  __c49,
+  7,
+) as any as S.Schema<ObservabilityTelemetryKeysRequestKeyNeedle>;
+
 export type ObservabilityTelemetryKeysRequestNeedleValue = string | number | boolean;
+const ObservabilityTelemetryKeysRequestNeedleValue = /*@__PURE__*/ __L.at(__c50, 0);
+
 export interface ObservabilityTelemetryKeysRequestNeedle {
   /** The text or pattern to search for. */
   value: ObservabilityTelemetryKeysRequestNeedleValue;
@@ -9126,6 +11453,11 @@ export interface ObservabilityTelemetryKeysRequestNeedle {
   /** When true, performs a case-sensitive search. Defaults to case-insensitive. */
   matchCase?: boolean;
 }
+const ObservabilityTelemetryKeysRequestNeedle = /*@__PURE__*/ __L.at(
+  __c50,
+  1,
+) as any as S.Schema<ObservabilityTelemetryKeysRequestNeedle>;
+
 export interface KeysObservabilityTelemetryRequest {
   accountId: string;
   /** Leave this empty to use the default datasets */
@@ -9141,21 +11473,47 @@ export interface KeysObservabilityTelemetryRequest {
   needle?: ObservabilityTelemetryKeysRequestNeedle;
   to?: number;
 }
+const KeysObservabilityTelemetryRequest = /*@__PURE__*/ __L.at(
+  __c50,
+  2,
+) as any as S.Schema<KeysObservabilityTelemetryRequest>;
+
 export type ObservabilityTelemetryKeysResultItemType = "string" | "boolean" | "number";
+const ObservabilityTelemetryKeysResultItemType = S.String;
+
 export interface ObservabilityTelemetryKeysResultItem {
   key: string;
   lastSeenAt: number;
   type: ObservabilityTelemetryKeysResultItemType;
 }
+const ObservabilityTelemetryKeysResultItem = /*@__PURE__*/ __L.at(
+  __c50,
+  3,
+) as any as S.Schema<ObservabilityTelemetryKeysResultItem>;
+
 export type ObservabilityTelemetryKeysResultList = Array<ObservabilityTelemetryKeysResultItem>;
+const ObservabilityTelemetryKeysResultList = /*@__PURE__*/ __L.at(
+  __c50,
+  4,
+) as any as S.Schema<ObservabilityTelemetryKeysResultList>;
+
 export interface KeysObservabilityTelemetryResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result: ObservabilityTelemetryKeysResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
+const KeysObservabilityTelemetryResponse = /*@__PURE__*/ __L.at(
+  __c50,
+  5,
+) as any as S.Schema<KeysObservabilityTelemetryResponse>;
+
 export type BetaWorkersListRequestOrder = "asc" | "desc";
+const BetaWorkersListRequestOrder = S.String;
+
 export type BetaWorkersListRequestOrderBy = "deployed_on" | "updated_on" | "created_on" | "name";
+const BetaWorkersListRequestOrderBy = S.String;
+
 export interface ListBetaWorkersRequest {
   /** Identifier. */
   accountId: string;
@@ -9168,6 +11526,11 @@ export interface ListBetaWorkersRequest {
   /** Items per-page. */
   perPage?: number;
 }
+const ListBetaWorkersRequest = /*@__PURE__*/ __L.at(
+  __c50,
+  6,
+) as any as S.Schema<ListBetaWorkersRequest>;
+
 export type BetaWorkersListResultItemObservabilityIssues =
   BetaWorkersCreateResponseObservabilityIssues;
 export type BetaWorkersListResultItemObservabilityLogsDestinationsList = Array<string>;
@@ -9183,10 +11546,18 @@ export interface BetaWorkersListResultItemObservabilityLogs {
   /** Whether log persistence is enabled for the Worker. */
   persist?: boolean | null;
 }
+const BetaWorkersListResultItemObservabilityLogs =
+  BetaWorkersCreateResponseObservabilityLogs as any as S.Schema<BetaWorkersListResultItemObservabilityLogs>;
+
 export type BetaWorkersListResultItemObservabilityTracesDestinationsList = Array<string>;
+const BetaWorkersListResultItemObservabilityTracesDestinationsList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<BetaWorkersListResultItemObservabilityTracesDestinationsList>;
+
 export type BetaWorkersListResultItemObservabilityTracesPropagationPolicy =
   | "authenticated"
   | "accept";
+const BetaWorkersListResultItemObservabilityTracesPropagationPolicy = S.String;
+
 export interface BetaWorkersListResultItemObservabilityTraces {
   /** A list of destinations where traces will be exported to. */
   destinations?: BetaWorkersListResultItemObservabilityTracesDestinationsList | null;
@@ -9199,6 +11570,11 @@ export interface BetaWorkersListResultItemObservabilityTraces {
   /** Controls how inbound trace context (traceparent/tracestate) headers on incoming requests are handled. "authenticated" honors inbound trace context only when accompanied by a valid trace auth token. "accept" unconditionally accepts inbound trace context. Requires the trace propagation feature to be enabled. Returns null when the trace propagation feature is not enabled for the account. */
   propagationPolicy?: BetaWorkersListResultItemObservabilityTracesPropagationPolicy | null;
 }
+const BetaWorkersListResultItemObservabilityTraces = /*@__PURE__*/ __L.at(
+  __c50,
+  7,
+) as any as S.Schema<BetaWorkersListResultItemObservabilityTraces>;
+
 export interface BetaWorkersListResultItemObservability {
   /** Whether observability is enabled for the Worker. */
   enabled?: boolean | null;
@@ -9213,6 +11589,11 @@ export interface BetaWorkersListResultItemObservability {
   /** Trace settings for the Worker. */
   traces?: BetaWorkersListResultItemObservabilityTraces | null;
 }
+const BetaWorkersListResultItemObservability = /*@__PURE__*/ __L.at(
+  __c51,
+  0,
+) as any as S.Schema<BetaWorkersListResultItemObservability>;
+
 export type BetaWorkersListResultItemReferencesDispatchNamespaceOutboundsItem =
   BetaWorkersCreateResponseReferencesDispatchNamespaceOutboundsItem;
 export type BetaWorkersListResultItemReferencesDispatchNamespaceOutboundsList =
@@ -9245,12 +11626,21 @@ export interface BetaWorkersListResultItemReferences {
   /** Other Workers that reference the Worker using [service bindings](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/). */
   workers: BetaWorkersListResultItemReferencesWorkersList;
 }
+const BetaWorkersListResultItemReferences =
+  BetaWorkersCreateResponseReferences as any as S.Schema<BetaWorkersListResultItemReferences>;
+
 export type BetaWorkersListResultItemSubdomain = BetaWorkersCreateResponseSubdomain;
 export type BetaWorkersListResultItemTagsList = Array<string>;
+const BetaWorkersListResultItemTagsList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<BetaWorkersListResultItemTagsList>;
+
 export type BetaWorkersListResultItemTailConsumersItem =
   BetaWorkersCreateRequestPreviewsBaseConfigTailConsumersItem;
 export type BetaWorkersListResultItemTailConsumersList =
   Array<BetaWorkersCreateRequestPreviewsBaseConfigTailConsumersItem>;
+const BetaWorkersListResultItemTailConsumersList =
+  BetaWorkersCreateRequestPreviewsBaseConfigTailConsumersList as any as S.Schema<BetaWorkersListResultItemTailConsumersList>;
+
 export type BetaWorkersListResultItemPreviewsBaseConfigCacheOptions =
   BetaWorkersCreateResponsePreviewsBaseConfigCacheOptions;
 export type BetaWorkersListResultItemPreviewsBaseConfigEnvValue =
@@ -9258,6 +11648,9 @@ export type BetaWorkersListResultItemPreviewsBaseConfigEnvValue =
 export type BetaWorkersListResultItemPreviewsBaseConfigEnvMap = {
   [key: string]: BetaWorkersCreateRequestPreviewsBaseConfigEnvValue | undefined;
 };
+const BetaWorkersListResultItemPreviewsBaseConfigEnvMap =
+  BetaWorkersCreateRequestPreviewsBaseConfigEnvMap as any as S.Schema<BetaWorkersListResultItemPreviewsBaseConfigEnvMap>;
+
 export type BetaWorkersListResultItemPreviewsBaseConfigLimits =
   BetaWorkersCreateResponsePreviewsBaseConfigLimits;
 export type BetaWorkersListResultItemPreviewsBaseConfigObservabilityIssues =
@@ -9276,11 +11669,19 @@ export interface BetaWorkersListResultItemPreviewsBaseConfigObservabilityLogs {
   /** Whether log persistence is enabled for the Worker. */
   persist?: boolean | null;
 }
+const BetaWorkersListResultItemPreviewsBaseConfigObservabilityLogs =
+  BetaWorkersCreateResponsePreviewsBaseConfigObservabilityLogs as any as S.Schema<BetaWorkersListResultItemPreviewsBaseConfigObservabilityLogs>;
+
 export type BetaWorkersListResultItemPreviewsBaseConfigObservabilityTracesDestinationsList =
   Array<string>;
+const BetaWorkersListResultItemPreviewsBaseConfigObservabilityTracesDestinationsList =
+  BetaWorkersCreateRequestPreviewsBaseConfigObservabilityLogsDestinationsList as any as S.Schema<BetaWorkersListResultItemPreviewsBaseConfigObservabilityTracesDestinationsList>;
+
 export type BetaWorkersListResultItemPreviewsBaseConfigObservabilityTracesPropagationPolicy =
   | "authenticated"
   | "accept";
+const BetaWorkersListResultItemPreviewsBaseConfigObservabilityTracesPropagationPolicy = S.String;
+
 export interface BetaWorkersListResultItemPreviewsBaseConfigObservabilityTraces {
   /** A list of destinations where traces will be exported to. */
   destinations?: BetaWorkersListResultItemPreviewsBaseConfigObservabilityTracesDestinationsList | null;
@@ -9293,6 +11694,11 @@ export interface BetaWorkersListResultItemPreviewsBaseConfigObservabilityTraces 
   /** Controls how inbound trace context (traceparent/tracestate) headers on incoming requests are handled. "authenticated" honors inbound trace context only when accompanied by a valid trace auth token. "accept" unconditionally accepts inbound trace context. Requires the trace propagation feature to be enabled. Returns null when the trace propagation feature is not enabled for the account. */
   propagationPolicy?: BetaWorkersListResultItemPreviewsBaseConfigObservabilityTracesPropagationPolicy | null;
 }
+const BetaWorkersListResultItemPreviewsBaseConfigObservabilityTraces = /*@__PURE__*/ __L.at(
+  __c51,
+  1,
+) as any as S.Schema<BetaWorkersListResultItemPreviewsBaseConfigObservabilityTraces>;
+
 export interface BetaWorkersListResultItemPreviewsBaseConfigObservability {
   /** Whether observability is enabled for the Worker. */
   enabled?: boolean | null;
@@ -9307,6 +11713,11 @@ export interface BetaWorkersListResultItemPreviewsBaseConfigObservability {
   /** Trace settings for the Worker. */
   traces?: BetaWorkersListResultItemPreviewsBaseConfigObservabilityTraces | null;
 }
+const BetaWorkersListResultItemPreviewsBaseConfigObservability = /*@__PURE__*/ __L.at(
+  __c51,
+  2,
+) as any as S.Schema<BetaWorkersListResultItemPreviewsBaseConfigObservability>;
+
 export type BetaWorkersListResultItemPreviewsBaseConfigPlacementModeMode = "smart";
 export interface BetaWorkersListResultItemPreviewsBaseConfigPlacementMode {
   /** Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
@@ -9367,10 +11778,15 @@ export type BetaWorkersListResultItemPreviewsBaseConfigPlacement =
   | BetaWorkersListResultItemPreviewsBaseConfigPlacementCase5
   | BetaWorkersListResultItemPreviewsBaseConfigPlacementCase6
   | BetaWorkersListResultItemPreviewsBaseConfigPlacementCase7;
+const BetaWorkersListResultItemPreviewsBaseConfigPlacement = /*@__PURE__*/ __L.at(__c51, 3);
+
 export type BetaWorkersListResultItemPreviewsBaseConfigTailConsumersItem =
   BetaWorkersCreateRequestPreviewsBaseConfigTailConsumersItem;
 export type BetaWorkersListResultItemPreviewsBaseConfigTailConsumersList =
   Array<BetaWorkersCreateRequestPreviewsBaseConfigTailConsumersItem>;
+const BetaWorkersListResultItemPreviewsBaseConfigTailConsumersList =
+  BetaWorkersCreateRequestPreviewsBaseConfigTailConsumersList as any as S.Schema<BetaWorkersListResultItemPreviewsBaseConfigTailConsumersList>;
+
 export interface BetaWorkersListResultItemPreviewsBaseConfig {
   /** Cache options used when creating new Previews. */
   cacheOptions?: BetaWorkersCreateResponsePreviewsBaseConfigCacheOptions | null;
@@ -9387,6 +11803,11 @@ export interface BetaWorkersListResultItemPreviewsBaseConfig {
   /** Other Workers that should consume logs from newly created Previews. */
   tailConsumers?: BetaWorkersListResultItemPreviewsBaseConfigTailConsumersList | null;
 }
+const BetaWorkersListResultItemPreviewsBaseConfig = /*@__PURE__*/ __L.at(
+  __c51,
+  4,
+) as any as S.Schema<BetaWorkersListResultItemPreviewsBaseConfig>;
+
 export interface BetaWorkersListResultItem {
   /** Immutable ID of the Worker. */
   id: string;
@@ -9413,13 +11834,28 @@ export interface BetaWorkersListResultItem {
   /** Template configuration used when creating new Previews for this Worker. */
   previewsBaseConfig?: BetaWorkersListResultItemPreviewsBaseConfig | null;
 }
+const BetaWorkersListResultItem = /*@__PURE__*/ __L.at(
+  __c51,
+  5,
+) as any as S.Schema<BetaWorkersListResultItem>;
+
 export type BetaWorkersListResultList = Array<BetaWorkersListResultItem>;
+const BetaWorkersListResultList = /*@__PURE__*/ __L.at(
+  __c51,
+  6,
+) as any as S.Schema<BetaWorkersListResultList>;
+
 export interface ListBetaWorkersResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result: BetaWorkersListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
+const ListBetaWorkersResponse = /*@__PURE__*/ __L.at(
+  __c51,
+  7,
+) as any as S.Schema<ListBetaWorkersResponse>;
+
 export interface ListBetaWorkerVersionsRequest {
   /** Identifier. */
   accountId: string;
@@ -9430,7 +11866,15 @@ export interface ListBetaWorkerVersionsRequest {
   /** Items per-page. */
   perPage?: number;
 }
+const ListBetaWorkerVersionsRequest = /*@__PURE__*/ __L.at(
+  __c52,
+  0,
+) as any as S.Schema<ListBetaWorkerVersionsRequest>;
+
 export type BetaWorkersVersionsListResultItemUrlsList = Array<string>;
+const BetaWorkersVersionsListResultItemUrlsList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<BetaWorkersVersionsListResultItemUrlsList>;
+
 export type BetaWorkersVersionsListResultItemAnnotations =
   BetaWorkersVersionsCreateResponseAnnotations;
 export type BetaWorkersVersionsListResultItemAssetsConfigHtmlHandling =
@@ -9438,14 +11882,20 @@ export type BetaWorkersVersionsListResultItemAssetsConfigHtmlHandling =
   | "force-trailing-slash"
   | "drop-trailing-slash"
   | "none";
+const BetaWorkersVersionsListResultItemAssetsConfigHtmlHandling = S.String;
+
 export type BetaWorkersVersionsListResultItemAssetsConfigNotFoundHandling =
   | "none"
   | "404-page"
   | "single-page-application";
+const BetaWorkersVersionsListResultItemAssetsConfigNotFoundHandling = S.String;
+
 export type BetaWorkersVersionsListResultItemAssetsConfigRunWorkerFirstCase0List = Array<string>;
 export type BetaWorkersVersionsListResultItemAssetsConfigRunWorkerFirst =
   | boolean
   | BetaWorkersVersionsListResultItemAssetsConfigRunWorkerFirstCase0List;
+const BetaWorkersVersionsListResultItemAssetsConfigRunWorkerFirst = /*@__PURE__*/ __L.at(__c52, 1);
+
 export interface BetaWorkersVersionsListResultItemAssetsConfig {
   /** The public URL path prefix under which assets are served. A null request value resets it to `/`; responses represent the root as `/`. All versions in a gradual deployment must use the same canonical value. To change it, first deploy the version containing the change at 100%. */
   basePath?: string | null;
@@ -9456,12 +11906,22 @@ export interface BetaWorkersVersionsListResultItemAssetsConfig {
   /** Contains a list path rules to control routing to either the Worker or assets. Glob (*) and negative (!) rules are supported. Rules must start with either '/' or '!/'. At least one non-negative rule must be provided, and negative rules have higher precedence than non-negative rules. */
   runWorkerFirst?: BetaWorkersVersionsListResultItemAssetsConfigRunWorkerFirst | null;
 }
+const BetaWorkersVersionsListResultItemAssetsConfig = /*@__PURE__*/ __L.at(
+  __c52,
+  2,
+) as any as S.Schema<BetaWorkersVersionsListResultItemAssetsConfig>;
+
 export interface BetaWorkersVersionsListResultItemAssets {
   /** Configuration for assets within a Worker. */
   config?: BetaWorkersVersionsListResultItemAssetsConfig | null;
   /** Token provided upon successful upload of all files from a registered manifest. */
   jwt?: string | null;
 }
+const BetaWorkersVersionsListResultItemAssets = /*@__PURE__*/ __L.at(
+  __c52,
+  3,
+) as any as S.Schema<BetaWorkersVersionsListResultItemAssets>;
+
 export type BetaWorkersVersionsListResultItemBindingsItemAIType = "ai";
 export interface BetaWorkersVersionsListResultItemBindingsItemAI {
   /** A JavaScript variable name for the binding. */
@@ -9921,15 +12381,28 @@ export type BetaWorkersVersionsListResultItemBindingsItem =
   | BetaWorkersVersionsListResultItemBindingsItemWasmModule
   | BetaWorkersVersionsListResultItemBindingsItemVPCService
   | BetaWorkersVersionsListResultItemBindingsItemVPCNetwork;
+const BetaWorkersVersionsListResultItemBindingsItem = /*@__PURE__*/ __L.at(__c52, 4);
+
 export type BetaWorkersVersionsListResultItemBindingsList =
   Array<BetaWorkersVersionsListResultItemBindingsItem>;
+const BetaWorkersVersionsListResultItemBindingsList = /*@__PURE__*/ __L.at(
+  __c52,
+  5,
+) as any as S.Schema<BetaWorkersVersionsListResultItemBindingsList>;
+
 export type BetaWorkersVersionsListResultItemCacheOptions =
   BetaWorkersCreateResponsePreviewsBaseConfigCacheOptions;
 export type BetaWorkersVersionsListResultItemCompatibilityFlagsList = Array<string>;
+const BetaWorkersVersionsListResultItemCompatibilityFlagsList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<BetaWorkersVersionsListResultItemCompatibilityFlagsList>;
+
 export type BetaWorkersVersionsListResultItemContainersItem =
   BetaWorkersVersionsCreateResponseContainersItem;
 export type BetaWorkersVersionsListResultItemContainersList =
   Array<BetaWorkersVersionsCreateResponseContainersItem>;
+const BetaWorkersVersionsListResultItemContainersList =
+  BetaWorkersVersionsCreateResponseContainersList as any as S.Schema<BetaWorkersVersionsListResultItemContainersList>;
+
 export type BetaWorkersVersionsListResultItemExportsValueWorkerType = "worker";
 export type BetaWorkersVersionsListResultItemExportsValueWorkerCache =
   BetaWorkersVersionsCreateRequestExportsValueWorkerCache;
@@ -10019,11 +12492,24 @@ export type BetaWorkersVersionsListResultItemExportsValue =
   | BetaWorkersVersionsListResultItemExportsValueWorkersDurableObjectRenamedExport
   | BetaWorkersVersionsListResultItemExportsValueWorkersDurableObjectTransferredExport
   | BetaWorkersVersionsListResultItemExportsValueWorkersDurableObjectExpectingTransferExport;
+const BetaWorkersVersionsListResultItemExportsValue = /*@__PURE__*/ __L.at(__c52, 6);
+
 export type BetaWorkersVersionsListResultItemExportsMap = {
   [key: string]: BetaWorkersVersionsListResultItemExportsValue | undefined;
 };
+const BetaWorkersVersionsListResultItemExportsMap = /*@__PURE__*/ __L.at(
+  __c52,
+  7,
+) as any as S.Schema<BetaWorkersVersionsListResultItemExportsMap>;
+
 export type BetaWorkersVersionsListResultItemExportsReconciliationCreatedList = Array<string>;
+const BetaWorkersVersionsListResultItemExportsReconciliationCreatedList =
+  BetaWorkersCreateRequestPreviewsBaseConfigObservabilityLogsDestinationsList as any as S.Schema<BetaWorkersVersionsListResultItemExportsReconciliationCreatedList>;
+
 export type BetaWorkersVersionsListResultItemExportsReconciliationDeletedList = Array<string>;
+const BetaWorkersVersionsListResultItemExportsReconciliationDeletedList =
+  BetaWorkersCreateRequestPreviewsBaseConfigObservabilityLogsDestinationsList as any as S.Schema<BetaWorkersVersionsListResultItemExportsReconciliationDeletedList>;
+
 export type BetaWorkersVersionsListResultItemExportsReconciliationInfoItemScenario =
   | "code_class_not_in_exports"
   | "provisioned_class_missing_from_config"
@@ -10058,8 +12544,13 @@ export type BetaWorkersVersionsListResultItemExportsReconciliationInfoItemScenar
   | "stale_tombstone"
   | "transfer_receive_already_applied"
   | "transfer_receive_cleanup_complete";
+const BetaWorkersVersionsListResultItemExportsReconciliationInfoItemScenario = S.String;
+
 export type BetaWorkersVersionsListResultItemExportsReconciliationInfoItemReferencingScriptsList =
   Array<string>;
+const BetaWorkersVersionsListResultItemExportsReconciliationInfoItemReferencingScriptsList =
+  BetaWorkersCreateRequestPreviewsBaseConfigObservabilityLogsDestinationsList as any as S.Schema<BetaWorkersVersionsListResultItemExportsReconciliationInfoItemReferencingScriptsList>;
+
 export interface BetaWorkersVersionsListResultItemExportsReconciliationInfoItem {
   /** The class name the info entry is about. */
   class: string;
@@ -10072,18 +12563,37 @@ export interface BetaWorkersVersionsListResultItemExportsReconciliationInfoItem 
   /** Other Workers in the account that still bind to the affected class. Advisory: while non-empty the tombstone is not yet safe to remove -- redeploy these Workers with bindings re-pointed first. */
   referencingScripts?: BetaWorkersVersionsListResultItemExportsReconciliationInfoItemReferencingScriptsList | null;
 }
+const BetaWorkersVersionsListResultItemExportsReconciliationInfoItem = /*@__PURE__*/ __L.at(
+  __c53,
+  0,
+) as any as S.Schema<BetaWorkersVersionsListResultItemExportsReconciliationInfoItem>;
+
 export type BetaWorkersVersionsListResultItemExportsReconciliationInfoList =
   Array<BetaWorkersVersionsListResultItemExportsReconciliationInfoItem>;
+const BetaWorkersVersionsListResultItemExportsReconciliationInfoList = /*@__PURE__*/ __L.at(
+  __c53,
+  1,
+) as any as S.Schema<BetaWorkersVersionsListResultItemExportsReconciliationInfoList>;
+
 export type BetaWorkersVersionsListResultItemExportsReconciliationRemovableEntriesList =
   Array<string>;
+const BetaWorkersVersionsListResultItemExportsReconciliationRemovableEntriesList =
+  BetaWorkersCreateRequestPreviewsBaseConfigObservabilityLogsDestinationsList as any as S.Schema<BetaWorkersVersionsListResultItemExportsReconciliationRemovableEntriesList>;
+
 export type BetaWorkersVersionsListResultItemExportsReconciliationRenamedItem =
   BetaWorkersVersionsCreateResponseExportsReconciliationRenamedItem;
 export type BetaWorkersVersionsListResultItemExportsReconciliationRenamedList =
   Array<BetaWorkersVersionsCreateResponseExportsReconciliationRenamedItem>;
+const BetaWorkersVersionsListResultItemExportsReconciliationRenamedList =
+  BetaWorkersVersionsCreateResponseExportsReconciliationRenamedList as any as S.Schema<BetaWorkersVersionsListResultItemExportsReconciliationRenamedList>;
+
 export type BetaWorkersVersionsListResultItemExportsReconciliationTransferPendingItem =
   BetaWorkersVersionsCreateResponseExportsReconciliationTransferPendingItem;
 export type BetaWorkersVersionsListResultItemExportsReconciliationTransferPendingList =
   Array<BetaWorkersVersionsCreateResponseExportsReconciliationTransferPendingItem>;
+const BetaWorkersVersionsListResultItemExportsReconciliationTransferPendingList =
+  BetaWorkersVersionsCreateResponseExportsReconciliationTransferPendingList as any as S.Schema<BetaWorkersVersionsListResultItemExportsReconciliationTransferPendingList>;
+
 export type BetaWorkersVersionsListResultItemExportsReconciliationTransferredItemPhase =
   "committed";
 export interface BetaWorkersVersionsListResultItemExportsReconciliationTransferredItem {
@@ -10096,7 +12606,13 @@ export interface BetaWorkersVersionsListResultItemExportsReconciliationTransferr
 }
 export type BetaWorkersVersionsListResultItemExportsReconciliationTransferredList =
   Array<BetaWorkersVersionsListResultItemExportsReconciliationTransferredItem>;
+const BetaWorkersVersionsListResultItemExportsReconciliationTransferredList =
+  BetaWorkersVersionsCreateResponseExportsReconciliationTransferredList as any as S.Schema<BetaWorkersVersionsListResultItemExportsReconciliationTransferredList>;
+
 export type BetaWorkersVersionsListResultItemExportsReconciliationUpdatedList = Array<string>;
+const BetaWorkersVersionsListResultItemExportsReconciliationUpdatedList =
+  BetaWorkersCreateRequestPreviewsBaseConfigObservabilityLogsDestinationsList as any as S.Schema<BetaWorkersVersionsListResultItemExportsReconciliationUpdatedList>;
+
 export type BetaWorkersVersionsListResultItemExportsReconciliationWarningsItemScenario =
   | "code_class_not_in_exports"
   | "provisioned_class_missing_from_config"
@@ -10143,6 +12659,9 @@ export interface BetaWorkersVersionsListResultItemExportsReconciliationWarningsI
 }
 export type BetaWorkersVersionsListResultItemExportsReconciliationWarningsList =
   Array<BetaWorkersVersionsListResultItemExportsReconciliationWarningsItem>;
+const BetaWorkersVersionsListResultItemExportsReconciliationWarningsList =
+  BetaWorkersVersionsCreateResponseExportsReconciliationWarningsList as any as S.Schema<BetaWorkersVersionsListResultItemExportsReconciliationWarningsList>;
+
 export interface BetaWorkersVersionsListResultItemExportsReconciliation {
   /** Class names for which a new namespace was provisioned. */
   created: BetaWorkersVersionsListResultItemExportsReconciliationCreatedList;
@@ -10163,6 +12682,11 @@ export interface BetaWorkersVersionsListResultItemExportsReconciliation {
   /** Non-blocking warnings. See `exports_reconciliation_warning`. */
   warnings: BetaWorkersVersionsListResultItemExportsReconciliationWarningsList;
 }
+const BetaWorkersVersionsListResultItemExportsReconciliation = /*@__PURE__*/ __L.at(
+  __c53,
+  2,
+) as any as S.Schema<BetaWorkersVersionsListResultItemExportsReconciliation>;
+
 export type BetaWorkersVersionsListResultItemLimits = BetaWorkersVersionsCreateResponseLimits;
 export type BetaWorkersVersionsListResultItemMigrationsSingleStepMigrationDeletedClassesList =
   Array<string>;
@@ -10233,14 +12757,22 @@ export interface BetaWorkersVersionsListResultItemMigrationsWorkersMultipleStepM
 export type BetaWorkersVersionsListResultItemMigrations =
   | BetaWorkersVersionsListResultItemMigrationsSingleStepMigration
   | BetaWorkersVersionsListResultItemMigrationsWorkersMultipleStepMigrations;
+const BetaWorkersVersionsListResultItemMigrations = /*@__PURE__*/ __L.at(__c53, 3);
+
 export type BetaWorkersVersionsListResultItemModulesItem =
   BetaWorkersVersionsCreateRequestModulesItem;
 export type BetaWorkersVersionsListResultItemModulesList =
   Array<BetaWorkersVersionsCreateRequestModulesItem>;
+const BetaWorkersVersionsListResultItemModulesList =
+  BetaWorkersVersionsCreateRequestModulesList as any as S.Schema<BetaWorkersVersionsListResultItemModulesList>;
+
 export type BetaWorkersVersionsListResultItemPackageDependenciesItem =
   BetaWorkersVersionsCreateRequestPackageDependenciesItem;
 export type BetaWorkersVersionsListResultItemPackageDependenciesList =
   Array<BetaWorkersVersionsCreateRequestPackageDependenciesItem>;
+const BetaWorkersVersionsListResultItemPackageDependenciesList =
+  BetaWorkersVersionsCreateRequestPackageDependenciesList as any as S.Schema<BetaWorkersVersionsListResultItemPackageDependenciesList>;
+
 export type BetaWorkersVersionsListResultItemPlacementModeMode = "smart";
 export interface BetaWorkersVersionsListResultItemPlacementMode {
   /** Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
@@ -10301,7 +12833,11 @@ export type BetaWorkersVersionsListResultItemPlacement =
   | BetaWorkersVersionsListResultItemPlacementCase5
   | BetaWorkersVersionsListResultItemPlacementCase6
   | BetaWorkersVersionsListResultItemPlacementCase7;
+const BetaWorkersVersionsListResultItemPlacement = /*@__PURE__*/ __L.at(__c53, 4);
+
 export type BetaWorkersVersionsListResultItemUsageModel = "standard" | "bundled" | "unbound";
+const BetaWorkersVersionsListResultItemUsageModel = S.String;
+
 export interface BetaWorkersVersionsListResultItem {
   /** Version identifier. */
   id: string;
@@ -10354,13 +12890,28 @@ export interface BetaWorkersVersionsListResultItem {
   /** Usage model for the version. */
   usageModel?: BetaWorkersVersionsListResultItemUsageModel | null;
 }
+const BetaWorkersVersionsListResultItem = /*@__PURE__*/ __L.at(
+  __c53,
+  5,
+) as any as S.Schema<BetaWorkersVersionsListResultItem>;
+
 export type BetaWorkersVersionsListResultList = Array<BetaWorkersVersionsListResultItem>;
+const BetaWorkersVersionsListResultList = /*@__PURE__*/ __L.at(
+  __c53,
+  6,
+) as any as S.Schema<BetaWorkersVersionsListResultList>;
+
 export interface ListBetaWorkerVersionsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result: BetaWorkersVersionsListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
+const ListBetaWorkerVersionsResponse = /*@__PURE__*/ __L.at(
+  __c53,
+  7,
+) as any as S.Schema<ListBetaWorkerVersionsResponse>;
+
 export interface ListDomainsRequest {
   /** Identifier. */
   accountId: string;
@@ -10375,6 +12926,8 @@ export interface ListDomainsRequest {
   /** Name of the zone containing the domain hostname. */
   zoneName?: string;
 }
+const ListDomainsRequest = /*@__PURE__*/ __L.at(__c54, 0) as any as S.Schema<ListDomainsRequest>;
+
 export interface DomainsListResultItem {
   /** Immutable ID of the domain. */
   id: string;
@@ -10393,15 +12946,31 @@ export interface DomainsListResultItem {
   /** Whether Worker Previews are served on this custom domain. */
   previewsEnabled?: boolean | null;
 }
+const DomainsListResultItem = /*@__PURE__*/ __L.at(
+  __c54,
+  1,
+) as any as S.Schema<DomainsListResultItem>;
+
 export type DomainsListResultList = Array<DomainsListResultItem>;
+const DomainsListResultList = /*@__PURE__*/ __L.at(
+  __c54,
+  2,
+) as any as S.Schema<DomainsListResultList>;
+
 export interface ListDomainsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result: DomainsListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
+const ListDomainsResponse = /*@__PURE__*/ __L.at(__c54, 3) as any as S.Schema<ListDomainsResponse>;
+
 export type ObservabilityDestinationsListRequestOrder = "asc" | "desc";
+const ObservabilityDestinationsListRequestOrder = S.String;
+
 export type ObservabilityDestinationsListRequestOrderBy = "created" | "updated";
+const ObservabilityDestinationsListRequestOrderBy = S.String;
+
 export interface ListObservabilityDestinationsRequest {
   accountId: string;
   order?: ObservabilityDestinationsListRequestOrder | (string & {});
@@ -10409,19 +12978,38 @@ export interface ListObservabilityDestinationsRequest {
   page?: number;
   perPage?: number;
 }
+const ListObservabilityDestinationsRequest = /*@__PURE__*/ __L.at(
+  __c54,
+  4,
+) as any as S.Schema<ListObservabilityDestinationsRequest>;
+
 export type ObservabilityDestinationsListResultItemConfigurationHeadersMap = {
   [key: string]: string | undefined;
 };
+const ObservabilityDestinationsListResultItemConfigurationHeadersMap = /*@__PURE__*/ __L.at(
+  __c54,
+  5,
+) as any as S.Schema<ObservabilityDestinationsListResultItemConfigurationHeadersMap>;
+
 export interface ObservabilityDestinationsListResultItemConfigurationJobStatus {
   errorMessage: string;
   lastComplete: string;
   lastError: string;
 }
+const ObservabilityDestinationsListResultItemConfigurationJobStatus = /*@__PURE__*/ __L.at(
+  __c54,
+  6,
+) as any as S.Schema<ObservabilityDestinationsListResultItemConfigurationJobStatus>;
+
 export type ObservabilityDestinationsListResultItemConfigurationLogpushDataset =
   | "opentelemetry-traces"
   | "opentelemetry-logs"
   | "opentelemetry-metrics";
+const ObservabilityDestinationsListResultItemConfigurationLogpushDataset = S.String;
+
 export type ObservabilityDestinationsListResultItemConfigurationType = "logpush";
+const ObservabilityDestinationsListResultItemConfigurationType = S.String;
+
 export interface ObservabilityDestinationsListResultItemConfiguration {
   destinationConf: string;
   headers: ObservabilityDestinationsListResultItemConfigurationHeadersMap;
@@ -10430,7 +13018,15 @@ export interface ObservabilityDestinationsListResultItemConfiguration {
   type: ObservabilityDestinationsListResultItemConfigurationType;
   url: string;
 }
+const ObservabilityDestinationsListResultItemConfiguration = /*@__PURE__*/ __L.at(
+  __c54,
+  7,
+) as any as S.Schema<ObservabilityDestinationsListResultItemConfiguration>;
+
 export type ObservabilityDestinationsListResultItemScriptsList = Array<string>;
+const ObservabilityDestinationsListResultItemScriptsList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<ObservabilityDestinationsListResultItemScriptsList>;
+
 export interface ObservabilityDestinationsListResultItem {
   configuration: ObservabilityDestinationsListResultItemConfiguration;
   enabled: boolean;
@@ -10438,16 +13034,35 @@ export interface ObservabilityDestinationsListResultItem {
   scripts: ObservabilityDestinationsListResultItemScriptsList;
   slug: string;
 }
+const ObservabilityDestinationsListResultItem = /*@__PURE__*/ __L.at(
+  __c55,
+  0,
+) as any as S.Schema<ObservabilityDestinationsListResultItem>;
+
 export type ObservabilityDestinationsListResultList =
   Array<ObservabilityDestinationsListResultItem>;
+const ObservabilityDestinationsListResultList = /*@__PURE__*/ __L.at(
+  __c55,
+  1,
+) as any as S.Schema<ObservabilityDestinationsListResultList>;
+
 export interface ListObservabilityDestinationsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result: ObservabilityDestinationsListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
+const ListObservabilityDestinationsResponse = /*@__PURE__*/ __L.at(
+  __c55,
+  2,
+) as any as S.Schema<ListObservabilityDestinationsResponse>;
+
 export type ObservabilityQueriesListRequestOrder = "asc" | "desc";
+const ObservabilityQueriesListRequestOrder = S.String;
+
 export type ObservabilityQueriesListRequestOrderBy = "created" | "updated";
+const ObservabilityQueriesListRequestOrderBy = S.String;
+
 export interface ListObservabilityQueriesRequest {
   accountId: string;
   order?: ObservabilityQueriesListRequestOrder | (string & {});
@@ -10455,6 +13070,11 @@ export interface ListObservabilityQueriesRequest {
   page?: number;
   perPage?: number;
 }
+const ListObservabilityQueriesRequest = /*@__PURE__*/ __L.at(
+  __c55,
+  3,
+) as any as S.Schema<ListObservabilityQueriesRequest>;
+
 export type ObservabilityQueriesListResultItemParametersCalculationsItemCase0Operator =
   | "count"
   | "COUNT";
@@ -10518,14 +13138,26 @@ export interface ObservabilityQueriesListResultItemParametersCalculationsItemCas
 export type ObservabilityQueriesListResultItemParametersCalculationsItem =
   | ObservabilityQueriesListResultItemParametersCalculationsItemCase0
   | ObservabilityQueriesListResultItemParametersCalculationsItemCase1;
+const ObservabilityQueriesListResultItemParametersCalculationsItem = /*@__PURE__*/ __L.at(__c55, 4);
+
 export type ObservabilityQueriesListResultItemParametersCalculationsList =
   Array<ObservabilityQueriesListResultItemParametersCalculationsItem>;
+const ObservabilityQueriesListResultItemParametersCalculationsList = /*@__PURE__*/ __L.at(
+  __c55,
+  5,
+) as any as S.Schema<ObservabilityQueriesListResultItemParametersCalculationsList>;
+
 export type ObservabilityQueriesListResultItemParametersDatasetsList = Array<string>;
+const ObservabilityQueriesListResultItemParametersDatasetsList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<ObservabilityQueriesListResultItemParametersDatasetsList>;
+
 export type ObservabilityQueriesListResultItemParametersFilterCombination =
   | "and"
   | "or"
   | "AND"
   | "OR";
+const ObservabilityQueriesListResultItemParametersFilterCombination = S.String;
+
 export type ObservabilityQueriesListResultItemParametersFiltersItemCase0FilterCombination =
   | "and"
   | "or"
@@ -10595,8 +13227,15 @@ export interface ObservabilityQueriesListResultItemParametersFiltersItemWorkersO
 export type ObservabilityQueriesListResultItemParametersFiltersItem =
   | ObservabilityQueriesListResultItemParametersFiltersItemCase0
   | ObservabilityQueriesListResultItemParametersFiltersItemWorkersObservabilityFilterLeaf;
+const ObservabilityQueriesListResultItemParametersFiltersItem = /*@__PURE__*/ __L.at(__c55, 6);
+
 export type ObservabilityQueriesListResultItemParametersFiltersList =
   Array<ObservabilityQueriesListResultItemParametersFiltersItem>;
+const ObservabilityQueriesListResultItemParametersFiltersList = /*@__PURE__*/ __L.at(
+  __c55,
+  7,
+) as any as S.Schema<ObservabilityQueriesListResultItemParametersFiltersList>;
+
 export type ObservabilityQueriesListResultItemParametersGroupBysItemType =
   | "string"
   | "number"
@@ -10607,6 +13246,9 @@ export interface ObservabilityQueriesListResultItemParametersGroupBysItem {
 }
 export type ObservabilityQueriesListResultItemParametersGroupBysList =
   Array<ObservabilityQueriesListResultItemParametersGroupBysItem>;
+const ObservabilityQueriesListResultItemParametersGroupBysList =
+  ObservabilityQueriesCreateResponseParametersGroupBysList as any as S.Schema<ObservabilityQueriesListResultItemParametersGroupBysList>;
+
 export type ObservabilityQueriesListResultItemParametersHavingsItemOperation =
   | "eq"
   | "neq"
@@ -10621,12 +13263,22 @@ export interface ObservabilityQueriesListResultItemParametersHavingsItem {
 }
 export type ObservabilityQueriesListResultItemParametersHavingsList =
   Array<ObservabilityQueriesListResultItemParametersHavingsItem>;
+const ObservabilityQueriesListResultItemParametersHavingsList =
+  ObservabilityQueriesCreateRequestParametersHavingsList as any as S.Schema<ObservabilityQueriesListResultItemParametersHavingsList>;
+
 export type ObservabilityQueriesListResultItemParametersNeedleValue = string | number | boolean;
+const ObservabilityQueriesListResultItemParametersNeedleValue = /*@__PURE__*/ __L.at(__c56, 0);
+
 export interface ObservabilityQueriesListResultItemParametersNeedle {
   value: ObservabilityQueriesListResultItemParametersNeedleValue;
   isRegex?: boolean | null;
   matchCase?: boolean | null;
 }
+const ObservabilityQueriesListResultItemParametersNeedle = /*@__PURE__*/ __L.at(
+  __c56,
+  1,
+) as any as S.Schema<ObservabilityQueriesListResultItemParametersNeedle>;
+
 export type ObservabilityQueriesListResultItemParametersOrderByOrder = "asc" | "desc";
 export interface ObservabilityQueriesListResultItemParametersOrderBy {
   /** Configure which Calculation to order the results by. */
@@ -10634,6 +13286,9 @@ export interface ObservabilityQueriesListResultItemParametersOrderBy {
   /** Set the order of the results */
   order?: ObservabilityQueriesListResultItemParametersOrderByOrder | null;
 }
+const ObservabilityQueriesListResultItemParametersOrderBy =
+  ObservabilityQueriesCreateResponseParametersOrderBy as any as S.Schema<ObservabilityQueriesListResultItemParametersOrderBy>;
+
 export interface ObservabilityQueriesListResultItemParameters {
   /** Create Calculations to compute as part of the query. */
   calculations?: ObservabilityQueriesListResultItemParametersCalculationsList | null;
@@ -10654,6 +13309,11 @@ export interface ObservabilityQueriesListResultItemParameters {
   /** Configure the order of the results returned by the query. */
   orderBy?: ObservabilityQueriesListResultItemParametersOrderBy | null;
 }
+const ObservabilityQueriesListResultItemParameters = /*@__PURE__*/ __L.at(
+  __c56,
+  2,
+) as any as S.Schema<ObservabilityQueriesListResultItemParameters>;
+
 export interface ObservabilityQueriesListResultItem {
   id: string;
   /** If the query wasn't explcitly saved */
@@ -10667,17 +13327,34 @@ export interface ObservabilityQueriesListResultItem {
   updated: string;
   updatedBy: string;
 }
+const ObservabilityQueriesListResultItem = /*@__PURE__*/ __L.at(
+  __c56,
+  3,
+) as any as S.Schema<ObservabilityQueriesListResultItem>;
+
 export type ObservabilityQueriesListResultList = Array<ObservabilityQueriesListResultItem>;
+const ObservabilityQueriesListResultList = /*@__PURE__*/ __L.at(
+  __c56,
+  4,
+) as any as S.Schema<ObservabilityQueriesListResultList>;
+
 export interface ListObservabilityQueriesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result: ObservabilityQueriesListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
+const ListObservabilityQueriesResponse = /*@__PURE__*/ __L.at(
+  __c56,
+  5,
+) as any as S.Schema<ListObservabilityQueriesResponse>;
+
 export interface ListRoutesRequest {
   /** Identifier. */
   zoneId: string;
 }
+const ListRoutesRequest = /*@__PURE__*/ __L.at(__c56, 6) as any as S.Schema<ListRoutesRequest>;
+
 export interface RoutesListResultItem {
   /** Identifier. */
   id: string;
@@ -10686,13 +13363,25 @@ export interface RoutesListResultItem {
   /** Name of the script to run if the route matches. */
   script?: string | null;
 }
+const RoutesListResultItem = /*@__PURE__*/ __L.at(
+  __c56,
+  7,
+) as any as S.Schema<RoutesListResultItem>;
+
 export type RoutesListResultList = Array<RoutesListResultItem>;
+const RoutesListResultList = /*@__PURE__*/ __L.at(
+  __c57,
+  0,
+) as any as S.Schema<RoutesListResultList>;
+
 export interface ListRoutesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result: RoutesListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
+const ListRoutesResponse = /*@__PURE__*/ __L.at(__c57, 1) as any as S.Schema<ListRoutesResponse>;
+
 export interface ListScriptDeploymentsRequest {
   /** Identifier. */
   accountId: string;
@@ -10707,11 +13396,21 @@ export interface ListScriptDeploymentsRequest {
   /** End of the deployment creation time range, inclusive. */
   until?: string;
 }
+const ListScriptDeploymentsRequest = /*@__PURE__*/ __L.at(
+  __c57,
+  2,
+) as any as S.Schema<ListScriptDeploymentsRequest>;
+
 export type ScriptsDeploymentsListResponseDeploymentsItemStrategy = "percentage";
+const ScriptsDeploymentsListResponseDeploymentsItemStrategy = S.String;
+
 export type ScriptsDeploymentsListResponseDeploymentsItemVersionsItem =
   ScriptsDeploymentsCreateRequestVersionsItem;
 export type ScriptsDeploymentsListResponseDeploymentsItemVersionsList =
   Array<ScriptsDeploymentsCreateRequestVersionsItem>;
+const ScriptsDeploymentsListResponseDeploymentsItemVersionsList =
+  ScriptsDeploymentsCreateRequestVersionsList as any as S.Schema<ScriptsDeploymentsListResponseDeploymentsItemVersionsList>;
+
 export type ScriptsDeploymentsListResponseDeploymentsItemAnnotations =
   ScriptsDeploymentsCreateResponseAnnotations;
 export interface ScriptsDeploymentsListResponseDeploymentsItem {
@@ -10724,21 +13423,41 @@ export interface ScriptsDeploymentsListResponseDeploymentsItem {
   annotations?: ScriptsDeploymentsCreateResponseAnnotations | null;
   authorEmail?: string | null;
 }
+const ScriptsDeploymentsListResponseDeploymentsItem = /*@__PURE__*/ __L.at(
+  __c57,
+  3,
+) as any as S.Schema<ScriptsDeploymentsListResponseDeploymentsItem>;
+
 export type ScriptsDeploymentsListResponseDeploymentsList =
   Array<ScriptsDeploymentsListResponseDeploymentsItem>;
+const ScriptsDeploymentsListResponseDeploymentsList = /*@__PURE__*/ __L.at(
+  __c57,
+  4,
+) as any as S.Schema<ScriptsDeploymentsListResponseDeploymentsList>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface ListScriptDeploymentsResponse {
   deployments: ScriptsDeploymentsListResponseDeploymentsList;
 }
+const ListScriptDeploymentsResponse = /*@__PURE__*/ __L.at(
+  __c57,
+  5,
+) as any as S.Schema<ListScriptDeploymentsResponse>;
+
 export interface ListScriptsRequest {
   /** Identifier. */
   accountId: string;
   /** Filter scripts by tags. Format: comma-separated list of tag:allowed pairs where allowed is 'yes' or 'no'. */
   tags?: string;
 }
+const ListScriptsRequest = /*@__PURE__*/ __L.at(__c57, 6) as any as S.Schema<ListScriptsRequest>;
+
 export type ScriptsListResultItemCacheOptions =
   BetaWorkersCreateResponsePreviewsBaseConfigCacheOptions;
 export type ScriptsListResultItemCompatibilityFlagsList = Array<string>;
+const ScriptsListResultItemCompatibilityFlagsList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<ScriptsListResultItemCompatibilityFlagsList>;
+
 export type ScriptsListResultItemExportsValueWorkerType = "worker";
 export type ScriptsListResultItemExportsValueWorkerCache =
   BetaWorkersVersionsCreateRequestExportsValueWorkerCache;
@@ -10824,18 +13543,41 @@ export type ScriptsListResultItemExportsValue =
   | ScriptsListResultItemExportsValueWorkersDurableObjectRenamedExport
   | ScriptsListResultItemExportsValueWorkersDurableObjectTransferredExport
   | ScriptsListResultItemExportsValueWorkersDurableObjectExpectingTransferExport;
+const ScriptsListResultItemExportsValue = /*@__PURE__*/ __L.at(__c57, 7);
+
 export type ScriptsListResultItemExportsMap = {
   [key: string]: ScriptsListResultItemExportsValue | undefined;
 };
+const ScriptsListResultItemExportsMap = /*@__PURE__*/ __L.at(
+  __c58,
+  0,
+) as any as S.Schema<ScriptsListResultItemExportsMap>;
+
 export type ScriptsListResultItemHandlersList = Array<string>;
+const ScriptsListResultItemHandlersList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<ScriptsListResultItemHandlersList>;
+
 export type ScriptsListResultItemNamedHandlersItemHandlersList = Array<string>;
+const ScriptsListResultItemNamedHandlersItemHandlersList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<ScriptsListResultItemNamedHandlersItemHandlersList>;
+
 export interface ScriptsListResultItemNamedHandlersItem {
   /** The names of handlers exported as part of the named export. */
   handlers?: ScriptsListResultItemNamedHandlersItemHandlersList | null;
   /** The name of the export. */
   name?: string | null;
 }
+const ScriptsListResultItemNamedHandlersItem = /*@__PURE__*/ __L.at(
+  __c58,
+  1,
+) as any as S.Schema<ScriptsListResultItemNamedHandlersItem>;
+
 export type ScriptsListResultItemNamedHandlersList = Array<ScriptsListResultItemNamedHandlersItem>;
+const ScriptsListResultItemNamedHandlersList = /*@__PURE__*/ __L.at(
+  __c58,
+  2,
+) as any as S.Schema<ScriptsListResultItemNamedHandlersList>;
+
 export type ScriptsListResultItemObservabilityIssues = BetaWorkersCreateResponseObservabilityIssues;
 export type ScriptsListResultItemObservabilityLogsDestinationsList = Array<string>;
 export interface ScriptsListResultItemObservabilityLogs {
@@ -10850,8 +13592,16 @@ export interface ScriptsListResultItemObservabilityLogs {
   /** Whether log persistence is enabled for the Worker. */
   persist?: boolean | null;
 }
+const ScriptsListResultItemObservabilityLogs =
+  ScriptsSettingsGetResponseObservabilityLogs as any as S.Schema<ScriptsListResultItemObservabilityLogs>;
+
 export type ScriptsListResultItemObservabilityTracesDestinationsList = Array<string>;
+const ScriptsListResultItemObservabilityTracesDestinationsList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<ScriptsListResultItemObservabilityTracesDestinationsList>;
+
 export type ScriptsListResultItemObservabilityTracesPropagationPolicy = "authenticated" | "accept";
+const ScriptsListResultItemObservabilityTracesPropagationPolicy = S.String;
+
 export interface ScriptsListResultItemObservabilityTraces {
   /** A list of destinations where traces will be exported to. */
   destinations?: ScriptsListResultItemObservabilityTracesDestinationsList | null;
@@ -10864,6 +13614,11 @@ export interface ScriptsListResultItemObservabilityTraces {
   /** Controls how inbound trace context (traceparent/tracestate) headers on incoming requests are handled. "authenticated" honors inbound trace context only when accompanied by a valid trace auth token. "accept" unconditionally accepts inbound trace context. Requires the trace propagation feature to be enabled. Returns null when the trace propagation feature is not enabled for the account. */
   propagationPolicy?: ScriptsListResultItemObservabilityTracesPropagationPolicy | null;
 }
+const ScriptsListResultItemObservabilityTraces = /*@__PURE__*/ __L.at(
+  __c58,
+  3,
+) as any as S.Schema<ScriptsListResultItemObservabilityTraces>;
+
 export interface ScriptsListResultItemObservability {
   /** Whether observability is enabled for the Worker. */
   enabled: boolean;
@@ -10878,6 +13633,11 @@ export interface ScriptsListResultItemObservability {
   /** Trace settings for the Worker. */
   traces?: ScriptsListResultItemObservabilityTraces | null;
 }
+const ScriptsListResultItemObservability = /*@__PURE__*/ __L.at(
+  __c58,
+  4,
+) as any as S.Schema<ScriptsListResultItemObservability>;
+
 export type ScriptsListResultItemPlacementCase0Mode = "smart";
 export type ScriptsListResultItemPlacementCase0Status =
   | "SUCCESS"
@@ -11008,19 +13768,36 @@ export type ScriptsListResultItemPlacement =
   | ScriptsListResultItemPlacementCase5
   | ScriptsListResultItemPlacementCase6
   | ScriptsListResultItemPlacementCase7;
+const ScriptsListResultItemPlacement = /*@__PURE__*/ __L.at(__c58, 5);
+
 export type ScriptsListResultItemPlacementMode = "smart" | "targeted";
+const ScriptsListResultItemPlacementMode = S.String;
+
 export type ScriptsListResultItemPlacementStatus =
   | "SUCCESS"
   | "UNSUPPORTED_APPLICATION"
   | "INSUFFICIENT_INVOCATIONS";
+const ScriptsListResultItemPlacementStatus = S.String;
+
 export type ScriptsListResultItemRoutesItem = RoutesListResultItem;
 export type ScriptsListResultItemRoutesList = Array<RoutesListResultItem>;
+const ScriptsListResultItemRoutesList =
+  RoutesListResultList as any as S.Schema<ScriptsListResultItemRoutesList>;
+
 export type ScriptsListResultItemTagsList = Array<string>;
+const ScriptsListResultItemTagsList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<ScriptsListResultItemTagsList>;
+
 export type ScriptsListResultItemTailConsumersItem =
   ScriptsScriptAndVersionSettingsGetResponseTailConsumersItem;
 export type ScriptsListResultItemTailConsumersList =
   Array<ScriptsScriptAndVersionSettingsGetResponseTailConsumersItem>;
+const ScriptsListResultItemTailConsumersList =
+  ScriptsScriptAndVersionSettingsGetResponseTailConsumersList as any as S.Schema<ScriptsListResultItemTailConsumersList>;
+
 export type ScriptsListResultItemUsageModel = "standard" | "bundled" | "unbound";
+const ScriptsListResultItemUsageModel = S.String;
+
 export interface ScriptsListResultItem {
   /** The name used to identify the script. */
   id?: string | null;
@@ -11069,19 +13846,36 @@ export interface ScriptsListResultItem {
   /** Usage model for the Worker invocations. */
   usageModel?: ScriptsListResultItemUsageModel | null;
 }
+const ScriptsListResultItem = /*@__PURE__*/ __L.at(
+  __c58,
+  6,
+) as any as S.Schema<ScriptsListResultItem>;
+
 export type ScriptsListResultList = Array<ScriptsListResultItem>;
+const ScriptsListResultList = /*@__PURE__*/ __L.at(
+  __c58,
+  7,
+) as any as S.Schema<ScriptsListResultList>;
+
 export interface ListScriptsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result: ScriptsListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
+const ListScriptsResponse = /*@__PURE__*/ __L.at(__c59, 0) as any as S.Schema<ListScriptsResponse>;
+
 export interface ListScriptSecretsRequest {
   /** Identifier. */
   accountId: string;
   /** Name of the script. */
   scriptName: string;
 }
+const ListScriptSecretsRequest = /*@__PURE__*/ __L.at(
+  __c59,
+  1,
+) as any as S.Schema<ListScriptSecretsRequest>;
+
 export type ScriptsSecretsListResultItemSecretTextType = "secret_text";
 export interface ScriptsSecretsListResultItemSecretText {
   /** A JavaScript variable name for the binding. */
@@ -11123,13 +13917,25 @@ export interface ScriptsSecretsListResultItemSecretKey {
 export type ScriptsSecretsListResultItem =
   | ScriptsSecretsListResultItemSecretText
   | ScriptsSecretsListResultItemSecretKey;
+const ScriptsSecretsListResultItem = /*@__PURE__*/ __L.at(__c59, 2);
+
 export type ScriptsSecretsListResultList = Array<ScriptsSecretsListResultItem>;
+const ScriptsSecretsListResultList = /*@__PURE__*/ __L.at(
+  __c59,
+  3,
+) as any as S.Schema<ScriptsSecretsListResultList>;
+
 export interface ListScriptSecretsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result: ScriptsSecretsListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
+const ListScriptSecretsResponse = /*@__PURE__*/ __L.at(
+  __c59,
+  4,
+) as any as S.Schema<ListScriptSecretsResponse>;
+
 export interface ListScriptVersionsRequest {
   /** Identifier. */
   accountId: string;
@@ -11142,6 +13948,11 @@ export interface ListScriptVersionsRequest {
   /** Items per-page. */
   perPage?: number;
 }
+const ListScriptVersionsRequest = /*@__PURE__*/ __L.at(
+  __c59,
+  5,
+) as any as S.Schema<ListScriptVersionsRequest>;
+
 export type ScriptsVersionsListResponseItemsItemMetadataSource =
   | "unknown"
   | "api"
@@ -11168,6 +13979,9 @@ export interface ScriptsVersionsListResponseItemsItemMetadata {
   /** The source of the version upload. */
   source?: ScriptsVersionsListResponseItemsItemMetadataSource | null;
 }
+const ScriptsVersionsListResponseItemsItemMetadata =
+  ScriptsVersionsCreateResponseMetadata as any as S.Schema<ScriptsVersionsListResponseItemsItemMetadata>;
+
 export interface ScriptsVersionsListResponseItemsItem {
   /** Unique identifier for the version. */
   id?: string | null;
@@ -11175,17 +13989,42 @@ export interface ScriptsVersionsListResponseItemsItem {
   /** Sequential version number. */
   number?: number | null;
 }
+const ScriptsVersionsListResponseItemsItem = /*@__PURE__*/ __L.at(
+  __c59,
+  6,
+) as any as S.Schema<ScriptsVersionsListResponseItemsItem>;
+
 export type ScriptsVersionsListResponseItemsList = Array<ScriptsVersionsListResponseItemsItem>;
+const ScriptsVersionsListResponseItemsList = /*@__PURE__*/ __L.at(
+  __c59,
+  7,
+) as any as S.Schema<ScriptsVersionsListResponseItemsList>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface ListScriptVersionsResponse {
   items?: ScriptsVersionsListResponseItemsList | null;
 }
+const ListScriptVersionsResponse = /*@__PURE__*/ __L.at(
+  __c60,
+  0,
+) as any as S.Schema<ListScriptVersionsResponse>;
+
 export interface LiveTailHeartbeatObservabilityTelemetryRequest {
   accountId: string;
   scriptId?: string;
 }
+const LiveTailHeartbeatObservabilityTelemetryRequest = /*@__PURE__*/ __L.at(
+  __c60,
+  1,
+) as any as S.Schema<LiveTailHeartbeatObservabilityTelemetryRequest>;
+
 export type LiveTailHeartbeatObservabilityTelemetryResponse = unknown;
+const LiveTailHeartbeatObservabilityTelemetryResponse =
+  DeleteScriptSecretResponse as any as S.Schema<LiveTailHeartbeatObservabilityTelemetryResponse>;
+
 export type ObservabilityTelemetryLiveTailRequestFilterCombination = "and" | "or" | "AND" | "OR";
+const ObservabilityTelemetryLiveTailRequestFilterCombination = S.String;
+
 export type ObservabilityTelemetryLiveTailRequestFiltersItemCase0FilterCombination =
   | "and"
   | "or"
@@ -11340,8 +14179,15 @@ export interface ObservabilityTelemetryLiveTailRequestFiltersItemWorkersObservab
 export type ObservabilityTelemetryLiveTailRequestFiltersItem =
   | ObservabilityTelemetryLiveTailRequestFiltersItemCase0
   | ObservabilityTelemetryLiveTailRequestFiltersItemWorkersObservabilityFilterLeaf;
+const ObservabilityTelemetryLiveTailRequestFiltersItem = /*@__PURE__*/ __L.at(__c60, 2);
+
 export type ObservabilityTelemetryLiveTailRequestFiltersList =
   Array<ObservabilityTelemetryLiveTailRequestFiltersItem>;
+const ObservabilityTelemetryLiveTailRequestFiltersList = /*@__PURE__*/ __L.at(
+  __c60,
+  3,
+) as any as S.Schema<ObservabilityTelemetryLiveTailRequestFiltersList>;
+
 export interface LiveTailObservabilityTelemetryRequest {
   accountId: string;
   /** Set a flag to describe how to combine the filters on the query. */
@@ -11350,11 +14196,21 @@ export interface LiveTailObservabilityTelemetryRequest {
   filters?: ObservabilityTelemetryLiveTailRequestFiltersList;
   scriptId?: string;
 }
+const LiveTailObservabilityTelemetryRequest = /*@__PURE__*/ __L.at(
+  __c60,
+  4,
+) as any as S.Schema<LiveTailObservabilityTelemetryRequest>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface LiveTailObservabilityTelemetryResponse {
   /** WebSocket URL clients connect to in order to stream live tail events. */
   wsUrl: string;
 }
+const LiveTailObservabilityTelemetryResponse = /*@__PURE__*/ __L.at(
+  __c60,
+  5,
+) as any as S.Schema<LiveTailObservabilityTelemetryResponse>;
+
 export type BetaWorkersEditRequestObservabilityIssues = BetaWorkersCreateRequestObservabilityIssues;
 export type BetaWorkersEditRequestObservabilityLogsDestinationsList = Array<string>;
 export interface BetaWorkersEditRequestObservabilityLogs {
@@ -11369,8 +14225,16 @@ export interface BetaWorkersEditRequestObservabilityLogs {
   /** Whether log persistence is enabled for the Worker. */
   persist?: boolean;
 }
+const BetaWorkersEditRequestObservabilityLogs =
+  BetaWorkersCreateRequestObservabilityLogs as any as S.Schema<BetaWorkersEditRequestObservabilityLogs>;
+
 export type BetaWorkersEditRequestObservabilityTracesDestinationsList = Array<string>;
+const BetaWorkersEditRequestObservabilityTracesDestinationsList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<BetaWorkersEditRequestObservabilityTracesDestinationsList>;
+
 export type BetaWorkersEditRequestObservabilityTracesPropagationPolicy = "authenticated" | "accept";
+const BetaWorkersEditRequestObservabilityTracesPropagationPolicy = S.String;
+
 export interface BetaWorkersEditRequestObservabilityTraces {
   /** A list of destinations where traces will be exported to. */
   destinations?: BetaWorkersEditRequestObservabilityTracesDestinationsList;
@@ -11383,6 +14247,11 @@ export interface BetaWorkersEditRequestObservabilityTraces {
   /** Controls how inbound trace context (traceparent/tracestate) headers on incoming requests are handled. "authenticated" honors inbound trace context only when accompanied by a valid trace auth token. "accept" unconditionally accepts inbound trace context. Requires the trace propagation feature to be enabled. Returns null when the trace propagation feature is not enabled for the account. */
   propagationPolicy?: BetaWorkersEditRequestObservabilityTracesPropagationPolicy | (string & {});
 }
+const BetaWorkersEditRequestObservabilityTraces = /*@__PURE__*/ __L.at(
+  __c60,
+  6,
+) as any as S.Schema<BetaWorkersEditRequestObservabilityTraces>;
+
 export interface BetaWorkersEditRequestObservability {
   /** Whether observability is enabled for the Worker. */
   enabled?: boolean;
@@ -11397,12 +14266,23 @@ export interface BetaWorkersEditRequestObservability {
   /** Trace settings for the Worker. */
   traces?: BetaWorkersEditRequestObservabilityTraces;
 }
+const BetaWorkersEditRequestObservability = /*@__PURE__*/ __L.at(
+  __c60,
+  7,
+) as any as S.Schema<BetaWorkersEditRequestObservability>;
+
 export type BetaWorkersEditRequestSubdomain = BetaWorkersCreateRequestSubdomain;
 export type BetaWorkersEditRequestTagsList = Array<string>;
+const BetaWorkersEditRequestTagsList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<BetaWorkersEditRequestTagsList>;
+
 export type BetaWorkersEditRequestTailConsumersItem =
   BetaWorkersCreateRequestPreviewsBaseConfigTailConsumersItem;
 export type BetaWorkersEditRequestTailConsumersList =
   Array<BetaWorkersCreateRequestPreviewsBaseConfigTailConsumersItem>;
+const BetaWorkersEditRequestTailConsumersList =
+  BetaWorkersCreateRequestPreviewsBaseConfigTailConsumersList as any as S.Schema<BetaWorkersEditRequestTailConsumersList>;
+
 export type BetaWorkersEditRequestPreviewsBaseConfigCacheOptions =
   BetaWorkersCreateRequestPreviewsBaseConfigCacheOptions;
 export type BetaWorkersEditRequestPreviewsBaseConfigEnvValue =
@@ -11410,6 +14290,9 @@ export type BetaWorkersEditRequestPreviewsBaseConfigEnvValue =
 export type BetaWorkersEditRequestPreviewsBaseConfigEnvMap = {
   [key: string]: BetaWorkersCreateRequestPreviewsBaseConfigEnvValue | undefined;
 };
+const BetaWorkersEditRequestPreviewsBaseConfigEnvMap =
+  BetaWorkersCreateRequestPreviewsBaseConfigEnvMap as any as S.Schema<BetaWorkersEditRequestPreviewsBaseConfigEnvMap>;
+
 export type BetaWorkersEditRequestPreviewsBaseConfigLimits =
   BetaWorkersCreateRequestPreviewsBaseConfigLimits;
 export type BetaWorkersEditRequestPreviewsBaseConfigObservabilityIssues =
@@ -11428,11 +14311,19 @@ export interface BetaWorkersEditRequestPreviewsBaseConfigObservabilityLogs {
   /** Whether log persistence is enabled for the Worker. */
   persist?: boolean;
 }
+const BetaWorkersEditRequestPreviewsBaseConfigObservabilityLogs =
+  BetaWorkersCreateRequestPreviewsBaseConfigObservabilityLogs as any as S.Schema<BetaWorkersEditRequestPreviewsBaseConfigObservabilityLogs>;
+
 export type BetaWorkersEditRequestPreviewsBaseConfigObservabilityTracesDestinationsList =
   Array<string>;
+const BetaWorkersEditRequestPreviewsBaseConfigObservabilityTracesDestinationsList =
+  BetaWorkersCreateRequestPreviewsBaseConfigObservabilityLogsDestinationsList as any as S.Schema<BetaWorkersEditRequestPreviewsBaseConfigObservabilityTracesDestinationsList>;
+
 export type BetaWorkersEditRequestPreviewsBaseConfigObservabilityTracesPropagationPolicy =
   | "authenticated"
   | "accept";
+const BetaWorkersEditRequestPreviewsBaseConfigObservabilityTracesPropagationPolicy = S.String;
+
 export interface BetaWorkersEditRequestPreviewsBaseConfigObservabilityTraces {
   /** A list of destinations where traces will be exported to. */
   destinations?: BetaWorkersEditRequestPreviewsBaseConfigObservabilityTracesDestinationsList;
@@ -11447,6 +14338,11 @@ export interface BetaWorkersEditRequestPreviewsBaseConfigObservabilityTraces {
     | BetaWorkersEditRequestPreviewsBaseConfigObservabilityTracesPropagationPolicy
     | (string & {});
 }
+const BetaWorkersEditRequestPreviewsBaseConfigObservabilityTraces = /*@__PURE__*/ __L.at(
+  __c61,
+  0,
+) as any as S.Schema<BetaWorkersEditRequestPreviewsBaseConfigObservabilityTraces>;
+
 export interface BetaWorkersEditRequestPreviewsBaseConfigObservability {
   /** Whether observability is enabled for the Worker. */
   enabled?: boolean;
@@ -11461,6 +14357,11 @@ export interface BetaWorkersEditRequestPreviewsBaseConfigObservability {
   /** Trace settings for the Worker. */
   traces?: BetaWorkersEditRequestPreviewsBaseConfigObservabilityTraces;
 }
+const BetaWorkersEditRequestPreviewsBaseConfigObservability = /*@__PURE__*/ __L.at(
+  __c61,
+  1,
+) as any as S.Schema<BetaWorkersEditRequestPreviewsBaseConfigObservability>;
+
 export type BetaWorkersEditRequestPreviewsBaseConfigPlacementModeMode = "smart";
 export interface BetaWorkersEditRequestPreviewsBaseConfigPlacementMode {
   /** Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
@@ -11521,10 +14422,15 @@ export type BetaWorkersEditRequestPreviewsBaseConfigPlacement =
   | BetaWorkersEditRequestPreviewsBaseConfigPlacementCase5
   | BetaWorkersEditRequestPreviewsBaseConfigPlacementCase6
   | BetaWorkersEditRequestPreviewsBaseConfigPlacementCase7;
+const BetaWorkersEditRequestPreviewsBaseConfigPlacement = /*@__PURE__*/ __L.at(__c61, 2);
+
 export type BetaWorkersEditRequestPreviewsBaseConfigTailConsumersItem =
   BetaWorkersCreateRequestPreviewsBaseConfigTailConsumersItem;
 export type BetaWorkersEditRequestPreviewsBaseConfigTailConsumersList =
   Array<BetaWorkersCreateRequestPreviewsBaseConfigTailConsumersItem>;
+const BetaWorkersEditRequestPreviewsBaseConfigTailConsumersList =
+  BetaWorkersCreateRequestPreviewsBaseConfigTailConsumersList as any as S.Schema<BetaWorkersEditRequestPreviewsBaseConfigTailConsumersList>;
+
 export interface BetaWorkersEditRequestPreviewsBaseConfig {
   /** Cache options used when creating new Previews. */
   cacheOptions?: BetaWorkersCreateRequestPreviewsBaseConfigCacheOptions;
@@ -11541,6 +14447,11 @@ export interface BetaWorkersEditRequestPreviewsBaseConfig {
   /** Other Workers that should consume logs from newly created Previews. */
   tailConsumers?: BetaWorkersEditRequestPreviewsBaseConfigTailConsumersList;
 }
+const BetaWorkersEditRequestPreviewsBaseConfig = /*@__PURE__*/ __L.at(
+  __c61,
+  3,
+) as any as S.Schema<BetaWorkersEditRequestPreviewsBaseConfig>;
+
 export interface PatchBetaWorkerRequest {
   /** Identifier. */
   accountId: string;
@@ -11561,6 +14472,11 @@ export interface PatchBetaWorkerRequest {
   /** Template configuration used when creating new Previews for this Worker. */
   previewsBaseConfig?: BetaWorkersEditRequestPreviewsBaseConfig;
 }
+const PatchBetaWorkerRequest = /*@__PURE__*/ __L.at(
+  __c61,
+  4,
+) as any as S.Schema<PatchBetaWorkerRequest>;
+
 export type BetaWorkersEditResponseObservabilityIssues =
   BetaWorkersCreateResponseObservabilityIssues;
 export type BetaWorkersEditResponseObservabilityLogsDestinationsList = Array<string>;
@@ -11576,10 +14492,18 @@ export interface BetaWorkersEditResponseObservabilityLogs {
   /** Whether log persistence is enabled for the Worker. */
   persist?: boolean | null;
 }
+const BetaWorkersEditResponseObservabilityLogs =
+  BetaWorkersCreateResponseObservabilityLogs as any as S.Schema<BetaWorkersEditResponseObservabilityLogs>;
+
 export type BetaWorkersEditResponseObservabilityTracesDestinationsList = Array<string>;
+const BetaWorkersEditResponseObservabilityTracesDestinationsList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<BetaWorkersEditResponseObservabilityTracesDestinationsList>;
+
 export type BetaWorkersEditResponseObservabilityTracesPropagationPolicy =
   | "authenticated"
   | "accept";
+const BetaWorkersEditResponseObservabilityTracesPropagationPolicy = S.String;
+
 export interface BetaWorkersEditResponseObservabilityTraces {
   /** A list of destinations where traces will be exported to. */
   destinations?: BetaWorkersEditResponseObservabilityTracesDestinationsList | null;
@@ -11592,6 +14516,11 @@ export interface BetaWorkersEditResponseObservabilityTraces {
   /** Controls how inbound trace context (traceparent/tracestate) headers on incoming requests are handled. "authenticated" honors inbound trace context only when accompanied by a valid trace auth token. "accept" unconditionally accepts inbound trace context. Requires the trace propagation feature to be enabled. Returns null when the trace propagation feature is not enabled for the account. */
   propagationPolicy?: BetaWorkersEditResponseObservabilityTracesPropagationPolicy | null;
 }
+const BetaWorkersEditResponseObservabilityTraces = /*@__PURE__*/ __L.at(
+  __c61,
+  5,
+) as any as S.Schema<BetaWorkersEditResponseObservabilityTraces>;
+
 export interface BetaWorkersEditResponseObservability {
   /** Whether observability is enabled for the Worker. */
   enabled?: boolean | null;
@@ -11606,6 +14535,11 @@ export interface BetaWorkersEditResponseObservability {
   /** Trace settings for the Worker. */
   traces?: BetaWorkersEditResponseObservabilityTraces | null;
 }
+const BetaWorkersEditResponseObservability = /*@__PURE__*/ __L.at(
+  __c61,
+  6,
+) as any as S.Schema<BetaWorkersEditResponseObservability>;
+
 export type BetaWorkersEditResponseReferencesDispatchNamespaceOutboundsItem =
   BetaWorkersCreateResponseReferencesDispatchNamespaceOutboundsItem;
 export type BetaWorkersEditResponseReferencesDispatchNamespaceOutboundsList =
@@ -11638,12 +14572,21 @@ export interface BetaWorkersEditResponseReferences {
   /** Other Workers that reference the Worker using [service bindings](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/). */
   workers: BetaWorkersEditResponseReferencesWorkersList;
 }
+const BetaWorkersEditResponseReferences =
+  BetaWorkersCreateResponseReferences as any as S.Schema<BetaWorkersEditResponseReferences>;
+
 export type BetaWorkersEditResponseSubdomain = BetaWorkersCreateResponseSubdomain;
 export type BetaWorkersEditResponseTagsList = Array<string>;
+const BetaWorkersEditResponseTagsList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<BetaWorkersEditResponseTagsList>;
+
 export type BetaWorkersEditResponseTailConsumersItem =
   BetaWorkersCreateRequestPreviewsBaseConfigTailConsumersItem;
 export type BetaWorkersEditResponseTailConsumersList =
   Array<BetaWorkersCreateRequestPreviewsBaseConfigTailConsumersItem>;
+const BetaWorkersEditResponseTailConsumersList =
+  BetaWorkersCreateRequestPreviewsBaseConfigTailConsumersList as any as S.Schema<BetaWorkersEditResponseTailConsumersList>;
+
 export type BetaWorkersEditResponsePreviewsBaseConfigCacheOptions =
   BetaWorkersCreateResponsePreviewsBaseConfigCacheOptions;
 export type BetaWorkersEditResponsePreviewsBaseConfigEnvValue =
@@ -11651,6 +14594,9 @@ export type BetaWorkersEditResponsePreviewsBaseConfigEnvValue =
 export type BetaWorkersEditResponsePreviewsBaseConfigEnvMap = {
   [key: string]: BetaWorkersCreateRequestPreviewsBaseConfigEnvValue | undefined;
 };
+const BetaWorkersEditResponsePreviewsBaseConfigEnvMap =
+  BetaWorkersCreateRequestPreviewsBaseConfigEnvMap as any as S.Schema<BetaWorkersEditResponsePreviewsBaseConfigEnvMap>;
+
 export type BetaWorkersEditResponsePreviewsBaseConfigLimits =
   BetaWorkersCreateResponsePreviewsBaseConfigLimits;
 export type BetaWorkersEditResponsePreviewsBaseConfigObservabilityIssues =
@@ -11669,11 +14615,19 @@ export interface BetaWorkersEditResponsePreviewsBaseConfigObservabilityLogs {
   /** Whether log persistence is enabled for the Worker. */
   persist?: boolean | null;
 }
+const BetaWorkersEditResponsePreviewsBaseConfigObservabilityLogs =
+  BetaWorkersCreateResponsePreviewsBaseConfigObservabilityLogs as any as S.Schema<BetaWorkersEditResponsePreviewsBaseConfigObservabilityLogs>;
+
 export type BetaWorkersEditResponsePreviewsBaseConfigObservabilityTracesDestinationsList =
   Array<string>;
+const BetaWorkersEditResponsePreviewsBaseConfigObservabilityTracesDestinationsList =
+  BetaWorkersCreateRequestPreviewsBaseConfigObservabilityLogsDestinationsList as any as S.Schema<BetaWorkersEditResponsePreviewsBaseConfigObservabilityTracesDestinationsList>;
+
 export type BetaWorkersEditResponsePreviewsBaseConfigObservabilityTracesPropagationPolicy =
   | "authenticated"
   | "accept";
+const BetaWorkersEditResponsePreviewsBaseConfigObservabilityTracesPropagationPolicy = S.String;
+
 export interface BetaWorkersEditResponsePreviewsBaseConfigObservabilityTraces {
   /** A list of destinations where traces will be exported to. */
   destinations?: BetaWorkersEditResponsePreviewsBaseConfigObservabilityTracesDestinationsList | null;
@@ -11686,6 +14640,11 @@ export interface BetaWorkersEditResponsePreviewsBaseConfigObservabilityTraces {
   /** Controls how inbound trace context (traceparent/tracestate) headers on incoming requests are handled. "authenticated" honors inbound trace context only when accompanied by a valid trace auth token. "accept" unconditionally accepts inbound trace context. Requires the trace propagation feature to be enabled. Returns null when the trace propagation feature is not enabled for the account. */
   propagationPolicy?: BetaWorkersEditResponsePreviewsBaseConfigObservabilityTracesPropagationPolicy | null;
 }
+const BetaWorkersEditResponsePreviewsBaseConfigObservabilityTraces = /*@__PURE__*/ __L.at(
+  __c61,
+  7,
+) as any as S.Schema<BetaWorkersEditResponsePreviewsBaseConfigObservabilityTraces>;
+
 export interface BetaWorkersEditResponsePreviewsBaseConfigObservability {
   /** Whether observability is enabled for the Worker. */
   enabled?: boolean | null;
@@ -11700,6 +14659,11 @@ export interface BetaWorkersEditResponsePreviewsBaseConfigObservability {
   /** Trace settings for the Worker. */
   traces?: BetaWorkersEditResponsePreviewsBaseConfigObservabilityTraces | null;
 }
+const BetaWorkersEditResponsePreviewsBaseConfigObservability = /*@__PURE__*/ __L.at(
+  __c62,
+  0,
+) as any as S.Schema<BetaWorkersEditResponsePreviewsBaseConfigObservability>;
+
 export type BetaWorkersEditResponsePreviewsBaseConfigPlacementModeMode = "smart";
 export interface BetaWorkersEditResponsePreviewsBaseConfigPlacementMode {
   /** Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
@@ -11760,10 +14724,15 @@ export type BetaWorkersEditResponsePreviewsBaseConfigPlacement =
   | BetaWorkersEditResponsePreviewsBaseConfigPlacementCase5
   | BetaWorkersEditResponsePreviewsBaseConfigPlacementCase6
   | BetaWorkersEditResponsePreviewsBaseConfigPlacementCase7;
+const BetaWorkersEditResponsePreviewsBaseConfigPlacement = /*@__PURE__*/ __L.at(__c62, 1);
+
 export type BetaWorkersEditResponsePreviewsBaseConfigTailConsumersItem =
   BetaWorkersCreateRequestPreviewsBaseConfigTailConsumersItem;
 export type BetaWorkersEditResponsePreviewsBaseConfigTailConsumersList =
   Array<BetaWorkersCreateRequestPreviewsBaseConfigTailConsumersItem>;
+const BetaWorkersEditResponsePreviewsBaseConfigTailConsumersList =
+  BetaWorkersCreateRequestPreviewsBaseConfigTailConsumersList as any as S.Schema<BetaWorkersEditResponsePreviewsBaseConfigTailConsumersList>;
+
 export interface BetaWorkersEditResponsePreviewsBaseConfig {
   /** Cache options used when creating new Previews. */
   cacheOptions?: BetaWorkersCreateResponsePreviewsBaseConfigCacheOptions | null;
@@ -11780,6 +14749,11 @@ export interface BetaWorkersEditResponsePreviewsBaseConfig {
   /** Other Workers that should consume logs from newly created Previews. */
   tailConsumers?: BetaWorkersEditResponsePreviewsBaseConfigTailConsumersList | null;
 }
+const BetaWorkersEditResponsePreviewsBaseConfig = /*@__PURE__*/ __L.at(
+  __c62,
+  2,
+) as any as S.Schema<BetaWorkersEditResponsePreviewsBaseConfig>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PatchBetaWorkerResponse {
   /** Immutable ID of the Worker. */
@@ -11807,21 +14781,41 @@ export interface PatchBetaWorkerResponse {
   /** Template configuration used when creating new Previews for this Worker. */
   previewsBaseConfig?: BetaWorkersEditResponsePreviewsBaseConfig | null;
 }
+const PatchBetaWorkerResponse = /*@__PURE__*/ __L.at(
+  __c62,
+  3,
+) as any as S.Schema<PatchBetaWorkerResponse>;
+
 export type ObservabilityDestinationsUpdateRequestConfigurationHeadersMap = {
   [key: string]: string | undefined;
 };
+const ObservabilityDestinationsUpdateRequestConfigurationHeadersMap =
+  ContainerImageMap as any as S.Schema<ObservabilityDestinationsUpdateRequestConfigurationHeadersMap>;
+
 export type ObservabilityDestinationsUpdateRequestConfigurationType = "logpush";
+const ObservabilityDestinationsUpdateRequestConfigurationType = S.String;
+
 export interface ObservabilityDestinationsUpdateRequestConfiguration {
   headers: ObservabilityDestinationsUpdateRequestConfigurationHeadersMap;
   type: ObservabilityDestinationsUpdateRequestConfigurationType | (string & {});
   url: string;
 }
+const ObservabilityDestinationsUpdateRequestConfiguration = /*@__PURE__*/ __L.at(
+  __c62,
+  4,
+) as any as S.Schema<ObservabilityDestinationsUpdateRequestConfiguration>;
+
 export interface PatchObservabilityDestinationRequest {
   accountId: string;
   slug: string;
   configuration: ObservabilityDestinationsUpdateRequestConfiguration;
   enabled: boolean;
 }
+const PatchObservabilityDestinationRequest = /*@__PURE__*/ __L.at(
+  __c62,
+  5,
+) as any as S.Schema<PatchObservabilityDestinationRequest>;
+
 export type ObservabilityDestinationsUpdateResponseConfigurationLogpushDataset =
   | "opentelemetry-traces"
   | "opentelemetry-logs"
@@ -11834,7 +14828,13 @@ export interface ObservabilityDestinationsUpdateResponseConfiguration {
   type: ObservabilityDestinationsUpdateResponseConfigurationType;
   url: string;
 }
+const ObservabilityDestinationsUpdateResponseConfiguration =
+  ObservabilityDestinationsCreateResponseConfiguration as any as S.Schema<ObservabilityDestinationsUpdateResponseConfiguration>;
+
 export type ObservabilityDestinationsUpdateResponseScriptsList = Array<string>;
+const ObservabilityDestinationsUpdateResponseScriptsList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<ObservabilityDestinationsUpdateResponseScriptsList>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PatchObservabilityDestinationResponse {
   configuration: ObservabilityDestinationsUpdateResponseConfiguration;
@@ -11843,6 +14843,11 @@ export interface PatchObservabilityDestinationResponse {
   scripts: ObservabilityDestinationsUpdateResponseScriptsList;
   slug: string;
 }
+const PatchObservabilityDestinationResponse = /*@__PURE__*/ __L.at(
+  __c62,
+  6,
+) as any as S.Schema<PatchObservabilityDestinationResponse>;
+
 export interface PatchScriptScriptAndVersionSettingRequest {
   /** Identifier. */
   accountId: string;
@@ -11851,6 +14856,11 @@ export interface PatchScriptScriptAndVersionSettingRequest {
   /** Worker settings to patch (bindings, tags, tail consumers, ...), JSON-encoded as the multipart `settings` part. */
   settings?: unknown;
 }
+const PatchScriptScriptAndVersionSettingRequest = /*@__PURE__*/ __L.at(
+  __c62,
+  7,
+) as any as S.Schema<PatchScriptScriptAndVersionSettingRequest>;
+
 export type ScriptsScriptAndVersionSettingsEditResponseAnnotations =
   ScriptsScriptAndVersionSettingsGetResponseAnnotations;
 export type ScriptsScriptAndVersionSettingsEditResponseBindingsItemAIType = "ai";
@@ -12316,11 +15326,21 @@ export type ScriptsScriptAndVersionSettingsEditResponseBindingsItem =
   | ScriptsScriptAndVersionSettingsEditResponseBindingsItemWasmModule
   | ScriptsScriptAndVersionSettingsEditResponseBindingsItemVPCService
   | ScriptsScriptAndVersionSettingsEditResponseBindingsItemVPCNetwork;
+const ScriptsScriptAndVersionSettingsEditResponseBindingsItem = /*@__PURE__*/ __L.at(__c63, 0);
+
 export type ScriptsScriptAndVersionSettingsEditResponseBindingsList =
   Array<ScriptsScriptAndVersionSettingsEditResponseBindingsItem>;
+const ScriptsScriptAndVersionSettingsEditResponseBindingsList = /*@__PURE__*/ __L.at(
+  __c63,
+  1,
+) as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseBindingsList>;
+
 export type ScriptsScriptAndVersionSettingsEditResponseCacheOptions =
   BetaWorkersCreateResponsePreviewsBaseConfigCacheOptions;
 export type ScriptsScriptAndVersionSettingsEditResponseCompatibilityFlagsList = Array<string>;
+const ScriptsScriptAndVersionSettingsEditResponseCompatibilityFlagsList =
+  BetaWorkersCreateRequestPreviewsBaseConfigObservabilityLogsDestinationsList as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseCompatibilityFlagsList>;
+
 export type ScriptsScriptAndVersionSettingsEditResponseExportsValueWorkerType = "worker";
 export type ScriptsScriptAndVersionSettingsEditResponseExportsValueWorkerCache =
   BetaWorkersVersionsCreateRequestExportsValueWorkerCache;
@@ -12410,13 +15430,26 @@ export type ScriptsScriptAndVersionSettingsEditResponseExportsValue =
   | ScriptsScriptAndVersionSettingsEditResponseExportsValueWorkersDurableObjectRenamedExport
   | ScriptsScriptAndVersionSettingsEditResponseExportsValueWorkersDurableObjectTransferredExport
   | ScriptsScriptAndVersionSettingsEditResponseExportsValueWorkersDurableObjectExpectingTransferExport;
+const ScriptsScriptAndVersionSettingsEditResponseExportsValue = /*@__PURE__*/ __L.at(__c63, 2);
+
 export type ScriptsScriptAndVersionSettingsEditResponseExportsMap = {
   [key: string]: ScriptsScriptAndVersionSettingsEditResponseExportsValue | undefined;
 };
+const ScriptsScriptAndVersionSettingsEditResponseExportsMap = /*@__PURE__*/ __L.at(
+  __c63,
+  3,
+) as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseExportsMap>;
+
 export type ScriptsScriptAndVersionSettingsEditResponseExportsReconciliationCreatedList =
   Array<string>;
+const ScriptsScriptAndVersionSettingsEditResponseExportsReconciliationCreatedList =
+  BetaWorkersCreateRequestPreviewsBaseConfigObservabilityLogsDestinationsList as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseExportsReconciliationCreatedList>;
+
 export type ScriptsScriptAndVersionSettingsEditResponseExportsReconciliationDeletedList =
   Array<string>;
+const ScriptsScriptAndVersionSettingsEditResponseExportsReconciliationDeletedList =
+  BetaWorkersCreateRequestPreviewsBaseConfigObservabilityLogsDestinationsList as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseExportsReconciliationDeletedList>;
+
 export type ScriptsScriptAndVersionSettingsEditResponseExportsReconciliationInfoItemScenario =
   | "code_class_not_in_exports"
   | "provisioned_class_missing_from_config"
@@ -12451,8 +15484,13 @@ export type ScriptsScriptAndVersionSettingsEditResponseExportsReconciliationInfo
   | "stale_tombstone"
   | "transfer_receive_already_applied"
   | "transfer_receive_cleanup_complete";
+const ScriptsScriptAndVersionSettingsEditResponseExportsReconciliationInfoItemScenario = S.String;
+
 export type ScriptsScriptAndVersionSettingsEditResponseExportsReconciliationInfoItemReferencingScriptsList =
   Array<string>;
+const ScriptsScriptAndVersionSettingsEditResponseExportsReconciliationInfoItemReferencingScriptsList =
+  BetaWorkersCreateRequestPreviewsBaseConfigObservabilityLogsDestinationsList as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseExportsReconciliationInfoItemReferencingScriptsList>;
+
 export interface ScriptsScriptAndVersionSettingsEditResponseExportsReconciliationInfoItem {
   /** The class name the info entry is about. */
   class: string;
@@ -12465,18 +15503,39 @@ export interface ScriptsScriptAndVersionSettingsEditResponseExportsReconciliatio
   /** Other Workers in the account that still bind to the affected class. Advisory: while non-empty the tombstone is not yet safe to remove -- redeploy these Workers with bindings re-pointed first. */
   referencingScripts?: ScriptsScriptAndVersionSettingsEditResponseExportsReconciliationInfoItemReferencingScriptsList | null;
 }
+const ScriptsScriptAndVersionSettingsEditResponseExportsReconciliationInfoItem =
+  /*@__PURE__*/ __L.at(
+    __c63,
+    4,
+  ) as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseExportsReconciliationInfoItem>;
+
 export type ScriptsScriptAndVersionSettingsEditResponseExportsReconciliationInfoList =
   Array<ScriptsScriptAndVersionSettingsEditResponseExportsReconciliationInfoItem>;
+const ScriptsScriptAndVersionSettingsEditResponseExportsReconciliationInfoList =
+  /*@__PURE__*/ __L.at(
+    __c63,
+    5,
+  ) as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseExportsReconciliationInfoList>;
+
 export type ScriptsScriptAndVersionSettingsEditResponseExportsReconciliationRemovableEntriesList =
   Array<string>;
+const ScriptsScriptAndVersionSettingsEditResponseExportsReconciliationRemovableEntriesList =
+  BetaWorkersCreateRequestPreviewsBaseConfigObservabilityLogsDestinationsList as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseExportsReconciliationRemovableEntriesList>;
+
 export type ScriptsScriptAndVersionSettingsEditResponseExportsReconciliationRenamedItem =
   BetaWorkersVersionsCreateResponseExportsReconciliationRenamedItem;
 export type ScriptsScriptAndVersionSettingsEditResponseExportsReconciliationRenamedList =
   Array<BetaWorkersVersionsCreateResponseExportsReconciliationRenamedItem>;
+const ScriptsScriptAndVersionSettingsEditResponseExportsReconciliationRenamedList =
+  BetaWorkersVersionsCreateResponseExportsReconciliationRenamedList as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseExportsReconciliationRenamedList>;
+
 export type ScriptsScriptAndVersionSettingsEditResponseExportsReconciliationTransferPendingItem =
   BetaWorkersVersionsCreateResponseExportsReconciliationTransferPendingItem;
 export type ScriptsScriptAndVersionSettingsEditResponseExportsReconciliationTransferPendingList =
   Array<BetaWorkersVersionsCreateResponseExportsReconciliationTransferPendingItem>;
+const ScriptsScriptAndVersionSettingsEditResponseExportsReconciliationTransferPendingList =
+  BetaWorkersVersionsCreateResponseExportsReconciliationTransferPendingList as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseExportsReconciliationTransferPendingList>;
+
 export type ScriptsScriptAndVersionSettingsEditResponseExportsReconciliationTransferredItemPhase =
   "committed";
 export interface ScriptsScriptAndVersionSettingsEditResponseExportsReconciliationTransferredItem {
@@ -12489,8 +15548,14 @@ export interface ScriptsScriptAndVersionSettingsEditResponseExportsReconciliatio
 }
 export type ScriptsScriptAndVersionSettingsEditResponseExportsReconciliationTransferredList =
   Array<ScriptsScriptAndVersionSettingsEditResponseExportsReconciliationTransferredItem>;
+const ScriptsScriptAndVersionSettingsEditResponseExportsReconciliationTransferredList =
+  BetaWorkersVersionsCreateResponseExportsReconciliationTransferredList as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseExportsReconciliationTransferredList>;
+
 export type ScriptsScriptAndVersionSettingsEditResponseExportsReconciliationUpdatedList =
   Array<string>;
+const ScriptsScriptAndVersionSettingsEditResponseExportsReconciliationUpdatedList =
+  BetaWorkersCreateRequestPreviewsBaseConfigObservabilityLogsDestinationsList as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseExportsReconciliationUpdatedList>;
+
 export type ScriptsScriptAndVersionSettingsEditResponseExportsReconciliationWarningsItemScenario =
   | "code_class_not_in_exports"
   | "provisioned_class_missing_from_config"
@@ -12525,6 +15590,9 @@ export type ScriptsScriptAndVersionSettingsEditResponseExportsReconciliationWarn
   | "stale_tombstone"
   | "transfer_receive_already_applied"
   | "transfer_receive_cleanup_complete";
+const ScriptsScriptAndVersionSettingsEditResponseExportsReconciliationWarningsItemScenario =
+  S.String;
+
 export interface ScriptsScriptAndVersionSettingsEditResponseExportsReconciliationWarningsItem {
   /** The class name the warning is about. */
   class: string;
@@ -12535,8 +15603,20 @@ export interface ScriptsScriptAndVersionSettingsEditResponseExportsReconciliatio
   /** The provisioned namespace the warning relates to, when applicable. */
   namespaceId?: string | null;
 }
+const ScriptsScriptAndVersionSettingsEditResponseExportsReconciliationWarningsItem =
+  /*@__PURE__*/ __L.at(
+    __c63,
+    6,
+  ) as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseExportsReconciliationWarningsItem>;
+
 export type ScriptsScriptAndVersionSettingsEditResponseExportsReconciliationWarningsList =
   Array<ScriptsScriptAndVersionSettingsEditResponseExportsReconciliationWarningsItem>;
+const ScriptsScriptAndVersionSettingsEditResponseExportsReconciliationWarningsList =
+  /*@__PURE__*/ __L.at(
+    __c63,
+    7,
+  ) as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseExportsReconciliationWarningsList>;
+
 export interface ScriptsScriptAndVersionSettingsEditResponseExportsReconciliation {
   /** Class names for which a new namespace was provisioned. */
   created: ScriptsScriptAndVersionSettingsEditResponseExportsReconciliationCreatedList;
@@ -12557,6 +15637,11 @@ export interface ScriptsScriptAndVersionSettingsEditResponseExportsReconciliatio
   /** Non-blocking warnings. See `exports_reconciliation_warning`. */
   warnings: ScriptsScriptAndVersionSettingsEditResponseExportsReconciliationWarningsList;
 }
+const ScriptsScriptAndVersionSettingsEditResponseExportsReconciliation = /*@__PURE__*/ __L.at(
+  __c64,
+  0,
+) as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseExportsReconciliation>;
+
 export type ScriptsScriptAndVersionSettingsEditResponseLimits =
   BetaWorkersCreateResponsePreviewsBaseConfigLimits;
 export type ScriptsScriptAndVersionSettingsEditResponseMigrationsSingleStepMigrationDeletedClassesList =
@@ -12628,6 +15713,8 @@ export interface ScriptsScriptAndVersionSettingsEditResponseMigrationsWorkersMul
 export type ScriptsScriptAndVersionSettingsEditResponseMigrations =
   | ScriptsScriptAndVersionSettingsEditResponseMigrationsSingleStepMigration
   | ScriptsScriptAndVersionSettingsEditResponseMigrationsWorkersMultipleStepMigrations;
+const ScriptsScriptAndVersionSettingsEditResponseMigrations = /*@__PURE__*/ __L.at(__c64, 1);
+
 export type ScriptsScriptAndVersionSettingsEditResponseObservabilityIssues =
   BetaWorkersCreateResponseObservabilityIssues;
 export type ScriptsScriptAndVersionSettingsEditResponseObservabilityLogsDestinationsList =
@@ -12644,11 +15731,19 @@ export interface ScriptsScriptAndVersionSettingsEditResponseObservabilityLogs {
   /** Whether log persistence is enabled for the Worker. */
   persist?: boolean | null;
 }
+const ScriptsScriptAndVersionSettingsEditResponseObservabilityLogs =
+  ScriptsScriptAndVersionSettingsGetResponseObservabilityLogs as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseObservabilityLogs>;
+
 export type ScriptsScriptAndVersionSettingsEditResponseObservabilityTracesDestinationsList =
   Array<string>;
+const ScriptsScriptAndVersionSettingsEditResponseObservabilityTracesDestinationsList =
+  BetaWorkersCreateRequestPreviewsBaseConfigObservabilityLogsDestinationsList as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseObservabilityTracesDestinationsList>;
+
 export type ScriptsScriptAndVersionSettingsEditResponseObservabilityTracesPropagationPolicy =
   | "authenticated"
   | "accept";
+const ScriptsScriptAndVersionSettingsEditResponseObservabilityTracesPropagationPolicy = S.String;
+
 export interface ScriptsScriptAndVersionSettingsEditResponseObservabilityTraces {
   /** A list of destinations where traces will be exported to. */
   destinations?: ScriptsScriptAndVersionSettingsEditResponseObservabilityTracesDestinationsList | null;
@@ -12661,6 +15756,11 @@ export interface ScriptsScriptAndVersionSettingsEditResponseObservabilityTraces 
   /** Controls how inbound trace context (traceparent/tracestate) headers on incoming requests are handled. "authenticated" honors inbound trace context only when accompanied by a valid trace auth token. "accept" unconditionally accepts inbound trace context. Requires the trace propagation feature to be enabled. Returns null when the trace propagation feature is not enabled for the account. */
   propagationPolicy?: ScriptsScriptAndVersionSettingsEditResponseObservabilityTracesPropagationPolicy | null;
 }
+const ScriptsScriptAndVersionSettingsEditResponseObservabilityTraces = /*@__PURE__*/ __L.at(
+  __c64,
+  2,
+) as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseObservabilityTraces>;
+
 export interface ScriptsScriptAndVersionSettingsEditResponseObservability {
   /** Whether observability is enabled for the Worker. */
   enabled: boolean;
@@ -12675,6 +15775,11 @@ export interface ScriptsScriptAndVersionSettingsEditResponseObservability {
   /** Trace settings for the Worker. */
   traces?: ScriptsScriptAndVersionSettingsEditResponseObservabilityTraces | null;
 }
+const ScriptsScriptAndVersionSettingsEditResponseObservability = /*@__PURE__*/ __L.at(
+  __c64,
+  3,
+) as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseObservability>;
+
 export type ScriptsScriptAndVersionSettingsEditResponsePlacementModeMode = "smart";
 export interface ScriptsScriptAndVersionSettingsEditResponsePlacementMode {
   /** Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
@@ -12735,15 +15840,25 @@ export type ScriptsScriptAndVersionSettingsEditResponsePlacement =
   | ScriptsScriptAndVersionSettingsEditResponsePlacementCase5
   | ScriptsScriptAndVersionSettingsEditResponsePlacementCase6
   | ScriptsScriptAndVersionSettingsEditResponsePlacementCase7;
+const ScriptsScriptAndVersionSettingsEditResponsePlacement = /*@__PURE__*/ __L.at(__c64, 4);
+
 export type ScriptsScriptAndVersionSettingsEditResponseTagsList = Array<string>;
+const ScriptsScriptAndVersionSettingsEditResponseTagsList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseTagsList>;
+
 export type ScriptsScriptAndVersionSettingsEditResponseTailConsumersItem =
   ScriptsScriptAndVersionSettingsGetResponseTailConsumersItem;
 export type ScriptsScriptAndVersionSettingsEditResponseTailConsumersList =
   Array<ScriptsScriptAndVersionSettingsGetResponseTailConsumersItem>;
+const ScriptsScriptAndVersionSettingsEditResponseTailConsumersList =
+  ScriptsScriptAndVersionSettingsGetResponseTailConsumersList as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseTailConsumersList>;
+
 export type ScriptsScriptAndVersionSettingsEditResponseUsageModel =
   | "standard"
   | "bundled"
   | "unbound";
+const ScriptsScriptAndVersionSettingsEditResponseUsageModel = S.String;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PatchScriptScriptAndVersionSettingResponse {
   /** Annotations for the Worker version. Annotations are not inherited across settings updates; omitting this field means the new version will have no annotations. */
@@ -12777,9 +15892,17 @@ export interface PatchScriptScriptAndVersionSettingResponse {
   /** Usage model for the Worker invocations. */
   usageModel?: ScriptsScriptAndVersionSettingsEditResponseUsageModel | null;
 }
+const PatchScriptScriptAndVersionSettingResponse = /*@__PURE__*/ __L.at(
+  __c64,
+  5,
+) as any as S.Schema<PatchScriptScriptAndVersionSettingResponse>;
+
 export type ScriptsSettingsEditRequestObservabilityIssues =
   BetaWorkersCreateRequestObservabilityIssues;
 export type ScriptsSettingsEditRequestObservabilityLogsDestinationsList = Array<string>;
+const ScriptsSettingsEditRequestObservabilityLogsDestinationsList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<ScriptsSettingsEditRequestObservabilityLogsDestinationsList>;
+
 export interface ScriptsSettingsEditRequestObservabilityLogs {
   /** Whether logs are enabled for the Worker. */
   enabled: boolean;
@@ -12792,10 +15915,20 @@ export interface ScriptsSettingsEditRequestObservabilityLogs {
   /** Whether log persistence is enabled for the Worker. */
   persist?: boolean;
 }
+const ScriptsSettingsEditRequestObservabilityLogs = /*@__PURE__*/ __L.at(
+  __c64,
+  6,
+) as any as S.Schema<ScriptsSettingsEditRequestObservabilityLogs>;
+
 export type ScriptsSettingsEditRequestObservabilityTracesDestinationsList = Array<string>;
+const ScriptsSettingsEditRequestObservabilityTracesDestinationsList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<ScriptsSettingsEditRequestObservabilityTracesDestinationsList>;
+
 export type ScriptsSettingsEditRequestObservabilityTracesPropagationPolicy =
   | "authenticated"
   | "accept";
+const ScriptsSettingsEditRequestObservabilityTracesPropagationPolicy = S.String;
+
 export interface ScriptsSettingsEditRequestObservabilityTraces {
   /** A list of destinations where traces will be exported to. */
   destinations?: ScriptsSettingsEditRequestObservabilityTracesDestinationsList;
@@ -12810,6 +15943,11 @@ export interface ScriptsSettingsEditRequestObservabilityTraces {
     | ScriptsSettingsEditRequestObservabilityTracesPropagationPolicy
     | (string & {});
 }
+const ScriptsSettingsEditRequestObservabilityTraces = /*@__PURE__*/ __L.at(
+  __c64,
+  7,
+) as any as S.Schema<ScriptsSettingsEditRequestObservabilityTraces>;
+
 export interface ScriptsSettingsEditRequestObservability {
   /** Whether observability is enabled for the Worker. */
   enabled?: boolean;
@@ -12824,7 +15962,15 @@ export interface ScriptsSettingsEditRequestObservability {
   /** Trace settings for the Worker. */
   traces?: ScriptsSettingsEditRequestObservabilityTraces;
 }
+const ScriptsSettingsEditRequestObservability = /*@__PURE__*/ __L.at(
+  __c65,
+  0,
+) as any as S.Schema<ScriptsSettingsEditRequestObservability>;
+
 export type ScriptsSettingsEditRequestTagsList = Array<string>;
+const ScriptsSettingsEditRequestTagsList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<ScriptsSettingsEditRequestTagsList>;
+
 export interface ScriptsSettingsEditRequestTailConsumersItem {
   /** Name of Worker that is to be the consumer. */
   service: string;
@@ -12833,8 +15979,18 @@ export interface ScriptsSettingsEditRequestTailConsumersItem {
   /** Optional dispatch namespace the script belongs to. */
   namespace?: string;
 }
+const ScriptsSettingsEditRequestTailConsumersItem = /*@__PURE__*/ __L.at(
+  __c65,
+  1,
+) as any as S.Schema<ScriptsSettingsEditRequestTailConsumersItem>;
+
 export type ScriptsSettingsEditRequestTailConsumersList =
   Array<ScriptsSettingsEditRequestTailConsumersItem>;
+const ScriptsSettingsEditRequestTailConsumersList = /*@__PURE__*/ __L.at(
+  __c65,
+  2,
+) as any as S.Schema<ScriptsSettingsEditRequestTailConsumersList>;
+
 export interface PatchScriptSettingRequest {
   /** Identifier. */
   accountId: string;
@@ -12849,9 +16005,17 @@ export interface PatchScriptSettingRequest {
   /** List of Workers that will consume logs from the attached Worker. */
   tailConsumers?: ScriptsSettingsEditRequestTailConsumersList;
 }
+const PatchScriptSettingRequest = /*@__PURE__*/ __L.at(
+  __c65,
+  3,
+) as any as S.Schema<PatchScriptSettingRequest>;
+
 export type ScriptsSettingsEditResponseObservabilityIssues =
   BetaWorkersCreateResponseObservabilityIssues;
 export type ScriptsSettingsEditResponseObservabilityLogsDestinationsList = Array<string>;
+const ScriptsSettingsEditResponseObservabilityLogsDestinationsList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<ScriptsSettingsEditResponseObservabilityLogsDestinationsList>;
+
 export interface ScriptsSettingsEditResponseObservabilityLogs {
   /** Whether logs are enabled for the Worker. */
   enabled: boolean;
@@ -12864,10 +16028,20 @@ export interface ScriptsSettingsEditResponseObservabilityLogs {
   /** Whether log persistence is enabled for the Worker. */
   persist?: boolean | null;
 }
+const ScriptsSettingsEditResponseObservabilityLogs = /*@__PURE__*/ __L.at(
+  __c65,
+  4,
+) as any as S.Schema<ScriptsSettingsEditResponseObservabilityLogs>;
+
 export type ScriptsSettingsEditResponseObservabilityTracesDestinationsList = Array<string>;
+const ScriptsSettingsEditResponseObservabilityTracesDestinationsList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<ScriptsSettingsEditResponseObservabilityTracesDestinationsList>;
+
 export type ScriptsSettingsEditResponseObservabilityTracesPropagationPolicy =
   | "authenticated"
   | "accept";
+const ScriptsSettingsEditResponseObservabilityTracesPropagationPolicy = S.String;
+
 export interface ScriptsSettingsEditResponseObservabilityTraces {
   /** A list of destinations where traces will be exported to. */
   destinations?: ScriptsSettingsEditResponseObservabilityTracesDestinationsList | null;
@@ -12880,6 +16054,11 @@ export interface ScriptsSettingsEditResponseObservabilityTraces {
   /** Controls how inbound trace context (traceparent/tracestate) headers on incoming requests are handled. "authenticated" honors inbound trace context only when accompanied by a valid trace auth token. "accept" unconditionally accepts inbound trace context. Requires the trace propagation feature to be enabled. Returns null when the trace propagation feature is not enabled for the account. */
   propagationPolicy?: ScriptsSettingsEditResponseObservabilityTracesPropagationPolicy | null;
 }
+const ScriptsSettingsEditResponseObservabilityTraces = /*@__PURE__*/ __L.at(
+  __c65,
+  5,
+) as any as S.Schema<ScriptsSettingsEditResponseObservabilityTraces>;
+
 export interface ScriptsSettingsEditResponseObservability {
   /** Whether observability is enabled for the Worker. */
   enabled: boolean;
@@ -12894,11 +16073,22 @@ export interface ScriptsSettingsEditResponseObservability {
   /** Trace settings for the Worker. */
   traces?: ScriptsSettingsEditResponseObservabilityTraces | null;
 }
+const ScriptsSettingsEditResponseObservability = /*@__PURE__*/ __L.at(
+  __c65,
+  6,
+) as any as S.Schema<ScriptsSettingsEditResponseObservability>;
+
 export type ScriptsSettingsEditResponseTagsList = Array<string>;
+const ScriptsSettingsEditResponseTagsList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<ScriptsSettingsEditResponseTagsList>;
+
 export type ScriptsSettingsEditResponseTailConsumersItem =
   ScriptsScriptAndVersionSettingsGetResponseTailConsumersItem;
 export type ScriptsSettingsEditResponseTailConsumersList =
   Array<ScriptsScriptAndVersionSettingsGetResponseTailConsumersItem>;
+const ScriptsSettingsEditResponseTailConsumersList =
+  ScriptsScriptAndVersionSettingsGetResponseTailConsumersList as any as S.Schema<ScriptsSettingsEditResponseTailConsumersList>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PatchScriptSettingResponse {
   /** Whether Logpush is turned on for the Worker. */
@@ -12910,17 +16100,30 @@ export interface PatchScriptSettingResponse {
   /** List of Workers that will consume logs from the attached Worker. */
   tailConsumers?: ScriptsSettingsEditResponseTailConsumersList | null;
 }
+const PatchScriptSettingResponse = /*@__PURE__*/ __L.at(
+  __c65,
+  7,
+) as any as S.Schema<PatchScriptSettingResponse>;
+
 export interface PutAccountSettingRequest {
   /** Identifier. */
   accountId: string;
   defaultUsageModel?: string;
   greenCompute?: boolean;
 }
+const PutAccountSettingRequest = /*@__PURE__*/ __L.at(
+  __c66,
+  0,
+) as any as S.Schema<PutAccountSettingRequest>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PutAccountSettingResponse {
   defaultUsageModel?: string | null;
   greenCompute?: boolean | null;
 }
+const PutAccountSettingResponse =
+  GetAccountSettingResponse as any as S.Schema<PutAccountSettingResponse>;
+
 export interface PutDomainRequest {
   /** Identifier. */
   accountId: string;
@@ -12935,6 +16138,8 @@ export interface PutDomainRequest {
   /** Serve Worker Previews on this custom domain as `<preview-name>.<hostname>`. */
   previewsEnabled?: boolean;
 }
+const PutDomainRequest = /*@__PURE__*/ __L.at(__c66, 1) as any as S.Schema<PutDomainRequest>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PutDomainResponse {
   /** Immutable ID of the domain. */
@@ -12954,7 +16159,11 @@ export interface PutDomainResponse {
   /** Whether Worker Previews are served on this custom domain. */
   previewsEnabled?: boolean | null;
 }
+const PutDomainResponse = GetDomainResponse as any as S.Schema<PutDomainResponse>;
+
 export type ScriptsUpdateRequestBindingsInherit = "strict";
+const ScriptsUpdateRequestBindingsInherit = S.String;
+
 export interface PutScriptRequest {
   /** Identifier. */
   accountId: string;
@@ -12966,9 +16175,14 @@ export interface PutScriptRequest {
   /** Module / asset file parts, appended under their own filenames. */
   files?: File | Blob | (File | Blob)[];
 }
+const PutScriptRequest = /*@__PURE__*/ __L.at(__c66, 2) as any as S.Schema<PutScriptRequest>;
+
 export type ScriptsUpdateResponseCacheOptions =
   BetaWorkersCreateResponsePreviewsBaseConfigCacheOptions;
 export type ScriptsUpdateResponseCompatibilityFlagsList = Array<string>;
+const ScriptsUpdateResponseCompatibilityFlagsList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<ScriptsUpdateResponseCompatibilityFlagsList>;
+
 export type ScriptsUpdateResponseExportsValueWorkerType = "worker";
 export type ScriptsUpdateResponseExportsValueWorkerCache =
   BetaWorkersVersionsCreateRequestExportsValueWorkerCache;
@@ -13054,10 +16268,20 @@ export type ScriptsUpdateResponseExportsValue =
   | ScriptsUpdateResponseExportsValueWorkersDurableObjectRenamedExport
   | ScriptsUpdateResponseExportsValueWorkersDurableObjectTransferredExport
   | ScriptsUpdateResponseExportsValueWorkersDurableObjectExpectingTransferExport;
+const ScriptsUpdateResponseExportsValue = /*@__PURE__*/ __L.at(__c66, 3);
+
 export type ScriptsUpdateResponseExportsMap = {
   [key: string]: ScriptsUpdateResponseExportsValue | undefined;
 };
+const ScriptsUpdateResponseExportsMap = /*@__PURE__*/ __L.at(
+  __c66,
+  4,
+) as any as S.Schema<ScriptsUpdateResponseExportsMap>;
+
 export type ScriptsUpdateResponseHandlersList = Array<string>;
+const ScriptsUpdateResponseHandlersList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<ScriptsUpdateResponseHandlersList>;
+
 export type ScriptsUpdateResponseNamedHandlersItemHandlersList = Array<string>;
 export interface ScriptsUpdateResponseNamedHandlersItem {
   /** The names of handlers exported as part of the named export. */
@@ -13066,6 +16290,9 @@ export interface ScriptsUpdateResponseNamedHandlersItem {
   name?: string | null;
 }
 export type ScriptsUpdateResponseNamedHandlersList = Array<ScriptsUpdateResponseNamedHandlersItem>;
+const ScriptsUpdateResponseNamedHandlersList =
+  ScriptsListResultItemNamedHandlersList as any as S.Schema<ScriptsUpdateResponseNamedHandlersList>;
+
 export type ScriptsUpdateResponseObservabilityIssues = BetaWorkersCreateResponseObservabilityIssues;
 export type ScriptsUpdateResponseObservabilityLogsDestinationsList = Array<string>;
 export interface ScriptsUpdateResponseObservabilityLogs {
@@ -13080,8 +16307,16 @@ export interface ScriptsUpdateResponseObservabilityLogs {
   /** Whether log persistence is enabled for the Worker. */
   persist?: boolean | null;
 }
+const ScriptsUpdateResponseObservabilityLogs =
+  ScriptsSettingsGetResponseObservabilityLogs as any as S.Schema<ScriptsUpdateResponseObservabilityLogs>;
+
 export type ScriptsUpdateResponseObservabilityTracesDestinationsList = Array<string>;
+const ScriptsUpdateResponseObservabilityTracesDestinationsList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<ScriptsUpdateResponseObservabilityTracesDestinationsList>;
+
 export type ScriptsUpdateResponseObservabilityTracesPropagationPolicy = "authenticated" | "accept";
+const ScriptsUpdateResponseObservabilityTracesPropagationPolicy = S.String;
+
 export interface ScriptsUpdateResponseObservabilityTraces {
   /** A list of destinations where traces will be exported to. */
   destinations?: ScriptsUpdateResponseObservabilityTracesDestinationsList | null;
@@ -13094,6 +16329,11 @@ export interface ScriptsUpdateResponseObservabilityTraces {
   /** Controls how inbound trace context (traceparent/tracestate) headers on incoming requests are handled. "authenticated" honors inbound trace context only when accompanied by a valid trace auth token. "accept" unconditionally accepts inbound trace context. Requires the trace propagation feature to be enabled. Returns null when the trace propagation feature is not enabled for the account. */
   propagationPolicy?: ScriptsUpdateResponseObservabilityTracesPropagationPolicy | null;
 }
+const ScriptsUpdateResponseObservabilityTraces = /*@__PURE__*/ __L.at(
+  __c66,
+  5,
+) as any as S.Schema<ScriptsUpdateResponseObservabilityTraces>;
+
 export interface ScriptsUpdateResponseObservability {
   /** Whether observability is enabled for the Worker. */
   enabled: boolean;
@@ -13108,6 +16348,11 @@ export interface ScriptsUpdateResponseObservability {
   /** Trace settings for the Worker. */
   traces?: ScriptsUpdateResponseObservabilityTraces | null;
 }
+const ScriptsUpdateResponseObservability = /*@__PURE__*/ __L.at(
+  __c66,
+  6,
+) as any as S.Schema<ScriptsUpdateResponseObservability>;
+
 export type ScriptsUpdateResponsePlacementCase0Mode = "smart";
 export type ScriptsUpdateResponsePlacementCase0Status =
   | "SUCCESS"
@@ -13243,17 +16488,31 @@ export type ScriptsUpdateResponsePlacement =
   | ScriptsUpdateResponsePlacementCase6
   | ScriptsUpdateResponsePlacementCase7
   | ScriptsUpdateResponsePlacementCase8;
+const ScriptsUpdateResponsePlacement = /*@__PURE__*/ __L.at(__c66, 7);
+
 export type ScriptsUpdateResponsePlacementMode = "smart" | "targeted";
+const ScriptsUpdateResponsePlacementMode = S.String;
+
 export type ScriptsUpdateResponsePlacementStatus =
   | "SUCCESS"
   | "UNSUPPORTED_APPLICATION"
   | "INSUFFICIENT_INVOCATIONS";
+const ScriptsUpdateResponsePlacementStatus = S.String;
+
 export type ScriptsUpdateResponseTagsList = Array<string>;
+const ScriptsUpdateResponseTagsList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<ScriptsUpdateResponseTagsList>;
+
 export type ScriptsUpdateResponseTailConsumersItem =
   ScriptsScriptAndVersionSettingsGetResponseTailConsumersItem;
 export type ScriptsUpdateResponseTailConsumersList =
   Array<ScriptsScriptAndVersionSettingsGetResponseTailConsumersItem>;
+const ScriptsUpdateResponseTailConsumersList =
+  ScriptsScriptAndVersionSettingsGetResponseTailConsumersList as any as S.Schema<ScriptsUpdateResponseTailConsumersList>;
+
 export type ScriptsUpdateResponseUsageModel = "standard" | "bundled" | "unbound";
+const ScriptsUpdateResponseUsageModel = S.String;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PutScriptResponse {
   startupTimeMs: number;
@@ -13304,13 +16563,23 @@ export interface PutScriptResponse {
   /** Usage model for the Worker invocations. */
   usageModel?: ScriptsUpdateResponseUsageModel | null;
 }
+const PutScriptResponse = /*@__PURE__*/ __L.at(__c67, 0) as any as S.Schema<PutScriptResponse>;
+
 export interface ScriptsContentUpdateRequestMetadata {
   /** Name of the uploaded file that contains the Worker script (e.g. the file adding a listener to the `fetch` event). Indicates a `service worker syntax` Worker. */
   bodyPart?: string;
   /** Name of the uploaded file that contains the main module (e.g. the file exporting a `fetch` handler). Indicates a `module syntax` Worker. */
   mainModule?: string;
 }
+const ScriptsContentUpdateRequestMetadata = /*@__PURE__*/ __L.at(
+  __c67,
+  1,
+) as any as S.Schema<ScriptsContentUpdateRequestMetadata>;
+
 export type ScriptsContentUpdateRequestFilesList = Array<string>;
+const ScriptsContentUpdateRequestFilesList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<ScriptsContentUpdateRequestFilesList>;
+
 export interface PutScriptContentRequest {
   /** Identifier. */
   accountId: string;
@@ -13323,9 +16592,17 @@ export interface PutScriptContentRequest {
   cfworkerbodypart?: string;
   cfworkermainmodulepart?: string;
 }
+const PutScriptContentRequest = /*@__PURE__*/ __L.at(
+  __c67,
+  2,
+) as any as S.Schema<PutScriptContentRequest>;
+
 export type ScriptsContentUpdateResponseCacheOptions =
   BetaWorkersCreateResponsePreviewsBaseConfigCacheOptions;
 export type ScriptsContentUpdateResponseCompatibilityFlagsList = Array<string>;
+const ScriptsContentUpdateResponseCompatibilityFlagsList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<ScriptsContentUpdateResponseCompatibilityFlagsList>;
+
 export type ScriptsContentUpdateResponseExportsValueWorkerType = "worker";
 export type ScriptsContentUpdateResponseExportsValueWorkerCache =
   BetaWorkersVersionsCreateRequestExportsValueWorkerCache;
@@ -13414,10 +16691,20 @@ export type ScriptsContentUpdateResponseExportsValue =
   | ScriptsContentUpdateResponseExportsValueWorkersDurableObjectRenamedExport
   | ScriptsContentUpdateResponseExportsValueWorkersDurableObjectTransferredExport
   | ScriptsContentUpdateResponseExportsValueWorkersDurableObjectExpectingTransferExport;
+const ScriptsContentUpdateResponseExportsValue = /*@__PURE__*/ __L.at(__c67, 3);
+
 export type ScriptsContentUpdateResponseExportsMap = {
   [key: string]: ScriptsContentUpdateResponseExportsValue | undefined;
 };
+const ScriptsContentUpdateResponseExportsMap = /*@__PURE__*/ __L.at(
+  __c67,
+  4,
+) as any as S.Schema<ScriptsContentUpdateResponseExportsMap>;
+
 export type ScriptsContentUpdateResponseHandlersList = Array<string>;
+const ScriptsContentUpdateResponseHandlersList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<ScriptsContentUpdateResponseHandlersList>;
+
 export type ScriptsContentUpdateResponseNamedHandlersItemHandlersList = Array<string>;
 export interface ScriptsContentUpdateResponseNamedHandlersItem {
   /** The names of handlers exported as part of the named export. */
@@ -13427,6 +16714,9 @@ export interface ScriptsContentUpdateResponseNamedHandlersItem {
 }
 export type ScriptsContentUpdateResponseNamedHandlersList =
   Array<ScriptsContentUpdateResponseNamedHandlersItem>;
+const ScriptsContentUpdateResponseNamedHandlersList =
+  ScriptsListResultItemNamedHandlersList as any as S.Schema<ScriptsContentUpdateResponseNamedHandlersList>;
+
 export type ScriptsContentUpdateResponseObservabilityIssues =
   BetaWorkersCreateResponseObservabilityIssues;
 export type ScriptsContentUpdateResponseObservabilityLogsDestinationsList = Array<string>;
@@ -13442,10 +16732,18 @@ export interface ScriptsContentUpdateResponseObservabilityLogs {
   /** Whether log persistence is enabled for the Worker. */
   persist?: boolean | null;
 }
+const ScriptsContentUpdateResponseObservabilityLogs =
+  ScriptsSettingsEditResponseObservabilityLogs as any as S.Schema<ScriptsContentUpdateResponseObservabilityLogs>;
+
 export type ScriptsContentUpdateResponseObservabilityTracesDestinationsList = Array<string>;
+const ScriptsContentUpdateResponseObservabilityTracesDestinationsList =
+  BetaWorkersCreateRequestPreviewsBaseConfigObservabilityLogsDestinationsList as any as S.Schema<ScriptsContentUpdateResponseObservabilityTracesDestinationsList>;
+
 export type ScriptsContentUpdateResponseObservabilityTracesPropagationPolicy =
   | "authenticated"
   | "accept";
+const ScriptsContentUpdateResponseObservabilityTracesPropagationPolicy = S.String;
+
 export interface ScriptsContentUpdateResponseObservabilityTraces {
   /** A list of destinations where traces will be exported to. */
   destinations?: ScriptsContentUpdateResponseObservabilityTracesDestinationsList | null;
@@ -13458,6 +16756,11 @@ export interface ScriptsContentUpdateResponseObservabilityTraces {
   /** Controls how inbound trace context (traceparent/tracestate) headers on incoming requests are handled. "authenticated" honors inbound trace context only when accompanied by a valid trace auth token. "accept" unconditionally accepts inbound trace context. Requires the trace propagation feature to be enabled. Returns null when the trace propagation feature is not enabled for the account. */
   propagationPolicy?: ScriptsContentUpdateResponseObservabilityTracesPropagationPolicy | null;
 }
+const ScriptsContentUpdateResponseObservabilityTraces = /*@__PURE__*/ __L.at(
+  __c67,
+  5,
+) as any as S.Schema<ScriptsContentUpdateResponseObservabilityTraces>;
+
 export interface ScriptsContentUpdateResponseObservability {
   /** Whether observability is enabled for the Worker. */
   enabled: boolean;
@@ -13472,6 +16775,11 @@ export interface ScriptsContentUpdateResponseObservability {
   /** Trace settings for the Worker. */
   traces?: ScriptsContentUpdateResponseObservabilityTraces | null;
 }
+const ScriptsContentUpdateResponseObservability = /*@__PURE__*/ __L.at(
+  __c67,
+  6,
+) as any as S.Schema<ScriptsContentUpdateResponseObservability>;
+
 export type ScriptsContentUpdateResponsePlacementCase0Mode = "smart";
 export type ScriptsContentUpdateResponsePlacementCase0Status =
   | "SUCCESS"
@@ -13602,17 +16910,31 @@ export type ScriptsContentUpdateResponsePlacement =
   | ScriptsContentUpdateResponsePlacementCase5
   | ScriptsContentUpdateResponsePlacementCase6
   | ScriptsContentUpdateResponsePlacementCase7;
+const ScriptsContentUpdateResponsePlacement = /*@__PURE__*/ __L.at(__c67, 7);
+
 export type ScriptsContentUpdateResponsePlacementMode = "smart" | "targeted";
+const ScriptsContentUpdateResponsePlacementMode = S.String;
+
 export type ScriptsContentUpdateResponsePlacementStatus =
   | "SUCCESS"
   | "UNSUPPORTED_APPLICATION"
   | "INSUFFICIENT_INVOCATIONS";
+const ScriptsContentUpdateResponsePlacementStatus = S.String;
+
 export type ScriptsContentUpdateResponseTagsList = Array<string>;
+const ScriptsContentUpdateResponseTagsList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<ScriptsContentUpdateResponseTagsList>;
+
 export type ScriptsContentUpdateResponseTailConsumersItem =
   ScriptsScriptAndVersionSettingsGetResponseTailConsumersItem;
 export type ScriptsContentUpdateResponseTailConsumersList =
   Array<ScriptsScriptAndVersionSettingsGetResponseTailConsumersItem>;
+const ScriptsContentUpdateResponseTailConsumersList =
+  ScriptsScriptAndVersionSettingsGetResponseTailConsumersList as any as S.Schema<ScriptsContentUpdateResponseTailConsumersList>;
+
 export type ScriptsContentUpdateResponseUsageModel = "standard" | "bundled" | "unbound";
+const ScriptsContentUpdateResponseUsageModel = S.String;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PutScriptContentResponse {
   /** The name used to identify the script. */
@@ -13662,6 +16984,11 @@ export interface PutScriptContentResponse {
   /** Usage model for the Worker invocations. */
   usageModel?: ScriptsContentUpdateResponseUsageModel | null;
 }
+const PutScriptContentResponse = /*@__PURE__*/ __L.at(
+  __c68,
+  0,
+) as any as S.Schema<PutScriptContentResponse>;
+
 export interface PutScriptEventTriggersRequest {
   /** Identifier. */
   accountId: string;
@@ -13669,13 +16996,31 @@ export interface PutScriptEventTriggersRequest {
   scriptName: string;
   body: EventTriggerList;
 }
+const PutScriptEventTriggersRequest = /*@__PURE__*/ __L.at(
+  __c68,
+  1,
+) as any as S.Schema<PutScriptEventTriggersRequest>;
+
 export type PutScriptEventTriggersResponse = ScriptEventTriggers;
+const PutScriptEventTriggersResponse =
+  GetScriptEventTriggersResponse as any as S.Schema<PutScriptEventTriggersResponse>;
+
 export interface ScriptsSchedulesUpdateRequestBodyItem {
   cron: string;
   createdOn?: string;
   modifiedOn?: string;
 }
+const ScriptsSchedulesUpdateRequestBodyItem = /*@__PURE__*/ __L.at(
+  __c68,
+  2,
+) as any as S.Schema<ScriptsSchedulesUpdateRequestBodyItem>;
+
 export type ScriptsSchedulesUpdateRequestBodyList = Array<ScriptsSchedulesUpdateRequestBodyItem>;
+const ScriptsSchedulesUpdateRequestBodyList = /*@__PURE__*/ __L.at(
+  __c68,
+  3,
+) as any as S.Schema<ScriptsSchedulesUpdateRequestBodyList>;
+
 export interface PutScriptScheduleRequest {
   /** Identifier. */
   accountId: string;
@@ -13683,6 +17028,11 @@ export interface PutScriptScheduleRequest {
   scriptName: string;
   body: ScriptsSchedulesUpdateRequestBodyList;
 }
+const PutScriptScheduleRequest = /*@__PURE__*/ __L.at(
+  __c68,
+  4,
+) as any as S.Schema<PutScriptScheduleRequest>;
+
 export type ScriptsSchedulesUpdateResponseSchedulesItem = ScriptsSchedulesGetResponseSchedulesItem;
 export type ScriptsSchedulesUpdateResponseSchedulesList =
   Array<ScriptsSchedulesGetResponseSchedulesItem>;
@@ -13690,8 +17040,15 @@ export type ScriptsSchedulesUpdateResponseSchedulesList =
 export interface PutScriptScheduleResponse {
   schedules: ScriptsSchedulesUpdateResponseSchedulesList;
 }
+const PutScriptScheduleResponse =
+  GetScriptScheduleResponse as any as S.Schema<PutScriptScheduleResponse>;
+
 export type ScriptsSecretsUpdateRequestType = "secret_text" | "secret_key";
+const ScriptsSecretsUpdateRequestType = S.String;
+
 export type ScriptsSecretsUpdateRequestFormat = "raw" | "pkcs8" | "spki" | "jwk";
+const ScriptsSecretsUpdateRequestFormat = S.String;
+
 export type ScriptsSecretsUpdateRequestUsagesItem =
   | "encrypt"
   | "decrypt"
@@ -13704,6 +17061,9 @@ export type ScriptsSecretsUpdateRequestUsagesItem =
 export type ScriptsSecretsUpdateRequestUsagesList = Array<
   ScriptsSecretsUpdateRequestUsagesItem | (string & {})
 >;
+const ScriptsSecretsUpdateRequestUsagesList =
+  ScriptsSecretsBulkUpdateRequestSecretsValueSecretKeyUsagesList as any as S.Schema<ScriptsSecretsUpdateRequestUsagesList>;
+
 export interface PutScriptSecretRequest {
   /** Identifier. */
   accountId: string;
@@ -13726,6 +17086,11 @@ export interface PutScriptSecretRequest {
   /** Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is "jwk". */
   keyJwk?: unknown;
 }
+const PutScriptSecretRequest = /*@__PURE__*/ __L.at(
+  __c68,
+  5,
+) as any as S.Schema<PutScriptSecretRequest>;
+
 export type ScriptsSecretsUpdateResultSecretTextType = "secret_text";
 export interface ScriptsSecretsUpdateResultSecretText {
   /** A JavaScript variable name for the binding. */
@@ -13767,16 +17132,27 @@ export interface ScriptsSecretsUpdateResultSecretKey {
 export type ScriptsSecretsUpdateResult =
   | ScriptsSecretsUpdateResultSecretText
   | ScriptsSecretsUpdateResultSecretKey;
+const ScriptsSecretsUpdateResult = /*@__PURE__*/ __L.at(__c68, 6);
+
 export type PutScriptSecretResponse = ScriptsSecretsUpdateResult;
+const PutScriptSecretResponse = /*@__PURE__*/ __L.at(
+  __c68,
+  7,
+) as any as S.Schema<PutScriptSecretResponse>;
+
 export interface PutSubdomainRequest {
   /** Identifier. */
   accountId: string;
   subdomain: string;
 }
+const PutSubdomainRequest = /*@__PURE__*/ __L.at(__c69, 0) as any as S.Schema<PutSubdomainRequest>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PutSubdomainResponse {
   subdomain: string;
 }
+const PutSubdomainResponse = GetSubdomainResponse as any as S.Schema<PutSubdomainResponse>;
+
 export type ObservabilityTelemetryQueryRequestTimeframe =
   ObservabilitySharedQueriesCreateRequestTimeframe;
 export type ObservabilityTelemetryQueryRequestChartType =
@@ -13784,7 +17160,11 @@ export type ObservabilityTelemetryQueryRequestChartType =
   | "timeseries"
   | "aggregate"
   | "distribution";
+const ObservabilityTelemetryQueryRequestChartType = S.String;
+
 export type ObservabilityTelemetryQueryRequestDistributionScale = "log" | "linear";
+const ObservabilityTelemetryQueryRequestDistributionScale = S.String;
+
 export type ObservabilityTelemetryQueryRequestParametersCalculationsItemCase0Operator =
   | "count"
   | "COUNT";
@@ -13864,14 +17244,26 @@ export interface ObservabilityTelemetryQueryRequestParametersCalculationsItemCas
 export type ObservabilityTelemetryQueryRequestParametersCalculationsItem =
   | ObservabilityTelemetryQueryRequestParametersCalculationsItemCase0
   | ObservabilityTelemetryQueryRequestParametersCalculationsItemCase1;
+const ObservabilityTelemetryQueryRequestParametersCalculationsItem = /*@__PURE__*/ __L.at(__c69, 1);
+
 export type ObservabilityTelemetryQueryRequestParametersCalculationsList =
   Array<ObservabilityTelemetryQueryRequestParametersCalculationsItem>;
+const ObservabilityTelemetryQueryRequestParametersCalculationsList = /*@__PURE__*/ __L.at(
+  __c69,
+  2,
+) as any as S.Schema<ObservabilityTelemetryQueryRequestParametersCalculationsList>;
+
 export type ObservabilityTelemetryQueryRequestParametersDatasetsList = Array<string>;
+const ObservabilityTelemetryQueryRequestParametersDatasetsList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<ObservabilityTelemetryQueryRequestParametersDatasetsList>;
+
 export type ObservabilityTelemetryQueryRequestParametersFilterCombination =
   | "and"
   | "or"
   | "AND"
   | "OR";
+const ObservabilityTelemetryQueryRequestParametersFilterCombination = S.String;
+
 export type ObservabilityTelemetryQueryRequestParametersFiltersItemCase0FilterCombination =
   | "and"
   | "or"
@@ -14027,8 +17419,15 @@ export interface ObservabilityTelemetryQueryRequestParametersFiltersItemWorkersO
 export type ObservabilityTelemetryQueryRequestParametersFiltersItem =
   | ObservabilityTelemetryQueryRequestParametersFiltersItemCase0
   | ObservabilityTelemetryQueryRequestParametersFiltersItemWorkersObservabilityFilterLeaf;
+const ObservabilityTelemetryQueryRequestParametersFiltersItem = /*@__PURE__*/ __L.at(__c69, 3);
+
 export type ObservabilityTelemetryQueryRequestParametersFiltersList =
   Array<ObservabilityTelemetryQueryRequestParametersFiltersItem>;
+const ObservabilityTelemetryQueryRequestParametersFiltersList = /*@__PURE__*/ __L.at(
+  __c69,
+  4,
+) as any as S.Schema<ObservabilityTelemetryQueryRequestParametersFiltersList>;
+
 export type ObservabilityTelemetryQueryRequestParametersGroupBysItemType =
   | "string"
   | "number"
@@ -14041,6 +17440,9 @@ export interface ObservabilityTelemetryQueryRequestParametersGroupBysItem {
 }
 export type ObservabilityTelemetryQueryRequestParametersGroupBysList =
   Array<ObservabilityTelemetryQueryRequestParametersGroupBysItem>;
+const ObservabilityTelemetryQueryRequestParametersGroupBysList =
+  ObservabilityQueriesCreateResponseParametersGroupBysList as any as S.Schema<ObservabilityTelemetryQueryRequestParametersGroupBysList>;
+
 export type ObservabilityTelemetryQueryRequestParametersHavingsItemOperation =
   | "eq"
   | "neq"
@@ -14058,7 +17460,12 @@ export interface ObservabilityTelemetryQueryRequestParametersHavingsItem {
 }
 export type ObservabilityTelemetryQueryRequestParametersHavingsList =
   Array<ObservabilityTelemetryQueryRequestParametersHavingsItem>;
+const ObservabilityTelemetryQueryRequestParametersHavingsList =
+  ObservabilityQueriesCreateRequestParametersHavingsList as any as S.Schema<ObservabilityTelemetryQueryRequestParametersHavingsList>;
+
 export type ObservabilityTelemetryQueryRequestParametersNeedleValue = string | number | boolean;
+const ObservabilityTelemetryQueryRequestParametersNeedleValue = /*@__PURE__*/ __L.at(__c69, 5);
+
 export interface ObservabilityTelemetryQueryRequestParametersNeedle {
   /** The text or pattern to search for. */
   value: ObservabilityTelemetryQueryRequestParametersNeedleValue;
@@ -14067,6 +17474,11 @@ export interface ObservabilityTelemetryQueryRequestParametersNeedle {
   /** When true, performs a case-sensitive search. Defaults to case-insensitive. */
   matchCase?: boolean;
 }
+const ObservabilityTelemetryQueryRequestParametersNeedle = /*@__PURE__*/ __L.at(
+  __c69,
+  6,
+) as any as S.Schema<ObservabilityTelemetryQueryRequestParametersNeedle>;
+
 export type ObservabilityTelemetryQueryRequestParametersOrderByOrder = "asc" | "desc";
 export interface ObservabilityTelemetryQueryRequestParametersOrderBy {
   /** Alias of the calculation to order results by. Must match the alias (or operator) of a calculation in the query. */
@@ -14074,6 +17486,9 @@ export interface ObservabilityTelemetryQueryRequestParametersOrderBy {
   /** Sort direction: 'asc' for ascending, 'desc' for descending. */
   order?: ObservabilityTelemetryQueryRequestParametersOrderByOrder | (string & {});
 }
+const ObservabilityTelemetryQueryRequestParametersOrderBy =
+  ObservabilityQueriesCreateRequestParametersOrderBy as any as S.Schema<ObservabilityTelemetryQueryRequestParametersOrderBy>;
+
 export interface ObservabilityTelemetryQueryRequestParameters {
   /** Aggregation calculations to compute (e.g. count, avg, p99). Each calculation produces aggregate values and optional time-series data. */
   calculations?: ObservabilityTelemetryQueryRequestParametersCalculationsList;
@@ -14094,6 +17509,11 @@ export interface ObservabilityTelemetryQueryRequestParameters {
   /** Ordering for grouped calculation results. Only effective when a group-by is present. */
   orderBy?: ObservabilityTelemetryQueryRequestParametersOrderBy;
 }
+const ObservabilityTelemetryQueryRequestParameters = /*@__PURE__*/ __L.at(
+  __c69,
+  7,
+) as any as S.Schema<ObservabilityTelemetryQueryRequestParameters>;
+
 export type ObservabilityTelemetryQueryRequestView =
   | "traces"
   | "events"
@@ -14101,6 +17521,8 @@ export type ObservabilityTelemetryQueryRequestView =
   | "invocations"
   | "requests"
   | "agents";
+const ObservabilityTelemetryQueryRequestView = S.String;
+
 export interface QueryObservabilityTelemetryRequest {
   accountId: string;
   /** Identifier for the query. When parameters are omitted, this ID is used to load a previously saved query's parameters. When providing parameters inline, pass any identifier (e.g. an ad-hoc ID). */
@@ -14134,6 +17556,11 @@ export interface QueryObservabilityTelemetryRequest {
   /** Controls the shape of the response. 'events': individual log lines matching the query. 'calculations': aggregated metrics (count, avg, p99, etc.) with optional group-by breakdowns and time-series. 'invocations': events grouped by request ID. 'traces': distributed trace summaries. 'agents': agent-specific trace summaries. */
   view?: ObservabilityTelemetryQueryRequestView | (string & {});
 }
+const QueryObservabilityTelemetryRequest = /*@__PURE__*/ __L.at(
+  __c70,
+  0,
+) as any as S.Schema<QueryObservabilityTelemetryRequest>;
+
 export type ObservabilityTelemetryQueryResponseRunQueryParametersCalculationsItemCase0Operator =
   | "count"
   | "COUNT";
@@ -14197,14 +17624,29 @@ export interface ObservabilityTelemetryQueryResponseRunQueryParametersCalculatio
 export type ObservabilityTelemetryQueryResponseRunQueryParametersCalculationsItem =
   | ObservabilityTelemetryQueryResponseRunQueryParametersCalculationsItemCase0
   | ObservabilityTelemetryQueryResponseRunQueryParametersCalculationsItemCase1;
+const ObservabilityTelemetryQueryResponseRunQueryParametersCalculationsItem = /*@__PURE__*/ __L.at(
+  __c70,
+  1,
+);
+
 export type ObservabilityTelemetryQueryResponseRunQueryParametersCalculationsList =
   Array<ObservabilityTelemetryQueryResponseRunQueryParametersCalculationsItem>;
+const ObservabilityTelemetryQueryResponseRunQueryParametersCalculationsList = /*@__PURE__*/ __L.at(
+  __c70,
+  2,
+) as any as S.Schema<ObservabilityTelemetryQueryResponseRunQueryParametersCalculationsList>;
+
 export type ObservabilityTelemetryQueryResponseRunQueryParametersDatasetsList = Array<string>;
+const ObservabilityTelemetryQueryResponseRunQueryParametersDatasetsList =
+  BetaWorkersCreateRequestPreviewsBaseConfigObservabilityLogsDestinationsList as any as S.Schema<ObservabilityTelemetryQueryResponseRunQueryParametersDatasetsList>;
+
 export type ObservabilityTelemetryQueryResponseRunQueryParametersFilterCombination =
   | "and"
   | "or"
   | "AND"
   | "OR";
+const ObservabilityTelemetryQueryResponseRunQueryParametersFilterCombination = S.String;
+
 export type ObservabilityTelemetryQueryResponseRunQueryParametersFiltersItemCase0FilterCombination =
   | "and"
   | "or"
@@ -14274,8 +17716,18 @@ export interface ObservabilityTelemetryQueryResponseRunQueryParametersFiltersIte
 export type ObservabilityTelemetryQueryResponseRunQueryParametersFiltersItem =
   | ObservabilityTelemetryQueryResponseRunQueryParametersFiltersItemCase0
   | ObservabilityTelemetryQueryResponseRunQueryParametersFiltersItemWorkersObservabilityFilterLeaf;
+const ObservabilityTelemetryQueryResponseRunQueryParametersFiltersItem = /*@__PURE__*/ __L.at(
+  __c70,
+  3,
+);
+
 export type ObservabilityTelemetryQueryResponseRunQueryParametersFiltersList =
   Array<ObservabilityTelemetryQueryResponseRunQueryParametersFiltersItem>;
+const ObservabilityTelemetryQueryResponseRunQueryParametersFiltersList = /*@__PURE__*/ __L.at(
+  __c70,
+  4,
+) as any as S.Schema<ObservabilityTelemetryQueryResponseRunQueryParametersFiltersList>;
+
 export type ObservabilityTelemetryQueryResponseRunQueryParametersGroupBysItemType =
   | "string"
   | "number"
@@ -14286,6 +17738,9 @@ export interface ObservabilityTelemetryQueryResponseRunQueryParametersGroupBysIt
 }
 export type ObservabilityTelemetryQueryResponseRunQueryParametersGroupBysList =
   Array<ObservabilityTelemetryQueryResponseRunQueryParametersGroupBysItem>;
+const ObservabilityTelemetryQueryResponseRunQueryParametersGroupBysList =
+  ObservabilitySharedQueriesGetResponseRunQueryParametersGroupBysList as any as S.Schema<ObservabilityTelemetryQueryResponseRunQueryParametersGroupBysList>;
+
 export type ObservabilityTelemetryQueryResponseRunQueryParametersHavingsItemOperation =
   | "eq"
   | "neq"
@@ -14300,15 +17755,25 @@ export interface ObservabilityTelemetryQueryResponseRunQueryParametersHavingsIte
 }
 export type ObservabilityTelemetryQueryResponseRunQueryParametersHavingsList =
   Array<ObservabilityTelemetryQueryResponseRunQueryParametersHavingsItem>;
+const ObservabilityTelemetryQueryResponseRunQueryParametersHavingsList =
+  ObservabilitySharedQueriesGetResponseRunQueryParametersHavingsList as any as S.Schema<ObservabilityTelemetryQueryResponseRunQueryParametersHavingsList>;
+
 export type ObservabilityTelemetryQueryResponseRunQueryParametersNeedle =
   ObservabilitySharedQueriesGetResponseRunQueryParametersNeedle;
 export type ObservabilityTelemetryQueryResponseRunQueryParametersOrderByOrder = "asc" | "desc";
+const ObservabilityTelemetryQueryResponseRunQueryParametersOrderByOrder = S.String;
+
 export interface ObservabilityTelemetryQueryResponseRunQueryParametersOrderBy {
   /** Configure which Calculation to order the results by. */
   value: string;
   /** Set the order of the results */
   order?: ObservabilityTelemetryQueryResponseRunQueryParametersOrderByOrder | null;
 }
+const ObservabilityTelemetryQueryResponseRunQueryParametersOrderBy = /*@__PURE__*/ __L.at(
+  __c70,
+  5,
+) as any as S.Schema<ObservabilityTelemetryQueryResponseRunQueryParametersOrderBy>;
+
 export interface ObservabilityTelemetryQueryResponseRunQueryParameters {
   /** Create Calculations to compute as part of the query. */
   calculations?: ObservabilityTelemetryQueryResponseRunQueryParametersCalculationsList | null;
@@ -14329,6 +17794,11 @@ export interface ObservabilityTelemetryQueryResponseRunQueryParameters {
   /** Configure the order of the results returned by the query. */
   orderBy?: ObservabilityTelemetryQueryResponseRunQueryParametersOrderBy | null;
 }
+const ObservabilityTelemetryQueryResponseRunQueryParameters = /*@__PURE__*/ __L.at(
+  __c70,
+  6,
+) as any as S.Schema<ObservabilityTelemetryQueryResponseRunQueryParameters>;
+
 export interface ObservabilityTelemetryQueryResponseRunQuery {
   id: string;
   /** If the query wasn't explcitly saved */
@@ -14342,7 +17812,14 @@ export interface ObservabilityTelemetryQueryResponseRunQuery {
   updated: string;
   updatedBy: string;
 }
+const ObservabilityTelemetryQueryResponseRunQuery = /*@__PURE__*/ __L.at(
+  __c70,
+  7,
+) as any as S.Schema<ObservabilityTelemetryQueryResponseRunQuery>;
+
 export type ObservabilityTelemetryQueryResponseRunStatus = "STARTED" | "COMPLETED";
+const ObservabilityTelemetryQueryResponseRunStatus = S.String;
+
 export type ObservabilityTelemetryQueryResponseRunTimeframe =
   ObservabilitySharedQueriesCreateRequestTimeframe;
 export type ObservabilityTelemetryQueryResponseRunStatistics =
@@ -14371,13 +17848,32 @@ export interface ObservabilityTelemetryQueryResponseRun {
   /** ISO-8601 timestamp when the query run was last updated. */
   updated?: string | null;
 }
+const ObservabilityTelemetryQueryResponseRun = /*@__PURE__*/ __L.at(
+  __c71,
+  0,
+) as any as S.Schema<ObservabilityTelemetryQueryResponseRun>;
+
 export type ObservabilityTelemetryQueryResponseStatistics =
   ObservabilitySharedQueriesGetResponseRunStatistics;
 export type ObservabilityTelemetryQueryResponseAgentsItemErrorsList = Array<string>;
+const ObservabilityTelemetryQueryResponseAgentsItemErrorsList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<ObservabilityTelemetryQueryResponseAgentsItemErrorsList>;
+
 export type ObservabilityTelemetryQueryResponseAgentsItemModelsList = Array<string>;
+const ObservabilityTelemetryQueryResponseAgentsItemModelsList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<ObservabilityTelemetryQueryResponseAgentsItemModelsList>;
+
 export type ObservabilityTelemetryQueryResponseAgentsItemProvidersList = Array<string>;
+const ObservabilityTelemetryQueryResponseAgentsItemProvidersList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<ObservabilityTelemetryQueryResponseAgentsItemProvidersList>;
+
 export type ObservabilityTelemetryQueryResponseAgentsItemServicesList = Array<string>;
+const ObservabilityTelemetryQueryResponseAgentsItemServicesList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<ObservabilityTelemetryQueryResponseAgentsItemServicesList>;
+
 export type ObservabilityTelemetryQueryResponseAgentsItemStatus = "completed" | "error";
+const ObservabilityTelemetryQueryResponseAgentsItemStatus = S.String;
+
 export interface ObservabilityTelemetryQueryResponseAgentsItem {
   /** Stable pagination cursor for this agent run. */
   id: string;
@@ -14412,18 +17908,43 @@ export interface ObservabilityTelemetryQueryResponseAgentsItem {
   /** Output tokens summed across chat spans in the run's trace; informational, not billing data. */
   outputTokens?: number | null;
 }
+const ObservabilityTelemetryQueryResponseAgentsItem = /*@__PURE__*/ __L.at(
+  __c71,
+  1,
+) as any as S.Schema<ObservabilityTelemetryQueryResponseAgentsItem>;
+
 export type ObservabilityTelemetryQueryResponseAgentsList =
   Array<ObservabilityTelemetryQueryResponseAgentsItem>;
+const ObservabilityTelemetryQueryResponseAgentsList = /*@__PURE__*/ __L.at(
+  __c71,
+  2,
+) as any as S.Schema<ObservabilityTelemetryQueryResponseAgentsList>;
+
 export type ObservabilityTelemetryQueryResponseCalculationsItemAggregatesItemGroupsItemValue =
   | string
   | number
   | boolean;
+const ObservabilityTelemetryQueryResponseCalculationsItemAggregatesItemGroupsItemValue =
+  /*@__PURE__*/ __L.at(__c71, 3);
+
 export interface ObservabilityTelemetryQueryResponseCalculationsItemAggregatesItemGroupsItem {
   key: string;
   value: ObservabilityTelemetryQueryResponseCalculationsItemAggregatesItemGroupsItemValue;
 }
+const ObservabilityTelemetryQueryResponseCalculationsItemAggregatesItemGroupsItem =
+  /*@__PURE__*/ __L.at(
+    __c71,
+    4,
+  ) as any as S.Schema<ObservabilityTelemetryQueryResponseCalculationsItemAggregatesItemGroupsItem>;
+
 export type ObservabilityTelemetryQueryResponseCalculationsItemAggregatesItemGroupsList =
   Array<ObservabilityTelemetryQueryResponseCalculationsItemAggregatesItemGroupsItem>;
+const ObservabilityTelemetryQueryResponseCalculationsItemAggregatesItemGroupsList =
+  /*@__PURE__*/ __L.at(
+    __c71,
+    5,
+  ) as any as S.Schema<ObservabilityTelemetryQueryResponseCalculationsItemAggregatesItemGroupsList>;
+
 export interface ObservabilityTelemetryQueryResponseCalculationsItemAggregatesItem {
   /** Estimated number of matching events: the sum of the sample intervals of the stored events. It equals the number of stored events when sampleInterval is 1. */
   count: number;
@@ -14435,18 +17956,43 @@ export interface ObservabilityTelemetryQueryResponseCalculationsItemAggregatesIt
   value: number;
   groups?: ObservabilityTelemetryQueryResponseCalculationsItemAggregatesItemGroupsList | null;
 }
+const ObservabilityTelemetryQueryResponseCalculationsItemAggregatesItem = /*@__PURE__*/ __L.at(
+  __c71,
+  6,
+) as any as S.Schema<ObservabilityTelemetryQueryResponseCalculationsItemAggregatesItem>;
+
 export type ObservabilityTelemetryQueryResponseCalculationsItemAggregatesList =
   Array<ObservabilityTelemetryQueryResponseCalculationsItemAggregatesItem>;
+const ObservabilityTelemetryQueryResponseCalculationsItemAggregatesList = /*@__PURE__*/ __L.at(
+  __c71,
+  7,
+) as any as S.Schema<ObservabilityTelemetryQueryResponseCalculationsItemAggregatesList>;
+
 export type ObservabilityTelemetryQueryResponseCalculationsItemSeriesItemDataItemGroupsItemValue =
   | string
   | number
   | boolean;
+const ObservabilityTelemetryQueryResponseCalculationsItemSeriesItemDataItemGroupsItemValue =
+  /*@__PURE__*/ __L.at(__c72, 0);
+
 export interface ObservabilityTelemetryQueryResponseCalculationsItemSeriesItemDataItemGroupsItem {
   key: string;
   value: ObservabilityTelemetryQueryResponseCalculationsItemSeriesItemDataItemGroupsItemValue;
 }
+const ObservabilityTelemetryQueryResponseCalculationsItemSeriesItemDataItemGroupsItem =
+  /*@__PURE__*/ __L.at(
+    __c72,
+    1,
+  ) as any as S.Schema<ObservabilityTelemetryQueryResponseCalculationsItemSeriesItemDataItemGroupsItem>;
+
 export type ObservabilityTelemetryQueryResponseCalculationsItemSeriesItemDataItemGroupsList =
   Array<ObservabilityTelemetryQueryResponseCalculationsItemSeriesItemDataItemGroupsItem>;
+const ObservabilityTelemetryQueryResponseCalculationsItemSeriesItemDataItemGroupsList =
+  /*@__PURE__*/ __L.at(
+    __c72,
+    2,
+  ) as any as S.Schema<ObservabilityTelemetryQueryResponseCalculationsItemSeriesItemDataItemGroupsList>;
+
 export interface ObservabilityTelemetryQueryResponseCalculationsItemSeriesItemDataItem {
   /** Estimated number of matching events: the sum of the sample intervals of the stored events. It equals the number of stored events when sampleInterval is 1. */
   count: number;
@@ -14460,32 +18006,75 @@ export interface ObservabilityTelemetryQueryResponseCalculationsItemSeriesItemDa
   groups?: ObservabilityTelemetryQueryResponseCalculationsItemSeriesItemDataItemGroupsList | null;
   lastSeen?: string | null;
 }
+const ObservabilityTelemetryQueryResponseCalculationsItemSeriesItemDataItem = /*@__PURE__*/ __L.at(
+  __c72,
+  3,
+) as any as S.Schema<ObservabilityTelemetryQueryResponseCalculationsItemSeriesItemDataItem>;
+
 export type ObservabilityTelemetryQueryResponseCalculationsItemSeriesItemDataList =
   Array<ObservabilityTelemetryQueryResponseCalculationsItemSeriesItemDataItem>;
+const ObservabilityTelemetryQueryResponseCalculationsItemSeriesItemDataList = /*@__PURE__*/ __L.at(
+  __c72,
+  4,
+) as any as S.Schema<ObservabilityTelemetryQueryResponseCalculationsItemSeriesItemDataList>;
+
 export interface ObservabilityTelemetryQueryResponseCalculationsItemSeriesItem {
   data: ObservabilityTelemetryQueryResponseCalculationsItemSeriesItemDataList;
   time: string;
 }
+const ObservabilityTelemetryQueryResponseCalculationsItemSeriesItem = /*@__PURE__*/ __L.at(
+  __c72,
+  5,
+) as any as S.Schema<ObservabilityTelemetryQueryResponseCalculationsItemSeriesItem>;
+
 export type ObservabilityTelemetryQueryResponseCalculationsItemSeriesList =
   Array<ObservabilityTelemetryQueryResponseCalculationsItemSeriesItem>;
+const ObservabilityTelemetryQueryResponseCalculationsItemSeriesList = /*@__PURE__*/ __L.at(
+  __c72,
+  6,
+) as any as S.Schema<ObservabilityTelemetryQueryResponseCalculationsItemSeriesList>;
+
 export interface ObservabilityTelemetryQueryResponseCalculationsItem {
   aggregates: ObservabilityTelemetryQueryResponseCalculationsItemAggregatesList;
   calculation: string;
   series: ObservabilityTelemetryQueryResponseCalculationsItemSeriesList;
   alias?: string | null;
 }
+const ObservabilityTelemetryQueryResponseCalculationsItem = /*@__PURE__*/ __L.at(
+  __c72,
+  7,
+) as any as S.Schema<ObservabilityTelemetryQueryResponseCalculationsItem>;
+
 export type ObservabilityTelemetryQueryResponseCalculationsList =
   Array<ObservabilityTelemetryQueryResponseCalculationsItem>;
+const ObservabilityTelemetryQueryResponseCalculationsList = /*@__PURE__*/ __L.at(
+  __c73,
+  0,
+) as any as S.Schema<ObservabilityTelemetryQueryResponseCalculationsList>;
+
 export type ObservabilityTelemetryQueryResponseCompareItemAggregatesItemGroupsItemValue =
   | string
   | number
   | boolean;
+const ObservabilityTelemetryQueryResponseCompareItemAggregatesItemGroupsItemValue =
+  /*@__PURE__*/ __L.at(__c73, 1);
+
 export interface ObservabilityTelemetryQueryResponseCompareItemAggregatesItemGroupsItem {
   key: string;
   value: ObservabilityTelemetryQueryResponseCompareItemAggregatesItemGroupsItemValue;
 }
+const ObservabilityTelemetryQueryResponseCompareItemAggregatesItemGroupsItem = /*@__PURE__*/ __L.at(
+  __c73,
+  2,
+) as any as S.Schema<ObservabilityTelemetryQueryResponseCompareItemAggregatesItemGroupsItem>;
+
 export type ObservabilityTelemetryQueryResponseCompareItemAggregatesItemGroupsList =
   Array<ObservabilityTelemetryQueryResponseCompareItemAggregatesItemGroupsItem>;
+const ObservabilityTelemetryQueryResponseCompareItemAggregatesItemGroupsList = /*@__PURE__*/ __L.at(
+  __c73,
+  3,
+) as any as S.Schema<ObservabilityTelemetryQueryResponseCompareItemAggregatesItemGroupsList>;
+
 export interface ObservabilityTelemetryQueryResponseCompareItemAggregatesItem {
   /** Estimated number of matching events: the sum of the sample intervals of the stored events. It equals the number of stored events when sampleInterval is 1. */
   count: number;
@@ -14497,18 +18086,43 @@ export interface ObservabilityTelemetryQueryResponseCompareItemAggregatesItem {
   value: number;
   groups?: ObservabilityTelemetryQueryResponseCompareItemAggregatesItemGroupsList | null;
 }
+const ObservabilityTelemetryQueryResponseCompareItemAggregatesItem = /*@__PURE__*/ __L.at(
+  __c73,
+  4,
+) as any as S.Schema<ObservabilityTelemetryQueryResponseCompareItemAggregatesItem>;
+
 export type ObservabilityTelemetryQueryResponseCompareItemAggregatesList =
   Array<ObservabilityTelemetryQueryResponseCompareItemAggregatesItem>;
+const ObservabilityTelemetryQueryResponseCompareItemAggregatesList = /*@__PURE__*/ __L.at(
+  __c73,
+  5,
+) as any as S.Schema<ObservabilityTelemetryQueryResponseCompareItemAggregatesList>;
+
 export type ObservabilityTelemetryQueryResponseCompareItemSeriesItemDataItemGroupsItemValue =
   | string
   | number
   | boolean;
+const ObservabilityTelemetryQueryResponseCompareItemSeriesItemDataItemGroupsItemValue =
+  /*@__PURE__*/ __L.at(__c73, 6);
+
 export interface ObservabilityTelemetryQueryResponseCompareItemSeriesItemDataItemGroupsItem {
   key: string;
   value: ObservabilityTelemetryQueryResponseCompareItemSeriesItemDataItemGroupsItemValue;
 }
+const ObservabilityTelemetryQueryResponseCompareItemSeriesItemDataItemGroupsItem =
+  /*@__PURE__*/ __L.at(
+    __c73,
+    7,
+  ) as any as S.Schema<ObservabilityTelemetryQueryResponseCompareItemSeriesItemDataItemGroupsItem>;
+
 export type ObservabilityTelemetryQueryResponseCompareItemSeriesItemDataItemGroupsList =
   Array<ObservabilityTelemetryQueryResponseCompareItemSeriesItemDataItemGroupsItem>;
+const ObservabilityTelemetryQueryResponseCompareItemSeriesItemDataItemGroupsList =
+  /*@__PURE__*/ __L.at(
+    __c74,
+    0,
+  ) as any as S.Schema<ObservabilityTelemetryQueryResponseCompareItemSeriesItemDataItemGroupsList>;
+
 export interface ObservabilityTelemetryQueryResponseCompareItemSeriesItemDataItem {
   /** Estimated number of matching events: the sum of the sample intervals of the stored events. It equals the number of stored events when sampleInterval is 1. */
   count: number;
@@ -14522,29 +18136,80 @@ export interface ObservabilityTelemetryQueryResponseCompareItemSeriesItemDataIte
   groups?: ObservabilityTelemetryQueryResponseCompareItemSeriesItemDataItemGroupsList | null;
   lastSeen?: string | null;
 }
+const ObservabilityTelemetryQueryResponseCompareItemSeriesItemDataItem = /*@__PURE__*/ __L.at(
+  __c74,
+  1,
+) as any as S.Schema<ObservabilityTelemetryQueryResponseCompareItemSeriesItemDataItem>;
+
 export type ObservabilityTelemetryQueryResponseCompareItemSeriesItemDataList =
   Array<ObservabilityTelemetryQueryResponseCompareItemSeriesItemDataItem>;
+const ObservabilityTelemetryQueryResponseCompareItemSeriesItemDataList = /*@__PURE__*/ __L.at(
+  __c74,
+  2,
+) as any as S.Schema<ObservabilityTelemetryQueryResponseCompareItemSeriesItemDataList>;
+
 export interface ObservabilityTelemetryQueryResponseCompareItemSeriesItem {
   data: ObservabilityTelemetryQueryResponseCompareItemSeriesItemDataList;
   time: string;
 }
+const ObservabilityTelemetryQueryResponseCompareItemSeriesItem = /*@__PURE__*/ __L.at(
+  __c74,
+  3,
+) as any as S.Schema<ObservabilityTelemetryQueryResponseCompareItemSeriesItem>;
+
 export type ObservabilityTelemetryQueryResponseCompareItemSeriesList =
   Array<ObservabilityTelemetryQueryResponseCompareItemSeriesItem>;
+const ObservabilityTelemetryQueryResponseCompareItemSeriesList = /*@__PURE__*/ __L.at(
+  __c74,
+  4,
+) as any as S.Schema<ObservabilityTelemetryQueryResponseCompareItemSeriesList>;
+
 export interface ObservabilityTelemetryQueryResponseCompareItem {
   aggregates: ObservabilityTelemetryQueryResponseCompareItemAggregatesList;
   calculation: string;
   series: ObservabilityTelemetryQueryResponseCompareItemSeriesList;
   alias?: string | null;
 }
+const ObservabilityTelemetryQueryResponseCompareItem = /*@__PURE__*/ __L.at(
+  __c74,
+  5,
+) as any as S.Schema<ObservabilityTelemetryQueryResponseCompareItem>;
+
 export type ObservabilityTelemetryQueryResponseCompareList =
   Array<ObservabilityTelemetryQueryResponseCompareItem>;
+const ObservabilityTelemetryQueryResponseCompareList = /*@__PURE__*/ __L.at(
+  __c74,
+  6,
+) as any as S.Schema<ObservabilityTelemetryQueryResponseCompareList>;
+
 export type ObservabilityTelemetryQueryResponseDistributionBinsList = Array<string>;
+const ObservabilityTelemetryQueryResponseDistributionBinsList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<ObservabilityTelemetryQueryResponseDistributionBinsList>;
+
 export type ObservabilityTelemetryQueryResponseDistributionBucketBoundariesList = Array<number>;
+const ObservabilityTelemetryQueryResponseDistributionBucketBoundariesList =
+  ObservabilitySharedQueriesGetResponseDistributionBucketBoundariesList as any as S.Schema<ObservabilityTelemetryQueryResponseDistributionBucketBoundariesList>;
+
 export type ObservabilityTelemetryQueryResponseDistributionBucketMode = "log" | "linear";
+const ObservabilityTelemetryQueryResponseDistributionBucketMode = S.String;
+
 export type ObservabilityTelemetryQueryResponseDistributionBucketsList = Array<string>;
+const ObservabilityTelemetryQueryResponseDistributionBucketsList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<ObservabilityTelemetryQueryResponseDistributionBucketsList>;
+
 export type ObservabilityTelemetryQueryResponseDistributionMatrixItemList = Array<number>;
+const ObservabilityTelemetryQueryResponseDistributionMatrixItemList = /*@__PURE__*/ __L.at(
+  __c74,
+  7,
+) as any as S.Schema<ObservabilityTelemetryQueryResponseDistributionMatrixItemList>;
+
 export type ObservabilityTelemetryQueryResponseDistributionMatrixList =
   Array<ObservabilityTelemetryQueryResponseDistributionMatrixItemList>;
+const ObservabilityTelemetryQueryResponseDistributionMatrixList = /*@__PURE__*/ __L.at(
+  __c75,
+  0,
+) as any as S.Schema<ObservabilityTelemetryQueryResponseDistributionMatrixList>;
+
 export interface ObservabilityTelemetryQueryResponseDistribution {
   /** Time-bucket labels (ISO-8601 strings), one per matrix column. */
   bins: ObservabilityTelemetryQueryResponseDistributionBinsList;
@@ -14557,6 +18222,11 @@ export interface ObservabilityTelemetryQueryResponseDistribution {
   /** Sampling-corrected counts. matrix[bucketIdx][binIdx] is the estimated number of events in value-bucket 'bucketIdx' during time-bin 'binIdx'. */
   matrix: ObservabilityTelemetryQueryResponseDistributionMatrixList;
 }
+const ObservabilityTelemetryQueryResponseDistribution = /*@__PURE__*/ __L.at(
+  __c75,
+  1,
+) as any as S.Schema<ObservabilityTelemetryQueryResponseDistribution>;
+
 export type ObservabilityTelemetryQueryResponseEventsEventsItemMetadata =
   ObservabilitySharedQueriesGetResponseEventsEventsItemMetadata;
 export type ObservabilityTelemetryQueryResponseEventsEventsItemSourceCase1Map = {
@@ -14565,9 +18235,14 @@ export type ObservabilityTelemetryQueryResponseEventsEventsItemSourceCase1Map = 
 export type ObservabilityTelemetryQueryResponseEventsEventsItemSource =
   | string
   | ObservabilityTelemetryQueryResponseEventsEventsItemSourceCase1Map;
+const ObservabilityTelemetryQueryResponseEventsEventsItemSource = /*@__PURE__*/ __L.at(__c75, 2);
+
 export type ObservabilityTelemetryQueryResponseEventsEventsItemContainersMap = {
   [key: string]: unknown | undefined;
 };
+const ObservabilityTelemetryQueryResponseEventsEventsItemContainersMap =
+  ObservabilitySharedQueriesGetResponseEventsEventsItemSourceCase1Map as any as S.Schema<ObservabilityTelemetryQueryResponseEventsEventsItemContainersMap>;
+
 export type ObservabilityTelemetryQueryResponseEventsEventsItemWorkersCase0EventType =
   | "fetch"
   | "scheduled"
@@ -14655,6 +18330,8 @@ export interface ObservabilityTelemetryQueryResponseEventsEventsItemWorkersCase1
 export type ObservabilityTelemetryQueryResponseEventsEventsItemWorkers =
   | ObservabilityTelemetryQueryResponseEventsEventsItemWorkersCase0
   | ObservabilityTelemetryQueryResponseEventsEventsItemWorkersCase1;
+const ObservabilityTelemetryQueryResponseEventsEventsItemWorkers = /*@__PURE__*/ __L.at(__c75, 3);
+
 export interface ObservabilityTelemetryQueryResponseEventsEventsItem {
   /** Structured metadata extracted from the event. These fields are indexed and available for filtering and aggregation. */
   metadata: ObservabilitySharedQueriesGetResponseEventsEventsItemMetadata;
@@ -14669,21 +18346,44 @@ export interface ObservabilityTelemetryQueryResponseEventsEventsItem {
   /** Cloudflare Workers event information that enriches your logs for identifying and debugging issues. */
   workers?: ObservabilityTelemetryQueryResponseEventsEventsItemWorkers | null;
 }
+const ObservabilityTelemetryQueryResponseEventsEventsItem = /*@__PURE__*/ __L.at(
+  __c75,
+  4,
+) as any as S.Schema<ObservabilityTelemetryQueryResponseEventsEventsItem>;
+
 export type ObservabilityTelemetryQueryResponseEventsEventsList =
   Array<ObservabilityTelemetryQueryResponseEventsEventsItem>;
+const ObservabilityTelemetryQueryResponseEventsEventsList = /*@__PURE__*/ __L.at(
+  __c75,
+  5,
+) as any as S.Schema<ObservabilityTelemetryQueryResponseEventsEventsList>;
+
 export type ObservabilityTelemetryQueryResponseEventsFieldsItem =
   ObservabilitySharedQueriesGetResponseEventsFieldsItem;
 export type ObservabilityTelemetryQueryResponseEventsFieldsList =
   Array<ObservabilitySharedQueriesGetResponseEventsFieldsItem>;
+const ObservabilityTelemetryQueryResponseEventsFieldsList =
+  ObservabilitySharedQueriesGetResponseEventsFieldsList as any as S.Schema<ObservabilityTelemetryQueryResponseEventsFieldsList>;
+
 export type ObservabilityTelemetryQueryResponseEventsSeriesItemDataItemAggregates =
   ObservabilitySharedQueriesGetResponseEventsSeriesItemDataItemAggregates;
 export type ObservabilityTelemetryQueryResponseEventsSeriesItemDataItemGroupsValue =
   | string
   | number
   | boolean;
+const ObservabilityTelemetryQueryResponseEventsSeriesItemDataItemGroupsValue = /*@__PURE__*/ __L.at(
+  __c75,
+  6,
+);
+
 export type ObservabilityTelemetryQueryResponseEventsSeriesItemDataItemGroupsMap = {
   [key: string]: ObservabilityTelemetryQueryResponseEventsSeriesItemDataItemGroupsValue | undefined;
 };
+const ObservabilityTelemetryQueryResponseEventsSeriesItemDataItemGroupsMap = /*@__PURE__*/ __L.at(
+  __c75,
+  7,
+) as any as S.Schema<ObservabilityTelemetryQueryResponseEventsSeriesItemDataItemGroupsMap>;
+
 export interface ObservabilityTelemetryQueryResponseEventsSeriesItemDataItem {
   aggregates: ObservabilitySharedQueriesGetResponseEventsSeriesItemDataItemAggregates;
   /** Estimated number of matching events: the sum of the sample intervals of the stored events. It equals the number of stored events when sampleInterval is 1. */
@@ -14696,14 +18396,34 @@ export interface ObservabilityTelemetryQueryResponseEventsSeriesItemDataItem {
   /** Groups in the query results. */
   groups?: ObservabilityTelemetryQueryResponseEventsSeriesItemDataItemGroupsMap | null;
 }
+const ObservabilityTelemetryQueryResponseEventsSeriesItemDataItem = /*@__PURE__*/ __L.at(
+  __c76,
+  0,
+) as any as S.Schema<ObservabilityTelemetryQueryResponseEventsSeriesItemDataItem>;
+
 export type ObservabilityTelemetryQueryResponseEventsSeriesItemDataList =
   Array<ObservabilityTelemetryQueryResponseEventsSeriesItemDataItem>;
+const ObservabilityTelemetryQueryResponseEventsSeriesItemDataList = /*@__PURE__*/ __L.at(
+  __c76,
+  1,
+) as any as S.Schema<ObservabilityTelemetryQueryResponseEventsSeriesItemDataList>;
+
 export interface ObservabilityTelemetryQueryResponseEventsSeriesItem {
   data: ObservabilityTelemetryQueryResponseEventsSeriesItemDataList;
   time: string;
 }
+const ObservabilityTelemetryQueryResponseEventsSeriesItem = /*@__PURE__*/ __L.at(
+  __c76,
+  2,
+) as any as S.Schema<ObservabilityTelemetryQueryResponseEventsSeriesItem>;
+
 export type ObservabilityTelemetryQueryResponseEventsSeriesList =
   Array<ObservabilityTelemetryQueryResponseEventsSeriesItem>;
+const ObservabilityTelemetryQueryResponseEventsSeriesList = /*@__PURE__*/ __L.at(
+  __c76,
+  3,
+) as any as S.Schema<ObservabilityTelemetryQueryResponseEventsSeriesList>;
+
 export interface ObservabilityTelemetryQueryResponseEvents {
   /** Total number of events matching the query (may exceed the number returned due to limits). */
   count?: number | null;
@@ -14714,6 +18434,11 @@ export interface ObservabilityTelemetryQueryResponseEvents {
   /** Time-series data for the matched events, bucketed by the query granularity. */
   series?: ObservabilityTelemetryQueryResponseEventsSeriesList | null;
 }
+const ObservabilityTelemetryQueryResponseEvents = /*@__PURE__*/ __L.at(
+  __c76,
+  4,
+) as any as S.Schema<ObservabilityTelemetryQueryResponseEvents>;
+
 export type ObservabilityTelemetryQueryResponseInvocationsValueItemMetadata =
   ObservabilitySharedQueriesGetResponseEventsEventsItemMetadata;
 export type ObservabilityTelemetryQueryResponseInvocationsValueItemSourceCase1Map = {
@@ -14722,9 +18447,17 @@ export type ObservabilityTelemetryQueryResponseInvocationsValueItemSourceCase1Ma
 export type ObservabilityTelemetryQueryResponseInvocationsValueItemSource =
   | string
   | ObservabilityTelemetryQueryResponseInvocationsValueItemSourceCase1Map;
+const ObservabilityTelemetryQueryResponseInvocationsValueItemSource = /*@__PURE__*/ __L.at(
+  __c76,
+  5,
+);
+
 export type ObservabilityTelemetryQueryResponseInvocationsValueItemContainersMap = {
   [key: string]: unknown | undefined;
 };
+const ObservabilityTelemetryQueryResponseInvocationsValueItemContainersMap =
+  ObservabilitySharedQueriesGetResponseEventsEventsItemSourceCase1Map as any as S.Schema<ObservabilityTelemetryQueryResponseInvocationsValueItemContainersMap>;
+
 export type ObservabilityTelemetryQueryResponseInvocationsValueItemWorkersCase0EventType =
   | "fetch"
   | "scheduled"
@@ -14812,6 +18545,11 @@ export interface ObservabilityTelemetryQueryResponseInvocationsValueItemWorkersC
 export type ObservabilityTelemetryQueryResponseInvocationsValueItemWorkers =
   | ObservabilityTelemetryQueryResponseInvocationsValueItemWorkersCase0
   | ObservabilityTelemetryQueryResponseInvocationsValueItemWorkersCase1;
+const ObservabilityTelemetryQueryResponseInvocationsValueItemWorkers = /*@__PURE__*/ __L.at(
+  __c76,
+  6,
+);
+
 export interface ObservabilityTelemetryQueryResponseInvocationsValueItem {
   /** Structured metadata extracted from the event. These fields are indexed and available for filtering and aggregation. */
   metadata: ObservabilitySharedQueriesGetResponseEventsEventsItemMetadata;
@@ -14826,11 +18564,26 @@ export interface ObservabilityTelemetryQueryResponseInvocationsValueItem {
   /** Cloudflare Workers event information that enriches your logs for identifying and debugging issues. */
   workers?: ObservabilityTelemetryQueryResponseInvocationsValueItemWorkers | null;
 }
+const ObservabilityTelemetryQueryResponseInvocationsValueItem = /*@__PURE__*/ __L.at(
+  __c76,
+  7,
+) as any as S.Schema<ObservabilityTelemetryQueryResponseInvocationsValueItem>;
+
 export type ObservabilityTelemetryQueryResponseInvocationsValueList =
   Array<ObservabilityTelemetryQueryResponseInvocationsValueItem>;
+const ObservabilityTelemetryQueryResponseInvocationsValueList = /*@__PURE__*/ __L.at(
+  __c77,
+  0,
+) as any as S.Schema<ObservabilityTelemetryQueryResponseInvocationsValueList>;
+
 export type ObservabilityTelemetryQueryResponseInvocationsMap = {
   [key: string]: ObservabilityTelemetryQueryResponseInvocationsValueList | undefined;
 };
+const ObservabilityTelemetryQueryResponseInvocationsMap = /*@__PURE__*/ __L.at(
+  __c77,
+  1,
+) as any as S.Schema<ObservabilityTelemetryQueryResponseInvocationsMap>;
+
 export type ObservabilityTelemetryQueryResponseTracesItemServiceList = Array<string>;
 export type ObservabilityTelemetryQueryResponseTracesItemErrorsList = Array<string>;
 export interface ObservabilityTelemetryQueryResponseTracesItem {
@@ -14855,6 +18608,9 @@ export interface ObservabilityTelemetryQueryResponseTracesItem {
 }
 export type ObservabilityTelemetryQueryResponseTracesList =
   Array<ObservabilityTelemetryQueryResponseTracesItem>;
+const ObservabilityTelemetryQueryResponseTracesList =
+  ObservabilitySharedQueriesGetResponseTracesList as any as S.Schema<ObservabilityTelemetryQueryResponseTracesList>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface QueryObservabilityTelemetryResponse {
   /** Represents a single execution of a query against Workers Observability data, including the query definition, execution status, and performance statistics. */
@@ -14876,7 +18632,14 @@ export interface QueryObservabilityTelemetryResponse {
   /** Trace summaries matching the query. Present when the query view is 'traces'. Each entry represents a distributed trace with its spans, duration, and services involved. */
   traces?: ObservabilityTelemetryQueryResponseTracesList | null;
 }
+const QueryObservabilityTelemetryResponse = /*@__PURE__*/ __L.at(
+  __c77,
+  2,
+) as any as S.Schema<QueryObservabilityTelemetryResponse>;
+
 export type ScriptsSearchRequestOrderBy = "created_on" | "modified_on" | "name";
+const ScriptsSearchRequestOrderBy = S.String;
+
 export interface SearchScriptRequest {
   /** Identifier. */
   accountId: string;
@@ -14891,6 +18654,8 @@ export interface SearchScriptRequest {
   /** Items per page. */
   perPage?: number;
 }
+const SearchScriptRequest = /*@__PURE__*/ __L.at(__c77, 3) as any as S.Schema<SearchScriptRequest>;
+
 export interface ScriptsSearchResultItem {
   /** Identifier. */
   id: string;
@@ -14907,8 +18672,23 @@ export interface ScriptsSearchResultItem {
   /** Name of the service. */
   serviceName?: string | null;
 }
+const ScriptsSearchResultItem = /*@__PURE__*/ __L.at(
+  __c77,
+  4,
+) as any as S.Schema<ScriptsSearchResultItem>;
+
 export type ScriptsSearchResultList = Array<ScriptsSearchResultItem>;
+const ScriptsSearchResultList = /*@__PURE__*/ __L.at(
+  __c77,
+  5,
+) as any as S.Schema<ScriptsSearchResultList>;
+
 export type SearchScriptResponse = ScriptsSearchResultList;
+const SearchScriptResponse = /*@__PURE__*/ __L.at(
+  __c77,
+  6,
+) as any as S.Schema<SearchScriptResponse>;
+
 export type BetaWorkersUpdateRequestObservabilityIssues =
   BetaWorkersCreateRequestObservabilityIssues;
 export type BetaWorkersUpdateRequestObservabilityLogsDestinationsList = Array<string>;
@@ -14924,10 +18704,18 @@ export interface BetaWorkersUpdateRequestObservabilityLogs {
   /** Whether log persistence is enabled for the Worker. */
   persist?: boolean;
 }
+const BetaWorkersUpdateRequestObservabilityLogs =
+  BetaWorkersCreateRequestObservabilityLogs as any as S.Schema<BetaWorkersUpdateRequestObservabilityLogs>;
+
 export type BetaWorkersUpdateRequestObservabilityTracesDestinationsList = Array<string>;
+const BetaWorkersUpdateRequestObservabilityTracesDestinationsList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<BetaWorkersUpdateRequestObservabilityTracesDestinationsList>;
+
 export type BetaWorkersUpdateRequestObservabilityTracesPropagationPolicy =
   | "authenticated"
   | "accept";
+const BetaWorkersUpdateRequestObservabilityTracesPropagationPolicy = S.String;
+
 export interface BetaWorkersUpdateRequestObservabilityTraces {
   /** A list of destinations where traces will be exported to. */
   destinations?: BetaWorkersUpdateRequestObservabilityTracesDestinationsList;
@@ -14940,6 +18728,11 @@ export interface BetaWorkersUpdateRequestObservabilityTraces {
   /** Controls how inbound trace context (traceparent/tracestate) headers on incoming requests are handled. "authenticated" honors inbound trace context only when accompanied by a valid trace auth token. "accept" unconditionally accepts inbound trace context. Requires the trace propagation feature to be enabled. Returns null when the trace propagation feature is not enabled for the account. */
   propagationPolicy?: BetaWorkersUpdateRequestObservabilityTracesPropagationPolicy | (string & {});
 }
+const BetaWorkersUpdateRequestObservabilityTraces = /*@__PURE__*/ __L.at(
+  __c77,
+  7,
+) as any as S.Schema<BetaWorkersUpdateRequestObservabilityTraces>;
+
 export interface BetaWorkersUpdateRequestObservability {
   /** Whether observability is enabled for the Worker. */
   enabled?: boolean;
@@ -14954,6 +18747,11 @@ export interface BetaWorkersUpdateRequestObservability {
   /** Trace settings for the Worker. */
   traces?: BetaWorkersUpdateRequestObservabilityTraces;
 }
+const BetaWorkersUpdateRequestObservability = /*@__PURE__*/ __L.at(
+  __c78,
+  0,
+) as any as S.Schema<BetaWorkersUpdateRequestObservability>;
+
 export type BetaWorkersUpdateRequestPreviewsBaseConfigCacheOptions =
   BetaWorkersCreateRequestPreviewsBaseConfigCacheOptions;
 export type BetaWorkersUpdateRequestPreviewsBaseConfigEnvValue =
@@ -14961,6 +18759,9 @@ export type BetaWorkersUpdateRequestPreviewsBaseConfigEnvValue =
 export type BetaWorkersUpdateRequestPreviewsBaseConfigEnvMap = {
   [key: string]: BetaWorkersCreateRequestPreviewsBaseConfigEnvValue | undefined;
 };
+const BetaWorkersUpdateRequestPreviewsBaseConfigEnvMap =
+  BetaWorkersCreateRequestPreviewsBaseConfigEnvMap as any as S.Schema<BetaWorkersUpdateRequestPreviewsBaseConfigEnvMap>;
+
 export type BetaWorkersUpdateRequestPreviewsBaseConfigLimits =
   BetaWorkersCreateRequestPreviewsBaseConfigLimits;
 export type BetaWorkersUpdateRequestPreviewsBaseConfigObservabilityIssues =
@@ -14979,11 +18780,19 @@ export interface BetaWorkersUpdateRequestPreviewsBaseConfigObservabilityLogs {
   /** Whether log persistence is enabled for the Worker. */
   persist?: boolean;
 }
+const BetaWorkersUpdateRequestPreviewsBaseConfigObservabilityLogs =
+  BetaWorkersCreateRequestPreviewsBaseConfigObservabilityLogs as any as S.Schema<BetaWorkersUpdateRequestPreviewsBaseConfigObservabilityLogs>;
+
 export type BetaWorkersUpdateRequestPreviewsBaseConfigObservabilityTracesDestinationsList =
   Array<string>;
+const BetaWorkersUpdateRequestPreviewsBaseConfigObservabilityTracesDestinationsList =
+  BetaWorkersCreateRequestPreviewsBaseConfigObservabilityLogsDestinationsList as any as S.Schema<BetaWorkersUpdateRequestPreviewsBaseConfigObservabilityTracesDestinationsList>;
+
 export type BetaWorkersUpdateRequestPreviewsBaseConfigObservabilityTracesPropagationPolicy =
   | "authenticated"
   | "accept";
+const BetaWorkersUpdateRequestPreviewsBaseConfigObservabilityTracesPropagationPolicy = S.String;
+
 export interface BetaWorkersUpdateRequestPreviewsBaseConfigObservabilityTraces {
   /** A list of destinations where traces will be exported to. */
   destinations?: BetaWorkersUpdateRequestPreviewsBaseConfigObservabilityTracesDestinationsList;
@@ -14998,6 +18807,11 @@ export interface BetaWorkersUpdateRequestPreviewsBaseConfigObservabilityTraces {
     | BetaWorkersUpdateRequestPreviewsBaseConfigObservabilityTracesPropagationPolicy
     | (string & {});
 }
+const BetaWorkersUpdateRequestPreviewsBaseConfigObservabilityTraces = /*@__PURE__*/ __L.at(
+  __c78,
+  1,
+) as any as S.Schema<BetaWorkersUpdateRequestPreviewsBaseConfigObservabilityTraces>;
+
 export interface BetaWorkersUpdateRequestPreviewsBaseConfigObservability {
   /** Whether observability is enabled for the Worker. */
   enabled?: boolean;
@@ -15012,6 +18826,11 @@ export interface BetaWorkersUpdateRequestPreviewsBaseConfigObservability {
   /** Trace settings for the Worker. */
   traces?: BetaWorkersUpdateRequestPreviewsBaseConfigObservabilityTraces;
 }
+const BetaWorkersUpdateRequestPreviewsBaseConfigObservability = /*@__PURE__*/ __L.at(
+  __c78,
+  2,
+) as any as S.Schema<BetaWorkersUpdateRequestPreviewsBaseConfigObservability>;
+
 export type BetaWorkersUpdateRequestPreviewsBaseConfigPlacementModeMode = "smart";
 export interface BetaWorkersUpdateRequestPreviewsBaseConfigPlacementMode {
   /** Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
@@ -15072,10 +18891,15 @@ export type BetaWorkersUpdateRequestPreviewsBaseConfigPlacement =
   | BetaWorkersUpdateRequestPreviewsBaseConfigPlacementCase5
   | BetaWorkersUpdateRequestPreviewsBaseConfigPlacementCase6
   | BetaWorkersUpdateRequestPreviewsBaseConfigPlacementCase7;
+const BetaWorkersUpdateRequestPreviewsBaseConfigPlacement = /*@__PURE__*/ __L.at(__c78, 3);
+
 export type BetaWorkersUpdateRequestPreviewsBaseConfigTailConsumersItem =
   BetaWorkersCreateRequestPreviewsBaseConfigTailConsumersItem;
 export type BetaWorkersUpdateRequestPreviewsBaseConfigTailConsumersList =
   Array<BetaWorkersCreateRequestPreviewsBaseConfigTailConsumersItem>;
+const BetaWorkersUpdateRequestPreviewsBaseConfigTailConsumersList =
+  BetaWorkersCreateRequestPreviewsBaseConfigTailConsumersList as any as S.Schema<BetaWorkersUpdateRequestPreviewsBaseConfigTailConsumersList>;
+
 export interface BetaWorkersUpdateRequestPreviewsBaseConfig {
   /** Cache options used when creating new Previews. */
   cacheOptions?: BetaWorkersCreateRequestPreviewsBaseConfigCacheOptions;
@@ -15092,12 +18916,23 @@ export interface BetaWorkersUpdateRequestPreviewsBaseConfig {
   /** Other Workers that should consume logs from newly created Previews. */
   tailConsumers?: BetaWorkersUpdateRequestPreviewsBaseConfigTailConsumersList;
 }
+const BetaWorkersUpdateRequestPreviewsBaseConfig = /*@__PURE__*/ __L.at(
+  __c78,
+  4,
+) as any as S.Schema<BetaWorkersUpdateRequestPreviewsBaseConfig>;
+
 export type BetaWorkersUpdateRequestSubdomain = BetaWorkersCreateRequestSubdomain;
 export type BetaWorkersUpdateRequestTagsList = Array<string>;
+const BetaWorkersUpdateRequestTagsList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<BetaWorkersUpdateRequestTagsList>;
+
 export type BetaWorkersUpdateRequestTailConsumersItem =
   BetaWorkersCreateRequestPreviewsBaseConfigTailConsumersItem;
 export type BetaWorkersUpdateRequestTailConsumersList =
   Array<BetaWorkersCreateRequestPreviewsBaseConfigTailConsumersItem>;
+const BetaWorkersUpdateRequestTailConsumersList =
+  BetaWorkersCreateRequestPreviewsBaseConfigTailConsumersList as any as S.Schema<BetaWorkersUpdateRequestTailConsumersList>;
+
 export interface UpdateBetaWorkerRequest {
   /** Identifier. */
   accountId: string;
@@ -15118,6 +18953,11 @@ export interface UpdateBetaWorkerRequest {
   /** Other Workers that should consume logs from the Worker. */
   tailConsumers?: BetaWorkersUpdateRequestTailConsumersList;
 }
+const UpdateBetaWorkerRequest = /*@__PURE__*/ __L.at(
+  __c78,
+  5,
+) as any as S.Schema<UpdateBetaWorkerRequest>;
+
 export type BetaWorkersUpdateResponseObservabilityIssues =
   BetaWorkersCreateResponseObservabilityIssues;
 export type BetaWorkersUpdateResponseObservabilityLogsDestinationsList = Array<string>;
@@ -15133,10 +18973,18 @@ export interface BetaWorkersUpdateResponseObservabilityLogs {
   /** Whether log persistence is enabled for the Worker. */
   persist?: boolean | null;
 }
+const BetaWorkersUpdateResponseObservabilityLogs =
+  BetaWorkersCreateResponseObservabilityLogs as any as S.Schema<BetaWorkersUpdateResponseObservabilityLogs>;
+
 export type BetaWorkersUpdateResponseObservabilityTracesDestinationsList = Array<string>;
+const BetaWorkersUpdateResponseObservabilityTracesDestinationsList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<BetaWorkersUpdateResponseObservabilityTracesDestinationsList>;
+
 export type BetaWorkersUpdateResponseObservabilityTracesPropagationPolicy =
   | "authenticated"
   | "accept";
+const BetaWorkersUpdateResponseObservabilityTracesPropagationPolicy = S.String;
+
 export interface BetaWorkersUpdateResponseObservabilityTraces {
   /** A list of destinations where traces will be exported to. */
   destinations?: BetaWorkersUpdateResponseObservabilityTracesDestinationsList | null;
@@ -15149,6 +18997,11 @@ export interface BetaWorkersUpdateResponseObservabilityTraces {
   /** Controls how inbound trace context (traceparent/tracestate) headers on incoming requests are handled. "authenticated" honors inbound trace context only when accompanied by a valid trace auth token. "accept" unconditionally accepts inbound trace context. Requires the trace propagation feature to be enabled. Returns null when the trace propagation feature is not enabled for the account. */
   propagationPolicy?: BetaWorkersUpdateResponseObservabilityTracesPropagationPolicy | null;
 }
+const BetaWorkersUpdateResponseObservabilityTraces = /*@__PURE__*/ __L.at(
+  __c78,
+  6,
+) as any as S.Schema<BetaWorkersUpdateResponseObservabilityTraces>;
+
 export interface BetaWorkersUpdateResponseObservability {
   /** Whether observability is enabled for the Worker. */
   enabled?: boolean | null;
@@ -15163,6 +19016,11 @@ export interface BetaWorkersUpdateResponseObservability {
   /** Trace settings for the Worker. */
   traces?: BetaWorkersUpdateResponseObservabilityTraces | null;
 }
+const BetaWorkersUpdateResponseObservability = /*@__PURE__*/ __L.at(
+  __c78,
+  7,
+) as any as S.Schema<BetaWorkersUpdateResponseObservability>;
+
 export type BetaWorkersUpdateResponseReferencesDispatchNamespaceOutboundsItem =
   BetaWorkersCreateResponseReferencesDispatchNamespaceOutboundsItem;
 export type BetaWorkersUpdateResponseReferencesDispatchNamespaceOutboundsList =
@@ -15195,12 +19053,21 @@ export interface BetaWorkersUpdateResponseReferences {
   /** Other Workers that reference the Worker using [service bindings](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/). */
   workers: BetaWorkersUpdateResponseReferencesWorkersList;
 }
+const BetaWorkersUpdateResponseReferences =
+  BetaWorkersCreateResponseReferences as any as S.Schema<BetaWorkersUpdateResponseReferences>;
+
 export type BetaWorkersUpdateResponseSubdomain = BetaWorkersCreateResponseSubdomain;
 export type BetaWorkersUpdateResponseTagsList = Array<string>;
+const BetaWorkersUpdateResponseTagsList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<BetaWorkersUpdateResponseTagsList>;
+
 export type BetaWorkersUpdateResponseTailConsumersItem =
   BetaWorkersCreateRequestPreviewsBaseConfigTailConsumersItem;
 export type BetaWorkersUpdateResponseTailConsumersList =
   Array<BetaWorkersCreateRequestPreviewsBaseConfigTailConsumersItem>;
+const BetaWorkersUpdateResponseTailConsumersList =
+  BetaWorkersCreateRequestPreviewsBaseConfigTailConsumersList as any as S.Schema<BetaWorkersUpdateResponseTailConsumersList>;
+
 export type BetaWorkersUpdateResponsePreviewsBaseConfigCacheOptions =
   BetaWorkersCreateResponsePreviewsBaseConfigCacheOptions;
 export type BetaWorkersUpdateResponsePreviewsBaseConfigEnvValue =
@@ -15208,6 +19075,9 @@ export type BetaWorkersUpdateResponsePreviewsBaseConfigEnvValue =
 export type BetaWorkersUpdateResponsePreviewsBaseConfigEnvMap = {
   [key: string]: BetaWorkersCreateRequestPreviewsBaseConfigEnvValue | undefined;
 };
+const BetaWorkersUpdateResponsePreviewsBaseConfigEnvMap =
+  BetaWorkersCreateRequestPreviewsBaseConfigEnvMap as any as S.Schema<BetaWorkersUpdateResponsePreviewsBaseConfigEnvMap>;
+
 export type BetaWorkersUpdateResponsePreviewsBaseConfigLimits =
   BetaWorkersCreateResponsePreviewsBaseConfigLimits;
 export type BetaWorkersUpdateResponsePreviewsBaseConfigObservabilityIssues =
@@ -15226,11 +19096,19 @@ export interface BetaWorkersUpdateResponsePreviewsBaseConfigObservabilityLogs {
   /** Whether log persistence is enabled for the Worker. */
   persist?: boolean | null;
 }
+const BetaWorkersUpdateResponsePreviewsBaseConfigObservabilityLogs =
+  BetaWorkersCreateResponsePreviewsBaseConfigObservabilityLogs as any as S.Schema<BetaWorkersUpdateResponsePreviewsBaseConfigObservabilityLogs>;
+
 export type BetaWorkersUpdateResponsePreviewsBaseConfigObservabilityTracesDestinationsList =
   Array<string>;
+const BetaWorkersUpdateResponsePreviewsBaseConfigObservabilityTracesDestinationsList =
+  BetaWorkersCreateRequestPreviewsBaseConfigObservabilityLogsDestinationsList as any as S.Schema<BetaWorkersUpdateResponsePreviewsBaseConfigObservabilityTracesDestinationsList>;
+
 export type BetaWorkersUpdateResponsePreviewsBaseConfigObservabilityTracesPropagationPolicy =
   | "authenticated"
   | "accept";
+const BetaWorkersUpdateResponsePreviewsBaseConfigObservabilityTracesPropagationPolicy = S.String;
+
 export interface BetaWorkersUpdateResponsePreviewsBaseConfigObservabilityTraces {
   /** A list of destinations where traces will be exported to. */
   destinations?: BetaWorkersUpdateResponsePreviewsBaseConfigObservabilityTracesDestinationsList | null;
@@ -15243,6 +19121,11 @@ export interface BetaWorkersUpdateResponsePreviewsBaseConfigObservabilityTraces 
   /** Controls how inbound trace context (traceparent/tracestate) headers on incoming requests are handled. "authenticated" honors inbound trace context only when accompanied by a valid trace auth token. "accept" unconditionally accepts inbound trace context. Requires the trace propagation feature to be enabled. Returns null when the trace propagation feature is not enabled for the account. */
   propagationPolicy?: BetaWorkersUpdateResponsePreviewsBaseConfigObservabilityTracesPropagationPolicy | null;
 }
+const BetaWorkersUpdateResponsePreviewsBaseConfigObservabilityTraces = /*@__PURE__*/ __L.at(
+  __c79,
+  0,
+) as any as S.Schema<BetaWorkersUpdateResponsePreviewsBaseConfigObservabilityTraces>;
+
 export interface BetaWorkersUpdateResponsePreviewsBaseConfigObservability {
   /** Whether observability is enabled for the Worker. */
   enabled?: boolean | null;
@@ -15257,6 +19140,11 @@ export interface BetaWorkersUpdateResponsePreviewsBaseConfigObservability {
   /** Trace settings for the Worker. */
   traces?: BetaWorkersUpdateResponsePreviewsBaseConfigObservabilityTraces | null;
 }
+const BetaWorkersUpdateResponsePreviewsBaseConfigObservability = /*@__PURE__*/ __L.at(
+  __c79,
+  1,
+) as any as S.Schema<BetaWorkersUpdateResponsePreviewsBaseConfigObservability>;
+
 export type BetaWorkersUpdateResponsePreviewsBaseConfigPlacementModeMode = "smart";
 export interface BetaWorkersUpdateResponsePreviewsBaseConfigPlacementMode {
   /** Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
@@ -15317,10 +19205,15 @@ export type BetaWorkersUpdateResponsePreviewsBaseConfigPlacement =
   | BetaWorkersUpdateResponsePreviewsBaseConfigPlacementCase5
   | BetaWorkersUpdateResponsePreviewsBaseConfigPlacementCase6
   | BetaWorkersUpdateResponsePreviewsBaseConfigPlacementCase7;
+const BetaWorkersUpdateResponsePreviewsBaseConfigPlacement = /*@__PURE__*/ __L.at(__c79, 2);
+
 export type BetaWorkersUpdateResponsePreviewsBaseConfigTailConsumersItem =
   BetaWorkersCreateRequestPreviewsBaseConfigTailConsumersItem;
 export type BetaWorkersUpdateResponsePreviewsBaseConfigTailConsumersList =
   Array<BetaWorkersCreateRequestPreviewsBaseConfigTailConsumersItem>;
+const BetaWorkersUpdateResponsePreviewsBaseConfigTailConsumersList =
+  BetaWorkersCreateRequestPreviewsBaseConfigTailConsumersList as any as S.Schema<BetaWorkersUpdateResponsePreviewsBaseConfigTailConsumersList>;
+
 export interface BetaWorkersUpdateResponsePreviewsBaseConfig {
   /** Cache options used when creating new Previews. */
   cacheOptions?: BetaWorkersCreateResponsePreviewsBaseConfigCacheOptions | null;
@@ -15337,6 +19230,11 @@ export interface BetaWorkersUpdateResponsePreviewsBaseConfig {
   /** Other Workers that should consume logs from newly created Previews. */
   tailConsumers?: BetaWorkersUpdateResponsePreviewsBaseConfigTailConsumersList | null;
 }
+const BetaWorkersUpdateResponsePreviewsBaseConfig = /*@__PURE__*/ __L.at(
+  __c79,
+  3,
+) as any as S.Schema<BetaWorkersUpdateResponsePreviewsBaseConfig>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UpdateBetaWorkerResponse {
   /** Immutable ID of the Worker. */
@@ -15364,6 +19262,11 @@ export interface UpdateBetaWorkerResponse {
   /** Template configuration used when creating new Previews for this Worker. */
   previewsBaseConfig?: BetaWorkersUpdateResponsePreviewsBaseConfig | null;
 }
+const UpdateBetaWorkerResponse = /*@__PURE__*/ __L.at(
+  __c79,
+  4,
+) as any as S.Schema<UpdateBetaWorkerResponse>;
+
 export interface UpdateRouteRequest {
   /** Identifier. */
   zoneId: string;
@@ -15374,6 +19277,8 @@ export interface UpdateRouteRequest {
   /** Name of the script to run if the route matches. */
   script?: string;
 }
+const UpdateRouteRequest = /*@__PURE__*/ __L.at(__c79, 5) as any as S.Schema<UpdateRouteRequest>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UpdateRouteResponse {
   /** Identifier. */
@@ -15383,12 +19288,22 @@ export interface UpdateRouteResponse {
   /** Name of the script to run if the route matches. */
   script?: string | null;
 }
+const UpdateRouteResponse = CreateRouteResponse as any as S.Schema<UpdateRouteResponse>;
+
 export type ObservabilityTelemetryValuesRequestDatasetsList = Array<string>;
+const ObservabilityTelemetryValuesRequestDatasetsList =
+  BetaWorkersCreateRequestObservabilityLogsDestinationsList as any as S.Schema<ObservabilityTelemetryValuesRequestDatasetsList>;
+
 export interface ObservabilityTelemetryValuesRequestTimeframe {
   from: number;
   to: number;
 }
+const ObservabilityTelemetryValuesRequestTimeframe =
+  ObservabilitySharedQueriesCreateRequestTimeframe as any as S.Schema<ObservabilityTelemetryValuesRequestTimeframe>;
+
 export type ObservabilityTelemetryValuesRequestType = "string" | "boolean" | "number";
+const ObservabilityTelemetryValuesRequestType = S.String;
+
 export type ObservabilityTelemetryValuesRequestFiltersItemCase0FilterCombination =
   | "and"
   | "or"
@@ -15543,9 +19458,18 @@ export interface ObservabilityTelemetryValuesRequestFiltersItemWorkersObservabil
 export type ObservabilityTelemetryValuesRequestFiltersItem =
   | ObservabilityTelemetryValuesRequestFiltersItemCase0
   | ObservabilityTelemetryValuesRequestFiltersItemWorkersObservabilityFilterLeaf;
+const ObservabilityTelemetryValuesRequestFiltersItem = /*@__PURE__*/ __L.at(__c79, 6);
+
 export type ObservabilityTelemetryValuesRequestFiltersList =
   Array<ObservabilityTelemetryValuesRequestFiltersItem>;
+const ObservabilityTelemetryValuesRequestFiltersList = /*@__PURE__*/ __L.at(
+  __c79,
+  7,
+) as any as S.Schema<ObservabilityTelemetryValuesRequestFiltersList>;
+
 export type ObservabilityTelemetryValuesRequestNeedleValue = string | number | boolean;
+const ObservabilityTelemetryValuesRequestNeedleValue = /*@__PURE__*/ __L.at(__c80, 0);
+
 export interface ObservabilityTelemetryValuesRequestNeedle {
   /** The text or pattern to search for. */
   value: ObservabilityTelemetryValuesRequestNeedleValue;
@@ -15554,6 +19478,11 @@ export interface ObservabilityTelemetryValuesRequestNeedle {
   /** When true, performs a case-sensitive search. Defaults to case-insensitive. */
   matchCase?: boolean;
 }
+const ObservabilityTelemetryValuesRequestNeedle = /*@__PURE__*/ __L.at(
+  __c80,
+  1,
+) as any as S.Schema<ObservabilityTelemetryValuesRequestNeedle>;
+
 export interface ValuesObservabilityTelemetryRequest {
   accountId: string;
   /** Leave this empty to use the default datasets */
@@ -15567,21 +19496,45 @@ export interface ValuesObservabilityTelemetryRequest {
   /** Full-text search expression to match events containing the specified text or pattern. */
   needle?: ObservabilityTelemetryValuesRequestNeedle;
 }
+const ValuesObservabilityTelemetryRequest = /*@__PURE__*/ __L.at(
+  __c80,
+  2,
+) as any as S.Schema<ValuesObservabilityTelemetryRequest>;
+
 export type ObservabilityTelemetryValuesResultItemType = "string" | "boolean" | "number";
+const ObservabilityTelemetryValuesResultItemType = S.String;
+
 export type ObservabilityTelemetryValuesResultItemValue = string | number | boolean;
+const ObservabilityTelemetryValuesResultItemValue = /*@__PURE__*/ __L.at(__c80, 3);
+
 export interface ObservabilityTelemetryValuesResultItem {
   dataset: string;
   key: string;
   type: ObservabilityTelemetryValuesResultItemType;
   value: ObservabilityTelemetryValuesResultItemValue;
 }
+const ObservabilityTelemetryValuesResultItem = /*@__PURE__*/ __L.at(
+  __c80,
+  4,
+) as any as S.Schema<ObservabilityTelemetryValuesResultItem>;
+
 export type ObservabilityTelemetryValuesResultList = Array<ObservabilityTelemetryValuesResultItem>;
+const ObservabilityTelemetryValuesResultList = /*@__PURE__*/ __L.at(
+  __c80,
+  5,
+) as any as S.Schema<ObservabilityTelemetryValuesResultList>;
+
 export interface ValuesObservabilityTelemetryResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result: ObservabilityTelemetryValuesResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
+const ValuesObservabilityTelemetryResponse = /*@__PURE__*/ __L.at(
+  __c80,
+  6,
+) as any as S.Schema<ValuesObservabilityTelemetryResponse>;
+
 export type BulkUpdateScriptSecretsError = CloudflareOpError;
 /** Create, update, or delete multiple secrets on a Worker script in a single operation using JSON Merge Patch (RFC 7396). This operation creates a single version with all changes included. Prefer this API instead of changing many secrets individually. Usage: - To create or update a secret, set its value to a secret object. - To delete a secret, set its value to `null`. - Secrets not included in the request are left unchanged. */
 export const bulkUpdateScriptSecrets: API.OperationMethod<
@@ -15590,8 +19543,8 @@ export const bulkUpdateScriptSecrets: API.OperationMethod<
   BulkUpdateScriptSecretsError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4) as any as S.Schema<BulkUpdateScriptSecretsRequest>,
-  output: __S(7) as any as S.Schema<BulkUpdateScriptSecretsResponse>,
+  input: BulkUpdateScriptSecretsRequest,
+  output: BulkUpdateScriptSecretsResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -15605,8 +19558,8 @@ export const createAssetUpload: API.OperationMethod<
   CreateAssetUploadError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8) as any as S.Schema<CreateAssetUploadRequest>,
-  output: __S(9) as any as S.Schema<CreateAssetUploadResponse>,
+  input: CreateAssetUploadRequest,
+  output: CreateAssetUploadResponse,
   errors: [InvalidRoute, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -15620,8 +19573,8 @@ export const createBetaWorker: API.OperationMethod<
   CreateBetaWorkerError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28) as any as S.Schema<CreateBetaWorkerRequest>,
-  output: __S(52) as any as S.Schema<CreateBetaWorkerResponse>,
+  input: CreateBetaWorkerRequest,
+  output: CreateBetaWorkerResponse,
   errors: [InvalidRoute, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -15635,8 +19588,8 @@ export const createBetaWorkerVersion: API.OperationMethod<
   CreateBetaWorkerVersionError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(72) as any as S.Schema<CreateBetaWorkerVersionRequest>,
-  output: __S(96) as any as S.Schema<CreateBetaWorkerVersionResponse>,
+  input: CreateBetaWorkerVersionRequest,
+  output: CreateBetaWorkerVersionResponse,
   errors: [WorkerNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -15653,8 +19606,8 @@ export const createObservabilityDestination: API.OperationMethod<
   CreateObservabilityDestinationError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(98) as any as S.Schema<CreateObservabilityDestinationRequest>,
-  output: __S(100) as any as S.Schema<CreateObservabilityDestinationResponse>,
+  input: CreateObservabilityDestinationRequest,
+  output: CreateObservabilityDestinationResponse,
   errors: [ObservabilityDestinationCreateFailed, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -15668,8 +19621,8 @@ export const createObservabilityQuery: API.OperationMethod<
   CreateObservabilityQueryError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(113) as any as S.Schema<CreateObservabilityQueryRequest>,
-  output: __S(124) as any as S.Schema<CreateObservabilityQueryResponse>,
+  input: CreateObservabilityQueryRequest,
+  output: CreateObservabilityQueryResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -15683,8 +19636,8 @@ export const createObservabilitySharedQuery: API.OperationMethod<
   CreateObservabilitySharedQueryError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(138) as any as S.Schema<CreateObservabilitySharedQueryRequest>,
-  output: __S(139) as any as S.Schema<CreateObservabilitySharedQueryResponse>,
+  input: CreateObservabilitySharedQueryRequest,
+  output: CreateObservabilitySharedQueryResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -15698,8 +19651,8 @@ export const createPreview: API.OperationMethod<
   CreatePreviewError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(142) as any as S.Schema<CreatePreviewRequest>,
-  output: __S(144) as any as S.Schema<PreviewResource>,
+  input: CreatePreviewRequest,
+  output: PreviewResource,
   errors: [WorkerNotFound, PreviewAlreadyExists, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -15713,8 +19666,8 @@ export const createPreviewDeployment: API.OperationMethod<
   CreatePreviewDeploymentError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(147) as any as S.Schema<CreatePreviewDeploymentRequest>,
-  output: __S(148) as any as S.Schema<PreviewDeploymentResource>,
+  input: CreatePreviewDeploymentRequest,
+  output: PreviewDeploymentResource,
   errors: [PreviewNotFound, WorkerNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -15733,8 +19686,8 @@ export const createRoute: API.OperationMethod<
   CreateRouteError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(149) as any as S.Schema<CreateRouteRequest>,
-  output: __S(150) as any as S.Schema<CreateRouteResponse>,
+  input: CreateRouteRequest,
+  output: CreateRouteResponse,
   errors: [
     InvalidRoutePattern,
     InvalidRoute,
@@ -15755,8 +19708,8 @@ export const createScriptAssetUpload: API.OperationMethod<
   CreateScriptAssetUploadError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(153) as any as S.Schema<CreateScriptAssetUploadRequest>,
-  output: __S(155) as any as S.Schema<CreateScriptAssetUploadResponse>,
+  input: CreateScriptAssetUploadRequest,
+  output: CreateScriptAssetUploadResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -15770,8 +19723,8 @@ export const createScriptDeployment: API.OperationMethod<
   CreateScriptDeploymentError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(159) as any as S.Schema<CreateScriptDeploymentRequest>,
-  output: __S(161) as any as S.Schema<CreateScriptDeploymentResponse>,
+  input: CreateScriptDeploymentRequest,
+  output: CreateScriptDeploymentResponse,
   errors: [WorkerNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -15785,8 +19738,8 @@ export const createScriptEdgePreview: API.OperationMethod<
   CreateScriptEdgePreviewError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(179) as any as S.Schema<CreateScriptEdgePreviewRequest>,
-  output: __S(180) as any as S.Schema<CreateScriptEdgePreviewResponse>,
+  input: CreateScriptEdgePreviewRequest,
+  output: CreateScriptEdgePreviewResponse,
   errors: [InvalidRoute, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -15800,8 +19753,8 @@ export const createScriptSubdomain: API.OperationMethod<
   CreateScriptSubdomainError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(181) as any as S.Schema<CreateScriptSubdomainRequest>,
-  output: __S(182) as any as S.Schema<CreateScriptSubdomainResponse>,
+  input: CreateScriptSubdomainRequest,
+  output: CreateScriptSubdomainResponse,
   errors: [WorkerNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -15815,8 +19768,8 @@ export const createScriptTail: API.OperationMethod<
   CreateScriptTailError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(184) as any as S.Schema<CreateScriptTailRequest>,
-  output: __S(185) as any as S.Schema<CreateScriptTailResponse>,
+  input: CreateScriptTailRequest,
+  output: CreateScriptTailResponse,
   errors: [WorkerNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -15830,8 +19783,8 @@ export const createScriptVersion: API.OperationMethod<
   CreateScriptVersionError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(203) as any as S.Schema<CreateScriptVersionRequest>,
-  output: __S(218) as any as S.Schema<CreateScriptVersionResponse>,
+  input: CreateScriptVersionRequest,
+  output: CreateScriptVersionResponse,
   errors: [WorkerNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -15845,8 +19798,8 @@ export const createServiceEdgePreview: API.OperationMethod<
   CreateServiceEdgePreviewError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(219) as any as S.Schema<CreateServiceEdgePreviewRequest>,
-  output: __S(180) as any as S.Schema<CreateServiceEdgePreviewResponse>,
+  input: CreateServiceEdgePreviewRequest,
+  output: CreateServiceEdgePreviewResponse,
   errors: [InvalidRoute, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -15860,8 +19813,8 @@ export const createSubdomainEdgePreviewSession: API.OperationMethod<
   CreateSubdomainEdgePreviewSessionError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(220) as any as S.Schema<CreateSubdomainEdgePreviewSessionRequest>,
-  output: __S(221) as any as S.Schema<CreateSubdomainEdgePreviewSessionResponse>,
+  input: CreateSubdomainEdgePreviewSessionRequest,
+  output: CreateSubdomainEdgePreviewSessionResponse,
   errors: [InvalidRoute, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -15875,8 +19828,8 @@ export const createZoneEdgePreviewSession: API.OperationMethod<
   CreateZoneEdgePreviewSessionError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(222) as any as S.Schema<CreateZoneEdgePreviewSessionRequest>,
-  output: __S(221) as any as S.Schema<CreateZoneEdgePreviewSessionResponse>,
+  input: CreateZoneEdgePreviewSessionRequest,
+  output: CreateZoneEdgePreviewSessionResponse,
   errors: [InvalidRoute, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -15890,8 +19843,8 @@ export const deleteBetaWorker: API.OperationMethod<
   DeleteBetaWorkerError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(223) as any as S.Schema<DeleteBetaWorkerRequest>,
-  output: __S(224) as any as S.Schema<DeleteBetaWorkerResponse>,
+  input: DeleteBetaWorkerRequest,
+  output: DeleteBetaWorkerResponse,
   errors: [WorkerNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -15908,8 +19861,8 @@ export const deleteBetaWorkerVersion: API.OperationMethod<
   DeleteBetaWorkerVersionError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(225) as any as S.Schema<DeleteBetaWorkerVersionRequest>,
-  output: __S(226) as any as S.Schema<DeleteBetaWorkerVersionResponse>,
+  input: DeleteBetaWorkerVersionRequest,
+  output: DeleteBetaWorkerVersionResponse,
   errors: [WorkerNotFound, WorkerVersionNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -15923,8 +19876,8 @@ export const deleteDomain: API.OperationMethod<
   DeleteDomainError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(227) as any as S.Schema<DeleteDomainRequest>,
-  output: __S(224) as any as S.Schema<DeleteDomainResponse>,
+  input: DeleteDomainRequest,
+  output: DeleteDomainResponse,
   errors: [DomainNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -15941,8 +19894,8 @@ export const deleteObservabilityDestination: API.OperationMethod<
   DeleteObservabilityDestinationError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(228) as any as S.Schema<DeleteObservabilityDestinationRequest>,
-  output: __S(229) as any as S.Schema<DeleteObservabilityDestinationResponse>,
+  input: DeleteObservabilityDestinationRequest,
+  output: DeleteObservabilityDestinationResponse,
   errors: [ObservabilityDestinationNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -15956,8 +19909,8 @@ export const deletePreview: API.OperationMethod<
   DeletePreviewError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(230) as any as S.Schema<DeletePreviewRequest>,
-  output: __S(224) as any as S.Schema<DeletePreviewResponse>,
+  input: DeletePreviewRequest,
+  output: DeletePreviewResponse,
   errors: [PreviewNotFound, WorkerNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -15971,8 +19924,8 @@ export const deleteRoute: API.OperationMethod<
   DeleteRouteError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(231) as any as S.Schema<DeleteRouteRequest>,
-  output: __S(232) as any as S.Schema<DeleteRouteResponse>,
+  input: DeleteRouteRequest,
+  output: DeleteRouteResponse,
   errors: [RouteNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -15990,8 +19943,8 @@ export const deleteScript: API.OperationMethod<
   DeleteScriptError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(233) as any as S.Schema<DeleteScriptRequest>,
-  output: __S(234) as any as S.Schema<DeleteScriptResponse>,
+  input: DeleteScriptRequest,
+  output: DeleteScriptResponse,
   errors: [
     WorkerNotFound,
     QueueConsumerConflict,
@@ -16011,8 +19964,8 @@ export const deleteScriptDeployment: API.OperationMethod<
   DeleteScriptDeploymentError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(235) as any as S.Schema<DeleteScriptDeploymentRequest>,
-  output: __S(226) as any as S.Schema<DeleteScriptDeploymentResponse>,
+  input: DeleteScriptDeploymentRequest,
+  output: DeleteScriptDeploymentResponse,
   errors: [WorkerNotFound, DeploymentNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -16026,8 +19979,8 @@ export const deleteScriptSecret: API.OperationMethod<
   DeleteScriptSecretError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(236) as any as S.Schema<DeleteScriptSecretRequest>,
-  output: __S(237) as any as S.Schema<DeleteScriptSecretResponse>,
+  input: DeleteScriptSecretRequest,
+  output: DeleteScriptSecretResponse,
   errors: [WorkerNotFound, SecretNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -16041,8 +19994,8 @@ export const deleteScriptSubdomain: API.OperationMethod<
   DeleteScriptSubdomainError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(238) as any as S.Schema<DeleteScriptSubdomainRequest>,
-  output: __S(182) as any as S.Schema<DeleteScriptSubdomainResponse>,
+  input: DeleteScriptSubdomainRequest,
+  output: DeleteScriptSubdomainResponse,
   errors: [WorkerNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -16056,8 +20009,8 @@ export const deleteScriptTail: API.OperationMethod<
   DeleteScriptTailError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(239) as any as S.Schema<DeleteScriptTailRequest>,
-  output: __S(224) as any as S.Schema<DeleteScriptTailResponse>,
+  input: DeleteScriptTailRequest,
+  output: DeleteScriptTailResponse,
   errors: [WorkerNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -16071,8 +20024,8 @@ export const deleteSubdomain: API.OperationMethod<
   DeleteSubdomainError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(240) as any as S.Schema<DeleteSubdomainRequest>,
-  output: __S(224) as any as S.Schema<DeleteSubdomainResponse>,
+  input: DeleteSubdomainRequest,
+  output: DeleteSubdomainResponse,
   errors: [InvalidRoute, SubdomainNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -16086,8 +20039,8 @@ export const getAccountSetting: API.OperationMethod<
   GetAccountSettingError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(241) as any as S.Schema<GetAccountSettingRequest>,
-  output: __S(242) as any as S.Schema<GetAccountSettingResponse>,
+  input: GetAccountSettingRequest,
+  output: GetAccountSettingResponse,
   errors: [InvalidRoute, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -16101,8 +20054,8 @@ export const getBetaWorker: API.OperationMethod<
   GetBetaWorkerError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(243) as any as S.Schema<GetBetaWorkerRequest>,
-  output: __S(252) as any as S.Schema<GetBetaWorkerResponse>,
+  input: GetBetaWorkerRequest,
+  output: GetBetaWorkerResponse,
   errors: [WorkerNotFound, InvalidRoute, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -16116,8 +20069,8 @@ export const getBetaWorkerVersion: API.OperationMethod<
   GetBetaWorkerVersionError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(253) as any as S.Schema<GetBetaWorkerVersionRequest>,
-  output: __S(266) as any as S.Schema<GetBetaWorkerVersionResponse>,
+  input: GetBetaWorkerVersionRequest,
+  output: GetBetaWorkerVersionResponse,
   errors: [WorkerNotFound, WorkerVersionNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -16131,8 +20084,8 @@ export const getDomain: API.OperationMethod<
   GetDomainError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(267) as any as S.Schema<GetDomainRequest>,
-  output: __S(268) as any as S.Schema<GetDomainResponse>,
+  input: GetDomainRequest,
+  output: GetDomainResponse,
   errors: [DomainNotFound, InvalidRoute, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -16146,8 +20099,8 @@ export const getObservabilitySharedQuery: API.OperationMethod<
   GetObservabilitySharedQueryError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(269) as any as S.Schema<GetObservabilitySharedQueryRequest>,
-  output: __S(339) as any as S.Schema<GetObservabilitySharedQueryResponse>,
+  input: GetObservabilitySharedQueryRequest,
+  output: GetObservabilitySharedQueryResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -16161,8 +20114,8 @@ export const getPreview: API.OperationMethod<
   GetPreviewError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(340) as any as S.Schema<GetPreviewRequest>,
-  output: __S(144) as any as S.Schema<PreviewResource>,
+  input: GetPreviewRequest,
+  output: PreviewResource,
   errors: [PreviewNotFound, WorkerNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -16180,8 +20133,8 @@ export const getPreviewDeployment: API.OperationMethod<
   GetPreviewDeploymentError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(341) as any as S.Schema<GetPreviewDeploymentRequest>,
-  output: __S(148) as any as S.Schema<PreviewDeploymentResource>,
+  input: GetPreviewDeploymentRequest,
+  output: PreviewDeploymentResource,
   errors: [
     PreviewNotFound,
     PreviewDeploymentNotFound,
@@ -16206,8 +20159,8 @@ export const getRoute: API.OperationMethod<
   GetRouteError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(342) as any as S.Schema<GetRouteRequest>,
-  output: __S(150) as any as S.Schema<GetRouteResponse>,
+  input: GetRouteRequest,
+  output: GetRouteResponse,
   errors: [
     WorkerNotFound,
     RouteNotFound,
@@ -16232,8 +20185,8 @@ export const getScript: API.OperationMethod<
   GetScriptError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(343) as any as S.Schema<GetScriptRequest>,
-  output: __S(224) as any as S.Schema<GetScriptResponse>,
+  input: GetScriptRequest,
+  output: GetScriptResponse,
   errors: [
     WorkerNotFound,
     InvalidRoute,
@@ -16253,8 +20206,8 @@ export const getScriptContent: API.OperationMethod<
   GetScriptContentError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(344) as any as S.Schema<GetScriptContentRequest>,
-  output: __S(224) as any as S.Schema<GetScriptContentResponse>,
+  input: GetScriptContentRequest,
+  output: GetScriptContentResponse,
   errors: [WorkerNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -16268,8 +20221,8 @@ export const getScriptDeployment: API.OperationMethod<
   GetScriptDeploymentError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(345) as any as S.Schema<GetScriptDeploymentRequest>,
-  output: __S(346) as any as S.Schema<GetScriptDeploymentResponse>,
+  input: GetScriptDeploymentRequest,
+  output: GetScriptDeploymentResponse,
   errors: [WorkerNotFound, DeploymentNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -16283,8 +20236,8 @@ export const getScriptEventTriggers: API.OperationMethod<
   GetScriptEventTriggersError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(347) as any as S.Schema<GetScriptEventTriggersRequest>,
-  output: __S(354) as any as S.Schema<GetScriptEventTriggersResponse>,
+  input: GetScriptEventTriggersRequest,
+  output: GetScriptEventTriggersResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -16298,8 +20251,8 @@ export const getScriptSchedule: API.OperationMethod<
   GetScriptScheduleError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(355) as any as S.Schema<GetScriptScheduleRequest>,
-  output: __S(358) as any as S.Schema<GetScriptScheduleResponse>,
+  input: GetScriptScheduleRequest,
+  output: GetScriptScheduleResponse,
   errors: [WorkerNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -16316,8 +20269,8 @@ export const getScriptScriptAndVersionSetting: API.OperationMethod<
   GetScriptScriptAndVersionSettingError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(359) as any as S.Schema<GetScriptScriptAndVersionSettingRequest>,
-  output: __S(374) as any as S.Schema<GetScriptScriptAndVersionSettingResponse>,
+  input: GetScriptScriptAndVersionSettingRequest,
+  output: GetScriptScriptAndVersionSettingResponse,
   errors: [WorkerNotFound, WorkerHasNoVersions, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -16331,8 +20284,8 @@ export const getScriptSecret: API.OperationMethod<
   GetScriptSecretError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(375) as any as S.Schema<GetScriptSecretRequest>,
-  output: __S(377) as any as S.Schema<GetScriptSecretResponse>,
+  input: GetScriptSecretRequest,
+  output: GetScriptSecretResponse,
   errors: [WorkerNotFound, SecretNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -16346,8 +20299,8 @@ export const getScriptSetting: API.OperationMethod<
   GetScriptSettingError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(378) as any as S.Schema<GetScriptSettingRequest>,
-  output: __S(382) as any as S.Schema<GetScriptSettingResponse>,
+  input: GetScriptSettingRequest,
+  output: GetScriptSettingResponse,
   errors: [WorkerNotFound, WorkerHasNoVersions, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -16361,8 +20314,8 @@ export const getScriptSubdomain: API.OperationMethod<
   GetScriptSubdomainError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(383) as any as S.Schema<GetScriptSubdomainRequest>,
-  output: __S(182) as any as S.Schema<GetScriptSubdomainResponse>,
+  input: GetScriptSubdomainRequest,
+  output: GetScriptSubdomainResponse,
   errors: [WorkerNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -16376,8 +20329,8 @@ export const getScriptTail: API.OperationMethod<
   GetScriptTailError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(384) as any as S.Schema<GetScriptTailRequest>,
-  output: __S(185) as any as S.Schema<GetScriptTailResponse>,
+  input: GetScriptTailRequest,
+  output: GetScriptTailResponse,
   errors: [WorkerNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -16391,8 +20344,8 @@ export const getScriptVersion: API.OperationMethod<
   GetScriptVersionError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(385) as any as S.Schema<GetScriptVersionRequest>,
-  output: __S(393) as any as S.Schema<GetScriptVersionResponse>,
+  input: GetScriptVersionRequest,
+  output: GetScriptVersionResponse,
   errors: [WorkerNotFound, VersionNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -16406,8 +20359,8 @@ export const getSubdomain: API.OperationMethod<
   GetSubdomainError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(394) as any as S.Schema<GetSubdomainRequest>,
-  output: __S(395) as any as S.Schema<GetSubdomainResponse>,
+  input: GetSubdomainRequest,
+  output: GetSubdomainResponse,
   errors: [InvalidRoute, SubdomainNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -16423,8 +20376,8 @@ export const keysObservabilityTelemetry: API.PaginatedOperationMethod<
   ObservabilityTelemetryKeysResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(402) as any as S.Schema<KeysObservabilityTelemetryRequest>,
-    output: __S(405) as any as S.Schema<KeysObservabilityTelemetryResponse>,
+    input: KeysObservabilityTelemetryRequest,
+    output: KeysObservabilityTelemetryResponse,
     errors: [InvalidRoute, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -16443,8 +20396,8 @@ export const listBetaWorkers: API.PaginatedOperationMethod<
   BetaWorkersListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(406) as any as S.Schema<ListBetaWorkersRequest>,
-    output: __S(415) as any as S.Schema<ListBetaWorkersResponse>,
+    input: ListBetaWorkersRequest,
+    output: ListBetaWorkersResponse,
     errors: [InvalidRoute, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -16469,8 +20422,8 @@ export const listBetaWorkerVersions: API.PaginatedOperationMethod<
   BetaWorkersVersionsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(416) as any as S.Schema<ListBetaWorkerVersionsRequest>,
-    output: __S(431) as any as S.Schema<ListBetaWorkerVersionsResponse>,
+    input: ListBetaWorkerVersionsRequest,
+    output: ListBetaWorkerVersionsResponse,
     errors: [WorkerNotFound, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -16495,8 +20448,8 @@ export const listDomains: API.PaginatedOperationMethod<
   DomainsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(432) as any as S.Schema<ListDomainsRequest>,
-    output: __S(435) as any as S.Schema<ListDomainsResponse>,
+    input: ListDomainsRequest,
+    output: ListDomainsResponse,
     errors: [InvalidRoute, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -16515,8 +20468,8 @@ export const listObservabilityDestinations: API.PaginatedOperationMethod<
   ObservabilityDestinationsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(436) as any as S.Schema<ListObservabilityDestinationsRequest>,
-    output: __S(442) as any as S.Schema<ListObservabilityDestinationsResponse>,
+    input: ListObservabilityDestinationsRequest,
+    output: ListObservabilityDestinationsResponse,
     errors: [Forbidden, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -16535,8 +20488,8 @@ export const listObservabilityQueries: API.PaginatedOperationMethod<
   ObservabilityQueriesListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(443) as any as S.Schema<ListObservabilityQueriesRequest>,
-    output: __S(453) as any as S.Schema<ListObservabilityQueriesResponse>,
+    input: ListObservabilityQueriesRequest,
+    output: ListObservabilityQueriesResponse,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -16555,8 +20508,8 @@ export const listRoutes: API.PaginatedOperationMethod<
   RoutesListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(454) as any as S.Schema<ListRoutesRequest>,
-    output: __S(457) as any as S.Schema<ListRoutesResponse>,
+    input: ListRoutesRequest,
+    output: ListRoutesResponse,
     errors: [InvalidRoute, Forbidden, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -16573,8 +20526,8 @@ export const listScriptDeployments: API.OperationMethod<
   ListScriptDeploymentsError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(458) as any as S.Schema<ListScriptDeploymentsRequest>,
-  output: __S(461) as any as S.Schema<ListScriptDeploymentsResponse>,
+  input: ListScriptDeploymentsRequest,
+  output: ListScriptDeploymentsResponse,
   errors: [WorkerNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -16590,8 +20543,8 @@ export const listScripts: API.PaginatedOperationMethod<
   ScriptsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(462) as any as S.Schema<ListScriptsRequest>,
-    output: __S(472) as any as S.Schema<ListScriptsResponse>,
+    input: ListScriptsRequest,
+    output: ListScriptsResponse,
     errors: [InvalidRoute, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -16610,8 +20563,8 @@ export const listScriptSecrets: API.PaginatedOperationMethod<
   ScriptsSecretsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(473) as any as S.Schema<ListScriptSecretsRequest>,
-    output: __S(476) as any as S.Schema<ListScriptSecretsResponse>,
+    input: ListScriptSecretsRequest,
+    output: ListScriptSecretsResponse,
     errors: [WorkerNotFound, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -16628,8 +20581,8 @@ export const listScriptVersions: API.OperationMethod<
   ListScriptVersionsError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(477) as any as S.Schema<ListScriptVersionsRequest>,
-  output: __S(480) as any as S.Schema<ListScriptVersionsResponse>,
+  input: ListScriptVersionsRequest,
+  output: ListScriptVersionsResponse,
   errors: [WorkerNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -16643,8 +20596,8 @@ export const liveTailHeartbeatObservabilityTelemetry: API.OperationMethod<
   LiveTailHeartbeatObservabilityTelemetryError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(481) as any as S.Schema<LiveTailHeartbeatObservabilityTelemetryRequest>,
-  output: __S(237) as any as S.Schema<LiveTailHeartbeatObservabilityTelemetryResponse>,
+  input: LiveTailHeartbeatObservabilityTelemetryRequest,
+  output: LiveTailHeartbeatObservabilityTelemetryResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -16658,8 +20611,8 @@ export const liveTailObservabilityTelemetry: API.OperationMethod<
   LiveTailObservabilityTelemetryError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(484) as any as S.Schema<LiveTailObservabilityTelemetryRequest>,
-  output: __S(485) as any as S.Schema<LiveTailObservabilityTelemetryResponse>,
+  input: LiveTailObservabilityTelemetryRequest,
+  output: LiveTailObservabilityTelemetryResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -16673,8 +20626,8 @@ export const patchBetaWorker: API.OperationMethod<
   PatchBetaWorkerError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(492) as any as S.Schema<PatchBetaWorkerRequest>,
-  output: __S(499) as any as S.Schema<PatchBetaWorkerResponse>,
+  input: PatchBetaWorkerRequest,
+  output: PatchBetaWorkerResponse,
   errors: [WorkerNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -16692,8 +20645,8 @@ export const patchObservabilityDestination: API.OperationMethod<
   PatchObservabilityDestinationError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(501) as any as S.Schema<PatchObservabilityDestinationRequest>,
-  output: __S(502) as any as S.Schema<PatchObservabilityDestinationResponse>,
+  input: PatchObservabilityDestinationRequest,
+  output: PatchObservabilityDestinationResponse,
   errors: [
     ObservabilityDestinationNotFound,
     ObservabilityDestinationPreflightFailed,
@@ -16716,8 +20669,8 @@ export const patchScriptScriptAndVersionSetting: API.OperationMethod<
   PatchScriptScriptAndVersionSettingError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(503) as any as S.Schema<PatchScriptScriptAndVersionSettingRequest>,
-  output: __S(517) as any as S.Schema<PatchScriptScriptAndVersionSettingResponse>,
+  input: PatchScriptScriptAndVersionSettingRequest,
+  output: PatchScriptScriptAndVersionSettingResponse,
   errors: [WorkerNotFound, ContentTypeRequired, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -16731,8 +20684,8 @@ export const patchScriptSetting: API.OperationMethod<
   PatchScriptSettingError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(523) as any as S.Schema<PatchScriptSettingRequest>,
-  output: __S(527) as any as S.Schema<PatchScriptSettingResponse>,
+  input: PatchScriptSettingRequest,
+  output: PatchScriptSettingResponse,
   errors: [WorkerNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -16746,8 +20699,8 @@ export const putAccountSetting: API.OperationMethod<
   PutAccountSettingError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(528) as any as S.Schema<PutAccountSettingRequest>,
-  output: __S(242) as any as S.Schema<PutAccountSettingResponse>,
+  input: PutAccountSettingRequest,
+  output: PutAccountSettingResponse,
   errors: [InvalidRoute, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -16765,8 +20718,8 @@ export const putDomain: API.OperationMethod<
   PutDomainError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(529) as any as S.Schema<PutDomainRequest>,
-  output: __S(268) as any as S.Schema<PutDomainResponse>,
+  input: PutDomainRequest,
+  output: PutDomainResponse,
   errors: [
     WorkerNotFound,
     InvalidRoute,
@@ -16804,8 +20757,8 @@ export const putScript: API.OperationMethod<
   PutScriptError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(530) as any as S.Schema<PutScriptRequest>,
-  output: __S(536) as any as S.Schema<PutScriptResponse>,
+  input: PutScriptRequest,
+  output: PutScriptResponse,
   errors: [
     InvalidRoute,
     InvalidWorkerScript,
@@ -16844,8 +20797,8 @@ export const putScriptContent: API.OperationMethod<
   PutScriptContentError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(538) as any as S.Schema<PutScriptContentRequest>,
-  output: __S(544) as any as S.Schema<PutScriptContentResponse>,
+  input: PutScriptContentRequest,
+  output: PutScriptContentResponse,
   errors: [
     WorkerNotFound,
     InvalidWorkerScript,
@@ -16869,8 +20822,8 @@ export const putScriptEventTriggers: API.OperationMethod<
   PutScriptEventTriggersError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(545) as any as S.Schema<PutScriptEventTriggersRequest>,
-  output: __S(354) as any as S.Schema<PutScriptEventTriggersResponse>,
+  input: PutScriptEventTriggersRequest,
+  output: PutScriptEventTriggersResponse,
   errors: [
     EventTriggerWorkflowNotFound,
     InvalidEventTriggers,
@@ -16889,8 +20842,8 @@ export const putScriptSchedule: API.OperationMethod<
   PutScriptScheduleError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(548) as any as S.Schema<PutScriptScheduleRequest>,
-  output: __S(358) as any as S.Schema<PutScriptScheduleResponse>,
+  input: PutScriptScheduleRequest,
+  output: PutScriptScheduleResponse,
   errors: [WorkerNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -16904,8 +20857,8 @@ export const putScriptSecret: API.OperationMethod<
   PutScriptSecretError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(549) as any as S.Schema<PutScriptSecretRequest>,
-  output: __S(551) as any as S.Schema<PutScriptSecretResponse>,
+  input: PutScriptSecretRequest,
+  output: PutScriptSecretResponse,
   errors: [WorkerNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -16923,8 +20876,8 @@ export const putSubdomain: API.OperationMethod<
   PutSubdomainError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(552) as any as S.Schema<PutSubdomainRequest>,
-  output: __S(395) as any as S.Schema<PutSubdomainResponse>,
+  input: PutSubdomainRequest,
+  output: PutSubdomainResponse,
   errors: [SubdomainAlreadyExists, InvalidRoute, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -16938,8 +20891,8 @@ export const queryObservabilityTelemetry: API.OperationMethod<
   QueryObservabilityTelemetryError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(560) as any as S.Schema<QueryObservabilityTelemetryRequest>,
-  output: __S(618) as any as S.Schema<QueryObservabilityTelemetryResponse>,
+  input: QueryObservabilityTelemetryRequest,
+  output: QueryObservabilityTelemetryResponse,
   errors: [InvalidRoute, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -16953,8 +20906,8 @@ export const searchScript: API.OperationMethod<
   SearchScriptError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(619) as any as S.Schema<SearchScriptRequest>,
-  output: __S(622) as any as S.Schema<SearchScriptResponse>,
+  input: SearchScriptRequest,
+  output: SearchScriptResponse,
   errors: [InvalidRoute, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -16968,8 +20921,8 @@ export const updateBetaWorker: API.OperationMethod<
   UpdateBetaWorkerError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(629) as any as S.Schema<UpdateBetaWorkerRequest>,
-  output: __S(636) as any as S.Schema<UpdateBetaWorkerResponse>,
+  input: UpdateBetaWorkerRequest,
+  output: UpdateBetaWorkerResponse,
   errors: [WorkerNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -16983,8 +20936,8 @@ export const updateRoute: API.OperationMethod<
   UpdateRouteError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(637) as any as S.Schema<UpdateRouteRequest>,
-  output: __S(150) as any as S.Schema<UpdateRouteResponse>,
+  input: UpdateRouteRequest,
+  output: UpdateRouteResponse,
   errors: [RouteNotFound, InvalidRoutePattern, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -17000,8 +20953,8 @@ export const valuesObservabilityTelemetry: API.PaginatedOperationMethod<
   ObservabilityTelemetryValuesResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(642) as any as S.Schema<ValuesObservabilityTelemetryRequest>,
-    output: __S(646) as any as S.Schema<ValuesObservabilityTelemetryResponse>,
+    input: ValuesObservabilityTelemetryRequest,
+    output: ValuesObservabilityTelemetryResponse,
     errors: [InvalidRoute, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -17014,7 +20967,7 @@ export const valuesObservabilityTelemetry: API.PaginatedOperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
+      return S.Array(ScriptsSecretsBulkUpdateRequestSecretsValueSecretKeyUsagesItem);
     case 1:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases(
@@ -17026,7 +20979,7 @@ function __c0(j: number): any {
         ),
       );
     case 2:
-      return S.Record(S.String, __S(1));
+      return S.Record(S.String, ScriptsSecretsBulkUpdateRequestSecretsValue);
     case 3:
       return S.Record(S.String, S.Unknown);
     case 4:
@@ -17034,8 +20987,10 @@ function __c0(j: number): any {
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           scriptName: S.String.pipe(T.Label("script_name")),
-          secrets: S.optional(__S(2)),
-          versionTags: S.optional(__S(3).pipe(T.Body("version_tags"))),
+          secrets: S.optional(ScriptsSecretsBulkUpdateRequestSecretsMap),
+          versionTags: S.optional(
+            ScriptsSecretsBulkUpdateRequestVersionTagsMap.pipe(T.Body("version_tags")),
+          ),
         })
           .pipe(
             T.Http({
@@ -17059,10 +21014,13 @@ function __c0(j: number): any {
         ),
       );
     case 6:
-      return S.Record(S.String, __S(5));
+      return S.Record(S.String, ScriptsSecretsBulkUpdateResultValue);
     case 7:
       return S.suspend(() =>
-        __S(6).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
+        ScriptsSecretsBulkUpdateResultMap.pipe(
+          T.EnvelopePayloadRoot(),
+          T.KeyDictionary(KEY_DICTIONARY),
+        ),
       ).annotate({
         identifier: "BulkUpdateScriptSecretsResponse",
       });
@@ -17075,7 +21033,7 @@ function __c1(j: number): any {
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           base64: S.Boolean.pipe(T.Query()),
-          body: S.optional(__S(3).pipe(T.HttpBody())),
+          body: S.optional(CreateAssetUploadBodyMap.pipe(T.HttpBody())),
           jwtToken: S.optional(S.String.pipe(T.Header("Authorization"))),
         })
           .pipe(
@@ -17109,7 +21067,7 @@ function __c1(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          destinations: S.optional(__S(11)),
+          destinations: S.optional(BetaWorkersCreateRequestObservabilityLogsDestinationsList),
           enabled: S.optional(S.Boolean),
           headSamplingRate: S.optional(S.Number.pipe(T.Body("head_sampling_rate"))),
           invocationLogs: S.optional(S.Boolean.pipe(T.Body("invocation_logs"))),
@@ -17121,11 +21079,15 @@ function __c1(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          destinations: S.optional(__S(11)),
+          destinations: S.optional(BetaWorkersCreateRequestObservabilityTracesDestinationsList),
           enabled: S.optional(S.Boolean),
           headSamplingRate: S.optional(S.Number.pipe(T.Body("head_sampling_rate"))),
           persist: S.optional(S.Boolean),
-          propagationPolicy: S.optional(S.String.pipe(T.Body("propagation_policy"))),
+          propagationPolicy: S.optional(
+            BetaWorkersCreateRequestObservabilityTracesPropagationPolicy.pipe(
+              T.Body("propagation_policy"),
+            ),
+          ),
         }),
       ).annotate({
         identifier: "BetaWorkersCreateRequestObservabilityTraces",
@@ -17135,10 +21097,10 @@ function __c1(j: number): any {
         S.Struct({
           enabled: S.optional(S.Boolean),
           headSamplingRate: S.optional(S.Number.pipe(T.Body("head_sampling_rate"))),
-          issues: S.optional(__S(10)),
-          logs: S.optional(__S(12)),
+          issues: S.optional(BetaWorkersCreateRequestObservabilityIssues),
+          logs: S.optional(BetaWorkersCreateRequestObservabilityLogs),
           redactQueryString: S.optional(S.Boolean.pipe(T.Body("redact_query_string"))),
-          traces: S.optional(__S(13)),
+          traces: S.optional(BetaWorkersCreateRequestObservabilityTraces),
         }),
       ).annotate({
         identifier: "BetaWorkersCreateRequestObservability",
@@ -17165,7 +21127,7 @@ function __c2(j: number): any {
         identifier: "BetaWorkersCreateRequestPreviewsBaseConfigEnvValue",
       });
     case 1:
-      return S.Record(S.String, __S(16));
+      return S.Record(S.String, BetaWorkersCreateRequestPreviewsBaseConfigEnvValue);
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -17180,7 +21142,9 @@ function __c2(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          destinations: S.optional(__S(19)),
+          destinations: S.optional(
+            BetaWorkersCreateRequestPreviewsBaseConfigObservabilityLogsDestinationsList,
+          ),
           enabled: S.optional(S.Boolean),
           headSamplingRate: S.optional(S.Number.pipe(T.Body("head_sampling_rate"))),
           invocationLogs: S.optional(S.Boolean.pipe(T.Body("invocation_logs"))),
@@ -17192,11 +21156,17 @@ function __c2(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          destinations: S.optional(__S(19)),
+          destinations: S.optional(
+            BetaWorkersCreateRequestPreviewsBaseConfigObservabilityTracesDestinationsList,
+          ),
           enabled: S.optional(S.Boolean),
           headSamplingRate: S.optional(S.Number.pipe(T.Body("head_sampling_rate"))),
           persist: S.optional(S.Boolean),
-          propagationPolicy: S.optional(S.String.pipe(T.Body("propagation_policy"))),
+          propagationPolicy: S.optional(
+            BetaWorkersCreateRequestPreviewsBaseConfigObservabilityTracesPropagationPolicy.pipe(
+              T.Body("propagation_policy"),
+            ),
+          ),
         }),
       ).annotate({
         identifier: "BetaWorkersCreateRequestPreviewsBaseConfigObservabilityTraces",
@@ -17206,10 +21176,10 @@ function __c2(j: number): any {
         S.Struct({
           enabled: S.optional(S.Boolean),
           headSamplingRate: S.optional(S.Number.pipe(T.Body("head_sampling_rate"))),
-          issues: S.optional(__S(10)),
-          logs: S.optional(__S(20)),
+          issues: S.optional(BetaWorkersCreateRequestObservabilityIssues),
+          logs: S.optional(BetaWorkersCreateRequestPreviewsBaseConfigObservabilityLogs),
           redactQueryString: S.optional(S.Boolean.pipe(T.Body("redact_query_string"))),
-          traces: S.optional(__S(21)),
+          traces: S.optional(BetaWorkersCreateRequestPreviewsBaseConfigObservabilityTraces),
         }),
       ).annotate({
         identifier: "BetaWorkersCreateRequestPreviewsBaseConfigObservability",
@@ -17240,17 +21210,23 @@ function __c3(j: number): any {
         identifier: "BetaWorkersCreateRequestPreviewsBaseConfigTailConsumersItem",
       });
     case 1:
-      return S.Array(__S(24));
+      return S.Array(BetaWorkersCreateRequestPreviewsBaseConfigTailConsumersItem);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          cacheOptions: S.optional(__S(15).pipe(T.Body("cache_options"))),
-          env: S.optional(__S(17)),
-          limits: S.optional(__S(18)),
+          cacheOptions: S.optional(
+            BetaWorkersCreateRequestPreviewsBaseConfigCacheOptions.pipe(T.Body("cache_options")),
+          ),
+          env: S.optional(BetaWorkersCreateRequestPreviewsBaseConfigEnvMap),
+          limits: S.optional(BetaWorkersCreateRequestPreviewsBaseConfigLimits),
           logpush: S.optional(S.Boolean),
-          observability: S.optional(__S(22)),
-          placement: S.optional(__S(23)),
-          tailConsumers: S.optional(__S(25).pipe(T.Body("tail_consumers"))),
+          observability: S.optional(BetaWorkersCreateRequestPreviewsBaseConfigObservability),
+          placement: S.optional(BetaWorkersCreateRequestPreviewsBaseConfigPlacement),
+          tailConsumers: S.optional(
+            BetaWorkersCreateRequestPreviewsBaseConfigTailConsumersList.pipe(
+              T.Body("tail_consumers"),
+            ),
+          ),
         }),
       ).annotate({
         identifier: "BetaWorkersCreateRequestPreviewsBaseConfig",
@@ -17272,11 +21248,15 @@ function __c3(j: number): any {
           accountId: S.String.pipe(T.Label("account_id")),
           name: S.String,
           logpush: S.optional(S.Boolean),
-          observability: S.optional(__S(14)),
-          previewsBaseConfig: S.optional(__S(26).pipe(T.Body("previews_base_config"))),
-          subdomain: S.optional(__S(27)),
-          tags: S.optional(__S(11)),
-          tailConsumers: S.optional(__S(25).pipe(T.Body("tail_consumers"))),
+          observability: S.optional(BetaWorkersCreateRequestObservability),
+          previewsBaseConfig: S.optional(
+            BetaWorkersCreateRequestPreviewsBaseConfig.pipe(T.Body("previews_base_config")),
+          ),
+          subdomain: S.optional(BetaWorkersCreateRequestSubdomain),
+          tags: S.optional(BetaWorkersCreateRequestTagsList),
+          tailConsumers: S.optional(
+            BetaWorkersCreateRequestTailConsumersList.pipe(T.Body("tail_consumers")),
+          ),
         })
           .pipe(
             T.Http({ method: "POST", uri: "/accounts/{account_id}/workers/workers", code: 200 }),
@@ -17294,7 +21274,9 @@ function __c3(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          destinations: S.optional(S.NullOr(__S(11))),
+          destinations: S.optional(
+            S.NullOr(BetaWorkersCreateResponseObservabilityLogsDestinationsList),
+          ),
           enabled: S.optional(S.NullOr(S.Boolean)),
           headSamplingRate: S.optional(S.NullOr(S.Number).pipe(T.Body("head_sampling_rate"))),
           invocationLogs: S.optional(S.NullOr(S.Boolean).pipe(T.Body("invocation_logs"))),
@@ -17306,11 +21288,17 @@ function __c3(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          destinations: S.optional(S.NullOr(__S(11))),
+          destinations: S.optional(
+            S.NullOr(BetaWorkersCreateResponseObservabilityTracesDestinationsList),
+          ),
           enabled: S.optional(S.NullOr(S.Boolean)),
           headSamplingRate: S.optional(S.NullOr(S.Number).pipe(T.Body("head_sampling_rate"))),
           persist: S.optional(S.NullOr(S.Boolean)),
-          propagationPolicy: S.optional(S.NullOr(S.String).pipe(T.Body("propagation_policy"))),
+          propagationPolicy: S.optional(
+            S.NullOr(BetaWorkersCreateResponseObservabilityTracesPropagationPolicy).pipe(
+              T.Body("propagation_policy"),
+            ),
+          ),
         }),
       ).annotate({
         identifier: "BetaWorkersCreateResponseObservabilityTraces",
@@ -17324,10 +21312,10 @@ function __c4(j: number): any {
         S.Struct({
           enabled: S.optional(S.NullOr(S.Boolean)),
           headSamplingRate: S.optional(S.NullOr(S.Number).pipe(T.Body("head_sampling_rate"))),
-          issues: S.optional(S.NullOr(__S(29))),
-          logs: S.optional(S.NullOr(__S(30))),
+          issues: S.optional(S.NullOr(BetaWorkersCreateResponseObservabilityIssues)),
+          logs: S.optional(S.NullOr(BetaWorkersCreateResponseObservabilityLogs)),
           redactQueryString: S.optional(S.NullOr(S.Boolean).pipe(T.Body("redact_query_string"))),
-          traces: S.optional(S.NullOr(__S(31))),
+          traces: S.optional(S.NullOr(BetaWorkersCreateResponseObservabilityTraces)),
         }),
       ).annotate({
         identifier: "BetaWorkersCreateResponseObservability",
@@ -17344,7 +21332,7 @@ function __c4(j: number): any {
         identifier: "BetaWorkersCreateResponseReferencesDispatchNamespaceOutboundsItem",
       });
     case 2:
-      return S.Array(__S(33));
+      return S.Array(BetaWorkersCreateResponseReferencesDispatchNamespaceOutboundsItem);
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -17358,7 +21346,7 @@ function __c4(j: number): any {
         identifier: "BetaWorkersCreateResponseReferencesDomainsItem",
       });
     case 4:
-      return S.Array(__S(35));
+      return S.Array(BetaWorkersCreateResponseReferencesDomainsItem);
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -17371,7 +21359,7 @@ function __c4(j: number): any {
         identifier: "BetaWorkersCreateResponseReferencesDurableObjectsItem",
       });
     case 6:
-      return S.Array(__S(37));
+      return S.Array(BetaWorkersCreateResponseReferencesDurableObjectsItem);
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -17387,7 +21375,7 @@ function __c4(j: number): any {
 function __c5(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(39));
+      return S.Array(BetaWorkersCreateResponseReferencesQueuesItem);
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -17398,15 +21386,20 @@ function __c5(j: number): any {
         identifier: "BetaWorkersCreateResponseReferencesWorkersItem",
       });
     case 2:
-      return S.Array(__S(41));
+      return S.Array(BetaWorkersCreateResponseReferencesWorkersItem);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          dispatchNamespaceOutbounds: __S(34).pipe(T.Body("dispatch_namespace_outbounds")),
-          domains: __S(36),
-          durableObjects: __S(38).pipe(T.Body("durable_objects")),
-          queues: __S(40),
-          workers: __S(42),
+          dispatchNamespaceOutbounds:
+            BetaWorkersCreateResponseReferencesDispatchNamespaceOutboundsList.pipe(
+              T.Body("dispatch_namespace_outbounds"),
+            ),
+          domains: BetaWorkersCreateResponseReferencesDomainsList,
+          durableObjects: BetaWorkersCreateResponseReferencesDurableObjectsList.pipe(
+            T.Body("durable_objects"),
+          ),
+          queues: BetaWorkersCreateResponseReferencesQueuesList,
+          workers: BetaWorkersCreateResponseReferencesWorkersList,
         }),
       ).annotate({
         identifier: "BetaWorkersCreateResponseReferences",
@@ -17443,7 +21436,9 @@ function __c5(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          destinations: S.optional(S.NullOr(__S(19))),
+          destinations: S.optional(
+            S.NullOr(BetaWorkersCreateResponsePreviewsBaseConfigObservabilityLogsDestinationsList),
+          ),
           enabled: S.optional(S.NullOr(S.Boolean)),
           headSamplingRate: S.optional(S.NullOr(S.Number).pipe(T.Body("head_sampling_rate"))),
           invocationLogs: S.optional(S.NullOr(S.Boolean).pipe(T.Body("invocation_logs"))),
@@ -17459,11 +21454,19 @@ function __c6(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          destinations: S.optional(S.NullOr(__S(19))),
+          destinations: S.optional(
+            S.NullOr(
+              BetaWorkersCreateResponsePreviewsBaseConfigObservabilityTracesDestinationsList,
+            ),
+          ),
           enabled: S.optional(S.NullOr(S.Boolean)),
           headSamplingRate: S.optional(S.NullOr(S.Number).pipe(T.Body("head_sampling_rate"))),
           persist: S.optional(S.NullOr(S.Boolean)),
-          propagationPolicy: S.optional(S.NullOr(S.String).pipe(T.Body("propagation_policy"))),
+          propagationPolicy: S.optional(
+            S.NullOr(
+              BetaWorkersCreateResponsePreviewsBaseConfigObservabilityTracesPropagationPolicy,
+            ).pipe(T.Body("propagation_policy")),
+          ),
         }),
       ).annotate({
         identifier: "BetaWorkersCreateResponsePreviewsBaseConfigObservabilityTraces",
@@ -17473,10 +21476,12 @@ function __c6(j: number): any {
         S.Struct({
           enabled: S.optional(S.NullOr(S.Boolean)),
           headSamplingRate: S.optional(S.NullOr(S.Number).pipe(T.Body("head_sampling_rate"))),
-          issues: S.optional(S.NullOr(__S(29))),
-          logs: S.optional(S.NullOr(__S(47))),
+          issues: S.optional(S.NullOr(BetaWorkersCreateResponseObservabilityIssues)),
+          logs: S.optional(S.NullOr(BetaWorkersCreateResponsePreviewsBaseConfigObservabilityLogs)),
           redactQueryString: S.optional(S.NullOr(S.Boolean).pipe(T.Body("redact_query_string"))),
-          traces: S.optional(S.NullOr(__S(48))),
+          traces: S.optional(
+            S.NullOr(BetaWorkersCreateResponsePreviewsBaseConfigObservabilityTraces),
+          ),
         }),
       ).annotate({
         identifier: "BetaWorkersCreateResponsePreviewsBaseConfigObservability",
@@ -17497,13 +21502,23 @@ function __c6(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          cacheOptions: S.optional(S.NullOr(__S(45)).pipe(T.Body("cache_options"))),
-          env: S.optional(S.NullOr(__S(17))),
-          limits: S.optional(S.NullOr(__S(46))),
+          cacheOptions: S.optional(
+            S.NullOr(BetaWorkersCreateResponsePreviewsBaseConfigCacheOptions).pipe(
+              T.Body("cache_options"),
+            ),
+          ),
+          env: S.optional(S.NullOr(BetaWorkersCreateResponsePreviewsBaseConfigEnvMap)),
+          limits: S.optional(S.NullOr(BetaWorkersCreateResponsePreviewsBaseConfigLimits)),
           logpush: S.optional(S.NullOr(S.Boolean)),
-          observability: S.optional(S.NullOr(__S(49))),
-          placement: S.optional(S.NullOr(__S(50))),
-          tailConsumers: S.optional(S.NullOr(__S(25)).pipe(T.Body("tail_consumers"))),
+          observability: S.optional(
+            S.NullOr(BetaWorkersCreateResponsePreviewsBaseConfigObservability),
+          ),
+          placement: S.optional(S.NullOr(BetaWorkersCreateResponsePreviewsBaseConfigPlacement)),
+          tailConsumers: S.optional(
+            S.NullOr(BetaWorkersCreateResponsePreviewsBaseConfigTailConsumersList).pipe(
+              T.Body("tail_consumers"),
+            ),
+          ),
         }),
       ).annotate({
         identifier: "BetaWorkersCreateResponsePreviewsBaseConfig",
@@ -17515,14 +21530,18 @@ function __c6(j: number): any {
           createdOn: S.String.pipe(T.Body("created_on")),
           logpush: S.Boolean,
           name: S.String,
-          observability: __S(32),
-          references: __S(43),
-          subdomain: __S(44),
-          tags: __S(11),
-          tailConsumers: __S(25).pipe(T.Body("tail_consumers")),
+          observability: BetaWorkersCreateResponseObservability,
+          references: BetaWorkersCreateResponseReferences,
+          subdomain: BetaWorkersCreateResponseSubdomain,
+          tags: BetaWorkersCreateResponseTagsList,
+          tailConsumers: BetaWorkersCreateResponseTailConsumersList.pipe(T.Body("tail_consumers")),
           updatedOn: S.String.pipe(T.Body("updated_on")),
           deployedOn: S.optional(S.NullOr(S.String).pipe(T.Body("deployed_on"))),
-          previewsBaseConfig: S.optional(S.NullOr(__S(51)).pipe(T.Body("previews_base_config"))),
+          previewsBaseConfig: S.optional(
+            S.NullOr(BetaWorkersCreateResponsePreviewsBaseConfig).pipe(
+              T.Body("previews_base_config"),
+            ),
+          ),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "CreateBetaWorkerResponse" });
     case 5:
@@ -17541,9 +21560,19 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           basePath: S.optional(S.String.pipe(T.Body("base_path"))),
-          htmlHandling: S.optional(S.String.pipe(T.Body("html_handling"))),
-          notFoundHandling: S.optional(S.String.pipe(T.Body("not_found_handling"))),
-          runWorkerFirst: S.optional(__S(54).pipe(T.Body("run_worker_first"))),
+          htmlHandling: S.optional(
+            BetaWorkersVersionsCreateRequestAssetsConfigHtmlHandling.pipe(T.Body("html_handling")),
+          ),
+          notFoundHandling: S.optional(
+            BetaWorkersVersionsCreateRequestAssetsConfigNotFoundHandling.pipe(
+              T.Body("not_found_handling"),
+            ),
+          ),
+          runWorkerFirst: S.optional(
+            BetaWorkersVersionsCreateRequestAssetsConfigRunWorkerFirst.pipe(
+              T.Body("run_worker_first"),
+            ),
+          ),
         }),
       ).annotate({
         identifier: "BetaWorkersVersionsCreateRequestAssetsConfig",
@@ -17555,7 +21584,7 @@ function __c7(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          config: S.optional(__S(55)),
+          config: S.optional(BetaWorkersVersionsCreateRequestAssetsConfig),
           jwt: S.optional(S.String),
         }),
       ).annotate({
@@ -17664,7 +21693,7 @@ function __c7(j: number): any {
         ),
       );
     case 2:
-      return S.Array(__S(57));
+      return S.Array(BetaWorkersVersionsCreateRequestBindingsItem);
     case 3:
       return S.Record(S.String, S.String);
     case 4:
@@ -17672,13 +21701,13 @@ function __c7(j: number): any {
         S.Struct({
           className: S.String.pipe(T.Body("class_name")),
           name: S.optional(S.String),
-          images: S.optional(__S(59).pipe(T.KeyDictionary({}))),
+          images: S.optional(ContainerImageMap.pipe(T.KeyDictionary({}))),
         }),
       ).annotate({
         identifier: "BetaWorkersVersionsCreateRequestContainersItem",
       });
     case 5:
-      return S.Array(__S(60));
+      return S.Array(BetaWorkersVersionsCreateRequestContainersItem);
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -17703,7 +21732,7 @@ function __c7(j: number): any {
 function __c8(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, __S(63));
+      return S.Record(S.String, BetaWorkersVersionsCreateRequestExportsValue);
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -17740,7 +21769,7 @@ function __c8(j: number): any {
         identifier: "BetaWorkersVersionsCreateRequestModulesItem",
       });
     case 4:
-      return S.Array(__S(67));
+      return S.Array(BetaWorkersVersionsCreateRequestModulesItem);
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -17752,7 +21781,7 @@ function __c8(j: number): any {
         identifier: "BetaWorkersVersionsCreateRequestPackageDependenciesItem",
       });
     case 6:
-      return S.Array(__S(69));
+      return S.Array(BetaWorkersVersionsCreateRequestPackageDependenciesItem);
     case 7:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases([
@@ -17776,21 +21805,33 @@ function __c9(j: number): any {
           accountId: S.String.pipe(T.Label("account_id")),
           workerId: S.String.pipe(T.Label("worker_id")),
           deploy: S.optional(S.Boolean.pipe(T.Query())),
-          annotations: S.optional(__S(53)),
-          assets: S.optional(__S(56)),
-          bindings: S.optional(__S(58)),
-          cacheOptions: S.optional(__S(15).pipe(T.Body("cache_options"))),
+          annotations: S.optional(BetaWorkersVersionsCreateRequestAnnotations),
+          assets: S.optional(BetaWorkersVersionsCreateRequestAssets),
+          bindings: S.optional(BetaWorkersVersionsCreateRequestBindingsList),
+          cacheOptions: S.optional(
+            BetaWorkersCreateRequestPreviewsBaseConfigCacheOptions.pipe(T.Body("cache_options")),
+          ),
           compatibilityDate: S.optional(S.String.pipe(T.Body("compatibility_date"))),
-          compatibilityFlags: S.optional(__S(11).pipe(T.Body("compatibility_flags"))),
-          containers: S.optional(__S(61)),
-          exports: S.optional(__S(64)),
-          limits: S.optional(__S(18)),
+          compatibilityFlags: S.optional(
+            BetaWorkersVersionsCreateRequestCompatibilityFlagsList.pipe(
+              T.Body("compatibility_flags"),
+            ),
+          ),
+          containers: S.optional(BetaWorkersVersionsCreateRequestContainersList),
+          exports: S.optional(BetaWorkersVersionsCreateRequestExportsMap),
+          limits: S.optional(BetaWorkersVersionsCreateRequestLimits),
           mainModule: S.optional(S.String.pipe(T.Body("main_module"))),
-          migrations: S.optional(__S(66)),
-          modules: S.optional(__S(68)),
-          packageDependencies: S.optional(__S(70).pipe(T.Body("package_dependencies"))),
-          placement: S.optional(__S(71)),
-          usageModel: S.optional(S.String.pipe(T.Body("usage_model"))),
+          migrations: S.optional(BetaWorkersVersionsCreateRequestMigrations),
+          modules: S.optional(BetaWorkersVersionsCreateRequestModulesList),
+          packageDependencies: S.optional(
+            BetaWorkersVersionsCreateRequestPackageDependenciesList.pipe(
+              T.Body("package_dependencies"),
+            ),
+          ),
+          placement: S.optional(BetaWorkersVersionsCreateRequestPlacement),
+          usageModel: S.optional(
+            BetaWorkersVersionsCreateRequestUsageModel.pipe(T.Body("usage_model")),
+          ),
         })
           .pipe(
             T.Http({
@@ -17819,9 +21860,21 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           basePath: S.optional(S.NullOr(S.String).pipe(T.Body("base_path"))),
-          htmlHandling: S.optional(S.NullOr(S.String).pipe(T.Body("html_handling"))),
-          notFoundHandling: S.optional(S.NullOr(S.String).pipe(T.Body("not_found_handling"))),
-          runWorkerFirst: S.optional(S.NullOr(__S(74)).pipe(T.Body("run_worker_first"))),
+          htmlHandling: S.optional(
+            S.NullOr(BetaWorkersVersionsCreateResponseAssetsConfigHtmlHandling).pipe(
+              T.Body("html_handling"),
+            ),
+          ),
+          notFoundHandling: S.optional(
+            S.NullOr(BetaWorkersVersionsCreateResponseAssetsConfigNotFoundHandling).pipe(
+              T.Body("not_found_handling"),
+            ),
+          ),
+          runWorkerFirst: S.optional(
+            S.NullOr(BetaWorkersVersionsCreateResponseAssetsConfigRunWorkerFirst).pipe(
+              T.Body("run_worker_first"),
+            ),
+          ),
         }),
       ).annotate({
         identifier: "BetaWorkersVersionsCreateResponseAssetsConfig",
@@ -17829,7 +21882,7 @@ function __c9(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          config: S.optional(S.NullOr(__S(75))),
+          config: S.optional(S.NullOr(BetaWorkersVersionsCreateResponseAssetsConfig)),
           jwt: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
@@ -17938,13 +21991,13 @@ function __c9(j: number): any {
         ),
       );
     case 6:
-      return S.Array(__S(77));
+      return S.Array(BetaWorkersVersionsCreateResponseBindingsItem);
     case 7:
       return S.suspend(() =>
         S.Struct({
           className: S.String.pipe(T.Body("class_name")),
           name: S.optional(S.NullOr(S.String)),
-          images: S.optional(S.NullOr(__S(59)).pipe(T.KeyDictionary({}))),
+          images: S.optional(S.NullOr(ContainerImageMap).pipe(T.KeyDictionary({}))),
         }),
       ).annotate({
         identifier: "BetaWorkersVersionsCreateResponseContainersItem",
@@ -17954,7 +22007,7 @@ function __c9(j: number): any {
 function __c10(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(79));
+      return S.Array(BetaWorkersVersionsCreateResponseContainersItem);
     case 1:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases([
@@ -17967,21 +22020,25 @@ function __c10(j: number): any {
         ]),
       );
     case 2:
-      return S.Record(S.String, __S(81));
+      return S.Record(S.String, BetaWorkersVersionsCreateResponseExportsValue);
     case 3:
       return S.suspend(() =>
         S.Struct({
           class: S.String,
           message: S.String,
-          scenario: S.String,
+          scenario: BetaWorkersVersionsCreateResponseExportsReconciliationInfoItemScenario,
           namespaceId: S.optional(S.NullOr(S.String).pipe(T.Body("namespace_id"))),
-          referencingScripts: S.optional(S.NullOr(__S(19)).pipe(T.Body("referencing_scripts"))),
+          referencingScripts: S.optional(
+            S.NullOr(
+              BetaWorkersVersionsCreateResponseExportsReconciliationInfoItemReferencingScriptsList,
+            ).pipe(T.Body("referencing_scripts")),
+          ),
         }),
       ).annotate({
         identifier: "BetaWorkersVersionsCreateResponseExportsReconciliationInfoItem",
       });
     case 4:
-      return S.Array(__S(83));
+      return S.Array(BetaWorkersVersionsCreateResponseExportsReconciliationInfoItem);
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -17992,7 +22049,7 @@ function __c10(j: number): any {
         identifier: "BetaWorkersVersionsCreateResponseExportsReconciliationRenamedItem",
       });
     case 6:
-      return S.Array(__S(85));
+      return S.Array(BetaWorkersVersionsCreateResponseExportsReconciliationRenamedItem);
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -18007,44 +22064,50 @@ function __c10(j: number): any {
 function __c11(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(87));
+      return S.Array(BetaWorkersVersionsCreateResponseExportsReconciliationTransferPendingItem);
     case 1:
       return S.suspend(() =>
         S.Struct({
           class: S.String,
-          phase: S.String,
+          phase: BetaWorkersVersionsCreateResponseExportsReconciliationTransferredItemPhase,
           to: S.String,
         }),
       ).annotate({
         identifier: "BetaWorkersVersionsCreateResponseExportsReconciliationTransferredItem",
       });
     case 2:
-      return S.Array(__S(89));
+      return S.Array(BetaWorkersVersionsCreateResponseExportsReconciliationTransferredItem);
     case 3:
       return S.suspend(() =>
         S.Struct({
           class: S.String,
           message: S.String,
-          scenario: S.String,
+          scenario: BetaWorkersVersionsCreateResponseExportsReconciliationWarningsItemScenario,
           namespaceId: S.optional(S.NullOr(S.String).pipe(T.Body("namespace_id"))),
         }),
       ).annotate({
         identifier: "BetaWorkersVersionsCreateResponseExportsReconciliationWarningsItem",
       });
     case 4:
-      return S.Array(__S(91));
+      return S.Array(BetaWorkersVersionsCreateResponseExportsReconciliationWarningsItem);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          created: __S(19),
-          deleted: __S(19),
-          info: __S(84),
-          removableEntries: __S(19).pipe(T.Body("removable_entries")),
-          renamed: __S(86),
-          transferPending: __S(88).pipe(T.Body("transfer_pending")),
-          transferred: __S(90),
-          updated: __S(19),
-          warnings: __S(92),
+          created: BetaWorkersVersionsCreateResponseExportsReconciliationCreatedList,
+          deleted: BetaWorkersVersionsCreateResponseExportsReconciliationDeletedList,
+          info: BetaWorkersVersionsCreateResponseExportsReconciliationInfoList,
+          removableEntries:
+            BetaWorkersVersionsCreateResponseExportsReconciliationRemovableEntriesList.pipe(
+              T.Body("removable_entries"),
+            ),
+          renamed: BetaWorkersVersionsCreateResponseExportsReconciliationRenamedList,
+          transferPending:
+            BetaWorkersVersionsCreateResponseExportsReconciliationTransferPendingList.pipe(
+              T.Body("transfer_pending"),
+            ),
+          transferred: BetaWorkersVersionsCreateResponseExportsReconciliationTransferredList,
+          updated: BetaWorkersVersionsCreateResponseExportsReconciliationUpdatedList,
+          warnings: BetaWorkersVersionsCreateResponseExportsReconciliationWarningsList,
         }),
       ).annotate({
         identifier: "BetaWorkersVersionsCreateResponseExportsReconciliation",
@@ -18087,30 +22150,46 @@ function __c12(j: number): any {
           id: S.String,
           createdOn: S.String.pipe(T.Body("created_on")),
           number: S.Number,
-          urls: __S(11),
-          annotations: S.optional(S.NullOr(__S(73))),
-          assets: S.optional(S.NullOr(__S(76))),
+          urls: BetaWorkersVersionsCreateResponseUrlsList,
+          annotations: S.optional(S.NullOr(BetaWorkersVersionsCreateResponseAnnotations)),
+          assets: S.optional(S.NullOr(BetaWorkersVersionsCreateResponseAssets)),
           authorEmail: S.optional(S.NullOr(S.String).pipe(T.Body("author_email"))),
           authorId: S.optional(S.NullOr(S.String).pipe(T.Body("author_id"))),
-          bindings: S.optional(S.NullOr(__S(78))),
-          cacheOptions: S.optional(S.NullOr(__S(45)).pipe(T.Body("cache_options"))),
-          compatibilityDate: S.optional(S.NullOr(S.String).pipe(T.Body("compatibility_date"))),
-          compatibilityFlags: S.optional(S.NullOr(__S(11)).pipe(T.Body("compatibility_flags"))),
-          containers: S.optional(S.NullOr(__S(80))),
-          exports: S.optional(S.NullOr(__S(82))),
-          exportsReconciliation: S.optional(
-            S.NullOr(__S(93)).pipe(T.Body("exports_reconciliation")),
+          bindings: S.optional(S.NullOr(BetaWorkersVersionsCreateResponseBindingsList)),
+          cacheOptions: S.optional(
+            S.NullOr(BetaWorkersCreateResponsePreviewsBaseConfigCacheOptions).pipe(
+              T.Body("cache_options"),
+            ),
           ),
-          limits: S.optional(S.NullOr(__S(46))),
+          compatibilityDate: S.optional(S.NullOr(S.String).pipe(T.Body("compatibility_date"))),
+          compatibilityFlags: S.optional(
+            S.NullOr(BetaWorkersVersionsCreateResponseCompatibilityFlagsList).pipe(
+              T.Body("compatibility_flags"),
+            ),
+          ),
+          containers: S.optional(S.NullOr(BetaWorkersVersionsCreateResponseContainersList)),
+          exports: S.optional(S.NullOr(BetaWorkersVersionsCreateResponseExportsMap)),
+          exportsReconciliation: S.optional(
+            S.NullOr(BetaWorkersVersionsCreateResponseExportsReconciliation).pipe(
+              T.Body("exports_reconciliation"),
+            ),
+          ),
+          limits: S.optional(S.NullOr(BetaWorkersVersionsCreateResponseLimits)),
           mainModule: S.optional(S.NullOr(S.String).pipe(T.Body("main_module"))),
           migrationTag: S.optional(S.NullOr(S.String).pipe(T.Body("migration_tag"))),
-          migrations: S.optional(S.NullOr(__S(94))),
-          modules: S.optional(S.NullOr(__S(68))),
-          packageDependencies: S.optional(S.NullOr(__S(70)).pipe(T.Body("package_dependencies"))),
-          placement: S.optional(S.NullOr(__S(95))),
+          migrations: S.optional(S.NullOr(BetaWorkersVersionsCreateResponseMigrations)),
+          modules: S.optional(S.NullOr(BetaWorkersVersionsCreateResponseModulesList)),
+          packageDependencies: S.optional(
+            S.NullOr(BetaWorkersVersionsCreateResponsePackageDependenciesList).pipe(
+              T.Body("package_dependencies"),
+            ),
+          ),
+          placement: S.optional(S.NullOr(BetaWorkersVersionsCreateResponsePlacement)),
           source: S.optional(S.NullOr(S.String)),
           startupTimeMs: S.optional(S.NullOr(S.Number).pipe(T.Body("startup_time_ms"))),
-          usageModel: S.optional(S.NullOr(S.String).pipe(T.Body("usage_model"))),
+          usageModel: S.optional(
+            S.NullOr(BetaWorkersVersionsCreateResponseUsageModel).pipe(T.Body("usage_model")),
+          ),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "CreateBetaWorkerVersionResponse",
@@ -18118,9 +22197,9 @@ function __c12(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          headers: __S(59),
-          logpushDataset: S.String,
-          type: S.String,
+          headers: ObservabilityDestinationsCreateRequestConfigurationHeadersMap,
+          logpushDataset: ObservabilityDestinationsCreateRequestConfigurationLogpushDataset,
+          type: ObservabilityDestinationsCreateRequestConfigurationType,
           url: S.String,
         }),
       ).annotate({
@@ -18130,7 +22209,7 @@ function __c12(j: number): any {
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
-          configuration: __S(97),
+          configuration: ObservabilityDestinationsCreateRequestConfiguration,
           enabled: S.Boolean,
           name: S.String,
           skipPreflightCheck: S.optional(S.Boolean),
@@ -18150,9 +22229,9 @@ function __c12(j: number): any {
       return S.suspend(() =>
         S.Struct({
           destinationConf: S.String.pipe(T.Body("destination_conf")),
-          logpushDataset: S.String,
+          logpushDataset: ObservabilityDestinationsCreateResponseConfigurationLogpushDataset,
           logpushJob: S.Number,
-          type: S.String,
+          type: ObservabilityDestinationsCreateResponseConfigurationType,
           url: S.String,
         }),
       ).annotate({
@@ -18161,10 +22240,10 @@ function __c12(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          configuration: __S(99),
+          configuration: ObservabilityDestinationsCreateResponseConfiguration,
           enabled: S.Boolean,
           name: S.String,
-          scripts: __S(11),
+          scripts: ObservabilityDestinationsCreateResponseScriptsList,
           slug: S.String,
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
@@ -18178,7 +22257,7 @@ function __c12(j: number): any {
         ]),
       );
     case 6:
-      return S.Array(__S(101));
+      return S.Array(ObservabilityQueriesCreateRequestParametersCalculationsItem);
     case 7:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases(
@@ -18194,36 +22273,36 @@ function __c12(j: number): any {
 function __c13(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(103));
+      return S.Array(ObservabilityQueriesCreateRequestParametersFiltersItem);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          type: S.String,
+          type: ObservabilityQueriesCreateRequestParametersGroupBysItemType,
           value: S.String,
         }),
       ).annotate({
         identifier: "ObservabilityQueriesCreateRequestParametersGroupBysItem",
       });
     case 2:
-      return S.Array(__S(105));
+      return S.Array(ObservabilityQueriesCreateRequestParametersGroupBysItem);
     case 3:
       return S.suspend(() =>
         S.Struct({
           key: S.String,
-          operation: S.String,
+          operation: ObservabilityQueriesCreateRequestParametersHavingsItemOperation,
           value: S.Number,
         }),
       ).annotate({
         identifier: "ObservabilityQueriesCreateRequestParametersHavingsItem",
       });
     case 4:
-      return S.Array(__S(107));
+      return S.Array(ObservabilityQueriesCreateRequestParametersHavingsItem);
     case 5:
       return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], []]));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          value: __S(109),
+          value: ObservabilityQueriesCreateRequestParametersNeedleValue,
           isRegex: S.optional(S.Boolean),
           matchCase: S.optional(S.Boolean),
         }),
@@ -18234,7 +22313,7 @@ function __c13(j: number): any {
       return S.suspend(() =>
         S.Struct({
           value: S.String,
-          order: S.optional(S.String),
+          order: S.optional(ObservabilityQueriesCreateRequestParametersOrderByOrder),
         }),
       ).annotate({
         identifier: "ObservabilityQueriesCreateRequestParametersOrderBy",
@@ -18246,15 +22325,17 @@ function __c14(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          calculations: S.optional(__S(102)),
-          datasets: S.optional(__S(11)),
-          filterCombination: S.optional(S.String),
-          filters: S.optional(__S(104)),
-          groupBys: S.optional(__S(106)),
-          havings: S.optional(__S(108)),
+          calculations: S.optional(ObservabilityQueriesCreateRequestParametersCalculationsList),
+          datasets: S.optional(ObservabilityQueriesCreateRequestParametersDatasetsList),
+          filterCombination: S.optional(
+            ObservabilityQueriesCreateRequestParametersFilterCombination,
+          ),
+          filters: S.optional(ObservabilityQueriesCreateRequestParametersFiltersList),
+          groupBys: S.optional(ObservabilityQueriesCreateRequestParametersGroupBysList),
+          havings: S.optional(ObservabilityQueriesCreateRequestParametersHavingsList),
           limit: S.optional(S.Number),
-          needle: S.optional(__S(110)),
-          orderBy: S.optional(__S(111)),
+          needle: S.optional(ObservabilityQueriesCreateRequestParametersNeedle),
+          orderBy: S.optional(ObservabilityQueriesCreateRequestParametersOrderBy),
         }),
       ).annotate({
         identifier: "ObservabilityQueriesCreateRequestParameters",
@@ -18265,7 +22346,7 @@ function __c14(j: number): any {
           accountId: S.String.pipe(T.Label("account_id")),
           description: S.String,
           name: S.String,
-          parameters: __S(112),
+          parameters: ObservabilityQueriesCreateRequestParameters,
         })
           .pipe(
             T.Http({
@@ -18286,7 +22367,7 @@ function __c14(j: number): any {
         ]),
       );
     case 3:
-      return S.Array(__S(114));
+      return S.Array(ObservabilityQueriesCreateResponseParametersCalculationsItem);
     case 4:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases(
@@ -18298,18 +22379,18 @@ function __c14(j: number): any {
         ),
       );
     case 5:
-      return S.Array(__S(116));
+      return S.Array(ObservabilityQueriesCreateResponseParametersFiltersItem);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          type: S.String,
+          type: ObservabilityQueriesCreateResponseParametersGroupBysItemType,
           value: S.String,
         }),
       ).annotate({
         identifier: "ObservabilityQueriesCreateResponseParametersGroupBysItem",
       });
     case 7:
-      return S.Array(__S(118));
+      return S.Array(ObservabilityQueriesCreateResponseParametersGroupBysItem);
   }
 }
 function __c15(j: number): any {
@@ -18319,7 +22400,7 @@ function __c15(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(120),
+          value: ObservabilityQueriesCreateResponseParametersNeedleValue,
           isRegex: S.optional(S.NullOr(S.Boolean)),
           matchCase: S.optional(S.NullOr(S.Boolean)),
         }),
@@ -18330,7 +22411,7 @@ function __c15(j: number): any {
       return S.suspend(() =>
         S.Struct({
           value: S.String,
-          order: S.optional(S.NullOr(S.String)),
+          order: S.optional(S.NullOr(ObservabilityQueriesCreateResponseParametersOrderByOrder)),
         }),
       ).annotate({
         identifier: "ObservabilityQueriesCreateResponseParametersOrderBy",
@@ -18338,15 +22419,19 @@ function __c15(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          calculations: S.optional(S.NullOr(__S(115))),
-          datasets: S.optional(S.NullOr(__S(11))),
-          filterCombination: S.optional(S.NullOr(S.String)),
-          filters: S.optional(S.NullOr(__S(117))),
-          groupBys: S.optional(S.NullOr(__S(119))),
-          havings: S.optional(S.NullOr(__S(108))),
+          calculations: S.optional(
+            S.NullOr(ObservabilityQueriesCreateResponseParametersCalculationsList),
+          ),
+          datasets: S.optional(S.NullOr(ObservabilityQueriesCreateResponseParametersDatasetsList)),
+          filterCombination: S.optional(
+            S.NullOr(ObservabilityQueriesCreateResponseParametersFilterCombination),
+          ),
+          filters: S.optional(S.NullOr(ObservabilityQueriesCreateResponseParametersFiltersList)),
+          groupBys: S.optional(S.NullOr(ObservabilityQueriesCreateResponseParametersGroupBysList)),
+          havings: S.optional(S.NullOr(ObservabilityQueriesCreateResponseParametersHavingsList)),
           limit: S.optional(S.NullOr(S.Number)),
-          needle: S.optional(S.NullOr(__S(121))),
-          orderBy: S.optional(S.NullOr(__S(122))),
+          needle: S.optional(S.NullOr(ObservabilityQueriesCreateResponseParametersNeedle)),
+          orderBy: S.optional(S.NullOr(ObservabilityQueriesCreateResponseParametersOrderBy)),
         }),
       ).annotate({
         identifier: "ObservabilityQueriesCreateResponseParameters",
@@ -18360,7 +22445,7 @@ function __c15(j: number): any {
           createdBy: S.String,
           description: S.String,
           name: S.String,
-          parameters: __S(123),
+          parameters: ObservabilityQueriesCreateResponseParameters,
           updated: S.String,
           updatedBy: S.String,
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -18384,7 +22469,7 @@ function __c15(j: number): any {
         ]),
       );
     case 7:
-      return S.Array(__S(126));
+      return S.Array(ObservabilitySharedQueriesCreateRequestParametersCalculationsItem);
   }
 }
 function __c16(j: number): any {
@@ -18400,36 +22485,36 @@ function __c16(j: number): any {
         ),
       );
     case 1:
-      return S.Array(__S(128));
+      return S.Array(ObservabilitySharedQueriesCreateRequestParametersFiltersItem);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          type: S.String,
+          type: ObservabilitySharedQueriesCreateRequestParametersGroupBysItemType,
           value: S.String,
         }),
       ).annotate({
         identifier: "ObservabilitySharedQueriesCreateRequestParametersGroupBysItem",
       });
     case 3:
-      return S.Array(__S(130));
+      return S.Array(ObservabilitySharedQueriesCreateRequestParametersGroupBysItem);
     case 4:
       return S.suspend(() =>
         S.Struct({
           key: S.String,
-          operation: S.String,
+          operation: ObservabilitySharedQueriesCreateRequestParametersHavingsItemOperation,
           value: S.Number,
         }),
       ).annotate({
         identifier: "ObservabilitySharedQueriesCreateRequestParametersHavingsItem",
       });
     case 5:
-      return S.Array(__S(132));
+      return S.Array(ObservabilitySharedQueriesCreateRequestParametersHavingsItem);
     case 6:
       return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], []]));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          value: __S(134),
+          value: ObservabilitySharedQueriesCreateRequestParametersNeedleValue,
           isRegex: S.optional(S.Boolean),
           matchCase: S.optional(S.Boolean),
         }),
@@ -18444,7 +22529,7 @@ function __c17(j: number): any {
       return S.suspend(() =>
         S.Struct({
           value: S.String,
-          order: S.optional(S.String),
+          order: S.optional(ObservabilitySharedQueriesCreateRequestParametersOrderByOrder),
         }),
       ).annotate({
         identifier: "ObservabilitySharedQueriesCreateRequestParametersOrderBy",
@@ -18452,15 +22537,19 @@ function __c17(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          calculations: S.optional(__S(127)),
-          datasets: S.optional(__S(11)),
-          filterCombination: S.optional(S.String),
-          filters: S.optional(__S(129)),
-          groupBys: S.optional(__S(131)),
-          havings: S.optional(__S(133)),
+          calculations: S.optional(
+            ObservabilitySharedQueriesCreateRequestParametersCalculationsList,
+          ),
+          datasets: S.optional(ObservabilitySharedQueriesCreateRequestParametersDatasetsList),
+          filterCombination: S.optional(
+            ObservabilitySharedQueriesCreateRequestParametersFilterCombination,
+          ),
+          filters: S.optional(ObservabilitySharedQueriesCreateRequestParametersFiltersList),
+          groupBys: S.optional(ObservabilitySharedQueriesCreateRequestParametersGroupBysList),
+          havings: S.optional(ObservabilitySharedQueriesCreateRequestParametersHavingsList),
           limit: S.optional(S.Number),
-          needle: S.optional(__S(135)),
-          orderBy: S.optional(__S(136)),
+          needle: S.optional(ObservabilitySharedQueriesCreateRequestParametersNeedle),
+          orderBy: S.optional(ObservabilitySharedQueriesCreateRequestParametersOrderBy),
         }),
       ).annotate({
         identifier: "ObservabilitySharedQueriesCreateRequestParameters",
@@ -18470,11 +22559,11 @@ function __c17(j: number): any {
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           queryId: S.String,
-          timeframe: __S(125),
+          timeframe: ObservabilitySharedQueriesCreateRequestTimeframe,
           chart: S.optional(S.Boolean),
-          chartType: S.optional(S.String),
+          chartType: S.optional(ObservabilitySharedQueriesCreateRequestChartType),
           compare: S.optional(S.Boolean),
-          distributionScale: S.optional(S.String),
+          distributionScale: S.optional(ObservabilitySharedQueriesCreateRequestDistributionScale),
           dry: S.optional(S.Boolean),
           granularity: S.optional(S.Number),
           ignoreSeries: S.optional(S.Boolean),
@@ -18482,8 +22571,8 @@ function __c17(j: number): any {
           offset: S.optional(S.String),
           offsetBy: S.optional(S.Number),
           offsetDirection: S.optional(S.String),
-          parameters: S.optional(__S(137)),
-          view: S.optional(S.String),
+          parameters: S.optional(ObservabilitySharedQueriesCreateRequestParameters),
+          view: S.optional(ObservabilitySharedQueriesCreateRequestView),
         })
           .pipe(
             T.Http({
@@ -18511,7 +22600,7 @@ function __c17(j: number): any {
         }),
       ).annotate({ identifier: "PreviewTailConsumer" });
     case 5:
-      return S.Array(__S(140));
+      return S.Array(PreviewTailConsumer);
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -18520,7 +22609,7 @@ function __c17(j: number): any {
           ignoreBaseConfig: S.optional(S.Boolean.pipe(T.Query("ignore_base_config"))),
           name: S.String,
           logpush: S.optional(S.Boolean),
-          tailConsumers: S.optional(__S(141).pipe(T.Body("tail_consumers"))),
+          tailConsumers: S.optional(PreviewTailConsumersList.pipe(T.Body("tail_consumers"))),
         })
           .pipe(
             T.Http({
@@ -18544,10 +22633,12 @@ function __c18(j: number): any {
           name: S.String,
           slug: S.String,
           workerName: S.String.pipe(T.Body("worker_name")),
-          urls: S.optional(S.NullOr(__S(143))),
-          tags: S.optional(S.NullOr(__S(143))),
+          urls: S.optional(S.NullOr(PreviewUrlsList)),
+          tags: S.optional(S.NullOr(PreviewUrlsList)),
           logpush: S.optional(S.NullOr(S.Boolean)),
-          tailConsumers: S.optional(S.NullOr(__S(141)).pipe(T.Body("tail_consumers"))),
+          tailConsumers: S.optional(
+            S.NullOr(PreviewTailConsumersList).pipe(T.Body("tail_consumers")),
+          ),
           createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
           updatedOn: S.optional(S.NullOr(S.String).pipe(T.Body("updated_on"))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -18565,16 +22656,20 @@ function __c18(j: number): any {
       return S.suspend(() =>
         S.Struct({
           mainModule: S.optional(S.String.pipe(T.Body("main_module"))),
-          assets: S.optional(__S(145)),
+          assets: S.optional(CreatePreviewDeploymentMetadataAssets),
           compatibilityDate: S.optional(S.String.pipe(T.Body("compatibility_date"))),
-          compatibilityFlags: S.optional(__S(11).pipe(T.Body("compatibility_flags"))),
+          compatibilityFlags: S.optional(
+            CreatePreviewDeploymentMetadataCompatibilityFlagsList.pipe(
+              T.Body("compatibility_flags"),
+            ),
+          ),
           annotations: S.optional(S.Unknown),
           migrations: S.optional(S.Unknown),
           limits: S.optional(S.Unknown),
           placement: S.optional(S.Unknown),
           cacheOptions: S.optional(S.Unknown.pipe(T.Body("cache_options"))),
           env: S.optional(S.Unknown),
-          containers: S.optional(__S(61)),
+          containers: S.optional(CreatePreviewDeploymentMetadataContainersList),
         }),
       ).annotate({
         identifier: "CreatePreviewDeploymentMetadata",
@@ -18585,7 +22680,7 @@ function __c18(j: number): any {
           accountId: S.String.pipe(T.Label("account_id")),
           workerId: S.String.pipe(T.Label("worker_id")),
           previewId: S.String.pipe(T.Label("preview_id")),
-          metadata: __S(146),
+          metadata: CreatePreviewDeploymentMetadata,
           files: S.optional(S.Unknown.pipe(T.FormDataFile())),
         })
           .pipe(
@@ -18607,7 +22702,7 @@ function __c18(j: number): any {
           previewId: S.optional(S.NullOr(S.String).pipe(T.Body("preview_id"))),
           previewName: S.optional(S.NullOr(S.String).pipe(T.Body("preview_name"))),
           migrationTag: S.optional(S.NullOr(S.String).pipe(T.Body("migration_tag"))),
-          urls: S.optional(S.NullOr(__S(143))),
+          urls: S.optional(S.NullOr(PreviewUrlsList)),
           compatibilityDate: S.optional(S.NullOr(S.String).pipe(T.Body("compatibility_date"))),
           createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -18646,13 +22741,13 @@ function __c18(j: number): any {
 function __c19(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, __S(151));
+      return S.Record(S.String, ScriptsAssetsUploadCreateRequestManifestValue);
     case 1:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           scriptName: S.String.pipe(T.Label("script_name")),
-          manifest: __S(152),
+          manifest: ScriptsAssetsUploadCreateRequestManifestMap,
         })
           .pipe(
             T.Http({
@@ -18666,11 +22761,11 @@ function __c19(j: number): any {
         identifier: "CreateScriptAssetUploadRequest",
       });
     case 2:
-      return S.Array(__S(11));
+      return S.Array(ScriptsAssetsUploadCreateResponseBucketsItemList);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          buckets: S.optional(S.NullOr(__S(154))),
+          buckets: S.optional(S.NullOr(ScriptsAssetsUploadCreateResponseBucketsList)),
           jwt: S.optional(S.NullOr(S.String)),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
@@ -18686,7 +22781,7 @@ function __c19(j: number): any {
         identifier: "ScriptsDeploymentsCreateRequestVersionsItem",
       });
     case 5:
-      return S.Array(__S(156));
+      return S.Array(ScriptsDeploymentsCreateRequestVersionsItem);
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -18702,9 +22797,9 @@ function __c19(j: number): any {
           accountId: S.String.pipe(T.Label("account_id")),
           scriptName: S.String.pipe(T.Label("script_name")),
           force: S.optional(S.Boolean.pipe(T.Query())),
-          strategy: S.String,
-          versions: __S(157),
-          annotations: S.optional(__S(158)),
+          strategy: ScriptsDeploymentsCreateRequestStrategy,
+          versions: ScriptsDeploymentsCreateRequestVersionsList,
+          annotations: S.optional(ScriptsDeploymentsCreateRequestAnnotations),
         })
           .pipe(
             T.Http({
@@ -18736,9 +22831,9 @@ function __c20(j: number): any {
           id: S.String,
           createdOn: S.String.pipe(T.Body("created_on")),
           source: S.String,
-          strategy: S.String,
-          versions: __S(157),
-          annotations: S.optional(S.NullOr(__S(160))),
+          strategy: ScriptsDeploymentsCreateResponseStrategy,
+          versions: ScriptsDeploymentsCreateResponseVersionsList,
+          annotations: S.optional(S.NullOr(ScriptsDeploymentsCreateResponseAnnotations)),
           authorEmail: S.optional(S.NullOr(S.String).pipe(T.Body("author_email"))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
@@ -18848,22 +22943,34 @@ function __c20(j: number): any {
         ),
       );
     case 4:
-      return S.Array(__S(163));
+      return S.Array(CreateScriptEdgePreviewMetadataBinding);
     case 5:
-      return S.Array(__S(65));
+      return S.Array(
+        BetaWorkersVersionsCreateRequestMigrationsSingleStepMigrationRenamedClassesItem,
+      );
     case 6:
       return S.suspend(() =>
         S.Struct({
-          newClasses: S.optional(__S(11).pipe(T.Body("new_classes"))),
-          newSqliteClasses: S.optional(__S(11).pipe(T.Body("new_sqlite_classes"))),
-          renamedClasses: S.optional(__S(165).pipe(T.Body("renamed_classes"))),
-          deletedClasses: S.optional(__S(11).pipe(T.Body("deleted_classes"))),
+          newClasses: S.optional(
+            CreateScriptEdgePreviewMetadataStringList.pipe(T.Body("new_classes")),
+          ),
+          newSqliteClasses: S.optional(
+            CreateScriptEdgePreviewMetadataStringList.pipe(T.Body("new_sqlite_classes")),
+          ),
+          renamedClasses: S.optional(
+            CreateScriptEdgePreviewMetadataMigrationRenamedClassesList.pipe(
+              T.Body("renamed_classes"),
+            ),
+          ),
+          deletedClasses: S.optional(
+            CreateScriptEdgePreviewMetadataStringList.pipe(T.Body("deleted_classes")),
+          ),
         }),
       ).annotate({
         identifier: "CreateScriptEdgePreviewMetadataMigrationStep",
       });
     case 7:
-      return S.Array(__S(166));
+      return S.Array(CreateScriptEdgePreviewMetadataMigrationStep);
   }
 }
 function __c21(j: number): any {
@@ -18873,7 +22980,7 @@ function __c21(j: number): any {
         S.Struct({
           oldTag: S.optional(S.String.pipe(T.Body("old_tag"))),
           newTag: S.optional(S.String.pipe(T.Body("new_tag"))),
-          steps: S.optional(__S(167)),
+          steps: S.optional(CreateScriptEdgePreviewMetadataMigrationStepsList),
         }),
       ).annotate({
         identifier: "CreateScriptEdgePreviewMetadataMigrations",
@@ -18892,15 +22999,25 @@ function __c21(j: number): any {
         identifier: "CreateScriptEdgePreviewMetadataTailConsumer",
       });
     case 3:
-      return S.Array(__S(170));
+      return S.Array(CreateScriptEdgePreviewMetadataTailConsumer);
     case 4:
       return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          htmlHandling: S.optional(S.String.pipe(T.Body("html_handling"))),
-          notFoundHandling: S.optional(S.String.pipe(T.Body("not_found_handling"))),
-          runWorkerFirst: S.optional(__S(172).pipe(T.Body("run_worker_first"))),
+          htmlHandling: S.optional(
+            CreateScriptEdgePreviewMetadataAssetsConfigHtmlHandling.pipe(T.Body("html_handling")),
+          ),
+          notFoundHandling: S.optional(
+            CreateScriptEdgePreviewMetadataAssetsConfigNotFoundHandling.pipe(
+              T.Body("not_found_handling"),
+            ),
+          ),
+          runWorkerFirst: S.optional(
+            CreateScriptEdgePreviewMetadataAssetsConfigRunWorkerFirst.pipe(
+              T.Body("run_worker_first"),
+            ),
+          ),
           redirects: S.optional(S.String),
           headers: S.optional(S.String),
         }),
@@ -18911,7 +23028,7 @@ function __c21(j: number): any {
       return S.suspend(() =>
         S.Struct({
           jwt: S.optional(S.String),
-          config: S.optional(__S(173)),
+          config: S.optional(CreateScriptEdgePreviewMetadataAssetsConfig),
         }),
       ).annotate({
         identifier: "CreateScriptEdgePreviewMetadataAssets",
@@ -18923,7 +23040,7 @@ function __c21(j: number): any {
           headSamplingRate: S.optional(S.Number.pipe(T.Body("head_sampling_rate"))),
           invocationLogs: S.optional(S.Boolean.pipe(T.Body("invocation_logs"))),
           persist: S.optional(S.Boolean),
-          destinations: S.optional(__S(11)),
+          destinations: S.optional(CreateScriptEdgePreviewMetadataStringList),
         }),
       ).annotate({
         identifier: "CreateScriptEdgePreviewMetadataObservabilityLogs",
@@ -18938,7 +23055,7 @@ function __c22(j: number): any {
           enabled: S.optional(S.Boolean),
           headSamplingRate: S.optional(S.Number.pipe(T.Body("head_sampling_rate"))),
           persist: S.optional(S.Boolean),
-          destinations: S.optional(__S(11)),
+          destinations: S.optional(CreateScriptEdgePreviewMetadataStringList),
         }),
       ).annotate({
         identifier: "CreateScriptEdgePreviewMetadataObservabilityTraces",
@@ -18948,10 +23065,10 @@ function __c22(j: number): any {
         S.Struct({
           enabled: S.optional(S.Boolean),
           headSamplingRate: S.optional(S.Number.pipe(T.Body("head_sampling_rate"))),
-          logs: S.optional(__S(175)),
+          logs: S.optional(CreateScriptEdgePreviewMetadataObservabilityLogs),
           redactQueryString: S.optional(S.Boolean.pipe(T.Body("redact_query_string"))),
-          issues: S.optional(__S(10)),
-          traces: S.optional(__S(176)),
+          issues: S.optional(CreateScriptEdgePreviewMetadataObservabilityIssues),
+          traces: S.optional(CreateScriptEdgePreviewMetadataObservabilityTraces),
         }),
       ).annotate({
         identifier: "CreateScriptEdgePreviewMetadataObservability",
@@ -18962,23 +23079,35 @@ function __c22(j: number): any {
           mainModule: S.optional(S.String.pipe(T.Body("main_module"))),
           bodyPart: S.optional(S.String.pipe(T.Body("body_part"))),
           compatibilityDate: S.optional(S.String.pipe(T.Body("compatibility_date"))),
-          compatibilityFlags: S.optional(__S(11).pipe(T.Body("compatibility_flags"))),
-          usageModel: S.optional(S.String.pipe(T.Body("usage_model"))),
-          bindings: S.optional(__S(164)),
-          keepBindings: S.optional(__S(11).pipe(T.Body("keep_bindings"))),
-          migrations: S.optional(__S(168)),
+          compatibilityFlags: S.optional(
+            CreateScriptEdgePreviewMetadataStringList.pipe(T.Body("compatibility_flags")),
+          ),
+          usageModel: S.optional(
+            CreateScriptEdgePreviewMetadataUsageModel.pipe(T.Body("usage_model")),
+          ),
+          bindings: S.optional(CreateScriptEdgePreviewMetadataBindingsList),
+          keepBindings: S.optional(
+            CreateScriptEdgePreviewMetadataStringList.pipe(T.Body("keep_bindings")),
+          ),
+          migrations: S.optional(CreateScriptEdgePreviewMetadataMigrations),
           capnpSchema: S.optional(S.String.pipe(T.Body("capnp_schema"))),
           logpush: S.optional(S.Boolean),
-          placement: S.optional(__S(169)),
-          tailConsumers: S.optional(__S(171).pipe(T.Body("tail_consumers"))),
-          streamingTailConsumers: S.optional(__S(171).pipe(T.Body("streaming_tail_consumers"))),
-          limits: S.optional(__S(18)),
-          assets: S.optional(__S(174)),
-          observability: S.optional(__S(177)),
-          containers: S.optional(__S(61)),
+          placement: S.optional(CreateScriptEdgePreviewMetadataPlacement),
+          tailConsumers: S.optional(
+            CreateScriptEdgePreviewMetadataTailConsumersList.pipe(T.Body("tail_consumers")),
+          ),
+          streamingTailConsumers: S.optional(
+            CreateScriptEdgePreviewMetadataTailConsumersList.pipe(
+              T.Body("streaming_tail_consumers"),
+            ),
+          ),
+          limits: S.optional(CreateScriptEdgePreviewMetadataLimits),
+          assets: S.optional(CreateScriptEdgePreviewMetadataAssets),
+          observability: S.optional(CreateScriptEdgePreviewMetadataObservability),
+          containers: S.optional(CreateScriptEdgePreviewMetadataContainersList),
           annotations: S.optional(S.Unknown),
           keepAssets: S.optional(S.Boolean.pipe(T.Body("keep_assets"))),
-          tags: S.optional(__S(11)),
+          tags: S.optional(CreateScriptEdgePreviewMetadataStringList),
         }),
       ).annotate({
         identifier: "CreateScriptEdgePreviewMetadata",
@@ -18990,8 +23119,10 @@ function __c22(j: number): any {
           scriptName: S.String.pipe(T.Label("script_name")),
           cfPreviewUploadConfigToken: S.String.pipe(T.Header("cf-preview-upload-config-token")),
           files: S.optional(S.Unknown.pipe(T.FormDataFile())),
-          wranglerSessionConfig: S.optional(__S(162).pipe(T.Body("wrangler-session-config"))),
-          metadata: S.optional(__S(178)),
+          wranglerSessionConfig: S.optional(
+            CreateScriptEdgePreviewWranglerSessionConfig.pipe(T.Body("wrangler-session-config")),
+          ),
+          metadata: S.optional(CreateScriptEdgePreviewMetadata),
         })
           .pipe(
             T.Http({
@@ -19053,7 +23184,7 @@ function __c23(j: number): any {
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           scriptName: S.String.pipe(T.Label("script_name")),
-          filters: S.optional(__S(183)),
+          filters: S.optional(CreateScriptTailFiltersList),
         })
           .pipe(
             T.Http({
@@ -19087,9 +23218,13 @@ function __c23(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          htmlHandling: S.optional(S.String.pipe(T.Body("html_handling"))),
-          notFoundHandling: S.optional(S.String.pipe(T.Body("not_found_handling"))),
-          runWorkerFirst: S.optional(__S(187).pipe(T.Body("run_worker_first"))),
+          htmlHandling: S.optional(PutScriptAssetsConfigHtmlHandling.pipe(T.Body("html_handling"))),
+          notFoundHandling: S.optional(
+            PutScriptAssetsConfigNotFoundHandling.pipe(T.Body("not_found_handling")),
+          ),
+          runWorkerFirst: S.optional(
+            PutScriptAssetsConfigRunWorkerFirst.pipe(T.Body("run_worker_first")),
+          ),
           serveDirectly: S.optional(S.Boolean.pipe(T.Body("serve_directly"))),
           headers: S.optional(S.String.pipe(T.Body("_headers"))),
           redirects: S.optional(S.String.pipe(T.Body("_redirects"))),
@@ -19098,7 +23233,7 @@ function __c23(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          config: S.optional(__S(188)),
+          config: S.optional(PutScriptAssetsConfig),
           jwt: S.optional(S.String),
         }),
       ).annotate({ identifier: "PutScriptMetadataAssets" });
@@ -19207,7 +23342,7 @@ function __c23(j: number): any {
         ),
       );
     case 7:
-      return S.Array(__S(190));
+      return S.Array(PutScriptBinding);
   }
 }
 function __c24(j: number): any {
@@ -19232,7 +23367,7 @@ function __c24(j: number): any {
         S.Struct({
           enabled: S.Boolean,
           invocationLogs: S.Boolean.pipe(T.Body("invocation_logs")),
-          destinations: S.optional(__S(11)),
+          destinations: S.optional(PutScriptMetadataStringList),
           headSamplingRate: S.optional(S.NullOr(S.Number).pipe(T.Body("head_sampling_rate"))),
           persist: S.optional(S.Boolean),
         }),
@@ -19242,11 +23377,13 @@ function __c24(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          destinations: S.optional(__S(11)),
+          destinations: S.optional(PutScriptMetadataStringList),
           enabled: S.optional(S.Boolean),
           headSamplingRate: S.optional(S.NullOr(S.Number).pipe(T.Body("head_sampling_rate"))),
           persist: S.optional(S.Boolean),
-          propagationPolicy: S.optional(S.String.pipe(T.Body("propagation_policy"))),
+          propagationPolicy: S.optional(
+            PutScriptObservabilityTracesPropagationPolicy.pipe(T.Body("propagation_policy")),
+          ),
         }),
       ).annotate({
         identifier: "PutScriptObservabilityTraces",
@@ -19256,9 +23393,9 @@ function __c24(j: number): any {
         S.Struct({
           enabled: S.optional(S.Boolean),
           headSamplingRate: S.optional(S.NullOr(S.Number).pipe(T.Body("head_sampling_rate"))),
-          logs: S.optional(S.NullOr(__S(193))),
-          traces: S.optional(S.NullOr(__S(194))),
-          issues: S.optional(__S(62)),
+          logs: S.optional(S.NullOr(PutScriptObservabilityLogs)),
+          traces: S.optional(S.NullOr(PutScriptObservabilityTraces)),
+          issues: S.optional(PutScriptObservabilityIssues),
           redactQueryString: S.optional(S.Boolean.pipe(T.Body("redact_query_string"))),
         }),
       ).annotate({
@@ -19286,7 +23423,7 @@ function __c24(j: number): any {
         }),
       ).annotate({ identifier: "PutScriptTailConsumer" });
     case 6:
-      return S.Array(__S(197));
+      return S.Array(PutScriptTailConsumer);
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -19301,44 +23438,50 @@ function __c25(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(S.String),
-          cache: S.optional(__S(199)),
+          type: S.optional(PutScriptMetadataExportType),
+          cache: S.optional(PutScriptMetadataCache),
           storage: S.optional(S.String),
           container: S.optional(S.String),
-          state: S.optional(S.String),
+          state: S.optional(PutScriptMetadataExportState),
           renamedTo: S.optional(S.String.pipe(T.Body("renamed_to"))),
           transferredTo: S.optional(S.String.pipe(T.Body("transferred_to"))),
           transferFrom: S.optional(S.String.pipe(T.Body("transfer_from"))),
         }),
       ).annotate({ identifier: "PutScriptMetadataExport" });
     case 1:
-      return S.Record(S.String, __S(200));
+      return S.Record(S.String, PutScriptMetadataExport);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          annotations: S.optional(__S(186)),
-          assets: S.optional(__S(189)),
-          bindings: S.optional(__S(191)),
+          annotations: S.optional(PutScriptMetadataAnnotations),
+          assets: S.optional(PutScriptMetadataAssets),
+          bindings: S.optional(PutScriptMetadataBindingsList),
           bodyPart: S.optional(S.String.pipe(T.Body("body_part"))),
           compatibilityDate: S.optional(S.String.pipe(T.Body("compatibility_date"))),
-          compatibilityFlags: S.optional(__S(11).pipe(T.Body("compatibility_flags"))),
-          containers: S.optional(__S(61)),
+          compatibilityFlags: S.optional(
+            PutScriptMetadataStringList.pipe(T.Body("compatibility_flags")),
+          ),
+          containers: S.optional(PutScriptMetadataContainersList),
           keepAssets: S.optional(S.Boolean.pipe(T.Body("keep_assets"))),
-          keepBindings: S.optional(__S(11).pipe(T.Body("keep_bindings"))),
-          limits: S.optional(__S(18)),
+          keepBindings: S.optional(PutScriptMetadataStringList.pipe(T.Body("keep_bindings"))),
+          limits: S.optional(CreateScriptEdgePreviewMetadataLimits),
           logpush: S.optional(S.Boolean),
           mainModule: S.optional(S.String.pipe(T.Body("main_module"))),
-          migrations: S.optional(__S(192)),
-          observability: S.optional(__S(195)),
-          placement: S.optional(__S(196)),
-          tags: S.optional(__S(11)),
-          tailConsumers: S.optional(S.NullOr(__S(198)).pipe(T.Body("tail_consumers"))),
-          usageModel: S.optional(S.String.pipe(T.Body("usage_model"))),
-          cacheOptions: S.optional(__S(199).pipe(T.Body("cache_options"))),
-          streamingTailConsumers: S.optional(
-            S.NullOr(__S(198)).pipe(T.Body("streaming_tail_consumers")),
+          migrations: S.optional(PutScriptMetadataMigrations),
+          observability: S.optional(PutScriptMetadataObservability),
+          placement: S.optional(PutScriptMetadataPlacement),
+          tags: S.optional(PutScriptMetadataStringList),
+          tailConsumers: S.optional(
+            S.NullOr(PutScriptMetadataTailConsumersList).pipe(T.Body("tail_consumers")),
           ),
-          exports: S.optional(__S(201).pipe(T.KeyDictionary({}))),
+          usageModel: S.optional(PutScriptMetadataUsageModel.pipe(T.Body("usage_model"))),
+          cacheOptions: S.optional(PutScriptMetadataCache.pipe(T.Body("cache_options"))),
+          streamingTailConsumers: S.optional(
+            S.NullOr(PutScriptMetadataStreamingTailConsumersList).pipe(
+              T.Body("streaming_tail_consumers"),
+            ),
+          ),
+          exports: S.optional(PutScriptMetadataExports.pipe(T.KeyDictionary({}))),
         }),
       ).annotate({ identifier: "PutScriptMetadata" });
     case 3:
@@ -19346,8 +23489,10 @@ function __c25(j: number): any {
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           scriptName: S.String.pipe(T.Label("script_name")),
-          bindingsInherit: S.optional(S.String.pipe(T.Query("bindings_inherit"))),
-          metadata: __S(202).pipe(
+          bindingsInherit: S.optional(
+            ScriptsVersionsCreateRequestBindingsInherit.pipe(T.Query("bindings_inherit")),
+          ),
+          metadata: PutScriptMetadata.pipe(
             T.KeyDictionary({
               abrLevel: "abr_level",
               allowedDestinationAddresses: "allowed_destination_addresses",
@@ -19471,21 +23616,27 @@ function __c25(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          handlers: S.optional(S.NullOr(__S(19))),
+          handlers: S.optional(
+            S.NullOr(ScriptsVersionsCreateResponseResourcesScriptNamedHandlersItemHandlersList),
+          ),
           name: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
         identifier: "ScriptsVersionsCreateResponseResourcesScriptNamedHandlersItem",
       });
     case 5:
-      return S.Array(__S(204));
+      return S.Array(ScriptsVersionsCreateResponseResourcesScriptNamedHandlersItem);
     case 6:
       return S.suspend(() =>
         S.Struct({
           etag: S.optional(S.NullOr(S.String)),
-          handlers: S.optional(S.NullOr(__S(11))),
+          handlers: S.optional(S.NullOr(ScriptsVersionsCreateResponseResourcesScriptHandlersList)),
           lastDeployedFrom: S.optional(S.NullOr(S.String).pipe(T.Body("last_deployed_from"))),
-          namedHandlers: S.optional(S.NullOr(__S(205)).pipe(T.Body("named_handlers"))),
+          namedHandlers: S.optional(
+            S.NullOr(ScriptsVersionsCreateResponseResourcesScriptNamedHandlersList).pipe(
+              T.Body("named_handlers"),
+            ),
+          ),
         }),
       ).annotate({
         identifier: "ScriptsVersionsCreateResponseResourcesScript",
@@ -19506,7 +23657,7 @@ function __c25(j: number): any {
 function __c26(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, __S(207));
+      return S.Record(S.String, ScriptsVersionsCreateResponseResourcesScriptRuntimeExportsValue);
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -19519,12 +23670,22 @@ function __c26(j: number): any {
       return S.suspend(() =>
         S.Struct({
           compatibilityDate: S.optional(S.NullOr(S.String).pipe(T.Body("compatibility_date"))),
-          compatibilityFlags: S.optional(S.NullOr(__S(19)).pipe(T.Body("compatibility_flags"))),
-          exports: S.optional(S.NullOr(__S(208))),
-          limits: S.optional(S.NullOr(__S(209))),
+          compatibilityFlags: S.optional(
+            S.NullOr(
+              ScriptsVersionsCreateResponseResourcesScriptRuntimeCompatibilityFlagsList,
+            ).pipe(T.Body("compatibility_flags")),
+          ),
+          exports: S.optional(
+            S.NullOr(ScriptsVersionsCreateResponseResourcesScriptRuntimeExportsMap),
+          ),
+          limits: S.optional(S.NullOr(ScriptsVersionsCreateResponseResourcesScriptRuntimeLimits)),
           migrationTag: S.optional(S.NullOr(S.String).pipe(T.Body("migration_tag"))),
-          usageModel: S.optional(S.NullOr(S.String).pipe(T.Body("usage_model"))),
-          containers: S.optional(S.NullOr(__S(80))),
+          usageModel: S.optional(
+            S.NullOr(ScriptsVersionsCreateResponseResourcesScriptRuntimeUsageModel).pipe(
+              T.Body("usage_model"),
+            ),
+          ),
+          containers: S.optional(S.NullOr(BetaWorkersVersionsCreateResponseContainersList)),
         }),
       ).annotate({
         identifier: "ScriptsVersionsCreateResponseResourcesScriptRuntime",
@@ -19533,8 +23694,12 @@ function __c26(j: number): any {
       return S.suspend(() =>
         S.Struct({
           bindings: S.Unknown,
-          script: S.optional(S.NullOr(__S(206))),
-          scriptRuntime: S.optional(S.NullOr(__S(210)).pipe(T.Body("script_runtime"))),
+          script: S.optional(S.NullOr(ScriptsVersionsCreateResponseResourcesScript)),
+          scriptRuntime: S.optional(
+            S.NullOr(ScriptsVersionsCreateResponseResourcesScriptRuntime).pipe(
+              T.Body("script_runtime"),
+            ),
+          ),
         }),
       ).annotate({
         identifier: "ScriptsVersionsCreateResponseResources",
@@ -19544,19 +23709,23 @@ function __c26(j: number): any {
         S.Struct({
           class: S.String,
           message: S.String,
-          scenario: S.String,
+          scenario: ScriptsVersionsCreateResponseExportsReconciliationInfoItemScenario,
           namespaceId: S.optional(S.NullOr(S.String).pipe(T.Body("namespace_id"))),
-          referencingScripts: S.optional(S.NullOr(__S(19)).pipe(T.Body("referencing_scripts"))),
+          referencingScripts: S.optional(
+            S.NullOr(
+              ScriptsVersionsCreateResponseExportsReconciliationInfoItemReferencingScriptsList,
+            ).pipe(T.Body("referencing_scripts")),
+          ),
         }),
       ).annotate({
         identifier: "ScriptsVersionsCreateResponseExportsReconciliationInfoItem",
       });
     case 5:
-      return S.Array(__S(212));
+      return S.Array(ScriptsVersionsCreateResponseExportsReconciliationInfoItem);
     case 6:
-      return S.Array(__S(85));
+      return S.Array(BetaWorkersVersionsCreateResponseExportsReconciliationRenamedItem);
     case 7:
-      return S.Array(__S(91));
+      return S.Array(ScriptsVersionsCreateResponseExportsReconciliationWarningsItem);
   }
 }
 function __c27(j: number): any {
@@ -19564,15 +23733,21 @@ function __c27(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          created: __S(11),
-          deleted: __S(11),
-          info: __S(213),
-          removableEntries: __S(19).pipe(T.Body("removable_entries")),
-          renamed: __S(214),
-          transferPending: __S(88).pipe(T.Body("transfer_pending")),
-          transferred: __S(90),
-          updated: __S(11),
-          warnings: __S(215),
+          created: ScriptsVersionsCreateResponseExportsReconciliationCreatedList,
+          deleted: ScriptsVersionsCreateResponseExportsReconciliationDeletedList,
+          info: ScriptsVersionsCreateResponseExportsReconciliationInfoList,
+          removableEntries:
+            ScriptsVersionsCreateResponseExportsReconciliationRemovableEntriesList.pipe(
+              T.Body("removable_entries"),
+            ),
+          renamed: ScriptsVersionsCreateResponseExportsReconciliationRenamedList,
+          transferPending:
+            ScriptsVersionsCreateResponseExportsReconciliationTransferPendingList.pipe(
+              T.Body("transfer_pending"),
+            ),
+          transferred: ScriptsVersionsCreateResponseExportsReconciliationTransferredList,
+          updated: ScriptsVersionsCreateResponseExportsReconciliationUpdatedList,
+          warnings: ScriptsVersionsCreateResponseExportsReconciliationWarningsList,
         }),
       ).annotate({
         identifier: "ScriptsVersionsCreateResponseExportsReconciliation",
@@ -19585,7 +23760,7 @@ function __c27(j: number): any {
           createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
           hasPreview: S.optional(S.NullOr(S.Boolean)),
           modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-          source: S.optional(S.NullOr(S.String)),
+          source: S.optional(S.NullOr(ScriptsVersionsCreateResponseMetadataSource)),
         }),
       ).annotate({
         identifier: "ScriptsVersionsCreateResponseMetadata",
@@ -19593,12 +23768,14 @@ function __c27(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          resources: __S(211),
+          resources: ScriptsVersionsCreateResponseResources,
           id: S.optional(S.NullOr(S.String)),
           exportsReconciliation: S.optional(
-            S.NullOr(__S(216)).pipe(T.Body("exports_reconciliation")),
+            S.NullOr(ScriptsVersionsCreateResponseExportsReconciliation).pipe(
+              T.Body("exports_reconciliation"),
+            ),
           ),
-          metadata: S.optional(S.NullOr(__S(217))),
+          metadata: S.optional(S.NullOr(ScriptsVersionsCreateResponseMetadata)),
           number: S.optional(S.NullOr(S.Number)),
           startupTimeMs: S.optional(S.NullOr(S.Number).pipe(T.Body("startup_time_ms"))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -19612,9 +23789,11 @@ function __c27(j: number): any {
           serviceName: S.String.pipe(T.Label("service_name")),
           environmentName: S.String.pipe(T.Label("environment_name")),
           cfPreviewUploadConfigToken: S.String.pipe(T.Header("cf-preview-upload-config-token")),
-          metadata: S.optional(__S(178)),
+          metadata: S.optional(CreateScriptEdgePreviewMetadata),
           files: S.optional(S.Unknown.pipe(T.FormDataFile())),
-          wranglerSessionConfig: S.optional(__S(162).pipe(T.Body("wrangler-session-config"))),
+          wranglerSessionConfig: S.optional(
+            CreateScriptEdgePreviewWranglerSessionConfig.pipe(T.Body("wrangler-session-config")),
+          ),
         })
           .pipe(
             T.Http({
@@ -19744,10 +23923,10 @@ function __c28(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          configuration: __S(99),
+          configuration: ObservabilityDestinationsDeleteResponseConfiguration,
           enabled: S.Boolean,
           name: S.String,
-          scripts: __S(11),
+          scripts: ObservabilityDestinationsDeleteResponseScriptsList,
           slug: S.String,
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
@@ -19949,11 +24128,17 @@ function __c30(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          destinations: S.optional(S.NullOr(__S(11))),
+          destinations: S.optional(
+            S.NullOr(BetaWorkersGetResponseObservabilityTracesDestinationsList),
+          ),
           enabled: S.optional(S.NullOr(S.Boolean)),
           headSamplingRate: S.optional(S.NullOr(S.Number).pipe(T.Body("head_sampling_rate"))),
           persist: S.optional(S.NullOr(S.Boolean)),
-          propagationPolicy: S.optional(S.NullOr(S.String).pipe(T.Body("propagation_policy"))),
+          propagationPolicy: S.optional(
+            S.NullOr(BetaWorkersGetResponseObservabilityTracesPropagationPolicy).pipe(
+              T.Body("propagation_policy"),
+            ),
+          ),
         }),
       ).annotate({
         identifier: "BetaWorkersGetResponseObservabilityTraces",
@@ -19963,24 +24148,29 @@ function __c30(j: number): any {
         S.Struct({
           enabled: S.optional(S.NullOr(S.Boolean)),
           headSamplingRate: S.optional(S.NullOr(S.Number).pipe(T.Body("head_sampling_rate"))),
-          issues: S.optional(S.NullOr(__S(29))),
-          logs: S.optional(S.NullOr(__S(30))),
+          issues: S.optional(S.NullOr(BetaWorkersCreateResponseObservabilityIssues)),
+          logs: S.optional(S.NullOr(BetaWorkersGetResponseObservabilityLogs)),
           redactQueryString: S.optional(S.NullOr(S.Boolean).pipe(T.Body("redact_query_string"))),
-          traces: S.optional(S.NullOr(__S(244))),
+          traces: S.optional(S.NullOr(BetaWorkersGetResponseObservabilityTraces)),
         }),
       ).annotate({
         identifier: "BetaWorkersGetResponseObservability",
       });
     case 6:
-      return S.Array(__S(33));
+      return S.Array(BetaWorkersCreateResponseReferencesDispatchNamespaceOutboundsItem);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          dispatchNamespaceOutbounds: __S(246).pipe(T.Body("dispatch_namespace_outbounds")),
-          domains: __S(36),
-          durableObjects: __S(38).pipe(T.Body("durable_objects")),
-          queues: __S(40),
-          workers: __S(42),
+          dispatchNamespaceOutbounds:
+            BetaWorkersGetResponseReferencesDispatchNamespaceOutboundsList.pipe(
+              T.Body("dispatch_namespace_outbounds"),
+            ),
+          domains: BetaWorkersGetResponseReferencesDomainsList,
+          durableObjects: BetaWorkersGetResponseReferencesDurableObjectsList.pipe(
+            T.Body("durable_objects"),
+          ),
+          queues: BetaWorkersGetResponseReferencesQueuesList,
+          workers: BetaWorkersGetResponseReferencesWorkersList,
         }),
       ).annotate({
         identifier: "BetaWorkersGetResponseReferences",
@@ -19992,11 +24182,17 @@ function __c31(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          destinations: S.optional(S.NullOr(__S(19))),
+          destinations: S.optional(
+            S.NullOr(BetaWorkersGetResponsePreviewsBaseConfigObservabilityTracesDestinationsList),
+          ),
           enabled: S.optional(S.NullOr(S.Boolean)),
           headSamplingRate: S.optional(S.NullOr(S.Number).pipe(T.Body("head_sampling_rate"))),
           persist: S.optional(S.NullOr(S.Boolean)),
-          propagationPolicy: S.optional(S.NullOr(S.String).pipe(T.Body("propagation_policy"))),
+          propagationPolicy: S.optional(
+            S.NullOr(
+              BetaWorkersGetResponsePreviewsBaseConfigObservabilityTracesPropagationPolicy,
+            ).pipe(T.Body("propagation_policy")),
+          ),
         }),
       ).annotate({
         identifier: "BetaWorkersGetResponsePreviewsBaseConfigObservabilityTraces",
@@ -20006,10 +24202,10 @@ function __c31(j: number): any {
         S.Struct({
           enabled: S.optional(S.NullOr(S.Boolean)),
           headSamplingRate: S.optional(S.NullOr(S.Number).pipe(T.Body("head_sampling_rate"))),
-          issues: S.optional(S.NullOr(__S(29))),
-          logs: S.optional(S.NullOr(__S(47))),
+          issues: S.optional(S.NullOr(BetaWorkersCreateResponseObservabilityIssues)),
+          logs: S.optional(S.NullOr(BetaWorkersGetResponsePreviewsBaseConfigObservabilityLogs)),
           redactQueryString: S.optional(S.NullOr(S.Boolean).pipe(T.Body("redact_query_string"))),
-          traces: S.optional(S.NullOr(__S(248))),
+          traces: S.optional(S.NullOr(BetaWorkersGetResponsePreviewsBaseConfigObservabilityTraces)),
         }),
       ).annotate({
         identifier: "BetaWorkersGetResponsePreviewsBaseConfigObservability",
@@ -20030,13 +24226,23 @@ function __c31(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          cacheOptions: S.optional(S.NullOr(__S(45)).pipe(T.Body("cache_options"))),
-          env: S.optional(S.NullOr(__S(17))),
-          limits: S.optional(S.NullOr(__S(46))),
+          cacheOptions: S.optional(
+            S.NullOr(BetaWorkersCreateResponsePreviewsBaseConfigCacheOptions).pipe(
+              T.Body("cache_options"),
+            ),
+          ),
+          env: S.optional(S.NullOr(BetaWorkersGetResponsePreviewsBaseConfigEnvMap)),
+          limits: S.optional(S.NullOr(BetaWorkersCreateResponsePreviewsBaseConfigLimits)),
           logpush: S.optional(S.NullOr(S.Boolean)),
-          observability: S.optional(S.NullOr(__S(249))),
-          placement: S.optional(S.NullOr(__S(250))),
-          tailConsumers: S.optional(S.NullOr(__S(25)).pipe(T.Body("tail_consumers"))),
+          observability: S.optional(
+            S.NullOr(BetaWorkersGetResponsePreviewsBaseConfigObservability),
+          ),
+          placement: S.optional(S.NullOr(BetaWorkersGetResponsePreviewsBaseConfigPlacement)),
+          tailConsumers: S.optional(
+            S.NullOr(BetaWorkersGetResponsePreviewsBaseConfigTailConsumersList).pipe(
+              T.Body("tail_consumers"),
+            ),
+          ),
         }),
       ).annotate({
         identifier: "BetaWorkersGetResponsePreviewsBaseConfig",
@@ -20048,14 +24254,16 @@ function __c31(j: number): any {
           createdOn: S.String.pipe(T.Body("created_on")),
           logpush: S.Boolean,
           name: S.String,
-          observability: __S(245),
-          references: __S(247),
-          subdomain: __S(44),
-          tags: __S(11),
-          tailConsumers: __S(25).pipe(T.Body("tail_consumers")),
+          observability: BetaWorkersGetResponseObservability,
+          references: BetaWorkersGetResponseReferences,
+          subdomain: BetaWorkersCreateResponseSubdomain,
+          tags: BetaWorkersGetResponseTagsList,
+          tailConsumers: BetaWorkersGetResponseTailConsumersList.pipe(T.Body("tail_consumers")),
           updatedOn: S.String.pipe(T.Body("updated_on")),
           deployedOn: S.optional(S.NullOr(S.String).pipe(T.Body("deployed_on"))),
-          previewsBaseConfig: S.optional(S.NullOr(__S(251)).pipe(T.Body("previews_base_config"))),
+          previewsBaseConfig: S.optional(
+            S.NullOr(BetaWorkersGetResponsePreviewsBaseConfig).pipe(T.Body("previews_base_config")),
+          ),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetBetaWorkerResponse" });
     case 5:
@@ -20064,7 +24272,7 @@ function __c31(j: number): any {
           accountId: S.String.pipe(T.Label("account_id")),
           workerId: S.String.pipe(T.Label("worker_id")),
           versionId: S.String.pipe(T.Label("version_id")),
-          include: S.optional(S.String.pipe(T.Query())),
+          include: S.optional(BetaWorkersVersionsGetRequestInclude.pipe(T.Query())),
         })
           .pipe(
             T.Http({
@@ -20083,9 +24291,21 @@ function __c31(j: number): any {
       return S.suspend(() =>
         S.Struct({
           basePath: S.optional(S.NullOr(S.String).pipe(T.Body("base_path"))),
-          htmlHandling: S.optional(S.NullOr(S.String).pipe(T.Body("html_handling"))),
-          notFoundHandling: S.optional(S.NullOr(S.String).pipe(T.Body("not_found_handling"))),
-          runWorkerFirst: S.optional(S.NullOr(__S(254)).pipe(T.Body("run_worker_first"))),
+          htmlHandling: S.optional(
+            S.NullOr(BetaWorkersVersionsGetResponseAssetsConfigHtmlHandling).pipe(
+              T.Body("html_handling"),
+            ),
+          ),
+          notFoundHandling: S.optional(
+            S.NullOr(BetaWorkersVersionsGetResponseAssetsConfigNotFoundHandling).pipe(
+              T.Body("not_found_handling"),
+            ),
+          ),
+          runWorkerFirst: S.optional(
+            S.NullOr(BetaWorkersVersionsGetResponseAssetsConfigRunWorkerFirst).pipe(
+              T.Body("run_worker_first"),
+            ),
+          ),
         }),
       ).annotate({
         identifier: "BetaWorkersVersionsGetResponseAssetsConfig",
@@ -20097,7 +24317,7 @@ function __c32(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          config: S.optional(S.NullOr(__S(255))),
+          config: S.optional(S.NullOr(BetaWorkersVersionsGetResponseAssetsConfig)),
           jwt: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
@@ -20206,7 +24426,7 @@ function __c32(j: number): any {
         ),
       );
     case 2:
-      return S.Array(__S(257));
+      return S.Array(BetaWorkersVersionsGetResponseBindingsItem);
     case 3:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases([
@@ -20219,33 +24439,43 @@ function __c32(j: number): any {
         ]),
       );
     case 4:
-      return S.Record(S.String, __S(259));
+      return S.Record(S.String, BetaWorkersVersionsGetResponseExportsValue);
     case 5:
       return S.suspend(() =>
         S.Struct({
           class: S.String,
           message: S.String,
-          scenario: S.String,
+          scenario: BetaWorkersVersionsGetResponseExportsReconciliationInfoItemScenario,
           namespaceId: S.optional(S.NullOr(S.String).pipe(T.Body("namespace_id"))),
-          referencingScripts: S.optional(S.NullOr(__S(19)).pipe(T.Body("referencing_scripts"))),
+          referencingScripts: S.optional(
+            S.NullOr(
+              BetaWorkersVersionsGetResponseExportsReconciliationInfoItemReferencingScriptsList,
+            ).pipe(T.Body("referencing_scripts")),
+          ),
         }),
       ).annotate({
         identifier: "BetaWorkersVersionsGetResponseExportsReconciliationInfoItem",
       });
     case 6:
-      return S.Array(__S(261));
+      return S.Array(BetaWorkersVersionsGetResponseExportsReconciliationInfoItem);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          created: __S(11),
-          deleted: __S(11),
-          info: __S(262),
-          removableEntries: __S(19).pipe(T.Body("removable_entries")),
-          renamed: __S(214),
-          transferPending: __S(88).pipe(T.Body("transfer_pending")),
-          transferred: __S(90),
-          updated: __S(11),
-          warnings: __S(92),
+          created: BetaWorkersVersionsGetResponseExportsReconciliationCreatedList,
+          deleted: BetaWorkersVersionsGetResponseExportsReconciliationDeletedList,
+          info: BetaWorkersVersionsGetResponseExportsReconciliationInfoList,
+          removableEntries:
+            BetaWorkersVersionsGetResponseExportsReconciliationRemovableEntriesList.pipe(
+              T.Body("removable_entries"),
+            ),
+          renamed: BetaWorkersVersionsGetResponseExportsReconciliationRenamedList,
+          transferPending:
+            BetaWorkersVersionsGetResponseExportsReconciliationTransferPendingList.pipe(
+              T.Body("transfer_pending"),
+            ),
+          transferred: BetaWorkersVersionsGetResponseExportsReconciliationTransferredList,
+          updated: BetaWorkersVersionsGetResponseExportsReconciliationUpdatedList,
+          warnings: BetaWorkersVersionsGetResponseExportsReconciliationWarningsList,
         }),
       ).annotate({
         identifier: "BetaWorkersVersionsGetResponseExportsReconciliation",
@@ -20288,30 +24518,46 @@ function __c33(j: number): any {
           id: S.String,
           createdOn: S.String.pipe(T.Body("created_on")),
           number: S.Number,
-          urls: __S(11),
-          annotations: S.optional(S.NullOr(__S(73))),
-          assets: S.optional(S.NullOr(__S(256))),
+          urls: BetaWorkersVersionsGetResponseUrlsList,
+          annotations: S.optional(S.NullOr(BetaWorkersVersionsCreateResponseAnnotations)),
+          assets: S.optional(S.NullOr(BetaWorkersVersionsGetResponseAssets)),
           authorEmail: S.optional(S.NullOr(S.String).pipe(T.Body("author_email"))),
           authorId: S.optional(S.NullOr(S.String).pipe(T.Body("author_id"))),
-          bindings: S.optional(S.NullOr(__S(258))),
-          cacheOptions: S.optional(S.NullOr(__S(45)).pipe(T.Body("cache_options"))),
-          compatibilityDate: S.optional(S.NullOr(S.String).pipe(T.Body("compatibility_date"))),
-          compatibilityFlags: S.optional(S.NullOr(__S(11)).pipe(T.Body("compatibility_flags"))),
-          containers: S.optional(S.NullOr(__S(80))),
-          exports: S.optional(S.NullOr(__S(260))),
-          exportsReconciliation: S.optional(
-            S.NullOr(__S(263)).pipe(T.Body("exports_reconciliation")),
+          bindings: S.optional(S.NullOr(BetaWorkersVersionsGetResponseBindingsList)),
+          cacheOptions: S.optional(
+            S.NullOr(BetaWorkersCreateResponsePreviewsBaseConfigCacheOptions).pipe(
+              T.Body("cache_options"),
+            ),
           ),
-          limits: S.optional(S.NullOr(__S(46))),
+          compatibilityDate: S.optional(S.NullOr(S.String).pipe(T.Body("compatibility_date"))),
+          compatibilityFlags: S.optional(
+            S.NullOr(BetaWorkersVersionsGetResponseCompatibilityFlagsList).pipe(
+              T.Body("compatibility_flags"),
+            ),
+          ),
+          containers: S.optional(S.NullOr(BetaWorkersVersionsGetResponseContainersList)),
+          exports: S.optional(S.NullOr(BetaWorkersVersionsGetResponseExportsMap)),
+          exportsReconciliation: S.optional(
+            S.NullOr(BetaWorkersVersionsGetResponseExportsReconciliation).pipe(
+              T.Body("exports_reconciliation"),
+            ),
+          ),
+          limits: S.optional(S.NullOr(BetaWorkersVersionsCreateResponseLimits)),
           mainModule: S.optional(S.NullOr(S.String).pipe(T.Body("main_module"))),
           migrationTag: S.optional(S.NullOr(S.String).pipe(T.Body("migration_tag"))),
-          migrations: S.optional(S.NullOr(__S(264))),
-          modules: S.optional(S.NullOr(__S(68))),
-          packageDependencies: S.optional(S.NullOr(__S(70)).pipe(T.Body("package_dependencies"))),
-          placement: S.optional(S.NullOr(__S(265))),
+          migrations: S.optional(S.NullOr(BetaWorkersVersionsGetResponseMigrations)),
+          modules: S.optional(S.NullOr(BetaWorkersVersionsGetResponseModulesList)),
+          packageDependencies: S.optional(
+            S.NullOr(BetaWorkersVersionsGetResponsePackageDependenciesList).pipe(
+              T.Body("package_dependencies"),
+            ),
+          ),
+          placement: S.optional(S.NullOr(BetaWorkersVersionsGetResponsePlacement)),
           source: S.optional(S.NullOr(S.String)),
           startupTimeMs: S.optional(S.NullOr(S.Number).pipe(T.Body("startup_time_ms"))),
-          usageModel: S.optional(S.NullOr(S.String).pipe(T.Body("usage_model"))),
+          usageModel: S.optional(
+            S.NullOr(BetaWorkersVersionsGetResponseUsageModel).pipe(T.Body("usage_model")),
+          ),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "GetBetaWorkerVersionResponse",
@@ -20349,7 +24595,7 @@ function __c33(j: number): any {
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           id: S.String.pipe(T.Label()),
-          view: S.optional(S.String.pipe(T.Query())),
+          view: S.optional(ObservabilitySharedQueriesGetRequestView.pipe(T.Query())),
         })
           .pipe(
             T.Http({
@@ -20370,7 +24616,7 @@ function __c33(j: number): any {
         ]),
       );
     case 7:
-      return S.Array(__S(270));
+      return S.Array(ObservabilitySharedQueriesGetResponseRunQueryParametersCalculationsItem);
   }
 }
 function __c34(j: number): any {
@@ -20386,21 +24632,21 @@ function __c34(j: number): any {
         ),
       );
     case 1:
-      return S.Array(__S(272));
+      return S.Array(ObservabilitySharedQueriesGetResponseRunQueryParametersFiltersItem);
     case 2:
-      return S.Array(__S(130));
+      return S.Array(ObservabilitySharedQueriesGetResponseRunQueryParametersGroupBysItem);
     case 3:
       return S.suspend(() =>
         S.Struct({
           key: S.String,
-          operation: S.String,
+          operation: ObservabilitySharedQueriesGetResponseRunQueryParametersHavingsItemOperation,
           value: S.Number,
         }),
       ).annotate({
         identifier: "ObservabilitySharedQueriesGetResponseRunQueryParametersHavingsItem",
       });
     case 4:
-      return S.Array(__S(275));
+      return S.Array(ObservabilitySharedQueriesGetResponseRunQueryParametersHavingsItem);
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -20415,7 +24661,9 @@ function __c34(j: number): any {
       return S.suspend(() =>
         S.Struct({
           value: S.String,
-          order: S.optional(S.NullOr(S.String)),
+          order: S.optional(
+            S.NullOr(ObservabilitySharedQueriesGetResponseRunQueryParametersOrderByOrder),
+          ),
         }),
       ).annotate({
         identifier: "ObservabilitySharedQueriesGetResponseRunQueryParametersOrderBy",
@@ -20423,15 +24671,31 @@ function __c34(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          calculations: S.optional(S.NullOr(__S(271))),
-          datasets: S.optional(S.NullOr(__S(19))),
-          filterCombination: S.optional(S.NullOr(S.String)),
-          filters: S.optional(S.NullOr(__S(273))),
-          groupBys: S.optional(S.NullOr(__S(274))),
-          havings: S.optional(S.NullOr(__S(276))),
+          calculations: S.optional(
+            S.NullOr(ObservabilitySharedQueriesGetResponseRunQueryParametersCalculationsList),
+          ),
+          datasets: S.optional(
+            S.NullOr(ObservabilitySharedQueriesGetResponseRunQueryParametersDatasetsList),
+          ),
+          filterCombination: S.optional(
+            S.NullOr(ObservabilitySharedQueriesGetResponseRunQueryParametersFilterCombination),
+          ),
+          filters: S.optional(
+            S.NullOr(ObservabilitySharedQueriesGetResponseRunQueryParametersFiltersList),
+          ),
+          groupBys: S.optional(
+            S.NullOr(ObservabilitySharedQueriesGetResponseRunQueryParametersGroupBysList),
+          ),
+          havings: S.optional(
+            S.NullOr(ObservabilitySharedQueriesGetResponseRunQueryParametersHavingsList),
+          ),
           limit: S.optional(S.NullOr(S.Number)),
-          needle: S.optional(S.NullOr(__S(277))),
-          orderBy: S.optional(S.NullOr(__S(278))),
+          needle: S.optional(
+            S.NullOr(ObservabilitySharedQueriesGetResponseRunQueryParametersNeedle),
+          ),
+          orderBy: S.optional(
+            S.NullOr(ObservabilitySharedQueriesGetResponseRunQueryParametersOrderBy),
+          ),
         }),
       ).annotate({
         identifier: "ObservabilitySharedQueriesGetResponseRunQueryParameters",
@@ -20449,7 +24713,7 @@ function __c35(j: number): any {
           createdBy: S.String,
           description: S.String,
           name: S.String,
-          parameters: __S(279),
+          parameters: ObservabilitySharedQueriesGetResponseRunQueryParameters,
           updated: S.String,
           updatedBy: S.String,
         }),
@@ -20474,12 +24738,12 @@ function __c35(j: number): any {
           accountId: S.String,
           dry: S.Boolean,
           granularity: S.Number,
-          query: __S(280),
-          status: S.String,
-          timeframe: __S(125),
+          query: ObservabilitySharedQueriesGetResponseRunQuery,
+          status: ObservabilitySharedQueriesGetResponseRunStatus,
+          timeframe: ObservabilitySharedQueriesCreateRequestTimeframe,
           userId: S.String,
           created: S.optional(S.NullOr(S.String)),
-          statistics: S.optional(S.NullOr(__S(281))),
+          statistics: S.optional(S.NullOr(ObservabilitySharedQueriesGetResponseRunStatistics)),
           updated: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
@@ -20489,12 +24753,12 @@ function __c35(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          errors: __S(11),
-          models: __S(11),
-          providers: __S(11),
-          services: __S(11),
+          errors: ObservabilitySharedQueriesGetResponseAgentsItemErrorsList,
+          models: ObservabilitySharedQueriesGetResponseAgentsItemModelsList,
+          providers: ObservabilitySharedQueriesGetResponseAgentsItemProvidersList,
+          services: ObservabilitySharedQueriesGetResponseAgentsItemServicesList,
           spans: S.Number,
-          status: S.String,
+          status: ObservabilitySharedQueriesGetResponseAgentsItemStatus,
           traceDurationMs: S.Number,
           traceEndMs: S.Number,
           traceId: S.String,
@@ -20509,20 +24773,20 @@ function __c35(j: number): any {
         identifier: "ObservabilitySharedQueriesGetResponseAgentsItem",
       });
     case 4:
-      return S.Array(__S(283));
+      return S.Array(ObservabilitySharedQueriesGetResponseAgentsItem);
     case 5:
       return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], []]));
     case 6:
       return S.suspend(() =>
         S.Struct({
           key: S.String,
-          value: __S(285),
+          value: ObservabilitySharedQueriesGetResponseCalculationsItemAggregatesItemGroupsItemValue,
         }),
       ).annotate({
         identifier: "ObservabilitySharedQueriesGetResponseCalculationsItemAggregatesItemGroupsItem",
       });
     case 7:
-      return S.Array(__S(286));
+      return S.Array(ObservabilitySharedQueriesGetResponseCalculationsItemAggregatesItemGroupsItem);
   }
 }
 function __c36(j: number): any {
@@ -20534,27 +24798,32 @@ function __c36(j: number): any {
           interval: S.Number,
           sampleInterval: S.Number,
           value: S.Number,
-          groups: S.optional(S.NullOr(__S(287))),
+          groups: S.optional(
+            S.NullOr(ObservabilitySharedQueriesGetResponseCalculationsItemAggregatesItemGroupsList),
+          ),
         }),
       ).annotate({
         identifier: "ObservabilitySharedQueriesGetResponseCalculationsItemAggregatesItem",
       });
     case 1:
-      return S.Array(__S(288));
+      return S.Array(ObservabilitySharedQueriesGetResponseCalculationsItemAggregatesItem);
     case 2:
       return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], []]));
     case 3:
       return S.suspend(() =>
         S.Struct({
           key: S.String,
-          value: __S(290),
+          value:
+            ObservabilitySharedQueriesGetResponseCalculationsItemSeriesItemDataItemGroupsItemValue,
         }),
       ).annotate({
         identifier:
           "ObservabilitySharedQueriesGetResponseCalculationsItemSeriesItemDataItemGroupsItem",
       });
     case 4:
-      return S.Array(__S(291));
+      return S.Array(
+        ObservabilitySharedQueriesGetResponseCalculationsItemSeriesItemDataItemGroupsItem,
+      );
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -20563,18 +24832,22 @@ function __c36(j: number): any {
           sampleInterval: S.Number,
           value: S.Number,
           firstSeen: S.optional(S.NullOr(S.String)),
-          groups: S.optional(S.NullOr(__S(292))),
+          groups: S.optional(
+            S.NullOr(
+              ObservabilitySharedQueriesGetResponseCalculationsItemSeriesItemDataItemGroupsList,
+            ),
+          ),
           lastSeen: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
         identifier: "ObservabilitySharedQueriesGetResponseCalculationsItemSeriesItemDataItem",
       });
     case 6:
-      return S.Array(__S(293));
+      return S.Array(ObservabilitySharedQueriesGetResponseCalculationsItemSeriesItemDataItem);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          data: __S(294),
+          data: ObservabilitySharedQueriesGetResponseCalculationsItemSeriesItemDataList,
           time: S.String,
         }),
       ).annotate({
@@ -20585,33 +24858,33 @@ function __c36(j: number): any {
 function __c37(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(295));
+      return S.Array(ObservabilitySharedQueriesGetResponseCalculationsItemSeriesItem);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          aggregates: __S(289),
+          aggregates: ObservabilitySharedQueriesGetResponseCalculationsItemAggregatesList,
           calculation: S.String,
-          series: __S(296),
+          series: ObservabilitySharedQueriesGetResponseCalculationsItemSeriesList,
           alias: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
         identifier: "ObservabilitySharedQueriesGetResponseCalculationsItem",
       });
     case 2:
-      return S.Array(__S(297));
+      return S.Array(ObservabilitySharedQueriesGetResponseCalculationsItem);
     case 3:
       return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], []]));
     case 4:
       return S.suspend(() =>
         S.Struct({
           key: S.String,
-          value: __S(299),
+          value: ObservabilitySharedQueriesGetResponseCompareItemAggregatesItemGroupsItemValue,
         }),
       ).annotate({
         identifier: "ObservabilitySharedQueriesGetResponseCompareItemAggregatesItemGroupsItem",
       });
     case 5:
-      return S.Array(__S(300));
+      return S.Array(ObservabilitySharedQueriesGetResponseCompareItemAggregatesItemGroupsItem);
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -20619,13 +24892,15 @@ function __c37(j: number): any {
           interval: S.Number,
           sampleInterval: S.Number,
           value: S.Number,
-          groups: S.optional(S.NullOr(__S(301))),
+          groups: S.optional(
+            S.NullOr(ObservabilitySharedQueriesGetResponseCompareItemAggregatesItemGroupsList),
+          ),
         }),
       ).annotate({
         identifier: "ObservabilitySharedQueriesGetResponseCompareItemAggregatesItem",
       });
     case 7:
-      return S.Array(__S(302));
+      return S.Array(ObservabilitySharedQueriesGetResponseCompareItemAggregatesItem);
   }
 }
 function __c38(j: number): any {
@@ -20636,13 +24911,13 @@ function __c38(j: number): any {
       return S.suspend(() =>
         S.Struct({
           key: S.String,
-          value: __S(304),
+          value: ObservabilitySharedQueriesGetResponseCompareItemSeriesItemDataItemGroupsItemValue,
         }),
       ).annotate({
         identifier: "ObservabilitySharedQueriesGetResponseCompareItemSeriesItemDataItemGroupsItem",
       });
     case 2:
-      return S.Array(__S(305));
+      return S.Array(ObservabilitySharedQueriesGetResponseCompareItemSeriesItemDataItemGroupsItem);
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -20651,31 +24926,33 @@ function __c38(j: number): any {
           sampleInterval: S.Number,
           value: S.Number,
           firstSeen: S.optional(S.NullOr(S.String)),
-          groups: S.optional(S.NullOr(__S(306))),
+          groups: S.optional(
+            S.NullOr(ObservabilitySharedQueriesGetResponseCompareItemSeriesItemDataItemGroupsList),
+          ),
           lastSeen: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
         identifier: "ObservabilitySharedQueriesGetResponseCompareItemSeriesItemDataItem",
       });
     case 4:
-      return S.Array(__S(307));
+      return S.Array(ObservabilitySharedQueriesGetResponseCompareItemSeriesItemDataItem);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          data: __S(308),
+          data: ObservabilitySharedQueriesGetResponseCompareItemSeriesItemDataList,
           time: S.String,
         }),
       ).annotate({
         identifier: "ObservabilitySharedQueriesGetResponseCompareItemSeriesItem",
       });
     case 6:
-      return S.Array(__S(309));
+      return S.Array(ObservabilitySharedQueriesGetResponseCompareItemSeriesItem);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          aggregates: __S(303),
+          aggregates: ObservabilitySharedQueriesGetResponseCompareItemAggregatesList,
           calculation: S.String,
-          series: __S(310),
+          series: ObservabilitySharedQueriesGetResponseCompareItemSeriesList,
           alias: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
@@ -20686,19 +24963,19 @@ function __c38(j: number): any {
 function __c39(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(311));
+      return S.Array(ObservabilitySharedQueriesGetResponseCompareItem);
     case 1:
       return S.Array(S.Number);
     case 2:
-      return S.Array(__S(313));
+      return S.Array(ObservabilitySharedQueriesGetResponseDistributionMatrixItemList);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          bins: __S(11),
-          bucketBoundaries: __S(313),
-          bucketMode: S.String,
-          buckets: __S(11),
-          matrix: __S(314),
+          bins: ObservabilitySharedQueriesGetResponseDistributionBinsList,
+          bucketBoundaries: ObservabilitySharedQueriesGetResponseDistributionBucketBoundariesList,
+          bucketMode: ObservabilitySharedQueriesGetResponseDistributionBucketMode,
+          buckets: ObservabilitySharedQueriesGetResponseDistributionBucketsList,
+          matrix: ObservabilitySharedQueriesGetResponseDistributionMatrixList,
         }),
       ).annotate({
         identifier: "ObservabilitySharedQueriesGetResponseDistribution",
@@ -20795,18 +25072,28 @@ function __c40(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          metadata: __S(316).pipe(T.Body("$metadata")),
+          metadata: ObservabilitySharedQueriesGetResponseEventsEventsItemMetadata.pipe(
+            T.Body("$metadata"),
+          ),
           dataset: S.String,
-          source: __S(318),
+          source: ObservabilitySharedQueriesGetResponseEventsEventsItemSource,
           timestamp: S.Number,
-          containers: S.optional(S.NullOr(__S(317)).pipe(T.Body("$containers"))),
-          workers: S.optional(S.NullOr(__S(319)).pipe(T.Body("$workers"))),
+          containers: S.optional(
+            S.NullOr(ObservabilitySharedQueriesGetResponseEventsEventsItemContainersMap).pipe(
+              T.Body("$containers"),
+            ),
+          ),
+          workers: S.optional(
+            S.NullOr(ObservabilitySharedQueriesGetResponseEventsEventsItemWorkers).pipe(
+              T.Body("$workers"),
+            ),
+          ),
         }),
       ).annotate({
         identifier: "ObservabilitySharedQueriesGetResponseEventsEventsItem",
       });
     case 1:
-      return S.Array(__S(320));
+      return S.Array(ObservabilitySharedQueriesGetResponseEventsEventsItem);
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -20817,7 +25104,7 @@ function __c40(j: number): any {
         identifier: "ObservabilitySharedQueriesGetResponseEventsFieldsItem",
       });
     case 3:
-      return S.Array(__S(322));
+      return S.Array(ObservabilitySharedQueriesGetResponseEventsFieldsItem);
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -20833,16 +25120,21 @@ function __c40(j: number): any {
     case 5:
       return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], []]));
     case 6:
-      return S.Record(S.String, __S(325));
+      return S.Record(
+        S.String,
+        ObservabilitySharedQueriesGetResponseEventsSeriesItemDataItemGroupsValue,
+      );
     case 7:
       return S.suspend(() =>
         S.Struct({
-          aggregates: __S(324),
+          aggregates: ObservabilitySharedQueriesGetResponseEventsSeriesItemDataItemAggregates,
           count: S.Number,
           interval: S.Number,
           sampleInterval: S.Number,
           errors: S.optional(S.NullOr(S.Number)),
-          groups: S.optional(S.NullOr(__S(326))),
+          groups: S.optional(
+            S.NullOr(ObservabilitySharedQueriesGetResponseEventsSeriesItemDataItemGroupsMap),
+          ),
         }),
       ).annotate({
         identifier: "ObservabilitySharedQueriesGetResponseEventsSeriesItemDataItem",
@@ -20852,25 +25144,25 @@ function __c40(j: number): any {
 function __c41(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(327));
+      return S.Array(ObservabilitySharedQueriesGetResponseEventsSeriesItemDataItem);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          data: __S(328),
+          data: ObservabilitySharedQueriesGetResponseEventsSeriesItemDataList,
           time: S.String,
         }),
       ).annotate({
         identifier: "ObservabilitySharedQueriesGetResponseEventsSeriesItem",
       });
     case 2:
-      return S.Array(__S(329));
+      return S.Array(ObservabilitySharedQueriesGetResponseEventsSeriesItem);
     case 3:
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.NullOr(S.Number)),
-          events: S.optional(S.NullOr(__S(321))),
-          fields: S.optional(S.NullOr(__S(323))),
-          series: S.optional(S.NullOr(__S(330))),
+          events: S.optional(S.NullOr(ObservabilitySharedQueriesGetResponseEventsEventsList)),
+          fields: S.optional(S.NullOr(ObservabilitySharedQueriesGetResponseEventsFieldsList)),
+          series: S.optional(S.NullOr(ObservabilitySharedQueriesGetResponseEventsSeriesList)),
         }),
       ).annotate({
         identifier: "ObservabilitySharedQueriesGetResponseEvents",
@@ -20919,54 +25211,64 @@ function __c41(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          metadata: __S(316).pipe(T.Body("$metadata")),
+          metadata: ObservabilitySharedQueriesGetResponseEventsEventsItemMetadata.pipe(
+            T.Body("$metadata"),
+          ),
           dataset: S.String,
-          source: __S(332),
+          source: ObservabilitySharedQueriesGetResponseInvocationsValueItemSource,
           timestamp: S.Number,
-          containers: S.optional(S.NullOr(__S(317)).pipe(T.Body("$containers"))),
-          workers: S.optional(S.NullOr(__S(333)).pipe(T.Body("$workers"))),
+          containers: S.optional(
+            S.NullOr(ObservabilitySharedQueriesGetResponseInvocationsValueItemContainersMap).pipe(
+              T.Body("$containers"),
+            ),
+          ),
+          workers: S.optional(
+            S.NullOr(ObservabilitySharedQueriesGetResponseInvocationsValueItemWorkers).pipe(
+              T.Body("$workers"),
+            ),
+          ),
         }),
       ).annotate({
         identifier: "ObservabilitySharedQueriesGetResponseInvocationsValueItem",
       });
     case 7:
-      return S.Array(__S(334));
+      return S.Array(ObservabilitySharedQueriesGetResponseInvocationsValueItem);
   }
 }
 function __c42(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, __S(335));
+      return S.Record(S.String, ObservabilitySharedQueriesGetResponseInvocationsValueList);
     case 1:
       return S.suspend(() =>
         S.Struct({
           rootSpanName: S.String,
           rootTransactionName: S.String,
-          service: __S(11),
+          service: ObservabilitySharedQueriesGetResponseTracesItemServiceList,
           spans: S.Number,
           traceDurationMs: S.Number,
           traceEndMs: S.Number,
           traceId: S.String,
           traceStartMs: S.Number,
-          errors: S.optional(S.NullOr(__S(11))),
+          errors: S.optional(S.NullOr(ObservabilitySharedQueriesGetResponseTracesItemErrorsList)),
         }),
       ).annotate({
         identifier: "ObservabilitySharedQueriesGetResponseTracesItem",
       });
     case 2:
-      return S.Array(__S(337));
+      return S.Array(ObservabilitySharedQueriesGetResponseTracesItem);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          run: __S(282),
-          statistics: __S(281),
-          agents: S.optional(S.NullOr(__S(284))),
-          calculations: S.optional(S.NullOr(__S(298))),
-          compare: S.optional(S.NullOr(__S(312))),
-          distribution: S.optional(S.NullOr(__S(315))),
-          events: S.optional(S.NullOr(__S(331))),
-          invocations: S.optional(S.NullOr(__S(336))),
-          traces: S.optional(S.NullOr(__S(338))),
+          run: ObservabilitySharedQueriesGetResponseRun,
+          statistics: ObservabilitySharedQueriesGetResponseRunStatistics,
+          agents: S.optional(S.NullOr(ObservabilitySharedQueriesGetResponseAgentsList)),
+          calculations: S.optional(S.NullOr(ObservabilitySharedQueriesGetResponseCalculationsList)),
+          compare: S.optional(S.NullOr(ObservabilitySharedQueriesGetResponseCompareList)),
+          distribution: S.optional(S.NullOr(ObservabilitySharedQueriesGetResponseDistribution)),
+          events: S.optional(S.NullOr(ObservabilitySharedQueriesGetResponseEvents)),
+          invocations: S.optional(S.NullOr(ObservabilitySharedQueriesGetResponseInvocationsMap)),
+          traces: S.optional(S.NullOr(ObservabilitySharedQueriesGetResponseTracesList)),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "GetObservabilitySharedQueryResponse",
@@ -21075,9 +25377,9 @@ function __c43(j: number): any {
           id: S.String,
           createdOn: S.String.pipe(T.Body("created_on")),
           source: S.String,
-          strategy: S.String,
-          versions: __S(157),
-          annotations: S.optional(S.NullOr(__S(160))),
+          strategy: ScriptsDeploymentsGetResponseStrategy,
+          versions: ScriptsDeploymentsGetResponseVersionsList,
+          annotations: S.optional(S.NullOr(ScriptsDeploymentsCreateResponseAnnotations)),
           authorEmail: S.optional(S.NullOr(S.String).pipe(T.Body("author_email"))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
@@ -21116,13 +25418,13 @@ function __c43(j: number): any {
         }),
       ).annotate({ identifier: "EventTriggerTarget" });
     case 6:
-      return S.Array(__S(349));
+      return S.Array(EventTriggerTarget);
     case 7:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
-          filter: S.optional(S.NullOr(__S(348))),
-          targets: __S(350),
+          filter: S.optional(S.NullOr(EventTriggerFilter)),
+          targets: EventTriggerTargetList,
         }),
       ).annotate({ identifier: "EventTrigger" });
   }
@@ -21130,17 +25432,17 @@ function __c43(j: number): any {
 function __c44(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(351));
+      return S.Array(EventTrigger);
     case 1:
       return S.suspend(() =>
         S.Struct({
           scriptName: S.String.pipe(T.Body("script_name")),
-          triggers: __S(352),
+          triggers: EventTriggerList,
         }),
       ).annotate({ identifier: "ScriptEventTriggers" });
     case 2:
       return S.suspend(() =>
-        __S(353).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
+        ScriptEventTriggers.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "GetScriptEventTriggersResponse",
       });
@@ -21170,11 +25472,11 @@ function __c44(j: number): any {
         identifier: "ScriptsSchedulesGetResponseSchedulesItem",
       });
     case 5:
-      return S.Array(__S(356));
+      return S.Array(ScriptsSchedulesGetResponseSchedulesItem);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          schedules: __S(357),
+          schedules: ScriptsSchedulesGetResponseSchedulesList,
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "GetScriptScheduleResponse",
@@ -21303,7 +25605,7 @@ function __c45(j: number): any {
         ),
       );
     case 1:
-      return S.Array(__S(360));
+      return S.Array(ScriptsScriptAndVersionSettingsGetResponseBindingsItem);
     case 2:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases([
@@ -21316,33 +25618,44 @@ function __c45(j: number): any {
         ]),
       );
     case 3:
-      return S.Record(S.String, __S(362));
+      return S.Record(S.String, ScriptsScriptAndVersionSettingsGetResponseExportsValue);
     case 4:
       return S.suspend(() =>
         S.Struct({
           class: S.String,
           message: S.String,
-          scenario: S.String,
+          scenario: ScriptsScriptAndVersionSettingsGetResponseExportsReconciliationInfoItemScenario,
           namespaceId: S.optional(S.NullOr(S.String).pipe(T.Body("namespace_id"))),
-          referencingScripts: S.optional(S.NullOr(__S(19)).pipe(T.Body("referencing_scripts"))),
+          referencingScripts: S.optional(
+            S.NullOr(
+              ScriptsScriptAndVersionSettingsGetResponseExportsReconciliationInfoItemReferencingScriptsList,
+            ).pipe(T.Body("referencing_scripts")),
+          ),
         }),
       ).annotate({
         identifier: "ScriptsScriptAndVersionSettingsGetResponseExportsReconciliationInfoItem",
       });
     case 5:
-      return S.Array(__S(364));
+      return S.Array(ScriptsScriptAndVersionSettingsGetResponseExportsReconciliationInfoItem);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          created: __S(19),
-          deleted: __S(19),
-          info: __S(365),
-          removableEntries: __S(19).pipe(T.Body("removable_entries")),
-          renamed: __S(86),
-          transferPending: __S(88).pipe(T.Body("transfer_pending")),
-          transferred: __S(90),
-          updated: __S(19),
-          warnings: __S(92),
+          created: ScriptsScriptAndVersionSettingsGetResponseExportsReconciliationCreatedList,
+          deleted: ScriptsScriptAndVersionSettingsGetResponseExportsReconciliationDeletedList,
+          info: ScriptsScriptAndVersionSettingsGetResponseExportsReconciliationInfoList,
+          removableEntries:
+            ScriptsScriptAndVersionSettingsGetResponseExportsReconciliationRemovableEntriesList.pipe(
+              T.Body("removable_entries"),
+            ),
+          renamed: ScriptsScriptAndVersionSettingsGetResponseExportsReconciliationRenamedList,
+          transferPending:
+            ScriptsScriptAndVersionSettingsGetResponseExportsReconciliationTransferPendingList.pipe(
+              T.Body("transfer_pending"),
+            ),
+          transferred:
+            ScriptsScriptAndVersionSettingsGetResponseExportsReconciliationTransferredList,
+          updated: ScriptsScriptAndVersionSettingsGetResponseExportsReconciliationUpdatedList,
+          warnings: ScriptsScriptAndVersionSettingsGetResponseExportsReconciliationWarningsList,
         }),
       ).annotate({
         identifier: "ScriptsScriptAndVersionSettingsGetResponseExportsReconciliation",
@@ -21371,7 +25684,9 @@ function __c46(j: number): any {
         S.Struct({
           enabled: S.Boolean,
           invocationLogs: S.Boolean.pipe(T.Body("invocation_logs")),
-          destinations: S.optional(S.NullOr(__S(19))),
+          destinations: S.optional(
+            S.NullOr(ScriptsScriptAndVersionSettingsGetResponseObservabilityLogsDestinationsList),
+          ),
           headSamplingRate: S.optional(S.NullOr(S.Number).pipe(T.Body("head_sampling_rate"))),
           persist: S.optional(S.NullOr(S.Boolean)),
         }),
@@ -21381,11 +25696,17 @@ function __c46(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          destinations: S.optional(S.NullOr(__S(19))),
+          destinations: S.optional(
+            S.NullOr(ScriptsScriptAndVersionSettingsGetResponseObservabilityTracesDestinationsList),
+          ),
           enabled: S.optional(S.NullOr(S.Boolean)),
           headSamplingRate: S.optional(S.NullOr(S.Number).pipe(T.Body("head_sampling_rate"))),
           persist: S.optional(S.NullOr(S.Boolean)),
-          propagationPolicy: S.optional(S.NullOr(S.String).pipe(T.Body("propagation_policy"))),
+          propagationPolicy: S.optional(
+            S.NullOr(
+              ScriptsScriptAndVersionSettingsGetResponseObservabilityTracesPropagationPolicy,
+            ).pipe(T.Body("propagation_policy")),
+          ),
         }),
       ).annotate({
         identifier: "ScriptsScriptAndVersionSettingsGetResponseObservabilityTraces",
@@ -21395,10 +25716,12 @@ function __c46(j: number): any {
         S.Struct({
           enabled: S.Boolean,
           headSamplingRate: S.optional(S.NullOr(S.Number).pipe(T.Body("head_sampling_rate"))),
-          issues: S.optional(S.NullOr(__S(29))),
-          logs: S.optional(S.NullOr(__S(368))),
+          issues: S.optional(S.NullOr(BetaWorkersCreateResponseObservabilityIssues)),
+          logs: S.optional(S.NullOr(ScriptsScriptAndVersionSettingsGetResponseObservabilityLogs)),
           redactQueryString: S.optional(S.NullOr(S.Boolean).pipe(T.Body("redact_query_string"))),
-          traces: S.optional(S.NullOr(__S(369))),
+          traces: S.optional(
+            S.NullOr(ScriptsScriptAndVersionSettingsGetResponseObservabilityTraces),
+          ),
         }),
       ).annotate({
         identifier: "ScriptsScriptAndVersionSettingsGetResponseObservability",
@@ -21427,27 +25750,47 @@ function __c46(j: number): any {
         identifier: "ScriptsScriptAndVersionSettingsGetResponseTailConsumersItem",
       });
     case 5:
-      return S.Array(__S(372));
+      return S.Array(ScriptsScriptAndVersionSettingsGetResponseTailConsumersItem);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          annotations: S.optional(S.NullOr(__S(73))),
-          bindings: S.optional(S.NullOr(__S(361))),
-          cacheOptions: S.optional(S.NullOr(__S(45)).pipe(T.Body("cache_options"))),
-          compatibilityDate: S.optional(S.NullOr(S.String).pipe(T.Body("compatibility_date"))),
-          compatibilityFlags: S.optional(S.NullOr(__S(19)).pipe(T.Body("compatibility_flags"))),
-          exports: S.optional(S.NullOr(__S(363))),
-          exportsReconciliation: S.optional(
-            S.NullOr(__S(366)).pipe(T.Body("exports_reconciliation")),
+          annotations: S.optional(S.NullOr(ScriptsScriptAndVersionSettingsGetResponseAnnotations)),
+          bindings: S.optional(S.NullOr(ScriptsScriptAndVersionSettingsGetResponseBindingsList)),
+          cacheOptions: S.optional(
+            S.NullOr(BetaWorkersCreateResponsePreviewsBaseConfigCacheOptions).pipe(
+              T.Body("cache_options"),
+            ),
           ),
-          limits: S.optional(S.NullOr(__S(46))),
+          compatibilityDate: S.optional(S.NullOr(S.String).pipe(T.Body("compatibility_date"))),
+          compatibilityFlags: S.optional(
+            S.NullOr(ScriptsScriptAndVersionSettingsGetResponseCompatibilityFlagsList).pipe(
+              T.Body("compatibility_flags"),
+            ),
+          ),
+          exports: S.optional(S.NullOr(ScriptsScriptAndVersionSettingsGetResponseExportsMap)),
+          exportsReconciliation: S.optional(
+            S.NullOr(ScriptsScriptAndVersionSettingsGetResponseExportsReconciliation).pipe(
+              T.Body("exports_reconciliation"),
+            ),
+          ),
+          limits: S.optional(S.NullOr(BetaWorkersCreateResponsePreviewsBaseConfigLimits)),
           logpush: S.optional(S.NullOr(S.Boolean)),
-          migrations: S.optional(S.NullOr(__S(367))),
-          observability: S.optional(S.NullOr(__S(370))),
-          placement: S.optional(S.NullOr(__S(371))),
-          tags: S.optional(S.NullOr(__S(11))),
-          tailConsumers: S.optional(S.NullOr(__S(373)).pipe(T.Body("tail_consumers"))),
-          usageModel: S.optional(S.NullOr(S.String).pipe(T.Body("usage_model"))),
+          migrations: S.optional(S.NullOr(ScriptsScriptAndVersionSettingsGetResponseMigrations)),
+          observability: S.optional(
+            S.NullOr(ScriptsScriptAndVersionSettingsGetResponseObservability),
+          ),
+          placement: S.optional(S.NullOr(ScriptsScriptAndVersionSettingsGetResponsePlacement)),
+          tags: S.optional(S.NullOr(ScriptsScriptAndVersionSettingsGetResponseTagsList)),
+          tailConsumers: S.optional(
+            S.NullOr(ScriptsScriptAndVersionSettingsGetResponseTailConsumersList).pipe(
+              T.Body("tail_consumers"),
+            ),
+          ),
+          usageModel: S.optional(
+            S.NullOr(ScriptsScriptAndVersionSettingsGetResponseUsageModel).pipe(
+              T.Body("usage_model"),
+            ),
+          ),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "GetScriptScriptAndVersionSettingResponse",
@@ -21485,7 +25828,7 @@ function __c47(j: number): any {
       );
     case 1:
       return S.suspend(() =>
-        __S(376).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
+        ScriptsSecretsGetResult.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetScriptSecretResponse" });
     case 2:
       return S.suspend(() =>
@@ -21507,7 +25850,9 @@ function __c47(j: number): any {
         S.Struct({
           enabled: S.Boolean,
           invocationLogs: S.Boolean.pipe(T.Body("invocation_logs")),
-          destinations: S.optional(S.NullOr(__S(11))),
+          destinations: S.optional(
+            S.NullOr(ScriptsSettingsGetResponseObservabilityLogsDestinationsList),
+          ),
           headSamplingRate: S.optional(S.NullOr(S.Number).pipe(T.Body("head_sampling_rate"))),
           persist: S.optional(S.NullOr(S.Boolean)),
         }),
@@ -21517,11 +25862,17 @@ function __c47(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          destinations: S.optional(S.NullOr(__S(11))),
+          destinations: S.optional(
+            S.NullOr(ScriptsSettingsGetResponseObservabilityTracesDestinationsList),
+          ),
           enabled: S.optional(S.NullOr(S.Boolean)),
           headSamplingRate: S.optional(S.NullOr(S.Number).pipe(T.Body("head_sampling_rate"))),
           persist: S.optional(S.NullOr(S.Boolean)),
-          propagationPolicy: S.optional(S.NullOr(S.String).pipe(T.Body("propagation_policy"))),
+          propagationPolicy: S.optional(
+            S.NullOr(ScriptsSettingsGetResponseObservabilityTracesPropagationPolicy).pipe(
+              T.Body("propagation_policy"),
+            ),
+          ),
         }),
       ).annotate({
         identifier: "ScriptsSettingsGetResponseObservabilityTraces",
@@ -21531,10 +25882,10 @@ function __c47(j: number): any {
         S.Struct({
           enabled: S.Boolean,
           headSamplingRate: S.optional(S.NullOr(S.Number).pipe(T.Body("head_sampling_rate"))),
-          issues: S.optional(S.NullOr(__S(29))),
-          logs: S.optional(S.NullOr(__S(379))),
+          issues: S.optional(S.NullOr(BetaWorkersCreateResponseObservabilityIssues)),
+          logs: S.optional(S.NullOr(ScriptsSettingsGetResponseObservabilityLogs)),
           redactQueryString: S.optional(S.NullOr(S.Boolean).pipe(T.Body("redact_query_string"))),
-          traces: S.optional(S.NullOr(__S(380))),
+          traces: S.optional(S.NullOr(ScriptsSettingsGetResponseObservabilityTraces)),
         }),
       ).annotate({
         identifier: "ScriptsSettingsGetResponseObservability",
@@ -21543,9 +25894,11 @@ function __c47(j: number): any {
       return S.suspend(() =>
         S.Struct({
           logpush: S.optional(S.NullOr(S.Boolean)),
-          observability: S.optional(S.NullOr(__S(381))),
-          tags: S.optional(S.NullOr(__S(11))),
-          tailConsumers: S.optional(S.NullOr(__S(373)).pipe(T.Body("tail_consumers"))),
+          observability: S.optional(S.NullOr(ScriptsSettingsGetResponseObservability)),
+          tags: S.optional(S.NullOr(ScriptsSettingsGetResponseTagsList)),
+          tailConsumers: S.optional(
+            S.NullOr(ScriptsSettingsGetResponseTailConsumersList).pipe(T.Body("tail_consumers")),
+          ),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetScriptSettingResponse" });
     case 7:
@@ -21603,21 +25956,27 @@ function __c48(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          handlers: S.optional(S.NullOr(__S(19))),
+          handlers: S.optional(
+            S.NullOr(ScriptsVersionsGetResponseResourcesScriptNamedHandlersItemHandlersList),
+          ),
           name: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
         identifier: "ScriptsVersionsGetResponseResourcesScriptNamedHandlersItem",
       });
     case 3:
-      return S.Array(__S(386));
+      return S.Array(ScriptsVersionsGetResponseResourcesScriptNamedHandlersItem);
     case 4:
       return S.suspend(() =>
         S.Struct({
           etag: S.optional(S.NullOr(S.String)),
-          handlers: S.optional(S.NullOr(__S(11))),
+          handlers: S.optional(S.NullOr(ScriptsVersionsGetResponseResourcesScriptHandlersList)),
           lastDeployedFrom: S.optional(S.NullOr(S.String).pipe(T.Body("last_deployed_from"))),
-          namedHandlers: S.optional(S.NullOr(__S(387)).pipe(T.Body("named_handlers"))),
+          namedHandlers: S.optional(
+            S.NullOr(ScriptsVersionsGetResponseResourcesScriptNamedHandlersList).pipe(
+              T.Body("named_handlers"),
+            ),
+          ),
         }),
       ).annotate({
         identifier: "ScriptsVersionsGetResponseResourcesScript",
@@ -21634,17 +25993,25 @@ function __c48(j: number): any {
         ]),
       );
     case 6:
-      return S.Record(S.String, __S(389));
+      return S.Record(S.String, ScriptsVersionsGetResponseResourcesScriptRuntimeExportsValue);
     case 7:
       return S.suspend(() =>
         S.Struct({
           compatibilityDate: S.optional(S.NullOr(S.String).pipe(T.Body("compatibility_date"))),
-          compatibilityFlags: S.optional(S.NullOr(__S(19)).pipe(T.Body("compatibility_flags"))),
-          exports: S.optional(S.NullOr(__S(390))),
-          limits: S.optional(S.NullOr(__S(209))),
+          compatibilityFlags: S.optional(
+            S.NullOr(ScriptsVersionsGetResponseResourcesScriptRuntimeCompatibilityFlagsList).pipe(
+              T.Body("compatibility_flags"),
+            ),
+          ),
+          exports: S.optional(S.NullOr(ScriptsVersionsGetResponseResourcesScriptRuntimeExportsMap)),
+          limits: S.optional(S.NullOr(ScriptsVersionsCreateResponseResourcesScriptRuntimeLimits)),
           migrationTag: S.optional(S.NullOr(S.String).pipe(T.Body("migration_tag"))),
-          usageModel: S.optional(S.NullOr(S.String).pipe(T.Body("usage_model"))),
-          containers: S.optional(S.NullOr(__S(80))),
+          usageModel: S.optional(
+            S.NullOr(ScriptsVersionsGetResponseResourcesScriptRuntimeUsageModel).pipe(
+              T.Body("usage_model"),
+            ),
+          ),
+          containers: S.optional(S.NullOr(BetaWorkersVersionsGetResponseContainersList)),
         }),
       ).annotate({
         identifier: "ScriptsVersionsGetResponseResourcesScriptRuntime",
@@ -21657,8 +26024,12 @@ function __c49(j: number): any {
       return S.suspend(() =>
         S.Struct({
           bindings: S.Unknown,
-          script: S.optional(S.NullOr(__S(388))),
-          scriptRuntime: S.optional(S.NullOr(__S(391)).pipe(T.Body("script_runtime"))),
+          script: S.optional(S.NullOr(ScriptsVersionsGetResponseResourcesScript)),
+          scriptRuntime: S.optional(
+            S.NullOr(ScriptsVersionsGetResponseResourcesScriptRuntime).pipe(
+              T.Body("script_runtime"),
+            ),
+          ),
         }),
       ).annotate({
         identifier: "ScriptsVersionsGetResponseResources",
@@ -21666,9 +26037,9 @@ function __c49(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          resources: __S(392),
+          resources: ScriptsVersionsGetResponseResources,
           id: S.optional(S.NullOr(S.String)),
-          metadata: S.optional(S.NullOr(__S(217))),
+          metadata: S.optional(S.NullOr(ScriptsVersionsGetResponseMetadata)),
           number: S.optional(S.NullOr(S.Number)),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetScriptVersionResponse" });
@@ -21699,13 +26070,13 @@ function __c49(j: number): any {
         ),
       );
     case 5:
-      return S.Array(__S(396));
+      return S.Array(ObservabilityTelemetryKeysRequestFiltersItem);
     case 6:
       return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], []]));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          value: __S(398),
+          value: ObservabilityTelemetryKeysRequestKeyNeedleValue,
           isRegex: S.optional(S.Boolean),
           matchCase: S.optional(S.Boolean),
         }),
@@ -21721,7 +26092,7 @@ function __c50(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(400),
+          value: ObservabilityTelemetryKeysRequestNeedleValue,
           isRegex: S.optional(S.Boolean),
           matchCase: S.optional(S.Boolean),
         }),
@@ -21732,12 +26103,12 @@ function __c50(j: number): any {
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
-          datasets: S.optional(__S(11)),
-          filters: S.optional(__S(397)),
+          datasets: S.optional(ObservabilityTelemetryKeysRequestDatasetsList),
+          filters: S.optional(ObservabilityTelemetryKeysRequestFiltersList),
           from: S.optional(S.Number),
-          keyNeedle: S.optional(__S(399)),
+          keyNeedle: S.optional(ObservabilityTelemetryKeysRequestKeyNeedle),
           limit: S.optional(S.Number),
-          needle: S.optional(__S(401)),
+          needle: S.optional(ObservabilityTelemetryKeysRequestNeedle),
           to: S.optional(S.Number),
         })
           .pipe(
@@ -21756,17 +26127,17 @@ function __c50(j: number): any {
         S.Struct({
           key: S.String,
           lastSeenAt: S.Number,
-          type: S.String,
+          type: ObservabilityTelemetryKeysResultItemType,
         }),
       ).annotate({
         identifier: "ObservabilityTelemetryKeysResultItem",
       });
     case 4:
-      return S.Array(__S(403));
+      return S.Array(ObservabilityTelemetryKeysResultItem);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          result: __S(404).pipe(T.EnvelopePayload()),
+          result: ObservabilityTelemetryKeysResultList.pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
@@ -21776,8 +26147,8 @@ function __c50(j: number): any {
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
-          order: S.optional(S.String.pipe(T.Query())),
-          orderBy: S.optional(S.String.pipe(T.Query("order_by"))),
+          order: S.optional(BetaWorkersListRequestOrder.pipe(T.Query())),
+          orderBy: S.optional(BetaWorkersListRequestOrderBy.pipe(T.Query("order_by"))),
           page: S.optional(S.Number.pipe(T.Query())),
           perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
         })
@@ -21787,11 +26158,17 @@ function __c50(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          destinations: S.optional(S.NullOr(__S(11))),
+          destinations: S.optional(
+            S.NullOr(BetaWorkersListResultItemObservabilityTracesDestinationsList),
+          ),
           enabled: S.optional(S.NullOr(S.Boolean)),
           headSamplingRate: S.optional(S.NullOr(S.Number).pipe(T.Body("head_sampling_rate"))),
           persist: S.optional(S.NullOr(S.Boolean)),
-          propagationPolicy: S.optional(S.NullOr(S.String).pipe(T.Body("propagation_policy"))),
+          propagationPolicy: S.optional(
+            S.NullOr(BetaWorkersListResultItemObservabilityTracesPropagationPolicy).pipe(
+              T.Body("propagation_policy"),
+            ),
+          ),
         }),
       ).annotate({
         identifier: "BetaWorkersListResultItemObservabilityTraces",
@@ -21805,10 +26182,10 @@ function __c51(j: number): any {
         S.Struct({
           enabled: S.optional(S.NullOr(S.Boolean)),
           headSamplingRate: S.optional(S.NullOr(S.Number).pipe(T.Body("head_sampling_rate"))),
-          issues: S.optional(S.NullOr(__S(29))),
-          logs: S.optional(S.NullOr(__S(30))),
+          issues: S.optional(S.NullOr(BetaWorkersCreateResponseObservabilityIssues)),
+          logs: S.optional(S.NullOr(BetaWorkersListResultItemObservabilityLogs)),
           redactQueryString: S.optional(S.NullOr(S.Boolean).pipe(T.Body("redact_query_string"))),
-          traces: S.optional(S.NullOr(__S(407))),
+          traces: S.optional(S.NullOr(BetaWorkersListResultItemObservabilityTraces)),
         }),
       ).annotate({
         identifier: "BetaWorkersListResultItemObservability",
@@ -21816,11 +26193,19 @@ function __c51(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          destinations: S.optional(S.NullOr(__S(19))),
+          destinations: S.optional(
+            S.NullOr(
+              BetaWorkersListResultItemPreviewsBaseConfigObservabilityTracesDestinationsList,
+            ),
+          ),
           enabled: S.optional(S.NullOr(S.Boolean)),
           headSamplingRate: S.optional(S.NullOr(S.Number).pipe(T.Body("head_sampling_rate"))),
           persist: S.optional(S.NullOr(S.Boolean)),
-          propagationPolicy: S.optional(S.NullOr(S.String).pipe(T.Body("propagation_policy"))),
+          propagationPolicy: S.optional(
+            S.NullOr(
+              BetaWorkersListResultItemPreviewsBaseConfigObservabilityTracesPropagationPolicy,
+            ).pipe(T.Body("propagation_policy")),
+          ),
         }),
       ).annotate({
         identifier: "BetaWorkersListResultItemPreviewsBaseConfigObservabilityTraces",
@@ -21830,10 +26215,12 @@ function __c51(j: number): any {
         S.Struct({
           enabled: S.optional(S.NullOr(S.Boolean)),
           headSamplingRate: S.optional(S.NullOr(S.Number).pipe(T.Body("head_sampling_rate"))),
-          issues: S.optional(S.NullOr(__S(29))),
-          logs: S.optional(S.NullOr(__S(47))),
+          issues: S.optional(S.NullOr(BetaWorkersCreateResponseObservabilityIssues)),
+          logs: S.optional(S.NullOr(BetaWorkersListResultItemPreviewsBaseConfigObservabilityLogs)),
           redactQueryString: S.optional(S.NullOr(S.Boolean).pipe(T.Body("redact_query_string"))),
-          traces: S.optional(S.NullOr(__S(409))),
+          traces: S.optional(
+            S.NullOr(BetaWorkersListResultItemPreviewsBaseConfigObservabilityTraces),
+          ),
         }),
       ).annotate({
         identifier: "BetaWorkersListResultItemPreviewsBaseConfigObservability",
@@ -21854,13 +26241,23 @@ function __c51(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          cacheOptions: S.optional(S.NullOr(__S(45)).pipe(T.Body("cache_options"))),
-          env: S.optional(S.NullOr(__S(17))),
-          limits: S.optional(S.NullOr(__S(46))),
+          cacheOptions: S.optional(
+            S.NullOr(BetaWorkersCreateResponsePreviewsBaseConfigCacheOptions).pipe(
+              T.Body("cache_options"),
+            ),
+          ),
+          env: S.optional(S.NullOr(BetaWorkersListResultItemPreviewsBaseConfigEnvMap)),
+          limits: S.optional(S.NullOr(BetaWorkersCreateResponsePreviewsBaseConfigLimits)),
           logpush: S.optional(S.NullOr(S.Boolean)),
-          observability: S.optional(S.NullOr(__S(410))),
-          placement: S.optional(S.NullOr(__S(411))),
-          tailConsumers: S.optional(S.NullOr(__S(25)).pipe(T.Body("tail_consumers"))),
+          observability: S.optional(
+            S.NullOr(BetaWorkersListResultItemPreviewsBaseConfigObservability),
+          ),
+          placement: S.optional(S.NullOr(BetaWorkersListResultItemPreviewsBaseConfigPlacement)),
+          tailConsumers: S.optional(
+            S.NullOr(BetaWorkersListResultItemPreviewsBaseConfigTailConsumersList).pipe(
+              T.Body("tail_consumers"),
+            ),
+          ),
         }),
       ).annotate({
         identifier: "BetaWorkersListResultItemPreviewsBaseConfig",
@@ -21872,24 +26269,28 @@ function __c51(j: number): any {
           createdOn: S.String.pipe(T.Body("created_on")),
           logpush: S.Boolean,
           name: S.String,
-          observability: __S(408),
-          references: __S(43),
-          subdomain: __S(44),
-          tags: __S(11),
-          tailConsumers: __S(25).pipe(T.Body("tail_consumers")),
+          observability: BetaWorkersListResultItemObservability,
+          references: BetaWorkersListResultItemReferences,
+          subdomain: BetaWorkersCreateResponseSubdomain,
+          tags: BetaWorkersListResultItemTagsList,
+          tailConsumers: BetaWorkersListResultItemTailConsumersList.pipe(T.Body("tail_consumers")),
           updatedOn: S.String.pipe(T.Body("updated_on")),
           deployedOn: S.optional(S.NullOr(S.String).pipe(T.Body("deployed_on"))),
-          previewsBaseConfig: S.optional(S.NullOr(__S(412)).pipe(T.Body("previews_base_config"))),
+          previewsBaseConfig: S.optional(
+            S.NullOr(BetaWorkersListResultItemPreviewsBaseConfig).pipe(
+              T.Body("previews_base_config"),
+            ),
+          ),
         }),
       ).annotate({
         identifier: "BetaWorkersListResultItem",
       });
     case 6:
-      return S.Array(__S(413));
+      return S.Array(BetaWorkersListResultItem);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          result: __S(414).pipe(T.EnvelopePayload()),
+          result: BetaWorkersListResultList.pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListBetaWorkersResponse" });
@@ -21922,9 +26323,21 @@ function __c52(j: number): any {
       return S.suspend(() =>
         S.Struct({
           basePath: S.optional(S.NullOr(S.String).pipe(T.Body("base_path"))),
-          htmlHandling: S.optional(S.NullOr(S.String).pipe(T.Body("html_handling"))),
-          notFoundHandling: S.optional(S.NullOr(S.String).pipe(T.Body("not_found_handling"))),
-          runWorkerFirst: S.optional(S.NullOr(__S(417)).pipe(T.Body("run_worker_first"))),
+          htmlHandling: S.optional(
+            S.NullOr(BetaWorkersVersionsListResultItemAssetsConfigHtmlHandling).pipe(
+              T.Body("html_handling"),
+            ),
+          ),
+          notFoundHandling: S.optional(
+            S.NullOr(BetaWorkersVersionsListResultItemAssetsConfigNotFoundHandling).pipe(
+              T.Body("not_found_handling"),
+            ),
+          ),
+          runWorkerFirst: S.optional(
+            S.NullOr(BetaWorkersVersionsListResultItemAssetsConfigRunWorkerFirst).pipe(
+              T.Body("run_worker_first"),
+            ),
+          ),
         }),
       ).annotate({
         identifier: "BetaWorkersVersionsListResultItemAssetsConfig",
@@ -21932,7 +26345,7 @@ function __c52(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          config: S.optional(S.NullOr(__S(418))),
+          config: S.optional(S.NullOr(BetaWorkersVersionsListResultItemAssetsConfig)),
           jwt: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
@@ -22041,7 +26454,7 @@ function __c52(j: number): any {
         ),
       );
     case 5:
-      return S.Array(__S(420));
+      return S.Array(BetaWorkersVersionsListResultItemBindingsItem);
     case 6:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases([
@@ -22054,7 +26467,7 @@ function __c52(j: number): any {
         ]),
       );
     case 7:
-      return S.Record(S.String, __S(422));
+      return S.Record(S.String, BetaWorkersVersionsListResultItemExportsValue);
   }
 }
 function __c53(j: number): any {
@@ -22064,27 +26477,37 @@ function __c53(j: number): any {
         S.Struct({
           class: S.String,
           message: S.String,
-          scenario: S.String,
+          scenario: BetaWorkersVersionsListResultItemExportsReconciliationInfoItemScenario,
           namespaceId: S.optional(S.NullOr(S.String).pipe(T.Body("namespace_id"))),
-          referencingScripts: S.optional(S.NullOr(__S(19)).pipe(T.Body("referencing_scripts"))),
+          referencingScripts: S.optional(
+            S.NullOr(
+              BetaWorkersVersionsListResultItemExportsReconciliationInfoItemReferencingScriptsList,
+            ).pipe(T.Body("referencing_scripts")),
+          ),
         }),
       ).annotate({
         identifier: "BetaWorkersVersionsListResultItemExportsReconciliationInfoItem",
       });
     case 1:
-      return S.Array(__S(424));
+      return S.Array(BetaWorkersVersionsListResultItemExportsReconciliationInfoItem);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          created: __S(19),
-          deleted: __S(19),
-          info: __S(425),
-          removableEntries: __S(19).pipe(T.Body("removable_entries")),
-          renamed: __S(86),
-          transferPending: __S(88).pipe(T.Body("transfer_pending")),
-          transferred: __S(90),
-          updated: __S(19),
-          warnings: __S(92),
+          created: BetaWorkersVersionsListResultItemExportsReconciliationCreatedList,
+          deleted: BetaWorkersVersionsListResultItemExportsReconciliationDeletedList,
+          info: BetaWorkersVersionsListResultItemExportsReconciliationInfoList,
+          removableEntries:
+            BetaWorkersVersionsListResultItemExportsReconciliationRemovableEntriesList.pipe(
+              T.Body("removable_entries"),
+            ),
+          renamed: BetaWorkersVersionsListResultItemExportsReconciliationRenamedList,
+          transferPending:
+            BetaWorkersVersionsListResultItemExportsReconciliationTransferPendingList.pipe(
+              T.Body("transfer_pending"),
+            ),
+          transferred: BetaWorkersVersionsListResultItemExportsReconciliationTransferredList,
+          updated: BetaWorkersVersionsListResultItemExportsReconciliationUpdatedList,
+          warnings: BetaWorkersVersionsListResultItemExportsReconciliationWarningsList,
         }),
       ).annotate({
         identifier: "BetaWorkersVersionsListResultItemExportsReconciliation",
@@ -22123,40 +26546,56 @@ function __c53(j: number): any {
           id: S.String,
           createdOn: S.String.pipe(T.Body("created_on")),
           number: S.Number,
-          urls: __S(11),
-          annotations: S.optional(S.NullOr(__S(73))),
-          assets: S.optional(S.NullOr(__S(419))),
+          urls: BetaWorkersVersionsListResultItemUrlsList,
+          annotations: S.optional(S.NullOr(BetaWorkersVersionsCreateResponseAnnotations)),
+          assets: S.optional(S.NullOr(BetaWorkersVersionsListResultItemAssets)),
           authorEmail: S.optional(S.NullOr(S.String).pipe(T.Body("author_email"))),
           authorId: S.optional(S.NullOr(S.String).pipe(T.Body("author_id"))),
-          bindings: S.optional(S.NullOr(__S(421))),
-          cacheOptions: S.optional(S.NullOr(__S(45)).pipe(T.Body("cache_options"))),
-          compatibilityDate: S.optional(S.NullOr(S.String).pipe(T.Body("compatibility_date"))),
-          compatibilityFlags: S.optional(S.NullOr(__S(11)).pipe(T.Body("compatibility_flags"))),
-          containers: S.optional(S.NullOr(__S(80))),
-          exports: S.optional(S.NullOr(__S(423))),
-          exportsReconciliation: S.optional(
-            S.NullOr(__S(426)).pipe(T.Body("exports_reconciliation")),
+          bindings: S.optional(S.NullOr(BetaWorkersVersionsListResultItemBindingsList)),
+          cacheOptions: S.optional(
+            S.NullOr(BetaWorkersCreateResponsePreviewsBaseConfigCacheOptions).pipe(
+              T.Body("cache_options"),
+            ),
           ),
-          limits: S.optional(S.NullOr(__S(46))),
+          compatibilityDate: S.optional(S.NullOr(S.String).pipe(T.Body("compatibility_date"))),
+          compatibilityFlags: S.optional(
+            S.NullOr(BetaWorkersVersionsListResultItemCompatibilityFlagsList).pipe(
+              T.Body("compatibility_flags"),
+            ),
+          ),
+          containers: S.optional(S.NullOr(BetaWorkersVersionsListResultItemContainersList)),
+          exports: S.optional(S.NullOr(BetaWorkersVersionsListResultItemExportsMap)),
+          exportsReconciliation: S.optional(
+            S.NullOr(BetaWorkersVersionsListResultItemExportsReconciliation).pipe(
+              T.Body("exports_reconciliation"),
+            ),
+          ),
+          limits: S.optional(S.NullOr(BetaWorkersVersionsCreateResponseLimits)),
           mainModule: S.optional(S.NullOr(S.String).pipe(T.Body("main_module"))),
           migrationTag: S.optional(S.NullOr(S.String).pipe(T.Body("migration_tag"))),
-          migrations: S.optional(S.NullOr(__S(427))),
-          modules: S.optional(S.NullOr(__S(68))),
-          packageDependencies: S.optional(S.NullOr(__S(70)).pipe(T.Body("package_dependencies"))),
-          placement: S.optional(S.NullOr(__S(428))),
+          migrations: S.optional(S.NullOr(BetaWorkersVersionsListResultItemMigrations)),
+          modules: S.optional(S.NullOr(BetaWorkersVersionsListResultItemModulesList)),
+          packageDependencies: S.optional(
+            S.NullOr(BetaWorkersVersionsListResultItemPackageDependenciesList).pipe(
+              T.Body("package_dependencies"),
+            ),
+          ),
+          placement: S.optional(S.NullOr(BetaWorkersVersionsListResultItemPlacement)),
           source: S.optional(S.NullOr(S.String)),
           startupTimeMs: S.optional(S.NullOr(S.Number).pipe(T.Body("startup_time_ms"))),
-          usageModel: S.optional(S.NullOr(S.String).pipe(T.Body("usage_model"))),
+          usageModel: S.optional(
+            S.NullOr(BetaWorkersVersionsListResultItemUsageModel).pipe(T.Body("usage_model")),
+          ),
         }),
       ).annotate({
         identifier: "BetaWorkersVersionsListResultItem",
       });
     case 6:
-      return S.Array(__S(429));
+      return S.Array(BetaWorkersVersionsListResultItem);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          result: __S(430).pipe(T.EnvelopePayload()),
+          result: BetaWorkersVersionsListResultList.pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
@@ -22193,11 +26632,11 @@ function __c54(j: number): any {
         }),
       ).annotate({ identifier: "DomainsListResultItem" });
     case 2:
-      return S.Array(__S(433));
+      return S.Array(DomainsListResultItem);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          result: __S(434).pipe(T.EnvelopePayload()),
+          result: DomainsListResultList.pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListDomainsResponse" });
@@ -22205,8 +26644,8 @@ function __c54(j: number): any {
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
-          order: S.optional(S.String.pipe(T.Query())),
-          orderBy: S.optional(S.String.pipe(T.Query())),
+          order: S.optional(ObservabilityDestinationsListRequestOrder.pipe(T.Query())),
+          orderBy: S.optional(ObservabilityDestinationsListRequestOrderBy.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
           perPage: S.optional(S.Number.pipe(T.Query())),
         })
@@ -22237,10 +26676,10 @@ function __c54(j: number): any {
       return S.suspend(() =>
         S.Struct({
           destinationConf: S.String.pipe(T.Body("destination_conf")),
-          headers: __S(437),
-          jobStatus: __S(438),
-          logpushDataset: S.String,
-          type: S.String,
+          headers: ObservabilityDestinationsListResultItemConfigurationHeadersMap,
+          jobStatus: ObservabilityDestinationsListResultItemConfigurationJobStatus,
+          logpushDataset: ObservabilityDestinationsListResultItemConfigurationLogpushDataset,
+          type: ObservabilityDestinationsListResultItemConfigurationType,
           url: S.String,
         }),
       ).annotate({
@@ -22253,21 +26692,21 @@ function __c55(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          configuration: __S(439),
+          configuration: ObservabilityDestinationsListResultItemConfiguration,
           enabled: S.Boolean,
           name: S.String,
-          scripts: __S(11),
+          scripts: ObservabilityDestinationsListResultItemScriptsList,
           slug: S.String,
         }),
       ).annotate({
         identifier: "ObservabilityDestinationsListResultItem",
       });
     case 1:
-      return S.Array(__S(440));
+      return S.Array(ObservabilityDestinationsListResultItem);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          result: __S(441).pipe(T.EnvelopePayload()),
+          result: ObservabilityDestinationsListResultList.pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
@@ -22277,8 +26716,8 @@ function __c55(j: number): any {
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
-          order: S.optional(S.String.pipe(T.Query())),
-          orderBy: S.optional(S.String.pipe(T.Query())),
+          order: S.optional(ObservabilityQueriesListRequestOrder.pipe(T.Query())),
+          orderBy: S.optional(ObservabilityQueriesListRequestOrderBy.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
           perPage: S.optional(S.Number.pipe(T.Query())),
         })
@@ -22301,7 +26740,7 @@ function __c55(j: number): any {
         ]),
       );
     case 5:
-      return S.Array(__S(444));
+      return S.Array(ObservabilityQueriesListResultItemParametersCalculationsItem);
     case 6:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases(
@@ -22313,7 +26752,7 @@ function __c55(j: number): any {
         ),
       );
     case 7:
-      return S.Array(__S(446));
+      return S.Array(ObservabilityQueriesListResultItemParametersFiltersItem);
   }
 }
 function __c56(j: number): any {
@@ -22323,7 +26762,7 @@ function __c56(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(448),
+          value: ObservabilityQueriesListResultItemParametersNeedleValue,
           isRegex: S.optional(S.NullOr(S.Boolean)),
           matchCase: S.optional(S.NullOr(S.Boolean)),
         }),
@@ -22333,15 +26772,19 @@ function __c56(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          calculations: S.optional(S.NullOr(__S(445))),
-          datasets: S.optional(S.NullOr(__S(11))),
-          filterCombination: S.optional(S.NullOr(S.String)),
-          filters: S.optional(S.NullOr(__S(447))),
-          groupBys: S.optional(S.NullOr(__S(119))),
-          havings: S.optional(S.NullOr(__S(108))),
+          calculations: S.optional(
+            S.NullOr(ObservabilityQueriesListResultItemParametersCalculationsList),
+          ),
+          datasets: S.optional(S.NullOr(ObservabilityQueriesListResultItemParametersDatasetsList)),
+          filterCombination: S.optional(
+            S.NullOr(ObservabilityQueriesListResultItemParametersFilterCombination),
+          ),
+          filters: S.optional(S.NullOr(ObservabilityQueriesListResultItemParametersFiltersList)),
+          groupBys: S.optional(S.NullOr(ObservabilityQueriesListResultItemParametersGroupBysList)),
+          havings: S.optional(S.NullOr(ObservabilityQueriesListResultItemParametersHavingsList)),
           limit: S.optional(S.NullOr(S.Number)),
-          needle: S.optional(S.NullOr(__S(449))),
-          orderBy: S.optional(S.NullOr(__S(122))),
+          needle: S.optional(S.NullOr(ObservabilityQueriesListResultItemParametersNeedle)),
+          orderBy: S.optional(S.NullOr(ObservabilityQueriesListResultItemParametersOrderBy)),
         }),
       ).annotate({
         identifier: "ObservabilityQueriesListResultItemParameters",
@@ -22355,7 +26798,7 @@ function __c56(j: number): any {
           createdBy: S.String,
           description: S.String,
           name: S.String,
-          parameters: __S(450),
+          parameters: ObservabilityQueriesListResultItemParameters,
           updated: S.String,
           updatedBy: S.String,
         }),
@@ -22363,11 +26806,11 @@ function __c56(j: number): any {
         identifier: "ObservabilityQueriesListResultItem",
       });
     case 4:
-      return S.Array(__S(451));
+      return S.Array(ObservabilityQueriesListResultItem);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          result: __S(452).pipe(T.EnvelopePayload()),
+          result: ObservabilityQueriesListResultList.pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
@@ -22394,11 +26837,11 @@ function __c56(j: number): any {
 function __c57(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(455));
+      return S.Array(RoutesListResultItem);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          result: __S(456).pipe(T.EnvelopePayload()),
+          result: RoutesListResultList.pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListRoutesResponse" });
@@ -22429,20 +26872,20 @@ function __c57(j: number): any {
           id: S.String,
           createdOn: S.String.pipe(T.Body("created_on")),
           source: S.String,
-          strategy: S.String,
-          versions: __S(157),
-          annotations: S.optional(S.NullOr(__S(160))),
+          strategy: ScriptsDeploymentsListResponseDeploymentsItemStrategy,
+          versions: ScriptsDeploymentsListResponseDeploymentsItemVersionsList,
+          annotations: S.optional(S.NullOr(ScriptsDeploymentsCreateResponseAnnotations)),
           authorEmail: S.optional(S.NullOr(S.String).pipe(T.Body("author_email"))),
         }),
       ).annotate({
         identifier: "ScriptsDeploymentsListResponseDeploymentsItem",
       });
     case 4:
-      return S.Array(__S(459));
+      return S.Array(ScriptsDeploymentsListResponseDeploymentsItem);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          deployments: __S(460),
+          deployments: ScriptsDeploymentsListResponseDeploymentsList,
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "ListScriptDeploymentsResponse",
@@ -22472,26 +26915,32 @@ function __c57(j: number): any {
 function __c58(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, __S(463));
+      return S.Record(S.String, ScriptsListResultItemExportsValue);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          handlers: S.optional(S.NullOr(__S(11))),
+          handlers: S.optional(S.NullOr(ScriptsListResultItemNamedHandlersItemHandlersList)),
           name: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
         identifier: "ScriptsListResultItemNamedHandlersItem",
       });
     case 2:
-      return S.Array(__S(465));
+      return S.Array(ScriptsListResultItemNamedHandlersItem);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          destinations: S.optional(S.NullOr(__S(11))),
+          destinations: S.optional(
+            S.NullOr(ScriptsListResultItemObservabilityTracesDestinationsList),
+          ),
           enabled: S.optional(S.NullOr(S.Boolean)),
           headSamplingRate: S.optional(S.NullOr(S.Number).pipe(T.Body("head_sampling_rate"))),
           persist: S.optional(S.NullOr(S.Boolean)),
-          propagationPolicy: S.optional(S.NullOr(S.String).pipe(T.Body("propagation_policy"))),
+          propagationPolicy: S.optional(
+            S.NullOr(ScriptsListResultItemObservabilityTracesPropagationPolicy).pipe(
+              T.Body("propagation_policy"),
+            ),
+          ),
         }),
       ).annotate({
         identifier: "ScriptsListResultItemObservabilityTraces",
@@ -22501,10 +26950,10 @@ function __c58(j: number): any {
         S.Struct({
           enabled: S.Boolean,
           headSamplingRate: S.optional(S.NullOr(S.Number).pipe(T.Body("head_sampling_rate"))),
-          issues: S.optional(S.NullOr(__S(29))),
-          logs: S.optional(S.NullOr(__S(379))),
+          issues: S.optional(S.NullOr(BetaWorkersCreateResponseObservabilityIssues)),
+          logs: S.optional(S.NullOr(ScriptsListResultItemObservabilityLogs)),
           redactQueryString: S.optional(S.NullOr(S.Boolean).pipe(T.Body("redact_query_string"))),
-          traces: S.optional(S.NullOr(__S(467))),
+          traces: S.optional(S.NullOr(ScriptsListResultItemObservabilityTraces)),
         }),
       ).annotate({
         identifier: "ScriptsListResultItemObservability",
@@ -22526,33 +26975,51 @@ function __c58(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
-          cacheOptions: S.optional(S.NullOr(__S(45)).pipe(T.Body("cache_options"))),
+          cacheOptions: S.optional(
+            S.NullOr(BetaWorkersCreateResponsePreviewsBaseConfigCacheOptions).pipe(
+              T.Body("cache_options"),
+            ),
+          ),
           compatibilityDate: S.optional(S.NullOr(S.String).pipe(T.Body("compatibility_date"))),
-          compatibilityFlags: S.optional(S.NullOr(__S(11)).pipe(T.Body("compatibility_flags"))),
+          compatibilityFlags: S.optional(
+            S.NullOr(ScriptsListResultItemCompatibilityFlagsList).pipe(
+              T.Body("compatibility_flags"),
+            ),
+          ),
           createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
           etag: S.optional(S.NullOr(S.String)),
-          exports: S.optional(S.NullOr(__S(464))),
-          handlers: S.optional(S.NullOr(__S(11))),
+          exports: S.optional(S.NullOr(ScriptsListResultItemExportsMap)),
+          handlers: S.optional(S.NullOr(ScriptsListResultItemHandlersList)),
           hasAssets: S.optional(S.NullOr(S.Boolean).pipe(T.Body("has_assets"))),
           hasModules: S.optional(S.NullOr(S.Boolean).pipe(T.Body("has_modules"))),
           lastDeployedFrom: S.optional(S.NullOr(S.String).pipe(T.Body("last_deployed_from"))),
           logpush: S.optional(S.NullOr(S.Boolean)),
           migrationTag: S.optional(S.NullOr(S.String).pipe(T.Body("migration_tag"))),
           modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-          namedHandlers: S.optional(S.NullOr(__S(466)).pipe(T.Body("named_handlers"))),
-          observability: S.optional(S.NullOr(__S(468))),
-          placement: S.optional(S.NullOr(__S(469))),
-          placementMode: S.optional(S.NullOr(S.String).pipe(T.Body("placement_mode"))),
-          placementStatus: S.optional(S.NullOr(S.String).pipe(T.Body("placement_status"))),
-          routes: S.optional(S.NullOr(__S(456))),
+          namedHandlers: S.optional(
+            S.NullOr(ScriptsListResultItemNamedHandlersList).pipe(T.Body("named_handlers")),
+          ),
+          observability: S.optional(S.NullOr(ScriptsListResultItemObservability)),
+          placement: S.optional(S.NullOr(ScriptsListResultItemPlacement)),
+          placementMode: S.optional(
+            S.NullOr(ScriptsListResultItemPlacementMode).pipe(T.Body("placement_mode")),
+          ),
+          placementStatus: S.optional(
+            S.NullOr(ScriptsListResultItemPlacementStatus).pipe(T.Body("placement_status")),
+          ),
+          routes: S.optional(S.NullOr(ScriptsListResultItemRoutesList)),
           tag: S.optional(S.NullOr(S.String)),
-          tags: S.optional(S.NullOr(__S(11))),
-          tailConsumers: S.optional(S.NullOr(__S(373)).pipe(T.Body("tail_consumers"))),
-          usageModel: S.optional(S.NullOr(S.String).pipe(T.Body("usage_model"))),
+          tags: S.optional(S.NullOr(ScriptsListResultItemTagsList)),
+          tailConsumers: S.optional(
+            S.NullOr(ScriptsListResultItemTailConsumersList).pipe(T.Body("tail_consumers")),
+          ),
+          usageModel: S.optional(
+            S.NullOr(ScriptsListResultItemUsageModel).pipe(T.Body("usage_model")),
+          ),
         }),
       ).annotate({ identifier: "ScriptsListResultItem" });
     case 7:
-      return S.Array(__S(470));
+      return S.Array(ScriptsListResultItem);
   }
 }
 function __c59(j: number): any {
@@ -22560,7 +27027,7 @@ function __c59(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          result: __S(471).pipe(T.EnvelopePayload()),
+          result: ScriptsListResultList.pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListScriptsResponse" });
@@ -22590,11 +27057,11 @@ function __c59(j: number): any {
         ),
       );
     case 3:
-      return S.Array(__S(474));
+      return S.Array(ScriptsSecretsListResultItem);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          result: __S(475).pipe(T.EnvelopePayload()),
+          result: ScriptsSecretsListResultList.pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
@@ -22624,14 +27091,14 @@ function __c59(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
-          metadata: S.optional(S.NullOr(__S(217))),
+          metadata: S.optional(S.NullOr(ScriptsVersionsListResponseItemsItemMetadata)),
           number: S.optional(S.NullOr(S.Number)),
         }),
       ).annotate({
         identifier: "ScriptsVersionsListResponseItemsItem",
       });
     case 7:
-      return S.Array(__S(478));
+      return S.Array(ScriptsVersionsListResponseItemsItem);
   }
 }
 function __c60(j: number): any {
@@ -22639,7 +27106,7 @@ function __c60(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          items: S.optional(S.NullOr(__S(479))),
+          items: S.optional(S.NullOr(ScriptsVersionsListResponseItemsList)),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "ListScriptVersionsResponse",
@@ -22672,13 +27139,13 @@ function __c60(j: number): any {
         ),
       );
     case 3:
-      return S.Array(__S(482));
+      return S.Array(ObservabilityTelemetryLiveTailRequestFiltersItem);
     case 4:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
-          filterCombination: S.optional(S.String),
-          filters: S.optional(__S(483)),
+          filterCombination: S.optional(ObservabilityTelemetryLiveTailRequestFilterCombination),
+          filters: S.optional(ObservabilityTelemetryLiveTailRequestFiltersList),
           scriptId: S.optional(S.String),
         })
           .pipe(
@@ -22703,11 +27170,15 @@ function __c60(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          destinations: S.optional(__S(11)),
+          destinations: S.optional(BetaWorkersEditRequestObservabilityTracesDestinationsList),
           enabled: S.optional(S.Boolean),
           headSamplingRate: S.optional(S.Number.pipe(T.Body("head_sampling_rate"))),
           persist: S.optional(S.Boolean),
-          propagationPolicy: S.optional(S.String.pipe(T.Body("propagation_policy"))),
+          propagationPolicy: S.optional(
+            BetaWorkersEditRequestObservabilityTracesPropagationPolicy.pipe(
+              T.Body("propagation_policy"),
+            ),
+          ),
         }),
       ).annotate({
         identifier: "BetaWorkersEditRequestObservabilityTraces",
@@ -22717,10 +27188,10 @@ function __c60(j: number): any {
         S.Struct({
           enabled: S.optional(S.Boolean),
           headSamplingRate: S.optional(S.Number.pipe(T.Body("head_sampling_rate"))),
-          issues: S.optional(__S(10)),
-          logs: S.optional(__S(12)),
+          issues: S.optional(BetaWorkersCreateRequestObservabilityIssues),
+          logs: S.optional(BetaWorkersEditRequestObservabilityLogs),
           redactQueryString: S.optional(S.Boolean.pipe(T.Body("redact_query_string"))),
-          traces: S.optional(__S(486)),
+          traces: S.optional(BetaWorkersEditRequestObservabilityTraces),
         }),
       ).annotate({
         identifier: "BetaWorkersEditRequestObservability",
@@ -22732,11 +27203,17 @@ function __c61(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          destinations: S.optional(__S(19)),
+          destinations: S.optional(
+            BetaWorkersEditRequestPreviewsBaseConfigObservabilityTracesDestinationsList,
+          ),
           enabled: S.optional(S.Boolean),
           headSamplingRate: S.optional(S.Number.pipe(T.Body("head_sampling_rate"))),
           persist: S.optional(S.Boolean),
-          propagationPolicy: S.optional(S.String.pipe(T.Body("propagation_policy"))),
+          propagationPolicy: S.optional(
+            BetaWorkersEditRequestPreviewsBaseConfigObservabilityTracesPropagationPolicy.pipe(
+              T.Body("propagation_policy"),
+            ),
+          ),
         }),
       ).annotate({
         identifier: "BetaWorkersEditRequestPreviewsBaseConfigObservabilityTraces",
@@ -22746,10 +27223,10 @@ function __c61(j: number): any {
         S.Struct({
           enabled: S.optional(S.Boolean),
           headSamplingRate: S.optional(S.Number.pipe(T.Body("head_sampling_rate"))),
-          issues: S.optional(__S(10)),
-          logs: S.optional(__S(20)),
+          issues: S.optional(BetaWorkersCreateRequestObservabilityIssues),
+          logs: S.optional(BetaWorkersEditRequestPreviewsBaseConfigObservabilityLogs),
           redactQueryString: S.optional(S.Boolean.pipe(T.Body("redact_query_string"))),
-          traces: S.optional(__S(488)),
+          traces: S.optional(BetaWorkersEditRequestPreviewsBaseConfigObservabilityTraces),
         }),
       ).annotate({
         identifier: "BetaWorkersEditRequestPreviewsBaseConfigObservability",
@@ -22770,13 +27247,19 @@ function __c61(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          cacheOptions: S.optional(__S(15).pipe(T.Body("cache_options"))),
-          env: S.optional(__S(17)),
-          limits: S.optional(__S(18)),
+          cacheOptions: S.optional(
+            BetaWorkersCreateRequestPreviewsBaseConfigCacheOptions.pipe(T.Body("cache_options")),
+          ),
+          env: S.optional(BetaWorkersEditRequestPreviewsBaseConfigEnvMap),
+          limits: S.optional(BetaWorkersCreateRequestPreviewsBaseConfigLimits),
           logpush: S.optional(S.Boolean),
-          observability: S.optional(__S(489)),
-          placement: S.optional(__S(490)),
-          tailConsumers: S.optional(__S(25).pipe(T.Body("tail_consumers"))),
+          observability: S.optional(BetaWorkersEditRequestPreviewsBaseConfigObservability),
+          placement: S.optional(BetaWorkersEditRequestPreviewsBaseConfigPlacement),
+          tailConsumers: S.optional(
+            BetaWorkersEditRequestPreviewsBaseConfigTailConsumersList.pipe(
+              T.Body("tail_consumers"),
+            ),
+          ),
         }),
       ).annotate({
         identifier: "BetaWorkersEditRequestPreviewsBaseConfig",
@@ -22788,11 +27271,13 @@ function __c61(j: number): any {
           workerId: S.String.pipe(T.Label("worker_id")),
           logpush: S.Boolean,
           name: S.String,
-          observability: __S(487),
-          subdomain: __S(27),
-          tags: __S(11),
-          tailConsumers: __S(25).pipe(T.Body("tail_consumers")),
-          previewsBaseConfig: S.optional(__S(491).pipe(T.Body("previews_base_config"))),
+          observability: BetaWorkersEditRequestObservability,
+          subdomain: BetaWorkersCreateRequestSubdomain,
+          tags: BetaWorkersEditRequestTagsList,
+          tailConsumers: BetaWorkersEditRequestTailConsumersList.pipe(T.Body("tail_consumers")),
+          previewsBaseConfig: S.optional(
+            BetaWorkersEditRequestPreviewsBaseConfig.pipe(T.Body("previews_base_config")),
+          ),
         })
           .pipe(
             T.Http({
@@ -22806,11 +27291,17 @@ function __c61(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          destinations: S.optional(S.NullOr(__S(11))),
+          destinations: S.optional(
+            S.NullOr(BetaWorkersEditResponseObservabilityTracesDestinationsList),
+          ),
           enabled: S.optional(S.NullOr(S.Boolean)),
           headSamplingRate: S.optional(S.NullOr(S.Number).pipe(T.Body("head_sampling_rate"))),
           persist: S.optional(S.NullOr(S.Boolean)),
-          propagationPolicy: S.optional(S.NullOr(S.String).pipe(T.Body("propagation_policy"))),
+          propagationPolicy: S.optional(
+            S.NullOr(BetaWorkersEditResponseObservabilityTracesPropagationPolicy).pipe(
+              T.Body("propagation_policy"),
+            ),
+          ),
         }),
       ).annotate({
         identifier: "BetaWorkersEditResponseObservabilityTraces",
@@ -22820,10 +27311,10 @@ function __c61(j: number): any {
         S.Struct({
           enabled: S.optional(S.NullOr(S.Boolean)),
           headSamplingRate: S.optional(S.NullOr(S.Number).pipe(T.Body("head_sampling_rate"))),
-          issues: S.optional(S.NullOr(__S(29))),
-          logs: S.optional(S.NullOr(__S(30))),
+          issues: S.optional(S.NullOr(BetaWorkersCreateResponseObservabilityIssues)),
+          logs: S.optional(S.NullOr(BetaWorkersEditResponseObservabilityLogs)),
           redactQueryString: S.optional(S.NullOr(S.Boolean).pipe(T.Body("redact_query_string"))),
-          traces: S.optional(S.NullOr(__S(493))),
+          traces: S.optional(S.NullOr(BetaWorkersEditResponseObservabilityTraces)),
         }),
       ).annotate({
         identifier: "BetaWorkersEditResponseObservability",
@@ -22831,11 +27322,17 @@ function __c61(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          destinations: S.optional(S.NullOr(__S(19))),
+          destinations: S.optional(
+            S.NullOr(BetaWorkersEditResponsePreviewsBaseConfigObservabilityTracesDestinationsList),
+          ),
           enabled: S.optional(S.NullOr(S.Boolean)),
           headSamplingRate: S.optional(S.NullOr(S.Number).pipe(T.Body("head_sampling_rate"))),
           persist: S.optional(S.NullOr(S.Boolean)),
-          propagationPolicy: S.optional(S.NullOr(S.String).pipe(T.Body("propagation_policy"))),
+          propagationPolicy: S.optional(
+            S.NullOr(
+              BetaWorkersEditResponsePreviewsBaseConfigObservabilityTracesPropagationPolicy,
+            ).pipe(T.Body("propagation_policy")),
+          ),
         }),
       ).annotate({
         identifier: "BetaWorkersEditResponsePreviewsBaseConfigObservabilityTraces",
@@ -22849,10 +27346,12 @@ function __c62(j: number): any {
         S.Struct({
           enabled: S.optional(S.NullOr(S.Boolean)),
           headSamplingRate: S.optional(S.NullOr(S.Number).pipe(T.Body("head_sampling_rate"))),
-          issues: S.optional(S.NullOr(__S(29))),
-          logs: S.optional(S.NullOr(__S(47))),
+          issues: S.optional(S.NullOr(BetaWorkersCreateResponseObservabilityIssues)),
+          logs: S.optional(S.NullOr(BetaWorkersEditResponsePreviewsBaseConfigObservabilityLogs)),
           redactQueryString: S.optional(S.NullOr(S.Boolean).pipe(T.Body("redact_query_string"))),
-          traces: S.optional(S.NullOr(__S(495))),
+          traces: S.optional(
+            S.NullOr(BetaWorkersEditResponsePreviewsBaseConfigObservabilityTraces),
+          ),
         }),
       ).annotate({
         identifier: "BetaWorkersEditResponsePreviewsBaseConfigObservability",
@@ -22873,13 +27372,23 @@ function __c62(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          cacheOptions: S.optional(S.NullOr(__S(45)).pipe(T.Body("cache_options"))),
-          env: S.optional(S.NullOr(__S(17))),
-          limits: S.optional(S.NullOr(__S(46))),
+          cacheOptions: S.optional(
+            S.NullOr(BetaWorkersCreateResponsePreviewsBaseConfigCacheOptions).pipe(
+              T.Body("cache_options"),
+            ),
+          ),
+          env: S.optional(S.NullOr(BetaWorkersEditResponsePreviewsBaseConfigEnvMap)),
+          limits: S.optional(S.NullOr(BetaWorkersCreateResponsePreviewsBaseConfigLimits)),
           logpush: S.optional(S.NullOr(S.Boolean)),
-          observability: S.optional(S.NullOr(__S(496))),
-          placement: S.optional(S.NullOr(__S(497))),
-          tailConsumers: S.optional(S.NullOr(__S(25)).pipe(T.Body("tail_consumers"))),
+          observability: S.optional(
+            S.NullOr(BetaWorkersEditResponsePreviewsBaseConfigObservability),
+          ),
+          placement: S.optional(S.NullOr(BetaWorkersEditResponsePreviewsBaseConfigPlacement)),
+          tailConsumers: S.optional(
+            S.NullOr(BetaWorkersEditResponsePreviewsBaseConfigTailConsumersList).pipe(
+              T.Body("tail_consumers"),
+            ),
+          ),
         }),
       ).annotate({
         identifier: "BetaWorkersEditResponsePreviewsBaseConfig",
@@ -22891,21 +27400,25 @@ function __c62(j: number): any {
           createdOn: S.String.pipe(T.Body("created_on")),
           logpush: S.Boolean,
           name: S.String,
-          observability: __S(494),
-          references: __S(43),
-          subdomain: __S(44),
-          tags: __S(11),
-          tailConsumers: __S(25).pipe(T.Body("tail_consumers")),
+          observability: BetaWorkersEditResponseObservability,
+          references: BetaWorkersEditResponseReferences,
+          subdomain: BetaWorkersCreateResponseSubdomain,
+          tags: BetaWorkersEditResponseTagsList,
+          tailConsumers: BetaWorkersEditResponseTailConsumersList.pipe(T.Body("tail_consumers")),
           updatedOn: S.String.pipe(T.Body("updated_on")),
           deployedOn: S.optional(S.NullOr(S.String).pipe(T.Body("deployed_on"))),
-          previewsBaseConfig: S.optional(S.NullOr(__S(498)).pipe(T.Body("previews_base_config"))),
+          previewsBaseConfig: S.optional(
+            S.NullOr(BetaWorkersEditResponsePreviewsBaseConfig).pipe(
+              T.Body("previews_base_config"),
+            ),
+          ),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "PatchBetaWorkerResponse" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          headers: __S(59),
-          type: S.String,
+          headers: ObservabilityDestinationsUpdateRequestConfigurationHeadersMap,
+          type: ObservabilityDestinationsUpdateRequestConfigurationType,
           url: S.String,
         }),
       ).annotate({
@@ -22916,7 +27429,7 @@ function __c62(j: number): any {
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           slug: S.String.pipe(T.Label()),
-          configuration: __S(500),
+          configuration: ObservabilityDestinationsUpdateRequestConfiguration,
           enabled: S.Boolean,
         })
           .pipe(
@@ -22933,10 +27446,10 @@ function __c62(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          configuration: __S(99),
+          configuration: ObservabilityDestinationsUpdateResponseConfiguration,
           enabled: S.Boolean,
           name: S.String,
-          scripts: __S(11),
+          scripts: ObservabilityDestinationsUpdateResponseScriptsList,
           slug: S.String,
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
@@ -23068,7 +27581,7 @@ function __c63(j: number): any {
         ),
       );
     case 1:
-      return S.Array(__S(504));
+      return S.Array(ScriptsScriptAndVersionSettingsEditResponseBindingsItem);
     case 2:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases([
@@ -23081,34 +27594,40 @@ function __c63(j: number): any {
         ]),
       );
     case 3:
-      return S.Record(S.String, __S(506));
+      return S.Record(S.String, ScriptsScriptAndVersionSettingsEditResponseExportsValue);
     case 4:
       return S.suspend(() =>
         S.Struct({
           class: S.String,
           message: S.String,
-          scenario: S.String,
+          scenario:
+            ScriptsScriptAndVersionSettingsEditResponseExportsReconciliationInfoItemScenario,
           namespaceId: S.optional(S.NullOr(S.String).pipe(T.Body("namespace_id"))),
-          referencingScripts: S.optional(S.NullOr(__S(19)).pipe(T.Body("referencing_scripts"))),
+          referencingScripts: S.optional(
+            S.NullOr(
+              ScriptsScriptAndVersionSettingsEditResponseExportsReconciliationInfoItemReferencingScriptsList,
+            ).pipe(T.Body("referencing_scripts")),
+          ),
         }),
       ).annotate({
         identifier: "ScriptsScriptAndVersionSettingsEditResponseExportsReconciliationInfoItem",
       });
     case 5:
-      return S.Array(__S(508));
+      return S.Array(ScriptsScriptAndVersionSettingsEditResponseExportsReconciliationInfoItem);
     case 6:
       return S.suspend(() =>
         S.Struct({
           class: S.String,
           message: S.String,
-          scenario: S.String,
+          scenario:
+            ScriptsScriptAndVersionSettingsEditResponseExportsReconciliationWarningsItemScenario,
           namespaceId: S.optional(S.NullOr(S.String).pipe(T.Body("namespace_id"))),
         }),
       ).annotate({
         identifier: "ScriptsScriptAndVersionSettingsEditResponseExportsReconciliationWarningsItem",
       });
     case 7:
-      return S.Array(__S(510));
+      return S.Array(ScriptsScriptAndVersionSettingsEditResponseExportsReconciliationWarningsItem);
   }
 }
 function __c64(j: number): any {
@@ -23116,15 +27635,22 @@ function __c64(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          created: __S(19),
-          deleted: __S(19),
-          info: __S(509),
-          removableEntries: __S(19).pipe(T.Body("removable_entries")),
-          renamed: __S(86),
-          transferPending: __S(88).pipe(T.Body("transfer_pending")),
-          transferred: __S(90),
-          updated: __S(19),
-          warnings: __S(511),
+          created: ScriptsScriptAndVersionSettingsEditResponseExportsReconciliationCreatedList,
+          deleted: ScriptsScriptAndVersionSettingsEditResponseExportsReconciliationDeletedList,
+          info: ScriptsScriptAndVersionSettingsEditResponseExportsReconciliationInfoList,
+          removableEntries:
+            ScriptsScriptAndVersionSettingsEditResponseExportsReconciliationRemovableEntriesList.pipe(
+              T.Body("removable_entries"),
+            ),
+          renamed: ScriptsScriptAndVersionSettingsEditResponseExportsReconciliationRenamedList,
+          transferPending:
+            ScriptsScriptAndVersionSettingsEditResponseExportsReconciliationTransferPendingList.pipe(
+              T.Body("transfer_pending"),
+            ),
+          transferred:
+            ScriptsScriptAndVersionSettingsEditResponseExportsReconciliationTransferredList,
+          updated: ScriptsScriptAndVersionSettingsEditResponseExportsReconciliationUpdatedList,
+          warnings: ScriptsScriptAndVersionSettingsEditResponseExportsReconciliationWarningsList,
         }),
       ).annotate({
         identifier: "ScriptsScriptAndVersionSettingsEditResponseExportsReconciliation",
@@ -23147,11 +27673,19 @@ function __c64(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          destinations: S.optional(S.NullOr(__S(19))),
+          destinations: S.optional(
+            S.NullOr(
+              ScriptsScriptAndVersionSettingsEditResponseObservabilityTracesDestinationsList,
+            ),
+          ),
           enabled: S.optional(S.NullOr(S.Boolean)),
           headSamplingRate: S.optional(S.NullOr(S.Number).pipe(T.Body("head_sampling_rate"))),
           persist: S.optional(S.NullOr(S.Boolean)),
-          propagationPolicy: S.optional(S.NullOr(S.String).pipe(T.Body("propagation_policy"))),
+          propagationPolicy: S.optional(
+            S.NullOr(
+              ScriptsScriptAndVersionSettingsEditResponseObservabilityTracesPropagationPolicy,
+            ).pipe(T.Body("propagation_policy")),
+          ),
         }),
       ).annotate({
         identifier: "ScriptsScriptAndVersionSettingsEditResponseObservabilityTraces",
@@ -23161,10 +27695,12 @@ function __c64(j: number): any {
         S.Struct({
           enabled: S.Boolean,
           headSamplingRate: S.optional(S.NullOr(S.Number).pipe(T.Body("head_sampling_rate"))),
-          issues: S.optional(S.NullOr(__S(29))),
-          logs: S.optional(S.NullOr(__S(368))),
+          issues: S.optional(S.NullOr(BetaWorkersCreateResponseObservabilityIssues)),
+          logs: S.optional(S.NullOr(ScriptsScriptAndVersionSettingsEditResponseObservabilityLogs)),
           redactQueryString: S.optional(S.NullOr(S.Boolean).pipe(T.Body("redact_query_string"))),
-          traces: S.optional(S.NullOr(__S(514))),
+          traces: S.optional(
+            S.NullOr(ScriptsScriptAndVersionSettingsEditResponseObservabilityTraces),
+          ),
         }),
       ).annotate({
         identifier: "ScriptsScriptAndVersionSettingsEditResponseObservability",
@@ -23185,23 +27721,43 @@ function __c64(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          annotations: S.optional(S.NullOr(__S(73))),
-          bindings: S.optional(S.NullOr(__S(505))),
-          cacheOptions: S.optional(S.NullOr(__S(45)).pipe(T.Body("cache_options"))),
-          compatibilityDate: S.optional(S.NullOr(S.String).pipe(T.Body("compatibility_date"))),
-          compatibilityFlags: S.optional(S.NullOr(__S(19)).pipe(T.Body("compatibility_flags"))),
-          exports: S.optional(S.NullOr(__S(507))),
-          exportsReconciliation: S.optional(
-            S.NullOr(__S(512)).pipe(T.Body("exports_reconciliation")),
+          annotations: S.optional(S.NullOr(ScriptsScriptAndVersionSettingsGetResponseAnnotations)),
+          bindings: S.optional(S.NullOr(ScriptsScriptAndVersionSettingsEditResponseBindingsList)),
+          cacheOptions: S.optional(
+            S.NullOr(BetaWorkersCreateResponsePreviewsBaseConfigCacheOptions).pipe(
+              T.Body("cache_options"),
+            ),
           ),
-          limits: S.optional(S.NullOr(__S(46))),
+          compatibilityDate: S.optional(S.NullOr(S.String).pipe(T.Body("compatibility_date"))),
+          compatibilityFlags: S.optional(
+            S.NullOr(ScriptsScriptAndVersionSettingsEditResponseCompatibilityFlagsList).pipe(
+              T.Body("compatibility_flags"),
+            ),
+          ),
+          exports: S.optional(S.NullOr(ScriptsScriptAndVersionSettingsEditResponseExportsMap)),
+          exportsReconciliation: S.optional(
+            S.NullOr(ScriptsScriptAndVersionSettingsEditResponseExportsReconciliation).pipe(
+              T.Body("exports_reconciliation"),
+            ),
+          ),
+          limits: S.optional(S.NullOr(BetaWorkersCreateResponsePreviewsBaseConfigLimits)),
           logpush: S.optional(S.NullOr(S.Boolean)),
-          migrations: S.optional(S.NullOr(__S(513))),
-          observability: S.optional(S.NullOr(__S(515))),
-          placement: S.optional(S.NullOr(__S(516))),
-          tags: S.optional(S.NullOr(__S(11))),
-          tailConsumers: S.optional(S.NullOr(__S(373)).pipe(T.Body("tail_consumers"))),
-          usageModel: S.optional(S.NullOr(S.String).pipe(T.Body("usage_model"))),
+          migrations: S.optional(S.NullOr(ScriptsScriptAndVersionSettingsEditResponseMigrations)),
+          observability: S.optional(
+            S.NullOr(ScriptsScriptAndVersionSettingsEditResponseObservability),
+          ),
+          placement: S.optional(S.NullOr(ScriptsScriptAndVersionSettingsEditResponsePlacement)),
+          tags: S.optional(S.NullOr(ScriptsScriptAndVersionSettingsEditResponseTagsList)),
+          tailConsumers: S.optional(
+            S.NullOr(ScriptsScriptAndVersionSettingsEditResponseTailConsumersList).pipe(
+              T.Body("tail_consumers"),
+            ),
+          ),
+          usageModel: S.optional(
+            S.NullOr(ScriptsScriptAndVersionSettingsEditResponseUsageModel).pipe(
+              T.Body("usage_model"),
+            ),
+          ),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "PatchScriptScriptAndVersionSettingResponse",
@@ -23211,7 +27767,7 @@ function __c64(j: number): any {
         S.Struct({
           enabled: S.Boolean,
           invocationLogs: S.Boolean.pipe(T.Body("invocation_logs")),
-          destinations: S.optional(__S(11)),
+          destinations: S.optional(ScriptsSettingsEditRequestObservabilityLogsDestinationsList),
           headSamplingRate: S.optional(S.Number.pipe(T.Body("head_sampling_rate"))),
           persist: S.optional(S.Boolean),
         }),
@@ -23221,11 +27777,15 @@ function __c64(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          destinations: S.optional(__S(11)),
+          destinations: S.optional(ScriptsSettingsEditRequestObservabilityTracesDestinationsList),
           enabled: S.optional(S.Boolean),
           headSamplingRate: S.optional(S.Number.pipe(T.Body("head_sampling_rate"))),
           persist: S.optional(S.Boolean),
-          propagationPolicy: S.optional(S.String.pipe(T.Body("propagation_policy"))),
+          propagationPolicy: S.optional(
+            ScriptsSettingsEditRequestObservabilityTracesPropagationPolicy.pipe(
+              T.Body("propagation_policy"),
+            ),
+          ),
         }),
       ).annotate({
         identifier: "ScriptsSettingsEditRequestObservabilityTraces",
@@ -23239,10 +27799,10 @@ function __c65(j: number): any {
         S.Struct({
           enabled: S.optional(S.Boolean),
           headSamplingRate: S.optional(S.Number.pipe(T.Body("head_sampling_rate"))),
-          issues: S.optional(__S(10)),
-          logs: S.optional(__S(518)),
+          issues: S.optional(BetaWorkersCreateRequestObservabilityIssues),
+          logs: S.optional(ScriptsSettingsEditRequestObservabilityLogs),
           redactQueryString: S.optional(S.Boolean.pipe(T.Body("redact_query_string"))),
-          traces: S.optional(__S(519)),
+          traces: S.optional(ScriptsSettingsEditRequestObservabilityTraces),
         }),
       ).annotate({
         identifier: "ScriptsSettingsEditRequestObservability",
@@ -23258,16 +27818,18 @@ function __c65(j: number): any {
         identifier: "ScriptsSettingsEditRequestTailConsumersItem",
       });
     case 2:
-      return S.Array(__S(521));
+      return S.Array(ScriptsSettingsEditRequestTailConsumersItem);
     case 3:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           scriptName: S.String.pipe(T.Label("script_name")),
           logpush: S.optional(S.Boolean),
-          observability: S.optional(__S(520)),
-          tags: S.optional(__S(11)),
-          tailConsumers: S.optional(__S(522).pipe(T.Body("tail_consumers"))),
+          observability: S.optional(ScriptsSettingsEditRequestObservability),
+          tags: S.optional(ScriptsSettingsEditRequestTagsList),
+          tailConsumers: S.optional(
+            ScriptsSettingsEditRequestTailConsumersList.pipe(T.Body("tail_consumers")),
+          ),
         })
           .pipe(
             T.Http({
@@ -23285,7 +27847,9 @@ function __c65(j: number): any {
         S.Struct({
           enabled: S.Boolean,
           invocationLogs: S.Boolean.pipe(T.Body("invocation_logs")),
-          destinations: S.optional(S.NullOr(__S(11))),
+          destinations: S.optional(
+            S.NullOr(ScriptsSettingsEditResponseObservabilityLogsDestinationsList),
+          ),
           headSamplingRate: S.optional(S.NullOr(S.Number).pipe(T.Body("head_sampling_rate"))),
           persist: S.optional(S.NullOr(S.Boolean)),
         }),
@@ -23295,11 +27859,17 @@ function __c65(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          destinations: S.optional(S.NullOr(__S(11))),
+          destinations: S.optional(
+            S.NullOr(ScriptsSettingsEditResponseObservabilityTracesDestinationsList),
+          ),
           enabled: S.optional(S.NullOr(S.Boolean)),
           headSamplingRate: S.optional(S.NullOr(S.Number).pipe(T.Body("head_sampling_rate"))),
           persist: S.optional(S.NullOr(S.Boolean)),
-          propagationPolicy: S.optional(S.NullOr(S.String).pipe(T.Body("propagation_policy"))),
+          propagationPolicy: S.optional(
+            S.NullOr(ScriptsSettingsEditResponseObservabilityTracesPropagationPolicy).pipe(
+              T.Body("propagation_policy"),
+            ),
+          ),
         }),
       ).annotate({
         identifier: "ScriptsSettingsEditResponseObservabilityTraces",
@@ -23309,10 +27879,10 @@ function __c65(j: number): any {
         S.Struct({
           enabled: S.Boolean,
           headSamplingRate: S.optional(S.NullOr(S.Number).pipe(T.Body("head_sampling_rate"))),
-          issues: S.optional(S.NullOr(__S(29))),
-          logs: S.optional(S.NullOr(__S(524))),
+          issues: S.optional(S.NullOr(BetaWorkersCreateResponseObservabilityIssues)),
+          logs: S.optional(S.NullOr(ScriptsSettingsEditResponseObservabilityLogs)),
           redactQueryString: S.optional(S.NullOr(S.Boolean).pipe(T.Body("redact_query_string"))),
-          traces: S.optional(S.NullOr(__S(525))),
+          traces: S.optional(S.NullOr(ScriptsSettingsEditResponseObservabilityTraces)),
         }),
       ).annotate({
         identifier: "ScriptsSettingsEditResponseObservability",
@@ -23321,9 +27891,11 @@ function __c65(j: number): any {
       return S.suspend(() =>
         S.Struct({
           logpush: S.optional(S.NullOr(S.Boolean)),
-          observability: S.optional(S.NullOr(__S(526))),
-          tags: S.optional(S.NullOr(__S(11))),
-          tailConsumers: S.optional(S.NullOr(__S(373)).pipe(T.Body("tail_consumers"))),
+          observability: S.optional(S.NullOr(ScriptsSettingsEditResponseObservability)),
+          tags: S.optional(S.NullOr(ScriptsSettingsEditResponseTagsList)),
+          tailConsumers: S.optional(
+            S.NullOr(ScriptsSettingsEditResponseTailConsumersList).pipe(T.Body("tail_consumers")),
+          ),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "PatchScriptSettingResponse",
@@ -23366,8 +27938,10 @@ function __c66(j: number): any {
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           scriptName: S.String.pipe(T.Label("script_name")),
-          bindingsInherit: S.optional(S.String.pipe(T.Query("bindings_inherit"))),
-          metadata: __S(202).pipe(
+          bindingsInherit: S.optional(
+            ScriptsUpdateRequestBindingsInherit.pipe(T.Query("bindings_inherit")),
+          ),
+          metadata: PutScriptMetadata.pipe(
             T.KeyDictionary({
               abrLevel: "abr_level",
               allowedDestinationAddresses: "allowed_destination_addresses",
@@ -23498,15 +28072,21 @@ function __c66(j: number): any {
         ]),
       );
     case 4:
-      return S.Record(S.String, __S(531));
+      return S.Record(S.String, ScriptsUpdateResponseExportsValue);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          destinations: S.optional(S.NullOr(__S(11))),
+          destinations: S.optional(
+            S.NullOr(ScriptsUpdateResponseObservabilityTracesDestinationsList),
+          ),
           enabled: S.optional(S.NullOr(S.Boolean)),
           headSamplingRate: S.optional(S.NullOr(S.Number).pipe(T.Body("head_sampling_rate"))),
           persist: S.optional(S.NullOr(S.Boolean)),
-          propagationPolicy: S.optional(S.NullOr(S.String).pipe(T.Body("propagation_policy"))),
+          propagationPolicy: S.optional(
+            S.NullOr(ScriptsUpdateResponseObservabilityTracesPropagationPolicy).pipe(
+              T.Body("propagation_policy"),
+            ),
+          ),
         }),
       ).annotate({
         identifier: "ScriptsUpdateResponseObservabilityTraces",
@@ -23516,10 +28096,10 @@ function __c66(j: number): any {
         S.Struct({
           enabled: S.Boolean,
           headSamplingRate: S.optional(S.NullOr(S.Number).pipe(T.Body("head_sampling_rate"))),
-          issues: S.optional(S.NullOr(__S(29))),
-          logs: S.optional(S.NullOr(__S(379))),
+          issues: S.optional(S.NullOr(BetaWorkersCreateResponseObservabilityIssues)),
+          logs: S.optional(S.NullOr(ScriptsUpdateResponseObservabilityLogs)),
           redactQueryString: S.optional(S.NullOr(S.Boolean).pipe(T.Body("redact_query_string"))),
-          traces: S.optional(S.NullOr(__S(533))),
+          traces: S.optional(S.NullOr(ScriptsUpdateResponseObservabilityTraces)),
         }),
       ).annotate({
         identifier: "ScriptsUpdateResponseObservability",
@@ -23547,29 +28127,47 @@ function __c67(j: number): any {
         S.Struct({
           startupTimeMs: S.Number.pipe(T.Body("startup_time_ms")),
           id: S.optional(S.NullOr(S.String)),
-          cacheOptions: S.optional(S.NullOr(__S(45)).pipe(T.Body("cache_options"))),
+          cacheOptions: S.optional(
+            S.NullOr(BetaWorkersCreateResponsePreviewsBaseConfigCacheOptions).pipe(
+              T.Body("cache_options"),
+            ),
+          ),
           compatibilityDate: S.optional(S.NullOr(S.String).pipe(T.Body("compatibility_date"))),
-          compatibilityFlags: S.optional(S.NullOr(__S(11)).pipe(T.Body("compatibility_flags"))),
+          compatibilityFlags: S.optional(
+            S.NullOr(ScriptsUpdateResponseCompatibilityFlagsList).pipe(
+              T.Body("compatibility_flags"),
+            ),
+          ),
           createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
           entryPoint: S.optional(S.NullOr(S.String).pipe(T.Body("entry_point"))),
           etag: S.optional(S.NullOr(S.String)),
-          exports: S.optional(S.NullOr(__S(532))),
-          handlers: S.optional(S.NullOr(__S(11))),
+          exports: S.optional(S.NullOr(ScriptsUpdateResponseExportsMap)),
+          handlers: S.optional(S.NullOr(ScriptsUpdateResponseHandlersList)),
           hasAssets: S.optional(S.NullOr(S.Boolean).pipe(T.Body("has_assets"))),
           hasModules: S.optional(S.NullOr(S.Boolean).pipe(T.Body("has_modules"))),
           lastDeployedFrom: S.optional(S.NullOr(S.String).pipe(T.Body("last_deployed_from"))),
           logpush: S.optional(S.NullOr(S.Boolean)),
           migrationTag: S.optional(S.NullOr(S.String).pipe(T.Body("migration_tag"))),
           modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-          namedHandlers: S.optional(S.NullOr(__S(466)).pipe(T.Body("named_handlers"))),
-          observability: S.optional(S.NullOr(__S(534))),
-          placement: S.optional(S.NullOr(__S(535))),
-          placementMode: S.optional(S.NullOr(S.String).pipe(T.Body("placement_mode"))),
-          placementStatus: S.optional(S.NullOr(S.String).pipe(T.Body("placement_status"))),
+          namedHandlers: S.optional(
+            S.NullOr(ScriptsUpdateResponseNamedHandlersList).pipe(T.Body("named_handlers")),
+          ),
+          observability: S.optional(S.NullOr(ScriptsUpdateResponseObservability)),
+          placement: S.optional(S.NullOr(ScriptsUpdateResponsePlacement)),
+          placementMode: S.optional(
+            S.NullOr(ScriptsUpdateResponsePlacementMode).pipe(T.Body("placement_mode")),
+          ),
+          placementStatus: S.optional(
+            S.NullOr(ScriptsUpdateResponsePlacementStatus).pipe(T.Body("placement_status")),
+          ),
           tag: S.optional(S.NullOr(S.String)),
-          tags: S.optional(S.NullOr(__S(11))),
-          tailConsumers: S.optional(S.NullOr(__S(373)).pipe(T.Body("tail_consumers"))),
-          usageModel: S.optional(S.NullOr(S.String).pipe(T.Body("usage_model"))),
+          tags: S.optional(S.NullOr(ScriptsUpdateResponseTagsList)),
+          tailConsumers: S.optional(
+            S.NullOr(ScriptsUpdateResponseTailConsumersList).pipe(T.Body("tail_consumers")),
+          ),
+          usageModel: S.optional(
+            S.NullOr(ScriptsUpdateResponseUsageModel).pipe(T.Body("usage_model")),
+          ),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "PutScriptResponse" });
     case 1:
@@ -23586,8 +28184,8 @@ function __c67(j: number): any {
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           scriptName: S.String.pipe(T.Label("script_name")),
-          metadata: __S(537),
-          files: S.optional(__S(11)),
+          metadata: ScriptsContentUpdateRequestMetadata,
+          files: S.optional(ScriptsContentUpdateRequestFilesList),
           cfworkerbodypart: S.optional(S.String.pipe(T.Header("CF-WORKER-BODY-PART"))),
           cfworkermainmodulepart: S.optional(S.String.pipe(T.Header("CF-WORKER-MAIN-MODULE-PART"))),
         })
@@ -23612,15 +28210,21 @@ function __c67(j: number): any {
         ]),
       );
     case 4:
-      return S.Record(S.String, __S(539));
+      return S.Record(S.String, ScriptsContentUpdateResponseExportsValue);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          destinations: S.optional(S.NullOr(__S(19))),
+          destinations: S.optional(
+            S.NullOr(ScriptsContentUpdateResponseObservabilityTracesDestinationsList),
+          ),
           enabled: S.optional(S.NullOr(S.Boolean)),
           headSamplingRate: S.optional(S.NullOr(S.Number).pipe(T.Body("head_sampling_rate"))),
           persist: S.optional(S.NullOr(S.Boolean)),
-          propagationPolicy: S.optional(S.NullOr(S.String).pipe(T.Body("propagation_policy"))),
+          propagationPolicy: S.optional(
+            S.NullOr(ScriptsContentUpdateResponseObservabilityTracesPropagationPolicy).pipe(
+              T.Body("propagation_policy"),
+            ),
+          ),
         }),
       ).annotate({
         identifier: "ScriptsContentUpdateResponseObservabilityTraces",
@@ -23630,10 +28234,10 @@ function __c67(j: number): any {
         S.Struct({
           enabled: S.Boolean,
           headSamplingRate: S.optional(S.NullOr(S.Number).pipe(T.Body("head_sampling_rate"))),
-          issues: S.optional(S.NullOr(__S(29))),
-          logs: S.optional(S.NullOr(__S(524))),
+          issues: S.optional(S.NullOr(BetaWorkersCreateResponseObservabilityIssues)),
+          logs: S.optional(S.NullOr(ScriptsContentUpdateResponseObservabilityLogs)),
           redactQueryString: S.optional(S.NullOr(S.Boolean).pipe(T.Body("redact_query_string"))),
-          traces: S.optional(S.NullOr(__S(541))),
+          traces: S.optional(S.NullOr(ScriptsContentUpdateResponseObservabilityTraces)),
         }),
       ).annotate({
         identifier: "ScriptsContentUpdateResponseObservability",
@@ -23659,28 +28263,46 @@ function __c68(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
-          cacheOptions: S.optional(S.NullOr(__S(45)).pipe(T.Body("cache_options"))),
+          cacheOptions: S.optional(
+            S.NullOr(BetaWorkersCreateResponsePreviewsBaseConfigCacheOptions).pipe(
+              T.Body("cache_options"),
+            ),
+          ),
           compatibilityDate: S.optional(S.NullOr(S.String).pipe(T.Body("compatibility_date"))),
-          compatibilityFlags: S.optional(S.NullOr(__S(11)).pipe(T.Body("compatibility_flags"))),
+          compatibilityFlags: S.optional(
+            S.NullOr(ScriptsContentUpdateResponseCompatibilityFlagsList).pipe(
+              T.Body("compatibility_flags"),
+            ),
+          ),
           createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
           etag: S.optional(S.NullOr(S.String)),
-          exports: S.optional(S.NullOr(__S(540))),
-          handlers: S.optional(S.NullOr(__S(11))),
+          exports: S.optional(S.NullOr(ScriptsContentUpdateResponseExportsMap)),
+          handlers: S.optional(S.NullOr(ScriptsContentUpdateResponseHandlersList)),
           hasAssets: S.optional(S.NullOr(S.Boolean).pipe(T.Body("has_assets"))),
           hasModules: S.optional(S.NullOr(S.Boolean).pipe(T.Body("has_modules"))),
           lastDeployedFrom: S.optional(S.NullOr(S.String).pipe(T.Body("last_deployed_from"))),
           logpush: S.optional(S.NullOr(S.Boolean)),
           migrationTag: S.optional(S.NullOr(S.String).pipe(T.Body("migration_tag"))),
           modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-          namedHandlers: S.optional(S.NullOr(__S(466)).pipe(T.Body("named_handlers"))),
-          observability: S.optional(S.NullOr(__S(542))),
-          placement: S.optional(S.NullOr(__S(543))),
-          placementMode: S.optional(S.NullOr(S.String).pipe(T.Body("placement_mode"))),
-          placementStatus: S.optional(S.NullOr(S.String).pipe(T.Body("placement_status"))),
+          namedHandlers: S.optional(
+            S.NullOr(ScriptsContentUpdateResponseNamedHandlersList).pipe(T.Body("named_handlers")),
+          ),
+          observability: S.optional(S.NullOr(ScriptsContentUpdateResponseObservability)),
+          placement: S.optional(S.NullOr(ScriptsContentUpdateResponsePlacement)),
+          placementMode: S.optional(
+            S.NullOr(ScriptsContentUpdateResponsePlacementMode).pipe(T.Body("placement_mode")),
+          ),
+          placementStatus: S.optional(
+            S.NullOr(ScriptsContentUpdateResponsePlacementStatus).pipe(T.Body("placement_status")),
+          ),
           tag: S.optional(S.NullOr(S.String)),
-          tags: S.optional(S.NullOr(__S(11))),
-          tailConsumers: S.optional(S.NullOr(__S(373)).pipe(T.Body("tail_consumers"))),
-          usageModel: S.optional(S.NullOr(S.String).pipe(T.Body("usage_model"))),
+          tags: S.optional(S.NullOr(ScriptsContentUpdateResponseTagsList)),
+          tailConsumers: S.optional(
+            S.NullOr(ScriptsContentUpdateResponseTailConsumersList).pipe(T.Body("tail_consumers")),
+          ),
+          usageModel: S.optional(
+            S.NullOr(ScriptsContentUpdateResponseUsageModel).pipe(T.Body("usage_model")),
+          ),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "PutScriptContentResponse" });
     case 1:
@@ -23688,7 +28310,7 @@ function __c68(j: number): any {
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           scriptName: S.String.pipe(T.Label("script_name")),
-          body: __S(352).pipe(T.HttpBody()),
+          body: EventTriggerList.pipe(T.HttpBody()),
         })
           .pipe(
             T.Http({
@@ -23712,13 +28334,13 @@ function __c68(j: number): any {
         identifier: "ScriptsSchedulesUpdateRequestBodyItem",
       });
     case 3:
-      return S.Array(__S(546));
+      return S.Array(ScriptsSchedulesUpdateRequestBodyItem);
     case 4:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           scriptName: S.String.pipe(T.Label("script_name")),
-          body: __S(547).pipe(T.HttpBody()),
+          body: ScriptsSchedulesUpdateRequestBodyList.pipe(T.HttpBody()),
         })
           .pipe(
             T.Http({
@@ -23736,10 +28358,10 @@ function __c68(j: number): any {
           scriptName: S.String.pipe(T.Label("script_name")),
           name: S.String,
           text: S.optional(S.String),
-          type: S.String,
+          type: ScriptsSecretsUpdateRequestType,
           algorithm: S.optional(S.Unknown),
-          format: S.optional(S.String),
-          usages: S.optional(__S(0)),
+          format: S.optional(ScriptsSecretsUpdateRequestFormat),
+          usages: S.optional(ScriptsSecretsUpdateRequestUsagesList),
           keyBase64: S.optional(S.String.pipe(T.Body("key_base64"))),
           keyJwk: S.optional(S.Unknown.pipe(T.Body("key_jwk"))),
         })
@@ -23764,7 +28386,7 @@ function __c68(j: number): any {
       );
     case 7:
       return S.suspend(() =>
-        __S(550).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
+        ScriptsSecretsUpdateResult.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "PutScriptSecretResponse" });
   }
 }
@@ -23789,7 +28411,7 @@ function __c69(j: number): any {
         ]),
       );
     case 2:
-      return S.Array(__S(553));
+      return S.Array(ObservabilityTelemetryQueryRequestParametersCalculationsItem);
     case 3:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases(
@@ -23801,13 +28423,13 @@ function __c69(j: number): any {
         ),
       );
     case 4:
-      return S.Array(__S(555));
+      return S.Array(ObservabilityTelemetryQueryRequestParametersFiltersItem);
     case 5:
       return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], []]));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          value: __S(557),
+          value: ObservabilityTelemetryQueryRequestParametersNeedleValue,
           isRegex: S.optional(S.Boolean),
           matchCase: S.optional(S.Boolean),
         }),
@@ -23817,15 +28439,17 @@ function __c69(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          calculations: S.optional(__S(554)),
-          datasets: S.optional(__S(11)),
-          filterCombination: S.optional(S.String),
-          filters: S.optional(__S(556)),
-          groupBys: S.optional(__S(119)),
-          havings: S.optional(__S(108)),
+          calculations: S.optional(ObservabilityTelemetryQueryRequestParametersCalculationsList),
+          datasets: S.optional(ObservabilityTelemetryQueryRequestParametersDatasetsList),
+          filterCombination: S.optional(
+            ObservabilityTelemetryQueryRequestParametersFilterCombination,
+          ),
+          filters: S.optional(ObservabilityTelemetryQueryRequestParametersFiltersList),
+          groupBys: S.optional(ObservabilityTelemetryQueryRequestParametersGroupBysList),
+          havings: S.optional(ObservabilityTelemetryQueryRequestParametersHavingsList),
           limit: S.optional(S.Number),
-          needle: S.optional(__S(558)),
-          orderBy: S.optional(__S(111)),
+          needle: S.optional(ObservabilityTelemetryQueryRequestParametersNeedle),
+          orderBy: S.optional(ObservabilityTelemetryQueryRequestParametersOrderBy),
         }),
       ).annotate({
         identifier: "ObservabilityTelemetryQueryRequestParameters",
@@ -23839,11 +28463,11 @@ function __c70(j: number): any {
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           queryId: S.String,
-          timeframe: __S(125),
+          timeframe: ObservabilitySharedQueriesCreateRequestTimeframe,
           chart: S.optional(S.Boolean),
-          chartType: S.optional(S.String),
+          chartType: S.optional(ObservabilityTelemetryQueryRequestChartType),
           compare: S.optional(S.Boolean),
-          distributionScale: S.optional(S.String),
+          distributionScale: S.optional(ObservabilityTelemetryQueryRequestDistributionScale),
           dry: S.optional(S.Boolean),
           granularity: S.optional(S.Number),
           ignoreSeries: S.optional(S.Boolean),
@@ -23851,8 +28475,8 @@ function __c70(j: number): any {
           offset: S.optional(S.String),
           offsetBy: S.optional(S.Number),
           offsetDirection: S.optional(S.String),
-          parameters: S.optional(__S(559)),
-          view: S.optional(S.String),
+          parameters: S.optional(ObservabilityTelemetryQueryRequestParameters),
+          view: S.optional(ObservabilityTelemetryQueryRequestView),
         })
           .pipe(
             T.Http({
@@ -23873,7 +28497,7 @@ function __c70(j: number): any {
         ]),
       );
     case 2:
-      return S.Array(__S(561));
+      return S.Array(ObservabilityTelemetryQueryResponseRunQueryParametersCalculationsItem);
     case 3:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases(
@@ -23885,12 +28509,14 @@ function __c70(j: number): any {
         ),
       );
     case 4:
-      return S.Array(__S(563));
+      return S.Array(ObservabilityTelemetryQueryResponseRunQueryParametersFiltersItem);
     case 5:
       return S.suspend(() =>
         S.Struct({
           value: S.String,
-          order: S.optional(S.NullOr(S.String)),
+          order: S.optional(
+            S.NullOr(ObservabilityTelemetryQueryResponseRunQueryParametersOrderByOrder),
+          ),
         }),
       ).annotate({
         identifier: "ObservabilityTelemetryQueryResponseRunQueryParametersOrderBy",
@@ -23898,15 +28524,31 @@ function __c70(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          calculations: S.optional(S.NullOr(__S(562))),
-          datasets: S.optional(S.NullOr(__S(19))),
-          filterCombination: S.optional(S.NullOr(S.String)),
-          filters: S.optional(S.NullOr(__S(564))),
-          groupBys: S.optional(S.NullOr(__S(274))),
-          havings: S.optional(S.NullOr(__S(276))),
+          calculations: S.optional(
+            S.NullOr(ObservabilityTelemetryQueryResponseRunQueryParametersCalculationsList),
+          ),
+          datasets: S.optional(
+            S.NullOr(ObservabilityTelemetryQueryResponseRunQueryParametersDatasetsList),
+          ),
+          filterCombination: S.optional(
+            S.NullOr(ObservabilityTelemetryQueryResponseRunQueryParametersFilterCombination),
+          ),
+          filters: S.optional(
+            S.NullOr(ObservabilityTelemetryQueryResponseRunQueryParametersFiltersList),
+          ),
+          groupBys: S.optional(
+            S.NullOr(ObservabilityTelemetryQueryResponseRunQueryParametersGroupBysList),
+          ),
+          havings: S.optional(
+            S.NullOr(ObservabilityTelemetryQueryResponseRunQueryParametersHavingsList),
+          ),
           limit: S.optional(S.NullOr(S.Number)),
-          needle: S.optional(S.NullOr(__S(277))),
-          orderBy: S.optional(S.NullOr(__S(565))),
+          needle: S.optional(
+            S.NullOr(ObservabilitySharedQueriesGetResponseRunQueryParametersNeedle),
+          ),
+          orderBy: S.optional(
+            S.NullOr(ObservabilityTelemetryQueryResponseRunQueryParametersOrderBy),
+          ),
         }),
       ).annotate({
         identifier: "ObservabilityTelemetryQueryResponseRunQueryParameters",
@@ -23920,7 +28562,7 @@ function __c70(j: number): any {
           createdBy: S.String,
           description: S.String,
           name: S.String,
-          parameters: __S(566),
+          parameters: ObservabilityTelemetryQueryResponseRunQueryParameters,
           updated: S.String,
           updatedBy: S.String,
         }),
@@ -23938,12 +28580,12 @@ function __c71(j: number): any {
           accountId: S.String,
           dry: S.Boolean,
           granularity: S.Number,
-          query: __S(567),
-          status: S.String,
-          timeframe: __S(125),
+          query: ObservabilityTelemetryQueryResponseRunQuery,
+          status: ObservabilityTelemetryQueryResponseRunStatus,
+          timeframe: ObservabilitySharedQueriesCreateRequestTimeframe,
           userId: S.String,
           created: S.optional(S.NullOr(S.String)),
-          statistics: S.optional(S.NullOr(__S(281))),
+          statistics: S.optional(S.NullOr(ObservabilitySharedQueriesGetResponseRunStatistics)),
           updated: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
@@ -23953,12 +28595,12 @@ function __c71(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          errors: __S(11),
-          models: __S(11),
-          providers: __S(11),
-          services: __S(11),
+          errors: ObservabilityTelemetryQueryResponseAgentsItemErrorsList,
+          models: ObservabilityTelemetryQueryResponseAgentsItemModelsList,
+          providers: ObservabilityTelemetryQueryResponseAgentsItemProvidersList,
+          services: ObservabilityTelemetryQueryResponseAgentsItemServicesList,
           spans: S.Number,
-          status: S.String,
+          status: ObservabilityTelemetryQueryResponseAgentsItemStatus,
           traceDurationMs: S.Number,
           traceEndMs: S.Number,
           traceId: S.String,
@@ -23973,20 +28615,20 @@ function __c71(j: number): any {
         identifier: "ObservabilityTelemetryQueryResponseAgentsItem",
       });
     case 2:
-      return S.Array(__S(569));
+      return S.Array(ObservabilityTelemetryQueryResponseAgentsItem);
     case 3:
       return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], []]));
     case 4:
       return S.suspend(() =>
         S.Struct({
           key: S.String,
-          value: __S(571),
+          value: ObservabilityTelemetryQueryResponseCalculationsItemAggregatesItemGroupsItemValue,
         }),
       ).annotate({
         identifier: "ObservabilityTelemetryQueryResponseCalculationsItemAggregatesItemGroupsItem",
       });
     case 5:
-      return S.Array(__S(572));
+      return S.Array(ObservabilityTelemetryQueryResponseCalculationsItemAggregatesItemGroupsItem);
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -23994,13 +28636,15 @@ function __c71(j: number): any {
           interval: S.Number,
           sampleInterval: S.Number,
           value: S.Number,
-          groups: S.optional(S.NullOr(__S(573))),
+          groups: S.optional(
+            S.NullOr(ObservabilityTelemetryQueryResponseCalculationsItemAggregatesItemGroupsList),
+          ),
         }),
       ).annotate({
         identifier: "ObservabilityTelemetryQueryResponseCalculationsItemAggregatesItem",
       });
     case 7:
-      return S.Array(__S(574));
+      return S.Array(ObservabilityTelemetryQueryResponseCalculationsItemAggregatesItem);
   }
 }
 function __c72(j: number): any {
@@ -24011,14 +28655,17 @@ function __c72(j: number): any {
       return S.suspend(() =>
         S.Struct({
           key: S.String,
-          value: __S(576),
+          value:
+            ObservabilityTelemetryQueryResponseCalculationsItemSeriesItemDataItemGroupsItemValue,
         }),
       ).annotate({
         identifier:
           "ObservabilityTelemetryQueryResponseCalculationsItemSeriesItemDataItemGroupsItem",
       });
     case 2:
-      return S.Array(__S(577));
+      return S.Array(
+        ObservabilityTelemetryQueryResponseCalculationsItemSeriesItemDataItemGroupsItem,
+      );
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -24027,31 +28674,35 @@ function __c72(j: number): any {
           sampleInterval: S.Number,
           value: S.Number,
           firstSeen: S.optional(S.NullOr(S.String)),
-          groups: S.optional(S.NullOr(__S(578))),
+          groups: S.optional(
+            S.NullOr(
+              ObservabilityTelemetryQueryResponseCalculationsItemSeriesItemDataItemGroupsList,
+            ),
+          ),
           lastSeen: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
         identifier: "ObservabilityTelemetryQueryResponseCalculationsItemSeriesItemDataItem",
       });
     case 4:
-      return S.Array(__S(579));
+      return S.Array(ObservabilityTelemetryQueryResponseCalculationsItemSeriesItemDataItem);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          data: __S(580),
+          data: ObservabilityTelemetryQueryResponseCalculationsItemSeriesItemDataList,
           time: S.String,
         }),
       ).annotate({
         identifier: "ObservabilityTelemetryQueryResponseCalculationsItemSeriesItem",
       });
     case 6:
-      return S.Array(__S(581));
+      return S.Array(ObservabilityTelemetryQueryResponseCalculationsItemSeriesItem);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          aggregates: __S(575),
+          aggregates: ObservabilityTelemetryQueryResponseCalculationsItemAggregatesList,
           calculation: S.String,
-          series: __S(582),
+          series: ObservabilityTelemetryQueryResponseCalculationsItemSeriesList,
           alias: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
@@ -24062,20 +28713,20 @@ function __c72(j: number): any {
 function __c73(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(583));
+      return S.Array(ObservabilityTelemetryQueryResponseCalculationsItem);
     case 1:
       return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], []]));
     case 2:
       return S.suspend(() =>
         S.Struct({
           key: S.String,
-          value: __S(585),
+          value: ObservabilityTelemetryQueryResponseCompareItemAggregatesItemGroupsItemValue,
         }),
       ).annotate({
         identifier: "ObservabilityTelemetryQueryResponseCompareItemAggregatesItemGroupsItem",
       });
     case 3:
-      return S.Array(__S(586));
+      return S.Array(ObservabilityTelemetryQueryResponseCompareItemAggregatesItemGroupsItem);
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -24083,20 +28734,22 @@ function __c73(j: number): any {
           interval: S.Number,
           sampleInterval: S.Number,
           value: S.Number,
-          groups: S.optional(S.NullOr(__S(587))),
+          groups: S.optional(
+            S.NullOr(ObservabilityTelemetryQueryResponseCompareItemAggregatesItemGroupsList),
+          ),
         }),
       ).annotate({
         identifier: "ObservabilityTelemetryQueryResponseCompareItemAggregatesItem",
       });
     case 5:
-      return S.Array(__S(588));
+      return S.Array(ObservabilityTelemetryQueryResponseCompareItemAggregatesItem);
     case 6:
       return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], []]));
     case 7:
       return S.suspend(() =>
         S.Struct({
           key: S.String,
-          value: __S(590),
+          value: ObservabilityTelemetryQueryResponseCompareItemSeriesItemDataItemGroupsItemValue,
         }),
       ).annotate({
         identifier: "ObservabilityTelemetryQueryResponseCompareItemSeriesItemDataItemGroupsItem",
@@ -24106,7 +28759,7 @@ function __c73(j: number): any {
 function __c74(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(591));
+      return S.Array(ObservabilityTelemetryQueryResponseCompareItemSeriesItemDataItemGroupsItem);
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -24115,38 +28768,40 @@ function __c74(j: number): any {
           sampleInterval: S.Number,
           value: S.Number,
           firstSeen: S.optional(S.NullOr(S.String)),
-          groups: S.optional(S.NullOr(__S(592))),
+          groups: S.optional(
+            S.NullOr(ObservabilityTelemetryQueryResponseCompareItemSeriesItemDataItemGroupsList),
+          ),
           lastSeen: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
         identifier: "ObservabilityTelemetryQueryResponseCompareItemSeriesItemDataItem",
       });
     case 2:
-      return S.Array(__S(593));
+      return S.Array(ObservabilityTelemetryQueryResponseCompareItemSeriesItemDataItem);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          data: __S(594),
+          data: ObservabilityTelemetryQueryResponseCompareItemSeriesItemDataList,
           time: S.String,
         }),
       ).annotate({
         identifier: "ObservabilityTelemetryQueryResponseCompareItemSeriesItem",
       });
     case 4:
-      return S.Array(__S(595));
+      return S.Array(ObservabilityTelemetryQueryResponseCompareItemSeriesItem);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          aggregates: __S(589),
+          aggregates: ObservabilityTelemetryQueryResponseCompareItemAggregatesList,
           calculation: S.String,
-          series: __S(596),
+          series: ObservabilityTelemetryQueryResponseCompareItemSeriesList,
           alias: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
         identifier: "ObservabilityTelemetryQueryResponseCompareItem",
       });
     case 6:
-      return S.Array(__S(597));
+      return S.Array(ObservabilityTelemetryQueryResponseCompareItem);
     case 7:
       return S.Array(S.Number);
   }
@@ -24154,15 +28809,15 @@ function __c74(j: number): any {
 function __c75(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(599));
+      return S.Array(ObservabilityTelemetryQueryResponseDistributionMatrixItemList);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          bins: __S(11),
-          bucketBoundaries: __S(313),
-          bucketMode: S.String,
-          buckets: __S(11),
-          matrix: __S(600),
+          bins: ObservabilityTelemetryQueryResponseDistributionBinsList,
+          bucketBoundaries: ObservabilityTelemetryQueryResponseDistributionBucketBoundariesList,
+          bucketMode: ObservabilityTelemetryQueryResponseDistributionBucketMode,
+          buckets: ObservabilityTelemetryQueryResponseDistributionBucketsList,
+          matrix: ObservabilityTelemetryQueryResponseDistributionMatrixList,
         }),
       ).annotate({
         identifier: "ObservabilityTelemetryQueryResponseDistribution",
@@ -24211,22 +28866,35 @@ function __c75(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          metadata: __S(316).pipe(T.Body("$metadata")),
+          metadata: ObservabilitySharedQueriesGetResponseEventsEventsItemMetadata.pipe(
+            T.Body("$metadata"),
+          ),
           dataset: S.String,
-          source: __S(602),
+          source: ObservabilityTelemetryQueryResponseEventsEventsItemSource,
           timestamp: S.Number,
-          containers: S.optional(S.NullOr(__S(317)).pipe(T.Body("$containers"))),
-          workers: S.optional(S.NullOr(__S(603)).pipe(T.Body("$workers"))),
+          containers: S.optional(
+            S.NullOr(ObservabilityTelemetryQueryResponseEventsEventsItemContainersMap).pipe(
+              T.Body("$containers"),
+            ),
+          ),
+          workers: S.optional(
+            S.NullOr(ObservabilityTelemetryQueryResponseEventsEventsItemWorkers).pipe(
+              T.Body("$workers"),
+            ),
+          ),
         }),
       ).annotate({
         identifier: "ObservabilityTelemetryQueryResponseEventsEventsItem",
       });
     case 5:
-      return S.Array(__S(604));
+      return S.Array(ObservabilityTelemetryQueryResponseEventsEventsItem);
     case 6:
       return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], []]));
     case 7:
-      return S.Record(S.String, __S(606));
+      return S.Record(
+        S.String,
+        ObservabilityTelemetryQueryResponseEventsSeriesItemDataItemGroupsValue,
+      );
   }
 }
 function __c76(j: number): any {
@@ -24234,36 +28902,38 @@ function __c76(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          aggregates: __S(324),
+          aggregates: ObservabilitySharedQueriesGetResponseEventsSeriesItemDataItemAggregates,
           count: S.Number,
           interval: S.Number,
           sampleInterval: S.Number,
           errors: S.optional(S.NullOr(S.Number)),
-          groups: S.optional(S.NullOr(__S(607))),
+          groups: S.optional(
+            S.NullOr(ObservabilityTelemetryQueryResponseEventsSeriesItemDataItemGroupsMap),
+          ),
         }),
       ).annotate({
         identifier: "ObservabilityTelemetryQueryResponseEventsSeriesItemDataItem",
       });
     case 1:
-      return S.Array(__S(608));
+      return S.Array(ObservabilityTelemetryQueryResponseEventsSeriesItemDataItem);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          data: __S(609),
+          data: ObservabilityTelemetryQueryResponseEventsSeriesItemDataList,
           time: S.String,
         }),
       ).annotate({
         identifier: "ObservabilityTelemetryQueryResponseEventsSeriesItem",
       });
     case 3:
-      return S.Array(__S(610));
+      return S.Array(ObservabilityTelemetryQueryResponseEventsSeriesItem);
     case 4:
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.NullOr(S.Number)),
-          events: S.optional(S.NullOr(__S(605))),
-          fields: S.optional(S.NullOr(__S(323))),
-          series: S.optional(S.NullOr(__S(611))),
+          events: S.optional(S.NullOr(ObservabilityTelemetryQueryResponseEventsEventsList)),
+          fields: S.optional(S.NullOr(ObservabilityTelemetryQueryResponseEventsFieldsList)),
+          series: S.optional(S.NullOr(ObservabilityTelemetryQueryResponseEventsSeriesList)),
         }),
       ).annotate({
         identifier: "ObservabilityTelemetryQueryResponseEvents",
@@ -24312,12 +28982,22 @@ function __c76(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          metadata: __S(316).pipe(T.Body("$metadata")),
+          metadata: ObservabilitySharedQueriesGetResponseEventsEventsItemMetadata.pipe(
+            T.Body("$metadata"),
+          ),
           dataset: S.String,
-          source: __S(613),
+          source: ObservabilityTelemetryQueryResponseInvocationsValueItemSource,
           timestamp: S.Number,
-          containers: S.optional(S.NullOr(__S(317)).pipe(T.Body("$containers"))),
-          workers: S.optional(S.NullOr(__S(614)).pipe(T.Body("$workers"))),
+          containers: S.optional(
+            S.NullOr(ObservabilityTelemetryQueryResponseInvocationsValueItemContainersMap).pipe(
+              T.Body("$containers"),
+            ),
+          ),
+          workers: S.optional(
+            S.NullOr(ObservabilityTelemetryQueryResponseInvocationsValueItemWorkers).pipe(
+              T.Body("$workers"),
+            ),
+          ),
         }),
       ).annotate({
         identifier: "ObservabilityTelemetryQueryResponseInvocationsValueItem",
@@ -24327,21 +29007,21 @@ function __c76(j: number): any {
 function __c77(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(615));
+      return S.Array(ObservabilityTelemetryQueryResponseInvocationsValueItem);
     case 1:
-      return S.Record(S.String, __S(616));
+      return S.Record(S.String, ObservabilityTelemetryQueryResponseInvocationsValueList);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          run: __S(568),
-          statistics: __S(281),
-          agents: S.optional(S.NullOr(__S(570))),
-          calculations: S.optional(S.NullOr(__S(584))),
-          compare: S.optional(S.NullOr(__S(598))),
-          distribution: S.optional(S.NullOr(__S(601))),
-          events: S.optional(S.NullOr(__S(612))),
-          invocations: S.optional(S.NullOr(__S(617))),
-          traces: S.optional(S.NullOr(__S(338))),
+          run: ObservabilityTelemetryQueryResponseRun,
+          statistics: ObservabilitySharedQueriesGetResponseRunStatistics,
+          agents: S.optional(S.NullOr(ObservabilityTelemetryQueryResponseAgentsList)),
+          calculations: S.optional(S.NullOr(ObservabilityTelemetryQueryResponseCalculationsList)),
+          compare: S.optional(S.NullOr(ObservabilityTelemetryQueryResponseCompareList)),
+          distribution: S.optional(S.NullOr(ObservabilityTelemetryQueryResponseDistribution)),
+          events: S.optional(S.NullOr(ObservabilityTelemetryQueryResponseEvents)),
+          invocations: S.optional(S.NullOr(ObservabilityTelemetryQueryResponseInvocationsMap)),
+          traces: S.optional(S.NullOr(ObservabilityTelemetryQueryResponseTracesList)),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "QueryObservabilityTelemetryResponse",
@@ -24352,7 +29032,7 @@ function __c77(j: number): any {
           accountId: S.String.pipe(T.Label("account_id")),
           id: S.optional(S.String.pipe(T.Query())),
           name: S.optional(S.String.pipe(T.Query())),
-          orderBy: S.optional(S.String.pipe(T.Query("order_by"))),
+          orderBy: S.optional(ScriptsSearchRequestOrderBy.pipe(T.Query("order_by"))),
           page: S.optional(S.Number.pipe(T.Query())),
           perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
         })
@@ -24380,19 +29060,23 @@ function __c77(j: number): any {
         }),
       ).annotate({ identifier: "ScriptsSearchResultItem" });
     case 5:
-      return S.Array(__S(620));
+      return S.Array(ScriptsSearchResultItem);
     case 6:
       return S.suspend(() =>
-        __S(621).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
+        ScriptsSearchResultList.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "SearchScriptResponse" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          destinations: S.optional(__S(11)),
+          destinations: S.optional(BetaWorkersUpdateRequestObservabilityTracesDestinationsList),
           enabled: S.optional(S.Boolean),
           headSamplingRate: S.optional(S.Number.pipe(T.Body("head_sampling_rate"))),
           persist: S.optional(S.Boolean),
-          propagationPolicy: S.optional(S.String.pipe(T.Body("propagation_policy"))),
+          propagationPolicy: S.optional(
+            BetaWorkersUpdateRequestObservabilityTracesPropagationPolicy.pipe(
+              T.Body("propagation_policy"),
+            ),
+          ),
         }),
       ).annotate({
         identifier: "BetaWorkersUpdateRequestObservabilityTraces",
@@ -24406,10 +29090,10 @@ function __c78(j: number): any {
         S.Struct({
           enabled: S.optional(S.Boolean),
           headSamplingRate: S.optional(S.Number.pipe(T.Body("head_sampling_rate"))),
-          issues: S.optional(__S(10)),
-          logs: S.optional(__S(12)),
+          issues: S.optional(BetaWorkersCreateRequestObservabilityIssues),
+          logs: S.optional(BetaWorkersUpdateRequestObservabilityLogs),
           redactQueryString: S.optional(S.Boolean.pipe(T.Body("redact_query_string"))),
-          traces: S.optional(__S(623)),
+          traces: S.optional(BetaWorkersUpdateRequestObservabilityTraces),
         }),
       ).annotate({
         identifier: "BetaWorkersUpdateRequestObservability",
@@ -24417,11 +29101,17 @@ function __c78(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          destinations: S.optional(__S(19)),
+          destinations: S.optional(
+            BetaWorkersUpdateRequestPreviewsBaseConfigObservabilityTracesDestinationsList,
+          ),
           enabled: S.optional(S.Boolean),
           headSamplingRate: S.optional(S.Number.pipe(T.Body("head_sampling_rate"))),
           persist: S.optional(S.Boolean),
-          propagationPolicy: S.optional(S.String.pipe(T.Body("propagation_policy"))),
+          propagationPolicy: S.optional(
+            BetaWorkersUpdateRequestPreviewsBaseConfigObservabilityTracesPropagationPolicy.pipe(
+              T.Body("propagation_policy"),
+            ),
+          ),
         }),
       ).annotate({
         identifier: "BetaWorkersUpdateRequestPreviewsBaseConfigObservabilityTraces",
@@ -24431,10 +29121,10 @@ function __c78(j: number): any {
         S.Struct({
           enabled: S.optional(S.Boolean),
           headSamplingRate: S.optional(S.Number.pipe(T.Body("head_sampling_rate"))),
-          issues: S.optional(__S(10)),
-          logs: S.optional(__S(20)),
+          issues: S.optional(BetaWorkersCreateRequestObservabilityIssues),
+          logs: S.optional(BetaWorkersUpdateRequestPreviewsBaseConfigObservabilityLogs),
           redactQueryString: S.optional(S.Boolean.pipe(T.Body("redact_query_string"))),
-          traces: S.optional(__S(625)),
+          traces: S.optional(BetaWorkersUpdateRequestPreviewsBaseConfigObservabilityTraces),
         }),
       ).annotate({
         identifier: "BetaWorkersUpdateRequestPreviewsBaseConfigObservability",
@@ -24455,13 +29145,19 @@ function __c78(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          cacheOptions: S.optional(__S(15).pipe(T.Body("cache_options"))),
-          env: S.optional(__S(17)),
-          limits: S.optional(__S(18)),
+          cacheOptions: S.optional(
+            BetaWorkersCreateRequestPreviewsBaseConfigCacheOptions.pipe(T.Body("cache_options")),
+          ),
+          env: S.optional(BetaWorkersUpdateRequestPreviewsBaseConfigEnvMap),
+          limits: S.optional(BetaWorkersCreateRequestPreviewsBaseConfigLimits),
           logpush: S.optional(S.Boolean),
-          observability: S.optional(__S(626)),
-          placement: S.optional(__S(627)),
-          tailConsumers: S.optional(__S(25).pipe(T.Body("tail_consumers"))),
+          observability: S.optional(BetaWorkersUpdateRequestPreviewsBaseConfigObservability),
+          placement: S.optional(BetaWorkersUpdateRequestPreviewsBaseConfigPlacement),
+          tailConsumers: S.optional(
+            BetaWorkersUpdateRequestPreviewsBaseConfigTailConsumersList.pipe(
+              T.Body("tail_consumers"),
+            ),
+          ),
         }),
       ).annotate({
         identifier: "BetaWorkersUpdateRequestPreviewsBaseConfig",
@@ -24473,11 +29169,15 @@ function __c78(j: number): any {
           workerId: S.String.pipe(T.Label("worker_id")),
           name: S.String,
           logpush: S.optional(S.Boolean),
-          observability: S.optional(__S(624)),
-          previewsBaseConfig: S.optional(__S(628).pipe(T.Body("previews_base_config"))),
-          subdomain: S.optional(__S(27)),
-          tags: S.optional(__S(11)),
-          tailConsumers: S.optional(__S(25).pipe(T.Body("tail_consumers"))),
+          observability: S.optional(BetaWorkersUpdateRequestObservability),
+          previewsBaseConfig: S.optional(
+            BetaWorkersUpdateRequestPreviewsBaseConfig.pipe(T.Body("previews_base_config")),
+          ),
+          subdomain: S.optional(BetaWorkersCreateRequestSubdomain),
+          tags: S.optional(BetaWorkersUpdateRequestTagsList),
+          tailConsumers: S.optional(
+            BetaWorkersUpdateRequestTailConsumersList.pipe(T.Body("tail_consumers")),
+          ),
         })
           .pipe(
             T.Http({
@@ -24491,11 +29191,17 @@ function __c78(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          destinations: S.optional(S.NullOr(__S(11))),
+          destinations: S.optional(
+            S.NullOr(BetaWorkersUpdateResponseObservabilityTracesDestinationsList),
+          ),
           enabled: S.optional(S.NullOr(S.Boolean)),
           headSamplingRate: S.optional(S.NullOr(S.Number).pipe(T.Body("head_sampling_rate"))),
           persist: S.optional(S.NullOr(S.Boolean)),
-          propagationPolicy: S.optional(S.NullOr(S.String).pipe(T.Body("propagation_policy"))),
+          propagationPolicy: S.optional(
+            S.NullOr(BetaWorkersUpdateResponseObservabilityTracesPropagationPolicy).pipe(
+              T.Body("propagation_policy"),
+            ),
+          ),
         }),
       ).annotate({
         identifier: "BetaWorkersUpdateResponseObservabilityTraces",
@@ -24505,10 +29211,10 @@ function __c78(j: number): any {
         S.Struct({
           enabled: S.optional(S.NullOr(S.Boolean)),
           headSamplingRate: S.optional(S.NullOr(S.Number).pipe(T.Body("head_sampling_rate"))),
-          issues: S.optional(S.NullOr(__S(29))),
-          logs: S.optional(S.NullOr(__S(30))),
+          issues: S.optional(S.NullOr(BetaWorkersCreateResponseObservabilityIssues)),
+          logs: S.optional(S.NullOr(BetaWorkersUpdateResponseObservabilityLogs)),
           redactQueryString: S.optional(S.NullOr(S.Boolean).pipe(T.Body("redact_query_string"))),
-          traces: S.optional(S.NullOr(__S(630))),
+          traces: S.optional(S.NullOr(BetaWorkersUpdateResponseObservabilityTraces)),
         }),
       ).annotate({
         identifier: "BetaWorkersUpdateResponseObservability",
@@ -24520,11 +29226,19 @@ function __c79(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          destinations: S.optional(S.NullOr(__S(19))),
+          destinations: S.optional(
+            S.NullOr(
+              BetaWorkersUpdateResponsePreviewsBaseConfigObservabilityTracesDestinationsList,
+            ),
+          ),
           enabled: S.optional(S.NullOr(S.Boolean)),
           headSamplingRate: S.optional(S.NullOr(S.Number).pipe(T.Body("head_sampling_rate"))),
           persist: S.optional(S.NullOr(S.Boolean)),
-          propagationPolicy: S.optional(S.NullOr(S.String).pipe(T.Body("propagation_policy"))),
+          propagationPolicy: S.optional(
+            S.NullOr(
+              BetaWorkersUpdateResponsePreviewsBaseConfigObservabilityTracesPropagationPolicy,
+            ).pipe(T.Body("propagation_policy")),
+          ),
         }),
       ).annotate({
         identifier: "BetaWorkersUpdateResponsePreviewsBaseConfigObservabilityTraces",
@@ -24534,10 +29248,12 @@ function __c79(j: number): any {
         S.Struct({
           enabled: S.optional(S.NullOr(S.Boolean)),
           headSamplingRate: S.optional(S.NullOr(S.Number).pipe(T.Body("head_sampling_rate"))),
-          issues: S.optional(S.NullOr(__S(29))),
-          logs: S.optional(S.NullOr(__S(47))),
+          issues: S.optional(S.NullOr(BetaWorkersCreateResponseObservabilityIssues)),
+          logs: S.optional(S.NullOr(BetaWorkersUpdateResponsePreviewsBaseConfigObservabilityLogs)),
           redactQueryString: S.optional(S.NullOr(S.Boolean).pipe(T.Body("redact_query_string"))),
-          traces: S.optional(S.NullOr(__S(632))),
+          traces: S.optional(
+            S.NullOr(BetaWorkersUpdateResponsePreviewsBaseConfigObservabilityTraces),
+          ),
         }),
       ).annotate({
         identifier: "BetaWorkersUpdateResponsePreviewsBaseConfigObservability",
@@ -24558,13 +29274,23 @@ function __c79(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          cacheOptions: S.optional(S.NullOr(__S(45)).pipe(T.Body("cache_options"))),
-          env: S.optional(S.NullOr(__S(17))),
-          limits: S.optional(S.NullOr(__S(46))),
+          cacheOptions: S.optional(
+            S.NullOr(BetaWorkersCreateResponsePreviewsBaseConfigCacheOptions).pipe(
+              T.Body("cache_options"),
+            ),
+          ),
+          env: S.optional(S.NullOr(BetaWorkersUpdateResponsePreviewsBaseConfigEnvMap)),
+          limits: S.optional(S.NullOr(BetaWorkersCreateResponsePreviewsBaseConfigLimits)),
           logpush: S.optional(S.NullOr(S.Boolean)),
-          observability: S.optional(S.NullOr(__S(633))),
-          placement: S.optional(S.NullOr(__S(634))),
-          tailConsumers: S.optional(S.NullOr(__S(25)).pipe(T.Body("tail_consumers"))),
+          observability: S.optional(
+            S.NullOr(BetaWorkersUpdateResponsePreviewsBaseConfigObservability),
+          ),
+          placement: S.optional(S.NullOr(BetaWorkersUpdateResponsePreviewsBaseConfigPlacement)),
+          tailConsumers: S.optional(
+            S.NullOr(BetaWorkersUpdateResponsePreviewsBaseConfigTailConsumersList).pipe(
+              T.Body("tail_consumers"),
+            ),
+          ),
         }),
       ).annotate({
         identifier: "BetaWorkersUpdateResponsePreviewsBaseConfig",
@@ -24576,14 +29302,18 @@ function __c79(j: number): any {
           createdOn: S.String.pipe(T.Body("created_on")),
           logpush: S.Boolean,
           name: S.String,
-          observability: __S(631),
-          references: __S(43),
-          subdomain: __S(44),
-          tags: __S(11),
-          tailConsumers: __S(25).pipe(T.Body("tail_consumers")),
+          observability: BetaWorkersUpdateResponseObservability,
+          references: BetaWorkersUpdateResponseReferences,
+          subdomain: BetaWorkersCreateResponseSubdomain,
+          tags: BetaWorkersUpdateResponseTagsList,
+          tailConsumers: BetaWorkersUpdateResponseTailConsumersList.pipe(T.Body("tail_consumers")),
           updatedOn: S.String.pipe(T.Body("updated_on")),
           deployedOn: S.optional(S.NullOr(S.String).pipe(T.Body("deployed_on"))),
-          previewsBaseConfig: S.optional(S.NullOr(__S(635)).pipe(T.Body("previews_base_config"))),
+          previewsBaseConfig: S.optional(
+            S.NullOr(BetaWorkersUpdateResponsePreviewsBaseConfig).pipe(
+              T.Body("previews_base_config"),
+            ),
+          ),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "UpdateBetaWorkerResponse" });
     case 5:
@@ -24610,7 +29340,7 @@ function __c79(j: number): any {
         ),
       );
     case 7:
-      return S.Array(__S(638));
+      return S.Array(ObservabilityTelemetryValuesRequestFiltersItem);
   }
 }
 function __c80(j: number): any {
@@ -24620,7 +29350,7 @@ function __c80(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(640),
+          value: ObservabilityTelemetryValuesRequestNeedleValue,
           isRegex: S.optional(S.Boolean),
           matchCase: S.optional(S.Boolean),
         }),
@@ -24631,13 +29361,13 @@ function __c80(j: number): any {
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
-          datasets: __S(11),
+          datasets: ObservabilityTelemetryValuesRequestDatasetsList,
           key: S.String,
-          timeframe: __S(125),
-          type: S.String,
-          filters: S.optional(__S(639)),
+          timeframe: ObservabilityTelemetryValuesRequestTimeframe,
+          type: ObservabilityTelemetryValuesRequestType,
+          filters: S.optional(ObservabilityTelemetryValuesRequestFiltersList),
           limit: S.optional(S.Number),
-          needle: S.optional(__S(641)),
+          needle: S.optional(ObservabilityTelemetryValuesRequestNeedle),
         })
           .pipe(
             T.Http({
@@ -24657,193 +29387,22 @@ function __c80(j: number): any {
         S.Struct({
           dataset: S.String,
           key: S.String,
-          type: S.String,
-          value: __S(643),
+          type: ObservabilityTelemetryValuesResultItemType,
+          value: ObservabilityTelemetryValuesResultItemValue,
         }),
       ).annotate({
         identifier: "ObservabilityTelemetryValuesResultItem",
       });
     case 5:
-      return S.Array(__S(644));
+      return S.Array(ObservabilityTelemetryValuesResultItem);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          result: __S(645).pipe(T.EnvelopePayload()),
+          result: ObservabilityTelemetryValuesResultList.pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "ValuesObservabilityTelemetryResponse",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
-    case 9:
-      return __c9(i & 7);
-    case 10:
-      return __c10(i & 7);
-    case 11:
-      return __c11(i & 7);
-    case 12:
-      return __c12(i & 7);
-    case 13:
-      return __c13(i & 7);
-    case 14:
-      return __c14(i & 7);
-    case 15:
-      return __c15(i & 7);
-    case 16:
-      return __c16(i & 7);
-    case 17:
-      return __c17(i & 7);
-    case 18:
-      return __c18(i & 7);
-    case 19:
-      return __c19(i & 7);
-    case 20:
-      return __c20(i & 7);
-    case 21:
-      return __c21(i & 7);
-    case 22:
-      return __c22(i & 7);
-    case 23:
-      return __c23(i & 7);
-    case 24:
-      return __c24(i & 7);
-    case 25:
-      return __c25(i & 7);
-    case 26:
-      return __c26(i & 7);
-    case 27:
-      return __c27(i & 7);
-    case 28:
-      return __c28(i & 7);
-    case 29:
-      return __c29(i & 7);
-    case 30:
-      return __c30(i & 7);
-    case 31:
-      return __c31(i & 7);
-    case 32:
-      return __c32(i & 7);
-    case 33:
-      return __c33(i & 7);
-    case 34:
-      return __c34(i & 7);
-    case 35:
-      return __c35(i & 7);
-    case 36:
-      return __c36(i & 7);
-    case 37:
-      return __c37(i & 7);
-    case 38:
-      return __c38(i & 7);
-    case 39:
-      return __c39(i & 7);
-    case 40:
-      return __c40(i & 7);
-    case 41:
-      return __c41(i & 7);
-    case 42:
-      return __c42(i & 7);
-    case 43:
-      return __c43(i & 7);
-    case 44:
-      return __c44(i & 7);
-    case 45:
-      return __c45(i & 7);
-    case 46:
-      return __c46(i & 7);
-    case 47:
-      return __c47(i & 7);
-    case 48:
-      return __c48(i & 7);
-    case 49:
-      return __c49(i & 7);
-    case 50:
-      return __c50(i & 7);
-    case 51:
-      return __c51(i & 7);
-    case 52:
-      return __c52(i & 7);
-    case 53:
-      return __c53(i & 7);
-    case 54:
-      return __c54(i & 7);
-    case 55:
-      return __c55(i & 7);
-    case 56:
-      return __c56(i & 7);
-    case 57:
-      return __c57(i & 7);
-    case 58:
-      return __c58(i & 7);
-    case 59:
-      return __c59(i & 7);
-    case 60:
-      return __c60(i & 7);
-    case 61:
-      return __c61(i & 7);
-    case 62:
-      return __c62(i & 7);
-    case 63:
-      return __c63(i & 7);
-    case 64:
-      return __c64(i & 7);
-    case 65:
-      return __c65(i & 7);
-    case 66:
-      return __c66(i & 7);
-    case 67:
-      return __c67(i & 7);
-    case 68:
-      return __c68(i & 7);
-    case 69:
-      return __c69(i & 7);
-    case 70:
-      return __c70(i & 7);
-    case 71:
-      return __c71(i & 7);
-    case 72:
-      return __c72(i & 7);
-    case 73:
-      return __c73(i & 7);
-    case 74:
-      return __c74(i & 7);
-    case 75:
-      return __c75(i & 7);
-    case 76:
-      return __c76(i & 7);
-    case 77:
-      return __c77(i & 7);
-    case 78:
-      return __c78(i & 7);
-    case 79:
-      return __c79(i & 7);
-    case 80:
-      return __c80(i & 7);
   }
 }

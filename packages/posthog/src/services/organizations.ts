@@ -7,8 +7,6 @@ import * as Redacted from "effect/Redacted";
 import { PosthogProtocol, type PosthogOpError, type PosthogOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { PosthogOpError, PosthogOpContext };
 
@@ -56,7 +54,17 @@ export interface BillingSpendExportDownloadRequest {
   /** JSON-encoded array of usage type identifiers to filter on. Valid values: event_count_in_period, exceptions_captured_in_period, recording_count_in_period, rows_synced_in_period, free_historical_rows_synced_in_period, survey_responses_count_in_period, mobile_recording_count_in_period, mobile_billable_recording_count_in_period, billable_feature_flag_requests_count_in_period, enhanced_persons_event_count_in_period, ai_event_count_in_period, cdp_billable_invocations_in_period, rows_exported_in_period, ai_credits_used_in_period, signals_credits_used_in_period, posthog_code_credits_used_in_period, posthog_code_token_credits_used_in_period, sandbox_compute_credits_used_in_period, sandbox_compute_cpu_millicore_seconds_in_period, sandbox_compute_memory_mib_seconds_in_period, workflow_emails_sent_in_period, workflow_billable_invocations_in_period, logs_mb_in_period, logs_retention_30d_mb_in_period, logs_retention_mb_days_in_period, replay_vision_credits_used_in_period, data_pipelines, group_analytics. E.g. ["event_count_in_period","recording_count_in_period"]. Omit for all types. */
   usage_types?: string;
 }
+const BillingSpendExportDownloadRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<BillingSpendExportDownloadRequest>;
+
 export interface BillingSpendExportDownloadResponse {}
+const BillingSpendExportDownloadResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<BillingSpendExportDownloadResponse>;
+
 export interface BillingUsageExportDownloadRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
@@ -74,26 +82,52 @@ export interface BillingUsageExportDownloadRequest {
   /** JSON-encoded array of usage type identifiers to filter on. Valid values: event_count_in_period, exceptions_captured_in_period, recording_count_in_period, rows_synced_in_period, free_historical_rows_synced_in_period, survey_responses_count_in_period, mobile_recording_count_in_period, mobile_billable_recording_count_in_period, billable_feature_flag_requests_count_in_period, enhanced_persons_event_count_in_period, ai_event_count_in_period, cdp_billable_invocations_in_period, rows_exported_in_period, ai_credits_used_in_period, signals_credits_used_in_period, posthog_code_credits_used_in_period, posthog_code_token_credits_used_in_period, sandbox_compute_credits_used_in_period, sandbox_compute_cpu_millicore_seconds_in_period, sandbox_compute_memory_mib_seconds_in_period, workflow_emails_sent_in_period, workflow_billable_invocations_in_period, logs_mb_in_period, logs_retention_30d_mb_in_period, logs_retention_mb_days_in_period, replay_vision_credits_used_in_period, data_pipelines, group_analytics. E.g. ["event_count_in_period","recording_count_in_period"]. Omit for all types. */
   usage_types?: string;
 }
+const BillingUsageExportDownloadRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<BillingUsageExportDownloadRequest>;
+
 export interface BillingUsageExportDownloadResponse {}
+const BillingUsageExportDownloadResponse =
+  BillingSpendExportDownloadResponse as any as S.Schema<BillingUsageExportDownloadResponse>;
+
 export interface CimdVerificationTokensDestroyRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
   /** A UUID string identifying this CIMD Verification Token. */
   id: string;
 }
+const CimdVerificationTokensDestroyRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<CimdVerificationTokensDestroyRequest>;
+
 export interface CimdVerificationTokensDestroyResponse {}
+const CimdVerificationTokensDestroyResponse =
+  BillingSpendExportDownloadResponse as any as S.Schema<CimdVerificationTokensDestroyResponse>;
+
 export interface OrganizationMemberNoticeAction {
   /** Text on the button shown next to the notice. */
   label: string;
   /** Link the button opens in a new tab. Must use http or https. */
   url: string;
 }
+const OrganizationMemberNoticeAction = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<OrganizationMemberNoticeAction>;
+
 export interface OrganizationMemberNotice {
   /** HTML shown in the banner. Supports formatting tags and links (<b>, <strong>, <i>, <em>, <u>, <s>, <code>, <br>, <p>, <span>, <ul>, <ol>, <li>, <a href>). Other tags, styles and scripts are removed. */
   message: string;
   /** Optional link button shown on the right of the banner. */
   action?: OrganizationMemberNoticeAction | null;
 }
+const OrganizationMemberNotice = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<OrganizationMemberNotice>;
+
 export interface CreateRequest {
   name?: string;
   logo_media_id?: string | null;
@@ -119,16 +153,44 @@ export interface CreateRequest {
   /** ID of the role to automatically assign to new members joining the organization */
   default_role_id?: string | null;
 }
+const CreateRequest = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<CreateRequest>;
+
 /** * `1` - member * `8` - administrator * `15` - owner */
 export type OrganizationMembershipLevelEnum = 1 | 8 | 15;
+const OrganizationMembershipLevelEnum = S.Number;
+
 /** * `0` - none * `3` - config * `6` - install * `9` - root */
 export type OrganizationPluginsAccessLevelEnum = 0 | 3 | 6 | 9;
+const OrganizationPluginsAccessLevelEnum = S.Number;
+
 export type OrganizationTeamsItemMap = { [key: string]: unknown | undefined };
+const OrganizationTeamsItemMap = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<OrganizationTeamsItemMap>;
+
 export type OrganizationTeamsList = Array<OrganizationTeamsItemMap>;
+const OrganizationTeamsList = /*@__PURE__*/ __L.at(
+  __c1,
+  0,
+) as any as S.Schema<OrganizationTeamsList>;
+
 export type OrganizationProjectsItemMap = { [key: string]: unknown | undefined };
 export type OrganizationProjectsList = Array<OrganizationProjectsItemMap>;
+const OrganizationProjectsList = OrganizationTeamsList as any as S.Schema<OrganizationProjectsList>;
+
 export type OrganizationAvailableProductFeaturesList = Array<unknown>;
+const OrganizationAvailableProductFeaturesList = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<OrganizationAvailableProductFeaturesList>;
+
 export type OrganizationMetadataMap = { [key: string]: string | undefined };
+const OrganizationMetadataMap = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<OrganizationMetadataMap>;
+
 export interface Organization {
   id?: string;
   name?: string;
@@ -182,6 +244,8 @@ export interface Organization {
   /** When True, access controls resolve with the most specific matching rule. When False, the legacy resolution order applies. */
   uses_most_specific_access_resolution?: boolean | null;
 }
+const Organization = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<Organization>;
+
 export interface CreateCimdVerificationTokenRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
@@ -190,7 +254,15 @@ export interface CreateCimdVerificationTokenRequest {
   /** HTTPS URL of the CIMD metadata document this token will be published in. The token only verifies at this URL, so a copy hosted anywhere else is rejected. Host case, an explicit :443 and a trailing slash are normalized away; the path is case-sensitive. */
   cimd_url: string;
 }
+const CreateCimdVerificationTokenRequest = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<CreateCimdVerificationTokenRequest>;
+
 export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
+const UserBasicHedgehogConfigMap =
+  OrganizationTeamsItemMap as any as S.Schema<UserBasicHedgehogConfigMap>;
+
 /** * `engineering` - Engineering * `data` - Data * `product` - Product Management * `founder` - Founder * `leadership` - Leadership * `marketing` - Marketing * `sales` - Sales / Success * `student` - Student * `other` - Other */
 export type RoleAtOrganizationEnum =
   | "engineering"
@@ -204,6 +276,8 @@ export type RoleAtOrganizationEnum =
   | "other";
 export type BlankEnum = "";
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
+const UserBasicRoleAtOrganization = S.Unknown as any as S.Schema<UserBasicRoleAtOrganization>;
+
 export interface UserBasic {
   id?: number;
   uuid?: string;
@@ -215,6 +289,8 @@ export interface UserBasic {
   hedgehog_config?: UserBasicHedgehogConfigMap | null;
   role_at_organization?: UserBasicRoleAtOrganization | null;
 }
+const UserBasic = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<UserBasic>;
+
 /** Create-response variant that includes the plaintext token. Only emitted from the create endpoint - storage-side we only persist the hash, so subsequent reads use the base serializer. */
 export interface CIMDVerificationTokenWithValue {
   id: string;
@@ -229,6 +305,11 @@ export interface CIMDVerificationTokenWithValue {
   /** Plaintext token, only returned on creation */
   value: string;
 }
+const CIMDVerificationTokenWithValue = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<CIMDVerificationTokenWithValue>;
+
 export interface CreateDomainRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
@@ -236,6 +317,8 @@ export interface CreateDomainRequest {
   jit_provisioning_enabled?: boolean;
   sso_enforcement?: string;
 }
+const CreateDomainRequest = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<CreateDomainRequest>;
+
 export interface OrganizationDomain {
   id?: string;
   domain?: string;
@@ -247,18 +330,34 @@ export interface OrganizationDomain {
   sso_enforcement?: string;
   scim_base_url?: string | null;
 }
+const OrganizationDomain = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<OrganizationDomain>;
+
 /** * `all` - All * `selected` - Selected */
 export type DomainScopeEnum = "all" | "selected";
 /** Domains this configuration applies to. An unset value behaves like selected domains. * `all` - All * `selected` - Selected */
 export type CreateIdentityProviderConfigRequestDomainScope = DomainScopeEnum | BlankEnum;
+const CreateIdentityProviderConfigRequestDomainScope =
+  S.Unknown as any as S.Schema<CreateIdentityProviderConfigRequestDomainScope>;
+
 /** * `saml` - Saml * `oidc` - Oidc * `scim` - Scim * `xaa` - Xaa */
 export type ConfigScopeEnum = "saml" | "oidc" | "scim" | "xaa";
 /** Feature configured by this identity provider configuration. * `saml` - Saml * `oidc` - Oidc * `scim` - Scim * `xaa` - Xaa */
 export type CreateIdentityProviderConfigRequestConfigScope = ConfigScopeEnum | BlankEnum;
+const CreateIdentityProviderConfigRequestConfigScope =
+  S.Unknown as any as S.Schema<CreateIdentityProviderConfigRequestConfigScope>;
+
 /** Organization domain IDs that this identity provider configuration applies to. */
 export type CreateIdentityProviderConfigRequestOrganizationDomainIdsList = Array<string>;
+const CreateIdentityProviderConfigRequestOrganizationDomainIdsList = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<CreateIdentityProviderConfigRequestOrganizationDomainIdsList>;
+
 /** Allowed ID-JAG client IDs. Empty list allows any client_id. */
 export type CreateIdentityProviderConfigRequestIdJagAllowedClientsList = Array<string>;
+const CreateIdentityProviderConfigRequestIdJagAllowedClientsList =
+  CreateIdentityProviderConfigRequestOrganizationDomainIdsList as any as S.Schema<CreateIdentityProviderConfigRequestIdJagAllowedClientsList>;
+
 export interface CreateIdentityProviderConfigRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
@@ -291,14 +390,31 @@ export interface CreateIdentityProviderConfigRequest {
   /** Allowed ID-JAG client IDs. Empty list allows any client_id. */
   id_jag_allowed_clients?: CreateIdentityProviderConfigRequestIdJagAllowedClientsList;
 }
+const CreateIdentityProviderConfigRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  2,
+) as any as S.Schema<CreateIdentityProviderConfigRequest>;
+
 /** Domains this configuration applies to. An unset value behaves like selected domains. * `all` - All * `selected` - Selected */
 export type IdentityProviderConfigOutputDomainScope = DomainScopeEnum | BlankEnum;
+const IdentityProviderConfigOutputDomainScope =
+  S.Unknown as any as S.Schema<IdentityProviderConfigOutputDomainScope>;
+
 /** Feature configured by this identity provider configuration. * `saml` - Saml * `oidc` - Oidc * `scim` - Scim * `xaa` - Xaa */
 export type IdentityProviderConfigOutputConfigScope = ConfigScopeEnum | BlankEnum;
+const IdentityProviderConfigOutputConfigScope =
+  S.Unknown as any as S.Schema<IdentityProviderConfigOutputConfigScope>;
+
 /** Organization domain IDs that this identity provider configuration applies to. */
 export type IdentityProviderConfigOutputOrganizationDomainIdsList = Array<string>;
+const IdentityProviderConfigOutputOrganizationDomainIdsList =
+  CreateIdentityProviderConfigRequestOrganizationDomainIdsList as any as S.Schema<IdentityProviderConfigOutputOrganizationDomainIdsList>;
+
 /** Allowed ID-JAG client IDs. Empty list allows any client_id. */
 export type IdentityProviderConfigOutputIdJagAllowedClientsList = Array<string>;
+const IdentityProviderConfigOutputIdJagAllowedClientsList =
+  CreateIdentityProviderConfigRequestOrganizationDomainIdsList as any as S.Schema<IdentityProviderConfigOutputIdJagAllowedClientsList>;
+
 export interface IdentityProviderConfigOutput {
   id: string;
   /** Display name for this IdP configuration (e.g. 'Okta production'). */
@@ -346,18 +462,30 @@ export interface IdentityProviderConfigOutput {
   /** Allowed ID-JAG client IDs. Empty list allows any client_id. */
   id_jag_allowed_clients?: IdentityProviderConfigOutputIdJagAllowedClientsList;
 }
+const IdentityProviderConfigOutput = /*@__PURE__*/ __L.at(
+  __c2,
+  3,
+) as any as S.Schema<IdentityProviderConfigOutput>;
+
 export interface CreateIdentityProviderConfigsScimTokenRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
   /** A UUID string identifying this identity provider config. */
   id: string;
 }
+const CreateIdentityProviderConfigsScimTokenRequest = /*@__PURE__*/ __L.at(
+  __c2,
+  4,
+) as any as S.Schema<CreateIdentityProviderConfigsScimTokenRequest>;
+
 export interface SCIMTokenResponse {
   /** Whether SCIM is enabled for this config. */
   scim_enabled: boolean;
   /** Newly generated plaintext SCIM bearer token. Only returned once. */
   scim_bearer_token: string;
 }
+const SCIMTokenResponse = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<SCIMTokenResponse>;
+
 export interface CreateInviteRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
@@ -370,6 +498,8 @@ export interface CreateInviteRequest {
   send_email?: boolean;
   combine_pending_invites?: boolean;
 }
+const CreateInviteRequest = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<CreateInviteRequest>;
+
 export interface OrganizationInviteOutput {
   id?: string;
   target_email?: string;
@@ -385,6 +515,11 @@ export interface OrganizationInviteOutput {
   /** List of team IDs and corresponding access levels to private projects. */
   private_project_access?: unknown;
 }
+const OrganizationInviteOutput = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<OrganizationInviteOutput>;
+
 export interface CreateInvitesDelegateRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
@@ -395,8 +530,15 @@ export interface CreateInvitesDelegateRequest {
   /** Onboarding step key the delegator was on when delegating, for analytics only. */
   step_at_delegation?: string;
 }
+const CreateInvitesDelegateRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<CreateInvitesDelegateRequest>;
+
 /** * `BAA` - BAA * `DPA` - DPA */
 export type DocumentTypeEnum = "BAA" | "DPA";
+const DocumentTypeEnum = S.String;
+
 export interface CreateLegalDocumentRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
@@ -409,10 +551,17 @@ export interface CreateLegalDocumentRequest {
   /** Email the signed PandaDoc envelope is sent to (PandaDoc's Client.Email). */
   representative_email?: string;
 }
+const CreateLegalDocumentRequest = /*@__PURE__*/ __L.at(
+  __c3,
+  1,
+) as any as S.Schema<CreateLegalDocumentRequest>;
+
 export interface LegalDocumentCreator {
   first_name?: string;
   email?: string;
 }
+const LegalDocumentCreator = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<LegalDocumentCreator>;
+
 /** Output serializer -- what the API returns for every row. */
 export interface LegalDocumentDTO {
   id?: string;
@@ -424,9 +573,19 @@ export interface LegalDocumentDTO {
   created_by?: LegalDocumentCreator | null;
   created_at?: string;
 }
+const LegalDocumentDTO = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<LegalDocumentDTO>;
+
 /** Labels applied to this project. Names are trimmed and lowercased, and sending this field replaces the project's existing tags. */
 export type CreateOrganizationsProjectRequestTagsList = Array<string>;
+const CreateOrganizationsProjectRequestTagsList =
+  CreateIdentityProviderConfigRequestOrganizationDomainIdsList as any as S.Schema<CreateOrganizationsProjectRequestTagsList>;
+
 export type CreateOrganizationsProjectRequestAppUrlsList = Array<string | null>;
+const CreateOrganizationsProjectRequestAppUrlsList = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<CreateOrganizationsProjectRequestAppUrlsList>;
+
 /** * `Africa/Abidjan` - Africa/Abidjan * `Africa/Accra` - Africa/Accra * `Africa/Addis_Ababa` - Africa/Addis_Ababa * `Africa/Algiers` - Africa/Algiers * `Africa/Asmara` - Africa/Asmara * `Africa/Asmera` - Africa/Asmera * `Africa/Bamako` - Africa/Bamako * `Africa/Bangui` - Africa/Bangui * `Africa/Banjul` - Africa/Banjul * `Africa/Bissau` - Africa/Bissau * `Africa/Blantyre` - Africa/Blantyre * `Africa/Brazzaville` - Africa/Brazzaville * `Africa/Bujumbura` - Africa/Bujumbura * `Africa/Cairo` - Africa/Cairo * `Africa/Casablanca` - Africa/Casablanca * `Africa/Ceuta` - Africa/Ceuta * `Africa/Conakry` - Africa/Conakry * `Africa/Dakar` - Africa/Dakar * `Africa/Dar_es_Salaam` - Africa/Dar_es_Salaam * `Africa/Djibouti` - Africa/Djibouti * `Africa/Douala` - Africa/Douala * `Africa/El_Aaiun` - Africa/El_Aaiun * `Africa/Freetown` - Africa/Freetown * `Africa/Gaborone` - Africa/Gaborone * `Africa/Harare` - Africa/Harare * `Africa/Johannesburg` - Africa/Johannesburg * `Africa/Juba` - Africa/Juba * `Africa/Kampala` - Africa/Kampala * `Africa/Khartoum` - Africa/Khartoum * `Africa/Kigali` - Africa/Kigali * `Africa/Kinshasa` - Africa/Kinshasa * `Africa/Lagos` - Africa/Lagos * `Africa/Libreville` - Africa/Libreville * `Africa/Lome` - Africa/Lome * `Africa/Luanda` - Africa/Luanda * `Africa/Lubumbashi` - Africa/Lubumbashi * `Africa/Lusaka` - Africa/Lusaka * `Africa/Malabo` - Africa/Malabo * `Africa/Maputo` - Africa/Maputo * `Africa/Maseru` - Africa/Maseru * `Africa/Mbabane` - Africa/Mbabane * `Africa/Mogadishu` - Africa/Mogadishu * `Africa/Monrovia` - Africa/Monrovia * `Africa/Nairobi` - Africa/Nairobi * `Africa/Ndjamena` - Africa/Ndjamena * `Africa/Niamey` - Africa/Niamey * `Africa/Nouakchott` - Africa/Nouakchott * `Africa/Ouagadougou` - Africa/Ouagadougou * `Africa/Porto-Novo` - Africa/Porto-Novo * `Africa/Sao_Tome` - Africa/Sao_Tome * `Africa/Timbuktu` - Africa/Timbuktu * `Africa/Tripoli` - Africa/Tripoli * `Africa/Tunis` - Africa/Tunis * `Africa/Windhoek` - Africa/Windhoek * `America/Adak` - America/Adak * `America/Anchorage` - America/Anchorage * `America/Anguilla` - America/Anguilla * `America/Antigua` - America/Antigua * `America/Araguaina` - America/Araguaina * `America/Argentina/Buenos_Aires` - America/Argentina/Buenos_Aires * `America/Argentina/Catamarca` - America/Argentina/Catamarca * `America/Argentina/ComodRivadavia` - America/Argentina/ComodRivadavia * `America/Argentina/Cordoba` - America/Argentina/Cordoba * `America/Argentina/Jujuy` - America/Argentina/Jujuy * `America/Argentina/La_Rioja` - America/Argentina/La_Rioja * `America/Argentina/Mendoza` - America/Argentina/Mendoza * `America/Argentina/Rio_Gallegos` - America/Argentina/Rio_Gallegos * `America/Argentina/Salta` - America/Argentina/Salta * `America/Argentina/San_Juan` - America/Argentina/San_Juan * `America/Argentina/San_Luis` - America/Argentina/San_Luis * `America/Argentina/Tucuman` - America/Argentina/Tucuman * `America/Argentina/Ushuaia` - America/Argentina/Ushuaia * `America/Aruba` - America/Aruba * `America/Asuncion` - America/Asuncion * `America/Atikokan` - America/Atikokan * `America/Atka` - America/Atka * `America/Bahia` - America/Bahia * `America/Bahia_Banderas` - America/Bahia_Banderas * `America/Barbados` - America/Barbados * `America/Belem` - America/Belem * `America/Belize` - America/Belize * `America/Blanc-Sablon` - America/Blanc-Sablon * `America/Boa_Vista` - America/Boa_Vista * `America/Bogota` - America/Bogota * `America/Boise` - America/Boise * `America/Buenos_Aires` - America/Buenos_Aires * `America/Cambridge_Bay` - America/Cambridge_Bay * `America/Campo_Grande` - America/Campo_Grande * `America/Cancun` - America/Cancun * `America/Caracas` - America/Caracas * `America/Catamarca` - America/Catamarca * `America/Cayenne` - America/Cayenne * `America/Cayman` - America/Cayman * `America/Chicago` - America/Chicago * `America/Chihuahua` - America/Chihuahua * `America/Ciudad_Juarez` - America/Ciudad_Juarez * `America/Coral_Harbour` - America/Coral_Harbour * `America/Cordoba` - America/Cordoba * `America/Costa_Rica` - America/Costa_Rica * `America/Creston` - America/Creston * `America/Cuiaba` - America/Cuiaba * `America/Curacao` - America/Curacao * `America/Danmarkshavn` - America/Danmarkshavn * `America/Dawson` - America/Dawson * `America/Dawson_Creek` - America/Dawson_Creek * `America/Denver` - America/Denver * `America/Detroit` - America/Detroit * `America/Dominica` - America/Dominica * `America/Edmonton` - America/Edmonton * `America/Eirunepe` - America/Eirunepe * `America/El_Salvador` - America/El_Salvador * `America/Ensenada` - America/Ensenada * `America/Fort_Nelson` - America/Fort_Nelson * `America/Fort_Wayne` - America/Fort_Wayne * `America/Fortaleza` - America/Fortaleza * `America/Glace_Bay` - America/Glace_Bay * `America/Godthab` - America/Godthab * `America/Goose_Bay` - America/Goose_Bay * `America/Grand_Turk` - America/Grand_Turk * `America/Grenada` - America/Grenada * `America/Guadeloupe` - America/Guadeloupe * `America/Guatemala` - America/Guatemala * `America/Guayaquil` - America/Guayaquil * `America/Guyana` - America/Guyana * `America/Halifax` - America/Halifax * `America/Havana` - America/Havana * `America/Hermosillo` - America/Hermosillo * `America/Indiana/Indianapolis` - America/Indiana/Indianapolis * `America/Indiana/Knox` - America/Indiana/Knox * `America/Indiana/Marengo` - America/Indiana/Marengo * `America/Indiana/Petersburg` - America/Indiana/Petersburg * `America/Indiana/Tell_City` - America/Indiana/Tell_City * `America/Indiana/Vevay` - America/Indiana/Vevay * `America/Indiana/Vincennes` - America/Indiana/Vincennes * `America/Indiana/Winamac` - America/Indiana/Winamac * `America/Indianapolis` - America/Indianapolis * `America/Inuvik` - America/Inuvik * `America/Iqaluit` - America/Iqaluit * `America/Jamaica` - America/Jamaica * `America/Jujuy` - America/Jujuy * `America/Juneau` - America/Juneau * `America/Kentucky/Louisville` - America/Kentucky/Louisville * `America/Kentucky/Monticello` - America/Kentucky/Monticello * `America/Knox_IN` - America/Knox_IN * `America/Kralendijk` - America/Kralendijk * `America/La_Paz` - America/La_Paz * `America/Lima` - America/Lima * `America/Los_Angeles` - America/Los_Angeles * `America/Louisville` - America/Louisville * `America/Lower_Princes` - America/Lower_Princes * `America/Maceio` - America/Maceio * `America/Managua` - America/Managua * `America/Manaus` - America/Manaus * `America/Marigot` - America/Marigot * `America/Martinique` - America/Martinique * `America/Matamoros` - America/Matamoros * `America/Mazatlan` - America/Mazatlan * `America/Mendoza` - America/Mendoza * `America/Menominee` - America/Menominee * `America/Merida` - America/Merida * `America/Metlakatla` - America/Metlakatla * `America/Mexico_City` - America/Mexico_City * `America/Miquelon` - America/Miquelon * `America/Moncton` - America/Moncton * `America/Monterrey` - America/Monterrey * `America/Montevideo` - America/Montevideo * `America/Montreal` - America/Montreal * `America/Montserrat` - America/Montserrat * `America/Nassau` - America/Nassau * `America/New_York` - America/New_York * `America/Nipigon` - America/Nipigon * `America/Nome` - America/Nome * `America/Noronha` - America/Noronha * `America/North_Dakota/Beulah` - America/North_Dakota/Beulah * `America/North_Dakota/Center` - America/North_Dakota/Center * `America/North_Dakota/New_Salem` - America/North_Dakota/New_Salem * `America/Nuuk` - America/Nuuk * `America/Ojinaga` - America/Ojinaga * `America/Panama` - America/Panama * `America/Pangnirtung` - America/Pangnirtung * `America/Paramaribo` - America/Paramaribo * `America/Phoenix` - America/Phoenix * `America/Port-au-Prince` - America/Port-au-Prince * `America/Port_of_Spain` - America/Port_of_Spain * `America/Porto_Acre` - America/Porto_Acre * `America/Porto_Velho` - America/Porto_Velho * `America/Puerto_Rico` - America/Puerto_Rico * `America/Punta_Arenas` - America/Punta_Arenas * `America/Rainy_River` - America/Rainy_River * `America/Rankin_Inlet` - America/Rankin_Inlet * `America/Recife` - America/Recife * `America/Regina` - America/Regina * `America/Resolute` - America/Resolute * `America/Rio_Branco` - America/Rio_Branco * `America/Rosario` - America/Rosario * `America/Santa_Isabel` - America/Santa_Isabel * `America/Santarem` - America/Santarem * `America/Santiago` - America/Santiago * `America/Santo_Domingo` - America/Santo_Domingo * `America/Sao_Paulo` - America/Sao_Paulo * `America/Scoresbysund` - America/Scoresbysund * `America/Shiprock` - America/Shiprock * `America/Sitka` - America/Sitka * `America/St_Barthelemy` - America/St_Barthelemy * `America/St_Johns` - America/St_Johns * `America/St_Kitts` - America/St_Kitts * `America/St_Lucia` - America/St_Lucia * `America/St_Thomas` - America/St_Thomas * `America/St_Vincent` - America/St_Vincent * `America/Swift_Current` - America/Swift_Current * `America/Tegucigalpa` - America/Tegucigalpa * `America/Thule` - America/Thule * `America/Thunder_Bay` - America/Thunder_Bay * `America/Tijuana` - America/Tijuana * `America/Toronto` - America/Toronto * `America/Tortola` - America/Tortola * `America/Vancouver` - America/Vancouver * `America/Virgin` - America/Virgin * `America/Whitehorse` - America/Whitehorse * `America/Winnipeg` - America/Winnipeg * `America/Yakutat` - America/Yakutat * `America/Yellowknife` - America/Yellowknife * `Antarctica/Casey` - Antarctica/Casey * `Antarctica/Davis` - Antarctica/Davis * `Antarctica/DumontDUrville` - Antarctica/DumontDUrville * `Antarctica/Macquarie` - Antarctica/Macquarie * `Antarctica/Mawson` - Antarctica/Mawson * `Antarctica/McMurdo` - Antarctica/McMurdo * `Antarctica/Palmer` - Antarctica/Palmer * `Antarctica/Rothera` - Antarctica/Rothera * `Antarctica/South_Pole` - Antarctica/South_Pole * `Antarctica/Syowa` - Antarctica/Syowa * `Antarctica/Troll` - Antarctica/Troll * `Antarctica/Vostok` - Antarctica/Vostok * `Arctic/Longyearbyen` - Arctic/Longyearbyen * `Asia/Aden` - Asia/Aden * `Asia/Almaty` - Asia/Almaty * `Asia/Amman` - Asia/Amman * `Asia/Anadyr` - Asia/Anadyr * `Asia/Aqtau` - Asia/Aqtau * `Asia/Aqtobe` - Asia/Aqtobe * `Asia/Ashgabat` - Asia/Ashgabat * `Asia/Ashkhabad` - Asia/Ashkhabad * `Asia/Atyrau` - Asia/Atyrau * `Asia/Baghdad` - Asia/Baghdad * `Asia/Bahrain` - Asia/Bahrain * `Asia/Baku` - Asia/Baku * `Asia/Bangkok` - Asia/Bangkok * `Asia/Barnaul` - Asia/Barnaul * `Asia/Beirut` - Asia/Beirut * `Asia/Bishkek` - Asia/Bishkek * `Asia/Brunei` - Asia/Brunei * `Asia/Calcutta` - Asia/Calcutta * `Asia/Chita` - Asia/Chita * `Asia/Choibalsan` - Asia/Choibalsan * `Asia/Chongqing` - Asia/Chongqing * `Asia/Chungking` - Asia/Chungking * `Asia/Colombo` - Asia/Colombo * `Asia/Dacca` - Asia/Dacca * `Asia/Damascus` - Asia/Damascus * `Asia/Dhaka` - Asia/Dhaka * `Asia/Dili` - Asia/Dili * `Asia/Dubai` - Asia/Dubai * `Asia/Dushanbe` - Asia/Dushanbe * `Asia/Famagusta` - Asia/Famagusta * `Asia/Gaza` - Asia/Gaza * `Asia/Harbin` - Asia/Harbin * `Asia/Hebron` - Asia/Hebron * `Asia/Ho_Chi_Minh` - Asia/Ho_Chi_Minh * `Asia/Hong_Kong` - Asia/Hong_Kong * `Asia/Hovd` - Asia/Hovd * `Asia/Irkutsk` - Asia/Irkutsk * `Asia/Istanbul` - Asia/Istanbul * `Asia/Jakarta` - Asia/Jakarta * `Asia/Jayapura` - Asia/Jayapura * `Asia/Jerusalem` - Asia/Jerusalem * `Asia/Kabul` - Asia/Kabul * `Asia/Kamchatka` - Asia/Kamchatka * `Asia/Karachi` - Asia/Karachi * `Asia/Kashgar` - Asia/Kashgar * `Asia/Kathmandu` - Asia/Kathmandu * `Asia/Katmandu` - Asia/Katmandu * `Asia/Khandyga` - Asia/Khandyga * `Asia/Kolkata` - Asia/Kolkata * `Asia/Krasnoyarsk` - Asia/Krasnoyarsk * `Asia/Kuala_Lumpur` - Asia/Kuala_Lumpur * `Asia/Kuching` - Asia/Kuching * `Asia/Kuwait` - Asia/Kuwait * `Asia/Macao` - Asia/Macao * `Asia/Macau` - Asia/Macau * `Asia/Magadan` - Asia/Magadan * `Asia/Makassar` - Asia/Makassar * `Asia/Manila` - Asia/Manila * `Asia/Muscat` - Asia/Muscat * `Asia/Nicosia` - Asia/Nicosia * `Asia/Novokuznetsk` - Asia/Novokuznetsk * `Asia/Novosibirsk` - Asia/Novosibirsk * `Asia/Omsk` - Asia/Omsk * `Asia/Oral` - Asia/Oral * `Asia/Phnom_Penh` - Asia/Phnom_Penh * `Asia/Pontianak` - Asia/Pontianak * `Asia/Pyongyang` - Asia/Pyongyang * `Asia/Qatar` - Asia/Qatar * `Asia/Qostanay` - Asia/Qostanay * `Asia/Qyzylorda` - Asia/Qyzylorda * `Asia/Rangoon` - Asia/Rangoon * `Asia/Riyadh` - Asia/Riyadh * `Asia/Saigon` - Asia/Saigon * `Asia/Sakhalin` - Asia/Sakhalin * `Asia/Samarkand` - Asia/Samarkand * `Asia/Seoul` - Asia/Seoul * `Asia/Shanghai` - Asia/Shanghai * `Asia/Singapore` - Asia/Singapore * `Asia/Srednekolymsk` - Asia/Srednekolymsk * `Asia/Taipei` - Asia/Taipei * `Asia/Tashkent` - Asia/Tashkent * `Asia/Tbilisi` - Asia/Tbilisi * `Asia/Tehran` - Asia/Tehran * `Asia/Tel_Aviv` - Asia/Tel_Aviv * `Asia/Thimbu` - Asia/Thimbu * `Asia/Thimphu` - Asia/Thimphu * `Asia/Tokyo` - Asia/Tokyo * `Asia/Tomsk` - Asia/Tomsk * `Asia/Ujung_Pandang` - Asia/Ujung_Pandang * `Asia/Ulaanbaatar` - Asia/Ulaanbaatar * `Asia/Ulan_Bator` - Asia/Ulan_Bator * `Asia/Urumqi` - Asia/Urumqi * `Asia/Ust-Nera` - Asia/Ust-Nera * `Asia/Vientiane` - Asia/Vientiane * `Asia/Vladivostok` - Asia/Vladivostok * `Asia/Yakutsk` - Asia/Yakutsk * `Asia/Yangon` - Asia/Yangon * `Asia/Yekaterinburg` - Asia/Yekaterinburg * `Asia/Yerevan` - Asia/Yerevan * `Atlantic/Azores` - Atlantic/Azores * `Atlantic/Bermuda` - Atlantic/Bermuda * `Atlantic/Canary` - Atlantic/Canary * `Atlantic/Cape_Verde` - Atlantic/Cape_Verde * `Atlantic/Faeroe` - Atlantic/Faeroe * `Atlantic/Faroe` - Atlantic/Faroe * `Atlantic/Jan_Mayen` - Atlantic/Jan_Mayen * `Atlantic/Madeira` - Atlantic/Madeira * `Atlantic/Reykjavik` - Atlantic/Reykjavik * `Atlantic/South_Georgia` - Atlantic/South_Georgia * `Atlantic/St_Helena` - Atlantic/St_Helena * `Atlantic/Stanley` - Atlantic/Stanley * `Australia/ACT` - Australia/ACT * `Australia/Adelaide` - Australia/Adelaide * `Australia/Brisbane` - Australia/Brisbane * `Australia/Broken_Hill` - Australia/Broken_Hill * `Australia/Canberra` - Australia/Canberra * `Australia/Currie` - Australia/Currie * `Australia/Darwin` - Australia/Darwin * `Australia/Eucla` - Australia/Eucla * `Australia/Hobart` - Australia/Hobart * `Australia/LHI` - Australia/LHI * `Australia/Lindeman` - Australia/Lindeman * `Australia/Lord_Howe` - Australia/Lord_Howe * `Australia/Melbourne` - Australia/Melbourne * `Australia/NSW` - Australia/NSW * `Australia/North` - Australia/North * `Australia/Perth` - Australia/Perth * `Australia/Queensland` - Australia/Queensland * `Australia/South` - Australia/South * `Australia/Sydney` - Australia/Sydney * `Australia/Tasmania` - Australia/Tasmania * `Australia/Victoria` - Australia/Victoria * `Australia/West` - Australia/West * `Australia/Yancowinna` - Australia/Yancowinna * `Brazil/Acre` - Brazil/Acre * `Brazil/DeNoronha` - Brazil/DeNoronha * `Brazil/East` - Brazil/East * `Brazil/West` - Brazil/West * `CET` - CET * `CST6CDT` - CST6CDT * `Canada/Atlantic` - Canada/Atlantic * `Canada/Central` - Canada/Central * `Canada/Eastern` - Canada/Eastern * `Canada/Mountain` - Canada/Mountain * `Canada/Newfoundland` - Canada/Newfoundland * `Canada/Pacific` - Canada/Pacific * `Canada/Saskatchewan` - Canada/Saskatchewan * `Canada/Yukon` - Canada/Yukon * `Chile/Continental` - Chile/Continental * `Chile/EasterIsland` - Chile/EasterIsland * `Cuba` - Cuba * `EET` - EET * `EST` - EST * `EST5EDT` - EST5EDT * `Egypt` - Egypt * `Eire` - Eire * `Etc/GMT` - Etc/GMT * `Etc/GMT+0` - Etc/GMT+0 * `Etc/GMT+1` - Etc/GMT+1 * `Etc/GMT+10` - Etc/GMT+10 * `Etc/GMT+11` - Etc/GMT+11 * `Etc/GMT+12` - Etc/GMT+12 * `Etc/GMT+2` - Etc/GMT+2 * `Etc/GMT+3` - Etc/GMT+3 * `Etc/GMT+4` - Etc/GMT+4 * `Etc/GMT+5` - Etc/GMT+5 * `Etc/GMT+6` - Etc/GMT+6 * `Etc/GMT+7` - Etc/GMT+7 * `Etc/GMT+8` - Etc/GMT+8 * `Etc/GMT+9` - Etc/GMT+9 * `Etc/GMT-0` - Etc/GMT-0 * `Etc/GMT-1` - Etc/GMT-1 * `Etc/GMT-10` - Etc/GMT-10 * `Etc/GMT-11` - Etc/GMT-11 * `Etc/GMT-12` - Etc/GMT-12 * `Etc/GMT-13` - Etc/GMT-13 * `Etc/GMT-14` - Etc/GMT-14 * `Etc/GMT-2` - Etc/GMT-2 * `Etc/GMT-3` - Etc/GMT-3 * `Etc/GMT-4` - Etc/GMT-4 * `Etc/GMT-5` - Etc/GMT-5 * `Etc/GMT-6` - Etc/GMT-6 * `Etc/GMT-7` - Etc/GMT-7 * `Etc/GMT-8` - Etc/GMT-8 * `Etc/GMT-9` - Etc/GMT-9 * `Etc/GMT0` - Etc/GMT0 * `Etc/Greenwich` - Etc/Greenwich * `Etc/UCT` - Etc/UCT * `Etc/UTC` - Etc/UTC * `Etc/Universal` - Etc/Universal * `Etc/Zulu` - Etc/Zulu * `Europe/Amsterdam` - Europe/Amsterdam * `Europe/Andorra` - Europe/Andorra * `Europe/Astrakhan` - Europe/Astrakhan * `Europe/Athens` - Europe/Athens * `Europe/Belfast` - Europe/Belfast * `Europe/Belgrade` - Europe/Belgrade * `Europe/Berlin` - Europe/Berlin * `Europe/Bratislava` - Europe/Bratislava * `Europe/Brussels` - Europe/Brussels * `Europe/Bucharest` - Europe/Bucharest * `Europe/Budapest` - Europe/Budapest * `Europe/Busingen` - Europe/Busingen * `Europe/Chisinau` - Europe/Chisinau * `Europe/Copenhagen` - Europe/Copenhagen * `Europe/Dublin` - Europe/Dublin * `Europe/Gibraltar` - Europe/Gibraltar * `Europe/Guernsey` - Europe/Guernsey * `Europe/Helsinki` - Europe/Helsinki * `Europe/Isle_of_Man` - Europe/Isle_of_Man * `Europe/Istanbul` - Europe/Istanbul * `Europe/Jersey` - Europe/Jersey * `Europe/Kaliningrad` - Europe/Kaliningrad * `Europe/Kiev` - Europe/Kiev * `Europe/Kirov` - Europe/Kirov * `Europe/Kyiv` - Europe/Kyiv * `Europe/Lisbon` - Europe/Lisbon * `Europe/Ljubljana` - Europe/Ljubljana * `Europe/London` - Europe/London * `Europe/Luxembourg` - Europe/Luxembourg * `Europe/Madrid` - Europe/Madrid * `Europe/Malta` - Europe/Malta * `Europe/Mariehamn` - Europe/Mariehamn * `Europe/Minsk` - Europe/Minsk * `Europe/Monaco` - Europe/Monaco * `Europe/Moscow` - Europe/Moscow * `Europe/Nicosia` - Europe/Nicosia * `Europe/Oslo` - Europe/Oslo * `Europe/Paris` - Europe/Paris * `Europe/Podgorica` - Europe/Podgorica * `Europe/Prague` - Europe/Prague * `Europe/Riga` - Europe/Riga * `Europe/Rome` - Europe/Rome * `Europe/Samara` - Europe/Samara * `Europe/San_Marino` - Europe/San_Marino * `Europe/Sarajevo` - Europe/Sarajevo * `Europe/Saratov` - Europe/Saratov * `Europe/Simferopol` - Europe/Simferopol * `Europe/Skopje` - Europe/Skopje * `Europe/Sofia` - Europe/Sofia * `Europe/Stockholm` - Europe/Stockholm * `Europe/Tallinn` - Europe/Tallinn * `Europe/Tirane` - Europe/Tirane * `Europe/Tiraspol` - Europe/Tiraspol * `Europe/Ulyanovsk` - Europe/Ulyanovsk * `Europe/Uzhgorod` - Europe/Uzhgorod * `Europe/Vaduz` - Europe/Vaduz * `Europe/Vatican` - Europe/Vatican * `Europe/Vienna` - Europe/Vienna * `Europe/Vilnius` - Europe/Vilnius * `Europe/Volgograd` - Europe/Volgograd * `Europe/Warsaw` - Europe/Warsaw * `Europe/Zagreb` - Europe/Zagreb * `Europe/Zaporozhye` - Europe/Zaporozhye * `Europe/Zurich` - Europe/Zurich * `GB` - GB * `GB-Eire` - GB-Eire * `GMT` - GMT * `GMT+0` - GMT+0 * `GMT-0` - GMT-0 * `GMT0` - GMT0 * `Greenwich` - Greenwich * `HST` - HST * `Hongkong` - Hongkong * `Iceland` - Iceland * `Indian/Antananarivo` - Indian/Antananarivo * `Indian/Chagos` - Indian/Chagos * `Indian/Christmas` - Indian/Christmas * `Indian/Cocos` - Indian/Cocos * `Indian/Comoro` - Indian/Comoro * `Indian/Kerguelen` - Indian/Kerguelen * `Indian/Mahe` - Indian/Mahe * `Indian/Maldives` - Indian/Maldives * `Indian/Mauritius` - Indian/Mauritius * `Indian/Mayotte` - Indian/Mayotte * `Indian/Reunion` - Indian/Reunion * `Iran` - Iran * `Israel` - Israel * `Jamaica` - Jamaica * `Japan` - Japan * `Kwajalein` - Kwajalein * `Libya` - Libya * `MET` - MET * `MST` - MST * `MST7MDT` - MST7MDT * `Mexico/BajaNorte` - Mexico/BajaNorte * `Mexico/BajaSur` - Mexico/BajaSur * `Mexico/General` - Mexico/General * `NZ` - NZ * `NZ-CHAT` - NZ-CHAT * `Navajo` - Navajo * `PRC` - PRC * `PST8PDT` - PST8PDT * `Pacific/Apia` - Pacific/Apia * `Pacific/Auckland` - Pacific/Auckland * `Pacific/Bougainville` - Pacific/Bougainville * `Pacific/Chatham` - Pacific/Chatham * `Pacific/Chuuk` - Pacific/Chuuk * `Pacific/Easter` - Pacific/Easter * `Pacific/Efate` - Pacific/Efate * `Pacific/Enderbury` - Pacific/Enderbury * `Pacific/Fakaofo` - Pacific/Fakaofo * `Pacific/Fiji` - Pacific/Fiji * `Pacific/Funafuti` - Pacific/Funafuti * `Pacific/Galapagos` - Pacific/Galapagos * `Pacific/Gambier` - Pacific/Gambier * `Pacific/Guadalcanal` - Pacific/Guadalcanal * `Pacific/Guam` - Pacific/Guam * `Pacific/Honolulu` - Pacific/Honolulu * `Pacific/Johnston` - Pacific/Johnston * `Pacific/Kanton` - Pacific/Kanton * `Pacific/Kiritimati` - Pacific/Kiritimati * `Pacific/Kosrae` - Pacific/Kosrae * `Pacific/Kwajalein` - Pacific/Kwajalein * `Pacific/Majuro` - Pacific/Majuro * `Pacific/Marquesas` - Pacific/Marquesas * `Pacific/Midway` - Pacific/Midway * `Pacific/Nauru` - Pacific/Nauru * `Pacific/Niue` - Pacific/Niue * `Pacific/Norfolk` - Pacific/Norfolk * `Pacific/Noumea` - Pacific/Noumea * `Pacific/Pago_Pago` - Pacific/Pago_Pago * `Pacific/Palau` - Pacific/Palau * `Pacific/Pitcairn` - Pacific/Pitcairn * `Pacific/Pohnpei` - Pacific/Pohnpei * `Pacific/Ponape` - Pacific/Ponape * `Pacific/Port_Moresby` - Pacific/Port_Moresby * `Pacific/Rarotonga` - Pacific/Rarotonga * `Pacific/Saipan` - Pacific/Saipan * `Pacific/Samoa` - Pacific/Samoa * `Pacific/Tahiti` - Pacific/Tahiti * `Pacific/Tarawa` - Pacific/Tarawa * `Pacific/Tongatapu` - Pacific/Tongatapu * `Pacific/Truk` - Pacific/Truk * `Pacific/Wake` - Pacific/Wake * `Pacific/Wallis` - Pacific/Wallis * `Pacific/Yap` - Pacific/Yap * `Poland` - Poland * `Portugal` - Portugal * `ROC` - ROC * `ROK` - ROK * `Singapore` - Singapore * `Turkey` - Turkey * `UCT` - UCT * `US/Alaska` - US/Alaska * `US/Aleutian` - US/Aleutian * `US/Arizona` - US/Arizona * `US/Central` - US/Central * `US/East-Indiana` - US/East-Indiana * `US/Eastern` - US/Eastern * `US/Hawaii` - US/Hawaii * `US/Indiana-Starke` - US/Indiana-Starke * `US/Michigan` - US/Michigan * `US/Mountain` - US/Mountain * `US/Pacific` - US/Pacific * `US/Samoa` - US/Samoa * `UTC` - UTC * `Universal` - Universal * `W-SU` - W-SU * `WET` - WET * `Zulu` - Zulu */
 export type TimezoneEnum =
   | "Africa/Abidjan"
@@ -1025,29 +1184,66 @@ export type TimezoneEnum =
   | "W-SU"
   | "WET"
   | "Zulu";
+const TimezoneEnum = S.String;
+
 /** Ordered list of person properties used to render a human-friendly display name in the UI. */
 export type CreateOrganizationsProjectRequestPersonDisplayNamePropertiesList = Array<string>;
+const CreateOrganizationsProjectRequestPersonDisplayNamePropertiesList = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<CreateOrganizationsProjectRequestPersonDisplayNamePropertiesList>;
+
 export type CreateOrganizationsProjectRequestSessionRecordingUrlTriggerConfigList = Array<unknown>;
+const CreateOrganizationsProjectRequestSessionRecordingUrlTriggerConfigList = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<CreateOrganizationsProjectRequestSessionRecordingUrlTriggerConfigList>;
+
 export type CreateOrganizationsProjectRequestSessionRecordingUrlBlocklistConfigList =
   Array<unknown>;
+const CreateOrganizationsProjectRequestSessionRecordingUrlBlocklistConfigList =
+  CreateOrganizationsProjectRequestSessionRecordingUrlTriggerConfigList as any as S.Schema<CreateOrganizationsProjectRequestSessionRecordingUrlBlocklistConfigList>;
+
 export type CreateOrganizationsProjectRequestSessionRecordingEventTriggerConfigList = Array<
   string | null
 >;
+const CreateOrganizationsProjectRequestSessionRecordingEventTriggerConfigList =
+  /*@__PURE__*/ __L.at(
+    __c3,
+    7,
+  ) as any as S.Schema<CreateOrganizationsProjectRequestSessionRecordingEventTriggerConfigList>;
+
 /** * `30d` - 30 Days * `90d` - 90 Days * `1y` - 1 Year * `5y` - 5 Years */
 export type SessionRecordingRetentionPeriodEnum = "30d" | "90d" | "1y" | "5y";
+const SessionRecordingRetentionPeriodEnum = S.String;
+
 /** * `0` - Sunday * `1` - Monday */
 export type WeekStartDayEnum = 0 | 1;
+const WeekStartDayEnum = S.Number;
+
 export type CreateOrganizationsProjectRequestLiveEventsColumnsList = Array<string>;
+const CreateOrganizationsProjectRequestLiveEventsColumnsList =
+  CreateIdentityProviderConfigRequestOrganizationDomainIdsList as any as S.Schema<CreateOrganizationsProjectRequestLiveEventsColumnsList>;
+
 /** Origins permitted to record session replays and heatmaps. Empty list allows all origins. */
 export type CreateOrganizationsProjectRequestRecordingDomainsList = Array<string | null>;
+const CreateOrganizationsProjectRequestRecordingDomainsList =
+  CreateOrganizationsProjectRequestAppUrlsList as any as S.Schema<CreateOrganizationsProjectRequestRecordingDomainsList>;
+
 /** * `b2b` - B2B * `b2c` - B2C * `other` - Other */
 export type BusinessModelEnum = "b2b" | "b2c" | "other";
 /** Whether this project serves B2B or B2C customers. Used to optimize default UI layouts. * `b2b` - B2B * `b2c` - B2C * `other` - Other */
 export type CreateOrganizationsProjectRequestBusinessModel = BusinessModelEnum | BlankEnum;
+const CreateOrganizationsProjectRequestBusinessModel =
+  S.Unknown as any as S.Schema<CreateOrganizationsProjectRequestBusinessModel>;
+
 /** Settings for Conversations. Must be a JSON object or null. */
 export type CreateOrganizationsProjectRequestConversationsSettingsMap = {
   [key: string]: unknown | undefined;
 };
+const CreateOrganizationsProjectRequestConversationsSettingsMap =
+  OrganizationTeamsItemMap as any as S.Schema<CreateOrganizationsProjectRequestConversationsSettingsMap>;
+
 /** * `AED` - AED * `AFN` - AFN * `ALL` - ALL * `AMD` - AMD * `ANG` - ANG * `AOA` - AOA * `ARS` - ARS * `AUD` - AUD * `AWG` - AWG * `AZN` - AZN * `BAM` - BAM * `BBD` - BBD * `BDT` - BDT * `BGN` - BGN * `BHD` - BHD * `BIF` - BIF * `BMD` - BMD * `BND` - BND * `BOB` - BOB * `BRL` - BRL * `BSD` - BSD * `BTC` - BTC * `BTN` - BTN * `BWP` - BWP * `BYN` - BYN * `BZD` - BZD * `CAD` - CAD * `CDF` - CDF * `CHF` - CHF * `CLP` - CLP * `CNY` - CNY * `COP` - COP * `CRC` - CRC * `CVE` - CVE * `CZK` - CZK * `DJF` - DJF * `DKK` - DKK * `DOP` - DOP * `DZD` - DZD * `EGP` - EGP * `ERN` - ERN * `ETB` - ETB * `EUR` - EUR * `FJD` - FJD * `GBP` - GBP * `GEL` - GEL * `GHS` - GHS * `GIP` - GIP * `GMD` - GMD * `GNF` - GNF * `GTQ` - GTQ * `GYD` - GYD * `HKD` - HKD * `HNL` - HNL * `HRK` - HRK * `HTG` - HTG * `HUF` - HUF * `IDR` - IDR * `ILS` - ILS * `INR` - INR * `IQD` - IQD * `IRR` - IRR * `ISK` - ISK * `JMD` - JMD * `JOD` - JOD * `JPY` - JPY * `KES` - KES * `KGS` - KGS * `KHR` - KHR * `KMF` - KMF * `KRW` - KRW * `KWD` - KWD * `KYD` - KYD * `KZT` - KZT * `LAK` - LAK * `LBP` - LBP * `LKR` - LKR * `LRD` - LRD * `LTL` - LTL * `LVL` - LVL * `LSL` - LSL * `LYD` - LYD * `MAD` - MAD * `MDL` - MDL * `MGA` - MGA * `MKD` - MKD * `MMK` - MMK * `MNT` - MNT * `MOP` - MOP * `MRU` - MRU * `MTL` - MTL * `MUR` - MUR * `MVR` - MVR * `MWK` - MWK * `MXN` - MXN * `MYR` - MYR * `MZN` - MZN * `NAD` - NAD * `NGN` - NGN * `NIO` - NIO * `NOK` - NOK * `NPR` - NPR * `NZD` - NZD * `OMR` - OMR * `PAB` - PAB * `PEN` - PEN * `PGK` - PGK * `PHP` - PHP * `PKR` - PKR * `PLN` - PLN * `PYG` - PYG * `QAR` - QAR * `RON` - RON * `RSD` - RSD * `RUB` - RUB * `RWF` - RWF * `SAR` - SAR * `SBD` - SBD * `SCR` - SCR * `SDG` - SDG * `SEK` - SEK * `SGD` - SGD * `SRD` - SRD * `SSP` - SSP * `STN` - STN * `SYP` - SYP * `SZL` - SZL * `THB` - THB * `TJS` - TJS * `TMT` - TMT * `TND` - TND * `TOP` - TOP * `TRY` - TRY * `TTD` - TTD * `TWD` - TWD * `TZS` - TZS * `UAH` - UAH * `UGX` - UGX * `USD` - USD * `UYU` - UYU * `UZS` - UZS * `VES` - VES * `VND` - VND * `VUV` - VUV * `WST` - WST * `XAF` - XAF * `XCD` - XCD * `XOF` - XOF * `XPF` - XPF * `YER` - YER * `ZAR` - ZAR * `ZMW` - ZMW */
 export type BaseCurrencyEnum =
   | "AED"
@@ -1202,11 +1398,18 @@ export type BaseCurrencyEnum =
   | "YER"
   | "ZAR"
   | "ZMW";
+const BaseCurrencyEnum = S.String;
+
 export interface TeamRevenueAnalyticsConfig {
   base_currency?: BaseCurrencyEnum | (string & {});
   events?: unknown;
   filter_test_accounts?: boolean;
 }
+const TeamRevenueAnalyticsConfig = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<TeamRevenueAnalyticsConfig>;
+
 export interface SourceMap {
   ad_group_id?: string | null;
   ad_group_name?: string | null;
@@ -1223,8 +1426,15 @@ export interface SourceMap {
   reported_conversion_value?: string | null;
   source?: string | null;
 }
+const SourceMap = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<SourceMap>;
+
 /** Mapping of external data source id to that source's column mapping. */
 export type MarketingAnalyticsSourceMapping = { [key: string]: SourceMap | undefined };
+const MarketingAnalyticsSourceMapping = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<MarketingAnalyticsSourceMapping>;
+
 export type BaseMathType =
   | "total"
   | "dau"
@@ -1713,8 +1923,16 @@ export type MarketingAnalyticsConversionGoalListItem =
   | MarketingAnalyticsEventConversionGoal
   | MarketingAnalyticsActionConversionGoal
   | MarketingAnalyticsWarehouseConversionGoal;
+const MarketingAnalyticsConversionGoalListItem =
+  S.Unknown as any as S.Schema<MarketingAnalyticsConversionGoalListItem>;
+
 /** The conversion goals configured for marketing analytics, in display order. */
 export type MarketingAnalyticsConversionGoalList = Array<MarketingAnalyticsConversionGoalListItem>;
+const MarketingAnalyticsConversionGoalList = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<MarketingAnalyticsConversionGoalList>;
+
 /** * `first_touch` - First Touch * `last_touch` - Last Touch * `linear` - Linear * `time_decay` - Time Decay * `position_based` - Position Based */
 export type AttributionModeEnum =
   | "first_touch"
@@ -1722,27 +1940,57 @@ export type AttributionModeEnum =
   | "linear"
   | "time_decay"
   | "position_based";
+const AttributionModeEnum = S.String;
+
 export type MarketingAnalyticsCampaignNameMappingsValueValueList = Array<string>;
+const MarketingAnalyticsCampaignNameMappingsValueValueList =
+  CreateIdentityProviderConfigRequestOrganizationDomainIdsList as any as S.Schema<MarketingAnalyticsCampaignNameMappingsValueValueList>;
+
 export type MarketingAnalyticsCampaignNameMappingsValueMap = {
   [key: string]: MarketingAnalyticsCampaignNameMappingsValueValueList | undefined;
 };
+const MarketingAnalyticsCampaignNameMappingsValueMap = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<MarketingAnalyticsCampaignNameMappingsValueMap>;
+
 /** Mapping of integration type to canonical campaign name to the aliases folded into it. */
 export type MarketingAnalyticsCampaignNameMappings = {
   [key: string]: MarketingAnalyticsCampaignNameMappingsValueMap | undefined;
 };
+const MarketingAnalyticsCampaignNameMappings = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<MarketingAnalyticsCampaignNameMappings>;
+
 export type MarketingAnalyticsCustomSourceMappingsValueList = Array<string>;
 /** Mapping of integration type to the custom UTM source values folded into it. */
 export type MarketingAnalyticsCustomSourceMappings = {
   [key: string]: MarketingAnalyticsCustomSourceMappingsValueList | undefined;
 };
+const MarketingAnalyticsCustomSourceMappings =
+  MarketingAnalyticsCampaignNameMappingsValueMap as any as S.Schema<MarketingAnalyticsCustomSourceMappings>;
+
 export type MatchField = "campaign_name" | "campaign_id";
+const MatchField = S.String;
+
 export interface CampaignFieldPreference {
   match_field: MatchField | (string & {});
 }
+const CampaignFieldPreference = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<CampaignFieldPreference>;
+
 /** Mapping of integration type to the campaign field used when matching campaigns. */
 export type MarketingAnalyticsCampaignFieldPreferences = {
   [key: string]: CampaignFieldPreference | undefined;
 };
+const MarketingAnalyticsCampaignFieldPreferences = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<MarketingAnalyticsCampaignFieldPreferences>;
+
 export interface TeamMarketingAnalyticsConfig {
   /** Column mapping per external data source, keyed by source id. Tells marketing analytics which column holds campaign, source, cost, clicks and impressions for that source. */
   sources_map?: MarketingAnalyticsSourceMapping;
@@ -1761,17 +2009,34 @@ export interface TeamMarketingAnalyticsConfig {
   /** Which field to match campaigns on per integration type, campaign_name or campaign_id. Manual mappings in campaign_name_mappings still take precedence. */
   campaign_field_preferences?: MarketingAnalyticsCampaignFieldPreferences;
 }
+const TeamMarketingAnalyticsConfig = /*@__PURE__*/ __L.at(
+  __c5,
+  0,
+) as any as S.Schema<TeamMarketingAnalyticsConfig>;
+
 /** * `custom_property` - Custom property * `relationship` - Relationship */
 export type AccountPropertyPinKindEnum = "custom_property" | "relationship";
+const AccountPropertyPinKindEnum = S.String;
+
 export interface TeamCustomerAnalyticsPinnedAccountProperty {
   /** Definition type for this default pinned account property. * `custom_property` - Custom property * `relationship` - Relationship */
   kind: AccountPropertyPinKindEnum | (string & {});
   /** Project-scoped custom property or relationship definition UUID. */
   id: string;
 }
+const TeamCustomerAnalyticsPinnedAccountProperty = /*@__PURE__*/ __L.at(
+  __c5,
+  1,
+) as any as S.Schema<TeamCustomerAnalyticsPinnedAccountProperty>;
+
 /** Ordered account properties shown until a user saves a personal pinned-property selection. Pass an empty list to show no properties by default. */
 export type TeamCustomerAnalyticsConfigDefaultPinnedPropertiesList =
   Array<TeamCustomerAnalyticsPinnedAccountProperty>;
+const TeamCustomerAnalyticsConfigDefaultPinnedPropertiesList = /*@__PURE__*/ __L.at(
+  __c5,
+  2,
+) as any as S.Schema<TeamCustomerAnalyticsConfigDefaultPinnedPropertiesList>;
+
 export interface TeamCustomerAnalyticsConfig {
   /** Event used as the activity signal (DAU/WAU/MAU). */
   activity_event?: unknown;
@@ -1788,8 +2053,15 @@ export interface TeamCustomerAnalyticsConfig {
   /** Ordered account properties shown until a user saves a personal pinned-property selection. Pass an empty list to show no properties by default. */
   default_pinned_properties?: TeamCustomerAnalyticsConfigDefaultPinnedPropertiesList;
 }
+const TeamCustomerAnalyticsConfig = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<TeamCustomerAnalyticsConfig>;
+
 /** * `off` - Off * `opt_out` - Opt Out * `opt_in` - Opt In */
 export type EmailTrackingConsentModeEnum = "off" | "opt_out" | "opt_in";
+const EmailTrackingConsentModeEnum = S.String;
+
 export interface TeamWorkflowsConfig {
   /** When enabled, workflows engagement activity (email sends, opens, clicks, bounces, spam reports, unsubscribes) is captured as standard PostHog events ($workflows_email_*) alongside the existing workflow metrics. */
   capture_workflows_engagement_events?: boolean;
@@ -1800,12 +2072,21 @@ export interface TeamWorkflowsConfig {
   /** How many AI tasks all workflows in the project can create together in a rolling 24 hours. Null uses the default of 500; zero pauses task creation for the project. Support raises the limit above 2500. */
   workflow_task_team_rate_limit_per_day?: number | null;
 }
+const TeamWorkflowsConfig = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<TeamWorkflowsConfig>;
+
 export interface TeamFeatureFlagPolicyConfig {
   /** When enabled, a new feature flag needs at least one tag, and a tagged flag cannot lose its last one. A create that declares it comes from a survey, experiment, early access feature, product tour, or web experiment is exempt, because those forms have no tag input. The caller sets that declaration, so a flag can still be created without a tag. */
   require_tags?: boolean;
 }
+const TeamFeatureFlagPolicyConfig = /*@__PURE__*/ __L.at(
+  __c5,
+  5,
+) as any as S.Schema<TeamFeatureFlagPolicyConfig>;
+
 /** * `0` - Disabled * `1` - Stateless * `2` - Stateful */
 export type CookielessServerHashModeEnum = 0 | 1 | 2;
+const CookielessServerHashModeEnum = S.Number;
+
 export interface CreateOrganizationsProjectRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
@@ -1911,32 +2192,83 @@ export interface CreateOrganizationsProjectRequest {
   onboarding_tasks?: unknown;
   web_analytics_pre_aggregated_tables_enabled?: boolean | null;
 }
+const CreateOrganizationsProjectRequest = /*@__PURE__*/ __L.at(
+  __c5,
+  6,
+) as any as S.Schema<CreateOrganizationsProjectRequest>;
+
 /** Labels applied to this project. Names are trimmed and lowercased, and sending this field replaces the project's existing tags. */
 export type ProjectBackwardCompatTagsList = Array<string>;
+const ProjectBackwardCompatTagsList =
+  CreateIdentityProviderConfigRequestOrganizationDomainIdsList as any as S.Schema<ProjectBackwardCompatTagsList>;
+
 export type ProjectBackwardCompatGroupTypesItemMap = { [key: string]: unknown | undefined };
 export type ProjectBackwardCompatGroupTypesList = Array<ProjectBackwardCompatGroupTypesItemMap>;
+const ProjectBackwardCompatGroupTypesList =
+  OrganizationTeamsList as any as S.Schema<ProjectBackwardCompatGroupTypesList>;
+
 export type ProjectBackwardCompatAppUrlsList = Array<string | null>;
+const ProjectBackwardCompatAppUrlsList =
+  CreateOrganizationsProjectRequestAppUrlsList as any as S.Schema<ProjectBackwardCompatAppUrlsList>;
+
 /** Ordered list of person properties used to render a human-friendly display name in the UI. */
 export type ProjectBackwardCompatPersonDisplayNamePropertiesList = Array<string>;
+const ProjectBackwardCompatPersonDisplayNamePropertiesList =
+  CreateIdentityProviderConfigRequestOrganizationDomainIdsList as any as S.Schema<ProjectBackwardCompatPersonDisplayNamePropertiesList>;
+
 export type ProjectBackwardCompatSessionRecordingUrlTriggerConfigList = Array<unknown>;
+const ProjectBackwardCompatSessionRecordingUrlTriggerConfigList =
+  OrganizationAvailableProductFeaturesList as any as S.Schema<ProjectBackwardCompatSessionRecordingUrlTriggerConfigList>;
+
 export type ProjectBackwardCompatSessionRecordingUrlBlocklistConfigList = Array<unknown>;
+const ProjectBackwardCompatSessionRecordingUrlBlocklistConfigList =
+  OrganizationAvailableProductFeaturesList as any as S.Schema<ProjectBackwardCompatSessionRecordingUrlBlocklistConfigList>;
+
 export type ProjectBackwardCompatSessionRecordingEventTriggerConfigList = Array<string | null>;
+const ProjectBackwardCompatSessionRecordingEventTriggerConfigList =
+  CreateOrganizationsProjectRequestAppUrlsList as any as S.Schema<ProjectBackwardCompatSessionRecordingEventTriggerConfigList>;
+
 export type ProjectBackwardCompatLiveEventsColumnsList = Array<string>;
+const ProjectBackwardCompatLiveEventsColumnsList =
+  CreateIdentityProviderConfigRequestOrganizationDomainIdsList as any as S.Schema<ProjectBackwardCompatLiveEventsColumnsList>;
+
 /** Origins permitted to record session replays and heatmaps. Empty list allows all origins. */
 export type ProjectBackwardCompatRecordingDomainsList = Array<string | null>;
+const ProjectBackwardCompatRecordingDomainsList =
+  CreateOrganizationsProjectRequestAppUrlsList as any as S.Schema<ProjectBackwardCompatRecordingDomainsList>;
+
 export type ProjectBackwardCompatDefaultModifiersMap = { [key: string]: unknown | undefined };
+const ProjectBackwardCompatDefaultModifiersMap =
+  OrganizationTeamsItemMap as any as S.Schema<ProjectBackwardCompatDefaultModifiersMap>;
+
 export interface ProjectBackwardCompatProductIntentsItem {
   product_type?: string;
   created_at?: string;
   onboarding_completed_at?: string | null;
   updated_at?: string;
 }
+const ProjectBackwardCompatProductIntentsItem = /*@__PURE__*/ __L.at(
+  __c5,
+  7,
+) as any as S.Schema<ProjectBackwardCompatProductIntentsItem>;
+
 export type ProjectBackwardCompatProductIntentsList =
   Array<ProjectBackwardCompatProductIntentsItem>;
+const ProjectBackwardCompatProductIntentsList = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<ProjectBackwardCompatProductIntentsList>;
+
 /** Whether this project serves B2B or B2C customers. Used to optimize default UI layouts. * `b2b` - B2B * `b2c` - B2C * `other` - Other */
 export type ProjectBackwardCompatBusinessModel = BusinessModelEnum | BlankEnum;
+const ProjectBackwardCompatBusinessModel =
+  S.Unknown as any as S.Schema<ProjectBackwardCompatBusinessModel>;
+
 /** Settings for Conversations. Must be a JSON object or null. */
 export type ProjectBackwardCompatConversationsSettingsMap = { [key: string]: unknown | undefined };
+const ProjectBackwardCompatConversationsSettingsMap =
+  OrganizationTeamsItemMap as any as S.Schema<ProjectBackwardCompatConversationsSettingsMap>;
+
 /** * `ingest_first_event` - ingest_first_event * `set_up_reverse_proxy` - set_up_reverse_proxy * `create_first_insight` - create_first_insight * `create_first_dashboard` - create_first_dashboard * `track_custom_events` - track_custom_events * `define_actions` - define_actions * `set_up_cohorts` - set_up_cohorts * `explore_trends_insight` - explore_trends_insight * `create_funnel` - create_funnel * `explore_retention_insight` - explore_retention_insight * `explore_paths_insight` - explore_paths_insight * `explore_stickiness_insight` - explore_stickiness_insight * `explore_lifecycle_insight` - explore_lifecycle_insight * `add_authorized_domain` - add_authorized_domain * `set_up_web_vitals` - set_up_web_vitals * `review_web_analytics_dashboard` - review_web_analytics_dashboard * `filter_web_analytics` - filter_web_analytics * `set_up_web_analytics_conversion_goals` - set_up_web_analytics_conversion_goals * `visit_web_vitals_dashboard` - visit_web_vitals_dashboard * `setup_session_recordings` - setup_session_recordings * `watch_session_recording` - watch_session_recording * `configure_recording_settings` - configure_recording_settings * `create_recording_playlist` - create_recording_playlist * `enable_console_logs` - enable_console_logs * `create_feature_flag` - create_feature_flag * `implement_flag_in_code` - implement_flag_in_code * `update_feature_flag_release_conditions` - update_feature_flag_release_conditions * `create_multivariate_flag` - create_multivariate_flag * `set_up_flag_payloads` - set_up_flag_payloads * `set_up_flag_evaluation_runtimes` - set_up_flag_evaluation_runtimes * `create_experiment` - create_experiment * `implement_experiment_variants` - implement_experiment_variants * `launch_experiment` - launch_experiment * `review_experiment_results` - review_experiment_results * `create_survey` - create_survey * `launch_survey` - launch_survey * `collect_survey_responses` - collect_survey_responses * `connect_source` - connect_source * `run_first_query` - run_first_query * `join_external_data` - join_external_data * `create_saved_view` - create_saved_view * `enable_error_tracking` - enable_error_tracking * `upload_source_maps` - upload_source_maps * `view_first_error` - view_first_error * `resolve_first_error` - resolve_first_error * `ingest_first_llm_event` - ingest_first_llm_event * `view_first_trace` - view_first_trace * `track_costs` - track_costs * `set_up_llm_evaluation` - set_up_llm_evaluation * `run_ai_playground` - run_ai_playground * `enable_log_capture` - enable_log_capture * `view_first_logs` - view_first_logs * `create_first_workflow` - create_first_workflow * `set_up_first_workflow_channel` - set_up_first_workflow_channel * `configure_workflow_trigger` - configure_workflow_trigger * `add_workflow_action` - add_workflow_action * `launch_workflow` - launch_workflow * `create_first_endpoint` - create_first_endpoint * `configure_endpoint` - configure_endpoint * `test_endpoint` - test_endpoint * `create_early_access_feature` - create_early_access_feature * `update_feature_stage` - update_feature_stage * `use_posthog_ai` - use_posthog_ai * `use_posthog_code` - use_posthog_code * `use_posthog_mcp` - use_posthog_mcp * `use_posthog_in_slack` - use_posthog_in_slack */
 export type AvailableSetupTaskIdsEnum =
   | "ingest_first_event"
@@ -2005,9 +2337,23 @@ export type AvailableSetupTaskIdsEnum =
   | "use_posthog_code"
   | "use_posthog_mcp"
   | "use_posthog_in_slack";
+const AvailableSetupTaskIdsEnum = S.String;
+
 export type ProjectBackwardCompatAvailableSetupTaskIdsList = Array<AvailableSetupTaskIdsEnum>;
+const ProjectBackwardCompatAvailableSetupTaskIdsList = /*@__PURE__*/ __L.at(
+  __c6,
+  1,
+) as any as S.Schema<ProjectBackwardCompatAvailableSetupTaskIdsList>;
+
 export type ProjectBackwardCompatManagedViewsetsMap = { [key: string]: boolean | undefined };
+const ProjectBackwardCompatManagedViewsetsMap = /*@__PURE__*/ __L.at(
+  __c6,
+  2,
+) as any as S.Schema<ProjectBackwardCompatManagedViewsetsMap>;
+
 export type FlagEvaluationsModeEnum = 0 | 1 | 2;
+const FlagEvaluationsModeEnum = S.Number;
+
 /** A project and its settings, including the settings that live on its passthrough Team. This shape is a superset of TeamSerializer's, so a request rewritten from /api/environments/ onto /api/projects/ never loses a field. */
 export interface ProjectBackwardCompat {
   id?: number;
@@ -2142,32 +2488,70 @@ export interface ProjectBackwardCompat {
   onboarding_tasks?: unknown;
   web_analytics_pre_aggregated_tables_enabled?: boolean | null;
 }
+const ProjectBackwardCompat = /*@__PURE__*/ __L.at(
+  __c6,
+  3,
+) as any as S.Schema<ProjectBackwardCompat>;
+
 /** Labels applied to this project. Names are trimmed and lowercased, and sending this field replaces the project's existing tags. */
 export type CreateOrganizationsProjectsChangeOrganizationRequestTagsList = Array<string>;
+const CreateOrganizationsProjectsChangeOrganizationRequestTagsList =
+  CreateIdentityProviderConfigRequestOrganizationDomainIdsList as any as S.Schema<CreateOrganizationsProjectsChangeOrganizationRequestTagsList>;
+
 export type CreateOrganizationsProjectsChangeOrganizationRequestAppUrlsList = Array<string | null>;
+const CreateOrganizationsProjectsChangeOrganizationRequestAppUrlsList =
+  CreateOrganizationsProjectRequestSessionRecordingEventTriggerConfigList as any as S.Schema<CreateOrganizationsProjectsChangeOrganizationRequestAppUrlsList>;
+
 /** Ordered list of person properties used to render a human-friendly display name in the UI. */
 export type CreateOrganizationsProjectsChangeOrganizationRequestPersonDisplayNamePropertiesList =
   Array<string>;
+const CreateOrganizationsProjectsChangeOrganizationRequestPersonDisplayNamePropertiesList =
+  CreateOrganizationsProjectRequestPersonDisplayNamePropertiesList as any as S.Schema<CreateOrganizationsProjectsChangeOrganizationRequestPersonDisplayNamePropertiesList>;
+
 export type CreateOrganizationsProjectsChangeOrganizationRequestSessionRecordingUrlTriggerConfigList =
   Array<unknown>;
+const CreateOrganizationsProjectsChangeOrganizationRequestSessionRecordingUrlTriggerConfigList =
+  CreateOrganizationsProjectRequestSessionRecordingUrlTriggerConfigList as any as S.Schema<CreateOrganizationsProjectsChangeOrganizationRequestSessionRecordingUrlTriggerConfigList>;
+
 export type CreateOrganizationsProjectsChangeOrganizationRequestSessionRecordingUrlBlocklistConfigList =
   Array<unknown>;
+const CreateOrganizationsProjectsChangeOrganizationRequestSessionRecordingUrlBlocklistConfigList =
+  CreateOrganizationsProjectRequestSessionRecordingUrlTriggerConfigList as any as S.Schema<CreateOrganizationsProjectsChangeOrganizationRequestSessionRecordingUrlBlocklistConfigList>;
+
 export type CreateOrganizationsProjectsChangeOrganizationRequestSessionRecordingEventTriggerConfigList =
   Array<string | null>;
+const CreateOrganizationsProjectsChangeOrganizationRequestSessionRecordingEventTriggerConfigList =
+  CreateOrganizationsProjectRequestSessionRecordingEventTriggerConfigList as any as S.Schema<CreateOrganizationsProjectsChangeOrganizationRequestSessionRecordingEventTriggerConfigList>;
+
 export type CreateOrganizationsProjectsChangeOrganizationRequestLiveEventsColumnsList =
   Array<string>;
+const CreateOrganizationsProjectsChangeOrganizationRequestLiveEventsColumnsList =
+  CreateOrganizationsProjectRequestPersonDisplayNamePropertiesList as any as S.Schema<CreateOrganizationsProjectsChangeOrganizationRequestLiveEventsColumnsList>;
+
 /** Origins permitted to record session replays and heatmaps. Empty list allows all origins. */
 export type CreateOrganizationsProjectsChangeOrganizationRequestRecordingDomainsList = Array<
   string | null
 >;
+const CreateOrganizationsProjectsChangeOrganizationRequestRecordingDomainsList =
+  CreateOrganizationsProjectRequestSessionRecordingEventTriggerConfigList as any as S.Schema<CreateOrganizationsProjectsChangeOrganizationRequestRecordingDomainsList>;
+
 /** Whether this project serves B2B or B2C customers. Used to optimize default UI layouts. * `b2b` - B2B * `b2c` - B2C * `other` - Other */
 export type CreateOrganizationsProjectsChangeOrganizationRequestBusinessModel =
   | BusinessModelEnum
   | BlankEnum;
+const CreateOrganizationsProjectsChangeOrganizationRequestBusinessModel =
+  S.Unknown as any as S.Schema<CreateOrganizationsProjectsChangeOrganizationRequestBusinessModel>;
+
 /** Settings for Conversations. Must be a JSON object or null. */
 export type CreateOrganizationsProjectsChangeOrganizationRequestConversationsSettingsMap = {
   [key: string]: unknown | undefined;
 };
+const CreateOrganizationsProjectsChangeOrganizationRequestConversationsSettingsMap =
+  /*@__PURE__*/ __L.at(
+    __c6,
+    4,
+  ) as any as S.Schema<CreateOrganizationsProjectsChangeOrganizationRequestConversationsSettingsMap>;
+
 export interface CreateOrganizationsProjectsChangeOrganizationRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
@@ -2275,34 +2659,69 @@ export interface CreateOrganizationsProjectsChangeOrganizationRequest {
   onboarding_tasks?: unknown;
   web_analytics_pre_aggregated_tables_enabled?: boolean | null;
 }
+const CreateOrganizationsProjectsChangeOrganizationRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  5,
+) as any as S.Schema<CreateOrganizationsProjectsChangeOrganizationRequest>;
+
 /** Labels applied to this project. Names are trimmed and lowercased, and sending this field replaces the project's existing tags. */
 export type CreateOrganizationsProjectsDefaultEvaluationContextRequestTagsList = Array<string>;
+const CreateOrganizationsProjectsDefaultEvaluationContextRequestTagsList =
+  CreateOrganizationsProjectRequestPersonDisplayNamePropertiesList as any as S.Schema<CreateOrganizationsProjectsDefaultEvaluationContextRequestTagsList>;
+
 export type CreateOrganizationsProjectsDefaultEvaluationContextRequestAppUrlsList = Array<
   string | null
 >;
+const CreateOrganizationsProjectsDefaultEvaluationContextRequestAppUrlsList =
+  CreateOrganizationsProjectRequestSessionRecordingEventTriggerConfigList as any as S.Schema<CreateOrganizationsProjectsDefaultEvaluationContextRequestAppUrlsList>;
+
 /** Ordered list of person properties used to render a human-friendly display name in the UI. */
 export type CreateOrganizationsProjectsDefaultEvaluationContextRequestPersonDisplayNamePropertiesList =
   Array<string>;
+const CreateOrganizationsProjectsDefaultEvaluationContextRequestPersonDisplayNamePropertiesList =
+  CreateOrganizationsProjectRequestPersonDisplayNamePropertiesList as any as S.Schema<CreateOrganizationsProjectsDefaultEvaluationContextRequestPersonDisplayNamePropertiesList>;
+
 export type CreateOrganizationsProjectsDefaultEvaluationContextRequestSessionRecordingUrlTriggerConfigList =
   Array<unknown>;
+const CreateOrganizationsProjectsDefaultEvaluationContextRequestSessionRecordingUrlTriggerConfigList =
+  CreateOrganizationsProjectRequestSessionRecordingUrlTriggerConfigList as any as S.Schema<CreateOrganizationsProjectsDefaultEvaluationContextRequestSessionRecordingUrlTriggerConfigList>;
+
 export type CreateOrganizationsProjectsDefaultEvaluationContextRequestSessionRecordingUrlBlocklistConfigList =
   Array<unknown>;
+const CreateOrganizationsProjectsDefaultEvaluationContextRequestSessionRecordingUrlBlocklistConfigList =
+  CreateOrganizationsProjectRequestSessionRecordingUrlTriggerConfigList as any as S.Schema<CreateOrganizationsProjectsDefaultEvaluationContextRequestSessionRecordingUrlBlocklistConfigList>;
+
 export type CreateOrganizationsProjectsDefaultEvaluationContextRequestSessionRecordingEventTriggerConfigList =
   Array<string | null>;
+const CreateOrganizationsProjectsDefaultEvaluationContextRequestSessionRecordingEventTriggerConfigList =
+  CreateOrganizationsProjectRequestSessionRecordingEventTriggerConfigList as any as S.Schema<CreateOrganizationsProjectsDefaultEvaluationContextRequestSessionRecordingEventTriggerConfigList>;
+
 export type CreateOrganizationsProjectsDefaultEvaluationContextRequestLiveEventsColumnsList =
   Array<string>;
+const CreateOrganizationsProjectsDefaultEvaluationContextRequestLiveEventsColumnsList =
+  CreateOrganizationsProjectRequestPersonDisplayNamePropertiesList as any as S.Schema<CreateOrganizationsProjectsDefaultEvaluationContextRequestLiveEventsColumnsList>;
+
 /** Origins permitted to record session replays and heatmaps. Empty list allows all origins. */
 export type CreateOrganizationsProjectsDefaultEvaluationContextRequestRecordingDomainsList = Array<
   string | null
 >;
+const CreateOrganizationsProjectsDefaultEvaluationContextRequestRecordingDomainsList =
+  CreateOrganizationsProjectRequestSessionRecordingEventTriggerConfigList as any as S.Schema<CreateOrganizationsProjectsDefaultEvaluationContextRequestRecordingDomainsList>;
+
 /** Whether this project serves B2B or B2C customers. Used to optimize default UI layouts. * `b2b` - B2B * `b2c` - B2C * `other` - Other */
 export type CreateOrganizationsProjectsDefaultEvaluationContextRequestBusinessModel =
   | BusinessModelEnum
   | BlankEnum;
+const CreateOrganizationsProjectsDefaultEvaluationContextRequestBusinessModel =
+  S.Unknown as any as S.Schema<CreateOrganizationsProjectsDefaultEvaluationContextRequestBusinessModel>;
+
 /** Settings for Conversations. Must be a JSON object or null. */
 export type CreateOrganizationsProjectsDefaultEvaluationContextRequestConversationsSettingsMap = {
   [key: string]: unknown | undefined;
 };
+const CreateOrganizationsProjectsDefaultEvaluationContextRequestConversationsSettingsMap =
+  CreateOrganizationsProjectsChangeOrganizationRequestConversationsSettingsMap as any as S.Schema<CreateOrganizationsProjectsDefaultEvaluationContextRequestConversationsSettingsMap>;
+
 export interface CreateOrganizationsProjectsDefaultEvaluationContextRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
@@ -2410,6 +2829,11 @@ export interface CreateOrganizationsProjectsDefaultEvaluationContextRequest {
   onboarding_tasks?: unknown;
   web_analytics_pre_aggregated_tables_enabled?: boolean | null;
 }
+const CreateOrganizationsProjectsDefaultEvaluationContextRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  6,
+) as any as S.Schema<CreateOrganizationsProjectsDefaultEvaluationContextRequest>;
+
 export interface CreateOrganizationsProjectsEvaluationContextSuggestionRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
@@ -2418,6 +2842,11 @@ export interface CreateOrganizationsProjectsEvaluationContextSuggestionRequest {
   /** Name of the evaluation context to hide from (POST) or restore to (DELETE) the flag editor's suggestion list. Case-insensitive and whitespace-trimmed. */
   context_name: string;
 }
+const CreateOrganizationsProjectsEvaluationContextSuggestionRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  7,
+) as any as S.Schema<CreateOrganizationsProjectsEvaluationContextSuggestionRequest>;
+
 export interface EvaluationContextSuggestionResponse {
   /** Whether the suggestion visibility change was applied. */
   success: boolean;
@@ -2426,22 +2855,41 @@ export interface EvaluationContextSuggestionResponse {
   /** Whether the context is now hidden from the flag editor's suggestion list. */
   hidden_from_suggestions: boolean;
 }
+const EvaluationContextSuggestionResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  0,
+) as any as S.Schema<EvaluationContextSuggestionResponse>;
+
 export interface CreateRequestAiAccessRequest {
   /** A UUID string identifying this organization. */
   id: string;
 }
+const CreateRequestAiAccessRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  1,
+) as any as S.Schema<CreateRequestAiAccessRequest>;
+
 export interface OrganizationAIAccessRequestResponse {
   /** Whether the access request was accepted and the organization admins were notified. */
   success: boolean;
 }
+const OrganizationAIAccessRequestResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  2,
+) as any as S.Schema<OrganizationAIAccessRequestResponse>;
+
 export interface CreateRoleRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
   name?: string;
 }
+const CreateRoleRequest = /*@__PURE__*/ __L.at(__c7, 3) as any as S.Schema<CreateRoleRequest>;
+
 export type RoleMembersItemMap = { [key: string]: unknown | undefined };
 /** Members assigned to this role */
 export type RoleMembersList = Array<RoleMembersItemMap>;
+const RoleMembersList = OrganizationTeamsList as any as S.Schema<RoleMembersList>;
+
 export interface Role {
   id?: string;
   name?: string;
@@ -2451,6 +2899,8 @@ export interface Role {
   members?: RoleMembersList;
   is_default?: boolean;
 }
+const Role = /*@__PURE__*/ __L.at(__c7, 4) as any as S.Schema<Role>;
+
 export interface CreateRoleExternalReferenceRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
@@ -2467,6 +2917,11 @@ export interface CreateRoleExternalReferenceRequest {
   /** PostHog role UUID this external role maps to. */
   role?: string;
 }
+const CreateRoleExternalReferenceRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  5,
+) as any as S.Schema<CreateRoleExternalReferenceRequest>;
+
 export interface RoleExternalReference {
   id?: string;
   /** Integration kind (e.g., github, linear, jira, slack). */
@@ -2484,13 +2939,25 @@ export interface RoleExternalReference {
   created_at?: string;
   created_by?: UserBasic | null;
 }
+const RoleExternalReference = /*@__PURE__*/ __L.at(
+  __c7,
+  6,
+) as any as S.Schema<RoleExternalReference>;
+
 export interface CreateRolesRoleMembershipRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
   role_id: string;
   user_uuid?: string;
 }
+const CreateRolesRoleMembershipRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  7,
+) as any as S.Schema<CreateRolesRoleMembershipRequest>;
+
 export type SearchMatchTypeEnum = "exact" | "similar";
+const SearchMatchTypeEnum = S.String;
+
 export interface OrganizationMember {
   id?: string;
   user?: UserBasic | null;
@@ -2503,6 +2970,8 @@ export interface OrganizationMember {
   /** How this row matched the `search` query parameter: `exact` (the term is a case-insensitive substring of a searched field) or `similar` (a fuzzy trigram match, returned only when no exact match exists). Null when the list is not filtered by `search`. */
   search_match_type?: SearchMatchTypeEnum | null;
 }
+const OrganizationMember = /*@__PURE__*/ __L.at(__c8, 0) as any as S.Schema<OrganizationMember>;
+
 export interface RoleMembershipOutput {
   id?: string;
   role_id?: string;
@@ -2511,18 +2980,31 @@ export interface RoleMembershipOutput {
   joined_at?: string;
   updated_at?: string;
 }
+const RoleMembershipOutput = /*@__PURE__*/ __L.at(__c8, 1) as any as S.Schema<RoleMembershipOutput>;
+
 export interface DestroyRequest {
   /** A UUID string identifying this organization. */
   id: string;
 }
+const DestroyRequest = /*@__PURE__*/ __L.at(__c8, 2) as any as S.Schema<DestroyRequest>;
+
 export interface DestroyResponse {}
+const DestroyResponse = /*@__PURE__*/ __L.at(__c8, 3) as any as S.Schema<DestroyResponse>;
+
 export interface DomainsDestroyRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
   /** A UUID string identifying this domain. */
   id: string;
 }
+const DomainsDestroyRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  4,
+) as any as S.Schema<DomainsDestroyRequest>;
+
 export interface DomainsDestroyResponse {}
+const DomainsDestroyResponse = DestroyResponse as any as S.Schema<DomainsDestroyResponse>;
+
 export interface DomainsVerifyCreateRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
@@ -2532,15 +3014,29 @@ export interface DomainsVerifyCreateRequest {
   jit_provisioning_enabled?: boolean;
   sso_enforcement?: string;
 }
+const DomainsVerifyCreateRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  5,
+) as any as S.Schema<DomainsVerifyCreateRequest>;
+
 export interface DomainsVerifyCreateResponse {}
+const DomainsVerifyCreateResponse = DestroyResponse as any as S.Schema<DomainsVerifyCreateResponse>;
+
 export interface GetRequest {
   /** A UUID string identifying this organization. */
   id: string;
 }
+const GetRequest = /*@__PURE__*/ __L.at(__c8, 6) as any as S.Schema<GetRequest>;
+
 export interface GetBillingFeatureRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
 }
+const GetBillingFeatureRequest = /*@__PURE__*/ __L.at(
+  __c8,
+  7,
+) as any as S.Schema<GetBillingFeatureRequest>;
+
 export interface ProductFeature {
   key: string;
   name: string;
@@ -2552,30 +3048,60 @@ export interface ProductFeature {
   entitlement_only?: boolean | null;
   category?: string | null;
 }
+const ProductFeature = /*@__PURE__*/ __L.at(__c9, 0) as any as S.Schema<ProductFeature>;
+
 export type BillingFeaturesAvailableProductFeaturesList = Array<ProductFeature>;
+const BillingFeaturesAvailableProductFeaturesList = /*@__PURE__*/ __L.at(
+  __c9,
+  1,
+) as any as S.Schema<BillingFeaturesAvailableProductFeaturesList>;
+
 export interface BillingFeatures {
   available_product_features: BillingFeaturesAvailableProductFeaturesList;
 }
+const BillingFeatures = /*@__PURE__*/ __L.at(__c9, 2) as any as S.Schema<BillingFeatures>;
+
 export interface GetBillingForecastRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
 }
+const GetBillingForecastRequest = /*@__PURE__*/ __L.at(
+  __c9,
+  3,
+) as any as S.Schema<GetBillingForecastRequest>;
+
 /** * `month` - month * `year` - year */
 export type BillingPeriodIntervalEnum = "month" | "year";
+const BillingPeriodIntervalEnum = S.String;
+
 export interface BillingPeriod {
   current_period_start: string;
   current_period_end: string;
   interval: BillingPeriodIntervalEnum;
 }
+const BillingPeriod = /*@__PURE__*/ __L.at(__c9, 4) as any as S.Schema<BillingPeriod>;
+
 /** * `product` - Product * `addon` - Addon */
 export type CatalogKindEnum = "product" | "addon";
+const CatalogKindEnum = S.String;
+
 export interface TierForecast {
   up_to: number | null;
   projected_usage: number | null;
   projected_amount_usd: string | null;
 }
+const TierForecast = /*@__PURE__*/ __L.at(__c9, 5) as any as S.Schema<TierForecast>;
+
 export type ProductForecastTierForecastList = Array<TierForecast>;
+const ProductForecastTierForecastList = /*@__PURE__*/ __L.at(
+  __c9,
+  6,
+) as any as S.Schema<ProductForecastTierForecastList>;
+
 export type ForecastItemTierForecastList = Array<TierForecast>;
+const ForecastItemTierForecastList =
+  ProductForecastTierForecastList as any as S.Schema<ForecastItemTierForecastList>;
+
 export interface ForecastItem {
   kind: CatalogKindEnum;
   key: string;
@@ -2585,7 +3111,14 @@ export interface ForecastItem {
   projected_amount_usd_with_limit?: string | null;
   tier_forecast: ForecastItemTierForecastList | null;
 }
+const ForecastItem = /*@__PURE__*/ __L.at(__c9, 7) as any as S.Schema<ForecastItem>;
+
 export type ProductForecastAddonsList = Array<ForecastItem>;
+const ProductForecastAddonsList = /*@__PURE__*/ __L.at(
+  __c10,
+  0,
+) as any as S.Schema<ProductForecastAddonsList>;
+
 export interface ProductForecast {
   kind: CatalogKindEnum;
   key: string;
@@ -2596,7 +3129,14 @@ export interface ProductForecast {
   tier_forecast: ProductForecastTierForecastList | null;
   addons: ProductForecastAddonsList;
 }
+const ProductForecast = /*@__PURE__*/ __L.at(__c10, 1) as any as S.Schema<ProductForecast>;
+
 export type BillingForecastProductsList = Array<ProductForecast>;
+const BillingForecastProductsList = /*@__PURE__*/ __L.at(
+  __c10,
+  2,
+) as any as S.Schema<BillingForecastProductsList>;
+
 export interface BillingForecast {
   billing_period: BillingPeriod | null;
   projected_total_amount_usd: string | null;
@@ -2606,17 +3146,32 @@ export interface BillingForecast {
   products: BillingForecastProductsList;
   computed_at: string;
 }
+const BillingForecast = /*@__PURE__*/ __L.at(__c10, 3) as any as S.Schema<BillingForecast>;
+
 export interface GetBillingInvoicesContentRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
   /** The invoice's id. */
   invoice_id: string;
 }
+const GetBillingInvoicesContentRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  4,
+) as any as S.Schema<GetBillingInvoicesContentRequest>;
+
 export interface GetBillingInvoicesContentResponse {}
+const GetBillingInvoicesContentResponse =
+  BillingSpendExportDownloadResponse as any as S.Schema<GetBillingInvoicesContentResponse>;
+
 export interface GetBillingLimitRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
 }
+const GetBillingLimitRequest = /*@__PURE__*/ __L.at(
+  __c10,
+  5,
+) as any as S.Schema<GetBillingLimitRequest>;
+
 export interface ProductLimit {
   key: string;
   limit_usd: number | null;
@@ -2624,10 +3179,19 @@ export interface ProductLimit {
   spend_usd: string | null;
   reached: boolean;
 }
+const ProductLimit = /*@__PURE__*/ __L.at(__c10, 6) as any as S.Schema<ProductLimit>;
+
 export type BillingLimitsResultsList = Array<ProductLimit>;
+const BillingLimitsResultsList = /*@__PURE__*/ __L.at(
+  __c10,
+  7,
+) as any as S.Schema<BillingLimitsResultsList>;
+
 export interface BillingLimits {
   results: BillingLimitsResultsList;
 }
+const BillingLimits = /*@__PURE__*/ __L.at(__c11, 0) as any as S.Schema<BillingLimits>;
+
 export interface GetBillingProductRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
@@ -2636,14 +3200,31 @@ export interface GetBillingProductRequest {
   /** Add the `plans` list to each product and add-on. Most of the payload. */
   include_plans?: boolean;
 }
+const GetBillingProductRequest = /*@__PURE__*/ __L.at(
+  __c11,
+  1,
+) as any as S.Schema<GetBillingProductRequest>;
+
 export interface PriceTier {
   flat_amount_usd: string;
   unit_amount_usd: string;
   up_to: number | null;
 }
+const PriceTier = /*@__PURE__*/ __L.at(__c11, 2) as any as S.Schema<PriceTier>;
+
 export type BillingProductTiersList = Array<PriceTier>;
+const BillingProductTiersList = /*@__PURE__*/ __L.at(
+  __c11,
+  3,
+) as any as S.Schema<BillingProductTiersList>;
+
 export type ProductPlanTiersList = Array<PriceTier>;
+const ProductPlanTiersList = BillingProductTiersList as any as S.Schema<ProductPlanTiersList>;
+
 export type ProductPlanFeaturesList = Array<ProductFeature>;
+const ProductPlanFeaturesList =
+  BillingFeaturesAvailableProductFeaturesList as any as S.Schema<ProductPlanFeaturesList>;
+
 export interface ProductPlan {
   product_key: string;
   plan_key: string;
@@ -2663,7 +3244,14 @@ export interface ProductPlan {
   current_plan: boolean;
   initial_billing_limit?: number | null;
 }
+const ProductPlan = /*@__PURE__*/ __L.at(__c11, 4) as any as S.Schema<ProductPlan>;
+
 export type BillingProductPlansList = Array<ProductPlan>;
+const BillingProductPlansList = /*@__PURE__*/ __L.at(
+  __c11,
+  5,
+) as any as S.Schema<BillingProductPlansList>;
+
 export interface ProductBaseFeature {
   key: string;
   name: string;
@@ -2673,13 +3261,29 @@ export interface ProductBaseFeature {
   type?: string | null;
   category?: string | null;
 }
+const ProductBaseFeature = /*@__PURE__*/ __L.at(__c11, 6) as any as S.Schema<ProductBaseFeature>;
+
 export type BillingProductFeaturesList = Array<ProductBaseFeature>;
+const BillingProductFeaturesList = /*@__PURE__*/ __L.at(
+  __c11,
+  7,
+) as any as S.Schema<BillingProductFeaturesList>;
+
 export interface ProductTrialConfig {
   length: number;
 }
+const ProductTrialConfig = /*@__PURE__*/ __L.at(__c12, 0) as any as S.Schema<ProductTrialConfig>;
+
 export type BillingAddonTiersList = Array<PriceTier>;
+const BillingAddonTiersList = BillingProductTiersList as any as S.Schema<BillingAddonTiersList>;
+
 export type BillingAddonPlansList = Array<ProductPlan>;
+const BillingAddonPlansList = BillingProductPlansList as any as S.Schema<BillingAddonPlansList>;
+
 export type BillingAddonFeaturesList = Array<ProductBaseFeature>;
+const BillingAddonFeaturesList =
+  BillingProductFeaturesList as any as S.Schema<BillingAddonFeaturesList>;
+
 export interface BillingAddon {
   kind: CatalogKindEnum;
   key: string;
@@ -2710,7 +3314,14 @@ export interface BillingAddon {
   included_if: string | null;
   default_unit_amount_usd: string | null;
 }
+const BillingAddon = /*@__PURE__*/ __L.at(__c12, 1) as any as S.Schema<BillingAddon>;
+
 export type BillingProductAddonsList = Array<BillingAddon>;
+const BillingProductAddonsList = /*@__PURE__*/ __L.at(
+  __c12,
+  2,
+) as any as S.Schema<BillingProductAddonsList>;
+
 export interface BillingProduct {
   kind: CatalogKindEnum;
   key: string;
@@ -2741,10 +3352,17 @@ export interface BillingProduct {
   screenshot_url: string | null;
   addons: BillingProductAddonsList;
 }
+const BillingProduct = /*@__PURE__*/ __L.at(__c12, 3) as any as S.Schema<BillingProduct>;
+
 export interface GetBillingProductsSummaryRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
 }
+const GetBillingProductsSummaryRequest = /*@__PURE__*/ __L.at(
+  __c12,
+  4,
+) as any as S.Schema<GetBillingProductsSummaryRequest>;
+
 export interface BillingProductsSummaryAddon {
   /** The add-on key. */
   key: string;
@@ -2755,10 +3373,23 @@ export interface BillingProductsSummaryAddon {
   /** Whether the organization subscribes to the add-on. */
   subscribed: boolean | null;
 }
+const BillingProductsSummaryAddon = /*@__PURE__*/ __L.at(
+  __c12,
+  5,
+) as any as S.Schema<BillingProductsSummaryAddon>;
+
 /** The product's add-ons. */
 export type BillingProductsSummaryProductAddonsList = Array<BillingProductsSummaryAddon>;
+const BillingProductsSummaryProductAddonsList = /*@__PURE__*/ __L.at(
+  __c12,
+  6,
+) as any as S.Schema<BillingProductsSummaryProductAddonsList>;
+
 /** The add-ons of this product that carry the feature. Empty when only the product carries it. */
 export type BillingProductsSummaryFeatureAddonKeysList = Array<string>;
+const BillingProductsSummaryFeatureAddonKeysList =
+  CreateIdentityProviderConfigRequestOrganizationDomainIdsList as any as S.Schema<BillingProductsSummaryFeatureAddonKeysList>;
+
 export interface BillingProductsSummaryFeature {
   /** The feature key. */
   key: string;
@@ -2769,8 +3400,18 @@ export interface BillingProductsSummaryFeature {
   /** The add-ons of this product that carry the feature. Empty when only the product carries it. */
   addon_keys: BillingProductsSummaryFeatureAddonKeysList;
 }
+const BillingProductsSummaryFeature = /*@__PURE__*/ __L.at(
+  __c12,
+  7,
+) as any as S.Schema<BillingProductsSummaryFeature>;
+
 /** The features the product and its add-ons carry, each one listed once. */
 export type BillingProductsSummaryProductFeaturesList = Array<BillingProductsSummaryFeature>;
+const BillingProductsSummaryProductFeaturesList = /*@__PURE__*/ __L.at(
+  __c13,
+  0,
+) as any as S.Schema<BillingProductsSummaryProductFeaturesList>;
+
 export interface BillingProductsSummaryProduct {
   /** The product key. Pass it to the product route for prices and plans. */
   key: string;
@@ -2785,22 +3426,51 @@ export interface BillingProductsSummaryProduct {
   /** The features the product and its add-ons carry, each one listed once. */
   features: BillingProductsSummaryProductFeaturesList;
 }
+const BillingProductsSummaryProduct = /*@__PURE__*/ __L.at(
+  __c13,
+  1,
+) as any as S.Schema<BillingProductsSummaryProduct>;
+
 /** Every product, add-ons included. */
 export type BillingProductsSummaryResultsList = Array<BillingProductsSummaryProduct>;
+const BillingProductsSummaryResultsList = /*@__PURE__*/ __L.at(
+  __c13,
+  2,
+) as any as S.Schema<BillingProductsSummaryResultsList>;
+
 export interface BillingProductsSummary {
   /** Every product, add-ons included. */
   results: BillingProductsSummaryResultsList;
 }
+const BillingProductsSummary = /*@__PURE__*/ __L.at(
+  __c13,
+  3,
+) as any as S.Schema<BillingProductsSummary>;
+
 export interface GetBillingSpendSummaryRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
 }
+const GetBillingSpendSummaryRequest = /*@__PURE__*/ __L.at(
+  __c13,
+  4,
+) as any as S.Schema<GetBillingSpendSummaryRequest>;
+
 export interface TierSpend {
   up_to: number | null;
   current_amount_usd: string | null;
 }
+const TierSpend = /*@__PURE__*/ __L.at(__c13, 5) as any as S.Schema<TierSpend>;
+
 export type ProductSpendTierSpendList = Array<TierSpend>;
+const ProductSpendTierSpendList = /*@__PURE__*/ __L.at(
+  __c13,
+  6,
+) as any as S.Schema<ProductSpendTierSpendList>;
+
 export type SpendItemTierSpendList = Array<TierSpend>;
+const SpendItemTierSpendList = ProductSpendTierSpendList as any as S.Schema<SpendItemTierSpendList>;
+
 export interface SpendItem {
   kind: CatalogKindEnum;
   key: string;
@@ -2809,7 +3479,14 @@ export interface SpendItem {
   current_amount_usd_before_addons?: string | null;
   tier_spend: SpendItemTierSpendList | null;
 }
+const SpendItem = /*@__PURE__*/ __L.at(__c13, 7) as any as S.Schema<SpendItem>;
+
 export type ProductSpendAddonsList = Array<SpendItem>;
+const ProductSpendAddonsList = /*@__PURE__*/ __L.at(
+  __c14,
+  0,
+) as any as S.Schema<ProductSpendAddonsList>;
+
 export interface ProductSpend {
   kind: CatalogKindEnum;
   key: string;
@@ -2819,7 +3496,14 @@ export interface ProductSpend {
   tier_spend: ProductSpendTierSpendList | null;
   addons: ProductSpendAddonsList;
 }
+const ProductSpend = /*@__PURE__*/ __L.at(__c14, 1) as any as S.Schema<ProductSpend>;
+
 export type BillingSpendSummaryProductsList = Array<ProductSpend>;
+const BillingSpendSummaryProductsList = /*@__PURE__*/ __L.at(
+  __c14,
+  2,
+) as any as S.Schema<BillingSpendSummaryProductsList>;
+
 export interface BillingSpendSummary {
   billing_period: BillingPeriod | null;
   usage_reported_through: string | null;
@@ -2827,6 +3511,8 @@ export interface BillingSpendSummary {
   current_total_amount_usd_after_discount: string | null;
   products: BillingSpendSummaryProductsList;
 }
+const BillingSpendSummary = /*@__PURE__*/ __L.at(__c14, 3) as any as S.Schema<BillingSpendSummary>;
+
 export interface GetBillingSpendTimeseriesRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
@@ -2848,10 +3534,25 @@ export interface GetBillingSpendTimeseriesRequest {
   /** JSON-encoded array of usage type identifiers to filter on. Valid values: event_count_in_period, exceptions_captured_in_period, recording_count_in_period, rows_synced_in_period, free_historical_rows_synced_in_period, survey_responses_count_in_period, mobile_recording_count_in_period, mobile_billable_recording_count_in_period, billable_feature_flag_requests_count_in_period, enhanced_persons_event_count_in_period, ai_event_count_in_period, cdp_billable_invocations_in_period, rows_exported_in_period, ai_credits_used_in_period, signals_credits_used_in_period, posthog_code_credits_used_in_period, posthog_code_token_credits_used_in_period, sandbox_compute_credits_used_in_period, sandbox_compute_cpu_millicore_seconds_in_period, sandbox_compute_memory_mib_seconds_in_period, workflow_emails_sent_in_period, workflow_billable_invocations_in_period, logs_mb_in_period, logs_retention_30d_mb_in_period, logs_retention_mb_days_in_period, replay_vision_credits_used_in_period, data_pipelines, group_analytics. E.g. ["event_count_in_period","recording_count_in_period"]. Omit for all types. */
   usage_types?: string;
 }
+const GetBillingSpendTimeseriesRequest = /*@__PURE__*/ __L.at(
+  __c14,
+  4,
+) as any as S.Schema<GetBillingSpendTimeseriesRequest>;
+
 export type BillingTimeSeriesPointDataList = Array<number>;
+const BillingTimeSeriesPointDataList = /*@__PURE__*/ __L.at(
+  __c14,
+  5,
+) as any as S.Schema<BillingTimeSeriesPointDataList>;
+
 export type BillingTimeSeriesPointDatesList = Array<string>;
+const BillingTimeSeriesPointDatesList =
+  CreateIdentityProviderConfigRequestOrganizationDomainIdsList as any as S.Schema<BillingTimeSeriesPointDatesList>;
+
 /** * `type` - type * `team` - team * `multiple` - multiple */
 export type BreakdownTypeEnum = "type" | "team" | "multiple";
+const BreakdownTypeEnum = S.String;
+
 export interface BillingTimeSeriesPoint {
   id?: number;
   label?: string;
@@ -2860,32 +3561,63 @@ export interface BillingTimeSeriesPoint {
   breakdown_type?: BreakdownTypeEnum | null;
   breakdown_value?: unknown;
 }
+const BillingTimeSeriesPoint = /*@__PURE__*/ __L.at(
+  __c14,
+  6,
+) as any as S.Schema<BillingTimeSeriesPoint>;
+
 export type PaginatedBillingTimeSeriesPointListResultsList = Array<BillingTimeSeriesPoint>;
+const PaginatedBillingTimeSeriesPointListResultsList = /*@__PURE__*/ __L.at(
+  __c14,
+  7,
+) as any as S.Schema<PaginatedBillingTimeSeriesPointListResultsList>;
+
 export interface PaginatedBillingTimeSeriesPointList {
   count: number;
   next: string | null;
   previous: string | null;
   results: PaginatedBillingTimeSeriesPointListResultsList;
 }
+const PaginatedBillingTimeSeriesPointList = /*@__PURE__*/ __L.at(
+  __c15,
+  0,
+) as any as S.Schema<PaginatedBillingTimeSeriesPointList>;
+
 export interface GetBillingSubscriptionRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
 }
+const GetBillingSubscriptionRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  1,
+) as any as S.Schema<GetBillingSubscriptionRequest>;
+
 /** * `stripe` - stripe * `vercel` - vercel */
 export type BillingProviderEnum = "stripe" | "vercel";
+const BillingProviderEnum = S.String;
+
 export interface Trial {
   type: string;
   status: string;
   target: string;
   expires_at: string | null;
 }
+const Trial = /*@__PURE__*/ __L.at(__c15, 2) as any as S.Schema<Trial>;
+
 export interface License {
   plan: string;
 }
+const License = /*@__PURE__*/ __L.at(__c15, 3) as any as S.Schema<License>;
+
 export interface BillingManagedByPartner {
   /** Name of the partner that pays for this organization. Can be empty. */
   partner_name: string;
 }
+const BillingManagedByPartner = /*@__PURE__*/ __L.at(
+  __c15,
+  4,
+) as any as S.Schema<BillingManagedByPartner>;
+
 export interface BillingSubscription {
   customer_id: string | null;
   has_active_subscription: boolean;
@@ -2908,10 +3640,17 @@ export interface BillingSubscription {
   /** Set when a provisioning partner pays for this organization and the organization has no Stripe customer of its own. Self-serve subscription and payment changes are refused while it is set. Null otherwise. */
   billing_managed_by_partner: BillingManagedByPartner | null;
 }
+const BillingSubscription = /*@__PURE__*/ __L.at(__c15, 5) as any as S.Schema<BillingSubscription>;
+
 export interface GetBillingUsageStatusRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
 }
+const GetBillingUsageStatusRequest = /*@__PURE__*/ __L.at(
+  __c15,
+  6,
+) as any as S.Schema<GetBillingUsageStatusRequest>;
+
 export interface UsageStatusItem {
   kind: CatalogKindEnum;
   key: string;
@@ -2922,7 +3661,14 @@ export interface UsageStatusItem {
   quota_limited_until: string | null;
   quota_limiting_suspended_until: string | null;
 }
+const UsageStatusItem = /*@__PURE__*/ __L.at(__c15, 7) as any as S.Schema<UsageStatusItem>;
+
 export type ProductUsageStatusAddonsList = Array<UsageStatusItem>;
+const ProductUsageStatusAddonsList = /*@__PURE__*/ __L.at(
+  __c16,
+  0,
+) as any as S.Schema<ProductUsageStatusAddonsList>;
+
 export interface ProductUsageStatus {
   kind: CatalogKindEnum;
   key: string;
@@ -2934,16 +3680,30 @@ export interface ProductUsageStatus {
   quota_limiting_suspended_until: string | null;
   addons: ProductUsageStatusAddonsList;
 }
+const ProductUsageStatus = /*@__PURE__*/ __L.at(__c16, 1) as any as S.Schema<ProductUsageStatus>;
+
 export type BillingUsageStatusProductsList = Array<ProductUsageStatus>;
+const BillingUsageStatusProductsList = /*@__PURE__*/ __L.at(
+  __c16,
+  2,
+) as any as S.Schema<BillingUsageStatusProductsList>;
+
 export interface BillingUsageStatus {
   billing_period: BillingPeriod | null;
   usage_reported_through: string | null;
   products: BillingUsageStatusProductsList;
 }
+const BillingUsageStatus = /*@__PURE__*/ __L.at(__c16, 3) as any as S.Schema<BillingUsageStatus>;
+
 export interface GetBillingUsageSummaryRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
 }
+const GetBillingUsageSummaryRequest = /*@__PURE__*/ __L.at(
+  __c16,
+  4,
+) as any as S.Schema<GetBillingUsageSummaryRequest>;
+
 export interface UsageKeySummary {
   usage_key: string;
   usage: number | null;
@@ -2952,13 +3712,29 @@ export interface UsageKeySummary {
   quota_limited_until: string | null;
   quota_limiting_suspended_until: string | null;
 }
+const UsageKeySummary = /*@__PURE__*/ __L.at(__c16, 5) as any as S.Schema<UsageKeySummary>;
+
 export type BillingUsageSummaryUsageSummaryList = Array<UsageKeySummary>;
+const BillingUsageSummaryUsageSummaryList = /*@__PURE__*/ __L.at(
+  __c16,
+  6,
+) as any as S.Schema<BillingUsageSummaryUsageSummaryList>;
+
 export interface TierUsage {
   up_to: number | null;
   current_usage: number;
 }
+const TierUsage = /*@__PURE__*/ __L.at(__c16, 7) as any as S.Schema<TierUsage>;
+
 export type ProductUsageTierUsageList = Array<TierUsage>;
+const ProductUsageTierUsageList = /*@__PURE__*/ __L.at(
+  __c17,
+  0,
+) as any as S.Schema<ProductUsageTierUsageList>;
+
 export type UsageItemTierUsageList = Array<TierUsage>;
+const UsageItemTierUsageList = ProductUsageTierUsageList as any as S.Schema<UsageItemTierUsageList>;
+
 export interface UsageItem {
   kind: CatalogKindEnum;
   key: string;
@@ -2969,7 +3745,14 @@ export interface UsageItem {
   usage_ratio: number;
   tier_usage: UsageItemTierUsageList | null;
 }
+const UsageItem = /*@__PURE__*/ __L.at(__c17, 1) as any as S.Schema<UsageItem>;
+
 export type ProductUsageAddonsList = Array<UsageItem>;
+const ProductUsageAddonsList = /*@__PURE__*/ __L.at(
+  __c17,
+  2,
+) as any as S.Schema<ProductUsageAddonsList>;
+
 export interface ProductUsage {
   kind: CatalogKindEnum;
   key: string;
@@ -2981,13 +3764,22 @@ export interface ProductUsage {
   tier_usage: ProductUsageTierUsageList | null;
   addons: ProductUsageAddonsList;
 }
+const ProductUsage = /*@__PURE__*/ __L.at(__c17, 3) as any as S.Schema<ProductUsage>;
+
 export type BillingUsageSummaryProductsList = Array<ProductUsage>;
+const BillingUsageSummaryProductsList = /*@__PURE__*/ __L.at(
+  __c17,
+  4,
+) as any as S.Schema<BillingUsageSummaryProductsList>;
+
 export interface BillingUsageSummary {
   billing_period: BillingPeriod | null;
   usage_reported_through: string | null;
   usage_summary: BillingUsageSummaryUsageSummaryList;
   products: BillingUsageSummaryProductsList;
 }
+const BillingUsageSummary = /*@__PURE__*/ __L.at(__c17, 5) as any as S.Schema<BillingUsageSummary>;
+
 export interface GetBillingUsageTimeseriesRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
@@ -3009,12 +3801,22 @@ export interface GetBillingUsageTimeseriesRequest {
   /** JSON-encoded array of usage type identifiers to filter on. Valid values: event_count_in_period, exceptions_captured_in_period, recording_count_in_period, rows_synced_in_period, free_historical_rows_synced_in_period, survey_responses_count_in_period, mobile_recording_count_in_period, mobile_billable_recording_count_in_period, billable_feature_flag_requests_count_in_period, enhanced_persons_event_count_in_period, ai_event_count_in_period, cdp_billable_invocations_in_period, rows_exported_in_period, ai_credits_used_in_period, signals_credits_used_in_period, posthog_code_credits_used_in_period, posthog_code_token_credits_used_in_period, sandbox_compute_credits_used_in_period, sandbox_compute_cpu_millicore_seconds_in_period, sandbox_compute_memory_mib_seconds_in_period, workflow_emails_sent_in_period, workflow_billable_invocations_in_period, logs_mb_in_period, logs_retention_30d_mb_in_period, logs_retention_mb_days_in_period, replay_vision_credits_used_in_period, data_pipelines, group_analytics. E.g. ["event_count_in_period","recording_count_in_period"]. Omit for all types. */
   usage_types?: string;
 }
+const GetBillingUsageTimeseriesRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  6,
+) as any as S.Schema<GetBillingUsageTimeseriesRequest>;
+
 export interface GetCimdVerificationTokenRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
   /** A UUID string identifying this CIMD Verification Token. */
   id: string;
 }
+const GetCimdVerificationTokenRequest = /*@__PURE__*/ __L.at(
+  __c17,
+  7,
+) as any as S.Schema<GetCimdVerificationTokenRequest>;
+
 /** Read shape for list/retrieve/create-response. `cimd_url` is nullable here for tokens issued before URL binding; the write serializers below require a value. */
 export interface CIMDVerificationToken {
   id: string;
@@ -3027,12 +3829,19 @@ export interface CIMDVerificationToken {
   created_at: string;
   last_used_at: string | null;
 }
+const CIMDVerificationToken = /*@__PURE__*/ __L.at(
+  __c18,
+  0,
+) as any as S.Schema<CIMDVerificationToken>;
+
 export interface GetDomainRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
   /** A UUID string identifying this domain. */
   id: string;
 }
+const GetDomainRequest = /*@__PURE__*/ __L.at(__c18, 1) as any as S.Schema<GetDomainRequest>;
+
 export interface GetDomainsScimLogRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
@@ -3053,6 +3862,11 @@ export interface GetDomainsScimLogRequest {
   /** Minimum HTTP response status to include, such as 400. */
   status_min?: number;
 }
+const GetDomainsScimLogRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  2,
+) as any as S.Schema<GetDomainsScimLogRequest>;
+
 export interface SCIMRequestLog {
   id: string;
   request_method: string;
@@ -3065,8 +3879,15 @@ export interface SCIMRequestLog {
   duration_ms: number | null;
   created_at: string;
 }
+const SCIMRequestLog = /*@__PURE__*/ __L.at(__c18, 3) as any as S.Schema<SCIMRequestLog>;
+
 /** SCIM requests on this page. */
 export type PaginatedSCIMRequestLogResultsList = Array<SCIMRequestLog>;
+const PaginatedSCIMRequestLogResultsList = /*@__PURE__*/ __L.at(
+  __c18,
+  4,
+) as any as S.Schema<PaginatedSCIMRequestLogResultsList>;
+
 export interface PaginatedSCIMRequestLog {
   /** Total number of matching SCIM requests. */
   count: number;
@@ -3077,12 +3898,22 @@ export interface PaginatedSCIMRequestLog {
   /** SCIM requests on this page. */
   results: PaginatedSCIMRequestLogResultsList;
 }
+const PaginatedSCIMRequestLog = /*@__PURE__*/ __L.at(
+  __c18,
+  5,
+) as any as S.Schema<PaginatedSCIMRequestLog>;
+
 export interface GetIdentityProviderConfigRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
   /** A UUID string identifying this identity provider config. */
   id: string;
 }
+const GetIdentityProviderConfigRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  6,
+) as any as S.Schema<GetIdentityProviderConfigRequest>;
+
 export interface GetIdentityProviderConfigsScimLogRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
@@ -3103,26 +3934,51 @@ export interface GetIdentityProviderConfigsScimLogRequest {
   /** Minimum HTTP response status to include, such as 400. */
   status_min?: number;
 }
+const GetIdentityProviderConfigsScimLogRequest = /*@__PURE__*/ __L.at(
+  __c18,
+  7,
+) as any as S.Schema<GetIdentityProviderConfigsScimLogRequest>;
+
 export interface GetLegalDocumentRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
   id: string;
 }
+const GetLegalDocumentRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  0,
+) as any as S.Schema<GetLegalDocumentRequest>;
+
 export interface GetMembersGithubLoginRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
   user__uuid: string;
 }
+const GetMembersGithubLoginRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  1,
+) as any as S.Schema<GetMembersGithubLoginRequest>;
+
 export interface OrganizationMemberGithubLogin {
   /** The member's GitHub username (login), resolved from their linked GitHub integration or OAuth identity. Null when the member has no GitHub identity linked. */
   github_login: string | null;
 }
+const OrganizationMemberGithubLogin = /*@__PURE__*/ __L.at(
+  __c19,
+  2,
+) as any as S.Schema<OrganizationMemberGithubLogin>;
+
 export interface GetMembersProjectAccessRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
   /** Narrow the list to one organization membership id. */
   member_id?: string;
 }
+const GetMembersProjectAccessRequest = /*@__PURE__*/ __L.at(
+  __c19,
+  3,
+) as any as S.Schema<GetMembersProjectAccessRequest>;
+
 /** * `object` - object * `parent_object` - parent_object * `resource` - resource * `parent_resource` - parent_resource * `system_default` - system_default * `org_admin` - org_admin * `creator` - creator * `org_membership` - org_membership */
 export type ResolvedAccessSourceEnum =
   | "object"
@@ -3133,8 +3989,12 @@ export type ResolvedAccessSourceEnum =
   | "org_admin"
   | "creator"
   | "org_membership";
+const ResolvedAccessSourceEnum = S.String;
+
 /** * `member` - member * `role` - role * `default` - default */
 export type ResolvedAccessSourceSubjectEnum = "member" | "role" | "default";
+const ResolvedAccessSourceSubjectEnum = S.String;
+
 /** * `action` - action * `access_control` - access_control * `account` - account * `activity_log` - activity_log * `alert` - alert * `annotation` - annotation * `approvals` - approvals * `autoresearch` - autoresearch * `batch_export` - batch_export * `batch_import` - batch_import * `batch_import_support` - batch_import_support * `billing` - billing * `business_knowledge` - business_knowledge * `canvas` - canvas * `cohort` - cohort * `comment` - comment * `conversation` - conversation * `customer_analytics` - customer_analytics * `customer_task` - customer_task * `customer_journey` - customer_journey * `customer_profile_config` - customer_profile_config * `data_catalog` - data_catalog * `data_catalog_approval` - data_catalog_approval * `data_deletion` - data_deletion * `dashboard` - dashboard * `event_filter` - event_filter * `dashboard_template` - dashboard_template * `dataset` - dataset * `early_access_feature` - early_access_feature * `endpoint` - endpoint * `engineering_analytics` - engineering_analytics * `error_tracking` - error_tracking * `evaluation` - evaluation * `element` - element * `event_definition` - event_definition * `experiment` - experiment * `experiment_holdout` - experiment_holdout * `experiment_saved_metric` - experiment_saved_metric * `export` - export * `external_data_schema` - external_data_schema * `external_data_source` - external_data_source * `feature_flag` - feature_flag * `file_system` - file_system * `file_system_shortcut` - file_system_shortcut * `group` - group * `health_issue` - health_issue * `heatmap` - heatmap * `hog_flow` - hog_flow * `hog_function` - hog_function * `ingestion_warning` - ingestion_warning * `insight` - insight * `insight_variable` - insight_variable * `integration` - integration * `legal_document` - legal_document * `link` - link * `live_debugger` - live_debugger * `llm_analytics` - llm_analytics * `ai_observability_clusters` - ai_observability_clusters * `llm_gateway` - llm_gateway * `llm_playground` - llm_playground * `llm_prompt` - llm_prompt * `llm_provider_key` - llm_provider_key * `llm_skill` - llm_skill * `logs` - logs * `loop` - loop * `marketing_analytics` - marketing_analytics * `mcp_analytics` - mcp_analytics * `mcp_registry` - mcp_registry * `metrics` - metrics * `notebook` - notebook * `offline_evaluation_ingestion` - offline_evaluation_ingestion * `organization` - organization * `organization_integration` - organization_integration * `organization_member` - organization_member * `person` - person * `plugin` - plugin * `product_enablement` - product_enablement * `product_tour` - product_tour * `project` - project * `property_definition` - property_definition * `query` - query * `query_performance` - query_performance * `replay_scanner` - replay_scanner * `review_hog` - review_hog * `revenue_analytics` - revenue_analytics * `session_recording` - session_recording * `session_recording_playlist` - session_recording_playlist * `sharing_configuration` - sharing_configuration * `signal_scout` - signal_scout * `stamphog` - stamphog * `streamlit_app` - streamlit_app * `subscription` - subscription * `support_ticket` - support_ticket * `survey` - survey * `tagger` - tagger * `ticket` - ticket * `task` - task * `today` - today * `toolbar` - toolbar * `tracing` - tracing * `field_note` - field_note * `uploaded_media` - uploaded_media * `usage_metric` - usage_metric * `user` - user * `user_interview` - user_interview * `vision_action` - vision_action * `vision_alert` - vision_alert * `visual_review` - visual_review * `warehouse_objects` - warehouse_objects * `warehouse_table` - warehouse_table * `warehouse_view` - warehouse_view * `web_analytics` - web_analytics * `webhook` - webhook * `wizard_session` - wizard_session * `wizard_run` - wizard_run */
 export type ScopeObjectEnum =
   | "action"
@@ -3252,6 +4112,8 @@ export type ScopeObjectEnum =
   | "webhook"
   | "wizard_session"
   | "wizard_run";
+const ScopeObjectEnum = S.String;
+
 /** A resolved access level with the rule that supplied it -- the wire form of `ResolvedAccess`. */
 export interface ProjectAccessSource {
   /** The access level that applies. */
@@ -3267,6 +4129,8 @@ export interface ProjectAccessSource {
   /** The name of the role or member whose rule decided. Null when the default or a bypass decided. */
   subject_name: string | null;
 }
+const ProjectAccessSource = /*@__PURE__*/ __L.at(__c19, 4) as any as S.Schema<ProjectAccessSource>;
+
 export interface MemberProjectAccessEntry {
   /** The project's id. */
   team_id: number;
@@ -3279,41 +4143,84 @@ export interface MemberProjectAccessEntry {
   /** The id of the role or organization membership whose rule decided. Null when the default or a bypass decided. */
   subject_id: string | null;
 }
+const MemberProjectAccessEntry = /*@__PURE__*/ __L.at(
+  __c19,
+  5,
+) as any as S.Schema<MemberProjectAccessEntry>;
+
 /** One entry per project the caller can access, including projects the member cannot. */
 export type MemberProjectAccessProjectsList = Array<MemberProjectAccessEntry>;
+const MemberProjectAccessProjectsList = /*@__PURE__*/ __L.at(
+  __c19,
+  6,
+) as any as S.Schema<MemberProjectAccessProjectsList>;
+
 export interface MemberProjectAccess {
   /** The organization membership id. */
   organization_membership_id: string;
   /** One entry per project the caller can access, including projects the member cannot. */
   projects: MemberProjectAccessProjectsList;
 }
+const MemberProjectAccess = /*@__PURE__*/ __L.at(__c19, 7) as any as S.Schema<MemberProjectAccess>;
+
 /** One entry per visible organization member. */
 export type MemberProjectAccessResponseResultsList = Array<MemberProjectAccess>;
+const MemberProjectAccessResponseResultsList = /*@__PURE__*/ __L.at(
+  __c20,
+  0,
+) as any as S.Schema<MemberProjectAccessResponseResultsList>;
+
 export interface MemberProjectAccessResponse {
   /** One entry per visible organization member. */
   results: MemberProjectAccessResponseResultsList;
 }
+const MemberProjectAccessResponse = /*@__PURE__*/ __L.at(
+  __c20,
+  1,
+) as any as S.Schema<MemberProjectAccessResponse>;
+
 export interface GetMembersScopedApiKeyRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
   user__uuid: string;
 }
+const GetMembersScopedApiKeyRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  2,
+) as any as S.Schema<GetMembersScopedApiKeyRequest>;
+
 export interface GetOrganizationsProjectRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
   /** A unique value identifying this project. */
   id: number;
 }
+const GetOrganizationsProjectRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  3,
+) as any as S.Schema<GetOrganizationsProjectRequest>;
+
 export interface GetOrganizationsProjectsAccessControlDefaultRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
   /** A unique value identifying this project. */
   id: number;
 }
+const GetOrganizationsProjectsAccessControlDefaultRequest = /*@__PURE__*/ __L.at(
+  __c20,
+  4,
+) as any as S.Schema<GetOrganizationsProjectsAccessControlDefaultRequest>;
+
 /** The project access levels, lowest first. */
 export type AccessControlDefaultsResponseAvailableProjectLevelsList = Array<string>;
+const AccessControlDefaultsResponseAvailableProjectLevelsList =
+  CreateIdentityProviderConfigRequestOrganizationDomainIdsList as any as S.Schema<AccessControlDefaultsResponseAvailableProjectLevelsList>;
+
 /** The resource access levels, lowest first. */
 export type AccessControlDefaultsResponseAvailableResourceLevelsList = Array<string>;
+const AccessControlDefaultsResponseAvailableResourceLevelsList =
+  CreateIdentityProviderConfigRequestOrganizationDomainIdsList as any as S.Schema<AccessControlDefaultsResponseAvailableResourceLevelsList>;
+
 export interface AccessControlResourceDefault {
   /** The stored default level for this resource type. Null when the PostHog default applies. */
   access_level: string | null;
@@ -3322,12 +4229,25 @@ export interface AccessControlResourceDefault {
   /** The highest level this resource type allows. */
   maximum: string;
 }
+const AccessControlResourceDefault = /*@__PURE__*/ __L.at(
+  __c20,
+  5,
+) as any as S.Schema<AccessControlResourceDefault>;
+
 /** The default level per resource type, keyed by resource name. */
 export type AccessControlDefaultsResponseResourceAccessLevelsMap = {
   [key: string]: AccessControlResourceDefault | undefined;
 };
+const AccessControlDefaultsResponseResourceAccessLevelsMap = /*@__PURE__*/ __L.at(
+  __c20,
+  6,
+) as any as S.Schema<AccessControlDefaultsResponseResourceAccessLevelsMap>;
+
 /** The levels an object rule on this resource type accepts, lowest first. */
 export type AccessControlObjectRuleResourceAvailableAccessLevelsList = Array<string>;
+const AccessControlObjectRuleResourceAvailableAccessLevelsList =
+  CreateIdentityProviderConfigRequestOrganizationDomainIdsList as any as S.Schema<AccessControlObjectRuleResourceAvailableAccessLevelsList>;
+
 export interface AccessControlObjectRuleResource {
   /** A resource type that supports rules on single objects. * `action` - action * `access_control` - access_control * `account` - account * `activity_log` - activity_log * `alert` - alert * `annotation` - annotation * `approvals` - approvals * `autoresearch` - autoresearch * `batch_export` - batch_export * `batch_import` - batch_import * `batch_import_support` - batch_import_support * `billing` - billing * `business_knowledge` - business_knowledge * `canvas` - canvas * `cohort` - cohort * `comment` - comment * `conversation` - conversation * `customer_analytics` - customer_analytics * `customer_task` - customer_task * `customer_journey` - customer_journey * `customer_profile_config` - customer_profile_config * `data_catalog` - data_catalog * `data_catalog_approval` - data_catalog_approval * `data_deletion` - data_deletion * `dashboard` - dashboard * `event_filter` - event_filter * `dashboard_template` - dashboard_template * `dataset` - dataset * `early_access_feature` - early_access_feature * `endpoint` - endpoint * `engineering_analytics` - engineering_analytics * `error_tracking` - error_tracking * `evaluation` - evaluation * `element` - element * `event_definition` - event_definition * `experiment` - experiment * `experiment_holdout` - experiment_holdout * `experiment_saved_metric` - experiment_saved_metric * `export` - export * `external_data_schema` - external_data_schema * `external_data_source` - external_data_source * `feature_flag` - feature_flag * `file_system` - file_system * `file_system_shortcut` - file_system_shortcut * `group` - group * `health_issue` - health_issue * `heatmap` - heatmap * `hog_flow` - hog_flow * `hog_function` - hog_function * `ingestion_warning` - ingestion_warning * `insight` - insight * `insight_variable` - insight_variable * `integration` - integration * `legal_document` - legal_document * `link` - link * `live_debugger` - live_debugger * `llm_analytics` - llm_analytics * `ai_observability_clusters` - ai_observability_clusters * `llm_gateway` - llm_gateway * `llm_playground` - llm_playground * `llm_prompt` - llm_prompt * `llm_provider_key` - llm_provider_key * `llm_skill` - llm_skill * `logs` - logs * `loop` - loop * `marketing_analytics` - marketing_analytics * `mcp_analytics` - mcp_analytics * `mcp_registry` - mcp_registry * `metrics` - metrics * `notebook` - notebook * `offline_evaluation_ingestion` - offline_evaluation_ingestion * `organization` - organization * `organization_integration` - organization_integration * `organization_member` - organization_member * `person` - person * `plugin` - plugin * `product_enablement` - product_enablement * `product_tour` - product_tour * `project` - project * `property_definition` - property_definition * `query` - query * `query_performance` - query_performance * `replay_scanner` - replay_scanner * `review_hog` - review_hog * `revenue_analytics` - revenue_analytics * `session_recording` - session_recording * `session_recording_playlist` - session_recording_playlist * `sharing_configuration` - sharing_configuration * `signal_scout` - signal_scout * `stamphog` - stamphog * `streamlit_app` - streamlit_app * `subscription` - subscription * `support_ticket` - support_ticket * `survey` - survey * `tagger` - tagger * `ticket` - ticket * `task` - task * `today` - today * `toolbar` - toolbar * `tracing` - tracing * `field_note` - field_note * `uploaded_media` - uploaded_media * `usage_metric` - usage_metric * `user` - user * `user_interview` - user_interview * `vision_action` - vision_action * `vision_alert` - vision_alert * `visual_review` - visual_review * `warehouse_objects` - warehouse_objects * `warehouse_table` - warehouse_table * `warehouse_view` - warehouse_view * `web_analytics` - web_analytics * `webhook` - webhook * `wizard_session` - wizard_session * `wizard_run` - wizard_run */
   resource: ScopeObjectEnum;
@@ -3336,9 +4256,19 @@ export interface AccessControlObjectRuleResource {
   /** The lowest level an object rule on this resource can set. */
   minimum_access_level: string;
 }
+const AccessControlObjectRuleResource = /*@__PURE__*/ __L.at(
+  __c20,
+  7,
+) as any as S.Schema<AccessControlObjectRuleResource>;
+
 /** The resource types that accept rules on single objects, with the levels each accepts. */
 export type AccessControlDefaultsResponseObjectRuleResourcesList =
   Array<AccessControlObjectRuleResource>;
+const AccessControlDefaultsResponseObjectRuleResourcesList = /*@__PURE__*/ __L.at(
+  __c21,
+  0,
+) as any as S.Schema<AccessControlDefaultsResponseObjectRuleResourcesList>;
+
 /** The project's defaults: what everyone without a rule of their own gets. */
 export interface AccessControlDefaultsResponse {
   /** The project access levels, lowest first. */
@@ -3354,12 +4284,22 @@ export interface AccessControlDefaultsResponse {
   /** The resource types that accept rules on single objects, with the levels each accepts. */
   object_rule_resources: AccessControlDefaultsResponseObjectRuleResourcesList;
 }
+const AccessControlDefaultsResponse = /*@__PURE__*/ __L.at(
+  __c21,
+  1,
+) as any as S.Schema<AccessControlDefaultsResponse>;
+
 export interface GetOrganizationsProjectsAccessControlDefaultObjectRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
   /** A unique value identifying this project. */
   id: number;
 }
+const GetOrganizationsProjectsAccessControlDefaultObjectRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  2,
+) as any as S.Schema<GetOrganizationsProjectsAccessControlDefaultObjectRequest>;
+
 /** A stored rule on one object, as configured for a subject. */
 export interface AccessControlObjectRule {
   /** The object's resource type, for example `dashboard`. * `action` - action * `access_control` - access_control * `account` - account * `activity_log` - activity_log * `alert` - alert * `annotation` - annotation * `approvals` - approvals * `autoresearch` - autoresearch * `batch_export` - batch_export * `batch_import` - batch_import * `batch_import_support` - batch_import_support * `billing` - billing * `business_knowledge` - business_knowledge * `canvas` - canvas * `cohort` - cohort * `comment` - comment * `conversation` - conversation * `customer_analytics` - customer_analytics * `customer_task` - customer_task * `customer_journey` - customer_journey * `customer_profile_config` - customer_profile_config * `data_catalog` - data_catalog * `data_catalog_approval` - data_catalog_approval * `data_deletion` - data_deletion * `dashboard` - dashboard * `event_filter` - event_filter * `dashboard_template` - dashboard_template * `dataset` - dataset * `early_access_feature` - early_access_feature * `endpoint` - endpoint * `engineering_analytics` - engineering_analytics * `error_tracking` - error_tracking * `evaluation` - evaluation * `element` - element * `event_definition` - event_definition * `experiment` - experiment * `experiment_holdout` - experiment_holdout * `experiment_saved_metric` - experiment_saved_metric * `export` - export * `external_data_schema` - external_data_schema * `external_data_source` - external_data_source * `feature_flag` - feature_flag * `file_system` - file_system * `file_system_shortcut` - file_system_shortcut * `group` - group * `health_issue` - health_issue * `heatmap` - heatmap * `hog_flow` - hog_flow * `hog_function` - hog_function * `ingestion_warning` - ingestion_warning * `insight` - insight * `insight_variable` - insight_variable * `integration` - integration * `legal_document` - legal_document * `link` - link * `live_debugger` - live_debugger * `llm_analytics` - llm_analytics * `ai_observability_clusters` - ai_observability_clusters * `llm_gateway` - llm_gateway * `llm_playground` - llm_playground * `llm_prompt` - llm_prompt * `llm_provider_key` - llm_provider_key * `llm_skill` - llm_skill * `logs` - logs * `loop` - loop * `marketing_analytics` - marketing_analytics * `mcp_analytics` - mcp_analytics * `mcp_registry` - mcp_registry * `metrics` - metrics * `notebook` - notebook * `offline_evaluation_ingestion` - offline_evaluation_ingestion * `organization` - organization * `organization_integration` - organization_integration * `organization_member` - organization_member * `person` - person * `plugin` - plugin * `product_enablement` - product_enablement * `product_tour` - product_tour * `project` - project * `property_definition` - property_definition * `query` - query * `query_performance` - query_performance * `replay_scanner` - replay_scanner * `review_hog` - review_hog * `revenue_analytics` - revenue_analytics * `session_recording` - session_recording * `session_recording_playlist` - session_recording_playlist * `sharing_configuration` - sharing_configuration * `signal_scout` - signal_scout * `stamphog` - stamphog * `streamlit_app` - streamlit_app * `subscription` - subscription * `support_ticket` - support_ticket * `survey` - survey * `tagger` - tagger * `ticket` - ticket * `task` - task * `today` - today * `toolbar` - toolbar * `tracing` - tracing * `field_note` - field_note * `uploaded_media` - uploaded_media * `usage_metric` - usage_metric * `user` - user * `user_interview` - user_interview * `vision_action` - vision_action * `vision_alert` - vision_alert * `visual_review` - visual_review * `warehouse_objects` - warehouse_objects * `warehouse_table` - warehouse_table * `warehouse_view` - warehouse_view * `web_analytics` - web_analytics * `webhook` - webhook * `wizard_session` - wizard_session * `wizard_run` - wizard_run */
@@ -3373,18 +4313,38 @@ export interface AccessControlObjectRule {
   /** The level the rule grants or restricts to. */
   access_level: string;
 }
+const AccessControlObjectRule = /*@__PURE__*/ __L.at(
+  __c21,
+  3,
+) as any as S.Schema<AccessControlObjectRule>;
+
 /** The subject's object rules, sorted by resource and name. */
 export type AccessControlObjectRulesResponseResultsList = Array<AccessControlObjectRule>;
+const AccessControlObjectRulesResponseResultsList = /*@__PURE__*/ __L.at(
+  __c21,
+  4,
+) as any as S.Schema<AccessControlObjectRulesResponseResultsList>;
+
 export interface AccessControlObjectRulesResponse {
   /** The subject's object rules, sorted by resource and name. */
   results: AccessControlObjectRulesResponseResultsList;
 }
+const AccessControlObjectRulesResponse = /*@__PURE__*/ __L.at(
+  __c21,
+  5,
+) as any as S.Schema<AccessControlObjectRulesResponse>;
+
 export interface GetOrganizationsProjectsAccessControlDefaultPropertyRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
   /** A unique value identifying this project. */
   id: number;
 }
+const GetOrganizationsProjectsAccessControlDefaultPropertyRequest = /*@__PURE__*/ __L.at(
+  __c21,
+  6,
+) as any as S.Schema<GetOrganizationsProjectsAccessControlDefaultPropertyRequest>;
+
 /** A stored rule on one property definition, as configured for a subject. */
 export interface AccessControlPropertyRule {
   /** The property definition id. */
@@ -3396,12 +4356,27 @@ export interface AccessControlPropertyRule {
   /** The rule's level: `none`, `read` or `read_write`. */
   access_level: string;
 }
+const AccessControlPropertyRule = /*@__PURE__*/ __L.at(
+  __c21,
+  7,
+) as any as S.Schema<AccessControlPropertyRule>;
+
 /** The subject's property rules, sorted by property type and name. */
 export type AccessControlPropertyRulesResponseResultsList = Array<AccessControlPropertyRule>;
+const AccessControlPropertyRulesResponseResultsList = /*@__PURE__*/ __L.at(
+  __c22,
+  0,
+) as any as S.Schema<AccessControlPropertyRulesResponseResultsList>;
+
 export interface AccessControlPropertyRulesResponse {
   /** The subject's property rules, sorted by property type and name. */
   results: AccessControlPropertyRulesResponseResultsList;
 }
+const AccessControlPropertyRulesResponse = /*@__PURE__*/ __L.at(
+  __c22,
+  1,
+) as any as S.Schema<AccessControlPropertyRulesResponse>;
+
 export interface GetOrganizationsProjectsAccessControlMemberRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
@@ -3410,10 +4385,21 @@ export interface GetOrganizationsProjectsAccessControlMemberRequest {
   /** Narrow the list to one organization membership id. */
   member_id?: string;
 }
+const GetOrganizationsProjectsAccessControlMemberRequest = /*@__PURE__*/ __L.at(
+  __c22,
+  2,
+) as any as S.Schema<GetOrganizationsProjectsAccessControlMemberRequest>;
+
 /** The project access levels, lowest first. */
 export type AccessControlMembersResponseAvailableProjectLevelsList = Array<string>;
+const AccessControlMembersResponseAvailableProjectLevelsList =
+  CreateIdentityProviderConfigRequestOrganizationDomainIdsList as any as S.Schema<AccessControlMembersResponseAvailableProjectLevelsList>;
+
 /** The resource access levels, lowest first. */
 export type AccessControlMembersResponseAvailableResourceLevelsList = Array<string>;
+const AccessControlMembersResponseAvailableResourceLevelsList =
+  CreateIdentityProviderConfigRequestOrganizationDomainIdsList as any as S.Schema<AccessControlMembersResponseAvailableResourceLevelsList>;
+
 export interface AccessControlMemberUser {
   /** The user's UUID. */
   uuid: string;
@@ -3424,8 +4410,16 @@ export interface AccessControlMemberUser {
   /** The user's email. */
   email: string;
 }
+const AccessControlMemberUser = /*@__PURE__*/ __L.at(
+  __c22,
+  3,
+) as any as S.Schema<AccessControlMemberUser>;
+
 /** The roles the member is in. Use them as `role_id` on the role rule endpoints. */
 export type AccessControlMemberAccessRoleIdsList = Array<string>;
+const AccessControlMemberAccessRoleIdsList =
+  CreateIdentityProviderConfigRequestOrganizationDomainIdsList as any as S.Schema<AccessControlMemberAccessRoleIdsList>;
+
 /** A resolved access level with the rule that supplied it -- the wire form of `ResolvedAccess`. */
 export interface ResolvedAccess {
   /** The access level that applies. */
@@ -3439,6 +4433,8 @@ export interface ResolvedAccess {
   /** The deciding rule's object id, when it is an object-level rule (e.g. the source a table inherits from). */
   source_resource_id: string | null;
 }
+const ResolvedAccess = /*@__PURE__*/ __L.at(__c22, 4) as any as S.Schema<ResolvedAccess>;
+
 /** One subject's access to one scope (the project, or a whole resource type): what is stored, what is enforced, and where the enforced level comes from. */
 export interface SubjectAccessEntry {
   /** The subject's own stored rule for this scope. Null when the subject has no rule of its own here. */
@@ -3452,10 +4448,17 @@ export interface SubjectAccessEntry {
   /** The highest level this scope allows. */
   maximum: string;
 }
+const SubjectAccessEntry = /*@__PURE__*/ __L.at(__c22, 5) as any as S.Schema<SubjectAccessEntry>;
+
 /** Access per resource type, keyed by resource name (for example `dashboard`, `feature_flag`). */
 export type AccessControlMemberAccessResourcesMap = {
   [key: string]: SubjectAccessEntry | undefined;
 };
+const AccessControlMemberAccessResourcesMap = /*@__PURE__*/ __L.at(
+  __c22,
+  6,
+) as any as S.Schema<AccessControlMemberAccessResourcesMap>;
+
 /** A member's resolved access to the project and to every resource type in it. */
 export interface AccessControlMemberAccess {
   /** The organization membership id. Use it as `member_id` on the member rule endpoints. */
@@ -3471,8 +4474,18 @@ export interface AccessControlMemberAccess {
   /** Access per resource type, keyed by resource name (for example `dashboard`, `feature_flag`). */
   resources: AccessControlMemberAccessResourcesMap;
 }
+const AccessControlMemberAccess = /*@__PURE__*/ __L.at(
+  __c22,
+  7,
+) as any as S.Schema<AccessControlMemberAccess>;
+
 /** One entry per organization member. */
 export type AccessControlMembersResponseResultsList = Array<AccessControlMemberAccess>;
+const AccessControlMembersResponseResultsList = /*@__PURE__*/ __L.at(
+  __c23,
+  0,
+) as any as S.Schema<AccessControlMembersResponseResultsList>;
+
 export interface AccessControlMembersResponse {
   /** The project access levels, lowest first. */
   available_project_levels: AccessControlMembersResponseAvailableProjectLevelsList;
@@ -3483,6 +4496,11 @@ export interface AccessControlMembersResponse {
   /** One entry per organization member. */
   results: AccessControlMembersResponseResultsList;
 }
+const AccessControlMembersResponse = /*@__PURE__*/ __L.at(
+  __c23,
+  1,
+) as any as S.Schema<AccessControlMembersResponse>;
+
 export interface GetOrganizationsProjectsAccessControlMemberObjectRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
@@ -3491,6 +4509,11 @@ export interface GetOrganizationsProjectsAccessControlMemberObjectRequest {
   /** The organization membership id, as `organization_membership_id` in the members endpoint. */
   member_id: string;
 }
+const GetOrganizationsProjectsAccessControlMemberObjectRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  2,
+) as any as S.Schema<GetOrganizationsProjectsAccessControlMemberObjectRequest>;
+
 export interface GetOrganizationsProjectsAccessControlMemberPropertyRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
@@ -3499,6 +4522,11 @@ export interface GetOrganizationsProjectsAccessControlMemberPropertyRequest {
   /** The organization membership id, as `organization_membership_id` in the members endpoint. */
   member_id: string;
 }
+const GetOrganizationsProjectsAccessControlMemberPropertyRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  3,
+) as any as S.Schema<GetOrganizationsProjectsAccessControlMemberPropertyRequest>;
+
 export interface GetOrganizationsProjectsAccessControlRoleRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
@@ -3507,12 +4535,26 @@ export interface GetOrganizationsProjectsAccessControlRoleRequest {
   /** Narrow the list to one role. */
   role_id?: string;
 }
+const GetOrganizationsProjectsAccessControlRoleRequest = /*@__PURE__*/ __L.at(
+  __c23,
+  4,
+) as any as S.Schema<GetOrganizationsProjectsAccessControlRoleRequest>;
+
 /** The project access levels, lowest first. */
 export type AccessControlRolesResponseAvailableProjectLevelsList = Array<string>;
+const AccessControlRolesResponseAvailableProjectLevelsList =
+  CreateIdentityProviderConfigRequestOrganizationDomainIdsList as any as S.Schema<AccessControlRolesResponseAvailableProjectLevelsList>;
+
 /** The resource access levels, lowest first. */
 export type AccessControlRolesResponseAvailableResourceLevelsList = Array<string>;
+const AccessControlRolesResponseAvailableResourceLevelsList =
+  CreateIdentityProviderConfigRequestOrganizationDomainIdsList as any as S.Schema<AccessControlRolesResponseAvailableResourceLevelsList>;
+
 /** Access per resource type, keyed by resource name (for example `dashboard`, `feature_flag`). */
 export type AccessControlRoleAccessResourcesMap = { [key: string]: SubjectAccessEntry | undefined };
+const AccessControlRoleAccessResourcesMap =
+  AccessControlMemberAccessResourcesMap as any as S.Schema<AccessControlRoleAccessResourcesMap>;
+
 /** A role's resolved access to the project and to every resource type in it. */
 export interface AccessControlRoleAccess {
   /** The role id. Use it as `role_id` on the role rule endpoints. */
@@ -3524,8 +4566,18 @@ export interface AccessControlRoleAccess {
   /** Access per resource type, keyed by resource name (for example `dashboard`, `feature_flag`). */
   resources: AccessControlRoleAccessResourcesMap;
 }
+const AccessControlRoleAccess = /*@__PURE__*/ __L.at(
+  __c23,
+  5,
+) as any as S.Schema<AccessControlRoleAccess>;
+
 /** One entry per role in the organization. */
 export type AccessControlRolesResponseResultsList = Array<AccessControlRoleAccess>;
+const AccessControlRolesResponseResultsList = /*@__PURE__*/ __L.at(
+  __c23,
+  6,
+) as any as S.Schema<AccessControlRolesResponseResultsList>;
+
 export interface AccessControlRolesResponse {
   /** The project access levels, lowest first. */
   available_project_levels: AccessControlRolesResponseAvailableProjectLevelsList;
@@ -3536,6 +4588,11 @@ export interface AccessControlRolesResponse {
   /** One entry per role in the organization. */
   results: AccessControlRolesResponseResultsList;
 }
+const AccessControlRolesResponse = /*@__PURE__*/ __L.at(
+  __c23,
+  7,
+) as any as S.Schema<AccessControlRolesResponse>;
+
 export interface GetOrganizationsProjectsAccessControlRoleObjectRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
@@ -3544,6 +4601,11 @@ export interface GetOrganizationsProjectsAccessControlRoleObjectRequest {
   /** The role id, as `role_id` in the roles endpoint. */
   role_id: string;
 }
+const GetOrganizationsProjectsAccessControlRoleObjectRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  0,
+) as any as S.Schema<GetOrganizationsProjectsAccessControlRoleObjectRequest>;
+
 export interface GetOrganizationsProjectsAccessControlRolePropertyRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
@@ -3552,48 +4614,92 @@ export interface GetOrganizationsProjectsAccessControlRolePropertyRequest {
   /** The role id, as `role_id` in the roles endpoint. */
   role_id: string;
 }
+const GetOrganizationsProjectsAccessControlRolePropertyRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  1,
+) as any as S.Schema<GetOrganizationsProjectsAccessControlRolePropertyRequest>;
+
 export interface GetOrganizationsProjectsActivityRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
   /** A unique value identifying this project. */
   id: number;
 }
+const GetOrganizationsProjectsActivityRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  2,
+) as any as S.Schema<GetOrganizationsProjectsActivityRequest>;
+
 export interface GetOrganizationsProjectsDefaultEvaluationContextRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
   /** A unique value identifying this project. */
   id: number;
 }
+const GetOrganizationsProjectsDefaultEvaluationContextRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  3,
+) as any as S.Schema<GetOrganizationsProjectsDefaultEvaluationContextRequest>;
+
 export interface GetOrganizationsProjectsDefaultReleaseConditionRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
   /** A unique value identifying this project. */
   id: number;
 }
+const GetOrganizationsProjectsDefaultReleaseConditionRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  4,
+) as any as S.Schema<GetOrganizationsProjectsDefaultReleaseConditionRequest>;
+
 export interface GetOrganizationsProjectsExperimentsConfigRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
   /** A unique value identifying this project. */
   id: number;
 }
+const GetOrganizationsProjectsExperimentsConfigRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  5,
+) as any as S.Schema<GetOrganizationsProjectsExperimentsConfigRequest>;
+
 export interface GetOrganizationsProjectsIsGeneratingDemoDataRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
   /** A unique value identifying this project. */
   id: number;
 }
+const GetOrganizationsProjectsIsGeneratingDemoDataRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  6,
+) as any as S.Schema<GetOrganizationsProjectsIsGeneratingDemoDataRequest>;
+
 export interface GetOrganizationsProjectsLogsConfigRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
   /** A unique value identifying this project. */
   id: number;
 }
+const GetOrganizationsProjectsLogsConfigRequest = /*@__PURE__*/ __L.at(
+  __c24,
+  7,
+) as any as S.Schema<GetOrganizationsProjectsLogsConfigRequest>;
+
 /** Log attribute keys whose values should match a person's distinct_id -- a log links to a person when any of these attributes equals one of their distinct IDs. Used by the person profile Logs tab and the `query-logs` MCP tool. Defaults to ['posthogDistinctId'] -- the convention documented at https://posthog.com/docs/logs/link-session-replay and the key the posthog-js / posthog-react-native SDKs auto-attach. Add keys only if your pipeline emits the person identifier under different attributes. */
 export type TeamLogsConfigLogsDistinctIdAttributeKeysList = Array<string>;
+const TeamLogsConfigLogsDistinctIdAttributeKeysList =
+  CreateIdentityProviderConfigRequestOrganizationDomainIdsList as any as S.Schema<TeamLogsConfigLogsDistinctIdAttributeKeysList>;
+
 /** Ordered list of log attribute keys whose values hold the PostHog session ID. Detection checks keys in order, then falls back to common session ID attribute conventions; the first key with a value wins. Defaults to ['sessionId'] -- the convention documented at https://posthog.com/docs/logs/link-session-replay and the key the posthog-js / posthog-react-native SDKs auto-attach. Add keys only if your pipeline emits the session ID under different attributes. */
 export type TeamLogsConfigLogsSessionIdAttributeKeysList = Array<string>;
+const TeamLogsConfigLogsSessionIdAttributeKeysList =
+  CreateIdentityProviderConfigRequestOrganizationDomainIdsList as any as S.Schema<TeamLogsConfigLogsSessionIdAttributeKeysList>;
+
 /** Ordered list of top-level JSON keys whose value is the message text that log patterns are derived from. Keys are matched literally at the top level of the log body; a dot in a key is part of the key name, not a path into nested objects. Selection checks keys in order; the first key whose value is a non-empty string wins. Defaults to ['message', 'msg', 'event']. An empty list turns message extraction off, so JSON log bodies group by their key set instead. The stored log body is never changed by this setting. */
 export type TeamLogsConfigLogsPatternMessageKeysList = Array<string>;
+const TeamLogsConfigLogsPatternMessageKeysList =
+  CreateIdentityProviderConfigRequestOrganizationDomainIdsList as any as S.Schema<TeamLogsConfigLogsPatternMessageKeysList>;
+
 export interface TeamLogsConfig {
   /** Legacy single-key alias -- always the first entry of `logs_distinct_id_attribute_keys`. Read-only; write the plural field instead. */
   logs_distinct_id_attribute_key: string;
@@ -3604,22 +4710,40 @@ export interface TeamLogsConfig {
   /** Ordered list of top-level JSON keys whose value is the message text that log patterns are derived from. Keys are matched literally at the top level of the log body; a dot in a key is part of the key name, not a path into nested objects. Selection checks keys in order; the first key whose value is a non-empty string wins. Defaults to ['message', 'msg', 'event']. An empty list turns message extraction off, so JSON log bodies group by their key set instead. The stored log body is never changed by this setting. */
   logs_pattern_message_keys: TeamLogsConfigLogsPatternMessageKeysList;
 }
+const TeamLogsConfig = /*@__PURE__*/ __L.at(__c25, 0) as any as S.Schema<TeamLogsConfig>;
+
 export interface GetOrganizationsProjectsSettingsAsOfRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
   /** A unique value identifying this project. */
   id: number;
 }
+const GetOrganizationsProjectsSettingsAsOfRequest = /*@__PURE__*/ __L.at(
+  __c25,
+  1,
+) as any as S.Schema<GetOrganizationsProjectsSettingsAsOfRequest>;
+
 export interface GetOrganizationsProjectsTracingConfigRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
   /** A unique value identifying this project. */
   id: number;
 }
+const GetOrganizationsProjectsTracingConfigRequest = /*@__PURE__*/ __L.at(
+  __c25,
+  2,
+) as any as S.Schema<GetOrganizationsProjectsTracingConfigRequest>;
+
 /** Span or resource attribute keys whose values should match a person's distinct_id -- a span links to a person when any of these attributes holds one of their distinct IDs. Defaults to ['posthogDistinctId'], the key the posthog-js / posthog-react-native SDKs attach to the OTel signals they emit. Add keys only if your pipeline emits the person identifier under different attributes. */
 export type TeamTracingConfigTracingDistinctIdAttributeKeysList = Array<string>;
+const TeamTracingConfigTracingDistinctIdAttributeKeysList =
+  CreateIdentityProviderConfigRequestOrganizationDomainIdsList as any as S.Schema<TeamTracingConfigTracingDistinctIdAttributeKeysList>;
+
 /** Ordered list of span or resource attribute keys whose values hold the PostHog session ID. Detection checks keys in order, then falls back to common session ID attribute conventions; the first key with a value wins. Defaults to ['sessionId'], the key the posthog-js / posthog-react-native SDKs attach to the OTel signals they emit. Add keys only if your pipeline emits the session ID under different attributes. */
 export type TeamTracingConfigTracingSessionIdAttributeKeysList = Array<string>;
+const TeamTracingConfigTracingSessionIdAttributeKeysList =
+  CreateIdentityProviderConfigRequestOrganizationDomainIdsList as any as S.Schema<TeamTracingConfigTracingSessionIdAttributeKeysList>;
+
 export interface TeamTracingConfig {
   /** Span or resource attribute keys whose values should match a person's distinct_id -- a span links to a person when any of these attributes holds one of their distinct IDs. Defaults to ['posthogDistinctId'], the key the posthog-js / posthog-react-native SDKs attach to the OTel signals they emit. Add keys only if your pipeline emits the person identifier under different attributes. */
   tracing_distinct_id_attribute_keys: TeamTracingConfigTracingDistinctIdAttributeKeysList;
@@ -3629,12 +4753,16 @@ export interface TeamTracingConfig {
   retention_days?: number;
   retention_last_updated: string | null;
 }
+const TeamTracingConfig = /*@__PURE__*/ __L.at(__c25, 3) as any as S.Schema<TeamTracingConfig>;
+
 export interface GetRoleRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
   /** A UUID string identifying this role. */
   id: string;
 }
+const GetRoleRequest = /*@__PURE__*/ __L.at(__c25, 4) as any as S.Schema<GetRoleRequest>;
+
 export interface GetRoleExternalReferencesLookupRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
@@ -3647,10 +4775,17 @@ export interface GetRoleExternalReferencesLookupRequest {
   /** Human-friendly provider role identifier. */
   provider_role_slug?: string;
 }
+const GetRoleExternalReferencesLookupRequest = /*@__PURE__*/ __L.at(
+  __c25,
+  5,
+) as any as S.Schema<GetRoleExternalReferencesLookupRequest>;
+
 export interface RoleLookupResponse {
   /** Matching reference, or null if none exists. */
   reference?: RoleExternalReference | null;
 }
+const RoleLookupResponse = /*@__PURE__*/ __L.at(__c25, 6) as any as S.Schema<RoleLookupResponse>;
+
 export interface GetRolesRoleMembershipRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
@@ -3658,20 +4793,39 @@ export interface GetRolesRoleMembershipRequest {
   /** A UUID string identifying this role membership. */
   id: string;
 }
+const GetRolesRoleMembershipRequest = /*@__PURE__*/ __L.at(
+  __c25,
+  7,
+) as any as S.Schema<GetRolesRoleMembershipRequest>;
+
 export interface GetTeamsDataFreshnessRequest {
   /** A UUID string identifying this organization. */
   id: string;
 }
+const GetTeamsDataFreshnessRequest = /*@__PURE__*/ __L.at(
+  __c26,
+  0,
+) as any as S.Schema<GetTeamsDataFreshnessRequest>;
+
 /** * `never` - never * `live` - live * `stale` - stale */
 export type FreshnessEnum = "never" | "live" | "stale";
+const FreshnessEnum = S.String;
+
 export interface DataFreshnessSource {
   /** The product this timestamp is about, as a `ProductKey` (e.g. `session_replay`, `logs`). Not an enum: products declare their own data sources, so the set grows without an API change. */
   data_source: string;
   /** When data of this kind last reached the project. Only sources with data inside the lookback window are listed. */
   last_data_at: string;
 }
+const DataFreshnessSource = /*@__PURE__*/ __L.at(__c26, 1) as any as S.Schema<DataFreshnessSource>;
+
 /** Per-source breakdown, most recently active first. */
 export type DataFreshnessProjectSourcesList = Array<DataFreshnessSource>;
+const DataFreshnessProjectSourcesList = /*@__PURE__*/ __L.at(
+  __c26,
+  2,
+) as any as S.Schema<DataFreshnessProjectSourcesList>;
+
 export interface DataFreshnessProject {
   /** ID of the project this freshness verdict is for. */
   team_id: number;
@@ -3682,8 +4836,18 @@ export interface DataFreshnessProject {
   /** Per-source breakdown, most recently active first. */
   sources: DataFreshnessProjectSourcesList;
 }
+const DataFreshnessProject = /*@__PURE__*/ __L.at(
+  __c26,
+  3,
+) as any as S.Schema<DataFreshnessProject>;
+
 /** One entry per project the requesting user can see. */
 export type OrganizationDataFreshnessResultsList = Array<DataFreshnessProject>;
+const OrganizationDataFreshnessResultsList = /*@__PURE__*/ __L.at(
+  __c26,
+  4,
+) as any as S.Schema<OrganizationDataFreshnessResultsList>;
+
 export interface OrganizationDataFreshness {
   /** One entry per project the requesting user can see. */
   results: OrganizationDataFreshnessResultsList;
@@ -3692,16 +4856,30 @@ export interface OrganizationDataFreshness {
   /** How many days without data make a project or source count as quiet. */
   quiet_after_days: number;
 }
+const OrganizationDataFreshness = /*@__PURE__*/ __L.at(
+  __c26,
+  5,
+) as any as S.Schema<OrganizationDataFreshness>;
+
 export interface GetWelcomeCurrentRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
 }
+const GetWelcomeCurrentRequest = /*@__PURE__*/ __L.at(
+  __c26,
+  6,
+) as any as S.Schema<GetWelcomeCurrentRequest>;
+
 export interface WelcomeInviter {
   name?: string;
   email?: string;
 }
+const WelcomeInviter = /*@__PURE__*/ __L.at(__c26, 7) as any as S.Schema<WelcomeInviter>;
+
 /** * `today` - today * `this_week` - this_week * `inactive` - inactive * `never` - never */
 export type LastActiveEnum = "today" | "this_week" | "inactive" | "never";
+const LastActiveEnum = S.String;
+
 export interface WelcomeTeamMember {
   name?: string;
   email?: string;
@@ -3709,7 +4887,14 @@ export interface WelcomeTeamMember {
   role?: string;
   last_active?: LastActiveEnum;
 }
+const WelcomeTeamMember = /*@__PURE__*/ __L.at(__c27, 0) as any as S.Schema<WelcomeTeamMember>;
+
 export type WelcomeResponseTeamMembersList = Array<WelcomeTeamMember>;
+const WelcomeResponseTeamMembersList = /*@__PURE__*/ __L.at(
+  __c27,
+  1,
+) as any as S.Schema<WelcomeResponseTeamMembersList>;
+
 export interface WelcomeRecentActivity {
   /** Scope.activity pair, e.g. 'Insight.created'. */
   type?: string;
@@ -3718,7 +4903,17 @@ export interface WelcomeRecentActivity {
   entity_url?: string | null;
   timestamp?: string;
 }
+const WelcomeRecentActivity = /*@__PURE__*/ __L.at(
+  __c27,
+  2,
+) as any as S.Schema<WelcomeRecentActivity>;
+
 export type WelcomeResponseRecentActivityList = Array<WelcomeRecentActivity>;
+const WelcomeResponseRecentActivityList = /*@__PURE__*/ __L.at(
+  __c27,
+  3,
+) as any as S.Schema<WelcomeResponseRecentActivityList>;
+
 export interface WelcomePopularDashboard {
   id?: number;
   name?: string;
@@ -3726,8 +4921,21 @@ export interface WelcomePopularDashboard {
   team_id?: number;
   url?: string;
 }
+const WelcomePopularDashboard = /*@__PURE__*/ __L.at(
+  __c27,
+  4,
+) as any as S.Schema<WelcomePopularDashboard>;
+
 export type WelcomeResponsePopularDashboardsList = Array<WelcomePopularDashboard>;
+const WelcomeResponsePopularDashboardsList = /*@__PURE__*/ __L.at(
+  __c27,
+  5,
+) as any as S.Schema<WelcomeResponsePopularDashboardsList>;
+
 export type WelcomeResponseProductsInUseList = Array<string>;
+const WelcomeResponseProductsInUseList =
+  CreateIdentityProviderConfigRequestOrganizationDomainIdsList as any as S.Schema<WelcomeResponseProductsInUseList>;
+
 export interface WelcomeSuggestedStep {
   label?: string;
   href?: string;
@@ -3735,7 +4943,17 @@ export interface WelcomeSuggestedStep {
   docs_href?: string;
   product_key?: string;
 }
+const WelcomeSuggestedStep = /*@__PURE__*/ __L.at(
+  __c27,
+  6,
+) as any as S.Schema<WelcomeSuggestedStep>;
+
 export type WelcomeResponseSuggestedNextStepsList = Array<WelcomeSuggestedStep>;
+const WelcomeResponseSuggestedNextStepsList = /*@__PURE__*/ __L.at(
+  __c27,
+  7,
+) as any as S.Schema<WelcomeResponseSuggestedNextStepsList>;
+
 export interface WelcomeResponse {
   organization_name?: string;
   inviter?: WelcomeInviter | null;
@@ -3746,13 +4964,23 @@ export interface WelcomeResponse {
   suggested_next_steps?: WelcomeResponseSuggestedNextStepsList;
   is_organization_first_user?: boolean;
 }
+const WelcomeResponse = /*@__PURE__*/ __L.at(__c28, 0) as any as S.Schema<WelcomeResponse>;
+
 export interface IdentityProviderConfigsDestroyRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
   /** A UUID string identifying this identity provider config. */
   id: string;
 }
+const IdentityProviderConfigsDestroyRequest = /*@__PURE__*/ __L.at(
+  __c28,
+  1,
+) as any as S.Schema<IdentityProviderConfigsDestroyRequest>;
+
 export interface IdentityProviderConfigsDestroyResponse {}
+const IdentityProviderConfigsDestroyResponse =
+  BillingSpendExportDownloadResponse as any as S.Schema<IdentityProviderConfigsDestroyResponse>;
+
 export interface InvitesBulkCreateRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
@@ -3765,40 +4993,84 @@ export interface InvitesBulkCreateRequest {
   send_email?: boolean;
   combine_pending_invites?: boolean;
 }
+const InvitesBulkCreateRequest = /*@__PURE__*/ __L.at(
+  __c28,
+  2,
+) as any as S.Schema<InvitesBulkCreateRequest>;
+
 export interface InvitesBulkCreateResponse {}
+const InvitesBulkCreateResponse = DestroyResponse as any as S.Schema<InvitesBulkCreateResponse>;
+
 export interface InvitesDestroyRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
   /** A UUID string identifying this organization invite. */
   id: string;
 }
+const InvitesDestroyRequest = /*@__PURE__*/ __L.at(
+  __c28,
+  3,
+) as any as S.Schema<InvitesDestroyRequest>;
+
 export interface InvitesDestroyResponse {}
+const InvitesDestroyResponse = DestroyResponse as any as S.Schema<InvitesDestroyResponse>;
+
 export interface LegalDocumentsDestroyRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
   id: string;
 }
+const LegalDocumentsDestroyRequest = /*@__PURE__*/ __L.at(
+  __c28,
+  4,
+) as any as S.Schema<LegalDocumentsDestroyRequest>;
+
 export interface LegalDocumentsDestroyResponse {}
+const LegalDocumentsDestroyResponse =
+  DestroyResponse as any as S.Schema<LegalDocumentsDestroyResponse>;
+
 export interface LegalDocumentsDownloadRetrieveRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
   id: string;
 }
+const LegalDocumentsDownloadRetrieveRequest = /*@__PURE__*/ __L.at(
+  __c28,
+  5,
+) as any as S.Schema<LegalDocumentsDownloadRetrieveRequest>;
+
 export interface LegalDocumentsDownloadRetrieveResponse {}
+const LegalDocumentsDownloadRetrieveResponse =
+  BillingSpendExportDownloadResponse as any as S.Schema<LegalDocumentsDownloadRetrieveResponse>;
+
 export interface ListRequest {
   /** Number of results to return per page. */
   limit?: number;
   /** The initial index from which to return the results. */
   offset?: number;
 }
+const ListRequest = /*@__PURE__*/ __L.at(__c28, 6) as any as S.Schema<ListRequest>;
+
 export type PaginatedOrganizationListResultsList = Array<Organization>;
+const PaginatedOrganizationListResultsList = /*@__PURE__*/ __L.at(
+  __c28,
+  7,
+) as any as S.Schema<PaginatedOrganizationListResultsList>;
+
 export interface PaginatedOrganizationList {
   count?: number;
   next?: string | null;
   previous?: string | null;
   results?: PaginatedOrganizationListResultsList;
 }
+const PaginatedOrganizationList = /*@__PURE__*/ __L.at(
+  __c29,
+  0,
+) as any as S.Schema<PaginatedOrganizationList>;
+
 export type ListBillingInvoicesRequestStatus = "open" | "paid" | "uncollectible" | "void";
+const ListBillingInvoicesRequestStatus = S.String;
+
 export interface ListBillingInvoicesRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
@@ -3809,8 +5081,15 @@ export interface ListBillingInvoicesRequest {
   /** Only invoices in this state. * `open` - open * `paid` - paid * `uncollectible` - uncollectible * `void` - void */
   status?: ListBillingInvoicesRequestStatus | (string & {});
 }
+const ListBillingInvoicesRequest = /*@__PURE__*/ __L.at(
+  __c29,
+  1,
+) as any as S.Schema<ListBillingInvoicesRequest>;
+
 /** * `open` - open * `paid` - paid * `uncollectible` - uncollectible * `void` - void */
 export type BillingInvoiceStatusEnum = "open" | "paid" | "uncollectible" | "void";
+const BillingInvoiceStatusEnum = S.String;
+
 export interface BillingInvoice {
   id: string;
   number: string | null;
@@ -3825,39 +5104,74 @@ export interface BillingInvoice {
   created: string | null;
   due_date: string | null;
 }
+const BillingInvoice = /*@__PURE__*/ __L.at(__c29, 2) as any as S.Schema<BillingInvoice>;
+
 export type BillingInvoicesResultsList = Array<BillingInvoice>;
+const BillingInvoicesResultsList = /*@__PURE__*/ __L.at(
+  __c29,
+  3,
+) as any as S.Schema<BillingInvoicesResultsList>;
+
 export interface BillingInvoices {
   next: string | null;
   previous: string | null;
   results: BillingInvoicesResultsList;
 }
+const BillingInvoices = /*@__PURE__*/ __L.at(__c29, 4) as any as S.Schema<BillingInvoices>;
+
 export interface ListBillingProductsRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
   /** Add the `plans` list to each product and add-on. Most of the payload. */
   include_plans?: boolean;
 }
+const ListBillingProductsRequest = /*@__PURE__*/ __L.at(
+  __c29,
+  5,
+) as any as S.Schema<ListBillingProductsRequest>;
+
 export type BillingProductsResultsList = Array<BillingProduct>;
+const BillingProductsResultsList = /*@__PURE__*/ __L.at(
+  __c29,
+  6,
+) as any as S.Schema<BillingProductsResultsList>;
+
 export interface BillingProducts {
   results: BillingProductsResultsList;
 }
+const BillingProducts = /*@__PURE__*/ __L.at(__c29, 7) as any as S.Schema<BillingProducts>;
+
 export interface ListBillingProjectRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
 }
+const ListBillingProjectRequest = /*@__PURE__*/ __L.at(
+  __c30,
+  0,
+) as any as S.Schema<ListBillingProjectRequest>;
+
 export interface BillingProject {
   id: number;
   /** The project's name, or null when the organization deleted the project after it reported usage. */
   name: string | null;
   deleted: boolean;
 }
+const BillingProject = /*@__PURE__*/ __L.at(__c30, 1) as any as S.Schema<BillingProject>;
+
 export type BillingProjectsResultsList = Array<BillingProject>;
+const BillingProjectsResultsList = /*@__PURE__*/ __L.at(
+  __c30,
+  2,
+) as any as S.Schema<BillingProjectsResultsList>;
+
 export interface BillingProjects {
   count: number;
   next: string | null;
   previous: string | null;
   results: BillingProjectsResultsList;
 }
+const BillingProjects = /*@__PURE__*/ __L.at(__c30, 3) as any as S.Schema<BillingProjects>;
+
 export interface ListCimdVerificationTokensRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
@@ -3866,13 +5180,28 @@ export interface ListCimdVerificationTokensRequest {
   /** The initial index from which to return the results. */
   offset?: number;
 }
+const ListCimdVerificationTokensRequest = /*@__PURE__*/ __L.at(
+  __c30,
+  4,
+) as any as S.Schema<ListCimdVerificationTokensRequest>;
+
 export type PaginatedCIMDVerificationTokenListResultsList = Array<CIMDVerificationToken>;
+const PaginatedCIMDVerificationTokenListResultsList = /*@__PURE__*/ __L.at(
+  __c30,
+  5,
+) as any as S.Schema<PaginatedCIMDVerificationTokenListResultsList>;
+
 export interface PaginatedCIMDVerificationTokenList {
   count: number;
   next?: string | null;
   previous?: string | null;
   results: PaginatedCIMDVerificationTokenListResultsList;
 }
+const PaginatedCIMDVerificationTokenList = /*@__PURE__*/ __L.at(
+  __c30,
+  6,
+) as any as S.Schema<PaginatedCIMDVerificationTokenList>;
+
 export interface ListDomainsRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
@@ -3881,13 +5210,25 @@ export interface ListDomainsRequest {
   /** The initial index from which to return the results. */
   offset?: number;
 }
+const ListDomainsRequest = /*@__PURE__*/ __L.at(__c30, 7) as any as S.Schema<ListDomainsRequest>;
+
 export type PaginatedOrganizationDomainListResultsList = Array<OrganizationDomain>;
+const PaginatedOrganizationDomainListResultsList = /*@__PURE__*/ __L.at(
+  __c31,
+  0,
+) as any as S.Schema<PaginatedOrganizationDomainListResultsList>;
+
 export interface PaginatedOrganizationDomainList {
   count?: number;
   next?: string | null;
   previous?: string | null;
   results?: PaginatedOrganizationDomainListResultsList;
 }
+const PaginatedOrganizationDomainList = /*@__PURE__*/ __L.at(
+  __c31,
+  1,
+) as any as S.Schema<PaginatedOrganizationDomainList>;
+
 export interface ListIdentityProviderConfigsRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
@@ -3896,14 +5237,29 @@ export interface ListIdentityProviderConfigsRequest {
   /** The initial index from which to return the results. */
   offset?: number;
 }
+const ListIdentityProviderConfigsRequest = /*@__PURE__*/ __L.at(
+  __c31,
+  2,
+) as any as S.Schema<ListIdentityProviderConfigsRequest>;
+
 export type PaginatedIdentityProviderConfigListOutputResultsList =
   Array<IdentityProviderConfigOutput>;
+const PaginatedIdentityProviderConfigListOutputResultsList = /*@__PURE__*/ __L.at(
+  __c31,
+  3,
+) as any as S.Schema<PaginatedIdentityProviderConfigListOutputResultsList>;
+
 export interface PaginatedIdentityProviderConfigListOutput {
   count: number;
   next?: string | null;
   previous?: string | null;
   results: PaginatedIdentityProviderConfigListOutputResultsList;
 }
+const PaginatedIdentityProviderConfigListOutput = /*@__PURE__*/ __L.at(
+  __c31,
+  4,
+) as any as S.Schema<PaginatedIdentityProviderConfigListOutput>;
+
 export interface ListInvitesRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
@@ -3912,13 +5268,25 @@ export interface ListInvitesRequest {
   /** The initial index from which to return the results. */
   offset?: number;
 }
+const ListInvitesRequest = /*@__PURE__*/ __L.at(__c31, 5) as any as S.Schema<ListInvitesRequest>;
+
 export type PaginatedOrganizationInviteListOutputResultsList = Array<OrganizationInviteOutput>;
+const PaginatedOrganizationInviteListOutputResultsList = /*@__PURE__*/ __L.at(
+  __c31,
+  6,
+) as any as S.Schema<PaginatedOrganizationInviteListOutputResultsList>;
+
 export interface PaginatedOrganizationInviteListOutput {
   count?: number;
   next?: string | null;
   previous?: string | null;
   results?: PaginatedOrganizationInviteListOutputResultsList;
 }
+const PaginatedOrganizationInviteListOutput = /*@__PURE__*/ __L.at(
+  __c31,
+  7,
+) as any as S.Schema<PaginatedOrganizationInviteListOutput>;
+
 export interface ListLegalDocumentsRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
@@ -3927,14 +5295,31 @@ export interface ListLegalDocumentsRequest {
   /** The initial index from which to return the results. */
   offset?: number;
 }
+const ListLegalDocumentsRequest = /*@__PURE__*/ __L.at(
+  __c32,
+  0,
+) as any as S.Schema<ListLegalDocumentsRequest>;
+
 export type PaginatedLegalDocumentDTOListResultsList = Array<LegalDocumentDTO>;
+const PaginatedLegalDocumentDTOListResultsList = /*@__PURE__*/ __L.at(
+  __c32,
+  1,
+) as any as S.Schema<PaginatedLegalDocumentDTOListResultsList>;
+
 export interface PaginatedLegalDocumentDTOList {
   count?: number;
   next?: string | null;
   previous?: string | null;
   results?: PaginatedLegalDocumentDTOListResultsList;
 }
+const PaginatedLegalDocumentDTOList = /*@__PURE__*/ __L.at(
+  __c32,
+  2,
+) as any as S.Schema<PaginatedLegalDocumentDTOList>;
+
 export type ListMembersRequestOrder = "-joined_at" | "joined_at";
+const ListMembersRequestOrder = S.String;
+
 export interface ListMembersRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
@@ -3953,13 +5338,25 @@ export interface ListMembersRequest {
   /** Match against member `first_name`, `last_name`, and `email`. Returns exact (case-insensitive substring) matches only; if no exact match exists, returns similar (fuzzy trigram -- typos, prefix-as-you-type) matches instead. Each result's `search_match_type` is `exact` or `similar`. Capped at 200 characters. */
   search?: string;
 }
+const ListMembersRequest = /*@__PURE__*/ __L.at(__c32, 3) as any as S.Schema<ListMembersRequest>;
+
 export type PaginatedOrganizationMemberListResultsList = Array<OrganizationMember>;
+const PaginatedOrganizationMemberListResultsList = /*@__PURE__*/ __L.at(
+  __c32,
+  4,
+) as any as S.Schema<PaginatedOrganizationMemberListResultsList>;
+
 export interface PaginatedOrganizationMemberList {
   count?: number;
   next?: string | null;
   previous?: string | null;
   results?: PaginatedOrganizationMemberListResultsList;
 }
+const PaginatedOrganizationMemberList = /*@__PURE__*/ __L.at(
+  __c32,
+  5,
+) as any as S.Schema<PaginatedOrganizationMemberList>;
+
 export interface ListOauthApplicationsRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
@@ -3968,7 +5365,15 @@ export interface ListOauthApplicationsRequest {
   /** The initial index from which to return the results. */
   offset?: number;
 }
+const ListOauthApplicationsRequest = /*@__PURE__*/ __L.at(
+  __c32,
+  6,
+) as any as S.Schema<ListOauthApplicationsRequest>;
+
 export type OrganizationOAuthApplicationRedirectUrisListList = Array<string>;
+const OrganizationOAuthApplicationRedirectUrisListList =
+  CreateIdentityProviderConfigRequestOrganizationDomainIdsList as any as S.Schema<OrganizationOAuthApplicationRedirectUrisListList>;
+
 /** Serializer for organization-scoped OAuth applications (read-only). */
 export interface OrganizationOAuthApplication {
   id?: string;
@@ -3980,15 +5385,32 @@ export interface OrganizationOAuthApplication {
   created?: string;
   updated?: string;
 }
+const OrganizationOAuthApplication = /*@__PURE__*/ __L.at(
+  __c32,
+  7,
+) as any as S.Schema<OrganizationOAuthApplication>;
+
 export type PaginatedOrganizationOAuthApplicationListResultsList =
   Array<OrganizationOAuthApplication>;
+const PaginatedOrganizationOAuthApplicationListResultsList = /*@__PURE__*/ __L.at(
+  __c33,
+  0,
+) as any as S.Schema<PaginatedOrganizationOAuthApplicationListResultsList>;
+
 export interface PaginatedOrganizationOAuthApplicationList {
   count?: number;
   next?: string | null;
   previous?: string | null;
   results?: PaginatedOrganizationOAuthApplicationListResultsList;
 }
+const PaginatedOrganizationOAuthApplicationList = /*@__PURE__*/ __L.at(
+  __c33,
+  1,
+) as any as S.Schema<PaginatedOrganizationOAuthApplicationList>;
+
 export type ListOrganizationsProjectsRequestTagsMatch = "all" | "any";
+const ListOrganizationsProjectsRequestTagsMatch = S.String;
+
 export interface ListOrganizationsProjectsRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
@@ -4003,8 +5425,16 @@ export interface ListOrganizationsProjectsRequest {
   /** How to combine the `tags` filter. `all` (the default) returns projects carrying every listed tag; `any` returns projects carrying at least one. */
   tags_match?: ListOrganizationsProjectsRequestTagsMatch | (string & {});
 }
+const ListOrganizationsProjectsRequest = /*@__PURE__*/ __L.at(
+  __c33,
+  2,
+) as any as S.Schema<ListOrganizationsProjectsRequest>;
+
 /** Labels applied to this project. */
 export type ProjectBackwardCompatBasicTagsList = Array<string>;
+const ProjectBackwardCompatBasicTagsList =
+  CreateIdentityProviderConfigRequestOrganizationDomainIdsList as any as S.Schema<ProjectBackwardCompatBasicTagsList>;
+
 /** Like `ProjectBasicSerializer`, but also works as a drop-in replacement for `TeamBasicSerializer` by way of passthrough fields. This allows the meaning of `Team` to change from "project" to "environment" without breaking backward compatibility of the REST API. Do not use this in greenfield endpoints! */
 export interface ProjectBackwardCompatBasic {
   id?: number;
@@ -4023,13 +5453,28 @@ export interface ProjectBackwardCompatBasic {
   /** Labels applied to this project. */
   tags?: ProjectBackwardCompatBasicTagsList;
 }
+const ProjectBackwardCompatBasic = /*@__PURE__*/ __L.at(
+  __c33,
+  3,
+) as any as S.Schema<ProjectBackwardCompatBasic>;
+
 export type PaginatedProjectBackwardCompatBasicListResultsList = Array<ProjectBackwardCompatBasic>;
+const PaginatedProjectBackwardCompatBasicListResultsList = /*@__PURE__*/ __L.at(
+  __c33,
+  4,
+) as any as S.Schema<PaginatedProjectBackwardCompatBasicListResultsList>;
+
 export interface PaginatedProjectBackwardCompatBasicList {
   count?: number;
   next?: string | null;
   previous?: string | null;
   results?: PaginatedProjectBackwardCompatBasicListResultsList;
 }
+const PaginatedProjectBackwardCompatBasicList = /*@__PURE__*/ __L.at(
+  __c33,
+  5,
+) as any as S.Schema<PaginatedProjectBackwardCompatBasicList>;
+
 export interface ListOrganizationsProjectsEventIngestionRestrictionsRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
@@ -4038,6 +5483,11 @@ export interface ListOrganizationsProjectsEventIngestionRestrictionsRequest {
   /** A search term. */
   search?: string;
 }
+const ListOrganizationsProjectsEventIngestionRestrictionsRequest = /*@__PURE__*/ __L.at(
+  __c33,
+  6,
+) as any as S.Schema<ListOrganizationsProjectsEventIngestionRestrictionsRequest>;
+
 /** * `skip_person_processing` - Skip Person Processing * `drop_event_from_ingestion` - Drop Event From Ingestion * `force_overflow_from_ingestion` - Force Overflow From Ingestion * `redirect_to_dlq` - Redirect To Dlq * `redirect_to_topic` - Redirect To Topic */
 export type RestrictionTypeEnum =
   | "skip_person_processing"
@@ -4045,14 +5495,28 @@ export type RestrictionTypeEnum =
   | "force_overflow_from_ingestion"
   | "redirect_to_dlq"
   | "redirect_to_topic";
+const RestrictionTypeEnum = S.String;
+
 /** Distinct IDs the restriction applies to. Empty means it is not filtered by distinct ID. */
 export type EventIngestionRestrictionDistinctIdsList = Array<string>;
+const EventIngestionRestrictionDistinctIdsList =
+  CreateIdentityProviderConfigRequestOrganizationDomainIdsList as any as S.Schema<EventIngestionRestrictionDistinctIdsList>;
+
 /** Session IDs the restriction applies to. Empty means it is not filtered by session ID. */
 export type EventIngestionRestrictionSessionIdsList = Array<string>;
+const EventIngestionRestrictionSessionIdsList =
+  CreateIdentityProviderConfigRequestOrganizationDomainIdsList as any as S.Schema<EventIngestionRestrictionSessionIdsList>;
+
 /** Event names the restriction applies to. Empty means it is not filtered by event name. */
 export type EventIngestionRestrictionEventNamesList = Array<string>;
+const EventIngestionRestrictionEventNamesList =
+  CreateIdentityProviderConfigRequestOrganizationDomainIdsList as any as S.Schema<EventIngestionRestrictionEventNamesList>;
+
 /** Event UUIDs the restriction applies to. Empty means it is not filtered by event UUID. */
 export type EventIngestionRestrictionEventUuidsList = Array<string>;
+const EventIngestionRestrictionEventUuidsList =
+  CreateIdentityProviderConfigRequestOrganizationDomainIdsList as any as S.Schema<EventIngestionRestrictionEventUuidsList>;
+
 /** * `analytics` - Analytics * `session_recordings` - Session Recordings * `errortracking` - Errortracking * `clientwarnings` - Clientwarnings * `heatmaps` - Heatmaps * `ai` - Ai */
 export type IngestionPipelineEnum =
   | "analytics"
@@ -4063,6 +5527,9 @@ export type IngestionPipelineEnum =
   | "ai";
 /** Ingestion pipelines the restriction applies to. Filters combine with AND; values within a filter combine with OR. */
 export type EventIngestionRestrictionPipelinesList = Array<IngestionPipelineEnum>;
+const EventIngestionRestrictionPipelinesList =
+  ProjectBackwardCompatAvailableSetupTaskIdsList as any as S.Schema<EventIngestionRestrictionPipelinesList>;
+
 export interface EventIngestionRestriction {
   /** What happens to matching events: dropped, sent to the overflow lane, or ingested without person processing. * `skip_person_processing` - Skip Person Processing * `drop_event_from_ingestion` - Drop Event From Ingestion * `force_overflow_from_ingestion` - Force Overflow From Ingestion * `redirect_to_dlq` - Redirect To Dlq * `redirect_to_topic` - Redirect To Topic */
   restriction_type: RestrictionTypeEnum;
@@ -4077,10 +5544,25 @@ export interface EventIngestionRestriction {
   /** Ingestion pipelines the restriction applies to. Filters combine with AND; values within a filter combine with OR. */
   pipelines: EventIngestionRestrictionPipelinesList;
 }
+const EventIngestionRestriction = /*@__PURE__*/ __L.at(
+  __c33,
+  7,
+) as any as S.Schema<EventIngestionRestriction>;
+
 export type ListOrganizationsProjectsEventIngestionRestrictionsResponseBodyList =
   Array<EventIngestionRestriction>;
+const ListOrganizationsProjectsEventIngestionRestrictionsResponseBodyList = /*@__PURE__*/ __L.at(
+  __c34,
+  0,
+) as any as S.Schema<ListOrganizationsProjectsEventIngestionRestrictionsResponseBodyList>;
+
 export type ListOrganizationsProjectsEventIngestionRestrictionsResponse =
   ListOrganizationsProjectsEventIngestionRestrictionsResponseBodyList;
+const ListOrganizationsProjectsEventIngestionRestrictionsResponse = /*@__PURE__*/ __L.at(
+  __c34,
+  1,
+) as any as S.Schema<ListOrganizationsProjectsEventIngestionRestrictionsResponse>;
+
 export interface ListRoleExternalReferencesRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
@@ -4089,13 +5571,28 @@ export interface ListRoleExternalReferencesRequest {
   /** The initial index from which to return the results. */
   offset?: number;
 }
+const ListRoleExternalReferencesRequest = /*@__PURE__*/ __L.at(
+  __c34,
+  2,
+) as any as S.Schema<ListRoleExternalReferencesRequest>;
+
 export type PaginatedRoleExternalReferenceListResultsList = Array<RoleExternalReference>;
+const PaginatedRoleExternalReferenceListResultsList = /*@__PURE__*/ __L.at(
+  __c34,
+  3,
+) as any as S.Schema<PaginatedRoleExternalReferenceListResultsList>;
+
 export interface PaginatedRoleExternalReferenceList {
   count?: number;
   next?: string | null;
   previous?: string | null;
   results?: PaginatedRoleExternalReferenceListResultsList;
 }
+const PaginatedRoleExternalReferenceList = /*@__PURE__*/ __L.at(
+  __c34,
+  4,
+) as any as S.Schema<PaginatedRoleExternalReferenceList>;
+
 export interface ListRolesRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
@@ -4104,13 +5601,22 @@ export interface ListRolesRequest {
   /** The initial index from which to return the results. */
   offset?: number;
 }
+const ListRolesRequest = /*@__PURE__*/ __L.at(__c34, 5) as any as S.Schema<ListRolesRequest>;
+
 export type PaginatedRoleListResultsList = Array<Role>;
+const PaginatedRoleListResultsList = /*@__PURE__*/ __L.at(
+  __c34,
+  6,
+) as any as S.Schema<PaginatedRoleListResultsList>;
+
 export interface PaginatedRoleList {
   count?: number;
   next?: string | null;
   previous?: string | null;
   results?: PaginatedRoleListResultsList;
 }
+const PaginatedRoleList = /*@__PURE__*/ __L.at(__c34, 7) as any as S.Schema<PaginatedRoleList>;
+
 export interface ListRolesRoleMembershipsRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
@@ -4120,47 +5626,99 @@ export interface ListRolesRoleMembershipsRequest {
   /** The initial index from which to return the results. */
   offset?: number;
 }
+const ListRolesRoleMembershipsRequest = /*@__PURE__*/ __L.at(
+  __c35,
+  0,
+) as any as S.Schema<ListRolesRoleMembershipsRequest>;
+
 export type PaginatedRoleMembershipListOutputResultsList = Array<RoleMembershipOutput>;
+const PaginatedRoleMembershipListOutputResultsList = /*@__PURE__*/ __L.at(
+  __c35,
+  1,
+) as any as S.Schema<PaginatedRoleMembershipListOutputResultsList>;
+
 export interface PaginatedRoleMembershipListOutput {
   count?: number;
   next?: string | null;
   previous?: string | null;
   results?: PaginatedRoleMembershipListOutputResultsList;
 }
+const PaginatedRoleMembershipListOutput = /*@__PURE__*/ __L.at(
+  __c35,
+  2,
+) as any as S.Schema<PaginatedRoleMembershipListOutput>;
+
 export interface MembersDestroyRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
   user__uuid: string;
 }
+const MembersDestroyRequest = /*@__PURE__*/ __L.at(
+  __c35,
+  3,
+) as any as S.Schema<MembersDestroyRequest>;
+
 export interface MembersDestroyResponse {}
+const MembersDestroyResponse = DestroyResponse as any as S.Schema<MembersDestroyResponse>;
+
 /** Labels applied to this project. Names are trimmed and lowercased, and sending this field replaces the project's existing tags. */
 export type OrganizationsProjectsAddProductIntentPartialUpdateRequestTagsList = Array<string>;
+const OrganizationsProjectsAddProductIntentPartialUpdateRequestTagsList =
+  CreateOrganizationsProjectRequestPersonDisplayNamePropertiesList as any as S.Schema<OrganizationsProjectsAddProductIntentPartialUpdateRequestTagsList>;
+
 export type OrganizationsProjectsAddProductIntentPartialUpdateRequestAppUrlsList = Array<
   string | null
 >;
+const OrganizationsProjectsAddProductIntentPartialUpdateRequestAppUrlsList =
+  CreateOrganizationsProjectRequestSessionRecordingEventTriggerConfigList as any as S.Schema<OrganizationsProjectsAddProductIntentPartialUpdateRequestAppUrlsList>;
+
 /** Ordered list of person properties used to render a human-friendly display name in the UI. */
 export type OrganizationsProjectsAddProductIntentPartialUpdateRequestPersonDisplayNamePropertiesList =
   Array<string>;
+const OrganizationsProjectsAddProductIntentPartialUpdateRequestPersonDisplayNamePropertiesList =
+  CreateOrganizationsProjectRequestPersonDisplayNamePropertiesList as any as S.Schema<OrganizationsProjectsAddProductIntentPartialUpdateRequestPersonDisplayNamePropertiesList>;
+
 export type OrganizationsProjectsAddProductIntentPartialUpdateRequestSessionRecordingUrlTriggerConfigList =
   Array<unknown>;
+const OrganizationsProjectsAddProductIntentPartialUpdateRequestSessionRecordingUrlTriggerConfigList =
+  CreateOrganizationsProjectRequestSessionRecordingUrlTriggerConfigList as any as S.Schema<OrganizationsProjectsAddProductIntentPartialUpdateRequestSessionRecordingUrlTriggerConfigList>;
+
 export type OrganizationsProjectsAddProductIntentPartialUpdateRequestSessionRecordingUrlBlocklistConfigList =
   Array<unknown>;
+const OrganizationsProjectsAddProductIntentPartialUpdateRequestSessionRecordingUrlBlocklistConfigList =
+  CreateOrganizationsProjectRequestSessionRecordingUrlTriggerConfigList as any as S.Schema<OrganizationsProjectsAddProductIntentPartialUpdateRequestSessionRecordingUrlBlocklistConfigList>;
+
 export type OrganizationsProjectsAddProductIntentPartialUpdateRequestSessionRecordingEventTriggerConfigList =
   Array<string | null>;
+const OrganizationsProjectsAddProductIntentPartialUpdateRequestSessionRecordingEventTriggerConfigList =
+  CreateOrganizationsProjectRequestSessionRecordingEventTriggerConfigList as any as S.Schema<OrganizationsProjectsAddProductIntentPartialUpdateRequestSessionRecordingEventTriggerConfigList>;
+
 export type OrganizationsProjectsAddProductIntentPartialUpdateRequestLiveEventsColumnsList =
   Array<string>;
+const OrganizationsProjectsAddProductIntentPartialUpdateRequestLiveEventsColumnsList =
+  CreateOrganizationsProjectRequestPersonDisplayNamePropertiesList as any as S.Schema<OrganizationsProjectsAddProductIntentPartialUpdateRequestLiveEventsColumnsList>;
+
 /** Origins permitted to record session replays and heatmaps. Empty list allows all origins. */
 export type OrganizationsProjectsAddProductIntentPartialUpdateRequestRecordingDomainsList = Array<
   string | null
 >;
+const OrganizationsProjectsAddProductIntentPartialUpdateRequestRecordingDomainsList =
+  CreateOrganizationsProjectRequestSessionRecordingEventTriggerConfigList as any as S.Schema<OrganizationsProjectsAddProductIntentPartialUpdateRequestRecordingDomainsList>;
+
 /** Whether this project serves B2B or B2C customers. Used to optimize default UI layouts. * `b2b` - B2B * `b2c` - B2C * `other` - Other */
 export type OrganizationsProjectsAddProductIntentPartialUpdateRequestBusinessModel =
   | BusinessModelEnum
   | BlankEnum;
+const OrganizationsProjectsAddProductIntentPartialUpdateRequestBusinessModel =
+  S.Unknown as any as S.Schema<OrganizationsProjectsAddProductIntentPartialUpdateRequestBusinessModel>;
+
 /** Settings for Conversations. Must be a JSON object or null. */
 export type OrganizationsProjectsAddProductIntentPartialUpdateRequestConversationsSettingsMap = {
   [key: string]: unknown | undefined;
 };
+const OrganizationsProjectsAddProductIntentPartialUpdateRequestConversationsSettingsMap =
+  CreateOrganizationsProjectsChangeOrganizationRequestConversationsSettingsMap as any as S.Schema<OrganizationsProjectsAddProductIntentPartialUpdateRequestConversationsSettingsMap>;
+
 export interface OrganizationsProjectsAddProductIntentPartialUpdateRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
@@ -4268,14 +5826,26 @@ export interface OrganizationsProjectsAddProductIntentPartialUpdateRequest {
   onboarding_tasks?: unknown;
   web_analytics_pre_aggregated_tables_enabled?: boolean | null;
 }
+const OrganizationsProjectsAddProductIntentPartialUpdateRequest = /*@__PURE__*/ __L.at(
+  __c35,
+  4,
+) as any as S.Schema<OrganizationsProjectsAddProductIntentPartialUpdateRequest>;
+
 export interface OrganizationsProjectsCancelDeletionCreateRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
   /** A unique value identifying this project. */
   id: number;
 }
+const OrganizationsProjectsCancelDeletionCreateRequest = /*@__PURE__*/ __L.at(
+  __c35,
+  5,
+) as any as S.Schema<OrganizationsProjectsCancelDeletionCreateRequest>;
+
 /** Labels applied to this project. Names are trimmed and lowercased, and sending this field replaces the project's existing tags. */
 export type ProjectTagsList = Array<string>;
+const ProjectTagsList = /*@__PURE__*/ __L.at(__c35, 6) as any as S.Schema<ProjectTagsList>;
+
 /** The project as the app context serves it, which is where the frontend reads it on page load. projectLogic bootstraps `currentProject` from the app context and only calls the API when that is missing, so a field left out here is invisible to the app until something refetches. */
 export interface Project {
   id: number;
@@ -4290,40 +5860,82 @@ export interface Project {
   /** Labels applied to this project. Names are trimmed and lowercased, and sending this field replaces the project's existing tags. */
   tags?: ProjectTagsList;
 }
+const Project = /*@__PURE__*/ __L.at(__c35, 7) as any as S.Schema<Project>;
+
 export interface OrganizationsProjectsDefaultEvaluationContextsDestroyRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
   /** A unique value identifying this project. */
   id: number;
 }
+const OrganizationsProjectsDefaultEvaluationContextsDestroyRequest = /*@__PURE__*/ __L.at(
+  __c36,
+  0,
+) as any as S.Schema<OrganizationsProjectsDefaultEvaluationContextsDestroyRequest>;
+
 export interface OrganizationsProjectsDefaultEvaluationContextsDestroyResponse {}
+const OrganizationsProjectsDefaultEvaluationContextsDestroyResponse = /*@__PURE__*/ __L.at(
+  __c36,
+  1,
+) as any as S.Schema<OrganizationsProjectsDefaultEvaluationContextsDestroyResponse>;
+
 /** Labels applied to this project. Names are trimmed and lowercased, and sending this field replaces the project's existing tags. */
 export type OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequestTagsList =
   Array<string>;
+const OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequestTagsList =
+  CreateOrganizationsProjectRequestPersonDisplayNamePropertiesList as any as S.Schema<OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequestTagsList>;
+
 export type OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequestAppUrlsList = Array<
   string | null
 >;
+const OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequestAppUrlsList =
+  CreateOrganizationsProjectRequestSessionRecordingEventTriggerConfigList as any as S.Schema<OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequestAppUrlsList>;
+
 /** Ordered list of person properties used to render a human-friendly display name in the UI. */
 export type OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequestPersonDisplayNamePropertiesList =
   Array<string>;
+const OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequestPersonDisplayNamePropertiesList =
+  CreateOrganizationsProjectRequestPersonDisplayNamePropertiesList as any as S.Schema<OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequestPersonDisplayNamePropertiesList>;
+
 export type OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequestSessionRecordingUrlTriggerConfigList =
   Array<unknown>;
+const OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequestSessionRecordingUrlTriggerConfigList =
+  CreateOrganizationsProjectRequestSessionRecordingUrlTriggerConfigList as any as S.Schema<OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequestSessionRecordingUrlTriggerConfigList>;
+
 export type OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequestSessionRecordingUrlBlocklistConfigList =
   Array<unknown>;
+const OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequestSessionRecordingUrlBlocklistConfigList =
+  CreateOrganizationsProjectRequestSessionRecordingUrlTriggerConfigList as any as S.Schema<OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequestSessionRecordingUrlBlocklistConfigList>;
+
 export type OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequestSessionRecordingEventTriggerConfigList =
   Array<string | null>;
+const OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequestSessionRecordingEventTriggerConfigList =
+  CreateOrganizationsProjectRequestSessionRecordingEventTriggerConfigList as any as S.Schema<OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequestSessionRecordingEventTriggerConfigList>;
+
 export type OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequestLiveEventsColumnsList =
   Array<string>;
+const OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequestLiveEventsColumnsList =
+  CreateOrganizationsProjectRequestPersonDisplayNamePropertiesList as any as S.Schema<OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequestLiveEventsColumnsList>;
+
 /** Origins permitted to record session replays and heatmaps. Empty list allows all origins. */
 export type OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequestRecordingDomainsList =
   Array<string | null>;
+const OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequestRecordingDomainsList =
+  CreateOrganizationsProjectRequestSessionRecordingEventTriggerConfigList as any as S.Schema<OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequestRecordingDomainsList>;
+
 /** Whether this project serves B2B or B2C customers. Used to optimize default UI layouts. * `b2b` - B2B * `b2c` - B2C * `other` - Other */
 export type OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequestBusinessModel =
   | BusinessModelEnum
   | BlankEnum;
+const OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequestBusinessModel =
+  S.Unknown as any as S.Schema<OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequestBusinessModel>;
+
 /** Settings for Conversations. Must be a JSON object or null. */
 export type OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequestConversationsSettingsMap =
   { [key: string]: unknown | undefined };
+const OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequestConversationsSettingsMap =
+  CreateOrganizationsProjectsChangeOrganizationRequestConversationsSettingsMap as any as S.Schema<OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequestConversationsSettingsMap>;
+
 export interface OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
@@ -4431,13 +6043,26 @@ export interface OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateReques
   onboarding_tasks?: unknown;
   web_analytics_pre_aggregated_tables_enabled?: boolean | null;
 }
+const OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequest = /*@__PURE__*/ __L.at(
+  __c36,
+  2,
+) as any as S.Schema<OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequest>;
+
 export interface OrganizationsProjectsDestroyRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
   /** A unique value identifying this project. */
   id: number;
 }
+const OrganizationsProjectsDestroyRequest = /*@__PURE__*/ __L.at(
+  __c36,
+  3,
+) as any as S.Schema<OrganizationsProjectsDestroyRequest>;
+
 export interface OrganizationsProjectsDestroyResponse {}
+const OrganizationsProjectsDestroyResponse =
+  BillingSpendExportDownloadResponse as any as S.Schema<OrganizationsProjectsDestroyResponse>;
+
 export interface OrganizationsProjectsEvaluationContextSuggestionsDestroyRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
@@ -4446,33 +6071,68 @@ export interface OrganizationsProjectsEvaluationContextSuggestionsDestroyRequest
   /** Name of the evaluation context to restore to suggestions. */
   context_name: string;
 }
+const OrganizationsProjectsEvaluationContextSuggestionsDestroyRequest = /*@__PURE__*/ __L.at(
+  __c36,
+  4,
+) as any as S.Schema<OrganizationsProjectsEvaluationContextSuggestionsDestroyRequest>;
+
 /** Labels applied to this project. Names are trimmed and lowercased, and sending this field replaces the project's existing tags. */
 export type OrganizationsProjectsGenerateConversationsPublicTokenCreateRequestTagsList =
   Array<string>;
+const OrganizationsProjectsGenerateConversationsPublicTokenCreateRequestTagsList =
+  CreateOrganizationsProjectRequestPersonDisplayNamePropertiesList as any as S.Schema<OrganizationsProjectsGenerateConversationsPublicTokenCreateRequestTagsList>;
+
 export type OrganizationsProjectsGenerateConversationsPublicTokenCreateRequestAppUrlsList = Array<
   string | null
 >;
+const OrganizationsProjectsGenerateConversationsPublicTokenCreateRequestAppUrlsList =
+  CreateOrganizationsProjectRequestSessionRecordingEventTriggerConfigList as any as S.Schema<OrganizationsProjectsGenerateConversationsPublicTokenCreateRequestAppUrlsList>;
+
 /** Ordered list of person properties used to render a human-friendly display name in the UI. */
 export type OrganizationsProjectsGenerateConversationsPublicTokenCreateRequestPersonDisplayNamePropertiesList =
   Array<string>;
+const OrganizationsProjectsGenerateConversationsPublicTokenCreateRequestPersonDisplayNamePropertiesList =
+  CreateOrganizationsProjectRequestPersonDisplayNamePropertiesList as any as S.Schema<OrganizationsProjectsGenerateConversationsPublicTokenCreateRequestPersonDisplayNamePropertiesList>;
+
 export type OrganizationsProjectsGenerateConversationsPublicTokenCreateRequestSessionRecordingUrlTriggerConfigList =
   Array<unknown>;
+const OrganizationsProjectsGenerateConversationsPublicTokenCreateRequestSessionRecordingUrlTriggerConfigList =
+  CreateOrganizationsProjectRequestSessionRecordingUrlTriggerConfigList as any as S.Schema<OrganizationsProjectsGenerateConversationsPublicTokenCreateRequestSessionRecordingUrlTriggerConfigList>;
+
 export type OrganizationsProjectsGenerateConversationsPublicTokenCreateRequestSessionRecordingUrlBlocklistConfigList =
   Array<unknown>;
+const OrganizationsProjectsGenerateConversationsPublicTokenCreateRequestSessionRecordingUrlBlocklistConfigList =
+  CreateOrganizationsProjectRequestSessionRecordingUrlTriggerConfigList as any as S.Schema<OrganizationsProjectsGenerateConversationsPublicTokenCreateRequestSessionRecordingUrlBlocklistConfigList>;
+
 export type OrganizationsProjectsGenerateConversationsPublicTokenCreateRequestSessionRecordingEventTriggerConfigList =
   Array<string | null>;
+const OrganizationsProjectsGenerateConversationsPublicTokenCreateRequestSessionRecordingEventTriggerConfigList =
+  CreateOrganizationsProjectRequestSessionRecordingEventTriggerConfigList as any as S.Schema<OrganizationsProjectsGenerateConversationsPublicTokenCreateRequestSessionRecordingEventTriggerConfigList>;
+
 export type OrganizationsProjectsGenerateConversationsPublicTokenCreateRequestLiveEventsColumnsList =
   Array<string>;
+const OrganizationsProjectsGenerateConversationsPublicTokenCreateRequestLiveEventsColumnsList =
+  CreateOrganizationsProjectRequestPersonDisplayNamePropertiesList as any as S.Schema<OrganizationsProjectsGenerateConversationsPublicTokenCreateRequestLiveEventsColumnsList>;
+
 /** Origins permitted to record session replays and heatmaps. Empty list allows all origins. */
 export type OrganizationsProjectsGenerateConversationsPublicTokenCreateRequestRecordingDomainsList =
   Array<string | null>;
+const OrganizationsProjectsGenerateConversationsPublicTokenCreateRequestRecordingDomainsList =
+  CreateOrganizationsProjectRequestSessionRecordingEventTriggerConfigList as any as S.Schema<OrganizationsProjectsGenerateConversationsPublicTokenCreateRequestRecordingDomainsList>;
+
 /** Whether this project serves B2B or B2C customers. Used to optimize default UI layouts. * `b2b` - B2B * `b2c` - B2C * `other` - Other */
 export type OrganizationsProjectsGenerateConversationsPublicTokenCreateRequestBusinessModel =
   | BusinessModelEnum
   | BlankEnum;
+const OrganizationsProjectsGenerateConversationsPublicTokenCreateRequestBusinessModel =
+  S.Unknown as any as S.Schema<OrganizationsProjectsGenerateConversationsPublicTokenCreateRequestBusinessModel>;
+
 /** Settings for Conversations. Must be a JSON object or null. */
 export type OrganizationsProjectsGenerateConversationsPublicTokenCreateRequestConversationsSettingsMap =
   { [key: string]: unknown | undefined };
+const OrganizationsProjectsGenerateConversationsPublicTokenCreateRequestConversationsSettingsMap =
+  CreateOrganizationsProjectsChangeOrganizationRequestConversationsSettingsMap as any as S.Schema<OrganizationsProjectsGenerateConversationsPublicTokenCreateRequestConversationsSettingsMap>;
+
 export interface OrganizationsProjectsGenerateConversationsPublicTokenCreateRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
@@ -4580,32 +6240,67 @@ export interface OrganizationsProjectsGenerateConversationsPublicTokenCreateRequ
   onboarding_tasks?: unknown;
   web_analytics_pre_aggregated_tables_enabled?: boolean | null;
 }
+const OrganizationsProjectsGenerateConversationsPublicTokenCreateRequest = /*@__PURE__*/ __L.at(
+  __c36,
+  5,
+) as any as S.Schema<OrganizationsProjectsGenerateConversationsPublicTokenCreateRequest>;
+
 /** Labels applied to this project. Names are trimmed and lowercased, and sending this field replaces the project's existing tags. */
 export type OrganizationsProjectsResetTokenPartialUpdateRequestTagsList = Array<string>;
+const OrganizationsProjectsResetTokenPartialUpdateRequestTagsList =
+  CreateIdentityProviderConfigRequestOrganizationDomainIdsList as any as S.Schema<OrganizationsProjectsResetTokenPartialUpdateRequestTagsList>;
+
 export type OrganizationsProjectsResetTokenPartialUpdateRequestAppUrlsList = Array<string | null>;
+const OrganizationsProjectsResetTokenPartialUpdateRequestAppUrlsList =
+  CreateOrganizationsProjectRequestAppUrlsList as any as S.Schema<OrganizationsProjectsResetTokenPartialUpdateRequestAppUrlsList>;
+
 /** Ordered list of person properties used to render a human-friendly display name in the UI. */
 export type OrganizationsProjectsResetTokenPartialUpdateRequestPersonDisplayNamePropertiesList =
   Array<string>;
+const OrganizationsProjectsResetTokenPartialUpdateRequestPersonDisplayNamePropertiesList =
+  CreateOrganizationsProjectRequestPersonDisplayNamePropertiesList as any as S.Schema<OrganizationsProjectsResetTokenPartialUpdateRequestPersonDisplayNamePropertiesList>;
+
 export type OrganizationsProjectsResetTokenPartialUpdateRequestSessionRecordingUrlTriggerConfigList =
   Array<unknown>;
+const OrganizationsProjectsResetTokenPartialUpdateRequestSessionRecordingUrlTriggerConfigList =
+  CreateOrganizationsProjectRequestSessionRecordingUrlTriggerConfigList as any as S.Schema<OrganizationsProjectsResetTokenPartialUpdateRequestSessionRecordingUrlTriggerConfigList>;
+
 export type OrganizationsProjectsResetTokenPartialUpdateRequestSessionRecordingUrlBlocklistConfigList =
   Array<unknown>;
+const OrganizationsProjectsResetTokenPartialUpdateRequestSessionRecordingUrlBlocklistConfigList =
+  CreateOrganizationsProjectRequestSessionRecordingUrlTriggerConfigList as any as S.Schema<OrganizationsProjectsResetTokenPartialUpdateRequestSessionRecordingUrlBlocklistConfigList>;
+
 export type OrganizationsProjectsResetTokenPartialUpdateRequestSessionRecordingEventTriggerConfigList =
   Array<string | null>;
+const OrganizationsProjectsResetTokenPartialUpdateRequestSessionRecordingEventTriggerConfigList =
+  CreateOrganizationsProjectRequestSessionRecordingEventTriggerConfigList as any as S.Schema<OrganizationsProjectsResetTokenPartialUpdateRequestSessionRecordingEventTriggerConfigList>;
+
 export type OrganizationsProjectsResetTokenPartialUpdateRequestLiveEventsColumnsList =
   Array<string>;
+const OrganizationsProjectsResetTokenPartialUpdateRequestLiveEventsColumnsList =
+  CreateOrganizationsProjectRequestPersonDisplayNamePropertiesList as any as S.Schema<OrganizationsProjectsResetTokenPartialUpdateRequestLiveEventsColumnsList>;
+
 /** Origins permitted to record session replays and heatmaps. Empty list allows all origins. */
 export type OrganizationsProjectsResetTokenPartialUpdateRequestRecordingDomainsList = Array<
   string | null
 >;
+const OrganizationsProjectsResetTokenPartialUpdateRequestRecordingDomainsList =
+  CreateOrganizationsProjectRequestSessionRecordingEventTriggerConfigList as any as S.Schema<OrganizationsProjectsResetTokenPartialUpdateRequestRecordingDomainsList>;
+
 /** Whether this project serves B2B or B2C customers. Used to optimize default UI layouts. * `b2b` - B2B * `b2c` - B2C * `other` - Other */
 export type OrganizationsProjectsResetTokenPartialUpdateRequestBusinessModel =
   | BusinessModelEnum
   | BlankEnum;
+const OrganizationsProjectsResetTokenPartialUpdateRequestBusinessModel =
+  S.Unknown as any as S.Schema<OrganizationsProjectsResetTokenPartialUpdateRequestBusinessModel>;
+
 /** Settings for Conversations. Must be a JSON object or null. */
 export type OrganizationsProjectsResetTokenPartialUpdateRequestConversationsSettingsMap = {
   [key: string]: unknown | undefined;
 };
+const OrganizationsProjectsResetTokenPartialUpdateRequestConversationsSettingsMap =
+  CreateOrganizationsProjectsChangeOrganizationRequestConversationsSettingsMap as any as S.Schema<OrganizationsProjectsResetTokenPartialUpdateRequestConversationsSettingsMap>;
+
 export interface OrganizationsProjectsResetTokenPartialUpdateRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
@@ -4713,40 +6408,81 @@ export interface OrganizationsProjectsResetTokenPartialUpdateRequest {
   onboarding_tasks?: unknown;
   web_analytics_pre_aggregated_tables_enabled?: boolean | null;
 }
+const OrganizationsProjectsResetTokenPartialUpdateRequest = /*@__PURE__*/ __L.at(
+  __c36,
+  6,
+) as any as S.Schema<OrganizationsProjectsResetTokenPartialUpdateRequest>;
+
 export interface OrganizationsProjectsRotateHeatmapsScreenshotSecretPartialUpdateRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
   /** A unique value identifying this project. */
   id: number;
 }
+const OrganizationsProjectsRotateHeatmapsScreenshotSecretPartialUpdateRequest =
+  /*@__PURE__*/ __L.at(
+    __c36,
+    7,
+  ) as any as S.Schema<OrganizationsProjectsRotateHeatmapsScreenshotSecretPartialUpdateRequest>;
+
 /** Labels applied to this project. Names are trimmed and lowercased, and sending this field replaces the project's existing tags. */
 export type OrganizationsProjectsRotateSecretTokenPartialUpdateRequestTagsList = Array<string>;
+const OrganizationsProjectsRotateSecretTokenPartialUpdateRequestTagsList =
+  CreateOrganizationsProjectRequestPersonDisplayNamePropertiesList as any as S.Schema<OrganizationsProjectsRotateSecretTokenPartialUpdateRequestTagsList>;
+
 export type OrganizationsProjectsRotateSecretTokenPartialUpdateRequestAppUrlsList = Array<
   string | null
 >;
+const OrganizationsProjectsRotateSecretTokenPartialUpdateRequestAppUrlsList =
+  CreateOrganizationsProjectRequestSessionRecordingEventTriggerConfigList as any as S.Schema<OrganizationsProjectsRotateSecretTokenPartialUpdateRequestAppUrlsList>;
+
 /** Ordered list of person properties used to render a human-friendly display name in the UI. */
 export type OrganizationsProjectsRotateSecretTokenPartialUpdateRequestPersonDisplayNamePropertiesList =
   Array<string>;
+const OrganizationsProjectsRotateSecretTokenPartialUpdateRequestPersonDisplayNamePropertiesList =
+  CreateOrganizationsProjectRequestPersonDisplayNamePropertiesList as any as S.Schema<OrganizationsProjectsRotateSecretTokenPartialUpdateRequestPersonDisplayNamePropertiesList>;
+
 export type OrganizationsProjectsRotateSecretTokenPartialUpdateRequestSessionRecordingUrlTriggerConfigList =
   Array<unknown>;
+const OrganizationsProjectsRotateSecretTokenPartialUpdateRequestSessionRecordingUrlTriggerConfigList =
+  CreateOrganizationsProjectRequestSessionRecordingUrlTriggerConfigList as any as S.Schema<OrganizationsProjectsRotateSecretTokenPartialUpdateRequestSessionRecordingUrlTriggerConfigList>;
+
 export type OrganizationsProjectsRotateSecretTokenPartialUpdateRequestSessionRecordingUrlBlocklistConfigList =
   Array<unknown>;
+const OrganizationsProjectsRotateSecretTokenPartialUpdateRequestSessionRecordingUrlBlocklistConfigList =
+  CreateOrganizationsProjectRequestSessionRecordingUrlTriggerConfigList as any as S.Schema<OrganizationsProjectsRotateSecretTokenPartialUpdateRequestSessionRecordingUrlBlocklistConfigList>;
+
 export type OrganizationsProjectsRotateSecretTokenPartialUpdateRequestSessionRecordingEventTriggerConfigList =
   Array<string | null>;
+const OrganizationsProjectsRotateSecretTokenPartialUpdateRequestSessionRecordingEventTriggerConfigList =
+  CreateOrganizationsProjectRequestSessionRecordingEventTriggerConfigList as any as S.Schema<OrganizationsProjectsRotateSecretTokenPartialUpdateRequestSessionRecordingEventTriggerConfigList>;
+
 export type OrganizationsProjectsRotateSecretTokenPartialUpdateRequestLiveEventsColumnsList =
   Array<string>;
+const OrganizationsProjectsRotateSecretTokenPartialUpdateRequestLiveEventsColumnsList =
+  CreateOrganizationsProjectRequestPersonDisplayNamePropertiesList as any as S.Schema<OrganizationsProjectsRotateSecretTokenPartialUpdateRequestLiveEventsColumnsList>;
+
 /** Origins permitted to record session replays and heatmaps. Empty list allows all origins. */
 export type OrganizationsProjectsRotateSecretTokenPartialUpdateRequestRecordingDomainsList = Array<
   string | null
 >;
+const OrganizationsProjectsRotateSecretTokenPartialUpdateRequestRecordingDomainsList =
+  CreateOrganizationsProjectRequestSessionRecordingEventTriggerConfigList as any as S.Schema<OrganizationsProjectsRotateSecretTokenPartialUpdateRequestRecordingDomainsList>;
+
 /** Whether this project serves B2B or B2C customers. Used to optimize default UI layouts. * `b2b` - B2B * `b2c` - B2C * `other` - Other */
 export type OrganizationsProjectsRotateSecretTokenPartialUpdateRequestBusinessModel =
   | BusinessModelEnum
   | BlankEnum;
+const OrganizationsProjectsRotateSecretTokenPartialUpdateRequestBusinessModel =
+  S.Unknown as any as S.Schema<OrganizationsProjectsRotateSecretTokenPartialUpdateRequestBusinessModel>;
+
 /** Settings for Conversations. Must be a JSON object or null. */
 export type OrganizationsProjectsRotateSecretTokenPartialUpdateRequestConversationsSettingsMap = {
   [key: string]: unknown | undefined;
 };
+const OrganizationsProjectsRotateSecretTokenPartialUpdateRequestConversationsSettingsMap =
+  CreateOrganizationsProjectsChangeOrganizationRequestConversationsSettingsMap as any as S.Schema<OrganizationsProjectsRotateSecretTokenPartialUpdateRequestConversationsSettingsMap>;
+
 export interface OrganizationsProjectsRotateSecretTokenPartialUpdateRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
@@ -4854,30 +6590,57 @@ export interface OrganizationsProjectsRotateSecretTokenPartialUpdateRequest {
   onboarding_tasks?: unknown;
   web_analytics_pre_aggregated_tables_enabled?: boolean | null;
 }
+const OrganizationsProjectsRotateSecretTokenPartialUpdateRequest = /*@__PURE__*/ __L.at(
+  __c37,
+  0,
+) as any as S.Schema<OrganizationsProjectsRotateSecretTokenPartialUpdateRequest>;
+
 export interface RemoveBlockedMembersAndEnforceVerifiedDomainsCreateRequest {
   /** A UUID string identifying this organization. */
   id: string;
 }
+const RemoveBlockedMembersAndEnforceVerifiedDomainsCreateRequest = /*@__PURE__*/ __L.at(
+  __c37,
+  1,
+) as any as S.Schema<RemoveBlockedMembersAndEnforceVerifiedDomainsCreateRequest>;
+
 export interface OrganizationRemoveBlockedMembersResponse {
   /** Whether verified-domain enforcement was turned on. */
   success: boolean;
   /** How many members with an email outside the verified domains were removed from the organization. Owners are never removed. */
   removed_members: number;
 }
+const OrganizationRemoveBlockedMembersResponse = /*@__PURE__*/ __L.at(
+  __c37,
+  2,
+) as any as S.Schema<OrganizationRemoveBlockedMembersResponse>;
+
 export interface RoleExternalReferencesDestroyRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
   /** A UUID string identifying this role external reference. */
   id: string;
 }
+const RoleExternalReferencesDestroyRequest = /*@__PURE__*/ __L.at(
+  __c37,
+  3,
+) as any as S.Schema<RoleExternalReferencesDestroyRequest>;
+
 export interface RoleExternalReferencesDestroyResponse {}
+const RoleExternalReferencesDestroyResponse =
+  BillingSpendExportDownloadResponse as any as S.Schema<RoleExternalReferencesDestroyResponse>;
+
 export interface RolesDestroyRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
   /** A UUID string identifying this role. */
   id: string;
 }
+const RolesDestroyRequest = /*@__PURE__*/ __L.at(__c37, 4) as any as S.Schema<RolesDestroyRequest>;
+
 export interface RolesDestroyResponse {}
+const RolesDestroyResponse = DestroyResponse as any as S.Schema<RolesDestroyResponse>;
+
 export interface RolesRoleMembershipsDestroyRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
@@ -4885,7 +6648,15 @@ export interface RolesRoleMembershipsDestroyRequest {
   /** A UUID string identifying this role membership. */
   id: string;
 }
+const RolesRoleMembershipsDestroyRequest = /*@__PURE__*/ __L.at(
+  __c37,
+  5,
+) as any as S.Schema<RolesRoleMembershipsDestroyRequest>;
+
 export interface RolesRoleMembershipsDestroyResponse {}
+const RolesRoleMembershipsDestroyResponse =
+  BillingSpendExportDownloadResponse as any as S.Schema<RolesRoleMembershipsDestroyResponse>;
+
 export interface UpdateRequest {
   /** A UUID string identifying this organization. */
   id: string;
@@ -4913,6 +6684,8 @@ export interface UpdateRequest {
   /** ID of the role to automatically assign to new members joining the organization */
   default_role_id?: string | null;
 }
+const UpdateRequest = /*@__PURE__*/ __L.at(__c37, 6) as any as S.Schema<UpdateRequest>;
+
 export interface UpdateCimdVerificationTokensPartialRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
@@ -4921,6 +6694,11 @@ export interface UpdateCimdVerificationTokensPartialRequest {
   /** HTTPS URL of the CIMD metadata document to bind this token to. Only settable once, on a token with no existing binding; an already-bound token must be reissued instead. */
   cimd_url?: string;
 }
+const UpdateCimdVerificationTokensPartialRequest = /*@__PURE__*/ __L.at(
+  __c37,
+  7,
+) as any as S.Schema<UpdateCimdVerificationTokensPartialRequest>;
+
 export interface UpdateDomainRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
@@ -4930,6 +6708,8 @@ export interface UpdateDomainRequest {
   jit_provisioning_enabled?: boolean;
   sso_enforcement?: string;
 }
+const UpdateDomainRequest = /*@__PURE__*/ __L.at(__c38, 0) as any as S.Schema<UpdateDomainRequest>;
+
 export interface UpdateDomainsPartialRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
@@ -4939,14 +6719,31 @@ export interface UpdateDomainsPartialRequest {
   jit_provisioning_enabled?: boolean;
   sso_enforcement?: string;
 }
+const UpdateDomainsPartialRequest = /*@__PURE__*/ __L.at(
+  __c38,
+  1,
+) as any as S.Schema<UpdateDomainsPartialRequest>;
+
 /** Domains this configuration applies to. An unset value behaves like selected domains. * `all` - All * `selected` - Selected */
 export type UpdateIdentityProviderConfigRequestDomainScope = DomainScopeEnum | BlankEnum;
+const UpdateIdentityProviderConfigRequestDomainScope =
+  S.Unknown as any as S.Schema<UpdateIdentityProviderConfigRequestDomainScope>;
+
 /** Feature configured by this identity provider configuration. * `saml` - Saml * `oidc` - Oidc * `scim` - Scim * `xaa` - Xaa */
 export type UpdateIdentityProviderConfigRequestConfigScope = ConfigScopeEnum | BlankEnum;
+const UpdateIdentityProviderConfigRequestConfigScope =
+  S.Unknown as any as S.Schema<UpdateIdentityProviderConfigRequestConfigScope>;
+
 /** Organization domain IDs that this identity provider configuration applies to. */
 export type UpdateIdentityProviderConfigRequestOrganizationDomainIdsList = Array<string>;
+const UpdateIdentityProviderConfigRequestOrganizationDomainIdsList =
+  CreateIdentityProviderConfigRequestOrganizationDomainIdsList as any as S.Schema<UpdateIdentityProviderConfigRequestOrganizationDomainIdsList>;
+
 /** Allowed ID-JAG client IDs. Empty list allows any client_id. */
 export type UpdateIdentityProviderConfigRequestIdJagAllowedClientsList = Array<string>;
+const UpdateIdentityProviderConfigRequestIdJagAllowedClientsList =
+  CreateIdentityProviderConfigRequestOrganizationDomainIdsList as any as S.Schema<UpdateIdentityProviderConfigRequestIdJagAllowedClientsList>;
+
 export interface UpdateIdentityProviderConfigRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
@@ -4981,14 +6778,31 @@ export interface UpdateIdentityProviderConfigRequest {
   /** Allowed ID-JAG client IDs. Empty list allows any client_id. */
   id_jag_allowed_clients?: UpdateIdentityProviderConfigRequestIdJagAllowedClientsList;
 }
+const UpdateIdentityProviderConfigRequest = /*@__PURE__*/ __L.at(
+  __c38,
+  2,
+) as any as S.Schema<UpdateIdentityProviderConfigRequest>;
+
 /** Domains this configuration applies to. An unset value behaves like selected domains. * `all` - All * `selected` - Selected */
 export type UpdateIdentityProviderConfigsPartialRequestDomainScope = DomainScopeEnum | BlankEnum;
+const UpdateIdentityProviderConfigsPartialRequestDomainScope =
+  S.Unknown as any as S.Schema<UpdateIdentityProviderConfigsPartialRequestDomainScope>;
+
 /** Feature configured by this identity provider configuration. * `saml` - Saml * `oidc` - Oidc * `scim` - Scim * `xaa` - Xaa */
 export type UpdateIdentityProviderConfigsPartialRequestConfigScope = ConfigScopeEnum | BlankEnum;
+const UpdateIdentityProviderConfigsPartialRequestConfigScope =
+  S.Unknown as any as S.Schema<UpdateIdentityProviderConfigsPartialRequestConfigScope>;
+
 /** Organization domain IDs that this identity provider configuration applies to. */
 export type UpdateIdentityProviderConfigsPartialRequestOrganizationDomainIdsList = Array<string>;
+const UpdateIdentityProviderConfigsPartialRequestOrganizationDomainIdsList =
+  CreateOrganizationsProjectRequestPersonDisplayNamePropertiesList as any as S.Schema<UpdateIdentityProviderConfigsPartialRequestOrganizationDomainIdsList>;
+
 /** Allowed ID-JAG client IDs. Empty list allows any client_id. */
 export type UpdateIdentityProviderConfigsPartialRequestIdJagAllowedClientsList = Array<string>;
+const UpdateIdentityProviderConfigsPartialRequestIdJagAllowedClientsList =
+  CreateOrganizationsProjectRequestPersonDisplayNamePropertiesList as any as S.Schema<UpdateIdentityProviderConfigsPartialRequestIdJagAllowedClientsList>;
+
 export interface UpdateIdentityProviderConfigsPartialRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
@@ -5023,14 +6837,26 @@ export interface UpdateIdentityProviderConfigsPartialRequest {
   /** Allowed ID-JAG client IDs. Empty list allows any client_id. */
   id_jag_allowed_clients?: UpdateIdentityProviderConfigsPartialRequestIdJagAllowedClientsList;
 }
+const UpdateIdentityProviderConfigsPartialRequest = /*@__PURE__*/ __L.at(
+  __c38,
+  3,
+) as any as S.Schema<UpdateIdentityProviderConfigsPartialRequest>;
+
 export interface UpdateIntegrationsEnvironmentMappingPartialRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
   /** A UUID string identifying this organization integration. */
   id: string;
 }
+const UpdateIntegrationsEnvironmentMappingPartialRequest = /*@__PURE__*/ __L.at(
+  __c38,
+  4,
+) as any as S.Schema<UpdateIntegrationsEnvironmentMappingPartialRequest>;
+
 /** * `vercel` - Vercel */
 export type OrganizationIntegrationKindEnum = "vercel";
+const OrganizationIntegrationKindEnum = S.String;
+
 /** Serializer for organization-level integrations. */
 export interface OrganizationIntegration {
   id?: string;
@@ -5041,38 +6867,80 @@ export interface OrganizationIntegration {
   updated_at?: string;
   created_by?: UserBasic | null;
 }
+const OrganizationIntegration = /*@__PURE__*/ __L.at(
+  __c38,
+  5,
+) as any as S.Schema<OrganizationIntegration>;
+
 export interface UpdateMemberRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
   user__uuid: string;
   level?: OrganizationMembershipLevelEnum | (number & {});
 }
+const UpdateMemberRequest = /*@__PURE__*/ __L.at(__c38, 6) as any as S.Schema<UpdateMemberRequest>;
+
 export interface UpdateMembersPartialRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
   user__uuid: string;
   level?: OrganizationMembershipLevelEnum | (number & {});
 }
+const UpdateMembersPartialRequest = /*@__PURE__*/ __L.at(
+  __c38,
+  7,
+) as any as S.Schema<UpdateMembersPartialRequest>;
+
 /** Labels applied to this project. Names are trimmed and lowercased, and sending this field replaces the project's existing tags. */
 export type UpdateOrganizationsProjectRequestTagsList = Array<string>;
+const UpdateOrganizationsProjectRequestTagsList =
+  CreateIdentityProviderConfigRequestOrganizationDomainIdsList as any as S.Schema<UpdateOrganizationsProjectRequestTagsList>;
+
 export type UpdateOrganizationsProjectRequestAppUrlsList = Array<string | null>;
+const UpdateOrganizationsProjectRequestAppUrlsList =
+  CreateOrganizationsProjectRequestAppUrlsList as any as S.Schema<UpdateOrganizationsProjectRequestAppUrlsList>;
+
 /** Ordered list of person properties used to render a human-friendly display name in the UI. */
 export type UpdateOrganizationsProjectRequestPersonDisplayNamePropertiesList = Array<string>;
+const UpdateOrganizationsProjectRequestPersonDisplayNamePropertiesList =
+  CreateOrganizationsProjectRequestPersonDisplayNamePropertiesList as any as S.Schema<UpdateOrganizationsProjectRequestPersonDisplayNamePropertiesList>;
+
 export type UpdateOrganizationsProjectRequestSessionRecordingUrlTriggerConfigList = Array<unknown>;
+const UpdateOrganizationsProjectRequestSessionRecordingUrlTriggerConfigList =
+  CreateOrganizationsProjectRequestSessionRecordingUrlTriggerConfigList as any as S.Schema<UpdateOrganizationsProjectRequestSessionRecordingUrlTriggerConfigList>;
+
 export type UpdateOrganizationsProjectRequestSessionRecordingUrlBlocklistConfigList =
   Array<unknown>;
+const UpdateOrganizationsProjectRequestSessionRecordingUrlBlocklistConfigList =
+  CreateOrganizationsProjectRequestSessionRecordingUrlTriggerConfigList as any as S.Schema<UpdateOrganizationsProjectRequestSessionRecordingUrlBlocklistConfigList>;
+
 export type UpdateOrganizationsProjectRequestSessionRecordingEventTriggerConfigList = Array<
   string | null
 >;
+const UpdateOrganizationsProjectRequestSessionRecordingEventTriggerConfigList =
+  CreateOrganizationsProjectRequestSessionRecordingEventTriggerConfigList as any as S.Schema<UpdateOrganizationsProjectRequestSessionRecordingEventTriggerConfigList>;
+
 export type UpdateOrganizationsProjectRequestLiveEventsColumnsList = Array<string>;
+const UpdateOrganizationsProjectRequestLiveEventsColumnsList =
+  CreateIdentityProviderConfigRequestOrganizationDomainIdsList as any as S.Schema<UpdateOrganizationsProjectRequestLiveEventsColumnsList>;
+
 /** Origins permitted to record session replays and heatmaps. Empty list allows all origins. */
 export type UpdateOrganizationsProjectRequestRecordingDomainsList = Array<string | null>;
+const UpdateOrganizationsProjectRequestRecordingDomainsList =
+  CreateOrganizationsProjectRequestAppUrlsList as any as S.Schema<UpdateOrganizationsProjectRequestRecordingDomainsList>;
+
 /** Whether this project serves B2B or B2C customers. Used to optimize default UI layouts. * `b2b` - B2B * `b2c` - B2C * `other` - Other */
 export type UpdateOrganizationsProjectRequestBusinessModel = BusinessModelEnum | BlankEnum;
+const UpdateOrganizationsProjectRequestBusinessModel =
+  S.Unknown as any as S.Schema<UpdateOrganizationsProjectRequestBusinessModel>;
+
 /** Settings for Conversations. Must be a JSON object or null. */
 export type UpdateOrganizationsProjectRequestConversationsSettingsMap = {
   [key: string]: unknown | undefined;
 };
+const UpdateOrganizationsProjectRequestConversationsSettingsMap =
+  OrganizationTeamsItemMap as any as S.Schema<UpdateOrganizationsProjectRequestConversationsSettingsMap>;
+
 export interface UpdateOrganizationsProjectRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
@@ -5180,33 +7048,68 @@ export interface UpdateOrganizationsProjectRequest {
   onboarding_tasks?: unknown;
   web_analytics_pre_aggregated_tables_enabled?: boolean | null;
 }
+const UpdateOrganizationsProjectRequest = /*@__PURE__*/ __L.at(
+  __c39,
+  0,
+) as any as S.Schema<UpdateOrganizationsProjectRequest>;
+
 /** Labels applied to this project. Names are trimmed and lowercased, and sending this field replaces the project's existing tags. */
 export type UpdateOrganizationsProjectsCompleteProductOnboardingPartialRequestTagsList =
   Array<string>;
+const UpdateOrganizationsProjectsCompleteProductOnboardingPartialRequestTagsList =
+  CreateOrganizationsProjectRequestPersonDisplayNamePropertiesList as any as S.Schema<UpdateOrganizationsProjectsCompleteProductOnboardingPartialRequestTagsList>;
+
 export type UpdateOrganizationsProjectsCompleteProductOnboardingPartialRequestAppUrlsList = Array<
   string | null
 >;
+const UpdateOrganizationsProjectsCompleteProductOnboardingPartialRequestAppUrlsList =
+  CreateOrganizationsProjectRequestSessionRecordingEventTriggerConfigList as any as S.Schema<UpdateOrganizationsProjectsCompleteProductOnboardingPartialRequestAppUrlsList>;
+
 /** Ordered list of person properties used to render a human-friendly display name in the UI. */
 export type UpdateOrganizationsProjectsCompleteProductOnboardingPartialRequestPersonDisplayNamePropertiesList =
   Array<string>;
+const UpdateOrganizationsProjectsCompleteProductOnboardingPartialRequestPersonDisplayNamePropertiesList =
+  CreateOrganizationsProjectRequestPersonDisplayNamePropertiesList as any as S.Schema<UpdateOrganizationsProjectsCompleteProductOnboardingPartialRequestPersonDisplayNamePropertiesList>;
+
 export type UpdateOrganizationsProjectsCompleteProductOnboardingPartialRequestSessionRecordingUrlTriggerConfigList =
   Array<unknown>;
+const UpdateOrganizationsProjectsCompleteProductOnboardingPartialRequestSessionRecordingUrlTriggerConfigList =
+  CreateOrganizationsProjectRequestSessionRecordingUrlTriggerConfigList as any as S.Schema<UpdateOrganizationsProjectsCompleteProductOnboardingPartialRequestSessionRecordingUrlTriggerConfigList>;
+
 export type UpdateOrganizationsProjectsCompleteProductOnboardingPartialRequestSessionRecordingUrlBlocklistConfigList =
   Array<unknown>;
+const UpdateOrganizationsProjectsCompleteProductOnboardingPartialRequestSessionRecordingUrlBlocklistConfigList =
+  CreateOrganizationsProjectRequestSessionRecordingUrlTriggerConfigList as any as S.Schema<UpdateOrganizationsProjectsCompleteProductOnboardingPartialRequestSessionRecordingUrlBlocklistConfigList>;
+
 export type UpdateOrganizationsProjectsCompleteProductOnboardingPartialRequestSessionRecordingEventTriggerConfigList =
   Array<string | null>;
+const UpdateOrganizationsProjectsCompleteProductOnboardingPartialRequestSessionRecordingEventTriggerConfigList =
+  CreateOrganizationsProjectRequestSessionRecordingEventTriggerConfigList as any as S.Schema<UpdateOrganizationsProjectsCompleteProductOnboardingPartialRequestSessionRecordingEventTriggerConfigList>;
+
 export type UpdateOrganizationsProjectsCompleteProductOnboardingPartialRequestLiveEventsColumnsList =
   Array<string>;
+const UpdateOrganizationsProjectsCompleteProductOnboardingPartialRequestLiveEventsColumnsList =
+  CreateOrganizationsProjectRequestPersonDisplayNamePropertiesList as any as S.Schema<UpdateOrganizationsProjectsCompleteProductOnboardingPartialRequestLiveEventsColumnsList>;
+
 /** Origins permitted to record session replays and heatmaps. Empty list allows all origins. */
 export type UpdateOrganizationsProjectsCompleteProductOnboardingPartialRequestRecordingDomainsList =
   Array<string | null>;
+const UpdateOrganizationsProjectsCompleteProductOnboardingPartialRequestRecordingDomainsList =
+  CreateOrganizationsProjectRequestSessionRecordingEventTriggerConfigList as any as S.Schema<UpdateOrganizationsProjectsCompleteProductOnboardingPartialRequestRecordingDomainsList>;
+
 /** Whether this project serves B2B or B2C customers. Used to optimize default UI layouts. * `b2b` - B2B * `b2c` - B2C * `other` - Other */
 export type UpdateOrganizationsProjectsCompleteProductOnboardingPartialRequestBusinessModel =
   | BusinessModelEnum
   | BlankEnum;
+const UpdateOrganizationsProjectsCompleteProductOnboardingPartialRequestBusinessModel =
+  S.Unknown as any as S.Schema<UpdateOrganizationsProjectsCompleteProductOnboardingPartialRequestBusinessModel>;
+
 /** Settings for Conversations. Must be a JSON object or null. */
 export type UpdateOrganizationsProjectsCompleteProductOnboardingPartialRequestConversationsSettingsMap =
   { [key: string]: unknown | undefined };
+const UpdateOrganizationsProjectsCompleteProductOnboardingPartialRequestConversationsSettingsMap =
+  CreateOrganizationsProjectsChangeOrganizationRequestConversationsSettingsMap as any as S.Schema<UpdateOrganizationsProjectsCompleteProductOnboardingPartialRequestConversationsSettingsMap>;
+
 export interface UpdateOrganizationsProjectsCompleteProductOnboardingPartialRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
@@ -5314,34 +7217,69 @@ export interface UpdateOrganizationsProjectsCompleteProductOnboardingPartialRequ
   onboarding_tasks?: unknown;
   web_analytics_pre_aggregated_tables_enabled?: boolean | null;
 }
+const UpdateOrganizationsProjectsCompleteProductOnboardingPartialRequest = /*@__PURE__*/ __L.at(
+  __c39,
+  1,
+) as any as S.Schema<UpdateOrganizationsProjectsCompleteProductOnboardingPartialRequest>;
+
 /** Labels applied to this project. Names are trimmed and lowercased, and sending this field replaces the project's existing tags. */
 export type UpdateOrganizationsProjectsDefaultReleaseConditionRequestTagsList = Array<string>;
+const UpdateOrganizationsProjectsDefaultReleaseConditionRequestTagsList =
+  CreateOrganizationsProjectRequestPersonDisplayNamePropertiesList as any as S.Schema<UpdateOrganizationsProjectsDefaultReleaseConditionRequestTagsList>;
+
 export type UpdateOrganizationsProjectsDefaultReleaseConditionRequestAppUrlsList = Array<
   string | null
 >;
+const UpdateOrganizationsProjectsDefaultReleaseConditionRequestAppUrlsList =
+  CreateOrganizationsProjectRequestSessionRecordingEventTriggerConfigList as any as S.Schema<UpdateOrganizationsProjectsDefaultReleaseConditionRequestAppUrlsList>;
+
 /** Ordered list of person properties used to render a human-friendly display name in the UI. */
 export type UpdateOrganizationsProjectsDefaultReleaseConditionRequestPersonDisplayNamePropertiesList =
   Array<string>;
+const UpdateOrganizationsProjectsDefaultReleaseConditionRequestPersonDisplayNamePropertiesList =
+  CreateOrganizationsProjectRequestPersonDisplayNamePropertiesList as any as S.Schema<UpdateOrganizationsProjectsDefaultReleaseConditionRequestPersonDisplayNamePropertiesList>;
+
 export type UpdateOrganizationsProjectsDefaultReleaseConditionRequestSessionRecordingUrlTriggerConfigList =
   Array<unknown>;
+const UpdateOrganizationsProjectsDefaultReleaseConditionRequestSessionRecordingUrlTriggerConfigList =
+  CreateOrganizationsProjectRequestSessionRecordingUrlTriggerConfigList as any as S.Schema<UpdateOrganizationsProjectsDefaultReleaseConditionRequestSessionRecordingUrlTriggerConfigList>;
+
 export type UpdateOrganizationsProjectsDefaultReleaseConditionRequestSessionRecordingUrlBlocklistConfigList =
   Array<unknown>;
+const UpdateOrganizationsProjectsDefaultReleaseConditionRequestSessionRecordingUrlBlocklistConfigList =
+  CreateOrganizationsProjectRequestSessionRecordingUrlTriggerConfigList as any as S.Schema<UpdateOrganizationsProjectsDefaultReleaseConditionRequestSessionRecordingUrlBlocklistConfigList>;
+
 export type UpdateOrganizationsProjectsDefaultReleaseConditionRequestSessionRecordingEventTriggerConfigList =
   Array<string | null>;
+const UpdateOrganizationsProjectsDefaultReleaseConditionRequestSessionRecordingEventTriggerConfigList =
+  CreateOrganizationsProjectRequestSessionRecordingEventTriggerConfigList as any as S.Schema<UpdateOrganizationsProjectsDefaultReleaseConditionRequestSessionRecordingEventTriggerConfigList>;
+
 export type UpdateOrganizationsProjectsDefaultReleaseConditionRequestLiveEventsColumnsList =
   Array<string>;
+const UpdateOrganizationsProjectsDefaultReleaseConditionRequestLiveEventsColumnsList =
+  CreateOrganizationsProjectRequestPersonDisplayNamePropertiesList as any as S.Schema<UpdateOrganizationsProjectsDefaultReleaseConditionRequestLiveEventsColumnsList>;
+
 /** Origins permitted to record session replays and heatmaps. Empty list allows all origins. */
 export type UpdateOrganizationsProjectsDefaultReleaseConditionRequestRecordingDomainsList = Array<
   string | null
 >;
+const UpdateOrganizationsProjectsDefaultReleaseConditionRequestRecordingDomainsList =
+  CreateOrganizationsProjectRequestSessionRecordingEventTriggerConfigList as any as S.Schema<UpdateOrganizationsProjectsDefaultReleaseConditionRequestRecordingDomainsList>;
+
 /** Whether this project serves B2B or B2C customers. Used to optimize default UI layouts. * `b2b` - B2B * `b2c` - B2C * `other` - Other */
 export type UpdateOrganizationsProjectsDefaultReleaseConditionRequestBusinessModel =
   | BusinessModelEnum
   | BlankEnum;
+const UpdateOrganizationsProjectsDefaultReleaseConditionRequestBusinessModel =
+  S.Unknown as any as S.Schema<UpdateOrganizationsProjectsDefaultReleaseConditionRequestBusinessModel>;
+
 /** Settings for Conversations. Must be a JSON object or null. */
 export type UpdateOrganizationsProjectsDefaultReleaseConditionRequestConversationsSettingsMap = {
   [key: string]: unknown | undefined;
 };
+const UpdateOrganizationsProjectsDefaultReleaseConditionRequestConversationsSettingsMap =
+  CreateOrganizationsProjectsChangeOrganizationRequestConversationsSettingsMap as any as S.Schema<UpdateOrganizationsProjectsDefaultReleaseConditionRequestConversationsSettingsMap>;
+
 export interface UpdateOrganizationsProjectsDefaultReleaseConditionRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
@@ -5449,34 +7387,69 @@ export interface UpdateOrganizationsProjectsDefaultReleaseConditionRequest {
   onboarding_tasks?: unknown;
   web_analytics_pre_aggregated_tables_enabled?: boolean | null;
 }
+const UpdateOrganizationsProjectsDefaultReleaseConditionRequest = /*@__PURE__*/ __L.at(
+  __c39,
+  2,
+) as any as S.Schema<UpdateOrganizationsProjectsDefaultReleaseConditionRequest>;
+
 /** Labels applied to this project. Names are trimmed and lowercased, and sending this field replaces the project's existing tags. */
 export type UpdateOrganizationsProjectsExperimentsConfigPartialRequestTagsList = Array<string>;
+const UpdateOrganizationsProjectsExperimentsConfigPartialRequestTagsList =
+  CreateOrganizationsProjectRequestPersonDisplayNamePropertiesList as any as S.Schema<UpdateOrganizationsProjectsExperimentsConfigPartialRequestTagsList>;
+
 export type UpdateOrganizationsProjectsExperimentsConfigPartialRequestAppUrlsList = Array<
   string | null
 >;
+const UpdateOrganizationsProjectsExperimentsConfigPartialRequestAppUrlsList =
+  CreateOrganizationsProjectRequestSessionRecordingEventTriggerConfigList as any as S.Schema<UpdateOrganizationsProjectsExperimentsConfigPartialRequestAppUrlsList>;
+
 /** Ordered list of person properties used to render a human-friendly display name in the UI. */
 export type UpdateOrganizationsProjectsExperimentsConfigPartialRequestPersonDisplayNamePropertiesList =
   Array<string>;
+const UpdateOrganizationsProjectsExperimentsConfigPartialRequestPersonDisplayNamePropertiesList =
+  CreateOrganizationsProjectRequestPersonDisplayNamePropertiesList as any as S.Schema<UpdateOrganizationsProjectsExperimentsConfigPartialRequestPersonDisplayNamePropertiesList>;
+
 export type UpdateOrganizationsProjectsExperimentsConfigPartialRequestSessionRecordingUrlTriggerConfigList =
   Array<unknown>;
+const UpdateOrganizationsProjectsExperimentsConfigPartialRequestSessionRecordingUrlTriggerConfigList =
+  CreateOrganizationsProjectRequestSessionRecordingUrlTriggerConfigList as any as S.Schema<UpdateOrganizationsProjectsExperimentsConfigPartialRequestSessionRecordingUrlTriggerConfigList>;
+
 export type UpdateOrganizationsProjectsExperimentsConfigPartialRequestSessionRecordingUrlBlocklistConfigList =
   Array<unknown>;
+const UpdateOrganizationsProjectsExperimentsConfigPartialRequestSessionRecordingUrlBlocklistConfigList =
+  CreateOrganizationsProjectRequestSessionRecordingUrlTriggerConfigList as any as S.Schema<UpdateOrganizationsProjectsExperimentsConfigPartialRequestSessionRecordingUrlBlocklistConfigList>;
+
 export type UpdateOrganizationsProjectsExperimentsConfigPartialRequestSessionRecordingEventTriggerConfigList =
   Array<string | null>;
+const UpdateOrganizationsProjectsExperimentsConfigPartialRequestSessionRecordingEventTriggerConfigList =
+  CreateOrganizationsProjectRequestSessionRecordingEventTriggerConfigList as any as S.Schema<UpdateOrganizationsProjectsExperimentsConfigPartialRequestSessionRecordingEventTriggerConfigList>;
+
 export type UpdateOrganizationsProjectsExperimentsConfigPartialRequestLiveEventsColumnsList =
   Array<string>;
+const UpdateOrganizationsProjectsExperimentsConfigPartialRequestLiveEventsColumnsList =
+  CreateOrganizationsProjectRequestPersonDisplayNamePropertiesList as any as S.Schema<UpdateOrganizationsProjectsExperimentsConfigPartialRequestLiveEventsColumnsList>;
+
 /** Origins permitted to record session replays and heatmaps. Empty list allows all origins. */
 export type UpdateOrganizationsProjectsExperimentsConfigPartialRequestRecordingDomainsList = Array<
   string | null
 >;
+const UpdateOrganizationsProjectsExperimentsConfigPartialRequestRecordingDomainsList =
+  CreateOrganizationsProjectRequestSessionRecordingEventTriggerConfigList as any as S.Schema<UpdateOrganizationsProjectsExperimentsConfigPartialRequestRecordingDomainsList>;
+
 /** Whether this project serves B2B or B2C customers. Used to optimize default UI layouts. * `b2b` - B2B * `b2c` - B2C * `other` - Other */
 export type UpdateOrganizationsProjectsExperimentsConfigPartialRequestBusinessModel =
   | BusinessModelEnum
   | BlankEnum;
+const UpdateOrganizationsProjectsExperimentsConfigPartialRequestBusinessModel =
+  S.Unknown as any as S.Schema<UpdateOrganizationsProjectsExperimentsConfigPartialRequestBusinessModel>;
+
 /** Settings for Conversations. Must be a JSON object or null. */
 export type UpdateOrganizationsProjectsExperimentsConfigPartialRequestConversationsSettingsMap = {
   [key: string]: unknown | undefined;
 };
+const UpdateOrganizationsProjectsExperimentsConfigPartialRequestConversationsSettingsMap =
+  CreateOrganizationsProjectsChangeOrganizationRequestConversationsSettingsMap as any as S.Schema<UpdateOrganizationsProjectsExperimentsConfigPartialRequestConversationsSettingsMap>;
+
 export interface UpdateOrganizationsProjectsExperimentsConfigPartialRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
@@ -5584,15 +7557,29 @@ export interface UpdateOrganizationsProjectsExperimentsConfigPartialRequest {
   onboarding_tasks?: unknown;
   web_analytics_pre_aggregated_tables_enabled?: boolean | null;
 }
+const UpdateOrganizationsProjectsExperimentsConfigPartialRequest = /*@__PURE__*/ __L.at(
+  __c39,
+  3,
+) as any as S.Schema<UpdateOrganizationsProjectsExperimentsConfigPartialRequest>;
+
 /** Log attribute keys whose values should match a person's distinct_id -- a log links to a person when any of these attributes equals one of their distinct IDs. Used by the person profile Logs tab and the `query-logs` MCP tool. Defaults to ['posthogDistinctId'] -- the convention documented at https://posthog.com/docs/logs/link-session-replay and the key the posthog-js / posthog-react-native SDKs auto-attach. Add keys only if your pipeline emits the person identifier under different attributes. */
 export type UpdateOrganizationsProjectsLogsConfigPartialRequestLogsDistinctIdAttributeKeysList =
   Array<string>;
+const UpdateOrganizationsProjectsLogsConfigPartialRequestLogsDistinctIdAttributeKeysList =
+  CreateOrganizationsProjectRequestPersonDisplayNamePropertiesList as any as S.Schema<UpdateOrganizationsProjectsLogsConfigPartialRequestLogsDistinctIdAttributeKeysList>;
+
 /** Ordered list of log attribute keys whose values hold the PostHog session ID. Detection checks keys in order, then falls back to common session ID attribute conventions; the first key with a value wins. Defaults to ['sessionId'] -- the convention documented at https://posthog.com/docs/logs/link-session-replay and the key the posthog-js / posthog-react-native SDKs auto-attach. Add keys only if your pipeline emits the session ID under different attributes. */
 export type UpdateOrganizationsProjectsLogsConfigPartialRequestLogsSessionIdAttributeKeysList =
   Array<string>;
+const UpdateOrganizationsProjectsLogsConfigPartialRequestLogsSessionIdAttributeKeysList =
+  CreateOrganizationsProjectRequestPersonDisplayNamePropertiesList as any as S.Schema<UpdateOrganizationsProjectsLogsConfigPartialRequestLogsSessionIdAttributeKeysList>;
+
 /** Ordered list of top-level JSON keys whose value is the message text that log patterns are derived from. Keys are matched literally at the top level of the log body; a dot in a key is part of the key name, not a path into nested objects. Selection checks keys in order; the first key whose value is a non-empty string wins. Defaults to ['message', 'msg', 'event']. An empty list turns message extraction off, so JSON log bodies group by their key set instead. The stored log body is never changed by this setting. */
 export type UpdateOrganizationsProjectsLogsConfigPartialRequestLogsPatternMessageKeysList =
   Array<string>;
+const UpdateOrganizationsProjectsLogsConfigPartialRequestLogsPatternMessageKeysList =
+  CreateOrganizationsProjectRequestPersonDisplayNamePropertiesList as any as S.Schema<UpdateOrganizationsProjectsLogsConfigPartialRequestLogsPatternMessageKeysList>;
+
 export interface UpdateOrganizationsProjectsLogsConfigPartialRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
@@ -5605,28 +7592,63 @@ export interface UpdateOrganizationsProjectsLogsConfigPartialRequest {
   /** Ordered list of top-level JSON keys whose value is the message text that log patterns are derived from. Keys are matched literally at the top level of the log body; a dot in a key is part of the key name, not a path into nested objects. Selection checks keys in order; the first key whose value is a non-empty string wins. Defaults to ['message', 'msg', 'event']. An empty list turns message extraction off, so JSON log bodies group by their key set instead. The stored log body is never changed by this setting. */
   logs_pattern_message_keys?: UpdateOrganizationsProjectsLogsConfigPartialRequestLogsPatternMessageKeysList;
 }
+const UpdateOrganizationsProjectsLogsConfigPartialRequest = /*@__PURE__*/ __L.at(
+  __c39,
+  4,
+) as any as S.Schema<UpdateOrganizationsProjectsLogsConfigPartialRequest>;
+
 /** Labels applied to this project. Names are trimmed and lowercased, and sending this field replaces the project's existing tags. */
 export type UpdateOrganizationsProjectsPartialRequestTagsList = Array<string>;
+const UpdateOrganizationsProjectsPartialRequestTagsList =
+  CreateIdentityProviderConfigRequestOrganizationDomainIdsList as any as S.Schema<UpdateOrganizationsProjectsPartialRequestTagsList>;
+
 export type UpdateOrganizationsProjectsPartialRequestAppUrlsList = Array<string | null>;
+const UpdateOrganizationsProjectsPartialRequestAppUrlsList =
+  CreateOrganizationsProjectRequestAppUrlsList as any as S.Schema<UpdateOrganizationsProjectsPartialRequestAppUrlsList>;
+
 /** Ordered list of person properties used to render a human-friendly display name in the UI. */
 export type UpdateOrganizationsProjectsPartialRequestPersonDisplayNamePropertiesList =
   Array<string>;
+const UpdateOrganizationsProjectsPartialRequestPersonDisplayNamePropertiesList =
+  CreateOrganizationsProjectRequestPersonDisplayNamePropertiesList as any as S.Schema<UpdateOrganizationsProjectsPartialRequestPersonDisplayNamePropertiesList>;
+
 export type UpdateOrganizationsProjectsPartialRequestSessionRecordingUrlTriggerConfigList =
   Array<unknown>;
+const UpdateOrganizationsProjectsPartialRequestSessionRecordingUrlTriggerConfigList =
+  CreateOrganizationsProjectRequestSessionRecordingUrlTriggerConfigList as any as S.Schema<UpdateOrganizationsProjectsPartialRequestSessionRecordingUrlTriggerConfigList>;
+
 export type UpdateOrganizationsProjectsPartialRequestSessionRecordingUrlBlocklistConfigList =
   Array<unknown>;
+const UpdateOrganizationsProjectsPartialRequestSessionRecordingUrlBlocklistConfigList =
+  CreateOrganizationsProjectRequestSessionRecordingUrlTriggerConfigList as any as S.Schema<UpdateOrganizationsProjectsPartialRequestSessionRecordingUrlBlocklistConfigList>;
+
 export type UpdateOrganizationsProjectsPartialRequestSessionRecordingEventTriggerConfigList = Array<
   string | null
 >;
+const UpdateOrganizationsProjectsPartialRequestSessionRecordingEventTriggerConfigList =
+  CreateOrganizationsProjectRequestSessionRecordingEventTriggerConfigList as any as S.Schema<UpdateOrganizationsProjectsPartialRequestSessionRecordingEventTriggerConfigList>;
+
 export type UpdateOrganizationsProjectsPartialRequestLiveEventsColumnsList = Array<string>;
+const UpdateOrganizationsProjectsPartialRequestLiveEventsColumnsList =
+  CreateIdentityProviderConfigRequestOrganizationDomainIdsList as any as S.Schema<UpdateOrganizationsProjectsPartialRequestLiveEventsColumnsList>;
+
 /** Origins permitted to record session replays and heatmaps. Empty list allows all origins. */
 export type UpdateOrganizationsProjectsPartialRequestRecordingDomainsList = Array<string | null>;
+const UpdateOrganizationsProjectsPartialRequestRecordingDomainsList =
+  CreateOrganizationsProjectRequestAppUrlsList as any as S.Schema<UpdateOrganizationsProjectsPartialRequestRecordingDomainsList>;
+
 /** Whether this project serves B2B or B2C customers. Used to optimize default UI layouts. * `b2b` - B2B * `b2c` - B2C * `other` - Other */
 export type UpdateOrganizationsProjectsPartialRequestBusinessModel = BusinessModelEnum | BlankEnum;
+const UpdateOrganizationsProjectsPartialRequestBusinessModel =
+  S.Unknown as any as S.Schema<UpdateOrganizationsProjectsPartialRequestBusinessModel>;
+
 /** Settings for Conversations. Must be a JSON object or null. */
 export type UpdateOrganizationsProjectsPartialRequestConversationsSettingsMap = {
   [key: string]: unknown | undefined;
 };
+const UpdateOrganizationsProjectsPartialRequestConversationsSettingsMap =
+  CreateOrganizationsProjectsChangeOrganizationRequestConversationsSettingsMap as any as S.Schema<UpdateOrganizationsProjectsPartialRequestConversationsSettingsMap>;
+
 export interface UpdateOrganizationsProjectsPartialRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
@@ -5734,12 +7756,23 @@ export interface UpdateOrganizationsProjectsPartialRequest {
   onboarding_tasks?: unknown;
   web_analytics_pre_aggregated_tables_enabled?: boolean | null;
 }
+const UpdateOrganizationsProjectsPartialRequest = /*@__PURE__*/ __L.at(
+  __c39,
+  5,
+) as any as S.Schema<UpdateOrganizationsProjectsPartialRequest>;
+
 /** Span or resource attribute keys whose values should match a person's distinct_id -- a span links to a person when any of these attributes holds one of their distinct IDs. Defaults to ['posthogDistinctId'], the key the posthog-js / posthog-react-native SDKs attach to the OTel signals they emit. Add keys only if your pipeline emits the person identifier under different attributes. */
 export type UpdateOrganizationsProjectsTracingConfigPartialRequestTracingDistinctIdAttributeKeysList =
   Array<string>;
+const UpdateOrganizationsProjectsTracingConfigPartialRequestTracingDistinctIdAttributeKeysList =
+  CreateOrganizationsProjectRequestPersonDisplayNamePropertiesList as any as S.Schema<UpdateOrganizationsProjectsTracingConfigPartialRequestTracingDistinctIdAttributeKeysList>;
+
 /** Ordered list of span or resource attribute keys whose values hold the PostHog session ID. Detection checks keys in order, then falls back to common session ID attribute conventions; the first key with a value wins. Defaults to ['sessionId'], the key the posthog-js / posthog-react-native SDKs attach to the OTel signals they emit. Add keys only if your pipeline emits the session ID under different attributes. */
 export type UpdateOrganizationsProjectsTracingConfigPartialRequestTracingSessionIdAttributeKeysList =
   Array<string>;
+const UpdateOrganizationsProjectsTracingConfigPartialRequestTracingSessionIdAttributeKeysList =
+  CreateOrganizationsProjectRequestPersonDisplayNamePropertiesList as any as S.Schema<UpdateOrganizationsProjectsTracingConfigPartialRequestTracingSessionIdAttributeKeysList>;
+
 export interface UpdateOrganizationsProjectsTracingConfigPartialRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
@@ -5752,6 +7785,11 @@ export interface UpdateOrganizationsProjectsTracingConfigPartialRequest {
   /** How long spans are kept before they are deleted, in days. Applied at ingest, so a change only affects spans received after it. Can be changed at most once per 24 hours. Span retention rules override this period for the spans they match. */
   retention_days?: number;
 }
+const UpdateOrganizationsProjectsTracingConfigPartialRequest = /*@__PURE__*/ __L.at(
+  __c39,
+  6,
+) as any as S.Schema<UpdateOrganizationsProjectsTracingConfigPartialRequest>;
+
 export interface UpdatePartialRequest {
   /** A UUID string identifying this organization. */
   id: string;
@@ -5779,6 +7817,11 @@ export interface UpdatePartialRequest {
   /** ID of the role to automatically assign to new members joining the organization */
   default_role_id?: string | null;
 }
+const UpdatePartialRequest = /*@__PURE__*/ __L.at(
+  __c39,
+  7,
+) as any as S.Schema<UpdatePartialRequest>;
+
 export interface UpdateRoleRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
@@ -5786,6 +7829,8 @@ export interface UpdateRoleRequest {
   id: string;
   name?: string;
 }
+const UpdateRoleRequest = /*@__PURE__*/ __L.at(__c40, 0) as any as S.Schema<UpdateRoleRequest>;
+
 export interface UpdateRolesPartialRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
@@ -5793,6 +7838,11 @@ export interface UpdateRolesPartialRequest {
   id: string;
   name?: string;
 }
+const UpdateRolesPartialRequest = /*@__PURE__*/ __L.at(
+  __c40,
+  1,
+) as any as S.Schema<UpdateRolesPartialRequest>;
+
 export type BillingSpendExportDownloadError = PosthogOpError;
 /** Export spend as CSV In beta: the organization billing API is behind the organization-billing-api feature flag and answers 403 without it, so ask support for access. Its shapes may change while it is in beta. */
 export const billingSpendExportDownload: API.OperationMethod<
@@ -5801,8 +7851,8 @@ export const billingSpendExportDownload: API.OperationMethod<
   BillingSpendExportDownloadError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<BillingSpendExportDownloadRequest>,
-  output: __S(1) as any as S.Schema<BillingSpendExportDownloadResponse>,
+  input: BillingSpendExportDownloadRequest,
+  output: BillingSpendExportDownloadResponse,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -5816,8 +7866,8 @@ export const billingUsageExportDownload: API.OperationMethod<
   BillingUsageExportDownloadError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2) as any as S.Schema<BillingUsageExportDownloadRequest>,
-  output: __S(1) as any as S.Schema<BillingUsageExportDownloadResponse>,
+  input: BillingUsageExportDownloadRequest,
+  output: BillingUsageExportDownloadResponse,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -5831,8 +7881,8 @@ export const cimdVerificationTokensDestroy: API.OperationMethod<
   CimdVerificationTokensDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3) as any as S.Schema<CimdVerificationTokensDestroyRequest>,
-  output: __S(1) as any as S.Schema<CimdVerificationTokensDestroyResponse>,
+  input: CimdVerificationTokensDestroyRequest,
+  output: CimdVerificationTokensDestroyResponse,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -5845,8 +7895,8 @@ export const create: API.OperationMethod<
   CreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6) as any as S.Schema<CreateRequest>,
-  output: __S(11) as any as S.Schema<Organization>,
+  input: CreateRequest,
+  output: Organization,
   errors: [BadRequest, Forbidden],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -5860,8 +7910,8 @@ export const createCimdVerificationToken: API.OperationMethod<
   CreateCimdVerificationTokenError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12) as any as S.Schema<CreateCimdVerificationTokenRequest>,
-  output: __S(14) as any as S.Schema<CIMDVerificationTokenWithValue>,
+  input: CreateCimdVerificationTokenRequest,
+  output: CIMDVerificationTokenWithValue,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -5874,8 +7924,8 @@ export const createDomain: API.OperationMethod<
   CreateDomainError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15) as any as S.Schema<CreateDomainRequest>,
-  output: __S(16) as any as S.Schema<OrganizationDomain>,
+  input: CreateDomainRequest,
+  output: OrganizationDomain,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -5888,8 +7938,8 @@ export const createIdentityProviderConfig: API.OperationMethod<
   CreateIdentityProviderConfigError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18) as any as S.Schema<CreateIdentityProviderConfigRequest>,
-  output: __S(19) as any as S.Schema<IdentityProviderConfigOutput>,
+  input: CreateIdentityProviderConfigRequest,
+  output: IdentityProviderConfigOutput,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -5903,8 +7953,8 @@ export const createIdentityProviderConfigsScimToken: API.OperationMethod<
   CreateIdentityProviderConfigsScimTokenError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20) as any as S.Schema<CreateIdentityProviderConfigsScimTokenRequest>,
-  output: __S(21) as any as S.Schema<SCIMTokenResponse>,
+  input: CreateIdentityProviderConfigsScimTokenRequest,
+  output: SCIMTokenResponse,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -5917,8 +7967,8 @@ export const createInvite: API.OperationMethod<
   CreateInviteError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22) as any as S.Schema<CreateInviteRequest>,
-  output: __S(23) as any as S.Schema<OrganizationInviteOutput>,
+  input: CreateInviteRequest,
+  output: OrganizationInviteOutput,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -5932,8 +7982,8 @@ export const createInvitesDelegate: API.OperationMethod<
   CreateInvitesDelegateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24) as any as S.Schema<CreateInvitesDelegateRequest>,
-  output: __S(23) as any as S.Schema<OrganizationInviteOutput>,
+  input: CreateInvitesDelegateRequest,
+  output: OrganizationInviteOutput,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -5946,8 +7996,8 @@ export const createLegalDocument: API.OperationMethod<
   CreateLegalDocumentError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25) as any as S.Schema<CreateLegalDocumentRequest>,
-  output: __S(27) as any as S.Schema<LegalDocumentDTO>,
+  input: CreateLegalDocumentRequest,
+  output: LegalDocumentDTO,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -5961,8 +8011,8 @@ export const createOrganizationsProject: API.OperationMethod<
   CreateOrganizationsProjectError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(46) as any as S.Schema<CreateOrganizationsProjectRequest>,
-  output: __S(51) as any as S.Schema<ProjectBackwardCompat>,
+  input: CreateOrganizationsProjectRequest,
+  output: ProjectBackwardCompat,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -5980,8 +8030,8 @@ export const createOrganizationsProjectsChangeOrganization: API.OperationMethod<
   CreateOrganizationsProjectsChangeOrganizationError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(53) as any as S.Schema<CreateOrganizationsProjectsChangeOrganizationRequest>,
-  output: __S(51) as any as S.Schema<ProjectBackwardCompat>,
+  input: CreateOrganizationsProjectsChangeOrganizationRequest,
+  output: ProjectBackwardCompat,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -5995,8 +8045,8 @@ export const createOrganizationsProjectsDefaultEvaluationContext: API.OperationM
   CreateOrganizationsProjectsDefaultEvaluationContextError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(54) as any as S.Schema<CreateOrganizationsProjectsDefaultEvaluationContextRequest>,
-  output: __S(51) as any as S.Schema<ProjectBackwardCompat>,
+  input: CreateOrganizationsProjectsDefaultEvaluationContextRequest,
+  output: ProjectBackwardCompat,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -6010,8 +8060,8 @@ export const createOrganizationsProjectsEvaluationContextSuggestion: API.Operati
   CreateOrganizationsProjectsEvaluationContextSuggestionError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(55) as any as S.Schema<CreateOrganizationsProjectsEvaluationContextSuggestionRequest>,
-  output: __S(56) as any as S.Schema<EvaluationContextSuggestionResponse>,
+  input: CreateOrganizationsProjectsEvaluationContextSuggestionRequest,
+  output: EvaluationContextSuggestionResponse,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -6025,8 +8075,8 @@ export const createRequestAiAccess: API.OperationMethod<
   CreateRequestAiAccessError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57) as any as S.Schema<CreateRequestAiAccessRequest>,
-  output: __S(58) as any as S.Schema<OrganizationAIAccessRequestResponse>,
+  input: CreateRequestAiAccessRequest,
+  output: OrganizationAIAccessRequestResponse,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -6040,8 +8090,8 @@ export const createRole: API.OperationMethod<
   CreateRoleError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(59) as any as S.Schema<CreateRoleRequest>,
-  output: __S(60) as any as S.Schema<Role>,
+  input: CreateRoleRequest,
+  output: Role,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -6054,8 +8104,8 @@ export const createRoleExternalReference: API.OperationMethod<
   CreateRoleExternalReferenceError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(61) as any as S.Schema<CreateRoleExternalReferenceRequest>,
-  output: __S(62) as any as S.Schema<RoleExternalReference>,
+  input: CreateRoleExternalReferenceRequest,
+  output: RoleExternalReference,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -6069,8 +8119,8 @@ export const createRolesRoleMembership: API.OperationMethod<
   CreateRolesRoleMembershipError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(63) as any as S.Schema<CreateRolesRoleMembershipRequest>,
-  output: __S(65) as any as S.Schema<RoleMembershipOutput>,
+  input: CreateRolesRoleMembershipRequest,
+  output: RoleMembershipOutput,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -6083,8 +8133,8 @@ export const destroy: API.OperationMethod<
   DestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(66) as any as S.Schema<DestroyRequest>,
-  output: __S(67) as any as S.Schema<DestroyResponse>,
+  input: DestroyRequest,
+  output: DestroyResponse,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -6097,8 +8147,8 @@ export const domainsDestroy: API.OperationMethod<
   DomainsDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(68) as any as S.Schema<DomainsDestroyRequest>,
-  output: __S(67) as any as S.Schema<DomainsDestroyResponse>,
+  input: DomainsDestroyRequest,
+  output: DomainsDestroyResponse,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -6111,8 +8161,8 @@ export const domainsVerifyCreate: API.OperationMethod<
   DomainsVerifyCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(69) as any as S.Schema<DomainsVerifyCreateRequest>,
-  output: __S(67) as any as S.Schema<DomainsVerifyCreateResponse>,
+  input: DomainsVerifyCreateRequest,
+  output: DomainsVerifyCreateResponse,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -6121,8 +8171,8 @@ export const domainsVerifyCreate: API.OperationMethod<
 export type GetError = Forbidden | NotFound | PosthogOpError;
 export const get: API.OperationMethod<GetRequest, Organization, GetError, PosthogOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(70) as any as S.Schema<GetRequest>,
-    output: __S(11) as any as S.Schema<Organization>,
+    input: GetRequest,
+    output: Organization,
     errors: [Forbidden, NotFound],
     protocol: PosthogProtocol,
     retry: Retry.Retry,
@@ -6136,8 +8186,8 @@ export const getBillingFeature: API.OperationMethod<
   GetBillingFeatureError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(71) as any as S.Schema<GetBillingFeatureRequest>,
-  output: __S(74) as any as S.Schema<BillingFeatures>,
+  input: GetBillingFeatureRequest,
+  output: BillingFeatures,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -6151,8 +8201,8 @@ export const getBillingForecast: API.OperationMethod<
   GetBillingForecastError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(75) as any as S.Schema<GetBillingForecastRequest>,
-  output: __S(83) as any as S.Schema<BillingForecast>,
+  input: GetBillingForecastRequest,
+  output: BillingForecast,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -6166,8 +8216,8 @@ export const getBillingInvoicesContent: API.OperationMethod<
   GetBillingInvoicesContentError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(84) as any as S.Schema<GetBillingInvoicesContentRequest>,
-  output: __S(1) as any as S.Schema<GetBillingInvoicesContentResponse>,
+  input: GetBillingInvoicesContentRequest,
+  output: GetBillingInvoicesContentResponse,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -6181,8 +8231,8 @@ export const getBillingLimit: API.OperationMethod<
   GetBillingLimitError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(85) as any as S.Schema<GetBillingLimitRequest>,
-  output: __S(88) as any as S.Schema<BillingLimits>,
+  input: GetBillingLimitRequest,
+  output: BillingLimits,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -6196,8 +8246,8 @@ export const getBillingProduct: API.OperationMethod<
   GetBillingProductError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(89) as any as S.Schema<GetBillingProductRequest>,
-  output: __S(99) as any as S.Schema<BillingProduct>,
+  input: GetBillingProductRequest,
+  output: BillingProduct,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -6211,8 +8261,8 @@ export const getBillingProductsSummary: API.OperationMethod<
   GetBillingProductsSummaryError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(100) as any as S.Schema<GetBillingProductsSummaryRequest>,
-  output: __S(107) as any as S.Schema<BillingProductsSummary>,
+  input: GetBillingProductsSummaryRequest,
+  output: BillingProductsSummary,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -6226,8 +8276,8 @@ export const getBillingSpendSummary: API.OperationMethod<
   GetBillingSpendSummaryError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(108) as any as S.Schema<GetBillingSpendSummaryRequest>,
-  output: __S(115) as any as S.Schema<BillingSpendSummary>,
+  input: GetBillingSpendSummaryRequest,
+  output: BillingSpendSummary,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -6241,8 +8291,8 @@ export const getBillingSpendTimeseries: API.OperationMethod<
   GetBillingSpendTimeseriesError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(116) as any as S.Schema<GetBillingSpendTimeseriesRequest>,
-  output: __S(120) as any as S.Schema<PaginatedBillingTimeSeriesPointList>,
+  input: GetBillingSpendTimeseriesRequest,
+  output: PaginatedBillingTimeSeriesPointList,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -6256,8 +8306,8 @@ export const getBillingSubscription: API.OperationMethod<
   GetBillingSubscriptionError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(121) as any as S.Schema<GetBillingSubscriptionRequest>,
-  output: __S(125) as any as S.Schema<BillingSubscription>,
+  input: GetBillingSubscriptionRequest,
+  output: BillingSubscription,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -6271,8 +8321,8 @@ export const getBillingUsageStatus: API.OperationMethod<
   GetBillingUsageStatusError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(126) as any as S.Schema<GetBillingUsageStatusRequest>,
-  output: __S(131) as any as S.Schema<BillingUsageStatus>,
+  input: GetBillingUsageStatusRequest,
+  output: BillingUsageStatus,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -6286,8 +8336,8 @@ export const getBillingUsageSummary: API.OperationMethod<
   GetBillingUsageSummaryError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(132) as any as S.Schema<GetBillingUsageSummaryRequest>,
-  output: __S(141) as any as S.Schema<BillingUsageSummary>,
+  input: GetBillingUsageSummaryRequest,
+  output: BillingUsageSummary,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -6301,8 +8351,8 @@ export const getBillingUsageTimeseries: API.OperationMethod<
   GetBillingUsageTimeseriesError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(142) as any as S.Schema<GetBillingUsageTimeseriesRequest>,
-  output: __S(120) as any as S.Schema<PaginatedBillingTimeSeriesPointList>,
+  input: GetBillingUsageTimeseriesRequest,
+  output: PaginatedBillingTimeSeriesPointList,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -6316,8 +8366,8 @@ export const getCimdVerificationToken: API.OperationMethod<
   GetCimdVerificationTokenError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(143) as any as S.Schema<GetCimdVerificationTokenRequest>,
-  output: __S(144) as any as S.Schema<CIMDVerificationToken>,
+  input: GetCimdVerificationTokenRequest,
+  output: CIMDVerificationToken,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -6330,8 +8380,8 @@ export const getDomain: API.OperationMethod<
   GetDomainError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(145) as any as S.Schema<GetDomainRequest>,
-  output: __S(16) as any as S.Schema<OrganizationDomain>,
+  input: GetDomainRequest,
+  output: OrganizationDomain,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -6344,8 +8394,8 @@ export const getDomainsScimLog: API.OperationMethod<
   GetDomainsScimLogError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(146) as any as S.Schema<GetDomainsScimLogRequest>,
-  output: __S(149) as any as S.Schema<PaginatedSCIMRequestLog>,
+  input: GetDomainsScimLogRequest,
+  output: PaginatedSCIMRequestLog,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -6358,8 +8408,8 @@ export const getIdentityProviderConfig: API.OperationMethod<
   GetIdentityProviderConfigError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(150) as any as S.Schema<GetIdentityProviderConfigRequest>,
-  output: __S(19) as any as S.Schema<IdentityProviderConfigOutput>,
+  input: GetIdentityProviderConfigRequest,
+  output: IdentityProviderConfigOutput,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -6372,8 +8422,8 @@ export const getIdentityProviderConfigsScimLog: API.OperationMethod<
   GetIdentityProviderConfigsScimLogError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(151) as any as S.Schema<GetIdentityProviderConfigsScimLogRequest>,
-  output: __S(149) as any as S.Schema<PaginatedSCIMRequestLog>,
+  input: GetIdentityProviderConfigsScimLogRequest,
+  output: PaginatedSCIMRequestLog,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -6386,8 +8436,8 @@ export const getLegalDocument: API.OperationMethod<
   GetLegalDocumentError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(152) as any as S.Schema<GetLegalDocumentRequest>,
-  output: __S(27) as any as S.Schema<LegalDocumentDTO>,
+  input: GetLegalDocumentRequest,
+  output: LegalDocumentDTO,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -6400,8 +8450,8 @@ export const getMembersGithubLogin: API.OperationMethod<
   GetMembersGithubLoginError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(153) as any as S.Schema<GetMembersGithubLoginRequest>,
-  output: __S(154) as any as S.Schema<OrganizationMemberGithubLogin>,
+  input: GetMembersGithubLoginRequest,
+  output: OrganizationMemberGithubLogin,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -6415,8 +8465,8 @@ export const getMembersProjectAccess: API.OperationMethod<
   GetMembersProjectAccessError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(155) as any as S.Schema<GetMembersProjectAccessRequest>,
-  output: __S(161) as any as S.Schema<MemberProjectAccessResponse>,
+  input: GetMembersProjectAccessRequest,
+  output: MemberProjectAccessResponse,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -6429,8 +8479,8 @@ export const getMembersScopedApiKey: API.OperationMethod<
   GetMembersScopedApiKeyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(162) as any as S.Schema<GetMembersScopedApiKeyRequest>,
-  output: __S(64) as any as S.Schema<OrganizationMember>,
+  input: GetMembersScopedApiKeyRequest,
+  output: OrganizationMember,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -6444,8 +8494,8 @@ export const getOrganizationsProject: API.OperationMethod<
   GetOrganizationsProjectError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(163) as any as S.Schema<GetOrganizationsProjectRequest>,
-  output: __S(51) as any as S.Schema<ProjectBackwardCompat>,
+  input: GetOrganizationsProjectRequest,
+  output: ProjectBackwardCompat,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -6459,8 +8509,8 @@ export const getOrganizationsProjectsAccessControlDefault: API.OperationMethod<
   GetOrganizationsProjectsAccessControlDefaultError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(164) as any as S.Schema<GetOrganizationsProjectsAccessControlDefaultRequest>,
-  output: __S(169) as any as S.Schema<AccessControlDefaultsResponse>,
+  input: GetOrganizationsProjectsAccessControlDefaultRequest,
+  output: AccessControlDefaultsResponse,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -6474,8 +8524,8 @@ export const getOrganizationsProjectsAccessControlDefaultObject: API.OperationMe
   GetOrganizationsProjectsAccessControlDefaultObjectError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(170) as any as S.Schema<GetOrganizationsProjectsAccessControlDefaultObjectRequest>,
-  output: __S(173) as any as S.Schema<AccessControlObjectRulesResponse>,
+  input: GetOrganizationsProjectsAccessControlDefaultObjectRequest,
+  output: AccessControlObjectRulesResponse,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -6489,8 +8539,8 @@ export const getOrganizationsProjectsAccessControlDefaultProperty: API.Operation
   GetOrganizationsProjectsAccessControlDefaultPropertyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(174) as any as S.Schema<GetOrganizationsProjectsAccessControlDefaultPropertyRequest>,
-  output: __S(177) as any as S.Schema<AccessControlPropertyRulesResponse>,
+  input: GetOrganizationsProjectsAccessControlDefaultPropertyRequest,
+  output: AccessControlPropertyRulesResponse,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -6504,8 +8554,8 @@ export const getOrganizationsProjectsAccessControlMember: API.OperationMethod<
   GetOrganizationsProjectsAccessControlMemberError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(178) as any as S.Schema<GetOrganizationsProjectsAccessControlMemberRequest>,
-  output: __S(185) as any as S.Schema<AccessControlMembersResponse>,
+  input: GetOrganizationsProjectsAccessControlMemberRequest,
+  output: AccessControlMembersResponse,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -6519,8 +8569,8 @@ export const getOrganizationsProjectsAccessControlMemberObject: API.OperationMet
   GetOrganizationsProjectsAccessControlMemberObjectError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(186) as any as S.Schema<GetOrganizationsProjectsAccessControlMemberObjectRequest>,
-  output: __S(173) as any as S.Schema<AccessControlObjectRulesResponse>,
+  input: GetOrganizationsProjectsAccessControlMemberObjectRequest,
+  output: AccessControlObjectRulesResponse,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -6534,8 +8584,8 @@ export const getOrganizationsProjectsAccessControlMemberProperty: API.OperationM
   GetOrganizationsProjectsAccessControlMemberPropertyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(187) as any as S.Schema<GetOrganizationsProjectsAccessControlMemberPropertyRequest>,
-  output: __S(177) as any as S.Schema<AccessControlPropertyRulesResponse>,
+  input: GetOrganizationsProjectsAccessControlMemberPropertyRequest,
+  output: AccessControlPropertyRulesResponse,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -6549,8 +8599,8 @@ export const getOrganizationsProjectsAccessControlRole: API.OperationMethod<
   GetOrganizationsProjectsAccessControlRoleError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(188) as any as S.Schema<GetOrganizationsProjectsAccessControlRoleRequest>,
-  output: __S(191) as any as S.Schema<AccessControlRolesResponse>,
+  input: GetOrganizationsProjectsAccessControlRoleRequest,
+  output: AccessControlRolesResponse,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -6564,8 +8614,8 @@ export const getOrganizationsProjectsAccessControlRoleObject: API.OperationMetho
   GetOrganizationsProjectsAccessControlRoleObjectError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(192) as any as S.Schema<GetOrganizationsProjectsAccessControlRoleObjectRequest>,
-  output: __S(173) as any as S.Schema<AccessControlObjectRulesResponse>,
+  input: GetOrganizationsProjectsAccessControlRoleObjectRequest,
+  output: AccessControlObjectRulesResponse,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -6579,8 +8629,8 @@ export const getOrganizationsProjectsAccessControlRoleProperty: API.OperationMet
   GetOrganizationsProjectsAccessControlRolePropertyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(193) as any as S.Schema<GetOrganizationsProjectsAccessControlRolePropertyRequest>,
-  output: __S(177) as any as S.Schema<AccessControlPropertyRulesResponse>,
+  input: GetOrganizationsProjectsAccessControlRolePropertyRequest,
+  output: AccessControlPropertyRulesResponse,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -6594,8 +8644,8 @@ export const getOrganizationsProjectsActivity: API.OperationMethod<
   GetOrganizationsProjectsActivityError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(194) as any as S.Schema<GetOrganizationsProjectsActivityRequest>,
-  output: __S(51) as any as S.Schema<ProjectBackwardCompat>,
+  input: GetOrganizationsProjectsActivityRequest,
+  output: ProjectBackwardCompat,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -6609,8 +8659,8 @@ export const getOrganizationsProjectsDefaultEvaluationContext: API.OperationMeth
   GetOrganizationsProjectsDefaultEvaluationContextError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(195) as any as S.Schema<GetOrganizationsProjectsDefaultEvaluationContextRequest>,
-  output: __S(51) as any as S.Schema<ProjectBackwardCompat>,
+  input: GetOrganizationsProjectsDefaultEvaluationContextRequest,
+  output: ProjectBackwardCompat,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -6624,8 +8674,8 @@ export const getOrganizationsProjectsDefaultReleaseCondition: API.OperationMetho
   GetOrganizationsProjectsDefaultReleaseConditionError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(196) as any as S.Schema<GetOrganizationsProjectsDefaultReleaseConditionRequest>,
-  output: __S(51) as any as S.Schema<ProjectBackwardCompat>,
+  input: GetOrganizationsProjectsDefaultReleaseConditionRequest,
+  output: ProjectBackwardCompat,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -6639,8 +8689,8 @@ export const getOrganizationsProjectsExperimentsConfig: API.OperationMethod<
   GetOrganizationsProjectsExperimentsConfigError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(197) as any as S.Schema<GetOrganizationsProjectsExperimentsConfigRequest>,
-  output: __S(51) as any as S.Schema<ProjectBackwardCompat>,
+  input: GetOrganizationsProjectsExperimentsConfigRequest,
+  output: ProjectBackwardCompat,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -6657,8 +8707,8 @@ export const getOrganizationsProjectsIsGeneratingDemoData: API.OperationMethod<
   GetOrganizationsProjectsIsGeneratingDemoDataError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(198) as any as S.Schema<GetOrganizationsProjectsIsGeneratingDemoDataRequest>,
-  output: __S(51) as any as S.Schema<ProjectBackwardCompat>,
+  input: GetOrganizationsProjectsIsGeneratingDemoDataRequest,
+  output: ProjectBackwardCompat,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -6672,8 +8722,8 @@ export const getOrganizationsProjectsLogsConfig: API.OperationMethod<
   GetOrganizationsProjectsLogsConfigError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(199) as any as S.Schema<GetOrganizationsProjectsLogsConfigRequest>,
-  output: __S(200) as any as S.Schema<TeamLogsConfig>,
+  input: GetOrganizationsProjectsLogsConfigRequest,
+  output: TeamLogsConfig,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -6687,8 +8737,8 @@ export const getOrganizationsProjectsSettingsAsOf: API.OperationMethod<
   GetOrganizationsProjectsSettingsAsOfError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(201) as any as S.Schema<GetOrganizationsProjectsSettingsAsOfRequest>,
-  output: __S(51) as any as S.Schema<ProjectBackwardCompat>,
+  input: GetOrganizationsProjectsSettingsAsOfRequest,
+  output: ProjectBackwardCompat,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -6702,8 +8752,8 @@ export const getOrganizationsProjectsTracingConfig: API.OperationMethod<
   GetOrganizationsProjectsTracingConfigError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(202) as any as S.Schema<GetOrganizationsProjectsTracingConfigRequest>,
-  output: __S(203) as any as S.Schema<TeamTracingConfig>,
+  input: GetOrganizationsProjectsTracingConfigRequest,
+  output: TeamTracingConfig,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -6713,8 +8763,8 @@ export type GetRoleError = Forbidden | NotFound | PosthogOpError;
 /** Role endpoints disclose member records, so they scope them the same way the members list does when the org restricts member list visibility. */
 export const getRole: API.OperationMethod<GetRoleRequest, Role, GetRoleError, PosthogOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(204) as any as S.Schema<GetRoleRequest>,
-    output: __S(60) as any as S.Schema<Role>,
+    input: GetRoleRequest,
+    output: Role,
     errors: [Forbidden, NotFound],
     protocol: PosthogProtocol,
     retry: Retry.Retry,
@@ -6731,8 +8781,8 @@ export const getRoleExternalReferencesLookup: API.OperationMethod<
   GetRoleExternalReferencesLookupError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(205) as any as S.Schema<GetRoleExternalReferencesLookupRequest>,
-  output: __S(206) as any as S.Schema<RoleLookupResponse>,
+  input: GetRoleExternalReferencesLookupRequest,
+  output: RoleLookupResponse,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -6746,8 +8796,8 @@ export const getRolesRoleMembership: API.OperationMethod<
   GetRolesRoleMembershipError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(207) as any as S.Schema<GetRolesRoleMembershipRequest>,
-  output: __S(65) as any as S.Schema<RoleMembershipOutput>,
+  input: GetRolesRoleMembershipRequest,
+  output: RoleMembershipOutput,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -6761,8 +8811,8 @@ export const getTeamsDataFreshness: API.OperationMethod<
   GetTeamsDataFreshnessError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(208) as any as S.Schema<GetTeamsDataFreshnessRequest>,
-  output: __S(213) as any as S.Schema<OrganizationDataFreshness>,
+  input: GetTeamsDataFreshnessRequest,
+  output: OrganizationDataFreshness,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -6776,8 +8826,8 @@ export const getWelcomeCurrent: API.OperationMethod<
   GetWelcomeCurrentError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(214) as any as S.Schema<GetWelcomeCurrentRequest>,
-  output: __S(224) as any as S.Schema<WelcomeResponse>,
+  input: GetWelcomeCurrentRequest,
+  output: WelcomeResponse,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -6790,8 +8840,8 @@ export const identityProviderConfigsDestroy: API.OperationMethod<
   IdentityProviderConfigsDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(225) as any as S.Schema<IdentityProviderConfigsDestroyRequest>,
-  output: __S(1) as any as S.Schema<IdentityProviderConfigsDestroyResponse>,
+  input: IdentityProviderConfigsDestroyRequest,
+  output: IdentityProviderConfigsDestroyResponse,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -6804,8 +8854,8 @@ export const invitesBulkCreate: API.OperationMethod<
   InvitesBulkCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(226) as any as S.Schema<InvitesBulkCreateRequest>,
-  output: __S(67) as any as S.Schema<InvitesBulkCreateResponse>,
+  input: InvitesBulkCreateRequest,
+  output: InvitesBulkCreateResponse,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -6818,8 +8868,8 @@ export const invitesDestroy: API.OperationMethod<
   InvitesDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(227) as any as S.Schema<InvitesDestroyRequest>,
-  output: __S(67) as any as S.Schema<InvitesDestroyResponse>,
+  input: InvitesDestroyRequest,
+  output: InvitesDestroyResponse,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -6833,8 +8883,8 @@ export const legalDocumentsDestroy: API.OperationMethod<
   LegalDocumentsDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(228) as any as S.Schema<LegalDocumentsDestroyRequest>,
-  output: __S(67) as any as S.Schema<LegalDocumentsDestroyResponse>,
+  input: LegalDocumentsDestroyRequest,
+  output: LegalDocumentsDestroyResponse,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -6848,8 +8898,8 @@ export const legalDocumentsDownloadRetrieve: API.OperationMethod<
   LegalDocumentsDownloadRetrieveError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(229) as any as S.Schema<LegalDocumentsDownloadRetrieveRequest>,
-  output: __S(1) as any as S.Schema<LegalDocumentsDownloadRetrieveResponse>,
+  input: LegalDocumentsDownloadRetrieveRequest,
+  output: LegalDocumentsDownloadRetrieveResponse,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -6862,8 +8912,8 @@ export const list: API.OperationMethod<
   ListError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(230) as any as S.Schema<ListRequest>,
-  output: __S(232) as any as S.Schema<PaginatedOrganizationList>,
+  input: ListRequest,
+  output: PaginatedOrganizationList,
   errors: [BadRequest, Forbidden],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -6877,8 +8927,8 @@ export const listBillingInvoices: API.OperationMethod<
   ListBillingInvoicesError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(233) as any as S.Schema<ListBillingInvoicesRequest>,
-  output: __S(236) as any as S.Schema<BillingInvoices>,
+  input: ListBillingInvoicesRequest,
+  output: BillingInvoices,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -6892,8 +8942,8 @@ export const listBillingProducts: API.OperationMethod<
   ListBillingProductsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(237) as any as S.Schema<ListBillingProductsRequest>,
-  output: __S(239) as any as S.Schema<BillingProducts>,
+  input: ListBillingProductsRequest,
+  output: BillingProducts,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -6907,8 +8957,8 @@ export const listBillingProject: API.OperationMethod<
   ListBillingProjectError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(240) as any as S.Schema<ListBillingProjectRequest>,
-  output: __S(243) as any as S.Schema<BillingProjects>,
+  input: ListBillingProjectRequest,
+  output: BillingProjects,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -6922,8 +8972,8 @@ export const listCimdVerificationTokens: API.OperationMethod<
   ListCimdVerificationTokensError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(244) as any as S.Schema<ListCimdVerificationTokensRequest>,
-  output: __S(246) as any as S.Schema<PaginatedCIMDVerificationTokenList>,
+  input: ListCimdVerificationTokensRequest,
+  output: PaginatedCIMDVerificationTokenList,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -6936,8 +8986,8 @@ export const listDomains: API.OperationMethod<
   ListDomainsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(247) as any as S.Schema<ListDomainsRequest>,
-  output: __S(249) as any as S.Schema<PaginatedOrganizationDomainList>,
+  input: ListDomainsRequest,
+  output: PaginatedOrganizationDomainList,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -6950,8 +9000,8 @@ export const listIdentityProviderConfigs: API.OperationMethod<
   ListIdentityProviderConfigsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(250) as any as S.Schema<ListIdentityProviderConfigsRequest>,
-  output: __S(252) as any as S.Schema<PaginatedIdentityProviderConfigListOutput>,
+  input: ListIdentityProviderConfigsRequest,
+  output: PaginatedIdentityProviderConfigListOutput,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -6964,8 +9014,8 @@ export const listInvites: API.OperationMethod<
   ListInvitesError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(253) as any as S.Schema<ListInvitesRequest>,
-  output: __S(255) as any as S.Schema<PaginatedOrganizationInviteListOutput>,
+  input: ListInvitesRequest,
+  output: PaginatedOrganizationInviteListOutput,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -6978,8 +9028,8 @@ export const listLegalDocuments: API.OperationMethod<
   ListLegalDocumentsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(256) as any as S.Schema<ListLegalDocumentsRequest>,
-  output: __S(258) as any as S.Schema<PaginatedLegalDocumentDTOList>,
+  input: ListLegalDocumentsRequest,
+  output: PaginatedLegalDocumentDTOList,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -6992,8 +9042,8 @@ export const listMembers: API.OperationMethod<
   ListMembersError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(259) as any as S.Schema<ListMembersRequest>,
-  output: __S(261) as any as S.Schema<PaginatedOrganizationMemberList>,
+  input: ListMembersRequest,
+  output: PaginatedOrganizationMemberList,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -7007,8 +9057,8 @@ export const listOauthApplications: API.OperationMethod<
   ListOauthApplicationsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(262) as any as S.Schema<ListOauthApplicationsRequest>,
-  output: __S(265) as any as S.Schema<PaginatedOrganizationOAuthApplicationList>,
+  input: ListOauthApplicationsRequest,
+  output: PaginatedOrganizationOAuthApplicationList,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -7022,8 +9072,8 @@ export const listOrganizationsProjects: API.OperationMethod<
   ListOrganizationsProjectsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(266) as any as S.Schema<ListOrganizationsProjectsRequest>,
-  output: __S(269) as any as S.Schema<PaginatedProjectBackwardCompatBasicList>,
+  input: ListOrganizationsProjectsRequest,
+  output: PaginatedProjectBackwardCompatBasicList,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -7037,8 +9087,8 @@ export const listOrganizationsProjectsEventIngestionRestrictions: API.OperationM
   ListOrganizationsProjectsEventIngestionRestrictionsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(270) as any as S.Schema<ListOrganizationsProjectsEventIngestionRestrictionsRequest>,
-  output: __S(273) as any as S.Schema<ListOrganizationsProjectsEventIngestionRestrictionsResponse>,
+  input: ListOrganizationsProjectsEventIngestionRestrictionsRequest,
+  output: ListOrganizationsProjectsEventIngestionRestrictionsResponse,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -7051,8 +9101,8 @@ export const listRoleExternalReferences: API.OperationMethod<
   ListRoleExternalReferencesError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(274) as any as S.Schema<ListRoleExternalReferencesRequest>,
-  output: __S(276) as any as S.Schema<PaginatedRoleExternalReferenceList>,
+  input: ListRoleExternalReferencesRequest,
+  output: PaginatedRoleExternalReferenceList,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -7066,8 +9116,8 @@ export const listRoles: API.OperationMethod<
   ListRolesError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(277) as any as S.Schema<ListRolesRequest>,
-  output: __S(279) as any as S.Schema<PaginatedRoleList>,
+  input: ListRolesRequest,
+  output: PaginatedRoleList,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -7081,8 +9131,8 @@ export const listRolesRoleMemberships: API.OperationMethod<
   ListRolesRoleMembershipsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(280) as any as S.Schema<ListRolesRoleMembershipsRequest>,
-  output: __S(282) as any as S.Schema<PaginatedRoleMembershipListOutput>,
+  input: ListRolesRoleMembershipsRequest,
+  output: PaginatedRoleMembershipListOutput,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -7095,8 +9145,8 @@ export const membersDestroy: API.OperationMethod<
   MembersDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(283) as any as S.Schema<MembersDestroyRequest>,
-  output: __S(67) as any as S.Schema<MembersDestroyResponse>,
+  input: MembersDestroyRequest,
+  output: MembersDestroyResponse,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -7114,8 +9164,8 @@ export const organizationsProjectsAddProductIntentPartialUpdate: API.OperationMe
   OrganizationsProjectsAddProductIntentPartialUpdateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(284) as any as S.Schema<OrganizationsProjectsAddProductIntentPartialUpdateRequest>,
-  output: __S(51) as any as S.Schema<ProjectBackwardCompat>,
+  input: OrganizationsProjectsAddProductIntentPartialUpdateRequest,
+  output: ProjectBackwardCompat,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -7129,8 +9179,8 @@ export const organizationsProjectsCancelDeletionCreate: API.OperationMethod<
   OrganizationsProjectsCancelDeletionCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(285) as any as S.Schema<OrganizationsProjectsCancelDeletionCreateRequest>,
-  output: __S(287) as any as S.Schema<Project>,
+  input: OrganizationsProjectsCancelDeletionCreateRequest,
+  output: Project,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -7144,10 +9194,8 @@ export const organizationsProjectsDefaultEvaluationContextsDestroy: API.Operatio
   OrganizationsProjectsDefaultEvaluationContextsDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(288) as any as S.Schema<OrganizationsProjectsDefaultEvaluationContextsDestroyRequest>,
-  output: __S(
-    289,
-  ) as any as S.Schema<OrganizationsProjectsDefaultEvaluationContextsDestroyResponse>,
+  input: OrganizationsProjectsDefaultEvaluationContextsDestroyRequest,
+  output: OrganizationsProjectsDefaultEvaluationContextsDestroyResponse,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -7165,10 +9213,8 @@ export const organizationsProjectsDeleteSecretTokenBackupPartialUpdate: API.Oper
   OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(
-    290,
-  ) as any as S.Schema<OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequest>,
-  output: __S(51) as any as S.Schema<ProjectBackwardCompat>,
+  input: OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequest,
+  output: ProjectBackwardCompat,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -7182,8 +9228,8 @@ export const organizationsProjectsDestroy: API.OperationMethod<
   OrganizationsProjectsDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(291) as any as S.Schema<OrganizationsProjectsDestroyRequest>,
-  output: __S(1) as any as S.Schema<OrganizationsProjectsDestroyResponse>,
+  input: OrganizationsProjectsDestroyRequest,
+  output: OrganizationsProjectsDestroyResponse,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -7197,10 +9243,8 @@ export const organizationsProjectsEvaluationContextSuggestionsDestroy: API.Opera
   OrganizationsProjectsEvaluationContextSuggestionsDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(
-    292,
-  ) as any as S.Schema<OrganizationsProjectsEvaluationContextSuggestionsDestroyRequest>,
-  output: __S(56) as any as S.Schema<EvaluationContextSuggestionResponse>,
+  input: OrganizationsProjectsEvaluationContextSuggestionsDestroyRequest,
+  output: EvaluationContextSuggestionResponse,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -7218,10 +9262,8 @@ export const organizationsProjectsGenerateConversationsPublicTokenCreate: API.Op
   OrganizationsProjectsGenerateConversationsPublicTokenCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(
-    293,
-  ) as any as S.Schema<OrganizationsProjectsGenerateConversationsPublicTokenCreateRequest>,
-  output: __S(51) as any as S.Schema<ProjectBackwardCompat>,
+  input: OrganizationsProjectsGenerateConversationsPublicTokenCreateRequest,
+  output: ProjectBackwardCompat,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -7239,8 +9281,8 @@ export const organizationsProjectsResetTokenPartialUpdate: API.OperationMethod<
   OrganizationsProjectsResetTokenPartialUpdateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(294) as any as S.Schema<OrganizationsProjectsResetTokenPartialUpdateRequest>,
-  output: __S(51) as any as S.Schema<ProjectBackwardCompat>,
+  input: OrganizationsProjectsResetTokenPartialUpdateRequest,
+  output: ProjectBackwardCompat,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -7254,10 +9296,8 @@ export const organizationsProjectsRotateHeatmapsScreenshotSecretPartialUpdate: A
   OrganizationsProjectsRotateHeatmapsScreenshotSecretPartialUpdateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(
-    295,
-  ) as any as S.Schema<OrganizationsProjectsRotateHeatmapsScreenshotSecretPartialUpdateRequest>,
-  output: __S(51) as any as S.Schema<ProjectBackwardCompat>,
+  input: OrganizationsProjectsRotateHeatmapsScreenshotSecretPartialUpdateRequest,
+  output: ProjectBackwardCompat,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -7275,8 +9315,8 @@ export const organizationsProjectsRotateSecretTokenPartialUpdate: API.OperationM
   OrganizationsProjectsRotateSecretTokenPartialUpdateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(296) as any as S.Schema<OrganizationsProjectsRotateSecretTokenPartialUpdateRequest>,
-  output: __S(51) as any as S.Schema<ProjectBackwardCompat>,
+  input: OrganizationsProjectsRotateSecretTokenPartialUpdateRequest,
+  output: ProjectBackwardCompat,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -7290,8 +9330,8 @@ export const removeBlockedMembersAndEnforceVerifiedDomainsCreate: API.OperationM
   RemoveBlockedMembersAndEnforceVerifiedDomainsCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(297) as any as S.Schema<RemoveBlockedMembersAndEnforceVerifiedDomainsCreateRequest>,
-  output: __S(298) as any as S.Schema<OrganizationRemoveBlockedMembersResponse>,
+  input: RemoveBlockedMembersAndEnforceVerifiedDomainsCreateRequest,
+  output: OrganizationRemoveBlockedMembersResponse,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -7304,8 +9344,8 @@ export const roleExternalReferencesDestroy: API.OperationMethod<
   RoleExternalReferencesDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(299) as any as S.Schema<RoleExternalReferencesDestroyRequest>,
-  output: __S(1) as any as S.Schema<RoleExternalReferencesDestroyResponse>,
+  input: RoleExternalReferencesDestroyRequest,
+  output: RoleExternalReferencesDestroyResponse,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -7319,8 +9359,8 @@ export const rolesDestroy: API.OperationMethod<
   RolesDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(300) as any as S.Schema<RolesDestroyRequest>,
-  output: __S(67) as any as S.Schema<RolesDestroyResponse>,
+  input: RolesDestroyRequest,
+  output: RolesDestroyResponse,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -7334,8 +9374,8 @@ export const rolesRoleMembershipsDestroy: API.OperationMethod<
   RolesRoleMembershipsDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(301) as any as S.Schema<RolesRoleMembershipsDestroyRequest>,
-  output: __S(1) as any as S.Schema<RolesRoleMembershipsDestroyResponse>,
+  input: RolesRoleMembershipsDestroyRequest,
+  output: RolesRoleMembershipsDestroyResponse,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -7348,8 +9388,8 @@ export const update: API.OperationMethod<
   UpdateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(302) as any as S.Schema<UpdateRequest>,
-  output: __S(11) as any as S.Schema<Organization>,
+  input: UpdateRequest,
+  output: Organization,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -7363,8 +9403,8 @@ export const updateCimdVerificationTokensPartial: API.OperationMethod<
   UpdateCimdVerificationTokensPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(303) as any as S.Schema<UpdateCimdVerificationTokensPartialRequest>,
-  output: __S(144) as any as S.Schema<CIMDVerificationToken>,
+  input: UpdateCimdVerificationTokensPartialRequest,
+  output: CIMDVerificationToken,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -7377,8 +9417,8 @@ export const updateDomain: API.OperationMethod<
   UpdateDomainError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(304) as any as S.Schema<UpdateDomainRequest>,
-  output: __S(16) as any as S.Schema<OrganizationDomain>,
+  input: UpdateDomainRequest,
+  output: OrganizationDomain,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -7391,8 +9431,8 @@ export const updateDomainsPartial: API.OperationMethod<
   UpdateDomainsPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(305) as any as S.Schema<UpdateDomainsPartialRequest>,
-  output: __S(16) as any as S.Schema<OrganizationDomain>,
+  input: UpdateDomainsPartialRequest,
+  output: OrganizationDomain,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -7405,8 +9445,8 @@ export const updateIdentityProviderConfig: API.OperationMethod<
   UpdateIdentityProviderConfigError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(306) as any as S.Schema<UpdateIdentityProviderConfigRequest>,
-  output: __S(19) as any as S.Schema<IdentityProviderConfigOutput>,
+  input: UpdateIdentityProviderConfigRequest,
+  output: IdentityProviderConfigOutput,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -7419,8 +9459,8 @@ export const updateIdentityProviderConfigsPartial: API.OperationMethod<
   UpdateIdentityProviderConfigsPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(307) as any as S.Schema<UpdateIdentityProviderConfigsPartialRequest>,
-  output: __S(19) as any as S.Schema<IdentityProviderConfigOutput>,
+  input: UpdateIdentityProviderConfigsPartialRequest,
+  output: IdentityProviderConfigOutput,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -7438,8 +9478,8 @@ export const updateIntegrationsEnvironmentMappingPartial: API.OperationMethod<
   UpdateIntegrationsEnvironmentMappingPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(308) as any as S.Schema<UpdateIntegrationsEnvironmentMappingPartialRequest>,
-  output: __S(309) as any as S.Schema<OrganizationIntegration>,
+  input: UpdateIntegrationsEnvironmentMappingPartialRequest,
+  output: OrganizationIntegration,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -7452,8 +9492,8 @@ export const updateMember: API.OperationMethod<
   UpdateMemberError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(310) as any as S.Schema<UpdateMemberRequest>,
-  output: __S(64) as any as S.Schema<OrganizationMember>,
+  input: UpdateMemberRequest,
+  output: OrganizationMember,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -7466,8 +9506,8 @@ export const updateMembersPartial: API.OperationMethod<
   UpdateMembersPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(311) as any as S.Schema<UpdateMembersPartialRequest>,
-  output: __S(64) as any as S.Schema<OrganizationMember>,
+  input: UpdateMembersPartialRequest,
+  output: OrganizationMember,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -7481,8 +9521,8 @@ export const updateOrganizationsProject: API.OperationMethod<
   UpdateOrganizationsProjectError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(312) as any as S.Schema<UpdateOrganizationsProjectRequest>,
-  output: __S(51) as any as S.Schema<ProjectBackwardCompat>,
+  input: UpdateOrganizationsProjectRequest,
+  output: ProjectBackwardCompat,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -7500,10 +9540,8 @@ export const updateOrganizationsProjectsCompleteProductOnboardingPartial: API.Op
   UpdateOrganizationsProjectsCompleteProductOnboardingPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(
-    313,
-  ) as any as S.Schema<UpdateOrganizationsProjectsCompleteProductOnboardingPartialRequest>,
-  output: __S(51) as any as S.Schema<ProjectBackwardCompat>,
+  input: UpdateOrganizationsProjectsCompleteProductOnboardingPartialRequest,
+  output: ProjectBackwardCompat,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -7517,8 +9555,8 @@ export const updateOrganizationsProjectsDefaultReleaseCondition: API.OperationMe
   UpdateOrganizationsProjectsDefaultReleaseConditionError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(314) as any as S.Schema<UpdateOrganizationsProjectsDefaultReleaseConditionRequest>,
-  output: __S(51) as any as S.Schema<ProjectBackwardCompat>,
+  input: UpdateOrganizationsProjectsDefaultReleaseConditionRequest,
+  output: ProjectBackwardCompat,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -7532,8 +9570,8 @@ export const updateOrganizationsProjectsExperimentsConfigPartial: API.OperationM
   UpdateOrganizationsProjectsExperimentsConfigPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(315) as any as S.Schema<UpdateOrganizationsProjectsExperimentsConfigPartialRequest>,
-  output: __S(51) as any as S.Schema<ProjectBackwardCompat>,
+  input: UpdateOrganizationsProjectsExperimentsConfigPartialRequest,
+  output: ProjectBackwardCompat,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -7547,8 +9585,8 @@ export const updateOrganizationsProjectsLogsConfigPartial: API.OperationMethod<
   UpdateOrganizationsProjectsLogsConfigPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(316) as any as S.Schema<UpdateOrganizationsProjectsLogsConfigPartialRequest>,
-  output: __S(200) as any as S.Schema<TeamLogsConfig>,
+  input: UpdateOrganizationsProjectsLogsConfigPartialRequest,
+  output: TeamLogsConfig,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -7566,8 +9604,8 @@ export const updateOrganizationsProjectsPartial: API.OperationMethod<
   UpdateOrganizationsProjectsPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(317) as any as S.Schema<UpdateOrganizationsProjectsPartialRequest>,
-  output: __S(51) as any as S.Schema<ProjectBackwardCompat>,
+  input: UpdateOrganizationsProjectsPartialRequest,
+  output: ProjectBackwardCompat,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -7581,8 +9619,8 @@ export const updateOrganizationsProjectsTracingConfigPartial: API.OperationMetho
   UpdateOrganizationsProjectsTracingConfigPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(318) as any as S.Schema<UpdateOrganizationsProjectsTracingConfigPartialRequest>,
-  output: __S(203) as any as S.Schema<TeamTracingConfig>,
+  input: UpdateOrganizationsProjectsTracingConfigPartialRequest,
+  output: TeamTracingConfig,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -7595,8 +9633,8 @@ export const updatePartial: API.OperationMethod<
   UpdatePartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(319) as any as S.Schema<UpdatePartialRequest>,
-  output: __S(11) as any as S.Schema<Organization>,
+  input: UpdatePartialRequest,
+  output: Organization,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -7610,8 +9648,8 @@ export const updateRole: API.OperationMethod<
   UpdateRoleError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(320) as any as S.Schema<UpdateRoleRequest>,
-  output: __S(60) as any as S.Schema<Role>,
+  input: UpdateRoleRequest,
+  output: Role,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -7625,8 +9663,8 @@ export const updateRolesPartial: API.OperationMethod<
   UpdateRolesPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(321) as any as S.Schema<UpdateRolesPartialRequest>,
-  output: __S(60) as any as S.Schema<Role>,
+  input: UpdateRolesPartialRequest,
+  output: Role,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -7709,7 +9747,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           message: S.String,
-          action: S.optional(S.NullOr(__S(4))),
+          action: S.optional(S.NullOr(OrganizationMemberNoticeAction)),
         }),
       ).annotate({ identifier: "OrganizationMemberNotice" });
     case 6:
@@ -7725,7 +9763,7 @@ function __c0(j: number): any {
           members_can_see_org_members: S.optional(S.Boolean),
           allow_publicly_shared_resources: S.optional(S.Boolean),
           read_only_mcp_access: S.optional(S.NullOr(S.Boolean)),
-          member_notice: S.optional(S.NullOr(__S(5))),
+          member_notice: S.optional(S.NullOr(OrganizationMemberNotice)),
           is_ai_data_processing_approved: S.optional(S.NullOr(S.Boolean)),
           is_ai_training_opted_in: S.optional(S.NullOr(S.Boolean)),
           default_anonymize_ips: S.optional(S.Boolean),
@@ -7739,7 +9777,7 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(7));
+      return S.Array(OrganizationTeamsItemMap);
     case 1:
       return S.Array(S.Unknown);
     case 2:
@@ -7753,13 +9791,15 @@ function __c1(j: number): any {
           logo_media_id: S.optional(S.NullOr(S.String)),
           created_at: S.optional(S.String),
           updated_at: S.optional(S.String),
-          membership_level: S.optional(S.Number),
-          plugins_access_level: S.optional(S.Number),
-          teams: S.optional(__S(8)),
-          projects: S.optional(__S(8)),
-          available_product_features: S.optional(S.NullOr(__S(9))),
+          membership_level: S.optional(OrganizationMembershipLevelEnum),
+          plugins_access_level: S.optional(OrganizationPluginsAccessLevelEnum),
+          teams: S.optional(OrganizationTeamsList),
+          projects: S.optional(OrganizationProjectsList),
+          available_product_features: S.optional(
+            S.NullOr(OrganizationAvailableProductFeaturesList),
+          ),
           is_member_join_email_enabled: S.optional(S.Boolean),
-          metadata: S.optional(__S(10)),
+          metadata: S.optional(OrganizationMetadataMap),
           customer_id: S.optional(S.NullOr(S.String)),
           enforce_2fa: S.optional(S.NullOr(S.Boolean)),
           enforce_verified_domains: S.optional(S.NullOr(S.Boolean)),
@@ -7769,7 +9809,7 @@ function __c1(j: number): any {
           members_can_see_org_members: S.optional(S.Boolean),
           allow_publicly_shared_resources: S.optional(S.Boolean),
           read_only_mcp_access: S.optional(S.NullOr(S.Boolean)),
-          member_notice: S.optional(S.NullOr(__S(5))),
+          member_notice: S.optional(S.NullOr(OrganizationMemberNotice)),
           member_count: S.optional(S.Number),
           is_ai_data_processing_approved: S.optional(S.NullOr(S.Boolean)),
           is_ai_training_opted_in: S.optional(S.NullOr(S.Boolean)),
@@ -7810,8 +9850,8 @@ function __c1(j: number): any {
           last_name: S.optional(S.String),
           email: S.optional(S.String),
           is_email_verified: S.optional(S.NullOr(S.Boolean)),
-          hedgehog_config: S.optional(S.NullOr(__S(7))),
-          role_at_organization: S.optional(S.NullOr(S.Unknown)),
+          hedgehog_config: S.optional(S.NullOr(UserBasicHedgehogConfigMap)),
+          role_at_organization: S.optional(S.NullOr(UserBasicRoleAtOrganization)),
         }),
       ).annotate({ identifier: "UserBasic" });
     case 6:
@@ -7821,7 +9861,7 @@ function __c1(j: number): any {
           label: S.String,
           cimd_url: S.NullOr(S.String),
           mask_value: S.NullOr(S.String),
-          created_by: __S(13),
+          created_by: UserBasic,
           created_at: S.String,
           last_used_at: S.NullOr(S.String),
           value: S.String,
@@ -7868,9 +9908,11 @@ function __c2(j: number): any {
         S.Struct({
           organization_id: S.String.pipe(T.Label()),
           name: S.optional(S.String),
-          domain_scope: S.optional(S.NullOr(S.Unknown)),
-          config_scope: S.optional(S.NullOr(S.Unknown)),
-          organization_domain_ids: S.optional(__S(17)),
+          domain_scope: S.optional(S.NullOr(CreateIdentityProviderConfigRequestDomainScope)),
+          config_scope: S.optional(S.NullOr(CreateIdentityProviderConfigRequestConfigScope)),
+          organization_domain_ids: S.optional(
+            CreateIdentityProviderConfigRequestOrganizationDomainIdsList,
+          ),
           oidc_issuer_url: S.optional(S.String),
           oidc_client_id: S.optional(S.String),
           oidc_client_secret: S.optional(S.String.pipe(T.SensitiveValue({}))),
@@ -7880,7 +9922,9 @@ function __c2(j: number): any {
           scim_enabled: S.optional(S.Boolean),
           id_jag_issuer_url: S.optional(S.NullOr(S.String)),
           id_jag_jwks_url: S.optional(S.NullOr(S.String)),
-          id_jag_allowed_clients: S.optional(__S(17)),
+          id_jag_allowed_clients: S.optional(
+            CreateIdentityProviderConfigRequestIdJagAllowedClientsList,
+          ),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7896,9 +9940,11 @@ function __c2(j: number): any {
         S.Struct({
           id: S.String,
           name: S.optional(S.String),
-          domain_scope: S.optional(S.NullOr(S.Unknown)),
-          config_scope: S.optional(S.NullOr(S.Unknown)),
-          organization_domain_ids: S.optional(__S(17)),
+          domain_scope: S.optional(S.NullOr(IdentityProviderConfigOutputDomainScope)),
+          config_scope: S.optional(S.NullOr(IdentityProviderConfigOutputConfigScope)),
+          organization_domain_ids: S.optional(
+            IdentityProviderConfigOutputOrganizationDomainIdsList,
+          ),
           created_at: S.String,
           updated_at: S.String,
           has_saml: S.Boolean,
@@ -7917,7 +9963,7 @@ function __c2(j: number): any {
           has_id_jag: S.Boolean,
           id_jag_issuer_url: S.optional(S.NullOr(S.String)),
           id_jag_jwks_url: S.optional(S.NullOr(S.String)),
-          id_jag_allowed_clients: S.optional(__S(17)),
+          id_jag_allowed_clients: S.optional(IdentityProviderConfigOutputIdJagAllowedClientsList),
         }),
       ).annotate({
         identifier: "IdentityProviderConfigOutput",
@@ -7950,7 +9996,7 @@ function __c2(j: number): any {
           organization_id: S.String.pipe(T.Label()),
           target_email: S.optional(S.String),
           first_name: S.optional(S.String),
-          level: S.optional(S.Number),
+          level: S.optional(OrganizationMembershipLevelEnum),
           message: S.optional(S.NullOr(S.String)),
           private_project_access: S.optional(S.Unknown),
           send_email: S.optional(S.Boolean),
@@ -7970,9 +10016,9 @@ function __c2(j: number): any {
           target_email: S.optional(S.String),
           first_name: S.optional(S.String),
           emailing_attempt_made: S.optional(S.Boolean),
-          level: S.optional(S.Number),
+          level: S.optional(OrganizationMembershipLevelEnum),
           is_expired: S.optional(S.Boolean),
-          created_by: S.optional(S.NullOr(__S(13))),
+          created_by: S.optional(S.NullOr(UserBasic)),
           created_at: S.optional(S.String),
           updated_at: S.optional(S.String),
           message: S.optional(S.NullOr(S.String)),
@@ -8004,7 +10050,7 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           organization_id: S.String.pipe(T.Label()),
-          document_type: S.optional(S.String),
+          document_type: S.optional(DocumentTypeEnum),
           company_name: S.optional(S.String),
           company_address: S.optional(S.String),
           representative_email: S.optional(S.String),
@@ -8034,7 +10080,7 @@ function __c3(j: number): any {
           representative_email: S.optional(S.String),
           status: S.optional(S.String),
           signed_pdf_stored: S.optional(S.Boolean),
-          created_by: S.optional(S.NullOr(__S(26))),
+          created_by: S.optional(S.NullOr(LegalDocumentCreator)),
           created_at: S.optional(S.String),
         }),
       ).annotate({ identifier: "LegalDocumentDTO" });
@@ -8053,7 +10099,7 @@ function __c4(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          base_currency: S.optional(S.String),
+          base_currency: S.optional(BaseCurrencyEnum),
           events: S.optional(S.Unknown),
           filter_test_accounts: S.optional(S.Boolean),
         }),
@@ -8080,21 +10126,21 @@ function __c4(j: number): any {
         }),
       ).annotate({ identifier: "SourceMap" });
     case 2:
-      return S.Record(S.String, __S(33));
+      return S.Record(S.String, SourceMap);
     case 3:
-      return S.Array(S.Unknown);
+      return S.Array(MarketingAnalyticsConversionGoalListItem);
     case 4:
-      return S.Record(S.String, __S(17));
+      return S.Record(S.String, MarketingAnalyticsCampaignNameMappingsValueValueList);
     case 5:
-      return S.Record(S.String, __S(36));
+      return S.Record(S.String, MarketingAnalyticsCampaignNameMappingsValueMap);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          match_field: S.String,
+          match_field: MatchField,
         }),
       ).annotate({ identifier: "CampaignFieldPreference" });
     case 7:
-      return S.Record(S.String, __S(38));
+      return S.Record(S.String, CampaignFieldPreference);
   }
 }
 function __c5(j: number): any {
@@ -8102,14 +10148,14 @@ function __c5(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          sources_map: S.optional(__S(34)),
-          conversion_goals: S.optional(__S(35)),
+          sources_map: S.optional(MarketingAnalyticsSourceMapping),
+          conversion_goals: S.optional(MarketingAnalyticsConversionGoalList),
           attribution_window_days: S.optional(S.Number),
-          attribution_mode: S.optional(S.String),
+          attribution_mode: S.optional(AttributionModeEnum),
           filter_test_accounts: S.optional(S.Boolean),
-          campaign_name_mappings: S.optional(__S(37)),
-          custom_source_mappings: S.optional(__S(36)),
-          campaign_field_preferences: S.optional(__S(39)),
+          campaign_name_mappings: S.optional(MarketingAnalyticsCampaignNameMappings),
+          custom_source_mappings: S.optional(MarketingAnalyticsCustomSourceMappings),
+          campaign_field_preferences: S.optional(MarketingAnalyticsCampaignFieldPreferences),
         }),
       ).annotate({
         identifier: "TeamMarketingAnalyticsConfig",
@@ -8117,14 +10163,14 @@ function __c5(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          kind: S.String,
+          kind: AccountPropertyPinKindEnum,
           id: S.String,
         }),
       ).annotate({
         identifier: "TeamCustomerAnalyticsPinnedAccountProperty",
       });
     case 2:
-      return S.Array(__S(41));
+      return S.Array(TeamCustomerAnalyticsPinnedAccountProperty);
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -8134,7 +10180,9 @@ function __c5(j: number): any {
           subscription_event: S.optional(S.Unknown),
           payment_event: S.optional(S.Unknown),
           account_group_type_index: S.optional(S.NullOr(S.Number)),
-          default_pinned_properties: S.optional(__S(42)),
+          default_pinned_properties: S.optional(
+            TeamCustomerAnalyticsConfigDefaultPinnedPropertiesList,
+          ),
         }),
       ).annotate({
         identifier: "TeamCustomerAnalyticsConfig",
@@ -8143,7 +10191,7 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           capture_workflows_engagement_events: S.optional(S.Boolean),
-          email_tracking_consent_mode: S.optional(S.String),
+          email_tracking_consent_mode: S.optional(EmailTrackingConsentModeEnum),
           workflow_task_rate_limit_per_day: S.optional(S.NullOr(S.Number)),
           workflow_task_team_rate_limit_per_day: S.optional(S.NullOr(S.Number)),
         }),
@@ -8162,17 +10210,19 @@ function __c5(j: number): any {
           organization_id: S.String.pipe(T.Label()),
           name: S.optional(S.String),
           product_description: S.optional(S.NullOr(S.String)),
-          tags: S.optional(__S(17)),
-          app_urls: S.optional(__S(28)),
+          tags: S.optional(CreateOrganizationsProjectRequestTagsList),
+          app_urls: S.optional(CreateOrganizationsProjectRequestAppUrlsList),
           anonymize_ips: S.optional(S.Boolean),
           completed_snippet_onboarding: S.optional(S.Boolean),
           test_account_filters: S.optional(S.Unknown),
           test_account_filters_default_checked: S.optional(S.NullOr(S.Boolean)),
           path_cleaning_filters: S.optional(S.Unknown),
           is_demo: S.optional(S.Boolean),
-          timezone: S.optional(S.String),
+          timezone: S.optional(TimezoneEnum),
           data_attributes: S.optional(S.Unknown),
-          person_display_name_properties: S.optional(S.NullOr(__S(29))),
+          person_display_name_properties: S.optional(
+            S.NullOr(CreateOrganizationsProjectRequestPersonDisplayNamePropertiesList),
+          ),
           correlation_config: S.optional(S.Unknown),
           autocapture_opt_out: S.optional(S.NullOr(S.Boolean)),
           autocapture_exceptions_opt_in: S.optional(S.NullOr(S.Boolean)),
@@ -8187,19 +10237,29 @@ function __c5(j: number): any {
           session_recording_linked_flag: S.optional(S.Unknown),
           session_recording_network_payload_capture_config: S.optional(S.Unknown),
           session_recording_masking_config: S.optional(S.Unknown),
-          session_recording_url_trigger_config: S.optional(S.NullOr(__S(30))),
-          session_recording_url_blocklist_config: S.optional(S.NullOr(__S(30))),
-          session_recording_event_trigger_config: S.optional(S.NullOr(__S(31))),
+          session_recording_url_trigger_config: S.optional(
+            S.NullOr(CreateOrganizationsProjectRequestSessionRecordingUrlTriggerConfigList),
+          ),
+          session_recording_url_blocklist_config: S.optional(
+            S.NullOr(CreateOrganizationsProjectRequestSessionRecordingUrlBlocklistConfigList),
+          ),
+          session_recording_event_trigger_config: S.optional(
+            S.NullOr(CreateOrganizationsProjectRequestSessionRecordingEventTriggerConfigList),
+          ),
           session_recording_trigger_match_type_config: S.optional(S.NullOr(S.String)),
           session_recording_trigger_groups: S.optional(S.Unknown),
-          session_recording_retention_period: S.optional(S.String),
+          session_recording_retention_period: S.optional(SessionRecordingRetentionPeriodEnum),
           session_replay_config: S.optional(S.Unknown),
           survey_config: S.optional(S.Unknown),
           access_control: S.optional(S.Boolean),
-          week_start_day: S.optional(S.NullOr(S.Number)),
+          week_start_day: S.optional(S.NullOr(WeekStartDayEnum)),
           primary_dashboard: S.optional(S.NullOr(S.Number)),
-          live_events_columns: S.optional(S.NullOr(__S(17))),
-          recording_domains: S.optional(S.NullOr(__S(28))),
+          live_events_columns: S.optional(
+            S.NullOr(CreateOrganizationsProjectRequestLiveEventsColumnsList),
+          ),
+          recording_domains: S.optional(
+            S.NullOr(CreateOrganizationsProjectRequestRecordingDomainsList),
+          ),
           inject_web_apps: S.optional(S.NullOr(S.Boolean)),
           extra_settings: S.optional(S.Unknown),
           modifiers: S.optional(S.Unknown),
@@ -8208,19 +10268,21 @@ function __c5(j: number): any {
           heatmaps_opt_in: S.optional(S.NullOr(S.Boolean)),
           flags_persistence_default: S.optional(S.NullOr(S.Boolean)),
           receive_org_level_activity_logs: S.optional(S.NullOr(S.Boolean)),
-          business_model: S.optional(S.NullOr(S.Unknown)),
+          business_model: S.optional(S.NullOr(CreateOrganizationsProjectRequestBusinessModel)),
           conversations_enabled: S.optional(S.NullOr(S.Boolean)),
-          conversations_settings: S.optional(S.NullOr(__S(7))),
+          conversations_settings: S.optional(
+            S.NullOr(CreateOrganizationsProjectRequestConversationsSettingsMap),
+          ),
           logs_settings: S.optional(S.Unknown),
           proactive_tasks_enabled: S.optional(S.NullOr(S.Boolean)),
-          revenue_analytics_config: S.optional(__S(32)),
-          marketing_analytics_config: S.optional(__S(40)),
-          customer_analytics_config: S.optional(__S(43)),
-          workflows_config: S.optional(__S(44)),
-          feature_flag_policy_config: S.optional(__S(45)),
-          base_currency: S.optional(S.String),
+          revenue_analytics_config: S.optional(TeamRevenueAnalyticsConfig),
+          marketing_analytics_config: S.optional(TeamMarketingAnalyticsConfig),
+          customer_analytics_config: S.optional(TeamCustomerAnalyticsConfig),
+          workflows_config: S.optional(TeamWorkflowsConfig),
+          feature_flag_policy_config: S.optional(TeamFeatureFlagPolicyConfig),
+          base_currency: S.optional(BaseCurrencyEnum),
           capture_dead_clicks: S.optional(S.NullOr(S.Boolean)),
-          cookieless_server_hash_mode: S.optional(S.NullOr(S.Number)),
+          cookieless_server_hash_mode: S.optional(S.NullOr(CookielessServerHashModeEnum)),
           human_friendly_comparison_periods: S.optional(S.NullOr(S.Boolean)),
           feature_flag_confirmation_enabled: S.optional(S.NullOr(S.Boolean)),
           feature_flag_confirmation_message: S.optional(S.NullOr(S.String)),
@@ -8255,9 +10317,9 @@ function __c5(j: number): any {
 function __c6(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(47));
+      return S.Array(ProjectBackwardCompatProductIntentsItem);
     case 1:
-      return S.Array(S.String);
+      return S.Array(AvailableSetupTaskIdsEnum);
     case 2:
       return S.Record(S.String, S.Boolean);
     case 3:
@@ -8267,16 +10329,16 @@ function __c6(j: number): any {
           organization: S.optional(S.String),
           name: S.optional(S.String),
           product_description: S.optional(S.NullOr(S.String)),
-          tags: S.optional(__S(17)),
+          tags: S.optional(ProjectBackwardCompatTagsList),
           created_at: S.optional(S.String),
-          effective_membership_level: S.optional(S.Number),
+          effective_membership_level: S.optional(OrganizationMembershipLevelEnum),
           has_group_types: S.optional(S.Boolean),
-          group_types: S.optional(__S(8)),
+          group_types: S.optional(ProjectBackwardCompatGroupTypesList),
           live_events_token: S.optional(S.NullOr(S.String)),
           updated_at: S.optional(S.NullOr(S.String)),
           uuid: S.optional(S.String),
           api_token: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          app_urls: S.optional(__S(28)),
+          app_urls: S.optional(ProjectBackwardCompatAppUrlsList),
           anonymize_ips: S.optional(S.Boolean),
           completed_snippet_onboarding: S.optional(S.Boolean),
           ingested_event: S.optional(S.Boolean),
@@ -8284,9 +10346,11 @@ function __c6(j: number): any {
           test_account_filters_default_checked: S.optional(S.NullOr(S.Boolean)),
           path_cleaning_filters: S.optional(S.Unknown),
           is_demo: S.optional(S.Boolean),
-          timezone: S.optional(S.String),
+          timezone: S.optional(TimezoneEnum),
           data_attributes: S.optional(S.Unknown),
-          person_display_name_properties: S.optional(S.NullOr(__S(17))),
+          person_display_name_properties: S.optional(
+            S.NullOr(ProjectBackwardCompatPersonDisplayNamePropertiesList),
+          ),
           correlation_config: S.optional(S.Unknown),
           autocapture_opt_out: S.optional(S.NullOr(S.Boolean)),
           autocapture_exceptions_opt_in: S.optional(S.NullOr(S.Boolean)),
@@ -8301,53 +10365,61 @@ function __c6(j: number): any {
           session_recording_linked_flag: S.optional(S.Unknown),
           session_recording_network_payload_capture_config: S.optional(S.Unknown),
           session_recording_masking_config: S.optional(S.Unknown),
-          session_recording_url_trigger_config: S.optional(S.NullOr(__S(9))),
-          session_recording_url_blocklist_config: S.optional(S.NullOr(__S(9))),
-          session_recording_event_trigger_config: S.optional(S.NullOr(__S(28))),
+          session_recording_url_trigger_config: S.optional(
+            S.NullOr(ProjectBackwardCompatSessionRecordingUrlTriggerConfigList),
+          ),
+          session_recording_url_blocklist_config: S.optional(
+            S.NullOr(ProjectBackwardCompatSessionRecordingUrlBlocklistConfigList),
+          ),
+          session_recording_event_trigger_config: S.optional(
+            S.NullOr(ProjectBackwardCompatSessionRecordingEventTriggerConfigList),
+          ),
           session_recording_trigger_match_type_config: S.optional(S.NullOr(S.String)),
           session_recording_trigger_groups: S.optional(S.Unknown),
-          session_recording_retention_period: S.optional(S.String),
+          session_recording_retention_period: S.optional(SessionRecordingRetentionPeriodEnum),
           session_replay_config: S.optional(S.Unknown),
           survey_config: S.optional(S.Unknown),
           access_control: S.optional(S.Boolean),
-          week_start_day: S.optional(S.NullOr(S.Number)),
+          week_start_day: S.optional(S.NullOr(WeekStartDayEnum)),
           primary_dashboard: S.optional(S.NullOr(S.Number)),
-          live_events_columns: S.optional(S.NullOr(__S(17))),
-          recording_domains: S.optional(S.NullOr(__S(28))),
+          live_events_columns: S.optional(S.NullOr(ProjectBackwardCompatLiveEventsColumnsList)),
+          recording_domains: S.optional(S.NullOr(ProjectBackwardCompatRecordingDomainsList)),
           person_on_events_querying_enabled: S.optional(S.Boolean),
           inject_web_apps: S.optional(S.NullOr(S.Boolean)),
           extra_settings: S.optional(S.Unknown),
           modifiers: S.optional(S.Unknown),
-          default_modifiers: S.optional(__S(7)),
+          default_modifiers: S.optional(ProjectBackwardCompatDefaultModifiersMap),
           has_completed_onboarding_for: S.optional(S.Unknown),
           surveys_opt_in: S.optional(S.NullOr(S.Boolean)),
           heatmaps_opt_in: S.optional(S.NullOr(S.Boolean)),
-          product_intents: S.optional(__S(48)),
+          product_intents: S.optional(ProjectBackwardCompatProductIntentsList),
           flags_persistence_default: S.optional(S.NullOr(S.Boolean)),
           secret_api_token: S.optional(S.NullOr(S.String)),
           secret_api_token_backup: S.optional(S.NullOr(S.String)),
           heatmaps_screenshot_secret: S.optional(S.NullOr(S.String).pipe(T.SensitiveValue({}))),
           receive_org_level_activity_logs: S.optional(S.NullOr(S.Boolean)),
-          business_model: S.optional(S.NullOr(S.Unknown)),
+          business_model: S.optional(S.NullOr(ProjectBackwardCompatBusinessModel)),
           conversations_enabled: S.optional(S.NullOr(S.Boolean)),
-          conversations_settings: S.optional(S.NullOr(__S(7))),
+          conversations_settings: S.optional(
+            S.NullOr(ProjectBackwardCompatConversationsSettingsMap),
+          ),
           logs_settings: S.optional(S.Unknown),
           proactive_tasks_enabled: S.optional(S.NullOr(S.Boolean)),
-          available_setup_task_ids: S.optional(__S(49)),
+          available_setup_task_ids: S.optional(ProjectBackwardCompatAvailableSetupTaskIdsList),
           is_pending_deletion: S.optional(S.NullOr(S.Boolean)),
           deletion_scheduled_at: S.optional(S.NullOr(S.String)),
           project_id: S.optional(S.Number),
           user_access_level: S.optional(S.NullOr(S.String)),
-          managed_viewsets: S.optional(__S(50)),
-          flag_evaluations_mode: S.optional(S.Number),
-          revenue_analytics_config: S.optional(__S(32)),
-          marketing_analytics_config: S.optional(__S(40)),
-          customer_analytics_config: S.optional(__S(43)),
-          workflows_config: S.optional(__S(44)),
-          feature_flag_policy_config: S.optional(__S(45)),
-          base_currency: S.optional(S.String),
+          managed_viewsets: S.optional(ProjectBackwardCompatManagedViewsetsMap),
+          flag_evaluations_mode: S.optional(FlagEvaluationsModeEnum),
+          revenue_analytics_config: S.optional(TeamRevenueAnalyticsConfig),
+          marketing_analytics_config: S.optional(TeamMarketingAnalyticsConfig),
+          customer_analytics_config: S.optional(TeamCustomerAnalyticsConfig),
+          workflows_config: S.optional(TeamWorkflowsConfig),
+          feature_flag_policy_config: S.optional(TeamFeatureFlagPolicyConfig),
+          base_currency: S.optional(BaseCurrencyEnum),
           capture_dead_clicks: S.optional(S.NullOr(S.Boolean)),
-          cookieless_server_hash_mode: S.optional(S.NullOr(S.Number)),
+          cookieless_server_hash_mode: S.optional(S.NullOr(CookielessServerHashModeEnum)),
           human_friendly_comparison_periods: S.optional(S.NullOr(S.Boolean)),
           feature_flag_confirmation_enabled: S.optional(S.NullOr(S.Boolean)),
           feature_flag_confirmation_message: S.optional(S.NullOr(S.String)),
@@ -8367,17 +10439,21 @@ function __c6(j: number): any {
           id: S.Number.pipe(T.Label()),
           name: S.optional(S.String),
           product_description: S.optional(S.NullOr(S.String)),
-          tags: S.optional(__S(17)),
-          app_urls: S.optional(__S(31)),
+          tags: S.optional(CreateOrganizationsProjectsChangeOrganizationRequestTagsList),
+          app_urls: S.optional(CreateOrganizationsProjectsChangeOrganizationRequestAppUrlsList),
           anonymize_ips: S.optional(S.Boolean),
           completed_snippet_onboarding: S.optional(S.Boolean),
           test_account_filters: S.optional(S.Unknown),
           test_account_filters_default_checked: S.optional(S.NullOr(S.Boolean)),
           path_cleaning_filters: S.optional(S.Unknown),
           is_demo: S.optional(S.Boolean),
-          timezone: S.optional(S.String),
+          timezone: S.optional(TimezoneEnum),
           data_attributes: S.optional(S.Unknown),
-          person_display_name_properties: S.optional(S.NullOr(__S(29))),
+          person_display_name_properties: S.optional(
+            S.NullOr(
+              CreateOrganizationsProjectsChangeOrganizationRequestPersonDisplayNamePropertiesList,
+            ),
+          ),
           correlation_config: S.optional(S.Unknown),
           autocapture_opt_out: S.optional(S.NullOr(S.Boolean)),
           autocapture_exceptions_opt_in: S.optional(S.NullOr(S.Boolean)),
@@ -8392,19 +10468,35 @@ function __c6(j: number): any {
           session_recording_linked_flag: S.optional(S.Unknown),
           session_recording_network_payload_capture_config: S.optional(S.Unknown),
           session_recording_masking_config: S.optional(S.Unknown),
-          session_recording_url_trigger_config: S.optional(S.NullOr(__S(30))),
-          session_recording_url_blocklist_config: S.optional(S.NullOr(__S(30))),
-          session_recording_event_trigger_config: S.optional(S.NullOr(__S(31))),
+          session_recording_url_trigger_config: S.optional(
+            S.NullOr(
+              CreateOrganizationsProjectsChangeOrganizationRequestSessionRecordingUrlTriggerConfigList,
+            ),
+          ),
+          session_recording_url_blocklist_config: S.optional(
+            S.NullOr(
+              CreateOrganizationsProjectsChangeOrganizationRequestSessionRecordingUrlBlocklistConfigList,
+            ),
+          ),
+          session_recording_event_trigger_config: S.optional(
+            S.NullOr(
+              CreateOrganizationsProjectsChangeOrganizationRequestSessionRecordingEventTriggerConfigList,
+            ),
+          ),
           session_recording_trigger_match_type_config: S.optional(S.NullOr(S.String)),
           session_recording_trigger_groups: S.optional(S.Unknown),
-          session_recording_retention_period: S.optional(S.String),
+          session_recording_retention_period: S.optional(SessionRecordingRetentionPeriodEnum),
           session_replay_config: S.optional(S.Unknown),
           survey_config: S.optional(S.Unknown),
           access_control: S.optional(S.Boolean),
-          week_start_day: S.optional(S.NullOr(S.Number)),
+          week_start_day: S.optional(S.NullOr(WeekStartDayEnum)),
           primary_dashboard: S.optional(S.NullOr(S.Number)),
-          live_events_columns: S.optional(S.NullOr(__S(29))),
-          recording_domains: S.optional(S.NullOr(__S(31))),
+          live_events_columns: S.optional(
+            S.NullOr(CreateOrganizationsProjectsChangeOrganizationRequestLiveEventsColumnsList),
+          ),
+          recording_domains: S.optional(
+            S.NullOr(CreateOrganizationsProjectsChangeOrganizationRequestRecordingDomainsList),
+          ),
           inject_web_apps: S.optional(S.NullOr(S.Boolean)),
           extra_settings: S.optional(S.Unknown),
           modifiers: S.optional(S.Unknown),
@@ -8413,19 +10505,23 @@ function __c6(j: number): any {
           heatmaps_opt_in: S.optional(S.NullOr(S.Boolean)),
           flags_persistence_default: S.optional(S.NullOr(S.Boolean)),
           receive_org_level_activity_logs: S.optional(S.NullOr(S.Boolean)),
-          business_model: S.optional(S.NullOr(S.Unknown)),
+          business_model: S.optional(
+            S.NullOr(CreateOrganizationsProjectsChangeOrganizationRequestBusinessModel),
+          ),
           conversations_enabled: S.optional(S.NullOr(S.Boolean)),
-          conversations_settings: S.optional(S.NullOr(__S(52))),
+          conversations_settings: S.optional(
+            S.NullOr(CreateOrganizationsProjectsChangeOrganizationRequestConversationsSettingsMap),
+          ),
           logs_settings: S.optional(S.Unknown),
           proactive_tasks_enabled: S.optional(S.NullOr(S.Boolean)),
-          revenue_analytics_config: S.optional(__S(32)),
-          marketing_analytics_config: S.optional(__S(40)),
-          customer_analytics_config: S.optional(__S(43)),
-          workflows_config: S.optional(__S(44)),
-          feature_flag_policy_config: S.optional(__S(45)),
-          base_currency: S.optional(S.String),
+          revenue_analytics_config: S.optional(TeamRevenueAnalyticsConfig),
+          marketing_analytics_config: S.optional(TeamMarketingAnalyticsConfig),
+          customer_analytics_config: S.optional(TeamCustomerAnalyticsConfig),
+          workflows_config: S.optional(TeamWorkflowsConfig),
+          feature_flag_policy_config: S.optional(TeamFeatureFlagPolicyConfig),
+          base_currency: S.optional(BaseCurrencyEnum),
           capture_dead_clicks: S.optional(S.NullOr(S.Boolean)),
-          cookieless_server_hash_mode: S.optional(S.NullOr(S.Number)),
+          cookieless_server_hash_mode: S.optional(S.NullOr(CookielessServerHashModeEnum)),
           human_friendly_comparison_periods: S.optional(S.NullOr(S.Boolean)),
           feature_flag_confirmation_enabled: S.optional(S.NullOr(S.Boolean)),
           feature_flag_confirmation_message: S.optional(S.NullOr(S.String)),
@@ -8451,17 +10547,23 @@ function __c6(j: number): any {
           id: S.Number.pipe(T.Label()),
           name: S.optional(S.String),
           product_description: S.optional(S.NullOr(S.String)),
-          tags: S.optional(__S(29)),
-          app_urls: S.optional(__S(31)),
+          tags: S.optional(CreateOrganizationsProjectsDefaultEvaluationContextRequestTagsList),
+          app_urls: S.optional(
+            CreateOrganizationsProjectsDefaultEvaluationContextRequestAppUrlsList,
+          ),
           anonymize_ips: S.optional(S.Boolean),
           completed_snippet_onboarding: S.optional(S.Boolean),
           test_account_filters: S.optional(S.Unknown),
           test_account_filters_default_checked: S.optional(S.NullOr(S.Boolean)),
           path_cleaning_filters: S.optional(S.Unknown),
           is_demo: S.optional(S.Boolean),
-          timezone: S.optional(S.String),
+          timezone: S.optional(TimezoneEnum),
           data_attributes: S.optional(S.Unknown),
-          person_display_name_properties: S.optional(S.NullOr(__S(29))),
+          person_display_name_properties: S.optional(
+            S.NullOr(
+              CreateOrganizationsProjectsDefaultEvaluationContextRequestPersonDisplayNamePropertiesList,
+            ),
+          ),
           correlation_config: S.optional(S.Unknown),
           autocapture_opt_out: S.optional(S.NullOr(S.Boolean)),
           autocapture_exceptions_opt_in: S.optional(S.NullOr(S.Boolean)),
@@ -8476,19 +10578,39 @@ function __c6(j: number): any {
           session_recording_linked_flag: S.optional(S.Unknown),
           session_recording_network_payload_capture_config: S.optional(S.Unknown),
           session_recording_masking_config: S.optional(S.Unknown),
-          session_recording_url_trigger_config: S.optional(S.NullOr(__S(30))),
-          session_recording_url_blocklist_config: S.optional(S.NullOr(__S(30))),
-          session_recording_event_trigger_config: S.optional(S.NullOr(__S(31))),
+          session_recording_url_trigger_config: S.optional(
+            S.NullOr(
+              CreateOrganizationsProjectsDefaultEvaluationContextRequestSessionRecordingUrlTriggerConfigList,
+            ),
+          ),
+          session_recording_url_blocklist_config: S.optional(
+            S.NullOr(
+              CreateOrganizationsProjectsDefaultEvaluationContextRequestSessionRecordingUrlBlocklistConfigList,
+            ),
+          ),
+          session_recording_event_trigger_config: S.optional(
+            S.NullOr(
+              CreateOrganizationsProjectsDefaultEvaluationContextRequestSessionRecordingEventTriggerConfigList,
+            ),
+          ),
           session_recording_trigger_match_type_config: S.optional(S.NullOr(S.String)),
           session_recording_trigger_groups: S.optional(S.Unknown),
-          session_recording_retention_period: S.optional(S.String),
+          session_recording_retention_period: S.optional(SessionRecordingRetentionPeriodEnum),
           session_replay_config: S.optional(S.Unknown),
           survey_config: S.optional(S.Unknown),
           access_control: S.optional(S.Boolean),
-          week_start_day: S.optional(S.NullOr(S.Number)),
+          week_start_day: S.optional(S.NullOr(WeekStartDayEnum)),
           primary_dashboard: S.optional(S.NullOr(S.Number)),
-          live_events_columns: S.optional(S.NullOr(__S(29))),
-          recording_domains: S.optional(S.NullOr(__S(31))),
+          live_events_columns: S.optional(
+            S.NullOr(
+              CreateOrganizationsProjectsDefaultEvaluationContextRequestLiveEventsColumnsList,
+            ),
+          ),
+          recording_domains: S.optional(
+            S.NullOr(
+              CreateOrganizationsProjectsDefaultEvaluationContextRequestRecordingDomainsList,
+            ),
+          ),
           inject_web_apps: S.optional(S.NullOr(S.Boolean)),
           extra_settings: S.optional(S.Unknown),
           modifiers: S.optional(S.Unknown),
@@ -8497,19 +10619,25 @@ function __c6(j: number): any {
           heatmaps_opt_in: S.optional(S.NullOr(S.Boolean)),
           flags_persistence_default: S.optional(S.NullOr(S.Boolean)),
           receive_org_level_activity_logs: S.optional(S.NullOr(S.Boolean)),
-          business_model: S.optional(S.NullOr(S.Unknown)),
+          business_model: S.optional(
+            S.NullOr(CreateOrganizationsProjectsDefaultEvaluationContextRequestBusinessModel),
+          ),
           conversations_enabled: S.optional(S.NullOr(S.Boolean)),
-          conversations_settings: S.optional(S.NullOr(__S(52))),
+          conversations_settings: S.optional(
+            S.NullOr(
+              CreateOrganizationsProjectsDefaultEvaluationContextRequestConversationsSettingsMap,
+            ),
+          ),
           logs_settings: S.optional(S.Unknown),
           proactive_tasks_enabled: S.optional(S.NullOr(S.Boolean)),
-          revenue_analytics_config: S.optional(__S(32)),
-          marketing_analytics_config: S.optional(__S(40)),
-          customer_analytics_config: S.optional(__S(43)),
-          workflows_config: S.optional(__S(44)),
-          feature_flag_policy_config: S.optional(__S(45)),
-          base_currency: S.optional(S.String),
+          revenue_analytics_config: S.optional(TeamRevenueAnalyticsConfig),
+          marketing_analytics_config: S.optional(TeamMarketingAnalyticsConfig),
+          customer_analytics_config: S.optional(TeamCustomerAnalyticsConfig),
+          workflows_config: S.optional(TeamWorkflowsConfig),
+          feature_flag_policy_config: S.optional(TeamFeatureFlagPolicyConfig),
+          base_currency: S.optional(BaseCurrencyEnum),
           capture_dead_clicks: S.optional(S.NullOr(S.Boolean)),
-          cookieless_server_hash_mode: S.optional(S.NullOr(S.Number)),
+          cookieless_server_hash_mode: S.optional(S.NullOr(CookielessServerHashModeEnum)),
           human_friendly_comparison_periods: S.optional(S.NullOr(S.Boolean)),
           feature_flag_confirmation_enabled: S.optional(S.NullOr(S.Boolean)),
           feature_flag_confirmation_message: S.optional(S.NullOr(S.String)),
@@ -8591,8 +10719,8 @@ function __c7(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           created_at: S.optional(S.String),
-          created_by: S.optional(S.NullOr(__S(13))),
-          members: S.optional(__S(8)),
+          created_by: S.optional(S.NullOr(UserBasic)),
+          members: S.optional(RoleMembersList),
           is_default: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "Role" });
@@ -8627,7 +10755,7 @@ function __c7(j: number): any {
           provider_role_name: S.optional(S.String),
           role: S.optional(S.String),
           created_at: S.optional(S.String),
-          created_by: S.optional(S.NullOr(__S(13))),
+          created_by: S.optional(S.NullOr(UserBasic)),
         }),
       ).annotate({ identifier: "RoleExternalReference" });
     case 7:
@@ -8654,14 +10782,14 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
-          user: S.optional(S.NullOr(__S(13))),
-          level: S.optional(S.Number),
+          user: S.optional(S.NullOr(UserBasic)),
+          level: S.optional(OrganizationMembershipLevelEnum),
           joined_at: S.optional(S.String),
           updated_at: S.optional(S.String),
           is_2fa_enabled: S.optional(S.Boolean),
           has_social_auth: S.optional(S.Boolean),
           last_login: S.optional(S.String),
-          search_match_type: S.optional(S.NullOr(S.String)),
+          search_match_type: S.optional(S.NullOr(SearchMatchTypeEnum)),
         }),
       ).annotate({ identifier: "OrganizationMember" });
     case 1:
@@ -8669,8 +10797,8 @@ function __c8(j: number): any {
         S.Struct({
           id: S.optional(S.String),
           role_id: S.optional(S.String),
-          organization_member: S.optional(__S(64)),
-          user: S.optional(S.NullOr(__S(13))),
+          organization_member: S.optional(OrganizationMember),
+          user: S.optional(S.NullOr(UserBasic)),
           joined_at: S.optional(S.String),
           updated_at: S.optional(S.String),
         }),
@@ -8753,11 +10881,11 @@ function __c9(j: number): any {
         }),
       ).annotate({ identifier: "ProductFeature" });
     case 1:
-      return S.Array(__S(72));
+      return S.Array(ProductFeature);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          available_product_features: __S(73),
+          available_product_features: BillingFeaturesAvailableProductFeaturesList,
         }),
       ).annotate({ identifier: "BillingFeatures" });
     case 3:
@@ -8779,7 +10907,7 @@ function __c9(j: number): any {
         S.Struct({
           current_period_start: S.String,
           current_period_end: S.String,
-          interval: S.String,
+          interval: BillingPeriodIntervalEnum,
         }),
       ).annotate({ identifier: "BillingPeriod" });
     case 5:
@@ -8791,17 +10919,17 @@ function __c9(j: number): any {
         }),
       ).annotate({ identifier: "TierForecast" });
     case 6:
-      return S.Array(__S(77));
+      return S.Array(TierForecast);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          kind: S.String,
+          kind: CatalogKindEnum,
           key: S.String,
           usage_key: S.NullOr(S.String),
           projected_usage: S.NullOr(S.Number),
           projected_amount_usd: S.NullOr(S.String),
           projected_amount_usd_with_limit: S.optional(S.NullOr(S.String)),
-          tier_forecast: S.NullOr(__S(78)),
+          tier_forecast: S.NullOr(ForecastItemTierForecastList),
         }),
       ).annotate({ identifier: "ForecastItem" });
   }
@@ -8809,31 +10937,31 @@ function __c9(j: number): any {
 function __c10(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(79));
+      return S.Array(ForecastItem);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          kind: S.String,
+          kind: CatalogKindEnum,
           key: S.String,
           usage_key: S.NullOr(S.String),
           projected_usage: S.NullOr(S.Number),
           projected_amount_usd: S.NullOr(S.String),
           projected_amount_usd_with_limit: S.optional(S.NullOr(S.String)),
-          tier_forecast: S.NullOr(__S(78)),
-          addons: __S(80),
+          tier_forecast: S.NullOr(ProductForecastTierForecastList),
+          addons: ProductForecastAddonsList,
         }),
       ).annotate({ identifier: "ProductForecast" });
     case 2:
-      return S.Array(__S(81));
+      return S.Array(ProductForecast);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          billing_period: S.NullOr(__S(76)),
+          billing_period: S.NullOr(BillingPeriod),
           projected_total_amount_usd: S.NullOr(S.String),
           projected_total_amount_usd_with_limit: S.NullOr(S.String),
           projected_total_amount_usd_after_discount: S.NullOr(S.String),
           projected_total_amount_usd_with_limit_after_discount: S.NullOr(S.String),
-          products: __S(82),
+          products: BillingForecastProductsList,
           computed_at: S.String,
         }),
       ).annotate({ identifier: "BillingForecast" });
@@ -8875,7 +11003,7 @@ function __c10(j: number): any {
         }),
       ).annotate({ identifier: "ProductLimit" });
     case 7:
-      return S.Array(__S(86));
+      return S.Array(ProductLimit);
   }
 }
 function __c11(j: number): any {
@@ -8883,7 +11011,7 @@ function __c11(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          results: __S(87),
+          results: BillingLimitsResultsList,
         }),
       ).annotate({ identifier: "BillingLimits" });
     case 1:
@@ -8909,7 +11037,7 @@ function __c11(j: number): any {
         }),
       ).annotate({ identifier: "PriceTier" });
     case 3:
-      return S.Array(__S(90));
+      return S.Array(PriceTier);
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -8922,9 +11050,9 @@ function __c11(j: number): any {
           note: S.NullOr(S.String),
           unit: S.NullOr(S.String),
           flat_rate: S.Boolean,
-          tiers: S.NullOr(__S(91)),
+          tiers: S.NullOr(ProductPlanTiersList),
           free_allocation: S.NullOr(S.Number),
-          features: __S(73),
+          features: ProductPlanFeaturesList,
           included_if: S.NullOr(S.String),
           contact_support: S.NullOr(S.Boolean),
           unit_amount_usd: S.NullOr(S.String),
@@ -8933,7 +11061,7 @@ function __c11(j: number): any {
         }),
       ).annotate({ identifier: "ProductPlan" });
     case 5:
-      return S.Array(__S(92));
+      return S.Array(ProductPlan);
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -8947,7 +11075,7 @@ function __c11(j: number): any {
         }),
       ).annotate({ identifier: "ProductBaseFeature" });
     case 7:
-      return S.Array(__S(94));
+      return S.Array(ProductBaseFeature);
   }
 }
 function __c12(j: number): any {
@@ -8961,7 +11089,7 @@ function __c12(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          kind: S.String,
+          kind: CatalogKindEnum,
           key: S.String,
           usage_key: S.NullOr(S.String),
           name: S.String,
@@ -8982,21 +11110,21 @@ function __c12(j: number): any {
           display_divisor: S.NullOr(S.Number),
           tiered: S.Boolean,
           unit_amount_usd: S.NullOr(S.String),
-          tiers: S.NullOr(__S(91)),
-          plans: S.optional(__S(93)),
-          features: __S(95),
-          trial: S.NullOr(__S(96)),
+          tiers: S.NullOr(BillingAddonTiersList),
+          plans: S.optional(BillingAddonPlansList),
+          features: BillingAddonFeaturesList,
+          trial: S.NullOr(ProductTrialConfig),
           included_with_main_product: S.Boolean,
           included_if: S.NullOr(S.String),
           default_unit_amount_usd: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "BillingAddon" });
     case 2:
-      return S.Array(__S(97));
+      return S.Array(BillingAddon);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          kind: S.String,
+          kind: CatalogKindEnum,
           key: S.String,
           usage_key: S.NullOr(S.String),
           name: S.String,
@@ -9017,13 +11145,13 @@ function __c12(j: number): any {
           display_divisor: S.NullOr(S.Number),
           tiered: S.Boolean,
           unit_amount_usd: S.NullOr(S.String),
-          tiers: S.NullOr(__S(91)),
-          plans: S.optional(__S(93)),
-          features: __S(95),
-          trial: S.NullOr(__S(96)),
+          tiers: S.NullOr(BillingProductTiersList),
+          plans: S.optional(BillingProductPlansList),
+          features: BillingProductFeaturesList,
+          trial: S.NullOr(ProductTrialConfig),
           headline: S.NullOr(S.String),
           screenshot_url: S.NullOr(S.String),
-          addons: __S(98),
+          addons: BillingProductAddonsList,
         }),
       ).annotate({ identifier: "BillingProduct" });
     case 4:
@@ -9052,14 +11180,14 @@ function __c12(j: number): any {
         identifier: "BillingProductsSummaryAddon",
       });
     case 6:
-      return S.Array(__S(101));
+      return S.Array(BillingProductsSummaryAddon);
     case 7:
       return S.suspend(() =>
         S.Struct({
           key: S.String,
           name: S.String,
           included: S.Boolean,
-          addon_keys: __S(17),
+          addon_keys: BillingProductsSummaryFeatureAddonKeysList,
         }),
       ).annotate({
         identifier: "BillingProductsSummaryFeature",
@@ -9069,7 +11197,7 @@ function __c12(j: number): any {
 function __c13(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(103));
+      return S.Array(BillingProductsSummaryFeature);
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -9077,18 +11205,18 @@ function __c13(j: number): any {
           name: S.String,
           description: S.String,
           subscribed: S.NullOr(S.Boolean),
-          addons: __S(102),
-          features: __S(104),
+          addons: BillingProductsSummaryProductAddonsList,
+          features: BillingProductsSummaryProductFeaturesList,
         }),
       ).annotate({
         identifier: "BillingProductsSummaryProduct",
       });
     case 2:
-      return S.Array(__S(105));
+      return S.Array(BillingProductsSummaryProduct);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          results: __S(106),
+          results: BillingProductsSummaryResultsList,
         }),
       ).annotate({ identifier: "BillingProductsSummary" });
     case 4:
@@ -9113,16 +11241,16 @@ function __c13(j: number): any {
         }),
       ).annotate({ identifier: "TierSpend" });
     case 6:
-      return S.Array(__S(109));
+      return S.Array(TierSpend);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          kind: S.String,
+          kind: CatalogKindEnum,
           key: S.String,
           usage_key: S.NullOr(S.String),
           current_amount_usd: S.NullOr(S.String),
           current_amount_usd_before_addons: S.optional(S.NullOr(S.String)),
-          tier_spend: S.NullOr(__S(110)),
+          tier_spend: S.NullOr(SpendItemTierSpendList),
         }),
       ).annotate({ identifier: "SpendItem" });
   }
@@ -9130,29 +11258,29 @@ function __c13(j: number): any {
 function __c14(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(111));
+      return S.Array(SpendItem);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          kind: S.String,
+          kind: CatalogKindEnum,
           key: S.String,
           usage_key: S.NullOr(S.String),
           current_amount_usd: S.NullOr(S.String),
           current_amount_usd_before_addons: S.optional(S.NullOr(S.String)),
-          tier_spend: S.NullOr(__S(110)),
-          addons: __S(112),
+          tier_spend: S.NullOr(ProductSpendTierSpendList),
+          addons: ProductSpendAddonsList,
         }),
       ).annotate({ identifier: "ProductSpend" });
     case 2:
-      return S.Array(__S(113));
+      return S.Array(ProductSpend);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          billing_period: S.NullOr(__S(76)),
+          billing_period: S.NullOr(BillingPeriod),
           usage_reported_through: S.NullOr(S.String),
           current_total_amount_usd: S.NullOr(S.String),
           current_total_amount_usd_after_discount: S.NullOr(S.String),
-          products: __S(114),
+          products: BillingSpendSummaryProductsList,
         }),
       ).annotate({ identifier: "BillingSpendSummary" });
     case 4:
@@ -9185,14 +11313,14 @@ function __c14(j: number): any {
         S.Struct({
           id: S.optional(S.Number),
           label: S.optional(S.String),
-          data: S.optional(__S(117)),
-          dates: S.optional(__S(17)),
-          breakdown_type: S.optional(S.NullOr(S.String)),
+          data: S.optional(BillingTimeSeriesPointDataList),
+          dates: S.optional(BillingTimeSeriesPointDatesList),
+          breakdown_type: S.optional(S.NullOr(BreakdownTypeEnum)),
           breakdown_value: S.optional(S.Unknown),
         }),
       ).annotate({ identifier: "BillingTimeSeriesPoint" });
     case 7:
-      return S.Array(__S(118));
+      return S.Array(BillingTimeSeriesPoint);
   }
 }
 function __c15(j: number): any {
@@ -9203,7 +11331,7 @@ function __c15(j: number): any {
           count: S.Number,
           next: S.NullOr(S.String),
           previous: S.NullOr(S.String),
-          results: __S(119),
+          results: PaginatedBillingTimeSeriesPointListResultsList,
         }),
       ).annotate({
         identifier: "PaginatedBillingTimeSeriesPointList",
@@ -9250,11 +11378,11 @@ function __c15(j: number): any {
           has_active_subscription: S.Boolean,
           subscription_level: S.NullOr(S.String),
           billing_plan: S.NullOr(S.String),
-          billing_provider: S.NullOr(S.String),
+          billing_provider: S.NullOr(BillingProviderEnum),
           deactivated: S.Boolean,
           is_annual_plan_customer: S.Boolean,
-          billing_period: S.NullOr(__S(76)),
-          trial: S.NullOr(__S(122)),
+          billing_period: S.NullOr(BillingPeriod),
+          trial: S.NullOr(Trial),
           free_trial_until: S.NullOr(S.String),
           discount_percent: S.NullOr(S.Number),
           discount_amount_usd: S.NullOr(S.String),
@@ -9263,8 +11391,8 @@ function __c15(j: number): any {
           startup_program_label_previous: S.NullOr(S.String),
           billing_portal_url: S.String,
           invoices_url: S.optional(S.String),
-          license: __S(123),
-          billing_managed_by_partner: S.NullOr(__S(124)),
+          license: License,
+          billing_managed_by_partner: S.NullOr(BillingManagedByPartner),
         }),
       ).annotate({ identifier: "BillingSubscription" });
     case 6:
@@ -9284,7 +11412,7 @@ function __c15(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          kind: S.String,
+          kind: CatalogKindEnum,
           key: S.String,
           usage_key: S.NullOr(S.String),
           usage_limit: S.NullOr(S.Number),
@@ -9299,11 +11427,11 @@ function __c15(j: number): any {
 function __c16(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(127));
+      return S.Array(UsageStatusItem);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          kind: S.String,
+          kind: CatalogKindEnum,
           key: S.String,
           usage_key: S.NullOr(S.String),
           usage_limit: S.NullOr(S.Number),
@@ -9311,17 +11439,17 @@ function __c16(j: number): any {
           approaching_limit: S.Boolean,
           quota_limited_until: S.NullOr(S.String),
           quota_limiting_suspended_until: S.NullOr(S.String),
-          addons: __S(128),
+          addons: ProductUsageStatusAddonsList,
         }),
       ).annotate({ identifier: "ProductUsageStatus" });
     case 2:
-      return S.Array(__S(129));
+      return S.Array(ProductUsageStatus);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          billing_period: S.NullOr(__S(76)),
+          billing_period: S.NullOr(BillingPeriod),
           usage_reported_through: S.NullOr(S.String),
-          products: __S(130),
+          products: BillingUsageStatusProductsList,
         }),
       ).annotate({ identifier: "BillingUsageStatus" });
     case 4:
@@ -9350,7 +11478,7 @@ function __c16(j: number): any {
         }),
       ).annotate({ identifier: "UsageKeySummary" });
     case 6:
-      return S.Array(__S(133));
+      return S.Array(UsageKeySummary);
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -9363,45 +11491,45 @@ function __c16(j: number): any {
 function __c17(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(135));
+      return S.Array(TierUsage);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          kind: S.String,
+          kind: CatalogKindEnum,
           key: S.String,
           usage_key: S.NullOr(S.String),
           current_usage: S.Number,
           usage_limit: S.NullOr(S.Number),
           has_exceeded_limit: S.Boolean,
           usage_ratio: S.Number,
-          tier_usage: S.NullOr(__S(136)),
+          tier_usage: S.NullOr(UsageItemTierUsageList),
         }),
       ).annotate({ identifier: "UsageItem" });
     case 2:
-      return S.Array(__S(137));
+      return S.Array(UsageItem);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          kind: S.String,
+          kind: CatalogKindEnum,
           key: S.String,
           usage_key: S.NullOr(S.String),
           current_usage: S.Number,
           usage_limit: S.NullOr(S.Number),
           has_exceeded_limit: S.Boolean,
           usage_ratio: S.Number,
-          tier_usage: S.NullOr(__S(136)),
-          addons: __S(138),
+          tier_usage: S.NullOr(ProductUsageTierUsageList),
+          addons: ProductUsageAddonsList,
         }),
       ).annotate({ identifier: "ProductUsage" });
     case 4:
-      return S.Array(__S(139));
+      return S.Array(ProductUsage);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          billing_period: S.NullOr(__S(76)),
+          billing_period: S.NullOr(BillingPeriod),
           usage_reported_through: S.NullOr(S.String),
-          usage_summary: __S(134),
-          products: __S(140),
+          usage_summary: BillingUsageSummaryUsageSummaryList,
+          products: BillingUsageSummaryProductsList,
         }),
       ).annotate({ identifier: "BillingUsageSummary" });
     case 6:
@@ -9453,7 +11581,7 @@ function __c18(j: number): any {
           label: S.String,
           cimd_url: S.NullOr(S.String),
           mask_value: S.NullOr(S.String),
-          created_by: __S(13),
+          created_by: UserBasic,
           created_at: S.String,
           last_used_at: S.NullOr(S.String),
         }),
@@ -9507,14 +11635,14 @@ function __c18(j: number): any {
         }),
       ).annotate({ identifier: "SCIMRequestLog" });
     case 4:
-      return S.Array(__S(147));
+      return S.Array(SCIMRequestLog);
     case 5:
       return S.suspend(() =>
         S.Struct({
           count: S.Number,
           next: S.NullOr(S.String),
           previous: S.NullOr(S.String),
-          results: __S(148),
+          results: PaginatedSCIMRequestLogResultsList,
         }),
       ).annotate({ identifier: "PaginatedSCIMRequestLog" });
     case 6:
@@ -9613,9 +11741,9 @@ function __c19(j: number): any {
       return S.suspend(() =>
         S.Struct({
           access_level: S.String,
-          source: S.String,
-          source_subject: S.NullOr(S.String),
-          source_resource: S.String,
+          source: ResolvedAccessSourceEnum,
+          source_subject: S.NullOr(ResolvedAccessSourceSubjectEnum),
+          source_resource: ScopeObjectEnum,
           source_resource_id: S.NullOr(S.String),
           subject_name: S.NullOr(S.String),
         }),
@@ -9626,17 +11754,17 @@ function __c19(j: number): any {
           team_id: S.Number,
           team_name: S.String,
           access_level: S.String,
-          resolved: S.NullOr(__S(156)),
+          resolved: S.NullOr(ProjectAccessSource),
           subject_id: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "MemberProjectAccessEntry" });
     case 6:
-      return S.Array(__S(157));
+      return S.Array(MemberProjectAccessEntry);
     case 7:
       return S.suspend(() =>
         S.Struct({
           organization_membership_id: S.String,
-          projects: __S(158),
+          projects: MemberProjectAccessProjectsList,
         }),
       ).annotate({ identifier: "MemberProjectAccess" });
   }
@@ -9644,11 +11772,11 @@ function __c19(j: number): any {
 function __c20(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(159));
+      return S.Array(MemberProjectAccess);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          results: __S(160),
+          results: MemberProjectAccessResponseResultsList,
         }),
       ).annotate({
         identifier: "MemberProjectAccessResponse",
@@ -9709,12 +11837,12 @@ function __c20(j: number): any {
         identifier: "AccessControlResourceDefault",
       });
     case 6:
-      return S.Record(S.String, __S(165));
+      return S.Record(S.String, AccessControlResourceDefault);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          resource: S.String,
-          available_access_levels: __S(17),
+          resource: ScopeObjectEnum,
+          available_access_levels: AccessControlObjectRuleResourceAvailableAccessLevelsList,
           minimum_access_level: S.String,
         }),
       ).annotate({
@@ -9725,16 +11853,16 @@ function __c20(j: number): any {
 function __c21(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(167));
+      return S.Array(AccessControlObjectRuleResource);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          available_project_levels: __S(17),
-          available_resource_levels: __S(17),
+          available_project_levels: AccessControlDefaultsResponseAvailableProjectLevelsList,
+          available_resource_levels: AccessControlDefaultsResponseAvailableResourceLevelsList,
           can_edit: S.Boolean,
           project_access_level: S.String,
-          resource_access_levels: __S(166),
-          object_rule_resources: __S(168),
+          resource_access_levels: AccessControlDefaultsResponseResourceAccessLevelsMap,
+          object_rule_resources: AccessControlDefaultsResponseObjectRuleResourcesList,
         }),
       ).annotate({
         identifier: "AccessControlDefaultsResponse",
@@ -9757,7 +11885,7 @@ function __c21(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          resource: S.String,
+          resource: ScopeObjectEnum,
           resource_id: S.String,
           name: S.String,
           short_id: S.NullOr(S.String),
@@ -9765,11 +11893,11 @@ function __c21(j: number): any {
         }),
       ).annotate({ identifier: "AccessControlObjectRule" });
     case 4:
-      return S.Array(__S(171));
+      return S.Array(AccessControlObjectRule);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          results: __S(172),
+          results: AccessControlObjectRulesResponseResultsList,
         }),
       ).annotate({
         identifier: "AccessControlObjectRulesResponse",
@@ -9805,11 +11933,11 @@ function __c21(j: number): any {
 function __c22(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(175));
+      return S.Array(AccessControlPropertyRule);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          results: __S(176),
+          results: AccessControlPropertyRulesResponseResultsList,
         }),
       ).annotate({
         identifier: "AccessControlPropertyRulesResponse",
@@ -9843,9 +11971,9 @@ function __c22(j: number): any {
       return S.suspend(() =>
         S.Struct({
           access_level: S.String,
-          source: S.String,
-          source_subject: S.NullOr(S.String),
-          source_resource: S.String,
+          source: ResolvedAccessSourceEnum,
+          source_subject: S.NullOr(ResolvedAccessSourceSubjectEnum),
+          source_resource: ScopeObjectEnum,
           source_resource_id: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "ResolvedAccess" });
@@ -9854,22 +11982,22 @@ function __c22(j: number): any {
         S.Struct({
           access_level: S.NullOr(S.String),
           effective_access_level: S.NullOr(S.String),
-          inherited_access: S.NullOr(__S(180)),
+          inherited_access: S.NullOr(ResolvedAccess),
           minimum: S.String,
           maximum: S.String,
         }),
       ).annotate({ identifier: "SubjectAccessEntry" });
     case 6:
-      return S.Record(S.String, __S(181));
+      return S.Record(S.String, SubjectAccessEntry);
     case 7:
       return S.suspend(() =>
         S.Struct({
           organization_membership_id: S.String,
-          user: __S(179),
-          organization_level: S.Number,
-          role_ids: __S(17),
-          project: __S(181),
-          resources: __S(182),
+          user: AccessControlMemberUser,
+          organization_level: OrganizationMembershipLevelEnum,
+          role_ids: AccessControlMemberAccessRoleIdsList,
+          project: SubjectAccessEntry,
+          resources: AccessControlMemberAccessResourcesMap,
         }),
       ).annotate({
         identifier: "AccessControlMemberAccess",
@@ -9879,14 +12007,14 @@ function __c22(j: number): any {
 function __c23(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(183));
+      return S.Array(AccessControlMemberAccess);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          available_project_levels: __S(17),
-          available_resource_levels: __S(17),
+          available_project_levels: AccessControlMembersResponseAvailableProjectLevelsList,
+          available_resource_levels: AccessControlMembersResponseAvailableResourceLevelsList,
           can_edit: S.Boolean,
-          results: __S(184),
+          results: AccessControlMembersResponseResultsList,
         }),
       ).annotate({
         identifier: "AccessControlMembersResponse",
@@ -9944,19 +12072,19 @@ function __c23(j: number): any {
         S.Struct({
           role_id: S.String,
           role_name: S.String,
-          project: __S(181),
-          resources: __S(182),
+          project: SubjectAccessEntry,
+          resources: AccessControlRoleAccessResourcesMap,
         }),
       ).annotate({ identifier: "AccessControlRoleAccess" });
     case 6:
-      return S.Array(__S(189));
+      return S.Array(AccessControlRoleAccess);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          available_project_levels: __S(17),
-          available_resource_levels: __S(17),
+          available_project_levels: AccessControlRolesResponseAvailableProjectLevelsList,
+          available_resource_levels: AccessControlRolesResponseAvailableResourceLevelsList,
           can_edit: S.Boolean,
-          results: __S(190),
+          results: AccessControlRolesResponseResultsList,
         }),
       ).annotate({
         identifier: "AccessControlRolesResponse",
@@ -10095,9 +12223,9 @@ function __c25(j: number): any {
       return S.suspend(() =>
         S.Struct({
           logs_distinct_id_attribute_key: S.String,
-          logs_distinct_id_attribute_keys: __S(17),
-          logs_session_id_attribute_keys: __S(17),
-          logs_pattern_message_keys: __S(17),
+          logs_distinct_id_attribute_keys: TeamLogsConfigLogsDistinctIdAttributeKeysList,
+          logs_session_id_attribute_keys: TeamLogsConfigLogsSessionIdAttributeKeysList,
+          logs_pattern_message_keys: TeamLogsConfigLogsPatternMessageKeysList,
         }),
       ).annotate({ identifier: "TeamLogsConfig" });
     case 1:
@@ -10133,8 +12261,8 @@ function __c25(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          tracing_distinct_id_attribute_keys: __S(17),
-          tracing_session_id_attribute_keys: __S(17),
+          tracing_distinct_id_attribute_keys: TeamTracingConfigTracingDistinctIdAttributeKeysList,
+          tracing_session_id_attribute_keys: TeamTracingConfigTracingSessionIdAttributeKeysList,
           retention_days: S.optional(S.Number),
           retention_last_updated: S.NullOr(S.String),
         }),
@@ -10173,7 +12301,7 @@ function __c25(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          reference: S.optional(S.NullOr(__S(62))),
+          reference: S.optional(S.NullOr(RoleExternalReference)),
         }),
       ).annotate({ identifier: "RoleLookupResponse" });
     case 7:
@@ -10218,22 +12346,22 @@ function __c26(j: number): any {
         }),
       ).annotate({ identifier: "DataFreshnessSource" });
     case 2:
-      return S.Array(__S(209));
+      return S.Array(DataFreshnessSource);
     case 3:
       return S.suspend(() =>
         S.Struct({
           team_id: S.Number,
-          freshness: S.String,
+          freshness: FreshnessEnum,
           last_data_at: S.NullOr(S.String),
-          sources: __S(210),
+          sources: DataFreshnessProjectSourcesList,
         }),
       ).annotate({ identifier: "DataFreshnessProject" });
     case 4:
-      return S.Array(__S(211));
+      return S.Array(DataFreshnessProject);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          results: __S(212),
+          results: OrganizationDataFreshnessResultsList,
           lookback_days: S.Number,
           quiet_after_days: S.Number,
         }),
@@ -10270,11 +12398,11 @@ function __c27(j: number): any {
           email: S.optional(S.String),
           avatar: S.optional(S.NullOr(S.String)),
           role: S.optional(S.String),
-          last_active: S.optional(S.String),
+          last_active: S.optional(LastActiveEnum),
         }),
       ).annotate({ identifier: "WelcomeTeamMember" });
     case 1:
-      return S.Array(__S(216));
+      return S.Array(WelcomeTeamMember);
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -10286,7 +12414,7 @@ function __c27(j: number): any {
         }),
       ).annotate({ identifier: "WelcomeRecentActivity" });
     case 3:
-      return S.Array(__S(218));
+      return S.Array(WelcomeRecentActivity);
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -10298,7 +12426,7 @@ function __c27(j: number): any {
         }),
       ).annotate({ identifier: "WelcomePopularDashboard" });
     case 5:
-      return S.Array(__S(220));
+      return S.Array(WelcomePopularDashboard);
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -10310,7 +12438,7 @@ function __c27(j: number): any {
         }),
       ).annotate({ identifier: "WelcomeSuggestedStep" });
     case 7:
-      return S.Array(__S(222));
+      return S.Array(WelcomeSuggestedStep);
   }
 }
 function __c28(j: number): any {
@@ -10319,12 +12447,12 @@ function __c28(j: number): any {
       return S.suspend(() =>
         S.Struct({
           organization_name: S.optional(S.String),
-          inviter: S.optional(S.NullOr(__S(215))),
-          team_members: S.optional(__S(217)),
-          recent_activity: S.optional(__S(219)),
-          popular_dashboards: S.optional(__S(221)),
-          products_in_use: S.optional(__S(17)),
-          suggested_next_steps: S.optional(__S(223)),
+          inviter: S.optional(S.NullOr(WelcomeInviter)),
+          team_members: S.optional(WelcomeResponseTeamMembersList),
+          recent_activity: S.optional(WelcomeResponseRecentActivityList),
+          popular_dashboards: S.optional(WelcomeResponsePopularDashboardsList),
+          products_in_use: S.optional(WelcomeResponseProductsInUseList),
+          suggested_next_steps: S.optional(WelcomeResponseSuggestedNextStepsList),
           is_organization_first_user: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "WelcomeResponse" });
@@ -10349,7 +12477,7 @@ function __c28(j: number): any {
           organization_id: S.String.pipe(T.Label()),
           target_email: S.optional(S.String),
           first_name: S.optional(S.String),
-          level: S.optional(S.Number),
+          level: S.optional(OrganizationMembershipLevelEnum),
           message: S.optional(S.NullOr(S.String)),
           private_project_access: S.optional(S.Unknown),
           send_email: S.optional(S.Boolean),
@@ -10413,7 +12541,7 @@ function __c28(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/api/organizations/", code: 200 })),
       ).annotate({ identifier: "ListRequest" });
     case 7:
-      return S.Array(__S(11));
+      return S.Array(Organization);
   }
 }
 function __c29(j: number): any {
@@ -10424,7 +12552,7 @@ function __c29(j: number): any {
           count: S.optional(S.Number),
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: S.optional(__S(231)),
+          results: S.optional(PaginatedOrganizationListResultsList),
         }),
       ).annotate({
         identifier: "PaginatedOrganizationList",
@@ -10435,7 +12563,7 @@ function __c29(j: number): any {
           organization_id: S.String.pipe(T.Label()),
           cursor: S.optional(S.String.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
-          status: S.optional(S.String.pipe(T.Query())),
+          status: S.optional(ListBillingInvoicesRequestStatus.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -10451,7 +12579,7 @@ function __c29(j: number): any {
         S.Struct({
           id: S.String,
           number: S.NullOr(S.String),
-          status: S.String,
+          status: BillingInvoiceStatusEnum,
           currency: S.NullOr(S.String),
           subtotal: S.String,
           total: S.String,
@@ -10464,13 +12592,13 @@ function __c29(j: number): any {
         }),
       ).annotate({ identifier: "BillingInvoice" });
     case 3:
-      return S.Array(__S(234));
+      return S.Array(BillingInvoice);
     case 4:
       return S.suspend(() =>
         S.Struct({
           next: S.NullOr(S.String),
           previous: S.NullOr(S.String),
-          results: __S(235),
+          results: BillingInvoicesResultsList,
         }),
       ).annotate({ identifier: "BillingInvoices" });
     case 5:
@@ -10489,11 +12617,11 @@ function __c29(j: number): any {
         identifier: "ListBillingProductsRequest",
       });
     case 6:
-      return S.Array(__S(99));
+      return S.Array(BillingProduct);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          results: __S(238),
+          results: BillingProductsResultsList,
         }),
       ).annotate({ identifier: "BillingProducts" });
   }
@@ -10523,14 +12651,14 @@ function __c30(j: number): any {
         }),
       ).annotate({ identifier: "BillingProject" });
     case 2:
-      return S.Array(__S(241));
+      return S.Array(BillingProject);
     case 3:
       return S.suspend(() =>
         S.Struct({
           count: S.Number,
           next: S.NullOr(S.String),
           previous: S.NullOr(S.String),
-          results: __S(242),
+          results: BillingProjectsResultsList,
         }),
       ).annotate({ identifier: "BillingProjects" });
     case 4:
@@ -10550,14 +12678,14 @@ function __c30(j: number): any {
         identifier: "ListCimdVerificationTokensRequest",
       });
     case 5:
-      return S.Array(__S(144));
+      return S.Array(CIMDVerificationToken);
     case 6:
       return S.suspend(() =>
         S.Struct({
           count: S.Number,
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: __S(245),
+          results: PaginatedCIMDVerificationTokenListResultsList,
         }),
       ).annotate({
         identifier: "PaginatedCIMDVerificationTokenList",
@@ -10581,14 +12709,14 @@ function __c30(j: number): any {
 function __c31(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(16));
+      return S.Array(OrganizationDomain);
     case 1:
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.Number),
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: S.optional(__S(248)),
+          results: S.optional(PaginatedOrganizationDomainListResultsList),
         }),
       ).annotate({
         identifier: "PaginatedOrganizationDomainList",
@@ -10610,14 +12738,14 @@ function __c31(j: number): any {
         identifier: "ListIdentityProviderConfigsRequest",
       });
     case 3:
-      return S.Array(__S(19));
+      return S.Array(IdentityProviderConfigOutput);
     case 4:
       return S.suspend(() =>
         S.Struct({
           count: S.Number,
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: __S(251),
+          results: PaginatedIdentityProviderConfigListOutputResultsList,
         }),
       ).annotate({
         identifier: "PaginatedIdentityProviderConfigListOutput",
@@ -10637,14 +12765,14 @@ function __c31(j: number): any {
         ),
       ).annotate({ identifier: "ListInvitesRequest" });
     case 6:
-      return S.Array(__S(23));
+      return S.Array(OrganizationInviteOutput);
     case 7:
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.Number),
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: S.optional(__S(254)),
+          results: S.optional(PaginatedOrganizationInviteListOutputResultsList),
         }),
       ).annotate({
         identifier: "PaginatedOrganizationInviteListOutput",
@@ -10670,14 +12798,14 @@ function __c32(j: number): any {
         identifier: "ListLegalDocumentsRequest",
       });
     case 1:
-      return S.Array(__S(27));
+      return S.Array(LegalDocumentDTO);
     case 2:
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.Number),
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: S.optional(__S(257)),
+          results: S.optional(PaginatedLegalDocumentDTOListResultsList),
         }),
       ).annotate({
         identifier: "PaginatedLegalDocumentDTOList",
@@ -10690,7 +12818,7 @@ function __c32(j: number): any {
           levels: S.optional(S.String.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
           offset: S.optional(S.Number.pipe(T.Query())),
-          order: S.optional(S.String.pipe(T.Query())),
+          order: S.optional(ListMembersRequestOrder.pipe(T.Query())),
           outside_verified_domains: S.optional(S.Boolean.pipe(T.Query())),
           search: S.optional(S.String.pipe(T.Query())),
         }).pipe(
@@ -10702,14 +12830,14 @@ function __c32(j: number): any {
         ),
       ).annotate({ identifier: "ListMembersRequest" });
     case 4:
-      return S.Array(__S(64));
+      return S.Array(OrganizationMember);
     case 5:
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.Number),
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: S.optional(__S(260)),
+          results: S.optional(PaginatedOrganizationMemberListResultsList),
         }),
       ).annotate({
         identifier: "PaginatedOrganizationMemberList",
@@ -10736,7 +12864,7 @@ function __c32(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           client_id: S.optional(S.String),
-          redirect_uris_list: S.optional(__S(17)),
+          redirect_uris_list: S.optional(OrganizationOAuthApplicationRedirectUrisListList),
           is_verified: S.optional(S.Boolean),
           created: S.optional(S.String),
           updated: S.optional(S.String),
@@ -10749,14 +12877,14 @@ function __c32(j: number): any {
 function __c33(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(263));
+      return S.Array(OrganizationOAuthApplication);
     case 1:
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.Number),
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: S.optional(__S(264)),
+          results: S.optional(PaginatedOrganizationOAuthApplicationListResultsList),
         }),
       ).annotate({
         identifier: "PaginatedOrganizationOAuthApplicationList",
@@ -10769,7 +12897,7 @@ function __c33(j: number): any {
           offset: S.optional(S.Number.pipe(T.Query())),
           search: S.optional(S.String.pipe(T.Query())),
           tags: S.optional(S.String.pipe(T.Query())),
-          tags_match: S.optional(S.String.pipe(T.Query())),
+          tags_match: S.optional(ListOrganizationsProjectsRequestTagsMatch.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -10793,22 +12921,22 @@ function __c33(j: number): any {
           has_completed_onboarding_for: S.optional(S.Unknown),
           ingested_event: S.optional(S.Boolean),
           is_demo: S.optional(S.Boolean),
-          timezone: S.optional(S.String),
+          timezone: S.optional(TimezoneEnum),
           access_control: S.optional(S.Boolean),
-          tags: S.optional(__S(17)),
+          tags: S.optional(ProjectBackwardCompatBasicTagsList),
         }),
       ).annotate({
         identifier: "ProjectBackwardCompatBasic",
       });
     case 4:
-      return S.Array(__S(267));
+      return S.Array(ProjectBackwardCompatBasic);
     case 5:
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.Number),
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: S.optional(__S(268)),
+          results: S.optional(PaginatedProjectBackwardCompatBasicListResultsList),
         }),
       ).annotate({
         identifier: "PaginatedProjectBackwardCompatBasicList",
@@ -10832,12 +12960,12 @@ function __c33(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          restriction_type: S.String,
-          distinct_ids: __S(17),
-          session_ids: __S(17),
-          event_names: __S(17),
-          event_uuids: __S(17),
-          pipelines: __S(49),
+          restriction_type: RestrictionTypeEnum,
+          distinct_ids: EventIngestionRestrictionDistinctIdsList,
+          session_ids: EventIngestionRestrictionSessionIdsList,
+          event_names: EventIngestionRestrictionEventNamesList,
+          event_uuids: EventIngestionRestrictionEventUuidsList,
+          pipelines: EventIngestionRestrictionPipelinesList,
         }),
       ).annotate({
         identifier: "EventIngestionRestriction",
@@ -10847,9 +12975,13 @@ function __c33(j: number): any {
 function __c34(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(271));
+      return S.Array(EventIngestionRestriction);
     case 1:
-      return S.suspend(() => __S(272).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        ListOrganizationsProjectsEventIngestionRestrictionsResponseBodyList.pipe(
+          T.RawResponseRoot(),
+        ),
+      ).annotate({
         identifier: "ListOrganizationsProjectsEventIngestionRestrictionsResponse",
       });
     case 2:
@@ -10869,14 +13001,14 @@ function __c34(j: number): any {
         identifier: "ListRoleExternalReferencesRequest",
       });
     case 3:
-      return S.Array(__S(62));
+      return S.Array(RoleExternalReference);
     case 4:
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.Number),
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: S.optional(__S(275)),
+          results: S.optional(PaginatedRoleExternalReferenceListResultsList),
         }),
       ).annotate({
         identifier: "PaginatedRoleExternalReferenceList",
@@ -10892,14 +13024,14 @@ function __c34(j: number): any {
         ),
       ).annotate({ identifier: "ListRolesRequest" });
     case 6:
-      return S.Array(__S(60));
+      return S.Array(Role);
     case 7:
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.Number),
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: S.optional(__S(278)),
+          results: S.optional(PaginatedRoleListResultsList),
         }),
       ).annotate({ identifier: "PaginatedRoleList" });
   }
@@ -10924,14 +13056,14 @@ function __c35(j: number): any {
         identifier: "ListRolesRoleMembershipsRequest",
       });
     case 1:
-      return S.Array(__S(65));
+      return S.Array(RoleMembershipOutput);
     case 2:
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.Number),
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: S.optional(__S(281)),
+          results: S.optional(PaginatedRoleMembershipListOutputResultsList),
         }),
       ).annotate({
         identifier: "PaginatedRoleMembershipListOutput",
@@ -10956,17 +13088,23 @@ function __c35(j: number): any {
           id: S.Number.pipe(T.Label()),
           name: S.optional(S.String),
           product_description: S.optional(S.NullOr(S.String)),
-          tags: S.optional(__S(29)),
-          app_urls: S.optional(__S(31)),
+          tags: S.optional(OrganizationsProjectsAddProductIntentPartialUpdateRequestTagsList),
+          app_urls: S.optional(
+            OrganizationsProjectsAddProductIntentPartialUpdateRequestAppUrlsList,
+          ),
           anonymize_ips: S.optional(S.Boolean),
           completed_snippet_onboarding: S.optional(S.Boolean),
           test_account_filters: S.optional(S.Unknown),
           test_account_filters_default_checked: S.optional(S.NullOr(S.Boolean)),
           path_cleaning_filters: S.optional(S.Unknown),
           is_demo: S.optional(S.Boolean),
-          timezone: S.optional(S.String),
+          timezone: S.optional(TimezoneEnum),
           data_attributes: S.optional(S.Unknown),
-          person_display_name_properties: S.optional(S.NullOr(__S(29))),
+          person_display_name_properties: S.optional(
+            S.NullOr(
+              OrganizationsProjectsAddProductIntentPartialUpdateRequestPersonDisplayNamePropertiesList,
+            ),
+          ),
           correlation_config: S.optional(S.Unknown),
           autocapture_opt_out: S.optional(S.NullOr(S.Boolean)),
           autocapture_exceptions_opt_in: S.optional(S.NullOr(S.Boolean)),
@@ -10981,19 +13119,37 @@ function __c35(j: number): any {
           session_recording_linked_flag: S.optional(S.Unknown),
           session_recording_network_payload_capture_config: S.optional(S.Unknown),
           session_recording_masking_config: S.optional(S.Unknown),
-          session_recording_url_trigger_config: S.optional(S.NullOr(__S(30))),
-          session_recording_url_blocklist_config: S.optional(S.NullOr(__S(30))),
-          session_recording_event_trigger_config: S.optional(S.NullOr(__S(31))),
+          session_recording_url_trigger_config: S.optional(
+            S.NullOr(
+              OrganizationsProjectsAddProductIntentPartialUpdateRequestSessionRecordingUrlTriggerConfigList,
+            ),
+          ),
+          session_recording_url_blocklist_config: S.optional(
+            S.NullOr(
+              OrganizationsProjectsAddProductIntentPartialUpdateRequestSessionRecordingUrlBlocklistConfigList,
+            ),
+          ),
+          session_recording_event_trigger_config: S.optional(
+            S.NullOr(
+              OrganizationsProjectsAddProductIntentPartialUpdateRequestSessionRecordingEventTriggerConfigList,
+            ),
+          ),
           session_recording_trigger_match_type_config: S.optional(S.NullOr(S.String)),
           session_recording_trigger_groups: S.optional(S.Unknown),
-          session_recording_retention_period: S.optional(S.String),
+          session_recording_retention_period: S.optional(SessionRecordingRetentionPeriodEnum),
           session_replay_config: S.optional(S.Unknown),
           survey_config: S.optional(S.Unknown),
           access_control: S.optional(S.Boolean),
-          week_start_day: S.optional(S.NullOr(S.Number)),
+          week_start_day: S.optional(S.NullOr(WeekStartDayEnum)),
           primary_dashboard: S.optional(S.NullOr(S.Number)),
-          live_events_columns: S.optional(S.NullOr(__S(29))),
-          recording_domains: S.optional(S.NullOr(__S(31))),
+          live_events_columns: S.optional(
+            S.NullOr(
+              OrganizationsProjectsAddProductIntentPartialUpdateRequestLiveEventsColumnsList,
+            ),
+          ),
+          recording_domains: S.optional(
+            S.NullOr(OrganizationsProjectsAddProductIntentPartialUpdateRequestRecordingDomainsList),
+          ),
           inject_web_apps: S.optional(S.NullOr(S.Boolean)),
           extra_settings: S.optional(S.Unknown),
           modifiers: S.optional(S.Unknown),
@@ -11002,19 +13158,25 @@ function __c35(j: number): any {
           heatmaps_opt_in: S.optional(S.NullOr(S.Boolean)),
           flags_persistence_default: S.optional(S.NullOr(S.Boolean)),
           receive_org_level_activity_logs: S.optional(S.NullOr(S.Boolean)),
-          business_model: S.optional(S.NullOr(S.Unknown)),
+          business_model: S.optional(
+            S.NullOr(OrganizationsProjectsAddProductIntentPartialUpdateRequestBusinessModel),
+          ),
           conversations_enabled: S.optional(S.NullOr(S.Boolean)),
-          conversations_settings: S.optional(S.NullOr(__S(52))),
+          conversations_settings: S.optional(
+            S.NullOr(
+              OrganizationsProjectsAddProductIntentPartialUpdateRequestConversationsSettingsMap,
+            ),
+          ),
           logs_settings: S.optional(S.Unknown),
           proactive_tasks_enabled: S.optional(S.NullOr(S.Boolean)),
-          revenue_analytics_config: S.optional(__S(32)),
-          marketing_analytics_config: S.optional(__S(40)),
-          customer_analytics_config: S.optional(__S(43)),
-          workflows_config: S.optional(__S(44)),
-          feature_flag_policy_config: S.optional(__S(45)),
-          base_currency: S.optional(S.String),
+          revenue_analytics_config: S.optional(TeamRevenueAnalyticsConfig),
+          marketing_analytics_config: S.optional(TeamMarketingAnalyticsConfig),
+          customer_analytics_config: S.optional(TeamCustomerAnalyticsConfig),
+          workflows_config: S.optional(TeamWorkflowsConfig),
+          feature_flag_policy_config: S.optional(TeamFeatureFlagPolicyConfig),
+          base_currency: S.optional(BaseCurrencyEnum),
           capture_dead_clicks: S.optional(S.NullOr(S.Boolean)),
-          cookieless_server_hash_mode: S.optional(S.NullOr(S.Number)),
+          cookieless_server_hash_mode: S.optional(S.NullOr(CookielessServerHashModeEnum)),
           human_friendly_comparison_periods: S.optional(S.NullOr(S.Boolean)),
           feature_flag_confirmation_enabled: S.optional(S.NullOr(S.Boolean)),
           feature_flag_confirmation_message: S.optional(S.NullOr(S.String)),
@@ -11060,7 +13222,7 @@ function __c35(j: number): any {
           created_at: S.String,
           is_pending_deletion: S.NullOr(S.Boolean),
           deletion_scheduled_at: S.NullOr(S.String),
-          tags: S.optional(__S(286)),
+          tags: S.optional(ProjectTagsList),
         }),
       ).annotate({ identifier: "Project" });
   }
@@ -11093,17 +13255,25 @@ function __c36(j: number): any {
           id: S.Number.pipe(T.Label()),
           name: S.optional(S.String),
           product_description: S.optional(S.NullOr(S.String)),
-          tags: S.optional(__S(29)),
-          app_urls: S.optional(__S(31)),
+          tags: S.optional(
+            OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequestTagsList,
+          ),
+          app_urls: S.optional(
+            OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequestAppUrlsList,
+          ),
           anonymize_ips: S.optional(S.Boolean),
           completed_snippet_onboarding: S.optional(S.Boolean),
           test_account_filters: S.optional(S.Unknown),
           test_account_filters_default_checked: S.optional(S.NullOr(S.Boolean)),
           path_cleaning_filters: S.optional(S.Unknown),
           is_demo: S.optional(S.Boolean),
-          timezone: S.optional(S.String),
+          timezone: S.optional(TimezoneEnum),
           data_attributes: S.optional(S.Unknown),
-          person_display_name_properties: S.optional(S.NullOr(__S(29))),
+          person_display_name_properties: S.optional(
+            S.NullOr(
+              OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequestPersonDisplayNamePropertiesList,
+            ),
+          ),
           correlation_config: S.optional(S.Unknown),
           autocapture_opt_out: S.optional(S.NullOr(S.Boolean)),
           autocapture_exceptions_opt_in: S.optional(S.NullOr(S.Boolean)),
@@ -11118,19 +13288,39 @@ function __c36(j: number): any {
           session_recording_linked_flag: S.optional(S.Unknown),
           session_recording_network_payload_capture_config: S.optional(S.Unknown),
           session_recording_masking_config: S.optional(S.Unknown),
-          session_recording_url_trigger_config: S.optional(S.NullOr(__S(30))),
-          session_recording_url_blocklist_config: S.optional(S.NullOr(__S(30))),
-          session_recording_event_trigger_config: S.optional(S.NullOr(__S(31))),
+          session_recording_url_trigger_config: S.optional(
+            S.NullOr(
+              OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequestSessionRecordingUrlTriggerConfigList,
+            ),
+          ),
+          session_recording_url_blocklist_config: S.optional(
+            S.NullOr(
+              OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequestSessionRecordingUrlBlocklistConfigList,
+            ),
+          ),
+          session_recording_event_trigger_config: S.optional(
+            S.NullOr(
+              OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequestSessionRecordingEventTriggerConfigList,
+            ),
+          ),
           session_recording_trigger_match_type_config: S.optional(S.NullOr(S.String)),
           session_recording_trigger_groups: S.optional(S.Unknown),
-          session_recording_retention_period: S.optional(S.String),
+          session_recording_retention_period: S.optional(SessionRecordingRetentionPeriodEnum),
           session_replay_config: S.optional(S.Unknown),
           survey_config: S.optional(S.Unknown),
           access_control: S.optional(S.Boolean),
-          week_start_day: S.optional(S.NullOr(S.Number)),
+          week_start_day: S.optional(S.NullOr(WeekStartDayEnum)),
           primary_dashboard: S.optional(S.NullOr(S.Number)),
-          live_events_columns: S.optional(S.NullOr(__S(29))),
-          recording_domains: S.optional(S.NullOr(__S(31))),
+          live_events_columns: S.optional(
+            S.NullOr(
+              OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequestLiveEventsColumnsList,
+            ),
+          ),
+          recording_domains: S.optional(
+            S.NullOr(
+              OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequestRecordingDomainsList,
+            ),
+          ),
           inject_web_apps: S.optional(S.NullOr(S.Boolean)),
           extra_settings: S.optional(S.Unknown),
           modifiers: S.optional(S.Unknown),
@@ -11139,19 +13329,25 @@ function __c36(j: number): any {
           heatmaps_opt_in: S.optional(S.NullOr(S.Boolean)),
           flags_persistence_default: S.optional(S.NullOr(S.Boolean)),
           receive_org_level_activity_logs: S.optional(S.NullOr(S.Boolean)),
-          business_model: S.optional(S.NullOr(S.Unknown)),
+          business_model: S.optional(
+            S.NullOr(OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequestBusinessModel),
+          ),
           conversations_enabled: S.optional(S.NullOr(S.Boolean)),
-          conversations_settings: S.optional(S.NullOr(__S(52))),
+          conversations_settings: S.optional(
+            S.NullOr(
+              OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequestConversationsSettingsMap,
+            ),
+          ),
           logs_settings: S.optional(S.Unknown),
           proactive_tasks_enabled: S.optional(S.NullOr(S.Boolean)),
-          revenue_analytics_config: S.optional(__S(32)),
-          marketing_analytics_config: S.optional(__S(40)),
-          customer_analytics_config: S.optional(__S(43)),
-          workflows_config: S.optional(__S(44)),
-          feature_flag_policy_config: S.optional(__S(45)),
-          base_currency: S.optional(S.String),
+          revenue_analytics_config: S.optional(TeamRevenueAnalyticsConfig),
+          marketing_analytics_config: S.optional(TeamMarketingAnalyticsConfig),
+          customer_analytics_config: S.optional(TeamCustomerAnalyticsConfig),
+          workflows_config: S.optional(TeamWorkflowsConfig),
+          feature_flag_policy_config: S.optional(TeamFeatureFlagPolicyConfig),
+          base_currency: S.optional(BaseCurrencyEnum),
           capture_dead_clicks: S.optional(S.NullOr(S.Boolean)),
-          cookieless_server_hash_mode: S.optional(S.NullOr(S.Number)),
+          cookieless_server_hash_mode: S.optional(S.NullOr(CookielessServerHashModeEnum)),
           human_friendly_comparison_periods: S.optional(S.NullOr(S.Boolean)),
           feature_flag_confirmation_enabled: S.optional(S.NullOr(S.Boolean)),
           feature_flag_confirmation_message: S.optional(S.NullOr(S.String)),
@@ -11208,17 +13404,25 @@ function __c36(j: number): any {
           id: S.Number.pipe(T.Label()),
           name: S.optional(S.String),
           product_description: S.optional(S.NullOr(S.String)),
-          tags: S.optional(__S(29)),
-          app_urls: S.optional(__S(31)),
+          tags: S.optional(
+            OrganizationsProjectsGenerateConversationsPublicTokenCreateRequestTagsList,
+          ),
+          app_urls: S.optional(
+            OrganizationsProjectsGenerateConversationsPublicTokenCreateRequestAppUrlsList,
+          ),
           anonymize_ips: S.optional(S.Boolean),
           completed_snippet_onboarding: S.optional(S.Boolean),
           test_account_filters: S.optional(S.Unknown),
           test_account_filters_default_checked: S.optional(S.NullOr(S.Boolean)),
           path_cleaning_filters: S.optional(S.Unknown),
           is_demo: S.optional(S.Boolean),
-          timezone: S.optional(S.String),
+          timezone: S.optional(TimezoneEnum),
           data_attributes: S.optional(S.Unknown),
-          person_display_name_properties: S.optional(S.NullOr(__S(29))),
+          person_display_name_properties: S.optional(
+            S.NullOr(
+              OrganizationsProjectsGenerateConversationsPublicTokenCreateRequestPersonDisplayNamePropertiesList,
+            ),
+          ),
           correlation_config: S.optional(S.Unknown),
           autocapture_opt_out: S.optional(S.NullOr(S.Boolean)),
           autocapture_exceptions_opt_in: S.optional(S.NullOr(S.Boolean)),
@@ -11233,19 +13437,39 @@ function __c36(j: number): any {
           session_recording_linked_flag: S.optional(S.Unknown),
           session_recording_network_payload_capture_config: S.optional(S.Unknown),
           session_recording_masking_config: S.optional(S.Unknown),
-          session_recording_url_trigger_config: S.optional(S.NullOr(__S(30))),
-          session_recording_url_blocklist_config: S.optional(S.NullOr(__S(30))),
-          session_recording_event_trigger_config: S.optional(S.NullOr(__S(31))),
+          session_recording_url_trigger_config: S.optional(
+            S.NullOr(
+              OrganizationsProjectsGenerateConversationsPublicTokenCreateRequestSessionRecordingUrlTriggerConfigList,
+            ),
+          ),
+          session_recording_url_blocklist_config: S.optional(
+            S.NullOr(
+              OrganizationsProjectsGenerateConversationsPublicTokenCreateRequestSessionRecordingUrlBlocklistConfigList,
+            ),
+          ),
+          session_recording_event_trigger_config: S.optional(
+            S.NullOr(
+              OrganizationsProjectsGenerateConversationsPublicTokenCreateRequestSessionRecordingEventTriggerConfigList,
+            ),
+          ),
           session_recording_trigger_match_type_config: S.optional(S.NullOr(S.String)),
           session_recording_trigger_groups: S.optional(S.Unknown),
-          session_recording_retention_period: S.optional(S.String),
+          session_recording_retention_period: S.optional(SessionRecordingRetentionPeriodEnum),
           session_replay_config: S.optional(S.Unknown),
           survey_config: S.optional(S.Unknown),
           access_control: S.optional(S.Boolean),
-          week_start_day: S.optional(S.NullOr(S.Number)),
+          week_start_day: S.optional(S.NullOr(WeekStartDayEnum)),
           primary_dashboard: S.optional(S.NullOr(S.Number)),
-          live_events_columns: S.optional(S.NullOr(__S(29))),
-          recording_domains: S.optional(S.NullOr(__S(31))),
+          live_events_columns: S.optional(
+            S.NullOr(
+              OrganizationsProjectsGenerateConversationsPublicTokenCreateRequestLiveEventsColumnsList,
+            ),
+          ),
+          recording_domains: S.optional(
+            S.NullOr(
+              OrganizationsProjectsGenerateConversationsPublicTokenCreateRequestRecordingDomainsList,
+            ),
+          ),
           inject_web_apps: S.optional(S.NullOr(S.Boolean)),
           extra_settings: S.optional(S.Unknown),
           modifiers: S.optional(S.Unknown),
@@ -11254,19 +13478,27 @@ function __c36(j: number): any {
           heatmaps_opt_in: S.optional(S.NullOr(S.Boolean)),
           flags_persistence_default: S.optional(S.NullOr(S.Boolean)),
           receive_org_level_activity_logs: S.optional(S.NullOr(S.Boolean)),
-          business_model: S.optional(S.NullOr(S.Unknown)),
+          business_model: S.optional(
+            S.NullOr(
+              OrganizationsProjectsGenerateConversationsPublicTokenCreateRequestBusinessModel,
+            ),
+          ),
           conversations_enabled: S.optional(S.NullOr(S.Boolean)),
-          conversations_settings: S.optional(S.NullOr(__S(52))),
+          conversations_settings: S.optional(
+            S.NullOr(
+              OrganizationsProjectsGenerateConversationsPublicTokenCreateRequestConversationsSettingsMap,
+            ),
+          ),
           logs_settings: S.optional(S.Unknown),
           proactive_tasks_enabled: S.optional(S.NullOr(S.Boolean)),
-          revenue_analytics_config: S.optional(__S(32)),
-          marketing_analytics_config: S.optional(__S(40)),
-          customer_analytics_config: S.optional(__S(43)),
-          workflows_config: S.optional(__S(44)),
-          feature_flag_policy_config: S.optional(__S(45)),
-          base_currency: S.optional(S.String),
+          revenue_analytics_config: S.optional(TeamRevenueAnalyticsConfig),
+          marketing_analytics_config: S.optional(TeamMarketingAnalyticsConfig),
+          customer_analytics_config: S.optional(TeamCustomerAnalyticsConfig),
+          workflows_config: S.optional(TeamWorkflowsConfig),
+          feature_flag_policy_config: S.optional(TeamFeatureFlagPolicyConfig),
+          base_currency: S.optional(BaseCurrencyEnum),
           capture_dead_clicks: S.optional(S.NullOr(S.Boolean)),
-          cookieless_server_hash_mode: S.optional(S.NullOr(S.Number)),
+          cookieless_server_hash_mode: S.optional(S.NullOr(CookielessServerHashModeEnum)),
           human_friendly_comparison_periods: S.optional(S.NullOr(S.Boolean)),
           feature_flag_confirmation_enabled: S.optional(S.NullOr(S.Boolean)),
           feature_flag_confirmation_message: S.optional(S.NullOr(S.String)),
@@ -11292,17 +13524,21 @@ function __c36(j: number): any {
           id: S.Number.pipe(T.Label()),
           name: S.optional(S.String),
           product_description: S.optional(S.NullOr(S.String)),
-          tags: S.optional(__S(17)),
-          app_urls: S.optional(__S(28)),
+          tags: S.optional(OrganizationsProjectsResetTokenPartialUpdateRequestTagsList),
+          app_urls: S.optional(OrganizationsProjectsResetTokenPartialUpdateRequestAppUrlsList),
           anonymize_ips: S.optional(S.Boolean),
           completed_snippet_onboarding: S.optional(S.Boolean),
           test_account_filters: S.optional(S.Unknown),
           test_account_filters_default_checked: S.optional(S.NullOr(S.Boolean)),
           path_cleaning_filters: S.optional(S.Unknown),
           is_demo: S.optional(S.Boolean),
-          timezone: S.optional(S.String),
+          timezone: S.optional(TimezoneEnum),
           data_attributes: S.optional(S.Unknown),
-          person_display_name_properties: S.optional(S.NullOr(__S(29))),
+          person_display_name_properties: S.optional(
+            S.NullOr(
+              OrganizationsProjectsResetTokenPartialUpdateRequestPersonDisplayNamePropertiesList,
+            ),
+          ),
           correlation_config: S.optional(S.Unknown),
           autocapture_opt_out: S.optional(S.NullOr(S.Boolean)),
           autocapture_exceptions_opt_in: S.optional(S.NullOr(S.Boolean)),
@@ -11317,19 +13553,35 @@ function __c36(j: number): any {
           session_recording_linked_flag: S.optional(S.Unknown),
           session_recording_network_payload_capture_config: S.optional(S.Unknown),
           session_recording_masking_config: S.optional(S.Unknown),
-          session_recording_url_trigger_config: S.optional(S.NullOr(__S(30))),
-          session_recording_url_blocklist_config: S.optional(S.NullOr(__S(30))),
-          session_recording_event_trigger_config: S.optional(S.NullOr(__S(31))),
+          session_recording_url_trigger_config: S.optional(
+            S.NullOr(
+              OrganizationsProjectsResetTokenPartialUpdateRequestSessionRecordingUrlTriggerConfigList,
+            ),
+          ),
+          session_recording_url_blocklist_config: S.optional(
+            S.NullOr(
+              OrganizationsProjectsResetTokenPartialUpdateRequestSessionRecordingUrlBlocklistConfigList,
+            ),
+          ),
+          session_recording_event_trigger_config: S.optional(
+            S.NullOr(
+              OrganizationsProjectsResetTokenPartialUpdateRequestSessionRecordingEventTriggerConfigList,
+            ),
+          ),
           session_recording_trigger_match_type_config: S.optional(S.NullOr(S.String)),
           session_recording_trigger_groups: S.optional(S.Unknown),
-          session_recording_retention_period: S.optional(S.String),
+          session_recording_retention_period: S.optional(SessionRecordingRetentionPeriodEnum),
           session_replay_config: S.optional(S.Unknown),
           survey_config: S.optional(S.Unknown),
           access_control: S.optional(S.Boolean),
-          week_start_day: S.optional(S.NullOr(S.Number)),
+          week_start_day: S.optional(S.NullOr(WeekStartDayEnum)),
           primary_dashboard: S.optional(S.NullOr(S.Number)),
-          live_events_columns: S.optional(S.NullOr(__S(29))),
-          recording_domains: S.optional(S.NullOr(__S(31))),
+          live_events_columns: S.optional(
+            S.NullOr(OrganizationsProjectsResetTokenPartialUpdateRequestLiveEventsColumnsList),
+          ),
+          recording_domains: S.optional(
+            S.NullOr(OrganizationsProjectsResetTokenPartialUpdateRequestRecordingDomainsList),
+          ),
           inject_web_apps: S.optional(S.NullOr(S.Boolean)),
           extra_settings: S.optional(S.Unknown),
           modifiers: S.optional(S.Unknown),
@@ -11338,19 +13590,23 @@ function __c36(j: number): any {
           heatmaps_opt_in: S.optional(S.NullOr(S.Boolean)),
           flags_persistence_default: S.optional(S.NullOr(S.Boolean)),
           receive_org_level_activity_logs: S.optional(S.NullOr(S.Boolean)),
-          business_model: S.optional(S.NullOr(S.Unknown)),
+          business_model: S.optional(
+            S.NullOr(OrganizationsProjectsResetTokenPartialUpdateRequestBusinessModel),
+          ),
           conversations_enabled: S.optional(S.NullOr(S.Boolean)),
-          conversations_settings: S.optional(S.NullOr(__S(52))),
+          conversations_settings: S.optional(
+            S.NullOr(OrganizationsProjectsResetTokenPartialUpdateRequestConversationsSettingsMap),
+          ),
           logs_settings: S.optional(S.Unknown),
           proactive_tasks_enabled: S.optional(S.NullOr(S.Boolean)),
-          revenue_analytics_config: S.optional(__S(32)),
-          marketing_analytics_config: S.optional(__S(40)),
-          customer_analytics_config: S.optional(__S(43)),
-          workflows_config: S.optional(__S(44)),
-          feature_flag_policy_config: S.optional(__S(45)),
-          base_currency: S.optional(S.String),
+          revenue_analytics_config: S.optional(TeamRevenueAnalyticsConfig),
+          marketing_analytics_config: S.optional(TeamMarketingAnalyticsConfig),
+          customer_analytics_config: S.optional(TeamCustomerAnalyticsConfig),
+          workflows_config: S.optional(TeamWorkflowsConfig),
+          feature_flag_policy_config: S.optional(TeamFeatureFlagPolicyConfig),
+          base_currency: S.optional(BaseCurrencyEnum),
           capture_dead_clicks: S.optional(S.NullOr(S.Boolean)),
-          cookieless_server_hash_mode: S.optional(S.NullOr(S.Number)),
+          cookieless_server_hash_mode: S.optional(S.NullOr(CookielessServerHashModeEnum)),
           human_friendly_comparison_periods: S.optional(S.NullOr(S.Boolean)),
           feature_flag_confirmation_enabled: S.optional(S.NullOr(S.Boolean)),
           feature_flag_confirmation_message: S.optional(S.NullOr(S.String)),
@@ -11395,17 +13651,23 @@ function __c37(j: number): any {
           id: S.Number.pipe(T.Label()),
           name: S.optional(S.String),
           product_description: S.optional(S.NullOr(S.String)),
-          tags: S.optional(__S(29)),
-          app_urls: S.optional(__S(31)),
+          tags: S.optional(OrganizationsProjectsRotateSecretTokenPartialUpdateRequestTagsList),
+          app_urls: S.optional(
+            OrganizationsProjectsRotateSecretTokenPartialUpdateRequestAppUrlsList,
+          ),
           anonymize_ips: S.optional(S.Boolean),
           completed_snippet_onboarding: S.optional(S.Boolean),
           test_account_filters: S.optional(S.Unknown),
           test_account_filters_default_checked: S.optional(S.NullOr(S.Boolean)),
           path_cleaning_filters: S.optional(S.Unknown),
           is_demo: S.optional(S.Boolean),
-          timezone: S.optional(S.String),
+          timezone: S.optional(TimezoneEnum),
           data_attributes: S.optional(S.Unknown),
-          person_display_name_properties: S.optional(S.NullOr(__S(29))),
+          person_display_name_properties: S.optional(
+            S.NullOr(
+              OrganizationsProjectsRotateSecretTokenPartialUpdateRequestPersonDisplayNamePropertiesList,
+            ),
+          ),
           correlation_config: S.optional(S.Unknown),
           autocapture_opt_out: S.optional(S.NullOr(S.Boolean)),
           autocapture_exceptions_opt_in: S.optional(S.NullOr(S.Boolean)),
@@ -11420,19 +13682,39 @@ function __c37(j: number): any {
           session_recording_linked_flag: S.optional(S.Unknown),
           session_recording_network_payload_capture_config: S.optional(S.Unknown),
           session_recording_masking_config: S.optional(S.Unknown),
-          session_recording_url_trigger_config: S.optional(S.NullOr(__S(30))),
-          session_recording_url_blocklist_config: S.optional(S.NullOr(__S(30))),
-          session_recording_event_trigger_config: S.optional(S.NullOr(__S(31))),
+          session_recording_url_trigger_config: S.optional(
+            S.NullOr(
+              OrganizationsProjectsRotateSecretTokenPartialUpdateRequestSessionRecordingUrlTriggerConfigList,
+            ),
+          ),
+          session_recording_url_blocklist_config: S.optional(
+            S.NullOr(
+              OrganizationsProjectsRotateSecretTokenPartialUpdateRequestSessionRecordingUrlBlocklistConfigList,
+            ),
+          ),
+          session_recording_event_trigger_config: S.optional(
+            S.NullOr(
+              OrganizationsProjectsRotateSecretTokenPartialUpdateRequestSessionRecordingEventTriggerConfigList,
+            ),
+          ),
           session_recording_trigger_match_type_config: S.optional(S.NullOr(S.String)),
           session_recording_trigger_groups: S.optional(S.Unknown),
-          session_recording_retention_period: S.optional(S.String),
+          session_recording_retention_period: S.optional(SessionRecordingRetentionPeriodEnum),
           session_replay_config: S.optional(S.Unknown),
           survey_config: S.optional(S.Unknown),
           access_control: S.optional(S.Boolean),
-          week_start_day: S.optional(S.NullOr(S.Number)),
+          week_start_day: S.optional(S.NullOr(WeekStartDayEnum)),
           primary_dashboard: S.optional(S.NullOr(S.Number)),
-          live_events_columns: S.optional(S.NullOr(__S(29))),
-          recording_domains: S.optional(S.NullOr(__S(31))),
+          live_events_columns: S.optional(
+            S.NullOr(
+              OrganizationsProjectsRotateSecretTokenPartialUpdateRequestLiveEventsColumnsList,
+            ),
+          ),
+          recording_domains: S.optional(
+            S.NullOr(
+              OrganizationsProjectsRotateSecretTokenPartialUpdateRequestRecordingDomainsList,
+            ),
+          ),
           inject_web_apps: S.optional(S.NullOr(S.Boolean)),
           extra_settings: S.optional(S.Unknown),
           modifiers: S.optional(S.Unknown),
@@ -11441,19 +13723,25 @@ function __c37(j: number): any {
           heatmaps_opt_in: S.optional(S.NullOr(S.Boolean)),
           flags_persistence_default: S.optional(S.NullOr(S.Boolean)),
           receive_org_level_activity_logs: S.optional(S.NullOr(S.Boolean)),
-          business_model: S.optional(S.NullOr(S.Unknown)),
+          business_model: S.optional(
+            S.NullOr(OrganizationsProjectsRotateSecretTokenPartialUpdateRequestBusinessModel),
+          ),
           conversations_enabled: S.optional(S.NullOr(S.Boolean)),
-          conversations_settings: S.optional(S.NullOr(__S(52))),
+          conversations_settings: S.optional(
+            S.NullOr(
+              OrganizationsProjectsRotateSecretTokenPartialUpdateRequestConversationsSettingsMap,
+            ),
+          ),
           logs_settings: S.optional(S.Unknown),
           proactive_tasks_enabled: S.optional(S.NullOr(S.Boolean)),
-          revenue_analytics_config: S.optional(__S(32)),
-          marketing_analytics_config: S.optional(__S(40)),
-          customer_analytics_config: S.optional(__S(43)),
-          workflows_config: S.optional(__S(44)),
-          feature_flag_policy_config: S.optional(__S(45)),
-          base_currency: S.optional(S.String),
+          revenue_analytics_config: S.optional(TeamRevenueAnalyticsConfig),
+          marketing_analytics_config: S.optional(TeamMarketingAnalyticsConfig),
+          customer_analytics_config: S.optional(TeamCustomerAnalyticsConfig),
+          workflows_config: S.optional(TeamWorkflowsConfig),
+          feature_flag_policy_config: S.optional(TeamFeatureFlagPolicyConfig),
+          base_currency: S.optional(BaseCurrencyEnum),
           capture_dead_clicks: S.optional(S.NullOr(S.Boolean)),
-          cookieless_server_hash_mode: S.optional(S.NullOr(S.Number)),
+          cookieless_server_hash_mode: S.optional(S.NullOr(CookielessServerHashModeEnum)),
           human_friendly_comparison_periods: S.optional(S.NullOr(S.Boolean)),
           feature_flag_confirmation_enabled: S.optional(S.NullOr(S.Boolean)),
           feature_flag_confirmation_message: S.optional(S.NullOr(S.String)),
@@ -11553,7 +13841,7 @@ function __c37(j: number): any {
           members_can_see_org_members: S.optional(S.Boolean),
           allow_publicly_shared_resources: S.optional(S.Boolean),
           read_only_mcp_access: S.optional(S.NullOr(S.Boolean)),
-          member_notice: S.optional(S.NullOr(__S(5))),
+          member_notice: S.optional(S.NullOr(OrganizationMemberNotice)),
           is_ai_data_processing_approved: S.optional(S.NullOr(S.Boolean)),
           is_ai_training_opted_in: S.optional(S.NullOr(S.Boolean)),
           default_anonymize_ips: S.optional(S.Boolean),
@@ -11620,9 +13908,11 @@ function __c38(j: number): any {
           organization_id: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
           name: S.optional(S.String),
-          domain_scope: S.optional(S.NullOr(S.Unknown)),
-          config_scope: S.optional(S.NullOr(S.Unknown)),
-          organization_domain_ids: S.optional(__S(17)),
+          domain_scope: S.optional(S.NullOr(UpdateIdentityProviderConfigRequestDomainScope)),
+          config_scope: S.optional(S.NullOr(UpdateIdentityProviderConfigRequestConfigScope)),
+          organization_domain_ids: S.optional(
+            UpdateIdentityProviderConfigRequestOrganizationDomainIdsList,
+          ),
           oidc_issuer_url: S.optional(S.String),
           oidc_client_id: S.optional(S.String),
           oidc_client_secret: S.optional(S.String.pipe(T.SensitiveValue({}))),
@@ -11632,7 +13922,9 @@ function __c38(j: number): any {
           scim_enabled: S.optional(S.Boolean),
           id_jag_issuer_url: S.optional(S.NullOr(S.String)),
           id_jag_jwks_url: S.optional(S.NullOr(S.String)),
-          id_jag_allowed_clients: S.optional(__S(17)),
+          id_jag_allowed_clients: S.optional(
+            UpdateIdentityProviderConfigRequestIdJagAllowedClientsList,
+          ),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -11649,9 +13941,15 @@ function __c38(j: number): any {
           organization_id: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
           name: S.optional(S.String),
-          domain_scope: S.optional(S.NullOr(S.Unknown)),
-          config_scope: S.optional(S.NullOr(S.Unknown)),
-          organization_domain_ids: S.optional(__S(29)),
+          domain_scope: S.optional(
+            S.NullOr(UpdateIdentityProviderConfigsPartialRequestDomainScope),
+          ),
+          config_scope: S.optional(
+            S.NullOr(UpdateIdentityProviderConfigsPartialRequestConfigScope),
+          ),
+          organization_domain_ids: S.optional(
+            UpdateIdentityProviderConfigsPartialRequestOrganizationDomainIdsList,
+          ),
           oidc_issuer_url: S.optional(S.String),
           oidc_client_id: S.optional(S.String),
           oidc_client_secret: S.optional(S.String.pipe(T.SensitiveValue({}))),
@@ -11661,7 +13959,9 @@ function __c38(j: number): any {
           scim_enabled: S.optional(S.Boolean),
           id_jag_issuer_url: S.optional(S.NullOr(S.String)),
           id_jag_jwks_url: S.optional(S.NullOr(S.String)),
-          id_jag_allowed_clients: S.optional(__S(29)),
+          id_jag_allowed_clients: S.optional(
+            UpdateIdentityProviderConfigsPartialRequestIdJagAllowedClientsList,
+          ),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -11691,12 +13991,12 @@ function __c38(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
-          kind: S.optional(S.String),
+          kind: S.optional(OrganizationIntegrationKindEnum),
           integration_id: S.optional(S.NullOr(S.String)),
           config: S.optional(S.Unknown),
           created_at: S.optional(S.String),
           updated_at: S.optional(S.String),
-          created_by: S.optional(S.NullOr(__S(13))),
+          created_by: S.optional(S.NullOr(UserBasic)),
         }),
       ).annotate({ identifier: "OrganizationIntegration" });
     case 6:
@@ -11704,7 +14004,7 @@ function __c38(j: number): any {
         S.Struct({
           organization_id: S.String.pipe(T.Label()),
           user__uuid: S.String.pipe(T.Label()),
-          level: S.optional(S.Number),
+          level: S.optional(OrganizationMembershipLevelEnum),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -11718,7 +14018,7 @@ function __c38(j: number): any {
         S.Struct({
           organization_id: S.String.pipe(T.Label()),
           user__uuid: S.String.pipe(T.Label()),
-          level: S.optional(S.Number),
+          level: S.optional(OrganizationMembershipLevelEnum),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -11740,17 +14040,19 @@ function __c39(j: number): any {
           id: S.Number.pipe(T.Label()),
           name: S.optional(S.String),
           product_description: S.optional(S.NullOr(S.String)),
-          tags: S.optional(__S(17)),
-          app_urls: S.optional(__S(28)),
+          tags: S.optional(UpdateOrganizationsProjectRequestTagsList),
+          app_urls: S.optional(UpdateOrganizationsProjectRequestAppUrlsList),
           anonymize_ips: S.optional(S.Boolean),
           completed_snippet_onboarding: S.optional(S.Boolean),
           test_account_filters: S.optional(S.Unknown),
           test_account_filters_default_checked: S.optional(S.NullOr(S.Boolean)),
           path_cleaning_filters: S.optional(S.Unknown),
           is_demo: S.optional(S.Boolean),
-          timezone: S.optional(S.String),
+          timezone: S.optional(TimezoneEnum),
           data_attributes: S.optional(S.Unknown),
-          person_display_name_properties: S.optional(S.NullOr(__S(29))),
+          person_display_name_properties: S.optional(
+            S.NullOr(UpdateOrganizationsProjectRequestPersonDisplayNamePropertiesList),
+          ),
           correlation_config: S.optional(S.Unknown),
           autocapture_opt_out: S.optional(S.NullOr(S.Boolean)),
           autocapture_exceptions_opt_in: S.optional(S.NullOr(S.Boolean)),
@@ -11765,19 +14067,29 @@ function __c39(j: number): any {
           session_recording_linked_flag: S.optional(S.Unknown),
           session_recording_network_payload_capture_config: S.optional(S.Unknown),
           session_recording_masking_config: S.optional(S.Unknown),
-          session_recording_url_trigger_config: S.optional(S.NullOr(__S(30))),
-          session_recording_url_blocklist_config: S.optional(S.NullOr(__S(30))),
-          session_recording_event_trigger_config: S.optional(S.NullOr(__S(31))),
+          session_recording_url_trigger_config: S.optional(
+            S.NullOr(UpdateOrganizationsProjectRequestSessionRecordingUrlTriggerConfigList),
+          ),
+          session_recording_url_blocklist_config: S.optional(
+            S.NullOr(UpdateOrganizationsProjectRequestSessionRecordingUrlBlocklistConfigList),
+          ),
+          session_recording_event_trigger_config: S.optional(
+            S.NullOr(UpdateOrganizationsProjectRequestSessionRecordingEventTriggerConfigList),
+          ),
           session_recording_trigger_match_type_config: S.optional(S.NullOr(S.String)),
           session_recording_trigger_groups: S.optional(S.Unknown),
-          session_recording_retention_period: S.optional(S.String),
+          session_recording_retention_period: S.optional(SessionRecordingRetentionPeriodEnum),
           session_replay_config: S.optional(S.Unknown),
           survey_config: S.optional(S.Unknown),
           access_control: S.optional(S.Boolean),
-          week_start_day: S.optional(S.NullOr(S.Number)),
+          week_start_day: S.optional(S.NullOr(WeekStartDayEnum)),
           primary_dashboard: S.optional(S.NullOr(S.Number)),
-          live_events_columns: S.optional(S.NullOr(__S(17))),
-          recording_domains: S.optional(S.NullOr(__S(28))),
+          live_events_columns: S.optional(
+            S.NullOr(UpdateOrganizationsProjectRequestLiveEventsColumnsList),
+          ),
+          recording_domains: S.optional(
+            S.NullOr(UpdateOrganizationsProjectRequestRecordingDomainsList),
+          ),
           inject_web_apps: S.optional(S.NullOr(S.Boolean)),
           extra_settings: S.optional(S.Unknown),
           modifiers: S.optional(S.Unknown),
@@ -11786,19 +14098,21 @@ function __c39(j: number): any {
           heatmaps_opt_in: S.optional(S.NullOr(S.Boolean)),
           flags_persistence_default: S.optional(S.NullOr(S.Boolean)),
           receive_org_level_activity_logs: S.optional(S.NullOr(S.Boolean)),
-          business_model: S.optional(S.NullOr(S.Unknown)),
+          business_model: S.optional(S.NullOr(UpdateOrganizationsProjectRequestBusinessModel)),
           conversations_enabled: S.optional(S.NullOr(S.Boolean)),
-          conversations_settings: S.optional(S.NullOr(__S(7))),
+          conversations_settings: S.optional(
+            S.NullOr(UpdateOrganizationsProjectRequestConversationsSettingsMap),
+          ),
           logs_settings: S.optional(S.Unknown),
           proactive_tasks_enabled: S.optional(S.NullOr(S.Boolean)),
-          revenue_analytics_config: S.optional(__S(32)),
-          marketing_analytics_config: S.optional(__S(40)),
-          customer_analytics_config: S.optional(__S(43)),
-          workflows_config: S.optional(__S(44)),
-          feature_flag_policy_config: S.optional(__S(45)),
-          base_currency: S.optional(S.String),
+          revenue_analytics_config: S.optional(TeamRevenueAnalyticsConfig),
+          marketing_analytics_config: S.optional(TeamMarketingAnalyticsConfig),
+          customer_analytics_config: S.optional(TeamCustomerAnalyticsConfig),
+          workflows_config: S.optional(TeamWorkflowsConfig),
+          feature_flag_policy_config: S.optional(TeamFeatureFlagPolicyConfig),
+          base_currency: S.optional(BaseCurrencyEnum),
           capture_dead_clicks: S.optional(S.NullOr(S.Boolean)),
-          cookieless_server_hash_mode: S.optional(S.NullOr(S.Number)),
+          cookieless_server_hash_mode: S.optional(S.NullOr(CookielessServerHashModeEnum)),
           human_friendly_comparison_periods: S.optional(S.NullOr(S.Boolean)),
           feature_flag_confirmation_enabled: S.optional(S.NullOr(S.Boolean)),
           feature_flag_confirmation_message: S.optional(S.NullOr(S.String)),
@@ -11824,17 +14138,25 @@ function __c39(j: number): any {
           id: S.Number.pipe(T.Label()),
           name: S.optional(S.String),
           product_description: S.optional(S.NullOr(S.String)),
-          tags: S.optional(__S(29)),
-          app_urls: S.optional(__S(31)),
+          tags: S.optional(
+            UpdateOrganizationsProjectsCompleteProductOnboardingPartialRequestTagsList,
+          ),
+          app_urls: S.optional(
+            UpdateOrganizationsProjectsCompleteProductOnboardingPartialRequestAppUrlsList,
+          ),
           anonymize_ips: S.optional(S.Boolean),
           completed_snippet_onboarding: S.optional(S.Boolean),
           test_account_filters: S.optional(S.Unknown),
           test_account_filters_default_checked: S.optional(S.NullOr(S.Boolean)),
           path_cleaning_filters: S.optional(S.Unknown),
           is_demo: S.optional(S.Boolean),
-          timezone: S.optional(S.String),
+          timezone: S.optional(TimezoneEnum),
           data_attributes: S.optional(S.Unknown),
-          person_display_name_properties: S.optional(S.NullOr(__S(29))),
+          person_display_name_properties: S.optional(
+            S.NullOr(
+              UpdateOrganizationsProjectsCompleteProductOnboardingPartialRequestPersonDisplayNamePropertiesList,
+            ),
+          ),
           correlation_config: S.optional(S.Unknown),
           autocapture_opt_out: S.optional(S.NullOr(S.Boolean)),
           autocapture_exceptions_opt_in: S.optional(S.NullOr(S.Boolean)),
@@ -11849,19 +14171,39 @@ function __c39(j: number): any {
           session_recording_linked_flag: S.optional(S.Unknown),
           session_recording_network_payload_capture_config: S.optional(S.Unknown),
           session_recording_masking_config: S.optional(S.Unknown),
-          session_recording_url_trigger_config: S.optional(S.NullOr(__S(30))),
-          session_recording_url_blocklist_config: S.optional(S.NullOr(__S(30))),
-          session_recording_event_trigger_config: S.optional(S.NullOr(__S(31))),
+          session_recording_url_trigger_config: S.optional(
+            S.NullOr(
+              UpdateOrganizationsProjectsCompleteProductOnboardingPartialRequestSessionRecordingUrlTriggerConfigList,
+            ),
+          ),
+          session_recording_url_blocklist_config: S.optional(
+            S.NullOr(
+              UpdateOrganizationsProjectsCompleteProductOnboardingPartialRequestSessionRecordingUrlBlocklistConfigList,
+            ),
+          ),
+          session_recording_event_trigger_config: S.optional(
+            S.NullOr(
+              UpdateOrganizationsProjectsCompleteProductOnboardingPartialRequestSessionRecordingEventTriggerConfigList,
+            ),
+          ),
           session_recording_trigger_match_type_config: S.optional(S.NullOr(S.String)),
           session_recording_trigger_groups: S.optional(S.Unknown),
-          session_recording_retention_period: S.optional(S.String),
+          session_recording_retention_period: S.optional(SessionRecordingRetentionPeriodEnum),
           session_replay_config: S.optional(S.Unknown),
           survey_config: S.optional(S.Unknown),
           access_control: S.optional(S.Boolean),
-          week_start_day: S.optional(S.NullOr(S.Number)),
+          week_start_day: S.optional(S.NullOr(WeekStartDayEnum)),
           primary_dashboard: S.optional(S.NullOr(S.Number)),
-          live_events_columns: S.optional(S.NullOr(__S(29))),
-          recording_domains: S.optional(S.NullOr(__S(31))),
+          live_events_columns: S.optional(
+            S.NullOr(
+              UpdateOrganizationsProjectsCompleteProductOnboardingPartialRequestLiveEventsColumnsList,
+            ),
+          ),
+          recording_domains: S.optional(
+            S.NullOr(
+              UpdateOrganizationsProjectsCompleteProductOnboardingPartialRequestRecordingDomainsList,
+            ),
+          ),
           inject_web_apps: S.optional(S.NullOr(S.Boolean)),
           extra_settings: S.optional(S.Unknown),
           modifiers: S.optional(S.Unknown),
@@ -11870,19 +14212,27 @@ function __c39(j: number): any {
           heatmaps_opt_in: S.optional(S.NullOr(S.Boolean)),
           flags_persistence_default: S.optional(S.NullOr(S.Boolean)),
           receive_org_level_activity_logs: S.optional(S.NullOr(S.Boolean)),
-          business_model: S.optional(S.NullOr(S.Unknown)),
+          business_model: S.optional(
+            S.NullOr(
+              UpdateOrganizationsProjectsCompleteProductOnboardingPartialRequestBusinessModel,
+            ),
+          ),
           conversations_enabled: S.optional(S.NullOr(S.Boolean)),
-          conversations_settings: S.optional(S.NullOr(__S(52))),
+          conversations_settings: S.optional(
+            S.NullOr(
+              UpdateOrganizationsProjectsCompleteProductOnboardingPartialRequestConversationsSettingsMap,
+            ),
+          ),
           logs_settings: S.optional(S.Unknown),
           proactive_tasks_enabled: S.optional(S.NullOr(S.Boolean)),
-          revenue_analytics_config: S.optional(__S(32)),
-          marketing_analytics_config: S.optional(__S(40)),
-          customer_analytics_config: S.optional(__S(43)),
-          workflows_config: S.optional(__S(44)),
-          feature_flag_policy_config: S.optional(__S(45)),
-          base_currency: S.optional(S.String),
+          revenue_analytics_config: S.optional(TeamRevenueAnalyticsConfig),
+          marketing_analytics_config: S.optional(TeamMarketingAnalyticsConfig),
+          customer_analytics_config: S.optional(TeamCustomerAnalyticsConfig),
+          workflows_config: S.optional(TeamWorkflowsConfig),
+          feature_flag_policy_config: S.optional(TeamFeatureFlagPolicyConfig),
+          base_currency: S.optional(BaseCurrencyEnum),
           capture_dead_clicks: S.optional(S.NullOr(S.Boolean)),
-          cookieless_server_hash_mode: S.optional(S.NullOr(S.Number)),
+          cookieless_server_hash_mode: S.optional(S.NullOr(CookielessServerHashModeEnum)),
           human_friendly_comparison_periods: S.optional(S.NullOr(S.Boolean)),
           feature_flag_confirmation_enabled: S.optional(S.NullOr(S.Boolean)),
           feature_flag_confirmation_message: S.optional(S.NullOr(S.String)),
@@ -11908,17 +14258,23 @@ function __c39(j: number): any {
           id: S.Number.pipe(T.Label()),
           name: S.optional(S.String),
           product_description: S.optional(S.NullOr(S.String)),
-          tags: S.optional(__S(29)),
-          app_urls: S.optional(__S(31)),
+          tags: S.optional(UpdateOrganizationsProjectsDefaultReleaseConditionRequestTagsList),
+          app_urls: S.optional(
+            UpdateOrganizationsProjectsDefaultReleaseConditionRequestAppUrlsList,
+          ),
           anonymize_ips: S.optional(S.Boolean),
           completed_snippet_onboarding: S.optional(S.Boolean),
           test_account_filters: S.optional(S.Unknown),
           test_account_filters_default_checked: S.optional(S.NullOr(S.Boolean)),
           path_cleaning_filters: S.optional(S.Unknown),
           is_demo: S.optional(S.Boolean),
-          timezone: S.optional(S.String),
+          timezone: S.optional(TimezoneEnum),
           data_attributes: S.optional(S.Unknown),
-          person_display_name_properties: S.optional(S.NullOr(__S(29))),
+          person_display_name_properties: S.optional(
+            S.NullOr(
+              UpdateOrganizationsProjectsDefaultReleaseConditionRequestPersonDisplayNamePropertiesList,
+            ),
+          ),
           correlation_config: S.optional(S.Unknown),
           autocapture_opt_out: S.optional(S.NullOr(S.Boolean)),
           autocapture_exceptions_opt_in: S.optional(S.NullOr(S.Boolean)),
@@ -11933,19 +14289,37 @@ function __c39(j: number): any {
           session_recording_linked_flag: S.optional(S.Unknown),
           session_recording_network_payload_capture_config: S.optional(S.Unknown),
           session_recording_masking_config: S.optional(S.Unknown),
-          session_recording_url_trigger_config: S.optional(S.NullOr(__S(30))),
-          session_recording_url_blocklist_config: S.optional(S.NullOr(__S(30))),
-          session_recording_event_trigger_config: S.optional(S.NullOr(__S(31))),
+          session_recording_url_trigger_config: S.optional(
+            S.NullOr(
+              UpdateOrganizationsProjectsDefaultReleaseConditionRequestSessionRecordingUrlTriggerConfigList,
+            ),
+          ),
+          session_recording_url_blocklist_config: S.optional(
+            S.NullOr(
+              UpdateOrganizationsProjectsDefaultReleaseConditionRequestSessionRecordingUrlBlocklistConfigList,
+            ),
+          ),
+          session_recording_event_trigger_config: S.optional(
+            S.NullOr(
+              UpdateOrganizationsProjectsDefaultReleaseConditionRequestSessionRecordingEventTriggerConfigList,
+            ),
+          ),
           session_recording_trigger_match_type_config: S.optional(S.NullOr(S.String)),
           session_recording_trigger_groups: S.optional(S.Unknown),
-          session_recording_retention_period: S.optional(S.String),
+          session_recording_retention_period: S.optional(SessionRecordingRetentionPeriodEnum),
           session_replay_config: S.optional(S.Unknown),
           survey_config: S.optional(S.Unknown),
           access_control: S.optional(S.Boolean),
-          week_start_day: S.optional(S.NullOr(S.Number)),
+          week_start_day: S.optional(S.NullOr(WeekStartDayEnum)),
           primary_dashboard: S.optional(S.NullOr(S.Number)),
-          live_events_columns: S.optional(S.NullOr(__S(29))),
-          recording_domains: S.optional(S.NullOr(__S(31))),
+          live_events_columns: S.optional(
+            S.NullOr(
+              UpdateOrganizationsProjectsDefaultReleaseConditionRequestLiveEventsColumnsList,
+            ),
+          ),
+          recording_domains: S.optional(
+            S.NullOr(UpdateOrganizationsProjectsDefaultReleaseConditionRequestRecordingDomainsList),
+          ),
           inject_web_apps: S.optional(S.NullOr(S.Boolean)),
           extra_settings: S.optional(S.Unknown),
           modifiers: S.optional(S.Unknown),
@@ -11954,19 +14328,25 @@ function __c39(j: number): any {
           heatmaps_opt_in: S.optional(S.NullOr(S.Boolean)),
           flags_persistence_default: S.optional(S.NullOr(S.Boolean)),
           receive_org_level_activity_logs: S.optional(S.NullOr(S.Boolean)),
-          business_model: S.optional(S.NullOr(S.Unknown)),
+          business_model: S.optional(
+            S.NullOr(UpdateOrganizationsProjectsDefaultReleaseConditionRequestBusinessModel),
+          ),
           conversations_enabled: S.optional(S.NullOr(S.Boolean)),
-          conversations_settings: S.optional(S.NullOr(__S(52))),
+          conversations_settings: S.optional(
+            S.NullOr(
+              UpdateOrganizationsProjectsDefaultReleaseConditionRequestConversationsSettingsMap,
+            ),
+          ),
           logs_settings: S.optional(S.Unknown),
           proactive_tasks_enabled: S.optional(S.NullOr(S.Boolean)),
-          revenue_analytics_config: S.optional(__S(32)),
-          marketing_analytics_config: S.optional(__S(40)),
-          customer_analytics_config: S.optional(__S(43)),
-          workflows_config: S.optional(__S(44)),
-          feature_flag_policy_config: S.optional(__S(45)),
-          base_currency: S.optional(S.String),
+          revenue_analytics_config: S.optional(TeamRevenueAnalyticsConfig),
+          marketing_analytics_config: S.optional(TeamMarketingAnalyticsConfig),
+          customer_analytics_config: S.optional(TeamCustomerAnalyticsConfig),
+          workflows_config: S.optional(TeamWorkflowsConfig),
+          feature_flag_policy_config: S.optional(TeamFeatureFlagPolicyConfig),
+          base_currency: S.optional(BaseCurrencyEnum),
           capture_dead_clicks: S.optional(S.NullOr(S.Boolean)),
-          cookieless_server_hash_mode: S.optional(S.NullOr(S.Number)),
+          cookieless_server_hash_mode: S.optional(S.NullOr(CookielessServerHashModeEnum)),
           human_friendly_comparison_periods: S.optional(S.NullOr(S.Boolean)),
           feature_flag_confirmation_enabled: S.optional(S.NullOr(S.Boolean)),
           feature_flag_confirmation_message: S.optional(S.NullOr(S.String)),
@@ -11992,17 +14372,23 @@ function __c39(j: number): any {
           id: S.Number.pipe(T.Label()),
           name: S.optional(S.String),
           product_description: S.optional(S.NullOr(S.String)),
-          tags: S.optional(__S(29)),
-          app_urls: S.optional(__S(31)),
+          tags: S.optional(UpdateOrganizationsProjectsExperimentsConfigPartialRequestTagsList),
+          app_urls: S.optional(
+            UpdateOrganizationsProjectsExperimentsConfigPartialRequestAppUrlsList,
+          ),
           anonymize_ips: S.optional(S.Boolean),
           completed_snippet_onboarding: S.optional(S.Boolean),
           test_account_filters: S.optional(S.Unknown),
           test_account_filters_default_checked: S.optional(S.NullOr(S.Boolean)),
           path_cleaning_filters: S.optional(S.Unknown),
           is_demo: S.optional(S.Boolean),
-          timezone: S.optional(S.String),
+          timezone: S.optional(TimezoneEnum),
           data_attributes: S.optional(S.Unknown),
-          person_display_name_properties: S.optional(S.NullOr(__S(29))),
+          person_display_name_properties: S.optional(
+            S.NullOr(
+              UpdateOrganizationsProjectsExperimentsConfigPartialRequestPersonDisplayNamePropertiesList,
+            ),
+          ),
           correlation_config: S.optional(S.Unknown),
           autocapture_opt_out: S.optional(S.NullOr(S.Boolean)),
           autocapture_exceptions_opt_in: S.optional(S.NullOr(S.Boolean)),
@@ -12017,19 +14403,39 @@ function __c39(j: number): any {
           session_recording_linked_flag: S.optional(S.Unknown),
           session_recording_network_payload_capture_config: S.optional(S.Unknown),
           session_recording_masking_config: S.optional(S.Unknown),
-          session_recording_url_trigger_config: S.optional(S.NullOr(__S(30))),
-          session_recording_url_blocklist_config: S.optional(S.NullOr(__S(30))),
-          session_recording_event_trigger_config: S.optional(S.NullOr(__S(31))),
+          session_recording_url_trigger_config: S.optional(
+            S.NullOr(
+              UpdateOrganizationsProjectsExperimentsConfigPartialRequestSessionRecordingUrlTriggerConfigList,
+            ),
+          ),
+          session_recording_url_blocklist_config: S.optional(
+            S.NullOr(
+              UpdateOrganizationsProjectsExperimentsConfigPartialRequestSessionRecordingUrlBlocklistConfigList,
+            ),
+          ),
+          session_recording_event_trigger_config: S.optional(
+            S.NullOr(
+              UpdateOrganizationsProjectsExperimentsConfigPartialRequestSessionRecordingEventTriggerConfigList,
+            ),
+          ),
           session_recording_trigger_match_type_config: S.optional(S.NullOr(S.String)),
           session_recording_trigger_groups: S.optional(S.Unknown),
-          session_recording_retention_period: S.optional(S.String),
+          session_recording_retention_period: S.optional(SessionRecordingRetentionPeriodEnum),
           session_replay_config: S.optional(S.Unknown),
           survey_config: S.optional(S.Unknown),
           access_control: S.optional(S.Boolean),
-          week_start_day: S.optional(S.NullOr(S.Number)),
+          week_start_day: S.optional(S.NullOr(WeekStartDayEnum)),
           primary_dashboard: S.optional(S.NullOr(S.Number)),
-          live_events_columns: S.optional(S.NullOr(__S(29))),
-          recording_domains: S.optional(S.NullOr(__S(31))),
+          live_events_columns: S.optional(
+            S.NullOr(
+              UpdateOrganizationsProjectsExperimentsConfigPartialRequestLiveEventsColumnsList,
+            ),
+          ),
+          recording_domains: S.optional(
+            S.NullOr(
+              UpdateOrganizationsProjectsExperimentsConfigPartialRequestRecordingDomainsList,
+            ),
+          ),
           inject_web_apps: S.optional(S.NullOr(S.Boolean)),
           extra_settings: S.optional(S.Unknown),
           modifiers: S.optional(S.Unknown),
@@ -12038,19 +14444,25 @@ function __c39(j: number): any {
           heatmaps_opt_in: S.optional(S.NullOr(S.Boolean)),
           flags_persistence_default: S.optional(S.NullOr(S.Boolean)),
           receive_org_level_activity_logs: S.optional(S.NullOr(S.Boolean)),
-          business_model: S.optional(S.NullOr(S.Unknown)),
+          business_model: S.optional(
+            S.NullOr(UpdateOrganizationsProjectsExperimentsConfigPartialRequestBusinessModel),
+          ),
           conversations_enabled: S.optional(S.NullOr(S.Boolean)),
-          conversations_settings: S.optional(S.NullOr(__S(52))),
+          conversations_settings: S.optional(
+            S.NullOr(
+              UpdateOrganizationsProjectsExperimentsConfigPartialRequestConversationsSettingsMap,
+            ),
+          ),
           logs_settings: S.optional(S.Unknown),
           proactive_tasks_enabled: S.optional(S.NullOr(S.Boolean)),
-          revenue_analytics_config: S.optional(__S(32)),
-          marketing_analytics_config: S.optional(__S(40)),
-          customer_analytics_config: S.optional(__S(43)),
-          workflows_config: S.optional(__S(44)),
-          feature_flag_policy_config: S.optional(__S(45)),
-          base_currency: S.optional(S.String),
+          revenue_analytics_config: S.optional(TeamRevenueAnalyticsConfig),
+          marketing_analytics_config: S.optional(TeamMarketingAnalyticsConfig),
+          customer_analytics_config: S.optional(TeamCustomerAnalyticsConfig),
+          workflows_config: S.optional(TeamWorkflowsConfig),
+          feature_flag_policy_config: S.optional(TeamFeatureFlagPolicyConfig),
+          base_currency: S.optional(BaseCurrencyEnum),
           capture_dead_clicks: S.optional(S.NullOr(S.Boolean)),
-          cookieless_server_hash_mode: S.optional(S.NullOr(S.Number)),
+          cookieless_server_hash_mode: S.optional(S.NullOr(CookielessServerHashModeEnum)),
           human_friendly_comparison_periods: S.optional(S.NullOr(S.Boolean)),
           feature_flag_confirmation_enabled: S.optional(S.NullOr(S.Boolean)),
           feature_flag_confirmation_message: S.optional(S.NullOr(S.String)),
@@ -12074,9 +14486,15 @@ function __c39(j: number): any {
         S.Struct({
           organization_id: S.String.pipe(T.Label()),
           id: S.Number.pipe(T.Label()),
-          logs_distinct_id_attribute_keys: S.optional(__S(29)),
-          logs_session_id_attribute_keys: S.optional(__S(29)),
-          logs_pattern_message_keys: S.optional(__S(29)),
+          logs_distinct_id_attribute_keys: S.optional(
+            UpdateOrganizationsProjectsLogsConfigPartialRequestLogsDistinctIdAttributeKeysList,
+          ),
+          logs_session_id_attribute_keys: S.optional(
+            UpdateOrganizationsProjectsLogsConfigPartialRequestLogsSessionIdAttributeKeysList,
+          ),
+          logs_pattern_message_keys: S.optional(
+            UpdateOrganizationsProjectsLogsConfigPartialRequestLogsPatternMessageKeysList,
+          ),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -12094,17 +14512,19 @@ function __c39(j: number): any {
           id: S.Number.pipe(T.Label()),
           name: S.optional(S.String),
           product_description: S.optional(S.NullOr(S.String)),
-          tags: S.optional(__S(17)),
-          app_urls: S.optional(__S(28)),
+          tags: S.optional(UpdateOrganizationsProjectsPartialRequestTagsList),
+          app_urls: S.optional(UpdateOrganizationsProjectsPartialRequestAppUrlsList),
           anonymize_ips: S.optional(S.Boolean),
           completed_snippet_onboarding: S.optional(S.Boolean),
           test_account_filters: S.optional(S.Unknown),
           test_account_filters_default_checked: S.optional(S.NullOr(S.Boolean)),
           path_cleaning_filters: S.optional(S.Unknown),
           is_demo: S.optional(S.Boolean),
-          timezone: S.optional(S.String),
+          timezone: S.optional(TimezoneEnum),
           data_attributes: S.optional(S.Unknown),
-          person_display_name_properties: S.optional(S.NullOr(__S(29))),
+          person_display_name_properties: S.optional(
+            S.NullOr(UpdateOrganizationsProjectsPartialRequestPersonDisplayNamePropertiesList),
+          ),
           correlation_config: S.optional(S.Unknown),
           autocapture_opt_out: S.optional(S.NullOr(S.Boolean)),
           autocapture_exceptions_opt_in: S.optional(S.NullOr(S.Boolean)),
@@ -12119,19 +14539,33 @@ function __c39(j: number): any {
           session_recording_linked_flag: S.optional(S.Unknown),
           session_recording_network_payload_capture_config: S.optional(S.Unknown),
           session_recording_masking_config: S.optional(S.Unknown),
-          session_recording_url_trigger_config: S.optional(S.NullOr(__S(30))),
-          session_recording_url_blocklist_config: S.optional(S.NullOr(__S(30))),
-          session_recording_event_trigger_config: S.optional(S.NullOr(__S(31))),
+          session_recording_url_trigger_config: S.optional(
+            S.NullOr(UpdateOrganizationsProjectsPartialRequestSessionRecordingUrlTriggerConfigList),
+          ),
+          session_recording_url_blocklist_config: S.optional(
+            S.NullOr(
+              UpdateOrganizationsProjectsPartialRequestSessionRecordingUrlBlocklistConfigList,
+            ),
+          ),
+          session_recording_event_trigger_config: S.optional(
+            S.NullOr(
+              UpdateOrganizationsProjectsPartialRequestSessionRecordingEventTriggerConfigList,
+            ),
+          ),
           session_recording_trigger_match_type_config: S.optional(S.NullOr(S.String)),
           session_recording_trigger_groups: S.optional(S.Unknown),
-          session_recording_retention_period: S.optional(S.String),
+          session_recording_retention_period: S.optional(SessionRecordingRetentionPeriodEnum),
           session_replay_config: S.optional(S.Unknown),
           survey_config: S.optional(S.Unknown),
           access_control: S.optional(S.Boolean),
-          week_start_day: S.optional(S.NullOr(S.Number)),
+          week_start_day: S.optional(S.NullOr(WeekStartDayEnum)),
           primary_dashboard: S.optional(S.NullOr(S.Number)),
-          live_events_columns: S.optional(S.NullOr(__S(17))),
-          recording_domains: S.optional(S.NullOr(__S(28))),
+          live_events_columns: S.optional(
+            S.NullOr(UpdateOrganizationsProjectsPartialRequestLiveEventsColumnsList),
+          ),
+          recording_domains: S.optional(
+            S.NullOr(UpdateOrganizationsProjectsPartialRequestRecordingDomainsList),
+          ),
           inject_web_apps: S.optional(S.NullOr(S.Boolean)),
           extra_settings: S.optional(S.Unknown),
           modifiers: S.optional(S.Unknown),
@@ -12140,19 +14574,23 @@ function __c39(j: number): any {
           heatmaps_opt_in: S.optional(S.NullOr(S.Boolean)),
           flags_persistence_default: S.optional(S.NullOr(S.Boolean)),
           receive_org_level_activity_logs: S.optional(S.NullOr(S.Boolean)),
-          business_model: S.optional(S.NullOr(S.Unknown)),
+          business_model: S.optional(
+            S.NullOr(UpdateOrganizationsProjectsPartialRequestBusinessModel),
+          ),
           conversations_enabled: S.optional(S.NullOr(S.Boolean)),
-          conversations_settings: S.optional(S.NullOr(__S(52))),
+          conversations_settings: S.optional(
+            S.NullOr(UpdateOrganizationsProjectsPartialRequestConversationsSettingsMap),
+          ),
           logs_settings: S.optional(S.Unknown),
           proactive_tasks_enabled: S.optional(S.NullOr(S.Boolean)),
-          revenue_analytics_config: S.optional(__S(32)),
-          marketing_analytics_config: S.optional(__S(40)),
-          customer_analytics_config: S.optional(__S(43)),
-          workflows_config: S.optional(__S(44)),
-          feature_flag_policy_config: S.optional(__S(45)),
-          base_currency: S.optional(S.String),
+          revenue_analytics_config: S.optional(TeamRevenueAnalyticsConfig),
+          marketing_analytics_config: S.optional(TeamMarketingAnalyticsConfig),
+          customer_analytics_config: S.optional(TeamCustomerAnalyticsConfig),
+          workflows_config: S.optional(TeamWorkflowsConfig),
+          feature_flag_policy_config: S.optional(TeamFeatureFlagPolicyConfig),
+          base_currency: S.optional(BaseCurrencyEnum),
           capture_dead_clicks: S.optional(S.NullOr(S.Boolean)),
-          cookieless_server_hash_mode: S.optional(S.NullOr(S.Number)),
+          cookieless_server_hash_mode: S.optional(S.NullOr(CookielessServerHashModeEnum)),
           human_friendly_comparison_periods: S.optional(S.NullOr(S.Boolean)),
           feature_flag_confirmation_enabled: S.optional(S.NullOr(S.Boolean)),
           feature_flag_confirmation_message: S.optional(S.NullOr(S.String)),
@@ -12176,8 +14614,12 @@ function __c39(j: number): any {
         S.Struct({
           organization_id: S.String.pipe(T.Label()),
           id: S.Number.pipe(T.Label()),
-          tracing_distinct_id_attribute_keys: S.optional(__S(29)),
-          tracing_session_id_attribute_keys: S.optional(__S(29)),
+          tracing_distinct_id_attribute_keys: S.optional(
+            UpdateOrganizationsProjectsTracingConfigPartialRequestTracingDistinctIdAttributeKeysList,
+          ),
+          tracing_session_id_attribute_keys: S.optional(
+            UpdateOrganizationsProjectsTracingConfigPartialRequestTracingSessionIdAttributeKeysList,
+          ),
           retention_days: S.optional(S.Number),
         }).pipe(
           T.Http({
@@ -12203,7 +14645,7 @@ function __c39(j: number): any {
           members_can_see_org_members: S.optional(S.Boolean),
           allow_publicly_shared_resources: S.optional(S.Boolean),
           read_only_mcp_access: S.optional(S.NullOr(S.Boolean)),
-          member_notice: S.optional(S.NullOr(__S(5))),
+          member_notice: S.optional(S.NullOr(OrganizationMemberNotice)),
           is_ai_data_processing_approved: S.optional(S.NullOr(S.Boolean)),
           is_ai_training_opted_in: S.optional(S.NullOr(S.Boolean)),
           default_anonymize_ips: S.optional(S.Boolean),
@@ -12244,96 +14686,5 @@ function __c40(j: number): any {
       ).annotate({
         identifier: "UpdateRolesPartialRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
-    case 8:
-      return __c8(i & 7);
-    case 9:
-      return __c9(i & 7);
-    case 10:
-      return __c10(i & 7);
-    case 11:
-      return __c11(i & 7);
-    case 12:
-      return __c12(i & 7);
-    case 13:
-      return __c13(i & 7);
-    case 14:
-      return __c14(i & 7);
-    case 15:
-      return __c15(i & 7);
-    case 16:
-      return __c16(i & 7);
-    case 17:
-      return __c17(i & 7);
-    case 18:
-      return __c18(i & 7);
-    case 19:
-      return __c19(i & 7);
-    case 20:
-      return __c20(i & 7);
-    case 21:
-      return __c21(i & 7);
-    case 22:
-      return __c22(i & 7);
-    case 23:
-      return __c23(i & 7);
-    case 24:
-      return __c24(i & 7);
-    case 25:
-      return __c25(i & 7);
-    case 26:
-      return __c26(i & 7);
-    case 27:
-      return __c27(i & 7);
-    case 28:
-      return __c28(i & 7);
-    case 29:
-      return __c29(i & 7);
-    case 30:
-      return __c30(i & 7);
-    case 31:
-      return __c31(i & 7);
-    case 32:
-      return __c32(i & 7);
-    case 33:
-      return __c33(i & 7);
-    case 34:
-      return __c34(i & 7);
-    case 35:
-      return __c35(i & 7);
-    case 36:
-      return __c36(i & 7);
-    case 37:
-      return __c37(i & 7);
-    case 38:
-      return __c38(i & 7);
-    case 39:
-      return __c39(i & 7);
-    case 40:
-      return __c40(i & 7);
   }
 }

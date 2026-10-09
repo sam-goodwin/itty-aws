@@ -6,8 +6,6 @@ import { UnknownDaytonaError } from "../errors.ts";
 import { DaytonaProtocol, type DaytonaOpError, type DaytonaOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { DaytonaOpError, DaytonaOpContext };
 
@@ -16,17 +14,32 @@ export interface GetWebhookControllerAppPortalAccessRequest {
   /** Use with JWT to specify the organization ID */
   xDaytonaOrganizationID?: string;
 }
+const GetWebhookControllerAppPortalAccessRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<GetWebhookControllerAppPortalAccessRequest>;
+
 export interface WebhookAppPortalAccess {
   /** The authentication token for the Svix consumer app portal */
   token: string;
   /** The URL to the webhook app portal */
   url: string;
 }
+const WebhookAppPortalAccess = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<WebhookAppPortalAccess>;
+
 export interface GetWebhookControllerInitializationStatusRequest {
   organizationId: string;
   /** Use with JWT to specify the organization ID */
   xDaytonaOrganizationID?: string;
 }
+const GetWebhookControllerInitializationStatusRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<GetWebhookControllerInitializationStatusRequest>;
+
 export interface WebhookInitializationStatus {
   /** Organization ID */
   organizationId: string;
@@ -41,18 +54,38 @@ export interface WebhookInitializationStatus {
   /** When the webhook initialization was last updated */
   updatedAt: string;
 }
+const WebhookInitializationStatus = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<WebhookInitializationStatus>;
+
 export interface RefreshWebhookControllerEndpointsRequest {
   organizationId: string;
   /** Use with JWT to specify the organization ID */
   xDaytonaOrganizationID?: string;
 }
+const RefreshWebhookControllerEndpointsRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<RefreshWebhookControllerEndpointsRequest>;
+
 export interface RefreshWebhookControllerEndpointsResponse {}
+const RefreshWebhookControllerEndpointsResponse = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<RefreshWebhookControllerEndpointsResponse>;
+
 export interface WebhookControllerInitializeWebhooksRequest {
   /** Organization ID */
   organizationId: string;
   /** Use with JWT to specify the organization ID */
   xDaytonaOrganizationID?: string;
 }
+const WebhookControllerInitializeWebhooksRequest = /*@__PURE__*/ __L.at(
+  __c0,
+  6,
+) as any as S.Schema<WebhookControllerInitializeWebhooksRequest>;
+
 export type GetWebhookControllerAppPortalAccessError = DaytonaOpError;
 /** Get Svix Consumer App Portal access for an organization */
 export const getWebhookControllerAppPortalAccess: API.OperationMethod<
@@ -61,8 +94,8 @@ export const getWebhookControllerAppPortalAccess: API.OperationMethod<
   GetWebhookControllerAppPortalAccessError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0) as any as S.Schema<GetWebhookControllerAppPortalAccessRequest>,
-  output: __S(1) as any as S.Schema<WebhookAppPortalAccess>,
+  input: GetWebhookControllerAppPortalAccessRequest,
+  output: WebhookAppPortalAccess,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -76,8 +109,8 @@ export const getWebhookControllerInitializationStatus: API.OperationMethod<
   GetWebhookControllerInitializationStatusError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2) as any as S.Schema<GetWebhookControllerInitializationStatusRequest>,
-  output: __S(3) as any as S.Schema<WebhookInitializationStatus>,
+  input: GetWebhookControllerInitializationStatusRequest,
+  output: WebhookInitializationStatus,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -91,8 +124,8 @@ export const refreshWebhookControllerEndpoints: API.OperationMethod<
   RefreshWebhookControllerEndpointsError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4) as any as S.Schema<RefreshWebhookControllerEndpointsRequest>,
-  output: __S(5) as any as S.Schema<RefreshWebhookControllerEndpointsResponse>,
+  input: RefreshWebhookControllerEndpointsRequest,
+  output: RefreshWebhookControllerEndpointsResponse,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -106,8 +139,8 @@ export const webhookControllerInitializeWebhooks: API.OperationMethod<
   WebhookControllerInitializeWebhooksError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6) as any as S.Schema<WebhookControllerInitializeWebhooksRequest>,
-  output: __S(3) as any as S.Schema<WebhookInitializationStatus>,
+  input: WebhookControllerInitializeWebhooksRequest,
+  output: WebhookInitializationStatus,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -200,16 +233,5 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "WebhookControllerInitializeWebhooksRequest",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
   }
 }

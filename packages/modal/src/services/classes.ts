@@ -6,8 +6,6 @@ import { UnknownModalError } from "../errors.ts";
 import { ModalProtocol, type ModalOpError, type ModalOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { ModalOpError, ModalOpContext };
 
@@ -15,10 +13,14 @@ export type FunctionFunctionType =
   | "FUNCTION_TYPE_UNSPECIFIED"
   | "FUNCTION_TYPE_GENERATOR"
   | "FUNCTION_TYPE_FUNCTION";
+const FunctionFunctionType = S.String;
+
 export type ClassParameterInfoParameterSerializationFormat =
   | "PARAM_SERIALIZATION_FORMAT_UNSPECIFIED"
   | "PARAM_SERIALIZATION_FORMAT_PICKLE"
   | "PARAM_SERIALIZATION_FORMAT_PROTO";
+const ClassParameterInfoParameterSerializationFormat = S.String;
+
 export type ParameterType =
   | "PARAM_TYPE_UNSPECIFIED"
   | "PARAM_TYPE_STRING"
@@ -30,11 +32,20 @@ export type ParameterType =
   | "PARAM_TYPE_DICT"
   | "PARAM_TYPE_NONE"
   | "PARAM_TYPE_BOOL";
+const ParameterType = S.String;
+
 export type GenericPayloadTypeList = Array<GenericPayloadType>;
+const GenericPayloadTypeList = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<GenericPayloadTypeList>;
+
 export interface GenericPayloadType {
   baseType?: ParameterType | (string & {});
   subTypes?: GenericPayloadTypeList;
 }
+const GenericPayloadType = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<GenericPayloadType>;
+
 export interface ClassParameterSpec {
   /** TODO: rename into NamedPayloadType or similar */
   name?: string;
@@ -49,21 +60,41 @@ export interface ClassParameterSpec {
   boolDefault?: boolean;
   fullType?: GenericPayloadType;
 }
+const ClassParameterSpec = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<ClassParameterSpec>;
+
 export type ClassParameterSpecList = Array<ClassParameterSpec>;
+const ClassParameterSpecList = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<ClassParameterSpecList>;
+
 export interface ClassParameterInfo {
   /** new format using api.FunctionParameterSet */
   format?: ClassParameterInfoParameterSerializationFormat | (string & {});
   schema?: ClassParameterSpecList;
 }
+const ClassParameterInfo = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<ClassParameterInfo>;
+
 export type FunctionHandleMetadataMap = { [key: string]: FunctionHandleMetadata | undefined };
+const FunctionHandleMetadataMap = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<FunctionHandleMetadataMap>;
+
 export type FunctionSchemaFunctionSchemaType = "FUNCTION_SCHEMA_UNSPECIFIED" | "FUNCTION_SCHEMA_V1";
+const FunctionSchemaFunctionSchemaType = S.String;
+
 export interface FunctionSchema {
   schemaType?: FunctionSchemaFunctionSchemaType | (string & {});
   /** allows easy disambiguation between empty schema and no schema collection etc. */
   arguments?: ClassParameterSpecList;
   returnType?: GenericPayloadType;
 }
+const FunctionSchema = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<FunctionSchema>;
+
 export type StringList = Array<string>;
+const StringList = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<StringList>;
+
 /** Which data format a binary message is encoded with. */
 export type DataFormat =
   | "DATA_FORMAT_UNSPECIFIED"
@@ -71,7 +102,11 @@ export type DataFormat =
   | "DATA_FORMAT_ASGI"
   | "DATA_FORMAT_GENERATOR_DONE"
   | "DATA_FORMAT_CBOR";
+const DataFormat = S.String;
+
 export type DataFormatList = Array<DataFormat | (string & {})>;
+const DataFormatList = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<DataFormatList>;
+
 export interface FunctionHandleMetadata {
   /** contains all the info about a function that is needed to trigger the right behaviour when using a FunctionHandler. Notably excludes things purely used for *executing* the function in a container entrypoint Should be a subset and use IDs/types from `Function` above */
   functionName?: string;
@@ -99,13 +134,22 @@ export interface FunctionHandleMetadata {
   /** The base Function ID for a variant, or the Function's own ID otherwise. */
   baseFunctionId?: string;
 }
+const FunctionHandleMetadata = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<FunctionHandleMetadata>;
+
 export interface ClassMethod {
   functionName?: string;
   functionId?: string;
   /** Class methods need to hydrate all functions on the class */
   functionHandleMetadata?: FunctionHandleMetadata;
 }
+const ClassMethod = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<ClassMethod>;
+
 export type ClassMethodList = Array<ClassMethod>;
+const ClassMethodList = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<ClassMethodList>;
+
 export interface CreateClassRequest {
   appId?: string;
   existingClassId?: string;
@@ -113,15 +157,21 @@ export interface CreateClassRequest {
   /** removed class_function_id */
   onlyClassFunction?: boolean;
 }
+const CreateClassRequest = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<CreateClassRequest>;
+
 export interface ClassHandleMetadata {
   methods?: ClassMethodList;
   classFunctionId?: string;
   classFunctionMetadata?: FunctionHandleMetadata;
 }
+const ClassHandleMetadata = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<ClassHandleMetadata>;
+
 export interface CreateClassResponse {
   classId?: string;
   handleMetadata?: ClassHandleMetadata;
 }
+const CreateClassResponse = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<CreateClassResponse>;
+
 export interface GetClassRequest {
   appName?: string;
   objectTag?: string;
@@ -132,21 +182,31 @@ export interface GetClassRequest {
   /** True starting with 0.67.x clients, which don't create method placeholder functions */
   appVersion?: number;
 }
+const GetClassRequest = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<GetClassRequest>;
+
 export type WarningWarningType =
   | "WARNING_TYPE_UNSPECIFIED"
   | "WARNING_TYPE_CLIENT_DEPRECATION"
   | "WARNING_TYPE_RESOURCE_LIMIT"
   | "WARNING_TYPE_FUNCTION_CONFIGURATION";
+const WarningWarningType = S.String;
+
 export interface Warning {
   type?: WarningWarningType;
   message?: string;
 }
+const Warning = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<Warning>;
+
 export type WarningList = Array<Warning>;
+const WarningList = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<WarningList>;
+
 export interface GetClassResponse {
   classId?: string;
   handleMetadata?: ClassHandleMetadata;
   serverWarnings?: WarningList;
 }
+const GetClassResponse = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<GetClassResponse>;
+
 export type CreateClassError = ModalOpError;
 /** Classes */
 export const createClass: API.OperationMethod<
@@ -155,8 +215,8 @@ export const createClass: API.OperationMethod<
   CreateClassError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12) as any as S.Schema<CreateClassRequest>,
-  output: __S(14) as any as S.Schema<CreateClassResponse>,
+  input: CreateClassRequest,
+  output: CreateClassResponse,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -169,8 +229,8 @@ export const getClass: API.OperationMethod<
   GetClassError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15) as any as S.Schema<GetClassRequest>,
-  output: __S(18) as any as S.Schema<GetClassResponse>,
+  input: GetClassRequest,
+  output: GetClassResponse,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -180,48 +240,48 @@ export const getClass: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(/*@__PURE__*/ S.suspend(() => __S(1)));
+      return S.Array(/*@__PURE__*/ S.suspend(() => GenericPayloadType));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          baseType: S.optional(S.String),
-          subTypes: S.optional(__S(0)),
+          baseType: S.optional(ParameterType),
+          subTypes: S.optional(GenericPayloadTypeList),
         }),
       ).annotate({ identifier: "GenericPayloadType" });
     case 2:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          type: S.optional(S.String),
+          type: S.optional(ParameterType),
           hasDefault: S.optional(S.Boolean),
           stringDefault: S.optional(S.String),
           intDefault: S.optional(S.String),
           pickleDefault: S.optional(S.String),
           bytesDefault: S.optional(S.String),
           boolDefault: S.optional(S.Boolean),
-          fullType: S.optional(__S(1)),
+          fullType: S.optional(GenericPayloadType),
         }),
       ).annotate({ identifier: "ClassParameterSpec" });
     case 3:
-      return S.Array(__S(2));
+      return S.Array(ClassParameterSpec);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          format: S.optional(S.String),
-          schema: S.optional(__S(3)),
+          format: S.optional(ClassParameterInfoParameterSerializationFormat),
+          schema: S.optional(ClassParameterSpecList),
         }),
       ).annotate({ identifier: "ClassParameterInfo" });
     case 5:
       return S.Record(
         S.String,
-        /*@__PURE__*/ S.suspend(() => __S(9)),
+        /*@__PURE__*/ S.suspend(() => FunctionHandleMetadata),
       );
     case 6:
       return S.suspend(() =>
         S.Struct({
-          schemaType: S.optional(S.String),
-          arguments: S.optional(__S(3)),
-          returnType: S.optional(__S(1)),
+          schemaType: S.optional(FunctionSchemaFunctionSchemaType),
+          arguments: S.optional(ClassParameterSpecList),
+          returnType: S.optional(GenericPayloadType),
         }),
       ).annotate({ identifier: "FunctionSchema" });
     case 7:
@@ -231,26 +291,26 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
+      return S.Array(DataFormat);
     case 1:
       return S.suspend(() =>
         S.Struct({
           functionName: S.optional(S.String),
-          functionType: S.optional(S.String),
+          functionType: S.optional(FunctionFunctionType),
           webUrl: S.optional(S.String),
           isMethod: S.optional(S.Boolean),
           useMethodName: S.optional(S.String),
           definitionId: S.optional(S.String),
-          classParameterInfo: S.optional(__S(4)),
-          methodHandleMetadata: S.optional(__S(5)),
-          functionSchema: S.optional(__S(6)),
+          classParameterInfo: S.optional(ClassParameterInfo),
+          methodHandleMetadata: S.optional(FunctionHandleMetadataMap),
+          functionSchema: S.optional(FunctionSchema),
           inputPlaneUrl: S.optional(S.String),
           inputPlaneRegion: S.optional(S.String),
           maxObjectSizeBytes: S.optional(S.String),
           maxAsyncObjectSizeBytes: S.optional(S.String),
-          ExperimentalFlashUrls: S.optional(__S(7)),
-          supportedInputFormats: S.optional(__S(8)),
-          supportedOutputFormats: S.optional(__S(8)),
+          ExperimentalFlashUrls: S.optional(StringList),
+          supportedInputFormats: S.optional(DataFormatList),
+          supportedOutputFormats: S.optional(DataFormatList),
           appId: S.optional(S.String),
           baseFunctionId: S.optional(S.String),
         }),
@@ -260,17 +320,17 @@ function __c1(j: number): any {
         S.Struct({
           functionName: S.optional(S.String),
           functionId: S.optional(S.String),
-          functionHandleMetadata: S.optional(__S(9)),
+          functionHandleMetadata: S.optional(FunctionHandleMetadata),
         }),
       ).annotate({ identifier: "ClassMethod" });
     case 3:
-      return S.Array(__S(10));
+      return S.Array(ClassMethod);
     case 4:
       return S.suspend(() =>
         S.Struct({
           appId: S.optional(S.String),
           existingClassId: S.optional(S.String),
-          methods: S.optional(__S(11)),
+          methods: S.optional(ClassMethodList),
           onlyClassFunction: S.optional(S.Boolean),
         }).pipe(
           T.Http({ method: "POST", uri: "/modal.client.ModalClient/ClassCreate", code: 200 }),
@@ -279,16 +339,16 @@ function __c1(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          methods: S.optional(__S(11)),
+          methods: S.optional(ClassMethodList),
           classFunctionId: S.optional(S.String),
-          classFunctionMetadata: S.optional(__S(9)),
+          classFunctionMetadata: S.optional(FunctionHandleMetadata),
         }),
       ).annotate({ identifier: "ClassHandleMetadata" });
     case 6:
       return S.suspend(() =>
         S.Struct({
           classId: S.optional(S.String),
-          handleMetadata: S.optional(__S(13)),
+          handleMetadata: S.optional(ClassHandleMetadata),
         }),
       ).annotate({ identifier: "CreateClassResponse" });
     case 7:
@@ -308,34 +368,19 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(S.String),
+          type: S.optional(WarningWarningType),
           message: S.optional(S.String),
         }),
       ).annotate({ identifier: "Warning" });
     case 1:
-      return S.Array(__S(16));
+      return S.Array(Warning);
     case 2:
       return S.suspend(() =>
         S.Struct({
           classId: S.optional(S.String),
-          handleMetadata: S.optional(__S(13)),
-          serverWarnings: S.optional(__S(17)),
+          handleMetadata: S.optional(ClassHandleMetadata),
+          serverWarnings: S.optional(WarningList),
         }),
       ).annotate({ identifier: "GetClassResponse" });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
   }
 }

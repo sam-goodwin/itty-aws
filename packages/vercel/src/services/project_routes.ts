@@ -6,8 +6,6 @@ import * as S from "@distilled.cloud/core/schema";
 import { VercelProtocol, type VercelOpError, type VercelOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
-// Schema table, filled on first reach (see __S at the end).
-const __s: any[] = [];
 
 export type { VercelOpError, VercelOpContext };
 
@@ -49,13 +47,27 @@ export class NotFound
 
 /** Pattern syntax type. If not provided, inferred from pattern. */
 export type AddRouteRequestRouteSrcSyntax = "equals" | "path-to-regexp" | "regex";
+const AddRouteRequestRouteSrcSyntax = S.String;
+
 export type AddRouteRequestRouteRouteHasItemType = "host" | "header" | "cookie" | "query";
+const AddRouteRequestRouteRouteHasItemType = S.String;
+
 export interface AddRouteRequestRouteRouteHasItem {
   type?: AddRouteRequestRouteRouteHasItemType | (string & {});
   key?: string;
   value?: string;
 }
+const AddRouteRequestRouteRouteHasItem = /*@__PURE__*/ __L.at(
+  __c0,
+  0,
+) as any as S.Schema<AddRouteRequestRouteRouteHasItem>;
+
 export type AddRouteRequestRouteRouteHasList = Array<AddRouteRequestRouteRouteHasItem>;
+const AddRouteRequestRouteRouteHasList = /*@__PURE__*/ __L.at(
+  __c0,
+  1,
+) as any as S.Schema<AddRouteRequestRouteRouteHasList>;
+
 export type AddRouteRequestRouteRouteMissingItemType = "host" | "header" | "cookie" | "query";
 export interface AddRouteRequestRouteRouteMissingItem {
   type?: AddRouteRequestRouteRouteMissingItemType | (string & {});
@@ -63,12 +75,24 @@ export interface AddRouteRequestRouteRouteMissingItem {
   value?: string;
 }
 export type AddRouteRequestRouteRouteMissingList = Array<AddRouteRequestRouteRouteMissingItem>;
+const AddRouteRequestRouteRouteMissingList =
+  AddRouteRequestRouteRouteHasList as any as S.Schema<AddRouteRequestRouteRouteMissingList>;
+
 export type AddRouteRequestRouteRouteTransformsItemType =
   | "request.headers"
   | "request.query"
   | "response.headers";
+const AddRouteRequestRouteRouteTransformsItemType = S.String;
+
 export type AddRouteRequestRouteRouteTransformsItemOp = "append" | "set" | "delete";
+const AddRouteRequestRouteRouteTransformsItemOp = S.String;
+
 export type AddRouteRequestRouteRouteTransformsItemEnvList = Array<string>;
+const AddRouteRequestRouteRouteTransformsItemEnvList = /*@__PURE__*/ __L.at(
+  __c0,
+  2,
+) as any as S.Schema<AddRouteRequestRouteRouteTransformsItemEnvList>;
+
 export interface AddRouteRequestRouteRouteTransformsItem {
   type?: AddRouteRequestRouteRouteTransformsItemType | (string & {});
   op?: AddRouteRequestRouteRouteTransformsItemOp | (string & {});
@@ -76,8 +100,18 @@ export interface AddRouteRequestRouteRouteTransformsItem {
   args?: unknown;
   env?: AddRouteRequestRouteRouteTransformsItemEnvList;
 }
+const AddRouteRequestRouteRouteTransformsItem = /*@__PURE__*/ __L.at(
+  __c0,
+  3,
+) as any as S.Schema<AddRouteRequestRouteRouteTransformsItem>;
+
 export type AddRouteRequestRouteRouteTransformsList =
   Array<AddRouteRequestRouteRouteTransformsItem>;
+const AddRouteRequestRouteRouteTransformsList = /*@__PURE__*/ __L.at(
+  __c0,
+  4,
+) as any as S.Schema<AddRouteRequestRouteRouteTransformsList>;
+
 export interface AddRouteRequestRouteRoute {
   src: string;
   dest?: string;
@@ -89,6 +123,11 @@ export interface AddRouteRequestRouteRoute {
   transforms?: AddRouteRequestRouteRouteTransformsList;
   respectOriginCacheControl?: boolean;
 }
+const AddRouteRequestRouteRoute = /*@__PURE__*/ __L.at(
+  __c0,
+  5,
+) as any as S.Schema<AddRouteRequestRouteRoute>;
+
 export interface AddRouteRequestRoute {
   name: string;
   description?: string;
@@ -97,8 +136,12 @@ export interface AddRouteRequestRoute {
   srcSyntax?: AddRouteRequestRouteSrcSyntax | (string & {});
   route: AddRouteRequestRouteRoute;
 }
+const AddRouteRequestRoute = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<AddRouteRequestRoute>;
+
 /** "after"/"before" require referenceId. */
 export type AddRouteRequestPositionPlacement = "start" | "end" | "after" | "before";
+const AddRouteRequestPositionPlacement = S.String;
+
 /** Controls where the route is inserted. Defaults to "end" if omitted. */
 export interface AddRouteRequestPosition {
   /** "after"/"before" require referenceId. */
@@ -106,6 +149,11 @@ export interface AddRouteRequestPosition {
   /** Route ID to insert after/before. Required for "after"/"before". */
   referenceId?: string;
 }
+const AddRouteRequestPosition = /*@__PURE__*/ __L.at(
+  __c0,
+  7,
+) as any as S.Schema<AddRouteRequestPosition>;
+
 export interface AddRouteRequest {
   projectId: string;
   /** The Team identifier to perform the request on behalf of. */
@@ -116,6 +164,8 @@ export interface AddRouteRequest {
   /** Controls where the route is inserted. Defaults to "end" if omitted. */
   position?: AddRouteRequestPosition;
 }
+const AddRouteRequest = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<AddRouteRequest>;
+
 /** Optional explicit format marker. The destination is identified by the presence of `service`, so `type` is no longer required. */
 export type AddRouteResponseRouteRouteDestinationCase1Type = "service";
 export interface AddRouteResponseRouteRouteDestinationCase1 {
@@ -128,7 +178,13 @@ export interface AddRouteResponseRouteRouteDestinationCase1 {
 export type AddRouteResponseRouteRouteDestination =
   | string
   | AddRouteResponseRouteRouteDestinationCase1;
+const AddRouteResponseRouteRouteDestination =
+  S.Unknown as any as S.Schema<AddRouteResponseRouteRouteDestination>;
+
 export type AddRouteResponseRouteRouteEnvList = Array<string>;
+const AddRouteResponseRouteRouteEnvList =
+  AddRouteRequestRouteRouteTransformsItemEnvList as any as S.Schema<AddRouteResponseRouteRouteEnvList>;
+
 export type AddRouteResponseRouteRouteHasItemCase0Type = "host";
 export type AddRouteResponseRouteRouteHasItemCase0ValueCase1Eq = string | number;
 export type AddRouteResponseRouteRouteHasItemCase0ValueCase1IncList = Array<string>;
@@ -181,16 +237,43 @@ export interface AddRouteResponseRouteRouteHasItemCase1 {
 export type AddRouteResponseRouteRouteHasItem =
   | AddRouteResponseRouteRouteHasItemCase0
   | AddRouteResponseRouteRouteHasItemCase1;
+const AddRouteResponseRouteRouteHasItem =
+  S.Unknown as any as S.Schema<AddRouteResponseRouteRouteHasItem>;
+
 export type AddRouteResponseRouteRouteHasList = Array<AddRouteResponseRouteRouteHasItem>;
+const AddRouteResponseRouteRouteHasList = /*@__PURE__*/ __L.at(
+  __c1,
+  1,
+) as any as S.Schema<AddRouteResponseRouteRouteHasList>;
+
 export type AddRouteResponseRouteRouteHeadersMap = { [key: string]: string | undefined };
+const AddRouteResponseRouteRouteHeadersMap = /*@__PURE__*/ __L.at(
+  __c1,
+  2,
+) as any as S.Schema<AddRouteResponseRouteRouteHeadersMap>;
+
 export type AddRouteResponseRouteRouteLocaleRedirectMap = { [key: string]: string | undefined };
+const AddRouteResponseRouteRouteLocaleRedirectMap =
+  AddRouteResponseRouteRouteHeadersMap as any as S.Schema<AddRouteResponseRouteRouteLocaleRedirectMap>;
+
 export interface AddRouteResponseRouteRouteLocale {
   cookie?: string;
   redirect?: AddRouteResponseRouteRouteLocaleRedirectMap;
 }
+const AddRouteResponseRouteRouteLocale = /*@__PURE__*/ __L.at(
+  __c1,
+  3,
+) as any as S.Schema<AddRouteResponseRouteRouteLocale>;
+
 export type AddRouteResponseRouteRouteMethodsList = Array<string>;
+const AddRouteResponseRouteRouteMethodsList =
+  AddRouteRequestRouteRouteTransformsItemEnvList as any as S.Schema<AddRouteResponseRouteRouteMethodsList>;
+
 /** The original middleware matchers. */
 export type AddRouteResponseRouteRouteMiddlewareRawSrcList = Array<string>;
+const AddRouteResponseRouteRouteMiddlewareRawSrcList =
+  AddRouteRequestRouteRouteTransformsItemEnvList as any as S.Schema<AddRouteResponseRouteRouteMiddlewareRawSrcList>;
+
 export type AddRouteResponseRouteRouteMissingItemCase0Type = "host";
 export type AddRouteResponseRouteRouteMissingItemCase0ValueCase1Eq = string | number;
 export type AddRouteResponseRouteRouteMissingItemCase0ValueCase1IncList = Array<string>;
@@ -243,11 +326,26 @@ export interface AddRouteResponseRouteRouteMissingItemCase1 {
 export type AddRouteResponseRouteRouteMissingItem =
   | AddRouteResponseRouteRouteMissingItemCase0
   | AddRouteResponseRouteRouteMissingItemCase1;
+const AddRouteResponseRouteRouteMissingItem =
+  S.Unknown as any as S.Schema<AddRouteResponseRouteRouteMissingItem>;
+
 export type AddRouteResponseRouteRouteMissingList = Array<AddRouteResponseRouteRouteMissingItem>;
+const AddRouteResponseRouteRouteMissingList = /*@__PURE__*/ __L.at(
+  __c1,
+  4,
+) as any as S.Schema<AddRouteResponseRouteRouteMissingList>;
+
 export type AddRouteResponseRouteRouteMitigateAction = "challenge" | "deny";
+const AddRouteResponseRouteRouteMitigateAction = S.String;
+
 export interface AddRouteResponseRouteRouteMitigate {
   action: AddRouteResponseRouteRouteMitigateAction;
 }
+const AddRouteResponseRouteRouteMitigate = /*@__PURE__*/ __L.at(
+  __c1,
+  5,
+) as any as S.Schema<AddRouteResponseRouteRouteMitigate>;
+
 export type AddRouteResponseRouteRouteTransformsItemCase0ArgsCase1List = Array<string>;
 export type AddRouteResponseRouteRouteTransformsItemCase0Args =
   | string
@@ -298,8 +396,16 @@ export interface AddRouteResponseRouteRouteTransformsItemCase1 {
 export type AddRouteResponseRouteRouteTransformsItem =
   | AddRouteResponseRouteRouteTransformsItemCase0
   | AddRouteResponseRouteRouteTransformsItemCase1;
+const AddRouteResponseRouteRouteTransformsItem =
+  S.Unknown as any as S.Schema<AddRouteResponseRouteRouteTransformsItem>;
+
 export type AddRouteResponseRouteRouteTransformsList =
   Array<AddRouteResponseRouteRouteTransformsItem>;
+const AddRouteResponseRouteRouteTransformsList = /*@__PURE__*/ __L.at(
+  __c1,
+  6,
+) as any as S.Schema<AddRouteResponseRouteRouteTransformsList>;
+
 /** The route definition from @vercel/routing-utils. */
 export interface AddRouteResponseRouteRoute {
   caseSensitive?: boolean;
@@ -330,9 +436,18 @@ export interface AddRouteResponseRouteRoute {
   statusCode?: number;
   transforms?: AddRouteResponseRouteRouteTransformsList;
 }
+const AddRouteResponseRouteRoute = /*@__PURE__*/ __L.at(
+  __c1,
+  7,
+) as any as S.Schema<AddRouteResponseRouteRoute>;
+
 export type AddRouteResponseRouteRouteType = "redirect" | "rewrite" | "set_status" | "transform";
+const AddRouteResponseRouteRouteType = S.String;
+
 /** The syntax type of the source pattern. Determines how the pattern is compiled to regex. */
 export type AddRouteResponseRouteSrcSyntax = "equals" | "path-to-regexp" | "regex";
+const AddRouteResponseRouteSrcSyntax = S.String;
+
 export interface AddRouteResponseRoute {
   /** Optional description of what the routing rule does. */
   description?: string;
@@ -354,6 +469,11 @@ export interface AddRouteResponseRoute {
   /** Whether this route is new and not yet published to production. Set to true only when a route is first created via add-route. Cleared (set to false) when a version is promoted to production. */
   staged?: boolean;
 }
+const AddRouteResponseRoute = /*@__PURE__*/ __L.at(
+  __c2,
+  0,
+) as any as S.Schema<AddRouteResponseRoute>;
+
 /** A version of routing rules stored in S3. */
 export interface AddRouteResponseVersion {
   /** The staging alias for previewing this version. */
@@ -373,13 +493,23 @@ export interface AddRouteResponseVersion {
   /** The S3 key where the routing rules are stored. */
   s3Key: string;
 }
+const AddRouteResponseVersion = /*@__PURE__*/ __L.at(
+  __c2,
+  1,
+) as any as S.Schema<AddRouteResponseVersion>;
+
 export interface AddRouteResponse {
   route: AddRouteResponseRoute;
   /** A version of routing rules stored in S3. */
   version: AddRouteResponseVersion;
 }
+const AddRouteResponse = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<AddRouteResponse>;
+
 /** The IDs of the routes to delete */
 export type DeleteRoutesRequestRouteIdsList = Array<string>;
+const DeleteRoutesRequestRouteIdsList =
+  AddRouteRequestRouteRouteTransformsItemEnvList as any as S.Schema<DeleteRoutesRequestRouteIdsList>;
+
 export interface DeleteRoutesRequest {
   projectId: string;
   /** The Team identifier to perform the request on behalf of. */
@@ -389,6 +519,8 @@ export interface DeleteRoutesRequest {
   /** The IDs of the routes to delete */
   routeIds: DeleteRoutesRequestRouteIdsList;
 }
+const DeleteRoutesRequest = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<DeleteRoutesRequest>;
+
 /** A version of routing rules stored in S3. */
 export type DeleteRoutesResponseVersion = AddRouteResponseVersion;
 export interface DeleteRoutesResponse {
@@ -396,8 +528,12 @@ export interface DeleteRoutesResponse {
   /** A version of routing rules stored in S3. */
   version: AddRouteResponseVersion;
 }
+const DeleteRoutesResponse = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<DeleteRoutesResponse>;
+
 /** Pattern syntax type. If not provided, inferred from pattern. */
 export type EditRouteRequestRouteSrcSyntax = "equals" | "path-to-regexp" | "regex";
+const EditRouteRequestRouteSrcSyntax = S.String;
+
 export type EditRouteRequestRouteRouteHasItemType = "host" | "header" | "cookie" | "query";
 export interface EditRouteRequestRouteRouteHasItem {
   type?: EditRouteRequestRouteRouteHasItemType | (string & {});
@@ -405,6 +541,9 @@ export interface EditRouteRequestRouteRouteHasItem {
   value?: string;
 }
 export type EditRouteRequestRouteRouteHasList = Array<EditRouteRequestRouteRouteHasItem>;
+const EditRouteRequestRouteRouteHasList =
+  AddRouteRequestRouteRouteHasList as any as S.Schema<EditRouteRequestRouteRouteHasList>;
+
 export type EditRouteRequestRouteRouteMissingItemType = "host" | "header" | "cookie" | "query";
 export interface EditRouteRequestRouteRouteMissingItem {
   type?: EditRouteRequestRouteRouteMissingItemType | (string & {});
@@ -412,12 +551,22 @@ export interface EditRouteRequestRouteRouteMissingItem {
   value?: string;
 }
 export type EditRouteRequestRouteRouteMissingList = Array<EditRouteRequestRouteRouteMissingItem>;
+const EditRouteRequestRouteRouteMissingList =
+  AddRouteRequestRouteRouteHasList as any as S.Schema<EditRouteRequestRouteRouteMissingList>;
+
 export type EditRouteRequestRouteRouteTransformsItemType =
   | "request.headers"
   | "request.query"
   | "response.headers";
+const EditRouteRequestRouteRouteTransformsItemType = S.String;
+
 export type EditRouteRequestRouteRouteTransformsItemOp = "append" | "set" | "delete";
+const EditRouteRequestRouteRouteTransformsItemOp = S.String;
+
 export type EditRouteRequestRouteRouteTransformsItemEnvList = Array<string>;
+const EditRouteRequestRouteRouteTransformsItemEnvList =
+  AddRouteRequestRouteRouteTransformsItemEnvList as any as S.Schema<EditRouteRequestRouteRouteTransformsItemEnvList>;
+
 export interface EditRouteRequestRouteRouteTransformsItem {
   type?: EditRouteRequestRouteRouteTransformsItemType | (string & {});
   op?: EditRouteRequestRouteRouteTransformsItemOp | (string & {});
@@ -425,8 +574,18 @@ export interface EditRouteRequestRouteRouteTransformsItem {
   args?: unknown;
   env?: EditRouteRequestRouteRouteTransformsItemEnvList;
 }
+const EditRouteRequestRouteRouteTransformsItem = /*@__PURE__*/ __L.at(
+  __c2,
+  5,
+) as any as S.Schema<EditRouteRequestRouteRouteTransformsItem>;
+
 export type EditRouteRequestRouteRouteTransformsList =
   Array<EditRouteRequestRouteRouteTransformsItem>;
+const EditRouteRequestRouteRouteTransformsList = /*@__PURE__*/ __L.at(
+  __c2,
+  6,
+) as any as S.Schema<EditRouteRequestRouteRouteTransformsList>;
+
 export interface EditRouteRequestRouteRoute {
   src: string;
   dest?: string;
@@ -438,6 +597,11 @@ export interface EditRouteRequestRouteRoute {
   transforms?: EditRouteRequestRouteRouteTransformsList;
   respectOriginCacheControl?: boolean;
 }
+const EditRouteRequestRouteRoute = /*@__PURE__*/ __L.at(
+  __c2,
+  7,
+) as any as S.Schema<EditRouteRequestRouteRoute>;
+
 /** The full route object to replace the existing route with */
 export interface EditRouteRequestRoute {
   name: string;
@@ -447,6 +611,11 @@ export interface EditRouteRequestRoute {
   srcSyntax?: EditRouteRequestRouteSrcSyntax | (string & {});
   route: EditRouteRequestRouteRoute;
 }
+const EditRouteRequestRoute = /*@__PURE__*/ __L.at(
+  __c3,
+  0,
+) as any as S.Schema<EditRouteRequestRoute>;
+
 export interface EditRouteRequest {
   projectId: string;
   routeId: string;
@@ -459,6 +628,8 @@ export interface EditRouteRequest {
   /** If true, restores the staged route to the value in the production version. */
   restore?: boolean;
 }
+const EditRouteRequest = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<EditRouteRequest>;
+
 /** Optional explicit format marker. The destination is identified by the presence of `service`, so `type` is no longer required. */
 export type EditRouteResponseRouteRouteDestinationCase1Type = "service";
 export interface EditRouteResponseRouteRouteDestinationCase1 {
@@ -471,7 +642,13 @@ export interface EditRouteResponseRouteRouteDestinationCase1 {
 export type EditRouteResponseRouteRouteDestination =
   | string
   | EditRouteResponseRouteRouteDestinationCase1;
+const EditRouteResponseRouteRouteDestination =
+  S.Unknown as any as S.Schema<EditRouteResponseRouteRouteDestination>;
+
 export type EditRouteResponseRouteRouteEnvList = Array<string>;
+const EditRouteResponseRouteRouteEnvList =
+  AddRouteRequestRouteRouteTransformsItemEnvList as any as S.Schema<EditRouteResponseRouteRouteEnvList>;
+
 export type EditRouteResponseRouteRouteHasItemCase0Type = "host";
 export type EditRouteResponseRouteRouteHasItemCase0ValueCase1Eq = string | number;
 export type EditRouteResponseRouteRouteHasItemCase0ValueCase1IncList = Array<string>;
@@ -524,16 +701,36 @@ export interface EditRouteResponseRouteRouteHasItemCase1 {
 export type EditRouteResponseRouteRouteHasItem =
   | EditRouteResponseRouteRouteHasItemCase0
   | EditRouteResponseRouteRouteHasItemCase1;
+const EditRouteResponseRouteRouteHasItem =
+  S.Unknown as any as S.Schema<EditRouteResponseRouteRouteHasItem>;
+
 export type EditRouteResponseRouteRouteHasList = Array<EditRouteResponseRouteRouteHasItem>;
+const EditRouteResponseRouteRouteHasList = /*@__PURE__*/ __L.at(
+  __c3,
+  2,
+) as any as S.Schema<EditRouteResponseRouteRouteHasList>;
+
 export type EditRouteResponseRouteRouteHeadersMap = { [key: string]: string | undefined };
+const EditRouteResponseRouteRouteHeadersMap =
+  AddRouteResponseRouteRouteHeadersMap as any as S.Schema<EditRouteResponseRouteRouteHeadersMap>;
+
 export type EditRouteResponseRouteRouteLocaleRedirectMap = { [key: string]: string | undefined };
 export interface EditRouteResponseRouteRouteLocale {
   cookie?: string;
   redirect?: EditRouteResponseRouteRouteLocaleRedirectMap;
 }
+const EditRouteResponseRouteRouteLocale =
+  AddRouteResponseRouteRouteLocale as any as S.Schema<EditRouteResponseRouteRouteLocale>;
+
 export type EditRouteResponseRouteRouteMethodsList = Array<string>;
+const EditRouteResponseRouteRouteMethodsList =
+  AddRouteRequestRouteRouteTransformsItemEnvList as any as S.Schema<EditRouteResponseRouteRouteMethodsList>;
+
 /** The original middleware matchers. */
 export type EditRouteResponseRouteRouteMiddlewareRawSrcList = Array<string>;
+const EditRouteResponseRouteRouteMiddlewareRawSrcList =
+  AddRouteRequestRouteRouteTransformsItemEnvList as any as S.Schema<EditRouteResponseRouteRouteMiddlewareRawSrcList>;
+
 export type EditRouteResponseRouteRouteMissingItemCase0Type = "host";
 export type EditRouteResponseRouteRouteMissingItemCase0ValueCase1Eq = string | number;
 export type EditRouteResponseRouteRouteMissingItemCase0ValueCase1IncList = Array<string>;
@@ -586,11 +783,22 @@ export interface EditRouteResponseRouteRouteMissingItemCase1 {
 export type EditRouteResponseRouteRouteMissingItem =
   | EditRouteResponseRouteRouteMissingItemCase0
   | EditRouteResponseRouteRouteMissingItemCase1;
+const EditRouteResponseRouteRouteMissingItem =
+  S.Unknown as any as S.Schema<EditRouteResponseRouteRouteMissingItem>;
+
 export type EditRouteResponseRouteRouteMissingList = Array<EditRouteResponseRouteRouteMissingItem>;
+const EditRouteResponseRouteRouteMissingList = /*@__PURE__*/ __L.at(
+  __c3,
+  3,
+) as any as S.Schema<EditRouteResponseRouteRouteMissingList>;
+
 export type EditRouteResponseRouteRouteMitigateAction = "challenge" | "deny";
 export interface EditRouteResponseRouteRouteMitigate {
   action: EditRouteResponseRouteRouteMitigateAction;
 }
+const EditRouteResponseRouteRouteMitigate =
+  AddRouteResponseRouteRouteMitigate as any as S.Schema<EditRouteResponseRouteRouteMitigate>;
+
 export type EditRouteResponseRouteRouteTransformsItemCase0ArgsCase1List = Array<string>;
 export type EditRouteResponseRouteRouteTransformsItemCase0Args =
   | string
@@ -641,8 +849,16 @@ export interface EditRouteResponseRouteRouteTransformsItemCase1 {
 export type EditRouteResponseRouteRouteTransformsItem =
   | EditRouteResponseRouteRouteTransformsItemCase0
   | EditRouteResponseRouteRouteTransformsItemCase1;
+const EditRouteResponseRouteRouteTransformsItem =
+  S.Unknown as any as S.Schema<EditRouteResponseRouteRouteTransformsItem>;
+
 export type EditRouteResponseRouteRouteTransformsList =
   Array<EditRouteResponseRouteRouteTransformsItem>;
+const EditRouteResponseRouteRouteTransformsList = /*@__PURE__*/ __L.at(
+  __c3,
+  4,
+) as any as S.Schema<EditRouteResponseRouteRouteTransformsList>;
+
 /** The route definition from @vercel/routing-utils. */
 export interface EditRouteResponseRouteRoute {
   caseSensitive?: boolean;
@@ -673,9 +889,18 @@ export interface EditRouteResponseRouteRoute {
   statusCode?: number;
   transforms?: EditRouteResponseRouteRouteTransformsList;
 }
+const EditRouteResponseRouteRoute = /*@__PURE__*/ __L.at(
+  __c3,
+  5,
+) as any as S.Schema<EditRouteResponseRouteRoute>;
+
 export type EditRouteResponseRouteRouteType = "redirect" | "rewrite" | "set_status" | "transform";
+const EditRouteResponseRouteRouteType = S.String;
+
 /** The syntax type of the source pattern. Determines how the pattern is compiled to regex. */
 export type EditRouteResponseRouteSrcSyntax = "equals" | "path-to-regexp" | "regex";
+const EditRouteResponseRouteSrcSyntax = S.String;
+
 export interface EditRouteResponseRoute {
   /** Optional description of what the routing rule does. */
   description?: string;
@@ -697,6 +922,11 @@ export interface EditRouteResponseRoute {
   /** Whether this route is new and not yet published to production. Set to true only when a route is first created via add-route. Cleared (set to false) when a version is promoted to production. */
   staged?: boolean;
 }
+const EditRouteResponseRoute = /*@__PURE__*/ __L.at(
+  __c3,
+  6,
+) as any as S.Schema<EditRouteResponseRoute>;
+
 /** A version of routing rules stored in S3. */
 export type EditRouteResponseVersion = AddRouteResponseVersion;
 export interface EditRouteResponse {
@@ -704,10 +934,17 @@ export interface EditRouteResponse {
   /** A version of routing rules stored in S3. */
   version: AddRouteResponseVersion;
 }
+const EditRouteResponse = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<EditRouteResponse>;
+
 export interface GenerateRouteRequestCurrentRoutePathCondition {
   value?: string;
   syntax?: string;
 }
+const GenerateRouteRequestCurrentRoutePathCondition = /*@__PURE__*/ __L.at(
+  __c4,
+  0,
+) as any as S.Schema<GenerateRouteRequestCurrentRoutePathCondition>;
+
 export interface GenerateRouteRequestCurrentRouteConditionsItem {
   field?: string;
   operator?: string;
@@ -715,15 +952,35 @@ export interface GenerateRouteRequestCurrentRouteConditionsItem {
   value?: string;
   missing?: boolean;
 }
+const GenerateRouteRequestCurrentRouteConditionsItem = /*@__PURE__*/ __L.at(
+  __c4,
+  1,
+) as any as S.Schema<GenerateRouteRequestCurrentRouteConditionsItem>;
+
 export type GenerateRouteRequestCurrentRouteConditionsList =
   Array<GenerateRouteRequestCurrentRouteConditionsItem>;
+const GenerateRouteRequestCurrentRouteConditionsList = /*@__PURE__*/ __L.at(
+  __c4,
+  2,
+) as any as S.Schema<GenerateRouteRequestCurrentRouteConditionsList>;
+
 export interface GenerateRouteRequestCurrentRouteActionsItemHeadersItem {
   key?: string;
   value?: string;
   op?: string;
 }
+const GenerateRouteRequestCurrentRouteActionsItemHeadersItem = /*@__PURE__*/ __L.at(
+  __c4,
+  3,
+) as any as S.Schema<GenerateRouteRequestCurrentRouteActionsItemHeadersItem>;
+
 export type GenerateRouteRequestCurrentRouteActionsItemHeadersList =
   Array<GenerateRouteRequestCurrentRouteActionsItemHeadersItem>;
+const GenerateRouteRequestCurrentRouteActionsItemHeadersList = /*@__PURE__*/ __L.at(
+  __c4,
+  4,
+) as any as S.Schema<GenerateRouteRequestCurrentRouteActionsItemHeadersList>;
+
 export interface GenerateRouteRequestCurrentRouteActionsItem {
   type?: string;
   subType?: string;
@@ -731,8 +988,18 @@ export interface GenerateRouteRequestCurrentRouteActionsItem {
   status?: number;
   headers?: GenerateRouteRequestCurrentRouteActionsItemHeadersList;
 }
+const GenerateRouteRequestCurrentRouteActionsItem = /*@__PURE__*/ __L.at(
+  __c4,
+  5,
+) as any as S.Schema<GenerateRouteRequestCurrentRouteActionsItem>;
+
 export type GenerateRouteRequestCurrentRouteActionsList =
   Array<GenerateRouteRequestCurrentRouteActionsItem>;
+const GenerateRouteRequestCurrentRouteActionsList = /*@__PURE__*/ __L.at(
+  __c4,
+  6,
+) as any as S.Schema<GenerateRouteRequestCurrentRouteActionsList>;
+
 export interface GenerateRouteRequestCurrentRoute {
   name?: string;
   description?: string;
@@ -740,6 +1007,11 @@ export interface GenerateRouteRequestCurrentRoute {
   conditions?: GenerateRouteRequestCurrentRouteConditionsList;
   actions: GenerateRouteRequestCurrentRouteActionsList;
 }
+const GenerateRouteRequestCurrentRoute = /*@__PURE__*/ __L.at(
+  __c4,
+  7,
+) as any as S.Schema<GenerateRouteRequestCurrentRoute>;
+
 export interface GenerateRouteRequest {
   projectId: string;
   /** The Team identifier to perform the request on behalf of. */
@@ -749,23 +1021,41 @@ export interface GenerateRouteRequest {
   prompt: string;
   currentRoute?: GenerateRouteRequestCurrentRoute;
 }
+const GenerateRouteRequest = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<GenerateRouteRequest>;
+
 export type GenerateRouteResponseRouteActionsItemHeadersItemOp = "append" | "delete" | "set";
+const GenerateRouteResponseRouteActionsItemHeadersItemOp = S.String;
+
 export interface GenerateRouteResponseRouteActionsItemHeadersItem {
   key: string;
   op: GenerateRouteResponseRouteActionsItemHeadersItemOp;
   value?: string;
 }
+const GenerateRouteResponseRouteActionsItemHeadersItem = /*@__PURE__*/ __L.at(
+  __c5,
+  1,
+) as any as S.Schema<GenerateRouteResponseRouteActionsItemHeadersItem>;
+
 export type GenerateRouteResponseRouteActionsItemHeadersList =
   Array<GenerateRouteResponseRouteActionsItemHeadersItem>;
+const GenerateRouteResponseRouteActionsItemHeadersList = /*@__PURE__*/ __L.at(
+  __c5,
+  2,
+) as any as S.Schema<GenerateRouteResponseRouteActionsItemHeadersList>;
+
 export type GenerateRouteResponseRouteActionsItemSubType =
   | "response-headers"
   | "transform-request-header"
   | "transform-request-query";
+const GenerateRouteResponseRouteActionsItemSubType = S.String;
+
 export type GenerateRouteResponseRouteActionsItemType =
   | "modify"
   | "redirect"
   | "rewrite"
   | "set-status";
+const GenerateRouteResponseRouteActionsItemType = S.String;
+
 export interface GenerateRouteResponseRouteActionsItem {
   dest?: string;
   headers?: GenerateRouteResponseRouteActionsItemHeadersList;
@@ -773,9 +1063,23 @@ export interface GenerateRouteResponseRouteActionsItem {
   subType?: GenerateRouteResponseRouteActionsItemSubType;
   type: GenerateRouteResponseRouteActionsItemType;
 }
+const GenerateRouteResponseRouteActionsItem = /*@__PURE__*/ __L.at(
+  __c5,
+  3,
+) as any as S.Schema<GenerateRouteResponseRouteActionsItem>;
+
 export type GenerateRouteResponseRouteActionsList = Array<GenerateRouteResponseRouteActionsItem>;
+const GenerateRouteResponseRouteActionsList = /*@__PURE__*/ __L.at(
+  __c5,
+  4,
+) as any as S.Schema<GenerateRouteResponseRouteActionsList>;
+
 export type GenerateRouteResponseRouteConditionsItemField = "cookie" | "header" | "host" | "query";
+const GenerateRouteResponseRouteConditionsItemField = S.String;
+
 export type GenerateRouteResponseRouteConditionsItemOperator = "contains" | "eq" | "exists" | "re";
+const GenerateRouteResponseRouteConditionsItemOperator = S.String;
+
 export interface GenerateRouteResponseRouteConditionsItem {
   field: GenerateRouteResponseRouteConditionsItemField;
   key?: string;
@@ -783,13 +1087,30 @@ export interface GenerateRouteResponseRouteConditionsItem {
   operator: GenerateRouteResponseRouteConditionsItemOperator;
   value?: string;
 }
+const GenerateRouteResponseRouteConditionsItem = /*@__PURE__*/ __L.at(
+  __c5,
+  5,
+) as any as S.Schema<GenerateRouteResponseRouteConditionsItem>;
+
 export type GenerateRouteResponseRouteConditionsList =
   Array<GenerateRouteResponseRouteConditionsItem>;
+const GenerateRouteResponseRouteConditionsList = /*@__PURE__*/ __L.at(
+  __c5,
+  6,
+) as any as S.Schema<GenerateRouteResponseRouteConditionsList>;
+
 export type GenerateRouteResponseRoutePathConditionSyntax = "equals" | "path-to-regexp" | "regex";
+const GenerateRouteResponseRoutePathConditionSyntax = S.String;
+
 export interface GenerateRouteResponseRoutePathCondition {
   syntax: GenerateRouteResponseRoutePathConditionSyntax;
   value: string;
 }
+const GenerateRouteResponseRoutePathCondition = /*@__PURE__*/ __L.at(
+  __c5,
+  7,
+) as any as S.Schema<GenerateRouteResponseRoutePathCondition>;
+
 export interface GenerateRouteResponseRoute {
   actions: GenerateRouteResponseRouteActionsList;
   conditions?: GenerateRouteResponseRouteConditionsList;
@@ -797,13 +1118,27 @@ export interface GenerateRouteResponseRoute {
   name: string;
   pathCondition: GenerateRouteResponseRoutePathCondition;
 }
+const GenerateRouteResponseRoute = /*@__PURE__*/ __L.at(
+  __c6,
+  0,
+) as any as S.Schema<GenerateRouteResponseRoute>;
+
 export interface GenerateRouteResponse {
   error?: string;
   route?: GenerateRouteResponseRoute;
 }
+const GenerateRouteResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  1,
+) as any as S.Schema<GenerateRouteResponse>;
+
 export type GetRoutesRequestFilter = "rewrite" | "redirect" | "set_status" | "transform";
+const GetRoutesRequestFilter = S.String;
+
 export type GetRoutesRequestDiffCase1 = "only";
 export type GetRoutesRequestDiff = boolean | GetRoutesRequestDiffCase1;
+const GetRoutesRequestDiff = S.Unknown as any as S.Schema<GetRoutesRequestDiff>;
+
 export interface GetRoutesRequest {
   projectId: string;
   versionId?: string;
@@ -815,6 +1150,8 @@ export interface GetRoutesRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
+const GetRoutesRequest = /*@__PURE__*/ __L.at(__c6, 2) as any as S.Schema<GetRoutesRequest>;
+
 /** Optional explicit format marker. The destination is identified by the presence of `service`, so `type` is no longer required. */
 export type GetRoutesResponseBodyCase1RoutesItemRouteDestinationCase1Type = "service";
 export interface GetRoutesResponseBodyCase1RoutesItemRouteDestinationCase1 {
@@ -1657,7 +1994,11 @@ export type GetRoutesResponseBody =
   | GetRoutesResponseBodyCase1
   | GetRoutesResponseBodyCase2
   | GetRoutesResponseBodyCase3;
+const GetRoutesResponseBody = S.Unknown as any as S.Schema<GetRoutesResponseBody>;
+
 export type GetRoutesResponse = GetRoutesResponseBody;
+const GetRoutesResponse = /*@__PURE__*/ __L.at(__c6, 3) as any as S.Schema<GetRoutesResponse>;
+
 export interface GetRouteVersionsRequest {
   projectId: string;
   /** The Team identifier to perform the request on behalf of. */
@@ -1665,12 +2006,27 @@ export interface GetRouteVersionsRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
+const GetRouteVersionsRequest = /*@__PURE__*/ __L.at(
+  __c6,
+  4,
+) as any as S.Schema<GetRouteVersionsRequest>;
+
 /** A version of routing rules stored in S3. */
 export type GetRouteVersionsResponseVersionsItem = AddRouteResponseVersion;
 export type GetRouteVersionsResponseVersionsList = Array<AddRouteResponseVersion>;
+const GetRouteVersionsResponseVersionsList = /*@__PURE__*/ __L.at(
+  __c6,
+  5,
+) as any as S.Schema<GetRouteVersionsResponseVersionsList>;
+
 export interface GetRouteVersionsResponse {
   versions: GetRouteVersionsResponseVersionsList;
 }
+const GetRouteVersionsResponse = /*@__PURE__*/ __L.at(
+  __c6,
+  6,
+) as any as S.Schema<GetRouteVersionsResponse>;
+
 export type StageRoutesRequestRoutesItemRouteHasItemType = "host" | "header" | "cookie" | "query";
 export interface StageRoutesRequestRoutesItemRouteHasItem {
   type?: StageRoutesRequestRoutesItemRouteHasItemType | (string & {});
@@ -1679,6 +2035,9 @@ export interface StageRoutesRequestRoutesItemRouteHasItem {
 }
 export type StageRoutesRequestRoutesItemRouteHasList =
   Array<StageRoutesRequestRoutesItemRouteHasItem>;
+const StageRoutesRequestRoutesItemRouteHasList =
+  AddRouteRequestRouteRouteHasList as any as S.Schema<StageRoutesRequestRoutesItemRouteHasList>;
+
 export type StageRoutesRequestRoutesItemRouteMissingItemType =
   | "host"
   | "header"
@@ -1691,12 +2050,22 @@ export interface StageRoutesRequestRoutesItemRouteMissingItem {
 }
 export type StageRoutesRequestRoutesItemRouteMissingList =
   Array<StageRoutesRequestRoutesItemRouteMissingItem>;
+const StageRoutesRequestRoutesItemRouteMissingList =
+  AddRouteRequestRouteRouteHasList as any as S.Schema<StageRoutesRequestRoutesItemRouteMissingList>;
+
 export type StageRoutesRequestRoutesItemRouteTransformsItemType =
   | "request.headers"
   | "request.query"
   | "response.headers";
+const StageRoutesRequestRoutesItemRouteTransformsItemType = S.String;
+
 export type StageRoutesRequestRoutesItemRouteTransformsItemOp = "append" | "set" | "delete";
+const StageRoutesRequestRoutesItemRouteTransformsItemOp = S.String;
+
 export type StageRoutesRequestRoutesItemRouteTransformsItemEnvList = Array<string>;
+const StageRoutesRequestRoutesItemRouteTransformsItemEnvList =
+  AddRouteRequestRouteRouteTransformsItemEnvList as any as S.Schema<StageRoutesRequestRoutesItemRouteTransformsItemEnvList>;
+
 export interface StageRoutesRequestRoutesItemRouteTransformsItem {
   type?: StageRoutesRequestRoutesItemRouteTransformsItemType | (string & {});
   op?: StageRoutesRequestRoutesItemRouteTransformsItemOp | (string & {});
@@ -1704,8 +2073,18 @@ export interface StageRoutesRequestRoutesItemRouteTransformsItem {
   args?: unknown;
   env?: StageRoutesRequestRoutesItemRouteTransformsItemEnvList;
 }
+const StageRoutesRequestRoutesItemRouteTransformsItem = /*@__PURE__*/ __L.at(
+  __c6,
+  7,
+) as any as S.Schema<StageRoutesRequestRoutesItemRouteTransformsItem>;
+
 export type StageRoutesRequestRoutesItemRouteTransformsList =
   Array<StageRoutesRequestRoutesItemRouteTransformsItem>;
+const StageRoutesRequestRoutesItemRouteTransformsList = /*@__PURE__*/ __L.at(
+  __c7,
+  0,
+) as any as S.Schema<StageRoutesRequestRoutesItemRouteTransformsList>;
+
 export interface StageRoutesRequestRoutesItemRoute {
   src: string;
   dest?: string;
@@ -1717,6 +2096,11 @@ export interface StageRoutesRequestRoutesItemRoute {
   transforms?: StageRoutesRequestRoutesItemRouteTransformsList;
   respectOriginCacheControl?: boolean;
 }
+const StageRoutesRequestRoutesItemRoute = /*@__PURE__*/ __L.at(
+  __c7,
+  1,
+) as any as S.Schema<StageRoutesRequestRoutesItemRoute>;
+
 export interface StageRoutesRequestRoutesItem {
   id: string;
   name: string;
@@ -1724,7 +2108,17 @@ export interface StageRoutesRequestRoutesItem {
   enabled?: boolean;
   route: StageRoutesRequestRoutesItemRoute;
 }
+const StageRoutesRequestRoutesItem = /*@__PURE__*/ __L.at(
+  __c7,
+  2,
+) as any as S.Schema<StageRoutesRequestRoutesItem>;
+
 export type StageRoutesRequestRoutesList = Array<StageRoutesRequestRoutesItem>;
+const StageRoutesRequestRoutesList = /*@__PURE__*/ __L.at(
+  __c7,
+  3,
+) as any as S.Schema<StageRoutesRequestRoutesList>;
+
 export interface StageRoutesRequest {
   projectId: string;
   /** The Team identifier to perform the request on behalf of. */
@@ -1734,13 +2128,19 @@ export interface StageRoutesRequest {
   overwrite?: boolean;
   routes?: StageRoutesRequestRoutesList;
 }
+const StageRoutesRequest = /*@__PURE__*/ __L.at(__c7, 4) as any as S.Schema<StageRoutesRequest>;
+
 /** A version of routing rules stored in S3. */
 export type StageRoutesResponseVersion = AddRouteResponseVersion;
 export interface StageRoutesResponse {
   /** A version of routing rules stored in S3. */
   version: AddRouteResponseVersion;
 }
+const StageRoutesResponse = /*@__PURE__*/ __L.at(__c7, 5) as any as S.Schema<StageRoutesResponse>;
+
 export type UpdateRouteVersionsRequestAction = "promote" | "restore" | "discard";
+const UpdateRouteVersionsRequestAction = S.String;
+
 export interface UpdateRouteVersionsRequest {
   projectId: string;
   /** The Team identifier to perform the request on behalf of. */
@@ -1750,12 +2150,22 @@ export interface UpdateRouteVersionsRequest {
   id: string;
   action: UpdateRouteVersionsRequestAction | (string & {});
 }
+const UpdateRouteVersionsRequest = /*@__PURE__*/ __L.at(
+  __c7,
+  6,
+) as any as S.Schema<UpdateRouteVersionsRequest>;
+
 /** A version of routing rules stored in S3. */
 export type UpdateRouteVersionsResponseVersion = AddRouteResponseVersion;
 export interface UpdateRouteVersionsResponse {
   /** A version of routing rules stored in S3. */
   version: AddRouteResponseVersion;
 }
+const UpdateRouteVersionsResponse = /*@__PURE__*/ __L.at(
+  __c7,
+  7,
+) as any as S.Schema<UpdateRouteVersionsResponse>;
+
 export type AddRouteError = BadRequest | Forbidden | NotFound | Conflict | VercelOpError;
 /** Add a routing rule Add a single routing rule to a project at a specified position. Defaults to the end of the list if no position is provided. The route is enabled by default. Stages a new version with the added route. */
 export const addRoute: API.OperationMethod<
@@ -1764,8 +2174,8 @@ export const addRoute: API.OperationMethod<
   AddRouteError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8) as any as S.Schema<AddRouteRequest>,
-  output: __S(18) as any as S.Schema<AddRouteResponse>,
+  input: AddRouteRequest,
+  output: AddRouteResponse,
   errors: [BadRequest, Forbidden, NotFound, Conflict],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -1779,8 +2189,8 @@ export const deleteRoutes: API.OperationMethod<
   DeleteRoutesError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19) as any as S.Schema<DeleteRoutesRequest>,
-  output: __S(20) as any as S.Schema<DeleteRoutesResponse>,
+  input: DeleteRoutesRequest,
+  output: DeleteRoutesResponse,
   errors: [BadRequest, Forbidden, NotFound, Conflict],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -1794,8 +2204,8 @@ export const editRoute: API.OperationMethod<
   EditRouteError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25) as any as S.Schema<EditRouteRequest>,
-  output: __S(31) as any as S.Schema<EditRouteResponse>,
+  input: EditRouteRequest,
+  output: EditRouteResponse,
   errors: [BadRequest, Forbidden, NotFound, Conflict],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -1809,8 +2219,8 @@ export const generateRoute: API.OperationMethod<
   GenerateRouteError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40) as any as S.Schema<GenerateRouteRequest>,
-  output: __S(49) as any as S.Schema<GenerateRouteResponse>,
+  input: GenerateRouteRequest,
+  output: GenerateRouteResponse,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -1824,8 +2234,8 @@ export const getRoutes: API.OperationMethod<
   GetRoutesError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(50) as any as S.Schema<GetRoutesRequest>,
-  output: __S(51) as any as S.Schema<GetRoutesResponse>,
+  input: GetRoutesRequest,
+  output: GetRoutesResponse,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -1839,8 +2249,8 @@ export const getRouteVersions: API.OperationMethod<
   GetRouteVersionsError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(52) as any as S.Schema<GetRouteVersionsRequest>,
-  output: __S(54) as any as S.Schema<GetRouteVersionsResponse>,
+  input: GetRouteVersionsRequest,
+  output: GetRouteVersionsResponse,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -1854,8 +2264,8 @@ export const stageRoutes: API.OperationMethod<
   StageRoutesError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60) as any as S.Schema<StageRoutesRequest>,
-  output: __S(61) as any as S.Schema<StageRoutesResponse>,
+  input: StageRoutesRequest,
+  output: StageRoutesResponse,
   errors: [BadRequest, Forbidden, NotFound, Conflict],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -1869,8 +2279,8 @@ export const updateRouteVersions: API.OperationMethod<
   UpdateRouteVersionsError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(62) as any as S.Schema<UpdateRouteVersionsRequest>,
-  output: __S(63) as any as S.Schema<UpdateRouteVersionsResponse>,
+  input: UpdateRouteVersionsRequest,
+  output: UpdateRouteVersionsResponse,
   errors: [BadRequest, Forbidden, NotFound, Conflict],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -1882,7 +2292,7 @@ function __c0(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(S.String),
+          type: S.optional(AddRouteRequestRouteRouteHasItemType),
           key: S.optional(S.String),
           value: S.optional(S.String),
         }),
@@ -1890,23 +2300,23 @@ function __c0(j: number): any {
         identifier: "AddRouteRequestRouteRouteHasItem",
       });
     case 1:
-      return S.Array(__S(0));
+      return S.Array(AddRouteRequestRouteRouteHasItem);
     case 2:
       return S.Array(S.String);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(S.String),
-          op: S.optional(S.String),
+          type: S.optional(AddRouteRequestRouteRouteTransformsItemType),
+          op: S.optional(AddRouteRequestRouteRouteTransformsItemOp),
           target: S.optional(S.Unknown),
           args: S.optional(S.Unknown),
-          env: S.optional(__S(2)),
+          env: S.optional(AddRouteRequestRouteRouteTransformsItemEnvList),
         }),
       ).annotate({
         identifier: "AddRouteRequestRouteRouteTransformsItem",
       });
     case 4:
-      return S.Array(__S(3));
+      return S.Array(AddRouteRequestRouteRouteTransformsItem);
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -1915,9 +2325,9 @@ function __c0(j: number): any {
           headers: S.optional(S.Unknown),
           caseSensitive: S.optional(S.Boolean),
           status: S.optional(S.Number),
-          has: S.optional(__S(1)),
-          missing: S.optional(__S(1)),
-          transforms: S.optional(__S(4)),
+          has: S.optional(AddRouteRequestRouteRouteHasList),
+          missing: S.optional(AddRouteRequestRouteRouteMissingList),
+          transforms: S.optional(AddRouteRequestRouteRouteTransformsList),
           respectOriginCacheControl: S.optional(S.Boolean),
         }),
       ).annotate({
@@ -1929,14 +2339,14 @@ function __c0(j: number): any {
           name: S.String,
           description: S.optional(S.String),
           enabled: S.optional(S.Boolean),
-          srcSyntax: S.optional(S.String),
-          route: __S(5),
+          srcSyntax: S.optional(AddRouteRequestRouteSrcSyntax),
+          route: AddRouteRequestRouteRoute,
         }),
       ).annotate({ identifier: "AddRouteRequestRoute" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          placement: S.optional(S.String),
+          placement: S.optional(AddRouteRequestPositionPlacement),
           referenceId: S.optional(S.String),
         }),
       ).annotate({ identifier: "AddRouteRequestPosition" });
@@ -1950,35 +2360,35 @@ function __c1(j: number): any {
           projectId: S.String.pipe(T.Label()),
           teamId: S.optional(S.String.pipe(T.Query())),
           slug: S.optional(S.String.pipe(T.Query())),
-          route: __S(6),
-          position: S.optional(__S(7)),
+          route: AddRouteRequestRoute,
+          position: S.optional(AddRouteRequestPosition),
         }).pipe(T.Http({ method: "POST", uri: "/v1/projects/{projectId}/routes", code: 200 })),
       ).annotate({ identifier: "AddRouteRequest" });
     case 1:
-      return S.Array(S.Unknown);
+      return S.Array(AddRouteResponseRouteRouteHasItem);
     case 2:
       return S.Record(S.String, S.String);
     case 3:
       return S.suspend(() =>
         S.Struct({
           cookie: S.optional(S.String),
-          redirect: S.optional(__S(10)),
+          redirect: S.optional(AddRouteResponseRouteRouteLocaleRedirectMap),
         }),
       ).annotate({
         identifier: "AddRouteResponseRouteRouteLocale",
       });
     case 4:
-      return S.Array(S.Unknown);
+      return S.Array(AddRouteResponseRouteRouteMissingItem);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          action: S.String,
+          action: AddRouteResponseRouteRouteMitigateAction,
         }),
       ).annotate({
         identifier: "AddRouteResponseRouteRouteMitigate",
       });
     case 6:
-      return S.Array(S.Unknown);
+      return S.Array(AddRouteResponseRouteRouteTransformsItem);
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -1986,25 +2396,25 @@ function __c1(j: number): any {
           check: S.optional(S.Boolean),
           continue: S.optional(S.Boolean),
           dest: S.optional(S.String),
-          destination: S.optional(S.Unknown),
-          env: S.optional(__S(2)),
-          has: S.optional(__S(9)),
-          headers: S.optional(__S(10)),
+          destination: S.optional(AddRouteResponseRouteRouteDestination),
+          env: S.optional(AddRouteResponseRouteRouteEnvList),
+          has: S.optional(AddRouteResponseRouteRouteHasList),
+          headers: S.optional(AddRouteResponseRouteRouteHeadersMap),
           important: S.optional(S.Boolean),
-          locale: S.optional(__S(11)),
-          methods: S.optional(__S(2)),
+          locale: S.optional(AddRouteResponseRouteRouteLocale),
+          methods: S.optional(AddRouteResponseRouteRouteMethodsList),
           middleware: S.optional(S.Number),
           middlewarePath: S.optional(S.String),
-          middlewareRawSrc: S.optional(__S(2)),
-          missing: S.optional(__S(12)),
-          mitigate: S.optional(__S(13)),
+          middlewareRawSrc: S.optional(AddRouteResponseRouteRouteMiddlewareRawSrcList),
+          missing: S.optional(AddRouteResponseRouteRouteMissingList),
+          mitigate: S.optional(AddRouteResponseRouteRouteMitigate),
           override: S.optional(S.Boolean),
           respectOriginCacheControl: S.optional(S.Boolean),
           source: S.optional(S.String),
           src: S.String,
           status: S.optional(S.Number),
           statusCode: S.optional(S.Number),
-          transforms: S.optional(__S(14)),
+          transforms: S.optional(AddRouteResponseRouteRouteTransformsList),
         }),
       ).annotate({
         identifier: "AddRouteResponseRouteRoute",
@@ -2022,9 +2432,9 @@ function __c2(j: number): any {
           name: S.String,
           rawDest: S.optional(S.String),
           rawSrc: S.optional(S.String),
-          route: __S(15),
-          routeType: S.optional(S.String),
-          srcSyntax: S.optional(S.String),
+          route: AddRouteResponseRouteRoute,
+          routeType: S.optional(AddRouteResponseRouteRouteType),
+          srcSyntax: S.optional(AddRouteResponseRouteSrcSyntax),
           staged: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "AddRouteResponseRoute" });
@@ -2044,8 +2454,8 @@ function __c2(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          route: __S(16),
-          version: __S(17),
+          route: AddRouteResponseRoute,
+          version: AddRouteResponseVersion,
         }),
       ).annotate({ identifier: "AddRouteResponse" });
     case 3:
@@ -2054,30 +2464,30 @@ function __c2(j: number): any {
           projectId: S.String.pipe(T.Label()),
           teamId: S.optional(S.String.pipe(T.Query())),
           slug: S.optional(S.String.pipe(T.Query())),
-          routeIds: __S(2),
+          routeIds: DeleteRoutesRequestRouteIdsList,
         }).pipe(T.Http({ method: "DELETE", uri: "/v1/projects/{projectId}/routes", code: 200 })),
       ).annotate({ identifier: "DeleteRoutesRequest" });
     case 4:
       return S.suspend(() =>
         S.Struct({
           deletedCount: S.Number,
-          version: __S(17),
+          version: AddRouteResponseVersion,
         }),
       ).annotate({ identifier: "DeleteRoutesResponse" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(S.String),
-          op: S.optional(S.String),
+          type: S.optional(EditRouteRequestRouteRouteTransformsItemType),
+          op: S.optional(EditRouteRequestRouteRouteTransformsItemOp),
           target: S.optional(S.Unknown),
           args: S.optional(S.Unknown),
-          env: S.optional(__S(2)),
+          env: S.optional(EditRouteRequestRouteRouteTransformsItemEnvList),
         }),
       ).annotate({
         identifier: "EditRouteRequestRouteRouteTransformsItem",
       });
     case 6:
-      return S.Array(__S(21));
+      return S.Array(EditRouteRequestRouteRouteTransformsItem);
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -2086,9 +2496,9 @@ function __c2(j: number): any {
           headers: S.optional(S.Unknown),
           caseSensitive: S.optional(S.Boolean),
           status: S.optional(S.Number),
-          has: S.optional(__S(1)),
-          missing: S.optional(__S(1)),
-          transforms: S.optional(__S(22)),
+          has: S.optional(EditRouteRequestRouteRouteHasList),
+          missing: S.optional(EditRouteRequestRouteRouteMissingList),
+          transforms: S.optional(EditRouteRequestRouteRouteTransformsList),
           respectOriginCacheControl: S.optional(S.Boolean),
         }),
       ).annotate({
@@ -2104,8 +2514,8 @@ function __c3(j: number): any {
           name: S.String,
           description: S.optional(S.String),
           enabled: S.optional(S.Boolean),
-          srcSyntax: S.optional(S.String),
-          route: __S(23),
+          srcSyntax: S.optional(EditRouteRequestRouteSrcSyntax),
+          route: EditRouteRequestRouteRoute,
         }),
       ).annotate({ identifier: "EditRouteRequestRoute" });
     case 1:
@@ -2115,18 +2525,18 @@ function __c3(j: number): any {
           routeId: S.String.pipe(T.Label()),
           teamId: S.optional(S.String.pipe(T.Query())),
           slug: S.optional(S.String.pipe(T.Query())),
-          route: S.optional(__S(24)),
+          route: S.optional(EditRouteRequestRoute),
           restore: S.optional(S.Boolean),
         }).pipe(
           T.Http({ method: "PATCH", uri: "/v1/projects/{projectId}/routes/{routeId}", code: 200 }),
         ),
       ).annotate({ identifier: "EditRouteRequest" });
     case 2:
-      return S.Array(S.Unknown);
+      return S.Array(EditRouteResponseRouteRouteHasItem);
     case 3:
-      return S.Array(S.Unknown);
+      return S.Array(EditRouteResponseRouteRouteMissingItem);
     case 4:
-      return S.Array(S.Unknown);
+      return S.Array(EditRouteResponseRouteRouteTransformsItem);
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -2134,25 +2544,25 @@ function __c3(j: number): any {
           check: S.optional(S.Boolean),
           continue: S.optional(S.Boolean),
           dest: S.optional(S.String),
-          destination: S.optional(S.Unknown),
-          env: S.optional(__S(2)),
-          has: S.optional(__S(26)),
-          headers: S.optional(__S(10)),
+          destination: S.optional(EditRouteResponseRouteRouteDestination),
+          env: S.optional(EditRouteResponseRouteRouteEnvList),
+          has: S.optional(EditRouteResponseRouteRouteHasList),
+          headers: S.optional(EditRouteResponseRouteRouteHeadersMap),
           important: S.optional(S.Boolean),
-          locale: S.optional(__S(11)),
-          methods: S.optional(__S(2)),
+          locale: S.optional(EditRouteResponseRouteRouteLocale),
+          methods: S.optional(EditRouteResponseRouteRouteMethodsList),
           middleware: S.optional(S.Number),
           middlewarePath: S.optional(S.String),
-          middlewareRawSrc: S.optional(__S(2)),
-          missing: S.optional(__S(27)),
-          mitigate: S.optional(__S(13)),
+          middlewareRawSrc: S.optional(EditRouteResponseRouteRouteMiddlewareRawSrcList),
+          missing: S.optional(EditRouteResponseRouteRouteMissingList),
+          mitigate: S.optional(EditRouteResponseRouteRouteMitigate),
           override: S.optional(S.Boolean),
           respectOriginCacheControl: S.optional(S.Boolean),
           source: S.optional(S.String),
           src: S.String,
           status: S.optional(S.Number),
           statusCode: S.optional(S.Number),
-          transforms: S.optional(__S(28)),
+          transforms: S.optional(EditRouteResponseRouteRouteTransformsList),
         }),
       ).annotate({
         identifier: "EditRouteResponseRouteRoute",
@@ -2166,17 +2576,17 @@ function __c3(j: number): any {
           name: S.String,
           rawDest: S.optional(S.String),
           rawSrc: S.optional(S.String),
-          route: __S(29),
-          routeType: S.optional(S.String),
-          srcSyntax: S.optional(S.String),
+          route: EditRouteResponseRouteRoute,
+          routeType: S.optional(EditRouteResponseRouteRouteType),
+          srcSyntax: S.optional(EditRouteResponseRouteSrcSyntax),
           staged: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "EditRouteResponseRoute" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          route: S.optional(__S(30)),
-          version: __S(17),
+          route: S.optional(EditRouteResponseRoute),
+          version: AddRouteResponseVersion,
         }),
       ).annotate({ identifier: "EditRouteResponse" });
   }
@@ -2205,7 +2615,7 @@ function __c4(j: number): any {
         identifier: "GenerateRouteRequestCurrentRouteConditionsItem",
       });
     case 2:
-      return S.Array(__S(33));
+      return S.Array(GenerateRouteRequestCurrentRouteConditionsItem);
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -2217,7 +2627,7 @@ function __c4(j: number): any {
         identifier: "GenerateRouteRequestCurrentRouteActionsItemHeadersItem",
       });
     case 4:
-      return S.Array(__S(35));
+      return S.Array(GenerateRouteRequestCurrentRouteActionsItemHeadersItem);
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -2225,21 +2635,21 @@ function __c4(j: number): any {
           subType: S.optional(S.String),
           dest: S.optional(S.String),
           status: S.optional(S.Number),
-          headers: S.optional(__S(36)),
+          headers: S.optional(GenerateRouteRequestCurrentRouteActionsItemHeadersList),
         }),
       ).annotate({
         identifier: "GenerateRouteRequestCurrentRouteActionsItem",
       });
     case 6:
-      return S.Array(__S(37));
+      return S.Array(GenerateRouteRequestCurrentRouteActionsItem);
     case 7:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           description: S.optional(S.String),
-          pathCondition: __S(32),
-          conditions: S.optional(__S(34)),
-          actions: __S(38),
+          pathCondition: GenerateRouteRequestCurrentRoutePathCondition,
+          conditions: S.optional(GenerateRouteRequestCurrentRouteConditionsList),
+          actions: GenerateRouteRequestCurrentRouteActionsList,
         }),
       ).annotate({
         identifier: "GenerateRouteRequestCurrentRoute",
@@ -2255,7 +2665,7 @@ function __c5(j: number): any {
           teamId: S.optional(S.String.pipe(T.Query())),
           slug: S.optional(S.String.pipe(T.Query())),
           prompt: S.String,
-          currentRoute: S.optional(__S(39)),
+          currentRoute: S.optional(GenerateRouteRequestCurrentRoute),
         }).pipe(
           T.Http({ method: "POST", uri: "/v1/projects/{projectId}/routes/generate", code: 200 }),
         ),
@@ -2264,46 +2674,46 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           key: S.String,
-          op: S.String,
+          op: GenerateRouteResponseRouteActionsItemHeadersItemOp,
           value: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GenerateRouteResponseRouteActionsItemHeadersItem",
       });
     case 2:
-      return S.Array(__S(41));
+      return S.Array(GenerateRouteResponseRouteActionsItemHeadersItem);
     case 3:
       return S.suspend(() =>
         S.Struct({
           dest: S.optional(S.String),
-          headers: S.optional(__S(42)),
+          headers: S.optional(GenerateRouteResponseRouteActionsItemHeadersList),
           status: S.optional(S.Number),
-          subType: S.optional(S.String),
-          type: S.String,
+          subType: S.optional(GenerateRouteResponseRouteActionsItemSubType),
+          type: GenerateRouteResponseRouteActionsItemType,
         }),
       ).annotate({
         identifier: "GenerateRouteResponseRouteActionsItem",
       });
     case 4:
-      return S.Array(__S(43));
+      return S.Array(GenerateRouteResponseRouteActionsItem);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          field: S.String,
+          field: GenerateRouteResponseRouteConditionsItemField,
           key: S.optional(S.String),
           missing: S.Boolean,
-          operator: S.String,
+          operator: GenerateRouteResponseRouteConditionsItemOperator,
           value: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GenerateRouteResponseRouteConditionsItem",
       });
     case 6:
-      return S.Array(__S(45));
+      return S.Array(GenerateRouteResponseRouteConditionsItem);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          syntax: S.String,
+          syntax: GenerateRouteResponseRoutePathConditionSyntax,
           value: S.String,
         }),
       ).annotate({
@@ -2316,11 +2726,11 @@ function __c6(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          actions: __S(44),
-          conditions: S.optional(__S(46)),
+          actions: GenerateRouteResponseRouteActionsList,
+          conditions: S.optional(GenerateRouteResponseRouteConditionsList),
           description: S.String,
           name: S.String,
-          pathCondition: __S(47),
+          pathCondition: GenerateRouteResponseRoutePathCondition,
         }),
       ).annotate({
         identifier: "GenerateRouteResponseRoute",
@@ -2329,7 +2739,7 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           error: S.optional(S.String),
-          route: S.optional(__S(48)),
+          route: S.optional(GenerateRouteResponseRoute),
         }),
       ).annotate({ identifier: "GenerateRouteResponse" });
     case 2:
@@ -2338,14 +2748,14 @@ function __c6(j: number): any {
           projectId: S.String.pipe(T.Label()),
           versionId: S.optional(S.String.pipe(T.Query())),
           q: S.optional(S.String.pipe(T.Query())),
-          filter: S.optional(S.String.pipe(T.Query())),
-          diff: S.optional(S.Unknown.pipe(T.Query())),
+          filter: S.optional(GetRoutesRequestFilter.pipe(T.Query())),
+          diff: S.optional(GetRoutesRequestDiff.pipe(T.Query())),
           teamId: S.optional(S.String.pipe(T.Query())),
           slug: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/v1/projects/{projectId}/routes", code: 200 })),
       ).annotate({ identifier: "GetRoutesRequest" });
     case 3:
-      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => GetRoutesResponseBody.pipe(T.RawResponseRoot())).annotate({
         identifier: "GetRoutesResponse",
       });
     case 4:
@@ -2359,21 +2769,21 @@ function __c6(j: number): any {
         ),
       ).annotate({ identifier: "GetRouteVersionsRequest" });
     case 5:
-      return S.Array(__S(17));
+      return S.Array(AddRouteResponseVersion);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          versions: __S(53),
+          versions: GetRouteVersionsResponseVersionsList,
         }),
       ).annotate({ identifier: "GetRouteVersionsResponse" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(S.String),
-          op: S.optional(S.String),
+          type: S.optional(StageRoutesRequestRoutesItemRouteTransformsItemType),
+          op: S.optional(StageRoutesRequestRoutesItemRouteTransformsItemOp),
           target: S.optional(S.Unknown),
           args: S.optional(S.Unknown),
-          env: S.optional(__S(2)),
+          env: S.optional(StageRoutesRequestRoutesItemRouteTransformsItemEnvList),
         }),
       ).annotate({
         identifier: "StageRoutesRequestRoutesItemRouteTransformsItem",
@@ -2383,7 +2793,7 @@ function __c6(j: number): any {
 function __c7(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(55));
+      return S.Array(StageRoutesRequestRoutesItemRouteTransformsItem);
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2392,9 +2802,9 @@ function __c7(j: number): any {
           headers: S.optional(S.Unknown),
           caseSensitive: S.optional(S.Boolean),
           status: S.optional(S.Number),
-          has: S.optional(__S(1)),
-          missing: S.optional(__S(1)),
-          transforms: S.optional(__S(56)),
+          has: S.optional(StageRoutesRequestRoutesItemRouteHasList),
+          missing: S.optional(StageRoutesRequestRoutesItemRouteMissingList),
+          transforms: S.optional(StageRoutesRequestRoutesItemRouteTransformsList),
           respectOriginCacheControl: S.optional(S.Boolean),
         }),
       ).annotate({
@@ -2407,13 +2817,13 @@ function __c7(j: number): any {
           name: S.String,
           description: S.optional(S.String),
           enabled: S.optional(S.Boolean),
-          route: __S(57),
+          route: StageRoutesRequestRoutesItemRoute,
         }),
       ).annotate({
         identifier: "StageRoutesRequestRoutesItem",
       });
     case 3:
-      return S.Array(__S(58));
+      return S.Array(StageRoutesRequestRoutesItem);
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -2421,13 +2831,13 @@ function __c7(j: number): any {
           teamId: S.optional(S.String.pipe(T.Query())),
           slug: S.optional(S.String.pipe(T.Query())),
           overwrite: S.optional(S.Boolean),
-          routes: S.optional(__S(59)),
+          routes: S.optional(StageRoutesRequestRoutesList),
         }).pipe(T.Http({ method: "PUT", uri: "/v1/projects/{projectId}/routes", code: 200 })),
       ).annotate({ identifier: "StageRoutesRequest" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          version: __S(17),
+          version: AddRouteResponseVersion,
         }),
       ).annotate({ identifier: "StageRoutesResponse" });
     case 6:
@@ -2437,7 +2847,7 @@ function __c7(j: number): any {
           teamId: S.optional(S.String.pipe(T.Query())),
           slug: S.optional(S.String.pipe(T.Query())),
           id: S.String,
-          action: S.String,
+          action: UpdateRouteVersionsRequestAction,
         }).pipe(
           T.Http({ method: "POST", uri: "/v1/projects/{projectId}/routes/versions", code: 200 }),
         ),
@@ -2447,35 +2857,10 @@ function __c7(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          version: __S(17),
+          version: AddRouteResponseVersion,
         }),
       ).annotate({
         identifier: "UpdateRouteVersionsResponse",
       });
-  }
-}
-
-// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
-function __S(i: number): any {
-  return (__s[i] ??= __L.at(__b, i));
-}
-function __b(i: number): any {
-  switch (i >> 3) {
-    case 0:
-      return __c0(i & 7);
-    case 1:
-      return __c1(i & 7);
-    case 2:
-      return __c2(i & 7);
-    case 3:
-      return __c3(i & 7);
-    case 4:
-      return __c4(i & 7);
-    case 5:
-      return __c5(i & 7);
-    case 6:
-      return __c6(i & 7);
-    case 7:
-      return __c7(i & 7);
   }
 }
